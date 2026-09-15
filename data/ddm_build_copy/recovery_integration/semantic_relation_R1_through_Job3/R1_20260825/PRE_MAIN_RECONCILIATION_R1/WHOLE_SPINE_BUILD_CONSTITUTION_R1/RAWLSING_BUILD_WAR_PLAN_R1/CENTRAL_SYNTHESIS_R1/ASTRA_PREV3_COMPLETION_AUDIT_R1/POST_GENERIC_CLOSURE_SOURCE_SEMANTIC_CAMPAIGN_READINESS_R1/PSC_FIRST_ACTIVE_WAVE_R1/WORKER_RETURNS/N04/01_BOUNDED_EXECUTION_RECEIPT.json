@@ -1,0 +1,73 @@
+{
+  "schema_id": "PSC02_T03_GOVERNED_SEMANTIC_COMPILER_BOUNDED_EXECUTION_RECEIPT_R1",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-prev3-psc-w1-n04-t03-intake-compiler-r1",
+  "commission_tip": "e5d8a1c3e1d12893d4e0de324e6a780d37c62fe6",
+  "pre_receipt_branch_tip": "a095118fbc1fe150ad4f4b6df6d98b2e7871a770",
+  "exact_grain": "PREV3_GOVERNED_SEMANTIC_CAPITAL_TO_ADOPTED_T03_INTAKE_COMPILER_R1_ONLY",
+  "terminal": "N04_PASS__T03_GOVERNED_SEMANTIC_INTAKE_COMPILER_READY__FINAL_RELEASE_AWAITS_PSC01_FANIN",
+  "compiler": {
+    "path": "rawlsing_next/prev3_governed_semantic_t03_compiler.py",
+    "git_blob_sha": "ad5806e3f500bdc63b40fde49f210ff45b282170",
+    "contract_id": "PREV3_GOVERNED_SEMANTIC_CAPITAL_TO_ADOPTED_T03_INTAKE_COMPILER_R1@1.0.0"
+  },
+  "test": {
+    "path": "tests/test_prev3_governed_semantic_t03_compiler.py",
+    "git_blob_sha": "e4d612f34f7ee5d8fb978a4b4299ed29b98f994a",
+    "command": "PYTHONHASHSEED=0 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 pytest -q tests/test_prev3_governed_semantic_t03_compiler.py",
+    "python_version": "3.13.5",
+    "result": "PASS",
+    "passed": 34,
+    "failed": 0,
+    "duration_seconds_observed": 0.19
+  },
+  "execution_basis": {
+    "n04_compiler_source_git_blob_verified_byte_exact": true,
+    "n04_test_source_git_blob_verified_byte_exact": true,
+    "source_verification_method": "local git hash-object equality to repository blob SHA",
+    "inherited_dependency_execution_basis": "contract-compatible local mirror of the imported PRE553/T03 primitive subset",
+    "full_repository_checkout_available_in_execution_environment": false,
+    "github_actions_run_claimed": false,
+    "scope": "bounded compiler preservation/reduction qualification only"
+  },
+  "adopted_t03_inheritance": {
+    "semantic_candidate_commit": "5f90f5b94b76babe37c289840afd89005f67dbfe",
+    "qualified_execution_tree_commit": "545e2827bfdbaf07ffb9e54b4f822ae7db53b510",
+    "g03_court": "48 passed",
+    "base_blob": "4e785a8eba66f092e95abea39ad3948ec1c3e019",
+    "records_blob": "988b0c03359d9bdf89408b46acec90118ee422fa",
+    "status_blob": "ed892763978110f4254d4c36fb130e3f9a058e50",
+    "runtime_blob": "aec8167eaeceb229c932e162b1f922dea33a119c"
+  },
+  "bounded_fixture_carriers": [
+    "FQRA",
+    "QSMV2",
+    "NEGATIVE_BLOCK",
+    "RESPONSE_SEMANTICS",
+    "TYPED_RELATION"
+  ],
+  "proved_properties": [
+    "exact source/release/question/implementation identity preservation",
+    "authority provenance retention",
+    "epistemic-class conservation",
+    "source-semantic versus Rawlsing-semantic jurisdiction conservation",
+    "positive/negative-forbidden/blocked/review-required/superseded state conservation",
+    "response/routing/structural-use-ceiling conservation",
+    "only positively governed equivalence enters admission while all decisions remain provenance",
+    "deterministic replay and order-independent reduction",
+    "exact-equal semantic-core dedup retains all candidate evidence/provenance",
+    "distinct governed dimensions do not dedup",
+    "same logical candidate conflict quarantines rather than winner-selects",
+    "missing/ambiguous/contradictory currentness fails closed",
+    "free-text/inferred semantic fields are rejected",
+    "compiler never emits T03 CURRENT"
+  ],
+  "release_holding": "FINAL_RELEASE_AWAITS_HQ_ADOPTED_PSC01_DENOMINATOR",
+  "release_scope": "NO_WHOLE_CORPUS_RELEASE_CLAIMED",
+  "prev3_boundary": "PRE_V3_OBJECTIVE_WORLD_ONLY",
+  "obl063_boundary": "OBL063_PERSON_TERMINAL_DRIVER_TYPE_SEMANTICS_QUARANTINED",
+  "library_used": false,
+  "main_mutated": false,
+  "pre_main_mutated": false,
+  "control_branch_mutated": false
+}
