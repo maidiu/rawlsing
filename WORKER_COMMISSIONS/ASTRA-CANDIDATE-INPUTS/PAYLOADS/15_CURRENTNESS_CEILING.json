@@ -1,0 +1,32 @@
+{
+  "candidate_id": "M10-M01",
+  "constitution_current_selection_ref": {
+    "content_hash": "141260a47d7540229722646dff41c4886dc02240fbcde96f1810c75be15e851d",
+    "kind": "SDTF_R4_CONSTITUTION_CURRENT_SELECTION",
+    "object_id": "SDTF_R4_MECHANISM_RULE_AUTHORITY_BINDING_R1@1.0.0:HQ_RUNTIME_ADOPTION_R1"
+  },
+  "current_state_holding": {
+    "actor_fact_current": false,
+    "application_current": false,
+    "constitution_contract_current": true,
+    "m10_m01_rule_current": false,
+    "witness_current": false
+  },
+  "does_not_issue": [
+    "CURRENT_ACCEPTED",
+    "APPLICATION_ADMISSION",
+    "ACTOR_FACT",
+    "WITNESS"
+  ],
+  "jurisdiction": "CURRENTNESS_NONCOLLAPSE_CEILING_ONLY",
+  "noncollapse_law": [
+    "CONSTITUTION_CURRENT != RULE_CURRENT",
+    "RULE_CURRENT != APPLICATION_CURRENT",
+    "APPLICATION_CURRENT != FACT_CURRENT",
+    "FACT_CURRENT != WITNESS_CURRENT",
+    "AUTHORITY_CURRENT != RULE_CURRENT",
+    "SEMANTIC_POSITION_ADMISSION_CURRENTNESS != ACTOR_FACT_CURRENTNESS"
+  ],
+  "schema": "SDTF_CURRENTNESS_CEILING_REF_PAYLOAD_R1",
+  "schema_version": "1.0.0"
+}
