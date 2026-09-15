@@ -1,0 +1,81 @@
+{
+  "worker_id": "L02",
+  "purpose": "Exact current unresolved/documentary-blocked rowsets after bounded Library documentary review. Row identity is preserved by immutable carrier SHA plus deterministic filter; rows are not recopied or re-keyed.",
+  "rowsets": [
+    {
+      "rowset_id": "L02_ASIAN_ROUTING_UNRESOLVED_ALL",
+      "source_family": "Asian Barometer",
+      "carrier": "C04_FULL_CURRENT_ROUTING_LEDGER.csv",
+      "carrier_sha256": "c3148341c5a6315c4b060f665595c93c4aa935dfc171aa5faf4c14628f914f90",
+      "exact_filter": "source_family == 'Asian Barometer' AND authority45_disposition == 'STILL_UNRESOLVED__SOURCE_AUTHORITY_INSUFFICIENT'",
+      "row_count": 660,
+      "documentary_disposition": "DOCUMENTARY_INSUFFICIENT__REMAINS_BLOCKED"
+    },
+    {
+      "rowset_id": "L02_ASIAN_NO_EXECUTABLE_OR_GENERAL_PROOF",
+      "source_family": "Asian Barometer",
+      "carrier": "C04_FULL_CURRENT_ROUTING_LEDGER.csv",
+      "carrier_sha256": "c3148341c5a6315c4b060f665595c93c4aa935dfc171aa5faf4c14628f914f90",
+      "exact_filter": "source_family == 'Asian Barometer' AND unresolved_blocker_class == 'NO_EXACT_EXECUTABLE_ROUTING_OR_AFFIRMATIVE_GENERAL_UNIVERSE_PROVEN'",
+      "row_count": 639,
+      "documentary_disposition": "DOCUMENTARY_INSUFFICIENT__REMAINS_BLOCKED"
+    },
+    {
+      "rowset_id": "L02_ASIAN_DERIVATIVE_SIGNAL_NOT_EXECUTABLE",
+      "source_family": "Asian Barometer",
+      "carrier": "C04_FULL_CURRENT_ROUTING_LEDGER.csv",
+      "carrier_sha256": "c3148341c5a6315c4b060f665595c93c4aa935dfc171aa5faf4c14628f914f90",
+      "exact_filter": "source_family == 'Asian Barometer' AND unresolved_blocker_class == 'DERIVATIVE_ROUTING_SIGNAL_NOT_EXECUTABLE_AT_CURRENT_COURT'",
+      "row_count": 21,
+      "documentary_disposition": "DOCUMENTARY_INSUFFICIENT__REMAINS_BLOCKED",
+      "reason": "derivative routing signal is not direct native executable routing authority"
+    },
+    {
+      "rowset_id": "L02_EVS_ROUTING_UNRESOLVED_ALL",
+      "source_family": "EVS",
+      "carrier": "02_CURRENT_ROUTING_APPLICABILITY_LEDGER.csv",
+      "carrier_sha256": "b08b5e4b539cd7936ad24c04a45d8b8e672913f1656482ffc0d3dce5437a095c",
+      "carrier_commit": "cbaa97ac11c4e8d517b49663f2037f8ea0e04267",
+      "exact_filter": "source_family == 'EVS' AND authority45_disposition == 'STILL_UNRESOLVED__SOURCE_AUTHORITY_INSUFFICIENT'",
+      "row_count": 1433,
+      "post_review_partition": {
+        "documentary_positive_candidate_rows": 122,
+        "documentary_insufficient_rows": 1311
+      }
+    },
+    {
+      "rowset_id": "L02_EVS_BOUNDED_REVIEW_UNRESOLVED",
+      "source_family": "EVS",
+      "carrier_sha256": "b08b5e4b539cd7936ad24c04a45d8b8e672913f1656482ffc0d3dce5437a095c",
+      "exact_filter": "source_family == 'EVS' AND unresolved_blocker_class == 'SOURCE_ROUTING_UNRESOLVED_AFTER_BOUNDED_REVIEW'",
+      "row_count": 1263,
+      "documentary_disposition": "DOCUMENTARY_INSUFFICIENT__REMAINS_BLOCKED"
+    },
+    {
+      "rowset_id": "L02_EVS_NATIVE_CONDITION_CANDIDATE",
+      "source_family": "EVS",
+      "carrier_sha256": "b08b5e4b539cd7936ad24c04a45d8b8e672913f1656482ffc0d3dce5437a095c",
+      "exact_filter": "source_family == 'EVS' AND unresolved_blocker_class == 'NATIVE_CONDITIONAL_LACKS_EXECUTABLE_PREDICATE_AND_C03_3WAY_PROOF'",
+      "row_count": 122,
+      "documentary_disposition": "DOCUMENTARY_SUPPORT_POSITIVE__CANDIDATE_FOR_ADJUDICATION",
+      "remaining_blocker": "no executable predicate + no positive/negative/deterministic-replay 3-way proof"
+    },
+    {
+      "rowset_id": "L02_EVS_DERIVATIVE_ONLY_CONDITIONAL",
+      "source_family": "EVS",
+      "carrier_sha256": "b08b5e4b539cd7936ad24c04a45d8b8e672913f1656482ffc0d3dce5437a095c",
+      "exact_filter": "source_family == 'EVS' AND unresolved_blocker_class == 'DERIVATIVE_ONLY_CONDITIONAL_NOT_NATIVE_AUTHORITY'",
+      "row_count": 48,
+      "documentary_disposition": "DOCUMENTARY_INSUFFICIENT__REMAINS_BLOCKED"
+    }
+  ],
+  "conservation": {
+    "asian_unresolved": "639 + 21 = 660",
+    "evs_unresolved": "1263 + 122 + 48 = 1433",
+    "l02_total_current_routing_unresolved": "660 + 1433 = 2093",
+    "routing_documentary_positive_candidates": 122,
+    "routing_documentary_insufficient_remains_blocked": 1971,
+    "post_review_total": "122 + 1971 = 2093"
+  },
+  "note": "The separate 18-row EVS source-certification gap ledger is non-additive. It contains source-wave or semantic-gap records that may overlap this routing population and therefore is not summed into the 2,093 implementation-row denominator."
+}

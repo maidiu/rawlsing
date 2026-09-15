@@ -1,0 +1,55 @@
+{
+  "worker_id": "L02",
+  "historical_locators": [
+    {
+      "locator": "historical targeted itinerary: Asian Barometer W6",
+      "current_rebinding": "NO_CURRENT_REBINDING",
+      "current_status": "OUTSIDE_CURRENT_35_WAVE_ACTIVE_IMPLEMENTATION_SURFACE",
+      "documentary_disposition": "CURRENT_AUTHORITY_ALREADY_RESOLVES__NO_NEW_REVIEW_NEEDED",
+      "reason": "current governed Asian Barometer membership is W1/W4/W5 only; historical W6 recognition is not current production authorization"
+    },
+    {
+      "locator": "historical targeted itinerary omitted EVS 1999",
+      "current_rebinding": "POSITIVE_CURRENT_REBINDING",
+      "current_status": "CURRENT_35_WAVE_MEMBER",
+      "current_family": "EVS",
+      "current_wave": "1999",
+      "current_implementation_count": 513,
+      "documentary_disposition": "CURRENT_AUTHORITY_ALREADY_RESOLVES__NO_NEW_REVIEW_NEEDED",
+      "reason": "accepted current catalog positively includes EVS 1999 despite historical itinerary omission"
+    },
+    {
+      "locator": "Rawlsing_P2_Asian_Barometer_Response_Authority_Gaps_v2.csv",
+      "sha256": "74d97c96de2ffe55009c0e55584314b912ce4400b8a4446d81f45d590092e113",
+      "current_rebinding": "NOT_IMPORTED_WHOLESALE",
+      "reason": "historical gap rows are not current authority; current response/routing carriers control after exact rebinding"
+    },
+    {
+      "locator": "Rawlsing_P2_Asian_Barometer_Open_Limitations_v2.csv",
+      "sha256": "fd888ba51679c082d146c52617652d7f238136933ec8dff29635ff83811c145c",
+      "current_rebinding": "NOT_IMPORTED_WHOLESALE",
+      "reason": "historical limitation rows require current identity rebinding"
+    },
+    {
+      "locator": "Rawlsing_P2_EVS_Response_Authority_Gaps_v1.csv",
+      "sha256": "56dabdb988cf98f37be29dfe018f4c60f3a16cda029dda93f7087c8116ff15c5",
+      "current_rebinding": "NOT_IMPORTED_WHOLESALE",
+      "reason": "later current EVS response/routing and source-certification carriers control after exact rebinding"
+    },
+    {
+      "locator": "Rawlsing_P2_EVS_Open_Limitations_v1.csv",
+      "sha256": "d85bd0585dc4c90ef398ab835ec3e323e81a6ea70fa5226312fcab5b0999c1a5",
+      "current_rebinding": "NOT_IMPORTED_WHOLESALE",
+      "reason": "historical limitation rows require current identity rebinding"
+    },
+    {
+      "locator": "OBJ-EVS1999-PACKET",
+      "current_rebinding": "POSITIVE_CURRENT_SOURCE_PREP_LOCATOR",
+      "current_status": "ACCEPTED_PACKET__PARTIAL_SCOPE_BLOCKED",
+      "documentary_disposition": "DOCUMENTARY_CONFLICT__REQUIRES_ADJUDICATION",
+      "reason": "current family membership is settled, but malformed exact-release human-language strings still lack producer-authoritative repair/rendering authority"
+    }
+  ],
+  "unrebound_historical_semantics_promoted": 0,
+  "law": "HISTORICAL_LOCATOR_DOES_NOT_EQUAL_CURRENT_AUTHORITY"
+}

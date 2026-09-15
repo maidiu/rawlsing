@@ -1,0 +1,181 @@
+{
+  "worker_id": "L02",
+  "authority_effect": "NONE__HQ_ADJUDICATION_REQUIRED",
+  "routing_candidates": [
+    {
+      "candidate_id": "L02-EVS-ROUTING-NATIVE-CONDITION-122",
+      "source_family": "EVS",
+      "missing_authority_class": "routing_skip_risk_set_applicability",
+      "exact_current_rowset": {
+        "carrier_sha256": "b08b5e4b539cd7936ad24c04a45d8b8e672913f1656482ffc0d3dce5437a095c",
+        "filter": "source_family == 'EVS' AND unresolved_blocker_class == 'NATIVE_CONDITIONAL_LACKS_EXECUTABLE_PREDICATE_AND_C03_3WAY_PROOF'",
+        "row_count": 122
+      },
+      "documentary_disposition": "DOCUMENTARY_SUPPORT_POSITIVE__CANDIDATE_FOR_ADJUDICATION",
+      "support": "current source carrier preserves exact native conditional clauses/evidence references",
+      "still_missing": "structured executable predicate plus positive-case, negative-case and deterministic replay proof",
+      "forbidden_promotion": "native prose condition != executable routing authority"
+    }
+  ],
+  "evs_source_certification_candidates": [
+    {
+      "gap_id": "EVS1981_ID_SCOPE",
+      "missing_authority_class": "respondent_entity_scope",
+      "scope": "EVS 1981 id_cocas/caseno",
+      "documentary_disposition": "DOCUMENTARY_INSUFFICIENT__REMAINS_BLOCKED",
+      "support": "variables physically exist; row ordinal remains lawful replay identity",
+      "still_missing": "injectivity, intended identity scope, cross-country/wave stability"
+    },
+    {
+      "gap_id": "EVS1990_ID_SCOPE",
+      "missing_authority_class": "respondent_entity_scope",
+      "scope": "EVS 1990 id_cocas/caseno",
+      "documentary_disposition": "DOCUMENTARY_INSUFFICIENT__REMAINS_BLOCKED",
+      "support": "variables physically exist; row ordinal remains lawful replay identity",
+      "still_missing": "injectivity, intended identity scope, cross-country/wave stability"
+    },
+    {
+      "gap_id": "EVS1999_ID_SCOPE",
+      "missing_authority_class": "respondent_entity_scope",
+      "scope": "EVS 1999 id_cocas/caseno",
+      "exact_current_examples": [
+        {"source_variable_code": "id_cocas", "question_implementation_id": "question_impl.phase0.0d99738b8f03d3f1ef2c"},
+        {"source_variable_code": "caseno", "question_implementation_id": "question_impl.phase0.8c6ddae7e97ca46b6334"}
+      ],
+      "documentary_disposition": "DOCUMENTARY_INSUFFICIENT__REMAINS_BLOCKED",
+      "still_missing": "injectivity, intended identity scope, cross-country/wave stability"
+    },
+    {
+      "gap_id": "EVS2008_ID_SCOPE",
+      "missing_authority_class": "respondent_entity_scope",
+      "scope": "EVS 2008 id_cocas/caseno",
+      "documentary_disposition": "DOCUMENTARY_INSUFFICIENT__REMAINS_BLOCKED",
+      "still_missing": "injectivity, intended identity scope, cross-country/wave stability"
+    },
+    {
+      "gap_id": "EVS2017_ID_SCOPE",
+      "missing_authority_class": "respondent_entity_scope",
+      "scope": "EVS 2017 id_cocas/caseno",
+      "exact_current_example": {"source_variable_code": "id_cocas", "question_implementation_id": "question_impl.phase0.da12f03d23ff1541c0b2"},
+      "documentary_disposition": "DOCUMENTARY_INSUFFICIENT__REMAINS_BLOCKED",
+      "still_missing": "injectivity, intended identity scope, cross-country/wave stability"
+    },
+    {
+      "gap_id": "EVS1981_WEIGHT_SEM",
+      "missing_authority_class": "population_design_weight_meaning",
+      "scope": "all EVS 1981 source-native weight/design candidates",
+      "documentary_disposition": "DOCUMENTARY_INSUFFICIENT__REMAINS_BLOCKED",
+      "still_missing": "which weight/normalization/estimand applies to a particular downstream estimand"
+    },
+    {
+      "gap_id": "EVS1990_WEIGHT_SEM",
+      "missing_authority_class": "population_design_weight_meaning",
+      "scope": "all EVS 1990 source-native weight/design candidates",
+      "documentary_disposition": "DOCUMENTARY_INSUFFICIENT__REMAINS_BLOCKED"
+    },
+    {
+      "gap_id": "EVS1999_WEIGHT_SEM",
+      "missing_authority_class": "population_design_weight_meaning",
+      "scope": "all EVS 1999 source-native weight/design candidates",
+      "documentary_disposition": "DOCUMENTARY_INSUFFICIENT__REMAINS_BLOCKED"
+    },
+    {
+      "gap_id": "EVS2008_WEIGHT_SEM",
+      "missing_authority_class": "population_design_weight_meaning",
+      "scope": "all EVS 2008 source-native weight/design candidates",
+      "documentary_disposition": "DOCUMENTARY_INSUFFICIENT__REMAINS_BLOCKED"
+    },
+    {
+      "gap_id": "EVS2017_WEIGHT_SEM",
+      "missing_authority_class": "population_design_weight_meaning",
+      "scope": "all EVS 2017 source-native weight/design candidates",
+      "documentary_disposition": "DOCUMENTARY_INSUFFICIENT__REMAINS_BLOCKED"
+    },
+    {
+      "gap_id": "EVS81_V308_CODE3",
+      "missing_authority_class": "response_category_meaning",
+      "source_variable_code": "v308",
+      "question_implementation_id": "question_impl.phase0.2f401210593f237d3872",
+      "documentary_disposition": "DOCUMENTARY_SUPPORT_NEGATIVE_OR_NONAPPLICABLE__CANDIDATE_FOR_ADJUDICATION",
+      "support": "SPSS source declaration marks code 3 as user-missing",
+      "still_missing": "producer-authoritative semantic reason for missing code 3",
+      "negative_candidate": "code 3 must not be silently treated as an ordinary substantive response"
+    },
+    {
+      "gap_id": "EVS99_UTF8_NONCONFORMING_TEXT",
+      "missing_authority_class": "questionnaire_codebook_item_meaning_identity",
+      "scope": "EVS 1999 variable/value labels, notes and malformed human-language strings",
+      "documentary_disposition": "DOCUMENTARY_CONFLICT__REQUIRES_ADJUDICATION",
+      "support": "source declares UTF-8 / codepage 65001 while frozen bytes include non-UTF8 single-byte accented sequences alongside valid UTF-8-shaped sequences",
+      "still_missing": "producer-authoritative exact-release text export/codebook/DDI and field-by-field repair/alignment map"
+    },
+    {
+      "gap_id": "EVS99_ROUTING",
+      "missing_authority_class": "routing_skip_risk_set_applicability",
+      "scope": "v49_filt/v50_filt/v51_filt and filter flags",
+      "exact_current_implementations": [
+        {"source_variable_code": "v49_filt", "question_implementation_id": "question_impl.phase0.168a68de85b8c9b79bee"},
+        {"source_variable_code": "v50_filt", "question_implementation_id": "question_impl.phase0.82c16bb1ae92f4ae42fc"},
+        {"source_variable_code": "v51_filt", "question_implementation_id": "question_impl.phase0.521a870b2be0b5931903"}
+      ],
+      "documentary_disposition": "DOCUMENTARY_INSUFFICIENT__REMAINS_BLOCKED",
+      "support": "source contains filter/reconstruction clues",
+      "still_missing": "exact eligibility/risk-set semantics and reconstruction provenance tied to exact variables"
+    },
+    {
+      "gap_id": "EVS08_UTF8_NONCONFORMING_TEXT",
+      "missing_authority_class": "questionnaire_codebook_item_meaning_identity",
+      "scope": "EVS 2008 variable/value labels, notes, MR labels and malformed human-language strings",
+      "documentary_disposition": "DOCUMENTARY_CONFLICT__REQUIRES_ADJUDICATION",
+      "still_missing": "producer-authoritative exact-release text repair/alignment map"
+    },
+    {
+      "gap_id": "EVS08_MR_LABELS",
+      "missing_authority_class": "repeated_multiple_ranked_matrix_topology",
+      "scope": "13 EVS 2008 MR set labels",
+      "documentary_disposition": "DOCUMENTARY_INSUFFICIENT__REMAINS_BLOCKED",
+      "support": "physical set names/type D/counted value/membership survive independently of label semantics",
+      "still_missing": "official/source-native text alignment for MR label assertions"
+    },
+    {
+      "gap_id": "EVS08_F201_RELATION",
+      "missing_authority_class": "routing_topology_relation",
+      "source_variable_code": "f201",
+      "question_implementation_id": "question_impl.phase0.a0f3f2167d83ab0592be",
+      "documentary_disposition": "DOCUMENTARY_CONFLICT__REQUIRES_ADJUDICATION",
+      "support": "source ordinals/compatibility-decoded labels expose disagreement in question references/relationship wording",
+      "still_missing": "exact questionnaire/codebook or producer syntax tying f201 to v201/v202"
+    },
+    {
+      "gap_id": "EVS08_V372_SENTINEL",
+      "missing_authority_class": "response_category_meaning",
+      "source_variable_code": "v372",
+      "question_implementation_id": "question_impl.phase0.cbc77af4dc175243e0b6",
+      "documentary_disposition": "DOCUMENTARY_SUPPORT_NEGATIVE_OR_NONAPPLICABLE__CANDIDATE_FOR_ADJUDICATION",
+      "support": "source declaration physically marks exactly 1582-10-13 as user-missing",
+      "still_missing": "producer-authoritative semantic reason for sentinel",
+      "negative_candidate": "sentinel must not be treated as an ordinary historical date"
+    },
+    {
+      "gap_id": "EVS17_MATRIX_ROUTING",
+      "missing_authority_class": "routing_skip_risk_set_applicability_and_matrix_topology",
+      "scope": "mm_select_sample; mm_*; mr_*; fduplicate; matrix/follow-up variables",
+      "exact_current_examples": [
+        {"source_variable_code": "mm_select_sample", "question_implementation_id": "question_impl.phase0.5d900d2d01513d32360a"},
+        {"source_variable_code": "fduplicate", "question_implementation_id": "question_impl.phase0.70276f719d6635fec2a6"}
+      ],
+      "documentary_disposition": "DOCUMENTARY_SUPPORT_POSITIVE__CANDIDATE_FOR_ADJUDICATION",
+      "support": "official EVS 2017 documentation positively describes mixed-mode/matrix design and weighting",
+      "still_missing": "exact variable-to-document mapping sufficient to authorize eligibility/assignment/follow-up/duplicate semantics",
+      "forbidden_promotion": "design documentation != executable variable-level routing authority"
+    }
+  ],
+  "explicitly_not_minted": [
+    "cross_source_comparability",
+    "Rawlsing_semantic_role",
+    "structural_admission",
+    "learned_product",
+    "mechanism",
+    "person_state"
+  ]
+}

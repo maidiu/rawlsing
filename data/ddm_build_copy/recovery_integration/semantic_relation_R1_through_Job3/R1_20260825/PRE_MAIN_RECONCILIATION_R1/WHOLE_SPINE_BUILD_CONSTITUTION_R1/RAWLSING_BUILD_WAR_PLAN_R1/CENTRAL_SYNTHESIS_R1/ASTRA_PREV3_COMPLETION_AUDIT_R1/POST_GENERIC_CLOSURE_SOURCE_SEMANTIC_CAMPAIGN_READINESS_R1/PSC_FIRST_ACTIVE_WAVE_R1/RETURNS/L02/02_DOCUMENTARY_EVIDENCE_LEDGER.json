@@ -1,0 +1,97 @@
+{
+  "worker_id": "L02",
+  "epistemic_ceiling": "DOCUMENTARY_SOURCE_EXCAVATION_AND_ADJUDICATION_CANDIDATE_PREPARATION_ONLY__NO_AUTHORITY_MINTING",
+  "evidence": [
+    {
+      "evidence_id": "E01_CURRENT_ACTIVE_CATALOG",
+      "class": "CURRENT_GOVERNED_CATALOG",
+      "artifact": "LAYER1_GOVERNED_35WAVE_CATALOGS.zip",
+      "sha256": "b569c3677514e627bccb6f920c7aefd7c1d7bb452eb906ddd8913a69d27dac7d",
+      "proves": "current 35-wave / 9-family active-implementation catalog; 18,276 current implementations",
+      "ceiling": "identity/membership only"
+    },
+    {
+      "evidence_id": "E02_ASIAN_CURRENT_DEEP_CATALOG",
+      "class": "CURRENT_GOVERNED_FAMILY_CATALOG",
+      "artifact": "Rawlsing_P2_Asian_Barometer_Deep_Question_Node_Catalog_v2.csv",
+      "sha256": "b27afc4e1ba8bd5707db61388b592525467657d522e782a07c31d04d6b4430cd",
+      "proves": "Asian Barometer W1/W4/W5 current question identities; 814 implementations",
+      "ceiling": "current identity/question authority carried by catalog; non-governing discovery annotations are not promoted"
+    },
+    {
+      "evidence_id": "E03_EVS_CURRENT_DEEP_CATALOG",
+      "class": "CURRENT_GOVERNED_FAMILY_CATALOG",
+      "artifact": "Rawlsing_P2_EVS_Deep_Question_Node_Catalog_v1.csv",
+      "sha256": "61c6f77d266e59f5218babecbd07636619ff90d04b4ffc837357204225729d3b",
+      "proves": "EVS 1981/1990/1999/2008/2017 current question identities; 2,224 implementations",
+      "ceiling": "current identity/question authority carried by catalog; non-governing discovery annotations are not promoted"
+    },
+    {
+      "evidence_id": "E04_ASIAN_CURRENT_ROUTING_COURT",
+      "class": "CURRENT_GOVERNED_NEGATIVE_AND_ROUTING_AUTHORITY",
+      "artifact": "C04_FULL_CURRENT_ROUTING_LEDGER.csv",
+      "sha256": "c3148341c5a6315c4b060f665595c93c4aa935dfc171aa5faf4c14628f914f90",
+      "proves": "exact current Asian routing dispositions; 660 unresolved rows = 639 no exact executable/general-universe proof + 21 derivative routing signals not executable",
+      "ceiling": "preserve current dispositions; derivative evidence is not promoted to executable routing authority"
+    },
+    {
+      "evidence_id": "E05_EVS_CURRENT_ROUTING_COURT",
+      "class": "CURRENT_GOVERNED_NEGATIVE_AND_ROUTING_AUTHORITY",
+      "artifact": "02_CURRENT_ROUTING_APPLICABILITY_LEDGER.csv",
+      "git_commit": "cbaa97ac11c4e8d517b49663f2037f8ea0e04267",
+      "rows_wvs_plus_evs": 3443,
+      "sha256": "b08b5e4b539cd7936ad24c04a45d8b8e672913f1656482ffc0d3dce5437a095c",
+      "scope_dictionary_sha256": "957cee048fbdefe7d276b15d31a86074b26d3b1bb695d48843149fa3612c2eeb",
+      "proves": "exact current EVS routing dispositions; 1,433 unresolved = 1,263 bounded-review unresolved + 122 native conditional without executable predicate/3-way proof + 48 derivative-only conditional",
+      "ceiling": "native prose condition evidence may become an adjudication candidate but is not an executable predicate"
+    },
+    {
+      "evidence_id": "E06_EVS_SOURCE_CERTIFICATION_GAPS",
+      "class": "ACCEPTED_SOURCE_PREP_DOCUMENTARY_AUTHORITY",
+      "artifact": "SOURCE_CERT_PREP71/RETURNS/R04/AUTHORITY_GAPS.csv",
+      "git_commit": "3bc063aa7bf461caf5baf581ff32a434ba9e09a3",
+      "git_blob_sha": "f57046ea4e87f629e6ae9dc6c7eee4fa426f53fa",
+      "proves": "18 explicit EVS source-level documentary gaps: respondent identity, weight/estimand, missing-code semantics, malformed text, routing, MR label semantics, flag relation, sentinel reason, mixed-mode/matrix routing",
+      "ceiling": "physical/source-native facts do not authorize intended semantics absent producer documentation"
+    },
+    {
+      "evidence_id": "E07_EVS1999_PACKET_CENSUS",
+      "class": "AUTHORITY_CENSUS_LOCATOR",
+      "artifact": "AUTHORITY_OBJECT_CENSUS.csv / OBJ-EVS1999-PACKET",
+      "proves": "EVS1999 source-certification packet is accepted source-prep authority but remains partially blocked on producer-authoritative repair/rendering of malformed human-language strings",
+      "ceiling": "no compatibility-decoding repair becomes semantic authority"
+    },
+    {
+      "evidence_id": "E08_ASIAN_HISTORICAL_PACKAGE",
+      "class": "HISTORICAL_DOCUMENTARY_LOCATORS_ONLY",
+      "artifacts": [
+        {"name": "Rawlsing_P2_Asian_Barometer_Routing_and_Implementation_Variant_Ledger_v2.csv", "sha256": "c7862689728132fb024df0264115d8025f88ed261668a1b3e2cf447c74a1d4a3"},
+        {"name": "Rawlsing_P2_Asian_Barometer_Response_Authority_Gaps_v2.csv", "sha256": "74d97c96de2ffe55009c0e55584314b912ce4400b8a4446d81f45d590092e113"},
+        {"name": "Rawlsing_P2_Asian_Barometer_Open_Limitations_v2.csv", "sha256": "fd888ba51679c082d146c52617652d7f238136933ec8dff29635ff83811c145c"},
+        {"name": "asian_barometer_response_option_authority.csv", "sha256": "639b665567d2dede8321725adb8d6d55fbd96a67b8c60870fc5b2a12f77a6612"}
+      ],
+      "proves": "historical documentary/review capital exists",
+      "ceiling": "no historical row is treated current without exact rebinding to current catalog/current court"
+    },
+    {
+      "evidence_id": "E09_EVS_HISTORICAL_PACKAGE",
+      "class": "HISTORICAL_DOCUMENTARY_LOCATORS_ONLY",
+      "artifacts": [
+        {"name": "Rawlsing_P2_EVS_Response_Authority_Gaps_v1.csv", "sha256": "56dabdb988cf98f37be29dfe018f4c60f3a16cda029dda93f7087c8116ff15c5"},
+        {"name": "Rawlsing_P2_EVS_Open_Limitations_v1.csv", "sha256": "d85bd0585dc4c90ef398ab835ec3e323e81a6ea70fa5226312fcab5b0999c1a5"},
+        {"name": "Rawlsing_P2_EVS_Accepted_Longitudinal_Continuity_Edges_v1.csv", "sha256": "e0a0b368a071aa5bbe2fda7eaf8e9c701d084b245a1c8b95667ff6fbced8834c"},
+        {"name": "evs_response_option_authority.csv", "sha256": "e34520a2b4932d184d9616e7222f233732f8ebeed1ee9da06a79e093da4bc170"}
+      ],
+      "proves": "historical documentary/review capital exists",
+      "ceiling": "no historical row is treated current without exact rebinding to current catalog/current court"
+    }
+  ],
+  "non_inference_laws_obeyed": [
+    "QUESTION_TEXT_ALONE_IS_NOT_AUTHORITY",
+    "VARIABLE_NAME_OR_LABEL_IS_NOT_AUTHORITY",
+    "MISSINGNESS_OR_DISTRIBUTION_IS_NOT_ROUTING_AUTHORITY",
+    "NEIGHBORING_WAVE_ANALOGY_IS_NOT_AUTHORITY",
+    "SOURCE_FAMILY_RESEMBLANCE_IS_NOT_EQUIVALENCE_AUTHORITY",
+    "DOCUMENTARY_SUPPORT_CANDIDATE_IS_NOT_GOVERNED_RAWLSING_MEANING"
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "worker_id": "L02",
+  "terminal": "L02_PASS__LIBRARY_DOCUMENTARY_REVIEW_FAMILY_ORDINALS_3_4_COMPLETE__HQ_ADJUDICATION_REQUIRED",
+  "assigned_current_implementation_count": 3038,
+  "assigned_family_counts": {
+    "Asian Barometer": 814,
+    "EVS": 2224
+  },
+  "current_routing_review": {
+    "exact_unresolved_rows": 2093,
+    "Asian Barometer": {
+      "unresolved": 660,
+      "DOCUMENTARY_SUPPORT_POSITIVE__CANDIDATE_FOR_ADJUDICATION": 0,
+      "DOCUMENTARY_INSUFFICIENT__REMAINS_BLOCKED": 660,
+      "blocker_classes": {
+        "NO_EXACT_EXECUTABLE_ROUTING_OR_AFFIRMATIVE_GENERAL_UNIVERSE_PROVEN": 639,
+        "DERIVATIVE_ROUTING_SIGNAL_NOT_EXECUTABLE_AT_CURRENT_COURT": 21
+      }
+    },
+    "EVS": {
+      "unresolved": 1433,
+      "DOCUMENTARY_SUPPORT_POSITIVE__CANDIDATE_FOR_ADJUDICATION": 122,
+      "DOCUMENTARY_INSUFFICIENT__REMAINS_BLOCKED": 1311,
+      "blocker_classes": {
+        "SOURCE_ROUTING_UNRESOLVED_AFTER_BOUNDED_REVIEW": 1263,
+        "NATIVE_CONDITIONAL_LACKS_EXECUTABLE_PREDICATE_AND_C03_3WAY_PROOF": 122,
+        "DERIVATIVE_ONLY_CONDITIONAL_NOT_NATIVE_AUTHORITY": 48
+      }
+    },
+    "all_families_post_review": {
+      "DOCUMENTARY_SUPPORT_POSITIVE__CANDIDATE_FOR_ADJUDICATION": 122,
+      "DOCUMENTARY_INSUFFICIENT__REMAINS_BLOCKED": 1971
+    }
+  },
+  "evs_source_certification_gap_records_nonadditive": {
+    "total_records": 18,
+    "by_missing_authority_class": {
+      "respondent_entity_scope": 5,
+      "population_design_weight_meaning": 5,
+      "response_category_meaning": 2,
+      "malformed_declared_encoding_text": 2,
+      "routing_skip_risk_set_applicability": 1,
+      "mr_label_text_or_topology_semantics": 1,
+      "flag_relation_authority": 1,
+      "mixed_mode_matrix_routing": 1
+    },
+    "by_documentary_disposition": {
+      "DOCUMENTARY_SUPPORT_POSITIVE__CANDIDATE_FOR_ADJUDICATION": 1,
+      "DOCUMENTARY_SUPPORT_NEGATIVE_OR_NONAPPLICABLE__CANDIDATE_FOR_ADJUDICATION": 2,
+      "DOCUMENTARY_CONFLICT__REQUIRES_ADJUDICATION": 3,
+      "DOCUMENTARY_INSUFFICIENT__REMAINS_BLOCKED": 12
+    }
+  },
+  "historical_locator_results": {
+    "Asian Barometer W6 current_rebinding": 0,
+    "EVS 1999 current_rebinding_implementations": 513,
+    "historical_gap_files_imported_wholesale": 0
+  },
+  "validation_receipts": [
+    {
+      "identity": "C04_FULL_CURRENT_ROUTING_LEDGER.csv",
+      "sha256": "c3148341c5a6315c4b060f665595c93c4aa935dfc171aa5faf4c14628f914f90",
+      "use": "Asian exact current routing row identity and conservation"
+    },
+    {
+      "identity": "C03_WVS_EVS_FULL_CURRENT_ROUTING_COURT_R1_COMPLETE",
+      "commit": "cbaa97ac11c4e8d517b49663f2037f8ea0e04267",
+      "ledger_sha256": "b08b5e4b539cd7936ad24c04a45d8b8e672913f1656482ffc0d3dce5437a095c",
+      "scope_dictionary_sha256": "957cee048fbdefe7d276b15d31a86074b26d3b1bb695d48843149fa3612c2eeb",
+      "use": "EVS exact current routing row identity and conservation"
+    },
+    {
+      "identity": "SOURCE_CERT_PREP71_R04_EVS",
+      "commit": "3bc063aa7bf461caf5baf581ff32a434ba9e09a3",
+      "authority_gaps_git_blob_sha": "f57046ea4e87f629e6ae9dc6c7eee4fa426f53fa",
+      "use": "EVS source-level documentary gap preservation"
+    }
+  ],
+  "local_execution_tests": {
+    "applicable": false,
+    "reason": "documentary review commission; no production code or executable semantics authorized",
+    "accounting_checks": [
+      "814 + 2224 == 3038",
+      "639 + 21 == 660",
+      "1263 + 122 + 48 == 1433",
+      "660 + 1433 == 2093",
+      "122 + 1971 == 2093",
+      "1 + 2 + 3 + 12 == 18"
+    ]
+  },
+  "authority_minted": false,
+  "person_state_produced": false,
+  "obl063_quarantine_preserved": true,
+  "prev3_objective_world_boundary_preserved": true
+}

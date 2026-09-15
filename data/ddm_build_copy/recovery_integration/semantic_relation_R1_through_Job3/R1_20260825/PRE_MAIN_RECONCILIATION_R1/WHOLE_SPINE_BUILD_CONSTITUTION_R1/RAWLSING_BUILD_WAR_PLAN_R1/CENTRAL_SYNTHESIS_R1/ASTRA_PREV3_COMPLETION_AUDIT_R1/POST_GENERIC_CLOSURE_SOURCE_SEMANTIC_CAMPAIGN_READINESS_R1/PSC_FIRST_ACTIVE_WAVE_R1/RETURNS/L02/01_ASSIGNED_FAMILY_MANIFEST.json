@@ -1,0 +1,50 @@
+{
+  "worker_id": "L02",
+  "grain": "PREV3_PSC03_LIBRARY_DOCUMENTARY_REVIEW_CANONICAL_SOURCE_FAMILY_ORDINALS_3_4_R1_ONLY",
+  "commission_tip": "8037fee5a28afdfce2784df77ddebd3884836059",
+  "canonical_hq_handoff_commit": "aab3a5b794d324512a1fe9d5e907b7936f746afc",
+  "active_catalog": {
+    "bundle_name": "LAYER1_GOVERNED_35WAVE_CATALOGS.zip",
+    "bundle_sha256": "b569c3677514e627bccb6f920c7aefd7c1d7bb452eb906ddd8913a69d27dac7d",
+    "active_implementation_count": 18276,
+    "family_count": 9,
+    "wave_count": 35,
+    "governed_catalog_json": "Rawlsing_P2_Phase0_Governed_Question_Node_Catalog_v1.json",
+    "governed_catalog_json_sha256": "2a13ca0551f812e71ad254ab65e3f1ccf99ccfa789eeac4ade708cdbfaa568b8",
+    "accepted_sorted_current_question_id_set_sha256": "bc41536c70374a3b99f3aa81c218a68c5776470c26bcafbe942391a3a3a94693"
+  },
+  "canonical_family_ids_sorted_ascending": [
+    {"ordinal": 1, "family_id": "Afrobarometer"},
+    {"ordinal": 2, "family_id": "Arab Barometer"},
+    {"ordinal": 3, "family_id": "Asian Barometer"},
+    {"ordinal": 4, "family_id": "EVS"},
+    {"ordinal": 5, "family_id": "GSS"},
+    {"ordinal": 6, "family_id": "Latinobarómetro"},
+    {"ordinal": 7, "family_id": "LiTS"},
+    {"ordinal": 8, "family_id": "South Asia"},
+    {"ordinal": 9, "family_id": "WVS"}
+  ],
+  "assigned_families": [
+    {
+      "ordinal": 3,
+      "family_id": "Asian Barometer",
+      "current_waves": ["W1", "W4", "W5"],
+      "wave_counts": {"W1": 217, "W4": 289, "W5": 308},
+      "current_implementation_count": 814,
+      "current_deep_catalog": "Rawlsing_P2_Asian_Barometer_Deep_Question_Node_Catalog_v2.csv",
+      "current_deep_catalog_sha256": "b27afc4e1ba8bd5707db61388b592525467657d522e782a07c31d04d6b4430cd"
+    },
+    {
+      "ordinal": 4,
+      "family_id": "EVS",
+      "current_waves": ["1981", "1990", "1999", "2008", "2017"],
+      "wave_counts": {"1981": 370, "1990": 390, "1999": 513, "2008": 477, "2017": 474},
+      "current_implementation_count": 2224,
+      "current_deep_catalog": "Rawlsing_P2_EVS_Deep_Question_Node_Catalog_v1.csv",
+      "current_deep_catalog_sha256": "61c6f77d266e59f5218babecbd07636619ff90d04b4ffc837357204225729d3b"
+    }
+  ],
+  "assigned_current_implementation_count": 3038,
+  "scope_resolution_terminal": "EXACTLY_NINE_CURRENT_FAMILIES_POSITIVELY_PROVED__ORDINALS_3_4_BOUND_AS_ASIAN_BAROMETER_AND_EVS",
+  "sibling_output_consumed_as_authority": false
+}
