@@ -1,0 +1,218 @@
+{
+  "accepted_inputs": {
+    "affirmative_value_mode_basis": "THE_CONCRETE_BODY_IS_A_QUALITATIVE_CONJUNCTIVE_STRUCTURAL_DERIVATION_AND_CONTAINS_NO_NUMERIC_COEFFICIENT_PROBABILITY_THRESHOLD_OR_CALIBRATED_VALUE",
+    "d05_return": "c855a893c5c24e44c555e005808bc734a3c08c9c",
+    "value_mode": "NONNUMERIC",
+    "value_mode_ref": {
+      "content_hash": "29a9072b49314529428e696c81e89eecc065b39799eb7d5755d98f0215d131d4",
+      "kind": "SDTF_R4_RULE_VALUE_MODE_ADJUDICATION",
+      "object_id": "M10-M01:NONNUMERIC:R1"
+    }
+  },
+  "adjudication_identity_material": {
+    "accepted_value_mode_ref": {
+      "content_hash": "29a9072b49314529428e696c81e89eecc065b39799eb7d5755d98f0215d131d4",
+      "kind": "SDTF_R4_RULE_VALUE_MODE_ADJUDICATION",
+      "object_id": "M10-M01:NONNUMERIC:R1"
+    },
+    "authority_effect": "CALIBRATION_NOT_APPLICABLE_CANDIDATE_DISPOSITION_ONLY__HQ_ADOPTION_REQUIRED__NO_RULE_CURRENTNESS",
+    "basis_ref": {
+      "content_hash": "0a72c9453ad55f1934f1e9953c3557a56893083ec32efb8e9a7fc03d0bb6244e",
+      "kind": "SDTF_M10_M01_CALIBRATION_AUTHORITY_NA_BASIS",
+      "object_id": "M10-M01:CALIBRATION:NA_BASIS:D09_R1"
+    },
+    "binding": {
+      "authority_ref": null,
+      "current_selection_evidence_refs": [],
+      "disposition": "NOT_APPLICABLE",
+      "role": "CALIBRATION",
+      "scope_or_na_ref": {
+        "content_hash": "0a72c9453ad55f1934f1e9953c3557a56893083ec32efb8e9a7fc03d0bb6244e",
+        "kind": "SDTF_M10_M01_CALIBRATION_AUTHORITY_NA_BASIS",
+        "object_id": "M10-M01:CALIBRATION:NA_BASIS:D09_R1"
+      }
+    },
+    "candidate_id": "M10-M01",
+    "s03_contract_ref": {
+      "content_hash": "abc44b2b4ff04e164b5188e5929b0c10ca1b6e582b28207bb7e464ace698a83d",
+      "kind": "SDTF_R4_GENERIC_BATCH_ENVELOPE_CONTRACT",
+      "object_id": "SDTF_R4_GENERIC_BATCH_RULE_ENVELOPE_INTAKE_AND_CONSTRUCTOR_CONTRACT_R1@1.0.0"
+    },
+    "s03_determinant_id": "GBE-R4-024",
+    "schema": "ASTRA_D09_M10_M01_CALIBRATION_DISPOSITION_IDENTITY_R1"
+  },
+  "adjudication_ref": {
+    "content_hash": "321827ab4fe01b91204cb40c10e13688cd4100229423f3078ee0d836c3fce8cc",
+    "kind": "ASTRA_D09_M10_M01_CALIBRATION_DISPOSITION",
+    "object_id": "M10-M01:PKG-C:D09_R1"
+  },
+  "basis_material": {
+    "candidate_id": "M10-M01",
+    "contract_law": {
+      "conditional_rule": "NUMERIC => CALIBRATION BOUND; NONNUMERIC => CALIBRATION NOT_APPLICABLE with exact N/A basis.",
+      "na_binding_requirements": [
+        "scope_or_na_ref = exact N/A-basis ExactRef",
+        "authority_ref = null",
+        "current_selection_evidence_refs = []"
+      ],
+      "r4_contract_blob": "c94997f5c7f2bbee9cd99c570554fd48c0f47556",
+      "s03_contract_ref": {
+        "content_hash": "abc44b2b4ff04e164b5188e5929b0c10ca1b6e582b28207bb7e464ace698a83d",
+        "kind": "SDTF_R4_GENERIC_BATCH_ENVELOPE_CONTRACT",
+        "object_id": "SDTF_R4_GENERIC_BATCH_RULE_ENVELOPE_INTAKE_AND_CONSTRUCTOR_CONTRACT_R1@1.0.0"
+      },
+      "s03_determinant_id": "GBE-R4-024"
+    },
+    "disposition": "NOT_APPLICABLE",
+    "grain": "PSC06_M10_M01_EXPLICIT_VALUE_MODE_CALIBRATION_DISPOSITION_ONLY",
+    "negative_ceilings": [
+      "M10_M01_ONLY",
+      "CALIBRATION_ROLE_ONLY",
+      "NONNUMERIC_TRIGGER_ONLY",
+      "NOT_GLOBAL_CALIBRATION_NA",
+      "NO_NUMERIC_INFERENCE",
+      "NO_RULE_BODY_MUTATION",
+      "NO_RULE_CURRENTNESS",
+      "NO_ACTOR_FACT_APPLICATION_REALIZATION_OR_TOPOLOGY",
+      "NO_V3_PERSON_STATE_OR_OBL063"
+    ],
+    "positive_basis": [
+      "Calibration authority is not applicable because the accepted M10-M01 rule body is affirmatively NONNUMERIC; it contains no coefficient, probability, threshold, calibrated numeric value, or numeric parameter whose value requires calibration.",
+      "The disposition follows the frozen R4/S03 conditional law after accepted value_mode = NONNUMERIC; it is not inferred from absent numeric observations, absent calibration evidence, or missing data."
+    ],
+    "provenance": {
+      "accepted_d05_return": "c855a893c5c24e44c555e005808bc734a3c08c9c",
+      "commission_tip": "1826ab473e839c3bb6f1cdcca45f8d178f8a9124",
+      "current_handoff_commit": "e2778f178cfbb47fdb59ec367a666efc95b9d1a5",
+      "current_hq_checkpoint": "20260915T1600-0400",
+      "hq_fanin": "05167b4cd30dc751cce797a16baa397bc7d0457d",
+      "r4_contract_blob": "c94997f5c7f2bbee9cd99c570554fd48c0f47556",
+      "s03_contract_blob": "0a2eb3da6d755f12197348a71cfa7d1dd97d7b4d"
+    },
+    "role": "CALIBRATION",
+    "schema": "ASTRA_D09_M10_M01_CALIBRATION_NA_BASIS_R1",
+    "trigger": {
+      "accepted_d05_return": "c855a893c5c24e44c555e005808bc734a3c08c9c",
+      "affirmative_value_mode_basis": "THE_CONCRETE_BODY_IS_A_QUALITATIVE_CONJUNCTIVE_STRUCTURAL_DERIVATION_AND_CONTAINS_NO_NUMERIC_COEFFICIENT_PROBABILITY_THRESHOLD_OR_CALIBRATED_VALUE",
+      "value_mode": "NONNUMERIC",
+      "value_mode_ref": {
+        "content_hash": "29a9072b49314529428e696c81e89eecc065b39799eb7d5755d98f0215d131d4",
+        "kind": "SDTF_R4_RULE_VALUE_MODE_ADJUDICATION",
+        "object_id": "M10-M01:NONNUMERIC:R1"
+      }
+    }
+  },
+  "basis_ref": {
+    "content_hash": "0a72c9453ad55f1934f1e9953c3557a56893083ec32efb8e9a7fc03d0bb6244e",
+    "kind": "SDTF_M10_M01_CALIBRATION_AUTHORITY_NA_BASIS",
+    "object_id": "M10-M01:CALIBRATION:NA_BASIS:D09_R1"
+  },
+  "binding": {
+    "authority_ref": null,
+    "current_selection_evidence_refs": [],
+    "disposition": "NOT_APPLICABLE",
+    "role": "CALIBRATION",
+    "scope_or_na_ref": {
+      "content_hash": "0a72c9453ad55f1934f1e9953c3557a56893083ec32efb8e9a7fc03d0bb6244e",
+      "kind": "SDTF_M10_M01_CALIBRATION_AUTHORITY_NA_BASIS",
+      "object_id": "M10-M01:CALIBRATION:NA_BASIS:D09_R1"
+    }
+  },
+  "candidate": {
+    "candidate_id": "M10-M01",
+    "candidate_name": "PROPERTY SEPARATION / WAGE DEPENDENCY"
+  },
+  "contracts": {
+    "conditional_law": "NUMERIC => CALIBRATION BOUND; NONNUMERIC => CALIBRATION NOT_APPLICABLE with exact N/A basis.",
+    "r4_contract_blob": "c94997f5c7f2bbee9cd99c570554fd48c0f47556",
+    "s03_contract_blob": "0a2eb3da6d755f12197348a71cfa7d1dd97d7b4d",
+    "s03_contract_ref": {
+      "content_hash": "abc44b2b4ff04e164b5188e5929b0c10ca1b6e582b28207bb7e464ace698a83d",
+      "kind": "SDTF_R4_GENERIC_BATCH_ENVELOPE_CONTRACT",
+      "object_id": "SDTF_R4_GENERIC_BATCH_RULE_ENVELOPE_INTAKE_AND_CONSTRUCTOR_CONTRACT_R1@1.0.0"
+    },
+    "s03_row": {
+      "determinant_id": "GBE-R4-024",
+      "field_path": "calibration_authority",
+      "na_permitted_conditionally": true,
+      "ordinal": 24,
+      "package": "PKG-C_AUXILIARY_AUTHORITY_DISPOSITIONS",
+      "requirement_mode": "conditional",
+      "value_type": "AuthorityCeilingBinding"
+    }
+  },
+  "laws": [
+    "MISSING_CALIBRATION_EVIDENCE != CALIBRATION_NOT_APPLICABLE",
+    "ABSENT_NUMERIC_DATA != NONNUMERIC",
+    "ACCEPTED_NONNUMERIC_VALUE_MODE + FROZEN_R4_S03_CONDITIONAL_LAW => EXPLICIT_CALIBRATION_NOT_APPLICABLE_WITH_EXACT_BASIS",
+    "AUTHORITY_CURRENT != RULE_CURRENT",
+    "CALIBRATION_DISPOSITION != RULE_CURRENTNESS"
+  ],
+  "package_state": "PKG_C_ROW_24_CLOSED_BY_D09__ROWS_20_21_22_OUT_OF_SCOPE__D10_AFTER_EXACT_HQ_ADOPTION",
+  "replay": {
+    "adjudication_hash": "321827ab4fe01b91204cb40c10e13688cd4100229423f3078ee0d836c3fce8cc",
+    "basis_hash": "0a72c9453ad55f1934f1e9953c3557a56893083ec32efb8e9a7fc03d0bb6244e",
+    "canonicalization": "UTF-8 canonical JSON: recursively sorted keys, separators ',' ':', ensure_ascii=false, allow_nan=false",
+    "hash_algorithm": "SHA-256"
+  },
+  "s03_row_24": {
+    "basis_text": "Accepted D05 affirmatively adjudicates M10-M01 as NONNUMERIC; under the frozen R4/S03 conditional law, CALIBRATION is therefore explicitly NOT_APPLICABLE with this exact positive N/A basis.",
+    "blocker_refs": [],
+    "candidate_material_refs": [
+      {
+        "content_hash": "29a9072b49314529428e696c81e89eecc065b39799eb7d5755d98f0215d131d4",
+        "kind": "SDTF_R4_RULE_VALUE_MODE_ADJUDICATION",
+        "object_id": "M10-M01:NONNUMERIC:R1"
+      },
+      {
+        "content_hash": "0a72c9453ad55f1934f1e9953c3557a56893083ec32efb8e9a7fc03d0bb6244e",
+        "kind": "SDTF_M10_M01_CALIBRATION_AUTHORITY_NA_BASIS",
+        "object_id": "M10-M01:CALIBRATION:NA_BASIS:D09_R1"
+      }
+    ],
+    "determinant_id": "GBE-R4-024",
+    "field_path": "calibration_authority",
+    "na_basis_ref": {
+      "content_hash": "0a72c9453ad55f1934f1e9953c3557a56893083ec32efb8e9a7fc03d0bb6244e",
+      "kind": "SDTF_M10_M01_CALIBRATION_AUTHORITY_NA_BASIS",
+      "object_id": "M10-M01:CALIBRATION:NA_BASIS:D09_R1"
+    },
+    "resolved_value": {
+      "authority_ref": null,
+      "current_selection_evidence_refs": [],
+      "disposition": "NOT_APPLICABLE",
+      "role": "CALIBRATION",
+      "scope_or_na_ref": {
+        "content_hash": "0a72c9453ad55f1934f1e9953c3557a56893083ec32efb8e9a7fc03d0bb6244e",
+        "kind": "SDTF_M10_M01_CALIBRATION_AUTHORITY_NA_BASIS",
+        "object_id": "M10-M01:CALIBRATION:NA_BASIS:D09_R1"
+      }
+    },
+    "state_after_exact_hq_adoption": "SATISFIED_CURRENT",
+    "worker_return_state": "READY_FOR_HQ_ADOPTION"
+  },
+  "schema": "ASTRA_D09_M10_M01_CALIBRATION_DISPOSITION_R1",
+  "schema_version": "1.0.0",
+  "status": "PASS_READY_FOR_HQ_ADOPTION",
+  "terminal": "ASTRA_D09_PASS__M10_M01_CALIBRATION_EXPLICIT_NOT_APPLICABLE_FROM_ACCEPTED_NONNUMERIC_VALUE_MODE__READY_FOR_HQ_ADOPTION__D10_WAKE_AFTER_ADOPTION",
+  "untouched": {
+    "GBE-R4-020": "MEASUREMENT_OUT_OF_SCOPE__ALREADY_ACCEPTED_D06",
+    "GBE-R4-021": "ESTIMAND_OUT_OF_SCOPE__ALREADY_ACCEPTED_D06",
+    "GBE-R4-022": "IDENTIFICATION_OUT_OF_SCOPE__ALREADY_ACCEPTED_D06",
+    "GBE-R4-025": "VALUE_MODE_CONSUMED_AS_ACCEPTED_INPUT__NOT_MUTATED",
+    "actor_application_realization_topology": "NOT_CREATED_OR_MODIFIED",
+    "rule_currentness": "NOT_CREATED_OR_MODIFIED",
+    "v3_person_state_obl063": "NOT_CREATED_OR_MODIFIED"
+  },
+  "wake": "AFTER_EXACT_HQ_ADOPTION__D10_CONCRETE_CANDIDATE_ENVELOPE_ASSEMBLY",
+  "worker": {
+    "branch": "agent/rabochii-prev3-astra-d09-calibration-disposition-r1",
+    "commission_tip": "1826ab473e839c3bb6f1cdcca45f8d178f8a9124",
+    "current_handoff_commit": "e2778f178cfbb47fdb59ec367a666efc95b9d1a5",
+    "current_hq_checkpoint": "20260915T1600-0400",
+    "grain": "PSC06_M10_M01_EXPLICIT_VALUE_MODE_CALIBRATION_DISPOSITION_ONLY",
+    "hq_fanin": "05167b4cd30dc751cce797a16baa397bc7d0457d",
+    "id": "ASTRA-D09",
+    "library_used": false
+  }
+}
