@@ -1,0 +1,27 @@
+{
+  "worker_id": "L05-R2",
+  "receipt_version": "R1",
+  "branch": "agent/rabochii-prev3-psc-w1r2-l05-wvs-documentary-review-r1",
+  "parent_tip": "93c2005e7395abd362edc6b2e79b2e156e819f75",
+  "covered_pre_receipt_tree_sha1": "6ac6f8e44641d4286fed2e3f158f94cef0b07580",
+  "covered_artifacts": [
+    "WORKER_RETURNS/L05-R2/00_RETURN.md",
+    "WORKER_RETURNS/L05-R2/01_LIBRARY_EVIDENCE_MANIFEST.json",
+    "WORKER_RETURNS/L05-R2/02_ITEM_LEVEL_DOCKET.csv",
+    "WORKER_RETURNS/L05-R2/03_REMAINDER_LEDGER.csv",
+    "WORKER_RETURNS/L05-R2/04_SELF_CHECKS.md"
+  ],
+  "receipt_scope": "The pre-receipt tree cryptographically binds artifacts 00-04. The final branch commit cryptographically binds artifacts 00-05, including this receipt; no self-hash is asserted.",
+  "docket_counts": {
+    "current_r5_wvs_source_native_review_objects": 70,
+    "current_deep_catalog_response_authority_gap_rows": 4,
+    "total_docket_items": 74,
+    "documentary_positive": 72,
+    "documentary_insufficient_blocked": 2
+  },
+  "self_checks": {
+    "range": "SC01-SC20",
+    "status": "PASS"
+  },
+  "terminal": "L05_R2_PASS__WVS_LIBRARY_DOCUMENTARY_DOCKET_COMPLETE_AT_CURRENT_AUTHORITY_CEILING__HQ_ADJUDICATION_REQUIRED"
+}
