@@ -1,0 +1,78 @@
+{
+  "schema": "RAWLSING_PSC03_A04_EVIDENCE_CURRENT_AUTHORITY_MANIFEST@1.0.0",
+  "worker_id": "PSC03-A04",
+  "branch": "agent/rabochii-prev3-psc-w2-a04-wvs-documentary-adjudication-r1",
+  "commission_tip": "fd27120141610e531a0b4d614b7c159e5bcc9135",
+  "commission_base_hq_authority": "2e5e142700b87cc87934c337ef6d5b8ffcf3cfb7",
+  "exact_grain": "PREV3_PSC03_WVS_RETURNED_CANDIDATE_ADJUDICATION_R1_ONLY",
+  "accepted_predecessor": {
+    "worker_id": "L05-R2",
+    "tip": "1f56349c3fd1a99b8ae83d07da2aac81e01699fb",
+    "docket_path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/ASTRA_PREV3_COMPLETION_AUDIT_R1/POST_GENERIC_CLOSURE_SOURCE_SEMANTIC_CAMPAIGN_READINESS_R1/PSC_FIRST_ACTIVE_WAVE_R1/WORKER_RETURNS/L05-R2/02_ITEM_LEVEL_DOCKET.csv",
+    "docket_git_blob_sha1": "837726e980c252a26ed5347d328aca4f09dd0ed7",
+    "finite_assigned_positive_candidates": 72,
+    "composition": {
+      "R5_source_native_objects": 70,
+      "W4": 32,
+      "W7": 38,
+      "W1_exact_implementation_rows": 2
+    }
+  },
+  "current_authority_check": {
+    "hq_fanin_commit": "2e5e142700b87cc87934c337ef6d5b8ffcf3cfb7",
+    "finding": "L05-R2_WVS_DOCKET_BANKED_NOT_PROMOTED__DOCUMENTARY_SUPPORT_NE_CURRENT_SEMANTIC_AUTHORITY",
+    "resolution_test": "EXACT_ITEM_IDENTITY_ONLY__NO_RESOLUTION_BY_MEMBER_LEVEL_OR_TEXTUAL_OR_DISCOVERY_TAG_INFERENCE",
+    "assigned_items_already_exactly_resolved": 0,
+    "assigned_items_requiring_source_native_adjudication": 72
+  },
+  "exact_evidence_surfaces": [
+    {
+      "name": "SEMANTIC_EDGE_ADJUDICATION_DENOMINATOR_R5_CODEX_RECONCILED.csv",
+      "library_file_id": "file_000000009c2c820c9a91eb4f25f02383",
+      "sha256": "633ba0933a9b05dc2aad61f5563b87b620189687e47914dde652c9b1d1ee5341",
+      "use": "exact 70 commissioned R5 object rows; source-native parent/routing/universe/applicability/completion fields only",
+      "authority_ceiling": "R5 discovery-only semantic tags explicitly not consumed as authority"
+    },
+    {
+      "name": "R14_ACCEPTED_SOURCE_OBJECT_INDEX_R4.csv",
+      "library_file_id": "file_000000003090822f8e337f4679fc8ef3",
+      "sha256": "174de5af9c3bf0fc1929bac87fa8e62ace95b2aeab39c1ff6d718a14ad8194f2",
+      "use": "accepted source-native object identity and exact member list"
+    },
+    {
+      "name": "R14_COMPREHENSIVE_SOURCE_OBJECT_CROSSWALK_R10A.csv",
+      "library_file_id": "file_0000000094b4820db3e132b9764564c1",
+      "sha256": "76bd0e37a77e1538878be6772e2c662395620b84d8dfb690e4acdcc2ea31c634",
+      "use": "current object-to-implementation crosswalk status; exact V77 partial remainder and distinct V74-V77 control"
+    },
+    {
+      "name": "Rawlsing_P2_WVS_Deep_Question_Node_Catalog_v1.csv",
+      "library_file_id": "file_000000007cfc81f9a595a3de1e57fa15",
+      "sha256": "cc538e7208e96f2a3333082e3ffdc88faf1bba0eee273664fe2ff213c3821ec0",
+      "use": "exact W1 current implementation identity/source-text rows for S018/S019 and preserved COUNTRY_ISO/COW_ALPHA remainders"
+    }
+  ],
+  "library_escalation": {
+    "mode": "ESCALATION_ONLY",
+    "status": "SATISFIED_WITH_EXACT_PREDECESSOR_NAMED_SURFACES_ONLY",
+    "broad_search_used_for_semantic_authority": false,
+    "native_pdf_reopen_required": false,
+    "reason": "accepted predecessor already binds exact reconciled source-native fields sufficient for all 70 objects; deep catalog supplies exact S018/S019 source text"
+  },
+  "semantic_non_inference_laws": [
+    "R5_DISCOVERY_ONLY_CANDIDATE_TYPES_NOT_CONSUMED_AS_SEMANTIC_AUTHORITY",
+    "SOURCE_NATIVE_PROPOSITION_NE_RAWLSING_TYPED_SEMANTIC_AUTHORITY",
+    "NO_ROUTING_PROMOTION",
+    "NO_CROSS_WAVE_EQUIVALENCE",
+    "NO_STRUCTURAL_ADMISSION",
+    "NO_LEARNED_PRODUCT_CAUSAL_MECHANISM_TOPOLOGY_OR_PERSON_SEMANTICS",
+    "NO_PROVISIONAL_SIBLING_AUTHORITY",
+    "OBL063_QUARANTINE_PRESERVED",
+    "HQ_OWNS_FINAL_ADOPTION_AND_FAN_IN"
+  ],
+  "ledger_provenance_rule": {
+    "R5_rows_A001_A070": "For each ledger identity OID, exact evidence provenance is the row keyed OID in each of R5 denominator, R14 accepted source-object index, and R14 current crosswalk listed above; source-native proposition is the R5/accepted-index parent text and exact source-local boundaries remain those exact keyed rows.",
+    "W1_rows_A071_A072": "For each exact implementation identity, provenance is the exact implementation row in the WVS deep catalog; only exact source text is adjudicated.",
+    "current_authority_for_all_72": "HQ commission-base fan-in commit 2e5e142700b87cc87934c337ef6d5b8ffcf3cfb7 banks L05-R2's documentary positives without semantic promotion; no exact assigned item is already resolved at this grain."
+  }
+}
