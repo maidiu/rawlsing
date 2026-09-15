@@ -14,9 +14,10 @@ def test_n03_r2_exact_current_18276_semantic_currentness_rebind():
         raise AssertionError('N03R2_DISCOVERY_JSON='+json.dumps(summary,sort_keys=True,separators=(',',':'))+'\nN03R2_VECTOR_B64='+vb64.decode())
     assert summary == expected
     assert (BASE/'03_CURRENT_18276_SEMANTIC_CURRENTNESS_VECTOR.zlib.b64').read_bytes().strip() == vb64
-    remainder=json.loads((BASE/'04_UNRESOLVED_REMAINDER_MANIFEST.json').read_text())
+    remainder=json.loads((BASE/'04_UNRESOLVED_REMAINDER_LEDGER.json').read_text())
     assert remainder['count']==summary['unresolved_count']
     assert remainder['sorted_id_stream_sha256']==summary['unresolved_sorted_id_stream_sha256']
+    assert remainder['row_ordinals_1_based']==[i+1 for i,b in enumerate(vec) if b==6]
     receipt=json.loads((BASE/'05_VALIDATION_RECEIPT.json').read_text())
     assert receipt['terminal']=='PASS'
     assert receipt['grain']==manifest['grain']
