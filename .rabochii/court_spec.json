@@ -1,0 +1,15 @@
+{
+  "schema_id": "RABOCHII_COURT_SPEC@1.0.0",
+  "semantic_candidate_sha": "f02336187e50a443d929ff7abbe5dcd5f3950f70",
+  "python_version": "3.12",
+  "tests": [
+    "rawlsing_next/tests/test_sdtf_r4_generic_batch_adapter.py",
+    "rawlsing_next/tests/test_sdtf_r4_generic_batch_adapter_predecessor_lineage_repair.py",
+    "rawlsing_next/tests/test_sdtf_r4_generic_batch_adapter_g02_qualification.py"
+  ],
+  "env": {
+    "PYTHONHASHSEED": "0",
+    "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1"
+  },
+  "determinism_mode": "EXACT"
+}
