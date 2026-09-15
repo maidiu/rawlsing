@@ -76,6 +76,23 @@ def test_wrong_predecessor_hash_with_prior_copresent_fails_closed():
     assert receipt.runtime_binding is None
 
 
+def test_matching_supplied_ref_from_identity_invalid_prior_does_not_prove_lineage():
+    prior = fx._row("lineage-invalid-prior", generation=0)
+    prior["snapshot"]["requirement_cells"][0]["resolved_value"] = "RULE-mutated-after-ref"
+    successor = fx._row(
+        "lineage-invalid-prior",
+        generation=1,
+        predecessor=prior["ref"],
+    )
+    result = adapt_generic_r4_batch(
+        fx._batch([prior, successor], tag="v01-invalid-prior-body")
+    )
+    receipt = _receipt(result, successor)
+    assert PREDECESSOR_CHAIN_INVALID in receipt.integrity_failures
+    assert receipt.runtime_projection_state == NOT_PROJECTABLE
+    assert receipt.runtime_binding is None
+
+
 def test_generation_zero_with_nonnull_predecessor_fails_closed():
     predecessor = fx._ref("SDTF_R4_GENERIC_BATCH_CANDIDATE_ROW", "v01-g0-nonnull")
     row = fx._row("g0-nonnull", generation=0, predecessor=predecessor)

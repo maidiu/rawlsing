@@ -958,10 +958,15 @@ def adapt_generic_r4_batch(envelope: Mapping[str, Any]) -> GenericR4BatchAdapter
                 )
 
     # S03 exposes no external lineage resolver at this grain. Every N>0 row
-    # therefore requires positive proof by a co-present exact predecessor ref,
-    # including the predecessor content hash. Syntax-only predecessor identity
-    # is insufficient and must fail closed when the exact prior snapshot is absent.
-    presented_exact_ref_keys = {item["supplied_ref"].key for item in rows}
+    # therefore requires positive proof by a co-present, identity-valid exact
+    # predecessor ref, including the predecessor content hash. Syntax-only
+    # predecessor identity is insufficient and must fail closed when the exact
+    # prior snapshot is absent or its supplied ref is not its computed row ref.
+    presented_exact_ref_keys = {
+        item["supplied_ref"].key
+        for item in rows
+        if item["supplied_ref"] == item["computed_ref"]
+    }
     for item in rows:
         predecessor = item["predecessor"]
         if predecessor is None:
@@ -969,7 +974,7 @@ def adapt_generic_r4_batch(envelope: Mapping[str, Any]) -> GenericR4BatchAdapter
         if predecessor.key not in presented_exact_ref_keys:
             item["failures"].append(PREDECESSOR_CHAIN_INVALID)
             item["diagnostics"].append(
-                "exact predecessor snapshot is not co-present in batch"
+                "exact predecessor snapshot is not co-present and identity-valid in batch"
             )
 
     batch_ref = _batch_ref(batch_namespace, batch_id, actual_refs, batch_provenance)
