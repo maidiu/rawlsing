@@ -15,6 +15,17 @@ from rawlsing_next._prev3_structural_batch_base import CandidateKind
 from rawlsing_next.prev3_governed_semantic_t03_compiler import GovernedSemanticCapitalRecord
 
 
+FRONTIER_COMPACT_FIELDS = (
+    "question_implementation_id",
+    "fqra_row_number",
+    "fqra_authority_status",
+    "fqra_semantic_lane",
+    "source_family",
+    "wave",
+    "source_variable_code",
+)
+
+
 def test_n04_r3_carrier_specific_production_binding_and_t03_rerelease():
     accounting, vector, vector_b64, frontier, summary = build()
     manifest = json.loads((RETURN_ROOT / "01_BINDING_AUTHORITY_MANIFEST.json").read_text())
@@ -83,11 +94,39 @@ def test_n04_r3_carrier_specific_production_binding_and_t03_rerelease():
 
     committed_frontier = json.loads((RETURN_ROOT / "04_CANDIDATE_KIND_FRONTIER_42.json").read_text())
     assert committed_frontier["count"] == 42
-    assert committed_frontier["records"] == frontier
+    assert committed_frontier["missing_role"] == "candidate_kind"
+    assert committed_frontier["exact_basis"] == MISSING_CANDIDATE_KIND_BASIS
+    expected_compact = [
+        {field: item[field] for field in FRONTIER_COMPACT_FIELDS}
+        for item in frontier
+    ]
+    assert committed_frontier["records"] == expected_compact
     ids = [item["question_implementation_id"] for item in frontier]
     stream = ("\n".join(ids) + "\n").encode()
     assert committed_frontier["sorted_id_stream_sha256"] == sha256(stream)
 
+    # The complete 18,276-ID accounting is repo-bound as an exact deterministic
+    # projection over the accepted N03-R2 ledger plus the committed status vector.
+    # Reconstruct its canonical byte stream here and prove the sealed contract.
+    accounting_contract = json.loads(
+        (RETURN_ROOT / "06_CURRENT_18276_BINDING_ACCOUNTING_RECONSTRUCTION_CONTRACT.json").read_text()
+    )
+    canonical_accounting = b"".join(
+        (json.dumps(row, sort_keys=True, separators=(",", ":")) + "\n").encode()
+        for row in accounting
+    )
+    assert accounting_contract["rows"] == 18276
+    assert accounting_contract["unique_ids"] == 18276
+    assert accounting_contract["canonical_jsonl_bytes"] == len(canonical_accounting)
+    assert accounting_contract["canonical_jsonl_sha256"] == sha256(canonical_accounting)
+    assert accounting_contract["canonical_jsonl_bytes"] == summary["accounting_canonical_jsonl_bytes"]
+    assert accounting_contract["canonical_jsonl_sha256"] == summary["accounting_canonical_jsonl_sha256"]
+    assert accounting_contract["status_vector"]["raw_sha256"] == summary["status_vector_raw_sha256"]
+    assert accounting_contract["status_vector"]["encoded_sha256_without_trailing_newline"] == summary["status_vector_zlib_b64_sha256"]
+    assert accounting_contract["ordered_authority_surface"]["ledger_canonical_jsonl_sha256"] == summary["n03_canonical_jsonl_sha256"]
+
     receipt = json.loads((RETURN_ROOT / "05_VALIDATION_RECEIPT.json").read_text())
     assert receipt["terminal"] == "PASS"
     assert receipt["terminal_code"] == "N04_R3_CARRIER_SPECIFIC_PRODUCTION_BINDING_AND_T03_RERELEASE_COMPLETE__RETURN_TO_HQ"
+    assert receipt["accounting_canonical_jsonl_sha256"] == summary["accounting_canonical_jsonl_sha256"]
+    assert receipt["candidate_kind_frontier_sorted_id_stream_sha256"] == summary["candidate_kind_frontier_sorted_id_stream_sha256"]
