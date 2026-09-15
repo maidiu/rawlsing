@@ -1,0 +1,102 @@
+{
+  "accepted_predecessor": {
+    "L02_commit": "c723907332df0c2027ce65e6390efa1c2ac31620",
+    "c03_canonical_carrier_sha256": "b08b5e4b539cd7936ad24c04a45d8b8e672913f1656482ffc0d3dce5437a095c",
+    "candidate_id": "L02-EVS-ROUTING-NATIVE-CONDITION-122"
+  },
+  "adjudication": {
+    "ADJUDICATED_SOURCE_NATIVE_CONDITIONAL_CLAUSE__NONEXECUTABLE_ROUTING_REMAINS_UNRESOLVED": 0,
+    "CURRENT_AUTHORITY_ALREADY_RESOLVES": 122,
+    "DOCUMENTARY_CONFLICT__REMAINS_BLOCKED": 0,
+    "DOCUMENTARY_INSUFFICIENT__REMAINS_BLOCKED": 0,
+    "executable_routing_predicates_inferred": 0,
+    "residual_blockers": 0,
+    "routing_authority_rows_authored": 0
+  },
+  "assigned_set": {
+    "derivation": "exact W05/C03 EVS rows with decision_basis=NATIVE_ROW_READ and routing_status in {RESPONDENT_ANSWER_CONDITIONAL,DEMOGRAPHIC_OR_ELIGIBILITY_CONDITIONAL}; this is the exact L02 122-row DOCUMENTARY_SUPPORT_POSITIVE docket",
+    "family": "EVS",
+    "routing_status_counts": {
+      "DEMOGRAPHIC_OR_ELIGIBILITY_CONDITIONAL": 3,
+      "RESPONDENT_ANSWER_CONDITIONAL": 119
+    },
+    "rows": 122,
+    "sorted_qid_set_sha256": "aab2ebac5d7d4f833384ebad12468a0a2d7b21778a6baa0a0028951ef56f1ec0",
+    "unique_question_implementation_ids": 122,
+    "wave_counts": {
+      "1981": 27,
+      "1990": 4,
+      "1999": 13,
+      "2008": 56,
+      "2017": 22
+    }
+  },
+  "branch": "agent/rabochii-prev3-psc-w2-a02-asian-evs-documentary-adjudication-r1",
+  "commission_tip": "38182846c8495cad1a8f29cbf94d9caf3f7dd5d2",
+  "grain": "PREV3_PSC03_ASIAN_EVS_RETURNED_CANDIDATE_ADJUDICATION_R1_ONLY",
+  "hq_authority": "2e5e142700b87cc87934c337ef6d5b8ffcf3cfb7",
+  "ledger_transport": {
+    "canonical_filename": "01_EXACT_122_ADJUDICATION_LEDGER.csv",
+    "canonical_rows": 122,
+    "canonical_sha256": "07793b862bca9002b169bbef3f4c68b33b8af5f5f930295b93962dae63f92cd2",
+    "transport": "zlib9_base64_lf_v1",
+    "transport_filename": "01_EXACT_122_ADJUDICATION_LEDGER.csv.zlib.b64",
+    "transport_sha256": "9d0b821202717b2a2983a691a14b1ec0e1d3883c4b1e984c63c03728a2c712f1",
+    "zlib_sha256": "1b13cd6215b8cb4a04eb2e933db5a5a722793436b590cfe4261722e83738576b"
+  },
+  "library_escalation": {
+    "clauses_path": "RETURN_U1/O06_ROUTING_CLAUSES.jsonl",
+    "evidence_packets_path": "RETURN_U1/SOURCE_EVIDENCE_PACKETS.jsonl",
+    "evidence_resolution": {
+      "captured_native_branch_packets_resolved": 122,
+      "clause_coordinate_mismatches": 0,
+      "clauses_resolved": 122,
+      "implementation_rows_resolved": 122,
+      "native_primary_questionnaire_packets_resolved": 122
+    },
+    "questionnaire_artifacts": {
+      "1981": {
+        "name": "EVS_1981_ZA4438_bq.pdf",
+        "sha256": "897976ffa75bf4ae510fddf5993219f8315ea7bd0bc07e7acce2d29660dcd400"
+      },
+      "1990": {
+        "name": "EVS_1990_ZA4460_bq.pdf",
+        "sha256": "dee6a057fc3669275444e4ed056672e7fdc193e7aad83eb141ad585d6c5b930c"
+      },
+      "1999": {
+        "name": "EVS_1999_ZA3811_bq.pdf",
+        "sha256": "512ddc790597c534710afd8b4b6ba648c80745b37969ca162fde5fc832b9cc8a"
+      },
+      "2008": {
+        "name": "EVS_2008_ZA4800_q.pdf",
+        "sha256": "5ffd78819a3b688be27f50c8d04e521028130e6a78098d4624c3941f17220fc3"
+      },
+      "2017": {
+        "name": "EVS_2017_ZA7500_bq_CAPI.pdf",
+        "sha256": "359336ad6bb25676781cba48824c85988f4351a784e1ddf96d0ca94d8fd4629d"
+      }
+    },
+    "routing_path": "RETURN_U1/O06_IMPLEMENTATION_ROUTING.jsonl",
+    "w05_library_file_id": "file_00000000637c81f9a97fd414b528cd88",
+    "w05_zip_sha256": "7b01f8aa1cb10abede4b76c77b915727d6e472b1e097f9fbb64594c7681a649d"
+  },
+  "stronger_current_authority": {
+    "a02_effect": "recognize current authority only; do not mint, reconstruct, or infer executable routing.",
+    "b03_commit": "3d1cdd242fe10f544bdcbb5bb91cf042c56ef787",
+    "b03_current_rebind_proof_blob_sha": "d64249c96533a51d001e4f2f68d777cd7b578800",
+    "b03_evs_counts": {
+      "admin_nonrespondent_context": 188,
+      "derivative_conditional_not_native": 48,
+      "native_general_universe": 603,
+      "native_routing": 122,
+      "source_routing_unresolved": 1263
+    },
+    "b03_source_family_counts_blob_sha": "da79df8066774a1e482c33773b444b1c50f735a5",
+    "holding": "B03 exact-current findings are accepted in N02-R2 as stronger current authority; its 48 derivative-only EVS conditionals remain quarantined, while the exact 122 EVS native-routing rows are in the conserved B03 positive surface.",
+    "n02_r2_canonical_row_stream_sha256": "0f0b367275c931efec69918a82a1b78355f6b6050b6c2017990061578bef6ad0",
+    "n02_r2_commit": "b01c5620c592274fa9acd0eab1c9ef38e79071a3",
+    "n02_r2_manifest_blob_sha": "e965e189a98af6e1460173f137062f7acd57ccbf",
+    "n02_r2_result_blob_sha": "a453e2449608c8a9ddba426b8ce30574cac357ed"
+  },
+  "worker_id": "PSC03-A02"
+}
