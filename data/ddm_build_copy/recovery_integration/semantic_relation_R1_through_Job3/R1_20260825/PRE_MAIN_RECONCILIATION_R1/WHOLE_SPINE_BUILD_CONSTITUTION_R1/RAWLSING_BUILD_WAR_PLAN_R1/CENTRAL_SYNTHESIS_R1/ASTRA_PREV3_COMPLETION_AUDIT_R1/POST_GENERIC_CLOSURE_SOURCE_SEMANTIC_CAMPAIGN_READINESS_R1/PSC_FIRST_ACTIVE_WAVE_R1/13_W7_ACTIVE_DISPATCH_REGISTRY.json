@@ -1,0 +1,28 @@
+{
+  "schema":"RAWLSING_PREV3_W7_ACTIVE_DISPATCH_R1",
+  "status":"W6_FANIN_ADOPTED__EIGHT_SUCCESSORS_ACTIVE__NO_ALL_LANES_BARRIER",
+  "hq_fanin":"05167b4cd30dc751cce797a16baa397bc7d0457d",
+  "semantic_pre_main_tip":"1dcd2a79dd6d4208738f655ab7fe4e71c219e354",
+  "active_worker_count":8,
+  "active_workers":[
+    {"id":"ASTRA-D01Q","branch":"agent/rabochii-prev3-astra-d01q-independent-requalification-r1","tip":"9165aeb64d00c9f2a2be88af53e22ce0adb5121b","library":"NO","wake":"D04 after D03"},
+    {"id":"ASTRA-D09","branch":"agent/rabochii-prev3-astra-d09-calibration-disposition-r1","tip":"1826ab473e839c3bb6f1cdcca45f8d178f8a9124","library":"NO","wake":"D10"},
+    {"id":"ASTRA-D17","branch":"agent/rabochii-prev3-astra-d17-physical-comparison-r1","tip":"601225c16f92bf5cc24ee7d4aafd22c0b554dbb5","library":"EXACT_ONLY_FROZEN_C09_CARRIERS","wake":"bounded physical result"},
+    {"id":"N04-R4A","branch":"agent/rabochii-prev3-n04r4a-response-semantics-binding-r1","tip":"4b1883aa6520c0f5a899d4cd119a2827537340d7","library":"NO","wake":"N04 re-release subsets"},
+    {"id":"N04-R4B","branch":"agent/rabochii-prev3-n04r4b-routing-binding-r1","tip":"d73db166bd7bc06fda38c9c2347bbba66014fc1b","library":"NO","wake":"N04 re-release subsets"},
+    {"id":"N04-R4C","branch":"agent/rabochii-prev3-n04r4c-candidate-kind-adjudication-r1","tip":"39ab174f7aa86be52010e7046e1cbec204c523aa","library":"NO","wake":"N04 re-release subsets or typed terminal residuals"},
+    {"id":"ASTRA-D02-R2","branch":"agent/rabochii-prev3-astra-d02r2-governed-source-runtime-r1","tip":"27fd6658955d888da37cc24acfc98540eae26508","library":"NO","wake":"D03 capability path"},
+    {"id":"ASTRA-D19","branch":"agent/rabochii-prev3-astra-d19-independent-producer-qualification-r1","tip":"bdb82e3ed770a35af4082d06d32950309a219bab","library":"NO","wake":"generic producer qualification only"}
+  ],
+  "waiting_exact_predecessor":[
+    {"id":"D10","waits_on":["D09"],"already_accepted":["D05","D06","D07","D08"]},
+    {"id":"D03","waits_on":["D02-R2"]},
+    {"id":"D04","waits_on":["D01Q","D03"]}
+  ],
+  "local_blockers":[
+    {"id":"D12","return":"beef158c7df27f61df69da530d1647619dc0369c","holds":"D13 only"},
+    {"id":"D15","return":"8d6fb0fccc2e297eb37e427530d3683b252fcb25","holds":"selected existing-world route only"}
+  ],
+  "completed_adopted":["D01","D05","D06","D07","D08","D16","N04-R3"],
+  "laws":["NO_ALL_LANES_BARRIER","LOCAL_BLOCKER_ONLY","NO_GENERIC_ARCHITECTURE_REOPEN","NO_PROVISIONAL_SIBLING_OUTPUT_CONSUMPTION","PRE_V3_OBJECTIVE_WORLD_ONLY"]
+}
