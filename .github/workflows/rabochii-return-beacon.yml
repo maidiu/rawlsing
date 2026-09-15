@@ -1,115 +1,19 @@
 name: Rawlsing Worker Return Beacon
 
+# Automatic return-beacon triggers are intentionally disabled.
+# This workflow previously ran every 5 minutes and on agent-branch / governed-court
+# events, consuming GitHub-hosted Actions minutes. Keep manual dispatch only so the
+# notifier remains available for explicit diagnostics without background spend.
 on:
-  workflow_run:
-    workflows:
-      - Rabochii Governed Bounded Court
-    types:
-      - completed
-  push:
-    branches:
-      - 'agent/**'
-  schedule:
-    - cron: '*/5 * * * *'
   workflow_dispatch:
-  pull_request:
-    paths:
-      - .github/workflows/rabochii-return-beacon.yml
-      - rawlsing_next/rabochii_return_beacon.py
-      - rawlsing_next/rabochii_return_beacon_actionable.py
-      - rawlsing_next/rabochii_return_beacon_sweep.py
-      - rawlsing_next/tests/test_rabochii_return_beacon.py
-      - rawlsing_next/tests/test_rabochii_return_beacon_actionable.py
-      - rawlsing_next/tests/test_rabochii_return_beacon_sweep.py
-      - .rabochii/RETURN_BEACON_CONTRACT.md
-      - .rabochii/return_manifest.template.json
 
 permissions:
   contents: read
   actions: read
   issues: write
 
-concurrency:
-  group: >-
-    rawlsing-return-beacon-${{
-      github.event_name == 'workflow_run' && github.event.workflow_run.head_branch ||
-      (github.event_name == 'pull_request' && format('pr-{0}', github.event.pull_request.number)) ||
-      'sweep'
-    }}
-  cancel-in-progress: true
-
 jobs:
-  self-test:
-    if: ${{ github.event_name == 'pull_request' }}
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - name: Checkout exact PR tree
-        uses: actions/checkout@v4
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - name: Install test dependency
-        run: python -m pip install --disable-pip-version-check pytest
-      - name: Return-beacon contract, action, and discovery tests
-        run: >-
-          python -m pytest -q
-          rawlsing_next/tests/test_rabochii_return_beacon.py
-          rawlsing_next/tests/test_rabochii_return_beacon_actionable.py
-          rawlsing_next/tests/test_rabochii_return_beacon_sweep.py
-
-  watch-governed-return:
-    if: >-
-      ${{ github.event_name == 'workflow_run' &&
-          github.event.workflow_run.head_branch != '' &&
-          startsWith(github.event.workflow_run.head_branch, 'agent/') }}
-    runs-on: ubuntu-latest
-    timeout-minutes: 30
-    steps:
-      - name: Checkout beacon implementation from default branch
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.repository.default_branch }}
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - name: Watch worker branch for certified durable return
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: >-
-          python rawlsing_next/rabochii_return_beacon_actionable.py
-          --issue 304
-          watch
-          --branch '${{ github.event.workflow_run.head_branch }}'
-          --timeout-seconds 1500
-          --interval-seconds 15
-
-  check-moved-branch:
-    if: ${{ github.event_name == 'push' && startsWith(github.ref_name, 'agent/') }}
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    steps:
-      - name: Checkout beacon implementation from default branch
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.repository.default_branch }}
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - name: Check exact moved agent branch
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: >-
-          python rawlsing_next/rabochii_return_beacon_actionable.py
-          --issue 304
-          check
-          --branch '${{ github.ref_name }}'
-
   fallback-sweep:
-    if: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
