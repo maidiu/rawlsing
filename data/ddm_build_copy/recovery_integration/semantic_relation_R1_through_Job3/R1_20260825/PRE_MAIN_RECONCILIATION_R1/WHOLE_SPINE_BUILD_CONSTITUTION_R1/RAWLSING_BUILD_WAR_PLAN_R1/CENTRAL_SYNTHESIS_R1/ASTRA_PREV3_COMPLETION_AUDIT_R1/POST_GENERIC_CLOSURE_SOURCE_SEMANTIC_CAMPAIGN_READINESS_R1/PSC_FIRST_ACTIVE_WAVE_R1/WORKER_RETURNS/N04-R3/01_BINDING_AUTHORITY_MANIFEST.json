@@ -64,5 +64,73 @@
     "no_all_rows_barrier": true,
     "zero_is_not_negative": true
   },
-  "expected_output": null
+  "expected_output": {
+    "accounting_canonical_jsonl_bytes": 8446586,
+    "accounting_canonical_jsonl_sha256": "9e525ee5b2a7e05f92f0d71b96098ab578cfd7b2721e665ea5c4085a47cc988b",
+    "banked_compiler_blob": "ad5806e3f500bdc63b40fde49f210ff45b282170",
+    "banked_compiler_replay_records": 0,
+    "candidate_kind_frontier_authority_status_counts": {
+      "FROZEN_ACCEPTED_GSS": 7,
+      "GOVERNED_MANUAL_RELATION_AUTHORITY": 35
+    },
+    "candidate_kind_frontier_count": 42,
+    "candidate_kind_frontier_lane_counts": {
+      "relation": 30,
+      "subjective_evidence": 12
+    },
+    "candidate_kind_frontier_sorted_id_stream_sha256": "d1e43b5df7ee939fb287488e9f8d2e7508493dcf72945781e43d1596d734ab49",
+    "n01_full_csv_sha256": "df0df368ecd4b884e69894b32fb49102edb554c5ca69700d3d56b9dbe3b76cfc",
+    "n02_canonical_row_jsonl_sha256": "0f0b367275c931efec69918a82a1b78355f6b6050b6c2017990061578bef6ad0",
+    "n03_canonical_jsonl_sha256": "0ac4cd90c19c859438ec12ddfa69c37e9b9c85607884e0f4ea93bc6b52493723",
+    "positive_candidate_sorted_id_stream_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "positive_jurisdiction_combo_counts": {
+      "FQRA": 12553,
+      "FQRA+QSMV2": 1780,
+      "FQRA+QSMV2+RESPONSE_SEMANTICS": 7,
+      "FQRA+QSMV2+RESPONSE_SEMANTICS+TYPED_RELATION": 4,
+      "FQRA+QSMV2+TYPED_RELATION": 2606,
+      "FQRA+RESPONSE_SEMANTICS": 114,
+      "FQRA+RESPONSE_SEMANTICS+TYPED_RELATION": 76,
+      "FQRA+TYPED_RELATION": 1069,
+      "TYPED_RELATION": 4
+    },
+    "positive_jurisdiction_membership_counts": {
+      "FQRA": 18209,
+      "QSMV2": 4397,
+      "RESPONSE_SEMANTICS": 201,
+      "TYPED_RELATION": 3759
+    },
+    "positive_t03_candidates": 0,
+    "rows": 18276,
+    "smallest_missing_role_by_jurisdiction_counts": {
+      "candidate_kind|FQRA": 42,
+      "candidate_kind|RESPONSE_SEMANTICS": 42,
+      "candidate_kind|TYPED_RELATION": 26,
+      "response_category_semantics_ref|FQRA": 18008,
+      "response_category_semantics_ref|QSMV2": 4386,
+      "response_category_semantics_ref|TYPED_RELATION": 3679,
+      "routing_applicability_ref|FQRA": 159,
+      "routing_applicability_ref|QSMV2": 11,
+      "routing_applicability_ref|RESPONSE_SEMANTICS": 159,
+      "routing_applicability_ref|TYPED_RELATION": 54
+    },
+    "smallest_missing_role_counts": {
+      "candidate_kind": 42,
+      "response_category_semantics_ref": 18012,
+      "routing_applicability_ref": 159
+    },
+    "status_counts": {
+      "BLOCKED_CURRENT_POSITIVE__MISSING_AUTHORITY_OWNED_CANDIDATE_KIND": 42,
+      "BLOCKED_CURRENT_POSITIVE__MISSING_RESPONSE_CATEGORY_SEMANTICS_REF": 18012,
+      "BLOCKED_CURRENT_POSITIVE__MISSING_ROUTING_APPLICABILITY_REF": 159,
+      "BLOCKED_N03_REVIEW_REQUIRED": 41,
+      "BLOCKED_N03_TYPED_UNRESOLVED": 22
+    },
+    "status_vector_raw_bytes": 18276,
+    "status_vector_raw_sha256": "f3bb9f06508f7eb26d1ee01e6bc865377637da34f5a60b4118006cc5d8a8d283",
+    "status_vector_zlib_b64_bytes": 572,
+    "status_vector_zlib_b64_sha256": "8241edb2bf043105e0eae12dfa8dd312ff14ca09d37141467834529404c161d7",
+    "terminal": "PASS__ZERO_BINDABLE_RECORDS__EXACT_ROLE_LEVEL_RESIDUALS_PROVED",
+    "unique_ids": 18276
+  }
 }
