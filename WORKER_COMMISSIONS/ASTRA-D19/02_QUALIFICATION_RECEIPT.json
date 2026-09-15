@@ -1,0 +1,140 @@
+{
+  "schema": "ASTRA_D19_M05_INDEPENDENT_PRODUCER_QUALIFICATION_R1@1.0.0",
+  "commission_id": "ASTRA-D19",
+  "grain": "PREV3_M05_EXACT_EXISTING_PRODUCER_INDEPENDENT_QUALIFICATION_ONLY",
+  "result": "PASS",
+  "commission_branch": "agent/rabochii-prev3-astra-d19-independent-producer-qualification-r1",
+  "commission_tip": "bdb82e3ed770a35af4082d06d32950309a219bab",
+  "hq_checkpoint": {
+    "checkpoint_id": "20260915T1240-0400",
+    "handoff_commit": "9cdfffdfd0c2ac38bef4b02858cbd21f04aa4ecf",
+    "d18_correction_authority": "a806d788d5a2ae25f65cc89f761ca340e80873bc"
+  },
+  "qualified_target": {
+    "return_commit": "15ab87cbd8e340042da29af98ca5262879302d0f",
+    "producer_path": "rawlsing_next/prev3_objective_structural_topology.py",
+    "producer_git_blob_sha": "f306745b9604fd434c681a6943c44e2adea03ff7",
+    "producer_test_path": "rawlsing_next/tests/test_prev3_objective_structural_topology.py",
+    "producer_test_git_blob_sha": "3fc499cdb0d6912ebbf6cb55e756758c4116cbd9",
+    "actual_interface_path": "rawlsing_next/pre553_empirical_objects.py",
+    "actual_interface_git_blob_sha": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+    "producer_self_test": {
+      "tests_run": 7,
+      "failures": 0,
+      "errors": 0,
+      "status": "OK"
+    }
+  },
+  "superseded_tuple_not_used": {
+    "producer_git_blob_sha": "ab1b5cb3727646817deff681c85d7ae24863c4d2",
+    "test_git_blob_sha": "50da9c54f50d9c0db876c579f46722165458dba6",
+    "reported_test_count": 17
+  },
+  "identity_verification": {
+    "reconstructed_producer_git_blob_sha": "f306745b9604fd434c681a6943c44e2adea03ff7",
+    "reconstructed_producer_test_git_blob_sha": "3fc499cdb0d6912ebbf6cb55e756758c4116cbd9",
+    "producer_line_count": 416,
+    "producer_blob_match": true,
+    "producer_test_blob_match": true
+  },
+  "syntax_check": {
+    "command": "python -m py_compile rawlsing_next/prev3_objective_structural_topology.py rawlsing_next/tests/test_prev3_objective_structural_topology.py",
+    "status": "PASS"
+  },
+  "producer_self_test_replay": {
+    "command": "python -m unittest discover -s rawlsing_next/tests -p 'test_prev3_objective_structural_topology.py' -v",
+    "tests_run": 7,
+    "failures": 0,
+    "errors": 0,
+    "status": "OK"
+  },
+  "independent_court": {
+    "tests_run": 25,
+    "failures": 0,
+    "errors": 0,
+    "status": "OK",
+    "actual_interface_surface": [
+      "ExactRef",
+      "AuthorityRef",
+      "semantic_hash"
+    ],
+    "test_ids": [
+      "actual_interface_types_are_imported",
+      "exact_ref_objects_preserved_without_reconstruction",
+      "payload_hash_matches_independent_canonical_hash",
+      "closure_content_hash_binds_full_closure_projection",
+      "product_content_hash_binds_payload_and_closure_ref",
+      "deterministic_production",
+      "deterministic_replay_and_receipt",
+      "rebound_source_with_old_closure_fails",
+      "rebound_channel_with_old_closure_fails",
+      "rebound_receiver_with_old_closure_fails",
+      "rebound_semantic_owner_with_old_closure_fails",
+      "rebound_reference_contract_with_old_closure_fails",
+      "rebound_each_scope_coordinate_with_old_closure_fails",
+      "untyped_source_channel_receiver_fail_closed",
+      "wrong_provenance_scope_closure_container_types_fail_closed",
+      "invalid_closure_hash_format_fails_closed",
+      "well_formed_but_wrong_closure_payload_hash_fails_closed",
+      "actual_interface_rejects_malformed_exact_and_authority_refs",
+      "fresh_authorized_rebinding_changes_payload_and_product_identity",
+      "closure_owner_identity_is_product_identity_sensitive",
+      "closure_contract_identity_is_product_identity_sensitive",
+      "replay_receipt_tampering_fails",
+      "runtime_has_no_claim_specific_or_downstream_semantics",
+      "producer_signature_requires_structured_objects_not_descriptive_payloads",
+      "identity_objects_are_frozen"
+    ]
+  },
+  "fixed_test_vector": {
+    "topology_payload_hash": "66f2755c46ed63e1843236f1f114e95d3cb518e25f81835da3405c36765ca66b",
+    "closure_ref_content_hash": "9de2004a3752de9adcca1bf82270e53df85d5e39d37ef102f2120ceae4863bba",
+    "product_ref_content_hash": "7e5cf73c6585a99fff90238063ad0762907de0ea6c9c63a10c5a565961585237",
+    "replay_receipt_content_hash": "a9aa0479bcb9bd3d2b2a3b134c08ad683e288251f63810874a33f713a11168cf"
+  },
+  "identity_sensitivity_vectors": {
+    "source_rebound": {
+      "payload_hash": "65ac18fad0459a9b00a9d3eeaa62484657471e0c858cc43cf895d2d75055bdfb",
+      "product_content_hash": "61d640ab680b592f5cc6abdd8804722cd39452ba839ed85f09fc9cafba274c24"
+    },
+    "closure_owner_rebound": {
+      "payload_hash_unchanged": "66f2755c46ed63e1843236f1f114e95d3cb518e25f81835da3405c36765ca66b",
+      "closure_content_hash": "16cb938139108c62a89a7a8625fca638e02509ca497df0543f64498b018761f8",
+      "product_content_hash": "c4ae3f1048e4f72ff5b8aa3fc964f46723accca91ba62f76d7a817c849ddb5dc"
+    },
+    "closure_contract_rebound": {
+      "payload_hash_unchanged": "66f2755c46ed63e1843236f1f114e95d3cb518e25f81835da3405c36765ca66b",
+      "closure_content_hash": "7089d820a715d33e1e03f796f31461482231fdb31ffd05754df16f1c4a0c7e01",
+      "product_content_hash": "34c8cf216e72f02dfb5a3f3e9a6d65d48ef170f109e313799bf00b0bf77a30ef"
+    }
+  },
+  "claim_specific_semantics_absent": {
+    "checked_tokens": [
+      "SIG-004",
+      "Q73A",
+      "Q86A",
+      "survey variable",
+      "relation sign",
+      "V555",
+      "OBL063",
+      "person_terminal"
+    ],
+    "all_absent": true,
+    "caller_selected_object_id_parameter_absent": true,
+    "descriptive_label_parameter_absent": true,
+    "score_parameter_absent": true
+  },
+  "authority_ceiling": {
+    "qualifies_generic_producer_only": true,
+    "positive_topology_fact_minted": false,
+    "sig004_rescued": false,
+    "structural_owner_selected": false,
+    "v555_or_m2_authorized": false,
+    "person_or_v3_state_touched": false,
+    "obl063_touched": false,
+    "main_mutated": false,
+    "semantic_pre_main_mutated": false,
+    "runtime_repair_performed": false,
+    "library_used": false
+  }
+}
