@@ -1,0 +1,87 @@
+{
+  "schema": "RAWLSING_ASTRA_D01_PRODUCER_COURT_RECEIPT_BINDING@1.0.0",
+  "worker_id": "ASTRA-D01",
+  "branch": "agent/rabochii-prev3-astra-d01-j02-producer-court-r1",
+  "commission_tip": "88fc8db69bdfb9669c1529b861af5279b546f6ef",
+  "hq_adoption_base_named_by_commission": "98279580ffcccdd764663107aa65835fb6929228",
+  "astra_dispatch_return": "a70cd2ef7d2b77c700bd8795f491079be554ae6b",
+  "lane": "D01",
+  "grain": "PSC04_M02_FROZEN_PRODUCER_COURT_EXECUTION_ONLY",
+  "status": "PASS",
+  "prior_m02_return": "59c6ed5257ca9616ae229604fecdee448cac6676",
+  "closed_prior_blocker": "M02_PRODUCER_TEST_EXECUTION_SURFACE_UNAVAILABLE_R1",
+  "frozen_inputs": {
+    "semantic_candidate_sha": "13dac36f65e0b214b56fae7e958f8b8764d8a3d2",
+    "evidence_execution_sha": "eb7946c4b31816a028d95ba96c7c7d1eb720cffa",
+    "evidence_execution_tree": "988a0d19dc0659f64bf3e2372c02fea8b873d970",
+    "production_contract_blob": "d878d2280bdb53f22019f703c2a8178b89d66c5d",
+    "delegated_k02_blob": "5529e4d82e44d0dfef8fdaf846cca57226f3f12f",
+    "court_spec_blob": "3fcf53574bef749d67cb1a60f4e6f929d716c6c7",
+    "tests": [
+      {
+        "path": "rawlsing_next/tests/test_prev3_source_state_target_disposition_j02_compatibility_repair.py",
+        "blob": "795187519b4cc6e35bce23f95fdb39862710b9dc"
+      },
+      {
+        "path": "rawlsing_next/tests/test_prev3_source_state_target_disposition_j02_compatibility_repair_regression.py",
+        "blob": "8f4ceac6917cb2a076ca749c1fde495c3c1c0e0b"
+      }
+    ]
+  },
+  "workflow": {
+    "name": "Rabochii Governed Bounded Court",
+    "workflow_id": 350748047,
+    "run_id": 34810995057,
+    "run_number": 421,
+    "job_id": 104509934109,
+    "job_name": "governed-court",
+    "conclusion": "success",
+    "exact_checked_out_ref": "eb7946c4b31816a028d95ba96c7c7d1eb720cffa",
+    "protocol_framework_tests": "20 passed in 0.11s",
+    "bounded_producer_court_tests": "8 passed in 0.17s",
+    "execution_protocol": "PASS"
+  },
+  "governed_court_receipt": {
+    "determinism_mode": "EXACT",
+    "elapsed_seconds": 0.388314,
+    "env": {
+      "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+      "PYTHONHASHSEED": "0"
+    },
+    "evidence_execution_sha": "eb7946c4b31816a028d95ba96c7c7d1eb720cffa",
+    "exit_code": 0,
+    "implementation": "CPython",
+    "pr_synthetic_merge_sha": "6eec317493a53115b7277cc818790fef9951cf69",
+    "python": "3.12.14",
+    "result": "PASS",
+    "schema_id": "RABOCHII_BOUNDED_COURT_RECEIPT@1.0.0",
+    "semantic_candidate_sha": "13dac36f65e0b214b56fae7e958f8b8764d8a3d2",
+    "spec_sha256": "600076251a9ad0eaca013fcce27fe2b321327ec7cd47f77c0ca03ba442e23d78",
+    "tests": [
+      "rawlsing_next/tests/test_prev3_source_state_target_disposition_j02_compatibility_repair.py",
+      "rawlsing_next/tests/test_prev3_source_state_target_disposition_j02_compatibility_repair_regression.py"
+    ]
+  },
+  "artifact": {
+    "artifact_id": 10412321182,
+    "name": "rabochii-court-receipt-34810995057",
+    "size_bytes": 633,
+    "zip_sha256": "630040c2fb580dec51dec3c4215ec611ca0784a2c101d952e7811417649a11f5"
+  },
+  "boundary_checks": {
+    "library_used": false,
+    "semantic_candidate_changed": false,
+    "tests_changed": false,
+    "learned_workload_executed": false,
+    "independent_requalification_claimed": false,
+    "structural_authority_minted": false,
+    "causal_authority_minted": false,
+    "person_or_v3_state_minted": false,
+    "main_mutated": false,
+    "semantic_pre_main_mutated": false,
+    "hq_control_mutated": false
+  },
+  "wake": "HQ_RECONCILE_AND_ADOPT_D01__THEN_COMMISSION_D01Q_ZERO_REPAIR_INDEPENDENT_REQUALIFICATION_ONLY",
+  "negative_law": "PRODUCER_PASS_NE_INDEPENDENT_QUALIFICATION_NE_LEARNED_POSITIVE_WAKE",
+  "terminal": "PASS__PSC04_M02_FROZEN_PRODUCER_COURT_EXECUTION_COMPLETE__READY_FOR_HQ_RECONCILIATION_AND_D01Q_WAKE_ONLY_AFTER_ADOPTION"
+}
