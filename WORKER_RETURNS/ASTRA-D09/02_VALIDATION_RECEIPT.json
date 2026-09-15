@@ -1,0 +1,128 @@
+{
+  "accepted_trigger": {
+    "d05_return": "c855a893c5c24e44c555e005808bc734a3c08c9c",
+    "value_mode": "NONNUMERIC",
+    "value_mode_ref": {
+      "content_hash": "29a9072b49314529428e696c81e89eecc065b39799eb7d5755d98f0215d131d4",
+      "kind": "SDTF_R4_RULE_VALUE_MODE_ADJUDICATION",
+      "object_id": "M10-M01:NONNUMERIC:R1"
+    }
+  },
+  "adjudication_hash_replay": "321827ab4fe01b91204cb40c10e13688cd4100229423f3078ee0d836c3fce8cc",
+  "adjudication_ref": {
+    "content_hash": "321827ab4fe01b91204cb40c10e13688cd4100229423f3078ee0d836c3fce8cc",
+    "kind": "ASTRA_D09_M10_M01_CALIBRATION_DISPOSITION",
+    "object_id": "M10-M01:PKG-C:D09_R1"
+  },
+  "artifacts": {
+    "00_RETURN.md": {
+      "commit": "e21836e0bd537d1d33fef42a304e6fb00c4eb8a6",
+      "git_blob": "fe8d2cb0a601685670370957ce97362adee0ec00"
+    },
+    "01_CALIBRATION_DISPOSITION.json": {
+      "commit": "2b549592a009455c0a19821fe859837d2220092f",
+      "git_blob": "13d7c72684b7d4ebaa9efd170b6f66633da37eac"
+    }
+  },
+  "basis_hash_replay": "0a72c9453ad55f1934f1e9953c3557a56893083ec32efb8e9a7fc03d0bb6244e",
+  "basis_ref": {
+    "content_hash": "0a72c9453ad55f1934f1e9953c3557a56893083ec32efb8e9a7fc03d0bb6244e",
+    "kind": "SDTF_M10_M01_CALIBRATION_AUTHORITY_NA_BASIS",
+    "object_id": "M10-M01:CALIBRATION:NA_BASIS:D09_R1"
+  },
+  "binding": {
+    "authority_ref": null,
+    "current_selection_evidence_refs": [],
+    "disposition": "NOT_APPLICABLE",
+    "role": "CALIBRATION",
+    "scope_or_na_ref": {
+      "content_hash": "0a72c9453ad55f1934f1e9953c3557a56893083ec32efb8e9a7fc03d0bb6244e",
+      "kind": "SDTF_M10_M01_CALIBRATION_AUTHORITY_NA_BASIS",
+      "object_id": "M10-M01:CALIBRATION:NA_BASIS:D09_R1"
+    }
+  },
+  "boundary_checks": {
+    "no_actor_fact_application_realization_or_topology": true,
+    "no_main_semantic_pre_main_or_hq_control_mutation": true,
+    "no_numeric_inference": true,
+    "no_rule_body_mutation": true,
+    "no_rule_currentness": true,
+    "no_v3_person_state_or_obl063": true
+  },
+  "branch": "agent/rabochii-prev3-astra-d09-calibration-disposition-r1",
+  "commission_tip": "1826ab473e839c3bb6f1cdcca45f8d178f8a9124",
+  "current_handoff_commit": "e2778f178cfbb47fdb59ec367a666efc95b9d1a5",
+  "current_hq_checkpoint": "20260915T1600-0400",
+  "exact_grain": "PSC06_M10_M01_EXPLICIT_VALUE_MODE_CALIBRATION_DISPOSITION_ONLY",
+  "hq_fanin": "05167b4cd30dc751cce797a16baa397bc7d0457d",
+  "library_used": false,
+  "s03_target": {
+    "conditional_law": "NUMERIC => CALIBRATION BOUND; NONNUMERIC => CALIBRATION NOT_APPLICABLE with exact N/A basis.",
+    "determinant_id": "GBE-R4-024",
+    "ordinal": 24,
+    "role": "CALIBRATION"
+  },
+  "schema": "ASTRA_D09_VALIDATION_RECEIPT_R1",
+  "status": "PASS",
+  "terminal": "ASTRA_D09_PASS__M10_M01_CALIBRATION_EXPLICIT_NOT_APPLICABLE_FROM_ACCEPTED_NONNUMERIC_VALUE_MODE__READY_FOR_HQ_ADOPTION__D10_WAKE_AFTER_ADOPTION",
+  "test_summary": {
+    "blocked": 0,
+    "failed": 0,
+    "mode": "DETERMINISTIC_STATIC_CONTRACT_AND_HASH_REPLAY",
+    "passed": 10
+  },
+  "tests": [
+    {
+      "assertion": "canonical SHA-256(basis_material) equals declared basis_ref.content_hash",
+      "id": "T01_BASIS_HASH_REPLAY",
+      "result": "PASS"
+    },
+    {
+      "assertion": "canonical SHA-256(adjudication_identity_material) equals declared adjudication_ref.content_hash",
+      "id": "T02_ADJUDICATION_HASH_REPLAY",
+      "result": "PASS"
+    },
+    {
+      "assertion": "basis hash is exact lowercase 64-hex SHA-256",
+      "id": "T03_BASIS_REF_EXACT_SHA256",
+      "result": "PASS"
+    },
+    {
+      "assertion": "consumed D05 return is exact accepted c855... and value_mode is affirmative NONNUMERIC",
+      "id": "T04_D05_ACCEPTED_NONNUMERIC_TRIGGER",
+      "result": "PASS"
+    },
+    {
+      "assertion": "only GBE-R4-024 calibration_authority conditional row is adjudicated",
+      "id": "T05_S03_ROW24_EXACT",
+      "result": "PASS"
+    },
+    {
+      "assertion": "CALIBRATION/NOT_APPLICABLE carries exact scope_or_na_ref, null authority_ref, empty selection evidence",
+      "id": "T06_NA_BINDING_RUNTIME_SHAPE",
+      "result": "PASS"
+    },
+    {
+      "assertion": "positive basis derives from accepted NONNUMERIC rule semantics, not missing numeric observations/evidence",
+      "id": "T07_NA_NOT_FROM_MISSING_DATA",
+      "result": "PASS"
+    },
+    {
+      "assertion": "no rule currentness or current-selection evidence is created",
+      "id": "T08_NO_RULE_CURRENTNESS",
+      "result": "PASS"
+    },
+    {
+      "assertion": "GBE-R4-020/021/022 remain out of D09 scope",
+      "id": "T09_OTHER_PKG_C_ROWS_UNTOUCHED",
+      "result": "PASS"
+    },
+    {
+      "assertion": "D10 wake occurs only after exact HQ adoption of D09",
+      "id": "T10_D10_WAKE_GATED_ON_HQ_ADOPTION",
+      "result": "PASS"
+    }
+  ],
+  "wake": "AFTER_EXACT_HQ_ADOPTION__D10_CONCRETE_CANDIDATE_ENVELOPE_ASSEMBLY",
+  "worker_id": "ASTRA-D09"
+}
