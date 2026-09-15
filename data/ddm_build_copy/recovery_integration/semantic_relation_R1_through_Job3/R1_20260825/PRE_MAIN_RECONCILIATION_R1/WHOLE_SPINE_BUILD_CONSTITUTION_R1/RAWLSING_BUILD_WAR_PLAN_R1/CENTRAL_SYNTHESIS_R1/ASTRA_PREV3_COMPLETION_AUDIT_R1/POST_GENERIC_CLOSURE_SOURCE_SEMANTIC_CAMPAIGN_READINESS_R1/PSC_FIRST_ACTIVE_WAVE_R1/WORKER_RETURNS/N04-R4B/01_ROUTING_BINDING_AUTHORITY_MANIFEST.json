@@ -1,0 +1,142 @@
+{
+  "accepted_inputs": {
+    "N02-R2": {
+      "authority_precedence": [
+        "B05-A44",
+        "B04-A44",
+        "B03-W01/B03-W02/B03-W05/B03-W07",
+        "CEN-O06"
+      ],
+      "canonical_row_jsonl_sha256": "0f0b367275c931efec69918a82a1b78355f6b6050b6c2017990061578bef6ad0",
+      "commit": "b01c5620c592274fa9acd0eab1c9ef38e79071a3",
+      "routing_disposition": "UNRESOLVED_ROUTING_APPLICABILITY_AUTHORITY"
+    },
+    "N03-R2": {
+      "commit": "3eaf9918e66b9d4bbc3a1c12598baca20c9d594d",
+      "ledger_canonical_jsonl_sha256": "0ac4cd90c19c859438ec12ddfa69c37e9b9c85607884e0f4ea93bc6b52493723"
+    },
+    "N04-R3": {
+      "candidate_kind_frontier_blob": "7be5ae7995d1bceb87f690c89d7b76c955ef6805",
+      "candidate_kind_frontier_count": 42,
+      "commit": "8e0266703bbf3b060abcd6fbe53c7ef6c49062c5",
+      "generator_blob": "cfe3587df79a6da309825447cbc3317050ac6af4",
+      "routing_missing_count": 159,
+      "status_vector_blob": "a9de884da922dd35e07147fc43cd23e928777ace"
+    },
+    "V550_V551_RESPONSE_SEMANTICS_BINDING": {
+      "authority_commit": "497b8dfc6106e2761c61d07d8ba9ea472062892c",
+      "blob_sha": "ef77bcbe61385a10fe28b67c15a13f4f794e58e0",
+      "current_positive_exact_coordinate_bindings": 201,
+      "rows": 236
+    }
+  },
+  "artifacts": {
+    "replay": {
+      "path": "rawlsing_next/n04_r4b_routing_applicability_binding.py",
+      "routing_source": "N03-R2 replay carrying N02-R2 exact-ID routing sidecar",
+      "selection_source": "N04-R3 deterministic build output"
+    },
+    "selected_accounting": {
+      "decoded_bytes": 87315,
+      "decoded_sha256": "ca237bdd68001a93d89624a5d9b3a5a98926c77fa9fe123056a030269e3d3563",
+      "encoded_bytes": 7108,
+      "encoded_sha256": "ceef9f7ff18aedcdd14917aaf427fd71a0f75b21a661b4532f1c7072cad5271e",
+      "encoding": "zlib9_base64_no_lf",
+      "path": "02_SELECTED_159_ROUTING_ACCOUNTING.jsonl.zlib.b64",
+      "rows": 159
+    },
+    "test": {
+      "path": "tests/test_n04_r4b_routing_applicability_binding.py"
+    }
+  },
+  "binding_result": {
+    "law": "UNRESOLVED_NE_ABSENT__UNRESOLVED_NE_OUTSIDE_JURISDICTION__UNRESOLVED_NE_APPLICABLE_CURRENT_REF",
+    "preserved_state_counts": {
+      "APPLICABLE_OR_CURRENT_ROUTING_REF_BOUND": 0,
+      "GOVERNED_KNOWN_ABSENCE_OR_NONAPPLICABILITY": 0,
+      "OUTSIDE_ROUTING_BEARING_JURISDICTION": 0,
+      "UNRESOLVED_ROUTING_APPLICABILITY_AUTHORITY": 159
+    },
+    "routing_applicability_refs_bound": 0,
+    "smallest_exact_basis": "For every selected ID, the accepted N02-R2 exact-ID routing disposition is UNRESOLVED_ROUTING_APPLICABILITY_AUTHORITY. No positive applicable/current routing reference is authorized for binding.",
+    "typed_residual_counts": {
+      "routing_applicability_ref": 159
+    }
+  },
+  "boundaries": [
+    "NO_ROUTING_INFERENCE_FROM_QUESTION_TEXT_LABELS_ADJACENCY_OR_STATISTICS",
+    "ROUTING_CURRENTNESS_NE_SEMANTIC_CURRENTNESS",
+    "KNOWN_ABSENCE_NE_UNRESOLVED",
+    "OUTSIDE_JURISDICTION_NE_UNRESOLVED",
+    "NO_RESPONSE_SEMANTICS_ADJUDICATION",
+    "NO_CANDIDATE_KIND_ADJUDICATION",
+    "NO_STRUCTURAL_OR_CAUSAL_PROMOTION",
+    "PRE_V3_OBJECTIVE_WORLD_ONLY",
+    "NO_OBL063_REVIVAL",
+    "NO_MAIN_OR_SEMANTIC_PRE_MAIN_MUTATION"
+  ],
+  "branch": "agent/rabochii-prev3-n04r4b-routing-binding-r1",
+  "commission_tip": "d73db166bd7bc06fda38c9c2347bbba66014fc1b",
+  "grain": "N04_R3_159_ROUTING_APPLICABILITY_REF_BINDING_R1_ONLY",
+  "hq_fan_in": "05167b4cd30dc751cce797a16baa397bc7d0457d",
+  "hq_handoff": {
+    "checkpoint_id": "20260915T1240-0400",
+    "handoff_commit": "9cdfffdfd0c2ac38bef4b02858cbd21f04aa4ecf",
+    "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354"
+  },
+  "library_access": "NO__NOT_USED",
+  "schema": "RAWLSING_N04_R4B_ROUTING_APPLICABILITY_BINDING_MANIFEST@1.0.0",
+  "selection": {
+    "crosscheck": {
+      "current_positive_response_semantics_ids": 201,
+      "current_positive_response_semantics_without_routing_residual": 42,
+      "exact_candidate_kind_frontier_ids": 42,
+      "identity": "201 - 42 = 159",
+      "note": "This arithmetic is a cross-check only. Deterministic replay selects the predecessor's exact routing-residual status directly."
+    },
+    "family_counts": {
+      "Afrobarometer": 13,
+      "Arab Barometer": 18,
+      "Asian Barometer": 11,
+      "GSS": 55,
+      "Latinobarómetro": 27,
+      "South Asia": 16,
+      "WVS": 19
+    },
+    "law": "EXACT_N04_R3_BINDING_STATUS_EQUALS_BLOCKED_CURRENT_POSITIVE__MISSING_ROUTING_APPLICABILITY_REF",
+    "rows": 159,
+    "serialization_order": "question_implementation_id_lexicographic_ascending",
+    "sorted_id_stream_sha256": "dfe518e369047eff7978e0a9b1161989cf97c1254ac577479e5c7c38b3671a12",
+    "unique_ids": 159,
+    "wave_counts": {
+      "Afrobarometer|R1": 6,
+      "Afrobarometer|R5": 2,
+      "Afrobarometer|R9": 5,
+      "Arab Barometer|I": 8,
+      "Arab Barometer|II": 4,
+      "Arab Barometer|V": 3,
+      "Arab Barometer|VIII": 3,
+      "Asian Barometer|W1": 6,
+      "Asian Barometer|W4": 1,
+      "Asian Barometer|W5": 4,
+      "GSS|1972": 8,
+      "GSS|1973": 10,
+      "GSS|1984": 2,
+      "GSS|1993": 8,
+      "GSS|2002": 7,
+      "GSS|2010": 7,
+      "GSS|2016": 6,
+      "GSS|2024": 7,
+      "Latinobarómetro|1995": 11,
+      "Latinobarómetro|2011": 6,
+      "Latinobarómetro|2024": 10,
+      "South Asia|W1": 8,
+      "South Asia|W2": 8,
+      "WVS|W1": 4,
+      "WVS|W4": 9,
+      "WVS|W7": 6
+    }
+  },
+  "terminal": "PASS__N04_R4B_159_ROUTING_STATES_ACCOUNTED__ZERO_APPLICABLE_CURRENT_REFS__159_UNRESOLVED_PRESERVED",
+  "worker": "N04-R4B"
+}
