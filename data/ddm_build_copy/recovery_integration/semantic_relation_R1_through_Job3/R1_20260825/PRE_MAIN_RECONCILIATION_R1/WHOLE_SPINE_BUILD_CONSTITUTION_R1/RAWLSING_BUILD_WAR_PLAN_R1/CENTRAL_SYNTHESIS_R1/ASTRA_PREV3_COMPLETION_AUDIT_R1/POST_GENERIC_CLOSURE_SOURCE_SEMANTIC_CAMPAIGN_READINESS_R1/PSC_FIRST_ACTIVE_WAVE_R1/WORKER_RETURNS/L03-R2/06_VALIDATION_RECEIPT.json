@@ -1,0 +1,95 @@
+{
+  "schema": "RAWLSING_PSC03_L03_R2_VALIDATION_RECEIPT@1.0.0",
+  "worker_id": "L03-R2",
+  "terminal": "PASS",
+  "branch_before": "bf3641cf0bd42943e2e628a9347c587d298546ac",
+  "tests": [
+    {
+      "id": "T01_BRANCH_IDENTITY",
+      "result": "PASS",
+      "branch": "agent/rabochii-prev3-psc-w1r2-l03-gss-latin-documentary-review-r1",
+      "commission_tip": "bf3641cf0bd42943e2e628a9347c587d298546ac"
+    },
+    {
+      "id": "T02_FAMILY_BINDING",
+      "result": "PASS",
+      "families": ["GSS", "Latinobarómetro"],
+      "family_rediscovery_performed": false
+    },
+    {
+      "id": "T03_T06_BOUND_BLOCKER_ENUMERATION",
+      "result": "PASS",
+      "unique_blocked_rows_in_assigned_families": 18,
+      "by_family": {"GSS": 18, "Latinobarómetro": 0},
+      "by_wave": {"GSS/1973": 6, "GSS/1984": 6, "GSS/1993": 6}
+    },
+    {
+      "id": "T04_EXACT_SUCCESSION_JOIN",
+      "result": "PASS",
+      "join_key": ["source_family", "wave", "semantic_unit_id", "source_variable_code"],
+      "matched": 18,
+      "expected": 18,
+      "successor_artifact": "CUMULATIVE_POSITIVE_RR_NORM_AUTHORITY_THROUGH_R16C_R.csv"
+    },
+    {
+      "id": "T05_SUCCESSOR_STATUS",
+      "result": "PASS",
+      "matched": 18,
+      "expected_status": "RR_NORM_GOVERNED_POSITIVE__QRA_PERMISSION_APPROVAL",
+      "authority_ceiling": "ROLE_ONLY__T06_RELATION_LINK_REQUIRES_SEPARATE_ACTOR_TARGET_ACTION_ADJUDICATION"
+    },
+    {
+      "id": "T06_COMMISSION_DISPOSITION_COUNTS",
+      "result": "PASS",
+      "counts": {
+        "CURRENT_AUTHORITY_ALREADY_RESOLVES__NO_NEW_REVIEW_NEEDED": 18,
+        "DOCUMENTARY_SUPPORT_POSITIVE__CANDIDATE_FOR_ADJUDICATION": 0,
+        "DOCUMENTARY_SUPPORT_NEGATIVE_OR_NONAPPLICABLE__CANDIDATE_FOR_ADJUDICATION": 0,
+        "DOCUMENTARY_CONFLICT__REQUIRES_ADJUDICATION": 0,
+        "DOCUMENTARY_INSUFFICIENT__REMAINS_BLOCKED": 0
+      }
+    },
+    {
+      "id": "T07_CURRENT_BOUND_UNRESOLVED_REMAINDER",
+      "result": "PASS",
+      "count": 0
+    },
+    {
+      "id": "T08_LATINOBAROMETRO_T06_BLOCKED_ROWS",
+      "result": "PASS",
+      "count": 0,
+      "note": "The governed T06 surface contains 24 Latinobarómetro 2024 rows; the assigned-family BLOCKED enumeration contains none. Historical locators are not promoted by absence."
+    },
+    {
+      "id": "T09_QSMV2_STRUCTURAL_BLOCKER_FAMILY_MATCH",
+      "result": "PASS",
+      "artifact": "data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/BLOCKED_QSMV2_IMPLEMENTATIONS_41_R1.csv",
+      "exact_matches": {"GSS": 0, "Latinobarómetro": 0}
+    },
+    {
+      "id": "T10_FQRA_AGGREGATE_BLOCKER_CEILING",
+      "result": "PASS",
+      "current_aggregate_counts": {
+        "BLOCKED_SOURCE_AUTHORITY": 10,
+        "BLOCKED_IDENTITY_OR_AUTHORITY_JOIN": 9
+      },
+      "note": "Aggregate counts do not establish assigned-family membership. No row was assigned to L03-R2 from aggregate counts alone."
+    },
+    {
+      "id": "T11_AUTHORITY_CEILING",
+      "result": "PASS",
+      "new_semantic_authority_minted": 0,
+      "relation_link_decisions_authored": 0,
+      "routing_or_topology_decisions_authored": 0,
+      "provisional_sibling_output_consumed": false,
+      "person_or_psyche_semantics_authored": 0
+    }
+  ],
+  "counts": {
+    "docket_rows": 18,
+    "unresolved_current_bound_rows": 0,
+    "unbound_historical_locator_rows": 4,
+    "evidence_ledger_rows": 4
+  },
+  "pass_law": "FINITE_EVIDENCE_GROUNDED_REVIEW_COMPLETE_FOR_ALL_POSITIVELY_LOCATED_REACHABLE_BLOCKED_OR_REVIEW_REQUIRED_MATERIAL_IN_ASSIGNED_FAMILY_SLICE__UNRESOLVED_MATERIAL_HONESTLY_PRESERVED"
+}

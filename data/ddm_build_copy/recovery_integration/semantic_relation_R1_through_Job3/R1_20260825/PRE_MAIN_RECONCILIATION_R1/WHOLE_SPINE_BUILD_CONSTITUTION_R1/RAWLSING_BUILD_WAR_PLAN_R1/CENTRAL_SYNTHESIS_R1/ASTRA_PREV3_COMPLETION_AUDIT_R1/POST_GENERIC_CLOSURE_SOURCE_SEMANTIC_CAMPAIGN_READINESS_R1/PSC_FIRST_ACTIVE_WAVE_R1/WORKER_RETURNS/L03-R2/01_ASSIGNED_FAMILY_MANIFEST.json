@@ -1,0 +1,46 @@
+{
+  "schema": "RAWLSING_PSC03_L03_R2_ASSIGNED_FAMILY_MANIFEST@1.0.0",
+  "worker_id": "L03-R2",
+  "grain": "PREV3_PSC03_LIBRARY_DOCUMENTARY_REVIEW_GSS_AND_LATINOBAROMETRO_R2_ONLY",
+  "branch": "agent/rabochii-prev3-psc-w1r2-l03-gss-latin-documentary-review-r1",
+  "commission_tip": "bf3641cf0bd42943e2e628a9347c587d298546ac",
+  "hq_substantive_authority_commit": "aea759b8b4234081e6348b0adb721c3c3f345f1f",
+  "carrier": {
+    "artifact": "LAYER1_GOVERNED_35WAVE_CATALOGS.zip",
+    "sha256": "b569c3677514e627bccb6f920c7aefd7c1d7bb452eb906ddd8913a69d27dac7d",
+    "active_implementation_count": 18276,
+    "unique_implementation_count": 18276,
+    "wave_scope_count": 35,
+    "deep_family_catalog_count": 9
+  },
+  "families": [
+    {
+      "source_family": "GSS",
+      "catalog_rows": 6021,
+      "deep_catalog_sha256": "74496af09f5feba9defc1d2991977e79343da97c87c1fce93f1e9ab4ada31b99",
+      "waves": {
+        "1972": 216,
+        "1973": 339,
+        "1984": 675,
+        "1993": 752,
+        "2002": 1119,
+        "2010": 922,
+        "2016": 1018,
+        "2024": 980
+      }
+    },
+    {
+      "source_family": "Latinobarómetro",
+      "catalog_rows": 812,
+      "deep_catalog_sha256": "9993607de206a00ed1d6c63b599e5115dc0c1925bffcb10a81544eadaf83cf8c",
+      "waves": {
+        "1995": 203,
+        "2011": 414,
+        "2024": 195
+      }
+    }
+  ],
+  "authority_law": "CATALOG_MEMBERSHIP_IDENTITY != QUESTION_SEMANTIC_AUTHORITY != ROUTING_AUTHORITY",
+  "sibling_law": "NO_PROVISIONAL_SIBLING_OUTPUT_IS_AUTHORITY__HQ_FANIN_OWNER",
+  "family_rediscovery_performed": false
+}
