@@ -1,0 +1,63 @@
+{
+  "schema": "RAWLSING_N05_FUNCTION_GRAIN_RESIDUAL_NORMALIZATION_CERTIFICATE@1.0.0",
+  "status": "PASS",
+  "terminal": "N05_PASS__CURRENT_FUNCTION_GRAIN_PSC_RESIDUAL_QUEUE_FROZEN__READY_FOR_HQ_FANIN",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-prev3-psc-w1-n05-function-grain-residual-normalization-r1",
+  "commission_tip": "d619a4f24d7c1ddff33ca5bcd4afe1f25f1f4b5b",
+  "grain": "PREV3_PSC01_PSC03_FUNCTION_GRAIN_RESIDUAL_NORMALIZATION_R1_ONLY",
+  "library": "FORBIDDEN__NOT_USED",
+  "artifact_blobs": {
+    "00_FUNCTION_NORMALIZATION_HOLDING.md": "1c318cb66365616b017c925303d1b507de6428b6",
+    "01_CURRENT_FUNCTION_RESIDUAL_LEDGER.json": "b54ef231705dd7630e3ddf38e935569bc70fe556",
+    "02_HISTORICAL_DEBT_TO_CURRENT_FUNCTION_CROSSWALK.json": "f0cf4ed09de74f5f75082a1fa5b75954722c66a9"
+  },
+  "counts": {
+    "unique_current_functions": 26,
+    "binding_psc01_psc03_functions": 11,
+    "binding_open_functional_gaps": 3,
+    "binding_open_proof_gaps": 1,
+    "binding_typed_unresolved_preservation_complete": 7,
+    "conditional_only_functions": 2,
+    "later_psc_functions": 2,
+    "crosswalk_rows": 100,
+    "long_memory_obligations_covered": 44,
+    "long_memory_queue_rows_covered": 30,
+    "pre_psc_seed_rows_covered": 11,
+    "p10_bundles_covered": 8,
+    "corrective_or_gap_rows_covered": 7
+  },
+  "validation_checks": {
+    "ledger_json_valid": true,
+    "crosswalk_json_valid": true,
+    "unique_function_ids": true,
+    "binding_queue_11": true,
+    "all_crosswalk_function_refs_resolve": true,
+    "LMX_44_covered": true,
+    "LMQ_30_covered": true,
+    "PSC03_Q11_covered": true,
+    "P10_B8_covered": true,
+    "corrections_7_covered": true,
+    "LMQ010_not_binding": true,
+    "maintenance_lifecycle_not_binding": true,
+    "adaptive_discovery_and_specificity_walkback_not_binding": true,
+    "historical_trial_denominator_retired": true,
+    "postgresql_not_current_semantic_requirement": true,
+    "person_driver_terminal_outside_prev3": true
+  },
+  "exact_closed_receipts": {
+    "semantic_authority_maintenance": "Authority42 A03 result blob 131c049cd6c5789c842496e7478a09cc32c6a310; 21 passed",
+    "adaptive_discovery": "Authority42 A04 result blob 0dabb886a609c992ebfbeed575802ad39c636feb; 63 passed",
+    "positioned_subject_walkback": "Authority42 A05 result blob e6cf6f477306c9066cb54c554291c475307a0dfc; 16 passed",
+    "qsr_destructive_replay": "A08 return 2ce39103eba9d63d433a1325a2c2b938a49af1f1; 35/35 producers; 18,792x69; QSR SHA256 9139c1ab77bf47a872f63ccae7784f3631f03a3e02a936b4ac41e75580c45219; zero differences",
+    "representative_reverse_lineage_restart": "Authority42 A02 result blob 215a51c6c39ca5363dead08c0e9077e7e9a8d505; 94 passed",
+    "bounded_projection_authority_role": "Authority41 Z04; 71/71 PASS",
+    "p10_preservation": "65,354 units; 45 census rows; 76 governed unresolved states; preservation gap count 0"
+  },
+  "mandatory_corrections": {
+    "historical_700_trial": "RETIRED_AS_CURRENT_DENOMINATOR__F02_FULL_18276_FUNCTION_SURVIVES",
+    "LMQ_013": "BACKEND_NEUTRAL_PROOF_REMAINS_OPEN__POSTGRESQL_NOT_REQUIRED",
+    "OBL063": "QUARANTINED__OUTSIDE_PREV3"
+  },
+  "test_mode": "DOCUMENTARY_LEDGER_INVARIANTS_ONLY__NO_CODE_RUNTIME_OR_LIBRARY_ACCESS_REQUIRED"
+}
