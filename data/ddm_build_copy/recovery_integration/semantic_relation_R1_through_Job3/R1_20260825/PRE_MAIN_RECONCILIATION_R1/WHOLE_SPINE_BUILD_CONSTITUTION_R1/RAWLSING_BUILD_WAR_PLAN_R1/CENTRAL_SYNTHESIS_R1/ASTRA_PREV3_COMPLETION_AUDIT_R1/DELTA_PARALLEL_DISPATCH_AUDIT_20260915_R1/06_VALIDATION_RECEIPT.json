@@ -1,0 +1,25 @@
+{
+  "schema": "ASTRA_DELTA_PACKET_VALIDATION_R1",
+  "status": "AUDIT_EVIDENCE_AND_PROPOSED_HQ_DISPATCH__NOT_SELF_ADOPTED",
+  "checkpoint_id": "20260915T1240-0400",
+  "handoff_commit": "9cdfffdfd0c2ac38bef4b02858cbd21f04aa4ecf",
+  "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354",
+  "observed_control_head": "58e807c72327d6aa02ffcb1ccc33ed79deb14a5d",
+  "repository": "maidiu/rawlsing",
+  "dispatch_authority": "HQ must reconcile this proposal and seal actual commissions; only N04-R3 is currently commissioned. Readiness below is readiness for HQ release at the stated grain, not permission to bypass the sealed registry.",
+  "checks": {
+    "fetched_source_git_blob_hashes": "PASS",
+    "original_inherited_plan_files_match_sealed_tree": "PASS",
+    "unique_lane_ids": "PASS",
+    "all_evidence_refs_resolve": "PASS",
+    "all_explicit_local_edges_resolve_and_are_acyclic": "PASS",
+    "S03_28_determinants_partitioned_exactly_once": "PASS",
+    "calibration_wait_is_local": "PASS",
+    "LiTS_wait_is_exact_two_feeder_join": "PASS",
+    "no_fabricated_universal_N04_edge": "PASS",
+    "LATEST_and_N04_R3_unchanged_on_recheck": "PASS"
+  },
+  "scope": "Audit artifact consistency only; no production test or authority adoption implied.",
+  "source_file_count": 54,
+  "lane_count": 24
+}
