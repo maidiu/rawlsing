@@ -1,10 +1,48 @@
 """Exact denominator, target, measure and EmpiricalFact construction for PRE553 I03."""
 from rawlsing_next._pre553_query_common import *
 from rawlsing_next._pre553_query_predicate import (
+    _compile_derived_branch_memberships,
     _eval_predicate,
     _question_matches,
     _validate_public_object_authorities,
 )
+
+
+class _UsedObjectAccumulator(list[CanonicalSemanticObject | C11InternalRecord]):
+    """Append-compatible exact-ref deduplication for evaluation provenance."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self._seen_keys: set[str] = set()
+
+    def append(self, obj: CanonicalSemanticObject | C11InternalRecord) -> None:
+        key = obj.ref.key
+        if key in self._seen_keys:
+            return
+        self._seen_keys.add(key)
+        super().append(obj)
+
+    def extend(self, objects: Iterable[CanonicalSemanticObject | C11InternalRecord]) -> None:
+        for obj in objects:
+            self.append(obj)
+
+
+class _UsedAuthorityAccumulator(list[AuthorityRef]):
+    """Append-compatible exact-authority deduplication for evaluation closure."""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self._seen_keys: set[str] = set()
+
+    def append(self, ref: AuthorityRef) -> None:
+        if ref.key in self._seen_keys:
+            return
+        self._seen_keys.add(ref.key)
+        super().append(ref)
+
+    def extend(self, refs: Iterable[AuthorityRef]) -> None:
+        for ref in refs:
+            self.append(ref)
 
 
 def _routing_fact_for(
@@ -45,36 +83,19 @@ def _routing_fact_for(
 
 
 def _risk_membership(
-    respondent: RespondentIdentity,
-    index: _ReleaseIndex,
+    routing_states: Sequence[str],
     *,
-    plan: _TargetPlan,
     profile: _ExecutionProfile,
-    risk_set_ref: ExactRef,
-    registry: AuthorityRegistry,
-    used: list[CanonicalSemanticObject | C11InternalRecord],
-    used_auth: list[AuthorityRef],
 ) -> tuple[bool, bool]:
-    """Return ``(member, explicitly_inapplicable)`` for one scoped respondent."""
-    statuses: list[str] = []
-    for component in plan.components:
-        fact = _routing_fact_for(
-            respondent,
-            index,
-            target_ref=component.target_ref,
-            risk_set_ref=risk_set_ref,
-            registry=registry,
-            used=used,
-            used_auth=used_auth,
-        )
-        state = str(fact.routing_state)
+    """Return membership from routing states already resolved and authority-validated."""
+    statuses = [str(state) for state in routing_states]
+    for state in statuses:
         if state in UNRESOLVED_ROUTING_STATES:
             raise EmpiricalQueryResolutionError(
                 "routing/risk-set state is unresolved; it may not be coerced to nonmembership"
             )
         if state not in ELIGIBLE_ROUTING_STATES | EXPLICIT_NONMEMBER_ROUTING_STATES:
             raise EmpiricalQueryResolutionError(f"unknown exact routing state {state!r}")
-        statuses.append(state)
 
     if profile.risk_set_type == "COMMON_ELIGIBLE_RISK_SET":
         member = all(state in ELIGIBLE_ROUTING_STATES for state in statuses)
@@ -310,8 +331,8 @@ def _evaluate_index_group(
         {canonical_json(cell): Fraction(0, 1) for cell in plan.full_domain}
         if profile.measure_kind == "GOVERNED_WEIGHTED" else None
     )
-    used: list[CanonicalSemanticObject | C11InternalRecord] = []
-    used_auth: list[AuthorityRef] = []
+    used: list[CanonicalSemanticObject | C11InternalRecord] = _UsedObjectAccumulator()
+    used_auth: list[AuthorityRef] = _UsedAuthorityAccumulator()
     risk_members: list[ExactRef] = []
     denominator_members: list[ExactRef] = []
     raw_resolved = 0
@@ -319,6 +340,7 @@ def _evaluate_index_group(
     weighted_resolved = Fraction(0, 1) if weighted_cells is not None else None
     inapplicable_count = 0
     component_positive = [False] * plan.arity
+    derived_branch_memberships = _compile_derived_branch_memberships(predicate.predicate_ast)
 
     for index in sorted(indices, key=lambda item: item.universe.ref.key):
         used.extend([index.universe, index.release.replay_manifest])
@@ -339,14 +361,8 @@ def _evaluate_index_group(
                 if fact.routing_state in ELIGIBLE_ROUTING_STATES:
                     component_positive[i] = True
             member, explicitly_inapplicable = _risk_membership(
-                respondent,
-                index,
-                plan=plan,
+                per_target_states,
                 profile=profile,
-                risk_set_ref=risk_set_ref,
-                registry=registry,
-                used=used,
-                used_auth=used_auth,
             )
             if explicitly_inapplicable:
                 inapplicable_count += 1
@@ -360,6 +376,7 @@ def _evaluate_index_group(
                 registry=registry,
                 used=used,
                 used_auth=used_auth,
+                derived_branch_memberships=derived_branch_memberships,
             )
             if not condition:
                 continue

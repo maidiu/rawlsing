@@ -202,7 +202,8 @@ class GovernedC11Projection:
             raise SourceBackedC11FacadeError("required authority absent from projection closure")
         if len({x.row_ordinal for x in self.row_bindings}) != len(self.row_bindings):
             raise SourceBackedC11FacadeError("duplicate row replay coordinate")
-        if any(x.respondent_ref not in {r.ref for r in self.respondents} for x in self.row_bindings):
+        respondent_refs = {r.ref for r in self.respondents}
+        if any(x.respondent_ref not in respondent_refs for x in self.row_bindings):
             raise SourceBackedC11FacadeError("row binding references absent respondent")
         slots = [x.slot.key for x in (*self.response_slots, *self.coordinate_slots, *self.weight_slots)]
         if len(slots) != len(set(slots)):
@@ -297,7 +298,8 @@ def project_c11_candidate_from_physical_cells(*, source_sha256:str,row_count:int
     _sha(source_sha256,"source_sha256")
     if source_sha256 != projection.expected_source_sha256: raise SourceBackedC11FacadeError("source SHA mismatch")
     respondent_by_ref={r.ref:r for r in projection.respondents}; rows={x.row_ordinal:respondent_by_ref[x.respondent_ref] for x in projection.row_bindings}
-    if set(rows)!=set(range(1,row_count+1)): raise SourceBackedC11FacadeError("row/respondent replay map must cover source exactly")
+    if len(rows) != row_count:
+        raise SourceBackedC11FacadeError("row/respondent replay map cardinality differs from exact physical stream")
     rs={x.slot.key:x for x in projection.response_slots}; cs={x.slot.key:x for x in projection.coordinate_slots}; ws={x.slot.key:x for x in projection.weight_slots}
     projected=set(rs)|set(cs)|set(ws); seen={s:set() for s in projected}; events=[]; coords=[]; weights=[]
     for cell in cells:
@@ -315,7 +317,7 @@ def project_c11_candidate_from_physical_cells(*, source_sha256:str,row_count:int
             slot=cs[key]; rule={x.physical_key:x for x in slot.values}.get(pv); coords.append(_coordinate(source_sha256,cell.row_ordinal,respondent,slot,cell,rule,projection))
         else:
             slot=ws[key]; rule={x.physical_key:x for x in slot.values}.get(pv); weights.append(_weight(source_sha256,cell.row_ordinal,respondent,slot,cell,rule,projection))
-    expected=set(range(1,row_count+1))
+    expected=set(rows)
     if any(v!=expected for v in seen.values()): raise SourceBackedC11FacadeError("projected slot incomplete; absent physical cell is not semantic absence")
     events=tuple(sorted(events,key=lambda x:x.ref.key)); coords=tuple(sorted(coords,key=lambda x:x.ref.key))
     weight_section=tuple(sorted(weights,key=lambda x:x.ref.key)) if projection.weight_slots else TypedAbsence("NOT_APPLICABLE")

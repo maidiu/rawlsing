@@ -1,0 +1,30 @@
+name: I03 Scale Equivalence Repair R1
+
+on:
+  pull_request:
+  push:
+    branches:
+      - agent/rabochii-gt12-r4a-i03-scale-equivalence-repair-r1
+  workflow_dispatch:
+
+jobs:
+  bounded-i03-equivalence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pytest
+        run: python -m pip install --disable-pip-version-check pytest
+      - name: Focused I03 repair court
+        run: python -m pytest -q rawlsing_next/tests/test_pre553_i03_scale_equivalence_repair.py
+      - name: Required PRE553 I03 regression
+        run: python -m pytest -q rawlsing_next/tests/test_pre553_empirical_query.py
+      - name: Required GT12 I03 positive-facts regression
+        run: python -m pytest -q rawlsing_next/tests/test_wave1_gt12_i03_positive_facts.py
+      - name: Required GT12 A2 real-GT1 regression
+        run: python -m pytest -q rawlsing_next/tests/test_wave1_gt12_a2_real_gt1.py
+      - name: Smallest inherited PRE553 authority court
+        run: python -m pytest -q rawlsing_next/tests/test_pre553_empirical_objects_authority.py
