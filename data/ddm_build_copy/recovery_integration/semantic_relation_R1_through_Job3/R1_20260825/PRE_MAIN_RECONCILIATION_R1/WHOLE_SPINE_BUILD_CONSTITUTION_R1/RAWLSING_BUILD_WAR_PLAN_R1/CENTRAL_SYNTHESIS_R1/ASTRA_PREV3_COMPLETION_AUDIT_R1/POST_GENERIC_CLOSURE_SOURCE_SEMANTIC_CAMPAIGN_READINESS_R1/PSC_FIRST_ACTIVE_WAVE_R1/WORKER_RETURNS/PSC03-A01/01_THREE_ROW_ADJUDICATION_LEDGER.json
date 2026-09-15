@@ -1,0 +1,122 @@
+{
+  "commission_base_hq_authority": "2e5e142700b87cc87934c337ef6d5b8ffcf3cfb7",
+  "commission_tip": "5019473c181cc7a69f95378b9602be36cefe3904",
+  "exact_grain": "PREV3_PSC03_AFRO_ARAB_RETURNED_CANDIDATE_ADJUDICATION_R1_ONLY",
+  "rows": [
+    {
+      "affected_current_implementation_ids": [
+        "question_impl.phase0.260e5948ea928fb7a25b",
+        "question_impl.phase0.f1b44061f95145dd4a27",
+        "question_impl.phase0.4638eadf4cb915986605",
+        "question_impl.phase0.f1aeb4e1d2dbb6b62ad0",
+        "question_impl.phase0.d527f4d8dda154fc61d3",
+        "question_impl.phase0.6d22e63d50873e702fd6",
+        "question_impl.phase0.7a2909c5f05e076df759",
+        "question_impl.phase0.251761d1ad01d5d7b050",
+        "question_impl.phase0.55ff7524e74424bc13d2"
+      ],
+      "current_authority_already_resolves": false,
+      "disposition": "ADJUDICATED_SOURCE_CONFLICT__REMAINS_BLOCKED_PENDING_CORRECTION",
+      "exact_source_provenance": [
+        {
+          "library_file_id": "file_00000000f194722fa72b5189c011664d",
+          "locator": "Q851e1/Q851e2/Q851a/Q851b/Q851c/Q851d programmer clauses",
+          "name": "ABV_Questionnaire_ENG_v2.pdf",
+          "pages": [
+            36,
+            37
+          ]
+        },
+        {
+          "library_file_id": "file_00000000eeac822f90e2a464b92acdf1",
+          "locator": "J01A-R2-D-GAP-005",
+          "name": "GLOBAL_SOURCE_GAPS.csv"
+        }
+      ],
+      "gap_id": "J01A-R2-D-GAP-005",
+      "inferred_repair": false,
+      "proved_fact": "Native Wave V source repeatedly prints COUNTRY != 9 OR 16 and Q851d extends that expression with Q851a/Q851b gates; source does not disambiguate the bare 16 into a lawful country comparison.",
+      "required_future_authority": "Source-issued erratum or authoritative programming specification clarifying the intended country predicate.",
+      "source_family": "Arab Barometer",
+      "source_variable": "Q851D",
+      "wave_scope": "V"
+    },
+    {
+      "affected_current_implementation_ids": [
+        "question_impl.phase0.a698be5473641454a55e",
+        "question_impl.phase0.8deb8ed01c0272d11bdb",
+        "question_impl.phase0.5be538a1f03b6bbb4a61",
+        "question_impl.phase0.ff94a5a67bed8be241b3"
+      ],
+      "current_authority_already_resolves": false,
+      "disposition": "ADJUDICATED_SOURCE_CONFLICT__REMAINS_BLOCKED_PENDING_CORRECTION",
+      "exact_source_provenance": [
+        {
+          "library_file_id": "file_00000000682c722f9ea8eb2e8830e790",
+          "locator": "Q516B parent and four printed member split labels",
+          "name": "ENG-Arab-Barometer-Wave-VIII-Questionnaire-RELEASE-FIN-NOV-2024-1.pdf",
+          "pages": [
+            23
+          ]
+        },
+        {
+          "library_file_id": "file_00000000eeac822f90e2a464b92acdf1",
+          "locator": "J01A-R2-D-GAP-006",
+          "name": "GLOBAL_SOURCE_GAPS.csv"
+        }
+      ],
+      "gap_id": "J01A-R2-D-GAP-006",
+      "inferred_repair": false,
+      "proved_fact": "Q516B parent is printed as SPLIT B while all four Q516B member lines are printed as SPLIT A.",
+      "required_future_authority": "Source-issued corrected instrument or authoritative programming specification.",
+      "source_family": "Arab Barometer",
+      "source_variable": "Q516B",
+      "wave_scope": "VIII"
+    },
+    {
+      "current_authority_already_resolves": false,
+      "current_implementation_ids": {
+        "V": "question_impl.phase0.4a4e3547ef8868c743bd",
+        "VIII": "question_impl.phase0.85fb318f4dbe7633a530"
+      },
+      "disposition": "ADJUDICATED_NEGATIVE_EQUIVALENCE_OR_NONCONTINUITY__EXACT_BASIS",
+      "exact_source_provenance": [
+        {
+          "library_file_id": "file_00000000f194722fa72b5189c011664d",
+          "locator": "Q104b destination-country multi-select; Tunisia response option 12",
+          "name": "ABV_Questionnaire_ENG_v2.pdf",
+          "pages": [
+            10
+          ]
+        },
+        {
+          "library_file_id": "file_00000000682c722f9ea8eb2e8830e790",
+          "locator": "Q104B_TUN programmer gate and yes/no stem",
+          "name": "ENG-Arab-Barometer-Wave-VIII-Questionnaire-RELEASE-FIN-NOV-2024-1.pdf",
+          "pages": [
+            27
+          ]
+        },
+        {
+          "library_file_id": "file_000000004c4c822fa8519e7f333cfaf5",
+          "locator": "row 10 / arab_wording_revision_378d502b1633f8876c12",
+          "name": "Rawlsing_P2_Arab_Barometer_Wording_Revision_Review_Queue_v1.csv"
+        },
+        {
+          "library_file_id": "file_00000000eeac822f90e2a464b92acdf1",
+          "locator": "J01A-R2-D-GAP-007",
+          "name": "GLOBAL_SOURCE_GAPS.csv"
+        }
+      ],
+      "gap_id": "J01A-R2-D-GAP-007",
+      "inferred_repair": false,
+      "proved_fact": "Wave V implementation is the Tunisia destination-country response within Q104b; Wave VIII implementation is a Tunisia-gated binary question asking whether the respondent is preparing to emigrate. Same source code therefore does not carry the same proposition/response role.",
+      "separate_wave_v_destination_set_binding_status": "UNRESOLVED__NOT_ADJUDICATED_BY_THIS_NEGATIVE_CONTINUITY_RULING",
+      "source_family": "Arab Barometer",
+      "source_variable": "Q104B_TUN",
+      "wave_scope": "V<->VIII"
+    }
+  ],
+  "schema": "RAWLSING_PSC03_A01_THREE_ROW_ADJUDICATION_LEDGER@1.0.0",
+  "worker_id": "PSC03-A01"
+}
