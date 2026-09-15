@@ -1,0 +1,71 @@
+{
+  "accepted_predecessor_commit": "b412ed40b287f7acdcb24c137fd2475c13be2388",
+  "artifacts_00_03_manifest_sha256": "07d4993d64251978e9af11550a1282d90ab15ee0ed9057512300858a3c88d926",
+  "artifacts_covered": {
+    "00_RETURN.md": {
+      "bytes": 4487,
+      "sha256": "fd0b2e1797a59a05069a14048a54a3f0c173aefb2f521a25157863f6a2cb8fdd"
+    },
+    "01_ADJUDICATION_LEDGER.csv": {
+      "bytes": 10780,
+      "sha256": "12ec8a90966798ea0e7ad4c92612d8e58cb8c47a81d7d26a2e94a908df2d4ad6"
+    },
+    "02_EVIDENCE_CURRENT_AUTHORITY_MANIFEST.json": {
+      "bytes": 8505,
+      "sha256": "d2825698b500a5274f543f68ebaa831d390d816e6ad32eaf2d07f5b58b8aded0"
+    },
+    "03_PRESERVED_REMAINDER_LEDGER.csv": {
+      "bytes": 6349,
+      "sha256": "62c677dec57c2ae5b30b9517f11d575201ad25c337e3d54ff744a7f6f7395fdd"
+    }
+  },
+  "authority_effect": "CANDIDATE_SOURCE_NATIVE_SEMANTIC_CAPITAL_ONLY__HQ_FINAL_ADOPTION_REQUIRED",
+  "branch": "agent/rabochii-prev3-psc-w2-a03-lits-south-asia-documentary-adjudication-r1",
+  "commission_base_hq_authority": "2e5e142700b87cc87934c337ef6d5b8ffcf3cfb7",
+  "counts": {
+    "adjudicated_ready_for_hq_adoption": 47,
+    "assigned_objects": 48,
+    "current_authority_already_resolves": 0,
+    "documentary_conflict_blocked": 1,
+    "documentary_insufficient_assigned": 0,
+    "lits_objects": 41,
+    "preserved_fail_closed_parents": 3,
+    "preserved_lits_alias_groups": 10,
+    "preserved_lits_aliases": 94,
+    "preserved_unresolved_child_members": 4,
+    "south_asia_objects": 7
+  },
+  "exact_blocked_assigned_object": "LITS-IV-GROUP-Q",
+  "parent_tip": "8e05fc2d5ceb90fc057784da16af1aa213675fae",
+  "receipt_scope": "SHA-256 values bind exact local bytes of artifacts 00-03. The final Git commit will bind artifacts 00-04, including this receipt; no receipt self-hash is asserted.",
+  "schema": "PSC03_A03_VALIDATION_RECEIPT_R1",
+  "source_escalation_receipts": {
+    "LITS-IV-GROUP-Q405": "LITS_IV_Q4_05_PAGE_45__NINE_ITEM_SOURCE_NATIVE_BATTERY",
+    "LITS-IV-GROUP-Q809": "LITS_IV_Q8_09_PAGES_76_77__FOUR_ITEM_SOURCE_NATIVE_BATTERY"
+  },
+  "terminal": "PSC03_A03_PASS__48_LITS_SOUTH_ASIA_DOCUMENTARY_CANDIDATES_ADJUDICATED__47_READY_FOR_HQ_ADOPTION__1_CURRENT_AUTHORITY_CONFLICT_BLOCKED__3_PARENTS_4_CHILDREN_PRESERVED",
+  "validation_checks": {
+    "V01_ASSIGNED_COUNT_48": true,
+    "V02_ASSIGNED_FAMILY_COUNTS_41_7": true,
+    "V03_UNIQUE_OBJECT_IDS": true,
+    "V04_EXACT_SET_EQUALS_L04_POSITIVE_SURFACE": true,
+    "V05_ALLOWED_DISPOSITIONS_ONLY": true,
+    "V06_DISPOSITION_COUNTS_47_READY_1_CONFLICT": true,
+    "V07_CONFLICT_EXACTLY_GENERIC_LITS_IV_Q": true,
+    "V08_ALL_CURRENT_OBJECTS_REVIEW_REQUIRED": true,
+    "V09_ALL_R5_READY_FOR_ADJUDICATION": true,
+    "V10_Q405_SOURCE_COUNT_9": true,
+    "V11_Q809_SOURCE_COUNT_4": true,
+    "V12_GENERIC_Q_CONFLICT_6_VS_800": true,
+    "V13_PARENT_REMAINDERS_3": true,
+    "V14_CHILD_REMAINDERS_4": true,
+    "V15_CHILD_CURRENT_EXACT_BINDINGS_ZERO": true,
+    "V16_ALIAS_GROUPS_10": true,
+    "V17_ALIAS_COUNT_94": true,
+    "V18_POSITIVE_PROPOSITIONS_NONEMPTY": true,
+    "V19_NEGATIVE_CEILING_ALL_48": true,
+    "V20_NO_PROVISIONAL_SIBLING_AUTHORITY": true
+  },
+  "validation_terminal": "PASS",
+  "worker_id": "PSC03-A03"
+}
