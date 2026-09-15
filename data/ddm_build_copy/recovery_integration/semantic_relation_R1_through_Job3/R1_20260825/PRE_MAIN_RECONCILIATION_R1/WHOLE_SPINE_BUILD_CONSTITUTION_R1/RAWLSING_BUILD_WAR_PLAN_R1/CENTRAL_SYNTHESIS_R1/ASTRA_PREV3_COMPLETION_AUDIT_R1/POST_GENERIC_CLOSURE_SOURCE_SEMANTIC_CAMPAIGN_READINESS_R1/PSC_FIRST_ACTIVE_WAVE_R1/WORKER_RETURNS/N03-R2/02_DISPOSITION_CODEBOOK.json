@@ -1,0 +1,14 @@
+{
+  "schema": "RAWLSING_N03_R2_DISPOSITION_CODEBOOK@1.0.0",
+  "codes": {
+    "0": "CURRENT_GOVERNED_POSITIVE",
+    "1": "CURRENT_GOVERNED_NEGATIVE_OR_FORBIDDEN",
+    "2": "CURRENT_GOVERNED_REVIEW_REQUIRED",
+    "3": "BLOCKED_DOCUMENTARY_AUTHORITY",
+    "4": "SUPERSEDED_BY_EXACT_NEWER_AUTHORITY",
+    "5": "OUTSIDE_SUPPORTED_PREV3_WORKLOAD",
+    "6": "CURRENT_TYPED_UNRESOLVED__EXACT_BASIS"
+  },
+  "used_code_law": "Replay may emit only states justified by explicit accepted authority. This R2 law mechanically emits 0, 2, or 6; codes 1,3,4,5 remain reserved and MUST stay unused absent a separately explicit implementation-level authority basis.",
+  "top_level_is_not_jurisdiction_collapse": true
+}
