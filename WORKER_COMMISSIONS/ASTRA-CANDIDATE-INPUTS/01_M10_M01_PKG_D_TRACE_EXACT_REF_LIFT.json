@@ -1,0 +1,390 @@
+{
+  "accepted_inputs": {
+    "m10_source_ledger_blob_sha1": "606de007e0f6dcb28e552bd8c959f3c4ec1fd2a7",
+    "m10_source_worker_commit": "0ebca9ff111bea63838f9b68c8e5c3cb93d9d128",
+    "repaired_t01_candidate_hash": "60e0f41b8cd1e3b22f43dbfc2cb8bbf97c81aec7f1664486ec4adf92533af505",
+    "repaired_t01_qualification_return_commit": "b577200b8eab79b02f88aeba0997482d21d3c4e7",
+    "repaired_t01_return_blob_sha1": "020007dd112654609f072048c53edf28b1e28e6b",
+    "wright_ch3_supplied_loci": [
+      "857-909",
+      "951-959",
+      "978-996"
+    ]
+  },
+  "binding_files": [
+    {
+      "determinant_id": "GBE-R4-005",
+      "field_path": "constitution_current_selection_ref",
+      "payload_file": "PAYLOADS/05_CONSTITUTION_CURRENT_SELECTION.json",
+      "ref": {
+        "content_hash": "141260a47d7540229722646dff41c4886dc02240fbcde96f1810c75be15e851d",
+        "kind": "SDTF_R4_CONSTITUTION_CURRENT_SELECTION",
+        "object_id": "SDTF_R4_MECHANISM_RULE_AUTHORITY_BINDING_R1@1.0.0:HQ_RUNTIME_ADOPTION_R1"
+      }
+    },
+    {
+      "determinant_id": "GBE-R4-006",
+      "field_path": "trace.source_refs",
+      "payload_file": "PAYLOADS/06_DOCUMENTARY_SOURCE.json",
+      "ref": {
+        "content_hash": "051472e4d013b93df75acd0dfe0c6816dd657337fbfb62a79fdf9890fe712b4b",
+        "kind": "SDTF_DOCUMENTARY_SOURCE",
+        "object_id": "WRIGHT_CLASSES_1985:M10_SOURCE_LEDGER_R1"
+      }
+    },
+    {
+      "determinant_id": "GBE-R4-007",
+      "field_path": "trace.claim_refs",
+      "payload_file": "PAYLOADS/07_SOURCE_CLAIM_857-909.json",
+      "ref": {
+        "content_hash": "258a87bf37989e19533ccff373fa6c58250f3f0620601f09c4c4b2ef482c830f",
+        "kind": "SDTF_SOURCE_CLAIM",
+        "object_id": "M10-M01:WRIGHT_CLASSES_CH3:857-909"
+      }
+    },
+    {
+      "determinant_id": "GBE-R4-007",
+      "field_path": "trace.claim_refs",
+      "payload_file": "PAYLOADS/07_SOURCE_CLAIM_951-959.json",
+      "ref": {
+        "content_hash": "75196a71a20e7df1b3fa1f39e66764f3d23c8bff7daf5d63076e313da9d3dcbe",
+        "kind": "SDTF_SOURCE_CLAIM",
+        "object_id": "M10-M01:WRIGHT_CLASSES_CH3:951-959"
+      }
+    },
+    {
+      "determinant_id": "GBE-R4-007",
+      "field_path": "trace.claim_refs",
+      "payload_file": "PAYLOADS/07_SOURCE_CLAIM_978-996.json",
+      "ref": {
+        "content_hash": "cf45e539ca3d6f2a06e7fb74868d22e01cadef174996362e162601b72378e8b6",
+        "kind": "SDTF_SOURCE_CLAIM",
+        "object_id": "M10-M01:WRIGHT_CLASSES_CH3:978-996"
+      }
+    },
+    {
+      "determinant_id": "GBE-R4-008",
+      "field_path": "trace.evidence_status_ref",
+      "payload_file": "PAYLOADS/08_EVIDENCE_STATUS.json",
+      "ref": {
+        "content_hash": "b93456af810957275b178df555147eddc15433158da5abd2352717e0ea213fae",
+        "kind": "SDTF_SOURCE_EVIDENCE_STATUS",
+        "object_id": "M10-M01:WRIGHT_CLASSES:EVIDENCE_STATUS@1.0.0"
+      }
+    },
+    {
+      "determinant_id": "GBE-R4-011",
+      "field_path": "trace.required_objective_inputs_bindings_ref",
+      "payload_file": "PAYLOADS/11_REQUIRED_OBJECTIVE_INPUTS.json",
+      "ref": {
+        "content_hash": "c013ce882a9c4b72f334b8ac2479e5dda066a2752f6df41bbc5127a48630b983",
+        "kind": "SDTF_REQUIRED_OBJECTIVE_INPUT_BINDINGS",
+        "object_id": "M10-M01:PROPERTY_SEPARATION_WAGE_DEPENDENCY@1.0.0"
+      }
+    },
+    {
+      "determinant_id": "GBE-R4-015",
+      "field_path": "trace.currentness_ceiling_ref",
+      "payload_file": "PAYLOADS/15_CURRENTNESS_CEILING.json",
+      "ref": {
+        "content_hash": "ebbb00e6f756fc593709187cc250e93091b18a4154380e780277658ff60a874c",
+        "kind": "SDTF_CURRENTNESS_CEILING",
+        "object_id": "M10-M01:R4_NONCOLLAPSE@1.0.0"
+      }
+    },
+    {
+      "determinant_id": "GBE-R4-016",
+      "field_path": "trace.historical_institutional_validity_ref",
+      "payload_file": "PAYLOADS/16_HISTORICAL_INSTITUTIONAL_VALIDITY.json",
+      "ref": {
+        "content_hash": "8fc7f01a3d8f77f9f17ccbaa010662db3eadc1d6fa2c17567c16fcafc3ab4874",
+        "kind": "SDTF_HISTORICAL_INSTITUTIONAL_VALIDITY",
+        "object_id": "M10-M01:WRIGHT_CLASSES_PROPERTY_ASSET_RULE_CONTEXT@1.0.0"
+      }
+    },
+    {
+      "determinant_id": "GBE-R4-017",
+      "field_path": "trace.negative_ceiling_ref",
+      "payload_file": "PAYLOADS/17_NEGATIVE_CEILING.json",
+      "ref": {
+        "content_hash": "60719b44275ff50741b65c9172ef8524445774da5e8379ddca52035e516e73ad",
+        "kind": "SDTF_NEGATIVE_CEILING",
+        "object_id": "M10-M01:TRACE_NEGATIVE_CEILING@1.0.0"
+      }
+    },
+    {
+      "determinant_id": "GBE-R4-018",
+      "field_path": "trace.v3_stop_boundary_ref",
+      "payload_file": "PAYLOADS/18_V3_STOP_BOUNDARY.json",
+      "ref": {
+        "content_hash": "ffd46991761765c5d0a59678f49fe46ffdf1d24d7b2e7c6144678c04fad0a0f6",
+        "kind": "SDTF_V3_STOP_BOUNDARY",
+        "object_id": "M10-M01:PREV3_OBJECTIVE_WORLD_ONLY@1.0.0"
+      }
+    }
+  ],
+  "boundaries": {
+    "actor_fact_materialized": false,
+    "authority_issued": false,
+    "concrete_rule_minted": false,
+    "current_accepted_issued": false,
+    "main_mutated": false,
+    "pre_main_mutated": false,
+    "topology_materialized": false,
+    "v3_or_obl063_used": false
+  },
+  "candidate": {
+    "candidate_id": "M10-M01",
+    "candidate_name": "PROPERTY SEPARATION / WAGE DEPENDENCY",
+    "mechanism_class_ceiling": "P1 MATERIAL_ACCESS_DEPENDENCY",
+    "qualified_position_semantic_candidate_hash": "60e0f41b8cd1e3b22f43dbfc2cb8bbf97c81aec7f1664486ec4adf92533af505",
+    "qualified_position_semantic_candidate_id": "urn:rawlsing:prev3:objective-position-admission-candidate:sha256:60e0f41b8cd1e3b22f43dbfc2cb8bbf97c81aec7f1664486ec4adf92533af505"
+  },
+  "commission": {
+    "branch": "agent/rabochii-prev3-astra-candidate-inputs-r1",
+    "commission_tip": "d805e3dcf21a5a8cac0ee6c2611bed46da8a3277",
+    "grain": "PSC06_M10_M01_PKG_D_EXACT_SOURCE_CLAIM_INPUT_CEILING_REF_CONSTRUCTION_ONLY",
+    "hq_base": "98279580ffcccdd764663107aa65835fb6929228",
+    "immutable_dispatch_return": "a70cd2ef7d2b77c700bd8795f491079be554ae6b",
+    "library_used": false
+  },
+  "contract": {
+    "generic_contract_blob_sha1": "0a2eb3da6d755f12197348a71cfa7d1dd97d7b4d",
+    "generic_contract_commit": "a718682521fe9b5c1d3b90e6a9c9e765ed892e8a",
+    "generic_contract_ref": {
+      "content_hash": "abc44b2b4ff04e164b5188e5929b0c10ca1b6e582b28207bb7e464ace698a83d",
+      "kind": "SDTF_R4_GENERIC_BATCH_ENVELOPE_CONTRACT",
+      "object_id": "SDTF_R4_GENERIC_BATCH_RULE_ENVELOPE_INTAKE_AND_CONSTRUCTOR_CONTRACT_R1@1.0.0"
+    },
+    "r03_requirement_matrix_blob_sha1": "a182df47286ece3fd2f27de0a1c2d4adac333a64",
+    "r03_requirement_matrix_commit": "0e9458a189d870406797564de7142f6a73a15ad2",
+    "r4_binding_contract_blob_sha1": "c94997f5c7f2bbee9cd99c570554fd48c0f47556",
+    "r4_binding_contract_id": "SDTF_R4_MECHANISM_RULE_AUTHORITY_BINDING_R1@1.0.0"
+  },
+  "identity_material_sha256": "260344e38287523593ec5fe6aecf96fccbec19c250d859c8bd4d5fc398ba6f05",
+  "package_holding": {
+    "actor_position_fact_materialized": false,
+    "actor_position_fact_supplied": false,
+    "application_gate": "D13",
+    "join_gate": "D10_AFTER_HQ_FANIN_WITH_OTHER_PACKAGES",
+    "rule_currentness_selected": false,
+    "rule_envelope_complete": false,
+    "runtime_projection_authorized": false,
+    "trace_ref_fields_satisfied": true
+  },
+  "package_ref": {
+    "content_hash": "260344e38287523593ec5fe6aecf96fccbec19c250d859c8bd4d5fc398ba6f05",
+    "kind": "SDTF_R4_GENERIC_BATCH_PKG_D_TRACE_EXACT_REF_LIFT",
+    "object_id": "M10-M01:PKG-D@1.0.0"
+  },
+  "preserved_laws": {
+    "authority_jurisdiction": "PKG_D_BINDS_TRACE_REFS_ONLY__DOES_NOT_ISSUE_RULE_OWNER_CAUSAL_USE_MEASUREMENT_ESTIMAND_IDENTIFICATION_OR_CALIBRATION_AUTHORITY",
+    "currentness_noncollapse": "CONSTITUTION_CURRENT != RULE_CURRENT != APPLICATION_CURRENT != FACT_CURRENT != WITNESS_CURRENT",
+    "documentary_provenance": "SOURCE_AND_CLAIM_REFS_BIND_M10_WORKER_LEDGER_AND_EXACT_SUPPLIED_LOCI",
+    "institutional_scope": "EXACT_INSTITUTIONAL_RULE_CONTEXT_REQUIRED_FOR_REALIZATION__NO_PRESENT_DAY_PERSISTENCE_INFERENCE",
+    "semantic_noncollapse": "POSITION_SEMANTIC_IDENTITY != OCCUPANT_ACTOR_INDEXED_OBJECTIVE_POSITION_FACT_IDENTITY",
+    "v3_stop": "PRE_V3_OBJECTIVE_WORLD_ONLY__NO_V3_PERSON_STATE_OR_OBL063"
+  },
+  "reconstruction_law": "LOAD_EACH_PAYLOAD_FILE_AS_JSON__PAIR_WITH_LISTED_EXACT_REF__SORT_BINDING_OBJECTS_BY_DETERMINANT_KIND_OBJECT_ID__THEN_RECONSTRUCT_GOVERNED_IDENTITY_MATERIAL",
+  "s03_rows": [
+    {
+      "candidate_material_refs": [
+        {
+          "content_hash": "141260a47d7540229722646dff41c4886dc02240fbcde96f1810c75be15e851d",
+          "kind": "SDTF_R4_CONSTITUTION_CURRENT_SELECTION",
+          "object_id": "SDTF_R4_MECHANISM_RULE_AUTHORITY_BINDING_R1@1.0.0:HQ_RUNTIME_ADOPTION_R1"
+        }
+      ],
+      "determinant_id": "GBE-R4-005",
+      "field_path": "constitution_current_selection_ref",
+      "ordinal": 5,
+      "residuals": [],
+      "resolved_value": {
+        "content_hash": "141260a47d7540229722646dff41c4886dc02240fbcde96f1810c75be15e851d",
+        "kind": "SDTF_R4_CONSTITUTION_CURRENT_SELECTION",
+        "object_id": "SDTF_R4_MECHANISM_RULE_AUTHORITY_BINDING_R1@1.0.0:HQ_RUNTIME_ADOPTION_R1"
+      },
+      "state": "SATISFIED_CURRENT"
+    },
+    {
+      "candidate_material_refs": [
+        {
+          "content_hash": "051472e4d013b93df75acd0dfe0c6816dd657337fbfb62a79fdf9890fe712b4b",
+          "kind": "SDTF_DOCUMENTARY_SOURCE",
+          "object_id": "WRIGHT_CLASSES_1985:M10_SOURCE_LEDGER_R1"
+        }
+      ],
+      "determinant_id": "GBE-R4-006",
+      "field_path": "trace.source_refs",
+      "ordinal": 6,
+      "residuals": [],
+      "resolved_value": [
+        {
+          "content_hash": "051472e4d013b93df75acd0dfe0c6816dd657337fbfb62a79fdf9890fe712b4b",
+          "kind": "SDTF_DOCUMENTARY_SOURCE",
+          "object_id": "WRIGHT_CLASSES_1985:M10_SOURCE_LEDGER_R1"
+        }
+      ],
+      "state": "SATISFIED_CURRENT"
+    },
+    {
+      "candidate_material_refs": [
+        {
+          "content_hash": "258a87bf37989e19533ccff373fa6c58250f3f0620601f09c4c4b2ef482c830f",
+          "kind": "SDTF_SOURCE_CLAIM",
+          "object_id": "M10-M01:WRIGHT_CLASSES_CH3:857-909"
+        },
+        {
+          "content_hash": "75196a71a20e7df1b3fa1f39e66764f3d23c8bff7daf5d63076e313da9d3dcbe",
+          "kind": "SDTF_SOURCE_CLAIM",
+          "object_id": "M10-M01:WRIGHT_CLASSES_CH3:951-959"
+        },
+        {
+          "content_hash": "cf45e539ca3d6f2a06e7fb74868d22e01cadef174996362e162601b72378e8b6",
+          "kind": "SDTF_SOURCE_CLAIM",
+          "object_id": "M10-M01:WRIGHT_CLASSES_CH3:978-996"
+        }
+      ],
+      "determinant_id": "GBE-R4-007",
+      "field_path": "trace.claim_refs",
+      "ordinal": 7,
+      "residuals": [],
+      "resolved_value": [
+        {
+          "content_hash": "258a87bf37989e19533ccff373fa6c58250f3f0620601f09c4c4b2ef482c830f",
+          "kind": "SDTF_SOURCE_CLAIM",
+          "object_id": "M10-M01:WRIGHT_CLASSES_CH3:857-909"
+        },
+        {
+          "content_hash": "75196a71a20e7df1b3fa1f39e66764f3d23c8bff7daf5d63076e313da9d3dcbe",
+          "kind": "SDTF_SOURCE_CLAIM",
+          "object_id": "M10-M01:WRIGHT_CLASSES_CH3:951-959"
+        },
+        {
+          "content_hash": "cf45e539ca3d6f2a06e7fb74868d22e01cadef174996362e162601b72378e8b6",
+          "kind": "SDTF_SOURCE_CLAIM",
+          "object_id": "M10-M01:WRIGHT_CLASSES_CH3:978-996"
+        }
+      ],
+      "state": "SATISFIED_CURRENT"
+    },
+    {
+      "candidate_material_refs": [
+        {
+          "content_hash": "b93456af810957275b178df555147eddc15433158da5abd2352717e0ea213fae",
+          "kind": "SDTF_SOURCE_EVIDENCE_STATUS",
+          "object_id": "M10-M01:WRIGHT_CLASSES:EVIDENCE_STATUS@1.0.0"
+        }
+      ],
+      "determinant_id": "GBE-R4-008",
+      "field_path": "trace.evidence_status_ref",
+      "ordinal": 8,
+      "residuals": [],
+      "resolved_value": {
+        "content_hash": "b93456af810957275b178df555147eddc15433158da5abd2352717e0ea213fae",
+        "kind": "SDTF_SOURCE_EVIDENCE_STATUS",
+        "object_id": "M10-M01:WRIGHT_CLASSES:EVIDENCE_STATUS@1.0.0"
+      },
+      "state": "SATISFIED_CURRENT"
+    },
+    {
+      "candidate_material_refs": [
+        {
+          "content_hash": "c013ce882a9c4b72f334b8ac2479e5dda066a2752f6df41bbc5127a48630b983",
+          "kind": "SDTF_REQUIRED_OBJECTIVE_INPUT_BINDINGS",
+          "object_id": "M10-M01:PROPERTY_SEPARATION_WAGE_DEPENDENCY@1.0.0"
+        }
+      ],
+      "determinant_id": "GBE-R4-011",
+      "field_path": "trace.required_objective_inputs_bindings_ref",
+      "ordinal": 11,
+      "residuals": [],
+      "resolved_value": {
+        "content_hash": "c013ce882a9c4b72f334b8ac2479e5dda066a2752f6df41bbc5127a48630b983",
+        "kind": "SDTF_REQUIRED_OBJECTIVE_INPUT_BINDINGS",
+        "object_id": "M10-M01:PROPERTY_SEPARATION_WAGE_DEPENDENCY@1.0.0"
+      },
+      "state": "SATISFIED_CURRENT"
+    },
+    {
+      "candidate_material_refs": [
+        {
+          "content_hash": "ebbb00e6f756fc593709187cc250e93091b18a4154380e780277658ff60a874c",
+          "kind": "SDTF_CURRENTNESS_CEILING",
+          "object_id": "M10-M01:R4_NONCOLLAPSE@1.0.0"
+        }
+      ],
+      "determinant_id": "GBE-R4-015",
+      "field_path": "trace.currentness_ceiling_ref",
+      "ordinal": 15,
+      "residuals": [],
+      "resolved_value": {
+        "content_hash": "ebbb00e6f756fc593709187cc250e93091b18a4154380e780277658ff60a874c",
+        "kind": "SDTF_CURRENTNESS_CEILING",
+        "object_id": "M10-M01:R4_NONCOLLAPSE@1.0.0"
+      },
+      "state": "SATISFIED_CURRENT"
+    },
+    {
+      "candidate_material_refs": [
+        {
+          "content_hash": "8fc7f01a3d8f77f9f17ccbaa010662db3eadc1d6fa2c17567c16fcafc3ab4874",
+          "kind": "SDTF_HISTORICAL_INSTITUTIONAL_VALIDITY",
+          "object_id": "M10-M01:WRIGHT_CLASSES_PROPERTY_ASSET_RULE_CONTEXT@1.0.0"
+        }
+      ],
+      "determinant_id": "GBE-R4-016",
+      "field_path": "trace.historical_institutional_validity_ref",
+      "ordinal": 16,
+      "residuals": [],
+      "resolved_value": {
+        "content_hash": "8fc7f01a3d8f77f9f17ccbaa010662db3eadc1d6fa2c17567c16fcafc3ab4874",
+        "kind": "SDTF_HISTORICAL_INSTITUTIONAL_VALIDITY",
+        "object_id": "M10-M01:WRIGHT_CLASSES_PROPERTY_ASSET_RULE_CONTEXT@1.0.0"
+      },
+      "state": "SATISFIED_CURRENT"
+    },
+    {
+      "candidate_material_refs": [
+        {
+          "content_hash": "60719b44275ff50741b65c9172ef8524445774da5e8379ddca52035e516e73ad",
+          "kind": "SDTF_NEGATIVE_CEILING",
+          "object_id": "M10-M01:TRACE_NEGATIVE_CEILING@1.0.0"
+        }
+      ],
+      "determinant_id": "GBE-R4-017",
+      "field_path": "trace.negative_ceiling_ref",
+      "ordinal": 17,
+      "residuals": [],
+      "resolved_value": {
+        "content_hash": "60719b44275ff50741b65c9172ef8524445774da5e8379ddca52035e516e73ad",
+        "kind": "SDTF_NEGATIVE_CEILING",
+        "object_id": "M10-M01:TRACE_NEGATIVE_CEILING@1.0.0"
+      },
+      "state": "SATISFIED_CURRENT"
+    },
+    {
+      "candidate_material_refs": [
+        {
+          "content_hash": "ffd46991761765c5d0a59678f49fe46ffdf1d24d7b2e7c6144678c04fad0a0f6",
+          "kind": "SDTF_V3_STOP_BOUNDARY",
+          "object_id": "M10-M01:PREV3_OBJECTIVE_WORLD_ONLY@1.0.0"
+        }
+      ],
+      "determinant_id": "GBE-R4-018",
+      "field_path": "trace.v3_stop_boundary_ref",
+      "ordinal": 18,
+      "residuals": [],
+      "resolved_value": {
+        "content_hash": "ffd46991761765c5d0a59678f49fe46ffdf1d24d7b2e7c6144678c04fad0a0f6",
+        "kind": "SDTF_V3_STOP_BOUNDARY",
+        "object_id": "M10-M01:PREV3_OBJECTIVE_WORLD_ONLY@1.0.0"
+      },
+      "state": "SATISFIED_CURRENT"
+    }
+  ],
+  "schema": "PSC06_M10_M01_PKG_D_EXACT_SOURCE_CLAIM_INPUT_CEILING_REF_CONSTRUCTION_R1",
+  "schema_version": "1.0.0",
+  "status": "PASS_PKG_D_EXACT_REFS_CONSTRUCTED__NO_RULE_CURRENTNESS_OR_ACTOR_FACT",
+  "terminal": "D07_PASS__M10_M01_PKG_D_TRACE_EXACT_REFS_CONSTRUCTED__D10_JOIN_READY_AFTER_HQ_FANIN__APPLICATION_REMAINS_D13_GATED"
+}
