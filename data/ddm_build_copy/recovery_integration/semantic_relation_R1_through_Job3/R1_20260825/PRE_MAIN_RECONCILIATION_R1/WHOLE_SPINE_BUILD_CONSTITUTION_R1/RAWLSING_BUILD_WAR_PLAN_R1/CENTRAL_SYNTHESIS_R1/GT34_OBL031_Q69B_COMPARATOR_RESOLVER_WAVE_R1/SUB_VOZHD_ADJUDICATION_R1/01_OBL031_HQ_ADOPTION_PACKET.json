@@ -1,0 +1,135 @@
+{
+  "schema_id": "GT34_OBL031_HQ_ADOPTION_PACKET@1.0.0",
+  "terminal": "READY_FOR_HQ_OBL031_ADOPTION_CONSIDERATION__R4_TYPE_CLOSURE_AND_ONE_FRESH_HOSTILE_PASS__NO_SELF_ADOPTION",
+  "obligation": "OBL031",
+  "campaign_branch": "agent/sub-vozhd-gt34-trii-first-canary-r1",
+  "campaign_starting_tip": "883c2ff03770e145bc99ef2023d32cec83434ff5",
+  "campaign_bank_commit": "b486627582e13259a07c29923fc5dbe9c59d0db6",
+  "hq_state_consumed_prospectively": "ce3d75ca8882872daf0189c6bef4a2302fcb06cc",
+  "obl057_current_authority": {
+    "authority_ref": {
+      "authority_id": "GT34_D08_EMPIRICAL_PREDICATE_GRAMMAR_AUTHORITY",
+      "authority_version": "1.0.0",
+      "authority_content_hash": "acec40d03b5602aaa553f1f63cf2506bffe0491c008678ff973e39c3f7dcedd4"
+    },
+    "authority_kind": "PREDICATE_GRAMMAR",
+    "governed_object_family": "EmpiricalPredicate@1.0.0",
+    "governed_operation": "RESOLVE_EXACT_EMPIRICAL_POSITION_COORDINATE_EQ_PREDICATE",
+    "predicate_leaf_type": "EMPIRICAL_POSITION_COORDINATE",
+    "comparison_operator": "EQ",
+    "operator_semantics_refs": [
+      {
+        "kind": "PREDICATE_OPERATOR_SEMANTICS",
+        "object_id": "D08_EMPIRICAL_POSITION_COORDINATE@1.0.0",
+        "content_hash": "53e3593784cebdd50f68f8d993786b7643ff64280b8b63efbd09bd6d6a6ae8cf"
+      },
+      {
+        "kind": "PREDICATE_OPERATOR_SEMANTICS",
+        "object_id": "D08_EMPIRICAL_POSITION_COORDINATE_EQ@1.0.0",
+        "content_hash": "4d1dd3a2514b86b5c1d633527bfa6d7ba2b0188b754d4f12c2edc89c4343dd69"
+      }
+    ],
+    "hq_adoption_commit": "ffd580daf88cce0a3be3a87c461c165916bad9cc",
+    "hq_adoption_artifact_blob": "d6270869655c86729150f81fc0e11e0f82ac7a22",
+    "hq_adoption_json_blob": "1f9ce9e9019cbe6451a8a49e5e4bd893b2196755",
+    "hq_current_selection_receipt_blob": "ee54aa2965e13ba39b77f169170dc857b0fea6aa",
+    "current_selection": "CURRENT_ACCEPTED",
+    "resolution_contract": "EXACT_TUPLE_ONLY__NO_LATEST_DEFAULT_FUZZY_FALLBACK"
+  },
+  "frozen_r2": {
+    "head": "3edf370c31682cd231bff25bafbe469a39e88c94",
+    "implementation_blob": "5df5e1fe5459d642aa3aa7f5dc0c3c36cb3ef757",
+    "authority_id": "GT34_OBL031_ADP010_Q69B_FIELD_SPECIFIC_COMPARATOR_AUTHORITY",
+    "authority_version": "1.1.1",
+    "authority_content_hash": "31dd0ae8384962efb69f5f8d67634fcc554826826ebea8901e63474bd52ba8a9"
+  },
+  "r3_intermediate": {
+    "semantic_candidate": "b7ccad935e7f5f2906390495d9d1a6ecabae618f",
+    "implementation_blob": "71191c004a650b4f6fc778110a84a7ffd9c8786f",
+    "authority_version": "1.1.2",
+    "authority_content_hash": "0fa6b05a2105fd7f39fc4bc50a10470a7e9184b5006da1a2d411994a93517e96",
+    "governed_evidence": {
+      "execution_sha": "842ef28c2ce93584a6c78e870d29e8c23e5803db",
+      "run": 34193541478,
+      "job": 101956322416,
+      "protocol_tests": 20,
+      "focused_tests": 59,
+      "result": "PASS",
+      "artifact_id": 10043039950,
+      "artifact_zip_sha256": "458bd29dddbe2a6430424d0c11ccaac0d6711f7befcb0962bead5410b094568f"
+    },
+    "fresh_hostile_failure": {
+      "matrix_freeze_sha": "881c2c509dbcb23836b9bbb66c10348d21bbd75b",
+      "execution_sha": "a96ae6844e2c630d08b9f605cfb1a67f12d31daa",
+      "run": 34193702341,
+      "job": 101956805489,
+      "passed_tests": 95,
+      "failed_tests": 1,
+      "defect": "EQUALITY_SPOOF_TYPE_CONFUSION_COULD_BYPASS_CANONICAL_D08_BINDING",
+      "artifact_id": 10043096412,
+      "artifact_zip_sha256": "c2620277dc6e9c580c2ec352ac114266374cb0ca71cc2394782012b0ad6d24c7",
+      "disposition": "WHOLLY_IN_GRAIN__SMALLEST_SUCCESSOR_REPAIR_REQUIRED"
+    }
+  },
+  "proposed_exact_adoption": {
+    "authority_ref": {
+      "authority_id": "GT34_OBL031_ADP010_Q69B_FIELD_SPECIFIC_COMPARATOR_AUTHORITY",
+      "authority_version": "1.1.3",
+      "authority_content_hash": "e080f7089f27f5851152dfb2ea9b9765159cd647be995a1f41fa65945d27c87c"
+    },
+    "semantic_candidate_sha": "a616a07638218a741c3e07753b1f4fd77a87dc73",
+    "implementation_blob": "ff7e13d99aa1ee6b16d4533bd8b1aa19e4dc979e",
+    "repair_grain": "EXACT_FROZEN_D08GrammarBinding_TYPE_AND_VALUE_ONLY",
+    "dependency_implementation_blobs": {
+      "r2": "5df5e1fe5459d642aa3aa7f5dc0c3c36cb3ef757",
+      "r3": "71191c004a650b4f6fc778110a84a7ffd9c8786f",
+      "r4": "ff7e13d99aa1ee6b16d4533bd8b1aa19e4dc979e"
+    },
+    "owner_split": {
+      "OBL048": "SUBJECT_CLASSIFICATION_ONLY",
+      "ADP010": "ACTUAL_ACTOR_ENCOUNTER_OCCURRENCE_ONLY",
+      "OBL057": "D08_PREDICATE_GRAMMAR_OPERATOR_SEMANTICS_ONLY",
+      "Q69B": "Q69B_COORDINATE_SEMANTICS_ONLY",
+      "OBL031": "EXACT_BOUNDED_MAPPING_AMONG_ALREADY_AUTHORIZED_INPUTS_ONLY"
+    },
+    "requested_hq_decision": "ADOPT_AS_CURRENT_FOR_EXACT_GRAIN_ONLY"
+  },
+  "r4_governed_evidence": {
+    "worker_branch": "agent/rabochii-gt34-obl031-q69b-comparator-resolver-r4-type-closure-r1",
+    "execution_sha": "4b662f9e840a607e2875b630ff1134071441e8f9",
+    "run": 34193895137,
+    "job": 101957368066,
+    "protocol_tests": 20,
+    "focused_tests": 67,
+    "result": "PASS",
+    "artifact_id": 10043158897,
+    "artifact_zip_sha256": "aeacbabaf14c28b02961736ff0e296ea26364b4b9802528cce7f727ac9d13ef3"
+  },
+  "r4_independent_hostile_evidence": {
+    "review_count": 1,
+    "worker_branch": "agent/rabochii-gt34-obl031-q69b-comparator-resolver-r4-independent-hostile-r1",
+    "matrix_freeze_sha": "12835dae0a23c9deaaa47457839f18f99cfa7460",
+    "execution_sha": "4831f2821dfc6944e5c9d801379db5220ddecf48",
+    "run": 34194103134,
+    "job": 101957989720,
+    "protocol_tests": 20,
+    "hostile_tests": 98,
+    "result": "PASS",
+    "artifact_id": 10043230691,
+    "artifact_zip_sha256": "fb3468f6e0e7f75141b7e4fb7b827cb2334fa31f3fea8458e035f0fc7e4d81f8"
+  },
+  "runtime_state": {
+    "real_first_canary_actor_encounter": "ABSENT",
+    "current_real_invocation": "ACTOR_FACT_MISSING_OR_UNAUTHORIZED",
+    "current_comparator_predicate": "NOT_CREATED",
+    "positive_mechanics": "NONCURRENT_SYNTHETIC_TEST_ONLY"
+  },
+  "nonimplications": {
+    "obl031_current": "NOT_YET__REQUIRES_EXPLICIT_HQ_ADOPTION",
+    "obl032": "NOT_AUTHORIZED",
+    "encounter_creation": "NOT_AUTHORIZED",
+    "positive_obl056_entries": "NOT_AUTHORIZED",
+    "positive_v3_execution": "NOT_AUTHORIZED",
+    "project_current_first_canary_oee": "NOT_AUTHORIZED"
+  }
+}

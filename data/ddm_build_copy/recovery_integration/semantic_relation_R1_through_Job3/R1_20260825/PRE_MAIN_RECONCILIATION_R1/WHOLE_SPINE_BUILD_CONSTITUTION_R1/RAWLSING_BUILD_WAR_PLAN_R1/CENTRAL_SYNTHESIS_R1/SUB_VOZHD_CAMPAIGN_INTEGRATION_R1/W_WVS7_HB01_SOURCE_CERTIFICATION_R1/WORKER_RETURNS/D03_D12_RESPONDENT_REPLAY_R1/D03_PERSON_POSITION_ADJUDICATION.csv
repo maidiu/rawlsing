@@ -1,0 +1,10 @@
+target,person_position,routing_state,positive_presence_fact_minted,negative_presence_fact_minted,reason
+Q276,SPOUSE,ROUTING_UNKNOWN,false,false,No independent spouse/partner-presence field. Q273 is marital status only; no accepted Q273->presence routing map. Q276 -3 is child-target routing output and cannot be used as its own determinant.
+Q276A,SPOUSE,ROUTING_UNKNOWN,false,false,Same spouse position as Q276. No independent spouse/partner-presence field; country-specific education slot cannot self-route from response/missingness.
+Q277,MOTHER,ROUTING_UNKNOWN,false,false,"No independent mother-presence roster/indicator. Q264/Q267/V002/V002A_01 encode migration/birth/location content, not mother existence; Q277 response/missing codes cannot self-route."
+Q277A,MOTHER,ROUTING_UNKNOWN,false,false,Same mother position as Q277. No independent mother-presence roster/indicator; country-specific education slot cannot self-route.
+Q278,FATHER,ROUTING_UNKNOWN,false,false,"No independent father-presence roster/indicator. Q265/Q268/V001/V001A_01 encode migration/birth/location content, not father existence; Q278 response/missing codes cannot self-route."
+Q278A,FATHER,ROUTING_UNKNOWN,false,false,Same father position as Q278. No independent father-presence roster/indicator; country-specific education slot cannot self-route.
+Q280,SPOUSE,ROUTING_UNKNOWN,false,false,No independent spouse/partner-presence field. Q273 lacks an accepted mapping to spouse/partner applicability; Q280 -3 cannot be used as its own determinant.
+Q282,SPOUSE,ROUTING_UNKNOWN,false,false,No independent spouse/partner-presence field. Questionnaire preserves spouse last-job semantics but supplies no separate presence roster; target response/missingness cannot determine routing.
+Q283,FATHER,ROUTING_UNKNOWN,false,false,"No independent father-presence field. Questionnaire explicitly instructs father last-job fallback even if father had already died when respondent was 14, so death/current-presence cannot be substituted for the required historical person-position determinant."

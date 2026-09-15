@@ -1,0 +1,75 @@
+{
+  "material": {
+    "schema": "GT12_GT1_GT2_FINAL_HQ_ADOPTION@1.0.0",
+    "decision": "ADOPTED_CURRENT_GT1_GT2",
+    "accepted_central_parent": "57dfe1665f69224fa66531ae666105ab9ddd6fbc",
+    "final_hostile_audit": {
+      "terminal": "PASS__GT12_FINAL_HOSTILE_AUDIT__REAL_E2B_DELTA_CLOSED__GT1_GT2_READY_FOR_ADOPTION",
+      "terminal_sha": "27405d83cd83906f5a625b53f828d830b57f0902"
+    },
+    "real_e2b": {
+      "terminal": "PASS__GT12_FINAL_E2B_REAL_INTEGRATED_GT2_TO_V558__V3_DENY_ZERO_EFFECT",
+      "terminal_sha": "688dca436f0c3d9ad49805c87caa9ee43cfac103",
+      "checkpoint_input": "e8c52bb5fb237338a7f0d0b420ef3932b9311627",
+      "checkpoint_runtime": "f18dae23e60c1ba761a6fa0bb82c44ece71a1a23"
+    },
+    "current_empirical": {
+      "predicate": "bd91b40575035a9ff9ad2e7c507adc2610bfebdcc7fa38ce1cd697b37559cea3",
+      "query": "e4ec3998664975c6a5f9e020b7815cfe6d39a212e264963d8037e6f0db87d0d0",
+      "fact": "540236d533e9123f6d7b4d1edd4cf0951277154e72c7667deb09fb6550f11f46",
+      "replay": "c0c23ca2bb439364756503722b60d047139d42a6128411cc19bfbd87d33c884f",
+      "state": "SUPPORTED",
+      "denominator": 19210,
+      "order": [
+        "Q86B",
+        "Q86A"
+      ],
+      "risk_set_hash": "0484fa5c0440c34e9b1f28b385f3ef6c3302eaeb11c3c5b663441553ea11313b"
+    },
+    "accepted_runtime_chain": {
+      "field_forge_relation": "1ffdfe536adc01d35709521145b9c8057f589c20983f507d5ed6197c4ad27d19",
+      "prev3_admission": "a445e43da99405e0f8181f7ab6c428d9b0dd14fefc7fc5091f21f2d21f00b08d",
+      "m1_evaluation_evidence": "2d0acb74c8a1722ce339c7b014fb3e5eb630d4a88bee4e2560653d0efc13a036",
+      "f1_publication_root": "a008553dc94af138de44e73ade8ddbcc1e2bb3a5c40cec575aad694aae104cbb",
+      "publication_governance_bundle": "f7d4d2313bcc70faf104cff205b0eb7aaa7d88556c895c8ea123a3725105cf14",
+      "v557_governance_record": "845522a7101f2632ac37d4fa1bbe15515ad29a0551a31570e4138796eaab48b6",
+      "v557_publication_bundle": "2c7fb3f81343179ad75c6441fadcd09201aa47b9dc0e032383071e83cc4e022a",
+      "v558_repository": "47594be9aaf284122f76e3f2e3d74af29054ae3e1d6228134e4eccfdacfa46d1",
+      "v558_query": "73a47dcb4ab5497aadb16c1f3d074ef0e0203995e9d175b7fe5ee02b19cf2b54",
+      "v558_resolution_receipt": "730dbe577966b34587c5cb9ef3931ae83219cb62b945fdea6675a0cd53520b34",
+      "v3_decision_evidence": "216f8db74b89a7c168b0db0da91404e0fffb69d8b704710e59ec63a53d42d988",
+      "v3_state_fingerprint": "5845b7d3e0be9c50accbc89ba56263fdd33b3b9832550857417efda962011723"
+    },
+    "authority_ceiling": {
+      "prev3_target_use": [
+        "STRUCTURAL_MEDIATION_INPUT"
+      ],
+      "permission_translation": "STRUCTURAL_MEDIATION_INPUT -> CONTEXT",
+      "v554_publication_families": [
+        "F1"
+      ],
+      "v557_state": "ALLOW_CONTEXT_ONLY",
+      "v557_uses": [
+        "CONTEXT"
+      ],
+      "v558_requested_uses": [
+        "CONTEXT"
+      ],
+      "v3_terminal": "DENY_ZERO_EFFECT",
+      "positive_v3_authority": false,
+      "actor_authority": false,
+      "v2_authority": false,
+      "review_authority": false,
+      "active_causal_authority": false
+    },
+    "inheritance_law": {
+      "gt1_gt2_status": "CLOSED_ACCEPTED_CURRENT",
+      "gt3_gt4_may_inherit": true,
+      "gt3_gt4_must_not_reopen_without_direct_contradictory_evidence": true,
+      "gt3_gt4_must_introduce_new_explicit_positive_v3_authority_before_any_positive_effect": true,
+      "main_moved": false,
+      "pre_main_moved": false
+    }
+  },
+  "adoption_content_hash": "0dcedd3f587ad85d04d77d14518ae77c8e08cce64cc9868399f866fa50d6c52b"
+}

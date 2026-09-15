@@ -1,0 +1,109 @@
+{
+  "schema": "AS3R3_NODE5A_R2_MAPPING_REPLAY_PROTOCOL_SPEC@2.0.0",
+  "protocol_id": "AS3R3_NODE5A_R2_MAPPING_REPLAY_PROTOCOL",
+  "protocol_version": "2.0.0",
+  "status": "PROJECT_CURRENT_PROSPECTIVE_PROTOCOL__PAYLOAD_IDENTITY_REQUIRES_MATERIALIZATION",
+  "purpose": "Prospective deterministic replay encoding for the unchanged 19 Node5A-R2 role/source mapping records; not recovery of the historical 081e3b... payload law.",
+  "historical_provenance": {
+    "historical_payload_sha256": "081e3b8594be3d9348bc0565cd9085cca1e999ae58ef7881f040d11f5da89c7e",
+    "disposition": "IMMUTABLE_HISTORICAL_PROVENANCE__NONREPLAYABLE_AT_CURRENT_EVIDENCE_SURFACE",
+    "recovered_preimage": false,
+    "recovered_historical_serialization_law": false,
+    "may_be_used_as_protocol_selection_target": false,
+    "may_be_required_as_prospective_digest": false
+  },
+  "frozen_semantic_input": {
+    "carrier_path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/AS3R3_NODE5A_R2_REPLAY_SEAL/ROLE_TO_CANONICAL_REF_CROSSWALK.csv",
+    "carrier_git_blob": "26a7c35df2e6454c5e270a03b3571599bdf152fd",
+    "row_count": 19,
+    "fields": [
+      "as3_id",
+      "source_object_id",
+      "source_content_hash",
+      "node4a_input_sha256",
+      "successor_kind",
+      "successor_object_id",
+      "successor_content_hash",
+      "alias_class",
+      "role_key_lookup_preserved"
+    ],
+    "row_order": [
+      "A000",
+      "A1V1",
+      "A1V2",
+      "A1V3",
+      "A1V4",
+      "A1V5",
+      "A1SSUB",
+      "A1SSPS",
+      "A1SMIS",
+      "A1RAPP",
+      "A2V1",
+      "A2V2",
+      "A2V3",
+      "A2V4",
+      "A2V5",
+      "A2SSUB",
+      "A2SSPS",
+      "A2SMIS",
+      "A2RAPP"
+    ],
+    "required_alias": {
+      "members": [
+        "A000",
+        "A1RAPP"
+      ],
+      "exact_alias_class": "{A000,A1RAPP}"
+    },
+    "all_other_alias_class": ""
+  },
+  "canonical_payload_object": {
+    "top_level_keys": [
+      "protocol",
+      "rows"
+    ],
+    "protocol_value": "AS3R3_NODE5A_R2_MAPPING_REPLAY_PROTOCOL@2.0.0",
+    "row_object_keys": "exactly the nine frozen fields above; no omitted or additional keys",
+    "string_normalization": "Unicode NFC before serialization",
+    "booleans": "JSON true/false; role_key_lookup_preserved must remain true for all 19 frozen rows",
+    "empty_alias": "empty JSON string"
+  },
+  "serialization": {
+    "format": "RFC8259 JSON",
+    "encoding": "UTF-8",
+    "bom": false,
+    "ensure_ascii": false,
+    "key_order": "lexicographically sorted recursively",
+    "row_order": "exact frozen row_order above",
+    "separators": {
+      "item": ",",
+      "key_value": ":"
+    },
+    "insignificant_whitespace": false,
+    "trailing_bytes": "exactly one LF byte 0x0A",
+    "canonicalization_basis": "same prospective compact sorted JSON + trailing-LF family used for newly created Node6 JSON payloads"
+  },
+  "materialization_requirements": {
+    "serializer_implementation_must_be_committed": true,
+    "exact_payload_bytes_must_be_committed": true,
+    "payload_sha256_must_be_sealed": true,
+    "fresh_process_materializations_minimum": 2,
+    "fresh_process_payload_bytes_must_be_identical": true,
+    "old_historical_digest_must_not_be_an_input": true,
+    "no_serialization_variant_search": true,
+    "no_target_fitting": true
+  },
+  "node7_requirements": {
+    "fresh_constructor_processes_minimum": 2,
+    "reconstruct_rows_from_fresh_outputs": true,
+    "serialize_under_v2_in_each_fresh_process": true,
+    "compare_new_payload_sha256_only_after_construction": true,
+    "preserve_all_successor_object_ids": true,
+    "preserve_19_to_18_predicate_cardinality": true,
+    "preserve_3_distinct_queries": true,
+    "preserve_A000_A1RAPP_alias": true,
+    "historical_node6_seal": "df0395983de34996d33c258d0705cfc178df9cfe7982899431a0002c544481da",
+    "historical_node6_role": "accepted historical comparison evidence, not exact prospective replay target",
+    "output_requirement": "new versioned prospective combined replay seal with explicit historical/prospective protocol separation"
+  }
+}

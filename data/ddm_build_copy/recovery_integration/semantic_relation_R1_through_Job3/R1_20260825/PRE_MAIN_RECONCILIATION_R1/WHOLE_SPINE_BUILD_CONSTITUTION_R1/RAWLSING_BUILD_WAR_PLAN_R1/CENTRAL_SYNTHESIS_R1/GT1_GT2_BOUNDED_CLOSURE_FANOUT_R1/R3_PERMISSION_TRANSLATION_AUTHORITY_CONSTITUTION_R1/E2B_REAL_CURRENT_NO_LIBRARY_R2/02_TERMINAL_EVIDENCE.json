@@ -1,0 +1,97 @@
+{
+  "schema": "GT12_E2B_REAL_CURRENT_NO_LIBRARY_R2_TERMINAL_EVIDENCE@1",
+  "terminal": "BLOCKED__GT12_E2B_R2_NO_ACCEPTED_CURRENT_V554_PUBLICATION_RULE_GOVERNED_USE_V557_AUTHORITY_BUNDLE",
+  "working_start": "38ef8692320e2fb20831321f7a808f6e36453f8f",
+  "first_write_ahead_checkpoint_commit": "13be6d35b5eb59f9f60aaf859b8dec88bd2c4f17",
+  "actual_current_objects": {
+    "loaded_via": "rawlsing_next.pre553_repo_native_seal.load_current_gt2_query_fact()",
+    "predicate": "bd91b40575035a9ff9ad2e7c507adc2610bfebdcc7fa38ce1cd697b37559cea3",
+    "query": "e4ec3998664975c6a5f9e020b7815cfe6d39a212e264963d8037e6f0db87d0d0",
+    "fact": "540236d533e9123f6d7b4d1edd4cf0951277154e72c7667deb09fb6550f11f46",
+    "replay": "c0c23ca2bb439364756503722b60d047139d42a6128411cc19bfbd87d33c884f",
+    "typed_state": "SUPPORTED",
+    "raw_denominator_support": 19210,
+    "semantic_order": ["Q86B", "Q86A"],
+    "ordinary_objects_verified": true
+  },
+  "accepted_permission_translation": {
+    "authority_content_hash": "d052e299206b837292225853fca7ffcf8a3c02b6479c53065ad3aca135be489c",
+    "producer_allowed_uses": ["CONTEXT"],
+    "v557_allowed_uses": ["CONTEXT"],
+    "v558_requested_uses": ["CONTEXT"],
+    "status": "PRESENT_AND_FIXED"
+  },
+  "blocking_seam": {
+    "status": "MISSING_ACCEPTED_CURRENT_BINDING",
+    "real_entry_required_unbound_inputs": [
+      "governed_use_id",
+      "v554_rule_ref",
+      "publication_authority",
+      "v557_authority_ref"
+    ],
+    "production_module_shas": {
+      "rawlsing_next/tests/gt12_e2b_actual_object_consumer_harness.py": "90bb6a7ef352a8a12b0c2ab8daad85adbf6865e2",
+      "rawlsing_next/gt12_d_to_m4_typed_bridge.py": "ec098591f765ca09b200503b7c399219d2179e10",
+      "rawlsing_next/gt12_permission_translation_authority.py": "2eb1441e0ee5be3eef2567f8ffb57819fc47f0d6",
+      "rawlsing_next/m1_admitted_field_forge_relation_v554_ingress.py": "0aeacd9e66c7e4340b36e1b622bb5c9bf2865fd5",
+      "rawlsing_next/m4_v557_v558_publication_repository.py": "9005308fb06686b593783666e77d06619645b2bb"
+    },
+    "synthetic_test_material_rejected_for_real_execution": [
+      "GT12-E2B-PREFLIGHT-V554-RULE",
+      "GT12-E2B-PREFLIGHT-V557-PUBLICATION",
+      "GT12_E2B_PREFLIGHT_STRUCTURAL_CONTEXT",
+      "GT12-E2B-M4-V557"
+    ],
+    "reason": "The handoff forbids manufacturing publication/governed-use/V557 authority and requires fail-closed if these exist only as synthetic test material. The real production entry still requires them as caller inputs and no accepted-current provider is bound."
+  },
+  "identity_ledger": {
+    "1_current_query_fact_replay_predicate": "RECORDED",
+    "2_field_forge_relation": "NOT_PRODUCED__BLOCKED_BEFORE_REAL_CHAIN",
+    "3_prev3_admission": "NOT_PRODUCED__BLOCKED_BEFORE_REAL_CHAIN",
+    "4_m1_v554_evaluation": "NOT_PRODUCED__BLOCKED_BEFORE_REAL_CHAIN",
+    "5_permission_translation_binding": "NOT_INVOKED_ON_REAL_CHAIN__ADOPTED_AUTHORITY_PRESENT",
+    "6_v554_publication_roots": "NOT_PRODUCED__MISSING_ACCEPTED_PUBLICATION_AUTHORITY_BUNDLE",
+    "7_v557_repository_bundle": "NOT_PRODUCED",
+    "8_v558_query_resolution_receipt": "NOT_PRODUCED",
+    "9_v3_guard_decision": "NOT_PRODUCED"
+  },
+  "execution_law": {
+    "library_access": false,
+    "source_data_access": false,
+    "empirical_reexecution": false,
+    "synthetic_fixture_used_for_real_terminal": false,
+    "historical_a3_used": false,
+    "manual_current_looking_objects_minted": false,
+    "real_positive_e2b_execution_performed": false,
+    "second_v558_v3_checkpoint_required": false
+  },
+  "governed_court": {
+    "proof_owner": "Rabochii Governed Bounded Court",
+    "pr": 171,
+    "load_checkpoint_run": {
+      "run_id": 33982732413,
+      "job_id": 101350736395,
+      "semantic_candidate_sha": "f543602c4b56482c968b1ad2ff3bb8a2dba26b43",
+      "evidence_execution_sha": "00a7e087cd427bc12878ff4f77fc3c8661c54967",
+      "protocol_self_tests": 20,
+      "bounded_tests": 1,
+      "artifact_id": 9974221818,
+      "result": "PASS"
+    },
+    "blocker_hostile_regression_run": {
+      "run_id": 33982865043,
+      "job_id": 101351097071,
+      "semantic_candidate_sha": "6944ec85df160ac0b5bd1dd622175d5ea69bc823",
+      "evidence_execution_sha": "bc1370fc3f5ff07d0e655863cb1abc33cb972f77",
+      "pr_synthetic_merge_sha": "1b5fd072ad30a576cab58e2d66efb4dcfb6e4aef",
+      "spec_sha256": "92f600721977cc993b06b7049b621c4a20e07fd3d6e8e6707da87d698d950728",
+      "python": "3.12.14",
+      "protocol_self_tests": 20,
+      "bounded_tests": 193,
+      "elapsed_seconds": 12.727765,
+      "artifact_id": 9974260970,
+      "result": "PASS"
+    }
+  },
+  "forbidden_terminal_not_issued": "PASS__GT12_FINAL_E2B_REAL_INTEGRATED_GT2_TO_V558__V3_DENY_ZERO_EFFECT"
+}

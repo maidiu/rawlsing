@@ -1,0 +1,12 @@
+operation	purpose	input_authority	config_consulted_security_effect	worktree_state_needed	external_helper_possible	trust_bearing_output
+rev-parse --verify <full-ref>^{commit}	resolve exact branch/ref tip	canonical repository refs	malformed/non-OID output rejected; namespace/env stripped	NO	NO builtin	YES exact ref SHA
+rev-parse --is-shallow-repository	reject shallow ancestry state	repository metadata	local repository format only	NO	NO builtin	YES hardening predicate
+for-each-ref refs/replace	reject replacement refs	repository refs	env namespace stripped	NO	NO builtin	YES hardening predicate
+rev-parse --show-toplevel	cross-check explicit repository identity	external repo root + repository metadata	core.worktree mismatch causes fail closed	NO	NO builtin	YES identity predicate
+rev-parse --absolute-git-dir	record repository metadata root	external repo root + repository metadata	redirection env stripped	NO	NO builtin	YES diagnostic/locator
+rev-parse --git-path info/grafts	locate graft file	repository metadata	redirection env stripped	NO	NO builtin	YES hardening locator
+rev-parse --git-path objects/info/alternates	locate alternates file	repository metadata	redirection env stripped	NO	NO builtin	YES hardening locator
+cat-file -e <oid/spec>	exact object existence	immutable object id	no worktree filters/hooks	NO	NO builtin	YES existence
+cat-file blob <oid:path>	read canonical schema/manifest/evidence bytes	immutable exact object locator	no worktree filters/hooks/textconv	NO	NO builtin	YES trusted bytes
+cat-file commit <oid>	read raw commit object for parent traversal	immutable commit oid	replacements disabled; graft file rejected	NO	NO builtin	YES ancestry bytes
+diff-tree -r -z --name-only --no-renames --no-ext-diff --no-textconv	enumerate candidate/audit changed paths	immutable base/head commits	external diff/textconv/rename config neutralized	NO	NO builtin	YES jurisdiction paths

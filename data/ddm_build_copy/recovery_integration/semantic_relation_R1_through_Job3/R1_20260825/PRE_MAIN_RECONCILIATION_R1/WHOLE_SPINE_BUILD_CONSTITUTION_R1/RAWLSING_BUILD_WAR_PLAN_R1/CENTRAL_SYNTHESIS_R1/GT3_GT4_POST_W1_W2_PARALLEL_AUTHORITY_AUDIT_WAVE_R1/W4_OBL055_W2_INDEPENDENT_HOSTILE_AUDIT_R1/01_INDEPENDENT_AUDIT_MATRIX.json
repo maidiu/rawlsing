@@ -1,0 +1,76 @@
+{
+  "schema_id": "GT34_W4_OBL055_W2_INDEPENDENT_AUDIT_MATRIX@1.0.0",
+  "status": "FROZEN_BEFORE_W2_REPAIR_TEST_REVIEW",
+  "target_semantic_candidate": "39e4efc35cec5f1bbb7aafbf165698e6f6cc72ea",
+  "target_module_blob": "54d9acba40f0eb1db8bb03aec3c1bb900f849588",
+  "source_blobs": {
+    "t3_return": "3e2910f4e3d039f6b511dbfd4145768751fe08ff",
+    "t3_hostile_tests": "948121e7c61b89aaafbb5b8a0814619d108f269e",
+    "obl054_adoption": "fc46d377dafa5b2c4e274d702e7f26268aa429cb",
+    "adp010": "0eac41d081b112255dcfc6dd42a6afab15a2928b",
+    "adp008": "c6564c5c2793e9ed86ec0c5cecbcf84ff6f427d6",
+    "adp020": "1f13dc7ccc69bda562613d6215acc996a9c092e4",
+    "historical_s3": "cd6e978eea25384482ef2ab75547b8d33bcc4fb7"
+  },
+  "families": {
+    "subject_ingress": [
+      "forged materialization receipt",
+      "forged semantic owner or object binding",
+      "historical OBL053 root",
+      "alternate OBL054 root or permit",
+      "valid-shaped noncurrent receipt on current path",
+      "subject_ref receipt mismatch",
+      "caller supplied causal-use authority identity",
+      "provenance omission or substitution"
+    ],
+    "adp008_phase": [
+      "distinct phase-state refs with same remaining inputs",
+      "forged phase authority or registry",
+      "phase receipt/body mismatch",
+      "active phase string without authenticated state"
+    ],
+    "applicability": [
+      "authority id version hash mutation",
+      "receipt reuse under changed authority",
+      "positive label without competent receipt",
+      "caller supplied authority with locally derived acceptance/authentication"
+    ],
+    "contact_independence": [
+      "arbitrary witness authority",
+      "arbitrary independence authority",
+      "same or circular witness/independence authority",
+      "ref relabeling",
+      "co-location/co-presence/geography/shared-endpoint laundering",
+      "actor subject time mismatch"
+    ],
+    "replay_identity": [
+      "mutate every persisted record field one by one",
+      "source candidate id or replay hash substitution",
+      "provenance or ledger substitution",
+      "context/applicability/phase/constraint/witness substitution",
+      "event/effect tampering",
+      "canonical ordering and timezone-equivalence"
+    ],
+    "currentness": [
+      "synthetic currentness masquerade",
+      "legacy fixture helper reaches current path",
+      "historical S3 object accepted as successor",
+      "no current first-canary invocation or persistence by W4"
+    ],
+    "authority_ceiling": [
+      "no subject classification",
+      "no EXPOSURE API",
+      "no comparator PSEPF metabolism CAN-008 V2 or positive-V3 mutation"
+    ],
+    "minimality_non_redesign": [
+      "V3OEERealizationRecord contract unchanged",
+      "AVAILABLE OPPORTUNITY ENCOUNTER semantics unchanged",
+      "ZERO_DRAW unchanged",
+      "no new positive rules",
+      "no helper can manufacture accepted authority from caller strings",
+      "legacy helpers cannot widen current authority",
+      "duplicated ADP-010/008/020 checks remain authentication not semantic ownership"
+    ]
+  },
+  "stop_law": "EXACT_BOUNDARY_DEFECT=>FAIL_NO_REPAIR"
+}

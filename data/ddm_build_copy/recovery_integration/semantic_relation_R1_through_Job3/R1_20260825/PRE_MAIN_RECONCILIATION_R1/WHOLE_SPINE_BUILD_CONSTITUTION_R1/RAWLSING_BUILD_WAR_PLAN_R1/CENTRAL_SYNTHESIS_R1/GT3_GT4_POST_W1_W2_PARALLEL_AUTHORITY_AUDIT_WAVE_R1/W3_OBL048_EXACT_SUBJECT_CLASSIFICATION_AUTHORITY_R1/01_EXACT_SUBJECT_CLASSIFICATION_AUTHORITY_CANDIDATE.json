@@ -1,0 +1,85 @@
+{
+  "artifact_schema": "GT34_W3_OBL048_EXACT_SUBJECT_CLASSIFICATION_AUTHORITY_CANDIDATE@1.0.0",
+  "status": "CANDIDATE_NOT_ADOPTED__INDEPENDENT_HOSTILE_REVIEW_REQUIRED",
+  "authority_content_hash": "a0cd9714145ea4c7edd862b2a0dfdd50c2912c5ae2de598632dbe6fd2bc62794",
+  "semantic_projection": {
+    "schema": "GT34_OBL048_EXACT_FIRST_CANARY_SUBJECT_CLASSIFICATION_AUTHORITY@1.0.0",
+    "authority_id": "GT34_OBL048_EXACT_FIRST_CANARY_SUBJECT_CLASSIFICATION_AUTHORITY",
+    "authority_version": "1.0.0",
+    "jurisdiction": {
+      "subject_cardinality": 1,
+      "exact_subject_ref": "urn:rawlsing:v3:subject:sha256:a0d7805874dc8449fa81770254a59accde050871aed13501902502e317273f33",
+      "exact_subject_ref_hash": "a0d7805874dc8449fa81770254a59accde050871aed13501902502e317273f33",
+      "exact_proposition": "SUBJECT_IS_PUBLIC_CLINIC_OR_HOSPITAL",
+      "second_subject": "FORBIDDEN",
+      "general_facility_ontology": "FORBIDDEN"
+    },
+    "positive_rule": {
+      "all_exact_current_bindings_required": true,
+      "required_objective_facts": {
+        "entity_family": "NONACTOR_FACILITY",
+        "facility_domain": "HEALTHCARE_DELIVERY",
+        "facility_form_allowed": [
+          "CLINIC",
+          "HOSPITAL"
+        ],
+        "ownership_status": "PUBLIC_SECTOR"
+      },
+      "current_object_satisfaction": {
+        "facility_form": "CLINIC",
+        "ownership_status": "PUBLIC_SECTOR",
+        "classification_result": true
+      },
+      "lexical_or_category_inference": "FORBIDDEN"
+    },
+    "required_bindings": {
+      "w1_materialization_receipt": {
+        "id": "urn:rawlsing:v3:authenticated-subject-materialization-receipt:sha256:e8bb714f46a12dd1643e71a0e4a209ba3f7253be9d350d212b696146da11807f",
+        "sha256": "e8bb714f46a12dd1643e71a0e4a209ba3f7253be9d350d212b696146da11807f"
+      },
+      "semantic_object": {
+        "id": "urn:rawlsing:gt34:generated-nonactor-subject-semantic-object:sha256:9a5fbe9a7c272cb2a60e425f09b206f0d25dd2d95caa07028bdb021130c32547",
+        "sha256": "9a5fbe9a7c272cb2a60e425f09b206f0d25dd2d95caa07028bdb021130c32547"
+      },
+      "semantic_owner_authority": {
+        "id": "GT34_OBL053_ONE_OBJECT_NONACTOR_SUBJECT_ENTITY_SEMANTIC_AUTHORITY",
+        "version": "1.0.0",
+        "sha256": "867962094705ce13a33b0acfc81918b930dca6ae6d7c22e8094cc1d95bc41b29"
+      },
+      "objective_evidence_receipt": {
+        "id": "urn:rawlsing:gt34:obl053:objective-evidence-receipt:sha256:153ff1cd67e27b435cb6ffa4127047802eb06edcc6dab7072cedf9cb3ede7d6c",
+        "sha256": "153ff1cd67e27b435cb6ffa4127047802eb06edcc6dab7072cedf9cb3ede7d6c"
+      },
+      "q1_subject_requirement": {
+        "id": "GT34_ADP010_Q69B_PUBLIC_CLINIC_SUBJECT_SEMANTIC_REQUIREMENT",
+        "version": "1.1.0",
+        "sha256": "219fe6714efbcda30b6d9ea69cec6b99f3fe86a92c43ae7122a68e404f795fca"
+      }
+    },
+    "authority_ceiling": [
+      "EXACT_ONE_CURRENT_SUBJECT_CLASSIFICATION_ONLY",
+      "SUBJECT_IS_PUBLIC_CLINIC_OR_HOSPITAL_ONLY",
+      "NO_ACTOR_CONTACT_USE_ENCOUNTER_EXPOSURE",
+      "NO_MEDICINE_SUPPLIES_Q69B_RESPONSE_HISTORY",
+      "NO_AWARENESS_BELIEF_MEMORY_RESPONSE",
+      "NO_COMPARATOR_PSEPF_METABOLISM_CAN008_V2_POSITIVE_V3",
+      "NO_SECOND_SUBJECT_CLASSIFICATION",
+      "NO_GENERAL_FACILITY_ONTOLOGY"
+    ],
+    "currentness": {
+      "state": "CANDIDATE_NOT_ADOPTED",
+      "requires_hq_adoption": true
+    },
+    "content_addressing_law": {
+      "algorithm": "SHA-256",
+      "encoding": "UTF-8",
+      "canonical_json": {
+        "mapping_key_order": "LEXICOGRAPHIC_ASCENDING",
+        "separators": "COMPACT_COMMA_COLON",
+        "unicode": "PRESERVE_UNICODE_NO_ASCII_ESCAPE",
+        "ordered_sequences": "PRESERVE_EXACT_ORDER"
+      },
+      "derived_hash_field_rule": "EXCLUDE_ONLY_THE_OBJECTS_OWN_DERIVED_HASH_AND_CONTENT_ADDRESSED_ID_FROM_ITS_SEMANTIC_PROJECTION"
+    }
+  }
+}

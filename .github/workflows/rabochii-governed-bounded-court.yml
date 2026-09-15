@@ -1,0 +1,74 @@
+name: Rabochii Governed Bounded Court
+
+on:
+  pull_request:
+  push:
+    branches:
+      - agent/vozhd-rabochii-execution-constitution-r1
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  governed-court:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout exact evidence execution tree
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Detect governed court spec
+        id: spec
+        shell: bash
+        run: |
+          if [ -f .rabochii/court_spec.json ]; then
+            echo "present=true" >> "$GITHUB_OUTPUT"
+            version="$(python3 -c 'import json; print(json.load(open(".rabochii/court_spec.json", encoding="utf-8")).get("python_version", "3.12"))')"
+            echo "python_version=$version" >> "$GITHUB_OUTPUT"
+          else
+            echo "present=false" >> "$GITHUB_OUTPUT"
+            echo "python_version=3.12" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ steps.spec.outputs.python_version }}
+
+      - name: Install court dependency
+        run: python -m pip install --disable-pip-version-check pytest
+
+      - name: Protocol self-test
+        run: >-
+          python -m pytest -q
+          rawlsing_next/tests/test_rabochii_execution_protocol.py
+          rawlsing_next/tests/test_rabochii_bounded_court.py
+
+      - name: Validate runtime state
+        if: ${{ hashFiles('.rabochii/execution_state.json') != '' }}
+        run: python -m rawlsing_next.rabochii_execution_protocol state .rabochii/execution_state.json
+
+      - name: Validate bounded court spec
+        if: ${{ steps.spec.outputs.present == 'true' }}
+        run: python -m rawlsing_next.rabochii_execution_protocol court .rabochii/court_spec.json
+
+      - name: Execute bounded court
+        if: ${{ steps.spec.outputs.present == 'true' }}
+        env:
+          RABOCHII_EVIDENCE_EXECUTION_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+          RABOCHII_PR_SYNTHETIC_SHA: ${{ github.event_name == 'pull_request' && github.sha || '' }}
+        run: >-
+          python -m rawlsing_next.rabochii_bounded_court
+          .rabochii/court_spec.json
+          --receipt .rabochii/court_receipt.json
+
+      - name: Upload governed court receipt
+        if: ${{ always() && steps.spec.outputs.present == 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: rabochii-court-receipt-${{ github.run_id }}
+          path: .rabochii/court_receipt.json
+          if-no-files-found: warn

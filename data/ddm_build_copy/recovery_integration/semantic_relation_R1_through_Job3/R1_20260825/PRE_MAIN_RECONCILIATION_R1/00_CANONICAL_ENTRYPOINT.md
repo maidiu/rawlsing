@@ -1,6 +1,18 @@
 # RAWLSING PRE-MAIN CANONICAL ENTRYPOINT R1
 
-**Status:** `PREMAIN_CANDIDATE__TECHNICALLY_ADMITTED_BY_W35__NOT_GLOBAL_HQ_ADOPTED`
+**Status:** `PREMAIN_PROJECT_HOME_CURRENT__POSTPREMAIN_RECONCILED__CANONICAL_PREMAIN_REANCHORED__NOT_GLOBAL_MAIN_ADOPTED`
+
+## POST-PRE-MAIN LIVE BUILD OVERLAY — 2026-09-06
+
+The W35/W55 material below remains constitutional baseline and authority history; it is no longer, by itself, a complete description of live project state.
+
+After FIELD FORGE R2 reintegration at `d15f8973ddeff46dbaa15f352fe5d7e59e1fe1a3`, one cumulative descendant build line advanced through WSC002/GT0, GT1/GT2, and the current GT3/GT4 pre-positive frontier. At the start of the present reconciliation the live head was `acfac12a4ca4b9efa010fd224094ac4dc55d37a8`, exactly 312 commits ahead of `integration/pre-main-reconciliation-r1` and 0 behind. During validation PR #216 advanced the live line to `d203feb48896c1e27234c380f5bdafab7c4c4a3d`; this reconciliation was therefore reopened and re-grounded rather than moving PRE-MAIN from a stale head.
+
+For **current project state**, read `CENTRAL_PROJECT_STATE_R1/00_STATE_NOW.md` immediately after the Ground. For the exact post-PRE-MAIN succession, read `POST_PREMAIN_CENTRAL_STATE_RECONCILIATION_R1/02_LIVE_LINEAGE.md`.
+
+A competent bounded reconciliation may fast-forward `integration/pre-main-reconciliation-r1` to the reconciled descendant after exact ancestry/state validation. This does **not** authorize movement of `main`.
+
+Where an older section below uses “current” in a W35/W55 sense and conflicts with the post-PRE-MAIN central state, the central-state surface governs **currentness only**. Historical authority ceilings and anti-resurrection constraints remain binding unless separately superseded by competent exact-grain adoption.
 
 ## W55 GROUNDING GATE — PROJECT-LEVEL JUDGMENT
 
@@ -32,6 +44,12 @@ If the task begins to infer what Rawlsing should become, what a historical resul
 
 Start with `00_RAWLSING_GROUND.md`, then use `CENTRAL_PROJECT_STATE_R1/00_STATE_NOW.md` and the relevant state/obligation routes. `PROJECT_INHERITANCE_R1/00_READ_ME_FIRST.md` is the deeper conceptual inheritance layer after grounding.
 
+For FIELD FORGE structural-observatory architecture decisions, the post-W35 Global-HQ-adopted R2 authority is canonically routed at:
+
+`PROJECT_INHERITANCE_R1/FIELD_FORGE_R2_ADOPTED_AUTHORITY_R1/01_ADOPTED_AUTHORITY_CAPSULE.md`.
+
+Adoption authority is exact `096b419ed8fd3d07c87cb74bcc4890c2f1a8ec54`. This adopted authority is semantic/architectural at its declared FIELD FORGE grain; it does not by itself alter the selected runtime, close unrelated project obligations, or select a physical backend.
+
 Reading only current law is **not** sufficient preparation for redesign.
 
 > `CURRENT_AUTHORITY != MUST_FACTOR_INTO_IDEATION`
@@ -42,7 +60,7 @@ Reading only current law is **not** sufficient preparation for redesign.
 >
 > `LOCAL_COMPLETION != PROJECT_COMPLETION`
 
-## W35 CURRENT CORE — PRESERVED WITHOUT AUTHORITY CHANGE
+## W35 CONSTITUTIONAL CORE — PRESERVED; SEE LIVE OVERLAY FOR POST-PRE-MAIN CURRENTNESS
 
 **Canonical base / frozen global sovereign control entering reconciliation:** `daffee545fc60a8cd635aee9aafbe77a920f4c19`.
 
@@ -57,6 +75,8 @@ Current semantic/governing authority remains indexed in `CANONICAL_GOVERNANCE_R1
 The binding spine still includes Job3-R3 governed positive typed relation topology; exact Job3 REJECT and BLOCKED ledgers; O12 append-only successor obligations; P1 semantic identity law; P2 typed succession/current-selection law; P3/P4 source, joint, evidence, composability, measurement and prerequisite jurisdiction separation; P10 no-loss preservation closure; Authority31 producer-owned PRE-V3 semantic-DAG/information-conservation theorem; and Authority39 Long Memory living-succession law.
 
 Core invariants remain: `CURRENT != NEWEST`; `SEMANTIC_RELATION != RESPONDENT_COMPOSABILITY`; `SEMANTIC_STAGE != PHYSICAL_STAGE`; empirical/discovery outputs do not self-promote into structural authority; `REJECT != NEGATIVE_SEMANTIC_TRUTH`; `BLOCKED = OPEN_UNRESOLVED`, not false.
+
+Post-W35 project-level FIELD FORGE R2 semantic/architecture authority is additionally carried by the Global-HQ-adopted capsule under `PROJECT_INHERITANCE_R1/FIELD_FORGE_R2_ADOPTED_AUTHORITY_R1/`. Its adoption does not silently rewrite W35 runtime/current-law indexes or their historical authority grains.
 
 ### 2. WHAT RAWLSING CURRENTLY DOES
 
@@ -88,13 +108,21 @@ Critical ceilings remain unchanged:
 
 W50 additionally materializes conceptual inheritance reports under `PROJECT_INHERITANCE_R1/SOURCE_CORPORA/`; this changes discoverability only. `PRESERVATION != LIVE_PROMOTION`.
 
-### 4. WHAT RAWLSING IS EXPLORING
+### 4. FIELD FORGE R2 ADOPTED AUTHORITY + REMAINING EXPLORATION
 
-`FIELD_FORGE_PROPOSAL != CURRENT_RAWLSING_AUTHORITY`.
+Global HQ adopted the repaired FIELD FORGE R2 terminal semantic/architecture authority at exact grain in:
 
-Field Forge remains `EXPLORATORY_NONBINDING`, with original corpus ref `3065c22ab03be56796399d266856cbc7fa22f933` and induction ref `a68fd5a946f17fa2470b541f716cb32a439453b7`. Its prospective social-world architecture, POSITION_ROLE_AUTHORITY, geometry, pressure/homology, 553+ grammar, external-group crosswalk, and V3-interface proposals remain nonbinding unless separately adopted by competent authority.
+`096b419ed8fd3d07c87cb74bcc4890c2f1a8ec54`.
 
-W50's `PROJECT_INHERITANCE_R1/FIELD_FORGE_REINDUCTION_BRIDGE.md` records the later W35/Wave4 inheritance delta without rewriting the original Field Forge corpus.
+Canonical project-grounding route:
+
+`PROJECT_INHERITANCE_R1/FIELD_FORGE_R2_ADOPTED_AUTHORITY_R1/01_ADOPTED_AUTHORITY_CAPSULE.md`.
+
+The adopted architecture is capability/relation based and producer-preserving; it does not adopt the old nine-strata ontology, a universal geometry, a universal persistent carrier, a physical-architecture winner, or actor/person inference.
+
+Original Field Forge corpus ref `3065c22ab03be56796399d266856cbc7fa22f933`, induction ref `a68fd5a946f17fa2470b541f716cb32a439453b7`, W50's `PROJECT_INHERITANCE_R1/FIELD_FORGE_REINDUCTION_BRIDGE.md`, historical/unadopted proposals, Structural Pressure Observatory work, and later claim-specific extensions retain their own historical/exploratory/blocked statuses unless separately adopted.
+
+Adoption does not close POSITION_ROLE_AUTHORITY, external-group crosswalk, claim-specific transform/estimand/transport authority, blocked strong-noun admission or other project-wide obligations merely because the R2 architecture is now adopted.
 
 ### 5. WHAT REMAINS OPEN
 
@@ -118,7 +146,9 @@ W50 discovers and preserves a richer **conceptual** frontier without pretending 
 
 The W35 hard-negative constitution remains `CANONICAL_GOVERNANCE_R1/ANTI_RESURRECTION_INDEX.tsv`.
 
-Still prohibited as current authority: historical 700/99/320/280/600/699 routing denominators; historical V550J 2,499/15,990 carrier; R8/R15-C4/R16C/old R16F-T06 IDs and completeness; O11/T15 R1; C06 Contract@1/v1 and blocked C06 R1 fallback; PostgreSQL or any persistent backend as canonical semantic owner/universal law; SR06 R3 in place of accepted R4; R5 LONG_SHARDED V1/Parallel-12/Authority67-68 alternate as selected path; Authority70 as certified/serving R5; D15 persistence as universal law; command-only branches as accepted results; Field Forge as binding architecture; C01R2 repair as current readmission; and REJECT/BLOCKED collapsed into negative truth.
+Still prohibited as current authority: historical 700/99/320/280/600/699 routing denominators; historical V550J 2,499/15,990 carrier; R8/R15-C4/R16C/old R16F-T06 IDs and completeness; O11/T15 R1; C06 Contract@1/v1 and blocked C06 R1 fallback; PostgreSQL or any persistent backend as canonical semantic owner/universal law; SR06 R3 in place of accepted R4; R5 LONG_SHARDED V1/Parallel-12/Authority67-68 alternate as selected path; Authority70 as certified/serving R5; D15 persistence as universal law; command-only branches as accepted results; historical/unadopted Field Forge proposals as binding architecture beyond the exact Global-HQ-adopted R2 capsule; C01R2 repair as current readmission; and REJECT/BLOCKED collapsed into negative truth.
+
+The exact Global-HQ-adopted FIELD FORGE R2 architecture is current project semantic/architecture authority at its declared grain; physical presence of other Field Forge material remains nonpromotive.
 
 ### 7. EXACT CURRENT DENOMINATORS
 
@@ -149,4 +179,16 @@ W55 adds `LOCAL_COMPLETION != PROJECT_COMPLETION` and makes reintegration state 
 
 W35 validation remains under `WAVE3/W35_TERMINAL_JOIN_VALIDATION/`; W50 conceptual-synthesis/materialization receipts live under `WAVE4/W50_GLOBAL_CONCEPTUAL_INHERITANCE/`; W53 project-home seal and W54 hostile audit establish the succession-ready PRE-MAIN baseline consumed by W55.
 
-For operating correctness, trust W35's exact runtime/current-authority receipts. For redesign inheritance, start at the Ground, then use the central state to route into W50-W54 evidence. Neither mode substitutes for the other.
+For operating correctness, trust W35's exact runtime/current-authority receipts. For redesign inheritance, start at the Ground, then use the central state to route into W50-W54 evidence and any later exact adopted-authority capsules such as FIELD FORGE R2. Neither mode substitutes for the other.
+
+## PSYCHIC FIELD FORGE VISION-BANK ROUTE — 2026-09-08
+
+For redesign or terminal personality-generator work spanning the V3->V2 seam, also route through:
+
+`WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/PSYCHIC_FIELD_FORGE_R1/`.
+
+This is a banked terminal-demand/war-plan frontier, not current runtime authority. Its status is:
+
+`VISION_BANKED__ARCHITECTURE_NOT_YET_ADOPTED__NO_PRODUCTION_IMPLEMENTATION_AUTHORITY`.
+
+It must factor into future V3/V2 architecture so that durable generated personhood is mediated through relationship-specific activation, present consciousness, inhibition/defense/presentation and involuntary leakage rather than flattened into a static persona prompt. See central `S040 / OBL062 / ACT039` for sequencing and competent-authority routing.

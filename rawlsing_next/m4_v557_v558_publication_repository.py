@@ -39,6 +39,9 @@ M4_CONTRACT_ID = "M4_SCR5578_MIXED_PRODUCER_FINAL_SEAM@1.0.0"
 SCR5578_CONTRACT_ID = "SCR5578_PUBLICATION_REPOSITORY_RESOLUTION_EXACT_CONTRACT@1.0.0"
 V557_PUBLICATION_SCHEMA = "SCR5578_V557_IMMUTABLE_PUBLICATION_BUNDLE@1.0.0"
 V558_REPOSITORY_SCHEMA = "SCR5578_STRUCTURAL_PRIOR_REPOSITORY@1.0.0"
+V558_DEPENDENCY_ROLE_BINDING_SCHEMA = "SCR5578_V558_DEPENDENCY_ROLE_BINDING@1.0.0"
+V558_DEPENDENCY_ROLE_AUTH_LEGACY = "LEGACY_UNAUTHENTICATED_ROLE_DECLARATIONS"
+V558_DEPENDENCY_ROLE_AUTH_EXACT = "EXACT_CONTENT_ADDRESSED_ROLE_BINDINGS"
 V558_LOCATOR_SCHEMA = "SCR5578_PRODUCER_PRESERVING_OBJECT_LOCATOR@1.0.0"
 V558_RESOLUTION_RECEIPT_SCHEMA = "SCR5578_V558_CONTEXT_RESOLUTION_RECEIPT@1.0.0"
 V558_SELECTION_RECORD_SCHEMA = "SCR5578_V558_SELECTION_RECORD@1.0.0"
@@ -768,6 +771,121 @@ class RepositoryEntry:
 
 
 @dataclass(frozen=True)
+class DependencyRoleBinding:
+    schema: str
+    producer_object_ref: ExactRef
+    required_dependency_refs: tuple[ExactRef, ...]
+    negative_dependency_refs: tuple[ExactRef, ...]
+    binding_id: str
+    binding_hash: str
+
+    def __post_init__(self) -> None:
+        object.__setattr__(self, "schema", _text(self.schema, "dependency_role_binding.schema"))
+        object.__setattr__(
+            self, "producer_object_ref",
+            exact_ref(self.producer_object_ref, "dependency_role_binding.producer_object_ref"),
+        )
+        req = tuple(sorted(
+            (exact_ref(x, "dependency_role_binding.required_dependency_ref") for x in self.required_dependency_refs),
+            key=_ref_key,
+        ))
+        neg = tuple(sorted(
+            (exact_ref(x, "dependency_role_binding.negative_dependency_ref") for x in self.negative_dependency_refs),
+            key=_ref_key,
+        ))
+        object.__setattr__(self, "required_dependency_refs", req)
+        object.__setattr__(self, "negative_dependency_refs", neg)
+        object.__setattr__(self, "binding_id", _text(self.binding_id, "dependency_role_binding.binding_id"))
+        object.__setattr__(self, "binding_hash", _hash(self.binding_hash, "dependency_role_binding.binding_hash"))
+
+    @property
+    def ref(self) -> ExactRef:
+        return ExactRef("V558_DEPENDENCY_ROLE_BINDING", self.binding_id, self.binding_hash)
+
+
+def _dependency_role_binding_material(
+    producer_object_ref: ExactRef,
+    required_dependency_refs: Sequence[ExactRef],
+    negative_dependency_refs: Sequence[ExactRef],
+) -> dict[str, Any]:
+    return {
+        "schema": V558_DEPENDENCY_ROLE_BINDING_SCHEMA,
+        "producer_object_ref": producer_object_ref.as_dict(),
+        "required_dependency_refs": [ref.as_dict() for ref in sorted(required_dependency_refs, key=_ref_key)],
+        "negative_dependency_refs": [ref.as_dict() for ref in sorted(negative_dependency_refs, key=_ref_key)],
+    }
+
+
+def make_dependency_role_binding(obj: StructuralObject) -> DependencyRoleBinding:
+    if not isinstance(obj, StructuralObject):
+        raise M4IntegrityError("dependency-role binding requires exact StructuralObject")
+    if set(obj.required_dependency_refs) & set(obj.negative_dependency_refs):
+        raise ClosureIntegrityError("same dependency may not be both required-positive and negative")
+    material = _dependency_role_binding_material(
+        obj.ref, obj.required_dependency_refs, obj.negative_dependency_refs,
+    )
+    h = semantic_hash(material)
+    return DependencyRoleBinding(
+        V558_DEPENDENCY_ROLE_BINDING_SCHEMA,
+        obj.ref,
+        obj.required_dependency_refs,
+        obj.negative_dependency_refs,
+        f"V558ROLE:{h}",
+        h,
+    )
+
+
+def _validated_dependency_role_bindings(
+    entries: Sequence[RepositoryEntry],
+    bindings: Sequence[DependencyRoleBinding],
+    mode: str,
+) -> tuple[DependencyRoleBinding, ...]:
+    auth_mode = _text(mode, "dependency_role_authentication")
+    if auth_mode not in {V558_DEPENDENCY_ROLE_AUTH_LEGACY, V558_DEPENDENCY_ROLE_AUTH_EXACT}:
+        raise M4IntegrityError("unknown dependency-role authentication mode")
+    if isinstance(bindings, (str, bytes)) or not isinstance(bindings, Sequence):
+        raise M4IntegrityError("dependency_role_bindings must be sequence")
+    if auth_mode == V558_DEPENDENCY_ROLE_AUTH_LEGACY:
+        if bindings:
+            raise ClosureIntegrityError("legacy V558 repository may not carry unauthenticated role-binding extras")
+        return ()
+
+    normalized = tuple(sorted(bindings, key=lambda binding: _ref_key(binding.producer_object_ref)))
+    entry_by_ref = {_ref_key(entry.obj.ref): entry for entry in entries}
+    by_ref: dict[tuple[str, str, str], DependencyRoleBinding] = {}
+    for binding in normalized:
+        if not isinstance(binding, DependencyRoleBinding):
+            raise M4IntegrityError("dependency-role binding must be exact DependencyRoleBinding")
+        if binding.schema != V558_DEPENDENCY_ROLE_BINDING_SCHEMA:
+            raise ClosureIntegrityError("dependency-role binding schema mismatch")
+        material = _dependency_role_binding_material(
+            binding.producer_object_ref,
+            binding.required_dependency_refs,
+            binding.negative_dependency_refs,
+        )
+        expected_hash = semantic_hash(material)
+        if binding.binding_hash != expected_hash or binding.binding_id != f"V558ROLE:{expected_hash}":
+            raise ClosureIntegrityError("dependency-role binding identity/hash is stale or corrupt")
+        key = _ref_key(binding.producer_object_ref)
+        if key in by_ref:
+            raise ClosureIntegrityError("multiple dependency-role bindings for one exact producer")
+        entry = entry_by_ref.get(key)
+        if entry is None:
+            raise ClosureIntegrityError("dependency-role binding names wrong or absent producer ref")
+        if (
+            binding.required_dependency_refs != entry.obj.required_dependency_refs
+            or binding.negative_dependency_refs != entry.obj.negative_dependency_refs
+        ):
+            raise ClosureIntegrityError("dependency-role binding differs from exact producer role declarations")
+        if set(binding.required_dependency_refs) & set(binding.negative_dependency_refs):
+            raise ClosureIntegrityError("dependency role reclassification overlap is forbidden")
+        by_ref[key] = binding
+    if set(by_ref) != set(entry_by_ref):
+        raise ClosureIntegrityError("role-authenticated V558 repository requires one exact binding per producer")
+    return normalized
+
+
+@dataclass(frozen=True)
 class IndexRecord:
     index_name: str
     key: str
@@ -829,6 +947,8 @@ class V558RepositoryBundle:
     reference_edges: tuple[ReferenceEdge, ...]
     external_bindings: tuple[ExternalResolutionBinding, ...]
     index_manifest: LogicalIndexManifest
+    dependency_role_bindings: tuple[DependencyRoleBinding, ...] = ()
+    dependency_role_authentication: str = V558_DEPENDENCY_ROLE_AUTH_LEGACY
 
     @property
     def ref(self) -> ExactRef:
@@ -838,8 +958,10 @@ class V558RepositoryBundle:
 def _repository_material_from_ref(
     publication_ref: ExactRef, entries: Sequence[RepositoryEntry], edges: Sequence[ReferenceEdge],
     external: Sequence[ExternalResolutionBinding], index_manifest: LogicalIndexManifest,
+    dependency_role_bindings: Sequence[DependencyRoleBinding] = (),
+    dependency_role_authentication: str = V558_DEPENDENCY_ROLE_AUTH_LEGACY,
 ) -> dict[str, Any]:
-    return {
+    material = {
         "schema": V558_REPOSITORY_SCHEMA,
         "m4_contract_id": M4_CONTRACT_ID,
         "publication_bundle_ref": publication_ref.as_dict(),
@@ -853,6 +975,12 @@ def _repository_material_from_ref(
         "external_bindings": [b.binding_id for b in external],
         "index_manifest_ref": index_manifest.ref.as_dict(),
     }
+    if dependency_role_authentication == V558_DEPENDENCY_ROLE_AUTH_EXACT:
+        material["dependency_role_authentication"] = dependency_role_authentication
+        material["dependency_role_binding_refs"] = [
+            binding.ref.as_dict() for binding in dependency_role_bindings
+        ]
+    return material
 
 
 def _validate_v556_participant_edges(
@@ -907,6 +1035,8 @@ def build_v558_repository_bundle(
     reference_edges: Sequence[ReferenceEdge] = (),
     external_bindings: Sequence[ExternalResolutionBinding] = (),
     index_manifest: LogicalIndexManifest | None = None,
+    dependency_role_bindings: Sequence[DependencyRoleBinding] = (),
+    dependency_role_authentication: str = V558_DEPENDENCY_ROLE_AUTH_LEGACY,
 ) -> V558RepositoryBundle:
     if not isinstance(publication, V557PublicationBundle):
         raise M4IntegrityError("V558 repository requires exact distinct V557 publication bundle")
@@ -916,6 +1046,12 @@ def build_v558_repository_bundle(
     normalized = tuple(sorted(entries, key=lambda e: (e.obj.producer_family, e.obj.object_id, e.obj.content_hash)))
     edges = tuple(sorted(reference_edges, key=lambda e: e.edge_hash))
     external = tuple(sorted(external_bindings, key=lambda b: b.binding_id))
+    auth_mode = _text(dependency_role_authentication, "dependency_role_authentication")
+    if auth_mode != dependency_role_authentication:
+        raise M4IntegrityError("dependency-role authentication mode must be canonical exact text")
+    role_bindings = _validated_dependency_role_bindings(
+        normalized, dependency_role_bindings, auth_mode,
+    )
     by_object: dict[tuple[str, str, str], RepositoryEntry] = {}
     by_locator: dict[tuple[str, str, str], RepositoryEntry] = {}
     by_identity: dict[str, str] = {}
@@ -977,9 +1113,50 @@ def build_v558_repository_bundle(
     index_material = _index_material(manifest.declared_indexes, manifest.records)
     if semantic_hash(index_material) != manifest.manifest_hash or manifest.manifest_id != f"V558IDX:{manifest.manifest_hash}":
         raise ClosureIntegrityError("logical index manifest hash mismatch")
-    material = _repository_material_from_ref(publication.ref, normalized, edges, external, manifest)
+    material = _repository_material_from_ref(
+        publication.ref, normalized, edges, external, manifest,
+        role_bindings, auth_mode,
+    )
     h = semantic_hash(material)
-    return V558RepositoryBundle(f"V558REPO:{h}", h, V558_REPOSITORY_SCHEMA, publication.ref, normalized, edges, external, manifest)
+    return V558RepositoryBundle(
+        f"V558REPO:{h}", h, V558_REPOSITORY_SCHEMA, publication.ref,
+        normalized, edges, external, manifest, role_bindings, auth_mode,
+    )
+
+
+def build_role_authenticated_v558_repository_bundle(
+    publication: V557PublicationBundle, entries: Sequence[RepositoryEntry], *,
+    reference_edges: Sequence[ReferenceEdge] = (),
+    external_bindings: Sequence[ExternalResolutionBinding] = (),
+    index_manifest: LogicalIndexManifest | None = None,
+) -> V558RepositoryBundle:
+    """Build the opt-in role-authenticated V558 boundary without changing legacy identities."""
+    exact_entries = tuple(entries)
+    bindings = tuple(make_dependency_role_binding(entry.obj) for entry in exact_entries)
+    return build_v558_repository_bundle(
+        publication,
+        exact_entries,
+        reference_edges=reference_edges,
+        external_bindings=external_bindings,
+        index_manifest=index_manifest,
+        dependency_role_bindings=bindings,
+        dependency_role_authentication=V558_DEPENDENCY_ROLE_AUTH_EXACT,
+    )
+
+
+def require_authenticated_dependency_roles(repository: V558RepositoryBundle) -> V558RepositoryBundle:
+    """Fail closed unless this repository's effective identity includes exact dependency-role bindings."""
+    if not isinstance(repository, V558RepositoryBundle):
+        raise M4IntegrityError("role-authenticated boundary requires exact V558RepositoryBundle")
+    if repository.dependency_role_authentication != V558_DEPENDENCY_ROLE_AUTH_EXACT:
+        raise ClosureIntegrityError("V558 repository does not authenticate dependency-role declarations")
+    _validated_dependency_role_bindings(
+        repository.entries,
+        repository.dependency_role_bindings,
+        repository.dependency_role_authentication,
+    )
+    _validate_repository_checksum(repository)
+    return repository
 
 
 @dataclass(frozen=True)
@@ -1163,9 +1340,18 @@ def _validate_repository_checksum(repository: V558RepositoryBundle) -> None:
     expected_index_hash = semantic_hash(index_material)
     if repository.index_manifest.manifest_hash != expected_index_hash or repository.index_manifest.manifest_id != f"V558IDX:{expected_index_hash}":
         raise ClosureIntegrityError("repository index manifest checksum mismatch")
+    auth_mode = _text(repository.dependency_role_authentication, "dependency_role_authentication")
+    if auth_mode != repository.dependency_role_authentication:
+        raise ClosureIntegrityError("repository dependency-role authentication mode is noncanonical")
+    role_bindings = _validated_dependency_role_bindings(
+        repository.entries,
+        repository.dependency_role_bindings,
+        auth_mode,
+    )
     material = _repository_material_from_ref(
         repository.publication_bundle_ref, repository.entries, repository.reference_edges,
         repository.external_bindings, repository.index_manifest,
+        role_bindings, auth_mode,
     )
     expected = semantic_hash(material)
     if repository.repository_hash != expected or repository.repository_id != f"V558REPO:{expected}":
