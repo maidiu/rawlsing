@@ -1,0 +1,55 @@
+{
+  "schema": "ASTRA_D06_VALIDATION_RECEIPT_R1",
+  "status": "PASS",
+  "terminal": "ASTRA_D06_PASS__M10_M01_MEASUREMENT_ESTIMAND_IDENTIFICATION_EXPLICIT_NOT_APPLICABLE_DISPOSITIONS_FROZEN__CALIBRATION_UNTOUCHED__READY_FOR_HQ_ADOPTION",
+  "worker_id": "ASTRA-D06",
+  "branch": "agent/rabochii-prev3-astra-d06-measurement-dispositions-r1",
+  "commission_tip": "fc35c4357d81f602941bf1988c81ad1ecafb963f",
+  "hq_base": "98279580ffcccdd764663107aa65835fb6929228",
+  "exact_grain": "PSC06_M10_M01_PKG_C_MEASUREMENT_ESTIMAND_IDENTIFICATION_DISPOSITIONS_ONLY",
+  "artifacts": {
+    "00_RETURN.md": {"git_blob": "e1f8079d3ea98c51bed37c7a940ac448fa7dc054"},
+    "01_AUXILIARY_AUTHORITY_DISPOSITIONS.json": {"git_blob": "e66017d4a7279a5a86bd2ec5664f2e0bb2d742c4"}
+  },
+  "counts": {
+    "assigned_s03_rows": 3,
+    "resolved_bindings": 3,
+    "not_applicable": 3,
+    "bound": 0,
+    "blocked": 0,
+    "missing": 0
+  },
+  "basis_hash_replay": {
+    "MEASUREMENT": "665822d53f07e0192f35cf7010fbc5a39c60fe578e0573c9bffcd5088eff1276",
+    "ESTIMAND": "d385ef2b5ff5340bdcc8bd522519bd9d1fd325f7c63753b26817d976833eafb9",
+    "IDENTIFICATION": "b0cf46082e4f0304f734a6af4cb6543c17df23d7dad894c973e72596578b1ebf"
+  },
+  "adjudication_ref": {
+    "kind": "ASTRA_D06_M10_M01_AUXILIARY_AUTHORITY_DISPOSITIONS",
+    "object_id": "M10-M01:PKG-C:D06_R1",
+    "content_hash": "9559c52b39fe9948eba65bede9410b89f1a38e43241d1c8a184c4b939e8264f7"
+  },
+  "checks": {
+    "commission_tip_exact": true,
+    "immutable_dispatch_consumed_exactly": true,
+    "library_used": false,
+    "only_s03_ordinals_20_21_22_adjudicated": true,
+    "all_three_dispositions_explicit": true,
+    "all_three_na_basis_refs_exact_lowercase_sha256": true,
+    "all_three_na_bindings_have_null_authority_ref": true,
+    "all_three_na_bindings_have_empty_current_selection_evidence": true,
+    "na_not_inferred_from_absent_numeric_data": true,
+    "positive_semantic_operation_basis_recorded_per_role": true,
+    "future_measurement_estimand_identification_widening_requires_fresh_adjudication": true,
+    "calibration_row_24_untouched": true,
+    "value_mode_row_25_untouched": true,
+    "no_rule_body_or_rule_identity_created": true,
+    "no_rule_currentness_created": true,
+    "no_actor_fact_or_realization_created": true,
+    "no_topology_created": true,
+    "no_v3_person_state_or_obl063": true,
+    "no_provisional_sibling_consumed": true,
+    "no_hq_or_pre_main_control_mutation": true
+  },
+  "wake": "AFTER_EXACT_HQ_ADOPTION__GBE_R4_020_021_022_MAY_JOIN_D10__CALIBRATION_REMAINS_SEPARATE_D05_VALUE_MODE_DEPENDENCY"
+}
