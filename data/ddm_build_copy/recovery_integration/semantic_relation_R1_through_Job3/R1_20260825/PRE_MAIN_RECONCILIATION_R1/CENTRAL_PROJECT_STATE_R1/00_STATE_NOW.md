@@ -1,75 +1,955 @@
-# RAWLSING CENTRAL STATE NOW R1
+# RAWLSING CENTRAL STATE NOW R2
 
-This is the recurring Vozhd sweep surface. It summarizes current state; the TSV ledgers are authoritative for exact IDs/routes.
+> **OBL053 HASH-INTEGRITY CORRECTION — RESOLVED:** the historical T1/HQ identity chain remains preserved as failed currentness history, but V1 repaired it and V2 independently hostile-passed the repair. Fresh HQ adoption artifact blob `f561765bad4fdad2bbf4591f35fe7f81f8486428` is now the sole current OBL053 downstream trust root. Current authority hash = `867962094705ce13a33b0acfc81918b930dca6ae6d7c22e8094cc1d95bc41b29`; current semantic object hash = `9a5fbe9a7c272cb2a60e425f09b206f0d25dd2d95caa07028bdb021130c32547`; current receipt hash = `153ff1cd67e27b435cb6ffa4127047802eb06edcc6dab7072cedf9cb3ede7d6c`. **OBL053 is CLOSED. OBL054 is the immediate critical path.** Historical adoption blob `286ff7...` is forbidden as a current materializer authentication root.
 
-## Constitutional cognition / reintegration state
+This is the recurring Vozhd sweep surface for the post-PRE-MAIN project. The TSV ledgers remain authoritative for exact IDs, dependencies, reintegration status and open obligations.
 
-W55A Ground and W55B fail-closed governance enforcement are now physically inherited by PRE-MAIN. `00_RAWLSING_GROUND.md` is the mandatory cognitive front door for project-level decision authority; the central state/open-obligation/reintegration ledgers are the sweep surfaces; the validator enforces grounding, exact canonical-head/version matching, touched-obligation disposition, successor return paths, reintegration status, and anti-resurrection acknowledgement.
+## Exact reconciliation basis
 
-W55B mechanically counted the Ground at 457 lines / 2,956 words / 24,234 bytes and conservatively flagged the earlier ~3,500–6,000 prose target for Vozhd review. Vozhd disposition `WAVE6/W55B_GROUND_ENFORCEMENT_SEAL/VOZHD_WORDCOUNT_VARIANCE_DISPOSITION_R1.md` rules that variance `ACCEPTED_NONBLOCKING`: the range was an approximate anti-bloat design target, not a constitutional minimum, and W55B otherwise passed all 12 hostile fixtures with zero referential/dependency-return errors, authority promotions, or runtime changes.
+- canonical PRE-MAIN ref observed before this repair: `integration/pre-main-reconciliation-r1 = d15f8973ddeff46dbaa15f352fe5d7e59e1fe1a3`;
+- cumulative live build head observed at reconciliation start: `acfac12a4ca4b9efa010fd224094ac4dc55d37a8`;
+- ancestry relation: live head is a strict descendant of PRE-MAIN, `312 ahead / 0 behind`;
+- `main = b53f8843092e776fb83ec584399641f5f2fc3de3` remains outside this bounded repair;
+- Ground version for new project-level decisions after this reconciliation: `RAWLSING_GROUND_R2`.
 
-The reconciliation-level next act is therefore **independent W55C hostile constitutional audit**. Global HQ adoption remains prohibited until that audit passes. No PRE-MAIN rollback or Ground padding is required.
+The current project has **one cumulative live ancestry**, not hundreds of competing project truths. Historical/worker branches remain physical refs and evidence surfaces unless separately current at an exact authority grain.
 
-## What Rawlsing currently does
+## Current project-level architecture authority
 
-The W35-selected current runtime plus six accepted W32 reconstructed function units remains the serving functional core. Current delegated source/joint/routing carriers remain governed at their admitted grains. W50-W55 conceptual/home material is inert project cognition, not serving runtime.
+FIELD FORGE R2 is no longer categorically exploratory. Global HQ adopted its repaired terminal semantic/architecture result at exact FIELD-FORGE grain in:
 
-## What currently governs
+`096b419ed8fd3d07c87cb74bcc4890c2f1a8ec54`.
 
-Binding/current law is indexed in `../CANONICAL_GOVERNANCE_R1/`. The spine includes Job3/O12, P1-P10, Authority31 physical-neutrality/producer-ownership law and Authority39 living succession. J01-A/C06 are delegated/project-current at exact grains; delegated authority is not global sovereignty.
+Canonical capsule:
 
-## Accepted but inactive / preserved
+`../PROJECT_INHERITANCE_R1/FIELD_FORGE_R2_ADOPTED_AUTHORITY_R1/01_ADOPTED_AUTHORITY_CAPSULE.md`.
 
-R5 scale/replay capital remains inactive/non-serving. Z02 remains tested/not-admitted. Historical implementation/prototype material in the project home remains preservation/ideation capital unless an exact competent authority says otherwise.
+The adoption preserves producer ownership, typed relation/query identity, exact scope/risk-set/permission/negative authority, immutable dependency/provenance closure, deterministic replay, relation-specific representation and the PRE-V3/V3 actor firewall. It does **not** select a physical backend, authorize strong nouns without separate owners, close OBL005/OBL006, or infer actor facts.
 
-## Historical but must-factor
+## WSC002 / GT0
 
-Dva producer-owned developmental architecture; Trii information/reconstructibility/jointability law; Chetiri carrier-neutral source-backed theorem; PRE-V3/MX/fracture constraints; originary person-world anti-determinism/evidence-gating; Long Memory/recovery lessons; negative-result capital.
+WSC002 GT0 is adopted at its exact audited grain. It proves a cross-spine zero-positive baseline through real checkout while conserving typed negatives and authority boundaries.
 
-## Exploratory
+Terminal:
 
-Field Forge and Structural Pressure Observatory remain exploratory/nonbinding. Their questions matter; their proposals are not self-adopting.
+`GT0_ADOPTED_AT_AUDITED_WSC002_GRAIN__PRE_MAIN_REF_MOVEMENT_SEPARATELY_AUTHORIZED_ONLY_BY_COMPETENT_CENTRAL_ACT`.
 
-## Highest-cost open / return-required
+GT0 does not authorize positive FIELD FORGE relation admission, comparator/PSEPF authority, positive V3 mutation, V2 authority, or a physical architecture winner.
 
-- physical persistent/virtual/source-backed/hybrid architecture winner;
-- PRE553 publication seam vs continuous DAG;
-- remaining learned-world functional coverage;
-- full vertical source→PRE-V3 composition;
-- Dva W3/later implementation frontier;
-- Trii source retirement/discovery/comparator/PSEPF/source-composition/replay/lifecycle/economics;
-- Chetiri C05R2B/C08/final bakeoff/validation/comparability;
-- Job3 BLOCKED/O12 successor obligations;
-- Authority70 WVS7 certification;
-- J01-B/Contract@1;
-- C01 current readmission;
-- measurement portability ownership;
-- Field Forge position-role/crosswalk/observability/geometry/weight/homology/mode questions;
-- SWID runtime successor/equivalence;
-- retained unknown coverage families.
+## GT1 / GT2
 
-## Blocked / waiting
+GT1/GT2 is:
 
-Authority70 WVS7, C01 readmission and several exact-evidence/primary-source recoveries are blocked at stated grains. `OPEN_OBLIGATIONS.tsv` records the exact dependencies and closure authorities.
+`CLOSED_ACCEPTED_CURRENT`.
 
-## Stranded / unreconciled
+HQ terminal:
 
-Dva W3 remains `INTERRUPTED_STRANDED` historically and must not be treated as completed implementation. The reintegration ledger also treats any future `LOCAL_COMPLETE_UNRECONCILED`, `CAMPAIGN_ACCEPTED_UNBANKED`, `HQ_BANKED_NOT_CANONICALLY_INHERITED`, or `SPAWNED_SUCCESSOR_RETURN_REQUIRED` state as centrally open until dispositioned.
+`ADOPTED__GT12_GT1_GT2_REAL_SOURCE_BACKED_STRUCTURAL_CONTEXT_CANARY__V3_ZERO_EFFECT`.
 
-## Unknown
+A genuine current source-backed empirical relation is proven through FIELD FORGE relation production, PRE-V3 admission, V554, V557 `CONTEXT`-only publication, V558 resolution and the V3 guard with exactly zero positive actor/causal effect.
 
-Eight retained coverage-gap families plus SWID runtime-succession and cross-migration control-plane/architecture separation remain synthesis obligations. Unknown is not closed-by-neglect.
+The accepted descent remains exactly:
 
-## Major tensions
+`STRUCTURAL_MEDIATION_INPUT -> CONTEXT -> DENY_ZERO_EFFECT`.
 
-Physical persistence vs carrier-neutrality; PRE553 seam vs continuous DAG; preservation vs discoverability; source evidence vs person-world inference; geometry vs observability/estimand authority; questionnaire form vs counterfeit topology; delegated current authority vs global sovereignty; fracture recovery vs C01 readmission.
+This is a current vertical floor and firewall, not whole-project completion and not positive V3 authority.
 
-## Unavailable evidence
+## GT3 / GT4 current frontier
 
-The W53/W54 source home retains explicit primary gaps, including some Dva, originary person-world/Pax and Long Memory originals. They are routed and typed. Do not substitute a local summary as an exact primary.
+The current frontier is **pre-positive**.
+
+Already adopted/current at exact grain:
+
+- Q69B R5 public-clinic-experience D08 conditioner endpoint:
+  `ADOPTED__GT34_R5_Q69B_PUBLIC_CLINIC_EXPERIENCE_D08_CONDITIONER_ENDPOINT__CURRENT`;
+- repaired empirical-possibility metabolism authority at a valid-empty ceiling with zero registered positive operations;
+- CAN-008 internal target-effect authority at a valid-empty ceiling with zero positive rules;
+- ASTRA-001 deep PRE553 immutability closed;
+- ASTRA-002 shared authority-boundary defect closed.
+
+Latest integrated T-wave / post-T hostile disposition state:
+
+- **Q2 / same-source materialization:** remains HQ-adopted at the exact 19,210-row Q69B+Q86A canary grain. OBL049 remains closed there. No portability, pooling or general release-composition authority follows.
+- **Q3 / subject discovery:** proved no exact first-canary `subject_ref` or independent clinic/hospital entity evidence is current.
+- **R1 / semantic archaeology:** `BLOCKED__GT34_R1_OBL052_NO_EXISTING_COMPETENT_SUBJECT_ENTITY_OWNER_OR_EVIDENCE_PATH`. HQ banked the result. Existing identity/registry surfaces preserve semantic ownership but do not supply a facility/world-subject owner or objective entity-evidence bundle.
+- **R2 / execution preflight:** `BLOCKED__GT34_R2_OBL052_NO_LAWFUL_CURRENT_SUBJECT_MATERIALIZATION_SEAM`. HQ banked the result. ADP-010 already has an exact subject ingress contract, but neither a current V3-P1-class owner-preserving subject registry/materializer nor a current V3-P5-class OEE realization executor exists.
+- **Post-R HQ fan-in:** created OBL053, OBL054 and OBL055 rather than launching further archaeology.
+- **S1 / OBL053:** `PASS__GT34_S1_OBL053_ONE_OBJECT_SUBJECT_ENTITY_SEMANTIC_AUTHORITY_CANDIDATE_DEFINED__NO_ADOPTION`. Candidate authority `GT34_OBL053_ONE_OBJECT_NONACTOR_SUBJECT_ENTITY_SEMANTIC_AUTHORITY@1.0.0`, hash `e024220dfd21bd2544f86dd9ceec332b42115ff55afdc94183811d2ed52924ed`, is banked but not adopted. Its authority-local generated-truth seed must survive independent hostile review.
+- **S2 / OBL054:** `PASS__GT34_S2_OBL054_V3P1_ONE_OBJECT_OWNER_PRESERVING_SUBJECT_MATERIALIZER_GREEN__NO_SEMANTIC_AUTHORITY`. Governed court `34016836165` passed on evidence SHA `e9df80b9b4aca29f7002257d8bf044fa21eef45e`. Candidate is banked but not adopted.
+- **S3 / OBL055:** `PASS__GT34_S3_OBL055_ADP010_V3P5_BOUNDED_OEE_EXECUTOR_GREEN__NO_CURRENT_CANARY_INVOCATION`. Governed court `34017875248` passed on evidence SHA `c70808c993b7e236e5535a03e22fe89cc3759d1e`. Candidate is banked but not adopted.
+- **Post-S HQ banking:** S1/S2/S3 were exact candidate/evidence surfaces only; worker PASS was not project authority.
+- **T1 / OBL053 — HISTORICAL, HASH PASS SUPERSEDED:** T1 returned `PASS__GT34_T1_OBL053_S1_ONE_OBJECT_SEMANTIC_AUTHORITY_LAWFUL_FOR_BOUNDED_ADOPTION`, and HQ subsequently adopted S1. Independent central recomputation now disproves T1's exact hash-recomputation finding for authority/object/receipt. The semantic reading is preserved, but the adopted identity chain is not current. **OBL053 is RETURN_REQUIRED at hash-integrity grain.** No V3 `subject_ref` exists.
+- **V1 / OBL053 HASH-INTEGRITY REPAIR:** `PASS__GT34_V1_OBL053_CONTENT_ADDRESSED_HASH_GRAPH_REPAIRED__NO_ADOPTION`. Candidate `d14454bf2b464617e617fec5406a11bc2a754c09`; governed evidence `e1afc3c1d8c746ffcc75f79c8a5f0c87689aa08e`; run `34044557072`, job `101517181138`; exact repaired hashes: authority `867962094705ce13a33b0acfc81918b930dca6ae6d7c22e8094cc1d95bc41b29`, object `9a5fbe9a7c272cb2a60e425f09b206f0d25dd2d95caa07028bdb021130c32547`, receipt `153ff1cd67e27b435cb6ffa4127047802eb06edcc6dab7072cedf9cb3ede7d6c`. Await independent hostile review; no adoption/current generated-world truth yet.
+- **V2 / OBL053 INDEPENDENT HOSTILE REVIEW:** `PASS__GT34_V2_OBL053_REPAIRED_HASH_GRAPH_LAWFUL_FOR_FRESH_BOUNDED_ADOPTION`. Exact evidence checkout `89ba48207cd79c700529e6ae55b8a1c18890d76b`; run `34045974114`, job `101520965853`; hostile court `9 passed` after independent derivation, exact semantic-diff proof, mutation attack, and historical-identity reversion attacks.
+- **Fresh OBL053 HQ adoption:** `PASS__GT34_OBL053_REPAIRED_HASH_GRAPH_FRESHLY_HQ_ADOPTED__OBL053_CLOSED`. Fresh adoption artifact blob `f561765bad4fdad2bbf4591f35fe7f81f8486428`; corrected one-object constitutive semantic truth is current again at the unchanged semantic ceiling. No V3 `subject_ref` exists yet.
+- **T2 / OBL054:** `FAIL__GT34_T2_OBL054_S2_OWNER_AUTHENTICATION_FAIL_OPEN_AND_ONE_OBJECT_SCOPE_ESCAPE_PROVED`. S2 remains not adopted. Repair must authenticate against the exact OBL053 HQ adoption root and make one-object scope an immutable permit-level invariant.
+- **U2 / OBL054 SUCCESSOR REPAIR:** `PASS__GT34_U2_OBL054_CORRECTED_OWNER_AUTH_AND_ONE_OBJECT_PERMIT_REPAIRED__NO_ADOPTION`. Candidate `15002c7f87656d57eb0c56d68942f4b24765d55f`; governed evidence `09cc0da92eb047686aecbb68f25d6fed91c9aa37`; run `34046703322`, job `101522919696`; `20 passed`. Fresh accepted-root hash `1563a166...`; exact one-object permit hash `3eeea2dc...`. No real subject_ref was materialized; candidate awaits independent hostile review.
+- **U3 / OBL054 INDEPENDENT HOSTILE REVIEW:** `PASS__GT34_U3_OBL054_CORRECTED_OWNER_AUTH_MATERIALIZER_LAWFUL_FOR_BOUNDED_ADOPTION`. Exact hostile execution `30ae291db00fac5649a6db932e243fdbd87a7f97`; run `34048037051`, job `101526511315`; `22 passed`. Independent root/permit recomputation exactly matches U2.
+- **W1 / OBL052 CURRENT MATERIALIZATION:** `PASS__GT34_W1_OBL052_FIRST_CANARY_SUBJECT_REF_MATERIALIZED__HQ_CLOSURE_READY`. Worker tip `a4d236c108090c001440afb426b8c4a4be72e230`; exact governed execution `0237aaef818b2c500b06a8a472b67e428392d2e3`; `21 passed`. HQ closed OBL052.
+- **W2 / OBL055 REPAIR:** `PASS__GT34_W2_OBL055_S3_AUTHENTICATION_REPLAY_REPAIRED__NO_ADOPTION`. Worker tip `3ccd8df2aa1edf27ae229187955b598a636a7e5c`; frozen candidate `39e4efc35cec5f1bbb7aafbf165698e6f6cc72ea`; exact evidence execution `12dad53a3a18097de3ea0416f2741bb2bb4c68b6`; `93 passed`. Candidate banked only.
+- **OBL054 HQ ADOPTION:** `PASS__GT34_OBL054_CORRECTED_MATERIALIZER_HQ_ADOPTED__OBL054_CLOSED`. Adoption artifact blob `fc46d377dafa5b2c4e274d702e7f26268aa429cb`; materializer `GT34_V3P1_CORRECTED_OWNER_AUTHENTICATED_ONE_OBJECT_SUBJECT_MATERIALIZER@2.0.0`; accepted-root hash `1563a166...`; one-object permit `3eeea2dc...`. Adoption emits no subject_ref by itself.
+- **T3 / OBL055:** `FAIL__GT34_T3_OBL055_S3_ADP010_V3P5_EXECUTOR_AUTHENTICATION_AND_REPLAY_INTEGRITY_GAPS`. S3 remains not adopted. Transition shape is reusable, but subject ingress, phase/applicability/contact authority and replay bindings require repair. OBL055 is held behind OBL054 so it can bind the final adopted materializer.
+
+Therefore:
+
+`POSITIVE_V3_EXECUTION = NOT_AUTHORIZED`.
+
+No actor mutation, positive CAN-008 rule, positive metabolism operation, causal cursor movement or V2 effect follows from current GT3/GT4 state.
+
+## Open project fronts materially changed by post-PRE-MAIN work
+
+- OBL004 remains partially closed by the real source-backed vertical canary.
+- OBL012 remains dormant for this same-source canary; broader portability is still unowned if a future transfer claim requires it.
+- **OBL053:** CLOSED at repaired content-addressed identity grain. Fresh current adoption root blob `f561765bad4fdad2bbf4591f35fe7f81f8486428`; authority `86796209...`, semantic object `9a5fbe9a...`, receipt `153ff1cd...`. Historical `e024...` / `d964...` / `156194...` identities and adoption blob `286ff7...` remain historical only.
+- **OBL054:** CLOSED. Corrected materializer is current at adoption blob `fc46d377dafa5b2c4e274d702e7f26268aa429cb`, accepted-root hash `1563a166...`, exact one-object permit `3eeea2dc...`. Historical S2/U1 remain noncurrent history.
+- **OBL052:** CLOSED. Current first-canary subject_ref = `urn:rawlsing:v3:subject:sha256:a0d7805874dc8449fa81770254a59accde050871aed13501902502e317273f33`; production materialization receipt hash = `e8bb714f46a12dd1643e71a0e4a209ba3f7253be9d350d212b696146da11807f`. Identity/materialization only; no classifier or encounter semantics.
+- **OBL048:** RETURN_REQUIRED and unblocked. Exact subject identity + adopted objective entity facts now exist. Next: one-subject `SUBJECT_IS_PUBLIC_CLINIC_OR_HOSPITAL` authority/proposition candidate at classification-only grain, then independent hostile review/adoption.
+- **OBL055:** W2 repair candidate banked, not adopted. Frozen candidate `39e4efc35cec5f1bbb7aafbf165698e6f6cc72ea`; successor module blob `54d9acba40f0eb1db8bb03aec3c1bb900f849588`; governed court `93 passed`. Next: independent hostile review, then HQ adoption only on PASS.
+- **OBL031:** now depends on both OBL048 and OBL055 for an operable positive comparator path.
+- **OBL032:** remains blocked on OBL031; Q2 already supplies the exact same-source Q69B+Q86A empirical material.
+- OBL033 remains partially open only beyond the exact Q2 canary composition grain.
+- OBL050, OBL039 and OBL051 remain nonblocking legacy/discoverability/hygiene debts.
+
+## Centralization / reintegration state
+
+The post-PRE-MAIN engineering campaign remained one cumulative ancestry with bounded worker fan-out and repeated PR fan-in, but the canonical central-state ledgers were not updated after `d15f8973...`. This reconciliation repairs that defect and re-establishes:
+
+`SIGNIFICANT_HQ_ADOPTION_OR_CENTRAL_FANIN -> CENTRAL_STATE_DELTA_BEFORE_NEXT_MAJOR_WAVE`.
+
+Post-Q, post-S and post-T fan-in obey this rule: worker evidence was banked, exact HQ dispositions were recorded, stale-base ancestry was repaired without force, and central-state/dependency/reintegration surfaces were updated before commissioning each successor wave.
+
+`integration/pre-main-reconciliation-r1` and the de facto cumulative working ref were successfully advanced together by non-forced fast-forward through validated reconciliation terminal `7909c0683874738be491cf6c0c7131579e51fdaf`; `main` remained unchanged. This post-move status seal is the direct successor used to record that canonicalization. Long-lived worker/integration branch names are not themselves authority.
 
 ## What Vozhd attacks next
 
-For project development, use `NEXT_ACTIONS.tsv`: it orders only by dependency/readiness, not architectural preference. Before launching work, issue/consume a valid grounding receipt and attach exact state/obligation IDs. Every work unit requires a return destination and central reintegration disposition.
+Dependency order now begins with one immediate bounded repair:
 
-For **PRE-MAIN reconciliation itself**, do not launch another architecture/recovery wave. Run the independent W55C hostile constitutional audit against the exact current PRE-MAIN. Only a passing W55C may authorize the later Global HQ adoption/succession act.
+1. **PARALLEL LANE A — OBL048:** construct the exact one-subject classification authority/proposition from the current W1 subject + adopted OBL053 objective facts; candidate only, then independent hostile review/adoption.
+2. **PARALLEL LANE B — OBL055:** independently hostile-review W2 frozen candidate `39e4efc...`; on PASS return for explicit HQ adoption.
+
+Then:
+
+`corrected OBL053 + adopted OBL054 -> exact subject_ref materialization -> OBL052 closure -> OBL048 classifier`
+
+Run OBL048 semantic-authority candidate construction and W2 OBL055 independent hostile review in parallel now. As soon as either lane returns, immediately launch its next lawful gate without waiting for the sibling lane.
+
+At that point:
+
+`OBL048 + OBL055 -> OBL031 -> OBL032`
+
+After OBL031, construct the first unary Q69B-conditioned Q86A PSEPF from the adopted Q2 release, then bind one exact positive metabolism operation and one exact CAN-008 rule, and finally run the invocation-bound ASTRA-004 hostile court before any first positive V3 execution.
+
+OBL049 remains closed at the exact Q2 canary grain and must not be reopened by this work.
+
+Branch-ref cleanup OBL051 remains maintenance and must not interrupt this semantic critical path.
+
+**Ground first. Sweep centrally. Launch from the canonical reconciled head. Return explicitly. Reintegrate before the next major wave.**
+
+
+## FIELD FORGE POST-R2 CURRENT TRAJECTORY
+
+SUB-VOZHD C initial fanout is banked through two-parent central merge `71a0b81c43367a9d4de6d89bb5df061cb2fdcdc8`.
+
+HQ disposition:
+
+`HQ_DISPOSITION__FIELD_FORGE_INITIAL_FANOUT_BANKED__OBL040_HOSTILE_GATE_REQUIRED__OBL006_CLAIM_CONDITIONAL__OBL042_TRANSPORT_FREE_GRAIN_AUTHORIZED`
+
+Current exact trajectory:
+
+```text
+OBL040 candidate
+    -> independent hostile review
+    -> HQ OBL040 adoption
+
+HQ OBL040 current
+    -> OBL041
+    || narrowed local OBL042
+
+OBL041 current
+    -> OBL005
+
+OBL005 current + narrowed OBL042 current
+    -> OBL043
+
+active local closures
+    -> surviving bounded OBL020 post-R2 synthesis
+```
+
+OBL006 is not a generic blocker for local FIELD FORGE work. It remains claim-conditional and reactivates only for an exact concrete external political-group transport claim. Without a lawful map, preserve `NO_TRANSPORT / NONCOMPARABLE`.
+
+FIELD FORGE R2 remains the adopted semantic/architecture authority. This trajectory closes only surviving exact post-R2 obligations and does not reopen R2.
+
+
+## FIELD FORGE OBL040 ADOPTION AND RELEASE
+
+OBL040 is now project-current at exact bounded grain:
+
+`ADOPTED__FIELD_FORGE_OBL040_OBSERVABILITY_ROUTING_RELATION_AUTHORITY__EXACT_BOUNDED_GRAIN__OBL040_CLOSED`
+
+Adoption commit:
+
+`6e493c4a0557b894fc0a1e1a2a9c0f56b5bbc095`
+
+Exact candidate:
+
+`FIELD_FORGE_OBL040_OBSERVABILITY_ROUTING_RELATION_AUTHORITY@1.0.0`
+
+Exact HQ-mandated independent hostile PASS:
+
+`e208e6fc23a61112ffe4dad9e3782a1a922ad4b4`
+
+Current Field Forge frontier:
+
+```text
+OBL041
+  ||
+narrowed local OBL042
+
+OBL041 current -> OBL005
+
+OBL005 current + OBL042 current -> OBL043
+
+active local closures -> surviving bounded OBL020
+```
+
+OBL006 remains claim-conditional and is not a generic prerequisite for local OBL042.
+
+
+## CHETIRI AS3R3 NODE5A-R2 REACTIVATION
+
+The exact branch:
+
+`agent/verkhovod-as3r3-node5a-r2-replay-seal`
+
+at:
+
+`127fda6e3275d9dd563903e6827d195db50bdade`
+
+was reclassified by HQ from a falsely inferred in-flight state to:
+
+`CURRENT_LAWFUL_PROOF_OWNER__STRANDED_UNLAUNCHED__REACTIVATION_REQUIRED`.
+
+Binding HQ disposition:
+
+`de1b3e6cfd016c7211a054492795e3e9208dae30`.
+
+Authorities 28/29/30/34 still make Node5A-R2 the exact next causal AS3R3 successor-runtime node after accepted Node4A and before Node4B.
+
+Current Chetiri sequence:
+
+```text
+Node4A accepted
+  -> REACTIVATE Node5A-R2 exact existing branch
+  -> Node4B query-input freeze
+  -> Node5B query mint/replay
+  -> combined successor runtime seal
+  -> fresh combined replay
+  -> successor DiscoveryAuthority/frontier/replay seal
+  -> AS4I0 revalidation + independent hostile validation
+  -> C05R2B real LiTS-I production I05
+  -> C08/G1 reconciliation
+```
+
+Do not retry AS3R2 executable preimage recovery and do not create a duplicate Node5A-R2 branch.
+
+
+## ALL SUB-VOZHD + VERKHOVOD FAN-IN CURRENT STATE
+
+Central multi-parent A/B/C campaign fan-in:
+
+`ad6a19a38ce5c72b7a93513c8d8cb3c4b19ef3d3`
+
+### A — GT34 first-canary
+
+- OBL048 exact candidate has independent hostile PASS at `c06e1d6841a04659983737d2efe3c3d5bd15646d`; SUB-VOZHD A must bank/package before HQ adoption.
+- OBL056 H1 independently FAILed at `e7eb5ddb16f9bf21d4cf6f3d77420d5a2277717c` on:
+  1. future `CURRENT_ACCEPTED` entries being structurally unrepresentable;
+  2. contact-pair helper bypassing constituent receipt validation.
+- A must repair OBL056 locally and fresh-hostile it.
+- OBL055 remains blocked on HQ-current OBL056.
+- OBL031 remains blocked until OBL048 + OBL055 are both HQ-current.
+
+### B — architecture/compiler/Dva/Chetiri
+
+HQ disposition:
+
+`894ca0d9e1d50174fd4ccff7617c3888762ec0c5`
+
+Closed/current at exact grains:
+
+- OBL027;
+- OBL028;
+- OBL003 function-inventory grain;
+- OBL050 current-reachability grain;
+- OBL034 learned-product lifecycle/economics.
+
+OBL037 baseline:
+
+`SYMMETRIC_NO_RETIREMENT_CREDIT`
+
+with identical source/carrier retention across A/B/C.
+
+OBL029 remains open but does not block that exact bakeoff.
+
+General OBL033 does not block that exact bakeoff unless the selected workload requires broader composition.
+
+Correct Chetiri order:
+
+```text
+OBL035 -> OBL036 -> OBL037
+```
+
+Verkhovod Node5A-R2 PASS exists at:
+
+`a208b910a2a254052b8abc75cff9ff2c532ce30d`
+
+and awaits SUB-VOZHD B banking before Node4B.
+
+### C — Field Forge
+
+Current:
+
+- OBL040 adopted/closed;
+- OBL041 adopted/closed at `ee85c59423c4f954a87fc5022aeea1129b071f0c`;
+- OBL042 adopted/closed at `5990c9573e35c40f199ce5691a8b7fbdb2b004c1`.
+
+Immediate frontier:
+
+```text
+OBL005
+ -> HQ adoption
+ -> OBL043
+ -> bounded OBL020 post-R2 synthesis
+```
+
+OBL006 remains claim-conditional.
+
+### Global
+
+Main remains untouched.
+
+The next lawful work is parallel:
+
+1. A packages OBL048 while repairing OBL056;
+2. B banks Node5A-R2 and launches Node4B;
+3. C launches OBL005.
+
+
+## FIELD FORGE OBL005 ADOPTION / OBL043 RELEASE
+
+SUB-VOZHD C returned a campaign-accepted OBL005 candidate plus independent hostile PASS at campaign tip:
+
+`1064d6784181b8738406b8e009455e7adf53bb80`
+
+Central banking merge:
+
+`5525e13a67f8c0f245dbd6bfc56d71133f59031f`
+
+HQ adoption:
+
+`b3012b346b8dbb1569a77d998310e16f28cebf6c`
+
+Current authority:
+
+`FIELD_FORGE_OBL005_CLAIM_BOUNDED_POSITION_ROLE_AUTHORITY_AND_EVIDENCE_CONTRACT@1.0.0`
+
+Terminal:
+
+`ADOPTED__FIELD_FORGE_OBL005_CLAIM_BOUNDED_POSITION_ROLE_AUTHORITY_AND_EVIDENCE_CONTRACT__EXACT_BOUNDED_GRAIN__OBL005_CLOSED`
+
+Current FIELD FORGE frontier:
+
+```text
+OBL043 local mode/form-effects
+  + association/capital/conversion distinctions
+    -> independent hostile review
+    -> HQ adoption
+    -> bounded OBL020 post-R2 synthesis
+```
+
+OBL006 remains claim-conditional and need not be forced closed.
+
+Binding OBL043 noncollapse:
+
+```text
+MODE_OR_FORM_EFFECT != FIELD_STRUCTURE
+RESPONSE_STYLE != FIELD_STRUCTURE
+ASSOCIATION != CAPITAL_VALUE
+CAPITAL_VALUE != CONVERSION
+ASSOCIATION != CONVERSION
+```
+
+
+## FIELD FORGE ACTIVE LOCAL MISSION COMPLETE
+
+SUB-VOZHD C final active local return:
+
+`6612a4cf193355d8fa321a0fee80856415f0e65c`
+
+OBL043 candidate:
+
+`1ee4cb3302f12900f68ce7d1332f105e7af6175d`
+
+OBL043 independent hostile PASS:
+
+`1e70a7ab7d4195fbf49700f2a69b3ed11ef6670d`
+
+HQ OBL043 adoption:
+
+`dbbf89e5c51c9b6818ad300bf77bbaffd252e398`
+
+OBL020 terminal synthesis:
+
+`d92c6426416b87dc1c6753e3459181c7d79e021b`
+
+Current active-local Field Forge state:
+
+```text
+OBL040 = CLOSED/CURRENT
+OBL041 = CLOSED/CURRENT
+OBL042 = CLOSED/CURRENT
+OBL005 = CLOSED/CURRENT
+OBL043 = CLOSED/CURRENT
+OBL020 = CLOSED
+
+OBL006 = DORMANT CLAIM-CONDITIONAL RETURN REQUIRED
+```
+
+Terminal Field Forge holding:
+
+`PASS__FIELD_FORGE_POST_R2_ACTIVE_LOCAL_OBLIGATIONS_CLOSED__OBL006_PRESERVED_CLAIM_CONDITIONAL__OBL020_CLOSED`
+
+SUB-VOZHD C operational state:
+
+`ACTIVE_LOCAL_MISSION_COMPLETE__STAND_DOWN_UNLESS_EXACT_NEW_FIELD_FORGE_TRIGGER`
+
+No further Field Forge worker is active or required by the current project graph.
+
+OBL006 reactivates only on a concrete exact external political-group transport claim.
+
+No generic FIELD, HOMOLOGY, hegemony, CAPITAL, CONVERSION, transport, V3, or physical/compiler authority is implied by Field Forge closure.
+
+
+## VOZHD HQ TAKEOVER DELTA — 2026-09-07 POST-FIELD-FORGE
+
+This delta supersedes any earlier sentence in this file that still describes OBL048 as awaiting SUB-VOZHD A packaging or HQ adoption.
+
+### OBL048 — CLOSED / PROJECT-CURRENT AT EXACT ONE-SUBJECT CLASSIFICATION GRAIN
+
+HQ accepts the exact SUB-VOZHD A packet and independent hostile PASS and adopts only:
+
+- candidate commit: `01645806c98b8a83070389e5375e2b7fde781c6a`;
+- authority: `GT34_OBL048_EXACT_FIRST_CANARY_SUBJECT_CLASSIFICATION_AUTHORITY@1.0.0`;
+- authority content hash: `a0cd9714145ea4c7edd862b2a0dfdd50c2912c5ae2de598632dbe6fd2bc62794`;
+- authority artifact blob: `a0be5530a3fab5a0b18746750ff461b0e7ff2d91`;
+- proposition: `SUBJECT_IS_PUBLIC_CLINIC_OR_HOSPITAL`;
+- proposition content hash: `90c69c1d6f548214ae4c33f3aceac76e78b083d5b03218fcf4139f3922e3ea11`;
+- proposition artifact blob: `c8c9ec0d708acfe864beede72c062b13b5aa0f58`;
+- exact subject: `urn:rawlsing:v3:subject:sha256:a0d7805874dc8449fa81770254a59accde050871aed13501902502e317273f33`.
+
+Independent hostile reviewer final tip:
+`c06e1d6841a04659983737d2efe3c3d5bd15646d`.
+
+Exact hostile evidence checkout:
+`e3b8e6b3fe0ed7f74b7fb8b6f9d97526e9dccb1f`.
+
+SUB-VOZHD A HQ packet:
+`dc5ba652bc1855a83a0aff01217779d0d5c069ed`.
+
+This closes OBL048 only. It creates no contact, use, encounter, exposure, comparator, PSEPF, metabolism, CAN-008, V2 or positive-V3 actor authority.
+
+OBL031 is now blocked only on OBL055.
+
+### OBL056 — RETURN_REQUIRED AFTER H2 FRESH HOSTILE FAIL
+
+Fresh independent H2 final tip:
+`53172d2fe1dba091b1cbaf663c75a4c4e6bcf750`.
+
+Terminal:
+`FAIL__GT34_OBL056_CURRENT_ACCEPTED_ENTRY_IMMUTABLE_PROVENANCE_NOT_REQUIRED__REQUIRE_NONEMPTY_CURRENT_ENTRY_PROVENANCE`.
+
+R2 closed the earlier H1 future-current representability and contact-pair constituent-validation defects, but H2 proved one narrower remaining adoption blocker: an exact positive `CURRENT_ACCEPTED` entry may carry empty entry-level `immutable_provenance` while registry-level provenance remains nonempty.
+
+Smallest lawful next repair remains wholly inside existing OBL056:
+require nonempty current-entry immutable provenance both at exact current registry construction and at receipt validation, preserve all existing scope/currentness/role/contact-pair protections, add the exact regression, then fresh hostile-review again.
+
+OBL055 remains blocked. No OBL056 adoption is authorized.
+
+### SUB-VOZHD B / AS3R3
+
+B7 exact worker final tip:
+`b26a2b313834e0ba0a1773ebc1c25e46156dac00`.
+
+Terminal:
+`AS3R3_NODE5B_QUERY_MINT_REPLAY_SEAL_COMPLETE__READY_FOR_COMBINED_SUCCESSOR_RUNTIME_SEAL`.
+
+This is campaign-local PASS evidence, not direct HQ adoption. SUB-VOZHD B owns banking/adjudication and the next combined-successor-runtime-seal commission under its charter.
+
+### SUB-VOZHD C / FIELD FORGE
+
+FIELD FORGE active local post-R2 mission remains complete. OBL006 remains dormant claim-conditional. No worker should be manufactured merely to keep C active.
+
+### Global invariant
+
+`POSITIVE_V3_EXECUTION = NOT_AUTHORIZED`.
+
+`main` remains untouched.
+
+
+## GT34 OBL056 HQ ADOPTION — CURRENT ACCEPTANCE-BINDING LAW
+
+HQ adopted semantic candidate `442a8c16cea45620374c5a73e406483ff59122d8` as `GT34_ADP010_INPUT_AUTHORITY_ACCEPTANCE_REGISTRY@1.0.0` at authority hash `6c9ab99a7d89835e7fdf405511abd7d6d66ced54b6e2fd8ef1863be842f39123`, implementation blob `49538b9c36e58e19a6dc293ecac5bc2dff58eebe`.
+
+H3 independently hostile-passed 80 frozen attack families at evidence execution `c27318f4ccc91e021f29c89b553d6d89a657c9bc`, run/job `34152697206 / 101838084212`. SUB-VOZHD A returned exact HQ packet `eb69b0978b0b1e6476a5b9ed7c54b5cadb03f783` at final campaign tip `7ad528e849f55cff8c3d5d758d7062879a91a47c`.
+
+The installed registry remains exact content hash `ca633451bfe56f86e1b463243bf721772a9ff582227411ed5137a346491b957e` with zero current-positive entries and no positive fallback.
+
+Therefore `OBL056 = CLOSED / HQ-CURRENT`; `OBL055 = UNBLOCKED / RETURN_REQUIRED`; `OBL031` still waits on OBL055; and `POSITIVE_V3_EXECUTION = NOT_AUTHORIZED`.
+
+H3's four broader observations remain preserved as nonblocking outside the adopted acceptance-binding predicates. They are not silently promoted into EvidenceRef field-shape law, whole-snapshot integrity law, current-entry schema-admission law, or semantic role/transition truth.
+
+
+## HQ FAN-IN — B10 PROTOCOL SUCCESSION + SUB-VOZHD D TERMINAL DISPOSITION
+
+HQ fan-in:
+`805418167a57d95e7098105306aff1321a7d9560`.
+
+### B / Chetiri replay evidence
+
+B10 proved the historical Node5A-R2 mapping payload digest
+`081e3b8594be3d9348bc0565cd9085cca1e999ae58ef7881f040d11f5da89c7e`
+irrecoverable at the current evidence surface without target fitting.
+
+HQ selected the prospective-protocol disposition.
+
+Historical digest status:
+`IMMUTABLE_HISTORICAL_PROVENANCE__NONREPLAYABLE_AT_CURRENT_EVIDENCE_SURFACE`.
+
+Project-current prospective protocol:
+`AS3R3_NODE5A_R2_MAPPING_REPLAY_PROTOCOL@2.0.0`.
+
+Protocol spec blob:
+`befee68ee14f6e80e88cb3142947a37a7619fc5b`.
+
+Historical Node6 seal
+`df0395983de34996d33c258d0705cfc178df9cfe7982899431a0002c544481da`
+remains accepted historical comparison evidence but is not falsely treated as an exact prospective replay target because its frozen-input envelope binds the unreplayable historical payload digest.
+
+SUB-VOZHD B must now materialize protocol v2 under exactly one bounded worker, then recommission Node7 to produce a new versioned prospective combined replay seal with unchanged semantic/canonical identities.
+
+### D / current admission, joint authority, succession
+
+`OBL009 = CLOSED / PROJECT-CURRENT` at exact J01-B `CURRENT_JOINT_AUTHORITY_CONTRACT@1` historical-succession grain. J01-A is unchanged; 70 ambiguous succession and 278 unresolved identity rows remain typed and unresolved.
+
+`OBL017 = PARTIALLY_CLOSED`. D9 proved the exact missing edge from current routing/applicability to every operation-required positive premise. Project-current negative ceiling:
+`N025_DOES_NOT_SUPPLY_GENERIC_PRODUCTION_POSITIVE_SOURCE_COMPOSABILITY_LOAD`.
+Concrete B/OBL004 consumers must enumerate and positively bind required P3 premises or fail closed.
+
+`OBL045 = CLOSED BY RETIREMENT` as `RETIRED_AS_NON_REQUIRED_UNDER_CURRENT_AUTHORITY`. The historical Section85 respondent canary remains historically unexecuted.
+
+`SUB_VOZHD_D = STAND_DOWN`.
+
+Active campaign commanders now:
+- A: OBL055 critical path;
+- B: protocol-v2 materialization -> Node7 -> Chetiri;
+- C: dormant Field Forge;
+- D: stood down after local campaign completion.
+
+`POSITIVE_V3_EXECUTION = NOT_AUTHORIZED`.
+
+
+## GT34 OBL055 HQ ADOPTION — CURRENT EXECUTOR, NO POSITIVE FACTS MINTED
+
+HQ adoption:
+`e28e6516dfb82ff8e288b42294779de32a429412`.
+
+Adopted semantic candidate:
+`702eababa4012512743fd2e729fc9bea167089b1`.
+
+Project-current executor:
+`GT34_V3P5_ADP010_OBL056_CANONICAL_RECONSTRUCTED_REPLAY_EXECUTOR@3.1.1`.
+
+Successor content hash:
+`273f7cc59acfd60942158bac4ca6b5d1cef40521f7eb343436b6723822d93251`.
+
+Final implementation blob:
+`e8c6edab3b310b797997a3826b8acb32f7f08ce9`.
+
+Executable dependency chain is banked centrally:
+- R1 `fa169dbb525475c17b2495a5b35aa300aa809881`;
+- R2 `eb9c91b705a01868d99d3e3a564b611749e028f8`;
+- R3 `e8c6edab3b310b797997a3826b8acb32f7f08ce9`.
+
+Final fresh hostile review:
+- matrix freeze `6be26a0ad812b03461c515b9da005b0ba7a89010`;
+- final evidence `62b42fc27581e92f457e72c326f6c6b225fc907b`;
+- run/job `34161204327 / 101863248231`;
+- `74 passed`;
+- artifact ZIP SHA-256 `536104c4ee04e1a89fa7f9e1d9883304c1e6f01cde5f0086baf5dcad5fa2ac0a`.
+
+The earlier `1 failed, 73 passed` run was a hostile-harness exception-taxonomy error; the forged receipt failed closed under OBL056 as required, and the R3 target implementation did not change.
+
+Project effect:
+- `OBL055 = CLOSED / PROJECT-CURRENT`;
+- `OBL031 = ACTIVE / RETURN_REQUIRED`;
+- `OBL032 = BLOCKED_ON_OBL031`.
+
+The OBL056 installed registry remains zero-positive.
+
+Therefore:
+- no positive acceptance receipt is created;
+- no ENCOUNTER is created;
+- project-current first-canary OEE is not authorized by this adoption;
+- `POSITIVE_V3_EXECUTION = NOT_AUTHORIZED`.
+
+The next lawful A lane is the exact bounded OBL031 actor↔empirical comparator authority gap already proved by the historical/current J1 discovery return.
+
+
+## OBL031 HQ TRAJECTORY SPLIT — AUTHORITY CONSTITUTION VS POSITIVE INVOCATION
+
+SUB-VOZHD A proved at tip
+`0ed5f1023d61295dc2c480aaa99f4c8a8f157536`
+that no current accepted first-canary ADP-010 ENCOUNTER record exists.
+
+HQ accepted that finding at:
+
+`a2950d3d68eb5599d3d1beccb43784bad6a97094`.
+
+The exact missing current runtime object is:
+
+`CURRENT_ACCEPTED_FIRST_CANARY_ADP010_ENCOUNTER_FACT_REF_HASH_AND_EFFECTIVE_TIME`.
+
+HQ holds:
+
+`NO_CURRENT_ACTOR_FACT != NO_LAWFUL_COMPARATOR_AUTHORITY_CONTRACT`.
+
+Therefore OBL031 is split into two independent bounded lanes:
+
+1. **Comparator-authority lane** — remains active. A may constitute/test an exact one-field comparator authority/resolver using explicit `NONCURRENT_SYNTHETIC_TEST_ONLY` positive fixtures while current real invocation fails closed as `ACTOR_FACT_MISSING_OR_UNAUTHORIZED`.
+2. **First-positive-input preflight lane** — read-only audit of exact competent source authorities/facts for future OBL055 positive execution. No registry mutation or OEE execution is authorized.
+
+Current exact subject classification:
+`SUBJECT_IS_PUBLIC_CLINIC_OR_HOSPITAL`
+under OBL048.
+
+Future positive comparator invocation must combine that separate classification with a separately lawful ADP-010 ENCOUNTER on the same exact subject. OBL048 does not own occurrence; ADP-010 does not own clinic/hospital classification.
+
+`POSITIVE_V3_EXECUTION = NOT_AUTHORIZED`.
+
+`PROJECT_CURRENT_FIRST_CANARY_OEE = NOT_AUTHORIZED`.
+
+OBL032 remains blocked on explicit HQ OBL031 adoption and subsequent exact production prerequisites.
+
+
+## GT34 POST-TRANSFER DUAL-LANE HQ ADJUDICATION
+
+HQ consumed SUB-VOZHD A tip `eba17fadb00492a08bfcf6163b60d09158fbb583`.
+
+Lane A:
+- fresh hostile defect accepted;
+- no current exact D08 `EmpiricalPredicate@1.0.0` PREDICATE_GRAMMAR authority snapshot recovered;
+- `OBL057` created as exact D08 grammar-authority prerequisite;
+- `OBL031` is blocked on OBL057;
+- SUB-VOZHD A retains OBL057 -> OBL031.
+
+Lane B:
+- first-positive OEE preflight accepted;
+- `OBL058` causal-use source authority OPEN;
+- `OBL059` direct positive-applicability source authority OPEN;
+- `OBL060` contact-witness-independence source authority OPEN;
+- `OBL061` first-canary current runtime instance chain BLOCKED on OBL058/059/060;
+- new SUB-VOZHD E owns OBL058-061.
+
+Existing ADP-007/008/019 authority survives unchanged; their missing first-canary fact instances are not reclassified as missing authority.
+
+No current positive runtime action is authorized.
+
+`POSITIVE_V3_EXECUTION = NOT_AUTHORIZED`.
+
+
+## OBL057 HQ ADOPTION / OBL031 RESUMED
+
+SUB-VOZHD A returned OBL057 candidate + exactly one fresh hostile PASS at tip `883c2ff03770e145bc99ef2023d32cec83434ff5`.
+
+HQ adopted `GT34_D08_EMPIRICAL_PREDICATE_GRAMMAR_AUTHORITY@1.0.0` at content hash `acec40d03b5602aaa553f1f63cf2506bffe0491c008678ff973e39c3f7dcedd4`.
+
+Adoption commit: `ffd580daf88cce0a3be3a87c461c165916bad9cc`.
+
+Current-selection receipt blob: `ee54aa2965e13ba39b77f169170dc857b0fea6aa`.
+
+`OBL057 = CLOSED / PROJECT-CURRENT`.
+
+`OBL031 = RETURN_REQUIRED / ACTIVE`.
+
+SUB-VOZHD A may now perform only the smallest R2 pinning repair against the exact adopted D08 tuple and HQ evidence, then exactly one fresh hostile review.
+
+The real first-canary actor ENCOUNTER remains absent; real comparator invocation remains fail-closed.
+
+SUB-VOZHD E remains independently active on OBL058/059/060. This OBL057 adoption does not alter E ownership or authorize OBL061.
+
+`POSITIVE_V3_EXECUTION = NOT_AUTHORIZED`.
+
+
+## OBL031 HQ ADOPTION — COMPARATOR AUTHORITY CURRENT, REAL INVOCATION STILL EMPTY
+
+HQ adopted:
+
+`GT34_OBL031_ADP010_Q69B_FIELD_SPECIFIC_COMPARATOR_AUTHORITY@1.1.3`
+
+content hash:
+
+`e080f7089f27f5851152dfb2ea9b9765159cd647be995a1f41fa65945d27c87c`
+
+at adoption commit:
+
+`d8da0f554ba2dcb9cce81496b6111fa759462489`.
+
+Current-selection receipt blob:
+
+`778b287eb04d8d25f61dfc21364f170ad54ff0dd`.
+
+Final implementation blob:
+
+`ff7e13d99aa1ee6b16d4533bd8b1aa19e4dc979e`.
+
+The adopted authority is exact one-field comparator law only. It does not create actor facts, ENCOUNTER, OBL056 positive entries, predicates, PSEPF, metabolism, CAN-008, or positive V3 effects.
+
+The current real first-canary actor ENCOUNTER remains absent. Therefore current real invocation remains:
+
+`ACTOR_FACT_MISSING_OR_UNAUTHORIZED`
+
+with no emitted predicate.
+
+Project effect:
+
+- `OBL031 = CLOSED / PROJECT-CURRENT`;
+- `OBL032 = BLOCKED_ON_OBL061`;
+- SUB-VOZHD A = STAND DOWN / WAITING_ON_OBL061;
+- SUB-VOZHD E remains active on OBL058/059/060 and later OBL061.
+
+`POSITIVE_V3_EXECUTION = NOT_AUTHORIZED`.
+`PROJECT_CURRENT_FIRST_CANARY_OEE = NOT_AUTHORIZED`.
+
+## PSYCHIC FIELD FORGE — NEW BANKED POST-V3 / PRE-V2 FRONTIER
+
+A new must-factor terminal-demand architecture frontier is banked as:
+
+`S040 / OBL062 — PSYCHIC_FIELD_FORGE`.
+
+Canonical bank route:
+
+`../WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/PSYCHIC_FIELD_FORGE_R1/`
+
+Status:
+
+`VISION_BANKED__ARCHITECTURE_NOT_YET_ADOPTED__NO_PRODUCTION_IMPLEMENTATION_AUTHORITY`.
+
+The bank preserves the required distinction among total durable personhood, standing conscious self, relationship/turn-specific activation, present conscious field, and intentional/involuntary expression. It further requires a machine-defined interaction coordinate space; constrained LLM discourse encoding with numerical/directional/multiple-reading semantics where governed; persona-specific perception/distortion; an actually stored Relational Activation Workspace with hysteresis; consciousness and defense/presentation mediation; bounded hidden-cause-safe rendering; self-output feedback; and strict separation between V2/session change and durable V3 mutation.
+
+Sequencing is explicitly non-monolithic:
+
+- PFF architecture/forensics may begin now in parallel with current V3 first-positive and Chetiri work;
+- PFF interface freeze waits only on the exact durable V3 semantic contracts it consumes, not on all V3 completion;
+- production PFF state-transition semantics remain dependency-gated;
+- terminal V2 implementation must not harden a direct objective-V3 -> renderer route that bypasses the frozen PFF seam.
+
+No current Sub-Vozhd lane is ordered to stop for PFF. Dedicated PFF campaign activation is ACT039.
+
+
+## SUB-VOZHD E HQ ZOOM-OUT — OBL058/060 CLOSED; OBL059 SOLE ACTIVE AUTHORITY LANE
+
+HQ consumed SUB-VOZHD E tip `81778f0bf1ea944d812470897ae757a64a0b8531` and adjudicated the over-deep OBL058 native-build-provenance descent.
+
+Adoption commit:
+
+`31dbfc741b945ed46c831cba90d59f3370c376e7`
+
+OBL058:
+
+- `OBL058_CAUSAL_USE_PERMISSION_SOURCE_AUTHORITY_R1@1.5.0` is project-current at the bounded semantic authority-contract grain;
+- current-selection receipt blob: `5d1275a84906c67b69e692fd1ada6156d2dc8243`;
+- the R12 reviewer FAIL remains preserved;
+- its binary-to-frozen-source build-attestation proposition is valid technical evidence but not a current OBL058 semantic acceptance requirement under the project execution trust model;
+- no R13 provenance work is authorized;
+- current positive permission facts = 0.
+
+OBL060:
+
+- `V3_CONTACT_WITNESS_INDEPENDENCE_SOURCE_AUTHORITY_CANDIDATE@1.0.0` R2 is project-current at the exact independence-authority grain;
+- current-selection receipt blob: `e59d8dc58ad3bc9441b6bc1d2a4c779c4a1c75bf`;
+- current positive independence facts = 0.
+
+OBL059:
+
+- sole active E authority lane;
+- R13 producer PASS already exists at `cfd6d3b8971063c73178e819b9ec28acaa134a79`;
+- exact next duty is one fresh distinct independent R13 review, then HQ return.
+
+Therefore:
+
+`OBL058 = CLOSED`
+
+`OBL060 = CLOSED`
+
+`OBL059 = RETURN_REQUIRED`
+
+`OBL061 = BLOCKED_ON_OBL059`
+
+No actor/current phase/contact/OBL056/OBL055/ENCOUNTER/OEE runtime action is authorized.
+
+
+## HQ OBL059 ADOPTION + OBL061 TRAJECTORY — 2026-09-09
+
+HQ consumed SUB-VOZHD E return `819de0a58aac4747900151e78ed1fe463fd412b0` and adopted frozen OBL059 R13 candidate `9e255ff2a49dda900080e06affb084a9cae02dc3` at `d523a23c6203ced0e4e1d379b3a56f2864868f7d`.
+
+`OBL059_FIRST_POSITIVE_OEE_DIRECT_POSITIVE_APPLICABILITY_SOURCE_AUTHORITY@R1` is now project-current at the exact authority-contract grain. Executable blob `1dc206afcd25315f406fade7f8a3b72c378dfcd0` and its R12 executable dependency are physically banked in PRE-MAIN. Exactly one fresh distinct independent review passed 20/20; no R14 exists.
+
+Current-selection receipt blob: `0e7f1f8104052f7134bf7aab6ea116dbb7c9f5fa`.
+
+All three first-positive source-authority contracts OBL058/059/060 are therefore current, but all remain zero-positive at runtime.
+
+`OBL061` is no longer blocked on authority-contract adoption. HQ decomposed it into: runtime anchors -> separate source-owned permission/applicability/contact facts -> witness independence -> four exact OBL056 admissions -> independent OBL055 preflight -> separate HQ current-effect gate -> first current ENCOUNTER/OEE.
+
+No current actor, phase, contact, permission, applicability, independence fact, OBL056 positive entry, ENCOUNTER, OEE or OBL032 effect was created by this HQ action.
+
+
+## WVS7 / HB01 POST-SAV AUTHORITY-CLOSURE FAN-IN — 2026-09-09
+
+HQ consumed SUB-VOZHD W post-SAV join `c6c8425135d6881e53e0dc11a9da8bd4a5d5678d`.
+
+Permanent corrections:
+- raw `WVS Wave 7.sav` access is solved; do not reopen source-carrier archaeology;
+- D12 is accepted `66/66`;
+- D11 is accepted `3/66`, with exact replayed AuthoritySnapshot + EmpiricalUniverse objects for Australia 2018, Great Britain 2022 and Northern Ireland 2022;
+- 63 country scopes remain fail-closed for insufficient positive target/frame/design documentary authority.
+
+Current routing state:
+- 222/585 documentary routing cells unresolved;
+- nine D03 person-position targets remain exact `ROUTING_UNKNOWN`;
+- these are not automatically positive-recovery obligations. HQ will adjudicate whether each target remains inside the certified projection or is explicitly removed from it; any in-scope unresolved determinant remains `ROUTING_UNKNOWN`.
+
+Current HB01 topology is parallel:
+1. SUB-VOZHD W — 63-scope D11 documentary authority recovery;
+2. VOZHD/HQ — routing/D03 certified-projection scope court.
+
+No C05-R2A, full GSR07, HB01 closure, HB05, HB06, HB07 or C09 has been authorized by this fan-in. B remains stood down.
+
+
+## BOUNDED EMPIRICAL INCOMPLETENESS / RUNTIME ADMISSIBILITY — 2026-09-09
+
+HQ adopted the project-level law:
+
+`FULL_SOURCE_CERTIFICATION != APPLICATION_RUNTIME_ADMISSIBLE`.
+
+Canonical adoption surface:
+
+`../WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/BOUNDED_EMPIRICAL_INCOMPLETENESS_RUNTIME_R1/00_VOZHD_ADOPTION.md`
+
+Project effect:
+
+- strict source/documentary certification remains unchanged and continues as an independent coverage-quality track;
+- unavailable or partially authorized evidence may not masquerade as population evidence;
+- missing evidence must not be converted to zero, nearest-neighbor evidence, implicit backfill or automatic reweighting of surviving sources;
+- the runtime architecture must support typed degraded evidence, explicit non-empirical/model-prior fallbacks where versioned, wider uncertainty/support envelopes, omission of unsupported contributions and deterministic coverage receipts;
+- no individual survey family or country methodology archive may remain an unavoidable single point of failure for application existence.
+
+`OBL063` is now the exact implementation/hostile-runtime obligation.
+
+Its court must prove a per-driver missing-evidence matrix, population-claim guards, relation/backfill guards, no-renormalization semantics, terminal-vector integration and representative deletion cases including complete WVS7 population-certified contribution absence and complete absence of one survey family.
+
+This law **does not** close WVS7 HB01, does not weaken D11 documentary authority requirements, and does not wake HB05/HB06/HB07/C09 today.
+
+Instead the project now runs two parallel tracks:
+
+```text
+FULL SOURCE CERTIFICATION / AUTHORITY MAXIMIZATION
+    ||
+BOUNDED RUNTIME ADMISSIBILITY / FINISHABILITY
+```
+
+Only after OBL063 implementation and independent hostile PASS may HQ rewire downstream runtime launch dependencies away from global 100% archival certification.
+
+WVS7 documentary recovery therefore continues aggressively, but an inaccessible historical methodology document is no longer accepted as a permanent architectural veto over Rawlsing's ability to exist as runnable software.
+
+
+## WVS7 / HB01 SOURCE-LOCAL 66/66 HQ ADOPTION — 2026-09-09
+
+HQ consumes Sub-Vozhd W CAMPAIGN_JOIN_R2 at `5ecff6817d10916d72dc06346609ba9970342797` against project-current source-local admission authority `0712ef462e8c442231fb2071bc9a7ec2292c4b4e`.
+
+Accepted holdings:
+
+- WVS7 exact source-local empirical availability: **66/66 scopes**;
+- respondent source identity/replay: **97,220/97,220**;
+- source-local admission authorities: **66**;
+- source-local `EmpiricalUniverse` objects: **66**;
+- governed W qualification workflow `34409312146`: **PASS**;
+- claim ceiling remains RAW/source-indexed only under the four negative limits.
+
+The former D11 `3/66` population-documentary ceiling is therefore **retired as a source-local runtime gate**. Population certification remains a separate positive-authority overlay. Missing target/frame/design documentation may block population generalization, governed weighting, pooling or other population-sensitive uses locally; it does not make the exact survey source unusable.
+
+HB01 itself is **not yet closed**. Current critical path is:
+
+1. HQ routing/D03 certified-projection scope court R2;
+2. W C05-R2A hostile parity;
+3. W full GSR07 WVS7 source-backed certification under the source-local ceiling;
+4. separate HQ HB01 closure.
+
+Population-document recovery continues in parallel as strengthening. Romania and New Zealand positive recoveries are not treated as adopted overlays until their normal overlay materialization/adjudication completes; Ukraine remains an exact-document/body-transport recovery case.
+
+No weighted population use, cross-universe pooling, harmonization, backfill, HB05, HB06, HB07 or C09 is released by this adoption. B remains stood down pending separate HQ HB01 closure.
+
+
+## PSYCHIC FIELD FORGE — HQ TRAJECTORY REVIEW / CONVERGENCE ORDER — 2026-09-09
+
+HQ reviewed dedicated PFF prearchitecture head `1fed8c1bc65db56acb767f68d342b088df227dc6` against current PRE-MAIN `327db94ab50e087cd7abfa614aae30441832a487`.
+
+The later PFF work remains deliberately **off PRE-MAIN**: project-current PFF authority still consists only of the original charter/vision/sequencing bank. Artifacts 05–56 are research evidence, not adopted architecture or V3 authority.
+
+HQ accepts the research direction as highly productive but changes the campaign's operating mode from open-ended exploration to **bounded prearchitecture convergence**.
+
+Primary finding to preserve:
+
+`ONE_PERSON != V3_PERSON_PLUS_PFF_PERSON`
+
+The strongest current decomposition is:
+
+`V3 durable owners + shared person-transition logic + PFF fast/live mediation + V2 expression + exact V3 durable-return seam`.
+
+This means PFF may legitimately discover missing general V3 psychology, but such findings become **upstream architecture-delta candidates returned to HQ**, not PFF-owned V3 redesign.
+
+Current boundary law:
+
+- PFF may continue the already-open relational problem / pursuit / frustration / durable-condition / attractor cluster only far enough to run science/theory, rival-model, synthetic-life scenario and conceptual-elimination tests;
+- new conceptual continents are frozen unless required to close an explicit architecture-input gap;
+- Enneagram-derived latent-topology work is classified as a non-adopted general developmental hypothesis pending those courts, not as current PFF or V3 runtime law;
+- PFF must now produce an upstream V3 delta docket partitioned into interface-blocking deltas, nonblocking V3 enrichments and speculative theory;
+- PFF must separately identify PFF-fast-only, V2-expression-only and durable-return-seam responsibilities;
+- PFF interface freeze and implementation remain closed until exact consumed V3 semantic interfaces are stable and HQ admits architecture.
+
+Global sequencing is unchanged: PFF does not block W/HB01, B's later HB05/HB06 chain, or independent V3 OBL061/A progress. PFF becomes a terminal V2 prerequisite only at interface-freeze/integration time.
+
+
+## PFF SECOND HQ CHECK — EXPLICIT FRONTIER CUTOFF — 2026-09-09
+
+Live PFF advanced after the first HQ convergence order to `199a2493cd63188fedaaec14eca201bee9763698` (File 63).
+
+The branch remains prearchitecture/no-runtime, but it continued opening new conceptual territory: secondary organization, PRE-V3->V3 developmental bridge, Absolute Horizon, motivational priority and affect. File 63 proposed normative commitment/cost-bearing fidelity as the next frontier.
+
+HQ therefore freezes this cycle's research horizon at **File 63**.
+
+`NO_FILE_64_OR_NEW_FRONTIER_WITHOUT_HQ_AUTHORIZATION`.
+
+Files 57-63 are to be harvested, falsified, classified by owner and returned through an architecture-input constitution. File 58 is treated as upstream PRE-V3/V3 delta research; Files 59-60 remain deferred AH theory capital; Files 62-63 remain semantic-remainder hypotheses. None is current architecture or V3 authority.
+
+
+
+## PFF / V3 CLARIFICATION — TWO-ENDED CONVERGENCE — 2026-09-09
+
+HQ clarifies the File-63 cutoff after explicit user intent and reverse V3 authority review.
+
+The cutoff prohibits **untethered frontier expansion**; it does not prohibit PFF from continuing to reimagine PFF as the fast/live modality of the same person psychology operating inside V3.
+
+Reverse V3 reading confirms substantial overlap: TD-R05 and CAN/ADP authorities already own or anticipate event-sourced person development, response transactions, needs/expectations/strivings, middle-state mediators/tensions/practices, memory, epistemic accessibility, attractor trajectory and durable V3->V2 boundaries.
+
+Therefore the next architecture move is **two-ended convergence**: continue chat-side personhood reasoning while simultaneously crosswalking from current V3 authority outward. New PFF work must be tethered to an exact existing owner, missing shared transition or falsifier. Free-standing adjacent psychology frontiers remain deferred.
+

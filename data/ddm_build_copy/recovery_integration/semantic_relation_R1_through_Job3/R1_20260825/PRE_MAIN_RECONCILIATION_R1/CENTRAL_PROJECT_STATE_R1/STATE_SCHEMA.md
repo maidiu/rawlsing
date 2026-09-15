@@ -36,3 +36,25 @@ Project-level closure requires central disposition and canonical inheritance, or
 ## Ground versioning
 
 `00_RAWLSING_GROUND.md` is a versioned cognitive surface, not a self-hashing authority source. Grounding receipts must record the exact canonical project head actually read plus the declared ground version. A later validator must compare both against the then-current canonical project state and fail closed on mismatch for project-level adoption.
+
+
+## Post-PRE-MAIN maintenance invariant — 2026-09-06
+
+The Sep 2–6 post-PRE-MAIN campaign demonstrated that a project may preserve one lawful cumulative ancestry while still allowing its central cognition to become stale. The following maintenance law is therefore explicit:
+
+```
+SIGNIFICANT_HQ_ADOPTION_OR_CENTRAL_FANIN
+=> CENTRAL_STATE_DELTA_REQUIRED_BEFORE_NEXT_MAJOR_WAVE
+```
+
+A central-state delta must disposition, at minimum, touched project-state rows, obligations, dependencies, reintegration status and next actions. A no-change disposition is permitted, but silence is not.
+
+```
+ACTIVE_WORKING_BRANCH != CANONICAL_PROJECT_REF
+PHYSICAL_BRANCH_PRESENCE != PROJECT_AUTHORITY
+MERGED_BRANCH != AUTOMATICALLY_SAFE_TO_DELETE
+```
+
+When a temporary/legacy working branch becomes the de facto cumulative integration line, a competent Vozhd must either re-anchor the declared canonical project ref by verified non-forced fast-forward or record an explicit reason the divergence remains open.
+
+Before launching a new major successor wave, the commissioning authority must verify that the central-state sweep reflects every materially inherited HQ adoption/fan-in on the working ancestry. If not, the legal next phase is `INTEGRATE / CLOSURE_ONLY`, not new semantic expansion.

@@ -1,0 +1,119 @@
+{
+  "schema": "GT34_S3_OBL055_ADP010_V3P5_BOUNDED_OEE_EXECUTION_RECEIPT@1",
+  "terminal": "PASS__GT34_S3_OBL055_ADP010_V3P5_BOUNDED_OEE_EXECUTOR_GREEN__NO_CURRENT_CANARY_INVOCATION",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-gt34-s3-obl055-adp010-v3p5-oee-executor-r1",
+  "exact_working_ancestry_start": "50cd903fbd6fdb4ed1dc248ab2ff5db9a2060733",
+  "immutable_instruction_ref": "50cd903fbd6fdb4ed1dc248ab2ff5db9a2060733",
+  "semantic_candidate_sha": "5bed04b83f0dc61e500da26130892e46ce9c86ff",
+  "evidence_execution_sha": "c70808c993b7e236e5535a03e22fe89cc3759d1e",
+  "terminal_sha_resolution": "FINAL_BRANCH_TIP_CONTAINING_00_RETURN.md",
+  "governed_court": {
+    "workflow": "Rabochii Governed Bounded Court",
+    "run_id": 34017875248,
+    "job_id": 101444831011,
+    "result": "PASS",
+    "executor_tests_passed": 22,
+    "executor_tests_failed": 0,
+    "protocol_self_tests_passed": 20,
+    "python": "3.12.14",
+    "pytest": "9.1.1",
+    "determinism_mode": "EXACT",
+    "spec_sha256": "4d2cafb77d50c639ee2ee3e9caf5397d5d04124546799627f08f63429ac046a8",
+    "receipt_artifact_id": 9984488892,
+    "receipt_artifact_zip_sha256": "ac38a98cc7072a607b62c14a52210c1759cec81b3194d09d754f390da08451ef"
+  },
+  "exact_changed_semantic_test_files": [
+    {
+      "path": "rawlsing_next/v3_adp010_oee_executor.py",
+      "blob_sha": "cd6e978eea25384482ef2ab75547b8d33bcc4fb7"
+    },
+    {
+      "path": "rawlsing_next/tests/test_v3_adp010_oee_executor.py",
+      "blob_sha": "0d29a69e9f88beb72ebfb4ddb85bdb5c40fc74d5"
+    }
+  ],
+  "authority_identities_reproduced": {
+    "ADP-010": {
+      "authority_id": "V3_OPPORTUNITY_ENCOUNTER_EXPOSURE_REALIZATION_RULE",
+      "authority_version": "1.0.0",
+      "registry_id": "V3_OEE_REALIZATION_RULE_REGISTRY",
+      "registry_version": "1.0.0",
+      "artifact_blob_sha": "0eac41d081b112255dcfc6dd42a6afab15a2928b",
+      "rules": [
+        "OEE_CORE_AVAILABLE_BASIS_V1",
+        "OEE_CORE_OPPORTUNITY_FROM_EXPLICIT_BASIS_V1",
+        "OEE_CORE_ENCOUNTER_FROM_EXPLICIT_CONTACT_WITNESS_V1"
+      ]
+    },
+    "ADP-008": {
+      "authority_id": "V3_DEVELOPMENTAL_PHASE_RULE",
+      "authority_version": "1.1.0",
+      "artifact_blob_sha": "c6564c5c2793e9ed86ec0c5cecbcf84ff6f427d6",
+      "required_phase": "V3DP_DEVELOPMENT_ACTIVE"
+    },
+    "ADP-020": {
+      "authority_id": "ADP-020",
+      "authority_version": "1.0.0",
+      "artifact_blob_sha": "1f13dc7ccc69bda562613d6215acc996a9c092e4",
+      "core_v1_rng": "ZERO_DRAW"
+    }
+  },
+  "bounded_chain": [
+    "BASIS",
+    "AVAILABLE",
+    "OPPORTUNITY",
+    "ENCOUNTER"
+  ],
+  "identity_replay_law": {
+    "record_domain_separator": "RAWLSING\\0ADP-010\\0V3_OEE_REALIZATION_RECORD_V1\\0",
+    "record_identity_tuple": [
+      "actor",
+      "authority/registry/rule versions",
+      "state",
+      "subject",
+      "parent",
+      "effective scope/granularity",
+      "canonical witnesses",
+      "candidate replay hash",
+      "RNG receipt if any"
+    ],
+    "canonical_refs": "deduplicated and sorted by exact kind/ref/content-hash tuple",
+    "effective_time": "timezone-aware ISO-8601 normalized to UTC",
+    "replay": "same immutable inputs reproduce identical candidate, record and event identities",
+    "duplicate_invocation": "idempotent",
+    "rng": "none for accepted ADP-010 core-v1 deterministic witness rules"
+  },
+  "contact_witness_law": {
+    "required_kind": "CONTACT_OCCURRENCE_WITNESS",
+    "required_semantic": "CONTACT_OCCURRENCE",
+    "required_independence_kind": "CONTACT_WITNESS_INDEPENDENCE",
+    "actor_subject_match": true,
+    "occurrence_time_match": true,
+    "explicit_insufficient": [
+      "co-location",
+      "co-presence",
+      "same geography/time",
+      "shared V555 endpoint",
+      "same structural target",
+      "same institution/category",
+      "simultaneous resolver selection",
+      "narrative plausibility"
+    ]
+  },
+  "no_semantic_widening": {
+    "subject_created": false,
+    "subject_classified": false,
+    "encounter_inferred_from_colocation": false,
+    "exposure_created_or_inferred": false,
+    "actor_state_mutated": false,
+    "comparator_authority_created": false,
+    "psepf_created": false,
+    "metabolism_created": false,
+    "can008_created_or_invoked": false,
+    "fixture_encounter_is_current_positive_v3_canary": false,
+    "sibling_worker_conclusion_consumed": false,
+    "pre_main_moved": false,
+    "main_moved": false
+  }
+}

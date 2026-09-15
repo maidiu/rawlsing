@@ -1,0 +1,54 @@
+{
+  "schema": "GT34_V2_OBL053_REPAIRED_HASH_GRAPH_HOSTILE_AUDIT_EVIDENCE@1.0.0",
+  "status": "INDEPENDENT_HOSTILE_AUDIT_EVIDENCE__NO_ADOPTION",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-gt34-v2-obl053-repaired-hash-graph-hostile-audit-r1",
+  "instruction_ref": "8b8186bf48f53ff73719f16de16f5ed10dfb9f95",
+  "target_semantic_candidate_sha": "d14454bf2b464617e617fec5406a11bc2a754c09",
+  "target_candidate_blob": "14ff405cfb77ccfe30adbce16e9c0ff14fa540f9",
+  "historical_candidate_blob": "59c88df41b90f3ca932f52326fe4b275e84c4551",
+  "evidence_execution_sha": "89ba48207cd79c700529e6ae55b8a1c18890d76b",
+  "governed_court": {
+    "run": 34045974114,
+    "job": 101520965853,
+    "workflow": "Rabochii Governed Bounded Court",
+    "exact_checkout": "89ba48207cd79c700529e6ae55b8a1c18890d76b",
+    "protocol_self_test": "20 passed in 0.12s",
+    "hostile_tests": "9 passed in 0.06s",
+    "conclusion": "success",
+    "artifact_id": 9993099482,
+    "artifact_zip_sha256": "56ba5847554039ee721886b21e6c1b09f1731c6f04284d5ceb6adbaede17707c"
+  },
+  "independent_findings": {
+    "historical_mismatch_reproduced": true,
+    "repaired_graph_independently_derived": true,
+    "exact_candidate_data_model_match": true,
+    "exact_object_diff_paths": [
+      "semantic_owner_authority.authority_content_hash",
+      "provenance_refs[1].content_hash"
+    ],
+    "exact_receipt_diff_paths": [
+      "semantic_object_id",
+      "semantic_object_content_hash",
+      "semantic_owner_authority.authority_content_hash"
+    ],
+    "seed_projection_unchanged": true,
+    "authority_projection_unchanged": true,
+    "objective_facts_unchanged": true,
+    "semantic_ceilings_unchanged": true,
+    "seed_mutation_breaks_admitted_graph": true,
+    "object_historical_authority_reversion_breaks_identity": true,
+    "receipt_historical_identity_reversion_breaks_identity": true,
+    "one_object_nonownership_ceiling_preserved": true,
+    "candidate_not_adopted": true
+  },
+  "repaired_identities": {
+    "seed_hash": "b20687b91e0a7a9cc64a96e229e58244041d54b4ea9c73a182b2f9da0cd2ef53",
+    "authority_hash": "867962094705ce13a33b0acfc81918b930dca6ae6d7c22e8094cc1d95bc41b29",
+    "semantic_object_hash": "9a5fbe9a7c272cb2a60e425f09b206f0d25dd2d95caa07028bdb021130c32547",
+    "semantic_object_id": "urn:rawlsing:gt34:generated-nonactor-subject-semantic-object:sha256:9a5fbe9a7c272cb2a60e425f09b206f0d25dd2d95caa07028bdb021130c32547",
+    "objective_evidence_receipt_hash": "153ff1cd67e27b435cb6ffa4127047802eb06edcc6dab7072cedf9cb3ede7d6c"
+  },
+  "adoption_readiness": "LAWFUL_FOR_FRESH_BOUNDED_HQ_ADOPTION__PASS_IS_NOT_ADOPTION",
+  "terminal": "PASS__GT34_V2_OBL053_REPAIRED_HASH_GRAPH_LAWFUL_FOR_FRESH_BOUNDED_ADOPTION"
+}

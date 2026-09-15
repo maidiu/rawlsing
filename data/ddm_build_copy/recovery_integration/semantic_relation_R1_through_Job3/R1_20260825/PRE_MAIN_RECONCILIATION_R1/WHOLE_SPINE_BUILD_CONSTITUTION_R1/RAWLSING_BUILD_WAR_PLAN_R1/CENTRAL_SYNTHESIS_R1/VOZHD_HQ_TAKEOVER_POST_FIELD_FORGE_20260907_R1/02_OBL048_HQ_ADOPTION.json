@@ -1,0 +1,48 @@
+{
+  "artifact_schema": "GT34_OBL048_HQ_ADOPTION@1.0.0",
+  "status": "ADOPTED__GT34_OBL048_EXACT_FIRST_CANARY_SUBJECT_CLASSIFICATION_AUTHORITY__OBL048_CLOSED",
+  "candidate_commit": "01645806c98b8a83070389e5375e2b7fde781c6a",
+  "authority": {
+    "id": "GT34_OBL048_EXACT_FIRST_CANARY_SUBJECT_CLASSIFICATION_AUTHORITY",
+    "version": "1.0.0",
+    "content_hash": "a0cd9714145ea4c7edd862b2a0dfdd50c2912c5ae2de598632dbe6fd2bc62794",
+    "artifact_blob": "a0be5530a3fab5a0b18746750ff461b0e7ff2d91"
+  },
+  "proposition": {
+    "value": "SUBJECT_IS_PUBLIC_CLINIC_OR_HOSPITAL",
+    "content_hash": "90c69c1d6f548214ae4c33f3aceac76e78b083d5b03218fcf4139f3922e3ea11",
+    "artifact_blob": "c8c9ec0d708acfe864beede72c062b13b5aa0f58"
+  },
+  "subject_ref": "urn:rawlsing:v3:subject:sha256:a0d7805874dc8449fa81770254a59accde050871aed13501902502e317273f33",
+  "subject_ref_hash": "a0d7805874dc8449fa81770254a59accde050871aed13501902502e317273f33",
+  "bindings": {
+    "w1_materialization_receipt_hash": "e8bb714f46a12dd1643e71a0e4a209ba3f7253be9d350d212b696146da11807f",
+    "obl053_semantic_object_hash": "9a5fbe9a7c272cb2a60e425f09b206f0d25dd2d95caa07028bdb021130c32547",
+    "obl053_semantic_owner_hash": "867962094705ce13a33b0acfc81918b930dca6ae6d7c22e8094cc1d95bc41b29",
+    "objective_evidence_receipt_hash": "153ff1cd67e27b435cb6ffa4127047802eb06edcc6dab7072cedf9cb3ede7d6c",
+    "q1_subject_requirement_hash": "219fe6714efbcda30b6d9ea69cec6b99f3fe86a92c43ae7122a68e404f795fca"
+  },
+  "hostile_review": {
+    "reviewer_tip": "c06e1d6841a04659983737d2efe3c3d5bd15646d",
+    "evidence_checkout": "e3b8e6b3fe0ed7f74b7fb8b6f9d97526e9dccb1f",
+    "run": 34062692636,
+    "job": 101565938232,
+    "focused_result": "58 passed"
+  },
+  "sub_vozhd_a_packet": "dc5ba652bc1855a83a0aff01217779d0d5c069ed",
+  "authority_ceiling": [
+    "EXACT_ONE_CURRENT_SUBJECT_CLASSIFICATION_ONLY",
+    "SUBJECT_IS_PUBLIC_CLINIC_OR_HOSPITAL_ONLY",
+    "NO_ACTOR_CONTACT_USE_ENCOUNTER_EXPOSURE",
+    "NO_COMPARATOR_PSEPF_METABOLISM_CAN008_V2_POSITIVE_V3",
+    "NO_SECOND_SUBJECT_CLASSIFICATION",
+    "NO_GENERAL_FACILITY_ONTOLOGY"
+  ],
+  "project_effect": {
+    "obl048": "CLOSED",
+    "obl031_remaining_dependency": [
+      "OBL055"
+    ],
+    "positive_v3_execution": "NOT_AUTHORIZED"
+  }
+}

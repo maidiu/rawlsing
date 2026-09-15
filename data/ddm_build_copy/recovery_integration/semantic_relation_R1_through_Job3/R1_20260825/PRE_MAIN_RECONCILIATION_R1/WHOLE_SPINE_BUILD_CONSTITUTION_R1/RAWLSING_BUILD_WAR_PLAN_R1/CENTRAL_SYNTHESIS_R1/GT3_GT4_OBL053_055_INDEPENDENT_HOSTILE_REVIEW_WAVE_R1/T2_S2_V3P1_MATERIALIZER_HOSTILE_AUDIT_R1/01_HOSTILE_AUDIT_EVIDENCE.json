@@ -1,0 +1,125 @@
+{
+  "schema_id": "GT34_T2_S2_V3P1_MATERIALIZER_HOSTILE_AUDIT_EVIDENCE@1.0.0",
+  "repository": "maidiu/rawlsing",
+  "worker": "T2",
+  "obligation": "OBL054",
+  "disposition": "FAIL",
+  "terminal": "FAIL__GT34_T2_OBL054_S2_OWNER_AUTHENTICATION_FAIL_OPEN_AND_ONE_OBJECT_SCOPE_ESCAPE_PROVED",
+  "target": {
+    "semantic_candidate_sha": "38257e57bd5e2d862edfcd1efb610c4d15774b37",
+    "evidence_execution_sha": "e9df80b9b4aca29f7002257d8bf044fa21eef45e",
+    "original_governed_court_run": 34016836165,
+    "original_governed_court_job": 101441974170,
+    "original_governed_court_result": "PASS",
+    "candidate_parent_sha": "50cd903fbd6fdb4ed1dc248ab2ff5db9a2060733",
+    "candidate_files": [
+      {
+        "path": "rawlsing_next/gt34_s2_v3p1_subject_registry_materializer.py",
+        "blob_sha": "0ac1df8ef4c91b9004f3ffb8d00fefcadc2980cf"
+      },
+      {
+        "path": "rawlsing_next/tests/test_gt34_s2_v3p1_subject_registry_materializer.py",
+        "blob_sha": "82be090227df24c4df8ab5d967bfb4ca99ba15a1"
+      }
+    ],
+    "candidate_to_evidence_delta": [
+      ".rabochii/court_spec.json"
+    ]
+  },
+  "independent_hostile_court": {
+    "pr": 225,
+    "evidence_execution_sha": "a2d60a01f19af7b1d5c01284dd0f21f24173f112",
+    "run": 34018861625,
+    "job": 101447609008,
+    "result": "PASS__HOSTILE_ASSERTIONS_PROVED",
+    "protocol_self_test": "20 passed in 0.09s",
+    "hostile_test_result": "12 passed in 0.11s",
+    "receipt_artifact_id": 9984802086,
+    "receipt_artifact_name": "rabochii-court-receipt-34018861625",
+    "receipt_artifact_digest": "sha256:c9b7877e6074090e9e25c099d872aad06703e0c3e8c7d119411cd76a4b12453a",
+    "receipt": {
+      "schema_id": "RABOCHII_BOUNDED_COURT_RECEIPT@1.0.0",
+      "result": "PASS",
+      "exit_code": 0,
+      "semantic_candidate_sha": "38257e57bd5e2d862edfcd1efb610c4d15774b37",
+      "evidence_execution_sha": "a2d60a01f19af7b1d5c01284dd0f21f24173f112",
+      "pr_synthetic_merge_sha": "40c724ff8902448d34c5aeaa61167eec9a737668",
+      "python": "3.12.14",
+      "implementation": "CPython",
+      "determinism_mode": "EXACT",
+      "spec_sha256": "0465b3846b7bad56c06752ce99cd69fe41138c458f9e89b4325645f8641106ba"
+    },
+    "superseded_harness_run": {
+      "run": 34018821436,
+      "job": 101447499458,
+      "disposition": "HARNESS_ERROR_ONLY__SUPERSEDED",
+      "error": "independent recomputation test sorted dict objects without an explicit key",
+      "candidate_result_inference": "NONE",
+      "target_candidate_modified": false
+    }
+  },
+  "independent_recomputation_fixture": {
+    "semantic_owner_authority_id": "HOSTILE_UNREGISTERED_OWNER",
+    "semantic_owner_authority_version": "999.999.999",
+    "semantic_owner_authority_hash": "919de30f5fa6cb6f5ccce0b6fae1f1d19ec7e8568c778411d4bc4c399f741475",
+    "object_A": {
+      "owner_binding_hash": "6a876ed1da686e63dd66f538ba8a5db08abe5f8f8c9bd3f1e947cebfc2026611",
+      "subject_ref_hash": "d5726284b313c9ddb7bbf396c00e1b8ae7ec4a3f0d05a7caa63d67a50dc20204",
+      "replay_input_hash": "19333d2631c53d9534014103b202cc4aca0551cf0a74cb04385801cac16ad939",
+      "receipt_hash": "aa764f27b2b53fba7f6c49471377dbf5dbfa23fd5abd8aa00507acd05a2ceb29"
+    },
+    "object_B": {
+      "owner_binding_hash": "113951066cae94b1039019d232159a31fb3340d4a017330e75f481c65a4e7e56",
+      "subject_ref_hash": "d4256803e4300b62af837c7ec8d01b74c48264a5589274681761472bce57fb89",
+      "replay_input_hash": "0552067d4a0b9971e15341b551351eb027133a08a44453ea0d04c04c6d183eb1",
+      "receipt_hash": "0e992191b039464eb4b4aefeb47aabfef81ba8e8de3b4645cad6aac18c944702"
+    }
+  },
+  "positive_controls": {
+    "semantic_candidate_evidence_separation": "PASS",
+    "deterministic_content_addressing": "PASS",
+    "owner_hash_mutation_changes_identity": "PASS",
+    "semantic_object_bytes_ref_tamper_fails_closed": "PASS",
+    "evidence_provenance_order_is_mechanical": "PASS",
+    "identical_input_idempotent": "PASS",
+    "same_registry_instance_second_object_rejected": "PASS",
+    "semantic_object_bytes_not_parsed_or_reemitted": "PASS",
+    "semantic_owner_transfer_false_mechanical": "PASS",
+    "random_time_label_environment_identity_inputs_absent": "PASS",
+    "original_recorded_court_exact_and_passed": "PASS"
+  },
+  "defects": [
+    {
+      "id": "T2-D01",
+      "name": "OWNER_AUTHENTICATION_FAIL_OPEN",
+      "proof": "An arbitrary fabricated owner id/version/hash plus arbitrary exact object/evidence/provenance refs can use the public compute_owner_binding_content_hash helper and is accepted as VERIFIED_OWNER_BOUND_INPUT.",
+      "violated_requirements": [
+        "materializer verifies exact ownership before issuing a ref",
+        "malformed/unknown/unowned input fails before ref emission"
+      ],
+      "root_cause": "owner_binding_content_hash is a self-consistency checksum over caller-controlled fields, not independently verifiable owner-authority acceptance/authentication"
+    },
+    {
+      "id": "T2-D02",
+      "name": "ONE_OBJECT_SCOPE_ESCAPE",
+      "proof": "The exported stateless materialize_owner_bound_subject function emits distinct refs for objects A and B, and separate OneObjectSubjectRegistry instances each admit a distinct object.",
+      "violated_requirements": [
+        "second distinct object is impossible at V1 grain",
+        "implementation does not silently widen into a general registry substrate"
+      ],
+      "root_cause": "one-object cardinality exists only as mutable per-instance memory and is bypassable by the exported stateless materializer or by constructing another registry instance"
+    }
+  ],
+  "derived_risk": {
+    "synthetic_fixture_promotion": "Because T2-D01 accepts fabricated owner bindings and T2-D02 permits unbounded distinct materializations, a caller can make synthetic/arbitrary bytes yield real-looking content-addressed subject refs. This is a consequence of D01+D02, not a semantic-parser defect.",
+    "hidden_semantic_interpretation": "NOT_FOUND",
+    "owner_transfer_field_falsification": "NOT_FOUND",
+    "replay_nondeterminism": "NOT_FOUND"
+  },
+  "smallest_repair_requirement": {
+    "owner_gate": "Require an independently verifiable accepted-owner authority snapshot/capability binding exact authority id/version/hash, governed object family/scope, and exact object/evidence lineage. A caller-computable owner-binding checksum may remain integrity evidence but cannot itself satisfy owner authentication.",
+    "one_object_gate": "Bind V1 materialization to one immutable content-addressed one-object permit/scope that names the exact expected owner-bound semantic object ref/hash. Remove or gate the unrestricted stateless export so a new process/registry instance cannot authorize a different object under the same bounded candidate.",
+    "semantic_scope": "No new entity semantics, classifier authority, encounter authority, or general world ontology is required for the repair."
+  },
+  "adoption_readiness": false
+}

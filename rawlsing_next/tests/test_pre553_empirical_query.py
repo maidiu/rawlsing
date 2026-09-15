@@ -19,6 +19,7 @@ from rawlsing_next.pre553_empirical_objects import (
     EmpiricalQuerySpec,
     EmpiricalUniverse,
     ExactRef,
+    Pre553IntegrityError,
     Pre553SemanticCollapseError,
     RespondentEvent,
     RoutingEligibilityFact,
@@ -1067,3 +1068,336 @@ def test_authorized_composite_requires_and_uses_operation_specific_positive_auth
     assert cells["0"]["raw_numerator_support"] == 1
     assert cells["1"]["raw_numerator_support"] == 1
     assert len(fact.empirical_universe_refs) == 2
+
+
+def test_sealed_release_semantic_bodies_are_deeply_immutable_and_exports_detached():
+    source = _build_source("astra001-deep-immutability", [
+        {"id": "R1", "responses": {"X": 0, "Y": 0}},
+        {"id": "R2", "responses": {"X": 1, "Y": 1}},
+    ])
+    qa = _query_authority("astra001-deep-immutability")
+    predicate = _branch_predicate(source, qa, tag="astra001")
+    query = _query(source, qa, predicate, ("X", "Y"), tag="astra001")
+    registry = _registry(source, qa)
+
+    before = _run(source, qa, predicate, query, registry=registry)
+    before_fact_exports = tuple(fact.as_dict() for fact in before.facts)
+    release = source["repo"].resolve_release_exact(source["release_ref"])
+    release_ref_before = release.release_ref
+    query_ref_before = query.ref
+
+    event = next(obj for obj in release.public_objects if isinstance(obj, RespondentEvent))
+    event_ref_before = event.ref
+    event_projection_before = event.semantic_projection()
+
+    # Direct semantic-field attributes are dict/list-compatible for existing
+    # consumers, but identity-bearing descendants themselves are immutable.
+    with pytest.raises(TypeError):
+        event.scoped_respondent_ref["object_id"] = "urn:mutated"
+    with pytest.raises(TypeError):
+        event.multiplicity_order_rank_fields["kind"] = "RANKED_RESPONSE"
+
+    # Explicit base-class mutation cannot bypass the immutable representation:
+    # these values are not writable dict/list subclasses.
+    with pytest.raises(TypeError):
+        dict.__setitem__(event.multiplicity_order_rank_fields, "kind", "BASE_BYPASS")
+    with pytest.raises(TypeError):
+        dict.__setitem__(event.scoped_respondent_ref, "object_id", "urn:base-bypass")
+
+    components = query.target_arity_and_topology["components"]
+    assert not isinstance(components, list)
+    with pytest.raises(TypeError):
+        list.__setitem__(components, 0, {"mutated": True})
+    with pytest.raises((AttributeError, TypeError)):
+        object.__setattr__(components, "_items", ({"mutated": True},))
+
+    # semantic_fields no longer exposes a writable nested alias.
+    with pytest.raises(TypeError):
+        event.semantic_fields["scoped_respondent_ref"]["content_hash"] = "0" * 64
+
+    # semantic_projection()/as_dict() are detached exports. They remain ordinary
+    # mutable representations, but mutation cannot alter the sealed object.
+    projection_export = event.semantic_projection()
+    projection_export["semantic_fields"]["scoped_respondent_ref"]["object_id"] = "urn:detached"
+    projection_export["semantic_fields"]["multiplicity_order_rank_fields"]["kind"] = "DETACHED"
+    dict_export = event.as_dict()
+    dict_export["semantic_fields"]["scoped_respondent_ref"]["content_hash"] = "1" * 64
+    dict_export["semantic_fields"]["multiplicity_order_rank_fields"]["kind"] = "DETACHED"
+
+    assert event.ref == event_ref_before
+    assert event.semantic_projection() == event_projection_before
+
+    # Exact repository resolution returns the sealed immutable object, not a
+    # writable identity-bearing body.
+    resolved_event = source["repo"].resolve_object_exact(event.ref)
+    assert resolved_event is event
+    with pytest.raises(TypeError):
+        resolved_event.multiplicity_order_rank_fields["kind"] = "REPOSITORY_MUTATION"
+
+    source_authority = source["source_auth"]
+    source_authority_ref_before = source_authority.authority_ref
+    source_authority_projection_before = source_authority.semantic_projection()
+    with pytest.raises(TypeError):
+        source_authority.scope_envelope["source_universe_refs"] = "MUTATED"
+    with pytest.raises(TypeError):
+        source_authority.semantic_fields["scope_envelope"]["source_universe_refs"] = "MUTATED"
+    authority_export = source_authority.as_dict()
+    authority_export["semantic_fields"]["scope_envelope"]["source_universe_refs"] = "DETACHED"
+    assert source_authority.authority_ref == source_authority_ref_before
+    assert source_authority.semantic_projection() == source_authority_projection_before
+
+    respondent = next(
+        record for record in release.internal_records if isinstance(record, RespondentIdentity)
+    )
+    respondent_ref_before = respondent.ref
+    respondent_projection_before = respondent.semantic_projection()
+    with pytest.raises(AttributeError):
+        respondent.empirical_universe_ref.object_id = "urn:mutated"
+    respondent_export = respondent.as_dict()
+    respondent_export["semantic_fields"]["empirical_universe_ref"]["object_id"] = "urn:detached"
+    assert respondent.ref == respondent_ref_before
+    assert respondent.semantic_projection() == respondent_projection_before
+    assert source["repo"].resolve_object_exact(respondent.ref) is respondent
+
+    # A reconstructed object whose body is changed while retaining the stale
+    # sealed identity is rejected by the canonical constructor before it can
+    # enter ordinary execution.
+    corrupted = event.as_dict()
+    corrupted_fields = corrupted["semantic_fields"]
+    corrupted_fields["raw_response_value"] = "CHANGED"
+    with pytest.raises(Pre553IntegrityError, match="object_id|content_hash"):
+        RespondentEvent(
+            typed_state=corrupted["typed_state"],
+            authority_snapshot_refs=corrupted["authority_snapshot_refs"],
+            dependency_refs=corrupted["dependency_refs"],
+            producer_replay_locator_or_reference_root=corrupted[
+                "producer_replay_locator_or_reference_root"
+            ],
+            object_id=corrupted["object_id"],
+            content_hash=corrupted["content_hash"],
+            schema_id=corrupted["schema_id"],
+            schema_version=corrupted["schema_version"],
+            **corrupted_fields,
+        )
+
+    after = _run(source, qa, predicate, query, registry=registry)
+    assert after == before
+    assert tuple(fact.as_dict() for fact in after.facts) == before_fact_exports
+    assert query.ref == query_ref_before
+    assert release.release_ref == release_ref_before
+    assert event.ref == event_ref_before
+
+    replayed = replay_empirical_query(
+        repository=source["repo"],
+        query=query,
+        predicate=predicate,
+        authority_registry=registry,
+        release_refs=(source["release_ref"],),
+        expected_fact_refs=tuple(fact.ref for fact in before.facts),
+    )
+    assert replayed == before
+
+# ASTRA-002 shared-boundary hostile controls.
+
+def _astra_query_authority(
+    tag: str,
+    *,
+    families=("EmpiricalPredicate@1.0.0", "EmpiricalQuerySpec@1.0.0", "EmpiricalFact@1.0.0"),
+    source_universe_refs="EXPLICIT_UNRESTRICTED",
+    state: str = "ALLOW",
+) -> AuthoritySnapshot:
+    digest = _h(f"astra002-i03-authority:{tag}:1.0.0")
+    return AuthoritySnapshot(
+        typed_state=state,
+        authority_snapshot_refs=(),
+        dependency_refs=(),
+        producer_replay_locator_or_reference_root=_ref("REPLAY_ROOT", f"astra002-authority-{tag}"),
+        authority_id=f"ASTRA002-I03-AUTH-{tag}",
+        authority_version="1.0.0",
+        authority_content_hash=digest,
+        authority_kind="PREDICATE_GRAMMAR",
+        decision_state=state,
+        governed_operations=(f"ASTRA002-I03-OP-{tag}",),
+        governed_object_families=families,
+        scope_envelope={"source_universe_refs": source_universe_refs},
+        effective_time_or_interval="ALL_TIME",
+        parent_authority_refs=(),
+        negative_limit_refs=(),
+        supersession_refs=(),
+        interpretation_semantics_fingerprint=_h(f"astra002-i03-semantics:{tag}"),
+        replay_protocol_ref=_ref("REPLAY_PROTOCOL", f"astra002-{tag}"),
+    )
+
+
+def _astra_target_use_authority(
+    source,
+    tag: str,
+    *,
+    allowed_target_use_ref: ExactRef,
+    operation: str,
+    state: str = "ALLOW",
+) -> AuthoritySnapshot:
+    return AuthoritySnapshot(
+        typed_state=state,
+        authority_snapshot_refs=(),
+        dependency_refs=(),
+        producer_replay_locator_or_reference_root=_ref("REPLAY_ROOT", f"astra002-target-use-{tag}"),
+        authority_id=f"ASTRA002-TARGET-USE-{tag}",
+        authority_version="1.0.0",
+        authority_content_hash=_h(f"astra002-target-use:{tag}:1.0.0"),
+        authority_kind="TARGET_USE_PERMISSION",
+        decision_state=state,
+        governed_operations=(operation,),
+        governed_object_families=("EmpiricalFact@1.0.0",),
+        scope_envelope={
+            "source_universe_refs": (source["universe"].ref.as_dict(),),
+            "target_use_refs": (allowed_target_use_ref.as_dict(),),
+        },
+        effective_time_or_interval="ALL_TIME",
+        parent_authority_refs=(),
+        negative_limit_refs=(),
+        supersession_refs=(),
+        interpretation_semantics_fingerprint=_h(f"astra002-target-use-semantics:{tag}"),
+        replay_protocol_ref=_ref("REPLAY_PROTOCOL", f"astra002-target-use-{tag}"),
+    )
+
+
+def _astra_query_with_target_use(
+    query: EmpiricalQuerySpec,
+    *,
+    query_authority: AuthoritySnapshot,
+    target_use_authority: AuthoritySnapshot,
+    target_use_ref: ExactRef,
+    target_use_operation: str,
+) -> EmpiricalQuerySpec:
+    grain = dict(query.requested_output_grain)
+    grain.update({
+        "target_use_ref": target_use_ref,
+        "target_use_authority_ref": target_use_authority.authority_ref,
+        "target_use_operation": target_use_operation,
+    })
+    return EmpiricalQuerySpec(
+        typed_state=query.typed_state,
+        authority_snapshot_refs=(query_authority.authority_ref, target_use_authority.authority_ref),
+        dependency_refs=tuple(query.dependency_refs) + (target_use_ref,),
+        producer_replay_locator_or_reference_root=query.producer_replay_locator_or_reference_root,
+        target_refs=query.target_refs,
+        target_arity_and_topology=query.target_arity_and_topology,
+        condition_predicate_ref=query.condition_predicate_ref,
+        risk_set_ref=query.risk_set_ref,
+        empirical_universe_refs=query.empirical_universe_refs,
+        scope_refs=query.scope_refs,
+        measure_basis_ref=query.measure_basis_ref,
+        requested_output_grain=grain,
+        query_authority_refs=(query_authority.authority_ref,),
+    )
+
+
+def _assert_no_supported(result) -> None:
+    assert result.facts
+    assert all(fact.typed_state != "SUPPORTED" for fact in result.facts)
+
+
+def test_astra002_shared_i03_rejects_allow_authority_missing_fact_family():
+    source = _build_source("astra002-wrong-family", [
+        {"id": "R1", "responses": {"Y": 1}},
+    ])
+    qa = _astra_query_authority(
+        "wrong-family",
+        families=("EmpiricalPredicate@1.0.0", "EmpiricalQuerySpec@1.0.0"),
+    )
+    predicate = _branch_predicate(source, qa, tag="astra002-wrong-family")
+    query = _query(source, qa, predicate, ("Y",), tag="astra002-wrong-family")
+    result = _run(source, qa, predicate, query, registry=_registry(source, qa))
+    _assert_no_supported(result)
+    assert result.facts[0].p02_failure_state == "MISSING_REQUIRED_AUTHORITY"
+
+
+def test_astra002_shared_i03_rejects_allow_authority_excluding_actual_universe():
+    source = _build_source("astra002-wrong-source", [
+        {"id": "R1", "responses": {"Y": 1}},
+    ])
+    wrong_universe = _ref("EmpiricalUniverse", "astra002-other-universe")
+    qa = _astra_query_authority(
+        "wrong-source",
+        source_universe_refs=(wrong_universe.as_dict(),),
+    )
+    predicate = _branch_predicate(source, qa, tag="astra002-wrong-source")
+    query = _query(source, qa, predicate, ("Y",), tag="astra002-wrong-source")
+    result = _run(source, qa, predicate, query, registry=_registry(source, qa))
+    _assert_no_supported(result)
+    assert result.facts[0].p02_failure_state == "MISSING_REQUIRED_AUTHORITY"
+
+
+def test_astra002_shared_i03_rejects_wrong_target_use_even_with_positive_authorities():
+    source = _build_source("astra002-wrong-target-use", [
+        {"id": "R1", "responses": {"Y": 1}},
+    ])
+    qa = _astra_query_authority("wrong-target-use")
+    predicate = _branch_predicate(source, qa, tag="astra002-wrong-target-use")
+    base = _query(source, qa, predicate, ("Y",), tag="astra002-wrong-target-use")
+    allowed = _ref("TARGET_USE", "astra002-allowed")
+    requested = _ref("TARGET_USE", "astra002-requested-other")
+    operation = "ASTRA002-TARGET-USE-OP"
+    target_auth = _astra_target_use_authority(
+        source,
+        "wrong-target-use",
+        allowed_target_use_ref=allowed,
+        operation=operation,
+    )
+    query = _astra_query_with_target_use(
+        base,
+        query_authority=qa,
+        target_use_authority=target_auth,
+        target_use_ref=requested,
+        target_use_operation=operation,
+    )
+    registry = AuthorityRegistry((*source["authorities"], qa, target_auth))
+    result = _run(source, qa, predicate, query, registry=registry)
+    _assert_no_supported(result)
+    assert result.facts[0].p02_failure_state == "MISSING_REQUIRED_AUTHORITY"
+
+
+def test_astra002_shared_i03_preserves_exact_lawful_target_use():
+    source = _build_source("astra002-good-target-use", [
+        {"id": "R1", "responses": {"Y": 1}},
+    ])
+    qa = _astra_query_authority("good-target-use")
+    predicate = _branch_predicate(source, qa, tag="astra002-good-target-use")
+    base = _query(source, qa, predicate, ("Y",), tag="astra002-good-target-use")
+    target_use = _ref("TARGET_USE", "astra002-good")
+    operation = "ASTRA002-GOOD-TARGET-USE-OP"
+    target_auth = _astra_target_use_authority(
+        source,
+        "good-target-use",
+        allowed_target_use_ref=target_use,
+        operation=operation,
+    )
+    query = _astra_query_with_target_use(
+        base,
+        query_authority=qa,
+        target_use_authority=target_auth,
+        target_use_ref=target_use,
+        target_use_operation=operation,
+    )
+    registry = AuthorityRegistry((*source["authorities"], qa, target_auth))
+    result = _run(source, qa, predicate, query, registry=registry)
+    assert result.facts[0].typed_state == "SUPPORTED"
+
+
+@pytest.mark.parametrize(
+    "authority_state",
+    ("DENY", "OUT_OF_SCOPE", "SUPERSEDED_NOT_REPLAYABLE"),
+)
+def test_astra002_shared_i03_preserves_nonpositive_authority_as_nonpositive(authority_state):
+    tag = f"astra002-nonpositive-{authority_state.lower()}"
+    source = _build_source(tag, [
+        {"id": "R1", "responses": {"Y": 1}},
+    ])
+    qa = _astra_query_authority(tag, state=authority_state)
+    predicate = _branch_predicate(source, qa, tag=tag)
+    query = _query(source, qa, predicate, ("Y",), tag=tag)
+    result = _run(source, qa, predicate, query, registry=_registry(source, qa))
+    _assert_no_supported(result)
+    assert result.facts[0].p02_failure_state == "MISSING_REQUIRED_AUTHORITY"
+

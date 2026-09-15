@@ -1,0 +1,51 @@
+{
+  "schema_id": "GT34_OBL056_R3_CURRENT_ENTRY_PROVENANCE_REPAIRED_RECEIPT_CONTRACT@1.0.0",
+  "status": "CANDIDATE_NOT_ADOPTED",
+  "receipt_schema_id": "GT34_ADP010_INPUT_AUTHORITY_ACCEPTANCE_RECEIPT@1.0.0",
+  "registry_snapshot_schema_id": "GT34_ADP010_INPUT_AUTHORITY_ACCEPTANCE_REGISTRY_SNAPSHOT@1.0.0",
+  "acceptance_authority_ref": {
+    "id": "GT34_ADP010_INPUT_AUTHORITY_ACCEPTANCE_REGISTRY",
+    "version": "1.0.0",
+    "content_hash": "6c9ab99a7d89835e7fdf405511abd7d6d66ced54b6e2fd8ef1863be842f39123"
+  },
+  "present_empty_registry_ref": {
+    "id": "GT34_ADP010_INPUT_AUTHORITY_ACCEPTANCE_REGISTRY",
+    "version": "1.0.0",
+    "content_hash": "ca633451bfe56f86e1b463243bf721772a9ff582227411ed5137a346491b957e"
+  },
+  "current_entry_requirements": {
+    "currentness_state": "CURRENT_ACCEPTED",
+    "decision_state": "ACCEPT",
+    "exact_governed_registry_membership": true,
+    "exact_role_consumer_and_scope": true,
+    "exact_accepted_authority_identity_version_hash": true,
+    "exact_owner_jurisdiction_ref_hash": true,
+    "exact_source_adoption_current_selection_evidence_ref_hash": true,
+    "exact_negative_limit_refs": true,
+    "nonempty_immutable_entry_provenance": true,
+    "deterministic_entry_id_hash": true
+  },
+  "current_registry_requirements": {
+    "nonempty_adoption_current_selection_evidence_refs": true,
+    "nonempty_immutable_registry_provenance": true,
+    "exact_content_addressed_snapshot": true,
+    "entry_source_evidence_selected_by_registry": true
+  },
+  "validation_order": [
+    "receipt_integrity",
+    "exact_expected_role_consumer_authority_owner_source_scope_currentness_decision",
+    "registry_snapshot_integrity_and_currentness",
+    "exact_single_entry_membership_and_receipt_entry_binding",
+    "entry_integrity",
+    "nonempty_current_entry_immutable_provenance",
+    "entry_source_selected_by_current_registry"
+  ],
+  "repair_guards": {
+    "snapshot_constructor_rejects_empty_current_entry_provenance": true,
+    "current_receipt_validator_independently_rejects_empty_current_entry_provenance": true,
+    "registry_provenance_does_not_substitute_for_entry_provenance": true
+  },
+  "installed_candidate_current_positive_entry_count": 0,
+  "project_current_positive_entry_created": false,
+  "obl056_adopted": false
+}

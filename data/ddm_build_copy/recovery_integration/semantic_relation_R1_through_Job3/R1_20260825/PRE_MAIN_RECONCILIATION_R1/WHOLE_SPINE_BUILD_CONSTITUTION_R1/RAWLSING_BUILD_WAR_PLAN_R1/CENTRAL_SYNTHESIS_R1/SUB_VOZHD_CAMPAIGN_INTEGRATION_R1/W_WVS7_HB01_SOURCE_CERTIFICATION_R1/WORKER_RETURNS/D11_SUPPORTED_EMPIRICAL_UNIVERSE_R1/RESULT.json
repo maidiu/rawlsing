@@ -1,0 +1,81 @@
+{
+  "status": "PASS",
+  "terminal": "WVS7_D11_SUPPORTED_EMPIRICAL_UNIVERSE_MATERIALIZATION_COMPLETE__3_OF_66_ACCEPTED__63_PRESERVED_FAIL_CLOSED__READY_FOR_SUB_VOZHD_W_JOIN",
+  "repository": "maidiu/rawlsing",
+  "worker_branch": "agent/rabochii-subv-w-hb01-wvs7-d11-supported-empirical-universe-r1",
+  "commissioned_head": "856708e845526e9db5aad0dc82d843a29e082ad9",
+  "consumed_d03_d12_pass": "e404bc097f48a09265f1aec06e3d011a892f69c4",
+  "frozen_materializer_commit": "cabeaedd28877ba87e4a4cbec58f99129b6681ef",
+  "frozen_materializer_sha256": "93965442dbfcf69e9ca394339725732f87457cc0ce55d5f45922fe4417429382",
+  "qualification_output_commit": "841e02005b8ea6e26435908fcea8553982725ae4",
+  "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+  "d12_replay_ref_hash": "9d44d5097258b96c5c49faf968b85701f80ecd75df6b214a528abb6fb15ef44b",
+  "d12_scope_ledger_sha256": "cf0dfaae7a2f0f19b34ccc536b93e6aedbf37bf047d5d864e5c812fe9602d6a9",
+  "outer_execution_count": 2,
+  "authority_snapshot_count": 3,
+  "empirical_universe_count": 3,
+  "accepted_exact_empirical_universe_refs": 3,
+  "preserved_fail_closed_unmaterialized_source_scopes": 63,
+  "authority_file_sha256": "ef8947473580a9b15198f5187422578e545633df55142ff6d0cdbfef14f47d6b",
+  "empirical_universe_file_sha256": "b0267c10c1826c540cffbb2cd568858cbbdaad9f8eb4499b32de18c2f0a1b910",
+  "replay_parity_receipt_sha256": "04346f9a9611a81cccdd3a40ac30e542ea785deb3e095f4883ae5b6dd7e635df",
+  "supported_source_scopes": [
+    {
+      "country": "Australia",
+      "year": 2018,
+      "S025": 362018,
+      "B_COUNTR": 36,
+      "source_row_ordinal_first": 3231,
+      "source_row_ordinal_last": 5043,
+      "member_count": 1813,
+      "source_scope_member_set_hash": "698ff2e5c73274cf6961875aacf8d059c8b105d5357605a40eebfd10870bb7a3",
+      "authority_snapshot_hash": "c8157168e356792badb2ed9f4e19401b0d799e6a509943f5f659663dfc0336ab",
+      "empirical_universe_hash": "d12b091f134ba652d5dfabf67ea109bc3bd7e194838b23dea166eb01ee8e1552"
+    },
+    {
+      "country": "United Kingdom - Great Britain",
+      "year": 2022,
+      "S025": 8262022,
+      "B_COUNTR": 826,
+      "source_row_ordinal_first": 27005,
+      "source_row_ordinal_last": 29613,
+      "member_count": 2609,
+      "source_scope_member_set_hash": "26fb03ee5d097f0b38c6d3a86040dfd51354ec1bf0eddd85156972a670781f4c",
+      "authority_snapshot_hash": "6ca9ce10f3e9e6616c88f91f7d19e13432c13b91a67f09865a1d5da482d87a15",
+      "empirical_universe_hash": "caea5e499919fdc3da062cf8f371841e40b03120cd2dca1f96915a08ad55cbff"
+    },
+    {
+      "country": "United Kingdom - Northern Ireland",
+      "year": 2022,
+      "S025": 9092022,
+      "B_COUNTR": 909,
+      "source_row_ordinal_first": 63239,
+      "source_row_ordinal_last": 63685,
+      "member_count": 447,
+      "source_scope_member_set_hash": "f59a8ec788a92d7b3f89b350d4b827869c918102d555169c8df2d44ce6bc5347",
+      "authority_snapshot_hash": "11c0d5aa5e268b64eaac388b3d9ca609ce61c31bba74253e93b25854262abab8",
+      "empirical_universe_hash": "d8fb874e9d2579c7d0b735f64cbef12366a7ab33dee738768a2739616d6009a0"
+    }
+  ],
+  "invariants": {
+    "exact_object_ref_parity": true,
+    "byte_identical_outputs_across_two_fresh_executions": true,
+    "no_fourth_universe": true,
+    "remaining_63_preserved_fail_closed": true,
+    "D_INTERVIEW_used_as_canonical_identity": false,
+    "S007_used_as_canonical_identity": false,
+    "source_relation_default_applied": false,
+    "canonical_wave_promoted": false,
+    "missingness_incidence_or_complement_inference_used": false
+  },
+  "downstream_executed": {
+    "full_gsr07": false,
+    "c05_parity": false,
+    "c09": false,
+    "HB05": false,
+    "HB06": false,
+    "HB07": false,
+    "architecture_selection": false,
+    "positive_v3": false
+  }
+}

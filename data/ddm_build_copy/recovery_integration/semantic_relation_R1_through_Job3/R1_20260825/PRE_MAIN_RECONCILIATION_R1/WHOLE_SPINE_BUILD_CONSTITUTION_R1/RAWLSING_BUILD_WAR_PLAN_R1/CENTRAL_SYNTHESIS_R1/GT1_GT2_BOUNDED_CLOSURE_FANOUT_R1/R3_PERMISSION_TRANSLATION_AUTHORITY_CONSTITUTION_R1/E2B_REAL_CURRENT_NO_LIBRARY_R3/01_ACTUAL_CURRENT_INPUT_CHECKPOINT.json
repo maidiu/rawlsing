@@ -1,0 +1,38 @@
+{
+  "schema": "GT12_E2B_R3_ACTUAL_CURRENT_INPUT_CHECKPOINT@1.0.0",
+  "status": "ACTUAL_CURRENT_INPUT_VERIFIED__DOWNSTREAM_E2B_NOT_YET_EXECUTED",
+  "working_start": "62202de75aa8bbd73a0895730d19dba4c06658e2",
+  "loader": "rawlsing_next.pre553_repo_native_seal.load_current_gt2_query_fact",
+  "input_identity": {
+    "predicate": "bd91b40575035a9ff9ad2e7c507adc2610bfebdcc7fa38ce1cd697b37559cea3",
+    "query": "e4ec3998664975c6a5f9e020b7815cfe6d39a212e264963d8037e6f0db87d0d0",
+    "fact": "540236d533e9123f6d7b4d1edd4cf0951277154e72c7667deb09fb6550f11f46",
+    "replay": "c0c23ca2bb439364756503722b60d047139d42a6128411cc19bfbd87d33c884f",
+    "fact_state": "SUPPORTED",
+    "denominator": 19210,
+    "target_order": [
+      "question_impl.phase0.2fb3a62609dad4c1306d",
+      "question_impl.phase0.67f036c0efb7fb98ff4a"
+    ],
+    "semantic_order": "Q86B -> Q86A"
+  },
+  "verification": {
+    "workflow": "Rabochii Governed Bounded Court",
+    "run_id": 33987047483,
+    "job_id": 101362457196,
+    "evidence_execution_sha": "253fa98f0af0b1b25ad9144d3a91548a41ed9ff7",
+    "pr_synthetic_merge_sha": "9a6e3e36a656048aef8a1187b33c51bacdd26fa3",
+    "protocol_self_tests": "20 passed in 0.05s",
+    "bounded_test": "rawlsing_next/tests/test_gt12_e2b_real_current_load_checkpoint.py",
+    "bounded_result": "1 passed in 2.41s",
+    "artifact_id": 9975475140,
+    "result": "PASS"
+  },
+  "forbidden_inputs_used": {
+    "library": false,
+    "source_data": false,
+    "empirical_reexecution": false,
+    "historical_a3": false
+  },
+  "real_e2b_execution_performed": false
+}

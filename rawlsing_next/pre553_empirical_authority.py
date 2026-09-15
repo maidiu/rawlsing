@@ -8,7 +8,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from types import MappingProxyType
-from typing import Any, Iterable, Mapping
+from typing import Any, Iterable, Mapping, Sequence
 
 from rawlsing_next.pre553_empirical_objects import (
     AuthorityRef,
@@ -144,7 +144,13 @@ def _scope_contains(scope_value: Any, required: Any) -> bool:
         return _material_key(scope_value) == _material_key(required)
     if isinstance(scope_value, Mapping):
         return _material_key(scope_value) == _material_key(required)
-    if isinstance(scope_value, (list, tuple, set, frozenset)):
+    if (
+        isinstance(scope_value, (set, frozenset))
+        or (
+            isinstance(scope_value, Sequence)
+            and not isinstance(scope_value, (str, bytes, bytearray))
+        )
+    ):
         needle = _material_key(required)
         return needle in {_material_key(item) for item in scope_value}
     return _material_key(scope_value) == _material_key(required)
