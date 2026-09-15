@@ -1,0 +1,27 @@
+{
+  "schema":"RAWLSING_HQ_HANDOFF@1.1.0",
+  "checkpoint_id":"20260915T1418-0400",
+  "repository":"maidiu/rawlsing",
+  "control_branch":"integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip":"1dcd2a79dd6d4208738f655ab7fe4e71c219e354",
+  "prior_checkpoint":"20260915T1240-0400",
+  "status":"PARALLEL_DISPATCH_ACTIVE_10",
+  "latest_substantive_hq_authority":"cd341c8086edc3909a9b4009559a5e8b53765144",
+  "astra_delta_return":"a70cd2ef7d2b77c700bd8795f491079be554ae6b",
+  "active_registry_commit":"cd341c8086edc3909a9b4009559a5e8b53765144",
+  "active_workers":[
+    {"id":"N04-R3","branch":"agent/rabochii-prev3-psc-w4-n04r3-production-premise-binding-r1","commission_tip":"43a2c8b25a8b0ffb1fa9cfdea5b466dddd223da8","observed_head_at_checkpoint":"43a2c8b25a8b0ffb1fa9cfdea5b466dddd223da8","grain":"EXACT_COMMISSION","library_access":"NO","pass_wake":"OWN_SUCCESSOR","blocker_effect":"LOCAL_ONLY","hard_forbidden":["WIDEN_SCOPE"]},
+    {"id":"ASTRA-D01","branch":"agent/rabochii-prev3-astra-d01-j02-producer-court-r1","commission_tip":"88fc8db69bdfb9669c1529b861af5279b546f6ef","observed_head_at_checkpoint":"88fc8db69bdfb9669c1529b861af5279b546f6ef","grain":"ASTRA_D01","library_access":"NO","pass_wake":"D01Q","blocker_effect":"LOCAL_ONLY","hard_forbidden":["WIDEN_SCOPE"]},
+    {"id":"ASTRA-D02","branch":"agent/rabochii-prev3-astra-d02-source-execution-r1","commission_tip":"50de465a9c04faafca812390fd59a1c8b09fddd7","observed_head_at_checkpoint":"50de465a9c04faafca812390fd59a1c8b09fddd7","grain":"ASTRA_D02","library_access":"EXACT_ONLY","pass_wake":"D03","blocker_effect":"LOCAL_ONLY","hard_forbidden":["WIDEN_SCOPE"]},
+    {"id":"ASTRA-D05","branch":"agent/rabochii-prev3-astra-d05-rule-shape-payload-r1","commission_tip":"2c9a6dee4e8657ba0ace41cd3e1d458ecea6d17e","observed_head_at_checkpoint":"2c9a6dee4e8657ba0ace41cd3e1d458ecea6d17e","grain":"ASTRA_D05","library_access":"NO","pass_wake":"D09_D10","blocker_effect":"LOCAL_ONLY","hard_forbidden":["WIDEN_SCOPE"]},
+    {"id":"ASTRA-D06","branch":"agent/rabochii-prev3-astra-d06-measurement-dispositions-r1","commission_tip":"fc35c4357d81f602941bf1988c81ad1ecafb963f","observed_head_at_checkpoint":"fc35c4357d81f602941bf1988c81ad1ecafb963f","grain":"ASTRA_D06","library_access":"NO","pass_wake":"D10","blocker_effect":"LOCAL_ONLY","hard_forbidden":["WIDEN_SCOPE"]},
+    {"id":"ASTRA-D07","branch":"agent/rabochii-prev3-astra-candidate-inputs-r1","commission_tip":"d805e3dcf21a5a8cac0ee6c2611bed46da8a3277","observed_head_at_checkpoint":"d805e3dcf21a5a8cac0ee6c2611bed46da8a3277","grain":"ASTRA_D07","library_access":"NO","pass_wake":"D10","blocker_effect":"LOCAL_ONLY","hard_forbidden":["WIDEN_SCOPE"]},
+    {"id":"ASTRA-D08","branch":"agent/rabochii-prev3-astra-lane-eight-r1","commission_tip":"00179623ecfe5d0a451277a8edc25f27c197ce60","observed_head_at_checkpoint":"00179623ecfe5d0a451277a8edc25f27c197ce60","grain":"ASTRA_D08","library_access":"NO","pass_wake":"D10","blocker_effect":"LOCAL_ONLY","hard_forbidden":["WIDEN_SCOPE"]},
+    {"id":"ASTRA-D12","branch":"agent/rabochii-prev3-astra-position-input-r1","commission_tip":"0fdf5fe811347fec697ed8f3952ed69b9e5d8ff6","observed_head_at_checkpoint":"0fdf5fe811347fec697ed8f3952ed69b9e5d8ff6","grain":"ASTRA_D12","library_access":"NO","pass_wake":"D13","blocker_effect":"LOCAL_ONLY","hard_forbidden":["WIDEN_SCOPE"]},
+    {"id":"ASTRA-D15","branch":"agent/rabochii-prev3-astra-context-route-r1","commission_tip":"e306961685819136d4d90a42fe8defe055d525db","observed_head_at_checkpoint":"e306961685819136d4d90a42fe8defe055d525db","grain":"ASTRA_D15","library_access":"NO","pass_wake":"OWN_ADOPTION","blocker_effect":"LOCAL_ONLY","hard_forbidden":["WIDEN_SCOPE"]},
+    {"id":"ASTRA-D16","branch":"agent/rabochii-prev3-astra-physical-court-r1","commission_tip":"89fee7b74a4ac38c4f79392d5a6f123f111c6da7","observed_head_at_checkpoint":"89fee7b74a4ac38c4f79392d5a6f123f111c6da7","grain":"ASTRA_D16","library_access":"NO","pass_wake":"D17","blocker_effect":"LOCAL_ONLY","hard_forbidden":["WIDEN_SCOPE"]}
+  ],
+  "eligible_not_commissioned":["ASTRA-D19"],
+  "decision_ledger":{"through":"HQD-2026-09-15-034","durable_supplements":["98279580ffcccdd764663107aa65835fb6929228","a806d788d5a2ae25f65cc89f761ca340e80873bc"]},
+  "terminal":"PARALLEL_REAL_CONSTRUCTION_ACTIVE"
+}
