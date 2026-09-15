@@ -1,0 +1,71 @@
+{
+  "schema": "RAWLSING_N04_R3_CURRENT_BINDING_ACCOUNTING_RECONSTRUCTION_CONTRACT@1.0.0",
+  "representation": "CONTENT_ADDRESSED_DETERMINISTIC_PROJECTION",
+  "rows": 18276,
+  "unique_ids": 18276,
+  "canonical_jsonl_bytes": 8446586,
+  "canonical_jsonl_sha256": "9e525ee5b2a7e05f92f0d71b96098ab578cfd7b2721e665ea5c4085a47cc988b",
+  "ordered_authority_surface": {
+    "worker": "N03-R2",
+    "commit": "3eaf9918e66b9d4bbc3a1c12598baca20c9d594d",
+    "ledger_canonical_jsonl_sha256": "0ac4cd90c19c859438ec12ddfa69c37e9b9c85607884e0f4ea93bc6b52493723",
+    "order_law": "Use the exact N03-R2 replay ledger row order; no sorting or recency substitution."
+  },
+  "status_vector": {
+    "path": "03_CURRENT_18276_BINDING_STATUS_VECTOR.zlib.b64",
+    "decode": "zlib.decompress(base64.b64decode(file_bytes.strip()))",
+    "raw_bytes": 18276,
+    "raw_sha256": "f3bb9f06508f7eb26d1ee01e6bc865377637da34f5a60b4118006cc5d8a8d283",
+    "encoded_bytes_without_trailing_newline": 572,
+    "encoded_sha256_without_trailing_newline": "8241edb2bf043105e0eae12dfa8dd312ff14ca09d37141467834529404c161d7"
+  },
+  "codebook": {
+    "path": "02_BINDING_STATUS_CODEBOOK.json",
+    "codes": {
+      "0": "EMITTED_GOVERNED_T03_CANDIDATE",
+      "1": "BLOCKED_N03_REVIEW_REQUIRED",
+      "2": "BLOCKED_N03_TYPED_UNRESOLVED",
+      "3": "BLOCKED_CURRENT_POSITIVE__MISSING_RESPONSE_CATEGORY_SEMANTICS_REF",
+      "4": "BLOCKED_CURRENT_POSITIVE__MISSING_ROUTING_APPLICABILITY_REF",
+      "5": "BLOCKED_CURRENT_POSITIVE__MISSING_AUTHORITY_OWNED_CANDIDATE_KIND"
+    }
+  },
+  "projection": {
+    "output_fields_in_semantic_order": [
+      "question_implementation_id",
+      "n03_top_level_disposition",
+      "governing_jurisdictions",
+      "binding_status",
+      "smallest_exact_missing_roles",
+      "smallest_exact_basis"
+    ],
+    "governing_jurisdictions_law": [
+      "append FQRA iff fqra_match_count is nonzero",
+      "append QSMV2 iff qsmv2_implementation_match_count is nonzero",
+      "append RESPONSE_SEMANTICS iff response_binding_count is nonzero",
+      "append TYPED_RELATION iff typed_positive_authority_ids is nonempty"
+    ],
+    "missing_role_by_code": {
+      "0": [],
+      "1": [],
+      "2": [],
+      "3": ["response_category_semantics_ref"],
+      "4": ["routing_applicability_ref"],
+      "5": ["candidate_kind"]
+    },
+    "exact_basis_by_code": {
+      "1": "EXACT_QSMV2_BLOCKED_IMPLEMENTATION__PRESERVE_REVIEW_REQUIRED",
+      "2": "copy exact N03-R2 unresolved_basis for that row",
+      "3": "NO_EXACT_CURRENT_RESPONSE_SEMANTICS_BINDING_FOR_IMPLEMENTATION_IN_ACCEPTED_V550_V551_RESPONSE_SEMANTICS_AUTHORITY",
+      "4": "N02_R2_EXACT_ID_ROUTING_SIDECAR_REMAINS_UNRESOLVED_ROUTING_APPLICABILITY_AUTHORITY",
+      "5": "EXACT_FQRA_ROW_OWNS_RELATION_OR_SUBJECTIVE_EVIDENCE_SEMANTICS_BUT_NOT_T03_STRUCTURAL_POSITION_OR_MECHANISM_RULE_CANDIDATE_KIND__BANKED_COMPILER_DEFAULT_STRUCTURAL_POSITION_IS_NOT_AUTHORITY_TO_MINT_STRUCTURAL_ADMISSION"
+    },
+    "canonicalization": "For each reconstructed row, json.dumps(row, sort_keys=True, separators=(\",\", \":\")) + newline; concatenate all 18,276 rows in exact N03-R2 ledger order."
+  },
+  "generator": {
+    "path": "rawlsing_next/n04_r3_carrier_specific_production_binding.py",
+    "blob": "cfe3587df79a6da309825447cbc3317050ac6af4",
+    "function": "build"
+  },
+  "proof_note": "This contract plus the accepted N03-R2 ledger, the committed status vector, and the committed codebook is the complete repo-bound 18,276-ID accounting surface. Reconstruction is byte-exact projection only; it performs no semantic interpretation or authority selection."
+}
