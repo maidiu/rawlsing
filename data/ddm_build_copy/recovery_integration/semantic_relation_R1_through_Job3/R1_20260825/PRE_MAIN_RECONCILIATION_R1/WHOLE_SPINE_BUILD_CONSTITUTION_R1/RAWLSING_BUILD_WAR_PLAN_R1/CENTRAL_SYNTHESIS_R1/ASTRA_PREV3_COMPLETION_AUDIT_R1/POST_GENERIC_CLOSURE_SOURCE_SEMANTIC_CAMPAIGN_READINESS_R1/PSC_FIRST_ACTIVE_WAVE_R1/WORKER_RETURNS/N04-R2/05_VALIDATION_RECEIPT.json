@@ -1,0 +1,64 @@
+{
+  "schema": "RAWLSING_N04_R2_VALIDATION_RECEIPT@1.0.0",
+  "terminal": "PASS",
+  "terminal_code": "N04_R2_WHOLE_CURRENT_CORPUS_T03_RELEASE_COMPLETE__RETURN_TO_HQ",
+  "grain": "PREV3_ADOPTED_18276_SEMANTIC_CURRENTNESS_TO_WHOLE_CORPUS_GOVERNED_T03_RELEASE_R1_ONLY",
+  "commission_tip": "30cf419b1aed088deefd42246cdb5c30230f0a00",
+  "validated_execution_sha": "d98e0805d06f2a6d512879c4c2c05bdbe87a568b",
+  "governed_court": {
+    "workflow_run": 34994422634,
+    "job": 104466959121,
+    "conclusion": "success",
+    "artifact_id": 10406678890,
+    "artifact_digest": "sha256:65e78fe01bba3e40ddd0ba38b9001002f870415155b26820c972d3e1d16a7d45",
+    "tests": [
+      "rawlsing_next/tests/test_prev3_governed_semantic_t03_compiler.py",
+      "rawlsing_next/tests/test_n04_r2_whole_corpus_t03_release.py"
+    ]
+  },
+  "initial_scaffolding_attempt": {
+    "execution_sha": "cd632f9992fda219ee78d97c05fba96637a2bb94",
+    "workflow_run": 34994222540,
+    "job": 104466281312,
+    "conclusion": "failure_before_test_execution",
+    "failed_step": "Validate bounded court spec",
+    "cause": "court validator requires rawlsing_next/tests/*.py; commissioned byte-exact banked test was initially addressed at tests/*.py",
+    "semantic_or_corpus_failure": false
+  },
+  "denominator": {
+    "rows": 18276,
+    "unique_ids": 18276,
+    "families": 9,
+    "active_scopes": 35,
+    "n01_full_csv_sha256": "df0df368ecd4b884e69894b32fb49102edb554c5ca69700d3d56b9dbe3b76cfc",
+    "n03_canonical_jsonl_sha256": "0ac4cd90c19c859438ec12ddfa69c37e9b9c85607884e0f4ea93bc6b52493723",
+    "n03_raw_disposition_vector_sha256": "0418de4150a807d655caeb5d9e452a6fb1dda9639c18cf82b7624e2cbce3d4b0"
+  },
+  "release_status": {
+    "positive_t03_candidates": 0,
+    "positive_candidate_sorted_id_stream_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "counts": {
+      "BLOCKED_CURRENT_POSITIVE__MISSING_HQ_ADOPTED_PRODUCTION_PREMISE_BINDING": 18213,
+      "BLOCKED_N03_REVIEW_REQUIRED": 41,
+      "BLOCKED_N03_TYPED_UNRESOLVED": 22
+    },
+    "total": 18276,
+    "status_vector_raw_bytes": 18276,
+    "status_vector_raw_sha256": "ff8303f17c1707c61982e3518823e2c441d26f5bda5a0f962fe6a5903d7ab742",
+    "status_vector_zlib_b64_bytes": 188,
+    "status_vector_zlib_b64_sha256": "f01e07ecfaa8f5af3b83bd26da7373b7ae6bba8ace5377ca1277a0530c8970e6"
+  },
+  "smallest_exact_residual": {
+    "code": "NO_HQ_ADOPTED_CARRIER_SPECIFIC_BINDING_FROM_CURRENT_N03_AUTHORITY_JURISDICTIONS_TO_N04_GOVERNED_SEMANTIC_CAPITAL_RECORD_PREMISES",
+    "missing_proof": "EXACT_ACCEPTED_PRODUCTION_ADAPTER_OR_BINDING_RECEIPT_ASSIGNING_SEMANTIC_CORE_SCHEMA_CEILINGS_EPISTEMIC_JURISDICTION_AND_ADMISSION_ROLES_WITHOUT_COLLAPSING_FQRA_QSMV2_TYPED_RELATION_OR_SOURCE_NATIVE_JURISDICTIONS"
+  },
+  "byte_exact_imports": {
+    "compiler": "ad5806e3f500bdc63b40fde49f210ff45b282170",
+    "banked_test": "e4d612f34f7ee5d8fb978a4b4299ed29b98f994a",
+    "t03_base": "4e785a8eba66f092e95abea39ad3948ec1c3e019",
+    "t03_records": "988b0c03359d9bdf89408b46acec90118ee422fa",
+    "t03_status": "ed892763978110f4254d4c36fb130e3f9a058e50",
+    "t03_runtime": "aec8167eaeceb229c932e162b1f922dea33a119c"
+  },
+  "boundary": "WHOLE_CORPUS_STATUS_PASS__ZERO_POSITIVE_CANDIDATES__NO_SEMANTIC_INFERENCE__NO_AUTOMATIC_COMPILE_FROM_CURRENT_POSITIVE__NO_STRUCTURAL_PROMOTION__NO_PERSON_STATE__RETURN_TO_HQ"
+}
