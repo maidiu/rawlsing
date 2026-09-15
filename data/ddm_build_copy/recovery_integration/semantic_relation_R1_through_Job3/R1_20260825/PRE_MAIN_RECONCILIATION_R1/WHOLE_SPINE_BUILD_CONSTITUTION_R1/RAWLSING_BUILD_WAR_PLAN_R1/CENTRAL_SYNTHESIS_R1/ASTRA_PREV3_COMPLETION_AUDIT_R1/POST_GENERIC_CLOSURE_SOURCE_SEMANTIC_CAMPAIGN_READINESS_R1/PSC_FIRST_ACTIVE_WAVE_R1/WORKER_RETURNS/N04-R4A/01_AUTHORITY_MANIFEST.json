@@ -1,0 +1,67 @@
+{
+  "schema": "RAWLSING_N04_R4A_RESPONSE_SEMANTICS_BINDING_RETURN@1.0.0",
+  "status": "PASS__ZERO_EXACT_BINDS__18012_TYPED_RESIDUALS_PROVED",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-prev3-n04r4a-response-semantics-binding-r1",
+  "commission_tip": "4b1883aa6520c0f5a899d4cd119a2827537340d7",
+  "grain": "N04_R3_18012_RESPONSE_CATEGORY_SEMANTICS_REF_BINDING_R1_ONLY",
+  "library_access": "NO",
+  "hq_authority": {
+    "checkpoint_id": "20260915T1600-0400",
+    "handoff_commit": "e2778f178cfbb47fdb59ec367a666efc95b9d1a5",
+    "hq_fan_in": "05167b4cd30dc751cce797a16baa397bc7d0457d",
+    "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354"
+  },
+  "predecessor": {
+    "id": "N04-R3",
+    "commit": "8e0266703bbf3b060abcd6fbe53c7ef6c49062c5",
+    "selected_role": "response_category_semantics_ref",
+    "selected_count": 18012
+  },
+  "accepted_response_semantics_authority": [
+    {
+      "object_id": "V550_V551_RESPONSE_SEMANTICS_BINDING",
+      "registry_commit": "497b8dfc6106e2761c61d07d8ba9ea472062892c",
+      "path": "data/ddm_build_copy/authority/v550_v551_response_semantics_contract_binding_v1.csv",
+      "blob_sha": "ef77bcbe61385a10fe28b67c15a13f4f794e58e0",
+      "jurisdiction": "EXECUTION_RESPONSE_SEMANTICS_BINDING",
+      "grain": "SOURCE_FAMILY_WAVE_VARIABLE_BINDING",
+      "implementation_binding_status": "EXACT_SOURCE_FAMILY_WAVE_VAR_CODE_TO_V551_REGISTRY_KEY_INDEX",
+      "binding_rows": 236
+    },
+    {
+      "object_id": "RESPONSE_SCALE_ENCODING_REGISTRY_35WAVE",
+      "registry_commit": "497b8dfc6106e2761c61d07d8ba9ea472062892c",
+      "path": "data/ddm_build_copy/authority/response_scale_encoding_registry_35wave_active_v1.csv",
+      "blob_sha": "2a45215854d1feb4ba0a779edcb29479143ab613",
+      "jurisdiction": "RESPONSE_SCALE_ENCODING_AUTHORITY",
+      "grain": "RESPONSE_SEMANTICS_CONTRACT_ROW",
+      "implementation_binding_status": "BOUND_BY_RESPONSE_SEMANTICS_CONTRACT_HASH_AND_V551_REGISTRY_KEY_INDEX_WHERE_DECLARED",
+      "registry_rows": 145
+    }
+  ],
+  "authority_law": {
+    "binding_rule": "BIND_ONLY_WHERE_AN_ALREADY_ACCEPTED_EXACT_IDENTITY_JOIN_SUPPLIES_THE_RESPONSE_CATEGORY_SEMANTICS_REF",
+    "selected_target_definition": "N04-R3_STATUS_CODE_3__CURRENT_POSITIVE_WITH_RESPONSE_BINDING_COUNT_ZERO",
+    "prohibited_derivations": [
+      "LABEL_OR_TEXT_INFERENCE",
+      "VALUE_CODE_INFERENCE",
+      "FAMILY_RESEMBLANCE",
+      "GENERIC_DEFAULT",
+      "NEW_SEMANTIC_AUTHORITY",
+      "STRUCTURAL_OR_PSYCHOLOGICAL_INTERPRETATION"
+    ],
+    "registry_ceiling": "A_RESPONSE_SCALE_REGISTRY_ROW_IS_NOT_AN_IMPLEMENTATION_BINDING_UNLESS_THE_ACCEPTED_V550_V551_CONTRACT_DECLARES_THE_EXACT_KEY_JOIN"
+  },
+  "checked_companion_documentary_returns": {
+    "PSC03-A01": "9a29bcd7fd6e08a140cac11e605f4e7224ca4b1a",
+    "PSC03-A02": "f2f24fa86e13ae775869b895fd615e841658174f",
+    "PSC03-A03": "481a61d9727b8f42c9b72b18ff5c548bd09ba15b",
+    "PSC03-A04": "7321ed3e7faf43deb8c71bad69df8103a7a7755e"
+  },
+  "companion_scope_finding": "NO_CHECKED_COMPANION_RETURN_SUPPLIES_A_NEW_EXACT_RESPONSE_CATEGORY_SEMANTICS_REF_JOIN_FOR_THE_N04_R4A_SELECTED_IDS_WITHOUT_WIDENING_ITS_ACCEPTED_JURISDICTION",
+  "mutation_ceiling": {
+    "main": "UNCHANGED",
+    "semantic_pre_main": "UNCHANGED"
+  }
+}
