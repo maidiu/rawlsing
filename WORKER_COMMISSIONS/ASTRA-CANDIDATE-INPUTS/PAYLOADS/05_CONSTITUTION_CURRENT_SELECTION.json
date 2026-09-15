@@ -1,0 +1,24 @@
+{
+  "does_not_select": [
+    "M10-M01_RULE_CURRENTNESS",
+    "APPLICATION_CURRENTNESS",
+    "ACTOR_FACT_CURRENTNESS",
+    "WITNESS_CURRENTNESS"
+  ],
+  "jurisdiction": "CONSTITUTION_RUNTIME_CONTRACT_SELECTION_ONLY",
+  "noncollapse_law": [
+    "CONSTITUTION_CURRENT != RULE_CURRENT",
+    "CONSTITUTION_CURRENT != APPLICATION_CURRENT",
+    "CONSTITUTION_CURRENT != FACT_CURRENT",
+    "CONSTITUTION_CURRENT != WITNESS_CURRENT"
+  ],
+  "schema": "SDTF_R4_CONSTITUTION_CURRENT_SELECTION_REF_PAYLOAD_R1",
+  "schema_version": "1.0.0",
+  "selected_contract_id": "SDTF_R4_MECHANISM_RULE_AUTHORITY_BINDING_R1@1.0.0",
+  "selected_implementation_blob_sha1": "c94997f5c7f2bbee9cd99c570554fd48c0f47556",
+  "selection_evidence": {
+    "adoption_status": "HQ_ADOPTED__SDTF_R4_R1_R4_RUNTIME_PACKAGE__QUALIFIED__OBL062_REMAINS_OPEN",
+    "hq_runtime_adoption_artifact_blob_sha1": "74bfcd61cb139ccd426a28e5be4d6128e9359956",
+    "hq_runtime_adoption_commit": "73f33a8a4c185c46faec5ac47332153ca079ca5f"
+  }
+}
