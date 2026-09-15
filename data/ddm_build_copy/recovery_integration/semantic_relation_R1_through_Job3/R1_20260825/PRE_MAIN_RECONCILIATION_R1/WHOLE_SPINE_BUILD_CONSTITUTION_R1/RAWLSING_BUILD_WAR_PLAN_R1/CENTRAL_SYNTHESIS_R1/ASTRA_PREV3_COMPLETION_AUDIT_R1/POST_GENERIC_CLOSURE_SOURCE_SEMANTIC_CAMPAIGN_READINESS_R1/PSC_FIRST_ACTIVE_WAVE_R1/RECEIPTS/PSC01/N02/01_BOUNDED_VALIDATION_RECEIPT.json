@@ -1,0 +1,28 @@
+{
+  "schema": "RAWLSING_PREV3_PSC_W1_N02_BOUNDED_VALIDATION_RECEIPT@1.0.0",
+  "worker_id": "N02",
+  "terminal": "BLOCKED__EXACT_CURRENT_18276_ROW_JOIN_UNPROVABLE_WITHOUT_FORBIDDEN_LIBRARY_CARRIER",
+  "commission_tip": "d56613cbcbe4d2655cd4e5f28f70d697a13d8a5a",
+  "governed_current_denominator": 18276,
+  "positively_proved_current_bindings": 2104,
+  "arithmetic_unresolved_complement_not_row_classified": 16172,
+  "checks": {
+    "authority_44_700_nonauthority_obeyed": true,
+    "authority_45_positive_subset_preserved": true,
+    "authority_46_anti_drift_obeyed": true,
+    "full_current_join_claimed": false,
+    "negative_from_absence_used": false,
+    "historical_700_used_as_current_denominator": false,
+    "obl063_used": false,
+    "prev3_person_state_entered": false
+  },
+  "registry_test": {
+    "command": "python -m pytest -q tests/test_prev3_psc_w1_n02_routing_applicability_ledger_r1.py",
+    "status": "NOT_RUNNABLE_AT_COMMISSION_TIP__TEST_PATH_ABSENT",
+    "commission_tip_lookup": "404_NOT_FOUND"
+  },
+  "bounded_replay": {
+    "command": "python ARTIFACTS/PSC01/N02/replay/validate_positive_subset.py",
+    "status": "VALIDATOR_COMMITTED__EXECUTION_NOT_CLAIMED_BY_THIS_RECEIPT"
+  }
+}
