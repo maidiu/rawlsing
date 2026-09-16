@@ -1,0 +1,19 @@
+{
+  "schema":"RAWLSING_HQ_HANDOFF_MANIFEST@1.1.0",
+  "checkpoint_id":"20260916T0204-0400",
+  "semantic_pre_main_tip":"1dcd2a79dd6d4208738f655ab7fe4e71c219e354",
+  "control_branch":"integration/pre-main-reconciliation-r1",
+  "prior_checkpoint":"20260915T1600-0400",
+  "files":{
+    "CURRENT.md":{"path":"HQ_HANDOFF/checkpoints/20260916T0204-0400/CURRENT.md","git_blob":"d9e96f5bb6a3c35d63bcd9a787b07256a3b01f80"},
+    "CURRENT.json":{"path":"HQ_HANDOFF/checkpoints/20260916T0204-0400/CURRENT.json","git_blob":"a9f55911250916553b049d1dc2f8a44c86849821"}
+  },
+  "operative_authority":{
+    "fanin_commit":"30a6088f65a19a679ab4960743b80ee44fb79955",
+    "architecture_contract_commit":"dc6cf333f461c0dfa43f8410b754692597dcc115",
+    "active_worker_count":0,
+    "eligible_uncommissioned":["D03","D10"],
+    "held":["D04_WAIT_D03","D17_REISSUE_WAIT_FULL_COMMON_CONTRACT_WORKLOAD","N04_SEMANTIC_CAPITAL_PRODUCTION_DESIGN"]
+  },
+  "immutability_law":"THIS_CHECKPOINT_DIRECTORY_IS_IMMUTABLE_AFTER_LATEST_ADVANCES_TO_ITS_HANDOFF_COMMIT"
+}
