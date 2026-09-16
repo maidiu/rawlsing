@@ -1,0 +1,50 @@
+name: EE-R3C GSS Routing Authority Court
+
+on:
+  push:
+    branches:
+      - agent/rabochii-prev3-ee-r3c-gss-routing-authority-court-r1
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-gss-routing-court:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout commissioned EE-R3C branch
+        uses: actions/checkout@v4
+        with:
+          path: work
+
+      - name: Checkout exact B03 authority commit
+        uses: actions/checkout@v4
+        with:
+          ref: 3d1cdd242fe10f544bdcbb5bb91cf042c56ef787
+          path: b03
+
+      - name: Execute exact 55-ID GSS routing court twice
+        shell: bash
+        run: |
+          set -euo pipefail
+          python work/WORKER_RETURNS/EE-R3C/court.py --b03-root b03 --out out
+          python - <<'PY'
+          import json, pathlib
+          r = json.loads(pathlib.Path('out/03_REPLAY_RECEIPT.json').read_text())
+          assert r['result'] == 'PASS'
+          assert r['target_rows'] == 55
+          assert r['target_unique_ids'] == 55
+          assert r['target_sorted_id_stream_sha256'] == 'dc1cfbfd49abbb313e0d36ff3229fcd07abfc627f67f9e2fbb936fcfca129502'
+          assert r['second_replay_identical'] is True
+          print(r['terminal'])
+          PY
+
+      - name: Upload governed court outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: ee-r3c-gss-routing-court-${{ github.run_id }}
+          path: out/
+          if-no-files-found: error
+          retention-days: 90
