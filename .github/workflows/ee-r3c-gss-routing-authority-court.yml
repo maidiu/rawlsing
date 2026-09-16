@@ -14,16 +14,22 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - name: Checkout commissioned EE-R3C branch
+      - name: Checkout commissioned EE-R3C replay only
         uses: actions/checkout@v4
         with:
           path: work
+          sparse-checkout: |
+            WORKER_RETURNS/EE-R3C
+          sparse-checkout-cone-mode: false
 
-      - name: Checkout exact B03 authority commit
+      - name: Checkout exact B03 authority directory only
         uses: actions/checkout@v4
         with:
           ref: 3d1cdd242fe10f544bdcbb5bb91cf042c56ef787
           path: b03
+          sparse-checkout: |
+            data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/RESIDUAL_ZERO_LOSS_EXECUTION_WAVE_R2/B03_ROUTING_GSS_WVS_EVS
+          sparse-checkout-cone-mode: false
 
       - name: Execute exact 55-ID GSS routing court twice
         shell: bash
