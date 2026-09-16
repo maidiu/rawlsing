@@ -1,0 +1,121 @@
+{
+  "schema": "RAWLSING_EE_R5A_VALIDATION_AND_REPLAY_RECEIPT@1.0.0",
+  "worker": "EE-R5A",
+  "commission_tip": "24d5fb7c2a05daef5dd0e0caecb9f026d3b1a8f4",
+  "status": "BLOCKED",
+  "terminal": "BLOCKED__ZERO_ELIGIBLE_FROZEN_WVS7_QIDS__CURRENT_QID_BOUND_RESPONSE_SEMANTIC_BINDING_NOT_REPO_PROVABLE",
+  "hq": {
+    "checkpoint_id": "20260916T1450-0400",
+    "handoff_commit": "fda6406e5ccc23e102c58ef5cb511f97f06009da",
+    "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354"
+  },
+  "candidate_surface_replay": {
+    "authority_commit": "3d1cdd242fe10f544bdcbb5bb91cf042c56ef787",
+    "w07_rows": 36,
+    "status_code_counts": {
+      "C": 34,
+      "M": 2
+    },
+    "sorted_qid_lf_stream_sha256_expected": "07977dcfb77ca88882985be5f90d27a39d3bc61f030e32e258c1cd5775e19a38",
+    "sorted_qid_lf_stream_sha256_observed": "07977dcfb77ca88882985be5f90d27a39d3bc61f030e32e258c1cd5775e19a38",
+    "match": true
+  },
+  "current_exact_response_binding_replay": {
+    "binding_blob_sha": "ef77bcbe61385a10fe28b67c15a13f4f794e58e0",
+    "identity_authority_commit": "d4a2b141a68e077d1c2189c68d4bf75d11f13b9d",
+    "identity_preimage": "WVS + U+001F + W7 + U+001F + source_variable_code",
+    "wvs_w7_declared_coordinates": [
+      {
+        "source_variable_code": "Q146",
+        "v551_registry_key_index": 27,
+        "substantive_category_count": 4,
+        "derived_qid": "question_impl.phase0.fdbf10cb6f3884b4543b"
+      },
+      {
+        "source_variable_code": "Q196",
+        "v551_registry_key_index": 70,
+        "substantive_category_count": 4,
+        "derived_qid": "question_impl.phase0.e94953e76019a8872dbe"
+      },
+      {
+        "source_variable_code": "Q197",
+        "v551_registry_key_index": 103,
+        "substantive_category_count": 4,
+        "derived_qid": "question_impl.phase0.075b1650737d99679b9c"
+      },
+      {
+        "source_variable_code": "Q225",
+        "v551_registry_key_index": 50,
+        "substantive_category_count": 4,
+        "derived_qid": "question_impl.phase0.f84058cb759fd143e198"
+      },
+      {
+        "source_variable_code": "Q73",
+        "v551_registry_key_index": 87,
+        "substantive_category_count": 4,
+        "derived_qid": "question_impl.phase0.71ed344dde3fdd659298"
+      },
+      {
+        "source_variable_code": "Q82_AFRICANUNION",
+        "v551_registry_key_index": 78,
+        "substantive_category_count": 4,
+        "derived_qid": "question_impl.phase0.964b83282feaa30a57b7"
+      }
+    ],
+    "derived_qid_sorted_lf_sha256": "c86589c169f7350fc654bfe10c9d6806903863f576260bf7149745bc8814e6d7",
+    "intersection_with_candidate_36": [],
+    "intersection_count": 0
+  },
+  "documentary_binding_validation": {
+    "r4c_b09_state": "READY_FOR_SEMANTIC_AUTHORITY_COURT",
+    "r4c_b09_semantic_promotion": false,
+    "qsr_content_sha256": "9139c1ab77bf47a872f63ccae7784f3631f03a3e02a936b4ac41e75580c45219",
+    "qsr_repo_path": null,
+    "qsr_currentness": "FROZEN_REFERENCE_PRESERVED__CURRENTNESS_OR_SUCCESSION_PARTIAL",
+    "qsr_current_qid_binding_proved": false,
+    "reason": "N03 explicitly preserves QSR as a frozen reference with partial currentness/succession and no live repo path; the commission forbids Library discovery and semantic inference."
+  },
+  "disposition_replay": {
+    "COMPLETE_ALREADY_GOVERNED": 0,
+    "COMPLETE_BY_CURRENT_DOCUMENTARY_BINDING": 0,
+    "UNRESOLVED_RESPONSE_SEMANTICS": 36,
+    "OUTSIDE_CURRENT_RESPONSE_SEMANTIC_JURISDICTION": 0,
+    "eligible_count": 0,
+    "pair_selection_performed": false,
+    "conditional_pair_files_required": false
+  },
+  "boundary_checks": {
+    "library_used": false,
+    "empirical_marginals_inspected": false,
+    "empirical_joints_inspected": false,
+    "empirical_conditionals_inspected": false,
+    "empirical_associations_or_model_results_inspected": false,
+    "abc_performance_inspected": false,
+    "label_code_order_wording_frequency_embedding_inference_used": false,
+    "source_pooling_used": false,
+    "main_mutated": false,
+    "semantic_pre_main_mutated": false,
+    "replacement_branch_created": false,
+    "rebased": false
+  },
+  "deliverables": {
+    "00_RETURN.md": {
+      "created": true
+    },
+    "01_36_QID_DISPOSITION_REGISTRY.json": {
+      "created": true
+    },
+    "02_SELECTED_PROVING_PAIR.json": {
+      "created": false,
+      "reason": "eligible_count < 2"
+    },
+    "03_OP003_OP006_PREMISE_FREEZE.json": {
+      "created": false,
+      "reason": "no proving pair selected"
+    },
+    "04_VALIDATION_AND_REPLAY_RECEIPT.json": {
+      "created": true
+    }
+  },
+  "smallest_exact_blocker": "EXACT_CURRENT_QID_TO_RESPONSE_SEMANTICS_CONTRACT_BINDING_FOR_AT_LEAST_TWO_OF_THE_FROZEN_36_IS_NOT_PRESENT_IN_REPO_AUTHORITY__QSR_18792_IS_FROZEN_REFERENCE_WITH_NULL_REPO_PATH_AND_UNPROVED_CURRENT_SUCCESSION__COMMISSION_FORBIDS_LIBRARY_DISCOVERY_OR_SEMANTIC_INFERENCE"
+}
