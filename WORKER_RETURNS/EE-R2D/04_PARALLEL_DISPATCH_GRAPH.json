@@ -1,0 +1,57 @@
+{
+  "anti_expansion": [
+    "No court may add rows not listed under its exact unit in 02_SOURCE_RULE_BATCH_REGISTRY.json.",
+    "No common predicate is implied by sharing a unit.",
+    "No routing may be inferred from numbering, labels, missingness, adjacency, data, statistics, or family resemblance.",
+    "The 85 held rows remain unresolved until an exact competent owner is recovered."
+  ],
+  "fan_in": {
+    "law": "COURT_RESULT_REQUIRED_BEFORE_OBJECTIZATION__REGISTRY_NE_ROUTING_SEMANTICS",
+    "target": "EE-W3 existing generic routing objectizer path after positive/known binding"
+  },
+  "input_set": {
+    "rows": 159,
+    "sorted_id_stream_sha256": "dfe518e369047eff7978e0a9b1161989cf97c1254ac577479e5c7c38b3671a12"
+  },
+  "nodes": [
+    {
+      "court_instruction": "For each exact listed qid, resolve the exact pinned W01/W02 source-return row and issue only the strongest lawful qid-bound routing/applicability ruling supported by that row's competent source evidence. Preserve unresolved otherwise.",
+      "depends_on": [],
+      "node_id": "EE-R2D-B01-GSS-B03-SOURCE-SUBSTRATE",
+      "owner_refs": [
+        "B03-W01",
+        "B03-W02"
+      ],
+      "rows": 55,
+      "state": "READY_FOR_ROUTING_AUTHORITY_COURT"
+    },
+    {
+      "court_instruction": "For each exact listed qid, resolve the exact pinned W07 source-return row and issue only the strongest lawful qid-bound routing/applicability ruling supported by competent source evidence. Preserve unresolved otherwise.",
+      "depends_on": [],
+      "node_id": "EE-R2D-B02-WVS-B03-W07",
+      "owner_refs": [
+        "B03-W07"
+      ],
+      "rows": 19,
+      "state": "READY_FOR_ROUTING_AUTHORITY_COURT"
+    },
+    {
+      "depends_on": [],
+      "dispatch": "HOLD",
+      "node_id": "EE-R2D-R00-TRUE-RESIDUAL",
+      "release_condition": "An exact competent source routing-document/rule owner is recovered and bound to the same qid. Family/wave/variable resemblance is insufficient.",
+      "rows": 85,
+      "state": "TRUE_UNRESOLVED_NO_OWNER"
+    }
+  ],
+  "parallelism": {
+    "can_run_in_parallel": [
+      "EE-R2D-B01-GSS-B03-SOURCE-SUBSTRATE",
+      "EE-R2D-B02-WVS-B03-W07"
+    ],
+    "no_all_lanes_barrier": true,
+    "residual_does_not_block_ready_units": true
+  },
+  "schema": "RAWLSING_EE_R2D_ROUTING_AUTHORITY_PARALLEL_DISPATCH_GRAPH@1.0.0",
+  "worker": "EE-R2D"
+}
