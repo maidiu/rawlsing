@@ -1,0 +1,79 @@
+{
+  "authority_refs": {
+    "codebook": {
+      "pages": [
+        105,
+        106
+      ],
+      "sha256": "d13c892099ac6a4681acdad344b81f99d086a5694be94cf5e7a578a62bf02ad3"
+    },
+    "questionnaire": {
+      "page": 23,
+      "sha256": "5b6b06cb79681c0f5013fcfb93720951a033674b657985944bfcabc9f6a2735b"
+    },
+    "r14_objects": [
+      "WVS-R14-W7-Q291G1_G6",
+      "WVS-R14-W7-Q291P1_P6"
+    ],
+    "wvs7_sav_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
+  },
+  "eligible_count": 36,
+  "pair": [
+    "question_impl.phase0.03ea3430fb4f08a1f0da",
+    "question_impl.phase0.068ef710ac1c269b8adf"
+  ],
+  "pair_lf_stream_sha256": "aefe3477977a0b443bdf173b5d3866a0cc8d256a5937fa4c7af1107efa98ce07",
+  "pair_response_state_law": {
+    "special": {
+      "-1": "Don't know",
+      "-2": "No answer",
+      "-4": "Not asked",
+      "-5": "Missing; Not available"
+    },
+    "specials_are_not_substantive": true,
+    "substantive": {
+      "1": "Agree strongly",
+      "2": "Agree",
+      "3": "Neither agree nor disagree",
+      "4": "Disagree",
+      "5": "Disagree strongly"
+    }
+  },
+  "pair_topology": {
+    "coadministration": "SAME_RESPONDENT_Q291_MATRIX_BATTERY",
+    "module": "POLITICAL_TRUST_MODULE",
+    "same_respondent_identity": "SOURCE_ROW_IDENTITY__EXACT_SAME_WVS7_RECORD",
+    "shared_country_applicability": [
+      "Ethiopia",
+      "Kenya",
+      "Iran",
+      "Kyrgyzstan",
+      "Libya",
+      "Morocco",
+      "Myanmar",
+      "Nicaragua",
+      "Philippines",
+      "Tajikistan",
+      "Venezuela",
+      "Vietnam",
+      "Zimbabwe"
+    ],
+    "source_parent": "Q291",
+    "split_sample": false
+  },
+  "performance_or_empirical_values_inspected": false,
+  "qid0": {
+    "qid": "question_impl.phase0.03ea3430fb4f08a1f0da",
+    "question_text": "Government: The government is generally free of corruption",
+    "semantic_object_sha256": "4574aecc9db3ec15ba255a5e6f6ce17304ccb610c7d7d9f4b7baddc6d4a77176",
+    "source_variable_code": "Q291G5"
+  },
+  "qid1": {
+    "qid": "question_impl.phase0.068ef710ac1c269b8adf",
+    "question_text": "Parliament: Parliament is generally free of corruption",
+    "semantic_object_sha256": "304fbead4df5035bd97c02ff04000363cc5041129456555e3047ff3ff2efc185",
+    "source_variable_code": "Q291P5"
+  },
+  "schema": "RAWLSING_EE_R6A_SELECTED_WVS7_PROVING_PAIR@1.0.0",
+  "selection_rule": "LEXICOGRAPHIC_FIRST_TWO_COMPLETE_QIDS_FROM_EXACT_FROZEN_36"
+}

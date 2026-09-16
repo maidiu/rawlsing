@@ -1,0 +1,44 @@
+{
+  "artifact_sha256": {
+    "00_RETURN.md": "f47cf7c8ea38969c93986809a27eb3f0e806969fdf74984217257a450bf4cf43",
+    "01_36_QID_DISPOSITION_REGISTRY.csv": "d18f047060ac50e01a9265b2010337544d84af97ca9b6964a61d60d752d9ba93",
+    "02_QID_BOUND_RESPONSE_SEMANTICS.json": "6c35de3804b750fb0fb59461f517ea79a61bdc189b40f2be1a073b2cedb7dfa8",
+    "03_SELECTED_PROVING_PAIR.json": "bcae376cf6547dceeee8d0a030dc61d6c13e56e2062ae206bb9f75dfe05dc38d",
+    "04_OP003_OP006_WVS7_PREMISE_ORACLE_PACKAGE.json": "2b096c94608223ed4d7077911ff67e12af0a6307108acd031dc665392b8f119b",
+    "05_VERIFY_EE_R6A.py": "b53a65ebbdc216a78cea5b4af8664d2fe4143bc01298d6e30e1e8d5c003c21c1"
+  },
+  "branch": "agent/rabochii-prev3-ee-r6a-wvs36-source-native-semantic-pair-r1",
+  "complete_count": 36,
+  "frozen_36_count": 36,
+  "frozen_36_sorted_qid_lf_sha256": "07977dcfb77ca88882985be5f90d27a39d3bc61f030e32e258c1cd5775e19a38",
+  "hq_checkpoint": "20260916T1647-0400",
+  "parent_tip": "5ec735fe02fc0659613ec888ec32f5b2ee74accd",
+  "schema": "RAWLSING_EE_R6A_REPLAY_VALIDATION_RECEIPT@1.2.0",
+  "selected_pair": [
+    "question_impl.phase0.03ea3430fb4f08a1f0da",
+    "question_impl.phase0.068ef710ac1c269b8adf"
+  ],
+  "selected_pair_lf_sha256": "aefe3477977a0b443bdf173b5d3866a0cc8d256a5937fa4c7af1107efa98ce07",
+  "semantic_object_stream_sha256": "45be55ee7eaaec6ed4c0e7b71cea40ffec61c537b6929fa6e87e65e4c91abfda",
+  "source_hashes": {
+    "deep_catalog": "cc538e7208e96f2a3333082e3ffdc88faf1bba0eee273664fe2ff213c3821ec0",
+    "r14_crosswalk": "76bd0e37a77e1538878be6772e2c662395620b84d8dfb690e4acdcc2ea31c634",
+    "r14_integrity_audit": "fa1d4d91692b7e5349657d0e3becd3ee248d8d4a76ceec1dd5238d34843a7fa0",
+    "r14_source_object_index": "174de5af9c3bf0fc1929bac87fa8e62ace95b2aeab39c1ff6d718a14ad8194f2",
+    "wvs7_codebook_pdf": "d13c892099ac6a4681acdad344b81f99d086a5694be94cf5e7a578a62bf02ad3",
+    "wvs7_questionnaire_pdf": "5b6b06cb79681c0f5013fcfb93720951a033674b657985944bfcabc9f6a2735b",
+    "wvs7_sav": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
+  },
+  "validation": {
+    "abc_performance_inspected": false,
+    "cross_artifact_selected_object_refs_match": true,
+    "empirical_values_inspected": false,
+    "identity_replay_36_of_36": true,
+    "pair_rule_replay": true,
+    "pair_same_respondent_q291_battery": true,
+    "per_qid_object_hashes_replay": true,
+    "q294_noncertification_preserved": true,
+    "verifier_result": "EE_R6A_REPLAY_PASS"
+  },
+  "worker": "EE-R6A"
+}

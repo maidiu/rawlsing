@@ -1,0 +1,137 @@
+{
+  "candidate_neutrality": {
+    "candidate_A_B_C_inputs_absent": true,
+    "candidate_performance_inspected": false,
+    "downstream_rule": "INDEPENDENT_REFERENCE_EXECUTION_MAY_MATERIALIZE_NUMERIC_ORACLE_DIGESTS_ONLY_AFTER_THIS_SEMANTIC_PACKAGE_IS_FROZEN",
+    "oracle_numeric_results_frozen_here": false
+  },
+  "coordinates": {
+    "qid0": {
+      "qid": "question_impl.phase0.03ea3430fb4f08a1f0da",
+      "source_variable_code": "Q291G5"
+    },
+    "qid1": {
+      "qid": "question_impl.phase0.068ef710ac1c269b8adf",
+      "source_variable_code": "Q291P5"
+    }
+  },
+  "operations": {
+    "OP003": {
+      "denominator_identity": "QID0_POSITIVE_APPLICABILITY_RISK_SET__SOURCE_ROW_IDENTITY",
+      "expected_output_shape": "RISK_SET_IDENTITY_AND_TYPED_ROUTING_RECEIPT__NO_EMPIRICAL_RESPONSE_DISTRIBUTION_REQUIRED",
+      "oracles": [
+        "OR-DENOMINATOR-IDENTITY",
+        "OR-ROUTING-UNKNOWN",
+        "OR-TYPED-AUTHORITY-LIMIT"
+      ],
+      "procedure": "MATERIALIZE_QID0_POSITIVE_APPLICABILITY_RISK_SET_FROM_EXACT_WVS7_MODULE_COUNTRY_AUTHORITY_AND_QID0_SOURCE_COORDINATE__PRESERVE_SPECIAL_STATES_TYPED"
+    },
+    "OP004": {
+      "expected_output_shape": "CATEGORY_COUNTS_OR_TYPED_EMPTY_BY_EXACT_QID0_STATE__NUMERIC_VALUES_NOT_FROZEN_BY_THIS_COURT",
+      "oracles": [
+        "OR-EXACT-QUERY-IDENTITY",
+        "OR-ZERO-NULL-DISTINCTION"
+      ],
+      "procedure": "MARGINAL_DISTRIBUTION_QID0_OVER_EXACT_OP003_RISK_SET__SUBSTANTIVE_STATES_1_5__SPECIALS_TYPED_AND_EXCLUDED_FROM_SUBSTANTIVE_COUNTS",
+      "query_identity_components": [
+        "qid0",
+        "OP003_risk_set",
+        "WVS7_source_sha256",
+        "raw_to_semantic_map",
+        "output_grain=RAW_PLUS_SEMANTIC_CATEGORY"
+      ]
+    },
+    "OP005": {
+      "expected_output_shape": "5x5_JOINT_CATEGORY_COUNTS_OR_TYPED_EMPTY__NO_CROSS_RESPONDENT_SUBSTITUTION",
+      "joint_identity": "QID0_X_QID1__SAME_WVS7_SOURCE_ROW__5x5_RAW_SEMANTIC_GRID",
+      "oracles": [
+        "OR-JOINT-MORPHOLOGY",
+        "OR-SYNTHETIC-JOINT-CONTAMINATION",
+        "OR-TYPED-AUTHORITY-LIMIT"
+      ],
+      "procedure": "SAME_SOURCE_ROW_JOINT_QID0_X_QID1_OVER_EXACT_INTERSECTION_OF_POSITIVE_APPLICABILITY_AND_SUBSTANTIVE_STATE_AVAILABILITY"
+    },
+    "OP006": {
+      "condition_identity": "QID0_POSITIVE_APPLICABILITY_RISK_SET_MEMBERSHIP",
+      "expected_output_shape": "QID1_CATEGORY_DISTRIBUTION_WITH_EXACT_CONDITIONAL_DENOMINATOR_IDENTITY__NUMERIC_VALUES_NOT_FROZEN_BY_THIS_COURT",
+      "oracles": [
+        "OR-EXACT-QUERY-IDENTITY",
+        "OR-DENOMINATOR-IDENTITY"
+      ],
+      "procedure": "DISTRIBUTION_QID1_WITHIN_QID0_POSITIVELY_AUTHORIZED_APPLICABILITY_RISK_SET__NOT_CONDITIONED_ON_QID0_RESPONSE_CATEGORY"
+    }
+  },
+  "pair_ref": {
+    "pair": [
+      "question_impl.phase0.03ea3430fb4f08a1f0da",
+      "question_impl.phase0.068ef710ac1c269b8adf"
+    ],
+    "pair_lf_stream_sha256": "aefe3477977a0b443bdf173b5d3866a0cc8d256a5937fa4c7af1107efa98ce07"
+  },
+  "respondent_and_joint_topology": {
+    "coadministered": true,
+    "coadministration_basis": "SAME_Q291_RESPONDENT_FACING_MATRIX_BATTERY",
+    "joint_rule": "JOIN_QID0_AND_QID1_ONLY_WITHIN_THE_EXACT_SAME_WVS7_SOURCE_ROW",
+    "respondent_coordinate": "SOURCE_ROW_IDENTITY",
+    "synthetic_cross_respondent_join_forbidden": true
+  },
+  "response_semantics": {
+    "qid0_semantic_object_sha256": "4574aecc9db3ec15ba255a5e6f6ce17304ccb610c7d7d9f4b7baddc6d4a77176",
+    "qid1_semantic_object_sha256": "304fbead4df5035bd97c02ff04000363cc5041129456555e3047ff3ff2efc185",
+    "raw_to_semantic": {
+      "-1": "Don't know",
+      "-2": "No answer",
+      "-4": "Not asked",
+      "-5": "Missing; Not available",
+      "1": "Agree strongly",
+      "2": "Agree",
+      "3": "Neither agree nor disagree",
+      "4": "Disagree",
+      "5": "Disagree strongly"
+    },
+    "special_raw_states": [
+      -1,
+      -2,
+      -4,
+      -5
+    ],
+    "valid_substantive_raw_states": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  "routing_and_applicability": {
+    "authority_basis": "B03_W07_AFFIRMATIVE_NATIVE_CURRENT_C + WVS7_NATIVE_POLITICAL_TRUST_MODULE_DOCUMENTATION",
+    "b03_status_code_for_both": "C",
+    "b03_status_meaning": "COUNTRY_CONDITIONAL",
+    "module": "POLITICAL_TRUST_MODULE",
+    "no_routing_inference_from_observed_values": true,
+    "selected_country_set": [
+      "Ethiopia",
+      "Kenya",
+      "Iran",
+      "Kyrgyzstan",
+      "Libya",
+      "Morocco",
+      "Myanmar",
+      "Nicaragua",
+      "Philippines",
+      "Tajikistan",
+      "Venezuela",
+      "Vietnam",
+      "Zimbabwe"
+    ]
+  },
+  "schema": "RAWLSING_EE_R6A_WVS7_OP003_OP006_PREMISE_ORACLE_PACKAGE@1.0.0",
+  "source": {
+    "family": "WVS",
+    "logical_variables": 613,
+    "source_rows": 97220,
+    "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+    "values_inspected": false,
+    "wave": "W7"
+  }
+}
