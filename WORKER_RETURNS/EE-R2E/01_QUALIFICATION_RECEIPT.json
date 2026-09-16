@@ -1,0 +1,78 @@
+{
+  "schema": "RAWLSING_EE_R2E_ABC_HARNESS_INDEPENDENT_QUALIFICATION@1.0.0",
+  "worker": "EE-R2E",
+  "status": "PASS__EE_W4_ABC_HARNESS_INDEPENDENTLY_QUALIFIED",
+  "branch": "agent/rabochii-prev3-ee-r2e-abc-harness-independent-qualification-r1",
+  "commission_tip": "e6e7c8cf5d24a76814d04f63fe9ae6c1d4e6a993",
+  "grain": "INDEPENDENTLY_QUALIFY_EXACT_EE_W4_CANDIDATE_NEUTRAL_MANIFEST_DRIVEN_ABC_HARNESS_ONLY",
+  "canonical_hq": {
+    "checkpoint_id": "20260916T0219-0400",
+    "handoff_commit": "d3d96e0c753707ee8615cc25c77d2fcb45adb950",
+    "latest_substantive_hq_authority": "dfae8e93c22680886885c881c0df1b6dea373a5f",
+    "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354"
+  },
+  "subject": {
+    "ee_w4_return_head": "b74b7cf0b8cb3f7e5fae80094a7db7d26ce20457",
+    "source_blobs": {
+      "rawlsing_next/ee_w4_harness_contract.py": "e8b0fa484fad2a93937b83808204dc58a93d2b70",
+      "rawlsing_next/ee_w4_harness_runtime.py": "2e04ebe391f90e3e00ceae0841464adc58617cea",
+      "rawlsing_next/ee_w4_abc_hostile_measurement_harness.py": "1c5e2e9f4933effee60dce31482424661d6a2252",
+      "tests/test_ee_w4_abc_hostile_measurement_harness.py": "1d314c762cf35253577a1d927ab192be7786bf26"
+    },
+    "governed_support_blobs": {
+      "WORKER_RETURNS/EE-W4/01_HARNESS_CONTRACT.json": "8bbf860e073cc061f4f4364d06214d4f2059241b",
+      "WORKER_RETURNS/EE-W4/04_HOSTILE_FIXTURE_ORACLE_INDEX.json": "3054935af8bc7a146cb201c2c78603a3f2508437",
+      "WORKER_RETURNS/EE-W4/06_AUTHORITY_AND_VALIDATION_RECEIPT.json": "36e3d86ae72962007c25c1c41d75c087b4ef56f0"
+    },
+    "git_blob_reconstruction_exact": true
+  },
+  "environment": {
+    "python": "3.13.5",
+    "platform": "Linux x86_64"
+  },
+  "exact_upstream_tests": {
+    "test_blob": "1d314c762cf35253577a1d927ab192be7786bf26",
+    "execution_mode": "two deterministic pytest partitions over the exact unmodified six-test file",
+    "passed": 6,
+    "failed": 0,
+    "tests": [
+      "test_equal_work_ineligible_not_failure_and_no_universe_pooling",
+      "test_semantic_mismatch_fails_regardless_of_speed",
+      "test_candidate_order_does_not_change_logical_receipt",
+      "test_repeat_delete_rebuild_invalidate_replay_preserve_declared_order_and_identity",
+      "test_omitted_or_incomplete_work_cannot_score_as_win",
+      "test_all_frozen_hostile_ids_are_supported"
+    ]
+  },
+  "independent_qualification": {
+    "core_logical_receipt_sha256": "f4a7daf583a6e366d8c21a6d5403e7c2fdde57a0b8768ebccfa7f1af1a9f61cc",
+    "checks": {
+      "byte_identical_requests_all_invoked_eligible_candidate_actions": "PASS",
+      "same_frozen_step_order_all_candidates": "PASS",
+      "semantic_oracle_gates_performance": "PASS",
+      "identity_oracle_gates_performance": "PASS",
+      "missing_authority_no_candidate_invocation_and_not_failure": "PASS",
+      "configured_ineligible_no_candidate_invocation_and_not_failure": "PASS",
+      "noncomparable_no_candidate_invocation_and_not_failure": "PASS",
+      "omitted_failed_or_incomplete_work_not_performance_eligible": "PASS",
+      "candidate_state_roots_isolated_across_cold_warm_repeat_and_action_phases": "PASS",
+      "exact_universe_identity_retained_in_metric_groupings": "PASS",
+      "delete_rebuild_source_invalidation_authority_invalidation_replay_identity_law": "PASS",
+      "all_20_hostile_ids_accepted_and_preserved_without_semantic_reinterpretation": "PASS",
+      "no_ranking_score_winner_surface": "PASS",
+      "no_candidate_specific_workload_path": "PASS"
+    }
+  },
+  "boundaries": {
+    "repair_or_redesign": false,
+    "real_abc_candidates_run": false,
+    "final_comparison_run": false,
+    "ranking_emitted": false,
+    "architecture_selected_or_retired": false,
+    "semantic_reinterpretation": false,
+    "library_used": false,
+    "main_modified": false,
+    "semantic_pre_main_modified": false
+  },
+  "terminal": "PASS__EXACT_EE_W4_CANDIDATE_NEUTRAL_MANIFEST_DRIVEN_ABC_HARNESS_INDEPENDENTLY_QUALIFIED"
+}
