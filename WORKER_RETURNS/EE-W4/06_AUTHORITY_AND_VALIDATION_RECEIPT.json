@@ -1,0 +1,66 @@
+{
+  "schema": "RAWLSING_EE_W4_AUTHORITY_AND_VALIDATION_RECEIPT@1.0.0",
+  "worker": "EE-W4",
+  "branch": "agent/rabochii-prev3-ee-w4-abc-hostile-measurement-harness-r1",
+  "commission_tip": "29d39f3d37100eda692ece6a28de3ca2c9ecc4b8",
+  "commission_blob": "3b2c85b67c2d375f0a9999092324b887f15290f0",
+  "grain": "IMPLEMENT_CANDIDATE_NEUTRAL_MANIFEST_DRIVEN_ABC_MEASUREMENT_AND_HOSTILE_NON_LOSS_HARNESS_ONLY",
+  "canonical_hq": {
+    "control_ref": "3be5297efc48ae241ee7f03b095dc8f19c3dc672",
+    "checkpoint": "20260916T0204-0400",
+    "checkpoint_blob": "a9f55911250916553b049d1dc2f8a44c86849821",
+    "latest_substantive_hq_authority": "30a6088f65a19a679ab4960743b80ee44fb79955",
+    "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354"
+  },
+  "accepted_comparison_authority": {
+    "common_contract_commit": "30a6088f65a19a679ab4960743b80ee44fb79955",
+    "common_contract_blob": "9992246b2773c747705f3ab19f14608ced23d708",
+    "comparison_sequence_blob": "dafa33db8e0453411581f4a889922f1146d5a592",
+    "requirement_matrix_blob": "77837ba05470e5363664228a7c68793233b42979",
+    "c09_measurement_law_blob": "2729ab4dca887f22fb3c90265f10c70020afdd3e",
+    "c09_exact_order_law_blob": "e200a9aed7dbdf103ab9306d0dd19b74662faf1b",
+    "d17_return_commit": "6b0ca6856a88ae4af79834db2a165c38afed0449",
+    "d17_return_blob": "6ea462189e52ea2dfd623e9fadaceb3b2b2640af",
+    "qualified_abc_intake_sha256": "906973f78cd82678f678a9a803bb3c3c7f9e13b30e39a5f8dc3ea093d4390e88",
+    "hb04_common_harness_sha256": "138482116b566482075e191800229f81357541d674646552e8c269e7640a755e",
+    "hb05_manifest_payload_sha256": "9c99ad778020edf5ed67f4da1f30e4eb14647d46535663a6f027bd04ef8417af",
+    "d02_r2_governed_runtime_commit": "71365947c80878bf655b57a90ebb698ee27287dd",
+    "runtime_authority_ceiling": "EXECUTION_CAPABILITY_ONLY__NO_SEMANTIC_ROLE"
+  },
+  "governed_return_git_blobs": {
+    "WORKER_RETURNS/EE-W4/00_RETURN.md": "0845fc74f59975b03806bdf9e401ef0d68382f5b",
+    "WORKER_RETURNS/EE-W4/01_HARNESS_CONTRACT.json": "8bbf860e073cc061f4f4364d06214d4f2059241b",
+    "WORKER_RETURNS/EE-W4/02_METRIC_DEFINITIONS.md": "c5e958ba899a1bb2c799a4678d138c609c126eb9",
+    "WORKER_RETURNS/EE-W4/03_FAILURE_AND_INELIGIBILITY_TAXONOMY.json": "a06facc837491f1c294e40d87524db15d29f96f2",
+    "WORKER_RETURNS/EE-W4/04_HOSTILE_FIXTURE_ORACLE_INDEX.json": "3054935af8bc7a146cb201c2c78603a3f2508437",
+    "WORKER_RETURNS/EE-W4/05_INTEGRATION_NOTES_FOR_EE_W1_MANIFEST.md": "7843c09675cf51bfc8066e0e8a6493cfd120465e",
+    "rawlsing_next/ee_w4_harness_contract.py": "e8b0fa484fad2a93937b83808204dc58a93d2b70",
+    "rawlsing_next/ee_w4_harness_runtime.py": "2e04ebe391f90e3e00ceae0841464adc58617cea",
+    "rawlsing_next/ee_w4_abc_hostile_measurement_harness.py": "1c5e2e9f4933effee60dce31482424661d6a2252",
+    "tests/test_ee_w4_abc_hostile_measurement_harness.py": "1d314c762cf35253577a1d927ab192be7786bf26"
+  },
+  "tests": {
+    "command": "python -m pytest -q tests/test_ee_w4_abc_hostile_measurement_harness.py",
+    "result": "PASS",
+    "passed": 6,
+    "python": "3.13.5",
+    "platform": "Linux x86_64",
+    "proved": [
+      "same fully-unrolled step order for A/B/C",
+      "byte-identical candidate-neutral request payload per step",
+      "typed missing authority is not candidate failure",
+      "semantic oracle mismatch blocks performance eligibility",
+      "candidate order does not alter logical receipt identity",
+      "warm/repeat state isolation",
+      "delete/rebuild/invalidation/replay identity-oracle enforcement",
+      "omitted/failed/incomplete work cannot score as a win",
+      "metric grouping retains universe identity",
+      "all 20 frozen hostile cases accepted"
+    ]
+  },
+  "final_benchmark_run": false,
+  "candidate_ranking_emitted": false,
+  "main_modified": false,
+  "semantic_pre_main_modified": false,
+  "terminal": "PASS__EE_W4_HARNESS_CAN_CONSUME_FROZEN_EE_W1_WORKLOAD_WITHOUT_NEW_SEMANTIC_DECISIONS"
+}

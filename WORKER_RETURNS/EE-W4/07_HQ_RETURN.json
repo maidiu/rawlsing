@@ -1,0 +1,30 @@
+{
+  "schema": "RAWLSING_EE_W4_HQ_RETURN@1.0.0",
+  "worker": "EE-W4",
+  "branch": "agent/rabochii-prev3-ee-w4-abc-hostile-measurement-harness-r1",
+  "commission_tip": "29d39f3d37100eda692ece6a28de3ca2c9ecc4b8",
+  "status": "PASS",
+  "terminal": "PASS__EE_W4_HARNESS_CAN_CONSUME_FROZEN_EE_W1_WORKLOAD_WITHOUT_NEW_SEMANTIC_DECISIONS",
+  "harness_ready": true,
+  "final_abc_run": "NOT_RUN",
+  "ranking": "NONE",
+  "hostile_cases_supported": 20,
+  "ee_requirement_vocabulary_supported": 16,
+  "repeat_labels_supported": ["cold", "warm_1", "warm_2", "warm_5"],
+  "lifecycle_actions_supported": ["EXECUTE", "REBUILD", "REPLAY", "INVALIDATE_SOURCE", "INVALIDATE_AUTHORITY", "AUDIT", "DELETE_DURABLE", "DELETE_SCRATCH", "RESET_CANDIDATE_STATE"],
+  "measurement_classes": ["semantic_oracle_status", "typed_ineligibility", "wall_ns", "cpu_user_system_ns", "peak_rss", "scratch_bytes_and_file_count", "durable_bytes", "source_open_decode_count", "bytes_read_written_where_observable", "cache_index_bytes_created", "rewritten_bytes", "deterministic_output_identity", "learned_product_release_replay_identity", "failure_class"],
+  "fairness_proofs": {
+    "same_manifest": true,
+    "same_step_order": true,
+    "same_request_payload": true,
+    "same_oracle": true,
+    "same_metric_definitions": true,
+    "candidate_state_isolated": true,
+    "missing_authority_distinct_from_candidate_failure": true,
+    "no_cross_universe_metric_pooling": true,
+    "semantic_parity_gates_performance": true
+  },
+  "integration_gate": "EE-W1_OR_HQ_MUST_SUPPLY_FROZEN_EXECUTION_PROFILE_FIELDS_FROM_ACCEPTED_WORKLOAD_AUTHORITY__EE_W4_WILL_NOT_FILL_SEMANTIC_GAPS",
+  "main_untouched": true,
+  "semantic_pre_main_untouched": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354"
+}

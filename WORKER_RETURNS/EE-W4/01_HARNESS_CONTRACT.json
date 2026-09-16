@@ -1,0 +1,63 @@
+{
+  "schema": "RAWLSING_EE_W4_ABC_HOSTILE_MEASUREMENT_HARNESS_CONTRACT@1.0.0",
+  "worker": "EE-W4",
+  "grain": "IMPLEMENT_CANDIDATE_NEUTRAL_MANIFEST_DRIVEN_ABC_MEASUREMENT_AND_HOSTILE_NON_LOSS_HARNESS_ONLY",
+  "candidate_ids": ["A", "B", "C"],
+  "hard_laws": [
+    "SAME_MANIFEST + SAME_ELIGIBLE_UNIVERSE_CELL + SAME_OPERATION + SAME_ORACLE + SAME_METRIC_DEFINITION",
+    "COMMON_QUERY_INTERFACE != POOLED_EMPIRICAL_UNIVERSE",
+    "MISSING_AUTHORITY != CANDIDATE_FAILURE",
+    "SEMANTIC_PARITY_BEFORE_PERFORMANCE",
+    "NO_CANDIDATE_SPECIFIC_PRUNING_WARMUP_CACHING_ALLOWANCE_SOURCE_PREPROCESSING_SEARCH_BUDGET_OUTPUT_WEAKENING_OR_HOSTILE_EXEMPTION",
+    "NO_CROSS_UNIVERSE_EMPIRICAL_OR_METRIC_POOLING"
+  ],
+  "workload_execution_profile": {
+    "schema": "RAWLSING_EE_W4_FROZEN_WORKLOAD_EXECUTION_PROFILE@1.0.0",
+    "authority_ceiling": "TRANSPORT_AND_EXECUTION_SHAPE_ONLY__ALL_SEMANTIC_CONTENT_ELIGIBILITY_AND_ORACLES_MUST_BE_SUPPLIED_BY_EE_W1_OR_OTHER_ACCEPTED_AUTHORITY",
+    "required_top_level_fields": ["schema", "workload_id", "steps"],
+    "step_order_law": "steps is a fully-unrolled exact ordered list; EE-W4 does not generate, prune, reorder, or candidate-specialize repetitions",
+    "required_step_fields": ["step_id", "universe_id", "operation_id", "ee_requirement_ids", "phase", "action", "eligibility"],
+    "eligible_candidate_action_fields": ["request", "oracle"],
+    "eligibility_states": ["ELIGIBLE", "MISSING_AUTHORITY", "INELIGIBLE", "NONCOMPARABLE", "OUTSIDE_REQUESTED_JURISDICTION", "SOURCE_CELL_UNAVAILABLE", "UNRESOLVED_AUTHORITY"],
+    "phases": ["cold", "warm_1", "warm_2", "warm_5", "hostile", "delete_rebuild", "selective_source_invalidation", "selective_authority_invalidation", "replay", "audit", "other"],
+    "actions": ["EXECUTE", "REBUILD", "REPLAY", "INVALIDATE_SOURCE", "INVALIDATE_AUTHORITY", "AUDIT", "DELETE_DURABLE", "DELETE_SCRATCH", "RESET_CANDIDATE_STATE"],
+    "oracle": {
+      "semantic_output_sha256": "required lowercase SHA-256 for every eligible candidate action",
+      "identities": "optional exact identity map; when present every named identity must match exactly"
+    }
+  },
+  "candidate_adapter": {
+    "configuration_is_physical_not_semantic": true,
+    "required_candidates": ["A", "B", "C"],
+    "argv_placeholders": ["{request}", "{response}", "{scratch}", "{durable}"],
+    "request_payload_is_byte_identical_across_candidates_for_each_step": true,
+    "candidate_response": {
+      "required": ["status=OK", "semantic_output_sha256", "telemetry.source_open_count", "telemetry.source_decode_count"],
+      "optional_measurement_fields": ["telemetry.bytes_read", "telemetry.bytes_written", "telemetry.temporary_spill_bytes", "telemetry.cache_index_bytes_created", "telemetry.rewritten_bytes"],
+      "identity_fields": ["identities.deterministic_output_identity", "identities.learned_product_release_identity", "identities.learned_product_replay_identity"],
+      "missing_telemetry_law": "missing telemetry is MEASUREMENT_TELEMETRY_INCOMPLETE, never numeric zero"
+    }
+  },
+  "measurement": {
+    "wall_clock": "time.monotonic_ns around the exact declared action",
+    "cpu": "POSIX wait4 child ru_utime and ru_stime converted to ns",
+    "peak_rss": "POSIX wait4 ru_maxrss; Linux KiB is converted to bytes with native unit retained",
+    "scratch": "candidate-isolated scratch tree sampled during execution plus before/after logical bytes/file counts",
+    "durable": "candidate-isolated durable tree before/after logical bytes and created-byte delta",
+    "source_open_decode": "candidate adapter telemetry; required for eligible candidate actions",
+    "bytes_read_written_spill_cache_rewrite": "candidate adapter telemetry where observable; null means not measured, never zero",
+    "aggregation_key": ["candidate_id", "universe_id", "operation_id", "phase"],
+    "forbidden_aggregation": "no aggregation that removes universe_id"
+  },
+  "performance_eligibility": {
+    "requires": ["all declared eligible steps attempted in exact manifest order", "all semantic oracles PASS", "all requested identity oracles PASS", "required source-open/decode telemetry complete", "candidate-neutral request payload hashes equal", "no candidate or harness failure on an eligible step"],
+    "omitted_work_can_never_improve_performance_status": true,
+    "no_score_or_ranking_emitted": true
+  },
+  "runtime": {
+    "candidate_process_spawn": "POSIX posix_spawnp",
+    "candidate_resource_collection": "POSIX wait4",
+    "candidate_state_isolation": "separate scratch/durable/log/request/response roots per candidate",
+    "runtime_provisioning_semantic_role": "NONE"
+  }
+}

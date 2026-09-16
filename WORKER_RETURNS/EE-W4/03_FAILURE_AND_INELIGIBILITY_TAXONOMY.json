@@ -1,0 +1,31 @@
+{
+  "schema": "RAWLSING_EE_W4_FAILURE_AND_INELIGIBILITY_TAXONOMY@1.0.0",
+  "worker": "EE-W4",
+  "ineligibility_states": {
+    "INELIGIBLE_MISSING_AUTHORITY": "The workload cell is missing required source/semantic/routing/validator authority. No candidate is invoked and this is not a candidate failure.",
+    "INELIGIBLE_CONFIGURED": "Accepted workload authority explicitly marks the cell ineligible. No candidate failure.",
+    "INELIGIBLE_NONCOMPARABLE": "Accepted authority says the requested comparison is noncomparable. No candidate failure and no numeric substitute.",
+    "INELIGIBLE_OUTSIDE_REQUESTED_JURISDICTION": "The cell lies outside the frozen workload jurisdiction.",
+    "INELIGIBLE_SOURCE_CELL_UNAVAILABLE": "The named empirical universe/source cell is unavailable under current authority.",
+    "INELIGIBLE_UNRESOLVED_AUTHORITY": "Required authority remains unresolved and is preserved as unresolved."
+  },
+  "candidate_or_oracle_failures": {
+    "CANDIDATE_LAUNCH_FAILURE": "Physical adapter could not be launched.",
+    "CANDIDATE_NONZERO_EXIT": "Physical adapter terminated nonzero.",
+    "CANDIDATE_RESPONSE_MISSING": "Candidate returned no governed response object.",
+    "CANDIDATE_RESPONSE_INVALID": "Candidate response violates the physical response contract.",
+    "SEMANTIC_ORACLE_MISMATCH": "Candidate semantic output hash differs from the frozen oracle; speed cannot rescue the cell.",
+    "IDENTITY_ORACLE_MISMATCH": "A frozen deterministic/release/replay identity differs from the oracle.",
+    "MEASUREMENT_TELEMETRY_INCOMPLETE": "Required source-open/decode telemetry is unavailable; missing is not treated as zero.",
+    "HARNESS_ACTION_FAILURE": "A candidate-neutral harness-owned delete/reset action failed."
+  },
+  "noncollapse_laws": [
+    "MISSING_AUTHORITY != CANDIDATE_FAILURE",
+    "NONCOMPARABLE != ZERO",
+    "UNKNOWN != ZERO",
+    "UNRESOLVED != ABSENT",
+    "SEMANTIC_ORACLE_FAIL != SLOW_OR_FAST",
+    "MEASUREMENT_MISSING != ZERO",
+    "CANDIDATE_FAILURE != WORKLOAD_INELIGIBILITY"
+  ]
+}
