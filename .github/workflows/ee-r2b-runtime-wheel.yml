@@ -1,0 +1,45 @@
+name: EE-R2B Runtime Wheel Carrier
+
+on:
+  push:
+    branches:
+      - agent/rabochii-prev3-ee-r2b-lits-carrier-runtime-colocation-r1
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  emit-exact-runtime-wheel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Set up Python 3.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Download exact pyreadstat runtime wheel
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p runtime-wheel
+          python -m pip download --disable-pip-version-check --only-binary=:all: --no-deps 'pyreadstat==1.3.6' -d runtime-wheel
+          sha256sum runtime-wheel/* | tee runtime-wheel/SHA256SUMS.txt
+          python - <<'PY'
+          import json, platform, pathlib
+          wheels = sorted(p.name for p in pathlib.Path('runtime-wheel').glob('*.whl'))
+          assert len(wheels) == 1, wheels
+          pathlib.Path('runtime-wheel/runtime.json').write_text(json.dumps({
+              'schema':'EE_R2B_RUNTIME_WHEEL@1.0.0',
+              'python': platform.python_version(),
+              'dependency':'pyreadstat==1.3.6',
+              'wheel': wheels[0],
+          }, sort_keys=True, separators=(',', ':')) + '\n', encoding='utf-8')
+          PY
+      - name: Upload immutable runtime wheel artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ee-r2b-pyreadstat-1.3.6-${{ github.run_id }}
+          path: runtime-wheel/
+          if-no-files-found: error
+          retention-days: 90
