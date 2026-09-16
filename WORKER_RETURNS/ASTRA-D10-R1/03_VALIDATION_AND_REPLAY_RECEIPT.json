@@ -1,0 +1,75 @@
+{
+  "schema_id": "ASTRA_D10_R1_VALIDATION_AND_REPLAY_RECEIPT@1.0.0",
+  "commission_id": "ASTRA-D10-R1",
+  "status": "PASS",
+  "candidate_boundary": "M10-M01_CONCRETE_CANDIDATE_ENVELOPE_ONLY",
+  "semantic_candidate_sha": "a8740b5ad80f288d2f9dcf6dcc4c89ba232d5b75",
+  "evidence_execution_sha": "be4439f927afcfad8ed6aacd9d897ca647c9617d",
+  "accepted_runtime_restoration": {
+    "path": "rawlsing_next/sdtf_r4_generic_batch_adapter.py",
+    "blob_sha": "f6427a42524086194ed6fca9ba2387561ff00891",
+    "source_accepted_implementation_commit": "f02336187e50a443d929ff7abbe5dcd5f3950f70",
+    "restoration_commit": "be4439f927afcfad8ed6aacd9d897ca647c9617d",
+    "semantics_changed": false
+  },
+  "governed_court": {
+    "workflow": "Rabochii Governed Bounded Court",
+    "run_id": 35155030203,
+    "job_id": 104992333233,
+    "result": "PASS",
+    "exit_code": 0,
+    "artifact_id": 10470468717,
+    "artifact_name": "rabochii-court-receipt-35155030203",
+    "artifact_digest": "sha256:9592a1483af3022a08e0d33b8216d9960690da745531a41b5e572e2b46236471",
+    "receipt_schema_id": "RABOCHII_BOUNDED_COURT_RECEIPT@1.0.0",
+    "spec_sha256": "d6e2db661c11d72e531acd039c29604946d20d8643ef63e1d922a9bb76b2b4bd",
+    "determinism_mode": "EXACT",
+    "python": "3.12.14",
+    "implementation": "CPython",
+    "environment": {
+      "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+      "PYTHONHASHSEED": "0"
+    },
+    "test_paths": [
+      "rawlsing_next/tests/test_astra_d10_r1_candidate_envelope.py"
+    ],
+    "pr_synthetic_merge_sha": "db512e8750278a0a770f962d5e905693ec4e7df4"
+  },
+  "deterministic_outputs": {
+    "candidate_row_ref": {
+      "kind": "SDTF_R4_GENERIC_BATCH_CANDIDATE_ROW",
+      "object_id": "PSC06:M10-M01:g0",
+      "content_hash": "d8888ed404b68b5679f9742a77e3e12a9af0a6d397e227a826afa48fe3dc3115"
+    },
+    "batch_ref": {
+      "kind": "SDTF_R4_GENERIC_BATCH",
+      "object_id": "PSC06:M10-M01:D10-R1",
+      "content_hash": "90ff2bf3edfe955ebfd113ae77a0e8f04ac19d9dd96a1e04d370e0ff4dbb2546"
+    },
+    "runtime_binding_ref_content_hash": "f4094d73cc2f6e0c3a40d5f5eb94e86a69d32863026cb1844c1d18b854fcf370",
+    "candidate_receipt_ref_content_hash": "ce4aefa2e59975556b30d1c906538179b450b5fb7965ba2b358823386f9c55bb",
+    "batch_receipt_ref_content_hash": "5b1af74948c14bce32bd64d0ddeed1a8e01f80f08a9590289f1cc0f14299991c",
+    "runtime_projection_state": "ADAPTER_VALIDATED_CANDIDATE_NOT_CURRENT",
+    "current_selection_state": "ELIGIBLE_FOR_SEPARATE_SELECTION",
+    "value_mode": "NONNUMERIC",
+    "calibration_disposition": "NOT_APPLICABLE",
+    "rule_currentness": "CANDIDATE_NOT_CURRENT"
+  },
+  "boundary_checks": {
+    "numeric_calibration_inferred": false,
+    "rule_current_accepted_issued": false,
+    "current_actor_or_world_application_fact_created": false,
+    "occupant_or_witness_created": false,
+    "topology_created": false,
+    "v3_person_state_created": false,
+    "obl063_used": false,
+    "main_mutated": false,
+    "semantic_pre_main_mutated": false
+  },
+  "successor": {
+    "next": "ASTRA-D10Q",
+    "next_grain": "PSC06_EXACT_M10_M01_CONCRETE_RULE_ENVELOPE_INDEPENDENT_QUALIFICATION_ONLY",
+    "conditional_after_d10q_pass": "ASTRA-D11",
+    "conditional_grain": "PSC06_EXACT_COMPLETE_QUALIFIED_RULE_INDEPENDENT_CURRENT_SELECTION_ONLY"
+  }
+}
