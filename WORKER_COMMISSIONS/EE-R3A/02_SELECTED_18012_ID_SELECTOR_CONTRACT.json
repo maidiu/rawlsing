@@ -1,0 +1,36 @@
+{
+  "authority_ceiling": "DETERMINISTIC_PREDECESSOR_RESEAL_ONLY__NO_RESPONSE_SEMANTICS_INFERENCE_OR_REPAIR",
+  "canonical_ledger": {
+    "authority_commit": "3eaf9918e66b9d4bbc3a1c12598baca20c9d594d",
+    "canonical_jsonl_sha256": "0ac4cd90c19c859438ec12ddfa69c37e9b9c85607884e0f4ea93bc6b52493723",
+    "row_order": "ACCEPTED_N01_R2_DETERMINISTIC_CARRIER_REPLAY_ORDER__NO_SORTING",
+    "rows": 18276,
+    "unique_ids": 18276
+  },
+  "predecessor_status_vector": {
+    "authority_commit": "8e0266703bbf3b060abcd6fbe53c7ef6c49062c5",
+    "encoded_stripped_bytes": 572,
+    "encoded_stripped_sha256": "8241edb2bf043105e0eae12dfa8dd312ff14ca09d37141467834529404c161d7",
+    "raw_bytes": 18276,
+    "raw_sha256": "f3bb9f06508f7eb26d1ee01e6bc865377637da34f5a60b4118006cc5d8a8d283",
+    "status_counts": {
+      "1": 41,
+      "2": 22,
+      "3": 18012,
+      "4": 159,
+      "5": 42
+    }
+  },
+  "schema": "RAWLSING_EE_R3A_SELECTED_18012_ID_SELECTOR_CONTRACT@1.0.0",
+  "selection": {
+    "ordinal_carrier_path": "04_SELECTED_18012_ORDINALS_COMPLEMENT.json",
+    "rule": "SELECT_CANONICAL_LEDGER_POSITION_I_IFF_N04_R3_STATUS_CODE_I_EQUALS_3",
+    "selected_count": 18012,
+    "selected_id_materialization": "Take canonical ledger IDs at the one-based ordinals reconstructed by 04_SELECTED_18012_ORDINALS_COMPLEMENT.json, preserving ledger order.",
+    "selected_id_stream_bytes": 756504,
+    "selected_id_stream_format": "question_implementation_id + LF in canonical ledger order",
+    "selected_id_stream_sha256": "582dc702d1c974b5e57931c2462468523cf73ddf997c00f05dc5e5c0e95ba7b0",
+    "selector_mask_path": "03_SELECTED_18012_MASK.zlib.b64"
+  },
+  "status": "LOSSLESS_COMPACT_SELECTOR__REPLAY_REQUIRED_FOR_ROW_MATERIALIZATION"
+}
