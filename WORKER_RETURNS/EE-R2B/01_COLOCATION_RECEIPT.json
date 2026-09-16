@@ -1,0 +1,70 @@
+{
+  "schema": "EE_R2B_COLOCATION_RECEIPT@1.0.0",
+  "worker": "EE-R2B",
+  "result": "PASS",
+  "grain": "PROVE_ONE_LAWFUL_IMMUTABLE_COLOCATION_PATH_FOR_EXACT_LITS_I_LIBRARY_BYTES_AND_ACCEPTED_PRE553_PYREADSTAT_DECODER_RUNTIME_ONLY",
+  "hq_checkpoint": {
+    "checkpoint_id": "20260916T0307-0400",
+    "handoff_commit": "251a1d45c73cbe8d46bde1051a5f114c524ba837",
+    "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354"
+  },
+  "predecessor_return": "4523f1ea392abbd3a500e3459fef176607d790b4",
+  "carrier": {
+    "library_file_id": "file_0000000036dc81f8b8b546e356590a03",
+    "version": "1",
+    "filename": "LITS-2006-data.dta",
+    "bytes": 139531180,
+    "sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "transport": "Library exact-version materialization directly onto worker file surface",
+    "public_or_mutable_source_mirror_used": false
+  },
+  "decoder": {
+    "path": "rawlsing_next/pre553_physical_decoder.py",
+    "required_git_blob": "13aa733b511dc23e00bfcdf288c5b920e3f09983",
+    "executed_local_git_blob": "13aa733b511dc23e00bfcdf288c5b920e3f09983",
+    "encoding": "latin1",
+    "apply_value_formats": false,
+    "user_missing": true
+  },
+  "runtime_carrier": {
+    "workflow_path": ".github/workflows/ee-r2b-runtime-wheel.yml",
+    "producer_commit": "a2f3b7c8c0b600f408416bc35aa8926be45d65b5",
+    "workflow_run_id": 35120057454,
+    "artifact_id": 10456488840,
+    "artifact_name": "ee-r2b-pyreadstat-1.3.6-35120057454",
+    "artifact_sha256": "ccf5a7236142f1c763fae5016adca5b662bf6a6550a150c50b44d02ff84b1225",
+    "artifact_expires_at": "2026-12-15T16:09:19Z",
+    "dependency": "pyreadstat==1.3.6",
+    "producer_python": "3.13.15",
+    "wheel": "pyreadstat-1.3.6-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+    "wheel_sha256": "3ac231771dc038e0a42a4d14599af3112684f7eba680983b3ef9581db3e3b163"
+  },
+  "co_location_execution": {
+    "worker_python": "3.13.5",
+    "worker_implementation": "CPython",
+    "pyreadstat": "1.3.6",
+    "source_sha256_observed_by_decoder": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "source_format": "DTA",
+    "row_count": 29002,
+    "variable_count": 1198,
+    "physical_cell_count": 34744396,
+    "q301_2_present": true,
+    "q301_2_ordinal": 194,
+    "q301_7_present": true,
+    "q301_7_ordinal": 199,
+    "bounded_cell_probe_count": 16,
+    "result": "PASS"
+  },
+  "lawful_path": "Keep exact LiTS-I Library bytes on the worker-accessible file surface; emit only the pinned public runtime dependency as a hash-bound GitHub Actions artifact; download that immutable artifact into the same worker surface; install pyreadstat without dependency substitution; fetch/copy the repository decoder and verify its exact Git blob before execution; execute decode_dta with latin1 and the frozen flags.",
+  "scope_guards": {
+    "source_substitution": false,
+    "decoder_substitution": false,
+    "pandas_or_other_reader_fallback": false,
+    "learned_result_execution": false,
+    "semantic_widening": false,
+    "abc_ranking": false,
+    "main_mutation": false,
+    "semantic_pre_main_mutation": false
+  },
+  "successor_wake": "EE-W2/D03 may rerun at its existing exact grain using this co-location path; D04 remains gated by D03's own required roots/replay outcome."
+}
