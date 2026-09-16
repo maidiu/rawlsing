@@ -1,0 +1,40 @@
+{
+  "schema": "RAWLSING_EE_R4C_PARALLEL_DISPATCH_GRAPH@1.0.0",
+  "worker": "EE-R4C",
+  "input_selector": {
+    "commit": "9a31f6ddd984a43076cb89043a70ab19195332f5",
+    "selected_count": 18012,
+    "selected_id_stream_sha256": "582dc702d1c974b5e57931c2462468523cf73ddf997c00f05dc5e5c0e95ba7b0"
+  },
+  "law": "NO_ALL_LANES_BARRIER__FAMILY_UNITS_PARALLEL__GROUPING_NE_AUTHORITY__ABC_GATE_INDEPENDENT",
+  "anti_expansion": [
+    "No court may add IDs outside its exact unit member carrier.",
+    "Shared source family does not imply shared response meaning.",
+    "No semantics may be inferred from labels, value codes, wording resemblance, frequencies, statistics, embeddings, or model judgment.",
+    "Current response-scale registry and historical QSR are authority references, not automatic implementation-level semantic bindings.",
+    "Unresolved remains unresolved."
+  ],
+  "fan_in": {
+    "law": "COURT_RESULT_REQUIRED_BEFORE_OBJECTIZATION__REGISTRY_NE_RESPONSE_SEMANTICS",
+    "target": "EE-W3 scalable semantic-capital producer/objectizer path after competent exact semantic rulings",
+    "abc_selection_relation": "PARALLEL_PRODUCTION_CAPITAL_LANE__NOT_A_B_C_CARRIER_SELECTION_PREREQUISITE"
+  },
+  "nodes": [
+    {"node_id":"EE-R4C-B01-AFROBAROMETER","source_family":"Afrobarometer","rows":890,"state":"READY_FOR_SEMANTIC_AUTHORITY_COURT"},
+    {"node_id":"EE-R4C-B02-ARAB_BAROMETER","source_family":"Arab Barometer","rows":1665,"state":"READY_FOR_SEMANTIC_AUTHORITY_COURT"},
+    {"node_id":"EE-R4C-B03-ASIAN_BAROMETER","source_family":"Asian Barometer","rows":797,"state":"READY_FOR_SEMANTIC_AUTHORITY_COURT"},
+    {"node_id":"EE-R4C-B04-EVS","source_family":"EVS","rows":2215,"state":"READY_FOR_SEMANTIC_AUTHORITY_COURT"},
+    {"node_id":"EE-R4C-B05-GSS","source_family":"GSS","rows":5959,"state":"READY_FOR_SEMANTIC_AUTHORITY_COURT"},
+    {"node_id":"EE-R4C-B06-LATINOBAROMETRO","source_family":"Latinobarómetro","rows":766,"state":"READY_FOR_SEMANTIC_AUTHORITY_COURT"},
+    {"node_id":"EE-R4C-B07-LITS","source_family":"LiTS","rows":4402,"state":"READY_FOR_SEMANTIC_AUTHORITY_COURT"},
+    {"node_id":"EE-R4C-B08-SOUTH_ASIA","source_family":"South Asia","rows":123,"state":"READY_FOR_SEMANTIC_AUTHORITY_COURT"},
+    {"node_id":"EE-R4C-B09-WVS","source_family":"WVS","rows":1195,"state":"READY_FOR_SEMANTIC_AUTHORITY_COURT"}
+  ],
+  "common_owner_refs": [
+    "N03:RESPONSE_SCALE_ENCODING_REGISTRY_35WAVE@2a45215854d1feb4ba0a779edcb29479143ab613",
+    "N03:QSR_18792@9139c1ab77bf47a872f63ccae7784f3631f03a3e02a936b4ac41e75580c45219",
+    "N01-R2:CURRENT_SOURCE_FAMILY_WAVE_IDENTITY_CARRIER@d4a2b141a68e077d1c2189c68d4bf75d11f13b9d"
+  ],
+  "court_instruction": "Operate only on the exact member set reconstructed from 01_RESPONSE_SEMANTIC_BATCH_REGISTRY.json. Use competent source/documentary authority to bind or author response-category semantics; preserve unresolved where exact support is absent. Do not infer semantics from labels, codes, wording resemblance, frequencies, statistics, embeddings, or model judgment.",
+  "successor_grain": "EXACT_MEMBER_IDS_ONLY__BIND_OR_AUTHOR_RESPONSE_CATEGORY_SEMANTICS_FROM_COMPETENT_SOURCE_DOCUMENTARY_AUTHORITY__PRESERVE_UNRESOLVED_WHERE_NOT_PROVED"
+}

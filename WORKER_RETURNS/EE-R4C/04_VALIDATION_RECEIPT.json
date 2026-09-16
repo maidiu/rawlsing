@@ -1,0 +1,59 @@
+{
+  "schema": "RAWLSING_EE_R4C_VALIDATION_RECEIPT@1.0.0",
+  "worker": "EE-R4C",
+  "status": "PASS",
+  "commission_tip": "b1c5ddeead65774af82cefffa30d9ce0d2f0f6b8",
+  "hq": {
+    "checkpoint": "20260916T1450-0400",
+    "handoff_commit": "fda6406e5ccc23e102c58ef5cb511f97f06009da",
+    "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354"
+  },
+  "input": {
+    "r3a_commit": "9a31f6ddd984a43076cb89043a70ab19195332f5",
+    "selection_rule": "status_code == 3",
+    "selected_count": 18012,
+    "selected_id_stream_sha256": "582dc702d1c974b5e57931c2462468523cf73ddf997c00f05dc5e5c0e95ba7b0",
+    "canonical_ledger_sha256": "0ac4cd90c19c859438ec12ddfa69c37e9b9c85607884e0f4ea93bc6b52493723"
+  },
+  "accounting": {
+    "unit_count": 9,
+    "selected_total": 18012,
+    "unit_counts": {
+      "Afrobarometer": 890,
+      "Arab Barometer": 1665,
+      "Asian Barometer": 797,
+      "EVS": 2215,
+      "GSS": 5959,
+      "Latinobarómetro": 766,
+      "LiTS": 4402,
+      "South Asia": 123,
+      "WVS": 1195
+    },
+    "state_counts": {
+      "READY_FOR_SEMANTIC_AUTHORITY_COURT": 9,
+      "TRUE_UNRESOLVED_NO_OWNER": 0,
+      "CONFLICTED_OWNER": 0,
+      "OUTSIDE_RESPONSE_SEMANTIC_JURISDICTION": 0
+    },
+    "missing_selected_members": 0,
+    "duplicate_selected_members": 0
+  },
+  "validation": {
+    "membership_authority_only_r3a": true,
+    "partition_dimension_governed_source_family_only": true,
+    "family_blocks_replayed_from_n01_r2": true,
+    "selected_id_stream_replayed": true,
+    "per_unit_selected_ordinal_hashes_frozen": true,
+    "exact_member_carrier_hashes_frozen": true,
+    "semantic_meanings_created": false,
+    "label_code_wording_inference": false,
+    "statistics_frequency_inference": false,
+    "embedding_or_model_judgment": false,
+    "abc_selection_dependency_created": false,
+    "main_mutated": false,
+    "semantic_pre_main_mutated": false,
+    "library_used": false
+  },
+  "replay": "WORKER_RETURNS/EE-R4C/03_REPLAY_EE_R4C.py",
+  "terminal": "PASS__EXACT_18012_RESPONSE_SEMANTIC_DEBT_PARTITIONED_INTO_9_FINITE_GOVERNED_SOURCE_FAMILY_AUTHORITY_UNITS__PARALLEL_PRODUCTION_QUEUE_FROZEN__NO_SEMANTIC_MEANING_CREATED"
+}
