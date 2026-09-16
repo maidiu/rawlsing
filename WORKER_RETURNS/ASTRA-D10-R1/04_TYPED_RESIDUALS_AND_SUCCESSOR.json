@@ -1,0 +1,48 @@
+{
+  "schema_id": "ASTRA_D10_R1_TYPED_RESIDUALS_AND_SUCCESSOR@1.0.0",
+  "commission_id": "ASTRA-D10-R1",
+  "d10_status": "PASS",
+  "d10_blocker": null,
+  "residuals": [
+    {
+      "id": "INDEPENDENT_CONCRETE_ENVELOPE_QUALIFICATION_PENDING",
+      "state": "PENDING_SEPARATE_GATE",
+      "owner": "ASTRA-D10Q",
+      "meaning": "The exact M10-M01 concrete candidate envelope is assembled and deterministically replay-valid, but independent qualification of that concrete envelope remains a distinct zero-repair successor gate.",
+      "does_not_negate_d10_pass": true
+    },
+    {
+      "id": "RULE_CURRENT_SELECTION_NOT_PERFORMED",
+      "state": "NOT_PERFORMED_AT_D10",
+      "owner": "ASTRA-D11_AFTER_ACCEPTED_D10Q_PASS",
+      "meaning": "The rule remains CANDIDATE_NOT_CURRENT. D10 does not issue CURRENT_ACCEPTED and does not supply current-selection evidence.",
+      "does_not_negate_d10_pass": true
+    },
+    {
+      "id": "ACTOR_ENTITY_REALIZATION_NOT_SUPPLIED",
+      "state": "OUTSIDE_D10_GRAIN",
+      "owner": "LATER_APPLICATION_REALIZATION_PATH",
+      "meaning": "D10 creates no actor/entity realization, current actor/world application fact, occupant, witness, topology, or V3 person state.",
+      "does_not_negate_d10_pass": true
+    }
+  ],
+  "successor_wake": {
+    "immediate": {
+      "worker": "ASTRA-D10Q",
+      "grain": "PSC06_EXACT_M10_M01_CONCRETE_RULE_ENVELOPE_INDEPENDENT_QUALIFICATION_ONLY",
+      "repair_authority": "ZERO_REPAIR"
+    },
+    "conditional": {
+      "condition": "ACCEPTED_D10Q_PASS",
+      "worker": "ASTRA-D11",
+      "grain": "PSC06_EXACT_COMPLETE_QUALIFIED_RULE_INDEPENDENT_CURRENT_SELECTION_ONLY"
+    }
+  },
+  "forbidden_inferences_preserved": [
+    "D10_PASS_IS_NOT_RULE_CURRENTNESS",
+    "D10_PASS_IS_NOT_ACTOR_OR_WORLD_APPLICATION",
+    "D10_PASS_IS_NOT_TOPOLOGY",
+    "D10_PASS_IS_NOT_V3_PERSON_STATE",
+    "D10_PASS_DOES_NOT_REVIVE_OBL063"
+  ]
+}
