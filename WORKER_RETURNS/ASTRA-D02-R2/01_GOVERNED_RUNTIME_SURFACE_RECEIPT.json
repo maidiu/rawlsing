@@ -1,0 +1,81 @@
+{
+  "schema": "ASTRA_D02_R2_GOVERNED_RUNTIME_SURFACE_RECEIPT@1.0.0",
+  "worker_id": "ASTRA-D02-R2",
+  "branch": "agent/rabochii-prev3-astra-d02r2-governed-source-runtime-r1",
+  "commission_tip": "27fd6658955d888da37cc24acfc98540eae26508",
+  "hq_fan_in": "05167b4cd30dc751cce797a16baa397bc7d0457d",
+  "grain": "PSC04_PRE553_ACCEPTED_PYREADSTAT_RUNTIME_SURFACE_RECOVERY_R1_ONLY",
+  "status": "PASS",
+  "terminal": "PASS__GOVERNED_PYREADSTAT_RUNTIME_SURFACE_PROVED",
+  "governed_surface": {
+    "kind": "GITHUB_ACTIONS_RABOCHII_GOVERNED_BOUNDED_COURT",
+    "workflow_path": ".github/workflows/rabochii-governed-bounded-court.yml",
+    "workflow_run_id": 35060888384,
+    "job_id": 104680758768,
+    "conclusion": "success",
+    "evidence_execution_sha": "884498c84a71c5e39521294034c28725e8350a35",
+    "pr_synthetic_merge_sha": "b1be43814ecb5963e705f0f7b20346e7a1b21269",
+    "python_requested": "3.12",
+    "python_observed": "3.12.14",
+    "platform_observed": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
+    "dependency_recipe": "python -m pip install --disable-pip-version-check pytest==8.4.2 pandas==2.3.2 pyreadstat==1.3.6"
+  },
+  "accepted_decoder": {
+    "path": "rawlsing_next/pre553_physical_decoder.py",
+    "expected_git_blob": "13aa733b511dc23e00bfcdf288c5b920e3f09983",
+    "observed_git_blob": "13aa733b511dc23e00bfcdf288c5b920e3f09983",
+    "exact_match": true,
+    "reader_backend": "pyreadstat",
+    "reader_version": "1.3.6",
+    "user_missing": true,
+    "apply_value_formats": false,
+    "decoder_substitution_used": false,
+    "alternate_reader_used": false
+  },
+  "transport_probe": {
+    "kind": "SYNTHETIC_DTA_RUNTIME_PROBE_ONLY",
+    "rows": 2,
+    "variables": 2,
+    "cells_observed": 4,
+    "sha256": "e8ee8a0966fb593313f712dd9f010bbde0c81b0f47729ed7b5a554118711ab4f",
+    "compatibility_encoding_exercised": false
+  },
+  "court": {
+    "result": "PASS",
+    "exit_code": 0,
+    "determinism_mode": "EXACT",
+    "court_spec_sha256": "7ef8f2276af504261390577875946f58c6d1ea3047680b3b6f881486f92c20be",
+    "test": "rawlsing_next/tests/test_astra_d02_r2_governed_pyreadstat_runtime.py",
+    "env": {
+      "PYTHONHASHSEED": "0",
+      "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1"
+    }
+  },
+  "artifact": {
+    "artifact_id": 10431958094,
+    "name": "rabochii-court-receipt-35060888384",
+    "digest": "sha256:5407f5f49719518277dd6df450cf6c2f57932b3ea9ea4ffd77080afe5962066c",
+    "members": [
+      "court_receipt.json",
+      "astra_d02_r2_runtime_receipt.json"
+    ]
+  },
+  "checks": {
+    "governed_surface_available": true,
+    "bounded_dependency_provisioning_pass": true,
+    "pyreadstat_import_and_execution_pass": true,
+    "accepted_decoder_blob_exact": true,
+    "real_dta_transport_decode_pass": true,
+    "lits_carrier_materialized": false,
+    "learned_results_inspected": false,
+    "r2_r7_r27_materialized": false,
+    "compatibility_allowlist_modified": false
+  },
+  "d03_handoff": {
+    "runtime_surface_proved": true,
+    "recipe_reproducible": true,
+    "exact_lits_carrier_still_requires_d03_authority": true,
+    "no_positive_lits_learned_result_claimed": true
+  },
+  "authority_ceiling": "EXECUTION_CAPABILITY_ONLY__NO_LITS_LEARNED_RESULT__NO_R2_R7_R27_MATERIALIZATION__NO_SEMANTIC_OR_STRUCTURAL_AUTHORITY"
+}
