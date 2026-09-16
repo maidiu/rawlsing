@@ -4,6 +4,8 @@ Grounding: [00_GROUNDING_RECEIPT.json](00_GROUNDING_RECEIPT.json), RAWLSING_GROU
 
 ## Verdict
 
+Final reconciliation: [13_CONCURRENT_HQ_RECONCILIATION.md](13_CONCURRENT_HQ_RECONCILIATION.md) incorporates the concurrent HQ empirical-engine contract at dc6cf333f461c0dfa43f8410b754692597dcc115. It strengthens the inherited-function finding, makes the expanded equal-work comparison critical to final carrier selection, and identifies the open possibility-model law. The main report below states the sealed 1600 evaluation; the addendum governs those later scheduling refinements.
+
 **Rawlsing shows operational inferential drift, but its current inherited architecture already conserves much of the required inferential machine.** The correction is to make those functions produce useful empirical outputs and to specify the exact missing V3 model use. It is not to restore old cloud tables, stage topology or quarantined driver/type weights.
 
 The single most important correction is a **bounded release of jointly observed structural and attitudinal evidence, served through current producer-owned query/discovery/learned-product interfaces, with a separately reviewed probabilistic V3 consumer**. A release may be a reproducible query/service plus manifest; it need not be a new persistent master table.

@@ -6,7 +6,8 @@
   "repository": "maidiu/rawlsing",
   "branch": "agent/astra-prev3-inferential-purpose-priority-reevaluation-r1",
   "original_commission_tip": "d450fa1c76e148bf429ac54d49f3dad3ce5ba5c0",
-  "commit_parent": "78c85d7b3f458ed5f9125ac7e228d04d506f563b",
+  "initial_evaluation_parent": "78c85d7b3f458ed5f9125ac7e228d04d506f563b",
+  "commit_parent": "9f8c737e86d4a50a295dab6ca34d58cbbcf174da",
   "base_tree": "c03320ee556148dac31c6798045c8cbee58e4e5c",
   "hq_checkpoint_rechecked": "20260915T1600-0400",
   "hq_handoff_commit_rechecked": "e2778f178cfbb47fdb59ec367a666efc95b9d1a5",
@@ -20,8 +21,8 @@
     "seven_labeled_testable_synthesis_proposals": "PASS",
     "all_required_lane_dispositions": "PASS",
     "grounding_and_current_hq_pointer_match": "PASS",
-    "evidence_index_entries": 27,
-    "local_links_and_evidence_anchors_checked": 57,
+    "evidence_index_entries": 28,
+    "local_links_and_evidence_anchors_checked": 60,
     "markdown_table_column_consistency": "PASS",
     "placeholder_scan": "PASS",
     "reported_count_and_scenario_arithmetic": "PASS",
@@ -111,5 +112,13 @@
     "HQ adoption or central-state closure"
   ],
   "commit_procedure": "Create a tree from the current parent, add only this report directory, create one child commit, update only the commissioned existing branch with force=false, then inspect the resulting ref and diff.",
-  "commit_verification_location": "The containing Git commit and terminal reply provide post-write verification; no self-referential commit hash is embedded."
+  "commit_verification_location": "The containing Git commit and terminal reply provide post-write verification; no self-referential commit hash is embedded.",
+  "concurrent_hq_update": {
+    "observed_control_head": "dc6cf333f461c0dfa43f8410b754692597dcc115",
+    "added_files_read_in_full": 5,
+    "sealed_pointer_unchanged_at_check": true,
+    "reconciliation": "13_CONCURRENT_HQ_RECONCILIATION.md",
+    "initial_report_commit_verified": "9f8c737e86d4a50a295dab6ca34d58cbbcf174da",
+    "final_commit_method": "Append one evaluation-only reconciliation commit on the same branch; no rebase or force update."
+  }
 }
