@@ -1,0 +1,37 @@
+{
+  "schema": "EE_W2_D03_REPLAY_RECEIPT_R1",
+  "status": "NOT_RUN__SOURCE_EXECUTION_BLOCKED_BEFORE_ACCEPTED_DECODE",
+  "worker_id": "EE-W2",
+  "branch": "agent/rabochii-prev3-ee-w2-lits-d03-extensional-roots-r1",
+  "commission_tip": "e6658ab785c4f1e338a2f0648def309ca79b0afb",
+  "replay_law": "SAME_EXACT_CARRIER_PLUS_EXACT_TARGET_VARIABLE_PLUS_J03_LEDGER_PLUS_K03_TARGET_AND_RISK_AUTHORITIES_YIELDS_IDENTICAL_PER_RECORD_PREQUERY_DISPOSITION_AND_IDENTICAL_RISK_SET_MEMBER_ID_SET",
+  "required_execution": {
+    "carrier_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "decoder_blob": "13aa733b511dc23e00bfcdf288c5b920e3f09983",
+    "runtime_return": "71365947c80878bf655b57a90ebb698ee27287dd",
+    "pyreadstat": "1.3.6",
+    "encoding": "latin1",
+    "apply_value_formats": false,
+    "user_missing": true
+  },
+  "expected_checks_after_ingress_repair": [
+    "carrier byte count = 139531180",
+    "carrier SHA-256 exact",
+    "decoded rows = 29002",
+    "decoded variables = 1198",
+    "physical cells = 34744396",
+    "R2 count = 24897",
+    "R7 count = 28325",
+    "all 29002 rows accounted per target as member or typed prequery exclusion",
+    "R27 exact intersection computed from accepted-decoder R2/R7 member IDs",
+    "second identical execution yields byte-identical member-coordinate extensions and canonical roots"
+  ],
+  "blocker": "EE_W2_BLOCK__NO_AUTHORIZED_EXACT_LIBRARY_CARRIER_INGRESS_TO_D02_R2_GOVERNED_ACTIONS_SURFACE",
+  "replay_result": "NO_RESULT__DO_NOT_TREAT_AS_FAIL_OR_PASS",
+  "historical_non_authoritative_context": {
+    "n02_pandas_same_input_diagnostic_replay": "EXACT",
+    "n02_pandas_r27_count": 24630,
+    "consumable_as_authority": false
+  },
+  "successor_condition": "Provide an authorized exact-byte ingress from Library file version 1 to the D02-R2 governed Actions runner; then execute twice with the accepted decoder and freeze hashes only if all count/accounting/replay checks pass."
+}
