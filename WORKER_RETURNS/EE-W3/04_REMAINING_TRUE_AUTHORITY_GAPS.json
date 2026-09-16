@@ -1,0 +1,43 @@
+{
+  "schema": "EE_W3_REMAINING_TRUE_AUTHORITY_GAPS_R1@1.0.0",
+  "commission_id": "EE-W3",
+  "current_positive_residual_objects_produced": 0,
+  "gaps": [
+    {
+      "gap_id": "RESPONSE_CATEGORY_EXACT_BINDING_AUTHORITY_GAP",
+      "rows": 18012,
+      "classification": "C",
+      "current_state": "NO_ACCEPTED_EXACT_RESPONSE_CATEGORY_SEMANTICS_IDENTITY_JOIN",
+      "what_is_missing": "A competent exact source-supported implementation-to-response-semantics binding/currentness/provenance package. Existing certified registry contracts cannot self-select implementations.",
+      "what_is_not_proved": "No finding that all 18,012 meanings are absent or conflicted.",
+      "finite_closure": "Batch source-documentary adjudication may reuse existing response contracts where it explicitly binds exact implementation coverage; otherwise add a new governed response contract. Emit exact binding refs, then run the generic objectizer."
+    },
+    {
+      "gap_id": "ROUTING_APPLICABILITY_AUTHORITY_GAP",
+      "rows": 159,
+      "classification": "D",
+      "current_state": "UNRESOLVED_ROUTING_APPLICABILITY_AUTHORITY",
+      "what_is_missing": "A competent current routing/applicability ruling for each exact implementation or an explicitly governed batch rule covering it.",
+      "what_is_not_proved": "Unresolved is not applicable, inapplicable, absent, or outside jurisdiction.",
+      "finite_closure": "Adjudicate exact source routing rules in batch where their coverage is explicit; update/emit exact sidecar bindings; objectize only positive/known dispositions."
+    },
+    {
+      "gap_id": "CANDIDATE_KIND_OUTSIDE_EE_W3_ROLE",
+      "rows": 42,
+      "classification": "E",
+      "current_state": "NO_AUTHORITY_OWNED_T03_CANDIDATE_KIND_AT_CURRENT_AUTHORITY",
+      "subclasses": {
+        "RELATION_EVIDENCE__NONSTRUCTURAL": 30,
+        "SUBJECTIVE_EVIDENCE__NONSTRUCTURAL": 12
+      },
+      "what_is_missing": "Nothing within EE-W3. These rows belong to relation/subjective-evidence jurisdictions unless separately competent future structural admission is issued.",
+      "finite_closure": "Preserve at owned evidence grain; do not promote in this lane."
+    }
+  ],
+  "excluded_inherited_states": {
+    "N03_REVIEW_REQUIRED": 41,
+    "N03_TYPED_UNRESOLVED": 22,
+    "reason": "not part of the 18,213 current-positive predecessor surface selected for these W7 successor residuals"
+  },
+  "terminal": "ZERO_CURRENT_POSITIVE_RESIDUAL_BINDINGS__TWO_TRUE_AUTHORITY_GAP_FAMILIES_PLUS_ONE_OUTSIDE_ROLE_CLASS"
+}

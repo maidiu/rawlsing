@@ -1,0 +1,44 @@
+{
+  "schema": "EE_W3_GENERIC_OBJECTIZER_REPLAY_RECEIPT_R1@1.0.0",
+  "contract_id": "EE_W3_GOVERNED_SEMANTIC_CAPITAL_OBJECTIZER_R1@1.0.0",
+  "implementation": {
+    "path": "rawlsing_next/ee_w3_semantic_capital.py",
+    "git_blob_sha": "91195bc387329fbe6d442f9ee8bd1994d7a0a28b"
+  },
+  "tests": {
+    "path": "tests/test_ee_w3_semantic_capital.py",
+    "git_blob_sha": "542504d20943e0e70c0071a142f8e7d40734db53",
+    "syntax_check": "PASS",
+    "tests_run": 12,
+    "failures": 0,
+    "errors": 0,
+    "status": "OK"
+  },
+  "qualification_environment": "Bounded local replay against a minimal reconstruction of the exact imported public ExactRef/AuthorityRef/semantic_hash interface shape from rawlsing_next/pre553_empirical_objects.py; the committed objectizer imports the repository's actual interface at runtime.",
+  "fixed_vectors": {
+    "response": {
+      "object_content_hash": "c780c1010a81315153b7cd81b23b15f5bf9b662e60cb17cd8876fb9d8dba4967",
+      "replay_receipt_content_hash": "5ca4fff68ae256be043bbee4dce708aaac7b984fa716c3a674986f8352d268cb"
+    },
+    "routing": {
+      "object_content_hash": "16962b861b081b0a9ac8f9fe540429d614ac42e675849ccdf8d725c069e3e1c9",
+      "replay_receipt_content_hash": "1a221f0cdc80975652f2aada6ae2b275c1fef7d59a900efb8fd09abfbb644bc3"
+    }
+  },
+  "current_selected_residual_execution": {
+    "response_rows": 18012,
+    "response_positive_inputs": 0,
+    "routing_rows": 159,
+    "routing_positive_inputs": 0,
+    "positive_objects_emitted": 0,
+    "law": "TEST_VECTORS_PROVE_OBJECTIZER_MECHANICS_ONLY__THEY_ARE_NOT_SURVEY_SEMANTIC_AUTHORITY_AND_DO_NOT_COUNT_AS_RESIDUAL_PRODUCTION"
+  },
+  "boundaries": {
+    "semantic_inference_used": false,
+    "structural_promotion_used": false,
+    "person_v3_used": false,
+    "obl063_used": false,
+    "main_mutated": false,
+    "semantic_pre_main_mutated": false
+  }
+}
