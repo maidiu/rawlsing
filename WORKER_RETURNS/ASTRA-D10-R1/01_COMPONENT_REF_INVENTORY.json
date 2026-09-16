@@ -1,0 +1,254 @@
+{
+  "schema": "ASTRA_D10_R1_M10_M01_COMPONENT_REF_INVENTORY_R1",
+  "schema_version": "1.0.0",
+  "commission": {
+    "repository": "maidiu/rawlsing",
+    "branch": "agent/rabochii-prev3-astra-d10r1-candidate-envelope-r1",
+    "commission_tip": "5ec735fe02fc0659613ec888ec32f5b2ee74accd",
+    "hq_pointer_checkpoint": "20260916T1524-0400",
+    "hq_pointer_handoff_commit": "4ee7147b13eb973feb04f4f63aa85a898cc0320c",
+    "library_used": false
+  },
+  "accepted_predecessors": {
+    "hq_sixth_wave_fanin": "05167b4cd30dc751cce797a16baa397bc7d0457d",
+    "q01_rule_owner": "aeb377d25f649d6743c4347709cf34a65238e330",
+    "r02_causal_use": "17320729b411f8e339d65c3491c1d30fe7364ea3",
+    "d05_pkg_a": "c855a893c5c24e44c555e005808bc734a3c08c9c",
+    "d06_auxiliary_authorities": "5cc451a8aad026fa9ceecb43c052f67b72a2d456",
+    "d07_pkg_d_trace_refs": "29a2301f0480c4fbc0029f9db9f8c12dcb9b7b30",
+    "d08_pkg_e_worker_head": "c4aaffea3ee7e15d10ebcb6c6b1c30eca9846f8a",
+    "d08_pkg_e_artifact_commit": "585b8e766c50973c7c55fb693560292e05e0a212",
+    "d09_calibration_disposition": "2924e46ce7fee1ed9c966403fce0333ea2331c2f",
+    "generic_contract_commit": "a718682521fe9b5c1d3b90e6a9c9e765ed892e8a",
+    "repaired_t02_commit": "f02336187e50a443d929ff7abbe5dcd5f3950f70",
+    "generic_adapter_independent_qualification": "d2f9a3d58418654d4a230d390222b64435cc5394"
+  },
+  "runtime_blobs": {
+    "generic_contract_blob": "0a2eb3da6d755f12197348a71cfa7d1dd97d7b4d",
+    "repaired_t02_implementation_blob": "f6427a42524086194ed6fca9ba2387561ff00891",
+    "base_r4_implementation_blob": "c94997f5c7f2bbee9cd99c570554fd48c0f47556"
+  },
+  "contract_ref": {
+    "kind": "SDTF_R4_GENERIC_BATCH_ENVELOPE_CONTRACT",
+    "object_id": "SDTF_R4_GENERIC_BATCH_RULE_ENVELOPE_INTAKE_AND_CONSTRUCTOR_CONTRACT_R1@1.0.0",
+    "content_hash": "abc44b2b4ff04e164b5188e5929b0c10ca1b6e582b28207bb7e464ace698a83d"
+  },
+  "pkg_a": {
+    "package_ref": {
+      "kind": "SDTF_R4_PKG_A_RULE_IDENTITY_SHAPE_VALUE_CLASS",
+      "object_id": "M10-M01:PKG-A:R1",
+      "content_hash": "7773eedaabcdbd6f5e887144d249dbf29bdddf8b989b257675f6272f73420c2b"
+    },
+    "rule_identity_ref": {
+      "kind": "SDTF_R4_RULE_IDENTITY_CANDIDATE",
+      "object_id": "M10-M01:SDTF_R4_M10_M01_PROPERTY_SEPARATION_WAGE_DEPENDENCY@1.0.0",
+      "content_hash": "f7b80c0c1c4570e3264bcf5ce6432d4d455011914ca4d040ddc7f65d5bcb6bb2"
+    },
+    "rule_ref": {
+      "kind": "SDTF_R4_MECHANISM_RULE",
+      "object_id": "SDTF_R4_M10_M01_PROPERTY_SEPARATION_WAGE_DEPENDENCY@1.0.0",
+      "content_hash": "7d6efc3c36be0caff06022c0d951e5b4f535d6900c5c06751b3accacd48b39c8"
+    },
+    "mechanism_class_disposition_ref": {
+      "kind": "SDTF_R4_MECHANISM_CLASS_DISPOSITION",
+      "object_id": "M10-M01:P1_ONLY:R1",
+      "content_hash": "0af742277e5c65ccb71d826b3b74ad13f3f212857447d0bb0e5a9d27d58975d9"
+    },
+    "normalized_mechanism_ref": {
+      "kind": "SDTF_R4_NORMALIZED_MECHANISM",
+      "object_id": "M10-M01:PROPERTY_SEPARATION_WAGE_DEPENDENCY:R1",
+      "content_hash": "0b69f9d04c09fad479ab05582c9bcf8d21951c6f7ea94e2f8c7c3ab3545e3411"
+    },
+    "permitted_rule_shape_ref": {
+      "kind": "SDTF_R4_PERMITTED_RULE_SHAPE",
+      "object_id": "M10-M01:CONJUNCTIVE_OBJECTIVE_STRUCTURAL_DEPENDENCY_DERIVATION:R1",
+      "content_hash": "bf8ce59029360280ad7a08c8c50e5a3200c0298cb6248d4cd1b75435f3a7588e"
+    },
+    "value_mode_ref": {
+      "kind": "SDTF_R4_RULE_VALUE_MODE_ADJUDICATION",
+      "object_id": "M10-M01:NONNUMERIC:R1",
+      "content_hash": "29a9072b49314529428e696c81e89eecc065b39799eb7d5755d98f0215d131d4"
+    },
+    "value_mode": "NONNUMERIC"
+  },
+  "pkg_b": {
+    "rule_owner": {
+      "scope_ref": {
+        "kind": "SDTF_RULE_OWNER_SCOPE",
+        "object_id": "M10-M01:RULE_OWNER",
+        "content_hash": "b6f0bb622158e797aaf4a90b609497ae94c089986e93356532241a64732f4e12"
+      },
+      "authority_ref": {
+        "authority_id": "RAWLSING_HQ_PREV3_SDTF_M10_M01_RULE_OWNER",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "80fd8e9a59b76e36392872c13536cdebf7de6273e5233d6bd285c1d0027a7289"
+      },
+      "current_selection_evidence_ref": {
+        "kind": "SDTF_RULE_OWNER_CURRENT_SELECTION_EVIDENCE",
+        "object_id": "M10-M01:RULE_OWNER:Q01_R1",
+        "content_hash": "4d62f67ede66fe0b3b60d46b16934c90024048716d7cc460095807762f14f9b5"
+      }
+    },
+    "causal_use": {
+      "scope_ref": {
+        "kind": "SDTF_CAUSAL_USE_SCOPE",
+        "object_id": "M10-M01:CAUSAL_USE",
+        "content_hash": "e102456438f4441f6e3f3057c4008e4a68a3f25bf78012154ab490a5b88dee56"
+      },
+      "authority_ref": {
+        "authority_id": "RAWLSING_HQ_PREV3_SDTF_M10_M01_CAUSAL_USE",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "ebd9554437a9e14905b5a8fe8d75e20660805a9d481909856509576ba5958c07"
+      },
+      "current_selection_evidence_ref": {
+        "kind": "SDTF_CAUSAL_USE_CURRENT_SELECTION_EVIDENCE",
+        "object_id": "M10-M01:CAUSAL_USE:R02_R1",
+        "content_hash": "6687e9b20795c905b2bbf5c8edc99dcdbf4ed3fc7c649b1f7037a923b5351c2a"
+      }
+    },
+    "source_claim_ref": {
+      "kind": "SDTF_M10_SOURCE_CLAIM",
+      "object_id": "M10-M01:PROPERTY_SEPARATION_WAGE_DEPENDENCY",
+      "content_hash": "a6f984b0b9cfd17d8c0892ac976b5858339dcd048fbfa9dd37ca7980b2c7ad05"
+    }
+  },
+  "pkg_c": {
+    "d06_adjudication_ref": {
+      "kind": "ASTRA_D06_M10_M01_AUXILIARY_AUTHORITY_DISPOSITIONS",
+      "object_id": "M10-M01:PKG-C:D06_R1",
+      "content_hash": "9559c52b39fe9948eba65bede9410b89f1a38e43241d1c8a184c4b939e8264f7"
+    },
+    "measurement_na_basis_ref": {
+      "kind": "SDTF_M10_M01_AUXILIARY_AUTHORITY_NA_BASIS",
+      "object_id": "M10-M01:MEASUREMENT:NA_BASIS:D06_R1",
+      "content_hash": "665822d53f07e0192f35cf7010fbc5a39c60fe578e0573c9bffcd5088eff1276"
+    },
+    "estimand_na_basis_ref": {
+      "kind": "SDTF_M10_M01_AUXILIARY_AUTHORITY_NA_BASIS",
+      "object_id": "M10-M01:ESTIMAND:NA_BASIS:D06_R1",
+      "content_hash": "d385ef2b5ff5340bdcc8bd522519bd9d1fd325f7c63753b26817d976833eafb9"
+    },
+    "identification_na_basis_ref": {
+      "kind": "SDTF_M10_M01_AUXILIARY_AUTHORITY_NA_BASIS",
+      "object_id": "M10-M01:IDENTIFICATION:NA_BASIS:D06_R1",
+      "content_hash": "b0cf46082e4f0304f734a6af4cb6543c17df23d7dad894c973e72596578b1ebf"
+    },
+    "d09_adjudication_ref": {
+      "kind": "ASTRA_D09_M10_M01_CALIBRATION_DISPOSITION",
+      "object_id": "M10-M01:PKG-C:D09_R1",
+      "content_hash": "321827ab4fe01b91204cb40c10e13688cd4100229423f3078ee0d836c3fce8cc"
+    },
+    "calibration_na_basis_ref": {
+      "kind": "SDTF_M10_M01_CALIBRATION_AUTHORITY_NA_BASIS",
+      "object_id": "M10-M01:CALIBRATION:NA_BASIS:D09_R1",
+      "content_hash": "0a72c9453ad55f1934f1e9953c3557a56893083ec32efb8e9a7fc03d0bb6244e"
+    },
+    "calibration_disposition": "NOT_APPLICABLE"
+  },
+  "pkg_d": {
+    "package_ref": {
+      "kind": "SDTF_R4_GENERIC_BATCH_PKG_D_TRACE_EXACT_REF_LIFT",
+      "object_id": "M10-M01:PKG-D@1.0.0",
+      "content_hash": "260344e38287523593ec5fe6aecf96fccbec19c250d859c8bd4d5fc398ba6f05"
+    },
+    "constitution_current_selection_ref": {
+      "kind": "SDTF_R4_CONSTITUTION_CURRENT_SELECTION",
+      "object_id": "SDTF_R4_MECHANISM_RULE_AUTHORITY_BINDING_R1@1.0.0:HQ_RUNTIME_ADOPTION_R1",
+      "content_hash": "141260a47d7540229722646dff41c4886dc02240fbcde96f1810c75be15e851d"
+    },
+    "source_refs": [
+      {
+        "kind": "SDTF_DOCUMENTARY_SOURCE",
+        "object_id": "WRIGHT_CLASSES_1985:M10_SOURCE_LEDGER_R1",
+        "content_hash": "051472e4d013b93df75acd0dfe0c6816dd657337fbfb62a79fdf9890fe712b4b"
+      }
+    ],
+    "claim_refs": [
+      {
+        "kind": "SDTF_SOURCE_CLAIM",
+        "object_id": "M10-M01:WRIGHT_CLASSES_CH3:857-909",
+        "content_hash": "258a87bf37989e19533ccff373fa6c58250f3f0620601f09c4c4b2ef482c830f"
+      },
+      {
+        "kind": "SDTF_SOURCE_CLAIM",
+        "object_id": "M10-M01:WRIGHT_CLASSES_CH3:951-959",
+        "content_hash": "75196a71a20e7df1b3fa1f39e66764f3d23c8bff7daf5d63076e313da9d3dcbe"
+      },
+      {
+        "kind": "SDTF_SOURCE_CLAIM",
+        "object_id": "M10-M01:WRIGHT_CLASSES_CH3:978-996",
+        "content_hash": "cf45e539ca3d6f2a06e7fb74868d22e01cadef174996362e162601b72378e8b6"
+      }
+    ],
+    "evidence_status_ref": {
+      "kind": "SDTF_SOURCE_EVIDENCE_STATUS",
+      "object_id": "M10-M01:WRIGHT_CLASSES:EVIDENCE_STATUS@1.0.0",
+      "content_hash": "b93456af810957275b178df555147eddc15433158da5abd2352717e0ea213fae"
+    },
+    "required_objective_inputs_bindings_ref": {
+      "kind": "SDTF_REQUIRED_OBJECTIVE_INPUT_BINDINGS",
+      "object_id": "M10-M01:PROPERTY_SEPARATION_WAGE_DEPENDENCY@1.0.0",
+      "content_hash": "c013ce882a9c4b72f334b8ac2479e5dda066a2752f6df41bbc5127a48630b983"
+    },
+    "currentness_ceiling_ref": {
+      "kind": "SDTF_CURRENTNESS_CEILING",
+      "object_id": "M10-M01:R4_NONCOLLAPSE@1.0.0",
+      "content_hash": "ebbb00e6f756fc593709187cc250e93091b18a4154380e780277658ff60a874c"
+    },
+    "historical_institutional_validity_ref": {
+      "kind": "SDTF_HISTORICAL_INSTITUTIONAL_VALIDITY",
+      "object_id": "M10-M01:WRIGHT_CLASSES_PROPERTY_ASSET_RULE_CONTEXT@1.0.0",
+      "content_hash": "8fc7f01a3d8f77f9f17ccbaa010662db3eadc1d6fa2c17567c16fcafc3ab4874"
+    },
+    "negative_ceiling_ref": {
+      "kind": "SDTF_NEGATIVE_CEILING",
+      "object_id": "M10-M01:TRACE_NEGATIVE_CEILING@1.0.0",
+      "content_hash": "60719b44275ff50741b65c9172ef8524445774da5e8379ddca52035e516e73ad"
+    },
+    "v3_stop_boundary_ref": {
+      "kind": "SDTF_V3_STOP_BOUNDARY",
+      "object_id": "M10-M01:PREV3_OBJECTIVE_WORLD_ONLY@1.0.0",
+      "content_hash": "ffd46991761765c5d0a59678f49fe46ffdf1d24d7b2e7c6144678c04fad0a0f6"
+    }
+  },
+  "pkg_e": {
+    "qualification_realization_proof_contract_ref": {
+      "kind": "M10_M01_QUALIFICATION_REALIZATION_PROOF_CONTRACT",
+      "object_id": "PSC06:M10-M01:PKG-E:QUALIFICATION@1.0.0",
+      "content_hash": "b6c17d2dd3066cba78b4c0f7c3235bb0799684799716db540db29badc3ecf165"
+    },
+    "temporal_currentness_contract_ref": {
+      "kind": "M10_M01_TEMPORAL_CURRENTNESS_CONTRACT",
+      "object_id": "PSC06:M10-M01:PKG-E:TEMPORAL@1.0.0",
+      "content_hash": "c2abce28a839e8117980ae55e87cbd80ee8e613ef98624fcbd3c8999616a1dcf"
+    },
+    "portability_ceiling_ref": {
+      "kind": "M10_M01_PORTABILITY_CEILING",
+      "object_id": "PSC06:M10-M01:PKG-E:PORTABILITY@1.0.0",
+      "content_hash": "0dde948815f73d348f0003caded013360cbfc4e0a3e195d578073956a0879b59"
+    }
+  },
+  "pkg_f_d10_state": {
+    "rule_currentness": "CANDIDATE_NOT_CURRENT",
+    "rule_current_selection_evidence_refs": [],
+    "rule_noncurrent_disposition_refs": []
+  },
+  "assembly_owned_headers": {
+    "candidate_namespace": "PSC06",
+    "candidate_id": "M10-M01",
+    "row_generation": 0,
+    "predecessor_row_ref": null,
+    "batch_namespace": "PSC06",
+    "batch_id": "M10-M01:D10-R1",
+    "law": "FIRST_COMPLETE_D10_28_CELL_SNAPSHOT__NO_PRIOR_D10_CANDIDATE_ROW_EXISTS_IN_ACCEPTED_CHAIN__GENERATION_ZERO_THEREFORE_REQUIRES_NULL_PREDECESSOR"
+  },
+  "negative_inventory": {
+    "numeric_calibration": "NOT_CREATED__D09_EXPLICIT_NA_PRESERVED",
+    "rule_current_accepted": "NOT_CREATED__CANDIDATE_NOT_CURRENT_ONLY",
+    "actor_application_fact": "NOT_CREATED",
+    "occupant_witness": "NOT_CREATED",
+    "topology": "NO_NEW_TOPOLOGY__ONLY_ACCEPTED_TRACE_CEILINGS_REFS_BOUND",
+    "v3_person_state": "NOT_CREATED",
+    "obl063": "NOT_USED"
+  }
+}
