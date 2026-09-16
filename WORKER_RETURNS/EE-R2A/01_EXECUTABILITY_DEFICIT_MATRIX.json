@@ -1,0 +1,336 @@
+{
+  "schema": "RAWLSING_EE_R2A_EXECUTABILITY_DEFICIT_MATRIX@1.0.0",
+  "status": "PASS__COMPLETE_24_X_2_JOIN",
+  "canonical_hq": {
+    "checkpoint_id": "20260916T0307-0400",
+    "handoff_commit": "251a1d45c73cbe8d46bde1051a5f114c524ba837",
+    "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354",
+    "ee_r1_fanin": "1982cdb16d451ffbe0d42ddac28b5d450209098f"
+  },
+  "inputs": {
+    "ee_w1_head": "1637b53abf90cac8a57857aaa5571dbb4278dfa9",
+    "ee_w5_head": "4cbd4c0bba8b6fd9809209d9fd61d730b8a40747",
+    "common_contract_blob": "9992246b2773c747705f3ab19f14608ced23d708",
+    "closure_sequence_blob": "dafa33db8e0453411581f4a889922f1146d5a592",
+    "qualified_c09_op014_return": "d6a49a6e3991701c3fbd9d2c5d52609823ad9360",
+    "d17_equal_work_preflight": "6b0ca6856a88ae4af79834db2a165c38afed0449",
+    "governed_decoder_runtime_return": "71365947c80878bf655b57a90ebb698ee27287dd",
+    "source_universe_composition_authority": "a3c2088add7281f70e5013d4a7378a1f88336618",
+    "comparability_authority": "e07fc5f48f149beda2c4155d0584c9559fe5ca60"
+  },
+  "named_universes": [
+    {
+      "universe_id": "EEU_WVS7_WAVE7_EXACT_SOURCE",
+      "source_family": "WVS7",
+      "payload_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+      "carrier": "file_00000000386c820d8760e748b25ad7e1@v1"
+    },
+    {
+      "universe_id": "EEU_LITS_I_2006_EXACT_SOURCE",
+      "source_family": "LiTS-I",
+      "payload_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+      "carrier": "file_0000000036dc81f8b8b546e356590a03@v1"
+    }
+  ],
+  "state_counts": {
+    "total_cells": 48,
+    "current_bounded_positive_cells": 10,
+    "current_typed_capability_positive_cells": 4,
+    "hostile_only_named_real_ineligible_cells": 4,
+    "typed_noncomparable_cells": 2,
+    "current_missing_authority_cells": 28,
+    "selection_critical_missing_positive_cells": 18,
+    "missing_authority_cells_allowed_to_remain_typed_for_minimum_selection_gate": 10
+  },
+  "authority_ref_dictionary": {
+    "W1_MANIFEST": "1637b53abf90cac8a57857aaa5571dbb4278dfa9:WORKER_RETURNS/EE-W1/01_COMMON_WORKLOAD_MANIFEST.json",
+    "W1_ORACLES": "1637b53abf90cac8a57857aaa5571dbb4278dfa9:WORKER_RETURNS/EE-W1/03_EXPECTED_OUTPUT_AND_FAILURE_STATE_ORACLES.json",
+    "W5_REGISTRY": "4cbd4c0bba8b6fd9809209d9fd61d730b8a40747:WORKER_RETURNS/EE-W5/01_UNIVERSE_CELL_REGISTRY.json",
+    "W5_ELIGIBILITY": "4cbd4c0bba8b6fd9809209d9fd61d730b8a40747:WORKER_RETURNS/EE-W5/02_WORKLOAD_ELIGIBILITY_MATRIX.csv",
+    "W5_GAPS": "4cbd4c0bba8b6fd9809209d9fd61d730b8a40747:WORKER_RETURNS/EE-W5/03_AUTHORITY_GAP_MATRIX.csv",
+    "COMMON_CONTRACT": "9992246b2773c747705f3ab19f14608ced23d708",
+    "CLOSURE_SEQUENCE": "dafa33db8e0453411581f4a889922f1146d5a592",
+    "D16_OP014": "d6a49a6e3991701c3fbd9d2c5d52609823ad9360",
+    "D17_EQUAL_WORK": "6b0ca6856a88ae4af79834db2a165c38afed0449",
+    "D02_R2_RUNTIME": "71365947c80878bf655b57a90ebb698ee27287dd",
+    "C07_COMPOSITION": "a3c2088add7281f70e5013d4a7378a1f88336618",
+    "C07_COMPARABILITY": "e07fc5f48f149beda2c4155d0584c9559fe5ca60",
+    "HQ_R2_ACTIVE": "251a1d45c73cbe8d46bde1051a5f114c524ba837:HQ_HANDOFF/checkpoints/20260916T0307-0400/CURRENT.json"
+  },
+  "operations": [
+    {
+      "operation_id": "EEW1-OP001",
+      "workload_class": "W1",
+      "purpose": "exact source decode/fidelity and source-coordinate reconstruction",
+      "source_data_required": true,
+      "physical_role": "PRIMARY_SOURCE_PHYSICAL_DISCRIMINATOR",
+      "cells": {
+        "EEU_WVS7_WAVE7_EXACT_SOURCE": {"current_state":"MISSING_AUTHORITY","refs":["W5_ELIGIBILITY","W5_GAPS:GAP_WVS_W1_SEMANTIC_ROUTING","W1_MANIFEST"],"selection_requirement":"MUST_BECOME_POSITIVE"},
+        "EEU_LITS_I_2006_EXACT_SOURCE": {"current_state":"MISSING_AUTHORITY","refs":["W5_ELIGIBILITY","W5_GAPS:GAP_LITS_D03_EXTENSIONAL_ROOTS","HQ_R2_ACTIVE:EE-R2B","W1_MANIFEST"],"selection_requirement":"MUST_BECOME_POSITIVE"}
+      }
+    },
+    {
+      "operation_id": "EEW1-OP002",
+      "workload_class": "W1",
+      "purpose": "source-local response semantics and raw/semantic state noncollapse",
+      "source_data_required": true,
+      "physical_role": "SEMANTIC_GATE_FOR_W1_PHYSICAL_COMPARISON",
+      "cells": {
+        "EEU_WVS7_WAVE7_EXACT_SOURCE": {"current_state":"MISSING_AUTHORITY","refs":["W5_GAPS:GAP_WVS_W1_SEMANTIC_ROUTING","W1_MANIFEST","W1_ORACLES"],"selection_requirement":"MUST_BECOME_POSITIVE"},
+        "EEU_LITS_I_2006_EXACT_SOURCE": {"current_state":"MISSING_AUTHORITY","refs":["W5_GAPS:GAP_LITS_D03_EXTENSIONAL_ROOTS","W5_ELIGIBILITY","W1_MANIFEST","W1_ORACLES"],"selection_requirement":"MUST_BECOME_POSITIVE"}
+      }
+    },
+    {
+      "operation_id": "EEW1-OP003",
+      "workload_class": "W1",
+      "purpose": "routing/applicability/risk-set and denominator correctness",
+      "source_data_required": true,
+      "physical_role": "SEMANTIC_GATE_FOR_W1_PHYSICAL_COMPARISON",
+      "cells": {
+        "EEU_WVS7_WAVE7_EXACT_SOURCE": {"current_state":"MISSING_AUTHORITY","refs":["W5_GAPS:GAP_WVS_W1_SEMANTIC_ROUTING","W1_MANIFEST","W1_ORACLES"],"selection_requirement":"MUST_BECOME_POSITIVE"},
+        "EEU_LITS_I_2006_EXACT_SOURCE": {"current_state":"MISSING_AUTHORITY","refs":["W5_GAPS:GAP_LITS_D03_EXTENSIONAL_ROOTS","W5_GAPS:GAP_SOURCE_WIDE_DESIGN_WEIGHT_ESTIMAND_DEFAULT","W1_MANIFEST","W1_ORACLES"],"selection_requirement":"MUST_BECOME_POSITIVE"}
+      }
+    },
+    {
+      "operation_id": "EEW1-OP004",
+      "workload_class": "W2",
+      "purpose": "exact marginal/parent distribution query",
+      "source_data_required": true,
+      "physical_role": "PRIMARY_QUERY_PHYSICAL_DISCRIMINATOR",
+      "cells": {
+        "EEU_WVS7_WAVE7_EXACT_SOURCE": {"current_state":"MISSING_AUTHORITY","refs":["W5_GAPS:GAP_EXPANDED_QUERY_SUITE","W1_MANIFEST"],"selection_requirement":"MUST_BECOME_POSITIVE"},
+        "EEU_LITS_I_2006_EXACT_SOURCE": {"current_state":"MISSING_AUTHORITY","refs":["W5_GAPS:GAP_EXPANDED_QUERY_SUITE","W5_GAPS:GAP_LITS_D03_EXTENSIONAL_ROOTS","W1_MANIFEST"],"selection_requirement":"MUST_BECOME_POSITIVE"}
+      }
+    },
+    {
+      "operation_id": "EEW1-OP005",
+      "workload_class": "W2",
+      "purpose": "exact same-respondent joint query",
+      "source_data_required": true,
+      "physical_role": "PRIMARY_QUERY_PHYSICAL_DISCRIMINATOR",
+      "cells": {
+        "EEU_WVS7_WAVE7_EXACT_SOURCE": {"current_state":"MISSING_AUTHORITY","refs":["W5_GAPS:GAP_EXPANDED_QUERY_SUITE","W1_MANIFEST","W1_ORACLES"],"selection_requirement":"MUST_BECOME_POSITIVE"},
+        "EEU_LITS_I_2006_EXACT_SOURCE": {"current_state":"MISSING_AUTHORITY","refs":["W5_GAPS:GAP_EXPANDED_QUERY_SUITE","W5_GAPS:GAP_LITS_D03_EXTENSIONAL_ROOTS","W1_MANIFEST","W1_ORACLES"],"selection_requirement":"MUST_BECOME_POSITIVE"}
+      }
+    },
+    {
+      "operation_id": "EEW1-OP006",
+      "workload_class": "W2",
+      "purpose": "conditional/subgroup query with exact predicate and denominator",
+      "source_data_required": true,
+      "physical_role": "PRIMARY_QUERY_PHYSICAL_DISCRIMINATOR",
+      "cells": {
+        "EEU_WVS7_WAVE7_EXACT_SOURCE": {"current_state":"MISSING_AUTHORITY","refs":["W5_GAPS:GAP_EXPANDED_QUERY_SUITE","W1_MANIFEST","W1_ORACLES"],"selection_requirement":"MUST_BECOME_POSITIVE"},
+        "EEU_LITS_I_2006_EXACT_SOURCE": {"current_state":"MISSING_AUTHORITY","refs":["W5_GAPS:GAP_EXPANDED_QUERY_SUITE","W5_GAPS:GAP_LITS_D03_EXTENSIONAL_ROOTS","W1_MANIFEST","W1_ORACLES"],"selection_requirement":"MUST_BECOME_POSITIVE"}
+      }
+    },
+    {
+      "operation_id": "EEW1-OP007",
+      "workload_class": "W2",
+      "purpose": "recursive branch/cohort query",
+      "source_data_required": false,
+      "physical_role": "SEMANTIC_HOSTILE_BRANCH_PROBE",
+      "cells": {
+        "EEU_WVS7_WAVE7_EXACT_SOURCE": {"current_state":"MISSING_AUTHORITY_FOR_REAL_CELL__HOSTILE_FIXTURE_AVAILABLE","refs":["W5_GAPS:GAP_EXPANDED_QUERY_SUITE","W1_ORACLES:HFX-RECURSIVE-v1"],"selection_requirement":"TYPED_REAL_CELL_MAY_REMAIN_LIMITED"},
+        "EEU_LITS_I_2006_EXACT_SOURCE": {"current_state":"MISSING_AUTHORITY_FOR_REAL_CELL__HOSTILE_FIXTURE_AVAILABLE","refs":["W5_GAPS:GAP_EXPANDED_QUERY_SUITE","W1_ORACLES:HFX-RECURSIVE-v1"],"selection_requirement":"TYPED_REAL_CELL_MAY_REMAIN_LIMITED"}
+      }
+    },
+    {
+      "operation_id": "EEW1-OP008",
+      "workload_class": "W3",
+      "purpose": "attitude-to-attitude exact bounded discovery over frozen frontier",
+      "source_data_required": true,
+      "physical_role": "PRIMARY_DISCOVERY_PHYSICAL_DISCRIMINATOR",
+      "cells": {
+        "EEU_WVS7_WAVE7_EXACT_SOURCE": {"current_state":"ELIGIBLE_BOUNDED_C09_OP014_ONLY","refs":["W5_ELIGIBILITY:W3_OP014","D16_OP014","D17_EQUAL_WORK"],"selection_requirement":"CURRENT_BOUNDED_POSITIVE_COUNTS"},
+        "EEU_LITS_I_2006_EXACT_SOURCE": {"current_state":"ELIGIBLE_BOUNDED_C09_OP014_ONLY","refs":["W5_ELIGIBILITY:W3_OP014","D16_OP014","D17_EQUAL_WORK"],"selection_requirement":"CURRENT_BOUNDED_POSITIVE_COUNTS"}
+      }
+    },
+    {
+      "operation_id": "EEW1-OP009",
+      "workload_class": "W3",
+      "purpose": "structure-to-attitude discovery only where conditioner authority exists",
+      "source_data_required": true,
+      "physical_role": "AUTHORITY_LIMITED_ANALYTICAL_PROBE",
+      "cells": {
+        "EEU_WVS7_WAVE7_EXACT_SOURCE": {"current_state":"MISSING_AUTHORITY","refs":["W5_GAPS:GAP_EXPANDED_DISCOVERY_FRONTIER","W1_MANIFEST"],"selection_requirement":"TYPED_REAL_CELL_MAY_REMAIN_LIMITED"},
+        "EEU_LITS_I_2006_EXACT_SOURCE": {"current_state":"MISSING_AUTHORITY","refs":["W5_GAPS:GAP_EXPANDED_DISCOVERY_FRONTIER","W5_GAPS:GAP_LITS_D03_EXTENSIONAL_ROOTS","W1_MANIFEST"],"selection_requirement":"TYPED_REAL_CELL_MAY_REMAIN_LIMITED"}
+      }
+    },
+    {
+      "operation_id": "EEW1-OP010",
+      "workload_class": "HOSTILE",
+      "purpose": "higher-order k-way/XOR discovery hostile case",
+      "source_data_required": false,
+      "physical_role": "HOSTILE_SEMANTIC_NONLOSS_PROBE",
+      "cells": {
+        "EEU_WVS7_WAVE7_EXACT_SOURCE": {"current_state":"INELIGIBLE_NAMED_REAL_SOURCE_CELL__HOSTILE_FIXTURE_ONLY","refs":["W1_MANIFEST","W1_ORACLES:HFX-KWAY-PAIR-v1","W1_ORACLES:HFX-KWAY-XOR-v1"],"selection_requirement":"HOSTILE_FIXTURE_SUFFICIENT"},
+        "EEU_LITS_I_2006_EXACT_SOURCE": {"current_state":"INELIGIBLE_NAMED_REAL_SOURCE_CELL__HOSTILE_FIXTURE_ONLY","refs":["W1_MANIFEST","W1_ORACLES:HFX-KWAY-PAIR-v1","W1_ORACLES:HFX-KWAY-XOR-v1"],"selection_requirement":"HOSTILE_FIXTURE_SUFFICIENT"}
+      }
+    },
+    {
+      "operation_id": "EEW1-OP011",
+      "workload_class": "HOSTILE",
+      "purpose": "minority/multimodal/contradictory configuration preservation hostile case",
+      "source_data_required": false,
+      "physical_role": "HOSTILE_SEMANTIC_NONLOSS_PROBE",
+      "cells": {
+        "EEU_WVS7_WAVE7_EXACT_SOURCE": {"current_state":"INELIGIBLE_NAMED_REAL_SOURCE_CELL__HOSTILE_FIXTURE_ONLY","refs":["W1_MANIFEST","W1_ORACLES:HFX-MINORITY-v1"],"selection_requirement":"HOSTILE_FIXTURE_SUFFICIENT"},
+        "EEU_LITS_I_2006_EXACT_SOURCE": {"current_state":"INELIGIBLE_NAMED_REAL_SOURCE_CELL__HOSTILE_FIXTURE_ONLY","refs":["W1_MANIFEST","W1_ORACLES:HFX-MINORITY-v1"],"selection_requirement":"HOSTILE_FIXTURE_SUFFICIENT"}
+      }
+    },
+    {
+      "operation_id": "EEW1-OP012",
+      "workload_class": "W3",
+      "purpose": "discovery frontier completeness and coverage accounting",
+      "source_data_required": true,
+      "physical_role": "DISCOVERY_SEMANTIC_GATE",
+      "cells": {
+        "EEU_WVS7_WAVE7_EXACT_SOURCE": {"current_state":"ELIGIBLE_BOUNDED_C09_OP014_ONLY","refs":["W5_ELIGIBILITY:W3_OP014","D16_OP014","W1_ORACLES"],"selection_requirement":"CURRENT_BOUNDED_POSITIVE_COUNTS"},
+        "EEU_LITS_I_2006_EXACT_SOURCE": {"current_state":"ELIGIBLE_BOUNDED_C09_OP014_ONLY","refs":["W5_ELIGIBILITY:W3_OP014","D16_OP014","W1_ORACLES"],"selection_requirement":"CURRENT_BOUNDED_POSITIVE_COUNTS"}
+      }
+    },
+    {
+      "operation_id": "EEW1-OP013",
+      "workload_class": "W3",
+      "purpose": "validation typed-state suite using accepted validator kinds",
+      "source_data_required": false,
+      "physical_role": "DISCOVERY_VALIDATION_SEMANTIC_GATE",
+      "cells": {
+        "EEU_WVS7_WAVE7_EXACT_SOURCE": {"current_state":"ELIGIBLE_BOUNDED_C09_OP014_VALIDATOR_SCOPE_ONLY","refs":["W5_ELIGIBILITY:W3_OP014","D16_OP014","W1_ORACLES"],"selection_requirement":"CURRENT_BOUNDED_POSITIVE_COUNTS"},
+        "EEU_LITS_I_2006_EXACT_SOURCE": {"current_state":"ELIGIBLE_BOUNDED_C09_OP014_VALIDATOR_SCOPE_ONLY","refs":["W5_ELIGIBILITY:W3_OP014","D16_OP014","W1_ORACLES"],"selection_requirement":"CURRENT_BOUNDED_POSITIVE_COUNTS"}
+      }
+    },
+    {
+      "operation_id": "EEW1-OP014",
+      "workload_class": "W3",
+      "purpose": "governed discovery-search receipt release/replay without generic promotion",
+      "source_data_required": false,
+      "physical_role": "LEARNED_RECEIPT_PERSISTENCE_DISCRIMINATOR",
+      "cells": {
+        "EEU_WVS7_WAVE7_EXACT_SOURCE": {"current_state":"ELIGIBLE_BOUNDED_C09_OP014_RECEIPT_SCOPE_ONLY","refs":["W5_ELIGIBILITY:W3_OP014","D16_OP014","W5_GAPS:GAP_GENERIC_LEARNED_PRODUCT_PROMOTION"],"selection_requirement":"CURRENT_BOUNDED_POSITIVE_COUNTS"},
+        "EEU_LITS_I_2006_EXACT_SOURCE": {"current_state":"ELIGIBLE_BOUNDED_C09_OP014_RECEIPT_SCOPE_ONLY","refs":["W5_ELIGIBILITY:W3_OP014","D16_OP014","W5_GAPS:GAP_GENERIC_LEARNED_PRODUCT_PROMOTION"],"selection_requirement":"CURRENT_BOUNDED_POSITIVE_COUNTS"}
+      }
+    },
+    {
+      "operation_id": "EEW1-OP015",
+      "workload_class": "W2_TYPED",
+      "purpose": "cross-wave/source/time comparison without illegal pooling",
+      "source_data_required": false,
+      "physical_role": "TYPED_COMPARABILITY_PROBE",
+      "cells": {
+        "EEU_WVS7_WAVE7_EXACT_SOURCE": {"current_state":"NONCOMPARABLE_FOR_SUBSTANTIVE_METRIC__TYPED_STATE_SUFFICIENT","refs":["C07_COMPOSITION","C07_COMPARABILITY","W5_GAPS:GAP_CROSS_SOURCE_SCALE_VALUE_EQUIVALENCE","W5_GAPS:GAP_WVS_LITS_POOLING_BRIDGE"],"selection_requirement":"TYPED_NONCOMPARABILITY_SUFFICIENT"},
+        "EEU_LITS_I_2006_EXACT_SOURCE": {"current_state":"NONCOMPARABLE_FOR_SUBSTANTIVE_METRIC__TYPED_STATE_SUFFICIENT","refs":["C07_COMPOSITION","C07_COMPARABILITY","W5_GAPS:GAP_CROSS_SOURCE_SCALE_VALUE_EQUIVALENCE","W5_GAPS:GAP_WVS_LITS_POOLING_BRIDGE"],"selection_requirement":"TYPED_NONCOMPARABILITY_SUFFICIENT"}
+      }
+    },
+    {
+      "operation_id": "EEW1-OP016",
+      "workload_class": "W2",
+      "purpose": "federated multi-universe dispatch of the same frozen query with tagged results",
+      "source_data_required": true,
+      "physical_role": "MULTI_UNIVERSE_ORCHESTRATION_PROBE",
+      "cells": {
+        "EEU_WVS7_WAVE7_EXACT_SOURCE": {"current_state":"MISSING_AUTHORITY","refs":["W5_REGISTRY:tagged_dispatch_container","W5_GAPS:GAP_EXPANDED_QUERY_SUITE","C07_COMPOSITION"],"selection_requirement":"TYPED_REAL_CELL_MAY_REMAIN_LIMITED"},
+        "EEU_LITS_I_2006_EXACT_SOURCE": {"current_state":"MISSING_AUTHORITY","refs":["W5_REGISTRY:tagged_dispatch_container","W5_GAPS:GAP_EXPANDED_QUERY_SUITE","W5_GAPS:GAP_LITS_D03_EXTENSIONAL_ROOTS","C07_COMPOSITION"],"selection_requirement":"TYPED_REAL_CELL_MAY_REMAIN_LIMITED"}
+      }
+    },
+    {
+      "operation_id": "EEW1-OP017",
+      "workload_class": "W7",
+      "purpose": "carrier-neutral Field Forge ingress projection",
+      "source_data_required": false,
+      "physical_role": "DOWNSTREAM_CAPABILITY_PROBE",
+      "cells": {
+        "EEU_WVS7_WAVE7_EXACT_SOURCE": {"current_state":"ELIGIBLE_TYPED_CAPABILITY_ONLY","refs":["W5_ELIGIBILITY:W7_TYPED_CAPABILITY_AND_NEGATIVE_STATE_INTERFACE_ONLY","COMMON_CONTRACT"],"selection_requirement":"CURRENT_TYPED_CAPABILITY_COUNTS"},
+        "EEU_LITS_I_2006_EXACT_SOURCE": {"current_state":"ELIGIBLE_TYPED_CAPABILITY_ONLY","refs":["W5_ELIGIBILITY:W7_TYPED_CAPABILITY_AND_NEGATIVE_STATE_INTERFACE_ONLY","COMMON_CONTRACT"],"selection_requirement":"CURRENT_TYPED_CAPABILITY_COUNTS"}
+      }
+    },
+    {
+      "operation_id": "EEW1-OP018",
+      "workload_class": "W7",
+      "purpose": "positioned-subject empirical possibility interface support without reverse-inference model minting",
+      "source_data_required": false,
+      "physical_role": "DOWNSTREAM_CAPABILITY_PROBE",
+      "cells": {
+        "EEU_WVS7_WAVE7_EXACT_SOURCE": {"current_state":"ELIGIBLE_TYPED_CAPABILITY_ONLY","refs":["W5_ELIGIBILITY:W7_TYPED_CAPABILITY_AND_NEGATIVE_STATE_INTERFACE_ONLY","COMMON_CONTRACT","W1_ORACLES"],"selection_requirement":"CURRENT_TYPED_CAPABILITY_COUNTS"},
+        "EEU_LITS_I_2006_EXACT_SOURCE": {"current_state":"ELIGIBLE_TYPED_CAPABILITY_ONLY","refs":["W5_ELIGIBILITY:W7_TYPED_CAPABILITY_AND_NEGATIVE_STATE_INTERFACE_ONLY","COMMON_CONTRACT","W1_ORACLES"],"selection_requirement":"CURRENT_TYPED_CAPABILITY_COUNTS"}
+      }
+    },
+    {
+      "operation_id": "EEW1-OP019",
+      "workload_class": "W6",
+      "purpose": "deterministic full cold replay from authoritative source plus durable side material",
+      "source_data_required": true,
+      "physical_role": "REPLAY_PHYSICAL_DISCRIMINATOR",
+      "cells": {
+        "EEU_WVS7_WAVE7_EXACT_SOURCE": {"current_state":"MISSING_AUTHORITY","refs":["W1_MANIFEST","CLOSURE_SEQUENCE:W6","W5_GAPS:GAP_DELETE_REBUILD_BOUNDARY"],"selection_requirement":"TYPED_REAL_CELL_MAY_REMAIN_LIMITED__OP020_IS_MINIMUM_REBUILD_GATE"},
+        "EEU_LITS_I_2006_EXACT_SOURCE": {"current_state":"MISSING_AUTHORITY","refs":["W1_MANIFEST","CLOSURE_SEQUENCE:W6","W5_GAPS:GAP_DELETE_REBUILD_BOUNDARY","W5_GAPS:GAP_LITS_D03_EXTENSIONAL_ROOTS"],"selection_requirement":"TYPED_REAL_CELL_MAY_REMAIN_LIMITED__OP020_IS_MINIMUM_REBUILD_GATE"}
+      }
+    },
+    {
+      "operation_id": "EEW1-OP020",
+      "workload_class": "W6",
+      "purpose": "delete only regenerable representation and rebuild from authoritative roots with exact identity parity",
+      "source_data_required": true,
+      "physical_role": "PRIMARY_REBUILD_PHYSICAL_DISCRIMINATOR",
+      "cells": {
+        "EEU_WVS7_WAVE7_EXACT_SOURCE": {"current_state":"MISSING_AUTHORITY","refs":["W5_GAPS:GAP_DELETE_REBUILD_BOUNDARY","W1_MANIFEST","CLOSURE_SEQUENCE:W6"],"selection_requirement":"MUST_BECOME_POSITIVE"},
+        "EEU_LITS_I_2006_EXACT_SOURCE": {"current_state":"MISSING_AUTHORITY","refs":["W5_GAPS:GAP_DELETE_REBUILD_BOUNDARY","W5_GAPS:GAP_LITS_D03_EXTENSIONAL_ROOTS","W1_MANIFEST","CLOSURE_SEQUENCE:W6"],"selection_requirement":"MUST_BECOME_POSITIVE"}
+      }
+    },
+    {
+      "operation_id": "EEW1-OP021",
+      "workload_class": "W5",
+      "purpose": "selective invalidation after exactly one source/release determinant changes",
+      "source_data_required": true,
+      "physical_role": "PRIMARY_INVALIDATION_PHYSICAL_DISCRIMINATOR",
+      "cells": {
+        "EEU_WVS7_WAVE7_EXACT_SOURCE": {"current_state":"MISSING_AUTHORITY","refs":["W5_GAPS:GAP_INCREMENTAL_INVALIDATION_DETERMINANTS","W1_MANIFEST","CLOSURE_SEQUENCE:W5"],"selection_requirement":"MUST_BECOME_POSITIVE"},
+        "EEU_LITS_I_2006_EXACT_SOURCE": {"current_state":"MISSING_AUTHORITY","refs":["W5_GAPS:GAP_INCREMENTAL_INVALIDATION_DETERMINANTS","W5_GAPS:GAP_LITS_D03_EXTENSIONAL_ROOTS","W1_MANIFEST","CLOSURE_SEQUENCE:W5"],"selection_requirement":"MUST_BECOME_POSITIVE"}
+      }
+    },
+    {
+      "operation_id": "EEW1-OP022",
+      "workload_class": "W5",
+      "purpose": "selective invalidation after exactly one semantic/routing-authority determinant changes",
+      "source_data_required": false,
+      "physical_role": "PRIMARY_INVALIDATION_PHYSICAL_DISCRIMINATOR",
+      "cells": {
+        "EEU_WVS7_WAVE7_EXACT_SOURCE": {"current_state":"MISSING_AUTHORITY","refs":["W5_GAPS:GAP_INCREMENTAL_INVALIDATION_DETERMINANTS","W1_MANIFEST","CLOSURE_SEQUENCE:W5"],"selection_requirement":"MUST_BECOME_POSITIVE"},
+        "EEU_LITS_I_2006_EXACT_SOURCE": {"current_state":"MISSING_AUTHORITY","refs":["W5_GAPS:GAP_INCREMENTAL_INVALIDATION_DETERMINANTS","W1_MANIFEST","CLOSURE_SEQUENCE:W5"],"selection_requirement":"MUST_BECOME_POSITIVE"}
+      }
+    },
+    {
+      "operation_id": "EEW1-OP023",
+      "workload_class": "W4",
+      "purpose": "warm/repeated exact query at N=1,2,5",
+      "source_data_required": true,
+      "physical_role": "REPEAT_QUERY_PHYSICAL_DISCRIMINATOR",
+      "cells": {
+        "EEU_WVS7_WAVE7_EXACT_SOURCE": {"current_state":"MISSING_AUTHORITY","refs":["W5_GAPS:GAP_EXPANDED_QUERY_SUITE","W1_MANIFEST","CLOSURE_SEQUENCE:W4"],"selection_requirement":"TYPED_REAL_CELL_MAY_REMAIN_LIMITED__OP024_IS_MINIMUM_REPEAT_GATE"},
+        "EEU_LITS_I_2006_EXACT_SOURCE": {"current_state":"MISSING_AUTHORITY","refs":["W5_GAPS:GAP_EXPANDED_QUERY_SUITE","W5_GAPS:GAP_LITS_D03_EXTENSIONAL_ROOTS","W1_MANIFEST","CLOSURE_SEQUENCE:W4"],"selection_requirement":"TYPED_REAL_CELL_MAY_REMAIN_LIMITED__OP024_IS_MINIMUM_REPEAT_GATE"}
+      }
+    },
+    {
+      "operation_id": "EEW1-OP024",
+      "workload_class": "W4",
+      "purpose": "warm/repeated autonomous discovery at N=1,2,5",
+      "source_data_required": true,
+      "physical_role": "PRIMARY_REPEAT_DISCOVERY_PHYSICAL_DISCRIMINATOR",
+      "cells": {
+        "EEU_WVS7_WAVE7_EXACT_SOURCE": {"current_state":"ELIGIBLE_BOUNDED_C09_OP014_REPEAT","refs":["W5_ELIGIBILITY:W4_OP014_REPEAT_N1_N2_N5","D16_OP014","D17_EQUAL_WORK"],"selection_requirement":"CURRENT_BOUNDED_POSITIVE_COUNTS"},
+        "EEU_LITS_I_2006_EXACT_SOURCE": {"current_state":"ELIGIBLE_BOUNDED_C09_OP014_REPEAT","refs":["W5_ELIGIBILITY:W4_OP014_REPEAT_N1_N2_N5","D16_OP014","D17_EQUAL_WORK"],"selection_requirement":"CURRENT_BOUNDED_POSITIVE_COUNTS"}
+      }
+    }
+  ],
+  "invariants": [
+    "ALL_48_CELLS_RETAINED_IN_DENOMINATOR",
+    "MISSING_AUTHORITY_NE_CANDIDATE_FAILURE",
+    "INELIGIBLE_HOSTILE_ONLY_REAL_CELL_NE_CANDIDATE_FAILURE",
+    "NONCOMPARABLE_NE_NUMERIC_FAILURE",
+    "BOUNDED_OP014_ELIGIBILITY_NE_GENERIC_DISCOVERY_AUTHORITY",
+    "W7_TYPED_CAPABILITY_NE_SUBSTANTIVE_DOWNSTREAM_INFERENCE",
+    "NO_WVS_LITS_POOLING_OR_SCALE_EQUIVALENCE",
+    "NO_ABC_RANKING_OR_SELECTION_IN_EE_R2A"
+  ]
+}
