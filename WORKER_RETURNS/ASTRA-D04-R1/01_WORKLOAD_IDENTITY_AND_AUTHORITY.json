@@ -1,0 +1,46 @@
+{
+  "schema": "ASTRA_D04_R1_WORKLOAD_IDENTITY_AUTHORITY@1.0.0",
+  "status": "EXACT_HELD_D04_WORKLOAD_UNIQUELY_RECOVERED__NO_REDESIGN",
+  "commission_tip": "5ec735fe02fc0659613ec888ec32f5b2ee74accd",
+  "hq_checkpoint": "20260916T1647-0400",
+  "hq_handoff_commit": "87340b9f091a8277a6dfc275c95b8ffb15097f05",
+  "workload": {
+    "workload_id": "PREV3_LEARNED_WORLD_POSITIVE_WORKLOAD_R1",
+    "d02_authority_commit": "40cb8585f076a66d9884b99022a59bb909606c03",
+    "d02_frontier_git_blob": "5399a3f64642c8d9f8a0644db0adc15d38642971",
+    "f02_selector_closure_return": "482bb884a99e31ba77e904d0df39fffc872cbed3",
+    "historical_execution_producer": {
+      "path": "rawlsing_next/prev3_learned_real_execution_r2.py",
+      "git_blob": "7a9b8b53e36041b453eb62e7a22a52ff0d392c16"
+    },
+    "preexecution_frontier_seal_sha256": "ca47c52f925b126878cd9e0be433bd6a28bec5a8623784bfbf5eaf7523b21bea",
+    "candidate_count": 50,
+    "query_role_count": 77,
+    "lanes": {
+      "P0": {"candidate_count": 5, "query_role_count": 5, "validator": "TARGET_CELL_SUPPORTED"},
+      "P1": {"candidate_count": 1, "query_role_count": 3, "validator": "JOINT_NOT_PRODUCT_OF_MARGINALS"},
+      "P2": {"candidate_count": 18, "query_role_count": 36, "validator": "DISTRIBUTION_DIFFERS_FROM_BASELINE"},
+      "P3": {"candidate_count": 1, "query_role_count": 8, "validator": "CONDITIONAL_REVERSAL"},
+      "P4": {"candidate_count": 25, "query_role_count": 25, "validator": "TARGET_CELL_SUPPORTED"}
+    },
+    "mutation_law": "NONE_EXACT_EVALUATE_ALL__NO_PRUNING__NO_RANKING__NO_POST_DATA_FRONTIER_MUTATION"
+  },
+  "current_positive_prerequisites": {
+    "d01q_j02_independent_requalification": "4fdc1bd346a77381890f1d8dbc31c552de09c893",
+    "d03_lits_extensional_roots_replay": "1dc316b4a388949c1736aa65a20c8d43cfb2c8ba",
+    "k03_target_risk_authority": "9c765641a0c1c32c1becbc308feec488c136c30d",
+    "d01q_contract_blob": "d878d2280bdb53f22019f703c2a8178b89d66c5d",
+    "d01q_delegated_k02_blob": "5529e4d82e44d0dfef8fdaf846cca57226f3f12f"
+  },
+  "d03_roots": {
+    "R2": {"target": "q301_2", "member_count": 24897, "root_sha256": "f224533ce0a705bf0839e6bb40bd49dec0c8366e5a5ede0a389e3e67811a13b3"},
+    "R7": {"target": "q301_7", "member_count": 28325, "root_sha256": "0978bd4d87afd88831593ca5977fa9978948d598bf981adfd7fd96ceab979844"},
+    "R27": {"target": "q301_2_INTERSECTION_q301_7", "member_count": 24630, "root_sha256": "f9c87f610bcaf0539cc91e7f2608b230cea39d806d3611d6a398519a86386d29"}
+  },
+  "historical_non_authoritative_outcomes": {
+    "g02": "LINEAGE_ONLY__NOT_REUSED_AS_FRESH_RESULT",
+    "h02": "QUALIFIED_OLD_DENOMINATOR_DEFECT",
+    "i02": "OLD_AUTHORITY_REEXECUTION__NOT_CURRENT_RESULT"
+  },
+  "terminal": "D04_WORKLOAD_IDENTITY_RECOVERED_EXACTLY__EXECUTION_REQUIRED"
+}

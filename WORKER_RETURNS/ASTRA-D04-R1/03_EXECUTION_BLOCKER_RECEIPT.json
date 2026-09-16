@@ -1,0 +1,62 @@
+{
+  "schema": "ASTRA_D04_R1_EXECUTION_BLOCKER_RECEIPT@1.0.0",
+  "status": "BLOCKED__WORKER_LOCAL_EXECUTION_SURFACE_UNAVAILABLE_BEFORE_USER_CODE",
+  "owning_layer": "WORKER_EXECUTION_ENVIRONMENT",
+  "project_authority_state": {
+    "workload_identity_unique": true,
+    "d01q_positive": true,
+    "d03_positive": true,
+    "exact_library_object_materialized": true,
+    "semantic_or_denominator_repair_required": false,
+    "new_workload_design_required": false
+  },
+  "execution_surface_proof": {
+    "failure_phase": "BEFORE_USER_CODE",
+    "probe_classes": [
+      "TRIVIAL_SHELL_NO_FILE_PROBE",
+      "TRIVIAL_PYTHON_NO_FILE_PROBE",
+      "PYTHON_FILE_EXISTENCE_PROBE"
+    ],
+    "observed_transport_failure": "ClientResponseError",
+    "accepted_decoder_import_reached": false,
+    "source_read_reached": false,
+    "source_hash_readback_reached": false,
+    "d03_root_replay_reached": false,
+    "j02_workload_execution_reached": false,
+    "candidate_validation_reached": false,
+    "fresh_replay_reached": false
+  },
+  "learned_output": {
+    "state": "NO_RESULT__EXECUTION_DID_NOT_BEGIN",
+    "candidate_count_executed": 0,
+    "query_roles_executed": 0,
+    "historical_g02_result_reused": false,
+    "historical_i02_result_reused": false,
+    "aggregate_result_inferred": false
+  },
+  "prohibitions_preserved": {
+    "workload_redesign": true,
+    "post_outcome_tuning_absent": true,
+    "source_substitution_absent": true,
+    "pandas_fallback_absent": true,
+    "structural_promotion_absent": true,
+    "causal_promotion_absent": true,
+    "population_generalization_absent": true,
+    "person_or_v3_state_absent": true,
+    "abc_comparison_absent": true,
+    "main_mutation_absent": true,
+    "semantic_pre_main_mutation_absent": true
+  },
+  "smallest_exact_repair": "RERUN_THE_SAME_EXACT_RECOVERED_D04_GRAIN_ON_A_FUNCTIONING_WORKER_LOCAL_EXECUTION_SURFACE_CAPABLE_OF_READING_THE_EXACT_LIBRARY_V1_CARRIER_AND_REPRODUCING_THE_ALREADY_ACCEPTED_EE_R3B_EE_R2B_DECODER_RUNTIME_PATH__NO_SEMANTIC_OR_WORKLOAD_CHANGE",
+  "required_retry_checks": [
+    "VERIFY_EXACT_SOURCE_SHA256",
+    "REPRODUCE_ACCEPTED_DECODER_RUNTIME",
+    "RECONSTRUCT_AND_MATCH_D03_R2_R7_R27_ROOTS_BEFORE_OUTCOME_VALIDATION",
+    "EXECUTE_ALL_77_FROZEN_QUERY_ROLES_THROUGH_D01Q_QUALIFIED_J02_INTERFACE",
+    "VALIDATE_ALL_50_FROZEN_CANDIDATES_WITH_INHERITED_VALIDATORS",
+    "PUBLISH_TYPED_SUPPORT_VALID_EMPTY_ZERO_OR_UNRESOLVED_AS_OBSERVED",
+    "FRESH_PROCESS_REPLAY",
+    "NO_POST_OUTCOME_MUTATION"
+  ],
+  "terminal": "ASTRA_D04_R1_BLOCK__LOCAL_EXECUTION_SURFACE_UNAVAILABLE_BEFORE_USER_CODE__NO_LEARNED_RESULT_FABRICATED"
+}

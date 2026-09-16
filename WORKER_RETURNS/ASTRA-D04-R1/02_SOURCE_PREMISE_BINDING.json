@@ -1,0 +1,53 @@
+{
+  "schema": "ASTRA_D04_R1_SOURCE_PREMISE_BINDING@1.0.0",
+  "status": "PREMISES_READY__DIRECT_EXACT_SOURCE_REQUIRED_AND_MATERIALIZED__EXECUTION_NOT_REACHED",
+  "source": {
+    "library_file_id": "file_0000000036dc81f8b8b546e356590a03",
+    "library_version": 1,
+    "filename": "LITS-2006-data.dta",
+    "expected_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "materializer_reported_bytes": 139531180,
+    "materialization_state": "SUCCESS__EXACT_COMMISSIONED_OBJECT_ONLY",
+    "local_hash_readback_state": "NOT_EXECUTED__WORKER_CODE_SURFACE_FAILED_BEFORE_USER_CODE"
+  },
+  "direct_source_requirement": {
+    "required": true,
+    "reason": "D03 freezes exact R2/R7/R27 membership and typed accounting, while the inherited 50/77 workload also requires substantive q301 cell values and q310/q311 conditioner strata not recoverable from the D03 extension membership payload alone.",
+    "required_variables": ["q301_2", "q301_7", "q310", "q311"]
+  },
+  "accepted_execution_law": {
+    "decoder_runtime_predecessor": "EE-R3B/EE-R2B",
+    "d03_return": "1dc316b4a388949c1736aa65a20c8d43cfb2c8ba",
+    "d01q_return": "4fdc1bd346a77381890f1d8dbc31c552de09c893",
+    "j02_contract_blob": "d878d2280bdb53f22019f703c2a8178b89d66c5d",
+    "j02_delegated_implementation_blob": "5529e4d82e44d0dfef8fdaf846cca57226f3f12f",
+    "record_identity_law": "(exact source SHA-256, one-based source row ordinal)"
+  },
+  "target_risk_accounting": {
+    "q301_2": {
+      "denominator_member_states": [1,2,3,4,5],
+      "member_count": 24897,
+      "excluded": {"6_NOT_APPLICABLE": 1774, "7_DONT_KNOW": 2327, "SYSTEM_MISSING_REASON_UNSPECIFIED": 4},
+      "d03_root_sha256": "f224533ce0a705bf0839e6bb40bd49dec0c8366e5a5ede0a389e3e67811a13b3"
+    },
+    "q301_7": {
+      "denominator_member_states": [1,2,3,4,5],
+      "member_count": 28325,
+      "excluded": {"6_NOT_APPLICABLE": 224, "7_DONT_KNOW": 442, "SYSTEM_MISSING_REASON_UNSPECIFIED": 11},
+      "d03_root_sha256": "0978bd4d87afd88831593ca5977fa9978948d598bf981adfd7fd96ceab979844"
+    },
+    "q301_2_x_q301_7": {
+      "member_count": 24630,
+      "composition": "R2 INTERSECTION R7",
+      "d03_root_sha256": "f9c87f610bcaf0539cc91e7f2608b230cea39d806d3611d6a398519a86386d29"
+    }
+  },
+  "substitution_audit": {
+    "library_discovery": false,
+    "source_substitution": false,
+    "public_or_mutable_mirror": false,
+    "pandas_fallback": false,
+    "decoder_substitution": false
+  },
+  "terminal": "EXACT_SOURCE_AND_CURRENT_PREMISES_BOUND__WAIT_FUNCTIONING_LOCAL_EXECUTION_SURFACE"
+}
