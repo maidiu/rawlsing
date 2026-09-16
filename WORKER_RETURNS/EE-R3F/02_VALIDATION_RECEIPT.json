@@ -1,0 +1,60 @@
+{
+  "schema": "RAWLSING_EE_R3F_VALIDATION_RECEIPT@1.0.0",
+  "worker": "EE-R3F",
+  "return_blobs": {
+    "WORKER_RETURNS/EE-R3F/00_RETURN.md": "7f45781d2937b4642c314d8bf468c1d9cc0652e9",
+    "WORKER_RETURNS/EE-R3F/01_SELECTION_CRITICAL_PREMISE_FREEZE.json": "38b1bd31e72271567cb4ecea2ac4c7920420ee8a"
+  },
+  "checks": {
+    "exact_branch_tip_verified_before_write": true,
+    "canonical_hq_control_pointer_followed": true,
+    "two_universes_accounted": true,
+    "op001_through_op006_each_accounted_per_universe": true,
+    "total_operation_universe_cells": 12,
+    "status_sum_equals_12": true,
+    "ready_cells": 2,
+    "needs_existing_active_repair_cells": 10,
+    "new_exact_authority_gap_cells": 0,
+    "wvs_query_qids_frozen_before_r3d_ruling_or_empirical_result": true,
+    "wvs_query_qid_count": 2,
+    "wvs_post_result_qid_substitution_forbidden": true,
+    "lits_query_variables": ["q301_2", "q301_7"],
+    "lits_op006_avoids_unresolved_q310_q311_selectors": true,
+    "lits_source_wide_weight_default_not_required_for_raw_measure_proving_set": true,
+    "all_18012_response_semantic_residuals_not_required": true,
+    "procedure_oracles_candidate_independent": true,
+    "candidate_outputs_never_oracle_inputs": true,
+    "abc_executed": false,
+    "library_used": false,
+    "main_modified": false,
+    "semantic_pre_main_modified": false
+  },
+  "status_matrix": {
+    "WVS7": {
+      "EEW1-OP001": "READY",
+      "EEW1-OP002": "READY",
+      "EEW1-OP003": "NEEDS_EXISTING_ACTIVE_REPAIR",
+      "EEW1-OP004": "NEEDS_EXISTING_ACTIVE_REPAIR",
+      "EEW1-OP005": "NEEDS_EXISTING_ACTIVE_REPAIR",
+      "EEW1-OP006": "NEEDS_EXISTING_ACTIVE_REPAIR"
+    },
+    "LiTS-I": {
+      "EEW1-OP001": "NEEDS_EXISTING_ACTIVE_REPAIR",
+      "EEW1-OP002": "NEEDS_EXISTING_ACTIVE_REPAIR",
+      "EEW1-OP003": "NEEDS_EXISTING_ACTIVE_REPAIR",
+      "EEW1-OP004": "NEEDS_EXISTING_ACTIVE_REPAIR",
+      "EEW1-OP005": "NEEDS_EXISTING_ACTIVE_REPAIR",
+      "EEW1-OP006": "NEEDS_EXISTING_ACTIVE_REPAIR"
+    }
+  },
+  "anti_inference_guards": [
+    "NO_WVS_VARIABLE_NAME_INFERRED_FOR_R3D_QIDS",
+    "NO_ROUTING_INFERRED_FROM_MISSINGNESS_LABELS_CODES_ADJACENCY_OR_STATISTICS",
+    "NO_RESPONSE_CATEGORY_CONDITIONER_INVENTED_FOR_WVS_OP006",
+    "NO_LITS_Q310_Q311_DIRECTIONAL_OR_STRUCTURAL_MEANING",
+    "NO_EMPIRICAL_DISTRIBUTION_GUESSED",
+    "NO_CANDIDATE_OR_MAJORITY_VOTE_USED_AS_TRUTH",
+    "NO_POST_RESULT_OPERAND_SUBSTITUTION"
+  ],
+  "terminal": "PASS__12_SELECTION_CRITICAL_CELLS_EXACTLY_DISPOSITIONED__2_READY__10_ACTIVE_REPAIR__0_NEW_GAP"
+}

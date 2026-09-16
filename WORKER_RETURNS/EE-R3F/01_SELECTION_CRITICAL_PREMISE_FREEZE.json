@@ -1,0 +1,223 @@
+{
+  "schema": "RAWLSING_EE_R3F_SELECTION_CRITICAL_PREMISE_FREEZE@1.0.0",
+  "worker": "EE-R3F",
+  "status": "PASS__SELECTION_CRITICAL_OP001_OP006_PREMISES_FROZEN__ACTIVE_REPAIRS_EXACTLY_SCOPED",
+  "branch": "agent/rabochii-prev3-ee-r3f-selection-critical-premise-freeze-r1",
+  "commission_tip": "61fcf0135f71c3c37424af5a6756142ced891333",
+  "grain": "FREEZE_THE_SMALLEST_LAWFUL_REAL_SOURCE_SEMANTIC_ROUTING_QUERY_PREMISES_NEEDED_TO_MAKE_OP001_THROUGH_OP006_POSITIVELY_EXECUTABLE_ON_BOTH_WVS7_AND_LITS_OR_RETURN_THE_EXACT_MINIMUM_AUTHORITY_GAPS",
+  "hq": {
+    "checkpoint": "20260916T1214-0400",
+    "handoff_commit": "d24f377f2fb4bcf7d7e2a29941a925b983e42f42",
+    "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354",
+    "latest_substantive_authority": "61fcf0135f71c3c37424af5a6756142ced891333"
+  },
+  "binding_authority": {
+    "ee_r2a_selection_floor": "6b9b39ddc089033bb5779806a9d08e56be320107",
+    "ee_w1_workload": "1637b53abf90cac8a57857aaa5571dbb4278dfa9",
+    "ee_w1_oracles": "1637b53abf90cac8a57857aaa5571dbb4278dfa9:WORKER_RETURNS/EE-W1/03_EXPECTED_OUTPUT_AND_FAILURE_STATE_ORACLES.json",
+    "ee_w5_universe_cells": "4cbd4c0bba8b6fd9809209d9fd61d730b8a40747",
+    "wvs_hb01_certification": "a07e2a9a9c5299b80296aed323b7912192b31ddd",
+    "wvs_hb01_evidence": "5cadd5f2d8e585b5ca380dec810ad75cd140930a",
+    "hb06_oracle_component_blob": "4ca86c4b3f629457ef1f3780e5b00d896c2fa99f",
+    "hb06_operation_crosswalk_blob": "29a0c5c354b33c7005e9b8cbed815a3c4abb361a",
+    "ee_r2d_routing_registry": "ec1d5dc11a13290853632d7ab967b6094f2b9955",
+    "lits_d02_hq_adopted": "40cb8585f076a66d9884b99022a59bb909606c03",
+    "lits_d02_frontier_blob": "5399a3f64642c8d9f8a0644db0adc15d38642971",
+    "lits_r2b_colocation": "485c0424337ae49b4ed6512b7030716e11cb81e0"
+  },
+  "universe_premises": {
+    "WVS7": {
+      "universe_id": "EEU_WVS7_WAVE7_EXACT_SOURCE",
+      "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+      "source_bytes": 185163494,
+      "rows": 97220,
+      "logical_variables": 613,
+      "decoder": "decode_sav(source_path)",
+      "selected_projection_sha256": "7e69d799e37d26c2e6ae749674d4994a276f93aaf89e43085bed34a5fd122ec9",
+      "projected_slots": 612,
+      "sole_exclusion": "PWGHT",
+      "c11_release_content_hash": "a7053b1169dc42d3af348eb96771fe89476ca30b13dccafb982ea39d7f67ee8d",
+      "op002_representative_native_variable": "Q138",
+      "op002_basis": "Q138 is one of the exact 42 HB01 dual-owner WVS7 slots with accepted RespondentEvent and EmpiricalCoordinateFact ownership",
+      "query_pair_selection_rule": "LEXICOGRAPHIC_FIRST_TWO_OF_EXACT_EE_R2D_B02_WVS_B03_W07_19_ID_SET__FROZEN_BEFORE_R3D_RULINGS_AND_RESULTS",
+      "query_pair_qids": [
+        "question_impl.phase0.041c03bbacabe4e8d802",
+        "question_impl.phase0.075b1650737d99679b9c"
+      ],
+      "query_pair_newline_stream_sha256": "5636b4d8cb5249f876dd1bd14e41d96cf903a7b52ae0dfeab9bc76d2152f2406",
+      "query_pair_source_rule_owner": {
+        "authority_code": "B03-W07",
+        "authority_commit": "3d1cdd242fe10f544bdcbb5bb91cf042c56ef787",
+        "source_path": "RETURN_U1/O06_IMPLEMENTATION_ROUTING.jsonl",
+        "source_return_sha256": "d23abc9e786b4d6093bbf7bd9be9f15c7a3ca1384ba47723d532a082141359cc"
+      },
+      "unresolved_exact_coordinate_rule": "R3D must copy the exact W07 source-row variable/source-coordinate binding for each frozen qid; R3F does not infer a variable name. If either qid is not positively bound to the exact WVS7 proving universe, no substitute qid is authorized.",
+      "query_shapes_after_binding": {
+        "OP004": "marginal distribution of qid-0 over its exact routed risk set",
+        "OP005": "same-source-row same-respondent joint qid-0 x qid-1 over exact joint risk-set intersection",
+        "OP006": "distribution of qid-1 in exact subgroup defined by qid-0 positively authorized applicability/risk-set membership"
+      }
+    },
+    "LiTS-I": {
+      "universe_id": "EEU_LITS_I_2006_EXACT_SOURCE",
+      "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+      "source_bytes": 139531180,
+      "rows": 29002,
+      "variables": 1198,
+      "decoder_blob": "13aa733b511dc23e00bfcdf288c5b920e3f09983",
+      "decoder": "decode_dta(source_path, encoding=latin1)",
+      "reader": "pyreadstat",
+      "reader_version": "1.3.6",
+      "apply_value_formats": false,
+      "user_missing": true,
+      "q301_2_decoder_ordinal": 194,
+      "q301_7_decoder_ordinal": 199,
+      "c11_release": {
+        "object_id": "LITS1-AS2B-C11-7cac43e2ca5b31cb-9dd1e6b7350ebb79",
+        "content_hash": "e6c954538fa1830820120465a10a6d065b8a18d1e6b7b08d3f863b0917741e26"
+      },
+      "empirical_universe_hash": "83af05f5891e8accc18eeb99e5a1fd99242a509d9a38276004675c0e26be8080",
+      "risk_set_hash": "31f7ec452d8d75eebf7963d1ce1715b38f5329a31c757d9088819c99f5d4db45",
+      "raw_measure_basis_hash": "25e90c83f1f226ce7eb6a337018635b28427ae90446f3e4d825a1788c43336ec",
+      "authority_hashes": {
+        "i03_query": "6c6d2f5fb5f4165e5de19989bd456ee8c09f42ab175fa4d10572dc2b9403ca0d",
+        "source_semantics": "5f671f2cf9342820026af287009d1d9220e3f9f29d92134582d77eeebbdcd638",
+        "routing": "703f629c5d2b66e1ea5fccfddec80130bbb9b2ea5f8f93c4f69ad5797158d89a"
+      },
+      "source_semantics": {
+        "q301_2": {"physical_var_name":"q301_2","d02_row_index":193,"substantive_domain":[1,2,3,4,5],"specials_excluded":[6,7]},
+        "q301_7": {"physical_var_name":"q301_7","d02_row_index":198,"substantive_domain":[1,2,3,4,5],"specials_excluded":[6,7]}
+      },
+      "query_refs": {
+        "T_Q301_2_RAW": "8a7bf5bbb1c2d8d6328dc5507416931a9c12e2c76668e0fc47af8add254c5d44",
+        "T_Q301_7_RAW": "deb71e653592d8bdb246f8c4d53359e290708d3875e38433f518b307f520c6f7",
+        "T_Q301_2_Q301_7_RAW": "ef8b19744ec3c06e352f7accf75efbc216ffc454905da09948763a2c54fdc053"
+      },
+      "predicate_refs": {
+        "A000": "ac3fcb4e32a41f9972004b2c31da61e9b32ba69568a795d2c1e584c9bed21be0",
+        "A1V1_Q301_2_EQ_SOURCE_NATIVE_1": "082157ea8f31fe0d209c6241552116108e3e3917f7ddb7a49fa365ad5362aeeb"
+      },
+      "op006_shape": "T_Q301_7_RAW conditioned by existing exact A1V1 q301_2 source-native endpoint predicate; q310/q311 selector resolution is not needed",
+      "active_root_repair": {
+        "worker": "EE-R3B",
+        "commission": "PSC04_LITS_I_ACCEPTED_DECODER_EXACT_R2_R7_R27_EXTENTIONAL_ROOT_MATERIALIZATION_AND_REPLAY_ONLY",
+        "R2": {"variable":"q301_2","native_states":[1,2,3,4,5],"expected_count":24897},
+        "R7": {"variable":"q301_7","native_states":[1,2,3,4,5],"expected_count":28325},
+        "R27": "accepted-decoder-derived R2 intersection R7; no inherited pandas count assumption"
+      }
+    }
+  },
+  "operation_dispositions": [
+    {
+      "universe":"WVS7","operation":"EEW1-OP001","status":"READY",
+      "refs":["a07e2a9a9c5299b80296aed323b7912192b31ddd","5cadd5f2d8e585b5ca380dec810ad75cd140930a","HB06:WVS_SOURCE","HB06:WVS_PROJECTION","HB06:WVS_C11"],
+      "expected_semantic_oracle":{"kind":"VALUE_PLUS_ACCEPTED_REPLAY_IDENTITY","source_sha256":"2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d","rows":97220,"variables":613,"projection_sha256":"7e69d799e37d26c2e6ae749674d4994a276f93aaf89e43085bed34a5fd122ec9","c11_release_hash":"a7053b1169dc42d3af348eb96771fe89476ca30b13dccafb982ea39d7f67ee8d","law":"OR-SOURCE-FIDELITY"},
+      "replay_determinants":["BASE","SOURCE"]
+    },
+    {
+      "universe":"WVS7","operation":"EEW1-OP002","status":"READY",
+      "refs":["Q138","a07e2a9a9c5299b80296aed323b7912192b31ddd","5cadd5f2d8e585b5ca380dec810ad75cd140930a","a7053b1169dc42d3af348eb96771fe89476ca30b13dccafb982ea39d7f67ee8d"],
+      "expected_semantic_oracle":{"kind":"INDEPENDENT_ACCEPTED_RELEASE_PROJECTION","law":["OR-RAW-VS-SEMANTIC-STATE","OR-RANKED-MULTISELECT","OR-EQUAL-VALUE-DISTINCT-SLOTS"],"expected":"Q138 source-event/coordinate identity and topology survive; raw physical state is not collapsed into semantic absence; no fixed empirical value/frequency is invented"},
+      "replay_determinants":["BASE","SOURCE"]
+    },
+    {
+      "universe":"WVS7","operation":"EEW1-OP003","status":"NEEDS_EXISTING_ACTIVE_REPAIR",
+      "refs":["ec1d5dc11a13290853632d7ab967b6094f2b9955:EE-R2D-B02-WVS-B03-W07","EE-R3D","question_impl.phase0.041c03bbacabe4e8d802","B03-W07"],
+      "repair_required":"exact R3D qid-bound W07 source-variable coordinate plus positive/known routing/applicability/risk-set ruling",
+      "expected_semantic_oracle":{"kind":"REFERENCE_PROCEDURE_AFTER_REPAIR","law":["OR-DENOMINATOR-IDENTITY","OR-ROUTING-UNKNOWN","OR-TYPED-AUTHORITY-LIMIT"],"expected":"exact qid routing eligibility, risk-set identity and denominator class; unresolved remains typed and cannot be coerced"},
+      "replay_determinants":["BASE","QUERY"]
+    },
+    {
+      "universe":"WVS7","operation":"EEW1-OP004","status":"NEEDS_EXISTING_ACTIVE_REPAIR",
+      "refs":["question_impl.phase0.041c03bbacabe4e8d802","EE-R3D","EE-R3A->EE-R2C-successor-if-response-binding-missing"],
+      "repair_required":"OP003 exact routing/coordinate result plus exact response-event binding for qid-0 if not already positively bound",
+      "expected_semantic_oracle":{"kind":"CANDIDATE_INDEPENDENT_I03_REFERENCE_PROCEDURE","law":["OR-EXACT-QUERY-IDENTITY","OR-ZERO-NULL-DISTINCTION"],"query_shape":"marginal qid-0 over exact routed risk set; source-local/raw measure only","no_predicted_distribution":true},
+      "replay_determinants":["BASE","QUERY"]
+    },
+    {
+      "universe":"WVS7","operation":"EEW1-OP005","status":"NEEDS_EXISTING_ACTIVE_REPAIR",
+      "refs":["question_impl.phase0.041c03bbacabe4e8d802","question_impl.phase0.075b1650737d99679b9c","EE-R3D","EE-R3A->EE-R2C-successor-if-response-binding-missing"],
+      "repair_required":"exact response bindings for both frozen qids plus positive routed coadministration and exact joint risk-set intersection",
+      "expected_semantic_oracle":{"kind":"CANDIDATE_INDEPENDENT_I03_REFERENCE_PROCEDURE","law":["OR-JOINT-MORPHOLOGY","OR-SYNTHETIC-JOINT-CONTAMINATION","OR-TYPED-AUTHORITY-LIMIT"],"query_shape":"same-source-row same-respondent qid-0 x qid-1 joint with exact component identities and joint denominator","no_predicted_joint":true},
+      "replay_determinants":["BASE","QUERY"]
+    },
+    {
+      "universe":"WVS7","operation":"EEW1-OP006","status":"NEEDS_EXISTING_ACTIVE_REPAIR",
+      "refs":["question_impl.phase0.041c03bbacabe4e8d802","question_impl.phase0.075b1650737d99679b9c","EE-R3D","EE-R3A->EE-R2C-successor-if-response-binding-missing"],
+      "repair_required":"qid-1 exact response binding plus qid-0 exact positive applicability/risk-set predicate",
+      "expected_semantic_oracle":{"kind":"CANDIDATE_INDEPENDENT_I03_REFERENCE_PROCEDURE","law":["OR-EXACT-QUERY-IDENTITY","OR-DENOMINATOR-IDENTITY"],"query_shape":"qid-1 distribution restricted to qid-0 exact authorized applicability/risk-set membership; no response-category conditioner invented","no_predicted_distribution":true},
+      "replay_determinants":["BASE","QUERY"]
+    },
+    {
+      "universe":"LiTS-I","operation":"EEW1-OP001","status":"NEEDS_EXISTING_ACTIVE_REPAIR",
+      "refs":["485c0424337ae49b4ed6512b7030716e11cb81e0","EE-R3B","13aa733b511dc23e00bfcdf288c5b920e3f09983"],
+      "repair_required":"EE-R3B complete typed R2/R7/R27 extensional-root materialization and identical second-run replay; decoder/source identity already proved",
+      "expected_semantic_oracle":{"kind":"VALUE_PLUS_ROOT_REPLAY_AFTER_R3B","source_sha256":"7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09","rows":29002,"variables":1198,"law":"OR-SOURCE-FIDELITY"},
+      "replay_determinants":["BASE","SOURCE"]
+    },
+    {
+      "universe":"LiTS-I","operation":"EEW1-OP002","status":"NEEDS_EXISTING_ACTIVE_REPAIR",
+      "refs":["5399a3f64642c8d9f8a0644db0adc15d38642971","q301_2","q301_7","EE-R3B"],
+      "repair_required":"exact R3B extensional roots/replay; q301 response/source semantic authority is already frozen",
+      "expected_semantic_oracle":{"kind":"ACCEPTED_D02_SOURCE_SEMANTIC_PROJECTION_PLUS_ROOT_REPLAY","law":["OR-RAW-VS-SEMANTIC-STATE","OR-RANKED-MULTISELECT","OR-EQUAL-VALUE-DISTINCT-SLOTS"],"expected":"q301_2/q301_7 native states 1..5 remain source-native substantive states, specials 6/7 remain excluded/typed; raw physical and semantic states do not collapse"},
+      "replay_determinants":["BASE","SOURCE"]
+    },
+    {
+      "universe":"LiTS-I","operation":"EEW1-OP003","status":"NEEDS_EXISTING_ACTIVE_REPAIR",
+      "refs":["31f7ec452d8d75eebf7963d1ce1715b38f5329a31c757d9088819c99f5d4db45","25e90c83f1f226ce7eb6a337018635b28427ae90446f3e4d825a1788c43336ec","703f629c5d2b66e1ea5fccfddec80130bbb9b2ea5f8f93c4f69ad5797158d89a","EE-R3B"],
+      "repair_required":"R3B roots/replay only; no source-wide weighted/design default is required because this proving cell is explicitly RAW-measure bound",
+      "expected_semantic_oracle":{"kind":"D02_EXACT_RISK_AND_RAW_DENOMINATOR_REFERENCE_PROCEDURE","law":["OR-DENOMINATOR-IDENTITY","OR-ROUTING-UNKNOWN","OR-TYPED-AUTHORITY-LIMIT"],"expected":"exact D02 risk set + RAW measure + q301 root identity; typed unavailable remains distinct"},
+      "replay_determinants":["BASE","QUERY"]
+    },
+    {
+      "universe":"LiTS-I","operation":"EEW1-OP004","status":"NEEDS_EXISTING_ACTIVE_REPAIR",
+      "refs":["8a7bf5bbb1c2d8d6328dc5507416931a9c12e2c76668e0fc47af8add254c5d44","ac3fcb4e32a41f9972004b2c31da61e9b32ba69568a795d2c1e584c9bed21be0","31f7ec452d8d75eebf7963d1ce1715b38f5329a31c757d9088819c99f5d4db45","25e90c83f1f226ce7eb6a337018635b28427ae90446f3e4d825a1788c43336ec","EE-R3B"],
+      "repair_required":"R3B q301_2 exact root/replay only",
+      "expected_semantic_oracle":{"kind":"CANDIDATE_INDEPENDENT_I03_REFERENCE_PROCEDURE","law":["OR-EXACT-QUERY-IDENTITY","OR-ZERO-NULL-DISTINCTION"],"query":"T_Q301_2_RAW under A000, exact D02 risk set and RAW measure","no_predicted_distribution":true},
+      "replay_determinants":["BASE","QUERY"]
+    },
+    {
+      "universe":"LiTS-I","operation":"EEW1-OP005","status":"NEEDS_EXISTING_ACTIVE_REPAIR",
+      "refs":["ef8b19744ec3c06e352f7accf75efbc216ffc454905da09948763a2c54fdc053","31f7ec452d8d75eebf7963d1ce1715b38f5329a31c757d9088819c99f5d4db45","25e90c83f1f226ce7eb6a337018635b28427ae90446f3e4d825a1788c43336ec","EE-R3B:R27"],
+      "repair_required":"R3B exact R27 = R2 intersection R7 root/replay only",
+      "expected_semantic_oracle":{"kind":"CANDIDATE_INDEPENDENT_I03_REFERENCE_PROCEDURE","law":["OR-JOINT-MORPHOLOGY","OR-SYNTHETIC-JOINT-CONTAMINATION","OR-TYPED-AUTHORITY-LIMIT"],"query":"T_Q301_2_Q301_7_RAW same-source same-respondent joint with exact R27 denominator","no_predicted_joint":true},
+      "replay_determinants":["BASE","QUERY"]
+    },
+    {
+      "universe":"LiTS-I","operation":"EEW1-OP006","status":"NEEDS_EXISTING_ACTIVE_REPAIR",
+      "refs":["deb71e653592d8bdb246f8c4d53359e290708d3875e38433f518b307f520c6f7","082157ea8f31fe0d209c6241552116108e3e3917f7ddb7a49fa365ad5362aeeb","31f7ec452d8d75eebf7963d1ce1715b38f5329a31c757d9088819c99f5d4db45","25e90c83f1f226ce7eb6a337018635b28427ae90446f3e4d825a1788c43336ec","EE-R3B"],
+      "repair_required":"R3B roots/replay only; no q310/q311 selector materialization required",
+      "expected_semantic_oracle":{"kind":"CANDIDATE_INDEPENDENT_I03_REFERENCE_PROCEDURE","law":["OR-EXACT-QUERY-IDENTITY","OR-DENOMINATOR-IDENTITY"],"query":"T_Q301_7_RAW restricted by existing exact A1V1 q301_2==source-native-1 predicate and exact D02 risk/RAW measure","no_predicted_distribution":true},
+      "replay_determinants":["BASE","QUERY"]
+    }
+  ],
+  "status_counts": {
+    "READY": 2,
+    "NEEDS_EXISTING_ACTIVE_REPAIR": 10,
+    "NEW_EXACT_AUTHORITY_GAP": 0,
+    "total": 12
+  },
+  "active_repair_dependencies": {
+    "EE-R3B": "LiTS exact R2/R7/R27 extensional roots and replay; explicitly supplies LiTS premises to the 18-cell selection gate",
+    "EE-R3D": "exact 19-ID WVS routing court; R3F consumes only the two frozen qids and forbids post-ruling substitution",
+    "EE-R3A_to_EE-R2C_successor": "only if a selected WVS qid lacks an already-positive response binding; bind the selected qid(s), not the entire 18,012 corpus"
+  },
+  "transition_law": {
+    "wvs_after_active_repair": "If a frozen qid remains genuinely unresolved, is not exactly bound to the WVS7 proving universe, or lacks a lawful response binding required by its operation, the affected cell becomes NEW_EXACT_AUTHORITY_GAP. No substitute qid may be chosen after seeing rulings/results.",
+    "lits_after_active_repair": "If EE-R3B cannot produce exact replay-identical roots under its commissioned decoder/carrier path, preserve the exact R3B blocker; do not substitute roots/decoder/source.",
+    "query_oracle_materialization": "Before A/B/C invocation, candidate-independent reference execution must materialize and freeze the semantic-output digest for PROCEDURE oracles. Candidate output and majority vote are forbidden oracle inputs."
+  },
+  "boundaries": {
+    "library_used": false,
+    "abc_run": false,
+    "ranking_or_selection": false,
+    "semantic_inference": false,
+    "routing_inference": false,
+    "requires_all_18012_response_residuals_closed": false,
+    "source_pooling_or_harmonization": false,
+    "population_or_weight_promotion": false,
+    "main_modified": false,
+    "semantic_pre_main_modified": false
+  },
+  "terminal": "PASS__SMALLEST_REAL_SOURCE_OP001_OP006_PREMISES_FROZEN__NO_NEW_GAP_CURRENTLY_REQUIRED__R3B_R3D_AND_BOUNDED_RESPONSE_BINDING_REMAIN_EXACT_ACTIVE_DEPENDENCIES"
+}
