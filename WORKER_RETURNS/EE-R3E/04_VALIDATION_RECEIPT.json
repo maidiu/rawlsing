@@ -1,0 +1,64 @@
+{
+  "artifact_sha256": {
+    "01_LIFECYCLE_ORACLE_REGISTRY.json": "84949a57bac8db8f59f8cc33a7ffe08d16c487b9bdceecd6da58fa5fb6effe42",
+    "02_DETERMINANT_FIXTURES.json": "cc97143602a400341eb682cd9727edacb3f5a4bb54ed4b003ec2505bd57dcac9",
+    "03_SIX_CELL_MATRIX.csv": "ce3c135a386abd5782a1dff6539f9d2e1249100ae7fa0cfdbf09f616f8cf4805",
+    "profiles/LITS_OP020.json": "f45041c27dd63d8e83d20f4e429048c85d029d687f7af0addaa41540ff12dddc",
+    "profiles/LITS_OP021.json": "6da2fb389645dab13b896403f67af60f5c454e17adeeac89aaf4321e61099e65",
+    "profiles/LITS_OP022.json": "6758ecfb5f7e82d5966de2068f333da35d6b1ac36355606dd46e36c23248dc53",
+    "profiles/WVS7_OP020.json": "d8196ba9f421d24a85da8833837a037fb8e51841171b7f1fbc947ad155250d29",
+    "profiles/WVS7_OP021.json": "b621fa17674f733e8e1bf6cfab5319c231eadb5c8113cad7871e3459315e5752",
+    "profiles/WVS7_OP022.json": "322ca819c6d7ba8fcec68eea59c8b7ab4ac9be6e21029cc4215dfbea226cc325"
+  },
+  "canonical_hq": {
+    "checkpoint_id": "20260916T0307-0400",
+    "handoff_commit": "251a1d45c73cbe8d46bde1051a5f114c524ba837",
+    "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354"
+  },
+  "checks": {
+    "all_profiles_contract_shape_pass": true,
+    "exact_selection_critical_cells": 6,
+    "fixture_authority_ceiling_explicit": true,
+    "library_used": false,
+    "main_modified": false,
+    "no_abc_execution_or_ranking": true,
+    "no_candidate_specific_storage_assumption": true,
+    "op020_no_changed_determinant": true,
+    "op021_exactly_one_fixture_determinant_changed": true,
+    "op022_exactly_one_fixture_determinant_changed": true,
+    "operations_per_universe": 3,
+    "profile_contract_shape": {
+      "EEU_LITS_I_2006_EXACT_SOURCE::EEW1-OP020": true,
+      "EEU_LITS_I_2006_EXACT_SOURCE::EEW1-OP021": true,
+      "EEU_LITS_I_2006_EXACT_SOURCE::EEW1-OP022": true,
+      "EEU_WVS7_WAVE7_EXACT_SOURCE::EEW1-OP020": true,
+      "EEU_WVS7_WAVE7_EXACT_SOURCE::EEW1-OP021": true,
+      "EEU_WVS7_WAVE7_EXACT_SOURCE::EEW1-OP022": true
+    },
+    "real_source_and_fixture_measurements_distinguished": true,
+    "semantic_pre_main_modified": false,
+    "source_hash_frozen_through_fixture_invalidations": true,
+    "universes": 2
+  },
+  "commission_tip_verified": "61fcf0135f71c3c37424af5a6756142ced891333",
+  "dependency_fingerprints": {
+    "EEU_LITS_I_2006_EXACT_SOURCE": {
+      "authority_post": "cff31298bfcb5c9b2e7dccfebb51d29a989908cce2c69e4ac4b3b15f16ce5fea",
+      "pre": "6f5220ae30e1b55d4decc8ba78757087e15f368608c96a68b4813efc70cec7cc",
+      "source_post": "6e16448219448b9729ea94e6dde2eea82e87fda023a7b175121a37a6ec8c26c1"
+    },
+    "EEU_WVS7_WAVE7_EXACT_SOURCE": {
+      "authority_post": "0f387b79a1207fe0185bec786c4dd9ac953f3d4e366b2e38d31c3b894b4e88a5",
+      "pre": "61f57db318016863089373f41174f56a115c0bb6400c1cd15e49ae16758411c8",
+      "source_post": "92b163f21ce6f6acb9a1a2ff88bd9502813ec00b973a3d64a3f55870da0c364b"
+    }
+  },
+  "schema": "RAWLSING_EE_R3E_VALIDATION_RECEIPT@1.0.0",
+  "source_roots": {
+    "EEU_LITS_I_2006_EXACT_SOURCE": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "EEU_WVS7_WAVE7_EXACT_SOURCE": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
+  },
+  "status": "PASS",
+  "terminal": "PASS__EE_R3E_SIX_SELECTION_CRITICAL_LIFECYCLE_CELLS_EXECUTION_LAW_FROZEN__NO_ABC_RUN",
+  "worker": "EE-R3E"
+}
