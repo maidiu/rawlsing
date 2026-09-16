@@ -1,0 +1,56 @@
+{
+  "schema": "RAWLSING_EE_R3C_EXECUTION_RECEIPT@1.0.0",
+  "worker": "EE-R3C",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-prev3-ee-r3c-gss-routing-authority-court-r1",
+  "commission_tip": "61fcf0135f71c3c37424af5a6756142ced891333",
+  "hq_authority": {
+    "checkpoint_id": "20260916T1214-0400",
+    "handoff_commit": "d24f377f2fb4bcf7d7e2a29941a925b983e42f42",
+    "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354"
+  },
+  "binding_input": {
+    "ee_r2d_commit": "ec1d5dc11a13290853632d7ab967b6094f2b9955",
+    "unit_id": "EE-R2D-B01-GSS-B03-SOURCE-SUBSTRATE",
+    "rows": 55,
+    "sorted_id_stream_sha256": "dc1cfbfd49abbb313e0d36ff3229fcd07abfc627f67f9e2fbb936fcfca129502"
+  },
+  "source_authority": {
+    "b03_commit": "3d1cdd242fe10f544bdcbb5bb91cf042c56ef787",
+    "B03-W01": {
+      "source_path": "RETURN/O06_IMPLEMENTATION_ROUTING.jsonl",
+      "source_return_sha256": "6809a1b4f39304ae779786e3b339420404ad4c57d27e8d26c7da1e9cd1c59533"
+    },
+    "B03-W02": {
+      "source_path": "RETURN_U1/O06_IMPLEMENTATION_ROUTING.jsonl",
+      "source_return_sha256": "0acde5f2a1d76b32f2dbf37fd8efadebe7e67485d3143fa01cd5ef213ef742ad"
+    },
+    "library_access_used": false,
+    "adjudication_surface": "B03 exact-current qid-bound native/derivative rebind artifacts; exact source-return identities/hashes verified through B03 EXACT_REF_LEDGER.csv",
+    "authority_ceiling": "Absence from B03 affirmative native-current rebind artifacts is not negative routing evidence. The underlying Library source-return payloads were not opened because this commission has Library:NO."
+  },
+  "workflow": {
+    "run_id": 35129594307,
+    "job_id": 104906992410,
+    "head_sha": "b9a10bfb01c2e438a4c9c0001c9999b71971b7dd",
+    "conclusion": "success",
+    "artifact_id": 10460614030,
+    "artifact_name": "ee-r3c-gss-routing-court-35129594307",
+    "artifact_digest_sha256": "e95a2425d48d00072f58ca783b7e0f22f3819c9fc138a005d03ccde1a5f0b594"
+  },
+  "outputs": {
+    "full_rulings_artifact_sha256": "213c3fe7929c266eb9fbbd1e27301e5e362032f59964ec56247a99c9b8ec1d25",
+    "committed_per_id_csv_sha256": "108f151c3a22a994b0355ce91fba0f12fda37245409a8581b76c43f1ad000967",
+    "objectizer_ready_subset_sha256": "0d750671ff998fac3a4b1e6aefba8a8ed8d9d3475dbdd2e8be976b4f8215f925",
+    "replay_receipt_sha256": "d387ccff9d8825b95bc096c71338e366ca7469adf9d0de5f42a949766e36fb01"
+  },
+  "counts": {
+    "input": 55,
+    "applicable_or_current_routing_ref_bound": 0,
+    "unresolved_routing_applicability_authority": 55,
+    "known_absence_or_nonapplicability": 0,
+    "outside_routing_bearing_jurisdiction": 0,
+    "objectizer_ready": 0
+  },
+  "terminal": "PASS__EE_R3C_EXACT_55_ACCOUNTED__POSITIVE_NATIVE_BINDINGS_0__UNRESOLVED_55__ZERO_INFERENCE"
+}
