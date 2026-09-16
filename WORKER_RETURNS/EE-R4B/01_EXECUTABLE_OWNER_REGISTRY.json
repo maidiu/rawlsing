@@ -1,0 +1,81 @@
+{
+  "schema": "RAWLSING_EE_R4B_ABC_EXECUTABLE_OWNER_REGISTRY@1.0.0",
+  "status": "PASS__EXACT_ABC_EXECUTABLE_OWNER_AND_INVOCATION_BINDINGS_RECOVERED",
+  "worker": "EE-R4B",
+  "branch": "agent/rabochii-prev3-ee-r4b-abc-executable-owner-registry-r1",
+  "commission_tip": "b1c5ddeead65774af82cefffa30d9ce0d2f0f6b8",
+  "canonical_hq": {
+    "checkpoint_id": "20260916T1334-0400",
+    "handoff_commit": "f9d94c83d8a1cdc99f2ac04d3a42f09e693952ab",
+    "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354"
+  },
+  "binding_hashes": {
+    "qualified_abc_intake_sha256": "906973f78cd82678f678a9a803bb3c3c7f9e13b30e39a5f8dc3ea093d4390e88",
+    "qualified_hb04_common_harness_sha256": "138482116b566482075e191800229f81357541d674646552e8c269e7640a755e",
+    "hb04_qualified_execution_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+    "hb04_qualification_return": "46acf0b162bdcac5f47ce9cce0d9bb1d039fae2d",
+    "run_candidate": {"path": "rawlsing_next/as4/run_candidate.py", "blob": "0acb4cd17906b1c316c5ae381d3214ea98ac5baa"},
+    "protocol": {"path": "rawlsing_next/as4/protocol.py", "blob": "590da3a2cc54666bd9786130409170b73310a700"},
+    "loader": {"path": "rawlsing_next/as4/loader.py", "blob": "f608f72f711610ef6d07fd7c96f450a6ba2cac2a"}
+  },
+  "common_invocation": {
+    "qualified_hb04_cli_template": ["python", "-m", "rawlsing_next.as4.run_candidate", "--candidate", "{CANDIDATE_ID}", "--workdir", "{WORKDIR}", "--output", "{OUTPUT}", "--freeze", "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/SUB_VOZHD_CAMPAIGN_INTEGRATION_R1/B_ARCHITECTURE_COMPILER_DVA_CHETIRI_R1/49A_HB04_QUALIFIED_ABC_INTAKE_FREEZE_R1.json", "--bounded-fixture"],
+    "real_source_entrypoint_template": "rawlsing_next.as4.protocol.prepare(candidate_id, HB04PreparedSource(mode='PRODUCTION_LITS1', ... exact prepared source bindings ...), loaded_hb04_manifest, workdir, allow_bounded_fixture=False)",
+    "law": "QUALIFIED_CLI_IS_FIXTURE_GATED__REAL_SOURCE_PREPARATION_IS_SEPARATE_UPSTREAM_BINDING__NO_NEW_PRODUCTION_CLI_OR_ADAPTER_INVENTED"
+  },
+  "candidates": [
+    {
+      "candidate_id": "A",
+      "physical_meaning": "R5_LONG_COMPACT_V2__SERIAL_V4__AUDIT69__C05R2A_FACADE",
+      "accepted_qualification_ref": "fa340c007f5f9d2835e6117daf1dc9545a173bc9",
+      "implementation_owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+      "executable_owner": {"path": "rawlsing_next/pre553_r5_source_backed_adapter.py", "blob": "d4915e7e6755ba1850756aebff72f982f73a332b", "contract": "PRE553_R5_ROUTE_A_TO_C05R2A_ADAPTER@1.0.0"},
+      "immediate_dependencies": [
+        {"path": "rawlsing_next/as4/protocol.py", "blob": "590da3a2cc54666bd9786130409170b73310a700"},
+        {"path": "rawlsing_next/pre553_r5_compact_carrier.py", "blob": "92e364b31eaf27be1bca2081eff65f6ffb779c3d"},
+        {"path": "rawlsing_next/pre553_r5_single_pass_audit69.py", "blob": "ffb063b93c86e215604eecb29a9545c7efdff399"},
+        {"path": "rawlsing_next/pre553_source_backed_c11_facade.py", "blob": "7c509c2098d0030f253344eb3f682471378812a8"}
+      ],
+      "harness_entrypoint": "common_invocation with CANDIDATE_ID=A; protocol dispatches to build_r5_source_backed_c11_repository",
+      "physical_configuration_identity": {"carrier": "R5_LONG_COMPACT_V2", "serialization": "SERIAL_V4", "audit": "AUTHORITY_69_SINGLE_PASS_FULL_AUDIT", "semantic_projection": "C05R2A_SOURCE_BACKED_C11_FACADE"},
+      "intake_relation": {"intake_candidate_definition": "R5_LONG_COMPACT_V2__SERIAL_V4__AUDIT69__C05R2A_FACADE", "route_a_implementation_blob": "d4915e7e6755ba1850756aebff72f982f73a332b", "intake_sha256": "906973f78cd82678f678a9a803bb3c3c7f9e13b30e39a5f8dc3ea093d4390e88", "hb04_sha256": "138482116b566482075e191800229f81357541d674646552e8c269e7640a755e"},
+      "currentness_basis": "B19Q2-qualified implementation blob is the same blob pinned by 49A and consumed by qualified HB04; no later unqualified R5 variant is substituted."
+    },
+    {
+      "candidate_id": "B",
+      "physical_meaning": "SOURCE_BACKED_VIRTUAL_C11",
+      "accepted_qualification_ref": "40a0a0529fa78765c7fc87f7e1f12260a2335f72",
+      "implementation_owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+      "executable_owner": {"path": "rawlsing_next/pre553_source_backed_c11_facade.py", "blob": "7c509c2098d0030f253344eb3f682471378812a8"},
+      "accepted_real_source_driver": {"commit": "f43c4be11d4f8fa98f538727337ec075d99d03bc", "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/SUB_VOZHD_CAMPAIGN_INTEGRATION_R1/B_ARCHITECTURE_COMPILER_DVA_CHETIRI_R1/WORKERS/B16_C05R2B_REAL_LITS1_PRODUCTION_I05_R1/01_C05R2B_PRODUCTION_EXECUTION_DRIVER.py", "blob": "26d1e3ede625499a26c712844bffaff4d77e13da", "effective_source_sha256": "59ce6903776df5f5b17bc074b15d9ae06334a5a1c30fad91096fc3fb6a014a3f"},
+      "immediate_dependencies": [
+        {"path": "rawlsing_next/as4/protocol.py", "blob": "590da3a2cc54666bd9786130409170b73310a700"},
+        {"path": "rawlsing_next/pre553_source_backed_c11_facade.py", "blob": "7c509c2098d0030f253344eb3f682471378812a8"},
+        {"path": "rawlsing_next/pre553_physical_decoder.py", "blob": "13aa733b511dc23e00bfcdf288c5b920e3f09983"}
+      ],
+      "harness_entrypoint": "common_invocation with CANDIDATE_ID=B; protocol invokes build_source_backed_c11_repository(..., cache=None)",
+      "physical_configuration_identity": {"carrier": "SOURCE_BACKED_VIRTUAL_C11", "persistent_transformed_empirical_payload_bytes": 0, "retained_transformed_accelerator_count": 0, "delete_reconstruction": "SOURCE_REOPEN_PLUS_AUTHORITY_RELOAD_PLUS_C11_RECONSTRUCTION"},
+      "intake_relation": {"b16_final_production_seal_blob": "0ebf319c0e6695b077b9ca70b9119007fecfcdcd", "b14_adapted_driver_blob": "ea1ec20e0e56a513b13388eeaf0a1c2e067dd9d9", "intake_candidate_definition": "SOURCE_BACKED_VIRTUAL_C11", "intake_sha256": "906973f78cd82678f678a9a803bb3c3c7f9e13b30e39a5f8dc3ea093d4390e88", "hb04_sha256": "138482116b566482075e191800229f81357541d674646552e8c269e7640a755e"},
+      "currentness_basis": "49A names the accepted B16 production seal and HB04 subsequently qualifies the virtual-C11 branch through the integrated source-backed facade with cache=None."
+    },
+    {
+      "candidate_id": "C",
+      "physical_meaning": "SOURCE_BACKED_HYBRID_WITH_REGENERABLE_ACCELERATORS",
+      "accepted_qualification_ref": "9e6b537c636c6d28b00e2345221a5dbbf2491190",
+      "implementation_owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+      "executable_owner": {"path": "rawlsing_next/pre553_route_c_accelerators.py", "blob": "abfdc91a71ef5e18c4a8a6bf62fa65750d8d9889", "qualification_execution_tree": "e7007ff50d1e8577f522d8691486f55c3679dbcb", "qualification_driver_blob": "9ed1a68300453bfcd4af4877bab397ed00b0e0e6"},
+      "immediate_dependencies": [
+        {"path": "rawlsing_next/as4/protocol.py", "blob": "590da3a2cc54666bd9786130409170b73310a700"},
+        {"path": "rawlsing_next/pre553_source_backed_c11_facade.py", "blob": "7c509c2098d0030f253344eb3f682471378812a8"},
+        {"runtime_package": "pyarrow", "version": "25.0.1"}
+      ],
+      "harness_entrypoint": "common_invocation with CANDIDATE_ID=C; protocol builds/reads CACC1+CACC2 under scratch and then uses the source-backed semantic core",
+      "physical_configuration_identity": {"candidate_hash": "a476e6e44c21b8029ae5d3e6d387428a5fa19549a2126d61aae7c71c50c64a3c", "permitted_accelerators": ["CACC1_LITS1_SEMANTIC_EXECUTION_BUNDLE", "CACC2_FRONTIER_ATOMIC_PREDICATE_RISK_MASK_BANK"], "accelerator_count_exact": 2, "deletable_regenerable": true, "persistent_authority_role": "NONE", "mandatory_semantic_core": "EXACT_SOURCE_PLUS_GOVERNED_PROJECTION_TO_SOURCE_BACKED_C11_TO_UNCHANGED_I03_I05", "extra_cache_or_index_surface": "FORBIDDEN"},
+      "intake_relation": {"route_c_implementation_blob": "abfdc91a71ef5e18c4a8a6bf62fa65750d8d9889", "qualified_intake_identity": "e8890b19ddcc9c1ee430fddcfd2cb47b8cccb2c3004975f03ec1f704e032ab10", "intake_candidate_definition": "SOURCE_BACKED_HYBRID_WITH_REGENERABLE_ACCELERATORS", "intake_sha256": "906973f78cd82678f678a9a803bb3c3c7f9e13b30e39a5f8dc3ea093d4390e88", "hb04_sha256": "138482116b566482075e191800229f81357541d674646552e8c269e7640a755e"},
+      "currentness_basis": "B20Q3-qualified implementation blob is unchanged in 49A and qualified HB04; HB04 preserves exactly CACC1+CACC2 and the source-backed semantic core."
+    }
+  ],
+  "stop_rule": {"A": "POSITIVE", "B": "POSITIVE", "C": "POSITIVE", "further_genealogical_search": "FORBIDDEN"},
+  "boundaries": {"adapter_implemented": false, "op001_op022_run": false, "abc_run": false, "ranking": false, "candidate_redesign": false, "main_modified": false, "semantic_pre_main_modified": false},
+  "terminal": "PASS__EE_R4B_EXACT_ABC_OWNER_REGISTRY_FROZEN__READY_FOR_BOUNDED_R3G_SUCCESSOR_WITHOUT_FURTHER_GENEALOGICAL_SEARCH"
+}
