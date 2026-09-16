@@ -1,0 +1,64 @@
+{
+  "schema": "EE_W2_D03_EXTENTIONAL_ROOTS_R1",
+  "status": "BLOCKED__ROOT_IDENTITIES_RESOLVED__EXTENSIONS_NOT_FROZEN",
+  "source_identity": {
+    "filename": "LITS-2006-data.dta",
+    "bytes": 139531180,
+    "sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09"
+  },
+  "record_identity_law": "(source_sha256, one_based_source_row_ordinal)",
+  "roots": {
+    "R2": {
+      "source_variable": "q301_2",
+      "membership_rule": "native_state in [1,2,3,4,5]",
+      "expected_count_oracle": 24897,
+      "extension_state": "NOT_MATERIALIZED_BY_ACCEPTED_DECODER_ON_GOVERNED_RUNTIME",
+      "canonical_root": null
+    },
+    "R7": {
+      "source_variable": "q301_7",
+      "membership_rule": "native_state in [1,2,3,4,5]",
+      "expected_count_oracle": 28325,
+      "extension_state": "NOT_MATERIALIZED_BY_ACCEPTED_DECODER_ON_GOVERNED_RUNTIME",
+      "canonical_root": null
+    },
+    "R27": {
+      "composition_rule": "R2 INTERSECTION R7",
+      "expected_count_authority": "UNFROZEN_PENDING_ACCEPTED_DECODER_EXECUTION",
+      "quarantined_pandas_diagnostic_count": 24630,
+      "extension_state": "NOT_MATERIALIZED_BY_ACCEPTED_DECODER_ON_GOVERNED_RUNTIME",
+      "canonical_root": null
+    }
+  },
+  "typed_source_state_oracles": {
+    "q301_2": {
+      "denominator_member_1_to_5": 24897,
+      "prequery_excluded_total": 4105,
+      "not_applicable_code_6": 1774,
+      "dont_know_code_7": 2327,
+      "system_missing_reason_unspecified": 4,
+      "total": 29002
+    },
+    "q301_7": {
+      "denominator_member_1_to_5": 28325,
+      "prequery_excluded_total": 677,
+      "not_applicable_code_6": 224,
+      "dont_know_code_7": 442,
+      "system_missing_reason_unspecified": 11,
+      "total": 29002
+    }
+  },
+  "authority_refs": {
+    "n02": "a06e49fa5ccaa29bd757663c3ca9cf088d963b74",
+    "k03": "9c765641a0c1c32c1becbc308feec488c136c30d",
+    "d02_r2": "71365947c80878bf655b57a90ebb698ee27287dd"
+  },
+  "blocker_ref": "EE_W2_BLOCK__NO_AUTHORIZED_EXACT_LIBRARY_CARRIER_INGRESS_TO_D02_R2_GOVERNED_ACTIONS_SURFACE",
+  "negative_laws": [
+    "PANDAS_DIAGNOSTIC_R27_24630_IS_NOT_CONSUMABLE_AUTHORITY",
+    "NO_MEMBER_EXTENSION_WITHOUT_ACCEPTED_DECODER_EXECUTION",
+    "NO_CANONICAL_ROOT_WITHOUT_EXACT_EXTENSION",
+    "NO_MISSINGNESS_COLLAPSE",
+    "NO_NATIVE_ID_PROMOTION_TO_CROSS_RELEASE_OR_PERSON_IDENTITY"
+  ]
+}
