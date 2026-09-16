@@ -1,0 +1,61 @@
+{
+  "binding_input": {
+    "ee_r2d_commit": "ec1d5dc11a13290853632d7ab967b6094f2b9955",
+    "ee_r2d_registry_git_blob": "907201080643dbdc5fd49bae6bdcc340442a0e79",
+    "predecessor_state": "UNRESOLVED_ROUTING_APPLICABILITY_AUTHORITY",
+    "rows": 19,
+    "sorted_id_stream_sha256": "fd10aa916e0c7a58d008d2194dbe20083f1d85f9da66958fa5bb34ef0951daec",
+    "unique_ids": 19,
+    "unit_id": "EE-R2D-B02-WVS-B03-W07"
+  },
+  "commission": {
+    "branch": "agent/rabochii-prev3-ee-r3d-wvs-routing-authority-court-r1",
+    "commission_tip": "61fcf0135f71c3c37424af5a6756142ced891333",
+    "grain": "ADJUDICATE_ONLY_THE_19_WVS_IDS_IN_EE_R2D_BATCH_EE_R2D_B02_WVS_B03_W07",
+    "id": "EE-R3D",
+    "library_access": "NO__NOT_USED"
+  },
+  "competent_owner": {
+    "authority_code": "B03-W07",
+    "codebook_git_blob": "9fb1858fbf7c8a226b0d668d109dd2f304e5463b",
+    "commit": "3d1cdd242fe10f544bdcbb5bb91cf042c56ef787",
+    "current_rebind_proof_git_blob": "d64249c96533a51d001e4f2f68d777cd7b578800",
+    "current_wvs_source_substrate_matches": 1219,
+    "derivative_only_carrier_git_blob": "84cbd586d278bd8f1af8f67f8d4a1b3fe385191a",
+    "method_git_blob": "b1004f98b26653c9a4a1a04dc4d98d3ff5079821",
+    "source_return_sha256": "d23abc9e786b4d6093bbf7bd9be9f15c7a3ca1384ba47723d532a082141359cc",
+    "w07_affirmative_native_carrier_git_blob": "b8bd430bdce006aafc5e01a2353bf46c19726bfc",
+    "w07_affirmative_native_qids": 36,
+    "w07_derivative_only_qids": 0
+  },
+  "hq_authority": {
+    "checkpoint_id": "20260916T0307-0400",
+    "handoff_commit": "251a1d45c73cbe8d46bde1051a5f114c524ba837",
+    "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354"
+  },
+  "law": "NO_EXACT_W07_AFFIRMATIVE_NATIVE_QID_MATCH__ABSENCE_FROM_AFFIRMATIVE_SET_IS_NOT_NONAPPLICABILITY__PRESERVE_ACCEPTED_UNRESOLVED",
+  "replay_checks": {
+    "forbidden_inference_count": 0,
+    "main_mutations": 0,
+    "missing_signal_promoted_to_nonapplicability": false,
+    "owner_coverage_promoted_to_shared_rule": false,
+    "selected_19_intersection_with_w07_affirmative_native_qids": 0,
+    "selected_19_intersection_with_w07_derivative_only_qids": 0,
+    "semantic_pre_main_mutations": 0
+  },
+  "ruling_counts": {
+    "GOVERNED_KNOWN_ABSENCE_OR_NONAPPLICABILITY": 0,
+    "OBJECTIZER_READY": 0,
+    "OUTSIDE_ROUTING_BEARING_JURISDICTION": 0,
+    "POSITIVE_OR_KNOWN_ROUTING_AUTHORITY": 0,
+    "UNRESOLVED_ROUTING_APPLICABILITY_AUTHORITY": 19
+  },
+  "rulings": {
+    "bytes": 2881,
+    "path": "01_EXACT_19_WVS_ROUTING_RULINGS.csv",
+    "rows": 19,
+    "sha256": "d5b4e5bad9e53675691574246f7a32473572ff831f08d4425250c80614bb0c61"
+  },
+  "schema": "RAWLSING_EE_R3D_WVS_ROUTING_REPLAY_RECEIPT@1.0.0",
+  "terminal": "PASS__EE_R3D_EXACT_19_WVS_ADJUDICATED__0_POSITIVE_KNOWN__19_UNRESOLVED_PRESERVED__ZERO_INFERENCE"
+}
