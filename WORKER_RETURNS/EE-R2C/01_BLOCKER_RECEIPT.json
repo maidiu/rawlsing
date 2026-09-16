@@ -1,0 +1,63 @@
+{
+  "schema": "RAWLSING_EE_R2C_BLOCKER_RECEIPT@1.0.0",
+  "id": "EE-R2C",
+  "terminal": "BLOCKED__PREDECESSOR_18012_SELECTOR_CARRIER_REPLAY_AND_RECEIPT_ARE_INTERNALLY_INCONSISTENT",
+  "branch": "agent/rabochii-prev3-ee-r2c-response-semantic-batch-registry-r1",
+  "commission_tip": "e6e7c8cf5d24a76814d04f63fe9ae6c1d4e6a993",
+  "hq_checkpoint": "20260916T0219-0400",
+  "hq_handoff_commit": "d3d96e0c753707ee8615cc25c77d2fcb45adb950",
+  "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354",
+  "library_access": "NO",
+  "n04_r4a": {
+    "commit": "238800fe20f257194530916514289492601eeff1",
+    "mask_blob_sha": "b3f857019ceaa8c1da081f3b5bfab07cbb3f8ef2",
+    "mask_file_bytes": 102,
+    "mask_stripped_bytes": 101,
+    "mask_actual_stripped_sha256": "a1488b811a77c5a64f030c56bfa5a7e4a5d3ac6939f82b5690eb5630a2f22302",
+    "mask_expected_stripped_sha256": "2b22305dda73bcf27d5d5de3c2adbd674e544ab09d37141467834529404c161d7",
+    "committed_mask_decode": "STRICT_BASE64_FAILS_EXCESS_PADDING__PERMISSIVE_BASE64_BYTES_FAIL_ZLIB_DECOMPRESSION",
+    "replay_expected_raw_mask_sha256": "58f5fc1288588874235288e046c1797968263303135af8ceb58cc37da48c112e",
+    "replay_expected_ordinal_stream_bytes": 98754,
+    "replay_expected_ordinal_stream_sha256": "c6092adb1a55233b8b372222639dcac0c7de8bb4ceff06a07d9e7d1ffe40db6c"
+  },
+  "n04_r3_predecessor": {
+    "commit": "8e0266703bbf3b060abcd6fbe53c7ef6c49062c5",
+    "vector_blob_sha": "a9de884da922dd35e07147fc43cd23e928777ace",
+    "vector_stripped_b64_sha256": "8241edb2bf043105e0eae12dfa8dd312ff14ca09d37141467834529404c161d7",
+    "vector_raw_bytes": 18276,
+    "vector_raw_sha256": "f3bb9f06508f7eb26d1ee01e6bc865377637da34f5a60b4118006cc5d8a8d283",
+    "status_counts": {
+      "1": 41,
+      "2": 22,
+      "3": 18012,
+      "4": 159,
+      "5": 42
+    }
+  },
+  "replay_rule_derivation": {
+    "rule": "bytes(1 if code == 3 else 0 for code in predecessor_vector)",
+    "derived_mask_raw_bytes": 18276,
+    "derived_selected_count": 18012,
+    "derived_mask_raw_sha256": "58f5fc12b968fad266e75e17be9f21d727d684535d0a78bb5e5ff5196d1c112e",
+    "derived_ordinal_stream_bytes": 97135,
+    "derived_ordinal_stream_sha256": "769fc7c501f60797dd91aae184517edd76b50740db66f9340b6d42884ff3e021"
+  },
+  "ee_w3": {
+    "commit": "cf609f6447d0bb8d07de14c5116e6b6dfdf4f943",
+    "class_c_count": 18012,
+    "repeated_r4a_ordinal_sha256": "c6092adb1a55233b8b372222639dcac0c7de8bb4ceff06a07d9e7d1ffe40db6c",
+    "independent_exact_id_carrier": "NOT_PUBLISHED_IN_REQUIRED_EE-W3_RETURN_SET"
+  },
+  "blocked_required_outputs": [
+    "exact full 18012-row accounting",
+    "finite authoritative batch registry",
+    "parallel dispatch graph"
+  ],
+  "forbidden_repair": "EE-R2C_MUST_NOT_CHOOSE_OR_RESEAL_A_CORRECTED_PREDECESSOR_SELECTOR",
+  "successor_requirement": "COMPETENT_PREDECESSOR_REPAIR_OR_RESEAL_MUST_PUBLISH_ONE_EXACT_18012_ID_SELECTOR_AND_RECONCILE_R4A_REPLAY_RECEIPT_HASHES",
+  "semantic_mutations": 0,
+  "bindings_created": 0,
+  "objectizations": 0,
+  "main_mutations": 0,
+  "semantic_pre_main_mutations": 0
+}
