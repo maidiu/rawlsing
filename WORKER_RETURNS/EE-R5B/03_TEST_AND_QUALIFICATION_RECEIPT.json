@@ -1,0 +1,49 @@
+{
+  "schema": "RAWLSING_EE_R5B_TEST_AND_QUALIFICATION_RECEIPT@1.0.0",
+  "status": "PASS",
+  "commission_tip": "24d5fb7c2a05daef5dd0e0caecb9f026d3b1a8f4",
+  "bridge_git_blob": "d169be112f454732df161620743ea6332866255e",
+  "test_git_blob": "5b44107afc4ed615fb4d1fd93b4d47ef0db70171",
+  "test_command": "python WORKER_RETURNS/EE-R5B/06_test_bounded_w4_adapter.py",
+  "environment": {
+    "python": "3.13.5",
+    "test_framework": "unittest"
+  },
+  "result": {
+    "collected": 9,
+    "passed": 9,
+    "failed": 0,
+    "errors": 0,
+    "exit_code": 0
+  },
+  "coverage": {
+    "primary_candidate_operation_cells_exercised": 27,
+    "primary_cell_set": "{A,B,C} x {OP001,OP002,OP003,OP004,OP005,OP006,OP020,OP021,OP022}",
+    "lifecycle_actions_checked": {
+      "OP020": ["REBUILD", "REPLAY", "AUDIT"],
+      "OP021": ["REBUILD", "INVALIDATE_SOURCE", "REPLAY", "AUDIT"],
+      "OP022": ["REBUILD", "INVALIDATE_AUTHORITY", "REPLAY", "AUDIT"]
+    },
+    "negative_checks": [
+      "owner commit:path:blob substitution rejected",
+      "Candidate C extra accelerator rejected",
+      "Candidate A/B accelerator declaration rejected",
+      "wrong operation/action rejected",
+      "negative source-open/decode telemetry rejected",
+      "ranking/winner field rejected"
+    ]
+  },
+  "qualification_law": "These tests qualify only the new mechanical EE-W4 envelope/pin/dispatch/normalization bridge. Synthetic owner receipts are used deliberately and are not empirical outcome evidence. Physical capability is grounded in previously accepted Route-A, Route-B, Route-C, HB04, EE-W4 and EE-R2E qualification evidence.",
+  "accepted_physical_evidence": {
+    "A": "fa340c007f5f9d2835e6117daf1dc9545a173bc9",
+    "B": "40a0a0529fa78765c7fc87f7e1f12260a2335f72",
+    "C": "9e6b537c636c6d28b00e2345221a5dbbf2491190",
+    "HB04": "46acf0b162bdcac5f47ce9cce0d9bb1d039fae2d",
+    "EE-W4": "b74b7cf0b8cb3f7e5fae80094a7db7d26ce20457",
+    "EE-R2E": "7f7f716ae9cd26bbb1fe5adc7a5ff1024955e285"
+  },
+  "empirical_distributions_inspected": false,
+  "abc_performance_run": false,
+  "ranking_performed": false,
+  "terminal": "PASS__MECHANICAL_BRIDGE_9_OF_9_TESTS_GREEN__27_PRIMARY_CELLS_TRAVERSED__NO_EMPIRICAL_OUTCOME_USED"
+}

@@ -1,0 +1,71 @@
+{
+  "schema": "RAWLSING_EE_R5B_ADAPTER_REGISTRY@1.0.0",
+  "status": "PASS",
+  "adapter_id": "EE_R5B_W4_OWNER_BOUND_MECHANICAL_BRIDGE_V1",
+  "commission_tip": "24d5fb7c2a05daef5dd0e0caecb9f026d3b1a8f4",
+  "canonical_hq": {
+    "checkpoint_id": "20260916T1450-0400",
+    "handoff_commit": "fda6406e5ccc23e102c58ef5cb511f97f06009da",
+    "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354"
+  },
+  "bridge": {
+    "path": "WORKER_RETURNS/EE-R5B/05_BOUNDED_W4_ADAPTER.py",
+    "git_blob": "d169be112f454732df161620743ea6332866255e",
+    "scope": [
+      "validate exact EE-W4 request envelope",
+      "restrict candidate boundary to OP001-OP006 and OP020-OP022 authorized actions",
+      "enforce exact EE-R4B candidate commit:path:blob",
+      "dispatch candidate-local request/scratch/durable inputs to a bound owner executor",
+      "normalize owner result to EE-W4 response shape",
+      "require nonnegative source-open/decode telemetry",
+      "reject ranking/selection fields",
+      "enforce Candidate C CACC1+CACC2 ceiling and no accelerator declaration for A/B"
+    ]
+  },
+  "tests": {
+    "path": "WORKER_RETURNS/EE-R5B/06_test_bounded_w4_adapter.py",
+    "git_blob": "5b44107afc4ed615fb4d1fd93b4d47ef0db70171"
+  },
+  "owner_bindings": {
+    "A": {
+      "implementation_owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+      "path": "rawlsing_next/pre553_r5_source_backed_adapter.py",
+      "blob": "d4915e7e6755ba1850756aebff72f982f73a332b",
+      "qualification": "fa340c007f5f9d2835e6117daf1dc9545a173bc9"
+    },
+    "B": {
+      "implementation_owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+      "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+      "blob": "7c509c2098d0030f253344eb3f682471378812a8",
+      "qualification": "40a0a0529fa78765c7fc87f7e1f12260a2335f72"
+    },
+    "C": {
+      "implementation_owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+      "path": "rawlsing_next/pre553_route_c_accelerators.py",
+      "blob": "abfdc91a71ef5e18c4a8a6bf62fa65750d8d9889",
+      "qualification": "9e6b537c636c6d28b00e2345221a5dbbf2491190",
+      "permitted_accelerators": [
+        "CACC1_LITS1_SEMANTIC_EXECUTION_BUNDLE",
+        "CACC2_FRONTIER_ATOMIC_PREDICATE_RISK_MASK_BANK"
+      ]
+    }
+  },
+  "common_harness": {
+    "EE-W4": "b74b7cf0b8cb3f7e5fae80094a7db7d26ce20457",
+    "EE-R2E": "7f7f716ae9cd26bbb1fe5adc7a5ff1024955e285",
+    "HB04_execution_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+    "protocol_blob": "590da3a2cc54666bd9786130409170b73310a700",
+    "HB04_qualification": "46acf0b162bdcac5f47ce9cce0d9bb1d039fae2d"
+  },
+  "not_implemented_here": [
+    "survey semantics",
+    "routing/risk-set semantics",
+    "query oracles",
+    "source decoder replacement",
+    "new storage or persistence architecture",
+    "new lifecycle semantics",
+    "new accelerator class",
+    "candidate ranking or selection"
+  ],
+  "terminal": "PASS__ONE_BOUNDED_OWNER_BOUND_MECHANICAL_W4_BRIDGE_REGISTERED_FOR_THE_COMMISSIONED_27_CELL_SURFACE"
+}
