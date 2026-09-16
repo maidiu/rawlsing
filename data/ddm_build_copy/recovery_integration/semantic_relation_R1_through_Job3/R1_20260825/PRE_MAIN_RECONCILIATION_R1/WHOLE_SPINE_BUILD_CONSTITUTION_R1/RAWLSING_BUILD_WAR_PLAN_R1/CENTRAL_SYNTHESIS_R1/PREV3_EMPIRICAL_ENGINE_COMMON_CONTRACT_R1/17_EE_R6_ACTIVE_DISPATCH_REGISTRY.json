@@ -1,0 +1,53 @@
+{
+  "schema":"RAWLSING_EE_R6_ACTIVE_DISPATCH_REGISTRY@1.0.0",
+  "parent_hq_checkpoint":"20260916T1524-0400",
+  "dispatch_parent_control_head":"c284ea38c8b6bfc5afd4eaff8721fb9868f5afc4",
+  "r5_returns":{
+    "EE-R5A":{"head":"0b98666a281586ce6feb863939e8e82f93a4f87c","status":"BOUNDED_BLOCKER","effect":"36_WVS7_QIDS_ALL_UNRESOLVED_RESPONSE_SEMANTICS__NO_PAIR"},
+    "EE-R5B":{"head":"02d32036db49c70ff137f1730d0ff95b571040d3","status":"PASS","effect":"27_OF_27_PHYSICAL_CELLS_REQUALIFIED__ZERO_PROVED_PHYSICAL_GAPS"}
+  },
+  "active_workers":[
+    {
+      "id":"EE-R6A",
+      "human_name":"WVS36 Source-Native Response-Semantic Court + Pair Freeze",
+      "branch":"agent/rabochii-prev3-ee-r6a-wvs36-source-native-semantic-pair-r1",
+      "library_access":"EXACT_ONLY",
+      "grain":"FROZEN_36_WVS7_QIDS_ONLY__CURRENT_SOURCE_NATIVE_RESPONSE_SEMANTICS__LEXICOGRAPHIC_FIRST_TWO_IF_COMPLETE"
+    },
+    {
+      "id":"EE-R6B",
+      "human_name":"Final A/B/C Bakeoff Preassembly",
+      "branch":"agent/rabochii-prev3-ee-r6b-final-bakeoff-assembly-r1",
+      "library_access":"NO",
+      "grain":"ASSEMBLE_CURRENTLY_READY_14_OF_18_SELECTION_CELLS_PLUS_27_PHYSICAL_BINDINGS__FOUR_WVS_QUERY_CELL_SPLICE_ONLY"
+    },
+    {
+      "id":"ASTRA-D04-R1",
+      "human_name":"LiTS Learned-Workload Execution",
+      "branch":"agent/rabochii-prev3-astra-d04r1-learned-workload-execution-r1",
+      "library_access":"EXACT_ONLY_LITS_I_IF_REQUIRED_BY_EXISTING_WORKLOAD",
+      "grain":"EXECUTE_THE_PREVIOUSLY_HELD_D04_LEARNED_WORKLOAD_FROM_ACCEPTED_D01Q_PLUS_D03_PREMISES_ONLY"
+    },
+    {
+      "id":"ASTRA-D10-R1",
+      "human_name":"M10-M01 Concrete Candidate Envelope Assembly",
+      "branch":"agent/rabochii-prev3-astra-d10r1-candidate-envelope-r1",
+      "library_access":"NO",
+      "grain":"ASSEMBLE_EXISTING_M10_M01_CONCRETE_CANDIDATE_ENVELOPE_AFTER_D09_ONLY"
+    }
+  ],
+  "priority_law":{
+    "carrier":"R6A_PLUS_R6B",
+    "empirical_production":"D04_PARALLEL",
+    "sdtf_canary":"D10_PARALLEL_NONCRITICAL",
+    "semantic_queue":"NINE_FAMILY_QUEUE_REMAINS_WAKEABLE__NO_ALL_CORPUS_GATE"
+  },
+  "forbidden":[
+    "GENERAL_ARCHITECTURE_REVIEW",
+    "FULL_QSR_RESURRECTION_FOR_WVS_PAIR",
+    "ALL_1195_WVS_RESIDUALS_AS_CARRIER_GATE",
+    "ALL_18012_RESPONSE_SEMANTICS_AS_CARRIER_GATE",
+    "ABC_RANKING_BEFORE_EXACT_EQUAL_WORK_EXECUTION",
+    "PREV3_POPULATION_EVIDENCE_AS_V3_ACTOR_TRUTH"
+  ]
+}
