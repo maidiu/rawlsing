@@ -1,0 +1,81 @@
+{
+  "schema": "RAWLSING_HQ_HANDOFF@1.1.0",
+  "checkpoint_id": "20260916T1524-0400",
+  "repository": "maidiu/rawlsing",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354",
+  "prior_checkpoint": "20260916T1450-0400",
+  "status": "EE_R4_RETURNS_RECONCILED__EE_R5_TWO_CRITICAL_LANES_ACTIVE",
+  "latest_substantive_hq_authority": "24d5fb7c2a05daef5dd0e0caecb9f026d3b1a8f4",
+  "r4_returns": {
+    "EE-R4A": {
+      "head": "905122c63de50bf6709ca6e579f1054921f8a0cc",
+      "status": "BOUNDED_BLOCKER",
+      "blocker": "NO_ACCEPTED_CURRENT_QID_BOUND_WVS_RESPONSE_SEMANTIC_BINDING_AVAILABLE_TO_PROVE_TWO_ELIGIBLE_QIDS",
+      "candidate_qids": 36,
+      "widening_forbidden": true
+    },
+    "EE-R4B": {
+      "head": "e5012ff2d9116e65850402b4432899de4937ed5e",
+      "status": "PASS",
+      "effect": "ABC_EXECUTABLE_OWNER_AND_INVOCATION_BINDINGS_READY"
+    },
+    "EE-R4C": {
+      "head": "9348378fe6976dbc72a34d0e799b875e41073f34",
+      "status": "PASS",
+      "selected_total": 18012,
+      "units": 9,
+      "wvs_residual_members": 1195,
+      "effect": "FINITE_PARALLEL_RESPONSE_SEMANTIC_PRODUCTION_QUEUE_READY"
+    }
+  },
+  "selection_floor": {
+    "total": 18,
+    "common_premise_ready": 14,
+    "blocked": 4,
+    "blocked_cells": [
+      "WVS7::OP003",
+      "WVS7::OP004",
+      "WVS7::OP005",
+      "WVS7::OP006"
+    ],
+    "abc_executable_owner_registry_ready": true
+  },
+  "active_workers": [
+    {
+      "id": "EE-R5A",
+      "human_name": "WVS7 36-qid selection-critical response-semantic microcourt + proving-pair freeze",
+      "branch": "agent/rabochii-prev3-ee-r5a-wvs36-semantic-pair-freeze-r1",
+      "commission_tip": "24d5fb7c2a05daef5dd0e0caecb9f026d3b1a8f4",
+      "library_access": "NO_BY_DEFAULT"
+    },
+    {
+      "id": "EE-R5B",
+      "human_name": "A/B/C 27-cell physical adapter requalification",
+      "branch": "agent/rabochii-prev3-ee-r5b-abc-27cell-physical-requalification-r1",
+      "commission_tip": "24d5fb7c2a05daef5dd0e0caecb9f026d3b1a8f4",
+      "library_access": "NO"
+    }
+  ],
+  "dependency_graph": {
+    "WVS_OP003_OP006": "WAIT_EE_R5A",
+    "ABC_27_CELL_PHYSICAL_REQUALIFICATION": "ACTIVE_EE_R5B",
+    "FINAL_18_CELL_ORACLE_PROFILE_ASSEMBLY": "WAIT_EE_R5A_AND_EE_R5B",
+    "FINAL_ABC_BAKEOFF": "WAIT_FINAL_18_CELL_ORACLE_PROFILE_ASSEMBLY",
+    "RESPONSE_SEMANTIC_PRODUCTION": "R4C_NINE_FAMILY_QUEUE_READY_PARALLEL"
+  },
+  "architecture_holding": [
+    "PREV3_IS_GOVERNED_SOCIOLOGICAL_RESEARCH_MACHINE",
+    "THEORY_DOCUMENTATION_ENRICHES_AND_CONSTRAINS_BUT_NEED_NOT_PRESTATE_EVERY_LAWFUL_EMPIRICAL_MAPPING",
+    "PREV3_WORLD_NE_V3_LIFE",
+    "ABC_PRODUCTION_CARRIER_GATE_NE_ALL_CORPUS_SEMANTIC_COMPLETION_GATE"
+  ],
+  "frozen_laws": [
+    "NO_ALL_LANES_BARRIER",
+    "MISSING_AUTHORITY_NE_CANDIDATE_FAILURE",
+    "SEMANTIC_PARITY_PRECEDES_PHYSICAL_PERFORMANCE",
+    "NO_CANDIDATE_WINS_BY_OMITTED_WORK",
+    "HQ_FANIN_OWNER__DO_NOT_USE_USER_AS_SYNC_BUS"
+  ],
+  "terminal": "EE_R5_TWO_CRITICAL_LANES_ACTIVE"
+}
