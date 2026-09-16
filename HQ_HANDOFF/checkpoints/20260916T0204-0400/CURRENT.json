@@ -1,0 +1,91 @@
+{
+  "schema":"RAWLSING_HQ_HANDOFF@1.1.0",
+  "checkpoint_id":"20260916T0204-0400",
+  "repository":"maidiu/rawlsing",
+  "control_branch":"integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip":"1dcd2a79dd6d4208738f655ab7fe4e71c219e354",
+  "prior_checkpoint":"20260915T1600-0400",
+  "status":"W7_RETURNS_ADOPTED__EMPIRICAL_ENGINE_COMMON_CONTRACT_FROZEN_R1__FINAL_ABC_HELD_FOR_FULL_WORKLOAD_MANIFEST",
+  "latest_substantive_hq_authority":"30a6088f65a19a679ab4960743b80ee44fb79955",
+  "fanin_commit":"30a6088f65a19a679ab4960743b80ee44fb79955",
+  "architecture_contract_root":"data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/PREV3_EMPIRICAL_ENGINE_COMMON_CONTRACT_R1",
+  "architecture_contract_files":[
+    "00_CONTEXT_AND_ARCHITECTURAL_HOLDING.md",
+    "01_EMPIRICAL_ENGINE_COMMON_CONTRACT_R1.md",
+    "02_ABC_COMPARISON_AND_CLOSURE_SEQUENCE.md",
+    "03_W7_RETURN_RECONCILIATION.md",
+    "04_REQUIREMENT_MATRIX.json"
+  ],
+  "completed_adopted":{
+    "new_w7_passes":["ASTRA-D01Q","ASTRA-D09","N04-R4A","N04-R4B","N04-R4C","ASTRA-D02-R2","ASTRA-D19"],
+    "new_w7_local_blockers":["ASTRA-D17"],
+    "preexisting_local_blockers":["D12","D15"]
+  },
+  "w7_returns":{
+    "ASTRA-D01Q":{"head":"4fdc1bd346a77381890f1d8dbc31c552de09c893","status":"PASS","effect":"J02 independently requalified; D04 still also requires D03"},
+    "ASTRA-D09":{"head":"2924e46ce7fee1ed9c966403fce0333ea2331c2f","status":"PASS","effect":"M10-M01 CALIBRATION NOT_APPLICABLE under accepted NONNUMERIC value mode; D10 eligible"},
+    "ASTRA-D17":{"head":"6b0ca6856a88ae4af79834db2a165c38afed0449","status":"LOCAL_BLOCKER","effect":"exact WVS7/LiTS and equal-work preflight PASS; no candidate execution/ranking; local pyreadstat unavailable"},
+    "N04-R4A":{"head":"238800fe20f257194530916514289492601eeff1","status":"PASS_TYPED_RESIDUAL","selected":18012,"bound":0,"typed_residual":18012},
+    "N04-R4B":{"head":"f1f977910e5f0f40da4ddb0d0f329be556e7b718","status":"PASS_TYPED_RESIDUAL","selected":159,"bound":0,"typed_residual":159},
+    "N04-R4C":{"head":"bd285cb17443053465dc73a8fe277e67c6d8059e","status":"PASS_ADJUDICATED","selected":42,"t03_bound":0,"relation":30,"subjective_evidence":12},
+    "ASTRA-D02-R2":{"head":"71365947c80878bf655b57a90ebb698ee27287dd","status":"PASS","effect":"governed repo-native CPython3.12 + pyreadstat1.3.6 runtime surface proved; D03 eligible"},
+    "ASTRA-D19":{"head":"4a910b13b7f0d2911c97ac630e9baf82d674f57a","status":"PASS","effect":"generic M05 topology producer independently qualified; no positive topology instance"}
+  },
+  "active_workers":[],
+  "eligible_successors":[
+    {"id":"D03","status":"ELIGIBLE_UNCOMMISSIONED","basis":["ASTRA-D02-R2 PASS"],"priority":"HIGH_VALUE_NAMED_SOURCE_EXECUTION_FOR_SUBSTRATE_DECISION"},
+    {"id":"D10","status":"ELIGIBLE_UNCOMMISSIONED","basis":["ASTRA-D09 PASS","D05","D06","D07","D08"],"priority":"VALID_DOWNSTREAM_CANARY__NOT_CURRENT_ARCHITECTURE_CRITICAL_PATH"},
+    {"id":"D04","status":"WAIT_D03","basis":["ASTRA-D01Q PASS","D03 pending"]},
+    {"id":"D17_REISSUE","status":"HELD_FOR_EXPANDED_COMMON_CONTRACT_WORKLOAD","basis":["D17 local blocker","ASTRA-D02-R2 runtime capability proof"],"forbidden":"DO_NOT_TREAT_OLD_BOUNDED_OP014_AS_FINAL_ABC_VERDICT"},
+    {"id":"N04_SEMANTIC_CAPITAL_PRODUCTION","status":"DESIGN_REQUIRED","basis":["18012 response-semantics residuals","159 routing residuals","42 non-T03 adjudications"],"law":"SCALABLE_SEMANTIC_INFERENCE_PRODUCTION__NO_ARTISANAL_18012_COURTS"}
+  ],
+  "dependency_graph":{
+    "ABC_FINAL_SELECTION":{"status":"WAIT_FULL_EMPIRICAL_ENGINE_PRODUCTION_WORKLOAD_MANIFEST","requires":["EE01_EE16_EQUAL_WORK_DENOMINATOR","named source/universe eligible cells","workload-bound validators","repeat/invalidation/rebuild tests"],"forbidden":["bounded OP014 promoted to project-wide verdict","candidate wins by omitted work","missing authority scored as candidate failure"]},
+    "D03":{"status":"ELIGIBLE_AFTER_D02_R2"},
+    "D04":{"status":"WAIT_D03","accepted":["ASTRA-D01Q"]},
+    "D10":{"status":"ELIGIBLE_AFTER_D09","priority":"NONBLOCKING_CANARY"},
+    "D13":{"status":"BLOCKED_D12_REAL_WITNESS_AT_EXISTING_COURT_GRAIN","negative_ceiling":"does_not_test_survey_semantics_to_structural_inference_route"},
+    "D15_ROUTE":{"status":"BLOCKED_PRODUCER_FAMILY_BINDING"},
+    "FIELD_FORGE":{"status":"DOWNSTREAM_OF_PRODUCTION_TRII_EMPIRICAL_INTERFACE"},
+    "DVA_PRESSURE_TIME_WORLD":{"status":"DOWNSTREAM_OF_FIELD_FORGE_AND_STRUCTURAL_PRODUCTS"},
+    "PREV3_V3_SEAM":{"status":"DOWNSTREAM_OF_ACTUAL_EMPIRICAL_STRUCTURAL_TEMPORAL_PRESSURE_ARTIFACTS"}
+  },
+  "n04_semantic_capital_state":{
+    "response_category_semantics_ref":18012,
+    "response_category_semantics_bound":0,
+    "routing_applicability_ref":159,
+    "routing_applicability_bound":0,
+    "candidate_kind":42,
+    "candidate_kind_t03_bound":0,
+    "candidate_kind_relation":30,
+    "candidate_kind_subjective_evidence":12,
+    "holding":"REAL_SEMANTIC_AUTHORITY_DEFICIT__NOT_T03_NE_NOT_USEFUL"
+  },
+  "project_priority":[
+    "FREEZE_EXACT_PRODUCTION_ABC_WORKLOAD_MANIFEST_FROM_COMMON_CONTRACT",
+    "ADVANCE_REAL_NAMED_SOURCE_EXECUTION_NEEDED_FOR_DECISION",
+    "CLOSE_ONLY_WORKLOAD_BLOCKING_SEMANTIC_INPUT_AUTHORITY",
+    "RUN_EQUAL_WORK_ABC_PLUS_REPEAT_INVALIDATION_REBUILD",
+    "SELECT_PRODUCTION_CARRIER_OR_EXPLICIT_PRODUCT_CLASS_HYBRID",
+    "BUILD_POPULATE_TRII_AND_EMPIRICAL_SOCIAL_LEARNED_WORLD",
+    "FIELD_FORGE_CARRIER_NEUTRAL_INGRESS",
+    "POPULATE_DVA_STRUCTURAL_TEMPORAL_PRESSURE_WORLD",
+    "COMPLETE_OBJECTIVE_CONSEQUENCES_AND_HORIZONTAL_QUALIFICATION",
+    "DESIGN_PREV3_V3_SEAM_FROM_ACTUAL_ARTIFACTS"
+  ],
+  "decision_ledger":{"through":"HQD-2026-09-15-034","durable_supplements":["30a6088f65a19a679ab4960743b80ee44fb79955","dc6cf333f461c0dfa43f8410b754692597dcc115"]},
+  "boundaries":[
+    "NO_ALL_LANES_BARRIER",
+    "LOCAL_BLOCKER_ONLY",
+    "RAWLSING_IS_AN_INFERENCE_ENGINE_NOT_ONLY_AN_EVIDENCE_ARCHIVE",
+    "UNCERTAINTY_IS_REPRESENTED_NOT_ELIMINATED_BEFORE_EXECUTION",
+    "UNKNOWN_FACTS_DO_NOT_ERASE_KNOWN_EVIDENCE",
+    "NO_CANDIDATE_WINS_BY_OMITTING_WORK",
+    "MISSING_AUTHORITY_IS_NOT_CANDIDATE_FAILURE",
+    "PRE_V3_WORLD_NE_V3_LIFE",
+    "FIELD_FORGE_CONSUMES_CARRIER_NEUTRAL_EMPIRICAL_INTERFACE",
+    "OBL063_QUARANTINED",
+    "HQ_FANIN_OWNER__DO_NOT_USE_USER_AS_SYNC_BUS"
+  ],
+  "terminal":"W7_FANIN_SEALED__EMPIRICAL_ENGINE_COMMON_CONTRACT_R1_FROZEN__FINAL_ABC_WAITS_FULL_WORKLOAD_MANIFEST"
+}
