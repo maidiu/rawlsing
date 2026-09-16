@@ -1,0 +1,1901 @@
+{
+  "schema": "RAWLSING_EE_R3G_CANDIDATE_ADAPTER_READINESS@1.0.0",
+  "worker": "EE-R3G",
+  "branch": "agent/rabochii-prev3-ee-r3g-abc-candidate-adapter-readiness-r1",
+  "commission_tip": "1ef7aa1b9ae1cdb855bdf82a7106889afaba31a6",
+  "status": "BLOCKED__CURRENT_ABC_EXECUTABLE_OWNER_REFS_UNRESOLVED",
+  "canonical_hq": {
+    "observed_control_tip": "3617d540e2aaabc487fecb91ae125fb30301da06",
+    "checkpoint_id": "20260916T1334-0400",
+    "handoff_commit": "f9d94c83d8a1cdc99f2ac04d3a42f09e693952ab",
+    "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354"
+  },
+  "cell_count": 27,
+  "disposition_counts": {
+    "WAITING_ON_COMMON_PREMISE": 27,
+    "ADAPTER_READY": 0,
+    "BOUNDED_ADAPTER_NEEDED": 0,
+    "PHYSICAL_IMPLEMENTATION_GAP": 0
+  },
+  "classification_law": "Common-premise waits are independently supported by sealed adopted R2A/R3 state; they do not assert candidate capability or incapability. Actual physical owner/component mapping remains blocked. This is not terminal PASS.",
+  "cells": [
+    {
+      "cell_id": "A::OP001",
+      "candidate_id": "A",
+      "candidate_class": "PERSISTENT_CANONICAL_EVENT_CARRIER",
+      "operation_id": "OP001",
+      "frozen_operation_id": "EEW1-OP001",
+      "disposition": "WAITING_ON_COMMON_PREMISE",
+      "exact_semantic_purpose": "exact source decode/fidelity and source-coordinate reconstruction",
+      "oracle_ids": [
+        "OR-SOURCE-FIDELITY",
+        "OR-AUTHORITY-LIMIT"
+      ],
+      "common_premise_wait": "Exact real-source SOURCE_FIDELITY_RECEIPT source-authority roots/proving request and output oracle; decoder identity/source hash alone do not close this semantic result.",
+      "common_premise_owner": "EE-R3F",
+      "applies_to_universes": [
+        "EEU_WVS7_WAVE7_EXACT_SOURCE",
+        "EEU_LITS_I_2006_EXACT_SOURCE"
+      ],
+      "evidence_refs": [
+        {
+          "surface_id": "S06",
+          "selector": "operations[operation_id=EEW1-OP001]"
+        },
+        {
+          "surface_id": "S08",
+          "selector": "selection_critical_positive_deficits.operations / successor_work_packages"
+        },
+        {
+          "surface_id": "S04",
+          "selector": "dependency_graph.OP001_OP006_REAL_SOURCE_PREMISES"
+        },
+        {
+          "surface_id": "S19"
+        },
+        {
+          "surface_id": "S11",
+          "selector": "workload_execution_profile / candidate_adapter"
+        },
+        {
+          "surface_id": "S17",
+          "selector": "CANDIDATE DEFINITIONS / PRE-LAUNCH FREEZE REQUIRED FROM HQ"
+        }
+      ],
+      "searched_surface_ids": [
+        "S01",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18",
+        "S19"
+      ],
+      "current_candidate_owner_binding": "UNRESOLVED_IN_BOUNDED_CURRENT_AUTHORITY_INPUTS",
+      "existing_candidate_executable_component": null,
+      "candidate_immediate_dependencies": "NOT_RESOLVABLE_WITHOUT_CURRENT_EXECUTABLE_OWNER_PIN__NO_GUESSED_DEPENDENCIES_SEARCHED",
+      "physical_adapter_qualification": "NOT_COMPLETED__OWNER_IDENTITY_BLOCKER",
+      "adapter_selected": false,
+      "physical_gap_proved": false
+    },
+    {
+      "cell_id": "A::OP002",
+      "candidate_id": "A",
+      "candidate_class": "PERSISTENT_CANONICAL_EVENT_CARRIER",
+      "operation_id": "OP002",
+      "frozen_operation_id": "EEW1-OP002",
+      "disposition": "WAITING_ON_COMMON_PREMISE",
+      "exact_semantic_purpose": "raw physical missing versus governed semantic response state; preserve ranked/multiselect/equal-value-distinct-slot topology",
+      "oracle_ids": [
+        "OR-ZERO-NULL",
+        "OR-SLOT-IDENTITY"
+      ],
+      "common_premise_wait": "Exact real-source question/response-state/occurrence/topology bindings and event/slot output oracle.",
+      "common_premise_owner": "EE-R3F",
+      "applies_to_universes": [
+        "EEU_WVS7_WAVE7_EXACT_SOURCE",
+        "EEU_LITS_I_2006_EXACT_SOURCE"
+      ],
+      "evidence_refs": [
+        {
+          "surface_id": "S06",
+          "selector": "operations[operation_id=EEW1-OP002]"
+        },
+        {
+          "surface_id": "S08",
+          "selector": "selection_critical_positive_deficits.operations / successor_work_packages"
+        },
+        {
+          "surface_id": "S04",
+          "selector": "dependency_graph.OP001_OP006_REAL_SOURCE_PREMISES"
+        },
+        {
+          "surface_id": "S19"
+        },
+        {
+          "surface_id": "S11",
+          "selector": "workload_execution_profile / candidate_adapter"
+        },
+        {
+          "surface_id": "S17",
+          "selector": "CANDIDATE DEFINITIONS / PRE-LAUNCH FREEZE REQUIRED FROM HQ"
+        }
+      ],
+      "searched_surface_ids": [
+        "S01",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18",
+        "S19"
+      ],
+      "current_candidate_owner_binding": "UNRESOLVED_IN_BOUNDED_CURRENT_AUTHORITY_INPUTS",
+      "existing_candidate_executable_component": null,
+      "candidate_immediate_dependencies": "NOT_RESOLVABLE_WITHOUT_CURRENT_EXECUTABLE_OWNER_PIN__NO_GUESSED_DEPENDENCIES_SEARCHED",
+      "physical_adapter_qualification": "NOT_COMPLETED__OWNER_IDENTITY_BLOCKER",
+      "adapter_selected": false,
+      "physical_gap_proved": false
+    },
+    {
+      "cell_id": "A::OP003",
+      "candidate_id": "A",
+      "candidate_class": "PERSISTENT_CANONICAL_EVENT_CARRIER",
+      "operation_id": "OP003",
+      "frozen_operation_id": "EEW1-OP003",
+      "disposition": "WAITING_ON_COMMON_PREMISE",
+      "exact_semantic_purpose": "routing/applicability/risk-set and denominator correctness including ambiguity",
+      "oracle_ids": [
+        "OR-DENOMINATOR",
+        "OR-ROUTING-AMBIGUITY"
+      ],
+      "common_premise_wait": "Exact real-source routing/applicability/risk-set/denominator query and ambiguity oracle.",
+      "common_premise_owner": "EE-R3F",
+      "applies_to_universes": [
+        "EEU_WVS7_WAVE7_EXACT_SOURCE",
+        "EEU_LITS_I_2006_EXACT_SOURCE"
+      ],
+      "evidence_refs": [
+        {
+          "surface_id": "S06",
+          "selector": "operations[operation_id=EEW1-OP003]"
+        },
+        {
+          "surface_id": "S08",
+          "selector": "selection_critical_positive_deficits.operations / successor_work_packages"
+        },
+        {
+          "surface_id": "S04",
+          "selector": "dependency_graph.OP001_OP006_REAL_SOURCE_PREMISES"
+        },
+        {
+          "surface_id": "S19"
+        },
+        {
+          "surface_id": "S11",
+          "selector": "workload_execution_profile / candidate_adapter"
+        },
+        {
+          "surface_id": "S17",
+          "selector": "CANDIDATE DEFINITIONS / PRE-LAUNCH FREEZE REQUIRED FROM HQ"
+        }
+      ],
+      "searched_surface_ids": [
+        "S01",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18",
+        "S19"
+      ],
+      "current_candidate_owner_binding": "UNRESOLVED_IN_BOUNDED_CURRENT_AUTHORITY_INPUTS",
+      "existing_candidate_executable_component": null,
+      "candidate_immediate_dependencies": "NOT_RESOLVABLE_WITHOUT_CURRENT_EXECUTABLE_OWNER_PIN__NO_GUESSED_DEPENDENCIES_SEARCHED",
+      "physical_adapter_qualification": "NOT_COMPLETED__OWNER_IDENTITY_BLOCKER",
+      "adapter_selected": false,
+      "physical_gap_proved": false
+    },
+    {
+      "cell_id": "A::OP004",
+      "candidate_id": "A",
+      "candidate_class": "PERSISTENT_CANONICAL_EVENT_CARRIER",
+      "operation_id": "OP004",
+      "frozen_operation_id": "EEW1-OP004",
+      "disposition": "WAITING_ON_COMMON_PREMISE",
+      "exact_semantic_purpose": "exact marginal/parent distribution query",
+      "oracle_ids": [
+        "OR-EXACT-QUERY"
+      ],
+      "common_premise_wait": "Exact real-source representative marginal query, risk set, measure basis and distribution oracle.",
+      "common_premise_owner": "EE-R3F",
+      "applies_to_universes": [
+        "EEU_WVS7_WAVE7_EXACT_SOURCE",
+        "EEU_LITS_I_2006_EXACT_SOURCE"
+      ],
+      "evidence_refs": [
+        {
+          "surface_id": "S06",
+          "selector": "operations[operation_id=EEW1-OP004]"
+        },
+        {
+          "surface_id": "S08",
+          "selector": "selection_critical_positive_deficits.operations / successor_work_packages"
+        },
+        {
+          "surface_id": "S04",
+          "selector": "dependency_graph.OP001_OP006_REAL_SOURCE_PREMISES"
+        },
+        {
+          "surface_id": "S19"
+        },
+        {
+          "surface_id": "S11",
+          "selector": "workload_execution_profile / candidate_adapter"
+        },
+        {
+          "surface_id": "S17",
+          "selector": "CANDIDATE DEFINITIONS / PRE-LAUNCH FREEZE REQUIRED FROM HQ"
+        }
+      ],
+      "searched_surface_ids": [
+        "S01",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18",
+        "S19"
+      ],
+      "current_candidate_owner_binding": "UNRESOLVED_IN_BOUNDED_CURRENT_AUTHORITY_INPUTS",
+      "existing_candidate_executable_component": null,
+      "candidate_immediate_dependencies": "NOT_RESOLVABLE_WITHOUT_CURRENT_EXECUTABLE_OWNER_PIN__NO_GUESSED_DEPENDENCIES_SEARCHED",
+      "physical_adapter_qualification": "NOT_COMPLETED__OWNER_IDENTITY_BLOCKER",
+      "adapter_selected": false,
+      "physical_gap_proved": false
+    },
+    {
+      "cell_id": "A::OP005",
+      "candidate_id": "A",
+      "candidate_class": "PERSISTENT_CANONICAL_EVENT_CARRIER",
+      "operation_id": "OP005",
+      "frozen_operation_id": "EEW1-OP005",
+      "disposition": "WAITING_ON_COMMON_PREMISE",
+      "exact_semantic_purpose": "exact same-respondent joint query preserving logical joint, executable incidence and observed pattern as distinct",
+      "oracle_ids": [
+        "OR-SAME-RESPONDENT",
+        "OR-JOINT-NONCONTAMINATION"
+      ],
+      "common_premise_wait": "Exact real-source same-respondent joint query/component/linkage/denominator and output oracle.",
+      "common_premise_owner": "EE-R3F",
+      "applies_to_universes": [
+        "EEU_WVS7_WAVE7_EXACT_SOURCE",
+        "EEU_LITS_I_2006_EXACT_SOURCE"
+      ],
+      "evidence_refs": [
+        {
+          "surface_id": "S06",
+          "selector": "operations[operation_id=EEW1-OP005]"
+        },
+        {
+          "surface_id": "S08",
+          "selector": "selection_critical_positive_deficits.operations / successor_work_packages"
+        },
+        {
+          "surface_id": "S04",
+          "selector": "dependency_graph.OP001_OP006_REAL_SOURCE_PREMISES"
+        },
+        {
+          "surface_id": "S19"
+        },
+        {
+          "surface_id": "S11",
+          "selector": "workload_execution_profile / candidate_adapter"
+        },
+        {
+          "surface_id": "S17",
+          "selector": "CANDIDATE DEFINITIONS / PRE-LAUNCH FREEZE REQUIRED FROM HQ"
+        }
+      ],
+      "searched_surface_ids": [
+        "S01",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18",
+        "S19"
+      ],
+      "current_candidate_owner_binding": "UNRESOLVED_IN_BOUNDED_CURRENT_AUTHORITY_INPUTS",
+      "existing_candidate_executable_component": null,
+      "candidate_immediate_dependencies": "NOT_RESOLVABLE_WITHOUT_CURRENT_EXECUTABLE_OWNER_PIN__NO_GUESSED_DEPENDENCIES_SEARCHED",
+      "physical_adapter_qualification": "NOT_COMPLETED__OWNER_IDENTITY_BLOCKER",
+      "adapter_selected": false,
+      "physical_gap_proved": false
+    },
+    {
+      "cell_id": "A::OP006",
+      "candidate_id": "A",
+      "candidate_class": "PERSISTENT_CANONICAL_EVENT_CARRIER",
+      "operation_id": "OP006",
+      "frozen_operation_id": "EEW1-OP006",
+      "disposition": "WAITING_ON_COMMON_PREMISE",
+      "exact_semantic_purpose": "conditional/subgroup query with exact predicate, risk set and conditional denominator",
+      "oracle_ids": [
+        "OR-EXACT-QUERY",
+        "OR-DENOMINATOR"
+      ],
+      "common_premise_wait": "Exact real-source predicate/conditional query/risk set/conditional denominator and output oracle.",
+      "common_premise_owner": "EE-R3F",
+      "applies_to_universes": [
+        "EEU_WVS7_WAVE7_EXACT_SOURCE",
+        "EEU_LITS_I_2006_EXACT_SOURCE"
+      ],
+      "evidence_refs": [
+        {
+          "surface_id": "S06",
+          "selector": "operations[operation_id=EEW1-OP006]"
+        },
+        {
+          "surface_id": "S08",
+          "selector": "selection_critical_positive_deficits.operations / successor_work_packages"
+        },
+        {
+          "surface_id": "S04",
+          "selector": "dependency_graph.OP001_OP006_REAL_SOURCE_PREMISES"
+        },
+        {
+          "surface_id": "S19"
+        },
+        {
+          "surface_id": "S11",
+          "selector": "workload_execution_profile / candidate_adapter"
+        },
+        {
+          "surface_id": "S17",
+          "selector": "CANDIDATE DEFINITIONS / PRE-LAUNCH FREEZE REQUIRED FROM HQ"
+        }
+      ],
+      "searched_surface_ids": [
+        "S01",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18",
+        "S19"
+      ],
+      "current_candidate_owner_binding": "UNRESOLVED_IN_BOUNDED_CURRENT_AUTHORITY_INPUTS",
+      "existing_candidate_executable_component": null,
+      "candidate_immediate_dependencies": "NOT_RESOLVABLE_WITHOUT_CURRENT_EXECUTABLE_OWNER_PIN__NO_GUESSED_DEPENDENCIES_SEARCHED",
+      "physical_adapter_qualification": "NOT_COMPLETED__OWNER_IDENTITY_BLOCKER",
+      "adapter_selected": false,
+      "physical_gap_proved": false
+    },
+    {
+      "cell_id": "A::OP020",
+      "candidate_id": "A",
+      "candidate_class": "PERSISTENT_CANONICAL_EVENT_CARRIER",
+      "operation_id": "OP020",
+      "frozen_operation_id": "EEW1-OP020",
+      "disposition": "WAITING_ON_COMMON_PREMISE",
+      "exact_semantic_purpose": "delete only regenerable representation, rebuild from authoritative roots and require exact promised semantic identity/receipt parity",
+      "oracle_ids": [
+        "OR-REBUILD-IDENTITY"
+      ],
+      "common_premise_wait": "Frozen candidate-neutral regenerable deletion boundary, retained immutable side authority, and exact before/after semantic/replay identity oracle.",
+      "common_premise_owner": "EE-R3E",
+      "applies_to_universes": [
+        "EEU_WVS7_WAVE7_EXACT_SOURCE",
+        "EEU_LITS_I_2006_EXACT_SOURCE"
+      ],
+      "evidence_refs": [
+        {
+          "surface_id": "S06",
+          "selector": "operations[operation_id=EEW1-OP020]"
+        },
+        {
+          "surface_id": "S08",
+          "selector": "selection_critical_positive_deficits.operations / successor_work_packages"
+        },
+        {
+          "surface_id": "S04",
+          "selector": "dependency_graph.OP020_OP022_LIFECYCLE"
+        },
+        {
+          "surface_id": "S20"
+        },
+        {
+          "surface_id": "S11",
+          "selector": "workload_execution_profile / candidate_adapter"
+        },
+        {
+          "surface_id": "S17",
+          "selector": "CANDIDATE DEFINITIONS / PRE-LAUNCH FREEZE REQUIRED FROM HQ"
+        }
+      ],
+      "searched_surface_ids": [
+        "S01",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18",
+        "S20"
+      ],
+      "current_candidate_owner_binding": "UNRESOLVED_IN_BOUNDED_CURRENT_AUTHORITY_INPUTS",
+      "existing_candidate_executable_component": null,
+      "candidate_immediate_dependencies": "NOT_RESOLVABLE_WITHOUT_CURRENT_EXECUTABLE_OWNER_PIN__NO_GUESSED_DEPENDENCIES_SEARCHED",
+      "physical_adapter_qualification": "NOT_COMPLETED__OWNER_IDENTITY_BLOCKER",
+      "adapter_selected": false,
+      "physical_gap_proved": false
+    },
+    {
+      "cell_id": "A::OP021",
+      "candidate_id": "A",
+      "candidate_class": "PERSISTENT_CANONICAL_EVENT_CARRIER",
+      "operation_id": "OP021",
+      "frozen_operation_id": "EEW1-OP021",
+      "disposition": "WAITING_ON_COMMON_PREMISE",
+      "exact_semantic_purpose": "selective invalidation after exactly one source/release determinant changes",
+      "oracle_ids": [
+        "OR-SELECTIVE-INVALIDATION"
+      ],
+      "common_premise_wait": "One exact source/release change fixture per universe and expected dependency-closure/selective-rebuild oracle.",
+      "common_premise_owner": "EE-R3E",
+      "applies_to_universes": [
+        "EEU_WVS7_WAVE7_EXACT_SOURCE",
+        "EEU_LITS_I_2006_EXACT_SOURCE"
+      ],
+      "evidence_refs": [
+        {
+          "surface_id": "S06",
+          "selector": "operations[operation_id=EEW1-OP021]"
+        },
+        {
+          "surface_id": "S08",
+          "selector": "selection_critical_positive_deficits.operations / successor_work_packages"
+        },
+        {
+          "surface_id": "S04",
+          "selector": "dependency_graph.OP020_OP022_LIFECYCLE"
+        },
+        {
+          "surface_id": "S20"
+        },
+        {
+          "surface_id": "S11",
+          "selector": "workload_execution_profile / candidate_adapter"
+        },
+        {
+          "surface_id": "S17",
+          "selector": "CANDIDATE DEFINITIONS / PRE-LAUNCH FREEZE REQUIRED FROM HQ"
+        }
+      ],
+      "searched_surface_ids": [
+        "S01",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18",
+        "S20"
+      ],
+      "current_candidate_owner_binding": "UNRESOLVED_IN_BOUNDED_CURRENT_AUTHORITY_INPUTS",
+      "existing_candidate_executable_component": null,
+      "candidate_immediate_dependencies": "NOT_RESOLVABLE_WITHOUT_CURRENT_EXECUTABLE_OWNER_PIN__NO_GUESSED_DEPENDENCIES_SEARCHED",
+      "physical_adapter_qualification": "NOT_COMPLETED__OWNER_IDENTITY_BLOCKER",
+      "adapter_selected": false,
+      "physical_gap_proved": false
+    },
+    {
+      "cell_id": "A::OP022",
+      "candidate_id": "A",
+      "candidate_class": "PERSISTENT_CANONICAL_EVENT_CARRIER",
+      "operation_id": "OP022",
+      "frozen_operation_id": "EEW1-OP022",
+      "disposition": "WAITING_ON_COMMON_PREMISE",
+      "exact_semantic_purpose": "selective invalidation after exactly one semantic or routing-authority determinant changes while source bytes remain frozen",
+      "oracle_ids": [
+        "OR-SELECTIVE-INVALIDATION"
+      ],
+      "common_premise_wait": "One exact semantic/routing authority change fixture per universe with unchanged source bytes and expected dependency-closure/selective-rebuild oracle.",
+      "common_premise_owner": "EE-R3E",
+      "applies_to_universes": [
+        "EEU_WVS7_WAVE7_EXACT_SOURCE",
+        "EEU_LITS_I_2006_EXACT_SOURCE"
+      ],
+      "evidence_refs": [
+        {
+          "surface_id": "S06",
+          "selector": "operations[operation_id=EEW1-OP022]"
+        },
+        {
+          "surface_id": "S08",
+          "selector": "selection_critical_positive_deficits.operations / successor_work_packages"
+        },
+        {
+          "surface_id": "S04",
+          "selector": "dependency_graph.OP020_OP022_LIFECYCLE"
+        },
+        {
+          "surface_id": "S20"
+        },
+        {
+          "surface_id": "S11",
+          "selector": "workload_execution_profile / candidate_adapter"
+        },
+        {
+          "surface_id": "S17",
+          "selector": "CANDIDATE DEFINITIONS / PRE-LAUNCH FREEZE REQUIRED FROM HQ"
+        }
+      ],
+      "searched_surface_ids": [
+        "S01",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18",
+        "S20"
+      ],
+      "current_candidate_owner_binding": "UNRESOLVED_IN_BOUNDED_CURRENT_AUTHORITY_INPUTS",
+      "existing_candidate_executable_component": null,
+      "candidate_immediate_dependencies": "NOT_RESOLVABLE_WITHOUT_CURRENT_EXECUTABLE_OWNER_PIN__NO_GUESSED_DEPENDENCIES_SEARCHED",
+      "physical_adapter_qualification": "NOT_COMPLETED__OWNER_IDENTITY_BLOCKER",
+      "adapter_selected": false,
+      "physical_gap_proved": false
+    },
+    {
+      "cell_id": "B::OP001",
+      "candidate_id": "B",
+      "candidate_class": "SOURCE_BACKED_VIRTUAL_C11",
+      "operation_id": "OP001",
+      "frozen_operation_id": "EEW1-OP001",
+      "disposition": "WAITING_ON_COMMON_PREMISE",
+      "exact_semantic_purpose": "exact source decode/fidelity and source-coordinate reconstruction",
+      "oracle_ids": [
+        "OR-SOURCE-FIDELITY",
+        "OR-AUTHORITY-LIMIT"
+      ],
+      "common_premise_wait": "Exact real-source SOURCE_FIDELITY_RECEIPT source-authority roots/proving request and output oracle; decoder identity/source hash alone do not close this semantic result.",
+      "common_premise_owner": "EE-R3F",
+      "applies_to_universes": [
+        "EEU_WVS7_WAVE7_EXACT_SOURCE",
+        "EEU_LITS_I_2006_EXACT_SOURCE"
+      ],
+      "evidence_refs": [
+        {
+          "surface_id": "S06",
+          "selector": "operations[operation_id=EEW1-OP001]"
+        },
+        {
+          "surface_id": "S08",
+          "selector": "selection_critical_positive_deficits.operations / successor_work_packages"
+        },
+        {
+          "surface_id": "S04",
+          "selector": "dependency_graph.OP001_OP006_REAL_SOURCE_PREMISES"
+        },
+        {
+          "surface_id": "S19"
+        },
+        {
+          "surface_id": "S11",
+          "selector": "workload_execution_profile / candidate_adapter"
+        },
+        {
+          "surface_id": "S17",
+          "selector": "CANDIDATE DEFINITIONS / PRE-LAUNCH FREEZE REQUIRED FROM HQ"
+        }
+      ],
+      "searched_surface_ids": [
+        "S01",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18",
+        "S19"
+      ],
+      "current_candidate_owner_binding": "UNRESOLVED_IN_BOUNDED_CURRENT_AUTHORITY_INPUTS",
+      "existing_candidate_executable_component": null,
+      "candidate_immediate_dependencies": "NOT_RESOLVABLE_WITHOUT_CURRENT_EXECUTABLE_OWNER_PIN__NO_GUESSED_DEPENDENCIES_SEARCHED",
+      "physical_adapter_qualification": "NOT_COMPLETED__OWNER_IDENTITY_BLOCKER",
+      "adapter_selected": false,
+      "physical_gap_proved": false
+    },
+    {
+      "cell_id": "B::OP002",
+      "candidate_id": "B",
+      "candidate_class": "SOURCE_BACKED_VIRTUAL_C11",
+      "operation_id": "OP002",
+      "frozen_operation_id": "EEW1-OP002",
+      "disposition": "WAITING_ON_COMMON_PREMISE",
+      "exact_semantic_purpose": "raw physical missing versus governed semantic response state; preserve ranked/multiselect/equal-value-distinct-slot topology",
+      "oracle_ids": [
+        "OR-ZERO-NULL",
+        "OR-SLOT-IDENTITY"
+      ],
+      "common_premise_wait": "Exact real-source question/response-state/occurrence/topology bindings and event/slot output oracle.",
+      "common_premise_owner": "EE-R3F",
+      "applies_to_universes": [
+        "EEU_WVS7_WAVE7_EXACT_SOURCE",
+        "EEU_LITS_I_2006_EXACT_SOURCE"
+      ],
+      "evidence_refs": [
+        {
+          "surface_id": "S06",
+          "selector": "operations[operation_id=EEW1-OP002]"
+        },
+        {
+          "surface_id": "S08",
+          "selector": "selection_critical_positive_deficits.operations / successor_work_packages"
+        },
+        {
+          "surface_id": "S04",
+          "selector": "dependency_graph.OP001_OP006_REAL_SOURCE_PREMISES"
+        },
+        {
+          "surface_id": "S19"
+        },
+        {
+          "surface_id": "S11",
+          "selector": "workload_execution_profile / candidate_adapter"
+        },
+        {
+          "surface_id": "S17",
+          "selector": "CANDIDATE DEFINITIONS / PRE-LAUNCH FREEZE REQUIRED FROM HQ"
+        }
+      ],
+      "searched_surface_ids": [
+        "S01",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18",
+        "S19"
+      ],
+      "current_candidate_owner_binding": "UNRESOLVED_IN_BOUNDED_CURRENT_AUTHORITY_INPUTS",
+      "existing_candidate_executable_component": null,
+      "candidate_immediate_dependencies": "NOT_RESOLVABLE_WITHOUT_CURRENT_EXECUTABLE_OWNER_PIN__NO_GUESSED_DEPENDENCIES_SEARCHED",
+      "physical_adapter_qualification": "NOT_COMPLETED__OWNER_IDENTITY_BLOCKER",
+      "adapter_selected": false,
+      "physical_gap_proved": false
+    },
+    {
+      "cell_id": "B::OP003",
+      "candidate_id": "B",
+      "candidate_class": "SOURCE_BACKED_VIRTUAL_C11",
+      "operation_id": "OP003",
+      "frozen_operation_id": "EEW1-OP003",
+      "disposition": "WAITING_ON_COMMON_PREMISE",
+      "exact_semantic_purpose": "routing/applicability/risk-set and denominator correctness including ambiguity",
+      "oracle_ids": [
+        "OR-DENOMINATOR",
+        "OR-ROUTING-AMBIGUITY"
+      ],
+      "common_premise_wait": "Exact real-source routing/applicability/risk-set/denominator query and ambiguity oracle.",
+      "common_premise_owner": "EE-R3F",
+      "applies_to_universes": [
+        "EEU_WVS7_WAVE7_EXACT_SOURCE",
+        "EEU_LITS_I_2006_EXACT_SOURCE"
+      ],
+      "evidence_refs": [
+        {
+          "surface_id": "S06",
+          "selector": "operations[operation_id=EEW1-OP003]"
+        },
+        {
+          "surface_id": "S08",
+          "selector": "selection_critical_positive_deficits.operations / successor_work_packages"
+        },
+        {
+          "surface_id": "S04",
+          "selector": "dependency_graph.OP001_OP006_REAL_SOURCE_PREMISES"
+        },
+        {
+          "surface_id": "S19"
+        },
+        {
+          "surface_id": "S11",
+          "selector": "workload_execution_profile / candidate_adapter"
+        },
+        {
+          "surface_id": "S17",
+          "selector": "CANDIDATE DEFINITIONS / PRE-LAUNCH FREEZE REQUIRED FROM HQ"
+        }
+      ],
+      "searched_surface_ids": [
+        "S01",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18",
+        "S19"
+      ],
+      "current_candidate_owner_binding": "UNRESOLVED_IN_BOUNDED_CURRENT_AUTHORITY_INPUTS",
+      "existing_candidate_executable_component": null,
+      "candidate_immediate_dependencies": "NOT_RESOLVABLE_WITHOUT_CURRENT_EXECUTABLE_OWNER_PIN__NO_GUESSED_DEPENDENCIES_SEARCHED",
+      "physical_adapter_qualification": "NOT_COMPLETED__OWNER_IDENTITY_BLOCKER",
+      "adapter_selected": false,
+      "physical_gap_proved": false
+    },
+    {
+      "cell_id": "B::OP004",
+      "candidate_id": "B",
+      "candidate_class": "SOURCE_BACKED_VIRTUAL_C11",
+      "operation_id": "OP004",
+      "frozen_operation_id": "EEW1-OP004",
+      "disposition": "WAITING_ON_COMMON_PREMISE",
+      "exact_semantic_purpose": "exact marginal/parent distribution query",
+      "oracle_ids": [
+        "OR-EXACT-QUERY"
+      ],
+      "common_premise_wait": "Exact real-source representative marginal query, risk set, measure basis and distribution oracle.",
+      "common_premise_owner": "EE-R3F",
+      "applies_to_universes": [
+        "EEU_WVS7_WAVE7_EXACT_SOURCE",
+        "EEU_LITS_I_2006_EXACT_SOURCE"
+      ],
+      "evidence_refs": [
+        {
+          "surface_id": "S06",
+          "selector": "operations[operation_id=EEW1-OP004]"
+        },
+        {
+          "surface_id": "S08",
+          "selector": "selection_critical_positive_deficits.operations / successor_work_packages"
+        },
+        {
+          "surface_id": "S04",
+          "selector": "dependency_graph.OP001_OP006_REAL_SOURCE_PREMISES"
+        },
+        {
+          "surface_id": "S19"
+        },
+        {
+          "surface_id": "S11",
+          "selector": "workload_execution_profile / candidate_adapter"
+        },
+        {
+          "surface_id": "S17",
+          "selector": "CANDIDATE DEFINITIONS / PRE-LAUNCH FREEZE REQUIRED FROM HQ"
+        }
+      ],
+      "searched_surface_ids": [
+        "S01",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18",
+        "S19"
+      ],
+      "current_candidate_owner_binding": "UNRESOLVED_IN_BOUNDED_CURRENT_AUTHORITY_INPUTS",
+      "existing_candidate_executable_component": null,
+      "candidate_immediate_dependencies": "NOT_RESOLVABLE_WITHOUT_CURRENT_EXECUTABLE_OWNER_PIN__NO_GUESSED_DEPENDENCIES_SEARCHED",
+      "physical_adapter_qualification": "NOT_COMPLETED__OWNER_IDENTITY_BLOCKER",
+      "adapter_selected": false,
+      "physical_gap_proved": false
+    },
+    {
+      "cell_id": "B::OP005",
+      "candidate_id": "B",
+      "candidate_class": "SOURCE_BACKED_VIRTUAL_C11",
+      "operation_id": "OP005",
+      "frozen_operation_id": "EEW1-OP005",
+      "disposition": "WAITING_ON_COMMON_PREMISE",
+      "exact_semantic_purpose": "exact same-respondent joint query preserving logical joint, executable incidence and observed pattern as distinct",
+      "oracle_ids": [
+        "OR-SAME-RESPONDENT",
+        "OR-JOINT-NONCONTAMINATION"
+      ],
+      "common_premise_wait": "Exact real-source same-respondent joint query/component/linkage/denominator and output oracle.",
+      "common_premise_owner": "EE-R3F",
+      "applies_to_universes": [
+        "EEU_WVS7_WAVE7_EXACT_SOURCE",
+        "EEU_LITS_I_2006_EXACT_SOURCE"
+      ],
+      "evidence_refs": [
+        {
+          "surface_id": "S06",
+          "selector": "operations[operation_id=EEW1-OP005]"
+        },
+        {
+          "surface_id": "S08",
+          "selector": "selection_critical_positive_deficits.operations / successor_work_packages"
+        },
+        {
+          "surface_id": "S04",
+          "selector": "dependency_graph.OP001_OP006_REAL_SOURCE_PREMISES"
+        },
+        {
+          "surface_id": "S19"
+        },
+        {
+          "surface_id": "S11",
+          "selector": "workload_execution_profile / candidate_adapter"
+        },
+        {
+          "surface_id": "S17",
+          "selector": "CANDIDATE DEFINITIONS / PRE-LAUNCH FREEZE REQUIRED FROM HQ"
+        }
+      ],
+      "searched_surface_ids": [
+        "S01",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18",
+        "S19"
+      ],
+      "current_candidate_owner_binding": "UNRESOLVED_IN_BOUNDED_CURRENT_AUTHORITY_INPUTS",
+      "existing_candidate_executable_component": null,
+      "candidate_immediate_dependencies": "NOT_RESOLVABLE_WITHOUT_CURRENT_EXECUTABLE_OWNER_PIN__NO_GUESSED_DEPENDENCIES_SEARCHED",
+      "physical_adapter_qualification": "NOT_COMPLETED__OWNER_IDENTITY_BLOCKER",
+      "adapter_selected": false,
+      "physical_gap_proved": false
+    },
+    {
+      "cell_id": "B::OP006",
+      "candidate_id": "B",
+      "candidate_class": "SOURCE_BACKED_VIRTUAL_C11",
+      "operation_id": "OP006",
+      "frozen_operation_id": "EEW1-OP006",
+      "disposition": "WAITING_ON_COMMON_PREMISE",
+      "exact_semantic_purpose": "conditional/subgroup query with exact predicate, risk set and conditional denominator",
+      "oracle_ids": [
+        "OR-EXACT-QUERY",
+        "OR-DENOMINATOR"
+      ],
+      "common_premise_wait": "Exact real-source predicate/conditional query/risk set/conditional denominator and output oracle.",
+      "common_premise_owner": "EE-R3F",
+      "applies_to_universes": [
+        "EEU_WVS7_WAVE7_EXACT_SOURCE",
+        "EEU_LITS_I_2006_EXACT_SOURCE"
+      ],
+      "evidence_refs": [
+        {
+          "surface_id": "S06",
+          "selector": "operations[operation_id=EEW1-OP006]"
+        },
+        {
+          "surface_id": "S08",
+          "selector": "selection_critical_positive_deficits.operations / successor_work_packages"
+        },
+        {
+          "surface_id": "S04",
+          "selector": "dependency_graph.OP001_OP006_REAL_SOURCE_PREMISES"
+        },
+        {
+          "surface_id": "S19"
+        },
+        {
+          "surface_id": "S11",
+          "selector": "workload_execution_profile / candidate_adapter"
+        },
+        {
+          "surface_id": "S17",
+          "selector": "CANDIDATE DEFINITIONS / PRE-LAUNCH FREEZE REQUIRED FROM HQ"
+        }
+      ],
+      "searched_surface_ids": [
+        "S01",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18",
+        "S19"
+      ],
+      "current_candidate_owner_binding": "UNRESOLVED_IN_BOUNDED_CURRENT_AUTHORITY_INPUTS",
+      "existing_candidate_executable_component": null,
+      "candidate_immediate_dependencies": "NOT_RESOLVABLE_WITHOUT_CURRENT_EXECUTABLE_OWNER_PIN__NO_GUESSED_DEPENDENCIES_SEARCHED",
+      "physical_adapter_qualification": "NOT_COMPLETED__OWNER_IDENTITY_BLOCKER",
+      "adapter_selected": false,
+      "physical_gap_proved": false
+    },
+    {
+      "cell_id": "B::OP020",
+      "candidate_id": "B",
+      "candidate_class": "SOURCE_BACKED_VIRTUAL_C11",
+      "operation_id": "OP020",
+      "frozen_operation_id": "EEW1-OP020",
+      "disposition": "WAITING_ON_COMMON_PREMISE",
+      "exact_semantic_purpose": "delete only regenerable representation, rebuild from authoritative roots and require exact promised semantic identity/receipt parity",
+      "oracle_ids": [
+        "OR-REBUILD-IDENTITY"
+      ],
+      "common_premise_wait": "Frozen candidate-neutral regenerable deletion boundary, retained immutable side authority, and exact before/after semantic/replay identity oracle.",
+      "common_premise_owner": "EE-R3E",
+      "applies_to_universes": [
+        "EEU_WVS7_WAVE7_EXACT_SOURCE",
+        "EEU_LITS_I_2006_EXACT_SOURCE"
+      ],
+      "evidence_refs": [
+        {
+          "surface_id": "S06",
+          "selector": "operations[operation_id=EEW1-OP020]"
+        },
+        {
+          "surface_id": "S08",
+          "selector": "selection_critical_positive_deficits.operations / successor_work_packages"
+        },
+        {
+          "surface_id": "S04",
+          "selector": "dependency_graph.OP020_OP022_LIFECYCLE"
+        },
+        {
+          "surface_id": "S20"
+        },
+        {
+          "surface_id": "S11",
+          "selector": "workload_execution_profile / candidate_adapter"
+        },
+        {
+          "surface_id": "S17",
+          "selector": "CANDIDATE DEFINITIONS / PRE-LAUNCH FREEZE REQUIRED FROM HQ"
+        }
+      ],
+      "searched_surface_ids": [
+        "S01",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18",
+        "S20"
+      ],
+      "current_candidate_owner_binding": "UNRESOLVED_IN_BOUNDED_CURRENT_AUTHORITY_INPUTS",
+      "existing_candidate_executable_component": null,
+      "candidate_immediate_dependencies": "NOT_RESOLVABLE_WITHOUT_CURRENT_EXECUTABLE_OWNER_PIN__NO_GUESSED_DEPENDENCIES_SEARCHED",
+      "physical_adapter_qualification": "NOT_COMPLETED__OWNER_IDENTITY_BLOCKER",
+      "adapter_selected": false,
+      "physical_gap_proved": false
+    },
+    {
+      "cell_id": "B::OP021",
+      "candidate_id": "B",
+      "candidate_class": "SOURCE_BACKED_VIRTUAL_C11",
+      "operation_id": "OP021",
+      "frozen_operation_id": "EEW1-OP021",
+      "disposition": "WAITING_ON_COMMON_PREMISE",
+      "exact_semantic_purpose": "selective invalidation after exactly one source/release determinant changes",
+      "oracle_ids": [
+        "OR-SELECTIVE-INVALIDATION"
+      ],
+      "common_premise_wait": "One exact source/release change fixture per universe and expected dependency-closure/selective-rebuild oracle.",
+      "common_premise_owner": "EE-R3E",
+      "applies_to_universes": [
+        "EEU_WVS7_WAVE7_EXACT_SOURCE",
+        "EEU_LITS_I_2006_EXACT_SOURCE"
+      ],
+      "evidence_refs": [
+        {
+          "surface_id": "S06",
+          "selector": "operations[operation_id=EEW1-OP021]"
+        },
+        {
+          "surface_id": "S08",
+          "selector": "selection_critical_positive_deficits.operations / successor_work_packages"
+        },
+        {
+          "surface_id": "S04",
+          "selector": "dependency_graph.OP020_OP022_LIFECYCLE"
+        },
+        {
+          "surface_id": "S20"
+        },
+        {
+          "surface_id": "S11",
+          "selector": "workload_execution_profile / candidate_adapter"
+        },
+        {
+          "surface_id": "S17",
+          "selector": "CANDIDATE DEFINITIONS / PRE-LAUNCH FREEZE REQUIRED FROM HQ"
+        }
+      ],
+      "searched_surface_ids": [
+        "S01",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18",
+        "S20"
+      ],
+      "current_candidate_owner_binding": "UNRESOLVED_IN_BOUNDED_CURRENT_AUTHORITY_INPUTS",
+      "existing_candidate_executable_component": null,
+      "candidate_immediate_dependencies": "NOT_RESOLVABLE_WITHOUT_CURRENT_EXECUTABLE_OWNER_PIN__NO_GUESSED_DEPENDENCIES_SEARCHED",
+      "physical_adapter_qualification": "NOT_COMPLETED__OWNER_IDENTITY_BLOCKER",
+      "adapter_selected": false,
+      "physical_gap_proved": false
+    },
+    {
+      "cell_id": "B::OP022",
+      "candidate_id": "B",
+      "candidate_class": "SOURCE_BACKED_VIRTUAL_C11",
+      "operation_id": "OP022",
+      "frozen_operation_id": "EEW1-OP022",
+      "disposition": "WAITING_ON_COMMON_PREMISE",
+      "exact_semantic_purpose": "selective invalidation after exactly one semantic or routing-authority determinant changes while source bytes remain frozen",
+      "oracle_ids": [
+        "OR-SELECTIVE-INVALIDATION"
+      ],
+      "common_premise_wait": "One exact semantic/routing authority change fixture per universe with unchanged source bytes and expected dependency-closure/selective-rebuild oracle.",
+      "common_premise_owner": "EE-R3E",
+      "applies_to_universes": [
+        "EEU_WVS7_WAVE7_EXACT_SOURCE",
+        "EEU_LITS_I_2006_EXACT_SOURCE"
+      ],
+      "evidence_refs": [
+        {
+          "surface_id": "S06",
+          "selector": "operations[operation_id=EEW1-OP022]"
+        },
+        {
+          "surface_id": "S08",
+          "selector": "selection_critical_positive_deficits.operations / successor_work_packages"
+        },
+        {
+          "surface_id": "S04",
+          "selector": "dependency_graph.OP020_OP022_LIFECYCLE"
+        },
+        {
+          "surface_id": "S20"
+        },
+        {
+          "surface_id": "S11",
+          "selector": "workload_execution_profile / candidate_adapter"
+        },
+        {
+          "surface_id": "S17",
+          "selector": "CANDIDATE DEFINITIONS / PRE-LAUNCH FREEZE REQUIRED FROM HQ"
+        }
+      ],
+      "searched_surface_ids": [
+        "S01",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18",
+        "S20"
+      ],
+      "current_candidate_owner_binding": "UNRESOLVED_IN_BOUNDED_CURRENT_AUTHORITY_INPUTS",
+      "existing_candidate_executable_component": null,
+      "candidate_immediate_dependencies": "NOT_RESOLVABLE_WITHOUT_CURRENT_EXECUTABLE_OWNER_PIN__NO_GUESSED_DEPENDENCIES_SEARCHED",
+      "physical_adapter_qualification": "NOT_COMPLETED__OWNER_IDENTITY_BLOCKER",
+      "adapter_selected": false,
+      "physical_gap_proved": false
+    },
+    {
+      "cell_id": "C::OP001",
+      "candidate_id": "C",
+      "candidate_class": "SOURCE_BACKED_HYBRID",
+      "operation_id": "OP001",
+      "frozen_operation_id": "EEW1-OP001",
+      "disposition": "WAITING_ON_COMMON_PREMISE",
+      "exact_semantic_purpose": "exact source decode/fidelity and source-coordinate reconstruction",
+      "oracle_ids": [
+        "OR-SOURCE-FIDELITY",
+        "OR-AUTHORITY-LIMIT"
+      ],
+      "common_premise_wait": "Exact real-source SOURCE_FIDELITY_RECEIPT source-authority roots/proving request and output oracle; decoder identity/source hash alone do not close this semantic result.",
+      "common_premise_owner": "EE-R3F",
+      "applies_to_universes": [
+        "EEU_WVS7_WAVE7_EXACT_SOURCE",
+        "EEU_LITS_I_2006_EXACT_SOURCE"
+      ],
+      "evidence_refs": [
+        {
+          "surface_id": "S06",
+          "selector": "operations[operation_id=EEW1-OP001]"
+        },
+        {
+          "surface_id": "S08",
+          "selector": "selection_critical_positive_deficits.operations / successor_work_packages"
+        },
+        {
+          "surface_id": "S04",
+          "selector": "dependency_graph.OP001_OP006_REAL_SOURCE_PREMISES"
+        },
+        {
+          "surface_id": "S19"
+        },
+        {
+          "surface_id": "S11",
+          "selector": "workload_execution_profile / candidate_adapter"
+        },
+        {
+          "surface_id": "S17",
+          "selector": "CANDIDATE DEFINITIONS / PRE-LAUNCH FREEZE REQUIRED FROM HQ"
+        }
+      ],
+      "searched_surface_ids": [
+        "S01",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18",
+        "S19"
+      ],
+      "current_candidate_owner_binding": "UNRESOLVED_IN_BOUNDED_CURRENT_AUTHORITY_INPUTS",
+      "existing_candidate_executable_component": null,
+      "candidate_immediate_dependencies": "NOT_RESOLVABLE_WITHOUT_CURRENT_EXECUTABLE_OWNER_PIN__NO_GUESSED_DEPENDENCIES_SEARCHED",
+      "physical_adapter_qualification": "NOT_COMPLETED__OWNER_IDENTITY_BLOCKER",
+      "adapter_selected": false,
+      "physical_gap_proved": false
+    },
+    {
+      "cell_id": "C::OP002",
+      "candidate_id": "C",
+      "candidate_class": "SOURCE_BACKED_HYBRID",
+      "operation_id": "OP002",
+      "frozen_operation_id": "EEW1-OP002",
+      "disposition": "WAITING_ON_COMMON_PREMISE",
+      "exact_semantic_purpose": "raw physical missing versus governed semantic response state; preserve ranked/multiselect/equal-value-distinct-slot topology",
+      "oracle_ids": [
+        "OR-ZERO-NULL",
+        "OR-SLOT-IDENTITY"
+      ],
+      "common_premise_wait": "Exact real-source question/response-state/occurrence/topology bindings and event/slot output oracle.",
+      "common_premise_owner": "EE-R3F",
+      "applies_to_universes": [
+        "EEU_WVS7_WAVE7_EXACT_SOURCE",
+        "EEU_LITS_I_2006_EXACT_SOURCE"
+      ],
+      "evidence_refs": [
+        {
+          "surface_id": "S06",
+          "selector": "operations[operation_id=EEW1-OP002]"
+        },
+        {
+          "surface_id": "S08",
+          "selector": "selection_critical_positive_deficits.operations / successor_work_packages"
+        },
+        {
+          "surface_id": "S04",
+          "selector": "dependency_graph.OP001_OP006_REAL_SOURCE_PREMISES"
+        },
+        {
+          "surface_id": "S19"
+        },
+        {
+          "surface_id": "S11",
+          "selector": "workload_execution_profile / candidate_adapter"
+        },
+        {
+          "surface_id": "S17",
+          "selector": "CANDIDATE DEFINITIONS / PRE-LAUNCH FREEZE REQUIRED FROM HQ"
+        }
+      ],
+      "searched_surface_ids": [
+        "S01",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18",
+        "S19"
+      ],
+      "current_candidate_owner_binding": "UNRESOLVED_IN_BOUNDED_CURRENT_AUTHORITY_INPUTS",
+      "existing_candidate_executable_component": null,
+      "candidate_immediate_dependencies": "NOT_RESOLVABLE_WITHOUT_CURRENT_EXECUTABLE_OWNER_PIN__NO_GUESSED_DEPENDENCIES_SEARCHED",
+      "physical_adapter_qualification": "NOT_COMPLETED__OWNER_IDENTITY_BLOCKER",
+      "adapter_selected": false,
+      "physical_gap_proved": false
+    },
+    {
+      "cell_id": "C::OP003",
+      "candidate_id": "C",
+      "candidate_class": "SOURCE_BACKED_HYBRID",
+      "operation_id": "OP003",
+      "frozen_operation_id": "EEW1-OP003",
+      "disposition": "WAITING_ON_COMMON_PREMISE",
+      "exact_semantic_purpose": "routing/applicability/risk-set and denominator correctness including ambiguity",
+      "oracle_ids": [
+        "OR-DENOMINATOR",
+        "OR-ROUTING-AMBIGUITY"
+      ],
+      "common_premise_wait": "Exact real-source routing/applicability/risk-set/denominator query and ambiguity oracle.",
+      "common_premise_owner": "EE-R3F",
+      "applies_to_universes": [
+        "EEU_WVS7_WAVE7_EXACT_SOURCE",
+        "EEU_LITS_I_2006_EXACT_SOURCE"
+      ],
+      "evidence_refs": [
+        {
+          "surface_id": "S06",
+          "selector": "operations[operation_id=EEW1-OP003]"
+        },
+        {
+          "surface_id": "S08",
+          "selector": "selection_critical_positive_deficits.operations / successor_work_packages"
+        },
+        {
+          "surface_id": "S04",
+          "selector": "dependency_graph.OP001_OP006_REAL_SOURCE_PREMISES"
+        },
+        {
+          "surface_id": "S19"
+        },
+        {
+          "surface_id": "S11",
+          "selector": "workload_execution_profile / candidate_adapter"
+        },
+        {
+          "surface_id": "S17",
+          "selector": "CANDIDATE DEFINITIONS / PRE-LAUNCH FREEZE REQUIRED FROM HQ"
+        }
+      ],
+      "searched_surface_ids": [
+        "S01",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18",
+        "S19"
+      ],
+      "current_candidate_owner_binding": "UNRESOLVED_IN_BOUNDED_CURRENT_AUTHORITY_INPUTS",
+      "existing_candidate_executable_component": null,
+      "candidate_immediate_dependencies": "NOT_RESOLVABLE_WITHOUT_CURRENT_EXECUTABLE_OWNER_PIN__NO_GUESSED_DEPENDENCIES_SEARCHED",
+      "physical_adapter_qualification": "NOT_COMPLETED__OWNER_IDENTITY_BLOCKER",
+      "adapter_selected": false,
+      "physical_gap_proved": false
+    },
+    {
+      "cell_id": "C::OP004",
+      "candidate_id": "C",
+      "candidate_class": "SOURCE_BACKED_HYBRID",
+      "operation_id": "OP004",
+      "frozen_operation_id": "EEW1-OP004",
+      "disposition": "WAITING_ON_COMMON_PREMISE",
+      "exact_semantic_purpose": "exact marginal/parent distribution query",
+      "oracle_ids": [
+        "OR-EXACT-QUERY"
+      ],
+      "common_premise_wait": "Exact real-source representative marginal query, risk set, measure basis and distribution oracle.",
+      "common_premise_owner": "EE-R3F",
+      "applies_to_universes": [
+        "EEU_WVS7_WAVE7_EXACT_SOURCE",
+        "EEU_LITS_I_2006_EXACT_SOURCE"
+      ],
+      "evidence_refs": [
+        {
+          "surface_id": "S06",
+          "selector": "operations[operation_id=EEW1-OP004]"
+        },
+        {
+          "surface_id": "S08",
+          "selector": "selection_critical_positive_deficits.operations / successor_work_packages"
+        },
+        {
+          "surface_id": "S04",
+          "selector": "dependency_graph.OP001_OP006_REAL_SOURCE_PREMISES"
+        },
+        {
+          "surface_id": "S19"
+        },
+        {
+          "surface_id": "S11",
+          "selector": "workload_execution_profile / candidate_adapter"
+        },
+        {
+          "surface_id": "S17",
+          "selector": "CANDIDATE DEFINITIONS / PRE-LAUNCH FREEZE REQUIRED FROM HQ"
+        }
+      ],
+      "searched_surface_ids": [
+        "S01",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18",
+        "S19"
+      ],
+      "current_candidate_owner_binding": "UNRESOLVED_IN_BOUNDED_CURRENT_AUTHORITY_INPUTS",
+      "existing_candidate_executable_component": null,
+      "candidate_immediate_dependencies": "NOT_RESOLVABLE_WITHOUT_CURRENT_EXECUTABLE_OWNER_PIN__NO_GUESSED_DEPENDENCIES_SEARCHED",
+      "physical_adapter_qualification": "NOT_COMPLETED__OWNER_IDENTITY_BLOCKER",
+      "adapter_selected": false,
+      "physical_gap_proved": false
+    },
+    {
+      "cell_id": "C::OP005",
+      "candidate_id": "C",
+      "candidate_class": "SOURCE_BACKED_HYBRID",
+      "operation_id": "OP005",
+      "frozen_operation_id": "EEW1-OP005",
+      "disposition": "WAITING_ON_COMMON_PREMISE",
+      "exact_semantic_purpose": "exact same-respondent joint query preserving logical joint, executable incidence and observed pattern as distinct",
+      "oracle_ids": [
+        "OR-SAME-RESPONDENT",
+        "OR-JOINT-NONCONTAMINATION"
+      ],
+      "common_premise_wait": "Exact real-source same-respondent joint query/component/linkage/denominator and output oracle.",
+      "common_premise_owner": "EE-R3F",
+      "applies_to_universes": [
+        "EEU_WVS7_WAVE7_EXACT_SOURCE",
+        "EEU_LITS_I_2006_EXACT_SOURCE"
+      ],
+      "evidence_refs": [
+        {
+          "surface_id": "S06",
+          "selector": "operations[operation_id=EEW1-OP005]"
+        },
+        {
+          "surface_id": "S08",
+          "selector": "selection_critical_positive_deficits.operations / successor_work_packages"
+        },
+        {
+          "surface_id": "S04",
+          "selector": "dependency_graph.OP001_OP006_REAL_SOURCE_PREMISES"
+        },
+        {
+          "surface_id": "S19"
+        },
+        {
+          "surface_id": "S11",
+          "selector": "workload_execution_profile / candidate_adapter"
+        },
+        {
+          "surface_id": "S17",
+          "selector": "CANDIDATE DEFINITIONS / PRE-LAUNCH FREEZE REQUIRED FROM HQ"
+        }
+      ],
+      "searched_surface_ids": [
+        "S01",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18",
+        "S19"
+      ],
+      "current_candidate_owner_binding": "UNRESOLVED_IN_BOUNDED_CURRENT_AUTHORITY_INPUTS",
+      "existing_candidate_executable_component": null,
+      "candidate_immediate_dependencies": "NOT_RESOLVABLE_WITHOUT_CURRENT_EXECUTABLE_OWNER_PIN__NO_GUESSED_DEPENDENCIES_SEARCHED",
+      "physical_adapter_qualification": "NOT_COMPLETED__OWNER_IDENTITY_BLOCKER",
+      "adapter_selected": false,
+      "physical_gap_proved": false
+    },
+    {
+      "cell_id": "C::OP006",
+      "candidate_id": "C",
+      "candidate_class": "SOURCE_BACKED_HYBRID",
+      "operation_id": "OP006",
+      "frozen_operation_id": "EEW1-OP006",
+      "disposition": "WAITING_ON_COMMON_PREMISE",
+      "exact_semantic_purpose": "conditional/subgroup query with exact predicate, risk set and conditional denominator",
+      "oracle_ids": [
+        "OR-EXACT-QUERY",
+        "OR-DENOMINATOR"
+      ],
+      "common_premise_wait": "Exact real-source predicate/conditional query/risk set/conditional denominator and output oracle.",
+      "common_premise_owner": "EE-R3F",
+      "applies_to_universes": [
+        "EEU_WVS7_WAVE7_EXACT_SOURCE",
+        "EEU_LITS_I_2006_EXACT_SOURCE"
+      ],
+      "evidence_refs": [
+        {
+          "surface_id": "S06",
+          "selector": "operations[operation_id=EEW1-OP006]"
+        },
+        {
+          "surface_id": "S08",
+          "selector": "selection_critical_positive_deficits.operations / successor_work_packages"
+        },
+        {
+          "surface_id": "S04",
+          "selector": "dependency_graph.OP001_OP006_REAL_SOURCE_PREMISES"
+        },
+        {
+          "surface_id": "S19"
+        },
+        {
+          "surface_id": "S11",
+          "selector": "workload_execution_profile / candidate_adapter"
+        },
+        {
+          "surface_id": "S17",
+          "selector": "CANDIDATE DEFINITIONS / PRE-LAUNCH FREEZE REQUIRED FROM HQ"
+        }
+      ],
+      "searched_surface_ids": [
+        "S01",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18",
+        "S19"
+      ],
+      "current_candidate_owner_binding": "UNRESOLVED_IN_BOUNDED_CURRENT_AUTHORITY_INPUTS",
+      "existing_candidate_executable_component": null,
+      "candidate_immediate_dependencies": "NOT_RESOLVABLE_WITHOUT_CURRENT_EXECUTABLE_OWNER_PIN__NO_GUESSED_DEPENDENCIES_SEARCHED",
+      "physical_adapter_qualification": "NOT_COMPLETED__OWNER_IDENTITY_BLOCKER",
+      "adapter_selected": false,
+      "physical_gap_proved": false
+    },
+    {
+      "cell_id": "C::OP020",
+      "candidate_id": "C",
+      "candidate_class": "SOURCE_BACKED_HYBRID",
+      "operation_id": "OP020",
+      "frozen_operation_id": "EEW1-OP020",
+      "disposition": "WAITING_ON_COMMON_PREMISE",
+      "exact_semantic_purpose": "delete only regenerable representation, rebuild from authoritative roots and require exact promised semantic identity/receipt parity",
+      "oracle_ids": [
+        "OR-REBUILD-IDENTITY"
+      ],
+      "common_premise_wait": "Frozen candidate-neutral regenerable deletion boundary, retained immutable side authority, and exact before/after semantic/replay identity oracle.",
+      "common_premise_owner": "EE-R3E",
+      "applies_to_universes": [
+        "EEU_WVS7_WAVE7_EXACT_SOURCE",
+        "EEU_LITS_I_2006_EXACT_SOURCE"
+      ],
+      "evidence_refs": [
+        {
+          "surface_id": "S06",
+          "selector": "operations[operation_id=EEW1-OP020]"
+        },
+        {
+          "surface_id": "S08",
+          "selector": "selection_critical_positive_deficits.operations / successor_work_packages"
+        },
+        {
+          "surface_id": "S04",
+          "selector": "dependency_graph.OP020_OP022_LIFECYCLE"
+        },
+        {
+          "surface_id": "S20"
+        },
+        {
+          "surface_id": "S11",
+          "selector": "workload_execution_profile / candidate_adapter"
+        },
+        {
+          "surface_id": "S17",
+          "selector": "CANDIDATE DEFINITIONS / PRE-LAUNCH FREEZE REQUIRED FROM HQ"
+        }
+      ],
+      "searched_surface_ids": [
+        "S01",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18",
+        "S20"
+      ],
+      "current_candidate_owner_binding": "UNRESOLVED_IN_BOUNDED_CURRENT_AUTHORITY_INPUTS",
+      "existing_candidate_executable_component": null,
+      "candidate_immediate_dependencies": "NOT_RESOLVABLE_WITHOUT_CURRENT_EXECUTABLE_OWNER_PIN__NO_GUESSED_DEPENDENCIES_SEARCHED",
+      "physical_adapter_qualification": "NOT_COMPLETED__OWNER_IDENTITY_BLOCKER",
+      "adapter_selected": false,
+      "physical_gap_proved": false
+    },
+    {
+      "cell_id": "C::OP021",
+      "candidate_id": "C",
+      "candidate_class": "SOURCE_BACKED_HYBRID",
+      "operation_id": "OP021",
+      "frozen_operation_id": "EEW1-OP021",
+      "disposition": "WAITING_ON_COMMON_PREMISE",
+      "exact_semantic_purpose": "selective invalidation after exactly one source/release determinant changes",
+      "oracle_ids": [
+        "OR-SELECTIVE-INVALIDATION"
+      ],
+      "common_premise_wait": "One exact source/release change fixture per universe and expected dependency-closure/selective-rebuild oracle.",
+      "common_premise_owner": "EE-R3E",
+      "applies_to_universes": [
+        "EEU_WVS7_WAVE7_EXACT_SOURCE",
+        "EEU_LITS_I_2006_EXACT_SOURCE"
+      ],
+      "evidence_refs": [
+        {
+          "surface_id": "S06",
+          "selector": "operations[operation_id=EEW1-OP021]"
+        },
+        {
+          "surface_id": "S08",
+          "selector": "selection_critical_positive_deficits.operations / successor_work_packages"
+        },
+        {
+          "surface_id": "S04",
+          "selector": "dependency_graph.OP020_OP022_LIFECYCLE"
+        },
+        {
+          "surface_id": "S20"
+        },
+        {
+          "surface_id": "S11",
+          "selector": "workload_execution_profile / candidate_adapter"
+        },
+        {
+          "surface_id": "S17",
+          "selector": "CANDIDATE DEFINITIONS / PRE-LAUNCH FREEZE REQUIRED FROM HQ"
+        }
+      ],
+      "searched_surface_ids": [
+        "S01",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18",
+        "S20"
+      ],
+      "current_candidate_owner_binding": "UNRESOLVED_IN_BOUNDED_CURRENT_AUTHORITY_INPUTS",
+      "existing_candidate_executable_component": null,
+      "candidate_immediate_dependencies": "NOT_RESOLVABLE_WITHOUT_CURRENT_EXECUTABLE_OWNER_PIN__NO_GUESSED_DEPENDENCIES_SEARCHED",
+      "physical_adapter_qualification": "NOT_COMPLETED__OWNER_IDENTITY_BLOCKER",
+      "adapter_selected": false,
+      "physical_gap_proved": false
+    },
+    {
+      "cell_id": "C::OP022",
+      "candidate_id": "C",
+      "candidate_class": "SOURCE_BACKED_HYBRID",
+      "operation_id": "OP022",
+      "frozen_operation_id": "EEW1-OP022",
+      "disposition": "WAITING_ON_COMMON_PREMISE",
+      "exact_semantic_purpose": "selective invalidation after exactly one semantic or routing-authority determinant changes while source bytes remain frozen",
+      "oracle_ids": [
+        "OR-SELECTIVE-INVALIDATION"
+      ],
+      "common_premise_wait": "One exact semantic/routing authority change fixture per universe with unchanged source bytes and expected dependency-closure/selective-rebuild oracle.",
+      "common_premise_owner": "EE-R3E",
+      "applies_to_universes": [
+        "EEU_WVS7_WAVE7_EXACT_SOURCE",
+        "EEU_LITS_I_2006_EXACT_SOURCE"
+      ],
+      "evidence_refs": [
+        {
+          "surface_id": "S06",
+          "selector": "operations[operation_id=EEW1-OP022]"
+        },
+        {
+          "surface_id": "S08",
+          "selector": "selection_critical_positive_deficits.operations / successor_work_packages"
+        },
+        {
+          "surface_id": "S04",
+          "selector": "dependency_graph.OP020_OP022_LIFECYCLE"
+        },
+        {
+          "surface_id": "S20"
+        },
+        {
+          "surface_id": "S11",
+          "selector": "workload_execution_profile / candidate_adapter"
+        },
+        {
+          "surface_id": "S17",
+          "selector": "CANDIDATE DEFINITIONS / PRE-LAUNCH FREEZE REQUIRED FROM HQ"
+        }
+      ],
+      "searched_surface_ids": [
+        "S01",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15",
+        "S16",
+        "S17",
+        "S18",
+        "S20"
+      ],
+      "current_candidate_owner_binding": "UNRESOLVED_IN_BOUNDED_CURRENT_AUTHORITY_INPUTS",
+      "existing_candidate_executable_component": null,
+      "candidate_immediate_dependencies": "NOT_RESOLVABLE_WITHOUT_CURRENT_EXECUTABLE_OWNER_PIN__NO_GUESSED_DEPENDENCIES_SEARCHED",
+      "physical_adapter_qualification": "NOT_COMPLETED__OWNER_IDENTITY_BLOCKER",
+      "adapter_selected": false,
+      "physical_gap_proved": false
+    }
+  ]
+}
