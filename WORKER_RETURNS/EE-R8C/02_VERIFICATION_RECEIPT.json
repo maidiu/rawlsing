@@ -1,0 +1,71 @@
+{
+  "schema": "RAWLSING_EE_R8C_VERIFICATION_RECEIPT@1.0.0",
+  "status": "PASS__BLOCKER_EVIDENCE_REPRODUCED",
+  "branch": "agent/rabochii-prev3-ee-r8c-production-source-provider-final-bakeoff-r1",
+  "starting_tip": "7254f422dbb0a2aa5b74ac67788d138aae331b97",
+  "hq_control_head_read_before_work": "7dc782f2fb616fce969aa6c4ea514664d0d36198",
+  "inputs": {
+    "EE-R8B": "bb53017210b46f4aef621cfb65c227babd00200e",
+    "EE-R7A": "8968b4e2bb35cb453c633bd81c10c910240a122a",
+    "EE-R6A": "4b141b8b5748175e34c9286eba36f53d8df1e9d5",
+    "EE-R6B": "fb10c6c79cd209396c043954d9c886ae820d30f0",
+    "EE-R5B": "02d32036db49c70ff137f1730d0ff95b571040d3",
+    "EE-R4B": "e5012ff2d9116e65850402b4432899de4937ed5e"
+  },
+  "runtime": {
+    "platform": "Darwin",
+    "machine": "x86_64",
+    "python": "3.11.3",
+    "r8b_rusage_runtime_sha256": "bf0e72c6a11f60219689458a74ae6b3844a4e620ab6fcd30674c8fbf150f9c39",
+    "darwin_rusage_probe": {
+      "peak_rss_native": 314159,
+      "peak_rss_native_unit": "bytes",
+      "peak_rss_bytes": 314159
+    }
+  },
+  "sources": {
+    "WVS7": {
+      "path": "WVS Wave 7.sav",
+      "bytes": 185163494,
+      "sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
+    },
+    "LiTS-I": {
+      "path": "LITS-2006-data.dta",
+      "bytes": 139531180,
+      "sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09"
+    }
+  },
+  "owner_pins": {
+    "commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+    "A": "d4915e7e6755ba1850756aebff72f982f73a332b",
+    "B": "7c509c2098d0030f253344eb3f682471378812a8",
+    "C": "abfdc91a71ef5e18c4a8a6bf62fa65750d8d9889"
+  },
+  "direct_declared_dependency_probe": {
+    "ref": "refs/heads/agent/rabochii-subv-b-c05r2b-real-lits1-production-i05-r1",
+    "resolved_tip": "40a0a0529fa78765c7fc87f7e1f12260a2335f72",
+    "driver_commit": "f43c4be11d4f8fa98f538727337ec075d99d03bc",
+    "driver_blob": "26d1e3ede625499a26c712844bffaff4d77e13da",
+    "bootstrap_byte_sha256": "d4482fd04513d5af4139d0cf02088920ec7d08733360ccfcc0eafd11e3bb5025",
+    "declared_effective_source_sha256": "59ce6903776df5f5b17bc074b15d9ae06334a5a1c30fad91096fc3fb6a014a3f",
+    "chunks": {
+      "part_00_bytes": 7001,
+      "part_01_bytes": 3052,
+      "concatenated_bytes": 10053,
+      "concatenated_modulo_4": 1
+    },
+    "mandatory_strict_decode": "binascii.Error: Excess data after padding",
+    "permissive_decode_then_gzip": "zlib.error: Error -3 while decompressing data: invalid distance too far back"
+  },
+  "execution": {
+    "owner_executor_implemented": false,
+    "candidate_processes_launched": 0,
+    "source_decodes_for_bakeoff": 0,
+    "partial_bakeoff": false,
+    "semantic_parity": "NOT_RUN",
+    "identity_parity": "NOT_RUN",
+    "lifecycle_replay": "NOT_RUN",
+    "frozen_telemetry_vectors": 0,
+    "ranking_or_policy_decision": false
+  }
+}

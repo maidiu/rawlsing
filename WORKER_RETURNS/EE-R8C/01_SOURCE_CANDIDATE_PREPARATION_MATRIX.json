@@ -1,0 +1,87 @@
+{
+  "schema": "RAWLSING_EE_R8C_SOURCE_CANDIDATE_PREPARATION_MATRIX@1.0.0",
+  "status": "BLOCKED__ALL_SIX_REQUIRED_PREPARATIONS_NOT_QUALIFIED",
+  "commission": "EE-R8C",
+  "candidate_order": ["A", "B", "C"],
+  "universe_order": ["WVS7", "LiTS-I"],
+  "source_identities": {
+    "WVS7": {
+      "bytes": 185163494,
+      "format": "SAV",
+      "sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
+    },
+    "LiTS-I": {
+      "bytes": 139531180,
+      "format": "DTA",
+      "sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09"
+    }
+  },
+  "cells": [
+    {
+      "universe": "WVS7",
+      "candidate": "A",
+      "status": "BLOCKED",
+      "blocker_id": "R8C-WVS7-A-R5-COMPACT-CARRIER",
+      "exact_requirement": "HB04CandidateSession._prepare(A) requires a non-null exact R5LongShardedReader and invokes build_r5_source_backed_c11_repository(reader, projection).",
+      "proved_gap": "The accepted Route-A reader is the R5CompactLongShardedReader alias, whose root requires the R5 compact-carrier schema/carrier/encoding.  No such WVS7 carrier or accepted WVS7 reader binding is among the frozen R7A/R6B/R6A/R3E inputs or A's immediate declared dependencies.",
+      "prohibited_substitute": "Building an R5 compact carrier or reader from the WVS7 SAV would invent the missing physical preparation rather than call an accepted owner surface."
+    },
+    {
+      "universe": "WVS7",
+      "candidate": "B",
+      "status": "BLOCKED",
+      "blocker_id": "R8C-WVS7-B-GOVERNED-PROJECTION-BINDING",
+      "exact_requirement": "The accepted Route-B facade accepts a PhysicalSourceIncidence only together with an existing GovernedC11Projection; HB04PreparedSource validates that both transport and projection are supplied.",
+      "proved_gap": "R6A supplies the frozen WVS7 Q291G5/Q291P5 authority and operation oracles, not a callable governed C11 projection binding.  The only projection constructor present in the immediate runtime is frozen to unrelated Afrobarometer R5 Q86 carriers.",
+      "prohibited_substitute": "Deriving a governed WVS7 projection from source labels or the R6A oracle JSON would add a projection implementation and semantic binding."
+    },
+    {
+      "universe": "WVS7",
+      "candidate": "C",
+      "status": "BLOCKED",
+      "blocker_id": "R8C-WVS7-C-FROZEN-LITS1-CACC-SHAPE",
+      "exact_requirement": "Route-C CACC1 requires response slots q301_2/q301_7 and coordinate slots country/city/region/tablec/tabled for every row before it can construct CACC1+CACC2.",
+      "proved_gap": "The frozen WVS7 execution pair is Q291G5/Q291P5.  It cannot meet Route-C's fixed LiTS-I CACC1 field contract without changing the accelerator semantics.",
+      "prohibited_substitute": "A WVS-specific CACC schema, coordinate mapping, or accelerator is outside the exact CACC1+CACC2 ceiling."
+    },
+    {
+      "universe": "LiTS-I",
+      "candidate": "A",
+      "status": "BLOCKED",
+      "blocker_id": "R8C-LITS1-A-R5-COMPACT-CARRIER",
+      "exact_requirement": "HB04CandidateSession._prepare(A) requires a non-null exact R5LongShardedReader.",
+      "proved_gap": "LiTS-I is an exact DTA carrier.  No frozen LiTS-I R5 compact carrier or accepted Route-A reader binding is supplied in the accepted preparation closure.",
+      "prohibited_substitute": "Encoding LiTS-I as an R5 compact carrier would create an unaccepted carrier and preparation path."
+    },
+    {
+      "universe": "LiTS-I",
+      "candidate": "B",
+      "status": "BLOCKED",
+      "blocker_id": "R8C-LITS1-B-B16-STRICT-CARRIER-DECODE",
+      "exact_requirement": "R4B declares the exact real-source B16 driver at f43c4be11d4f8fa98f538727337ec075d99d03bc, blob 26d1e3ede625499a26c712844bffaff4d77e13da; its bootstrap requires base64.b64decode(encoded, validate=True) followed by gzip.decompress.",
+      "proved_gap": "The two exact chunks are 7001 and 3052 bytes; their concatenation is 10053 bytes (modulo 4 = 1).  Strict decoding raises 'Excess data after padding'.  Permissive decoding yields bytes for which gzip.decompress raises 'invalid distance too far back'.",
+      "prohibited_substitute": "Changing strict decoding, repairing/rechunking the carrier, or recovering an alternative driver would alter an immediate accepted dependency and exceed the commission."
+    },
+    {
+      "universe": "LiTS-I",
+      "candidate": "C",
+      "status": "BLOCKED",
+      "blocker_id": "R8C-LITS1-C-CACC-DETERMINANT-PROJECTION-BINDING",
+      "exact_requirement": "HB04CandidateSession._prepare(C) requires an existing transport/projection plus RouteCDeterminants, RouteCCacc2Determinants, and exactly 19 frozen role-mask bindings.",
+      "proved_gap": "The frozen inputs supply source identity, workload/oracle profiles, and CACC ceiling, but no callable LiTS-I projection/determinants/19-atom binding bundle for this provider.  The Route-C owner constructs only from supplied bindings.",
+      "prohibited_substitute": "Synthesizing these determinant or atom bindings would redesign the candidate-C semantic and accelerator integration."
+    }
+  ],
+  "smallest_frozen_order_blocker": "R8C-WVS7-A-R5-COMPACT-CARRIER",
+  "bakeoff": {
+    "executed": false,
+    "reason": "The commission prohibits partial bakeoff when both sources and all three accepted owners do not qualify.",
+    "candidate_execution_identities": [],
+    "semantic_parity": "NOT_RUN",
+    "identity_parity": "NOT_RUN",
+    "lifecycle_replay": "NOT_RUN",
+    "frozen_telemetry_vectors": [],
+    "comparison_evidence": "NOT_GENERATED"
+  },
+  "ranking_or_policy_decision_emitted": false
+}
