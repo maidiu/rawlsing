@@ -1,0 +1,101 @@
+{
+  "schema": "RAWLSING_EE_R9L_LITS1_PRODUCTION_CLOSURE_EVIDENCE@1.0.0",
+  "status": "BLOCKED__COMMON_GOVERNED_PROJECTION_AND_ROUTE_C_PRODUCTION_BINDINGS_ABSENT",
+  "commission_tip": "6a8b5156230d607531f165c1040110642e8cad72",
+  "source": {
+    "filename": "LITS-2006-data.dta",
+    "bytes": 139531180,
+    "sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "local_exact_paths_checked": [
+      "/Users/matthewsmith/Desktop/Rawlsing/data/LiTS/LITS-2006-data.dta",
+      "/Users/matthewsmith/Desktop/Rawlsing/data/Data/LiTS_I.dta"
+    ],
+    "accepted_decoder": {
+      "path": "rawlsing_next/pre553_physical_decoder.py",
+      "blob": "13aa733b511dc23e00bfcdf288c5b920e3f09983",
+      "call": "decode_dta(source_path, encoding=latin1)",
+      "pyreadstat_version_required": "1.3.6"
+    },
+    "local_runtime_observation": {
+      "python": "3.11.3",
+      "pyreadstat_version": "1.3.2",
+      "pyarrow_version": "22.0.0",
+      "execution_eligibility": "NOT_ACCEPTED_FOR_PINNED_DECODER_OR_ROUTE_C_RUNTIME"
+    }
+  },
+  "accepted_authority": {
+    "EE_R3B": "1dc316b4a388949c1736aa65a20c8d43cfb2c8ba",
+    "EE_R3E": "dd218b1182b29259a19837c89222cbc47024b2ec",
+    "EE_R4B": "e5012ff2d9116e65850402b4432899de4937ed5e",
+    "EE_R5B": "02d32036db49c70ff137f1730d0ff95b571040d3",
+    "EE_R6B": "fb10c6c79cd209396c043954d9c886ae820d30f0",
+    "EE_R7A": "8968b4e2bb35cb453c633bd81c10c910240a122a",
+    "EE_R8B": "bb53017210b46f4aef621cfb65c227babd00200e",
+    "EE_R8C": "c97293834e7e295d07cafa9da6ce155fc769fceb",
+    "owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6"
+  },
+  "candidate_a": {
+    "owner_blob": "d4915e7e6755ba1850756aebff72f982f73a332b",
+    "accepted_path": "exact DTA -> physical decoder -> pre553_r5_seam.iter_source_native_rows -> R5CompactLongShardedBuilder -> R5CompactLongShardedReader -> build_r5_source_backed_c11_repository(reader, governed_projection)",
+    "status": "NOT_STARTED__NO_ACCEPTED_DECODER_RUNTIME_AND_NO_GOVERNED_PROJECTION",
+    "carrier_created": false,
+    "measurement_emitted": false
+  },
+  "candidate_b": {
+    "owner_blob": "7c509c2098d0030f253344eb3f682471378812a8",
+    "physical_meaning": "SOURCE_BACKED_VIRTUAL_C11",
+    "accepted_runtime_entrypoint": "build_source_backed_c11_repository(..., cache=None)",
+    "bootstrap": {
+      "commit": "f43c4be11d4f8fa98f538727337ec075d99d03bc",
+      "driver_blob": "26d1e3ede625499a26c712844bffaff4d77e13da",
+      "chunks": [7001, 3052],
+      "concatenated_bytes": 10053,
+      "concatenated_modulo_4": 1,
+      "concatenated_sha256": "46551444d6113ee619c6bf3a37620ac86ab53ae619cb4f8f0d63e7a6230b00bb",
+      "strict_decode": "binascii.Error: Excess data after padding",
+      "permissive_decode_then_gzip": "zlib.error: Error -3 while decompressing data: invalid distance too far back",
+      "adjudication": "STALE_QUALIFICATION_OR_TRANSPORT_SCAFFOLDING__NOT_REPAIRED__DIRECT_OWNER_BINDING_CONDITIONALLY_LAWFUL_ONLY_WITH_COMMON_GOVERNED_PROJECTION"
+    },
+    "status": "NOT_EXECUTED__COMMON_GOVERNED_PROJECTION_ABSENT",
+    "retained_transformed_payload_bytes": 0,
+    "accelerator_surface": []
+  },
+  "candidate_c": {
+    "owner_blob": "abfdc91a71ef5e18c4a8a6bf62fa65750d8d9889",
+    "pyarrow_required": "25.0.1",
+    "permitted_accelerators": [
+      "CACC1_LITS1_SEMANTIC_EXECUTION_BUNDLE",
+      "CACC2_FRONTIER_ATOMIC_PREDICATE_RISK_MASK_BANK"
+    ],
+    "frozen_source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "frozen_c11_logical_release_hash": "e6c954538fa1830820120465a10a6d065b8a18d1e6b7b08d3f863b0917741e26",
+    "role_count_required": 19,
+    "direct_qualification_negative": "ONLY_B20_SYNTHETIC_FIXTURE_DETERMINANTS_AND_URN_TEST_REFS_FOUND__NO_ACCEPTED_REAL_SOURCE_PRODUCTION_DETERMINANTS_OR_19_ATOM_BINDINGS",
+    "status": "NOT_EXECUTED__EXACT_ROUTE_C_DETERMINANT_BINDING_ABSENT"
+  },
+  "common_projection": {
+    "required": "GovernedC11Projection",
+    "available_inputs": [
+      "R3B exact source identity and R2/R7/R27 extension roots",
+      "R6B LiTS decoder identity, request/oracle metadata, and source geometry",
+      "R3E exact OP020/OP021/OP022 lifecycle profiles"
+    ],
+    "missing": [
+      "accepted callable projection identity",
+      "authoritative response/coordinate slot bindings",
+      "authoritative physical-value rules and routing bindings required to instantiate the projection"
+    ],
+    "status": "NOT_RECOVERED__NO_SEMANTIC_INFERENCE_PERFORMED"
+  },
+  "nine_cell_execution": {
+    "candidate_order": ["A", "B", "C"],
+    "cells": ["OP001", "OP002", "OP003", "OP004", "OP005", "OP006", "OP020", "OP021", "OP022"],
+    "reference_oracles_materialized": false,
+    "candidate_invocations": 0,
+    "semantic_parity": "NOT_RUN",
+    "identity_parity": "NOT_RUN",
+    "lifecycle_replay": "NOT_RUN",
+    "telemetry": "NOT_GENERATED",
+    "ranking_or_policy_decision_emitted": false
+  }
+}
