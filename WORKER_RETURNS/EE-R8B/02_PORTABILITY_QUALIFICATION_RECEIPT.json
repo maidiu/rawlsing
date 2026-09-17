@@ -1,0 +1,37 @@
+{
+  "bounded_diff": {
+    "changed_function": "rusage_metrics",
+    "darwin": "ru_maxrss native bytes copied exactly to peak_rss_bytes",
+    "linux": "unchanged ru_maxrss KiB multiplied by 1024",
+    "other_harness_functions_changed": false,
+    "telemetry_keys": [
+      "cpu_user_ns",
+      "cpu_system_ns",
+      "peak_rss_native",
+      "peak_rss_native_unit",
+      "peak_rss_bytes"
+    ],
+    "unsupported": "RuntimeError fail-closed"
+  },
+  "exact_upstream_w4_test": {
+    "command": "PYTHONPATH=<patched exact worktree> python3 -m pytest -q tests/test_ee_w4_abc_hostile_measurement_harness.py",
+    "failed": 0,
+    "passed": 6,
+    "source_commit": "b74b7cf0b8cb3f7e5fae80094a7db7d26ce20457",
+    "source_git_blob": "1d314c762cf35253577a1d927ab192be7786bf26"
+  },
+  "new_git_blob": "faa0397e54c90aabf4639a7dd6c46aa05d41d3ee",
+  "new_path": "WORKER_RETURNS/EE-R8B/01_REPAIRED_EE_W4_HARNESS_RUNTIME.py",
+  "new_sha256": "bf0e72c6a11f60219689458a74ae6b3844a4e620ab6fcd30674c8fbf150f9c39",
+  "old_commit": "b74b7cf0b8cb3f7e5fae80094a7db7d26ce20457",
+  "old_git_blob": "2e04ebe391f90e3e00ceae0841464adc58617cea",
+  "old_sha256": "8c632a3b9f258d2c1ac599fd2f41eefb7ecaeef59751ba57db0c827676afaec8",
+  "r2e_qualification_consumed": {
+    "commit": "7f7f716ae9cd26bbb1fe5adc7a5ff1024955e285",
+    "six_exact_w4_tests_replayed": true,
+    "unmodified_harness_invariants_retested": true
+  },
+  "real_darwin_preflight_receipt": "darwin_preflight_receipt.json",
+  "status": "PASS_DARWIN_RSS_NORMALIZATION_QUALIFIED",
+  "unit_portability_receipt": "portability_unit_receipt.json"
+}

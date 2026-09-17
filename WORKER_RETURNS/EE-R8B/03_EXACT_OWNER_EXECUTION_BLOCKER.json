@@ -1,0 +1,27 @@
+{
+  "candidate_failure": false,
+  "common_to_candidates": [
+    "A",
+    "B",
+    "C"
+  ],
+  "hq_carrier_policy_decision": "NOT_MADE",
+  "portability_repair": "PASS",
+  "proof": {
+    "actual_exception": "production source preparation is separately gated; B21 may execute only the explicit governed bounded fixture",
+    "actual_probe_receipt": "production_gate_probe_receipt.json",
+    "candidate_semantic_execution": false,
+    "forbidden_workaround": "new production CLI or adapter",
+    "owner_registry_commit": "e5012ff2d9116e65850402b4432899de4937ed5e",
+    "owner_registry_path": "WORKER_RETURNS/EE-R4B/01_EXECUTABLE_OWNER_REGISTRY.json",
+    "owner_registry_rule": "QUALIFIED_CLI_IS_FIXTURE_GATED__REAL_SOURCE_PREPARATION_IS_SEPARATE_UPSTREAM_BINDING__NO_NEW_PRODUCTION_CLI_OR_ADAPTER_INVENTED",
+    "qualified_production_entrypoint_blob": "0acb4cd17906b1c316c5ae381d3214ea98ac5baa",
+    "qualified_production_entrypoint_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+    "qualified_production_entrypoint_path": "rawlsing_next/as4/run_candidate.py",
+    "source_opened": false
+  },
+  "required_unblock": "An already-authorized exact real-source prepared binding and entrypoint for the frozen 18-cell package, without creating a new production CLI or adapter.",
+  "smallest_exact_proved_blocker": "QUALIFIED_R4B_REAL_SOURCE_ENTRYPOINT_IS_EXPLICITLY_FIXTURE_GATED",
+  "status": "BLOCKED_FINAL_ABC_BAKEOFF",
+  "stop_point": "after qualified Darwin portability repair and source/runtime preflight; before reference-oracle materialization or candidate invocation"
+}

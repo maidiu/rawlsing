@@ -1,0 +1,33 @@
+{
+  "darwin_representative_metrics": {
+    "cpu_system_ns": 500000000,
+    "cpu_user_ns": 1250000000,
+    "peak_rss_bytes": 1234567,
+    "peak_rss_native": 1234567,
+    "peak_rss_native_unit": "bytes"
+  },
+  "driver_sha256": "bc5720c9b2380da2c8e0aa3dfc8ef3dec88ffe4448e40c23d4eaad470726dd15",
+  "executed_at_utc": "2026-09-17T02:17:35.413401+00:00",
+  "linux_representative_metrics": {
+    "cpu_system_ns": 500000000,
+    "cpu_user_ns": 1250000000,
+    "peak_rss_bytes": 1264196608,
+    "peak_rss_native": 1234567,
+    "peak_rss_native_unit": "KiB"
+  },
+  "preserved_telemetry_keys": [
+    "cpu_system_ns",
+    "cpu_user_ns",
+    "peak_rss_bytes",
+    "peak_rss_native",
+    "peak_rss_native_unit"
+  ],
+  "runtime_path": "rawlsing_next/ee_w4_harness_runtime.py",
+  "runtime_sha256": "bf0e72c6a11f60219689458a74ae6b3844a4e620ab6fcd30674c8fbf150f9c39",
+  "schema": "RAWLSING_EE_R8B_RUSAGE_METRICS_PORTABILITY_QUALIFICATION@1.0.0",
+  "status": "PASS_UNIT_NORMALIZATION_ONLY",
+  "unsupported_platform_result": {
+    "exception_type": "RuntimeError",
+    "message": "unsupported ru_maxrss unit for platform: 'freebsd13'"
+  }
+}

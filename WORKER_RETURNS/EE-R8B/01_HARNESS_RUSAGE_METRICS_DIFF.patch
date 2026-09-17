@@ -1,0 +1,13 @@
+--- rawlsing_next/ee_w4_harness_runtime.py@2e04ebe391f90e3e00ceae0841464adc58617cea
++++ WORKER_RETURNS/EE-R8B/01_REPAIRED_EE_W4_HARNESS_RUNTIME.py
+@@ -52,8 +52,13 @@
+ def rusage_metrics(u:Any)->dict[str,Any]:
+-    unit="KiB" if sys.platform.startswith("linux") else "platform_native"
+-    return {"cpu_user_ns":int(u.ru_utime*1e9),"cpu_system_ns":int(u.ru_stime*1e9),"peak_rss_native":int(u.ru_maxrss),"peak_rss_native_unit":unit,"peak_rss_bytes":int(u.ru_maxrss*1024) if unit=="KiB" else None}
++    if sys.platform.startswith("linux"):
++        unit="KiB"; peak_rss_bytes=int(u.ru_maxrss*1024)
++    elif sys.platform == "darwin":
++        unit="bytes"; peak_rss_bytes=int(u.ru_maxrss)
++    else:
++        raise RuntimeError(f"unsupported ru_maxrss unit for platform: {sys.platform!r}")
++    return {"cpu_user_ns":int(u.ru_utime*1e9),"cpu_system_ns":int(u.ru_stime*1e9),"peak_rss_native":int(u.ru_maxrss),"peak_rss_native_unit":unit,"peak_rss_bytes":peak_rss_bytes}
