@@ -1,0 +1,21 @@
+{
+  "schema": "EE_P2F1_VERIFICATION_RECEIPT@1.0.0",
+  "status": "PASS",
+  "verification_mode": "STRUCTURAL_GOVERNANCE_AUDIT_WITH_EXECUTABLE_VERIFIER_EMITTED",
+  "verifier": "WORKER_RETURNS/EE-P2F1/07_verify_ee_p2f1.py",
+  "checks": {
+    "required_rows_present_exactly_once": true,
+    "classification_counts": {"A":0,"B":14,"C":0,"D":0,"E":3},
+    "all_B_C_D_rows_have_owner_category": true,
+    "all_E_rows_have_no_owner_category": true,
+    "crosswalk_covers_all_rows": true,
+    "C_rows_absent": true,
+    "D_rows_absent": true,
+    "raw_wvs_access_false": true,
+    "candidate_execution_false": true,
+    "lock2_candidate_execution_remains_forbidden": true,
+    "semantic_pre_main_unchanged": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354"
+  },
+  "terminal": "EE_P2F1_PASS__ALL_WVS_P2_REQUIREMENTS_CLASSIFIED__MECHANICAL_PRE553_ISSUANCE_ONLY",
+  "note": "The emitted verifier reproduces these structural assertions against the committed return directory. This worker performed no source-byte access, object minting, candidate execution, or performance measurement."
+}

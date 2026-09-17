@@ -1,0 +1,29 @@
+{
+  "schema": "EE_P2F1_LOCK2_WAKE_DECISION@1.0.0",
+  "decision": "WAKE_MECHANICAL_PRE553_ISSUER__THEN_REWAKE_LOCK2_HASH_MATERIALIZER",
+  "lock2_hash_materializer_ready_now": false,
+  "reason": "F0's exact PRE553 object/ref/authority closure is still not materialized, but P2F1 proves the residual is B-class form/binding only: no C/D semantic or routing authority precursor remains.",
+  "next_worker_grain": "MECHANICAL_PRE553_WVS7_AUTHORITY_AND_OBJECT_BINDING_ONLY",
+  "next_worker_may": {
+    "open_wvs_source": false,
+    "inspect_outcomes": false,
+    "change_semantics": false,
+    "change_routing": false,
+    "issue_exact_PRE553_objects_and_positive_snapshots_from_accepted_authority": true,
+    "compute_deterministic_refs_hashes": true
+  },
+  "after_issuer_pass": {
+    "wake": "EE-P2F0-successor Lock2 deterministic hash/materialization",
+    "required_terminal_outputs": [
+      "exact DiscoveryAuthority ref/hash",
+      "exact candidate grammar ref/hash",
+      "exact evaluated-frontier ref/hash",
+      "exact atom and query-template refs",
+      "canonical 46-candidate hash list",
+      "role count and exact role manifest",
+      "authority-closure receipt proving zero raw-source/outcome access"
+    ]
+  },
+  "candidate_execution": "FORBIDDEN_UNTIL_HQ_BINDS_LOCK2_HASHES_IN_SUPPLEMENT",
+  "semantic_pre_main_tip_must_remain": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354"
+}

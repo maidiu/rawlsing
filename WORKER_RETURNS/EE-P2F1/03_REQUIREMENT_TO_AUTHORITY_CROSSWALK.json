@@ -1,0 +1,30 @@
+{
+  "schema": "EE_P2F1_REQUIREMENT_TO_AUTHORITY_CROSSWALK@1.0.0",
+  "law": "Provenance, repository presence, or semantic knowledge does not substitute for an exact positive PRE553 authority tuple. This crosswalk distinguishes possession of governing meaning from exact PRE553 issuance/binding.",
+  "crosswalk": [
+    {"requirement_id":"R01","supporting_inventory_ids":["I01_LOCK1_WVS_SOURCE_AND_PROGRAM_FREEZE","I03_EE_R6A_PAIR_TOPOLOGY","I07_PRE553_I03_AUTHORITY_FITNESS_CONTRACT"],"disposition":"MECHANICAL_ISSUANCE_BINDING_ONLY"},
+    {"requirement_id":"R02","supporting_inventory_ids":["I02_EE_R6A_QID_RESPONSE_SEMANTICS","I05_PSC03_A04_DOCUMENTARY_SOURCE","I06_L05_R2_DOCUMENTARY_SEMANTIC_BOUNDARY"],"disposition":"MECHANICAL_ISSUANCE_BINDING_ONLY"},
+    {"requirement_id":"R03","supporting_inventory_ids":["I01_LOCK1_WVS_SOURCE_AND_PROGRAM_FREEZE","I02_EE_R6A_QID_RESPONSE_SEMANTICS"],"disposition":"MECHANICAL_ISSUANCE_BINDING_ONLY"},
+    {"requirement_id":"R04","supporting_inventory_ids":["I03_EE_R6A_PAIR_TOPOLOGY","I04_EE_R6A_PREMISE_ORACLE"],"disposition":"MECHANICAL_ISSUANCE_BINDING_ONLY"},
+    {"requirement_id":"R05","supporting_inventory_ids":["I04_EE_R6A_PREMISE_ORACLE"],"disposition":"MECHANICAL_ISSUANCE_BINDING_ONLY"},
+    {"requirement_id":"R06","supporting_inventory_ids":["I01_LOCK1_WVS_SOURCE_AND_PROGRAM_FREEZE","I04_EE_R6A_PREMISE_ORACLE","I07_PRE553_I03_AUTHORITY_FITNESS_CONTRACT"],"disposition":"MECHANICAL_ISSUANCE_BINDING_ONLY"},
+    {"requirement_id":"R07","supporting_inventory_ids":["I01_LOCK1_WVS_SOURCE_AND_PROGRAM_FREEZE","I07_PRE553_I03_AUTHORITY_FITNESS_CONTRACT"],"disposition":"MECHANICAL_ISSUANCE_BINDING_ONLY"},
+    {"requirement_id":"R08","supporting_inventory_ids":["I01_LOCK1_WVS_SOURCE_AND_PROGRAM_FREEZE","I02_EE_R6A_QID_RESPONSE_SEMANTICS","I07_PRE553_I03_AUTHORITY_FITNESS_CONTRACT"],"disposition":"MECHANICAL_ISSUANCE_BINDING_ONLY"},
+    {"requirement_id":"R09","supporting_inventory_ids":["I01_LOCK1_WVS_SOURCE_AND_PROGRAM_FREEZE","I07_PRE553_I03_AUTHORITY_FITNESS_CONTRACT"],"disposition":"MECHANICAL_ISSUANCE_BINDING_ONLY"},
+    {"requirement_id":"R10","supporting_inventory_ids":["I01_LOCK1_WVS_SOURCE_AND_PROGRAM_FREEZE","I04_EE_R6A_PREMISE_ORACLE","I07_PRE553_I03_AUTHORITY_FITNESS_CONTRACT"],"disposition":"MECHANICAL_ISSUANCE_BINDING_ONLY"},
+    {"requirement_id":"R10W","supporting_inventory_ids":["I01_LOCK1_WVS_SOURCE_AND_PROGRAM_FREEZE","I02_EE_R6A_QID_RESPONSE_SEMANTICS"],"disposition":"NOT_REQUIRED_FOR_LOCK2_AUTHORITY"},
+    {"requirement_id":"R11","supporting_inventory_ids":["I01_LOCK1_WVS_SOURCE_AND_PROGRAM_FREEZE","I08_PRE553_I05_EXACT_BOUNDED_CONTRACT"],"disposition":"MECHANICAL_ISSUANCE_BINDING_ONLY"},
+    {"requirement_id":"R12","supporting_inventory_ids":["I01_LOCK1_WVS_SOURCE_AND_PROGRAM_FREEZE","I08_PRE553_I05_EXACT_BOUNDED_CONTRACT"],"disposition":"MECHANICAL_ISSUANCE_BINDING_ONLY"},
+    {"requirement_id":"R13","supporting_inventory_ids":["I01_LOCK1_WVS_SOURCE_AND_PROGRAM_FREEZE","I09_PRE553_REPLAY_AUDIT_CONTRACT"],"disposition":"MECHANICAL_ISSUANCE_BINDING_ONLY"},
+    {"requirement_id":"R14","supporting_inventory_ids":["I07_PRE553_I03_AUTHORITY_FITNESS_CONTRACT"],"disposition":"NOT_REQUIRED_FOR_LOCK2_AUTHORITY"},
+    {"requirement_id":"R15A","supporting_inventory_ids":["I01_LOCK1_WVS_SOURCE_AND_PROGRAM_FREEZE","I07_PRE553_I03_AUTHORITY_FITNESS_CONTRACT","I09_PRE553_REPLAY_AUDIT_CONTRACT"],"disposition":"MECHANICAL_ISSUANCE_BINDING_ONLY"},
+    {"requirement_id":"R15B","supporting_inventory_ids":["I01_LOCK1_WVS_SOURCE_AND_PROGRAM_FREEZE","I07_PRE553_I03_AUTHORITY_FITNESS_CONTRACT"],"disposition":"NOT_REQUIRED_FOR_LOCK2_AUTHORITY"}
+  ],
+  "critical_interpretations": {
+    "EE_R3D":"Historical zero objectizer-ready count is not a present semantic-absence finding for the selected pair; later EE-R6A + HQ Lock1 control this frozen P2 pair.",
+    "HQ_LOCK1":"Sufficient to govern benchmark/search frontier, grammar shape, support/validation and no-pruning law. Not competent to invent WVS response semantics or routing/risk-set facts.",
+    "TARGET_USE_PERMISSION":"Not required because no target-use tuple is declared.",
+    "WEIGHT_DESIGN_ESTIMAND":"Not required because frozen WVS is raw/unweighted exact-count only.",
+    "C11_RELEASE_REFS":"Exact sealed candidate releases are mandatory at execution, but candidate-produced runtime inputs are not pre-Lock2 semantic authority."
+  }
+}
