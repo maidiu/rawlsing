@@ -1,0 +1,35 @@
+{
+  "schema":"RAWLSING_HQ_HANDOFF@1.1.0",
+  "checkpoint_id":"20260916T2018-0400",
+  "repository":"maidiu/rawlsing",
+  "control_branch":"integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip":"1dcd2a79dd6d4208738f655ab7fe4e71c219e354",
+  "prior_checkpoint":"20260916T1647-0400",
+  "status":"R6_RECONCILED__R7_DIRECT_EXECUTION_WAVE_ACTIVE",
+  "latest_substantive_hq_authority":"d36e1bb51a2b3536f90ecad8b2a0dd10bf969a28",
+  "r6_returns":{
+    "EE-R6A":{"head":"4b141b8b5748175e34c9286eba36f53d8df1e9d5","status":"PASS","wvs36_complete":36,"selected_pair":["question_impl.phase0.03ea3430fb4f08a1f0da","question_impl.phase0.068ef710ac1c269b8adf"],"effect":"WVS7_OP003_OP006_SEMANTIC_PACKAGE_READY"},
+    "EE-R6B":{"head":"fb10c6c79cd209396c043954d9c886ae820d30f0","status":"PASS_AT_PREASSEMBLY_GRAIN","ready_cells":14,"pending_cells":4,"physical_cells_ready":27,"effect":"STALE_WVS_PAIR_BINDING_ONLY__MECHANICAL_RECONCILIATION_REQUIRED"},
+    "ASTRA-D04-R1":{"head":"2a2e7dc2746a026d6e1d26a7d4c8aa49e2eb5fe3","status":"LOCAL_EXECUTION_SURFACE_BLOCKER","workload_candidates":50,"workload_roles":77,"effect":"SAME_EXACT_GRAIN_RETRY_REQUIRED"},
+    "ASTRA-D10-R1":{"head":"c108691752137e858d1fcac7eceeff12ddc39f12","status":"PASS","effect":"D10Q_WAKE"}
+  },
+  "carrier_selection":{
+    "selection_floor":18,
+    "semantic_premises_effectively_closed":true,
+    "preassembly_ready":14,
+    "mechanical_splice_pending":4,
+    "physical_candidate_operation_cells_ready":27,
+    "physical_candidate_operation_cells_total":27,
+    "final_bakeoff_run":false,
+    "next":"EE-R7A_DIRECT_FINAL_EXECUTION_AFTER_18_OF_18_PREFLIGHT"
+  },
+  "active_workers":[
+    {"id":"EE-R7A","human_name":"Final A/B/C Bakeoff Execution","branch":"agent/rabochii-prev3-ee-r7a-final-abc-bakeoff-execution-r1","commission_tip":"d36e1bb51a2b3536f90ecad8b2a0dd10bf969a28","library_access":"EXACT_ONLY_WVS7_AND_LITS_I","criticality":"CARRIER_SELECTION_FINAL_EXECUTION"},
+    {"id":"ASTRA-D04-R2","human_name":"LiTS Learned-Workload Execution Retry","branch":"agent/rabochii-prev3-astra-d04r2-learned-workload-execution-r2","commission_tip":"d36e1bb51a2b3536f90ecad8b2a0dd10bf969a28","library_access":"EXACT_ONLY_LITS_I","criticality":"PARALLEL_EMPIRICAL_PRODUCTION"},
+    {"id":"ASTRA-D10Q","human_name":"M10-M01 Independent Envelope Qualification","branch":"agent/rabochii-prev3-astra-d10q-independent-envelope-qualification-r1","commission_tip":"d36e1bb51a2b3536f90ecad8b2a0dd10bf969a28","library_access":"NO","criticality":"PARALLEL_NONCRITICAL_SDTF_CANARY"}
+  ],
+  "semantic_production_queue":{"response_semantic_residual_total":18012,"family_units":9,"status":"WAKEABLE_PARALLEL_BACKLOG__NOT_ABC_GATE"},
+  "architecture_holding":["PREV3_RESEARCH_PIPELINE_IS_TRII_TO_FIELD_FORGE_TO_DVA","CHETIRI_IS_ORTHOGONAL_PHYSICAL_REALIZATION_NOT_PRIOR_SOCIOLOGY","THEORY_DOCUMENTATION_ENRICHES_AND_CONSTRAINS_BUT_NEED_NOT_PRESTATE_EVERY_LAWFUL_EMPIRICAL_RELATION","PREV3_WORLD_NE_V3_LIFE"],
+  "frozen_laws":["NO_ALL_LANES_BARRIER","LOCAL_BLOCKER_ONLY","NO_NEW_GENERIC_ARCHITECTURE_REVIEW","D04_EMPIRICAL_PRODUCTION_ADVANCES_IN_PARALLEL_WITH_CARRIER_SELECTION","HQ_FANIN_OWNER__DO_NOT_USE_USER_AS_SYNC_BUS"],
+  "terminal":"R7_DIRECT_EXECUTION_WAVE_ACTIVE__FINAL_BAKEOFF_PLUS_REAL_EMPIRICAL_PRODUCT_RETRY_PLUS_NONCRITICAL_D10Q"
+}
