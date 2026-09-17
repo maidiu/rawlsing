@@ -1,0 +1,113 @@
+{
+  "accepted_pair": {
+    "pair_lf_stream_sha256": "aefe3477977a0b443bdf173b5d3866a0cc8d256a5937fa4c7af1107efa98ce07",
+    "qids": [
+      "question_impl.phase0.03ea3430fb4f08a1f0da",
+      "question_impl.phase0.068ef710ac1c269b8adf"
+    ],
+    "source_variables": [
+      "Q291G5",
+      "Q291P5"
+    ]
+  },
+  "accepted_readiness_status": "PASS__18_OF_18_READY__ZERO_PENDING__EXECUTION_MAY_BEGIN_IF_RUNTIME_SURFACE_SATISFIES_FROZEN_DEPENDENCIES",
+  "authority_or_ownership_reopened": false,
+  "binding_returns": {
+    "EE-R3E": "dd218b1182b29259a19837c89222cbc47024b2ec",
+    "EE-R4B": "e5012ff2d9116e65850402b4432899de4937ed5e",
+    "EE-R5B": "02d32036db49c70ff137f1730d0ff95b571040d3",
+    "EE-R6A": "4b141b8b5748175e34c9286eba36f53d8df1e9d5",
+    "EE-R6B": "fb10c6c79cd209396c043954d9c886ae820d30f0",
+    "EE-W4": "b74b7cf0b8cb3f7e5fae80094a7db7d26ce20457"
+  },
+  "candidate_order": [
+    "A",
+    "B",
+    "C"
+  ],
+  "final_cell_order": [
+    "WVS7::OP001",
+    "WVS7::OP002",
+    "WVS7::OP003",
+    "WVS7::OP004",
+    "WVS7::OP005",
+    "WVS7::OP006",
+    "WVS7::OP020",
+    "WVS7::OP021",
+    "WVS7::OP022",
+    "LiTS-I::OP001",
+    "LiTS-I::OP002",
+    "LiTS-I::OP003",
+    "LiTS-I::OP004",
+    "LiTS-I::OP005",
+    "LiTS-I::OP006",
+    "LiTS-I::OP020",
+    "LiTS-I::OP021",
+    "LiTS-I::OP022"
+  ],
+  "pending_count": 0,
+  "physical_ready_count": 27,
+  "physical_total": 27,
+  "preserved_invariants": {
+    "candidate_A": {
+      "accelerators": [],
+      "blob": "d4915e7e6755ba1850756aebff72f982f73a332b",
+      "owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+      "path": "rawlsing_next/pre553_r5_source_backed_adapter.py"
+    },
+    "candidate_B": {
+      "accelerators": [],
+      "blob": "7c509c2098d0030f253344eb3f682471378812a8",
+      "owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+      "path": "rawlsing_next/pre553_source_backed_c11_facade.py"
+    },
+    "candidate_C": {
+      "accelerators": [
+        "CACC1_LITS1_SEMANTIC_EXECUTION_BUNDLE",
+        "CACC2_FRONTIER_ATOMIC_PREDICATE_RISK_MASK_BANK"
+      ],
+      "blob": "abfdc91a71ef5e18c4a8a6bf62fa65750d8d9889",
+      "owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+      "path": "rawlsing_next/pre553_route_c_accelerators.py"
+    },
+    "candidate_order": [
+      "A",
+      "B",
+      "C"
+    ],
+    "lits_i": {
+      "bytes": 139531180,
+      "sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+      "universe_id": "EEU_LITS_I_2006_EXACT_SOURCE"
+    },
+    "physical_cells_ready": 27,
+    "physical_cells_total": 27,
+    "proved_physical_gaps": 0,
+    "r3e_lifecycle_blobs": {
+      "LiTS-I::OP020": "9e3cc4ab92e4a72fe509691393f4ec5721ddc165",
+      "LiTS-I::OP021": "64a4a43bf8787f0ea2b849cdab346a3e968349af",
+      "LiTS-I::OP022": "10fa0c9980267112cd88a094a6b6eb80e40aa831",
+      "WVS7::OP020": "388674dd8759a2b4b14ac5a1238828ef8d1204db",
+      "WVS7::OP021": "20d4c2685715570f4f1ce88052026cadb166de5f",
+      "WVS7::OP022": "a9e89cde8b62c3ae7f76383f4d8757ea9cb963e1"
+    },
+    "r5b_bridge_blob": "d169be112f454732df161620743ea6332866255e",
+    "r6b_execution_measurement_order_reset_law_sha256": "0b8d2e28f207273fd1123bf603e455c863d511dc2fcb05dc7a38cf2a6665f435",
+    "r6b_ready_14_profiles_sha256": "fc8bad4591cce4461495be31043fc38eca2705609900cc661382c93bff980a19",
+    "wvs7": {
+      "bytes": 185163494,
+      "sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+      "universe_id": "EEU_WVS7_WAVE7_EXACT_SOURCE"
+    }
+  },
+  "r7a_commit": "8968b4e2bb35cb453c633bd81c10c910240a122a",
+  "r7a_splice_sha256": "ff98bc71b6b3ce41cc53b532fa9da595b5e949406928de0e58d7074c68aa8277",
+  "ready_count": 18,
+  "splice_profile_hashes": [
+    "07a95b5bab3e2087eed0069844f0cfee30ee5ad4b60721f3c969724978ce6125",
+    "b96b2b9f9062c973ce01bf0c2273c3f2662e3746aac721e681e714b975a0ef19",
+    "8382d35e0d77c383adbea4ce9a37c7eb36b51de388e250ee16e80d904734ad1e",
+    "da6b716f0b17cfae64dd34c2efc81e958d4356226e3ee6a4602473c13df33a02"
+  ],
+  "status": "PASS_ACCEPTED_18_OF_18_CONSUMED_UNCHANGED"
+}

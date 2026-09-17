@@ -1,0 +1,47 @@
+{
+  "authority_missing": false,
+  "bounded_executor_inventory": "Only PATH checks for docker, podman, colima, multipass, limactl, qemu-system-x86_64; all returned null. No claim of universal Linux absence.",
+  "candidate_failure": false,
+  "common_to_candidates": [
+    "A",
+    "B",
+    "C"
+  ],
+  "hq_carrier_policy_decision": "NOT_MADE",
+  "proof": {
+    "actual_child_executions": "04_ACTUAL_EXECUTION_SURFACE_PREFLIGHT.json",
+    "actual_children_exit_codes": [
+      0,
+      0
+    ],
+    "binding_metric_law_commit": "fb10c6c79cd209396c043954d9c886ae820d30f0",
+    "binding_metric_law_path": "WORKER_RETURNS/EE-R6B/04_EXECUTION_MEASUREMENT_ORDER_RESET_LAW.json",
+    "binding_metric_law_sha256": "0b8d2e28f207273fd1123bf603e455c863d511dc2fcb05dc7a38cf2a6665f435",
+    "blob": "2e04ebe391f90e3e00ceae0841464adc58617cea",
+    "ceiling": "Do not redesign ... harness, metrics ...",
+    "commission_requirement": "collect all frozen telemetry and complete candidate metric vectors",
+    "consumer_blob": "1c5e2e9f4933effee60dce31482424661d6a2252",
+    "consumer_line": 39,
+    "consumer_path": "rawlsing_next/ee_w4_abc_hostile_measurement_harness.py",
+    "exact_expression": "peak_rss_bytes = int(u.ru_maxrss*1024) if unit==\"KiB\" else None; unit=\"KiB\" only when sys.platform.startswith(\"linux\")",
+    "function": "rusage_metrics",
+    "lines": [
+      54,
+      55,
+      56
+    ],
+    "path": "rawlsing_next/ee_w4_harness_runtime.py",
+    "qualified_commit": "b74b7cf0b8cb3f7e5fae80094a7db7d26ce20457",
+    "required_metric": "peak_rss_bytes",
+    "required_metric_actual_values": [
+      null,
+      null
+    ],
+    "sha256": "8c632a3b9f258d2c1ac599fd2f41eefb7ecaeef59751ba57db0c827676afaec8"
+  },
+  "runtime_dependency_availability": "PASS_COLOCATED_IMPORTS_AND_REAL_SOURCE_DECODER_CALLS",
+  "smallest_proved_blocker": "UNCHANGED_QUALIFIED_W4_HARNESS_RETURNS_REQUIRED_peak_rss_bytes_NULL_ON_DARWIN",
+  "status": "BLOCKED_FINAL_BAKEOFF_EXECUTION_SURFACE",
+  "stop_point": "common execution-surface preflight, before independent reference-oracle materialization or any candidate invocation",
+  "unblocking_condition": "Execution surface on which the exact unchanged qualified W4 rusage_metrics supplies required peak_rss_bytes, with exact source bytes and all pinned runtime/owner/package identities co-located."
+}

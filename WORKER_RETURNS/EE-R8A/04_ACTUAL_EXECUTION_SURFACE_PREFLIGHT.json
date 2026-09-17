@@ -1,0 +1,130 @@
+{
+  "run_id": "EE-R8A-PREFLIGHT-9fe31dca-1990-42ee-9bed-eaba148e3ad8",
+  "parent_pid": 98386,
+  "runtime_freeze_sha256": "e6c6af33c20dfc67a92217fad9c3342cbfcb3b0832092fe6cfd119983c13a820",
+  "preflight_driver_sha256": "75cb9dc67cd417f64e89ccb77282f3f2f3f36772ec2b97b8ed355c8f6110ab3d",
+  "decoder_child_driver_sha256": "a2d80d296085069166218a52fc21edbc7b7b5f25e2e405da7388edb2b873e6ff",
+  "executions": [
+    {
+      "run_id": "EE-R8A-PREFLIGHT-9fe31dca-1990-42ee-9bed-eaba148e3ad8",
+      "universe": "WVS7",
+      "argv": [
+        "/private/tmp/rawlsing-ee-r8a-rSW1Jc/venv/bin/python",
+        "-I",
+        "/private/tmp/rawlsing-ee-r8a-rSW1Jc/decoder_preflight.py",
+        "/private/tmp/rawlsing-ee-r8a-rSW1Jc",
+        "WVS7"
+      ],
+      "started_at_utc": "2026-09-17T01:04:13.785423+00:00",
+      "ended_at_utc": "2026-09-17T01:04:15.289614+00:00",
+      "exit_code": 0,
+      "metrics": {
+        "wall_ns": 1503894748,
+        "cpu_user_ns": 1900853999,
+        "cpu_system_ns": 259575000,
+        "peak_rss_native": 94580736,
+        "peak_rss_native_unit": "platform_native",
+        "peak_rss_bytes": null
+      },
+      "child_stdout_sha256": "f1d2863e7ad146865a97bb3fc6d146e5b417c102449bfb068840a4bf018d7ded",
+      "child_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "child_stderr_bytes": 0,
+      "child_receipt": {
+        "status": "PASS_REAL_EXACT_DECODER_PREFLIGHT",
+        "universe": "WVS7",
+        "pid": 98662,
+        "started_at_utc": "2026-09-17T01:04:14.165063+00:00",
+        "ended_at_utc": "2026-09-17T01:04:15.195429+00:00",
+        "executable": "/private/tmp/rawlsing-ee-r8a-rSW1Jc/venv/bin/python",
+        "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+        "sys_platform": "darwin",
+        "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+        "source_bytes": 185163494,
+        "rows": 97220,
+        "variables": 613,
+        "required_source_coordinates": [
+          "Q138",
+          "Q291G5",
+          "Q291P5"
+        ],
+        "reader_configuration": {
+          "reader": "pyreadstat",
+          "reader_version": "1.3.6",
+          "user_missing": true,
+          "apply_value_formats": false,
+          "encoding": null,
+          "authority_status": null
+        },
+        "runtime_versions": {
+          "pyreadstat": "1.3.6",
+          "pyarrow": "25.0.1"
+        },
+        "runtime_freeze_sha256": "e6c6af33c20dfc67a92217fad9c3342cbfcb3b0832092fe6cfd119983c13a820",
+        "scope": "decoder/import/execution-surface preflight only; no candidate invocation or reference-oracle materialization"
+      },
+      "required_metric_gate": "FAIL_REQUIRED_PEAK_RSS_BYTES_NULL",
+      "measurement_scope": "ACTUAL_DECODER_PREFLIGHT_ONLY__NOT_CANDIDATE_COMPARISON"
+    },
+    {
+      "run_id": "EE-R8A-PREFLIGHT-9fe31dca-1990-42ee-9bed-eaba148e3ad8",
+      "universe": "LiTS-I",
+      "argv": [
+        "/private/tmp/rawlsing-ee-r8a-rSW1Jc/venv/bin/python",
+        "-I",
+        "/private/tmp/rawlsing-ee-r8a-rSW1Jc/decoder_preflight.py",
+        "/private/tmp/rawlsing-ee-r8a-rSW1Jc",
+        "LiTS-I"
+      ],
+      "started_at_utc": "2026-09-17T01:04:15.290028+00:00",
+      "ended_at_utc": "2026-09-17T01:04:20.182849+00:00",
+      "exit_code": 0,
+      "metrics": {
+        "wall_ns": 4892243514,
+        "cpu_user_ns": 4551574000,
+        "cpu_system_ns": 787855000,
+        "peak_rss_native": 1188663296,
+        "peak_rss_native_unit": "platform_native",
+        "peak_rss_bytes": null
+      },
+      "child_stdout_sha256": "dd03c36db5ecf3e5c69a2ef1a86f4196c39a6588d8ba74ec73d4c1c0e8a4d0da",
+      "child_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "child_stderr_bytes": 0,
+      "child_receipt": {
+        "status": "PASS_REAL_EXACT_DECODER_PREFLIGHT",
+        "universe": "LiTS-I",
+        "pid": 98663,
+        "started_at_utc": "2026-09-17T01:04:15.663061+00:00",
+        "ended_at_utc": "2026-09-17T01:04:20.028387+00:00",
+        "executable": "/private/tmp/rawlsing-ee-r8a-rSW1Jc/venv/bin/python",
+        "python": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+        "sys_platform": "darwin",
+        "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+        "source_bytes": 139531180,
+        "rows": 29002,
+        "variables": 1198,
+        "required_source_coordinates": [
+          "q301_2",
+          "q301_7"
+        ],
+        "reader_configuration": {
+          "reader": "pyreadstat",
+          "reader_version": "1.3.6",
+          "user_missing": true,
+          "apply_value_formats": false,
+          "encoding": "latin1",
+          "authority_status": "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY"
+        },
+        "runtime_versions": {
+          "pyreadstat": "1.3.6",
+          "pyarrow": "25.0.1"
+        },
+        "runtime_freeze_sha256": "e6c6af33c20dfc67a92217fad9c3342cbfcb3b0832092fe6cfd119983c13a820",
+        "scope": "decoder/import/execution-surface preflight only; no candidate invocation or reference-oracle materialization"
+      },
+      "required_metric_gate": "FAIL_REQUIRED_PEAK_RSS_BYTES_NULL",
+      "measurement_scope": "ACTUAL_DECODER_PREFLIGHT_ONLY__NOT_CANDIDATE_COMPARISON"
+    }
+  ],
+  "candidate_invocations": 0,
+  "status": "BLOCKED_REQUIRED_METRIC_NULL_ON_DARWIN"
+}
