@@ -1,49 +1,29 @@
-# EE-P2F2 — Governed Return
+# EE-P2F2 — WVS7 Mechanical PRE553 Issuer — Governed Return
 
-- commission: `EE-P2F2`
-- worker: `WVS7`
-- status: `BLOCKED`
-- exact blocker: `R07 — accepted positive PREDICATE_GRAMMAR / query_operation authority`
-- branch: `agent/rabochii-prev3-ee-p2f2-wvs7-mechanical-pre553-issuer-r1`
-- start tip: `fb07de3d652d2496021bdef104e344f00366b0e7`
-- HQ checkpoint: `20260917T1530-0400`
-- HQ handoff commit: `00b86dcade82bc9efb6ea68a79062c6587d0de08`
-- semantic PRE-MAIN tip: `1dcd2a79dd6d4208738f655ab7fe4e71c219e354`
-- P2F1 PASS tip: `5bc052a2aac2c2979525751de3f6df7b0927ec8b`
+Status: **PASS — all 14 commissioned B rows closed; deterministic Lock2 materialized.**
 
-## Result
+Resumed from worker head `da574ee0e1329c07d017ca18ac8d9f2107e2fe37` under sealed HQ checkpoint `20260917T1803-0400` / immutable handoff `b8e5fbe97ef47329c5544da6a0a8e2e64f80ff20`. The prior R07 blocker is closed with the exact accepted generic operation `PRE553_I03_EXACT_EMPIRICAL_QUERY@1.0.0`. No alias, normalization, version elision, `OP-query`, or LiTS semantic carrier was used.
 
-EE-P2F2 terminates at R07 before PRE553 issuance.
+## Exact closure
 
-P2F1 classifies R07 as possessed only in the governed sense that the required accepted positive `PREDICATE_GRAMMAR` / query-operation authority family is identified. Its requirement matrix, crosswalk, and minimum issuance engineering plan expressly forbid this lane from originating an operation token: the concrete `query_operation` must be mechanically instantiated from an already-accepted PRE553 constructor/template/grammar family.
+- R01/R15A: exact WVS7 source-local `EmpiricalUniverse@1.0.0` and current binding issued without SAV access.
+- R02-R06: accepted Q291G5/Q291P5 qids, 1..5 substantive states, -1/-2/-4/-5 typed specials, same-row respondent topology, exact 13-country routing/risk set, and immutable source/risk refs bound.
+- R07: positive WVS-local `PREDICATE_GRAMMAR` authority materialized for `EmpiricalPredicate@1.0.0`, `EmpiricalQuerySpec@1.0.0`, and `EmpiricalFact@1.0.0` under exact operation `PRE553_I03_EXACT_EMPIRICAL_QUERY@1.0.0` and exact WVS universe.
+- R08/R09: 10 response-state predicates plus baseline risk predicate; 3 exact query templates; frozen 46-candidate grammar objectized.
+- R10: raw/unweighted exact-count basis only; no weight/design/estimand authority.
+- R11/R12: exact `DISCOVERY_FRONTIER` authority and I05 support/validation closure, complete declared frontier, no pruning/ranking/adaptive stop.
+- R13: exact-only replay; no latest/default/fuzzy fallback.
 
-On the commissioned EE-P2F2 lineage, the concrete grammar/query artifacts that could establish that value are absent:
+## Lock2
 
-- `tests/fixtures/empirical/pre553/PREDICATE_GRAMMAR.template.json`
-- `tests/58_test_pre553_query_constitution.py`
-- `tests/fixtures/empirical/pre553/query.valid.json`
+- universe: `urn:rawlsing:pre553:EmpiricalUniverse:sha256:f9b1cdffc5783ace87d258ebe2ae1c75040ce786c373e255f53da4be4259d95e` / `f9b1cdffc5783ace87d258ebe2ae1c75040ce786c373e255f53da4be4259d95e`
+- R07 authority: `EE-P2F2-WVS7-PRE553-I03-PREDICATE-GRAMMAR@1.0.0` / `92fc0bf93937b8e38cd181df7915c8786abdc16465833d731daa90ca1218dec5`
+- candidate grammar: `urn:rawlsing:pre553:ee-p2f2:wvs7-lock1-grammar:sha256:a94bd2ed3b64b2c51f6d329560feef6b97f69da3527081d8ca6168ae63e5f7f6` / `a94bd2ed3b64b2c51f6d329560feef6b97f69da3527081d8ca6168ae63e5f7f6`
+- discovery authority: `urn:rawlsing:pre553:DiscoveryAuthority:sha256:24591678ebf50ac153fabdbbcd90d6ce818c5a89a5307c395c48a04fe5a8b1ab` / `24591678ebf50ac153fabdbbcd90d6ce818c5a89a5307c395c48a04fe5a8b1ab`
+- candidates: **46**, exact family shape 10 / 1 / 10 / 25, canonical candidate-hash ascending.
+- replay hash: `b1aa437406d94b1f81f0ef3c81b885a2fd542749d2e5441747897c016a5dd490`
+- Lock2 hash: `8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188`
 
-The same three paths are absent at the accepted P2F1 PASS tip `5bc052a2aac2c2979525751de3f6df7b0927ec8b`.
+No WVS SAV/outcome access occurred; no empirical outcome was computed; no generic PRE553 code, Lock1, MAIN, or semantic PRE-MAIN was mutated. `WAVE_SPECIFIC_AUTHORITY_AND_OUTPUTS != WAVE_SPECIFIC_GENERIC_CODE` is preserved.
 
-The accepted `rawlsing_next/pre553_empirical_query.py` on the commissioned lineage validates and preserves a supplied `query_operation`, but does not itself define the exact accepted positive operation token required by R07. A literal such as `OP-query` visible only in newer/default-branch material therefore cannot be promoted here as governed authority.
-
-Selecting or coining any operation string would cross the commission boundary and fabricate R07 authority. Therefore no PRE553 is issued.
-
-## Guardrails preserved
-
-- no semantic code changed
-- no empirical work performed
-- no `query_operation` value invented or promoted from unaccepted lineage
-- no PRE553 artifact fabricated
-- no validation or normalization receipts fabricated
-- no EE-P2F3 successor wake emitted
-- no MAIN or semantic PRE-MAIN mutation
-- no replacement branch or rebase
-
-## Exact unblock condition
-
-Promote or otherwise identify, on accepted governed authority for this commission, a PRE553 constructor/template/grammar artifact that fixes the exact positive `query_operation` string and its canonical byte/identity law. EE-P2F2 can then be rerun mechanically from that accepted authority without originating semantics in this lane.
-
-## Return status
-
-`BLOCKED — R07 accepted positive PREDICATE_GRAMMAR / query_operation authority is not mechanically instantiable on the commissioned lineage`
+Terminal: `EE_P2F2_PASS__WVS7_PRE553_AUTHORITY_OBJECTIZATION_COMPLETE__LOCK2_MATERIALIZED__FINAL_ABC_SUCCESSOR_WAKE_READY`
