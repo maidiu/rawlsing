@@ -1,0 +1,24 @@
+{
+  "schema": "RAWLSING_EE_P2F0_LOCK2_RECEIPT@1.0.0",
+  "status": "BLOCKED__NO_ACCEPTED_CURRENT_PRE553_WVS7_DISCOVERY_AUTHORITY_AND_OBJECT_BINDING_CLOSURE",
+  "terminal": "EE_P2F0_BLOCKED__MISSING_EXACT_DISCOVERY_AUTHORITY_ATOM_AND_QUERY_BINDINGS__NO_SOURCE_ACCESS",
+  "lock": "LOCK2_MATERIALIZATION_ONLY",
+  "frozen_workload": {
+    "qid0": "question_impl.phase0.03ea3430fb4f08a1f0da",
+    "qid1": "question_impl.phase0.068ef710ac1c269b8adf",
+    "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+    "required_candidate_count": 46,
+    "required_shape": [10, 1, 10, 25]
+  },
+  "consumed_authority": {
+    "ee_r6a_commit": "4b141b8b5748175e34c9286eba36f53d8df1e9d5",
+    "ee_r6a_paths": ["WORKER_RETURNS/EE-R6A/02_QID_BOUND_RESPONSE_SEMANTICS.json", "WORKER_RETURNS/EE-R6A/03_SELECTED_PROVING_PAIR.json", "WORKER_RETURNS/EE-R6A/04_OP003_OP006_WVS7_PREMISE_ORACLE_PACKAGE.json"],
+    "routing_court_commit": "fbd151af338c6b56c5d8072015425ab6cb05bbc3",
+    "routing_objectizer_path": "WORKER_RETURNS/EE-R3D/03_OBJECTIZER_READY_SUBSET.json",
+    "routing_objectizer_status": "EMPTY_BY_EXACT_COURT_RULING",
+    "routing_positive_or_known_count": 0
+  },
+  "missing_exact_contracts": ["accepted current DiscoveryAuthority@1.0.0 with DISCOVERY_FRONTIER authority snapshot", "accepted exact EmpiricalPredicate response atoms for qid0/qid1 substantive states 1..5", "accepted exact EmpiricalQuerySpec templates for unary, pair, branch-conditioned, and joint-support roles", "accepted exact source-universe and risk-set ExactRefs that the above objects bind"],
+  "not_materialized": ["DiscoveryAuthority ExactRef/content hash", "candidate grammar ExactRef/content hash", "evaluated-frontier ExactRef/content hash", "46 candidate hashes"],
+  "prohibitions_observed": {"raw_wvs_source_opened": false, "empirical_outcomes_inspected": false, "candidate_A_B_C_executed": false, "performance_measured": false, "library_access": false, "lock1_mutated": false}
+}
