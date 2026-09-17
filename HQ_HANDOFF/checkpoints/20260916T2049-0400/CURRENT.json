@@ -1,0 +1,26 @@
+{
+  "schema":"RAWLSING_HQ_HANDOFF@1.1.0",
+  "checkpoint_id":"20260916T2049-0400",
+  "repository":"maidiu/rawlsing",
+  "control_branch":"integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip":"1dcd2a79dd6d4208738f655ab7fe4e71c219e354",
+  "prior_checkpoint":"20260916T2018-0400",
+  "status":"R7_RECONCILED__R8_RUNTIME_EXECUTION_PLUS_RESEARCH_PROGRESSION_ACTIVE",
+  "latest_substantive_hq_authority":"fa3b419637ae2738dce1647e9dc8f4a93616f8eb",
+  "r7_returns":{
+    "EE-R7A":{"head":"8968b4e2bb35cb453c633bd81c10c910240a122a","status":"RUNTIME_ONLY_BLOCKER_AFTER_18_OF_18_READY","selection_floor_ready":18,"selection_floor_total":18,"pending":0,"final_bakeoff_run":false,"missing_runtime":["pyreadstat==1.3.6","pyarrow==25.0.1"]},
+    "ASTRA-D04-R2":{"head":"e631de162c582423639b7067a4f36b29f8aa4d89","status":"PASS","candidates":50,"roles":77,"supported":49,"valid_empty":1,"unresolved":0,"blocked":0,"product_sha256":"47d36b1459c2458c480b58631d2c78af68be4dde44015a9220b09177b1eeb28d","semantic_replay_hash":"301735d4563314a0d7c133fa1afbb0ca57679b3fad887c66e77a909494779eb5","claim_ceiling":"PREV3_LEARNED_EMPIRICAL_ONLY__NO_STRUCTURAL_ADMISSION__NO_CAUSAL_PROMOTION__NO_POPULATION_GENERALIZATION__NO_PERSON_STATE__NO_V3"},
+    "ASTRA-D10Q":{"head":"4b85b6c574105aebb0ce7e4047a454db55eaab5c","status":"PASS","effect":"D11_CURRENT_SELECTION_WAKE"}
+  },
+  "carrier_selection":{"selection_floor":18,"ready":18,"pending":0,"physical_candidate_operation_cells_ready":27,"physical_candidate_operation_cells_total":27,"final_bakeoff_run":false,"remaining_blocker":"PINNED_RUNTIME_COLOCATION_ONLY"},
+  "research_progression":{"trii_actual_learned_product":true,"field_forge_ingress_dispatched":true,"dva_after_lawful_structural_products":true},
+  "active_workers":[
+    {"id":"EE-R8A","human_name":"Final A/B/C Runtime Co-location + Bakeoff Execution","branch":"agent/rabochii-prev3-ee-r8a-final-abc-runtime-colocation-execution-r1","commission_tip":"fa3b419637ae2738dce1647e9dc8f4a93616f8eb","library_access":"EXACT_ONLY_WVS7_AND_LITS_I","criticality":"CARRIER_SELECTION_FINAL_EXECUTION"},
+    {"id":"ASTRA-FF01","human_name":"D04 Learned Product -> Field Forge Ingress / Structural-Use Execution","branch":"agent/rabochii-prev3-astra-ff01-d04-field-forge-ingress-r1","commission_tip":"fa3b419637ae2738dce1647e9dc8f4a93616f8eb","library_access":"NO","criticality":"RESEARCH_PROGRESSION"},
+    {"id":"ASTRA-D11","human_name":"M10-M01 Independent Current Selection Only","branch":"agent/rabochii-prev3-astra-d11-current-selection-r1","commission_tip":"fa3b419637ae2738dce1647e9dc8f4a93616f8eb","library_access":"NO","criticality":"PARALLEL_NONCRITICAL_SDTF_CANARY"}
+  ],
+  "semantic_production_queue":{"response_semantic_residual_total":18012,"family_units":9,"status":"WAKEABLE_PARALLEL_BACKLOG__NOT_ABC_OR_FF01_GATE"},
+  "architecture_holding":["PREV3_RESEARCH_PIPELINE_IS_TRII_TO_FIELD_FORGE_TO_DVA","CHETIRI_IS_ORTHOGONAL_PHYSICAL_REALIZATION_NOT_PRIOR_SOCIOLOGY","EMPIRICAL_RELATION_NE_STRUCTURAL_ADMISSION_NE_CAUSAL_LAW_NE_ACTOR_FACT","VALID_EMPTY_IS_LAWFUL_EMPIRICAL_RESULT","PREV3_WORLD_NE_V3_LIFE"],
+  "frozen_laws":["NO_ALL_LANES_BARRIER","LOCAL_BLOCKER_ONLY","EXECUTION_ENVIRONMENT_FAILURE_NE_SEMANTIC_FAILURE","NO_NEW_GENERIC_ARCHITECTURE_REVIEW","HQ_FANIN_OWNER__DO_NOT_USE_USER_AS_SYNC_BUS"],
+  "terminal":"R8_ACTIVE__FINAL_BAKEOFF_RUNTIME_EXECUTION_AND_FIELD_FORGE_RESEARCH_PROGRESSION_RUN_IN_PARALLEL"
+}
