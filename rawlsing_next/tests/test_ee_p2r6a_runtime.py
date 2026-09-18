@@ -118,20 +118,12 @@ def _valid_binding(data, source, *, marker=None):
     release = source["repo"].resolve_release_exact(source["release_ref"])
     material["relation_authority_ref"] = copy.deepcopy(data["realization"]["authority_ref"])
     material["runtime_i02_release_ref"] = release.release_ref.as_dict()
-    material["runtime_candidate_projection_hash"] = release.semantic_release_hash
+    material["runtime_candidate_projection_hash"] = release.replay_manifest.semantic_projection_hash
     material["runtime_replay_manifest_ref"] = release.replay_manifest.ref.as_dict()
     material["runtime_m01_m18_coverage"] = {
         key: list(value) for key, value in release.m01_m18_coverage.items()
     }
     material["c11_repository_exact_resolution_receipt"] = release.release_ref.as_dict()
-    material["proof_family_receipts"] = {
-        family: ExactRef(
-            "FixtureProofReceipt",
-            f"urn:test:r6a:proof:{idx}",
-            _h(f"r6a-proof:{family}"),
-        ).as_dict()
-        for idx, family in enumerate(schema["identity_material"]["required_proof_families"])
-    }
     if marker is not None:
         material["fixture_binding_marker"] = marker
     digest = semantic_hash(material)
