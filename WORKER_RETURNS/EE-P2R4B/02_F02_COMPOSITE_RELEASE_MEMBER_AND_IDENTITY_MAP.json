@@ -1,0 +1,83 @@
+{
+  "schema": "EE_P2R4B_F02_COMPOSITE_RELEASE_MEMBER_AND_IDENTITY_MAP@1.0.0",
+  "status": "PROVED__F02_REFERENCE_UNION_IDENTITY_AND_EXACT_EXTENSION_REFS",
+  "f02_authority": {
+    "pass_commit": "482bb884a99e31ba77e904d0df39fffc872cbed3",
+    "selector_module_git_blob_sha1": "7b45b277164fa90c3da739aab26b516f7a8cb8dc",
+    "release_receipt_git_blob_sha1": "7821418ac84e4beedd7dd4353b979454821655ce",
+    "selector_receipt_git_blob_sha1": "7b2e625293fb2819a926663cf72422bafb7bad6c",
+    "frontier_receipt_git_blob_sha1": "c561e5074cfa461188eca219ff30575c71d3839b",
+    "qualification_receipt_git_blob_sha1": "7cb5828ed7214a5bfaca57c38270792ae8b6af30"
+  },
+  "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+  "base_release_ref": {
+    "kind": "C11LogicalRelease",
+    "object_id": "LITS1-AS2B-C11-7cac43e2ca5b31cb-9dd1e6b7350ebb79",
+    "content_hash": "e6c954538fa1830820120465a10a6d065b8a18d1e6b7b08d3f863b0917741e26"
+  },
+  "frozen_composite_release_ref": {
+    "kind": "C11LogicalRelease",
+    "object_id": "LITS1-F02-C11-7cac43e2ca5b31cb-bf305bf3f169d669",
+    "content_hash": "bf305bf3f169d66954be4f39cc602880fddea6083b5bee9c0212938355cd5297"
+  },
+  "f02_replay_ref": {
+    "kind": "ReplayReceipt@1.0.0",
+    "object_id": "urn:rawlsing:prev3:f02:lits1-c11-selector-replay:sha256:89bb3e9140ae0e0fcc9a3e205fd6b60ae721153d88a4730dd66f4fc16e238b1f",
+    "content_hash": "89bb3e9140ae0e0fcc9a3e205fd6b60ae721153d88a4730dd66f4fc16e238b1f"
+  },
+  "membership_law": "EXACT_BASE_RELEASE_MEMBERS_UNCHANGED_BY_REFERENCE_UNION_GOVERNED_Q310_Q311_EXTENSION",
+  "identity_material_schema": "F02_LITS1_C11_COMPOSITE_RELEASE@1.0.0",
+  "identity_material_shape": [
+    "contract",
+    "source",
+    "base_release_ref",
+    "base_replay_hash",
+    "member_law",
+    "questions",
+    "authority_snapshots",
+    "forbidden"
+  ],
+  "identity_law": "SHA256_CANONICAL(F02_LITS1_C11_COMPOSITE_RELEASE_MATERIAL)",
+  "exact_extension": {
+    "q310": {
+      "question_ref": "c4b0f76b7a37d8083a103ffd316f2eb009eeca7b5cbf5910e51d364b39641534",
+      "response_slot_ref": "fa63b7f74c1fc2c587b485031f0ee841abcaff964368c6eb33862da34b198593",
+      "routing_ref": "5799578dfbe21f2997578a43edae97c4818f693ee85ed3d345cdc4574374e013",
+      "response_value_state_refs": {
+        "1": "e94b7665fffc55b564c33b139bc8a1608d381f89e81b63d99db42c9129a697da",
+        "2": "23589e5578c5a80749600bb3e4385705e8ac0f8d4297c2faaac457b0ce5f0ed4",
+        "3": "fe9fc4a890814f6b2f4882fc4c4127f27091b704fc9ce1eb90392173556f60e1",
+        "MISSING": "57af6ec1e41dfbb7c4d9946dcad5c34c58526bc239c012d8cda22c6ae1975244"
+      }
+    },
+    "q311": {
+      "question_ref": "8680064d936efb99d64457edc3a2385e8862a2aac6bf50efd423afe83e77aed9",
+      "response_slot_ref": "0d1ff28f5bf8200920c596449229c5e965ba407cadc4f54ec3292e204a1220e7",
+      "routing_ref": "fc7530bf63bd3662d0f49545363947e1f18379ecd03583de9cc7ca2845d318bf",
+      "response_value_state_refs": {
+        "1": "09d12eb8563ed35b371bddc5829c3bd85b1acd0aa4a4f30fbe6795a0a0588234",
+        "2": "dc457fb064cfcab1d353ab3032a48519e5a62f003d32b6b1b240c79d51578775",
+        "3": "4492fc52c88c0a11c0ccfc45521879a53c46fab843808032cd1ccf061d995641",
+        "MISSING": "02aef63755380ce3c6b54350282dd79d789264999943e1c18dec6ddc77ffb392"
+      }
+    },
+    "selectors": {
+      "urn:rawlsing:prev3:d02:lits2006:q310:eq:1": "c9a0c8106d457bba7e3f3f5abb7ee7fb98482bd86af629d860e4a904ad58456a",
+      "urn:rawlsing:prev3:d02:lits2006:q310:eq:2": "78dbd1a899fe43ac2e2ca6985ea0eccb086989fa2c4315fa518524e7ba94a6df",
+      "urn:rawlsing:prev3:d02:lits2006:q310:eq:3": "c4d2dd827326b6ff29f3c02382c36fa33c47c6227bfbf8c8053c11e1089923ca",
+      "urn:rawlsing:prev3:d02:lits2006:q311:eq:1": "69dc59f79014a7c17190ca658e193a004e167c322c7f713f4540882fb980feb8",
+      "urn:rawlsing:prev3:d02:lits2006:q311:eq:2": "f63d6121776500912342ab377178a15fcf6fabf7071864f4f413d95babb43849",
+      "urn:rawlsing:prev3:d02:lits2006:q311:eq:3": "a6494153b4defeb13e1658b73eead7c5df6e25847708c770dad5f42142492c7d"
+    }
+  },
+  "representation_holding": {
+    "base_members": "UNCHANGED_BY_F02__REFERENCED_AS_ONE_BASE_RELEASE_REF__NOT_REENUMERATED",
+    "extension_members": "EXACT_F02_REFS_PRESERVED",
+    "i02_candidate_materialized": false,
+    "i02_replay_manifest_materialized": false,
+    "c11_repository_commit_performed": false,
+    "predicate_semantics_interpreted": false
+  },
+  "source_access": false,
+  "library_access": false
+}
