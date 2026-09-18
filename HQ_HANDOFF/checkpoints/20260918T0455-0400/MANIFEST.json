@@ -1,0 +1,63 @@
+{
+  "schema": "RAWLSING_HQ_HANDOFF_MANIFEST@1.0.0",
+  "checkpoint_id": "20260918T0455-0400",
+  "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354",
+  "prior_checkpoint": "20260918T0440-0400",
+  "current_md_path": "HQ_HANDOFF/checkpoints/20260918T0455-0400/CURRENT.md",
+  "current_md_git_blob_sha1": "41a07086c612db8e2ca20cc3f387d82f1df58a3f",
+  "current_json_path": "HQ_HANDOFF/checkpoints/20260918T0455-0400/CURRENT.json",
+  "current_json_git_blob_sha1": "91cdf3d0a8dcd5c6d54668a768d942db053aacb3",
+  "governing_files": [
+    {
+      "path": "HQ_HANDOFF/EE_P2X_BACKEND_BLOCKER_AND_BE1_COMMISSION_20260918.md"
+    },
+    {
+      "path": "WORKER_COMMISSIONS/EE-P2X/00_COMMISSION.md"
+    },
+    {
+      "path": "WORKER_COMMISSIONS/EE-P2X-BE1/00_COMMISSION.md",
+      "ref": "97e186bb9565ef21ca2afa16df9547d9f44a62ce",
+      "git_blob_sha1": "6630c4495c51f14aed503bd1b8c3f2cddc6a7d13"
+    },
+    {
+      "path": "rawlsing_next/ee_p2x_darwin_court_driver.py",
+      "ref": "32e224c28d720fce7cdcf6182afb5d327e8a1cf0",
+      "git_blob_sha1": "c3a368270f6f7a6f613efb78e31972e64a092c88"
+    },
+    {
+      "path": "WORKER_RETURNS/EE-P2X/10B_DARWIN_DRIVER_RECEIPT_BINDING.json",
+      "ref": "32e224c28d720fce7cdcf6182afb5d327e8a1cf0",
+      "git_blob_sha1": "50c9a53d0d77131df7c619114b476afce0b0bb0f"
+    },
+    {
+      "path": "WORKER_RETURNS/EE-P2X/12A_verify_ee_p2x_driver_bound_local_court.py",
+      "ref": "32e224c28d720fce7cdcf6182afb5d327e8a1cf0",
+      "git_blob_sha1": "da8f3434f791c9f6495238b28817de4b3e328ad3"
+    }
+  ],
+  "adopted_blocker": {
+    "disposition": "BLOCKED__PRODUCTION_STAGE_BACKEND_MODULE_UNBOUND",
+    "measured_stage_executed": false,
+    "first_unfinished_stage": "LITS_I/A/S02_C11_REACHABILITY",
+    "local_ledger_sha256": "c941a1d77981e6ccf147024f15e9f87763567bb7eb7fc86ab6e1f9027e41b83c"
+  },
+  "commissioned_worker": {
+    "id": "EE-P2X-BE1",
+    "branch": "agent/rabochii-prev3-ee-p2x-be1-production-stage-backend-r1",
+    "base": "32e224c28d720fce7cdcf6182afb5d327e8a1cf0",
+    "observed_head": "97e186bb9565ef21ca2afa16df9547d9f44a62ce",
+    "commission_tip": "97e186bb9565ef21ca2afa16df9547d9f44a62ce",
+    "library_access": "NO",
+    "required_module": "rawlsing_next/ee_p2x_darwin_stage_backend.py"
+  },
+  "preserved_active_worker": {
+    "id": "EE-P2X",
+    "branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+    "observed_head": "32e224c28d720fce7cdcf6182afb5d327e8a1cf0",
+    "commission_tip": "e49ae8111fd2e888bdb899f85f4d206950ca7bf3",
+    "local_entry": "REHELD_PENDING_EE_P2X_BE1_ADJUDICATION_AND_QUALIFIED_FANIN"
+  },
+  "lock1": "FROZEN",
+  "lock2": "SEALED__8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188",
+  "measured_synthesis": "NOT_AUTHORIZED_PENDING_COMPLETE_EE_P2X_RETURN"
+}
