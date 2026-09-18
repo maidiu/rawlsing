@@ -1,0 +1,33 @@
+{
+  "schema": "EE_P2R4B_P2R1_STRUCTURAL_BINDING_RECEIPT@1.0.0",
+  "status": "BLOCKED_UPSTREAM_EXACT_RELEASE_PRECONDITION",
+  "p2r1": {
+    "pass_commit": "9511f44728a8469d685463ec0fc880864c9187de",
+    "carrier_execution_path": "rawlsing_next/pre553_carrier_execution.py",
+    "carrier_execution_git_blob_sha1": "e7cda773e6a2426bfa12b22790fd8e005fe75153",
+    "repository_builder_contract": "repository_builder -> tuple(C11Repository, release, ...)",
+    "structural_precondition": "release.release_ref MUST resolve through returned C11Repository.resolve_release_exact",
+    "fallback": "NONE"
+  },
+  "requested_release_ref": {
+    "kind": "C11LogicalRelease",
+    "object_id": "LITS1-F02-C11-7cac43e2ca5b31cb-bf305bf3f169d669",
+    "content_hash": "bf305bf3f169d66954be4f39cc602880fddea6083b5bee9c0212938355cd5297"
+  },
+  "holding": {
+    "exact_f02_repository_pair_available": false,
+    "p2r1_structural_binding_ready": false,
+    "predicate_evaluation_attempted": false,
+    "mixed_i05_execution_attempted": false,
+    "predicate_semantics_claimed": false,
+    "base_release_substituted": false,
+    "reason": "P2R1 cannot bind a release ref that no accepted C11Repository can lawfully contain"
+  },
+  "no_claims": [
+    "NO_F02_PREDICATE_EXECUTABILITY_CLAIM",
+    "NO_MIXED_GRAMMAR_COMPOSITION_CLAIM",
+    "NO_A_B_EXECUTION_READINESS_CLAIM",
+    "NO_BE1_READINESS_CLAIM",
+    "NO_P2X_WAKE_CLAIM"
+  ]
+}
