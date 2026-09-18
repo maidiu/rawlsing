@@ -292,11 +292,15 @@ def validate_driver_ledger(work_root: Path, *, allow_incomplete: bool = False):
                 require({"cell_receipt", "failure_receipt"} <= set(artifacts),
                         "BLOCKER__FAILED_ATTEMPT_TYPED_RECEIPTS_NOT_BOUND__" + address.replace("/", "__"))
                 failure = load_json(REPO / artifacts["failure_receipt"])
-                if backend_disp == "COMMON_COURT_BLOCKER":
-                    ext = binding["driver_specific_failure_extension"]
-                    require(failure.get("kind") == ext["kind"], "FAILURE__COMMON_COURT_FAILURE_KIND")
-                    require(failure.get("blocking_scope") == ext["normalized_blocking_scope"],
-                            "FAILURE__COMMON_COURT_FAILURE_SCOPE")
+                if backend_disp in {"COMMON_SOURCE_BLOCKER", "COMMON_COURT_BLOCKER"}:
+                    key = "common_source" if backend_disp == "COMMON_SOURCE_BLOCKER" else "common_court"
+                    rule = binding["common_scope_normalization"][key]
+                    require(failure.get("kind") in rule["permitted_failure_kinds"],
+                            "FAILURE__COMMON_SCOPE_FAILURE_KIND__" + address.replace("/", "__"))
+                    require(failure.get("blocking_scope") == rule["blocking_scope"],
+                            "FAILURE__COMMON_SCOPE_FAILURE_SCOPE__" + address.replace("/", "__"))
+                    require(failure.get("candidate") is None,
+                            "FAILURE__COMMON_SCOPE_FAILURE_MUST_BE_CANDIDATE_NEUTRAL__" + address.replace("/", "__"))
             kind = "backend"
 
         elif schema == schemas["preserved_stage"]:
