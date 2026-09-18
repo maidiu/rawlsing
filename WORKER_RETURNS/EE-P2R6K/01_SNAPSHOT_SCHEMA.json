@@ -1,0 +1,135 @@
+{
+  "schema": "EE_P2R6K_C11_VALIDATED_CANDIDATE_SNAPSHOT_SCHEMA@1.0.0",
+  "snapshot_schema_id": "EE_P2R6K_C11_VALIDATED_CANDIDATE_SNAPSHOT@1.0.0",
+  "semantic_boundary": "EVIDENCE_TRANSPORT_OF_ALREADY_GOVERNED_CANONICAL_C11_CANDIDATE_BODIES__NO_NEW_SEMANTIC_IDENTITY",
+  "encoding": "UTF8_CANONICAL_JSON_SORT_KEYS_COMPACT_TRAILING_LF",
+  "root_required": [
+    "schema",
+    "encoding",
+    "semantic_boundary",
+    "source_release_manifest",
+    "sections",
+    "candidate_replay_manifest",
+    "identity_summary",
+    "validated_release_identity"
+  ],
+  "source_release_manifest": {
+    "record_family": "SourceReleaseManifest@PRE553_C11_INGEST@1.0.0",
+    "representation": "FULL_SEMANTIC_PROJECTION_PLUS_CONTENT_HASH_AND_CANONICAL_BODY_BYTE_HASH"
+  },
+  "record_wrapper": {
+    "required": [
+      "record_family",
+      "exact_ref",
+      "canonical_body",
+      "canonical_body_sha256"
+    ],
+    "identity_law": "constructor must recompute exact ref from canonical body; wrapper exact_ref and canonical body object_id/content_hash must all match"
+  },
+  "typed_absence_wrapper": {
+    "required": [
+      "record_family",
+      "canonical_body",
+      "semantic_body_hash"
+    ],
+    "identity_law": "semantic_hash(canonical_body) must match; exact state/detail reconstructed with no default"
+  },
+  "sections": {
+    "empirical_universes": {
+      "record_family": "EmpiricalUniverse@1.0.0",
+      "representation": "SEQUENCE_ONLY"
+    },
+    "respondent_identities": {
+      "record_family": "RespondentIdentity",
+      "representation": "SEQUENCE_ONLY"
+    },
+    "question_variable_bindings": {
+      "record_family": "QuestionVariableBinding",
+      "representation": "SEQUENCE_ONLY"
+    },
+    "respondent_events": {
+      "record_family": "RespondentEvent@1.0.0",
+      "representation": "SEQUENCE_ONLY"
+    },
+    "routing_eligibility_facts_or_exact_rules": {
+      "record_family": "RoutingEligibilityFact@1.0.0",
+      "representation": "SEQUENCE_ONLY"
+    },
+    "empirical_coordinate_facts": {
+      "record_family": "EmpiricalCoordinateFact@1.0.0",
+      "representation": "SEQUENCE_ONLY"
+    },
+    "weight_measure_facts_or_typed_absence": {
+      "record_family": "WeightMeasureFact@1.0.0",
+      "representation": "SEQUENCE_OR_TYPED_ABSENCE"
+    },
+    "authority_snapshots": {
+      "record_family": "AuthoritySnapshot@1.0.0",
+      "representation": "SEQUENCE_ONLY"
+    },
+    "source_universe_relations_or_explicit_distinct_default": {
+      "record_family": "SourceUniverseRelation@1.0.0",
+      "representation": "SEQUENCE_OR_TYPED_ABSENCE"
+    },
+    "predicate_replay_bindings_when_retained_objects_require_them": {
+      "record_family": "EmpiricalPredicateReplayBinding",
+      "representation": "SEQUENCE_OR_TYPED_ABSENCE"
+    },
+    "comparator_replay_bindings_or_typed_deferred_state": {
+      "record_family": "ComparatorReplayBinding",
+      "representation": "SEQUENCE_OR_TYPED_ABSENCE"
+    },
+    "discovery_branch_replay_bindings_or_typed_deferred_state": {
+      "record_family": "DiscoveryBranchReplayBinding",
+      "representation": "SEQUENCE_OR_TYPED_ABSENCE"
+    },
+    "structural_admission_replay_bindings_or_typed_not_applicable_state": {
+      "record_family": "StructuralAdmissionReplayBinding",
+      "representation": "SEQUENCE_OR_TYPED_ABSENCE"
+    }
+  },
+  "candidate_replay_manifest": {
+    "record_family": "ReplayManifest",
+    "representation": "FULL_INTERNAL_RECORD_BODY_WITH_EXACT_REF"
+  },
+  "validated_release_identity": {
+    "required": [
+      "release_ref",
+      "source_artifact_ref",
+      "source_release_manifest_hash",
+      "semantic_release_hash",
+      "replay_manifest_ref",
+      "m01_m18_coverage",
+      "repository_snapshot_identity"
+    ],
+    "role": "post-public-validation equality target only; never a constructor shortcut"
+  },
+  "reconstruction_law": [
+    "parse exact snapshot schema/version",
+    "reconstruct SourceReleaseManifest from full body",
+    "reconstruct every public/internal record through repository-native constructors",
+    "recompute every object/ref identity",
+    "reconstruct exact typed absences without inferred defaults",
+    "construct C11SourceReleaseCandidate",
+    "call validate_c11_source_release(candidate)",
+    "compare resulting sealed release to validated_release_identity",
+    "construct one-release C11Repository",
+    "resolve_release_exact(release_ref)",
+    "verify repository snapshot identity"
+  ],
+  "transport": {
+    "semantic_snapshot": "ONE_LOGICAL_CANONICAL_JSON_ARTIFACT",
+    "compression": "DETERMINISTIC_GZIP_MTIME_0_COMPRESSLEVEL_9",
+    "git_safe_threshold_bytes": 94371840,
+    "fallback_chunk_size_bytes": 50331648,
+    "chunking_semantics": "TRANSPORT_ONLY__NEVER_SEMANTIC_PARTITIONING"
+  },
+  "forbidden": [
+    "hash inversion",
+    "guessed defaults",
+    "field omission",
+    "latest/fuzzy lookup",
+    "private release sealing shortcut",
+    "semantic mutation"
+  ]
+}
