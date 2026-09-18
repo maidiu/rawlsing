@@ -1,0 +1,82 @@
+{
+  "schema": "EE_P2R6R_EXISTING_R6L_OUTPUT_REVERIFY_PACKET@1.0.0",
+  "status": "READY_AFTER_HQ_ADOPTS_R6R_REPAIR__NO_CARRIER_REEXECUTION",
+  "purpose": "VERIFY_AND_SEAL_ALREADY_EXISTING_EE_P2R6L_OUTPUTS_ONLY",
+  "target_branch": "agent/rabochii-prev3-ee-p2r6l-lits-i02-successor-release-local-execution-r1",
+  "preserved_remote_head_before_reverification": "0faafd3198546b3c3783f27b5a6862b4b793e7cc",
+  "execution_surface": "LOCAL-MACHINE CODEX",
+  "maximum_intelligence_required": "LUNA",
+  "library_access": "NO",
+  "carrier_access": "FORBIDDEN",
+  "source_reopen": "FORBIDDEN",
+  "driver_rerun": "FORBIDDEN",
+  "source_driver": {
+    "path": "WORKER_RETURNS/EE-P2R5B/03_LOCAL_I02_SUCCESSOR_RELEASE_DRIVER.py",
+    "git_blob_sha1": "b819fdff50470a71f1c570aa8021e28b361fa986",
+    "action": "DO_NOT_EXECUTE"
+  },
+  "repaired_verifier": {
+    "path": "WORKER_RETURNS/EE-P2R6R/02_REPAIRED_SUCCESSOR_RELEASE_VERIFIER.py",
+    "git_blob_sha1": "e7752c558c7fb407852ef7377f45eca775d3b86b",
+    "required_adoption": "HQ_MUST_ADOPT_EXACT_R6R_REPAIR_BEFORE_LOCAL_USE"
+  },
+  "existing_output_directory": "WORKER_RETURNS/EE-P2R6L/RUN_OUTPUT",
+  "required_existing_files": [
+    "successor_release_receipt.json",
+    "successor_release_replay_manifest.json",
+    "successor_release_m01_m18.json",
+    "successor_release_extension_scan.json"
+  ],
+  "steps": [
+    {
+      "order": 1,
+      "action": "RUN_REPAIRED_VERIFIER_ONLY",
+      "command": "python WORKER_RETURNS/EE-P2R6R/02_REPAIRED_SUCCESSOR_RELEASE_VERIFIER.py --receipt WORKER_RETURNS/EE-P2R6L/RUN_OUTPUT/successor_release_receipt.json",
+      "source_or_driver_execution": false,
+      "on_failure": "STOP_AT_EXACT_FIRST_LATER_VERIFICATION_CHECK__NO_REPAIR__NO_RERUN"
+    },
+    {
+      "order": 2,
+      "action": "HASH_AND_SEAL_ALL_FOUR_EXISTING_OUTPUT_JSONS",
+      "precondition": "STEP_1_VERIFIER_PASS",
+      "hash_algorithm": "SHA-256",
+      "mutation_of_existing_outputs": "FORBIDDEN"
+    },
+    {
+      "order": 3,
+      "action": "WRITE_GOVERNED_R6L_PASS_RETURN_AND_LOCAL_EXECUTION_RECEIPT",
+      "precondition": "STEP_1_PASS_AND_STEP_2_HASHES_COMPLETE",
+      "return_path": "WORKER_RETURNS/EE-P2R6L/00_RETURN.md",
+      "receipt_path": "WORKER_RETURNS/EE-P2R6L/01_LOCAL_EXECUTION_RECEIPT.json",
+      "required_pass_terminal": "EE_P2R6L_PASS__ACCEPTED_I02_SUCCESSOR_RELEASE_MINTED_AND_VERIFIED__READY_FOR_CONCRETE_REALIZATION_BINDING_ISSUANCE",
+      "receipt_must_bind": [
+        "EXISTING_FOUR_OUTPUT_SHA256_VALUES",
+        "EXACT_I02_MINTED_RUNTIME_RELEASE_REF_FROM_EXISTING_RECEIPT",
+        "REPAIRED_VERIFIER_GIT_BLOB_SHA1",
+        "ORIGINAL_DRIVER_GIT_BLOB_SHA1",
+        "VERIFICATION_ONLY_COMMAND_AND_EXIT_STATUS",
+        "NO_LIBRARY_OR_SOURCE_ACCESS_DURING_REVERIFICATION",
+        "NO_REALIZATION_BINDING_ISSUED",
+        "NO_P2X_OR_BE1_ACTIVITY"
+      ]
+    },
+    {
+      "order": 4,
+      "action": "COMMIT_AND_PUSH_GOVERNED_R6L_RECEIPTS_AND_EXISTING_OUTPUT_JSONS",
+      "precondition": "ALL_PRIOR_STEPS_PASS",
+      "forbidden_commit_content": [
+        "SOURCE_CARRIER_BYTES",
+        "UNRELATED_FILES",
+        "REPAIRS"
+      ]
+    }
+  ],
+  "first_failure_law": "IF_ANY_REPAIRED_VERIFIER_OR_LATER_SEAL_CHECK_FAILS__STOP_THERE__DO_NOT_REOPEN_CARRIER__DO_NOT_RERUN_DRIVER__RETURN_EXACT_BLOCKER",
+  "future_wake_on_success": "R6L_EXISTING_OUTPUTS_VERIFIED_AND_SEALED__WAKE_HQ_FOR_CONCRETE_REALIZATION_BINDING_ISSUANCE_WITH_REFRESHED_R6B_CHAIN",
+  "empirical_boundary": {
+    "library_accessed_by_this_packet": false,
+    "source_bytes_required": false,
+    "empirical_reexecution_required": false,
+    "performance_measurement_required": false
+  }
+}
