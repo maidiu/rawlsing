@@ -366,6 +366,18 @@ def test_i05_existing_combiner_dispatches_mixed_only_under_bound_runtime(authori
     )
 
 
+def test_mixed_successor_dispatches_nested_child_dialect_by_exact_authority_chain(authority_data):
+    source = _fixture_source(authority_data)
+    runtime = _runtime(authority_data)
+    successor_ref = authority_ref(authority_data["mixed"]["candidate_authority_ref"])
+    leaf = _selector_leaf(authority_data, source)
+    contract = runtime.resolve_predicate_dialect(successor_ref, leaf)
+    child_ref = authority_ref(
+        authority_data["mixed"]["identity_material"]["allowed_input_grammar_refs"][1]
+    )
+    assert contract.grammar_ref == child_ref
+
+
 def test_zero_realization_bindings_fails_closed_before_selector(authority_data):
     source = _fixture_source(authority_data)
     runtime = _runtime(authority_data, bindings=())
