@@ -1,0 +1,95 @@
+{
+  "schema": "EE_P2R5A_RELEASE_REALIZATION_RELATION_AUTHORITY_CANDIDATE@1.0.0",
+  "status": "CANDIDATE__HQ_ADOPTION_REQUIRED__NO_CONCRETE_REALIZATION_ISSUED",
+  "authority_ref": {
+    "kind": "ReleaseRealizationAuthorityCandidate@1.0.0",
+    "object_id": "urn:rawlsing:prev3:p2r5a:release-realization-authority:sha256:9da19997168612891f59012e69674bac59fbee417d9b30b003171f3074168bf5",
+    "content_hash": "9da19997168612891f59012e69674bac59fbee417d9b30b003171f3074168bf5"
+  },
+  "identity_law": "SHA256_CANONICAL(identity_material)",
+  "identity_material": {
+    "authority_id": "PRE553_F02_SCOPE_TO_I02_RELEASE_REALIZATION_AUTHORITY_R1",
+    "authority_version": "1.0.0-candidate",
+    "direction": "FROZEN_F02_SCOPE_ANCHOR_TO_ACCEPTED_PUBLIC_I02_RUNTIME_RELEASE",
+    "semantics": "REALIZES_EXACT_FROZEN_SCOPE_WITHOUT_IDENTITY_EQUIVALENCE",
+    "frozen_scope_anchor": {
+      "kind": "C11LogicalRelease",
+      "object_id": "LITS1-F02-C11-7cac43e2ca5b31cb-bf305bf3f169d669",
+      "content_hash": "bf305bf3f169d66954be4f39cc602880fddea6083b5bee9c0212938355cd5297"
+    },
+    "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "accepted_base_i02_release": {
+      "kind": "C11LogicalRelease",
+      "object_id": "LITS1-AS2B-C11-7cac43e2ca5b31cb-9dd1e6b7350ebb79",
+      "content_hash": "e6c954538fa1830820120465a10a6d065b8a18d1e6b7b08d3f863b0917741e26"
+    },
+    "accepted_i02_contract": {
+      "ingest": "PRE553_C11_INGEST@1.0.0",
+      "semantic_projection": "PRE553_C11_LOGICAL_RELEASE_PROJECTION@1.0.0",
+      "repository": "EXACT_KEY_APPEND_ONLY__I02_VALIDATED_SEALED_RELEASES_ONLY"
+    },
+    "adopted_r4a_authority_hashes": {
+      "respondent_binding": "3ef0317887f6910838636d3816237a81d5a56b38e07595c8cc1f7c5e7f1fae74",
+      "mixed_grammar": "0d7cfaac1d63cd438d29b109b590cb828805bd113fc37759a6f6f4c88d3c8f55",
+      "derived_predicate": "225e4b80390500451834ea784d955465eb9f145a4cd1f798dace51f3a6d3baa4",
+      "aggregate": "b87c387f9d222c83106c8d47d369af44f5c5368b274fd85e7a08b12c20d49cae"
+    },
+    "uniqueness": "MAX_ONE_ACTIVE_POSITIVE_BINDING_PER_SCOPE_ANCHOR_SOURCE_AND_AUTHORITY_EPOCH",
+    "fail_closed": true,
+    "reverse_identity_inference": false,
+    "global_equivalence": false,
+    "genericity": "AUTHORITY_DATA_ONLY__NO_SOURCE_SPECIFIC_RESOLVER_BRANCHES"
+  },
+  "aggregate_candidate_ref": {
+    "kind": "ReleaseRealizationSuccessorAuthorityCandidate@1.0.0",
+    "object_id": "urn:rawlsing:prev3:p2r5a:release-realization-successor:sha256:d9aa476c493810651baefa8bad23990d9dd80812a48670ad2052353f0e7d52a2",
+    "content_hash": "d9aa476c493810651baefa8bad23990d9dd80812a48670ad2052353f0e7d52a2"
+  },
+  "relation_law": {
+    "source_identity_role": "FROZEN_SEMANTIC_SCOPE_IDENTITY",
+    "target_identity_role": "ACCEPTED_PUBLIC_I02_RUNTIME_RELEASE_IDENTITY",
+    "direction_only": "SOURCE_TO_TARGET",
+    "equivalence": false,
+    "reverse_inference": false,
+    "target_must_be_distinct_identity": true,
+    "runtime_hash_predeclared": false,
+    "one_active_positive_binding_maximum": true,
+    "absent_binding": "FAIL_CLOSED",
+    "inactive_or_superseded_binding": "FAIL_CLOSED"
+  },
+  "issuance_preconditions": [
+    "FUTURE_BINDING_CONFORMS_TO_03_CONCRETE_REALIZATION_BINDING_SCHEMA",
+    "RUNTIME_RELEASE_WAS_MINTED_BY_ACCEPTED_I02_VALIDATION",
+    "RUNTIME_RELEASE_EXACT_REF_RESOLVES_FROM_C11REPOSITORY",
+    "SOURCE_SHA_AND_BASE_LINEAGE_EXACT",
+    "F02_Q310_Q311_EXTENSION_AND_AUTHORITY_CLOSURE_EXACT",
+    "NO_MISSING_F02_REQUIRED_MEMBER",
+    "NO_ADDITIONAL_MEMBER_CHANGES_SELECTOR_GOVERNED_TRUTH_CONDITIONS",
+    "ONE_ACTIVE_BINDING_ONLY"
+  ],
+  "negative_authority": [
+    "BF305_IS_I02_VALID",
+    "GLOBAL_RELEASE_REF_EQUIVALENCE",
+    "BIDIRECTIONAL_IDENTITY_INFERENCE",
+    "MULTIPLE_ACTIVE_RUNTIME_RELEASES_FOR_ONE_SCOPE_ANCHOR",
+    "LATEST_DEFAULT_FUZZY_NEAREST_RESOLUTION",
+    "CROSS_SOURCE_REALIZATION",
+    "SILENT_CROSS_RELEASE_SUBSTITUTION",
+    "SELECTOR_AST_REWRITE",
+    "SELECTOR_REMINTING",
+    "POST_OUTCOME_REALIZATION_MUTATION",
+    "SOURCE_SPECIFIC_BRANCHES_IN_GENERIC_RESOLVER_CODE"
+  ],
+  "production_genericity": {
+    "generic_resolver_may_consume": "EXACT_PUBLIC_RELEASE_REALIZATION_AUTHORITY_AND_EXACT_BINDING_DATA",
+    "generic_resolver_may_not_encode": [
+      "LiTS",
+      "q310",
+      "q311",
+      "F02 hashes",
+      "D02 lane IDs",
+      "selector IDs"
+    ],
+    "source_specific_facts_location": "AUTHORITY_DATA_ONLY"
+  }
+}
