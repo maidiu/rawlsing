@@ -26,7 +26,7 @@ Resolve canonical HQ through `HQ_HANDOFF/LATEST.json` before work.
 
 Expected commissioning checkpoint:
 
-`20260918T0515-0400`
+`20260918T0455-0400`
 
 Do not rely on that expectation if `LATEST.json` has advanced.
 
