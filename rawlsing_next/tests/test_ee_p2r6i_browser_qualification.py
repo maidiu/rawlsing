@@ -156,6 +156,11 @@ def test_ee_p2r6i_exact_concrete_binding_generation_surface_payload():
             "semantic_projection_hash": candidate["identity_material"]["candidate_projection_identity"],
             "transient_extraction_removed_with_tempdir": True,
         }
-        payload = {"authority": authority, "candidate": candidate, "verification": verification, "zip_receipt": zip_receipt}
-        encoded = base64.b64encode(canonical(payload).encode("utf-8")).decode("ascii")
-        raise AssertionError("EE_P2R6I_GENERATED_PAYLOAD_B64=" + encoded)
+        committed_authority = json.loads((OUT / "01_ADOPTED_AUTHORITY_MATERIAL.json").read_text(encoding="utf-8"))
+        committed_zip = json.loads((OUT / "02_ZIP_RECONSTRUCTION_RECEIPT.json").read_text(encoding="utf-8"))
+        committed_candidate = json.loads((OUT / "03_RELEASE_REALIZATION_BINDING_CANDIDATE.json").read_text(encoding="utf-8"))
+        committed_verification = json.loads((OUT / "04_BINDING_VERIFICATION_RECEIPT.json").read_text(encoding="utf-8"))
+        assert canonical(committed_authority) == canonical(authority)
+        assert canonical(committed_zip) == canonical(zip_receipt)
+        assert canonical(committed_candidate) == canonical(candidate)
+        assert canonical(committed_verification) == canonical(verification)
