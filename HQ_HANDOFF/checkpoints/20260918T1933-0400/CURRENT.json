@@ -1,0 +1,82 @@
+{
+  "schema": "RAWLSING_HQ_HANDOFF@1.1.0",
+  "checkpoint_id": "20260918T1933-0400",
+  "repository": "maidiu/rawlsing",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354",
+  "prior_checkpoint": "20260918T1911-0400",
+  "status": "R6M_SNAPSHOT_ADOPTED__RESTORABLE_VALIDATED_C11_RELEASE_AVAILABLE__A5F36_R6A_POSITIVE_PROOF_READY__ZERO_ACTIVE_BINDINGS__P2X_HELD",
+  "decisions": [
+    "HQD-2026-09-18-064"
+  ],
+  "adoption_path": "HQ_HANDOFF/EE_P2R6M_SNAPSHOT_ADOPTION_20260918.md",
+  "adjudicated_returns": [
+    {
+      "id": "EE-P2R6M",
+      "return_head": "d3fcef89db39dedbf7502c56a4928d3e79737a2b",
+      "disposition": "PASS__ADOPTED_RESTORABLE_VALIDATED_C11_SNAPSHOT"
+    }
+  ],
+  "snapshot": {
+    "logical_sha256": "ca1e62ca14586bcd23392fc56d0af5f95c12d833bf994ef5a0ea09577ca1569b",
+    "logical_size_bytes": 1447731437,
+    "gzip_sha256": "42bff5e6ffc9dd76283b74525f47a5ec99c91ca44d9b5a7537fd13b820ef8e04",
+    "gzip_size_bytes": 116229878,
+    "chunk_count": 3,
+    "release_hash": "192926fabd9c9c3d40e43b1d7705ca2bcfe7f8d06e286be26d4b886d436df43f"
+  },
+  "binding_state": {
+    "active_positive_binding_count": 0,
+    "banked_corrected_preimage_hash": "a5f36a81843fe2ebab0b5cccb369ce76035f842b93e602613b8b9f3a81103308",
+    "proposed_active_record_blob": "4ac8cd48aac62600e648ff9692488796c51c826f"
+  },
+  "next_action": {
+    "id": "EE-P2R6N",
+    "status": "READY_TO_COMMISSION",
+    "execution_surface": "BROWSER",
+    "library_access": "NO",
+    "grain": "EXACT_POSITIVE_R6A_PRODUCTION_RUNTIME_PROOF_USING_ADOPTED_SNAPSHOT_AND_BANKED_BINDING_ONLY"
+  },
+  "active_workers": [
+    {
+      "id": "EE-P2X",
+      "branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+      "observed_head_at_checkpoint": "32e224c28d720fce7cdcf6182afb5d327e8a1cf0",
+      "temporal_classification": "UNCHANGED_ACTIVE_WORKER",
+      "execution_surface": "LOCAL-MACHINE CODEX__DORMANT_WHILE_HELD",
+      "library_access": "EXACT_ONLY"
+    }
+  ],
+  "dependency_graph": {
+    "R6A_POSITIVE_BINDING_PROOF": {
+      "status": "READY_TO_COMMISSION"
+    },
+    "CORRECTED_BINDING_ADOPTION": {
+      "status": "DORMANT",
+      "prerequisites": [
+        "QUALIFIED_R6A_POSITIVE_BINDING_PROOF"
+      ]
+    },
+    "AB_OWNER_SEAM_REQUALIFICATION": {
+      "status": "DORMANT",
+      "prerequisites": [
+        "ADOPTED_RUNTIME_CONSUMABLE_CONCRETE_BINDING"
+      ]
+    },
+    "BACKEND_FANIN": {
+      "status": "DORMANT",
+      "prerequisites": [
+        "QUALIFIED_AB_OWNER_SEAM"
+      ]
+    },
+    "EE-P2X": {
+      "status": "HELD",
+      "prerequisites": [
+        "ADOPTED_RUNTIME_CONSUMABLE_CONCRETE_BINDING",
+        "QUALIFIED_AB_OWNER_SEAM",
+        "QUALIFIED_PRODUCTION_BACKEND_FANIN"
+      ]
+    }
+  },
+  "terminal": "R6M_ADOPTED__R6N_READY__ZERO_ACTIVE_BINDINGS__P2X_HELD"
+}
