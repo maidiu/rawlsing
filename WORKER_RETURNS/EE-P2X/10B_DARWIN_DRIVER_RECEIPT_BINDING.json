@@ -23,7 +23,13 @@
     "ledger_schema": "RAWLSING_EE_P2X_DARWIN_STAGE_LEDGER@1.0.0",
     "backend_contract": "RAWLSING_EE_P2X_DARWIN_STAGE_BACKEND@1.0.0",
     "supervisor_token_schema": "RAWLSING_EE_P2X_LOCAL_SUPERVISOR_ACTION@1.0.0",
-    "cli_modes": ["--preflight", "--status", "--run", "--resume", "--verify-only"],
+    "cli_modes": [
+      "--preflight",
+      "--status",
+      "--run",
+      "--resume",
+      "--verify-only"
+    ],
     "cli_output_schemas": {
       "--preflight": "RAWLSING_EE_P2X_DARWIN_PREFLIGHT@1.0.0",
       "--status": "RAWLSING_EE_P2X_DARWIN_DRIVER_STATUS@1.0.0",
@@ -89,11 +95,22 @@
     ],
     "binding_law": "Every declared repository-relative evidence artifact must also appear in the same terminal ledger entry output_artifact_hashes as repo:<path> with exact SHA-256.",
     "required_roles": {
-      "S05_I05_LEARNED_PRODUCTION__PASS": ["learned_receipt"],
-      "S09_DELETION_REGEN_OR_A_PERSISTENCE__PASS__A": ["persistence_receipt"],
-      "S09_DELETION_REGEN_OR_A_PERSISTENCE__PASS__B_OR_C": ["deletion_receipt"],
-      "S16_TERMINAL_METRIC_VECTOR_COMPLETENESS__PASS": ["cell_receipt"],
-      "ANY_BACKEND_TERMINAL_FAILURE": ["cell_receipt", "failure_receipt"]
+      "S05_I05_LEARNED_PRODUCTION__PASS": [
+        "learned_receipt"
+      ],
+      "S09_DELETION_REGEN_OR_A_PERSISTENCE__PASS__A": [
+        "persistence_receipt"
+      ],
+      "S09_DELETION_REGEN_OR_A_PERSISTENCE__PASS__B_OR_C": [
+        "deletion_receipt"
+      ],
+      "S16_TERMINAL_METRIC_VECTOR_COMPLETENESS__PASS": [
+        "cell_receipt"
+      ],
+      "ANY_BACKEND_TERMINAL_FAILURE": [
+        "cell_receipt",
+        "failure_receipt"
+      ]
     }
   },
   "driver_specific_failure_extension": {
@@ -142,5 +159,26 @@
     "prepopulated_measurements": false,
     "lock_mutation": false,
     "ranking_or_selection": false
+  },
+  "common_scope_normalization": {
+    "common_source": {
+      "backend_disposition": "COMMON_SOURCE_BLOCKER",
+      "permitted_failure_kinds": [
+        "COMMON_SOURCE_AUTHORITY_FAILURE",
+        "PARITY_ORACLE_FAILURE"
+      ],
+      "blocking_scope": "SOURCE_ONLY",
+      "candidate": null,
+      "law": "A common-source failure receipt is candidate-neutral so the same exact receipt may lawfully cover later unattempted candidates on that source; later sources remain eligible."
+    },
+    "common_court": {
+      "backend_disposition": "COMMON_COURT_BLOCKER",
+      "permitted_failure_kinds": [
+        "COMMON_COURT_AUTHORITY_FAILURE"
+      ],
+      "blocking_scope": "COURT_UNTIL_RESUME",
+      "candidate": null,
+      "law": "A common-court authority failure is candidate-neutral and terminates the court until resume; the driver-bound verifier short-circuits before the legacy normalized verifier."
+    }
   }
 }
