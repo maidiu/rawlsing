@@ -1,6 +1,6 @@
 {
   "schema": "EE_P2R6B_BINDING_ISSUER_CONTRACT@1.0.0",
-  "status": "PREPARED__GOVERNED_BROWSER_QUALIFICATION_PENDING",
+  "status": "QUALIFIED__GOVERNED_BROWSER_COURT_PASS__AWAIT_EXACT_LOCAL_I02_SUCCESSOR_RELEASE_RECEIPTS",
   "grain": "R5A_CONCRETE_REALIZATION_BINDING_ISSUER_AND_VERIFIER_PREPARATION_ONLY",
   "execution_surface": "BROWSER",
   "library_access": "NO",
@@ -109,5 +109,14 @@
     "verifier_path": "WORKER_RETURNS/EE-P2R6B/03_REALIZATION_BINDING_VERIFIER.py",
     "verifier_git_blob_sha1": "641f1e50af416441cba7650956123aa1d32f9b59"
   },
-  "successor_wake": "HQ_ADJUDICATE_BINDING_ISSUER_PREPARATION_ONLY"
+  "successor_wake": "HQ_ADJUDICATE_BINDING_ISSUER_PREPARATION_ONLY",
+  "qualification_receipt": "WORKER_RETURNS/EE-P2R6B/05_BROWSER_QUALIFICATION_RECEIPT.json",
+  "qualification_evidence": {
+    "semantic_candidate_sha": "369fbefcc1a56b7c558ad5e8509501e3e2369d2a",
+    "evidence_execution_sha": "45f949f4ecea2bd20bf1c9dd75a53a06bb911f04",
+    "run_id": 35390004177,
+    "job_id": 105745888455,
+    "artifact_id": 10565551103,
+    "bounded_court": "43/43 PASS"
+  }
 }

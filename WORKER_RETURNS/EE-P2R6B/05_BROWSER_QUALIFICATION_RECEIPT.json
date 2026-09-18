@@ -1,9 +1,14 @@
 {
   "schema": "EE_P2R6B_BROWSER_QUALIFICATION_RECEIPT@1.0.0",
-  "status": "PENDING_GOVERNED_BROWSER_QUALIFICATION",
+  "status": "PASS",
+  "terminal": "EE_P2R6B_PASS__CONCRETE_REALIZATION_BINDING_ISSUER_AND_VERIFIER_READY__AWAIT_EXACT_LOCAL_I02_SUCCESSOR_RELEASE_RECEIPTS",
+  "grain": "R5A_CONCRETE_REALIZATION_BINDING_ISSUER_AND_VERIFIER_PREPARATION_ONLY",
   "fixture_marker": "NONEMPIRICAL__NONBINDING__STRUCTURAL_FIXTURE",
   "empirical_data_accessed": false,
   "carrier_or_library_accessed": false,
+  "source_bytes_accessed": false,
+  "empirical_outcomes_accessed": false,
+  "performance_measurements_accessed": false,
   "actual_successor_runtime_release_ref_present": false,
   "actual_concrete_realization_binding_emitted": false,
   "production_candidate_schema_emitted_by_fixture": false,
@@ -11,16 +16,57 @@
   "prepared_verifier_git_blob_sha1": "641f1e50af416441cba7650956123aa1d32f9b59",
   "exact_r5b_verifier_git_blob_sha1": "348c533a3dff477c3ea0c2f19b41a4e131ef3d3f",
   "authority_epoch_id": "30815cfb20f4f66140cee8f6a2b5e5cafd5e20fb4d1b0c607bad1e3699fae2ff",
-  "required_court_assertions": [
+  "governed_court": {
+    "semantic_candidate_sha": "369fbefcc1a56b7c558ad5e8509501e3e2369d2a",
+    "evidence_execution_sha": "45f949f4ecea2bd20bf1c9dd75a53a06bb911f04",
+    "pr_number": 401,
+    "pr_state_after_evidence": "CLOSED_UNMERGED",
+    "pr_synthetic_sha": "fdd3edc975f23023665e0543cec4fecb5abfe62d",
+    "workflow_id": 350748047,
+    "run_id": 35390004177,
+    "run_number": 502,
+    "job_id": 105745888455,
+    "result": "PASS",
+    "protocol_self_test": {
+      "passed": 20,
+      "total": 20
+    },
+    "bounded_court": {
+      "passed": 43,
+      "total": 43
+    },
+    "python": "3.12.14",
+    "court_spec_git_blob_sha1": "a3544aefc21e8a5976248bf2c32756d2333b9dc9",
+    "temporary_test_git_blob_sha1": "b1aa6bb8f8fc29926b4ef94ec374552d1dc6580a",
+    "artifact": {
+      "id": 10565551103,
+      "name": "rabochii-court-receipt-35390004177",
+      "size_in_bytes": 601,
+      "digest": "sha256:7620afe3781a79d35d41cd9f94759a572bc24c0845a339d3e38399ca42fa000d"
+    }
+  },
+  "proved_assertions": [
     "EXACT_R5B_VERIFIER_BYTES_PINNED",
     "EXACT_ISSUER_AND_VERIFIER_PARSE_AND_LOAD",
+    "AUTHORITY_EPOCH_CONTENT_ADDRESS_EXACT",
     "STRUCTURAL_FIXTURE_IS_NONEMPIRICAL_NONBINDING_AND_DETERMINISTIC",
     "STRUCTURAL_FIXTURE_REJECTS_NONZERO_ACTIVE_BINDING_COUNT",
-    "PRODUCTION_ISSUER_REJECTS_NON_R5B_FIXTURE_RECEIPT_WITHOUT_OUTPUT",
+    "PRODUCTION_ISSUER_REJECTS_NON_R5B_FIXTURE_RECEIPT_BEFORE_OUTPUT",
     "VERIFIER_REJECTS_NONPRODUCTION_FIXTURE_SCHEMA",
     "NO_ACTUAL_RELEASE_REALIZATION_BINDING_EMITTED"
   ],
-  "governed_court": null,
-  "pass_terminal": null,
-  "successor_wake": "HQ_ADJUDICATE_BINDING_ISSUER_PREPARATION_ONLY"
+  "superseded_non_authoritative_attempts": [
+    {
+      "pr": 399,
+      "disposition": "CLOSED_UNMERGED__SUPERSEDED_BY_BROWSER_REVIEW_BEFORE_FINAL_QUALIFICATION"
+    },
+    {
+      "pr": 400,
+      "run_id": 35389837331,
+      "job_id": 105745350272,
+      "disposition": "CLOSED_UNMERGED__COURT_FAIL__LITERAL_BACKSLASH_N_SYNTAX_PATCH_DEFECT__SUPERSEDED"
+    }
+  ],
+  "successor_wake": "HQ_ADJUDICATE_BINDING_ISSUER_PREPARATION_ONLY",
+  "exact_remaining_blocker": "AWAIT_SUCCESSFUL_R6L_R5B_ACCEPTED_I02_RECEIPT_SET_AND_EXACT_ZERO_ACTIVE_BINDING_EPOCH_SNAPSHOT"
 }
