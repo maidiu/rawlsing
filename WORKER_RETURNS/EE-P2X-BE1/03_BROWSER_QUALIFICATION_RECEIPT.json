@@ -1,0 +1,51 @@
+{
+  "schema": "EE_P2X_BE1_BROWSER_QUALIFICATION_RECEIPT@1.0.0",
+  "disposition": "PASS__EXACT_RUNTIME_PREIMAGE_BLOCKER_REPRODUCED__NO_EMPIRICAL_EXECUTION",
+  "qualification_scope": "BLOCKER_FACTS_ONLY__NOT_PRODUCTION_BACKEND_PASS",
+  "pr": {
+    "number": 390,
+    "state": "closed",
+    "merged": false,
+    "base": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+    "base_sha": "32e224c28d720fce7cdcf6182afb5d327e8a1cf0"
+  },
+  "evidence_execution_sha": "f1dbde20403c6241398ac562cff8a06728ae817f",
+  "semantic_candidate_sha": "d4d122e276336fab9b595b24dc8ac3f9dce24b07",
+  "workflow": {
+    "name": "Rabochii Governed Bounded Court",
+    "run_id": 35332090340,
+    "run_number": 485,
+    "status": "completed",
+    "conclusion": "success",
+    "job_id": 105558502405,
+    "bounded_court_step": "success",
+    "protocol_self_test": "success",
+    "court_spec_validation": "success"
+  },
+  "artifact": {
+    "id": 10541401693,
+    "name": "rabochii-court-receipt-35332090340",
+    "size_in_bytes": 547,
+    "digest": "sha256:cdb041fef8cdbdf93cff73f82656bdbd67b268fe0d94947795b44330bf182c96",
+    "expired": false,
+    "content_materialized_in_worker": false
+  },
+  "test": "rawlsing_next/tests/test_ee_p2x_darwin_stage_backend.py",
+  "court_spec": ".rabochii/court_spec.json",
+  "empirical_boundary": {
+    "real_carrier_access": false,
+    "empirical_outcome_access": false,
+    "empirical_measurement": false,
+    "surrogate_data": false
+  },
+  "proved": [
+    "D02 frozen learned workload is exactly 50 candidates / 77 roles and requires six Q310/Q311 conditioner selectors.",
+    "F02 binds those six selector refs to its composite release and does not execute the workload.",
+    "Adopted P2R1 LiTS RuntimeObjectCatalog forbids hash inversion and does not carry the F02 composite selector surface.",
+    "Accepted Candidate-C binding is base-release 19-role/18-distinct-predicate only and authorizes no third accelerator.",
+    "Historical G02 is a direct raw-record executor rather than the adopted P2R1 runtime seam.",
+    "The unqualified BE1 backend was withdrawn and is absent at the qualification head."
+  ],
+  "pass_terminal_not_claimed": "EE_P2X_PRODUCTION_STAGE_BACKEND_READY__NO_EMPIRICAL_MEASUREMENT_PERFORMED",
+  "blocker_terminal": "EE_P2X_BE1_BLOCK__LITS_50_77_P2R1_RUNTIME_PREIMAGE_NOT_CLOSED__F02_COMPOSITE_SELECTOR_SURFACE_NOT_MATERIALIZED_THROUGH_ACCEPTED_CANDIDATE_OWNER_SEAM__NO_PRODUCTION_BACKEND_ADOPTABLE"
+}
