@@ -1,0 +1,188 @@
+{
+  "schema": "RAWLSING_HQ_HANDOFF@1.1.0",
+  "checkpoint_id": "20260918T0406-0400",
+  "repository": "maidiu/rawlsing",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354",
+  "prior_checkpoint": "20260918T0317-0400",
+  "status": "EE_P2XD_ADOPTED__QUALIFIED_DRIVER_AND_MAP_FANIN_BOUND__EE_P2X_RV_ACTIVE",
+  "governance": {
+    "p2xd_return": "2a26306c990b6d16bbe5ca90807ae7db59b687e6",
+    "p2xd_disposition": "PASS__ADOPTED__QUALIFIED_DRIVER_FANIN_COMPLETE",
+    "p2x_prior_head": "a954e2d6676843da8427ef2439b5d1ef33478359",
+    "p2x_qualified_fanin": "6d13e1e88643e77ae076336dd8ddb20ee1cd6b3f",
+    "reducer_return": "eb7595f1030d1861c262dbdb6bb4d7c12d1abd43",
+    "reducer_map_path": "WORKER_RETURNS/EE-P2X-CONTINUATION-REDUCER-R1/01_CONTINUATION_STATE_MACHINE.json",
+    "reducer_map_git_blob_sha1": "e06e95dd370a4fd44235932088308c3372522ed4",
+    "reducer_map_sha256": "ffe7d40e5f2051f839a3a646fd434fbee3b93371e7571d959805ca7ca74e0422",
+    "driver_path": "rawlsing_next/ee_p2x_darwin_court_driver.py",
+    "driver_git_blob_sha1": "c3a368270f6f7a6f613efb78e31972e64a092c88",
+    "driver_test_git_blob_sha1": "53ab07f00f23b6d5d8d8b67d8974de7bebc61488",
+    "p2xd_qualification_receipt_blob": "15aec674df941a16d77df513d4bd9d571ff1daf6",
+    "adoption_path": "HQ_HANDOFF/EE_P2XD_ADOPTION_P2X_FANIN_AND_RV_COMMISSION_20260918.md",
+    "decision_ledger_id": "HQD-2026-09-18-037",
+    "lock1": "FROZEN_UNCHANGED",
+    "lock2": "SEALED__8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188",
+    "local_measured_continuation": "COORDINATION_HOLD_PENDING_EE_P2X_RV_ADJUDICATION_AND_QUALIFIED_FANIN",
+    "measured_synthesis": "FORBIDDEN_PENDING_LAWFUL_COMPLETE_EE_P2X_RETURN"
+  },
+  "adjudicated_returns": [
+    {
+      "id": "EE-P2R1",
+      "branch": "agent/rabochii-prev3-ee-p2r1-universal-carrier-i03-i05-binding-r1",
+      "return_head": "9511f44728a8469d685463ec0fc880864c9187de",
+      "disposition": "PASS__ADOPTED__QUALIFIED_CODE_FANIN_COMPLETE"
+    },
+    {
+      "id": "EE-P2X-CONTINUATION-REDUCER-R1",
+      "branch": "agent/rabochii-prev3-ee-p2x-continuation-reducer-browser-r1",
+      "return_head": "eb7595f1030d1861c262dbdb6bb4d7c12d1abd43",
+      "disposition": "PASS__ADOPTED__EXACT_CONTINUATION_STATE_MACHINE_BOUND"
+    },
+    {
+      "id": "EE-P2XD",
+      "branch": "agent/rabochii-prev3-ee-p2xd-darwin-mechanical-court-driver-preparation-r1",
+      "commission_tip": "8f2b5fec8808824a43e119789adecb4dc4bba127",
+      "return_head": "2a26306c990b6d16bbe5ca90807ae7db59b687e6",
+      "disposition": "PASS__ADOPTED__QUALIFIED_DRIVER_FANIN_COMPLETE"
+    }
+  ],
+  "preserved_evidence": {
+    "lits_a_first_build_commit": "02a7ff71ae65b1aa8c52add0b315244a9eaea9df",
+    "lits_a_first_build": "BANKED_ADMISSIBLE__REPETITION_FORBIDDEN",
+    "lits_b_cacheless_c11": "BANKED_ADMISSIBLE__REPETITION_FORBIDDEN",
+    "p2x_prior_terminal_return": "29e434a385719f9835e0bcd252fb24bc37675a99",
+    "repetition": "FORBIDDEN_UNLESS_EXACT_CONTRACT_INVALIDATION_PROVED"
+  },
+  "active_workers": [
+    {
+      "id": "EE-P2X",
+      "branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+      "commission_tip": "e49ae8111fd2e888bdb899f85f4d206950ca7bf3",
+      "observed_head_at_checkpoint": "6d13e1e88643e77ae076336dd8ddb20ee1cd6b3f",
+      "resume_from": "6d13e1e88643e77ae076336dd8ddb20ee1cd6b3f",
+      "grain": "FINAL_TWO_SOURCE_A_B_C_EQUAL_WORK_P2_MEASURED_EXECUTION_ONLY",
+      "library_access": "EXACT_ONLY",
+      "pass_wake": "HQ_MEASURED_SYNTHESIS",
+      "blocker_effect": "QUALIFIED_DRIVER_AND_ADOPTED_MAP_BOUND__LOCAL_ENTRY_COORDINATION_HOLD_PENDING_RECEIPT_VERIFIER_FANIN",
+      "hard_forbidden": [
+        "NO_REBASE_OR_REPLACEMENT_BRANCH",
+        "NO_LOCK1_MUTATION",
+        "NO_LOCK2_MUTATION",
+        "NO_CANDIDATE_OR_WORKLOAD_REDESIGN",
+        "NO_NEW_WVS_ACCELERATOR",
+        "NO_THIRD_CACC",
+        "NO_GOLDEN_PATH",
+        "NO_SURROGATE_PERFORMANCE_DATA",
+        "NO_CROSS_UNIVERSE_METRIC_POOLING",
+        "NO_REPEAT_COMPLETED_LITS_A_FIRST_BUILD",
+        "NO_REPEAT_COMPLETED_LITS_B_CACHELESS_C11",
+        "NO_MAIN_OR_SEMANTIC_PRE_MAIN_MUTATION"
+      ]
+    },
+    {
+      "id": "EE-P2X-RV",
+      "branch": "agent/rabochii-prev3-ee-p2x-rv-local-receipt-verifier-preparation-r1",
+      "commission_tip": "db88478a9ae3f0e73aa9bf6eb7091a6dcc598171",
+      "observed_head_at_checkpoint": "db88478a9ae3f0e73aa9bf6eb7091a6dcc598171",
+      "grain": "EE_P2X_LOCAL_COURT_RECEIPT_VERIFIER_PREPARATION_ONLY",
+      "library_access": "NO",
+      "pass_wake": "HQ_ADJUDICATE_EE_P2X_RV__SELECTIVE_QUALIFIED_FANIN_TO_EXISTING_EE_P2X",
+      "blocker_effect": "FINAL_BROWSER_PREPARATION_BEFORE_LOCAL_MEASURED_EXECUTION",
+      "hard_forbidden": [
+        "NO_EMPIRICAL_CARRIER_ACCESS",
+        "NO_LIBRARY_CARRIER_BYTES",
+        "NO_MEASURED_P2X_EXECUTION",
+        "NO_SURROGATE_PERFORMANCE",
+        "NO_PREPOPULATED_MEASURED_VALUES",
+        "NO_LOCK1_MUTATION",
+        "NO_LOCK2_MUTATION",
+        "NO_CANDIDATE_OR_WORKLOAD_REDESIGN",
+        "NO_NEW_WVS_ACCELERATOR",
+        "NO_THIRD_CACC",
+        "NO_RANKING_SCORING_RECOMMENDATION_SELECTION",
+        "NO_MAIN_OR_SEMANTIC_PRE_MAIN_MUTATION",
+        "NO_P2X_REF_MOVEMENT",
+        "NO_REBASE",
+        "NO_REPLACEMENT_BRANCH"
+      ]
+    }
+  ],
+  "continuation_state": {
+    "authority_ref": "eb7595f1030d1861c262dbdb6bb4d7c12d1abd43:WORKER_RETURNS/EE-P2X-CONTINUATION-REDUCER-R1/01_CONTINUATION_STATE_MACHINE.json",
+    "first_unfinished_stage": "LITS_I/A/S02_C11_REACHABILITY",
+    "final_stage": "S17_FINAL_COMPLETENESS_AND_VERIFICATION",
+    "wake_on_pass": "HQ_MEASURED_SYNTHESIS",
+    "source_order": [
+      "LITS_I",
+      "WVS7"
+    ],
+    "candidate_order": [
+      "A",
+      "B",
+      "C"
+    ],
+    "wvs_c_stage": "WVS7/C/S01_CANDIDATE_PREPARATION_BUILD",
+    "wvs_c_disposition": "WVS7_C__CURRENT_PORTABILITY_FAILURE",
+    "wvs_c_effect": "CANDIDATE_LOCAL__DOES_NOT_BLOCK_WVS_A_OR_B",
+    "pure_b_optional_cache_tests": "NOT_APPLICABLE__DO_NOT_MANUFACTURE_CACHE"
+  },
+  "p2xd_qualification": {
+    "workflow_run_id": 35321826151,
+    "job_id": 105525800028,
+    "semantic_candidate": "d69ebc3767461b110721d6acfcf3b9b373c92bab",
+    "evidence_execution": "10d9920d7ec69d86231acb02a4391155b1da288e",
+    "protocol_self_tests": "20/20 PASS",
+    "hostile_tests": "19/19 PASS",
+    "governed_outer_court": "1/1 PASS",
+    "artifact_zip_sha256": "f8573fa73c1a656e5e0f04aec5416d4dffe07bfba3048e6732253f6597e67e57"
+  },
+  "receipt_verifier_preparation": {
+    "original_unreferenced_tree": "acf744527f945ec80a2d09c2eb9d054a3c4f23fb",
+    "materialized_proposal_commit": "a842a067636af2836172222cea9f5b1367bcce63",
+    "commission_tip": "db88478a9ae3f0e73aa9bf6eb7091a6dcc598171",
+    "base_p2x_head": "6d13e1e88643e77ae076336dd8ddb20ee1cd6b3f",
+    "policy": "PRESERVE_PROPOSAL_BLOBS_WHERE_COMPATIBLE__REPAIR_ONLY_PROVED_DRIVER_OR_AUTHORITY_INTERFACE_MISMATCHES"
+  },
+  "dependency_graph": {
+    "EE_P2XD": {
+      "status": "CLOSED__ADOPTED_PASS__QUALIFIED_FANIN_COMPLETE",
+      "wake_effect": "P2X_DRIVER_AND_MAP_BOUND_AT_6D13E1E",
+      "prohibited_early_actions": []
+    },
+    "EE_P2X_RV": {
+      "status": "ACTIVE__COMMISSIONED",
+      "prerequisites": [
+        "QUALIFIED_DRIVER_BOUND",
+        "ADOPTED_CONTINUATION_MAP_BOUND",
+        "P2X_HEAD_6D13E1E"
+      ],
+      "wake_effect": "HQ_ADJUDICATE_AND_SELECTIVELY_FANIN_QUALIFIED_RECEIPT_VERIFIER_SURFACE",
+      "prohibited_early_actions": [
+        "EMPIRICAL_SOURCE_ACCESS",
+        "MEASURED_PERFORMANCE",
+        "P2X_REF_MOVEMENT"
+      ]
+    },
+    "EE_P2X": {
+      "status": "ACTIVE__QUALIFIED_DRIVER_BOUND__LOCAL_ENTRY_COORDINATION_HOLD",
+      "prerequisites": [
+        "LOCK1_SEALED",
+        "LOCK2_SEALED",
+        "EE_P2R1_ADOPTED_PASS",
+        "ADOPTED_CONTINUATION_MAP",
+        "EE_P2XD_QUALIFIED_FANIN",
+        "EE_P2X_RV_QUALIFIED_FANIN_BEFORE_NEW_LOCAL_START"
+      ],
+      "wake_effect": "HQ_MEASURED_SYNTHESIS_ONLY_ON_LAWFUL_COMPLETE_RETURN",
+      "prohibited_early_actions": [
+        "NEW_LOCAL_MEASURED_CONTINUATION_BEFORE_EE_P2X_RV_FANIN",
+        "HQ_MEASURED_SYNTHESIS",
+        "FINAL_CARRIER_SELECTION",
+        "REPEAT_COMPLETED_LITS_A_FIRST_BUILD",
+        "REPEAT_COMPLETED_LITS_B_CACHELESS_C11"
+      ]
+    }
+  },
+  "terminal": "EE_P2XD_ADOPTED__QUALIFIED_DRIVER_AND_MAP_FANIN_BOUND__EE_P2X_RV_ACTIVE"
+}
