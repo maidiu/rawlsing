@@ -1,0 +1,49 @@
+{
+  "schema": "EE_P2R5A_FROZEN_F02_SCOPE_REF_SEMANTIC_STATUS@1.0.0",
+  "status": "PROVED__PRESERVABLE_AS_IMMUTABLE_F02_COMPOSITE_SEMANTIC_SCOPE_AND_PROVENANCE_ANCHOR__NOT_ACCEPTED_I02_RELEASE",
+  "hq_authority": {
+    "checkpoint_id": "20260918T1521-0400",
+    "handoff_commit": "3be5c299d8a244be5b9d956908c61baadfb3f49c",
+    "decisions": [
+      "HQD-2026-09-18-044",
+      "HQD-2026-09-18-045"
+    ]
+  },
+  "frozen_f02_ref": {
+    "kind": "C11LogicalRelease",
+    "object_id": "LITS1-F02-C11-7cac43e2ca5b31cb-bf305bf3f169d669",
+    "content_hash": "bf305bf3f169d66954be4f39cc602880fddea6083b5bee9c0212938355cd5297"
+  },
+  "historical_f02_claim": {
+    "historical_label": "C11LogicalRelease",
+    "historical_release_form": "IMMUTABLE_BOUNDED_COMPOSITE_LOGICAL_RELEASE__EXACT_BASE_PLUS_Q310_Q311_EXTENSION",
+    "identity_material_schema": "F02_LITS1_C11_COMPOSITE_RELEASE@1.0.0",
+    "identity_law": "SHA256_CANONICAL(F02_REFERENCE_UNION_MATERIAL)",
+    "member_law": "EXACT_BASE_RELEASE_MEMBERS_UNCHANGED_BY_REFERENCE_UNION_GOVERNED_Q310_Q311_EXTENSION"
+  },
+  "accepted_public_i02_status": {
+    "is_accepted_i02_c11logicalrelease": false,
+    "is_i02_semantic_release_hash": false,
+    "is_directly_c11repository_resolvable": false,
+    "reason": "Accepted I02 mints semantic_release_hash only after complete candidate, ReplayManifest, authority, and M01-M18 validation; bf305 was minted by the bespoke F02 reference-union law."
+  },
+  "lawful_successor_status": {
+    "bounded_role": "FROZEN_F02_COMPOSITE_SEMANTIC_SCOPE_AND_PROVENANCE_ANCHOR",
+    "literal_exactref_preserved": true,
+    "exactref_kind_rewritten": false,
+    "selector_ast_rewritten": false,
+    "identity_equivalence_to_runtime_release": false,
+    "basis": [
+      "HQD-2026-09-18-044 already adopts the F02 ref as exact release/scope binding and requires runtime realization to fail closed when unavailable.",
+      "HQD-2026-09-18-045 separately adopts that bf305 is not a lawful I02 runtime release.",
+      "The only lawful reconciliation is to preserve the historical exact ref as an opaque scope/provenance anchor and require an explicit directional realization relation to a distinct accepted I02 runtime ref."
+    ]
+  },
+  "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+  "accepted_base_i02_release": {
+    "kind": "C11LogicalRelease",
+    "object_id": "LITS1-AS2B-C11-7cac43e2ca5b31cb-9dd1e6b7350ebb79",
+    "content_hash": "e6c954538fa1830820120465a10a6d065b8a18d1e6b7b08d3f863b0917741e26"
+  },
+  "consequence": "NO_SELECTOR_SUPERSESSION_REQUIRED_IF_AND_ONLY_IF_HQ_ADOPTS_EXPLICIT_REALIZATION_AUTHORITY_AND_A_FUTURE_CONCRETE_BINDING_PASSES_ALL_REQUIRED_PROOFS__UNTIL_THEN_FAIL_CLOSED"
+}
