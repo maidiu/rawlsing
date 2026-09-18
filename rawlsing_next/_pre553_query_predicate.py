@@ -1,5 +1,6 @@
 """Exact C11 indexing and empirical predicate evaluation for PRE553 I03."""
 from rawlsing_next._pre553_query_common import *
+from rawlsing_next.pre553_runtime_authority import Pre553RuntimeAuthoritySet
 
 def _question_matches(event: RespondentEvent | RoutingEligibilityFact, target: ExactRef) -> bool:
     if isinstance(event, RoutingEligibilityFact):
