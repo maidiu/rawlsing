@@ -116,9 +116,15 @@ def test_ee_p2r6i_exact_concrete_binding_generation_surface_payload():
                 shutil.copyfileobj(src, dst, length=1024 * 1024)
         assert replay_path.stat().st_size == 118508673
         assert sha256_file(replay_path) == "aa3b6026d4dbc3df8b142725704974eaef810e5dbf5b31d14b19c88cf8ecafd5"
+        temp_receipt = td / "successor_release_receipt.json"
+        temp_m01 = td / "successor_release_m01_m18.json"
+        temp_scan = td / "successor_release_extension_scan.json"
+        shutil.copyfile(receipt_path, temp_receipt)
+        shutil.copyfile(m01_path, temp_m01)
+        shutil.copyfile(scan_path, temp_scan)
         authority_path = td / "authority.json"
         authority_path.write_text(json.dumps(authority, sort_keys=True, indent=2) + "\n", encoding="utf-8")
-        candidate = issuer.issue_binding_candidate(receipt_path, replay_path, m01_path, scan_path, authority_path)
+        candidate = issuer.issue_binding_candidate(temp_receipt, replay_path, temp_m01, temp_scan, authority_path)
         assert candidate["status"] == "CANDIDATE__HQ_ADOPTION_REQUIRED__NOT_ACTIVE_UNTIL_ADOPTED"
         assert candidate["activation"] == "HQ_ADOPTION_REQUIRED__ISSUER_OUTPUT_ALONE_IS_NOT_ACTIVE_AUTHORITY"
         candidate_path = td / "candidate.json"
@@ -126,10 +132,10 @@ def test_ee_p2r6i_exact_concrete_binding_generation_surface_payload():
         proc = subprocess.run([
             sys.executable, str(VERIFIER),
             "--candidate", str(candidate_path),
-            "--receipt", str(receipt_path),
+            "--receipt", str(temp_receipt),
             "--replay-manifest", str(replay_path),
-            "--m01-m18", str(m01_path),
-            "--extension-scan", str(scan_path),
+            "--m01-m18", str(temp_m01),
+            "--extension-scan", str(temp_scan),
             "--authority-material", str(authority_path),
         ], text=True, capture_output=True, check=False)
         assert proc.returncode == 0, proc.stderr or proc.stdout
