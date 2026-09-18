@@ -110,8 +110,8 @@ def _fixture_source(data):
         "r6a-runtime",
         [
             {"id": "R1", "responses": {"X": 1, "Y": 1}},
-            {"id": "R2", "responses": {"X": 2, "Y": 1}},
-            {"id": "R3", "responses": {"Y": 2}},
+            {"id": "R2", "responses": {"X": 2, "Y": 0}},
+            {"id": "R3", "responses": {"Y": 0}},
         ],
         question_refs_override=qrefs,
         source_hash_override=data["realization"]["identity_material"]["source_sha256"],
@@ -361,7 +361,7 @@ def test_i05_existing_combiner_dispatches_mixed_only_under_bound_runtime(authori
             op="AND",
             tag_material={"case": "i05-production-dispatch"},
         )
-    assert derived.grammar_authority_ref == authority_ref(
+    assert authority_ref(derived.grammar_authority_ref) == authority_ref(
         authority_data["mixed"]["candidate_authority_ref"]
     )
 
@@ -507,9 +507,9 @@ def test_authorized_mixed_and_uses_explicit_successor_authority(authority_data):
     derived_binding = authority_data["derived"]["identity_material"]["deterministic_construction"][
         "same_respondent_binding_semantics"
     ]
-    assert derived.grammar_authority_ref == successor_ref
+    assert authority_ref(derived.grammar_authority_ref) == successor_ref
     assert derived.same_respondent_binding_semantics == derived_binding
-    assert successor_ref in tuple(derived.authority_snapshot_refs)
+    assert successor_ref in tuple(authority_ref(x) for x in derived.authority_snapshot_refs)
     assert set(exact_ref(x) for x in derived.dependency_refs) == {parent.ref, child.ref}
     assert derived.ref == reverse.ref
     assert parent.ref == parent_ref and child.ref == child_ref
