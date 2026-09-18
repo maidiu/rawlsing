@@ -1,0 +1,121 @@
+{
+  "schema": "EE_P2R6R_BROWSER_QUALIFICATION_RECEIPT@1.0.0",
+  "status": "PASS",
+  "terminal": "EE_P2R6R_PASS__F02_FULL_SOURCE_SCAN_VERIFIER_CONTRACT_REPAIRED__R6B_VERIFIER_CHAIN_REFRESHED__EXISTING_R6L_OUTPUTS_READY_FOR_NO_CARRIER_REVERIFICATION",
+  "grain": "R5B_F02_SOURCE_SCAN_VERIFIER_SCHEMA_COMPLETENESS_REPAIR__PLUS_R6B_PIN_REFRESH_ONLY",
+  "sealed_hq": {
+    "checkpoint_id": "20260918T1642-0400",
+    "handoff_commit": "28e0af7fd90dd2ed90923ec3f8bd1aa0e4e1fed4",
+    "latest_rechecked_after_qualification": true,
+    "latest_unchanged": true
+  },
+  "execution_surface": "BROWSER",
+  "library_access": "NO",
+  "empirical_boundary": {
+    "library_accessed": false,
+    "carrier_accessed": false,
+    "source_bytes_accessed": false,
+    "empirical_outcomes_accessed": false,
+    "performance_measurements_accessed": false,
+    "source_driver_rerun": false
+  },
+  "preserved_driver": {
+    "git_blob_sha1": "b819fdff50470a71f1c570aa8021e28b361fa986",
+    "modified": false
+  },
+  "repaired_chain": {
+    "repaired_successor_release_verifier": {
+      "path": "WORKER_RETURNS/EE-P2R6R/02_REPAIRED_SUCCESSOR_RELEASE_VERIFIER.py",
+      "git_blob_sha1": "e7752c558c7fb407852ef7377f45eca775d3b86b"
+    },
+    "refreshed_r6b_binding_issuer": {
+      "path": "WORKER_RETURNS/EE-P2R6R/03_REPAIRED_R6B_BINDING_ISSUER.py",
+      "git_blob_sha1": "8fd59bc69cd549c39b81bef7d44bb96c1bc0b7c6"
+    },
+    "refreshed_r6b_binding_verifier": {
+      "path": "WORKER_RETURNS/EE-P2R6R/04_REPAIRED_R6B_BINDING_VERIFIER.py",
+      "git_blob_sha1": "94d4b6a500925b62fd016b57870083f4d41fc85d"
+    },
+    "authority_epoch_id": "30815cfb20f4f66140cee8f6a2b5e5cafd5e20fb4d1b0c607bad1e3699fae2ff",
+    "actual_realization_binding_emitted": false
+  },
+  "qualification": {
+    "semantic_candidate_sha": "81ee5b5aa60cc03d2948d27b0f7ace6989db7f1c",
+    "evidence_execution_sha": "ee2001bcce84f71f22af9954c2c1bfd4fa237fd6",
+    "pr_number": 406,
+    "pr_state_after_evidence": "CLOSED_UNMERGED",
+    "pr_synthetic_sha": "793b0026d07dd12ccfd74798ea879989d98eb4a2",
+    "workflow_id": 350748047,
+    "run_id": 35393995830,
+    "run_number": 513,
+    "job_id": 105758519925,
+    "result": "PASS",
+    "protocol_self_test": {
+      "passed": 20,
+      "total": 20
+    },
+    "bounded_court": {
+      "passed": 42,
+      "total": 42
+    },
+    "python": "3.12.14",
+    "pytest": "9.1.1",
+    "court_spec_git_blob_sha1": "d5d5e910685d50aed47247a7e1bbf11e79988b53",
+    "transient_test_git_blob_sha1": "dadd5aeb34dda55eb7a30b21e5b4e181a9450a92",
+    "permanent_support_test_git_blob_sha1": "539c50836eed4775b9b07d215daf1e3073eddd77",
+    "artifact": {
+      "id": 10566572777,
+      "name": "rabochii-court-receipt-35393995830",
+      "size_in_bytes": 608,
+      "digest": "sha256:6086a658a6073ff75336f493c2884859853ed4254adae2556f885aaa3670d5dd"
+    }
+  },
+  "proved_assertions": [
+    "OLD_TRUNCATED_EXPECTATION_REJECTS_EXACT_VALID_COMPLETE_FROZEN_SCAN",
+    "EXACT_COMPLETE_FROZEN_SOURCE_SCAN_MATCHES_REPAIRED_EXPECTATION",
+    "MISSING_SELECTOR_ROOTS_FAILS_EXACT_EQUALITY",
+    "CHANGED_SELECTOR_ROOT_FAILS_EXACT_EQUALITY",
+    "CHANGED_COUNT_FAILS_EXACT_EQUALITY",
+    "CHANGED_ROW_ROOT_FAILS_EXACT_EQUALITY",
+    "UNEXPECTED_EXTRA_SOURCE_SCAN_KEY_FAILS_EXACT_EQUALITY",
+    "REPAIRED_R5B_VERIFIER_IS_BYTE_EXACT_OLD_VERIFIER_PLUS_COMPLETE_EXPECTED_SCAN_ONLY",
+    "ALL_NON_SCAN_R5B_VERIFICATION_LOGIC_PRESERVED_BYTE_FOR_BYTE",
+    "REFRESHED_R6B_ISSUER_IS_EXACT_ADOPTED_ISSUER_PLUS_REPAIRED_VERIFIER_PATH_AND_PIN_ONLY",
+    "REFRESHED_R6B_BINDING_VERIFIER_IS_EXACT_ADOPTED_VERIFIER_PLUS_REFRESHED_ISSUER_PATH_AND_PIN_ONLY",
+    "AUTHORITY_EPOCH_PRESERVED_EXACTLY",
+    "NO_ACTUAL_REALIZATION_BINDING_EMITTED",
+    "NO_CARRIER_REEXECUTION_REQUIRED_FOR_EXISTING_R6L_OUTPUT_REVERIFICATION"
+  ],
+  "superseded_non_authoritative_attempts": [
+    {
+      "pr_number": 404,
+      "evidence_head": "1fb967525827846f813f58182a1e823188872262",
+      "pr_synthetic_sha": "bd6815ecb8f945b6bcaef1a4f7fd20e0aed61a3d",
+      "run_id": 35393739623,
+      "job_id": 105757725789,
+      "disposition": "COURT_SPEC_VALIDATION_FAILURE__TEST_PATH_OUTSIDE_RAWLSING_NEXT_TESTS__NO_BOUNDED_TEST_EXECUTION",
+      "protocol_self_test": "20/20 PASS",
+      "artifact": null
+    },
+    {
+      "pr_number": 405,
+      "evidence_head": "b36b23321efb034b4da908c362d65a044c0af325",
+      "pr_synthetic_sha": "b4dd735a3315be6601c66db8ea72f08c2db1eb68",
+      "run_id": 35393901181,
+      "job_id": 105758224461,
+      "disposition": "QUALIFICATION_HELPER_FAILURE__GIT_BLOB_HEADER_USED_LITERAL_BACKSLASH_ZERO_INSTEAD_OF_NUL__PRODUCT_BYTES_UNCHANGED",
+      "protocol_self_test": "20/20 PASS",
+      "bounded_court": "39/42 PASS__3 QUALIFICATION_HELPER ASSERTIONS FAILED",
+      "artifact": {
+        "id": 10567271122,
+        "name": "rabochii-court-receipt-35393901181",
+        "size_in_bytes": 607,
+        "digest": "sha256:577c60e5e4e52c8e7294ff7c6b222bd0a7fbf77558790aef313386600244785f"
+      }
+    }
+  ],
+  "transient_qualification_files_removed_after_pass": true,
+  "final_repo_scope_rule": "NET_DIFF_FROM_COMMISSION_TIP_CONFINED_TO_WORKER_RETURNS/EE-P2R6R/",
+  "exact_no_carrier_local_reverification_wake": "HQ_ADOPT_R6R_REPAIR__THEN_LOCAL_MACHINE_CODEX_LUNA__LIBRARY_NO__RUN_REPAIRED_VERIFIER_AGAINST_EXISTING_R6L_SUCCESSOR_RELEASE_RECEIPT__ON_PASS_HASH_AND_SEAL_FOUR_EXISTING_JSON_OUTPUTS_AND_WRITE_GOVERNED_R6L_PASS__DO_NOT_REOPEN_LITS_2006_DATA_DTA__DO_NOT_RERUN_DRIVER",
+  "successor_wake": "HQ_ADJUDICATE_REPAIRED_VERIFIER_AND_AUTHORIZE_NO_CARRIER_R6L_REVERIFICATION"
+}
