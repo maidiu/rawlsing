@@ -1,0 +1,104 @@
+{
+  "schema": "RAWLSING_HQ_HANDOFF@1.1.0",
+  "checkpoint_id": "20260918T1736-0400",
+  "repository": "maidiu/rawlsing",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354",
+  "prior_checkpoint": "20260918T1706-0400",
+  "status": "R6L_LOCAL_PASS_PENDING_PUSH__ZIP_TRANSPORT_AUTHORIZED__R6T_SUPERSEDED__P2X_HELD",
+  "decisions": [
+    "HQD-2026-09-18-053"
+  ],
+  "authorization_path": "HQ_HANDOFF/EE_P2R6L_ZIP_TRANSPORT_AUTHORIZATION_20260918.md",
+  "pending_returns": [
+    {
+      "id": "EE-P2R6L-R2",
+      "branch": "agent/rabochii-prev3-ee-p2r6l-lits-i02-successor-release-local-execution-r1",
+      "remote_head": "26d530c6ed762c4702845b7143c4ea91ae95cec7",
+      "reported_unpushed_pass_commit": "32cc3ab101104d33eb625176299d7dc09cf29190",
+      "terminal": "EE_P2R6L_PASS__ACCEPTED_I02_SUCCESSOR_RELEASE_MINTED_AND_VERIFIED__READY_FOR_CONCRETE_REALIZATION_BINDING_ISSUANCE",
+      "push_blocker": "GITHUB_100MB_PER_FILE_LIMIT_ON_RAW_REPLAY_MANIFEST",
+      "unpushed_history_rewrite_authorized": true,
+      "carrier_access_authorized": false,
+      "source_driver_rerun_authorized": false
+    }
+  ],
+  "transport": {
+    "logical_filename": "successor_release_replay_manifest.json",
+    "logical_size_bytes": 118508673,
+    "logical_file_sha256": "aa3b6026d4dbc3df8b142725704974eaef810e5dbf5b31d14b19c88cf8ecafd5",
+    "replay_manifest_content_hash": "30c168fbdf8425b23cbf2a2b2d2c9ab56f3438851f52e3562510089f1d381a08",
+    "git_transport_filename": "successor_release_replay_manifest.json.zip",
+    "git_transport_size_bytes": 17663792,
+    "git_transport_sha256": "9d2c608f21d9d93111c7418bce945f6245340389d7e8c2ccff70b18af358dd70",
+    "inner_members": [
+      "successor_release_replay_manifest.json"
+    ],
+    "library_path": "/Rawlsing/Evidence/EE-P2R6L/successor_release_replay_manifest.json.zip",
+    "library_file_id": "libfile_ec261ab2a6a48191b13802065af9f249"
+  },
+  "superseded_workers": [
+    {
+      "id": "EE-P2R6T",
+      "branch": "agent/rabochii-prev3-ee-p2r6t-large-json-transport-packaging-r1",
+      "commission_tip": "c0102511c5a65e6b54c160cb9bcf6c7b396ceba0",
+      "disposition": "SUPERSEDED_UNSTARTED__DO_NOT_EXECUTE"
+    }
+  ],
+  "active_workers": [
+    {
+      "id": "EE-P2X",
+      "branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+      "commission_tip": "e49ae8111fd2e888bdb899f85f4d206950ca7bf3",
+      "observed_head_at_checkpoint": "32e224c28d720fce7cdcf6182afb5d327e8a1cf0",
+      "temporal_classification": "UNCHANGED_ACTIVE_WORKER",
+      "grain": "FINAL_CHETIRI_P2_A_B_C_EQUAL_WORK_MEASURED_EXECUTION_ONLY",
+      "execution_surface": "LOCAL-MACHINE CODEX__DORMANT_WHILE_HELD",
+      "library_access": "EXACT_ONLY",
+      "local_maximum_intelligence_required": "NOT_APPLICABLE__NO_P2X_RESUME_COMMISSIONED",
+      "pass_wake": "HQ_MEASURED_SYNTHESIS",
+      "blocker_effect": "WAIT_FOR_PUSHED_ADOPTED_R6L__CONCRETE_BINDING__AB_OWNER_SEAM_QUALIFICATION__BACKEND_FANIN",
+      "hard_forbidden": [
+        "LOCAL_RUN_OR_RESUME_WHILE_HELD"
+      ]
+    }
+  ],
+  "dependency_graph": {
+    "R6L_PUSHED_RETURN": {
+      "status": "PENDING",
+      "prerequisites": [
+        "REWRITE_UNPUSHED_LOCAL_RETURN_TO_ZIP_TRANSPORT"
+      ]
+    },
+    "CONCRETE_REALIZATION_BINDING": {
+      "status": "DORMANT",
+      "prerequisites": [
+        "ADOPTED_R6L_PASS",
+        "ZERO_ACTIVE_BINDING_EPOCH_SNAPSHOT",
+        "ADOPTED_R6R_REFRESHED_R6B_CHAIN"
+      ]
+    },
+    "AB_OWNER_SEAM_REQUALIFICATION": {
+      "status": "DORMANT",
+      "prerequisites": [
+        "ADOPTED_CONCRETE_BINDING"
+      ]
+    },
+    "BACKEND_FANIN": {
+      "status": "DORMANT",
+      "prerequisites": [
+        "ADOPTED_CONCRETE_BINDING",
+        "QUALIFIED_AB_OWNER_SEAM"
+      ]
+    },
+    "EE-P2X": {
+      "status": "HELD",
+      "prerequisites": [
+        "ADOPTED_CONCRETE_BINDING",
+        "QUALIFIED_AB_OWNER_SEAM",
+        "QUALIFIED_PRODUCTION_BACKEND_FANIN"
+      ]
+    }
+  },
+  "terminal": "ZIP_TRANSPORT_AUTHORIZED__AWAIT_REWRITTEN_PUSHED_R6L_PASS_RETURN__P2X_HELD"
+}
