@@ -9,11 +9,7 @@ from rawlsing_next.pre553_carrier_execution import (
     bind_governed_c11_projection,
     bind_repository_builder,
 )
-from rawlsing_next.pre553_source_backed_c11_facade import (
-    GovernedC11Projection,
-    build_source_backed_c11_repository,
-)
-from rawlsing_next.tests.test_pre553_source_backed_c11_facade import _fixture
+from rawlsing_next.pre553_source_backed_c11_facade import GovernedC11Projection
 from rawlsing_next.tests.test_pre553_empirical_query import (
     _branch_predicate,
     _build_source,
@@ -24,22 +20,29 @@ from rawlsing_next.tests.test_pre553_empirical_query import (
 )
 
 
-def test_governed_projection_binding_is_exact_roundtrip_and_fail_closed():
-    fx = _fixture("ee-p2r1-projection")
-    original = fx["projection"]
-    payload = {field.name: getattr(original, field.name) for field in fields(GovernedC11Projection)}
-    rebound = bind_governed_c11_projection(payload)
-    assert rebound == original
-    assert rebound.cache_identity == original.cache_identity
+def test_governed_projection_binding_requires_complete_explicit_contract_and_delegates_validation():
+    required = tuple(field.name for field in fields(GovernedC11Projection))
+    with pytest.raises(CarrierExecutionBindingError, match="complete and exact"):
+        bind_governed_c11_projection({})
 
-    hostile = dict(payload)
-    hostile.pop("routing")
-    with pytest.raises(CarrierExecutionBindingError):
-        bind_governed_c11_projection(hostile)
+    hostile_complete = {name: None for name in required}
+    with pytest.raises(CarrierExecutionBindingError, match="rejected by existing contract"):
+        bind_governed_c11_projection(hostile_complete)
 
 
-def test_repository_builder_binding_reuses_existing_owner_contract_without_semantic_branch():
-    fx = _fixture("ee-p2r1-builder")
+def test_repository_builder_binding_accepts_standard_c11_repository_release_prefix():
+    source = _build_source(
+        "ee-p2r1-builder",
+        [
+            {"id": "R1", "responses": {"Y": 0}},
+            {"id": "R2", "responses": {"Y": 1}},
+        ],
+    )
+    release = source["repo"].resolve_release_exact(source["release_ref"])
+
+    def accepted_owner_builder():
+        return source["repo"], release, {"owner_descriptor": "PRESERVED"}
+
     catalog = RuntimeObjectCatalog(
         authorities=(),
         predicates=(),
@@ -47,15 +50,11 @@ def test_repository_builder_binding_reuses_existing_owner_contract_without_seman
         discovery_authorities=(),
     )
     binding = bind_repository_builder(
-        repository_builder=build_source_backed_c11_repository,
-        builder_kwargs={
-            "source": fx["incidence"],
-            "projection": fx["projection"],
-            "cache": None,
-        },
+        repository_builder=accepted_owner_builder,
+        builder_kwargs={},
         builder_identity={
-            "owner_surface": "PRE553_SOURCE_BACKED_C11_FACADE@1.0.0",
             "composition_kind": "ACCEPTED_OWNER_TO_COMMON_EXECUTOR",
+            "owner_semantics_changed": False,
         },
         runtime_catalog=catalog,
     )
