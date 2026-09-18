@@ -231,3 +231,17 @@ def test_driver_payload_rejects_ranking_or_selection_surface(tmp_path):
     _write_ledger(work, ledger)
     with pytest.raises(bridge.DriverBindingBlocker, match="FORBIDDEN_DRIVER_OUTPUT_SURFACE"):
         bridge.validate_driver_ledger(work, allow_incomplete=True)
+
+
+def test_common_scope_failures_are_candidate_neutral_for_reuse():
+    source = BINDING["common_scope_normalization"]["common_source"]
+    court = BINDING["common_scope_normalization"]["common_court"]
+    assert source["candidate"] is None
+    assert source["blocking_scope"] == "SOURCE_ONLY"
+    assert set(source["permitted_failure_kinds"]) == {
+        "COMMON_SOURCE_AUTHORITY_FAILURE",
+        "PARITY_ORACLE_FAILURE",
+    }
+    assert court["candidate"] is None
+    assert court["blocking_scope"] == "COURT_UNTIL_RESUME"
+    assert court["permitted_failure_kinds"] == ["COMMON_COURT_AUTHORITY_FAILURE"]
