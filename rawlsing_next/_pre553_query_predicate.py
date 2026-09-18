@@ -106,6 +106,9 @@ def _leaf_match(
     registry: AuthorityRegistry,
     used: list[CanonicalSemanticObject | C11InternalRecord],
     used_auth: list[AuthorityRef],
+    predicate_grammar_authority_ref: AuthorityRef | Mapping[str, Any] | None = None,
+    runtime_authorities: Pre553RuntimeAuthoritySet | None = None,
+    repository: C11Repository | None = None,
     derived_branch_memberships: Mapping[ExactRef, frozenset[ExactRef]] | None = None,
 ) -> bool:
     leaf_type = node.get("leaf_type")
@@ -147,6 +150,33 @@ def _leaf_match(
             else:
                 semantic = canonicalize(_semantic_value(coordinate))
                 result = result or semantic in values
+        return result
+
+    if leaf_type == "SURVEY_RESPONSE_EVENT" and node.get("operation") is not None:
+        if runtime_authorities is None or predicate_grammar_authority_ref is None:
+            raise Pre553AuthorityError(
+                "governed public predicate dialect requires exact interpreter authority")
+        if repository is None:
+            raise Pre553AuthorityError(
+                "predicate dialect release realization requires exact C11Repository")
+        contract = runtime_authorities.resolve_predicate_dialect(
+            predicate_grammar_authority_ref, node
+        )
+        question_ref, _response_ref, native_value, scope_ref = contract.validate_leaf(node)
+        runtime_authorities.require_realized_release(
+            scope_ref,
+            repository=repository,
+            runtime_release_ref=index.release.release_ref,
+        )
+        result = False
+        for event in index.events_by_respondent[respondent_key]:
+            if _ref_field(event, "native_question_ref") != question_ref:
+                continue
+            used.append(event)
+            used_auth.extend(_validate_public_object_authorities(event, registry))
+            if event.typed_state != "SUBSTANTIVE_RESPONSE":
+                continue
+            result = result or canonicalize(event.raw_response_value) == native_value
         return result
 
     if leaf_type == "SURVEY_RESPONSE_EVENT":
