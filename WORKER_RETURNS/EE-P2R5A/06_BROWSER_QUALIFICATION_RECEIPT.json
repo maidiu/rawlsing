@@ -1,19 +1,26 @@
 {
   "schema": "EE_P2R5A_BROWSER_QUALIFICATION_RECEIPT@1.0.0",
-  "status": "PENDING__SEMANTIC_CANDIDATE_NOT_YET_QUALIFIED",
-  "semantic_candidate_sha": "PENDING_AFTER_RETURN_MATERIALIZATION",
-  "evidence_execution_sha": "PENDING",
+  "status": "PASS__GOVERNED_BROWSER_COURT_COMPLETE",
+  "semantic_candidate_sha": "41624fa0ba0a82d6456e090300f4330eea027b80",
+  "evidence_execution_sha": "50f9508eb300c574374d7cab273bdadab103e0e2",
   "governed_court": {
-    "run_id": null,
-    "job_id": null,
-    "conclusion": null,
-    "protocol_self_test_result": null,
-    "bounded_test_result": null,
-    "artifact_id": null,
-    "artifact_name": null,
-    "artifact_digest": null,
-    "compiler_identity": null,
-    "determinism_mode": "EXACT"
+    "workflow": "Rabochii Governed Bounded Court",
+    "run_id": 35386432386,
+    "job_id": 105734338374,
+    "conclusion": "success",
+    "protocol_self_test_result": "20 passed in 0.07s",
+    "bounded_test_result": "68 passed in 0.81s",
+    "artifact_id": 10563254872,
+    "artifact_name": "rabochii-court-receipt-35386432386",
+    "artifact_digest": "sha256:71c1d467498267e903bbd34460aef14a83fde633518fdddf333f15d2bedf73b1",
+    "compiler_identity": "python:3.12.14|pytest:9.1.1",
+    "determinism_mode": "EXACT",
+    "transient_pr": {
+      "number": 397,
+      "state": "closed",
+      "merged": false,
+      "base": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1"
+    }
   },
   "authority_candidate_hashes": {
     "release_realization_authority": "9da19997168612891f59012e69674bac59fbee417d9b30b003171f3074168bf5",
@@ -27,8 +34,11 @@
     "rawlsing_next/tests/test_pre553_empirical_query.py",
     "rawlsing_next/tests/test_pre553_empirical_objects_authority.py"
   ],
+  "qualification_holding": "PASS__AUTHORITY_CANDIDATE_IS_EXACT_DIRECTIONAL_NON_EQUIVALENT_AND_FAIL_CLOSED__NO_RUNTIME_RELEASE_OR_CONCRETE_BINDING_CREATED",
   "library_access": false,
   "carrier_access": false,
   "production_code_modified": false,
-  "real_i02_release_generated": false
+  "real_i02_release_generated": false,
+  "selector_reminting": false,
+  "successor_wake": "HQ_ADJUDICATE_RELEASE_REALIZATION_AUTHORITY_CANDIDATE_ONLY"
 }
