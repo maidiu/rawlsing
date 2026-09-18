@@ -1,0 +1,29 @@
+name: EE-P2R1 fresh-process verification
+
+on:
+  push:
+    branches:
+      - agent/rabochii-prev3-ee-p2r1-universal-carrier-i03-i05-binding-r1
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-runtime-catalog:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify exact WVS runtime catalog
+        run: |
+          python WORKER_RETURNS/EE-P2R1/01_verify_wvs7_runtime_catalog.py \
+            --write-receipt /tmp/EE_P2R1_WVS7_RUNTIME_CATALOG.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ee-p2r1-wvs7-runtime-catalog
+          path: /tmp/EE_P2R1_WVS7_RUNTIME_CATALOG.json
