@@ -1,0 +1,94 @@
+{
+  "schema": "EE_P2R4B_BASE_C11_I02_PRODUCER_AND_REPLAY_MAP@1.0.0",
+  "status": "PROVED__BASE_I02_LINEAGE_AND_REPLAY_IDENTITY",
+  "authority": {
+    "hq_checkpoint": "20260918T1447-0400",
+    "hq_handoff_commit": "980acec7e33fcff1a4280df7f7913a76a266f05c",
+    "as2b_source_certification_commit": "923f2c00b6145182a5e2be5038f579845951da19",
+    "as2b_hq_acceptance_commit": "276b9f33d74b2f68e5dc9e7c54caa6d861a07372"
+  },
+  "base_release": {
+    "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "governed_c11_projection_hash": "84361298ae702786a3fd1044bf619ffa4fe9ed2877040724386951e9c9d27872",
+    "c11_candidate_hash": "7f81a222ea2611638d7ce7ac55c695120b57323832e6dc17ff65c1992201659c",
+    "source_release_manifest_hash": "de8ca7761a05cbff544fb9b1d48aa1ebcd8ed9e3343b9c8552bf7fdfd13232cd",
+    "release_id": "LITS1-AS2B-C11-7cac43e2ca5b31cb-9dd1e6b7350ebb79",
+    "semantic_release_hash": "e6c954538fa1830820120465a10a6d065b8a18d1e6b7b08d3f863b0917741e26",
+    "replay_manifest_hash": "6bfe9862abd6f373309ff6f8868f8871948bb9ed397906d880cda6776941a1dd",
+    "repository_snapshot_hash": "ff8a49d2560fe3cf229f4d5a0f87a14c52d08086a74649968d8c9c9d0225aa77",
+    "record_counts": {
+      "respondent_identities": 29002,
+      "respondent_events": 58004,
+      "routing_eligibility_facts": 58004,
+      "empirical_coordinate_facts": 145010,
+      "weight_measure_facts": 0,
+      "authority_snapshots": 6,
+      "public_objects": 261025,
+      "internal_records": 29004
+    },
+    "m01_m18": "ALL_PRESENT_OR_EXPLICIT_TYPED_ABSENCE",
+    "clean_process_replay_count": 2
+  },
+  "producer": {
+    "driver_path": "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/AS2B_LITS1_MECHANICAL_SOURCE_CERTIFICATION_20260827/run_as2b_lits1_mechanical_certification.py",
+    "driver_git_blob_sha1": "c51b56779ab9d79126619b7733d41f5253c8150f",
+    "accepted_flow": [
+      "EXACT_SOURCE_SHA_CHECK",
+      "FROZEN_PHYSICAL_DECODER",
+      "GOVERNED_C11_PROJECTION",
+      "C11_SOURCE_RELEASE_CANDIDATE",
+      "validate_c11_source_release",
+      "C11Repository((release,))",
+      "resolve_release_exact"
+    ],
+    "historical_carrier_execution_performed": true,
+    "current_worker_carrier_access_performed": false
+  },
+  "accepted_i02_validation_path": {
+    "ingest_module_path": "rawlsing_next/pre553_c11_ingest.py",
+    "ingest_module_git_blob_sha1": "37cd35fa2e3420a3eea272a2902e96ab9ba38aba",
+    "repository_module_path": "rawlsing_next/pre553_c11_repository.py",
+    "repository_module_git_blob_sha1": "67c6eb6494522cd11aab1b93d0e73f9cef6036f3",
+    "required_candidate_sections": [
+      "SourceReleaseManifest",
+      "EmpiricalUniverse",
+      "RespondentIdentity",
+      "QuestionVariableBinding",
+      "RespondentEvent",
+      "RoutingEligibilityFact",
+      "EmpiricalCoordinateFact",
+      "WeightMeasureFact_OR_TYPED_ABSENCE",
+      "AuthoritySnapshot",
+      "SourceUniverseRelation_OR_DISTINCT_BY_DEFAULT",
+      "EmpiricalPredicateReplayBinding_OR_TYPED_ABSENCE",
+      "ComparatorReplayBinding_OR_DEFERRED",
+      "DiscoveryBranchReplayBinding_OR_DEFERRED",
+      "StructuralAdmissionReplayBinding_OR_NOT_APPLICABLE",
+      "ReplayManifest"
+    ],
+    "replay_law": "ReplayManifest.semantic_projection_hash == SHA256_CANONICAL(I02_CANDIDATE_PROJECTION_EXCLUDING_REPLAY_SELF_REFERENCE)",
+    "semantic_release_hash_law": "SHA256_CANONICAL({candidate_projection_hash,replay_manifest_ref,m01_m18})",
+    "creation_law": "C11LogicalRelease is constructible only with the private I02 validation seal emitted by validate_c11_source_release",
+    "repository_law": "EXACT_KEY_APPEND_ONLY__I02_VALIDATED_SEALED_RELEASES_ONLY"
+  },
+  "repository_reconstructibility": {
+    "reconstructible_without_carrier": [
+      "base release exact ref and semantic hash",
+      "source release manifest hash",
+      "ReplayManifest exact hash",
+      "repository snapshot hash",
+      "record counts",
+      "accepted producer code identity",
+      "accepted I02 identity and validation laws",
+      "source SHA-256 and governed projection/candidate identities"
+    ],
+    "not_proved_reconstructible_from_repository_authority_alone": [
+      "all 261025 base public-object canonical preimages",
+      "all 29004 base internal-record canonical preimages",
+      "the physical source rows/cells needed to replay AS2B from first principles"
+    ],
+    "consequence": "BASE_REPLAY_FROM_BYTES_WOULD_REQUIRE_THE_EXACT_SOURCE_CARRIER__BUT_R4B_DOES_NOT_NEED_OR_AUTHORIZE_THAT_REPLAY_TO_PROVE_THE_RELEASE_IDENTITY_CONTRADICTION"
+  },
+  "source_access": false,
+  "library_access": false
+}
