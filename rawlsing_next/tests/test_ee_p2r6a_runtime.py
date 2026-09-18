@@ -346,7 +346,7 @@ def test_adopted_child_dialect_executes_through_public_i03_runtime_entrypoint(au
         release_refs=(source["release_ref"],),
     )
     fact = result.facts[0]
-    assert fact.typed_state == "SUPPORTED"
+    assert fact.typed_state == "SUPPORTED", fact.execution_detail
     assert fact.raw_denominator_support == 1
     assert _cell_map(fact)["1"]["raw_numerator_support"] == 1
 
