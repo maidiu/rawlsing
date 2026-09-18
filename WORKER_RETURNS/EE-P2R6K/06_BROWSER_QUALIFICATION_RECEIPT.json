@@ -1,0 +1,124 @@
+{
+  "schema": "EE_P2R6K_BROWSER_QUALIFICATION_RECEIPT@1.0.0",
+  "status": "PASS",
+  "terminal": "EE_P2R6K_PASS__VALIDATED_C11_RELEASE_SNAPSHOT_PROTOCOL_AND_LOCAL_MATERIALIZER_READY__NO_SOURCE_ACCESSED__READY_FOR_EXACT_LOCAL_SNAPSHOT_MATERIALIZATION",
+  "authority": {
+    "hq_checkpoint": "20260918T1843-0400",
+    "hq_handoff_commit": "bebb67752546d1335d828021c61826d9de15093e",
+    "controlling_decisions": [
+      "HQD-2026-09-18-060",
+      "HQD-2026-09-18-061"
+    ],
+    "live_hq_rechecked_after_court": true,
+    "live_hq_unchanged": true
+  },
+  "semantic_candidate_sha": "407272e88f3fdcb0826c38d2ddc7b4f4ba906df4",
+  "evidence_execution_sha": "d1e198cb665fab31fbd7184a170f3f3c6dc2a31f",
+  "transient_pr": {
+    "number": 409,
+    "state": "CLOSED_UNMERGED",
+    "base_sha": "19b03e03907a97ee1926c72e5ab26ed535771cf3",
+    "synthetic_merge_sha": "a5a3952bb08366fdce2ff76d71fa2786b0f979e2"
+  },
+  "governed_court": {
+    "workflow_id": 350748047,
+    "run_id": 35403805647,
+    "job_id": 105789246533,
+    "conclusion": "success",
+    "protocol_self_test": {
+      "passed": 20,
+      "total": 20
+    },
+    "bounded_court": {
+      "passed": 6,
+      "total": 6
+    },
+    "python": "3.12.14",
+    "pytest": "9.1.1",
+    "artifact": {
+      "id": 10571690612,
+      "name": "rabochii-court-receipt-35403805647",
+      "size_bytes": 600,
+      "digest": "sha256:8551da4ac3f2a8eb1e3fe208d2c3f10b1ecf484ac58e9c6e5948bccefd4cf48c"
+    }
+  },
+  "superseded_harness_run": {
+    "run_id": 35403733526,
+    "job_id": 105789020534,
+    "disposition": "INFRA_ONLY__COURT_SPEC_PATH_REJECTED_BEFORE_BOUNDED_TEST_EXECUTION",
+    "protocol_self_test": {
+      "passed": 20,
+      "total": 20
+    },
+    "bounded_test_execution": false,
+    "reason": "court protocol requires rawlsing_next/tests/*.py; repaired with transient evidence-tree adapter removed from final tree"
+  },
+  "implementation_git_blobs": {
+    "snapshot_schema": "e81963d5e3015335b5db4dd13a340ddadb4e9f53",
+    "codec": "d4427366f15b98ab2acd40578f7ff59ee574b2d0",
+    "materializer": "3decd4055f97f6b55996417d5ad7b84f86c806e0",
+    "rehydrator": "02d731e43b30a85ba2df39dd5b62211c51352981",
+    "local_execution_packet": "89588a45a32b2201b8cf67eb4aa67bf98f04c2f6",
+    "browser_qualification_test": "d28f226f8e491e592d33fcb0ff56c325c3162dee"
+  },
+  "adopted_r5b_support_git_blobs": {
+    "driver": "b819fdff50470a71f1c570aa8021e28b361fa986",
+    "as2b": "c51b56779ab9d79126619b7733d41f5253c8150f",
+    "as2a_ledger": "c24e0d6acc6f2b823f0fc3fa5fb8a52b7c1cab0c",
+    "as2a_package": "174b931e8aa89111086e3d46159b47154bed7f16",
+    "f02": "7b45b277164fa90c3da739aab26b516f7a8cb8dc"
+  },
+  "qualified_contract": {
+    "reconstruction_path": [
+      "SERIALIZED_CANONICAL_CANDIDATE_BODIES",
+      "C11SourceReleaseCandidate",
+      "validate_c11_source_release",
+      "genuine sealed C11LogicalRelease",
+      "C11Repository",
+      "resolve_release_exact"
+    ],
+    "exact_identity_recomputation": true,
+    "public_validation_only": true,
+    "mutation_failure": true,
+    "omission_failure": true,
+    "typed_absence_change_failure": true,
+    "replay_body_change_failure": true,
+    "forbidden_private_authority_shortcuts_absent": true,
+    "deterministic_gzip_transport": true
+  },
+  "future_local_packet": {
+    "execution_surface": "LOCAL-MACHINE CODEX",
+    "maximum_intelligence": "LUNA",
+    "library_access": "EXACT_ONLY",
+    "source_name": "LITS-2006-data.dta",
+    "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "replay_count": "ONE",
+    "wake": "HQ_ADOPTION_OF_R6K_PASS_PLUS_EXPLICIT_LOCAL_RELEASE",
+    "transport": "ONE_CANONICAL_SNAPSHOT__DETERMINISTIC_GZIP__SINGLE_IF_LE_90_MIB_ELSE_48_MIB_FIXED_TRANSPORT_CHUNKS",
+    "materialized_now": false
+  },
+  "adopted_r6l_identities_preserved_as_local_stop_conditions": {
+    "release_id": "LITS1-I02-F02-SUCCESSOR-7cac43e2ca5b31cb-bf305bf3f169d669",
+    "semantic_release_hash": "192926fabd9c9c3d40e43b1d7705ca2bcfe7f8d06e286be26d4b886d436df43f",
+    "replay_manifest_hash": "30c168fbdf8425b23cbf2a2b2d2c9ab56f3438851f52e3562510089f1d381a08",
+    "candidate_projection_hash": "23912633a23318d22bad0da08027867031320331d8d436d944e9c0b21eb086eb",
+    "source_release_manifest_hash": "0546be4fa3f55239ee5d208234000066bdc84d832e89bc91d646ee623ed96714"
+  },
+  "banked_corrected_binding_preimage": {
+    "sha256": "a5f36a81843fe2ebab0b5cccb369ce76035f842b93e602613b8b9f3a81103308",
+    "recomputed": false,
+    "mutated": false,
+    "activated": false,
+    "adopted": false
+  },
+  "forbidden_work_confirmed_absent": {
+    "browser_source_or_carrier_access": false,
+    "library_access": false,
+    "a_b_qualification": false,
+    "be1": false,
+    "p2x": false,
+    "binding_activation_or_adoption": false,
+    "empirical_or_performance_measurement": false,
+    "main_or_semantic_pre_main_mutation": false
+  }
+}
