@@ -1,0 +1,90 @@
+{
+  "schema": "EE_P2R6B_POST_LOCAL_INPUT_CONTRACT@1.0.0",
+  "status": "PREPARED__NO_LOCAL_SUCCESSOR_RELEASE_RECEIPT_CONSUMED_IN_THIS_COMMISSION",
+  "purpose": "MECHANICAL_POST_R6L_CONCRETE_RELEASE_REALIZATION_BINDING_CANDIDATE_ISSUANCE",
+  "exact_r5b_package": {
+    "return_head": "648a39ad5bed42f66e066410af5869604d29c12d",
+    "receipt_schema_path": "WORKER_RETURNS/EE-P2R5B/04_SUCCESSOR_RELEASE_RECEIPT_SCHEMA.json",
+    "receipt_schema_git_blob_sha1": "d76e0475258ca8a37958fadc956356dc68749e08",
+    "verifier_path_vendored": "WORKER_RETURNS/EE-P2R6B/SUPPORT/R5B/05_SUCCESSOR_RELEASE_VERIFIER.py",
+    "verifier_git_blob_sha1": "348c533a3dff477c3ea0c2f19b41a4e131ef3d3f",
+    "local_execution_packet_path": "WORKER_RETURNS/EE-P2R5B/06_LOCAL_EXECUTION_PACKET.json"
+  },
+  "required_local_files": {
+    "receipt": "successor_release_receipt.json",
+    "replay_manifest": "successor_release_replay_manifest.json",
+    "m01_m18": "successor_release_m01_m18.json",
+    "extension_scan": "successor_release_extension_scan.json"
+  },
+  "authority_material_contract": {
+    "schema": "EE_P2R6B_ADOPTED_R5A_AUTHORITY_MATERIAL@1.0.0",
+    "status": "ADOPTED_R5A_AUTHORITY_MATERIAL__PRE_BINDING",
+    "authority_epoch_id": "30815cfb20f4f66140cee8f6a2b5e5cafd5e20fb4d1b0c607bad1e3699fae2ff",
+    "sealed_hq_checkpoint": "20260918T1553-0400",
+    "sealed_hq_handoff": "9cbd963ef4d1f2243543df4ec61d80368364c449",
+    "exact_required_adopted_identities": {
+      "release_realization_authority": "9da19997168612891f59012e69674bac59fbee417d9b30b003171f3074168bf5",
+      "binding_schema": "a1da1ea78dce423ea3520726d0477b058057482d67964056743e08389d9045a0",
+      "r4a_successor_clause": "d8e3d9a19fa36599e8cd6b1bc8e82092c425fd9119be478f7ba79335d05a1b3e",
+      "r5a_aggregate": "d9aa476c493810651baefa8bad23990d9dd80812a48670ad2052353f0e7d52a2",
+      "r4a_aggregate": "b87c387f9d222c83106c8d47d369af44f5c5368b274fd85e7a08b12c20d49cae"
+    },
+    "frozen_lineage": {
+      "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+      "frozen_scope_anchor": "bf305bf3f169d66954be4f39cc602880fddea6083b5bee9c0212938355cd5297",
+      "accepted_base_i02_release": "e6c954538fa1830820120465a10a6d065b8a18d1e6b7b08d3f863b0917741e26",
+      "accepted_base_replay_manifest": "6bfe9862abd6f373309ff6f8868f8871948bb9ed397906d880cda6776941a1dd"
+    },
+    "active_binding_inventory": {
+      "schema": "EE_P2R6B_ACTIVE_BINDING_INVENTORY@1.0.0",
+      "must_be_sourced_from": [
+        "HQAdoptedBindingRegistrySnapshot",
+        "RepositoryBindingRegistrySnapshot"
+      ],
+      "resolution_mode": "EXACT_SCOPE_SOURCE_AUTHORITY_EPOCH",
+      "uniqueness_key_law": "SHA256_CANONICAL({frozen_scope_anchor_hash,source_sha256,authority_epoch_id})",
+      "required_active_positive_binding_count": 0,
+      "inventory_material_hash_required": true,
+      "note": "The issuer does not infer global absence. The future HQ/repository act must supply an exact content-addressed registry snapshot proving zero active positive bindings in this epoch."
+    },
+    "issuance_guard_required_exact": {
+      "measured_outcomes_observed": false,
+      "p2x_executed": false,
+      "post_outcome_mutation": false,
+      "runtime_release_hash_predeclared": false
+    }
+  },
+  "runtime_release_identity_law": {
+    "caller_supplied_runtime_hash": "FORBIDDEN",
+    "only_source": "accepted_i02_successor.release_ref FROM RECEIPT THAT PASSES EXACT_R5B_VERIFIER",
+    "must_be_kind": "C11LogicalRelease",
+    "must_be_distinct_from_frozen_f02_anchor": true
+  },
+  "commands_after_exact_local_success": {
+    "issue": "python WORKER_RETURNS/EE-P2R6B/02_REALIZATION_BINDING_ISSUER.py --receipt <DIR>/successor_release_receipt.json --replay-manifest <DIR>/successor_release_replay_manifest.json --m01-m18 <DIR>/successor_release_m01_m18.json --extension-scan <DIR>/successor_release_extension_scan.json --authority-material <EXACT_ADOPTED_R5A_AUTHORITY_MATERIAL.json> --output <DIR>/release_realization_binding_candidate.json",
+    "verify": "python WORKER_RETURNS/EE-P2R6B/03_REALIZATION_BINDING_VERIFIER.py --candidate <DIR>/release_realization_binding_candidate.json --receipt <DIR>/successor_release_receipt.json --replay-manifest <DIR>/successor_release_replay_manifest.json --m01-m18 <DIR>/successor_release_m01_m18.json --extension-scan <DIR>/successor_release_extension_scan.json --authority-material <EXACT_ADOPTED_R5A_AUTHORITY_MATERIAL.json>"
+  },
+  "successful_post_local_output": {
+    "schema": "EE_P2R6B_RELEASE_REALIZATION_BINDING_CANDIDATE@1.0.0",
+    "status": "CANDIDATE__HQ_ADOPTION_REQUIRED__NOT_ACTIVE_UNTIL_ADOPTED",
+    "active_authority_created_by_script": false,
+    "next_actor": "HQ"
+  },
+  "fail_stop_conditions": [
+    "R5B_VERIFIER_NONZERO_OR_NONPASS",
+    "ANY_INPUT_HASH_OR_IDENTITY_MISMATCH",
+    "RUNTIME_RELEASE_NOT_ACCEPTED_I02",
+    "RUNTIME_RELEASE_EQUALS_FROZEN_ANCHOR",
+    "REPLAY_OR_M01_M18_NOT_CLOSED",
+    "C11_REPOSITORY_EXACT_RESOLUTION_NOT_PASS",
+    "F02_REQUIRED_MEMBER_OR_SELECTOR_IDENTITY_CHANGED",
+    "UNEXPECTED_EXTENSION_FIELD_OR_MEMBER",
+    "ACTIVE_BINDING_INVENTORY_NOT_EXACTLY_ZERO",
+    "WRONG_AUTHORITY_EPOCH_OR_R4A_R5A_IDENTITY",
+    "POST_OUTCOME_OR_P2X_STATE"
+  ],
+  "semantic_research_remaining_after_r6l_pass": false,
+  "carrier_access_needed_by_post_local_issuer": false,
+  "empirical_reexecution_needed_by_post_local_issuer": false,
+  "actual_binding_issued_by_this_r6b_commission": false
+}

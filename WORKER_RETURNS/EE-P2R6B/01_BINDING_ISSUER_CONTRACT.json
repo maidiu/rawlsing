@@ -1,0 +1,113 @@
+{
+  "schema": "EE_P2R6B_BINDING_ISSUER_CONTRACT@1.0.0",
+  "status": "PREPARED__GOVERNED_BROWSER_QUALIFICATION_PENDING",
+  "grain": "R5A_CONCRETE_REALIZATION_BINDING_ISSUER_AND_VERIFIER_PREPARATION_ONLY",
+  "execution_surface": "BROWSER",
+  "library_access": "NO",
+  "sealed_hq": {
+    "checkpoint_id": "20260918T1553-0400",
+    "handoff_commit": "9cbd963ef4d1f2243543df4ec61d80368364c449",
+    "decisions": [
+      "HQD-2026-09-18-046",
+      "HQD-2026-09-18-047"
+    ]
+  },
+  "adopted_r5a": {
+    "return_head": "6586da01edac5e87fb81b6beb8d7b16fc0ea18ef",
+    "realization_authority_hash": "9da19997168612891f59012e69674bac59fbee417d9b30b003171f3074168bf5",
+    "binding_schema_hash": "a1da1ea78dce423ea3520726d0477b058057482d67964056743e08389d9045a0",
+    "r4a_successor_clause_hash": "d8e3d9a19fa36599e8cd6b1bc8e82092c425fd9119be478f7ba79335d05a1b3e",
+    "r5a_aggregate_hash": "d9aa476c493810651baefa8bad23990d9dd80812a48670ad2052353f0e7d52a2",
+    "authority_epoch_id": "30815cfb20f4f66140cee8f6a2b5e5cafd5e20fb4d1b0c607bad1e3699fae2ff"
+  },
+  "frozen_lineage": {
+    "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "frozen_f02_scope_anchor": "bf305bf3f169d66954be4f39cc602880fddea6083b5bee9c0212938355cd5297",
+    "accepted_base_i02_release": "e6c954538fa1830820120465a10a6d065b8a18d1e6b7b08d3f863b0917741e26",
+    "accepted_base_replay_manifest": "6bfe9862abd6f373309ff6f8868f8871948bb9ed397906d880cda6776941a1dd"
+  },
+  "controlling_r5b": {
+    "return_head": "648a39ad5bed42f66e066410af5869604d29c12d",
+    "receipt_schema_git_blob_sha1": "d76e0475258ca8a37958fadc956356dc68749e08",
+    "verifier_git_blob_sha1": "348c533a3dff477c3ea0c2f19b41a4e131ef3d3f",
+    "vendored_verifier_path": "WORKER_RETURNS/EE-P2R6B/SUPPORT/R5B/05_SUCCESSOR_RELEASE_VERIFIER.py",
+    "rule": "ISSUER_ACCEPTS_ONLY_RECEIPTS_THAT_PASS_EXACT_VENDORED_R5B_VERIFIER"
+  },
+  "inputs": [
+    "successor_release_receipt.json",
+    "successor_release_replay_manifest.json",
+    "successor_release_m01_m18.json",
+    "successor_release_extension_scan.json",
+    "exact_adopted_r5a_authority_material.json"
+  ],
+  "issuance_proofs": [
+    "EXACT_R5B_VERIFIER_PASS",
+    "EXACT_SOURCE_SHA",
+    "EXACT_FROZEN_F02_SCOPE_ANCHOR",
+    "EXACT_ACCEPTED_BASE_RELEASE_AND_REPLAY_LINEAGE",
+    "EXACT_SIX_F02_SELECTOR_REFS",
+    "EXACT_Q310_Q311_MEMBER_REFS",
+    "ACCEPTED_I02_INGEST_DISPOSITION",
+    "RUNTIME_RELEASE_REF_FROM_R5B_RECEIPT_ONLY",
+    "RUNTIME_RELEASE_DISTINCT_FROM_FROZEN_SCOPE_ANCHOR",
+    "EXACT_REPLAY_MANIFEST_CONTENT_ADDRESS_AND_CANDIDATE_CLOSURE",
+    "COMPLETE_M01_M18",
+    "EXACT_C11REPOSITORY_RESOLUTION",
+    "R5B_NO_REALIZATION_EQUALITY_OR_ALIAS_CLAIM",
+    "NO_UNEXPECTED_EXTENSION_FIELDS_OR_MEMBER_IDENTITY_CHANGE",
+    "EXACT_R4A_R5A_AUTHORITY_CLOSURE",
+    "EXACTLY_ZERO_PREEXISTING_ACTIVE_BINDINGS_IN_EXACT_AUTHORITY_EPOCH",
+    "PRE_OUTCOME_NO_P2X_NO_POST_OUTCOME_MUTATION"
+  ],
+  "binding_law": {
+    "direction": "FROZEN_F02_SCOPE_ANCHOR_TO_ACCEPTED_PUBLIC_I02_RUNTIME_RELEASE",
+    "semantics": "REALIZATION__NOT_IDENTITY_EQUALITY_ALIAS_OR_BIDIRECTIONAL_SUCCESSION",
+    "activation": "HQ_ADOPTION_REQUIRED__ISSUER_OUTPUT_ALONE_IS_NOT_ACTIVE_AUTHORITY",
+    "content_address": "SHA256_CANONICAL(identity_material)",
+    "runtime_release_hash_predeclared": false
+  },
+  "uniqueness_law": {
+    "key_fields": [
+      "frozen_scope_anchor_hash",
+      "source_sha256",
+      "authority_epoch_id"
+    ],
+    "pre_issuance_required_count": 0,
+    "resolution_mode": "EXACT_SCOPE_SOURCE_AUTHORITY_EPOCH",
+    "forbidden_resolution": [
+      "latest",
+      "default",
+      "fuzzy",
+      "nearest"
+    ],
+    "reject_multiple_active_positive_bindings": true,
+    "reject_same_anchor_different_active_runtime_release": true
+  },
+  "fail_closed_rejections": [
+    "MISSING_PROOF_CLOSURE",
+    "MULTIPLE_ACTIVE_POSITIVE_BINDINGS",
+    "SAME_ANCHOR_DIFFERENT_ACTIVE_RUNTIME_RELEASE",
+    "RUNTIME_RELEASE_EQUALS_FROZEN_ANCHOR",
+    "UNVERIFIED_OR_NON_I02_RUNTIME_RELEASE",
+    "LATEST_DEFAULT_FUZZY_NEAREST_RESOLUTION",
+    "CROSS_SOURCE_REALIZATION",
+    "MISSING_F02_REQUIRED_MEMBER",
+    "CHANGED_SELECTOR_IDENTITY",
+    "UNEXPECTED_SEMANTIC_EXTENSION",
+    "POST_OUTCOME_MUTATION",
+    "WRONG_R4A_OR_R5A_AUTHORITY_IDENTITY"
+  ],
+  "browser_fixture_law": {
+    "marker": "NONEMPIRICAL__NONBINDING__STRUCTURAL_FIXTURE",
+    "production_binding_schema_forbidden": true,
+    "actual_runtime_release_ref_forbidden": true,
+    "actual_binding_emission_forbidden": true
+  },
+  "prepared_artifacts": {
+    "issuer_path": "WORKER_RETURNS/EE-P2R6B/02_REALIZATION_BINDING_ISSUER.py",
+    "issuer_git_blob_sha1": "3a8880218451754e09eaa8dfc2edcd8f5a005308",
+    "verifier_path": "WORKER_RETURNS/EE-P2R6B/03_REALIZATION_BINDING_VERIFIER.py",
+    "verifier_git_blob_sha1": "24b2630d1c6b2a4923afc06dc199b78aff150426"
+  },
+  "successor_wake": "HQ_ADJUDICATE_BINDING_ISSUER_PREPARATION_ONLY"
+}
