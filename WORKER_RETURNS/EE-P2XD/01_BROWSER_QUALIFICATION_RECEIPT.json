@@ -1,0 +1,108 @@
+{
+  "schema": "RAWLSING_EE_P2XD_BROWSER_QUALIFICATION_RECEIPT@1.0.0",
+  "status": "PASS__DETERMINISTIC_DARWIN_DRIVER_BROWSER_QUALIFIED__NO_EMPIRICAL_MEASUREMENT",
+  "commission": {
+    "branch": "agent/rabochii-prev3-ee-p2xd-darwin-mechanical-court-driver-preparation-r1",
+    "base": "a954e2d6676843da8427ef2439b5d1ef33478359",
+    "commission_tip": "8f2b5fec8808824a43e119789adecb4dc4bba127",
+    "path": "WORKER_COMMISSIONS/EE-P2XD/00_COMMISSION.md"
+  },
+  "hq_authority": {
+    "checkpoint": "20260918T0317-0400",
+    "immutable_handoff": "ac722a9952b792e0fd43b5fbf28ca98b6d0c1e87",
+    "decision": "HQD-2026-09-18-036"
+  },
+  "continuation_map": {
+    "schema": "RAWLSING_EE_P2X_CONTINUATION_STATE_MACHINE@1.0.0",
+    "return_head": "eb7595f1030d1861c262dbdb6bb4d7c12d1abd43",
+    "path": "WORKER_RETURNS/EE-P2X-CONTINUATION-REDUCER-R1/01_CONTINUATION_STATE_MACHINE.json",
+    "git_blob_sha1": "e06e95dd370a4fd44235932088308c3372522ed4",
+    "sha256": "ffe7d40e5f2051f839a3a646fd434fbee3b93371e7571d959805ca7ca74e0422"
+  },
+  "implementation": {
+    "semantic_candidate_sha": "d69ebc3767461b110721d6acfcf3b9b373c92bab",
+    "evidence_execution_sha": "10d9920d7ec69d86231acb02a4391155b1da288e",
+    "driver_path": "rawlsing_next/ee_p2x_darwin_court_driver.py",
+    "driver_git_blob_sha1": "c3a368270f6f7a6f613efb78e31972e64a092c88",
+    "hostile_test_path": "tests/test_ee_p2x_darwin_court_driver.py",
+    "hostile_test_git_blob_sha1": "53ab07f00f23b6d5d8d8b67d8974de7bebc61488",
+    "governed_bridge_path": "rawlsing_next/tests/test_ee_p2xd_governed_browser_court.py",
+    "governed_bridge_git_blob_sha1": "b05e70bce390b5b7e819f3334d4948e8106a629a",
+    "court_spec_path": ".rabochii/court_spec.json",
+    "court_spec_git_blob_sha1": "35eebd77790e278a502f994884cdc16e9f8f0a4a"
+  },
+  "p2r1": {
+    "adopted_pass": "9511f44728a8469d685463ec0fc880864c9187de",
+    "seam_path": "rawlsing_next/pre553_carrier_execution.py",
+    "seam_git_blob_sha1": "e7cda773e6a2426bfa12b22790fd8e005fe75153",
+    "accepted_owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6"
+  },
+  "governed_court": {
+    "pr_number": 387,
+    "pr_merged": false,
+    "pr_closed_after_qualification": true,
+    "workflow": "Rabochii Governed Bounded Court",
+    "workflow_run_id": 35321826151,
+    "workflow_run_number": 474,
+    "job_id": 105525800028,
+    "conclusion": "success",
+    "protocol_self_tests": "20/20 PASS",
+    "commissioned_hostile_tests": "19/19 PASS",
+    "governed_outer_court": "1/1 PASS",
+    "receipt": {
+      "schema_id": "RABOCHII_BOUNDED_COURT_RECEIPT@1.0.0",
+      "result": "PASS",
+      "exit_code": 0,
+      "semantic_candidate_sha": "d69ebc3767461b110721d6acfcf3b9b373c92bab",
+      "evidence_execution_sha": "10d9920d7ec69d86231acb02a4391155b1da288e",
+      "pr_synthetic_merge_sha": "fe944ee37f0511d551e875eb7b7143b7f1c8af55",
+      "python": "3.12.14",
+      "implementation": "CPython",
+      "determinism_mode": "EXACT",
+      "spec_sha256": "6c7d294bb5f464db1342424c20b78aabe88936358ca81891d695c4f937c67bb4",
+      "elapsed_seconds": 1.171504
+    },
+    "artifact": {
+      "id": 10537033071,
+      "name": "rabochii-court-receipt-35321826151",
+      "zip_sha256": "f8573fa73c1a656e5e0f04aec5416d4dffe07bfba3048e6732253f6597e67e57"
+    }
+  },
+  "qualified_laws": [
+    "EXACT_REDUCER_MAP_IDENTITY_REQUIRED",
+    "DARWIN_X86_64_CPYTHON_3_11_3_PYREADSTAT_1_3_6_PYARROW_25_0_1_GATE",
+    "R8B_DARWIN_RU_MAXRSS_ALREADY_BYTES",
+    "SOURCE_ORDER_LITS_I_THEN_WVS7",
+    "CANDIDATE_ORDER_A_THEN_B_THEN_C",
+    "SOURCE_SHA_VERIFIED_IMMEDIATELY_BEFORE_FRESH_SOURCE_USE",
+    "DONE_PRESERVE_AND_FROZEN_SKIP_ARE_NON_EXECUTABLE",
+    "LITS_A_FIRST_BUILD_AND_LITS_B_STANDALONE_C11_ARE_NON_REPEATABLE",
+    "WVS_C_PORTABILITY_FAILURE_HAS_NO_EXECUTABLE_FALLBACK",
+    "CANDIDATE_LOCAL_AND_COMMON_BLOCKER_SCOPE_IS_EXPLICIT",
+    "ATOMIC_LEDGER_RESUME_REVALIDATES_TERMINAL_RECEIPTS_AND_OUTPUT_HASHES",
+    "EXACT_A_B_C_OWNER_BLOBS_DEPLOY_MECHANICALLY_FROM_ACCEPTED_OWNER_COMMIT",
+    "P2R1_RUNTIME_CATALOG_PROJECTION_REPOSITORY_BUILDER_COMPOSITION_EXPOSED",
+    "S17_FINAL_COMPLETENESS_IS_EXPLICIT_FINAL_BACKEND_GATE",
+    "NO_AUTOMATIC_GIT_COMMIT_PUSH_PROTOCOL_IN_DRIVER"
+  ],
+  "scope_audit": {
+    "library_access": false,
+    "empirical_carrier_access": false,
+    "source_bytes_opened": false,
+    "measured_p2x_execution": false,
+    "benchmark_performed": false,
+    "surrogate_performance_generated": false,
+    "fake_measurements_generated": false,
+    "lock1_mutated": false,
+    "lock2_mutated": false,
+    "candidate_or_workload_redesigned": false,
+    "wvs_accelerator_created": false,
+    "third_cacc_created": false,
+    "p2x_branch_moved": false,
+    "main_mutated": false,
+    "semantic_pre_main_mutated": false,
+    "rebase": false,
+    "replacement_branch": false
+  },
+  "terminal": "EE_P2X_DARWIN_MECHANICAL_COURT_DRIVER_READY__NO_EMPIRICAL_MEASUREMENT_PERFORMED"
+}
