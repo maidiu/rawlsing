@@ -15,8 +15,8 @@ caller must fail closed or obtain it from governed authority lineage.
 """
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Any, Iterable, Mapping
+from dataclasses import dataclass, fields as dataclass_fields
+from typing import Any, Callable, Iterable, Mapping
 
 from rawlsing_next._pre553_query_common import (
     QUERY_EXECUTION_CONTRACT_ID,
@@ -35,6 +35,7 @@ from rawlsing_next.pre553_empirical_authority import (
 from rawlsing_next.pre553_empirical_objects import (
     AuthoritySnapshot,
     CanonicalSemanticObject,
+    canonicalize,
     DiscoveryAuthority,
     DiscoveryResultReceipt,
     EmpiricalCoordinateFact,
@@ -54,6 +55,7 @@ from rawlsing_next.pre553_empirical_objects import (
     semantic_hash,
 )
 from rawlsing_next.pre553_empirical_query import execute_empirical_query
+from rawlsing_next.pre553_source_backed_c11_facade import GovernedC11Projection
 
 
 CARRIER_EXECUTION_CONTRACT_ID = (
@@ -158,6 +160,123 @@ def _canonical_objects(
         by_key[obj.ref.key] = obj
     return tuple(by_key[key] for key in sorted(by_key))
 
+
+def bind_governed_c11_projection(
+    projection_fields: Mapping[str, Any],
+) -> GovernedC11Projection:
+    """Bind one exact governed projection from already-authorized inputs.
+
+    Every GovernedC11Projection field, including fields with constructor
+    defaults, must be supplied explicitly. This function performs no source-
+    family lookup, label interpretation, value inspection, or defaulting.
+    """
+    if not isinstance(projection_fields, Mapping):
+        raise CarrierExecutionBindingError("projection_fields must be an exact mapping")
+    required = tuple(field.name for field in dataclass_fields(GovernedC11Projection))
+    supplied = tuple(projection_fields.keys())
+    if set(supplied) != set(required) or len(supplied) != len(required):
+        missing = sorted(set(required) - set(supplied))
+        extra = sorted(set(supplied) - set(required))
+        raise CarrierExecutionBindingError(
+            f"projection binding must be complete and exact: missing={missing!r} extra={extra!r}"
+        )
+    try:
+        return GovernedC11Projection(**{name: projection_fields[name] for name in required})
+    except Exception as exc:
+        raise CarrierExecutionBindingError(
+            f"governed projection binding rejected by existing contract: {exc}"
+        ) from exc
+
+
+def governed_projection_binding_receipt(
+    projection: GovernedC11Projection,
+) -> Mapping[str, Any]:
+    if not isinstance(projection, GovernedC11Projection):
+        raise CarrierExecutionBindingError("GovernedC11Projection required")
+    material = {
+        "schema": "PRE553_GOVERNED_C11_PROJECTION_BINDING_RECEIPT@1.0.0",
+        "contract": CARRIER_EXECUTION_CONTRACT_ID,
+        "projection_identity_ref": projection.projection_identity_ref.as_dict(),
+        "projection_cache_identity": projection.cache_identity,
+        "source_sha256": projection.expected_source_sha256,
+        "source_family_id": projection.source_family_id,
+        "study_product_id": projection.study_product_id,
+        "release_id": projection.release_id,
+        "instrument_release_id": projection.instrument_release_id,
+        "universe_count": len(projection.universes),
+        "respondent_count": len(projection.respondents),
+        "row_binding_count": len(projection.row_bindings),
+        "question_binding_count": len(projection.questions),
+        "response_slot_count": len(projection.response_slots),
+        "coordinate_slot_count": len(projection.coordinate_slots),
+        "weight_slot_count": len(projection.weight_slots),
+        "routing_fact_count": len(projection.routing),
+        "authority_snapshot_count": len(projection.authority_snapshots),
+        "slot_owner_set_count": len(projection.slot_owner_sets),
+        "semantic_inference_performed": False,
+    }
+    return {**material, "binding_identity": semantic_hash(material)}
+
+
+@dataclass(frozen=True)
+class RepositoryBuilderBinding:
+    """Candidate-neutral composition of an exact repository builder and runner."""
+
+    executor: "CarrierNeutralResearchExecutor"
+    builder_identity: Mapping[str, Any]
+    release_ref: ExactRef
+
+    def receipt(self) -> Mapping[str, Any]:
+        material = {
+            "schema": "PRE553_REPOSITORY_BUILDER_EXECUTION_BINDING@1.0.0",
+            "contract": CARRIER_EXECUTION_CONTRACT_ID,
+            "builder_identity": canonicalize(self.builder_identity),
+            "release_ref": self.release_ref.as_dict(),
+            "executor_binding": self.executor.binding_receipt(),
+            "candidate_semantic_branching": False,
+        }
+        return {**material, "binding_identity": semantic_hash(material)}
+
+
+def bind_repository_builder(
+    *,
+    repository_builder: Callable[..., Any],
+    builder_kwargs: Mapping[str, Any],
+    builder_identity: Mapping[str, Any],
+    runtime_catalog: "RuntimeObjectCatalog",
+) -> RepositoryBuilderBinding:
+    """Run accepted physical/C11 owner code and attach the common I03/I05 runner."""
+    if not callable(repository_builder):
+        raise CarrierExecutionBindingError("repository_builder must be callable")
+    if not isinstance(builder_kwargs, Mapping) or not isinstance(builder_identity, Mapping):
+        raise CarrierExecutionBindingError("builder kwargs/identity must be mappings")
+    built = repository_builder(**dict(builder_kwargs))
+    if not isinstance(built, tuple) or len(built) < 2:
+        raise CarrierExecutionBindingError(
+            "repository builder must return (C11Repository, release, ...)"
+        )
+    repository, release = built[0], built[1]
+    if not isinstance(repository, C11Repository):
+        raise CarrierExecutionBindingError("repository builder returned non-C11 repository")
+    release_ref = getattr(release, "release_ref", None)
+    if not isinstance(release_ref, ExactRef):
+        raise CarrierExecutionBindingError("repository builder release lacks exact release_ref")
+    try:
+        repository.resolve_release_exact(release_ref)
+    except KeyError as exc:
+        raise CarrierExecutionBindingError(
+            "repository builder returned release absent from returned repository"
+        ) from exc
+    executor = CarrierNeutralResearchExecutor(
+        repository=repository,
+        release_refs=(release_ref,),
+        runtime_catalog=runtime_catalog,
+    )
+    return RepositoryBuilderBinding(
+        executor=executor,
+        builder_identity=canonicalize(builder_identity),
+        release_ref=release_ref,
+    )
 
 @dataclass(frozen=True)
 class RuntimeObjectCatalog:
@@ -395,6 +514,10 @@ __all__ = [
     "CarrierExecutionBindingError",
     "RuntimeObjectCatalog",
     "CarrierNeutralResearchExecutor",
+    "RepositoryBuilderBinding",
     "materialize_public_object",
+    "bind_governed_c11_projection",
+    "governed_projection_binding_receipt",
+    "bind_repository_builder",
     "learned_empirical_execution_receipt",
 ]
