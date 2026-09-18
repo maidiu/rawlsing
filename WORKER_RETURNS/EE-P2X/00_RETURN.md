@@ -1,6 +1,6 @@
 # EE-P2X — governed execution return
 
-Status: `IN_PROGRESS__LITS_I_A_B_TERMINAL_BINDING_BLOCKERS_RECORDED__CONTINUING_LITS_I_C`
+Status: `IN_PROGRESS__LITS_I_ALL_CANDIDATE_TERMINAL_STATES_RECORDED__CONTINUING_WVS7_A`
 
 The final-P2 sealed checkpoint `20260917T1941-0400` and Lock2
 `8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188`
@@ -31,3 +31,12 @@ cannot materialize the sealed runtime predicate/query preimages, and D04-R2
 does not provide a callable C11-to-77-role I05 binding.  No replacement
 executor, historic-product substitution, or lifecycle/performance claim was
 made.  Candidate C remains next in the required LiTS-I order.
+
+LiTS-I Candidate C is terminally blocked before accelerator materialization.
+Its frozen owner requires exact RouteC/Cacc2 determinant objects and nineteen
+real atom bindings; the accepted lineage has only fixture determinants and the
+R10L runtime binding remains explicitly partial.  It also does not expose a
+carrier-neutral binding to the final D04 50-candidate/77-role workload.
+`05_LITS_I_C_TERMINAL_BINDING_BLOCKER.json` records this exact boundary.  No
+LiTS-I C accelerator, source execution, performance, or deletion claim was
+invented.  The required source order now advances to WVS7 Candidate A.
