@@ -206,15 +206,22 @@ class RuntimeObjectCatalog:
         discoveries = tuple(
             materialize_public_object(x) for x in discovery_authority_documents
         )
+        expected = (
+            ("authority_documents", authorities, AuthoritySnapshot),
+            ("predicate_documents", predicates, EmpiricalPredicate),
+            ("query_documents", queries, EmpiricalQuerySpec),
+            ("discovery_authority_documents", discoveries, DiscoveryAuthority),
+        )
+        for label, objects, expected_type in expected:
+            if any(not isinstance(obj, expected_type) for obj in objects):
+                raise CarrierExecutionBindingError(
+                    f"{label} contains a canonical object of the wrong exact family"
+                )
         return cls(
-            authorities=tuple(
-                x for x in authorities if isinstance(x, AuthoritySnapshot)
-            ),
-            predicates=tuple(x for x in predicates if isinstance(x, EmpiricalPredicate)),
-            queries=tuple(x for x in queries if isinstance(x, EmpiricalQuerySpec)),
-            discovery_authorities=tuple(
-                x for x in discoveries if isinstance(x, DiscoveryAuthority)
-            ),
+            authorities=authorities,
+            predicates=predicates,
+            queries=queries,
+            discovery_authorities=discoveries,
         )
 
     @property
