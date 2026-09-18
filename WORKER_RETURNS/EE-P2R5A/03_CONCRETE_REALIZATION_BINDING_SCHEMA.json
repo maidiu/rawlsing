@@ -1,0 +1,153 @@
+{
+  "schema": "EE_P2R5A_CONCRETE_REALIZATION_BINDING_SCHEMA@1.0.0",
+  "status": "SCHEMA_ONLY__NO_CONCRETE_BINDING_EXISTS__NO_RUNTIME_RELEASE_HASH_PREDECLARED",
+  "schema_ref": {
+    "kind": "ReleaseRealizationBindingSchema@1.0.0",
+    "object_id": "urn:rawlsing:prev3:p2r5a:release-realization-binding-schema:sha256:a1da1ea78dce423ea3520726d0477b058057482d67964056743e08389d9045a0",
+    "content_hash": "a1da1ea78dce423ea3520726d0477b058057482d67964056743e08389d9045a0"
+  },
+  "identity_law": "SHA256_CANONICAL(identity_material)",
+  "identity_material": {
+    "schema_id": "RELEASE_REALIZATION_BINDING@1.0.0",
+    "relation_authority_candidate_hash": "9da19997168612891f59012e69674bac59fbee417d9b30b003171f3074168bf5",
+    "frozen_scope_anchor": {
+      "kind": "C11LogicalRelease",
+      "object_id": "LITS1-F02-C11-7cac43e2ca5b31cb-bf305bf3f169d669",
+      "content_hash": "bf305bf3f169d66954be4f39cc602880fddea6083b5bee9c0212938355cd5297"
+    },
+    "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "accepted_base_i02_release": {
+      "kind": "C11LogicalRelease",
+      "object_id": "LITS1-AS2B-C11-7cac43e2ca5b31cb-9dd1e6b7350ebb79",
+      "content_hash": "e6c954538fa1830820120465a10a6d065b8a18d1e6b7b08d3f863b0917741e26"
+    },
+    "runtime_release_identity": "MINTED_BY_ACCEPTED_I02__NOT_PREDECLARED",
+    "binding_identity_law": "SHA256_CANONICAL(BINDING_IDENTITY_MATERIAL)",
+    "active_scope_uniqueness": "EXACTLY_ONE_OR_ZERO__ZERO_MEANS_FAIL_CLOSED",
+    "required_proof_families": [
+      "EXACT_SOURCE_SHA",
+      "EXACT_ACCEPTED_BASE_RELEASE_LINEAGE",
+      "EXACT_Q310_Q311_EXTENSION_REFS",
+      "EXACT_F02_SOURCE_SEMANTICS_ROUTING_GRAMMAR_REPLAY_AUTHORITIES_AND_SNAPSHOTS",
+      "EXACT_R4A_RESPONDENT_AND_MIXED_COMPOSITION_AUTHORITIES",
+      "ACCEPTED_I02_VALIDATION_AND_DETERMINISTIC_RELEASE_MINT",
+      "EXACT_I02_REPLAY_MANIFEST_AND_COMPLETE_M01_M18",
+      "EXACT_C11REPOSITORY_RESOLUTION",
+      "NO_MISSING_REQUIRED_F02_MEMBER",
+      "NO_ADDITIONAL_MEMBER_CHANGING_SELECTOR_TRUTH_CONDITIONS",
+      "DETERMINISTIC_CANDIDATE_REPLAY_AND_BINDING_IDENTITY"
+    ]
+  },
+  "future_binding_required_fields": {
+    "relation_authority_ref": "EXACT_ADOPTED_REF_REQUIRED",
+    "frozen_scope_anchor_ref": {
+      "kind": "C11LogicalRelease",
+      "object_id": "LITS1-F02-C11-7cac43e2ca5b31cb-bf305bf3f169d669",
+      "content_hash": "bf305bf3f169d66954be4f39cc602880fddea6083b5bee9c0212938355cd5297"
+    },
+    "source_artifact_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "accepted_base_i02_release_ref": {
+      "kind": "C11LogicalRelease",
+      "object_id": "LITS1-AS2B-C11-7cac43e2ca5b31cb-9dd1e6b7350ebb79",
+      "content_hash": "e6c954538fa1830820120465a10a6d065b8a18d1e6b7b08d3f863b0917741e26"
+    },
+    "accepted_base_replay_manifest_hash": "6bfe9862abd6f373309ff6f8868f8871948bb9ed397906d880cda6776941a1dd",
+    "runtime_i02_release_ref": "REQUIRED_AT_BINDING_TIME__MUST_BE_MINTED_BY_ACCEPTED_I02",
+    "runtime_candidate_projection_hash": "REQUIRED_AT_BINDING_TIME",
+    "runtime_replay_manifest_ref": "REQUIRED_AT_BINDING_TIME",
+    "runtime_m01_m18_coverage": "REQUIRED_COMPLETE",
+    "c11_repository_exact_resolution_receipt": "REQUIRED",
+    "f02_extension_refs": {
+      "q310": {
+        "question_ref": "c4b0f76b7a37d8083a103ffd316f2eb009eeca7b5cbf5910e51d364b39641534",
+        "response_slot_ref": "fa63b7f74c1fc2c587b485031f0ee841abcaff964368c6eb33862da34b198593",
+        "routing_ref": "5799578dfbe21f2997578a43edae97c4818f693ee85ed3d345cdc4574374e013",
+        "response_value_state_refs": {
+          "1": "e94b7665fffc55b564c33b139bc8a1608d381f89e81b63d99db42c9129a697da",
+          "2": "23589e5578c5a80749600bb3e4385705e8ac0f8d4297c2faaac457b0ce5f0ed4",
+          "3": "fe9fc4a890814f6b2f4882fc4c4127f27091b704fc9ce1eb90392173556f60e1",
+          "MISSING": "57af6ec1e41dfbb7c4d9946dcad5c34c58526bc239c012d8cda22c6ae1975244"
+        }
+      },
+      "q311": {
+        "question_ref": "8680064d936efb99d64457edc3a2385e8862a2aac6bf50efd423afe83e77aed9",
+        "response_slot_ref": "0d1ff28f5bf8200920c596449229c5e965ba407cadc4f54ec3292e204a1220e7",
+        "routing_ref": "fc7530bf63bd3662d0f49545363947e1f18379ecd03583de9cc7ca2845d318bf",
+        "response_value_state_refs": {
+          "1": "09d12eb8563ed35b371bddc5829c3bd85b1acd0aa4a4f30fbe6795a0a0588234",
+          "2": "dc457fb064cfcab1d353ab3032a48519e5a62f003d32b6b1b240c79d51578775",
+          "3": "4492fc52c88c0a11c0ccfc45521879a53c46fab843808032cd1ccf061d995641",
+          "MISSING": "02aef63755380ce3c6b54350282dd79d789264999943e1c18dec6ddc77ffb392"
+        }
+      }
+    },
+    "f02_authority_refs": {
+      "source_semantics": {
+        "authority_id": "urn:rawlsing:prev3:f02:lits1:source-semantics",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "47142de560f66e725283aaf96024bfad06fb0b33eeb56e3c8cfdc8afcc745bc0"
+      },
+      "routing": {
+        "authority_id": "urn:rawlsing:prev3:f02:lits1:routing",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "52e741a07b75c475254628dfdf191a77f969e0a7cd7bbdf9b7a90addf324d540"
+      },
+      "predicate_grammar": {
+        "authority_id": "urn:rawlsing:prev3:f02:lits1:predicate-grammar",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "bc6d433ff58e67e343f1bd1d8e3e92d691b81931dca6447716b08dbf0c8eff8b"
+      },
+      "replay": {
+        "authority_id": "urn:rawlsing:prev3:f02:lits1:replay",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "0b2ac266ec09db440156e3c1ab62dec2aac78290932d20396b753ca8763c9e4c"
+      }
+    },
+    "adopted_r4a_authority_refs": {
+      "respondent_binding": "3ef0317887f6910838636d3816237a81d5a56b38e07595c8cc1f7c5e7f1fae74",
+      "mixed_grammar": "0d7cfaac1d63cd438d29b109b590cb828805bd113fc37759a6f6f4c88d3c8f55",
+      "derived_predicate": "225e4b80390500451834ea784d955465eb9f145a4cd1f798dace51f3a6d3baa4",
+      "aggregate": "b87c387f9d222c83106c8d47d369af44f5c5368b274fd85e7a08b12c20d49cae"
+    },
+    "selector_refs": [
+      "c9a0c8106d457bba7e3f3f5abb7ee7fb98482bd86af629d860e4a904ad58456a",
+      "78dbd1a899fe43ac2e2ca6985ea0eccb086989fa2c4315fa518524e7ba94a6df",
+      "c4d2dd827326b6ff29f3c02382c36fa33c47c6227bfbf8c8053c11e1089923ca",
+      "69dc59f79014a7c17190ca658e193a004e167c322c7f713f4540882fb980feb8",
+      "f63d6121776500912342ab377178a15fcf6fabf7071864f4f413d95babb43849",
+      "a6494153b4defeb13e1658b73eead7c5df6e25847708c770dad5f42142492c7d"
+    ],
+    "selector_truth_semantics": "survey_response_EQ__TRUE_IFF_SAME_ROW_GOVERNED_EVENT_HAS_EXACT_NATIVE_VALUE__MISSING_FALSE__NO_ORDERING_DISTANCE",
+    "respondent_binding_semantics": "EXACT_SOURCE_ROW_REPLAY_WITHIN_SAME_LITS1_RELEASE__REFINES_EXACT_SAME_RESPONDENT_ONLY_WITHIN_EXACT_BOUND_SCOPE",
+    "f02_member_law": "EXACT_BASE_RELEASE_MEMBERS_UNCHANGED_BY_REFERENCE_UNION_GOVERNED_Q310_Q311_EXTENSION"
+  },
+  "future_binding_validation_algorithm": [
+    "VERIFY_RELATION_AUTHORITY_IS_EXACT_AND_ACTIVE",
+    "VERIFY_SCOPE_ANCHOR_REF_EXACTLY_EQUALS_FROZEN_BF305_REF_WITH_NO_FIELD_REWRITE",
+    "VERIFY_SOURCE_SHA_EXACT",
+    "VERIFY_RUNTIME_RELEASE_SOURCE_ARTIFACT_SHA_EXACT",
+    "VERIFY_ACCEPTED_BASE_RELEASE_LINEAGE_EXACT_AND_UNCHANGED",
+    "VERIFY_Q310_Q311_QUESTION_SLOT_VALUE_ROUTING_REFS_EXACT",
+    "VERIFY_ALL_SIX_SELECTOR_REFS_AND_FROZEN_ASTS_UNCHANGED",
+    "VERIFY_F02_SOURCE_SEMANTICS_ROUTING_PREDICATE_GRAMMAR_REPLAY_AUTHORITIES_AND_VALIDATED_SNAPSHOTS_EXACT",
+    "VERIFY_ADOPTED_R4A_RESPONDENT_MIXED_GRAMMAR_DERIVED_PREDICATE_AUTHORITIES_EXACT",
+    "VERIFY_RUNTIME_RELEASE_RESULT_OF_VALIDATE_C11_SOURCE_RELEASE_OR_EQUIVALENT_ACCEPTED_I02_INGEST",
+    "VERIFY_REPLAY_MANIFEST_EXACTLY_CLOSES_RUNTIME_CANDIDATE_AND_AUTHORITY_SNAPSHOT_SET",
+    "VERIFY_M01_M18_COMPLETE_OR_EXPLICIT_TYPED_ABSENCE_PER_ACCEPTED_I02",
+    "VERIFY_C11REPOSITORY_RESOLVE_RELEASE_EXACT_RETURNS_THE_SAME_RUNTIME_RELEASE_REF",
+    "VERIFY_NO_REQUIRED_F02_MEMBER_MISSING",
+    "VERIFY_ANY_ADDITIONAL_MEMBER_IS_OUTSIDE_SELECTOR_DEPENDENCY_AND_TRUTH_CONDITION_CLOSURE",
+    "VERIFY_CANDIDATE_REPLAY_BINDING_IDENTITIES_DETERMINISTIC",
+    "VERIFY_NO_OTHER_ACTIVE_POSITIVE_BINDING_EXISTS_FOR_THIS_SCOPE_ANCHOR_SOURCE_AUTHORITY_EPOCH"
+  ],
+  "forbidden_binding_states": [
+    "RUNTIME_RELEASE_HASH_PREDECLARED_BY_R5A",
+    "RUNTIME_RELEASE_REF_EQUALS_BF305",
+    "REPOSITORY_FALLBACK_OR_ALIAS",
+    "CROSS_SOURCE",
+    "CROSS_RELEASE_SILENT_SUBSTITUTION",
+    "MULTIPLE_ACTIVE_BINDINGS",
+    "POST_OUTCOME_MUTATION"
+  ],
+  "fail_closed": true
+}
