@@ -468,7 +468,7 @@ def validate_inputs(
     require(successor.get("ingest_contract") == "PRE553_C11_INGEST@1.0.0", "wrong I02 ingest contract")
     require(successor.get("resolve_release_exact") == "PASS", "exact C11Repository resolution missing")
     require(successor.get("repository_release_count") == 1, "exact C11Repository cardinality mismatch")
-    require_sha(successor.get("repository_snapshot_identity"), "repository_snapshot_identity")
+    expected_repository_snapshot_identity = canonical_json([runtime_ref])\n    require(successor.get("repository_snapshot_identity") == expected_repository_snapshot_identity,\n            "C11Repository snapshot identity mismatch")
     require_sha(successor.get("candidate_projection_hash"), "candidate_projection_hash")
     require_sha(successor.get("source_release_manifest_hash"), "source_release_manifest_hash")
 

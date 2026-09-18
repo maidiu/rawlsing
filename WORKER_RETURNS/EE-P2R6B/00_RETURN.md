@@ -32,11 +32,11 @@ Authority epoch:
 
 Prepared issuer Git blob:
 
-`3a8880218451754e09eaa8dfc2edcd8f5a005308`
+`c9afb5b8da0a99bb41bc2e85888255090a944f68`
 
 Prepared verifier Git blob:
 
-`24b2630d1c6b2a4923afc06dc199b78aff150426`
+`dcf4f78698f6e88f9c31592bc85deb6994062657`
 
 Browser qualification uses only `NONEMPIRICAL__NONBINDING__STRUCTURAL_FIXTURE` mechanics. Its fixture schema is disjoint from the production binding schema and cannot be activated as a realization binding. The qualification must also prove that the production issuer rejects a non-R5B structural receipt before any output is written.
 
