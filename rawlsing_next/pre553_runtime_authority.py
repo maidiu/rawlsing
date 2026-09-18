@@ -454,9 +454,23 @@ class Pre553RuntimeAuthoritySet:
         if not isinstance(operation, str) or not operation:
             raise Pre553AuthorityError("governed predicate dialect requires exact operation")
         contract = self._dialects.get((grammar.key, operation))
-        if contract is None:
-            raise Pre553AuthorityError("no exact adopted predicate dialect interpreter authority")
-        return contract
+        if contract is not None:
+            return contract
+
+        mixed = self._compositions.get(grammar.key)
+        if mixed is not None:
+            allowed = set(mixed.allowed_grammar_keys)
+            matches = [
+                dialect
+                for (grammar_key, dialect_operation), dialect in self._dialects.items()
+                if grammar_key in allowed and dialect_operation == operation
+            ]
+            if len(matches) == 1:
+                return matches[0]
+            if len(matches) > 1:
+                raise Pre553AuthorityError(
+                    "mixed successor grammar resolves multiple child dialect interpreters")
+        raise Pre553AuthorityError("no exact adopted predicate dialect interpreter authority")
 
     def validate_predicate(self, predicate: EmpiricalPredicate) -> None:
         grammar = authority_ref(predicate.grammar_authority_ref, "predicate grammar authority")
