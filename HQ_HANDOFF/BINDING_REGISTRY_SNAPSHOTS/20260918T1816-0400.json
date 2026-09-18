@@ -1,0 +1,41 @@
+{
+  "schema": "EE_P2R6B_HQ_ADOPTED_BINDING_REGISTRY_SNAPSHOT@1.0.0",
+  "status": "ONE_ACTIVE_POSITIVE_BINDING__EXACT_SCOPE_SOURCE_AUTHORITY_EPOCH",
+  "snapshot_ref": {
+    "kind": "HQAdoptedBindingRegistrySnapshot",
+    "object_id": "urn:rawlsing:prev3:p2r6b:hq-binding-registry-snapshot:sha256:73d58e7a36fdf0ab713c65842667b1a11cc04a81c63c31040778be6e09eb1c70",
+    "content_hash": "73d58e7a36fdf0ab713c65842667b1a11cc04a81c63c31040778be6e09eb1c70"
+  },
+  "identity_law": "SHA256_CANONICAL(identity_material)",
+  "identity_material": {
+    "schema": "EE_P2R6B_HQ_ADOPTED_BINDING_REGISTRY_SNAPSHOT_MATERIAL@1.0.0",
+    "snapshot_scope": {
+      "frozen_scope_anchor_hash": "bf305bf3f169d66954be4f39cc602880fddea6083b5bee9c0212938355cd5297",
+      "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+      "authority_epoch_id": "30815cfb20f4f66140cee8f6a2b5e5cafd5e20fb4d1b0c607bad1e3699fae2ff",
+      "uniqueness_key": "659a8929df10b31da4c82eaf5a6b8bd74234b6f21430422beff186cab804fc16"
+    },
+    "active_positive_bindings": [
+      {
+        "kind": "ReleaseRealizationBinding@1.0.0",
+        "object_id": "urn:rawlsing:prev3:p2r6b:release-realization-binding:sha256:fd4177eaddff07dc1e51a6f900c07f163965f996742b301932bbeb79a8690bb0",
+        "content_hash": "fd4177eaddff07dc1e51a6f900c07f163965f996742b301932bbeb79a8690bb0",
+        "adopted_from_candidate_ref": {
+          "kind": "ReleaseRealizationBindingCandidate@1.0.0",
+          "object_id": "urn:rawlsing:prev3:p2r6b:release-realization-binding:sha256:fd4177eaddff07dc1e51a6f900c07f163965f996742b301932bbeb79a8690bb0",
+          "content_hash": "fd4177eaddff07dc1e51a6f900c07f163965f996742b301932bbeb79a8690bb0"
+        },
+        "adoption_source_return": "f1941fc7e9291a17860475dc14edc9ef1bc32eff"
+      }
+    ],
+    "active_positive_binding_count": 1
+  },
+  "supersedes_snapshot_ref": {
+    "kind": "HQAdoptedBindingRegistrySnapshot",
+    "object_id": "urn:rawlsing:prev3:p2r6b:hq-binding-registry-snapshot:sha256:9f96121b35fff6b56d69d60cedcea04d91ca1784e7636eded73655ad8b5a7168",
+    "content_hash": "9f96121b35fff6b56d69d60cedcea04d91ca1784e7636eded73655ad8b5a7168"
+  },
+  "interpretation": "POST_ADOPTION_REGISTRY_FACT__EXACTLY_ONE_ACTIVE_POSITIVE_BINDING__HISTORICAL_ZERO_SNAPSHOT_REMAINS_IMMUTABLE",
+  "p2x_executed": false,
+  "post_outcome_mutation": false
+}
