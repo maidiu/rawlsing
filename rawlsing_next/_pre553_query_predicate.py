@@ -153,6 +153,11 @@ def _leaf_match(
         return result
 
     if leaf_type == "SURVEY_RESPONSE_EVENT" and node.get("operation") is not None:
+        runtime_authorities = runtime_authorities or index.runtime_authorities
+        predicate_grammar_authority_ref = (
+            predicate_grammar_authority_ref or index.runtime_predicate_grammar_authority_ref
+        )
+        repository = repository or index.runtime_repository
         if runtime_authorities is None or predicate_grammar_authority_ref is None:
             raise Pre553AuthorityError(
                 "governed public predicate dialect requires exact interpreter authority")
