@@ -1,9 +1,35 @@
 {
   "schema": "EE_P2R2_BROWSER_QUALIFICATION_RECEIPT@1.0.0",
-  "status": "PENDING_GOVERNED_BOUNDED_COURT",
+  "status": "QUALIFIED_BLOCKER__GOVERNED_BOUNDED_COURT_PASS",
+  "disposition": "BLOCKED__LOSSLESS_F02_TO_GENERIC_I05_COMPOSITION_NOT_REPRESENTABLE_UNDER_FROZEN_IDENTITIES",
+  "governed_court": {
+    "run_id": 35376496903,
+    "job_id": 105702285701,
+    "conclusion": "success",
+    "evidence_execution_sha": "d7d764be2daaf098b74ccb614badd5d59c7f58f7",
+    "semantic_candidate_sha": "22372dea9268a89656ddb25eb508aab5067f92fe",
+    "protocol_self_test": "20 passed",
+    "bounded_court": "8 passed",
+    "artifact_id": 10560517076,
+    "artifact_name": "rabochii-court-receipt-35376496903"
+  },
+  "qualified_tests": [
+    "rawlsing_next/tests/test_pre553_lits_f02_runtime_binding.py",
+    "rawlsing_next/tests/test_pre553_carrier_execution.py"
+  ],
+  "proved": [
+    "the frozen base and F02 predicate contracts carry different exact grammar authority refs",
+    "the frozen base and F02 predicate contracts carry different same-respondent binding laws",
+    "current generic I05 rejects mixed-contract composition at its exact composition guard",
+    "a lossy adapter is not encoded",
+    "Candidate C is independently candidate-local nonqualifying at S02 with later CACC2 failure also bound",
+    "no CACC3 or hidden A/B fallback is created"
+  ],
   "source_access": false,
+  "library_carrier_access": false,
   "outcome_access": false,
   "performance_measurement": false,
   "surrogate_data": false,
-  "tests": ["rawlsing_next/tests/test_pre553_lits_f02_runtime_binding.py"]
+  "historical_g02_output_substitution": false,
+  "p2x_branch_moved": false
 }

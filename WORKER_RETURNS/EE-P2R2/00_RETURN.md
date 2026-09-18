@@ -1,6 +1,6 @@
 # EE-P2R2 governed return
 
-Disposition: BLOCKED.
+Disposition: BLOCKED — independently qualified by the governed browser court.
 
 Terminal:
 
@@ -16,4 +16,13 @@ Candidate A/B owner proof was not fabricated after this common-runtime precondit
 
 Candidate C has a separate candidate-local nonqualification: at S02_C11_REACHABILITY its frozen CACC1 stream contains q301_2/q301_7 plus five coordinates only, so it cannot satisfy an F02 composite projection requiring q310/q311. The source-backed builder fails closed on incomplete projected slots. Its frozen 19-role CACC2 would independently fail later at S05 because it contains none of the six F02 selector refs. No CACC1/CACC2 widening, CACC3, or hidden A/B fallback was created.
 
-No empirical carrier, Library bytes, outcomes, historical G02 outputs, or measurements were accessed. P2X was not moved.
+Governed browser qualification:
+- run: 35376496903
+- job: 105702285701
+- evidence execution head: d7d764be2daaf098b74ccb614badd5d59c7f58f7
+- semantic candidate: 22372dea9268a89656ddb25eb508aab5067f92fe
+- protocol self-test: 20 passed
+- bounded court: 8 passed
+- receipt artifact: 10560517076 / rabochii-court-receipt-35376496903
+
+No empirical carrier, Library bytes, outcomes, historical G02 outputs, or measurements were accessed. P2X remained at 32e224c28d720fce7cdcf6182afb5d327e8a1cf0.
