@@ -1,0 +1,140 @@
+{
+  "adopted_r6l_identity_check": {
+    "candidate_projection_hash": "23912633a23318d22bad0da08027867031320331d8d436d944e9c0b21eb086eb",
+    "m01_m18_coverage": {
+      "M01": [
+        "EmpiricalUniverse"
+      ],
+      "M02": [
+        "RespondentIdentity"
+      ],
+      "M03": [
+        "QuestionVariableBinding"
+      ],
+      "M04": [
+        "RespondentEvent"
+      ],
+      "M05": [
+        "QuestionVariableBinding",
+        "RespondentEvent"
+      ],
+      "M06": [
+        "RespondentEvent.typed_state"
+      ],
+      "M07": [
+        "RoutingEligibilityFact"
+      ],
+      "M08": [
+        "EmpiricalCoordinateFact"
+      ],
+      "M09": [
+        "WeightMeasureFact|TypedAbsence"
+      ],
+      "M10": [
+        "AuthoritySnapshot"
+      ],
+      "M11": [
+        "SourceUniverseRelation|DISTINCT_BY_DEFAULT"
+      ],
+      "M12": [
+        "RoutingEligibilityFact",
+        "EmpiricalPredicateReplayBinding|TypedAbsence"
+      ],
+      "M13": [
+        "ComparatorReplayBinding|DEFERRED"
+      ],
+      "M14": [
+        "DiscoveryBranchReplayBinding|DEFERRED"
+      ],
+      "M15": [
+        "StructuralAdmissionReplayBinding|NOT_APPLICABLE"
+      ],
+      "M16": [
+        "ReplayManifest"
+      ],
+      "M17": [
+        "AuthoritySnapshot",
+        "ReplayManifest"
+      ],
+      "M18": [
+        "ReplayManifest"
+      ]
+    },
+    "record_counts": {
+      "AuthoritySnapshot": 10,
+      "ComparatorReplayBinding": 0,
+      "DiscoveryBranchReplayBinding": 0,
+      "EmpiricalCoordinateFact": 145010,
+      "EmpiricalPredicateReplayBinding": 0,
+      "EmpiricalUniverse": 1,
+      "QuestionVariableBinding": 4,
+      "ReplayManifest": 1,
+      "RespondentEvent": 116008,
+      "RespondentIdentity": 29002,
+      "RoutingEligibilityFact": 116008,
+      "SourceUniverseRelation": 0,
+      "StructuralAdmissionReplayBinding": 0,
+      "WeightMeasureFact": 0
+    },
+    "release_ref": {
+      "content_hash": "192926fabd9c9c3d40e43b1d7705ca2bcfe7f8d06e286be26d4b886d436df43f",
+      "kind": "C11LogicalRelease",
+      "object_id": "LITS1-I02-F02-SUCCESSOR-7cac43e2ca5b31cb-bf305bf3f169d669"
+    },
+    "replay_manifest_ref": {
+      "content_hash": "30c168fbdf8425b23cbf2a2b2d2c9ab56f3438851f52e3562510089f1d381a08",
+      "kind": "C11Internal:ReplayManifest",
+      "object_id": "urn:rawlsing:pre553:c11:ReplayManifest:sha256:30c168fbdf8425b23cbf2a2b2d2c9ab56f3438851f52e3562510089f1d381a08"
+    },
+    "source_release_manifest_hash": "0546be4fa3f55239ee5d208234000066bdc84d832e89bc91d646ee623ed96714",
+    "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "status": "EXACT_MATCH"
+  },
+  "canonical_snapshot": {
+    "byte_length": 1447731437,
+    "filename": "validated_c11_candidate_snapshot.json",
+    "sha256": "ca1e62ca14586bcd23392fc56d0af5f95c12d833bf994ef5a0ea09577ca1569b"
+  },
+  "chunk_policy": {
+    "chunks": [
+      {
+        "byte_length": 50331648,
+        "filename": "validated_c11_candidate_snapshot.json.gz.part0000",
+        "index": 0,
+        "sha256": "9743cb7de71d470b305c91d3a9c55fd615d2d1544c3ae82bb33cf0e4f4d2ccb2"
+      },
+      {
+        "byte_length": 50331648,
+        "filename": "validated_c11_candidate_snapshot.json.gz.part0001",
+        "index": 1,
+        "sha256": "0a5b16e20bb16b3b1537ea9b8e15e308f9daa3656c7c6a2fa299a4b3bb9da6f3"
+      },
+      {
+        "byte_length": 15566582,
+        "filename": "validated_c11_candidate_snapshot.json.gz.part0002",
+        "index": 2,
+        "sha256": "84071bd29a466bbf4f8cfe0fe681749610e18f88fedcb1cd2573a7031b0b1869"
+      }
+    ],
+    "fixed_chunk_size_bytes": 50331648,
+    "git_safe_threshold_bytes": 94371840,
+    "reconstruction": "concatenate chunks in ascending index when chunked, then gunzip once to recover the single canonical semantic snapshot"
+  },
+  "compression": {
+    "compressed_byte_length": 116229878,
+    "compressed_sha256": "42bff5e6ffc9dd76283b74525f47a5ec99c91ca44d9b5a7537fd13b820ef8e04",
+    "compresslevel": 9,
+    "format": "gzip",
+    "mtime": 0
+  },
+  "schema": "EE_P2R6K_SNAPSHOT_TRANSPORT_MANIFEST@1.0.0",
+  "semantic_snapshot_partitioned": false,
+  "transport_mode": "DETERMINISTIC_GZIP_FIXED_SIZE_TRANSPORT_CHUNKS",
+  "vendored_r5b_git_blobs": {
+    "SUPPORT/R5B/03_LOCAL_I02_SUCCESSOR_RELEASE_DRIVER.py": "b819fdff50470a71f1c570aa8021e28b361fa986",
+    "SUPPORT/R5B/SUPPORT/FROZEN_BASE/AS2A_LITS1_SHARED_CERTIFICATION_20260827/01_LITS1_1198_SLOT_OWNERSHIP_PROJECTION_EXCLUSION_LEDGER.csv": "c24e0d6acc6f2b823f0fc3fa5fb8a52b7c1cab0c",
+    "SUPPORT/R5B/SUPPORT/FROZEN_BASE/AS2A_LITS1_SHARED_CERTIFICATION_20260827/04_SOURCE_SPECIFIC_PROJECTION_AUTHORITY_PACKAGE.json": "174b931e8aa89111086e3d46159b47154bed7f16",
+    "SUPPORT/R5B/SUPPORT/FROZEN_BASE/AS2B_LITS1_MECHANICAL_SOURCE_CERTIFICATION_20260827/run_as2b_lits1_mechanical_certification.py": "c51b56779ab9d79126619b7733d41f5253c8150f",
+    "SUPPORT/R5B/SUPPORT/FROZEN_F02/prev3_lits1_selector_closure.py": "7b45b277164fa90c3da739aab26b516f7a8cb8dc"
+  }
+}
