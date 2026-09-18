@@ -26,7 +26,7 @@ from rawlsing_next.pre553_discovery_exact import (
     _validate_catalog_scope,
     _verify_discovery_authority,
 )
-from rawlsing_next.pre553_empirical_objects import ExactRef, semantic_hash
+from rawlsing_next.pre553_empirical_objects import ExactRef, canonicalize, semantic_hash
 
 
 F2_COMMIT = "22667bd395e7293f99b285daddad36fe3a4377ef"
@@ -180,7 +180,7 @@ def main() -> int:
         "law": "NO_HASH_INVERSION__EXACT_CANONICAL_PREIMAGE_REQUIRED",
     }
     receipt = {**material, "receipt_identity": semantic_hash(material)}
-    rendered = json.dumps(receipt, sort_keys=True, indent=2) + "\n"
+    rendered = json.dumps(canonicalize(receipt), sort_keys=True, indent=2) + "\n"
     if args.write_receipt:
         args.write_receipt.parent.mkdir(parents=True, exist_ok=True)
         args.write_receipt.write_text(rendered, encoding="utf-8")
