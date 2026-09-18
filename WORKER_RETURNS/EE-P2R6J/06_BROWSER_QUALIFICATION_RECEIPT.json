@@ -1,0 +1,80 @@
+{
+  "schema": "EE_P2R6J_BROWSER_QUALIFICATION_RECEIPT@1.0.0",
+  "status": "PASS",
+  "qualified_worker_disposition": "BLOCK",
+  "terminal": "EE_P2R6J_BLOCK__EXACT_ADOPTED_R6L_C11REPOSITORY_RELEASE_NOT_REHYDRATABLE_FROM_COMMITTED_ADOPTED_ARTIFACTS_WITHOUT_SOURCE_OR_CARRIER_ACCESS",
+  "authority": {
+    "hq_checkpoint": "20260918T1822-0400",
+    "hq_handoff_commit": "6242cd26e70e0390418c2534adfa951b1d322078",
+    "controlling_decisions": [
+      "HQD-2026-09-18-058",
+      "HQD-2026-09-18-059"
+    ],
+    "live_hq_rechecked_after_court": true
+  },
+  "semantic_candidate_sha": "805542c9097224c65c81a27b8d0cc898ef4c1f7a",
+  "evidence_execution_sha": "2b5e64630d8addb484f73a8222e80ad7604b945b",
+  "transient_pr": {
+    "number": 408,
+    "state": "CLOSED_UNMERGED",
+    "synthetic_merge_sha": "4d83d7cc0f6e5338ebabbf361ef8b3306a4083b5"
+  },
+  "governed_court": {
+    "workflow_id": 350748047,
+    "run_id": 35402249369,
+    "job_id": 105784452514,
+    "conclusion": "success",
+    "protocol_self_test": {
+      "passed": 20,
+      "total": 20
+    },
+    "bounded_court": {
+      "passed": 1,
+      "total": 1
+    },
+    "python": "3.12.14",
+    "pytest": "9.1.1",
+    "artifact": {
+      "id": 10571251616,
+      "name": "rabochii-court-receipt-35402249369",
+      "size_bytes": 551,
+      "digest": "sha256:f650cd062d9a440eef5f8b0364bb9c79d98cd2d4b9f727ab8e07680fc2807f2b"
+    }
+  },
+  "extraction_run": {
+    "run_id": 35402117562,
+    "job_id": 105784065864,
+    "role": "NON_AUTHORITATIVE_DETERMINISTIC_PAYLOAD_EXTRACTION",
+    "artifact_id": 10571306426,
+    "artifact_digest": "sha256:0331f50827ad5e204b012282dfda4b52a95858ec9e3e47679b7f67b353687dbb"
+  },
+  "corrected_binding": {
+    "content_hash": "a5f36a81843fe2ebab0b5cccb369ce76035f842b93e602613b8b9f3a81103308",
+    "ref": {
+      "kind": "ReleaseRealizationBinding@1.0.0",
+      "object_id": "urn:rawlsing:prev3:p2r6j:release-realization-binding:sha256:a5f36a81843fe2ebab0b5cccb369ce76035f842b93e602613b8b9f3a81103308",
+      "content_hash": "a5f36a81843fe2ebab0b5cccb369ce76035f842b93e602613b8b9f3a81103308"
+    },
+    "identity_material_field_count": 17,
+    "proposed_active_record_git_blob_sha1": "4ac8cd48aac62600e648ff9692488796c51c826f",
+    "active_authority": false,
+    "hq_adoption_permitted": false
+  },
+  "blocker": {
+    "id": "EXACT_ADOPTED_R6L_C11REPOSITORY_RELEASE_NOT_REHYDRATABLE_FROM_COMMITTED_ADOPTED_ARTIFACTS_WITHOUT_SOURCE_OR_CARRIER_ACCESS",
+    "r6a_production_blob": "2ddc591f2572983d18f8f3e8f81a33b80b3bca7b",
+    "exact_positive_production_call_executed": false,
+    "corrected_record_reached_exact_repository_lookup": true,
+    "private_seal_or_fake_repository_used": false,
+    "source_or_carrier_access": false
+  },
+  "forbidden_work_confirmed_absent": {
+    "library_access": false,
+    "carrier_access": false,
+    "source_rerun": false,
+    "a_b_qualification": false,
+    "be1": false,
+    "p2x": false,
+    "r6a_semantics_modified": false
+  }
+}
