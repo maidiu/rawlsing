@@ -176,6 +176,19 @@ def _leaf_match(
             predicate_grammar_authority_ref or index.runtime_predicate_grammar_authority_ref
         )
         repository = repository or index.runtime_repository
+        if runtime_authorities is None or predicate_grammar_authority_ref is None or repository is None:
+            try:
+                from rawlsing_next.pre553_runtime_context import current_runtime_binding
+                binding = current_runtime_binding()
+            except ImportError:
+                binding = None
+            if binding is not None:
+                runtime_authorities = runtime_authorities or binding.authorities
+                predicate_grammar_authority_ref = (
+                    predicate_grammar_authority_ref
+                    or binding.predicate_grammar_authority_ref
+                )
+                repository = repository or binding.repository
         if runtime_authorities is None or predicate_grammar_authority_ref is None:
             raise Pre553AuthorityError(
                 "governed public predicate dialect requires exact interpreter authority")
