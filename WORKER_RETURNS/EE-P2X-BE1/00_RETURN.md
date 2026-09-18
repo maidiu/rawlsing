@@ -24,6 +24,21 @@ A pre-existing branch commit `e89c2dd082c7aacdf36f50aafe74b59bd98d40d2` attempte
 
 Browser-only blocker qualification is provided by `rawlsing_next/tests/test_ee_p2x_darwin_stage_backend.py`. It opens no empirical carrier.
 
+## Browser qualification
+
+The exact blocker was independently exercised through the repository's governed bounded court on transient PR #390, targeted to the original P2X execution branch at exact base `32e224c28d720fce7cdcf6182afb5d327e8a1cf0`. The PR was not merged and is closed.
+
+- evidence execution SHA: `f1dbde20403c6241398ac562cff8a06728ae817f`
+- workflow: `Rabochii Governed Bounded Court`
+- run: `35332090340` / run number `485`
+- governed-court job: **PASS**
+- protocol self-test: **PASS**
+- court-spec validation: **PASS**
+- receipt artifact digest: `sha256:cdb041fef8cdbdf93cff73f82656bdbd67b268fe0d94947795b44330bf182c96`
+- qualification receipt: `WORKER_RETURNS/EE-P2X-BE1/03_BROWSER_QUALIFICATION_RECEIPT.json`
+
+This qualifies the blocker facts only. It does **not** qualify a production backend and does not authorize the nominal BE1 PASS terminal.
+
 ## Smallest lawful successor
 
 Materialize the exact F02 q310/q311 composite selector surface as current-I03-executable preimages and bind it through the adopted P2R1 candidate-owner seam, without hash inversion or historical-result substitution. Requalify BE1 after that binding exists. Candidate C then requires its own exact disposition because its accepted CACC surface does not include the six conditioner selectors and no third accelerator is authorized.
