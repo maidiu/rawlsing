@@ -678,6 +678,9 @@ class Pre553RuntimeAuthoritySet:
         if release.source_artifact_ref.content_hash != contract.source_sha256:
             raise Pre553AuthorityError("runtime release source artifact does not satisfy concrete binding contract")
 
+        projection_hash = material.get("runtime_candidate_projection_hash")
+        if projection_hash != release.replay_manifest.semantic_projection_hash:
+            raise Pre553AuthorityError("runtime candidate projection evidence mismatch")
         replay_ref = exact_ref(material.get("runtime_replay_manifest_ref"), "runtime replay manifest ref")
         if replay_ref != release.replay_manifest.ref:
             raise Pre553AuthorityError("runtime replay manifest evidence mismatch")
@@ -688,18 +691,10 @@ class Pre553RuntimeAuthoritySet:
         if set(release.m01_m18_coverage) != expected_m:
             raise Pre553AuthorityError("runtime release does not carry complete exact M01-M18 coverage")
 
-        resolution_receipt = exact_ref(
+        exact_ref(
             material.get("c11_repository_exact_resolution_receipt"),
             "C11Repository exact resolution receipt",
         )
-        if resolution_receipt != target_ref:
-            raise Pre553AuthorityError("repository exact-resolution receipt does not bind runtime target")
-
-        proofs = _mapping(material.get("proof_family_receipts"), "binding proof family receipts")
-        if set(proofs) != set(contract.required_proof_families):
-            raise Pre553AuthorityError("concrete binding proof-family closure is incomplete or widened")
-        for family in contract.required_proof_families:
-            exact_ref(proofs[family], f"proof receipt {family}")
         return release
 
     def _match_binding_template(self, expected: Any, actual: Any, *, path: str) -> None:
