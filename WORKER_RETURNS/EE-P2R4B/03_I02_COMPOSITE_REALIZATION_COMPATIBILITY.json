@@ -1,0 +1,44 @@
+{
+  "schema": "EE_P2R4B_I02_COMPOSITE_REALIZATION_COMPATIBILITY@1.0.0",
+  "status": "BLOCK__IDENTITY_LAWS_INCOMPATIBLE_AT_FROZEN_RELEASE_REF",
+  "terminal": "EE_P2R4B_BLOCK__FROZEN_F02_COMPOSITE_RELEASE_IDENTITY_NOT_REPRESENTABLE_UNDER_ACCEPTED_I02_CONTRACT_WITHOUT_REMINT_OR_SEMANTIC_CHANGE",
+  "comparison": {
+    "f02": {
+      "release_hash": "bf305bf3f169d66954be4f39cc602880fddea6083b5bee9c0212938355cd5297",
+      "hash_law": "SHA256_CANONICAL(F02_LITS1_C11_COMPOSITE_RELEASE@1.0.0_MATERIAL)",
+      "package_form": "BASE_RELEASE_REFERENCE_PLUS_Q310_Q311_GOVERNED_EXTENSION",
+      "i02_validation_invoked_by_f02": false
+    },
+    "i02": {
+      "ingest_contract": "PRE553_C11_INGEST@1.0.0",
+      "semantic_projection_id": "PRE553_C11_LOGICAL_RELEASE_PROJECTION@1.0.0",
+      "candidate_projection_hash_law": "SHA256_CANONICAL(FULL_I02_CANDIDATE_PROJECTION_EXCLUDING_REPLAY_SELF_REFERENCE)",
+      "replay_requirement": "I02_ReplayManifest_closes_exact_candidate_refs_and_authority_snapshot_set",
+      "release_hash_law": "SHA256_CANONICAL({candidate_projection_hash,replay_manifest_ref,m01_m18})",
+      "validation_seal_required": true
+    }
+  },
+  "compatibility": {
+    "exact_f02_release_hash_is_an_i02_semantic_release_hash": false,
+    "proof_basis": [
+      "F02 producer hashes a custom composite material directly and does not call validate_c11_source_release",
+      "I02 accepts no caller-supplied semantic_release_hash; it deterministically recomputes the hash after full candidate/replay/M01-M18 validation",
+      "C11LogicalRelease cannot be constructed or committed without the private I02 validation seal",
+      "F02's custom ReplayReceipt is not I02 ReplayManifest and the F02 package does not contain the complete I02 candidate sections"
+    ],
+    "lossless_member_ref_reuse_possible": "PARTIAL_ONLY__EXACT_F02_EXTENSION_REFS_CAN_REMAIN_EXACT_REFS_BUT_DO_NOT_MAKE_THE_ENCLOSING_F02_RELEASE_REF_I02_VALID",
+    "lossless_release_ref_map_possible": false,
+    "carrier_bytes_change_this_conclusion": false
+  },
+  "forbidden_escape_hatches": [
+    "SUPPLY_bf305_AS_CALLER_CHOSEN_I02_SEMANTIC_RELEASE_HASH",
+    "BYPASS_PRIVATE_I02_VALIDATION_SEAL",
+    "COMMIT_NON_I02_RELEASE_TO_C11REPOSITORY",
+    "REMINT_TO_A_DIFFERENT_I02_RELEASE_HASH",
+    "CHANGE_I02_RELEASE_IDENTITY_LAW",
+    "CHANGE_F02_FROZEN_RELEASE_IDENTITY"
+  ],
+  "local_materialization_assessment": "NO_LOCAL_RESIDUAL__THE_BLOCKER_PRECEDES_PHYSICAL_SOURCE_REPLAY",
+  "source_access": false,
+  "library_access": false
+}
