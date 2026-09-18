@@ -1,0 +1,55 @@
+{
+  "schema": "EE_P2R5A_R4A_RELEASE_PRECONDITION_SUCCESSOR_CLAUSE@1.0.0",
+  "status": "CANDIDATE__HQ_ADOPTION_REQUIRED__NO_PRODUCTION_IMPLEMENTATION",
+  "clause_ref": {
+    "kind": "R4AReleasePreconditionSuccessorClauseCandidate@1.0.0",
+    "object_id": "urn:rawlsing:prev3:p2r5a:r4a-release-precondition:sha256:d8e3d9a19fa36599e8cd6b1bc8e82092c425fd9119be478f7ba79335d05a1b3e",
+    "content_hash": "d8e3d9a19fa36599e8cd6b1bc8e82092c425fd9119be478f7ba79335d05a1b3e"
+  },
+  "identity_law": "SHA256_CANONICAL(identity_material)",
+  "identity_material": {
+    "clause_id": "R4A_F02_RELEASE_PRECONDITION_SUCCESSOR_CLAUSE_R1",
+    "adopted_r4a_aggregate_hash": "b87c387f9d222c83106c8d47d369af44f5c5368b274fd85e7a08b12c20d49cae",
+    "relation_authority_candidate_hash": "9da19997168612891f59012e69674bac59fbee417d9b30b003171f3074168bf5",
+    "binding_schema_hash": "a1da1ea78dce423ea3520726d0477b058057482d67964056743e08389d9045a0",
+    "frozen_scope_anchor": {
+      "kind": "C11LogicalRelease",
+      "object_id": "LITS1-F02-C11-7cac43e2ca5b31cb-bf305bf3f169d669",
+      "content_hash": "bf305bf3f169d66954be4f39cc602880fddea6083b5bee9c0212938355cd5297"
+    },
+    "semantic_classification": "RUNTIME_REALIZATION_PRECONDITION_REFINEMENT_ONLY__SELECTOR_TRUTH_CONDITIONS_UNCHANGED",
+    "required_conjunction": [
+      "SELECTOR_RELEASE_REF_EXACTLY_EQUALS_FROZEN_F02_SCOPE_ANCHOR",
+      "ONE_EXACT_POSITIVE_RELEASE_REALIZATION_BINDING_IS_ACTIVE",
+      "BINDING_VALIDATES_UNDER_EXACT_RELEASE_REALIZATION_AUTHORITY",
+      "RUNTIME_I02_RELEASE_EXACT_REF_RESOLVES_FROM_C11REPOSITORY"
+    ],
+    "fail_closed": true,
+    "implicit_aliasing": false,
+    "outside_explicit_authority": "UNCHANGED"
+  },
+  "successor_clause": {
+    "applies_only_when": {
+      "selector_release_ref": {
+        "kind": "C11LogicalRelease",
+        "object_id": "LITS1-F02-C11-7cac43e2ca5b31cb-bf305bf3f169d669",
+        "content_hash": "bf305bf3f169d66954be4f39cc602880fddea6083b5bee9c0212938355cd5297"
+      },
+      "adopted_r4a_aggregate_authority_hash": "b87c387f9d222c83106c8d47d369af44f5c5368b274fd85e7a08b12c20d49cae"
+    },
+    "evaluate_selector_only_if_all": [
+      "selector.release_ref == exact frozen F02 scope anchor",
+      "exact adopted ReleaseRealizationAuthority is present",
+      "exactly one active positive concrete binding exists from that anchor to the current runtime I02 release",
+      "that binding passes the complete 03 schema verifier",
+      "C11Repository.resolve_release_exact(runtime_release_ref) succeeds and returns the same sealed I02 release"
+    ],
+    "otherwise": "FAIL_CLOSED_BEFORE_SELECTOR_EVALUATION",
+    "no_equivalence_inference": true,
+    "no_selector_ast_mutation": true,
+    "no_truth_condition_mutation": true,
+    "explanation": "The frozen release_ref continues to delimit the same F02 semantic scope. The successor clause changes only how that historical scope is required to be publicly realized at runtime; it does not replace, alias, or reinterpret selector question/value/respondent truth conditions."
+  },
+  "outside_scope_behavior": "UNCHANGED_PRE553_BEHAVIOR",
+  "implicit_aliasing": "FORBIDDEN"
+}
