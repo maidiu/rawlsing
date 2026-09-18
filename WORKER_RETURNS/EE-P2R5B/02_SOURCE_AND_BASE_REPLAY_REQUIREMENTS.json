@@ -1,0 +1,54 @@
+{
+  "schema": "EE_P2R5B_SOURCE_AND_BASE_REPLAY_REQUIREMENTS@1.0.0",
+  "source": {
+    "name": "LITS-2006-data.dta",
+    "sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "expected_rows": 29002,
+    "expected_variables": 1198,
+    "decoder": "decode_dta(source_path, encoding=\"latin1\")",
+    "decoder_authority_status": "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY",
+    "failure_behavior": "STOP_ON_ANY_SHA_SHAPE_DECODER_OR_COMPATIBILITY_MISMATCH"
+  },
+  "vendored_exact_repository_authority": [
+    {
+      "path": "WORKER_RETURNS/EE-P2R5B/SUPPORT/FROZEN_BASE/AS2B_LITS1_MECHANICAL_SOURCE_CERTIFICATION_20260827/run_as2b_lits1_mechanical_certification.py",
+      "git_blob_sha1": "c51b56779ab9d79126619b7733d41f5253c8150f",
+      "origin_commit": "923f2c00b6145182a5e2be5038f579845951da19"
+    },
+    {
+      "path": "WORKER_RETURNS/EE-P2R5B/SUPPORT/FROZEN_BASE/AS2A_LITS1_SHARED_CERTIFICATION_20260827/01_LITS1_1198_SLOT_OWNERSHIP_PROJECTION_EXCLUSION_LEDGER.csv",
+      "git_blob_sha1": "c24e0d6acc6f2b823f0fc3fa5fb8a52b7c1cab0c",
+      "sha256": "65bdb972c2004d7ea6539b991125d2111e3705aee2d3e76159208d04e4a3fa60"
+    },
+    {
+      "path": "WORKER_RETURNS/EE-P2R5B/SUPPORT/FROZEN_BASE/AS2A_LITS1_SHARED_CERTIFICATION_20260827/04_SOURCE_SPECIFIC_PROJECTION_AUTHORITY_PACKAGE.json",
+      "git_blob_sha1": "174b931e8aa89111086e3d46159b47154bed7f16",
+      "projection_authority_hash": "9dd1e6b7350ebb795e028db86279131f8d319e939a044b74c3c5605ecacf5b06"
+    },
+    {
+      "path": "WORKER_RETURNS/EE-P2R5B/SUPPORT/FROZEN_F02/prev3_lits1_selector_closure.py",
+      "git_blob_sha1": "7b45b277164fa90c3da739aab26b516f7a8cb8dc",
+      "origin_f02_pass": "482bb884a99e31ba77e904d0df39fffc872cbed3"
+    }
+  ],
+  "accepted_base_checks": {
+    "projection_hash": "84361298ae702786a3fd1044bf619ffa4fe9ed2877040724386951e9c9d27872",
+    "candidate_hash": "7f81a222ea2611638d7ce7ac55c695120b57323832e6dc17ff65c1992201659c",
+    "release_hash": "e6c954538fa1830820120465a10a6d065b8a18d1e6b7b08d3f863b0917741e26",
+    "replay_manifest_hash": "6bfe9862abd6f373309ff6f8868f8871948bb9ed397906d880cda6776941a1dd"
+  },
+  "runtime_package_requirements": {
+    "python": "3.11.3 accepted baseline; 3.11+ compatible repository runtime",
+    "pyreadstat": "1.3.2",
+    "pandas": "2.3.1",
+    "numpy": "2.3.2",
+    "pyarrow": "22.0.0",
+    "duckdb": "1.5.2"
+  },
+  "network": {
+    "needed_for_execution": false,
+    "needed_if_exact_dependencies_are_not_already_installed": "ONLY_FOR_PACKAGE_INSTALLATION__NOT_FOR_SOURCE_OR_AUTHORITY_RETRIEVAL"
+  },
+  "library_access_in_browser_preparation": false,
+  "carrier_access_in_browser_preparation": false
+}

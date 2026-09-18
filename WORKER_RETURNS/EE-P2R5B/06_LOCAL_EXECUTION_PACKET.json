@@ -1,0 +1,80 @@
+{
+  "schema": "EE_P2R5B_LOCAL_EXECUTION_PACKET@1.0.0",
+  "status": "READY_AFTER_BROWSER_QUALIFICATION",
+  "grain": "EXACT_SOURCE_ACCESS_AND_MECHANICAL_I02_EXECUTION_ONLY",
+  "source_prerequisite": {
+    "filename": "LITS-2006-data.dta",
+    "sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "rows": 29002,
+    "variables": 1198
+  },
+  "driver_path": "WORKER_RETURNS/EE-P2R5B/03_LOCAL_I02_SUCCESSOR_RELEASE_DRIVER.py",
+  "command_template": "python WORKER_RETURNS/EE-P2R5B/03_LOCAL_I02_SUCCESSOR_RELEASE_DRIVER.py --source <EXACT_PATH_TO_LITS-2006-data.dta> --output-dir <EMPTY_OR_DEDICATED_OUTPUT_DIR>",
+  "verifier_path": "WORKER_RETURNS/EE-P2R5B/05_SUCCESSOR_RELEASE_VERIFIER.py",
+  "verifier_command_template": "python WORKER_RETURNS/EE-P2R5B/05_SUCCESSOR_RELEASE_VERIFIER.py --receipt <OUTPUT_DIR>/successor_release_receipt.json",
+  "python_runtime": "Python 3.11.3 accepted baseline",
+  "packages": {
+    "pyreadstat": "1.3.2",
+    "pandas": "2.3.1",
+    "numpy": "2.3.2",
+    "pyarrow": "22.0.0",
+    "duckdb": "1.5.2"
+  },
+  "expected_output_filenames": [
+    "successor_release_receipt.json",
+    "successor_release_replay_manifest.json",
+    "successor_release_m01_m18.json",
+    "successor_release_extension_scan.json"
+  ],
+  "receipt_schema_path": "WORKER_RETURNS/EE-P2R5B/04_SUCCESSOR_RELEASE_RECEIPT_SCHEMA.json",
+  "success_criteria": [
+    "source SHA/shape and decoder compatibility checks pass",
+    "accepted base projection/candidate/release/replay identities reproduce exactly",
+    "frozen F02 q310/q311 source replay counts and roots reproduce exactly",
+    "all q310/q311 rows bind to the accepted one-based respondent identities with explicit zero-based F02 replay relation",
+    "I02 ingest returns ACCEPTED_C11_LOGICAL_RELEASE",
+    "M01-M18 all close with nonempty exact coverage",
+    "C11Repository.resolve_release_exact(result.release_ref) passes",
+    "prepared verifier exits 0",
+    "receipts make no R5A realization-authority or identity-equality claim"
+  ],
+  "fail_stop_conditions": [
+    "source SHA mismatch",
+    "row/variable shape mismatch",
+    "decoder compatibility status mismatch",
+    "vendored accepted Git blob mismatch",
+    "base projection/candidate/release/replay mismatch",
+    "q310/q311 physical slot or frozen F02 ledger-coordinate mismatch",
+    "F02 source replay count/root mismatch",
+    "any unbound q310/q311 native value/state",
+    "row/respondent alignment mismatch",
+    "authority closure failure",
+    "ReplayManifest failure",
+    "any M01-M18 closure failure",
+    "I02 ingest rejection",
+    "exact repository resolution failure",
+    "verifier failure"
+  ],
+  "forbidden_modifications": [
+    "edit driver or verifier to make execution pass",
+    "change source bytes or decoder configuration",
+    "change frozen vendored support bytes",
+    "remint or rewrite F02 selectors",
+    "hard-code an expected successor semantic_release_hash",
+    "treat bf305... as the accepted I02 release",
+    "issue or assume R5A realization authority",
+    "change D02/F02 workload",
+    "change production mixed-I05/evaluator logic",
+    "repair Candidate C",
+    "move P2X/BE1/Lock1/Lock2",
+    "modify MAIN or semantic PRE-MAIN"
+  ],
+  "network_access_needed": false,
+  "network_note": "No network is needed for execution if the exact runtime packages are installed. Installing missing packages may require network access.",
+  "semantic_judgment_remaining_for_local_worker": false,
+  "maximum_local_machine_codex_intelligence_required": "LUNA",
+  "return_to_hq": {
+    "files": "return all four exact output files plus command exit statuses",
+    "do_not_interpret_release_identity": "Report the exact I02-minted release ref verbatim; do not bind it to bf305... without separately adopted R5A authority."
+  }
+}

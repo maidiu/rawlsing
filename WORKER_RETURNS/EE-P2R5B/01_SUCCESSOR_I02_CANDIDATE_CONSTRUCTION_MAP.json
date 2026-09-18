@@ -1,0 +1,163 @@
+{
+  "schema": "EE_P2R5B_SUCCESSOR_I02_CANDIDATE_CONSTRUCTION_MAP@1.0.0",
+  "status": "BROWSER_PREPARED__SOURCE_EXECUTION_REQUIRED",
+  "grain": "I02_SUCCESSOR_RELEASE_CONSTRUCTION_MECHANICAL_PREPARATION_ONLY",
+  "hq_checkpoint": "20260918T1521-0400",
+  "hq_handoff_commit": "3be5c299d8a244be5b9d956908c61baadfb3f49c",
+  "source_prerequisite": {
+    "name": "LITS-2006-data.dta",
+    "sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "rows": 29002,
+    "variables": 1198
+  },
+  "accepted_base": {
+    "source_certification_commit": "923f2c00b6145182a5e2be5038f579845951da19",
+    "projection_hash": "84361298ae702786a3fd1044bf619ffa4fe9ed2877040724386951e9c9d27872",
+    "candidate_projection_hash": "7f81a222ea2611638d7ce7ac55c695120b57323832e6dc17ff65c1992201659c",
+    "release_hash": "e6c954538fa1830820120465a10a6d065b8a18d1e6b7b08d3f863b0917741e26",
+    "replay_manifest_hash": "6bfe9862abd6f373309ff6f8868f8871948bb9ed397906d880cda6776941a1dd",
+    "flow": [
+      "EXACT_SOURCE_SHA_CHECK",
+      "FROZEN_PHYSICAL_DECODER",
+      "GOVERNED_C11_PROJECTION",
+      "C11_SOURCE_RELEASE_CANDIDATE",
+      "validate_c11_source_release",
+      "C11Repository",
+      "resolve_release_exact"
+    ]
+  },
+  "algorithm": [
+    {
+      "step": "A01",
+      "operation": "VERIFY_VENDORED_ACCEPTED_BLOBS",
+      "authority_change": false
+    },
+    {
+      "step": "A02",
+      "operation": "VERIFY_SOURCE_SHA256_EXACT",
+      "expected": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09"
+    },
+    {
+      "step": "A03",
+      "operation": "decode_dta(source_path, encoding=\"latin1\")",
+      "required_status": "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY"
+    },
+    {
+      "step": "B01",
+      "operation": "REPLAY_ACCEPTED_AS2B_BASE_PROJECTION_FROM_EXACT_VENDORED_PRODUCER"
+    },
+    {
+      "step": "B02",
+      "operation": "REBUILD_AND_VALIDATE_ACCEPTED_BASE_CANDIDATE",
+      "must_equal_candidate_hash": "7f81a222ea2611638d7ce7ac55c695120b57323832e6dc17ff65c1992201659c"
+    },
+    {
+      "step": "B03",
+      "operation": "VERIFY_BASE_I02_RELEASE",
+      "must_equal_release_hash": "e6c954538fa1830820120465a10a6d065b8a18d1e6b7b08d3f863b0917741e26"
+    },
+    {
+      "step": "C01",
+      "operation": "BUILD_FROZEN_F02_CLOSURE_FROM_EXACT_VENDORED_PRODUCER",
+      "frozen_scope_hash": "bf305bf3f169d66954be4f39cc602880fddea6083b5bee9c0212938355cd5297"
+    },
+    {
+      "step": "C02",
+      "operation": "VERIFY_ZERO_BASED_F02_REPLAY_TO_ONE_BASED_I02_RESPONDENT_ALIGNMENT",
+      "law": "f02_row = physical_row - 1"
+    },
+    {
+      "step": "C03",
+      "operation": "VERIFY_FROZEN_F02_SOURCE_SCAN_COUNTS_AND_ROOTS",
+      "semantic_inference": false
+    },
+    {
+      "step": "C04",
+      "operation": "BUILD_Q310_Q311_QUESTION_BINDINGS_USING_EXACT_F02_QUESTION_REFS",
+      "canonical_mapping": "NOT_AUTHORIZED"
+    },
+    {
+      "step": "C05",
+      "operation": "BUILD_Q310_Q311_EVENTS_FROM_EXACT_NATIVE_VALUES_1_2_3_OR_MISSING_ONLY",
+      "unbound_value_behavior": "FAIL_CLOSED"
+    },
+    {
+      "step": "C06",
+      "operation": "USE_EXACT_F02_RESPONSE_SLOT_REFS_AS_RESPONSE_TOPOLOGY_REFS"
+    },
+    {
+      "step": "C07",
+      "operation": "BUILD_EXACT_ALL_ROW_ROUTING_FACTS_USING_EXACT_F02_ROUTING_REFS",
+      "missingness": "PRESERVED_IN_EVENT_STATE"
+    },
+    {
+      "step": "C08",
+      "operation": "CARRIER_WRAP_EXACT_F02_AUTHORITY_REFS",
+      "governed_object_family_expansion": "NONE__EMPTY_FAMILY_GRANT"
+    },
+    {
+      "step": "D01",
+      "operation": "UNION_EXACT_BASE_SECTIONS_WITH_EXTENSION",
+      "base_public_and_internal_refs": "PRESERVED"
+    },
+    {
+      "step": "D02",
+      "operation": "BUILD_NEW_SOURCE_RELEASE_MANIFEST",
+      "successor_semantic_release_hash": "UNKNOWN_UNTIL_I02"
+    },
+    {
+      "step": "D03",
+      "operation": "BUILD_REAL_I02_REPLAY_MANIFEST",
+      "authority": "EXACT_F02_REPLAY_AUTHORITY"
+    },
+    {
+      "step": "D04",
+      "operation": "ingest_c11_source_release(candidate, C11Repository())",
+      "identity_minter": "I02_ONLY"
+    },
+    {
+      "step": "D05",
+      "operation": "resolve_release_exact(result.release_ref)",
+      "required": "PASS"
+    },
+    {
+      "step": "D06",
+      "operation": "EMIT_EXACT_RECEIPTS",
+      "r5a_realization_authority_claimed": false
+    }
+  ],
+  "f02_identity_preservation": {
+    "selector_remint": false,
+    "scope_anchor_used_as_successor_release_hash": false,
+    "question_refs": "EXACT",
+    "response_slot_refs": "EXACT_AS_EVENT_TOPOLOGY_REFS",
+    "routing_refs": "EXACT_AS_ROUTING_RULE_REFS",
+    "response_value_state_refs": "EXACT_IN_FROZEN_F02_PACKAGE_AND_RECEIPT__NOT_FALSELY_PROMOTED_TO_I02_PUBLIC_OBJECT_FAMILY",
+    "authority_refs": "EXACT"
+  },
+  "base_identity_preservation": {
+    "strategy": "BUILD_ACCEPTED_BASE_CANDIDATE_FIRST__THEN_UNION_EXTENSION",
+    "reason": "A single widened GovernedC11Projection would remint base event/coordinate refs because projection_identity_ref participates in their identities.",
+    "base_sections_preserved": [
+      "EmpiricalUniverse",
+      "RespondentIdentity",
+      "QuestionVariableBinding",
+      "RespondentEvent",
+      "RoutingEligibilityFact",
+      "EmpiricalCoordinateFact",
+      "weight typed absence",
+      "source relation typed absence",
+      "replay-deferred/NA sections"
+    ]
+  },
+  "output_identity_law": {
+    "expected_successor_semantic_release_hash": null,
+    "hardcode_forbidden": true,
+    "actual_release_ref_source": "ingest_c11_source_release return only"
+  },
+  "r5a_boundary": {
+    "authority_question_decided_here": false,
+    "scope_anchor_runtime_release_equality_claimed": false,
+    "realization_binding_emitted": false
+  }
+}

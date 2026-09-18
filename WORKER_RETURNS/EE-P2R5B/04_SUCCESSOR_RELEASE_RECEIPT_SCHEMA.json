@@ -1,0 +1,184 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:rawlsing:prev3:ee-p2r5b:successor-release-receipt-schema:1.0.0",
+  "title": "EE-P2R5B Accepted I02 Successor Release Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "status",
+    "terminal",
+    "contract",
+    "source",
+    "frozen_support_git_blobs",
+    "accepted_base_replay",
+    "frozen_f02_scope_anchor",
+    "extension",
+    "accepted_i02_successor",
+    "r5a_boundary",
+    "forbidden_modifications_observed"
+  ],
+  "properties": {
+    "schema": {
+      "const": "EE_P2R5B_SUCCESSOR_RELEASE_RECEIPT@1.0.0"
+    },
+    "status": {
+      "const": "PASS"
+    },
+    "terminal": {
+      "const": "EE_P2R5B_PASS__I02_SUCCESSOR_RELEASE_LOCAL_EXECUTION_FULLY_MECHANIZED__EXACT_SOURCE_ACCESS_ONLY_REMAINS__NO_REALIZATION_AUTHORITY_CLAIMED"
+    },
+    "contract": {
+      "const": "EE_P2R5B_I02_SUCCESSOR_RELEASE_MECHANICAL_EXECUTION@1.0.0"
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "name",
+        "sha256",
+        "rows",
+        "variables",
+        "format",
+        "decoder_call",
+        "decoder_compatibility_status"
+      ],
+      "properties": {
+        "name": {
+          "const": "LITS-2006-data.dta"
+        },
+        "sha256": {
+          "const": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09"
+        },
+        "rows": {
+          "const": 29002
+        },
+        "variables": {
+          "const": 1198
+        },
+        "format": {
+          "const": "DTA"
+        },
+        "decoder_call": {
+          "const": "decode_dta(source_path, encoding=\"latin1\")"
+        },
+        "decoder_compatibility_status": {
+          "const": "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY"
+        }
+      }
+    },
+    "frozen_support_git_blobs": {
+      "type": "object"
+    },
+    "accepted_base_replay": {
+      "type": "object"
+    },
+    "frozen_f02_scope_anchor": {
+      "type": "object",
+      "required": [
+        "ref",
+        "content_hash",
+        "role_claimed_here",
+        "accepted_i02_release_claimed"
+      ],
+      "properties": {
+        "content_hash": {
+          "const": "bf305bf3f169d66954be4f39cc602880fddea6083b5bee9c0212938355cd5297"
+        },
+        "accepted_i02_release_claimed": {
+          "const": false
+        }
+      }
+    },
+    "extension": {
+      "type": "object"
+    },
+    "accepted_i02_successor": {
+      "type": "object",
+      "required": [
+        "ingest_contract",
+        "ingest_disposition",
+        "accepted",
+        "source_release_manifest",
+        "source_release_manifest_hash",
+        "candidate_projection_hash",
+        "release_ref",
+        "semantic_release_hash",
+        "replay_manifest_ref",
+        "replay_manifest_file",
+        "replay_manifest_file_sha256",
+        "m01_m18_file",
+        "m01_m18_file_sha256",
+        "m01_m18_coverage",
+        "record_counts",
+        "repository_release_count",
+        "repository_snapshot_identity",
+        "resolve_release_exact"
+      ],
+      "properties": {
+        "ingest_contract": {
+          "const": "PRE553_C11_INGEST@1.0.0"
+        },
+        "ingest_disposition": {
+          "const": "ACCEPTED_C11_LOGICAL_RELEASE"
+        },
+        "accepted": {
+          "const": true
+        },
+        "release_ref": {
+          "type": "object",
+          "required": [
+            "kind",
+            "object_id",
+            "content_hash"
+          ],
+          "properties": {
+            "kind": {
+              "const": "C11LogicalRelease"
+            },
+            "content_hash": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          }
+        },
+        "semantic_release_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "resolve_release_exact": {
+          "const": "PASS"
+        }
+      }
+    },
+    "r5a_boundary": {
+      "type": "object",
+      "required": [
+        "realization_authority_claimed",
+        "scope_anchor_runtime_release_equality_claimed",
+        "release_alias_claimed",
+        "realization_binding_emitted",
+        "facts_emitted_for_future_binding_only"
+      ],
+      "properties": {
+        "realization_authority_claimed": {
+          "const": false
+        },
+        "scope_anchor_runtime_release_equality_claimed": {
+          "const": false
+        },
+        "release_alias_claimed": {
+          "const": false
+        },
+        "realization_binding_emitted": {
+          "const": false
+        },
+        "facts_emitted_for_future_binding_only": {
+          "const": true
+        }
+      }
+    },
+    "forbidden_modifications_observed": {
+      "type": "object"
+    }
+  }
+}
