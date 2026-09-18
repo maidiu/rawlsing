@@ -277,7 +277,7 @@ with scope:
 
 The driver-bound verifier validates its actual stage envelope and bound failure receipt, returns that exact disposition directly, and does **not** force it through the older normalized verifier as a different failure kind.
 
-Candidate-local failures do not suppress later lawful cells. Common-source authority blockers stop that source and remain final blockers even though later sources may lawfully proceed. No failure authorizes synthetic completion.
+Candidate-local failures do not suppress later lawful cells. Common-source authority blockers stop that source and remain final blockers even though later sources may lawfully proceed. Common-source and common-court failure receipts are candidate-neutral (`candidate: null`) so one exact common-scope receipt can cover later unattempted positions without falsely attributing the common defect to another candidate. No failure authorizes synthetic completion.
 
 ## Final verification
 
