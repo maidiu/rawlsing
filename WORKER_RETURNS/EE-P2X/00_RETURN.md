@@ -1,6 +1,6 @@
 # EE-P2X — governed execution return
 
-Status: `IN_PROGRESS__LITS_I_A_TERMINAL_BINDING_BLOCKER_RECORDED__CONTINUING_LITS_I_B`
+Status: `IN_PROGRESS__LITS_I_A_B_TERMINAL_BINDING_BLOCKERS_RECORDED__CONTINUING_LITS_I_C`
 
 The final-P2 sealed checkpoint `20260917T1941-0400` and Lock2
 `8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188`
@@ -21,3 +21,13 @@ missing composite would redesign the forbidden harness.  Therefore Candidate
 A has no admissible I03/I05/lifecycle/replay invocation after its qualifying
 first build.  This source-local Candidate-A terminal blocker does not rank or
 select a carrier and does not suppress the required ordered Candidate-B work.
+
+LiTS-I Candidate B's fresh cacheless accepted Route-B session completed and
+reconstructed the exact source, projection, C11 release, replay, and repository
+identities.  Its terminal receipt and follow-on binding boundary are recorded
+in `03_LITS_I_B_CACHELESS_C11_STAGE.json` and
+`04_LITS_I_B_TERMINAL_BINDING_BLOCKER.json`.  The frozen production driver
+cannot materialize the sealed runtime predicate/query preimages, and D04-R2
+does not provide a callable C11-to-77-role I05 binding.  No replacement
+executor, historic-product substitution, or lifecycle/performance claim was
+made.  Candidate C remains next in the required LiTS-I order.
