@@ -1,0 +1,65 @@
+{
+  "schema": "RAWLSING_HQ_HANDOFF@1.1.0",
+  "checkpoint_id": "20260918T1909-0400",
+  "repository": "maidiu/rawlsing",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354",
+  "prior_checkpoint": "20260918T1843-0400",
+  "status": "R6K_ADOPTED__LOCAL_SNAPSHOT_MATERIALIZATION_READY_TO_COMMISSION__ZERO_ACTIVE_BINDINGS__P2X_HELD",
+  "decisions": [
+    "HQD-2026-09-18-062"
+  ],
+  "adoption_path": "HQ_HANDOFF/EE_P2R6K_ADOPTION_20260918.md",
+  "adjudicated_returns": [
+    {
+      "id": "EE-P2R6K",
+      "return_head": "21948398ad84095b69a815e29e756ad9f6d139c4",
+      "disposition": "PASS__ADOPTED_VALIDATED_C11_SNAPSHOT_PROTOCOL"
+    }
+  ],
+  "binding_state": {
+    "active_positive_binding_count": 0,
+    "banked_corrected_preimage_hash": "a5f36a81843fe2ebab0b5cccb369ce76035f842b93e602613b8b9f3a81103308"
+  },
+  "next_action": {
+    "id": "EE-P2R6K-LOCAL",
+    "status": "READY_TO_COMMISSION",
+    "execution_surface": "LOCAL-MACHINE CODEX",
+    "maximum_intelligence": "LUNA",
+    "library_access": "EXACT_ONLY",
+    "source_name": "LITS-2006-data.dta",
+    "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "operation": "EXACT_ADOPTED_R6L_REPLAY_AND_VALIDATED_C11_SNAPSHOT_EMISSION_ONLY"
+  },
+  "active_workers": [
+    {
+      "id": "EE-P2X",
+      "branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+      "observed_head_at_checkpoint": "32e224c28d720fce7cdcf6182afb5d327e8a1cf0",
+      "temporal_classification": "UNCHANGED_ACTIVE_WORKER",
+      "execution_surface": "LOCAL-MACHINE CODEX__DORMANT_WHILE_HELD",
+      "library_access": "EXACT_ONLY"
+    }
+  ],
+  "dependency_graph": {
+    "LOCAL_RELEASE_SNAPSHOT_MATERIALIZATION": {
+      "status": "READY_TO_COMMISSION"
+    },
+    "CORRECTED_BINDING_POSITIVE_R6A_PROOF": {
+      "status": "DORMANT",
+      "prerequisites": [
+        "ADOPTED_RESTORABLE_VALIDATED_RELEASE_SNAPSHOT"
+      ]
+    },
+    "AB_OWNER_SEAM_REQUALIFICATION": {
+      "status": "DORMANT"
+    },
+    "BACKEND_FANIN": {
+      "status": "DORMANT"
+    },
+    "EE-P2X": {
+      "status": "HELD"
+    }
+  },
+  "terminal": "R6K_ADOPTED__LOCAL_SNAPSHOT_MATERIALIZATION_READY_TO_COMMISSION__P2X_HELD"
+}
