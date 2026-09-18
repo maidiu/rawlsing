@@ -86,6 +86,8 @@ def _build_source(
     risk_namespace: str | None = None,
     topology_by_question=None,
     nonmember_routing_state: str = "NOT_ELIGIBLE",
+    question_refs_override=None,
+    source_hash_override: str | None = None,
 ):
     source_auth = _auth(
         f"source-{tag}",
@@ -132,7 +134,14 @@ def _build_source(
     )
     question_names = sorted({q for row in rows for q in row.get("responses", {})})
     coordinate_names = sorted({c for row in rows for c in row.get("coords", {})})
-    qrefs = {q: _ref("QUESTION_NATIVE", f"{question_namespace}-{q}") for q in question_names}
+    qrefs = {
+        q: (
+            question_refs_override[q]
+            if question_refs_override is not None and q in question_refs_override
+            else _ref("QUESTION_NATIVE", f"{question_namespace}-{q}")
+        )
+        for q in question_names
+    }
     crefs = {c: _ref("COORDINATE_NATIVE", f"{question_namespace}-{c}") for c in coordinate_names}
     questions = tuple(
         QuestionVariableBinding(
@@ -280,7 +289,7 @@ def _build_source(
         coordinates = list(reversed(coordinates))
         weight_facts = list(reversed(weight_facts))
 
-    source_hash = _h(f"source-artifact:{tag}")
+    source_hash = source_hash_override or _h(f"source-artifact:{tag}")
     counts = {
         "EmpiricalUniverse": 1,
         "RespondentIdentity": len(respondents),
