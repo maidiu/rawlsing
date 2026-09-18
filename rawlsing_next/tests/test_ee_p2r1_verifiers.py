@@ -1,16 +1,22 @@
 from __future__ import annotations
 
+import os
 import subprocess
 import sys
+from pathlib import Path
 
 
 def _run(path: str):
+    env = dict(os.environ)
+    root = str(Path.cwd())
+    env["PYTHONPATH"] = root + (os.pathsep + env["PYTHONPATH"] if env.get("PYTHONPATH") else "")
     completed = subprocess.run(
         [sys.executable, path],
         check=False,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
         text=True,
+        env=env,
     )
     assert completed.returncode == 0, completed.stdout + "\n" + completed.stderr
     return completed.stdout
