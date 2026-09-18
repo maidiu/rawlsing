@@ -178,3 +178,56 @@ def test_driver_specific_common_court_blocker_is_explicit_extension():
         "law": ext["law"],
     }
     assert BINDING["driver"]["backend_to_ledger_disposition"]["COMMON_COURT_BLOCKER"] == ext["ledger_disposition"]
+
+
+def test_ready_stage_next_transition_is_exact_and_drift_rejects(tmp_path):
+    work = tmp_path / "work"
+    ledger = _base_ledger()
+    address = "LITS_I/A/S03_PARITY_ORACLE_GATE"
+    _write_stage(
+        work,
+        ledger,
+        address=address,
+        ledger_disposition="PASS",
+        receipt={
+            "schema": BINDING["driver"]["stage_receipt_schemas"]["backend_envelope"],
+            "stage": address,
+            "backend_contract": BINDING["driver"]["backend_contract"],
+            "terminal_disposition": "PASS",
+            "input_identity_hash": "5" * 64,
+            "measured_payload": {"evidence_artifacts": {}},
+            "_next_stage": "LITS_I/A/S04_I03_EXECUTION",
+        },
+    )
+    _write_ledger(work, ledger)
+    _, _, _, info, _ = bridge.validate_driver_ledger(work, allow_incomplete=True)
+    assert info[address]["kind"] == "backend"
+
+    ledger["stages"][address]["next_stage"] = "LITS_I/B/S00_SOURCE_PREFLIGHT_IDENTITY"
+    _write_ledger(work, ledger)
+    with pytest.raises(bridge.DriverBindingBlocker, match="NEXT_STAGE_DRIFT"):
+        bridge.validate_driver_ledger(work, allow_incomplete=True)
+
+
+def test_driver_payload_rejects_ranking_or_selection_surface(tmp_path):
+    work = tmp_path / "work"
+    ledger = _base_ledger()
+    address = "LITS_I/A/S03_PARITY_ORACLE_GATE"
+    _write_stage(
+        work,
+        ledger,
+        address=address,
+        ledger_disposition="PASS",
+        receipt={
+            "schema": BINDING["driver"]["stage_receipt_schemas"]["backend_envelope"],
+            "stage": address,
+            "backend_contract": BINDING["driver"]["backend_contract"],
+            "terminal_disposition": "PASS",
+            "input_identity_hash": "6" * 64,
+            "measured_payload": {"evidence_artifacts": {}, "winner": "A"},
+            "_next_stage": "LITS_I/A/S04_I03_EXECUTION",
+        },
+    )
+    _write_ledger(work, ledger)
+    with pytest.raises(bridge.DriverBindingBlocker, match="FORBIDDEN_DRIVER_OUTPUT_SURFACE"):
+        bridge.validate_driver_ledger(work, allow_incomplete=True)
