@@ -1,6 +1,6 @@
 # EE-P2R4B — F02 COMPOSITE C11 PUBLIC REALIZATION + REPOSITORY BINDING — GOVERNED RETURN
 
-Status: **BLOCK — pending governed Browser qualification**
+Status: **BLOCK**
 
 Terminal:
 
@@ -30,13 +30,13 @@ F02 freezes:
 
 by directly hashing the bespoke `F02_LITS1_C11_COMPOSITE_RELEASE@1.0.0` reference-union material: exact base-release reference plus governed q310/q311 extension material.
 
-Accepted I02 does something categorically stricter. It validates a complete `C11SourceReleaseCandidate`, seals an I02 `ReplayManifest` over the exact candidate closure, closes M01–M18, and only then computes the `C11LogicalRelease.semantic_release_hash` from:
+Accepted I02 validates a complete `C11SourceReleaseCandidate`, seals an I02 `ReplayManifest` over the exact candidate closure, closes M01–M18, and only then computes `C11LogicalRelease.semantic_release_hash` from:
 
 `{candidate_projection_hash, replay_manifest_ref, m01_m18}`.
 
 That semantic hash is not caller-selectable. `C11LogicalRelease` construction is validation-seal gated, and `C11Repository` accepts only those sealed releases.
 
-Therefore a bounded adapter cannot make `bf305...` repository-resolvable without one of three forbidden moves: bypass I02 validation, change the I02 identity law, or remint/substitute the F02 release identity.
+Therefore a bounded adapter cannot make `bf305...` repository-resolvable without a forbidden move: bypass I02 validation, change the I02 identity law, or remint/substitute the frozen F02 release identity.
 
 ## Base C11 lineage
 
@@ -81,9 +81,23 @@ Real source bytes are not the missing step. Replaying the carrier could construc
 
 Maximum local Codex intelligence required: **NOT APPLICABLE**.
 
-## Browser qualification
+## Governed Browser qualification
 
-Pending governed bounded court on the branch semantic candidate.
+PASS on semantic candidate `e8fac4fb33840601d41a3aedb533e6c5ada0fda1`.
+
+Evidence execution: `a30c04d8232264ff90a1ea8a1fe052883965c663`.
+
+- workflow run: `35383712459`
+- job: `105725613846`
+- bounded court: `36 passed in 0.56s`
+- protocol self-test: `20 passed in 0.12s`
+- artifact: `rabochii-court-receipt-35383712459`
+- artifact id: `10563280105`
+- artifact digest: `sha256:e116e16e8f22dae8fa5183e444d50643c84c91ea016e9b63c540125bf9af8852`
+- compiler/runtime: `python:3.12.14|pytest:9.1.1`
+- transient qualification PR: `#395`, close without merge.
+
+Two nonterminal qualification attempts are retained as infrastructure traces only: run `35383542243` rejected an ineligible court-test path before bounded tests; run `35383632744` reached collection but the source-backed facade suite required `pandas`, which the bounded court does not install. Neither altered the semantic candidate or terminal.
 
 ## Scope audit
 
