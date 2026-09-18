@@ -1,0 +1,73 @@
+{
+  "schema": "EE_P2R3_MIXED_COMPOSITION_AND_FRONTIER_RECEIPT@1.0.0",
+  "status": "BLOCKED_BEFORE_FULL_FRONTIER_COMPILATION",
+  "terminal": "EE_P2R3_BLOCK__FROZEN_F02_SELECTOR_AST_AND_MIXED_COMPOSITION_REQUIRE_PRE553_PUBLIC_PREDICATE_EVALUATOR_AND_COMPOSITION_AUTHORITY_CHANGE",
+  "frozen_workload": {
+    "id": "PREV3_LEARNED_WORLD_POSITIVE_WORKLOAD_R1",
+    "candidates": 50,
+    "roles": 77,
+    "candidate_family_shape": {
+      "P0": 5,
+      "P1": 1,
+      "P2": 18,
+      "P3": 1,
+      "P4": 25
+    },
+    "role_shape": {
+      "P0": 5,
+      "P1": 3,
+      "P2": 36,
+      "P3": 8,
+      "P4": 25
+    },
+    "maximum_conditioner_arity_K": 3,
+    "maximum_target_arity_J": 2,
+    "no_pruning": true,
+    "no_rng": true,
+    "no_ranking": true,
+    "no_top_k": true,
+    "no_post_outcome_mutation": true
+  },
+  "exact_selector_substitution_readoption": {
+    "f02_readoption_blob": "c561e5074cfa461188eca219ff30575c71d3839b",
+    "selector_count": 6,
+    "selector_hashes": [
+      "c9a0c8106d457bba7e3f3f5abb7ee7fb98482bd86af629d860e4a904ad58456a",
+      "78dbd1a899fe43ac2e2ca6985ea0eccb086989fa2c4315fa518524e7ba94a6df",
+      "c4d2dd827326b6ff29f3c02382c36fa33c47c6227bfbf8c8053c11e1089923ca",
+      "69dc59f79014a7c17190ca658e193a004e167c322c7f713f4540882fb980feb8",
+      "f63d6121776500912342ab377178a15fcf6fabf7071864f4f413d95babb43849",
+      "a6494153b4defeb13e1658b73eead7c5df6e25847708c770dad5f42142492c7d"
+    ],
+    "candidate_grammar_changed": false,
+    "validator_set_changed": false,
+    "truth_law_changed": false
+  },
+  "query_templates": {
+    "count": 3,
+    "hashes": [
+      "8a7bf5bbb1c2d8d6328dc5507416931a9c12e2c76668e0fc47af8add254c5d44",
+      "deb71e653592d8bdb246f8c4d53359e290708d3875e38433f518b307f520c6f7",
+      "ef8b19744ec3c06e352f7accf75efbc216ffc454905da09948763a2c54fdc053"
+    ],
+    "changed": false
+  },
+  "compile_disposition": {
+    "P0": "BASE_ONLY__NO_NEW_CONTRACT_DEFECT_IDENTIFIED",
+    "P1": "BASE_ONLY__NO_NEW_CONTRACT_DEFECT_IDENTIFIED",
+    "P2": "BLOCKED__REQUIRES_MIXED_BASE_F02_DERIVED_PREDICATES",
+    "P3": "BLOCKED__REQUIRES_MIXED_BASE_F02_DERIVED_PREDICATES",
+    "P4": "BASE_ONLY__NO_NEW_CONTRACT_DEFECT_IDENTIFIED",
+    "full_50_candidate_frontier_compilable": false,
+    "exact_77_role_execution_surface_reachable": false
+  },
+  "generic_i05_guard": "composed predicates must share exact grammar and respondent binding law",
+  "generic_i05_blob": "b2b99460cc5991bc26aa2ffe5bda129b408fc197",
+  "source_neutral_representation_only_repair_proved": false,
+  "why_no_repair": [
+    "grammar authority equality is semantically enforced by current I05",
+    "respondent binding equality is semantically enforced by current I05",
+    "no adopted compatibility/equivalence authority exists",
+    "frozen F02 AST dialect independently fails accepted public evaluator contract"
+  ]
+}

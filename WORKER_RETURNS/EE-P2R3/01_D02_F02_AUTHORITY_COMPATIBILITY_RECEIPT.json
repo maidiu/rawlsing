@@ -1,0 +1,53 @@
+{
+  "schema": "EE_P2R3_D02_F02_AUTHORITY_COMPATIBILITY_RECEIPT@1.0.0",
+  "status": "BLOCKED__NO_ADOPTED_MIXED_GRAMMAR_OR_RESPONDENT_BINDING_COMPATIBILITY_AUTHORITY",
+  "terminal": "EE_P2R3_BLOCK__FROZEN_F02_SELECTOR_AST_AND_MIXED_COMPOSITION_REQUIRE_PRE553_PUBLIC_PREDICATE_EVALUATOR_AND_COMPOSITION_AUTHORITY_CHANGE",
+  "authorities": {
+    "d02_commit": "40cb8585f076a66d9884b99022a59bb909606c03",
+    "d02_frontier_blob": "5399a3f64642c8d9f8a0644db0adc15d38642971",
+    "f02_pass": "482bb884a99e31ba77e904d0df39fffc872cbed3",
+    "p2r1_pass": "9511f44728a8469d685463ec0fc880864c9187de"
+  },
+  "base_contract": {
+    "grammar_authority_ref": {
+      "authority_id": "urn:rawlsing:pre553:as2b:lits1:authority:i03_query",
+      "authority_version": "AS2A-BANKED-1.0.0",
+      "authority_content_hash": "6c6d2f5fb5f4165e5de19989bd456ee8c09f42ab175fa4d10572dc2b9403ca0d"
+    },
+    "same_respondent_binding_semantics": "EXACT_SAME_RESPONDENT_ONLY"
+  },
+  "f02_contract": {
+    "grammar_authority_ref": {
+      "authority_id": "urn:rawlsing:prev3:f02:lits1:predicate-grammar",
+      "authority_version": "1.0.0",
+      "authority_content_hash": "bc6d433ff58e67e343f1bd1d8e3e92d691b81931dca6447716b08dbf0c8eff8b"
+    },
+    "parent_authority_ref": {
+      "authority_id": "urn:rawlsing:pre553:as2b:lits1:authority:i03_query",
+      "authority_version": "AS2A-BANKED-1.0.0",
+      "authority_content_hash": "6c6d2f5fb5f4165e5de19989bd456ee8c09f42ab175fa4d10572dc2b9403ca0d"
+    },
+    "governed_operation": "survey_response_EQ",
+    "same_respondent_binding_semantics": "EXACT_SOURCE_ROW_REPLAY_WITHIN_SAME_LITS1_RELEASE"
+  },
+  "authority_law": {
+    "exact_parent_lineage_is_semantic_equivalence": false,
+    "validate_object_authority_closure_infers_adjacent_semantics": false,
+    "respondent_law_equivalence_adopted": false,
+    "mixed_grammar_composition_grant_adopted": false
+  },
+  "selector_hashes": [
+    "c9a0c8106d457bba7e3f3f5abb7ee7fb98482bd86af629d860e4a904ad58456a",
+    "78dbd1a899fe43ac2e2ca6985ea0eccb086989fa2c4315fa518524e7ba94a6df",
+    "c4d2dd827326b6ff29f3c02382c36fa33c47c6227bfbf8c8053c11e1089923ca",
+    "69dc59f79014a7c17190ca658e193a004e167c322c7f713f4540882fb980feb8",
+    "f63d6121776500912342ab377178a15fcf6fabf7071864f4f413d95babb43849",
+    "a6494153b4defeb13e1658b73eead7c5df6e25847708c770dad5f42142492c7d"
+  ],
+  "query_template_hashes_unchanged": [
+    "8a7bf5bbb1c2d8d6328dc5507416931a9c12e2c76668e0fc47af8add254c5d44",
+    "deb71e653592d8bdb246f8c4d53359e290708d3875e38433f518b307f520c6f7",
+    "ef8b19744ec3c06e352f7accf75efbc216ffc454905da09948763a2c54fdc053"
+  ],
+  "conclusion": "Existing authority proves exact distinct contracts and parent closure, not compatibility. Any equivalence/mixed-composition grant requires new authority and is outside EE-P2R3."
+}

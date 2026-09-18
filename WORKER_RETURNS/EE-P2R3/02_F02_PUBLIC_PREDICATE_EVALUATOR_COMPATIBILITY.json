@@ -1,0 +1,48 @@
+{
+  "schema": "EE_P2R3_F02_PUBLIC_PREDICATE_EVALUATOR_COMPATIBILITY@1.0.0",
+  "status": "BLOCKED__FROZEN_F02_SURVEY_RESPONSE_EVENT_AST_NOT_DIRECTLY_EXECUTABLE_BY_ACCEPTED_PRE553_EVALUATOR",
+  "terminal": "EE_P2R3_BLOCK__FROZEN_F02_SELECTOR_AST_AND_MIXED_COMPOSITION_REQUIRE_PRE553_PUBLIC_PREDICATE_EVALUATOR_AND_COMPOSITION_AUTHORITY_CHANGE",
+  "f02_selector_module_blob": "7b45b277164fa90c3da739aab26b516f7a8cb8dc",
+  "pre553_predicate_evaluator_blob": "902b179817f02a46fc0844971f268113123347f4",
+  "public_object_contract": {
+    "empirical_predicate_family": "EmpiricalPredicate@1.0.0",
+    "selector_refs_materialize_under_constructor": true,
+    "constructor_leaf_validation": "LEAF_FAMILY_ONLY__NO_F02_TO_PRE553_FIELD_TRANSLATION"
+  },
+  "f02_survey_response_event_leaf_fields": [
+    "op=LEAF",
+    "leaf_type=SURVEY_RESPONSE_EVENT",
+    "operation=survey_response_EQ",
+    "question_ref",
+    "response_value_ref",
+    "source_native_value",
+    "release_ref"
+  ],
+  "accepted_evaluator_required_fields": [
+    "question_semantic_ref",
+    "component_or_event_selector_ref",
+    "response_value_or_state_ref",
+    "response_topology_authority_ref",
+    "response_semantic_authority_ref",
+    "operator in {EQ,IN,STATE_EQ}",
+    "exact_value(s) for EQ/IN"
+  ],
+  "direct_execution_compatible": false,
+  "identity_preserving_field_translation_authority_found": false,
+  "repair_ceiling": {
+    "remint_or_replace_f02_selectors": "FORBIDDEN",
+    "silently_alias_fields": "NOT_AUTHORIZED",
+    "extend_public_predicate_evaluator_semantics": "REQUIRES_NEW_AUTHORITY"
+  },
+  "composite_c11_boundary": {
+    "f02_release_ref": {
+      "kind": "C11LogicalRelease",
+      "object_id": "LITS1-F02-C11-7cac43e2ca5b31cb-bf305bf3f169d669",
+      "content_hash": "bf305bf3f169d66954be4f39cc602880fddea6083b5bee9c0212938355cd5297"
+    },
+    "f02_release_form": "IMMUTABLE_BOUNDED_COMPOSITE_LOGICAL_RELEASE__EXACT_BASE_PLUS_Q310_Q311_EXTENSION",
+    "current_runner_requires": "I02_VALIDATED_C11LogicalRelease_PRESENT_IN_C11Repository",
+    "adopted_public_realization_proved": false,
+    "note": "F02 exact reference-union release authority is preserved; EE-P2R3 found no controlling artifact that makes this exact composite ref an I02-validated repository release through the accepted public facade."
+  }
+}
