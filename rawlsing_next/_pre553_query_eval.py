@@ -342,6 +342,17 @@ def _evaluate_index_group(
     component_positive = [False] * plan.arity
     derived_branch_memberships = _compile_derived_branch_memberships(predicate.predicate_ast)
 
+    try:
+        from rawlsing_next.pre553_runtime_context import current_runtime_binding
+        runtime_binding = current_runtime_binding()
+    except ImportError:
+        runtime_binding = None
+    if runtime_binding is not None:
+        for index in indices:
+            index.runtime_authorities = runtime_binding.authorities
+            index.runtime_repository = runtime_binding.repository
+            index.runtime_predicate_grammar_authority_ref = predicate.grammar_authority_ref
+
     for index in sorted(indices, key=lambda item: item.universe.ref.key):
         used.extend([index.universe, index.release.replay_manifest])
         used_auth.extend(_validate_public_object_authorities(index.universe, registry))
