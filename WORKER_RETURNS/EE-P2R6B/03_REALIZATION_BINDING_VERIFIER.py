@@ -12,7 +12,7 @@ from typing import Any, Mapping
 
 HERE = Path(__file__).resolve().parent
 ISSUER_PATH = HERE / "02_REALIZATION_BINDING_ISSUER.py"
-EXPECTED_ISSUER_GIT_BLOB_SHA1 = "c9afb5b8da0a99bb41bc2e85888255090a944f68"
+EXPECTED_ISSUER_GIT_BLOB_SHA1 = "c83058ec51ef731166bde06465a3b72c022c9c47"
 
 class VerificationError(ValueError):
     pass
