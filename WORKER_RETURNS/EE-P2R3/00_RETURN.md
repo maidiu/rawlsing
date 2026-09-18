@@ -30,12 +30,28 @@ Candidate A and B were **not run**: the common runtime precondition does not com
 
 No Library, carrier, empirical outcome, performance, surrogate-data, historical-result substitution, Lock1/Lock2, P2X, BE1, MAIN, or semantic PRE-MAIN action occurred.
 
+## Governed browser qualification
+
+PASS on semantic candidate `f80532f554a531ca98148155b198a2a60cba97e1`.
+
+Evidence execution: `8ca6034fcf79a84e91f2799e5c42b87343d6e112`.
+
+- workflow run: `35381759254`
+- job: `105719324071`
+- bounded court: `64 passed in 1.69s`
+- protocol self-test: `20 passed in 0.11s`
+- artifact: `rabochii-court-receipt-35381759254`
+- artifact id: `10562781473`
+- artifact digest: `sha256:acf6f31a1d3af88a2b1369a1bbfbc6ae800729040381a0aa15678fc3c9515ead`
+- compiler/runtime: `python:3.12.14|pytest:9.1.1`
+- transient qualification PR: `#394`, close without merge.
+
+Nonterminal run `35381638945` is retained only as an infrastructure trace: its court spec named an F02 historical test path not present on the commissioned execution tree. Protocol self-test passed; no substantive claim changed.
+
 ## Exact next owner
 
 `PRE553_PUBLIC_PREDICATE_EVALUATOR_AND_MIXED_COMPOSITION_AUTHORITY_RECONCILIATION__WITH_D02_F02_EXACT_IDENTITY_PRESERVATION`
 
 That owner must either establish an already-governed identity-preserving interpretation/composition contract or obtain new authority. EE-P2R3 cannot self-authorize semantic equivalence, change the public predicate/evaluator contract, or remint the frozen selectors.
-
-Browser qualification: **PENDING_GOVERNED_BOUNDED_COURT**.
 
 Return to HQ.

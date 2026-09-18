@@ -1,22 +1,58 @@
 {
   "schema": "EE_P2R3_BROWSER_QUALIFICATION_RECEIPT@1.0.0",
-  "status": "PENDING_GOVERNED_BOUNDED_COURT",
+  "status": "PASS__GOVERNED_BOUNDED_BROWSER_COURT",
   "terminal": "EE_P2R3_BLOCK__FROZEN_F02_SELECTOR_AST_AND_MIXED_COMPOSITION_REQUIRE_PRE553_PUBLIC_PREDICATE_EVALUATOR_AND_COMPOSITION_AUTHORITY_CHANGE",
-  "semantic_candidate_sha": null,
-  "evidence_execution_sha": null,
-  "governed_court": null,
+  "semantic_candidate_sha": "f80532f554a531ca98148155b198a2a60cba97e1",
+  "evidence_execution_sha": "8ca6034fcf79a84e91f2799e5c42b87343d6e112",
+  "governed_court": {
+    "workflow_run_id": 35381759254,
+    "job_id": 105719324071,
+    "conclusion": "success",
+    "bounded_test_result": "64 passed in 1.69s",
+    "protocol_self_test_result": "20 passed in 0.11s",
+    "artifact_id": 10562781473,
+    "artifact_name": "rabochii-court-receipt-35381759254",
+    "artifact_digest": "sha256:acf6f31a1d3af88a2b1369a1bbfbc6ae800729040381a0aa15678fc3c9515ead",
+    "compiler_identity": "python:3.12.14|pytest:9.1.1",
+    "determinism_mode": "EXACT",
+    "transient_pr": {
+      "number": 394,
+      "purpose": "governed bounded court trigger only",
+      "merged": false,
+      "final_disposition": "CLOSE_WITHOUT_MERGE"
+    }
+  },
   "qualification_tests": [
-    "rawlsing_next/tests/test_pre553_empirical_query.py",
-    "rawlsing_next/tests/test_pre553_carrier_execution.py",
-    "rawlsing_next/tests/test_pre553_empirical_objects_authority.py",
-    "rawlsing_next/tests/test_pre553_discovery_exact.py"
+    {
+      "path": "rawlsing_next/tests/test_pre553_empirical_query.py",
+      "git_blob_sha1": "cc7d93db1f87d9c311170c229dbe3506937b404a"
+    },
+    {
+      "path": "rawlsing_next/tests/test_pre553_carrier_execution.py",
+      "git_blob_sha1": "bc0db646a803b5bf80dab44d8acb01861d8b3371"
+    },
+    {
+      "path": "rawlsing_next/tests/test_pre553_empirical_objects_authority.py",
+      "git_blob_sha1": "b73e2fbd983ea8642b5de9614ab8a17ac0e07f51"
+    },
+    {
+      "path": "rawlsing_next/tests/test_pre553_discovery_exact.py",
+      "git_blob_sha1": "308a582c012f20824bc2dceb530b1c9652395f93"
+    }
   ],
-  "nonterminal_run": {
-    "run_id": 35381638945,
+  "relevant_implementation_blobs": {
+    "generic_i05": "b2b99460cc5991bc26aa2ffe5bda129b408fc197",
+    "generic_predicate_evaluator": "902b179817f02a46fc0844971f268113123347f4",
+    "generic_authority": "c824bcf17257c0318e86497fc12ee31101bb6daf",
+    "carrier_execution": "e7cda773e6a2426bfa12b22790fd8e005fe75153",
+    "f02_selector_producer_historical_authority_blob": "7b45b277164fa90c3da739aab26b516f7a8cb8dc"
+  },
+  "nonterminal_court": {
+    "workflow_run_id": 35381638945,
     "job_id": 105718939565,
-    "disposition": "NONTERMINAL_COURT_SPEC_REFERENCED_HISTORICAL_F02_TEST_PATH_NOT_PRESENT_ON_COMMISSIONED_TREE",
-    "protocol_self_test": "20 passed",
-    "substantive_claim_change_required": false
+    "result": "FAILURE_BEFORE_BOUNDED_TEST_EXECUTION__HISTORICAL_F02_TEST_PATH_NOT_PRESENT_ON_COMMISSIONED_TREE",
+    "protocol_self_test_result": "20 passed in 0.09s",
+    "disposition": "INFRASTRUCTURE_ONLY__NO_SEMANTIC_OR_TERMINAL_CHANGE"
   },
   "source_access": false,
   "library_access": false,
