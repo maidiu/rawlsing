@@ -1,6 +1,6 @@
 {
   "schema": "EE_P2R5B_LOCAL_EXECUTION_PACKET@1.0.0",
-  "status": "READY_AFTER_BROWSER_QUALIFICATION",
+  "status": "READY__BROWSER_QUALIFIED__EXACT_SOURCE_ACCESS_ONLY_REMAINS",
   "grain": "EXACT_SOURCE_ACCESS_AND_MECHANICAL_I02_EXECUTION_ONLY",
   "source_prerequisite": {
     "filename": "LITS-2006-data.dta",
@@ -73,6 +73,15 @@
   "network_note": "No network is needed for execution if the exact runtime packages are installed. Installing missing packages may require network access.",
   "semantic_judgment_remaining_for_local_worker": false,
   "maximum_local_machine_codex_intelligence_required": "LUNA",
+  "browser_qualification": {
+    "status": "PASS",
+    "semantic_candidate_commit": "c992bd21a06dbe9aae5f633ba202516e4ec5f23e",
+    "evidence_execution_commit": "f549ccfb9a713e233e1301983a10910a9ec52fd4",
+    "workflow_run_id": 35387730922,
+    "job_id": 105738436400,
+    "bounded_court": "43 passed in 0.43s",
+    "protocol_self_test": "20 passed in 0.08s"
+  },
   "return_to_hq": {
     "files": "return all four exact output files plus command exit statuses",
     "do_not_interpret_release_identity": "Report the exact I02-minted release ref verbatim; do not bind it to bf305... without separately adopted R5A authority."
