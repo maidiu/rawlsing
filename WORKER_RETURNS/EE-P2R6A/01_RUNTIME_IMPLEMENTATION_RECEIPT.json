@@ -1,0 +1,57 @@
+{
+  "schema": "EE_P2R6A_RUNTIME_IMPLEMENTATION_RECEIPT@1.0.0",
+  "disposition": "PASS",
+  "branch": "agent/rabochii-prev3-ee-p2r6a-r4a-r5a-production-runtime-implementation-r1",
+  "exact_base": "6586da01edac5e87fb81b6beb8d7b16fc0ea18ef",
+  "commission_tip": "0c3d882640cf961470849482c5fcdeacd02f7cf5",
+  "hq_checkpoint": "20260918T1553-0400",
+  "immutable_hq_handoff": "9cbd963ef4d1f2243543df4ec61d80368364c449",
+  "semantic_candidate": "3604130eb894a843f3dd67d22559a6fb8701d580",
+  "governed_evidence_head": "53700cc33a7996e315c6009453920c952c0ec0f3",
+  "grain": "PRE553_PUBLIC_PREDICATE__MIXED_COMPOSITION__RELEASE_REALIZATION_RUNTIME_IMPLEMENTATION_ONLY",
+  "implementation_blobs": {
+    "rawlsing_next/_pre553_query_common.py": "938a6b03a63dd34ef4f0f63655ed8f11f65c5d92",
+    "rawlsing_next/_pre553_query_eval.py": "128b31fa60c2650d8c7af30f1f4b1d1470acd2b6",
+    "rawlsing_next/_pre553_query_predicate.py": "edc943ca6690ac73f24492f3d01ad9ee17f70f21",
+    "rawlsing_next/pre553_discovery_exact.py": "c7380774e8a1959da5ed8c6f23c2fc3cf99ad18d",
+    "rawlsing_next/pre553_empirical_query.py": "482778348d6b450f46985c2161af32f2961d8384",
+    "rawlsing_next/pre553_runtime_authority.py": "2ddc591f2572983d18f8f3e8f81a33b80b3bca7b",
+    "rawlsing_next/pre553_runtime_composition.py": "3753c183ddb25b1b0eb0ce84db1868f39f50d3fa",
+    "rawlsing_next/pre553_runtime_context.py": "3c26c77892395a4825b377b740e37df7ea1148d4"
+  },
+  "test_blobs": {
+    "rawlsing_next/tests/test_ee_p2r6a_runtime.py": "05d9d9d790a75b8ecabcf633b550eb359e4dfc69",
+    "rawlsing_next/tests/test_pre553_empirical_query.py": "e7247aed40f8a1e8c189e0a744fe9615a4561601",
+    "rawlsing_next/tests/fixtures/ee_p2r6a_r4a_01_dialect.json": "e49b33417ea1f57e5eacb557c173507a118e11de",
+    "rawlsing_next/tests/fixtures/ee_p2r6a_r4a_02_respondent.json": "490434c1fc87decb97d187e6185e1848045dd9c5",
+    "rawlsing_next/tests/fixtures/ee_p2r6a_r4a_03_mixed.json": "a18fd79609f080062b93dfe0e2bab8e9bf865af3",
+    "rawlsing_next/tests/fixtures/ee_p2r6a_r4a_04_derived.json": "5000020fa6554be9c2ad2ab418b6f5269b59d69a",
+    "rawlsing_next/tests/fixtures/ee_p2r6a_r4a_05_successor.json": "e19d076e2d2b0ecbf7ccacba5e23dd185ce43cfc"
+  },
+  "court_spec_blob": "a3809929d84ce873699cbce9cfe3ccf8826b1a41",
+  "genericity": {
+    "dispatch_basis": [
+      "EXACT_AUTHORITY_REF",
+      "GOVERNED_CONTRACT_SCHEMA"
+    ],
+    "forbidden_literal_scan": {
+      "modules": [
+        "rawlsing_next/pre553_runtime_authority.py",
+        "rawlsing_next/pre553_runtime_composition.py",
+        "rawlsing_next/pre553_runtime_context.py"
+      ],
+      "checked_literals": [
+        "LiTS",
+        "q310",
+        "q311",
+        "D02",
+        "bf305bf3f169d66954be4f39cc602880fddea6083b5bee9c0212938355cd5297",
+        "c9a0c8106d457bba7e3f3f5abb7ee7fb98482bd86af629d860e4a904ad58456a"
+      ],
+      "result": "ABSENT"
+    }
+  },
+  "carrier_access": "NONE",
+  "empirical_or_performance_execution": "NONE",
+  "governed_return_commit": "SELF"
+}

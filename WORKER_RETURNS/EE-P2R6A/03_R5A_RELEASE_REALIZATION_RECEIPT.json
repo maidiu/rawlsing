@@ -1,0 +1,37 @@
+{
+  "schema": "EE_P2R6A_R5A_RELEASE_REALIZATION_RECEIPT@1.0.0",
+  "disposition": "PASS",
+  "adopted_r5a": {
+    "release_realization_authority": "9da19997168612891f59012e69674bac59fbee417d9b30b003171f3074168bf5",
+    "concrete_binding_schema": "a1da1ea78dce423ea3520726d0477b058057482d67964056743e08389d9045a0",
+    "r4a_release_precondition_successor_clause": "d8e3d9a19fa36599e8cd6b1bc8e82092c425fd9119be478f7ba79335d05a1b3e",
+    "aggregate": "d9aa476c493810651baefa8bad23990d9dd80812a48670ad2052353f0e7d52a2"
+  },
+  "frozen_scope_anchor": "bf305bf3f169d66954be4f39cc602880fddea6083b5bee9c0212938355cd5297",
+  "runtime_law": {
+    "historical_scope_anchor_is_repository_key": false,
+    "equivalence_inference": false,
+    "latest_default_fuzzy_nearest": false,
+    "required_active_positive_bindings": 1,
+    "zero_bindings": "FAIL_CLOSED",
+    "multiple_bindings": "FAIL_CLOSED",
+    "binding_schema_validation": "EXACT",
+    "target_kind": "C11LogicalRelease",
+    "target_resolution": "C11Repository.resolve_release_exact",
+    "verified_evidence": [
+      "EXACT_FROZEN_SCOPE",
+      "EXACT_RELATION_AUTHORITY",
+      "EXACT_SOURCE_SHA",
+      "EXACT_ACCEPTED_BASE_RELEASE_LINEAGE",
+      "EXACT_RUNTIME_I02_TARGET",
+      "EXACT_RUNTIME_CANDIDATE_PROJECTION",
+      "EXACT_RUNTIME_REPLAY_MANIFEST",
+      "EXACT_COMPLETE_M01_M18",
+      "EXACT_C11REPOSITORY_RESOLUTION"
+    ]
+  },
+  "fixture_binding_only": true,
+  "real_binding_issued": false,
+  "real_source_release_generated": false,
+  "browser_qualification_run": 35391614229
+}

@@ -1,0 +1,36 @@
+{
+  "schema": "EE_P2R6A_R4A_PREDICATE_AND_COMPOSITION_RECEIPT@1.0.0",
+  "disposition": "PASS",
+  "adopted_r4a": {
+    "respondent_compatibility": "3ef0317887f6910838636d3816237a81d5a56b38e07595c8cc1f7c5e7f1fae74",
+    "mixed_parent_child_grammar": "0d7cfaac1d63cd438d29b109b590cb828805bd113fc37759a6f6f4c88d3c8f55",
+    "derived_predicate_authority": "225e4b80390500451834ea784d955465eb9f145a4cd1f798dace51f3a6d3baa4",
+    "aggregate": "b87c387f9d222c83106c8d47d369af44f5c5368b274fd85e7a08b12c20d49cae"
+  },
+  "behavior": {
+    "legacy_same_grammar_same_binding": "UNCHANGED_EXISTING_PATH",
+    "absent_child_dialect_authority": "FAIL_CLOSED",
+    "unrecognized_child_operation": "FAIL_CLOSED",
+    "adopted_child_truth_semantics": "TRUE_IFF_SAME_ROW_GOVERNED_EVENT_HAS_EXACT_NATIVE_VALUE",
+    "missing_response": "FALSE",
+    "mixed_without_authority": "FAIL_CLOSED",
+    "mixed_wrong_authority": "FAIL_CLOSED",
+    "mixed_and": "AUTHORIZED_ONLY_BY_EXACT_ADOPTED_COMPOSITION_AUTHORITY",
+    "mixed_or": "FORBIDDEN",
+    "mixed_not": "FORBIDDEN",
+    "maximum_mixed_arity": 3,
+    "derived_metadata": "EXPLICIT_SUCCESSOR_AUTHORITY__NO_FIRST_INPUT_INHERITANCE",
+    "input_exactrefs": "UNCHANGED",
+    "canonical_input_order": "DETERMINISTIC",
+    "nested_child_dispatch": "RESOLVED_THROUGH_EXACT_SUCCESSOR_AUTHORITY_CHAIN"
+  },
+  "authority_fixture_blobs": {
+    "dialect": "e49b33417ea1f57e5eacb557c173507a118e11de",
+    "respondent_compatibility": "490434c1fc87decb97d187e6185e1848045dd9c5",
+    "mixed_grammar": "a18fd79609f080062b93dfe0e2bab8e9bf865af3",
+    "derived_predicate": "5000020fa6554be9c2ad2ab418b6f5269b59d69a",
+    "aggregate_successor": "e19d076e2d2b0ecbf7ccacba5e23dd185ce43cfc"
+  },
+  "frozen_selector_identity_behavior": "OBSERVED_FROM_AUTHORITY_DATA_ONLY__NO_REMINT_OR_REWRITE",
+  "browser_qualification_run": 35391614229
+}
