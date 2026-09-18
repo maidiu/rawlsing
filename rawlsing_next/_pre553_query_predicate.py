@@ -77,12 +77,30 @@ def _validate_public_object_authorities(
     obj: CanonicalSemanticObject,
     registry: AuthorityRegistry,
 ) -> tuple[AuthorityRef, ...]:
-    snapshots = validate_object_authority_closure(obj, registry)
-    for snapshot in snapshots:
+    runtime = None
+    try:
+        from rawlsing_next.pre553_runtime_context import current_runtime_authorities
+        runtime = current_runtime_authorities()
+    except ImportError:
+        runtime = None
+
+    resolved: list[AuthorityRef] = []
+    for raw_ref in obj.authority_snapshot_refs:
+        ref = _authority(raw_ref, f"{obj.schema_id}.authority_snapshot_ref")
+        try:
+            snapshot = registry.resolve_exact(ref).snapshot
+        except Pre553AuthorityError:
+            if runtime is None or not runtime.is_positive_runtime_predicate_authority(ref):
+                raise
+            resolved.append(ref)
+            continue
         if snapshot.typed_state != "ALLOW":
             raise Pre553AuthorityError(
                 f"{obj.schema_id} authority closure contains nonpositive exact snapshot")
-    return tuple(snapshot.authority_ref for snapshot in snapshots)
+        resolved.append(snapshot.authority_ref)
+    if obj.schema_id != "AuthoritySnapshot" and not resolved:
+        raise Pre553AuthorityError("public semantic object lacks authority closure")
+    return tuple(resolved)
 
 
 def _leaf_exact_values(
