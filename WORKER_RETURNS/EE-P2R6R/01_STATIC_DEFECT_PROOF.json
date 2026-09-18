@@ -1,0 +1,108 @@
+{
+  "schema": "EE_P2R6R_STATIC_DEFECT_PROOF@1.0.0",
+  "status": "PASS",
+  "classification": "EXPECTED_SCAN_SCHEMA_TRUNCATION__SELECTOR_ROOTS_OMITTED_FROM_VERIFIER_EXPECTATION",
+  "sealed_hq": {
+    "checkpoint_id": "20260918T1642-0400",
+    "handoff_commit": "28e0af7fd90dd2ed90923ec3f8bd1aa0e4e1fed4",
+    "decisions": [
+      "HQD-2026-09-18-049",
+      "HQD-2026-09-18-050"
+    ]
+  },
+  "exact_grain": "R5B_F02_SOURCE_SCAN_VERIFIER_SCHEMA_COMPLETENESS_REPAIR__PLUS_R6B_PIN_REFRESH_ONLY",
+  "immutable_inputs": {
+    "r5b_return_head": "648a39ad5bed42f66e066410af5869604d29c12d",
+    "r5b_driver": {
+      "path": "WORKER_RETURNS/EE-P2R5B/03_LOCAL_I02_SUCCESSOR_RELEASE_DRIVER.py",
+      "git_blob_sha1": "b819fdff50470a71f1c570aa8021e28b361fa986",
+      "proof": [
+        "f02_source_scan calls f02_module.scan_records(rows)",
+        "f02_source_scan immediately calls f02_module.verify_real_source_summary(summary)",
+        "driver writes source_scan only after that validation returns"
+      ]
+    },
+    "frozen_f02_producer": {
+      "path": "WORKER_RETURNS/EE-P2R5B/SUPPORT/FROZEN_F02/prev3_lits1_selector_closure.py",
+      "git_blob_sha1": "7b45b277164fa90c3da739aab26b516f7a8cb8dc",
+      "verify_law": "canon(observed) == canon(REAL_SOURCE_SCAN)",
+      "real_source_scan": {
+        "q310": {
+          "counts": {
+            "1": 12340,
+            "2": 7511,
+            "3": 9085,
+            "MISSING": 66
+          },
+          "row_semantic_root_sha256": "a979c15c93502b77979041ffd8451c602f63a7fcbb145106d68a78414be92455",
+          "selector_roots": {
+            "1": "0a62f6f0e3d78b429022b95c2594a3fcbf053b8af588f0ceb304ac3dafe700d2",
+            "2": "0bad1e397f5b74b6136ba82e8d81fc608d1df7124e6ff043048cc5cd91ef9c83",
+            "3": "b477bf705a93bb672d9ae670a1daa38013c2aa2841d0c506f722ab1bbdbb2f3d",
+            "MISSING": "810a81a5663c05dcd0e2f4c2c972f66dc16e7446c87054bb412242632dc57348"
+          }
+        },
+        "q311": {
+          "counts": {
+            "1": 16582,
+            "2": 4548,
+            "3": 7826,
+            "MISSING": 46
+          },
+          "row_semantic_root_sha256": "af193e948fd2199bb784f476475d6dd4c6b96698a01e1804e5a6ce69b93c49aa",
+          "selector_roots": {
+            "1": "bffb9d2e9da447a27aaf7c8f889a07d5c47389a58ad933d3ea9867f83e127869",
+            "2": "43ffb4ef1de60354b9c943135fd0f31ee54d31edbcd3bb6abf147e5bff1dce1f",
+            "3": "642a70ba00a4f7292d96267647068c3bfc83f5efc75451ce00a7df4cd2d62837",
+            "MISSING": "847c4e89a7336a5cb5ac6d73953b87091640231ba7cd5c5376e37044a12a03fb"
+          }
+        }
+      }
+    },
+    "old_r5b_verifier": {
+      "path": "WORKER_RETURNS/EE-P2R6B/SUPPORT/R5B/05_SUCCESSOR_RELEASE_VERIFIER.py",
+      "git_blob_sha1": "348c533a3dff477c3ea0c2f19b41a4e131ef3d3f",
+      "expected_scan_fields": [
+        "counts",
+        "row_semantic_root_sha256"
+      ],
+      "omitted_required_field": "selector_roots",
+      "comparison": "scan.get(\"source_scan\") != EXPECTED_SCAN"
+    },
+    "adopted_r6b_issuer_git_blob_sha1": "c83058ec51ef731166bde06465a3b72c022c9c47",
+    "adopted_r6b_binding_verifier_git_blob_sha1": "641f1e50af416441cba7650956123aa1d32f9b59"
+  },
+  "contradiction_proof": {
+    "full_frozen_scan_contains_selector_roots": true,
+    "driver_prevalidates_full_frozen_scan": true,
+    "old_expected_scan_omits_selector_roots": true,
+    "old_verifier_uses_whole_object_equality": true,
+    "conclusion": "ANY_EXACT_VALID_FULL_FROZEN_F02_SCAN_IS_NOT_EQUAL_TO_OLD_TRUNCATED_EXPECTATION"
+  },
+  "repair": {
+    "repaired_verifier_path": "WORKER_RETURNS/EE-P2R6R/02_REPAIRED_SUCCESSOR_RELEASE_VERIFIER.py",
+    "repaired_verifier_git_blob_sha1": "e7752c558c7fb407852ef7377f45eca775d3b86b",
+    "law": "OBSERVED_SOURCE_SCAN_MUST_EQUAL_COMPLETE_EXACT_FROZEN_REAL_SOURCE_SCAN__NO_UNKNOWN_KEYS",
+    "modification": "OLD_R5B_VERIFIER_PLUS_SELECTOR_ROOTS_IN_EXPECTED_SCAN_ONLY",
+    "driver_modified": false,
+    "preserved_driver_git_blob_sha1": "b819fdff50470a71f1c570aa8021e28b361fa986"
+  },
+  "refreshed_r6b_chain": {
+    "authority_epoch_id": "30815cfb20f4f66140cee8f6a2b5e5cafd5e20fb4d1b0c607bad1e3699fae2ff",
+    "issuer_path": "WORKER_RETURNS/EE-P2R6R/03_REPAIRED_R6B_BINDING_ISSUER.py",
+    "issuer_git_blob_sha1": "8fd59bc69cd549c39b81bef7d44bb96c1bc0b7c6",
+    "issuer_change": "R5B_VERIFIER_PATH_AND_GIT_BLOB_PIN_ONLY",
+    "verifier_path": "WORKER_RETURNS/EE-P2R6R/04_REPAIRED_R6B_BINDING_VERIFIER.py",
+    "verifier_git_blob_sha1": "94d4b6a500925b62fd016b57870083f4d41fc85d",
+    "verifier_change": "ISSUER_PATH_AND_GIT_BLOB_PIN_ONLY",
+    "active_binding_emitted": false
+  },
+  "empirical_boundary": {
+    "library_accessed": false,
+    "carrier_accessed": false,
+    "source_bytes_accessed": false,
+    "empirical_outcomes_accessed": false,
+    "performance_measurements_accessed": false,
+    "source_driver_rerun": false
+  }
+}
