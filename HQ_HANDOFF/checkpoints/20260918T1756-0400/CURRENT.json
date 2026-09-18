@@ -1,0 +1,105 @@
+{
+  "schema": "RAWLSING_HQ_HANDOFF@1.1.0",
+  "checkpoint_id": "20260918T1756-0400",
+  "repository": "maidiu/rawlsing",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354",
+  "prior_checkpoint": "20260918T1753-0400",
+  "status": "R6I_BROWSER_CONCRETE_BINDING_ISSUANCE_ACTIVE__R6L_ADOPTED__ZERO_BINDING_SNAPSHOT_ADOPTED__R6A_ADOPTED__P2X_HELD",
+  "decisions": [
+    "HQD-2026-09-18-056"
+  ],
+  "commission_path": "HQ_HANDOFF/EE_P2R6I_COMMISSION_20260918.md",
+  "active_workers": [
+    {
+      "id": "EE-P2R6I",
+      "branch": "agent/rabochii-prev3-ee-p2r6i-concrete-realization-binding-issuance-r1",
+      "commission_tip": "a3d2a123ed2216c7c620bf370f611bc50929017d",
+      "observed_head_at_checkpoint": "a3d2a123ed2216c7c620bf370f611bc50929017d",
+      "temporal_classification": "UNCHANGED_ACTIVE_WORKER",
+      "grain": "CONCRETE_RELEASE_REALIZATION_BINDING_CANDIDATE_ISSUANCE_AND_VERIFICATION_ONLY",
+      "execution_surface": "BROWSER",
+      "library_access": "NO",
+      "pass_wake": "HQ_BINDING_ADJUDICATION_ONLY",
+      "blocker_effect": "RETURN_EXACT_FIRST_AUTHORITY_RECONSTRUCTION_ISSUANCE_OR_VERIFICATION_FAILURE",
+      "hard_forbidden": [
+        "LIBRARY_ACCESS",
+        "CARRIER_ACCESS",
+        "SOURCE_DRIVER_RERUN",
+        "EMPIRICAL_OR_PERFORMANCE_ACCESS",
+        "MUTATE_R6L_OUTPUTS",
+        "REMINT_SELECTORS",
+        "MUTATE_AUTHORITY_EPOCH",
+        "WEAKEN_ISSUER_OR_VERIFIER",
+        "ACTIVATE_OR_ADOPT_BINDING",
+        "A_B_QUALIFICATION",
+        "P2X_OR_BE1",
+        "CANDIDATE_C_REPAIR",
+        "D02_OR_F02_WORKLOAD_MUTATION",
+        "LOCK1_OR_LOCK2",
+        "MAIN_OR_SEMANTIC_PRE_MAIN_MUTATION",
+        "REBASE"
+      ]
+    },
+    {
+      "id": "EE-P2X",
+      "branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+      "commission_tip": "e49ae8111fd2e888bdb899f85f4d206950ca7bf3",
+      "observed_head_at_checkpoint": "32e224c28d720fce7cdcf6182afb5d327e8a1cf0",
+      "temporal_classification": "UNCHANGED_ACTIVE_WORKER",
+      "grain": "FINAL_CHETIRI_P2_A_B_C_EQUAL_WORK_MEASURED_EXECUTION_ONLY",
+      "execution_surface": "LOCAL-MACHINE CODEX__DORMANT_WHILE_HELD",
+      "library_access": "EXACT_ONLY",
+      "local_maximum_intelligence_required": "NOT_APPLICABLE__NO_P2X_RESUME_COMMISSIONED",
+      "pass_wake": "HQ_MEASURED_SYNTHESIS",
+      "blocker_effect": "WAIT_FOR_ADOPTED_CONCRETE_BINDING__AB_OWNER_SEAM_QUALIFICATION__BACKEND_FANIN",
+      "hard_forbidden": [
+        "LOCAL_RUN_OR_RESUME_WHILE_HELD"
+      ]
+    }
+  ],
+  "adopted_inputs": {
+    "r6l_return_head": "1e0a22b6e8b4d25e1b40a0b915bb497369d72b6c",
+    "runtime_release_hash": "192926fabd9c9c3d40e43b1d7705ca2bcfe7f8d06e286be26d4b886d436df43f",
+    "zero_binding_snapshot_hash": "9f96121b35fff6b56d69d60cedcea04d91ca1784e7636eded73655ad8b5a7168",
+    "uniqueness_key": "659a8929df10b31da4c82eaf5a6b8bd74234b6f21430422beff186cab804fc16",
+    "authority_epoch_id": "30815cfb20f4f66140cee8f6a2b5e5cafd5e20fb4d1b0c607bad1e3699fae2ff",
+    "r6r_return_head": "20a53b10503ed5caf803fd875bd735286986449b",
+    "r6a_return_head": "3f382e6abd6c4f6f2271440041be27ceaf4900ee"
+  },
+  "runtime_state": {
+    "accepted_i02_successor_adopted": true,
+    "zero_binding_snapshot_adopted": true,
+    "r6a_production_runtime_adopted": true,
+    "r6r_repaired_verifier_chain_adopted": true,
+    "concrete_realization_binding_exists": false
+  },
+  "dependency_graph": {
+    "EE-P2R6I": {
+      "status": "ACTIVE",
+      "wake": "HQ_BINDING_ADJUDICATION"
+    },
+    "AB_OWNER_SEAM_REQUALIFICATION": {
+      "status": "DORMANT",
+      "prerequisites": [
+        "ADOPTED_CONCRETE_BINDING"
+      ]
+    },
+    "BACKEND_FANIN": {
+      "status": "DORMANT",
+      "prerequisites": [
+        "ADOPTED_CONCRETE_BINDING",
+        "QUALIFIED_AB_OWNER_SEAM"
+      ]
+    },
+    "EE-P2X": {
+      "status": "HELD",
+      "prerequisites": [
+        "ADOPTED_CONCRETE_BINDING",
+        "QUALIFIED_AB_OWNER_SEAM",
+        "QUALIFIED_PRODUCTION_BACKEND_FANIN"
+      ]
+    }
+  },
+  "terminal": "R6I_ACTIVE__P2X_HELD"
+}
