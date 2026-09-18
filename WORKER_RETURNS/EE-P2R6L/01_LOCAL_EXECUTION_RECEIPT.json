@@ -1,0 +1,85 @@
+{
+  "schema": "EE_P2R6L_R2_LOCAL_EXECUTION_RECEIPT@1.0.0",
+  "status": "PASS",
+  "terminal": "EE_P2R6L_PASS__ACCEPTED_I02_SUCCESSOR_RELEASE_MINTED_AND_VERIFIED__READY_FOR_CONCRETE_REALIZATION_BINDING_ISSUANCE",
+  "authority": {
+    "hq_checkpoint": "20260918T1736-0400",
+    "hq_handoff_commit": "1e7fefc8bb1c1115c6290721f33e19de30bc5919",
+    "hq_decision": "HQD-2026-09-18-053",
+    "r6r_adopted_return": "20a53b10503ed5caf803fd875bd735286986449b",
+    "branch": "agent/rabochii-prev3-ee-p2r6l-lits-i02-successor-release-local-execution-r1",
+    "branch_tip_after_fast_forward": "26d530c6ed762c4702845b7143c4ea91ae95cec7"
+  },
+  "prior_local_execution": {
+    "status": "COMPLETED_BEFORE_R6R_REPAIR__NOT_RERUN",
+    "prior_first_failure_terminal": "EE_P2R6L_BLOCK__F02_SOURCE_SCAN_ROOTS_COUNTS_MISMATCH",
+    "source_path_from_prior_execution": "/Users/matthewsmith/Desktop/Rawlsing/data/LiTS/LITS-2006-data.dta",
+    "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "original_driver_git_blob_sha1": "b819fdff50470a71f1c570aa8021e28b361fa986",
+    "source_driver_rerun": false,
+    "output_regeneration": false
+  },
+  "runtime": {
+    "python": "3.11.3",
+    "packages": {
+      "pyreadstat": "1.3.2",
+      "pandas": "2.3.1",
+      "numpy": "2.3.2",
+      "pyarrow": "22.0.0",
+      "duckdb": "1.5.2"
+    }
+  },
+  "reverification": {
+    "verifier_path": "WORKER_RETURNS/EE-P2R6L/SUPPORT/02_REPAIRED_SUCCESSOR_RELEASE_VERIFIER.py",
+    "verifier_git_blob_sha1": "e7752c558c7fb407852ef7377f45eca775d3b86b",
+    "command": "python WORKER_RETURNS/EE-P2R6L/SUPPORT/02_REPAIRED_SUCCESSOR_RELEASE_VERIFIER.py --receipt WORKER_RETURNS/EE-P2R6L/RUN_OUTPUT/successor_release_receipt.json",
+    "exit_status": 0,
+    "disposition": "PASS",
+    "library_access_during_r2": "NONE",
+    "pre_verification_sha256": {
+      "successor_release_receipt.json": "a011febaf5f4641ba24edc1a2b4dde24be9172d21caade8b940ba5339a3bd533",
+      "successor_release_replay_manifest.json": "aa3b6026d4dbc3df8b142725704974eaef810e5dbf5b31d14b19c88cf8ecafd5",
+      "successor_release_m01_m18.json": "665655afd961bd627776bcca03ac18ae69fdab057927d317eac506e9001fe5ae",
+      "successor_release_extension_scan.json": "28454d4148aa814a0637e3f61705691bfd00a019978af06c5b3492d89e695fe2"
+    },
+    "post_verification_sha256": {
+      "successor_release_receipt.json": "a011febaf5f4641ba24edc1a2b4dde24be9172d21caade8b940ba5339a3bd533",
+      "successor_release_replay_manifest.json": "aa3b6026d4dbc3df8b142725704974eaef810e5dbf5b31d14b19c88cf8ecafd5",
+      "successor_release_m01_m18.json": "665655afd961bd627776bcca03ac18ae69fdab057927d317eac506e9001fe5ae",
+      "successor_release_extension_scan.json": "28454d4148aa814a0637e3f61705691bfd00a019978af06c5b3492d89e695fe2"
+    },
+    "pre_post_hashes_equal": true
+  },
+  "transport": {
+    "logical_filename": "successor_release_replay_manifest.json",
+    "logical_byte_length": 118508673,
+    "logical_sha256": "aa3b6026d4dbc3df8b142725704974eaef810e5dbf5b31d14b19c88cf8ecafd5",
+    "replay_manifest_content_hash": "30c168fbdf8425b23cbf2a2b2d2c9ab56f3438851f52e3562510089f1d381a08",
+    "raw_json_preserved_locally_byte_for_byte": true,
+    "raw_json_committed_to_git": false,
+    "zip_filename": "successor_release_replay_manifest.json.zip",
+    "zip_byte_length": 17663792,
+    "zip_sha256": "9d2c608f21d9d93111c7418bce945f6245340389d7e8c2ccff70b18af358dd70",
+    "zip_member_count": 1,
+    "zip_inner_filename": "successor_release_replay_manifest.json",
+    "decompressed_member_byte_length": 118508673,
+    "decompressed_member_sha256": "aa3b6026d4dbc3df8b142725704974eaef810e5dbf5b31d14b19c88cf8ecafd5",
+    "zip_is_transport_only": true,
+    "library_archival_path": "/Rawlsing/Evidence/EE-P2R6L/successor_release_replay_manifest.json.zip",
+    "library_identity": "libfile_ec261ab2a6a48191b13802065af9f249"
+  },
+  "accepted_i02": {
+    "ingest_disposition": "ACCEPTED_C11_LOGICAL_RELEASE",
+    "release_ref": {
+      "kind": "C11LogicalRelease",
+      "object_id": "LITS1-I02-F02-SUCCESSOR-7cac43e2ca5b31cb-bf305bf3f169d669",
+      "content_hash": "192926fabd9c9c3d40e43b1d7705ca2bcfe7f8d06e286be26d4b886d436df43f"
+    },
+    "semantic_release_hash": "192926fabd9c9c3d40e43b1d7705ca2bcfe7f8d06e286be26d4b886d436df43f"
+  },
+  "boundaries": {
+    "realization_binding_issued": false,
+    "p2x_executed": false,
+    "be1_executed": false
+  }
+}
