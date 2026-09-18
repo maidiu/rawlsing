@@ -1,0 +1,232 @@
+{
+  "schema": "RAWLSING_HQ_HANDOFF@1.1.0",
+  "checkpoint_id": "20260918T1553-0400",
+  "repository": "maidiu/rawlsing",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354",
+  "prior_checkpoint": "20260918T1521-0400",
+  "status": "R5A_R5B_ADOPTED__R6A_R6B_BROWSER_ACTIVE__R6L_LOCAL_LUNA_ACTIVE__P2X_HELD",
+  "decisions": [
+    "HQD-2026-09-18-046",
+    "HQD-2026-09-18-047"
+  ],
+  "adoption_path": "HQ_HANDOFF/EE_P2R5A_R5B_ADOPTION_AND_P2R6_DISPATCH_20260918.md",
+  "adjudicated_returns": [
+    {
+      "id": "EE-P2R5A",
+      "branch": "agent/rabochii-prev3-ee-p2r5a-f02-i02-release-realization-authority-r1",
+      "commission_tip": "d5e6f78dfc36e12f8330df86d7868ddb998870fd",
+      "return_head": "6586da01edac5e87fb81b6beb8d7b16fc0ea18ef",
+      "disposition": "PASS__ADOPTED_RELEASE_REALIZATION_AUTHORITY",
+      "terminal": "EE_P2R5A_PASS__EXPLICIT_FAIL_CLOSED_F02_SCOPE_TO_I02_RUNTIME_RELEASE_REALIZATION_AUTHORITY_CANDIDATE_COMPLETE__SELECTOR_EXACTREFS_PRESERVED__RETURN_TO_HQ",
+      "authority_ids": {
+        "realization": "9da19997168612891f59012e69674bac59fbee417d9b30b003171f3074168bf5",
+        "binding_schema": "a1da1ea78dce423ea3520726d0477b058057482d67964056743e08389d9045a0",
+        "successor_clause": "d8e3d9a19fa36599e8cd6b1bc8e82092c425fd9119be478f7ba79335d05a1b3e",
+        "aggregate": "d9aa476c493810651baefa8bad23990d9dd80812a48670ad2052353f0e7d52a2"
+      },
+      "workflow_run_id": 35386432386,
+      "job_id": 105734338374,
+      "artifact_id": 10563254872,
+      "artifact_digest": "sha256:71c1d467498267e903bbd34460aef14a83fde633518fdddf333f15d2bedf73b1"
+    },
+    {
+      "id": "EE-P2R5B",
+      "branch": "agent/rabochii-prev3-ee-p2r5b-i02-successor-release-mechanical-prep-r1",
+      "commission_tip": "28dbf35f39e70aa4ec5d07b4cd745ad45afe6f30",
+      "return_head": "648a39ad5bed42f66e066410af5869604d29c12d",
+      "disposition": "PASS__ADOPTED_MECHANICAL_LOCAL_EXECUTION_PACKET",
+      "terminal": "EE_P2R5B_PASS__I02_SUCCESSOR_RELEASE_LOCAL_EXECUTION_FULLY_MECHANIZED__EXACT_SOURCE_ACCESS_ONLY_REMAINS__NO_REALIZATION_AUTHORITY_CLAIMED",
+      "driver_blob": "b819fdff50470a71f1c570aa8021e28b361fa986",
+      "verifier_blob": "348c533a3dff477c3ea0c2f19b41a4e131ef3d3f",
+      "local_maximum_intelligence_required": "LUNA",
+      "workflow_run_id": 35387730922,
+      "job_id": 105738436400,
+      "artifact_id": 10564353160,
+      "artifact_digest": "sha256:aad83ebd21e5dec0f9f9528e71efa934897c56a2179c86f602a9a29cbf64ac37"
+    }
+  ],
+  "active_workers": [
+    {
+      "id": "EE-P2R6A",
+      "branch": "agent/rabochii-prev3-ee-p2r6a-r4a-r5a-production-runtime-implementation-r1",
+      "commission_tip": "0c3d882640cf961470849482c5fcdeacd02f7cf5",
+      "observed_head_at_checkpoint": "0c3d882640cf961470849482c5fcdeacd02f7cf5",
+      "grain": "PRE553_PUBLIC_PREDICATE__MIXED_COMPOSITION__RELEASE_REALIZATION_RUNTIME_IMPLEMENTATION_ONLY",
+      "library_access": "NO",
+      "execution_surface": "BROWSER",
+      "pass_wake": "HQ_ADJUDICATE_RUNTIME_IMPLEMENTATION_ONLY",
+      "blocker_effect": "RETURN_SMALLEST_PRODUCTION_CONTRACT_OR_GENERICITY_BLOCKER__NO_LOCAL_EXECUTION",
+      "hard_forbidden": [
+        "LIBRARY_OR_CARRIER_ACCESS",
+        "REAL_REALIZATION_BINDING_ISSUANCE",
+        "P2X_OR_BE1_EXECUTION",
+        "CANDIDATE_C_REPAIR",
+        "WORKLOAD_OR_LOCK_MUTATION",
+        "MAIN_OR_SEMANTIC_PRE_MAIN_MUTATION",
+        "REBASE_OR_REPLACEMENT_BRANCH"
+      ]
+    },
+    {
+      "id": "EE-P2R6B",
+      "branch": "agent/rabochii-prev3-ee-p2r6b-realization-binding-issuer-prep-r1",
+      "commission_tip": "f463d5911f9a08a9944c23905a31a17200967424",
+      "observed_head_at_checkpoint": "f463d5911f9a08a9944c23905a31a17200967424",
+      "grain": "R5A_CONCRETE_REALIZATION_BINDING_ISSUER_AND_VERIFIER_PREPARATION_ONLY",
+      "library_access": "NO",
+      "execution_surface": "BROWSER",
+      "pass_wake": "HQ_ADJUDICATE_BINDING_ISSUER_PREPARATION_ONLY",
+      "blocker_effect": "RETURN_SMALLEST_BINDING_SCHEMA_OR_POST_LOCAL_INPUT_BLOCKER",
+      "hard_forbidden": [
+        "LIBRARY_OR_CARRIER_ACCESS",
+        "ACTUAL_REALIZATION_BINDING_ISSUANCE",
+        "INVENT_RUNTIME_RELEASE_REF",
+        "PRODUCTION_EVALUATOR_OR_I05_CHANGE",
+        "P2X_OR_BE1",
+        "CANDIDATE_C_REPAIR",
+        "LOCK_OR_WORKLOAD_MUTATION",
+        "MAIN_OR_SEMANTIC_PRE_MAIN_MUTATION",
+        "REBASE_OR_REPLACEMENT_BRANCH"
+      ]
+    },
+    {
+      "id": "EE-P2R6L",
+      "branch": "agent/rabochii-prev3-ee-p2r6l-lits-i02-successor-release-local-execution-r1",
+      "commission_tip": "0faafd3198546b3c3783f27b5a6862b4b793e7cc",
+      "observed_head_at_checkpoint": "0faafd3198546b3c3783f27b5a6862b4b793e7cc",
+      "grain": "EXACT_SOURCE_ACCESS_AND_MECHANICAL_I02_EXECUTION_ONLY",
+      "library_access": "EXACT_ONLY",
+      "execution_surface": "LOCAL-MACHINE CODEX",
+      "local_maximum_intelligence_required": "LUNA",
+      "exact_allowed_carriers": [
+        {
+          "name": "LITS-2006-data.dta",
+          "sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+          "rows": 29002,
+          "variables": 1198
+        }
+      ],
+      "pass_wake": "HQ_AND_BROWSER_CONCRETE_REALIZATION_BINDING_ISSUANCE",
+      "blocker_effect": "STOP_AT_FIRST_MECHANICAL_FAILURE__NO_REPAIR_OR_SEMANTIC_JUDGMENT",
+      "hard_forbidden": [
+        "ANY_OTHER_CARRIER_ACCESS",
+        "SEMANTIC_JUDGMENT",
+        "DRIVER_OR_VERIFIER_PATCHING",
+        "REALIZATION_BINDING_ISSUANCE",
+        "P2X_OR_BE1",
+        "CANDIDATE_C_REPAIR",
+        "LOCK_OR_WORKLOAD_MUTATION",
+        "MAIN_OR_SEMANTIC_PRE_MAIN_MUTATION",
+        "REBASE_OR_REPLACEMENT_BRANCH"
+      ]
+    },
+    {
+      "id": "EE-P2X",
+      "branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+      "commission_tip": "e49ae8111fd2e888bdb899f85f4d206950ca7bf3",
+      "observed_head_at_checkpoint": "32e224c28d720fce7cdcf6182afb5d327e8a1cf0",
+      "grain": "FINAL_CHETIRI_P2_A_B_C_EQUAL_WORK_MEASURED_EXECUTION_ONLY",
+      "library_access": "EXACT_ONLY",
+      "execution_surface": "LOCAL-MACHINE CODEX__DORMANT_WHILE_HELD",
+      "local_maximum_intelligence_required": "NOT_APPLICABLE__NO_P2X_RESUME_COMMISSIONED",
+      "pass_wake": "HQ_MEASURED_SYNTHESIS",
+      "blocker_effect": "WAIT_FOR_CONCRETE_REALIZATION_BINDING__R6A_RUNTIME_ADOPTION__AB_OWNER_SEAM_QUALIFICATION__BACKEND_FANIN",
+      "hard_forbidden": [
+        "LOCAL_RUN_OR_RESUME_WHILE_HELD",
+        "LOCK_OR_WORKLOAD_REDESIGN",
+        "SEMANTIC_OR_ROUTING_REDESIGN",
+        "NEW_WVS_ACCELERATOR",
+        "CROSS_UNIVERSE_POOLING",
+        "SURROGATE_PERFORMANCE",
+        "MAIN_OR_SEMANTIC_PRE_MAIN_MUTATION",
+        "REBASE_OR_REPLACEMENT_BRANCH"
+      ]
+    }
+  ],
+  "p2x_state": {
+    "head": "32e224c28d720fce7cdcf6182afb5d327e8a1cf0",
+    "local_execution_authorized": false,
+    "first_unfinished_stage": "LITS_I/A/S02_C11_REACHABILITY",
+    "preserved_ledger_sha256": "c941a1d77981e6ccf147024f15e9f87763567bb7eb7fc86ab6e1f9027e41b83c",
+    "measured_stage_executed": false
+  },
+  "release_state": {
+    "frozen_f02_scope_anchor": "bf305bf3f169d66954be4f39cc602880fddea6083b5bee9c0212938355cd5297",
+    "frozen_anchor_is_i02_release": false,
+    "realization_authority_adopted": true,
+    "concrete_realization_binding_exists": false,
+    "successor_i02_runtime_release_ref": "UNKNOWN_PENDING_R6L"
+  },
+  "candidate_c": {
+    "lits_status": "C_NONQUALIFYING__S02_C11_REACHABILITY__FROZEN_CACC1_STREAM_OMITS_Q310_Q311_REQUIRED_BY_F02_COMPOSITE_PROJECTION",
+    "later_cacc2_deficit": "S05_I05_LEARNED_PRODUCTION__FROZEN_CACC2_LACKS_ALL_SIX_F02_SELECTOR_REFS",
+    "cacc3": "FORBIDDEN",
+    "hidden_ab_fallback": "FORBIDDEN"
+  },
+  "dispatch_law": {
+    "preference": "BROWSER_FIRST_WHERE_LOCAL_PHYSICAL_ENVIRONMENT_NOT_INTRINSIC",
+    "local_goal": "MECHANICAL_DETERMINISTIC_MINIMUM_AMBIGUITY",
+    "commission_required_fields": [
+      "execution_surface",
+      "library_access"
+    ],
+    "local_commission_required_field": "maximum_intelligence_required",
+    "allowed_local_intelligence_levels": [
+      "LUNA",
+      "TERRA",
+      "SOL LIGHT",
+      "SOL MEDIUM",
+      "SOL HIGH"
+    ],
+    "selection_rule": "LOWEST_TIER_SUFFICIENT_FOR_SAFE_FULL_EXECUTION"
+  },
+  "dependency_graph": {
+    "EE-P2R6A": {
+      "status": "ACTIVE",
+      "wake": "HQ_RUNTIME_IMPLEMENTATION_ADJUDICATION"
+    },
+    "EE-P2R6B": {
+      "status": "ACTIVE",
+      "wake": "HQ_BINDING_ISSUER_PREP_ADJUDICATION"
+    },
+    "EE-P2R6L": {
+      "status": "ACTIVE",
+      "wake": "CONCRETE_REALIZATION_BINDING_ISSUANCE"
+    },
+    "CONCRETE_REALIZATION_BINDING": {
+      "status": "DORMANT",
+      "prerequisites": [
+        "R6L_ACCEPTED_I02_RELEASE",
+        "ADOPTED_R6B_ISSUER_OR_EQUIVALENT_HQ_ACT"
+      ]
+    },
+    "EE-P2X-BE1": {
+      "status": "DORMANT",
+      "prerequisites": [
+        "ADOPTED_R6A_RUNTIME",
+        "ADOPTED_CONCRETE_BINDING",
+        "QUALIFIED_AB_OWNER_SEAM"
+      ]
+    },
+    "EE-P2X": {
+      "status": "HELD",
+      "prerequisites": [
+        "QUALIFIED_COMMON_RUNTIME_IMPLEMENTATION",
+        "QUALIFIED_PRODUCTION_BACKEND_FANIN"
+      ]
+    },
+    "HQ_MEASURED_SYNTHESIS": {
+      "status": "DORMANT",
+      "prerequisites": [
+        "COMPLETE_LAWFUL_EE_P2X_RETURN"
+      ]
+    }
+  },
+  "negative_authority": {
+    "SIG_004": "CLOSED_AT_CURRENT_AUTHORITY",
+    "LITS_Q301": "6_NOT_APPLICABLE__7_DONT_KNOW__SOURCE_LOCAL_ONLY",
+    "OBL063": "QUARANTINED",
+    "C09_OP014": "HISTORICAL_RUNNER_OUTAGE_NOT_CURRENT_FACT__NO_AUTOMATIC_WAKE"
+  },
+  "terminal": "R5A_R5B_ADOPTED__R6A_R6B_BROWSER_PARALLEL__R6L_LUNA_EXACT_ONLY_LOCAL_EXECUTION_AUTHORIZED__P2X_HELD"
+}
