@@ -61,9 +61,20 @@ There is **no concrete realization binding yet** and no real successor I02 relea
 
 This return does not wake BE1 or P2X.
 
-## Qualification
+## Governed Browser qualification
 
-Governed Browser qualification is pending at the semantic-candidate commit. Final run/job/artifact identities will be sealed into `06_BROWSER_QUALIFICATION_RECEIPT.json` after the governed court.
+PASS.
+
+- semantic candidate: `41624fa0ba0a82d6456e090300f4330eea027b80`
+- evidence execution: `50f9508eb300c574374d7cab273bdadab103e0e2`
+- workflow run / job: `35386432386 / 105734338374`
+- protocol self-test: `20 passed in 0.07s`
+- bounded court: `68 passed in 0.81s`
+- artifact: `rabochii-court-receipt-35386432386`
+- artifact id: `10563254872`
+- artifact digest: `sha256:71c1d467498267e903bbd34460aef14a83fde633518fdddf333f15d2bedf73b1`
+- compiler/runtime: `python:3.12.14|pytest:9.1.1`
+- transient qualification PR: `#397`, closed without merge.
 
 ## Scope
 
