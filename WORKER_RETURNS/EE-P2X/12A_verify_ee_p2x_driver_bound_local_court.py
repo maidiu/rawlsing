@@ -75,6 +75,17 @@ def _resolve_under(root: Path, rel: str, terminal: str) -> Path:
     return p
 
 
+def _scan_forbidden_keys(obj, forbidden, where="driver_payload"):
+    if isinstance(obj, dict):
+        for key, value in obj.items():
+            require(key not in forbidden,
+                    "FAILURE__FORBIDDEN_DRIVER_OUTPUT_SURFACE__" + where.replace("/", "__").upper() + "__" + str(key).upper())
+            _scan_forbidden_keys(value, forbidden, where + "." + str(key))
+    elif isinstance(obj, list):
+        for i, value in enumerate(obj):
+            _scan_forbidden_keys(value, forbidden, f"{where}[{i}]")
+
+
 def _map_law(binding):
     reducer_path = REPO / binding["continuation_map"]["path"]
     require(reducer_path.is_file(), "BLOCKER__CONTINUATION_MAP_MISSING")
@@ -101,6 +112,25 @@ def _map_law(binding):
     physical[final] = False
     order.append(final)
     return reducer, laws, physical, order
+
+
+def _transition_law(reducer):
+    out = {}
+    for cell in reducer["cells"]:
+        source, candidate = cell["source"], cell["candidate"]
+        stage_ids = set(cell["stages"])
+        for sid, raw in cell["stages"].items():
+            nxt = raw[4]
+            pass_next = f"{source}/{candidate}/{nxt}" if nxt in stage_ids else nxt
+            out[f"{source}/{candidate}/{sid}"] = {
+                "pass": pass_next,
+                "candidate_failure": cell["candidate_local_failure_next"],
+            }
+    out["COURT/S17_FINAL_COMPLETENESS_AND_VERIFICATION"] = {
+        "pass": "__COURT_COMPLETE__",
+        "candidate_failure": "__FORBIDDEN_FINAL_STAGE_CANDIDATE_LOCAL_FAILURE__",
+    }
+    return out
 
 
 def _repo_artifact(entry, role, rel):
@@ -156,6 +186,8 @@ def validate_driver_ledger(work_root: Path, *, allow_incomplete: bool = False):
     require(git_blob_sha1(driver_path) == binding["driver"]["git_blob_sha1"],
             "FAILURE__QUALIFIED_DRIVER_BLOB_DRIFT")
     reducer, laws, physical, order = _map_law(binding)
+    transitions = _transition_law(reducer)
+    forbidden_output_keys = set(load_json(EXPECT_PATH)["forbidden_output_keys"])
 
     ledger_path = work_root / "ee_p2x_stage_ledger.json"
     ledger = load_json(ledger_path)
@@ -185,6 +217,33 @@ def validate_driver_ledger(work_root: Path, *, allow_incomplete: bool = False):
     for address, entry in stages.items():
         require(address in laws, "FAILURE__DRIVER_LEDGER_UNKNOWN_STAGE__" + address.replace("/", "__"))
         require(required <= set(entry), "FAILURE__DRIVER_LEDGER_ENTRY_SHAPE__" + address.replace("/", "__"))
+        if address.startswith("COURT/"):
+            expected_source, expected_candidate, expected_sid = "COURT", "ALL", address.split("/", 1)[1]
+        else:
+            expected_source, expected_candidate, expected_sid = address.split("/")
+        require(entry.get("source") == expected_source and entry.get("candidate") == expected_candidate
+                and entry.get("stage_id") == expected_sid,
+                "FAILURE__DRIVER_LEDGER_STAGE_IDENTITY__" + address.replace("/", "__"))
+        require(isinstance(entry.get("input_identity_hash"), str) and HEX64.fullmatch(entry["input_identity_hash"]),
+                "FAILURE__DRIVER_LEDGER_INPUT_IDENTITY__" + address.replace("/", "__"))
+        require(entry.get("terminal_disposition") in binding["driver"]["terminal_ledger_dispositions"] or entry.get("state") == "RUNNING",
+                "FAILURE__DRIVER_LEDGER_TERMINAL_DISPOSITION__" + address.replace("/", "__"))
+        hashes = entry.get("output_artifact_hashes")
+        require(isinstance(hashes, dict), "FAILURE__DRIVER_LEDGER_OUTPUT_HASH_SHAPE__" + address.replace("/", "__"))
+        for locator, expected_hash in hashes.items():
+            require(isinstance(expected_hash, str) and HEX64.fullmatch(expected_hash),
+                    "FAILURE__DRIVER_LEDGER_OUTPUT_HASH__" + address.replace("/", "__"))
+            if locator.startswith("work:"):
+                p = _resolve_under(work_root, locator[5:],
+                                   "FAILURE__DRIVER_LEDGER_WORK_ARTIFACT_ESCAPE__" + address.replace("/", "__"))
+            elif locator.startswith("repo:"):
+                p = _resolve_under(REPO, locator[5:],
+                                   "FAILURE__DRIVER_LEDGER_REPO_ARTIFACT_ESCAPE__" + address.replace("/", "__"))
+            else:
+                raise DriverBindingBlocker("FAILURE__DRIVER_LEDGER_OUTPUT_LOCATOR__" + address.replace("/", "__"))
+            require(p.is_file(), "BLOCKER__DRIVER_LEDGER_OUTPUT_ARTIFACT_MISSING__" + address.replace("/", "__"))
+            require(sha256_file(p) == expected_hash,
+                    "FAILURE__DRIVER_LEDGER_OUTPUT_ARTIFACT_HASH_DRIFT__" + address.replace("/", "__"))
         state = entry.get("state")
         if state == "RUNNING":
             require(allow_incomplete, "BLOCKER__DRIVER_STAGE_RUNNING__" + address.replace("/", "__"))
@@ -195,6 +254,7 @@ def validate_driver_ledger(work_root: Path, *, allow_incomplete: bool = False):
         law = laws[address]
         kind = None
         artifacts = {}
+        backend_disp = None
 
         schemas = binding["driver"]["stage_receipt_schemas"]
         if schema == schemas["backend_envelope"]:
@@ -212,6 +272,7 @@ def validate_driver_ledger(work_root: Path, *, allow_incomplete: bool = False):
                     "FAILURE__BACKEND_LEDGER_DISPOSITION_MISMATCH__" + address.replace("/", "__"))
             payload = receipt.get("measured_payload")
             require(isinstance(payload, dict), "FAILURE__BACKEND_MEASURED_PAYLOAD_SHAPE__" + address.replace("/", "__"))
+            _scan_forbidden_keys(payload, forbidden_output_keys, address)
             ea = payload.get("evidence_artifacts", {})
             require(isinstance(ea, dict), "FAILURE__BACKEND_EVIDENCE_ARTIFACTS_SHAPE__" + address.replace("/", "__"))
             require(set(ea) <= allowed_roles, "FAILURE__BACKEND_UNKNOWN_EVIDENCE_ROLE__" + address.replace("/", "__"))
@@ -285,6 +346,22 @@ def validate_driver_ledger(work_root: Path, *, allow_incomplete: bool = False):
 
         else:
             raise DriverBindingBlocker("FAILURE__UNKNOWN_DRIVER_STAGE_RECEIPT_SCHEMA__" + address.replace("/", "__"))
+
+        if kind == "backend":
+            expected_next = {
+                "PASS": transitions[address]["pass"],
+                "CANDIDATE_LOCAL_FAILURE": transitions[address]["candidate_failure"],
+                "COMMON_SOURCE_BLOCKER": "__COMMON_SOURCE_BLOCKER__",
+                "COMMON_COURT_BLOCKER": "__COMMON_COURT_BLOCKER__",
+            }[backend_disp]
+        elif kind in {"preserved", "skip", "wvs_c_preserved_failure"}:
+            expected_next = transitions[address]["pass"]
+        elif kind == "candidate_propagation":
+            expected_next = transitions[address]["candidate_failure"]
+        else:
+            expected_next = "__SOURCE_BLOCKED__"
+        require(entry.get("next_stage") == expected_next,
+                "FAILURE__DRIVER_LEDGER_NEXT_STAGE_DRIFT__" + address.replace("/", "__"))
 
         stage_info[address] = {
             "kind": kind,
