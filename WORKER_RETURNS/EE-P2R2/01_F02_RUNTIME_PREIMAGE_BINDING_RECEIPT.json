@@ -1,0 +1,42 @@
+{
+  "schema": "EE_P2R2_F02_RUNTIME_PREIMAGE_BINDING_RECEIPT@1.0.0",
+  "status": "BLOCKED__LOSSLESS_RUNTIME_BINDING_NOT_REPRESENTABLE_THROUGH_EXISTING_GENERIC_I05_COMPOSITION_CONTRACT",
+  "terminal": "EE_P2R2_BLOCK__F02_AND_BASE_PREDICATES_HAVE_DIFFERENT_EXACT_GRAMMAR_AUTHORITY_AND_SAME_RESPONDENT_LAWS__GENERIC_I05_CANNOT_COMPILE_FROZEN_D02_P2_P3_WITHOUT_IDENTITY_OR_ENGINE_SEMANTIC_CHANGE",
+  "source_access": false,
+  "outcome_access": false,
+  "performance_measurement": false,
+  "hash_inversion": false,
+  "d02_commit": "40cb8585f076a66d9884b99022a59bb909606c03",
+  "f02_pass_commit": "482bb884a99e31ba77e904d0df39fffc872cbed3",
+  "p2r1_pass_commit": "9511f44728a8469d685463ec0fc880864c9187de",
+  "candidate_count_frozen": 50,
+  "query_role_execution_count_frozen": 77,
+  "base_predicate_contract": {
+    "roles": ["A000", "A1V1", "A1V5"],
+    "grammar_authority_ref": {
+      "authority_id": "urn:rawlsing:pre553:as2b:lits1:authority:i03_query",
+      "authority_version": "AS2A-BANKED-1.0.0",
+      "authority_content_hash": "6c6d2f5fb5f4165e5de19989bd456ee8c09f42ab175fa4d10572dc2b9403ca0d"
+    },
+    "same_respondent_binding_semantics": "EXACT_SAME_RESPONDENT_ONLY"
+  },
+  "f02_selector_contract": {
+    "roles": ["Q310V1", "Q310V2", "Q310V3", "Q311V1", "Q311V2", "Q311V3"],
+    "grammar_authority_ref": {
+      "authority_id": "urn:rawlsing:prev3:f02:lits1:predicate-grammar",
+      "authority_version": "1.0.0",
+      "authority_content_hash": "bc6d433ff58e67e343f1bd1d8e3e92d691b81931dca6447716b08dbf0c8eff8b"
+    },
+    "same_respondent_binding_semantics": "EXACT_SOURCE_ROW_REPLAY_WITHIN_SAME_LITS1_RELEASE"
+  },
+  "generic_i05_guard": "composed predicates must share exact grammar and respondent binding law",
+  "affected_frozen_rules": ["D02_P2_HIGHER_ORDER_K3", "D02_P3_CONDITIONAL_REVERSAL"],
+  "lossless_adapter_disposition": "NONE_AUTHORIZED_AT_THIS_GRAIN",
+  "forbidden_false_repairs": [
+    "remint F02 selector predicates under the base grammar authority",
+    "remint base predicates under the F02 grammar authority",
+    "replace the six exact F02 atom refs with wrapper refs",
+    "relax or fork the accepted generic I05 composition guard",
+    "assert equivalence of the two same-respondent laws without adopted authority"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "schema": "EE_P2R2_LITS_C_EXACT_DISPOSITION@1.0.0",
+  "status": "CANDIDATE_LOCAL_NONQUALIFICATION_BOUND",
+  "disposition": "C_NONQUALIFYING__S02_C11_REACHABILITY__FROZEN_CACC1_STREAM_OMITS_Q310_Q311_REQUIRED_BY_F02_COMPOSITE_PROJECTION",
+  "accepted_owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+  "earliest_p2_stage": "S02_C11_REACHABILITY",
+  "base_release_hash": "e6c954538fa1830820120465a10a6d065b8a18d1e6b7b08d3f863b0917741e26",
+  "required_f02_composite_release_hash": "bf305bf3f169d66954be4f39cc602880fddea6083b5bee9c0212938355cd5297",
+  "cacc1_frozen_projected_names": ["q301_2", "q301_7", "country", "city", "region", "tablec", "tabled"],
+  "missing_f02_response_slots": ["q310", "q311"],
+  "s02_owner_path": "build_route_c_repository -> cacc1_to_exact_physical_stream -> build_source_backed_c11_repository",
+  "s02_owner_guard": "projected slot incomplete; absent physical cell is not semantic absence",
+  "later_independent_cacc2_failure": {
+    "stage": "S05_I05_LEARNED_PRODUCTION",
+    "frozen_role_count": 19,
+    "missing_f02_roles": ["Q310V1", "Q310V2", "Q310V3", "Q311V1", "Q311V2", "Q311V3"],
+    "owner_guard": "CACC2 runtime predicate coverage does not close"
+  },
+  "cacc1_widened": false,
+  "cacc2_widened": false,
+  "cacc3_created": false,
+  "hidden_ab_fallback": false,
+  "candidate_local_only": true,
+  "blocks_lits_ab": false,
+  "blocks_wvs_ab": false
+}
