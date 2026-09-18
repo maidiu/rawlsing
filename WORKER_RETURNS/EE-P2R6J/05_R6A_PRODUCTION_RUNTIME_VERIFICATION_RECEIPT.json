@@ -1,0 +1,89 @@
+{
+  "a_b_qualification": false,
+  "be1_or_p2x": false,
+  "blocker": "EXACT_ADOPTED_R6L_C11REPOSITORY_RELEASE_NOT_REHYDRATABLE_FROM_COMMITTED_ADOPTED_ARTIFACTS_WITHOUT_SOURCE_OR_CARRIER_ACCESS",
+  "corrected_binding_hash": "a5f36a81843fe2ebab0b5cccb369ce76035f842b93e602613b8b9f3a81103308",
+  "corrected_binding_ref": {
+    "content_hash": "a5f36a81843fe2ebab0b5cccb369ce76035f842b93e602613b8b9f3a81103308",
+    "kind": "ReleaseRealizationBinding@1.0.0",
+    "object_id": "urn:rawlsing:prev3:p2r6j:release-realization-binding:sha256:a5f36a81843fe2ebab0b5cccb369ce76035f842b93e602613b8b9f3a81103308"
+  },
+  "disposition": "BLOCKED_BEFORE_EXACT_POSITIVE_PRODUCTION_RUNTIME_CALL",
+  "exact_positive_call_executed": false,
+  "fake_repository_or_private_seal_substitution_used": false,
+  "identity_material_field_count": 17,
+  "identity_material_fields": [
+    "relation_authority_ref",
+    "frozen_scope_anchor_ref",
+    "source_artifact_sha256",
+    "accepted_base_i02_release_ref",
+    "accepted_base_replay_manifest_hash",
+    "runtime_i02_release_ref",
+    "runtime_candidate_projection_hash",
+    "runtime_replay_manifest_ref",
+    "runtime_m01_m18_coverage",
+    "c11_repository_exact_resolution_receipt",
+    "f02_extension_refs",
+    "f02_authority_refs",
+    "adopted_r4a_authority_refs",
+    "selector_refs",
+    "selector_truth_semantics",
+    "respondent_binding_semantics",
+    "f02_member_law"
+  ],
+  "mismatch_missing_required_fields": [
+    "accepted_base_replay_manifest_hash",
+    "adopted_r4a_authority_refs",
+    "c11_repository_exact_resolution_receipt",
+    "f02_authority_refs",
+    "f02_extension_refs",
+    "f02_member_law",
+    "respondent_binding_semantics",
+    "runtime_candidate_projection_hash",
+    "runtime_m01_m18_coverage",
+    "runtime_replay_manifest_ref",
+    "selector_refs",
+    "selector_truth_semantics",
+    "source_artifact_sha256"
+  ],
+  "production_runtime": {
+    "entrypoint": "Pre553RuntimeAuthoritySet.require_realized_release",
+    "git_blob_sha1": "2ddc591f2572983d18f8f3e8f81a33b80b3bca7b",
+    "modified": false,
+    "module": "rawlsing_next/pre553_runtime_authority.py"
+  },
+  "quarantined_r6i_hash": "fd4177eaddff07dc1e51a6f900c07f163965f996742b301932bbeb79a8690bb0",
+  "r6i_contract_mismatch_proved": true,
+  "r6l_committed_run_output_files": [
+    "successor_release_extension_scan.json",
+    "successor_release_m01_m18.json",
+    "successor_release_receipt.json",
+    "successor_release_replay_manifest.json.zip"
+  ],
+  "r6l_record_counts": {
+    "AuthoritySnapshot": 10,
+    "ComparatorReplayBinding": 0,
+    "DiscoveryBranchReplayBinding": 0,
+    "EmpiricalCoordinateFact": 145010,
+    "EmpiricalPredicateReplayBinding": 0,
+    "EmpiricalUniverse": 1,
+    "QuestionVariableBinding": 4,
+    "ReplayManifest": 1,
+    "RespondentEvent": 116008,
+    "RespondentIdentity": 29002,
+    "RoutingEligibilityFact": 116008,
+    "SourceUniverseRelation": 0,
+    "StructuralAdmissionReplayBinding": 0,
+    "WeightMeasureFact": 0
+  },
+  "r6l_runtime_release_ref": {
+    "content_hash": "192926fabd9c9c3d40e43b1d7705ca2bcfe7f8d06e286be26d4b886d436df43f",
+    "kind": "C11LogicalRelease",
+    "object_id": "LITS1-I02-F02-SUCCESSOR-7cac43e2ca5b31cb-bf305bf3f169d669"
+  },
+  "reason_positive_call_not_executed": "Production C11Repository accepts only I02-sealed C11LogicalRelease objects. Adopted repository artifacts preserve release/replay identities and closure refs but not the validated public/internal member bodies required to reconstruct that exact sealed release. Calling the private seal with omitted/fabricated bodies would be a fake repository.",
+  "repository_exact_resolution_previously_proved_by_r6l": "PASS",
+  "repository_release_count_previously_proved_by_r6l": 1,
+  "schema": "EE_P2R6J_R6A_PRODUCTION_RUNTIME_VERIFICATION_RECEIPT@1.0.0",
+  "source_or_carrier_access": false
+}
