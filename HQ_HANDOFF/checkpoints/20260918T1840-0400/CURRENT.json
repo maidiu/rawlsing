@@ -1,0 +1,90 @@
+{
+  "schema": "RAWLSING_HQ_HANDOFF@1.1.0",
+  "checkpoint_id": "20260918T1840-0400",
+  "repository": "maidiu/rawlsing",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354",
+  "prior_checkpoint": "20260918T1822-0400",
+  "status": "R6J_BLOCK_ADOPTED__A5F36_BINDING_PREIMAGE_BANKED__VALIDATED_RELEASE_SNAPSHOT_PREP_READY__ZERO_ACTIVE_BINDINGS__P2X_HELD",
+  "decisions": [
+    "HQD-2026-09-18-060"
+  ],
+  "adjudication_path": "HQ_HANDOFF/EE_P2R6J_BLOCKER_ADJUDICATION_20260918.md",
+  "adjudicated_returns": [
+    {
+      "id": "EE-P2R6J",
+      "branch": "agent/rabochii-prev3-ee-p2r6j-r6b-r6a-binding-contract-alignment-r1",
+      "commission_tip": "5f4fd473a47f78b401333ab43650f1bf9189124b",
+      "return_head": "19b03e03907a97ee1926c72e5ab26ed535771cf3",
+      "disposition": "BLOCK__ADOPTED_EXACT_RELEASE_REHYDRATION_BLOCKER",
+      "corrected_binding_preimage_hash": "a5f36a81843fe2ebab0b5cccb369ce76035f842b93e602613b8b9f3a81103308",
+      "corrected_binding_adoptable": false
+    }
+  ],
+  "binding_state": {
+    "active_positive_binding_count": 0,
+    "current_registry_snapshot_hash": "209cca7eb759c8fc2df265a0673d180f699381b164e80b88acfa5199438e2b56",
+    "uniqueness_key": "659a8929df10b31da4c82eaf5a6b8bd74234b6f21430422beff186cab804fc16",
+    "banked_corrected_preimage_hash": "a5f36a81843fe2ebab0b5cccb369ce76035f842b93e602613b8b9f3a81103308"
+  },
+  "next_action": {
+    "id": "EE-P2R6K",
+    "status": "READY_TO_COMMISSION",
+    "execution_surface": "BROWSER",
+    "library_access": "NO",
+    "grain": "VALIDATED_C11_RELEASE_SNAPSHOT_PROTOCOL_AND_LOCAL_MATERIALIZATION_PREPARATION_ONLY"
+  },
+  "active_workers": [
+    {
+      "id": "EE-P2X",
+      "branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+      "commission_tip": "e49ae8111fd2e888bdb899f85f4d206950ca7bf3",
+      "observed_head_at_checkpoint": "32e224c28d720fce7cdcf6182afb5d327e8a1cf0",
+      "temporal_classification": "UNCHANGED_ACTIVE_WORKER",
+      "execution_surface": "LOCAL-MACHINE CODEX__DORMANT_WHILE_HELD",
+      "library_access": "EXACT_ONLY",
+      "blocker_effect": "WAIT_FOR_RESTORABLE_RELEASE__CORRECTED_BINDING_ADOPTION__AB_OWNER_SEAM__BACKEND_FANIN",
+      "hard_forbidden": [
+        "LOCAL_RUN_OR_RESUME_WHILE_HELD"
+      ]
+    }
+  ],
+  "dependency_graph": {
+    "VALIDATED_RELEASE_SNAPSHOT_PREP": {
+      "status": "READY_TO_COMMISSION"
+    },
+    "LOCAL_RELEASE_SNAPSHOT_MATERIALIZATION": {
+      "status": "DORMANT",
+      "prerequisites": [
+        "QUALIFIED_SNAPSHOT_PREP"
+      ]
+    },
+    "CORRECTED_BINDING_POSITIVE_R6A_PROOF": {
+      "status": "DORMANT",
+      "prerequisites": [
+        "ADOPTED_RESTORABLE_RELEASE_SNAPSHOT"
+      ]
+    },
+    "AB_OWNER_SEAM_REQUALIFICATION": {
+      "status": "DORMANT",
+      "prerequisites": [
+        "ADOPTED_RUNTIME_CONSUMABLE_CONCRETE_BINDING"
+      ]
+    },
+    "BACKEND_FANIN": {
+      "status": "DORMANT",
+      "prerequisites": [
+        "QUALIFIED_AB_OWNER_SEAM"
+      ]
+    },
+    "EE-P2X": {
+      "status": "HELD",
+      "prerequisites": [
+        "ADOPTED_RUNTIME_CONSUMABLE_CONCRETE_BINDING",
+        "QUALIFIED_AB_OWNER_SEAM",
+        "QUALIFIED_PRODUCTION_BACKEND_FANIN"
+      ]
+    }
+  },
+  "terminal": "R6J_BLOCK_ADOPTED__R6K_PREP_READY__ZERO_ACTIVE_BINDINGS__P2X_HELD"
+}
