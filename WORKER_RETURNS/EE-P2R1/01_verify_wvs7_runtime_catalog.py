@@ -48,7 +48,16 @@ EXPECTED = {
 }
 
 
+def _ensure_commit(commit: str) -> None:
+    probe = subprocess.run(["git", "cat-file", "-e", commit + "^{commit}"],
+        stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    if probe.returncode == 0:
+        return
+    subprocess.run(["git", "fetch", "--no-tags", "origin", commit],
+        check=True, stdout=subprocess.DEVNULL)
+
 def git_json(commit: str, path: str):
+    _ensure_commit(commit)
     completed = subprocess.run(
         ["git", "show", f"{commit}:{path}"],
         check=False,
