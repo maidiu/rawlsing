@@ -1,6 +1,6 @@
 # EE-P2X — governed execution return
 
-Status: `IN_PROGRESS__LITS_I_ALL_CANDIDATE_TERMINAL_STATES_RECORDED__CONTINUING_WVS7_A`
+Status: `BLOCKED__FINAL_TWO_SOURCE_ABC_COURT_TERMINAL_EVIDENCE_COMPLETE__NO_MEASURED_SYNTHESIS_PASS`
 
 The final-P2 sealed checkpoint `20260917T1941-0400` and Lock2
 `8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188`
@@ -40,3 +40,17 @@ carrier-neutral binding to the final D04 50-candidate/77-role workload.
 `05_LITS_I_C_TERMINAL_BINDING_BLOCKER.json` records this exact boundary.  No
 LiTS-I C accelerator, source execution, performance, or deletion claim was
 invented.  The required source order now advances to WVS7 Candidate A.
+
+WVS7's frozen Lock2 pre-outcome frontier is intact, but it does not supply the
+callable WVS governed C11 projection and candidate execution bindings required
+to open the final source court.  Candidate A lacks an accepted WVS R5 carrier
+and reader binding; Candidate B lacks the governed projection binding; and
+Candidate C's owner is frozen to LiTS-I CACC1/CACC2 and has no lawful WVS
+zero-accelerator fallback.  `06_WVS7_COMMON_PREEXECUTION_AND_CANDIDATE_BLOCKERS.json`
+records the complete ordered WVS7 boundary.  `07_VERIFY_EE_P2X_COURT.py` and
+`08_COURT_VERIFICATION_RECEIPT.json` verify the deterministic governed return.
+
+Accordingly, the court has reached its stop-law terminal evidence without a
+final two-source measured-synthesis PASS.  This return contains no ranking,
+selection, score, surrogate metric, historic-product substitution, Lock
+mutation, candidate/workload/harness redesign, or semantic PRE-MAIN change.
