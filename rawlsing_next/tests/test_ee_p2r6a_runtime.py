@@ -23,9 +23,15 @@ from rawlsing_next.pre553_runtime_authority import (
     Pre553RuntimeAuthoritySet,
 )
 from rawlsing_next.pre553_runtime_composition import compose_predicates_runtime
+from rawlsing_next.pre553_runtime_context import (
+    bind_runtime,
+    execute_empirical_query_runtime,
+)
 from rawlsing_next.tests.test_pre553_empirical_query import (
     _build_source,
     _h,
+    _cell_map,
+    _query,
     _query_authority,
     _ref,
     _registry,
@@ -312,6 +318,52 @@ def test_adopted_child_dialect_is_exact_native_equality_and_missing_false(author
     assert _eval_selector(authority_data, source, runtime, leaf, "R2") is False
     assert _eval_selector(authority_data, source, runtime, leaf, "R3") is False
     assert leaf == before
+
+
+def test_adopted_child_dialect_executes_through_public_i03_runtime_entrypoint(authority_data):
+    source = _fixture_source(authority_data)
+    binding = _valid_binding(authority_data, source)
+    runtime = _runtime(authority_data, bindings=(binding,))
+    qauth = _query_authority("r6a-runtime-i03")
+    child_grammar = authority_ref(
+        authority_data["mixed"]["identity_material"]["allowed_input_grammar_refs"][1]
+    )
+    frozen_scope = exact_ref(authority_data["dialect"]["exact_scope"]["release_ref"])
+    predicate = _fixture_predicate(
+        ast=_selector_leaf(authority_data, source, native="1"),
+        grammar_ref=child_grammar,
+        binding=authority_data["respondent"]["identity_material"]["child_binding"],
+        scope_refs=(frozen_scope,),
+        tag="runtime-i03-child",
+    )
+    query = _query(source, qauth, predicate, ("Y",), tag="runtime-i03-child")
+    result = execute_empirical_query_runtime(
+        runtime_authorities=runtime,
+        repository=source["repo"],
+        query=query,
+        predicate=predicate,
+        authority_registry=_registry(source, qauth),
+        release_refs=(source["release_ref"],),
+    )
+    fact = result.facts[0]
+    assert fact.typed_state == "SUPPORTED"
+    assert fact.raw_denominator_support == 1
+    assert _cell_map(fact)["1"]["raw_numerator_support"] == 1
+
+
+def test_i05_existing_combiner_dispatches_mixed_only_under_bound_runtime(authority_data):
+    source = _fixture_source(authority_data)
+    parent, child = _mixed_inputs(authority_data, source)
+    runtime = _runtime(authority_data)
+    with bind_runtime(runtime):
+        derived = _combine_predicates(
+            (parent, child),
+            op="AND",
+            tag_material={"case": "i05-production-dispatch"},
+        )
+    assert derived.grammar_authority_ref == authority_ref(
+        authority_data["mixed"]["candidate_authority_ref"]
+    )
 
 
 def test_zero_realization_bindings_fails_closed_before_selector(authority_data):
