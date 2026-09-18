@@ -440,7 +440,9 @@ class Pre553RuntimeAuthoritySet:
 
     def is_positive_runtime_predicate_authority(self, ref: AuthorityRef | Mapping[str, Any]) -> bool:
         exact = authority_ref(ref)
-        return exact.key in self._compositions
+        if exact.key in self._compositions:
+            return True
+        return any(grammar_key == exact.key for grammar_key, _ in self._dialects)
 
     def resolve_predicate_dialect(
         self,
@@ -459,21 +461,54 @@ class Pre553RuntimeAuthoritySet:
     def validate_predicate(self, predicate: EmpiricalPredicate) -> None:
         grammar = authority_ref(predicate.grammar_authority_ref, "predicate grammar authority")
         contract = self._compositions.get(grammar.key)
-        if contract is None:
+        if contract is not None:
+            if predicate.predicate_ast.get("op") != contract.operation:
+                raise Pre553AuthorityError(
+                    "mixed predicate operation is not granted by exact composition authority")
+            if predicate.same_respondent_binding_semantics != contract.derived_binding_semantics:
+                raise Pre553AuthorityError(
+                    "mixed derived predicate respondent binding does not match successor authority")
+            release_refs = set(_walk_release_refs(predicate.predicate_ast))
+            release_refs.update(
+                exact_ref(x, "predicate scope ref")
+                for x in predicate.scope_refs
+                if isinstance(x, (ExactRef, Mapping))
+                and exact_ref(x, "predicate scope ref").kind == "C11LogicalRelease"
+            )
+            if contract.frozen_scope_ref not in release_refs:
+                raise Pre553AuthorityError(
+                    "mixed derived predicate lacks exact frozen release scope")
             return
-        if predicate.predicate_ast.get("op") != contract.operation:
-            raise Pre553AuthorityError("mixed predicate operation is not granted by exact composition authority")
-        if predicate.same_respondent_binding_semantics != contract.derived_binding_semantics:
-            raise Pre553AuthorityError("mixed derived predicate respondent binding does not match successor authority")
-        release_refs = set(_walk_release_refs(predicate.predicate_ast))
-        release_refs.update(
-            exact_ref(x, "predicate scope ref")
-            for x in predicate.scope_refs
-            if isinstance(x, (ExactRef, Mapping))
-            and exact_ref(x, "predicate scope ref").kind == "C11LogicalRelease"
-        )
-        if contract.frozen_scope_ref not in release_refs:
-            raise Pre553AuthorityError("mixed derived predicate lacks exact frozen release scope")
+
+        dialects = {
+            operation: dialect
+            for (grammar_key, operation), dialect in self._dialects.items()
+            if grammar_key == grammar.key
+        }
+        if not dialects:
+            raise Pre553AuthorityError(
+                "predicate grammar is not one exact adopted runtime grammar")
+
+        def walk(node: Mapping[str, Any]) -> None:
+            op = node.get("op")
+            if op == "LEAF":
+                operation = node.get("operation")
+                if operation not in dialects:
+                    raise Pre553AuthorityError(
+                        "predicate leaf operation lacks exact adopted dialect authority")
+                dialects[operation].validate_leaf(node)
+                return
+            children = node.get("children")
+            if (
+                op not in {"AND", "OR", "NOT"}
+                or not isinstance(children, Sequence)
+                or isinstance(children, (str, bytes, bytearray))
+            ):
+                raise Pre553AuthorityError("runtime predicate AST is not governed")
+            for child in children:
+                walk(_mapping(child, "runtime predicate child"))
+
+        walk(_mapping(predicate.predicate_ast, "runtime predicate AST"))
 
     def authorize_mixed_predicate_composition(
         self,
