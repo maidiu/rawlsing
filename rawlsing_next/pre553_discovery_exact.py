@@ -376,7 +376,21 @@ def _combine_predicates(
     grammar_refs = {canonical_json(p.grammar_authority_ref) for p in predicates}
     bindings = {p.same_respondent_binding_semantics for p in predicates}
     if len(grammar_refs) != 1 or len(bindings) != 1:
-        raise ExactBoundedDiscoveryError("composed predicates must share exact grammar and respondent binding law")
+        try:
+            from rawlsing_next.pre553_runtime_context import current_runtime_authorities
+            runtime = current_runtime_authorities()
+        except ImportError:
+            runtime = None
+        if runtime is None:
+            raise ExactBoundedDiscoveryError(
+                "composed predicates must share exact grammar and respondent binding law")
+        from rawlsing_next.pre553_runtime_composition import compose_predicates_runtime
+        return compose_predicates_runtime(
+            predicates,
+            op=op,
+            tag_material=tag_material,
+            runtime_authorities=runtime,
+        )
     if op == "AND":
         ast = {"op": "AND", "children": [p.predicate_ast for p in predicates]}
     elif op == "OR":
