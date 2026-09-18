@@ -63,7 +63,7 @@ COMPLETE_BLOCK = """EXPECTED_SCAN = {
 def git_blob_sha1(path: Path) -> str:
     data = path.read_bytes()
     h = hashlib.sha1()
-    h.update(f"blob {len(data)}\\0".encode("ascii"))
+    h.update(f"blob {len(data)}\0".encode("ascii"))
     h.update(data)
     return h.hexdigest()
 
