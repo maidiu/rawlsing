@@ -162,7 +162,7 @@ def active_registry():
 
 def require_one_active(reg):
     active=reg["identity_material"]["active_positive_bindings"]
-    if len(active)!=1 or active[0]["binding_ref"]["content_hash"]!=ACTIVE_BINDING: raise Pre553AuthorityError("exact sole active a5f36 binding required")
+    if len(active)!=1 or active[0]["content_hash"]!=ACTIVE_BINDING: raise Pre553AuthorityError("exact sole active a5f36 binding required")
     return active[0]
 
 def test_r6o_ab_owner_seam_requalification():
@@ -197,7 +197,7 @@ def test_r6o_ab_owner_seam_requalification():
     badreg=copy.deepcopy(reg); badreg["identity_material"]["active_positive_bindings"]=[]
     with pytest.raises(Pre553AuthorityError): require_one_active(badreg)
     # quarantined predecessor is not active authority
-    assert all(x.get("binding_ref",{}).get("content_hash")!=QUARANTINED for x in reg["identity_material"]["active_positive_bindings"])
+    assert all(x.get("content_hash")!=QUARANTINED for x in reg["identity_material"]["active_positive_bindings"])
     assert QUARANTINED in json.dumps(reg)
     # exact object hash failure / no hash inversion
     doc=primitives["A000"].as_dict(); doc["content_hash"]="0"*64
