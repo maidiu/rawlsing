@@ -1,0 +1,52 @@
+{
+  "schema": "EE_P2R4A_DERIVED_PREDICATE_AUTHORITY_CONTRACT@1.0.0",
+  "status": "CANDIDATE__HQ_ADOPTION_REQUIRED",
+  "candidate_ref": {
+    "kind": "DerivedPredicateAuthorityContractCandidate@1.0.0",
+    "object_id": "urn:rawlsing:prev3:p2r4a:derived-predicate-contract:sha256:225e4b80390500451834ea784d955465eb9f145a4cd1f798dace51f3a6d3baa4",
+    "content_hash": "225e4b80390500451834ea784d955465eb9f145a4cd1f798dace51f3a6d3baa4"
+  },
+  "contract_content_hash": "225e4b80390500451834ea784d955465eb9f145a4cd1f798dace51f3a6d3baa4",
+  "identity_material": {
+    "contract_id": "PRE553_MIXED_PREDICATE_DERIVATION_AUTHORITY_CONTRACT@1.0.0-candidate",
+    "composition_authority_ref": {
+      "authority_id": "urn:rawlsing:prev3:p2r4a:pre553:mixed-predicate-grammar",
+      "authority_version": "1.0.0-candidate",
+      "authority_content_hash": "0d7cfaac1d63cd438d29b109b590cb828805bd113fc37759a6f6f4c88d3c8f55"
+    },
+    "respondent_binding_compatibility_ref": {
+      "kind": "RespondentBindingCompatibilityAuthorityCandidate@1.0.0",
+      "object_id": "urn:rawlsing:prev3:p2r4a:respondent-binding:sha256:3ef0317887f6910838636d3816237a81d5a56b38e07595c8cc1f7c5e7f1fae74",
+      "content_hash": "3ef0317887f6910838636d3816237a81d5a56b38e07595c8cc1f7c5e7f1fae74"
+    },
+    "exact_scope": {
+      "workload_id": "PREV3_LEARNED_WORLD_POSITIVE_WORKLOAD_R1",
+      "release_ref": {
+        "kind": "C11LogicalRelease",
+        "object_id": "LITS1-F02-C11-7cac43e2ca5b31cb-bf305bf3f169d669",
+        "content_hash": "bf305bf3f169d66954be4f39cc602880fddea6083b5bee9c0212938355cd5297"
+      }
+    },
+    "deterministic_construction": {
+      "predicate_ast": "CANONICAL_AND_OF_UNCHANGED_INPUT_PREDICATE_ASTS__EXISTING_HASH_SORT_AND_DUPLICATE_COLLAPSE",
+      "authority_snapshot_refs": "CANONICAL_UNION_OF_INPUT_AUTHORITY_REFS_PLUS_ADOPTED_SUCCESSOR_COMPOSITION_AUTHORITY_REF",
+      "dependency_refs": "CANONICAL_EXACTREF_SET_OF_ALL_INPUT_PREDICATE_REFS",
+      "producer_replay_locator_or_reference_root": "DETERMINISTIC_CONTENT_ADDRESS_OVER_COMPOSITION_AUTHORITY_REF_PLUS_OPERATION_PLUS_ORDERED_INPUT_EXACTREFS_PLUS_D02_CANDIDATE_IDENTITY",
+      "grammar_authority_ref": {
+        "authority_id": "urn:rawlsing:prev3:p2r4a:pre553:mixed-predicate-grammar",
+        "authority_version": "1.0.0-candidate",
+        "authority_content_hash": "0d7cfaac1d63cd438d29b109b590cb828805bd113fc37759a6f6f4c88d3c8f55"
+      },
+      "coordinate_question_value_refs": "CANONICAL_UNION_OF_INPUT_REFS",
+      "risk_set_refs": "CANONICAL_UNION_OF_INPUT_REFS",
+      "scope_refs": "CANONICAL_UNION_OF_INPUT_SCOPE_REFS__MUST_INCLUDE_EXACT_F02_RELEASE_REF",
+      "same_respondent_binding_semantics": "EXACT_MIXED_RESPONDENT_REFINEMENT__3ef0317887f6910838636d3816237a81d5a56b38e07595c8cc1f7c5e7f1fae74",
+      "operator_semantics_refs": "CANONICAL_UNION_OF_INPUT_OPERATOR_SEMANTICS_REFS"
+    },
+    "first_input_inheritance_for_mixed_composition": "FORBIDDEN",
+    "input_predicate_identity_mutation": "FORBIDDEN",
+    "output_identity_law": "DERIVED_PREDICATE_IS_NEW_CONTENT_ADDRESSED_OBJECT__INPUT_EXACTREFS_REMAIN_UNCHANGED",
+    "ordering_law": "CANONICAL_HASH_ORDER__NO_CALLER_ORDER_SEMANTICS",
+    "fail_closed_if_any_authority_or_scope_check_missing": true
+  }
+}

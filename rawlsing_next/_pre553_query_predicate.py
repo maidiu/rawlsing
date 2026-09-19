@@ -1,5 +1,6 @@
 """Exact C11 indexing and empirical predicate evaluation for PRE553 I03."""
 from rawlsing_next._pre553_query_common import *
+from rawlsing_next.pre553_runtime_authority import Pre553RuntimeAuthoritySet
 
 def _question_matches(event: RespondentEvent | RoutingEligibilityFact, target: ExactRef) -> bool:
     if isinstance(event, RoutingEligibilityFact):
@@ -76,12 +77,30 @@ def _validate_public_object_authorities(
     obj: CanonicalSemanticObject,
     registry: AuthorityRegistry,
 ) -> tuple[AuthorityRef, ...]:
-    snapshots = validate_object_authority_closure(obj, registry)
-    for snapshot in snapshots:
+    runtime = None
+    try:
+        from rawlsing_next.pre553_runtime_context import current_runtime_authorities
+        runtime = current_runtime_authorities()
+    except ImportError:
+        runtime = None
+
+    resolved: list[AuthorityRef] = []
+    for raw_ref in obj.authority_snapshot_refs:
+        ref = _authority(raw_ref, f"{obj.schema_id}.authority_snapshot_ref")
+        try:
+            snapshot = registry.resolve_exact(ref).snapshot
+        except Pre553AuthorityError:
+            if runtime is None or not runtime.is_positive_runtime_predicate_authority(ref):
+                raise
+            resolved.append(ref)
+            continue
         if snapshot.typed_state != "ALLOW":
             raise Pre553AuthorityError(
                 f"{obj.schema_id} authority closure contains nonpositive exact snapshot")
-    return tuple(snapshot.authority_ref for snapshot in snapshots)
+        resolved.append(snapshot.authority_ref)
+    if obj.schema_id != "AuthoritySnapshot" and not resolved:
+        raise Pre553AuthorityError("public semantic object lacks authority closure")
+    return tuple(resolved)
 
 
 def _leaf_exact_values(
@@ -105,6 +124,9 @@ def _leaf_match(
     registry: AuthorityRegistry,
     used: list[CanonicalSemanticObject | C11InternalRecord],
     used_auth: list[AuthorityRef],
+    predicate_grammar_authority_ref: AuthorityRef | Mapping[str, Any] | None = None,
+    runtime_authorities: Pre553RuntimeAuthoritySet | None = None,
+    repository: C11Repository | None = None,
     derived_branch_memberships: Mapping[ExactRef, frozenset[ExactRef]] | None = None,
 ) -> bool:
     leaf_type = node.get("leaf_type")
@@ -146,6 +168,51 @@ def _leaf_match(
             else:
                 semantic = canonicalize(_semantic_value(coordinate))
                 result = result or semantic in values
+        return result
+
+    if leaf_type == "SURVEY_RESPONSE_EVENT" and node.get("operation") is not None:
+        runtime_authorities = runtime_authorities or index.runtime_authorities
+        predicate_grammar_authority_ref = (
+            predicate_grammar_authority_ref or index.runtime_predicate_grammar_authority_ref
+        )
+        repository = repository or index.runtime_repository
+        if runtime_authorities is None or predicate_grammar_authority_ref is None or repository is None:
+            try:
+                from rawlsing_next.pre553_runtime_context import current_runtime_binding
+                binding = current_runtime_binding()
+            except ImportError:
+                binding = None
+            if binding is not None:
+                runtime_authorities = runtime_authorities or binding.authorities
+                predicate_grammar_authority_ref = (
+                    predicate_grammar_authority_ref
+                    or binding.predicate_grammar_authority_ref
+                )
+                repository = repository or binding.repository
+        if runtime_authorities is None or predicate_grammar_authority_ref is None:
+            raise Pre553AuthorityError(
+                "governed public predicate dialect requires exact interpreter authority")
+        if repository is None:
+            raise Pre553AuthorityError(
+                "predicate dialect release realization requires exact C11Repository")
+        contract = runtime_authorities.resolve_predicate_dialect(
+            predicate_grammar_authority_ref, node
+        )
+        question_ref, _response_ref, native_value, scope_ref = contract.validate_leaf(node)
+        runtime_authorities.require_realized_release(
+            scope_ref,
+            repository=repository,
+            runtime_release_ref=index.release.release_ref,
+        )
+        result = False
+        for event in index.events_by_respondent[respondent_key]:
+            if _ref_field(event, "native_question_ref") != question_ref:
+                continue
+            used.append(event)
+            used_auth.extend(_validate_public_object_authorities(event, registry))
+            if event.typed_state != "SUBSTANTIVE_RESPONSE":
+                continue
+            result = result or canonicalize(event.raw_response_value) == native_value
         return result
 
     if leaf_type == "SURVEY_RESPONSE_EVENT":

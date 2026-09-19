@@ -164,6 +164,9 @@ class _ReleaseIndex:
     routing_by_respondent: dict[str, list[RoutingEligibilityFact]]
     weights_by_respondent: dict[str, list[WeightMeasureFact]]
     source_relations: tuple[SourceUniverseRelation, ...]
+    runtime_authorities: Any | None = None
+    runtime_repository: C11Repository | None = None
+    runtime_predicate_grammar_authority_ref: Any | None = None
 
 
 @dataclass(frozen=True)
