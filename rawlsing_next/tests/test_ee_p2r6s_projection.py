@@ -8,7 +8,7 @@ from rawlsing_next.pre553_carrier_execution import bind_governed_c11_projection,
 
 ROOT=Path(__file__).resolve().parents[2]
 MAT=ROOT/"WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py"
-PKG=ROOT/"WORKER_RETURNS/EE-P2R6S/04_COMPLETE_WVS7_FROZEN_P2_PROJECTION_AUTHORITY.json"
+PKG=ROOT/"WORKER_RETURNS/EE-P2R6S/SUPPORT/02_WVS7_P2F2_RUNTIME_PACKAGE.json"
 
 spec=importlib.util.spec_from_file_location("r6s_mat",MAT); assert spec and spec.loader
 m=importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
@@ -152,3 +152,32 @@ def test_backend_has_no_prepopulated_metric_zero_fallback():
     assert "prepopulated_default_forbidden" in slot
     s1=source[source.index("def _s01"):source.index("def _s02")]
     assert '"build_or_open_wall_ns"' in s1
+
+
+def test_mutated_replay_and_lock2_tie_order_fail_exact_projection_gate():
+    import dataclasses
+    from rawlsing_next.pre553_empirical_objects import AuthorityRef, ExactRef
+    fields=dict(m.build_projection_fields(
+        physical_variables=vars3(),row_country_values=(231,),enforce_frozen_dimensions=False
+    ))
+    bad_replay=AuthorityRef("urn:bad:replay","1.0.0","1"*64)
+    replay_mut=dict(fields); replay_mut["replay_authority_ref"]=bad_replay
+    with pytest.raises(ValueError,match="replay authority substitution"):
+        m.bind_exact_projection_fields(replay_mut)
+    tie_mut=dict(fields); tie_mut["tie_order_ref"]=ExactRef("BadTie@1.0.0","urn:bad:tie","2"*64)
+    with pytest.raises(ValueError,match="Lock2/tie-order substitution"):
+        m.bind_exact_projection_fields(tie_mut)
+
+def test_wvs_ab_backend_consumes_r6s_materializer_and_no_fuzzy_latest_default_lookup():
+    import importlib
+    backend=importlib.import_module("rawlsing_next.ee_p2x_darwin_stage_backend")
+    source=Path(backend.__file__).read_text()
+    assert "def _compose_wvs" in source
+    assert "_wvs_projection(ctx,services)" in source
+    assert "R6S_MATERIALIZER" in source
+    materializer=MAT.read_text()
+    assert "SOURCE_OWNER_COUNTRY_CODE_TO_LABEL" in materializer
+    assert "B_COUNTRY" in materializer
+    assert "fuzzy" not in materializer.lower()
+    assert "get_close_matches" not in materializer
+    assert "iso3166" not in materializer.lower().replace("iso3166-1","")
