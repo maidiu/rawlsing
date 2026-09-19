@@ -225,6 +225,8 @@ def test_r6o_ab_owner_seam_requalification():
     owner_ok("A",A_BLOB); owner_ok("B",B_BLOB)
     with pytest.raises(ValueError): owner_ok("A","0"*40)
     with pytest.raises(ValueError): owner_ok("B","0"*40)
+    with pytest.raises(ValueError): owner_ok("A",B_BLOB)
+    with pytest.raises(ValueError): owner_ok("B",A_BLOB)
     result={"status":"PASS","terminal":"EE_P2R6O_PASS__A_AND_B_ACCEPTED_OWNER_SEAMS_REQUALIFIED_TO_COMMON_P2R1_R6A_RUNTIME__READY_FOR_PRODUCTION_BACKEND_FANIN",
       "a_disposition":"PASS__ACCEPTED_A_OWNER_TO_COMMON_P2R1_R6A_RUNTIME","b_disposition":"PASS__ACCEPTED_B_OWNER_TO_COMMON_P2R1_R6A_RUNTIME",
       "p2r2_blocker":"SUPERSEDED__R4A_MIXED_COMPOSITION_REQUIRED_AND_ACCEPTED__FROZEN_CHILD_IDENTITIES_PRESERVED",
