@@ -1,56 +1,51 @@
-# EE-P2X — governed execution return
+# EE-P2X governed local execution return
 
-Status: `BLOCKED__FINAL_TWO_SOURCE_ABC_COURT_TERMINAL_EVIDENCE_COMPLETE__NO_MEASURED_SYNTHESIS_PASS`
+Status: `BLOCKED__COMMON_COURT_AUTHORITY`
 
-The final-P2 sealed checkpoint `20260917T1941-0400` and Lock2
-`8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188`
-were verified before execution. Candidate-neutral exact-decoder preflight ran
-in the required source order (`LITS_I`, then `WVS7`) on the qualified Darwin
-x86_64 CPython 3.11.3 / pyreadstat 1.3.6 / pyarrow 25.0.1 runtime.
+Exact terminal:
 
-LiTS-I Candidate A's required fresh absent-target R5 first-build stage is
-complete. Its bounded receipt is `01_LITS_I_A_FIRST_BUILD_STAGE.json`.
+`EE_P2X_LITS_I_A_S02_C11_REACHABILITY__COMMON_COURT_AUTHORITY_FAILURE`
 
-The frozen follow-on boundary is now recorded in
-`02_LITS_I_A_TERMINAL_BINDING_BLOCKER.json`.  The accepted R5B bridge requires
-an injected real owner executor, while the available exact A owner exposes an
-R5-reader-plus-governed-projection adapter only.  No exact frozen composite
-owner executor exists, and the ASTRA-D04-R2 authority preserves result
-receipts rather than a carrier-neutral callable I05 runner.  Constructing the
-missing composite would redesign the forbidden harness.  Therefore Candidate
-A has no admissible I03/I05/lifecycle/replay invocation after its qualifying
-first build.  This source-local Candidate-A terminal blocker does not rank or
-select a carrier and does not suppress the required ordered Candidate-B work.
+## Authority and runtime
 
-LiTS-I Candidate B's fresh cacheless accepted Route-B session completed and
-reconstructed the exact source, projection, C11 release, replay, and repository
-identities.  Its terminal receipt and follow-on binding boundary are recorded
-in `03_LITS_I_B_CACHELESS_C11_STAGE.json` and
-`04_LITS_I_B_TERMINAL_BINDING_BLOCKER.json`.  The frozen production driver
-cannot materialize the sealed runtime predicate/query preimages, and D04-R2
-does not provide a callable C11-to-77-role I05 binding.  No replacement
-executor, historic-product substitution, or lifecycle/performance claim was
-made.  Candidate C remains next in the required LiTS-I order.
+Live HQ checkpoint `20260919T0111-0400` was resolved from the control branch, with immutable handoff `6986ce4187f35a9be354f6d47d6b46cc1ac83f17`, semantic PRE-MAIN `1dcd2a79dd6d4208738f655ab7fe4e71c219e354`, and decisions `HQD-2026-09-19-075` / `HQD-2026-09-19-076`. The exact P2X branch started at fan-in head `548d7ae9be4a8a624601b5d468fb2e19693ca597`.
 
-LiTS-I Candidate C is terminally blocked before accelerator materialization.
-Its frozen owner requires exact RouteC/Cacc2 determinant objects and nineteen
-real atom bindings; the accepted lineage has only fixture determinants and the
-R10L runtime binding remains explicitly partial.  It also does not expose a
-carrier-neutral binding to the final D04 50-candidate/77-role workload.
-`05_LITS_I_C_TERMINAL_BINDING_BLOCKER.json` records this exact boundary.  No
-LiTS-I C accelerator, source execution, performance, or deletion claim was
-invented.  The required source order now advances to WVS7 Candidate A.
+Preflight passed on Darwin x86_64 / CPython 3.11.3 with `pyreadstat==1.3.6` and `pyarrow==25.0.1`. The exact carriers were hash-verified before source use:
 
-WVS7's frozen Lock2 pre-outcome frontier is intact, but it does not supply the
-callable WVS governed C11 projection and candidate execution bindings required
-to open the final source court.  Candidate A lacks an accepted WVS R5 carrier
-and reader binding; Candidate B lacks the governed projection binding; and
-Candidate C's owner is frozen to LiTS-I CACC1/CACC2 and has no lawful WVS
-zero-accelerator fallback.  `06_WVS7_COMMON_PREEXECUTION_AND_CANDIDATE_BLOCKERS.json`
-records the complete ordered WVS7 boundary.  `07_VERIFY_EE_P2X_COURT.py` and
-`08_COURT_VERIFICATION_RECEIPT.json` verify the deterministic governed return.
+- LiTS-I: `7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09`
+- WVS7: `2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d`
 
-Accordingly, the court has reached its stop-law terminal evidence without a
-final two-source measured-synthesis PASS.  This return contains no ranking,
-selection, score, surrogate metric, historic-product substitution, Lock
-mutation, candidate/workload/harness redesign, or semantic PRE-MAIN change.
+The qualified driver, reducer, R6S backend, projection materializer, LiTS support, and WVS runtime package were not modified.
+
+## Exact common-court blocker
+
+The resumed driver entered the authorized first unfinished stage:
+
+`LITS_I/A/S02_C11_REACHABILITY`
+
+The exact backend attempted to deploy the pinned immutable R5B authority from commit `3ce639e1a8ab0ad48954c0aeff4b5c42f3d0b06f` and failed closed because this required path is unavailable at that immutable commit:
+
+`data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/AS4I0_CHETIRI_ROUTE_B_PRODUCTION_DRIVER_20260827/AS2A_LITS1_SHARED_CERTIFICATION_20260827/01_LITS1_1198_SLOT_OWNERSHIP_PROJECTION_EXCLUSION_LEDGER.csv`
+
+The commit contains the `banked_as2a` authority path instead; no path substitution, backend patch, semantic inference, or fallback was made. The driver produced the candidate-neutral `COURT_UNTIL_RESUME` failure receipt and stopped the court before any candidate measurement or WVS execution.
+
+The driver-bound final verifier returned:
+
+`EE_P2X_LITS_I_A_S02_C11_REACHABILITY__COMMON_COURT_AUTHORITY_FAILURE`
+
+The synchronized ledger hash is `830df67a3f1e3eb6b3a70016bd60dce576b1f658ca1dcbff5f5090db6fea00e1`; the exact LITS-I/A supervisor token is preserved under `LOCAL_COURT/supervisor_tokens/`.
+
+## Preserved bounded attempts
+
+An earlier preflight-valid attempt on the same branch was separately committed as `62fac68505e2295ef16429f50dc87e25fd46688f`. It was classified as an infrastructure nonresult because the isolated environment lacked supporting `duckdb` and `pandas`; its typed receipts are preserved in `LOCAL_COURT/` and `14_LOCAL_ATTEMPT_20260919_RUNTIME_DEPENDENCY_BLOCKER.json`. Supporting packages were then co-located, and the fresh continuation reached the common authority blocker above.
+
+## Boundaries
+
+- No Lock1 or Lock2 mutation.
+- No candidate, workload, semantic, routing, lifecycle, or harness redesign.
+- No ranking, score, recommendation, selection, surrogate metric, or cross-source pooling.
+- No WVS carrier execution after the common-court stop.
+- No historic learned-product substitution.
+- No successful `S17` terminal; driver `--verify-only` was not run because S17 was never lawfully terminal.
+
+Required wake: repair/re-authorize the exact pinned backend authority path, then resume from `LITS_I/A/S02_C11_REACHABILITY` on this same branch.
