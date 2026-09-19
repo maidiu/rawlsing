@@ -1,0 +1,61 @@
+{
+  "schema": "RAWLSING_HQ_HANDOFF@1.1.0",
+  "checkpoint_id": "20260918T2006-0400",
+  "repository": "maidiu/rawlsing",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354",
+  "prior_checkpoint": "20260918T1949-0400",
+  "status": "A5F36_BINDING_ADOPTED_ACTIVE__ONE_ACTIVE_RUNTIME_CONSUMABLE_BINDING__AB_OWNER_SEAM_READY__BACKEND_DORMANT__P2X_HELD",
+  "decisions": [
+    "HQD-2026-09-18-067"
+  ],
+  "adoption_path": "HQ_HANDOFF/EE_P2R6N_POSITIVE_PROOF_AND_BINDING_ADOPTION_20260918.md",
+  "adjudicated_returns": [
+    {
+      "id": "EE-P2R6N",
+      "return_head": "ab7e7f6e764eba43e85fe5c8629fee6cc0ba2a5c",
+      "disposition": "PASS__ADOPTED_POSITIVE_R6A_PROOF_AND_ACTIVE_BINDING"
+    }
+  ],
+  "binding_state": {
+    "active_positive_binding_count": 1,
+    "active_binding_hash": "a5f36a81843fe2ebab0b5cccb369ce76035f842b93e602613b8b9f3a81103308",
+    "registry_snapshot_hash": "6f2eb0f93576b6ea2b9360fdb7c437f9f1810056494149c64b03d2c7834d03c4",
+    "uniqueness_key": "659a8929df10b31da4c82eaf5a6b8bd74234b6f21430422beff186cab804fc16"
+  },
+  "next_action": {
+    "id": "AB_OWNER_SEAM_REQUALIFICATION",
+    "status": "READY_TO_COMMISSION",
+    "execution_surface": "BROWSER",
+    "library_access": "NO"
+  },
+  "active_workers": [
+    {
+      "id": "EE-P2X",
+      "branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+      "observed_head_at_checkpoint": "32e224c28d720fce7cdcf6182afb5d327e8a1cf0",
+      "temporal_classification": "UNCHANGED_ACTIVE_WORKER",
+      "execution_surface": "LOCAL-MACHINE CODEX__DORMANT_WHILE_HELD",
+      "library_access": "EXACT_ONLY"
+    }
+  ],
+  "dependency_graph": {
+    "AB_OWNER_SEAM_REQUALIFICATION": {
+      "status": "READY_TO_COMMISSION"
+    },
+    "BACKEND_FANIN": {
+      "status": "DORMANT",
+      "prerequisites": [
+        "QUALIFIED_AB_OWNER_SEAM"
+      ]
+    },
+    "EE-P2X": {
+      "status": "HELD",
+      "prerequisites": [
+        "QUALIFIED_AB_OWNER_SEAM",
+        "QUALIFIED_PRODUCTION_BACKEND_FANIN"
+      ]
+    }
+  },
+  "terminal": "A5F36_ACTIVE__AB_OWNER_SEAM_READY__BACKEND_DORMANT__P2X_HELD"
+}
