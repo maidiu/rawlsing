@@ -1,0 +1,89 @@
+{
+  "schema": "FIABC_W2_B01_POSTREPAIR_CONSUMPTION_RECOURT_RETURN@1.0.0",
+  "worker": "FIABC-W2-B01",
+  "repo": "maidiu/rawlsing",
+  "branch": "agent/rabochii-premain-fiabc-w2-b01-p2x-postrepair-consumption-recourt-r1",
+  "base_sha": "dfdae1dfcef5e3061094935312c3db2cc0fde2f0",
+  "return_path": "WORKER_RETURNS/FIABC-W2-B01/",
+  "status": "PASS",
+  "terminal": "FIABC_W2_B01_POSTREPAIR_P2X_CONSUMPTION_RECOURT_COMPLETE",
+  "audited_p2x": {
+    "branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+    "tip": "617c9c9426db12a3c0f7fea6b68a582c10759553",
+    "pre_repair_parent": "ae8b1db9d8c3288e002950ac01123c70f3138320",
+    "tip_rechecked_before_seal": true
+  },
+  "repair_ownership": {
+    "R6U": {
+      "branch": "agent/rabochii-prev3-ee-p2r6u-r6a-runtime-substrate-fanin-r1",
+      "observed_tip": "85c1c00c4dfa0b63d029dc3d20ec865f4d3ed3e8",
+      "role": "exact adopted R6A runtime substrate fan-in and LiTS runtime requalification"
+    },
+    "R6V": {
+      "branch": "agent/rabochii-prev3-ee-p2r6v-wvs-binder-recursion-repair-r1",
+      "observed_tip": "75fcb21893919208423edadd24a2b43adf71c099",
+      "role": "WVS exact projection binder recursion repair"
+    },
+    "R6W": {
+      "branch": "agent/rabochii-prev3-ee-p2r6w-s17-orchestration-repair-r1",
+      "observed_tip": "c7cb149a11795d6b9651a4303258534058fd027f",
+      "role": "S17 preterminal ordering and common-court failure normalization repair"
+    },
+    "R6X": {
+      "branch": "agent/rabochii-prev3-ee-p2r6x-p2x-ledger-reconciliation-prep-r1",
+      "observed_tip": "689995c798fece3c36d56905e4aaa67957ce8d79",
+      "role": "deterministic stopped-ledger reconciliation preparation only; real stopped ledger not reconciled in Browser"
+    }
+  },
+  "admitted_cell_static_reachability": {
+    "LITS_I/A": "CONNECTED__PRESERVED_R5_ROOT_BINDING_REQUIRED",
+    "LITS_I/B": "CONNECTED__EXACT_SOURCE_INCIDENCE_AT_AUTHORIZED_STAGES_REQUIRED",
+    "WVS7/A": "CONNECTED_AFTER_R6V__DURABLE_OR_SOURCE_BUILT_R5_REQUIRED",
+    "WVS7/B": "CONNECTED_AFTER_R6V__EXACT_SOURCE_INCIDENCE_AT_AUTHORIZED_STAGES_REQUIRED"
+  },
+  "nonadmitted_current_cells": {
+    "LITS_I/C": "PARTIAL_SUCCESSION__FROZEN_Q310_Q311_CACC_NONQUALIFICATION_AT_S02",
+    "WVS7/C": "PARTIAL_SUCCESSION__PRESERVED_PORTABILITY_FAILURE__NO_BACKEND_EXECUTION_PATH"
+  },
+  "headline_findings": [
+    "Current P2X tip 617c9c9426db12a3c0f7fea6b68a582c10759553 contains the R6U runtime substrate, R6V WVS binder correction, R6W S17/backend corrections, and R6X reconciliation tool.",
+    "For all four currently admitted A/B source-candidate cells, the repository-static call graph now connects exact runtime/projection material through the accepted candidate repository owner into P2R1 CarrierNeutralResearchExecutor and onward to I03 and I05.",
+    "No governed post-repair P2X execution receipt proves any admitted cell traversed the repaired path; the current P2X return and LOCAL_COURT failure receipts remain the pre-fanin blocked run.",
+    "R6X is present only as a qualified reconciliation tool; its own return states the real stopped ledger was not reconciled in Browser.",
+    "Candidate C remains outside the current admitted common-runner set: LiTS-C stops at the frozen q310/q311 nonqualification and WVS-C remains the preserved portability failure.",
+    "S03 remains deterministic self-replay rather than an independently produced parity oracle; this does not sever the static I03/I05 call graph but remains a separate equal-work court gap."
+  ],
+  "exact_blockers": [
+    "NO_POSTREPAIR_GOVERNED_P2X_EXECUTION_RECEIPT",
+    "R6X_REAL_STOPPED_LEDGER_RECONCILIATION_NOT_PROVED_APPLIED",
+    "LITS_A_PRESERVED_R5_RUNTIME_ROOT_BINDING_IS_LOCAL_EXECUTION_PRECONDITION",
+    "LITS_C_FROZEN_Q310_Q311_COMMON_RUNNER_NONQUALIFICATION",
+    "WVS_C_PRESERVED_PORTABILITY_FAILURE_NO_BACKEND_PATH",
+    "INDEPENDENT_PARITY_ORACLE_UNRESOLVED__CURRENT_S03_IS_SELF_REPLAY",
+    "POSTREPAIR_S17_FINAL_TERMINAL_RECEIPT_ABSENT"
+  ],
+  "controlled_dispositions": {
+    "admitted_A_B_live_end_to_end": "PRESERVED_BUT_DISCONNECTED",
+    "candidate_C_whole_chain": "PARTIAL_SUCCESSION"
+  },
+  "required_outputs": [
+    "01_POSTREPAIR_CONSUMPTION_GRAPH.csv",
+    "02_STATIC_REACHABILITY_VS_LIVE_RECEIPT.csv",
+    "03_REMAINING_CONSUMPTION_GAPS.md",
+    "04_EVIDENCE_INDEX.md",
+    "RETURN.json"
+  ],
+  "scope": {
+    "github_browser_only": true,
+    "library_access": false,
+    "measured_p2x_execution": false,
+    "production_code_modified": false,
+    "accepted_authority_modified": false,
+    "hq_handoff_modified": false,
+    "existing_tests_modified": false,
+    "existing_evidence_modified": false,
+    "p2x_branch_modified": false,
+    "follow_on_commissions_created": false,
+    "merge_performed": false
+  }
+}
