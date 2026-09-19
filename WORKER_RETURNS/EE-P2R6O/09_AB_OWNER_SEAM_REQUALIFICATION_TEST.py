@@ -160,7 +160,7 @@ def catalog_and_frontier():
 def active_registry():
     reg=git_json(HQ_HANDOFF,REGISTRY)
     assert reg["snapshot_ref"]["content_hash"]==REGISTRY_HASH
-    active=reg["identity_material"]["active_positive_bindings"]; assert len(active)==1 and active[0]["binding_ref"]["content_hash"]==ACTIVE_BINDING
+    active=reg["identity_material"]["active_positive_bindings"]; assert len(active)==1 and active[0]["content_hash"]==ACTIVE_BINDING
     return reg
 
 def require_one_active(reg):
