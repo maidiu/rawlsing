@@ -1,0 +1,53 @@
+{
+  "schema": "FIABC_B04_RETURN@1.0.0",
+  "worker": "FIABC-B04",
+  "commission": "NEGATIVE_STATE_REPLAY_PROVENANCE_COURT",
+  "branch": "agent/rabochii-premain-fiabc-b04-negative-state-replay-provenance-court-r1",
+  "commission_start_commit": "d474f8e3c9630c4bcbb10d6e8359b71ba5b3060d",
+  "hq_checkpoint": {
+    "checkpoint_id": "20260919T1207-0400",
+    "handoff_commit": "3692aa093e26252c2f94678b3d456dc37cf7144e",
+    "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354"
+  },
+  "candidate_definitions": {
+    "owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+    "A": {
+      "owner_path": "rawlsing_next/pre553_r5_source_backed_adapter.py",
+      "owner_blob": "d4915e7e6755ba1850756aebff72f982f73a332b"
+    },
+    "B": {
+      "owner_path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+      "owner_blob": "7c509c2098d0030f253344eb3f682471378812a8"
+    },
+    "C": {
+      "owner_path": "rawlsing_next/pre553_route_c_accelerators.py",
+      "owner_blob": "abfdc91a71ef5e18c4a8a6bf62fa65750d8d9889"
+    }
+  },
+  "audit_scope": [
+    "physical_missingness_vs_semantic_state",
+    "routing_unknown_vs_inapplicable_vs_nonmember",
+    "BLOCKED_governance_separation",
+    "UNKNOWN_typed_absence",
+    "manual_review_governance_separation",
+    "all_missing_and_topology_distinctions",
+    "source_local_unresolved_meaning",
+    "VALID_EMPTY_vs_unavailable_unresolved_integrity_failure",
+    "DENIED_NONCOMPARABLE_scalarization_guard",
+    "exact_source_authority_dependency_and_replay_provenance",
+    "A_B_C_deletion_rebuild_conservation"
+  ],
+  "conclusion": "CODE_PATH_NEGATIVE_STATE_AND_PROVENANCE_SUCCESSION_AUDITED_FOR_FROZEN_ABC_OWNER_DEFINITIONS",
+  "abc_preservation_basis": "A reconstructs exact physical stream then delegates to B; B is governed semantic core; C reconstructs exact physical stream from optional accelerators then delegates to B and fails to exact-source fallback where frozen accelerator semantics are insufficient.",
+  "measured_p2x_parity_claimed": false,
+  "measured_p2x_current_state": "HELD_PENDING_EXACT_LOCAL_STOPPED_LEDGER_RECONCILIATION",
+  "files": [
+    "00_RETURN.md",
+    "01_NEGATIVE_STATE_PRESERVATION.csv",
+    "02_REPLAY_PROVENANCE_CHAIN.csv",
+    "03_COLLAPSE_HAZARDS.md",
+    "04_EVIDENCE_INDEX.md",
+    "RETURN.json"
+  ],
+  "terminal": "FIABC_B04_NEGATIVE_STATE_REPLAY_AND_PROVENANCE_SUCCESSION_AUDITED"
+}
