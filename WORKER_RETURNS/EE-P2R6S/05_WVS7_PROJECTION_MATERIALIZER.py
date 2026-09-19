@@ -39,7 +39,7 @@ from rawlsing_next.pre553_source_backed_c11_facade import (
     physical_value_binding_key,
 )
 from rawlsing_next.pre553_carrier_execution import (
-    bind_governed_c11_projection,
+    bind_governed_c11_projection as _bind_governed_c11_projection,
     governed_projection_binding_receipt,
 )
 
@@ -1061,7 +1061,7 @@ def bind_exact_projection_fields(fields: Mapping[str, Any]) -> GovernedC11Projec
         raise ValueError("frozen WVS7 P2 Lock2/tie-order substitution forbidden")
     if tuple(fields.get("weight_slots", ()))!=():
         raise ValueError("frozen WVS7 P2 is raw/unweighted")
-    return bind_exact_projection_fields(fields)
+    return _bind_governed_c11_projection(fields)
 
 
 def materialize_and_bind(
