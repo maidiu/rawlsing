@@ -60,9 +60,9 @@ def test_coordinate_and_routing_law_is_exact_and_not_missingness_inferred():
     assert slot.copy_observed_raw is True
     assert slot.native_coordinate_ref == m.NATIVE_COUNTRY_COORDINATE_REF
     by_row = {}
-    respondent_row = {b.respondent_ref: b.row_ordinal for b in projection.row_bindings}
+    respondent_row = {b.respondent_ref.object_id: b.row_ordinal for b in projection.row_bindings}
     for fact in projection.routing:
-        by_row.setdefault(respondent_row[fact.scoped_respondent_ref], set()).add(fact.routing_state)
+        by_row.setdefault(respondent_row[fact.scoped_respondent_ref["object_id"]], set()).add(fact.routing_state)
     assert by_row == {
         1: {"ELIGIBLE_APPLICABLE"},
         2: {"NOT_ELIGIBLE"},
