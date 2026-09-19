@@ -141,3 +141,14 @@ def test_lits_c_exact_current_nonqualification_and_wvs_c_no_path():
     )
     with pytest.raises(backend.BackendStop,match="WVS-C"):
         backend._gate(wvs)
+
+
+def test_backend_has_no_prepopulated_metric_zero_fallback():
+    import importlib
+    backend=importlib.import_module("rawlsing_next.ee_p2x_darwin_stage_backend")
+    source=Path(backend.__file__).read_text()
+    slot=source[source.index("def _slot"):source.index("def _behavior")]
+    assert '"state":"MEASURED","value":0' not in slot
+    assert "prepopulated_default_forbidden" in slot
+    s1=source[source.index("def _s01"):source.index("def _s02")]
+    assert '"build_or_open_wall_ns"' in s1
