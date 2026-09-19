@@ -1,0 +1,58 @@
+{
+  "schema": "RAWLSING_EE_P2R6X_BROWSER_QUALIFICATION_RECEIPT@1.0.0",
+  "status": "PASS",
+  "branch": "agent/rabochii-prev3-ee-p2r6x-p2x-ledger-reconciliation-prep-r1",
+  "exact_base": "ae8b1db9d8c3288e002950ac01123c70f3138320",
+  "commission_tip": "d7f22f8c2eaff326f547925f403a6f494b3f04c9",
+  "live_hq_checkpoint": "20260919T0330-0400",
+  "live_hq_handoff": "9540aba11d40fc749ffa59827e871c1ba00e7ec6",
+  "controlling_decisions": [
+    "HQD-2026-09-19-081",
+    "HQD-2026-09-19-082"
+  ],
+  "stopped_ledger_sha256": "7de7c91d539dd267e31098fd47285b3f4a7873e1c9ec7b542c45cac3908b8671",
+  "implementation": {
+    "path": "WORKER_RETURNS/EE-P2R6X/03_RECONCILE_LOCAL_P2X_INFRASTRUCTURE_STOPS.py",
+    "git_blob_sha1": "12836e591be9ed0aa4d46436deacebde038d9de0"
+  },
+  "qualification_test": {
+    "path": "rawlsing_next/tests/test_ee_p2r6x_governed_browser_court.py",
+    "git_blob_sha1": "339c1703314e80709416a844c510a65dd97c447d",
+    "tests_passed": 7,
+    "tests_failed": 0
+  },
+  "governed_browser_court": {
+    "workflow": "Rabochii Governed Bounded Court",
+    "run_id": 35430978947,
+    "run_number": 593,
+    "job_id": 105865369693,
+    "conclusion": "success",
+    "evidence_execution_sha": "466acb2678de50fbd90e422d226e96dbaa70cfc2",
+    "pull_request_synthetic_sha": "91289f1e16d46fa86fb6c3b58d39afb5529b3f5a",
+    "transient_pr": 420,
+    "transient_pr_closed_without_merge": true,
+    "protocol_self_tests_passed": 20,
+    "governed_r6x_tests_passed": 7,
+    "artifact_id": 10580902329,
+    "artifact_zip_sha256": "c715e60b787894e61689db1be34d0bc80a3f89b59502d97d09300188955928d6"
+  },
+  "qualified_properties": [
+    "EXACT_STOPPED_LEDGER_HASH_REQUIRED",
+    "UNRELATED_LEDGER_DRIFT_FAILS_CLOSED",
+    "EXACT_EXCEPTION_IDENTITIES_REQUIRED",
+    "CANDIDATE_STOP_PROPAGATION_MUST_LINK_TO_EXACT_BLOCKER",
+    "LAWFUL_PRIOR_TERMINAL_ENTRIES_PRESERVED_BYTE_FOR_BYTE",
+    "LITS_C_AND_WVS_C_PRESERVED",
+    "ORPHAN_S17_RUNNING_REMOVED_ONLY_AT_EXACT_IDENTITY",
+    "ONLY_BACKEND_STATE_AND_AFFECTED_CELL_SCRATCH_REMOVED",
+    "DURABLE_TRANSFORMED_CARRIERS_PRESERVED",
+    "SECOND_MUTATING_INVOCATION_REFUSES",
+    "AUDIT_ONLY_SUPPORTS_STOPPED_OR_ALREADY_RECONCILED_STATE",
+    "NO_SOURCE_CARRIER_ACCESS",
+    "NO_EMPIRICAL_MEASUREMENT"
+  ],
+  "real_p2x_reconciliation_executed": false,
+  "p2x_branch_moved": false,
+  "library_access": false,
+  "terminal": "EE_P2R6X_PASS__DETERMINISTIC_P2X_INFRASTRUCTURE_STOP_RECONCILER_READY__PRESERVES_LAWFUL_STAGE_HISTORY__READY_FOR_POST_FANIN_LOCAL_RECONCILIATION"
+}
