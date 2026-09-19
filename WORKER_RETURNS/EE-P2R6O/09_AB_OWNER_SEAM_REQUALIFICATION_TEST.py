@@ -1,5 +1,5 @@
 from __future__ import annotations
-import copy, hashlib, importlib.util, json, subprocess, sys, tempfile, types
+import copy, hashlib, importlib.util, json, subprocess, sys, tempfile, types, warnings
 from pathlib import Path
 import pytest
 
@@ -230,4 +230,6 @@ def test_r6o_ab_owner_seam_requalification():
       "p2r2_blocker":"SUPERSEDED__R4A_MIXED_COMPOSITION_REQUIRED_AND_ACCEPTED__FROZEN_CHILD_IDENTITIES_PRESERVED",
       "runtime_catalog_identity":receipt["catalog_identity"],"candidate_count":len(candidates),"query_role_execution_count":sum(len(c.query_roles) for c in candidates),
       "active_binding":ACTIVE_BINDING,"runtime_release":RUNTIME_RELEASE,"physical_owner_work_rerun":False,"backend_fanin_executed":False,"p2x_executed":False}
-    print("EE_P2R6O_RESULT="+json.dumps(result,sort_keys=True,separators=(",",":")))
+    payload=json.dumps(result,sort_keys=True,separators=(",",":"))
+    print("EE_P2R6O_RESULT="+payload)
+    warnings.warn("EE_P2R6O_RESULT="+payload, RuntimeWarning, stacklevel=1)
