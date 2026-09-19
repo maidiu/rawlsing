@@ -1,3 +1,15 @@
+# MANDATORY CAUSAL ORIENTATION ADDENDUM
+
+Before executing this guide, after resolving/verifying live HQ, read in full:
+
+`HQ_HANDOFF/NEW_CHAT_PREMAIN_FUNCTIONAL_INHERITANCE_A_B_C_CAUSAL_ORIENTATION_V2_20260919.md`
+
+That addendum explains **why this audit exists**, the P2X failure sequence that exposed executable-succession drift, the Dva/Trii/Chetiri conservation problem, the true A/B/C experimental variable and equal-work boundary, and the already-corrected mistake of prematurely inferring a new 35-wave normalization/compiler architecture.
+
+Do not diagnose, design, or implement before internalizing both documents.
+
+---
+
 # NEW CHAT HQ GUIDE — PRE-MAIN FUNCTIONAL INHERITANCE / AUTHORITY-ESTATE AUDIT
 
 Status: `NON_DISPOSITIVE_GROUNDING_GUIDE__NO_GREENFIELD_ARCHITECTURE_BEFORE_CROSSWALK`
