@@ -155,7 +155,7 @@ def catalog_and_frontier():
     mixed=[c for c in candidates if c.rule_id in {"D02_P2_HIGHER_ORDER_K3","D02_P3_CONDITIONAL_REVERSAL"}]
     assert mixed
     mixed_auth="0d7cfaac1d63cd438d29b109b590cb828805bd113fc37759a6f6f4c88d3c8f55"
-    assert any(c.winning_predicate.grammar_authority_ref.authority_content_hash==mixed_auth for c in mixed)
+    assert any(c.winning_predicate.grammar_authority_ref["authority_content_hash"]==mixed_auth for c in mixed)
     assert {k:v.content_hash for k,v in primitives.items() if k in F02_REFS}==F02_REFS
     assert {k:v.content_hash for k,v in primitives.items() if k in BASE_REFS}==BASE_REFS
     return catalog,candidates,primitives,queries,definition
