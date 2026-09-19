@@ -638,19 +638,16 @@ def _unit(name):
 
 
 def _slot(state,name,stopped=False,preserved=False):
-    if name in state["metrics"]: return state["metrics"][name]
+    if name in state["metrics"]:
+        return state["metrics"][name]
     if stopped:
         return {"state":"NOT_REACHED_AUTHORIZED_STOP","value":None,"unit":_unit(name),
                 "reason":"Lawful typed stop occurred before this metric was reached."}
-    if preserved and name == "build_or_open_wall_ns":
-        return {"state":"NOT_CAPTURED_PRESERVED_STAGE","value":None,"unit":"ns",
+    if preserved:
+        return {"state":"NOT_CAPTURED_PRESERVED_STAGE","value":None,"unit":_unit(name),
                 "reason":"Repetition-forbidden preserved stage did not capture this metric."}
-    if name in {"source_reread_count","repeated_research_source_reread_count","repeated_research_source_redecode_count"}:
-        return {"state":"MEASURED","value":0,"unit":"count","reason":None}
-    if name in {"bytes_written","bytes_rewritten","durable_authoritative_bytes",
-                "durable_transformed_regenerable_bytes","persistent_bytes_removable_with_zero_information_loss"}:
-        return {"state":"MEASURED","value":0,"unit":"bytes","reason":None}
-    raise BackendStop("terminal metric vector incomplete", {"missing_metric":name})
+    raise BackendStop("terminal metric vector incomplete; metric was not actually measured",
+                      {"missing_metric":name,"prepopulated_default_forbidden":True})
 
 
 def _behavior(state,name,stopped):
@@ -747,7 +744,8 @@ def _s01(ctx,services,state):
         state["bindings"]["c_nonqualification_prepared"]=True
         state["candidate_output_first"]=state["candidate_output_first"] or _ord(state)
         return {"preparation":"CURRENT_CACC1_CACC2_ONLY__NO_CACC3__NO_REPAIR","source_sha256":LITS_SHA}
-    binding,projection,runtime_authority=_bind(ctx,services,state,True)
+    (bound,_build_wall)=_measure(ctx,state,lambda:_bind(ctx,services,state,True),"build_or_open_wall_ns")
+    binding,projection,runtime_authority=bound
     rec=_binding_state(state,binding,projection)
     state["candidate_output_first"]=state["candidate_output_first"] or _ord(state)
     return {"binding_identity":rec["binding_identity"]}
