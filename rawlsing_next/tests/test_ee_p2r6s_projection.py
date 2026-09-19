@@ -110,11 +110,11 @@ def test_mutated_country_authority_fails_exact_binder():
 def test_mutated_lock2_package_fails_backend_gate(tmp_path):
     import importlib, types
     backend=importlib.import_module("rawlsing_next.ee_p2x_darwin_stage_backend")
-    target=tmp_path/"WORKER_RETURNS/EE-P2R6S"
+    target=tmp_path/"WORKER_RETURNS/EE-P2R6S/SUPPORT"
     target.mkdir(parents=True)
     pkg=json.loads(PKG.read_text())
     pkg["lock2"]="0"*64
-    (target/"04_COMPLETE_WVS7_FROZEN_P2_PROJECTION_AUTHORITY.json").write_text(json.dumps(pkg))
+    (target/"02_WVS7_P2F2_RUNTIME_PACKAGE.json").write_text(json.dumps(pkg))
     services=types.SimpleNamespace(repo_root=tmp_path)
     ctx=types.SimpleNamespace()
     with pytest.raises(backend.SourceAuthorityStop,match="Lock2"):
