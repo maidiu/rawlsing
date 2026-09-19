@@ -8,12 +8,9 @@ First is the mandatory semantic spine: exact source -> governed source-specific 
 
 Second is candidate-owned physical acceleration. The accepted concrete C implementation contains exactly CACC1 and CACC2. They are nonauthoritative, deletable, regenerable, and LiTS-specific. Their absence or inapplicability cannot create a new semantic negative state because the accepted owner explicitly denies them authority over semantic truth, candidate reachability, terminal state, or learned product identity.
 
-That separation answers both ownership questions:
+Truth owner: candidate-neutral source/semantic/PRE553 authorities. Realization-cost owner: Candidate C for whatever exact-source access, accelerator build/read/delete/regeneration, and common-engine execution its frozen policy actually performs.
 
-- truth owner: candidate-neutral source/semantic/PRE553 authorities;
-- realization-cost owner: Candidate C for whatever exact-source access, accelerator build/read/delete/regeneration, and common-engine execution its frozen policy actually performs.
-
-A source-backed fallback therefore does not give C semantically pre-solved work. It is the base physical path of the hybrid policy.
+Primary evidence: data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/23_AS3R2_ACCEPTANCE_AND_AS4_SYMMETRIC_CANDIDATE_EXECUTION_AUTHORIZATION.md (blob bdf50129ac52a161dacd5859bc5b8bc60eaa65ac); rawlsing_next/pre553_route_c_accelerators.py @ 0b96b8de9aac774566f872cf0630ebd4ddeb70e6; WORKER_RETURNS/EE-R4B/01_EXECUTABLE_OWNER_REGISTRY.json @ e5012ff2d9116e65850402b4432899de4937ed5e.
 
 ## 2. Why zero-accelerator execution is already lawful Candidate C
 
@@ -22,6 +19,8 @@ The original AS3R2/AS4 authorization is stronger than a mere statement that cach
 Thus exact cacheless source-backed execution is already inside the accepted Route-C state machine. It is not a new Route B substitution.
 
 The later owner registry preserves the same distinction: C's mandatory semantic core is exact source plus governed projection into source-backed C11 and unchanged I03/I05; its CACC artifacts have no authority role.
+
+Primary evidence: data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/23_AS3R2_ACCEPTANCE_AND_AS4_SYMMETRIC_CANDIDATE_EXECUTION_AUTHORIZATION.md (blob bdf50129ac52a161dacd5859bc5b8bc60eaa65ac); WORKER_RETURNS/EE-R4B/01_EXECUTABLE_OWNER_REGISTRY.json @ e5012ff2d9116e65850402b4432899de4937ed5e.
 
 ## 3. LiTS-C q310/q311
 
@@ -34,7 +33,9 @@ That stop is mechanically truthful about the current implementation, but its int
 - the CACC physical representation does not cover q310/q311;
 - the current backend has not bound the lawful zero-accelerator/source-backed Route-C state to the expanded workload;
 - no evidence authorizes dropping q310/q311, synthesizing new CACC fields, creating CACC3, or changing shared I03/I05;
-- therefore the candidate-level nonqualification is AUTHORITY_EXISTS_RUNTIME_INTEGRATION_MISSING, while the accelerator itself has a lawful scope ceiling.
+- therefore candidate-level nonqualification is AUTHORITY_EXISTS_RUNTIME_INTEGRATION_MISSING, while the accelerator itself has a lawful scope ceiling.
+
+Primary evidence: rawlsing_next/pre553_route_c_accelerators.py @ 0b96b8de9aac774566f872cf0630ebd4ddeb70e6; rawlsing_next/ee_p2x_darwin_stage_backend.py @ 617c9c9426db12a3c0f7fea6b68a582c10759553; WORKER_RETURNS/EE-P2R6S/SUPPORT/01_LITS_CURRENT_RUNTIME_MATERIALIZER.py @ 617c9c9426db12a3c0f7fea6b68a582c10759553.
 
 The repair shape is deliberately not specified here. L04 proves the contract boundary only.
 
@@ -50,6 +51,8 @@ R6S has since closed the common WVS projection/runtime path for A/B, but the cur
 
 No WVS CACC should be created.
 
+Primary evidence: HQ_HANDOFF/CHETIRI_CARRIER_DECISION_CLOSURE_PLAN_R2.md @ governing commit 0018eb173f6efbb034cf517179261105ae46e297; HQ_HANDOFF/CHETIRI_FINAL_P2_COURT_MANIFEST_R1.json @ 617c9c9426db12a3c0f7fea6b68a582c10759553; HQ_HANDOFF/EE_P2R6S_PASS_ADOPTION_20260919.md @ agent/rabochii-premain-fiabc-b05-p2x-succession-failure-falsifier-r1; rawlsing_next/ee_p2x_darwin_stage_backend.py @ 617c9c9426db12a3c0f7fea6b68a582c10759553.
+
 ## 5. Does this make A/B/C ill-posed?
 
 No at the constitutional level.
@@ -60,16 +63,19 @@ What is invalid today is treating the current executable P2X state as a complete
 
 Before a measured result can be dispositive, the court must execute the already-lawful Candidate-C fallback as Candidate C, preserve the full source-local workload, and account its candidate-local work symmetrically. That implementation task belongs to later HQ fan-in, not this worker.
 
+Primary evidence: WORKER_RETURNS/FIABC-B03/00_RETURN.md @ agent/rabochii-premain-fiabc-b03-abc-independent-variable-court-r1; HQ_HANDOFF/CHETIRI_FINAL_P2_COURT_MANIFEST_R1.md @ 617c9c9426db12a3c0f7fea6b68a582c10759553; WORKER_COMMISSIONS/EE-P2X/00_COMMISSION.md @ 617c9c9426db12a3c0f7fea6b68a582c10759553.
+
 ## 6. Preserved contradiction
 
 Wave-1 B05 correctly observed genuine absence of real-source C determinant/binding material and WVS-C executable capability at the blocker-time execution grain. L04 does not rewrite that history.
 
 The deeper genealogy proves a different proposition: the accepted Candidate-C policy itself did not require every admitted source/workload to possess a CACC representation, and it already contained cacheless source-backed execution. Therefore the missing current binding must not be reinterpreted as proof of semantic or experimental scope exclusion.
 
+Primary evidence: WORKER_RETURNS/EE-P2X/05_LITS_I_C_TERMINAL_BINDING_BLOCKER.json and WORKER_RETURNS/EE-P2X/06_WVS7_COMMON_PREEXECUTION_AND_CANDIDATE_BLOCKERS.json @ 29e434a385719f9835e0bcd252fb24bc37675a99; WORKER_RETURNS/FIABC-B05/02_TRUE_MISSINGNESS_SEARCH.md @ agent/rabochii-premain-fiabc-b05-p2x-succession-failure-falsifier-r1.
+
 ## 7. Forbidden conclusions
 
 This return does not authorize:
-
 - CACC3;
 - a WVS-specific accelerator;
 - expansion/reminting of CACC1/CACC2;
