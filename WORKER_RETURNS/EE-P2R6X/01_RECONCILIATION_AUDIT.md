@@ -62,3 +62,5 @@ A mutating invocation requires the exact stopped ledger SHA above. Once reconcil
 The reconciler accepts no LiTS/WVS source-path arguments, contains no decoder/import path for empirical carriers, and records:
 - `source_carrier_access_performed: false`
 - `empirical_measurement_performed: false`
+
+Governed synthetic qualification PR: `#419` (transient; close without merge).
