@@ -1,0 +1,59 @@
+{
+  "schema": "RAWLSING_HQ_HANDOFF@1.1.0",
+  "checkpoint_id": "20260919T0110-0400",
+  "repository": "maidiu/rawlsing",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354",
+  "prior_checkpoint": "20260919T0026-0400",
+  "status": "R6S_ADOPTED_PASS__SELECTIVE_P2X_FANIN_READY__P2X_HELD",
+  "decisions": [
+    "HQD-2026-09-19-075"
+  ],
+  "adoption_path": "HQ_HANDOFF/EE_P2R6S_PASS_ADOPTION_20260919.md",
+  "adjudicated_returns": [
+    {
+      "id": "EE-P2R6S",
+      "return_head": "48887a2b1523c9d20933e4d6c5e341e80d7a0ff6",
+      "disposition": "PASS__ADOPTED_QUALIFIED_RUNTIME_ARTIFACTS"
+    }
+  ],
+  "adopted_runtime_fanin": [
+    {
+      "path": "rawlsing_next/ee_p2x_darwin_stage_backend.py",
+      "blob_sha1": "ca32b9c8ec6bfcbbdc039fba0a10646dcc5357e2"
+    },
+    {
+      "path": "WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py",
+      "blob_sha1": "3a3e228843656e023673310c26acbd41ecdc1b3b"
+    },
+    {
+      "path": "WORKER_RETURNS/EE-P2R6S/SUPPORT/01_LITS_CURRENT_RUNTIME_MATERIALIZER.py",
+      "blob_sha1": "9406bacfd928393f6a159a46216aa1f7ec129f34"
+    },
+    {
+      "path": "WORKER_RETURNS/EE-P2R6S/SUPPORT/02_WVS7_P2F2_RUNTIME_PACKAGE.json",
+      "blob_sha1": "e04e84b76f8b4eb53905276dd025938bf2e5f6fe"
+    }
+  ],
+  "integration_hygiene": {
+    "whole_r6s_tree_adopted": false,
+    "qualification_court_spec_excluded": true,
+    "tests_excluded": true
+  },
+  "active_workers": [
+    {
+      "id": "EE-P2X",
+      "branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+      "observed_head_at_checkpoint": "32e224c28d720fce7cdcf6182afb5d327e8a1cf0",
+      "temporal_classification": "UNCHANGED_ACTIVE_WORKER",
+      "execution_surface": "LOCAL-MACHINE CODEX__DORMANT_WHILE_HELD",
+      "library_access": "EXACT_ONLY"
+    }
+  ],
+  "next_action": {
+    "id": "P2X_SELECTIVE_R6S_RUNTIME_FANIN",
+    "status": "READY",
+    "exact_parent": "32e224c28d720fce7cdcf6182afb5d327e8a1cf0"
+  },
+  "terminal": "R6S_ADOPTED__SELECTIVE_P2X_FANIN_READY__P2X_HELD"
+}
