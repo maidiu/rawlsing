@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import importlib.util
+import json
 from pathlib import Path
 
 import pytest
@@ -115,3 +116,7 @@ def test_frozen_dimensions_and_authority_identity_are_explicit():
     assert receipt["projection_authority_ref"]["authority_id"] == "EE-P2R6Q-WVS7-FROZEN-P2-C11-PROJECTION"
     assert receipt["tie_order_ref"]["content_hash"] == m.LOCK2
     assert m.REQUIRED_COUNTRY_CODES == frozenset({104, 231, 364, 404, 417, 434, 504, 558, 608, 704, 716, 762, 862})
+
+
+def test_identity_capture_probe_only():
+    raise AssertionError("R6Q_IDENTITY_RECEIPT=" + json.dumps(m.authority_identity_receipt(), sort_keys=True))
