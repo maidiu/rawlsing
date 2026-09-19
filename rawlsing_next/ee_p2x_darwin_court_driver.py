@@ -247,6 +247,14 @@ class StageLedger:
         old = self.stage_entry(stage.address)
         if old and old.get("terminal_disposition") in COMPLETE_LEDGER_DISPOSITIONS: raise StageStateError(f"cannot restart terminal stage {stage.address}")
         self.data["stages"][stage.address] = {"stage_id": stage.stage_id, "source": stage.source, "candidate": stage.candidate, "input_identity_hash": ih, "state": "RUNNING", "output_artifact_hashes": {}, "receipt_path": None, "receipt_hash": None, "verifier_completion": False, "terminal_disposition": None, "next_stage": None}; self.flush()
+    def discard_empty_running_preterminal(self, stage: StageSpec):
+        old = self.stage_entry(stage.address)
+        if old is None: return
+        if old.get("state") != "RUNNING" or old.get("terminal_disposition") is not None:
+            raise StageStateError(f"cannot discard non-running preterminal stage {stage.address}")
+        if old.get("receipt_path") is not None or old.get("receipt_hash") is not None or old.get("output_artifact_hashes"):
+            raise StageStateError(f"cannot discard evidenced running stage {stage.address}")
+        del self.data["stages"][stage.address]; self.flush()
     def complete(self, stage: StageSpec, *, input_identity_hash: str, terminal_disposition: str, receipt_path: Path, output_artifact_hashes: Mapping[str,str], verifier_complete: bool, next_stage: str):
         if terminal_disposition not in COMPLETE_LEDGER_DISPOSITIONS or not verifier_complete or not receipt_path.is_file(): raise StageStateError("stage cannot become terminal")
         self.data["stages"][stage.address] = {"stage_id": stage.stage_id, "source": stage.source, "candidate": stage.candidate, "input_identity_hash": input_identity_hash, "state": "TERMINAL", "output_artifact_hashes": dict(sorted(output_artifact_hashes.items())), "receipt_path": str(receipt_path.relative_to(self.work_root)), "receipt_hash": _sha256_file(receipt_path), "verifier_completion": True, "terminal_disposition": terminal_disposition, "next_stage": next_stage}; return self.flush()
@@ -455,7 +463,11 @@ class DarwinCourtDriver:
                 if n=="__COMMON_COURT_BLOCKER__": return self._summary("BLOCKED__COMMON_COURT_AUTHORITY",a)
                 a=n; continue
             if old and old.get("state")=="RUNNING" and not resume: raise StageStateError(f"partial stage {a}; use --resume")
-            if stage.address==self.machine.final_stage_id:
+            is_final = stage.address==self.machine.final_stage_id
+            if is_final:
+                if old and old.get("state")=="RUNNING":
+                    self.ledger.discard_empty_running_preterminal(stage)
+                    old=None
                 try: _final_ready(self.machine,self.ledger)
                 except CommonAuthorityBlocker: return self._summary("BLOCKED__UNRESOLVED_COMMON_AUTHORITY_AT_S17",stage.address)
             sha=self.source_sha_for_stage(stage); roots=_candidate_roots(self.work_root,stage.source,stage.candidate); ih=_input_identity(self.machine,stage,sha,self.repo.head)
@@ -463,7 +475,9 @@ class DarwinCourtDriver:
             if stage.disposition=="SKIP__NOT_APPLICABLE_BY_FROZEN_LAW": a,_=_skip(self.machine,self.ledger,stage,self.repo.head,sha); continue
             if stage.disposition=="TERMINAL_CANDIDATE_LOCAL_FAILURE__PRESERVE": a,_=self._preserved_wvs_c(stage,sha); continue
             if stage.disposition!="READY__RUN_LOCALLY": raise StageStateError(f"unexpected disposition {stage.disposition}")
-            self.ledger.begin(stage,ih); ctx=StageContext(BACKEND_CONTRACT,stage,self.work_root,roots,self.source_paths.get(stage.source) if stage.empirical_source_access_required else None,sha,self.machine.identity,P2X_BRANCH,self.repo.head,ih)
+            if not is_final: self.ledger.begin(stage,ih)
+            elif self.ledger.stage_entry(stage.address) is not None: raise StageStateError("S17 must be absent before backend verification")
+            ctx=StageContext(BACKEND_CONTRACT,stage,self.work_root,roots,self.source_paths.get(stage.source) if stage.empirical_source_access_required else None,sha,self.machine.identity,P2X_BRANCH,self.repo.head,ih)
             try: result=self.backend.run_stage(ctx,self.services)
             except CandidateLocalFailure as exc: result=BackendResult("CANDIDATE_LOCAL_FAILURE",{"error":str(exc),**exc.receipt},verifier_complete=True)
             except CommonAuthorityBlocker as exc: result=BackendResult("COMMON_SOURCE_BLOCKER" if exc.scope=="SOURCE" else "COMMON_COURT_BLOCKER",{"error":str(exc),"scope":exc.scope,**exc.receipt},verifier_complete=True)
