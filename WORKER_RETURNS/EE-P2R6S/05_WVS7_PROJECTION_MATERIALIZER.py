@@ -1043,6 +1043,27 @@ def materialize_from_wvs_sav(source_path: str | Path) -> GovernedC11Projection:
     )
 
 
+
+def bind_exact_projection_fields(fields: Mapping[str, Any]) -> GovernedC11Projection:
+    coordinate_slots=tuple(fields.get("coordinate_slots", ()))
+    if len(coordinate_slots)!=1:
+        raise ValueError("frozen WVS7 P2 requires exactly one country coordinate slot")
+    coordinate=coordinate_slots[0]
+    if coordinate.slot.name!="B_COUNTRY":
+        raise ValueError("frozen WVS7 P2 coordinate slot must be exact B_COUNTRY")
+    if coordinate.source_semantic_authority_ref!=COORDINATE_AUTH_REF:
+        raise ValueError("frozen WVS7 P2 country coordinate authority substitution forbidden")
+    if fields.get("projection_authority_ref")!=PROJECTION_AUTH_REF:
+        raise ValueError("frozen WVS7 P2 projection authority substitution forbidden")
+    if fields.get("replay_authority_ref")!=REPLAY_AUTH_REF:
+        raise ValueError("frozen WVS7 P2 replay authority substitution forbidden")
+    if fields.get("tie_order_ref")!=TIE_ORDER_REF:
+        raise ValueError("frozen WVS7 P2 Lock2/tie-order substitution forbidden")
+    if tuple(fields.get("weight_slots", ()))!=():
+        raise ValueError("frozen WVS7 P2 is raw/unweighted")
+    return bind_exact_projection_fields(fields)
+
+
 def materialize_and_bind(
     *,
     physical_variables: Sequence[PhysicalVariable],
@@ -1054,7 +1075,7 @@ def materialize_and_bind(
         row_country_values=row_country_values,
         enforce_frozen_dimensions=enforce_frozen_dimensions,
     )
-    return bind_governed_c11_projection(fields)
+    return bind_exact_projection_fields(fields)
 
 
 def binding_receipt(
@@ -1112,6 +1133,7 @@ __all__ = [
     "build_projection_fields",
     "materialize_and_bind",
     "binding_receipt",
+    "bind_exact_projection_fields",
     "inspect_wvs_sav_structure_and_country",
     "materialize_from_wvs_sav",
     "projection_structural_input",
