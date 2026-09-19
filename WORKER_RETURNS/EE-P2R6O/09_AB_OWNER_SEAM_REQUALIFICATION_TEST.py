@@ -39,7 +39,7 @@ PRODUCER_PATH="rawlsing_next/pre553_as3r3_runtime_producer.py"; PRODUCER_BLOB="d
 CONTRACT_PATH="rawlsing_next/pre553_as3r3_runtime_producer_contract.py"; CONTRACT_BLOB="26a7d123881513524e26f2342ab93dd1141fb5f6"
 R6N="ab7e7f6e764eba43e85fe5c8629fee6cc0ba2a5c"
 R6N_PROOF="WORKER_RETURNS/EE-P2R6N/03_R6A_PRODUCTION_RUNTIME_PROOF.json"; R6N_PROOF_BLOB="b18811757596058fe97a7f6088c39e00ef6ca05f"
-REGISTRY="HQ_HANDOFF/BINDING_REGISTRY_SNAPSHOTS/20260918T2000-0400.json"
+HQ_HANDOFF="73eae181e4c831cddc4db8780fde08bdcd47d270"\nREGISTRY="HQ_HANDOFF/BINDING_REGISTRY_SNAPSHOTS/20260918T2000-0400.json"
 REGISTRY_HASH="6f2eb0f93576b6ea2b9360fdb7c437f9f1810056494149c64b03d2c7834d03c4"
 ACTIVE_BINDING="a5f36a81843fe2ebab0b5cccb369ce76035f842b93e602613b8b9f3a81103308"
 QUARANTINED="fd4177eaddff07dc1e51a6f900c07f163965f996742b301932bbeb79a8690bb0"
@@ -157,7 +157,7 @@ def catalog_and_frontier():
     return catalog,candidates,primitives,queries,definition
 
 def active_registry():
-    reg=json.loads((ROOT/REGISTRY).read_text())
+    reg=git_json(HQ_HANDOFF,REGISTRY)
     assert reg["snapshot_ref"]["content_hash"]==REGISTRY_HASH
     active=reg["identity_material"]["active_positive_bindings"]; assert len(active)==1 and active[0]["binding_ref"]["content_hash"]==ACTIVE_BINDING
     return reg
