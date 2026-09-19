@@ -32,7 +32,7 @@ D02_BLOB="5399a3f64642c8d9f8a0644db0adc15d38642971"
 F02="482bb884a99e31ba77e904d0df39fffc872cbed3"
 F02_PATH="rawlsing_next/prev3_lits1_selector_closure.py"; F02_BLOB="7b45b277164fa90c3da739aab26b516f7a8cb8dc"
 B12="e5f9a14a77c2b84a86ce6eefaddb4b5c12b17e39"
-NODE4A_PATH="data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/AS3R3_NODE4A_PREDICATE_INPUT_FREEZE_20260827/PREDICATE_INPUTS.py"
+NODE4A_SUPPORT="WORKER_RETURNS/EE-P2R6O/SUPPORT/01_NODE4A_PREDICATE_INPUTS.py"
 NODE4A_BLOB="504944f9533b7385d201076e2e834b8a9446dee8"
 QUERY_INPUT_PATH="data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/SUB_VOZHD_CAMPAIGN_INTEGRATION_R1/B_ARCHITECTURE_COMPILER_DVA_CHETIRI_R1/WORKERS/B6_AS3R3_NODE4B_QUERY_INPUT_FREEZE_R1/01_QUERY_INPUTS.json"
 QUERY_INPUT_BLOB="3f56e3b3c5e3c3be61adef392ee9ca59875827a3"
@@ -77,8 +77,9 @@ def load_producer():
 
 def load_base_objects():
     producer=load_producer()
-    assert git_blob_sha(B12,NODE4A_PATH)==NODE4A_BLOB
-    node4=mod_from_bytes("ee_p2r6o_node4a",git_bytes(B12,NODE4A_PATH))
+    node4_path=ROOT/NODE4A_SUPPORT
+    assert sh(["git","hash-object",str(node4_path)]).decode().strip()==NODE4A_BLOB
+    node4=mod_from_bytes("ee_p2r6o_node4a",node4_path.read_bytes())
     records=node4.load_predicate_inputs()
     preds={r["as3_semantic_source_identity"]["as3_id"]:producer.construct_successor_predicate(r) for r in records}
     assert git_blob_sha(B12,QUERY_INPUT_PATH)==QUERY_INPUT_BLOB
