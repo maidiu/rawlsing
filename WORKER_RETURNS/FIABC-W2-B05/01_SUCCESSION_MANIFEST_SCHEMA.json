@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "urn:rawlsing:fiabc:succession-manifest:1.0.0",
   "title": "RAWLSING_FIABC_SUCCESSION_MANIFEST@1.0.0",
-  "description": "Machine-readable functional-succession manifest for the PRE-MAIN A/B/C court. The manifest represents proof state; unresolved states are representable but must fail the preflight defined by FIABC-W2-B05.",
+  "description": "Machine-readable functional-succession manifest for the PRE-MAIN A/B/C court. Unresolved, disconnected, deferred, and genuinely-missing states are representable without fabricating positive refs; the FIABC-W2-B05 preflight decides whether those states block the frozen court claim.",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -19,56 +19,38 @@
     "preflight_evaluation"
   ],
   "properties": {
-    "manifest_schema": {
-      "const": "RAWLSING_FIABC_SUCCESSION_MANIFEST@1.0.0"
-    },
-    "manifest_identity": {
-      "$ref": "#/$defs/manifestIdentity"
-    },
-    "court_scope": {
-      "$ref": "#/$defs/courtScope"
-    },
-    "comparison_terminal": {
-      "$ref": "#/$defs/comparisonTerminal"
-    },
-    "upstream_freeze": {
-      "$ref": "#/$defs/upstreamFreeze"
-    },
+    "manifest_schema": {"const": "RAWLSING_FIABC_SUCCESSION_MANIFEST@1.0.0"},
+    "manifest_identity": {"$ref": "#/$defs/manifestIdentity"},
+    "court_scope": {"$ref": "#/$defs/courtScope"},
+    "comparison_terminal": {"$ref": "#/$defs/comparisonTerminal"},
+    "upstream_freeze": {"$ref": "#/$defs/upstreamFreeze"},
     "function_chains": {
       "type": "array",
       "minItems": 1,
-      "items": {
-        "$ref": "#/$defs/functionChain"
-      }
+      "items": {"$ref": "#/$defs/functionChain"}
     },
     "abc_invariants": {
       "type": "array",
       "minItems": 1,
-      "items": {
-        "$ref": "#/$defs/abcInvariant"
-      }
+      "items": {"$ref": "#/$defs/abcInvariant"}
     },
     "source_candidate_capabilities": {
       "type": "array",
       "minItems": 1,
-      "items": {
-        "$ref": "#/$defs/sourceCandidateCapability"
-      }
+      "items": {"$ref": "#/$defs/sourceCandidateCapability"}
     },
-    "parity_oracle": {
-      "$ref": "#/$defs/parityOracle"
-    },
-    "accounting_contract": {
-      "$ref": "#/$defs/accountingContract"
-    },
-    "preflight_evaluation": {
-      "$ref": "#/$defs/preflightEvaluation"
-    }
+    "parity_oracle": {"$ref": "#/$defs/parityOracle"},
+    "accounting_contract": {"$ref": "#/$defs/accountingContract"},
+    "preflight_evaluation": {"$ref": "#/$defs/preflightEvaluation"}
   },
   "$defs": {
-    "sha": {
+    "commitSha": {
       "type": "string",
-      "pattern": "^[0-9a-f]{40,64}$"
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
     },
     "nonEmptyString": {
       "type": "string",
@@ -102,33 +84,14 @@
     "evidenceRef": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "repo",
-        "path",
-        "ref",
-        "resolved_commit_sha",
-        "evidence_class"
-      ],
+      "required": ["repo", "path", "ref", "resolved_commit_sha", "evidence_class"],
       "properties": {
-        "repo": {
-          "const": "maidiu/rawlsing"
-        },
-        "path": {
-          "$ref": "#/$defs/nonEmptyString"
-        },
-        "ref": {
-          "$ref": "#/$defs/nonEmptyString"
-        },
-        "resolved_commit_sha": {
-          "$ref": "#/$defs/sha"
-        },
-        "git_blob_sha": {
-          "$ref": "#/$defs/sha"
-        },
-        "content_sha256": {
-          "type": "string",
-          "pattern": "^[0-9a-f]{64}$"
-        },
+        "repo": {"const": "maidiu/rawlsing"},
+        "path": {"$ref": "#/$defs/nonEmptyString"},
+        "ref": {"$ref": "#/$defs/nonEmptyString"},
+        "resolved_commit_sha": {"$ref": "#/$defs/commitSha"},
+        "git_blob_sha": {"$ref": "#/$defs/commitSha"},
+        "content_sha256": {"$ref": "#/$defs/sha256"},
         "evidence_class": {
           "type": "string",
           "enum": [
@@ -142,9 +105,7 @@
             "BOUNDARY_ADJUDICATION"
           ]
         },
-        "claim": {
-          "type": "string"
-        }
+        "claim": {"type": "string"}
       }
     },
     "manifestIdentity": {
@@ -157,126 +118,81 @@
         "frozen_before_candidate_execution"
       ],
       "properties": {
-        "generated_from_ref": {
-          "$ref": "#/$defs/nonEmptyString"
-        },
-        "generated_from_commit_sha": {
-          "$ref": "#/$defs/sha"
-        },
-        "manifest_content_sha256": {
-          "type": "string",
-          "pattern": "^[0-9a-f]{64}$"
-        },
-        "frozen_before_candidate_execution": {
-          "type": "boolean"
-        }
+        "generated_from_ref": {"$ref": "#/$defs/nonEmptyString"},
+        "generated_from_commit_sha": {"$ref": "#/$defs/commitSha"},
+        "manifest_content_sha256": {"$ref": "#/$defs/sha256"},
+        "frozen_before_candidate_execution": {"type": "boolean"}
       }
     },
     "courtScope": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "sources",
-        "candidates",
-        "claim_scope_id",
-        "workload_ref"
-      ],
+      "required": ["sources", "candidates", "claim_scope_id", "workload_ref"],
       "properties": {
         "sources": {
           "type": "array",
           "minItems": 1,
           "uniqueItems": true,
-          "items": {
-            "$ref": "#/$defs/nonEmptyString"
-          }
+          "items": {"$ref": "#/$defs/nonEmptyString"}
         },
         "candidates": {
           "type": "array",
           "minItems": 1,
           "uniqueItems": true,
-          "items": {
-            "type": "string",
-            "enum": ["A", "B", "C"]
-          }
+          "items": {"type": "string", "enum": ["A", "B", "C"]}
         },
-        "claim_scope_id": {
-          "$ref": "#/$defs/nonEmptyString"
-        },
-        "workload_ref": {
-          "$ref": "#/$defs/evidenceRef"
-        }
+        "claim_scope_id": {"$ref": "#/$defs/nonEmptyString"},
+        "workload_ref": {"$ref": "#/$defs/evidenceRef"}
       }
     },
     "comparisonTerminal": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "state",
-        "terminal_id",
-        "output_contract_ref",
-        "boundary_adjudication_ref"
-      ],
+      "required": ["state", "terminal_id", "resolution_evidence_ref"],
       "properties": {
-        "state": {
-          "$ref": "#/$defs/proofState"
-        },
-        "terminal_id": {
-          "$ref": "#/$defs/nonEmptyString"
-        },
-        "output_contract_ref": {
-          "$ref": "#/$defs/evidenceRef"
-        },
-        "boundary_adjudication_ref": {
-          "$ref": "#/$defs/evidenceRef"
+        "state": {"$ref": "#/$defs/proofState"},
+        "terminal_id": {"$ref": "#/$defs/nonEmptyString"},
+        "resolution_evidence_ref": {"$ref": "#/$defs/evidenceRef"},
+        "output_contract_ref": {"$ref": "#/$defs/evidenceRef"},
+        "boundary_adjudication_ref": {"$ref": "#/$defs/evidenceRef"}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"state": {"const": "PROVED"}}},
+          "then": {"required": ["output_contract_ref", "boundary_adjudication_ref"]}
         }
-      }
+      ]
     },
     "upstreamFreeze": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "state",
-        "semantic_authority_closure_ref",
-        "producer_outputs",
-        "candidate_neutral_work_frozen"
-      ],
+      "required": ["state", "resolution_evidence_ref", "candidate_neutral_work_frozen"],
       "properties": {
-        "state": {
-          "$ref": "#/$defs/proofState"
-        },
-        "semantic_authority_closure_ref": {
-          "$ref": "#/$defs/evidenceRef"
-        },
+        "state": {"$ref": "#/$defs/proofState"},
+        "resolution_evidence_ref": {"$ref": "#/$defs/evidenceRef"},
+        "candidate_neutral_work_frozen": {"type": "boolean"},
+        "semantic_authority_closure_ref": {"$ref": "#/$defs/evidenceRef"},
         "producer_outputs": {
           "type": "array",
-          "items": {
-            "$ref": "#/$defs/evidenceRef"
-          }
-        },
-        "candidate_neutral_work_frozen": {
-          "type": "boolean"
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/evidenceRef"}
         }
-      }
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"state": {"const": "PROVED"}}},
+          "then": {"required": ["semantic_authority_closure_ref", "producer_outputs"]}
+        }
+      ]
     },
     "obligationNode": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "function_id",
-        "description",
-        "historical_evidence_ref"
-      ],
+      "required": ["function_id", "description", "historical_evidence_ref"],
       "properties": {
-        "function_id": {
-          "type": "string",
-          "pattern": "^F[0-9]{3}$"
-        },
-        "description": {
-          "$ref": "#/$defs/nonEmptyString"
-        },
-        "historical_evidence_ref": {
-          "$ref": "#/$defs/evidenceRef"
-        }
+        "function_id": {"type": "string", "pattern": "^F[0-9]{3}$"},
+        "description": {"$ref": "#/$defs/nonEmptyString"},
+        "historical_evidence_ref": {"$ref": "#/$defs/evidenceRef"}
       }
     },
     "authorityNode": {
@@ -286,26 +202,23 @@
         "state",
         "authority_id",
         "semantic_jurisdiction",
-        "authority_ref",
-        "scope_exact"
+        "scope_exact",
+        "resolution_evidence_ref"
       ],
       "properties": {
-        "state": {
-          "$ref": "#/$defs/proofState"
-        },
-        "authority_id": {
-          "$ref": "#/$defs/nonEmptyString"
-        },
-        "semantic_jurisdiction": {
-          "$ref": "#/$defs/nonEmptyString"
-        },
-        "authority_ref": {
-          "$ref": "#/$defs/evidenceRef"
-        },
-        "scope_exact": {
-          "type": "boolean"
+        "state": {"$ref": "#/$defs/proofState"},
+        "authority_id": {"$ref": "#/$defs/nonEmptyString"},
+        "semantic_jurisdiction": {"$ref": "#/$defs/nonEmptyString"},
+        "scope_exact": {"type": "boolean"},
+        "resolution_evidence_ref": {"$ref": "#/$defs/evidenceRef"},
+        "authority_ref": {"$ref": "#/$defs/evidenceRef"}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"state": {"enum": ["PROVED", "LIVE", "PRESENT_NOT_LIVE_PROVED"]}}},
+          "then": {"required": ["authority_ref"]}
         }
-      }
+      ]
     },
     "ownerNode": {
       "type": "object",
@@ -314,36 +227,27 @@
         "state",
         "owner_id",
         "owner_status",
-        "implementation_ref",
-        "currentness_ref",
-        "semantic_owner_id"
+        "semantic_owner_id",
+        "resolution_evidence_ref"
       ],
       "properties": {
-        "state": {
-          "$ref": "#/$defs/proofState"
-        },
-        "owner_id": {
-          "$ref": "#/$defs/nonEmptyString"
-        },
+        "state": {"$ref": "#/$defs/proofState"},
+        "owner_id": {"$ref": "#/$defs/nonEmptyString"},
         "owner_status": {
           "type": "string",
-          "enum": [
-            "CURRENT",
-            "SUPERSEDED",
-            "HISTORICAL_ONLY",
-            "UNRESOLVED"
-          ]
+          "enum": ["CURRENT", "SUPERSEDED", "HISTORICAL_ONLY", "UNRESOLVED"]
         },
-        "implementation_ref": {
-          "$ref": "#/$defs/evidenceRef"
-        },
-        "currentness_ref": {
-          "$ref": "#/$defs/evidenceRef"
-        },
-        "semantic_owner_id": {
-          "$ref": "#/$defs/nonEmptyString"
+        "semantic_owner_id": {"$ref": "#/$defs/nonEmptyString"},
+        "resolution_evidence_ref": {"$ref": "#/$defs/evidenceRef"},
+        "implementation_ref": {"$ref": "#/$defs/evidenceRef"},
+        "currentness_ref": {"$ref": "#/$defs/evidenceRef"}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"state": {"enum": ["PROVED", "LIVE", "PRESENT_NOT_LIVE_PROVED"]}}},
+          "then": {"required": ["implementation_ref", "currentness_ref"]}
         }
-      }
+      ]
     },
     "bindingNode": {
       "type": "object",
@@ -353,33 +257,25 @@
         "producer_owner_id",
         "consumer_id",
         "entrypoint",
-        "binding_ref",
         "binding_identity_matches_owner",
-        "contract_receipt_ref"
+        "resolution_evidence_ref"
       ],
       "properties": {
-        "state": {
-          "$ref": "#/$defs/proofState"
-        },
-        "producer_owner_id": {
-          "$ref": "#/$defs/nonEmptyString"
-        },
-        "consumer_id": {
-          "$ref": "#/$defs/nonEmptyString"
-        },
-        "entrypoint": {
-          "$ref": "#/$defs/nonEmptyString"
-        },
-        "binding_ref": {
-          "$ref": "#/$defs/evidenceRef"
-        },
-        "binding_identity_matches_owner": {
-          "type": "boolean"
-        },
-        "contract_receipt_ref": {
-          "$ref": "#/$defs/evidenceRef"
+        "state": {"$ref": "#/$defs/proofState"},
+        "producer_owner_id": {"$ref": "#/$defs/nonEmptyString"},
+        "consumer_id": {"$ref": "#/$defs/nonEmptyString"},
+        "entrypoint": {"$ref": "#/$defs/nonEmptyString"},
+        "binding_identity_matches_owner": {"type": "boolean"},
+        "resolution_evidence_ref": {"$ref": "#/$defs/evidenceRef"},
+        "binding_ref": {"$ref": "#/$defs/evidenceRef"},
+        "contract_receipt_ref": {"$ref": "#/$defs/evidenceRef"}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"state": {"enum": ["PROVED", "LIVE"]}}},
+          "then": {"required": ["binding_ref", "contract_receipt_ref"]}
         }
-      }
+      ]
     },
     "consumerNode": {
       "type": "object",
@@ -387,64 +283,54 @@
       "required": [
         "state",
         "consumer_id",
-        "execution_code_ref",
-        "receipt_ref",
         "receipt_code_commit_matches",
-        "receipt_after_required_repairs"
+        "receipt_after_required_repairs",
+        "resolution_evidence_ref"
       ],
       "properties": {
-        "state": {
-          "$ref": "#/$defs/proofState"
-        },
-        "consumer_id": {
-          "$ref": "#/$defs/nonEmptyString"
-        },
-        "execution_code_ref": {
-          "$ref": "#/$defs/evidenceRef"
-        },
-        "receipt_ref": {
-          "$ref": "#/$defs/evidenceRef"
-        },
-        "receipt_code_commit_matches": {
-          "type": "boolean"
-        },
-        "receipt_after_required_repairs": {
-          "type": "boolean"
+        "state": {"$ref": "#/$defs/proofState"},
+        "consumer_id": {"$ref": "#/$defs/nonEmptyString"},
+        "receipt_code_commit_matches": {"type": "boolean"},
+        "receipt_after_required_repairs": {"type": "boolean"},
+        "resolution_evidence_ref": {"$ref": "#/$defs/evidenceRef"},
+        "execution_code_ref": {"$ref": "#/$defs/evidenceRef"},
+        "receipt_ref": {"$ref": "#/$defs/evidenceRef"}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"state": {"const": "LIVE"}}},
+          "then": {"required": ["execution_code_ref", "receipt_ref"]}
         }
-      }
+      ]
     },
     "negativeStateLaw": {
       "type": "object",
       "additionalProperties": false,
       "required": [
         "state",
-        "law_ref",
         "required_distinctions",
         "collapse_forbidden",
-        "consumer_preservation_proof_ref"
+        "resolution_evidence_ref"
       ],
       "properties": {
-        "state": {
-          "$ref": "#/$defs/proofState"
-        },
-        "law_ref": {
-          "$ref": "#/$defs/evidenceRef"
-        },
+        "state": {"$ref": "#/$defs/proofState"},
         "required_distinctions": {
           "type": "array",
           "minItems": 1,
           "uniqueItems": true,
-          "items": {
-            "$ref": "#/$defs/nonEmptyString"
-          }
+          "items": {"$ref": "#/$defs/nonEmptyString"}
         },
-        "collapse_forbidden": {
-          "type": "boolean"
-        },
-        "consumer_preservation_proof_ref": {
-          "$ref": "#/$defs/evidenceRef"
+        "collapse_forbidden": {"type": "boolean"},
+        "resolution_evidence_ref": {"$ref": "#/$defs/evidenceRef"},
+        "law_ref": {"$ref": "#/$defs/evidenceRef"},
+        "consumer_preservation_proof_ref": {"$ref": "#/$defs/evidenceRef"}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"state": {"enum": ["PROVED", "LIVE"]}}},
+          "then": {"required": ["law_ref", "consumer_preservation_proof_ref"]}
         }
-      }
+      ]
     },
     "abcClass": {
       "type": "object",
@@ -459,17 +345,10 @@
       "properties": {
         "invariant_ids": {
           "type": "array",
-          "items": {
-            "type": "string",
-            "pattern": "^INV[0-9]{3}$"
-          }
+          "items": {"type": "string", "pattern": "^INV[0-9]{3}$"}
         },
-        "semantic_owner_id": {
-          "$ref": "#/$defs/nonEmptyString"
-        },
-        "cost_owner_id": {
-          "$ref": "#/$defs/nonEmptyString"
-        },
+        "semantic_owner_id": {"$ref": "#/$defs/nonEmptyString"},
+        "cost_owner_id": {"$ref": "#/$defs/nonEmptyString"},
         "cost_class": {
           "type": "string",
           "enum": [
@@ -481,9 +360,7 @@
             "UNRESOLVED"
           ]
         },
-        "must_match_semantically": {
-          "type": "boolean"
-        }
+        "must_match_semantically": {"type": "boolean"}
       }
     },
     "missingnessSearch": {
@@ -527,10 +404,7 @@
         "abc_class"
       ],
       "properties": {
-        "function_id": {
-          "type": "string",
-          "pattern": "^F[0-9]{3}$"
-        },
+        "function_id": {"type": "string", "pattern": "^F[0-9]{3}$"},
         "comparison_requirement": {
           "type": "string",
           "enum": [
@@ -539,72 +413,34 @@
             "UNRESOLVED_BOUNDARY"
           ]
         },
-        "deferment_authority_ref": {
-          "$ref": "#/$defs/evidenceRef"
-        },
-        "disposition": {
-          "$ref": "#/$defs/disposition"
-        },
-        "obligation": {
-          "$ref": "#/$defs/obligationNode"
-        },
+        "deferment_authority_ref": {"$ref": "#/$defs/evidenceRef"},
+        "disposition": {"$ref": "#/$defs/disposition"},
+        "obligation": {"$ref": "#/$defs/obligationNode"},
         "accepted_authority": {
           "type": "array",
           "minItems": 1,
-          "items": {
-            "$ref": "#/$defs/authorityNode"
-          }
+          "items": {"$ref": "#/$defs/authorityNode"}
         },
-        "current_owner": {
-          "$ref": "#/$defs/ownerNode"
-        },
-        "executable_binding": {
-          "$ref": "#/$defs/bindingNode"
-        },
-        "live_consumer": {
-          "$ref": "#/$defs/consumerNode"
-        },
-        "negative_state_law": {
-          "$ref": "#/$defs/negativeStateLaw"
-        },
+        "current_owner": {"$ref": "#/$defs/ownerNode"},
+        "executable_binding": {"$ref": "#/$defs/bindingNode"},
+        "live_consumer": {"$ref": "#/$defs/consumerNode"},
+        "negative_state_law": {"$ref": "#/$defs/negativeStateLaw"},
         "provenance_refs": {
           "type": "array",
           "minItems": 1,
-          "items": {
-            "$ref": "#/$defs/evidenceRef"
-          }
+          "items": {"$ref": "#/$defs/evidenceRef"}
         },
-        "abc_class": {
-          "$ref": "#/$defs/abcClass"
-        },
-        "missingness_search": {
-          "$ref": "#/$defs/missingnessSearch"
-        }
+        "abc_class": {"$ref": "#/$defs/abcClass"},
+        "missingness_search": {"$ref": "#/$defs/missingnessSearch"}
       },
       "allOf": [
         {
-          "if": {
-            "properties": {
-              "comparison_requirement": {
-                "const": "INTENTIONALLY_DEFERRED_BEYOND_TERMINAL"
-              }
-            }
-          },
-          "then": {
-            "required": ["deferment_authority_ref"]
-          }
+          "if": {"properties": {"comparison_requirement": {"const": "INTENTIONALLY_DEFERRED_BEYOND_TERMINAL"}}},
+          "then": {"required": ["deferment_authority_ref"]}
         },
         {
-          "if": {
-            "properties": {
-              "disposition": {
-                "const": "GENUINELY_MISSING"
-              }
-            }
-          },
-          "then": {
-            "required": ["missingness_search"]
-          }
+          "if": {"properties": {"disposition": {"const": "GENUINELY_MISSING"}}},
+          "then": {"required": ["missingness_search"]}
         }
       ]
     },
@@ -615,35 +451,26 @@
         "invariant_id",
         "state",
         "logical_property",
-        "authority_ref",
         "must_match_across_abc",
         "physical_difference_allowed",
-        "proof_ref"
+        "resolution_evidence_ref"
       ],
       "properties": {
-        "invariant_id": {
-          "type": "string",
-          "pattern": "^INV[0-9]{3}$"
-        },
-        "state": {
-          "$ref": "#/$defs/proofState"
-        },
-        "logical_property": {
-          "$ref": "#/$defs/nonEmptyString"
-        },
-        "authority_ref": {
-          "$ref": "#/$defs/evidenceRef"
-        },
-        "must_match_across_abc": {
-          "type": "boolean"
-        },
-        "physical_difference_allowed": {
-          "type": "boolean"
-        },
-        "proof_ref": {
-          "$ref": "#/$defs/evidenceRef"
+        "invariant_id": {"type": "string", "pattern": "^INV[0-9]{3}$"},
+        "state": {"$ref": "#/$defs/proofState"},
+        "logical_property": {"$ref": "#/$defs/nonEmptyString"},
+        "must_match_across_abc": {"type": "boolean"},
+        "physical_difference_allowed": {"type": "boolean"},
+        "resolution_evidence_ref": {"$ref": "#/$defs/evidenceRef"},
+        "authority_ref": {"$ref": "#/$defs/evidenceRef"},
+        "proof_ref": {"$ref": "#/$defs/evidenceRef"}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"state": {"const": "PROVED"}}},
+          "then": {"required": ["authority_ref", "proof_ref"]}
         }
-      }
+      ]
     },
     "sourceCandidateCapability": {
       "type": "object",
@@ -653,49 +480,29 @@
         "candidate_id",
         "state",
         "capability_contract_ref",
-        "production_realization_ref",
+        "resolution_evidence_ref",
         "synthetic_fixture_substitution_forbidden",
         "disposition"
       ],
       "properties": {
-        "source_id": {
-          "$ref": "#/$defs/nonEmptyString"
-        },
-        "candidate_id": {
-          "type": "string",
-          "enum": ["A", "B", "C"]
-        },
-        "state": {
-          "$ref": "#/$defs/proofState"
-        },
-        "capability_contract_ref": {
-          "$ref": "#/$defs/evidenceRef"
-        },
-        "production_realization_ref": {
-          "$ref": "#/$defs/evidenceRef"
-        },
-        "synthetic_fixture_substitution_forbidden": {
-          "const": true
-        },
-        "disposition": {
-          "$ref": "#/$defs/disposition"
-        },
-        "missingness_search": {
-          "$ref": "#/$defs/missingnessSearch"
-        }
+        "source_id": {"$ref": "#/$defs/nonEmptyString"},
+        "candidate_id": {"type": "string", "enum": ["A", "B", "C"]},
+        "state": {"$ref": "#/$defs/proofState"},
+        "capability_contract_ref": {"$ref": "#/$defs/evidenceRef"},
+        "resolution_evidence_ref": {"$ref": "#/$defs/evidenceRef"},
+        "production_realization_ref": {"$ref": "#/$defs/evidenceRef"},
+        "synthetic_fixture_substitution_forbidden": {"const": true},
+        "disposition": {"$ref": "#/$defs/disposition"},
+        "missingness_search": {"$ref": "#/$defs/missingnessSearch"}
       },
       "allOf": [
         {
-          "if": {
-            "properties": {
-              "disposition": {
-                "const": "GENUINELY_MISSING"
-              }
-            }
-          },
-          "then": {
-            "required": ["missingness_search"]
-          }
+          "if": {"properties": {"state": {"enum": ["PROVED", "LIVE"]}}},
+          "then": {"required": ["production_realization_ref"]}
+        },
+        {
+          "if": {"properties": {"disposition": {"const": "GENUINELY_MISSING"}}},
+          "then": {"required": ["missingness_search"]}
         }
       ]
     },
@@ -704,36 +511,33 @@
       "additionalProperties": false,
       "required": [
         "state",
-        "oracle_contract_ref",
-        "oracle_material_ref",
+        "resolution_evidence_ref",
         "frozen_before_candidate_output",
-        "candidate_output_used_to_construct_expected_truth",
-        "fixed_frontier_ref",
-        "negative_state_expectation_ref"
+        "candidate_output_used_to_construct_expected_truth"
       ],
       "properties": {
-        "state": {
-          "$ref": "#/$defs/proofState"
-        },
-        "oracle_contract_ref": {
-          "$ref": "#/$defs/evidenceRef"
-        },
-        "oracle_material_ref": {
-          "$ref": "#/$defs/evidenceRef"
-        },
-        "frozen_before_candidate_output": {
-          "type": "boolean"
-        },
-        "candidate_output_used_to_construct_expected_truth": {
-          "type": "boolean"
-        },
-        "fixed_frontier_ref": {
-          "$ref": "#/$defs/evidenceRef"
-        },
-        "negative_state_expectation_ref": {
-          "$ref": "#/$defs/evidenceRef"
+        "state": {"$ref": "#/$defs/proofState"},
+        "resolution_evidence_ref": {"$ref": "#/$defs/evidenceRef"},
+        "frozen_before_candidate_output": {"type": "boolean"},
+        "candidate_output_used_to_construct_expected_truth": {"type": "boolean"},
+        "oracle_contract_ref": {"$ref": "#/$defs/evidenceRef"},
+        "oracle_material_ref": {"$ref": "#/$defs/evidenceRef"},
+        "fixed_frontier_ref": {"$ref": "#/$defs/evidenceRef"},
+        "negative_state_expectation_ref": {"$ref": "#/$defs/evidenceRef"}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"state": {"const": "PROVED"}}},
+          "then": {
+            "required": [
+              "oracle_contract_ref",
+              "oracle_material_ref",
+              "fixed_frontier_ref",
+              "negative_state_expectation_ref"
+            ]
+          }
         }
-      }
+      ]
     },
     "metricDefinition": {
       "type": "object",
@@ -748,15 +552,9 @@
         "method_identity_across_candidates"
       ],
       "properties": {
-        "metric_id": {
-          "$ref": "#/$defs/nonEmptyString"
-        },
-        "definition_ref": {
-          "$ref": "#/$defs/evidenceRef"
-        },
-        "candidate_local": {
-          "type": "boolean"
-        },
+        "metric_id": {"$ref": "#/$defs/nonEmptyString"},
+        "definition_ref": {"$ref": "#/$defs/evidenceRef"},
+        "candidate_local": {"type": "boolean"},
         "accumulation_semantics": {
           "type": "string",
           "enum": [
@@ -772,119 +570,84 @@
           "type": "string",
           "enum": ["OBSERVED", "DERIVED", "DOCUMENTARY", "UNRESOLVED"]
         },
-        "overwritten_before_terminal": {
-          "type": "boolean"
-        },
-        "method_identity_across_candidates": {
-          "$ref": "#/$defs/nonEmptyString"
-        }
+        "overwritten_before_terminal": {"type": "boolean"},
+        "method_identity_across_candidates": {"$ref": "#/$defs/nonEmptyString"}
       }
     },
     "accountingContract": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "state",
-        "constitution_ref",
-        "candidate_start_stop_ref",
-        "preserved_work_treatment_ref",
-        "semantic_owner_cost_owner_separated",
-        "candidate_process_isolation_ref",
-        "metrics"
-      ],
+      "required": ["state", "resolution_evidence_ref", "semantic_owner_cost_owner_separated"],
       "properties": {
-        "state": {
-          "$ref": "#/$defs/proofState"
-        },
-        "constitution_ref": {
-          "$ref": "#/$defs/evidenceRef"
-        },
-        "candidate_start_stop_ref": {
-          "$ref": "#/$defs/evidenceRef"
-        },
-        "preserved_work_treatment_ref": {
-          "$ref": "#/$defs/evidenceRef"
-        },
-        "semantic_owner_cost_owner_separated": {
-          "type": "boolean"
-        },
-        "candidate_process_isolation_ref": {
-          "$ref": "#/$defs/evidenceRef"
-        },
+        "state": {"$ref": "#/$defs/proofState"},
+        "resolution_evidence_ref": {"$ref": "#/$defs/evidenceRef"},
+        "semantic_owner_cost_owner_separated": {"type": "boolean"},
+        "constitution_ref": {"$ref": "#/$defs/evidenceRef"},
+        "candidate_start_stop_ref": {"$ref": "#/$defs/evidenceRef"},
+        "preserved_work_treatment_ref": {"$ref": "#/$defs/evidenceRef"},
+        "candidate_process_isolation_ref": {"$ref": "#/$defs/evidenceRef"},
         "metrics": {
           "type": "array",
           "minItems": 1,
-          "items": {
-            "$ref": "#/$defs/metricDefinition"
+          "items": {"$ref": "#/$defs/metricDefinition"}
+        }
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"state": {"const": "PROVED"}}},
+          "then": {
+            "required": [
+              "constitution_ref",
+              "candidate_start_stop_ref",
+              "preserved_work_treatment_ref",
+              "candidate_process_isolation_ref",
+              "metrics"
+            ]
           }
         }
-      }
+      ]
     },
     "preflightCheck": {
       "type": "object",
       "additionalProperties": false,
       "required": ["check_id", "status", "failure_code", "evidence_refs"],
       "properties": {
-        "check_id": {
-          "$ref": "#/$defs/nonEmptyString"
-        },
-        "status": {
-          "type": "string",
-          "enum": ["PASS", "BLOCK"]
-        },
-        "failure_code": {
-          "type": ["string", "null"]
-        },
+        "check_id": {"$ref": "#/$defs/nonEmptyString"},
+        "status": {"type": "string", "enum": ["PASS", "BLOCK"]},
+        "failure_code": {"type": ["string", "null"]},
         "evidence_refs": {
           "type": "array",
-          "items": {
-            "$ref": "#/$defs/evidenceRef"
-          }
+          "items": {"$ref": "#/$defs/evidenceRef"}
         }
       }
     },
     "preflightEvaluation": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "contract_id",
-        "status",
-        "checks",
-        "evaluated_manifest_sha256"
-      ],
+      "required": ["contract_id", "status", "checks", "evaluated_manifest_sha256"],
       "properties": {
-        "contract_id": {
-          "const": "RAWLSING_FIABC_SUCCESSION_PREFLIGHT@1.0.0"
-        },
-        "status": {
-          "type": "string",
-          "enum": ["PASS", "BLOCK"]
-        },
+        "contract_id": {"const": "RAWLSING_FIABC_SUCCESSION_PREFLIGHT@1.0.0"},
+        "status": {"type": "string", "enum": ["PASS", "BLOCK"]},
         "checks": {
           "type": "array",
           "minItems": 1,
-          "items": {
-            "$ref": "#/$defs/preflightCheck"
-          }
+          "items": {"$ref": "#/$defs/preflightCheck"}
         },
-        "evaluated_manifest_sha256": {
-          "type": "string",
-          "pattern": "^[0-9a-f]{64}$"
-        }
+        "evaluated_manifest_sha256": {"$ref": "#/$defs/sha256"}
       }
     }
   },
   "x-rawlsing-preflight-rules": [
-    "Every comparison-required function must have accepted authority state PROVED, current owner state PROVED with owner_status CURRENT, executable binding state PROVED, and live consumer state LIVE.",
-    "Every evidence ref must resolve at resolved_commit_sha; optional blob/content hashes must match; floating latest/default substitution is forbidden.",
-    "A historical-only or superseded implementation cannot satisfy current_owner even when the historical artifact still exists.",
-    "Repository/module presence without an explicit owner-to-consumer binding and matching execution receipt is not live succession.",
-    "Every intentionally deferred function must carry an exact deferment authority tied to the adjudicated comparison boundary.",
+    "For every REQUIRED_BEFORE_TERMINAL function: every accepted-authority node must be PROVED with scope_exact=true; current_owner must be PROVED with owner_status=CURRENT; executable_binding must be PROVED with binding_identity_matches_owner=true; live_consumer must be LIVE with matching post-repair receipt.",
+    "Every evidence ref must resolve at resolved_commit_sha; optional blob/content hashes must match; latest/default/fuzzy substitution is forbidden.",
+    "Historical-only or superseded implementations may support genealogy but cannot satisfy current_owner.",
+    "Repository/module presence without explicit owner-to-consumer binding and matching governed execution receipt is not live succession.",
+    "Every intentionally deferred function must carry exact deferment authority tied to the adjudicated comparison boundary.",
     "GENUINELY_MISSING is valid only when missingness_search is complete at the exact relation/capability grain.",
-    "Negative-state law must be PROVED, collapse_forbidden must be true, and required distinctions must be preserved by the live consumer.",
-    "Parity oracle must be PROVED, frozen before candidate output, and candidate_output_used_to_construct_expected_truth must be false.",
+    "Negative-state law for every required function must be PROVED, collapse_forbidden=true, and required distinctions must be preserved by the live consumer.",
+    "Parity oracle must be PROVED, frozen before candidate output, and candidate_output_used_to_construct_expected_truth=false.",
     "Every in-scope source/candidate cell must have positively proved production capability or remain a blocking typed nonqualification; synthetic fixtures cannot substitute for production realization.",
-    "Accounting contract must be PROVED; semantic and cost ownership must be represented separately; comparison metrics must be candidate-local, non-overwritten, and use one method identity across candidates.",
-    "Preflight status may be PASS only when every normative check in RAWLSING_FIABC_SUCCESSION_PREFLIGHT@1.0.0 is PASS."
+    "Accounting contract must be PROVED; semantic and cost ownership must be separate; comparison metrics must be candidate-local, non-overwritten, and use one method identity across candidates.",
+    "Preflight PASS is permitted only when every normative P00-P10 check in RAWLSING_FIABC_SUCCESSION_PREFLIGHT@1.0.0 passes."
   ]
 }
