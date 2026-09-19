@@ -181,10 +181,14 @@ def test_r6o_ab_owner_seam_requalification():
     assert "build_source_backed_c11_repository(" in aprod and "build_source_backed_c11_repository(source" in bprod
     assert "candidate_semantic_branching" in seam and "bind_repository_builder" in seam and "CarrierNeutralResearchExecutor" in seam
     assert "pre553_r5_source_backed_adapter" not in bprod
-    reg=active_registry(); binding=require_one_active(reg)
+    reg=active_registry(); require_one_active(reg)
+    binding=git_json(R6N,"WORKER_RETURNS/EE-P2R6J/04_PROPOSED_ACTIVE_RUNTIME_BINDING_RECORD.json")
+    assert binding["binding_ref"]["content_hash"]==ACTIVE_BINDING
     assert binding["identity_material"]["accepted_base_i02_release_ref"]["content_hash"]==BASE_RELEASE
     assert binding["identity_material"]["runtime_i02_release_ref"]["content_hash"]==RUNTIME_RELEASE
-    r6n=git_json(R6N,R6N_PROOF); assert r6n["status"]=="PASS" and r6n["binding"]["content_hash"]==ACTIVE_BINDING
+    r6n=git_json(R6N,R6N_PROOF)
+    assert r6n["status"]=="PASS" and r6n["binding_hash"]==ACTIVE_BINDING
+    assert r6n["returned_release_ref"]["content_hash"]==RUNTIME_RELEASE
     catalog,candidates,primitives,queries,definition=catalog_and_frontier()
     receipt=catalog.receipt()
     assert len(catalog.predicates)==9 and len(catalog.queries)==3 and len(catalog.discovery_authorities)==1
@@ -201,7 +205,9 @@ def test_r6o_ab_owner_seam_requalification():
     with pytest.raises(Pre553AuthorityError): require_one_active(badreg)
     # quarantined predecessor is not active authority
     assert all(x.get("content_hash")!=QUARANTINED for x in reg["identity_material"]["active_positive_bindings"])
-    assert QUARANTINED in json.dumps(reg)
+    quarantined=git_json(R6N,"WORKER_RETURNS/EE-P2R6J/SUPPORT/01_QUARANTINED_R6I_CANDIDATE.json")
+    assert quarantined["binding_ref"]["content_hash"]==QUARANTINED
+    assert any(x["label"]=="quarantined R6I fd4177e" and x["status"]=="PASS_FAIL_CLOSED" for x in r6n["negative_tests"])
     # exact object hash failure / no hash inversion
     doc=primitives["A000"].as_dict(); doc["content_hash"]="0"*64
     from rawlsing_next.pre553_carrier_execution import materialize_public_object
