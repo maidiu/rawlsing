@@ -1,0 +1,83 @@
+{
+  "schema": "RAWLSING_EE_P2R6W_S17_CONTRACT_COURT@1.0.0",
+  "disposition": "PASS",
+  "tests": [
+    {
+      "test": "test_s17_backend_runs_with_no_s17_entry_then_driver_terminalizes",
+      "proves": [
+        "S17 absent before backend",
+        "no ledger.begin for S17",
+        "ledger.complete after PASS"
+      ]
+    },
+    {
+      "test": "test_real_s17_handler_is_invoked_while_s17_absent_then_driver_terminalizes",
+      "proves": [
+        "actual production _s17 handler called",
+        "exact existing driver-bound verifier path targeted",
+        "PASS terminal propagated",
+        "driver terminalizes afterward"
+      ]
+    },
+    {
+      "test": "test_non_s17_ready_stage_still_begins_before_backend",
+      "proves": [
+        "ordinary READY stage retains RUNNING entry before backend"
+      ]
+    },
+    {
+      "test": "test_only_empty_legacy_running_s17_placeholder_is_discardable",
+      "proves": [
+        "resume repairs only empty preterminal S17 placeholder",
+        "evidenced RUNNING S17 fails closed"
+      ]
+    },
+    {
+      "test": "test_final_ready_requires_every_reducer_stage_terminal_and_wvsc_failure",
+      "proves": [
+        "S00-S16 terminal gate preserved",
+        "WVS7/C frozen portability disposition preserved"
+      ]
+    },
+    {
+      "test": "test_s17_common_court_failure_is_candidate_neutral_and_never_calls_cell_serializer",
+      "proves": [
+        "COURT/ALL does not enter candidate-cell serialization",
+        "candidate null",
+        "COMMON_COURT_AUTHORITY_FAILURE",
+        "COURT_UNTIL_RESUME"
+      ]
+    },
+    {
+      "test": "test_any_s17_backendstop_is_normalized_to_common_court_not_candidate_local",
+      "proves": [
+        "candidate-style S17 backend failures cannot escape as candidate-local"
+      ]
+    },
+    {
+      "test": "test_external_verify_only_revalidates_terminal_s17",
+      "proves": [
+        "post-terminal external driver verification revalidates S17"
+      ]
+    },
+    {
+      "test": "test_strict_driver_bound_verifier_is_unchanged_and_rebound_to_repaired_driver",
+      "proves": [
+        "verifier blob unchanged",
+        "driver blob pin exact",
+        "two failure roles preserved",
+        "common-court normalization law preserved"
+      ]
+    }
+  ],
+  "forbidden_or_unperformed": {
+    "order_index_court_all_path": false,
+    "verifier_weakening": false,
+    "surrogate_carrier": false,
+    "source_open": false,
+    "measured_court": false,
+    "empirical_result": false,
+    "ranking_or_selection": false
+  },
+  "terminal": "EE_P2R6W_PASS__S17_PRETERMINAL_VERIFIER_ORDERING_AND_COURT_SCOPE_FAILURE_PATH_REPAIRED__READY_FOR_HQ_SELECTIVE_FANIN"
+}
