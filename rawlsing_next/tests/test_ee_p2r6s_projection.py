@@ -105,7 +105,7 @@ def test_mutated_country_authority_fails_exact_binder():
     bad=AuthorityRef("urn:bad:country","1.0.0","0"*64)
     fields["coordinate_slots"]=(dataclasses.replace(slot,source_semantic_authority_ref=bad),)
     with pytest.raises(Exception):
-        bind_governed_c11_projection(fields)
+        m.bind_exact_projection_fields(fields)
 
 def test_mutated_lock2_package_fails_backend_gate(tmp_path):
     import importlib, types
