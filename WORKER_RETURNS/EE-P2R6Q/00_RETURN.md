@@ -49,3 +49,20 @@ The Browser negative court additionally proved that a mechanically complete C11 
 No Library access, WVS carrier bytes, empirical outcomes, performance measurement, Lock2 mutation, backend implementation, Candidate-C repair, or P2X movement occurred.
 
 Wake: **HQ documentary/authority repair only** — provide/adopt an exact current-survey-country `POSITION_COORDINATE` source authority, or an exact governed native→country mapping from an accepted position coordinate, then recommission R6Q/backend closure. P2X remains held.
+
+
+## Browser qualification
+
+The governed BLOCK disposition was qualified on exact evidence execution SHA `16474a8865f5ef0ff22de8b68be7ce5f92890932`.
+
+- workflow: `Rabochii Governed Bounded Court`
+- run: `35420810471` (success)
+- job: `105838025490` (success)
+- protocol self-test: `20 passed`
+- bounded R6Q blocker court: `4 passed`
+- PR synthetic merge SHA: `4447b3624a4a2d0dfb3269bc6400e89667b4abb4`
+- artifact: `10576908059` / `rabochii-court-receipt-35420810471`
+- artifact digest: `sha256:bf9b2467dac4a548d8e14fd6c523dd689ebe8c7e0bab19930777f9c4797bc9f2`
+- transient PR: `#413`, closed unmerged after evidence capture.
+
+Qualification accessed repository authority/FQRA bytes only. It did not open the WVS7 carrier or Library.

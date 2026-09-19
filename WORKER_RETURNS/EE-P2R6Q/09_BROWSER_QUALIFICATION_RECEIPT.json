@@ -1,12 +1,53 @@
 {
   "schema": "EE_P2R6Q_BROWSER_QUALIFICATION_RECEIPT@1.0.0",
-  "status": "PENDING_FINAL_GOVERNED_BLOCK_COURT",
+  "status": "PASS__GOVERNED_BLOCK_QUALIFIED__NO_CARRIER_ACCESS",
   "terminal": "EE_P2R6Q_BLOCK__WVS7_CURRENT_SURVEY_COUNTRY_POSITION_COORDINATE_AUTHORITY_ABSENT",
+  "semantic_candidate_sha": "8fd36965ce45c25e06a2dd4370ccc4dc7cea4935",
+  "evidence_execution_sha": "16474a8865f5ef0ff22de8b68be7ce5f92890932",
+  "pr_synthetic_merge_sha": "4447b3624a4a2d0dfb3269bc6400e89667b4abb4",
+  "transient_pr": 413,
+  "transient_pr_state": "CLOSED_UNMERGED_AFTER_EVIDENCE_CAPTURE",
+  "workflow": {
+    "name": "Rabochii Governed Bounded Court",
+    "run_id": 35420810471,
+    "run_number": 566,
+    "run_attempt": 1,
+    "conclusion": "success",
+    "job_id": 105838025490,
+    "job_name": "governed-court",
+    "job_conclusion": "success",
+    "protocol_self_test": "20 passed",
+    "bounded_court": "4 passed"
+  },
+  "artifact": {
+    "id": 10576908059,
+    "name": "rabochii-court-receipt-35420810471",
+    "size_in_bytes": 588,
+    "digest": "sha256:bf9b2467dac4a548d8e14fd6c523dd689ebe8c7e0bab19930777f9c4797bc9f2",
+    "expired": false
+  },
+  "qualified_claims": {
+    "accepted_position_coordinate_count": 81,
+    "b_country_exact_meaning": "ISO 3166-1 numeric country code",
+    "b_country_fqra_role": "ADMINISTRATIVE_METADATA",
+    "b_country_usable_as_required_position_coordinate": false,
+    "n_region_iso_exact_meaning": "Region ISO 3166-2",
+    "n_region_iso_fqra_role": "POSITION_COORDINATE",
+    "n_region_iso_direct_current_survey_country": false,
+    "invalid_b_country_materializer_removed": true,
+    "complete_independent_projection_field_audit_present": true
+  },
+  "coordinate_authority_identity": null,
+  "coordinate_slot_identity": null,
+  "projection_identity": null,
+  "materializer_blob": null,
   "carrier_access": false,
   "library_access": false,
   "empirical_outcomes": false,
   "performance_measurement": false,
-  "run_id": null,
-  "job_id": null,
-  "artifact_id": null
+  "lock2_mutation": false,
+  "backend_implementation": false,
+  "candidate_c_repair": false,
+  "p2x_branch_moved": false,
+  "exact_wake": "HQ_DOCUMENTARY_AUTHORITY_REPAIR__CURRENT_SURVEY_COUNTRY_POSITION_COORDINATE_OR_EXACT_AUTHORIZED_NATIVE_TO_COUNTRY_MAPPING"
 }
