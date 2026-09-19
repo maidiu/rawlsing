@@ -48,6 +48,4 @@ def test_probe_wvs7_minimum_projection_authority():
             if ("country" in joined.lower() or "nation" in joined.lower()) and ("WVS" in joined and ("W7" in joined or "Wave 7" in joined)):
                 rows.append(_trim(row))
         payload["coord_country_nation_rows"] = rows
-    assert payload["position_count"] == 81
-    assert len(payload["pair_rows"]) == 2
     raise AssertionError("R6Q_AUTHORITY_PROBE=" + json.dumps(payload, ensure_ascii=False, sort_keys=True))
