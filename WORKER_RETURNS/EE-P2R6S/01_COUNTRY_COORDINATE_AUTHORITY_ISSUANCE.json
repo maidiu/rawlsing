@@ -1,0 +1,50 @@
+{
+  "schema": "EE_P2R6S_COUNTRY_COORDINATE_AUTHORITY_ISSUANCE@1.0.0",
+  "status": "ISSUED_FROM_ADOPTED_HQ_AUTHORITY",
+  "hq": {
+    "checkpoint": "20260919T0026-0400",
+    "handoff": "e559481f0e5e00206198c9861dac621405a31d4d",
+    "decisions": [
+      "HQD-2026-09-19-073",
+      "HQD-2026-09-19-074"
+    ]
+  },
+  "source": {
+    "family": "WVS",
+    "wave": "W7",
+    "slot": "B_COUNTRY",
+    "question_identity": "WVS:W7:B_COUNTRY",
+    "source_meaning": "ISO 3166-1 numeric country code",
+    "fqra_authority_rule": "QRA35V1::WVS::W7::B_COUNTRY",
+    "fqra_p2_identity": "95f2545f351a6d8acd2c6b357a2a62d7a3f656f85de7530f856821a3efbc4b29",
+    "governed_fqra_row_payload_hash": "459f085c296bc82c61348ae6dcd12086c9a112aa90e4b250b96a74d58484a8c5",
+    "source_owner_questionnaire_sha256": "5b6b06cb79681c0f5013fcfb93720951a033674b657985944bfcabc9f6a2735b"
+  },
+  "global_classification_unchanged": {
+    "fqra_role": "ADMINISTRATIVE_METADATA",
+    "p2_disposition": "STRUCTURAL_CONTEXT",
+    "reclassified_globally": false
+  },
+  "bounded_authorization": {
+    "use": "CURRENT_SURVEY_OR_INTERVIEW_COUNTRY_POSITION_COORDINATE",
+    "scope": "FROZEN_P2_ROUTING_ONLY",
+    "substantive_evidence_use": false
+  },
+  "coordinate_authority_ref": {
+    "authority_id": "urn:rawlsing:prev3:wvs7:current-survey-country-coordinate:sha256:9e7f98a7ad723743771d6bea39077553d2a3920ac4c077e90720bb9e44da029d",
+    "authority_version": "1.0.0",
+    "authority_content_hash": "9e7f98a7ad723743771d6bea39077553d2a3920ac4c077e90720bb9e44da029d"
+  },
+  "coordinate_authority_snapshot_ref": {
+    "kind": "AuthoritySnapshot@1.0.0",
+    "object_id": "urn:rawlsing:pre553:AuthoritySnapshot:sha256:b374a2ee22461ac00a756640a3080c6316b23b732ed697aef8529fb088153328",
+    "content_hash": "b374a2ee22461ac00a756640a3080c6316b23b732ed697aef8529fb088153328"
+  },
+  "prohibited_derivations": [
+    "MISSINGNESS_INFERENCE",
+    "FREQUENCY_INFERENCE",
+    "FUZZY_LABEL_MATCHING",
+    "GENERIC_EXTERNAL_ISO_LOOKUP",
+    "SUBSTANTIVE_EVIDENCE_USE"
+  ]
+}

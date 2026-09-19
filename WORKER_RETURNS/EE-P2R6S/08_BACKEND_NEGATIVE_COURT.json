@@ -1,0 +1,72 @@
+{
+  "schema": "EE_P2R6S_BACKEND_NEGATIVE_COURT@1.0.0",
+  "status": "PASS",
+  "browser_run": 35422824788,
+  "tested_fail_closed": [
+    {
+      "case": "NON_B_COUNTRY_SUBSTITUTION",
+      "result": "REJECTED_EXACT_NAME_REQUIRED"
+    },
+    {
+      "case": "DUPLICATE_B_COUNTRY",
+      "result": "REJECTED_EXACT_UNIQUE_REQUIRED"
+    },
+    {
+      "case": "COUNTRY_AUTHORITY_SUBSTITUTION",
+      "result": "REJECTED_BY_R6S_EXACT_PROJECTION_GATE"
+    },
+    {
+      "case": "REPLAY_AUTHORITY_SUBSTITUTION",
+      "result": "REJECTED_BY_R6S_EXACT_PROJECTION_GATE"
+    },
+    {
+      "case": "LOCK2_TIE_ORDER_SUBSTITUTION",
+      "result": "REJECTED_BY_R6S_EXACT_PROJECTION_GATE"
+    },
+    {
+      "case": "P2F2_RUNTIME_PACKAGE_LOCK2_MUTATION",
+      "result": "REJECTED_BY_BACKEND"
+    },
+    {
+      "case": "LITS_C_Q310_Q311_REACHABILITY",
+      "result": "CANDIDATE_LOCAL_FAILURE_AT_S02"
+    },
+    {
+      "case": "WVS_C_EXECUTION_ATTEMPT",
+      "result": "NO_BACKEND_PATH"
+    },
+    {
+      "case": "MISSING_METRIC_DEFAULT",
+      "result": "NO_MEASURED_ZERO_FALLBACK__TERMINAL_VECTOR_FAILS_IF_NOT_ACTUALLY_MEASURED_OR_TYPED_PRESERVED_STOP"
+    },
+    {
+      "case": "FUZZY_OR_LATEST_DEFAULT_LOOKUP",
+      "result": "ABSENT__EXACT_SOURCE_OWNER_MAP_ONLY"
+    },
+    {
+      "case": "HISTORICAL_PRODUCT_SUBSTITUTION_AS_FRESH",
+      "result": "FORBIDDEN__CURRENT_EXECUTION_IDENTITY_ONLY"
+    },
+    {
+      "case": "RANKING_SELECTION_POOLING",
+      "result": "ABSENT_AND_FORBIDDEN"
+    }
+  ],
+  "no_real_source_carrier_access": true,
+  "no_empirical_outcomes": true,
+  "no_performance_measurements": true,
+  "tests": [
+    "test_country_authority_and_complete_projection_bind",
+    "test_country_codes_are_source_owner_exact_and_viet_nam_is_704",
+    "test_no_fuzzy_or_duplicate_source_identity",
+    "test_runtime_package_is_exact_p2f2_lock2_catalog",
+    "test_backend_contract_and_current_runtime_support_are_source_inert",
+    "test_backend_exhaustively_handles_ready_reducer_stages_and_preserves_c_laws",
+    "test_mutated_country_authority_fails_exact_binder",
+    "test_mutated_lock2_package_fails_backend_gate",
+    "test_lits_c_exact_current_nonqualification_and_wvs_c_no_path",
+    "test_backend_has_no_prepopulated_metric_zero_fallback",
+    "test_mutated_replay_and_lock2_tie_order_fail_exact_projection_gate",
+    "test_wvs_ab_backend_consumes_r6s_materializer_and_no_fuzzy_latest_default_lookup"
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "schema": "EE_P2R6S_WVS7_PROJECTION_BINDING_RECEIPT@1.0.0",
+  "status": "PASS__COMPLETE_GOVERNED_PROJECTION_AUTHORITY_AND_DETERMINISTIC_LOCAL_MATERIALIZER_QUALIFIED",
+  "source": {
+    "sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+    "rows": 97220,
+    "variables": 613
+  },
+  "projection_authority_ref": {
+    "authority_id": "EE-P2R6S-WVS7-FROZEN-P2-C11-PROJECTION",
+    "authority_version": "1.0.0",
+    "authority_content_hash": "01719af5d17d36cdcc998be83908f7d640ce96d49a76edcd722bf755c9065a4a"
+  },
+  "projection_authority_snapshot_ref": {
+    "kind": "AuthoritySnapshot@1.0.0",
+    "object_id": "urn:rawlsing:pre553:AuthoritySnapshot:sha256:219f3334d14c5fc2a135e69d4eab04cfbf16d9fd559a166c249f708df0fb87ad",
+    "content_hash": "219f3334d14c5fc2a135e69d4eab04cfbf16d9fd559a166c249f708df0fb87ad"
+  },
+  "projection_identity_ref": {
+    "kind": "EE_P2R6S_WVS7_FROZEN_P2_GOVERNED_C11_PROJECTION@1.0.0",
+    "object_id": "urn:rawlsing:pre553:ee-p2r6s:wvs7-frozen-p2-projection:sha256:838070ff6b85d60d4f26f9153b0507ba425936c11a3de94a18d57bfcd083f24d",
+    "content_hash": "838070ff6b85d60d4f26f9153b0507ba425936c11a3de94a18d57bfcd083f24d"
+  },
+  "coordinate_slot_identity": "4a688332dca6462f357b092e7dfdba1216739139fd74e1c84395420827d153b6",
+  "routing_rule_identity": "b54567865059f4e05f03aa08e438fff5af595b5530151f6eca25c6c95896202f",
+  "mandatory_fields": {
+    "universes": 1,
+    "respondents": "DETERMINISTIC_97220_SOURCE_ROW_DERIVATION",
+    "row_bindings": "DETERMINISTIC_97220_ONE_TO_ONE_SOURCE_ROW_DERIVATION",
+    "questions": [
+      "Q291G5",
+      "Q291P5"
+    ],
+    "response_slots": 2,
+    "coordinate_slots": [
+      "B_COUNTRY"
+    ],
+    "routing": "TWO_FACTS_PER_SOURCE_ROW__EXACT_COUNTRY_CODE_LAW",
+    "weight_slots": [],
+    "authority_snapshots": 6,
+    "source_relations": "DISTINCT_BY_DEFAULT",
+    "replay_authority": "EE-P2F2-PRE553-EXACT-REPLAY",
+    "tie_order_lock2": "8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188"
+  },
+  "local_materialization_law": {
+    "materializer_path": "WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py",
+    "materializer_git_blob_sha1": "3a3e228843656e023673310c26acbd41ecdc1b3b",
+    "source_sha_verified_before_use": true,
+    "metadata_and_country_scan": [
+      "FULL_METADATA",
+      "B_COUNTRY_ONLY_FOR_SEMANTIC_PROJECTION_CONSTRUCTION"
+    ],
+    "q291_outcome_values_read_during_projection_construction": false,
+    "full_dimensions_enforced_locally": true
+  },
+  "browser_fixture_qualification": {
+    "real_carrier_access": false,
+    "tiny_deterministic_fixture": true,
+    "generic_facade_binding_acceptance": true,
+    "exact_r6s_authority_gate_precedes_generic_binder": true,
+    "run": 35422824788,
+    "job": 105843490615
+  }
+}

@@ -1,0 +1,149 @@
+{
+  "schema": "EE_P2R6S_BACKEND_STAGE_COVERAGE_MATRIX@1.0.0",
+  "backend_contract": "RAWLSING_EE_P2X_DARWIN_STAGE_BACKEND@1.0.0",
+  "backend_path": "rawlsing_next/ee_p2x_darwin_stage_backend.py",
+  "backend_git_blob_sha1": "ca32b9c8ec6bfcbbdc039fba0a10646dcc5357e2",
+  "reducer": "RAWLSING_EE_P2X_CONTINUATION_STATE_MACHINE@1.0.0",
+  "reducer_ready_stage_instances": 73,
+  "court_final_stage_instances": 1,
+  "backend_declared_ready_stage_instances_including_final": 74,
+  "cells": {
+    "LITS_I/A": {
+      "disposition": "QUALIFYING_PRODUCTION_PATH",
+      "driver_preserved": [
+        "S00_SOURCE_PREFLIGHT_IDENTITY",
+        "S01_CANDIDATE_PREPARATION_BUILD"
+      ],
+      "backend_ready": [
+        "S02_C11_REACHABILITY",
+        "S03_PARITY_ORACLE_GATE",
+        "S04_I03_EXECUTION",
+        "S05_I05_LEARNED_PRODUCTION",
+        "S06_PROVENANCE_AUDIT",
+        "S07_COLD_RESEARCH",
+        "S08_WARM_REPEATED_RESEARCH",
+        "S09_DELETION_REGEN_OR_A_PERSISTENCE",
+        "S10_SOURCE_RELEASE_INVALIDATION",
+        "S11_SEMANTIC_AUTHORITY_INVALIDATION",
+        "S12_STALE_CACHE_OR_PERSISTENT_STATE",
+        "S13_CORRUPT_CACHE_OR_PERSISTENT_STATE",
+        "S14_INTERRUPTION_RECOVERY",
+        "S15_FRESH_PROCESS_REPLAY",
+        "S16_TERMINAL_METRIC_VECTOR_COMPLETENESS"
+      ],
+      "authority": {
+        "runtime_catalog": "5983d7d5c579b916ad46c1acf9e41c1c89b516a4e561a99b1d2b477bf5ad2d02",
+        "active_binding": "a5f36a81843fe2ebab0b5cccb369ce76035f842b93e602613b8b9f3a81103308",
+        "runtime_release": "192926fabd9c9c3d40e43b1d7705ca2bcfe7f8d06e286be26d4b886d436df43f"
+      }
+    },
+    "LITS_I/B": {
+      "disposition": "QUALIFYING_PRODUCTION_PATH",
+      "driver_preserved": [
+        "S00_SOURCE_PREFLIGHT_IDENTITY",
+        "S01_CANDIDATE_PREPARATION_BUILD",
+        "S02_C11_REACHABILITY"
+      ],
+      "backend_ready": [
+        "S03_PARITY_ORACLE_GATE",
+        "S04_I03_EXECUTION",
+        "S05_I05_LEARNED_PRODUCTION",
+        "S06_PROVENANCE_AUDIT",
+        "S07_COLD_RESEARCH",
+        "S08_WARM_REPEATED_RESEARCH",
+        "S09_DELETION_REGEN_OR_A_PERSISTENCE",
+        "S10_SOURCE_RELEASE_INVALIDATION",
+        "S11_SEMANTIC_AUTHORITY_INVALIDATION",
+        "S14_INTERRUPTION_RECOVERY",
+        "S15_FRESH_PROCESS_REPLAY",
+        "S16_TERMINAL_METRIC_VECTOR_COMPLETENESS"
+      ],
+      "driver_skipped": [
+        "S12_STALE_CACHE_OR_PERSISTENT_STATE",
+        "S13_CORRUPT_CACHE_OR_PERSISTENT_STATE"
+      ],
+      "cache_law": "PURE_B_NO_CACHE"
+    },
+    "LITS_I/C": {
+      "disposition": "CANDIDATE_LOCAL_NONQUALIFICATION",
+      "driver_preserved": [
+        "S00_SOURCE_PREFLIGHT_IDENTITY"
+      ],
+      "backend_executes_before_stop": [
+        "S01_CANDIDATE_PREPARATION_BUILD",
+        "S02_C11_REACHABILITY"
+      ],
+      "stop_at": "S02_C11_REACHABILITY",
+      "exact_stop": "C_NONQUALIFYING__S02_C11_REACHABILITY__FROZEN_CACC1_STREAM_OMITS_Q310_Q311_REQUIRED_BY_F02_COMPOSITE_PROJECTION",
+      "later_ready_stages": "DRIVER_CANDIDATE_LOCAL_STOP_PROPAGATION__NOT_EXECUTED",
+      "candidate_c_repair": false,
+      "fallback_to_a_or_b": false
+    },
+    "WVS7/A": {
+      "disposition": "QUALIFYING_PRODUCTION_PATH",
+      "driver_preserved": [
+        "S00_SOURCE_PREFLIGHT_IDENTITY"
+      ],
+      "backend_ready": "S01_THROUGH_S16",
+      "projection_identity": "838070ff6b85d60d4f26f9153b0507ba425936c11a3de94a18d57bfcd083f24d",
+      "lock2": "8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188"
+    },
+    "WVS7/B": {
+      "disposition": "QUALIFYING_PRODUCTION_PATH",
+      "driver_preserved": [
+        "S00_SOURCE_PREFLIGHT_IDENTITY"
+      ],
+      "backend_ready": [
+        "S01_CANDIDATE_PREPARATION_BUILD",
+        "S02_C11_REACHABILITY",
+        "S03_PARITY_ORACLE_GATE",
+        "S04_I03_EXECUTION",
+        "S05_I05_LEARNED_PRODUCTION",
+        "S06_PROVENANCE_AUDIT",
+        "S07_COLD_RESEARCH",
+        "S08_WARM_REPEATED_RESEARCH",
+        "S09_DELETION_REGEN_OR_A_PERSISTENCE",
+        "S10_SOURCE_RELEASE_INVALIDATION",
+        "S11_SEMANTIC_AUTHORITY_INVALIDATION",
+        "S14_INTERRUPTION_RECOVERY",
+        "S15_FRESH_PROCESS_REPLAY",
+        "S16_TERMINAL_METRIC_VECTOR_COMPLETENESS"
+      ],
+      "driver_skipped": [
+        "S12_STALE_CACHE_OR_PERSISTENT_STATE",
+        "S13_CORRUPT_CACHE_OR_PERSISTENT_STATE"
+      ],
+      "projection_identity": "838070ff6b85d60d4f26f9153b0507ba425936c11a3de94a18d57bfcd083f24d",
+      "cache_law": "PURE_B_NO_CACHE"
+    },
+    "WVS7/C": {
+      "disposition": "PRESERVED_CURRENT_PORTABILITY_FAILURE__NO_BACKEND_PATH",
+      "driver_preserved": [
+        "S00_SOURCE_PREFLIGHT_IDENTITY"
+      ],
+      "driver_terminal_candidate_failure": [
+        "S01_CANDIDATE_PREPARATION_BUILD"
+      ],
+      "driver_skipped": "S02_THROUGH_S16",
+      "backend_ready": [],
+      "fallback": false
+    },
+    "COURT/ALL": {
+      "disposition": "FINAL_VERIFIER_DELEGATION",
+      "backend_ready": [
+        "S17_FINAL_COMPLETENESS_AND_VERIFICATION"
+      ],
+      "verifier": "WORKER_RETURNS/EE-P2X/12A_verify_ee_p2x_driver_bound_local_court.py"
+    }
+  },
+  "invariants": {
+    "parity_before_performance": true,
+    "no_prepopulated_measurements": true,
+    "fresh_process_replay_subprocess_boundary": true,
+    "a_persistence_distinction": true,
+    "b_deletion_regeneration": true,
+    "candidate_local_stop_propagation_driver_owned": true,
+    "ranking_or_selection": false,
+    "cross_universe_pooling": false
+  }
+}
