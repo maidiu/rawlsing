@@ -1,0 +1,73 @@
+{
+  "schema": "RAWLSING_HQ_HANDOFF@1.1.0",
+  "checkpoint_id": "20260918T2348-0400",
+  "repository": "maidiu/rawlsing",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354",
+  "prior_checkpoint": "20260918T2305-0400",
+  "status": "R6P_BLOCK_ADOPTED__WVS7_PROJECTION_AUTHORITY_REPAIR_AWAKE__BACKEND_DORMANT__P2X_HELD",
+  "decisions": [
+    "HQD-2026-09-18-071"
+  ],
+  "adoption_path": "HQ_HANDOFF/EE_P2R6P_BACKEND_BLOCKER_ADOPTION_20260918.md",
+  "adjudicated_returns": [
+    {
+      "id": "EE-P2R6P",
+      "return_head": "6b3086ff98313dfdb99f410acf5f2f179260663c",
+      "disposition": "BLOCK__ADOPTED_BLOCKER_FACTS_ONLY__NO_TREE_FANIN"
+    }
+  ],
+  "integration_hygiene": {
+    "r6p_branch_tree_adopted": false,
+    "reason": "TRANSIENT_RABOCHII_COURT_SPEC_MUTATION_REMAINS__NO_PRODUCTION_BACKEND_EXISTS"
+  },
+  "accepted_state": {
+    "lits_runtime_catalog": "5983d7d5c579b916ad46c1acf9e41c1c89b516a4e561a99b1d2b477bf5ad2d02",
+    "active_binding": "a5f36a81843fe2ebab0b5cccb369ce76035f842b93e602613b8b9f3a81103308",
+    "runtime_release": "192926fabd9c9c3d40e43b1d7705ca2bcfe7f8d06e286be26d4b886d436df43f",
+    "wvs_lock2": "8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188"
+  },
+  "blocker": {
+    "first_missing_authority_kind": "COORDINATE_SEMANTICS",
+    "first_missing_projection_field": "coordinate_slots",
+    "wvs_A": "BLOCKED_AT_S01_BEFORE_OWNER_COMPOSITION",
+    "wvs_B": "BLOCKED_AT_S01_BEFORE_OWNER_COMPOSITION",
+    "wvs_C": "PRESERVED_PORTABILITY_FAILURE"
+  },
+  "next_action": {
+    "id": "EE-P2R6Q",
+    "status": "READY_TO_COMMISSION",
+    "execution_surface": "BROWSER",
+    "library_access": "NO",
+    "grain": "MINIMUM_FROZEN_P2_WVS_GOVERNED_C11_PROJECTION_AUTHORITY_CLOSURE"
+  },
+  "active_workers": [
+    {
+      "id": "EE-P2X",
+      "branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+      "observed_head_at_checkpoint": "32e224c28d720fce7cdcf6182afb5d327e8a1cf0",
+      "temporal_classification": "UNCHANGED_ACTIVE_WORKER",
+      "execution_surface": "LOCAL-MACHINE CODEX__DORMANT_WHILE_HELD",
+      "library_access": "EXACT_ONLY"
+    }
+  ],
+  "dependency_graph": {
+    "EE-P2R6Q": {
+      "status": "READY_TO_COMMISSION"
+    },
+    "PRODUCTION_BACKEND_FANIN": {
+      "status": "DORMANT",
+      "prerequisites": [
+        "ADOPTED_WVS_GOVERNED_PROJECTION_AUTHORITY"
+      ]
+    },
+    "EE-P2X": {
+      "status": "HELD",
+      "prerequisites": [
+        "ADOPTED_PRODUCTION_BACKEND_PASS",
+        "SELECTIVE_BACKEND_FANIN_TO_EXISTING_P2X_BRANCH"
+      ]
+    }
+  },
+  "terminal": "R6P_BLOCK_ADOPTED__WVS7_PROJECTION_AUTHORITY_REPAIR_READY__P2X_HELD"
+}
