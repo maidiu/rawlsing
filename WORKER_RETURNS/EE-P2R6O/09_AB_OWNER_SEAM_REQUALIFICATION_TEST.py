@@ -32,7 +32,9 @@ D02_BLOB="5399a3f64642c8d9f8a0644db0adc15d38642971"
 F02="482bb884a99e31ba77e904d0df39fffc872cbed3"
 F02_PATH="rawlsing_next/prev3_lits1_selector_closure.py"; F02_BLOB="7b45b277164fa90c3da739aab26b516f7a8cb8dc"
 B12="e5f9a14a77c2b84a86ce6eefaddb4b5c12b17e39"
+NODE4A_PATH="data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/AS3R3_NODE4A_PREDICATE_INPUT_FREEZE_20260827/PREDICATE_INPUTS.py"
 NODE4A_BLOB="504944f9533b7385d201076e2e834b8a9446dee8"
+QUERY_INPUT_PATH="data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/SUB_VOZHD_CAMPAIGN_INTEGRATION_R1/B_ARCHITECTURE_COMPILER_DVA_CHETIRI_R1/WORKERS/B6_AS3R3_NODE4B_QUERY_INPUT_FREEZE_R1/01_QUERY_INPUTS.json"
 QUERY_INPUT_BLOB="3f56e3b3c5e3c3be61adef392ee9ca59875827a3"
 PRODUCER="cfc240aa3a64c59509eab97450a7d3603af813cc"
 PRODUCER_PATH="rawlsing_next/pre553_as3r3_runtime_producer.py"; PRODUCER_BLOB="d63370dbcadc043dd2f27f5383cf36f0e84d1235"
@@ -63,8 +65,6 @@ def git_json(commit,path): return json.loads(git_bytes(commit,path))
 def git_blob_sha(commit,path):
     ensure(commit)
     return sh(["git","rev-parse",f"{commit}:{path}"]).decode().strip()
-def blob_bytes(blob):
-    ensure(B12); return sh(["git","cat-file","blob",blob])
 def mod_from_bytes(name,data):
     m=types.ModuleType(name); m.__file__=f"<{name}>"; sys.modules[name]=m
     exec(compile(data.decode(),m.__file__,"exec"),m.__dict__); return m
