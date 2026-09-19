@@ -1,0 +1,82 @@
+{
+  "schema": "EE_P2R6S_BROWSER_QUALIFICATION_RECEIPT@1.0.0",
+  "status": "PASS",
+  "execution_surface": "BROWSER",
+  "library_access": "NO",
+  "hq_checkpoint": {
+    "id": "20260919T0026-0400",
+    "handoff": "e559481f0e5e00206198c9861dac621405a31d4d"
+  },
+  "branch": "agent/rabochii-prev3-ee-p2r6s-wvs7-country-coordinate-backend-fanin-r1",
+  "qualification_head": "e44d6abb115b9d4274127ae8eeb61ff9af4c2a73",
+  "pull_request": 414,
+  "workflow": {
+    "name": "Rabochii Governed Bounded Court",
+    "run_id": 35422824788,
+    "job_id": 105843490615,
+    "execution_result": "12 passed in 22.50s",
+    "protocol_self_test_result": "20 passed in 0.12s",
+    "evidence_execution_sha": "e44d6abb115b9d4274127ae8eeb61ff9af4c2a73",
+    "pr_synthetic_sha": "738055df4b858e7dc378bca7bc1d36daafdba4d7"
+  },
+  "artifact": {
+    "id": 10578125850,
+    "name": "rabochii-court-receipt-35422824788",
+    "digest": "sha256:7063aeac0dfb1cfa22df071fcc3c992061013ebad98850cfb78bcd8708b59bcb"
+  },
+  "qualified_blobs": {
+    "materializer": {
+      "path": "WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py",
+      "git_blob_sha1": "3a3e228843656e023673310c26acbd41ecdc1b3b"
+    },
+    "backend": {
+      "path": "rawlsing_next/ee_p2x_darwin_stage_backend.py",
+      "git_blob_sha1": "ca32b9c8ec6bfcbbdc039fba0a10646dcc5357e2"
+    },
+    "lits_runtime_support": {
+      "path": "WORKER_RETURNS/EE-P2R6S/SUPPORT/01_LITS_CURRENT_RUNTIME_MATERIALIZER.py",
+      "git_blob_sha1": "9406bacfd928393f6a159a46216aa1f7ec129f34"
+    },
+    "wvs_runtime_support": {
+      "path": "WORKER_RETURNS/EE-P2R6S/SUPPORT/02_WVS7_P2F2_RUNTIME_PACKAGE.json",
+      "git_blob_sha1": "e04e84b76f8b4eb53905276dd025938bf2e5f6fe"
+    },
+    "projection_authority": {
+      "path": "WORKER_RETURNS/EE-P2R6S/04_COMPLETE_WVS7_FROZEN_P2_PROJECTION_AUTHORITY.json",
+      "git_blob_sha1": "8248963730e04aa93c3bcd0379f13365a54c9473"
+    },
+    "qualification_tests": {
+      "path": "rawlsing_next/tests/test_ee_p2r6s_projection.py",
+      "git_blob_sha1": "3ee2b94beb71eaa9cae7d04b46a2c930e21917bf"
+    }
+  },
+  "safety": {
+    "real_wvs_carrier_access": false,
+    "real_lits_carrier_access": false,
+    "empirical_outcomes_access": false,
+    "performance_measurements": false,
+    "surrogate_metrics": false,
+    "p2x_branch_write_performed_by_r6s": false,
+    "candidate_c_repair": false,
+    "owner_redesign": false,
+    "driver_redesign": false
+  },
+  "tests": [
+    "test_country_authority_and_complete_projection_bind",
+    "test_country_codes_are_source_owner_exact_and_viet_nam_is_704",
+    "test_no_fuzzy_or_duplicate_source_identity",
+    "test_runtime_package_is_exact_p2f2_lock2_catalog",
+    "test_backend_contract_and_current_runtime_support_are_source_inert",
+    "test_backend_exhaustively_handles_ready_reducer_stages_and_preserves_c_laws",
+    "test_mutated_country_authority_fails_exact_binder",
+    "test_mutated_lock2_package_fails_backend_gate",
+    "test_lits_c_exact_current_nonqualification_and_wvs_c_no_path",
+    "test_backend_has_no_prepopulated_metric_zero_fallback",
+    "test_mutated_replay_and_lock2_tie_order_fail_exact_projection_gate",
+    "test_wvs_ab_backend_consumes_r6s_materializer_and_no_fuzzy_latest_default_lookup"
+  ],
+  "terminals": [
+    "EE_P2X_PRODUCTION_STAGE_BACKEND_READY__NO_EMPIRICAL_MEASUREMENT_PERFORMED",
+    "EE_P2R6S_PASS__WVS7_COUNTRY_COORDINATE_AND_COMPLETE_GOVERNED_PROJECTION_QUALIFIED__ORIGINAL_BE1_PRODUCTION_BACKEND_READY__READY_FOR_HQ_SELECTIVE_FANIN_TO_P2X"
+  ]
+}
