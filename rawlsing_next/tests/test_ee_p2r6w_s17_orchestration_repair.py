@@ -20,6 +20,7 @@ class FakeLedger:
         self.work_root = work_root
         self.repo_root = repo_root
         self.entries = dict(entries or {})
+        self.data = {"stages": self.entries}
         self.begin_calls = []
         self.complete_calls = []
         self.discard_calls = []
