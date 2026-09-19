@@ -1,0 +1,66 @@
+{
+  "schema": "RAWLSING_HQ_HANDOFF@1.1.0",
+  "checkpoint_id": "20260918T2350-0400",
+  "repository": "maidiu/rawlsing",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354",
+  "prior_checkpoint": "20260918T2348-0400",
+  "status": "R6Q_BROWSER_WVS7_PROJECTION_AUTHORITY_CLOSURE_ACTIVE__BACKEND_DORMANT__P2X_HELD",
+  "decisions": [
+    "HQD-2026-09-18-072"
+  ],
+  "commission_path": "HQ_HANDOFF/EE_P2R6Q_COMMISSION_20260918.md",
+  "active_workers": [
+    {
+      "id": "EE-P2R6Q",
+      "branch": "agent/rabochii-prev3-ee-p2r6q-wvs7-governed-projection-authority-r1",
+      "commission_tip": "8fd36965ce45c25e06a2dd4370ccc4dc7cea4935",
+      "observed_head_at_checkpoint": "8fd36965ce45c25e06a2dd4370ccc4dc7cea4935",
+      "temporal_classification": "UNCHANGED_ACTIVE_WORKER",
+      "execution_surface": "BROWSER",
+      "library_access": "NO",
+      "pass_wake": "HQ_WVS_PROJECTION_AUTHORITY_ADJUDICATION_ONLY"
+    },
+    {
+      "id": "EE-P2X",
+      "branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+      "observed_head_at_checkpoint": "32e224c28d720fce7cdcf6182afb5d327e8a1cf0",
+      "temporal_classification": "UNCHANGED_ACTIVE_WORKER",
+      "execution_surface": "LOCAL-MACHINE CODEX__DORMANT_WHILE_HELD",
+      "library_access": "EXACT_ONLY"
+    }
+  ],
+  "repaired_blocker_target": {
+    "r6p_return": "6b3086ff98313dfdb99f410acf5f2f179260663c",
+    "first_missing_projection_field": "coordinate_slots",
+    "first_missing_authority_kind": "COORDINATE_SEMANTICS"
+  },
+  "accepted_wvs_authority": {
+    "lock2": "8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188",
+    "frontier_candidates": 46,
+    "predicates": 11,
+    "queries": 3,
+    "fqra_wvs7_slots": 613,
+    "fqra_position_coordinate_slots": 81
+  },
+  "dependency_graph": {
+    "EE-P2R6Q": {
+      "status": "ACTIVE",
+      "wake": "HQ_WVS_PROJECTION_AUTHORITY_ADJUDICATION"
+    },
+    "PRODUCTION_BACKEND_FANIN": {
+      "status": "DORMANT",
+      "prerequisites": [
+        "ADOPTED_WVS_GOVERNED_PROJECTION_AUTHORITY"
+      ]
+    },
+    "EE-P2X": {
+      "status": "HELD",
+      "prerequisites": [
+        "ADOPTED_PRODUCTION_BACKEND_PASS",
+        "SELECTIVE_BACKEND_FANIN_TO_EXISTING_P2X_BRANCH"
+      ]
+    }
+  },
+  "terminal": "R6Q_ACTIVE__BACKEND_DORMANT__P2X_HELD"
+}
