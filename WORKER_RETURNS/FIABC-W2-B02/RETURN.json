@@ -1,0 +1,43 @@
+{
+  "schema": "FIABC_W2_B02_RETURN@1.0.0",
+  "worker": "FIABC-W2-B02",
+  "repo": "maidiu/rawlsing",
+  "branch": "agent/rabochii-premain-fiabc-w2-b02-independent-parity-oracle-r1",
+  "base_sha": "dfdae1dfcef5e3061094935312c3db2cc0fde2f0",
+  "return_path": "WORKER_RETURNS/FIABC-W2-B02/",
+  "access": "BROWSER_REPOSITORY_ONLY",
+  "terminal": "FIABC_W2_B02_INDEPENDENT_A_B_C_PARITY_ORACLE_SPECIFIED",
+  "status": "PASS__SPECIFICATION_COMPLETE__NO_MEASURED_PARITY_CLAIM",
+  "required_outputs": [
+    "01_PARITY_ORACLE_CONTRACT.md",
+    "02_PARITY_ASSERTION_MATRIX.csv",
+    "03_HOSTILE_ORACLE_FIXTURES.csv",
+    "04_EVIDENCE_INDEX.md",
+    "RETURN.json"
+  ],
+  "headline_findings": [
+    "Current Wave-1-audited P2X S03 self-replay is not a candidate-neutral parity oracle because expected truth is frozen after candidate output and re-executed through the same candidate binding.",
+    "A lawful parity PASS requires every executed A/B/C candidate to match the same immutable source-local oracle that was frozen before any candidate output existed.",
+    "LiTS empirical truth can be anchored to the accepted immutable ASTRA-D04-R2 50-candidate/77-role product while current ExactRef and authority-closure expectations are frozen from current candidate-neutral PRE553 authority.",
+    "WVS Lock2 fixes the complete 46-candidate frontier but no outcomes; WVS expected empirical facts must therefore be materialized from exact source plus frozen candidate-neutral semantic authority before candidate execution, then frozen read-only.",
+    "Exact refs, full frontier, semantic facts, learned-product identity, replay roots, transitive authority closure, and Wave-1 B04 negative-state distinctions are independent required parity dimensions; pairwise candidate equality or self-replay cannot substitute for them.",
+    "BLOCKED/manual-review remain governance dispositions outside the ordinary empirical value space and must be checked as court-control behavior plus preserved underlying typed evidence."
+  ],
+  "exact_blockers": [],
+  "nonblocking_dependencies_for_execution": [
+    "FIABC-W2-L01 comparison-terminal adjudication determines the final object boundary at which all oracle assertions become mandatory.",
+    "FIABC-W2-L02 claim-scoped authority BOM supplies the final exact P2X authority-closure set; this oracle fails closed on any required unresolved proposition.",
+    "FIABC-W2-B01 determines post-repair live reachability; this specification does not claim live execution.",
+    "FIABC-W2-B03 defines cost treatment and host/cache reset for candidate-neutral oracle materialization.",
+    "Candidate-C lawful source scope remains a separate Wave-2 question; absence of a required candidate prevents a three-way parity PASS rather than redefining the oracle."
+  ],
+  "mutation_scope": "ONLY_WORKER_RETURNS/FIABC-W2-B02",
+  "production_code_modified": false,
+  "accepted_authority_modified": false,
+  "hq_handoff_modified": false,
+  "decision_ledger_modified": false,
+  "existing_tests_modified": false,
+  "measured_p2x_state_modified": false,
+  "measured_p2x_run_performed": false,
+  "final_branch_tip_note": "RETURN.json cannot self-embed the commit SHA that contains it. Resolve the branch ref after the governed package commit for the exact final tip."
+}
