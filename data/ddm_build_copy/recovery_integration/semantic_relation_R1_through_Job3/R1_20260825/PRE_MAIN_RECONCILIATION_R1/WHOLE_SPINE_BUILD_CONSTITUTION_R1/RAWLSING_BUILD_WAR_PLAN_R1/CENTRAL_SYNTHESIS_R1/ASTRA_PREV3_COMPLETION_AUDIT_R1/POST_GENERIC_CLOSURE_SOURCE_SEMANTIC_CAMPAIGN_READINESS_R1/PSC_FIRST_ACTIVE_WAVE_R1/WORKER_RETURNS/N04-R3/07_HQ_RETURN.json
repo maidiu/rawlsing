@@ -1,0 +1,71 @@
+{
+  "schema": "RAWLSING_N04_R3_HQ_RETURN@1.0.0",
+  "worker": "N04-R3",
+  "branch": "agent/rabochii-prev3-psc-w4-n04r3-production-premise-binding-r1",
+  "grain": "PREV3_CURRENT_18276_CARRIER_SPECIFIC_GOVERNED_SEMANTIC_CAPITAL_PREMISE_BINDING_AND_T03_RERELEASE_R1_ONLY",
+  "terminal": "N04_R3_CARRIER_SPECIFIC_PRODUCTION_BINDING_AND_T03_RERELEASE_COMPLETE__RETURN_TO_HQ",
+  "result": "PASS__ZERO_BINDABLE_RECORDS__EXACT_ROLE_LEVEL_RESIDUALS_PROVED",
+  "semantic_pre_main_tip_unchanged": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354",
+  "accounting": {
+    "rows": 18276,
+    "unique_ids": 18276,
+    "current_governed_positive": 18213,
+    "review_required_preserved": 41,
+    "typed_unresolved_preserved": 22,
+    "canonical_jsonl_bytes": 8446586,
+    "canonical_jsonl_sha256": "9e525ee5b2a7e05f92f0d71b96098ab578cfd7b2721e665ea5c4085a47cc988b",
+    "representation": "CONTENT_ADDRESSED_DETERMINISTIC_PROJECTION",
+    "reconstruction_contract": "06_CURRENT_18276_BINDING_ACCOUNTING_RECONSTRUCTION_CONTRACT.json"
+  },
+  "production_binding": {
+    "production_bindable_current_positive_ids": 0,
+    "positive_t03_candidate_count": 0,
+    "positive_t03_candidate_sorted_id_stream_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "banked_compiler_replay_records": 0,
+    "status_counts": {
+      "BLOCKED_CURRENT_POSITIVE__MISSING_RESPONSE_CATEGORY_SEMANTICS_REF": 18012,
+      "BLOCKED_CURRENT_POSITIVE__MISSING_ROUTING_APPLICABILITY_REF": 159,
+      "BLOCKED_CURRENT_POSITIVE__MISSING_AUTHORITY_OWNED_CANDIDATE_KIND": 42,
+      "BLOCKED_N03_REVIEW_REQUIRED": 41,
+      "BLOCKED_N03_TYPED_UNRESOLVED": 22
+    },
+    "smallest_missing_role_counts": {
+      "response_category_semantics_ref": 18012,
+      "routing_applicability_ref": 159,
+      "candidate_kind": 42
+    }
+  },
+  "candidate_kind_frontier": {
+    "count": 42,
+    "sorted_id_stream_sha256": "d1e43b5df7ee939fb287488e9f8d2e7508493dcf72945781e43d1596d734ab49",
+    "lane_counts": {
+      "relation": 30,
+      "subjective_evidence": 12
+    },
+    "authority_status_counts": {
+      "GOVERNED_MANUAL_RELATION_AUTHORITY": 35,
+      "FROZEN_ACCEPTED_GSS": 7
+    },
+    "smallest_exact_blocker": "EXACT_FQRA_ROW_OWNS_RELATION_OR_SUBJECTIVE_EVIDENCE_SEMANTICS_BUT_NOT_T03_STRUCTURAL_POSITION_OR_MECHANISM_RULE_CANDIDATE_KIND__BANKED_COMPILER_DEFAULT_STRUCTURAL_POSITION_IS_NOT_AUTHORITY_TO_MINT_STRUCTURAL_ADMISSION"
+  },
+  "deterministic_hashes": {
+    "status_vector_raw_sha256": "f3bb9f06508f7eb26d1ee01e6bc865377637da34f5a60b4118006cc5d8a8d283",
+    "status_vector_zlib_b64_sha256": "8241edb2bf043105e0eae12dfa8dd312ff14ca09d37141467834529404c161d7",
+    "n03_canonical_jsonl_sha256": "0ac4cd90c19c859438ec12ddfa69c37e9b9c85607884e0f4ea93bc6b52493723",
+    "n01_full_csv_sha256": "df0df368ecd4b884e69894b32fb49102edb554c5ca69700d3d56b9dbe3b76cfc",
+    "n02_canonical_row_jsonl_sha256": "0f0b367275c931efec69918a82a1b78355f6b6050b6c2017990061578bef6ad0",
+    "banked_compiler_blob": "ad5806e3f500bdc63b40fde49f210ff45b282170"
+  },
+  "boundary_compliance": {
+    "compiler_byte_exact": true,
+    "no_text_or_label_inference": true,
+    "no_jurisdiction_collapse": true,
+    "no_structural_admission_mint": true,
+    "no_mechanism_or_rule_mint": true,
+    "no_all_rows_barrier": true,
+    "zero_treated_as_proved_role_level_result_not_semantic_negative": true,
+    "hq_control_mutated": false,
+    "semantic_pre_main_mutated": false
+  },
+  "hq_next_action": "Route only the exact proved response-semantics, routing/applicability, and candidate-kind role/jurisdiction residuals. Do not invent a new architecture wave."
+}
