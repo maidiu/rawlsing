@@ -59,7 +59,7 @@ def ensure(commit):
 def git_bytes(commit,path):
     ensure(commit); return sh(["git","show",f"{commit}:{path}"])
 def git_json(commit,path): return json.loads(git_bytes(commit,path))
-def git_blob_sha(commit,path): return sh(["git","rev-parse",f"{commit}:{path}"]).decode().strip()
+def git_blob_sha(commit,path):\n    ensure(commit); return sh(["git","rev-parse",f"{commit}:{path}"]).decode().strip()
 def blob_bytes(blob):
     ensure(B12); return sh(["git","cat-file","blob",blob])
 def mod_from_bytes(name,data):
