@@ -1,0 +1,71 @@
+{
+  "schema": "FIABC_W2_B03_RETURN@1.0.0",
+  "worker": "FIABC-W2-B03",
+  "repo": "maidiu/rawlsing",
+  "branch": "agent/rabochii-premain-fiabc-w2-b03-equal-work-accounting-r1",
+  "base_sha": "dfdae1dfcef5e3061094935312c3db2cc0fde2f0",
+  "return_path": "WORKER_RETURNS/FIABC-W2-B03/",
+  "commission": {
+    "path": "WORKER_RETURNS/FIABC-HQ-WAVE1-FANIN/06_WAVE2_COMMISSION_MATRIX.md",
+    "ref": "dfdae1dfcef5e3061094935312c3db2cc0fde2f0",
+    "blob": "6b184103887bed57a3480560a0b431718e733b7b"
+  },
+  "status": "COMPLETE__ACCOUNTING_CONSTITUTION_PROVED",
+  "terminal": "FIABC_W2_B03_EQUAL_WORK_ACCOUNTING_CONSTITUTION_PROVED",
+  "required_outputs": [
+    "01_MEASUREMENT_CONSTITUTION.md",
+    "02_METRIC_DEFINITION_LEDGER.csv",
+    "03_PRESERVED_WORK_ACCOUNTING.csv",
+    "04_CURRENT_METRIC_DEFECT_TO_REQUIRED_CHANGE.csv",
+    "05_EVIDENCE_INDEX.md",
+    "RETURN.json"
+  ],
+  "additional_output": "00_RETURN.md",
+  "holdings": {
+    "candidate_local_start_stop_boundary": "PROVED_AT_ACCOUNTING_CONSTITUTION_GRAIN",
+    "preserved_preparation_accounting": "PROVED_AT_ACCOUNTING_CONSTITUTION_GRAIN",
+    "cold_warm_measurement_law": "PROVED_AT_ACCOUNTING_CONSTITUTION_GRAIN",
+    "rebuild_deletion_measurement_law": "PROVED_AT_ACCOUNTING_CONSTITUTION_GRAIN",
+    "source_and_semantic_invalidation_measurement_law": "PROVED_AT_ACCOUNTING_CONSTITUTION_GRAIN",
+    "stale_corrupt_interruption_measurement_law": "PROVED_AT_ACCOUNTING_CONSTITUTION_GRAIN",
+    "candidate_isolated_wall_cpu_memory_accounting": "PROVED_AT_ACCOUNTING_CONSTITUTION_GRAIN",
+    "observed_io_and_byte_accounting": "PROVED_AT_ACCOUNTING_CONSTITUTION_GRAIN",
+    "process_global_rss_and_session_carryover_forbidden": true,
+    "metric_overwrite_forbidden": true,
+    "missing_telemetry_may_be_numeric_zero": false,
+    "source_universe_metric_pooling_allowed": false,
+    "current_p2x_implements_this_constitution": false,
+    "measured_p2x_resume_authorized_by_this_return": false,
+    "candidate_c_scope_or_portability_adjudicated_by_this_worker": false,
+    "independent_parity_oracle_contents_defined_by_this_worker": false
+  },
+  "headline_findings": [
+    "The equal-work treatment variable is candidate-owned physical realization, persistence, regeneration and reuse over one invariant source-local logical workload; semantic ownership and cost ownership remain distinct.",
+    "Candidate-neutral authority/workload/oracle production is frozen once and reused; actual candidate-local access to those common inputs is counted as physical work.",
+    "Each source×candidate cell requires an isolated candidate process with an exact start after common freeze and an exact stop before court administration; prior candidate sessions or RSS history may not carry over.",
+    "CPU must be candidate-total without overwrite or nested double count, RSS must be candidate-process-local, and read/write/rewrite bytes must be observed I/O events rather than endpoint directory-size proxies.",
+    "Cold/warm fields are write-once and require explicit candidate-owned state predicates; rebuild, invalidation, stale/corrupt and interruption metrics require actual governed candidate lifecycle actions.",
+    "The preserved LiTS-A first-build receipt can receive only conditional field-by-field numeric credit after exact accounting-contract verification; the preserved LiTS-B cacheless C11 receipt receives no numeric credit because telemetry was explicitly not captured.",
+    "Current P2X backend remains noncompliant with the proved constitution; this return does not authorize measured execution or repair Candidate C."
+  ],
+  "current_implementation_noncompliance": [
+    "S01 common/candidate work entanglement",
+    "CPU overwrite",
+    "process-global ru_maxrss",
+    "module-global session carryover",
+    "scratch endpoint samples mislabeled as peaks",
+    "oracle freeze after candidate output and same-candidate self-replay",
+    "cold metric overwrite / possible parity prewarming",
+    "A persistence receipt timed as delete/rebuild",
+    "formula-assigned invalidation units",
+    "non-exercised stale/corrupt/interruption behavior",
+    "endpoint-size bytes_written and hardcoded bytes_rewritten",
+    "hardcoded durable-authoritative bytes and formula moving-parts count",
+    "unaccounted candidate-local source hash reads",
+    "cumulative rather than phase-delta repeated-research source metrics",
+    "missing warm-retained-state metric",
+    "fresh-replay child CPU/RSS not integrated"
+  ],
+  "exact_blockers": [],
+  "final_branch_tip_note": "RETURN.json cannot self-embed the commit SHA that contains it. Resolve the branch ref after committing this package."
+}
