@@ -1,0 +1,78 @@
+{
+  "schema": "RAWLSING_HQ_HANDOFF@1.1.0",
+  "checkpoint_id": "20260919T0330-0400",
+  "repository": "maidiu/rawlsing",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354",
+  "prior_checkpoint": "20260919T0327-0400",
+  "status": "R6U_R6V_R6W_R6X_BROWSER_REPAIRS_ACTIVE__P2X_HELD",
+  "decisions": [
+    "HQD-2026-09-19-081",
+    "HQD-2026-09-19-082"
+  ],
+  "dispatch_path": "HQ_HANDOFF/P2X_PARALLEL_INFRASTRUCTURE_REPAIR_DISPATCH_20260919.md",
+  "active_workers": [
+    {
+      "id": "EE-P2R6U",
+      "branch": "agent/rabochii-prev3-ee-p2r6u-r6a-runtime-substrate-fanin-r1",
+      "commission_tip": "3a381d0f50d6c54ddf0ccea8c39c3f4299e9246d",
+      "observed_head_at_checkpoint": "3a381d0f50d6c54ddf0ccea8c39c3f4299e9246d",
+      "execution_surface": "BROWSER",
+      "library_access": "NO"
+    },
+    {
+      "id": "EE-P2R6V",
+      "branch": "agent/rabochii-prev3-ee-p2r6v-wvs-binder-recursion-repair-r1",
+      "commission_tip": "9cf312c74000c163a124cf32ca0893275c5b02ee",
+      "observed_head_at_checkpoint": "9cf312c74000c163a124cf32ca0893275c5b02ee",
+      "execution_surface": "BROWSER",
+      "library_access": "NO"
+    },
+    {
+      "id": "EE-P2R6W",
+      "branch": "agent/rabochii-prev3-ee-p2r6w-s17-orchestration-repair-r1",
+      "commission_tip": "c67f0a5c1461e90e72988286fba3dad4d521ecf8",
+      "observed_head_at_checkpoint": "c67f0a5c1461e90e72988286fba3dad4d521ecf8",
+      "execution_surface": "BROWSER",
+      "library_access": "NO"
+    },
+    {
+      "id": "EE-P2R6X",
+      "branch": "agent/rabochii-prev3-ee-p2r6x-p2x-ledger-reconciliation-prep-r1",
+      "commission_tip": "d7f22f8c2eaff326f547925f403a6f494b3f04c9",
+      "observed_head_at_checkpoint": "d7f22f8c2eaff326f547925f403a6f494b3f04c9",
+      "execution_surface": "BROWSER",
+      "library_access": "NO"
+    }
+  ],
+  "p2x": {
+    "branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+    "observed_head_at_checkpoint": "ae8b1db9d8c3288e002950ac01123c70f3138320",
+    "status": "HELD_PENDING_PARALLEL_REPAIRS",
+    "stopped_ledger_sha256": "7de7c91d539dd267e31098fd47285b3f4a7873e1c9ec7b542c45cac3908b8671"
+  },
+  "dependency_graph": {
+    "EE-P2R6U": {
+      "status": "ACTIVE"
+    },
+    "EE-P2R6V": {
+      "status": "ACTIVE"
+    },
+    "EE-P2R6W": {
+      "status": "ACTIVE"
+    },
+    "EE-P2R6X": {
+      "status": "ACTIVE"
+    },
+    "EE-P2X": {
+      "status": "HELD",
+      "prerequisites": [
+        "ADOPT_REQUIRED_REPAIRS",
+        "SELECTIVE_FANIN",
+        "LOCAL_RECONCILIATION",
+        "HQ_RESUME_SEAL"
+      ]
+    }
+  },
+  "terminal": "PARALLEL_P2X_INFRASTRUCTURE_REPAIRS_ACTIVE__P2X_HELD"
+}
