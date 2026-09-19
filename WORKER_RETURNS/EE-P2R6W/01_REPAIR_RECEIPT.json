@@ -1,0 +1,61 @@
+{
+  "schema": "RAWLSING_EE_P2R6W_S17_ORCHESTRATION_REPAIR_RECEIPT@1.0.0",
+  "disposition": "PASS",
+  "hq_checkpoint_id": "20260919T0330-0400",
+  "hq_handoff_commit": "9540aba11d40fc749ffa59827e871c1ba00e7ec6",
+  "controlling_decisions": [
+    "HQD-2026-09-19-081",
+    "HQD-2026-09-19-082"
+  ],
+  "branch": "agent/rabochii-prev3-ee-p2r6w-s17-orchestration-repair-r1",
+  "commissioned_tip": "c67f0a5c1461e90e72988286fba3dad4d521ecf8",
+  "held_p2x_head": "ae8b1db9d8c3288e002950ac01123c70f3138320",
+  "driver": {
+    "path": "rawlsing_next/ee_p2x_darwin_court_driver.py",
+    "prior_git_blob": "c3a368270f6f7a6f613efb78e31972e64a092c88",
+    "repaired_git_blob": "02ca7cc9f5bf8665de712980a05fdcc059b93331",
+    "s17_preterminal_begin_removed": true,
+    "final_ready_runs_before_s17_backend": true,
+    "s17_entry_absent_at_backend_invocation": true,
+    "s17_terminalized_only_after_backend_result": true,
+    "non_s17_begin_before_backend_preserved": true,
+    "legacy_empty_running_s17_placeholder_recoverable": true,
+    "evidenced_or_terminal_s17_placeholder_discard_forbidden": true
+  },
+  "backend": {
+    "path": "rawlsing_next/ee_p2x_darwin_stage_backend.py",
+    "prior_git_blob": "fb30167ebc060939e17eb15c71b93c000033eb4f",
+    "repaired_git_blob": "b223d309b5f5fa45389badec719ce2882e672cca",
+    "s17_handler_unchanged_verifier_target": "WORKER_RETURNS/EE-P2X/12A_verify_ee_p2x_driver_bound_local_court.py",
+    "common_court_failure_candidate_neutral": true,
+    "common_court_failure_candidate": null,
+    "common_court_failure_kind": "COMMON_COURT_AUTHORITY_FAILURE",
+    "common_court_failure_scope": "COURT_UNTIL_RESUME",
+    "court_all_candidate_cell_serializer_used": false,
+    "court_scope_receipt_schema": "RAWLSING_EE_P2X_COMMON_COURT_SCOPE_RECEIPT@1.0.0",
+    "frozen_verifier_role_bridge": [
+      "cell_receipt",
+      "failure_receipt"
+    ],
+    "s17_candidate_local_failure_serialization_allowed": false
+  },
+  "strict_verifier": {
+    "path": "WORKER_RETURNS/EE-P2X/12A_verify_ee_p2x_driver_bound_local_court.py",
+    "git_blob": "da8f3434f791c9f6495238b28817de4b3e328ad3",
+    "changed": false,
+    "weakened": false,
+    "binding_path": "WORKER_RETURNS/EE-P2X/10B_DARWIN_DRIVER_RECEIPT_BINDING.json",
+    "prior_binding_git_blob": "50c9a53d0d77131df7c619114b476afce0b0bb0f",
+    "repaired_binding_git_blob": "24311d54ca92a3255dcbbf05e7bc2b8d3ef19cb0",
+    "repaired_driver_blob_pin": "02ca7cc9f5bf8665de712980a05fdcc059b93331"
+  },
+  "boundaries": {
+    "library_access": false,
+    "carrier_access": false,
+    "empirical_outcome_access": false,
+    "measured_p2x_execution": false,
+    "performance_measurement": false,
+    "p2x_branch_moved": false,
+    "semantic_pre_main_moved": false
+  }
+}
