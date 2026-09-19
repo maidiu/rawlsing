@@ -1,13 +1,40 @@
 {
   "schema": "EE_P2R6P_BROWSER_QUALIFICATION_RECEIPT@1.0.0",
-  "status": "PENDING_GOVERNED_BROWSER_COURT",
+  "status": "PASS__EXACT_BLOCKER_QUALIFIED__NO_EMPIRICAL_MEASUREMENT",
   "semantic_candidate_sha": "1e329ead94dc57beae028c39ead91cfb3b0b2e81",
-  "evidence_packet_sha": "b7f6d0f290556fa1fd77e98a0ddc43cd4616e863",
+  "evidence_execution_sha": "4320aab63ff2978748d879fa97ad06c61a7e7f27",
+  "pr_synthetic_merge_sha": "019044f9cea1eb5e8c50e034aad3a6d609bef6c8",
+  "transient_pr": 412,
+  "transient_pr_state": "CLOSED_UNMERGED_AFTER_EVIDENCE_CAPTURE",
   "court_spec": ".rabochii/court_spec.json",
   "qualification_test": "rawlsing_next/tests/test_ee_p2r6p_production_backend_fanin.py",
+  "workflow": {
+    "name": "Rabochii Governed Bounded Court",
+    "run_id": 35419292143,
+    "run_number": 556,
+    "run_attempt": 1,
+    "conclusion": "success",
+    "job_id": 105833795200,
+    "job_name": "governed-court",
+    "job_conclusion": "success",
+    "protocol_self_test": "20 passed",
+    "bounded_court": "5 passed"
+  },
+  "artifact": {
+    "id": 10576746527,
+    "name": "rabochii-court-receipt-35419292143",
+    "size_in_bytes": 595,
+    "digest": "sha256:063a92666b501082f7bd908d03140162aecc8afb3a2bcd9a67ec33a33b21975a",
+    "expired": false
+  },
+  "qualified_terminal": "EE_P2R6P_BLOCK__WVS7_GOVERNED_C11_PROJECTION_COORDINATE_SEMANTICS_AUTHORITY_ABSENT",
+  "production_backend_materialized": false,
+  "production_backend_blob": null,
   "carrier_access": false,
+  "library_access": false,
+  "empirical_outcomes": false,
   "performance_measurement": false,
-  "run_id": null,
-  "job_id": null,
-  "artifact_id": null
+  "surrogate_metrics": false,
+  "p2x_branch_moved": false,
+  "exact_wake": "HQ_AUTHORITY_REPAIR_OR_ADOPTION__WVS7_COORDINATE_SEMANTICS_AND_GOVERNED_COORDINATE_SLOT_PREIMAGE"
 }
