@@ -937,6 +937,103 @@ def inspect_wvs_sav_structure_and_country(source_path: str | Path) -> tuple[tupl
     return variables, values
 
 
+
+def _pack_exact_scalar(value: Any) -> Mapping[str, Any]:
+    if value is None:
+        return {"t":"none"}
+    if isinstance(value, bool):
+        return {"t":"bool","v":value}
+    if isinstance(value, int):
+        return {"t":"int","v":value}
+    if isinstance(value, Decimal):
+        return {"t":"decimal","v":str(value)}
+    if isinstance(value, Fraction):
+        return {"t":"fraction","n":value.numerator,"d":value.denominator}
+    if isinstance(value, float):
+        if not math.isfinite(value):
+            raise ValueError("non-finite structural scalar forbidden")
+        if value.is_integer():
+            return {"t":"int","v":int(value)}
+        return {"t":"decimal","v":repr(value)}
+    if isinstance(value, str):
+        return {"t":"str","v":value}
+    raise ValueError(f"unsupported structural scalar {type(value).__name__}")
+
+def _unpack_exact_scalar(doc: Mapping[str, Any]) -> Any:
+    t=doc.get("t")
+    if t=="none": return None
+    if t=="bool": return bool(doc["v"])
+    if t=="int": return int(doc["v"])
+    if t=="decimal": return Decimal(str(doc["v"]))
+    if t=="fraction": return Fraction(int(doc["n"]),int(doc["d"]))
+    if t=="str": return str(doc["v"])
+    raise ValueError("unknown packed structural scalar")
+
+def _pack_missing_declaration(declaration: Mapping[str, Any]) -> Mapping[str, Any]:
+    out={}
+    for key,value in declaration.items():
+        if isinstance(value,(str,bool,int,float,Decimal,Fraction)) or value is None:
+            out[str(key)] = _pack_exact_scalar(value)
+        else:
+            raise ValueError("nested/unsupported WVS missing declaration")
+    return out
+
+def _unpack_missing_declaration(doc: Mapping[str, Any]) -> Mapping[str, Any]:
+    return {str(k):_unpack_exact_scalar(v) for k,v in doc.items()}
+
+def projection_structural_input(
+    variables: Sequence[PhysicalVariable],
+    country_values: Sequence[Any],
+) -> Mapping[str, Any]:
+    if len(variables)!=SOURCE_VARIABLES or len(country_values)!=SOURCE_ROWS:
+        raise ValueError("frozen WVS7 structural input geometry drift")
+    if [v.name for v in variables].count("B_COUNTRY")!=1:
+        raise ValueError("B_COUNTRY must resolve exact-uniquely")
+    material={
+        "schema":"EE_P2R6S_WVS7_PROJECTION_STRUCTURAL_INPUT@1.0.0",
+        "source_sha256":SOURCE_SHA256,
+        "rows":SOURCE_ROWS,
+        "variables":SOURCE_VARIABLES,
+        "physical_variables":[
+            {
+                "ordinal":v.ordinal,
+                "name":v.name,
+                "missing_declarations":[_pack_missing_declaration(x) for x in v.missing_declarations],
+            }
+            for v in variables
+        ],
+        "b_country_values":[_pack_exact_scalar(x) for x in country_values],
+    }
+    return {**material,"structural_input_identity":semantic_hash(material)}
+
+def materialize_from_structural_input(doc: Mapping[str, Any]) -> GovernedC11Projection:
+    if doc.get("schema")!="EE_P2R6S_WVS7_PROJECTION_STRUCTURAL_INPUT@1.0.0":
+        raise ValueError("WVS7 projection structural-input schema mismatch")
+    unsigned={k:v for k,v in doc.items() if k!="structural_input_identity"}
+    if semantic_hash(unsigned)!=doc.get("structural_input_identity"):
+        raise ValueError("WVS7 projection structural-input identity mismatch")
+    if doc.get("source_sha256")!=SOURCE_SHA256 or doc.get("rows")!=SOURCE_ROWS or doc.get("variables")!=SOURCE_VARIABLES:
+        raise ValueError("WVS7 projection structural-input frozen identity drift")
+    variables=tuple(
+        PhysicalVariable(
+            int(v["ordinal"]),str(v["name"]),None,None,{},
+            tuple(_unpack_missing_declaration(x) for x in v["missing_declarations"]),
+            {},{},
+        )
+        for v in doc["physical_variables"]
+    )
+    country=tuple(_unpack_exact_scalar(x) for x in doc["b_country_values"])
+    return materialize_and_bind(
+        physical_variables=variables,
+        row_country_values=country,
+        enforce_frozen_dimensions=True,
+    )
+
+def projection_structural_input_from_wvs_sav(source_path: str | Path) -> Mapping[str, Any]:
+    variables,country=inspect_wvs_sav_structure_and_country(source_path)
+    return projection_structural_input(variables,country)
+
+
 def materialize_from_wvs_sav(source_path: str | Path) -> GovernedC11Projection:
     variables, country_values = inspect_wvs_sav_structure_and_country(source_path)
     return materialize_and_bind(
@@ -1017,4 +1114,7 @@ __all__ = [
     "binding_receipt",
     "inspect_wvs_sav_structure_and_country",
     "materialize_from_wvs_sav",
+    "projection_structural_input",
+    "projection_structural_input_from_wvs_sav",
+    "materialize_from_structural_input",
 ]
