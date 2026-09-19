@@ -30,6 +30,9 @@ Qualification surface:
 Court spec:
 `.rabochii/court_spec.json`
 
+Governed court PR:
+`#416` targeting held P2X base `ae8b1db9d8c3288e002950ac01123c70f3138320`.
+
 No Library, source carrier, empirical outcome, or performance access is authorized or performed.
 P2X is not moved.
 
