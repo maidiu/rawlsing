@@ -1,0 +1,202 @@
+{
+  "binding_activation_or_adoption": false,
+  "binding_hash": "a5f36a81843fe2ebab0b5cccb369ce76035f842b93e602613b8b9f3a81103308",
+  "negative_tests": [
+    {
+      "exception_type": "Pre553AuthorityError",
+      "label": "zero active binding",
+      "message": "zero active positive concrete realization bindings; fail closed",
+      "status": "PASS_FAIL_CLOSED"
+    },
+    {
+      "exception_type": "Pre553AuthorityError",
+      "label": "multiple active positive bindings",
+      "message": "multiple active positive concrete realization bindings; fail closed",
+      "status": "PASS_FAIL_CLOSED"
+    },
+    {
+      "exception_type": "Pre553AuthorityError",
+      "label": "quarantined R6I fd4177e",
+      "message": "zero active positive concrete realization bindings; fail closed",
+      "status": "PASS_FAIL_CLOSED"
+    },
+    {
+      "exception_type": "Pre553AuthorityError",
+      "label": "mutated source identity",
+      "message": "concrete realization binding identity hash mismatch",
+      "status": "PASS_FAIL_CLOSED"
+    },
+    {
+      "exception_type": "Pre553AuthorityError",
+      "label": "mutated runtime release ref",
+      "message": "concrete realization binding identity hash mismatch",
+      "status": "PASS_FAIL_CLOSED"
+    },
+    {
+      "exception_type": "Pre553AuthorityError",
+      "label": "mutated replay ref",
+      "message": "concrete realization binding identity hash mismatch",
+      "status": "PASS_FAIL_CLOSED"
+    },
+    {
+      "exception_type": "Pre553AuthorityError",
+      "label": "incomplete M01-M18 coverage",
+      "message": "concrete realization binding identity hash mismatch",
+      "status": "PASS_FAIL_CLOSED"
+    },
+    {
+      "exception_type": "Pre553IntegrityError",
+      "label": "latest resolution",
+      "message": "runtime I02 release ref must contain exact kind/object_id/content_hash only",
+      "status": "PASS_FAIL_CLOSED"
+    },
+    {
+      "exception_type": "Pre553IntegrityError",
+      "label": "default resolution",
+      "message": "runtime I02 release ref must contain exact kind/object_id/content_hash only",
+      "status": "PASS_FAIL_CLOSED"
+    },
+    {
+      "exception_type": "Pre553AuthorityError",
+      "label": "fuzzy resolution",
+      "message": "realization target does not equal current exact runtime release",
+      "status": "PASS_FAIL_CLOSED"
+    },
+    {
+      "exception_type": "Pre553AuthorityError",
+      "label": "nearest resolution",
+      "message": "realization target does not equal current exact runtime release",
+      "status": "PASS_FAIL_CLOSED"
+    }
+  ],
+  "production_entrypoint": "Pre553RuntimeAuthoritySet.require_realized_release",
+  "production_runtime_blob_sha1": "2ddc591f2572983d18f8f3e8f81a33b80b3bca7b",
+  "rehydration_status": {
+    "candidate": {
+      "candidate_projection_hash": "23912633a23318d22bad0da08027867031320331d8d436d944e9c0b21eb086eb",
+      "record_counts": {
+        "AuthoritySnapshot": 10,
+        "ComparatorReplayBinding": 0,
+        "DiscoveryBranchReplayBinding": 0,
+        "EmpiricalCoordinateFact": 145010,
+        "EmpiricalPredicateReplayBinding": 0,
+        "EmpiricalUniverse": 1,
+        "QuestionVariableBinding": 4,
+        "ReplayManifest": 1,
+        "RespondentEvent": 116008,
+        "RespondentIdentity": 29002,
+        "RoutingEligibilityFact": 116008,
+        "SourceUniverseRelation": 0,
+        "StructuralAdmissionReplayBinding": 0,
+        "WeightMeasureFact": 0
+      },
+      "replay_manifest_ref": {
+        "content_hash": "30c168fbdf8425b23cbf2a2b2d2c9ab56f3438851f52e3562510089f1d381a08",
+        "kind": "C11Internal:ReplayManifest",
+        "object_id": "urn:rawlsing:pre553:c11:ReplayManifest:sha256:30c168fbdf8425b23cbf2a2b2d2c9ab56f3438851f52e3562510089f1d381a08"
+      },
+      "source_release_manifest_hash": "0546be4fa3f55239ee5d208234000066bdc84d832e89bc91d646ee623ed96714"
+    },
+    "repository": {
+      "release_count": 1,
+      "resolve_release_exact": "PASS",
+      "snapshot_identity": "[{\"content_hash\":\"192926fabd9c9c3d40e43b1d7705ca2bcfe7f8d06e286be26d4b886d436df43f\",\"kind\":\"C11LogicalRelease\",\"object_id\":\"LITS1-I02-F02-SUCCESSOR-7cac43e2ca5b31cb-bf305bf3f169d669\"}]"
+    },
+    "schema": "EE_P2R6K_C11_SNAPSHOT_REHYDRATION_RECEIPT@1.0.0",
+    "snapshot": {
+      "byte_length": 1447731437,
+      "schema": "EE_P2R6K_C11_VALIDATED_CANDIDATE_SNAPSHOT@1.0.0",
+      "sha256": "ca1e62ca14586bcd23392fc56d0af5f95c12d833bf994ef5a0ea09577ca1569b"
+    },
+    "status": "PASS",
+    "validated_release": {
+      "m01_m18_coverage": {
+        "M01": [
+          "EmpiricalUniverse"
+        ],
+        "M02": [
+          "RespondentIdentity"
+        ],
+        "M03": [
+          "QuestionVariableBinding"
+        ],
+        "M04": [
+          "RespondentEvent"
+        ],
+        "M05": [
+          "QuestionVariableBinding",
+          "RespondentEvent"
+        ],
+        "M06": [
+          "RespondentEvent.typed_state"
+        ],
+        "M07": [
+          "RoutingEligibilityFact"
+        ],
+        "M08": [
+          "EmpiricalCoordinateFact"
+        ],
+        "M09": [
+          "WeightMeasureFact|TypedAbsence"
+        ],
+        "M10": [
+          "AuthoritySnapshot"
+        ],
+        "M11": [
+          "SourceUniverseRelation|DISTINCT_BY_DEFAULT"
+        ],
+        "M12": [
+          "RoutingEligibilityFact",
+          "EmpiricalPredicateReplayBinding|TypedAbsence"
+        ],
+        "M13": [
+          "ComparatorReplayBinding|DEFERRED"
+        ],
+        "M14": [
+          "DiscoveryBranchReplayBinding|DEFERRED"
+        ],
+        "M15": [
+          "StructuralAdmissionReplayBinding|NOT_APPLICABLE"
+        ],
+        "M16": [
+          "ReplayManifest"
+        ],
+        "M17": [
+          "AuthoritySnapshot",
+          "ReplayManifest"
+        ],
+        "M18": [
+          "ReplayManifest"
+        ]
+      },
+      "release_ref": {
+        "content_hash": "192926fabd9c9c3d40e43b1d7705ca2bcfe7f8d06e286be26d4b886d436df43f",
+        "kind": "C11LogicalRelease",
+        "object_id": "LITS1-I02-F02-SUCCESSOR-7cac43e2ca5b31cb-bf305bf3f169d669"
+      },
+      "replay_manifest_ref": {
+        "content_hash": "30c168fbdf8425b23cbf2a2b2d2c9ab56f3438851f52e3562510089f1d381a08",
+        "kind": "C11Internal:ReplayManifest",
+        "object_id": "urn:rawlsing:pre553:c11:ReplayManifest:sha256:30c168fbdf8425b23cbf2a2b2d2c9ab56f3438851f52e3562510089f1d381a08"
+      },
+      "semantic_release_hash": "192926fabd9c9c3d40e43b1d7705ca2bcfe7f8d06e286be26d4b886d436df43f",
+      "source_release_manifest_hash": "0546be4fa3f55239ee5d208234000066bdc84d832e89bc91d646ee623ed96714"
+    },
+    "validation_path": [
+      "SERIALIZED_CANONICAL_CANDIDATE_BODIES",
+      "C11SourceReleaseCandidate",
+      "validate_c11_source_release",
+      "C11LogicalRelease",
+      "C11Repository",
+      "resolve_release_exact"
+    ]
+  },
+  "repository_snapshot_identity": "[{\"content_hash\":\"192926fabd9c9c3d40e43b1d7705ca2bcfe7f8d06e286be26d4b886d436df43f\",\"kind\":\"C11LogicalRelease\",\"object_id\":\"LITS1-I02-F02-SUCCESSOR-7cac43e2ca5b31cb-bf305bf3f169d669\"}]",
+  "returned_release_ref": {
+    "content_hash": "192926fabd9c9c3d40e43b1d7705ca2bcfe7f8d06e286be26d4b886d436df43f",
+    "kind": "C11LogicalRelease",
+    "object_id": "LITS1-I02-F02-SUCCESSOR-7cac43e2ca5b31cb-bf305bf3f169d669"
+  },
+  "schema": "EE_P2R6N_R6A_PRODUCTION_RUNTIME_PROOF@1.0.0",
+  "status": "PASS"
+}
