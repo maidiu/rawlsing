@@ -714,6 +714,29 @@ def _write_cell(ctx,services,state,stopped):
 
 
 def _failure(ctx,services,state,exc):
+    if ctx.stage.source=="COURT" and exc.scope=="COURT_UNTIL_RESUME":
+        court=_evidence(ctx,services)/"court"/f"{ctx.stage.stage_id}__COMMON_COURT_SCOPE.json"
+        failure=_evidence(ctx,services)/"failures"/f"COURT__COMMON__{exc.kind}.json"
+        court_obj={"schema":"RAWLSING_EE_P2X_COMMON_COURT_SCOPE_RECEIPT@1.0.0",
+                   "source":"COURT","candidate":None,"stage":ctx.stage.address,
+                   "kind":exc.kind,"blocking_scope":exc.scope,"candidate_neutral":True,
+                   "binding_role":"cell_receipt",
+                   "binding_role_law":"FROZEN_VERIFIER_ROLE_NAME__CONTENT_IS_COURT_SCOPE_NOT_CANDIDATE_CELL",
+                   "input_identity_hash":ctx.input_identity_hash,
+                   "backend_detail":exc.detail,"ranking_or_selection":False}
+        _atomic(court,court_obj)
+        obj={"schema":"RAWLSING_EE_P2X_FAILURE_STOP_RECEIPT@1.0.0","source":"COURT",
+             "candidate":None,"kind":exc.kind,"blocking_scope":exc.scope,
+             "disposition":f"EE_P2X_COURT_{ctx.stage.stage_id}__{exc.kind}",
+             "evidence_paths":[_rel(court,services),_rel(failure,services)],
+             "later_lawful_cells_suppressed":False,"synthetic_fallback_used":False,
+             "backend_detail":exc.detail,"ranking_or_selection":False}
+        _atomic(failure,obj)
+        return {"terminal_disposition":exc.terminal,
+                "receipt":{"error":str(exc),"detail":exc.detail,"evidence_artifacts":
+                           {"cell_receipt":_rel(court,services),"failure_receipt":_rel(failure,services)}},
+                "output_artifacts":{"cell_receipt":str(court),"failure_receipt":str(failure)},
+                "verifier_complete":True}
     if state["oracle_frozen"] is None:
         state["oracle_frozen"]=_ord(state); state["oracle_identity"]=_fallback(ctx,"STOP_ORACLE",exc.detail)
     _save(ctx,state)
@@ -1020,9 +1043,12 @@ def run_stage(context, services):
                            "stage_payload":payload,"ranking_or_selection":False},
                 "output_artifacts":artifacts,"verifier_complete":True}
     except BackendStop as exc:
+        if context.stage.source=="COURT" and not isinstance(exc,CourtAuthorityStop):
+            exc=CourtAuthorityStop(str(exc),exc.detail)
         return _failure(context,services,state,exc)
     except Exception as exc:
-        return _failure(context,services,state,BackendStop(
+        stop_cls=CourtAuthorityStop if context.stage.source=="COURT" else BackendStop
+        return _failure(context,services,state,stop_cls(
             "untyped production backend implementation failure",
             {"exception_type":type(exc).__name__,"exception":str(exc)}))
 
