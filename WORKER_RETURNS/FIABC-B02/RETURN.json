@@ -1,0 +1,40 @@
+{
+  "schema": "RAWLSING_FIABC_B02_RETURN@1.0.0",
+  "worker": "FIABC-B02",
+  "burden": "P2X LIVE CONSUMPTION GRAPH",
+  "repo": "maidiu/rawlsing",
+  "branch": "agent/rabochii-premain-fiabc-b02-p2x-live-consumption-graph-r1",
+  "base_sha": "d474f8e3c9630c4bcbb10d6e8359b71ba5b3060d",
+  "audited_p2x_branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+  "audited_p2x_tip": "617c9c9426db12a3c0f7fea6b68a582c10759553",
+  "return_path": "WORKER_RETURNS/FIABC-B02/",
+  "terminal": "FIABC_B02_P2X_LIVE_CONSUMPTION_GRAPH_PROVED",
+  "status": "COMPLETE",
+  "counts": {
+    "consumption_graph_rows": 21,
+    "resource_dependency_edges": 17,
+    "historical_worker_return_dependencies": 17,
+    "consumption_gaps": 7
+  },
+  "succession_disposition_counts": {
+    "PRESERVED_AND_CONSUMED": 8,
+    "PRESERVED_BUT_DISCONNECTED": 9,
+    "PARTIAL_SUCCESSION": 4
+  },
+  "core_findings": [
+    "Recorded P2X live execution consumes continuation/source/decoder/evidence mechanics and several governed historical resources, but no qualifying current cell completes the successor P2R1 I03/I05 chain.",
+    "Current P2X tip contains pre553_runtime_authority and a WVS recursion correction that post-date the recorded live failures; no post-fan-in governed receipt proves their consumption.",
+    "P2X runtime packaging directly depends on WORKER_RETURNS, historical data/ddm_build_copy authority preimages, and immutable historical Git objects.",
+    "Banked LiTS-A/LiTS-B stage evidence and WVS-C negative-state evidence are intentionally and demonstrably live-consumed through continuation/driver law.",
+    "No row is classified GENUINELY_MISSING."
+  ],
+  "write_scope": [
+    "WORKER_RETURNS/FIABC-B02/"
+  ],
+  "production_code_modified": false,
+  "authority_files_modified": false,
+  "hq_handoff_modified": false,
+  "tests_modified": false,
+  "existing_evidence_modified": false,
+  "commit_sha_capture": "FINAL_BRANCH_TIP"
+}
