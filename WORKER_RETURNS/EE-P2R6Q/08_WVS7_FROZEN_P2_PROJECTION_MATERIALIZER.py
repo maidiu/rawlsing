@@ -29,6 +29,8 @@ from rawlsing_next.pre553_source_backed_c11_facade import (
     GovernedC11Projection,
     OccurrenceRule,
     PhysicalSlot,
+    PhysicalSlotOwnerAuthorization,
+    PhysicalSlotOwnerSet,
     ResponseSlotRule,
     ResponseValueRule,
     RowRespondentBinding,
@@ -775,6 +777,29 @@ def build_projection_fields(
         projection_auth=projection_auth,
     )
     required_refs = tuple(sorted((a.authority_ref for a in authorities), key=lambda x: x.key))
+    slot_owner_sets = tuple(sorted((
+        PhysicalSlotOwnerSet(
+            slot=response_slots[0].slot,
+            owners=(PhysicalSlotOwnerAuthorization(
+                "RespondentEvent@1.0.0",
+                (projection_auth.authority_ref,),
+            ),),
+        ),
+        PhysicalSlotOwnerSet(
+            slot=response_slots[1].slot,
+            owners=(PhysicalSlotOwnerAuthorization(
+                "RespondentEvent@1.0.0",
+                (projection_auth.authority_ref,),
+            ),),
+        ),
+        PhysicalSlotOwnerSet(
+            slot=coordinate_slot.slot,
+            owners=(PhysicalSlotOwnerAuthorization(
+                "EmpiricalCoordinateFact@1.0.0",
+                (coordinate_auth.authority_ref,),
+            ),),
+        ),
+    ), key=lambda x: x.slot.key))
     return {
         "projection_identity_ref": PROJECTION_IDENTITY_REF,
         "source_artifact_id": f"WVS7_SAV_SHA256_{SOURCE_SHA256}",
@@ -803,6 +828,7 @@ def build_projection_fields(
         "replay_authority_ref": REPLAY_AUTH_REF,
         "tie_order_ref": TIE_ORDER_REF,
         "replay_protocol_version": "1.0.0",
+        "slot_owner_sets": slot_owner_sets,
     }
 
 
