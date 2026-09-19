@@ -174,8 +174,8 @@ def test_r6o_ab_owner_seam_requalification():
     a_stage=git_json(P2X,A_STAGE); b_stage=git_json(P2X,B_STAGE); matrix=git_json(P2R1,P2R1_MATRIX)
     assert a_stage["status"].startswith("PASS__") and b_stage["status"].startswith("PASS__")
     assert a_stage["identity"]["c11_logical_release"]==BASE_RELEASE and b_stage["identities"]["c11_logical_release"]==BASE_RELEASE
-    assert matrix["candidates"]["A"]["status"]=="READY__PRESERVED_R5_PLUS_ACCEPTED_PROJECTION_TO_COMMON_RUNNER"
-    assert matrix["candidates"]["B"]["status"]=="READY__CACHELESS_SOURCE_BACKED_C11_TO_COMMON_RUNNER"
+    assert matrix["matrix"]["LITS_I"]["A"]=="READY__PRESERVED_R5_PLUS_ACCEPTED_PROJECTION_TO_COMMON_RUNNER"
+    assert matrix["matrix"]["LITS_I"]["B"]=="READY__CACHELESS_SOURCE_BACKED_C11_TO_COMMON_RUNNER"
     aprod=git_bytes(OWNER_COMMIT,A_PATH).decode(); bprod=git_bytes(OWNER_COMMIT,B_PATH).decode(); seam=git_bytes(P2R1,P2R1_SEAM).decode()
     assert "build_source_backed_c11_repository(" in aprod and "build_source_backed_c11_repository(source" in bprod
     assert "candidate_semantic_branching" in seam and "bind_repository_builder" in seam and "CarrierNeutralResearchExecutor" in seam
