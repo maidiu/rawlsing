@@ -1,0 +1,44 @@
+{
+  "schema": "EE_P2R6P_WVS_BACKEND_BINDING_RECEIPT@1.0.0",
+  "status": "BLOCK",
+  "block_terminal": "EE_P2R6P_BLOCK__WVS7_GOVERNED_C11_PROJECTION_COORDINATE_SEMANTICS_AUTHORITY_ABSENT",
+  "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+  "lock2": "8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188",
+  "replay": "b1aa437406d94b1f81f0ef3c81b885a2fd542749d2e5441747897c016a5dd490",
+  "discovery_authority": "24591678ebf50ac153fabdbbcd90d6ce818c5a89a5307c395c48a04fe5a8b1ab",
+  "counts": {
+    "rows": 97220,
+    "variables": 613,
+    "candidates": 46,
+    "predicates": 11,
+    "queries": 3
+  },
+  "lock2_runtime_authority": "PASS",
+  "p2f2_authority_snapshot_blob": "7147e76a1dfc62a4f8eb60df458baa9e41670f7a",
+  "p2f2_authority_kinds": [
+    "SOURCE_SEMANTICS_TOPOLOGY",
+    "ROUTING_RISK_SET",
+    "SOURCE_UNIVERSE_RELATION",
+    "PREDICATE_GRAMMAR",
+    "DISCOVERY_FRONTIER",
+    "REPLAY_PROTOCOL"
+  ],
+  "governed_c11_projection": "BLOCKED",
+  "first_missing_projection_field": "coordinate_slots",
+  "first_missing_authority_kind": "COORDINATE_SEMANTICS",
+  "accepted_owner_requirement": "GovernedC11Projection.coordinate_slots MUST be nonempty; explicit governed projection required; no semantic inference permitted",
+  "physical_coordinates_are_sufficient_authority": false,
+  "reason": "P2F2 does not issue exact coordinate semantics or a governed coordinate-slot preimage. Physical row/variable coordinates cannot select or semantically bind a coordinate variable without new WVS semantic authority.",
+  "later_unadjudicated_projection_surfaces": [
+    "respondents",
+    "row_bindings",
+    "questions",
+    "response_slots",
+    "routing"
+  ],
+  "candidate_A": "BLOCKED_AT_S01_BEFORE_OWNER_COMPOSITION",
+  "candidate_B": "BLOCKED_AT_S01_BEFORE_OWNER_COMPOSITION",
+  "candidate_C": "PRESERVED_PORTABILITY_FAILURE__NO_BACKEND_PATH",
+  "carrier_opened": false,
+  "outcome_inference": false
+}
