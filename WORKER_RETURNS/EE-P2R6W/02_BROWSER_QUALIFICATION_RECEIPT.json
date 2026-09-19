@@ -1,0 +1,81 @@
+{
+  "schema": "RAWLSING_EE_P2R6W_BROWSER_QUALIFICATION_RECEIPT@1.0.0",
+  "disposition": "PASS",
+  "workflow": "Rabochii Governed Bounded Court",
+  "final_qualification": {
+    "pr_number": 418,
+    "pr_state": "CLOSED_UNMERGED",
+    "base_branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+    "base_head": "ae8b1db9d8c3288e002950ac01123c70f3138320",
+    "semantic_candidate_sha": "a2013f8a7ff060700c63102b892db967f31bd242",
+    "evidence_execution_sha": "da52a5b4c54fe9785232c375e25613ec416d7979",
+    "pr_synthetic_sha": "b36ae52b131acd59d30c81f10af8fd26dfbe03a7",
+    "run_id": 35430429640,
+    "run_number": 592,
+    "job_id": 105863882747,
+    "bounded_tests": {
+      "passed": 9,
+      "failed": 0
+    },
+    "protocol_self_tests": {
+      "passed": 20,
+      "failed": 0
+    },
+    "artifact": {
+      "id": 10580941421,
+      "name": "rabochii-court-receipt-35430429640",
+      "digest": "sha256:85acd4af110c1524d63757fb795a75b09612d2fc37ac88da2ca410737c23df0c"
+    }
+  },
+  "prior_attempts": [
+    {
+      "run_id": 35430311215,
+      "job_id": 105863570264,
+      "disposition": "QUALIFICATION_TEST_FIXTURE_FAILURE__NO_PRODUCTION_FAILURE",
+      "bounded_tests": {
+        "passed": 7,
+        "failed": 1
+      },
+      "exact_failure": "FakeLedger qualification fixture lacked .data required by driver verify_only",
+      "production_code_changed_after_failure": false
+    },
+    {
+      "run_id": 35430346832,
+      "job_id": 105863663968,
+      "disposition": "PASS__SUPERSEDED_BY_STRONGER_REAL_S17_HANDLER_PROOF",
+      "bounded_tests": {
+        "passed": 8,
+        "failed": 0
+      },
+      "protocol_self_tests": {
+        "passed": 20,
+        "failed": 0
+      }
+    }
+  ],
+  "final_proof_includes": [
+    "S17 backend invocation observes S17 absent from ledger",
+    "driver terminalizes S17 only after backend PASS",
+    "production _s17 handler invokes exact existing driver-bound verifier path while S17 is absent",
+    "external driver --verify-only revalidates terminal S17",
+    "all S00-S16 reducer stages are required terminal before S17",
+    "legacy empty RUNNING S17 placeholder can be discarded but evidenced RUNNING state cannot",
+    "normal non-S17 READY stages retain BEGIN-before-backend ordering",
+    "COURT/ALL common-court failure bypasses candidate-cell serializer and is candidate-neutral",
+    "ordinary BackendStop at COURT scope normalizes to common-court rather than candidate-local failure",
+    "strict driver-bound verifier blob remains byte-identical and its common-court requirements remain intact"
+  ],
+  "transient_court_spec": {
+    "final_execution_state": "PRESENT_ONLY_FOR_GOVERNED_BROWSER_COURT",
+    "return_state": "ABSENT",
+    "restoration_commit": "a70ecba6119f460ed71ac72c295f6c3f33e1641e"
+  },
+  "boundaries": {
+    "library_access": false,
+    "source_carrier_access": false,
+    "empirical_outcome_access": false,
+    "measured_p2x_execution": false,
+    "performance_measurement": false,
+    "p2x_branch_moved": false
+  }
+}
