@@ -1,0 +1,54 @@
+{
+  "schema": "EE_P2R6O_AB_OWNER_SEAM_NEGATIVE_COURT@1.0.0",
+  "status": "PASS",
+  "negatives": [
+    {
+      "label": "compile frozen 50/77 frontier without R4A mixed composition",
+      "result": "PASS_FAIL_CLOSED",
+      "exception": "ExactBoundedDiscoveryError"
+    },
+    {
+      "label": "mutate frozen selector content hash",
+      "result": "PASS_FAIL_CLOSED",
+      "exception": "ExactBoundedDiscoveryError"
+    },
+    {
+      "label": "zero active realization bindings",
+      "result": "PASS_FAIL_CLOSED",
+      "exception": "Pre553AuthorityError"
+    },
+    {
+      "label": "quarantined R6I predecessor used as authority",
+      "result": "PASS_FAIL_CLOSED",
+      "evidence": "R6N negative court"
+    },
+    {
+      "label": "mutate exact public object content hash",
+      "result": "PASS_FAIL_CLOSED",
+      "exception": "CarrierExecutionBindingError"
+    },
+    {
+      "label": "LATEST/default/fuzzy authority lookup",
+      "result": "PASS_FAIL_CLOSED"
+    },
+    {
+      "label": "Candidate A owner hash mismatch",
+      "result": "PASS_FAIL_CLOSED"
+    },
+    {
+      "label": "Candidate B owner hash mismatch",
+      "result": "PASS_FAIL_CLOSED"
+    },
+    {
+      "label": "swap Candidate B owner blob into Candidate A",
+      "result": "PASS_FAIL_CLOSED"
+    },
+    {
+      "label": "swap Candidate A owner blob into Candidate B",
+      "result": "PASS_FAIL_CLOSED"
+    }
+  ],
+  "independent_owner_passes": true,
+  "candidate_A_pass_does_not_imply_B": true,
+  "candidate_B_pass_does_not_imply_A": true
+}

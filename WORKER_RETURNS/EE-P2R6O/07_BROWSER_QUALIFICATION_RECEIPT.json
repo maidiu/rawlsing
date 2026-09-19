@@ -1,0 +1,39 @@
+{
+  "schema": "EE_P2R6O_BROWSER_QUALIFICATION_RECEIPT@1.0.0",
+  "status": "PASS",
+  "workflow": {
+    "run_id": 35410966732,
+    "job_id": 105810371720,
+    "artifact_id": 10574672152,
+    "artifact_name": "rabochii-court-receipt-35410966732",
+    "artifact_digest": "sha256:0057f1df71584ca183732b92a3c7998768e6b2c9e0ff0d288b21b1c6ecc19449"
+  },
+  "bounded_court_receipt": {
+    "determinism_mode": "EXACT",
+    "elapsed_seconds": 40.174522,
+    "env": {
+      "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+      "PYTHONHASHSEED": "0"
+    },
+    "evidence_execution_sha": "b75db4ceaeb7993390a351e51a8f1cc24aaad0e2",
+    "exit_code": 0,
+    "implementation": "CPython",
+    "pr_synthetic_merge_sha": "cc8cc80c0217da4bd78ab8650f9da5b05eaf9790",
+    "python": "3.12.14",
+    "result": "PASS",
+    "schema_id": "RABOCHII_BOUNDED_COURT_RECEIPT@1.0.0",
+    "semantic_candidate_sha": "5e93bf0eee240afc7b1ed8d09c80be1143fad577",
+    "spec_sha256": "99d3c81f6b35f55a8572c4d6888615810ba95f9fd56ca832b67e3701b20c7f74",
+    "tests": [
+      "rawlsing_next/tests/test_ee_p2r6o_browser_qualification.py"
+    ]
+  },
+  "test_summary": "1 passed, 1 warning in 39.97s",
+  "terminal": "EE_P2R6O_PASS__A_AND_B_ACCEPTED_OWNER_SEAMS_REQUALIFIED_TO_COMMON_P2R1_R6A_RUNTIME__READY_FOR_PRODUCTION_BACKEND_FANIN",
+  "runtime_catalog_identity": "5983d7d5c579b916ad46c1acf9e41c1c89b516a4e561a99b1d2b477bf5ad2d02",
+  "transient_pr": {
+    "number": 410,
+    "closed": true,
+    "merged": false
+  }
+}
