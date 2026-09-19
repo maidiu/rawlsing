@@ -1,0 +1,127 @@
+{
+  "schema": "EE_P2R6Q_FQRA_TO_C11_COORDINATE_OWNERSHIP_ADJUDICATION@1.0.0",
+  "status": "BLOCK",
+  "terminal": "EE_P2R6Q_BLOCK__WVS7_CURRENT_SURVEY_COUNTRY_POSITION_COORDINATE_AUTHORITY_ABSENT",
+  "ownership_law": "ACCEPTED_FQRA_DISPOSITION_TO_EXACT_C11_OWNER_ONLY__NO_ROLE_PROMOTION_OR_SEMANTIC_INFERENCE",
+  "required_coordinate": "CURRENT_WVS7_SURVEY_INTERVIEW_COUNTRY",
+  "fqra_sha256": "0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13",
+  "accepted_position_coordinate_count": 81,
+  "current_country_direct_source_slot": {
+    "var_code": "B_COUNTRY",
+    "question_id": "WVS:W7:B_COUNTRY",
+    "authority_rule_id": "QRA35V1::WVS::W7::B_COUNTRY",
+    "exact_text": "ISO 3166-1 numeric country code",
+    "manual_semantic_role": "ADMINISTRATIVE_METADATA",
+    "p2_semantic_role": "ADMINISTRATIVE_METADATA",
+    "p2_canonical_disposition": "STRUCTURAL_CONTEXT",
+    "disposition": "REJECT_AS_C11_COORDINATE_OWNER"
+  },
+  "accepted_position_geographic_candidates": [
+    {
+      "var_code": "N_REGION_ISO",
+      "meaning": "Region ISO 3166-2",
+      "disposition": "POSITION_COORDINATE",
+      "reason_not_sufficient": "SUBNATIONAL_REGION; CURRENT_COUNTRY_EXTRACTION_REQUIRES_UNISSUED_MAPPING_AUTHORITY"
+    },
+    {
+      "var_code": "N_REGION_NUTS2",
+      "meaning": "Region NUTS-2",
+      "disposition": "POSITION_COORDINATE",
+      "reason_not_sufficient": "SUBNATIONAL_REGION; NOT_DIRECT_CURRENT_COUNTRY"
+    },
+    {
+      "var_code": "N_REGION_WVS",
+      "meaning": "Region country specific",
+      "disposition": "POSITION_COORDINATE",
+      "reason_not_sufficient": "COUNTRY_LOCAL_REGION CODE; CURRENT_COUNTRY NOT ENCODED DIRECTLY"
+    },
+    {
+      "var_code": "N_REG_NUTS1",
+      "meaning": "Region where the interview was conducted (NUTS-1)",
+      "disposition": "POSITION_COORDINATE",
+      "reason_not_sufficient": "SUBNATIONAL_REGION; NOT_DIRECT_CURRENT_COUNTRY"
+    },
+    {
+      "var_code": "Q266",
+      "meaning": "Country of birth: Respondent",
+      "disposition": "RELATION_EVIDENCE",
+      "reason_not_sufficient": "BIRTH_COUNTRY IS NOT SURVEY_COUNTRY"
+    },
+    {
+      "var_code": "Q267",
+      "meaning": "Country of birth: Mother of the respondent",
+      "disposition": "RELATION_EVIDENCE",
+      "reason_not_sufficient": "MATERNAL BIRTH_COUNTRY IS NOT SURVEY_COUNTRY"
+    },
+    {
+      "var_code": "Q268",
+      "meaning": "Country of birth: Father of the respondent",
+      "disposition": "RELATION_EVIDENCE",
+      "reason_not_sufficient": "PATERNAL BIRTH_COUNTRY IS NOT SURVEY_COUNTRY"
+    },
+    {
+      "var_code": "Q269",
+      "meaning": "Respondent citizen",
+      "disposition": "RELATION_EVIDENCE",
+      "reason_not_sufficient": "CITIZENSHIP BOOLEAN DOES NOT IDENTIFY SURVEY COUNTRY"
+    },
+    {
+      "var_code": "btiregion",
+      "meaning": "BTI Region (7 categories) [Bertelsmann Stiftung, 2018]",
+      "disposition": "POSITION_COORDINATE",
+      "reason_not_sufficient": "COARSE REGION DOES NOT IDENTIFY COUNTRY"
+    },
+    {
+      "var_code": "fhregion",
+      "meaning": "Region (6 groups) [Freedom House, 2019]",
+      "disposition": "POSITION_COORDINATE",
+      "reason_not_sufficient": "COARSE REGION DOES NOT IDENTIFY COUNTRY"
+    },
+    {
+      "var_code": "regionWB",
+      "meaning": "Geographic region (7 groups) [World Bank, 2019]",
+      "disposition": "POSITION_COORDINATE",
+      "reason_not_sufficient": "COARSE REGION DOES NOT IDENTIFY COUNTRY"
+    },
+    {
+      "var_code": "incomeWB",
+      "meaning": "Income group country [World Bank, 2019]",
+      "disposition": "POSITION_COORDINATE",
+      "reason_not_sufficient": "INCOME GROUP DOES NOT IDENTIFY COUNTRY"
+    }
+  ],
+  "no_direct_position_coordinate_with_b_country_semantics": true,
+  "native_to_country_harmonization_authority": "ABSENT_FROM_ADOPTED_P2F2_AUTHORITY_SET",
+  "coordinate_semantics_authority_issued": false,
+  "coordinate_slot_preimage_issued": false,
+  "independent_projection_field_audit": {
+    "universes": "CLOSED__ADOPTED_P2F2_EMPIRICAL_UNIVERSE",
+    "respondents": "CLOSED__DETERMINISTIC_SOURCE_ROW_IDENTITY",
+    "row_bindings": "CLOSED__ROW_ORDINAL_TO_ROW_DERIVED_RESPONDENT",
+    "questions": "CLOSED__EXACT_Q291G5_Q291P5",
+    "response_slots": "CLOSED_AUTHORITY_PREIMAGE__LOCAL_PHYSICAL_ORDINAL_EXACT_UNIQUE_LOOKUP_ONLY",
+    "coordinate_slots": "BLOCKED__CURRENT_SURVEY_COUNTRY_POSITION_COORDINATE_AUTHORITY_ABSENT",
+    "routing": "SEMANTIC_LAW_CLOSED__ROW_REALIZATION_BLOCKED_BY_COORDINATE",
+    "weight_slots": "CLOSED__EMPTY_RAW_UNWEIGHTED",
+    "authority_snapshots": "ADOPTED_P2F2_CLOSED__NEW_COORDINATE_AND_PROJECTION_AUTHORITY_NOT_ISSUED",
+    "source_relations": "CLOSED__SOURCE_LOCAL_DISTINCT_BY_DEFAULT",
+    "predicate_replay": "CLOSED__TYPED_NOT_APPLICABLE_FOR_PROJECTION",
+    "comparator_replay": "CLOSED__TYPED_DEFERRED",
+    "discovery_replay": "CLOSED__TYPED_DEFERRED",
+    "structural_replay": "CLOSED__TYPED_NOT_APPLICABLE",
+    "required_authorities": "CLOSED_EXCEPT_MISSING_COORDINATE_AND_DEPENDENT_PROJECTION_AUTHORITY",
+    "replay_authority_ref": "CLOSED__EE-P2F2-PRE553-EXACT-REPLAY",
+    "tie_order_ref": "CLOSED__LOCK2_8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188",
+    "projection_authority_ref": "NOT_ISSUED__DEPENDENT_ON_MISSING_COORDINATE",
+    "projection_identity_ref": "NOT_ISSUED__DEPENDENT_ON_MISSING_COORDINATE",
+    "slot_owner_sets": "RESPONSE_OWNER_SETS_CLOSED__COORDINATE_OWNER_SET_BLOCKED"
+  },
+  "rejected_draft": {
+    "mechanically_binder_valid_with_B_COUNTRY": true,
+    "semantic_authority_valid": false,
+    "disposition": "REMOVED__NEGATIVE_REFERENCE_ONLY",
+    "browser_success_run": 35420512208,
+    "browser_success_job": 105837184230,
+    "browser_success_artifact": 10576752789
+  }
+}

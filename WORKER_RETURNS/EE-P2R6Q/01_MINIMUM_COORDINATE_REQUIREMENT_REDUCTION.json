@@ -1,0 +1,70 @@
+{
+  "schema": "EE_P2R6Q_MINIMUM_COORDINATE_REQUIREMENT_REDUCTION@1.0.0",
+  "status": "BLOCKED_AT_EXACT_REQUIRED_COORDINATE_AUTHORITY",
+  "terminal": "EE_P2R6Q_BLOCK__WVS7_CURRENT_SURVEY_COUNTRY_POSITION_COORDINATE_AUTHORITY_ABSENT",
+  "frozen_program": {
+    "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+    "rows": 97220,
+    "variables": 613,
+    "response_variables": [
+      "Q291G5",
+      "Q291P5"
+    ],
+    "respondent_topology": "SOURCE_ROW_IDENTITY__EXACT_SAME_WVS7_RECORD",
+    "applicability_country_count": 13,
+    "lock2": "8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188",
+    "replay": "b1aa437406d94b1f81f0ef3c81b885a2fd542749d2e5441747897c016a5dd490",
+    "discovery_authority": "24591678ebf50ac153fabdbbcd90d6ce818c5a89a5307c395c48a04fe5a8b1ab",
+    "candidates": 46,
+    "predicates": 11,
+    "queries": 3,
+    "weighting": "RAW_UNWEIGHTED"
+  },
+  "exact_required_coordinate_set": [
+    {
+      "semantic_requirement": "CURRENT_WVS7_SURVEY_INTERVIEW_COUNTRY",
+      "necessity": "MATERIALIZE_EXACT_13_COUNTRY_POLITICAL_TRUST_APPLICABILITY_PER_ROW",
+      "required_owner_family": "EmpiricalCoordinateFact@1.0.0",
+      "required_fqra_role": "POSITION_COORDINATE",
+      "required_value_semantics": "DIRECT_CURRENT_SURVEY_COUNTRY_IDENTITY_OR_EXACT_AUTHORIZED_NATIVE_TO_COUNTRY_MAPPING",
+      "routing_inference_from_missingness": false
+    }
+  ],
+  "dependency_reduction": {
+    "all_wvs7_slots": 613,
+    "accepted_position_coordinates": 81,
+    "full_613_rereview_required": false,
+    "other_position_coordinates_required_by_frozen_p2": false,
+    "reason": "No other frozen-P2 query, response, weighting, or routing dependency requires another coordinate."
+  },
+  "direct_country_slot_found": {
+    "var_code": "B_COUNTRY",
+    "question_id": "WVS:W7:B_COUNTRY",
+    "authority_rule_id": "QRA35V1::WVS::W7::B_COUNTRY",
+    "exact_meaning": "ISO 3166-1 numeric country code",
+    "fqra_role": "ADMINISTRATIVE_METADATA",
+    "fqra_subrole": "survey_control_or_processing",
+    "p2_canonical_disposition": "STRUCTURAL_CONTEXT",
+    "usable_as_required_coordinate": false,
+    "rejection": "COMMISSION_NEGATIVE_REQUIRES_NON_POSITION_COORDINATE_SUBSTITUTION_TO_FAIL"
+  },
+  "nearest_accepted_position_candidate": {
+    "var_code": "N_REGION_ISO",
+    "question_id": "WVS:W7:N_REGION_ISO",
+    "exact_meaning": "Region ISO 3166-2",
+    "fqra_role": "POSITION_COORDINATE",
+    "p2_canonical_disposition": "POSITION_COORDINATE",
+    "usable_as_direct_current_country": false,
+    "missing_requirement": "EXACT_GOVERNED_ISO3166_2_TO_CURRENT_SURVEY_COUNTRY_MAPPING_AUTHORITY"
+  },
+  "coordinate_authority_identity": null,
+  "coordinate_slot_identity": null,
+  "projection_identity": null,
+  "materializer_blob": null,
+  "evidence": {
+    "fqra_sha256": "0f7fa1c0f579fd44ad44a7ccfc576166b5e8b49895e2822dfc916dff8d00ad13",
+    "gsr07r1_result": "613/613 accepted dispositions; 81 POSITION_COORDINATE",
+    "exact_position_probe_run": 35420612878,
+    "exact_geographic_probe_run": 35420685943
+  }
+}
