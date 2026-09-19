@@ -1,0 +1,36 @@
+{
+  "schema": "RAWLSING_HQ_HANDOFF@1.1.0",
+  "checkpoint_id": "20260919T0130-0400",
+  "repository": "maidiu/rawlsing",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354",
+  "prior_checkpoint": "20260919T0111-0400",
+  "status": "P2X_BLOCK_ADOPTED__R6T_PATH_REF_REPAIR_READY__P2X_HELD_AT_LITS_A_S02",
+  "decisions": [
+    "HQD-2026-09-19-077"
+  ],
+  "adoption_path": "HQ_HANDOFF/EE_P2X_LITS_AS2A_PATH_BLOCKER_ADOPTION_20260919.md",
+  "p2x": {
+    "branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+    "observed_head_at_checkpoint": "d0187a01f21959f4834a7f774f92d06187f1efb3",
+    "temporal_classification": "POST_CHECKPOINT_PENDING_RETURN__ADJUDICATED_BLOCK",
+    "status": "HELD_AT_COMMON_COURT_AUTHORITY_FAILURE",
+    "resume_stage": "LITS_I/A/S02_C11_REACHABILITY"
+  },
+  "blocker": {
+    "backend_blob": "ca32b9c8ec6bfcbbdc039fba0a10646dcc5357e2",
+    "pinned_commit": "3ce639e1a8ab0ad48954c0aeff4b5c42f3d0b06f",
+    "wrong_path_component": "AS2A_LITS1_SHARED_CERTIFICATION_20260827",
+    "exact_path_component": "banked_as2a",
+    "ledger_blob": "c24e0d6acc6f2b823f0fc3fa5fb8a52b7c1cab0c",
+    "package_blob": "174b931e8aa89111086e3d46159b47154bed7f16",
+    "classification": "EXACT_AUTHORITY_PATH_REF_MISMATCH__NO_AUTHORITY_CONTENT_CHANGE_REQUIRED"
+  },
+  "next_action": {
+    "id": "EE-P2R6T",
+    "status": "READY_TO_COMMISSION",
+    "execution_surface": "BROWSER",
+    "library_access": "NO"
+  },
+  "terminal": "R6T_READY__P2X_HELD_AT_LITS_A_S02"
+}
