@@ -77,12 +77,10 @@ def test_backend_exhaustively_handles_ready_reducer_stages_and_preserves_c_laws(
     backend=importlib.import_module("rawlsing_next.ee_p2x_darwin_stage_backend")
     reducer=json.loads((ROOT/"WORKER_RETURNS/EE-P2X-CONTINUATION-REDUCER-R1/01_CONTINUATION_STATE_MACHINE.json").read_text())
     ready=set()
-    for cell in reducer["cells"].values():
+    for cell in reducer["cells"]:
         for sid,record in cell["stages"].items():
             if record[0]=="READY__RUN_LOCALLY":
                 ready.add(sid)
-    for sid,record in reducer["final_stage"]["stages"].items() if isinstance(reducer["final_stage"].get("stages"),dict) else []:
-        if record[0]=="READY__RUN_LOCALLY": ready.add(sid)
     ready.add("S17_FINAL_COMPLETENESS_AND_VERIFICATION")
     assert ready==set(backend.HANDLERS)
     source=Path(backend.__file__).read_text()
@@ -95,3 +93,51 @@ def test_backend_exhaustively_handles_ready_reducer_stages_and_preserves_c_laws(
     assert "ranking_or_selection" in source
     assert "historic_product_substitution" in source and '"product_identity":product' in source
     assert "LITS_PRODUCT" not in source[source.index("def _s05"):source.index("def _s06")]
+
+
+def test_mutated_country_authority_fails_exact_binder():
+    import dataclasses
+    from rawlsing_next.pre553_empirical_objects import AuthorityRef
+    fields=dict(m.build_projection_fields(
+        physical_variables=vars3(),row_country_values=(231,),enforce_frozen_dimensions=False
+    ))
+    slot=fields["coordinate_slots"][0]
+    bad=AuthorityRef("urn:bad:country","1.0.0","0"*64)
+    fields["coordinate_slots"]=(dataclasses.replace(slot,source_semantic_authority_ref=bad),)
+    with pytest.raises(Exception):
+        bind_governed_c11_projection(fields)
+
+def test_mutated_lock2_package_fails_backend_gate(tmp_path):
+    import importlib, types
+    backend=importlib.import_module("rawlsing_next.ee_p2x_darwin_stage_backend")
+    target=tmp_path/"WORKER_RETURNS/EE-P2R6S"
+    target.mkdir(parents=True)
+    pkg=json.loads(PKG.read_text())
+    pkg["lock2"]="0"*64
+    (target/"04_COMPLETE_WVS7_FROZEN_P2_PROJECTION_AUTHORITY.json").write_text(json.dumps(pkg))
+    services=types.SimpleNamespace(repo_root=tmp_path)
+    ctx=types.SimpleNamespace()
+    with pytest.raises(backend.SourceAuthorityStop,match="Lock2"):
+        backend._wvs_docs(ctx,services)
+
+def test_lits_c_exact_current_nonqualification_and_wvs_c_no_path():
+    import importlib, types
+    backend=importlib.import_module("rawlsing_next.ee_p2x_darwin_stage_backend")
+    state={"bindings":{}}
+    lits=types.SimpleNamespace(
+        stage=types.SimpleNamespace(source="LITS_I",candidate="C",stage_id="S02_C11_REACHABILITY"),
+        source_path=None
+    )
+    with pytest.raises(backend.BackendStop) as exc:
+        backend._s02(lits,None,state)
+    assert exc.value.detail["disposition"]=="C_NONQUALIFYING__S02_C11_REACHABILITY__FROZEN_CACC1_STREAM_OMITS_Q310_Q311_REQUIRED_BY_F02_COMPOSITE_PROJECTION"
+    wvs=types.SimpleNamespace(
+        contract=backend.BACKEND_CONTRACT,
+        stage=types.SimpleNamespace(
+            source="WVS7",candidate="C",stage_id="S02_C11_REACHABILITY",
+            disposition="READY__RUN_LOCALLY",empirical_source_access_required=False,
+        ),
+        source_sha256=backend.WVS_SHA,source_path=None,
+    )
+    with pytest.raises(backend.BackendStop,match="WVS-C"):
+        backend._gate(wvs)
