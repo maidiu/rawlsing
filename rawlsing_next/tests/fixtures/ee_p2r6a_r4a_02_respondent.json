@@ -1,0 +1,99 @@
+{
+  "schema": "EE_P2R4A_RESPONDENT_BINDING_COMPATIBILITY_AUTHORITY@1.0.0",
+  "status": "CANDIDATE__HQ_ADOPTION_REQUIRED",
+  "candidate_ref": {
+    "kind": "RespondentBindingCompatibilityAuthorityCandidate@1.0.0",
+    "object_id": "urn:rawlsing:prev3:p2r4a:respondent-binding:sha256:3ef0317887f6910838636d3816237a81d5a56b38e07595c8cc1f7c5e7f1fae74",
+    "content_hash": "3ef0317887f6910838636d3816237a81d5a56b38e07595c8cc1f7c5e7f1fae74"
+  },
+  "authority_content_hash": "3ef0317887f6910838636d3816237a81d5a56b38e07595c8cc1f7c5e7f1fae74",
+  "identity_material": {
+    "authority_id": "urn:rawlsing:prev3:p2r4a:pre553:respondent-binding-compatibility",
+    "authority_version": "1.0.0-candidate",
+    "relation_kind": "EXACT_RELEASE_SCOPED_REFINEMENT_FOR_MIXED_PREDICATE_COMPOSITION",
+    "parent_binding": "EXACT_SAME_RESPONDENT_ONLY",
+    "child_binding": "EXACT_SOURCE_ROW_REPLAY_WITHIN_SAME_LITS1_RELEASE",
+    "exact_scope": {
+      "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+      "release_ref": {
+        "kind": "C11LogicalRelease",
+        "object_id": "LITS1-F02-C11-7cac43e2ca5b31cb-bf305bf3f169d669",
+        "content_hash": "bf305bf3f169d66954be4f39cc602880fddea6083b5bee9c0212938355cd5297"
+      },
+      "base_release_ref": {
+        "kind": "C11LogicalRelease",
+        "object_id": "LITS1-AS2B-C11-7cac43e2ca5b31cb-9dd1e6b7350ebb79",
+        "content_hash": "e6c954538fa1830820120465a10a6d065b8a18d1e6b7b08d3f863b0917741e26"
+      },
+      "respondent_namespace": "LITS1_SELECTED_RESPONDENT__7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09__ROW_ORDINAL_1BASED",
+      "respondent_identity_law": "SOURCE_SHA256_PLUS_PHYSICAL_ROW_ORDINAL_PLUS_SEMANTIC_ROLE_SELECTED_RESPONDENT",
+      "semantic_role": "SELECTED_RESPONDENT__NO_SUBSTITUTION__SECTIONS_3_7",
+      "source_row_count": 29002
+    },
+    "semantics": {
+      "relation": "CHILD_BINDING_REFINES_PARENT_BINDING_WITHIN_EXACT_BOUND_SCOPE",
+      "global_equivalence": false,
+      "child_implies_parent_within_scope": true,
+      "reverse_or_cross_scope_implication": false,
+      "composition_compatibility_is_symmetric": true,
+      "numeric_row_coordinate_aliasing": "NOT_GRANTED__REALIZATION_MUST_PROVE_ITS_OWN_EXACT_SOURCE_ROW_TO_RESPONDENT_BINDING",
+      "explanation": "Within the exact bound release, selected-respondent identity is sourced from the exact source row. F02 requires same-source-row replay in that release, so an F02 match is also the same selected respondent. This does not equate the laws globally."
+    },
+    "evidence": [
+      {
+        "commit": "661c02694b7dd60d0c86a8dbe9c1b682631457e8",
+        "blob": "cf8806aeadd4120e50355e6420c15333fa9632b0",
+        "claim": "Sections 3-7 selected respondent, no substitution, row-bound identity"
+      },
+      {
+        "commit": "661c02694b7dd60d0c86a8dbe9c1b682631457e8",
+        "blob": "174b931e8aa89111086e3d46159b47154bed7f16",
+        "claim": "exact source SHA plus physical-row ordinal plus selected-respondent namespace"
+      },
+      {
+        "commit": "923f2c00b6145182a5e2be5038f579845951da19",
+        "blob": "64abcf1fca632203849458b0da63f2e850082bd8",
+        "claim": "accepted base C11 release with 29,002 respondent identities"
+      },
+      {
+        "commit": "482bb884a99e31ba77e904d0df39fffc872cbed3",
+        "blob": "7b45b277164fa90c3da739aab26b516f7a8cb8dc",
+        "claim": "F02 same-row exact-native-value semantics and exact-release binding"
+      }
+    ],
+    "compatibility_matrix": [
+      {
+        "left": "EXACT_SAME_RESPONDENT_ONLY",
+        "right": "EXACT_SAME_RESPONDENT_ONLY",
+        "disposition": "EXISTING_EXACT_EQUALITY_PATH__UNCHANGED"
+      },
+      {
+        "left": "EXACT_SOURCE_ROW_REPLAY_WITHIN_SAME_LITS1_RELEASE",
+        "right": "EXACT_SOURCE_ROW_REPLAY_WITHIN_SAME_LITS1_RELEASE",
+        "disposition": "EXISTING_EXACT_EQUALITY_PATH__UNCHANGED"
+      },
+      {
+        "left": "EXACT_SAME_RESPONDENT_ONLY",
+        "right": "EXACT_SOURCE_ROW_REPLAY_WITHIN_SAME_LITS1_RELEASE",
+        "disposition": "ALLOW_ONLY_WITH_THIS_EXACT_SCOPE_AND_AUTHORITY"
+      },
+      {
+        "left": "EXACT_SOURCE_ROW_REPLAY_WITHIN_SAME_LITS1_RELEASE",
+        "right": "EXACT_SAME_RESPONDENT_ONLY",
+        "disposition": "ALLOW_ONLY_WITH_THIS_EXACT_SCOPE_AND_AUTHORITY"
+      }
+    ],
+    "negative_scope": [
+      "ANY_OTHER_SOURCE_SHA",
+      "ANY_OTHER_RELEASE",
+      "ANY_OTHER_RESPONDENT_NAMESPACE",
+      "SECTIONS_1_2_REPORTER_OR_HOUSEHOLD_ROLE",
+      "CROSS_RELEASE_LINKAGE",
+      "NATIVE_ID_AS_DURABLE_RESPONDENT_ID",
+      "ROW_NUMBER_EQUIVALENCE_WITHOUT_REALIZATION_PROOF",
+      "GLOBAL_EQUIVALENCE",
+      "ADJACENT_BINDING_INFERENCE"
+    ],
+    "fail_closed": true
+  }
+}

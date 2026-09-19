@@ -248,10 +248,21 @@ def _require_exact_i03_authority_fitness(
         raise Pre553AuthorityError("I03 query requires exact query_authority_refs")
 
     grammar_ref = _authority(predicate.grammar_authority_ref, "predicate.grammar_authority_ref")
-    if grammar_ref not in query_authority_refs:
+    try:
+        from rawlsing_next.pre553_runtime_context import current_runtime_authorities
+        runtime = current_runtime_authorities()
+    except ImportError:
+        runtime = None
+    runtime_grammar = (
+        runtime is not None
+        and runtime.is_positive_runtime_predicate_authority(grammar_ref)
+    )
+    if grammar_ref not in query_authority_refs and not runtime_grammar:
         raise Pre553AuthorityError(
             "predicate grammar authority is not an exact query authority"
         )
+    if runtime_grammar:
+        runtime.validate_predicate(predicate)
 
     snapshots = tuple(
         authority_registry.resolve_exact(ref).snapshot for ref in query_authority_refs
