@@ -1,0 +1,117 @@
+{
+  "schema": "EE_P2R6U_RUNTIME_SUBSTRATE_AUDIT@1.0.0",
+  "status": "PASS",
+  "live_hq": {
+    "checkpoint": "20260919T0330-0400",
+    "immutable_handoff": "9540aba11d40fc749ffa59827e871c1ba00e7ec6",
+    "decisions": [
+      "HQD-2026-09-19-081",
+      "HQD-2026-09-19-082"
+    ]
+  },
+  "branch": "agent/rabochii-prev3-ee-p2r6u-r6a-runtime-substrate-fanin-r1",
+  "commissioned_head": "3a381d0f50d6c54ddf0ccea8c39c3f4299e9246d",
+  "p2x_held_base": "ae8b1db9d8c3288e002950ac01123c70f3138320",
+  "adopted_r6a_head": "3f382e6abd6c4f6f2271440041be27ceaf4900ee",
+  "adopted_r6a_prebase": "6586da01edac5e87fb81b6beb8d7b16fc0ea18ef",
+  "materialization_commit": "84bd90b292469b835664efdf47ff2300b2083607",
+  "conflict_audit": {
+    "existing_query_discovery_paths": [
+      {
+        "path": "rawlsing_next/_pre553_query_common.py",
+        "p2x_pre_fanin_blob": "6b38b0b749961358b65b31871a8cd5ca4a98fe77"
+      },
+      {
+        "path": "rawlsing_next/_pre553_query_eval.py",
+        "p2x_pre_fanin_blob": "e2d91984541df7c692a1b2f32370500838a2a000"
+      },
+      {
+        "path": "rawlsing_next/_pre553_query_predicate.py",
+        "p2x_pre_fanin_blob": "902b179817f02a46fc0844971f268113123347f4"
+      },
+      {
+        "path": "rawlsing_next/pre553_discovery_exact.py",
+        "p2x_pre_fanin_blob": "b2b99460cc5991bc26aa2ffe5bda129b408fc197"
+      },
+      {
+        "path": "rawlsing_next/pre553_empirical_query.py",
+        "p2x_pre_fanin_blob": "fbcd93b5b5336848744cfbb77e1d50a5d3ac6af7"
+      }
+    ],
+    "finding": "ALL_FIVE_EQUAL_EXACT_R6A_PREBASE_BLOBS__NOT_LATER_SUPERSESSIONS",
+    "missing_before_fanin": [
+      "rawlsing_next/pre553_runtime_authority.py",
+      "rawlsing_next/pre553_runtime_composition.py",
+      "rawlsing_next/pre553_runtime_context.py",
+      "five R4A fixtures"
+    ],
+    "p2x_post_merge_delta_touches_target_paths": false,
+    "later_incompatible_adopted_runtime_conflict": false
+  },
+  "exact_materialized_targets": [
+    {
+      "path": "rawlsing_next/_pre553_query_common.py",
+      "git_blob_sha1": "938a6b03a63dd34ef4f0f63655ed8f11f65c5d92"
+    },
+    {
+      "path": "rawlsing_next/_pre553_query_eval.py",
+      "git_blob_sha1": "128b31fa60c2650d8c7af30f1f4b1d1470acd2b6"
+    },
+    {
+      "path": "rawlsing_next/_pre553_query_predicate.py",
+      "git_blob_sha1": "edc943ca6690ac73f24492f3d01ad9ee17f70f21"
+    },
+    {
+      "path": "rawlsing_next/pre553_discovery_exact.py",
+      "git_blob_sha1": "c7380774e8a1959da5ed8c6f23c2fc3cf99ad18d"
+    },
+    {
+      "path": "rawlsing_next/pre553_empirical_query.py",
+      "git_blob_sha1": "482778348d6b450f46985c2161af32f2961d8384"
+    },
+    {
+      "path": "rawlsing_next/pre553_runtime_authority.py",
+      "git_blob_sha1": "2ddc591f2572983d18f8f3e8f81a33b80b3bca7b"
+    },
+    {
+      "path": "rawlsing_next/pre553_runtime_composition.py",
+      "git_blob_sha1": "3753c183ddb25b1b0eb0ce84db1868f39f50d3fa"
+    },
+    {
+      "path": "rawlsing_next/pre553_runtime_context.py",
+      "git_blob_sha1": "3c26c77892395a4825b377b740e37df7ea1148d4"
+    },
+    {
+      "path": "rawlsing_next/tests/fixtures/ee_p2r6a_r4a_01_dialect.json",
+      "git_blob_sha1": "e49b33417ea1f57e5eacb557c173507a118e11de"
+    },
+    {
+      "path": "rawlsing_next/tests/fixtures/ee_p2r6a_r4a_02_respondent.json",
+      "git_blob_sha1": "490434c1fc87decb97d187e6185e1848045dd9c5"
+    },
+    {
+      "path": "rawlsing_next/tests/fixtures/ee_p2r6a_r4a_03_mixed.json",
+      "git_blob_sha1": "a18fd79609f080062b93dfe0e2bab8e9bf865af3"
+    },
+    {
+      "path": "rawlsing_next/tests/fixtures/ee_p2r6a_r4a_04_derived.json",
+      "git_blob_sha1": "5000020fa6554be9c2ad2ab418b6f5269b59d69a"
+    },
+    {
+      "path": "rawlsing_next/tests/fixtures/ee_p2r6a_r4a_05_successor.json",
+      "git_blob_sha1": "e19d076e2d2b0ecbf7ccacba5e23dd185ce43cfc"
+    }
+  ],
+  "r6s_execution_equivalence": {
+    "qualification_head": "e44d6abb115b9d4274127ae8eeb61ff9af4c2a73",
+    "lits_support_blob": "9406bacfd928393f6a159a46216aa1f7ec129f34",
+    "all_13_target_blobs_identical_to_r6u": true
+  },
+  "boundaries": {
+    "library_access": false,
+    "source_or_carrier_bytes": false,
+    "empirical_outcomes": false,
+    "performance_measurements": false,
+    "p2x_moved": false
+  }
+}

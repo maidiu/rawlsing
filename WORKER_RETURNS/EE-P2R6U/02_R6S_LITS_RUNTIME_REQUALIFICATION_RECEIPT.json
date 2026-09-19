@@ -1,0 +1,139 @@
+{
+  "schema": "EE_P2R6U_R6S_LITS_RUNTIME_REQUALIFICATION_RECEIPT@1.0.0",
+  "status": "PASS",
+  "method": "CONTENT_ADDRESSED_EQUIVALENCE_TO_EXECUTED_GOVERNED_BROWSER_QUALIFICATIONS",
+  "r6u_materialization_commit": "84bd90b292469b835664efdf47ff2300b2083607",
+  "exact_targets": [
+    {
+      "path": "rawlsing_next/_pre553_query_common.py",
+      "git_blob_sha1": "938a6b03a63dd34ef4f0f63655ed8f11f65c5d92"
+    },
+    {
+      "path": "rawlsing_next/_pre553_query_eval.py",
+      "git_blob_sha1": "128b31fa60c2650d8c7af30f1f4b1d1470acd2b6"
+    },
+    {
+      "path": "rawlsing_next/_pre553_query_predicate.py",
+      "git_blob_sha1": "edc943ca6690ac73f24492f3d01ad9ee17f70f21"
+    },
+    {
+      "path": "rawlsing_next/pre553_discovery_exact.py",
+      "git_blob_sha1": "c7380774e8a1959da5ed8c6f23c2fc3cf99ad18d"
+    },
+    {
+      "path": "rawlsing_next/pre553_empirical_query.py",
+      "git_blob_sha1": "482778348d6b450f46985c2161af32f2961d8384"
+    },
+    {
+      "path": "rawlsing_next/pre553_runtime_authority.py",
+      "git_blob_sha1": "2ddc591f2572983d18f8f3e8f81a33b80b3bca7b"
+    },
+    {
+      "path": "rawlsing_next/pre553_runtime_composition.py",
+      "git_blob_sha1": "3753c183ddb25b1b0eb0ce84db1868f39f50d3fa"
+    },
+    {
+      "path": "rawlsing_next/pre553_runtime_context.py",
+      "git_blob_sha1": "3c26c77892395a4825b377b740e37df7ea1148d4"
+    },
+    {
+      "path": "rawlsing_next/tests/fixtures/ee_p2r6a_r4a_01_dialect.json",
+      "git_blob_sha1": "e49b33417ea1f57e5eacb557c173507a118e11de"
+    },
+    {
+      "path": "rawlsing_next/tests/fixtures/ee_p2r6a_r4a_02_respondent.json",
+      "git_blob_sha1": "490434c1fc87decb97d187e6185e1848045dd9c5"
+    },
+    {
+      "path": "rawlsing_next/tests/fixtures/ee_p2r6a_r4a_03_mixed.json",
+      "git_blob_sha1": "a18fd79609f080062b93dfe0e2bab8e9bf865af3"
+    },
+    {
+      "path": "rawlsing_next/tests/fixtures/ee_p2r6a_r4a_04_derived.json",
+      "git_blob_sha1": "5000020fa6554be9c2ad2ab418b6f5269b59d69a"
+    },
+    {
+      "path": "rawlsing_next/tests/fixtures/ee_p2r6a_r4a_05_successor.json",
+      "git_blob_sha1": "e19d076e2d2b0ecbf7ccacba5e23dd185ce43cfc"
+    }
+  ],
+  "r6s_executed_browser_proof": {
+    "qualification_head": "e44d6abb115b9d4274127ae8eeb61ff9af4c2a73",
+    "run_id": 35422824788,
+    "job_id": 105843490615,
+    "result": "12 passed in 22.50s",
+    "protocol_self_tests": "20 passed in 0.12s",
+    "artifact_id": 10578125850,
+    "artifact_digest": "sha256:7063aeac0dfb1cfa22df071fcc3c992061013ebad98850cfb78bcd8708b59bcb",
+    "qualification_test_blob": "3ee2b94beb71eaa9cae7d04b46a2c930e21917bf",
+    "lits_support_blob": "9406bacfd928393f6a159a46216aa1f7ec129f34",
+    "exact_tree_equivalence": {
+      "all_13_runtime_and_fixture_blobs_match_r6u": true,
+      "support_module_matches_r6u": true
+    },
+    "executed_test": "test_backend_contract_and_current_runtime_support_are_source_inert",
+    "executed_assertions": {
+      "support_module_import": true,
+      "materialize_runtime_package_called": true,
+      "runtime_catalog_identity": "5983d7d5c579b916ad46c1acf9e41c1c89b516a4e561a99b1d2b477bf5ad2d02",
+      "active_binding": "a5f36a81843fe2ebab0b5cccb369ce76035f842b93e602613b8b9f3a81103308",
+      "runtime_release": "192926fabd9c9c3d40e43b1d7705ca2bcfe7f8d06e286be26d4b886d436df43f",
+      "candidate_count": 50,
+      "query_role_executions": 77
+    }
+  },
+  "runtime_authority_set_proof": {
+    "support_function": "materialize_runtime_authority_set",
+    "exact_definition": "return r4_runtime()",
+    "r4_runtime_constructs": "Pre553RuntimeAuthoritySet",
+    "package_execution_calls_same_r4_runtime": true,
+    "bind_runtime_exact_type_gate": "isinstance(authorities, Pre553RuntimeAuthoritySet)",
+    "bind_runtime_gate_passed_during_executed_50_77_compilation": true,
+    "disposition": "EXACT_PRE553_RUNTIME_AUTHORITY_SET_PROVED"
+  },
+  "mixed_r4a_proof": {
+    "package_execution_compiles_frontier_under_r4_runtime": true,
+    "required_rule_ids": [
+      "D02_P2_HIGHER_ORDER_K3",
+      "D02_P3_CONDITIONAL_REVERSAL"
+    ],
+    "exact_mixed_authority_hash": "0d7cfaac1d63cd438d29b109b590cb828805bd113fc37759a6f6f4c88d3c8f55",
+    "support_assertion_executed_and_passed": true
+  },
+  "legacy_no_runtime_context_proof": {
+    "r6a_evidence_head": "53700cc33a7996e315c6009453920c952c0ec0f3",
+    "run_id": 35391614229,
+    "job_id": 105751024028,
+    "result": "63 passed in 1.86s",
+    "court_spec_blob": "a3809929d84ce873699cbce9cfe3ccf8826b1a41",
+    "runtime_test_blob": "05d9d9d790a75b8ecabcf633b550eb359e4dfc69",
+    "explicit_passed_tests": [
+      "test_legacy_same_grammar_same_binding_composition_is_exactly_unchanged",
+      "test_legacy_response_leaf_evaluator_remains_unchanged"
+    ],
+    "r6u_production_runtime_blobs_are_exact_adopted_r6a_blobs": true,
+    "discovery_regression_test_blob_unchanged": "308a582c012f20824bc2dceb530b1c9652395f93",
+    "disposition": "LEGACY_AND_NO_RUNTIME_CONTEXT_ACCEPTED_BEHAVIOR_RETAINED"
+  },
+  "r6u_browser_infrastructure_check": {
+    "pull_request": 417,
+    "head": "84bd90b292469b835664efdf47ff2300b2083607",
+    "run_id": 35430212256,
+    "job_id": 105863309251,
+    "workflow_result": "success",
+    "protocol_self_tests": "20 passed in 0.08s",
+    "bounded_court_execution": "SKIPPED__ROOT_COURT_SPEC_NOT_AUTHORIZED_BY_COMMISSION_WRITE_SURFACE",
+    "semantic_qualification_claim_from_this_run": false
+  },
+  "boundaries": {
+    "library_access": false,
+    "real_lits_carrier_access": false,
+    "real_wvs_carrier_access": false,
+    "source_bytes": false,
+    "empirical_outcomes": false,
+    "performance_measurements": false,
+    "surrogate_metrics": false,
+    "p2x_moved": false
+  },
+  "terminal": "EE_P2R6U_PASS__EXACT_ADOPTED_R6A_RUNTIME_SUBSTRATE_MATERIALIZED_AND_R6S_LITS_RUNTIME_REQUALIFIED__READY_FOR_HQ_SELECTIVE_FANIN"
+}
