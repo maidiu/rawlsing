@@ -193,7 +193,7 @@ COORDINATE_AUTHORITY_MATERIAL = {
         "copy_observed_raw": True,
         "canonical_crosswalk": "NOT_REQUIRED_FOR_COORDINATE_FACT",
         "routing_membership_standard": "SOURCE_OWNER_EXACT_NUMERIC_SET",
-        "source_owner_code_to_label": dict(sorted(SOURCE_OWNER_COUNTRY_CODE_TO_LABEL.items())),
+        "source_owner_code_to_label": [{"code": code, "label": SOURCE_OWNER_COUNTRY_CODE_TO_LABEL[code]} for code in sorted(SOURCE_OWNER_COUNTRY_CODE_TO_LABEL)],
     },
 }
 COORDINATE_AUTHORITY_HASH = HQ_COUNTRY_COORDINATE_AUTHORITY_HASH
