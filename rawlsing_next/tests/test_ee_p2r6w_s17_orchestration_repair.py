@@ -364,3 +364,64 @@ def test_strict_driver_bound_verifier_is_unchanged_and_rebound_to_repaired_drive
     }
     assert "S17 may be absent while this verifier is itself running as the S17 backend." in verifier_source
     assert 'if address.startswith("COURT/"):' in verifier_source
+
+
+def test_real_s17_handler_is_invoked_while_s17_absent_then_driver_terminalizes(monkeypatch, tmp_path):
+    stage = driver.StageSpec(
+        "COURT", "ALL", "S17_FINAL_COMPLETENESS_AND_VERIFICATION",
+        "READY__RUN_LOCALLY", None, False, False, "__COURT_COMPLETE__",
+        "ALL_S00_S16_TERMINAL", "FINAL", "__FORBIDDEN__",
+    )
+    work = tmp_path / "work"
+    repo = Path(__file__).resolve().parents[2]
+    ledger = FakeLedger(work, repo)
+    subprocess_calls = []
+
+    def fake_run(argv, **kwargs):
+        assert ledger.stage_entry(FINAL) is None
+        subprocess_calls.append(tuple(str(x) for x in argv))
+        return SimpleNamespace(returncode=0, stdout="PASS__FINAL_TWO_SOURCE_P2_EVIDENCE_COMPLETE\n")
+
+    monkeypatch.setattr(backend.subprocess, "run", fake_run)
+    monkeypatch.setattr(
+        driver,
+        "_final_ready",
+        lambda machine, observed: (
+            observed.stage_entry(FINAL) is None
+            or pytest.fail("S17 existed before the production verifier handler")
+        ),
+    )
+
+    class ProductionS17Handler:
+        def run_stage(self, context, services):
+            payload = backend._s17(context, services, {})
+            assert payload["terminal"] == "PASS__FINAL_TWO_SOURCE_P2_EVIDENCE_COMPLETE"
+            return driver.BackendResult(
+                "PASS",
+                {"schema": "TEST_REAL_S17_HANDLER", "terminal": payload["terminal"], "evidence_artifacts": {}},
+                verifier_complete=True,
+            )
+
+    d = object.__new__(driver.DarwinCourtDriver)
+    d.machine = FakeMachine(stage)
+    d.work_root = work
+    d.repo_root = repo
+    d.source_paths = {}
+    d.host = None
+    d.repo = SimpleNamespace(head="1" * 40)
+    d.backend = ProductionS17Handler()
+    d.ledger = ledger
+    d.services = driver.DriverServices(repo_root=repo, work_root=work)
+    d.verify_static_gates = lambda: None
+    d.bind_initial_preserved_prefix = lambda: None
+    d.source_sha_for_stage = lambda _stage: "2" * 64
+
+    out = d.run(resume=True)
+
+    assert len(subprocess_calls) == 1
+    assert subprocess_calls[0][1].endswith("WORKER_RETURNS/EE-P2X/12A_verify_ee_p2x_driver_bound_local_court.py")
+    assert "--driver-work-root" in subprocess_calls[0]
+    assert ledger.begin_calls == []
+    assert ledger.complete_calls == [FINAL]
+    assert ledger.stage_entry(FINAL)["terminal_disposition"] == "PASS"
+    assert out["status"] == "COURT_SEQUENCE_COMPLETE__S17_VERIFIED"
