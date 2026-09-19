@@ -77,10 +77,12 @@ def load_producer():
 
 def load_base_objects():
     producer=load_producer()
-    node4=mod_from_bytes("ee_p2r6o_node4a",blob_bytes(NODE4A_BLOB))
+    assert git_blob_sha(B12,NODE4A_PATH)==NODE4A_BLOB
+    node4=mod_from_bytes("ee_p2r6o_node4a",git_bytes(B12,NODE4A_PATH))
     records=node4.load_predicate_inputs()
     preds={r["as3_semantic_source_identity"]["as3_id"]:producer.construct_successor_predicate(r) for r in records}
-    qdoc=json.loads(blob_bytes(QUERY_INPUT_BLOB))
+    assert git_blob_sha(B12,QUERY_INPUT_PATH)==QUERY_INPUT_BLOB
+    qdoc=json.loads(git_bytes(B12,QUERY_INPUT_PATH))
     allrefs=tuple(p.ref for p in preds.values())
     queries={r["as3_semantic_source_identity"]["as3_id"]:producer.construct_successor_query(r,successor_predicate_refs=allrefs) for r in qdoc["query_inputs"]}
     assert {k:v.content_hash for k,v in preds.items() if k in BASE_REFS}==BASE_REFS
