@@ -1,0 +1,140 @@
+{
+  "schema": "FIABC_T6_RETURN@1.0.0",
+  "worker": "FIABC-T6",
+  "repo": "maidiu/rawlsing",
+  "branch": "agent/rabochii-premain-fiabc-t6-r35-live-convergence-r1",
+  "required_parent_branch": "agent/vozhd-premain-fiabc-live-t5-fanin-r1",
+  "exact_parent_sha": "a8f913dfafd13a15cc56c6b7df4773331c1f61df",
+  "implementation_tip": "a2c28f7e149549c4d449d073b807722ccb473ff4",
+  "status": "IMPLEMENTATION_COMPLETE__READY_FOR_COMBINED_SOURCE_INDEPENDENT_QUALIFICATION",
+  "r35_source_branch": "agent/vozhd-premain-fiabc-r35-fanin-r1",
+  "r35_hq_seal": "c3c83908fb0083c575ab1b5ea2a3a6d84f14b5ff",
+  "r35_wholesale_merge": false,
+  "raw_source_carriers_opened": false,
+  "source_certification_performed": false,
+  "measured_p2x_executed": false,
+  "merge_performed": false,
+  "production": {
+    "added": [
+      "rawlsing_next/fiabc_derivative_parentage.py",
+      "rawlsing_next/fiabc_whole_source_physical_equivalence.py",
+      "rawlsing_next/fiabc_live_r35_guard.py"
+    ],
+    "modified": [
+      "rawlsing_next/pre553_physical_decoder.py",
+      "rawlsing_next/ee_p2x_darwin_stage_backend.py",
+      "rawlsing_next/fiabc_live_accounting_binding.py"
+    ],
+    "live_driver_functions_touched": [],
+    "live_backend_functions_touched": [
+      "_new_state",
+      "_wvs_structural_path",
+      "_wvs_parentage_path",
+      "_root_lineage_identity",
+      "_wvs_reader_config",
+      "_wvs_parentage_material",
+      "_wvs_projection",
+      "_assert_r5_canonical_source_root",
+      "_compose_lits__LITS_A_PARENTAGE_SEAM",
+      "_compose_wvs"
+    ]
+  },
+  "blobs": {
+    "live_driver": "4500cbb149fa187a766aca71568dc1f205a4c367",
+    "live_backend": "f8e02d6911c1abe45a543f025d17ddf10dc46f00",
+    "physical_decoder": "86109c4a0b7ebd9b66e3b531b6334bfb48f03f78",
+    "generic_derivative_parentage": "95d806a709ef4f4a0f33a8bf15b122a721a72e68",
+    "whole_source_physical_equivalence": "acdbc3f99f38d228d20d6a27ab7e89558af354af",
+    "live_r35_guard": "707d1daa692bdaed23dbbdf073c594f180452bab",
+    "t3_process_envelope": "e8b653991887855ac7dee730bb19706219332422",
+    "t3_isolated_backend": "b36faf5af98b49a4b11c408402229cff02aad7bc",
+    "t4_telemetry": "d061cd0f3c595c100ea728520fb0892404a2ca9b",
+    "t4_lifecycle": "a2977ea22fe67858a2a811917bd7ac0f4b7350c7",
+    "t4_live_accounting_converged": "db5966f9c1e075f5aa255c46c5f587d7f5eddccd",
+    "t5_terminal_control": "23624e5d8c6af9d0c8a2d825b1ef6313c223d5f2",
+    "t5_succession_preflight": "e9591b3f4beba3a5aa35039edc85163635582959",
+    "t5_terminal_verifier": "c9d31ae48f4ab338a29f3054f866cd5ae51e7142"
+  },
+  "parentage_convergence": {
+    "former_t4_schema_owner_retained": false,
+    "canonical_owner": "rawlsing_next/fiabc_derivative_parentage.py",
+    "canonical_bundle_schema": "FIABC_DERIVATIVE_PARENTAGE_BUNDLE@1.0.0",
+    "t4_require_derivative_parentage_role": "COMPATIBILITY_ADAPTER_TO_GENERIC_R35_VERIFIER",
+    "fail_closed_preserved": true,
+    "lits_a_external_first_build_receipt_fabricated": false,
+    "wvs_structural_self_hash_sufficient": false
+  },
+  "physical_equivalence": {
+    "pass_status": "PHYSICAL_EQUIVALENCE_PASS__NOT_SEMANTIC_OR_CERTIFICATION_PASS",
+    "i05_replaced": false,
+    "i08_replaced": false,
+    "semantic_failure_upgrade_allowed": false,
+    "semantic_pass_manufactures_physical_pass": false,
+    "current_edge_classes": {
+      "LITS_I": [
+        "EC01",
+        "EC02",
+        "EC05",
+        "EC06",
+        "EC09",
+        "EC12"
+      ],
+      "WVS7": [
+        "EC01",
+        "EC05",
+        "EC07",
+        "EC09",
+        "EC10",
+        "EC12",
+        "EC13"
+      ]
+    }
+  },
+  "preservation": {
+    "t1_packaging_preserved": true,
+    "t2_current_six_cell_manifest_preserved": true,
+    "candidate_c_identity_and_fallback_preserved": true,
+    "wvs_c_zero_accelerator_preserved": true,
+    "t3_freeze_and_process_isolation_preserved": true,
+    "t4_telemetry_and_lifecycle_preserved": true,
+    "t5_driver_preserved_byte_exact": true,
+    "t5_candidate_c_backend_body_preserved_byte_exact": true,
+    "t5_s05_s15_s16_s17_preserved_byte_exact": true,
+    "t5_terminal_modules_preserved_byte_exact": true
+  },
+  "tests": {
+    "transposed": [
+      "rawlsing_next/tests/test_r35_i01_physical_metadata.py",
+      "tests/test_fiabc_derivative_parentage.py",
+      "rawlsing_next/tests/test_fiabc_r35_i03_physical_equivalence.py",
+      "tests/test_r35_generic_guard_court.py"
+    ],
+    "added": [
+      "rawlsing_next/tests/test_fiabc_t6_live_r35_convergence.py"
+    ],
+    "executed": false,
+    "github_actions_runs_observed": 0,
+    "pass_claimed": false,
+    "reason": "GITHUB_BROWSER_REPOSITORY_SURFACE_HAS_NO_AUTHORIZED_PYTHON_EXECUTION_SHELL"
+  },
+  "remaining_local_only_blockers": [
+    "COMBINED_SOURCE_INDEPENDENT_TEST_EXECUTION_PENDING",
+    "LITS_A_FIRST_BUILD_GENERIC_PARENTAGE_RECEIPT_PENDING",
+    "WVS7_STRUCTURAL_PARENTAGE_SOURCE_BACKED_MATERIALIZATION_PENDING",
+    "CURRENT_TWO_SOURCE_PHYSICAL_EXPECTATIONS_AND_REALIZATIONS_PENDING",
+    "WVS7_INDEPENDENT_ORACLE_MATERIALIZATION_PENDING",
+    "REAL_I07_SUCCESSION_PREFLIGHT_PENDING",
+    "R6X_LOCAL_RECONCILIATION_PENDING_OUTSIDE_T6",
+    "MEASURED_P2X_NOT_AUTHORIZED"
+  ],
+  "nonclaims": {
+    "closed35_source_certification": false,
+    "executable_105_cells": false,
+    "authority72_l2_blockers_resolved": false,
+    "population_authority": false,
+    "weighted_authority": false,
+    "pooled_authority": false,
+    "harmonized_authority": false
+  },
+  "terminal": "FIABC_T6_GENERIC_R35_GUARDS_CONVERGED_ON_LIVE_T5__READY_FOR_COMBINED_SOURCE_INDEPENDENT_QUALIFICATION"
+}
