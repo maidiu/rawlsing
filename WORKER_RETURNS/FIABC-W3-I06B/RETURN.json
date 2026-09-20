@@ -1,0 +1,73 @@
+{
+  "schema": "FIABC_W3_I06B_RETURN@1.0.0",
+  "worker": "FIABC-W3-I06B",
+  "repo": "maidiu/rawlsing",
+  "branch": "agent/rabochii-premain-fiabc-w3-i06b-telemetry-semantics-r1",
+  "base_sha": "56697a27e94eb9603dfa412a15ab8f1feb819b0c",
+  "return_path": "WORKER_RETURNS/FIABC-W3-I06B/",
+  "status": "IMPLEMENTED__READY_FOR_FANIN",
+  "terminal": "FIABC_W3_I06B_TELEMETRY_SEMANTICS_IMPLEMENTED__READY_FOR_FANIN",
+  "implementation": {
+    "component": "rawlsing_next/fiabc_telemetry_semantics.py",
+    "contract": "FIABC_W3_I06B_TELEMETRY_SEMANTICS@1.0.0",
+    "test_file": "tests/test_fiabc_telemetry_semantics.py",
+    "dedicated_component": true,
+    "legacy_backend_reconstructed": false
+  },
+  "interfaces": {
+    "i06a_process_envelope": "ProcessEnvelopeReceipt -> TelemetryLedger.record_process_envelope",
+    "i06c_lifecycle_receipt": "LifecycleActionReceipt -> TelemetryLedger.bind_lifecycle_receipt",
+    "fresh_replay_child_cpu": "TelemetryLedger.seal_fresh_process_replay_cpu",
+    "observed_io": "TelemetryLedger.observe_io -> seal_io_accounting",
+    "scratch_high_water": "observe_scratch_size/remove -> seal_scratch_accounting",
+    "phase_cpu": "TelemetryLedger.observe_phase_cpu_counters"
+  },
+  "holdings": {
+    "metric_write_once": true,
+    "canonical_metric_overwrite_rejected": true,
+    "candidate_total_cpu_from_process_self_deltas": true,
+    "per_phase_cpu_separate": true,
+    "nested_phase_cpu_not_used_for_candidate_total": true,
+    "child_cpu_included_exactly_once_by_self_only_contract": true,
+    "process_global_rss_rejected": true,
+    "candidate_peak_rss_is_max_not_sum": true,
+    "io_is_event_accounting": true,
+    "endpoint_size_is_not_io": true,
+    "rewrite_zero_cannot_be_directly_assigned": true,
+    "scratch_peak_is_high_water": true,
+    "cold_warm_distinct_write_once": true,
+    "missing_metric_is_typed_null": true,
+    "exact_source_candidate_phase_process_provenance_required": true,
+    "common_upstream_c0_excluded": true,
+    "candidate_access_c1_included": true,
+    "metric_definition_manifest_candidate_independent": true,
+    "telemetry_cannot_upgrade_semantic_state": true
+  },
+  "browser_execution": {
+    "tests_executed": false,
+    "measured_p2x_executed": false,
+    "runtime_numbers_claimed": false,
+    "os_level_validation_deferred": true
+  },
+  "required_outputs": [
+    "00_RETURN.md",
+    "01_IMPLEMENTATION_DIFF_INVENTORY.md",
+    "02_TELEMETRY_CONTRACT.md",
+    "03_METRIC_FIELD_LEDGER.csv",
+    "04_TEST_AND_EXECUTION_PROTOCOL.md",
+    "RETURN.json"
+  ],
+  "implementation_commits_before_return_json": [
+    "8bb35357901ecf4e483535a3547c86975f2f727e",
+    "c5ea1090cfdf8ee573d7baf354db74b2cdc85b18",
+    "b43d5269b7095bf1d132c0906c945345eb96a195",
+    "35863d20ef084dfcc6e429bdf00e053965cc5b73",
+    "88fc68141b5a713ee278d6246cb6051200615058",
+    "760d9d069a4a41805776b6682e05b2fd61edf41a",
+    "fa1d9f8db58632953bd01df2471229f9a6f485d9",
+    "6dc14eb78e8640d325a00d3a7a7ff4dcbccf44b9",
+    "5c3b2f4a378c7139b7234f6a1e195cd9dd44a760"
+  ],
+  "branch_tip_note": "RETURN.json cannot self-embed the commit SHA that contains itself; resolve the branch ref after this commit.",
+  "follow_on_commissions_created": false
+}
