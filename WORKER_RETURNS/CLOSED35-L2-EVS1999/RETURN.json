@@ -1,0 +1,40 @@
+{
+  "schema": "CLOSED35_L2_EVS1999_RETURN@1.0.0",
+  "worker_id": "CLOSED35-L2-EVS1999",
+  "disposition": "CLOSED35_L2_EVS1999_DOCUMENTARY_AUTHORITY_CLOSED__PHYSICAL_COMPATIBILITY_REMAINS_NONSEMANTIC__READY_FOR_SOURCE_SPECIFIC_REALIZATION",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-closed35-l2-evs1999-authority-r1",
+  "base_sha": "770d95c1a604ea1f47ac2971b923673c14c42984",
+  "source_file": "EVS 1999.sav",
+  "source_sha256": "6058644a9308aad574b95fa0afd1b026fedea289c6c95aca043aefb41ae0ab8a",
+  "closure": {
+    "official_release_identity": "CLOSED__ZA3811_V3_0_0",
+    "official_variable_dictionary_codebook": "CLOSED__ZA3811_V3_0_0_VARIABLE_REPORT",
+    "official_questionnaire": "CLOSED__EVS_1999_MASTER_PLUS_NATIONAL_DOCUMENTATION",
+    "malformed_text_authority": "CLOSED_BY_DOCUMENT_ALIGNMENT__NOT_BY_BYTE_REPAIR",
+    "compatibility_semantics": "FORBIDDEN__PHYSICAL_ONLY",
+    "routing_authority": "CLOSED_BY_PRODUCER_VARIABLE_NOTES_NATIONAL_DOCS_AND_MASTER_FLOW",
+    "producer_sav_byte_repair_rule": "NONE_RECOVERED__NOT_REQUIRED_FOR_DOCUMENT_ALIGNED_SEMANTICS",
+    "later_integrated_supersession": "NONE_FOUND__CURRENT_INTEGRATED_RELEASE_REMAINS_V3_0_0"
+  },
+  "retained_unknowns": [
+    "Any embedded malformed human-language string lacking exact producer documentary counterpart.",
+    "Any field/country semantic or routing alignment that cannot be joined exactly to the ZA3811 v3.0.0 documentary estate.",
+    "A public producer checksum binding Rawlsing canonical SAV bytes directly to an external published checksum."
+  ],
+  "safeguards": {
+    "local_raw_sav_opened": false,
+    "source_decoding_executed": false,
+    "measured_p2x_run": false,
+    "latin1_promoted_to_semantic_authority": false,
+    "routing_inferred_from_missingness": false
+  },
+  "outputs": [
+    "WORKER_RETURNS/CLOSED35-L2-EVS1999/00_RETURN.md",
+    "WORKER_RETURNS/CLOSED35-L2-EVS1999/01_DOCUMENTARY_SOURCE_LEDGER.csv",
+    "WORKER_RETURNS/CLOSED35-L2-EVS1999/02_TEXT_AUTHORITY_AND_ALIGNMENT_MAP.csv",
+    "WORKER_RETURNS/CLOSED35-L2-EVS1999/03_ROUTING_AUTHORITY_MAP.csv",
+    "WORKER_RETURNS/CLOSED35-L2-EVS1999/04_SOURCE_ADMISSION_PACKET.json",
+    "WORKER_RETURNS/CLOSED35-L2-EVS1999/RETURN.json"
+  ]
+}
