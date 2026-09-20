@@ -1,0 +1,135 @@
+{
+  "schema": "CLOSED35_R2_WVS1_PHYSICAL_EDGE_BINDING@1.0.0",
+  "worker_id": "CLOSED35-R2-WVS1",
+  "source": {
+    "family": "WVS",
+    "release": "Wave 1",
+    "canonical_filename": "WVS Wave 1.sav",
+    "canonical_sha256": "051bf450568f44181559a5b2bfbe58b4f05b58bc806643d0c63353c937ff0824",
+    "format": "SAV",
+    "decoder_mode": "SAV_NATIVE_GOVERNED",
+    "compatibility_status": "NO_SOURCE_SPECIFIC_COMPATIBILITY_OVERRIDE",
+    "compatibility_semantic_claim": "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+    "replay_identity": "SOURCE_SHA256+ROW_ORDINAL"
+  },
+  "authority_state": {
+    "class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+    "source_certified_by_authority71_72": false,
+    "bounded_unknowns": [
+      "NATIVE_ID_SEMANTICS",
+      "WEIGHT_ROLES",
+      "WEIGHT_DESIGN",
+      "WEIGHT_ESTIMANDS",
+      "ROUTING_APPLICABILITY_WHERE_NOT_DOCUMENTARILY_CLOSED"
+    ]
+  },
+  "applicable_s35_edge_classes": [
+    {
+      "edge_class": "EC01",
+      "name": "FORMAT_FAMILY_SAV_DTA",
+      "required_dimensions": [
+        "physical_metadata",
+        "variable_inventory_order",
+        "raw_storage_values",
+        "row_replay_identity"
+      ],
+      "semantic_authority": false
+    },
+    {
+      "edge_class": "EC04",
+      "name": "METADATA_VS_STORAGE_NONIDENTITY",
+      "required_dimensions": ["raw_display_separation"],
+      "wvs1_witness": "S007_F2_0_DISPLAY_VS_9_10_DIGIT_RAW_STORAGE",
+      "semantic_authority": false
+    },
+    {
+      "edge_class": "EC05",
+      "name": "PHYSICAL_MISSINGNESS_MULTICLASS",
+      "required_dimensions": ["typed_missingness"],
+      "wvs1_requirement": "SYSTEM_MISSING_USER_MISSING_AND_ORDINARY_STORAGE_REMAIN_DISTINCT",
+      "semantic_authority": false
+    },
+    {
+      "edge_class": "EC06",
+      "name": "ALL_MISSING_COLUMN_RETENTION",
+      "required_dimensions": ["all_missing_column_retention"],
+      "accepted_packet_count": 8,
+      "named_witness": "I_WOMPOL",
+      "semantic_authority": false
+    },
+    {
+      "edge_class": "EC12",
+      "name": "WEIGHT_DESIGN_MULTIPLICITY_AND_DOMAIN",
+      "required_dimensions": ["weight_design_variables"],
+      "carrier_count": 13,
+      "default_weight_authorized": false,
+      "semantic_authority": false
+    },
+    {
+      "edge_class": "EC14",
+      "name": "COMPOUND_EDGE_INTERACTION_COURT",
+      "composes": ["EC01", "EC04", "EC05", "EC06", "EC12"],
+      "required_dimensions": [],
+      "adds_source_specific_adapter": false,
+      "semantic_authority": false
+    }
+  ],
+  "r35_hooks": {
+    "i01": {
+      "accepted_worker_branch": "agent/rabochii-premain-fiabc-r35-i01-raw-layout-metadata-r1",
+      "schema": "PRE553_PHYSICAL_METADATA@1.0.0",
+      "required": true,
+      "wvs1_requirement": "RAW_STORAGE_AND_DISPLAY_METADATA_REMAIN_INDEPENDENT_WITNESSES",
+      "semantic_authority": false
+    },
+    "i02": {
+      "accepted_worker_branch": "agent/rabochii-premain-fiabc-r35-i02-derivative-parentage-r1",
+      "source_receipt_schema": "FIABC_CANONICAL_SOURCE_VERIFICATION_RECEIPT@1.0.0",
+      "bundle_schema": "FIABC_DERIVATIVE_PARENTAGE_BUNDLE@1.0.0",
+      "required_for_non_direct_raw": true,
+      "semantic_authority": false
+    },
+    "i03": {
+      "accepted_worker_branch": "agent/rabochii-premain-fiabc-r35-i03-physical-equivalence-r1",
+      "source_scope_schema": "FIABC_R35_I03_SOURCE_PHYSICAL_SCOPE@1.0.0",
+      "expectation_schema": "FIABC_R35_I03_CANONICAL_PHYSICAL_EXPECTATION@1.0.0",
+      "candidate_realization_schema": "FIABC_R35_I03_CANDIDATE_PHYSICAL_REALIZATION@1.0.0",
+      "receipt_schema": "FIABC_R35_I03_WHOLE_SOURCE_PHYSICAL_EQUIVALENCE_RECEIPT@1.0.0",
+      "required_candidates": ["A", "B", "C"],
+      "required_dimensions": [
+        "physical_metadata",
+        "variable_inventory_order",
+        "raw_storage_values",
+        "row_replay_identity",
+        "raw_display_separation",
+        "typed_missingness",
+        "all_missing_column_retention",
+        "weight_design_variables"
+      ],
+      "later_pass_status_only": "PHYSICAL_EQUIVALENCE_PASS__NOT_SEMANTIC_OR_CERTIFICATION_PASS",
+      "semantic_authority": false
+    }
+  },
+  "source_specific_owner": {
+    "contract": "CLOSED35_R2_WVS1_SOURCE_REALIZATION@1.0.0",
+    "implementation": "rawlsing_next/closed35_wvs1_realization.py",
+    "semantic_owner_surface": "PRE553_SOURCE_BACKED_C11_FACADE@1.0.0",
+    "candidate_law": "A_B_C_SHARE_ONE_WVS1_SOURCE_SPECIFIC_REALIZATION_IDENTITY",
+    "native_id_semantics": "BOUNDED_UNKNOWN",
+    "routing_from_missingness": false,
+    "default_weight": null,
+    "weight_role_state": "BOUNDED_UNKNOWN"
+  },
+  "integration_state": {
+    "base_branch": "agent/vozhd-closed35-l2r-r1-fanin-r1",
+    "base_sha": "da33eb6a8225c14eee9490633a3263388dc5536c",
+    "r35_generic_implementation_files_present_in_base": false,
+    "accepted_r35_contracts_bound_without_merging_generic_branches": true,
+    "real_source_bytes_opened_by_worker": false,
+    "real_source_executed_by_worker": false,
+    "whole_source_physical_equivalence_claimed": false,
+    "abc_executed": false,
+    "i05_passed": false,
+    "measured_p2x_run": false
+  }
+}
