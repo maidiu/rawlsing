@@ -26,6 +26,7 @@ SOURCE_SHA = "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09"
 
 
 def _freeze(tmp_path: Path) -> Path:
+    tmp_path.mkdir(parents=True, exist_ok=True)
     path = tmp_path / "candidate-neutral-freeze.json"
     path.write_text(
         json.dumps(
