@@ -1,0 +1,108 @@
+{
+  "schema": "FIABC_W3_I06C_RETURN@1.0.0",
+  "worker": "FIABC-W3-I06C",
+  "repo": "maidiu/rawlsing",
+  "branch": "agent/rabochii-premain-fiabc-w3-i06c-lifecycle-accounting-r1",
+  "base_branch": "agent/vozhd-premain-fiabc-wave2-fanin-r1",
+  "base_sha": "56697a27e94eb9603dfa412a15ab8f1feb819b0c",
+  "return_path": "WORKER_RETURNS/FIABC-W3-I06C/",
+  "status": "COMPLETE__IMPLEMENTED__UNEXECUTED_BROWSER_QUALIFICATION_PENDING_FANIN",
+  "terminal": "FIABC_W3_I06C_LIFECYCLE_AND_PRESERVED_WORK_ACCOUNTING_IMPLEMENTED__READY_FOR_FANIN",
+  "implementation": {
+    "production_module": "rawlsing_next/fiabc_lifecycle_accounting.py",
+    "hostile_tests": "tests/test_fiabc_lifecycle_accounting.py",
+    "implementation_tip_before_return_json": "abf6f7c748999da97aed6ab508f951dc76c549f1",
+    "measured_p2x_run": false,
+    "local_codex_used": false,
+    "tests_executed_by_worker": false,
+    "tests_execution_disposition": "UNEXECUTED__BROWSER_ONLY_COMMISSION"
+  },
+  "required_outputs": [
+    "00_RETURN.md",
+    "01_IMPLEMENTATION_DIFF_INVENTORY.md",
+    "02_LIFECYCLE_ACTION_CONTRACT.md",
+    "03_PRESERVED_WORK_ACCOUNTING_LEDGER.csv",
+    "04_TEST_AND_EXECUTION_PROTOCOL.md",
+    "RETURN.json"
+  ],
+  "lifecycle_actions": [
+    "COLD_FIRST_REALIZATION",
+    "WARM_RETAINED_STATE_USE",
+    "DELETION_REGENERATION",
+    "SOURCE_INVALIDATION",
+    "AUTHORITY_SEMANTIC_INVALIDATION",
+    "STALE_STATE_RECOVERY",
+    "CORRUPT_STATE_RECOVERY",
+    "INTERRUPTION_RECOVERY",
+    "FRESH_PROCESS_REPLAY",
+    "AUDIT_REVALIDATION"
+  ],
+  "accounting_dispositions": [
+    "EXECUTED_NOW",
+    "LAWFULLY_PRESERVED_MEASURED_WORK",
+    "PRESERVED_SEMANTIC_EVIDENCE_WITHOUT_NUMERIC_TELEMETRY",
+    "NOT_REACHED",
+    "NOT_APPLICABLE"
+  ],
+  "holdings": {
+    "candidate_lifecycle_action_must_actually_execute": true,
+    "formula_derived_recomputation_is_measurement": false,
+    "law_hash_is_stale_or_corrupt_exercise": false,
+    "generic_temp_file_is_interruption_recovery": false,
+    "rebuild_requires_candidate_state_deletion_and_regeneration": true,
+    "warm_use_requires_valid_current_candidate_retained_state": true,
+    "successful_lifecycle_action_requires_terminal_identity_reproduction": true,
+    "telemetry_requires_exact_action_id_and_binding_id": true,
+    "reserved_lifecycle_metric_names_require_correct_action_class": true,
+    "i06a_process_isolation_reimplemented_here": false,
+    "i06b_resource_telemetry_reimplemented_here": false,
+    "common_upstream_capital_charged_as_candidate_production": false,
+    "candidate_local_access_to_common_capital_may_be_charged_when_executed": true,
+    "lits_a_preserved_numeric_credit": "CONDITIONAL_FIELD_BY_FIELD_ONLY",
+    "lits_b_missing_numeric_telemetry": "NULL__NO_ZERO__NO_NUMERIC_CREDIT",
+    "pre_p2_calibration_promotable_to_dispositive_p2_metric": false,
+    "authorized_stop_manufactures_unreached_metric": false,
+    "candidate_a_preserved_work_can_satisfy_candidate_b": false
+  },
+  "integration_contracts": {
+    "i06a": "ProcessIsolationReceipt",
+    "backend_lifecycle": "LifecycleActionPort",
+    "i06b": "TelemetryPort",
+    "mechanical_adapters": [
+      "ProcessIsolationReceipt.from_mapping",
+      "CallableLifecycleActionAdapter",
+      "CallableTelemetryAdapter"
+    ]
+  },
+  "hostile_tests": [
+    "formula_assigned_recomputation_units_cannot_pass",
+    "executed_invalidation_count_must_equal_observed_recomputed_units",
+    "law_hash_cannot_pass_stale_or_corrupt_exercise",
+    "generic_temp_file_cannot_pass_interruption_recovery",
+    "rebuild_without_actual_deletion_and_regeneration_fails",
+    "warm_without_valid_retained_candidate_owned_state_fails",
+    "preserved_incompatible_state_binding_gets_no_numeric_credit",
+    "missing_preserved_telemetry_remains_null_not_zero",
+    "unreached_lifecycle_stage_cannot_emit_numeric_metric",
+    "candidate_a_preserved_work_cannot_satisfy_candidate_b",
+    "successful_fresh_process_replay_reproduces_governed_terminal_identity",
+    "fresh_replay_wrong_terminal_identity_fails",
+    "reserved_lifecycle_metric_wrong_action_fails"
+  ],
+  "execution_protocol": {
+    "unit_test_command": "python -m unittest tests.test_fiabc_lifecycle_accounting -v",
+    "command_executed_by_worker": false,
+    "measured_p2x_forbidden_and_not_run": true
+  },
+  "scope_exclusions": [
+    "OS process spawning/isolation implementation",
+    "CPU/RSS/IO/scratch telemetry implementation",
+    "Candidate-C production binding",
+    "independent parity oracle materialization",
+    "stopped-ledger reconciliation",
+    "measured P2X",
+    "merge",
+    "follow-on commissions"
+  ],
+  "final_branch_tip_note": "RETURN.json cannot self-embed the commit SHA that contains it; resolve the branch ref after this commit."
+}
