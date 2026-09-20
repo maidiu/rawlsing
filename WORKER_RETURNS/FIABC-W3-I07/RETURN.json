@@ -1,0 +1,82 @@
+{
+  "schema": "RAWLSING_FIABC_W3_I07_RETURN@1.0.0",
+  "worker": "FIABC-W3-I07",
+  "repo": "maidiu/rawlsing",
+  "branch": "agent/rabochii-premain-fiabc-w3-i07-mechanized-succession-preflight-r1",
+  "base_sha": "56697a27e94eb9603dfa412a15ab8f1feb819b0c",
+  "commit_sha": null,
+  "commit_sha_note": "RETURN.json is committed in the same governed implementation commit and therefore cannot self-embed that commit SHA without changing it; the exact final branch tip is reported in the handoff.",
+  "return_path": "WORKER_RETURNS/FIABC-W3-I07/",
+  "terminal": "FIABC_W3_I07_MECHANIZED_SUCCESSION_PREFLIGHT_IMPLEMENTED__READY_FOR_FANIN",
+  "status": "IMPLEMENTED__READY_FOR_FANIN",
+  "governing_inputs": {
+    "wave2_fanin_sha": "56697a27e94eb9603dfa412a15ab8f1feb819b0c",
+    "b05_tip": "b832b156602d4c3a59df8908b5973c0dba8f44e4",
+    "b05_schema_blob": "484678375abcdd94151b72b425629ccb535be5eb",
+    "l01_tip": "76c73e5c15eb512fa0b3217bc9e313d2b54f9a2d",
+    "l01_terminal_blob": "cebb25f8fd715ede472d390a53ec8a1dea3e8e42",
+    "l02_tip": "0c0dd1f23bc59017552afdbd5af2021f051d48f7",
+    "l02_anti_omission_blob": "5317df5cf338fa6768b313e57bcebc8a42cd5ab4"
+  },
+  "implementation": {
+    "manifest_schema": "RAWLSING_FIABC_SUCCESSION_MANIFEST@1.0.0",
+    "preflight_contract": "RAWLSING_FIABC_SUCCESSION_PREFLIGHT@1.0.0",
+    "preflight_phases": 11,
+    "source_candidate_cells_required": 6,
+    "all_inherited_functions_mapped": 36,
+    "required_before_terminal_functions": 29,
+    "deferred_beyond_terminal_functions": 7,
+    "known_blocker_replay_fixtures": 12,
+    "false_pass_fixtures": 16,
+    "focused_test_methods": 8,
+    "measured_execution_guarded_by_pass": true
+  },
+  "files_changed": [
+    "rawlsing_next/fiabc_succession_preflight.py",
+    "rawlsing_next/fiabc_succession_manifest_schema.json",
+    "rawlsing_next/fiabc_succession_governing_profile.json",
+    "rawlsing_next/tests/test_fiabc_succession_preflight.py",
+    "rawlsing_next/tests/fixtures/fiabc_succession_preflight_hostile_cases.json",
+    "WORKER_RETURNS/FIABC-W3-I07/00_RETURN.md",
+    "WORKER_RETURNS/FIABC-W3-I07/01_IMPLEMENTATION_DIFF_INVENTORY.md",
+    "WORKER_RETURNS/FIABC-W3-I07/02_TEST_AND_EXECUTION_PROTOCOL.md",
+    "WORKER_RETURNS/FIABC-W3-I07/03_HOSTILE_FIXTURE_COVERAGE.md",
+    "WORKER_RETURNS/FIABC-W3-I07/RETURN.json"
+  ],
+  "tests_added": [
+    "8 focused unittest methods",
+    "12 historical blocker replay fixtures",
+    "16 false-PASS challenge fixtures"
+  ],
+  "tests_not_executed_and_why": [
+    "No local Python/unit execution was performed because the commission restricts this worker to GitHub/browser repository tools and forbids local-machine work.",
+    "No measured P2X execution was performed because the commission explicitly forbids it and the court remains stopped until integrated preflight PASS."
+  ],
+  "headline_findings": [
+    "The exact B05 succession manifest is now a stable current runtime contract with executable P00-P10 fail-closed validation.",
+    "The validator pins the L01 I05 comparison terminal and exact F001-F036 boundary, including F020 authority preservation and downstream deferments.",
+    "The validator pins the L02 LiTS-I/WVS7 RAW/source-local authority closure without allowing candidate realization to mint semantics or default weights.",
+    "Repository presence cannot pass without current-owner binding and a matching post-repair LIVE receipt.",
+    "All six source-by-candidate capability cells, an independent pre-output parity oracle, and proved equal-work accounting are mandatory for PASS.",
+    "A BLOCK result mechanically prevents the supplied court action from running."
+  ],
+  "exact_blockers": [],
+  "integration_inputs_not_fabricated_here": [
+    "post-fan-in current owner/binding/live receipts for all comparison-required functions",
+    "six positively proved LiTS-I/WVS7 by A/B/C production capability refs",
+    "I05 independent parity-oracle PASS material",
+    "equal-work accounting PASS material",
+    "governed P10 lifecycle/failure-scope receipt context"
+  ],
+  "scope_guards": {
+    "github_browser_repository_only": true,
+    "local_codex_used": false,
+    "measured_p2x_executed": false,
+    "hq_handoffs_modified": false,
+    "decision_ledgers_modified": false,
+    "semantic_authority_modified": false,
+    "candidate_owner_identity_replaced": false,
+    "semantic_owner_moved": false,
+    "merge_performed": false
+  }
+}
