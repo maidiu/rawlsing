@@ -1,0 +1,1093 @@
+{
+  "schema": "FIABC_R35_Q01_HOSTILE_FIXTURES@1.0.0",
+  "repo": "maidiu/rawlsing",
+  "base_branch": "agent/vozhd-premain-fiabc-s35-fanin-r1",
+  "base_sha": "770d95c1a604ea1f47ac2971b923673c14c42984",
+  "branch": "agent/rabochii-premain-fiabc-r35-q01-hostile-guard-court-r1",
+  "court_scope": "CLOSED_35_GENERIC_PHYSICAL_GUARDS__SYNTHETIC_SOURCE_INDEPENDENT_QUALIFICATION",
+  "no_raw_source_carriers_opened": true,
+  "measured_p2x_run": false,
+  "verdict_law": {
+    "physical_equivalence_pass": "candidate satisfied exact canonical physical expectation for declared source scope",
+    "semantic_parity_pass": "separate I05/semantic oracle result; never inferred here",
+    "source_certification_pass": "separate source-certification result; never inferred here",
+    "forbidden_implication": "PHYSICAL_EQUIVALENCE_PASS => SEMANTIC_OR_CERTIFICATION_PASS"
+  },
+  "observation_contract": {
+    "I01": [
+      "raw header/layout declarations",
+      "traversed dictionary/data-stream geometry",
+      "raw storage vs display metadata",
+      "reader/decoder/config identity",
+      "candidate-neutral physical metadata digest"
+    ],
+    "I02": [
+      "external immutable parent receipt",
+      "canonical source SHA",
+      "derivative hash",
+      "producer code/version",
+      "operation",
+      "reader/config where decoding participates",
+      "scope/currentness",
+      "parent/replay identity",
+      "candidate/source/root ownership where relevant"
+    ],
+    "I03": [
+      "exact source SHA + reader/config",
+      "declared applicable S35 edge classes",
+      "whole-source physical digest",
+      "row replay",
+      "raw values and typed missingness",
+      "dictionaries/display/topology/routing/weights/coordinates as applicable",
+      "I01 metadata digest",
+      "I02 parentage receipt"
+    ]
+  },
+  "fixtures": [
+    {
+      "id": "R35Q-H01",
+      "kind": "HOSTILE",
+      "validator": "raw_source",
+      "title": "alternate raw file with same name and shape",
+      "target_interfaces": [
+        "I03"
+      ],
+      "guard_refs": [
+        "HDS001",
+        "HDF-01",
+        "MG001"
+      ],
+      "payload": {
+        "canonical_source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "opened_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "filename": "same.sav",
+        "canonical_filename": "same.sav",
+        "row_count": 100,
+        "canonical_row_count": 100,
+        "variable_count": 20,
+        "canonical_variable_count": 20
+      },
+      "expected_result": "REJECT",
+      "expected_code": "Q01_RAW_SOURCE_SHA_MISMATCH"
+    },
+    {
+      "id": "R35Q-P01",
+      "kind": "POSITIVE",
+      "validator": "raw_source",
+      "title": "exact canonical raw source control",
+      "target_interfaces": [
+        "I03"
+      ],
+      "guard_refs": [
+        "MG001"
+      ],
+      "payload": {
+        "canonical_source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "opened_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "filename": "same.sav",
+        "canonical_filename": "same.sav",
+        "row_count": 100,
+        "canonical_row_count": 100,
+        "variable_count": 20,
+        "canonical_variable_count": 20
+      },
+      "expected_result": "PASS",
+      "expected_code": null
+    },
+    {
+      "id": "R35Q-H02",
+      "kind": "HOSTILE",
+      "validator": "parentage",
+      "title": "derivative asserts canonical SHA but has no external parent receipt",
+      "target_interfaces": [
+        "I02",
+        "I03"
+      ],
+      "guard_refs": [
+        "HDS018",
+        "HDF-16",
+        "MG002",
+        "MG015"
+      ],
+      "payload": {
+        "canonical_source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "derivative_hash": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "derivative_payload_asserted_source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "decode_participates": true,
+        "external_parent_receipt": null
+      },
+      "expected_result": "REJECT",
+      "expected_code": "Q01_DERIVATIVE_PARENT_RECEIPT_REQUIRED"
+    },
+    {
+      "id": "R35Q-P02",
+      "kind": "POSITIVE",
+      "validator": "parentage",
+      "title": "derivative with complete external parentage receipt",
+      "target_interfaces": [
+        "I02",
+        "I03"
+      ],
+      "guard_refs": [
+        "MG002",
+        "MG015"
+      ],
+      "payload": {
+        "canonical_source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "derivative_hash": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "derivative_payload_asserted_source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "decode_participates": true,
+        "external_parent_receipt": {
+          "external_to_derivative_payload": true,
+          "canonical_source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "derivative_hash": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+          "producer_identity": "governed-producer",
+          "producer_code_identity": "git-blob:producer-v1",
+          "producer_version": "1.0.0",
+          "derivation_operation": "MATERIALIZE_EXACT_PHYSICAL_DERIVATIVE",
+          "reader_config_identity": "reader-config-v1",
+          "scope_identity": "WHOLE_SOURCE_PHYSICAL",
+          "currentness_identity": "current-r35",
+          "parent_receipt_identity": "parent-root-receipt",
+          "replay_identity": "replay-v1",
+          "binding": {
+            "source": "GENERIC",
+            "candidate": "A",
+            "root": "root-current",
+            "workload": "whole-source",
+            "runtime": "runtime-current"
+          }
+        }
+      },
+      "expected_result": "PASS",
+      "expected_code": null
+    },
+    {
+      "id": "R35Q-H03",
+      "kind": "HOSTILE",
+      "validator": "reader_config",
+      "title": "same source SHA under wrong reader configuration",
+      "target_interfaces": [
+        "I01",
+        "I03"
+      ],
+      "guard_refs": [
+        "HDS006",
+        "HDS007",
+        "MG003",
+        "MG004"
+      ],
+      "payload": {
+        "canonical_source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+        "expected_reader_config": {
+          "decoder": "pyreadstat",
+          "version": "1.3.6",
+          "format": "DTA",
+          "encoding": "latin1",
+          "user_missing": true,
+          "apply_value_formats": false,
+          "compatibility_mode": "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY"
+        },
+        "candidate_reader_config": {
+          "decoder": "pyreadstat",
+          "version": "1.3.6",
+          "format": "DTA",
+          "encoding": null,
+          "user_missing": true,
+          "apply_value_formats": false,
+          "compatibility_mode": null
+        }
+      },
+      "expected_result": "REJECT",
+      "expected_code": "Q01_READER_CONFIG_MISMATCH"
+    },
+    {
+      "id": "R35Q-P03",
+      "kind": "POSITIVE",
+      "validator": "reader_config",
+      "title": "exact frozen reader configuration control",
+      "target_interfaces": [
+        "I01",
+        "I03"
+      ],
+      "guard_refs": [
+        "MG003",
+        "MG004"
+      ],
+      "payload": {
+        "canonical_source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+        "expected_reader_config": {
+          "decoder": "pyreadstat",
+          "version": "1.3.6",
+          "format": "DTA",
+          "encoding": "latin1",
+          "user_missing": true,
+          "apply_value_formats": false,
+          "compatibility_mode": "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY"
+        },
+        "candidate_reader_config": {
+          "decoder": "pyreadstat",
+          "version": "1.3.6",
+          "format": "DTA",
+          "encoding": "latin1",
+          "user_missing": true,
+          "apply_value_formats": false,
+          "compatibility_mode": "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY"
+        }
+      },
+      "expected_result": "PASS",
+      "expected_code": null
+    },
+    {
+      "id": "R35Q-H04",
+      "kind": "HOSTILE",
+      "validator": "compatibility_boundary",
+      "title": "compatibility decoding promoted to semantic text authority",
+      "target_interfaces": [
+        "I01",
+        "I03"
+      ],
+      "guard_refs": [
+        "HDS008",
+        "HDF-12",
+        "MG026"
+      ],
+      "payload": {
+        "compatibility_mode": "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY",
+        "semantic_text_authority_claimed": true,
+        "repaired_text_promoted": false,
+        "canonical_raw_retained": true
+      },
+      "expected_result": "REJECT",
+      "expected_code": "Q01_COMPATIBILITY_CANNOT_BECOME_SEMANTIC_AUTHORITY"
+    },
+    {
+      "id": "R35Q-P04",
+      "kind": "POSITIVE",
+      "validator": "compatibility_boundary",
+      "title": "compatibility execution remains physical-only",
+      "target_interfaces": [
+        "I01",
+        "I03"
+      ],
+      "guard_refs": [
+        "MG026"
+      ],
+      "payload": {
+        "compatibility_mode": "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY",
+        "semantic_text_authority_claimed": false,
+        "repaired_text_promoted": false,
+        "canonical_raw_retained": true
+      },
+      "expected_result": "PASS",
+      "expected_code": null
+    },
+    {
+      "id": "R35Q-H05",
+      "kind": "HOSTILE",
+      "validator": "physical_metadata",
+      "title": "Latinobarometro-2024-style header/dictionary/stream mismatch normalized away",
+      "target_interfaces": [
+        "I01",
+        "I03"
+      ],
+      "guard_refs": [
+        "HDS019",
+        "MG004",
+        "MG016"
+      ],
+      "payload": {
+        "required_paths": [
+          "layout.raw_header.nominal_case_size",
+          "layout.traversed.variable_count"
+        ],
+        "canonical_physical": {
+          "layout": {
+            "raw_header": {
+              "nominal_case_size": 174
+            },
+            "traversed": {
+              "variable_count": 332
+            }
+          }
+        },
+        "candidate_physical": {
+          "layout": {
+            "raw_header": {
+              "nominal_case_size": 332
+            },
+            "traversed": {
+              "variable_count": 332
+            }
+          }
+        },
+        "semantic_projection_digest": "SEMANTIC-EQUAL"
+      },
+      "expected_result": "REJECT",
+      "expected_code": "Q01_PHYSICAL_METADATA_DIGEST_MISMATCH"
+    },
+    {
+      "id": "R35Q-P05",
+      "kind": "POSITIVE",
+      "validator": "physical_metadata",
+      "title": "conflicting raw header and traversed geometry preserved as two witnesses",
+      "target_interfaces": [
+        "I01",
+        "I03"
+      ],
+      "guard_refs": [
+        "EC04",
+        "MG004",
+        "MG016"
+      ],
+      "payload": {
+        "required_paths": [
+          "layout.raw_header.nominal_case_size",
+          "layout.traversed.variable_count"
+        ],
+        "canonical_physical": {
+          "layout": {
+            "raw_header": {
+              "nominal_case_size": 174
+            },
+            "traversed": {
+              "variable_count": 332
+            }
+          }
+        },
+        "candidate_physical": {
+          "layout": {
+            "raw_header": {
+              "nominal_case_size": 174
+            },
+            "traversed": {
+              "variable_count": 332
+            }
+          }
+        },
+        "semantic_projection_digest": "SEMANTIC-EQUAL"
+      },
+      "expected_result": "PASS",
+      "expected_code": null
+    },
+    {
+      "id": "R35Q-H06",
+      "kind": "HOSTILE",
+      "validator": "physical_metadata",
+      "title": "display representation replaces raw storage magnitude",
+      "target_interfaces": [
+        "I01",
+        "I03"
+      ],
+      "guard_refs": [
+        "HDS015",
+        "HDS022",
+        "MG009",
+        "MG010"
+      ],
+      "payload": {
+        "required_paths": [
+          "storage.raw_id_value",
+          "display.format"
+        ],
+        "canonical_physical": {
+          "storage": {
+            "raw_id_value": 9876543210
+          },
+          "display": {
+            "format": "F2.0"
+          }
+        },
+        "candidate_physical": {
+          "storage": {
+            "raw_id_value": 10
+          },
+          "display": {
+            "format": "F2.0"
+          }
+        },
+        "semantic_projection_digest": "SEMANTIC-EQUAL"
+      },
+      "expected_result": "REJECT",
+      "expected_code": "Q01_PHYSICAL_METADATA_DIGEST_MISMATCH"
+    },
+    {
+      "id": "R35Q-P06",
+      "kind": "POSITIVE",
+      "validator": "physical_metadata",
+      "title": "raw storage and display metadata remain distinct",
+      "target_interfaces": [
+        "I01",
+        "I03"
+      ],
+      "guard_refs": [
+        "EC04",
+        "MG009",
+        "MG010"
+      ],
+      "payload": {
+        "required_paths": [
+          "storage.raw_id_value",
+          "display.format"
+        ],
+        "canonical_physical": {
+          "storage": {
+            "raw_id_value": 9876543210
+          },
+          "display": {
+            "format": "F2.0"
+          }
+        },
+        "candidate_physical": {
+          "storage": {
+            "raw_id_value": 9876543210
+          },
+          "display": {
+            "format": "F2.0"
+          }
+        },
+        "semantic_projection_digest": "SEMANTIC-EQUAL"
+      },
+      "expected_result": "PASS",
+      "expected_code": null
+    },
+    {
+      "id": "R35Q-H07",
+      "kind": "HOSTILE",
+      "validator": "physical_metadata",
+      "title": "all-missing source column dropped",
+      "target_interfaces": [
+        "I03"
+      ],
+      "guard_refs": [
+        "HDS012",
+        "HDS028",
+        "MG007"
+      ],
+      "payload": {
+        "required_paths": [
+          "inventory.ordered_variables_digest",
+          "missingness.all_missing_columns_digest"
+        ],
+        "canonical_physical": {
+          "inventory": {
+            "ordered_variables_digest": "vars-with-q745"
+          },
+          "missingness": {
+            "all_missing_columns_digest": "q745-present"
+          }
+        },
+        "candidate_physical": {
+          "inventory": {
+            "ordered_variables_digest": "vars-without-q745"
+          }
+        },
+        "semantic_projection_digest": "SEMANTIC-EQUAL"
+      },
+      "expected_result": "REJECT",
+      "expected_code": "Q01_PHYSICAL_WITNESS_DROPPED"
+    },
+    {
+      "id": "R35Q-H08",
+      "kind": "HOSTILE",
+      "validator": "physical_metadata",
+      "title": "native multiple-response topology flattened",
+      "target_interfaces": [
+        "I03"
+      ],
+      "guard_refs": [
+        "HDS013",
+        "MG008"
+      ],
+      "payload": {
+        "required_paths": [
+          "topology.mr_sets_digest",
+          "inventory.ordered_variables_digest"
+        ],
+        "canonical_physical": {
+          "topology": {
+            "mr_sets_digest": "mr-set-A|mr-set-B|overlap-retained"
+          },
+          "inventory": {
+            "ordered_variables_digest": "vars"
+          }
+        },
+        "candidate_physical": {
+          "topology": {
+            "mr_sets_digest": "flattened-single-set"
+          },
+          "inventory": {
+            "ordered_variables_digest": "vars"
+          }
+        },
+        "semantic_projection_digest": "SEMANTIC-EQUAL"
+      },
+      "expected_result": "REJECT",
+      "expected_code": "Q01_PHYSICAL_METADATA_DIGEST_MISMATCH"
+    },
+    {
+      "id": "R35Q-H09",
+      "kind": "HOSTILE",
+      "validator": "physical_metadata",
+      "title": "repeated or ranked slots deduplicated",
+      "target_interfaces": [
+        "I03"
+      ],
+      "guard_refs": [
+        "HDS013",
+        "MG008",
+        "MG024"
+      ],
+      "payload": {
+        "required_paths": [
+          "topology.occurrence_rank_digest"
+        ],
+        "canonical_physical": {
+          "topology": {
+            "occurrence_rank_digest": "slot1|slot2|slot3|ranked"
+          }
+        },
+        "candidate_physical": {
+          "topology": {
+            "occurrence_rank_digest": "unique-values-only"
+          }
+        },
+        "semantic_projection_digest": "SEMANTIC-EQUAL"
+      },
+      "expected_result": "REJECT",
+      "expected_code": "Q01_PHYSICAL_METADATA_DIGEST_MISMATCH"
+    },
+    {
+      "id": "R35Q-H10",
+      "kind": "HOSTILE",
+      "validator": "physical_metadata",
+      "title": "split-form or routing carrier discarded",
+      "target_interfaces": [
+        "I03"
+      ],
+      "guard_refs": [
+        "HDS017",
+        "HDS024",
+        "MG011",
+        "MG024"
+      ],
+      "payload": {
+        "required_paths": [
+          "routing.physical_carrier_digest",
+          "row_replay.digest"
+        ],
+        "canonical_physical": {
+          "routing": {
+            "physical_carrier_digest": "form|ballot|skip|module"
+          },
+          "row_replay": {
+            "digest": "source-sha+row-ordinal"
+          }
+        },
+        "candidate_physical": {
+          "routing": {
+            "physical_carrier_digest": "discarded"
+          },
+          "row_replay": {
+            "digest": "source-sha+row-ordinal"
+          }
+        },
+        "semantic_projection_digest": "SEMANTIC-EQUAL"
+      },
+      "expected_result": "REJECT",
+      "expected_code": "Q01_PHYSICAL_METADATA_DIGEST_MISMATCH"
+    },
+    {
+      "id": "R35Q-H11",
+      "kind": "HOSTILE",
+      "validator": "physical_metadata",
+      "title": "equal raw vectors collapse distinct variable dictionaries",
+      "target_interfaces": [
+        "I03"
+      ],
+      "guard_refs": [
+        "HDS014",
+        "HDS023",
+        "MG008",
+        "MG009"
+      ],
+      "payload": {
+        "required_paths": [
+          "dictionary.variable_dictionary_identity_digest",
+          "inventory.ordered_variables_digest"
+        ],
+        "canonical_physical": {
+          "dictionary": {
+            "variable_dictionary_identity_digest": "V220!=Q223_LOCAL"
+          },
+          "inventory": {
+            "ordered_variables_digest": "V220|Q223_LOCAL"
+          }
+        },
+        "candidate_physical": {
+          "dictionary": {
+            "variable_dictionary_identity_digest": "V220=Q223_LOCAL"
+          },
+          "inventory": {
+            "ordered_variables_digest": "V220|Q223_LOCAL"
+          }
+        },
+        "semantic_projection_digest": "SEMANTIC-EQUAL"
+      },
+      "expected_result": "REJECT",
+      "expected_code": "Q01_PHYSICAL_METADATA_DIGEST_MISMATCH"
+    },
+    {
+      "id": "R35Q-H12",
+      "kind": "HOSTILE",
+      "validator": "physical_metadata",
+      "title": "weight candidates discarded and default weight selected",
+      "target_interfaces": [
+        "I03"
+      ],
+      "guard_refs": [
+        "HDS024",
+        "MG025"
+      ],
+      "payload": {
+        "required_paths": [
+          "weights.candidate_set_digest",
+          "weights.default_selected"
+        ],
+        "canonical_physical": {
+          "weights": {
+            "candidate_set_digest": "WT|WT2|DESIGN",
+            "default_selected": false
+          }
+        },
+        "candidate_physical": {
+          "weights": {
+            "candidate_set_digest": "WT",
+            "default_selected": true
+          }
+        },
+        "semantic_projection_digest": "SEMANTIC-EQUAL"
+      },
+      "expected_result": "REJECT",
+      "expected_code": "Q01_PHYSICAL_METADATA_DIGEST_MISMATCH"
+    },
+    {
+      "id": "R35Q-H13",
+      "kind": "HOSTILE",
+      "validator": "parentage",
+      "title": "detached WVS7 structural preimage self-hashes but has no raw-parent receipt",
+      "target_interfaces": [
+        "I02",
+        "I03"
+      ],
+      "guard_refs": [
+        "HDS009",
+        "HDS010",
+        "HDF-08",
+        "MG013"
+      ],
+      "payload": {
+        "canonical_source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+        "derivative_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "derivative_payload_asserted_source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+        "decode_participates": true,
+        "structural_input_identity": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "external_parent_receipt": null
+      },
+      "expected_result": "REJECT",
+      "expected_code": "Q01_DERIVATIVE_PARENT_RECEIPT_REQUIRED"
+    },
+    {
+      "id": "R35Q-P07",
+      "kind": "POSITIVE",
+      "validator": "parentage",
+      "title": "WVS7 structural preimage bound to raw verification/materializer/process lineage",
+      "target_interfaces": [
+        "I02",
+        "I03"
+      ],
+      "guard_refs": [
+        "MG013"
+      ],
+      "payload": {
+        "canonical_source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+        "derivative_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "derivative_payload_asserted_source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+        "decode_participates": true,
+        "structural_input_identity": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "external_parent_receipt": {
+          "external_to_derivative_payload": true,
+          "canonical_source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+          "derivative_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "producer_identity": "WVS7_PROJECTION_STRUCTURAL_INPUT_MATERIALIZER",
+          "producer_code_identity": "git-blob:wvs-materializer",
+          "producer_version": "1.0.0",
+          "derivation_operation": "projection_structural_input_from_wvs_sav",
+          "reader_config_identity": "reader-config-v1",
+          "scope_identity": "WHOLE_SOURCE_PHYSICAL",
+          "currentness_identity": "current-r35",
+          "parent_receipt_identity": "parent-root-receipt",
+          "replay_identity": "replay-v1",
+          "binding": {
+            "source": "WVS7",
+            "candidate": "A",
+            "root": "wvs-root",
+            "workload": "projection-structural-input",
+            "runtime": "runtime-current"
+          }
+        }
+      },
+      "expected_result": "PASS",
+      "expected_code": null
+    },
+    {
+      "id": "R35Q-H14",
+      "kind": "HOSTILE",
+      "validator": "parentage",
+      "title": "old LiTS-A R5 carrier has valid ancestry but wrong current workload/runtime/root binding",
+      "target_interfaces": [
+        "I02",
+        "I03"
+      ],
+      "guard_refs": [
+        "HDS004",
+        "HDS005",
+        "HDF-09",
+        "MG014"
+      ],
+      "payload": {
+        "canonical_source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+        "derivative_hash": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "derivative_payload_asserted_source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+        "decode_participates": true,
+        "expected_binding": {
+          "source": "LITS_I",
+          "candidate": "A",
+          "root": "current-r5-root",
+          "workload": "current-p2",
+          "runtime": "runtime-current"
+        },
+        "external_parent_receipt": {
+          "external_to_derivative_payload": true,
+          "canonical_source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+          "derivative_hash": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+          "producer_identity": "R5_BUILDER",
+          "producer_code_identity": "git-blob:producer-v1",
+          "producer_version": "1.0.0",
+          "derivation_operation": "MATERIALIZE_EXACT_PHYSICAL_DERIVATIVE",
+          "reader_config_identity": "reader-config-v1",
+          "scope_identity": "WHOLE_SOURCE_PHYSICAL",
+          "currentness_identity": "current-r35",
+          "parent_receipt_identity": "parent-root-receipt",
+          "replay_identity": "replay-v1",
+          "binding": {
+            "source": "LITS_I",
+            "candidate": "A",
+            "root": "old-r5-root",
+            "workload": "old-p2",
+            "runtime": "runtime-old"
+          }
+        }
+      },
+      "expected_result": "REJECT",
+      "expected_code": "Q01_DERIVATIVE_CURRENTNESS_MISMATCH"
+    },
+    {
+      "id": "R35Q-P08",
+      "kind": "POSITIVE",
+      "validator": "parentage",
+      "title": "current LiTS-A R5 carrier exact parentage/currentness control",
+      "target_interfaces": [
+        "I02",
+        "I03"
+      ],
+      "guard_refs": [
+        "MG014"
+      ],
+      "payload": {
+        "canonical_source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+        "derivative_hash": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "derivative_payload_asserted_source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+        "decode_participates": true,
+        "expected_binding": {
+          "source": "LITS_I",
+          "candidate": "A",
+          "root": "current-r5-root",
+          "workload": "current-p2",
+          "runtime": "runtime-current"
+        },
+        "external_parent_receipt": {
+          "external_to_derivative_payload": true,
+          "canonical_source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+          "derivative_hash": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+          "producer_identity": "R5_BUILDER",
+          "producer_code_identity": "git-blob:producer-v1",
+          "producer_version": "1.0.0",
+          "derivation_operation": "MATERIALIZE_EXACT_PHYSICAL_DERIVATIVE",
+          "reader_config_identity": "reader-config-v1",
+          "scope_identity": "WHOLE_SOURCE_PHYSICAL",
+          "currentness_identity": "current-r35",
+          "parent_receipt_identity": "parent-root-receipt",
+          "replay_identity": "replay-v1",
+          "binding": {
+            "source": "LITS_I",
+            "candidate": "A",
+            "root": "current-r5-root",
+            "workload": "current-p2",
+            "runtime": "runtime-current"
+          }
+        }
+      },
+      "expected_result": "PASS",
+      "expected_code": null
+    },
+    {
+      "id": "R35Q-H15",
+      "kind": "HOSTILE",
+      "validator": "whole_source",
+      "title": "queried-row/slot subset is promoted to whole-source equivalence",
+      "target_interfaces": [
+        "I03"
+      ],
+      "guard_refs": [
+        "HDS011",
+        "HDS012",
+        "HDF-16",
+        "MG005",
+        "MG006",
+        "MG022"
+      ],
+      "payload": {
+        "transport_scope": "WORKLOAD_EQUIVALENT",
+        "claims_whole_source": true,
+        "expected_edge_classes": [
+          "EC01",
+          "EC05",
+          "EC06",
+          "EC09",
+          "EC12"
+        ],
+        "candidate_edge_classes": [
+          "EC01",
+          "EC05",
+          "EC09"
+        ],
+        "canonical_physical_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "candidate_physical_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "i05_semantic_parity": true
+      },
+      "expected_result": "REJECT",
+      "expected_code": "Q01_WORKLOAD_STREAM_NOT_WHOLE_SOURCE"
+    },
+    {
+      "id": "R35Q-P09",
+      "kind": "POSITIVE",
+      "validator": "whole_source",
+      "title": "workload-equivalent stream remains honestly scoped and makes no whole-source claim",
+      "target_interfaces": [
+        "I03"
+      ],
+      "guard_refs": [
+        "MG006"
+      ],
+      "payload": {
+        "transport_scope": "WORKLOAD_EQUIVALENT",
+        "claims_whole_source": false,
+        "expected_edge_classes": [
+          "EC01",
+          "EC05",
+          "EC06",
+          "EC09",
+          "EC12"
+        ],
+        "candidate_edge_classes": [
+          "EC01",
+          "EC05",
+          "EC09"
+        ],
+        "canonical_physical_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "candidate_physical_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "i05_semantic_parity": true
+      },
+      "expected_result": "PASS",
+      "expected_code": null
+    },
+    {
+      "id": "R35Q-H16",
+      "kind": "HOSTILE",
+      "validator": "whole_source",
+      "title": "I05 semantic parity is incorrectly accepted despite unequal whole-source physical digest",
+      "target_interfaces": [
+        "I03"
+      ],
+      "guard_refs": [
+        "HDS017",
+        "MG022",
+        "MG023",
+        "MG028"
+      ],
+      "payload": {
+        "transport_scope": "WHOLE_SOURCE",
+        "claims_whole_source": true,
+        "expected_edge_classes": [
+          "EC01",
+          "EC05",
+          "EC07",
+          "EC09",
+          "EC10",
+          "EC12",
+          "EC13"
+        ],
+        "candidate_edge_classes": [
+          "EC01",
+          "EC05",
+          "EC07",
+          "EC09",
+          "EC10",
+          "EC12",
+          "EC13"
+        ],
+        "canonical_physical_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "candidate_physical_digest": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "i05_semantic_parity": true
+      },
+      "expected_result": "REJECT",
+      "expected_code": "Q01_WHOLE_SOURCE_PHYSICAL_DIGEST_MISMATCH"
+    },
+    {
+      "id": "R35Q-P10",
+      "kind": "POSITIVE",
+      "validator": "whole_source",
+      "title": "whole-source physical equivalence can pass while semantics remain independently adjudicated",
+      "target_interfaces": [
+        "I03"
+      ],
+      "guard_refs": [
+        "MG022",
+        "MG023"
+      ],
+      "payload": {
+        "transport_scope": "WHOLE_SOURCE",
+        "claims_whole_source": true,
+        "expected_edge_classes": [
+          "EC01",
+          "EC05",
+          "EC07"
+        ],
+        "candidate_edge_classes": [
+          "EC01",
+          "EC05",
+          "EC07"
+        ],
+        "canonical_physical_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "candidate_physical_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "i05_semantic_parity": false
+      },
+      "expected_result": "PASS",
+      "expected_code": null
+    },
+    {
+      "id": "R35Q-H17",
+      "kind": "HOSTILE",
+      "validator": "physical_metadata",
+      "title": "equal semantic projection hides unequal required physical metadata digest",
+      "target_interfaces": [
+        "I01",
+        "I03"
+      ],
+      "guard_refs": [
+        "HDS005",
+        "HDS014",
+        "MG004",
+        "MG008",
+        "MG009",
+        "MG022"
+      ],
+      "payload": {
+        "required_paths": [
+          "reader.identity",
+          "layout.raw_header_digest",
+          "dictionary.digest",
+          "display.digest"
+        ],
+        "canonical_physical": {
+          "reader": {
+            "identity": "reader-v1"
+          },
+          "layout": {
+            "raw_header_digest": "header-raw"
+          },
+          "dictionary": {
+            "digest": "dict-v1"
+          },
+          "display": {
+            "digest": "display-v1"
+          }
+        },
+        "candidate_physical": {
+          "reader": {
+            "identity": "reader-v1"
+          },
+          "layout": {
+            "raw_header_digest": "header-raw"
+          },
+          "dictionary": {
+            "digest": "dict-v2"
+          },
+          "display": {
+            "digest": "display-v1"
+          }
+        },
+        "semantic_projection_digest": "IDENTICAL-I05-PROJECTION"
+      },
+      "expected_result": "REJECT",
+      "expected_code": "Q01_PHYSICAL_METADATA_DIGEST_MISMATCH"
+    },
+    {
+      "id": "R35Q-H18",
+      "kind": "HOSTILE",
+      "validator": "verdict_boundary",
+      "title": "physical PASS is made to imply semantic and certification PASS",
+      "target_interfaces": [
+        "I03"
+      ],
+      "guard_refs": [
+        "MG022",
+        "MG023",
+        "MG028"
+      ],
+      "payload": {
+        "physical_equivalence": "PASS",
+        "semantic_parity": "PASS_BY_IMPLICATION",
+        "source_certification": "PASS_BY_IMPLICATION",
+        "independent_semantic_receipt": false,
+        "independent_certification_receipt": false
+      },
+      "expected_result": "REJECT",
+      "expected_code": "Q01_PHYSICAL_PASS_CANNOT_IMPLY_SEMANTIC_CERTIFICATION"
+    },
+    {
+      "id": "R35Q-P11",
+      "kind": "POSITIVE",
+      "validator": "verdict_boundary",
+      "title": "physical PASS remains separate from semantic/certification verdicts",
+      "target_interfaces": [
+        "I03"
+      ],
+      "guard_refs": [
+        "MG022",
+        "MG023",
+        "MG028"
+      ],
+      "payload": {
+        "physical_equivalence": "PASS",
+        "semantic_parity": "NOT_ADJUDICATED_BY_R35_Q01",
+        "source_certification": "NOT_ADJUDICATED_BY_R35_Q01",
+        "independent_semantic_receipt": false,
+        "independent_certification_receipt": false
+      },
+      "expected_result": "PASS",
+      "expected_code": null
+    }
+  ]
+}

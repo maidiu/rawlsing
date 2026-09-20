@@ -1,0 +1,88 @@
+{
+  "schema": "FIABC_R35_Q01_RETURN@1.0.0",
+  "worker": "FIABC-R35-Q01",
+  "repo": "maidiu/rawlsing",
+  "base_branch": "agent/vozhd-premain-fiabc-s35-fanin-r1",
+  "base_sha": "770d95c1a604ea1f47ac2971b923673c14c42984",
+  "branch": "agent/rabochii-premain-fiabc-r35-q01-hostile-guard-court-r1",
+  "return_path": "WORKER_RETURNS/FIABC-R35-Q01/",
+  "terminal": "FIABC_R35_Q01_GENERIC_PHYSICAL_GUARD_HOSTILE_COURT_READY",
+  "disposition": "READY__GENERIC_HOSTILE_QUALIFICATION_COURT_FROZEN__SIBLING_PRODUCTION_NOT_IMPLEMENTED_HERE",
+  "method": {
+    "tooling": "GITHUB_BROWSER_ONLY",
+    "local_source_carriers_opened": false,
+    "measured_p2x_run": false,
+    "sibling_production_code_changed": false,
+    "source_semantics_inferred": false
+  },
+  "governing_inputs": [
+    "WORKER_RETURNS/FIABC-HQ-S35-FANIN/00_RETURN.md",
+    "WORKER_RETURNS/FIABC-HQ-S35-FANIN/01_GAP_LEDGER.csv",
+    "WORKER_RETURNS/FIABC-S35-2/",
+    "WORKER_RETURNS/FIABC-S35-3/",
+    "WORKER_RETURNS/FIABC-S35-5/",
+    "R35-I01 commission",
+    "R35-I02 commission",
+    "R35-I03 commission"
+  ],
+  "counts": {
+    "hostile_fixtures": 18,
+    "positive_controls": 11,
+    "total_fixtures": 29,
+    "validator_families": 7,
+    "test_inventory_rows": 37,
+    "required_output_files": 6
+  },
+  "validator_families": [
+    "raw_source",
+    "parentage",
+    "reader_config",
+    "compatibility_boundary",
+    "physical_metadata",
+    "whole_source",
+    "verdict_boundary"
+  ],
+  "core_law": [
+    "CANONICAL_SHA_IS_NECESSARY_NOT_SUFFICIENT",
+    "DERIVATIVE_ASSERTED_SOURCE_SHA_IS_NOT_PARENTAGE",
+    "WORKLOAD_EQUIVALENCE_IS_NOT_WHOLE_SOURCE_EQUIVALENCE",
+    "I05_SEMANTIC_PARITY_IS_NOT_WHOLE_SOURCE_PHYSICAL_EQUIVALENCE",
+    "PHYSICAL_EQUIVALENCE_PASS_DOES_NOT_IMPLY_SEMANTIC_OR_CERTIFICATION_PASS",
+    "COMPATIBILITY_EXECUTION_IS_PHYSICAL_ONLY"
+  ],
+  "exact_canaries": {
+    "latinobarometro_2024": {
+      "raw_nominal_header_witness": 174,
+      "traversed_dictionary_data_stream_width": 332,
+      "required_law": "PRESERVE_BOTH__NORMALIZE_NEITHER"
+    },
+    "wvs7_structural_preimage": "SELF_HASH_PLUS_ASSERTED_SOURCE_SHA_IS_INSUFFICIENT_WITHOUT_EXTERNAL_PARENT_RECEIPT",
+    "lits_i_r5": "ANCESTRY_AND_CURRENT_WORKLOAD_RUNTIME_CANDIDATE_ROOT_BINDING_BOTH_REQUIRED",
+    "semantic_equal_physical_unequal": "MUST_FAIL_PHYSICAL_EQUIVALENCE"
+  },
+  "outputs": [
+    "00_RETURN.md",
+    "01_HOSTILE_FIXTURES.json",
+    "02_ACCEPTANCE_CRITERIA.md",
+    "03_TEST_INVENTORY.csv",
+    "tests/test_r35_generic_guard_court.py",
+    "RETURN.json"
+  ],
+  "qualification_boundary": {
+    "court_ready": true,
+    "i01_qualified": false,
+    "i02_qualified": false,
+    "i03_qualified": false,
+    "why": "Sibling implementations are not fanned into this branch; Q01 freezes the court that will qualify them.",
+    "local_test_execution_performed": false,
+    "execution_note": "GitHub/browser-only worker; no local pytest/unittest execution was performed."
+  },
+  "mutations": {
+    "production_code_changed": false,
+    "qualification_test_added": true,
+    "reports_added": true,
+    "source_authority_changed": false,
+    "semantic_owner_changed": false
+  },
+  "commit_sha": "SELF_COMMIT_REPORTED_EXTERNALLY__GIT_COMMIT_HASH_CANNOT_BE_EMBEDDED_IN_ITS_OWN_PREIMAGE"
+}
