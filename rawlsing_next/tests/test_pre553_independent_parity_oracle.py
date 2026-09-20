@@ -58,6 +58,11 @@ def _lits_inputs(*, freeze=None, dependency_owner="ACCEPTED_AUTHORITY"):
                 "EVALUATED_SUPPORTED": 49,
                 "EVALUATED_VALID_EMPTY": 1,
             },
+            "frontier": {
+                "candidate_count": 50,
+                "query_role_count": 77,
+                "preexecution_seal": LITS_FRONTIER_SEAL,
+            },
         },
         "prior_replay_receipt": {
             "source": {"sha256": LITS_SOURCE_SHA256},
@@ -65,6 +70,11 @@ def _lits_inputs(*, freeze=None, dependency_owner="ACCEPTED_AUTHORITY"):
                 "byte_identical": True,
                 "run_1_output_sha256": LITS_LEARNED_PRODUCT_IDENTITY,
                 "run_2_output_sha256": LITS_LEARNED_PRODUCT_IDENTITY,
+            },
+            "preoutcome": {
+                "candidate_count": 50,
+                "query_role_count": 77,
+                "frontier_seal": LITS_FRONTIER_SEAL,
             },
         },
         "source_identity": {
