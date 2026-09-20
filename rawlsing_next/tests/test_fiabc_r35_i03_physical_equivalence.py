@@ -110,11 +110,23 @@ def realization(
     parentage=None,
     semantic_digest=SEMANTIC_DIGEST,
 ):
-    material = base_evidence()
-    if evidence:
-        material.update(evidence)
     if edges is None:
         edges = expected["scope"]["applicable_edge_classes"]
+    material = base_evidence()
+    if "EC03" in edges:
+        material["compatibility_decode_evidence"] = {
+            "encoding": "latin1",
+            "raw_bytes_retained": True,
+            "semantic_authority": False,
+        }
+    if "EC04" in edges:
+        material["raw_display_separation"] = {
+            "variable": "S007",
+            "raw_values": [9876543210, 9876543211],
+            "display_format": "F2.0",
+        }
+    if evidence:
+        material.update(evidence)
     return build_candidate_realization(
         candidate=candidate,
         expectation=expected,
