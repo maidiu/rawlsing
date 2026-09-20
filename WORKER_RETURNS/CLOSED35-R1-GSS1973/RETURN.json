@@ -1,0 +1,80 @@
+{
+  "schema": "CLOSED35_R1_GSS1973_RETURN@1.0.0",
+  "worker_id": "CLOSED35-R1-GSS1973",
+  "repository": "maidiu/rawlsing",
+  "base_branch": "agent/vozhd-closed35-l2-documentary-fanin-r1",
+  "base_tip": "5c582e2325ecc2b37377cd518fe4c456331c81d8",
+  "branch": "agent/rabochii-closed35-r1-gss1973-realization-r1",
+  "return_path": "WORKER_RETURNS/CLOSED35-R1-GSS1973/",
+  "source": {
+    "filename": "GSS1973.sav",
+    "sha256": "59e65801dc26818bbcf15f9ed985cf8f1faafa65a3eb59e2d3180a7b13a5c1c2"
+  },
+  "status": "PASS",
+  "semantic_owner": "GSS1973_SEMANTIC_OWNER_V1",
+  "implementation": {
+    "candidate_neutral": true,
+    "exact_source_bound": true,
+    "form_xy_preserved": true,
+    "form_specific_membership_authority": "APPENDIX_P_TABLE_P1__1973_COLUMN",
+    "class_classy_distinct": true,
+    "missingness_precedence": [
+      "FORM_NOT_ADMINISTERED",
+      "ROUTED_SKIP",
+      "SUBSTANTIVE_NONRESPONSE",
+      "PHYSICAL_MISSING_UNCLASSIFIED"
+    ],
+    "no_form_weight": true,
+    "general_weight_authority": "WTSSPS__IF_EXACT_CARRIER_EXPOSES",
+    "wtssnrps_1973": false,
+    "design": "BLOCK_QUOTA__1970_FRAME",
+    "strata_clustering_for_1973_survey_estimation": false,
+    "income72_income_equivalence": false,
+    "q105_card_form_equivalence": false
+  },
+  "edge_classes": [
+    "EC01",
+    "EC10",
+    "EC12"
+  ],
+  "test_protocol": {
+    "required_rejection_tests": [
+      "X_Y_FORM_COLLAPSE",
+      "CLASS_CLASSY_ALIASING",
+      "INCOME72_INCOME_EQUIVALENCE",
+      "WTSSNRPS_USE_IN_1973",
+      "Q105_CARD_FORM_CONFLATION",
+      "ROUTING_FROM_RAW_MISSINGNESS",
+      "FORM_WEIGHT_INVENTION",
+      "COMMON_ITEM_FORM_SPLIT",
+      "FORM_MEMBERSHIP_SUFFIX_HEURISTIC",
+      "LATER_VPSU_VSTRAT_IMPORT",
+      "WTSSPS_SYNTHESIS_IF_ABSENT",
+      "HARD_CODED_FORM_COUNTS"
+    ],
+    "executed": false
+  },
+  "unknowns_preserved": [
+    "EXACT_REALIZED_FORM_COUNTS",
+    "EXACT_PHYSICAL_MISSING_CODE_TO_SEMANTIC_OWNER_STATE",
+    "EXACT_CARRIER_PRESENCE_OF_WTSSPS",
+    "Q105_CARD_XY_TO_FORM_RELATION",
+    "Q105_EXACT_BIRTH_YEAR_DIGIT_SET"
+  ],
+  "constraints_observed": {
+    "raw_carrier_opened": false,
+    "source_executed": false,
+    "source_decoding_executed": false,
+    "measured_p2x_run": false,
+    "routing_inferred_from_missingness": false
+  },
+  "outputs": [
+    "00_RETURN.md",
+    "01_REALIZATION_CONTRACT.md",
+    "02_SPLIT_FORM_PROJECTION_MAP.csv",
+    "03_PHYSICAL_EDGE_BINDING.json",
+    "04_TEST_PROTOCOL.md",
+    "RETURN.json"
+  ],
+  "terminal": "CLOSED35_R1_GSS1973_SOURCE_SPECIFIC_REALIZATION_IMPLEMENTED__READY_FOR_ABC_QUALIFICATION"
+}
