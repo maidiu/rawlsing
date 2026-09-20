@@ -1,0 +1,89 @@
+{
+  "schema": "CLOSED35_R2_ARAB2_RETURN@1.0.0",
+  "worker_id": "CLOSED35-R2-ARAB2",
+  "repository": "maidiu/rawlsing",
+  "base_branch": "agent/vozhd-closed35-l2r-r1-fanin-r1",
+  "base_tip": "da33eb6a8225c14eee9490633a3263388dc5536c",
+  "branch": "agent/rabochii-closed35-r2-arab2-realization-r1",
+  "return_path": "WORKER_RETURNS/CLOSED35-R2-ARAB2/",
+  "source": {
+    "filename": "Arab Barometer Wave 2.sav",
+    "sha256": "6529841b97bd56463490d810ad24ceaa4866066d12e4651a7081682d413606a1",
+    "authority_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+    "physical_mode": "SAV_NATIVE_GOVERNED",
+    "replay_identity": "SOURCE_SHA256+ROW_ORDINAL"
+  },
+  "status": "PASS",
+  "implementation_grain": "SOURCE_SPECIFIC_REALIZATION_IMPLEMENTED",
+  "semantic_owner": "ARAB2_SEMANTIC_OWNER_V1",
+  "implementation_files": [
+    "rawlsing_next/closed35_arab2_realization.py",
+    "rawlsing_next/tests/test_closed35_r2_arab2_realization.py"
+  ],
+  "realization": {
+    "candidate_neutral": true,
+    "q2062_system_missing_distinct_from_ordinary_zero": true,
+    "q2062_zero_source_dictionary_label_preserved": true,
+    "q2062_zero_semantic_refinement": "BOUNDED_UNKNOWN",
+    "ranked_q2061_q2062_topology_preserved": true,
+    "routing_from_missingness": false,
+    "lebanon_second_rank_rule_documentary": true,
+    "qid_as_hard_replay_identity": false,
+    "country_qid_as_hard_replay_identity": false,
+    "wt_carrier_preserved": true,
+    "wt_estimand": "BOUNDED_UNKNOWN",
+    "wt_default_use_authorized": false,
+    "samp_codes_preserved_without_weight_inference": true
+  },
+  "edge_classes": [
+    "EC01",
+    "EC05",
+    "EC09",
+    "EC10",
+    "EC12",
+    "EC14"
+  ],
+  "tests": {
+    "status": "TESTS_AUTHORED__NOT_EXECUTED",
+    "reason": "GitHub/browser-only worker; no synthetic Python execution environment invoked.",
+    "required_rejection_tests": [
+      "ORDINARY_ZERO_EQUALS_SYSTEM_MISSING",
+      "SOURCE_DICTIONARY_LABEL_PROMOTED_TO_CODE0_SEMANTICS",
+      "RANKED_SLOT_FLATTENING_OR_REORDERING",
+      "ROUTING_FROM_MISSINGNESS",
+      "UNDOCUMENTED_WT_ESTIMAND_OR_DEFAULT_USE",
+      "QID_OR_COUNTRY_QID_AS_REPLAY_IDENTITY",
+      "SOURCE_SHA_DRIFT",
+      "CANDIDATE_SEMANTIC_DIVERGENCE",
+      "S35_R35_SCOPE_DRIFT"
+    ]
+  },
+  "bounded_unknowns_preserved": [
+    "Q2062_CODE0_EXACT_SEMANTIC_REASON",
+    "Q101_CODE0_EXACT_SEMANTIC_REASON",
+    "WT_ESTIMAND",
+    "WT_NORMALIZATION",
+    "WT_RELATION_TO_SAMP",
+    "UNJOINED_COUNTRY_MODULE_APPLICABILITY",
+    "CROSS_WAVE_SEMANTIC_EQUIVALENCE"
+  ],
+  "constraints_observed": {
+    "raw_carrier_opened": false,
+    "source_executed": false,
+    "source_processing_executed": false,
+    "measured_p2x_run": false,
+    "abc_executed": false,
+    "i05_executed": false,
+    "physical_equivalence_executed": false,
+    "source_certification_claimed": false
+  },
+  "outputs": [
+    "00_RETURN.md",
+    "01_REALIZATION_CONTRACT.md",
+    "02_MISSING_ROUTING_WEIGHT_MAP.csv",
+    "03_PHYSICAL_EDGE_BINDING.json",
+    "04_TEST_PROTOCOL.md",
+    "RETURN.json"
+  ],
+  "terminal": "CLOSED35_R2_ARAB_BAROMETER_W2_SOURCE_SPECIFIC_REALIZATION_IMPLEMENTED__READY_FOR_ABC_QUALIFICATION"
+}
