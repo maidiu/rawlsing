@@ -29,7 +29,7 @@ No existing semantic owner, authority producer, empirical query/discovery produc
 
 ### `rawlsing_next/tests/test_fiabc_p2_terminal_verifier.py`
 
-Adds 12 focused deterministic unit tests covering:
+Adds 13 focused deterministic unit tests covering:
 
 1. full two-source/six-cell PASS;
 2. C11-only false terminal rejection;
@@ -42,7 +42,8 @@ Adds 12 focused deterministic unit tests covering:
 9. constituent-I03 closure rejection;
 10. semantic/replay/output identity drift rejection;
 11. typed-state collapse rejection;
-12. lifecycle terminal identity drift and typed nonqualification rejection (separate tests; total test functions: 13).
+12. lifecycle terminal identity drift rejection;
+13. typed nonqualification preservation without false full-court PASS.
 
 ## Return package
 
