@@ -1,8 +1,9 @@
 """EE-P2X production Darwin stage backend.
 
 The qualified court driver owns orchestration, ledger/resume, preserved/skipped
-stages, WVS-C terminalization and supervisor tokens. This module implements
-only READY__RUN_LOCALLY stage bodies.
+historical stages and supervisor tokens. This module implements only
+READY__RUN_LOCALLY stage bodies, including the current six-cell Candidate-C
+binding selected by the successor execution manifest.
 
 Import is source-inert. Real source bytes are opened only when the driver puts a
 source_path in the StageContext. Missing exact authority is a typed blocker; no
@@ -438,6 +439,65 @@ def _wvs_projection(ctx, services):
     return projection
 
 
+def _assert_r5_canonical_source_root(reader, source_name):
+    expected = {"kind": "SOURCE_SHA256", "content_hash": EXPECTED_SOURCE[source_name]}
+    observed = getattr(reader, "release_identity", {}).get("source_artifact_ref")
+    if observed != expected:
+        raise SourceAuthorityStop(
+            "preserved/prebuilt R5 derivative does not close to canonical source root",
+            {"source": source_name, "expected_source_artifact_ref": expected, "observed_source_artifact_ref": observed},
+        )
+
+
+def _compose_current_candidate_c(ctx, services, state, runtime, projection, incidence, runtime_authority):
+    if incidence is None:
+        raise BackendStop(f"{ctx.stage.source}-C exact source incidence required by current six-cell contract")
+    services.load_exact_owner_module("C")
+    from rawlsing_next.pre553_candidate_c_production_binding import (
+        candidate_c_builder_identity,
+        candidate_c_repository_builder_for_source,
+    )
+    from rawlsing_next.pre553_carrier_execution import RuntimeObjectCatalog, bind_repository_builder
+
+    source_name = ctx.stage.source
+    catalog = RuntimeObjectCatalog.from_documents(
+        authority_documents=runtime["authorities"],
+        predicate_documents=runtime["predicates"],
+        query_documents=runtime["queries"],
+        discovery_authority_documents=runtime["discoveries"],
+    )
+    builder = candidate_c_repository_builder_for_source(source_name)
+    identity = dict(candidate_c_builder_identity(source_name))
+    if source_name == "LITS_I":
+        identity.update({
+            "runtime_catalog": R6O_RUNTIME_CATALOG,
+            "active_binding": R6O_ACTIVE_BINDING,
+            "runtime_release": R6O_RUNTIME_RELEASE,
+            "current_f02_accelerator_inventory": [],
+        })
+        builder_kwargs = {"source": incidence, "projection": projection, "accelerator_inventory": ()}
+    else:
+        identity.update({"lock2": WVS_LOCK2, "current_wvs_accelerator_inventory": []})
+        builder_kwargs = {"source": incidence, "projection": projection}
+
+    receipt_box = {}
+    def current_c_builder(**kwargs):
+        built = builder(**kwargs)
+        if not isinstance(built, tuple) or len(built) < 3 or not isinstance(built[2], Mapping):
+            raise BackendStop("Candidate-C successor builder omitted physical/provenance receipt")
+        receipt_box["candidate_c"] = dict(built[2])
+        return built
+
+    binding = bind_repository_builder(
+        repository_builder=current_c_builder,
+        builder_kwargs=builder_kwargs,
+        builder_identity=identity,
+        runtime_catalog=catalog,
+    )
+    state["candidate_c_binding_receipt"] = receipt_box["candidate_c"]
+    return binding, projection, runtime_authority
+
+
 def _compose_lits(ctx, services, state, incidence):
     projection, _, _ = _lits_projection(ctx, services, state, incidence)
     runtime = _lits_runtime(ctx, services, projection)
@@ -448,13 +508,19 @@ def _compose_lits(ctx, services, state, incidence):
                               {"required_env":"RAWLSING_EE_P2X_LITS_A_R5_ROOT","repeat_first_build":"FORBIDDEN"})
         _ensure_r5(ctx, services)
         from rawlsing_next.pre553_r5_compact_carrier import R5CompactLongShardedReader
-        kwargs = {"reader": R5CompactLongShardedReader(Path(root))}
+        reader = R5CompactLongShardedReader(Path(root))
+        _assert_r5_canonical_source_root(reader, "LITS_I")
+        kwargs = {"reader": reader}
     elif ctx.stage.candidate == "B":
         if incidence is None:
             raise BackendStop("LiTS-B exact source incidence required by reducer")
         kwargs = {"source": incidence}
+    elif ctx.stage.candidate == "C":
+        return _compose_current_candidate_c(
+            ctx, services, state, runtime, projection, incidence, runtime["runtime_authority_set"]
+        )
     else:
-        raise BackendStop("LiTS-C is not a qualifying common-runner candidate")
+        raise BackendStop("unknown LiTS candidate")
     binding = services.compose_p2r1_binding(
         authority_documents=runtime["authorities"], predicate_documents=runtime["predicates"],
         query_documents=runtime["queries"], discovery_authority_documents=runtime["discoveries"],
@@ -510,13 +576,17 @@ def _compose_wvs(ctx,services,state,incidence=None):
             if incidence is None:
                 raise BackendStop("WVS-A preserved R5 carrier absent at source-free stage")
             _build_r5_from_incidence(ctx,services,incidence,projection,root)
-        kwargs={"reader":R5CompactLongShardedReader(root)}
+        reader=R5CompactLongShardedReader(root)
+        _assert_r5_canonical_source_root(reader, "WVS7")
+        kwargs={"reader":reader}
     elif ctx.stage.candidate=="B":
         if incidence is None:
             raise BackendStop("WVS-B exact source incidence required by reducer")
         kwargs={"source":incidence}
+    elif ctx.stage.candidate=="C":
+        return _compose_current_candidate_c(ctx,services,state,runtime,projection,incidence,None)
     else:
-        raise BackendStop("WVS-C has no backend execution path")
+        raise BackendStop("unknown WVS7 candidate")
     binding=services.compose_p2r1_binding(
         authority_documents=runtime["authorities"],
         predicate_documents=runtime["predicates"],
@@ -554,16 +624,11 @@ def _bind(ctx, services, state, source_allowed: bool):
     if key in _SESSIONS:
         return _SESSIONS[key]
     if ctx.stage.source=="LITS_I":
-        if ctx.stage.candidate=="C":
-            raise BackendStop("LiTS-C exact F02 q310/q311 reachability nonqualification",
-                {"disposition":"C_NONQUALIFYING__S02_C11_REACHABILITY__FROZEN_CACC1_STREAM_OMITS_Q310_Q311_REQUIRED_BY_F02_COMPOSITE_PROJECTION"})
         incidence=None
         if ctx.source_path is not None:
             incidence=_decode(ctx,state,reread=state["source_access"]["decode"]>0)
         binding,projection,runtime_authority=_compose_lits(ctx,services,state,incidence)
     elif ctx.stage.source=="WVS7":
-        if ctx.stage.candidate=="C":
-            raise BackendStop("WVS-C has no backend execution path")
         incidence=None
         if ctx.source_path is not None:
             incidence=_decode(ctx,state,reread=state["source_access"]["decode"]>0)
@@ -576,11 +641,14 @@ def _bind(ctx, services, state, source_allowed: bool):
 
 def _binding_state(state, binding, projection):
     receipt = binding.receipt()
+    candidate_c_receipt = state.get("candidate_c_binding_receipt")
     state["bindings"] = {
         "projection_identity": projection.cache_identity,
         "runtime_catalog_identity": receipt["executor_binding"]["runtime_catalog"]["catalog_identity"],
         "candidate_provider_identity": receipt["binding_identity"],
     }
+    if candidate_c_receipt is not None:
+        state["bindings"]["candidate_c_production_binding"] = candidate_c_receipt
     return receipt
 
 
@@ -759,14 +827,6 @@ def _failure(ctx,services,state,exc):
 
 
 def _s01(ctx,services,state):
-    if ctx.stage.source=="LITS_I" and ctx.stage.candidate=="C":
-        if ctx.source_path is None:
-            raise BackendStop("LiTS-C preparation requires reducer-authorized source")
-        if _sha(ctx.source_path)!=LITS_SHA:
-            raise SourceAuthorityStop("LiTS-C source identity drift")
-        state["bindings"]["c_nonqualification_prepared"]=True
-        state["candidate_output_first"]=state["candidate_output_first"] or _ord(state)
-        return {"preparation":"CURRENT_CACC1_CACC2_ONLY__NO_CACC3__NO_REPAIR","source_sha256":LITS_SHA}
     (bound,_build_wall)=_measure(ctx,state,lambda:_bind(ctx,services,state,True),"build_or_open_wall_ns")
     binding,projection,runtime_authority=bound
     rec=_binding_state(state,binding,projection)
@@ -774,10 +834,6 @@ def _s01(ctx,services,state):
     return {"binding_identity":rec["binding_identity"]}
 
 def _s02(ctx,services,state):
-    if ctx.stage.source=="LITS_I" and ctx.stage.candidate=="C":
-        raise BackendStop("LiTS-C exact current q310/q311 reachability nonqualification",
-            {"disposition":"C_NONQUALIFYING__S02_C11_REACHABILITY__FROZEN_CACC1_STREAM_OMITS_Q310_Q311_REQUIRED_BY_F02_COMPOSITE_PROJECTION",
-             "candidate_c_repair":False,"fallback_to_a_or_b":False})
     binding,projection,runtime_authority=_bind(ctx,services,state,ctx.source_path is not None)
     rec=_binding_state(state,binding,projection)
     return {"release_ref":binding.release_ref.as_dict(),"binding_identity":rec["binding_identity"]}
@@ -1019,8 +1075,7 @@ HANDLERS={"S01_CANDIDATE_PREPARATION_BUILD":_s01,"S02_C11_REACHABILITY":_s02,"S0
 def _gate(ctx):
     s=ctx.stage
     if ctx.contract!=BACKEND_CONTRACT: raise CourtAuthorityStop("StageContext backend contract mismatch")
-    if s.stage_id not in READY or s.disposition!="READY__RUN_LOCALLY": raise BackendStop("backend invoked for non-READY reducer stage")
-    if s.source=="WVS7" and s.candidate=="C": raise BackendStop("WVS-C has no executable backend path")
+    if s.stage_id not in READY or s.disposition!="READY__RUN_LOCALLY": raise BackendStop("backend invoked for non-READY current stage")
     if s.source!="COURT" and ctx.source_sha256!=EXPECTED_SOURCE.get(s.source): raise SourceAuthorityStop("StageContext source identity drift")
     if s.empirical_source_access_required!=(ctx.source_path is not None):
         raise BackendStop("driver source-path exposure disagrees with reducer tuple")
