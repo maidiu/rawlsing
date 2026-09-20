@@ -1,0 +1,130 @@
+{
+  "schema": "CLOSED35_L2R_LAT1995_UPDATED_SOURCE_ADMISSION_PACKET@1.0.0",
+  "worker": "CLOSED35-L2R-LAT1995",
+  "repository": "maidiu/rawlsing",
+  "base_branch": "agent/vozhd-closed35-l2-documentary-fanin-r1",
+  "base_sha": "5c582e2325ecc2b37377cd518fe4c456331c81d8",
+  "branch": "agent/rabochii-closed35-l2r-lat1995-residual-authority-r1",
+  "canonical_source": {
+    "family": "Latinobarometro",
+    "wave": 1995,
+    "filename": "Latinobarometro 1995.sav",
+    "sha256": "4b7fc6da17dfddafd6a835717e8dc06981208eb4120fa33bdd16e12ae95926f7",
+    "canonical_identity_changed": false,
+    "replay_identity": "SOURCE_SHA256+ROW_ORDINAL"
+  },
+  "inherited_settled": {
+    "canonical_raw_source_authentic": true,
+    "producer_final_release": "v1995.1",
+    "producer_recognizes_brazil_1200_table_base": true,
+    "producer_technical_brazil_n": 1080,
+    "contradiction_real": true,
+    "enc_semantic_role": "NUMBER_INTERVIEW",
+    "wt_semantic_role": "WEIGHTING"
+  },
+  "new_archival_findings": {
+    "historical_jds_microdata_and_official_documentation_chain": true,
+    "brazil_1995_country_wave_sample_present_in_archive": true,
+    "historical_files_1995_2005_later_updated_or_replaced": true,
+    "documented_update_scope": [
+      "REGION_LABELS_OR_CODES",
+      "CITY_LABELS_OR_CODES",
+      "POLITICAL_PARTY_LABELS_OR_CODES"
+    ],
+    "update_scope_mentions_brazil_case_count": false,
+    "update_scope_mentions_enc": false,
+    "update_scope_mentions_wt": false,
+    "contemporary_secondary_total_9077": true,
+    "later_chart_bases_9070_9069_found_in_archival_mirror": true,
+    "later_chart_bases_authorize_release_size_correction": false,
+    "concrete_new_producer_archive_lead_remaining": false
+  },
+  "brazil": {
+    "canonical_raw_n": 1200,
+    "producer_table_n": 1200,
+    "producer_technical_n": 1080,
+    "causal_provenance": "IRREDUCIBLE_DOCUMENTARY_UNKNOWN",
+    "historical_file_replacement_proved": true,
+    "documented_link_between_replacement_and_120_case_delta": false,
+    "documented_exclusion": false,
+    "documented_release_version_transition": false,
+    "documented_weight_explanation": false,
+    "documented_erratum": false,
+    "error_attribution_authorized": false,
+    "preserve_all_rows": true
+  },
+  "enc": {
+    "variable": "ENC",
+    "producer_role": "Number interview",
+    "uniqueness_scope": "UNDOCUMENTED",
+    "global_unique_authorized": false,
+    "country_local_unique_authorized": false,
+    "country_wave_unique_authorized": false,
+    "explicitly_nonunique_by_design_documented": false,
+    "administrative_only_documented": false,
+    "longitudinal_identity_authorized": false,
+    "preserve_collisions": true,
+    "promote_pais_enc_to_key": false,
+    "replay_identity": "SOURCE_SHA256+ROW_ORDINAL"
+  },
+  "wt": {
+    "variable": "WT",
+    "producer_role": "Weighting",
+    "current_oda_behavior": {
+      "default_weighting": true,
+      "description": "uses sample weight provided for each selected sample; unweighted when sample has no weight",
+      "authority_scope": "CURRENT_PRODUCER_ODA_PLATFORM_ONLY",
+      "url": "https://latinobarometro.org/oda-faq"
+    },
+    "estimand_population_domain": "IRREDUCIBLE_DOCUMENTARY_UNKNOWN",
+    "country_vs_cross_country_scope": "IRREDUCIBLE_DOCUMENTARY_UNKNOWN",
+    "normalization": "IRREDUCIBLE_DOCUMENTARY_UNKNOWN",
+    "construction_calibration": "IRREDUCIBLE_DOCUMENTARY_UNKNOWN",
+    "external_raw_default_weighted_estimator": "NO_1995_PRODUCER_AUTHORIZATION_RECOVERED__FAIL_CLOSED",
+    "recompute_or_renormalize_authorized": false,
+    "use_to_reconcile_brazil_counts": false
+  },
+  "exact_residual_set": [
+    "BRAZIL_120_ROW_CAUSAL_PROVENANCE__IRREDUCIBLE_DOCUMENTARY_UNKNOWN",
+    "ENC_UNIQUENESS_SCOPE__UNDOCUMENTED",
+    "WT_ESTIMAND_AND_POPULATION_DOMAIN__IRREDUCIBLE_DOCUMENTARY_UNKNOWN",
+    "WT_NORMALIZATION__IRREDUCIBLE_DOCUMENTARY_UNKNOWN",
+    "WT_CONSTRUCTION_CALIBRATION__IRREDUCIBLE_DOCUMENTARY_UNKNOWN",
+    "EXTERNAL_RAW_DEFAULT_WEIGHTED_ESTIMATOR__NO_1995_PRODUCER_AUTHORIZATION_RECOVERED"
+  ],
+  "stop_law": {
+    "concrete_new_archive_lead_discovered": true,
+    "lead": "JDS/ASEP later update/replacement of historical 1995-2005 files",
+    "lead_followed": true,
+    "lead_documented_scope_exhausted": true,
+    "residual_relevant_authority_recovered_from_lead": false,
+    "further_generic_web_search_authorized": false,
+    "reopen_only_if": "A concrete producer/distributor record is discovered that specifically binds Brazil case-count provenance, ENC uniqueness, or 1995 WT estimator semantics."
+  },
+  "admission": {
+    "canonical_root_retained": true,
+    "raw_unweighted_preservation_realization_possible": true,
+    "weighted_source_specific_realization_ready": false,
+    "id_key_realization_ready": false,
+    "brazil_provenance_closed": false,
+    "disposition": "RESIDUAL_FROZEN",
+    "no_normalization": true,
+    "no_row_dropping": true
+  },
+  "evidence_urls": [
+    "https://www.latinobarometro.org/latinobarometro-1995",
+    "https://latinobarometro.org/oda-faq",
+    "https://latinobarometro.org/study-level",
+    "https://www.latinobarometro.org/data",
+    "https://www.jdsurvey.net/jds/jdsurveyAnalisis.jsp?ESID=428&ES_COL=135&Idioma=I&SeccionCol=10",
+    "https://www.jdsurvey.net/jds/jdsurveyAnalisis.jsp?ESID=428&ES_COL=135&Idioma=I&SeccionCol=06",
+    "https://jdsurvey.net/jds/jdsurveyAnalisis.jsp?ES_COL=135&Idioma=I",
+    "https://www.jdsurvey.net/jds/jdsurveyActualidad.jsp?Idioma=E&NOID=124&SeccionTexto=0401",
+    "https://www.jdsurvey.com/jds/jdsurvey.jsp",
+    "https://www.jdsurvey.net/jds/jdsurveyActualidad.jsp?Idioma=IandSeccionTexto%3D04andSeccionTexto%3D0403SeccionTexto%3D0402SeccionTexto%3D0405SeccionTexto%3D0401SeccionTexto%3D0403SeccionTexto%3D0404SeccionTexto%3D0402SeccionTexto%3D0401SeccionTexto%3D0402SeccionTexto%3D0402SeccionTexto%3D0404SeccionTexto%3D0403SeccionTexto%3D0403SeccionTexto%3D0405SeccionTexto%3D0404SeccionTexto%3D0404SeccionTexto%3D0404&NOID=91&SeccionTexto=0401",
+    "https://elpais.com/diario/1995/08/29/internacional/809647204_850215.html",
+    "https://repositorio.cepal.org/entities/publication/050853db-92de-4000-9690-b47dda93d475/full",
+    "https://es.scribd.com/document/1005735910/F00008560-Informe-Latinobarometro-2005"
+  ],
+  "terminal": "CLOSED35_L2R_LATINOBAROMETRO1995_RESIDUAL_AUTHORITY_FROZEN__IRREDUCIBLE_UNKNOWN_SET_RETURNED"
+}
