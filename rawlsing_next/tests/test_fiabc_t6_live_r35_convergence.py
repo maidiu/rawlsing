@@ -21,6 +21,7 @@ from rawlsing_next.fiabc_live_r35_guard import (
     verify_live_two_source_physical_guard,
 )
 from rawlsing_next.fiabc_whole_source_physical_equivalence import (
+    COMPATIBILITY_PHYSICAL_ONLY,
     build_candidate_realization,
     build_canonical_expectation,
     canonical_digest,
@@ -34,7 +35,7 @@ def _reader(source):
         "decoder_mode":"DTA_COMPAT" if source=="LITS_I" else "SAV_NATIVE_GOVERNED",
         "config":{"apply_value_formats":False,"user_missing":True},
         "compatibility_mode":"COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY" if source=="LITS_I" else "NO_SOURCE_SPECIFIC_COMPATIBILITY_OVERRIDE",
-        "compatibility_semantic_scope":"NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
+        "compatibility_semantic_scope":COMPATIBILITY_PHYSICAL_ONLY if source=="LITS_I" else "NO_COMPATIBILITY_OVERRIDE__NO_SEMANTIC_CLAIM",
         "semantic_authority":False,
     }
 
