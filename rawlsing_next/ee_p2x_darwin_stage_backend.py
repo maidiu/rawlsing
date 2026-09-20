@@ -59,7 +59,7 @@ R6S_LITS_SUPPORT = "rawlsing_next/runtime/ee_p2x/01_LITS_CURRENT_RUNTIME_MATERIA
 FROZEN_PYREADSTAT_VERSION = "1.3.6"
 WVS_MATERIALIZER_BLOB = "11b28416aac5a4899706150721f2f8ac8bb6ee43"
 LITS_A_ADAPTER_BLOB = "d4915e7e6755ba1850756aebff72f982f73a332b"
-LITS_R5_BUILDER_BLOB = "92e68693d72cbfcdd1c6d16e7f247ca3f60c8c55"
+LITS_R5_BUILDER_BLOB = "92e364b31eaf27be1bca2081eff65f6ffb779c3d"
 LITS_A_PARENTAGE_PATH_ENV = "RAWLSING_EE_P2X_LITS_A_R5_PARENTAGE_RECEIPT"
 LITS_A_PARENTAGE_ID_ENV = "RAWLSING_EE_P2X_LITS_A_R5_PARENTAGE_RECEIPT_IDENTITY"
 _SESSIONS: dict[tuple[str,str], tuple[Any,Any]] = {}
@@ -940,11 +940,11 @@ def _ensure_r5(ctx, services):
     import rawlsing_next
     repo = _repo(services)
     blobs = {
-        "pre553_r5_codec.py":"72f8e8a2b6b2330332030e3978077c11e38ec8db",
-        "pre553_r5_compact_carrier.py":"92e68693d72cbfcdd1c6d16e7f247ca3f60c8c55",
-        "pre553_r5_model.py":"62cea85788eb160796642ba09d9f0d41f987a3d43",
-        "pre553_r5_seam.py":"cef346fca029fa920db16e83db908d466018f39e",
-        "pre553_r5_single_pass_audit69.py":"ffb07a9d0bafbf685d27aa1161ce830bcfc810fc",
+        "pre553_r5_codec.py":"72f8f3c03ed065e86fea4e76bb17f8e06c2bf540",
+        "pre553_r5_compact_carrier.py":"92e364b31eaf27be1bca2081eff65f6ffb779c3d",
+        "pre553_r5_model.py":"62ce608829c3d9c2fb7c999aefe40188637edf80",
+        "pre553_r5_seam.py":"cef326ebbc40468428378f7fdbe76e4756179f39",
+        "pre553_r5_single_pass_audit69.py":"ffb063b93c86e215604eecb29a9545c7efdff399",
     }
     for name, blob in blobs.items():
         if importlib.util.find_spec("rawlsing_next." + name[:-3]) is not None:
