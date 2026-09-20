@@ -143,3 +143,30 @@ def test_derivative_without_sufficient_parentage_cannot_receive_credit(tmp_path)
     }))
     with pytest.raises(LiveAccountingError):
         require_derivative_parentage(p,derivative_identity=derivative,canonical_source_sha256=SHA)
+
+
+def test_child_process_cpu_charged_once_and_rss_uses_max():
+    from rawlsing_next.fiabc_telemetry_semantics import ProcessEnvelopeReceipt
+    c=cell()
+    ledger=TelemetryLedger(c)
+    ledger.record_process_envelope(ProcessEnvelopeReceipt(
+        c,"__CANDIDATE_ENVELOPE__","main",101,"MAIN",None,
+        "PROCESS_SELF_ONLY","CANDIDATE_PROCESS_LOCAL",
+        10,30,20,50,100,300,1000,"main"
+    ))
+    ledger.record_process_envelope(ProcessEnvelopeReceipt(
+        c,"S15","child",202,"CHILD","main",
+        "PROCESS_SELF_ONLY","CANDIDATE_PROCESS_LOCAL",
+        0,7,0,11,150,250,4000,"child"
+    ))
+    ledger.seal_process_metrics(evidence_ref="seal")
+    receipt=ledger.receipt(candidate_semantic_state="UNCHANGED")
+    assert receipt["metrics"]["cpu_user_ns"]["value"] == 27
+    assert receipt["metrics"]["cpu_system_ns"]["value"] == 41
+    assert receipt["metrics"]["peak_rss_bytes"]["value"] == 4000
+    with pytest.raises(TelemetryContractError):
+        ledger.record_process_envelope(ProcessEnvelopeReceipt(
+            c,"S15","child",202,"CHILD","main",
+            "PROCESS_SELF_ONLY","CANDIDATE_PROCESS_LOCAL",
+            0,7,0,11,150,250,4000,"child"
+        ))

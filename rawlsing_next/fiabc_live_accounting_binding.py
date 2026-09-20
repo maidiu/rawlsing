@@ -345,6 +345,24 @@ def _materialize_telemetry(*, journal: Mapping[str, Any], roots: Any, source: st
         wall_stop_ns=int(stop["parent_envelope_stop_monotonic_ns"]),
         peak_rss_bytes=max(rss_samples),evidence_ref="T3_PROCESS_ENVELOPE",
     ))
+    seen_child_tokens=set()
+    for row in rows:
+        for child in row.get("observations",{}).get("child_process_envelopes",[]):
+            child_token=str(child["process_token"])
+            if child_token in seen_child_tokens:
+                raise LiveAccountingError("child process accounting attempted to charge one child twice")
+            seen_child_tokens.add(child_token)
+            ledger.record_process_envelope(TelemetryProcessReceipt(
+                cell=cell,phase_id=str(child["phase_id"]),process_token=child_token,
+                pid=int(child["pid"]),role="CHILD",parent_process_token=token,
+                cpu_scope="PROCESS_SELF_ONLY",rss_scope="CANDIDATE_PROCESS_LOCAL",
+                cpu_user_start_ns=int(child["cpu_user_start_ns"]),
+                cpu_user_stop_ns=int(child["cpu_user_stop_ns"]),
+                cpu_system_start_ns=int(child["cpu_system_start_ns"]),
+                cpu_system_stop_ns=int(child["cpu_system_stop_ns"]),
+                wall_start_ns=int(child["wall_start_ns"]),wall_stop_ns=int(child["wall_stop_ns"]),
+                peak_rss_bytes=int(child["peak_rss_bytes"]),evidence_ref=str(child["evidence_ref"]),
+            ))
     previous=proc.get("post_backend_import_resource",{})
     for row in rows:
         env=row["process_envelope"]; current=env.get("resource_after_stage",{})

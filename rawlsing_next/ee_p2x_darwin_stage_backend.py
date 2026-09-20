@@ -351,6 +351,31 @@ def _write_candidate_state_guard(ctx, state):
     return _atomic(_candidate_state_guard_path(ctx), guard)
 
 
+def _children_cpu_snapshot():
+    usage=resource.getrusage(resource.RUSAGE_CHILDREN)
+    return {
+        "cpu_user_ns":max(0,int(usage.ru_utime*1_000_000_000)),
+        "cpu_system_ns":max(0,int(usage.ru_stime*1_000_000_000)),
+    }
+
+
+def _child_process_event(*, stage, pid, before, after, wall_start_ns, wall_stop_ns,
+                         peak_rss_bytes, label):
+    user=max(0,int(after["cpu_user_ns"])-int(before["cpu_user_ns"]))
+    system=max(0,int(after["cpu_system_ns"])-int(before["cpu_system_ns"]))
+    if wall_stop_ns < wall_start_ns:
+        raise BackendStop("child process wall clock moved backwards")
+    return {
+        "process_token":f"{label}::pid={pid}",
+        "pid":int(pid),"phase_id":stage.stage_id,
+        "cpu_user_start_ns":0,"cpu_user_stop_ns":user,
+        "cpu_system_start_ns":0,"cpu_system_stop_ns":system,
+        "wall_start_ns":int(wall_start_ns),"wall_stop_ns":int(wall_stop_ns),
+        "peak_rss_bytes":max(0,int(peak_rss_bytes)),
+        "evidence_ref":stage.address+"::"+label,
+    }
+
+
 def _measure(ctx, state, fn, metric: str | None = None, *, cost_class="C2",
              lifecycle_action_id=None):
     start_ns = time.perf_counter_ns()
@@ -1114,11 +1139,9 @@ def _s09(ctx,services,state):
              "candidate":"A","contains_irrecoverable_information":False,"information_authority":"REGENERABLE_REPRESENTATION",
              "operational_persistence_value":{"value":"AVOIDS_REBUILD_ONLY"},
              "rebuild_cost":{"basis":"NOT_EXECUTED_AT_THIS_STAGE"},"expensive_to_rebuild_used_as_authority_basis":False}
-        start=time.perf_counter_ns(); _atomic(path,obj); stop=time.perf_counter_ns()
+        _atomic(path,obj)
         identity=_h(obj)
         action_id=_h({"stage":ctx.stage.address,"action":"AUDIT_REVALIDATION","identity":identity})
-        _t4_metric_event(state,name="persistent_bytes_removable_with_zero_information_loss",
-                         value=0,unit="bytes",cost_class="C2",evidence_ref=ctx.stage.address)
         _t4_lifecycle_event(state,{
             "action":"AUDIT_REVALIDATION","action_id":action_id,
             "governed_operation_id":identity,"expected_terminal_identity":identity,
@@ -1231,7 +1254,7 @@ def _s12(ctx,services,state):
     if ctx.stage.candidate=="B": raise BackendStop("Candidate-B cache stage must be driver-frozen skip")
     guard=_candidate_state_guard_path(ctx)
     if not guard.is_file(): _write_candidate_state_guard(ctx,state)
-    before_bytes=guard.read_bytes(); before_id=_sha(before_bytes) if False else hashlib.sha256(before_bytes).hexdigest()
+    before_bytes=guard.read_bytes(); before_id=hashlib.sha256(before_bytes).hexdigest()
     doc=json.loads(before_bytes.decode("utf-8"))
     old_det=_h({"source_sha256":doc.get("source_sha256"),"binding_identity":doc.get("binding_identity")})
     doc["binding_identity"]="STALE::"+str(doc.get("binding_identity"))
@@ -1296,20 +1319,37 @@ def _s14(ctx,services,state):
     operation="FULL_C11_I03_I05_REPLAY"
     plan=_fresh_replay_plan(ctx,services); plan["interrupt_probe"]=True
     plan_path=_atomic(ctx.roots.scratch/"interruption_replay_plan.json",plan)
+    child_before=_children_cpu_snapshot(); child_start=time.perf_counter_ns()
     p=subprocess.Popen([sys.executable,str(Path(__file__).resolve()),"--fresh-replay",str(plan_path)],
                        cwd=_repo(services),stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True)
-    marker=p.stdout.readline().strip() if p.stdout is not None else ""
-    if marker!="FIABC_T4_GOVERNED_REPLAY_STARTED":
+    marker_line=p.stdout.readline().strip() if p.stdout is not None else ""
+    try: marker=json.loads(marker_line)
+    except Exception:
+        p.kill(); p.wait()
+        raise BackendStop("interruption exercise did not emit governed replay marker",{"marker":marker_line})
+    if marker.get("marker")!="FIABC_T4_GOVERNED_REPLAY_STARTED":
         p.kill(); p.wait()
         raise BackendStop("interruption exercise did not enter governed replay operation",{"marker":marker})
-    p.kill(); p.wait()
+    p.kill(); p.wait(); child_stop=time.perf_counter_ns(); child_after=_children_cpu_snapshot()
     if p.returncode==0: raise BackendStop("interruption exercise did not interrupt governed replay")
+    state.setdefault("_t4_child_process_envelopes",[]).append(_child_process_event(
+        stage=ctx.stage,pid=p.pid,before=child_before,after=child_after,
+        wall_start_ns=child_start,wall_stop_ns=child_stop,
+        peak_rss_bytes=marker.get("peak_rss_bytes",0),label="INTERRUPTED_GOVERNED_REPLAY",
+    ))
     recovery_plan=_fresh_replay_plan(ctx,services)
     recovery_path=_atomic(ctx.roots.scratch/"interruption_recovery_plan.json",recovery_plan)
-    q=subprocess.run([sys.executable,str(Path(__file__).resolve()),"--fresh-replay",str(recovery_path)],
-                     cwd=_repo(services),stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True)
-    if q.returncode: raise BackendStop("interruption recovery replay failed",{"output":q.stdout[-4000:]})
-    doc=json.loads(q.stdout.strip().splitlines()[-1])
+    recovery_before=_children_cpu_snapshot(); recovery_start=time.perf_counter_ns()
+    q=subprocess.Popen([sys.executable,str(Path(__file__).resolve()),"--fresh-replay",str(recovery_path)],
+                       cwd=_repo(services),stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True)
+    qout,_=q.communicate(); recovery_stop=time.perf_counter_ns(); recovery_after=_children_cpu_snapshot()
+    if q.returncode: raise BackendStop("interruption recovery replay failed",{"output":qout[-4000:]})
+    doc=json.loads(qout.strip().splitlines()[-1])
+    state.setdefault("_t4_child_process_envelopes",[]).append(_child_process_event(
+        stage=ctx.stage,pid=q.pid,before=recovery_before,after=recovery_after,
+        wall_start_ns=recovery_start,wall_stop_ns=recovery_stop,
+        peak_rss_bytes=doc.get("peak_rss_bytes",0),label="INTERRUPTION_RECOVERY_REPLAY",
+    ))
     expected=state["outputs"].get("exact_output_identity")
     if doc.get("terminal_identity")!=expected:
         raise BackendStop("interruption recovery reproduced wrong governed terminal identity",
@@ -1357,37 +1397,56 @@ def _fresh_replay_cli(plan_path: Path) -> int:
         source_sha256=plan["source_sha256"],
     )
     services=DriverServices(repo_root=Path(plan["repo_root"]),work_root=Path(plan["work_root"]))
-    if plan.get("interrupt_probe"):
-        print("FIABC_T4_GOVERNED_REPLAY_STARTED",flush=True)
-        time.sleep(60)
-        return 22
+    child_usage_start=resource.getrusage(resource.RUSAGE_SELF)
+    child_wall_start=time.perf_counter_ns()
     state=_new_state(ctx)
     binding,projection,runtime_authority=_bind(ctx,services,state,ctx.source_path is not None)
+    if plan.get("interrupt_probe"):
+        usage=resource.getrusage(resource.RUSAGE_SELF)
+        print(json.dumps({
+            "marker":"FIABC_T4_GOVERNED_REPLAY_STARTED","pid":os.getpid(),
+            "peak_rss_bytes":max(0,int(usage.ru_maxrss)),
+            "c11_binding_established":True,
+        },sort_keys=True),flush=True)
+        time.sleep(60)
+        return 22
     body,i03_identity=_i03(binding)
     result,receipt=_i05(binding,runtime_authority)
     terminal_identity=receipt["execution_identity"]
+    child_usage_stop=resource.getrusage(resource.RUSAGE_SELF)
+    child_wall_stop=time.perf_counter_ns()
     print(json.dumps({"i03_identity":i03_identity,"terminal_identity":terminal_identity,
-                      "projection":state.get("bindings",{}).get("projection_identity") or getattr(projection,"cache_identity",None)},sort_keys=True))
+                      "projection":state.get("bindings",{}).get("projection_identity") or getattr(projection,"cache_identity",None),
+                      "pid":os.getpid(),"peak_rss_bytes":max(0,int(child_usage_stop.ru_maxrss)),
+                      "child_cpu_user_ns":max(0,int((child_usage_stop.ru_utime-child_usage_start.ru_utime)*1e9)),
+                      "child_cpu_system_ns":max(0,int((child_usage_stop.ru_stime-child_usage_start.ru_stime)*1e9)),
+                      "child_wall_start_ns":child_wall_start,"child_wall_stop_ns":child_wall_stop},sort_keys=True))
     return 0
 
 def _s15(ctx,services,state):
     plan=_fresh_replay_plan(ctx,services)
     plan_path=_atomic(ctx.roots.scratch/"fresh_replay_plan.json",plan)
     action_id=_h({"stage":ctx.stage.address,"action":"FRESH_PROCESS_REPLAY","plan":_sha(plan_path)})
-    replay_pid={"value":None}
+    replay_box={}
     def replay():
-        p=subprocess.run(
+        before=_children_cpu_snapshot(); start=time.perf_counter_ns()
+        p=subprocess.Popen(
             [sys.executable,str(Path(__file__).resolve()),"--fresh-replay",str(plan_path)],
             cwd=_repo(services),stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True,
         )
-        replay_pid["value"]=getattr(p,"pid",None)
+        out,_=p.communicate(); stop=time.perf_counter_ns(); after=_children_cpu_snapshot()
         if p.returncode:
-            raise BackendStop("fresh-process replay subprocess failed",{"returncode":p.returncode,"output":p.stdout[-4000:]})
-        line=p.stdout.strip().splitlines()[-1] if p.stdout.strip() else ""
+            raise BackendStop("fresh-process replay subprocess failed",{"returncode":p.returncode,"output":out[-4000:]})
+        line=out.strip().splitlines()[-1] if out.strip() else ""
         try: doc=json.loads(line)
-        except Exception as exc: raise BackendStop("fresh-process replay receipt malformed",{"output":p.stdout[-4000:]}) from exc
+        except Exception as exc: raise BackendStop("fresh-process replay receipt malformed",{"output":out[-4000:]}) from exc
+        replay_box["event"]=_child_process_event(
+            stage=ctx.stage,pid=p.pid,before=before,after=after,wall_start_ns=start,wall_stop_ns=stop,
+            peak_rss_bytes=doc.get("peak_rss_bytes",0),label="FRESH_PROCESS_REPLAY",
+        )
         return doc
     doc,_=_measure(ctx,state,replay,"fresh_process_replay_wall_ns",cost_class="C3",lifecycle_action_id=action_id)
+    state.setdefault("_t4_child_process_envelopes",[]).append(replay_box["event"])
     expected=state["outputs"].get("exact_output_identity")
     if doc.get("terminal_identity")!=expected:
         raise BackendStop("fresh-process replay reproduced wrong governed terminal identity",
@@ -1465,6 +1524,7 @@ def run_stage(context, services):
     state["_t4_metric_events"]=[]
     state["_t4_source_events"]=[]
     state["_t4_io_events"]=[]
+    state["_t4_child_process_envelopes"]=[]
     state["_t4_lifecycle_event"]=None
     try:
         _gate(context,state)
@@ -1475,6 +1535,7 @@ def run_stage(context, services):
             "metric_events":list(state.pop("_t4_metric_events",[])),
             "source_events":list(state.pop("_t4_source_events",[])),
             "io_events":list(state.pop("_t4_io_events",[])),
+            "child_process_envelopes":list(state.pop("_t4_child_process_envelopes",[])),
             "lifecycle_event":state.pop("_t4_lifecycle_event",None),
         }
         state.pop("_t4_state_was_new",None)
