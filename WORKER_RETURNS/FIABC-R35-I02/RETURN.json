@@ -1,0 +1,40 @@
+{
+  "schema": "FIABC_R35_I02_WORKER_RETURN@1.0.0",
+  "worker": "FIABC-R35-I02",
+  "repository": "maidiu/rawlsing",
+  "base": "agent/vozhd-premain-fiabc-s35-fanin-r1",
+  "branch": "agent/rabochii-premain-fiabc-r35-i02-derivative-parentage-r1",
+  "status": "COMPLETE__IMPLEMENTED__BROWSER_ONLY_QUALIFICATION_NOT_EXECUTED",
+  "implementation": {
+    "generic_contract": "rawlsing_next/fiabc_derivative_parentage.py",
+    "consumer_binding": "rawlsing_next/ee_p2x_darwin_stage_backend.py",
+    "hostile_tests": "tests/test_fiabc_derivative_parentage.py"
+  },
+  "bound_edges": {
+    "LITS_I_A_R5": {
+      "state": "FAIL_CLOSED_ON_EXTERNAL_PARENTAGE",
+      "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+      "receipt_path_env": "RAWLSING_EE_P2X_LITS_A_R5_PARENTAGE_RECEIPT",
+      "receipt_identity_env": "RAWLSING_EE_P2X_LITS_A_R5_PARENTAGE_RECEIPT_IDENTITY",
+      "historical_receipt_fabricated": false
+    },
+    "WVS7_STRUCTURAL_PREIMAGE": {
+      "state": "SOURCE_BACKED_RECEIPT_MINT_AND_SOURCE_FREE_EXACT_REPLAY_GUARD",
+      "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+      "materializer_blob": "11b28416aac5a4899706150721f2f8ac8bb6ee43"
+    }
+  },
+  "hostile_cases": [
+    "FORGED_DERIVATIVE_CORRECT_ASSERTED_SOURCE_SHA",
+    "COPIED_OLD_R5_ROOT",
+    "RECOMPUTED_STRUCTURAL_PREIMAGE_SELF_HASH",
+    "CORRECT_ROW_COUNT_WRONG_ANCESTOR",
+    "COMPATIBILITY_DECODED_COPY_WITHOUT_DERIVATION_RECEIPT",
+    "WRONG_READER_CONFIG",
+    "CURRENTNESS_DRIFT"
+  ],
+  "source_carriers_opened_in_browser": false,
+  "measured_p2x_run": false,
+  "tests_executed_in_browser_commission": false,
+  "terminal": "FIABC_R35_I02_GENERIC_DERIVATIVE_PARENTAGE_IMPLEMENTED__CURRENT_LITS_WVS_EDGES_BOUND"
+}
