@@ -1,0 +1,113 @@
+{
+  "schema": "CLOSED35_R2_GSS1984_RETURN@1.0.0",
+  "worker": "CLOSED35-R2-GSS1984",
+  "repository": "maidiu/rawlsing",
+  "base": {
+    "branch": "agent/vozhd-closed35-l2r-r1-fanin-r1",
+    "sha": "da33eb6a8225c14eee9490633a3263388dc5536c"
+  },
+  "branch": "agent/rabochii-closed35-r2-gss1984-realization-r1",
+  "return_path": "WORKER_RETURNS/CLOSED35-R2-GSS1984/",
+  "source": {
+    "family": "GSS",
+    "release": "1984",
+    "filename": "GSS1984.sav",
+    "sha256": "1da2df0c0e0692817081a46856deeaa6c78891101e53cf0139a971de16f7ac18",
+    "authority72_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED"
+  },
+  "accepted_authority": {
+    "authority71_r05_head": "db3588720830d501e068cdf1b754dd4997457e7e",
+    "authority72_r10_head": "3356b26f2dc518043ffde171c2dca0470b5ac79f",
+    "documentary_adjudication_reopened": false
+  },
+  "disposition": "SOURCE_SPECIFIC_REALIZATION_IMPLEMENTED",
+  "semantic_owner": "GSS1984_SEMANTIC_OWNER_V1",
+  "implementation": {
+    "candidate_neutral": true,
+    "hard_replay_identity": [
+      "canonical_source_sha256",
+      "zero_based_source_row_ordinal"
+    ],
+    "native_id_cross_release_identity": false,
+    "forms_preserved": [
+      "X",
+      "Y",
+      "Z"
+    ],
+    "modules_preserved": [
+      "MAIN_QUESTIONNAIRE",
+      "MAS",
+      "SAQ"
+    ],
+    "ordered_household_slot_family": "where1..where14",
+    "ordered_household_rank_preserved": true,
+    "physical_adjacency_as_semantic_rank": false,
+    "physical_carriers_preserved": [
+      "FORM",
+      "FORMWT",
+      "VPSU",
+      "VSTRAT"
+    ],
+    "default_weight_selected": false,
+    "automatic_survey_design_semantics": false,
+    "routing_from_missingness": false,
+    "longitudinal_identity_inferred": false
+  },
+  "bounded_unknowns": [
+    "VARIABLE_FORM_MEMBERSHIP_UNMAPPED",
+    "VARIABLE_MODULE_MEMBERSHIP_UNMAPPED",
+    "ROUTING_APPLICABILITY_UNMAPPED",
+    "WEIGHT_DESIGN_USE_UNMAPPED",
+    "CROSS_RELEASE_EQUIVALENCE_UNMAPPED",
+    "NATIVE_ID_SCOPE_BEYOND_EXACT_SNAPSHOT"
+  ],
+  "s35_edge_classes": [
+    "EC01",
+    "EC09",
+    "EC10",
+    "EC12",
+    "EC14"
+  ],
+  "r35_hooks": {
+    "i01": "REQUIRED_LATER__PHYSICAL_METADATA_RECEIPT",
+    "i02": "REQUIRED_LATER_IF_DERIVATIVE__VERIFIED_PARENTAGE_TO_CANONICAL_SHA",
+    "i03": "REQUIRED_LATER__WHOLE_SOURCE_PHYSICAL_EQUIVALENCE_AT_EC01_EC09_EC10_EC12_EC14_SCOPE"
+  },
+  "test_protocol": {
+    "status": "TESTS_AUTHORED__NOT_EXECUTED",
+    "rejection_tests": [
+      "THREE_FORM_COLLAPSE",
+      "HOUSEHOLD_SLOT_UNORDERED_SET_CONVERSION",
+      "PHYSICAL_ADJACENCY_AS_SLOT_RANK",
+      "MAS_SAQ_CONFLATION",
+      "MODULE_MEMBERSHIP_FROM_MISSINGNESS",
+      "LONGITUDINAL_IDENTITY_INVENTION",
+      "AUTOMATIC_SURVEY_DESIGN_SEMANTICS_FROM_CARRIER_NAMES",
+      "FORMWT_DEFAULT_INVENTION",
+      "ROUTING_FROM_MISSINGNESS",
+      "OTHER_GSS_RELEASE_LAW_LEAKAGE",
+      "SOURCE_SHA_DRIFT",
+      "CANDIDATE_SPECIFIC_SEMANTIC_DIVERGENCE",
+      "COMPOUND_EDGE_PARTIAL_PASS_LAUNDERING"
+    ]
+  },
+  "outputs": [
+    "00_RETURN.md",
+    "01_REALIZATION_CONTRACT.md",
+    "02_FORM_MODULE_WEIGHT_MAP.csv",
+    "03_PHYSICAL_EDGE_BINDING.json",
+    "04_TEST_PROTOCOL.md",
+    "RETURN.json"
+  ],
+  "proof_boundary": {
+    "raw_source_bytes_opened": false,
+    "real_source_processing_executed": false,
+    "whole_source_physical_equivalence_passed": false,
+    "abc_candidates_executed": false,
+    "i05_passed": false,
+    "source_certified_beyond_accepted_authority": false,
+    "measured_p2x_run": false
+  },
+  "terminal": "CLOSED35_R2_GSS1984_SOURCE_SPECIFIC_REALIZATION_IMPLEMENTED__READY_FOR_ABC_QUALIFICATION",
+  "commit_sha_note": "Final Git commit SHA is reported externally because a commit cannot contain its own hash in its preimage."
+}

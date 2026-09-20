@@ -1,0 +1,148 @@
+{
+  "schema": "CLOSED35_GSS1984_PHYSICAL_EDGE_BINDING@1.0.0",
+  "worker": "CLOSED35-R2-GSS1984",
+  "semantic_owner": "GSS1984_SEMANTIC_OWNER_V1",
+  "source": {
+    "family": "GSS",
+    "release": "1984",
+    "filename": "GSS1984.sav",
+    "sha256": "1da2df0c0e0692817081a46856deeaa6c78891101e53cf0139a971de16f7ac18",
+    "format": "sav",
+    "reader_mode": "SAV_NATIVE_GOVERNED",
+    "authority72_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+    "replay_identity": [
+      "canonical_source_sha256",
+      "zero_based_source_row_ordinal"
+    ]
+  },
+  "accepted_packet_provenance": {
+    "s35_base": "da33eb6a8225c14eee9490633a3263388dc5536c",
+    "authority71_r05_head": "db3588720830d501e068cdf1b754dd4997457e7e",
+    "authority72_r10_head": "3356b26f2dc518043ffde171c2dca0470b5ac79f"
+  },
+  "inherited_source_facts_not_reobserved_by_this_worker": {
+    "rows": 1473,
+    "variables": 675,
+    "form_topology": "THREE_FORM__X_Y_Z",
+    "instrument_surfaces": [
+      "MAIN_QUESTIONNAIRE",
+      "MAS",
+      "SAQ"
+    ],
+    "physical_carriers_preserved": [
+      "FORM",
+      "FORMWT",
+      "VPSU",
+      "VSTRAT"
+    ],
+    "ordered_household_slot_family": {
+      "variables": "where1..where14",
+      "semantic_rank": "1..14",
+      "accepted_physical_adjacency_trap": "1,10,11,12,13,14,2,...,9"
+    },
+    "native_id_scope": "SOURCE_LOCAL_ATTRIBUTE_CHECK_ONLY__NO_CROSS_RELEASE_IDENTITY",
+    "unresolved": [
+      "EXHAUSTIVE_VARIABLE_FORM_MODULE_ROUTING_BINDING",
+      "WEIGHT_ESTIMAND_AND_DESIGN_USE_BINDING",
+      "CROSS_RELEASE_EQUIVALENCE",
+      "NATIVE_ID_SCOPE_BEYOND_EXACT_SNAPSHOT"
+    ]
+  },
+  "s35_edge_classes": [
+    {
+      "id": "EC01",
+      "name": "FORMAT_FAMILY_SAV_DTA",
+      "binding": "SAV_NATIVE_GOVERNED",
+      "required": [
+        "exact source sha",
+        "physical metadata",
+        "variable inventory/order",
+        "raw storage values",
+        "row replay identity"
+      ],
+      "semantic_effect": "NONE__FORMAT_HANDLING_CANNOT_CREATE_GSS1984_SEMANTICS"
+    },
+    {
+      "id": "EC09",
+      "name": "ORDERED_REPEATED_SLOT_TOPOLOGY",
+      "binding": {
+        "family": "where1..where14",
+        "occurrence_count": 14,
+        "semantic_rank_rule": "PARSE_GOVERNED_SLOT_IDENTITY_NOT_PHYSICAL_ADJACENCY",
+        "flattening_allowed": false,
+        "deduplication_allowed": false
+      },
+      "semantic_effect": "OCCURRENCE_RANK_AND_IDENTITY_SURVIVE_PHYSICAL_LAYOUT"
+    },
+    {
+      "id": "EC10",
+      "name": "FORM_MODULE_SKIP_ROUTING_CARRIERS",
+      "binding": {
+        "form_coordinate": "FORM",
+        "forms": [
+          "X",
+          "Y",
+          "Z"
+        ],
+        "modules": [
+          "MAIN_QUESTIONNAIRE",
+          "MAS",
+          "SAQ"
+        ],
+        "missingness_as_routing_authority": false,
+        "unmapped_route_state": "BOUNDED_UNKNOWN__ROUTING_APPLICABILITY_UNMAPPED"
+      },
+      "semantic_effect": "DOCUMENTARY_ROUTING_ONLY__PHYSICAL_STATE_PRESERVED_SEPARATELY"
+    },
+    {
+      "id": "EC12",
+      "name": "WEIGHT_DESIGN_MULTIPLICITY_AND_DOMAIN",
+      "binding": {
+        "preserve_carriers": [
+          "FORMWT",
+          "VPSU",
+          "VSTRAT"
+        ],
+        "default_weight": null,
+        "default_estimand": null,
+        "automatic_variance_design": false,
+        "unmapped_use_state": "BOUNDED_UNKNOWN__WEIGHT_DESIGN_USE_UNMAPPED"
+      },
+      "semantic_effect": "PRESENCE_OR_NAME_NEVER_AUTHORIZES_ANALYTICAL_USE"
+    },
+    {
+      "id": "EC14",
+      "name": "COMPOUND_EDGE_INTERACTION_COURT",
+      "binding": {
+        "constituent_edges": [
+          "EC01",
+          "EC09",
+          "EC10",
+          "EC12"
+        ],
+        "rule": "ALL_CONSTITUENT_INVARIANTS_MUST_HOLD_SIMULTANEOUSLY",
+        "special_adapter_allowed": false
+      },
+      "semantic_effect": "COMPOUND_COMPLEXITY_CHANGES_HOSTILE_COVERAGE_NOT_SEMANTIC_LAW"
+    }
+  ],
+  "r35_hooks": {
+    "physical_metadata_requirement": "R35_I01_PHYSICAL_METADATA_RECEIPT",
+    "derivative_parentage_requirement": "R35_I02_VERIFIED_DERIVATIVE_PARENTAGE_TO_CANONICAL_SHA",
+    "whole_source_equivalence_requirement": "R35_I03_WHOLE_SOURCE_PHYSICAL_EQUIVALENCE_AT_EC01_EC09_EC10_EC12_EC14_SCOPE",
+    "current_status": "REQUIRED_LATER__NOT_EXECUTED_BY_THIS_BROWSER_REALIZATION"
+  },
+  "candidate_neutrality": {
+    "candidate_specific_semantics_allowed": false,
+    "semantic_owner_frozen_before_candidate_start": true,
+    "source_specific_physical_adapter_added": false
+  },
+  "proof_boundary": {
+    "raw_sav_opened": false,
+    "real_source_processing_executed": false,
+    "measured_p2x_run": false,
+    "whole_source_physical_equivalence_executed": false,
+    "abc_candidates_executed": false,
+    "i05_passed": false
+  }
+}
