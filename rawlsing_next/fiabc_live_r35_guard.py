@@ -12,6 +12,7 @@ from typing import Any, Mapping
 from rawlsing_next.fiabc_whole_source_physical_equivalence import (
     PASS_STATUS,
     PhysicalEquivalenceError,
+    canonical_digest,
     verify_candidate_physical_equivalence,
     verify_canonical_expectation,
 )
@@ -106,7 +107,7 @@ def verify_live_two_source_physical_guard(document: Mapping[str, Any]) -> dict[s
             expectation=_mapping(row.get("expectation"),f"{source_id}.expectation"),
             realizations=_mapping(row.get("realizations"),f"{source_id}.realizations"),
         )
-    return {
+    body={
         "schema":LIVE_GUARD_RECEIPT_SCHEMA,
         "status":LIVE_GUARD_PASS,
         "sources":receipts,
@@ -118,6 +119,8 @@ def verify_live_two_source_physical_guard(document: Mapping[str, Any]) -> dict[s
         "closed_35_universality_claimed":False,
         "capability_105_cells_claimed":False,
     }
+    body["receipt_identity"]=canonical_digest(body)
+    return body
 
 
 __all__=[

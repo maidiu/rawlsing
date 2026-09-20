@@ -106,6 +106,7 @@ def test_two_source_physical_guard_pass_is_not_semantic_or_certification_pass():
     assert receipt["physical_equivalence_upgrades_semantic_failure"] is False
     assert receipt["semantic_pass_manufactures_physical_pass"] is False
     assert receipt["whole_source_certification_claimed"] is False
+    assert len(receipt["receipt_identity"])==64
 
 def test_same_semantic_digest_cannot_hide_physical_witness_drift():
     doc=_document()
