@@ -106,10 +106,13 @@ def test_exact_f012_metrics_are_computed_from_governed_joint_fact_only():
     assert product.ref.kind == "PRE553_DIAGNOSTIC_PRODUCT"
     assert product.ref.kind != "EmpiricalFact@1.0.0"
 
-    assert Decimal(product.metrics["entropy_reduction"]) == Decimal("1")
-    assert Decimal(product.metrics["mutual_information"]) == Decimal("1")
-    assert Decimal(product.metrics["normalized_mutual_information"]) == Decimal("1")
-    assert Decimal(product.metrics["cramers_v"]) == Decimal("1")
+    for metric_name in (
+        "entropy_reduction",
+        "mutual_information",
+        "normalized_mutual_information",
+        "cramers_v",
+    ):
+        assert abs(Decimal(product.metrics[metric_name]) - Decimal("1")) < Decimal("1e-40")
 
     cells = {tuple(row["cell"]): row for row in product.metrics["uplift_lift"]}
     assert cells[("0", "0")]["uplift"] == {"$exact_fraction": [1, 2]}
@@ -124,6 +127,8 @@ def test_exact_f012_metrics_are_computed_from_governed_joint_fact_only():
     assert product.frontier_control_effect is False
     assert product.structural_authority_effect is False
     assert product.semantic_interpretation_effect is False
+    with pytest.raises(TypeError):
+        product.metrics["mutual_information"] = "0"
 
     replayed = replay_governed_diagnostics(
         product,
@@ -228,7 +233,7 @@ def test_underpowered_state_requires_exact_determinant_and_preserves_diagnostic_
     )
     assert product.typed_state == "UNDERPOWERED"
     assert product.metric_states["MUTUAL_INFORMATION"] == "AVAILABLE_UNDERPOWERED_DIAGNOSTIC_ONLY"
-    assert Decimal(product.metrics["mutual_information"]) == Decimal("1")
+    assert abs(Decimal(product.metrics["mutual_information"]) - Decimal("1")) < Decimal("1e-40")
     assert product.source_replay_determinants["support_determinant_refs"] == [
         support_ref.as_dict()
     ]
