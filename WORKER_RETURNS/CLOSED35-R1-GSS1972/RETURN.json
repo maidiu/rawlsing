@@ -1,0 +1,75 @@
+{
+  "schema": "CLOSED35_R1_GSS1972_RETURN@1.0.0",
+  "worker": "CLOSED35-R1-GSS1972",
+  "repository": "maidiu/rawlsing",
+  "base": {
+    "branch": "agent/vozhd-closed35-l2-documentary-fanin-r1",
+    "sha": "5c582e2325ecc2b37377cd518fe4c456331c81d8"
+  },
+  "branch": "agent/rabochii-closed35-r1-gss1972-realization-r1",
+  "return_path": "WORKER_RETURNS/CLOSED35-R1-GSS1972/",
+  "source": {
+    "filename": "GSS1972.sav",
+    "sha256": "e368fc0f1d141b201900185c919c48ab1de1c4c7815bccf83a6e4fb224293204"
+  },
+  "disposition": "IMPLEMENTED__CANDIDATE_NEUTRAL_SOURCE_SPECIFIC_SEMANTIC_REALIZATION__QUALIFICATION_NOT_EXECUTED",
+  "terminal": "CLOSED35_R1_GSS1972_SOURCE_SPECIFIC_REALIZATION_IMPLEMENTED__READY_FOR_ABC_QUALIFICATION",
+  "realized_authority": {
+    "hard_replay_identity": [
+      "canonical_source_sha256",
+      "zero_based_source_row_ordinal"
+    ],
+    "native_id_scope": "SOURCE_LOCAL_ATTRIBUTE_CHECK_ONLY",
+    "cross_release_identity": "REJECTED",
+    "design": "1960_FRAME_BLOCK_QUOTA",
+    "form": "NOT_APPLICABLE_1972",
+    "ballot": "NOT_APPLICABLE_1972",
+    "routing_authority": "OFFICIAL_1972_GSS_QUESTIONNAIRE",
+    "missingness_can_create_routing": false,
+    "q91_occurrence_roles": [
+      "respondent",
+      "father_or_substitute",
+      "mother_or_substitute",
+      "spouse_if_currently_married"
+    ],
+    "q51_q81": "EXCLUDED_NON_GSS_INSTRUMENT_BLOCK",
+    "weight_carriers_preserved": [
+      "wtssall",
+      "wtssps"
+    ],
+    "default_person_level_population_weight": "wtssps",
+    "legacy_person_weight": "wtssall",
+    "modern_variance_pair": "UNSUPPORTED__NO_AUTHORIZED_1972_VARIANCE_PAIR"
+  },
+  "s35_edge_classes": [
+    "EC01",
+    "EC07",
+    "EC10",
+    "EC12"
+  ],
+  "negative_admissions": {
+    "later_form_semantics": "NOT_APPLICABLE_1972",
+    "later_ballot_semantics": "NOT_APPLICABLE_1972",
+    "modern_vpsu_vstrat": "UNSUPPORTED__NOT_AUTHORIZED_FOR_1972",
+    "cross_release_native_id": "REJECTED",
+    "form_ballot_weights": "NOT_APPLICABLE_1972",
+    "post_2004_nonresponse_weights": "NOT_APPLICABLE_1972"
+  },
+  "outputs": [
+    "00_RETURN.md",
+    "01_REALIZATION_CONTRACT.md",
+    "02_ROUTING_WEIGHT_PROJECTION_MAP.csv",
+    "03_PHYSICAL_EDGE_BINDING.json",
+    "04_TEST_PROTOCOL.md",
+    "RETURN.json"
+  ],
+  "proof_boundary": {
+    "raw_sav_opened": false,
+    "source_processing_executed": false,
+    "measured_p2x_run": false,
+    "row_level_realization_executed": false,
+    "abc_qualification_executed": false
+  },
+  "qualification_ready": true,
+  "commit_sha_note": "Final Git commit SHA is reported externally because a commit cannot contain its own hash in its preimage."
+}
