@@ -1,0 +1,81 @@
+{
+  "schema": "FIABC_T2_CURRENT_SIX_CELL_EXECUTION_BINDING_RETURN@1.0.0",
+  "worker": "FIABC-T2",
+  "repo": "maidiu/rawlsing",
+  "branch": "agent/rabochii-premain-fiabc-t2-candidate-c-six-cell-binding-r1",
+  "base_branch": "agent/rabochii-premain-fiabc-t1-live-p2x-substrate-transposition-r1",
+  "base_sha": "86daba6838d72c70b1452db4178c338185e6e377",
+  "implementation_tip_before_return_packet": "b1697105c80294341fc8c6fee91e0caef3d6e9b6",
+  "return_path": "WORKER_RETURNS/FIABC-T2/",
+  "status": "PASS__CURRENT_SIX_CELL_EXECUTION_CONTRACT_IMPLEMENTED__UNMEASURED",
+  "terminal": "FIABC_T2_CURRENT_SIX_CELL_EXECUTION_CONTRACT_IMPLEMENTED__READY_FOR_NEXT_LAYER",
+  "current_manifest": "WORKER_RETURNS/FIABC-T2/01_SIX_CELL_EXECUTION_MANIFEST.json",
+  "exact_cells": [
+    "LITS_I/A",
+    "LITS_I/B",
+    "LITS_I/C",
+    "WVS7/A",
+    "WVS7/B",
+    "WVS7/C"
+  ],
+  "candidate_c": {
+    "policy": "SOURCE_BACKED_HYBRID_WITH_REGENERABLE_ACCELERATORS",
+    "owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+    "owner_blob": "abfdc91a71ef5e18c4a8a6bf62fa65750d8d9889",
+    "lits_i": {
+      "permitted_accelerators": [
+        "CACC1_LITS1_SEMANTIC_EXECUTION_BUNDLE",
+        "CACC2_FRONTIER_ATOMIC_PREDICATE_RISK_MASK_BANK"
+      ],
+      "applicable_accelerators_current_f02": [],
+      "realization": "EXACT_SOURCE_BACKED_FALLBACK_FOR_CURRENT_F02",
+      "q310_q311_required": true,
+      "cacc3": false
+    },
+    "wvs7": {
+      "permitted_accelerators": [],
+      "realization": "EXACT_SOURCE_BACKED_ZERO_ACCELERATOR",
+      "wvs_specific_cacc": false
+    },
+    "candidate_b_identity_substitution": false
+  },
+  "source_roots": {
+    "LITS_I": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "WVS7": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+    "equality_across_abc_required": true,
+    "alternate_source_allowed": false,
+    "derivative_requires_same_root_proof": true,
+    "derivative_requires_lawful_accounting_classification": true
+  },
+  "historical_law": {
+    "continuation_map_sha256": "ffe7d40e5f2051f839a3a646fd434fbee3b93371e7571d959805ca7ca74e0422",
+    "immutable": true,
+    "current_capability_law": false,
+    "failure_receipts": [
+      "WORKER_RETURNS/EE-P2X/05_LITS_I_C_TERMINAL_BINDING_BLOCKER.json",
+      "WORKER_RETURNS/EE-P2X/13_WVS7_C_PRESERVED_PORTABILITY_FAILURE.json"
+    ]
+  },
+  "production_files_changed": [
+    "rawlsing_next/ee_p2x_darwin_court_driver.py",
+    "rawlsing_next/ee_p2x_darwin_stage_backend.py",
+    "rawlsing_next/pre553_candidate_c_production_binding.py"
+  ],
+  "tests_added_or_transposed": [
+    "rawlsing_next/tests/test_fiabc_t2_six_cell_execution_binding.py",
+    "rawlsing_next/tests/test_pre553_candidate_c_production_binding.py"
+  ],
+  "required_return_files": [
+    "00_RETURN.md",
+    "01_SIX_CELL_EXECUTION_MANIFEST.json",
+    "02_CANDIDATE_C_LIVE_BINDING_DIFF.md",
+    "03_SOURCE_ROOT_EQUALITY_ASSERTIONS.csv",
+    "04_TEST_COMMANDS.md",
+    "RETURN.json"
+  ],
+  "tests_executed_by_worker": false,
+  "tests_execution_disposition": "UNEXECUTED__GITHUB_BROWSER_WORKER_SURFACE",
+  "measured_p2x_run": false,
+  "merge_performed": false,
+  "note": "RETURN.json cannot self-embed the commit SHA that contains it; resolve the branch ref after this return-packet commit."
+}
