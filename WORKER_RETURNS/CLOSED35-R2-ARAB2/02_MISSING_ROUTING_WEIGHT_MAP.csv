@@ -1,0 +1,18 @@
+surface,source_entity,physical_or_documentary_state,semantic_state,projection_rule,forbidden_inference,authority_grain
+SOURCE_ROOT,Arab Barometer Wave 2.sav,SHA256=6529841b97bd56463490d810ad24ceaa4866066d12e4651a7081682d413606a1,EXACT_SOURCE_BOUND,Require exact canonical root,Alternate same-wave source substitution,S35 canonical registry
+REPLAY_IDENTITY,SOURCE_ROW,SOURCE_SHA256+ROW_ORDINAL,HARD_REPLAY_IDENTITY,Always preserve row ordinal,QID or COUNTRY+QID promoted to replay key,Authority71/72 + S35
+QID,QID,Questionnaire ID number,SOURCE_LOCAL_DOCUMENTARY_CONCEPT,Preserve as source-local carrier,Injectivity treated as identity jurisdiction,Wave 2 questionnaire
+COUNTRY_QID,COUNTRY+QID,Empirically injective in accepted snapshot,NO_HARD_REPLAY_AUTHORITY,May be retained as evidence only,Empirical uniqueness treated as semantic identity,Authority71 gap AB2-G02
+Q2062_SYSTEM,Q2062,SYSTEM_MISSING,BOUNDED_UNKNOWN,Preserve physical system-missing state independently,SYSTEM_MISSING treated as routed/not-asked reason,Authority71 hostile fixture AB2-Q2062-SYS-001
+Q2062_ZERO,Q2062,ORDINARY_STORED_VALUE raw=0,BOUNDED_UNKNOWN,Preserve ordinary numeric zero independently,0 coerced to SYSTEM_MISSING,Authority71 hostile fixture AB2-Q2062-ORD-001
+Q2062_ZERO_LABEL,Q2062,source dictionary label "0. missing",BOUNDED_UNKNOWN,Retain label as source metadata only,Dictionary wording treated as exact semantic reason,Authority71 hostile fixture AB2-Q2062-DICT-001 + gap AB2-G01
+Q101_DK,Q101,ordinary code 8,DOCUMENTARY_CODE_SEMANTICS_RESOLVED,Map only by exact Wave 2 questionnaire authority,Same code generalized to other variables/waves,Wave 2 questionnaire
+Q101_REFUSAL,Q101,ordinary code 9,DOCUMENTARY_CODE_SEMANTICS_RESOLVED,Map only by exact Wave 2 questionnaire authority,Same code generalized to other variables/waves,Wave 2 questionnaire
+Q101_ZERO,Q101,ordinary code 0,BOUNDED_UNKNOWN,Preserve raw ordinary value,Zero semantics copied from Q2062/source label,Authority71 gap AB2-G01
+Q206_RANK1,Q2061,rank=1 MOST_IMPORTANT_CHALLENGE,ORDERED_RANKED_SLOT,Preserve slot identity/rank/multiplicity,Flattened unordered challenge set,Wave 2 questionnaire pp11-13
+Q206_RANK2,Q2062,rank=2 SECOND_MOST_IMPORTANT_CHALLENGE,ORDERED_RANKED_SLOT,Preserve slot identity/rank/multiplicity,Flattened unordered challenge set,Wave 2 questionnaire pp11-13
+Q2062_LEBANON,Q2062,country=Lebanon,SECOND_RANK_NOT_RECORDED_BY_INSTRUMENT,Apply only exact documentary route,Route inferred from Q2062 missingness,Wave 2 questionnaire pp11-13
+COUNTRY_MODULE_ROUTING,country-specific source variables,physical presence/missingness,BOUNDED_UNKNOWN until exact documentary join,Preserve carrier and join explicit programmer rule,Missingness alone used as applicability authority,Authority71 gap AB2-G04
+SAMP,SAMP,1=MAIN_SAMPLE;2=ADDITIONAL_SAMPLE,DOCUMENTARY_SAMPLE_CLASSIFICATION,Preserve exact source sample carrier,Sample code treated as weight estimand or identity,Wave 2 questionnaire p4
+WT,WT,source carrier present,BOUNDED_UNKNOWN_ESTIMAND,Preserve carrier without default use,Name/presence/magnitude treated as estimand/default weight,Authority71 gap AB2-G03
+ABC_OWNER,A/B/C,ARAB2_SEMANTIC_OWNER_V1,CANDIDATE_NEUTRAL,All candidates share one realization identity,Candidate-specific missing/routing/weight semantics,R2 realization contract

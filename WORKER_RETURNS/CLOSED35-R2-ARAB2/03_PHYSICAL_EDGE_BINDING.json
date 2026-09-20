@@ -1,0 +1,178 @@
+{
+  "schema": "CLOSED35_R2_ARAB2_PHYSICAL_EDGE_BINDING@1.0.0",
+  "worker": "CLOSED35-R2-ARAB2",
+  "source": {
+    "family": "Arab Barometer",
+    "release": "Wave 2",
+    "filename": "Arab Barometer Wave 2.sav",
+    "sha256": "6529841b97bd56463490d810ad24ceaa4866066d12e4651a7081682d413606a1",
+    "format": "sav",
+    "physical_mode": "SAV_NATIVE_GOVERNED",
+    "source_declared_encoding": "UTF-8",
+    "source_declared_character_code": 65001,
+    "replay_identity": [
+      "source_sha256",
+      "zero_based_source_row_ordinal"
+    ],
+    "launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED"
+  },
+  "accepted_packet_facts_without_reexecution": {
+    "rows": 12782,
+    "logical_variables": 468,
+    "native_spSS_mr_sets": 0,
+    "q2062_hostile_classes": [
+      "SYSTEM_MISSING",
+      "ORDINARY_STORED_ZERO_WITH_SOURCE_DICTIONARY_LABEL_0_MISSING"
+    ],
+    "ranked_slots": [
+      {
+        "variable": "Q2061",
+        "rank": 1
+      },
+      {
+        "variable": "Q2062",
+        "rank": 2
+      }
+    ],
+    "preserved_carriers": [
+      "QID",
+      "COUNTRY",
+      "SAMP",
+      "WT"
+    ],
+    "bounded_unknowns": [
+      "Q2062_CODE0_EXACT_SEMANTIC_REASON",
+      "Q101_CODE0_EXACT_SEMANTIC_REASON",
+      "WT_ESTIMAND",
+      "WT_NORMALIZATION",
+      "WT_RELATION_TO_SAMP",
+      "UNJOINED_COUNTRY_MODULE_APPLICABILITY",
+      "CROSS_WAVE_SEMANTIC_EQUIVALENCE"
+    ]
+  },
+  "s35_edge_classes": [
+    {
+      "id": "EC01",
+      "name": "FORMAT_FAMILY_SAV_DTA",
+      "arab2_binding": "SAV_NATIVE_GOVERNED",
+      "required_dimensions": [
+        "physical_metadata",
+        "variable_inventory_order",
+        "raw_storage_values",
+        "row_replay_identity"
+      ],
+      "semantic_overlay": "NONE__FORMAT_HAS_NO_SEMANTIC_AUTHORITY"
+    },
+    {
+      "id": "EC05",
+      "name": "PHYSICAL_MISSINGNESS_MULTICLASS",
+      "required_dimensions": [
+        "raw_storage_values",
+        "physical_missing_states",
+        "missing_declarations"
+      ],
+      "arab2_binding": {
+        "q2062_system_missing": "PRESERVE_AS_SYSTEM_MISSING",
+        "q2062_ordinary_zero": "PRESERVE_AS_ORDINARY_STORED_VALUE",
+        "q2062_zero_source_dictionary_label": "PRESERVE_AS_METADATA",
+        "q2062_zero_semantic_refinement": "BOUNDED_UNKNOWN",
+        "variable_wide_missing_normalization": "FORBIDDEN"
+      }
+    },
+    {
+      "id": "EC09",
+      "name": "ORDERED_REPEATED_SLOT_TOPOLOGY",
+      "required_dimensions": [
+        "ordered_repeated_slot_topology"
+      ],
+      "arab2_binding": {
+        "slots": [
+          "Q2061:RANK_1:MOST_IMPORTANT_CHALLENGE",
+          "Q2062:RANK_2:SECOND_MOST_IMPORTANT_CHALLENGE"
+        ],
+        "native_spSS_mr_set_claim": false,
+        "flattening": "FORBIDDEN",
+        "reordering": "FORBIDDEN",
+        "deduplication": "FORBIDDEN"
+      }
+    },
+    {
+      "id": "EC10",
+      "name": "FORM_MODULE_SKIP_ROUTING_CARRIERS",
+      "required_dimensions": [
+        "form_module_skip_routing_carriers"
+      ],
+      "arab2_binding": {
+        "missingness_as_routing_authority": false,
+        "explicit_rule": "LEBANON_Q2062_SECOND_RANK_NOT_RECORDED",
+        "unclosed_country_module_routes": "BOUNDED_UNKNOWN_UNTIL_EXACT_DOCUMENTARY_JOIN"
+      }
+    },
+    {
+      "id": "EC12",
+      "name": "WEIGHT_DESIGN_MULTIPLICITY_AND_DOMAIN",
+      "required_dimensions": [
+        "weight_design_variables"
+      ],
+      "arab2_binding": {
+        "preserve_weight_carriers": [
+          "WT"
+        ],
+        "preserve_sample_carriers": [
+          "SAMP"
+        ],
+        "default_weight": null,
+        "wt_estimand": "BOUNDED_UNKNOWN",
+        "wt_normalization": "BOUNDED_UNKNOWN",
+        "wt_relation_to_samp": "BOUNDED_UNKNOWN",
+        "name_or_presence_authorizes_weight_use": false
+      }
+    },
+    {
+      "id": "EC14",
+      "name": "COMPOUND_EDGE_INTERACTION_COURT",
+      "required_dimensions": [
+        "EC01",
+        "EC05",
+        "EC09",
+        "EC10",
+        "EC12"
+      ],
+      "arab2_binding": "ALL_CONSTITUENT_INVARIANTS_SURVIVE_SIMULTANEOUSLY",
+      "physical_adapter_count_added": 0
+    }
+  ],
+  "r35_hooks": {
+    "i01": {
+      "schema": "PRE553_PHYSICAL_METADATA@1.0.0",
+      "semantic_authority": false
+    },
+    "i02": {
+      "schema": "FIABC_DERIVATIVE_PARENTAGE_BUNDLE@1.0.0",
+      "required_for_non_direct_raw": true,
+      "semantic_authority": false
+    },
+    "i03": {
+      "source_scope_schema": "FIABC_R35_I03_SOURCE_PHYSICAL_SCOPE@1.0.0",
+      "canonical_expectation_schema": "FIABC_R35_I03_CANONICAL_PHYSICAL_EXPECTATION@1.0.0",
+      "candidate_realization_schema": "FIABC_R35_I03_CANDIDATE_PHYSICAL_REALIZATION@1.0.0",
+      "receipt_schema": "FIABC_R35_I03_WHOLE_SOURCE_PHYSICAL_EQUIVALENCE_RECEIPT@1.0.0",
+      "semantic_authority": false
+    }
+  },
+  "composition_law": {
+    "candidate_specific_semantics_allowed": false,
+    "semantic_owner": "ARAB2_SEMANTIC_OWNER_V1",
+    "generic_semantic_surface": "PRE553_SOURCE_BACKED_C11_FACADE@1.0.0",
+    "real_source_physical_equivalence_required_later": true
+  },
+  "proof_boundary": {
+    "raw_sav_opened_by_this_worker": false,
+    "source_processing_executed_by_this_worker": false,
+    "synthetic_tests_executed_by_this_worker": false,
+    "measured_p2x_run": false,
+    "physical_equivalence_executed": false,
+    "abc_qualification_executed": false,
+    "source_certification_claimed": false
+  }
+}
