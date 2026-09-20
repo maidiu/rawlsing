@@ -10,9 +10,14 @@ from rawlsing_next.pre553_diagnostics import (
     replay_governed_diagnostics,
 )
 from rawlsing_next.pre553_discovery_exact import ExactBoundedCoverageError
+from rawlsing_next.pre553_empirical_authority import AuthorityRegistry, Pre553AuthorityError
 from rawlsing_next.pre553_empirical_objects import (
     EmpiricalFact,
     Pre553SemanticCollapseError,
+)
+from rawlsing_next.pre553_structural_admission import (
+    StructuralAdmissionError,
+    evaluate_structural_empirical_admission,
 )
 from rawlsing_next.tests.test_pre553_discovery_exact import (
     _atom,
@@ -239,6 +244,49 @@ def test_underpowered_state_requires_exact_determinant_and_preserves_diagnostic_
     )
 
 
+def test_uncertainty_unquantified_preserves_state_but_not_point_diagnostic_loss():
+    source, _qauth, _predicate, query, registry, fact = _joint_fixture("i01-uncertainty")
+    uncertain = EmpiricalFact(
+        typed_state="UNCERTAINTY_UNQUANTIFIED",
+        authority_snapshot_refs=fact.authority_snapshot_refs,
+        dependency_refs=fact.dependency_refs,
+        producer_replay_locator_or_reference_root=fact.producer_replay_locator_or_reference_root,
+        **dict(fact.semantic_fields),
+    )
+    product = produce_governed_diagnostics(
+        fact=uncertain,
+        query=query,
+        authority_registry=registry,
+        release_refs=(source["release_ref"],),
+    )
+    assert product.typed_state == "UNCERTAINTY_UNQUANTIFIED"
+    assert product.metric_states["MUTUAL_INFORMATION"] == "AVAILABLE_DIAGNOSTIC_ONLY"
+    assert product.metric_states["JOINT_CONFIDENCE"] == "UNCERTAINTY_UNQUANTIFIED"
+    assert abs(Decimal(product.metrics["mutual_information"]) - Decimal("1")) < Decimal("1e-40")
+    assert product.metrics["joint_confidence"] is None
+
+
+def test_missing_exact_authority_and_fact_query_mismatch_fail_closed():
+    source, qauth, predicate, query, _registry_obj, fact = _joint_fixture("i01-authority")
+    registry_missing_query_authority = AuthorityRegistry(source["authorities"])
+    with pytest.raises(Pre553AuthorityError):
+        produce_governed_diagnostics(
+            fact=fact,
+            query=query,
+            authority_registry=registry_missing_query_authority,
+            release_refs=(source["release_ref"],),
+        )
+
+    other_query = _query(source, qauth, predicate, ("X", "Y"), tag="other-exact-query")
+    with pytest.raises(Pre553DiagnosticError, match="fact/query exact identity mismatch"):
+        produce_governed_diagnostics(
+            fact=fact,
+            query=other_query,
+            authority_registry=_registry(source, qauth),
+            release_refs=(source["release_ref"],),
+        )
+
+
 def test_positive_unary_fact_is_typed_not_applicable_not_zero_association():
     source = _build_source("i01-unary", [
         {"id": "R1", "responses": {"Y": 0}},
@@ -340,6 +388,25 @@ def test_hostile_authority_roles_are_rejected(purpose):
 
     assert assert_diagnostic_only_use(product, purpose="REPORTING") is product
     assert assert_diagnostic_only_use(product, purpose="RANKING_NONCONTROLLING") is product
+
+
+def test_actual_structural_admission_owner_rejects_diagnostic_product_as_fact():
+    _source, qauth, _predicate, query, registry, _fact, product = _product()
+    with pytest.raises(
+        StructuralAdmissionError,
+        match="I04 requires exact I01 EmpiricalQuerySpec and EmpiricalFact objects",
+    ):
+        evaluate_structural_empirical_admission(
+            query=query,
+            fact=product,
+            requested_admission_authority_ref=qauth.authority_ref,
+            rule=None,
+            request=None,
+            authority_registry=registry,
+            producer_replay_locator_or_reference_root=_ref(
+                "REPLAY_ROOT", "i01-hostile-structural"
+            ),
+        )
 
 
 def test_actual_i05_frontier_cannot_be_controlled_by_computed_diagnostic_score():
