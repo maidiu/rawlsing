@@ -67,7 +67,8 @@ The implementation explicitly rejects:
 - rebuild receipts without real deleted and regenerated candidate-owned objects plus lineage;
 - warm-state claims where the retained state is absent or owned by another candidate;
 - invalidation metrics whose numeric recomputation count differs from the actual recomputed-unit lineage;
-- telemetry whose `action_id` or `binding_id` does not match the validated action.
+- telemetry whose `action_id` or `binding_id` does not match the validated action;
+- reserved lifecycle metric names attached to the wrong lifecycle action class.
 
 This directly replaces the Wave-2 B03 defects represented by old S09-S14 surrogate logic without reimplementing the backend itself on this worker branch.
 
@@ -122,7 +123,8 @@ The unittest suite encodes all required hostile cases, plus an additional observ
 9. an unreached stage emitting numeric telemetry fails;
 10. Candidate-A preserved work cannot satisfy Candidate-B;
 11. successful fresh replay reproduces the governed terminal identity;
-12. fresh replay with the wrong terminal identity fails.
+12. fresh replay with the wrong terminal identity fails;
+13. a reserved lifecycle metric cannot be attached to the wrong action class.
 
 No measured P2X was run. No local-machine Codex was used. Tests were authored but not executed in this browser-only commission; the exact qualification protocol is in `04_TEST_AND_EXECUTION_PROTOCOL.md`.
 
