@@ -501,6 +501,34 @@ class TelemetryLedger:
         self._write("candidate_total_wall_ns", ctx, state=MetricState.MEASURED, value=wall,
                     evidence_kind="OUTER_MAIN_PROCESS_ENVELOPE", internal=True)
 
+    def seal_fresh_process_replay_cpu(
+        self,
+        *,
+        process_token: str,
+        ctx: ObservationContext,
+    ) -> MetricRecord:
+        """Materialize M035 from an exact I06A child envelope bound to an I06C action."""
+        self._validate_context(ctx)
+        rec = self._processes.get(process_token)
+        if rec is None or rec.role != "CHILD":
+            raise TelemetryContractError("fresh replay CPU requires an exact CHILD process envelope")
+        if ctx.process_token != process_token or rec.phase_id != ctx.phase_id:
+            raise TelemetryContractError("fresh replay CPU provenance drifts from child envelope")
+        if ctx.lifecycle_action_id is None:
+            raise TelemetryContractError("fresh replay CPU requires an exact I06C lifecycle action")
+        value = (
+            rec.cpu_user_stop_ns - rec.cpu_user_start_ns
+            + rec.cpu_system_stop_ns - rec.cpu_system_start_ns
+        )
+        return self._write(
+            "fresh_process_replay_cpu_ns",
+            ctx,
+            state=MetricState.MEASURED,
+            value=value,
+            evidence_kind="I06A_CHILD_PROCESS_SELF_CPU_ENVELOPE",
+            internal=True,
+        )
+
     # ---------- I06C lifecycle receipt binding ----------
 
     def bind_lifecycle_receipt(self, receipt: LifecycleActionReceipt) -> None:
