@@ -33,10 +33,32 @@ def _freeze(tmp_path: Path) -> Path:
                 "schema": FREEZE_RECEIPT_SCHEMA,
                 "candidate_neutral": True,
                 "frozen_before_candidate_execution": True,
-                "source_identities": {"LITS_I": {"sha256": SOURCE_SHA}},
+                "candidate_outputs_seen": 0,
+                "candidate_owned_roots_consulted": [],
+                "candidate_owned_state_reused": False,
+                "state": "FROZEN_READ_ONLY",
+                "source_freezes": {
+                    "LITS_I": {
+                        "source_id": "LITS_I",
+                        "canonical_source_sha256": SOURCE_SHA,
+                        "source_identity_authority_ref": "HOSTILE_TEST_SOURCE_AUTHORITY",
+                        "derivative_identity": None,
+                        "derivative_to_source_provenance_ref": None,
+                    }
+                },
                 "authority_identities": {"opaque": "authority-freeze-test"},
                 "workload_identities": {"opaque": "workload-freeze-test"},
-                "oracle_identity": {"opaque": "oracle-freeze-test"},
+                "oracle_identities": {
+                    "LITS_I": {
+                        "oracle_identity_sha256": "5" * 64,
+                        "oracle_freeze_authority_ref": "HOSTILE_TEST_ORACLE_FREEZE",
+                    }
+                },
+                "freeze_order": {
+                    "source_identity_freeze_sequence": 1,
+                    "authority_workload_freeze_sequence": 2,
+                    "oracle_materialize_freeze_sequence": 3,
+                },
             },
             sort_keys=True,
             indent=2,
