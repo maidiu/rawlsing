@@ -25,6 +25,11 @@ def _explicit_resume_cells() -> tuple[str, ...]:
     return tuple(sorted({item.strip() for item in raw.split(",") if item.strip()}))
 
 
+def _warm_state_transitions() -> tuple[str, ...]:
+    raw = os.environ.get("RAWLSING_EE_P2X_WARM_STATE_TRANSITIONS", "")
+    return tuple(sorted({item.strip() for item in raw.split(",") if item.strip()}))
+
+
 def _controller() -> ProcessIsolationController:
     global _CONTROLLER
     if _CONTROLLER is None:
@@ -42,6 +47,7 @@ def _controller() -> ProcessIsolationController:
             backend_spec=inner,
             freeze_receipt_path=Path(freeze),
             resume_cells=_explicit_resume_cells(),
+            warm_state_transitions=_warm_state_transitions(),
             context_mode="DRIVER",
         )
     return _CONTROLLER

@@ -17,6 +17,7 @@ from rawlsing_next.ee_p2x_candidate_process_envelope import (
     ForeignCandidateStateError,
     PreStartContaminationError,
     ProcessIsolationController,
+    WarmStatePolicyError,
 )
 
 REPO = Path(__file__).resolve().parents[2]
@@ -104,11 +105,12 @@ def _services(work: Path):
     return types.SimpleNamespace(repo_root=REPO, work_root=work)
 
 
-def _controller(tmp_path: Path, *, resume_cells=()):
+def _controller(tmp_path: Path, *, resume_cells=(), warm_transitions=()):
     return ProcessIsolationController(
         backend_spec=str(PROBE),
         freeze_receipt_path=_freeze(tmp_path),
         resume_cells=resume_cells,
+        warm_state_transitions=warm_transitions,
         context_mode="SIMPLE_TEST_ONLY",
     )
 
@@ -119,7 +121,10 @@ def _payload(result):
 
 def test_candidate_a_session_process_and_rss_history_cannot_enter_candidate_b(tmp_path):
     work = tmp_path / "work"
-    controller = _controller(tmp_path)
+    controller = _controller(
+        tmp_path,
+        warm_transitions={"PROBE_SET_SESSION>PROBE_ALLOCATE_RSS"},
+    )
     services = _services(work)
     try:
         a1 = controller.run_stage(
@@ -142,6 +147,9 @@ def test_candidate_a_session_process_and_rss_history_cannot_enter_candidate_b(tm
     assert _payload(b)["session_keys_before"] == []
     assert _payload(a1)["pid"] == _payload(a2)["pid"]
     assert _payload(a1)["pid"] != _payload(b)["pid"]
+    retention = a1.receipt["process_envelope"]["lifecycle_process_retention"]
+    assert retention["authorization_token"] == "PROBE_SET_SESSION>PROBE_ALLOCATE_RSS"
+    assert retention["authorized"] is True
 
     a_stop = a2.receipt["process_envelope"]["stop"]
     b_stop = b.receipt["process_envelope"]["stop"]
@@ -154,7 +162,10 @@ def test_candidate_a_session_process_and_rss_history_cannot_enter_candidate_b(tm
 
 def test_live_candidate_process_cannot_be_reused_for_another_candidate(tmp_path):
     work = tmp_path / "work"
-    controller = _controller(tmp_path)
+    controller = _controller(
+        tmp_path,
+        warm_transitions={"PROBE_SET_SESSION>PROBE_LIST_STATE"},
+    )
     services = _services(work)
     try:
         controller.run_stage(
@@ -165,6 +176,26 @@ def test_live_candidate_process_cannot_be_reused_for_another_candidate(tmp_path)
             controller.run_stage(
                 _context(work, "B", "PROBE_SET_SESSION", next_stage="LITS_I/C/PROBE_SET_SESSION"),
                 services,
+            )
+    finally:
+        controller.close()
+
+
+
+
+def test_same_cell_process_retention_requires_explicit_lifecycle_authorization(tmp_path):
+    work = tmp_path / "work"
+    controller = _controller(tmp_path)
+    try:
+        with pytest.raises(WarmStatePolicyError):
+            controller.run_stage(
+                _context(
+                    work,
+                    "A",
+                    "PROBE_SET_SESSION",
+                    next_stage="LITS_I/A/PROBE_LIST_STATE",
+                ),
+                _services(work),
             )
     finally:
         controller.close()

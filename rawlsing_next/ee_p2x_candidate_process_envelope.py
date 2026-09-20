@@ -65,6 +65,10 @@ class CrossCandidateReuseError(ProcessIsolationError):
     pass
 
 
+class WarmStatePolicyError(ProcessIsolationError):
+    pass
+
+
 class CellProcessProtocolError(ProcessIsolationError):
     pass
 
@@ -452,12 +456,14 @@ class ProcessIsolationController:
         backend_spec: str,
         freeze_receipt_path: Path,
         resume_cells: tuple[str, ...] | list[str] | set[str] = (),
+        warm_state_transitions: tuple[str, ...] | list[str] | set[str] = (),
         context_mode: str = "DRIVER",
     ):
         self.backend_spec = backend_spec
         self.freeze_receipt_path = Path(freeze_receipt_path).resolve()
         self.freeze_document, self.freeze_receipt_sha256 = load_frozen_upstream_receipt(self.freeze_receipt_path)
         self.resume_cells = frozenset(resume_cells)
+        self.warm_state_transitions = frozenset(warm_state_transitions)
         self.context_mode = context_mode
         self._active: _ActiveLab | None = None
 
@@ -783,6 +789,20 @@ class ProcessIsolationController:
                 else context.stage.next_stage_on_candidate_local_failure
             )
             same_cell_next = isinstance(next_stage, str) and next_stage.startswith(cell_key + "/")
+            next_stage_id = next_stage.rsplit("/", 1)[-1] if same_cell_next else None
+            warm_transition_token = (
+                f"{context.stage.stage_id}>{next_stage_id}" if same_cell_next else None
+            )
+            warm_transition_authorized = (
+                warm_transition_token in self.warm_state_transitions
+                if warm_transition_token is not None
+                else False
+            )
+            if same_cell_next and not warm_transition_authorized:
+                raise WarmStatePolicyError(
+                    "same-cell process retention would preserve possible candidate warm state "
+                    f"without explicit lifecycle authorization: {warm_transition_token}"
+                )
             must_stop = source == "COURT" or terminal != "PASS" or not same_cell_next
             stop = self._stop(
                 "LAWFUL_CELL_TERMINAL_OR_TRANSITION"
@@ -810,6 +830,13 @@ class ProcessIsolationController:
                 "stage_process_pid": response["pid"],
                 "resource_after_stage": response["resource_after_stage"],
                 "child_process_attribution_environment_inherited_by_descendants": True,
+                "lifecycle_process_retention": {
+                    "next_stage": next_stage,
+                    "same_cell_next": same_cell_next,
+                    "authorization_token": warm_transition_token,
+                    "authorized": warm_transition_authorized,
+                    "policy_owner": "I06C_LIFECYCLE_INTEGRATION",
+                },
                 "stop": stop,
             }
             receipt = dict(raw_result["receipt"])
@@ -863,6 +890,7 @@ __all__ = [
     "ForeignCandidateStateError",
     "PreStartContaminationError",
     "CrossCandidateReuseError",
+    "WarmStatePolicyError",
     "CellProcessProtocolError",
     "load_frozen_upstream_receipt",
 ]
