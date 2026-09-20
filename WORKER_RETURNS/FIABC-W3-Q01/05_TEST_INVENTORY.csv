@@ -1,0 +1,37 @@
+test_id,sibling,concern,expected_disposition,expected_code_or_pass,acceptance_focus
+Q01-DIAG-PASS,I01,lawful diagnostic-only product,PASS,PASS,diagnostic identity binds exact inputs and remains nonauthoritative
+Q01-DIAG-001,I01,diagnostic masquerades as EmpiricalFact,REJECT,Q01_DIAGNOSTIC_MUST_NOT_BE_EMPIRICAL_FACT,diagnostic cannot become empirical truth
+Q01-DIAG-002,I01,diagnostic score controls exact frontier,REJECT,Q01_DIAGNOSTIC_CANNOT_CONTROL_FRONTIER,score cannot change I05 reachability
+Q01-DIAG-003,I01,diagnostic grants structural authority,REJECT,Q01_DIAGNOSTIC_CANNOT_GRANT_STRUCTURAL_AUTHORITY,score cannot satisfy P06/I04 authority
+Q01-DIAG-004,I01,diagnostic upgrades negative state to supported,REJECT,Q01_DIAGNOSTIC_NEGATIVE_STATE_COLLAPSE,typed unavailable/noncomparable/underpowered/invalid/unresolved preserved
+Q01-NEFF-PASS-RAW,I02,RAW unweighted nonnumeric effective-N,PASS,PASS,respondent count does not manufacture effective-N
+Q01-NEFF-PASS-WEIGHTED,I02,authorized exact-scope effective-N,PASS,PASS,exact weight/design/estimand/sums/scope bound
+Q01-NEFF-001,I02,default weight selection,REJECT,Q01_EFFECTIVE_N_DEFAULT_WEIGHT_FORBIDDEN,no default/heuristic weight
+Q01-NEFF-002,I02,RAW numeric effective-N,REJECT,Q01_RAW_EFFECTIVE_N_MUST_BE_NONNUMERIC,RAW state is typed not applicable/not authorized
+Q01-NEFF-003,I02,weight/query/risk scope mismatch,REJECT,Q01_EFFECTIVE_N_SCOPE_MISMATCH,exact scope equality
+Q01-NEFF-004,I02,zero/degenerate weight sums,REJECT,Q01_EFFECTIVE_N_DEGENERATE_WEIGHT_SUM,no numeric result from degenerate weights
+Q01-CANDC-PASS-LITS,I03,LiTS C with optional CACC1/CACC2 plus source fallback,PASS,PASS,C remains C and q310/q311 retained
+Q01-CANDC-PASS-WVS,I03,WVS C zero-accelerator source-backed realization,PASS,PASS,C remains C without accelerator
+Q01-CANDC-001,I03,C silently becomes B,REJECT,Q01_CANDIDATE_C_B_SUBSTITUTION,repository/candidate identity remains C
+Q01-CANDC-002,I03,accelerator made mandatory,REJECT,Q01_CANDIDATE_C_ACCELERATOR_MUST_BE_OPTIONAL,zero-accelerator state lawful
+Q01-CANDC-003,I03,CACC3 creep,REJECT,Q01_CACC3_FORBIDDEN,no CACC3
+Q01-CANDC-004,I03,WVS accelerator creep,REJECT,Q01_WVS_ACCELERATOR_FORBIDDEN,WVS C has zero accelerators
+Q01-CANDC-005,I03,q310/q311 truncation,REJECT,Q01_LITS_Q310_Q311_TRUNCATION,frozen workload not shortened
+Q01-PKG-PASS,I04,exact byte-preserving rebind,PASS,PASS,all four accepted blobs and frozen owner identities preserved
+Q01-PKG-001,I04,packaging blob/hash drift,REJECT,Q01_PACKAGING_BLOB_DRIFT,rebind does not change bytes
+Q01-PKG-002,I04,immutable historical root treated obsolete,REJECT,Q01_HISTORICAL_IMMUTABLE_ROOT_MUST_BE_PRESERVED,historical location alone is not obsolescence
+Q01-ORACLE-PASS,I05,candidate-neutral preoutput oracle,PASS,PASS,exact frozen independent oracle
+Q01-ORACLE-001,I05,expected truth derived from candidate,REJECT,Q01_ORACLE_DERIVED_FROM_CANDIDATE_OUTPUT,no candidate dependency closure
+Q01-ORACLE-002,I05,pairwise equality used as oracle,REJECT,Q01_PAIRWISE_EQUALITY_IS_NOT_ORACLE_EQUALITY,every candidate matches same independent oracle
+Q01-ORACLE-003,I05,self-replay used as oracle,REJECT,Q01_SELF_REPLAY_IS_NOT_INDEPENDENT_ORACLE,self-consistency is not independent truth
+Q01-METRIC-PASS,I06,isolated immutable observed telemetry,PASS,PASS,fresh process/write-once/null/I-O/high-water/lifecycle law
+Q01-METRIC-001,I06,shared process/RSS history,REJECT,Q01_CANDIDATE_PROCESS_RSS_CONTAMINATION,fresh OS process per cell
+Q01-METRIC-002,I06,prior candidate session/state leak,REJECT,Q01_CANDIDATE_SESSION_STATE_LEAK,no cross-candidate sessions/scratch/durable warm state
+Q01-METRIC-003,I06,canonical metric overwritten,REJECT,Q01_METRIC_OVERWRITE_FORBIDDEN,write-once metric fields
+Q01-METRIC-004,I06,uncaptured telemetry encoded as zero,REJECT,Q01_SYNTHETIC_ZERO_TELEMETRY_FORBIDDEN,typed null not fake zero
+Q01-METRIC-005,I06,endpoint directory size used as I/O,REJECT,Q01_ENDPOINT_SIZE_IS_NOT_IO,observed I/O event counters required
+Q01-PREFLIGHT-PASS,I07,complete live succession chain,PASS,PASS,authority->owner->binding->live receipt closure
+Q01-PREFLIGHT-001,I07,repository presence without live consumption,REJECT,Q01_PREFLIGHT_REPOSITORY_PRESENCE_NOT_LIVE_CONSUMPTION,static presence cannot PASS live edge
+Q01-TERM-PASS,I08,complete I05 comparison terminal,PASS,PASS,I05+identities+coverage+constituent closure+oracle/preflight
+Q01-TERM-001,I08,C11 accepted as final terminal,REJECT,Q01_TERMINAL_MUST_BE_COMPLETE_I05,C11 is intermediate only
+Q01-TERM-002,I08,I03 accepted as final terminal,REJECT,Q01_TERMINAL_MUST_BE_COMPLETE_I05,I03 is intermediate only
