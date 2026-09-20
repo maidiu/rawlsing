@@ -1,0 +1,169 @@
+{
+  "schema": "CLOSED35_R2_AFR1_PHYSICAL_EDGE_BINDING@1.0.0",
+  "worker_id": "CLOSED35-R2-AFR1",
+  "repository": "maidiu/rawlsing",
+  "source": {
+    "family": "Afrobarometer",
+    "release": "Round 1",
+    "filename": "Afro Barometer Round 1.sav",
+    "sha256": "6c9869a7cc7321cc74efb708835e21c8b65286a25c76deac45aba84d75697ee2",
+    "format": "SAV",
+    "reader_mode": "SAV_NATIVE_GOVERNED",
+    "source_specific_compatibility_override": "NO_SOURCE_SPECIFIC_COMPATIBILITY_OVERRIDE",
+    "replay_identity": "SOURCE_SHA256+ZERO_BASED_PHYSICAL_ROW_ORDINAL",
+    "authority72_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED"
+  },
+  "accepted_authority": {
+    "source_registry": "WORKER_RETURNS/FIABC-S35-1/01_CLOSED35_CANONICAL_SOURCE_ROOTS.csv",
+    "edge_matrix": "WORKER_RETURNS/FIABC-S35-3/02_SOURCE_TO_EDGE_CLASS_MATRIX.csv",
+    "authority71_branch": "agent/vozhd-trii-srcprep71-r01-afrobarometer",
+    "authority71_return": "SOURCE_CERT_PREP71/RETURNS/R01",
+    "authority72_branch": "agent/vozhd-trii-srcprep72-r10-synthesis",
+    "authority72_launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+    "authority72_gap_effect": "NONBLOCKING_RAW_PRESERVATION_UNKNOWN"
+  },
+  "semantic_owner": {
+    "id": "AFROBAROMETER_R1_SEMANTIC_OWNER_V1",
+    "candidate_neutral": true,
+    "frozen_before_candidate_start": true,
+    "candidate_identity_is_semantic_input": false,
+    "hard_replay_identity": "SOURCE_SHA256+ZERO_BASED_PHYSICAL_ROW_ORDINAL",
+    "identity_carriers": {
+      "REFNUMB": "DOCUMENTED_UNIQUE_CASE_REFERENCE__SOURCE_LOCAL_ATTRIBUTE",
+      "CASENUMB": "SOURCE_CARRIER__NONINJECTIVE__NO_DOCUMENTARY_RESPNUMB_ALIAS",
+      "RESPNUMB": "DOCUMENTARY_CONCEPT__NO_EXACT_SOURCE_JOIN"
+    },
+    "country_coordinate": "COUNTRY_R1__SOURCE_LOCAL_DOCUMENTED_12_COUNTRY_COORDINATE",
+    "supdem_physical_rule": "DOCUMENTARY_SPECIAL_CODE_DOES_NOT_CHANGE_PHYSICAL_STORAGE_CLASS",
+    "weight_default": "NONE_AUTHORIZED_BY_SOURCE_SPECIFIC_REALIZATION"
+  },
+  "bounded_unknowns": [
+    {
+      "id": "R1-G01",
+      "relation": "CASENUMB_TO_DOCUMENTARY_RESPNUMB",
+      "state": "BOUNDED_UNKNOWN",
+      "blocking": false,
+      "fail_closed_rule": "NO_ALIAS_NO_REPLAY_OR_PERSON_IDENTITY_INFERENCE"
+    },
+    {
+      "id": "R1-G02",
+      "relation": "NATIONAL_INSTRUMENT_EQUIVALENCE_BEYOND_EXACT_PER_VARIABLE_DOCUMENTARY_AUTHORITY",
+      "state": "BOUNDED_UNKNOWN",
+      "blocking": false,
+      "fail_closed_rule": "NO_UNIVERSAL_MERGED_VARIABLE_SEMANTIC_EQUIVALENCE"
+    }
+  ],
+  "applicable_s35_edge_classes": [
+    {
+      "id": "EC01",
+      "name": "FORMAT_FAMILY_SAV_DTA",
+      "required_dimensions": [
+        "physical_metadata",
+        "variable_inventory_order",
+        "raw_storage_values",
+        "row_replay_identity"
+      ],
+      "source_specific_binding": "SAV_GENERIC_PHYSICAL_INCIDENCE",
+      "semantic_boundary": "Format/reader representation has no authority to change AFR1 source semantics."
+    },
+    {
+      "id": "EC05",
+      "name": "PHYSICAL_MISSINGNESS_MULTICLASS",
+      "required_dimensions": [
+        "physical_missing_state_classification",
+        "source_missing_declaration_inventory",
+        "ordinary_semantic_looking_storage_values"
+      ],
+      "source_specific_binding": "SUPDEM_4_97_98_99_REMAIN_ORDINARY_STORAGE_WITH_SEPARATE_DOCUMENTARY_MEANING",
+      "semantic_boundary": "Documentary DK/not-applicable/refused/missing-data labels do not manufacture physical missingness."
+    },
+    {
+      "id": "EC07",
+      "name": "NATIVE_ID_SCOPE_COLLISION_OR_NONINJECTIVITY",
+      "required_dimensions": [
+        "row_replay_identity",
+        "native_identifier_carriers",
+        "native_identifier_collision_scope",
+        "row_to_source_binding"
+      ],
+      "source_specific_binding": "REFNUMB_AND_CASENUMB_PRESERVED__CASENUMB_NONINJECTIVITY_DOES_NOT_MERGE_ROWS",
+      "semantic_boundary": "Native IDs are source attributes; SHA+row ordinal remains irreducible replay identity."
+    },
+    {
+      "id": "EC12",
+      "name": "WEIGHT_DESIGN_MULTIPLICITY_AND_DOMAIN",
+      "required_dimensions": [
+        "all_weight_design_carriers",
+        "raw_weight_values",
+        "weight_missing_states"
+      ],
+      "source_specific_binding": [
+        "WITHINWT",
+        "ACROSSWT",
+        "COMBINWT",
+        "AFRICAWT",
+        "AFCOMBWT"
+      ],
+      "semantic_boundary": "All five carriers survive; source-local documentary roles do not choose a universal analytical default or estimand."
+    },
+    {
+      "id": "EC13",
+      "name": "SOURCE_LOCAL_COORDINATE_CARRIERS",
+      "required_dimensions": [
+        "source_local_coordinate_carriers",
+        "country_dictionary",
+        "coordinate_scope"
+      ],
+      "source_specific_binding": "COUNTRY_R1__12_COUNTRY_DOCUMENTED_MAP",
+      "semantic_boundary": "Round-1 COUNTRY is source-scoped and cannot be harmonized from later-round numeric codes without authority."
+    }
+  ],
+  "r35_hooks": {
+    "i01": {
+      "accepted_worker_branch": "agent/rabochii-premain-fiabc-r35-i01-raw-layout-metadata-r1",
+      "schema": "PRE553_PHYSICAL_METADATA@1.0.0",
+      "required": true,
+      "semantic_authority": false,
+      "binding_rule": "Preserve raw layout declarations, normalized geometry, display metadata and decoder identity as independent physical witnesses."
+    },
+    "i02": {
+      "accepted_worker_branch": "agent/rabochii-premain-fiabc-r35-i02-derivative-parentage-r1",
+      "source_receipt_schema": "FIABC_CANONICAL_SOURCE_VERIFICATION_RECEIPT@1.0.0",
+      "derivative_receipt_schema": "FIABC_DERIVATIVE_PARENTAGE_RECEIPT@1.0.0",
+      "bundle_schema": "FIABC_DERIVATIVE_PARENTAGE_BUNDLE@1.0.0",
+      "required_for_non_direct_realization": true,
+      "semantic_authority": false,
+      "binding_rule": "A derivative's asserted source SHA is not ancestry proof; immutable parentage must terminate at the exact AFR1 canonical SHA."
+    },
+    "i03": {
+      "accepted_worker_branch": "agent/rabochii-premain-fiabc-r35-i03-physical-equivalence-r1",
+      "source_scope_schema": "FIABC_R35_I03_SOURCE_PHYSICAL_SCOPE@1.0.0",
+      "expectation_schema": "FIABC_R35_I03_CANONICAL_PHYSICAL_EXPECTATION@1.0.0",
+      "candidate_realization_schema": "FIABC_R35_I03_CANDIDATE_PHYSICAL_REALIZATION@1.0.0",
+      "receipt_schema": "FIABC_R35_I03_WHOLE_SOURCE_PHYSICAL_EQUIVALENCE_RECEIPT@1.0.0",
+      "required": true,
+      "required_edge_scope": [
+        "EC01",
+        "EC05",
+        "EC07",
+        "EC12",
+        "EC13"
+      ],
+      "pass_state_if_later_qualified": "PHYSICAL_EQUIVALENCE_PASS__NOT_SEMANTIC_OR_CERTIFICATION_PASS",
+      "receipt_issued_by_this_worker": false,
+      "semantic_authority": false
+    }
+  },
+  "source_specific_physical_adapter": false,
+  "later_physical_observations_must_not_change_semantic_owner": true,
+  "proof_boundary": {
+    "raw_source_opened": false,
+    "source_processing_executed": false,
+    "source_decoding_executed": false,
+    "authority71_physical_facts_remeasured": false,
+    "abc_executed": false,
+    "whole_source_physical_equivalence_executed": false,
+    "i05_executed": false,
+    "measured_p2x_run": false
+  }
+}
