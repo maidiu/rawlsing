@@ -1,0 +1,60 @@
+{
+  "schema": "CLOSED35_R2_LAT2011_RETURN@1.0.0",
+  "status": "SOURCE_SPECIFIC_REALIZATION_IMPLEMENTED",
+  "tests": "TESTS_AUTHORED__NOT_EXECUTED",
+  "repository": "maidiu/rawlsing",
+  "base_branch": "agent/vozhd-closed35-l2r-r1-fanin-r1",
+  "base_commit": "da33eb6a8225c14eee9490633a3263388dc5536c",
+  "branch": "agent/rabochii-closed35-r2-lat2011-realization-r1",
+  "source": {
+    "family": "Latinobarometro",
+    "wave": "2011",
+    "filename": "Latinobarometro 2011.sav",
+    "sha256": "a44e89e08e564e4e175199eeeabfa6163f32f4ba0a19a6c3f5b4752de6cca22e",
+    "authority72_class": "L0_EXECUTION_PACKET_READY__NO_NAMED_DOCUMENTARY_BLOCKER",
+    "replay_identity": "SOURCE_SHA256+ROW_ORDINAL"
+  },
+  "realization": {
+    "contract": "CLOSED35_R2_LAT2011_SOURCE_REALIZATION@1.0.0",
+    "candidate_neutral": true,
+    "abc_share_one_owner": true,
+    "source_local_variable_identity": true,
+    "country_coordinate": "IDENPA",
+    "accepted_country_count": 18,
+    "accepted_row_count": 20204,
+    "physical_user_missing_distinction_preserved": true,
+    "weight_carrier": "WT",
+    "aggregate_weight_estimand_synthesized": false,
+    "default_weight_selection_authorized": false,
+    "cross_wave_inheritance": "NONE_AUTHORIZED",
+    "applicable_s35_edges": [
+      "EC01",
+      "EC05",
+      "EC12",
+      "EC13"
+    ]
+  },
+  "implementation_files": [
+    "rawlsing_next/closed35_lat2011_realization.py",
+    "rawlsing_next/tests/test_closed35_r2_lat2011_realization.py"
+  ],
+  "outputs": [
+    "WORKER_RETURNS/CLOSED35-R2-LAT2011/00_RETURN.md",
+    "WORKER_RETURNS/CLOSED35-R2-LAT2011/01_REALIZATION_CONTRACT.md",
+    "WORKER_RETURNS/CLOSED35-R2-LAT2011/02_PROJECTION_MAP.csv",
+    "WORKER_RETURNS/CLOSED35-R2-LAT2011/03_PHYSICAL_EDGE_BINDING.json",
+    "WORKER_RETURNS/CLOSED35-R2-LAT2011/04_TEST_PROTOCOL.md",
+    "WORKER_RETURNS/CLOSED35-R2-LAT2011/RETURN.json"
+  ],
+  "claim_boundary": {
+    "browser_implementation_pass_meaning": "SOURCE_SPECIFIC_REALIZATION_IMPLEMENTED",
+    "real_source_bytes_executed": false,
+    "accepted_packet_facts_remeasured": false,
+    "whole_source_physical_equivalence_passed": false,
+    "candidate_abc_executed": false,
+    "i05_passed": false,
+    "source_certified_beyond_accepted_authority": false,
+    "measured_p2x": false
+  },
+  "terminal": "CLOSED35_R2_LAT2011_SOURCE_SPECIFIC_REALIZATION_IMPLEMENTED__READY_FOR_ABC_QUALIFICATION"
+}
