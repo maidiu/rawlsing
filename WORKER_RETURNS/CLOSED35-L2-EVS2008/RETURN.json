@@ -1,0 +1,52 @@
+{
+  "worker_id": "CLOSED35-L2-EVS2008",
+  "repository": "maidiu/rawlsing",
+  "base_branch": "agent/vozhd-premain-fiabc-s35-fanin-r1",
+  "base_tip": "770d95c1a604ea1f47ac2971b923673c14c42984",
+  "branch": "agent/rabochii-closed35-l2-evs2008-authority-r1",
+  "return_path": "WORKER_RETURNS/CLOSED35-L2-EVS2008/",
+  "source_file": "EVS 2008.sav",
+  "source_sha256": "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379",
+  "execution_constraints_obeyed": {
+    "opened_local_raw_sav": false,
+    "executed_source_decoding": false,
+    "ran_measured_p2x": false,
+    "used_github_repository_evidence": true,
+    "used_public_producer_documentation": true
+  },
+  "producer_release_alignment": {
+    "study": "ZA4800",
+    "version": "5.0.0",
+    "release_date": "2022-06-08",
+    "doi": "10.4232/1.13841",
+    "cases": 66280,
+    "variables": 477,
+    "public_sha256_binding_found": false
+  },
+  "closure": {
+    "official_questionnaire": "CLOSED",
+    "official_codebook_variable_dictionary": "CLOSED",
+    "native_mr_set_semantics_13_of_13": "CLOSED",
+    "native_mr_order_rank_law": "CLOSED",
+    "native_mr_alias_overlap_roles": "CLOSED",
+    "native_mr_missing_routing_applicability": "CLOSED_WITH_COUNTRY_AND_VARIABLE_LOCAL_SCOPE",
+    "malformed_text_semantic_alignment": "CLOSED_BY_PRODUCER_DOCUMENT_JOIN_AND_RAW_LABEL_QUARANTINE",
+    "f201_relation": "CLOSED",
+    "producer_corrections_revised_export_context": "CLOSED",
+    "v372_exact_user_missing_semantic_reason": "OPEN",
+    "exact_frozen_sha_to_producer_release_cryptographic_binding": "NOT_FOUND"
+  },
+  "unresolved_exact_set": [
+    "EVS2008_V372_SENTINEL_REASON",
+    "EVS2008_EXACT_RELEASE_HASH_BINDING"
+  ],
+  "outputs": [
+    "00_RETURN.md",
+    "01_DOCUMENTARY_SOURCE_LEDGER.csv",
+    "02_MR_SET_AUTHORITY_MAP.csv",
+    "03_TEXT_SENTINEL_ROUTING_AUTHORITY.md",
+    "04_SOURCE_ADMISSION_PACKET.json",
+    "RETURN.json"
+  ],
+  "terminal": "CLOSED35_L2_EVS2008_DOCUMENTARY_AUTHORITY_PARTIAL__EXACT_TEXT_MR_OR_SENTINEL_UNKNOWN_SET_RETURNED"
+}
