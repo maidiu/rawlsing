@@ -1,0 +1,147 @@
+{
+  "schema": "FIABC_LM1_R1D_A_RETURN@1.0.0",
+  "worker": "FIABC-LM1-R1D-A",
+  "title": "C11 Physical-Value / Semantic-Identity Boundary Adjudication",
+  "repository": "maidiu/rawlsing",
+  "base": {
+    "branch": "agent/rabochii-premain-fiabc-lm1-r1c-governed-r5-rebuild-r1",
+    "sha": "ca3630f5f7146f611c8cdc30b010eab509a5145b"
+  },
+  "branch": "agent/rabochii-premain-fiabc-lm1-r1d-a-c11-boundary-adjudication-r1",
+  "return_path": "WORKER_RETURNS/FIABC-LM1-R1D-A/",
+  "disposition": "PASS__BOUNDED_LAWFUL_REPRESENTATION_FOUND__MINIMAL_CONTRACT_ONLY",
+  "terminal": "FIABC_LM1_R1D_A_C11_PHYSICAL_SEMANTIC_BOUNDARY_ADJUDICATED__MINIMAL_REPAIR_CONTRACT_READY",
+  "holding": {
+    "physical_semantic_roles_must_remain_distinct": true,
+    "A_physical_identity_material": "EXACT_TYPED_PHYSICAL_MATERIAL",
+    "B_raw_source_witness_material": "DOMAIN_TAGGED_TYPED_PHYSICAL_WITNESS",
+    "C_semantic_canonical_value": "AUTHORITY_GOVERNED_C11_CANONICAL_VALUE",
+    "existing_r5_typed_representation_lawful_for_A": true,
+    "existing_r5_typed_representation_lawful_for_B": true,
+    "existing_r5_typed_representation_lawful_for_C_without_separate_authority": false,
+    "generic_c11_canonicalize_change_authorized": false,
+    "r5_rebuild_ordered": false
+  },
+  "accepted_physical_representation": {
+    "codec": "PRE553_R5_TYPED_VALUE_CODEC@1.0.0",
+    "module": "rawlsing_next/pre553_r5_codec.py",
+    "blob": "72f8f3c03ed065e86fea4e76bb17f8e06c2bf540",
+    "role": "PHYSICAL_ONLY",
+    "required_cases": {
+      "finite_float64": "EXACT_IEEE754_BITS",
+      "positive_zero": "0000000000000000",
+      "negative_zero": "8000000000000000",
+      "nan": "DECODER_OBSERVED_NAN_STATE_ONLY__NO_PAYLOAD_INVENTION",
+      "positive_infinity": "DISTINCT_TYPED_STATE",
+      "negative_infinity": "DISTINCT_TYPED_STATE",
+      "int_vs_float": "DISTINCT",
+      "bool_vs_int": "DISTINCT",
+      "string_inf_vs_float_inf": "DISTINCT"
+    }
+  },
+  "minimal_repair_contract": {
+    "physical_value_material_schema": "PRE553_EXACT_PHYSICAL_VALUE_MATERIAL@1.0.0",
+    "physical_binding_schema": "PRE553_PHYSICAL_VALUE_BINDING@2.0.0",
+    "raw_witness_schema": "PRE553_RAW_PHYSICAL_VALUE_WITNESS@1.0.0",
+    "physical_binding_digest": "SHA256_OVER_R5_CANONICAL_BYTES_OF_DOMAIN_SEPARATED_PHYSICAL_MATERIAL",
+    "physical_binding_includes": [
+      "typed_raw_value",
+      "physical_missing_state",
+      "typed_source_missing_declaration"
+    ],
+    "raw_response_value_role": "B_RAW_SOURCE_WITNESS",
+    "raw_coordinate_value_role": "B_RAW_SOURCE_WITNESS",
+    "canonical_response_value_if_authorized_role": "C_SEMANTIC_CANONICAL_VALUE",
+    "canonical_coordinate_value_if_authorized_role": "C_SEMANTIC_CANONICAL_VALUE",
+    "exact_weight_value_representation_role": "C_SEMANTIC_CANONICAL_VALUE__NOT_RAW_WITNESS",
+    "projection_physical_key_role": "A_PHYSICAL_IDENTITY",
+    "generic_semantic_float_admission": false
+  },
+  "weight_holding": {
+    "weight_physical_key_uses_A": true,
+    "copy_observed_numeric_is_raw_witness_authority": false,
+    "exact_weight_value_representation_is_semantic_arithmetic_C": true,
+    "float_to_repr_string_automatic_conversion_authorized": false,
+    "nonfinite_to_missing_zero_unknown_automatic_conversion_authorized": false
+  },
+  "query_holding": {
+    "raw_witness_may_be_opaque_source_native_identity_under_exact_authority": true,
+    "automatic_physical_token_to_numeric_semantics": false,
+    "affected_predicate_or_query_packages_require_revalidation_when_they_depended_on_old_raw_as_semantic_values": true
+  },
+  "historical_decimal_shim": {
+    "commit": "3ce639e1a8ab0ad48954c0aeff4b5c42f3d0b06f",
+    "file_blob": "c51b56779ab9d79126619b7733d41f5253c8150f",
+    "mechanism": "float_to_Decimal_str_before_C11",
+    "adopted_as_repair": false,
+    "reason": "PHYSICAL_TYPE_AND_BITS_NOT_PRESERVED__SEMANTIC_ADMISSIBILITY_SHIM_NOT_PHYSICAL_IDENTITY_LAW"
+  },
+  "evidence": {
+    "r1c_failure": {
+      "facade": "rawlsing_next/pre553_source_backed_c11_facade.py",
+      "facade_blob": "c3647800f52fa81fdef34be6692207e092c48ee2",
+      "semantic_objects": "rawlsing_next/pre553_empirical_objects.py",
+      "semantic_objects_blob": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+      "failure": "Pre553IntegrityError: float/NaN/Infinity forbidden in semantic identity"
+    },
+    "accepted_candidate_a_adapter": {
+      "owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+      "blob": "d4915e7e6755ba1850756aebff72f982f73a332b"
+    },
+    "accepted_r5_builder": {
+      "owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+      "blob": "92e364b31eaf27be1bca2081eff65f6ffb779c3d"
+    },
+    "query_common": {
+      "path": "rawlsing_next/_pre553_query_common.py",
+      "blob": "938a6b03a63dd34ef4f0f63655ed8f11f65c5d92"
+    },
+    "query_predicate": {
+      "path": "rawlsing_next/_pre553_query_predicate.py",
+      "blob": "edc943ca6690ac73f24492f3d01ad9ee17f70f21"
+    }
+  },
+  "r1c_carrier_evidence_unchanged": {
+    "root": "7d85c5e4c3a91c3f6dc8f7896fe487cda116fc8cf67f0ab263a2654ff938afcd",
+    "logical_stream": "076c6527f292c1d4ae2cce53c1f0363093eb9a5b5fb652edd96b448823589aba",
+    "rows": 34745595,
+    "members": 2121,
+    "member_inventory": "04dce8c3e942fc81a0558354c21a4b4a56faab417ce362657286f978b6686703",
+    "generic_parentage_bundle": "8b63de4ea902350ce197bc3ed49b59259bef2ad400c9f3c7db65ac96b015ace7",
+    "replacement_success_authority_consumed": false
+  },
+  "forbidden": [
+    "WIDEN_GENERIC_CANONICALIZE_TO_ACCEPT_BINARY_FLOATS",
+    "FLOAT_TO_DECIMAL_FRACTION_OR_REPR_STRING_MERELY_FOR_CANONICALIZE_ADMISSION",
+    "NAN_OR_INFINITY_TO_MISSING_NONE_UNKNOWN_OR_ZERO_WITHOUT_AUTHORITY",
+    "DROP_NONFINITE_CELLS",
+    "CONFLATE_INT_FLOAT_BOOL_BY_HOST_LANGUAGE_EQUALITY",
+    "CONFLATE_POSITIVE_AND_NEGATIVE_ZERO",
+    "CONFLATE_STRING_INF_WITH_FLOAT_INFINITY",
+    "FABRICATE_NAN_PAYLOAD_BITS",
+    "USE_EXACT_WEIGHT_VALUE_REPRESENTATION_AS_RAW_PHYSICAL_WITNESS"
+  ],
+  "execution_boundary": {
+    "github_browser_only": true,
+    "local_lits_source_opened": false,
+    "local_tmp_r5_accessed": false,
+    "r5_rebuilt": false,
+    "candidate_a_executed": false,
+    "candidate_b_executed": false,
+    "candidate_c_executed": false,
+    "i03_run": false,
+    "i05_run": false,
+    "measured_p2x_run": false,
+    "repair_implemented": false,
+    "illustrative_contract_code_only": true
+  },
+  "outputs": [
+    "00_RETURN.md",
+    "01_ONTOLOGY_ADJUDICATION.md",
+    "02_EXACT_PHYSICAL_VALUE_REPRESENTATION.json",
+    "03_AFFECTED_C11_SEAMS.csv",
+    "04_MINIMAL_REPAIR_CONTRACT.md",
+    "RETURN.json"
+  ],
+  "commit_sha_note": "Final branch tip is reported externally because a commit cannot contain its own hash in its preimage."
+}
