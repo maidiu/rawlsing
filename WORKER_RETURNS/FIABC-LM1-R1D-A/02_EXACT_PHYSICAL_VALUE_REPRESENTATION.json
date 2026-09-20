@@ -1,0 +1,206 @@
+{
+  "schema": "FIABC_LM1_R1D_A_EXACT_PHYSICAL_VALUE_REPRESENTATION@1.0.0",
+  "worker": "FIABC-LM1-R1D-A",
+  "governing_base": {
+    "branch": "agent/rabochii-premain-fiabc-lm1-r1c-governed-r5-rebuild-r1",
+    "sha": "ca3630f5f7146f611c8cdc30b010eab509a5145b"
+  },
+  "holding": {
+    "bounded_lawful_representation_found": true,
+    "generic_c11_canonicalize_must_change": false,
+    "accepted_physical_vocabulary": "PRE553_R5_TYPED_VALUE_CODEC@1.0.0",
+    "r5_codec_role": [
+      "PHYSICAL_IDENTITY_MATERIAL",
+      "RAW_SOURCE_WITNESS_MATERIAL"
+    ],
+    "r5_codec_semantic_role": "NONE",
+    "semantic_value_requires_independent_authority": true
+  },
+  "ontology": {
+    "A_PHYSICAL_IDENTITY": {
+      "purpose": "identify the exact physical state presented at the governed decoder/carrier boundary",
+      "schema": "PRE553_EXACT_PHYSICAL_VALUE_MATERIAL@1.0.0",
+      "material_shape": {
+        "schema": "PRE553_EXACT_PHYSICAL_VALUE_MATERIAL@1.0.0",
+        "codec": "PRE553_R5_TYPED_VALUE_CODEC@1.0.0",
+        "token": "<R5TypedValueCodec.encode(value)>"
+      },
+      "physical_binding_shape": {
+        "schema": "PRE553_PHYSICAL_VALUE_BINDING@2.0.0",
+        "codec": "PRE553_R5_TYPED_VALUE_CODEC@1.0.0",
+        "raw_value": "<typed physical token>",
+        "physical_missing_state": "<PhysicalMissingState.value>",
+        "source_missing_declaration": "<typed physical token for declaration or none>"
+      },
+      "digest": "sha256(canonical_bytes(physical_binding_shape))",
+      "must_not_use": "pre553_empirical_objects.canonicalize(raw_value)"
+    },
+    "B_RAW_SOURCE_WITNESS": {
+      "purpose": "preserve the source/decoder observation inside a C11 object without granting numerical or semantic meaning",
+      "schema": "PRE553_RAW_PHYSICAL_VALUE_WITNESS@1.0.0",
+      "shape": {
+        "$raw_physical_value": {
+          "schema": "PRE553_EXACT_PHYSICAL_VALUE_MATERIAL@1.0.0",
+          "codec": "PRE553_R5_TYPED_VALUE_CODEC@1.0.0",
+          "token": "<R5TypedValueCodec.encode(value)>"
+        }
+      },
+      "c11_canonicalization_status": "JSON_SAFE_OPAQUE_WITNESS__MAY_BE_HASHED_AS_STRUCTURE",
+      "automatic_semantic_decode": false
+    },
+    "C_SEMANTIC_CANONICAL_VALUE": {
+      "purpose": "represent only a value authorized for semantic interpretation",
+      "canonicalizer": "pre553_empirical_objects.canonicalize",
+      "binary_float_direct_admission": false,
+      "may_equal_raw_witness_only_if": "EXPLICIT_SEMANTIC_AUTHORITY_BINDS_SOURCE_NATIVE_IDENTITY_OR_TRANSFORM",
+      "automatic_A_to_C_or_B_to_C_promotion": false
+    }
+  },
+  "required_value_cases": [
+    {
+      "case": "FINITE_FLOAT64_1_0",
+      "host_value": "1.0",
+      "physical_token": {
+        "t": "float64_finite",
+        "bits": "3ff0000000000000"
+      },
+      "semantic_conclusion": "NO_AUTOMATIC_NUMERIC_SEMANTICS"
+    },
+    {
+      "case": "POSITIVE_ZERO_FLOAT64",
+      "host_value": "+0.0",
+      "physical_token": {
+        "t": "float64_finite",
+        "bits": "0000000000000000"
+      },
+      "semantic_conclusion": "DISTINCT_PHYSICAL_STATE_FROM_NEGATIVE_ZERO"
+    },
+    {
+      "case": "NEGATIVE_ZERO_FLOAT64",
+      "host_value": "-0.0",
+      "physical_token": {
+        "t": "float64_finite",
+        "bits": "8000000000000000"
+      },
+      "semantic_conclusion": "DISTINCT_PHYSICAL_STATE_FROM_POSITIVE_ZERO"
+    },
+    {
+      "case": "DECODER_OBSERVED_NAN",
+      "host_value": "NaN",
+      "physical_token": {
+        "t": "float64_nan_decoder_state"
+      },
+      "semantic_conclusion": "NO_PAYLOAD_BITS_INVENTED__NO_AUTOMATIC_MISSINGNESS"
+    },
+    {
+      "case": "POSITIVE_INFINITY",
+      "host_value": "+Infinity",
+      "physical_token": {
+        "t": "float64_pos_inf"
+      },
+      "semantic_conclusion": "NO_AUTOMATIC_MISSINGNESS_OR_NUMERIC_SEMANTICS"
+    },
+    {
+      "case": "NEGATIVE_INFINITY",
+      "host_value": "-Infinity",
+      "physical_token": {
+        "t": "float64_neg_inf"
+      },
+      "semantic_conclusion": "NO_AUTOMATIC_MISSINGNESS_OR_NUMERIC_SEMANTICS"
+    },
+    {
+      "case": "INTEGER_ONE",
+      "host_value": "1",
+      "physical_token": {
+        "t": "int",
+        "v": "1"
+      },
+      "semantic_conclusion": "PHYSICALLY_DISTINCT_FROM_FLOAT64_1_0_AND_BOOL_TRUE"
+    },
+    {
+      "case": "BOOLEAN_TRUE",
+      "host_value": "True",
+      "physical_token": {
+        "t": "bool",
+        "v": true
+      },
+      "semantic_conclusion": "PHYSICALLY_DISTINCT_FROM_INTEGER_ONE"
+    },
+    {
+      "case": "STRING_INF",
+      "host_value": "inf",
+      "physical_token": {
+        "t": "str",
+        "v": "inf"
+      },
+      "semantic_conclusion": "REMAINS_STRING__DISTINCT_FROM_FLOAT_INFINITY"
+    }
+  ],
+  "required_distinctions": [
+    "int(1) != float64(1.0)",
+    "bool(True) != int(1)",
+    "float64(+0.0) != float64(-0.0)",
+    "float64_nan_decoder_state != float64_pos_inf",
+    "float64_nan_decoder_state != float64_neg_inf",
+    "float64_pos_inf != float64_neg_inf",
+    "str('inf') != float64_pos_inf"
+  ],
+  "nan_law": {
+    "payload_bits_may_be_claimed": false,
+    "reason": "accepted R5 codec states that payload bits may already be destroyed at the frozen decoder boundary",
+    "lawful_identity": "DECODER_OBSERVED_NAN_STATE_ONLY",
+    "retroactive_reconstruction_forbidden": true
+  },
+  "physical_missingness_law": {
+    "value_token_determines_missingness": false,
+    "missing_state_is_separate_input": true,
+    "same_value_token_with_different_missing_state_has_different_binding_identity": true,
+    "nan_implies_missing": false,
+    "infinity_implies_missing": false,
+    "none_implies_semantic_missing": false,
+    "authority_source": "UPSTREAM_GOVERNED_PHYSICAL_CLASSIFICATION_AND_SOURCE_SEMANTIC_AUTHORITY"
+  },
+  "raw_witness_field_bindings": {
+    "RespondentEvent.raw_response_value": "B_RAW_SOURCE_WITNESS",
+    "EmpiricalCoordinateFact.raw_coordinate_value": "B_RAW_SOURCE_WITNESS",
+    "WeightMeasureFact.exact_weight_value_representation": "C_SEMANTIC_CANONICAL_VALUE__NOT_B_RAW_WITNESS"
+  },
+  "projection_rule_bindings": {
+    "ResponseValueRule.physical_key": "A_PHYSICAL_IDENTITY",
+    "CoordinateValueRule.physical_key": "A_PHYSICAL_IDENTITY",
+    "WeightValueRule.physical_key": "A_PHYSICAL_IDENTITY"
+  },
+  "weight_law": {
+    "physical_lookup_key": "A_PHYSICAL_IDENTITY",
+    "copy_observed_numeric_is_generic_raw_witness_authority": false,
+    "exact_weight_value_representation_role": "C_SEMANTIC_CANONICAL_VALUE",
+    "float_to_repr_string_is_automatically_authorized": false,
+    "nonfinite_to_missing_or_zero_is_automatically_authorized": false
+  },
+  "semantic_query_law": {
+    "raw_physical_witness_may_be_compared_as_opaque_source_native_identity": true,
+    "condition": "EXACT_RESPONSE_OR_COORDINATE_SEMANTIC_AUTHORITY_BINDS_THE_SOURCE_NATIVE_IDENTITY_AND_QUERY_USES_THE_SAME_WITNESS_REPRESENTATION",
+    "raw_physical_witness_may_be_decoded_to_numeric_semantics_automatically": false,
+    "preferred_numeric_or_harmonized_semantic_surface": "canonical_*_if_authorized"
+  },
+  "historical_decimal_shim": {
+    "location_commit": "3ce639e1a8ab0ad48954c0aeff4b5c42f3d0b06f",
+    "mechanism": "float -> Decimal(str(value)) before C11",
+    "adopt_as_generic_repair": false,
+    "reasons": [
+      "changes physical type",
+      "does not preserve exact float64 bit identity",
+      "cannot lawfully represent NaN or infinities as semantic exact numbers",
+      "exists to satisfy semantic canonicalization rather than preserve physical identity"
+    ]
+  },
+  "forbidden_repairs": [
+    "WIDEN_GENERIC_CANONICALIZE_TO_ACCEPT_PYTHON_FLOATS",
+    "FLOAT_TO_DECIMAL_FRACTION_OR_REPR_STRING_MERELY_TO_PASS_CANONICALIZE",
+    "NAN_OR_INFINITY_TO_NONE_MISSING_UNKNOWN_OR_ZERO_WITHOUT_AUTHORITY",
+    "DROP_NONFINITE_CELLS",
+    "CONFLATE_NUMERICALLY_EQUAL_HOST_LANGUAGE_TYPES",
+    "FABRICATE_NAN_PAYLOAD_BITS",
+    "DECODE_RAW_PHYSICAL_WITNESS_INTO_SEMANTIC_NUMBER_WITHOUT_AUTHORITY"
+  ]
+}
