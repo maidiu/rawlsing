@@ -1073,7 +1073,22 @@ def _s05(ctx,services,state):
                  "product_identity":product,"semantic_identity":replay,
                  "replay_identity":receipt["execution_identity"]}
     path=_atomic(_evidence(ctx,services)/"learned"/f"{ctx.stage.source}__{ctx.stage.candidate}.json",learned)
-    return {"evidence_artifacts":{"learned_receipt":_rel(path,services)},"_artifacts":{"learned_receipt":str(path)}}
+    from rawlsing_next.ee_p2x_candidate_process_envelope import load_frozen_upstream_receipt
+    from rawlsing_next.fiabc_live_terminal_control import project_live_candidate_observation
+    freeze_raw=os.environ.get("RAWLSING_EE_P2X_FROZEN_UPSTREAM_RECEIPT")
+    if not freeze_raw:
+        raise CourtAuthorityStop("T5 candidate observation requires T3 frozen-upstream receipt")
+    freeze_doc,_freeze_sha=load_frozen_upstream_receipt(Path(freeze_raw))
+    observation=project_live_candidate_observation(
+        source=ctx.stage.source,candidate=ctx.stage.candidate,source_sha256=ctx.source_sha256,
+        binding=binding,result=result,execution_receipt=receipt,state=state,
+        freeze=freeze_doc,oracle_identity_sha256=state["oracle_identity"],
+    )
+    return {
+        "evidence_artifacts":{"learned_receipt":_rel(path,services)},
+        "t5_candidate_observation":observation,
+        "_artifacts":{"learned_receipt":str(path)},
+    }
 
 def _s06(ctx,services,state):
     def audit():
@@ -1409,6 +1424,7 @@ def _fresh_replay_cli(plan_path: Path) -> int:
     child_wall_start=time.perf_counter_ns()
     state=_new_state(ctx)
     binding,projection,runtime_authority=_bind(ctx,services,state,ctx.source_path is not None)
+    _binding_state(state,binding,projection)
     if plan.get("interrupt_probe"):
         usage=resource.getrusage(resource.RUSAGE_SELF)
         print(json.dumps({
@@ -1421,9 +1437,27 @@ def _fresh_replay_cli(plan_path: Path) -> int:
     body,i03_identity=_i03(binding)
     result,receipt=_i05(binding,runtime_authority)
     terminal_identity=receipt["execution_identity"]
+    from rawlsing_next.ee_p2x_candidate_process_envelope import load_frozen_upstream_receipt
+    from rawlsing_next.fiabc_live_terminal_control import (
+        project_live_candidate_observation,terminal_projection_from_observation,
+    )
+    freeze_raw=os.environ.get("RAWLSING_EE_P2X_FROZEN_UPSTREAM_RECEIPT")
+    if not freeze_raw:
+        raise BackendStop("fresh replay lacks T3 frozen-upstream receipt")
+    freeze_doc,_freeze_sha=load_frozen_upstream_receipt(Path(freeze_raw))
+    oracle_entry=freeze_doc.get("oracle_identities",{}).get(plan["source"],{})
+    oracle_identity=oracle_entry.get("oracle_identity_sha256")
+    observation=project_live_candidate_observation(
+        source=plan["source"],candidate=plan["candidate"],
+        source_sha256=plan["source_sha256"],binding=binding,result=result,
+        execution_receipt=receipt,state=state,freeze=freeze_doc,
+        oracle_identity_sha256=oracle_identity,
+    )
+    terminal_projection=terminal_projection_from_observation(observation,freeze_doc)
     child_usage_stop=resource.getrusage(resource.RUSAGE_SELF)
     child_wall_stop=time.perf_counter_ns()
     print(json.dumps({"i03_identity":i03_identity,"terminal_identity":terminal_identity,
+                      "terminal_projection":terminal_projection,
                       "projection":state.get("bindings",{}).get("projection_identity") or getattr(projection,"cache_identity",None),
                       "pid":os.getpid(),"peak_rss_bytes":max(0,int(child_usage_stop.ru_maxrss)),
                       "child_cpu_user_ns":max(0,int((child_usage_stop.ru_utime-child_usage_start.ru_utime)*1e9)),
@@ -1455,6 +1489,7 @@ def _s15(ctx,services,state):
         return doc
     doc,_=_measure(ctx,state,replay,"fresh_process_replay_wall_ns",cost_class="C3",lifecycle_action_id=action_id)
     state.setdefault("_t4_child_process_envelopes",[]).append(replay_box["event"])
+    state["t5_fresh_process_terminal_projection"]=doc.get("terminal_projection")
     expected=state["outputs"].get("exact_output_identity")
     if doc.get("terminal_identity")!=expected:
         raise BackendStop("fresh-process replay reproduced wrong governed terminal identity",
@@ -1473,6 +1508,7 @@ def _s15(ctx,services,state):
     })
     return {"fresh_process_replay_identity":doc.get("terminal_identity"),
             "fresh_process_i03_identity":doc.get("i03_identity"),
+            "fresh_process_terminal_projection":doc.get("terminal_projection"),
             "process_boundary":"NEW_PYTHON_PROCESS"}
 
 def _s16(ctx,services,state):
@@ -1486,22 +1522,36 @@ def _s16(ctx,services,state):
             or "NO_SEMANTIC_TERMINAL_IDENTITY",
         "legacy_endpoint_size_accounting_used": False,
         "formula_estimated_rebuild_used": False,
+        "fresh_process_terminal_projection": state.get("t5_fresh_process_terminal_projection"),
     }
 
 
 def _s17(ctx,services,state):
-    verifier=_repo(services)/"WORKER_RETURNS/EE-P2X/12A_verify_ee_p2x_driver_bound_local_court.py"
-    if not verifier.is_file(): raise CourtAuthorityStop("driver-bound final verifier missing")
-    p=subprocess.run([sys.executable,str(verifier),"--driver-work-root",str(ctx.work_root)],cwd=_repo(services),
-                     stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True)
-    terminal=p.stdout.strip().splitlines()[-1] if p.stdout.strip() else ""
-    if p.returncode or terminal!="PASS__FINAL_TWO_SOURCE_P2_EVIDENCE_COMPLETE":
-        raise CourtAuthorityStop("driver-bound final verification failed",{"returncode":p.returncode,"terminal":terminal})
-    arts={}
-    for n in ("90_FINAL_VERIFICATION_RECEIPT.json","91_DRIVER_BOUND_FINAL_VERIFICATION_RECEIPT.json"):
-        q=_evidence(ctx,services)/n
-        if q.is_file(): arts[n]=str(q)
-    return {"terminal":terminal,"_artifacts":arts}
+    from rawlsing_next.ee_p2x_darwin_court_driver import load_current_execution_manifest
+    from rawlsing_next.fiabc_live_terminal_control import verify_live_final_terminal
+    freeze=os.environ.get("RAWLSING_EE_P2X_FROZEN_UPSTREAM_RECEIPT")
+    preflight=os.environ.get("RAWLSING_FIABC_T5_SUCCESSION_PREFLIGHT_RECEIPT")
+    contract=os.environ.get("RAWLSING_FIABC_T5_CURRENT_COURT_CONTRACT")
+    manifest_path=os.environ.get("RAWLSING_FIABC_T5_CURRENT_EXECUTION_MANIFEST")
+    if not all((freeze,preflight,contract,manifest_path)):
+        raise CourtAuthorityStop("T5 S17 required control receipts are not bound")
+    machine=load_current_execution_manifest(Path(manifest_path))
+    out=verify_live_final_terminal(
+        work_root=ctx.work_root,repo_root=_repo(services),
+        repo_head=ctx.observed_p2x_head,freeze_path=Path(freeze),
+        preflight_receipt_path=Path(preflight),court_contract_path=Path(contract),
+        current_manifest=machine.document,output_root=ctx.roots.receipts,
+    )
+    paths={
+        "t5_final_composition":out["final_path"],
+        "t5_final_terminal_input":out["input_path"],
+        "t5_final_terminal_verification":out["verification_path"],
+    }
+    return {
+        "terminal":out["terminal_contract"],"t5_final":out,
+        "evidence_artifacts":{k:str(Path(v)) for k,v in paths.items()},
+        "_artifacts":paths,
+    }
 
 
 HANDLERS={"S01_CANDIDATE_PREPARATION_BUILD":_s01,"S02_C11_REACHABILITY":_s02,"S03_PARITY_ORACLE_GATE":_s03,

@@ -532,6 +532,24 @@ def _backend_terminal(machine,ledger,stage,head,source_sha,result):
         candidate_owner_identity=owner_identity,repo_head=head,
         backend_receipt=measured_payload,terminal_disposition=result.terminal_disposition,
     )
+    if result.terminal_disposition=="PASS" and stage.stage_id=="S05_I05_LEARNED_PRODUCTION":
+        from rawlsing_next.fiabc_live_terminal_control import admit_post_i05_oracle_match
+        freeze=os.environ.get(FROZEN_UPSTREAM_ENV)
+        if not freeze:
+            raise StageStateError("T5 post-I05 oracle match lacks T3 freeze receipt")
+        measured_payload["t5_oracle_match"]=admit_post_i05_oracle_match(
+            stage=stage,roots=roots,work_root=ledger.work_root,
+            freeze_path=Path(freeze),backend_receipt=measured_payload,
+        )
+    if result.terminal_disposition=="PASS" and stage.stage_id=="S16_TERMINAL_METRIC_VECTOR_COMPLETENESS":
+        from rawlsing_next.fiabc_live_terminal_control import seal_live_cell_terminal
+        freeze=os.environ.get(FROZEN_UPSTREAM_ENV)
+        if not freeze:
+            raise StageStateError("T5 cell terminal lacks T3 freeze receipt")
+        measured_payload["t5_cell_terminal"]=seal_live_cell_terminal(
+            stage=stage,roots=roots,work_root=ledger.work_root,freeze_path=Path(freeze),
+            backend_receipt=measured_payload,
+        )
     receipt=_write_receipt(roots,stage,{"schema":"RAWLSING_EE_P2X_DARWIN_STAGE_RECEIPT_ENVELOPE@1.0.0","stage":stage.address,"backend_contract":BACKEND_CONTRACT,"terminal_disposition":result.terminal_disposition,"input_identity_hash":ih,"measured_payload":measured_payload})
     arts=_artifact_hashes(ledger.work_root,ledger.repo_root,result.output_artifacts)
     disp,nxt={"PASS":("PASS",stage.next_stage_on_pass),"CANDIDATE_LOCAL_FAILURE":("CANDIDATE_LOCAL_FAILURE",stage.next_stage_on_candidate_local_failure),"COMMON_SOURCE_BLOCKER":("BLOCKED_BY_COMMON_SOURCE_AUTHORITY","__COMMON_SOURCE_BLOCKER__"),"COMMON_COURT_BLOCKER":("BLOCKED_BY_COMMON_COURT_AUTHORITY","__COMMON_COURT_BLOCKER__")}[result.terminal_disposition]
@@ -667,6 +685,10 @@ def _parser():
     p.add_argument("--wvs-path",type=Path)
     p.add_argument("--backend-module")
     p.add_argument("--frozen-upstream-receipt",type=Path)
+    p.add_argument("--current-court-contract",type=Path)
+    p.add_argument("--succession-manifest",type=Path)
+    p.add_argument("--succession-lifecycle-context",type=Path)
+    p.add_argument("--succession-preflight-receipt",type=Path)
     return p
 
 def main(argv: Sequence[str] | None=None):
@@ -676,6 +698,16 @@ def main(argv: Sequence[str] | None=None):
     repo_root=args.repo_root.resolve()
     paths={}
     executing=bool(args.run or args.resume)
+    t5_controlled=bool(args.preflight or executing)
+    court_contract_path=None
+    if t5_controlled:
+        if args.current_court_contract is None:
+            raise RuntimeGateError("--preflight/--run/--resume requires --current-court-contract")
+        from rawlsing_next.fiabc_live_terminal_control import validate_current_court_contract_file
+        court_contract_path=args.current_court_contract.resolve()
+        validate_current_court_contract_file(court_contract_path,machine.document)
+        os.environ["RAWLSING_FIABC_T5_CURRENT_COURT_CONTRACT"]=str(court_contract_path)
+        os.environ["RAWLSING_FIABC_T5_CURRENT_EXECUTION_MANIFEST"]=str(args.continuation_map.resolve())
     if args.preflight or executing:
         if args.lits_path is None or args.wvs_path is None:
             raise RuntimeGateError("explicit --lits-path and --wvs-path required")
@@ -690,6 +722,20 @@ def main(argv: Sequence[str] | None=None):
         freeze_path=args.frozen_upstream_receipt.resolve()
         validate_frozen_upstream_for_machine(machine,freeze_path)
         os.environ[FROZEN_UPSTREAM_ENV]=str(freeze_path)
+        from rawlsing_next.fiabc_live_terminal_control import load_frozen_source_oracle
+        for source_id in EXPECTED_SOURCE_ORDER:
+            load_frozen_source_oracle(
+                freeze_path=freeze_path,source=source_id,work_root=work
+            )
+        if args.succession_preflight_receipt is None:
+            raise RuntimeGateError("--run/--resume requires --succession-preflight-receipt")
+        from rawlsing_next.fiabc_live_terminal_control import validate_live_succession_preflight_receipt
+        preflight_path=args.succession_preflight_receipt.resolve()
+        validate_live_succession_preflight_receipt(
+            preflight_path,repo_head=observe_repo(repo_root).head,
+            court_contract_path=court_contract_path,current_manifest=machine.document,
+        )
+        os.environ["RAWLSING_FIABC_T5_SUCCESSION_PREFLIGHT_RECEIPT"]=str(preflight_path)
         from rawlsing_next.fiabc_live_accounting_binding import authorized_same_cell_transitions
         os.environ["RAWLSING_EE_P2X_WARM_STATE_TRANSITIONS"]=",".join(
             authorized_same_cell_transitions(machine.document.get("stage_catalog",()))
@@ -712,7 +758,22 @@ def main(argv: Sequence[str] | None=None):
         if args.status:
             out={"schema":"RAWLSING_EE_P2X_DARWIN_DRIVER_STATUS@1.0.0","next_stage":d.next_stage(),"ledger_sha256":d.ledger.hash()}
         elif args.preflight:
-            out=d.preflight()
+            if args.succession_manifest is None or args.succession_lifecycle_context is None:
+                raise RuntimeGateError(
+                    "--preflight requires --succession-manifest and --succession-lifecycle-context"
+                )
+            base_out=d.preflight()
+            from rawlsing_next.fiabc_live_terminal_control import run_live_succession_preflight
+            t5_path=work/"court"/"fiabc_t5_succession_preflight.json"
+            t5=run_live_succession_preflight(
+                manifest_path=args.succession_manifest.resolve(),
+                lifecycle_context_path=args.succession_lifecycle_context.resolve(),
+                repo_root=repo_root,repo_head=d.repo.head,
+                court_contract_path=court_contract_path,current_manifest=machine.document,
+                output_path=t5_path,
+            )
+            out={**base_out,"t5_succession_preflight":t5,
+                 "t5_succession_preflight_path":str(t5_path)}
         elif getattr(args,"verify_only"):
             out=d.verify_only()
         else:
