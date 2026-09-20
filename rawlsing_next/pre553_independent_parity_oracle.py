@@ -306,7 +306,18 @@ def _validate_source_identity(source: str, identity: Mapping[str, Any]) -> None:
 def _validate_terminal_identity(product: Mapping[str, Any], source: str) -> None:
     for key in ("product_identity", "semantic_identity", "replay_identity", "exact_output_identity"):
         _sha(product.get(key), f"expected_learned_product.{key}")
+    coverage = _mapping(product.get("coverage"), "expected_learned_product.coverage")
+    expected_candidates = 50 if source == "LITS_I" else 46
+    if coverage.get("candidate_count") != expected_candidates:
+        raise ParityOracleError("I05 terminal coverage candidate count drift")
     if source == "LITS_I":
+        if coverage.get("query_role_count") != 77:
+            raise ParityOracleError("LiTS I05 terminal coverage must bind 77 query roles")
+        if coverage.get("typed_terminal_counts") != {
+            "EVALUATED_SUPPORTED": 49,
+            "EVALUATED_VALID_EMPTY": 1,
+        }:
+            raise ParityOracleError("LiTS I05 typed terminal coverage drift")
         if product["product_identity"] != LITS_LEARNED_PRODUCT_IDENTITY:
             raise ParityOracleError("LiTS learned product identity drift")
         if product["semantic_identity"] != LITS_SEMANTIC_REPLAY_IDENTITY:
