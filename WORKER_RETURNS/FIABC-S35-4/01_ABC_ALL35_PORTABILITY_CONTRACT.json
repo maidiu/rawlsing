@@ -1,0 +1,433 @@
+{
+  "schema": "FIABC_ABC_ALL35_SOURCE_PORTABILITY_CONTRACT@1.0.0",
+  "contract_id": "FIABC-S35-4",
+  "status": "PROVED_PORTABILITY_CONSTITUTION__NOT_ALL35_EXECUTABILITY_CERTIFICATION",
+  "repository": "maidiu/rawlsing",
+  "base": {
+    "branch": "agent/vozhd-premain-fiabc-wave3-fanin-r1",
+    "sha": "6c6e43527da7f688a0fbe1c2fa960bfe79dfffcc"
+  },
+  "scope": {
+    "source_set": "CLOSED_35",
+    "required_source_count": 35,
+    "canonical_root_registry": {
+      "worker": "FIABC-S35-1",
+      "branch": "agent/rabochii-premain-fiabc-s35-1-canonical-source-roots-r1",
+      "registry_path": "WORKER_RETURNS/FIABC-S35-1/01_CLOSED35_CANONICAL_SOURCE_ROOTS.csv",
+      "registry_blob": "dcf4d54404d6fbe13528ee6a5e1ec1176a1f2829",
+      "terminal": "FIABC_S35_1_ALL_35_CANONICAL_SOURCE_ROOTS_PROVED"
+    },
+    "proposition": "For every admitted CLOSED_35 source S with canonical source-root SHA-256 H, each candidate A/B/C must prove candidate(S) -> exact physical/derivative lineage -> H and converge to the same governed semantic-owner surface.",
+    "nonclaims": [
+      "This contract does not claim all 35 sources are currently executable.",
+      "This contract does not upgrade Authority71/72 preparation into source certification.",
+      "This contract does not solve any L2 documentary blocker.",
+      "This contract does not authorize new accelerators, alternate source roots, candidate-specific semantics, default weights, population claims, harmonization, or cross-wave equivalence."
+    ]
+  },
+  "controlling_law": {
+    "source_native": {
+      "authority_path": "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/09_SOURCE_NATIVE_CONSTITUTION.md",
+      "authority_blob": "d7d6a4c283238a42edc6a3c271f31ba6081c9792",
+      "rules": [
+        "SOURCE_BYTES_PRIMARY_PHYSICAL_EVIDENCE",
+        "PATH_NAME_OR_DATABASE_SOURCE_FILE_NEVER_SUBSTITUTES_FOR_BYTE_HASH",
+        "SOURCE_SNAPSHOT_PLUS_ROW_ORDINAL_RETAINED_AS_REPLAY_IDENTITY",
+        "DECODER_MAY_NOT_INFER_SEMANTICS",
+        "UNKNOWN_REMAINS_TYPED_UNKNOWN",
+        "CACHES_DERIVED_AGGREGATES_AND_LEGACY_DATABASE_SURFACES_NONAUTHORITATIVE_UNLESS_SEPARATELY_CERTIFIED"
+      ]
+    },
+    "abc_independent_variable": {
+      "authority": "FIABC-B03 / EE-R4B / FIABC-W2-L04 / FIABC-W3-I03",
+      "invariant_truth_owner": "CANONICAL_SOURCE_ROOT_PLUS_GOVERNED_SOURCE_SPECIFIC_AUTHORITY_PLUS_COMMON_SOURCE_BACKED_C11_PLUS_UNCHANGED_I03_I05",
+      "variable": "CANDIDATE_OWNED_PHYSICAL_REALIZATION_PERSISTENCE_REUSE_REGENERATION_STRATEGY",
+      "semantic_owner_movement_allowed": false
+    }
+  },
+  "required_admission_inputs": {
+    "source_root": {
+      "required": [
+        "family",
+        "wave_or_release",
+        "canonical_filename",
+        "sha256",
+        "format"
+      ],
+      "rule": "sha256 MUST equal the unique canonical CLOSED_35 root H."
+    },
+    "physical_decode_authority": {
+      "required": [
+        "decoder_mode",
+        "compatibility_mode",
+        "physical_hazards"
+      ],
+      "rule": "Decoder/compatibility configuration may expose physical facts but may not mint semantics."
+    },
+    "source_semantic_authority": {
+      "required": [
+        "governed_projection_or_equivalent_source_specific_authority",
+        "routing_applicability_authority_or_typed_unknown_permission",
+        "response_state_authority_or_typed_unknown_permission",
+        "topology_authority",
+        "weight_design_estimand_authority_or_explicit_nonapplicability",
+        "source_universe_currentness_authority"
+      ],
+      "rule": "Every workload-required semantic assertion must be positively authorized or positively permitted to remain typed UNKNOWN."
+    },
+    "workload": {
+      "required": [
+        "workload_id",
+        "exact_source_scope",
+        "question_or_slot_frontier",
+        "routing_scope",
+        "weight_mode",
+        "terminal_surface"
+      ],
+      "rule": "The same governed workload is supplied to A/B/C. Candidate realization may not truncate it."
+    },
+    "candidate_binding": {
+      "required": [
+        "candidate_id",
+        "frozen_or_current_authoritative_policy",
+        "physical_path",
+        "semantic_owner_ref",
+        "lineage_receipts"
+      ],
+      "candidate_ids": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  },
+  "lineage_model": {
+    "canonical_root_symbol": "H",
+    "accepted_start_states": [
+      "EXACT_CANONICAL_RAW_ROOT",
+      "LAWFUL_PRESERVED_DERIVATIVE"
+    ],
+    "exact_predicate": "candidate(S) -> [zero or more governed physical derivatives] -> H",
+    "derivative_acceptance_all_of": [
+      "DERIVATIVE_HAS_EXACT_CONTENT_IDENTITY",
+      "DERIVATIVE_RECEIPT_NAMES_EXACT_PARENT_ROOT_H",
+      "DERIVATION_OPERATION_AND_PRODUCER_IDENTITY_ARE_PINNED",
+      "DERIVATION_SCOPE_COVERS_THE_CURRENT_WORKLOAD",
+      "DERIVATIVE_PRESERVES_REQUIRED_SOURCE_NATIVE_INFORMATION_AT_ITS_AUTHORIZED_SCOPE",
+      "REPLAY_OR_REOPEN_VALIDATION_BINDS_DERIVATIVE_TO_GOVERNED_SOURCE_SEMANTIC_OWNER",
+      "DERIVATIVE_DOES_NOT_CLAIM_SOURCE_SEMANTIC_AUTHORITY",
+      "CANDIDATE_POLICY_PERMITS_THIS_DERIVATIVE_CLASS",
+      "CURRENT_SOURCE_OR_SEMANTIC_INVALIDATION_HAS_NOT_STALED_THE_DERIVATIVE",
+      "CANDIDATE_OWNERSHIP_AND_CROSS_CANDIDATE_REUSE_RULES_ARE_SATISFIED"
+    ],
+    "insufficient_proofs": [
+      "same filename",
+      "same path",
+      "same row/column geometry",
+      "same labels",
+      "same apparent query output",
+      "self-hash plus asserted canonical source SHA",
+      "historical loader receipt without exact raw SHA bridge",
+      "candidate cache or accelerator existence",
+      "successful execution alone"
+    ],
+    "missing_arrow_result": "BLOCKED__DERIVATIVE_LINEAGE_TO_CANONICAL_ROOT_UNPROVED"
+  },
+  "preserved_derivative_law": {
+    "lawful_when": "All derivative_acceptance_all_of predicates hold and the derivative is within the candidate's physical policy.",
+    "not_a_new_source": true,
+    "cannot_retire_root_without_separate_authority": true,
+    "current_examples_are_bounded_not_universal_proofs": [
+      "Candidate A R5 persistent carrier when exact carrier/release/source/workload lineage is verified",
+      "LiTS AS2A/AS2B projection/C11/replay derivatives",
+      "I04 byte-preserved runtime assets",
+      "generic content-addressed C11 Parquet persistence under exact release/source/replay validation",
+      "Candidate C CACC1/CACC2 only inside accepted determinant scope"
+    ]
+  },
+  "raw_source_reopen_law": {
+    "reopen_required_if_any": [
+      "NO_LAWFUL_DERIVATIVE_EXISTS_FOR_REQUIRED_SCOPE",
+      "DERIVATIVE_PARENT_LINEAGE_IS_MISSING_OR_UNVERIFIABLE",
+      "DERIVATIVE_SCOPE_DOES_NOT_COVER_CURRENT_WORKLOAD",
+      "DERIVATIVE_CONTENT_IDENTITY_OR_MEMBER_HASH_FAILS",
+      "DERIVATIVE_IS_STALE_OR_CORRUPT",
+      "SOURCE_RELEASE_INVALIDATION_REQUIRES_REGENERATION",
+      "SEMANTIC_AUTHORITY_INVALIDATION_INVALIDATES_THE_DERIVATIVE",
+      "CANDIDATE_POLICY_REQUIRES_SOURCE_BACKED_RECONSTRUCTION",
+      "CANDIDATE_C_ACCELERATOR_IS_ABSENT_OR_INAPPLICABLE_AND_NO_OTHER_LAWFUL_C_DERIVATIVE_COVERS_THE_SCOPE",
+      "FRESH_PROCESS_REPLAY_REQUIRES_RECONSTRUCTION_AND_NO_LAWFUL_PRESERVED_STATE_IS_ADMITTED"
+    ],
+    "alternate_source_never_satisfies_reopen": true,
+    "canonical_root_unavailable_result": "BLOCKED__CANONICAL_RAW_ROOT_REQUIRED_BUT_UNAVAILABLE"
+  },
+  "compatibility_decode_law": {
+    "scope": "PHYSICAL_EXECUTION_ONLY",
+    "semantic_authority_created": false,
+    "alternate_source_created": false,
+    "canonical_root_remains_exact_raw_bytes": true,
+    "prep72_physical_only_sources": [
+      "EVS 1999.sav",
+      "EVS 2008.sav",
+      "LiTS_I.dta",
+      "LiTS_II.dta",
+      "LiTS_III.dta",
+      "LiTS_IV.dta"
+    ],
+    "exact_rule": "Compatibility decoding may change how canonical bytes are physically read. It may not establish intended text encoding, response meaning, routing, weight/design meaning, source equivalence, or semantic certification.",
+    "persisted_compatibility_output_rule": "If persisted, compatibility-decoded output is a derivative and must independently satisfy the full derivative-lineage predicate; it never becomes H."
+  },
+  "common_semantic_owner_surface": {
+    "invariant_chain": [
+      "CANONICAL_SOURCE_ROOT_H",
+      "ACCEPTED_PHYSICAL_DECODER_AND_SOURCE_NATIVE_INCIDENCE",
+      "GOVERNED_SOURCE_SPECIFIC_PROJECTION_OR_EQUIVALENT_AUTHORITY",
+      "SOURCE_BACKED_VALIDATED_C11",
+      "UNCHANGED_EXACT_I03",
+      "GOVERNED_I05_LEARNED_EMPIRICAL_PRODUCT_WITH_EXACT_SEMANTIC_REPLAY_OUTPUT_IDENTITY"
+    ],
+    "earliest_common_logical_interface": "VALIDATED_C11_LOGICAL_RELEASE_OR_REPOSITORY",
+    "full_comparison_terminal": "I05_LEARNED_EMPIRICAL_PRODUCT__WITH_EXACT_SEMANTIC_REPLAY_AND_OUTPUT_IDENTITY",
+    "candidates_may_own_semantics": false,
+    "candidate_specific_semantic_surface_allowed": false
+  },
+  "candidates": {
+    "A": {
+      "policy": "PERSISTENT_TRANSFORMED_R5_STYLE_CARRIER",
+      "frozen_owner_reference": "rawlsing_next/pre553_r5_source_backed_adapter.py@owner_blob:d4915e7e6755ba1850756aebff72f982f73a332b",
+      "universal_portability_requirement": "Any persistent transformed carrier must have exact derivative identity and governed lineage to H, cover the full current workload, reopen through the common semantic owner, and pass replay/currentness checks.",
+      "preserved_derivative_permitted": true,
+      "raw_reopen_default": false,
+      "raw_reopen_required": "When the preserved carrier is absent, invalid, stale, scope-insufficient, lineage-unproved, or source/semantic invalidation requires regeneration.",
+      "forbidden": [
+        "PATH_ONLY_CARRIER_REUSE",
+        "CARRIER_AS_SEMANTIC_AUTHORITY",
+        "CARRIER_FROM_ALTERNATE_SOURCE_WITHOUT_EQUIVALENCE",
+        "CROSS_CANDIDATE_RESULT_SUBSTITUTION"
+      ]
+    },
+    "B": {
+      "policy": "SOURCE_BACKED_VIRTUAL_C11",
+      "frozen_owner_reference": "rawlsing_next/pre553_source_backed_c11_facade.py@owner_blob:7c509c2098d0030f253344eb3f682471378812a8",
+      "universal_portability_requirement": "Fresh realization is rooted directly in H through accepted decode plus governed source-specific projection into transient validated C11.",
+      "persistent_transformed_empirical_payload_permitted": false,
+      "transient_physical_decode_permitted": true,
+      "preserved_nonauthoritative_runtime_or_authority_assets_permitted": true,
+      "raw_reopen_default": true,
+      "raw_reopen_required": "For a fresh source-backed empirical realization whenever no currently valid in-process exact-source incidence remains.",
+      "forbidden": [
+        "PERSISTED_EMPIRICAL_DERIVATIVE_USED_AS_B_SOURCE_SUBSTITUTE",
+        "A_OR_C_CARRIER_RELABELED_AS_B",
+        "SEMANTIC_GUESSING_FROM_RAW_PHYSICAL_PATTERN"
+      ]
+    },
+    "C": {
+      "policy": "SOURCE_BACKED_HYBRID_WITH_REGENERABLE_ACCELERATORS",
+      "frozen_owner_reference": "rawlsing_next/pre553_route_c_accelerators.py@owner_blob:abfdc91a71ef5e18c4a8a6bf62fa65750d8d9889",
+      "mandatory_semantic_core": "EXACT_SOURCE_OR_LAWFUL_SOURCE_DERIVATIVE_PLUS_GOVERNED_PROJECTION_TO_SOURCE_BACKED_C11_TO_UNCHANGED_I03_I05",
+      "accelerator_authority_role": "NONE",
+      "zero_accelerator_state": {
+        "lawful": true,
+        "universal_in_principle": true,
+        "exact_meaning": "For any source already admitted to the common source-backed semantic spine, Candidate C remains a lawful Candidate-C state with zero applicable accelerators and may execute through exact-source-backed reconstruction.",
+        "nonclaim": "This does not prove a current C runtime binding, source-specific projection, or executable C cell for every CLOSED_35 source."
+      },
+      "nonzero_accelerators": {
+        "default_for_future_source": "NONE",
+        "allowed_only_if": "A separately accepted Candidate-C accelerator identity explicitly applies to this exact source/workload and is nonauthoritative, regenerable, determinant-bound, and scope-complete for the work it claims to accelerate.",
+        "currently_frozen_named_accelerators": [
+          "CACC1_LITS1_SEMANTIC_EXECUTION_BUNDLE",
+          "CACC2_FRONTIER_ATOMIC_PREDICATE_RISK_MASK_BANK"
+        ],
+        "current_named_scope": "LiTS-specific bounded determinant scope only",
+        "extra_accelerator_invention_by_this_contract": false
+      },
+      "raw_reopen_required": "Whenever zero-accelerator fallback is exercised and no lawful preserved derivative supplies the complete physical source scope, or when an accelerator's scope/lineage/currentness fails.",
+      "identity_preservation": "Candidate C remains C even if its physical realization degenerates to the same exact-source-backed path used by B.",
+      "forbidden": [
+        "ACCELERATOR_ABSENCE_AS_CANDIDATE_EXCLUSION",
+        "ACCELERATOR_AS_SOURCE_ROOT",
+        "ACCELERATOR_AS_SEMANTIC_OWNER",
+        "ACCELERATOR_SCOPE_USED_TO_TRUNCATE_WORKLOAD",
+        "B_IDENTITY_SUBSTITUTION",
+        "UNAUTHORIZED_CACC3_OR_SOURCE_SPECIFIC_ACCELERATOR"
+      ]
+    }
+  },
+  "source_specific_semantic_authority_law": {
+    "governing_rule": "Physical root identity is necessary but not sufficient for semantic admission.",
+    "missing_authority_behavior": {
+      "if_authority_is_allowed_to_remain_unknown": "PRESERVE_TYPED_UNKNOWN_IDENTICALLY_FOR_A_B_C",
+      "if_workload_requires_a_semantic_assertion_that_is_not_authorized": "BLOCK_ALL_CANDIDATES_AT_COMMON_SOURCE_AUTHORITY_GATE",
+      "candidate_specific_guessing": "FORBIDDEN"
+    },
+    "required_common_failure_state": "BLOCKED__REQUIRED_SOURCE_SEMANTIC_AUTHORITY_MISSING",
+    "l2_prep72_sources": [
+      "Afro Barometer Round 5.sav",
+      "Afro Barometer Round 9.sav",
+      "EVS 1999.sav",
+      "EVS 2008.sav",
+      "GSS1972.sav",
+      "GSS1973.sav",
+      "Latinobarometro 1995.sav"
+    ],
+    "l2_exact_law": "L2 documentary blockers block the affected semantic certification grain. They do not authorize A/B/C to infer, normalize, repair, harmonize, or guess the missing meaning independently."
+  },
+  "alternate_source_law": {
+    "principle": "ABSENCE_OF_ACCELERATOR_OR_DERIVATIVE_NEVER_AUTHORIZES_AN_ALTERNATE_SOURCE",
+    "required_root": "H",
+    "if_preferred_candidate_artifact_absent": "REOPEN_OR_REGENERATE_FROM_H_IF_OTHER_AUTHORITY_IS_CLOSED; OTHERWISE_RETURN_TYPED_BLOCK",
+    "forbidden_substitutions": [
+      "alternate export with matching wave label",
+      "producer-versioned copy without equivalence receipt",
+      "historical DTA/SAV of same dimensions",
+      "compiled trend/harmonized aggregate",
+      "same-name file with different SHA",
+      "family-directory glob expansion",
+      "detached structural preimage asserting H without parent receipt"
+    ]
+  },
+  "failure_states": [
+    {
+      "code": "BLOCKED__CANONICAL_SOURCE_ROOT_UNPROVED",
+      "class": "COMMON_SOURCE_BLOCK",
+      "applies_to": [
+        "A",
+        "B",
+        "C"
+      ],
+      "when": "Source is not uniquely bound to the CLOSED_35 canonical H."
+    },
+    {
+      "code": "BLOCKED__ALTERNATE_SOURCE_SUBSTITUTION",
+      "class": "CANDIDATE_POLICY_AND_SOURCE_IDENTITY_BLOCK",
+      "applies_to": [
+        "A",
+        "B",
+        "C"
+      ],
+      "when": "A candidate attempts to substitute a noncanonical file or unproved equivalent for H."
+    },
+    {
+      "code": "BLOCKED__DERIVATIVE_LINEAGE_TO_CANONICAL_ROOT_UNPROVED",
+      "class": "CANDIDATE_PHYSICAL_LINEAGE_BLOCK",
+      "applies_to": [
+        "A",
+        "C"
+      ],
+      "when": "A preserved derivative lacks a complete exact chain to H; also applies to any B-side forbidden persisted empirical substitution."
+    },
+    {
+      "code": "BLOCKED__DERIVATIVE_SCOPE_INSUFFICIENT",
+      "class": "CANDIDATE_PHYSICAL_SCOPE_BLOCK",
+      "applies_to": [
+        "A",
+        "C"
+      ],
+      "when": "Derivative provenance is valid but its determinant/scope does not cover the current workload and raw fallback has not lawfully supplied the remainder."
+    },
+    {
+      "code": "BLOCKED__CANONICAL_RAW_ROOT_REQUIRED_BUT_UNAVAILABLE",
+      "class": "CANDIDATE_EXECUTION_INPUT_BLOCK",
+      "applies_to": [
+        "A",
+        "B",
+        "C"
+      ],
+      "when": "Candidate policy/current invalidation requires raw H and it cannot be opened."
+    },
+    {
+      "code": "BLOCKED__REQUIRED_SOURCE_SEMANTIC_AUTHORITY_MISSING",
+      "class": "COMMON_SOURCE_AUTHORITY_BLOCK",
+      "applies_to": [
+        "A",
+        "B",
+        "C"
+      ],
+      "when": "The current workload requires a semantic assertion for which source-specific authority is genuinely missing and typed UNKNOWN is not sufficient for the required claim."
+    },
+    {
+      "code": "BLOCKED__SEMANTIC_OWNER_DIVERGENCE",
+      "class": "COMMON_PARITY_BLOCK",
+      "applies_to": [
+        "A",
+        "B",
+        "C"
+      ],
+      "when": "Candidates do not converge on the same governed projection/C11/I03/I05 semantic-owner surface."
+    },
+    {
+      "code": "BLOCKED__COMPATIBILITY_DECODE_PROMOTED_TO_SEMANTIC_AUTHORITY",
+      "class": "SOURCE_SEMANTIC_BOUNDARY_VIOLATION",
+      "applies_to": [
+        "A",
+        "B",
+        "C"
+      ],
+      "when": "Compatibility decoding is used to claim source text meaning or semantic authority."
+    },
+    {
+      "code": "BLOCKED__CANDIDATE_RUNTIME_BINDING_MISSING",
+      "class": "CANDIDATE_SPECIFIC_IMPLEMENTATION_BLOCK",
+      "applies_to": [
+        "A",
+        "B",
+        "C"
+      ],
+      "when": "Common source authority exists but one candidate lacks an executable binding to the common semantic surface."
+    },
+    {
+      "code": "BLOCKED__CANDIDATE_POLICY_VIOLATION",
+      "class": "CANDIDATE_SPECIFIC_POLICY_BLOCK",
+      "applies_to": [
+        "A",
+        "B",
+        "C"
+      ],
+      "when": "Physical state violates frozen candidate policy, including unauthorized persistence/accelerator use or candidate identity substitution."
+    },
+    {
+      "code": "BLOCKED__ACCELERATOR_USED_AS_AUTHORITY_OR_SOURCE",
+      "class": "CANDIDATE_C_POLICY_BLOCK",
+      "applies_to": [
+        "C"
+      ],
+      "when": "Candidate C treats any accelerator as semantic authority, canonical source, or source-scope determinant beyond accepted bounds."
+    }
+  ],
+  "pre_admission_evaluation_order": [
+    "01_RESOLVE_UNIQUE_CANONICAL_H_FROM_CLOSED35_REGISTRY",
+    "02_VERIFY_EXACT_PHYSICAL_DECODER_AND_COMPATIBILITY_MODE",
+    "03_CLOSE_OR_TYPE_THE_SOURCE_SPECIFIC_SEMANTIC_AUTHORITY_REQUIRED_BY_THE_EXACT_WORKLOAD",
+    "04_FREEZE_ONE_CANDIDATE_NEUTRAL_GOVERNED_SEMANTIC_OWNER_SURFACE",
+    "05_VALIDATE_A_PHYSICAL_PATH_AND_ANY_PRESERVED_DERIVATIVE_LINEAGE_TO_H",
+    "06_VALIDATE_B_DIRECT_SOURCE_BACKED_PATH_TO_H_WITH_NO_PERSISTED_EMPIRICAL_SUBSTITUTE",
+    "07_VALIDATE_C_ZERO_OR_ACCEPTED_ACCELERATOR_PATH_WITH_COMPLETE_LINEAGE_TO_H_AND_SOURCE_BACKED_FALLBACK",
+    "08_VERIFY_NO_CANDIDATE_TRUNCATES_OR_CHANGES_THE_GOVERNED_WORKLOAD",
+    "09_VERIFY_ALL_CANDIDATES_TARGET_THE_SAME_C11_I03_I05_SEMANTIC_TERMINAL",
+    "10_RETURN_ADMISSION_VERDICT"
+  ],
+  "admission_verdicts": {
+    "pass": "ADMISSIBLE_TO_ABC_SOURCE_PORTABILITY_COURT__EXECUTION_AND_CERTIFICATION_STILL_SEPARATELY_REQUIRED",
+    "block": "ONE_OF_failure_states.code",
+    "rule": "Unknown or absent proof is BLOCK, never implicit PASS."
+  },
+  "evidence": {
+    "governing": [
+      "09_SOURCE_NATIVE_CONSTITUTION.md@blob:d7d6a4c283238a42edc6a3c271f31ba6081c9792",
+      "FIABC-B03/00_RETURN.md@blob:7ced91aae64e2e97a9b903a57feafbdcb0799c1f",
+      "EE-R4B/01_EXECUTABLE_OWNER_REGISTRY.json@blob:afc7e78f587f73b4d62c1425f7c260743af10263",
+      "FIABC-W2-L04/00_RETURN.md@blob:b249587c0ca8092a85eb6a926428f425ef12203d",
+      "FIABC-W2-L04/03_COURT_IMPLICATION.md@blob:a6e308785f97b7b07fda67b9e3e2d25ff13e8272",
+      "FIABC-W3-I03/00_RETURN.md@blob:d7b7ddbcde4c3c32a4381a21f9224b8a4743ac8a",
+      "FIABC-W3-I03/03_FANIN_BINDING_CONTRACT.md@blob:bf16227ef8fc830d6e1c72e04572ce11cfc6c32e",
+      "FIABC-W3-Q02/06_SIX_CELL_PREMEASUREMENT_PROTOCOL.md@blob:8de158a7d3b812901fa9ff7652356d762042c5d0"
+    ],
+    "source_root_registry": "FIABC-S35-1 RETURN.json@blob:9c63ddd9d66896d6a0acab6e88db287d7c3df4c2",
+    "corroborating_non_governing_sibling_preparation": [
+      "FIABC-S35-2/RETURN.json@blob:8d93f6c87a2371d7ccc1a8b59706523ee2e0c20a",
+      "FIABC-S35-2/03_HOSTILE_DIFFERENTIAL_FILE_CASES.md@blob:d59cedecb689073253112288554a7eabe4c426ac"
+    ]
+  },
+  "terminal": "FIABC_S35_4_ALL35_ABC_SOURCE_PORTABILITY_CONTRACT_PROVED"
+}
