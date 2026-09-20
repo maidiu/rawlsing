@@ -1,0 +1,51 @@
+{
+  "schema": "CLOSED35_L2R_AFROBAROMETER_R5_RETURN@1.0.0",
+  "worker": "CLOSED35-L2R-AFR5",
+  "repository": "maidiu/rawlsing",
+  "base_branch": "agent/vozhd-closed35-l2-documentary-fanin-r1",
+  "base_sha": "5c582e2325ecc2b37377cd518fe4c456331c81d8",
+  "branch": "agent/rabochii-closed35-l2r-afr5-residual-authority-r1",
+  "return_path": "WORKER_RETURNS/CLOSED35-L2R-AFR5/",
+  "source_file": "Afro Barometer Round 5.sav",
+  "source_sha256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+  "scope": [
+    "Q10B=997",
+    "Q47C=997",
+    "raw COUNTRY carrier binding",
+    "administrative routing carriers"
+  ],
+  "prior_closed_weight_authority_reopened": false,
+  "disposition": "RESIDUAL_FROZEN",
+  "new_closures": {
+    "Q10B_997": "NOT_ASKED",
+    "COUNTRY_raw_carrier": "DIRECT_1_TO_35_COUNTRY_MAP_CLOSED",
+    "WEST_AFR": "REGION_1_WEST_AFRICA_ADMINISTRATIVE_FILTER_CLOSED_AT_DOCUMENTED_SCOPE"
+  },
+  "irreducible_unknowns": {
+    "Q47C_997": "DOCUMENTARY_AUTHORITY_UNKNOWN_AFTER_TARGETED_RECOVERY",
+    "EAST_AFR_exact_alias": "DOCUMENTARY_AUTHORITY_UNKNOWN_AFTER_TARGETED_RECOVERY",
+    "SOUTHERN_exact_alias": "DOCUMENTARY_AUTHORITY_UNKNOWN_AFTER_TARGETED_RECOVERY",
+    "NORTH_AF_exact_alias": "DOCUMENTARY_AUTHORITY_UNKNOWN_AFTER_TARGETED_RECOVERY",
+    "R1_ONLY": "DOCUMENTARY_AUTHORITY_UNKNOWN_AFTER_TARGETED_RECOVERY",
+    "R2_ONLY": "DOCUMENTARY_AUTHORITY_UNKNOWN_AFTER_TARGETED_RECOVERY",
+    "R3_ONLY": "DOCUMENTARY_AUTHORITY_UNKNOWN_AFTER_TARGETED_RECOVERY",
+    "R4_ONLY": "DOCUMENTARY_AUTHORITY_UNKNOWN_AFTER_TARGETED_RECOVERY"
+  },
+  "prohibitions_observed": {
+    "opened_raw_source": false,
+    "executed_source": false,
+    "ran_measured_p2x": false,
+    "generalized_Q10B_997_to_Q47C": false,
+    "reopened_weight_authority": false,
+    "invented_round_filter_semantics": false
+  },
+  "outputs": [
+    "00_RETURN.md",
+    "01_TARGETED_SOURCE_LEDGER.csv",
+    "02_RESIDUAL_AUTHORITY_MAP.csv",
+    "03_UPDATED_SOURCE_ADMISSION_PACKET.json",
+    "RETURN.json"
+  ],
+  "ready_for_source_specific_realization": false,
+  "terminal": "CLOSED35_L2R_AFROBAROMETER_R5_RESIDUAL_AUTHORITY_FROZEN__IRREDUCIBLE_UNKNOWN_SET_RETURNED"
+}
