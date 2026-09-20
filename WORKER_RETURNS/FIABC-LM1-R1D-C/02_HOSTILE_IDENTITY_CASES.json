@@ -1,0 +1,97 @@
+{
+  "schema": "FIABC_LM1_R1D_C_HOSTILE_IDENTITY_CASES@1.0.0",
+  "status": "COURT_AUTHORED__NOT_EXECUTED",
+  "winning_contract": {
+    "class": "CANDIDATE_1",
+    "codec": "PRE553_R5_TYPED_VALUE_CODEC@1.0.0",
+    "binding_rule": "hash deterministic canonical physical material built from R5TypedValueCodec.encode(raw_value), physical missing-state token, and typed physical declaration material; do not pass raw physical floats through semantic canonicalize()",
+    "raw_witness_rule": "store deterministic R5 typed-value material as raw response/coordinate witness material; semantic/canonical value fields remain governed by existing C11 semantic canonicalization",
+    "nan_rule": "preserve only decoder-observed NaN state; never fabricate NaN payload bits"
+  },
+  "identity_cases": [
+    {
+      "id": "FINITE_POSITIVE",
+      "input": "float 1.5",
+      "expected_r5_token": {"t": "float64_finite", "bits": "3ff8000000000000"},
+      "must_differ_from": ["integer 1", "string 1.5"],
+      "court": "PASS_ONLY_UNDER_CANDIDATE_1"
+    },
+    {
+      "id": "FINITE_NEGATIVE",
+      "input": "float -2.25",
+      "expected_r5_token": {"t": "float64_finite", "bits": "c002000000000000"},
+      "court": "PASS_ONLY_UNDER_CANDIDATE_1"
+    },
+    {
+      "id": "SIGNED_ZERO_POSITIVE",
+      "input": "float +0.0",
+      "expected_r5_token": {"t": "float64_finite", "bits": "0000000000000000"},
+      "must_differ_from": ["float -0.0", "integer 0", "bool false"]
+    },
+    {
+      "id": "SIGNED_ZERO_NEGATIVE",
+      "input": "float -0.0",
+      "expected_r5_token": {"t": "float64_finite", "bits": "8000000000000000"},
+      "must_differ_from": ["float +0.0", "integer 0", "bool false"]
+    },
+    {
+      "id": "NAN_DECODER_STATE",
+      "input": "decoder-observed NaN",
+      "expected_r5_token": {"t": "float64_nan_decoder_state"},
+      "forbidden_interpretations": ["None", "missing", "UNKNOWN", "fabricated NaN payload"]
+    },
+    {
+      "id": "POSITIVE_INFINITY",
+      "input": "float +inf",
+      "expected_r5_token": {"t": "float64_pos_inf"},
+      "must_differ_from": ["float -inf", "string inf", "NaN decoder state"]
+    },
+    {
+      "id": "NEGATIVE_INFINITY",
+      "input": "float -inf",
+      "expected_r5_token": {"t": "float64_neg_inf"},
+      "must_differ_from": ["float +inf", "string -inf", "NaN decoder state"]
+    },
+    {
+      "id": "INT_FLOAT_EQUALITY_TRAP",
+      "inputs": ["integer 1", "float 1.0"],
+      "expected_tokens": [
+        {"t": "int", "v": "1"},
+        {"t": "float64_finite", "bits": "3ff0000000000000"}
+      ],
+      "requirement": "distinct physical binding keys despite Python numerical equality"
+    },
+    {
+      "id": "BOOL_INT_EQUALITY_TRAP",
+      "inputs": ["bool true", "integer 1"],
+      "expected_tokens": [
+        {"t": "bool", "v": true},
+        {"t": "int", "v": "1"}
+      ],
+      "requirement": "distinct physical binding keys despite Python equality"
+    },
+    {
+      "id": "STRING_INFINITY_LOOKALIKE",
+      "inputs": ["string inf", "float +inf"],
+      "expected_tokens": [
+        {"t": "str", "v": "inf"},
+        {"t": "float64_pos_inf"}
+      ],
+      "requirement": "string must remain string"
+    },
+    {
+      "id": "UNICODE_LOOKALIKE",
+      "inputs": ["canonically equivalent but code-point-distinct strings"],
+      "requirement": "R5 string lane preserves exact Python Unicode code-point sequence; no Unicode normalization at physical seam"
+    }
+  ],
+  "seam_cases": {
+    "physical_key_lookup": "same exact typed physical state plus same physical missing/declaration state => same key; any listed hostile distinction => different key",
+    "raw_response_value": "typed physical witness token, never semantic float",
+    "raw_coordinate_value": "typed physical witness token, never semantic float",
+    "weight_handling": "physical key uses typed physical representation; existing governed weight exact-value/copy rule remains separate; non-finite raw weight may not become missing or a valid semantic weight by this repair",
+    "unprojected_cells": "no semantic object emitted and no physical carrier mutation",
+    "deterministic_replay": "repeated canonical typed material yields byte-identical canonical representation and identical binding hash",
+    "candidate_neutrality": "same C11 physical seam contract for A/B/C; no candidate-specific float rule"
+  }
+}
