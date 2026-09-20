@@ -1,0 +1,60 @@
+{
+  "schema": "FIABC_W3_I04_RUNTIME_PACKAGING_BINDING@1.0.0",
+  "worker": "FIABC-W3-I04",
+  "audited_call_surface": {
+    "commit": "617c9c9426db12a3c0f7fea6b68a582c10759553",
+    "path": "rawlsing_next/ee_p2x_darwin_stage_backend.py",
+    "blob": "b223d309b5f5fa45389badec719ce2882e672cca"
+  },
+  "semantic_owner_change": false,
+  "measured_p2x_authorized": false,
+  "stable_runtime_assets": [
+    {
+      "role": "LITS_R6S_CURRENT_RUNTIME_MATERIALIZER",
+      "path": "rawlsing_next/runtime/ee_p2x/01_LITS_CURRENT_RUNTIME_MATERIALIZER.py",
+      "source_commit": "617c9c9426db12a3c0f7fea6b68a582c10759553",
+      "source_path": "WORKER_RETURNS/EE-P2R6S/SUPPORT/01_LITS_CURRENT_RUNTIME_MATERIALIZER.py",
+      "git_blob_sha": "9406bacfd928393f6a159a46216aa1f7ec129f34",
+      "byte_identity_required": true
+    },
+    {
+      "role": "WVS7_P2F2_RUNTIME_PACKAGE",
+      "path": "rawlsing_next/runtime/ee_p2x/02_WVS7_P2F2_RUNTIME_PACKAGE.json",
+      "source_commit": "617c9c9426db12a3c0f7fea6b68a582c10759553",
+      "source_path": "WORKER_RETURNS/EE-P2R6S/SUPPORT/02_WVS7_P2F2_RUNTIME_PACKAGE.json",
+      "git_blob_sha": "e04e84b76f8b4eb53905276dd025938bf2e5f6fe",
+      "byte_identity_required": true
+    },
+    {
+      "role": "WVS7_R6S_PROJECTION_MATERIALIZER",
+      "path": "rawlsing_next/runtime/ee_p2x/05_WVS7_PROJECTION_MATERIALIZER.py",
+      "source_commit": "617c9c9426db12a3c0f7fea6b68a582c10759553",
+      "source_path": "WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py",
+      "git_blob_sha": "11b28416aac5a4899706150721f2f8ac8bb6ee43",
+      "byte_identity_required": true
+    }
+  ],
+  "accepted_support_fanin": {
+    "role": "NODE4A_PREDICATE_INPUTS",
+    "path": "WORKER_RETURNS/EE-P2R6O/SUPPORT/01_NODE4A_PREDICATE_INPUTS.py",
+    "source_ref": "agent/rabochii-prev3-ee-p2r6o-ab-owner-seam-requalification-r1",
+    "git_blob_sha": "504944f9533b7385d201076e2e834b8a9446dee8",
+    "exact_path_required_by_preserved_materializer": true
+  },
+  "preserved_runtime_identities": {
+    "lits_runtime_catalog": "5983d7d5c579b916ad46c1acf9e41c1c89b516a4e561a99b1d2b477bf5ad2d02",
+    "lits_active_binding": "a5f36a81843fe2ebab0b5cccb369ce76035f842b93e602613b8b9f3a81103308",
+    "lits_runtime_release": "192926fabd9c9c3d40e43b1d7705ca2bcfe7f8d06e286be26d4b886d436df43f",
+    "wvs_lock2": "8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188",
+    "wvs_projection": "838070ff6b85d60d4f26f9153b0507ba425936c11a3de94a18d57bfcd083f24d",
+    "p2r1_seam_blob": "e7cda773e6a2426bfa12b22790fd8e005fe75153",
+    "frozen_candidate_owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6"
+  },
+  "forbidden": [
+    "CURRENT_TREE_CANDIDATE_OWNER_SUBSTITUTION",
+    "SEMANTIC_REMINTING",
+    "NODE4A_RECONSTRUCTION",
+    "WVS_SEMANTIC_REGENERATION",
+    "MEASURED_P2X_EXECUTION"
+  ]
+}
