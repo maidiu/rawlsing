@@ -1,0 +1,138 @@
+{
+  "schema": "CLOSED35_R2_AFR1_RETURN@1.0.0",
+  "worker": "CLOSED35-R2-AFR1",
+  "repository": "maidiu/rawlsing",
+  "base": {
+    "branch": "agent/vozhd-closed35-l2r-r1-fanin-r1",
+    "sha": "da33eb6a8225c14eee9490633a3263388dc5536c"
+  },
+  "branch": "agent/rabochii-closed35-r2-afr1-realization-r1",
+  "return_path": "WORKER_RETURNS/CLOSED35-R2-AFR1/",
+  "source": {
+    "family": "Afrobarometer",
+    "release": "Round 1",
+    "filename": "Afro Barometer Round 1.sav",
+    "sha256": "6c9869a7cc7321cc74efb708835e21c8b65286a25c76deac45aba84d75697ee2",
+    "format": "SAV",
+    "reader_mode": "SAV_NATIVE_GOVERNED",
+    "replay_identity": "SOURCE_SHA256+ZERO_BASED_PHYSICAL_ROW_ORDINAL"
+  },
+  "authority": {
+    "authority72_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+    "prep71_disposition": "PACKET_READY__SOURCE_SPECIFIC_HOSTILE_COURT_REQUIRED",
+    "normalized_gap_effect": "NONBLOCKING_RAW_PRESERVATION_UNKNOWN",
+    "documentary_adjudication_reopened": false
+  },
+  "disposition": "IMPLEMENTED__CANDIDATE_NEUTRAL_SOURCE_SPECIFIC_SEMANTIC_REALIZATION__QUALIFICATION_NOT_EXECUTED",
+  "semantic_owner": {
+    "id": "AFROBAROMETER_R1_SEMANTIC_OWNER_V1",
+    "candidate_neutral": true,
+    "hard_replay_identity": [
+      "canonical_source_sha256",
+      "zero_based_physical_row_ordinal"
+    ],
+    "identity_namespace": {
+      "REFNUMB": "DOCUMENTED_UNIQUE_CASE_REFERENCE__SOURCE_LOCAL_ATTRIBUTE",
+      "CASENUMB": "SOURCE_CARRIER__NONINJECTIVE__NO_DOCUMENTARY_RESPNUMB_ALIAS",
+      "RESPNUMB": "DOCUMENTARY_CONCEPT__NO_EXACT_SOURCE_JOIN",
+      "CASENUMB_RESPNUMB_relation": "BOUNDED_UNKNOWN"
+    },
+    "country_coordinate": {
+      "carrier": "COUNTRY",
+      "scope": "ROUND_1_SOURCE_LOCAL_12_COUNTRY_DOCUMENTED_MAP",
+      "cross_round_numeric_reuse": false
+    },
+    "supdem": {
+      "physical_special_code_class": "ORDINARY_STORED_VALUE",
+      "documentary_states": {
+        "4": "DONT_KNOW",
+        "97": "NOT_APPLICABLE",
+        "98": "REFUSED",
+        "99": "MISSING_DATA"
+      },
+      "documentary_state_changes_physical_missingness": false,
+      "routing_from_missingness_or_label_alone": false
+    },
+    "weights": {
+      "carriers_preserved": [
+        "WITHINWT",
+        "ACROSSWT",
+        "COMBINWT",
+        "AFRICAWT",
+        "AFCOMBWT"
+      ],
+      "documentary_roles": {
+        "WITHINWT": "WITHIN_COUNTRY_CORRECTION",
+        "ACROSSWT": "EQUAL_COUNTRY_SAMPLE_WEIGHT",
+        "COMBINWT": "WITHIN_X_ACROSS_COMPOSITE",
+        "AFRICAWT": "COUNTRY_POPULATION_WEIGHT",
+        "AFCOMBWT": "WITHIN_X_AFRICA_POPULATION_COMPOSITE"
+      },
+      "default_weight": "NONE_AUTHORIZED_BY_SOURCE_SPECIFIC_REALIZATION",
+      "later_estimand_authority_required_for_selection": true
+    },
+    "national_instrument_semantics": "PER_VARIABLE_DOCUMENTED_VARIANT_OR_BOUNDED_UNKNOWN"
+  },
+  "bounded_unknowns": [
+    "CASENUMB_TO_DOCUMENTARY_RESPNUMB_RELATION",
+    "NATIONAL_INSTRUMENT_EQUIVALENCE_BEYOND_EXACT_PER_VARIABLE_DOCUMENTARY_AUTHORITY"
+  ],
+  "s35_edge_classes": [
+    "EC01",
+    "EC05",
+    "EC07",
+    "EC12",
+    "EC13"
+  ],
+  "r35_hooks": {
+    "i01": "PRE553_PHYSICAL_METADATA@1.0.0",
+    "i02": "FIABC_DERIVATIVE_PARENTAGE_BUNDLE@1.0.0__REQUIRED_FOR_NON_DIRECT_REALIZATION",
+    "i03": "FIABC_R35_I03_WHOLE_SOURCE_PHYSICAL_EQUIVALENCE_RECEIPT@1.0.0__LATER_QUALIFICATION_ONLY"
+  },
+  "test_protocol": {
+    "status": "TESTS_AUTHORED__NOT_EXECUTED",
+    "executed": false,
+    "required_rejection_tests": [
+      "CASENUMB_RESPNUMB_ALIAS_INVENTION",
+      "CROSS_COUNTRY_OR_HARD_REPLAY_IDENTITY_FROM_SURVEY_IDS",
+      "WEIGHT_ROLE_OR_DEFAULT_WEIGHT_INVENTION",
+      "SUPDEM_SPECIAL_CODE_COERCION_TO_PHYSICAL_MISSING",
+      "NATIONAL_INSTRUMENT_SEMANTIC_GENERALIZATION_WITHOUT_AUTHORITY",
+      "CANDIDATE_ABC_SEMANTIC_DIVERGENCE",
+      "CANONICAL_SOURCE_SHA_DRIFT",
+      "LATER_ROUND_COUNTRY_MAP_LEAKAGE",
+      "DROP_ANY_OF_FIVE_R1_WEIGHT_CARRIERS",
+      "ROUTING_INFERRED_FROM_MISSINGNESS_OR_LABEL"
+    ]
+  },
+  "constraints_observed": {
+    "github_browser_only": true,
+    "local_raw_survey_carrier_opened": false,
+    "real_source_processing_executed": false,
+    "source_decoding_executed": false,
+    "authority71_physical_facts_remeasured": false,
+    "abc_executed": false,
+    "whole_source_physical_equivalence_executed": false,
+    "i05_executed": false,
+    "measured_p2x_run": false,
+    "semantic_inference_from_raw_values": false
+  },
+  "claim_boundary": {
+    "source_specific_realization_implemented": true,
+    "real_source_bytes_executed": false,
+    "whole_source_physical_equivalence_passed": false,
+    "candidate_abc_executed": false,
+    "i05_passed": false,
+    "source_certified_beyond_accepted_authority": false,
+    "measured_p2x_occurred": false
+  },
+  "outputs": [
+    "00_RETURN.md",
+    "01_REALIZATION_CONTRACT.md",
+    "02_IDENTITY_WEIGHT_PROJECTION_MAP.csv",
+    "03_PHYSICAL_EDGE_BINDING.json",
+    "04_TEST_PROTOCOL.md",
+    "RETURN.json"
+  ],
+  "terminal": "CLOSED35_R2_AFROBAROMETER_R1_SOURCE_SPECIFIC_REALIZATION_IMPLEMENTED__READY_FOR_ABC_QUALIFICATION"
+}
