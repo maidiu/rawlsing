@@ -495,6 +495,12 @@ def compute_effective_n(
             ),
         )
 
+    # Caller presentation order is never an identity determinant.  Validate
+    # exact objects first, then canonicalize the governed weight-fact set.
+    for weight in weights:
+        _verify_semantic_identity(weight, WeightMeasureFact, "weight_fact")
+    weights = tuple(sorted(weights, key=lambda weight: weight.ref.key))
+
     weight_basis = context["grain"].get("weight_basis_id")
     if not isinstance(weight_basis, str) or not weight_basis.strip():
         raise EffectiveNError(
