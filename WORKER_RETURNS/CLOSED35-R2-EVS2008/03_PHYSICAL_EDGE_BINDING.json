@@ -1,0 +1,153 @@
+{
+  "schema": "CLOSED35_R2_EVS2008_PHYSICAL_EDGE_BINDING@1.0.0",
+  "source": {
+    "family": "EVS",
+    "wave": "2008",
+    "canonical_filename": "EVS 2008.sav",
+    "canonical_sha256": "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379",
+    "format": "SAV",
+    "replay_identity": "SOURCE_SHA256+ROW_ORDINAL"
+  },
+  "accepted_reader_configuration": {
+    "decoder": "rawlsing_next/pre553_physical_decoder.py",
+    "reader": "pyreadstat.read_sav",
+    "reader_version": "1.3.6",
+    "encoding_override": "latin1",
+    "user_missing": true,
+    "apply_value_formats": false,
+    "automatic_encoding_guessing": false,
+    "authority_status": "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY",
+    "physical_compatibility_mode": "SAV_LATIN1_COMPAT_PHYSICAL_ONLY__SOURCE_DECLARES_UTF8",
+    "source_declared_encoding": "UTF-8",
+    "compatibility_semantic_scope": "PHYSICAL_EXTRACTION_ONLY__NO_SOURCE_TEXT_OR_SEMANTIC_AUTHORITY",
+    "compatibility_semantic_authority": false
+  },
+  "applicable_s35_edge_classes": [
+    {
+      "edge_class": "EC01",
+      "name": "FORMAT_FAMILY_SAV_DTA",
+      "required_dimensions": [
+        "physical_metadata",
+        "variable_inventory_order",
+        "raw_storage_values",
+        "row_replay_identity"
+      ],
+      "semantic_boundary": "SAV format and reader representation do not supply survey meaning."
+    },
+    {
+      "edge_class": "EC02",
+      "name": "EXPLICIT_TEXT_DECODING_MODE",
+      "required_dimensions": [
+        "reader_configuration_digest",
+        "compatibility_decode_evidence"
+      ],
+      "semantic_boundary": "The exact-SHA latin1 path is physical extraction configuration only."
+    },
+    {
+      "edge_class": "EC03",
+      "name": "MALFORMED_DECLARED_TEXT_QUARANTINE",
+      "required_dimensions": [
+        "compatibility_decode_evidence",
+        "physical_metadata"
+      ],
+      "semantic_boundary": "Compatibility-rendered malformed text is quarantined and cannot be promoted to producer semantics."
+    },
+    {
+      "edge_class": "EC08",
+      "name": "NATIVE_MULTIPLE_RESPONSE_SET_TOPOLOGY",
+      "required_dimensions": [
+        "mr_topology",
+        "variable_inventory_order",
+        "typed_missingness"
+      ],
+      "semantic_boundary": "All 13 native set identities, exact ordered membership, alias/overlap structure and nonmember roles must survive. Topology does not by itself authorize semantic aliasing."
+    },
+    {
+      "edge_class": "EC14",
+      "name": "COMPOUND_EDGE_INTERACTION_COURT",
+      "composes": [
+        "EC01",
+        "EC02",
+        "EC03",
+        "EC08"
+      ],
+      "required_dimensions": [],
+      "semantic_boundary": "All constituent edges must pass simultaneously; EC14 adds no source-special adapter and no semantic authority."
+    }
+  ],
+  "source_specific_semantic_binding": {
+    "contract": "CLOSED35_R2_EVS2008_SOURCE_REALIZATION@1.0.0",
+    "producer_release": "ZA4800 v5.0.0",
+    "producer_release_date": "2022-06-08",
+    "producer_doi": "10.4232/1.13841",
+    "documentary_join": "EXACT_SOURCE_VARIABLE_OR_PRODUCER_QUESTION_IDENTITY",
+    "compatibility_rendered_text_is_semantic_authority": false,
+    "native_mr_set_count": 13,
+    "mr_alias_collapse_allowed": false,
+    "mr_overlap_collapse_allowed": false,
+    "routing_from_missingness": false,
+    "v372_realization_state": "EVS_STANDARDIZED_MISSING__NEGATIVE_SUBCODE_NOT_RECOVERABLE_FROM_DATE_RENDERING",
+    "v372_subreason": "UNKNOWN_WITHIN_PRODUCER_NEGATIVE_MISSING_DOMAIN",
+    "producer_checksum_available": false,
+    "rawlsing_sha_role": "EXACT_INTERNAL_SOURCE_BYTE_IDENTITY_ONLY",
+    "semantic_owner_surface": "PRE553_SOURCE_BACKED_C11_FACADE@1.0.0",
+    "candidate_law": "A_B_C_SHARE_ONE_SOURCE_SPECIFIC_SEMANTIC_REALIZATION_IDENTITY"
+  },
+  "r35_hooks": {
+    "i01": {
+      "accepted_worker_branch": "agent/rabochii-premain-fiabc-r35-i01-raw-layout-metadata-r1",
+      "schema": "PRE553_PHYSICAL_METADATA@1.0.0",
+      "required_witnesses": [
+        "raw_layout_declarations",
+        "normalized_geometry",
+        "display_metadata",
+        "decoder_identity"
+      ],
+      "semantic_authority": false
+    },
+    "i02": {
+      "accepted_worker_branch": "agent/rabochii-premain-fiabc-r35-i02-derivative-parentage-r1",
+      "source_receipt_schema": "FIABC_CANONICAL_SOURCE_VERIFICATION_RECEIPT@1.0.0",
+      "derivative_receipt_schema": "FIABC_DERIVATIVE_PARENTAGE_RECEIPT@1.0.0",
+      "bundle_schema": "FIABC_DERIVATIVE_PARENTAGE_BUNDLE@1.0.0",
+      "required_for_non_direct_raw": true,
+      "rule": "A derivative assertion of canonical SHA is not parentage; producer, operation, config, scope and currentness must bind externally.",
+      "semantic_authority": false
+    },
+    "i03": {
+      "accepted_worker_branch": "agent/rabochii-premain-fiabc-r35-i03-physical-equivalence-r1",
+      "source_scope_schema": "FIABC_R35_I03_SOURCE_PHYSICAL_SCOPE@1.0.0",
+      "expectation_schema": "FIABC_R35_I03_CANONICAL_PHYSICAL_EXPECTATION@1.0.0",
+      "candidate_realization_schema": "FIABC_R35_I03_CANDIDATE_PHYSICAL_REALIZATION@1.0.0",
+      "receipt_schema": "FIABC_R35_I03_WHOLE_SOURCE_PHYSICAL_EQUIVALENCE_RECEIPT@1.0.0",
+      "required_candidates": [
+        "A",
+        "B",
+        "C"
+      ],
+      "required_dimensions": [
+        "physical_metadata",
+        "variable_inventory_order",
+        "raw_storage_values",
+        "typed_missingness",
+        "row_replay_identity",
+        "reader_configuration_digest",
+        "compatibility_decode_evidence",
+        "mr_topology"
+      ],
+      "pass_state": "PHYSICAL_EQUIVALENCE_PASS__NOT_SEMANTIC_OR_CERTIFICATION_PASS",
+      "semantic_authority": false
+    }
+  },
+  "qualification_boundary": {
+    "source_specific_realization_implemented": true,
+    "source_independent_tests_authored": true,
+    "source_independent_tests_executed_by_worker": false,
+    "real_source_opened": false,
+    "real_source_executed": false,
+    "whole_source_physical_equivalence_receipt_materialized": false,
+    "abc_executed": false,
+    "i05_passed": false,
+    "measured_p2x_run": false
+  }
+}
