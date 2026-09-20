@@ -1,0 +1,80 @@
+{
+  "schema": "FIABC_W3_I04_RUNTIME_PACKAGING_REBIND_RETURN@1.0.0",
+  "worker": "FIABC-W3-I04",
+  "repo": "maidiu/rawlsing",
+  "branch": "agent/rabochii-premain-fiabc-w3-i04-runtime-packaging-rebind-r1",
+  "base_sha": "56697a27e94eb9603dfa412a15ab8f1feb819b0c",
+  "return_path": "WORKER_RETURNS/FIABC-W3-I04/",
+  "substantive_head_before_return_json": "3ca403c78b520d7c90cd17a429fa5a981a26f16c",
+  "final_branch_tip_note": "RETURN.json cannot self-embed the commit SHA that contains it. Use the commit returned by this file creation as the exact final tip.",
+  "implementation_obligations": [
+    "IMP06",
+    "IMP07",
+    "IMP08",
+    "IMP09"
+  ],
+  "implementation": {
+    "audited_p2x_call_surface_commit": "617c9c9426db12a3c0f7fea6b68a582c10759553",
+    "audited_backend_blob": "b223d309b5f5fa45389badec719ce2882e672cca",
+    "rebound_backend_blob": "b0115ceffe7203c29646faffcbc5adfcfa373488",
+    "backend_delta": "EXACTLY_THREE_RUNTIME_LOCATOR_SUBSTITUTIONS",
+    "stable_assets": {
+      "lits_runtime_materializer": {
+        "path": "rawlsing_next/runtime/ee_p2x/01_LITS_CURRENT_RUNTIME_MATERIALIZER.py",
+        "git_blob_sha": "9406bacfd928393f6a159a46216aa1f7ec129f34"
+      },
+      "wvs_runtime_package": {
+        "path": "rawlsing_next/runtime/ee_p2x/02_WVS7_P2F2_RUNTIME_PACKAGE.json",
+        "git_blob_sha": "e04e84b76f8b4eb53905276dd025938bf2e5f6fe"
+      },
+      "wvs_projection_materializer": {
+        "path": "rawlsing_next/runtime/ee_p2x/05_WVS7_PROJECTION_MATERIALIZER.py",
+        "git_blob_sha": "11b28416aac5a4899706150721f2f8ac8bb6ee43"
+      },
+      "node4a_support": {
+        "path": "WORKER_RETURNS/EE-P2R6O/SUPPORT/01_NODE4A_PREDICATE_INPUTS.py",
+        "git_blob_sha": "504944f9533b7385d201076e2e834b8a9446dee8"
+      }
+    },
+    "semantic_owner_change": false,
+    "frozen_candidate_owner_change": false,
+    "measured_p2x_executed": false
+  },
+  "browser_static_verification": {
+    "rebound_lits_bytes_equal_audited": true,
+    "rebound_wvs_package_bytes_equal_audited": true,
+    "rebound_wvs_materializer_bytes_equal_audited": true,
+    "node4a_bytes_equal_accepted_r6o": true,
+    "backend_normalizes_to_audited_after_reversing_three_locator_substitutions": true
+  },
+  "files_changed_before_return_json": 10,
+  "tests_added": {
+    "files": [
+      "rawlsing_next/tests/test_fiabc_w3_i04_runtime_packaging_rebind.py"
+    ],
+    "focused_test_methods": 6,
+    "hostile_classes": [
+      "wrong_hash",
+      "wrong_dependency",
+      "worker_return_runtime_locator_survival",
+      "absent_required_fanin",
+      "runtime_identity_drift",
+      "silent_current_tree_candidate_owner_substitution",
+      "semantic_owner_move"
+    ]
+  },
+  "tests_not_executed_and_why": [
+    "Python tests were not executed because the commission is GitHub/browser-only and forbids local execution.",
+    "The Wave-2 fan-in base does not itself contain the complete audited P2X/P2R1 runtime lineage; live consumption is an integrated/local qualification burden.",
+    "No empirical source bytes were opened and no measured P2X execution was performed."
+  ],
+  "headline_findings": [
+    "All three derivative R6S runtime artifacts are rebound under stable current rawlsing_next/runtime/ee_p2x paths with exact Git blob identity preserved.",
+    "The accepted Node4A support carrier is fanned in unchanged at the exact path and blob required by the preserved LiTS materializer.",
+    "The P2X backend change is mechanically limited to three locator substitutions; reversing them reconstructs the audited backend exactly.",
+    "Frozen A/B/C owner identities remain immutable-git-by-exact-blob dependencies; the current-tree Candidate-B lookalike is not promoted to frozen owner.",
+    "No semantic ownership, authority, replay identity, negative-state law, or measured court state is changed."
+  ],
+  "exact_blockers": [],
+  "terminal": "FIABC_W3_I04_RUNTIME_PACKAGING_REBOUND__IDENTITIES_PRESERVED__READY_FOR_FANIN"
+}
