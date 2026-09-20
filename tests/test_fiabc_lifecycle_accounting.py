@@ -140,6 +140,14 @@ class LifecycleHostileTests(unittest.TestCase):
         with self.assertRaises(AccountingContractError):
             execute_lifecycle_action(request, action, telemetry)
 
+    def test_lifecycle_metric_name_cannot_attach_to_wrong_action(self):
+        request = _request(
+            LifecycleAction.STALE_STATE_RECOVERY,
+            metrics=("delete_rebuild_wall_ns",),
+        )
+        with self.assertRaises(AccountingContractError):
+            request.validate()
+
     def test_law_hash_cannot_pass_stale_or_corrupt_exercise(self):
         for lifecycle_action in (
             LifecycleAction.STALE_STATE_RECOVERY,
