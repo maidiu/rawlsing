@@ -1,0 +1,73 @@
+{
+  "schema": "FIABC_W3_I06A_RETURN@1.0.0",
+  "worker": "FIABC-W3-I06A",
+  "repo": "maidiu/rawlsing",
+  "branch": "agent/rabochii-premain-fiabc-w3-i06a-process-isolation-r1",
+  "base_sha": "56697a27e94eb9603dfa412a15ab8f1feb819b0c",
+  "production_implementation_tip": "dc5b8a249b197bacf5c94d9f2c14043ebee67e53",
+  "return_path": "WORKER_RETURNS/FIABC-W3-I06A/",
+  "status": "COMPLETE__IMPLEMENTED__TESTS_AUTHORED_NOT_EXECUTED",
+  "production_files_changed": [
+    "rawlsing_next/ee_p2x_candidate_process_envelope.py",
+    "rawlsing_next/ee_p2x_process_isolated_backend.py"
+  ],
+  "test_files_added": [
+    "rawlsing_next/tests/fiabc_i06a_process_probe_backend.py",
+    "rawlsing_next/tests/test_fiabc_w3_i06a_process_isolation.py"
+  ],
+  "tests": {
+    "authored": 9,
+    "executed": 0,
+    "disposition": "NOT_RUN__GITHUB_BROWSER_ONLY__REAL_OS_PROCESS_TESTS_REQUIRE_EXECUTION_SURFACE",
+    "command": "python -m pytest -q rawlsing_next/tests/test_fiabc_w3_i06a_process_isolation.py",
+    "measured_p2x_run": false
+  },
+  "interfaces": {
+    "backend_contract": "RAWLSING_EE_P2X_DARWIN_STAGE_BACKEND@1.0.0",
+    "process_envelope_schema": "RAWLSING_FIABC_P2X_CANDIDATE_PROCESS_ENVELOPE@1.0.0",
+    "frozen_upstream_schema": "RAWLSING_FIABC_CANDIDATE_NEUTRAL_FREEZE@1.0.0",
+    "protocol_schema": "RAWLSING_FIABC_P2X_CELL_PROCESS_PROTOCOL@1.0.0",
+    "driver_backend_module": "rawlsing_next.ee_p2x_process_isolated_backend",
+    "mandatory_freeze_env": "RAWLSING_EE_P2X_FROZEN_UPSTREAM_RECEIPT",
+    "explicit_resume_env": "RAWLSING_EE_P2X_EXPLICIT_RESUME_CELLS",
+    "warm_transition_env": "RAWLSING_EE_P2X_WARM_STATE_TRANSITIONS"
+  },
+  "holdings": {
+    "fresh_process_per_source_candidate_cell": true,
+    "candidate_backend_import_after_lawful_start": true,
+    "parent_candidate_owner_preinit_forbidden": true,
+    "cross_candidate_process_reuse_forbidden": true,
+    "module_session_cross_candidate_leakage_forbidden": true,
+    "prior_candidate_rss_history_reused": false,
+    "exact_candidate_roots_required": true,
+    "candidate_root_symlinks_forbidden": true,
+    "cold_state_requires_no_candidate_owned_scratch_or_durable_state": true,
+    "os_page_cache_global_cold_claimed": false,
+    "same_cell_resume_requires_explicit_authorization": true,
+    "same_cell_process_retention_requires_explicit_lifecycle_transition": true,
+    "candidate_neutral_freeze_reproduced_per_candidate": false,
+    "descendant_process_cell_attribution": true,
+    "metric_arithmetic_owned_here": false,
+    "lifecycle_action_semantics_owned_here": false,
+    "semantic_authority_changed": false,
+    "candidate_identity_changed": false,
+    "source_semantics_changed": false
+  },
+  "integration_hooks": {
+    "I06B": [
+      "process_envelope process PID/PPID",
+      "candidate envelope monotonic start/stop hooks",
+      "pre/post backend import raw resource snapshots",
+      "per-stage raw resource snapshot",
+      "terminal process-local raw resource snapshot",
+      "descendant cell attribution environment"
+    ],
+    "I06C": [
+      "RAWLSING_EE_P2X_EXPLICIT_RESUME_CELLS",
+      "RAWLSING_EE_P2X_WARM_STATE_TRANSITIONS",
+      "cold_state_observation",
+      "process owner marker state"
+    ]
+  },
+  "terminal": "FIABC_W3_I06A_PROCESS_ISOLATION_AND_EXECUTION_ENVELOPE_IMPLEMENTED__READY_FOR_FANIN"
+}
