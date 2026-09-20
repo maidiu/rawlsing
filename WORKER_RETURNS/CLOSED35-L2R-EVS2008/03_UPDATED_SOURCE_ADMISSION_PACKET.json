@@ -1,0 +1,115 @@
+{
+  "worker_id": "CLOSED35-L2R-EVS2008",
+  "campaign": "CLOSED_35_L2_RESIDUAL_DOCUMENTARY_AUTHORITY",
+  "source": {
+    "canonical_file": "EVS 2008.sav",
+    "canonical_sha256": "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379",
+    "accepted_physical_mode": "SAV_LATIN1_COMPAT_PHYSICAL_ONLY__SOURCE_DECLARES_UTF8",
+    "compatibility_decode_semantic_authority": false
+  },
+  "inherited_authority": {
+    "from": "WORKER_RETURNS/CLOSED35-L2-EVS2008/",
+    "non_reopened": [
+      "13_NATIVE_MR_SETS",
+      "MR_ALIAS_OVERLAP_ROLES",
+      "ROUTING_AND_COUNTRY_APPLICABILITY",
+      "MALFORMED_TEXT_ALIGNMENT",
+      "F201_RELATION"
+    ]
+  },
+  "producer_release": {
+    "study": "EVS 2008 Integrated Dataset",
+    "gesis_study_number": "ZA4800",
+    "version": "5.0.0",
+    "release_date": "2022-06-08",
+    "doi": "10.4232/1.13841",
+    "documented_cases": 66280,
+    "documented_variables": 477,
+    "documentary_release_identity": "CLOSED__STRONG_PRODUCER_DOCUMENTARY_CHAIN",
+    "byte_exact_producer_checksum_binding": "UNAVAILABLE_ON_SEARCHED_PUBLIC_PRODUCER_SURFACES",
+    "rawlsing_canonical_hash_role": "EXACT_INTERNAL_SOURCE_BYTE_IDENTITY_ONLY",
+    "negative_law": "DO_NOT_EQUATE_DOCUMENTARY_RELEASE_IDENTITY_WITH_BYTE_EXACT_PRODUCER_CHECKSUM_BINDING"
+  },
+  "v372": {
+    "variable": "v372",
+    "question": "Q137",
+    "producer_semantics": "date of interview",
+    "accepted_physical_user_missing_rendering": "1582-10-13",
+    "accepted_physical_user_missing_count": 1917,
+    "accepted_ordinary_present_count": 64363,
+    "accepted_source_rows": 66280,
+    "accepted_source_variable_ordinal": 466,
+    "producer_missing_code_domain": {
+      "-1": "don't know",
+      "-2": "no answer",
+      "-3": "not applicable, including filter-caused and administrative-variable missingness",
+      "-4": "question not asked / not provided",
+      "-5": "other missing, including system missing, wild codes, and illogical answer patterns"
+    },
+    "rendering_interpretation": "SPSS_DATE_FORMAT_COLLAPSE_OF_NEGATIVE_NUMERIC_MISSING_VALUES_TO_PRE_EPOCH_CALENDAR_DAY",
+    "exact_rendered_sentinel_is_producer_code": false,
+    "exact_negative_subcode_recoverable_from_inherited_date_rendering": false,
+    "semantic_state": "EVS_STANDARDIZED_MISSING__NEGATIVE_SUBCODE_NOT_RECOVERABLE_FROM_DATE_RENDERING",
+    "semantic_reason_detail": "UNKNOWN_WITHIN_PRODUCER_NEGATIVE_MISSING_DOMAIN",
+    "status": "CLOSED_AT_REALIZATION_AUTHORITY_GRAIN",
+    "scope_law": "V372_ONLY__DO_NOT_GENERALIZE",
+    "producer_country_notes": {
+      "Great Britain": "invalid dates outside official survey period were recoded into system missing",
+      "Netherlands": "Q137 not implemented in field questionnaire; data supplied by country",
+      "Sweden": "date data unavailable because of postal mode"
+    },
+    "country_note_negative_law": "DO_NOT_ASSIGN_A_NEGATIVE_SUBCODE_TO_INDIVIDUAL_RECORDS_FROM_COUNTRY_NOTE_ALONE",
+    "future_upgrade_condition": "EXACT_CANONICAL_SOURCE_NUMERIC_STORAGE_CODE_OR_PRODUCER_V372_CODE_FREQUENCY_MANIFEST"
+  },
+  "release_binding_chain": [
+    "GESIS_EVSWAVE_PAGE__ZA4800_V5_0_0_2022_06_08_DOI_10_4232_1_13841",
+    "ZA4800_V5_VARIABLE_REPORT__RELEASE_JUNE_2022",
+    "ZA4800_VERSION_VARIABLE__5_0_0_2022_06_08_ON_ALL_66280_DOCUMENTED_CASES",
+    "DOI_VERSION_LINEAGE_VIA_GESIS_DATACITE_B2FIND_METADATA",
+    "RAWLSING_CANONICAL_SHA256__INTERNAL_EXACT_BYTE_IDENTITY",
+    "SR03_ACCEPTED_EXACT_FROZEN_SOURCE_PHYSICAL_CENSUS"
+  ],
+  "checksum_search": {
+    "searched_public_surfaces": [
+      "GESIS_EVSWAVE_PAGE",
+      "GESIS_ZA4800_CURRENT_VARIABLE_REPORT",
+      "GESIS_DATA_ACCESS_DOCUMENTATION",
+      "DOI_DATACITE_B2FIND_FACING_METADATA",
+      "GESIS_VERSION_HISTORY_AND_ERRATA_REFERENCES",
+      "PUBLIC_WEB_SEARCH_FOR_ZA4800_V5_SHA256_MD5_CHECKSUM_AND_FILE_MANIFEST"
+    ],
+    "producer_checksum_found": false,
+    "producer_signed_manifest_found": false,
+    "public_file_digest_found": false,
+    "absence_claim_scope": "SEARCHED_PUBLIC_SURFACES_ONLY__NO_CLAIM_ABOUT_NONPUBLIC_GESIS_INTERNAL_METADATA"
+  },
+  "source_specific_realization_readiness": {
+    "inherited_mr_semantics": true,
+    "inherited_text_alignment": true,
+    "inherited_f201_relation": true,
+    "inherited_routing_authority": true,
+    "v372_missing_state_realization": true,
+    "v372_missing_subreason_exact_numeric_code": false,
+    "documentary_release_identity": true,
+    "byte_exact_producer_checksum_binding": false,
+    "semantic_realization_lawful": true
+  },
+  "realization_rules": [
+    "VERIFY_RAWLSING_CANONICAL_FILENAME_AND_SHA256",
+    "PRESERVE_V372_1917_ACCEPTED_SENTINEL_RECORDS_AS_MISSING",
+    "DO_NOT_TREAT_1582_10_13_AS_A_PRODUCER_SEMANTIC_CODE",
+    "DO_NOT_SELECT_MINUS1_THROUGH_MINUS5_FROM_DATE_RENDERING_ALONE",
+    "PRESERVE_V372_SUBREASON_UNKNOWN_WITHIN_PRODUCER_NEGATIVE_MISSING_DOMAIN",
+    "PRESERVE_GB_NL_SE_COUNTRY_NOTES_WITHOUT_RECORD_LEVEL_CODE_INFERENCE",
+    "BIND_ZA4800_V5_0_0_AS_DOCUMENTARY_RELEASE_IDENTITY_ONLY",
+    "DO_NOT_CLAIM_RAWLSING_SHA_EQUALS_PRODUCER_FILE_DIGEST_ABSENT_PRODUCER_CHECKSUM"
+  ],
+  "residual_open_set": [
+    {
+      "id": "EVS2008_EXACT_RELEASE_HASH_BINDING",
+      "state": "PUBLIC_PRODUCER_CHECKSUM_UNAVAILABLE",
+      "blocking_effect": "DOES_NOT_BLOCK_DOCUMENTARY_SOURCE_SPECIFIC_REALIZATION__BLOCKS_ONLY_BYTE_EXACT_PRODUCER_CHECKSUM_CLAIM"
+    }
+  ],
+  "terminal": "CLOSED35_L2R_EVS2008_RELEASE_HASH_UNAVAILABLE__DOCUMENTARY_REALIZATION_AUTHORITY_OTHERWISE_CLOSED"
+}
