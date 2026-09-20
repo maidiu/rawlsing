@@ -28,6 +28,12 @@ from typing import Any, Callable, Iterable, Mapping, Protocol, Sequence
 CONTINUATION_MAP_SCHEMA = "RAWLSING_EE_P2X_CONTINUATION_STATE_MACHINE@1.0.0"
 CONTINUATION_MAP_SHA256 = "ffe7d40e5f2051f839a3a646fd434fbee3b93371e7571d959805ca7ca74e0422"
 CONTINUATION_MAP_GIT_BLOB_SHA1 = "e06e95dd370a4fd44235932088308c3372522ed4"
+CURRENT_EXECUTION_MANIFEST_SCHEMA = "RAWLSING_FIABC_CURRENT_SIX_CELL_EXECUTION_MANIFEST@1.0.0"
+HISTORICAL_CONTINUATION_MAP_SHA256 = CONTINUATION_MAP_SHA256
+HISTORICAL_CONTINUATION_MAP_GIT_BLOB_SHA1 = CONTINUATION_MAP_GIT_BLOB_SHA1
+LITS_I_CANONICAL_SOURCE_SHA256 = "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09"
+WVS7_CANONICAL_SOURCE_SHA256 = "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
+CANDIDATE_C_POLICY = "SOURCE_BACKED_HYBRID_WITH_REGENERABLE_ACCELERATORS"
 P2X_BRANCH = "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1"
 P2X_RESUME_HEAD = "a954e2d6676843da8427ef2439b5d1ef33478359"
 P2R1_PASS = "9511f44728a8469d685463ec0fc880864c9187de"
@@ -216,6 +222,100 @@ def load_continuation_map(path: Path) -> StateMachine:
     if not isinstance(doc, Mapping): raise ContinuationMapError("continuation map top level must be mapping")
     return validate_state_machine(doc, ident)
 
+
+def validate_current_execution_manifest(doc: Mapping[str, Any], ident: MapIdentity) -> StateMachine:
+    if doc.get("schema") != CURRENT_EXECUTION_MANIFEST_SCHEMA or ident.schema != CURRENT_EXECUTION_MANIFEST_SCHEMA:
+        raise ContinuationMapError("current six-cell execution manifest schema drift")
+    if tuple(doc.get("source_order", ())) != EXPECTED_SOURCE_ORDER or tuple(doc.get("candidate_order", ())) != EXPECTED_CANDIDATE_ORDER:
+        raise ContinuationMapError("current six-cell source/candidate order drift")
+    expected_pairs = tuple((s, c) for s in EXPECTED_SOURCE_ORDER for c in EXPECTED_CANDIDATE_ORDER)
+    capabilities = doc.get("current_capabilities")
+    if not isinstance(capabilities, list) or tuple((x.get("source"), x.get("candidate")) for x in capabilities) != expected_pairs:
+        raise ContinuationMapError("current manifest must admit exactly the six LiTS-I/WVS7 x A/B/C cells")
+    if any(x.get("status") != "CURRENT_EXECUTABLE" for x in capabilities):
+        raise ContinuationMapError("all six current capabilities must be executable")
+    sources = doc.get("sources", {})
+    expected_roots = {"LITS_I": LITS_I_CANONICAL_SOURCE_SHA256, "WVS7": WVS7_CANONICAL_SOURCE_SHA256}
+    if {k: sources.get(k, {}).get("sha256") for k in expected_roots} != expected_roots:
+        raise ContinuationMapError("canonical source-root identity drift")
+    root_law = doc.get("source_root_law", {})
+    if root_law.get("same_canonical_root_required_across_candidates") is not True:
+        raise ContinuationMapError("source-root equality law missing")
+    if root_law.get("alternate_edition_export_cleaned_source_allowed") is not False:
+        raise ContinuationMapError("alternate source artifact admitted")
+    if root_law.get("canonical_source_sha256") != expected_roots:
+        raise ContinuationMapError("source-root law does not close to canonical sources")
+    derivative = root_law.get("preserved_or_prebuilt_derivative_substitution", {})
+    if derivative.get("allowed_only_if_same_canonical_source_sha_proven") is not True or derivative.get("accounting_classification_required") is not True:
+        raise ContinuationMapError("preserved derivative provenance/accounting gate missing")
+    history = doc.get("historical_continuation", {})
+    if history.get("schema") != CONTINUATION_MAP_SCHEMA or history.get("sha256") != HISTORICAL_CONTINUATION_MAP_SHA256 or history.get("git_blob_sha1") != HISTORICAL_CONTINUATION_MAP_GIT_BLOB_SHA1:
+        raise ContinuationMapError("historical continuation identity drift")
+    if history.get("role") != "IMMUTABLE_HISTORY_ONLY__NOT_CURRENT_CAPABILITY_LAW" or history.get("mutate_in_place") is not False:
+        raise ContinuationMapError("historical continuation map promoted into current law")
+    cbind = doc.get("candidate_c_binding", {})
+    if cbind.get("candidate") != "C" or cbind.get("policy") != CANDIDATE_C_POLICY:
+        raise ContinuationMapError("Candidate-C current policy identity drift")
+    if cbind.get("candidate_b_identity_substitution_allowed") is not False or cbind.get("historical_failure_receipts_are_current_capability_law") is not False:
+        raise ContinuationMapError("Candidate-C identity/history boundary drift")
+    lits_c = cbind.get("LITS_I", {})
+    if lits_c.get("source_sha256") != LITS_I_CANONICAL_SOURCE_SHA256 or tuple(lits_c.get("permitted_accelerators", ())) != ("CACC1_LITS1_SEMANTIC_EXECUTION_BUNDLE", "CACC2_FRONTIER_ATOMIC_PREDICATE_RISK_MASK_BANK") or tuple(lits_c.get("applicable_accelerators_current_f02", ())) != () or lits_c.get("q310_q311_required") is not True or lits_c.get("cacc3_allowed") is not False:
+        raise ContinuationMapError("LiTS-I Candidate-C exact current scope drift")
+    wvs_c = cbind.get("WVS7", {})
+    if wvs_c.get("source_sha256") != WVS7_CANONICAL_SOURCE_SHA256 or tuple(wvs_c.get("permitted_accelerators", ())) != () or wvs_c.get("wvs_specific_cacc_allowed") is not False:
+        raise ContinuationMapError("WVS7 Candidate-C zero-accelerator law drift")
+    auth = doc.get("authority", {})
+    for k, v in {"p2x_branch": P2X_BRANCH, "p2x_resume_head": P2X_RESUME_HEAD, "p2r1_pass": P2R1_PASS, "p2r1_seam_path": P2R1_SEAM_PATH, "p2r1_seam_blob": P2R1_SEAM_BLOB}.items():
+        if auth.get(k) != v: raise ContinuationMapError(f"authority drift for {k}")
+    if tuple(doc.get("stage_tuple_schema", ())) != ("disposition", "evidence_or_stop_law_ref", "empirical_source_access_required", "physical_host_measurement_required", "next_stage_on_pass"):
+        raise ContinuationMapError("stage tuple schema drift")
+    cells = doc.get("cells")
+    if not isinstance(cells, list) or tuple((c.get("source"), c.get("candidate")) for c in cells) != expected_pairs:
+        raise ContinuationMapError("current cell order drift")
+    evidence, laws = doc.get("evidence", {}), doc.get("stop_laws", {})
+    stages: dict[str, StageSpec] = {}
+    for cell in cells:
+        source, candidate, sm = cell["source"], cell["candidate"], cell.get("stages")
+        prereq, receipt, fail = cell.get("prerequisite_ref"), cell.get("expected_receipt"), cell.get("candidate_local_failure_next")
+        if not isinstance(sm, Mapping) or not all(isinstance(x, str) and x for x in (prereq, receipt, fail)):
+            raise ContinuationMapError(f"{source}/{candidate}: current inherited fields incomplete")
+        for sid, raw in sm.items():
+            address = f"{source}/{candidate}/{sid}"; d, e, sa, m, n = _stage_tuple(raw, address)
+            if d == "TERMINAL_CANDIDATE_LOCAL_FAILURE__PRESERVE":
+                raise ContinuationMapError(f"{address}: historical Candidate-C failure may not be current capability law")
+            if e is not None and e not in evidence and e not in laws:
+                raise ContinuationMapError(f"{address}: unknown evidence/stop-law")
+            n = f"{source}/{candidate}/{n}" if n in sm else n
+            stages[address] = StageSpec(source, candidate, sid, d, e, sa, m, n, prereq, f"{receipt}#{sid}", fail)
+    first = doc.get("entry_guard", {}).get("first_unfinished_court_stage")
+    if first != "LITS_I/A/S02_C11_REACHABILITY" or first not in stages:
+        raise ContinuationMapError("first unfinished stage drift")
+    for source in EXPECTED_SOURCE_ORDER:
+        for sid in ("S01_CANDIDATE_PREPARATION_BUILD", "S02_C11_REACHABILITY"):
+            if stages[f"{source}/C/{sid}"].disposition != "READY__RUN_LOCALLY":
+                raise ContinuationMapError(f"{source}/C current execution is not admitted at {sid}")
+    for sid in ("S12_STALE_CACHE_OR_PERSISTENT_STATE", "S13_CORRUPT_CACHE_OR_PERSISTENT_STATE"):
+        sp = stages[f"WVS7/C/{sid}"]
+        if sp.disposition != "SKIP__NOT_APPLICABLE_BY_FROZEN_LAW" or sp.evidence_or_stop_law_ref != "C_ZERO_ACCELERATOR_NO_CACHE":
+            raise ContinuationMapError("WVS7/C zero-accelerator cache law drift")
+    final = doc.get("final_stage", {})
+    if final.get("stage_id") != "S17_FINAL_COMPLETENESS_AND_VERIFICATION" or final.get("wake_on_pass") != "HQ_MEASURED_SYNTHESIS" or not isinstance(final.get("expected_outputs"), list):
+        raise ContinuationMapError("final court stage drift")
+    fa = "COURT/S17_FINAL_COMPLETENESS_AND_VERIFICATION"
+    stages[fa] = StageSpec("COURT", "ALL", "S17_FINAL_COMPLETENESS_AND_VERIFICATION", "READY__RUN_LOCALLY", None, False, False, "__COURT_COMPLETE__", "ALL_SIX_CELLS_LAWFULLY_TERMINAL__NO_UNRESOLVED_COMMON_BLOCKER", "|".join(final["expected_outputs"]), "__FORBIDDEN_FINAL_STAGE_CANDIDATE_LOCAL_FAILURE__")
+    return StateMachine(doc, ident, stages, first, fa)
+
+def load_current_execution_manifest(path: Path) -> StateMachine:
+    data = path.read_bytes()
+    try:
+        doc = json.loads(data.decode())
+    except Exception as exc:
+        raise ContinuationMapError("current execution manifest is not valid JSON") from exc
+    if not isinstance(doc, Mapping):
+        raise ContinuationMapError("current execution manifest top level must be mapping")
+    ident = MapIdentity(CURRENT_EXECUTION_MANIFEST_SCHEMA, _sha256_bytes(data), _git_blob_sha1(data))
+    return validate_current_execution_manifest(doc, ident)
+
 # ---- durable ledger --------------------------------------------------------------------
 def _candidate_roots(root: Path, source: str, candidate: str) -> CandidateRoots:
     r = root / "cells" / source / candidate; obj = CandidateRoots(r, r/"scratch", r/"durable", r/"logs", r/"receipts")
@@ -388,7 +488,14 @@ def _final_ready(machine,ledger):
             e=ledger.revalidate_terminal(a)
             if e["terminal_disposition"] in {"BLOCKED_BY_COMMON_SOURCE_AUTHORITY","BLOCKED_BY_COMMON_COURT_AUTHORITY"}: common.append(a)
     if common: raise CommonAuthorityBlocker("unresolved common blockers at S17",scope="COURT",receipt={"blockers":common})
-    if ledger.stage_entry("WVS7/C/S01_CANDIDATE_PREPARATION_BUILD").get("terminal_disposition") != "CANDIDATE_LOCAL_FAILURE": raise StageStateError("WVS-C portability failure not bound")
+    if machine.identity.schema == CURRENT_EXECUTION_MANIFEST_SCHEMA:
+        for source in EXPECTED_SOURCE_ORDER:
+            for candidate in EXPECTED_CANDIDATE_ORDER:
+                terminal = ledger.stage_entry(f"{source}/{candidate}/S16_TERMINAL_METRIC_VECTOR_COMPLETENESS")
+                if not terminal or terminal.get("terminal_disposition") != "PASS":
+                    raise StageStateError(f"current six-cell terminal PASS absent for {source}/{candidate}")
+    elif ledger.stage_entry("WVS7/C/S01_CANDIDATE_PREPARATION_BUILD").get("terminal_disposition") != "CANDIDATE_LOCAL_FAILURE":
+        raise StageStateError("historical WVS-C portability failure not bound")
 def _token(stage,receipt_hash,ledger_hash,head): return {"schema":SUPERVISOR_TOKEN_SCHEMA,"action":"COMMIT_AND_PUSH_EXISTING_P2X_BRANCH_BOUNDED_STAGE_EVIDENCE","stage_id":stage.address,"terminal_receipt_sha256":receipt_hash,"ledger_sha256":ledger_hash,"p2x_branch":P2X_BRANCH,"observed_branch_head":head}
 
 # ---- driver ---------------------------------------------------------------------------
@@ -498,7 +605,7 @@ def _parser():
     for x in ("preflight","status","run","resume","verify-only"): m.add_argument(f"--{x}",action="store_true")
     p.add_argument("--continuation-map",type=Path,required=True); p.add_argument("--work-root",type=Path,required=True); p.add_argument("--repo-root",type=Path,default=Path.cwd()); p.add_argument("--lits-path",type=Path); p.add_argument("--wvs-path",type=Path); p.add_argument("--backend-module"); return p
 def main(argv: Sequence[str] | None=None):
-    args=_parser().parse_args(argv); machine=load_continuation_map(args.continuation_map); work=args.work_root.resolve(); repo_root=args.repo_root.resolve(); paths={}
+    args=_parser().parse_args(argv); machine=load_current_execution_manifest(args.continuation_map); work=args.work_root.resolve(); repo_root=args.repo_root.resolve(); paths={}
     if args.preflight or args.run or args.resume:
         if args.lits_path is None or args.wvs_path is None: raise RuntimeGateError("explicit --lits-path and --wvs-path required")
         paths={"LITS_I":args.lits_path.resolve(),"WVS7":args.wvs_path.resolve()}
