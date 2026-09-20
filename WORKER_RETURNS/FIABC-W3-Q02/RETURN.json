@@ -1,0 +1,72 @@
+{
+  "schema": "RAWLSING_FIABC_W3_Q02_RETURN@1.0.0",
+  "worker": "FIABC-W3-Q02",
+  "repo": "maidiu/rawlsing",
+  "branch": "agent/rabochii-premain-fiabc-w3-q02-fanin-conflict-execution-plan-r1",
+  "base_sha": "56697a27e94eb9603dfa412a15ab8f1feb819b0c",
+  "return_path": "WORKER_RETURNS/FIABC-W3-Q02/",
+  "terminal": "FIABC_W3_Q02_FANIN_AND_LOCAL_MECHANICAL_EXECUTION_PLAN_READY",
+  "status": "PASS_PLANNING_COMPLETE_NO_LOCAL_EXECUTION",
+  "production_code_changed": false,
+  "hq_handoff_or_decision_ledger_changed": false,
+  "tests_added": [],
+  "tests_changed": [],
+  "tests_executed": [],
+  "tests_not_executed_and_why": "Q02 is an integration-planning worker; commission forbids local work and measured P2X. All future commands are recorded in the return packet.",
+  "files_changed": [
+    "WORKER_RETURNS/FIABC-W3-Q02/00_RETURN.md",
+    "WORKER_RETURNS/FIABC-W3-Q02/01_TOUCH_SURFACE_AND_CONFLICT_MAP.csv",
+    "WORKER_RETURNS/FIABC-W3-Q02/02_FANIN_ORDER_AND_DEPENDENCIES.md",
+    "WORKER_RETURNS/FIABC-W3-Q02/03_INTEGRATED_TREE_TEST_PLAN.md",
+    "WORKER_RETURNS/FIABC-W3-Q02/04_LOCAL_SOURCE_RUNTIME_DEPENDENCY_LEDGER.csv",
+    "WORKER_RETURNS/FIABC-W3-Q02/05_R6X_AND_ORACLE_MATERIALIZATION_PROTOCOL.md",
+    "WORKER_RETURNS/FIABC-W3-Q02/06_SIX_CELL_PREMEASUREMENT_PROTOCOL.md",
+    "WORKER_RETURNS/FIABC-W3-Q02/07_IMPLEMENTATION_DIFF_INVENTORY.md",
+    "WORKER_RETURNS/FIABC-W3-Q02/RETURN.json"
+  ],
+  "required_fanin_order": [
+    "FIABC-W3-I01",
+    "FIABC-W3-I02",
+    "FIABC-W3-I04",
+    "FIABC-W3-I03",
+    "FIABC-W3-I05",
+    "FIABC-W3-I06",
+    "FIABC-W3-I07",
+    "FIABC-W3-I08",
+    "FIABC-W3-Q01",
+    "FIABC-W3-Q02"
+  ],
+  "exact_source_hashes": {
+    "LITS_I": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "WVS7": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
+  },
+  "exact_runtime": {
+    "implementation": "CPython",
+    "python": "3.11.3",
+    "pyreadstat": "1.3.6",
+    "pyarrow": "25.0.1",
+    "system": "Darwin",
+    "machine": "x86_64"
+  },
+  "historical_r6x": {
+    "stopped_ledger_sha256": "7de7c91d539dd267e31098fd47285b3f4a7873e1c9ec7b542c45cac3908b8671",
+    "reconciler_git_blob_sha1": "12836e591be9ed0aa4d46436deacebde038d9de0",
+    "sequence": ["AUDIT_ONLY__READY", "RECONCILED", "AUDIT_ONLY__ALREADY_RECONCILED"]
+  },
+  "headline_findings": [
+    "PRE-MAIN Wave-3 fan-in and existing P2X execution rebinding are distinct operations over diverged histories.",
+    "ee_p2x_darwin_stage_backend.py is the central multi-worker conflict surface and must be resolved per obligation, not by whole-file winner.",
+    "The historical continuation reducer is not a lawful current six-cell execution contract after Candidate-C successor implementation; historical C failures remain immutable evidence only.",
+    "R6X is necessary for historical stopped-ledger reconciliation but intentionally does not itself create the new six-cell execution contract.",
+    "Independent oracle materialization/freeze must occur before any candidate process starts.",
+    "Measured P2X is lawful only after the complete conjunction gate in 06_SIX_CELL_PREMEASUREMENT_PROTOCOL.md passes."
+  ],
+  "exact_blockers": [
+    "Sibling final implementations/returns for unfinished Wave-3 branches must exist and pass their focused tests.",
+    "Shared backend/driver conflicts must preserve I04 packaging, I03 Candidate-C binding, I05 oracle independence, I06 accounting, and I08 terminal law simultaneously.",
+    "A current six-cell execution manifest/driver binding must supersede historical Candidate-C runtime-failure assumptions without mutating historical evidence.",
+    "I05 must supply deterministic local LiTS/WVS materializers and freeze receipts before candidate output.",
+    "I06/I07/I08 must pass on the exact integrated execution tree.",
+    "The local operator must possess exact source bytes and the exact stopped work root."
+  ]
+}
