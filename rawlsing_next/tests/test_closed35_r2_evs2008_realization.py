@@ -191,6 +191,8 @@ def test_source_sha_and_compatibility_mode_fail_closed():
     with pytest.raises(EVS2008RealizationError, match="source format mismatch"):
         admit_physical_incidence(wrong_format)
     with pytest.raises(EVS2008RealizationError, match="reader/config drift"):
+        admit_physical_incidence(_synthetic_incidence(reader_version="9.9.9"))
+    with pytest.raises(EVS2008RealizationError, match="reader/config drift"):
         admit_physical_incidence(_synthetic_incidence(encoding="utf-8"))
     with pytest.raises(EVS2008RealizationError, match="reader/config drift"):
         admit_physical_incidence(_synthetic_incidence(apply_value_formats=True))
