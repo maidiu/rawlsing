@@ -1,0 +1,45 @@
+{
+  "worker": "FIABC-W3-Q01",
+  "repo": "maidiu/rawlsing",
+  "branch": "agent/rabochii-premain-fiabc-w3-q01-hostile-crossimplementation-review-r1",
+  "base_sha": "56697a27e94eb9603dfa412a15ab8f1feb819b0c",
+  "return_path": "WORKER_RETURNS/FIABC-W3-Q01/",
+  "terminal": "FIABC_W3_Q01_HOSTILE_IMPLEMENTATION_QUALIFICATION_SPEC_READY",
+  "scope": "qualification_specification_and_negative_fixtures_only",
+  "production_code_modified": false,
+  "hq_handoff_or_decision_ledger_modified": false,
+  "measured_p2x_executed": false,
+  "files_added": [
+    "WORKER_RETURNS/FIABC-W3-Q01/00_RETURN.md",
+    "WORKER_RETURNS/FIABC-W3-Q01/01_PRODUCTION_SURFACE_MAP.csv",
+    "WORKER_RETURNS/FIABC-W3-Q01/02_HOSTILE_FIXTURES.json",
+    "WORKER_RETURNS/FIABC-W3-Q01/03_ACCEPTANCE_CRITERIA.md",
+    "WORKER_RETURNS/FIABC-W3-Q01/04_INTEGRATED_TEST_PROTOCOL.md",
+    "WORKER_RETURNS/FIABC-W3-Q01/05_TEST_INVENTORY.csv",
+    "WORKER_RETURNS/FIABC-W3-Q01/tests/qualification_contract.py",
+    "WORKER_RETURNS/FIABC-W3-Q01/tests/test_hostile_qualification_contract.py",
+    "WORKER_RETURNS/FIABC-W3-Q01/RETURN.json"
+  ],
+  "tests_added": [
+    "WORKER_RETURNS/FIABC-W3-Q01/tests/test_hostile_qualification_contract.py"
+  ],
+  "tests_not_executed_and_why": [
+    "Browser/GitHub-only commission used no Python execution surface.",
+    "I01-I08 integrated fan-in did not yet exist on this branch, so real sibling receipts could not be qualified.",
+    "WVS oracle source materialization and OS-level equal-work telemetry require later local runtime/source-byte execution and were explicitly not fabricated."
+  ],
+  "later_test_commands": [
+    "python -m unittest discover -s WORKER_RETURNS/FIABC-W3-Q01/tests -p 'test_*.py' -v"
+  ],
+  "headline_findings": [
+    "The highest cross-implementation risk is false equivalence: numeric or repository-level success can violate the settled semantic/identity/cost boundary while looking locally plausible.",
+    "Candidate C must retain C identity through exact-source fallback and zero-accelerator WVS realization; accelerator presence is never semantic authority.",
+    "Independent oracle, equal-work accounting, succession preflight and final I05 terminal each require evidence that cannot be substituted by pairwise equality, shared-process telemetry, repository presence or C11/I03 completion.",
+    "The four packaging repairs have exact accepted blob identities and cannot be normalized by replacing historical/frozen roots with current-tree lookalikes."
+  ],
+  "exact_blockers": [],
+  "execution_dependencies": [
+    "HQ fan-in of I01-I08 before applying qualification to real integrated receipts.",
+    "Later local source/runtime execution for WVS oracle materialization and OS-level telemetry qualification."
+  ]
+}

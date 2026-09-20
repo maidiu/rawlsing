@@ -1,0 +1,483 @@
+{
+  "schema": "FIABC_W3_Q01_HOSTILE_FIXTURES@1.0.0",
+  "base_sha": "56697a27e94eb9603dfa412a15ab8f1feb819b0c",
+  "fixtures": [
+    {
+      "id": "Q01-DIAG-PASS",
+      "validator": "diagnostic",
+      "expected_result": "PASS",
+      "payload": {
+        "public_family": "GovernedDiagnosticProduct@1.0.0",
+        "diagnostic_only": true,
+        "mints_or_mutates_empirical_fact": false,
+        "creates_semantic_authority": false,
+        "frontier_control": false,
+        "structural_authority_granted": false,
+        "input_fact_refs": ["fact:sha256:a"],
+        "input_query_refs": ["query:sha256:b"],
+        "release_refs": ["release:sha256:c"],
+        "authority_refs": ["authority:sha256:d"],
+        "replay_refs": ["replay:sha256:e"],
+        "product_identity": "diagnostic:sha256:f",
+        "input_state": "SUPPORTED",
+        "output_state": "SUPPORTED"
+      }
+    },
+    {
+      "id": "Q01-DIAG-001",
+      "validator": "diagnostic",
+      "expected_result": "REJECT",
+      "expected_code": "Q01_DIAGNOSTIC_MUST_NOT_BE_EMPIRICAL_FACT",
+      "payload": {
+        "public_family": "EmpiricalFact@1.0.0",
+        "diagnostic_only": true,
+        "mints_or_mutates_empirical_fact": false,
+        "creates_semantic_authority": false,
+        "frontier_control": false,
+        "structural_authority_granted": false,
+        "input_fact_refs": ["fact:a"], "input_query_refs": ["query:b"], "release_refs": ["release:c"], "authority_refs": ["authority:d"], "replay_refs": ["replay:e"], "product_identity": "diag:f",
+        "input_state": "SUPPORTED", "output_state": "SUPPORTED"
+      }
+    },
+    {
+      "id": "Q01-DIAG-002",
+      "validator": "diagnostic",
+      "expected_result": "REJECT",
+      "expected_code": "Q01_DIAGNOSTIC_CANNOT_CONTROL_FRONTIER",
+      "payload": {
+        "public_family": "GovernedDiagnosticProduct@1.0.0",
+        "diagnostic_only": true, "mints_or_mutates_empirical_fact": false, "creates_semantic_authority": false,
+        "frontier_control": true, "structural_authority_granted": false,
+        "input_fact_refs": ["fact:a"], "input_query_refs": ["query:b"], "release_refs": ["release:c"], "authority_refs": ["authority:d"], "replay_refs": ["replay:e"], "product_identity": "diag:f",
+        "input_state": "SUPPORTED", "output_state": "SUPPORTED"
+      }
+    },
+    {
+      "id": "Q01-DIAG-003",
+      "validator": "diagnostic",
+      "expected_result": "REJECT",
+      "expected_code": "Q01_DIAGNOSTIC_CANNOT_GRANT_STRUCTURAL_AUTHORITY",
+      "payload": {
+        "public_family": "GovernedDiagnosticProduct@1.0.0",
+        "diagnostic_only": true, "mints_or_mutates_empirical_fact": false, "creates_semantic_authority": false,
+        "frontier_control": false, "structural_authority_granted": true,
+        "input_fact_refs": ["fact:a"], "input_query_refs": ["query:b"], "release_refs": ["release:c"], "authority_refs": ["authority:d"], "replay_refs": ["replay:e"], "product_identity": "diag:f",
+        "input_state": "SUPPORTED", "output_state": "SUPPORTED"
+      }
+    },
+    {
+      "id": "Q01-DIAG-004",
+      "validator": "diagnostic",
+      "expected_result": "REJECT",
+      "expected_code": "Q01_DIAGNOSTIC_NEGATIVE_STATE_COLLAPSE",
+      "payload": {
+        "public_family": "GovernedDiagnosticProduct@1.0.0",
+        "diagnostic_only": true, "mints_or_mutates_empirical_fact": false, "creates_semantic_authority": false,
+        "frontier_control": false, "structural_authority_granted": false,
+        "input_fact_refs": ["fact:a"], "input_query_refs": ["query:b"], "release_refs": ["release:c"], "authority_refs": ["authority:d"], "replay_refs": ["replay:e"], "product_identity": "diag:f",
+        "input_state": "UNAVAILABLE", "output_state": "SUPPORTED"
+      }
+    },
+    {
+      "id": "Q01-NEFF-PASS-RAW",
+      "validator": "effective_n",
+      "expected_result": "PASS",
+      "payload": {
+        "measure_basis": "RAW_UNWEIGHTED", "state": "NOT_APPLICABLE", "effective_n": null,
+        "sum_w": null, "sum_w2": null, "authorized_weight_ref": null,
+        "weight_authority_state": "NOT_AUTHORIZED", "default_weight_selected": false,
+        "selected_weight_by_heuristic": false, "risk_set_scope": "risk:r1", "query_scope": "risk:r1", "weight_scope": null,
+        "design_authority_ref": null, "estimand_authority_ref": null
+      }
+    },
+    {
+      "id": "Q01-NEFF-PASS-WEIGHTED",
+      "validator": "effective_n",
+      "expected_result": "PASS",
+      "payload": {
+        "measure_basis": "GOVERNED_WEIGHTED", "state": "SUPPORTED", "effective_n": 25,
+        "sum_w": 50, "sum_w2": 100, "authorized_weight_ref": "weight:sha256:w",
+        "weight_authority_state": "AUTHORIZED", "default_weight_selected": false,
+        "selected_weight_by_heuristic": false, "risk_set_scope": "risk:r1", "query_scope": "risk:r1", "weight_scope": "risk:r1",
+        "design_authority_ref": "design:sha256:d", "estimand_authority_ref": "estimand:sha256:e"
+      }
+    },
+    {
+      "id": "Q01-NEFF-001",
+      "validator": "effective_n",
+      "expected_result": "REJECT",
+      "expected_code": "Q01_EFFECTIVE_N_DEFAULT_WEIGHT_FORBIDDEN",
+      "payload": {
+        "measure_basis": "GOVERNED_WEIGHTED", "state": "SUPPORTED", "effective_n": 25,
+        "sum_w": 50, "sum_w2": 100, "authorized_weight_ref": "weight:w", "weight_authority_state": "AUTHORIZED",
+        "default_weight_selected": true, "selected_weight_by_heuristic": false,
+        "risk_set_scope": "risk:r1", "query_scope": "risk:r1", "weight_scope": "risk:r1",
+        "design_authority_ref": "design:d", "estimand_authority_ref": "estimand:e"
+      }
+    },
+    {
+      "id": "Q01-NEFF-002",
+      "validator": "effective_n",
+      "expected_result": "REJECT",
+      "expected_code": "Q01_RAW_EFFECTIVE_N_MUST_BE_NONNUMERIC",
+      "payload": {
+        "measure_basis": "RAW_UNWEIGHTED", "state": "SUPPORTED", "effective_n": 100,
+        "sum_w": null, "sum_w2": null, "authorized_weight_ref": null, "weight_authority_state": "NOT_AUTHORIZED",
+        "default_weight_selected": false, "selected_weight_by_heuristic": false,
+        "risk_set_scope": "risk:r1", "query_scope": "risk:r1", "weight_scope": null,
+        "design_authority_ref": null, "estimand_authority_ref": null
+      }
+    },
+    {
+      "id": "Q01-NEFF-003",
+      "validator": "effective_n",
+      "expected_result": "REJECT",
+      "expected_code": "Q01_EFFECTIVE_N_SCOPE_MISMATCH",
+      "payload": {
+        "measure_basis": "GOVERNED_WEIGHTED", "state": "SUPPORTED", "effective_n": 25,
+        "sum_w": 50, "sum_w2": 100, "authorized_weight_ref": "weight:w", "weight_authority_state": "AUTHORIZED",
+        "default_weight_selected": false, "selected_weight_by_heuristic": false,
+        "risk_set_scope": "risk:r1", "query_scope": "risk:r2", "weight_scope": "risk:r1",
+        "design_authority_ref": "design:d", "estimand_authority_ref": "estimand:e"
+      }
+    },
+    {
+      "id": "Q01-NEFF-004",
+      "validator": "effective_n",
+      "expected_result": "REJECT",
+      "expected_code": "Q01_EFFECTIVE_N_DEGENERATE_WEIGHT_SUM",
+      "payload": {
+        "measure_basis": "GOVERNED_WEIGHTED", "state": "SUPPORTED", "effective_n": 0,
+        "sum_w": 0, "sum_w2": 0, "authorized_weight_ref": "weight:w", "weight_authority_state": "AUTHORIZED",
+        "default_weight_selected": false, "selected_weight_by_heuristic": false,
+        "risk_set_scope": "risk:r1", "query_scope": "risk:r1", "weight_scope": "risk:r1",
+        "design_authority_ref": "design:d", "estimand_authority_ref": "estimand:e"
+      }
+    },
+    {
+      "id": "Q01-CANDC-PASS-LITS",
+      "validator": "candidate_c",
+      "expected_result": "PASS",
+      "payload": {
+        "candidate_identity": "C", "repository_identity": "C", "candidate_owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+        "source": "LITS_I", "accelerator_required": false, "accelerators": ["CACC1", "CACC2"], "accelerators_nonauthoritative": true,
+        "workload_targets": ["q310", "q311", "other"], "outside_accelerator_fallback": "EXACT_SOURCE_BACKED",
+        "semantic_core": "COMMON_C11_I03_I05"
+      }
+    },
+    {
+      "id": "Q01-CANDC-PASS-WVS",
+      "validator": "candidate_c",
+      "expected_result": "PASS",
+      "payload": {
+        "candidate_identity": "C", "repository_identity": "C", "candidate_owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+        "source": "WVS7", "accelerator_required": false, "accelerators": [], "accelerators_nonauthoritative": true,
+        "workload_targets": ["wvs_frontier"], "outside_accelerator_fallback": "EXACT_SOURCE_BACKED",
+        "semantic_core": "COMMON_C11_I03_I05"
+      }
+    },
+    {
+      "id": "Q01-CANDC-001",
+      "validator": "candidate_c",
+      "expected_result": "REJECT",
+      "expected_code": "Q01_CANDIDATE_C_B_SUBSTITUTION",
+      "payload": {
+        "candidate_identity": "C", "repository_identity": "B", "candidate_owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+        "source": "WVS7", "accelerator_required": false, "accelerators": [], "accelerators_nonauthoritative": true,
+        "workload_targets": ["wvs_frontier"], "outside_accelerator_fallback": "EXACT_SOURCE_BACKED", "semantic_core": "COMMON_C11_I03_I05"
+      }
+    },
+    {
+      "id": "Q01-CANDC-002",
+      "validator": "candidate_c",
+      "expected_result": "REJECT",
+      "expected_code": "Q01_CANDIDATE_C_ACCELERATOR_MUST_BE_OPTIONAL",
+      "payload": {
+        "candidate_identity": "C", "repository_identity": "C", "candidate_owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+        "source": "LITS_I", "accelerator_required": true, "accelerators": ["CACC1"], "accelerators_nonauthoritative": true,
+        "workload_targets": ["q310", "q311"], "outside_accelerator_fallback": "EXACT_SOURCE_BACKED", "semantic_core": "COMMON_C11_I03_I05"
+      }
+    },
+    {
+      "id": "Q01-CANDC-003",
+      "validator": "candidate_c",
+      "expected_result": "REJECT",
+      "expected_code": "Q01_CACC3_FORBIDDEN",
+      "payload": {
+        "candidate_identity": "C", "repository_identity": "C", "candidate_owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+        "source": "LITS_I", "accelerator_required": false, "accelerators": ["CACC3"], "accelerators_nonauthoritative": true,
+        "workload_targets": ["q310", "q311"], "outside_accelerator_fallback": "EXACT_SOURCE_BACKED", "semantic_core": "COMMON_C11_I03_I05"
+      }
+    },
+    {
+      "id": "Q01-CANDC-004",
+      "validator": "candidate_c",
+      "expected_result": "REJECT",
+      "expected_code": "Q01_WVS_ACCELERATOR_FORBIDDEN",
+      "payload": {
+        "candidate_identity": "C", "repository_identity": "C", "candidate_owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+        "source": "WVS7", "accelerator_required": false, "accelerators": ["CACC1"], "accelerators_nonauthoritative": true,
+        "workload_targets": ["wvs_frontier"], "outside_accelerator_fallback": "EXACT_SOURCE_BACKED", "semantic_core": "COMMON_C11_I03_I05"
+      }
+    },
+    {
+      "id": "Q01-CANDC-005",
+      "validator": "candidate_c",
+      "expected_result": "REJECT",
+      "expected_code": "Q01_LITS_Q310_Q311_TRUNCATION",
+      "payload": {
+        "candidate_identity": "C", "repository_identity": "C", "candidate_owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+        "source": "LITS_I", "accelerator_required": false, "accelerators": ["CACC1", "CACC2"], "accelerators_nonauthoritative": true,
+        "workload_targets": ["q311", "other"], "outside_accelerator_fallback": "EXACT_SOURCE_BACKED", "semantic_core": "COMMON_C11_I03_I05"
+      }
+    },
+    {
+      "id": "Q01-PKG-PASS",
+      "validator": "packaging",
+      "expected_result": "PASS",
+      "payload": {
+        "blobs": {
+          "lits_materializer": "9406bacfd928393f6a159a46216aa1f7ec129f34",
+          "node4a": "504944f9533b7385d201076e2e834b8a9446dee8",
+          "wvs_runtime_package": "e04e84b76f8b4eb53905276dd025938bf2e5f6fe",
+          "wvs_projection_materializer": "11b28416aac5a4899706150721f2f8ac8bb6ee43"
+        },
+        "frozen_candidate_owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+        "frozen_b_owner_blob": "7c509c2098d0030f253344eb3f682471378812a8",
+        "current_tree_b_substituted": false,
+        "historical_immutable_roots_preserved": true,
+        "semantic_ownership_moved": false
+      }
+    },
+    {
+      "id": "Q01-PKG-001",
+      "validator": "packaging",
+      "expected_result": "REJECT",
+      "expected_code": "Q01_PACKAGING_BLOB_DRIFT",
+      "payload": {
+        "blobs": {
+          "lits_materializer": "deadbeef",
+          "node4a": "504944f9533b7385d201076e2e834b8a9446dee8",
+          "wvs_runtime_package": "e04e84b76f8b4eb53905276dd025938bf2e5f6fe",
+          "wvs_projection_materializer": "11b28416aac5a4899706150721f2f8ac8bb6ee43"
+        },
+        "frozen_candidate_owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+        "frozen_b_owner_blob": "7c509c2098d0030f253344eb3f682471378812a8",
+        "current_tree_b_substituted": false, "historical_immutable_roots_preserved": true, "semantic_ownership_moved": false
+      }
+    },
+    {
+      "id": "Q01-PKG-002",
+      "validator": "packaging",
+      "expected_result": "REJECT",
+      "expected_code": "Q01_HISTORICAL_IMMUTABLE_ROOT_MUST_BE_PRESERVED",
+      "payload": {
+        "blobs": {
+          "lits_materializer": "9406bacfd928393f6a159a46216aa1f7ec129f34",
+          "node4a": "504944f9533b7385d201076e2e834b8a9446dee8",
+          "wvs_runtime_package": "e04e84b76f8b4eb53905276dd025938bf2e5f6fe",
+          "wvs_projection_materializer": "11b28416aac5a4899706150721f2f8ac8bb6ee43"
+        },
+        "frozen_candidate_owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+        "frozen_b_owner_blob": "7c509c2098d0030f253344eb3f682471378812a8",
+        "current_tree_b_substituted": false, "historical_immutable_roots_preserved": false, "semantic_ownership_moved": false
+      }
+    },
+    {
+      "id": "Q01-ORACLE-PASS",
+      "validator": "oracle",
+      "expected_result": "PASS",
+      "payload": {
+        "oracle_freeze_event": 10, "candidate_start_event": 20, "candidate_outputs_seen_at_freeze": 0,
+        "candidate_owned_roots_consulted": [], "expected_truth_dependencies": ["source:exact", "authority:frozen", "common:i03", "common:i05"],
+        "expected_truth_origin": "EXACT_SOURCE_PLUS_FROZEN_CANDIDATE_NEUTRAL_AUTHORITY",
+        "pairwise_equality_used_as_oracle": false, "self_replay_used_as_oracle": false,
+        "frontier_complete": true, "negative_state_distinctions_preserved": true, "authority_closure_exact": true,
+        "oracle_hash_stable_after_candidate_start": true, "candidate_output_can_fill_missing_oracle_field": false
+      }
+    },
+    {
+      "id": "Q01-ORACLE-001",
+      "validator": "oracle",
+      "expected_result": "REJECT",
+      "expected_code": "Q01_ORACLE_DERIVED_FROM_CANDIDATE_OUTPUT",
+      "payload": {
+        "oracle_freeze_event": 10, "candidate_start_event": 20, "candidate_outputs_seen_at_freeze": 0,
+        "candidate_owned_roots_consulted": [], "expected_truth_dependencies": ["candidate:A:receipt"],
+        "expected_truth_origin": "CANDIDATE_A_OUTPUT",
+        "pairwise_equality_used_as_oracle": false, "self_replay_used_as_oracle": false,
+        "frontier_complete": true, "negative_state_distinctions_preserved": true, "authority_closure_exact": true,
+        "oracle_hash_stable_after_candidate_start": true, "candidate_output_can_fill_missing_oracle_field": false
+      }
+    },
+    {
+      "id": "Q01-ORACLE-002",
+      "validator": "oracle",
+      "expected_result": "REJECT",
+      "expected_code": "Q01_PAIRWISE_EQUALITY_IS_NOT_ORACLE_EQUALITY",
+      "payload": {
+        "oracle_freeze_event": 10, "candidate_start_event": 20, "candidate_outputs_seen_at_freeze": 0,
+        "candidate_owned_roots_consulted": [], "expected_truth_dependencies": ["source:exact", "authority:frozen"],
+        "expected_truth_origin": "EXACT_SOURCE_PLUS_FROZEN_CANDIDATE_NEUTRAL_AUTHORITY",
+        "pairwise_equality_used_as_oracle": true, "self_replay_used_as_oracle": false,
+        "frontier_complete": true, "negative_state_distinctions_preserved": true, "authority_closure_exact": true,
+        "oracle_hash_stable_after_candidate_start": true, "candidate_output_can_fill_missing_oracle_field": false
+      }
+    },
+    {
+      "id": "Q01-ORACLE-003",
+      "validator": "oracle",
+      "expected_result": "REJECT",
+      "expected_code": "Q01_SELF_REPLAY_IS_NOT_INDEPENDENT_ORACLE",
+      "payload": {
+        "oracle_freeze_event": 10, "candidate_start_event": 20, "candidate_outputs_seen_at_freeze": 0,
+        "candidate_owned_roots_consulted": [], "expected_truth_dependencies": ["source:exact", "authority:frozen"],
+        "expected_truth_origin": "EXACT_SOURCE_PLUS_FROZEN_CANDIDATE_NEUTRAL_AUTHORITY",
+        "pairwise_equality_used_as_oracle": false, "self_replay_used_as_oracle": true,
+        "frontier_complete": true, "negative_state_distinctions_preserved": true, "authority_closure_exact": true,
+        "oracle_hash_stable_after_candidate_start": true, "candidate_output_can_fill_missing_oracle_field": false
+      }
+    },
+    {
+      "id": "Q01-METRIC-PASS",
+      "validator": "accounting",
+      "expected_result": "PASS",
+      "payload": {
+        "process_ids": {"LITS_I:A": 101, "LITS_I:B": 102, "LITS_I:C": 103, "WVS7:A": 201, "WVS7:B": 202, "WVS7:C": 203},
+        "sessions_at_start": {"LITS_I:A": [], "LITS_I:B": [], "LITS_I:C": [], "WVS7:A": [], "WVS7:B": [], "WVS7:C": []},
+        "rss_scope": "CANDIDATE_PROCESS_LOCAL", "cross_candidate_state_leak": false,
+        "metric_write_counts": {"cold_i03_latency_ns": 1, "cpu_user_ns": 1, "cpu_system_ns": 1},
+        "uncaptured_telemetry": {"state": "MEASUREMENT_NOT_CAPTURED", "value": null},
+        "io_measurement": "OBSERVED_EVENT_COUNTERS", "endpoint_size_used_as_io": false,
+        "scratch_high_water_observed": true, "cpu_intervals_nonoverlapping": true, "lifecycle_actions_actual": true
+      }
+    },
+    {
+      "id": "Q01-METRIC-001",
+      "validator": "accounting",
+      "expected_result": "REJECT",
+      "expected_code": "Q01_CANDIDATE_PROCESS_RSS_CONTAMINATION",
+      "payload": {
+        "process_ids": {"LITS_I:A": 101, "LITS_I:B": 101, "LITS_I:C": 101, "WVS7:A": 101, "WVS7:B": 101, "WVS7:C": 101},
+        "sessions_at_start": {"LITS_I:A": [], "LITS_I:B": [], "LITS_I:C": [], "WVS7:A": [], "WVS7:B": [], "WVS7:C": []},
+        "rss_scope": "PROCESS_GLOBAL_SERIAL_COURT", "cross_candidate_state_leak": false,
+        "metric_write_counts": {"cold_i03_latency_ns": 1},
+        "uncaptured_telemetry": {"state": "MEASUREMENT_NOT_CAPTURED", "value": null},
+        "io_measurement": "OBSERVED_EVENT_COUNTERS", "endpoint_size_used_as_io": false, "scratch_high_water_observed": true, "cpu_intervals_nonoverlapping": true, "lifecycle_actions_actual": true
+      }
+    },
+    {
+      "id": "Q01-METRIC-002",
+      "validator": "accounting",
+      "expected_result": "REJECT",
+      "expected_code": "Q01_CANDIDATE_SESSION_STATE_LEAK",
+      "payload": {
+        "process_ids": {"LITS_I:A": 101, "LITS_I:B": 102, "LITS_I:C": 103, "WVS7:A": 201, "WVS7:B": 202, "WVS7:C": 203},
+        "sessions_at_start": {"LITS_I:A": [], "LITS_I:B": ["A_SESSION"], "LITS_I:C": [], "WVS7:A": [], "WVS7:B": [], "WVS7:C": []},
+        "rss_scope": "CANDIDATE_PROCESS_LOCAL", "cross_candidate_state_leak": true,
+        "metric_write_counts": {"cold_i03_latency_ns": 1},
+        "uncaptured_telemetry": {"state": "MEASUREMENT_NOT_CAPTURED", "value": null},
+        "io_measurement": "OBSERVED_EVENT_COUNTERS", "endpoint_size_used_as_io": false, "scratch_high_water_observed": true, "cpu_intervals_nonoverlapping": true, "lifecycle_actions_actual": true
+      }
+    },
+    {
+      "id": "Q01-METRIC-003",
+      "validator": "accounting",
+      "expected_result": "REJECT",
+      "expected_code": "Q01_METRIC_OVERWRITE_FORBIDDEN",
+      "payload": {
+        "process_ids": {"LITS_I:A": 101, "LITS_I:B": 102, "LITS_I:C": 103, "WVS7:A": 201, "WVS7:B": 202, "WVS7:C": 203},
+        "sessions_at_start": {"LITS_I:A": [], "LITS_I:B": [], "LITS_I:C": [], "WVS7:A": [], "WVS7:B": [], "WVS7:C": []},
+        "rss_scope": "CANDIDATE_PROCESS_LOCAL", "cross_candidate_state_leak": false,
+        "metric_write_counts": {"cold_i03_latency_ns": 2},
+        "uncaptured_telemetry": {"state": "MEASUREMENT_NOT_CAPTURED", "value": null},
+        "io_measurement": "OBSERVED_EVENT_COUNTERS", "endpoint_size_used_as_io": false, "scratch_high_water_observed": true, "cpu_intervals_nonoverlapping": true, "lifecycle_actions_actual": true
+      }
+    },
+    {
+      "id": "Q01-METRIC-004",
+      "validator": "accounting",
+      "expected_result": "REJECT",
+      "expected_code": "Q01_SYNTHETIC_ZERO_TELEMETRY_FORBIDDEN",
+      "payload": {
+        "process_ids": {"LITS_I:A": 101, "LITS_I:B": 102, "LITS_I:C": 103, "WVS7:A": 201, "WVS7:B": 202, "WVS7:C": 203},
+        "sessions_at_start": {"LITS_I:A": [], "LITS_I:B": [], "LITS_I:C": [], "WVS7:A": [], "WVS7:B": [], "WVS7:C": []},
+        "rss_scope": "CANDIDATE_PROCESS_LOCAL", "cross_candidate_state_leak": false,
+        "metric_write_counts": {"cold_i03_latency_ns": 1},
+        "uncaptured_telemetry": {"state": "MEASUREMENT_NOT_CAPTURED", "value": 0},
+        "io_measurement": "OBSERVED_EVENT_COUNTERS", "endpoint_size_used_as_io": false, "scratch_high_water_observed": true, "cpu_intervals_nonoverlapping": true, "lifecycle_actions_actual": true
+      }
+    },
+    {
+      "id": "Q01-METRIC-005",
+      "validator": "accounting",
+      "expected_result": "REJECT",
+      "expected_code": "Q01_ENDPOINT_SIZE_IS_NOT_IO",
+      "payload": {
+        "process_ids": {"LITS_I:A": 101, "LITS_I:B": 102, "LITS_I:C": 103, "WVS7:A": 201, "WVS7:B": 202, "WVS7:C": 203},
+        "sessions_at_start": {"LITS_I:A": [], "LITS_I:B": [], "LITS_I:C": [], "WVS7:A": [], "WVS7:B": [], "WVS7:C": []},
+        "rss_scope": "CANDIDATE_PROCESS_LOCAL", "cross_candidate_state_leak": false,
+        "metric_write_counts": {"cold_i03_latency_ns": 1},
+        "uncaptured_telemetry": {"state": "MEASUREMENT_NOT_CAPTURED", "value": null},
+        "io_measurement": "ENDPOINT_DIRECTORY_SIZE", "endpoint_size_used_as_io": true, "scratch_high_water_observed": true, "cpu_intervals_nonoverlapping": true, "lifecycle_actions_actual": true
+      }
+    },
+    {
+      "id": "Q01-PREFLIGHT-PASS",
+      "validator": "succession",
+      "expected_result": "PASS",
+      "payload": {
+        "overall_status": "PASS", "oracle_pass": true, "accounting_pass": true, "deferred_preterminal_function": false,
+        "rows": [{"required": true, "accepted_authority": true, "current_owner": true, "binding": true, "live_receipt": true, "repository_presence_only": false, "negative_state_law": true, "candidate_capability": true}]
+      }
+    },
+    {
+      "id": "Q01-PREFLIGHT-001",
+      "validator": "succession",
+      "expected_result": "REJECT",
+      "expected_code": "Q01_PREFLIGHT_REPOSITORY_PRESENCE_NOT_LIVE_CONSUMPTION",
+      "payload": {
+        "overall_status": "PASS", "oracle_pass": true, "accounting_pass": true, "deferred_preterminal_function": false,
+        "rows": [{"required": true, "accepted_authority": true, "current_owner": true, "binding": true, "live_receipt": false, "repository_presence_only": true, "negative_state_law": true, "candidate_capability": true}]
+      }
+    },
+    {
+      "id": "Q01-TERM-PASS",
+      "validator": "terminal",
+      "expected_result": "PASS",
+      "payload": {
+        "overall_status": "PASS", "terminal_level": "I05_LEARNED_EMPIRICAL_PRODUCT", "c11_pass": true, "i03_pass": true,
+        "i05_complete": true, "coverage_complete": true, "constituent_i03_fact_closure": true,
+        "semantic_identity": "semantic:s", "replay_identity": "replay:r", "output_identity": "output:o",
+        "succession_preflight_pass": true, "independent_oracle_pass": true, "all_admitted_cells_terminalized": true,
+        "post_lifecycle_terminal_identity_reproduced": true
+      }
+    },
+    {
+      "id": "Q01-TERM-001",
+      "validator": "terminal",
+      "expected_result": "REJECT",
+      "expected_code": "Q01_TERMINAL_MUST_BE_COMPLETE_I05",
+      "payload": {
+        "overall_status": "PASS", "terminal_level": "C11", "c11_pass": true, "i03_pass": false,
+        "i05_complete": false, "coverage_complete": false, "constituent_i03_fact_closure": false,
+        "semantic_identity": "semantic:s", "replay_identity": "replay:r", "output_identity": "output:o",
+        "succession_preflight_pass": true, "independent_oracle_pass": true, "all_admitted_cells_terminalized": true,
+        "post_lifecycle_terminal_identity_reproduced": true
+      }
+    },
+    {
+      "id": "Q01-TERM-002",
+      "validator": "terminal",
+      "expected_result": "REJECT",
+      "expected_code": "Q01_TERMINAL_MUST_BE_COMPLETE_I05",
+      "payload": {
+        "overall_status": "PASS", "terminal_level": "I03", "c11_pass": true, "i03_pass": true,
+        "i05_complete": false, "coverage_complete": false, "constituent_i03_fact_closure": true,
+        "semantic_identity": "semantic:s", "replay_identity": "replay:r", "output_identity": "output:o",
+        "succession_preflight_pass": true, "independent_oracle_pass": true, "all_admitted_cells_terminalized": true,
+        "post_lifecycle_terminal_identity_reproduced": true
+      }
+    }
+  ]
+}
