@@ -1,0 +1,97 @@
+{
+  "schema": "CLOSED35_L2R_AFROBAROMETER_R9_RETURN@1.0.0",
+  "worker": "CLOSED35-L2R-AFR9",
+  "repository": "maidiu/rawlsing",
+  "base_branch": "agent/vozhd-closed35-l2-documentary-fanin-r1",
+  "base_sha": "5c582e2325ecc2b37377cd518fe4c456331c81d8",
+  "branch": "agent/rabochii-closed35-l2r-afr9-four-binding-r1",
+  "return_path": "WORKER_RETURNS/CLOSED35-L2R-AFR9/",
+  "source": {
+    "filename": "Afro Barometer Round 9.sav",
+    "sha256": "3afcecd08d2f4b531a926d455a943084d9f71c1276b4f3a58e77a9162e6879d8"
+  },
+  "commissioned_open_set": [
+    "Q78F_EXACT_MERGED_COUNTRY_APPLICABILITY_SET",
+    "Q118_11_EXACT_ROUND9_PRODUCER_BINDING",
+    "V397_A_EXACT_ROUND9_ALIAS_BINDING",
+    "V399_A_EXACT_ROUND9_ALIAS_AND_ROLE_BINDING"
+  ],
+  "closed_this_return": [
+    "Q78F_EXACT_MERGED_COUNTRY_APPLICABILITY_SET"
+  ],
+  "q78f_binding": {
+    "applicable_count": 25,
+    "not_asked_count": 14,
+    "denominator": 39,
+    "applicable_countries": [
+      "Botswana",
+      "Burkina Faso",
+      "Cabo Verde",
+      "Cameroon",
+      "Congo-Brazzaville",
+      "Eswatini",
+      "Ethiopia",
+      "The Gambia",
+      "Ghana",
+      "Guinea",
+      "Liberia",
+      "Madagascar",
+      "Mali",
+      "Mauritania",
+      "Morocco",
+      "Mozambique",
+      "Niger",
+      "Senegal",
+      "Seychelles",
+      "Sierra Leone",
+      "South Africa",
+      "Sudan",
+      "São Tomé and Príncipe",
+      "Tanzania",
+      "Zambia"
+    ],
+    "not_asked_in_country": [
+      "Angola",
+      "Benin",
+      "Côte d'Ivoire",
+      "Gabon",
+      "Kenya",
+      "Lesotho",
+      "Malawi",
+      "Mauritius",
+      "Namibia",
+      "Nigeria",
+      "Togo",
+      "Tunisia",
+      "Uganda",
+      "Zimbabwe"
+    ]
+  },
+  "exact_unknown_set": [
+    "Q118_11_EXACT_ROUND9_PRODUCER_BINDING",
+    "V397_A_EXACT_ROUND9_ALIAS_BINDING",
+    "V399_A_EXACT_ROUND9_ALIAS_AND_ROLE_BINDING"
+  ],
+  "disposition": "RESIDUAL__ONE_OF_FOUR_CLOSED__THREE_EXACT_PRODUCER_BINDINGS_FROZEN_UNKNOWN",
+  "terminal": "CLOSED35_L2R_AFROBAROMETER_R9_RESIDUAL_AUTHORITY_FROZEN__EXACT_UNKNOWN_SET_RETURNED",
+  "outputs": [
+    "00_RETURN.md",
+    "01_FOUR_BINDING_EVIDENCE_LEDGER.csv",
+    "02_EXACT_BINDING_ADJUDICATION.md",
+    "03_UPDATED_SOURCE_ADMISSION_PACKET.json",
+    "RETURN.json"
+  ],
+  "guards": {
+    "raw_source_bytes_opened": false,
+    "source_processing_executed": false,
+    "measured_p2x_run": false,
+    "semantic_inference_from_numeric_weight_distribution": false,
+    "naming_convention_inference_used_as_authority": false
+  },
+  "pass_terminal_not_issued_because": [
+    "No exact Round-9 producer document recovered for Q118_11.",
+    "No exact Round-9 producer alias crosswalk recovered for V397_A.",
+    "No exact Round-9 producer alias/role crosswalk recovered for V399_A."
+  ],
+  "commit_sha_note": "Final Git commit SHA is reported externally because a commit cannot embed its own hash in its preimage."
+}

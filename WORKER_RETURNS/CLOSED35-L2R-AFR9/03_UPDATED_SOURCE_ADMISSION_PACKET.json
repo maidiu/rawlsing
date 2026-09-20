@@ -1,0 +1,158 @@
+{
+  "schema": "CLOSED35_L2R_AFROBAROMETER_R9_SOURCE_ADMISSION_PACKET@1.0.0",
+  "worker": "CLOSED35-L2R-AFR9",
+  "repository": "maidiu/rawlsing",
+  "base": {
+    "branch": "agent/vozhd-closed35-l2-documentary-fanin-r1",
+    "sha": "5c582e2325ecc2b37377cd518fe4c456331c81d8"
+  },
+  "branch": "agent/rabochii-closed35-l2r-afr9-four-binding-r1",
+  "source": {
+    "filename": "Afro Barometer Round 9.sav",
+    "sha256": "3afcecd08d2f4b531a926d455a943084d9f71c1276b4f3a58e77a9162e6879d8",
+    "format": "sav"
+  },
+  "inherited_authority": {
+    "source_packet": "WORKER_RETURNS/CLOSED35-L2-AFR9/04_SOURCE_ADMISSION_PACKET.json",
+    "status": "SETTLED__NOT_REOPENED",
+    "inherited_closed_bindings": [
+      "Q78F role = EU economic/political influence",
+      "Q78F -1 = Missing",
+      "Q118 = multiple-response spoken-language topology, tick all that apply, not ranked",
+      "Q118_1..Q118_10 documented producer slots",
+      "Q118 9996 = No further reply/response, ordinary stored special code",
+      "Q47C 94 = Not Asked in Country, ordinary stored applicability code",
+      "old withinwt_ea -> new withinwt_hh logical weight succession",
+      "withinwt_hh producer-selected R9 successor at documented descriptive scope",
+      "generic combined multi-country descriptive weight role"
+    ]
+  },
+  "l2r_four_binding_recovery": {
+    "disposition": "PARTIAL__ONE_OF_FOUR_CLOSED__THREE_EXACT_PRODUCER_BINDINGS_RESIDUAL",
+    "closed": {
+      "Q78F_EXACT_MERGED_COUNTRY_APPLICABILITY_SET": {
+        "status": "CLOSED",
+        "merged_country_denominator": 39,
+        "applicable_count": 25,
+        "applicable_countries": [
+          "Botswana",
+          "Burkina Faso",
+          "Cabo Verde",
+          "Cameroon",
+          "Congo-Brazzaville",
+          "Eswatini",
+          "Ethiopia",
+          "The Gambia",
+          "Ghana",
+          "Guinea",
+          "Liberia",
+          "Madagascar",
+          "Mali",
+          "Mauritania",
+          "Morocco",
+          "Mozambique",
+          "Niger",
+          "Senegal",
+          "Seychelles",
+          "Sierra Leone",
+          "South Africa",
+          "Sudan",
+          "São Tomé and Príncipe",
+          "Tanzania",
+          "Zambia"
+        ],
+        "not_asked_in_country_count": 14,
+        "not_asked_in_country": [
+          "Angola",
+          "Benin",
+          "Côte d'Ivoire",
+          "Gabon",
+          "Kenya",
+          "Lesotho",
+          "Malawi",
+          "Mauritius",
+          "Namibia",
+          "Nigeria",
+          "Togo",
+          "Tunisia",
+          "Uganda",
+          "Zimbabwe"
+        ],
+        "authority_rule": "country-documented presence/absence under Round-9 national-instrument blocking law; no missingness inference"
+      }
+    },
+    "residual_exact_unknown_set": [
+      {
+        "id": "R9R-U01",
+        "binding": "Q118_11_EXACT_ROUND9_PRODUCER_BINDING",
+        "classification": "UNDOCUMENTED_CANONICAL_MERGED_FIELD",
+        "preserve": "PHYSICAL_FIELD_IDENTITY_ORDER_AND_RAW_STATE__SEMANTIC_ROLE_UNKNOWN",
+        "forbidden": [
+          "infer slot semantics from Q118_10 adjacency",
+          "infer slot semantics from physical label alone",
+          "promote third-party downstream schema to producer authority"
+        ]
+      },
+      {
+        "id": "R9R-U02",
+        "binding": "V397_A_EXACT_ROUND9_ALIAS_BINDING",
+        "classification": "ROLE_COMPATIBLE_WITH_WITHINWT_HH__EXACT_PRODUCER_ALIAS_UNRECOVERED",
+        "preserve": "CANONICAL_RAW_CARRIER_AND_SETTLED_NATIVE_METADATA",
+        "forbidden": [
+          "assert V397_A = withinwt_hh",
+          "decode _A as producer naming convention",
+          "select carrier by numeric similarity"
+        ]
+      },
+      {
+        "id": "R9R-U03",
+        "binding": "V399_A_EXACT_ROUND9_ALIAS_AND_ROLE_BINDING",
+        "classification": "NEW_HH_COMBINED_ROLE_CORROBORATED_ONLY__EXACT_PRODUCER_ALIAS_AND_ROLE_UNRECOVERED",
+        "preserve": "CANONICAL_RAW_CARRIER_AND_SETTLED_NATIVE_METADATA",
+        "forbidden": [
+          "assert V399_A = combinwt_hh",
+          "assert V399_A = combinwt_new_hh",
+          "decode _A as producer naming convention",
+          "select carrier by numeric similarity"
+        ]
+      }
+    ]
+  },
+  "realization_rules": {
+    "newly_authorized": [
+      "Bind Q78F applicability exactly to the 25 applicable countries.",
+      "Bind Q78F non-applicability exactly to the 14 Not Asked in Country countries."
+    ],
+    "still_fail_closed": [
+      "Any semantic use requiring Q118_11 exact producer membership.",
+      "Any raw-carrier selection requiring V397_A = withinwt_hh.",
+      "Any raw-carrier selection or role assertion requiring V399_A exact producer identity."
+    ],
+    "inherited_rules_unchanged": true
+  },
+  "evidence_policy": {
+    "producer_primary": [
+      "Afrobarometer Round 9 Survey Manual",
+      "Afrobarometer final Merged Round 9 codebook",
+      "Afrobarometer Round-9 country questionnaires/codebooks"
+    ],
+    "producer_distributor_archival": [
+      "World Bank Microdata Library / DataFirst Afrobarometer Round-9 country dictionaries",
+      "World Bank/DataFirst merged 39-country Round-9 catalog"
+    ],
+    "corroborative_not_authority": [
+      "53,444-case public merged Q78F country cross-check",
+      "basedosdados Round-9 architecture",
+      "IBM SPSS suffix-generation documentation used only as a no-inference guard"
+    ]
+  },
+  "proof_boundary": {
+    "raw_source_bytes_opened": false,
+    "source_processing_executed": false,
+    "measured_p2x_run": false,
+    "numeric_weight_role_inference_used": false,
+    "public_documentary_research_used": true,
+    "github_repository_evidence_used": true
+  },
+  "terminal": "CLOSED35_L2R_AFROBAROMETER_R9_RESIDUAL_AUTHORITY_FROZEN__EXACT_UNKNOWN_SET_RETURNED"
+}
