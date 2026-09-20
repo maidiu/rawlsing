@@ -1,0 +1,146 @@
+{
+  "schema": "CLOSED35_R1_EVS1999_RETURN@1.0.0",
+  "worker_id": "CLOSED35-R1-EVS1999",
+  "disposition": "PASS",
+  "terminal": "CLOSED35_R1_EVS1999_SOURCE_SPECIFIC_REALIZATION_IMPLEMENTED__READY_FOR_ABC_QUALIFICATION",
+  "repository": "maidiu/rawlsing",
+  "base": {
+    "branch": "agent/vozhd-closed35-l2-documentary-fanin-r1",
+    "sha": "5c582e2325ecc2b37377cd518fe4c456331c81d8"
+  },
+  "branch": "agent/rabochii-closed35-r1-evs1999-realization-r1",
+  "source": {
+    "canonical_filename": "EVS 1999.sav",
+    "canonical_sha256": "6058644a9308aad574b95fa0afd1b026fedea289c6c95aca043aefb41ae0ab8a",
+    "format": "SAV",
+    "source_declared_encoding": "UTF-8",
+    "source_declared_character_code": 65001,
+    "accepted_physical_compatibility_mode": "SAV_LATIN1_COMPAT_PHYSICAL_ONLY__SOURCE_DECLARES_UTF8",
+    "compatibility_semantic_authority": false,
+    "replay_identity": "SOURCE_SHA256+ROW_ORDINAL"
+  },
+  "producer_release": {
+    "identity": "ZA3811 v3.0.0",
+    "doi": "10.4232/1.10789",
+    "release_date": "2011-11-20",
+    "semantic_text_authority": "ZA3811 v3.0.0 documentary estate",
+    "exact_alignment_key": "SOURCE_VARIABLE_IDENTIFIER",
+    "failed_alignment_state": "DOCUMENTARY_ALIGNMENT_UNKNOWN"
+  },
+  "implementation": {
+    "module": {
+      "path": "rawlsing_next/closed35_evs1999_realization.py",
+      "blob_sha": "064b75f6909f2cfac5639aef050da49f3f5e100f",
+      "contract": "CLOSED35_R1_EVS1999_SOURCE_REALIZATION@1.0.0"
+    },
+    "synthetic_tests": {
+      "path": "rawlsing_next/tests/test_closed35_r1_evs1999_realization.py",
+      "blob_sha": "e8ab9caa6ba2dfba7f6ce43a1b6e6da00886bff1",
+      "test_count": 10,
+      "executed_by_worker": false,
+      "real_source_bytes_used": false
+    },
+    "reader_configuration": {
+      "decoder_implementation": "rawlsing_next/pre553_physical_decoder.py",
+      "reader": "pyreadstat.read_sav",
+      "reader_version": "1.3.6",
+      "encoding_override": "latin1",
+      "user_missing": true,
+      "apply_value_formats": false,
+      "automatic_encoding_guessing": false,
+      "compatibility_semantic_scope": "PHYSICAL_EXTRACTION_ONLY__NO_SOURCE_TEXT_OR_SEMANTIC_AUTHORITY"
+    },
+    "semantic_owner_surface": "PRE553_SOURCE_BACKED_C11_FACADE@1.0.0",
+    "candidate_law": "A_B_C_SHARE_ONE_SOURCE_SPECIFIC_SEMANTIC_REALIZATION_IDENTITY"
+  },
+  "documentary_law": {
+    "compatibility_rendered_text_is_semantic_evidence": false,
+    "malformed_text_repair_performed": false,
+    "routing_from_missingness": false,
+    "authority_precedence": [
+      "ZA3811_V3_0_0_VARIABLE_REPORT",
+      "EVS1999_NATIONAL_DOCUMENT",
+      "EVS1999_MASTER_QUESTIONNAIRE",
+      "DOCUMENTARY_ALIGNMENT_UNKNOWN"
+    ],
+    "source_local_routes_bound": [
+      "v49_filt",
+      "v50_filt",
+      "v51_filt",
+      "v290_hu",
+      "v87",
+      "v101",
+      "v103",
+      "v293",
+      "v296",
+      "v306",
+      "v307",
+      "v309",
+      "v315"
+    ]
+  },
+  "s35_edge_classes": [
+    "EC01",
+    "EC02",
+    "EC03",
+    "EC10",
+    "EC14"
+  ],
+  "r35_hooks": {
+    "i01": {
+      "worker_branch": "agent/rabochii-premain-fiabc-r35-i01-raw-layout-metadata-r1",
+      "schema": "PRE553_PHYSICAL_METADATA@1.0.0",
+      "required": true
+    },
+    "i02": {
+      "worker_branch": "agent/rabochii-premain-fiabc-r35-i02-derivative-parentage-r1",
+      "schema": "FIABC_DERIVATIVE_PARENTAGE_BUNDLE@1.0.0",
+      "required_for_non_direct_raw": true
+    },
+    "i03": {
+      "worker_branch": "agent/rabochii-premain-fiabc-r35-i03-physical-equivalence-r1",
+      "source_scope_schema": "FIABC_R35_I03_SOURCE_PHYSICAL_SCOPE@1.0.0",
+      "expectation_schema": "FIABC_R35_I03_CANONICAL_PHYSICAL_EXPECTATION@1.0.0",
+      "candidate_realization_schema": "FIABC_R35_I03_CANDIDATE_PHYSICAL_REALIZATION@1.0.0",
+      "receipt_schema": "FIABC_R35_I03_WHOLE_SOURCE_PHYSICAL_EQUIVALENCE_RECEIPT@1.0.0",
+      "required_dimensions": [
+        "physical_metadata",
+        "variable_inventory_order",
+        "raw_storage_values",
+        "row_replay_identity",
+        "reader_configuration_digest",
+        "compatibility_decode_evidence",
+        "form_module_skip_routing_carriers"
+      ]
+    },
+    "generic_implementations_present_in_l2_hq_base": false,
+    "generic_branches_merged_by_this_worker": false,
+    "exact_contract_seams_bound": true
+  },
+  "safeguards": {
+    "local_raw_sav_opened": false,
+    "source_decoding_executed": false,
+    "measured_p2x_run": false,
+    "compatibility_text_promoted_to_semantic_authority": false,
+    "routing_inferred_from_missingness": false,
+    "malformed_embedded_text_repaired": false,
+    "alternate_source_substituted": false
+  },
+  "claims_not_made": [
+    "REAL_SOURCE_PHYSICAL_EQUIVALENCE_PASS",
+    "SOURCE_EXECUTION_PASS",
+    "ABC_EXECUTION_PASS",
+    "MEASURED_P2X_PASS",
+    "MALFORMED_TEXT_REPAIR",
+    "PRODUCER_CHECKSUM_EQUIVALENCE_FOR_RAWLSING_CANONICAL_BYTES"
+  ],
+  "outputs": [
+    "WORKER_RETURNS/CLOSED35-R1-EVS1999/00_RETURN.md",
+    "WORKER_RETURNS/CLOSED35-R1-EVS1999/01_REALIZATION_CONTRACT.md",
+    "WORKER_RETURNS/CLOSED35-R1-EVS1999/02_DOCUMENT_TO_PROJECTION_BINDING.csv",
+    "WORKER_RETURNS/CLOSED35-R1-EVS1999/03_PHYSICAL_EDGE_BINDING.json",
+    "WORKER_RETURNS/CLOSED35-R1-EVS1999/04_TEST_PROTOCOL.md",
+    "WORKER_RETURNS/CLOSED35-R1-EVS1999/RETURN.json"
+  ],
+  "ready_for_abc_qualification": true
+}
