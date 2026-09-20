@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from decimal import Decimal
+
 import pytest
 
 from rawlsing_next.fiabc_whole_source_physical_equivalence import (
@@ -63,7 +65,7 @@ def base_evidence():
         "raw_storage_values": {
             "id": [9876543210, 9876543211],
             "all_missing": [None, None],
-            "weight": [1.0, 2.0],
+            "weight": [Decimal("1.0"), Decimal("2.0")],
         },
         "row_replay_identity": [
             {"source_sha256": SOURCE_SHA, "row_ordinal": 1},
