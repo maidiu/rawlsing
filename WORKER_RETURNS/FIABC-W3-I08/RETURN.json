@@ -1,0 +1,32 @@
+{
+  "schema": "FIABC_W3_I08_RETURN@1.0.0",
+  "worker": "FIABC-W3-I08",
+  "repo": "maidiu/rawlsing",
+  "branch": "agent/rabochii-premain-fiabc-w3-i08-terminal-verifier-r1",
+  "base_sha": "56697a27e94eb9603dfa412a15ab8f1feb819b0c",
+  "return_path": "WORKER_RETURNS/FIABC-W3-I08/",
+  "obligation": "IMP13",
+  "implementation": {
+    "production_module": "rawlsing_next/fiabc_p2_terminal_verifier.py",
+    "test_module": "rawlsing_next/tests/test_fiabc_p2_terminal_verifier.py",
+    "comparison_terminal": "GOVERNED_I05_LEARNED_EMPIRICAL_PRODUCT__EXACT_SEMANTIC_REPLAY_OUTPUT_IDENTITY__COMPLETE_COVERAGE__CONSTITUENT_I03_FACT_CLOSURE",
+    "semantic_owner_changed": false,
+    "empirical_fact_owner_changed": false,
+    "oracle_or_preflight_fabricated": false
+  },
+  "tests_added": 13,
+  "tests_executed": false,
+  "tests_not_executed_and_why": "Commission requires GitHub/browser repository tools only; available GitHub connector has no Python execution surface. Exact deterministic pytest command is recorded for integrated/local execution.",
+  "deferred_test_command": "python -m pytest -q rawlsing_next/tests/test_fiabc_p2_terminal_verifier.py",
+  "headline_findings": [
+    "Wave-2 L01 full I05 terminal is now represented by a fail-closed current verifier contract.",
+    "C11 and I03 are mandatory intermediate invariants but cannot satisfy final court PASS.",
+    "Succession-preflight PASS, independent-oracle PASS, admitted-cell closure, exact terminal identity, complete coverage and constituent-I03 closure are explicit required inputs.",
+    "Post-terminal lifecycle phases declared required by the integrated court must reproduce the identical terminal identity."
+  ],
+  "exact_blockers": [
+    "No in-branch implementation blocker.",
+    "Integrated court PASS remains pending sibling I05 independent-oracle and I07 succession-preflight real receipts plus HQ fan-in binding into final P2 S17; this verifier intentionally does not fabricate them."
+  ],
+  "terminal": "FIABC_W3_I08_FINAL_TERMINAL_VERIFIER_IMPLEMENTED__READY_FOR_FANIN"
+}
