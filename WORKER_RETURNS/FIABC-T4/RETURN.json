@@ -1,0 +1,67 @@
+{
+  "schema": "FIABC_T4_RETURN@1.0.0",
+  "worker": "FIABC-T4",
+  "branch": "agent/rabochii-premain-fiabc-t4-accounting-lifecycle-transposition-r1",
+  "required_parent_branch": "agent/vozhd-premain-fiabc-live-transposition-t3-fanin-r1",
+  "exact_parent_tip": "58019599e8dc2ae1c8d21ea02806c87e73c576e3",
+  "implementation_tip": "d48cebeb3b8acff92cf0dbbe06e00255750d4fb4",
+  "status": "IMPLEMENTATION_COMPLETE__SOURCE_INDEPENDENT_TESTS_NOT_EXECUTED_BROWSER_SURFACE",
+  "measured_p2x_executed": false,
+  "merged": false,
+  "accepted_components": {
+    "telemetry": {
+      "path": "rawlsing_next/fiabc_telemetry_semantics.py",
+      "git_blob_sha1": "d061cd0f3c595c100ea728520fb0892404a2ca9b"
+    },
+    "lifecycle": {
+      "path": "rawlsing_next/fiabc_lifecycle_accounting.py",
+      "git_blob_sha1": "a2977ea22fe67858a2a811917bd7ac0f4b7350c7"
+    }
+  },
+  "live_components": {
+    "driver": {
+      "path": "rawlsing_next/ee_p2x_darwin_court_driver.py",
+      "git_blob_sha1": "9d9492f96d849a3f2e67e187507d443ed593aa72"
+    },
+    "backend": {
+      "path": "rawlsing_next/ee_p2x_darwin_stage_backend.py",
+      "git_blob_sha1": "f32fc0441efd649bcb7196a91354cc7311bc384b"
+    },
+    "accounting_bridge": {
+      "path": "rawlsing_next/fiabc_live_accounting_binding.py",
+      "git_blob_sha1": "3ca3a1ce90f18fbcb2d7b5c7e3a25d41dd4b0c4e"
+    }
+  },
+  "invariants": {
+    "t1_packaging_preserved": true,
+    "t2_six_cell_manifest_preserved": true,
+    "candidate_c_exact_source_fallback_preserved": true,
+    "wvs_c_zero_accelerator_preserved": true,
+    "t3_oracle_freeze_preserved": true,
+    "t3_generic_source_freeze_preserved": true,
+    "t3_fresh_process_isolation_preserved": true,
+    "historical_stops_preserved": true
+  },
+  "accounting": {
+    "canonical_metrics_write_once": true,
+    "process_self_cpu_main_and_children_exactly_once": true,
+    "phase_cpu_separate": true,
+    "peak_rss_is_max": true,
+    "endpoint_io_proxy_forbidden": true,
+    "endpoint_scratch_proxy_forbidden": true,
+    "missing_is_typed_null": true,
+    "c0_excluded": true,
+    "semantic_disposition_mutable_by_telemetry": false
+  },
+  "parentage": {
+    "derivative_identity_is_parentage": false,
+    "lits_a_parentage_required": true,
+    "schema": "FIABC_T4_DERIVATIVE_PARENTAGE@1.0.0"
+  },
+  "test_execution": {
+    "github_actions_runs": 0,
+    "commands_recorded": true,
+    "pass_claimed": false
+  },
+  "terminal": "FIABC_T4_LIVE_TELEMETRY_LIFECYCLE_ACCOUNTING_TRANSPOSED__READY_FOR_PREFLIGHT_TERMINAL_LAYER"
+}
