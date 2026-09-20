@@ -1,0 +1,246 @@
+{
+  "worker_id": "CLOSED35-L2-EVS2008",
+  "campaign": "CLOSED_35_L2_DOCUMENTARY_AUTHORITY",
+  "source": {
+    "canonical_file": "EVS 2008.sav",
+    "canonical_sha256": "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379",
+    "accepted_physical_mode": "SAV_LATIN1_COMPAT_PHYSICAL_ONLY__SOURCE_DECLARES_UTF8",
+    "compatibility_decode_semantic_authority": false
+  },
+  "producer_documentary_alignment": {
+    "study": "EVS 2008 Integrated Dataset",
+    "gesis_study_number": "ZA4800",
+    "current_version": "5.0.0",
+    "release_date": "2022-06-08",
+    "doi": "10.4232/1.13841",
+    "official_geometry": {
+      "cases": 66280,
+      "variables": 477
+    },
+    "alignment_status": "STRONG_DOCUMENTARY_ALIGNMENT__NO_PUBLIC_PRODUCER_SHA256_BINDING_FOUND",
+    "semantic_authority_order": [
+      "accepted exact-source physical evidence",
+      "GESIS ZA4800 v5.0.0 Variable Report / variable catalogue",
+      "EVS 2008 Master Questionnaire",
+      "method, national, translation and errata documentation",
+      "compatibility-rendered source labels only as quarantined non-semantic artifacts"
+    ]
+  },
+  "text_authority": {
+    "policy": "PRODUCER_DOCUMENT_JOIN_BY_STABLE_VARIABLE_AND_QUESTION_IDENTITY",
+    "raw_malformed_label_policy": "RETAIN_OPAQUE__DO_NOT_REPAIR_OR_ASSERT_SEMANTIC_TEXT",
+    "latin1_policy": "PHYSICAL_EXECUTION_ONLY",
+    "semantic_text_source": "GESIS_ZA4800_V5_VARIABLE_REPORT_WITH_MASTER_QUESTIONNAIRE_FOR_ORIGINAL_WORDING_AND_ROUTING",
+    "unmatched_text_state": "UNKNOWN_PRODUCER_TEXT",
+    "mr_label_blocker": "CLOSED_BY_DOCUMENTARY_ALIGNMENT_WITHOUT_BYTE_REPAIR"
+  },
+  "native_mr": {
+    "set_count": 13,
+    "all_type": "D",
+    "all_counted_value": 1,
+    "sets": [
+      {
+        "set": "q5a",
+        "members": ["v10","v11","v12","v13","v14","v15","v16","v17","v18","v19","v20","v21","v22","v23","v24","v25"],
+        "semantic_question": "Q5a voluntary-organisation membership",
+        "ranked": false,
+        "alias_role": "EXACT_DUPLICATE_MEMBER_ALIAS_OF_evs_q5a",
+        "status": "CLOSED"
+      },
+      {
+        "set": "evs_q5a",
+        "members": ["v10","v11","v12","v13","v14","v15","v16","v17","v18","v19","v20","v21","v22","v23","v24","v25"],
+        "semantic_question": "Q5a voluntary-organisation membership",
+        "ranked": false,
+        "alias_role": "EXACT_DUPLICATE_MEMBER_ALIAS_OF_q5a",
+        "status": "CLOSED"
+      },
+      {
+        "set": "vv25",
+        "members": ["v10","v11","v12","v13","v14","v15","v16","v17","v18","v19","v20","v21","v22","v23","v24"],
+        "semantic_question": "Q5a substantive selection body excluding v25=None",
+        "ranked": false,
+        "overlap_role": "q5a_MINUS_v25",
+        "status": "CLOSED"
+      },
+      {
+        "set": "q5b",
+        "members": ["v28","v29","v30","v31","v32","v33","v34","v35","v36","v37","v38","v39","v40","v41","v42","v43"],
+        "semantic_question": "Q5b unpaid voluntary work",
+        "ranked": false,
+        "alias_role": "EXACT_DUPLICATE_MEMBER_ALIAS_OF_evs_q5b",
+        "status": "CLOSED"
+      },
+      {
+        "set": "evs_q5b",
+        "members": ["v28","v29","v30","v31","v32","v33","v34","v35","v36","v37","v38","v39","v40","v41","v42","v43"],
+        "semantic_question": "Q5b unpaid voluntary work",
+        "ranked": false,
+        "alias_role": "EXACT_DUPLICATE_MEMBER_ALIAS_OF_q5b",
+        "status": "CLOSED"
+      },
+      {
+        "set": "vv43",
+        "members": ["v28","v29","v30","v31","v32","v33","v34","v35","v36","v37","v38","v39","v40","v41","v42"],
+        "semantic_question": "Q5b substantive selection body excluding v43=None",
+        "ranked": false,
+        "overlap_role": "q5b_MINUS_v43",
+        "status": "CLOSED"
+      },
+      {
+        "set": "evs_q6",
+        "members": ["v46","v47","v48","v49","v50","v51","v52","v53","v54","v55","v56","v57","v58","v59","v60"],
+        "semantic_question": "Q6 groups not wanted as neighbours",
+        "ranked": false,
+        "status": "CLOSED"
+      },
+      {
+        "set": "q14",
+        "members": ["v69","v70","v71","v72","v73","v74","v75","v76","v77","v78","v79","v80","v81","v82","v83","v84","v85","v86"],
+        "semantic_question": "Q14 job aspects personally important",
+        "ranked": false,
+        "alias_role": "EXACT_DUPLICATE_MEMBER_ALIAS_OF_evs_q14",
+        "status": "CLOSED"
+      },
+      {
+        "set": "evs_q14",
+        "members": ["v69","v70","v71","v72","v73","v74","v75","v76","v77","v78","v79","v80","v81","v82","v83","v84","v85","v86"],
+        "semantic_question": "Q14 job aspects personally important",
+        "ranked": false,
+        "alias_role": "EXACT_DUPLICATE_MEMBER_ALIAS_OF_q14",
+        "status": "CLOSED"
+      },
+      {
+        "set": "q52",
+        "members": ["v170","v171","v172","v173","v174","v175","v176","v177","v178","v179","v180","v181"],
+        "semantic_question": "Q52 child qualities, choose up to five",
+        "ranked": false,
+        "selection_cap": 5,
+        "alias_role": "EXACT_DUPLICATE_MEMBER_ALIAS_OF_evs_q52",
+        "status": "CLOSED"
+      },
+      {
+        "set": "evs_q52",
+        "members": ["v170","v171","v172","v173","v174","v175","v176","v177","v178","v179","v180","v181"],
+        "semantic_question": "Q52 child qualities, choose up to five",
+        "ranked": false,
+        "selection_cap": 5,
+        "alias_role": "EXACT_DUPLICATE_MEMBER_ALIAS_OF_q52",
+        "status": "CLOSED"
+      },
+      {
+        "set": "evs_q107",
+        "members": ["v323","v324a","v325a","v326a","v327a","v328a"],
+        "semantic_question": "Q107 household member-category presence",
+        "ranked": false,
+        "distinct_nonmember_roles": ["v324b","v325b","v326b","v327b","v328b"],
+        "distinct_nonmember_role_semantics": "counts of household members in corresponding categories",
+        "status": "CLOSED"
+      },
+      {
+        "set": "evs_q108",
+        "members": ["v329a","v330a","v331a","v332a","v333a","v334a"],
+        "semantic_question": "Q108 family events ever experienced",
+        "ranked": false,
+        "distinct_nonmember_roles": ["v329b","v330b","v331b","v332b","v333b","v334b"],
+        "distinct_nonmember_role_semantics": "age at first experience",
+        "status": "CLOSED"
+      }
+    ],
+    "duplicate_alias_law": "PRESERVE_NATIVE_SET_IDENTITIES__ONE_PRODUCER_SEMANTIC_BATTERY__DO_NOT_DOUBLE_COUNT",
+    "overlap_law": "PRESERVE_SUBSET_SET_IDENTITY_AND_DOCUMENTED_BODY_ONLY_ROLE"
+  },
+  "flag_authority": {
+    "f201": {
+      "scope": ["v201","v202"],
+      "rule": "if v201 == v202 then f201=1",
+      "values": {
+        "0": "consistent",
+        "1": "inconsistent"
+      },
+      "status": "CLOSED",
+      "negative_law": "MISLEADING_Q55_Q56_HEADING_DOES_NOT_OVERRIDE_PRODUCER_RULE"
+    },
+    "f25": {
+      "scope": "v10-v25",
+      "role": "Q5a substantive-body versus None consistency",
+      "status": "CLOSED"
+    },
+    "f43": {
+      "scope": "v28-v43",
+      "role": "Q5b substantive-body versus None consistency",
+      "status": "CLOSED"
+    },
+    "f86": {
+      "scope": "v69-v86",
+      "role": "Q14 substantive-body versus None consistency",
+      "status": "CLOSED"
+    },
+    "f180": {
+      "scope": "v170-v180",
+      "role": "Q52 more-than-five-selection flag",
+      "status": "CLOSED"
+    }
+  },
+  "date_sentinel_authority": {
+    "variable": "v372",
+    "producer_semantics": "date of interview, Q137",
+    "accepted_physical_user_missing_rendering": "1582-10-13",
+    "accepted_physical_user_missing_count": 1917,
+    "semantic_reason": null,
+    "status": "OPEN_EXACT_SENTINEL_MEANING",
+    "scope_law": "V372_ONLY__DO_NOT_GENERALIZE",
+    "forbidden_inferences": [
+      "don't know",
+      "no answer",
+      "not applicable",
+      "question not asked",
+      "other missing"
+    ],
+    "producer_country_notes": {
+      "Great Britain": "invalid dates outside official survey period recorded as system missing",
+      "Netherlands": "question not implemented; data supplied by country",
+      "Sweden": "date data unavailable due postal mode"
+    }
+  },
+  "routing_and_applicability": {
+    "law": "VARIABLE_X_COUNTRY_OR_QUESTION_SCOPE__NO_GLOBAL_EVS_SENTINEL",
+    "examples": {
+      "Q5b_Denmark": "-4 question not asked",
+      "Q6_AT_BY_DK_FR_IT_NO_SI": "-4 question not asked",
+      "Q107_Finland": "none-of-above auxiliary recoded presence indicators to 0",
+      "Q108_Finland": "none-of-above -> 0; cannot-say -> -1",
+      "Q107_route": "Q105=00 skips Q106 to Q107; Q107 itself remains applicable"
+    }
+  },
+  "producer_revision_context": {
+    "current_release": "ZA4800 v5.0.0",
+    "azerbaijan_2008": "not integrated in current file due producer data-quality concerns",
+    "suf_ruf_difference": "refined anonymization/access distinction concentrated in residence/occupation detail",
+    "national_dataset_law": "older national files are replication/country-specific documentation surfaces; current integrated semantics come from current ZA4800 documentation"
+  },
+  "unresolved_exact_set": [
+    {
+      "id": "EVS2008_V372_SENTINEL_REASON",
+      "class": "SEMANTIC_CODE_AUTHORITY",
+      "state": "NO_PRODUCER_MEANING_FOUND_FOR_EXACT_1582_10_13_USER_MISSING_SENTINEL",
+      "blocking_effect": "BLOCKS_FULL_L2_PASS"
+    },
+    {
+      "id": "EVS2008_EXACT_RELEASE_HASH_BINDING",
+      "class": "SOURCE_RELEASE_PROVENANCE",
+      "state": "NO_PUBLIC_GESIS_SHA256_FOUND_FOR_FROZEN_SAV",
+      "blocking_effect": "DOCUMENTARY_ALIGNMENT_STRONG_BUT_NOT_CRYPTOGRAPHIC"
+    }
+  ],
+  "source_specific_realization_readiness": {
+    "mr_semantics": true,
+    "mr_alias_overlap_roles": true,
+    "producer_text_alignment_rule": true,
+    "flag_relations": true,
+    "country_routing_examples_and_scope_law": true,
+    "v372_exact_missing_reason": false,
+    "full_admission": false
+  },
+  "terminal": "CLOSED35_L2_EVS2008_DOCUMENTARY_AUTHORITY_PARTIAL__EXACT_TEXT_MR_OR_SENTINEL_UNKNOWN_SET_RETURNED"
+}
