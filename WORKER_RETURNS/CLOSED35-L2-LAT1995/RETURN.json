@@ -1,0 +1,57 @@
+{
+  "schema": "CLOSED35_L2_LAT1995_RETURN@1.0.0",
+  "worker": "CLOSED35-L2-LAT1995",
+  "repository": "maidiu/rawlsing",
+  "base_branch": "agent/vozhd-premain-fiabc-s35-fanin-r1",
+  "base_sha": "770d95c1a604ea1f47ac2971b923673c14c42984",
+  "branch": "agent/rabochii-closed35-l2-latinobarometro1995-authority-r1",
+  "return_path": "WORKER_RETURNS/CLOSED35-L2-LAT1995/",
+  "commit_sha": "SELF_COMMIT_REPORTED_EXTERNALLY__GIT_COMMIT_HASH_CANNOT_BE_EMBEDDED_IN_ITS_OWN_PREIMAGE",
+  "disposition": "PARTIAL",
+  "terminal": "CLOSED35_L2_LATINOBAROMETRO1995_DOCUMENTARY_AUTHORITY_PARTIAL__BRAZIL_OR_WEIGHT_UNKNOWN_SET_RETURNED",
+  "canonical_source": {
+    "filename": "Latinobarometro 1995.sav",
+    "sha256": "4b7fc6da17dfddafd6a835717e8dc06981208eb4120fa33bdd16e12ae95926f7",
+    "changed": false
+  },
+  "holdings": {
+    "producer_final_release_v1995_1_established": true,
+    "producer_recognized_brazil_1200_table_base_established": true,
+    "producer_technical_brazil_1080_established": true,
+    "producer_internal_sample_count_contradiction_established": true,
+    "brazil_120_case_causal_provenance_closed": false,
+    "enc_label_number_interview_established": true,
+    "enc_uniqueness_scope_closed": false,
+    "wt_is_weighting_field_established": true,
+    "wt_exact_population_domain_closed": false,
+    "wt_normalization_closed": false,
+    "default_external_weighted_estimator_authorized": false,
+    "source_specific_weighted_realization_ready": false
+  },
+  "forbidden_repairs": [
+    "DROP_120_BRAZIL_ROWS",
+    "REDEFINE_CANONICAL_SOURCE_ROOT",
+    "FORCE_ENC_INJECTIVITY",
+    "ASSUME_PAIS_PLUS_ENC_INJECTIVITY",
+    "INFER_WT_SEMANTICS_FROM_NUMERIC_DISTRIBUTION",
+    "IMPORT_CURRENT_ODA_WEIGHTED_BASE_DEFINITION_AS_1995_DISCREPANCY_CAUSE",
+    "DECLARE_1080_OR_1200_ERRONEOUS_WITHOUT_PRODUCER_ERRATUM"
+  ],
+  "bounded_holding": "CANONICAL RAW RELEASE AUTHENTIC__BRAZIL_120_ROW_PROVENANCE STILL UNKNOWN",
+  "unknown_set": [
+    "BRAZIL_120_ROW_CAUSAL_PROVENANCE",
+    "ENC_UNIQUENESS_SCOPE",
+    "WT_ESTIMAND_AND_POPULATION_DOMAIN",
+    "WT_NORMALIZATION",
+    "WT_CONSTRUCTION_CALIBRATION",
+    "EXTERNAL_RAW_DEFAULT_WEIGHTED_ESTIMATOR"
+  ],
+  "files": [
+    "00_RETURN.md",
+    "01_DOCUMENTARY_SOURCE_LEDGER.csv",
+    "02_BRAZIL_1200_VS_1080_PROVENANCE_LEDGER.csv",
+    "03_ID_AND_WEIGHT_AUTHORITY.md",
+    "04_SOURCE_ADMISSION_PACKET.json",
+    "RETURN.json"
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "schema": "CLOSED35_L2_LAT1995_SOURCE_ADMISSION_PACKET@1.0.0",
+  "worker": "CLOSED35-L2-LAT1995",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-closed35-l2-latinobarometro1995-authority-r1",
+  "base_branch": "agent/vozhd-premain-fiabc-s35-fanin-r1",
+  "base_sha": "770d95c1a604ea1f47ac2971b923673c14c42984",
+  "research_boundary": {
+    "github_browser_public_documentary_only": true,
+    "local_raw_sav_opened": false,
+    "source_processing_run": false,
+    "measured_p2x_run": false
+  },
+  "canonical_source": {
+    "family": "Latinobarometro",
+    "wave": 1995,
+    "filename": "Latinobarometro 1995.sav",
+    "sha256": "4b7fc6da17dfddafd6a835717e8dc06981208eb4120fa33bdd16e12ae95926f7",
+    "size_bytes": 2224483,
+    "format": "sav",
+    "decoder_mode": "SAV_NATIVE_GOVERNED",
+    "canonical_identity_changed": false,
+    "replay_identity": "SOURCE_SHA256+ROW_ORDINAL",
+    "byte_identity_authority": "INHERITED_ACCEPTED_S35_CANONICAL_ROOT"
+  },
+  "producer_release_authority": {
+    "producer": "Corporacion Latinobarometro",
+    "producer_authority": "solely responsible for production/publication of data",
+    "final_release": "v1995.1",
+    "release_page": "https://www.latinobarometro.org/latinobarometro-1995",
+    "aggregated_sav_publicly_offered": true,
+    "producer_checksum_for_exact_inherited_sav_recovered": false,
+    "actual_1995_country_set_from_report_codebook_and_page_list": [
+      "Argentina",
+      "Brazil",
+      "Chile",
+      "Mexico",
+      "Paraguay",
+      "Peru",
+      "Uruguay",
+      "Venezuela"
+    ],
+    "current_release_page_18_country_text_status": "TEMPLATE_OR_LANDING_PAGE_INCONSISTENCY__NOT_USED_AS_1995_SCOPE_AUTHORITY"
+  },
+  "brazil_sample_provenance": {
+    "inherited_raw_brazil_n": 1200,
+    "producer_report_substantive_table_brazil_n": 1200,
+    "producer_technical_annex_brazil_n": 1080,
+    "delta": 120,
+    "producer_report_total_interviews": 9077,
+    "technical_annex_country_n_sum": 8949,
+    "recurring_table_sum_when_uruguay_1212": 9069,
+    "table_pattern_sum_when_uruguay_1220": 9077,
+    "closed_fact": "PRODUCER_DOCUMENTARY_CONTRADICTION_ESTABLISHED__BRAZIL_1200_TABLE_BASE_VS_1080_TECHNICAL_SAMPLE",
+    "causal_provenance": "UNKNOWN",
+    "documented_120_case_exclusion": false,
+    "documented_valid_or_weighted_subset_explanation": false,
+    "documented_release_version_split": false,
+    "documented_erratum": false,
+    "technical_sheet_error_authorized": false,
+    "table_base_error_authorized": false,
+    "drop_120_rows_authorized": false,
+    "preserve_all_canonical_rows": true,
+    "bounded_holding": "CANONICAL RAW RELEASE AUTHENTIC__BRAZIL_120_ROW_PROVENANCE STILL UNKNOWN"
+  },
+  "interview_identifier": {
+    "variable": "enc",
+    "producer_label": "Number interview",
+    "producer_codebook": "https://www.latinobarometro.org/documents/LAT-1995/latinobarometro-1995-codebook-v20190707.pdf",
+    "global_uniqueness_authorized": false,
+    "country_local_uniqueness_authorized": false,
+    "longitudinal_identity_authorized": false,
+    "uniqueness_scope": "UNKNOWN",
+    "noninjectivity_preserved": true,
+    "deduplication_authorized": false,
+    "replay_identity": "SOURCE_SHA256+ROW_ORDINAL"
+  },
+  "weight": {
+    "variable": "wt",
+    "producer_label": "Weighting",
+    "producer_codebook_range_authority": {
+      "0": "ERROR: No weight / warning-low rendering present in codebook",
+      "1": "No weighting",
+      "0.1-10": "weighted",
+      "10-99": "WARNING: high",
+      "99-9999": "ERROR: TOO HIGH!"
+    },
+    "current_oda_platform_default": "uses sample weight provided for each selected sample",
+    "current_oda_base_definition": "weighted count of valid cases after filters/sample selection",
+    "current_oda_url": "https://latinobarometro.org/oda-faq",
+    "intended_population_estimand": "UNKNOWN",
+    "within_country_vs_cross_country_domain": "UNKNOWN",
+    "normalization": "UNKNOWN",
+    "construction_or_calibration": "UNKNOWN",
+    "external_raw_default_estimator_authorized": false,
+    "recomputation_or_renormalization_authorized": false,
+    "explains_brazil_1200_vs_1080": false,
+    "preserve_source_native_weight_carrier": true,
+    "weighted_realization_authorized": false
+  },
+  "documentary_unknown_set": [
+    "BRAZIL_120_ROW_CAUSAL_PROVENANCE",
+    "ENC_UNIQUENESS_SCOPE",
+    "WT_ESTIMAND_AND_POPULATION_DOMAIN",
+    "WT_NORMALIZATION",
+    "WT_CONSTRUCTION_CALIBRATION",
+    "EXTERNAL_RAW_DEFAULT_WEIGHTED_ESTIMATOR"
+  ],
+  "admission": {
+    "canonical_root_retained": true,
+    "documentary_release_family_provenance_sufficient": true,
+    "source_specific_weighted_realization_ready": false,
+    "full_l2_closure": false,
+    "disposition": "PARTIAL",
+    "required_future_authority": [
+      "producer correction/version/release note resolving 1200 vs 1080 OR explicit producer statement that no further historical explanation exists",
+      "producer 1995 weighting methodology defining WT domain, normalization, estimand, and intended analytical use"
+    ]
+  },
+  "primary_sources": [
+    "https://www.latinobarometro.org/latinobarometro-1995",
+    "https://www.latinobarometro.org/documents/LAT-1995/informe-latinobarometro-1995.pdf",
+    "https://www.latinobarometro.org/documents/LAT-1995/latinobarometro-1995-eng.pdf",
+    "https://www.latinobarometro.org/documents/LAT-1995/latinobarometro-1995-codebook-v20190707.pdf",
+    "https://www.latinobarometro.org/documents/LAT-1995/latinobarometro-1995-libro-de-codigos-v20190707.pdf",
+    "https://latinobarometro.org/oda-faq",
+    "https://www.latinobarometro.org/about-us"
+  ],
+  "terminal": "CLOSED35_L2_LATINOBAROMETRO1995_DOCUMENTARY_AUTHORITY_PARTIAL__BRAZIL_OR_WEIGHT_UNKNOWN_SET_RETURNED"
+}
