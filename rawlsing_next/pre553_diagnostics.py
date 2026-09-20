@@ -233,7 +233,7 @@ def _verify_object_identity(obj: Any, expected_type: type, label: str) -> None:
 
 
 def _metric_state_for_product(state: str) -> str:
-    if state in {"SUPPORTED", "OBSERVED_ZERO"}:
+    if state in {"SUPPORTED", "OBSERVED_ZERO", "UNCERTAINTY_UNQUANTIFIED"}:
         return "AVAILABLE_DIAGNOSTIC_ONLY"
     if state in {"LOW_SUPPORT", "UNDERPOWERED"}:
         return "AVAILABLE_UNDERPOWERED_DIAGNOSTIC_ONLY"
@@ -383,7 +383,7 @@ def _association_metrics(
                 if expected > 0:
                     chi2 += ((observed - expected) ** 2) / expected
         dimension = min(len(positive_rows) - 1, len(positive_cols) - 1)
-        if total <= 1 or dimension <= 0:
+        if dimension <= 0:
             cramers_v = Decimal(0)
         else:
             cramers_ratio = chi2 / (total * dimension)
