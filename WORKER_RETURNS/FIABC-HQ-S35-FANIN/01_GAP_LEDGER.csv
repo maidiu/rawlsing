@@ -1,0 +1,11 @@
+gap_id,class,scope,current_state,required_repair,not_authorized
+G35_01,CANONICAL_ROOT_REGISTRY,ALL_35,CLOSED,"consume S35-1 registry as immutable admission input","alternate filenames/releases based on apparent equivalence"
+G35_02,DERIVATIVE_PARENTAGE,GENERIC,OPEN,"immutable external parent derivation receipt: derivative -> producer/config -> canonical source SHA","asserted source_sha256 inside derivative as sole proof"
+G35_03,READER_CONFIGURATION,GENERIC,PARTIAL,"bind exact source SHA + reader/decoder/version/config in source freeze and derivative receipt","auto encoding/fallback or candidate-specific reader semantics"
+G35_04,RAW_HEADER_LAYOUT_METADATA,GENERIC,OPEN,"preserve raw header/layout witness alongside normalized physical incidence","Latin2024-specific repair or normalization of conflicting witnesses"
+G35_05,WHOLE_SOURCE_PHYSICAL_EQUIVALENCE,GENERIC,OPEN,"candidate physical-equivalence receipt covering source-native physical classes when universality is claimed","treat I05 claim-scoped semantic parity as whole-source equivalence"
+G35_06,LITS_A_PRESERVED_PARENTAGE,LITS_I,PARTIAL,"bind exact R5 carrier manifest/member/build/decoder/source parent receipt before current consumption","trust environment path/layout alone"
+G35_07,WVS_STRUCTURAL_PREIMAGE_PARENTAGE,WVS7,OPEN,"bind structural_input_identity to raw-SHA verification + exact materializer + process/root derivation receipt","self-hash plus asserted source SHA as ancestry"
+G35_08,SOURCE_SPECIFIC_PROJECTION_REALIZATION,33_SOURCES,OPEN_BY_DESIGN,"issue governed source-specific projection/runtime packages where authority permits","generic semantic inference"
+G35_09,L2_DOCUMENTARY_AUTHORITY,7_SOURCES,OPEN_GENUINE_AUTHORITY_DEBT,"obtain named documentary authority at affected semantic grain","physical decoding/hash as substitute for semantics"
+G35_10,CLOSED35_ABC_EXECUTION_COURT,105_CELLS,NOT_YET_COMMISSIONED,"separate future 35xA/B/C capability court after source-specific admission","promote two-source P2 PASS to all-35 universality"
