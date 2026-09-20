@@ -1,0 +1,88 @@
+{
+  "schema": "FIABC_S35_3_RETURN@1.0.0",
+  "worker": "FIABC-S35-3",
+  "repo": "maidiu/rawlsing",
+  "base_branch": "agent/vozhd-premain-fiabc-wave3-fanin-r1",
+  "base_sha_at_branch_creation": "6c6e43527da7f688a0fbe1c2fa960bfe79dfffcc",
+  "branch": "agent/rabochii-premain-fiabc-s35-3-physical-edge-classes-r1",
+  "return_path": "WORKER_RETURNS/FIABC-S35-3/",
+  "terminal": "FIABC_S35_3_CLOSED35_PHYSICAL_EDGE_CLASSES_PROVED",
+  "disposition": "PASS__FINITE_COMPOSABLE_PHYSICAL_EDGE_COURT_DERIVED__NO_35_SPECIAL_ADAPTERS",
+  "counts": {
+    "closed35_sources": 35,
+    "sav_sources": 31,
+    "dta_sources": 4,
+    "edge_classes_total": 14,
+    "atomic_edge_classes": 13,
+    "composition_meta_classes": 1,
+    "explicit_text_decoding_mode_sources": 10,
+    "exact_sha_latin1_compatibility_allowlist_sources": 6,
+    "malformed_declared_text_quarantine_sources": 2,
+    "current_source_specific_realizations_proved_by_fiabc_a04": 2,
+    "current_source_specific_realizations": [
+      "LiTS_I.dta",
+      "WVS Wave 7.sav"
+    ],
+    "generic_physical_carrier_gaps_proved": 1
+  },
+  "edge_class_incidence_counts": {
+    "EC01": 35,
+    "EC02": 10,
+    "EC03": 2,
+    "EC04": 2,
+    "EC05": 21,
+    "EC06": 4,
+    "EC07": 13,
+    "EC08": 3,
+    "EC09": 14,
+    "EC10": 22,
+    "EC11": 3,
+    "EC12": 31,
+    "EC13": 11,
+    "EC14": 19
+  },
+  "headline_findings": [
+    "CLOSED_35 reduces to 13 atomic reusable physical edge classes plus one compound-interaction court; source snapshots compose these classes many-to-many rather than requiring 35 adapters.",
+    "Candidate-local reader, traversal, streaming, cache, sparse-representation and materialization choices are allowed only when exact physical incidence, replay identity and governed semantic/output identity remain invariant.",
+    "Compatibility decoding is physical execution configuration only. It never supplies source-text semantic authority.",
+    "EVS 1999 and EVS 2008 require malformed-declared-text quarantine: their latin1 compatibility path cannot silently become intended-label authority.",
+    "The current generic physical decoder/facade architecture already represents SAV/DTA, compatibility mode, typed missingness, row replay, dictionaries/display metadata, MR metadata, explicit topology/routing/coordinate/weight authority boundaries.",
+    "Latinobarometro 2024 exposes the one proved generic physical-carrier gap: the accepted nominal_case_size=174 versus 332-variable dictionary/data-stream witness is not exposed by the current PhysicalSourceIncidence.file_metadata surface. The lawful repair is generic raw-header/layout preservation, not a source-specific semantic adapter.",
+    "Authority71/72 packet readiness is not source certification or current runtime realization. LiTS-I and WVS7 remain the only current source-specific realizations proved at the FIABC-A04 evidence boundary.",
+    "EC14 is a composition meta-class, not another adapter interface: compound sources must pass all applicable EC01-EC13 invariants simultaneously."
+  ],
+  "proof_boundary": {
+    "source_execution_performed": false,
+    "measured_p2x_performed": false,
+    "closed35_source_certification_claimed": false,
+    "authority71_72_upgraded_to_certification": false,
+    "edge_class_derivation_from_accepted_source_preparation_evidence": true,
+    "current_wave3_closed35_abc_execution_proof": false
+  },
+  "generic_gap": {
+    "edge_class": "EC04",
+    "source": "Latinobarometro 2024.sav",
+    "accepted_physical_witness": "raw SAV nominal_case_size=174 while dictionary/data stream is 332 variables wide",
+    "current_generic_surface_gap": "pre553_physical_decoder.PhysicalSourceIncidence.file_metadata exposes normalized column count but not the accepted raw nominal header witness",
+    "required_repair_shape": "generic raw-header/layout metadata preservation or equivalent generic raw-layout witness",
+    "forbidden_repair_shape": "Latinobarometro-only semantic adapter or repair of 174 to 332"
+  },
+  "evidence": {
+    "authority71": "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/71_REMAINING_34_SOURCE_CERTIFICATION_PACKET_PREPARATION_AUTHORITY.md",
+    "authority72": "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/72_PREP71_R10_34_SOURCE_SYNTHESIS_AND_GSR09_LAUNCH_LEDGER_AUTHORITY.md",
+    "prep72_accepted_synthesis_commit": "3356b26f2dc518043ffde171c2dca0470b5ac79f",
+    "source_native_constitution": "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/09_SOURCE_NATIVE_CONSTITUTION.md",
+    "format_decoder_contract": "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/10_FORMAT_DECODER_CONTRACT.md",
+    "source_byte_inventory": "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/SOURCE_BYTE_INVENTORY.csv",
+    "fiabc_a04_branch": "agent/rabochii-premain-fiabc-a04-source-estate-certification-capital-r1",
+    "wvs7_hb01_commit": "5ecff6817d10916d72dc06346609ba9970342797",
+    "wvs7_r6s_commit": "48887a2b1523c9d20933e4d6c5e341e80d7a0ff6"
+  },
+  "outputs": [
+    "01_SOURCE_EDGE_CLASS_MANIFEST.csv",
+    "02_SOURCE_TO_EDGE_CLASS_MATRIX.csv",
+    "03_GENERIC_LAW_VS_SOURCE_EXCEPTION.md",
+    "RETURN.json"
+  ],
+  "commit_sha": "SELF_COMMIT_REPORTED_EXTERNALLY__GIT_COMMIT_HASH_CANNOT_BE_EMBEDDED_IN_ITS_OWN_PREIMAGE"
+}
