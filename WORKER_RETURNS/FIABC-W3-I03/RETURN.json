@@ -1,0 +1,74 @@
+{
+  "schema": "FIABC_W3_I03_CANDIDATE_C_PRODUCTION_BINDING_RETURN@1.0.0",
+  "worker": "FIABC-W3-I03",
+  "repo": "maidiu/rawlsing",
+  "branch": "agent/rabochii-premain-fiabc-w3-i03-candidate-c-production-binding-r1",
+  "base_sha": "56697a27e94eb9603dfa412a15ab8f1feb819b0c",
+  "return_path": "WORKER_RETURNS/FIABC-W3-I03/",
+  "status": "PASS__IMPLEMENTATION_COMPLETE__TEST_EXECUTION_DEFERRED_BY_BROWSER_ONLY_SURFACE",
+  "terminal": "FIABC_W3_I03_CANDIDATE_C_PRODUCTION_BINDING_IMPLEMENTED__READY_FOR_FANIN",
+  "implementation": {
+    "module": "rawlsing_next/pre553_candidate_c_production_binding.py",
+    "policy": "SOURCE_BACKED_HYBRID_WITH_REGENERABLE_ACCELERATORS",
+    "candidate_owner": {
+      "commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+      "path": "rawlsing_next/pre553_route_c_accelerators.py",
+      "blob": "abfdc91a71ef5e18c4a8a6bf62fa65750d8d9889",
+      "candidate_hash": "a476e6e44c21b8029ae5d3e6d387428a5fa19549a2126d61aae7c71c50c64a3c"
+    },
+    "semantic_owner_contract": "PRE553_SOURCE_BACKED_C11_FACADE@1.0.0",
+    "lits_i": {
+      "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+      "projection_cache_identity": "84361298ae702786a3fd1044bf619ffa4fe9ed2877040724386951e9c9d27872",
+      "permitted_accelerators": [
+        "CACC1_LITS1_SEMANTIC_EXECUTION_BUNDLE",
+        "CACC2_FRONTIER_ATOMIC_PREDICATE_RISK_MASK_BANK"
+      ],
+      "applicable_accelerators_current_f02": [],
+      "realization": "EXACT_SOURCE_BACKED_FALLBACK_FOR_CURRENT_F02"
+    },
+    "wvs7": {
+      "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+      "projection_cache_identity": "838070ff6b85d60d4f26f9153b0507ba425936c11a3de94a18d57bfcd083f24d",
+      "permitted_accelerators": [],
+      "realization": "EXACT_SOURCE_BACKED_ZERO_ACCELERATOR"
+    }
+  },
+  "files_changed": [
+    "rawlsing_next/pre553_candidate_c_production_binding.py",
+    "rawlsing_next/tests/test_pre553_candidate_c_production_binding.py",
+    "WORKER_RETURNS/FIABC-W3-I03/00_RETURN.md",
+    "WORKER_RETURNS/FIABC-W3-I03/01_IMPLEMENTATION_DIFF_INVENTORY.md",
+    "WORKER_RETURNS/FIABC-W3-I03/02_TEST_AND_EXECUTION_PROTOCOL.md",
+    "WORKER_RETURNS/FIABC-W3-I03/03_FANIN_BINDING_CONTRACT.md",
+    "WORKER_RETURNS/FIABC-W3-I03/RETURN.json"
+  ],
+  "tests_added": [
+    "rawlsing_next/tests/test_pre553_candidate_c_production_binding.py"
+  ],
+  "tests_not_executed_and_why": [
+    "Browser/GitHub-only worker surface; local runtime execution is explicitly forbidden by commission.",
+    "No real LiTS-I or WVS7 source bytes were opened and no measured P2X execution was performed."
+  ],
+  "headline_findings": [
+    "Candidate C can realize both current proving-source cells through exact source-backed reconstruction without transferring semantic ownership.",
+    "Current LiTS-I F02 requires exact-source fallback because frozen CACC1/CACC2 do not close q310/q311/current projection scope; no CACC3 or workload truncation is lawful.",
+    "WVS7 Candidate C has exactly zero permitted accelerators and remains Candidate C under exact-source-backed realization.",
+    "Accelerator inventory is nonauthoritative physical provenance; exact C11/replay/I03 semantics are bound independently of its presence."
+  ],
+  "exact_blockers": [],
+  "integration_dependencies": [
+    "Wave-3 fan-in must consume the new Candidate-C builder entrypoints in the current successor runner rather than replay the superseded historical P2X C-stop branches.",
+    "Real-source qualification awaits the integrated/local execution surface and the sibling independent-oracle, equal-work, preflight, packaging and terminal-verifier implementations."
+  ],
+  "forbidden_changes_preserved": {
+    "cacc3_created": false,
+    "wvs_accelerator_created": false,
+    "q310_q311_truncated": false,
+    "workload_dropped": false,
+    "candidate_b_identity_substituted": false,
+    "semantic_owner_moved": false,
+    "hq_handoffs_mutated": false,
+    "measured_p2x_executed": false
+  }
+}
