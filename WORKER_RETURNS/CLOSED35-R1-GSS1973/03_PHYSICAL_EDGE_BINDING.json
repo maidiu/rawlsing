@@ -1,0 +1,114 @@
+{
+  "schema": "CLOSED35_GSS1973_PHYSICAL_EDGE_BINDING@1.0.0",
+  "worker_id": "CLOSED35-R1-GSS1973",
+  "source": {
+    "filename": "GSS1973.sav",
+    "sha256": "59e65801dc26818bbcf15f9ed985cf8f1faafa65a3eb59e2d3180a7b13a5c1c2",
+    "format": "sav",
+    "reader_mode": "NATIVE_GOVERNED",
+    "replay_identity": "SOURCE_SHA256+ZERO_BASED_PHYSICAL_ROW_ORDINAL"
+  },
+  "accepted_edge_classes": [
+    {
+      "id": "EC01",
+      "name": "FORMAT_PLUGIN",
+      "binding": "SAV_GENERIC_PHYSICAL_INCIDENCE",
+      "semantic_effect": "NONE",
+      "requirement": "All candidates bind the exact canonical source identity; format handling cannot create source semantics."
+    },
+    {
+      "id": "EC10",
+      "name": "FORM_MODULE_SKIP_ROUTING_CARRIERS",
+      "binding": "GSS1973_SEMANTIC_OWNER_V1",
+      "requirements": [
+        "FORM 1/X and FORM 2/Y remain distinct",
+        "Appendix P 1973 membership is authoritative for form-specific variables",
+        "FORM_NOT_ADMINISTERED is distinct from ROUTED_SKIP and response missingness",
+        "Q105 Card X/Y remains a separate coordinate"
+      ]
+    },
+    {
+      "id": "EC12",
+      "name": "WEIGHT_DESIGN_MULTIPLICITY_AND_DOMAIN",
+      "binding": "GSS1973_SEMANTIC_OWNER_V1",
+      "requirements": [
+        "WTSSPS is current general 1973 weight authority if exact carrier exposes it",
+        "FORMWT and BALLOTFORMWT are not authorized for 1973",
+        "WTSSNRPS is not authorized for 1973",
+        "No weight changes form eligibility",
+        "1973 variance treatment does not import later VPSU/VSTRAT strata-cluster assumptions"
+      ]
+    }
+  ],
+  "semantic_owner": {
+    "id": "GSS1973_SEMANTIC_OWNER_V1",
+    "candidate_neutral": true,
+    "frozen_before_candidate_start": true,
+    "canonical_form_coordinate": "FORM",
+    "form_values": {
+      "1": "FORM_1_X_STANDARD",
+      "2": "FORM_2_Y_VARIANT"
+    },
+    "explicit_variable_bindings": {
+      "CLASS": {
+        "question": "Q56",
+        "membership": "X_ONLY",
+        "form_code": 1,
+        "response_dictionary": "CLASS_4_CATEGORY_1973"
+      },
+      "CLASSY": {
+        "question": "Q56",
+        "membership": "Y_ONLY",
+        "form_code": 2,
+        "response_dictionary": "CLASSY_5_CATEGORY_1973"
+      }
+    },
+    "form_membership_registry": {
+      "authority": "GSS_APPENDIX_P_TABLE_P1__1973_COLUMN",
+      "join_rule": "EXACT_VARIABLE_IDENTITY",
+      "unregistered_variable_rule": "BOTH_FORMS_UNLESS_INDEPENDENT_ROUTE_APPLIES",
+      "suffix_or_missingness_inference_allowed": false
+    },
+    "eligibility_precedence": [
+      "FORM_NOT_ADMINISTERED",
+      "ROUTED_SKIP",
+      "SUBSTANTIVE_NONRESPONSE",
+      "PHYSICAL_MISSING_UNCLASSIFIED"
+    ],
+    "weights": {
+      "general_current": "WTSSPS__BIND_IF_EXACT_CARRIER_EXPOSES",
+      "form_weight": "NONE_AUTHORIZED",
+      "forbidden": [
+        "FORMWT",
+        "BALLOTFORMWT",
+        "WTSSNRPS"
+      ]
+    },
+    "design": {
+      "frame": "1970_SAMPLE_FRAME",
+      "sample_type": "BLOCK_QUOTA",
+      "form_assignment": "RANDOMIZED_WITHIN_QUOTA_TYPE",
+      "variance_strata_clustering": "NOT_USED_FOR_1973_PER_ACCEPTED_MR137_AUTHORITY"
+    },
+    "cross_release_relations": {
+      "GSS1972.INCOME72__GSS1973.INCOME": "NOT_EQUIVALENT__NO_RAW_SOURCE_SEMANTIC_JOIN"
+    },
+    "auxiliary_coordinates": {
+      "Q105_CARD_XY": {
+        "relation_to_questionnaire_FORM": "NOT_PROVEN__PRESERVE_SEPARATE",
+        "executable_assignment_rule": false,
+        "unresolved_reason": "Q105 birth-year digit set requires later visual authority before executable binding"
+      }
+    }
+  },
+  "later_physical_observations_required": [
+    "EXACT_REALIZED_FORM_1_COUNT",
+    "EXACT_REALIZED_FORM_2_COUNT",
+    "EXACT_PHYSICAL_MISSING_CODE_TO_OWNER_STATE_BINDINGS",
+    "EXACT_CARRIER_PRESENCE_OF_WTSSPS"
+  ],
+  "later_physical_observations_are_documentary_blockers": false,
+  "no_raw_carrier_opened": true,
+  "no_source_execution": true,
+  "no_measured_p2x": true
+}
