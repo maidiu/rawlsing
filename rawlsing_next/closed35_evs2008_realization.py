@@ -405,7 +405,7 @@ def require_exact_mr_topology(observed_sets: Mapping[str, Sequence[str]]) -> str
 class MRMissingState:
     raw_code: int
     semantic_state: str
-    is_missing: bool
+    is_missing: bool | None
 
 
 def realize_mr_item_code(raw_code: int) -> MRMissingState:
@@ -415,7 +415,7 @@ def realize_mr_item_code(raw_code: int) -> MRMissingState:
         return MRMissingState(0, "NOT_MENTIONED_OR_NO", False)
     if raw_code in EVS_NEGATIVE_MISSING_DOMAIN:
         return MRMissingState(raw_code, EVS_NEGATIVE_MISSING_DOMAIN[raw_code], True)
-    return MRMissingState(raw_code, BOUNDED_UNKNOWN, False)
+    return MRMissingState(raw_code, BOUNDED_UNKNOWN, None)
 
 
 @dataclass(frozen=True)
@@ -584,6 +584,8 @@ class PhysicalAdmission:
 
 
 def admit_physical_incidence(incidence: Any) -> PhysicalAdmission:
+    if getattr(incidence, "source_format", None) != SOURCE_FORMAT:
+        raise EVS2008RealizationError("EVS2008 source format mismatch")
     if getattr(incidence, "source_sha256", None) != CANONICAL_SHA256:
         raise EVS2008RealizationError("canonical EVS2008 source root mismatch")
 
