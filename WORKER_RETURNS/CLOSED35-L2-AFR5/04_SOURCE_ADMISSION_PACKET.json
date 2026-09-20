@@ -1,0 +1,104 @@
+{
+  "schema": "CLOSED35_L2_SOURCE_ADMISSION_PACKET@1.0.0",
+  "worker": "CLOSED35-L2-AFR5",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-closed35-l2-afrobarometer-r5-authority-r1",
+  "base_branch": "agent/vozhd-premain-fiabc-s35-fanin-r1",
+  "base_sha": "770d95c1a604ea1f47ac2971b923673c14c42984",
+  "source": {
+    "family": "Afrobarometer",
+    "round": "Round 5",
+    "filename": "Afro Barometer Round 5.sav",
+    "sha256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651"
+  },
+  "execution_boundary": {
+    "raw_source_opened": false,
+    "source_execution_run": false,
+    "measured_p2x_run": false,
+    "inherited_physical_evidence_only": true
+  },
+  "authority_state": "PARTIAL_DOCUMENTARY_AUTHORITY",
+  "admitted_authorities": [
+    {
+      "authority_id": "AFR5-A01",
+      "surface": "Q10B_ROUTING_SCOPE",
+      "holding": "Tanzania Q10B was dropped in the July-2015 revised R5 country dataset because of an incorrect Swahili translation.",
+      "code_binding_authorized": false
+    },
+    {
+      "authority_id": "AFR5-A02",
+      "surface": "Q47C_ROUTING_SCOPE",
+      "holding": "South Africa R5 codebook explicitly states Q47C was not asked.",
+      "code_binding_authorized": false
+    },
+    {
+      "authority_id": "AFR5-A03",
+      "surface": "COUNTRY_ALPHA",
+      "holding": "Official final merged R5 codebook documents COUNTRY_ALPHA as the alphabetical country coordinate.",
+      "binding_to_raw_COUNTRY_authorized": false
+    },
+    {
+      "authority_id": "AFR5-A04",
+      "surface": "WITHINWT",
+      "holding": "Within-country individual-selection-probability weight; R5 design weighted to EA level; producer guidance authorizes use for national descriptive statistics where present.",
+      "default_for_all_estimands": false
+    },
+    {
+      "authority_id": "AFR5-A05",
+      "surface": "COMBINWT",
+      "holding": "Multi-country weighting factor that adds equal-country sample-size treatment to within-country adjustment; producer guidance authorizes use for multi-country/cross-national descriptive reporting.",
+      "default_for_all_estimands": false
+    },
+    {
+      "authority_id": "AFR5-A06",
+      "surface": "RELATIONSHIP_ANALYSIS_WEIGHT_MODE",
+      "holding": "R5 producer reporting protocol directs WITHINWT and COMBINWT to be disabled for coefficients/relationships including contingency, correlation and regression.",
+      "universal_statistical_law": false
+    }
+  ],
+  "exact_unknown_set": [
+    {
+      "unknown_id": "AFR5-U01",
+      "proposition": "Q10B value 997 has an exact producer-documented semantic meaning in the final merged R5 release.",
+      "state": "DOCUMENTARY_AUTHORITY_UNKNOWN",
+      "fail_closed": "Preserve physical state; no not-asked/missing/refused/DK/substantive semantic assignment."
+    },
+    {
+      "unknown_id": "AFR5-U02",
+      "proposition": "Q47C value 997 has an exact producer-documented semantic meaning in the final merged R5 release.",
+      "state": "DOCUMENTARY_AUTHORITY_UNKNOWN",
+      "fail_closed": "Preserve physical 997 distinctly from system missing; do not import Q47D or South-Africa routing semantics into numeric code."
+    },
+    {
+      "unknown_id": "AFR5-U03",
+      "proposition": "Exact raw SAV carrier COUNTRY is producer-authoritatively bound to COUNTRY_ALPHA or another official R5 country coordinate.",
+      "state": "DOCUMENTARY_AUTHORITY_UNKNOWN",
+      "fail_closed": "Preserve raw coordinate; no cross-wave/secondary crosswalk."
+    },
+    {
+      "unknown_id": "AFR5-U04",
+      "proposition": "WEST.AFR/EAST.AFR/SOUTHERN/NORTH.AF/R1.ONLY..R4.ONLY exact raw carriers have producer-documented routing semantics.",
+      "state": "DOCUMENTARY_AUTHORITY_UNKNOWN",
+      "fail_closed": "Opaque raw metadata only; cannot govern eligibility."
+    },
+    {
+      "unknown_id": "AFR5-U05",
+      "proposition": "ACROSSWT and/or AFCOMBWT are exact carriers in the canonical July-2015 merged source.",
+      "state": "DOCUMENTARY_AUTHORITY_UNKNOWN",
+      "fail_closed": "Do not inject or select them; exact release dictionary authority remains WITHINWT/COMBINWT."
+    }
+  ],
+  "weight_authority": {
+    "exact_release_documented_variables": [
+      "WITHINWT",
+      "COMBINWT"
+    ],
+    "national_descriptive": "WITHINWT",
+    "multi_country_descriptive": "COMBINWT",
+    "relationship_coefficient_protocol": "UNWEIGHTED__DISABLE_WITHINWT_AND_COMBINWT",
+    "design_level": "ROUND5_EA_LEVEL_WITH_STRATIFICATION_AND_SAMPLING_FRAME__RURAL_SSU_WHERE_APPLICABLE",
+    "universal_default_weight": null
+  },
+  "ready_for_source_specific_realization": false,
+  "terminal": "CLOSED35_L2_AFROBAROMETER_R5_DOCUMENTARY_AUTHORITY_PARTIAL__EXACT_UNKNOWN_SET_RETURNED"
+}
