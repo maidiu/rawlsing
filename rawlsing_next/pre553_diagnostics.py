@@ -129,6 +129,17 @@ def _derived_ref(kind: str, namespace: str, material: Any) -> ExactRef:
     )
 
 
+def _freeze(value: Any) -> Any:
+    """Recursively freeze identity-bearing diagnostic material."""
+    if isinstance(value, Mapping):
+        return MappingProxyType({
+            key: _freeze(value[key]) for key in sorted(value)
+        })
+    if isinstance(value, Sequence) and not isinstance(value, (str, bytes, bytearray)):
+        return tuple(_freeze(item) for item in value)
+    return value
+
+
 def _fraction(value: Any, name: str) -> Fraction:
     if isinstance(value, bool):
         raise Pre553DiagnosticError(f"{name} must be exact numeric material, not bool")
@@ -519,8 +530,44 @@ class GovernedDiagnosticProduct:
             self.semantic_interpretation_effect,
         )):
             raise Pre553DiagnosticAuthorityLeakError("diagnostic product cannot carry truth/authority/control effects")
-        if self.replay_ref.kind != "PRE553_DIAGNOSTIC_REPLAY":
+        if not isinstance(self.replay_ref, ExactRef) or self.replay_ref.kind != "PRE553_DIAGNOSTIC_REPLAY":
             raise Pre553DiagnosticError("diagnostic replay ref kind mismatch")
+        if not isinstance(self.source_fact_ref, ExactRef) or not isinstance(self.source_query_ref, ExactRef):
+            raise Pre553DiagnosticError("diagnostic source fact/query refs must be exact")
+        if any(not isinstance(ref, ExactRef) for ref in self.source_release_refs):
+            raise Pre553DiagnosticError("diagnostic source release refs must be exact")
+        if any(not isinstance(ref, AuthorityRef) for ref in self.source_authority_refs):
+            raise Pre553DiagnosticError("diagnostic source authority refs must be exact")
+        if any(not isinstance(ref, ExactRef) for ref in self.provenance_refs):
+            raise Pre553DiagnosticError("diagnostic provenance refs must be exact")
+
+        core = canonicalize({
+            "contract_id": self.contract_id,
+            "schema_id": self.schema_id,
+            "typed_state": self.typed_state,
+            "source_fact_ref": self.source_fact_ref,
+            "source_query_ref": self.source_query_ref,
+            "source_release_refs": self.source_release_refs,
+            "source_authority_refs": self.source_authority_refs,
+            "source_replay_determinants": self.source_replay_determinants,
+            "source_fact_state": self.source_fact_state,
+            "measure_kind": self.measure_kind,
+            "support_state": self.support_state,
+            "metric_states": self.metric_states,
+            "metrics": self.metrics,
+            "provenance_refs": self.provenance_refs,
+            "diagnostic_only": self.diagnostic_only,
+            "empirical_truth_effect": self.empirical_truth_effect,
+            "frontier_control_effect": self.frontier_control_effect,
+            "structural_authority_effect": self.structural_authority_effect,
+            "semantic_interpretation_effect": self.semantic_interpretation_effect,
+        })
+        expected_replay = _derived_ref("PRE553_DIAGNOSTIC_REPLAY", "replay", core)
+        if self.replay_ref != expected_replay:
+            raise Pre553DiagnosticError("diagnostic replay ref does not hash exact determinants")
+        expected_hash = semantic_hash({**core, "replay_ref": self.replay_ref.as_dict()})
+        if self.content_hash != expected_hash:
+            raise Pre553DiagnosticError("diagnostic content hash does not match exact product projection")
         expected_prefix = "urn:rawlsing:pre553:diagnostic-product:sha256:"
         if self.product_id != f"{expected_prefix}{self.content_hash}":
             raise Pre553DiagnosticError("diagnostic product id/content hash mismatch")
@@ -745,12 +792,12 @@ def produce_governed_diagnostics(
         source_query_ref=query.ref,
         source_release_refs=releases,
         source_authority_refs=authorities,
-        source_replay_determinants=replay_determinants,
+        source_replay_determinants=_freeze(replay_determinants),
         source_fact_state=source_state,
         measure_kind=measure_kind,
         support_state=support_state,
-        metric_states=MappingProxyType(dict(sorted(metric_states.items()))),
-        metrics=metrics,
+        metric_states=_freeze(dict(sorted(metric_states.items()))),
+        metrics=_freeze(metrics),
         provenance_refs=provenance,
     )
 
