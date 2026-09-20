@@ -3,6 +3,7 @@ import unittest
 from rawlsing_next.fiabc_telemetry_semantics import (
     CellIdentity,
     CostClass,
+    LifecycleActionReceipt,
     MetricState,
     ObservationContext,
     ProcessEnvelopeReceipt,
@@ -254,6 +255,52 @@ class TelemetrySemanticsHostileTests(unittest.TestCase):
         self.assertEqual(r["metrics"]["cpu_user_ns"]["value"], 130)
         self.assertEqual(r["metrics"]["cpu_system_ns"]["value"], 30)
         self.assertEqual(r["metrics"]["peak_rss_bytes"]["value"], 900)
+
+    def test_fresh_replay_child_cpu_binds_exact_lifecycle_action(self):
+        t = TelemetryLedger(cell())
+        t.record_process_envelope(main_receipt())
+        child = ProcessEnvelopeReceipt(
+            cell=cell(),
+            phase_id="S15_FRESH_REPLAY",
+            process_token="A-child",
+            pid=999,
+            role="CHILD",
+            parent_process_token="A-main",
+            cpu_scope="PROCESS_SELF_ONLY",
+            rss_scope="CANDIDATE_PROCESS_LOCAL",
+            cpu_user_start_ns=0,
+            cpu_user_stop_ns=30,
+            cpu_system_start_ns=0,
+            cpu_system_stop_ns=10,
+            wall_start_ns=12_000,
+            wall_stop_ns=13_000,
+            peak_rss_bytes=900,
+            evidence_ref="i06a-child",
+        )
+        t.record_process_envelope(child)
+        t.bind_lifecycle_receipt(LifecycleActionReceipt(
+            cell=cell(),
+            action_id="fresh-replay-1",
+            action_type="FRESH_PROCESS_REPLAY",
+            phase_id="S15_FRESH_REPLAY",
+            process_token="A-child",
+            outcome="COMPLETED",
+            evidence_ref="i06c-action",
+        ))
+        replay_ctx = ObservationContext(
+            source_id="LITS_I",
+            source_sha256=SHA,
+            candidate_id="A",
+            phase_id="S15_FRESH_REPLAY",
+            process_token="A-child",
+            cost_class=CostClass.C3,
+            lifecycle_action_id="fresh-replay-1",
+            evidence_ref="i06a-child",
+        )
+        t.seal_fresh_process_replay_cpu(process_token="A-child", ctx=replay_ctx)
+        r = t.receipt(candidate_semantic_state="PASS")
+        rows = r["metrics"]["fresh_process_replay_cpu_ns"]
+        self.assertEqual(rows[0]["value"], 40)
 
     def test_cpu_scope_with_children_already_included_is_rejected(self):
         bad = ProcessEnvelopeReceipt(
