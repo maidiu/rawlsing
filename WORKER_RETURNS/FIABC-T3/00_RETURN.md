@@ -8,9 +8,9 @@ Exact T2 tip used as branch base:
 
 `eb190a1f2950baf8f0ae52e9832e9d58d0d3d9cc`
 
-Implementation tip before this return packet:
+Implementation code-seal tip before final return refresh:
 
-`1e2de94318a9e6f06c911bca7a3381856cbe351c`
+`69e8e8cf4128bdd45977688094e9bf97bb4a5aed`
 
 ## Disposition
 
