@@ -1,0 +1,99 @@
+{
+  "schema": "FIABC_T5_RETURN@2.0.0",
+  "worker": "FIABC-T5",
+  "repo": "maidiu/rawlsing",
+  "branch": "agent/rabochii-premain-fiabc-t5-preflight-terminal-oracle-match-r1",
+  "required_parent_branch": "agent/vozhd-premain-fiabc-live-t4-fanin-r1",
+  "exact_parent_sha": "0478e95f59f1860626816d404baf51b85907e3ad",
+  "implementation_tip": "1834545f4b7d52a4e9af1c28e3d631a18b3e90bc",
+  "status": "IMPLEMENTATION_COMPLETE__READY_FOR_SOURCE_INDEPENDENT_QUALIFICATION",
+  "measured_p2x_executed": false,
+  "raw_source_carriers_opened": false,
+  "wvs_oracle_materialized_from_raw_source": false,
+  "r6x_applied_to_stopped_ledger": false,
+  "r35_merged": false,
+  "merge_performed": false,
+  "production_files": {
+    "added": [
+      "rawlsing_next/fiabc_live_terminal_control.py",
+      "rawlsing_next/fiabc_succession_preflight.py",
+      "rawlsing_next/fiabc_succession_manifest_schema.json",
+      "rawlsing_next/fiabc_succession_governing_profile.json",
+      "rawlsing_next/fiabc_p2_terminal_verifier.py"
+    ],
+    "modified": [
+      "rawlsing_next/ee_p2x_darwin_court_driver.py",
+      "rawlsing_next/ee_p2x_darwin_stage_backend.py"
+    ],
+    "contract": [
+      "WORKER_RETURNS/FIABC-T5/04_CURRENT_SIX_CELL_COURT_CONTRACT.json"
+    ]
+  },
+  "live_shared_function_changes": {
+    "driver": [
+      "_backend_terminal",
+      "_parser",
+      "main"
+    ],
+    "backend": [
+      "_s05",
+      "_fresh_replay_cli",
+      "_s15",
+      "_s16",
+      "_s17"
+    ]
+  },
+  "blobs": {
+    "driver": "4500cbb149fa187a766aca71568dc1f205a4c367",
+    "backend": "ec987c75d3053c452647cc3940e0b61b050d2175",
+    "live_terminal_control": "23624e5d8c6af9d0c8a2d825b1ef6313c223d5f2",
+    "i07_preflight": "e9591b3f4beba3a5aa35039edc85163635582959",
+    "i07_schema": "484678375abcdd94151b72b425629ccb535be5eb",
+    "i07_profile": "57effa49428f8274cf7ca73e8442f75cca1b8267",
+    "i08_terminal_verifier": "c9d31ae48f4ab338a29f3054f866cd5ae51e7142",
+    "current_six_cell_contract": "e68ee5f7daeaaf40449811cfbc7d004bdeda6826"
+  },
+  "preservation": {
+    "t1_runtime_packaging_blobs_preserved": true,
+    "t2_six_cell_manifest_preserved": true,
+    "t2_candidate_c_identity_and_fallback_preserved": true,
+    "t3_generic_source_freeze_preserved": true,
+    "t3_preoutput_oracle_preserved": true,
+    "t3_process_isolation_blobs_preserved": true,
+    "t4_telemetry_blob_preserved": true,
+    "t4_lifecycle_blob_preserved": true,
+    "t4_accounting_bridge_blob_preserved": true,
+    "historical_reducer_not_restored": true,
+    "historical_candidate_c_failures_not_current_law": true
+  },
+  "tests": {
+    "added_or_transposed": [
+      "rawlsing_next/tests/test_fiabc_succession_preflight.py",
+      "rawlsing_next/tests/fixtures/fiabc_succession_preflight_hostile_cases.json",
+      "rawlsing_next/tests/test_fiabc_p2_terminal_verifier.py",
+      "rawlsing_next/tests/test_fiabc_t5_live_terminal_control.py"
+    ],
+    "executed": false,
+    "github_actions_runs": 0,
+    "pass_claimed": false,
+    "reason": "GITHUB_BROWSER_REPOSITORY_SURFACE_HAS_NO_AUTHORIZED_PYTHON_EXECUTION_SHELL"
+  },
+  "remaining_qualification_blockers": [
+    "SOURCE_INDEPENDENT_TEST_EXECUTION_PENDING",
+    "REAL_FROZEN_ORACLE_DOCUMENTS_PENDING_CONTROLLED_LOCAL_MATERIALIZATION",
+    "REAL_I07_SUCCESSION_MANIFEST_AND_LIFECYCLE_CONTEXT_PENDING",
+    "R35_POST_T5_CONVERGENCE_PENDING",
+    "R6X_LOCAL_STOPPED_LEDGER_APPLICATION_OUTSIDE_T5",
+    "MEASURED_P2X_NOT_AUTHORIZED_BY_THIS_RETURN"
+  ],
+  "claim_boundary": {
+    "whole_source_physical_equivalence": false,
+    "closed_35_universality": false,
+    "source_certification": false,
+    "whole_file_abc_identity": false,
+    "capability_105_cells": false,
+    "population_validity": false,
+    "weighted_validity": false
+  },
+  "terminal": "FIABC_T5_LIVE_PREFLIGHT_ORACLE_MATCH_AND_FULL_I05_TERMINAL_TRANSPOSED__READY_FOR_SOURCE_INDEPENDENT_QUALIFICATION"
+}
