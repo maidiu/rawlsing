@@ -13,3 +13,7 @@ CMD-011,validate,python3 -m json.tool WORKER_RETURNS/FIABC-LM3/03_PRESERVED_WORK
 CMD-012,validate,python3 csv.DictReader validation for WORKER_RETURNS/FIABC-LM3/*.csv,new CSV artifacts,header/row/count/schema validation,PASS,all CSVs parse; classifications and counts checked
 CMD-013,validate,git diff --check && git status --short --branch,new return artifacts,whitespace and scope validation,PASS,only FIABC-LM3 outputs are new
 CMD-014,prohibited,candidate execution / measured P2X command,LiTS-I/WVS7 source-backed execution,explicitly prohibited by commission scope,NOT_RUN,"no candidate execution, no measured P2X, no raw LiTS-I/WVS7 access"
+CMD-015,commit,git add WORKER_RETURNS/FIABC-LM3 && git diff --cached --check,staged FIABC-LM3 return only,stage and whitespace gate,PASS,"exactly seven requested return files staged"
+CMD-016,commit,git commit -m "FIABC-LM3: reconcile R6X stopped ledger",local target branch,create immutable worker receipt commit,PASS,"commit c9d92e4a198e73cf99810d466178b0775d47aedd"
+CMD-017,publish,git push -u origin agent/rabochii-premain-fiabc-lm3-r6x-ledger-reconciliation-r1,origin target branch,publish requested branch,PASS,"remote branch created and tracking configured"
+CMD-018,post-publish,git status --short --branch && git rev-parse HEAD,local checkout and commit identity,final clean-tree and tip check,PASS,"final verification performed after publication"
