@@ -1,0 +1,140 @@
+{
+  "bundle_identity": "8b63de4ea902350ce197bc3ed49b59259bef2ad400c9f3c7db65ac96b015ace7",
+  "derivative_receipt": {
+    "canonical_source": {
+      "sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+      "source_id": "LITS_I"
+    },
+    "currentness_determinants": {
+      "active_binding": "a5f36a81843fe2ebab0b5cccb369ce76035f842b93e602613b8b9f3a81103308",
+      "candidate_owner_blob": "d4915e7e6755ba1850756aebff72f982f73a332b",
+      "owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+      "runtime_catalog": "5983d7d5c579b916ad46c1acf9e41c1c89b516a4e561a99b1d2b477bf5ad2d02",
+      "runtime_release": "192926fabd9c9c3d40e43b1d7705ca2bcfe7f8d06e286be26d4b886d436df43f"
+    },
+    "derivation_operation": "BUILD_LITS_A_R5_FROM_CANONICAL_PHYSICAL_INCIDENCE",
+    "derivative": {
+      "class": "LITS_A_PRESERVED_R5_CARRIER",
+      "hash": "7d85c5e4c3a91c3f6dc8f7896fe487cda116fc8cf67f0ab263a2654ff938afcd",
+      "identity": "7d85c5e4c3a91c3f6dc8f7896fe487cda116fc8cf67f0ab263a2654ff938afcd",
+      "metadata": {
+        "build_config": {
+          "merge_fan_in": 8,
+          "run_max_bytes": 4194304,
+          "run_max_rows": 4096,
+          "shard_max_bytes": 16777216,
+          "shard_max_rows": 16384,
+          "verified_spool_memory_bytes": 1048576
+        },
+        "canonical_row_count": 34745595,
+        "carrier_id": "R5_LONG_SHARDED_TYPED_INCIDENCE_V1",
+        "carrier_schema_version": "PRE553_R5_LONG_SHARDED_CARRIER@2.0.0",
+        "logical_stream_digest": "076c6527f292c1d4ae2cce53c1f0363093eb9a5b5fb652edd96b448823589aba",
+        "member_inventory": {
+          "byte_length": 1479183,
+          "member_count": 2121,
+          "path": "member_inventory.jsonl",
+          "sha256": "04dce8c3e942fc81a0558354c21a4b4a56faab417ce362657286f978b6686703"
+        },
+        "release_identity": {
+          "c11_authority_digest": "9dd1e6b7350ebb795e028db86279131f8d319e939a044b74c3c5605ecacf5b06",
+          "compiler_contract_digest": "8cbd317ace63bf0449914be2f5fcb636a13475c6fc9821d03626c62cac751f8a",
+          "decoder_receipt": {
+            "contract": "PRE553_FROZEN_PHYSICAL_DECODER",
+            "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09"
+          },
+          "m01_m18_coverage": {},
+          "release_id": "EE-P2R6S-LITS_I-A-b8a3f2ee33a768de",
+          "semantic_release_hash": "b8a3f2ee33a768ded2ff5974f3cd0f429c0169e7900b06689321bca9f97b9931",
+          "source_artifact_ref": {
+            "content_hash": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+            "kind": "SOURCE_SHA256",
+            "object_id": "CANONICAL_SOURCE::7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09"
+          },
+          "source_release_manifest_hash": "f0c8f5a99be97481734b0c5e4bca73aa42bedc6f02fea00412d6d6915ac78f7e"
+        },
+        "source_artifact_ref": {
+          "content_hash": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+          "kind": "SOURCE_SHA256",
+          "object_id": "CANONICAL_SOURCE::7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09"
+        },
+        "typed_codec_version": "PRE553_R5_TYPED_VALUE_CODEC@1.0.0"
+      }
+    },
+    "ownership": {
+      "candidate": "A",
+      "physical_root_id": "7d85c5e4c3a91c3f6dc8f7896fe487cda116fc8cf67f0ab263a2654ff938afcd",
+      "source": "LITS_I"
+    },
+    "parent_receipt_identity": "b0df3042e27fda2d3288d44fdc27d46ed4e4f393301dd781eff43b5a5f13bdf1",
+    "producer": {
+      "code_blob": "92e364b31eaf27be1bca2081eff65f6ffb779c3d",
+      "consumer_adapter_blob": "d4915e7e6755ba1850756aebff72f982f73a332b",
+      "identity": "R5CompactLongShardedBuilder",
+      "owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+      "version": "R5_LONG_SHARDED_TYPED_INCIDENCE_V1"
+    },
+    "reader_config": {
+      "apply_value_formats": false,
+      "authority_status": "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY",
+      "encoding": "latin1",
+      "reader": "pyreadstat",
+      "reader_version": "1.3.6",
+      "user_missing": true
+    },
+    "receipt_identity": "dbfe6014944a27ae9e31a32b201d9b8f2083111440ad435ea155583b6e4d33a4",
+    "replay_parent_receipt_identity": null,
+    "schema": "FIABC_DERIVATIVE_PARENTAGE_RECEIPT@1.0.0",
+    "scope_determinants": {
+      "derivative_scope": "PRESERVED_R5_PHYSICAL_SOURCE_CARRIER",
+      "projection_identity": "84361298ae702786a3fd1044bf619ffa4fe9ed2877040724386951e9c9d27872",
+      "runtime_catalog": "5983d7d5c579b916ad46c1acf9e41c1c89b516a4e561a99b1d2b477bf5ad2d02",
+      "source": "LITS_I"
+    }
+  },
+  "schema": "FIABC_DERIVATIVE_PARENTAGE_BUNDLE@1.0.0",
+  "source_receipt": {
+    "canonical_source": {
+      "sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+      "source_id": "LITS_I"
+    },
+    "currentness_determinants": {
+      "decoder_blob": "86109c4a0b7ebd9b66e3b531b6334bfb48f03f78",
+      "execution_run_id": "FIABC-LM1-R1C-20260920T162801Z",
+      "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+      "working_commit": "3d374d64595305569e8e30b1f0be2df87c745cb5"
+    },
+    "observation": {
+      "observed_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+      "operation": "VERIFY_CANONICAL_LITS_I_BYTES_AND_DECODE_PHYSICAL_INCIDENCE"
+    },
+    "ownership": {
+      "candidate": "A",
+      "execution_scope": "ONE_AUTHORIZED_R5_REPLACEMENT",
+      "source": "LITS_I"
+    },
+    "producer": {
+      "code_blob": "86109c4a0b7ebd9b66e3b531b6334bfb48f03f78",
+      "identity": "rawlsing_next.pre553_physical_decoder.decode_dta",
+      "version": "PRE553_PHYSICAL_DECODER@1.0.0"
+    },
+    "reader_config": {
+      "apply_value_formats": false,
+      "authority_status": "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY",
+      "encoding": "latin1",
+      "reader": "pyreadstat",
+      "reader_version": "1.3.6",
+      "user_missing": true
+    },
+    "receipt_identity": "b0df3042e27fda2d3288d44fdc27d46ed4e4f393301dd781eff43b5a5f13bdf1",
+    "schema": "FIABC_CANONICAL_SOURCE_VERIFICATION_RECEIPT@1.0.0",
+    "scope_determinants": {
+      "compatibility_boundary": "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY",
+      "physical_metadata_digest": "a2015dd68b0b59b47b0a3fd82d3821ced1815219e36024edb9797a9cd9731f65",
+      "source": "LITS_I",
+      "source_bytes": 139531180,
+      "source_format": "DTA",
+      "source_path": "/Users/matthewsmith/Desktop/Rawlsing/data/Data/LiTS_I.dta"
+    }
+  }
+}
