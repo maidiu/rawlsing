@@ -50,6 +50,8 @@ R8B_RU_MAXRSS_LAW = "DARWIN_RU_MAXRSS_ALREADY_BYTES"
 LEDGER_SCHEMA = "RAWLSING_EE_P2X_DARWIN_STAGE_LEDGER@1.0.0"
 BACKEND_CONTRACT = "RAWLSING_EE_P2X_DARWIN_STAGE_BACKEND@1.0.0"
 SUPERVISOR_TOKEN_SCHEMA = "RAWLSING_EE_P2X_LOCAL_SUPERVISOR_ACTION@1.0.0"
+ISOLATED_BACKEND_MODULE = "rawlsing_next.ee_p2x_process_isolated_backend"
+FROZEN_UPSTREAM_ENV = "RAWLSING_EE_P2X_FROZEN_UPSTREAM_RECEIPT"
 OWNER_SPECS = {
     "A": {"path": "rawlsing_next/pre553_r5_source_backed_adapter.py", "blob": "d4915e7e6755ba1850756aebff72f982f73a332b", "builder": "build_r5_source_backed_c11_repository"},
     "B": {"path": "rawlsing_next/pre553_source_backed_c11_facade.py", "blob": "7c509c2098d0030f253344eb3f682471378812a8", "builder": "build_source_backed_c11_repository"},
@@ -315,6 +317,44 @@ def load_current_execution_manifest(path: Path) -> StateMachine:
         raise ContinuationMapError("current execution manifest top level must be mapping")
     ident = MapIdentity(CURRENT_EXECUTION_MANIFEST_SCHEMA, _sha256_bytes(data), _git_blob_sha1(data))
     return validate_current_execution_manifest(doc, ident)
+
+
+def validate_frozen_upstream_for_machine(machine: StateMachine, receipt_path: Path) -> Mapping[str, Any]:
+    """Bind the pre-candidate freeze receipt to the current execution manifest.
+
+    This deliberately reasons over the manifest's source set rather than a
+    LiTS/WVS-specific switch, so the same contract can bind any admitted
+    CLOSED_35 source when a later execution manifest exposes it.
+    """
+    from rawlsing_next.ee_p2x_candidate_process_envelope import load_frozen_upstream_receipt
+
+    doc, receipt_sha256 = load_frozen_upstream_receipt(receipt_path)
+    source_freezes = doc.get("source_freezes", {})
+    oracle_identities = doc.get("oracle_identities", {})
+    manifest_sources = machine.document.get("sources", {})
+    if not isinstance(manifest_sources, Mapping) or not manifest_sources:
+        raise RuntimeGateError("current execution manifest has no source registry")
+
+    for source_id, source_doc in manifest_sources.items():
+        if source_id not in source_freezes:
+            raise RuntimeGateError(f"frozen upstream receipt lacks manifest source {source_id}")
+        entry = source_freezes[source_id]
+        if entry.get("source_id") != source_id:
+            raise RuntimeGateError(f"frozen upstream source_id drift for {source_id}")
+        canonical = source_doc.get("sha256")
+        if entry.get("canonical_source_sha256") != canonical:
+            raise RuntimeGateError(f"frozen upstream canonical source root drift for {source_id}")
+        if entry.get("source_identity_authority_ref") in (None, "", {}, []):
+            raise RuntimeGateError(f"frozen upstream source identity authority missing for {source_id}")
+        if source_id not in oracle_identities:
+            raise RuntimeGateError(f"frozen upstream independent oracle missing for {source_id}")
+
+    return {
+        "schema": doc.get("schema"),
+        "receipt_sha256": receipt_sha256,
+        "source_ids": tuple(manifest_sources),
+        "freeze_order": dict(doc.get("freeze_order", {})),
+    }
 
 # ---- durable ledger --------------------------------------------------------------------
 def _candidate_roots(root: Path, source: str, candidate: str) -> CandidateRoots:
@@ -603,20 +643,63 @@ class DarwinCourtDriver:
 def _parser():
     p=argparse.ArgumentParser(); m=p.add_mutually_exclusive_group(required=True)
     for x in ("preflight","status","run","resume","verify-only"): m.add_argument(f"--{x}",action="store_true")
-    p.add_argument("--continuation-map",type=Path,required=True); p.add_argument("--work-root",type=Path,required=True); p.add_argument("--repo-root",type=Path,default=Path.cwd()); p.add_argument("--lits-path",type=Path); p.add_argument("--wvs-path",type=Path); p.add_argument("--backend-module"); return p
+    p.add_argument("--continuation-map",type=Path,required=True)
+    p.add_argument("--work-root",type=Path,required=True)
+    p.add_argument("--repo-root",type=Path,default=Path.cwd())
+    p.add_argument("--lits-path",type=Path)
+    p.add_argument("--wvs-path",type=Path)
+    p.add_argument("--backend-module")
+    p.add_argument("--frozen-upstream-receipt",type=Path)
+    return p
+
 def main(argv: Sequence[str] | None=None):
-    args=_parser().parse_args(argv); machine=load_current_execution_manifest(args.continuation_map); work=args.work_root.resolve(); repo_root=args.repo_root.resolve(); paths={}
-    if args.preflight or args.run or args.resume:
-        if args.lits_path is None or args.wvs_path is None: raise RuntimeGateError("explicit --lits-path and --wvs-path required")
+    args=_parser().parse_args(argv)
+    machine=load_current_execution_manifest(args.continuation_map)
+    work=args.work_root.resolve()
+    repo_root=args.repo_root.resolve()
+    paths={}
+    executing=bool(args.run or args.resume)
+    if args.preflight or executing:
+        if args.lits_path is None or args.wvs_path is None:
+            raise RuntimeGateError("explicit --lits-path and --wvs-path required")
         paths={"LITS_I":args.lits_path.resolve(),"WVS7":args.wvs_path.resolve()}
-    backend=_load_backend(args.backend_module) if args.backend_module else None; lock_root=repo_root/".git" if (repo_root/".git").is_dir() else work
+
+    if executing:
+        if args.frozen_upstream_receipt is None:
+            raise RuntimeGateError(
+                "--run/--resume requires --frozen-upstream-receipt; "
+                "candidate execution may not begin before source/authority/workload/oracle freeze"
+            )
+        freeze_path=args.frozen_upstream_receipt.resolve()
+        validate_frozen_upstream_for_machine(machine,freeze_path)
+        os.environ[FROZEN_UPSTREAM_ENV]=str(freeze_path)
+        if args.backend_module != ISOLATED_BACKEND_MODULE:
+            raise RuntimeGateError(
+                "FIABC-T3 execution requires the process-isolated backend adapter; "
+                "direct candidate-backend execution is forbidden"
+            )
+    elif args.frozen_upstream_receipt is not None:
+        validate_frozen_upstream_for_machine(machine,args.frozen_upstream_receipt.resolve())
+
+    backend=_load_backend(args.backend_module) if args.backend_module else None
+    lock_root=repo_root/".git" if (repo_root/".git").is_dir() else work
     with DriverInstanceLock(lock_root):
-        d=DarwinCourtDriver(machine=machine,work_root=work,repo_root=repo_root,source_paths=paths,host=observe_host(),repo=observe_repo(repo_root),backend=backend)
-        if args.status: out={"schema":"RAWLSING_EE_P2X_DARWIN_DRIVER_STATUS@1.0.0","next_stage":d.next_stage(),"ledger_sha256":d.ledger.hash()}
-        elif args.preflight: out=d.preflight()
-        elif getattr(args,"verify_only"): out=d.verify_only()
+        d=DarwinCourtDriver(
+            machine=machine,work_root=work,repo_root=repo_root,source_paths=paths,
+            host=observe_host(),repo=observe_repo(repo_root),backend=backend
+        )
+        if args.status:
+            out={"schema":"RAWLSING_EE_P2X_DARWIN_DRIVER_STATUS@1.0.0","next_stage":d.next_stage(),"ledger_sha256":d.ledger.hash()}
+        elif args.preflight:
+            out=d.preflight()
+        elif getattr(args,"verify_only"):
+            out=d.verify_only()
         else:
-            if backend is None: raise StageExecutionError("--run/--resume requires --backend-module")
+            if backend is None:
+                raise StageExecutionError("--run/--resume requires --backend-module")
             out=d.run(resume=bool(args.resume))
-    print(json.dumps(out,sort_keys=True,indent=2)); return 0
-if __name__=="__main__": raise SystemExit(main())
+    print(json.dumps(out,sort_keys=True,indent=2))
+    return 0
+
+if __name__=="__main__":
+    raise SystemExit(main())
