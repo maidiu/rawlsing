@@ -1,0 +1,88 @@
+{
+  "worker_id": "CLOSED35-L2R-EVS2008",
+  "title": "EVS 2008 V372 Sentinel / Exact Release-Binding Recovery",
+  "status": "BOUNDED_PASS",
+  "repository": "maidiu/rawlsing",
+  "base_branch": "agent/vozhd-closed35-l2-documentary-fanin-r1",
+  "base_tip": "5c582e2325ecc2b37377cd518fe4c456331c81d8",
+  "branch": "agent/rabochii-closed35-l2r-evs2008-v372-release-binding-r1",
+  "return_path": "WORKER_RETURNS/CLOSED35-L2R-EVS2008/",
+  "source": {
+    "filename": "EVS 2008.sav",
+    "sha256": "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379"
+  },
+  "scope": [
+    "EVS2008_V372_SENTINEL_REASON",
+    "EVS2008_EXACT_RELEASE_HASH_BINDING"
+  ],
+  "non_reopened": [
+    "13_NATIVE_MR_SETS",
+    "ROUTING",
+    "MALFORMED_TEXT_ALIGNMENT",
+    "F201_RELATION"
+  ],
+  "v372": {
+    "producer_variable": "v372",
+    "producer_question": "Q137",
+    "producer_meaning": "date of interview",
+    "accepted_rendered_user_missing_sentinel": "1582-10-13",
+    "accepted_user_missing_count": 1917,
+    "producer_negative_missing_domain": [-1, -2, -3, -4, -5],
+    "producer_negative_missing_meanings": {
+      "-1": "don't know",
+      "-2": "no answer",
+      "-3": "not applicable, including filter-caused and administrative missingness",
+      "-4": "question not asked / not provided",
+      "-5": "other missing, including system missing, wild codes, and illogical answer patterns"
+    },
+    "rendered_date_is_unique_producer_code": false,
+    "exact_negative_subcode_from_inherited_rendering": "NOT_RECOVERABLE",
+    "lawful_realization_state": "EVS_STANDARDIZED_MISSING__NEGATIVE_SUBCODE_NOT_RECOVERABLE_FROM_DATE_RENDERING",
+    "semantic_reason_detail": "UNKNOWN_WITHIN_PRODUCER_NEGATIVE_MISSING_DOMAIN",
+    "status": "CLOSED_AT_REALIZATION_AUTHORITY_GRAIN"
+  },
+  "release_binding": {
+    "documentary_release_identity": {
+      "study": "ZA4800",
+      "version": "5.0.0",
+      "release_date": "2022-06-08",
+      "doi": "10.4232/1.13841",
+      "cases": 66280,
+      "variables": 477,
+      "status": "CLOSED__STRONG_PRODUCER_DOCUMENTARY_CHAIN"
+    },
+    "rawlsing_byte_identity": {
+      "sha256": "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379",
+      "status": "EXACT_INTERNAL_CANONICAL_BYTE_IDENTITY"
+    },
+    "byte_exact_producer_checksum_binding": {
+      "status": "UNAVAILABLE_ON_SEARCHED_PUBLIC_SURFACES",
+      "producer_sha256_found": false,
+      "producer_md5_found": false,
+      "producer_signed_manifest_found": false,
+      "negative_law": "DO_NOT_PROMOTE_DOCUMENTARY_ALIGNMENT_TO_CRYPTOGRAPHIC_PRODUCER_IDENTITY"
+    }
+  },
+  "source_specific_realization": {
+    "documentarily_lawful": true,
+    "v372_missingness_lawful": true,
+    "v372_subreason_must_remain_unknown_without_numeric_witness": true,
+    "producer_checksum_claim_lawful": false
+  },
+  "execution_constraints_obeyed": {
+    "opened_raw_sav_bytes": false,
+    "executed_source_processing": false,
+    "ran_measured_p2x": false,
+    "reopened_closed_mr_routing_text_f201": false,
+    "used_github_repository_evidence": true,
+    "used_public_producer_documentation": true
+  },
+  "outputs": [
+    "00_RETURN.md",
+    "01_V372_AUTHORITY.md",
+    "02_RELEASE_BINDING_LEDGER.csv",
+    "03_UPDATED_SOURCE_ADMISSION_PACKET.json",
+    "RETURN.json"
+  ],
+  "terminal": "CLOSED35_L2R_EVS2008_RELEASE_HASH_UNAVAILABLE__DOCUMENTARY_REALIZATION_AUTHORITY_OTHERWISE_CLOSED"
+}
