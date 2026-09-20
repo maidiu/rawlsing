@@ -1,0 +1,15 @@
+command_id,phase,command,scope,purpose,status,observation
+CMD-001,preflight,git status --short --branch && git rev-parse HEAD,repository checkout,read-only identity,PASS,clean checkout at exact base before branch creation
+CMD-002,branch,git switch -c agent/rabochii-premain-fiabc-lm3-r6x-ledger-reconciliation-r1,git ref creation,authorized branch creation from exact base,PASS,branch created at 7e33b76c7d46dcee31dd3be7b3b0230f3c18a152
+CMD-003,inventory,"git ls-tree -r --name-only HEAD | rg -i ""QF1|R6X|P2X|T1|T2|T3|T4|T5|T6|STOP|LEDGER|RECONC""",tracked artifacts only,read QF1/T1-T6/R6X/P2X inventory,PASS,no raw source carrier path was opened
+CMD-004,read,sed -n ... WORKER_RETURNS/FIABC-QF1-R1/*,QF1-R1 PASS artifacts,read immutable qualification and repair evidence,PASS,QF1 pass and explicit R6X/measured-P2X boundary read
+CMD-005,read,sed -n ... WORKER_RETURNS/FIABC-T1..T6/*,T1-T6 constitution,read current source/candidate/workload/runtime/authority/replay/accounting law,PASS,T4 preserved-work and T5 terminal law read
+CMD-006,read,sed -n ... WORKER_RETURNS/EE-P2X/* and EE-P2X-CONTINUATION-REDUCER-R1/*,historical P2X evidence,"read stopped receipts, failures, local court, continuation law, and reconciler",PASS,historical evidence treated as immutable
+CMD-007,identity,shasum -a 256 /private/tmp/ee-p2x-exec-r3/ee_p2x_stage_ledger.json /private/tmp/ee-p2x-exec-r3/ee_p2r6x_reconciliation_receipt.json,real stopped local work root,verify post-reconciliation ledger and receipt identity,PASS,ledger 4d0c412d; receipt cd346db0
+CMD-008,r6x-audit,"/usr/local/bin/python3 WORKER_RETURNS/EE-P2R6X/03_RECONCILE_LOCAL_P2X_INFRASTRUCTURE_STOPS.py --work-root /private/tmp/ee-p2x-exec-r3 --repo-root ""$PWD"" --audit-only",accepted R6X reconciler,audit already-reconciled post-state without mutation or measurement,PASS,AUDIT_ONLY__ALREADY_RECONCILED; removed_stage_count=62
+CMD-009,ledger-read,"python3 read-only JSON/CSV summaries of post-ledger, receipt, and stage receipts",historical local execution ledger,classify retained and removed historical items,PASS,103 ledger items accounted: 41 post-R6X + 62 removed historical addresses
+CMD-010,write,apply_patch generated FIABC-LM3 return artifacts,WORKER_RETURNS/FIABC-LM3 only,write requested reconciliation outputs,PASS,no existing evidence files changed
+CMD-011,validate,python3 -m json.tool WORKER_RETURNS/FIABC-LM3/03_PRESERVED_WORK_ACCOUNTING_INPUTS.json,new JSON artifact,parse validation,PASS,valid JSON
+CMD-012,validate,python3 csv.DictReader validation for WORKER_RETURNS/FIABC-LM3/*.csv,new CSV artifacts,header/row/count/schema validation,PASS,all CSVs parse; classifications and counts checked
+CMD-013,validate,git diff --check && git status --short --branch,new return artifacts,whitespace and scope validation,PASS,only FIABC-LM3 outputs are new
+CMD-014,prohibited,candidate execution / measured P2X command,LiTS-I/WVS7 source-backed execution,explicitly prohibited by commission scope,NOT_RUN,"no candidate execution, no measured P2X, no raw LiTS-I/WVS7 access"
