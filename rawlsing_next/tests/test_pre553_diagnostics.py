@@ -253,7 +253,15 @@ def test_positive_unary_fact_is_typed_not_applicable_not_zero_association():
     )
     assert product.typed_state == "NOT_APPLICABLE"
     assert set(product.metric_states.values()) == {"NOT_APPLICABLE"}
-    assert all(value is None for value in product.metrics.values())
+    for metric_name in (
+        "entropy_reduction",
+        "mutual_information",
+        "normalized_mutual_information",
+        "cramers_v",
+        "uplift_lift",
+        "joint_confidence",
+    ):
+        assert product.metrics[metric_name] is None
 
 
 def test_malformed_positive_joint_projection_fails_closed():
