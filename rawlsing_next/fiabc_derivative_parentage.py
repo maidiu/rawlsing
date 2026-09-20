@@ -229,6 +229,7 @@ def verify_derivative_parentage_receipt(
     expected_source_sha256: str,
     expected_derivative_class: str,
     expected_derivative_identity: str,
+    expected_receipt_identity: str | None = None,
     expected_derivative_hash: str,
     expected_derivative_metadata: Mapping[str, Any],
     expected_producer: Mapping[str, Any],
@@ -253,6 +254,8 @@ def verify_derivative_parentage_receipt(
     unsigned = {k: v for k, v in receipt.items() if k != "receipt_identity"}
     if canonical_digest(unsigned) != identity:
         raise ParentageError("derivative parentage receipt identity mismatch")
+    if expected_receipt_identity is not None and identity != _sha256(expected_receipt_identity, "expected derivative receipt identity"):
+        raise ParentageError("derivative receipt identity mismatch")
     if receipt.get("parent_receipt_identity") != source_receipt["receipt_identity"]:
         raise ParentageError("derivative parent receipt does not close to supplied source receipt")
     _exact(receipt.get("canonical_source"), source_receipt["canonical_source"], "derivative canonical source")
@@ -308,6 +311,7 @@ def verify_parentage_bundle(
     expected_source_sha256: str,
     expected_derivative_class: str,
     expected_derivative_identity: str,
+    expected_derivative_receipt_identity: str | None = None,
     expected_derivative_hash: str,
     expected_derivative_metadata: Mapping[str, Any],
     expected_producer: Mapping[str, Any],
@@ -353,6 +357,7 @@ def verify_parentage_bundle(
         expected_source_sha256=expected_source_sha256,
         expected_derivative_class=expected_derivative_class,
         expected_derivative_identity=expected_derivative_identity,
+        expected_receipt_identity=expected_derivative_receipt_identity,
         expected_derivative_hash=expected_derivative_hash,
         expected_derivative_metadata=expected_derivative_metadata,
         expected_producer=expected_producer,
