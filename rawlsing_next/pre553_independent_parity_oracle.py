@@ -52,6 +52,61 @@ WVS7_EMPIRICAL_UNIVERSE = "f9b1cdffc5783ace87d258ebe2ae1c75040ce786c373e255f53da
 WVS7_RISK_SET = "0bf6a655a35617bec3e54f4d547e89282920e7835e406dcb43b3456774ab87d7"
 WVS7_MEASURE_BASIS = "6ed5d61b77c8d77affeb4b49b55c2cc23a4c25dbd65d02719c6ab7a3069a3c79"
 
+WVS7_ORDERED_CANDIDATE_HASHES = (
+    "086db8ffe5f2dc47306de3281be5ea555388f3c47212c29b232cde7fc1cd09b7",
+    "0fa0d790a357f6e4fab8bd08b1df9f53f7f22d6b0853f36c0e25596c13bbdaeb",
+    "1a191126b02c0b534468a7baea96c73e65f8f07af007311dcc12f91af28eb49f",
+    "220ff93ece0357c26179c6a67c9850dbc005d70ec99f64493b710cdd5f1ff043",
+    "278f2f831b58039c86a5d95d783d414c0356a800d90201ae59847e2587aef25d",
+    "35fe5b926610e0d02eb1d0798b3649c4eb9c06787cefcaec7bb50e0f4303205f",
+    "3958bfd4f0f3fa3fcc166a4a8059b9cfd3c5a98b22c60b489c0b34534b664864",
+    "3d532bf802894239b33621cd955f4cee2c40f05c4582559197ef5bd3dddcedb6",
+    "450a77d48ea1eb448e01d088c7ac66ef21ebb75848485698710779e20624adcf",
+    "4a611696d84b8647db9e8cb024d437f2a77017472564a4800244d793a4012093",
+    "4bf2e6562bea21f96d7fd0d512989cc62266641fafe4d4b8f492e70ee71e1d28",
+    "4f6e63eacf1fa167ca9d5774e9a97eb1499a59cc2bc2fa78c64b00122fb24458",
+    "5446f54856292505cb0ab6eef5ea1a7005fb6bd7d535c61f2b78d4c3c1e2c21c",
+    "59b234834bee1cf89579afca65e4624dde8750a6e6c9690ed2ff5e30c76f7199",
+    "5a0e5321a572b5298faeffb25e22f391c5c57759b54d61c33a5690ec4116ebae",
+    "6033764e9409052146c9991ce8ff4eeefddf3bb702f0299d08b5f71a92b6fca7",
+    "6741818010b1088cb5c95a80a707536d7981ce20a8317231ccc294f9c62061c8",
+    "737d867a0e17e3110e9a7f913f405afc0c1b9647a9a82e64188681ffabe15e25",
+    "74587360e042f4d152696bfd3e5d2bb77b2330c2c6bd3bd7716587bcec149b56",
+    "7cc3ad7d08f27dfb3f87ab5811b20b7484584e02a70d84aac195013a165d2766",
+    "85a228d50115765f64ff90ba90ccecb687cef71f63838c84f1e81f94594b6cde",
+    "85ebfd5bdf815a961e56d5c5792f83bf4cf3d3c9134ad56a860eec2b8bb3c69a",
+    "933e8682da61e968ca332843ab42237e58bcfc6fa09311929180a32c1f20af06",
+    "96d3ed1cac75cc22fbafc4ad2cd3a2b8946d5133f8f4d9cccfb142d781729514",
+    "9d962fa8e5e2c242682f5b8ea6dacfd1dbb142134ce2f8b4b98953495e17d56b",
+    "9f31f61dd05db2a241a8c3082e4474f5fb5882fc436607e58cdd6d119f75a647",
+    "a166d220c5ca26a7e1ae102595bd3013d6d738cd245617cd79a9186aeba3c7f9",
+    "a8c6754129f24fe766cd60cb15eed65af0504eed0ab417e021dbf65ed602de17",
+    "ad71e360764b82352f866702157ee86f06a56cb6d03ee19cbb7bcfd0fb0f0278",
+    "aea48622e086f5996b6174b54256b9e7d902b7e50d9c1d32bf54ec495fc8d95d",
+    "aefe4c88846f0811c87f924e16ca2734de11b8198f283e4381540cf3916ea53d",
+    "b4214a0f5d27edc9740b28e17aaddb23c0dc32c557e0f7f565c9605da9a9feb7",
+    "b873a42a8c73c8f5a55972977833529c2e7f37781d74543dacc33425a3487f60",
+    "bd3e60d44875eef49d5ba7c06e24668b5c8627e95591962522a78bfc9163fee6",
+    "be0dfc5dd5f886a8a8e8aa0382dbf45f1253eb21a50a74690cadda7286966ecc",
+    "bf7cac0b15beaffe30e32400979cb1928dbc6c6fca1ed965ff91028ad2eae97c",
+    "cbd23c963898d8337f4f89a08a250a086360165a56331f63a3d92730b7c96f59",
+    "d40dba4693c88b5fec409d35a7cd00b6cd87b98206b364440c2b69e8e572928b",
+    "e39bec57ef82a68a8c06fe722e977ca858bb4444a5039019572cf6bc98b85008",
+    "e93cba874ef9e1505a4384d590e6c69786de8dee52acb154bd1ecb55c8622600",
+    "eac60cf8deaaf06fbf1d5fc3cf474dc28b3345ffa0fcd073c5b2be563c5507d1",
+    "ebf05c3549b6d6a6555e69b41b7e7f319677f3bab8ba5eb61f741a699a3d84a6",
+    "ee5d5ef18f9d601b0cad193ebbf4dd3726f70dbac75e4cff2dd205015ff857f2",
+    "f09bc9f137767c0ba1d67f0f07f99948a7a77a8fd37280f9202788c04d93447a",
+    "f62e7e358576312ee6e7100819c8a4965c7b092aff0f782a9d7605813dca2338",
+    "fc4a4531e57777e63def74bb4d77d3c58621e9a6ef7277ae36c618d199b1861a",
+)
+WVS7_FAMILY_COUNTS = {
+    "UNARY_SOCIAL_FORK": 10,
+    "PAIR_RESPONSE_COTRAVEL": 1,
+    "BRANCH_CONDITIONED_DISTRIBUTION": 10,
+    "BOUNDED_K_WAY_RESPONSE_CONFIGURATION": 25,
+}
+
 REQUIRED_CANDIDATES = ("A", "B", "C")
 
 ALLOWED_DEPENDENCY_OWNER_CLASSES = frozenset({
@@ -284,9 +339,11 @@ def _validate_frontier(source: str, frontier: Mapping[str, Any], facts: Sequence
     elif source == "WVS7":
         if frontier.get("candidate_count") != 46 or len(hashes) != 46:
             raise ParityOracleError("WVS7 frontier must contain exactly 46 candidates")
+        if tuple(hashes) != WVS7_ORDERED_CANDIDATE_HASHES:
+            raise ParityOracleError("WVS7 exact ordered Lock2 frontier drift")
         family_counts = _mapping(frontier.get("family_counts"), "WVS7 frontier family_counts")
-        if sorted(family_counts.values()) != [1, 10, 10, 25] or sum(family_counts.values()) != 46:
-            raise ParityOracleError("WVS7 frozen family shape must be 10/1/10/25")
+        if canonicalize(family_counts) != canonicalize(WVS7_FAMILY_COUNTS):
+            raise ParityOracleError("WVS7 frozen family shape must be exact 10/1/10/25")
     if fact_hashes != hashes:
         raise ParityOracleError(
             "expected fact manifest must cover the complete canonical frontier in exact order"
@@ -645,6 +702,8 @@ __all__ = [
     "WVS7_LOCK2_IDENTITY",
     "WVS7_LOCK2_REPLAY_IDENTITY",
     "WVS7_MEASURE_BASIS",
+    "WVS7_ORDERED_CANDIDATE_HASHES",
+    "WVS7_FAMILY_COUNTS",
     "WVS7_RISK_SET",
     "WVS7_SOURCE_SHA256",
     "WVS_MATERIALIZER_CONTRACT",
