@@ -1,0 +1,99 @@
+{
+  "schema": "FIABC_R35_I01_RETURN@1.0.0",
+  "worker": "FIABC-R35-I01",
+  "repo": "maidiu/rawlsing",
+  "base_branch": "agent/vozhd-premain-fiabc-s35-fanin-r1",
+  "base_sha": "770d95c1a604ea1f47ac2971b923673c14c42984",
+  "branch": "agent/rabochii-premain-fiabc-r35-i01-raw-layout-metadata-r1",
+  "commit_sha": "SELF_COMMIT_REPORTED_EXTERNALLY__GIT_COMMIT_HASH_CANNOT_BE_EMBEDDED_IN_ITS_OWN_PREIMAGE",
+  "return_path": "WORKER_RETURNS/FIABC-R35-I01/",
+  "terminal": "FIABC_R35_I01_GENERIC_RAW_LAYOUT_METADATA_PRESERVATION_IMPLEMENTED__READY_FOR_FANIN",
+  "holding": [
+    "PhysicalSourceIncidence now preserves raw format-native layout/header declarations separately from normalized traversed geometry.",
+    "SAV fixed-header nominal_case_size is preserved generically and is not corrected to reader/dictionary/stream width.",
+    "Display metadata remains physically distinct from raw storage extraction under apply_value_formats=False.",
+    "Reader/decoder/config identity is bound into a canonical physical metadata SHA-256 digest.",
+    "Dropping a required physical witness fails closed; changing a required witness changes the digest even if a bounded semantic projection is equal.",
+    "No Latinobarometro-specific semantic branch was introduced."
+  ],
+  "gap_closed": {
+    "hq_gap_id": "G35_04",
+    "class": "RAW_HEADER_LAYOUT_METADATA",
+    "s35_edge_class": "EC04_METADATA_VS_STORAGE_NONIDENTITY",
+    "mechanical_guards_advanced": ["MG003", "MG004", "MG009", "MG016"],
+    "scope": "GENERIC_PHYSICAL_METADATA_PRESERVATION"
+  },
+  "production_changes": [
+    {
+      "path": "rawlsing_next/pre553_physical_decoder.py",
+      "blob_sha": "86109c4a0b7ebd9b66e3b531b6334bfb48f03f78",
+      "implementation_commit": "392c6e08e6af8411879d2d43e2c796d78eda975a"
+    }
+  ],
+  "test_changes": [
+    {
+      "path": "rawlsing_next/tests/test_r35_i01_physical_metadata.py",
+      "blob_sha": "11a78ccb67e9185325be79a19b489d505b489a16",
+      "implementation_commit": "7bf8dedffafb67e0ee6501ac8865657c5bb25488"
+    }
+  ],
+  "contract": {
+    "schema": "PRE553_PHYSICAL_METADATA@1.0.0",
+    "required_file_metadata_witnesses": [
+      "raw_layout_declarations",
+      "normalized_geometry",
+      "display_metadata",
+      "decoder_identity"
+    ],
+    "digest_binds": [
+      "canonical source SHA",
+      "source format",
+      "reader configuration",
+      "file metadata",
+      "ordered variable physical metadata"
+    ],
+    "sav_raw_header_fields": [
+      "record_type",
+      "layout_code",
+      "integer_endianness",
+      "nominal_case_size",
+      "compression",
+      "weight_index",
+      "declared_case_count",
+      "header_prefix_sha256"
+    ],
+    "mismatch_policy": "PRESERVE_BOTH__DO_NOT_RECONCILE",
+    "semantic_authority": "NONE"
+  },
+  "hostile_tests": [
+    "nominal/header count != stream/dictionary count",
+    "metadata mismatch preserved rather than normalized",
+    "display format != stored magnitude",
+    "candidate representation drops one physical witness",
+    "equal semantic projection but unequal required physical metadata digest",
+    "reader/config drift changes physical metadata digest"
+  ],
+  "execution": {
+    "canonical_raw_carriers_opened_by_worker": false,
+    "measured_p2x_run": false,
+    "local_test_execution": false,
+    "github_actions_statuses_seen_on_test_commit": 0,
+    "claim": "TESTS_COMMITTED_FOR_FANIN_AND_R35_Q01__NO_EXECUTION_PASS_FABRICATED"
+  },
+  "non_claims": [
+    "No derivative parentage implementation.",
+    "No whole-source physical-equivalence adjudication.",
+    "No source certification.",
+    "No semantic correction of conflicting metadata.",
+    "No promotion of compatibility decoding to source-text authority.",
+    "No CLOSED_35 A/B/C execution claim.",
+    "No I05 replacement."
+  ],
+  "outputs": [
+    "00_RETURN.md",
+    "01_IMPLEMENTATION_DIFF_INVENTORY.md",
+    "02_PHYSICAL_METADATA_CONTRACT.md",
+    "03_TEST_PROTOCOL.md",
+    "RETURN.json"
+  ]
+}
