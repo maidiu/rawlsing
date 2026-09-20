@@ -1,0 +1,192 @@
+{
+  "schema": "CLOSED35_L2R_SOURCE_ADMISSION_PACKET@1.0.0",
+  "worker": "CLOSED35-L2R-AFR5",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-closed35-l2r-afr5-residual-authority-r1",
+  "base_branch": "agent/vozhd-closed35-l2-documentary-fanin-r1",
+  "base_sha": "5c582e2325ecc2b37377cd518fe4c456331c81d8",
+  "source": {
+    "family": "Afrobarometer",
+    "round": "Round 5",
+    "filename": "Afro Barometer Round 5.sav",
+    "sha256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651"
+  },
+  "execution_boundary": {
+    "raw_source_opened": false,
+    "source_execution_run": false,
+    "measured_p2x_run": false,
+    "public_documentary_research_only": true,
+    "inherited_physical_evidence_only": true
+  },
+  "scope_boundary": {
+    "residuals_attacked_only": [
+      "Q10B=997",
+      "Q47C=997",
+      "raw COUNTRY carrier binding",
+      "administrative routing carriers"
+    ],
+    "weight_authority_reopened": false,
+    "prior_closed_weight_authority": "INHERITED_UNCHANGED"
+  },
+  "newly_closed_authorities": [
+    {
+      "authority_id": "AFR5R-A01",
+      "surface": "Q10B_997",
+      "holding": "In the archived exact merged 34-country variable dictionary, Q10B value 997 is explicitly 'Not asked'.",
+      "authority": "DataFirst UCT Afrobarometer collection afr-afr34-2011-2013-v1 / DOI 10.25828/vz8c-af95",
+      "variable_local_only": true,
+      "routing_context": "July-2015 Afrobarometer errata separately states Tanzania Q10B was dropped because the Swahili translation was incorrect."
+    },
+    {
+      "authority_id": "AFR5R-A02",
+      "surface": "COUNTRY",
+      "holding": "The raw merged COUNTRY carrier is directly documented with its own 1-35 country map in recognized archives of the exact July-2015 merged file.",
+      "authority": "DataFirst UCT afr-afr34-2011-2013-v1 plus IHSN/World Bank AFR_2011_AFB-MR5_v01_M",
+      "mapping": {
+        "1": "Benin",
+        "2": "Botswana",
+        "3": "Burkina Faso",
+        "4": "Cape Verde",
+        "5": "Ghana",
+        "6": "Kenya",
+        "7": "Lesotho",
+        "8": "Liberia",
+        "9": "Madagascar",
+        "10": "Malawi",
+        "11": "Mali",
+        "12": "Mozambique",
+        "13": "Namibia",
+        "14": "Nigeria",
+        "15": "Senegal",
+        "16": "South Africa",
+        "17": "Tanzania",
+        "18": "Uganda",
+        "19": "Zambia",
+        "20": "Zimbabwe",
+        "21": "Mauritius",
+        "22": "Sierra Leone",
+        "23": "Niger",
+        "24": "Togo",
+        "25": "Burundi",
+        "26": "Cameroon",
+        "27": "Cote d'Ivoire",
+        "28": "Guinea",
+        "29": "Ethiopia",
+        "30": "Swaziland",
+        "31": "Algeria",
+        "32": "Egypt",
+        "33": "Morocco",
+        "34": "Sudan",
+        "35": "Tunisia"
+      },
+      "country_alpha_relation": "DISTINCT_OFFICIAL_COORDINATE__NO_NUMERIC_SUBSTITUTION"
+    },
+    {
+      "authority_id": "AFR5R-A03",
+      "surface": "WEST.AFR",
+      "holding": "Inherited exact raw metadata labels WEST.AFR as 'COUNTRY.BY.REGION = 1 (FILTER)'; the exact merged archive dictionary independently contains West.Africa.only with the identical label.",
+      "authorized_semantics": "ADMINISTRATIVE_FILTER_FOR_REGION_1_WEST_AFRICA",
+      "question_routing_owner": false
+    }
+  ],
+  "documented_administrative_family_context": {
+    "archive_variables": {
+      "West.Africa.only": "COUNTRY.BY.REGION = 1 (FILTER)",
+      "East.Africa.only": "COUNTRY.BY.REGION = 2 (FILTER)",
+      "Southern.Africa.only": "COUNTRY.BY.REGION = 3 (FILTER)",
+      "North.Africa.only": "COUNTRY.BY.REGION = 4 (FILTER)",
+      "R1.only": "self-label only",
+      "R2.only": "self-label only",
+      "R3.only": "self-label only",
+      "R4.only": "self-label only"
+    },
+    "law": "ARCHIVE_NORMALIZED_NAMES_DO_NOT_BY_THEMSELVES_PROVE_LITERAL_RAW_SAV_ALIAS_BINDINGS"
+  },
+  "irreducible_unknown_set": [
+    {
+      "unknown_id": "AFR5-U02",
+      "surface": "Q47C=997",
+      "state": "DOCUMENTARY_AUTHORITY_UNKNOWN_AFTER_TARGETED_RECOVERY",
+      "evidence_exhausted": [
+        "official final merged R5 codebook",
+        "DataFirst exact merged Q47C variable dictionary",
+        "South Africa country codebook/routing fact",
+        "recognized country archive dictionaries"
+      ],
+      "known_separate_routing_fact": "South Africa Q47C was not asked.",
+      "fail_closed": "Preserve numeric 997 as inherited physical user-missing distinct from system missing; assign no semantic label."
+    },
+    {
+      "unknown_id": "AFR5-U04B",
+      "surface": "EAST.AFR exact raw alias/semantics",
+      "state": "DOCUMENTARY_AUTHORITY_UNKNOWN_AFTER_TARGETED_RECOVERY",
+      "known_archive_analogue": "East.Africa.only = COUNTRY.BY.REGION = 2 (FILTER)",
+      "fail_closed": "Preserve opaque unless exact raw-label/alias identity is separately proved."
+    },
+    {
+      "unknown_id": "AFR5-U04C",
+      "surface": "SOUTHERN exact raw alias/semantics",
+      "state": "DOCUMENTARY_AUTHORITY_UNKNOWN_AFTER_TARGETED_RECOVERY",
+      "known_archive_analogue": "Southern.Africa.only = COUNTRY.BY.REGION = 3 (FILTER)",
+      "fail_closed": "Preserve opaque unless exact raw-label/alias identity is separately proved."
+    },
+    {
+      "unknown_id": "AFR5-U04D",
+      "surface": "NORTH.AF exact raw alias/semantics",
+      "state": "DOCUMENTARY_AUTHORITY_UNKNOWN_AFTER_TARGETED_RECOVERY",
+      "known_archive_analogue": "North.Africa.only = COUNTRY.BY.REGION = 4 (FILTER)",
+      "fail_closed": "Preserve opaque unless exact raw-label/alias identity is separately proved."
+    },
+    {
+      "unknown_id": "AFR5-U04E",
+      "surface": "R1.ONLY",
+      "state": "DOCUMENTARY_AUTHORITY_UNKNOWN_AFTER_TARGETED_RECOVERY",
+      "known_archive_presence": "R1.only exists in merged dictionary with self-label only.",
+      "fail_closed": "No membership, routing, not-asked, or eligibility semantics."
+    },
+    {
+      "unknown_id": "AFR5-U04F",
+      "surface": "R2.ONLY",
+      "state": "DOCUMENTARY_AUTHORITY_UNKNOWN_AFTER_TARGETED_RECOVERY",
+      "known_archive_presence": "R2.only exists in merged dictionary with self-label only.",
+      "fail_closed": "No membership, routing, not-asked, or eligibility semantics."
+    },
+    {
+      "unknown_id": "AFR5-U04G",
+      "surface": "R3.ONLY",
+      "state": "DOCUMENTARY_AUTHORITY_UNKNOWN_AFTER_TARGETED_RECOVERY",
+      "known_archive_presence": "R3.only exists in merged dictionary with self-label only.",
+      "fail_closed": "No membership, routing, not-asked, or eligibility semantics."
+    },
+    {
+      "unknown_id": "AFR5-U04H",
+      "surface": "R4.ONLY",
+      "state": "DOCUMENTARY_AUTHORITY_UNKNOWN_AFTER_TARGETED_RECOVERY",
+      "known_archive_presence": "R4.only exists in merged dictionary with self-label only.",
+      "fail_closed": "No membership, routing, not-asked, or eligibility semantics."
+    }
+  ],
+  "residual_summary": {
+    "original_residual_surfaces": 4,
+    "fully_closed": [
+      "Q10B=997",
+      "raw COUNTRY carrier binding"
+    ],
+    "partially_closed": [
+      "administrative routing carriers"
+    ],
+    "frozen_irreducible": [
+      "Q47C=997",
+      "EAST.AFR exact raw alias/semantics",
+      "SOUTHERN exact raw alias/semantics",
+      "NORTH.AF exact raw alias/semantics",
+      "R1.ONLY",
+      "R2.ONLY",
+      "R3.ONLY",
+      "R4.ONLY"
+    ]
+  },
+  "ready_for_source_specific_realization": false,
+  "source_specific_realization_boundary": "Q10B and COUNTRY may now be realized at the recovered documentary scope; WEST.AFR may be retained as the documented region-1 administrative filter. The irreducible unknown set remains fail-closed and cannot own routing or missingness semantics.",
+  "terminal": "CLOSED35_L2R_AFROBAROMETER_R5_RESIDUAL_AUTHORITY_FROZEN__IRREDUCIBLE_UNKNOWN_SET_RETURNED"
+}
