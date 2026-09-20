@@ -649,15 +649,18 @@ def produce_governed_diagnostics(
     metric_states: dict[str, str] = {}
     metrics: Mapping[str, Any]
     if source_state in POSITIVE_COMPUTABLE_FACT_STATES:
-        try:
-            cells, x_values, y_values = _contingency_from_fact(fact)
-        except Pre553DiagnosticError:
-            # A positive unary/non-joint fact is mathematically not applicable to
-            # this association producer; it is not silently converted to zero.
+        topology = fact.target_topology
+        if not isinstance(topology, Mapping) or topology.get("arity") != 2:
+            # A valid positive non-joint fact is outside this association
+            # producer's mathematical domain; it is not silently converted to zero.
             product_state = "NOT_APPLICABLE"
             metric_states = {kind: "NOT_APPLICABLE" for kind in DIAGNOSTIC_METRIC_KINDS}
             metrics = MappingProxyType({kind.lower(): None for kind in DIAGNOSTIC_METRIC_KINDS})
         else:
+            # Once the fact claims exact arity-2 topology, malformed contingency
+            # material is an integrity error and must fail closed rather than being
+            # laundered into NOT_APPLICABLE.
+            cells, x_values, y_values = _contingency_from_fact(fact)
             association = _association_metrics(cells, x_values, y_values)
             valid_cells = {canonical_json([x, y]) for x, y, _count in cells}
             joint_confidence, confidence_state = _joint_confidence(
