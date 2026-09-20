@@ -1,0 +1,94 @@
+{
+  "schema": "CLOSED35_L2_SOURCE_ADMISSION_PACKET@1.0.0",
+  "worker_id": "CLOSED35-L2-EVS1999",
+  "terminal": "CLOSED35_L2_EVS1999_DOCUMENTARY_AUTHORITY_CLOSED__PHYSICAL_COMPATIBILITY_REMAINS_NONSEMANTIC__READY_FOR_SOURCE_SPECIFIC_REALIZATION",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-closed35-l2-evs1999-authority-r1",
+  "base_sha": "770d95c1a604ea1f47ac2971b923673c14c42984",
+  "source": {
+    "canonical_filename": "EVS 1999.sav",
+    "canonical_sha256": "6058644a9308aad574b95fa0afd1b026fedea289c6c95aca043aefb41ae0ab8a",
+    "format": "SAV",
+    "accepted_physical_mode": "SAV_LATIN1_COMPAT_PHYSICAL_ONLY__SOURCE_DECLARES_UTF8",
+    "compatibility_semantic_authority": false,
+    "replay_identity": "SOURCE_SHA256+ROW_ORDINAL"
+  },
+  "producer_release_identity": {
+    "family": "European Values Study",
+    "wave": "1999",
+    "integrated_study_number": "ZA3811",
+    "version": "3.0.0",
+    "data_release_date": "2011-11-20",
+    "doi": "10.4232/1.10789",
+    "repository_release_binding": "data/ddm_build_copy/manifests/survey_microdata_reload_manifest_EVS_1999.json::dataset_id=EVS_1999_EVS_1999_ZA3811_v3-0-0",
+    "producer_checksum_for_rawlsing_canonical_sha": null,
+    "identity_status": "REPOSITORY_CANONICAL_SHA_BOUND_TO_PRODUCER_RELEASE_IDENTITY__NO_PUBLIC_PRODUCER_SHA_RECOVERED"
+  },
+  "text_authority": {
+    "source_declared_sav_encoding": "UTF-8",
+    "source_declared_character_code": 65001,
+    "malformed_embedded_human_language_bytes": true,
+    "latin1_compatibility_role": "PHYSICAL_EXTRACTION_ONLY",
+    "latin1_semantic_authority": false,
+    "producer_authorized_sav_byte_repair_rule": null,
+    "producer_sav_encoding_or_export_process_publicly_documented": "NOT_RECOVERED_BEYOND_DISTRIBUTION_FORMATS",
+    "authoritative_document_order": [
+      "ZA3811 v3.0.0 Variable Report for exact data-file variable semantics and construction notes",
+      "National field questionnaire / bilingual or national variable report for exact country-specific wording or deviations",
+      "EVS 1999 Master Questionnaire for default instrument wording and flow"
+    ],
+    "alignment_rule": "EXACT_SOURCE_VARIABLE_IDENTIFIER_TO_ZA3811_V3_0_0_DOCUMENTATION__NO_FUZZY_OR_COMPATIBILITY_TEXT_MATCH",
+    "failed_alignment_state": "UNKNOWN",
+    "compatibility_rendered_text_state": "NONAUTHORITATIVE",
+    "unresolved_nonsemantic_classes": [
+      "source-internal malformed path/note/process strings without exact producer documentary counterpart"
+    ]
+  },
+  "routing_authority": {
+    "observed_missingness_is_authority": false,
+    "precedence": [
+      "exact ZA3811 v3.0.0 variable-specific construction/country note",
+      "exact national field questionnaire or bilingual/national variable report",
+      "Master Questionnaire default flow",
+      "UNKNOWN"
+    ],
+    "producer_constructed_filters_recovered": [
+      "v49_filt",
+      "v50_filt",
+      "v51_filt"
+    ],
+    "country_specific_example_recovered": "v290_hu",
+    "exact_rules_file": "03_ROUTING_AUTHORITY_MAP.csv"
+  },
+  "supersession": {
+    "later_integrated_ZA3811_release_found": false,
+    "current_integrated_release": "ZA3811 v3.0.0",
+    "later_documentation_for_same_release": "2013 Variable Report",
+    "national_dataset_revisions_exist": true,
+    "national_revisions_supersede_integrated_release": false
+  },
+  "forbidden_inferences": [
+    "latin1 compatibility decode == true EVS source text",
+    "readable compatibility string == producer-authoritative label",
+    "observed missingness == routing applicability",
+    "neighboring or similarly worded variable == semantic alignment",
+    "national dataset revision == replacement for integrated ZA3811 source",
+    "DDI2 XML ISO-8859-1 declaration == SAV encoding authority"
+  ],
+  "execution_boundary": {
+    "local_raw_sav_opened": false,
+    "source_decoding_executed": false,
+    "measured_p2x_run": false,
+    "public_documentary_research_used": true,
+    "github_repository_evidence_used": true
+  },
+  "outputs": [
+    "00_RETURN.md",
+    "01_DOCUMENTARY_SOURCE_LEDGER.csv",
+    "02_TEXT_AUTHORITY_AND_ALIGNMENT_MAP.csv",
+    "03_ROUTING_AUTHORITY_MAP.csv",
+    "04_SOURCE_ADMISSION_PACKET.json",
+    "RETURN.json"
+  ],
+  "ready_for_source_specific_realization": true
+}
