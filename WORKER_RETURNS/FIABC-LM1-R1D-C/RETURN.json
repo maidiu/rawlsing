@@ -1,0 +1,81 @@
+{
+  "schema": "FIABC_LM1_R1D_C_RETURN@1.0.0",
+  "worker": "FIABC-LM1-R1D-C",
+  "branch": "agent/rabochii-premain-fiabc-lm1-r1d-c-hostile-repair-court-r1",
+  "exact_base": "ca3630f5f7146f611c8cdc30b010eab509a5145b",
+  "scope": "C11 float/non-finite repair hostile court only",
+  "court": {
+    "distinct_lawful_repair_classes": 1,
+    "winner": "CANDIDATE_1__ACCEPTED_R5_TYPED_PHYSICAL_TOKEN_AT_PHYSICAL_BINDING_RAW_WITNESS_SEAM__SEMANTIC_CANONICALIZE_UNCHANGED",
+    "candidate_2": "REJECT__GLOBAL_SEMANTIC_FLOAT_ADMISSION",
+    "candidate_3": "REJECT__UNAUTHORIZED_NUMERIC_RETYPE_OR_STRING_CONVERSION",
+    "candidate_4": "REJECT__UNAUTHORIZED_NONFINITE_TO_MISSING_OR_UNKNOWN",
+    "candidate_5": "REJECT__PHYSICAL_CELL_DELETION",
+    "candidate_6": "NOT_DISTINCT__LAWFUL_ONLY_AS_CANONICAL_SERIALIZATION_OF_CANDIDATE_1_R5_TYPED_TOKEN",
+    "candidate_7": "NO_MATERIALLY_DISTINCT_ACCEPTED_MECHANISM_FOUND"
+  },
+  "hostile_invariants": {
+    "int_vs_float": "PRESERVED",
+    "bool_vs_int": "PRESERVED",
+    "positive_zero_vs_negative_zero": "PRESERVED",
+    "finite_float_bits": "PRESERVED",
+    "nan_decoder_state": "PRESERVED_WITHOUT_PAYLOAD_FABRICATION",
+    "positive_vs_negative_infinity": "PRESERVED",
+    "string_inf_vs_float_infinity": "PRESERVED",
+    "semantic_missingness_invention": "FORBIDDEN",
+    "unprojected_cell_mutation": "FORBIDDEN",
+    "semantic_float_leak": "FORBIDDEN"
+  },
+  "accepted_physical_mechanism": {
+    "codec": "PRE553_R5_TYPED_VALUE_CODEC@1.0.0",
+    "module": "rawlsing_next/pre553_r5_codec.py",
+    "functions": [
+      "R5TypedValueCodec.encode",
+      "R5TypedValueCodec.typed_key",
+      "canonical_bytes"
+    ],
+    "generic_semantic_canonicalizer_changes": false
+  },
+  "affected_c11_seams": [
+    "physical_value_binding_key",
+    "response raw_response_value witness",
+    "coordinate raw_coordinate_value witness",
+    "physical-key lookup for response/coordinate/weight projection",
+    "deterministic replay identities derived from physical keys"
+  ],
+  "weight_boundary": {
+    "physical_key_repair_applies": true,
+    "existing_weight_semantic_contract_changed": false,
+    "nonfinite_to_missing_or_valid_weight_allowed": false
+  },
+  "existing_r5": {
+    "physical_root_id": "7d85c5e4c3a91c3f6dc8f7896fe487cda116fc8cf67f0ab263a2654ff938afcd",
+    "logical_stream_digest": "076c6527f292c1d4ae2cce53c1f0363093eb9a5b5fb652edd96b448823589aba",
+    "member_inventory_sha256": "04dce8c3e942fc81a0558354c21a4b4a56faab417ce362657286f978b6686703",
+    "canonical_rows": 34745595,
+    "members": 2121,
+    "full_member_rebuild_required": false,
+    "recovery": "REUSE_EXISTING_ROOT__ROUTE_A_REOPEN_PERFORMS_SINGLE_PASS_FULL_AUDIT"
+  },
+  "minimum_rerun": [
+    "IMPLEMENT_NARROW_C11_PHYSICAL_BOUNDARY_REPAIR",
+    "RUN_SYNTHETIC_HOSTILE_REGRESSION_COURT",
+    "RERUN_CURRENT_CONSUMER_ADMISSION_AGAINST_EXISTING_R5_ROOT",
+    "RECOMPUTE_REPAIRED_C11_CONSUMER_IDENTITIES",
+    "REVALIDATE_OR_RESEAL_ONLY_DOWNSTREAM_RECEIPTS_WITH_CHANGED_DETERMINANTS",
+    "CONSUME_REPLACEMENT_SUCCESS_ONLY_AFTER_PASS"
+  ],
+  "execution": {
+    "tests": "TESTS_AUTHORED__NOT_EXECUTED",
+    "local_lits_bytes_opened": false,
+    "local_tmp_r5_accessed": false,
+    "r5_rebuilt": false,
+    "candidate_a_executed": false,
+    "candidate_b_executed": false,
+    "candidate_c_executed": false,
+    "i03_run": false,
+    "i05_run": false,
+    "measured_p2x_run": false
+  },
+  "terminal": "FIABC_LM1_R1D_C_HOSTILE_COURT_COMPLETE__LAWFUL_REPAIR_CLASS_AND_MINIMUM_RERUN_PROVED"
+}
