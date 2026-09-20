@@ -1,0 +1,70 @@
+{
+  "schema": "RAWLSING_FIABC_W3_WORKER_RETURN@1.0.0",
+  "worker": "FIABC-W3-I05",
+  "repo": "maidiu/rawlsing",
+  "branch": "agent/rabochii-premain-fiabc-w3-i05-independent-parity-oracle-r1",
+  "base_sha": "56697a27e94eb9603dfa412a15ab8f1feb819b0c",
+  "implementation_tip_before_return_json": "471b4282a9fcafca1a4a7b3ba4911e7535e7dd74",
+  "return_path": "WORKER_RETURNS/FIABC-W3-I05/",
+  "terminal": "FIABC_W3_I05_INDEPENDENT_PARITY_ORACLE_IMPLEMENTED__SOURCE_MATERIALIZATION_PENDING_LOCAL_EXECUTION",
+  "disposition": "IMPLEMENTED__SOURCE_MATERIALIZATION_PENDING_LOCAL_EXECUTION",
+  "files_changed": [
+    "rawlsing_next/pre553_independent_parity_oracle.py",
+    "rawlsing_next/tests/test_pre553_independent_parity_oracle.py",
+    "WORKER_RETURNS/FIABC-W3-I05/00_RETURN.md",
+    "WORKER_RETURNS/FIABC-W3-I05/01_IMPLEMENTATION_DIFF_INVENTORY.csv",
+    "WORKER_RETURNS/FIABC-W3-I05/02_TEST_COMMANDS.md",
+    "WORKER_RETURNS/FIABC-W3-I05/03_WVS7_LOCAL_MATERIALIZATION_PROTOCOL.md",
+    "WORKER_RETURNS/FIABC-W3-I05/04_INTEGRATION_BINDING_CONTRACT.md",
+    "WORKER_RETURNS/FIABC-W3-I05/RETURN.json"
+  ],
+  "tests_added": {
+    "file": "rawlsing_next/tests/test_pre553_independent_parity_oracle.py",
+    "count": 15,
+    "coverage": [
+      "candidate A self-agreement cannot imply oracle parity",
+      "A/B pairwise agreement cannot replace three-way oracle agreement",
+      "partial frontier cannot pass",
+      "collapsed negative states cannot pass",
+      "stale authority closure cannot pass",
+      "stale replay roots cannot pass",
+      "candidate-owned oracle dependencies fail",
+      "post-output freeze fails",
+      "oracle mutation fails",
+      "wrong WVS source bytes fail before semantic execution",
+      "candidate-owned WVS materializer state fails",
+      "same-cardinality WVS frontier substitution fails"
+    ]
+  },
+  "tests_executed": false,
+  "tests_not_executed_and_why": [
+    "Worker was restricted to GitHub/browser repository tools.",
+    "The available GitHub repository connector does not provide a Python execution surface.",
+    "WVS source-derived materialization requires exact local source bytes and integrated runtime; no result was fabricated."
+  ],
+  "exact_commands": [
+    "python -m pytest -q rawlsing_next/tests/test_pre553_independent_parity_oracle.py",
+    "python -m pytest -q rawlsing_next/tests/test_pre553_independent_parity_oracle.py rawlsing_next/tests/test_pre553_empirical_query.py rawlsing_next/tests/test_pre553_discovery_exact.py"
+  ],
+  "headline_findings": [
+    "Wave-2 IMP10 is implemented as a court-owned, candidate-neutral, immutable oracle contract.",
+    "LiTS binds immutable ASTRA-D04-R2 factual truth plus current candidate-neutral exact-ref/authority material.",
+    "WVS pins exact source/Lock2 identities, exact ordered 46-candidate frontier, and exact 10/1/10/25 named family shape.",
+    "Self-replay and pairwise A/B/C equality are explicitly non-authoritative for parity.",
+    "Every candidate must independently match the same frozen oracle across source, authority, I03 facts/states, full I05 frontier/coverage, exact refs, terminal identities, replay closure, and negative-state law."
+  ],
+  "exact_blockers": [
+    "WVS7_ORACLE_SOURCE_MATERIALIZATION_PENDING_LOCAL_EXECUTION",
+    "P2X_S03_INTEGRATION_BINDING_PENDING_WAVE3_FANIN",
+    "TEST_EXECUTION_PENDING_INTEGRATED_OR_LOCAL_PYTHON_SURFACE"
+  ],
+  "prohibited_actions_confirmed_absent": [
+    "measured P2X execution",
+    "HQ handoff mutation",
+    "semantic ownership movement",
+    "candidate-derived expected truth",
+    "CACC3 or WVS accelerator creation",
+    "workload truncation or frontier mutation",
+    "fabricated WVS materialization result"
+  ]
+}
