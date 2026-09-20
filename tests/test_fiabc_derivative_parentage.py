@@ -183,11 +183,19 @@ class DerivativeParentageContractTests(unittest.TestCase):
             bundle,
             expected_source_id="WVS7",
             expected_source_sha256=WVS_SHA,
-            expected_source_receipt_identity=bundle["source_receipt"]["receipt_identity"],
+            expected_source_receipt_identity=(
+                bundle.get("source_receipt", {}).get("receipt_identity")
+                if isinstance(bundle, dict)
+                else None
+            ),
             expected_source_operation="VERIFY_CANONICAL_WVS7_RAW_SHA_AND_EXTRACT_STRUCTURAL_INPUT",
             expected_derivative_class="WVS7_STRUCTURAL_PREIMAGE",
             expected_derivative_identity=doc["structural_input_identity"],
-            expected_derivative_receipt_identity=bundle["derivative_receipt"]["receipt_identity"],
+            expected_derivative_receipt_identity=(
+                bundle.get("derivative_receipt", {}).get("receipt_identity")
+                if isinstance(bundle, dict)
+                else None
+            ),
             expected_derivative_hash=doc["structural_input_identity"],
             expected_derivative_metadata=wvs_structural_metadata(doc),
             expected_producer=WVS_PRODUCER,
