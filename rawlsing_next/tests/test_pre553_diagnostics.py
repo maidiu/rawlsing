@@ -115,10 +115,10 @@ def test_exact_f012_metrics_are_computed_from_governed_joint_fact_only():
         assert abs(Decimal(product.metrics[metric_name]) - Decimal("1")) < Decimal("1e-40")
 
     cells = {tuple(row["cell"]): row for row in product.metrics["uplift_lift"]}
-    assert cells[("0", "0")]["uplift"] == {"$exact_fraction": [1, 2]}
-    assert cells[("0", "0")]["lift"] == {"$exact_fraction": [2, 1]}
-    assert cells[("0", "1")]["uplift"] == {"$exact_fraction": [-1, 2]}
-    assert cells[("0", "1")]["lift"] == {"$exact_fraction": [0, 1]}
+    assert tuple(cells[("0", "0")]["uplift"]["$exact_fraction"]) == (1, 2)
+    assert tuple(cells[("0", "0")]["lift"]["$exact_fraction"]) == (2, 1)
+    assert tuple(cells[("0", "1")]["uplift"]["$exact_fraction"]) == (-1, 2)
+    assert tuple(cells[("0", "1")]["lift"]["$exact_fraction"]) == (0, 1)
 
     assert product.metrics["joint_confidence"] is None
     assert product.metric_states["JOINT_CONFIDENCE"] == "UNCERTAINTY_UNQUANTIFIED"
@@ -234,9 +234,9 @@ def test_underpowered_state_requires_exact_determinant_and_preserves_diagnostic_
     assert product.typed_state == "UNDERPOWERED"
     assert product.metric_states["MUTUAL_INFORMATION"] == "AVAILABLE_UNDERPOWERED_DIAGNOSTIC_ONLY"
     assert abs(Decimal(product.metrics["mutual_information"]) - Decimal("1")) < Decimal("1e-40")
-    assert product.source_replay_determinants["support_determinant_refs"] == [
-        support_ref.as_dict()
-    ]
+    assert tuple(product.source_replay_determinants["support_determinant_refs"]) == (
+        support_ref.as_dict(),
+    )
 
 
 def test_positive_unary_fact_is_typed_not_applicable_not_zero_association():
