@@ -1,0 +1,73 @@
+{
+  "schema": "FIABC_LM1_R1A_RETURN@1.0.0",
+  "worker": "FIABC-LM1-R1A",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-premain-fiabc-lm1-r1a-r5-provenance-archaeology-r1",
+  "base": {
+    "branch": "agent/vozhd-premain-fiabc-live-t6-final-implementation-r1",
+    "sha": "44255e97119c83be86cefec032d0f0a244b00258"
+  },
+  "terminal": "FIABC_LM1_R1A_BLOCKED__R5_BUILDER_OR_REBUILD_AUTHORITY_AMBIGUOUS",
+  "builder": {
+    "class": "R5CompactLongShardedBuilder",
+    "path": "rawlsing_next/pre553_r5_compact_carrier.py",
+    "named_owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+    "live_expected_blob": "92e68693d72cbfcdd1c6d16e7f247ca3f60c8c55",
+    "actual_blob_at_named_owner": "92e364b31eaf27be1bca2081eff65f6ffb779c3d",
+    "expected_blob_exists_elsewhere": false,
+    "authoritative_holding": "AUTHORITATIVE_R5_BUILDER_IDENTITY_PROVED",
+    "accepted_succession_from_actual_to_expected": false,
+    "cause": "R35_I02_MALFORMED_RUNTIME_BLOB_POINTER_SET__NOT_BUILDER_SUCCESSION"
+  },
+  "historical_parentage": {
+    "evidence_candidates_inspected": 14,
+    "strongest_evidence": {
+      "path": "WORKER_RETURNS/EE-P2X/01_LITS_I_A_FIRST_BUILD_STAGE.json",
+      "first_commit": "02a7ff71ae65b1aa8c52add0b315244a9eaea9df",
+      "classification": "CONTEMPORANEOUS_FIRST_BUILD_EVIDENCE__INSUFFICIENT_FOR_R35_GENERIC_PARENTAGE"
+    },
+    "proved": false,
+    "holding": "HISTORICAL_R5_PARENTAGE_NOT_PROVED",
+    "missing_links": [
+      "CONTEMPORANEOUS_EXACT_BUILDER_BLOB_BINDING",
+      "CONTEMPORANEOUS_COMPLETE_BUILD_CONFIG_BINDING",
+      "CONTEMPORANEOUS_CANONICAL_SOURCE_VERIFICATION_RECEIPT_IDENTITY",
+      "DERIVATIVE_RECEIPT_PARENTED_TO_THAT_SOURCE_RECEIPT",
+      "ACCEPTED_CURRENTNESS_OWNERSHIP_BRIDGE"
+    ]
+  },
+  "old_r5": {
+    "current_classification": "PRESERVED_SEMANTIC_EVIDENCE_WITHOUT_NUMERIC_TELEMETRY",
+    "numeric_preserved_work_credit_survives": false
+  },
+  "fresh_rebuild": {
+    "law_proved": false,
+    "holding": "FRESH_R5_REBUILD_AUTHORITY_NOT_YET_PROVED",
+    "exact_missing_authority": [
+      "ACCEPTED_NARROW_SUCCESSION_SUPERSEDING_NO_REPEAT_COMPLETED_LITS_A_FIRST_BUILD_FOR_ONE_R35_PARENTED_REPLACEMENT_BUILD",
+      "ADOPTED_CURRENT_R35_RUNTIME_BLOB_POINTER_REPAIR"
+    ],
+    "current_no_repeat_law": "NO_REPEAT_COMPLETED_LITS_A_FIRST_BUILD",
+    "technical_parentage_machinery_available": true,
+    "accounting_if_later_authorized": "EXECUTED_NOW",
+    "executable_protocol_issued": false
+  },
+  "remaining_action": "NO_LOCAL_ACTION_AUTHORIZED__FIRST_ADOPT_R35_BLOB_POINTER_REPAIR_AND_EXPLICIT_NARROW_REBUILD_SUCCESSION",
+  "mutations": {
+    "production_code": false,
+    "parentage_schema": false,
+    "candidate_a_semantics": false,
+    "t4_accounting": false,
+    "source_identity": false,
+    "runtime_identity": false,
+    "workload_identity": false
+  },
+  "prohibited_execution": {
+    "raw_lits_source_opened": false,
+    "preserved_r5_opened": false,
+    "r5_rebuilt": false,
+    "measured_p2x_run": false,
+    "wvs7_touched_as_execution_source": false,
+    "follow_on_commission_created": false
+  }
+}
