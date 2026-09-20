@@ -1,0 +1,214 @@
+{
+  "schema": "CLOSED35_R2_WVS1_RETURN@1.0.0",
+  "worker_id": "CLOSED35-R2-WVS1",
+  "repository": "maidiu/rawlsing",
+  "base": {
+    "branch": "agent/vozhd-closed35-l2r-r1-fanin-r1",
+    "sha": "da33eb6a8225c14eee9490633a3263388dc5536c"
+  },
+  "branch": "agent/rabochii-closed35-r2-wvs1-realization-r1",
+  "return_path": "WORKER_RETURNS/CLOSED35-R2-WVS1/",
+  "disposition": "PASS__SOURCE_SPECIFIC_REALIZATION_IMPLEMENTED",
+  "test_status": "TESTS_AUTHORED__NOT_EXECUTED",
+  "terminal": "CLOSED35_R2_WVS1_SOURCE_SPECIFIC_REALIZATION_IMPLEMENTED__READY_FOR_ABC_QUALIFICATION",
+  "source": {
+    "family": "WVS",
+    "release": "Wave 1",
+    "canonical_filename": "WVS Wave 1.sav",
+    "canonical_sha256": "051bf450568f44181559a5b2bfbe58b4f05b58bc806643d0c63353c937ff0824",
+    "format": "SAV",
+    "decoder_mode": "SAV_NATIVE_GOVERNED",
+    "compatibility_status": "NO_SOURCE_SPECIFIC_COMPATIBILITY_OVERRIDE",
+    "replay_identity": "SOURCE_SHA256+ROW_ORDINAL",
+    "authority_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED"
+  },
+  "authority_inputs": {
+    "authority71_r09_head": "7d5e0cab3a35fb22d1396371f87d69231b2b40ad",
+    "authority72_synthesis_head": "3356b26f2dc518043ffde171c2dca0470b5ac79f",
+    "authority71_72_are_source_certification": false,
+    "bounded_unknowns_preserved": [
+      "NATIVE_ID_SEMANTICS",
+      "WEIGHT_ROLES",
+      "WEIGHT_DESIGN",
+      "WEIGHT_ESTIMANDS",
+      "ROUTING_APPLICABILITY_WHERE_NOT_DOCUMENTARILY_CLOSED"
+    ]
+  },
+  "implementation": {
+    "module": {
+      "path": "rawlsing_next/closed35_wvs1_realization.py",
+      "blob_sha": "326c3013af114cfc5abb7c7e23398b3694aed740",
+      "contract": "CLOSED35_R2_WVS1_SOURCE_REALIZATION@1.0.0",
+      "candidate_neutral": true,
+      "opens_source_bytes": false
+    },
+    "synthetic_tests": {
+      "path": "rawlsing_next/tests/test_closed35_r2_wvs1_realization.py",
+      "blob_sha": "941c6a7b04f10b6538e03b0da3a7c5572e1661aa",
+      "test_count": 10,
+      "executed_by_worker": false,
+      "real_source_bytes_used": false,
+      "status": "TESTS_AUTHORED__NOT_EXECUTED"
+    },
+    "semantic_owner_surface": "PRE553_SOURCE_BACKED_C11_FACADE@1.0.0",
+    "candidate_law": "A_B_C_SHARE_ONE_WVS1_SOURCE_SPECIFIC_REALIZATION_IDENTITY"
+  },
+  "realization_law": {
+    "raw_display": {
+      "variable": "S007",
+      "display_format_sentinel": "F2.0",
+      "accepted_raw_min": 320120001,
+      "accepted_raw_max": 8400122325,
+      "raw_storage_and_display_metadata_are_independent": true,
+      "display_can_rewrite_raw_value": false
+    },
+    "identity": {
+      "V3_semantic_role": "BOUNDED_UNKNOWN",
+      "S007_semantic_role": "BOUNDED_UNKNOWN",
+      "native_id_injectivity_mints_replay_authority": false,
+      "hard_replay_identity": "SOURCE_SHA256+ROW_ORDINAL"
+    },
+    "missingness": {
+      "typed_physical_states_preserved": true,
+      "system_missing_and_user_missing_distinct": true,
+      "routing_from_missingness": false,
+      "semantic_response_state_when_not_closed": "BOUNDED_UNKNOWN"
+    },
+    "all_system_columns": {
+      "accepted_packet_count": 8,
+      "named_hostile_sentinel": "I_WOMPOL",
+      "retention_required": true,
+      "semantic_role_when_not_closed": "BOUNDED_UNKNOWN"
+    },
+    "weights": {
+      "carrier_count": 13,
+      "carriers": [
+        "V236",
+        "SECVALWGT",
+        "RESEMAWEIGHT",
+        "WEIGHT1A",
+        "WEIGHT2A",
+        "WEIGHT3A",
+        "WEIGHT4A",
+        "WEIGHT1B",
+        "WEIGHT2B",
+        "WEIGHT3B",
+        "WEIGHT4B",
+        "S018",
+        "S019"
+      ],
+      "documented_labels": {
+        "V236": "Weight",
+        "S018": "Equilibrated weight-1000",
+        "S019": "Equilibrated weight-1500"
+      },
+      "default_weight": null,
+      "role_state": "BOUNDED_UNKNOWN",
+      "design_state": "BOUNDED_UNKNOWN",
+      "estimand_state": "BOUNDED_UNKNOWN"
+    }
+  },
+  "s35_edge_classes": [
+    "EC01",
+    "EC04",
+    "EC05",
+    "EC06",
+    "EC12",
+    "EC14"
+  ],
+  "r35_hooks": {
+    "i01": {
+      "worker_branch": "agent/rabochii-premain-fiabc-r35-i01-raw-layout-metadata-r1",
+      "schema": "PRE553_PHYSICAL_METADATA@1.0.0",
+      "required": true,
+      "semantic_authority": false
+    },
+    "i02": {
+      "worker_branch": "agent/rabochii-premain-fiabc-r35-i02-derivative-parentage-r1",
+      "source_receipt_schema": "FIABC_CANONICAL_SOURCE_VERIFICATION_RECEIPT@1.0.0",
+      "bundle_schema": "FIABC_DERIVATIVE_PARENTAGE_BUNDLE@1.0.0",
+      "required_for_non_direct_raw": true,
+      "semantic_authority": false
+    },
+    "i03": {
+      "worker_branch": "agent/rabochii-premain-fiabc-r35-i03-physical-equivalence-r1",
+      "source_scope_schema": "FIABC_R35_I03_SOURCE_PHYSICAL_SCOPE@1.0.0",
+      "expectation_schema": "FIABC_R35_I03_CANONICAL_PHYSICAL_EXPECTATION@1.0.0",
+      "candidate_realization_schema": "FIABC_R35_I03_CANDIDATE_PHYSICAL_REALIZATION@1.0.0",
+      "receipt_schema": "FIABC_R35_I03_WHOLE_SOURCE_PHYSICAL_EQUIVALENCE_RECEIPT@1.0.0",
+      "required_dimensions": [
+        "physical_metadata",
+        "variable_inventory_order",
+        "raw_storage_values",
+        "row_replay_identity",
+        "raw_display_separation",
+        "typed_missingness",
+        "all_missing_column_retention",
+        "weight_design_variables"
+      ],
+      "pass_status_if_later_earned": "PHYSICAL_EQUIVALENCE_PASS__NOT_SEMANTIC_OR_CERTIFICATION_PASS",
+      "semantic_authority": false
+    },
+    "generic_implementations_present_in_base": false,
+    "generic_branches_merged_by_this_worker": false,
+    "accepted_contract_seams_bound": true
+  },
+  "required_rejection_tests": [
+    "S007_RAW_TRUNCATION_TO_DISPLAY_WIDTH",
+    "DISPLAY_RENDERING_AS_PHYSICAL_VALUE",
+    "S007_UNIQUENESS_AS_REPLAY_AUTHORITY",
+    "ALL_SYSTEM_COLUMN_DELETION",
+    "TYPED_MISSING_COLLAPSE",
+    "AUTOMATIC_DEFAULT_WEIGHT_SELECTION"
+  ],
+  "additional_rejection_tests": [
+    "SOURCE_SHA_DRIFT",
+    "V3_GLOBAL_IDENTITY_INVENTION",
+    "ABC_SEMANTIC_OWNER_DIVERGENCE",
+    "S35_R35_SCOPE_DRIFT"
+  ],
+  "constraints_observed": {
+    "local_raw_survey_carrier_opened": false,
+    "source_decoding_executed": false,
+    "real_source_processing_executed": false,
+    "measured_p2x_run": false,
+    "raw_value_semantics_inferred": false,
+    "wvs4_or_wvs7_semantic_law_imported": false
+  },
+  "claims_not_made": [
+    "REAL_SOURCE_BYTES_EXECUTED",
+    "WHOLE_SOURCE_PHYSICAL_EQUIVALENCE_PASS",
+    "ABC_EXECUTION_PASS",
+    "I05_PASS",
+    "SOURCE_CERTIFIED",
+    "WEIGHT_OR_POPULATION_AUTHORITY",
+    "MEASURED_P2X_PASS"
+  ],
+  "outputs": [
+    {
+      "path": "WORKER_RETURNS/CLOSED35-R2-WVS1/00_RETURN.md",
+      "blob_sha": "fb4f8df51b57b54b7bc1a5d7b4877b32feab3e05"
+    },
+    {
+      "path": "WORKER_RETURNS/CLOSED35-R2-WVS1/01_REALIZATION_CONTRACT.md",
+      "blob_sha": "720c3ad8bc39418078ac79aa5e8a47b1a72b0d4c"
+    },
+    {
+      "path": "WORKER_RETURNS/CLOSED35-R2-WVS1/02_RAW_DISPLAY_WEIGHT_PROJECTION_MAP.csv",
+      "blob_sha": "4d409b1be12ce96603b3cbcc33a79fcfc2f81903"
+    },
+    {
+      "path": "WORKER_RETURNS/CLOSED35-R2-WVS1/03_PHYSICAL_EDGE_BINDING.json",
+      "blob_sha": "98d526caec2170faf155163b835dc28881628073"
+    },
+    {
+      "path": "WORKER_RETURNS/CLOSED35-R2-WVS1/04_TEST_PROTOCOL.md",
+      "blob_sha": "799513cff30ced01f36281f141092e39d446d73c"
+    },
+    {
+      "path": "WORKER_RETURNS/CLOSED35-R2-WVS1/RETURN.json",
+      "blob_sha": null
+    }
+  ],
+  "ready_for_abc_qualification": true
+}
