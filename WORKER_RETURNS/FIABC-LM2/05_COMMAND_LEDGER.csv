@@ -1,0 +1,9 @@
+ordinal,timestamp_utc,operation,status,identity_or_blocker
+1,2026-09-20T15:33:08.894172Z,canonical WVS7 raw SHA/bytes/shape verification,PASS,2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d
+2,2026-09-20T15:33:08.894225Z,accepted R6S structural-input materialization plus R35-I02 bundle verification,PASS,5037c55bf1a017112c0fe5f18ca5905696d66dfefcc4d8f47dcb0e7fcb13f37c
+3,2026-09-20T15:33:08.894238Z,freeze exact R6S Lock2 runtime authority/workload,PASS,8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188
+4,2026-09-20T15:33:08.894250Z,candidate-neutral common C11 build before oracle freeze,BLOCKED,BLOCKED__ACCEPTED_R6S_WVS7_RESPONSE_MAPPING_AUTHORITY_KIND_DOES_NOT_SATISFY_C11_VALIDATOR
+5,2026-09-20T15:33:08.894253Z,R35-I03 candidate-neutral WVS7 canonical physical expectation,PASS_PHYSICAL_ONLY,9845c24da0c03adb4dfd65118b7c8c39a60a30337f33cc4177ffc6c848d02390
+6,2026-09-20T15:35:00Z,"PYTHONPATH=. /tmp/ee-p2x-venv/bin/python -m unittest discover -s tests -p 'test_fiabc_derivative_parentage.py' -v",PASS,9 tests
+7,2026-09-20T15:35:00Z,PYTHONPATH=. /tmp/ee-p2x-venv/bin/python -m pytest -q rawlsing_next/tests/test_fiabc_r35_i03_physical_equivalence.py rawlsing_next/tests/test_pre553_independent_parity_oracle.py,NOT_RUN_ENVIRONMENT,pytest absent from frozen pyreadstat 1.3.6 venv
+8,2026-09-20T15:35:01Z,PYTHONPATH=. python3 -m pytest -q rawlsing_next/tests/test_fiabc_r35_i03_physical_equivalence.py rawlsing_next/tests/test_pre553_independent_parity_oracle.py,PASS,30 tests
