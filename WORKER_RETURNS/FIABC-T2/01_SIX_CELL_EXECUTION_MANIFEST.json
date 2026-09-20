@@ -1,0 +1,1046 @@
+{
+  "schema": "RAWLSING_FIABC_CURRENT_SIX_CELL_EXECUTION_MANIFEST@1.0.0",
+  "status": "CURRENT__SIX_CELL_EXECUTION_CONTRACT__UNMEASURED",
+  "desired_terminal": "FIABC_CURRENT_SIX_CELL_EXECUTION_CONTRACT__ALL_SIX_CELLS_TERMINAL_PASS",
+  "operative_repo_write": "FIABC_T2_SUCCESSOR_MANIFEST__HISTORICAL_CONTINUATION_MAP_IMMUTABLE",
+  "authority": {
+    "hq_checkpoint": "20260918T0210-0400",
+    "hq_handoff_commit": "10c91b1e03285b50cae7a39ab1458826712c52b5",
+    "semantic_pre_main_tip": "1dcd2a79dd6d4208738f655ab7fe4e71c219e354",
+    "p2x_branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+    "p2x_commission_tip": "e49ae8111fd2e888bdb899f85f4d206950ca7bf3",
+    "p2x_prior_terminal": "29e434a385719f9835e0bcd252fb24bc37675a99",
+    "p2x_resume_head": "a954e2d6676843da8427ef2439b5d1ef33478359",
+    "p2x_branch_head_verified": "IDENTICAL_TO_RESUME_HEAD",
+    "p2r1_pass": "9511f44728a8469d685463ec0fc880864c9187de",
+    "p2r1_seam_path": "rawlsing_next/pre553_carrier_execution.py",
+    "p2r1_seam_blob": "e7cda773e6a2426bfa12b22790fd8e005fe75153",
+    "lock1": "FROZEN_UNCHANGED",
+    "lock2": "SEALED__8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188",
+    "fiabc_t1_live_transposition_tip": "86daba6838d72c70b1452db4178c338185e6e377",
+    "fiabc_wave3_fanin_tip": "6c6e07415986c87cbd722a9a554032dd31ddc06a",
+    "candidate_c_binding_contract": "PRE553_CANDIDATE_C_PRODUCTION_BINDING@1.0.0",
+    "candidate_c_binding_module": "rawlsing_next/pre553_candidate_c_production_binding.py"
+  },
+  "source_order": [
+    "LITS_I",
+    "WVS7"
+  ],
+  "candidate_order": [
+    "A",
+    "B",
+    "C"
+  ],
+  "sources": {
+    "LITS_I": {
+      "sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+      "learned_candidates": 50,
+      "learned_roles": 77,
+      "expected_product_sha256": "47d36b1459c2458c480b58631d2c78af68be4dde44015a9220b09177b1eeb28d",
+      "expected_semantic_replay_hash": "301735d4563314a0d7c133fa1afbb0ca57679b3fad887c66e77a909494779eb5"
+    },
+    "WVS7": {
+      "sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+      "lock2_replay_hash": "b1aa437406d94b1f81f0ef3c81b885a2fd542749d2e5441747897c016a5dd490",
+      "discovery_authority": "24591678ebf50ac153fabdbbcd90d6ce818c5a89a5307c395c48a04fe5a8b1ab",
+      "learned_candidates": 46,
+      "frontier_shape": "10_UNARY+1_PAIR_COTRAVEL+10_DIRECTED_BRANCH+25_JOINT_SUPPORT"
+    }
+  },
+  "evidence": {
+    "PREFLIGHT": {
+      "commit": "29e434a385719f9835e0bcd252fb24bc37675a99",
+      "path": "WORKER_RETURNS/EE-P2X/00_EXECUTION_BINDING.json"
+    },
+    "LITS_A_FIRST_BUILD": {
+      "commit": "02a7ff71ae65b1aa8c52add0b315244a9eaea9df",
+      "path": "WORKER_RETURNS/EE-P2X/01_LITS_I_A_FIRST_BUILD_STAGE.json"
+    },
+    "LITS_B_CACHELESS_C11": {
+      "commit": "29e434a385719f9835e0bcd252fb24bc37675a99",
+      "path": "WORKER_RETURNS/EE-P2X/03_LITS_I_B_CACHELESS_C11_STAGE.json"
+    },
+    "P2R1_RUNTIME_CATALOG": {
+      "commit": "9511f44728a8469d685463ec0fc880864c9187de",
+      "path": "WORKER_RETURNS/EE-P2R1/08_EXACT_RUNTIME_OBJECT_CATALOG_PREIMAGE_RECEIPT.json"
+    },
+    "P2R1_RUNNER": {
+      "commit": "9511f44728a8469d685463ec0fc880864c9187de",
+      "path": "WORKER_RETURNS/EE-P2R1/09_CARRIER_NEUTRAL_I03_I05_RUNNER_QUALIFICATION_RECEIPT.json"
+    },
+    "P2R1_ADAPTER_MATRIX": {
+      "commit": "9511f44728a8469d685463ec0fc880864c9187de",
+      "path": "WORKER_RETURNS/EE-P2R1/10_ABC_ADAPTER_QUALIFICATION_MATRIX.json"
+    },
+    "LITS_C_REAL_BINDINGS": {
+      "commit": "9511f44728a8469d685463ec0fc880864c9187de",
+      "path": "WORKER_RETURNS/EE-P2R1/11_LITS_C_REAL_DETERMINANT_19_ATOM_BINDING_RECEIPT.json"
+    }
+  },
+  "prerequisites": {
+    "LITS_A": "Preserved qualifying R5 carrier + exact accepted Candidate-A owner at 0b96b8de9aac774566f872cf0630ebd4ddeb70e6 + exact LiTS GovernedC11Projection + P2R1 RuntimeObjectCatalog + bind_repository_builder -> CarrierNeutralResearchExecutor. Do not rebuild qualifying first-build.",
+    "LITS_B": "Preserved standalone cacheless-C11 milestone + accepted source-backed owner + exact LiTS GovernedC11Projection + P2R1 RuntimeObjectCatalog + common runner. Actual unfinished source-backed I03/I05 sessions may reconstruct virtual C11; do not rerun the completed standalone preparatory milestone.",
+    "LITS_C": "Candidate C remains SOURCE_BACKED_HYBRID_WITH_REGENERABLE_ACCELERATORS. For exact current LiTS-I F02, CACC1/CACC2 are permitted physical inventory but have no full-scope applicability; q310/q311 and all uncovered material execute by exact source-backed fallback. No CACC3 and no Candidate-B identity substitution.",
+    "WVS_A": "Exact Lock2 authority/catalog + P2R1 PREPARATION_READY + exact Candidate-A owner at 0b96b8de9aac774566f872cf0630ebd4ddeb70e6. Build frozen WVS R5 carrier on Darwin, bind complete GovernedC11Projection, then common runner.",
+    "WVS_B": "Exact Lock2 authority/catalog + P2R1 PREPARATION_READY + accepted source-backed owner + complete WVS GovernedC11Projection + common runner.",
+    "WVS_C": "Candidate C remains SOURCE_BACKED_HYBRID_WITH_REGENERABLE_ACCELERATORS with zero WVS accelerators. Execute exact source-backed C11/I03/I05 against canonical WVS7 source root; no WVS-specific CACC and no Candidate-B identity substitution."
+  },
+  "stop_laws": {
+    "PURE_B_NO_CACHE": "Frozen Candidate-B law is SOURCE_BACKED_VIRTUAL_C11 with zero retained transformed empirical payload; do not invent an optional cache solely to test stale/corrupt-cache behavior.",
+    "C_ZERO_ACCELERATOR_NO_CACHE": "Current WVS7 Candidate C has exactly zero authorized accelerators; stale/corrupt accelerator-state stages are not applicable and may not be replaced by a WVS-specific CACC."
+  },
+  "hard_prohibitions": [
+    "NO_REBASE_OR_REPLACEMENT_P2X_BRANCH",
+    "NO_LOCK1_MUTATION",
+    "NO_LOCK2_MUTATION",
+    "NO_CANDIDATE_OR_WORKLOAD_REDESIGN",
+    "NO_NEW_WVS_ACCELERATOR",
+    "NO_THIRD_CACC",
+    "NO_GOLDEN_PATH",
+    "NO_SURROGATE_PERFORMANCE_DATA",
+    "NO_CROSS_UNIVERSE_METRIC_POOLING",
+    "NO_REPEAT_COMPLETED_LITS_A_FIRST_BUILD",
+    "NO_REPEAT_COMPLETED_LITS_B_CACHELESS_C11_PREPARATORY_STAGE",
+    "NO_HISTORIC_PRODUCT_SUBSTITUTION_AS_FRESH_OUTPUT",
+    "NO_HASH_INVERSION",
+    "NO_RANKING_OR_SELECTION",
+    "NO_MAIN_OR_SEMANTIC_PRE_MAIN_MUTATION",
+    "NO_ALTERNATE_EDITION_EXPORT_OR_CLEANED_SOURCE",
+    "NO_HISTORICAL_C_FAILURE_AS_CURRENT_CAPABILITY_LAW",
+    "NO_CANDIDATE_C_TO_B_IDENTITY_SUBSTITUTION"
+  ],
+  "stage_catalog": [
+    "S00_SOURCE_PREFLIGHT_IDENTITY",
+    "S01_CANDIDATE_PREPARATION_BUILD",
+    "S02_C11_REACHABILITY",
+    "S03_PARITY_ORACLE_GATE",
+    "S04_I03_EXECUTION",
+    "S05_I05_LEARNED_PRODUCTION",
+    "S06_PROVENANCE_AUDIT",
+    "S07_COLD_RESEARCH",
+    "S08_WARM_REPEATED_RESEARCH",
+    "S09_DELETION_REGEN_OR_A_PERSISTENCE",
+    "S10_SOURCE_RELEASE_INVALIDATION",
+    "S11_SEMANTIC_AUTHORITY_INVALIDATION",
+    "S12_STALE_CACHE_OR_PERSISTENT_STATE",
+    "S13_CORRUPT_CACHE_OR_PERSISTENT_STATE",
+    "S14_INTERRUPTION_RECOVERY",
+    "S15_FRESH_PROCESS_REPLAY",
+    "S16_TERMINAL_METRIC_VECTOR_COMPLETENESS"
+  ],
+  "cells": [
+    {
+      "source": "LITS_I",
+      "candidate": "A",
+      "prerequisite_ref": "LITS_A",
+      "expected_receipt": "WORKER_RETURNS/EE-P2X/09_LITS_I_A_CONTINUATION_TERMINAL.json",
+      "candidate_local_failure_next": "LITS_I/B/S00_SOURCE_PREFLIGHT_IDENTITY",
+      "stages": {
+        "S00_SOURCE_PREFLIGHT_IDENTITY": [
+          "DONE__PRESERVE",
+          "PREFLIGHT",
+          false,
+          false,
+          "S01_CANDIDATE_PREPARATION_BUILD"
+        ],
+        "S01_CANDIDATE_PREPARATION_BUILD": [
+          "DONE__PRESERVE",
+          "LITS_A_FIRST_BUILD",
+          false,
+          false,
+          "S02_C11_REACHABILITY"
+        ],
+        "S02_C11_REACHABILITY": [
+          "READY__RUN_LOCALLY",
+          null,
+          false,
+          true,
+          "S03_PARITY_ORACLE_GATE"
+        ],
+        "S03_PARITY_ORACLE_GATE": [
+          "READY__RUN_LOCALLY",
+          null,
+          false,
+          false,
+          "S04_I03_EXECUTION"
+        ],
+        "S04_I03_EXECUTION": [
+          "READY__RUN_LOCALLY",
+          null,
+          false,
+          true,
+          "S05_I05_LEARNED_PRODUCTION"
+        ],
+        "S05_I05_LEARNED_PRODUCTION": [
+          "READY__RUN_LOCALLY",
+          null,
+          false,
+          true,
+          "S06_PROVENANCE_AUDIT"
+        ],
+        "S06_PROVENANCE_AUDIT": [
+          "READY__RUN_LOCALLY",
+          null,
+          false,
+          true,
+          "S07_COLD_RESEARCH"
+        ],
+        "S07_COLD_RESEARCH": [
+          "READY__RUN_LOCALLY",
+          null,
+          false,
+          true,
+          "S08_WARM_REPEATED_RESEARCH"
+        ],
+        "S08_WARM_REPEATED_RESEARCH": [
+          "READY__RUN_LOCALLY",
+          null,
+          false,
+          true,
+          "S09_DELETION_REGEN_OR_A_PERSISTENCE"
+        ],
+        "S09_DELETION_REGEN_OR_A_PERSISTENCE": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S10_SOURCE_RELEASE_INVALIDATION"
+        ],
+        "S10_SOURCE_RELEASE_INVALIDATION": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S11_SEMANTIC_AUTHORITY_INVALIDATION"
+        ],
+        "S11_SEMANTIC_AUTHORITY_INVALIDATION": [
+          "READY__RUN_LOCALLY",
+          null,
+          false,
+          true,
+          "S12_STALE_CACHE_OR_PERSISTENT_STATE"
+        ],
+        "S12_STALE_CACHE_OR_PERSISTENT_STATE": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S13_CORRUPT_CACHE_OR_PERSISTENT_STATE"
+        ],
+        "S13_CORRUPT_CACHE_OR_PERSISTENT_STATE": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S14_INTERRUPTION_RECOVERY"
+        ],
+        "S14_INTERRUPTION_RECOVERY": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S15_FRESH_PROCESS_REPLAY"
+        ],
+        "S15_FRESH_PROCESS_REPLAY": [
+          "READY__RUN_LOCALLY",
+          null,
+          false,
+          true,
+          "S16_TERMINAL_METRIC_VECTOR_COMPLETENESS"
+        ],
+        "S16_TERMINAL_METRIC_VECTOR_COMPLETENESS": [
+          "READY__RUN_LOCALLY",
+          null,
+          false,
+          true,
+          "LITS_I/B/S00_SOURCE_PREFLIGHT_IDENTITY"
+        ]
+      }
+    },
+    {
+      "source": "LITS_I",
+      "candidate": "B",
+      "prerequisite_ref": "LITS_B",
+      "expected_receipt": "WORKER_RETURNS/EE-P2X/10_LITS_I_B_CONTINUATION_TERMINAL.json",
+      "candidate_local_failure_next": "LITS_I/C/S00_SOURCE_PREFLIGHT_IDENTITY",
+      "stages": {
+        "S00_SOURCE_PREFLIGHT_IDENTITY": [
+          "DONE__PRESERVE",
+          "PREFLIGHT",
+          false,
+          false,
+          "S01_CANDIDATE_PREPARATION_BUILD"
+        ],
+        "S01_CANDIDATE_PREPARATION_BUILD": [
+          "DONE__PRESERVE",
+          "LITS_B_CACHELESS_C11",
+          false,
+          false,
+          "S02_C11_REACHABILITY"
+        ],
+        "S02_C11_REACHABILITY": [
+          "DONE__PRESERVE",
+          "LITS_B_CACHELESS_C11",
+          false,
+          false,
+          "S03_PARITY_ORACLE_GATE"
+        ],
+        "S03_PARITY_ORACLE_GATE": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          false,
+          "S04_I03_EXECUTION"
+        ],
+        "S04_I03_EXECUTION": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S05_I05_LEARNED_PRODUCTION"
+        ],
+        "S05_I05_LEARNED_PRODUCTION": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S06_PROVENANCE_AUDIT"
+        ],
+        "S06_PROVENANCE_AUDIT": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S07_COLD_RESEARCH"
+        ],
+        "S07_COLD_RESEARCH": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S08_WARM_REPEATED_RESEARCH"
+        ],
+        "S08_WARM_REPEATED_RESEARCH": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S09_DELETION_REGEN_OR_A_PERSISTENCE"
+        ],
+        "S09_DELETION_REGEN_OR_A_PERSISTENCE": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S10_SOURCE_RELEASE_INVALIDATION"
+        ],
+        "S10_SOURCE_RELEASE_INVALIDATION": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S11_SEMANTIC_AUTHORITY_INVALIDATION"
+        ],
+        "S11_SEMANTIC_AUTHORITY_INVALIDATION": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S12_STALE_CACHE_OR_PERSISTENT_STATE"
+        ],
+        "S12_STALE_CACHE_OR_PERSISTENT_STATE": [
+          "SKIP__NOT_APPLICABLE_BY_FROZEN_LAW",
+          "PURE_B_NO_CACHE",
+          false,
+          false,
+          "S13_CORRUPT_CACHE_OR_PERSISTENT_STATE"
+        ],
+        "S13_CORRUPT_CACHE_OR_PERSISTENT_STATE": [
+          "SKIP__NOT_APPLICABLE_BY_FROZEN_LAW",
+          "PURE_B_NO_CACHE",
+          false,
+          false,
+          "S14_INTERRUPTION_RECOVERY"
+        ],
+        "S14_INTERRUPTION_RECOVERY": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S15_FRESH_PROCESS_REPLAY"
+        ],
+        "S15_FRESH_PROCESS_REPLAY": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S16_TERMINAL_METRIC_VECTOR_COMPLETENESS"
+        ],
+        "S16_TERMINAL_METRIC_VECTOR_COMPLETENESS": [
+          "READY__RUN_LOCALLY",
+          null,
+          false,
+          true,
+          "LITS_I/C/S00_SOURCE_PREFLIGHT_IDENTITY"
+        ]
+      }
+    },
+    {
+      "source": "LITS_I",
+      "candidate": "C",
+      "prerequisite_ref": "LITS_C_CURRENT_SOURCE_BACKED_HYBRID",
+      "expected_receipt": "WORKER_RETURNS/EE-P2X/11_LITS_I_C_CONTINUATION_TERMINAL.json",
+      "candidate_local_failure_next": "WVS7/A/S00_SOURCE_PREFLIGHT_IDENTITY",
+      "stages": {
+        "S00_SOURCE_PREFLIGHT_IDENTITY": [
+          "DONE__PRESERVE",
+          "PREFLIGHT",
+          false,
+          false,
+          "S01_CANDIDATE_PREPARATION_BUILD"
+        ],
+        "S01_CANDIDATE_PREPARATION_BUILD": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S02_C11_REACHABILITY"
+        ],
+        "S02_C11_REACHABILITY": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S03_PARITY_ORACLE_GATE"
+        ],
+        "S03_PARITY_ORACLE_GATE": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          false,
+          "S04_I03_EXECUTION"
+        ],
+        "S04_I03_EXECUTION": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S05_I05_LEARNED_PRODUCTION"
+        ],
+        "S05_I05_LEARNED_PRODUCTION": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S06_PROVENANCE_AUDIT"
+        ],
+        "S06_PROVENANCE_AUDIT": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S07_COLD_RESEARCH"
+        ],
+        "S07_COLD_RESEARCH": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S08_WARM_REPEATED_RESEARCH"
+        ],
+        "S08_WARM_REPEATED_RESEARCH": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S09_DELETION_REGEN_OR_A_PERSISTENCE"
+        ],
+        "S09_DELETION_REGEN_OR_A_PERSISTENCE": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S10_SOURCE_RELEASE_INVALIDATION"
+        ],
+        "S10_SOURCE_RELEASE_INVALIDATION": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S11_SEMANTIC_AUTHORITY_INVALIDATION"
+        ],
+        "S11_SEMANTIC_AUTHORITY_INVALIDATION": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S12_STALE_CACHE_OR_PERSISTENT_STATE"
+        ],
+        "S12_STALE_CACHE_OR_PERSISTENT_STATE": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S13_CORRUPT_CACHE_OR_PERSISTENT_STATE"
+        ],
+        "S13_CORRUPT_CACHE_OR_PERSISTENT_STATE": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S14_INTERRUPTION_RECOVERY"
+        ],
+        "S14_INTERRUPTION_RECOVERY": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S15_FRESH_PROCESS_REPLAY"
+        ],
+        "S15_FRESH_PROCESS_REPLAY": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S16_TERMINAL_METRIC_VECTOR_COMPLETENESS"
+        ],
+        "S16_TERMINAL_METRIC_VECTOR_COMPLETENESS": [
+          "READY__RUN_LOCALLY",
+          null,
+          false,
+          true,
+          "WVS7/A/S00_SOURCE_PREFLIGHT_IDENTITY"
+        ]
+      }
+    },
+    {
+      "source": "WVS7",
+      "candidate": "A",
+      "prerequisite_ref": "WVS_A",
+      "expected_receipt": "WORKER_RETURNS/EE-P2X/12_WVS7_A_TERMINAL.json",
+      "candidate_local_failure_next": "WVS7/B/S00_SOURCE_PREFLIGHT_IDENTITY",
+      "stages": {
+        "S00_SOURCE_PREFLIGHT_IDENTITY": [
+          "DONE__PRESERVE",
+          "PREFLIGHT",
+          false,
+          false,
+          "S01_CANDIDATE_PREPARATION_BUILD"
+        ],
+        "S01_CANDIDATE_PREPARATION_BUILD": [
+          "READY__RUN_LOCALLY",
+          "P2R1_ADAPTER_MATRIX",
+          true,
+          true,
+          "S02_C11_REACHABILITY"
+        ],
+        "S02_C11_REACHABILITY": [
+          "READY__RUN_LOCALLY",
+          null,
+          false,
+          true,
+          "S03_PARITY_ORACLE_GATE"
+        ],
+        "S03_PARITY_ORACLE_GATE": [
+          "READY__RUN_LOCALLY",
+          null,
+          false,
+          false,
+          "S04_I03_EXECUTION"
+        ],
+        "S04_I03_EXECUTION": [
+          "READY__RUN_LOCALLY",
+          null,
+          false,
+          true,
+          "S05_I05_LEARNED_PRODUCTION"
+        ],
+        "S05_I05_LEARNED_PRODUCTION": [
+          "READY__RUN_LOCALLY",
+          null,
+          false,
+          true,
+          "S06_PROVENANCE_AUDIT"
+        ],
+        "S06_PROVENANCE_AUDIT": [
+          "READY__RUN_LOCALLY",
+          null,
+          false,
+          true,
+          "S07_COLD_RESEARCH"
+        ],
+        "S07_COLD_RESEARCH": [
+          "READY__RUN_LOCALLY",
+          null,
+          false,
+          true,
+          "S08_WARM_REPEATED_RESEARCH"
+        ],
+        "S08_WARM_REPEATED_RESEARCH": [
+          "READY__RUN_LOCALLY",
+          null,
+          false,
+          true,
+          "S09_DELETION_REGEN_OR_A_PERSISTENCE"
+        ],
+        "S09_DELETION_REGEN_OR_A_PERSISTENCE": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S10_SOURCE_RELEASE_INVALIDATION"
+        ],
+        "S10_SOURCE_RELEASE_INVALIDATION": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S11_SEMANTIC_AUTHORITY_INVALIDATION"
+        ],
+        "S11_SEMANTIC_AUTHORITY_INVALIDATION": [
+          "READY__RUN_LOCALLY",
+          null,
+          false,
+          true,
+          "S12_STALE_CACHE_OR_PERSISTENT_STATE"
+        ],
+        "S12_STALE_CACHE_OR_PERSISTENT_STATE": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S13_CORRUPT_CACHE_OR_PERSISTENT_STATE"
+        ],
+        "S13_CORRUPT_CACHE_OR_PERSISTENT_STATE": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S14_INTERRUPTION_RECOVERY"
+        ],
+        "S14_INTERRUPTION_RECOVERY": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S15_FRESH_PROCESS_REPLAY"
+        ],
+        "S15_FRESH_PROCESS_REPLAY": [
+          "READY__RUN_LOCALLY",
+          null,
+          false,
+          true,
+          "S16_TERMINAL_METRIC_VECTOR_COMPLETENESS"
+        ],
+        "S16_TERMINAL_METRIC_VECTOR_COMPLETENESS": [
+          "READY__RUN_LOCALLY",
+          null,
+          false,
+          true,
+          "WVS7/B/S00_SOURCE_PREFLIGHT_IDENTITY"
+        ]
+      }
+    },
+    {
+      "source": "WVS7",
+      "candidate": "B",
+      "prerequisite_ref": "WVS_B",
+      "expected_receipt": "WORKER_RETURNS/EE-P2X/13_WVS7_B_TERMINAL.json",
+      "candidate_local_failure_next": "WVS7/C/S01_CANDIDATE_PREPARATION_BUILD",
+      "stages": {
+        "S00_SOURCE_PREFLIGHT_IDENTITY": [
+          "DONE__PRESERVE",
+          "PREFLIGHT",
+          false,
+          false,
+          "S01_CANDIDATE_PREPARATION_BUILD"
+        ],
+        "S01_CANDIDATE_PREPARATION_BUILD": [
+          "READY__RUN_LOCALLY",
+          "P2R1_ADAPTER_MATRIX",
+          true,
+          true,
+          "S02_C11_REACHABILITY"
+        ],
+        "S02_C11_REACHABILITY": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S03_PARITY_ORACLE_GATE"
+        ],
+        "S03_PARITY_ORACLE_GATE": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          false,
+          "S04_I03_EXECUTION"
+        ],
+        "S04_I03_EXECUTION": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S05_I05_LEARNED_PRODUCTION"
+        ],
+        "S05_I05_LEARNED_PRODUCTION": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S06_PROVENANCE_AUDIT"
+        ],
+        "S06_PROVENANCE_AUDIT": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S07_COLD_RESEARCH"
+        ],
+        "S07_COLD_RESEARCH": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S08_WARM_REPEATED_RESEARCH"
+        ],
+        "S08_WARM_REPEATED_RESEARCH": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S09_DELETION_REGEN_OR_A_PERSISTENCE"
+        ],
+        "S09_DELETION_REGEN_OR_A_PERSISTENCE": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S10_SOURCE_RELEASE_INVALIDATION"
+        ],
+        "S10_SOURCE_RELEASE_INVALIDATION": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S11_SEMANTIC_AUTHORITY_INVALIDATION"
+        ],
+        "S11_SEMANTIC_AUTHORITY_INVALIDATION": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S12_STALE_CACHE_OR_PERSISTENT_STATE"
+        ],
+        "S12_STALE_CACHE_OR_PERSISTENT_STATE": [
+          "SKIP__NOT_APPLICABLE_BY_FROZEN_LAW",
+          "PURE_B_NO_CACHE",
+          false,
+          false,
+          "S13_CORRUPT_CACHE_OR_PERSISTENT_STATE"
+        ],
+        "S13_CORRUPT_CACHE_OR_PERSISTENT_STATE": [
+          "SKIP__NOT_APPLICABLE_BY_FROZEN_LAW",
+          "PURE_B_NO_CACHE",
+          false,
+          false,
+          "S14_INTERRUPTION_RECOVERY"
+        ],
+        "S14_INTERRUPTION_RECOVERY": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S15_FRESH_PROCESS_REPLAY"
+        ],
+        "S15_FRESH_PROCESS_REPLAY": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S16_TERMINAL_METRIC_VECTOR_COMPLETENESS"
+        ],
+        "S16_TERMINAL_METRIC_VECTOR_COMPLETENESS": [
+          "READY__RUN_LOCALLY",
+          null,
+          false,
+          true,
+          "WVS7/C/S01_CANDIDATE_PREPARATION_BUILD"
+        ]
+      }
+    },
+    {
+      "source": "WVS7",
+      "candidate": "C",
+      "prerequisite_ref": "WVS_C_CURRENT_SOURCE_BACKED_ZERO_ACCELERATOR",
+      "expected_receipt": "WORKER_RETURNS/EE-P2X/14_WVS7_C_CONTINUATION_TERMINAL.json",
+      "candidate_local_failure_next": "COURT/S17_FINAL_COMPLETENESS_AND_VERIFICATION",
+      "stages": {
+        "S00_SOURCE_PREFLIGHT_IDENTITY": [
+          "DONE__PRESERVE",
+          "PREFLIGHT",
+          false,
+          false,
+          "S01_CANDIDATE_PREPARATION_BUILD"
+        ],
+        "S01_CANDIDATE_PREPARATION_BUILD": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S02_C11_REACHABILITY"
+        ],
+        "S02_C11_REACHABILITY": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S03_PARITY_ORACLE_GATE"
+        ],
+        "S03_PARITY_ORACLE_GATE": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          false,
+          "S04_I03_EXECUTION"
+        ],
+        "S04_I03_EXECUTION": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S05_I05_LEARNED_PRODUCTION"
+        ],
+        "S05_I05_LEARNED_PRODUCTION": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S06_PROVENANCE_AUDIT"
+        ],
+        "S06_PROVENANCE_AUDIT": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S07_COLD_RESEARCH"
+        ],
+        "S07_COLD_RESEARCH": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S08_WARM_REPEATED_RESEARCH"
+        ],
+        "S08_WARM_REPEATED_RESEARCH": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S09_DELETION_REGEN_OR_A_PERSISTENCE"
+        ],
+        "S09_DELETION_REGEN_OR_A_PERSISTENCE": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S10_SOURCE_RELEASE_INVALIDATION"
+        ],
+        "S10_SOURCE_RELEASE_INVALIDATION": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S11_SEMANTIC_AUTHORITY_INVALIDATION"
+        ],
+        "S11_SEMANTIC_AUTHORITY_INVALIDATION": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S12_STALE_CACHE_OR_PERSISTENT_STATE"
+        ],
+        "S12_STALE_CACHE_OR_PERSISTENT_STATE": [
+          "SKIP__NOT_APPLICABLE_BY_FROZEN_LAW",
+          "C_ZERO_ACCELERATOR_NO_CACHE",
+          false,
+          false,
+          "S13_CORRUPT_CACHE_OR_PERSISTENT_STATE"
+        ],
+        "S13_CORRUPT_CACHE_OR_PERSISTENT_STATE": [
+          "SKIP__NOT_APPLICABLE_BY_FROZEN_LAW",
+          "C_ZERO_ACCELERATOR_NO_CACHE",
+          false,
+          false,
+          "S14_INTERRUPTION_RECOVERY"
+        ],
+        "S14_INTERRUPTION_RECOVERY": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S15_FRESH_PROCESS_REPLAY"
+        ],
+        "S15_FRESH_PROCESS_REPLAY": [
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
+          "S16_TERMINAL_METRIC_VECTOR_COMPLETENESS"
+        ],
+        "S16_TERMINAL_METRIC_VECTOR_COMPLETENESS": [
+          "READY__RUN_LOCALLY",
+          null,
+          false,
+          true,
+          "COURT/S17_FINAL_COMPLETENESS_AND_VERIFICATION"
+        ]
+      }
+    }
+  ],
+  "stage_tuple_schema": [
+    "disposition",
+    "evidence_or_stop_law_ref",
+    "empirical_source_access_required",
+    "physical_host_measurement_required",
+    "next_stage_on_pass"
+  ],
+  "per_stage_inherited_fields": {
+    "source": "parent cell source",
+    "candidate": "parent cell candidate",
+    "executable_prerequisite": "parent cell prerequisite_ref when disposition is READY__RUN_LOCALLY",
+    "expected_output_receipt": "parent cell expected_receipt#<stage_id>",
+    "next_stage_on_candidate_local_failure": "parent cell candidate_local_failure_next",
+    "hard_prohibitions": "top-level hard_prohibitions"
+  },
+  "entry_guard": {
+    "first_unfinished_court_stage": "LITS_I/A/S02_C11_REACHABILITY",
+    "requirements": [
+      "P2X branch == a954e2d6676843da8427ef2439b5d1ef33478359",
+      "Darwin x86_64 / CPython 3.11.3 / pyreadstat 1.3.6 / pyarrow 25.0.1",
+      "Lock1 frozen and Lock2 exact",
+      "no concurrent heavy benchmark workload",
+      "before any fresh source access, require local source SHA == frozen SHA; this is a continuity guard, not repetition of the completed preflight stage",
+      "current manifest schema == RAWLSING_FIABC_CURRENT_SIX_CELL_EXECUTION_MANIFEST@1.0.0",
+      "all six current capabilities admitted; historical Candidate-C failure receipts are history only",
+      "all A/B/C realizations for one source close to the same canonical source SHA",
+      "preserved/prebuilt derivative substitution requires exact canonical-source provenance and lawful I06C accounting classification"
+    ]
+  },
+  "final_stage": {
+    "stage_id": "S17_FINAL_COMPLETENESS_AND_VERIFICATION",
+    "expected_outputs": [
+      "WORKER_RETURNS/EE-P2X/15_FINAL_P2X_COURT_COMPLETENESS.json",
+      "WORKER_RETURNS/EE-P2X/16_VERIFY_EE_P2X_RESUMED_COURT.py",
+      "WORKER_RETURNS/EE-P2X/17_RESUMED_COURT_VERIFICATION_RECEIPT.json",
+      "WORKER_RETURNS/EE-P2X/00_RETURN.md"
+    ],
+    "wake_on_pass": "HQ_MEASURED_SYNTHESIS"
+  },
+  "historical_continuation": {
+    "path": "WORKER_RETURNS/EE-P2X-CONTINUATION-REDUCER-R1/01_CONTINUATION_STATE_MACHINE.json",
+    "schema": "RAWLSING_EE_P2X_CONTINUATION_STATE_MACHINE@1.0.0",
+    "sha256": "ffe7d40e5f2051f839a3a646fd434fbee3b93371e7571d959805ca7ca74e0422",
+    "git_blob_sha1": "e06e95dd370a4fd44235932088308c3372522ed4",
+    "role": "IMMUTABLE_HISTORY_ONLY__NOT_CURRENT_CAPABILITY_LAW",
+    "historical_candidate_c_failure_receipts": [
+      "WORKER_RETURNS/EE-P2X/05_LITS_I_C_TERMINAL_BINDING_BLOCKER.json",
+      "WORKER_RETURNS/EE-P2X/13_WVS7_C_PRESERVED_PORTABILITY_FAILURE.json"
+    ],
+    "mutate_in_place": false
+  },
+  "current_capabilities": [
+    {
+      "source": "LITS_I",
+      "candidate": "A",
+      "status": "CURRENT_EXECUTABLE",
+      "measured_p2x_authorized_by_this_manifest": false
+    },
+    {
+      "source": "LITS_I",
+      "candidate": "B",
+      "status": "CURRENT_EXECUTABLE",
+      "measured_p2x_authorized_by_this_manifest": false
+    },
+    {
+      "source": "LITS_I",
+      "candidate": "C",
+      "status": "CURRENT_EXECUTABLE",
+      "measured_p2x_authorized_by_this_manifest": false
+    },
+    {
+      "source": "WVS7",
+      "candidate": "A",
+      "status": "CURRENT_EXECUTABLE",
+      "measured_p2x_authorized_by_this_manifest": false
+    },
+    {
+      "source": "WVS7",
+      "candidate": "B",
+      "status": "CURRENT_EXECUTABLE",
+      "measured_p2x_authorized_by_this_manifest": false
+    },
+    {
+      "source": "WVS7",
+      "candidate": "C",
+      "status": "CURRENT_EXECUTABLE",
+      "measured_p2x_authorized_by_this_manifest": false
+    }
+  ],
+  "source_root_law": {
+    "same_canonical_root_required_across_candidates": true,
+    "canonical_source_sha256": {
+      "LITS_I": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+      "WVS7": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
+    },
+    "alternate_edition_export_cleaned_source_allowed": false,
+    "preserved_or_prebuilt_derivative_substitution": {
+      "allowed_only_if_same_canonical_source_sha_proven": true,
+      "accounting_classification_required": true,
+      "lawful_accounting_dispositions": [
+        "LAWFULLY_PRESERVED_MEASURED_WORK",
+        "PRESERVED_SEMANTIC_EVIDENCE_WITHOUT_NUMERIC_TELEMETRY"
+      ],
+      "numeric_credit_requires": "LAWFULLY_PRESERVED_MEASURED_WORK"
+    }
+  },
+  "candidate_c_binding": {
+    "contract": "PRE553_CANDIDATE_C_PRODUCTION_BINDING@1.0.0",
+    "candidate": "C",
+    "policy": "SOURCE_BACKED_HYBRID_WITH_REGENERABLE_ACCELERATORS",
+    "owner": {
+      "commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+      "path": "rawlsing_next/pre553_route_c_accelerators.py",
+      "blob": "abfdc91a71ef5e18c4a8a6bf62fa65750d8d9889",
+      "candidate_hash": "a476e6e44c21b8029ae5d3e6d387428a5fa19549a2126d61aae7c71c50c64a3c"
+    },
+    "LITS_I": {
+      "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+      "projection_cache_identity": "84361298ae702786a3fd1044bf619ffa4fe9ed2877040724386951e9c9d27872",
+      "permitted_accelerators": [
+        "CACC1_LITS1_SEMANTIC_EXECUTION_BUNDLE",
+        "CACC2_FRONTIER_ATOMIC_PREDICATE_RISK_MASK_BANK"
+      ],
+      "applicable_accelerators_current_f02": [],
+      "realization": "EXACT_SOURCE_BACKED_FALLBACK_FOR_CURRENT_F02",
+      "q310_q311_required": true,
+      "cacc3_allowed": false
+    },
+    "WVS7": {
+      "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+      "projection_cache_identity": "838070ff6b85d60d4f26f9153b0507ba425936c11a3de94a18d57bfcd083f24d",
+      "permitted_accelerators": [],
+      "applicable_accelerators": [],
+      "realization": "EXACT_SOURCE_BACKED_ZERO_ACCELERATOR",
+      "wvs_specific_cacc_allowed": false
+    },
+    "candidate_b_identity_substitution_allowed": false,
+    "historical_failure_receipts_are_current_capability_law": false
+  },
+  "premeasurement_gates": {
+    "measured_p2x_forbidden_here": true,
+    "current_six_cell_manifest_must_be_consumed_by_driver": true,
+    "source_root_equality_must_pass": true,
+    "preserved_derivative_accounting_receipt_required_before_measurement": true
+  }
+}
