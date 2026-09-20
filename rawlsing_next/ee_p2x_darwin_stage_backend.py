@@ -544,12 +544,20 @@ def _assert_r5_canonical_source_root(reader, source_name):
                 {"required_env": "RAWLSING_EE_P2X_LITS_A_R5_PARENTAGE_RECEIPT",
                  "derivative_identity_is_not_parentage": True},
             )
-        from rawlsing_next.fiabc_live_accounting_binding import require_derivative_parentage
-        require_derivative_parentage(
-            Path(parentage_path),
-            derivative_identity=release_identity,
-            canonical_source_sha256=EXPECTED_SOURCE[source_name],
+        from rawlsing_next.fiabc_live_accounting_binding import (
+            LiveAccountingError, require_derivative_parentage,
         )
+        try:
+            require_derivative_parentage(
+                Path(parentage_path),
+                derivative_identity=release_identity,
+                canonical_source_sha256=EXPECTED_SOURCE[source_name],
+            )
+        except LiveAccountingError as exc:
+            raise SourceAuthorityStop(
+                "LiTS-A preserved R5 derivative parentage failed closed",
+                {"error":str(exc),"derivative_identity_is_not_parentage":True},
+            ) from exc
 
 
 def _compose_current_candidate_c(ctx, services, state, runtime, projection, incidence, runtime_authority):

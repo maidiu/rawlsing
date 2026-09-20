@@ -266,6 +266,20 @@ def _validate_lifecycle(*, event: Mapping[str, Any], observations: Mapping[str, 
         expected_terminal_identity=str(event["expected_terminal_identity"]),
     )
     action=LifecycleAction(event["action"])
+    if action is LifecycleAction.COLD_FIRST_REALIZATION:
+        cold=envelope.get("cold_state_observation",{})
+        if (
+            cold.get("candidate_owned_warm_state_present") is not False
+            or cold.get("scratch_files_before_start") not in ([], ())
+            or cold.get("durable_files_before_start") not in ([], ())
+        ):
+            raise LiveAccountingError(
+                "cold first realization is not backed by the governing T3/I06A absent-state receipt"
+            )
+        if event.get("cold_state_proven_absent") is not True:
+            raise LiveAccountingError(
+                "backend cold claim does not agree with T3/I06A absent-state boundary"
+            )
     request=LifecycleActionRequest(
         binding=binding,action=action,
         governed_operation_id=str(event["governed_operation_id"]),
