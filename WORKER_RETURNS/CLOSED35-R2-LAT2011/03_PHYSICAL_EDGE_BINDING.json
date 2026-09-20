@@ -1,0 +1,172 @@
+{
+  "schema": "CLOSED35_R2_LAT2011_PHYSICAL_EDGE_BINDING@1.0.0",
+  "source": {
+    "family": "Latinobarometro",
+    "wave": "2011",
+    "canonical_filename": "Latinobarometro 2011.sav",
+    "canonical_sha256": "a44e89e08e564e4e175199eeeabfa6163f32f4ba0a19a6c3f5b4752de6cca22e",
+    "format": "SAV",
+    "authority72_class": "L0_EXECUTION_PACKET_READY__NO_NAMED_DOCUMENTARY_BLOCKER"
+  },
+  "accepted_packet_expectations": {
+    "status": "INHERITED__NOT_REMEASURED_BY_THIS_BROWSER_WORKER",
+    "rows": 20204,
+    "variables": 414,
+    "country_coordinate": "IDENPA",
+    "country_count": 18,
+    "country_sample_counts": {
+      "32": 1200,
+      "68": 1200,
+      "76": 1204,
+      "152": 1200,
+      "170": 1200,
+      "188": 1000,
+      "214": 1000,
+      "218": 1200,
+      "222": 1000,
+      "320": 1000,
+      "340": 1000,
+      "484": 1200,
+      "558": 1000,
+      "591": 1000,
+      "600": 1200,
+      "604": 1200,
+      "858": 1200,
+      "862": 1200
+    },
+    "native_interview_attribute": "NUMENTRE",
+    "weight_carrier": "WT",
+    "weight_packet_zero_based_ordinal": 413,
+    "weight_generic_decoder_ordinal": 414
+  },
+  "reader_binding": {
+    "decoder_implementation": "rawlsing_next/pre553_physical_decoder.py",
+    "decoder_version": "pyreadstat/1.3.6",
+    "decoder_mode": "SAV_NATIVE_GOVERNED",
+    "reader": "pyreadstat.read_sav",
+    "encoding_override": null,
+    "user_missing": true,
+    "apply_value_formats": false,
+    "automatic_encoding_guessing": false,
+    "compatibility_mode": "NO_SOURCE_SPECIFIC_COMPATIBILITY_OVERRIDE",
+    "semantic_authority": false
+  },
+  "applicable_edge_classes": [
+    {
+      "edge_class": "EC01",
+      "name": "FORMAT_NATIVE_SOURCE_IDENTITY",
+      "lat2011_binding": [
+        "exact canonical SHA and SAV format",
+        "native governed reader configuration",
+        "source SHA plus physical row ordinal replay identity",
+        "source-local exact variable identity"
+      ],
+      "forbidden": [
+        "source substitution",
+        "format coercion",
+        "native interview number replacing replay identity",
+        "cross-wave variable-name equivalence"
+      ]
+    },
+    {
+      "edge_class": "EC05",
+      "name": "PHYSICAL_MISSINGNESS_MULTICLASS",
+      "lat2011_binding": [
+        "system missing remains distinct from SPSS user missing",
+        "raw value, typed physical state and exact source missing declaration remain row-associated",
+        "questionnaire codes do not overwrite released-storage missing states"
+      ],
+      "forbidden": [
+        "system/user missing collapse",
+        "physical missingness promoted into refusal, don't-know, not-asked or routing semantics"
+      ]
+    },
+    {
+      "edge_class": "EC12",
+      "name": "WEIGHT_DESIGN_MULTIPLICITY_AND_DOMAIN",
+      "lat2011_binding": [
+        "WT retained as exact source carrier",
+        "official documentary role Weighting retained",
+        "country-specific methodological descriptions remain scoped",
+        "no aggregate pooled estimand or default-use authority is synthesized"
+      ],
+      "forbidden": [
+        "automatic default weight",
+        "universal 18-country target population inference",
+        "pooled renormalization or combination by convenience",
+        "weight equals one fallback"
+      ]
+    },
+    {
+      "edge_class": "EC13",
+      "name": "SOURCE_LOCAL_COORDINATE_CARRIERS",
+      "lat2011_binding": [
+        "IDENPA is the source-local country-of-interview coordinate",
+        "exact 18-code sample structure stays source scoped",
+        "raw code and row association remain recoverable"
+      ],
+      "forbidden": [
+        "cross-wave country-code equivalence without authority",
+        "family-wide country universe",
+        "coordinate meaning inferred from empirical similarity"
+      ]
+    }
+  ],
+  "r35_hooks": {
+    "i01_physical_metadata": {
+      "schema": "PRE553_PHYSICAL_METADATA@1.0.0",
+      "required": true,
+      "semantic_authority": false
+    },
+    "i02_derivative_parentage": {
+      "schema": "FIABC_DERIVATIVE_PARENTAGE_BUNDLE@1.0.0",
+      "required_for_non_direct_raw": true,
+      "semantic_authority": false
+    },
+    "i03_source_scope": {
+      "scope_schema": "FIABC_R35_I03_SOURCE_PHYSICAL_SCOPE@1.0.0",
+      "expectation_schema": "FIABC_R35_I03_CANONICAL_PHYSICAL_EXPECTATION@1.0.0",
+      "candidate_realization_schema": "FIABC_R35_I03_CANDIDATE_PHYSICAL_REALIZATION@1.0.0",
+      "receipt_schema": "FIABC_R35_I03_WHOLE_SOURCE_PHYSICAL_EQUIVALENCE_RECEIPT@1.0.0",
+      "required_physical_dimensions": [
+        "physical_metadata",
+        "variable_inventory_order",
+        "raw_storage_values",
+        "physical_missing_declarations",
+        "physical_missing_states",
+        "row_replay_identity",
+        "reader_configuration_digest",
+        "source_coordinate_carriers",
+        "weight_design_carriers"
+      ],
+      "semantic_authority": false
+    }
+  },
+  "cross_wave_exclusions": {
+    "inheritance": "NONE_AUTHORIZED",
+    "forbidden_1995_imports": [
+      "Brazil 120-row release/methodology discrepancy",
+      "1995 interview-ID special case"
+    ],
+    "forbidden_2024_imports": [
+      "nominal_case_size 174 versus 332 raw-layout anomaly",
+      "WT published-domain conflict",
+      "P2ST/P13ST/P19ST repurposing rules"
+    ]
+  },
+  "candidate_neutrality": {
+    "owner": "CLOSED35_R2_LAT2011_SOURCE_REALIZATION@1.0.0",
+    "law": "A_B_C_SHARE_ONE_LAT2011_SOURCE_SPECIFIC_REALIZATION_IDENTITY",
+    "candidate_specific_semantics_allowed": false
+  },
+  "claim_boundary": {
+    "browser_implementation": "SOURCE_SPECIFIC_REALIZATION_IMPLEMENTED",
+    "real_source_bytes_executed": false,
+    "accepted_packet_facts_remeasured": false,
+    "whole_source_physical_equivalence_passed": false,
+    "abc_executed": false,
+    "i05_passed": false,
+    "measured_p2x": false,
+    "source_certified_beyond_accepted_authority": false
+  }
+}
