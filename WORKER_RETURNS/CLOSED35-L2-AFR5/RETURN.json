@@ -1,0 +1,33 @@
+{
+  "schema": "CLOSED35_L2_AFROBAROMETER_R5_RETURN@1.0.0",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-closed35-l2-afrobarometer-r5-authority-r1",
+  "base_sha": "770d95c1a604ea1f47ac2971b923673c14c42984",
+  "source_sha256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+  "disposition": "PARTIAL",
+  "named_l2_surfaces": {
+    "q10b_997": "DOCUMENTARY_AUTHORITY_UNKNOWN",
+    "q47c_997": "DOCUMENTARY_AUTHORITY_UNKNOWN",
+    "country_raw_carrier_binding": "DOCUMENTARY_AUTHORITY_UNKNOWN",
+    "administrative_routing_carriers": "DOCUMENTARY_AUTHORITY_UNKNOWN",
+    "withinwt_role_and_use": "CLOSED_AT_DOCUMENTED_SCOPE",
+    "combinwt_role_and_use": "CLOSED_AT_DOCUMENTED_SCOPE",
+    "r5_design_weight_construction": "CLOSED_AT_DOCUMENTED_SCOPE"
+  },
+  "outputs": [
+    "00_RETURN.md",
+    "01_DOCUMENTARY_SOURCE_LEDGER.csv",
+    "02_FIELD_AUTHORITY_MAP.csv",
+    "03_ROUTING_WEIGHT_AND_COORDINATE_AUTHORITY.md",
+    "04_SOURCE_ADMISSION_PACKET.json",
+    "RETURN.json"
+  ],
+  "prohibitions_observed": {
+    "opened_local_raw_carrier": false,
+    "ran_source_execution": false,
+    "ran_measured_p2x": false,
+    "invented_semantics_from_raw_values": false
+  },
+  "ready_for_source_specific_realization": false,
+  "terminal": "CLOSED35_L2_AFROBAROMETER_R5_DOCUMENTARY_AUTHORITY_PARTIAL__EXACT_UNKNOWN_SET_RETURNED"
+}
