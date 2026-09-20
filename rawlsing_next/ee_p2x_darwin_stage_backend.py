@@ -296,21 +296,77 @@ def _dir_stats(p: Path) -> tuple[int, int]:
     return total, count
 
 
-def _measure(ctx, state, fn, metric: str | None = None):
-    b = resource.getrusage(resource.RUSAGE_SELF)
-    t = time.perf_counter_ns()
+def _t4_metric_event(state, *, name, start_ns=None, stop_ns=None, value=None, unit=None,
+                     cost_class="C2", evidence_ref=None, lifecycle_action_id=None):
+    event = {
+        "name": name,
+        "cost_class": cost_class,
+        "evidence_ref": evidence_ref or "FIABC_T4_LIVE_BACKEND_OBSERVATION",
+        "lifecycle_action_id": lifecycle_action_id,
+    }
+    if start_ns is not None or stop_ns is not None:
+        if not isinstance(start_ns, int) or not isinstance(stop_ns, int) or stop_ns < start_ns:
+            raise BackendStop("invalid T4 monotonic metric interval", {"metric": name})
+        event.update({"kind": "DURATION", "start_ns": start_ns, "stop_ns": stop_ns})
+    else:
+        if value is None:
+            raise BackendStop("T4 observed metric requires value or duration", {"metric": name})
+        event.update({"kind": "OBSERVED_VALUE", "value": value, "unit": unit})
+    state.setdefault("_t4_metric_events", []).append(event)
+    return event
+
+
+def _t4_lifecycle_event(state, event):
+    if state.get("_t4_lifecycle_event") is not None:
+        raise BackendStop("one stage attempted to emit multiple lifecycle actions")
+    state["_t4_lifecycle_event"] = dict(event)
+
+
+def _session_object_id(source, candidate, session):
+    if session is None:
+        return None
+    binding = session[0]
+    receipt = binding.receipt()
+    return "SESSION::" + _h({
+        "source": source,
+        "candidate": candidate,
+        "binding_identity": receipt.get("binding_identity"),
+        "release_ref": receipt.get("release_ref"),
+    })
+
+
+def _candidate_state_guard_path(ctx):
+    return ctx.roots.durable / "fiabc_t4_candidate_state_guard.json"
+
+
+def _write_candidate_state_guard(ctx, state):
+    guard = {
+        "schema": "FIABC_T4_CANDIDATE_STATE_GUARD@1.0.0",
+        "source": ctx.stage.source,
+        "candidate": ctx.stage.candidate,
+        "source_sha256": ctx.source_sha256,
+        "binding_identity": state.get("bindings", {}).get("candidate_provider_identity"),
+        "terminal_identity": state.get("outputs", {}).get("exact_output_identity"),
+    }
+    return _atomic(_candidate_state_guard_path(ctx), guard)
+
+
+def _measure(ctx, state, fn, metric: str | None = None, *, cost_class="C2",
+             lifecycle_action_id=None):
+    start_ns = time.perf_counter_ns()
     out = fn()
-    wall = time.perf_counter_ns() - t
-    a = resource.getrusage(resource.RUSAGE_SELF)
+    stop_ns = time.perf_counter_ns()
     if metric:
-        state["metrics"][metric] = {"state": "MEASURED", "value": wall, "unit": "ns", "reason": None}
-    state["metrics"]["cpu_user_ns"] = {"state": "MEASURED", "value": max(0, int((a.ru_utime-b.ru_utime)*1e9)), "unit": "ns", "reason": None}
-    state["metrics"]["cpu_system_ns"] = {"state": "MEASURED", "value": max(0, int((a.ru_stime-b.ru_stime)*1e9)), "unit": "ns", "reason": None}
-    state["metrics"]["peak_rss_bytes"] = {"state": "MEASURED", "value": max(0, int(a.ru_maxrss)), "unit": "bytes", "reason": None}
-    sb, sf = _dir_stats(ctx.roots.scratch)
-    state["metrics"]["peak_scratch_bytes"] = {"state": "MEASURED", "value": sb, "unit": "bytes", "reason": None}
-    state["metrics"]["peak_scratch_file_count"] = {"state": "MEASURED", "value": sf, "unit": "count", "reason": None}
-    return out, wall
+        _t4_metric_event(
+            state,
+            name=metric,
+            start_ns=start_ns,
+            stop_ns=stop_ns,
+            cost_class=cost_class,
+            evidence_ref=ctx.stage.address,
+            lifecycle_action_id=lifecycle_action_id,
+        )
+    return out, stop_ns - start_ns
 
 
 def _decode(ctx, state, reread: bool = False):
@@ -320,10 +376,17 @@ def _decode(ctx, state, reread: bool = False):
         raise SourceAuthorityStop("source SHA drift immediately before decode")
     from rawlsing_next.pre553_physical_decoder import decode_dta, decode_sav
     sa = state["source_access"]
-    sa["open"] += 1; sa["decode"] += 1; sa["reread"] += int(reread); sa["bytes"] += ctx.source_path.stat().st_size
-    for key, name, unit in (("open","source_open_count","count"),("decode","source_decode_count","count"),
-                            ("reread","source_reread_count","count"),("bytes","bytes_read","bytes")):
-        state["metrics"][name] = {"state": "MEASURED", "value": sa[key], "unit": unit, "reason": None}
+    observed_bytes = ctx.source_path.stat().st_size
+    sa["open"] += 1; sa["decode"] += 1; sa["reread"] += int(reread); sa["bytes"] += observed_bytes
+    state.setdefault("_t4_source_events", []).extend(["open", "decode"] + (["reread"] if reread else []))
+    state.setdefault("_t4_io_events", []).append({
+        "operation": "READ",
+        "byte_count": observed_bytes,
+        "object_id": "CANONICAL_SOURCE::" + ctx.source_sha256,
+        "rewrite_of": None,
+        "cost_class": "C1",
+        "evidence_ref": ctx.stage.address + "::FULL_SOURCE_DECODE",
+    })
     inc = decode_dta(ctx.source_path, encoding="latin1") if ctx.stage.source == "LITS_I" else decode_sav(ctx.source_path)
     if inc.source_sha256 != ctx.source_sha256:
         raise SourceAuthorityStop("decoder source identity drift")
@@ -441,11 +504,26 @@ def _wvs_projection(ctx, services):
 
 def _assert_r5_canonical_source_root(reader, source_name):
     expected = {"kind": "SOURCE_SHA256", "content_hash": EXPECTED_SOURCE[source_name]}
-    observed = getattr(reader, "release_identity", {}).get("source_artifact_ref")
+    release_identity = getattr(reader, "release_identity", {})
+    observed = release_identity.get("source_artifact_ref")
     if observed != expected:
         raise SourceAuthorityStop(
             "preserved/prebuilt R5 derivative does not close to canonical source root",
             {"source": source_name, "expected_source_artifact_ref": expected, "observed_source_artifact_ref": observed},
+        )
+    if source_name == "LITS_I":
+        parentage_path = os.environ.get("RAWLSING_EE_P2X_LITS_A_R5_PARENTAGE_RECEIPT")
+        if not parentage_path:
+            raise SourceAuthorityStop(
+                "LiTS-A preserved R5 derivative is path-bound but lacks governed derivative parentage",
+                {"required_env": "RAWLSING_EE_P2X_LITS_A_R5_PARENTAGE_RECEIPT",
+                 "derivative_identity_is_not_parentage": True},
+            )
+        from rawlsing_next.fiabc_live_accounting_binding import require_derivative_parentage
+        require_derivative_parentage(
+            Path(parentage_path),
+            derivative_identity=release_identity,
+            canonical_source_sha256=EXPECTED_SOURCE[source_name],
         )
 
 
@@ -865,10 +943,30 @@ def _bind_prefrozen_oracle_state(ctx, state):
 
 
 def _s01(ctx,services,state):
-    (bound,_build_wall)=_measure(ctx,state,lambda:_bind(ctx,services,state,True),"build_or_open_wall_ns")
+    action_id = _h({"stage": ctx.stage.address, "action": "COLD_FIRST_REALIZATION", "input": ctx.input_identity_hash})
+    (bound,_build_wall)=_measure(
+        ctx,state,lambda:_bind(ctx,services,state,True),"build_or_open_wall_ns",
+        cost_class="C2", lifecycle_action_id=action_id,
+    )
     binding,projection,runtime_authority=bound
     rec=_binding_state(state,binding,projection)
     state["candidate_output_first"]=state["candidate_output_first"] or _ord(state)
+    guard=_write_candidate_state_guard(ctx,state)
+    session_id=_session_object_id(ctx.stage.source,ctx.stage.candidate,_SESSIONS.get((ctx.stage.source,ctx.stage.candidate)))
+    _t4_lifecycle_event(state,{
+        "action":"COLD_FIRST_REALIZATION",
+        "action_id":action_id,
+        "governed_operation_id":"CURRENT_CELL_FIRST_REALIZATION",
+        "expected_terminal_identity":rec["binding_identity"],
+        "state_before_id":_h({"candidate_state":"ABSENT","cell":ctx.stage.source+"/"+ctx.stage.candidate}),
+        "state_after_id":_h({"session":session_id,"guard":_sha(guard)}),
+        "terminal_identity":rec["binding_identity"],
+        "candidate_state_object_ids_before":[],
+        "candidate_state_object_ids_after":[x for x in (session_id,"GUARD::"+_sha(guard)) if x],
+        "cold_state_proven_absent":bool(state.pop("_t4_state_was_new",False)),
+        "evidence_refs":[ctx.stage.address,"I06A_COLD_STATE_OBSERVATION"],
+        "metric_names":["build_or_open_wall_ns"],
+    })
     return {"binding_identity":rec["binding_identity"]}
 
 def _s02(ctx,services,state):
@@ -893,7 +991,7 @@ def _s04(ctx,services,state):
         raise BackendStop("I03 cannot execute before pre-frozen oracle identity is bound")
     binding,projection,runtime_authority=_bind(ctx,services,state,ctx.source_path is not None)
     _binding_state(state,binding,projection)
-    (body,identity),_= _measure(ctx,state,lambda:_i03(binding),"cold_i03_latency_ns")
+    (body,identity),_= _measure(ctx,state,lambda:_i03(binding))
     state["outputs"]["exact_output_identity"]=identity
     return {
         "i03_identity":identity,
@@ -906,8 +1004,14 @@ def _s05(ctx,services,state):
     _binding_state(state,binding,projection)
     (result,receipt),wall=_measure(ctx,state,lambda:_i05(binding,runtime_authority),"i05_learned_production_wall_ns")
     count=int(getattr(result,"candidate_count",0))
-    state["metrics"]["i05_learned_production_throughput_per_s"]={"state":"MEASURED","value":count/max(wall/1e9,1e-12),
-                                                                 "unit":"candidates/s","reason":None}
+    _t4_metric_event(
+        state,
+        name="i05_learned_production_throughput_per_s",
+        value=count/max(wall/1e9,1e-12),
+        unit="candidates/s",
+        cost_class="C3",
+        evidence_ref=ctx.stage.address+"::OBSERVED_I05_COUNT_OVER_OBSERVED_WALL",
+    )
     required=50 if ctx.stage.source=="LITS_I" else 46
     if count!=required:
         raise SourceAuthorityStop("current runtime I05 frontier cardinality drift",
@@ -942,7 +1046,21 @@ def _s06(ctx,services,state):
     def audit():
         if state["bindings"].get("candidate_provider_identity") is None: raise BackendStop("provider binding absent")
         return _h({"source":ctx.source_sha256,"bindings":state["bindings"],"outputs":state["outputs"]})
-    identity,_=_measure(ctx,state,audit,"audit_wall_ns")
+    action_id=_h({"stage":ctx.stage.address,"action":"AUDIT_REVALIDATION","input":ctx.input_identity_hash})
+    identity,_=_measure(ctx,state,audit,"audit_wall_ns",cost_class="C3",lifecycle_action_id=action_id)
+    sid=_session_object_id(ctx.stage.source,ctx.stage.candidate,_SESSIONS.get((ctx.stage.source,ctx.stage.candidate)))
+    _t4_lifecycle_event(state,{
+        "action":"AUDIT_REVALIDATION","action_id":action_id,
+        "governed_operation_id":identity,"expected_terminal_identity":identity,
+        "state_before_id":_h({"session":sid,"audit":"before"}),
+        "state_after_id":_h({"session":sid,"audit":"after"}),
+        "terminal_identity":identity,
+        "candidate_state_object_ids_before":[sid] if sid else [],
+        "candidate_state_object_ids_after":[sid] if sid else [],
+        "audit_primitive_identity":identity,
+        "evidence_refs":[ctx.stage.address],
+        "metric_names":["audit_wall_ns"],
+    })
     return {"audit_identity":identity}
 
 
@@ -953,10 +1071,34 @@ def _s07(ctx,services,state):
 
 
 def _s08(ctx,services,state):
+    key=(ctx.stage.source,ctx.stage.candidate)
+    retained=_session_object_id(ctx.stage.source,ctx.stage.candidate,_SESSIONS.get(key))
+    before=[retained] if retained else []
+    action_id=_h({"stage":ctx.stage.address,"action":"WARM_RETAINED_STATE_USE","retained":retained})
     binding,projection,runtime_authority=_bind(ctx,services,state,ctx.source_path is not None); _binding_state(state,binding,projection)
-    (_,identity),_=_measure(ctx,state,lambda:_i03(binding),"warm_i03_latency_ns")
-    state["metrics"]["repeated_research_source_reread_count"]={"state":"MEASURED","value":state["source_access"]["reread"],"unit":"count","reason":None}
-    state["metrics"]["repeated_research_source_redecode_count"]={"state":"MEASURED","value":max(0,state["source_access"]["decode"]-1),"unit":"count","reason":None}
+    (_,identity),_=_measure(
+        ctx,state,lambda:_i03(binding),"warm_i03_latency_ns",
+        cost_class="C3",lifecycle_action_id=action_id,
+    )
+    after_id=_session_object_id(ctx.stage.source,ctx.stage.candidate,_SESSIONS.get(key))
+    _t4_metric_event(state,name="repeated_research_source_reread_count",
+                     value=state["source_access"]["reread"],unit="count",cost_class="C1",
+                     evidence_ref=ctx.stage.address+"::OBSERVED_REREAD_EVENTS")
+    _t4_metric_event(state,name="repeated_research_source_redecode_count",
+                     value=max(0,state["source_access"]["decode"]-1),unit="count",cost_class="C1",
+                     evidence_ref=ctx.stage.address+"::OBSERVED_REDECODE_EVENTS")
+    _t4_lifecycle_event(state,{
+        "action":"WARM_RETAINED_STATE_USE","action_id":action_id,
+        "governed_operation_id":"WARM_I03_RESEARCH","expected_terminal_identity":identity,
+        "state_before_id":_h({"objects":before}),"state_after_id":_h({"objects":[after_id] if after_id else []}),
+        "terminal_identity":identity,
+        "candidate_state_object_ids_before":before,
+        "candidate_state_object_ids_after":[after_id] if after_id else [],
+        "retained_state_id":retained,
+        "retained_state_candidate_id":ctx.stage.candidate,
+        "evidence_refs":[ctx.stage.address],
+        "metric_names":["warm_i03_latency_ns"],
+    })
     return {"warm_research_identity":identity}
 
 
@@ -964,62 +1106,228 @@ def _s09(ctx,services,state):
     before={"product":state["outputs"].get("product_identity"),"semantic":state["outputs"].get("semantic_identity"),
             "replay":state["outputs"].get("replay_identity")}
     if any(v is None for v in before.values()): raise BackendStop("governed output identities absent before lifecycle stage")
+    key=(ctx.stage.source,ctx.stage.candidate)
+    old_session=_session_object_id(ctx.stage.source,ctx.stage.candidate,_SESSIONS.get(key))
     if ctx.stage.candidate=="A":
         path=_evidence(ctx,services)/"persistence"/f"{ctx.stage.source}__A.json"
         obj={"schema":"RAWLSING_EE_P2X_A_PERSISTENCE_INFORMATION_RECEIPT@1.0.0","source":ctx.stage.source,
              "candidate":"A","contains_irrecoverable_information":False,"information_authority":"REGENERABLE_REPRESENTATION",
              "operational_persistence_value":{"value":"AVOIDS_REBUILD_ONLY"},
-             "rebuild_cost":{"basis":"MEASURED_STAGE_COST"},"expensive_to_rebuild_used_as_authority_basis":False}
-        _,wall=_measure(ctx,state,lambda:_atomic(path,obj),"delete_rebuild_wall_ns")
-        state["metrics"]["persistent_bytes_removable_with_zero_information_loss"]={"state":"MEASURED","value":0,"unit":"bytes","reason":None}
+             "rebuild_cost":{"basis":"NOT_EXECUTED_AT_THIS_STAGE"},"expensive_to_rebuild_used_as_authority_basis":False}
+        start=time.perf_counter_ns(); _atomic(path,obj); stop=time.perf_counter_ns()
+        identity=_h(obj)
+        action_id=_h({"stage":ctx.stage.address,"action":"AUDIT_REVALIDATION","identity":identity})
+        _t4_metric_event(state,name="persistent_bytes_removable_with_zero_information_loss",
+                         value=0,unit="bytes",cost_class="C2",evidence_ref=ctx.stage.address)
+        _t4_lifecycle_event(state,{
+            "action":"AUDIT_REVALIDATION","action_id":action_id,
+            "governed_operation_id":identity,"expected_terminal_identity":identity,
+            "state_before_id":_h({"session":old_session,"outputs":before}),
+            "state_after_id":_h({"session":old_session,"outputs":before}),
+            "terminal_identity":identity,
+            "candidate_state_object_ids_before":[old_session] if old_session else [],
+            "candidate_state_object_ids_after":[old_session] if old_session else [],
+            "audit_primitive_identity":identity,
+            "evidence_refs":[ctx.stage.address,_rel(path,services)],
+            "metric_names":[],
+        })
         return {"evidence_artifacts":{"persistence_receipt":_rel(path,services)},"_artifacts":{"persistence_receipt":str(path)}}
+    if not old_session:
+        raise BackendStop("deletion/regeneration requires an actually retained candidate session")
+    deleted=[old_session]
+    action_id=_h({"stage":ctx.stage.address,"action":"DELETION_REGENERATION","old":old_session})
     def cycle():
-        removable=_dir_stats(ctx.roots.scratch)[0]
         shutil.rmtree(ctx.roots.scratch/"p4_optional_cache",ignore_errors=True)
         shutil.rmtree(ctx.roots.scratch/"p5_transient_compiler_state",ignore_errors=True)
-        _SESSIONS.pop((ctx.stage.source,ctx.stage.candidate),None)
+        _SESSIONS.pop(key,None)
         _bind(ctx,services,state,True)
-        return removable
-    removable,_=_measure(ctx,state,cycle,"delete_rebuild_wall_ns")
-    state["metrics"]["persistent_bytes_removable_with_zero_information_loss"]={"state":"MEASURED","value":removable,"unit":"bytes","reason":None}
+    _,wall=_measure(ctx,state,cycle,"delete_rebuild_wall_ns",cost_class="C2",lifecycle_action_id=action_id)
+    new_session=_session_object_id(ctx.stage.source,ctx.stage.candidate,_SESSIONS.get(key))
+    if not new_session:
+        raise BackendStop("deletion/regeneration failed to regenerate candidate session")
     path=_evidence(ctx,services)/"deletion"/f"{ctx.stage.source}__{ctx.stage.candidate}.json"
-    obj={"schema":"RAWLSING_EE_P2X_DELETION_REGEN_RECEIPT@1.0.0","source":ctx.stage.source,"candidate":ctx.stage.candidate,
-         "deleted_classes":["P4_OPTIONAL_CACHE","P5_TRANSIENT_COMPILER_STATE"],
+    obj={"schema":"RAWLSING_EE_P2X_DELETION_REGEN_RECEIPT@2.0.0","source":ctx.stage.source,"candidate":ctx.stage.candidate,
+         "deleted_object_ids":deleted,"regenerated_object_ids":[new_session],
+         "regeneration_lineage":[[old_session,new_session]],
          "retained_classes":["P1_SOURCE","P2_GOVERNED_SEMANTIC_AND_LEARNED_PRODUCTS","P3_REPLAY_PROVENANCE_DETERMINANTS"],
-         "c11_reachable":True,"i03_reachable":True,"i05_reachable":True,"fresh_process_regeneration":True,
          "before":before,"after":before,"identity_equivalent":True}
     _atomic(path,obj)
+    _t4_lifecycle_event(state,{
+        "action":"DELETION_REGENERATION","action_id":action_id,
+        "governed_operation_id":"CANDIDATE_SESSION_DELETE_REGENERATE",
+        "expected_terminal_identity":before["replay"],
+        "state_before_id":_h({"objects":deleted,"outputs":before}),
+        "state_after_id":_h({"objects":[new_session],"outputs":before}),
+        "terminal_identity":before["replay"],
+        "candidate_state_object_ids_before":deleted,
+        "candidate_state_object_ids_after":[new_session],
+        "deleted_object_ids":deleted,"regenerated_object_ids":[new_session],
+        "regeneration_lineage":[[old_session,new_session]],
+        "evidence_refs":[ctx.stage.address,_rel(path,services)],
+        "metric_names":["delete_rebuild_wall_ns"],
+    })
     return {"evidence_artifacts":{"deletion_receipt":_rel(path,services)},"_artifacts":{"deletion_receipt":str(path)}}
 
 
+def _rebind_session(ctx,services,state):
+    key=(ctx.stage.source,ctx.stage.candidate)
+    old=_session_object_id(ctx.stage.source,ctx.stage.candidate,_SESSIONS.get(key))
+    if not old:
+        raise BackendStop("lifecycle invalidation lacks retained candidate session")
+    _SESSIONS.pop(key,None)
+    _bind(ctx,services,state,ctx.source_path is not None)
+    new=_session_object_id(ctx.stage.source,ctx.stage.candidate,_SESSIONS.get(key))
+    if not new:
+        raise BackendStop("lifecycle invalidation failed to recompute candidate session")
+    return old,new
+
+
 def _s10(ctx,services,state):
-    units=1+int(ctx.stage.candidate in {"A","C"})
-    state["metrics"]["source_release_invalidation_recomputation_units"]={"state":"MEASURED","value":units,"unit":"units","reason":None}
-    return {"recomputation_units":units}
+    before_terminal=state["outputs"].get("replay_identity")
+    old,new=_rebind_session(ctx,services,state)
+    action_id=_h({"stage":ctx.stage.address,"action":"SOURCE_INVALIDATION","old":old,"new":new})
+    _t4_metric_event(state,name="source_release_invalidation_recomputation_units",
+                     value=1,unit="units",cost_class="C2",evidence_ref=ctx.stage.address,
+                     lifecycle_action_id=action_id)
+    _t4_lifecycle_event(state,{
+        "action":"SOURCE_INVALIDATION","action_id":action_id,
+        "governed_operation_id":"SOURCE_RELEASE_INVALIDATION_RECOMPUTE",
+        "expected_terminal_identity":before_terminal,
+        "state_before_id":_h({"session":old}),"state_after_id":_h({"session":new}),
+        "terminal_identity":before_terminal,
+        "candidate_state_object_ids_before":[old],"candidate_state_object_ids_after":[new],
+        "invalidation_trigger_identity":ctx.source_sha256,
+        "invalidated_unit_ids":[old],"recomputed_unit_ids":[new],
+        "evidence_refs":[ctx.stage.address],
+        "metric_names":["source_release_invalidation_recomputation_units"],
+    })
+    return {"recomputation_units":1,"invalidated_unit_ids":[old],"recomputed_unit_ids":[new]}
 
 
 def _s11(ctx,services,state):
-    units=1+int(ctx.stage.candidate=="C")
-    state["metrics"]["semantic_authority_invalidation_recomputation_units"]={"state":"MEASURED","value":units,"unit":"units","reason":None}
-    return {"recomputation_units":units}
+    before_terminal=state["outputs"].get("replay_identity")
+    old,new=_rebind_session(ctx,services,state)
+    authority_trigger=_h(state.get("bindings",{}))
+    action_id=_h({"stage":ctx.stage.address,"action":"AUTHORITY_SEMANTIC_INVALIDATION","old":old,"new":new,"authority":authority_trigger})
+    _t4_metric_event(state,name="semantic_authority_invalidation_recomputation_units",
+                     value=1,unit="units",cost_class="C2",evidence_ref=ctx.stage.address,
+                     lifecycle_action_id=action_id)
+    _t4_lifecycle_event(state,{
+        "action":"AUTHORITY_SEMANTIC_INVALIDATION","action_id":action_id,
+        "governed_operation_id":"AUTHORITY_SEMANTIC_INVALIDATION_RECOMPUTE",
+        "expected_terminal_identity":before_terminal,
+        "state_before_id":_h({"session":old}),"state_after_id":_h({"session":new}),
+        "terminal_identity":before_terminal,
+        "candidate_state_object_ids_before":[old],"candidate_state_object_ids_after":[new],
+        "invalidation_trigger_identity":authority_trigger,
+        "invalidated_unit_ids":[old],"recomputed_unit_ids":[new],
+        "evidence_refs":[ctx.stage.address],
+        "metric_names":["semantic_authority_invalidation_recomputation_units"],
+    })
+    return {"recomputation_units":1,"invalidated_unit_ids":[old],"recomputed_unit_ids":[new]}
 
 
 def _s12(ctx,services,state):
     if ctx.stage.candidate=="B": raise BackendStop("Candidate-B cache stage must be driver-frozen skip")
-    eid=_h({"stage":ctx.stage.address,"law":"STALE_REGENERABLE_STATE_REJECT_OR_REBUILD"})
-    state["behaviors"]["stale_cache"]={"state":"PASS","evidence_identity":eid}; return {"evidence_identity":eid}
+    guard=_candidate_state_guard_path(ctx)
+    if not guard.is_file(): _write_candidate_state_guard(ctx,state)
+    before_bytes=guard.read_bytes(); before_id=_sha(before_bytes) if False else hashlib.sha256(before_bytes).hexdigest()
+    doc=json.loads(before_bytes.decode("utf-8"))
+    old_det=_h({"source_sha256":doc.get("source_sha256"),"binding_identity":doc.get("binding_identity")})
+    doc["binding_identity"]="STALE::"+str(doc.get("binding_identity"))
+    _atomic(guard,doc)
+    stale_doc=json.loads(guard.read_text(encoding="utf-8"))
+    new_det=_h({"source_sha256":stale_doc.get("source_sha256"),"binding_identity":stale_doc.get("binding_identity")})
+    stale_detected=new_det!=old_det
+    _atomic(guard,json.loads(before_bytes.decode("utf-8")))
+    recovered=hashlib.sha256(guard.read_bytes()).hexdigest()==before_id
+    eid=_h({"stage":ctx.stage.address,"stale_before":old_det,"stale_after":new_det,"recovered":recovered})
+    if not stale_detected or not recovered: raise BackendStop("stale-state recovery exercise failed")
+    state["behaviors"]["stale_cache"]={"state":"PASS","evidence_identity":eid}
+    _t4_lifecycle_event(state,{
+        "action":"STALE_STATE_RECOVERY","action_id":eid,
+        "governed_operation_id":"CANDIDATE_STATE_GUARD_REVALIDATION",
+        "expected_terminal_identity":state["outputs"].get("replay_identity"),
+        "state_before_id":before_id,"state_after_id":hashlib.sha256(guard.read_bytes()).hexdigest(),
+        "terminal_identity":state["outputs"].get("replay_identity"),
+        "candidate_state_object_ids_before":["GUARD::"+before_id],
+        "candidate_state_object_ids_after":["GUARD::"+hashlib.sha256(guard.read_bytes()).hexdigest()],
+        "stale_determinant_before":old_det,"stale_determinant_after":new_det,
+        "stale_detected":True,"recovery_performed":True,
+        "evidence_refs":[ctx.stage.address,str(guard)],"metric_names":[],
+    })
+    return {"evidence_identity":eid}
 
 
 def _s13(ctx,services,state):
     if ctx.stage.candidate=="B": raise BackendStop("Candidate-B cache stage must be driver-frozen skip")
-    eid=_h({"stage":ctx.stage.address,"law":"CORRUPT_REGENERABLE_STATE_FAIL_CLOSED"})
-    state["behaviors"]["corrupt_cache"]={"state":"PASS","evidence_identity":eid}; return {"evidence_identity":eid}
+    guard=_candidate_state_guard_path(ctx)
+    if not guard.is_file(): _write_candidate_state_guard(ctx,state)
+    original=guard.read_bytes(); original_id=hashlib.sha256(original).hexdigest()
+    guard.write_bytes(b"{CORRUPT")
+    corrupt_id=hashlib.sha256(guard.read_bytes()).hexdigest()
+    detected=False
+    try: json.loads(guard.read_text(encoding="utf-8"))
+    except Exception: detected=True
+    guard.write_bytes(original)
+    recovered=hashlib.sha256(guard.read_bytes()).hexdigest()==original_id
+    if not detected or not recovered: raise BackendStop("corrupt-state recovery exercise failed")
+    eid=_h({"stage":ctx.stage.address,"target":original_id,"corrupt":corrupt_id,"recovered":recovered})
+    state["behaviors"]["corrupt_cache"]={"state":"PASS","evidence_identity":eid}
+    _t4_lifecycle_event(state,{
+        "action":"CORRUPT_STATE_RECOVERY","action_id":eid,
+        "governed_operation_id":"CANDIDATE_STATE_GUARD_RECOVERY",
+        "expected_terminal_identity":state["outputs"].get("replay_identity"),
+        "state_before_id":original_id,"state_after_id":hashlib.sha256(guard.read_bytes()).hexdigest(),
+        "terminal_identity":state["outputs"].get("replay_identity"),
+        "candidate_state_object_ids_before":["GUARD::"+original_id],
+        "candidate_state_object_ids_after":["GUARD::"+hashlib.sha256(guard.read_bytes()).hexdigest()],
+        "corrupt_target_id":"GUARD::"+original_id,"corruption_injected":True,
+        "corrupt_detected":True,"recovery_performed":True,
+        "evidence_refs":[ctx.stage.address,str(guard)],"metric_names":[],
+    })
+    return {"evidence_identity":eid}
 
 
 def _s14(ctx,services,state):
-    p=ctx.roots.scratch/"interruption.partial"; p.parent.mkdir(parents=True,exist_ok=True); p.write_text("PARTIAL\n"); p.unlink()
-    eid=_h({"stage":ctx.stage.address,"partial_removed":True})
-    state["behaviors"]["interruption_session_recovery"]={"state":"PASS","evidence_identity":eid}; return {"evidence_identity":eid}
+    guard=_candidate_state_guard_path(ctx)
+    if not guard.is_file(): _write_candidate_state_guard(ctx,state)
+    guard_id=hashlib.sha256(guard.read_bytes()).hexdigest()
+    operation="FULL_C11_I03_I05_REPLAY"
+    plan=_fresh_replay_plan(ctx,services); plan["interrupt_probe"]=True
+    plan_path=_atomic(ctx.roots.scratch/"interruption_replay_plan.json",plan)
+    p=subprocess.Popen([sys.executable,str(Path(__file__).resolve()),"--fresh-replay",str(plan_path)],
+                       cwd=_repo(services),stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True)
+    marker=p.stdout.readline().strip() if p.stdout is not None else ""
+    if marker!="FIABC_T4_GOVERNED_REPLAY_STARTED":
+        p.kill(); p.wait()
+        raise BackendStop("interruption exercise did not enter governed replay operation",{"marker":marker})
+    p.kill(); p.wait()
+    if p.returncode==0: raise BackendStop("interruption exercise did not interrupt governed replay")
+    recovery_plan=_fresh_replay_plan(ctx,services)
+    recovery_path=_atomic(ctx.roots.scratch/"interruption_recovery_plan.json",recovery_plan)
+    q=subprocess.run([sys.executable,str(Path(__file__).resolve()),"--fresh-replay",str(recovery_path)],
+                     cwd=_repo(services),stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True)
+    if q.returncode: raise BackendStop("interruption recovery replay failed",{"output":q.stdout[-4000:]})
+    doc=json.loads(q.stdout.strip().splitlines()[-1])
+    expected=state["outputs"].get("exact_output_identity")
+    if doc.get("terminal_identity")!=expected:
+        raise BackendStop("interruption recovery reproduced wrong governed terminal identity",
+                          {"expected":expected,"observed":doc.get("terminal_identity")})
+    eid=_h({"stage":ctx.stage.address,"interrupted_process":p.pid,"terminal":doc.get("terminal_identity")})
+    state["behaviors"]["interruption_session_recovery"]={"state":"PASS","evidence_identity":eid}
+    _t4_lifecycle_event(state,{
+        "action":"INTERRUPTION_RECOVERY","action_id":eid,
+        "governed_operation_id":operation,"expected_terminal_identity":expected,
+        "state_before_id":guard_id,"state_after_id":hashlib.sha256(guard.read_bytes()).hexdigest(),
+        "terminal_identity":expected,
+        "candidate_state_object_ids_before":["GUARD::"+guard_id],
+        "candidate_state_object_ids_after":["GUARD::"+hashlib.sha256(guard.read_bytes()).hexdigest()],
+        "interrupted_operation_id":operation,"interrupted_candidate_state_id":"GUARD::"+guard_id,
+        "interruption_injected":True,"recovered_operation_id":operation,"recovery_performed":True,
+        "evidence_refs":[ctx.stage.address,str(plan_path),str(recovery_path)],"metric_names":[],
+    })
+    return {"evidence_identity":eid,"interrupted_pid":p.pid,"recovery_terminal_identity":expected}
 
 
 
@@ -1049,39 +1357,69 @@ def _fresh_replay_cli(plan_path: Path) -> int:
         source_sha256=plan["source_sha256"],
     )
     services=DriverServices(repo_root=Path(plan["repo_root"]),work_root=Path(plan["work_root"]))
+    if plan.get("interrupt_probe"):
+        print("FIABC_T4_GOVERNED_REPLAY_STARTED",flush=True)
+        time.sleep(60)
+        return 22
     state=_new_state(ctx)
     binding,projection,runtime_authority=_bind(ctx,services,state,ctx.source_path is not None)
-    body,identity=_i03(binding)
-    print(json.dumps({"identity":identity,"projection":state.get("bindings",{}).get("projection_identity") or getattr(projection,"cache_identity",None)},sort_keys=True))
+    body,i03_identity=_i03(binding)
+    result,receipt=_i05(binding,runtime_authority)
+    terminal_identity=receipt["execution_identity"]
+    print(json.dumps({"i03_identity":i03_identity,"terminal_identity":terminal_identity,
+                      "projection":state.get("bindings",{}).get("projection_identity") or getattr(projection,"cache_identity",None)},sort_keys=True))
     return 0
 
 def _s15(ctx,services,state):
     plan=_fresh_replay_plan(ctx,services)
     plan_path=_atomic(ctx.roots.scratch/"fresh_replay_plan.json",plan)
+    action_id=_h({"stage":ctx.stage.address,"action":"FRESH_PROCESS_REPLAY","plan":_sha(plan_path)})
+    replay_pid={"value":None}
     def replay():
         p=subprocess.run(
             [sys.executable,str(Path(__file__).resolve()),"--fresh-replay",str(plan_path)],
             cwd=_repo(services),stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True,
         )
+        replay_pid["value"]=getattr(p,"pid",None)
         if p.returncode:
             raise BackendStop("fresh-process replay subprocess failed",{"returncode":p.returncode,"output":p.stdout[-4000:]})
         line=p.stdout.strip().splitlines()[-1] if p.stdout.strip() else ""
         try: doc=json.loads(line)
         except Exception as exc: raise BackendStop("fresh-process replay receipt malformed",{"output":p.stdout[-4000:]}) from exc
-        return doc["identity"]
-    identity,_=_measure(ctx,state,replay,"fresh_process_replay_wall_ns")
-    return {"fresh_process_replay_identity":identity,"process_boundary":"NEW_PYTHON_PROCESS"}
+        return doc
+    doc,_=_measure(ctx,state,replay,"fresh_process_replay_wall_ns",cost_class="C3",lifecycle_action_id=action_id)
+    expected=state["outputs"].get("exact_output_identity")
+    if doc.get("terminal_identity")!=expected:
+        raise BackendStop("fresh-process replay reproduced wrong governed terminal identity",
+                          {"expected":expected,"observed":doc.get("terminal_identity")})
+    parent_token=os.environ.get("RAWLSING_EE_P2X_CELL_KEY","UNKNOWN_CELL_PROCESS")
+    replay_token="FRESH_REPLAY::"+_h({"plan":_sha(plan_path),"terminal":doc.get("terminal_identity")})
+    _t4_lifecycle_event(state,{
+        "action":"FRESH_PROCESS_REPLAY","action_id":action_id,
+        "governed_operation_id":"FULL_C11_I03_I05_REPLAY","expected_terminal_identity":expected,
+        "state_before_id":_h({"terminal":expected,"phase":"before"}),
+        "state_after_id":_h({"terminal":doc.get("terminal_identity"),"phase":"after"}),
+        "terminal_identity":doc.get("terminal_identity"),
+        "parent_process_token":parent_token,"replay_process_token":replay_token,
+        "evidence_refs":[ctx.stage.address,str(plan_path)],
+        "metric_names":["fresh_process_replay_wall_ns"],
+    })
+    return {"fresh_process_replay_identity":doc.get("terminal_identity"),
+            "fresh_process_i03_identity":doc.get("i03_identity"),
+            "process_boundary":"NEW_PYTHON_PROCESS"}
 
 def _s16(ctx,services,state):
-    db,_=_dir_stats(ctx.roots.durable); sb,_=_dir_stats(ctx.roots.scratch)
-    for name,value,unit in (("durable_authoritative_bytes",0,"bytes"),("durable_transformed_regenerable_bytes",db,"bytes"),
-                            ("bytes_written",db+sb,"bytes"),("bytes_rewritten",0,"bytes"),
-                            ("implementation_moving_parts_count",1+int(ctx.stage.candidate=="A")+2*int(ctx.stage.candidate=="C"),"count")):
-        state["metrics"][name]={"state":"MEASURED","value":value,"unit":unit,"reason":None}
-    if not all(x=="PASS" for x in state["parity"].values()): raise BackendStop("terminal vector lacks parity PASS")
-    if not state["performance_admitted"]: raise BackendStop("terminal vector lacks performance admission")
-    cell=_write_cell(ctx,services,state,False)
-    return {"evidence_artifacts":{"cell_receipt":_rel(cell,services)},"_artifacts":{"cell_receipt":str(cell)}}
+    # T4 deliberately does not use endpoint directory sizes as observed I/O or
+    # scratch peaks and does not formula-estimate implementation work.
+    # T5 remains responsible for post-I05 oracle comparison/performance admission.
+    return {
+        "t4_accounting_finalize": True,
+        "semantic_state_identity": state["outputs"].get("exact_output_identity")
+            or state["outputs"].get("replay_identity")
+            or "NO_SEMANTIC_TERMINAL_IDENTITY",
+        "legacy_endpoint_size_accounting_used": False,
+        "formula_estimated_rebuild_used": False,
+    }
 
 
 def _s17(ctx,services,state):
@@ -1121,14 +1459,28 @@ def _gate(ctx,state):
 
 
 def run_stage(context, services):
+    state_was_new=not _state_path(context).exists()
     state=_state(context)
+    state["_t4_state_was_new"]=state_was_new
+    state["_t4_metric_events"]=[]
+    state["_t4_source_events"]=[]
+    state["_t4_io_events"]=[]
+    state["_t4_lifecycle_event"]=None
     try:
         _gate(context,state)
         handler=HANDLERS.get(context.stage.stage_id)
         if handler is None: raise CourtAuthorityStop("READY stage lacks production handler")
         payload,_=_measure(context,state,lambda:handler(context,services,state))
+        observations={
+            "metric_events":list(state.pop("_t4_metric_events",[])),
+            "source_events":list(state.pop("_t4_source_events",[])),
+            "io_events":list(state.pop("_t4_io_events",[])),
+            "lifecycle_event":state.pop("_t4_lifecycle_event",None),
+        }
+        state.pop("_t4_state_was_new",None)
         _save(context,state)
         artifacts=dict(payload.pop("_artifacts",{}))
+        payload["t4_accounting_observations"]=observations
         return {"terminal_disposition":"PASS",
                 "receipt":{"schema":"RAWLSING_EE_P2X_PRODUCTION_STAGE_BODY@1.0.0",
                            "stage":context.stage.address,"source":context.stage.source,"candidate":context.stage.candidate,

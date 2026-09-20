@@ -493,7 +493,16 @@ def _mechanical_terminal(machine, ledger, stage, head, source_sha, kind, body, n
     ledger.complete(stage,input_identity_hash=ih,terminal_disposition=kind,receipt_path=receipt,output_artifact_hashes={},verifier_complete=True,next_stage=next_stage); return next_stage,_sha256_file(receipt)
 def _preserve(machine, ledger, stage, repo, head, source_sha):
     data,d=_evidence_bytes(machine,stage.evidence_or_stop_law_ref,repo)
-    return _mechanical_terminal(machine,ledger,stage,head,source_sha,"PRESERVED",{"schema":"RAWLSING_EE_P2X_PRESERVED_STAGE_BINDING@1.0.0","evidence_ref":stage.evidence_or_stop_law_ref,"evidence":dict(d),"evidence_sha256":_sha256_bytes(data),"evidence_git_blob_sha1":_git_blob_sha1(data),"source_access_performed":False},stage.next_stage_on_pass)
+    from rawlsing_next.fiabc_live_accounting_binding import preserved_stage_adjudication
+    accounting=preserved_stage_adjudication(
+        stage=stage,source_sha256=source_sha,evidence_ref=stage.evidence_or_stop_law_ref
+    )
+    return _mechanical_terminal(machine,ledger,stage,head,source_sha,"PRESERVED",{
+        "schema":"RAWLSING_EE_P2X_PRESERVED_STAGE_BINDING@1.0.0",
+        "evidence_ref":stage.evidence_or_stop_law_ref,"evidence":dict(d),
+        "evidence_sha256":_sha256_bytes(data),"evidence_git_blob_sha1":_git_blob_sha1(data),
+        "source_access_performed":False,"t4_preserved_work_adjudication":accounting,
+    },stage.next_stage_on_pass)
 def _skip(machine, ledger, stage, head, source_sha):
     ref=stage.evidence_or_stop_law_ref; law=machine.document.get("stop_laws",{}).get(ref)
     if not isinstance(law,str): raise StageStateError(f"stop law unavailable: {ref}")
@@ -515,7 +524,15 @@ def _backend_terminal(machine,ledger,stage,head,source_sha,result):
     if result.terminal_disposition not in {"PASS","CANDIDATE_LOCAL_FAILURE","COMMON_SOURCE_BLOCKER","COMMON_COURT_BLOCKER"}: raise StageStateError("backend terminal disposition invalid")
     if not result.verifier_complete: raise StageStateError("backend result incomplete: verifier did not complete")
     ih=_input_identity(machine,stage,source_sha,head); roots=_candidate_roots(ledger.work_root,stage.source,stage.candidate)
-    receipt=_write_receipt(roots,stage,{"schema":"RAWLSING_EE_P2X_DARWIN_STAGE_RECEIPT_ENVELOPE@1.0.0","stage":stage.address,"backend_contract":BACKEND_CONTRACT,"terminal_disposition":result.terminal_disposition,"input_identity_hash":ih,"measured_payload":dict(result.receipt)})
+    measured_payload=dict(result.receipt)
+    from rawlsing_next.fiabc_live_accounting_binding import admit_live_stage_accounting
+    owner_identity=OWNER_SPECS.get(stage.candidate,{}).get("blob","COURT_ADMINISTRATION")
+    measured_payload["t4_accounting"]=admit_live_stage_accounting(
+        stage=stage,roots=roots,source_sha256=source_sha,
+        candidate_owner_identity=owner_identity,repo_head=head,
+        backend_receipt=measured_payload,terminal_disposition=result.terminal_disposition,
+    )
+    receipt=_write_receipt(roots,stage,{"schema":"RAWLSING_EE_P2X_DARWIN_STAGE_RECEIPT_ENVELOPE@1.0.0","stage":stage.address,"backend_contract":BACKEND_CONTRACT,"terminal_disposition":result.terminal_disposition,"input_identity_hash":ih,"measured_payload":measured_payload})
     arts=_artifact_hashes(ledger.work_root,ledger.repo_root,result.output_artifacts)
     disp,nxt={"PASS":("PASS",stage.next_stage_on_pass),"CANDIDATE_LOCAL_FAILURE":("CANDIDATE_LOCAL_FAILURE",stage.next_stage_on_candidate_local_failure),"COMMON_SOURCE_BLOCKER":("BLOCKED_BY_COMMON_SOURCE_AUTHORITY","__COMMON_SOURCE_BLOCKER__"),"COMMON_COURT_BLOCKER":("BLOCKED_BY_COMMON_COURT_AUTHORITY","__COMMON_COURT_BLOCKER__")}[result.terminal_disposition]
     ledger.complete(stage,input_identity_hash=ih,terminal_disposition=disp,receipt_path=receipt,output_artifact_hashes=arts,verifier_complete=True,next_stage=nxt); return nxt,_sha256_file(receipt),disp
@@ -673,6 +690,10 @@ def main(argv: Sequence[str] | None=None):
         freeze_path=args.frozen_upstream_receipt.resolve()
         validate_frozen_upstream_for_machine(machine,freeze_path)
         os.environ[FROZEN_UPSTREAM_ENV]=str(freeze_path)
+        from rawlsing_next.fiabc_live_accounting_binding import authorized_same_cell_transitions
+        os.environ["RAWLSING_EE_P2X_WARM_STATE_TRANSITIONS"]=",".join(
+            authorized_same_cell_transitions(machine.document.get("stage_catalog",()))
+        )
         if args.backend_module != ISOLATED_BACKEND_MODULE:
             raise RuntimeGateError(
                 "FIABC-T3 execution requires the process-isolated backend adapter; "
