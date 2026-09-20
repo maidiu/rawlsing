@@ -48,7 +48,7 @@ def _synthetic_incidence(source_sha=CANONICAL_SHA256, **overrides):
         "semantic_authority": False,
     }
     reader.update(overrides)
-    return SimpleNamespace(source_sha256=source_sha, reader_configuration=reader)
+    return SimpleNamespace(source_sha256=source_sha, source_format="SAV", reader_configuration=reader)
 
 
 def _exact_topology():
@@ -129,6 +129,10 @@ def test_mr_rank_and_missing_state_law_is_preserved():
         assert realized.is_missing is True
         assert realized.semantic_state == state
 
+    unknown = realize_mr_item_code(997)
+    assert unknown.semantic_state == BOUNDED_UNKNOWN
+    assert unknown.is_missing is None
+
 
 def test_routing_is_documentary_and_never_inferred_from_missingness():
     unresolved = resolve_mr_routing(
@@ -182,6 +186,10 @@ def test_source_sha_and_compatibility_mode_fail_closed():
 
     with pytest.raises(EVS2008RealizationError, match="source root mismatch"):
         admit_physical_incidence(_synthetic_incidence(source_sha="0" * 64))
+    wrong_format = _synthetic_incidence()
+    wrong_format.source_format = "DTA"
+    with pytest.raises(EVS2008RealizationError, match="source format mismatch"):
+        admit_physical_incidence(wrong_format)
     with pytest.raises(EVS2008RealizationError, match="reader/config drift"):
         admit_physical_incidence(_synthetic_incidence(encoding="utf-8"))
     with pytest.raises(EVS2008RealizationError, match="reader/config drift"):
