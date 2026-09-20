@@ -880,7 +880,11 @@ def _r5_release_identity(source: str, projection):
     return R5ReleaseIdentity(
         release_id=f"EE-P2R6S-{source}-A-{identity[:16]}",
         semantic_release_hash=identity,
-        source_artifact_ref={"kind":"SOURCE_SHA256","content_hash":source_sha},
+        source_artifact_ref={
+            "kind":"SOURCE_SHA256",
+            "object_id":"CANONICAL_SOURCE::" + source_sha,
+            "content_hash":source_sha,
+        },
         source_release_manifest_hash=_h({"source_sha256":source_sha,"release":identity}),
         m01_m18_coverage={},
         decoder_receipt={"source_sha256":source_sha,"contract":"PRE553_FROZEN_PHYSICAL_DECODER"},
