@@ -1,0 +1,144 @@
+{
+  "schema": "CLOSED35_GSS1972_PHYSICAL_EDGE_BINDING@1.0.0",
+  "worker": "CLOSED35-R1-GSS1972",
+  "source": {
+    "family": "GSS",
+    "release": "1972",
+    "filename": "GSS1972.sav",
+    "sha256": "e368fc0f1d141b201900185c919c48ab1de1c4c7815bccf83a6e4fb224293204",
+    "format": "sav",
+    "reader_mode": "NATIVE_GOVERNED"
+  },
+  "inherited_physical_scope": {
+    "rows": 1613,
+    "variables": 216,
+    "canonical_replay_identity": [
+      "source_sha256",
+      "zero_based_source_row_ordinal"
+    ],
+    "accepted_source_local_native_id": "id",
+    "accepted_design_carrier": "sample",
+    "accepted_weight_carriers": [
+      "wtssall",
+      "wtssps"
+    ],
+    "absent_not_authorized_carriers": [
+      "form",
+      "ballot",
+      "VPSU",
+      "VSTRAT"
+    ]
+  },
+  "s35_edge_classes": [
+    {
+      "id": "EC01",
+      "name": "FORMAT_FAMILY_SAV_DTA",
+      "required_dimensions": [
+        "physical_metadata",
+        "variable_inventory_order",
+        "raw_storage_values",
+        "row_replay_identity"
+      ],
+      "gss1972_binding": "SAV_NATIVE_GOVERNED",
+      "semantic_overlay": "NONE__FORMAT_IS_PHYSICAL_ONLY"
+    },
+    {
+      "id": "EC07",
+      "name": "NATIVE_ID_SCOPE_COLLISION_OR_NONINJECTIVITY",
+      "required_dimensions": [
+        "row_replay_identity",
+        "native_id_replay_evidence"
+      ],
+      "gss1972_binding": {
+        "hard_identity": [
+          "canonical_source_sha256",
+          "zero_based_source_row_ordinal"
+        ],
+        "native_id": "id",
+        "native_id_scope": "SOURCE_LOCAL_ATTRIBUTE_CHECK_ONLY",
+        "cross_release_identity": "REJECTED"
+      },
+      "semantic_overlay": "NATIVE_ID_NEVER_REPLACES_HARD_REPLAY_IDENTITY"
+    },
+    {
+      "id": "EC10",
+      "name": "FORM_MODULE_SKIP_ROUTING_CARRIERS",
+      "required_dimensions": [
+        "form_module_skip_routing_carriers"
+      ],
+      "gss1972_binding": {
+        "primary_routing_authority": "OFFICIAL_1972_GSS_QUESTIONNAIRE",
+        "technical_secondary_authority": "1972_EXPLICIT_CUMULATIVE_CODEBOOK_OR_METHOD_ENTRY",
+        "form": "NOT_APPLICABLE_1972",
+        "ballot": "NOT_APPLICABLE_1972",
+        "missingness_as_routing_authority": false,
+        "repeated_occurrence_topology": [
+          "Q91:respondent",
+          "Q91:father_or_substitute",
+          "Q91:mother_or_substitute",
+          "Q91:spouse_if_currently_married"
+        ],
+        "omnibus_exclusion": "Q51_Q81_NON_GSS"
+      },
+      "semantic_overlay": "DOCUMENTARY_ROUTING_BINDS_APPLICABILITY_WITHOUT_REWRITING_PHYSICAL_STATE"
+    },
+    {
+      "id": "EC12",
+      "name": "WEIGHT_DESIGN_MULTIPLICITY_AND_DOMAIN",
+      "required_dimensions": [
+        "weight_design_variables"
+      ],
+      "gss1972_binding": {
+        "preserve_all_weight_carriers": [
+          "wtssall",
+          "wtssps"
+        ],
+        "design_classifier": {
+          "field": "sample",
+          "meaning": "1960_FRAME_BLOCK_QUOTA",
+          "is_weight": false
+        },
+        "default_person_population_weight": "wtssps",
+        "legacy_person_weight": "wtssall",
+        "authorized_modern_variance_pair": null,
+        "variance_support_state": "UNSUPPORTED__NO_AUTHORIZED_1972_VARIANCE_PAIR",
+        "forbidden_fabricated_carriers": [
+          "VPSU",
+          "VSTRAT",
+          "SAMPCODE",
+          "BQWT",
+          "RACE_CORRECTION_WEIGHT",
+          "FORMWT",
+          "BALLOTFORMWT",
+          "BALLOTFORMWTNR",
+          "WTSSNR",
+          "WTSSNRPS",
+          "OVERSAMP"
+        ]
+      },
+      "semantic_overlay": "WEIGHT_SELECTION_REQUIRES_DECLARED_ANALYTICAL_INTENT_AND_DOCUMENTED_SCOPE"
+    }
+  ],
+  "composition_law": {
+    "physical_adapter_count_added": 0,
+    "candidate_specific_semantics_allowed": false,
+    "direct_raw_realization_requirement": "R35_I03_WHOLE_SOURCE_PHYSICAL_EQUIVALENCE_AT_EC01_EC07_EC10_EC12_SCOPE",
+    "derivative_realization_additional_requirement": "R35_I02_VERIFIED_DERIVATIVE_PARENTAGE_TO_CANONICAL_SHA",
+    "physical_metadata_requirement": "R35_I01_PHYSICAL_METADATA_RECEIPT",
+    "semantic_requirement": "CLOSED35_GSS1972_SEMANTIC_REALIZATION@1.0.0"
+  },
+  "source_specific_negative_admissions": {
+    "cross_release_respondent_identity": "REJECTED",
+    "form_coordinate": "NOT_APPLICABLE_1972",
+    "ballot_coordinate": "NOT_APPLICABLE_1972",
+    "modern_vpsu_vstrat_variance": "UNSUPPORTED__NOT_AUTHORIZED_FOR_1972",
+    "modern_nonresponse_weight_regime": "NOT_APPLICABLE_1972"
+  },
+  "proof_boundary": {
+    "raw_sav_opened": false,
+    "source_processing_executed": false,
+    "measured_p2x_run": false,
+    "physical_equivalence_executed": false,
+    "abc_qualification_executed": false
+  }
+}
