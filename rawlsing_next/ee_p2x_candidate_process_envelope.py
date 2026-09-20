@@ -23,7 +23,7 @@ from typing import Any, Mapping
 
 BACKEND_CONTRACT = "RAWLSING_EE_P2X_DARWIN_STAGE_BACKEND@1.0.0"
 PROCESS_ENVELOPE_SCHEMA = "RAWLSING_FIABC_P2X_CANDIDATE_PROCESS_ENVELOPE@1.0.0"
-FREEZE_RECEIPT_SCHEMA = "RAWLSING_FIABC_CANDIDATE_NEUTRAL_FREEZE@1.0.0"
+FREEZE_RECEIPT_SCHEMA = "RAWLSING_FIABC_CANDIDATE_NEUTRAL_FREEZE@2.0.0"
 PROTOCOL_SCHEMA = "RAWLSING_FIABC_P2X_CELL_PROCESS_PROTOCOL@1.0.0"
 PROTOCOL_PREFIX = "RAWLSING_FIABC_CELL_PROCESS "
 OWNER_MARKER = ".fiabc_process_envelope_owner.json"
@@ -126,7 +126,46 @@ def _relative_file_inventory(root: Path) -> tuple[str, ...]:
     return tuple(sorted(out))
 
 
+def _is_sha256(value: Any) -> bool:
+    return (
+        isinstance(value, str)
+        and len(value) == 64
+        and all(ch in "0123456789abcdef" for ch in value.lower())
+    )
+
+
+def _validate_source_freeze_entry(source_key: str, entry: Any) -> Mapping[str, Any]:
+    if not isinstance(entry, Mapping):
+        raise FrozenUpstreamError(f"source freeze entry must be an object: {source_key}")
+    source_id = entry.get("source_id")
+    if not isinstance(source_id, str) or not source_id or source_id != source_key:
+        raise FrozenUpstreamError(f"source freeze source_id mismatch: {source_key}")
+    canonical = entry.get("canonical_source_sha256")
+    if not _is_sha256(canonical):
+        raise FrozenUpstreamError(f"canonical source SHA-256 malformed: {source_key}")
+    authority_ref = entry.get("source_identity_authority_ref")
+    if authority_ref in (None, "", {}, []):
+        raise FrozenUpstreamError(f"source identity authority ref missing: {source_key}")
+    derivative_identity = entry.get("derivative_identity")
+    derivative_ref = entry.get("derivative_to_source_provenance_ref")
+    if (derivative_identity is None) != (derivative_ref is None):
+        raise FrozenUpstreamError(
+            f"derivative identity and derivative-to-source provenance must be paired: {source_key}"
+        )
+    if derivative_identity is not None and derivative_identity in ("", {}, []):
+        raise FrozenUpstreamError(f"derivative identity malformed: {source_key}")
+    if derivative_ref is not None and derivative_ref in ("", {}, []):
+        raise FrozenUpstreamError(f"derivative-to-source provenance ref malformed: {source_key}")
+    return entry
+
+
 def load_frozen_upstream_receipt(path: Path) -> tuple[Mapping[str, Any], str]:
+    """Load the all-source candidate-neutral freeze receipt.
+
+    The contract is source-family agnostic.  Each source entry binds the
+    canonical physical root and its identity authority, plus paired derivative
+    identity/provenance when a derivative is the admitted physical carrier.
+    """
     p = path.resolve()
     if not p.is_file():
         raise FrozenUpstreamError(f"candidate-neutral freeze receipt missing: {p}")
@@ -145,12 +184,63 @@ def load_frozen_upstream_receipt(path: Path) -> tuple[Mapping[str, Any], str]:
         raise FrozenUpstreamError("upstream material was not frozen before candidate execution")
     for forbidden in ("candidate", "candidate_id", "candidate_owner", "selected_candidate"):
         if forbidden in doc:
-            raise FrozenUpstreamError(f"candidate-specific field forbidden in upstream freeze receipt: {forbidden}")
-    for required in ("source_identities", "authority_identities", "workload_identities", "oracle_identity"):
-        if required not in doc:
-            raise FrozenUpstreamError(f"upstream freeze receipt missing opaque identity class: {required}")
-    return doc, _sha256_bytes(data)
+            raise FrozenUpstreamError(
+                f"candidate-specific field forbidden in upstream freeze receipt: {forbidden}"
+            )
 
+    if doc.get("candidate_outputs_seen") != 0:
+        raise FrozenUpstreamError("oracle/source freeze occurred after candidate output")
+    if doc.get("candidate_owned_roots_consulted") not in ([], ()):
+        raise FrozenUpstreamError("candidate-owned roots were consulted while freezing upstream truth")
+    if doc.get("candidate_owned_state_reused") is not False:
+        raise FrozenUpstreamError("candidate-owned state was reused while freezing upstream truth")
+    if doc.get("state") != "FROZEN_READ_ONLY":
+        raise FrozenUpstreamError("upstream freeze receipt is not read-only frozen")
+
+    source_freezes = doc.get("source_freezes")
+    if not isinstance(source_freezes, Mapping) or not source_freezes:
+        raise FrozenUpstreamError("source_freezes must be a non-empty source-keyed mapping")
+    for source_key, entry in source_freezes.items():
+        if not isinstance(source_key, str) or not source_key:
+            raise FrozenUpstreamError("source_freezes contains an invalid source key")
+        _validate_source_freeze_entry(source_key, entry)
+
+    authority_identities = doc.get("authority_identities")
+    workload_identities = doc.get("workload_identities")
+    oracle_identities = doc.get("oracle_identities")
+    if not isinstance(authority_identities, Mapping) or not authority_identities:
+        raise FrozenUpstreamError("authority_identities must be a non-empty mapping")
+    if not isinstance(workload_identities, Mapping) or not workload_identities:
+        raise FrozenUpstreamError("workload_identities must be a non-empty mapping")
+    if not isinstance(oracle_identities, Mapping):
+        raise FrozenUpstreamError("oracle_identities must be a source-keyed mapping")
+    if set(oracle_identities) != set(source_freezes):
+        raise FrozenUpstreamError("oracle identities must cover exactly the frozen source set")
+    for source_key, oracle in oracle_identities.items():
+        if not isinstance(oracle, Mapping):
+            raise FrozenUpstreamError(f"oracle identity entry must be an object: {source_key}")
+        if not _is_sha256(oracle.get("oracle_identity_sha256")):
+            raise FrozenUpstreamError(f"oracle identity malformed: {source_key}")
+        if oracle.get("oracle_freeze_authority_ref") in (None, "", {}, []):
+            raise FrozenUpstreamError(f"oracle freeze authority ref missing: {source_key}")
+
+    order = doc.get("freeze_order")
+    if not isinstance(order, Mapping):
+        raise FrozenUpstreamError("freeze_order missing")
+    keys = (
+        "source_identity_freeze_sequence",
+        "authority_workload_freeze_sequence",
+        "oracle_materialize_freeze_sequence",
+    )
+    values = tuple(order.get(k) for k in keys)
+    if not all(isinstance(v, int) and not isinstance(v, bool) and v >= 0 for v in values):
+        raise FrozenUpstreamError("freeze_order sequences must be non-negative integers")
+    if not (values[0] < values[1] < values[2]):
+        raise FrozenUpstreamError(
+            "freeze ordering must be source identity -> authority/workload -> oracle"
+        )
+
+    return doc, _sha256_bytes(data)
 
 def _backend_loaded_in_parent(backend_spec: str) -> bool:
     if backend_spec.endswith(".py") or os.path.sep in backend_spec:
@@ -475,13 +565,15 @@ class ProcessIsolationController:
         source = context.stage.source
         if source == "COURT":
             return
-        identities = self.freeze_document.get("source_identities", {})
-        if source not in identities:
-            raise FrozenUpstreamError(f"freeze receipt has no source identity for {source}")
-        entry = identities[source]
-        expected = entry.get("sha256") if isinstance(entry, Mapping) else entry
-        if expected != context.source_sha256:
-            raise FrozenUpstreamError(f"freeze receipt source identity drift for {source}")
+        source_freezes = self.freeze_document.get("source_freezes", {})
+        if source not in source_freezes:
+            raise FrozenUpstreamError(f"freeze receipt has no source freeze for {source}")
+        entry = _validate_source_freeze_entry(source, source_freezes[source])
+        if entry.get("canonical_source_sha256") != context.source_sha256:
+            raise FrozenUpstreamError(f"freeze receipt canonical source identity drift for {source}")
+        oracle = self.freeze_document.get("oracle_identities", {}).get(source)
+        if not isinstance(oracle, Mapping) or not _is_sha256(oracle.get("oracle_identity_sha256")):
+            raise FrozenUpstreamError(f"freeze receipt has no valid frozen oracle for {source}")
 
     def _validate_roots(self, context: Any) -> tuple[Path, Mapping[str, Any]]:
         source = context.stage.source
