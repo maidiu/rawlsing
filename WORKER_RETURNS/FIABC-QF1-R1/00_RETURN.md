@@ -48,4 +48,3 @@ All unrelated frozen T1–T6 identities remain exact. The live backend blob chan
 No LiTS-I raw source, WVS7 raw source, CLOSED_35 carrier, SAV bytes, real six-cell execution, WVS oracle materialization, missing LiTS-A first-build receipt, R6X, or measured P2X was run.
 
 The source-independent qualification is complete and the repository is ready for the separately governed local source-materialization gates. This commission did not execute those gates.
-
