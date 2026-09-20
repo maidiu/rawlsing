@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import copy
+import hashlib
+import json
 import pytest
 
 from rawlsing_next.fiabc_live_terminal_control import (
@@ -8,6 +10,7 @@ from rawlsing_next.fiabc_live_terminal_control import (
     COURT_CONTRACT_SCHEMA,
     LiveTerminalControlError,
     validate_current_court_contract,
+    validate_t4_terminal_accounting_receipt,
 )
 
 LITS="7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09"
@@ -81,3 +84,23 @@ def test_r35_may_not_be_merged_or_overclaimed_in_t5():
     doc=_contract(); doc["claim_boundary"]["capability_105_cells"]=True
     with pytest.raises(LiveTerminalControlError):
         validate_current_court_contract(doc,_manifest())
+
+def test_t4_terminal_accounting_receipt_missing_fails_closed():
+    with pytest.raises(LiveTerminalControlError):
+        validate_t4_terminal_accounting_receipt(None)
+
+def test_t4_terminal_accounting_receipt_byte_drift_fails_closed(tmp_path):
+    p=tmp_path/"telemetry.json"
+    p.write_text(json.dumps({"status":"PASS"})+"\\n",encoding="utf-8")
+    good=hashlib.sha256(p.read_bytes()).hexdigest()
+    row={
+        "schema":"FIABC_T4_LIVE_ACCOUNTING_BINDING@1.0.0",
+        "semantic_state_modified":False,
+        "candidate_neutral_c0_excluded":True,
+        "telemetry_receipt_path":str(p),
+        "telemetry_receipt_sha256":good,
+    }
+    assert validate_t4_terminal_accounting_receipt(row)["telemetry_receipt_sha256"]==good
+    row["telemetry_receipt_sha256"]="0"*64
+    with pytest.raises(LiveTerminalControlError):
+        validate_t4_terminal_accounting_receipt(row)

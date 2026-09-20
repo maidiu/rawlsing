@@ -861,6 +861,29 @@ def admit_post_i05_oracle_match(
     }
 
 
+def validate_t4_terminal_accounting_receipt(value: Any) -> Mapping[str, Any]:
+    if not isinstance(value, Mapping):
+        raise LiveTerminalControlError("T4 terminal accounting receipt is missing")
+    if value.get("schema") != "FIABC_T4_LIVE_ACCOUNTING_BINDING@1.0.0":
+        raise LiveTerminalControlError("T4 terminal accounting contract identity drift")
+    if value.get("semantic_state_modified") is not False:
+        raise LiveTerminalControlError("T4 accounting may not modify semantic state")
+    if value.get("candidate_neutral_c0_excluded") is not True:
+        raise LiveTerminalControlError("T4 candidate-neutral C0 exclusion drift")
+    path_raw = value.get("telemetry_receipt_path")
+    expected_sha = value.get("telemetry_receipt_sha256")
+    if not isinstance(path_raw, str) or not path_raw:
+        raise LiveTerminalControlError("T4 terminal telemetry receipt path missing")
+    if not isinstance(expected_sha, str) or len(expected_sha) != 64:
+        raise LiveTerminalControlError("T4 terminal telemetry receipt SHA missing")
+    path = Path(path_raw)
+    if not path.is_file():
+        raise LiveTerminalControlError("T4 terminal telemetry receipt file missing")
+    if _sha(path) != expected_sha:
+        raise LiveTerminalControlError("T4 terminal telemetry receipt byte drift")
+    return value
+
+
 def seal_live_cell_terminal(
     *, stage: Any, roots: Any, work_root: Path, freeze_path: Path,
     backend_receipt: Mapping[str, Any],
@@ -877,6 +900,9 @@ def seal_live_cell_terminal(
         freeze_path=freeze_path, source=stage.source, work_root=work_root
     )
     projection = terminal_projection_from_observation(observation, freeze)
+    t4_accounting = validate_t4_terminal_accounting_receipt(
+        backend_receipt.get("t4_accounting")
+    )
     journal = _load(Path(roots.receipts) / "fiabc_t4_live_accounting_journal.json")
     s15 = journal.get("stages", {}).get(
         f"{stage.source}/{stage.candidate}/S15_FRESH_PROCESS_REPLAY"
@@ -909,6 +935,15 @@ def seal_live_cell_terminal(
         "candidate_id": stage.candidate,
         "terminal_disposition": "PASS",
         "oracle_match_receipt_identity": match.get("receipt_identity"),
+        "t4_accounting_receipt": {
+            "schema": t4_accounting.get("schema"),
+            "journal_sha256": t4_accounting.get("journal_sha256"),
+            "telemetry_receipt_path": t4_accounting.get("telemetry_receipt_path"),
+            "telemetry_receipt_sha256": t4_accounting.get("telemetry_receipt_sha256"),
+            "metric_definition_hash": t4_accounting.get("metric_definition_hash"),
+            "semantic_state_modified": t4_accounting.get("semantic_state_modified"),
+            "candidate_neutral_c0_excluded": t4_accounting.get("candidate_neutral_c0_excluded"),
+        },
         "c11": projection["c11"],
         "i03": projection["i03"],
         "i05": projection["i05"],
@@ -1073,11 +1108,12 @@ def verify_live_final_terminal(
         "schema": FINAL_COMPOSITION_SCHEMA,
         "status": "PASS",
         "claim_scope": CLAIM_SCOPE,
-        "claim_boundary": {
-            "whole_source_equivalence": False,
-            "closed_35_universality": False,
-            "source_certification": False,
-            "whole_file_abc_identity": False,
+        "claim_boundary": dict(EXPECTED_CLAIM_BOUNDARY),
+        "r35_post_t5_convergence": {
+            "branch": "agent/vozhd-premain-fiabc-r35-fanin-r1",
+            "hq_seal": "c3c83908fb0083c575ab1b5ea2a3a6d84f14b5ff",
+            "merged_in_t5": False,
+            "required_before_final_qualification": True,
         },
         "terminal_contract": TERMINAL_CONTRACT,
         "court_contract_sha256": contract["sha256"],
@@ -1108,6 +1144,7 @@ __all__ = [
     "project_live_candidate_observation",
     "admit_post_i05_oracle_match",
     "seal_live_cell_terminal",
+    "validate_t4_terminal_accounting_receipt",
     "verify_live_final_terminal",
     "terminal_projection_from_observation",
     "terminal_projection_from_oracle",
