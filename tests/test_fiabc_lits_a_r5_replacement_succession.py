@@ -10,7 +10,6 @@ from rawlsing_next.fiabc_derivative_parentage import (
     mint_derivative_parentage_receipt,
     mint_parentage_bundle,
     mint_source_verification_receipt,
-    canonical_digest,
 )
 from rawlsing_next.fiabc_lits_a_r5_replacement_succession import (
     ReplacementSuccessionError,
@@ -81,8 +80,6 @@ class ReplacementSuccessionTests(unittest.TestCase):
     def test_03_nonexistent_builder_blob_cannot_be_admitted(self):
         broken = deepcopy(self.authority)
         broken["replacement_contract"]["builder"]["code_blob"] = "92e68693d72cbfcdd1c6d16e7f247ca3f60c8c55"
-        unsigned = {k: v for k, v in broken.items() if k != "authority_identity"}
-        broken["authority_identity"] = canonical_digest(unsigned)
         with self.assertRaises(ReplacementSuccessionError):
             verify_successor_authority(broken)
 

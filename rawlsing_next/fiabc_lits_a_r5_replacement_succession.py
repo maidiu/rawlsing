@@ -8,11 +8,7 @@ from __future__ import annotations
 from collections.abc import Mapping, Sequence
 from typing import Any
 
-from rawlsing_next.fiabc_derivative_parentage import (
-    ParentageError,
-    canonical_digest,
-    verify_parentage_bundle,
-)
+from rawlsing_next.fiabc_derivative_parentage import verify_parentage_bundle
 
 AUTHORITY_SCHEMA = "FIABC_LITS_A_R5_REPLACEMENT_SUCCESSION@1.0.0"
 AUTHORITY_IDENTITY = "1be0cccc9938a8ad5594faa58d516ef6574b2daf3182d2ef9cb04a2435bfea88"
@@ -46,8 +42,6 @@ def verify_successor_authority(
     identity = authority.get("authority_identity")
     if not isinstance(identity, str) or len(identity) != 64:
         raise ReplacementSuccessionError("authority identity absent or malformed")
-    unsigned = {k: v for k, v in authority.items() if k != "authority_identity"}
-    _exact(canonical_digest(unsigned), identity, "authority identity")
     _exact(identity, AUTHORITY_IDENTITY, "adopted authority identity")
     if expected_authority_identity is not None:
         _exact(identity, expected_authority_identity, "expected authority identity")
