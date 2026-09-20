@@ -1,0 +1,153 @@
+{
+  "schema": "CLOSED35_L2_AFROBAROMETER_R9_SOURCE_ADMISSION_PACKET@1.0.0",
+  "worker": "CLOSED35-L2-AFR9",
+  "repository": "maidiu/rawlsing",
+  "base": {
+    "branch": "agent/vozhd-premain-fiabc-s35-fanin-r1",
+    "sha": "770d95c1a604ea1f47ac2971b923673c14c42984"
+  },
+  "branch": "agent/rabochii-closed35-l2-afrobarometer-r9-authority-r1",
+  "source": {
+    "filename": "Afro Barometer Round 9.sav",
+    "sha256": "3afcecd08d2f4b531a926d455a943084d9f71c1276b4f3a58e77a9162e6879d8",
+    "format": "sav"
+  },
+  "documentary_disposition": "PARTIAL__CLOSED_BINDINGS_PLUS_EXACT_UNKNOWN_SET",
+  "terminal": "CLOSED35_L2_AFROBAROMETER_R9_DOCUMENTARY_AUTHORITY_PARTIAL__EXACT_UNKNOWN_SET_RETURNED",
+  "closed_bindings": {
+    "Q78F_role": "EU_ECONOMIC_AND_POLITICAL_INFLUENCE_ON_RESPONDENT_COUNTRY",
+    "Q78F_minus1": "MISSING",
+    "Q118_structure": "MULTIPLE_RESPONSE_SPOKEN_LANGUAGE_SLOTS__TICK_ALL_THAT_APPLY__NOT_RANKED",
+    "Q118_slots_documented": [
+      "Q118_1",
+      "Q118_2",
+      "Q118_3",
+      "Q118_4",
+      "Q118_5",
+      "Q118_6",
+      "Q118_7",
+      "Q118_8",
+      "Q118_9",
+      "Q118_10"
+    ],
+    "Q118_9996": "NO_FURTHER_REPLY_OR_RESPONSE__ORDINARY_STORED_SPECIAL_CODE",
+    "Q47C_94": "NOT_ASKED_IN_COUNTRY__ORDINARY_STORED_APPLICABILITY_CODE",
+    "weight_logical_succession": {
+      "old": "withinwt_ea",
+      "new": "withinwt_hh",
+      "producer_selection": "withinwt_hh_must_be_used_for_R9_analysis_at_the_documented_descriptive_weighting_scope"
+    },
+    "combined_weight_role": "MERGED_MULTI_COUNTRY_DESCRIPTIVE_EQUAL_COUNTRY_SAMPLE_CONTRIBUTION"
+  },
+  "exact_unknown_set": [
+    {
+      "id": "R9-U01",
+      "field": "Q78F",
+      "unknown": "EXACT_MERGED_COUNTRY_APPLICABILITY_SET",
+      "preserve": "SEMANTIC_ROLE_AND_MINUS1_CLOSED__APPLICABILITY_FAILS_CLOSED_OUTSIDE_EXACT_COUNTRY_AUTHORITY"
+    },
+    {
+      "id": "R9-U02",
+      "field": "Q118_11",
+      "unknown": "EXACT_ROUND9_PRODUCER_BINDING",
+      "preserve": "ELEVENTH_PHYSICAL_SLOT_OPAQUE__NO_ADJACENCY_OR_CROSS_ROUND_INFERENCE"
+    },
+    {
+      "id": "R9-U03",
+      "field": "V397_A",
+      "unknown": "EXACT_ROUND9_ALIAS_BINDING_TO_DOCUMENTED_LOGICAL_WEIGHT",
+      "preserve": "RAW_CARRIER_AND_NATIVE_METADATA_ONLY__DO_NOT_SELECT_BY_NUMERIC_OR_LABEL_INFERENCE"
+    },
+    {
+      "id": "R9-U04",
+      "field": "V399_A",
+      "unknown": "EXACT_ROUND9_ALIAS_AND_ROLE_BINDING",
+      "preserve": "RAW_CARRIER_AND_NATIVE_METADATA_ONLY__DO_NOT_INFER_COMBINWT_HH"
+    }
+  ],
+  "field_admission": {
+    "Q78F": {
+      "status": "PARTIAL",
+      "admitted": [
+        "question_semantics",
+        "minus1_missing_code"
+      ],
+      "withheld": [
+        "exact_39_country_applicability_set"
+      ]
+    },
+    "Q118": {
+      "status": "PARTIAL",
+      "admitted": [
+        "multiple_response_not_ranked",
+        "slot_identity_1_through_10",
+        "9996_no_further_reply",
+        "country_local_dictionary_topology"
+      ],
+      "withheld": [
+        "Q118_11_exact_semantic_binding"
+      ]
+    },
+    "Q47C": {
+      "status": "CLOSED_AT_CODE_SCOPE",
+      "admitted": [
+        "94_not_asked_in_country"
+      ],
+      "physical_missing_conversion_forbidden": true
+    },
+    "weights": {
+      "status": "PARTIAL",
+      "admitted": [
+        "old_EA_to_new_HH_succession",
+        "new_HH_round9_analysis_authority",
+        "combined_cross_national_descriptive_role"
+      ],
+      "withheld": [
+        "V397_A_exact_alias",
+        "V399_A_exact_alias_and_role"
+      ]
+    }
+  },
+  "realization_rules": {
+    "may_realize": [
+      "Q78F semantic role and -1 Missing",
+      "Q118_1..Q118_10 as repeated multiple-response storage slots",
+      "Q118 9996 as No further reply while physically ordinary",
+      "Q47C 94 as Not Asked in Country while physically ordinary",
+      "logical old-EA/new-HH weight succession"
+    ],
+    "must_preserve_opaque": [
+      "Q78F merged-country applicability where exact country authority is absent",
+      "Q118_11 semantics",
+      "V397_A semantic alias",
+      "V399_A semantic alias and role"
+    ],
+    "forbidden_inferences": [
+      "Q78F applicability from adjacency or missingness",
+      "Q118_11 semantics from Q118_10/Q118OTHER or prior rounds",
+      "Q118 slot ordinal as respondent rank/preference",
+      "9996 or Q47C=94 as physical missing",
+      "weight role from numeric distribution",
+      "V397_A/V399_A role from raw label alone"
+    ]
+  },
+  "documentary_sources": [
+    "https://www.afrobarometer.org/wp-content/uploads/2022/07/AB_R9.-Survey-Manual_eng_FINAL_20jul22.pdf",
+    "https://www.afrobarometer.org/survey-resource/merged-round-9-codebook-39-countries-2023/",
+    "https://www.afrobarometer.org/wp-content/uploads/2024/05/GHA_R9.Codebook_21May24.final_.pdf",
+    "https://www.afrobarometer.org/wp-content/uploads/2024/05/SUD_R9.Codebook_13May24.final_.pdf",
+    "https://www.afrobarometer.org/wp-content/uploads/2023/06/ANG_R9.-Indigenised-questionnaire_13Feb22_final.docx.pdf",
+    "https://www.afrobarometer.org/wp-content/uploads/2024/05/NIG_R9.Codebook_15May24.final_.pdf",
+    "https://www.afrobarometer.org/wp-content/uploads/2024/06/ZAM_R9.Codebook_4Jun24.final_.pdf",
+    "https://www.afrobarometer.org/surveys-and-methods/sampling/",
+    "https://www.afrobarometer.org/wp-content/uploads/2022/04/Afrobarometer_Weights_Protocol.pdf"
+  ],
+  "proof_boundary": {
+    "local_raw_carrier_opened": false,
+    "source_executed": false,
+    "measured_p2x_run": false,
+    "numeric_weight_inference_used": false,
+    "public_documentary_research_used": true,
+    "github_repository_evidence_used": true
+  }
+}
