@@ -16,6 +16,7 @@ import contextlib
 import dataclasses
 import hashlib
 import importlib.util
+import importlib.metadata
 import json
 import os
 from pathlib import Path
@@ -55,6 +56,12 @@ R6S_WVS_COORDINATE_AUTHORITY = "9e7f98a7ad723743771d6bea39077553d2a3920ac4c077e9
 R6S_RUNTIME_PACKAGE = "rawlsing_next/runtime/ee_p2x/02_WVS7_P2F2_RUNTIME_PACKAGE.json"
 R6S_MATERIALIZER = "rawlsing_next/runtime/ee_p2x/05_WVS7_PROJECTION_MATERIALIZER.py"
 R6S_LITS_SUPPORT = "rawlsing_next/runtime/ee_p2x/01_LITS_CURRENT_RUNTIME_MATERIALIZER.py"
+FROZEN_PYREADSTAT_VERSION = "1.3.6"
+WVS_MATERIALIZER_BLOB = "11b28416aac5a4899706150721f2f8ac8bb6ee43"
+LITS_A_ADAPTER_BLOB = "d4915e7e6755ba1850756aebff72f982f73a332b"
+LITS_R5_BUILDER_BLOB = "92e68693d72cbfcdd1c6d16e7f247ca3f60c8c55"
+LITS_A_PARENTAGE_PATH_ENV = "RAWLSING_EE_P2X_LITS_A_R5_PARENTAGE_RECEIPT"
+LITS_A_PARENTAGE_ID_ENV = "RAWLSING_EE_P2X_LITS_A_R5_PARENTAGE_RECEIPT_IDENTITY"
 _SESSIONS: dict[tuple[str,str], tuple[Any,Any]] = {}
 
 EXPECTED_SOURCE = {"LITS_I": LITS_SHA, "WVS7": WVS_SHA}
@@ -262,6 +269,7 @@ def _new_state(ctx) -> dict[str, Any]:
         "schema": STATE_SCHEMA, "source": ctx.stage.source, "candidate": ctx.stage.candidate,
         "source_sha256": ctx.source_sha256, "event": 0, "metrics": {}, "behaviors": {},
         "outputs": {}, "bindings": {}, "parity": {}, "source_access": {"open": 0, "decode": 0, "reread": 0, "bytes": 0},
+        "derivative_parentage": {},
         "oracle_frozen": None, "candidate_output_first": None, "parity_complete": None,
         "performance_first_admitted": None, "performance_admitted": False,
     }
@@ -508,18 +516,170 @@ def _wvs_materializer(ctx, services):
 def _wvs_structural_path(ctx):
     return ctx.roots.durable/"wvs7_projection_structural_input.json"
 
-def _wvs_projection(ctx, services):
+
+def _wvs_parentage_path(ctx):
+    return ctx.roots.durable/"wvs7_projection_structural_input.parentage.json"
+
+
+def _root_lineage_identity(ctx):
+    return _h({
+        "backend_contract": BACKEND_CONTRACT,
+        "source": ctx.stage.source,
+        "candidate": ctx.stage.candidate,
+        "durable_root": str(ctx.roots.durable.resolve()),
+    })
+
+
+def _wvs_reader_config():
+    return {
+        "reader": "pyreadstat",
+        "reader_version": FROZEN_PYREADSTAT_VERSION,
+        "apply_value_formats": False,
+        "user_missing": True,
+        "metadata_read": {"metadataonly": True},
+        "country_read": {"usecols": ["B_COUNTRY"]},
+        "compatibility_mode": None,
+    }
+
+
+def _wvs_parentage_material(ctx):
+    producer = {
+        "identity": "WVS7_PROJECTION_STRUCTURAL_MATERIALIZER",
+        "code_blob": WVS_MATERIALIZER_BLOB,
+        "version": "EE_P2R6S_WVS7_PROJECTION_STRUCTURAL_INPUT@1.0.0",
+    }
+    scope = {
+        "source": "WVS7",
+        "derivative_scope": "PROJECTION_STRUCTURAL_PREIMAGE",
+        "projection_identity": R6S_WVS_PROJECTION,
+    }
+    currentness = {
+        "owner_commit": OWNER_COMMIT,
+        "materializer_blob": WVS_MATERIALIZER_BLOB,
+        "projection_identity": R6S_WVS_PROJECTION,
+        "lock2": WVS_LOCK2,
+    }
+    ownership = {
+        "source": "WVS7",
+        "candidate": ctx.stage.candidate,
+        "root_lineage_identity": _root_lineage_identity(ctx),
+        "process_lineage": BACKEND_CONTRACT,
+    }
+    return producer, _wvs_reader_config(), scope, currentness, ownership
+
+
+def _wvs_projection(ctx, services, state):
+    from rawlsing_next.fiabc_derivative_parentage import (
+        ParentageError,
+        mint_source_verification_receipt,
+        mint_derivative_parentage_receipt,
+        mint_parentage_bundle,
+        verify_parentage_bundle,
+        wvs_structural_metadata,
+    )
+
     m=_wvs_materializer(ctx,services)
     structural=_wvs_structural_path(ctx)
-    if ctx.source_path is not None:
-        doc=m.projection_structural_input_from_wvs_sav(ctx.source_path)
-        _atomic(structural,doc)
+    parentage=_wvs_parentage_path(ctx)
+    producer,reader_config,scope,currentness,ownership=_wvs_parentage_material(ctx)
+    source_operation="VERIFY_CANONICAL_WVS7_RAW_SHA_AND_EXTRACT_STRUCTURAL_INPUT"
+    derivation_operation="MATERIALIZE_WVS7_STRUCTURAL_PREIMAGE_FROM_CANONICAL_SAV"
+
+    try:
+        if ctx.source_path is not None:
+            runtime_version=importlib.metadata.version("pyreadstat")
+            if runtime_version!=FROZEN_PYREADSTAT_VERSION:
+                raise SourceAuthorityStop(
+                    "WVS7 parentage reader version drift",
+                    {"expected":FROZEN_PYREADSTAT_VERSION,"got":runtime_version},
+                )
+            doc=m.projection_structural_input_from_wvs_sav(ctx.source_path)
+            derivative_identity=doc.get("structural_input_identity")
+            source_receipt=mint_source_verification_receipt(
+                source_id="WVS7",
+                canonical_source_sha256=WVS_SHA,
+                observed_source_sha256=WVS_SHA,
+                producer=producer,
+                operation=source_operation,
+                reader_config=reader_config,
+                scope_determinants=scope,
+                currentness_determinants=currentness,
+                ownership=ownership,
+            )
+            derivative_receipt=mint_derivative_parentage_receipt(
+                source_receipt=source_receipt,
+                derivative_class="WVS7_STRUCTURAL_PREIMAGE",
+                derivative_identity=derivative_identity,
+                derivative_hash=derivative_identity,
+                derivative_metadata=wvs_structural_metadata(doc),
+                producer=producer,
+                derivation_operation=derivation_operation,
+                reader_config=reader_config,
+                scope_determinants=scope,
+                currentness_determinants=currentness,
+                ownership=ownership,
+            )
+            bundle=mint_parentage_bundle(
+                source_receipt=source_receipt,
+                derivative_receipt=derivative_receipt,
+            )
+            _atomic(structural,doc)
+            _atomic(parentage,bundle)
+            state.setdefault("derivative_parentage",{})["WVS7_STRUCTURAL_PREIMAGE"]={
+                "bundle_identity":bundle["bundle_identity"],
+                "source_receipt_identity":source_receipt["receipt_identity"],
+                "derivative_receipt_identity":derivative_receipt["receipt_identity"],
+                "structural_input_identity":derivative_identity,
+            }
+        elif structural.is_file():
+            if not parentage.is_file():
+                raise SourceAuthorityStop(
+                    "source-free WVS structural preimage lacks external parentage receipt",
+                    {"required":str(parentage),"source_reopen":"FORBIDDEN"},
+                )
+            doc=json.loads(structural.read_text(encoding="utf-8"))
+            bundle=json.loads(parentage.read_text(encoding="utf-8"))
+            frozen=(state.get("derivative_parentage") or {}).get("WVS7_STRUCTURAL_PREIMAGE")
+            if not isinstance(frozen,Mapping):
+                raise SourceAuthorityStop(
+                    "source-free WVS structural preimage lacks prior governed parentage freeze",
+                    {"source_reopen":"FORBIDDEN"},
+                )
+            if (
+                bundle.get("bundle_identity")!=frozen.get("bundle_identity")
+                or doc.get("structural_input_identity")!=frozen.get("structural_input_identity")
+            ):
+                raise SourceAuthorityStop("WVS structural preimage/parentage freeze identity drift")
+            verify_parentage_bundle(
+                bundle,
+                expected_source_id="WVS7",
+                expected_source_sha256=WVS_SHA,
+                expected_source_receipt_identity=frozen.get("source_receipt_identity"),
+                expected_source_operation=source_operation,
+                expected_derivative_class="WVS7_STRUCTURAL_PREIMAGE",
+                expected_derivative_identity=doc.get("structural_input_identity"),
+                expected_derivative_receipt_identity=frozen.get("derivative_receipt_identity"),
+                expected_derivative_hash=doc.get("structural_input_identity"),
+                expected_derivative_metadata=wvs_structural_metadata(doc),
+                expected_producer=producer,
+                expected_derivation_operation=derivation_operation,
+                expected_reader_config=reader_config,
+                expected_scope_determinants=scope,
+                expected_currentness_determinants=currentness,
+                expected_ownership=ownership,
+                expected_source_producer=producer,
+                expected_source_reader_config=reader_config,
+                expected_source_scope_determinants=scope,
+                expected_source_currentness_determinants=currentness,
+                expected_source_ownership=ownership,
+            )
+        else:
+            raise BackendStop("source-free WVS stage lacks deterministic projection structural preimage",
+                              {"required":str(structural),"source_reopen":"FORBIDDEN"})
         projection=m.materialize_from_structural_input(doc)
-    elif structural.is_file():
-        projection=m.materialize_from_structural_input(json.loads(structural.read_text(encoding="utf-8")))
-    else:
-        raise BackendStop("source-free WVS stage lacks deterministic projection structural preimage",
-                          {"required":str(structural),"source_reopen":"FORBIDDEN"})
+    except ParentageError as exc:
+        raise SourceAuthorityStop("WVS structural preimage parentage failure",{"error":str(exc)}) from exc
+
     if projection.projection_identity_ref.content_hash!=R6S_WVS_PROJECTION:
         raise SourceAuthorityStop("R6S WVS projection identity drift")
     if projection.coordinate_slots[0].source_semantic_authority_ref.authority_content_hash!=R6S_WVS_COORDINATE_AUTHORITY:
@@ -536,28 +696,6 @@ def _assert_r5_canonical_source_root(reader, source_name):
             "preserved/prebuilt R5 derivative does not close to canonical source root",
             {"source": source_name, "expected_source_artifact_ref": expected, "observed_source_artifact_ref": observed},
         )
-    if source_name == "LITS_I":
-        parentage_path = os.environ.get("RAWLSING_EE_P2X_LITS_A_R5_PARENTAGE_RECEIPT")
-        if not parentage_path:
-            raise SourceAuthorityStop(
-                "LiTS-A preserved R5 derivative is path-bound but lacks governed derivative parentage",
-                {"required_env": "RAWLSING_EE_P2X_LITS_A_R5_PARENTAGE_RECEIPT",
-                 "derivative_identity_is_not_parentage": True},
-            )
-        from rawlsing_next.fiabc_live_accounting_binding import (
-            LiveAccountingError, require_derivative_parentage,
-        )
-        try:
-            require_derivative_parentage(
-                Path(parentage_path),
-                derivative_identity=release_identity,
-                canonical_source_sha256=EXPECTED_SOURCE[source_name],
-            )
-        except LiveAccountingError as exc:
-            raise SourceAuthorityStop(
-                "LiTS-A preserved R5 derivative parentage failed closed",
-                {"error":str(exc),"derivative_identity_is_not_parentage":True},
-            ) from exc
 
 
 def _compose_current_candidate_c(ctx, services, state, runtime, projection, incidence, runtime_authority):
@@ -614,13 +752,100 @@ def _compose_lits(ctx, services, state, incidence):
     runtime = _lits_runtime(ctx, services, projection)
     if ctx.stage.candidate == "A":
         root = os.environ.get("RAWLSING_EE_P2X_LITS_A_R5_ROOT")
+        receipt_path = os.environ.get(LITS_A_PARENTAGE_PATH_ENV)
+        receipt_identity = os.environ.get(LITS_A_PARENTAGE_ID_ENV)
         if not root:
             raise BackendStop("preserved LiTS-A R5 runtime path unbound",
                               {"required_env":"RAWLSING_EE_P2X_LITS_A_R5_ROOT","repeat_first_build":"FORBIDDEN"})
+        if not receipt_path or not receipt_identity:
+            raise SourceAuthorityStop(
+                "preserved LiTS-A R5 parentage receipt unbound",
+                {"required_env":[LITS_A_PARENTAGE_PATH_ENV,LITS_A_PARENTAGE_ID_ENV]},
+            )
         _ensure_r5(ctx, services)
         from rawlsing_next.pre553_r5_compact_carrier import R5CompactLongShardedReader
-        reader = R5CompactLongShardedReader(Path(root))
-        _assert_r5_canonical_source_root(reader, "LITS_I")
+        from rawlsing_next.fiabc_derivative_parentage import (
+            ParentageError,
+            assert_r5_root_parent,
+            r5_root_metadata,
+            verify_parentage_bundle,
+        )
+        reader=R5CompactLongShardedReader(Path(root))
+        try:
+            assert_r5_root_parent(reader.root,expected_source_sha256=LITS_SHA)
+            inventory=reader.root.get("member_inventory")
+            if not isinstance(inventory,Mapping):
+                raise ParentageError("LiTS R5 member inventory missing")
+            inventory_path=Path(root)/str(inventory.get("path",""))
+            if (
+                not inventory_path.is_file()
+                or inventory_path.stat().st_size!=inventory.get("byte_length")
+                or _sha(inventory_path)!=inventory.get("sha256")
+            ):
+                raise ParentageError("LiTS R5 member inventory identity mismatch")
+            p=Path(receipt_path)
+            if not p.is_file():
+                raise ParentageError("LiTS R5 external parentage receipt file absent")
+            bundle=json.loads(p.read_text(encoding="utf-8"))
+            producer={
+                "identity":"R5CompactLongShardedBuilder",
+                "code_blob":LITS_R5_BUILDER_BLOB,
+                "version":"R5_LONG_SHARDED_TYPED_INCIDENCE_V1",
+                "owner_commit":OWNER_COMMIT,
+                "consumer_adapter_blob":LITS_A_ADAPTER_BLOB,
+            }
+            reader_config={
+                "reader":"pyreadstat",
+                "reader_version":FROZEN_PYREADSTAT_VERSION,
+                "user_missing":True,
+                "apply_value_formats":False,
+                "encoding":"latin1",
+                "authority_status":"COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY",
+            }
+            scope={
+                "source":"LITS_I",
+                "derivative_scope":"PRESERVED_R5_PHYSICAL_SOURCE_CARRIER",
+                "projection_identity":LITS_PROJECTION,
+                "runtime_catalog":R6O_RUNTIME_CATALOG,
+            }
+            currentness={
+                "owner_commit":OWNER_COMMIT,
+                "candidate_owner_blob":LITS_A_ADAPTER_BLOB,
+                "runtime_catalog":R6O_RUNTIME_CATALOG,
+                "active_binding":R6O_ACTIVE_BINDING,
+                "runtime_release":R6O_RUNTIME_RELEASE,
+            }
+            ownership={
+                "source":"LITS_I",
+                "candidate":"A",
+                "physical_root_id":reader.root.get("physical_root_id"),
+            }
+            verify_parentage_bundle(
+                bundle,
+                expected_source_id="LITS_I",
+                expected_source_sha256=LITS_SHA,
+                expected_derivative_class="LITS_A_PRESERVED_R5_CARRIER",
+                expected_derivative_identity=reader.root.get("physical_root_id"),
+                expected_derivative_receipt_identity=receipt_identity,
+                expected_derivative_hash=reader.root.get("physical_root_id"),
+                expected_derivative_metadata=r5_root_metadata(reader.root),
+                expected_producer=producer,
+                expected_derivation_operation="BUILD_LITS_A_R5_FROM_CANONICAL_PHYSICAL_INCIDENCE",
+                expected_reader_config=reader_config,
+                expected_scope_determinants=scope,
+                expected_currentness_determinants=currentness,
+                expected_ownership=ownership,
+                expected_source_reader_config=reader_config,
+            )
+            state.setdefault("derivative_parentage",{})["LITS_A_R5"]={
+                "bundle_identity":bundle.get("bundle_identity"),
+                "derivative_receipt_identity":receipt_identity,
+                "physical_root_id":reader.root.get("physical_root_id"),
+                "logical_stream_digest":reader.root.get("logical_stream_digest"),
+                "member_inventory_sha256":inventory.get("sha256"),
+            }
+        except (ParentageError, json.JSONDecodeError) as exc:
+            raise SourceAuthorityStop("preserved LiTS-A R5 parentage failure",{"error":str(exc)}) from exc
         kwargs = {"reader": reader}
     elif ctx.stage.candidate == "B":
         if incidence is None:
@@ -677,7 +902,7 @@ def _build_r5_from_incidence(ctx,services,incidence,projection,target):
     )
 
 def _compose_wvs(ctx,services,state,incidence=None):
-    projection=_wvs_projection(ctx,services)
+    projection=_wvs_projection(ctx,services,state)
     runtime=_wvs_docs(ctx,services)
     if ctx.stage.candidate=="A":
         _ensure_r5(ctx,services)

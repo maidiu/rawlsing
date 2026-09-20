@@ -43,7 +43,7 @@ from rawlsing_next.fiabc_lifecycle_accounting import (
 
 LIVE_CONTRACT = "FIABC_T4_LIVE_ACCOUNTING_BINDING@1.0.0"
 JOURNAL_SCHEMA = "FIABC_T4_LIVE_ACCOUNTING_JOURNAL@1.0.0"
-PARENTAGE_SCHEMA = "FIABC_T4_DERIVATIVE_PARENTAGE@1.0.0"
+PARENTAGE_SCHEMA = "FIABC_DERIVATIVE_PARENTAGE_BUNDLE@1.0.0"
 PRESERVED_SCHEMA = "FIABC_T4_PRESERVED_WORK_LIVE_ADJUDICATION@1.0.0"
 
 
@@ -53,7 +53,7 @@ class LiveAccountingError(RuntimeError):
 
 @dataclass(frozen=True)
 class DerivativeParentage:
-    derivative_identity: Mapping[str, Any]
+    derivative_identity: Any
     governed_producer_identity: str
     governed_operation_identity: str
     governed_config_identity: str
@@ -105,36 +105,69 @@ def _cost(value: str) -> CostClass:
         raise LiveAccountingError(f"unknown cost class {value!r}") from exc
 
 
-def require_derivative_parentage(path: Path, *, derivative_identity: Mapping[str, Any],
-                                 canonical_source_sha256: str) -> DerivativeParentage:
+def require_derivative_parentage(
+    path: Path,
+    *,
+    derivative_identity: Any,
+    canonical_source_sha256: str,
+    expected_binding: Mapping[str, Any] | None = None,
+) -> DerivativeParentage:
+    """Compatibility seam: T4 no longer owns a derivative-parentage law.
+
+    Exact live consumers must provide the complete R35-I02 expected binding.
+    This adapter delegates all admission to fiabc_derivative_parentage and
+    exposes only a T4 accounting summary after the generic bundle verifies.
+    """
+    if expected_binding is None:
+        raise LiveAccountingError(
+            "generic R35 derivative parentage requires the exact expected consumer binding"
+        )
     p=Path(path)
     if not p.is_file():
-        raise LiveAccountingError("derivative parentage receipt is absent")
+        raise LiveAccountingError("derivative parentage bundle is absent")
     try:
         doc=json.loads(p.read_text(encoding="utf-8"))
     except Exception as exc:
-        raise LiveAccountingError("derivative parentage receipt is malformed") from exc
-    if doc.get("schema") != PARENTAGE_SCHEMA:
-        raise LiveAccountingError("derivative parentage schema drift")
-    if doc.get("derivative_identity") != derivative_identity:
-        raise LiveAccountingError("derivative parentage does not bind the consumed derivative identity")
-    if doc.get("canonical_source_sha256") != canonical_source_sha256:
-        raise LiveAccountingError("derivative parentage does not close to the canonical source SHA")
-    required=("governed_producer_identity","governed_operation_identity","governed_config_identity")
-    for name in required:
-        if not isinstance(doc.get(name),str) or not doc[name]:
-            raise LiveAccountingError(f"derivative parentage lacks {name}")
-    refs=doc.get("evidence_refs")
-    if not isinstance(refs,list) or not refs or not all(isinstance(x,str) and x for x in refs):
-        raise LiveAccountingError("derivative parentage lacks exact evidence refs")
-    return DerivativeParentage(
-        derivative_identity=dict(derivative_identity),
-        governed_producer_identity=doc["governed_producer_identity"],
-        governed_operation_identity=doc["governed_operation_identity"],
-        governed_config_identity=doc["governed_config_identity"],
-        canonical_source_sha256=canonical_source_sha256,
-        evidence_refs=tuple(refs),
-    )
+        raise LiveAccountingError("derivative parentage bundle is malformed") from exc
+    try:
+        from rawlsing_next.fiabc_derivative_parentage import (
+            BUNDLE_SCHEMA,
+            ParentageError,
+            canonical_digest,
+            verify_parentage_bundle,
+        )
+        if doc.get("schema") != BUNDLE_SCHEMA or BUNDLE_SCHEMA != PARENTAGE_SCHEMA:
+            raise ParentageError("generic derivative parentage bundle schema drift")
+        binding=dict(expected_binding)
+        expected_identity=binding.get("expected_derivative_identity")
+        if derivative_identity != expected_identity:
+            raise ParentageError("consumed derivative identity differs from exact R35 expected binding")
+        if binding.get("expected_source_sha256") not in (None, canonical_source_sha256):
+            raise ParentageError("T4/R35 canonical source SHA binding drift")
+        binding.pop("expected_source_sha256",None)
+        verified=verify_parentage_bundle(
+            doc,
+            expected_source_sha256=canonical_source_sha256,
+            **binding,
+        )
+        source_receipt=verified["source_receipt"]
+        derivative_receipt=verified["derivative_receipt"]
+        producer=derivative_receipt["producer"]
+        reader_config=derivative_receipt["reader_config"]
+        return DerivativeParentage(
+            derivative_identity=derivative_identity,
+            governed_producer_identity=str(producer["identity"]),
+            governed_operation_identity=str(derivative_receipt["derivation_operation"]),
+            governed_config_identity=canonical_digest(reader_config),
+            canonical_source_sha256=canonical_source_sha256,
+            evidence_refs=(
+                str(verified["bundle_identity"]),
+                str(source_receipt["receipt_identity"]),
+                str(derivative_receipt["receipt_identity"]),
+            ),
+        )
+    except (ParentageError, KeyError, TypeError) as exc:
+        raise LiveAccountingError("generic R35 derivative parentage failed closed") from exc
 
 
 def _freeze() -> tuple[Mapping[str, Any], str]:
@@ -516,12 +549,12 @@ def preserved_stage_adjudication(*, stage: Any, source_sha256: str,
     numeric_credit_allowed=False
     if stage.source=="LITS_I" and stage.candidate=="A" and stage.stage_id=="S01_CANDIDATE_PREPARATION_BUILD":
         parentage=os.environ.get("RAWLSING_EE_P2X_LITS_A_R5_PARENTAGE_RECEIPT")
-        if parentage:
-            disposition=AccountingDisposition.PRESERVED_SEMANTIC_EVIDENCE_WITHOUT_NUMERIC_TELEMETRY
-            reason="LiTS-A numeric credit remains field-by-field pending exact current compatibility proof"
+        parentage_identity=os.environ.get("RAWLSING_EE_P2X_LITS_A_R5_PARENTAGE_RECEIPT_IDENTITY")
+        disposition=AccountingDisposition.PRESERVED_SEMANTIC_EVIDENCE_WITHOUT_NUMERIC_TELEMETRY
+        if parentage and parentage_identity:
+            reason="LiTS-A generic R35 parentage is externally bound; numeric credit still requires exact field-by-field T4 compatibility proof"
         else:
-            disposition=AccountingDisposition.PRESERVED_SEMANTIC_EVIDENCE_WITHOUT_NUMERIC_TELEMETRY
-            reason="LiTS-A derivative parentage absent; no preserved numeric credit may be admitted"
+            reason="LiTS-A generic R35 parentage path/identity is incomplete; no preserved numeric credit may be admitted"
     elif stage.source=="LITS_I" and stage.candidate=="B" and stage.stage_id in {
         "S01_CANDIDATE_PREPARATION_BUILD","S02_C11_REACHABILITY"
     }:
