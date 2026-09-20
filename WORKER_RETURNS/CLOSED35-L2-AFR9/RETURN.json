@@ -1,0 +1,55 @@
+{
+  "schema": "CLOSED35_L2_AFROBAROMETER_R9_RETURN@1.0.0",
+  "worker": "CLOSED35-L2-AFR9",
+  "repository": "maidiu/rawlsing",
+  "base_branch": "agent/vozhd-premain-fiabc-s35-fanin-r1",
+  "base_sha": "770d95c1a604ea1f47ac2971b923673c14c42984",
+  "branch": "agent/rabochii-closed35-l2-afrobarometer-r9-authority-r1",
+  "return_path": "WORKER_RETURNS/CLOSED35-L2-AFR9/",
+  "source": {
+    "filename": "Afro Barometer Round 9.sav",
+    "sha256": "3afcecd08d2f4b531a926d455a943084d9f71c1276b4f3a58e77a9162e6879d8"
+  },
+  "disposition": "PARTIAL__MATERIAL_DOCUMENTARY_CLOSURE__FOUR_EXACT_UNKNOWNS_REMAIN",
+  "terminal": "CLOSED35_L2_AFROBAROMETER_R9_DOCUMENTARY_AUTHORITY_PARTIAL__EXACT_UNKNOWN_SET_RETURNED",
+  "closed": [
+    "Q78F semantic role = EU economic/political influence",
+    "Q78F -1 = Missing",
+    "Q118 = multiple-response spoken-language topology; tick all that apply; not ranked",
+    "Q118 9996 = No further reply/response and remains physically ordinary",
+    "Q118_1..Q118_10 exact Round-9 documentary family membership",
+    "Q47C 94 = Not Asked in Country and remains physically ordinary",
+    "withinwt_ea = old EA-level within-country weight",
+    "withinwt_hh = new HH-level within-country successor including household/adult-selection information",
+    "withinwt_hh is producer-authorized Round-9 analytical successor at documented descriptive-weight scope",
+    "COMBINWT-class role = merged multi-country descriptive equal-country sample contribution"
+  ],
+  "exact_unknown_set": [
+    "Q78F_EXACT_MERGED_COUNTRY_APPLICABILITY_SET",
+    "Q118_11_EXACT_ROUND9_PRODUCER_BINDING",
+    "V397_A_EXACT_ROUND9_ALIAS_BINDING",
+    "V399_A_EXACT_ROUND9_ALIAS_AND_ROLE_BINDING"
+  ],
+  "outputs": [
+    "00_RETURN.md",
+    "01_DOCUMENTARY_SOURCE_LEDGER.csv",
+    "02_FIELD_AND_SLOT_AUTHORITY_MAP.csv",
+    "03_WEIGHT_SUCCESSION_AND_ROUTING.md",
+    "04_SOURCE_ADMISSION_PACKET.json",
+    "RETURN.json"
+  ],
+  "guards": {
+    "local_raw_carrier_opened": false,
+    "source_executed": false,
+    "measured_p2x_run": false,
+    "semantic_inference_from_numeric_weight_distribution": false,
+    "unknown_preservation_required": true
+  },
+  "pass_terminal_not_issued_because": [
+    "Q118_11 lacks exact Round-9 producer documentary binding",
+    "Q78F exact merged-country applicability set was not recovered",
+    "V397_A exact Round-9 public alias binding was not recovered",
+    "V399_A exact Round-9 public alias/role binding was not recovered"
+  ],
+  "commit_sha_note": "The final Git commit SHA is reported externally because a commit cannot embed its own hash in its preimage."
+}
