@@ -512,6 +512,13 @@ def build_lits_i_oracle(
         "EVALUATED_VALID_EMPTY": 1,
     }:
         raise ParityOracleError("LiTS accepted prior typed terminal counts drift")
+    prior_frontier = _mapping(product.get("frontier"), "prior_product.frontier")
+    if prior_frontier.get("candidate_count") != 50:
+        raise ParityOracleError("LiTS accepted prior frontier candidate count drift")
+    if prior_frontier.get("query_role_count") != 77:
+        raise ParityOracleError("LiTS accepted prior frontier role count drift")
+    if prior_frontier.get("preexecution_seal") != LITS_FRONTIER_SEAL:
+        raise ParityOracleError("LiTS accepted prior frontier seal drift")
     execution = _mapping(replay.get("execution"), "prior_replay_receipt.execution")
     source = _mapping(replay.get("source"), "prior_replay_receipt.source")
     if source.get("sha256") != LITS_SOURCE_SHA256:
@@ -522,6 +529,11 @@ def build_lits_i_oracle(
         raise ParityOracleError("LiTS accepted prior run-1 product drift")
     if execution.get("run_2_output_sha256") != LITS_LEARNED_PRODUCT_IDENTITY:
         raise ParityOracleError("LiTS accepted prior run-2 product drift")
+    preoutcome = _mapping(replay.get("preoutcome"), "prior_replay_receipt.preoutcome")
+    if preoutcome.get("candidate_count") != 50 or preoutcome.get("query_role_count") != 77:
+        raise ParityOracleError("LiTS accepted prior replay frontier cardinality drift")
+    if preoutcome.get("frontier_seal") != LITS_FRONTIER_SEAL:
+        raise ParityOracleError("LiTS accepted prior replay frontier seal drift")
 
     provenance = dict(_mapping(oracle_build_provenance, "oracle_build_provenance"))
     provenance["accepted_prior_empirical_anchor"] = {
