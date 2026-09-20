@@ -1,0 +1,236 @@
+{
+  "packet_id": "CLOSED35-L2-GSS1973",
+  "packet_version": "1.0.0",
+  "authority_class": "SOURCE_SPECIFIC_DOCUMENTARY_AUTHORITY",
+  "status": "PASS",
+  "execution_performed": false,
+  "raw_source_opened": false,
+  "measured_p2x_run": false,
+  "repository": "maidiu/rawlsing",
+  "base": {
+    "branch": "agent/vozhd-premain-fiabc-s35-fanin-r1",
+    "tip": "770d95c1a604ea1f47ac2971b923673c14c42984"
+  },
+  "worker_branch": "agent/rabochii-closed35-l2-gss1973-authority-r1",
+  "source": {
+    "family": "GSS",
+    "year": 1973,
+    "filename": "GSS1973.sav",
+    "sha256": "59e65801dc26818bbcf15f9ed985cf8f1faafa65a3eb59e2d3180a7b13a5c1c2",
+    "documented_case_count": 1504,
+    "inherited_documented_variable_count": 339
+  },
+  "design": {
+    "sample_frame": "1970_SAMPLE_FRAME",
+    "sample_type": "BLOCK_QUOTA",
+    "probability_selection_through": "BLOCK_OR_SEGMENT",
+    "quota_dimensions": [
+      "SEX",
+      "AGE",
+      "EMPLOYMENT_STATUS"
+    ],
+    "form_assignment": {
+      "mechanism": "RANDOMIZED_WITHIN_QUOTA_TYPE",
+      "carrier": "QUOTA_ASSIGNMENT_SHEET",
+      "interviewer_discretion_after_respondent_selection": false,
+      "authority": "GSS_MR036"
+    },
+    "variance_instruction": {
+      "strata_clustering_used_for_1973_survey_estimation": false,
+      "authority": "GSS_MR137",
+      "prohibition": "DO_NOT_IMPORT_LATER_VPSU_VSTRAT_ASSUMPTIONS"
+    }
+  },
+  "experimental_form": {
+    "coordinate": "FORM",
+    "form_1": {
+      "questionnaire_identity": "X",
+      "producer_identity": "STANDARD",
+      "code": 1
+    },
+    "form_2": {
+      "questionnaire_identity": "Y",
+      "producer_identity": "Y_VARIANT",
+      "code": 2
+    },
+    "form_3_1973_authorized": false,
+    "exhaustive_registry_authority": "APPENDIX_P_TABLE_P1",
+    "confirmed_1973_form_specific_bindings": [
+      {
+        "question": "Q56",
+        "form": 1,
+        "variable": "CLASS",
+        "response_space": [
+          "LOWER",
+          "WORKING",
+          "MIDDLE",
+          "UPPER"
+        ]
+      },
+      {
+        "question": "Q56",
+        "form": 2,
+        "variable": "CLASSY",
+        "response_space": [
+          "LOWER",
+          "WORKING",
+          "MIDDLE",
+          "UPPER_MIDDLE",
+          "UPPER"
+        ]
+      }
+    ],
+    "common_item_law": "VARIABLES_NOT_IN_THE_1973_FORM_DIFFERENCE_REGISTRY_ARE_NOT_DIVIDED_BY_FORM_UNLESS_AN_INDEPENDENT_ROUTE_FILTER_APPLIES",
+    "denominator_law": "FORM_SPECIFIC_ITEM_DENOMINATOR_EQUALS_RESPONDENTS_ASSIGNED_TO_THAT_FORM_THEN_APPLY_ITEM_ROUTE_AND_RESPONSE_STATE_RULES",
+    "collapse_class_and_classy": false
+  },
+  "routing_and_missingness": {
+    "classification_precedence": [
+      "FORM_NOT_ADMINISTERED",
+      "ROUTED_SKIP",
+      "SUBSTANTIVE_NONRESPONSE",
+      "PHYSICAL_MISSING_UNCLASSIFIED"
+    ],
+    "form_not_administered_proof": "FORM_PLUS_PRODUCER_FORM_REGISTRY",
+    "routed_skip_proof": "EXPLICIT_QUESTIONNAIRE_FILTER_OR_SKIP",
+    "substantive_nonresponse_examples": [
+      "DONT_KNOW",
+      "NO_ANSWER",
+      "REFUSED"
+    ],
+    "physical_missing_rule": "PRESERVE_UNCLASSIFIED_WHEN_NO_DOCUMENTARY_SEMANTIC_CAUSE_IS_PROVEN",
+    "iap_code_alone_is_eligibility_proof": false,
+    "auxiliary_q105": {
+      "identity": "CARD_X_OR_Y",
+      "equivalent_to_FORM": false,
+      "equivalence_status": "NOT_PROVEN",
+      "has_birth_year_digit_route": true,
+      "digit_set_executable": false,
+      "reason": "MACHINE_EXTRACTED_SCAN_DUPLICATES_DIGIT_4_ACROSS_ODD_EVEN_LISTS__VISUAL_VERIFICATION_REQUIRED"
+    }
+  },
+  "weights": {
+    "current_general_weight": {
+      "variable": "WTSSPS",
+      "producer_recommendation": "MOST_ANALYSES",
+      "explicit_applicability_start_year": 1972,
+      "explicit_1973_applicability": true,
+      "bind_only_if_exact_carrier_exposes_field": true
+    },
+    "legacy_general_weight": {
+      "variable": "WTSSALL",
+      "status": "DOCUMENTED_HISTORICAL_ADULTS_IN_HOUSEHOLD_WEIGHT__NOT_CURRENT_DEFAULT"
+    },
+    "form_weight": {
+      "variable": "FORMWT",
+      "authorized_for_1973": false
+    },
+    "ballot_form_weight": {
+      "variable": "BALLOTFORMWT",
+      "authorized_for_1973": false
+    },
+    "nonresponse_poststrat_weight": {
+      "variable": "WTSSNRPS",
+      "authorized_for_1973": false,
+      "availability_start_year": 2004
+    },
+    "form_specific_analysis_rule": "RESTRICT_TO_FORM_ELIGIBLE_RISK_SET_BEFORE_APPLYING_GENERAL_WEIGHT",
+    "synthesize_missing_weight": false
+  },
+  "income_history": {
+    "1972": "INCOME72",
+    "1973": "INCOME",
+    "later_documented_vintages": [
+      "INCOME77",
+      "INCOME82",
+      "INCOME86",
+      "INCOME91",
+      "INCOME98",
+      "INCOME06"
+    ],
+    "1972_to_1973_response_categories_revised": true,
+    "producer_treats_groupings_as_separate_questions_and_variables": true,
+    "income72_equivalent_to_income": false,
+    "cross_release_raw_identity_merge_authorized": false,
+    "producer_recode_required_for_harmonization": true
+  },
+  "principal_authorities": [
+    {
+      "id": "NORC_Q73",
+      "url": "https://gss.norc.org/content/dam/gss/get-documentation/pdf/quex/1973%20GSS%20Quex.pdf"
+    },
+    {
+      "id": "NORC_APPENDIX_P",
+      "url": "https://gss.norc.org/content/dam/gss/get-documentation/pdf/codebook/GSS_Codebook_AppendixP.pdf"
+    },
+    {
+      "id": "NORC_CODEBOOK",
+      "url": "https://gss.norc.org/content/dam/gss/get-documentation/pdf/codebook/GSS_Codebook.pdf"
+    },
+    {
+      "id": "NORC_MR036",
+      "url": "https://gss.norc.org/content/dam/gss/get-documentation/pdf/reports/methodological-reports/MR036.pdf"
+    },
+    {
+      "id": "NORC_APPENDIX_A",
+      "url": "https://gss.norc.org/content/dam/gss/get-documentation/pdf/codebook/A.pdf"
+    },
+    {
+      "id": "NORC_MR137",
+      "url": "https://gss.norc.org/content/dam/gss/get-documentation/pdf/reports/methodological-reports/GSS%20MR137%20Poststratification%20Weights.pdf"
+    },
+    {
+      "id": "NORC_FAQ",
+      "url": "https://gss.norc.org/faq.html"
+    },
+    {
+      "id": "NORC_REPEATED_ITEMS",
+      "url": "https://gss.norc.org/Documents/codebook/Replicating%20Core_0707.pdf"
+    },
+    {
+      "id": "NORC_APPENDIX_N",
+      "url": "https://gss.norc.org/content/dam/gss/get-documentation/pdf/codebook/GSS_Codebook_AppendixN.pdf"
+    }
+  ],
+  "fail_closed_unknowns": [
+    {
+      "id": "REALIZED_FORM_COUNTS",
+      "disposition": "COMPUTE_FROM_EXACT_CANONICAL_CARRIER_DURING_REALIZATION"
+    },
+    {
+      "id": "EXACT_PHYSICAL_MISSING_CODE_PER_SEMANTIC_STATE",
+      "disposition": "BIND_FROM_EXACT_SOURCE_METADATA_PLUS_DOCUMENTARY_AUTHORITY_DURING_REALIZATION"
+    },
+    {
+      "id": "Q105_CARD_XY_TO_FORM_RELATION",
+      "disposition": "PRESERVE_SEPARATE_IDENTITIES__NO_EQUIVALENCE_AUTHORIZED"
+    },
+    {
+      "id": "Q105_EXACT_BIRTH_YEAR_DIGIT_SET",
+      "disposition": "VISUAL_VERIFICATION_REQUIRED_BEFORE_EXECUTABLE_BINDING"
+    },
+    {
+      "id": "INCOME72_TO_INCOME_SEMANTIC_EQUIVALENCE",
+      "disposition": "REJECTED_ABSENT_EXPLICIT_PRODUCER_CROSSWALK"
+    }
+  ],
+  "prohibitions": [
+    "DO_NOT_COLLAPSE_CLASS_AND_CLASSY",
+    "DO_NOT_INFER_FORM_FROM_MISSINGNESS",
+    "DO_NOT_EQUATE_Q105_CARD_XY_WITH_FORM_XY",
+    "DO_NOT_APPLY_FORMWT_TO_1973",
+    "DO_NOT_APPLY_BALLOTFORMWT_TO_1973",
+    "DO_NOT_APPLY_WTSSNRPS_TO_1973",
+    "DO_NOT_IMPORT_LATER_VPSU_VSTRAT_ASSUMPTIONS",
+    "DO_NOT_EQUIVALENCE_MERGE_INCOME72_AND_INCOME",
+    "DO_NOT_SYNTHESIZE_WEIGHT_OR_ROUTE_FROM_VALUE_DISTRIBUTIONS"
+  ],
+  "realization_preconditions": [
+    "VERIFY_EXACT_SOURCE_FILENAME_AND_SHA256",
+    "OBSERVE_FORM_AND_AUTHORIZED_WEIGHT_FIELDS_IN_EXACT_CARRIER",
+    "BIND_USED_VARIABLES_TO_APPENDIX_P_AND_EXACT_QUESTIONNAIRE_ROUTES",
+    "PRESERVE_MISSING_STATE_PRECEDENCE",
+    "FAIL_CLOSED_ON_ANY_SOURCE_DOCUMENT_MISMATCH"
+  ],
+  "terminal": "CLOSED35_L2_GSS1973_SPLIT_FORM_ROUTING_WEIGHT_AUTHORITY_CLOSED__READY_FOR_SOURCE_SPECIFIC_REALIZATION"
+}

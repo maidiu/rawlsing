@@ -1,0 +1,52 @@
+{
+  "worker": "CLOSED35-L2-GSS1973",
+  "title": "GSS 1973 Split-Form / Routing / Weight Documentary Authority Closure",
+  "status": "PASS",
+  "repository": "maidiu/rawlsing",
+  "base_branch": "agent/vozhd-premain-fiabc-s35-fanin-r1",
+  "base_tip": "770d95c1a604ea1f47ac2971b923673c14c42984",
+  "branch": "agent/rabochii-closed35-l2-gss1973-authority-r1",
+  "return_path": "WORKER_RETURNS/CLOSED35-L2-GSS1973/",
+  "source": {
+    "filename": "GSS1973.sav",
+    "sha256": "59e65801dc26818bbcf15f9ed985cf8f1faafa65a3eb59e2d3180a7b13a5c1c2"
+  },
+  "outputs": [
+    "00_RETURN.md",
+    "01_DOCUMENTARY_SOURCE_LEDGER.csv",
+    "02_SPLIT_FORM_AND_ROUTING_AUTHORITY.csv",
+    "03_WEIGHT_DESIGN_AND_RENAME_AUTHORITY.md",
+    "04_SOURCE_ADMISSION_PACKET.json",
+    "RETURN.json"
+  ],
+  "holdings": {
+    "form_1": "STANDARD__QUESTIONNAIRE_X",
+    "form_2": "Y_VARIANT__QUESTIONNAIRE_Y",
+    "q56_form_1_variable": "CLASS",
+    "q56_form_2_variable": "CLASSY",
+    "form_assignment": "RANDOMIZED_WITHIN_QUOTA_TYPE__QUOTA_ASSIGNMENT_SHEET",
+    "form_weight_1973": "NONE_AUTHORIZED",
+    "current_general_weight": "WTSSPS",
+    "wtssnrps_1973": "NOT_AUTHORIZED__STARTS_2004",
+    "design": "1970_FRAME__BLOCK_QUOTA",
+    "strata_clustering_for_survey_estimation": "NOT_USED_FOR_1973_PER_MR137",
+    "income_1972": "INCOME72",
+    "income_1973": "INCOME",
+    "income72_income_equivalence": "NOT_AUTHORIZED",
+    "q105_card_xy_equivalent_to_form_xy": "NOT_PROVEN__PRESERVE_SEPARATE"
+  },
+  "unknowns_preserved": [
+    "EXACT_REALIZED_FORM_COUNTS_IN_CANONICAL_SAV",
+    "EXACT_PHYSICAL_MISSING_CODE_TO_SEMANTIC_STATE_BINDING_IN_CANONICAL_SAV",
+    "Q105_CARD_XY_TO_FORM_RELATION",
+    "Q105_EXACT_BIRTH_YEAR_DIGIT_SET_REQUIRES_VISUAL_SCAN_CONFIRMATION",
+    "ANY_RAW_INCOME72_TO_INCOME_SEMANTIC_EQUIVALENCE"
+  ],
+  "constraints_observed": {
+    "raw_carrier_opened": false,
+    "source_processing_executed": false,
+    "measured_p2x_run": false,
+    "semantic_inference_from_raw_values": false
+  },
+  "terminal": "CLOSED35_L2_GSS1973_SPLIT_FORM_ROUTING_WEIGHT_AUTHORITY_CLOSED__READY_FOR_SOURCE_SPECIFIC_REALIZATION"
+}
