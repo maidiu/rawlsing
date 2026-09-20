@@ -198,9 +198,11 @@ Every measured lifecycle metric must include:
 - exact lifecycle `action_id`;
 - exact lifecycle `binding_id`.
 
+Reserved lifecycle metric names are action-class bound. For example, `delete_rebuild_wall_ns` is valid only for `DELETION_REGENERATION`, invalidation recomputation-unit fields are valid only for their corresponding invalidation action, and `fresh_process_replay_wall_ns` is valid only for `FRESH_PROCESS_REPLAY`. Generic resource fields such as CPU/RSS/I/O may accompany any executed action when I06B records them.
+
 I06C does not measure CPU, RSS, wall time, I/O or scratch itself.
 
-I06C only decides whether a lifecycle number is causally attached to a validated lifecycle action.
+I06C only decides whether a lifecycle number is causally attached to the correct validated lifecycle action.
 
 ## 8. Accounting dispositions
 
