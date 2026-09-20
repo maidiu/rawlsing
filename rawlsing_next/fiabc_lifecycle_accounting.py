@@ -67,6 +67,22 @@ class EvidenceKind(str, Enum):
     DECLARATIVE_ONLY = "DECLARATIVE_ONLY"
 
 
+LIFECYCLE_METRIC_ACTIONS: Mapping[str, LifecycleAction] = {
+    "build_or_open_wall_ns": LifecycleAction.COLD_FIRST_REALIZATION,
+    "cold_i03_latency_ns": LifecycleAction.COLD_FIRST_REALIZATION,
+    "warm_i03_latency_ns": LifecycleAction.WARM_RETAINED_STATE_USE,
+    "warm_retained_state_bytes": LifecycleAction.WARM_RETAINED_STATE_USE,
+    "delete_rebuild_wall_ns": LifecycleAction.DELETION_REGENERATION,
+    "source_release_invalidation_recomputation_units": LifecycleAction.SOURCE_INVALIDATION,
+    "semantic_authority_invalidation_recomputation_units": LifecycleAction.AUTHORITY_SEMANTIC_INVALIDATION,
+    "stale_state_recovery_wall_ns": LifecycleAction.STALE_STATE_RECOVERY,
+    "corrupt_state_recovery_wall_ns": LifecycleAction.CORRUPT_STATE_RECOVERY,
+    "interruption_recovery_wall_ns": LifecycleAction.INTERRUPTION_RECOVERY,
+    "fresh_process_replay_wall_ns": LifecycleAction.FRESH_PROCESS_REPLAY,
+    "audit_wall_ns": LifecycleAction.AUDIT_REVALIDATION,
+}
+
+
 class PreservedPolicy(str, Enum):
     COMMON_UPSTREAM = "COMMON_UPSTREAM"
     CONDITIONAL_FIELDWISE_NUMERIC = "CONDITIONAL_FIELDWISE_NUMERIC"
@@ -199,6 +215,12 @@ class LifecycleActionRequest:
         _nonnull(self.governed_operation_id, "governed_operation_id")
         if len(set(self.expected_metric_names)) != len(self.expected_metric_names):
             raise AccountingContractError("expected_metric_names contains duplicates")
+        for metric_name in self.expected_metric_names:
+            required_action = LIFECYCLE_METRIC_ACTIONS.get(metric_name)
+            if required_action is not None and required_action is not self.action:
+                raise AccountingContractError(
+                    f"lifecycle metric {metric_name} belongs to {required_action.value}, not {self.action.value}"
+                )
 
 
 @dataclass(frozen=True)
@@ -573,6 +595,11 @@ def _validate_telemetry(
         if metric.binding_id != request.binding.binding_id:
             raise AccountingContractError(
                 f"telemetry metric {metric.name} is not bound to exact candidate/source/state"
+            )
+        required_action = LIFECYCLE_METRIC_ACTIONS.get(metric.name)
+        if required_action is not None and required_action is not request.action:
+            raise AccountingContractError(
+                f"telemetry metric {metric.name} is attached to the wrong lifecycle action"
             )
 
         if (
@@ -1182,6 +1209,7 @@ __all__ = [
     "LifecycleActionPort",
     "LifecycleActionRequest",
     "LifecycleBinding",
+    "LIFECYCLE_METRIC_ACTIONS",
     "MetricAccounting",
     "MetricState",
     "PreservedCompatibilityProof",
