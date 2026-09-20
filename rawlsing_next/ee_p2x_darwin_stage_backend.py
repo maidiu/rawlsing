@@ -761,7 +761,8 @@ def _cell(ctx,services,state,stopped):
                           "parity_complete":state["parity_complete"],
                           "performance_first_admitted":state["performance_first_admitted"]},
         "oracle":{"candidate_neutral":True,"candidate_defined":False,
-                  "oracle_identity_sha256":state.get("oracle_identity") or _fallback(ctx,"ORACLE")},
+                  "oracle_identity_sha256":state.get("oracle_identity"),
+                  "freeze_receipt_sha256":state.get("upstream_freeze_receipt_sha256")},
         "parity":parity,"performance_admission":"NOT_ADMITTED" if stopped else "ADMITTED_AFTER_PARITY",
         "metrics":{n:_slot(state,n,stopped,preserved) for n in METRICS},
         "behaviors":{n:_behavior(state,n,stopped) for n in ("stale_cache","corrupt_cache","interruption_session_recovery")},
@@ -805,8 +806,6 @@ def _failure(ctx,services,state,exc):
                            {"cell_receipt":_rel(court,services),"failure_receipt":_rel(failure,services)}},
                 "output_artifacts":{"cell_receipt":str(court),"failure_receipt":str(failure)},
                 "verifier_complete":True}
-    if state["oracle_frozen"] is None:
-        state["oracle_frozen"]=_ord(state); state["oracle_identity"]=_fallback(ctx,"STOP_ORACLE",exc.detail)
     _save(ctx,state)
     cell=_write_cell(ctx,services,state,True)
     candidate=None if exc.scope in {"SOURCE_ONLY","COURT_UNTIL_RESUME"} else ctx.stage.candidate
@@ -826,6 +825,45 @@ def _failure(ctx,services,state,exc):
 
 
 
+def _bind_prefrozen_oracle_state(ctx, state):
+    """Bind only the already-frozen, candidate-neutral upstream oracle identity.
+
+    This function never materializes expected truth and never invokes a
+    candidate implementation.  It is valid for any source admitted by the
+    current execution manifest because the receipt is source-keyed.
+    """
+    raw = os.environ.get("RAWLSING_EE_P2X_FROZEN_UPSTREAM_RECEIPT")
+    if not raw:
+        raise CourtAuthorityStop("candidate-neutral upstream freeze receipt is not bound")
+    from rawlsing_next.ee_p2x_candidate_process_envelope import load_frozen_upstream_receipt
+    doc, receipt_sha256 = load_frozen_upstream_receipt(Path(raw))
+    source = ctx.stage.source
+    source_entry = doc.get("source_freezes", {}).get(source)
+    if not isinstance(source_entry, Mapping):
+        raise SourceAuthorityStop("upstream freeze lacks this source", {"source": source})
+    if source_entry.get("source_id") != source:
+        raise SourceAuthorityStop("upstream freeze source_id drift", {"source": source})
+    if source_entry.get("canonical_source_sha256") != ctx.source_sha256:
+        raise SourceAuthorityStop("upstream freeze canonical source root drift", {"source": source})
+    oracle_entry = doc.get("oracle_identities", {}).get(source)
+    if not isinstance(oracle_entry, Mapping):
+        raise CourtAuthorityStop("upstream freeze lacks independent oracle identity", {"source": source})
+    oracle_identity = oracle_entry.get("oracle_identity_sha256")
+    if not isinstance(oracle_identity, str) or len(oracle_identity) != 64:
+        raise CourtAuthorityStop("upstream independent oracle identity malformed", {"source": source})
+    state["oracle_frozen"] = 0
+    state["oracle_identity"] = oracle_identity
+    state["upstream_freeze_receipt_sha256"] = receipt_sha256
+    state["bindings"]["upstream_freeze_order"] = dict(doc.get("freeze_order", {}))
+    state["bindings"]["source_identity_authority_ref"] = source_entry.get("source_identity_authority_ref")
+    if source_entry.get("derivative_identity") is not None:
+        state["bindings"]["derivative_identity"] = source_entry.get("derivative_identity")
+        state["bindings"]["derivative_to_source_provenance_ref"] = source_entry.get(
+            "derivative_to_source_provenance_ref"
+        )
+    return oracle_identity
+
+
 def _s01(ctx,services,state):
     (bound,_build_wall)=_measure(ctx,state,lambda:_bind(ctx,services,state,True),"build_or_open_wall_ns")
     binding,projection,runtime_authority=bound
@@ -839,30 +877,29 @@ def _s02(ctx,services,state):
     return {"release_ref":binding.release_ref.as_dict(),"binding_identity":rec["binding_identity"]}
 
 def _s03(ctx,services,state):
-    state["oracle_frozen"]=state["oracle_frozen"] or _ord(state)
-    state["oracle_identity"]=_h({"schema":"RAWLSING_EE_P2X_CANDIDATE_NEUTRAL_ORACLE@1.0.0",
-                                 "source":ctx.stage.source,"source_sha256":ctx.source_sha256,
-                                 "lock2":WVS_LOCK2 if ctx.stage.source=="WVS7" else None})
-    binding,projection,runtime_authority=_bind(ctx,services,state,ctx.source_path is not None)
-    _binding_state(state,binding,projection)
-    a,ai=_i03(binding); b,bi=_i03(binding)
-    ok=ai==bi
-    state["parity"]={k:"PASS" if ok else "FAIL" for k in
+    oracle_identity=_bind_prefrozen_oracle_state(ctx,state)
+    state["parity"]={k:"PENDING__POST_I05_INDEPENDENT_ORACLE_COMPARISON" for k in
                      ("semantic","exactref_identity","replay","integrity_fail_closed","frontier_typed_negative")}
-    state["parity_complete"]=_ord(state)
-    if not ok: raise BackendStop("candidate-neutral parity replay mismatch")
-    return {"oracle_identity_sha256":state["oracle_identity"],"parity_identity":ai}
+    state["parity_complete"]=None
+    return {
+        "oracle_identity_sha256":oracle_identity,
+        "oracle_gate":"PASS__PRE_FROZEN_CANDIDATE_NEUTRAL_ORACLE_BOUND",
+        "candidate_self_replay_used_as_expected_truth":False,
+        "comparison_state":"DEFERRED_UNTIL_COMPLETE_I03_I05_OBSERVATION",
+    }
 
 def _s04(ctx,services,state):
-    if not all(x=="PASS" for x in state["parity"].values()):
-        raise BackendStop("performance cannot precede parity PASS")
+    if not state.get("oracle_identity"):
+        raise BackendStop("I03 cannot execute before pre-frozen oracle identity is bound")
     binding,projection,runtime_authority=_bind(ctx,services,state,ctx.source_path is not None)
     _binding_state(state,binding,projection)
     (body,identity),_= _measure(ctx,state,lambda:_i03(binding),"cold_i03_latency_ns")
-    if not state["performance_admitted"]:
-        state["performance_admitted"]=True; state["performance_first_admitted"]=_ord(state)
     state["outputs"]["exact_output_identity"]=identity
-    return {"i03_identity":identity,"i03":body}
+    return {
+        "i03_identity":identity,
+        "i03":body,
+        "performance_admission":"PENDING__INDEPENDENT_ORACLE_MATCH_AFTER_I05",
+    }
 
 def _s05(ctx,services,state):
     binding,projection,runtime_authority=_bind(ctx,services,state,ctx.source_path is not None)
@@ -1072,19 +1109,21 @@ HANDLERS={"S01_CANDIDATE_PREPARATION_BUILD":_s01,"S02_C11_REACHABILITY":_s02,"S0
           "S17_FINAL_COMPLETENESS_AND_VERIFICATION":_s17}
 
 
-def _gate(ctx):
+def _gate(ctx,state):
     s=ctx.stage
     if ctx.contract!=BACKEND_CONTRACT: raise CourtAuthorityStop("StageContext backend contract mismatch")
     if s.stage_id not in READY or s.disposition!="READY__RUN_LOCALLY": raise BackendStop("backend invoked for non-READY current stage")
     if s.source!="COURT" and ctx.source_sha256!=EXPECTED_SOURCE.get(s.source): raise SourceAuthorityStop("StageContext source identity drift")
     if s.empirical_source_access_required!=(ctx.source_path is not None):
         raise BackendStop("driver source-path exposure disagrees with reducer tuple")
+    if s.source!="COURT":
+        _bind_prefrozen_oracle_state(ctx,state)
 
 
 def run_stage(context, services):
     state=_state(context)
     try:
-        _gate(context)
+        _gate(context,state)
         handler=HANDLERS.get(context.stage.stage_id)
         if handler is None: raise CourtAuthorityStop("READY stage lacks production handler")
         payload,_=_measure(context,state,lambda:handler(context,services,state))
