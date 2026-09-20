@@ -54,6 +54,7 @@ Implemented fail-closed action checks:
 - exact governed audit primitive;
 - final terminal-identity reproduction after successful action;
 - telemetry action/binding identity equality;
+- reserved lifecycle metric-name to action-class equality;
 - observed recomputation-unit count equality.
 
 ## Tests
@@ -75,7 +76,8 @@ Coverage:
 - unreached lifecycle stage cannot emit numeric metrics;
 - Candidate-A preserved work cannot satisfy Candidate-B;
 - fresh process replay requires terminal identity reproduction;
-- wrong-terminal replay rejected.
+- wrong-terminal replay rejected;
+- reserved lifecycle metric attached to the wrong action rejected.
 
 ## Return package
 
