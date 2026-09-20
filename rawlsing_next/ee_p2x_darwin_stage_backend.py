@@ -1099,7 +1099,9 @@ def _cell(ctx,services,state,stopped):
         "oracle":{"candidate_neutral":True,"candidate_defined":False,
                   "oracle_identity_sha256":state.get("oracle_identity"),
                   "freeze_receipt_sha256":state.get("upstream_freeze_receipt_sha256")},
-        "parity":parity,"performance_admission":("NOT_ADMITTED" if stopped else\n            ("ADMITTED_AFTER_INDEPENDENT_ORACLE_MATCH" if state["performance_admitted"] else\n             "PENDING__INDEPENDENT_ORACLE_MATCH")),
+        "parity":parity,"performance_admission":("NOT_ADMITTED" if stopped else
+            ("ADMITTED_AFTER_INDEPENDENT_ORACLE_MATCH" if state["performance_admitted"] else
+             "PENDING__INDEPENDENT_ORACLE_MATCH")),
         "metrics":{n:_slot(state,n,stopped,preserved) for n in METRICS},
         "behaviors":{n:_behavior(state,n,stopped) for n in ("stale_cache","corrupt_cache","interruption_session_recovery")},
         "outputs":{"exact_output_identity":state["outputs"].get("exact_output_identity"),
