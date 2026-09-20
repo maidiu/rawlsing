@@ -1,0 +1,45 @@
+{
+  "schema": "CLOSED35_R2_ASIAN5_RETURN@1.0.0",
+  "worker": "CLOSED35-R2-ASIAN5",
+  "repository": "maidiu/rawlsing",
+  "base_branch": "agent/vozhd-closed35-l2r-r1-fanin-r1",
+  "base_sha": "da33eb6a8225c14eee9490633a3263388dc5536c",
+  "branch": "agent/rabochii-closed35-r2-asian5-realization-r1",
+  "source": {
+    "family": "Asian Barometer",
+    "wave": "5",
+    "canonical_filename": "Asian Barometer Wave 5.sav",
+    "canonical_sha256": "2576e428ff8de3c8d93a418c9120a1c2955ab7b1f35961d8c18fa562bc4b5e63",
+    "authority_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED"
+  },
+  "status": "SOURCE_SPECIFIC_REALIZATION_IMPLEMENTED",
+  "tests": "TESTS_AUTHORED__NOT_EXECUTED",
+  "implementation": [
+    "rawlsing_next/closed35_asian5_realization.py",
+    "rawlsing_next/tests/test_closed35_r2_asian5_realization.py"
+  ],
+  "outputs": [
+    "00_RETURN.md",
+    "01_REALIZATION_CONTRACT.md",
+    "02_MR_ROUTING_PROJECTION_MAP.csv",
+    "03_PHYSICAL_EDGE_BINDING.json",
+    "04_TEST_PROTOCOL.md",
+    "RETURN.json"
+  ],
+  "edge_classes": ["EC01", "EC07", "EC08", "EC10", "EC12", "EC13", "EC14"],
+  "bounded_unknowns_preserved": [
+    "native MR Q112 semantic alias",
+    "India module exact semantics/routing",
+    "q186 exact source risk set and merged -1 refinement",
+    "merged SAV to generic instrument geography reconciliation",
+    "w estimand/normalization/default/design"
+  ],
+  "claim_boundary": {
+    "real_source_executed": false,
+    "whole_source_physical_equivalence_passed": false,
+    "abc_executed": false,
+    "i05_passed": false,
+    "measured_p2x_run": false
+  },
+  "terminal": "CLOSED35_R2_ASIAN_BAROMETER_W5_SOURCE_SPECIFIC_REALIZATION_IMPLEMENTED__READY_FOR_ABC_QUALIFICATION"
+}
