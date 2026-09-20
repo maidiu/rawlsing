@@ -1,0 +1,56 @@
+{
+  "schema": "FIABC_LM1_R1B_WORKER_RETURN@1.0.0",
+  "worker": "FIABC-LM1-R1B",
+  "repository": "maidiu/rawlsing",
+  "exact_base": "af25e10ee3ae4a53f11f0b28d9f7567c29cdc957",
+  "branch": "agent/rabochii-premain-fiabc-lm1-r1b-r5-replacement-succession-r1",
+  "status": "COMPLETE__BROWSER_ONLY_TESTS_NOT_EXECUTED",
+  "pointer_holding": "R35_R5_RUNTIME_POINTER_SET_CLOSES_TO_ACCEPTED_OWNER_OBJECTS",
+  "corrected_pointer_count": 5,
+  "all_corrected_blobs_exist_at_accepted_owner": true,
+  "accepted_owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+  "successor_authority": {
+    "schema": "FIABC_LITS_A_R5_REPLACEMENT_SUCCESSION@1.0.0",
+    "identity": "1be0cccc9938a8ad5594faa58d516ef6574b2daf3182d2ef9cb04a2435bfea88",
+    "scope": "LITS_I_X_CANDIDATE_A_X_R5",
+    "successful_replacement_limit": 1,
+    "retry_incomplete_attempts": true,
+    "second_success_forbidden": true
+  },
+  "historical_t2_manifest": {
+    "path": "WORKER_RETURNS/FIABC-T2/01_SIX_CELL_EXECUTION_MANIFEST.json",
+    "git_blob_before": "0864534765a34eded37137c545d750f741e31d7a",
+    "git_blob_after": "0864534765a34eded37137c545d750f741e31d7a",
+    "sha256_before": "035a20dfaa9e1009fd845d653ca089ca77517e446cd47106ecdb1e1eda252bf6",
+    "sha256_after": "035a20dfaa9e1009fd845d653ca089ca77517e446cd47106ecdb1e1eda252bf6",
+    "changed": false
+  },
+  "old_r5": {
+    "classification": "PRESERVED_SEMANTIC_EVIDENCE_WITHOUT_NUMERIC_TELEMETRY",
+    "numeric_credit": 0
+  },
+  "new_build": {
+    "accounting": "EXECUTED_NOW",
+    "t4_cost_class": "C2_CANDIDATE_PHYSICAL_REALIZATION",
+    "executed_here": false
+  },
+  "later_local_action": "ONE_CANONICAL_LITS_I_CANDIDATE_A_R5_REPLACEMENT_WITH_GENERIC_R35_PARENTAGE",
+  "tests": {
+    "added": [
+      "tests/test_fiabc_lits_a_r5_replacement_succession.py"
+    ],
+    "repaired": [
+      "tests/test_fiabc_derivative_parentage.py"
+    ],
+    "executed": false,
+    "pass_claimed": false
+  },
+  "boundaries": {
+    "local_source_carriers_opened": false,
+    "r5_rebuilt": false,
+    "wvs_execution_touched": false,
+    "measured_p2x_run": false,
+    "t2_manifest_modified": false
+  },
+  "terminal": "FIABC_LM1_R1B_R5_REPLACEMENT_SUCCESSION_ADOPTED__R35_POINTER_SET_REPAIRED__READY_FOR_ONE_LOCAL_GOVERNED_REBUILD"
+}

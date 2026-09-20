@@ -1,0 +1,130 @@
+{
+  "schema": "FIABC_LITS_A_R5_REPLACEMENT_SUCCESSION@1.0.0",
+  "predecessor_authority": {
+    "path": "WORKER_RETURNS/FIABC-T2/01_SIX_CELL_EXECUTION_MANIFEST.json",
+    "git_blob": "0864534765a34eded37137c545d750f741e31d7a",
+    "sha256": "035a20dfaa9e1009fd845d653ca089ca77517e446cd47106ecdb1e1eda252bf6",
+    "prohibition": "NO_REPEAT_COMPLETED_LITS_A_FIRST_BUILD",
+    "historical_manifest_mutable": false
+  },
+  "supersession_scope": {
+    "source_id": "LITS_I",
+    "candidate": "A",
+    "derivative_family": "R5",
+    "derivative_class": "LITS_A_PRESERVED_R5_CARRIER",
+    "successful_replacement_limit": 1,
+    "general_no_repeat_law_remains": true
+  },
+  "triggering_adjudications": [
+    "HISTORICAL_GENERIC_PARENTAGE_NOT_PROVED",
+    "OLD_R5_INADMISSIBLE_FOR_CURRENT_SOURCE_FREE_CONSUMPTION",
+    "OLD_R5_NUMERIC_PRESERVED_WORK_CREDIT_ZERO",
+    "CONSTITUTION_INDUCED_DEADLOCK_REQUIRES_ONE_CURRENT_REPLACEMENT"
+  ],
+  "replacement_contract": {
+    "canonical_source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "builder": {
+      "identity": "R5CompactLongShardedBuilder",
+      "code_blob": "92e364b31eaf27be1bca2081eff65f6ffb779c3d",
+      "version": "R5_LONG_SHARDED_TYPED_INCIDENCE_V1",
+      "owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+      "consumer_adapter_blob": "d4915e7e6755ba1850756aebff72f982f73a332b"
+    },
+    "derivation_operation": "BUILD_LITS_A_R5_FROM_CANONICAL_PHYSICAL_INCIDENCE",
+    "reader_config": {
+      "reader": "pyreadstat",
+      "reader_version": "1.3.6",
+      "user_missing": true,
+      "apply_value_formats": false,
+      "encoding": "latin1",
+      "authority_status": "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY"
+    },
+    "build_config": {
+      "run_max_rows": 4096,
+      "run_max_bytes": 4194304,
+      "shard_max_rows": 16384,
+      "shard_max_bytes": 16777216,
+      "merge_fan_in": 8,
+      "verified_spool_memory_bytes": 1048576
+    },
+    "fixed_identities": {
+      "lits_projection_identity": "84361298ae702786a3fd1044bf619ffa4fe9ed2877040724386951e9c9d27872",
+      "expected_learned_product": "47d36b1459c2458c480b58631d2c78af68be4dde44015a9220b09177b1eeb28d",
+      "semantic_replay_identity": "301735d4563314a0d7c133fa1afbb0ca57679b3fad887c66e77a909494779eb5",
+      "runtime_catalog": "5983d7d5c579b916ad46c1acf9e41c1c89b516a4e561a99b1d2b477bf5ad2d02",
+      "active_binding": "a5f36a81843fe2ebab0b5cccb369ce76035f842b93e602613b8b9f3a81103308",
+      "runtime_release": "192926fabd9c9c3d40e43b1d7705ca2bcfe7f8d06e286be26d4b886d436df43f",
+      "candidate_a_owner_adapter": "d4915e7e6755ba1850756aebff72f982f73a332b",
+      "learned_candidates": 50,
+      "query_role_executions": 77
+    }
+  },
+  "generic_parentage_requirement": {
+    "required": true,
+    "bundle_schema": "FIABC_DERIVATIVE_PARENTAGE_BUNDLE@1.0.0",
+    "source_receipt_schema": "FIABC_CANONICAL_SOURCE_VERIFICATION_RECEIPT@1.0.0",
+    "derivative_receipt_schema": "FIABC_DERIVATIVE_PARENTAGE_RECEIPT@1.0.0",
+    "exact_identities_required": [
+      "bundle_identity",
+      "source_receipt_identity",
+      "derivative_receipt_identity"
+    ],
+    "derivative_bindings": [
+      "canonical_source_sha256",
+      "source_receipt_identity",
+      "builder_identity",
+      "builder_blob",
+      "reader_config",
+      "derivation_operation",
+      "build_config",
+      "physical_root_id",
+      "logical_stream_digest",
+      "canonical_row_count",
+      "member_inventory_identity",
+      "release_identity",
+      "candidate_ownership",
+      "runtime_workload_currentness"
+    ],
+    "self_asserted_source_sha_sufficient": false
+  },
+  "accounting_treatment": {
+    "replacement_build": "EXECUTED_NOW",
+    "t4_cost_class": "C2_CANDIDATE_PHYSICAL_REALIZATION",
+    "old_r5_numeric_preserved_work_credit": 0,
+    "double_counting_forbidden": true
+  },
+  "old_r5_disposition": {
+    "classification": "PRESERVED_SEMANTIC_EVIDENCE_WITHOUT_NUMERIC_TELEMETRY",
+    "current_source_free_parentage_admissible": false,
+    "lawful_future_use": "HISTORICAL_SEMANTIC_OR_EQUALITY_REPLAY_EVIDENCE_ONLY"
+  },
+  "completion_condition": {
+    "status": "SUCCESSFULLY_SEALED",
+    "requires_valid_generic_parentage": true,
+    "admitted_derivative_required": true,
+    "after_completion": "NO_REPEAT_PRINCIPLE_REAPPLIES"
+  },
+  "retry_interruption_semantics": {
+    "incomplete_or_interrupted_attempt_consumes_success": false,
+    "retry_requires_existing_interruption_recovery_law": true,
+    "incomplete_attempt_may_produce_admitted_derivative": false
+  },
+  "prohibition_on_second_successful_replacement": true,
+  "later_local_action": [
+    "BUILD_ONE_REPLACEMENT_LITS_I_A_R5_FROM_CANONICAL_SOURCE",
+    "SEAL_GENERIC_R35_PARENTAGE_CHAIN",
+    "SUPPLY_REPLACEMENT_ROOT_AND_PARENTAGE_IDENTITY_TO_CURRENT_LIVE_COURT",
+    "THEN_CONTINUE_EXISTING_P2_STAGE_LAW"
+  ],
+  "claim_boundary": {
+    "semantic_certification_added": false,
+    "candidate_a_meaning_changed": false,
+    "abc_comparison_law_changed": false,
+    "i05_i08_changed": false,
+    "population_or_weight_authority_added": false,
+    "measured_p2x_authorized": false,
+    "arbitrary_rebuilds_authorized": false,
+    "historical_evidence_erased": false
+  },
+  "authority_identity": "1be0cccc9938a8ad5594faa58d516ef6574b2daf3182d2ef9cb04a2435bfea88"
+}

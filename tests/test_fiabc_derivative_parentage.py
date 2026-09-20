@@ -53,7 +53,7 @@ WVS_OWNERSHIP = {
 
 LITS_PRODUCER = {
     "identity": "R5CompactLongShardedBuilder",
-    "code_blob": "92e68693d72cbfcdd1c6d16e7f247ca3f60c8c55",
+    "code_blob": "92e364b31eaf27be1bca2081eff65f6ffb779c3d",
     "version": "R5_LONG_SHARDED_TYPED_INCIDENCE_V1",
     "owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
     "consumer_adapter_blob": "d4915e7e6755ba1850756aebff72f982f73a332b",
