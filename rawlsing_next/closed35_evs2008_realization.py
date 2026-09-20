@@ -34,6 +34,7 @@ PRODUCER_CHECKSUM_AVAILABLE = False
 SOURCE_DECLARED_ENCODING = "UTF-8"
 PHYSICAL_COMPATIBILITY_MODE = "SAV_LATIN1_COMPAT_PHYSICAL_ONLY__SOURCE_DECLARES_UTF8"
 COMPATIBILITY_ENCODING = "latin1"
+READER_VERSION = "1.3.6"
 COMPATIBILITY_SEMANTIC_SCOPE = "PHYSICAL_EXTRACTION_ONLY__NO_SOURCE_TEXT_OR_SEMANTIC_AUTHORITY"
 UNKNOWN_PRODUCER_TEXT = "UNKNOWN_PRODUCER_TEXT"
 BOUNDED_UNKNOWN = "BOUNDED_UNKNOWN"
@@ -593,7 +594,7 @@ def admit_physical_incidence(incidence: Any) -> PhysicalAdmission:
     normalized = _normalized_reader_configuration(reader_configuration)
     expected = {
         "reader": "pyreadstat",
-        "reader_version": reader_configuration.get("reader_version"),
+        "reader_version": READER_VERSION,
         "user_missing": True,
         "apply_value_formats": False,
         "encoding": COMPATIBILITY_ENCODING,
