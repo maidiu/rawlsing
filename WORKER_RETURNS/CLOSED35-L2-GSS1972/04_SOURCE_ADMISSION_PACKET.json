@@ -1,0 +1,156 @@
+{
+  "worker": "CLOSED35-L2-GSS1972",
+  "status": "PASS__DOCUMENTARY_ROUTING_WEIGHT_AUTHORITY_CLOSED",
+  "terminal": "CLOSED35_L2_GSS1972_DOCUMENTARY_ROUTING_WEIGHT_AUTHORITY_CLOSED__READY_FOR_SOURCE_SPECIFIC_REALIZATION",
+  "repository": "maidiu/rawlsing",
+  "base": {
+    "branch": "agent/vozhd-premain-fiabc-s35-fanin-r1",
+    "tip": "770d95c1a604ea1f47ac2971b923673c14c42984"
+  },
+  "branch": "agent/rabochii-closed35-l2-gss1972-authority-r1",
+  "execution_boundary": {
+    "raw_sav_opened": false,
+    "source_decoding_executed": false,
+    "source_processing_executed": false,
+    "measured_p2x_run": false,
+    "mode": "GITHUB_BROWSER_PLUS_PUBLIC_OFFICIAL_DOCUMENTARY_RESEARCH_ONLY"
+  },
+  "source": {
+    "canonical_file": "GSS1972.sav",
+    "sha256": "e368fc0f1d141b201900185c919c48ab1de1c4c7815bccf83a6e4fb224293204",
+    "format": "SAV_NATIVE_GOVERNED",
+    "inherited_rows": 1613,
+    "inherited_variables": 216,
+    "inherited_export_envelope": "GSS_1972_2024_RELEASE_3_MARCH_2026",
+    "physical_fact_authority": "accepted SR09-PRE R05 / PREP71 R05 / PREP72 R10 only"
+  },
+  "identity": {
+    "hard_replay_key": [
+      "canonical_source_sha256",
+      "zero_based_source_row_ordinal"
+    ],
+    "native_id": {
+      "field": "id",
+      "official_label": "Original ID Number",
+      "inherited_exact_source_fact": "complete and injective within GSS1972; 1..1613; restarts in other releases",
+      "use": "preserve as source-local attribute/check",
+      "cross_release_join_authorized": false
+    }
+  },
+  "design": {
+    "source_design_coordinate": {
+      "field": "sample",
+      "inherited_value": 1,
+      "binding": "1960 NORC sample frame; block quota",
+      "role": "DESIGN_CLASSIFIER_NOT_WEIGHT"
+    },
+    "sample_method": "multi-stage area probability to block/segment level, then block-level quota selection",
+    "quota_dimensions": [
+      "sex",
+      "age",
+      "employment_status"
+    ],
+    "form": "NOT_APPLICABLE_1972",
+    "ballot": "NOT_APPLICABLE_1972",
+    "item_rotation": "NONE_1972",
+    "topical_module": "NONE_1972",
+    "international_module": "NONE_1972"
+  },
+  "routing_authority": {
+    "direct_item_primary": "official 1972 GSS questionnaire",
+    "technical_derived_secondary": "1972-explicit cumulative-codebook entry/appendix",
+    "omnibus_exclusion": "Q51-Q81 are non-GSS and are not source-admissible merely from questionnaire presence",
+    "not_asked_rule": "NOT_ASKED/IAP may be asserted only from exact documentary route or explicit 1972 codebook applicability; never from missingness alone",
+    "repeated_occurrence_examples": [
+      {
+        "instrument": "Q91",
+        "roles": [
+          "respondent",
+          "father_or_substitute",
+          "mother_or_substitute",
+          "spouse_if_currently_married"
+        ],
+        "realization_law": "preserve role-specific occurrence identity"
+      }
+    ],
+    "mandatory_route_examples": [
+      "Q3 -> Q4 and Q91 parent columns",
+      "Q9 -> Q10-Q12",
+      "Q13-Q16 spouse block",
+      "Q17-Q18 respondent-versus-spouse target",
+      "Q19 one-person household skip",
+      "Q25 explicit not-asked-inappropriate code",
+      "Q44 staged conditional sequence",
+      "Q82 currently-employed-only"
+    ]
+  },
+  "weight_design": {
+    "exact_accepted_source_weight_candidates": [
+      "wtssall",
+      "wtssps"
+    ],
+    "default_person_level_population_weight": {
+      "field": "wtssps",
+      "status": "ADMITTED_DEFAULT",
+      "producer_scope": "1972 onward",
+      "construction": "later cumulative post-stratified/raked weight using WTSSALL as historical input for 1972-1998",
+      "native_to_1972_field_period": false
+    },
+    "legacy_person_weight": {
+      "field": "wtssall",
+      "status": "ADMITTED_NONDEFAULT",
+      "purpose": "historical adults-in-household/person weighting",
+      "native_to_1972_field_period": false
+    },
+    "forbidden_or_not_applicable": [
+      "wtss",
+      "wtssnr",
+      "wtssnrps",
+      "formwt",
+      "ballotformwt",
+      "ballotformwtnr",
+      "oversamp",
+      "vpsu",
+      "vstrat",
+      "synthetic_bq_weight",
+      "synthetic_race_weight"
+    ],
+    "variance_design": {
+      "vpsu_vstrat_authorized": false,
+      "sampcode_authorized_as_current_1972_variance_carrier": false,
+      "rule": "FAIL_CLOSED for design-corrected variance unless separate producer-authoritative 1972 variance method/carrier is supplied"
+    },
+    "estimand_limits": {
+      "current_default": "person-level inference to historical GSS target adult household population",
+      "household_level_default": "NONE",
+      "cross_release_combination_default": "NONE_FROM_THIS_SOURCE_PACKET"
+    }
+  },
+  "documentary_hierarchy": [
+    "accepted exact-source physical facts",
+    "official 1972 questionnaire",
+    "1972-explicit cumulative codebook/appendix entries",
+    "official GSS methodological reports",
+    "later cumulative conventions only when producer explicitly states 1972 applicability"
+  ],
+  "documentary_sources": [
+    "https://gss.norc.org/content/dam/gss/get-documentation/pdf/quex/1972%20GSS%20Quex.pdf",
+    "https://gss.norc.org/content/dam/gss/get-documentation/pdf/codebook/GSS_Codebook.pdf",
+    "https://gss.norc.org/content/dam/gss/get-documentation/pdf/codebook/A.pdf",
+    "https://gss.norc.org/Documents/reports/methodological-reports/MR003.pdf",
+    "https://gss.norc.org/content/dam/gss/get-documentation/pdf/reports/methodological-reports/MR036.pdf",
+    "https://gss.norc.org/content/dam/gss/get-documentation/pdf/reports/methodological-reports/MR056.pdf",
+    "https://gss.norc.org/content/dam/gss/get-documentation/pdf/reports/methodological-reports/GSS%20MR137%20Poststratification%20Weights.pdf",
+    "https://gss.norc.org/content/dam/gss/get-documentation/pdf/other/GSS%20design%20variables.pdf",
+    "https://gss.norc.org/faq.html"
+  ],
+  "exact_unknown_set": [],
+  "explicit_negative_admissions": [
+    "No 1972 form/ballot/module route",
+    "No cross-release respondent identity from id",
+    "No modern VPSU/VSTRAT variance binding for this exact source",
+    "No source-carried 2004+ nonresponse weight",
+    "No invented BQ/race/form weight beyond accepted source carriers"
+  ],
+  "ready_for_source_specific_realization": true
+}

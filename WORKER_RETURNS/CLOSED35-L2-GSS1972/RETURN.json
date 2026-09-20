@@ -1,0 +1,54 @@
+{
+  "worker": "CLOSED35-L2-GSS1972",
+  "branch": "agent/rabochii-closed35-l2-gss1972-authority-r1",
+  "base_tip": "770d95c1a604ea1f47ac2971b923673c14c42984",
+  "source_file": "GSS1972.sav",
+  "source_sha256": "e368fc0f1d141b201900185c919c48ab1de1c4c7815bccf83a6e4fb224293204",
+  "disposition": "PASS",
+  "terminal": "CLOSED35_L2_GSS1972_DOCUMENTARY_ROUTING_WEIGHT_AUTHORITY_CLOSED__READY_FOR_SOURCE_SPECIFIC_REALIZATION",
+  "outputs": [
+    "00_RETURN.md",
+    "01_DOCUMENTARY_SOURCE_LEDGER.csv",
+    "02_ROUTING_AND_OCCURRENCE_AUTHORITY.csv",
+    "03_WEIGHT_AND_DESIGN_AUTHORITY.md",
+    "04_SOURCE_ADMISSION_PACKET.json",
+    "RETURN.json"
+  ],
+  "closed_burdens": {
+    "source_identity": true,
+    "source_local_row_identity": true,
+    "form_block_applicability": true,
+    "skipped_not_asked_vs_missing_law": true,
+    "repeated_occurrence_authority": true,
+    "field_routing_documentary_authority": true,
+    "sampling_frame_applicability": true,
+    "weight_candidate_roles": true,
+    "current_default_person_weight": true,
+    "later_cumulative_weight_separation": true,
+    "design_variance_negative_binding": true
+  },
+  "core_bindings": {
+    "hard_identity": "SOURCE_SHA256+ZERO_BASED_SOURCE_ROW_ORDINAL",
+    "native_id_cross_release": "FORBIDDEN",
+    "design": "1960_FRAME_BLOCK_QUOTA",
+    "form": "NOT_APPLICABLE_1972",
+    "ballot": "NOT_APPLICABLE_1972",
+    "primary_routing_authority": "1972_GSS_QUEX",
+    "missingness_rule": "NO_ROUTE_INFERENCE_FROM_MISSINGNESS",
+    "current_person_level_default_weight": "WTSSPS",
+    "legacy_person_weight": "WTSSALL",
+    "modern_variance_pair": "NONE_AUTHORIZED_FOR_1972"
+  },
+  "exact_unknown_set": [],
+  "unsupported_but_not_unknown": [
+    "design-corrected variance from this exact public source using VPSU/VSTRAT",
+    "household-level population estimand without separate binding",
+    "cross-release person linkage"
+  ],
+  "prohibitions_observed": {
+    "raw_sav_opened": false,
+    "source_decoder_run": false,
+    "source_processing_run": false,
+    "measured_p2x_run": false
+  }
+}
