@@ -124,6 +124,8 @@ def verify_source_verification_receipt(
     *,
     expected_source_id: str | None = None,
     expected_source_sha256: str | None = None,
+    expected_receipt_identity: str | None = None,
+    expected_operation: str | None = None,
     expected_producer: Mapping[str, Any] | None = None,
     expected_reader_config: Mapping[str, Any] | None = None,
     expected_scope_determinants: Mapping[str, Any] | None = None,
@@ -159,6 +161,10 @@ def verify_source_verification_receipt(
         raise ParentageError("source receipt source_id mismatch")
     if expected_source_sha256 is not None and source_sha != _sha256(expected_source_sha256, "expected source sha"):
         raise ParentageError("source receipt canonical SHA mismatch")
+    if expected_receipt_identity is not None and identity != _sha256(expected_receipt_identity, "expected source receipt identity"):
+        raise ParentageError("source receipt identity mismatch")
+    if expected_operation is not None and observation["operation"] != expected_operation:
+        raise ParentageError("source verification operation mismatch")
     if expected_producer is not None:
         _exact(producer, expected_producer, "source producer")
     if expected_reader_config is not None:
@@ -310,6 +316,8 @@ def verify_parentage_bundle(
     expected_scope_determinants: Mapping[str, Any],
     expected_currentness_determinants: Mapping[str, Any],
     expected_ownership: Mapping[str, Any],
+    expected_source_receipt_identity: str | None = None,
+    expected_source_operation: str | None = None,
     expected_source_producer: Mapping[str, Any] | None = None,
     expected_source_reader_config: Mapping[str, Any] | None = None,
     expected_source_scope_determinants: Mapping[str, Any] | None = None,
@@ -330,6 +338,8 @@ def verify_parentage_bundle(
         bundle.get("source_receipt"),
         expected_source_id=expected_source_id,
         expected_source_sha256=expected_source_sha256,
+        expected_receipt_identity=expected_source_receipt_identity,
+        expected_operation=expected_source_operation,
         expected_producer=expected_source_producer,
         expected_reader_config=expected_source_reader_config,
         expected_scope_determinants=expected_source_scope_determinants,
