@@ -487,22 +487,24 @@ class ProcessIsolationController:
         source = context.stage.source
         candidate = context.stage.candidate
         work_root = Path(context.work_root).resolve()
-        root = Path(context.roots.root).resolve()
+        raw_paths = {
+            "root": Path(context.roots.root),
+            "scratch": Path(context.roots.scratch),
+            "durable": Path(context.roots.durable),
+            "logs": Path(context.roots.logs),
+            "receipts": Path(context.roots.receipts),
+        }
+        for name, raw in raw_paths.items():
+            if raw.is_symlink():
+                raise RootIsolationError(f"candidate {name} root may not be a symlink")
+        paths = {name: raw.resolve() for name, raw in raw_paths.items()}
+        root = paths["root"]
         expected = (work_root / "cells" / source / candidate).resolve()
         if root != expected:
             raise RootIsolationError(f"candidate root drift: expected {expected}, got {root}")
-        paths = {
-            "root": root,
-            "scratch": Path(context.roots.scratch).resolve(),
-            "durable": Path(context.roots.durable).resolve(),
-            "logs": Path(context.roots.logs).resolve(),
-            "receipts": Path(context.roots.receipts).resolve(),
-        }
         for name, path in paths.items():
             if not path.exists() or not path.is_dir():
                 raise RootIsolationError(f"pre-provisioned candidate {name} root missing: {path}")
-            if path.is_symlink():
-                raise RootIsolationError(f"candidate {name} root may not be a symlink")
             if name != "root" and not _is_under(path, root):
                 raise RootIsolationError(f"candidate {name} root escapes sealed cell root")
         if _is_under(self.freeze_receipt_path, work_root / "cells"):
