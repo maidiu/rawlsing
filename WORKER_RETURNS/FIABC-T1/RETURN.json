@@ -1,0 +1,93 @@
+{
+  "schema": "FIABC_T1_LIVE_P2X_SUBSTRATE_TRANSPOSITION_RETURN@1.0.0",
+  "worker": "FIABC-T1",
+  "repo": "maidiu/rawlsing",
+  "branch": "agent/rabochii-premain-fiabc-t1-live-p2x-substrate-transposition-r1",
+  "base_execution_line": {
+    "branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+    "exact_tip_before_modification": "617c9c9426db12a3c0f7fea6b68a582c10759553",
+    "branch_relation_to_tip": "IDENTICAL"
+  },
+  "governing_premain": "agent/vozhd-premain-fiabc-wave3-fanin-r1",
+  "scope": "I04_RUNTIME_PACKAGING_ONLY",
+  "implementation": {
+    "live_backend_before_blob": "b223d309b5f5fa45389badec719ce2882e672cca",
+    "rebound_backend_blob": "b0115ceffe7203c29646faffcbc5adfcfa373488",
+    "backend_delta": "EXACTLY_THREE_RUNTIME_LOCATOR_SUBSTITUTIONS",
+    "stable_assets": {
+      "lits_runtime_materializer": {
+        "path": "rawlsing_next/runtime/ee_p2x/01_LITS_CURRENT_RUNTIME_MATERIALIZER.py",
+        "git_blob_sha": "9406bacfd928393f6a159a46216aa1f7ec129f34"
+      },
+      "node4a_support": {
+        "path": "WORKER_RETURNS/EE-P2R6O/SUPPORT/01_NODE4A_PREDICATE_INPUTS.py",
+        "git_blob_sha": "504944f9533b7385d201076e2e834b8a9446dee8"
+      },
+      "wvs_runtime_package": {
+        "path": "rawlsing_next/runtime/ee_p2x/02_WVS7_P2F2_RUNTIME_PACKAGE.json",
+        "git_blob_sha": "e04e84b76f8b4eb53905276dd025938bf2e5f6fe"
+      },
+      "wvs_projection_materializer": {
+        "path": "rawlsing_next/runtime/ee_p2x/05_WVS7_PROJECTION_MATERIALIZER.py",
+        "git_blob_sha": "11b28416aac5a4899706150721f2f8ac8bb6ee43"
+      }
+    },
+    "packaging_manifest_blob": "25c56abf292175fa5894e5a65362e239eaa55db1",
+    "static_identity_court_blob": "f8d49baecc0c08c0ca40dde2bfd189398b8c150b"
+  },
+  "browser_identity_verification": {
+    "rawlsing_next/ee_p2x_darwin_stage_backend.py": {
+      "observed": "b0115ceffe7203c29646faffcbc5adfcfa373488",
+      "expected": "b0115ceffe7203c29646faffcbc5adfcfa373488",
+      "match": true
+    },
+    "rawlsing_next/runtime/ee_p2x/01_LITS_CURRENT_RUNTIME_MATERIALIZER.py": {
+      "observed": "9406bacfd928393f6a159a46216aa1f7ec129f34",
+      "expected": "9406bacfd928393f6a159a46216aa1f7ec129f34",
+      "match": true
+    },
+    "rawlsing_next/runtime/ee_p2x/02_WVS7_P2F2_RUNTIME_PACKAGE.json": {
+      "observed": "e04e84b76f8b4eb53905276dd025938bf2e5f6fe",
+      "expected": "e04e84b76f8b4eb53905276dd025938bf2e5f6fe",
+      "match": true
+    },
+    "rawlsing_next/runtime/ee_p2x/05_WVS7_PROJECTION_MATERIALIZER.py": {
+      "observed": "11b28416aac5a4899706150721f2f8ac8bb6ee43",
+      "expected": "11b28416aac5a4899706150721f2f8ac8bb6ee43",
+      "match": true
+    },
+    "WORKER_RETURNS/EE-P2R6O/SUPPORT/01_NODE4A_PREDICATE_INPUTS.py": {
+      "observed": "504944f9533b7385d201076e2e834b8a9446dee8",
+      "expected": "504944f9533b7385d201076e2e834b8a9446dee8",
+      "match": true
+    },
+    "rawlsing_next/runtime/ee_p2x/RUNTIME_PACKAGING_BINDING.json": {
+      "observed": "25c56abf292175fa5894e5a65362e239eaa55db1",
+      "expected": "25c56abf292175fa5894e5a65362e239eaa55db1",
+      "match": true
+    },
+    "rawlsing_next/tests/test_fiabc_w3_i04_runtime_packaging_rebind.py": {
+      "observed": "f8d49baecc0c08c0ca40dde2bfd189398b8c150b",
+      "expected": "f8d49baecc0c08c0ca40dde2bfd189398b8c150b",
+      "match": true
+    }
+  },
+  "source_roots": {
+    "LITS_I": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "WVS7": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+    "provenance_file": "WORKER_RETURNS/FIABC-T1/02_SOURCE_ROOT_PROVENANCE.csv"
+  },
+  "preserved": {
+    "live_driver_newer_orchestration": true,
+    "frozen_candidate_owner_blobs": true,
+    "current_source_identities": true,
+    "historical_stopped_receipts": true,
+    "r6x_history": true,
+    "semantic_ownership": true
+  },
+  "measured_p2x_executed": false,
+  "local_tests_executed": false,
+  "local_tests_status": "NOT_RUN_BROWSER_GITHUB_TRANSPOSITION",
+  "terminal": "FIABC_T1_LIVE_P2X_SUBSTRATE_AND_PACKAGING_TRANSPOSED__READY_FOR_NEXT_LAYER",
+  "final_branch_tip_note": "Use the commit returned by creation of RETURN.json as the exact final branch tip."
+}
