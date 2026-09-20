@@ -1,0 +1,12 @@
+projection_id,projection_kind,source_identity_or_variables,governed_physical_or_topological_state,semantic_authority_state,forbidden_inference
+REPLAY_IDENTITY,ROW_REPLAY,"SOURCE_SHA256 + zero_based_row_ordinal","canonical hard replay key","CLOSED","COUNTRY+IDnumber as replay/dedup/cross-wave identity"
+NATIVE_ID_EVIDENCE,NATIVE_ID,"COUNTRY;IDnumber","preserve duplicate/noninjective native ID evidence","BOUNDED_UNKNOWN for fieldwork/native-ID semantics","native-ID uniqueness or longitudinal identity"
+MR_IR3A,NATIVE_MR_SET,"IR3a -> IR3a_1..IR3a_5","DICHOTOMY; counted_value=1; distinct set identity","COREQ_SUPPORTS_MULTIPLE_ANSWER_TOPOLOGY","flattening or scalarization"
+MR_Q112,NATIVE_MR_SET,"Q112 -> SE15A..SE15M","DICHOTOMY; counted_value=1; distinct set identity","BOUNDED_UNKNOWN__NATIVE_SET_NAME_IS_NOT_QUESTIONNAIRE_Q112_AUTHORITY","alias to questionnaire item 112 or SE15"
+MR_SE15,NATIVE_MR_SET,"SE15 -> SE15A..SE15O","DICHOTOMY; counted_value=1; distinct set identity","COREQ_SUPPORTS_SE15_A_TO_O_ASSET_BATTERY","collapse with Q112"
+MR_Q112_SE15_OVERLAP,NATIVE_MR_OVERLAP,"SE15A..SE15M","exact shared member topology; both set identities survive","NO_SEMANTIC_ALIAS_CREATED_BY_OVERLAP","deduplicate native sets by overlap/equal vectors"
+ROUTE_INDIA_Q106CDE,ROUTING_MODULE,"Q106c;Q106d;Q106e","country-specific module topology preserved","BOUNDED_UNKNOWN__COUNTRY_TEAM_AUTHORITY_REQUIRED","infer eligibility/meaning from -1 incidence or country code"
+ROUTE_ASEAN_Q186,ROUTING_MODULE,q186,"CoreQ marks ASEAN-only; exact source risk set preserved as unresolved","BOUNDED_UNKNOWN__EXACT_SOURCE_RISK_SET_AND_MINUS1_MEANING","infer routing from missingness/geopolitical membership alone"
+GEOGRAPHY_COUNTRY,SOURCE_LOCAL_COORDINATE,COUNTRY,"raw merged SAV carrier preserved as source-local coordinate","BOUNDED_UNKNOWN__MERGED_TO_INSTRUMENT_RECONCILIATION","generic CoreQ recoding or cross-wave harmonization"
+WEIGHT_W,WEIGHT_DESIGN_CARRIER,w,"raw carrier preserved; no default selection","BOUNDED_UNKNOWN__ESTIMAND_NORMALIZATION_SCOPE_VARIANCE","automatic default weight or estimand"
+ORDINARY_MINUS1,ORDINARY_STORAGE_SENTINEL,"IR11d and other authorized packet witnesses","ordinary stored -1 remains distinct from typed physical missing","BOUNDED_UNKNOWN at variable/module semantic refinement","-1 == physical missing or automatic not-asked"
