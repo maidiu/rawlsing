@@ -48,7 +48,8 @@ Expected hostile coverage:
 - unreached stage cannot carry ordinary numeric metric;
 - Candidate-A preservation cannot satisfy Candidate-B;
 - fresh replay exact terminal identity accepted;
-- wrong-terminal replay rejected.
+- wrong-terminal replay rejected;
+- reserved lifecycle metric attached to the wrong action rejected.
 
 The command above was **not run by FIABC-W3-I06C**.
 
