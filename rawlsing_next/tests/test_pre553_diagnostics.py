@@ -170,6 +170,14 @@ def test_f018_joint_confidence_is_explicit_diagnostic_and_identity_bound():
         authority_registry=registry,
         release_refs=(source["release_ref"],),
     )
+    with pytest.raises(Pre553DiagnosticError, match="requires exact determinant refs"):
+        produce_governed_diagnostics(
+            fact=fact,
+            query=query,
+            authority_registry=registry,
+            release_refs=(source["release_ref"],),
+            joint_confidence_components=components,
+        )
 
     assert with_confidence.metrics["joint_confidence"]["score_0_100"] == "76.25"
     assert with_confidence.metrics["joint_confidence"]["determinant_refs"] == (
