@@ -115,13 +115,87 @@ class ReplacementSuccessionTests(unittest.TestCase):
         self.assertFalse(result["success_consumed"])
 
     def test_10_new_replacement_requires_generic_parentage(self):
+        derivative_identity = "c" * 64
         with self.assertRaises(ReplacementSuccessionError):
             self.request(
                 attempt_state="SUCCESSFULLY_SEALED",
-                admitted_derivative_identity="c" * 64,
-                parentage_bundle={"source_sha256": self.authority["replacement_contract"]["canonical_source_sha256"]},
-                parentage_expectations={},
+                admitted_derivative_identity=derivative_identity,
             )
+
+        contract = self.authority["replacement_contract"]
+        source_producer = {"identity": "LITS_SOURCE_VERIFIER", "code_blob": "d" * 40, "version": "1"}
+        source_scope = {"source": "LITS_I"}
+        source_currentness = {"authority": self.authority["authority_identity"]}
+        source_ownership = {"source": "LITS_I", "candidate": "A"}
+        source = mint_source_verification_receipt(
+            source_id="LITS_I",
+            canonical_source_sha256=contract["canonical_source_sha256"],
+            observed_source_sha256=contract["canonical_source_sha256"],
+            producer=source_producer,
+            operation="VERIFY_CANONICAL_LITS_I_BYTES",
+            reader_config=contract["reader_config"],
+            scope_determinants=source_scope,
+            currentness_determinants=source_currentness,
+            ownership=source_ownership,
+        )
+        metadata = {"physical_root_id": derivative_identity, "build_config": contract["build_config"]}
+        scope = {
+            "source": "LITS_I",
+            "derivative_scope": "PRESERVED_R5_PHYSICAL_SOURCE_CARRIER",
+            "projection_identity": contract["fixed_identities"]["lits_projection_identity"],
+            "runtime_catalog": contract["fixed_identities"]["runtime_catalog"],
+        }
+        currentness = {
+            "owner_commit": contract["builder"]["owner_commit"],
+            "candidate_owner_blob": contract["builder"]["consumer_adapter_blob"],
+            "runtime_catalog": contract["fixed_identities"]["runtime_catalog"],
+            "active_binding": contract["fixed_identities"]["active_binding"],
+            "runtime_release": contract["fixed_identities"]["runtime_release"],
+        }
+        ownership = {"source": "LITS_I", "candidate": "A", "physical_root_id": derivative_identity}
+        derivative = mint_derivative_parentage_receipt(
+            source_receipt=source,
+            derivative_class="LITS_A_PRESERVED_R5_CARRIER",
+            derivative_identity=derivative_identity,
+            derivative_hash=derivative_identity,
+            derivative_metadata=metadata,
+            producer=contract["builder"],
+            derivation_operation=contract["derivation_operation"],
+            reader_config=contract["reader_config"],
+            scope_determinants=scope,
+            currentness_determinants=currentness,
+            ownership=ownership,
+        )
+        bundle = mint_parentage_bundle(source_receipt=source, derivative_receipt=derivative)
+        expectations = {
+            "expected_source_id": "LITS_I",
+            "expected_source_sha256": contract["canonical_source_sha256"],
+            "expected_derivative_class": "LITS_A_PRESERVED_R5_CARRIER",
+            "expected_derivative_identity": derivative_identity,
+            "expected_derivative_receipt_identity": derivative["receipt_identity"],
+            "expected_derivative_hash": derivative_identity,
+            "expected_derivative_metadata": metadata,
+            "expected_producer": contract["builder"],
+            "expected_derivation_operation": contract["derivation_operation"],
+            "expected_reader_config": contract["reader_config"],
+            "expected_scope_determinants": scope,
+            "expected_currentness_determinants": currentness,
+            "expected_ownership": ownership,
+            "expected_source_receipt_identity": source["receipt_identity"],
+            "expected_source_operation": "VERIFY_CANONICAL_LITS_I_BYTES",
+            "expected_source_producer": source_producer,
+            "expected_source_reader_config": contract["reader_config"],
+            "expected_source_scope_determinants": source_scope,
+            "expected_source_currentness_determinants": source_currentness,
+            "expected_source_ownership": source_ownership,
+        }
+        result = self.request(
+            attempt_state="SUCCESSFULLY_SEALED",
+            admitted_derivative_identity=derivative_identity,
+            parentage_bundle=bundle,
+            parentage_expectations=expectations,
+        )
+        self.assertEqual(result["accounting"], "EXECUTED_NOW")
 
     def test_11_old_r5_numeric_credit_remains_zero(self):
         self.assertEqual(self.authority["accounting_treatment"]["old_r5_numeric_preserved_work_credit"], 0)

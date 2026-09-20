@@ -15,6 +15,7 @@ from rawlsing_next.fiabc_derivative_parentage import (
 )
 
 AUTHORITY_SCHEMA = "FIABC_LITS_A_R5_REPLACEMENT_SUCCESSION@1.0.0"
+AUTHORITY_IDENTITY = "1be0cccc9938a8ad5594faa58d516ef6574b2daf3182d2ef9cb04a2435bfea88"
 SOURCE_ID = "LITS_I"
 CANDIDATE = "A"
 DERIVATIVE_FAMILY = "R5"
@@ -47,6 +48,7 @@ def verify_successor_authority(
         raise ReplacementSuccessionError("authority identity absent or malformed")
     unsigned = {k: v for k, v in authority.items() if k != "authority_identity"}
     _exact(canonical_digest(unsigned), identity, "authority identity")
+    _exact(identity, AUTHORITY_IDENTITY, "adopted authority identity")
     if expected_authority_identity is not None:
         _exact(identity, expected_authority_identity, "expected authority identity")
 
@@ -64,8 +66,17 @@ def verify_successor_authority(
 
     contract = authority.get("replacement_contract", {})
     _exact(contract.get("canonical_source_sha256"), CANONICAL_SOURCE_SHA256, "canonical source")
-    _exact(contract.get("builder", {}).get("code_blob"), BUILDER_BLOB, "builder blob")
-    _exact(contract.get("builder", {}).get("identity"), "R5CompactLongShardedBuilder", "builder identity")
+    _exact(
+        contract.get("builder"),
+        {
+            "identity": "R5CompactLongShardedBuilder",
+            "code_blob": BUILDER_BLOB,
+            "version": "R5_LONG_SHARDED_TYPED_INCIDENCE_V1",
+            "owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+            "consumer_adapter_blob": "d4915e7e6755ba1850756aebff72f982f73a332b",
+        },
+        "builder contract",
+    )
     _exact(contract.get("derivation_operation"), "BUILD_LITS_A_R5_FROM_CANONICAL_PHYSICAL_INCIDENCE", "operation")
     reader = contract.get("reader_config", {})
     _exact(reader.get("reader_version"), "1.3.6", "reader version")
@@ -73,10 +84,40 @@ def verify_successor_authority(
     _exact(reader.get("apply_value_formats"), False, "apply_value_formats")
     _exact(reader.get("encoding"), "latin1", "encoding")
     _exact(reader.get("authority_status"), "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY", "reader authority")
+    _exact(
+        contract.get("build_config"),
+        {
+            "run_max_rows": 4096,
+            "run_max_bytes": 4194304,
+            "shard_max_rows": 16384,
+            "shard_max_bytes": 16777216,
+            "merge_fan_in": 8,
+            "verified_spool_memory_bytes": 1048576,
+        },
+        "build config",
+    )
+    _exact(
+        contract.get("fixed_identities"),
+        {
+            "lits_projection_identity": "84361298ae702786a3fd1044bf619ffa4fe9ed2877040724386951e9c9d27872",
+            "expected_learned_product": "47d36b1459c2458c480b58631d2c78af68be4dde44015a9220b09177b1eeb28d",
+            "semantic_replay_identity": "301735d4563314a0d7c133fa1afbb0ca57679b3fad887c66e77a909494779eb5",
+            "runtime_catalog": "5983d7d5c579b916ad46c1acf9e41c1c89b516a4e561a99b1d2b477bf5ad2d02",
+            "active_binding": "a5f36a81843fe2ebab0b5cccb369ce76035f842b93e602613b8b9f3a81103308",
+            "runtime_release": "192926fabd9c9c3d40e43b1d7705ca2bcfe7f8d06e286be26d4b886d436df43f",
+            "candidate_a_owner_adapter": "d4915e7e6755ba1850756aebff72f982f73a332b",
+            "learned_candidates": 50,
+            "query_role_executions": 77,
+        },
+        "fixed semantics/runtime/workload identities",
+    )
 
     parentage = authority.get("generic_parentage_requirement", {})
     _exact(parentage.get("required"), True, "generic parentage requirement")
     _exact(parentage.get("self_asserted_source_sha_sufficient"), False, "self-asserted source rule")
+    _exact(parentage.get("bundle_schema"), "FIABC_DERIVATIVE_PARENTAGE_BUNDLE@1.0.0", "bundle schema")
+    _exact(parentage.get("source_receipt_schema"), "FIABC_CANONICAL_SOURCE_VERIFICATION_RECEIPT@1.0.0", "source receipt schema")
+    _exact(parentage.get("derivative_receipt_schema"), "FIABC_DERIVATIVE_PARENTAGE_RECEIPT@1.0.0", "derivative receipt schema")
     accounting = authority.get("accounting_treatment", {})
     _exact(accounting.get("replacement_build"), EXECUTION_ACCOUNTING, "new-build accounting")
     _exact(accounting.get("old_r5_numeric_preserved_work_credit"), 0, "old R5 numeric credit")
@@ -142,6 +183,7 @@ def evaluate_replacement_attempt(
 
 __all__ = [
     "AUTHORITY_SCHEMA",
+    "AUTHORITY_IDENTITY",
     "ReplacementSuccessionError",
     "evaluate_replacement_attempt",
     "verify_successor_authority",
