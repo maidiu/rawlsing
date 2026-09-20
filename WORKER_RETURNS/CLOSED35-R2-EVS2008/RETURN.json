@@ -1,0 +1,152 @@
+{
+  "schema": "CLOSED35_R2_EVS2008_RETURN@1.0.0",
+  "worker_id": "CLOSED35-R2-EVS2008",
+  "repository": "maidiu/rawlsing",
+  "base": {
+    "branch": "agent/vozhd-closed35-l2r-r1-fanin-r1",
+    "sha": "da33eb6a8225c14eee9490633a3263388dc5536c"
+  },
+  "branch": "agent/rabochii-closed35-r2-evs2008-realization-r1",
+  "return_path": "WORKER_RETURNS/CLOSED35-R2-EVS2008/",
+  "disposition": "SOURCE_SPECIFIC_REALIZATION_IMPLEMENTED__TESTS_AUTHORED_NOT_EXECUTED",
+  "terminal": "CLOSED35_R2_EVS2008_SOURCE_SPECIFIC_REALIZATION_IMPLEMENTED__READY_FOR_ABC_QUALIFICATION",
+  "source": {
+    "canonical_filename": "EVS 2008.sav",
+    "canonical_sha256": "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379",
+    "format": "SAV",
+    "replay_identity": "SOURCE_SHA256+ROW_ORDINAL",
+    "accepted_physical_mode": "SAV_LATIN1_COMPAT_PHYSICAL_ONLY__SOURCE_DECLARES_UTF8",
+    "compatibility_semantic_authority": false
+  },
+  "producer_release": {
+    "identity": "ZA4800 v5.0.0",
+    "release_date": "2022-06-08",
+    "doi": "10.4232/1.13841",
+    "documented_cases": 66280,
+    "documented_variables": 477,
+    "documentary_release_identity_closed": true,
+    "public_producer_checksum_available": false,
+    "rawlsing_sha_role": "EXACT_INTERNAL_SOURCE_BYTE_IDENTITY_ONLY",
+    "producer_byte_checksum_equivalence_claimed": false
+  },
+  "implementation": {
+    "contract": "CLOSED35_R2_EVS2008_SOURCE_REALIZATION@1.0.0",
+    "module": {
+      "path": "rawlsing_next/closed35_evs2008_realization.py",
+      "blob_sha": "3e0cad025be0f8371ab3032e9df2252b0bf795ce"
+    },
+    "synthetic_tests": {
+      "path": "rawlsing_next/tests/test_closed35_r2_evs2008_realization.py",
+      "blob_sha": "8254202bb5b7445804ca81de7c22eae754d1f3a9",
+      "status": "TESTS_AUTHORED__NOT_EXECUTED",
+      "real_source_bytes_used": false
+    },
+    "candidate_neutral": true,
+    "semantic_owner_surface": "PRE553_SOURCE_BACKED_C11_FACADE@1.0.0",
+    "candidate_law": "A_B_C_SHARE_ONE_SOURCE_SPECIFIC_SEMANTIC_REALIZATION_IDENTITY"
+  },
+  "native_mr": {
+    "set_count": 13,
+    "set_names": [
+      "q5a",
+      "evs_q5a",
+      "vv25",
+      "q5b",
+      "evs_q5b",
+      "vv43",
+      "evs_q6",
+      "q14",
+      "evs_q14",
+      "q52",
+      "evs_q52",
+      "evs_q107",
+      "evs_q108"
+    ],
+    "native_identity_preserved": true,
+    "ordered_membership_preserved": true,
+    "alias_identity_preserved_without_double_count_authority": true,
+    "overlap_identity_preserved": true,
+    "q52_selection_cap": 5,
+    "q52_rank_significance": false,
+    "q107_b_variables_folded_into_mr": false,
+    "q108_b_variables_folded_into_mr": false
+  },
+  "documentary_semantic_law": {
+    "compatibility_rendered_text_is_semantic_authority": false,
+    "producer_join": "EXACT_SOURCE_VARIABLE_OR_PRODUCER_QUESTION_IDENTITY",
+    "unmatched_text_state": "UNKNOWN_PRODUCER_TEXT",
+    "routing_from_missingness": false,
+    "bounded_unknown_preserved": true,
+    "f201_relation": "v201_v202"
+  },
+  "v372": {
+    "variable": "v372",
+    "question": "Q137",
+    "producer_semantics": "date of interview",
+    "accepted_rendered_witness": "1582-10-13",
+    "accepted_user_missing_count": 1917,
+    "accepted_present_count": 64363,
+    "accepted_source_variable_ordinal": 466,
+    "realization_state": "EVS_STANDARDIZED_MISSING__NEGATIVE_SUBCODE_NOT_RECOVERABLE_FROM_DATE_RENDERING",
+    "semantic_reason_detail": "UNKNOWN_WITHIN_PRODUCER_NEGATIVE_MISSING_DOMAIN",
+    "negative_subcode_invented": false
+  },
+  "s35_edge_classes": [
+    "EC01",
+    "EC02",
+    "EC03",
+    "EC08",
+    "EC14"
+  ],
+  "r35_hooks": {
+    "i01_schema": "PRE553_PHYSICAL_METADATA@1.0.0",
+    "i02_bundle_schema": "FIABC_DERIVATIVE_PARENTAGE_BUNDLE@1.0.0",
+    "i03_scope_schema": "FIABC_R35_I03_SOURCE_PHYSICAL_SCOPE@1.0.0",
+    "i03_expectation_schema": "FIABC_R35_I03_CANONICAL_PHYSICAL_EXPECTATION@1.0.0",
+    "i03_candidate_schema": "FIABC_R35_I03_CANDIDATE_PHYSICAL_REALIZATION@1.0.0",
+    "i03_receipt_schema": "FIABC_R35_I03_WHOLE_SOURCE_PHYSICAL_EQUIVALENCE_RECEIPT@1.0.0",
+    "i03_pass_state_if_later_obtained": "PHYSICAL_EQUIVALENCE_PASS__NOT_SEMANTIC_OR_CERTIFICATION_PASS",
+    "semantic_authority": false
+  },
+  "required_rejection_tests_authored": [
+    "COMPATIBILITY_RENDERED_TEXT_AS_SEMANTIC_AUTHORITY",
+    "MR_FLATTENING",
+    "MR_OVERLAP_COLLAPSE",
+    "INVENTED_V372_SUBREASON",
+    "PRODUCER_CHECKSUM_CLAIM_FROM_DOCUMENTARY_ALIGNMENT",
+    "ROUTING_INFERRED_FROM_MISSINGNESS",
+    "CANDIDATE_SPECIFIC_SEMANTIC_DIVERGENCE"
+  ],
+  "additional_rejection_tests_authored": [
+    "SOURCE_SHA_DRIFT",
+    "SOURCE_FORMAT_DRIFT",
+    "READER_VERSION_DRIFT",
+    "ENCODING_CONFIG_DRIFT",
+    "MR_NONMEMBER_ROLE_ABSORPTION",
+    "UNDOCUMENTED_MR_CODE_SEMANTIC_INVENTION"
+  ],
+  "proof_boundary": {
+    "local_raw_sav_opened": false,
+    "real_source_processing_executed": false,
+    "source_decoding_executed": false,
+    "synthetic_tests_executed_by_worker": false,
+    "whole_source_physical_equivalence_passed": false,
+    "abc_executed": false,
+    "i05_passed": false,
+    "source_certified_beyond_accepted_authority": false,
+    "measured_p2x_run": false
+  },
+  "outputs": [
+    "00_RETURN.md",
+    "01_REALIZATION_CONTRACT.md",
+    "02_MR_AND_DOCUMENT_PROJECTION_MAP.csv",
+    "03_PHYSICAL_EDGE_BINDING.json",
+    "04_TEST_PROTOCOL.md",
+    "RETURN.json"
+  ],
+  "implementation_files": [
+    "rawlsing_next/closed35_evs2008_realization.py",
+    "rawlsing_next/tests/test_closed35_r2_evs2008_realization.py"
+  ],
+  "commit_sha_note": "Final Git commit SHA is reported externally because a commit cannot contain its own hash in its preimage."
+}
