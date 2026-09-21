@@ -188,7 +188,20 @@ def test_r14_semantic_identity_changes_only_downstream_of_mapping_ref():
     assert m.PROJECTION_IDENTITY_REF.content_hash != OLD_PROJECTION_IDENTITY
     assert m.LOCK2 == LOCK2
 
-def test_r17_n1_raw_physical_witness_is_not_the_old_program_string_token():
+def test_r17_native_only_mutation_cannot_preserve_frozen_string_workload():
+    fields = fields3()
+    native_only_slots = []
+    for slot in fields["response_slots"]:
+        native_only_values = tuple(
+            replace(rule, canonical_value=None, transform_authority_ref=None)
+            if rule.canonical_value is not None else rule
+            for rule in slot.values
+        )
+        native_only_slots.append(replace(slot, values=native_only_values))
+    fields["response_slots"] = tuple(native_only_slots)
+    with pytest.raises(ValueError, match="program semantic token set drift|substantive mapping authority"):
+        m.bind_exact_projection_fields(fields)
+
     witness = raw_physical_value_witness(1)
     assert isinstance(witness, dict)
     assert witness != "1"
