@@ -1,0 +1,178 @@
+{
+  "schema": "FIABC_LM2_R1J_C_RETURN@1.0.0",
+  "worker": "FIABC-LM2-R1J-C",
+  "repository": "maidiu/rawlsing",
+  "exact_base": "74205b23f546d78fed449c2f351a714be184ed8c",
+  "branch": "agent/rabochii-premain-fiabc-lm2-r1j-c-representation-authority-prep-r1",
+  "draft_pr": 427,
+  "status": "PASS_CONDITIONAL_PREPARATION",
+  "terminal": "FIABC_LM2_R1J_C_CONDITIONAL_REPAIR_PREP_PASS__REPRESENTATION_AUTHORITY_AND_R6S_REISSUE_READY_PENDING_INDEPENDENT_A_B_PREMISES",
+  "implementation_and_return_tip_before_RETURN_json": "c99cf3efa8c6c2cde968e189b7a15a4f6427739a",
+  "real_wvs_authority_issued": false,
+  "r1j_a_assumed_pass": false,
+  "r1j_b_assumed_pass": false,
+  "authority_ontology": {
+    "new_kind": "SOURCE_PHYSICAL_NATIVE_REPRESENTATION_BINDING",
+    "ceiling": "exact source/variable/native-code to exact decoder representation binding",
+    "governed_operation": "BIND_EXACT_SOURCE_NATIVE_CODE_TO_DECODER_REPRESENTATION",
+    "governed_object_family": "RespondentEvent@1.0.0",
+    "global_int_float_equivalence": false,
+    "source_semantics_overloaded": false,
+    "r1e_mapping_overloaded": false
+  },
+  "exact_conditional_scope": {
+    "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+    "variables": [
+      {
+        "name": "Q291G5",
+        "ordinal": 388
+      },
+      {
+        "name": "Q291P5",
+        "ordinal": 394
+      }
+    ],
+    "substantive_native_codes": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "special_native_codes": [
+      -5,
+      -4,
+      -2,
+      -1
+    ],
+    "decoder_representation": "PENDING_ACCEPTED_R1J_A_PLUS_R1J_B",
+    "system_missing": "OUT_OF_SCOPE"
+  },
+  "prepared_implementation": {
+    "ontology_file": "rawlsing_next/pre553_empirical_authority.py",
+    "representation_boundary_file": "rawlsing_next/pre553_physical_native_representation.py",
+    "hostile_test_file": "rawlsing_next/tests/test_fiabc_lm2_r1j_c_representation_authority_prep.py",
+    "r6s_live_materializer_changed": false,
+    "r6s_reissue_plan": "WORKER_RETURNS/FIABC-LM2-R1J-C-AUTHORITY-PREP/03_CONDITIONAL_R6S_REISSUE_PLAN.md",
+    "r5_codec_changed": false,
+    "physical_value_binding_key_changed": false,
+    "c11_changed": false
+  },
+  "source_free_verification": {
+    "workflow": "Rabochii Governed Bounded Court",
+    "run_id": 35581314281,
+    "job_id": 106274604015,
+    "evidence_execution_sha": "a8b6f2bba08fa520dd242258f0a6bd924a3dd8a7",
+    "pr_synthetic_sha": "e7e4e2cababfc5e9152918ae6bb379f02a24990a",
+    "protocol_self_court": {
+      "passed": 20,
+      "failed": 0
+    },
+    "worker_c_hostile_court": {
+      "passed": 12,
+      "failed": 0
+    },
+    "synthetic_premises_only": true,
+    "proves_real_wvs_representation": false
+  },
+  "prior_debug_execution": {
+    "run_id": 35581066399,
+    "result": "FAIL_8__PASS_4",
+    "cause": "noncanonical insertion-order representation fingerprint",
+    "corrected_by": "canonical sorting of set-like ref fields before fingerprint hashing",
+    "semantic_scope_changed": false
+  },
+  "fanin_requirements": {
+    "r1j_a": {
+      "required": true,
+      "required_disposition": "REPRESENTATION_STACK_PARITY_PROVED__1_3_2_AND_1_3_6_EQUIVALENT_FOR_RELEVANT_SAV_NUMERIC_LANE",
+      "evidence_kind": "FIABC_R1J_UPSTREAM_DECODER_REPRESENTATION_LAW_EVIDENCE@1.0.0"
+    },
+    "r1j_b": {
+      "required": true,
+      "required_holding": "EXACT_Q291G5_Q291P5_NUMERIC_SOURCE_VARIABLE_TYPE",
+      "evidence_kind": "FIABC_R1J_SOURCE_VARIABLE_TYPE_EVIDENCE@1.0.0",
+      "metadata_only_fallback_if_browser_archaeology_exhausted": "MUST_BE_SEPARATELY_AUTHORIZED_AND_ACCEPTED_BEFORE_REAL_AUTHORITY_ISSUANCE"
+    }
+  },
+  "preserved_special_states": {
+    "-5": {
+      "response_state": "MISSING",
+      "canonical_value": null,
+      "r1e_transform_authority": false
+    },
+    "-4": {
+      "response_state": "NOT_ASKED",
+      "canonical_value": null,
+      "r1e_transform_authority": false
+    },
+    "-2": {
+      "response_state": "SOURCE_SPECIFIC_SPECIAL",
+      "canonical_value": null,
+      "r1e_transform_authority": false
+    },
+    "-1": {
+      "response_state": "DK",
+      "canonical_value": null,
+      "r1e_transform_authority": false
+    }
+  },
+  "system_missing": {
+    "physical_material": null,
+    "physical_state": "SYSTEM_MISSING",
+    "response_state": "MISSING",
+    "canonical_value": null,
+    "new_representation_authority": false
+  },
+  "identity_delta": {
+    "changed_after_lawful_adoption": [
+      "representation authority ref",
+      "representation authority snapshot",
+      "R6S response physical-binding material",
+      "R6S projection authority",
+      "R6S projection snapshot",
+      "R6S projection identity",
+      "common C11 release/replay identities",
+      "fresh independent oracle"
+    ],
+    "preserved": [
+      "source SHA",
+      "R1G carrier",
+      "structural preimage under minimal external repair",
+      "parentage bundle under minimal external repair",
+      "physical expectation",
+      "source semantics",
+      "R1E mapping authority",
+      "ten WVS response refs",
+      "ten P2F2 predicates",
+      "three query specs",
+      "target-domain replay",
+      "candidate grammar",
+      "46 candidate identities/frontier",
+      "Lock2"
+    ]
+  },
+  "execution_boundary": {
+    "local_runtime": false,
+    "wvs_sav_zip_opened_or_materialized": false,
+    "new_source_read": false,
+    "candidate_a_b_c": false,
+    "i03": false,
+    "i05": false,
+    "measured_p2x": false,
+    "r15": false,
+    "r16": false,
+    "global_numeric_coercion": false,
+    "c11_weakening": false
+  },
+  "return_artifacts": [
+    "WORKER_RETURNS/FIABC-LM2-R1J-C-AUTHORITY-PREP/00_RETURN.md",
+    "WORKER_RETURNS/FIABC-LM2-R1J-C-AUTHORITY-PREP/01_AUTHORITY_ONTOLOGY_EXTENSION.md",
+    "WORKER_RETURNS/FIABC-LM2-R1J-C-AUTHORITY-PREP/02_CONDITIONAL_AUTHORITY_SCHEMA.json",
+    "WORKER_RETURNS/FIABC-LM2-R1J-C-AUTHORITY-PREP/03_CONDITIONAL_R6S_REISSUE_PLAN.md",
+    "WORKER_RETURNS/FIABC-LM2-R1J-C-AUTHORITY-PREP/04_IDENTITY_DELTA.json",
+    "WORKER_RETURNS/FIABC-LM2-R1J-C-AUTHORITY-PREP/05_HOSTILE_TEST_LEDGER.json",
+    "WORKER_RETURNS/FIABC-LM2-R1J-C-AUTHORITY-PREP/06_FANIN_REQUIREMENTS.md",
+    "WORKER_RETURNS/FIABC-LM2-R1J-C-AUTHORITY-PREP/RETURN.json"
+  ]
+}
