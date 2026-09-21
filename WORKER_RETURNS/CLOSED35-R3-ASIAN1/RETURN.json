@@ -1,0 +1,58 @@
+{
+  "schema": "CLOSED35_R3_ASIAN1_RETURN@1.0.0",
+  "worker": "CLOSED35-R3-ASIAN1",
+  "repository": "maidiu/rawlsing",
+  "base_branch": "agent/vozhd-closed35-l2r-r1-fanin-r1",
+  "base_sha": "da33eb6a8225c14eee9490633a3263388dc5536c",
+  "branch": "agent/rabochii-closed35-r3-asian1-realization-r1",
+  "source": {
+    "family": "Asian Barometer",
+    "wave": "1",
+    "canonical_filename": "Asian Barometer Wave 1.sav",
+    "canonical_sha256": "ac0b8bc1ddb2fa6b952417e35b6379ce6a2cf8596776a43282ba44f48e0ae1a2",
+    "authority_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+    "accepted_reader_mode": "SAV_SOURCE_DECLARED_BIG5"
+  },
+  "candidate_neutral_semantic_owner": "PRE553_SOURCE_BACKED_C11_FACADE@1.0.0",
+  "status": "SOURCE_SPECIFIC_REALIZATION_IMPLEMENTED",
+  "tests": "TESTS_AUTHORED__NOT_EXECUTED",
+  "implementation": [
+    "rawlsing_next/closed35_asian1_realization.py",
+    "rawlsing_next/tests/test_closed35_r3_asian1_realization.py"
+  ],
+  "outputs": [
+    "00_RETURN.md",
+    "01_REALIZATION_CONTRACT.md",
+    "02_ENCODING_MISSING_WEIGHT_MAP.csv",
+    "03_PHYSICAL_EDGE_BINDING.json",
+    "04_TEST_PROTOCOL.md",
+    "RETURN.json"
+  ],
+  "edge_classes": ["EC01", "EC02", "EC05", "EC07", "EC09", "EC12", "EC13", "EC14"],
+  "r35_hooks": [
+    "PRE553_PHYSICAL_METADATA@1.0.0",
+    "FIABC_DERIVATIVE_PARENTAGE_BUNDLE@1.0.0",
+    "FIABC_R35_I03_SOURCE_PHYSICAL_SCOPE@1.0.0",
+    "FIABC_R35_I03_CANONICAL_PHYSICAL_EXPECTATION@1.0.0",
+    "FIABC_R35_I03_CANDIDATE_PHYSICAL_REALIZATION@1.0.0",
+    "FIABC_R35_I03_WHOLE_SOURCE_PHYSICAL_EQUIVALENCE_RECEIPT@1.0.0"
+  ],
+  "bounded_unknowns_preserved": [
+    "exact Wave-1 questionnaire/codebook item semantics",
+    "exact semantic mapping of declared user-missing response codes",
+    "exact routing/applicability rules",
+    "exact roles/estimands/normalization/default use for all nine weights",
+    "exact survey-design semantics",
+    "cross-wave/instrument geography reconciliation",
+    "native-ID fieldwork/global identity semantics beyond source-local physical evidence"
+  ],
+  "claim_boundary": {
+    "real_source_executed": false,
+    "whole_source_physical_equivalence_passed": false,
+    "abc_executed": false,
+    "i05_passed": false,
+    "measured_p2x_run": false,
+    "source_certification_claimed": false
+  },
+  "terminal": "CLOSED35_R3_ASIAN_BAROMETER_W1_SOURCE_SPECIFIC_REALIZATION_IMPLEMENTED__READY_FOR_ABC_QUALIFICATION"
+}
