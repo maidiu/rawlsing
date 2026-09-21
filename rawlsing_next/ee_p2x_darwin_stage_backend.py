@@ -496,7 +496,7 @@ def _wvs_docs(ctx, services):
     if not path.is_file():
         raise CourtAuthorityStop("R6S packaged WVS runtime authority absent")
     package=json.loads(path.read_text(encoding="utf-8"))
-    if package.get("lock2")!=WVS_LOCK2 or package.get("discovery_authority_hash")!="24591678ebf50ac153fabdbbcd90d6ce818c5a89a5307c395c48a04fe5a8b1ab":
+    if package.get("lock2")!=WVS_LOCK2 or package.get("discovery_authority_hash")!="3aee36014e4c3b39dd36bfef46006d8e9058a93aa5eb53bd81aef627883c8873":
         raise SourceAuthorityStop("R6S WVS Lock2/runtime package identity drift")
     if package.get("counts")!={"authorities":6,"predicates":11,"queries":3,"discovery_authorities":1,"candidates":46}:
         raise SourceAuthorityStop("R6S WVS runtime-catalog cardinality drift")
