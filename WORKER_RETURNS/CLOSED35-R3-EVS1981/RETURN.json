@@ -1,0 +1,143 @@
+{
+  "schema": "CLOSED35_R3_EVS1981_RETURN@1.0.0",
+  "worker_id": "CLOSED35-R3-EVS1981",
+  "repository": "maidiu/rawlsing",
+  "base": {
+    "branch": "agent/vozhd-closed35-l2r-r1-fanin-r1",
+    "sha": "da33eb6a8225c14eee9490633a3263388dc5536c"
+  },
+  "branch": "agent/rabochii-closed35-r3-evs1981-realization-r1",
+  "return_path": "WORKER_RETURNS/CLOSED35-R3-EVS1981/",
+  "disposition": "SOURCE_SPECIFIC_REALIZATION_IMPLEMENTED__TESTS_AUTHORED_NOT_EXECUTED",
+  "terminal": "CLOSED35_R3_EVS1981_SOURCE_SPECIFIC_REALIZATION_IMPLEMENTED__READY_FOR_ABC_QUALIFICATION",
+  "source": {
+    "family": "EVS",
+    "wave": "1981",
+    "canonical_filename": "EVS 1981.sav",
+    "canonical_sha256": "5b703173845c086382fd93252f1cbc91dfef74007755459adfc73785389172f2",
+    "format": "SAV",
+    "authority_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+    "accepted_decoder_condition": "SAV_SOURCE_DECLARED_WINDOWS1252",
+    "source_declared_encoding": "windows-1252",
+    "machine_character_code": 1252,
+    "replay_identity": "SOURCE_SHA256+ZERO_BASED_SOURCE_ROW_ORDINAL"
+  },
+  "accepted_authority": {
+    "authority71_evs_r04_head": "3bc063aa7bf461caf5baf581ff32a434ba9e09a3",
+    "authority72_r10_head": "3356b26f2dc518043ffde171c2dca0470b5ac79f",
+    "documentary_adjudication_reopened": false,
+    "source_certification_claimed_from_authority71_72": false
+  },
+  "candidate_neutral_semantic_owner": "EVS1981_SEMANTIC_OWNER_V1",
+  "semantic_owner_surface": "PRE553_SOURCE_BACKED_C11_FACADE@1.0.0",
+  "candidate_law": "A_B_C_SHARE_ONE_SOURCE_SPECIFIC_SEMANTIC_REALIZATION",
+  "realization": {
+    "positive_user_missing_preserved": true,
+    "raw_storage_value_preserved_separately_from_missing_classification": true,
+    "native_id_promoted_to_replay_identity": false,
+    "ranked_slot_topology": [
+      {"ordinal": 270, "variable": "v460", "role": "ORDERED_FIRST_SLOT"},
+      {"ordinal": 271, "variable": "f460", "role": "INTERPOSED_SOURCE_FLAG"},
+      {"ordinal": 272, "variable": "v461", "role": "ORDERED_SECOND_SLOT"}
+    ],
+    "coordinate_carriers": [
+      "studyno",
+      "studynoc",
+      "version",
+      "versionc",
+      "year",
+      "country",
+      "c_abrv",
+      "cntry_y"
+    ],
+    "later_wave_split_coordinate_imported": false,
+    "weight_carriers": ["weight_g"],
+    "default_weight_selected": false,
+    "weight_estimand_invented": false
+  },
+  "v308": {
+    "source_ordinal": 141,
+    "source_missing_declaration": [
+      {"lo": -5, "hi": -1},
+      {"lo": 3, "hi": 3}
+    ],
+    "positive_code_3_physical_class": "USER_MISSING_WHEN_STORED_UNDER_SOURCE_DECLARATION",
+    "positive_code_3_semantic_state": "SEMANTIC_MISSING__REASON_BOUNDED_UNKNOWN",
+    "positive_code_3_reason": "BOUNDED_UNKNOWN__V308_CODE3_REASON",
+    "positive_code_3_observed_incidence_claimed": false,
+    "raw_value_erased_by_semantic_missing_classification": false
+  },
+  "bounded_unknowns": [
+    "BOUNDED_UNKNOWN__NATIVE_ID_SCOPE",
+    "BOUNDED_UNKNOWN__V308_CODE3_REASON",
+    "BOUNDED_UNKNOWN__WEIGHT_G_ESTIMAND",
+    "BOUNDED_UNKNOWN__CROSS_RELEASE_COORDINATE_EQUIVALENCE"
+  ],
+  "s35_edge_classes": [
+    "EC01",
+    "EC02",
+    "EC05",
+    "EC09",
+    "EC12",
+    "EC13"
+  ],
+  "r35_hooks": {
+    "i01_schema": "PRE553_PHYSICAL_METADATA@1.0.0",
+    "i02_source_receipt_schema": "FIABC_CANONICAL_SOURCE_VERIFICATION_RECEIPT@1.0.0",
+    "i02_derivative_receipt_schema": "FIABC_DERIVATIVE_PARENTAGE_RECEIPT@1.0.0",
+    "i02_bundle_schema": "FIABC_DERIVATIVE_PARENTAGE_BUNDLE@1.0.0",
+    "i03_scope_schema": "FIABC_R35_I03_SOURCE_PHYSICAL_SCOPE@1.0.0",
+    "i03_expectation_schema": "FIABC_R35_I03_CANONICAL_PHYSICAL_EXPECTATION@1.0.0",
+    "i03_candidate_schema": "FIABC_R35_I03_CANDIDATE_PHYSICAL_REALIZATION@1.0.0",
+    "i03_receipt_schema": "FIABC_R35_I03_WHOLE_SOURCE_PHYSICAL_EQUIVALENCE_RECEIPT@1.0.0",
+    "i03_pass_state_if_later_obtained": "PHYSICAL_EQUIVALENCE_PASS__NOT_SEMANTIC_OR_CERTIFICATION_PASS",
+    "semantic_authority": false
+  },
+  "implementation": {
+    "kind": "DECLARATIVE_BROWSER_REALIZATION_PACKET",
+    "runtime_source_processing_files_added": [],
+    "candidate_neutral": true
+  },
+  "tests": {
+    "authored": true,
+    "status": "TESTS_AUTHORED__NOT_EXECUTED",
+    "executed_by_worker": false,
+    "rejection_tests": [
+      "POSITIVE_USER_MISSING_TREATED_AS_SUBSTANTIVE_RESPONSE",
+      "PHYSICAL_STORAGE_VALUE_ERASED_BY_SEMANTIC_MISSING_CLASSIFICATION",
+      "V308_CODE3_REASON_INVENTION",
+      "RANKED_SLOT_FLATTENING_OR_DRIFT",
+      "CROSS_RELEASE_GEOGRAPHY_IMPORT",
+      "NATIVE_ID_PROMOTED_TO_REPLAY_IDENTITY",
+      "DEFAULT_WEIGHT_INVENTION",
+      "WEIGHT_ESTIMAND_FROM_VARIABLE_NAME",
+      "CROSS_WAVE_DECODER_SEMANTIC_LEAKAGE",
+      "SOURCE_SHA_DRIFT",
+      "CANDIDATE_SPECIFIC_SEMANTIC_DIVERGENCE",
+      "S35_EDGE_SCOPE_DRIFT",
+      "PHYSICAL_RECEIPT_LAUNDERED_INTO_SEMANTIC_AUTHORITY",
+      "BROWSER_IMPLEMENTATION_PROMOTED_TO_SOURCE_QUALIFICATION"
+    ]
+  },
+  "outputs": [
+    "00_RETURN.md",
+    "01_REALIZATION_CONTRACT.md",
+    "02_MISSING_RANK_COORDINATE_MAP.csv",
+    "03_PHYSICAL_EDGE_BINDING.json",
+    "04_TEST_PROTOCOL.md",
+    "RETURN.json"
+  ],
+  "implementation_files": [],
+  "proof_boundary": {
+    "local_raw_sav_opened": false,
+    "real_source_processing_executed": false,
+    "source_decoding_reexecuted": false,
+    "authority71_fixtures_remeasured": false,
+    "whole_source_physical_equivalence_passed": false,
+    "abc_candidates_executed": false,
+    "i05_passed": false,
+    "source_certified_beyond_accepted_authority": false,
+    "measured_p2x_run": false
+  },
+  "commit_sha_note": "Final Git commit SHA is reported externally because a commit cannot contain its own hash in its preimage."
+}
