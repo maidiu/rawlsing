@@ -23,6 +23,7 @@ import resource
 import subprocess
 import sys
 import tempfile
+import time
 from typing import Any, Callable, Iterable, Mapping, Protocol, Sequence
 
 CONTINUATION_MAP_SCHEMA = "RAWLSING_EE_P2X_CONTINUATION_STATE_MACHINE@1.0.0"
@@ -66,6 +67,7 @@ R8B_RU_MAXRSS_LAW = "DARWIN_RU_MAXRSS_ALREADY_BYTES"
 LEDGER_SCHEMA = "RAWLSING_EE_P2X_DARWIN_STAGE_LEDGER@1.0.0"
 BACKEND_CONTRACT = "RAWLSING_EE_P2X_DARWIN_STAGE_BACKEND@1.0.0"
 SUPERVISOR_TOKEN_SCHEMA = "RAWLSING_EE_P2X_LOCAL_SUPERVISOR_ACTION@1.0.0"
+PROGRESS_SCHEMA = "RAWLSING_FIABC_DRIVER_PROGRESS@1.0.0"
 ISOLATED_BACKEND_MODULE = "rawlsing_next.ee_p2x_process_isolated_backend"
 FROZEN_UPSTREAM_ENV = "RAWLSING_EE_P2X_FROZEN_UPSTREAM_RECEIPT"
 OWNER_SPECS = {
@@ -135,6 +137,352 @@ class StateMachine:
     def get(self, address: str) -> StageSpec:
         try: return self.stages[address]
         except KeyError as exc: raise ContinuationMapError(f"unknown continuation stage {address!r}") from exc
+
+
+def _manifest_ordered_stage_ids(document: Mapping[str, Any], cell: Mapping[str, Any]) -> tuple[str, ...]:
+    stages = cell.get("stages", {})
+    if not isinstance(stages, Mapping):
+        raise StageStateError("manifest progress cell stages must be a mapping")
+    catalog = tuple(x for x in document.get("stage_catalog", ()) if isinstance(x, str))
+    return tuple([sid for sid in catalog if sid in stages] + [sid for sid in stages if sid not in catalog])
+
+
+@dataclasses.dataclass(frozen=True)
+class ProgressPosition:
+    address: str
+    overall_index: int
+    overall_total: int
+    executable_index: int | None
+    executable_total: int
+    cell_index: int | None
+    cell_total: int
+    source: str
+    candidate: str
+    source_name: str
+    candidate_name: str
+    stage_id: str
+    stage_index: int | None
+    stage_total: int | None
+    is_court_final: bool
+
+
+class ManifestProgressPlan:
+    """Manifest-derived court-administration ordinals; never evidentiary metrics."""
+
+    def __init__(self, machine: StateMachine):
+        self.machine = machine
+        doc = machine.document
+        cells = doc.get("cells", ())
+        if not isinstance(cells, list) or not cells:
+            raise StageStateError("progress plan requires manifest cells")
+        self.cells = tuple(cells)
+        self.cell_addresses: dict[tuple[str, str], tuple[str, ...]] = {}
+        self.cell_meta: dict[tuple[str, str], Mapping[str, Any]] = {}
+        flattened: list[str] = []
+        sources = doc.get("sources", {}) if isinstance(doc.get("sources", {}), Mapping) else {}
+        for cell_index, cell in enumerate(cells, 1):
+            source, candidate = cell.get("source"), cell.get("candidate")
+            if not isinstance(source, str) or not isinstance(candidate, str):
+                raise StageStateError("progress plan cell source/candidate malformed")
+            key = (source, candidate)
+            if key in self.cell_addresses:
+                raise StageStateError(f"progress plan duplicate cell {source}/{candidate}")
+            stage_ids = _manifest_ordered_stage_ids(doc, cell)
+            addresses = tuple(f"{source}/{candidate}/{sid}" for sid in stage_ids)
+            for address in addresses:
+                machine.get(address)
+            self.cell_addresses[key] = addresses
+            src_doc = sources.get(source, {}) if isinstance(sources.get(source, {}), Mapping) else {}
+            self.cell_meta[key] = {
+                "cell_index": cell_index,
+                "source_name": str(
+                    cell.get("source_name")
+                    or src_doc.get("display_name")
+                    or src_doc.get("name")
+                    or src_doc.get("label")
+                    or source
+                ),
+                "candidate_name": str(cell.get("candidate_name") or candidate),
+                "stage_ids": stage_ids,
+            }
+            flattened.extend(addresses)
+        if machine.final_stage_id not in flattened:
+            machine.get(machine.final_stage_id)
+            flattened.append(machine.final_stage_id)
+        try:
+            entry_index = flattened.index(machine.first_unfinished)
+        except ValueError as exc:
+            raise StageStateError("progress entry stage is absent from manifest ordering") from exc
+        governed = tuple(flattened[entry_index:])
+        executable = tuple(
+            address for address in governed
+            if machine.get(address).disposition == "READY__RUN_LOCALLY"
+        )
+        self.governed_addresses = governed
+        self.executable_addresses = executable
+        self._overall = {address: i for i, address in enumerate(governed, 1)}
+        self._executable = {address: i for i, address in enumerate(executable, 1)}
+
+    @property
+    def overall_total(self) -> int:
+        return len(self.governed_addresses)
+
+    @property
+    def executable_total(self) -> int:
+        return len(self.executable_addresses)
+
+    @property
+    def cell_total(self) -> int:
+        return len(self.cells)
+
+    def position(self, address: str) -> ProgressPosition:
+        if address not in self._overall:
+            raise StageStateError(f"progress address precedes current manifest entry or is unknown: {address}")
+        stage = self.machine.get(address)
+        if stage.source == "COURT":
+            return ProgressPosition(
+                address=address,
+                overall_index=self._overall[address],
+                overall_total=self.overall_total,
+                executable_index=self._executable.get(address),
+                executable_total=self.executable_total,
+                cell_index=None,
+                cell_total=self.cell_total,
+                source=stage.source,
+                candidate=stage.candidate,
+                source_name="COURT",
+                candidate_name=stage.candidate,
+                stage_id=stage.stage_id,
+                stage_index=None,
+                stage_total=None,
+                is_court_final=True,
+            )
+        key = (stage.source, stage.candidate)
+        meta = self.cell_meta[key]
+        stage_ids = meta["stage_ids"]
+        return ProgressPosition(
+            address=address,
+            overall_index=self._overall[address],
+            overall_total=self.overall_total,
+            executable_index=self._executable.get(address),
+            executable_total=self.executable_total,
+            cell_index=int(meta["cell_index"]),
+            cell_total=self.cell_total,
+            source=stage.source,
+            candidate=stage.candidate,
+            source_name=str(meta["source_name"]),
+            candidate_name=str(meta["candidate_name"]),
+            stage_id=stage.stage_id,
+            stage_index=stage_ids.index(stage.stage_id) + 1,
+            stage_total=len(stage_ids),
+            is_court_final=False,
+        )
+
+
+class ProgressReporter:
+    """Append-only C4 progress telemetry, intentionally separate from candidate metrics."""
+
+    def __init__(
+        self,
+        machine: StateMachine,
+        ledger: "StageLedger",
+        *,
+        stream=None,
+        clock: Callable[[], int] = time.perf_counter_ns,
+    ):
+        self.machine = machine
+        self.ledger = ledger
+        self.plan = ManifestProgressPlan(machine)
+        self.stream = sys.stderr if stream is None else stream
+        self.clock = clock
+        self.path = ledger.work_root / "fiabc_driver_progress.jsonl"
+        self._seen: set[str] = set()
+        if self.path.exists():
+            for line_no, raw in enumerate(self.path.read_text(encoding="utf-8").splitlines(), 1):
+                if not raw.strip():
+                    continue
+                try:
+                    doc = json.loads(raw)
+                except json.JSONDecodeError as exc:
+                    raise StageStateError(f"progress JSONL malformed at line {line_no}") from exc
+                event_id = doc.get("event_identity")
+                if isinstance(event_id, str):
+                    self._seen.add(event_id)
+
+    def now_ns(self) -> int:
+        return int(self.clock())
+
+    def _resource_snapshot(self) -> Mapping[str, Any] | None:
+        try:
+            usage = resource.getrusage(resource.RUSAGE_SELF)
+            return {
+                "platform": platform.system(),
+                "ru_maxrss_raw": int(usage.ru_maxrss),
+                "ru_maxrss_unit": (
+                    "bytes" if platform.system() == "Darwin"
+                    else "platform_native_uninterpreted"
+                ),
+                "cpu_user_seconds": float(usage.ru_utime),
+                "cpu_system_seconds": float(usage.ru_stime),
+            }
+        except Exception:
+            return None
+
+    def _append(self, event: Mapping[str, Any], identity_basis: Mapping[str, Any]) -> bool:
+        event_id = _semantic_hash({
+            "schema": PROGRESS_SCHEMA,
+            "manifest_sha256": self.machine.identity.sha256,
+            **identity_basis,
+        })
+        if event_id in self._seen:
+            return False
+        payload = {
+            "schema": PROGRESS_SCHEMA,
+            "event_identity": event_id,
+            "manifest": dataclasses.asdict(self.machine.identity),
+            "court_administration_only": True,
+            "evidentiary_measurement": False,
+            **event,
+        }
+        self.path.parent.mkdir(parents=True, exist_ok=True)
+        with self.path.open("a", encoding="utf-8") as fh:
+            fh.write(json.dumps(payload, sort_keys=True, separators=(",", ":"), ensure_ascii=False) + "\n")
+            fh.flush()
+            os.fsync(fh.fileno())
+        self._seen.add(event_id)
+        return True
+
+    @staticmethod
+    def _stage_name(stage_id: str) -> str:
+        return stage_id.split("_", 1)[1] if "_" in stage_id else stage_id
+
+    def emit_stage(
+        self,
+        stage: StageSpec,
+        state: str,
+        *,
+        next_stage: str | None,
+        elapsed_stage_ns: int | None,
+        terminal_disposition: str | None = None,
+    ) -> None:
+        pos = self.plan.position(stage.address)
+        event = {
+            "event_type": "STAGE",
+            "state": state,
+            "address": stage.address,
+            "overall": {"index": pos.overall_index, "total": pos.overall_total},
+            "executable": {
+                "index": pos.executable_index,
+                "total": pos.executable_total,
+                "is_executable": stage.disposition == "READY__RUN_LOCALLY",
+            },
+            "cell": (
+                None if pos.cell_index is None else
+                {"index": pos.cell_index, "total": pos.cell_total}
+            ),
+            "source": pos.source,
+            "candidate": pos.candidate,
+            "source_name": pos.source_name,
+            "candidate_name": pos.candidate_name,
+            "stage": {
+                "id": pos.stage_id,
+                "name": self._stage_name(pos.stage_id),
+                "index": pos.stage_index,
+                "total": pos.stage_total,
+                "is_court_final": pos.is_court_final,
+            },
+            "manifest_disposition": stage.disposition,
+            "terminal_disposition": terminal_disposition,
+            "next_stage": next_stage,
+            "elapsed_stage_ns": elapsed_stage_ns,
+            "elapsed_clock": "time.perf_counter_ns",
+            "resource_snapshot": self._resource_snapshot(),
+        }
+        appended = self._append(
+            event,
+            {"event_type": "STAGE", "address": stage.address, "state": state},
+        )
+        if not appended:
+            return
+        width = max(3, len(str(pos.overall_total)))
+        overall = f"[{pos.overall_index:0{width}d}/{pos.overall_total}]"
+        if pos.is_court_final:
+            lead = f"FIABC P2 {overall} COURT STAGE {pos.stage_id}"
+        else:
+            exec_part = (
+                f" EXEC {pos.executable_index}/{pos.executable_total}"
+                if pos.executable_index is not None else ""
+            )
+            lead = (
+                f"FIABC P2 {overall}{exec_part} CELL {pos.cell_index}/{pos.cell_total} "
+                f"{pos.source_name}/{pos.candidate_name} STAGE {pos.stage_id} "
+                f"[{pos.stage_index}/{pos.stage_total}] {self._stage_name(pos.stage_id)}"
+            )
+        elapsed = "" if elapsed_stage_ns is None else f" elapsed_stage={elapsed_stage_ns / 1_000_000_000:.3f}s"
+        nxt = "" if next_stage is None else f" next={next_stage}"
+        print(f"{lead} {state}{elapsed}{nxt}", file=self.stream, flush=True)
+
+    def emit_completed_cells(self) -> None:
+        for key, addresses in self.plan.cell_addresses.items():
+            entries = [self.ledger.stage_entry(a) for a in addresses]
+            if not addresses or any(
+                not e or e.get("terminal_disposition") not in COMPLETE_LEDGER_DISPOSITIONS
+                for e in entries
+            ):
+                continue
+            terminal_dispositions = [e["terminal_disposition"] for e in entries]
+            if any(x.startswith("BLOCKED_BY_COMMON_") for x in terminal_dispositions):
+                state = "BLOCKED"
+            elif "CANDIDATE_LOCAL_FAILURE" in terminal_dispositions:
+                state = "CANDIDATE_LOCAL_FAILURE"
+            else:
+                state = "PASS"
+            meta = self.plan.cell_meta[key]
+            event = {
+                "event_type": "CELL_TERMINAL",
+                "state": state,
+                "cell": {"index": meta["cell_index"], "total": self.plan.cell_total},
+                "source": key[0],
+                "candidate": key[1],
+                "source_name": meta["source_name"],
+                "candidate_name": meta["candidate_name"],
+                "terminal_dispositions": terminal_dispositions,
+                "cell_terminal_status": "COMPLETE",
+                "resource_snapshot": self._resource_snapshot(),
+            }
+            if self._append(
+                event,
+                {"event_type": "CELL_TERMINAL", "source": key[0], "candidate": key[1], "state": state},
+            ):
+                print(
+                    f"FIABC P2 CELL {meta['cell_index']}/{self.plan.cell_total} "
+                    f"{meta['source_name']}/{meta['candidate_name']} COMPLETE status={state}",
+                    file=self.stream,
+                    flush=True,
+                )
+
+    def emit_court_terminal(self, *, status: str, next_stage: str, ledger_sha256: str) -> None:
+        state = "PASS" if status == "COURT_SEQUENCE_COMPLETE__S17_VERIFIED" else "BLOCKED"
+        event = {
+            "event_type": "COURT_TERMINAL",
+            "state": state,
+            "terminal": status,
+            "next_stage": next_stage,
+            "ledger_sha256": ledger_sha256,
+            "overall_total": self.plan.overall_total,
+            "executable_total": self.plan.executable_total,
+            "cell_total": self.plan.cell_total,
+            "resource_snapshot": self._resource_snapshot(),
+        }
+        if self._append(
+            event,
+            {"event_type": "COURT_TERMINAL", "terminal": status, "next_stage": next_stage},
+        ):
+            print(
+                f"FIABC P2 COURT TERMINAL {status} ledger={ledger_sha256} next={next_stage}",
+                file=self.stream,
+                flush=True,
+            )
 
 # ---- byte, git, host and map authority -------------------------------------------------
 def _canonical_bytes(v: Any) -> bytes: return json.dumps(v, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode()
@@ -405,10 +753,12 @@ class StageLedger:
     def __init__(self, work_root: Path, machine: StateMachine, repo_root: Path | None = None):
         self.work_root, self.repo_root, self.machine = work_root, (repo_root or work_root).resolve(), machine
         self.path = work_root / "ee_p2x_stage_ledger.json"; work_root.mkdir(parents=True, exist_ok=True)
+        source_order = list(machine.document.get("source_order", ()))
+        candidate_order = list(machine.document.get("candidate_order", ()))
         if self.path.exists(): self.data = json.loads(self.path.read_text())
         else:
-            self.data = {"schema": LEDGER_SCHEMA, "continuation_map": dataclasses.asdict(machine.identity), "p2x_branch": P2X_BRANCH, "p2x_resume_head": P2X_RESUME_HEAD, "source_order": list(EXPECTED_SOURCE_ORDER), "candidate_order": list(EXPECTED_CANDIDATE_ORDER), "source_identities": {}, "stages": {}}; self.flush()
-        if self.data.get("schema") != LEDGER_SCHEMA or self.data.get("continuation_map") != dataclasses.asdict(machine.identity) or self.data.get("source_order") != list(EXPECTED_SOURCE_ORDER) or self.data.get("candidate_order") != list(EXPECTED_CANDIDATE_ORDER): raise StageStateError("ledger authority drift")
+            self.data = {"schema": LEDGER_SCHEMA, "continuation_map": dataclasses.asdict(machine.identity), "p2x_branch": P2X_BRANCH, "p2x_resume_head": P2X_RESUME_HEAD, "source_order": source_order, "candidate_order": candidate_order, "source_identities": {}, "stages": {}}; self.flush()
+        if self.data.get("schema") != LEDGER_SCHEMA or self.data.get("continuation_map") != dataclasses.asdict(machine.identity) or self.data.get("source_order") != source_order or self.data.get("candidate_order") != candidate_order: raise StageStateError("ledger authority drift")
     def flush(self): return _atomic_write_json(self.path, self.data)
     def hash(self): return _sha256_file(self.path)
     def source_identity(self, source): return self.data["source_identities"].get(source)
@@ -548,11 +898,29 @@ def _candidate_stop(machine, ledger, *, source, candidate, head, source_sha, blo
         sp=machine.stages[f"{source}/{candidate}/{later}"]
         if ledger.stage_entry(sp.address) is None: _mechanical_terminal(machine,ledger,sp,head,source_sha,"CANDIDATE_LOCAL_FAILURE",{"schema":"RAWLSING_EE_P2X_CANDIDATE_LOCAL_STOP_PROPAGATION@1.0.0","blocker_stage":blocker},sp.next_stage_on_candidate_local_failure)
 def _source_stop(machine,ledger,*,source,head,source_sha,blocker):
-    for c in EXPECTED_CANDIDATE_ORDER:
-        for sid in machine.document.get("stage_catalog",()):
-            sp=machine.stages[f"{source}/{c}/{sid}"]
-            if ledger.stage_entry(sp.address) is None: _mechanical_terminal(machine,ledger,sp,head,source_sha,"BLOCKED_BY_COMMON_SOURCE_AUTHORITY",{"schema":"RAWLSING_EE_P2X_COMMON_SOURCE_BLOCK_PROPAGATION@1.0.0","blocker_stage":blocker},"__SOURCE_BLOCKED__")
-    i=EXPECTED_SOURCE_ORDER.index(source); return machine.final_stage_id if i+1==len(EXPECTED_SOURCE_ORDER) else f"{EXPECTED_SOURCE_ORDER[i+1]}/A/S00_SOURCE_PREFLIGHT_IDENTITY"
+    cells = list(machine.document.get("cells", ()))
+    source_cells = [cell for cell in cells if cell.get("source") == source]
+    if not source_cells:
+        raise StageStateError(f"source blocker references manifest-absent source {source}")
+    for cell in source_cells:
+        for sid in _manifest_ordered_stage_ids(machine.document, cell):
+            sp=machine.stages[f"{source}/{cell['candidate']}/{sid}"]
+            if ledger.stage_entry(sp.address) is None:
+                _mechanical_terminal(
+                    machine,ledger,sp,head,source_sha,"BLOCKED_BY_COMMON_SOURCE_AUTHORITY",
+                    {"schema":"RAWLSING_EE_P2X_COMMON_SOURCE_BLOCK_PROPAGATION@1.0.0","blocker_stage":blocker},
+                    "__SOURCE_BLOCKED__",
+                )
+    source_order = list(dict.fromkeys(cell.get("source") for cell in cells))
+    i = source_order.index(source)
+    if i + 1 == len(source_order):
+        return machine.final_stage_id
+    next_source = source_order[i + 1]
+    next_cell = next(cell for cell in cells if cell.get("source") == next_source)
+    next_stage_ids = _manifest_ordered_stage_ids(machine.document, next_cell)
+    if not next_stage_ids:
+        raise StageStateError(f"next source {next_source} has no governed stages")
+    return f"{next_source}/{next_cell['candidate']}/{next_stage_ids[0]}"
 def _mark_source_blocked(machine, ledger, *, source: str, observed_head: str, source_sha256: str, blocker_stage: str):
     return _source_stop(machine, ledger, source=source, head=observed_head, source_sha=source_sha256, blocker=blocker_stage)
 def _backend_terminal(machine,ledger,stage,head,source_sha,result):
@@ -599,11 +967,14 @@ def _final_ready(machine,ledger):
             if e["terminal_disposition"] in {"BLOCKED_BY_COMMON_SOURCE_AUTHORITY","BLOCKED_BY_COMMON_COURT_AUTHORITY"}: common.append(a)
     if common: raise CommonAuthorityBlocker("unresolved common blockers at S17",scope="COURT",receipt={"blockers":common})
     if machine.identity.schema == CURRENT_EXECUTION_MANIFEST_SCHEMA:
-        for source in EXPECTED_SOURCE_ORDER:
-            for candidate in EXPECTED_CANDIDATE_ORDER:
-                terminal = ledger.stage_entry(f"{source}/{candidate}/S16_TERMINAL_METRIC_VECTOR_COMPLETENESS")
-                if not terminal or terminal.get("terminal_disposition") != "PASS":
-                    raise StageStateError(f"current six-cell terminal PASS absent for {source}/{candidate}")
+        for cell in machine.document.get("cells", ()):
+            stage_ids = _manifest_ordered_stage_ids(machine.document, cell)
+            if not stage_ids:
+                raise StageStateError(f"current cell has no governed stages: {cell}")
+            terminal_address = f"{cell['source']}/{cell['candidate']}/{stage_ids[-1]}"
+            terminal = ledger.stage_entry(terminal_address)
+            if not terminal or terminal.get("terminal_disposition") != "PASS":
+                raise StageStateError(f"current cell terminal PASS absent for {cell['source']}/{cell['candidate']}")
     elif ledger.stage_entry("WVS7/C/S01_CANDIDATE_PREPARATION_BUILD").get("terminal_disposition") != "CANDIDATE_LOCAL_FAILURE":
         raise StageStateError("historical WVS-C portability failure not bound")
 def _token(stage,receipt_hash,ledger_hash,head): return {"schema":SUPERVISOR_TOKEN_SCHEMA,"action":"COMMIT_AND_PUSH_EXISTING_P2X_BRANCH_BOUNDED_STAGE_EVIDENCE","stage_id":stage.address,"terminal_receipt_sha256":receipt_hash,"ledger_sha256":ledger_hash,"p2x_branch":P2X_BRANCH,"observed_branch_head":head}
@@ -613,6 +984,7 @@ class DarwinCourtDriver:
     def __init__(self, *, machine, work_root, repo_root, source_paths, host, repo, backend):
         self.machine,self.work_root,self.repo_root,self.source_paths,self.host,self.repo,self.backend=machine,work_root,repo_root,dict(source_paths),host,repo,backend
         self._verified_sources_this_process={}; self.ledger=StageLedger(work_root,machine,repo_root); self.services=DriverServices(repo_root=repo_root,work_root=work_root)
+        self.progress=ProgressReporter(machine,self.ledger)
     def verify_static_gates(self): verify_runtime_gate(self.host); verify_repo_gate(self.repo)
     def frozen_source_sha(self,source):
         expected=self.machine.document["sources"][source]["sha256"]; old=self.ledger.source_identity(source)
@@ -628,17 +1000,44 @@ class DarwinCourtDriver:
     def source_sha_for_stage(self,stage):
         if stage.source == "COURT": return _semantic_hash(self.machine.document.get("sources",{}))
         return self.ensure_source_verified(stage.source) if stage.empirical_source_access_required else self.frozen_source_sha(stage.source)
-    def bind_initial_preserved_prefix(self):
-        sha=self.frozen_source_sha("LITS_I")
-        for a in ("LITS_I/A/S00_SOURCE_PREFLIGHT_IDENTITY","LITS_I/A/S01_CANDIDATE_PREPARATION_BUILD"):
-            if self.ledger.stage_entry(a) is None: _preserve(self.machine,self.ledger,self.machine.get(a),self.repo_root,self.repo.head,sha)
+    def bind_initial_manifest_prefix(self):
+        plan=ManifestProgressPlan(self.machine)
+        first=plan.governed_addresses[0]
+        cells=list(self.machine.document.get("cells",()))
+        ordered=[]
+        for cell in cells:
+            ordered.extend(
+                f"{cell['source']}/{cell['candidate']}/{sid}"
+                for sid in _manifest_ordered_stage_ids(self.machine.document,cell)
+            )
+        if self.machine.final_stage_id not in ordered:
+            ordered.append(self.machine.final_stage_id)
+        prefix=ordered[:ordered.index(first)]
+        for address in prefix:
+            stage=self.machine.get(address)
+            if self.ledger.stage_entry(address) is not None:
+                self.ledger.revalidate_terminal(address)
+                continue
+            sha=self.frozen_source_sha(stage.source) if stage.source!="COURT" else _semantic_hash(self.machine.document.get("sources",{}))
+            if stage.disposition=="DONE__PRESERVE":
+                _preserve(self.machine,self.ledger,stage,self.repo_root,self.repo.head,sha)
+            elif stage.disposition=="SKIP__NOT_APPLICABLE_BY_FROZEN_LAW":
+                _skip(self.machine,self.ledger,stage,self.repo.head,sha)
+            elif stage.disposition=="TERMINAL_CANDIDATE_LOCAL_FAILURE__PRESERVE":
+                if stage.source=="WVS7" and stage.candidate=="C":
+                    self._preserved_wvs_c(stage,sha)
+                else:
+                    raise StageStateError(f"unsupported pre-entry preserved candidate failure: {address}")
+            else:
+                raise StageStateError(f"pre-entry executable stage cannot be synthesized: {address}")
     def preflight(self):
-        self.verify_static_gates(); verified={s:self.ensure_source_verified(s) for s in EXPECTED_SOURCE_ORDER}; owners={}
+        source_order=tuple(self.machine.document.get("source_order",()))
+        self.verify_static_gates(); verified={s:self.ensure_source_verified(s) for s in source_order}; owners={}
         for c,sp in OWNER_SPECS.items():
             data=_git_show_bytes(self.repo_root,OWNER_COMMIT,sp["path"]); blob=_git_blob_sha1(data)
             if blob != sp["blob"]: raise OwnerDeploymentError(f"Candidate-{c} owner blob drift")
             owners[c]=blob
-        self.bind_initial_preserved_prefix()
+        self.bind_initial_manifest_prefix()
         return {"schema":"RAWLSING_EE_P2X_DARWIN_PREFLIGHT@1.0.0","status":"PASS","host":dataclasses.asdict(self.host),"repo":dataclasses.asdict(self.repo),"source_sha256":verified,"owner_blobs":owners,"continuation_map":dataclasses.asdict(self.machine.identity),"host_contention_claim":"SINGLE_DRIVER_LOCK_ONLY__NO_PROCESS_NAME_IDLE_HEURISTIC","next_stage":self.next_stage()}
     def next_stage(self):
         a=self.machine.first_unfinished; seen=set()
@@ -667,7 +1066,7 @@ class DarwinCourtDriver:
                 if self.ledger.stage_entry(sp.address) is None: _skip(self.machine,self.ledger,sp,self.repo.head,source_sha)
         return nxt,rh
     def run(self, *, resume: bool):
-        self.verify_static_gates(); self.bind_initial_preserved_prefix()
+        self.verify_static_gates(); self.bind_initial_manifest_prefix()
         if self.backend is None: raise StageExecutionError("--run/--resume requires backend")
         a=self.machine.first_unfinished; seen=set()
         while a != "__COURT_COMPLETE__":
@@ -676,22 +1075,46 @@ class DarwinCourtDriver:
             if old and old.get("terminal_disposition") in COMPLETE_LEDGER_DISPOSITIONS:
                 if not resume: raise StageStateError(f"terminal stage {a} already exists; use --resume")
                 old=self.ledger.revalidate_terminal(a); n=old["next_stage"]
-                if n=="__COMMON_SOURCE_BLOCKER__": a=_source_stop(self.machine,self.ledger,source=stage.source,head=self.repo.head,source_sha=self.frozen_source_sha(stage.source),blocker=a); continue
+                if n=="__COMMON_SOURCE_BLOCKER__":
+                    a=_source_stop(self.machine,self.ledger,source=stage.source,head=self.repo.head,source_sha=self.frozen_source_sha(stage.source),blocker=a)
+                    self.progress.emit_completed_cells()
+                    continue
                 if n=="__COMMON_COURT_BLOCKER__": return self._summary("BLOCKED__COMMON_COURT_AUTHORITY",a)
                 a=n; continue
             if old and old.get("state")=="RUNNING" and not resume: raise StageStateError(f"partial stage {a}; use --resume")
             is_final = stage.address==self.machine.final_stage_id
+            stage_start_ns=self.progress.now_ns()
             if is_final:
                 if old and old.get("state")=="RUNNING":
                     self.ledger.discard_empty_running_preterminal(stage)
                     old=None
-                try: _final_ready(self.machine,self.ledger)
-                except CommonAuthorityBlocker: return self._summary("BLOCKED__UNRESOLVED_COMMON_AUTHORITY_AT_S17",stage.address)
+                try:
+                    _final_ready(self.machine,self.ledger)
+                except CommonAuthorityBlocker:
+                    self.progress.emit_stage(
+                        stage,"BLOCKED",next_stage=stage.address,
+                        elapsed_stage_ns=self.progress.now_ns()-stage_start_ns,
+                        terminal_disposition="BLOCKED_BY_COMMON_COURT_AUTHORITY",
+                    )
+                    return self._summary("BLOCKED__UNRESOLVED_COMMON_AUTHORITY_AT_S17",stage.address)
             sha=self.source_sha_for_stage(stage); roots=_candidate_roots(self.work_root,stage.source,stage.candidate); ih=_input_identity(self.machine,stage,sha,self.repo.head)
-            if stage.disposition=="DONE__PRESERVE": a,_=_preserve(self.machine,self.ledger,stage,self.repo_root,self.repo.head,sha); continue
-            if stage.disposition=="SKIP__NOT_APPLICABLE_BY_FROZEN_LAW": a,_=_skip(self.machine,self.ledger,stage,self.repo.head,sha); continue
-            if stage.disposition=="TERMINAL_CANDIDATE_LOCAL_FAILURE__PRESERVE": a,_=self._preserved_wvs_c(stage,sha); continue
+            if stage.disposition=="DONE__PRESERVE":
+                a,_=_preserve(self.machine,self.ledger,stage,self.repo_root,self.repo.head,sha)
+                self.progress.emit_stage(stage,"PRESERVE",next_stage=a,elapsed_stage_ns=self.progress.now_ns()-stage_start_ns,terminal_disposition="PRESERVED")
+                self.progress.emit_completed_cells()
+                continue
+            if stage.disposition=="SKIP__NOT_APPLICABLE_BY_FROZEN_LAW":
+                a,_=_skip(self.machine,self.ledger,stage,self.repo.head,sha)
+                self.progress.emit_stage(stage,"SKIP",next_stage=a,elapsed_stage_ns=self.progress.now_ns()-stage_start_ns,terminal_disposition="SKIPPED_BY_FROZEN_LAW")
+                self.progress.emit_completed_cells()
+                continue
+            if stage.disposition=="TERMINAL_CANDIDATE_LOCAL_FAILURE__PRESERVE":
+                a,_=self._preserved_wvs_c(stage,sha)
+                self.progress.emit_stage(stage,"CANDIDATE_LOCAL_FAILURE",next_stage=a,elapsed_stage_ns=self.progress.now_ns()-stage_start_ns,terminal_disposition="CANDIDATE_LOCAL_FAILURE")
+                self.progress.emit_completed_cells()
+                continue
             if stage.disposition!="READY__RUN_LOCALLY": raise StageStateError(f"unexpected disposition {stage.disposition}")
+            self.progress.emit_stage(stage,"START",next_stage=None,elapsed_stage_ns=None)
             if not is_final: self.ledger.begin(stage,ih)
             elif self.ledger.stage_entry(stage.address) is not None: raise StageStateError("S17 must be absent before backend verification")
             ctx=StageContext(BACKEND_CONTRACT,stage,self.work_root,roots,self.source_paths.get(stage.source) if stage.empirical_source_access_required else None,sha,self.machine.identity,P2X_BRANCH,self.repo.head,ih)
@@ -700,14 +1123,36 @@ class DarwinCourtDriver:
             except CommonAuthorityBlocker as exc: result=BackendResult("COMMON_SOURCE_BLOCKER" if exc.scope=="SOURCE" else "COMMON_COURT_BLOCKER",{"error":str(exc),"scope":exc.scope,**exc.receipt},verifier_complete=True)
             except Exception as exc: raise StageExecutionError(f"untyped backend failure at {a}: {exc}") from exc
             n,rh,disp=_backend_terminal(self.machine,self.ledger,stage,self.repo.head,sha,result)
-            if stage.physical_host_measurement_required: print("RAWLSING_LOCAL_SUPERVISOR_ACTION "+json.dumps(_token(stage,rh,self.ledger.hash(),self.repo.head),sort_keys=True,separators=(",",":")))
-            if disp=="CANDIDATE_LOCAL_FAILURE" and stage.address!=self.machine.final_stage_id: _candidate_stop(self.machine,self.ledger,source=stage.source,candidate=stage.candidate,head=self.repo.head,source_sha=sha,blocker=stage.address)
+            if stage.physical_host_measurement_required:
+                print("RAWLSING_LOCAL_SUPERVISOR_ACTION "+json.dumps(_token(stage,rh,self.ledger.hash(),self.repo.head),sort_keys=True,separators=(",",":")),file=sys.stderr,flush=True)
+            if disp=="CANDIDATE_LOCAL_FAILURE" and stage.address!=self.machine.final_stage_id:
+                _candidate_stop(self.machine,self.ledger,source=stage.source,candidate=stage.candidate,head=self.repo.head,source_sha=sha,blocker=stage.address)
             if stage.address==self.machine.final_stage_id and disp=="CANDIDATE_LOCAL_FAILURE": raise StageStateError("candidate-local failure forbidden at S17")
-            if disp=="BLOCKED_BY_COMMON_SOURCE_AUTHORITY": a=_source_stop(self.machine,self.ledger,source=stage.source,head=self.repo.head,source_sha=sha,blocker=stage.address)
-            elif disp=="BLOCKED_BY_COMMON_COURT_AUTHORITY": return self._summary("BLOCKED__COMMON_COURT_AUTHORITY",stage.address)
-            else: a=n
+            if disp=="BLOCKED_BY_COMMON_SOURCE_AUTHORITY":
+                a=_source_stop(self.machine,self.ledger,source=stage.source,head=self.repo.head,source_sha=sha,blocker=stage.address)
+                progress_state="BLOCKED"
+            elif disp=="BLOCKED_BY_COMMON_COURT_AUTHORITY":
+                a=stage.address
+                progress_state="BLOCKED"
+            elif disp=="CANDIDATE_LOCAL_FAILURE":
+                a=n
+                progress_state="CANDIDATE_LOCAL_FAILURE"
+            else:
+                a=n
+                progress_state="PASS"
+            self.progress.emit_stage(
+                stage,progress_state,next_stage=a,
+                elapsed_stage_ns=self.progress.now_ns()-stage_start_ns,
+                terminal_disposition=disp,
+            )
+            self.progress.emit_completed_cells()
+            if disp=="BLOCKED_BY_COMMON_COURT_AUTHORITY":
+                return self._summary("BLOCKED__COMMON_COURT_AUTHORITY",stage.address)
         return self._summary("COURT_SEQUENCE_COMPLETE__S17_VERIFIED",a)
-    def _summary(self,status,address): return {"schema":"RAWLSING_EE_P2X_DARWIN_DRIVER_RUN@1.0.0","status":status,"next_stage":address,"ledger_sha256":self.ledger.hash(),"observed_p2x_head":self.repo.head,"measured_synthesis_performed":False}
+    def _summary(self,status,address):
+        ledger_sha=self.ledger.hash()
+        self.progress.emit_court_terminal(status=status,next_stage=address,ledger_sha256=ledger_sha)
+        return {"schema":"RAWLSING_EE_P2X_DARWIN_DRIVER_RUN@1.0.0","status":status,"next_stage":address,"ledger_sha256":ledger_sha,"observed_p2x_head":self.repo.head,"measured_synthesis_performed":False,"progress_jsonl":str(self.progress.path)}
 
 # ---- CLI ------------------------------------------------------------------------------
 def _parser():
@@ -758,7 +1203,7 @@ def main(argv: Sequence[str] | None=None):
         validate_frozen_upstream_for_machine(machine,freeze_path)
         os.environ[FROZEN_UPSTREAM_ENV]=str(freeze_path)
         from rawlsing_next.fiabc_live_terminal_control import load_frozen_source_oracle
-        for source_id in EXPECTED_SOURCE_ORDER:
+        for source_id in machine.document.get("source_order",()):
             load_frozen_source_oracle(
                 freeze_path=freeze_path,source=source_id,work_root=work
             )
