@@ -98,12 +98,14 @@ def test_canonical_question_mapping_remains_absent():
 
 
 def test_common_authority_gate_does_not_treat_source_semantics_as_mapping():
-    from dataclasses import replace
-    snapshot = mapping_authority_snapshot()
-    counterfeit = replace(snapshot, authority_kind="SOURCE_SEMANTICS_TOPOLOGY")
+    _module, projection, _variables = _projection_and_variables()
+    source_snapshot = next(
+        x for x in projection.authority_snapshots
+        if x.authority_kind == "SOURCE_SEMANTICS_TOPOLOGY"
+    )
     import pytest
     with pytest.raises(Pre553AuthorityError, match="authority kind mismatch"):
         require_positive_authority(
-            counterfeit,
+            source_snapshot,
             authority_kind="NATIVE_CANONICAL_MAPPING_HARMONIZATION",
         )
