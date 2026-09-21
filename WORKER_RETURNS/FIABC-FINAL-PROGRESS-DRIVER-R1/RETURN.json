@@ -1,0 +1,55 @@
+{
+  "schema": "FIABC_FINAL_PROGRESS_DRIVER_R1_RETURN@1.0.0",
+  "status": "CODE_COMPLETE__STATIC_MANIFEST_AUDIT_PASS__RUNTIME_TESTS_NOT_EXECUTED",
+  "terminal": "FIABC_FINAL_PROGRESS_DRIVER_R1_CODE_COMPLETE__STATIC_MANIFEST_AUDIT_PASS__RUNTIME_TESTS_AUTHORED_NOT_EXECUTED__NO_CANDIDATE_OR_MEASURED_P2X",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-premain-fiabc-final-progress-driver-r1",
+  "sealed_hq_base": "445c2fd534db61de0d0d348a6d77a11faa419cc3",
+  "commission_commit": "b7e627a908833df3c6af5615100004e3bee6d60d",
+  "implementation_head_before_return_packet": "d56c6e4d7cb00ef0effbdd479207b4d7e61a15b2",
+  "return_packet_parent_before_RETURN_json": "591b79886996a243ee5a6ac5ea91fde690bc148e",
+  "final_branch_head": "REPORT_FROM_GITHUB_CREATE_COMMIT_RESULT_AND_FINAL_RESPONSE",
+  "progress_schema": "RAWLSING_FIABC_DRIVER_PROGRESS@1.0.0",
+  "progress_jsonl": "<work_root>/fiabc_driver_progress.jsonl",
+  "sealed_manifest_derived": {
+    "cells": 6,
+    "stages_per_cell": 17,
+    "current_entry": "LITS_I/A/S01_CANDIDATE_PREPARATION_BUILD",
+    "governed_positions_through_s17": 102,
+    "executable_positions_through_s17": 89,
+    "counts_hardcoded_in_production": false
+  },
+  "changed_implementation_files": [
+    "rawlsing_next/ee_p2x_darwin_court_driver.py",
+    "rawlsing_next/ee_p2x_darwin_stage_backend.py",
+    "rawlsing_next/tests/test_fiabc_final_progress_driver.py"
+  ],
+  "return_files": [
+    "WORKER_RETURNS/FIABC-FINAL-PROGRESS-DRIVER-R1/01_RETURN.md",
+    "WORKER_RETURNS/FIABC-FINAL-PROGRESS-DRIVER-R1/02_PROGRESS_SCHEMA_AND_EXAMPLES.json",
+    "WORKER_RETURNS/FIABC-FINAL-PROGRESS-DRIVER-R1/03_STALE_ASSUMPTION_AUDIT.md",
+    "WORKER_RETURNS/FIABC-FINAL-PROGRESS-DRIVER-R1/04_TEST_AUDIT.json",
+    "WORKER_RETURNS/FIABC-FINAL-PROGRESS-DRIVER-R1/RETURN.json"
+  ],
+  "tests": {
+    "authored": 11,
+    "runtime_executed": false,
+    "github_actions_run_id": null,
+    "reason": "BROWSER_GITHUB_ONLY__NO_WORKFLOW_RUN_ATTACHED_TO_WORKER_BRANCH__NO_NEW_ACTIONS_RUN_CREATED"
+  },
+  "stale_assumption_closure": {
+    "wvs7_c_failure_serialization_fixed": true,
+    "five_cell_literal_absent": true,
+    "current_lits_a_s01_no_longer_preserved_by_stale_prefix": true,
+    "manifest_derived_source_stop": true,
+    "manifest_derived_terminal_cell_gate": true,
+    "candidate_local_failure_terminates_before_success_only_s17": true
+  },
+  "prohibited_execution": {
+    "user_mac_used": false,
+    "raw_lits_wvs_bytes_opened": false,
+    "candidate_a_b_c_run": false,
+    "measured_p2x_run": false,
+    "sibling_wait": false
+  }
+}
