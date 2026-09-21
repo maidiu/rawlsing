@@ -1,0 +1,23 @@
+candidate_id,artifact_or_surface,source_identity,row_payload,q291_cells,missing_state_and_declaration,row_order,candidate_neutral,classification,rejection_reason
+C01,J05/01_WVS7_PACKAGE_RECOVERY_RECEIPT.json,WVS7 exact,no,no,no,no,yes,IDENTITY_ONLY__NO_PAYLOAD,package/SAV identity only
+C02,J05/02_WVS7_EXTRACTED_CARRIER_IDENTITY_RECEIPT.json,WVS7 exact,no,no,no,no,yes,IDENTITY_ONLY__NO_PAYLOAD,contained SAV identity is not extracted Q291 cell payload
+C03,D03_D12_RESPONDENT_REPLAY_R1/SOURCE_IDENTITY_AND_EXTRACTION_RECEIPT.json,WVS7 exact,no,no,no,digest only,yes,IDENTITY_ONLY__NO_PAYLOAD,selected 20 columns exclude Q291G5/Q291P5
+C04,D03_D12_RESPONDENT_REPLAY_R1 replay manifest + scope ledger,WVS7 exact,no,no,no,row-binding digest,yes,IDENTITY_ONLY__NO_PAYLOAD,respondent/scope identity cannot reconstruct response cells
+C05,WORKER_RETURNS/FIABC-LM2/wvs7_projection_structural_input.json,WVS7 exact,partial B_COUNTRY only,no,Q291 declarations only,yes,yes,PARTIAL__INSUFFICIENT,Q291 ordinals/declarations preserved but row values absent
+C06,WORKER_RETURNS/FIABC-LM2/wvs7_physical_evidence_material.json,WVS7 exact,no,no,metadata only,no,yes,PARTIAL__INSUFFICIENT,physical evidence summary contains no Q291 row values
+C07,FULL_GSR07_WVS7_SOURCE_BACKED_CERTIFICATION_R2 C11 release receipts,WVS7 exact,no,no,no,release identity only,yes,IDENTITY_ONLY__NO_PAYLOAD,release/ref/hash bodies not persisted
+C08,Actions artifacts 10281094685 + 10282255728,WVS7 court,no,no,no,no,yes,AGGREGATE_ONLY,workflow log proves artifact path is only .rabochii/court_receipt.json
+C09,Actions artifact 10126588068 D11 source-local 66,WVS7 exact,semantic scopes only,no,no,scope order only,yes,SEMANTIC_ONLY__NO_PHYSICAL_PAYLOAD,artifact contains admission authorities/universes/replay receipt not responses
+C10,EE-P2F2 WVS response/predicate/query/Lock2 package,WVS7 exact,no,no,no,semantic ordering only,yes,SEMANTIC_ONLY__NO_PHYSICAL_PAYLOAD,semantic comparator tokens cannot recover physical row observations
+C11,EE-P2R6S projection materializer/runtime package,WVS7 exact,no,no,Q291 declarations via structural input,respondent derivation only,yes,SEMANTIC_ONLY__NO_PHYSICAL_PAYLOAD,materializer explicitly does not read Q291 outcomes while constructing authority
+C12,EE-P2R6M RUN_OUTPUT validated_c11_candidate_snapshot chunks,LiTS 2006,yes,wrong source,source-specific,yes,yes,WRONG_SOURCE_OR_SCOPE,source SHA 7cac43e2... not WVS7
+C13,R5_FULL_WVS7_REAL_SOURCE_COURT transient build,WVS7 exact,transient partial,not persisted,transient,transient,yes,PAYLOAD_UNAVAILABLE_OR_EXPIRED,5.3M physical events reached but scratch/carrier not committed
+C14,R5 V4 Authority70 preflight,WVS7 exact,no,no,microproof only,no,yes,PAYLOAD_UNAVAILABLE_OR_EXPIRED,return states no full-source build scratch or carrier created
+C15,SR07-P0 bounded physical replay,WVS7 exact,transient 2048 rows,not persisted,microproof only,transient,yes,AGGREGATE_ONLY,only digests/resource receipts survive
+C16,SR07-P1 bounded C11/Parquet scratch,WVS7 exact,transient 32/128 rows,transient all-slot not target carrier,transient,transient,yes,PAYLOAD_UNAVAILABLE_OR_EXPIRED,bounded scratch not committed and not exact 97220x2 carrier
+C17,SR07-P2 bounded/full R4 scratch,WVS7 exact,transient,not persisted,microproof only,transient,yes,PAYLOAD_UNAVAILABLE_OR_EXPIRED,return explicitly says full-source carrier and scratch driver were not committed
+C18,recovery_reservoir WVS__W7 questionnaire/source-structure members,WVS7 documentary,no,no,no,no,yes,SEMANTIC_ONLY__NO_PHYSICAL_PAYLOAD,question/document structure only
+C19,recovery_reservoir global SOURCE_NATIVE_STRUCTURE_OBJECTS_R1.csv,WVS7 included,no,no,no,no,yes,SEMANTIC_ONLY__NO_PHYSICAL_PAYLOAD,schema is structure/document text; Q291 respondent cells absent
+C20,recovery_reservoir generic >=1MB objects,mixed historical authority surfaces,no,no,no,no,unknown until provenance checked,WRONG_SOURCE_OR_SCOPE,OBJECT_INDEX provenance resolves them to ledgers/spines/candidate accounting/source structure not WVS7 cell payload
+C21,GT1/GT2 payload/*.bin reference-hash arrays,non-WVS runtime transport,hashes only,no,no,hash order only,yes,AGGREGATE_ONLY,reference hashes are not raw physical values
+C22,R1E exact-head Actions runs 35567078132/35567078133,WVS7 source-free,no,no,no,no,yes,AGGREGATE_ONLY,no workflow artifacts uploaded; generic court skipped or source-free only
