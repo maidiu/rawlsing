@@ -1,0 +1,64 @@
+{
+  "schema": "FIABC_LITS_A_MINIMAL_LOCAL_FALLBACK@1.0.0",
+  "disposition": "MINIMAL_LOCAL_PARENTAGE_VERIFICATION_REQUIRED__NO_REBUILD_AUTHORIZED",
+  "purpose": "Determine whether already-preserved local artifacts contain the exact historical evidence that Git/GitHub does not preserve, without opening raw LiTS source bytes and without rebuilding Candidate A.",
+  "required_inputs": [
+    {
+      "name": "preserved_r5_root",
+      "description": "Local directory for the exact historical Candidate-A R5 root whose physical_root_id must equal e8f37557493b816e4562f5f47df110cf49b429e9ead54e5b624d6638ee07aa3d."
+    },
+    {
+      "name": "original_raw_first_build_receipt",
+      "description": "The original raw first-build receipt whose SHA-256 is frozen as 89bd0719f0c546bc3e6e0d3ef7678c01c3fb3ab51cf0c82c84f9a343e08d5337."
+    }
+  ],
+  "forbidden_inputs": [
+    "LiTS-I raw DTA source path",
+    "alternate source export",
+    "cleaned source",
+    "replacement R5 root 7d85c5e4...",
+    "candidate output",
+    "measured P2X output"
+  ],
+  "allowed_reads": [
+    "preserved R5 root.json",
+    "preserved R5 member_inventory.jsonl",
+    "original raw first-build receipt bytes"
+  ],
+  "forbidden_reads": [
+    "LiTS-I raw source bytes",
+    "R5 member payload files under members/",
+    "WVS7 source bytes"
+  ],
+  "exact_checks": [
+    "root.json self-hash recomputes to physical_root_id e8f37557493b816e4562f5f47df110cf49b429e9ead54e5b624d6638ee07aa3d",
+    "logical_stream_digest equals de8f060aa72eff7e45f8355ed683cb8ee4b6aca7ff255167cb41bcf8e5a7e3d6",
+    "canonical_row_count equals 34745595",
+    "member inventory descriptor names member_inventory.jsonl",
+    "member inventory member_count equals 2121",
+    "member inventory byte length and SHA close to root.json",
+    "embedded source content_hash equals canonical LiTS-I SHA 7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "raw first-build receipt SHA equals 89bd0719f0c546bc3e6e0d3ef7678c01c3fb3ab51cf0c82c84f9a343e08d5337",
+    "inspect the raw receipt only for independently persisted producer/blob/build-config/operation/reader-config/source-verification/parentage material"
+  ],
+  "prepared_verifier": "WORKER_RETURNS/FIABC-LITS-A-PARENTAGE-RECOVERY/06_VERIFY_PRESERVED_ARTIFACTS.py",
+  "prepared_verifier_behavior": {
+    "opens_raw_source": false,
+    "opens_r5_member_payloads": false,
+    "rebuilds_candidate_a": false,
+    "runs_candidate_a": false,
+    "mints_parentage_receipt": false,
+    "hashes_and_inspects_preserved_metadata_only": true
+  },
+  "success_interpretation": {
+    "if_raw_receipt_contains_complete_independent_historical_parentage_material": "A later narrowly scoped court may bind that evidence into the current generic R35 verifier, but only without changing its historical facts or borrowing identities from a later build.",
+    "if_raw_receipt_lacks_complete_historical_parentage_material": "Historical e8f37557 parentage remains unrecoverable under current R35 law. The preserved root remains semantic/identity evidence only; no rebuild is authorized by this worker."
+  },
+  "current_consumer_pin_note": {
+    "qualified_builder_blob": "92e364b31eaf27be1bca2081eff65f6ffb779c3d",
+    "live_backend_expected_builder_blob": "92e68693d72cbfcdd1c6d16e7f247ca3f60c8c55",
+    "rule": "Even if historical evidence is recovered locally, the separate live producer-pin conflict must be reconciled by its lawful owner before current consumer admission."
+  },
+  "no_rebuild_authorized": true,
+  "no_measured_p2x_authorized": true
+}
