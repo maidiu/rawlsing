@@ -1597,10 +1597,29 @@ def _fallback(ctx,label,detail=None):
                "candidate":ctx.stage.candidate,"label":label,"detail":detail})
 
 
+def _current_manifest_cell_order() -> tuple[tuple[str, str], ...]:
+    raw=os.environ.get("RAWLSING_FIABC_T5_CURRENT_EXECUTION_MANIFEST")
+    if not raw:
+        raise CourtAuthorityStop("current execution manifest is not bound for cell serialization")
+    from rawlsing_next.ee_p2x_darwin_court_driver import load_current_execution_manifest
+    machine=load_current_execution_manifest(Path(raw))
+    cells=machine.document.get("cells",())
+    order=tuple((cell.get("source"),cell.get("candidate")) for cell in cells)
+    if not order or any(not isinstance(source,str) or not isinstance(candidate,str) for source,candidate in order):
+        raise CourtAuthorityStop("current execution manifest cell order malformed")
+    if len(set(order))!=len(order):
+        raise CourtAuthorityStop("current execution manifest cell order contains duplicates")
+    return order
+
+
 def _cell(ctx,services,state,stopped):
     exp=json.loads((_repo(services)/"WORKER_RETURNS/EE-P2X/09_LOCAL_COURT_FROZEN_EXPECTATIONS.json").read_text())
     cell=ctx.stage.source+"/"+ctx.stage.candidate
-    order=["LITS_I/A","LITS_I/B","LITS_I/C","WVS7/A","WVS7/B"]
+    order=_current_manifest_cell_order()
+    cell_key=(ctx.stage.source,ctx.stage.candidate)
+    if cell_key not in order:
+        raise CourtAuthorityStop("failure serialization cell absent from current execution manifest",
+                                 {"source":ctx.stage.source,"candidate":ctx.stage.candidate})
     preserved=cell in {"LITS_I/A","LITS_I/B"}
     b=state["bindings"]
     projection=b.get("projection_identity") or (LITS_PROJECTION if ctx.stage.source=="LITS_I" else _fallback(ctx,"WVS_PROJECTION"))
@@ -1608,7 +1627,7 @@ def _cell(ctx,services,state,stopped):
             for k in ("semantic","exactref_identity","replay","integrity_fail_closed","frontier_typed_negative")}
     return {
         "schema":"RAWLSING_EE_P2X_SOURCE_CANDIDATE_RECEIPT@1.0.0",
-        "source":ctx.stage.source,"candidate":ctx.stage.candidate,"sequence_index":order.index(cell),
+        "source":ctx.stage.source,"candidate":ctx.stage.candidate,"sequence_index":order.index(cell_key),
         "authority":{"hq_handoff_commit":exp["hq"]["handoff_commit"],
                      "lock1_manifest_blob":exp["lock1"]["manifest_json_git_blob_sha1"],
                      "lock2_hash":exp["lock2"]["hash"]},
