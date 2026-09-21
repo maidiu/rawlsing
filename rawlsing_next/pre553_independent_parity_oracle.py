@@ -602,6 +602,41 @@ def materialize_wvs7_oracle(
     return freeze_oracle(content, freeze)
 
 
+def freeze_wvs7_oracle_from_common_material(
+    *,
+    material: Mapping[str, Any],
+    freeze: FreezeContext,
+) -> dict[str, Any]:
+    """Freeze WVS7 expected truth from already materialized candidate-neutral common C11 work.
+
+    Unlike materialize_wvs7_oracle this source-free seam never opens source
+    bytes.  The supplied material must already bind the exact WVS7 source
+    identity, Lock2 constitution, full 46-candidate frontier, semantic authority
+    closure, expected facts/product, replay manifest, exact refs, and
+    candidate-neutral provenance under the existing oracle contract.
+    """
+    freeze.validate()
+    material = _mapping(material, "common C11 oracle material")
+    if material.get("contract") != WVS_MATERIALIZER_CONTRACT:
+        raise ParityOracleError("WVS7 neutral materializer contract mismatch")
+    provenance = _mapping(material.get("oracle_build_provenance"), "oracle_build_provenance")
+    _assert_candidate_neutral_provenance(provenance)
+    content = _build_oracle_content(
+        source="WVS7",
+        source_identity=_mapping(material.get("source_identity"), "source_identity"),
+        court_constitution_refs=_mapping(material.get("court_constitution_refs"), "court_constitution_refs"),
+        semantic_authority_closure=_sequence(material.get("semantic_authority_closure"), "semantic_authority_closure"),
+        projection_and_release_refs=_mapping(material.get("projection_and_release_refs"), "projection_and_release_refs"),
+        frontier_manifest=_mapping(material.get("frontier_manifest"), "frontier_manifest"),
+        expected_fact_manifest=_sequence(material.get("expected_fact_manifest"), "expected_fact_manifest"),
+        expected_learned_product=_mapping(material.get("expected_learned_product"), "expected_learned_product"),
+        replay_manifest=_mapping(material.get("replay_manifest"), "replay_manifest"),
+        exact_ref_manifest=_sequence(material.get("exact_ref_manifest"), "exact_ref_manifest"),
+        oracle_build_provenance=provenance,
+    )
+    return freeze_oracle(content, freeze)
+
+
 def validate_candidate_observation(
     oracle: Mapping[str, Any],
     observation: Mapping[str, Any],
@@ -732,6 +767,7 @@ __all__ = [
     "WVS_MATERIALIZER_CONTRACT",
     "build_lits_i_oracle",
     "freeze_oracle",
+    "freeze_wvs7_oracle_from_common_material",
     "materialize_wvs7_oracle",
     "validate_candidate_observation",
     "validate_three_way_parity",
