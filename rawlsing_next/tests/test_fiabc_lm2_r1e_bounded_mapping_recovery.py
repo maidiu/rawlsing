@@ -24,6 +24,7 @@ from rawlsing_next.pre553_empirical_authority import (
     require_positive_authority,
 )
 from rawlsing_next.pre553_physical_decoder import PhysicalVariable
+from rawlsing_next.pre553_empirical_objects import AuthoritySnapshot
 from rawlsing_next.pre553_source_backed_c11_facade import (
     ExactPhysicalCellStream,
     SourceBackedC11FacadeError,
@@ -67,6 +68,18 @@ def fields3():
         enforce_frozen_dimensions=False,
     ))
 
+
+def _snapshot_with(snapshot, **semantic_changes):
+    semantic_fields = dict(snapshot.semantic_fields)
+    semantic_fields.update(semantic_changes)
+    return AuthoritySnapshot(
+        typed_state=snapshot.typed_state,
+        authority_snapshot_refs=snapshot.authority_snapshot_refs,
+        dependency_refs=snapshot.dependency_refs,
+        producer_replay_locator_or_reference_root=snapshot.producer_replay_locator_or_reference_root,
+        **semantic_fields,
+    )
+
 def test_r01_authority_ceiling_is_distinct_and_source_authority_is_not_relabeled():
     snap = mapping_authority_snapshot()
     assert snap.authority_kind == "NATIVE_CANONICAL_MAPPING_HARMONIZATION"
@@ -102,7 +115,7 @@ def test_r03_exact_derived_mapping_authority_is_accepted_by_source_free_r6s_bind
 def test_r04_relabel_counterfeit_is_rejected_by_exact_snapshot_binding():
     fields = fields3()
     exact = mapping_authority_snapshot()
-    counterfeit = replace(exact, authority_kind="SOURCE_SEMANTICS_TOPOLOGY")
+    counterfeit = _snapshot_with(exact, authority_kind="SOURCE_SEMANTICS_TOPOLOGY")
     fields["authority_snapshots"] = tuple(
         counterfeit if a.authority_ref == MAPPING_AUTHORITY_REF else a
         for a in fields["authority_snapshots"]
@@ -112,7 +125,7 @@ def test_r04_relabel_counterfeit_is_rejected_by_exact_snapshot_binding():
 
 def test_r05_canonical_question_mapping_remains_absent():
     fields = fields3()
-    assert all(q.canonical_question_ref_or_typed_absence.reason == "NOT_AUTHORIZED"
+    assert all(q.canonical_question_ref_or_typed_absence.state == "NOT_AUTHORIZED"
                for q in fields["questions"])
 
 def test_r06_special_states_remain_noncanonical():
@@ -140,8 +153,11 @@ def test_r08_cross_source_equivalence_is_explicitly_absent():
 def test_r09_exact_parent_and_provenance_mutation_is_rejected():
     fields = fields3()
     exact = mapping_authority_snapshot()
-    assert exact.parent_authority_refs == (SOURCE_AUTH_REF, PREDICATE_GRAMMAR_AUTH_REF)
-    mutated = replace(exact, parent_authority_refs=(SOURCE_AUTH_REF,))
+    assert {x["authority_id"] for x in exact.parent_authority_refs} == {
+        SOURCE_AUTH_REF.authority_id,
+        PREDICATE_GRAMMAR_AUTH_REF.authority_id,
+    }
+    mutated = _snapshot_with(exact, parent_authority_refs=(SOURCE_AUTH_REF.as_dict(),))
     fields["authority_snapshots"] = tuple(
         mutated if a.authority_ref == MAPPING_AUTHORITY_REF else a
         for a in fields["authority_snapshots"]

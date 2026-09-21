@@ -386,7 +386,7 @@ def test_wvs_source_free_freeze_accepts_exact_candidate_neutral_common_material(
     )
     assert oracle["source_identity"]["sha256"] == WVS7_SOURCE_SHA256
     assert oracle["frontier_manifest"]["candidate_count"] == 46
-    assert oracle["freeze_receipt"]["candidate_outputs_seen_at_freeze"] == 0
+    assert oracle["freeze_receipt"]["candidate_outputs_seen"] == 0
     verify_frozen_oracle(oracle)
 
 
