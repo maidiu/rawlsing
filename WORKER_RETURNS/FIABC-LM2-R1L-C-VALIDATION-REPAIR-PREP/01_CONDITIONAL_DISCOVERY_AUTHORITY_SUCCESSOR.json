@@ -1,0 +1,80 @@
+{
+  "schema": "FIABC_LM2_R1L_C_CONDITIONAL_DISCOVERY_AUTHORITY_SUCCESSOR@1.0.0",
+  "status": "CONDITIONAL_PREPARED__NOT_ACTIVATED",
+  "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+  "predecessor_discovery_authority_ref": {
+    "kind": "DiscoveryAuthority@1.0.0",
+    "object_id": "urn:rawlsing:pre553:DiscoveryAuthority:sha256:24591678ebf50ac153fabdbbcd90d6ce818c5a89a5307c395c48a04fe5a8b1ab",
+    "content_hash": "24591678ebf50ac153fabdbbcd90d6ce818c5a89a5307c395c48a04fe5a8b1ab"
+  },
+  "candidate_grammar_ref": {
+    "kind": "PRE553_I05_CANDIDATE_GRAMMAR@1.0.0",
+    "object_id": "urn:rawlsing:pre553:ee-p2f2:wvs7-lock1-grammar:sha256:a94bd2ed3b64b2c51f6d329560feef6b97f69da3527081d8ca6168ae63e5f7f6",
+    "content_hash": "a94bd2ed3b64b2c51f6d329560feef6b97f69da3527081d8ca6168ae63e5f7f6"
+  },
+  "required_validation_kinds": [
+    "DISTRIBUTION_DIFFERS_FROM_BASELINE",
+    "JOINT_NOT_PRODUCT_OF_MARGINALS",
+    "TARGET_CELL_SUPPORTED"
+  ],
+  "canonical_order": "LEXICOGRAPHIC_EXACT_STRING_ORDER",
+  "semantic_delta": {
+    "validation_rules": {
+      "predecessor": {
+        "exact_authority_closure_required": true,
+        "exact_universe_scope_required": true,
+        "unresolved_predicate_or_query": "REJECT"
+      },
+      "successor_addition": {
+        "kinds": [
+          "DISTRIBUTION_DIFFERS_FROM_BASELINE",
+          "JOINT_NOT_PRODUCT_OF_MARGINALS",
+          "TARGET_CELL_SUPPORTED"
+        ]
+      },
+      "all_predecessor_rules_preserved": true
+    },
+    "all_other_semantic_fields": "MUST_REMAIN_CANONICALLY_EXACT",
+    "authority_snapshot_refs": "PREDECESSOR_REFS_PLUS_ONLY_R1L_A_PROVEN_PREOUTCOME_PARENT_REFS",
+    "dependency_refs": "MUST_REMAIN_EXACT",
+    "replay_root": "REISSUED_DETERMINISTICALLY_TO_BIND_PREDECESSOR_GRAMMAR_THREE_KINDS_PROVENANCE_PARENTS_AND_R1L_A_RECEIPT"
+  },
+  "activation_inputs": {
+    "r1l_a_provenance_status": "PASS_REQUIRED",
+    "independently_authorized": true,
+    "authority_basis": "INDEPENDENT_PREOUTCOME_AUTHORITY",
+    "empirical_outcomes_consulted": 0,
+    "candidate_outputs_consulted": 0,
+    "candidate_owned_parent_refs": [],
+    "provenance_receipt_ref": "REQUIRED_AT_FANIN",
+    "authority_parent_refs": "ONE_OR_MORE_EXACT_AUTHORITY_REFS_REQUIRED_AT_FANIN"
+  },
+  "successor_identity": {
+    "content_hash": null,
+    "object_id": null,
+    "reason": "INTENTIONALLY_UNMINTED_UNTIL_EXACT_R1L_A_PROVENANCE_PARENTAGE_IS_FANNED_IN"
+  },
+  "prohibitions": [
+    "NO_WILDCARD",
+    "NO_ALL",
+    "NO_FUTURE_VALIDATION_KIND",
+    "NO_ADAPTIVE_EXPANSION",
+    "NO_GRAMMAR_MUTATION",
+    "NO_CANDIDATE_CONSTRUCTOR_MUTATION",
+    "NO_PREDICATE_MUTATION",
+    "NO_QUERY_MUTATION",
+    "NO_OUTCOME_DERIVED_AUTHORITY",
+    "NO_CANDIDATE_OUTPUT_PARENTAGE",
+    "NO_GENERIC_I05_WEAKENING"
+  ],
+  "implementation": {
+    "path": "rawlsing_next/fiabc_lm2_r1l_validation_authority_successor.py",
+    "blob_sha1": "f29e80345afd7e953f8f03fc52350b83b220f350",
+    "constructor": "build_conditional_discovery_successor",
+    "validator": "validate_conditional_discovery_successor",
+    "provenance_validator": "validate_provenance_activation",
+    "lock2_seam": "prepare_lock2_successor",
+    "runtime_package_preparer": "prepare_runtime_package_successor"
+  },
+  "activated": false
+}
