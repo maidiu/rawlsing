@@ -1,0 +1,126 @@
+{
+  "schema": "FIABC_LITS_A_SOURCE_AND_DERIVATIVE_IDENTITY_GRAPH@1.0.0",
+  "graph_holding": "CANONICAL_SOURCE_AND_HISTORICAL_DERIVATIVE_ARE_SEPARATELY_PROVED__THE_REQUIRED_EXTERNAL_PARENTAGE_EDGE_IS_NOT",
+  "nodes": {
+    "canonical_source": {
+      "id": "LITS_I",
+      "sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+      "status": "PROVED"
+    },
+    "historical_first_build_execution": {
+      "commit": "02a7ff71ae65b1aa8c52add0b315244a9eaea9df",
+      "receipt": "WORKER_RETURNS/EE-P2X/01_LITS_I_A_FIRST_BUILD_STAGE.json",
+      "receipt_sha256": "5830aa25eccb7a0b70ee3fb70b2bd5d3a17c047bfd0f52faf19bdcd2f48e3558",
+      "raw_receipt_sha256": "89bd0719f0c546bc3e6e0d3ef7678c01c3fb3ab51cf0c82c84f9a343e08d5337",
+      "status": "CONTEMPORANEOUS_EXECUTION_EVIDENCE_PROVED"
+    },
+    "historical_derivative": {
+      "class": "LITS_A_PRESERVED_R5_CARRIER",
+      "physical_root_id": "e8f37557493b816e4562f5f47df110cf49b429e9ead54e5b624d6638ee07aa3d",
+      "logical_stream_digest": "de8f060aa72eff7e45f8355ed683cb8ee4b6aca7ff255167cb41bcf8e5a7e3d6",
+      "canonical_rows": 34745595,
+      "final_shards": 2121,
+      "status": "HISTORICAL_IDENTITY_PROVED__CURRENT_FILESYSTEM_AVAILABILITY_NOT_BROWSER_PROVED"
+    },
+    "candidate_a_owner": {
+      "commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+      "path": "rawlsing_next/pre553_r5_source_backed_adapter.py",
+      "blob": "d4915e7e6755ba1850756aebff72f982f73a332b",
+      "status": "PROVED"
+    },
+    "qualified_builder": {
+      "identity": "R5CompactLongShardedBuilder",
+      "owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+      "path": "rawlsing_next/pre553_r5_compact_carrier.py",
+      "actual_blob": "92e364b31eaf27be1bca2081eff65f6ffb779c3d",
+      "version": "R5_LONG_SHARDED_TYPED_INCIDENCE_V1",
+      "status": "QUALIFIED_OBJECT_PROVED_LATER__CONTEMPORANEOUS_FIRST_BUILD_USE_NOT_BOUND"
+    },
+    "live_consumer": {
+      "path": "rawlsing_next/ee_p2x_darwin_stage_backend.py",
+      "blob_at_common_base": "1c0778900fef695df063c37959f9db48c9cf505a",
+      "expected_builder_blob_constant": "92e68693d72cbfcdd1c6d16e7f247ca3f60c8c55",
+      "exact_candidate_owner_blob": "d4915e7e6755ba1850756aebff72f982f73a332b",
+      "runtime_catalog": "5983d7d5c579b916ad46c1acf9e41c1c89b516a4e561a99b1d2b477bf5ad2d02",
+      "active_binding": "a5f36a81843fe2ebab0b5cccb369ce76035f842b93e602613b8b9f3a81103308",
+      "runtime_release": "192926fabd9c9c3d40e43b1d7705ca2bcfe7f8d06e286be26d4b886d436df43f",
+      "projection_identity": "84361298ae702786a3fd1044bf619ffa4fe9ed2877040724386951e9c9d27872",
+      "status": "CURRENT_CONSUMER_CONTRACT",
+      "defect": "EXPECTED_BUILDER_BLOB_DIFFERS_FROM_ACTUAL_QUALIFIED_OWNER_BLOB"
+    },
+    "later_replacement_source_receipt": {
+      "receipt_identity": "b0df3042e27fda2d3288d44fdc27d46ed4e4f393301dd781eff43b5a5f13bdf1",
+      "execution": "FIABC-LM1-R1C-20260920T162801Z",
+      "status": "VALID_BUT_LATER_AND_NOT_PARENT_OF_HISTORICAL_DERIVATIVE"
+    },
+    "later_replacement_derivative": {
+      "physical_root_id": "7d85c5e4c3a91c3f6dc8f7896fe487cda116fc8cf67f0ab263a2654ff938afcd",
+      "derivative_receipt_identity": "dbfe6014944a27ae9e31a32b201d9b8f2083111440ad435ea155583b6e4d33a4",
+      "bundle_identity": "8b63de4ea902350ce197bc3ed49b59259bef2ad400c9f3c7db65ac96b015ace7",
+      "status": "VALID_DIFFERENT_DERIVATIVE__NOT_SUBSTITUTABLE"
+    }
+  },
+  "required_edges": [
+    {
+      "from": "canonical_source",
+      "to": "historical_first_build_execution",
+      "relation": "EXACT_SOURCE_OBSERVATION_RECEIPT_CREATED_BEFORE_OR_DURING_BUILD",
+      "status": "PARTIAL_ONLY",
+      "evidence": "committed stage binds canonical SHA and source-open/decode telemetry; no generic/external source receipt identity survives in Git"
+    },
+    {
+      "from": "qualified_builder",
+      "to": "historical_first_build_execution",
+      "relation": "EXACT_BUILDER_BLOB_AND_BUILD_CONFIG_USED_BY_THIS_EXECUTION",
+      "status": "NOT_PROVED",
+      "evidence": "later qualification identifies the authoritative builder object, but the contemporaneous stage receipt never binds its Git blob/config"
+    },
+    {
+      "from": "historical_first_build_execution",
+      "to": "historical_derivative",
+      "relation": "DERIVATION_OPERATION_AND_EXACT_OUTPUT",
+      "status": "PARTIAL_STRONG",
+      "evidence": "fresh absent-target stage and exact root/output telemetry are contemporaneous; no sealed generic derivative receipt closes to a source receipt"
+    },
+    {
+      "from": "canonical_source",
+      "to": "historical_derivative",
+      "relation": "FIABC_DERIVATIVE_PARENTAGE_RECEIPT_CHAIN",
+      "status": "ABSENT",
+      "evidence": "governing R35 chain is not persisted for e8f37557..."
+    },
+    {
+      "from": "historical_derivative",
+      "to": "live_consumer",
+      "relation": "CURRENTNESS_AND_OWNERSHIP_ADMISSION",
+      "status": "NOT_PROVED",
+      "evidence": "exact current filesystem root and historical external bundle are not browser-verifiable; live builder pin also disagrees with actual qualified builder blob"
+    }
+  ],
+  "forbidden_edges": [
+    {
+      "from": "historical_derivative",
+      "to": "canonical_source",
+      "attempted_relation": "INFER_PARENTAGE_FROM_EMBEDDED_OR_ASSERTED_SOURCE_SHA",
+      "status": "FORBIDDEN_BY_R35"
+    },
+    {
+      "from": "later_replacement_derivative",
+      "to": "historical_derivative",
+      "attempted_relation": "BORROW_LATER_R35_BUNDLE_FOR_OLD_ROOT",
+      "status": "FORBIDDEN__DIFFERENT_DERIVATIVE_IDENTITY"
+    },
+    {
+      "from": "r10l_same_root_reproduction",
+      "to": "historical_first_build_execution",
+      "attempted_relation": "DETERMINISM_IMPLIES_HISTORICAL_PARENTAGE",
+      "status": "FORBIDDEN__CORROBORATION_NOT_ANCESTRY"
+    }
+  ],
+  "current_exact_producer_pin_conflict": {
+    "qualified_builder_blob": "92e364b31eaf27be1bca2081eff65f6ffb779c3d",
+    "live_backend_expected_blob": "92e68693d72cbfcdd1c6d16e7f247ca3f60c8c55",
+    "prior_independent_holding": "FIABC-LM1-R1A found the live expected value stale/malformed and found no accepted succession from the qualified object",
+    "impact": "A newly recovered historical receipt cannot pass the current live consumer if its exact producer is the qualified 92e364... object until the consumer pin is separately reconciled under existing authority."
+  }
+}
