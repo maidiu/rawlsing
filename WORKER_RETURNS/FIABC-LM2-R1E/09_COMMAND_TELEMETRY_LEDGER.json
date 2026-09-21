@@ -16,8 +16,9 @@
   "statements": [
     "Official branch was verified at exact dispatched base before fast-forward.",
     "Staging PR 423 was closed as superseded.",
-    "Source-free CI attempts were launched; recorded attempts before the pandas dependency fix did not execute substantive tests.",
-    "No success terminal is claimed."
+    "Authoritative exact-head source-free CI run 35566968890 passed 50/50 tests and emitted deterministic identities.",
+    "No WVS7 source bytes were opened and no prohibited execution occurred.",
+    "No success terminal is claimed because real Gate 4 and Gate 5 remain blocked on the absent accepted frozen Q291 response carrier."
   ],
   "github_actions_source_free_run_ids": [
     35566391648,
@@ -26,6 +27,15 @@
     35566624159
   ],
   "github_actions_failed_rerun_attempts": 1,
-  "substantive_test_runs_completed": 0,
-  "latest_recorded_pre_dependency_failure": "PYTEST_COLLECTION__PANDAS_MISSING__NO_SUBSTANTIVE_TESTS_EXECUTED"
+  "substantive_test_runs_completed": 1,
+  "latest_recorded_pre_dependency_failure": "SUPERSEDED_BY_AUTHORITATIVE_GREEN_RUN",
+  "authoritative_source_free_run": {
+    "run_id": 35566968890,
+    "event": "push",
+    "verified_head_sha": "f0135457f5e63e234415107c5462a6ae6731354f",
+    "conclusion": "success",
+    "tests_passed": 50,
+    "tests_failed": 0,
+    "identity_emitter": "success"
+  }
 }
