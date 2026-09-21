@@ -17,7 +17,8 @@ from rawlsing_next.pre553_empirical_objects import (
 )
 
 CONTRACT = "FIABC_LM2_R1E_WVS7_P2_RESPONSE_MAPPING_AUTHORITY@1.0.0"
-GOVERNING_HQ_TIP = "103fe63897311f2ce8cf125639d416a452209d2b"
+GOVERNING_HQ_SEAL = "04b43460c4ed13e610f493188fccfa265a02a91f"
+COMMISSION_COMMIT = "da233da3176db69607a0d7cf5db0413e8551e5f4"
 SOURCE_SHA256 = "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
 TARGET_USE = "EXACT_FROZEN_WVS7_P2_PROGRAM_ONLY"
 AUTHORITY_ID = "FIABC-LM2-R1E-WVS7-P2-RESPONSE-MAPPING"
@@ -179,7 +180,8 @@ def mapping_authority_snapshot() -> AuthoritySnapshot:
         "contract": CONTRACT,
         "authority_ref": MAPPING_AUTHORITY_REF.as_dict(),
         "material_hash": MAPPING_AUTHORITY_HASH,
-        "governing_hq_tip": GOVERNING_HQ_TIP,
+        "governing_hq_seal": GOVERNING_HQ_SEAL,
+        "commission_commit": COMMISSION_COMMIT,
     }
     replay_hash = semantic_hash(replay_material)
     replay_ref = ExactRef(
@@ -217,8 +219,9 @@ def mapping_authority_snapshot() -> AuthoritySnapshot:
             "native_substantive_values": [1, 2, 3, 4, 5],
         },
         effective_time_or_interval={
-            "governing_hq_tip": GOVERNING_HQ_TIP,
-            "commission": "FIABC-LM2-R1E-B",
+            "governing_hq_seal": GOVERNING_HQ_SEAL,
+            "commission_commit": COMMISSION_COMMIT,
+            "commission": "FIABC-LM2-R1E",
         },
         parent_authority_refs=(SOURCE_AUTH_REF, PREDICATE_GRAMMAR_AUTH_REF),
         negative_limit_refs=NEGATIVE_LIMIT_REFS,
@@ -250,7 +253,9 @@ __all__ = [
     "AUTHORITY_ID",
     "AUTHORITY_KIND",
     "AUTHORITY_VERSION",
+    "COMMISSION_COMMIT",
     "CONTRACT",
+    "GOVERNING_HQ_SEAL",
     "GOVERNED_OPERATION",
     "MAPPING_AUTHORITY_HASH",
     "MAPPING_AUTHORITY_MATERIAL",
