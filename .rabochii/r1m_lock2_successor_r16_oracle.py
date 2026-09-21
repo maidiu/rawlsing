@@ -201,6 +201,18 @@ telemetry: dict[str, Any] = {
         "generic_i05_modified": False,
         "candidate_a_b_c_processes_started": 0,
         "candidate_outputs_seen": 0,
+    }, {
+        "run_id": 35634617786,
+        "job_id": 106448861255,
+        "head_sha": "67fee929d987f97f15ebd0722afee58c40b553a2",
+        "requalification": "37 passed in 36.86s",
+        "r16_generic_i05": "PASS",
+        "independent_second_i05_replay": "PASS",
+        "oracle_independence_proof": "PASS_REACHED_GATE_7",
+        "failure": "POST_ORACLE_FINAL_LEDGER_CHECK_USED_BRITTLE_EXACT_CSV_SUBSTRING",
+        "generic_i05_modified": False,
+        "candidate_a_b_c_processes_started": 0,
+        "candidate_outputs_seen": 0,
     }],
     "github_actions_run_id": os.environ.get("GITHUB_RUN_ID"),
     "github_actions_run_attempt": os.environ.get("GITHUB_RUN_ATTEMPT"),
@@ -228,6 +240,16 @@ b_matrix_text = git_show_text(B_TIP, B_MATRIX_PATH)
 b_matrix = list(csv.DictReader(io.StringIO(b_matrix_text)))
 c_return = git_show_json(C_TIP, C_RETURN_PATH)
 c_hostile = git_show_json(C_TIP, C_HOSTILE_PATH)
+with R1K_LEDGER.open(encoding="utf-8") as handle:
+    predecessor_ledger_rows = list(csv.DictReader(handle))
+require(len(predecessor_ledger_rows) == 18, "R1K predecessor ledger cardinality drift")
+predecessor_r16 = next((row for row in predecessor_ledger_rows if row.get("case") == "R16"), None)
+require(predecessor_r16 is not None, "R1K predecessor ledger lacks R16 row")
+require(predecessor_r16.get("final_status") == "BLOCKED", "R1K predecessor R16 was not BLOCKED")
+require(
+    "validation_rules.kinds" in predecessor_r16.get("evidence", ""),
+    "R1K predecessor R16 blocker evidence no longer names validation_rules.kinds",
+)
 
 require(a_return.get("status") == "PASS", "R1L-A is not PASS")
 require(a_return.get("terminal") == A_TERMINAL, "R1L-A terminal drift")
@@ -871,9 +893,9 @@ r16_receipt["deterministic_second_replay"] = {
 telemetry["stages"].append({"stage": "GATE_6_FRESH_ORACLE_AND_SECOND_REPLAY", "status": "PASS", "seconds": time.perf_counter() - gate_start, "oracle_identity": oracle_identity, "truth_payload_identity": truth_identity_1})
 
 # Gate 7: R01-R18 all-green ledger.
+# The predecessor R16 blocker row was parsed and fail-closed in Gate 1, before
+# any expensive R16/oracle execution.
 gate_start = time.perf_counter()
-previous_ledger = R1K_LEDGER.read_text(encoding="utf-8")
-require('"R16","BLOCKED__DISCOVERY_AUTHORITY_VALIDATION_RULE_KINDS_ABSENT"' in previous_ledger, "R1K predecessor ledger does not expose expected R16 blocker")
 ledger_rows = []
 for n in range(1, 19):
     case = f"R{n:02d}"
