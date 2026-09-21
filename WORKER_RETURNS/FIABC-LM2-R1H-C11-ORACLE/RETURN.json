@@ -1,0 +1,49 @@
+{
+  "schema": "FIABC_LM2_R1H_RETURN@1.0.0",
+  "worker": "FIABC-LM2-R1H",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-premain-fiabc-lm2-r1h-common-c11-oracle-browser-r1",
+  "exact_base": "dc8047580ca5039f6678afd5effc506c30bbf54d",
+  "implementation_and_return_tip_before_RETURN_json": "0915b167f8c7e39adeb4b8de352fa38b7eff609e",
+  "status": "BLOCKED",
+  "terminal": "BLOCKED__FIABC_LM2_R1H__R15_REAL_MATERIAL_COMMON_C11_UNBOUND_RESPONSE_VALUE_STATE__R16_NOT_EXECUTED",
+  "carrier_preflight": "PASS__EXACT_PERSISTED_FROZEN_Q291_CARRIER",
+  "r15": "FAIL_CLOSED__UNBOUND_RESPONSE_VALUE_STATE",
+  "r16": "NOT_EXECUTED__DEPENDENCY_R15_FAILED",
+  "oracle_materialized": false,
+  "oracle_identity_frozen": false,
+  "candidate_outputs_seen": 0,
+  "candidate_processes_started": [],
+  "i03_executed": false,
+  "i05_executed": false,
+  "measured_p2x_executed": false,
+  "new_source_read": false,
+  "wvs7_sav_zip_opened": false,
+  "semantic_patch_applied": false,
+  "authority_broadened": false,
+  "carrier_mutated": false,
+  "github_actions": {
+    "run_id": 35572953550,
+    "job_id": 106248324441,
+    "evidence_execution_sha": "2513c182d4fdc4f4cadb0e5479706f412bdb7e52",
+    "pr_synthetic_sha": "8be0a5a9fcd7080df3315644e0301c32b6931f41",
+    "pr_number": 425,
+    "pr_state": "closed_unmerged"
+  },
+  "exact_failure": {
+    "exception_type": "rawlsing_next.pre553_source_backed_c11_facade.SourceBackedC11FacadeError",
+    "message": "unbound response value/state; no label/frequency/missingness inference",
+    "location": "rawlsing_next/pre553_source_backed_c11_facade.py:537"
+  },
+  "return_files": [
+    "WORKER_RETURNS/FIABC-LM2-R1H-C11-ORACLE/00_RETURN.md",
+    "WORKER_RETURNS/FIABC-LM2-R1H-C11-ORACLE/01_CARRIER_PREFLIGHT_RECEIPT.json",
+    "WORKER_RETURNS/FIABC-LM2-R1H-C11-ORACLE/02_R15_REAL_MATERIAL_C11_RECEIPT.json",
+    "WORKER_RETURNS/FIABC-LM2-R1H-C11-ORACLE/03_R16_FRESH_ORACLE_RECEIPT.json",
+    "WORKER_RETURNS/FIABC-LM2-R1H-C11-ORACLE/04_R1C_R01_R18_REGRESSION_COURT_LEDGER.csv",
+    "WORKER_RETURNS/FIABC-LM2-R1H-C11-ORACLE/05_FROZEN_OBJECT_CONSERVATION.json",
+    "WORKER_RETURNS/FIABC-LM2-R1H-C11-ORACLE/06_COMMAND_TELEMETRY_LEDGER.json",
+    "WORKER_RETURNS/FIABC-LM2-R1H-C11-ORACLE/RETURN.json"
+  ],
+  "hq_action": "ADJUDICATE_REAL_MATERIAL_RESPONSE_BINDING_CONTRADICTION_BEFORE_R15_CAN_RETRY"
+}
