@@ -113,10 +113,10 @@ RESPONSE_BINDING_MATERIAL = {
         {"name": "Q291G5", "ordinal": 388},
         {"name": "Q291P5", "ordinal": 394},
     ],
-    "native_codes": list((*SUBSTANTIVE_CODES, *SPECIAL_RESPONSE_STATES.keys())),
+    "native_codes": [1, 2, 3, 4, 5, -5, -4, -2, -1],
     "authorized_decoder_representations": [
         {"native_code": code, "physical_r5_token": dict(REPRESENTATION_R5_TOKENS[code])}
-        for code in (*SUBSTANTIVE_CODES, *SPECIAL_RESPONSE_STATES.keys())
+        for code in (1, 2, 3, 4, 5, -5, -4, -2, -1)
     ],
     "representation_authority_ref": REPRESENTATION_AUTHORITY_REF.as_dict(),
     "source_response_semantics_ref": RESPONSE_SEMANTICS_REF.as_dict(),
