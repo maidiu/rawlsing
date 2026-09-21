@@ -1,0 +1,58 @@
+{
+  "schema": "FIABC_FINAL_COURT_LITS_WORKLOAD_CONSERVATION@1.0.0",
+  "source": {
+    "id": "LITS_I",
+    "sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09"
+  },
+  "frozen_workload": {
+    "learned_candidates": 50,
+    "query_roles": 77,
+    "terminal_counts": {
+      "EVALUATED_SUPPORTED": 49,
+      "EVALUATED_VALID_EMPTY": 1
+    },
+    "expected_product_sha256": "47d36b1459c2458c480b58631d2c78af68be4dde44015a9220b09177b1eeb28d",
+    "expected_semantic_replay_hash": "301735d4563314a0d7c133fa1afbb0ca57679b3fad887c66e77a909494779eb5",
+    "projection_cache_identity": "84361298ae702786a3fd1044bf619ffa4fe9ed2877040724386951e9c9d27872"
+  },
+  "conservation": {
+    "candidate_count": "FROZEN_AND_ALREADY_QUALIFIED",
+    "query_role_count": "FROZEN_AND_ALREADY_QUALIFIED",
+    "typed_terminal_counts": "FROZEN_AND_ALREADY_QUALIFIED",
+    "product_identity": "FROZEN_AND_ALREADY_QUALIFIED",
+    "semantic_replay_identity": "FROZEN_AND_ALREADY_QUALIFIED"
+  },
+  "preserved_final_p2_work": {
+    "candidate_A_first_build": {
+      "path": "WORKER_RETURNS/EE-P2X/01_LITS_I_A_FIRST_BUILD_STAGE.json",
+      "status": "PASS__FRESH_ABSENT_TARGET_R5_FIRST_BUILD_COMPLETE__FOLLOW_ON_COURT_REQUIRED",
+      "runtime": "final P2 execution binding uses CPython 3.11.3 / pyreadstat 1.3.6 / pyarrow 25.0.1",
+      "physical_root_id": "e8f37557493b816e4562f5f47df110cf49b429e9ead54e5b624d6638ee07aa3d",
+      "logical_stream_digest": "de8f060aa72eff7e45f8355ed683cb8ee4b6aca7ff255167cb41bcf8e5a7e3d6",
+      "steady_state_bytes": 224173803,
+      "wall_ns": 7397608496291,
+      "source_open_count": 1,
+      "source_decode_count": 1,
+      "disposition": "DO_NOT_REPEAT_BY_DEFAULT__ADMIT_NUMERIC_CREDIT_ONLY_AFTER_EXACT_CURRENT_PARENTAGE_AND_T4_FIELDWISE_COMPATIBILITY"
+    },
+    "candidate_B_cacheless_C11": {
+      "path": "WORKER_RETURNS/EE-P2X/03_LITS_I_B_CACHELESS_C11_STAGE.json",
+      "status": "PASS__FRESH_EXACT_CACHELESS_ROUTE_B_C11_SESSION_COMPLETE__FOLLOW_ON_COURT_REQUIRED",
+      "retained_transformed_empirical_payload_bytes": 0,
+      "telemetry": "NOT_CAPTURED__NO_NUMERIC_SUBSTITUTE",
+      "disposition": "PRESERVE_PREPARATORY_SEMANTIC_MILESTONE__CURRENT_B_IMPLEMENTATION_REQUALIFICATION_REQUIRED"
+    }
+  },
+  "remaining_lits_pre_admission_work": [
+    "Supply the actual governed generic R35 parentage bundle and independently pinned derivative-receipt identity for the preserved LiTS-A R5 first-build root.",
+    "Close current LiTS A/B/C R35 physical-equivalence against one candidate-neutral expectation under EC01,EC02,EC05,EC06,EC09,EC12.",
+    "Bind/freeze the current LiTS candidate-neutral oracle and exact current-head I07 control receipt.",
+    "Requalify B/C common-facade consumption after the post-QF1 facade changes."
+  ],
+  "prohibitions": [
+    "NO_REPEAT_OF_QUALIFYING_A_FIRST_BUILD_WITHOUT_A_PROVED_CURRENTNESS_FAILURE",
+    "NO_INVENTED_B_NUMERIC_TELEMETRY",
+    "NO_CACC3",
+    "NO_CANDIDATE_B_IDENTITY_SUBSTITUTION_FOR_C"
+  ]
+}
