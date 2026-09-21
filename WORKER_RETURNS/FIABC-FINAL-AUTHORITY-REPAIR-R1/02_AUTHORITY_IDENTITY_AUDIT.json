@@ -1,0 +1,86 @@
+{
+  "schema": "FIABC_FINAL_AUTHORITY_REPAIR_IDENTITY_AUDIT@1.0.0",
+  "exact_base": "4c05a5289d0dd2fb6d475e90a039cce1360b38e3",
+  "commission_commit": "757147b06291a79ead1a3df67cebc361848e8f28",
+  "repair_commit": "2c4695e899c505a49ab71efc5fd25f8caf4be178",
+  "status": "PASS__B01_B02_B04_CLOSED",
+  "b01": {
+    "telemetry_definition_blob_unchanged": "3d57f35e20816f096bb37a56e557267d618abb9c",
+    "frozen_dispositive_metric_count_before": 29,
+    "frozen_dispositive_metric_count_after": 35,
+    "metric_definition_count": 35,
+    "exact_set_identity_required": true,
+    "added": [
+      "source_reread_count",
+      "source_release_invalidation_wall_ns",
+      "source_release_invalidation_bytes_rewritten",
+      "semantic_authority_invalidation_wall_ns",
+      "semantic_authority_invalidation_bytes_rewritten",
+      "fresh_process_replay_cpu_ns"
+    ],
+    "lifecycle_bindings": {
+      "source_release_invalidation_wall_ns": "S10_SOURCE_RELEASE_INVALIDATION",
+      "source_release_invalidation_bytes_rewritten": "S10_SOURCE_RELEASE_INVALIDATION",
+      "semantic_authority_invalidation_wall_ns": "S11_SEMANTIC_AUTHORITY_INVALIDATION",
+      "semantic_authority_invalidation_bytes_rewritten": "S11_SEMANTIC_AUTHORITY_INVALIDATION",
+      "fresh_process_replay_cpu_ns": "S15_FRESH_PROCESS_REPLAY"
+    },
+    "candidate_a_delete_rebuild_typed_na_unchanged": true
+  },
+  "b02": {
+    "current": {
+      "discovery_authority": "3aee36014e4c3b39dd36bfef46006d8e9058a93aa5eb53bd81aef627883c8873",
+      "lock2": "5e2a53f0e5f3b6ddd8db53b724b352ca41fe1a49408483fbf83dfdaa96283139",
+      "lock2_replay": "9b5ac1726a03798d07e965396192d1bfefbee6d2188bad5a3acfb467ef063d4a"
+    },
+    "predecessor_historical_only": {
+      "discovery_authority": "24591678ebf50ac153fabdbbcd90d6ce818c5a89a5307c395c48a04fe5a8b1ab",
+      "lock2": "8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188",
+      "lock2_replay": "b1aa437406d94b1f81f0ef3c81b885a2fd542749d2e5441747897c016a5dd490"
+    },
+    "t5_active_constitution_source": "WVS7_SUCCESSOR_* constants",
+    "r1m_oracle_truth_blob_unchanged": "9eecf801afa2c9f3d9140b4e5fb79fb14fc1fe20",
+    "runtime_package_blob_unchanged": "f016cdfdfd51e7973ab10b2196fe27ba5c90b3cd",
+    "source_identity_changed": false,
+    "risk_set_changed": false,
+    "measure_basis_changed": false,
+    "candidate_grammar_changed": false,
+    "candidate_hash_stream_changed": false,
+    "oracle_truth_payload_changed": false
+  },
+  "b04": {
+    "historical_expectations_lock2_consumed_by_current_failure_serializer": false,
+    "current_authority_source": "rawlsing_next/runtime/ee_p2x/02_WVS7_P2F2_RUNTIME_PACKAGE.json",
+    "current_authority_fail_closed_fields": [
+      "lock2",
+      "replay",
+      "discovery_authority_hash"
+    ],
+    "wvs_failure_receipt_fields": [
+      "lock2_hash",
+      "lock2_replay_hash",
+      "discovery_authority"
+    ],
+    "lits_failure_preserves": [
+      "hq_handoff_commit",
+      "lock1_manifest_blob",
+      "candidate_owner_blob",
+      "execution_seam_blob"
+    ],
+    "manifest_derived_cell_order_preserved": true,
+    "wvs7_c_sequence_index_zero_based": 5
+  },
+  "unchanged_governance_blobs": {
+    "six_cell_execution_manifest": "49692c1c8527680c97af073039b36125edd7e56d",
+    "current_six_cell_court_contract": "839141fa41dde455b59501380f90e81f2b6f3ea3"
+  },
+  "execution": {
+    "browser_github_only": true,
+    "local_runtime_used": false,
+    "raw_source_bytes_opened": false,
+    "candidates_run": false,
+    "measured_p2x_run": false,
+    "github_actions_triggered": false,
+    "tests_executed": false
+  }
+}
