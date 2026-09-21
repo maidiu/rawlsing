@@ -1,6 +1,6 @@
 {
   "schema": "FIABC_LM2_R1E_AUTHORITY_PARENT_PROVENANCE_LEDGER@1.0.0",
-  "status": "PREPARED",
+  "status": "SOURCE_FREE_CI_VERIFIED",
   "immutable_parents": {
     "source_semantics_authority_hash": "c7336ce479b8625b71e33743a05e43525c387dd50e4be1bb7af313667f9c341f",
     "predicate_grammar_authority_hash": "92fc0bf93937b8e38cd181df7915c8786abdc16465833d731daa90ca1218dec5",
@@ -88,5 +88,16 @@
     "response_value_refs": 10,
     "predicate_refs": 10
   },
-  "no_candidate_parentage": true
+  "no_candidate_parentage": true,
+  "mapping_authority_ref": {
+    "authority_id": "FIABC-LM2-R1E-WVS7-P2-RESPONSE-MAPPING",
+    "authority_version": "1.0.0",
+    "authority_content_hash": "76e63b2af0bf0b9a53319a74d2ded099c9ac175de99935d0741ac52f68086670"
+  },
+  "mapping_authority_snapshot_ref": {
+    "kind": "AuthoritySnapshot@1.0.0",
+    "object_id": "urn:rawlsing:pre553:AuthoritySnapshot:sha256:0e98540cf6c4a1fa993cfc070a701368b3a7bfa99414d84e4119c2017dd67970",
+    "content_hash": "0e98540cf6c4a1fa993cfc070a701368b3a7bfa99414d84e4119c2017dd67970"
+  },
+  "verification_workflow_run_id": 35566968890
 }
