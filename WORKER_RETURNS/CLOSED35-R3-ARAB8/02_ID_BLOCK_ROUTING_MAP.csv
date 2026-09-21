@@ -1,0 +1,19 @@
+surface,source_entity,physical_or_documentary_state,semantic_state,projection_rule,forbidden_inference,authority_grain
+SOURCE_ROOT,Arab Barometer Wave 8.sav,SHA256=a5e83a953f03dd890e076a51da473051f1cfd1ca2e8ab93c2172eeb2517af998,EXACT_SOURCE_BOUND,Require exact canonical root,Alternate same-wave source substitution,S35 canonical registry
+REPLAY_IDENTITY,SOURCE_ROW,SOURCE_SHA256+ROW_ORDINAL,HARD_REPLAY_IDENTITY,Always preserve physical row ordinal,ID or COUNTRY+ID promoted to replay key,Authority71/72 + S35
+ID,ID,Respondent ID number,SOURCE_LOCAL_DOCUMENTARY_CONCEPT,Preserve exact source carrier,Documentary ID label treated as uniqueness authority,Wave 8 questionnaire p5
+ID_ZERO,ID,ORDINARY_STORED_VALUE raw=0,NO_HARD_REPLAY_AUTHORITY,Preserve every repeated zero row,Zero treated as missing identity / row deleted,Authority71 fixtures AB8-IDZERO-001/002 + AB8-G01
+BLOCK_ID_BLANK,BLOCK_ID,ORDINARY_STORED_VALUE raw empty string,BOUNDED_UNKNOWN,Preserve exact ordinary empty string,Blank coerced to SYSTEM_MISSING/null/not-asked,Authority71 AB8-BLOCK-BLANK-001 + AB8-G02
+BLOCK_ID_SCOPE,BLOCK_ID,source string carrier,BOUNDED_UNKNOWN,Preserve carrier without design inference,Carrier name treated as governed block-design semantics,Authority71 AB8-G02
+Q1,Q1,Governorate first administrative division,SOURCE_NATIVE_DOCUMENTARY_ROLE,Preserve Q1 as distinct variable,Geography semantics copied to STRATUM,Wave 8 questionnaire p5
+STRATUM,STRATUM,source design-like carrier,BOUNDED_UNKNOWN,Preserve distinct variable,Field name treated as closed stratum design semantics,Authority71 AB8-G03
+Q1_STRATUM_EQUALITY,Q1 + STRATUM,accepted vectors equal across 15627 rows,NO_ALIAS_AUTHORITY,Preserve two variable identities,Equal vectors treated as semantic alias,Authority71 AB8-Q1-STRATUM-001 + AB8-G03
+Q1A_PAL,Q1A_PAL,COUNTRY==15 documentary gate,DOCUMENTARY_ROUTING_RESOLVED,Apply only exact Wave 8 documentary condition,Missingness/observed frequency used as route authority,Wave 8 questionnaire p5
+Q622C_IRQ,Q622C_IRQ_*,COUNTRY==7 + SPLIT A; SELECT ALL THAT APPLY,DOCUMENTARY_ROUTING_AND_TOPOLOGY_RESOLVED,Preserve member variables + exact documentary gate,Module flattened / route inferred from missingness,Wave 8 questionnaire p47
+Q622C_MR_STATE,Q622C_IRQ_*,native SPSS MR metadata absent,PHYSICAL_METADATA_STATE,Preserve absence of native MR metadata,Documentary select-all topology converted into invented native MR set,Authority71 AB8-Q622C-TOPO-001 + AB8-MR-NEG-001
+OTHER_MODULE_ROUTING,country/module carriers,physical presence/missingness,BOUNDED_UNKNOWN until exact documentary join,Preserve carrier and fail closed on unjoined applicability,Missingness alone used as routing authority,Authority71 AB8-G04
+WT,WT,source weight-like carrier,BOUNDED_UNKNOWN_ESTIMAND,Preserve carrier without default use,Name/presence/completeness treated as estimand/default weight,Authority71 AB8-G03
+PSU,PSU,source-native sampling variable,SOURCE_NATIVE_CARRIER_ROLE__ANALYTIC_USE_BOUNDED_UNKNOWN,Preserve carrier and documentary sampling role,Sampling label inflated into full clustering/estimand authority,Wave 8 questionnaire p5 + AB8-G03
+STRATUM_DESIGN,STRATUM,source design-like carrier,BOUNDED_UNKNOWN_DESIGN_ROLE,Preserve independently from Q1,Q1 equality/name treated as design authority,Authority71 AB8-G03
+CROSS_WAVE,W1/W2/W5 semantic material,neighbor-wave evidence,NO_WAVE8_SEMANTIC_AUTHORITY,Reject import into Wave 8 semantic owner,Recurring labels/codes treated as continuity authority,Authority71 AB8-G05 + family drift law
+ABC_OWNER,A/B/C,ARAB8_SEMANTIC_OWNER_V1,CANDIDATE_NEUTRAL,All candidates share one realization identity,Candidate-specific ID/block/routing/design semantics,R3 realization contract
