@@ -1,0 +1,27 @@
+name: FIABC LiTS-A absent-root current court
+
+on:
+  push:
+    branches:
+      - agent/rabochii-premain-fiabc-lits-a-absent-root-current-court-r1
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-free-static-court:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install source-free test dependency
+        run: python -m pip install pytest
+      - name: Run source-free current-control and parentage tests
+        run: |
+          pytest -q \
+            rawlsing_next/tests/test_fiabc_lits_a_absent_root_current_court.py \
+            rawlsing_next/tests/test_fiabc_t2_six_cell_execution_binding.py \
+            tests/test_fiabc_derivative_parentage.py
