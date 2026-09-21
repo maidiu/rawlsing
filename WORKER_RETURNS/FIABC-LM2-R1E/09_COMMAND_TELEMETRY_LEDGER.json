@@ -11,11 +11,21 @@
   "i03_runs": 0,
   "i05_runs": 0,
   "candidate_a_b_c_runs": 0,
-  "github_actions_runs_observed_for_prepared_court": 0,
+  "github_actions_runs_observed_for_prepared_court": 4,
   "local_test_runs": 0,
   "statements": [
     "Official branch was verified at exact dispatched base before fast-forward.",
     "Staging PR 423 was closed as superseded.",
+    "Source-free CI attempts were launched; recorded attempts before the pandas dependency fix did not execute substantive tests.",
     "No success terminal is claimed."
-  ]
+  ],
+  "github_actions_source_free_run_ids": [
+    35566391648,
+    35566544404,
+    35566563966,
+    35566624159
+  ],
+  "github_actions_failed_rerun_attempts": 1,
+  "substantive_test_runs_completed": 0,
+  "latest_recorded_pre_dependency_failure": "PYTEST_COLLECTION__PANDAS_MISSING__NO_SUBSTANTIVE_TESTS_EXECUTED"
 }

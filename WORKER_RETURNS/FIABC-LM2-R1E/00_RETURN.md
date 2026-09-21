@@ -25,6 +25,6 @@ The exact missing input contract is `10_REQUIRED_UPSTREAM_RESPONSE_CARRIER_CONTR
 
 ## Execution truth
 
-No WVS7 source bytes were opened. No real-source processing ran. No measured P2X ran. I03/I05 did not run. Candidate A/B/C did not start. GitHub Actions did not launch for the prepared source-free workflow, so the regression fixtures are not reported as PASS.
+No WVS7 source bytes were opened. No real-source processing ran. No measured P2X ran. I03/I05 did not run. Candidate A/B/C did not start. Source-free GitHub Actions were launched, but the recorded pre-dependency attempts stopped during pytest collection (first a stale test path, then missing pandas) before substantive tests executed. Those attempts are not reported as PASS.
 
 PR: https://github.com/maidiu/rawlsing/pull/424
