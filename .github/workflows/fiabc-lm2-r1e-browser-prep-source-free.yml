@@ -16,7 +16,7 @@ jobs:
         with:
           python-version: "3.11"
       - name: Install source-free test dependency
-        run: python -m pip install --disable-pip-version-check pytest
+        run: python -m pip install --disable-pip-version-check pytest pandas
       - name: Run R1E source-free recovery court
         env:
           PYTHONPATH: .
