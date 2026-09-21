@@ -42,6 +42,14 @@ from rawlsing_next.pre553_carrier_execution import (
     bind_governed_c11_projection as _bind_governed_c11_projection,
     governed_projection_binding_receipt,
 )
+from rawlsing_next.fiabc_lm2_r1e_wvs7_mapping_authority import (
+    MAPPING_AUTHORITY_MATERIAL,
+    MAPPING_AUTHORITY_REF,
+    MAPPING_ROWS,
+    PREDICATE_GRAMMAR_AUTH_REF,
+    TARGET_USE as MAPPING_TARGET_USE,
+    mapping_authority_snapshot,
+)
 
 CONTRACT = "EE_P2R6S_WVS7_FROZEN_P2_PROJECTION_MATERIALIZER@1.0.0"
 SOURCE_SHA256 = "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
@@ -253,6 +261,8 @@ PROJECTION_AUTHORITY_MATERIAL = {
     "respondent_identity_law": "SOURCE_ROW_IDENTITY__EXACT_SAME_WVS7_RECORD",
     "response_topology": "SCALAR_SINGULAR",
     "response_state_semantics_ref": RESPONSE_SEMANTICS_REF.as_dict(),
+    "response_mapping_authority_ref": MAPPING_AUTHORITY_REF.as_dict(),
+    "response_mapping_target_use": MAPPING_TARGET_USE,
     "coordinate_slot_identity_ref": COORDINATE_SLOT_IDENTITY_REF.as_dict(),
     "routing_rule_ref": ROUTING_RULE_REF.as_dict(),
     "risk_set_ref": RISK_SET_REF.as_dict(),
@@ -413,6 +423,28 @@ def adopted_p2f2_projection_authorities() -> tuple[AuthoritySnapshot, ...]:
             scope={"source_universe_refs": "EXPLICIT_UNRESTRICTED"},
             expected_snapshot_hash="5a9482c7115b4178d9f76b6a77d6e93d77d8cdedc0bf1483c65d5748418ec99b",
         ),
+        _old_authority(
+            authority_id=PREDICATE_GRAMMAR_AUTH_REF.authority_id,
+            authority_content_hash=PREDICATE_GRAMMAR_AUTH_REF.authority_content_hash,
+            authority_kind="PREDICATE_GRAMMAR",
+            operation="PRE553_I03_EXACT_EMPIRICAL_QUERY@1.0.0",
+            families=(
+                "EmpiricalFact@1.0.0",
+                "EmpiricalPredicate@1.0.0",
+                "EmpiricalQuerySpec@1.0.0",
+            ),
+            replay_root=_root(
+                "EE_P2F2_AUTHORITY_REPLAY_ROOT@1.0.0",
+                "ee-p2f2-wvs7-pre553-i03-predicate-grammar",
+                "4bc24e7d5c284ab1f3904ae166d732b86e4c65d8586572bae903c92157b97c7c",
+            ),
+            interpretation_fingerprint="64f7f65c52a0fc4532a0c53b0e4feea98391b700dd4eba9c61ae87011263ee15",
+            scope={
+                "predicate_or_risk_set_refs": [RISK_SET_REF.as_dict()],
+                "source_universe_refs": [UNIVERSE_REF.as_dict()],
+            },
+            expected_snapshot_hash="1ad09e9de4bb0e4e5608092dd907a3a9f4e7d8e3c5b6adf9a0548f82da8ef2a4",
+        ),
     )
 
 
@@ -465,7 +497,8 @@ def _new_authority(
     )
 
 
-def r6s_authorities() -> tuple[AuthoritySnapshot, AuthoritySnapshot]:
+def r6s_authorities() -> tuple[AuthoritySnapshot, AuthoritySnapshot, AuthoritySnapshot]:
+    mapping = mapping_authority_snapshot()
     coordinate = _new_authority(
         authority_ref=COORDINATE_AUTH_REF,
         authority_kind="COORDINATE_SEMANTICS",
@@ -484,9 +517,9 @@ def r6s_authorities() -> tuple[AuthoritySnapshot, AuthoritySnapshot]:
             "RoutingEligibilityFact@1.0.0",
         ),
         material=PROJECTION_AUTHORITY_MATERIAL,
-        parents=(SOURCE_AUTH_REF, ROUTING_AUTH_REF, COORDINATE_AUTH_REF, REPLAY_AUTH_REF),
+        parents=(SOURCE_AUTH_REF, ROUTING_AUTH_REF, COORDINATE_AUTH_REF, REPLAY_AUTH_REF, MAPPING_AUTHORITY_REF),
     )
-    return coordinate, projection
+    return mapping, coordinate, projection
 
 
 def adopted_universe() -> EmpiricalUniverse:
@@ -605,7 +638,7 @@ def _response_value_rules(variable: PhysicalVariable) -> tuple[ResponseValueRule
             response_state="SUBSTANTIVE_RESPONSE",
             occurrences=(scalar,),
             canonical_value=str(code),
-            transform_authority_ref=SOURCE_AUTH_REF,
+            transform_authority_ref=MAPPING_AUTHORITY_REF,
             extra_authority_refs=(SOURCE_AUTH_REF,),
         ))
     for code, response_state in SPECIAL_RESPONSE_STATES.items():
@@ -769,8 +802,8 @@ def build_projection_fields(
 
     universe = adopted_universe()
     old_authorities = adopted_p2f2_projection_authorities()
-    coordinate_auth, projection_auth = r6s_authorities()
-    authorities = tuple(sorted((*old_authorities, coordinate_auth, projection_auth), key=lambda x: x.authority_ref.key))
+    mapping_auth, coordinate_auth, projection_auth = r6s_authorities()
+    authorities = tuple(sorted((*old_authorities, mapping_auth, coordinate_auth, projection_auth), key=lambda x: x.authority_ref.key))
 
     q_bindings = _question_bindings(universe)
     q_by_name = {"Q291G5": q_bindings[0], "Q291P5": q_bindings[1]}
@@ -1055,6 +1088,28 @@ def bind_exact_projection_fields(fields: Mapping[str, Any]) -> GovernedC11Projec
         raise ValueError("frozen WVS7 P2 country coordinate authority substitution forbidden")
     if fields.get("projection_authority_ref")!=PROJECTION_AUTH_REF:
         raise ValueError("frozen WVS7 P2 projection authority substitution forbidden")
+    mapping_matches = tuple(
+        a for a in fields.get("authority_snapshots", ())
+        if getattr(a, "authority_ref", None) == MAPPING_AUTHORITY_REF
+    )
+    if len(mapping_matches) != 1 or mapping_matches[0].ref != mapping_authority_snapshot().ref:
+        raise ValueError("frozen WVS7 P2 exact mapping authority parent/provenance substitution forbidden")
+    response_slots = tuple(fields.get("response_slots", ()))
+    if len(response_slots) != 2:
+        raise ValueError("frozen WVS7 P2 requires exactly two response slots")
+    if tuple(slot.slot.name for slot in response_slots) != ("Q291G5", "Q291P5"):
+        raise ValueError("frozen WVS7 P2 exact response-slot identity/order drift")
+    for slot in response_slots:
+        canonical_tokens = []
+        for rule in slot.values:
+            if rule.canonical_value is not None:
+                if rule.transform_authority_ref != MAPPING_AUTHORITY_REF:
+                    raise ValueError("frozen WVS7 P2 substantive response mapping authority substitution forbidden")
+                canonical_tokens.append(rule.canonical_value)
+            elif rule.transform_authority_ref is not None:
+                raise ValueError("frozen WVS7 P2 special/missing response canonicalization forbidden")
+        if tuple(sorted(canonical_tokens)) != ("1", "2", "3", "4", "5"):
+            raise ValueError("frozen WVS7 P2 exact program semantic token set drift")
     if fields.get("replay_authority_ref")!=REPLAY_AUTH_REF:
         raise ValueError("frozen WVS7 P2 replay authority substitution forbidden")
     if fields.get("tie_order_ref")!=TIE_ORDER_REF:
@@ -1092,12 +1147,16 @@ def binding_receipt(
 
 
 def authority_identity_receipt() -> Mapping[str, Any]:
-    coordinate_auth, projection_auth = r6s_authorities()
+    mapping_auth, coordinate_auth, projection_auth = r6s_authorities()
     return {
         "schema": "EE_P2R6S_AUTHORITY_IDENTITY_RECEIPT@1.0.0",
         "adopted_hq_coordinate_authority_hash": HQ_COUNTRY_COORDINATE_AUTHORITY_HASH,
         "global_fqra_role_unchanged": True,
         "coordinate_use_scope": "FROZEN_P2_ROUTING_ONLY",
+        "mapping_authority_ref": mapping_auth.authority_ref.as_dict(),
+        "mapping_authority_snapshot_ref": mapping_auth.ref.as_dict(),
+        "mapping_authority_material": MAPPING_AUTHORITY_MATERIAL,
+        "mapping_target_use": MAPPING_TARGET_USE,
         "coordinate_authority_ref": coordinate_auth.authority_ref.as_dict(),
         "coordinate_authority_snapshot_ref": coordinate_auth.ref.as_dict(),
         "coordinate_slot_identity_ref": COORDINATE_SLOT_IDENTITY_REF.as_dict(),
@@ -1124,6 +1183,9 @@ __all__ = [
     "REQUIRED_COUNTRIES",
     "COORDINATE_AUTH_REF",
     "COORDINATE_SLOT_IDENTITY_REF",
+    "MAPPING_AUTHORITY_REF",
+    "MAPPING_AUTHORITY_MATERIAL",
+    "MAPPING_ROWS",
     "NATIVE_COUNTRY_COORDINATE_REF",
     "COUNTRY_UNIT_REF",
     "PROJECTION_AUTH_REF",

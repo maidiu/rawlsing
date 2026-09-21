@@ -28,6 +28,7 @@ from rawlsing_next.pre553_independent_parity_oracle import (
     WVS7_SOURCE_SHA256,
     WVS_MATERIALIZER_CONTRACT,
     build_lits_i_oracle,
+    freeze_wvs7_oracle_from_common_material,
     materialize_wvs7_oracle,
     validate_candidate_observation,
     validate_three_way_parity,
@@ -376,6 +377,25 @@ def test_frozen_oracle_mutation_is_detected():
 
     with pytest.raises(OracleIndependenceError):
         verify_frozen_oracle(oracle)
+
+
+def test_wvs_source_free_freeze_accepts_exact_candidate_neutral_common_material():
+    oracle = freeze_wvs7_oracle_from_common_material(
+        material=_wvs_materializer_result(),
+        freeze=FreezeContext(freeze_sequence=1),
+    )
+    assert oracle["source_identity"]["sha256"] == WVS7_SOURCE_SHA256
+    assert oracle["frontier_manifest"]["candidate_count"] == 46
+    assert oracle["freeze_receipt"]["candidate_outputs_seen_at_freeze"] == 0
+    verify_frozen_oracle(oracle)
+
+
+def test_wvs_source_free_freeze_rejects_candidate_owned_material():
+    with pytest.raises(OracleIndependenceError):
+        freeze_wvs7_oracle_from_common_material(
+            material=_wvs_materializer_result(candidate_owner=True),
+            freeze=FreezeContext(freeze_sequence=1),
+        )
 
 
 def test_wvs_materialization_rejects_wrong_source_bytes_before_semantic_execution(tmp_path):
