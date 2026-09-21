@@ -172,13 +172,22 @@ def _metric_rows(telemetry: Mapping[str, Any], name: str) -> list[Mapping[str, A
 
 
 def _validate_metric_row_shape(
-    row: Mapping[str, Any], *, name: str, source: str, candidate: str
+    row: Mapping[str, Any],
+    *,
+    name: str,
+    source: str,
+    source_sha256: str,
+    candidate: str,
 ) -> None:
     definition = METRIC_DEFINITIONS[name]
     if row.get("name") != name or row.get("unit") != definition.unit:
         _fail("TC_METRIC_DEFINITION_DRIFT", f"{name} row name/unit differs from frozen definition")
-    if row.get("source_id") != source or row.get("candidate_id") != candidate:
-        _fail("TC_METRIC_CELL_DRIFT", f"{name} is attributed to another source/candidate")
+    if (
+        row.get("source_id") != source
+        or row.get("source_sha256") != source_sha256
+        or row.get("candidate_id") != candidate
+    ):
+        _fail("TC_METRIC_CELL_DRIFT", f"{name} is attributed to another source/candidate/root")
     state = row.get("state")
     allowed = {item.value for item in MetricState}
     if state not in allowed:
@@ -380,6 +389,24 @@ def validate_terminal_telemetry_completeness(
     ):
         _fail("TC_TELEMETRY_CELL_DRIFT", "telemetry cell does not match current source/candidate/root")
 
+    metrics = telemetry.get("metrics")
+    if not isinstance(metrics, Mapping):
+        _fail("TC_METRIC_SET_ABSENT", "canonical telemetry metric set is absent")
+    if set(metrics) != set(METRIC_DEFINITIONS):
+        _fail(
+            "TC_METRIC_SET_DRIFT",
+            "canonical telemetry metric keys do not exactly equal the frozen T4 definition set",
+        )
+    for name in sorted(METRIC_DEFINITIONS):
+        for metric_row in _metric_rows(telemetry, name):
+            _validate_metric_row_shape(
+                metric_row,
+                name=name,
+                source=source,
+                source_sha256=str(source_sha),
+                candidate=candidate,
+            )
+
     stop_at = _stop_index(
         current_manifest=current_manifest,
         cell=cell,
@@ -401,8 +428,6 @@ def validate_terminal_telemetry_completeness(
             stop_at=stop_at,
         )
         rows = _metric_rows(telemetry, name)
-        for row in rows:
-            _validate_metric_row_shape(row, name=name, source=source, candidate=candidate)
         observed_states = {str(row.get("state")) for row in rows}
 
         if expectation == PRESERVED_NO_NUMERIC:
