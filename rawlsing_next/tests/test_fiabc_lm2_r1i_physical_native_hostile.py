@@ -4,7 +4,9 @@ from rawlsing_next.fiabc_lm2_r1e_common_c11 import _materializer, _structural_ma
 from rawlsing_next.fiabc_lm2_r1e_wvs7_mapping_authority import (
     MAPPING_AUTHORITY_REF,
     NEGATIVE_LIMITS,
+    mapping_authority_snapshot,
 )
+from rawlsing_next.pre553_empirical_authority import Pre553AuthorityError, require_positive_authority
 from rawlsing_next.pre553_c11_integrity import TypedAbsence
 from rawlsing_next.pre553_physical_decoder import PhysicalMissingState, classify_physical_value
 from rawlsing_next.pre553_source_backed_c11_facade import physical_value_binding_key
@@ -93,3 +95,15 @@ def test_canonical_question_mapping_remains_absent():
         value = q.canonical_question_ref_or_typed_absence
         assert isinstance(value, TypedAbsence)
         assert value.state == "NOT_AUTHORIZED"
+
+
+def test_common_authority_gate_does_not_treat_source_semantics_as_mapping():
+    from dataclasses import replace
+    snapshot = mapping_authority_snapshot()
+    counterfeit = replace(snapshot, authority_kind="SOURCE_SEMANTICS_TOPOLOGY")
+    import pytest
+    with pytest.raises(Pre553AuthorityError, match="authority kind mismatch"):
+        require_positive_authority(
+            counterfeit,
+            authority_kind="NATIVE_CANONICAL_MAPPING_HARMONIZATION",
+        )
