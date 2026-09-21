@@ -14,6 +14,10 @@ from pathlib import Path
 from typing import Any, Iterable, Mapping, Sequence
 
 from rawlsing_next.ee_p2x_candidate_process_envelope import load_frozen_upstream_receipt
+from rawlsing_next.fiabc_terminal_completeness import (
+    TerminalCompletenessError,
+    validate_terminal_telemetry_completeness,
+)
 from rawlsing_next.fiabc_p2_terminal_verifier import (
     INPUT_SCHEMA as TERMINAL_INPUT_SCHEMA,
     TERMINAL_CONTRACT,
@@ -867,6 +871,70 @@ def admit_post_i05_oracle_match(
     }
 
 
+def _current_execution_manifest_for_terminal() -> Mapping[str, Any]:
+    raw = os.environ.get("RAWLSING_FIABC_T5_CURRENT_EXECUTION_MANIFEST")
+    if not raw:
+        raise LiveTerminalControlError(
+            "terminal telemetry completeness requires the current six-cell execution manifest"
+        )
+    return _load(Path(raw))
+
+
+def _stage_receipts_for_completeness(
+    *,
+    work_root: Path,
+    source: str,
+    candidate: str,
+    current_manifest: Mapping[str, Any],
+) -> Mapping[str, Mapping[str, Any]]:
+    root = _cell_receipts_root(work_root, source, candidate)
+    out: dict[str, Mapping[str, Any]] = {}
+    for stage_id in current_manifest.get("stage_catalog", ()):
+        if not isinstance(stage_id, str):
+            raise LiveTerminalControlError("current manifest stage catalog is malformed")
+        path = root / f"{stage_id.lower()}.json"
+        if path.is_file():
+            out[stage_id] = _load(path)
+    return out
+
+
+def validate_terminal_telemetry_completeness_from_accounting(
+    *,
+    accounting: Mapping[str, Any],
+    source: str,
+    candidate: str,
+    current_manifest: Mapping[str, Any],
+    work_root: Path,
+    completed_qualifying_cell: bool,
+) -> Mapping[str, Any]:
+    """Re-prove completeness from the canonical T4 receipt and current court law."""
+    accounting = validate_t4_terminal_accounting_receipt(accounting)
+    telemetry = _load(Path(accounting["telemetry_receipt_path"]))
+    if accounting.get("metric_definition_hash") != telemetry.get("metric_definition_hash"):
+        raise LiveTerminalControlError(
+            "T4 accounting wrapper metric-definition hash differs from canonical telemetry"
+        )
+    stage_receipts = _stage_receipts_for_completeness(
+        work_root=work_root,
+        source=source,
+        candidate=candidate,
+        current_manifest=current_manifest,
+    )
+    try:
+        return validate_terminal_telemetry_completeness(
+            telemetry=telemetry,
+            source=source,
+            candidate=candidate,
+            current_manifest=current_manifest,
+            stage_receipts=stage_receipts,
+            completed_qualifying_cell=completed_qualifying_cell,
+        )
+    except TerminalCompletenessError as exc:
+        raise LiveTerminalControlError(
+            f"terminal telemetry completeness BLOCK for {source}/{candidate}: {exc}"
+        ) from exc
+
+
 def validate_t4_terminal_accounting_receipt(value: Any) -> Mapping[str, Any]:
     if not isinstance(value, Mapping):
         raise LiveTerminalControlError("T4 terminal accounting receipt is missing")
@@ -909,6 +977,15 @@ def seal_live_cell_terminal(
     t4_accounting = validate_t4_terminal_accounting_receipt(
         backend_receipt.get("t4_accounting")
     )
+    current_manifest = _current_execution_manifest_for_terminal()
+    telemetry_completeness = validate_terminal_telemetry_completeness_from_accounting(
+        accounting=t4_accounting,
+        source=stage.source,
+        candidate=stage.candidate,
+        current_manifest=current_manifest,
+        work_root=work_root,
+        completed_qualifying_cell=True,
+    )
     journal = _load(Path(roots.receipts) / "fiabc_t4_live_accounting_journal.json")
     s15 = journal.get("stages", {}).get(
         f"{stage.source}/{stage.candidate}/S15_FRESH_PROCESS_REPLAY"
@@ -950,6 +1027,7 @@ def seal_live_cell_terminal(
             "semantic_state_modified": t4_accounting.get("semantic_state_modified"),
             "candidate_neutral_c0_excluded": t4_accounting.get("candidate_neutral_c0_excluded"),
         },
+        "telemetry_completeness_receipt": telemetry_completeness,
         "c11": projection["c11"],
         "i03": projection["i03"],
         "i05": projection["i05"],
@@ -1066,6 +1144,24 @@ def verify_live_final_terminal(
             or cell.get("candidate_id") != candidate
         ):
             raise LiveTerminalControlError("one of six terminal bundles has wrong identity")
+        revalidated_completeness = validate_terminal_telemetry_completeness_from_accounting(
+            accounting=cell.get("t4_accounting_receipt"),
+            source=source,
+            candidate=candidate,
+            current_manifest=current_manifest,
+            work_root=work_root,
+            completed_qualifying_cell=True,
+        )
+        sealed_completeness = cell.get("telemetry_completeness_receipt")
+        if (
+            not isinstance(sealed_completeness, Mapping)
+            or sealed_completeness.get("status") != "PASS"
+            or sealed_completeness.get("receipt_identity")
+            != revalidated_completeness.get("receipt_identity")
+        ):
+            raise LiveTerminalControlError(
+                "S17 terminal completeness receipt is absent, stale, or disagrees with revalidation"
+            )
         cells.append({
             key: value for key, value in cell.items()
             if key not in {
@@ -1151,6 +1247,7 @@ __all__ = [
     "admit_post_i05_oracle_match",
     "seal_live_cell_terminal",
     "validate_t4_terminal_accounting_receipt",
+    "validate_terminal_telemetry_completeness_from_accounting",
     "verify_live_final_terminal",
     "terminal_projection_from_observation",
     "terminal_projection_from_oracle",
