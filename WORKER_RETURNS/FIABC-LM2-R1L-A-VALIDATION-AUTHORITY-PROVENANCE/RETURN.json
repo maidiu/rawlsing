@@ -1,0 +1,42 @@
+{
+  "schema": "FIABC_LM2_R1L_A_RETURN@1.0.0",
+  "status": "PASS",
+  "exact_base": "89bfde652eb8a983e51ff51f5258e5fdfbb2433b",
+  "branch": "agent/rabochii-premain-fiabc-lm2-r1l-a-validation-authority-provenance-r1",
+  "terminal": "FIABC_LM2_R1L_A_PASS__THREE_VALIDATION_KINDS_HAVE_PREOUTCOME_AUTHORITY__DISCOVERY_ENVELOPE_OMISSION_IS_REPAIRABLE",
+  "lock2_defect": "INCOMPLETE_SERIALIZATION_OF_ALREADY_FROZEN_AUTHORITY",
+  "new_authority_premise_required": false,
+  "three_validation_kinds_have_preoutcome_authority": true,
+  "discovery_envelope_omission_repairable": true,
+  "repaired": false,
+  "exact_validation_kinds": [
+    "TARGET_CELL_SUPPORTED",
+    "JOINT_NOT_PRODUCT_OF_MARGINALS",
+    "DISTRIBUTION_DIFFERS_FROM_BASELINE"
+  ],
+  "evidence": {
+    "generic_i05_initial_commit": "8a3382d9de7ce38591f92e3a09481b38198a106c",
+    "generic_i05_complete_commit": "6a75433b9a12b66e75f1def97f69163587970fd1",
+    "p2f2_i05_blob": "b2b99460cc5991bc26aa2ffe5bda129b408fc197",
+    "p2f1_adopted_return": "00b86dcade82bc9efb6ea68a79062c6587d0de08",
+    "discovery_frontier_authority_hash": "f0f5634d42c61cc34878c8ab005bcfad98261d4fd147f76b5413c2fac5f9d6c7",
+    "discovery_authority_hash": "24591678ebf50ac153fabdbbcd90d6ce818c5a89a5307c395c48a04fe5a8b1ab",
+    "candidate_grammar_hash": "a94bd2ed3b64b2c51f6d329560feef6b97f69da3527081d8ca6168ae63e5f7f6",
+    "lock2": "8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188"
+  },
+  "prohibitions_observed": {
+    "wvs_sav_or_zip_opened": false,
+    "i05_executed": false,
+    "candidate_outcomes_inspected": false,
+    "candidate_abc_run": false,
+    "repair_performed": false
+  },
+  "outputs": [
+    "WORKER_RETURNS/FIABC-LM2-R1L-A-VALIDATION-AUTHORITY-PROVENANCE/00_RETURN.md",
+    "WORKER_RETURNS/FIABC-LM2-R1L-A-VALIDATION-AUTHORITY-PROVENANCE/01_VALIDATION_KIND_LINEAGE.csv",
+    "WORKER_RETURNS/FIABC-LM2-R1L-A-VALIDATION-AUTHORITY-PROVENANCE/02_AUTHORITY_PARENT_GRAPH.json",
+    "WORKER_RETURNS/FIABC-LM2-R1L-A-VALIDATION-AUTHORITY-PROVENANCE/03_PREOUTCOME_PROVENANCE_COURT.md",
+    "WORKER_RETURNS/FIABC-LM2-R1L-A-VALIDATION-AUTHORITY-PROVENANCE/04_OMISSION_VS_NEW_PREMISE_HOLDING.json",
+    "WORKER_RETURNS/FIABC-LM2-R1L-A-VALIDATION-AUTHORITY-PROVENANCE/RETURN.json"
+  ]
+}

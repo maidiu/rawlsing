@@ -1,0 +1,33 @@
+{
+  "schema": "FIABC_LM2_R1L_A_OMISSION_VS_NEW_PREMISE_HOLDING@1.0.0",
+  "exact_base": "89bfde652eb8a983e51ff51f5258e5fdfbb2433b",
+  "r1k_discovery_authority": "24591678ebf50ac153fabdbbcd90d6ce818c5a89a5307c395c48a04fe5a8b1ab",
+  "r1k_candidate_grammar": "a94bd2ed3b64b2c51f6d329560feef6b97f69da3527081d8ca6168ae63e5f7f6",
+  "validation_kinds": [
+    "TARGET_CELL_SUPPORTED",
+    "JOINT_NOT_PRODUCT_OF_MARGINALS",
+    "DISTRIBUTION_DIFFERS_FROM_BASELINE"
+  ],
+  "per_kind_authority": {
+    "TARGET_CELL_SUPPORTED": "ALREADY_IN_ACCEPTED_PRE553_I05_CONTRACT_BEFORE_P2__LOCK1_FAMILY_FORM_REQUIRES_IT__P2F1_R12_ADOPTED_MECHANICAL_ONLY__P2F2_FROZE_IT_PREOUTCOME",
+    "JOINT_NOT_PRODUCT_OF_MARGINALS": "ALREADY_IN_ACCEPTED_PRE553_I05_CONTRACT_BEFORE_P2__LOCK1_FAMILY_FORM_REQUIRES_IT__P2F1_R12_ADOPTED_MECHANICAL_ONLY__P2F2_FROZE_IT_PREOUTCOME",
+    "DISTRIBUTION_DIFFERS_FROM_BASELINE": "ALREADY_IN_ACCEPTED_PRE553_I05_CONTRACT_BEFORE_P2__LOCK1_FAMILY_FORM_REQUIRES_IT__P2F1_R12_ADOPTED_MECHANICAL_ONLY__P2F2_FROZE_IT_PREOUTCOME"
+  },
+  "dedicated_per_kind_authority_snapshot_exists": false,
+  "independent_authority_chain_exists": true,
+  "authority_chain": [
+    "accepted generic PRE553 I05 contract at 8a3382d / 6a75433",
+    "HQ Lock1 program/family freeze using current accepted I05 exact-bounded constructors",
+    "EE-P2F1 R12 B-classification with supporting inventory I01+I08",
+    "HQ adoption of P2F1 as 14 B rows / 0 new authority",
+    "EE-P2F2 R12 mandate to bind exact validation rules with zero new semantic proposition",
+    "EE-P2F2 positive DISCOVERY_FRONTIER snapshot governing pre553_discovery_exact_execute",
+    "P2F2 grammar and candidate identities freezing exactly the three kinds before outcomes"
+  ],
+  "lock2_defect": "INCOMPLETE_SERIALIZATION_OF_ALREADY_FROZEN_AUTHORITY",
+  "new_authority_premise_required": false,
+  "adding_exact_three_kinds_introduces_new_semantic_or_empirical_premise": false,
+  "repair_boundary_note": "This worker does not repair. Any successor must enumerate exactly these three already-frozen kinds; no wildcard, no fourth kind, no semantic widening.",
+  "identity_note": "validation_rules is a required DiscoveryAuthority semantic field and all semantic_fields participate in deterministic semantic_projection hashing; therefore repairing the field necessarily reissues the DiscoveryAuthority identity and any transitive identities. This is an identity succession consequence, not new authority.",
+  "terminal": "FIABC_LM2_R1L_A_PASS__THREE_VALIDATION_KINDS_HAVE_PREOUTCOME_AUTHORITY__DISCOVERY_ENVELOPE_OMISSION_IS_REPAIRABLE"
+}

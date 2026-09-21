@@ -1,0 +1,188 @@
+{
+  "schema": "FIABC_LM2_R1L_A_AUTHORITY_PARENT_GRAPH@1.0.0",
+  "exact_base": "89bfde652eb8a983e51ff51f5258e5fdfbb2433b",
+  "conclusion": "INCOMPLETE_SERIALIZATION_OF_ALREADY_FROZEN_AUTHORITY",
+  "nodes": [
+    {
+      "id": "GENERIC_I05_INITIAL",
+      "kind": "accepted_generic_PRE553_contract",
+      "commit": "8a3382d9de7ce38591f92e3a09481b38198a106c",
+      "time_utc": "2026-08-20T16:06:13Z",
+      "path": "rawlsing_next/pre553_discovery_exact.py",
+      "blob": "bfc8c560f7e2584c158d908b5fabfd0f889499fd",
+      "possesses": [
+        "DISTRIBUTION_DIFFERS_FROM_BASELINE",
+        "JOINT_NOT_PRODUCT_OF_MARGINALS",
+        "validation-kind grammar contract",
+        "exact validation evaluator semantics",
+        "validation authority admission guard"
+      ]
+    },
+    {
+      "id": "GENERIC_I05_COMPLETE",
+      "kind": "accepted_generic_PRE553_contract",
+      "commit": "6a75433b9a12b66e75f1def97f69163587970fd1",
+      "time_utc": "2026-08-20T16:14:10Z",
+      "path": "rawlsing_next/pre553_discovery_exact.py",
+      "blob": "b2b99460cc5991bc26aa2ffe5bda129b408fc197",
+      "possesses": [
+        "TARGET_CELL_SUPPORTED",
+        "BASE_QUERY exact validator binding",
+        "all three WVS-used validation kinds",
+        "validation authority admission guard"
+      ]
+    },
+    {
+      "id": "LOCK1",
+      "kind": "HQ_governing_act",
+      "path": "HQ_HANDOFF/CHETIRI_FINAL_P2_COURT_MANIFEST_R1.json",
+      "possesses": [
+        "four exact WVS program families",
+        "46-candidate shape",
+        "construction using current accepted PRE553 I05 exact-bounded constructors",
+        "complete-frontier law",
+        "no pruning/ranking/adaptive stop",
+        "raw/unweighted law"
+      ]
+    },
+    {
+      "id": "P2F1_R12",
+      "kind": "adopted_provenance_adjudication",
+      "return_tip": "00b86dcade82bc9efb6ea68a79062c6587d0de08",
+      "path": "WORKER_RETURNS/EE-P2F1/01_REQUIRED_PRE553_AUTHORITY_MATRIX.json",
+      "classification": "B__SEMANTIC_AUTHORITY_EXISTS__PRE553_ISSUANCE_OR_BINDING_ONLY",
+      "owner_category": "HQ/Verkhovod benchmark-frontier",
+      "supporting_inventory_ids": [
+        "I01_LOCK1_WVS_SOURCE_AND_PROGRAM_FREEZE",
+        "I08_PRE553_I05_EXACT_BOUNDED_CONTRACT"
+      ]
+    },
+    {
+      "id": "P2F1_HQ_ADOPTION",
+      "kind": "HQ_adoption",
+      "path": "HQ_HANDOFF/EE_P2F1_ADOPTION_20260917.md",
+      "terminal": "EE_P2F1_ADOPTED__14_B_ROWS_MECHANICAL_ONLY__0_NEW_AUTHORITY__WAKE_EE_P2F2_ISSUER",
+      "holding": "authority-form / exact-binding deficit; 0 new authority"
+    },
+    {
+      "id": "P2F2_COMMISSION_R12",
+      "kind": "issuer_mandate",
+      "path": "WORKER_COMMISSIONS/EE-P2F2/00_COMMISSION.md",
+      "mandate": "exact support/validation-rule bindings required by the frozen exact-bounded program",
+      "ceiling": "zero new semantic proposition; use current accepted PRE553 constructors"
+    },
+    {
+      "id": "P2F2_DISCOVERY_FRONTIER_AUTH",
+      "kind": "AuthoritySnapshot",
+      "authority_id": "EE-P2F2-WVS7-LOCK1-DISCOVERY-FRONTIER",
+      "authority_content_hash": "f0f5634d42c61cc34878c8ab005bcfad98261d4fd147f76b5413c2fac5f9d6c7",
+      "snapshot_content_hash": "17c72242c64e789c9f5d8762cac3b70be493ae39a352b7db625cb37ec8658186",
+      "governed_operations": [
+        "pre553_discovery_exact_execute"
+      ],
+      "governed_object_families": [
+        "DiscoveryAuthority@1.0.0",
+        "DiscoveryResultReceipt@1.0.0"
+      ]
+    },
+    {
+      "id": "P2F2_GRAMMAR",
+      "kind": "frozen_candidate_grammar",
+      "content_hash": "a94bd2ed3b64b2c51f6d329560feef6b97f69da3527081d8ca6168ae63e5f7f6",
+      "used_validation_kinds": [
+        "TARGET_CELL_SUPPORTED",
+        "JOINT_NOT_PRODUCT_OF_MARGINALS",
+        "DISTRIBUTION_DIFFERS_FROM_BASELINE"
+      ],
+      "note": "Evidence of exact intended WVS serialization; not treated as self-authorizing."
+    },
+    {
+      "id": "P2F2_DISCOVERY_AUTHORITY",
+      "kind": "DiscoveryAuthority@1.0.0",
+      "content_hash": "24591678ebf50ac153fabdbbcd90d6ce818c5a89a5307c395c48a04fe5a8b1ab",
+      "algorithm_identity": "PRE553_I05_EXACT_BOUNDED_DISCOVERY@1.0.0",
+      "candidate_grammar_ref": "a94bd2ed3b64b2c51f6d329560feef6b97f69da3527081d8ca6168ae63e5f7f6",
+      "validation_rules_present": [
+        "exact_authority_closure_required",
+        "exact_universe_scope_required",
+        "unresolved_predicate_or_query"
+      ],
+      "validation_rules_kinds_present": false
+    },
+    {
+      "id": "R1K_BLOCKER",
+      "kind": "fresh_oracle_holding",
+      "path": "WORKER_RETURNS/FIABC-LM2-R1K-R15-R16-ORACLE-CLOSURE/04_R16_FRESH_WVS_ORACLE.json",
+      "holding": "generic I05 correctly rejects because used_validation is not a subset of absent/empty validation_rules.kinds"
+    }
+  ],
+  "edges": [
+    {
+      "from": "GENERIC_I05_INITIAL",
+      "to": "GENERIC_I05_COMPLETE",
+      "relation": "contract_completed_before_P2"
+    },
+    {
+      "from": "GENERIC_I05_COMPLETE",
+      "to": "LOCK1",
+      "relation": "current accepted I05 constructors supply fixed family/form-to-validator semantics"
+    },
+    {
+      "from": "LOCK1",
+      "to": "P2F1_R12",
+      "relation": "frontier/support-validation governance audited"
+    },
+    {
+      "from": "GENERIC_I05_COMPLETE",
+      "to": "P2F1_R12",
+      "relation": "I08 exact-bounded validation law is independent supporting inventory"
+    },
+    {
+      "from": "P2F1_R12",
+      "to": "P2F1_HQ_ADOPTION",
+      "relation": "adopted as B / mechanical-only"
+    },
+    {
+      "from": "P2F1_HQ_ADOPTION",
+      "to": "P2F2_COMMISSION_R12",
+      "relation": "issuer authorized to bind existing law only"
+    },
+    {
+      "from": "P2F2_COMMISSION_R12",
+      "to": "P2F2_DISCOVERY_FRONTIER_AUTH",
+      "relation": "positive exact operation authority issued"
+    },
+    {
+      "from": "P2F2_DISCOVERY_FRONTIER_AUTH",
+      "to": "P2F2_DISCOVERY_AUTHORITY",
+      "relation": "authority_snapshot_ref governs object and operation"
+    },
+    {
+      "from": "GENERIC_I05_COMPLETE",
+      "to": "P2F2_GRAMMAR",
+      "relation": "issuer uses exact constructor contract; all three validator kinds fixed"
+    },
+    {
+      "from": "LOCK1",
+      "to": "P2F2_GRAMMAR",
+      "relation": "WVS family/shape selection fixed pre-outcome"
+    },
+    {
+      "from": "P2F2_GRAMMAR",
+      "to": "P2F2_DISCOVERY_AUTHORITY",
+      "relation": "candidate_universe_definition embedded and hashed"
+    },
+    {
+      "from": "P2F2_DISCOVERY_AUTHORITY",
+      "to": "R1K_BLOCKER",
+      "relation": "validation_rules.kinds omitted despite governed grammar use"
+    }
+  ],
+  "negative_holdings": [
+    "Candidate grammar use alone is not authority.",
+    "No standalone per-kind AuthoritySnapshot was found.",
+    "No WVS outcome, raw-source value, frequency, label, or candidate result is needed to authorize the three kinds.",
+    "The authorization chain is composite: accepted generic I05 law + Lock1 governing act + adopted P2F1 R12 + P2F2 exact DISCOVERY_FRONTIER scope.",
+    "Adding any fourth kind would not be justified by this court."
+  ]
+}
