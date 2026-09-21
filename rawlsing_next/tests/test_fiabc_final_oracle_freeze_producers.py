@@ -342,17 +342,31 @@ def test_t3_rejects_oracle_inside_candidate_owned_root(tmp_path):
         )
 
 
-def test_t3_rejects_missing_or_mutated_unverified_oracle(tmp_path):
+def test_t3_rejects_missing_oracle_document(tmp_path):
+    work = tmp_path / "court"
+    work.mkdir()
+    lits = work / "lits.json"
+    _write(lits, _lits_standard_oracle())
+    with pytest.raises(FinalOracleProducerError):
+        produce_t3_two_source_freeze(
+            lits_oracle_path=lits,
+            wvs_oracle_path=work / "missing-wvs.json",
+            work_root=work,
+            output_path=work / "freeze.json",
+        )
+
+
+def test_t3_rejects_mutated_unverified_oracle(tmp_path):
     work = tmp_path / "court"
     work.mkdir()
     lits = work / "lits.json"
     doc = _lits_standard_oracle()
     doc["expected_fact_manifest"][0]["typed_state"] = "MUTATED_AFTER_FREEZE"
     _write(lits, doc)
-    with pytest.raises(Exception):
+    with pytest.raises(Exception, match="frozen oracle|mutated"):
         produce_t3_two_source_freeze(
             lits_oracle_path=lits,
-            wvs_oracle_path=work / "missing-wvs.json",
+            wvs_oracle_path=work / "unused-wvs.json",
             work_root=work,
             output_path=work / "freeze.json",
         )
