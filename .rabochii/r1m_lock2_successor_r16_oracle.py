@@ -48,6 +48,7 @@ from rawlsing_next.pre553_empirical_objects import (
     canonicalize,
     semantic_hash,
 )
+from rawlsing_next.pre553_empirical_query import execute_empirical_query
 from rawlsing_next.pre553_independent_parity_oracle import (
     FreezeContext,
     NEGATIVE_STATE_LAW,
@@ -181,6 +182,17 @@ def write_text(name: str, value: str) -> None:
 started = time.perf_counter()
 telemetry: dict[str, Any] = {
     "schema": "FIABC_LM2_R1M_COMMAND_TELEMETRY@1.0.0",
+    "prior_attempts": [{
+        "run_id": 35629934073,
+        "job_id": 106433393238,
+        "head_sha": "0b67f76fa7761504cf0622096a3c10c5f9e4d0ec",
+        "requalification": "37 passed in 36.60s",
+        "r16_generic_i05": "PASS_REACHED_ORACLE_ASSEMBLY",
+        "failure": "POST_I05_ORACLE_HELPER_ATTEMPTED_TEMPLATE_CATALOG_RESOLUTION_OF_GENERATED_QUERY_REF",
+        "generic_i05_modified": False,
+        "candidate_a_b_c_processes_started": 0,
+        "candidate_outputs_seen": 0,
+    }],
     "github_actions_run_id": os.environ.get("GITHUB_RUN_ID"),
     "github_actions_run_attempt": os.environ.get("GITHUB_RUN_ATTEMPT"),
     "github_execution_sha": os.environ.get("GITHUB_SHA"),
@@ -587,15 +599,97 @@ telemetry["stages"].append({"stage": "GATE_5_R16_REENTRY", "status": "PASS", "se
 # Gate 6: candidate-neutral oracle freeze plus independent deterministic replay.
 gate_start = time.perf_counter()
 
+def constituent_i03_from_compiled_frontier(
+    *,
+    executor: CarrierNeutralResearchExecutor,
+    result,
+    compiled_candidates,
+):
+    by_hash = {candidate.candidate_hash: candidate for candidate in compiled_candidates}
+    require(len(by_hash) == 46, "compiled frontier candidate map cardinality drift")
+    candidate_rows = []
+    global_facts = {}
+    ordered = sorted(
+        result.receipts,
+        key=lambda receipt: receipt.candidate_identity["candidate_hash"],
+    )
+    for receipt in ordered:
+        candidate_hash = receipt.candidate_identity["candidate_hash"]
+        candidate = by_hash.get(candidate_hash)
+        require(candidate is not None, "I05 receipt candidate absent from compiled frontier")
+        expected_roles = [
+            {
+                "role": role.role,
+                "predicate_ref": role.predicate.ref.as_dict(),
+                "query_ref": role.query.ref.as_dict(),
+            }
+            for role in candidate.query_roles
+        ]
+        require(
+            canonicalize(receipt.candidate_identity["query_roles"]) == canonicalize(expected_roles),
+            "I05 receipt query-role identity differs from preoutcome compiled frontier",
+        )
+        per_candidate = {}
+        for role in candidate.query_roles:
+            observed = execute_empirical_query(
+                repository=executor.repository,
+                query=role.query,
+                predicate=role.predicate,
+                authority_registry=executor.runtime_catalog.authority_registry,
+                release_refs=executor.release_refs,
+            )
+            for fact in observed.facts:
+                row = {
+                    "ref": fact.ref.as_dict(),
+                    "typed_state": fact.typed_state,
+                }
+                key = (fact.ref.kind, fact.ref.object_id, fact.ref.content_hash)
+                per_candidate[key] = row
+                global_facts[key] = row
+        expected = {
+            (ref.kind, ref.object_id, ref.content_hash)
+            for ref in receipt.empirical_fact_refs
+        }
+        require(set(per_candidate) == expected, "compiled-frontier I03 facts do not close over I05 receipt")
+        candidate_rows.append({
+            "candidate_hash": candidate_hash,
+            "typed_state": receipt.typed_state,
+            "semantic_fields": {
+                "candidate_identity": canonicalize(receipt.candidate_identity),
+                "constituent_fact_manifest": [
+                    per_candidate[key] for key in sorted(per_candidate)
+                ],
+                "coverage_state": receipt.coverage_state,
+                "support_uncertainty_state": canonicalize(receipt.support_uncertainty_state),
+                "replay_ref": receipt.replay_ref.as_dict(),
+            },
+        })
+    all_expected = {
+        (ref.kind, ref.object_id, ref.content_hash)
+        for ref in result.empirical_fact_refs
+    }
+    require(set(global_facts) == all_expected, "compiled-frontier I03 global facts differ from I05 fact set")
+    manifest = [global_facts[key] for key in sorted(global_facts)]
+    closure_identity = semantic_hash({
+        "candidate_fact_rows": candidate_rows,
+        "constituent_fact_manifest": manifest,
+    })
+    return candidate_rows, manifest, closure_identity
+
+
 def oracle_truth_payload(
     *,
     catalog: RuntimeObjectCatalog,
     executor: CarrierNeutralResearchExecutor,
     result,
     execution_receipt: Mapping[str, Any],
+    compiled_candidates,
 ) -> Mapping[str, Any]:
-    binding = SimpleNamespace(executor=executor)
-    candidate_rows, constituent_facts, i03_closure = t5._constituent_i03(binding, result)
+    candidate_rows, constituent_facts, i03_closure = constituent_i03_from_compiled_frontier(
+        executor=executor,
+        result=result,
+        compiled_candidates=compiled_candidates,
+    )
     ordered = sorted(result.receipts, key=lambda receipt: receipt.candidate_identity["candidate_hash"])
     hashes = [receipt.candidate_identity["candidate_hash"] for receipt in ordered]
     families = dict(sorted(Counter(receipt.candidate_identity["family"] for receipt in ordered).items()))
@@ -677,7 +771,7 @@ def oracle_truth_payload(
         "authority_closure_digest": semantic_hash(canonicalize(authority_refs)),
         "frontier_digest": semantic_hash(frontier),
         "oracle_build_provenance": {
-            "builder": "FIABC_LM2_R1M_SUCCESSOR_LOCK2_COMMON_C11_GENERIC_I05",
+            "builder": "FIABC_LM2_R1M_SUCCESSOR_LOCK2_COMMON_C11_GENERIC_I05_COMPILED_QUERY_PREIMAGE_ORACLE",
             "dependencies": [
                 {"owner_class": "EXACT_SOURCE", "identity": SOURCE_SHA256},
                 {"owner_class": "ACCEPTED_AUTHORITY", "identity": successor.content_hash},
@@ -695,7 +789,13 @@ def oracle_truth_payload(
         },
     })
 
-truth_1 = oracle_truth_payload(catalog=catalog_1, executor=executor_1, result=result_1, execution_receipt=receipt_1)
+truth_1 = oracle_truth_payload(
+    catalog=catalog_1,
+    executor=executor_1,
+    result=result_1,
+    execution_receipt=receipt_1,
+    compiled_candidates=compiled,
+)
 truth_identity_1 = semantic_hash(truth_1)
 
 freeze = FreezeContext(
@@ -747,7 +847,24 @@ executor_2 = CarrierNeutralResearchExecutor(
 result_2 = executor_2.execute_i05(discovery_authority_ref=successor.ref)
 receipt_2 = learned_empirical_execution_receipt(result_2)
 telemetry["neutral_generic_i05_executions"] = 2
-truth_2 = oracle_truth_payload(catalog=catalog_2, executor=executor_2, result=result_2, execution_receipt=receipt_2)
+# Recompile independently from the same source-free successor authority before the
+# second truth pass; no first-pass empirical state is used to define replay truth.
+definition_2 = _verify_discovery_authority(successor, catalog_2.authority_registry)
+atoms_2 = _catalog_atoms(definition_2, catalog_2.predicates)
+templates_2 = _catalog_templates(definition_2, catalog_2.queries)
+_validate_catalog_scope(successor, atoms_2, templates_2)
+compiled_2 = _compile_frontier(definition_2, atoms_2, templates_2)
+require(
+    tuple(candidate.candidate_hash for candidate in compiled_2) == context.candidate_hashes,
+    "independent second source-free frontier compile drift",
+)
+truth_2 = oracle_truth_payload(
+    catalog=catalog_2,
+    executor=executor_2,
+    result=result_2,
+    execution_receipt=receipt_2,
+    compiled_candidates=compiled_2,
+)
 truth_identity_2 = semantic_hash(truth_2)
 require(truth_identity_2 == truth_identity_1, "independent deterministic oracle truth replay mismatch")
 require(result_2.evaluated_frontier_ref == result_1.evaluated_frontier_ref, "independent replay evaluated-frontier mismatch")
