@@ -1,0 +1,42 @@
+{
+  "schema": "FIABC_LM2_R1E_REQUIRED_UPSTREAM_RESPONSE_CARRIER_CONTRACT@1.0.0",
+  "status": "REQUIRED_INPUT_ABSENT_FROM_REPOSITORY",
+  "required_carrier_schema": "FIABC_LM2_R1E_FROZEN_Q291_PHYSICAL_CELL_CARRIER@1.0.0",
+  "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+  "structural_preimage_identity": "151907b3163959d0eb5ebb020fa5253d33447362420e465600035744112fe5bc",
+  "row_count": 97220,
+  "question_names": [
+    "Q291G5",
+    "Q291P5"
+  ],
+  "required_row_shape": {
+    "row_ordinal": "EXACT_1_BASED_SOURCE_ROW_ORDINAL",
+    "Q291G5": {
+      "raw_physical_value_witness": "PRE553_RAW_PHYSICAL_VALUE_WITNESS@1.0.0",
+      "physical_missing_state": "EXACT_DECODER_STATE",
+      "source_missing_declaration": "EXACT_OR_NULL"
+    },
+    "Q291P5": {
+      "raw_physical_value_witness": "PRE553_RAW_PHYSICAL_VALUE_WITNESS@1.0.0",
+      "physical_missing_state": "EXACT_DECODER_STATE",
+      "source_missing_declaration": "EXACT_OR_NULL"
+    }
+  },
+  "required_flags": {
+    "candidate_neutral": true,
+    "contains_candidate_output": false
+  },
+  "forbidden_production_methods": [
+    "REREAD_WVS7_SOURCE_BYTES_UNDER_THIS_COMMISSION",
+    "INFER_Q291_VALUES_FROM_FREQUENCIES_OR_LABELS",
+    "RECONSTRUCT_VALUES_FROM_RELEASE_HASH",
+    "USE_CANDIDATE_OUTPUT",
+    "EXECUTE_I03",
+    "EXECUTE_I05",
+    "EXECUTE_MEASURED_P2X"
+  ],
+  "reason": "The accepted structural preimage persists physical metadata/missing declarations plus B_COUNTRY values only. HB01 persisted a C11 release identity but not the ordered 97,220-row response-event payload. Therefore Q291G5/Q291P5 cells are not derivable without a separately frozen accepted carrier or a prohibited source reread.",
+  "preflight_command": "python -m rawlsing_next.fiabc_lm2_r1e_browser_prep preflight-c11 --carrier \"$FIABC_LM2_R1E_FROZEN_RESPONSE_CARRIER_PATH\"",
+  "current_expected_exit_code": 42,
+  "current_expected_terminal": "BLOCKED__NO_ACCEPTED_FROZEN_Q291_RESPONSE_CARRIER__RAW_SOURCE_REREAD_FORBIDDEN"
+}
