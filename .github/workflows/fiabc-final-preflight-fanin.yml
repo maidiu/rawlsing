@@ -57,6 +57,9 @@ jobs:
             rawlsing_next/tests/test_pre553_source_backed_c11_facade_multi_owner_qualification_r1.py \
             rawlsing_next/tests/test_fiabc_lm2_r1j_sav_representation_authority.py
 
+      - name: Source-free LiTS oracle frontier probe
+        run: python WORKER_RETURNS/FIABC-HQ-FINAL-PREFLIGHT-FANIN/lits_oracle_source_free_probe.py
+
       - name: Exact final static assertions
         run: |
           python - <<'PY'
