@@ -24,6 +24,7 @@ from rawlsing_next.pre553_empirical_objects import (
 
 AUTHORITY_KINDS = frozenset({
     "SOURCE_SEMANTICS_TOPOLOGY",
+    "SOURCE_PHYSICAL_NATIVE_REPRESENTATION_BINDING",
     "NATIVE_CANONICAL_MAPPING_HARMONIZATION",
     "ROUTING_RISK_SET",
     "COORDINATE_SEMANTICS",
@@ -65,6 +66,8 @@ AUTHORITY_KIND_CEILINGS: Mapping[str, tuple[str, ...]] = MappingProxyType({
     "SOURCE_SEMANTICS_TOPOLOGY": (
         "native question/component meaning", "response values/special states",
         "response topology/multiplicity/order/rank"),
+    "SOURCE_PHYSICAL_NATIVE_REPRESENTATION_BINDING": (
+        "exact source/variable/native-code to exact decoder representation binding",),
     "NATIVE_CANONICAL_MAPPING_HARMONIZATION": (
         "native-to-canonical identifier/value transformation",),
     "ROUTING_RISK_SET": ("applicability", "routing", "risk-set semantics"),
