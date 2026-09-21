@@ -1,0 +1,52 @@
+{
+  "schema": "FIABC_HQ_FINAL_PREFLIGHT_INTEGRATION_LEDGER@1.0.0",
+  "branch": "agent/vozhd-premain-fiabc-final-preflight-fanin-r1",
+  "integrated_head_before_return": "f7888e71933bc37e10d21c1e888c9c3abc37bea3",
+  "accepted_inputs": {
+    "r1m_tip": "04443d0f8f85234363da29f77f5544a353986246",
+    "post_r1j_rebind_tip": "2da3c42213d51dd1a65d337764f676c4f6562ef2",
+    "lits_a_absent_root_tip": "af8c8614705f062779b5648e8abd4df56ee1fde7",
+    "r6x_i07_prep_tip": "fb84bc4de9b5394a733de2512f706c60a71e4cba"
+  },
+  "wvs": {
+    "successor_discovery_authority": "3aee36014e4c3b39dd36bfef46006d8e9058a93aa5eb53bd81aef627883c8873",
+    "successor_lock2": "5e2a53f0e5f3b6ddd8db53b724b352ca41fe1a49408483fbf83dfdaa96283139",
+    "successor_replay": "9b5ac1726a03798d07e965396192d1bfefbee6d2188bad5a3acfb467ef063d4a",
+    "oracle_identity": "3694b8bd0b5468433a1a83bd469337c7e36e552c3a9a5fef65fff88df8fce800",
+    "oracle_truth_payload": "eb2f9224219385dbf21af70d317e0978383012ff057ce2ac857b59c130472405",
+    "oracle_document_sha256": "9d11a480c1c1341a2a92e0def77f5d15563ed83a44efeb9f89eff5b6cbb1527d",
+    "projection_identity": "f400c804fea9b526f25eac823138ecb30e10efaad3207c4578661f684adee665"
+  },
+  "lits": {
+    "current_entry_stage": "LITS_I/A/S01_CANDIDATE_PREPARATION_BUILD",
+    "historical_root_present": false,
+    "preserved_s01_numeric_credit": false,
+    "duplicate_prebuild_forbidden": true,
+    "accepted_product_identity": "47d36b1459c2458c480b58631d2c78af68be4dde44015a9220b09177b1eeb28d",
+    "accepted_semantic_replay": "301735d4563314a0d7c133fa1afbb0ca57679b3fad887c66e77a909494779eb5",
+    "frontier_candidate_count": 50,
+    "frontier_query_role_count": 77,
+    "oracle_state": "PENDING_CANDIDATE_NEUTRAL_LOCAL_MATERIALIZATION__EXACT_STANDARDIZED_CONSTITUENT_I03_FACT_REFS_REQUIRED"
+  },
+  "active_blobs": {
+    "darwin_backend": "4fbcfdeb3c3c9b54754ad54a4e9e57aa982e808c",
+    "darwin_driver": "b28e27f929d9deb6690e1dcbfa840a76ed2dd32e",
+    "wvs_runtime_package": "f016cdfdfd51e7973ab10b2196fe27ba5c90b3cd",
+    "runtime_packaging_binding": "b7f54e7e291790c0558cb7acd2a7697f66310d98",
+    "wvs_projection_materializer": "ec685803a7416032037ee415e8faf7bf60db8f1b",
+    "candidate_c_binding": "47893688ed455ced2c2f2311ad0aead6fb5bf2d2",
+    "t2_manifest": "49692c1c8527680c97af073039b36125edd7e56d",
+    "t5_contract": "839141fa41dde455b59501380f90e81f2b6f3ea3",
+    "r1m_wvs_oracle": "9eecf801afa2c9f3d9140b4e5fb79fb14fc1fe20",
+    "r1m_successor_lock2": "878a37817eb81468cc18c3c125d78ab0fc322536"
+  },
+  "qualification": {
+    "github_actions_run_id": 35650681794,
+    "tests_passed": 227,
+    "subtests_passed": 28,
+    "static_pass": true,
+    "lits_source_free_frontier_probe": true
+  },
+  "candidate_processes_started": 0,
+  "measured_p2x_run": false
+}
