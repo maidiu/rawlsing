@@ -22,25 +22,32 @@ def _j(x):
 def _inventory():
     validate_frozen_response_carrier(CARRIER)
     doc = json.loads(CARRIER.read_text(encoding="ascii"))
+    module = _materializer()
+    structural_doc, variables, _country = _structural_material(module)
+    qvars = {v.name: v for v in variables if v.name in QUESTIONS}
     out = {}
     for q in QUESTIONS:
         by = {}
+        variable = qvars[q]
         for row in doc["rows"]:
             cell = row[q]
             witness = cell["raw_physical_value_witness"]["$raw_physical_value"]
             token = witness["token"]
             raw = CODEC.decode(token)
-            state = cell["physical_missing_state"]
-            decl = cell["source_missing_declaration"]
+            state, decl = classify_physical_value(raw, variable.missing_declarations)
+            assert cell["physical_missing_state"] == state.value
+            packed_decl = None if decl is None else module._pack_missing_declaration(decl)
+            assert cell["source_missing_declaration"] == packed_decl
             key = physical_value_binding_key(raw, state, decl)
-            identity = (_j(token), state, _j(decl), key)
+            identity = (_j(token), state.value, _j(decl), key)
             rec = by.get(identity)
             if rec is None:
                 rec = {
                     "typed_raw_token": token,
                     "python_type_after_codec_decode": type(raw).__name__,
-                    "physical_missing_state": state,
+                    "physical_missing_state": state.value,
                     "source_missing_declaration": decl,
+                    "carrier_packed_source_missing_declaration": cell["source_missing_declaration"],
                     "physical_value_binding_key": key,
                     "occurrence_count": 0,
                     "first_row_ordinal": row["row_ordinal"],
