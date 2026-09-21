@@ -1,0 +1,84 @@
+{
+  "schema": "FIABC_LITS_A_PARENTAGE_RECOVERY_RETURN@1.0.0",
+  "worker": "FIABC-LITS-A-PARENTAGE-RECOVERY",
+  "repository": "maidiu/rawlsing",
+  "exact_base_commit": "357cc2ac6952a478fa2e38f9adbe45ebb3671081",
+  "branch": "agent/rabochii-premain-fiabc-lits-a-parentage-recovery-r1",
+  "terminal": "FIABC_LITS_A_PARENTAGE_RECOVERY_BOUNDED__MINIMAL_LOCAL_PARENTAGE_VERIFICATION_REQUIRED__NO_REBUILD_AUTHORIZED",
+  "preserved_work_status": "DERIVATIVE_PRESENT_BUT_CURRENTNESS_UNPROVED",
+  "accounting_status": "PRESERVED_SEMANTIC_EVIDENCE_WITHOUT_NUMERIC_TELEMETRY",
+  "historical_first_build": {
+    "commit": "02a7ff71ae65b1aa8c52add0b315244a9eaea9df",
+    "receipt_path": "WORKER_RETURNS/EE-P2X/01_LITS_I_A_FIRST_BUILD_STAGE.json",
+    "receipt_sha256": "5830aa25eccb7a0b70ee3fb70b2bd5d3a17c047bfd0f52faf19bdcd2f48e3558",
+    "raw_receipt_sha256": "89bd0719f0c546bc3e6e0d3ef7678c01c3fb3ab51cf0c82c84f9a343e08d5337",
+    "physical_root_id": "e8f37557493b816e4562f5f47df110cf49b429e9ead54e5b624d6638ee07aa3d",
+    "logical_stream_digest": "de8f060aa72eff7e45f8355ed683cb8ee4b6aca7ff255167cb41bcf8e5a7e3d6",
+    "canonical_rows": 34745595,
+    "final_shards": 2121,
+    "canonical_source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09"
+  },
+  "parentage_holding": {
+    "generic_r35_admissible": false,
+    "source_identity_proved": true,
+    "historical_derivative_identity_proved": true,
+    "source_verification_receipt_identity_from_first_build_proved": false,
+    "exact_historical_builder_blob_proved": false,
+    "complete_historical_build_config_proved": false,
+    "derivative_receipt_parented_to_source_receipt_proved": false,
+    "currentness_ownership_closure_proved": false,
+    "self_asserted_source_sha_sufficient": false
+  },
+  "archaeology": {
+    "r10l": "CORROBORATES_SAME_ROOT_AND_STREAM__NOT_HISTORICAL_PARENTAGE",
+    "p2r6o": "PRESERVES_OWNER_AND_STAGE__NO_PARENTAGE_EDGE",
+    "p2r6x": "PRESERVES_DURABLE_CARRIER_CLASS__NO_PARENTAGE_EDGE",
+    "lm1_r1a": "HISTORICAL_R5_PARENTAGE_NOT_PROVED_AFTER_14_EVIDENCE_CANDIDATES",
+    "lm1_r1c": "VALID_LATER_R35_BUNDLE_FOR_DIFFERENT_ROOT__NOT_SUBSTITUTABLE"
+  },
+  "later_replacement": {
+    "physical_root_id": "7d85c5e4c3a91c3f6dc8f7896fe487cda116fc8cf67f0ab263a2654ff938afcd",
+    "source_receipt_identity": "b0df3042e27fda2d3288d44fdc27d46ed4e4f393301dd781eff43b5a5f13bdf1",
+    "derivative_receipt_identity": "dbfe6014944a27ae9e31a32b201d9b8f2083111440ad435ea155583b6e4d33a4",
+    "bundle_identity": "8b63de4ea902350ce197bc3ed49b59259bef2ad400c9f3c7db65ac96b015ace7",
+    "admissible_as_parentage_for_historical_root": false
+  },
+  "live_producer_pin_conflict": {
+    "qualified_builder_blob": "92e364b31eaf27be1bca2081eff65f6ffb779c3d",
+    "live_backend_expected_builder_blob": "92e68693d72cbfcdd1c6d16e7f247ca3f60c8c55",
+    "repaired_by_this_worker": false
+  },
+  "minimal_local_fallback": {
+    "required": true,
+    "opens_raw_lits_source": false,
+    "opens_r5_member_payloads": false,
+    "rebuilds_candidate_a": false,
+    "runs_measured_p2x": false,
+    "verifier": "WORKER_RETURNS/FIABC-LITS-A-PARENTAGE-RECOVERY/06_VERIFY_PRESERVED_ARTIFACTS.py",
+    "goal": "inspect/hash already-preserved root metadata, member inventory, and original raw first-build receipt only"
+  },
+  "output_files": [
+    "WORKER_RETURNS/FIABC-LITS-A-PARENTAGE-RECOVERY/00_RETURN.md",
+    "WORKER_RETURNS/FIABC-LITS-A-PARENTAGE-RECOVERY/01_PRESERVED_BUILD_ARCHAEOLOGY.json",
+    "WORKER_RETURNS/FIABC-LITS-A-PARENTAGE-RECOVERY/02_SOURCE_AND_DERIVATIVE_IDENTITY_GRAPH.json",
+    "WORKER_RETURNS/FIABC-LITS-A-PARENTAGE-RECOVERY/03_R35_PARENTAGE_ADMISSION_COURT.md",
+    "WORKER_RETURNS/FIABC-LITS-A-PARENTAGE-RECOVERY/04_CURRENTNESS_HOLDING.json",
+    "WORKER_RETURNS/FIABC-LITS-A-PARENTAGE-RECOVERY/05_MINIMAL_LOCAL_FALLBACK.json",
+    "WORKER_RETURNS/FIABC-LITS-A-PARENTAGE-RECOVERY/06_VERIFY_PRESERVED_ARTIFACTS.py",
+    "WORKER_RETURNS/FIABC-LITS-A-PARENTAGE-RECOVERY/RETURN.json"
+  ],
+  "prohibitions_observed": {
+    "user_mac_used": false,
+    "raw_lits_source_opened": false,
+    "raw_wvs_source_opened": false,
+    "candidate_a_executed": false,
+    "candidate_b_executed": false,
+    "candidate_c_executed": false,
+    "measured_p2x_run": false,
+    "candidate_definition_changed": false,
+    "lock1_changed": false,
+    "lock2_changed": false,
+    "sibling_branch_merged_or_rebased": false,
+    "rebuild_authorized": false
+  }
+}
