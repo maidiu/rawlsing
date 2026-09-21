@@ -230,6 +230,16 @@ def test_wvs_adapter_rejects_predecessor_or_wrong_wrapper(tmp_path, monkeypatch)
         standardize_wvs_r1m_oracle(r1m_path=path, output_path=tmp_path / "out.json")
 
 
+def test_wvs_adapter_rejects_predecessor_authority_label(tmp_path, monkeypatch):
+    _bind_successor_wvs_law(monkeypatch)
+    doc = json.loads(R1M.read_text(encoding="utf-8"))
+    doc["successor_lock2"] = "8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188"
+    path = tmp_path / "predecessor.json"
+    _write(path, doc)
+    with pytest.raises(FinalOracleProducerError):
+        standardize_wvs_r1m_oracle(r1m_path=path, output_path=tmp_path / "out.json")
+
+
 def test_wvs_adapter_binds_exact_accepted_r1m_identities():
     doc = json.loads(R1M.read_text(encoding="utf-8"))
     assert doc["oracle_identity_sha256"] == R1M_ORACLE_IDENTITY
@@ -327,6 +337,22 @@ def test_t3_rejects_oracle_inside_candidate_owned_root(tmp_path):
         produce_t3_two_source_freeze(
             lits_oracle_path=lits,
             wvs_oracle_path=wvs,
+            work_root=work,
+            output_path=work / "freeze.json",
+        )
+
+
+def test_t3_rejects_missing_or_mutated_unverified_oracle(tmp_path):
+    work = tmp_path / "court"
+    work.mkdir()
+    lits = work / "lits.json"
+    doc = _lits_standard_oracle()
+    doc["expected_fact_manifest"][0]["typed_state"] = "MUTATED_AFTER_FREEZE"
+    _write(lits, doc)
+    with pytest.raises(Exception):
+        produce_t3_two_source_freeze(
+            lits_oracle_path=lits,
+            wvs_oracle_path=work / "missing-wvs.json",
             work_root=work,
             output_path=work / "freeze.json",
         )
