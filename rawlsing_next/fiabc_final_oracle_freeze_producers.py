@@ -341,7 +341,7 @@ def _neutral_lits_material(
         "frontier_seal": LITS_FRONTIER_SEAL,
         "ordered_candidate_hashes": hashes,
     }
-    if result.candidate_count != 50 or query_role_count != 77:
+    if result.candidate_count != LITS_CANDIDATE_COUNT or query_role_count != LITS_QUERY_ROLE_COUNT:
         raise FinalOracleProducerError("LiTS current neutral runtime is not exact 50/77")
 
     terminal_counts = dict(
