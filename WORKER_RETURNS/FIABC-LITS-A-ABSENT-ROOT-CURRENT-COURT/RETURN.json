@@ -1,0 +1,75 @@
+{
+  "schema": "FIABC_LITS_A_ABSENT_ROOT_CURRENT_COURT_RETURN@1.0.0",
+  "worker": "FIABC LiTS-A Absent Historical Root -> Current Court Disposition",
+  "repository": "maidiu/rawlsing",
+  "exact_base": "89bfde652eb8a983e51ff51f5258e5fdfbb2433b",
+  "branch": "agent/rabochii-premain-fiabc-lits-a-absent-root-current-court-r1",
+  "return_path": "WORKER_RETURNS/FIABC-LITS-A-ABSENT-ROOT-CURRENT-COURT/",
+  "status": "PASS",
+  "terminal": "FIABC_LITS_A_ABSENT_ROOT_CURRENT_COURT_PASS__NO_HISTORICAL_ROOT_REUSE__NO_PREBUILD_REQUIRED__ONE_GOVERNED_MEASURED_S01_BUILD_WILL_SUPPLY_CURRENT_PARENTAGE_AND_PHYSICAL_REALIZATION",
+  "consumed_local_verification": {
+    "branch": "agent/rabochii-premain-fiabc-lits-a-parentage-local-verify-r1",
+    "tip": "002e424294221f5edb73366286ffe6c8fb850a30",
+    "terminal": "FIABC_LITS_A_LOCAL_PARENTAGE_VERIFY__HISTORICAL_ROOT_NOT_PRESENT__NO_REBUILD_PERFORMED"
+  },
+  "disposition": {
+    "historical_root": "e8f37557493b816e4562f5f47df110cf49b429e9ead54e5b624d6638ee07aa3d",
+    "historical_root_state": "ABSENT",
+    "historical_semantic_build_evidence": "RETAINED_AS_HISTORY",
+    "current_physical_realization_before_s01": "ABSENT",
+    "preserved_s01_physical_work_credit": "ZERO__NOT_AVAILABLE",
+    "old_root_r35_parentage": "NOT_APPLICABLE_TO_CURRENT_EXECUTION_BECAUSE_ROOT_ABSENT",
+    "prebuild_required": false,
+    "current_s01": "ONE_GOVERNED_MEASURED_ABSENT_TARGET_BUILD"
+  },
+  "builder_pin": {
+    "qualified_owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+    "qualified_builder_blob": "92e364b31eaf27be1bca2081eff65f6ffb779c3d",
+    "stale_live_builder_blob": "92e68693d72cbfcdd1c6d16e7f247ca3f60c8c55",
+    "stale_live_blob_is_repository_object": false,
+    "accepted_builder_succession_to_stale_blob": false,
+    "holding": "STALE_MALFORMED_R35_POINTER__QUALIFIED_BUILDER_REMAINS_92E364",
+    "complete_five_pointer_repair_applied": true
+  },
+  "implementation": {
+    "current_manifest_path": "WORKER_RETURNS/FIABC-T2/01_SIX_CELL_EXECUTION_MANIFEST.json",
+    "current_first_unfinished_stage": "LITS_I/A/S01_CANDIDATE_PREPARATION_BUILD",
+    "live_driver": "rawlsing_next/ee_p2x_darwin_court_driver.py",
+    "live_backend": "rawlsing_next/ee_p2x_darwin_stage_backend.py",
+    "historical_continuation_mutated": false,
+    "candidate_a_meaning_changed": false,
+    "source_identity_changed": false,
+    "generic_r35_schema_changed": false,
+    "workload_changed": false
+  },
+  "source_free_court": {
+    "workflow": ".github/workflows/fiabc-lits-a-absent-root-current-court.yml",
+    "run_id": 35629679569,
+    "job_id": 106432556473,
+    "result": "23 passed in 0.21s",
+    "initial_infrastructure_only_run": {
+      "run_id": 35629611462,
+      "reason": "PYTHONPATH collection configuration; no court assertions executed"
+    }
+  },
+  "prohibited_execution": {
+    "user_mac_used": false,
+    "lits_source_opened": false,
+    "candidate_a_b_c_run": false,
+    "i03_run": false,
+    "i05_run": false,
+    "measured_p2x_run": false,
+    "historical_root_rebuilt": false
+  },
+  "prelaunch_holding": "NO_PREBUILD_REQUIRED__ABSENCE_HANDLED_INSIDE_MEASURED_LITS_A_S01",
+  "return_files": [
+    "WORKER_RETURNS/FIABC-LITS-A-ABSENT-ROOT-CURRENT-COURT/00_RETURN.md",
+    "WORKER_RETURNS/FIABC-LITS-A-ABSENT-ROOT-CURRENT-COURT/01_ABSENT_ROOT_DISPOSITION.json",
+    "WORKER_RETURNS/FIABC-LITS-A-ABSENT-ROOT-CURRENT-COURT/02_CURRENT_LITS_A_S01_EXECUTION_LAW.md",
+    "WORKER_RETURNS/FIABC-LITS-A-ABSENT-ROOT-CURRENT-COURT/03_BUILDER_PIN_COURT.md",
+    "WORKER_RETURNS/FIABC-LITS-A-ABSENT-ROOT-CURRENT-COURT/04_PRESERVED_WORK_ACCOUNTING_DELTA.json",
+    "WORKER_RETURNS/FIABC-LITS-A-ABSENT-ROOT-CURRENT-COURT/05_R35_NONDUPLICATION_PLAN.md",
+    "WORKER_RETURNS/FIABC-LITS-A-ABSENT-ROOT-CURRENT-COURT/06_FINAL_PRELAUNCH_EFFECT.json",
+    "WORKER_RETURNS/FIABC-LITS-A-ABSENT-ROOT-CURRENT-COURT/RETURN.json"
+  ]
+}
