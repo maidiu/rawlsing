@@ -391,52 +391,64 @@ def oracle_material_from_result(result, execution_receipt):
     }
     return material, constituent_facts, i03_closure
 
-# R16 primary materialization.
-result1 = executor.execute_i05(discovery_authority_ref=catalog.discovery_authority_refs[0])
-receipt1 = learned_empirical_execution_receipt(result1)
-material1, constituent1, closure1 = oracle_material_from_result(result1, receipt1)
-freeze_ctx = FreezeContext(
-    freeze_sequence=3,
-    candidate_outputs_seen=0,
-    candidate_owned_roots_consulted=(),
-    candidate_owned_state_reused=False,
-    candidate_output_first_sequence=None,
-)
-oracle1 = freeze_wvs7_oracle_from_common_material(material=material1, freeze=freeze_ctx)
-identity1 = verify_frozen_oracle(oracle1)
+# R16 admission preflight. Current generic I05 must accept the exact frozen
+# DiscoveryAuthority before any expected truth may be minted. Do not bypass its
+# fail-closed authority ceiling.
+discovery = catalog.discovery_authorities[0]
+validation_rules = canonicalize(discovery.validation_rules)
+allowed_validation_kinds = sorted(set(validation_rules.get("kinds", ())))
+grammar_rules = discovery.candidate_universe_definition.get("rules", ())
+used_validation_kinds = sorted({
+    rule.get("validation", {}).get("kind")
+    for rule in grammar_rules
+    if isinstance(rule, dict) and isinstance(rule.get("validation"), dict)
+})
+assert discovery.ref.content_hash == WVS7_DISCOVERY_AUTHORITY
+assert len(WVS7_ORDERED_CANDIDATE_HASHES) == 46
+assert used_validation_kinds == [
+    "DISTRIBUTION_DIFFERS_FROM_BASELINE",
+    "JOINT_NOT_PRODUCT_OF_MARGINALS",
+    "TARGET_CELL_SUPPORTED",
+]
+assert allowed_validation_kinds == []
 
-# Independent deterministic replay from the same admitted common C11 and frozen workload.
-replay_start = time.perf_counter()
-result2 = executor.execute_i05(discovery_authority_ref=catalog.discovery_authority_refs[0])
-receipt2 = learned_empirical_execution_receipt(result2)
-material2, constituent2, closure2 = oracle_material_from_result(result2, receipt2)
-oracle2 = freeze_wvs7_oracle_from_common_material(material=material2, freeze=freeze_ctx)
-identity2 = verify_frozen_oracle(oracle2)
-assert canonicalize(material1) == canonicalize(material2)
-assert canonicalize(receipt1) == canonicalize(receipt2)
-assert canonicalize(constituent1) == canonicalize(constituent2)
-assert closure1 == closure2
-assert identity1 == identity2
-assert canonicalize(oracle1) == canonicalize(oracle2)
-
-assert oracle1["frontier_manifest"]["candidate_count"] == 46
-assert tuple(oracle1["frontier_manifest"]["ordered_candidate_hashes"]) == tuple(WVS7_ORDERED_CANDIDATE_HASHES)
-assert oracle1["freeze_receipt"]["candidate_outputs_seen"] == 0
-assert oracle1["freeze_receipt"]["candidate_owned_roots_consulted"] == []
-assert oracle1["freeze_receipt"]["candidate_owned_state_reused"] is False
-
-telemetry["stages"].append({"stage": "R16_PRIMARY_ORACLE_MATERIALIZE_FREEZE", "seconds": time.perf_counter() - oracle_start, "status": "PASS"})
-telemetry["stages"].append({"stage": "R16_DETERMINISTIC_REPLAY", "seconds": time.perf_counter() - replay_start, "status": "PASS"})
+r16_blocker = {
+    "schema": "FIABC_LM2_R1K_R16_FRESH_WVS_ORACLE_BLOCKER@1.0.0",
+    "status": "BLOCKED__EXACT_DISCOVERY_VALIDATION_AUTHORITY_INCOMPLETE",
+    "oracle_materialized": False,
+    "oracle_identity_sha256": None,
+    "source_sha256": EXPECTED["source_sha256"],
+    "admitted_r15_release_ref": release.release_ref.as_dict(),
+    "discovery_authority_ref": discovery.ref.as_dict(),
+    "discovery_authority_validation_rules": validation_rules,
+    "allowed_validation_kinds": allowed_validation_kinds,
+    "frozen_candidate_grammar_validation_kinds": used_validation_kinds,
+    "generic_i05_guard": (
+        "used_validation <= validation_rules.kinds; otherwise "
+        "Pre553AuthorityError('candidate validation rule exceeds exact discovery validation authority')"
+    ),
+    "first_real_attempt": {
+        "github_actions_run_id": 35583650883,
+        "github_actions_job_id": 106281910026,
+        "head_sha": "e93aabb3496b2f5242158d21ea3aa72c6c35e464",
+        "r1j_c11_precheck": "35 passed in 37.37s",
+        "r15_reached_and_completed_before_r16_i05_call": True,
+        "exception": "Pre553AuthorityError: candidate validation rule exceeds exact discovery validation authority",
+    },
+    "lock2_reissue_permitted_by_commission": False,
+    "authority_bypass_permitted": False,
+    "candidate_outputs_consulted": 0,
+    "candidate_processes_started": 0,
+    "old_oracle_reused": False,
+    "stop_law": "FAIL_CLOSED__DO_NOT_MINT_ORACLE_FROM_UNAUTHORIZED_VALIDATION_EXECUTION",
+}
 
 independence = {
     "schema": "FIABC_LM2_R1K_ORACLE_INDEPENDENCE_PROOF@1.0.0",
-    "status": "PASS",
-    "oracle_identity_sha256": identity1,
-    "source_identity_freeze_sequence": 1,
-    "authority_workload_freeze_sequence": 2,
-    "oracle_materialize_freeze_sequence": 3,
+    "status": "BLOCKED_BEFORE_ORACLE_FREEZE",
+    "oracle_constructed": False,
+    "oracle_constructed_before_candidate_start": False,
     "candidate_process_start_sequence": None,
-    "oracle_constructed_before_candidate_start": True,
     "candidate_outputs_consulted": 0,
     "candidate_processes_started": 0,
     "candidate_owned_roots_consulted": [],
@@ -444,31 +456,24 @@ independence = {
     "pairwise_candidate_vote_used": False,
     "first_successful_candidate_used_as_golden": False,
     "frontier_candidate_count": 46,
-    "frontier_exact_order_match": True,
+    "frontier_exact_order_conserved": True,
     "family_counts": dict(WVS7_FAMILY_COUNTS),
     "pruning_performed": False,
-    "deterministic_second_i05_material_equal": True,
-    "deterministic_second_constituent_i03_equal": True,
-    "deterministic_second_oracle_byte_semantics_equal": True,
-    "truth_payload_identity": semantic_hash(material1),
-    "constituent_i03_closure_identity": closure1,
-    "expected_learned_product_identity": oracle1["expected_learned_product"]["product_identity"],
-    "expected_replay_identity": oracle1["expected_learned_product"]["replay_identity"],
+    "deterministic_oracle_replay_performed": False,
+    "truth_payload_identity": None,
+    "blocker": "DISCOVERY_AUTHORITY_VALIDATION_RULE_KINDS_ABSENT",
     "typed_negative_state_law": canonicalize(NEGATIVE_STATE_LAW),
     "wvs_special_states_bound_in_authority_freeze": authority_freeze["source_special_states"],
 }
 
 frontier_conservation = {
     "schema": "FIABC_LM2_R1K_LOCK2_FRONTIER_CONSERVATION@1.0.0",
-    "status": "PASS",
+    "status": "PASS__LOCK2_AND_PREOUTCOME_FRONTIER_UNCHANGED",
     "lock2": WVS7_LOCK2_IDENTITY,
     "lock2_replay": WVS7_LOCK2_REPLAY_IDENTITY,
-    "candidate_grammar": result1.candidate_grammar_ref.content_hash,
-    "evaluated_frontier_ref": result1.evaluated_frontier_ref.as_dict(),
-    "discovery_authority": result1.discovery_authority_ref.as_dict(),
-    "candidate_count": result1.candidate_count,
-    "covered_candidate_count": result1.covered_candidate_count,
-    "coverage_claim": result1.coverage_claim,
+    "candidate_grammar": EXPECTED["candidate_grammar"],
+    "discovery_authority": discovery.ref.as_dict(),
+    "candidate_count": 46,
     "ordered_candidate_hashes": list(WVS7_ORDERED_CANDIDATE_HASHES),
     "family_counts": dict(WVS7_FAMILY_COUNTS),
     "predicate_refs": [p.ref.as_dict() for p in catalog.predicates],
@@ -477,11 +482,9 @@ frontier_conservation = {
     "frontier_mutated": False,
     "pruning_performed": False,
     "lock2_mutated": False,
+    "r16_execution_admitted": False,
 }
 
-# Original R1C R01-R18 final ledger. R01-R14/R17-R18 were accepted source-free
-# at R1E and R1J's current hostile regression proves its bounded successor did not
-# weaken those laws. R15/R16 are proved by this current real-material court.
 rows = []
 for n in range(1, 19):
     case = f"R{n:02d}"
@@ -489,7 +492,7 @@ for n in range(1, 19):
         disposition = "PASS__CURRENT_R1K_REAL_MATERIAL_STRICT_COMMON_C11"
         evidence = "02_R15_COMMON_C11_RECEIPT.json"
     elif n == 16:
-        disposition = "PASS__CURRENT_R1K_FRESH_INDEPENDENT_ORACLE"
+        disposition = "BLOCKED__DISCOVERY_AUTHORITY_VALIDATION_RULE_KINDS_ABSENT"
         evidence = "04_R16_FRESH_WVS_ORACLE.json"
     else:
         disposition = "PASS__R1E_SOURCE_FREE_ACCEPTED_AND_R1J_SUCCESSOR_REGRESSION_CONSERVED"
@@ -500,37 +503,51 @@ ledger = '"case","final_disposition","evidence"\n' + "".join(
     f'"{case}","{disposition}","{evidence}"\n' for case, disposition, evidence in rows
 )
 
+telemetry["stages"].append({
+    "stage": "R16_DISCOVERY_AUTHORITY_ADMISSION_PREFLIGHT",
+    "seconds": time.perf_counter() - oracle_start,
+    "status": "BLOCKED_FAIL_CLOSED",
+    "allowed_validation_kinds": allowed_validation_kinds,
+    "used_validation_kinds": used_validation_kinds,
+})
 telemetry["total_seconds"] = time.perf_counter() - started
-telemetry["neutral_i05_executions"] = 2
-telemetry["neutral_constituent_i03_replay_passes"] = 2
+telemetry["neutral_i05_executions_this_confirmatory_run"] = 0
+telemetry["first_real_i05_attempt_run_id"] = 35583650883
+telemetry["first_real_i05_attempt_result"] = (
+    "BLOCKED__Pre553AuthorityError__candidate_validation_rule_exceeds_exact_discovery_validation_authority"
+)
 telemetry["candidate_a_b_c_processes_started"] = 0
 telemetry["candidate_outputs_consulted"] = 0
 telemetry["raw_wvs_source_reads"] = 0
 telemetry["persisted_carrier_reads"] = 1
-telemetry["terminal"] = "R1K_EXECUTION_COMPLETE__NO_CANDIDATE_START"
+telemetry["terminal"] = (
+    "BLOCKED__FIABC_LM2_R1K_R16__LOCK2_DISCOVERY_AUTHORITY_VALIDATION_KIND_ENVELOPE_INCOMPLETE"
+)
 
 emit_json("01_R1J_CONSERVATION_RECEIPT.json", gate1)
 emit_json("02_R15_COMMON_C11_RECEIPT.json", r15)
 emit("03_R01_R18_FINAL_LEDGER.csv", ledger)
-emit_json("04_R16_FRESH_WVS_ORACLE.json", oracle1)
+emit_json("04_R16_FRESH_WVS_ORACLE.json", r16_blocker)
 emit_json("05_ORACLE_INDEPENDENCE_PROOF.json", independence)
 emit_json("06_LOCK2_FRONTIER_CONSERVATION.json", frontier_conservation)
 emit_json("07_COMMAND_TELEMETRY.json", telemetry)
 
 summary = {
-    "status": "PASS",
+    "status": "BLOCKED_AT_R16",
     "r15_release": release.release_ref.content_hash,
     "r15_replay": release.replay_manifest.ref.content_hash,
     "projection_identity": projection.projection_identity_ref.content_hash,
-    "oracle_identity": identity1,
-    "truth_payload_identity": independence["truth_payload_identity"],
-    "i03_closure_identity": closure1,
-    "i05_execution_identity": receipt1["execution_identity"],
-    "i05_replay_identity": result1.replay_ref.content_hash,
-    "candidate_count": result1.candidate_count,
+    "r16_oracle_identity": None,
+    "discovery_authority": discovery.ref.content_hash,
+    "allowed_validation_kinds": allowed_validation_kinds,
+    "used_validation_kinds": used_validation_kinds,
+    "lock2": WVS7_LOCK2_IDENTITY,
+    "candidate_count": 46,
     "family_counts": dict(WVS7_FAMILY_COUNTS),
     "candidate_processes_started": 0,
     "candidate_outputs_consulted": 0,
 }
 print("R1K_SUMMARY=" + json.dumps(summary, sort_keys=True, separators=(",", ":")))
-print("FIABC_LM2_R1K_EXECUTION_PASS__R15_STRICT_COMMON_C11__R16_FRESH_INDEPENDENT_ORACLE")
+print(
+    "BLOCKED__FIABC_LM2_R1K_R16__LOCK2_DISCOVERY_AUTHORITY_VALIDATION_KIND_ENVELOPE_INCOMPLETE"
+)
