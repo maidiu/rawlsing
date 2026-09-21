@@ -1,0 +1,92 @@
+{
+  "schema": "FIABC_LM2_R1J_B_Q291_TYPE_HOLDING@1.0.0",
+  "status": "PASS",
+  "disposition": "EXACT_BROWSER_ACCESSIBLE_Q291_VARIABLE_TYPE_EVIDENCE_RECOVERED",
+  "terminal": "FIABC_LM2_R1J_B_Q291_METADATA_PASS__EXACT_BROWSER_ACCESSIBLE_Q291_VARIABLE_TYPE_EVIDENCE_RECOVERED",
+  "source": {
+    "family": "WVS",
+    "release": "W7",
+    "canonical_filename": "WVS Wave 7.sav",
+    "sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+    "byte_count": 185163494,
+    "rows": 97220,
+    "variables": 613
+  },
+  "evidence": {
+    "exact_artifact": "WORKER_RETURNS/FIABC-LM2/wvs7_physical_evidence_material.json",
+    "git_blob_sha": "0b4012e85c65440df36475153a8ce0cd6d68e4e8",
+    "producing_return_commit": "bf0f4ebb00e7304e1cda29f7ca9b6595fff248dc",
+    "expectation_identity": "9845c24da0c03adb4dfd65118b7c8c39a60a30337f33cc4177ffc6c848d02390",
+    "variable_inventory_order_digest": "c157802e0016b2c9045177f3ed76e8369db47ad433b0489cfeee4de748886e66",
+    "physical_metadata_digest": "ac24f5a7a624587c0072b9af937cd3d10abc7fdcd3537e7a2d2b98480d187110",
+    "physical_metadata_receipt_identity": "97ced560ffb07620809dbeeeb6d01823782227c9bdf4764bb9dae29b134121c7",
+    "verification_state": "VERIFIED",
+    "physical_expectation_status": "PASS_PHYSICAL_ONLY",
+    "semantic_or_certification_authority": false
+  },
+  "decoder_context": {
+    "reader": "pyreadstat",
+    "reader_version": "1.3.6",
+    "source_format": "SAV",
+    "decoder_implementation": "rawlsing_next/pre553_physical_decoder.py",
+    "decoder_blob": "86109c4a0b7ebd9b66e3b531b6334bfb48f03f78",
+    "metadataonly": true,
+    "apply_value_formats": false,
+    "user_missing": true,
+    "encoding_override": null,
+    "storage_type_origin": "metadata.readstat_variable_types[name]",
+    "original_format_origin": "metadata.original_variable_types[name]"
+  },
+  "variables": [
+    {
+      "name": "Q291G5",
+      "ordinal": 388,
+      "declared_storage_type": "double",
+      "original_display_format": "F3.0",
+      "storage_width": 8,
+      "display_width": 8,
+      "measure": "nominal",
+      "missing_declaration": {
+        "kind": "range",
+        "lo": -5,
+        "hi": -1
+      }
+    },
+    {
+      "name": "Q291P5",
+      "ordinal": 394,
+      "declared_storage_type": "double",
+      "original_display_format": "F3.0",
+      "storage_width": 8,
+      "display_width": 8,
+      "measure": "nominal",
+      "missing_declaration": {
+        "kind": "range",
+        "lo": -5,
+        "hi": -1
+      }
+    }
+  ],
+  "historical_loss": {
+    "state": "CAPTURED_AND_PERSISTED_THEN_DISCARDED_IN_R6S_STRUCTURAL_PREIMAGE",
+    "materializer": "WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py",
+    "materializer_blob": "d1dfe705fa4da56036bd472af18536da1f69d4ad",
+    "first_loss": "inspect_wvs_sav_structure_and_country constructs PhysicalVariable(storage_type=None)",
+    "durable_loss": "projection_structural_input omits storage_type and materialize_from_structural_input recreates None"
+  },
+  "authority_ceiling": {
+    "proves": [
+      "The exact Q291G5 SAV variable is declared ReadStat storage type double at ordinal 388 under the accepted frozen physical decoder context.",
+      "The exact Q291P5 SAV variable is declared ReadStat storage type double at ordinal 394 under the accepted frozen physical decoder context."
+    ],
+    "does_not_prove": [
+      "float64 1.0 means native WVS response code 1",
+      "generic integer/float equivalence",
+      "source-native response semantics",
+      "native-to-program mapping",
+      "cross-source relation",
+      "pyreadstat 1.3.2 and 1.3.6 representation parity"
+    ]
+  },
+  "worker_a_dependency": "Representation/version parity for pyreadstat 1.3.2 carrier production versus 1.3.6 frozen physical expectation remains independent and unresolved by this holding."
+}
