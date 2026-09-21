@@ -1,0 +1,186 @@
+{
+  "schema": "CLOSED35_R3_EVS1990_PHYSICAL_EDGE_BINDING@1.0.0",
+  "source": {
+    "family": "EVS",
+    "wave": "1990",
+    "canonical_filename": "EVS 1990.sav",
+    "canonical_sha256": "66252a92c59bf6759b79a6b35b2be658b98a433373212a70c8ec94755d3e02ec",
+    "format": "SAV",
+    "authority_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+    "accepted_decoder_condition": "SAV_SOURCE_DECLARED_WINDOWS1252",
+    "source_declared_encoding": "windows-1252",
+    "machine_character_code": 1252,
+    "replay_identity": "SOURCE_SHA256+ZERO_BASED_SOURCE_ROW_ORDINAL",
+    "inherited_rows": 38213,
+    "inherited_variables": 390
+  },
+  "candidate_neutral_semantic_binding": {
+    "semantic_owner": "EVS1990_SEMANTIC_OWNER_V1",
+    "semantic_owner_surface": "PRE553_SOURCE_BACKED_C11_FACADE@1.0.0",
+    "candidate_specific_semantics_allowed": false,
+    "routing_from_missingness": false,
+    "native_id_as_replay_key": false,
+    "cross_wave_semantic_import": false
+  },
+  "applicable_s35_edge_classes": [
+    {
+      "id": "EC01",
+      "name": "FORMAT_FAMILY_SAV_DTA",
+      "required_dimensions": ["physical_metadata", "variable_inventory_order", "raw_storage_values", "row_replay_identity"],
+      "semantic_boundary": "SAV representation does not supply survey semantics."
+    },
+    {
+      "id": "EC02",
+      "name": "EXPLICIT_TEXT_DECODING_MODE",
+      "binding": {
+        "mode": "SAV_SOURCE_DECLARED_WINDOWS1252",
+        "source_declared_encoding": "windows-1252",
+        "machine_character_code": 1252,
+        "automatic_encoding_guessing_allowed": false,
+        "later_wave_compatibility_rule_import_allowed": false
+      },
+      "required_dimensions": ["physical_metadata", "reader_configuration_digest"],
+      "semantic_boundary": "Reader configuration is physical authority only."
+    },
+    {
+      "id": "EC05",
+      "name": "PHYSICAL_MISSINGNESS_MULTICLASS",
+      "binding": {
+        "q745_source_ordinal": 389,
+        "q745_user_missing_range": [{"lo": -5, "hi": -1}],
+        "q745_observed_all_row_raw_code": -5,
+        "q745_rows_seen": 38213,
+        "q745_user_missing_count": 38213,
+        "q745_ordinary_present_count": 0,
+        "q745_system_missing_count": 0,
+        "routing_from_missingness_allowed": false
+      },
+      "required_dimensions": ["raw_storage_values", "typed_missingness", "source_missing_declarations"],
+      "semantic_boundary": "Physical user-missing state does not authorize routing or a substantive missing reason."
+    },
+    {
+      "id": "EC06",
+      "name": "ALL_MISSING_COLUMN_RETENTION",
+      "binding": {
+        "required_variable": "q745",
+        "source_ordinal": 389,
+        "column_deletion_allowed": false,
+        "source_cell_absence_substitution_allowed": false,
+        "generic_null_substitution_allowed": false
+      },
+      "required_dimensions": ["variable_inventory_order", "raw_storage_values", "typed_missingness", "source_missing_declarations"],
+      "semantic_boundary": "All-user-missing does not mean nonexistent."
+    },
+    {
+      "id": "EC09",
+      "name": "ORDERED_REPEATED_SLOT_TOPOLOGY",
+      "binding": {
+        "triplets": [
+          ["q530a", "f530a", "q531b"],
+          ["q532a", "f532a", "q533b"]
+        ],
+        "source_ordinals": [
+          [271, 272, 273],
+          [274, 275, 276]
+        ],
+        "flattening_allowed": false,
+        "reordering_allowed": false,
+        "flag_deletion_allowed": false
+      },
+      "required_dimensions": ["variable_inventory_order", "ordered_repeated_slot_topology"],
+      "semantic_boundary": "Ranked topology is source-local and cannot be replaced by another EVS release."
+    },
+    {
+      "id": "EC12",
+      "name": "WEIGHT_DESIGN_MULTIPLICITY_AND_DOMAIN",
+      "binding": {
+        "preserve_carriers": [
+          {"ordinal": 11, "variable": "weight_g"},
+          {"ordinal": 12, "variable": "weight_s"}
+        ],
+        "carrier_aliasing_allowed": false,
+        "default_weight": null,
+        "default_estimand": null,
+        "automatic_survey_design_semantics": false,
+        "bounded_unknowns": [
+          "BOUNDED_UNKNOWN__WEIGHT_G_ESTIMAND",
+          "BOUNDED_UNKNOWN__WEIGHT_S_ESTIMAND",
+          "BOUNDED_UNKNOWN__WEIGHT_G_WEIGHT_S_RELATION_AND_DEFAULT_USE"
+        ]
+      },
+      "required_dimensions": ["weight_design_carriers"],
+      "semantic_boundary": "Presence/name does not authorize weight use, relationship, normalization, or estimand."
+    },
+    {
+      "id": "EC13",
+      "name": "SOURCE_LOCAL_COORDINATE_CARRIERS",
+      "binding": {
+        "preserve_split_companions": ["country1", "c_abrv1", "cntry1_y"],
+        "base_and_split_aliasing_allowed": false,
+        "cross_release_harmonization_allowed": false,
+        "unknown_state": "BOUNDED_UNKNOWN__CROSS_RELEASE_COORDINATE_EQUIVALENCE"
+      },
+      "required_dimensions": ["source_local_coordinate_carriers"],
+      "semantic_boundary": "Release-specific coordinate carriers survive without cross-wave harmonization."
+    }
+  ],
+  "r35_hooks": {
+    "i01": {
+      "accepted_worker_branch": "agent/rabochii-premain-fiabc-r35-i01-raw-layout-metadata-r1",
+      "schema": "PRE553_PHYSICAL_METADATA@1.0.0",
+      "semantic_authority": false
+    },
+    "i02": {
+      "accepted_worker_branch": "agent/rabochii-premain-fiabc-r35-i02-derivative-parentage-r1",
+      "source_receipt_schema": "FIABC_CANONICAL_SOURCE_VERIFICATION_RECEIPT@1.0.0",
+      "derivative_receipt_schema": "FIABC_DERIVATIVE_PARENTAGE_RECEIPT@1.0.0",
+      "bundle_schema": "FIABC_DERIVATIVE_PARENTAGE_BUNDLE@1.0.0",
+      "required_for_non_direct_raw_or_persisted_derivative": true,
+      "semantic_authority": false
+    },
+    "i03": {
+      "accepted_worker_branch": "agent/rabochii-premain-fiabc-r35-i03-physical-equivalence-r1",
+      "source_scope_schema": "FIABC_R35_I03_SOURCE_PHYSICAL_SCOPE@1.0.0",
+      "expectation_schema": "FIABC_R35_I03_CANONICAL_PHYSICAL_EXPECTATION@1.0.0",
+      "candidate_realization_schema": "FIABC_R35_I03_CANDIDATE_PHYSICAL_REALIZATION@1.0.0",
+      "receipt_schema": "FIABC_R35_I03_WHOLE_SOURCE_PHYSICAL_EQUIVALENCE_RECEIPT@1.0.0",
+      "required_candidates": ["A", "B", "C"],
+      "applicable_edge_classes": ["EC01", "EC02", "EC05", "EC06", "EC09", "EC12", "EC13"],
+      "required_dimensions": [
+        "physical_metadata",
+        "variable_inventory_order",
+        "raw_storage_values",
+        "typed_missingness",
+        "source_missing_declarations",
+        "all_missing_column_presence",
+        "row_replay_identity",
+        "reader_configuration_digest",
+        "ordered_repeated_slot_topology",
+        "weight_design_carriers",
+        "source_local_coordinate_carriers"
+      ],
+      "pass_state": "PHYSICAL_EQUIVALENCE_PASS__NOT_SEMANTIC_OR_CERTIFICATION_PASS",
+      "semantic_authority": false
+    }
+  },
+  "bounded_unknowns": [
+    "BOUNDED_UNKNOWN__NATIVE_ID_SCOPE",
+    "BOUNDED_UNKNOWN__WEIGHT_G_ESTIMAND",
+    "BOUNDED_UNKNOWN__WEIGHT_S_ESTIMAND",
+    "BOUNDED_UNKNOWN__WEIGHT_G_WEIGHT_S_RELATION_AND_DEFAULT_USE",
+    "BOUNDED_UNKNOWN__CROSS_RELEASE_COORDINATE_EQUIVALENCE"
+  ],
+  "qualification_boundary": {
+    "source_specific_realization_implemented": true,
+    "tests_authored": true,
+    "tests_executed_by_worker": false,
+    "tests_status": "TESTS_AUTHORED__NOT_EXECUTED",
+    "raw_sav_opened": false,
+    "real_source_processing_executed": false,
+    "whole_source_physical_equivalence_receipt_materialized": false,
+    "abc_executed": false,
+    "i05_passed": false,
+    "measured_p2x_run": false,
+    "source_certified_beyond_accepted_authority": false
+  }
+}
