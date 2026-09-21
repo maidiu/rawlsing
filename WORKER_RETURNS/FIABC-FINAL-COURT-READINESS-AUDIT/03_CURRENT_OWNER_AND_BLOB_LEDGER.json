@@ -1,0 +1,87 @@
+{
+  "schema": "FIABC_FINAL_COURT_CURRENT_OWNER_AND_BLOB_LEDGER@1.0.0",
+  "audited_head": "74205b23f546d78fed449c2f351a714be184ed8c",
+  "qf1_r1_qualification_commit": "0bac08af6e57145c3c2dcd1a4e6b38fe1927aa62",
+  "ancestry": {
+    "status": "DIRECT_DESCENDANT",
+    "ahead_by": 85,
+    "behind_by": 0,
+    "merge_base": "0bac08af6e57145c3c2dcd1a4e6b38fe1927aa62"
+  },
+  "frozen_candidate_owners": {
+    "A": {
+      "commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+      "path": "rawlsing_next/pre553_r5_source_backed_adapter.py",
+      "blob": "d4915e7e6755ba1850756aebff72f982f73a332b",
+      "meaning": "PERSISTENT_R5_LONG_COMPACT_V2_SERIAL_V4",
+      "current_disposition": "FROZEN_OWNER_IDENTITY_PRESERVED"
+    },
+    "B": {
+      "commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+      "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+      "frozen_blob": "7c509c2098d0030f253344eb3f682471378812a8",
+      "qf1_blob": "c3647800f52fa81fdef34be6692207e092c48ee2",
+      "current_blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+      "meaning": "SOURCE_BACKED_VIRTUAL_C11_ZERO_RETAINED_TRANSFORMED_EMPIRICAL_PAYLOAD",
+      "current_disposition": "SUCCESSOR_IMPLEMENTATION__MEANING_CONSERVED__REQUALIFICATION_REQUIRED"
+    },
+    "C": {
+      "commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+      "path": "rawlsing_next/pre553_route_c_accelerators.py",
+      "blob": "abfdc91a71ef5e18c4a8a6bf62fa65750d8d9889",
+      "candidate_hash": "a476e6e44c21b8029ae5d3e6d387428a5fa19549a2126d61aae7c71c50c64a3c",
+      "current_binder_path": "rawlsing_next/pre553_candidate_c_production_binding.py",
+      "current_binder_blob": "347f65d8e18fa5d64ba057439c32b652a73dd6e7",
+      "current_disposition": "POLICY_AND_BINDER_PRESERVED__DELEGATED_COMMON_FACADE_CHANGED"
+    }
+  },
+  "live_execution": {
+    "driver": ["rawlsing_next/ee_p2x_darwin_court_driver.py", "4500cbb149fa187a766aca71568dc1f205a4c367", "UNCHANGED_SINCE_QF1"],
+    "backend": ["rawlsing_next/ee_p2x_darwin_stage_backend.py", "1c0778900fef695df063c37959f9db48c9cf505a", "UNCHANGED_SINCE_QF1"],
+    "process_envelope": ["rawlsing_next/ee_p2x_candidate_process_envelope.py", "e8b653991887855ac7dee730bb19706219332422", "UNCHANGED"],
+    "isolated_backend": ["rawlsing_next/ee_p2x_process_isolated_backend.py", "b36faf5af98b49a4b11c408402229cff02aad7bc", "UNCHANGED"],
+    "telemetry": ["rawlsing_next/fiabc_telemetry_semantics.py", "d061cd0f3c595c100ea728520fb0892404a2ca9b", "UNCHANGED"],
+    "lifecycle": ["rawlsing_next/fiabc_lifecycle_accounting.py", "a2977ea22fe67858a2a811917bd7ac0f4b7350c7", "UNCHANGED"],
+    "accounting_bridge": ["rawlsing_next/fiabc_live_accounting_binding.py", "db5966f9c1e075f5aa255c46c5f587d7f5eddccd", "UNCHANGED"],
+    "terminal_control": ["rawlsing_next/fiabc_live_terminal_control.py", "23624e5d8c6af9d0c8a2d825b1ef6313c223d5f2", "UNCHANGED"],
+    "i07": ["rawlsing_next/fiabc_succession_preflight.py", "e9591b3f4beba3a5aa35039edc85163635582959", "UNCHANGED"],
+    "i08": ["rawlsing_next/fiabc_p2_terminal_verifier.py", "c9d31ae48f4ab338a29f3054f866cd5ae51e7142", "UNCHANGED"]
+  },
+  "r35": {
+    "physical_decoder": ["rawlsing_next/pre553_physical_decoder.py", "86109c4a0b7ebd9b66e3b531b6334bfb48f03f78"],
+    "parentage": ["rawlsing_next/fiabc_derivative_parentage.py", "95d806a709ef4f4a0f33a8bf15b122a721a72e68"],
+    "physical_equivalence": ["rawlsing_next/fiabc_whole_source_physical_equivalence.py", "acdbc3f99f38d228d20d6a27ab7e89558af354af"],
+    "live_guard": ["rawlsing_next/fiabc_live_r35_guard.py", "707d1daa692bdaed23dbbdf073c594f180452bab"],
+    "driver_integrated": false,
+    "admission_law": "EXTERNAL_PRE_ADMISSION_CONTROL_GATE"
+  },
+  "post_qf1_changed_selection_surfaces": {
+    "common_facade": {
+      "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+      "qf1_blob": "c3647800f52fa81fdef34be6692207e092c48ee2",
+      "current_blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+      "impact": "DIRECT_B_AND_C_COMMON_C11_SURFACE__REQUALIFY"
+    },
+    "independent_oracle": {
+      "path": "rawlsing_next/pre553_independent_parity_oracle.py",
+      "qf1_blob": "b23bbea7cf7af28fa04ada5eaf2670b4a9691776",
+      "current_blob": "2b2b5fb869e8a1a47814dc8aaa7ff2e2ae20e757",
+      "impact": "T3_T5_CONTROL_SURFACE__REQUALIFY_AND_REFRESH_CONTRACT_PIN"
+    },
+    "repo_local_r5_codec": {
+      "path": "rawlsing_next/pre553_r5_codec.py",
+      "current_blob": "72f8f3c03ed065e86fea4e76bb17f8e06c2bf540",
+      "owner_commit_blob": "72f8f3c03ed065e86fea4e76bb17f8e06c2bf540",
+      "byte_exact_to_owner": true,
+      "backend_fallback_pin": "72f8e8a2b6b2330332030e3978077c11e38ec8db",
+      "impact": "CURRENT_REPO_IMPORT_IS_EXACT_OWNER; FALLBACK_DEPLOY_PIN_MUST_BE_COVERED_BY_PACKAGING_REQUALIFICATION"
+    }
+  },
+  "wvs_runtime_package": {
+    "live_materializer": ["rawlsing_next/runtime/ee_p2x/05_WVS7_PROJECTION_MATERIALIZER.py", "11b28416aac5a4899706150721f2f8ac8bb6ee43"],
+    "r1e_repaired_return_materializer": ["WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py", "d1dfe705fa4da56036bd472af18536da1f69d4ad"],
+    "backend_current_projection_constant": "838070ff6b85d60d4f26f9153b0507ba425936c11a3de94a18d57bfcd083f24d",
+    "r1e_repaired_projection_identity": "8d6ee3fac396d7bd0e0afdf2f4fb13bcc8f040e53d63dd4c0d559b65c9ade4df",
+    "holding": "LIVE_PACKAGE_MUST_BE_REBOUND_TO_FINAL_POST_R1J_R6S_IDENTITY_BEFORE_WVS_EXECUTION"
+  }
+}
