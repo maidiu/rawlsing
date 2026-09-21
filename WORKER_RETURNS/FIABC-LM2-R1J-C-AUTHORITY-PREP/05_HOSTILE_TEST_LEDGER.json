@@ -1,0 +1,101 @@
+{
+  "schema": "FIABC_LM2_R1J_C_HOSTILE_TEST_LEDGER@1.0.0",
+  "status": "PASS__SOURCE_FREE_SYNTHETIC_PREMISES_ONLY",
+  "authoritative_run": {
+    "workflow": "Rabochii Governed Bounded Court",
+    "run_id": 35581314281,
+    "job_id": 106274604015,
+    "evidence_execution_sha": "a8b6f2bba08fa520dd242258f0a6bd924a3dd8a7",
+    "pr_synthetic_sha": "e7e4e2cababfc5e9152918ae6bb379f02a24990a",
+    "protocol_self_court": {
+      "passed": 20,
+      "failed": 0,
+      "duration_seconds": 0.06
+    },
+    "worker_c_court": {
+      "passed": 12,
+      "failed": 0,
+      "duration_seconds": 0.21
+    },
+    "test_path": "rawlsing_next/tests/test_fiabc_lm2_r1j_c_representation_authority_prep.py"
+  },
+  "non_authoritative_debug_run": {
+    "run_id": 35581066399,
+    "job_id": 106273815934,
+    "evidence_execution_sha": "63e4800f2ef3ff5965d637e3cabd393ec5651b6d",
+    "result": "8_FAILED_4_PASSED",
+    "cause": "representation authority fingerprint used caller insertion order while AuthoritySnapshot canonicalizes set-like reference fields",
+    "correction": "sort parent authority refs, dependency refs, and negative-limit refs before fingerprint hashing",
+    "semantic_change": false
+  },
+  "propositions": [
+    {
+      "id": "H01",
+      "test": "test_global_int_and_float_physical_keys_remain_distinct",
+      "holding": "PASS__R5 physical keys for int 1 and float 1.0 remain distinct globally"
+    },
+    {
+      "id": "H02",
+      "test": "test_no_generic_integral_float_coercion_exists",
+      "holding": "PASS__native_code=1.0 rejected; native input must be exact int"
+    },
+    {
+      "id": "H03",
+      "test": "test_exact_authorized_source_variable_native_code_representation_succeeds",
+      "holding": "PASS__explicit synthetic source+variable+native+decoder authority yields exact float physical key without changing R5"
+    },
+    {
+      "id": "H04",
+      "test": "test_same_representation_on_another_source_fails_closed",
+      "holding": "PASS__same representation is not portable to another source"
+    },
+    {
+      "id": "H05",
+      "test": "test_same_representation_on_another_variable_fails_closed",
+      "holding": "PASS__same representation is not portable to an unlisted variable"
+    },
+    {
+      "id": "H06",
+      "test": "test_unlisted_numeric_value_fails_closed",
+      "holding": "PASS__unlisted native code 6 cannot acquire a binding"
+    },
+    {
+      "id": "H07",
+      "test": "test_special_code_receives_source_state_but_no_canonical_mapping_surface",
+      "holding": "PASS__special -1/DK can bind representation but exposes no canonical_value surface"
+    },
+    {
+      "id": "H08",
+      "test": "test_r1e_native_to_program_mapping_authority_cannot_authorize_a_to_b",
+      "holding": "PASS__R1E NATIVE_CANONICAL_MAPPING_HARMONIZATION rejected by A->B authority-kind gate"
+    },
+    {
+      "id": "H09",
+      "test": "test_representation_authority_keeps_canonical_question_mapping_absent",
+      "holding": "PASS__canonical question mapping remains ABSENT_NOT_AUTHORIZED and native-to-canonical remains OUT_OF_SCOPE"
+    },
+    {
+      "id": "H10",
+      "test": "test_representation_authority_keeps_cross_source_relation_absent",
+      "holding": "PASS__cross-source relation remains NONE_AUTHORIZED"
+    },
+    {
+      "id": "H11",
+      "test": "test_candidate_output_cannot_substitute_for_required_upstream_evidence_class",
+      "holding": "PASS__CandidateOutput exact ref rejected as decoder-law evidence"
+    },
+    {
+      "id": "H12",
+      "test": "test_system_missing_is_not_routed_through_source_native_representation_authority",
+      "holding": "PASS__SYSTEM_MISSING rejected from source-native representation rows"
+    }
+  ],
+  "real_wvs_claims": {
+    "real_authority_issued": false,
+    "real_q291_representation_relation_proved": false,
+    "r6s_real_reissue_executed": false,
+    "r15_executed": false,
+    "r16_executed": false,
+    "claim": "NONE__HOSTILE_COURT_PROVES_REPAIR_MECHANICS_ONLY_PENDING_INDEPENDENT_A_B_PREMISES"
+  }
+}
