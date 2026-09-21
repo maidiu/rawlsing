@@ -104,6 +104,7 @@ def _cells(
     carrier: Mapping[str, Any],
     variables: Sequence[PhysicalVariable],
     country: Sequence[Any],
+    module: Any,
 ) -> Iterator[PhysicalCell]:
     qvars = {q: _variable_by_name(variables, q) for q in CARRIER_QUESTIONS}
     cvar = _variable_by_name(variables, "B_COUNTRY")
@@ -116,6 +117,11 @@ def _cells(
             state, declaration = classify_physical_value(raw, variable.missing_declarations)
             if cell.get("physical_missing_state") != state.value:
                 raise RuntimeError(f"{question} physical missing-state drift at row {row_ordinal}")
+            expected_declaration = (
+                None if declaration is None else module._pack_missing_declaration(declaration)
+            )
+            if cell.get("source_missing_declaration") != expected_declaration:
+                raise RuntimeError(f"{question} source missing-declaration drift at row {row_ordinal}")
             yield PhysicalCell(
                 row_ordinal,
                 variable.ordinal,
@@ -144,7 +150,7 @@ def build_common_c11_release(carrier_path: Path):
     stream = ExactPhysicalCellStream(
         SOURCE_SHA256,
         CARRIER_ROWS,
-        lambda: _cells(carrier, variables, country),
+        lambda: _cells(carrier, variables, country, module),
     )
     release = build_validated_source_backed_c11_release_from_stream(stream, projection)
     return release, projection
