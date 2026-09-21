@@ -1,0 +1,101 @@
+{
+  "schema": "FIABC_R6X_I07_REAL_GATE_PREP_RETURN@1.0.0",
+  "status": "PASS_BROWSER_PREPARATION_COMPLETE",
+  "terminal": "FIABC_R6X_I07_REAL_GATE_PREP_COMPLETE__BROWSER_WORK_EXHAUSTED__MINIMAL_LOCAL_CONTROL_SEQUENCE_FROZEN__NO_MEASUREMENT_PERFORMED",
+  "repository": "maidiu/rawlsing",
+  "exact_base": "357cc2ac6952a478fa2e38f9adbe45ebb3671081",
+  "branch": "agent/rabochii-premain-fiabc-r6x-i07-real-gate-prep-r1",
+  "principal_holdings": {
+    "r6x": "HISTORICAL_LEDGER_MUTATION_IS_NOT_A_CURRENT_COURT_PREREQUISITE__FRESH_CURRENT_MANIFEST_LEDGER_REQUIRED",
+    "i07": "FINAL_HEAD_TEMPLATE_FROZEN__REAL_PASS_REQUIRES_EXACT_FUTURE_HEAD_ORACLES_RUNTIME_AND_LIVE_EVIDENCE",
+    "r35": "WVS_EXPECTATION_PERSISTED__LITS_EXPECTATION_NOT_FOUND__A_B_C_REALIZATIONS_MUST_USE_CURRENT_S01_STATE_WITHOUT_DUPLICATE_BUILD",
+    "lock1": "EXACT_HOST_REPO_SOURCE_PREFLIGHT_PACKET_FROZEN__LOCAL_NONMEASURED_EXECUTION_REQUIRED",
+    "source_oracle": "T3_FREEZE_SCHEMA_AND_EXACT_REQUIRED_FIELDS_FROZEN__R1K_WVS_ORACLE_IDENTITY_LEFT_UNGUESSED"
+  },
+  "r6x": {
+    "old_pre_ledger_sha256": "7de7c91d539dd267e31098fd47285b3f4a7873e1c9ec7b542c45cac3908b8671",
+    "divergent_observed_post_ledger_sha256": "4d0c412df4844906df78a94fbd0b3f6dff40412ca695e76137d3309cf1aaedd6",
+    "divergent_observed_receipt_sha256": "cd346db0623ce1f138bd0f14d9a81f8edf45b62c576c4f35910241b98edc7b26",
+    "current_manifest_blob": "0864534765a34eded37137c545d750f741e31d7a",
+    "current_driver_blob": "4500cbb149fa187a766aca71568dc1f205a4c367",
+    "second_old_ledger_mutation_authorized": false,
+    "current_work_root_must_be_fresh": true
+  },
+  "i07_static": {
+    "implementation_blob": "e9591b3f4beba3a5aa35039edc85163635582959",
+    "manifest_schema_blob": "484678375abcdd94151b72b425629ccb535be5eb",
+    "governing_profile_blob": "57effa49428f8274cf7ca73e8442f75cca1b8267",
+    "functions_required_before_terminal": 29,
+    "functions_deferred_beyond_terminal": 7,
+    "exact_six_cells": true
+  },
+  "r35": {
+    "lits_edge_classes": [
+      "EC01",
+      "EC02",
+      "EC05",
+      "EC06",
+      "EC09",
+      "EC12"
+    ],
+    "lits_expectation_persisted_in_common_base": false,
+    "wvs_edge_classes": [
+      "EC01",
+      "EC05",
+      "EC07",
+      "EC09",
+      "EC10",
+      "EC12",
+      "EC13"
+    ],
+    "wvs_expectation_path": "WORKER_RETURNS/FIABC-LM2/04_WVS7_CANONICAL_PHYSICAL_EXPECTATION.json",
+    "wvs_expectation_blob": "94d28db4fe031db03210303fd9f7b197a5b84c26",
+    "wvs_expectation_identity": "9845c24da0c03adb4dfd65118b7c8c39a60a30337f33cc4177ffc6c848d02390",
+    "realization_receipts_persisted": false,
+    "physical_guard_is_external_to_driver": true,
+    "duplicate_candidate_build_for_r35_forbidden": true
+  },
+  "lock1": {
+    "implementation": "CPython",
+    "python": "3.11.3",
+    "system": "Darwin",
+    "machine": "x86_64",
+    "pyreadstat": "1.3.6",
+    "pyarrow": "25.0.1",
+    "lits_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "wvs_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+    "exclusive_host_observation_required": true,
+    "driver_lock_alone_proves_no_other_benchmark": false
+  },
+  "future_exact_slots_intentionally_unfilled": [
+    "final repo head",
+    "final live runtime/court-contract identity from Worker 2",
+    "fresh WVS oracle identity/document SHA from Worker 1 R1K",
+    "final LiTS oracle material binding",
+    "LiTS-A generic parentage result from Worker 3",
+    "LiTS canonical physical expectation identity if not recovered",
+    "LiTS A/B/C physical realization receipts",
+    "WVS A/B/C physical realization receipts",
+    "source-local and two-source R35 receipt identities",
+    "final T3 frozen-upstream receipt SHA",
+    "final sealed I07 manifest digest",
+    "final T5 live succession preflight receipt identity"
+  ],
+  "browser_work_exhausted": true,
+  "raw_source_carriers_opened": false,
+  "candidate_abc_executed": false,
+  "i03_executed": false,
+  "i05_executed": false,
+  "measured_p2x_executed": false,
+  "sibling_branches_merged_or_rebased": false,
+  "artifacts": [
+    "00_RETURN.md",
+    "01_R6X_EXACT_RECONCILIATION_PLAN.json",
+    "02_I07_FINAL_HEAD_BINDING_TEMPLATE.json",
+    "03_R35_SOURCE_LOCAL_ADMISSION_MATRIX.csv",
+    "04_LOCK1_HOST_PREFLIGHT_PACKET.json",
+    "05_MINIMAL_LOCAL_EXECUTION_SEQUENCE.md",
+    "06_EXPECTED_RECEIPT_AND_STOP_LEDGER.json",
+    "RETURN.json"
+  ]
+}
