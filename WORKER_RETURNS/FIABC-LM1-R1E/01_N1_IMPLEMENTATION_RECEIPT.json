@@ -1,0 +1,57 @@
+{
+  "schema": "FIABC_LM1_R1E_N1_IMPLEMENTATION_RECEIPT@1.0.0",
+  "terminal": "PASS",
+  "adopted_repair": "N1_FACADE_ONLY_PHYSICAL_MATERIAL",
+  "schemas": [
+    "PRE553_EXACT_PHYSICAL_VALUE_MATERIAL@1.0.0",
+    "PRE553_PHYSICAL_VALUE_BINDING@2.0.0",
+    "PRE553_RAW_PHYSICAL_VALUE_WITNESS@1.0.0"
+  ],
+  "physical_codec": {
+    "version": "PRE553_R5_TYPED_VALUE_CODEC@1.0.0",
+    "path": "rawlsing_next/pre553_r5_codec.py",
+    "blob_before": "72f8f3c03ed065e86fea4e76bb17f8e06c2bf540",
+    "blob_after": "72f8f3c03ed065e86fea4e76bb17f8e06c2bf540",
+    "changed": false
+  },
+  "generic_semantic_canonicalizer": {
+    "path": "rawlsing_next/pre553_empirical_objects.py",
+    "float_ban_preserved": true,
+    "proof": "R2 hostile court and direct regression calls reject finite float, NaN, +Infinity, and -Infinity"
+  },
+  "changed_files": [
+    {
+      "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+      "blob_before": "c3647800f52fa81fdef34be6692207e092c48ee2",
+      "blob_after": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+      "reason": "exact R5 physical binding and opaque raw-witness seam"
+    },
+    {
+      "path": "rawlsing_next/ee_p2x_darwin_stage_backend.py",
+      "blob_before": "6262eb7d4137ac25c5ffe70bb56a5fd7b0bcaf46",
+      "blob_after": "1f5ee5cec53d3d92396ecf11bea9692848a0d576",
+      "reason": "source-specific LiTS projection physical-key reissue under accepted storage-type authority"
+    },
+    {
+      "path": "rawlsing_next/tests/test_pre553_source_backed_c11_facade.py",
+      "blob_before": "aaa38306558bc9ad0a87c959d777d3f3d87c8395",
+      "blob_after": "daf9368a0c3ff277da0b46c4f27e4686c1de8b12",
+      "reason": "fixture supplies explicit canonical mapping authority and opaque raw-witness oracle"
+    },
+    {
+      "path": "rawlsing_next/tests/test_fiabc_lm1_r1e_n1_physical_boundary.py",
+      "blob_before": null,
+      "blob_after": "3c6e0419513d18bac8b6c2717c18567ce0e12b1b",
+      "reason": "new R1-R9 hostile synthetic court"
+    }
+  ],
+  "preserved_contracts": [
+    "T2 six-cell law and immutable manifest",
+    "T3 independent oracle/process isolation",
+    "T4 write-once telemetry and lifecycle accounting",
+    "T5 independent oracle/I07/I08/live-control law",
+    "T6 canonical generic derivative parentage and physical/semantic separation",
+    "runtime catalog 5983d7d5c579b916ad46c1acf9e41c1c89b516a4e561a99b1d2b477bf5ad2d02",
+    "active binding a5f36a81843fe2ebab0b5cccb369ce76035f842b93e602613b8b9f3a81103308"
+  ]
+}

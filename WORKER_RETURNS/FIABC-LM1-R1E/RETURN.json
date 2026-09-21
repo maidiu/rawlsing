@@ -1,0 +1,64 @@
+{
+  "schema": "FIABC_LM1_R1E_RETURN@1.0.0",
+  "worker": "FIABC-LM1-R1E",
+  "terminal": "FIABC_LM1_R1E_N1_C11_BOUNDARY_RECOVERY_PASS__EXISTING_R5_REUSED__CURRENT_CONSUMER_ADMISSION_PASS__REPLACEMENT_SUCCESS_SEALED__READY_FOR_LOCAL_FANIN",
+  "base_commit": "01cb3c118937d4aa91f94f24e871b1c210760cdd",
+  "branch": "agent/rabochii-premain-fiabc-lm1-r1e-c11-boundary-recovery-r1",
+  "repair_commits": [
+    "1826cfc9ae6ebbb33062ed5d648c37789b8069f9",
+    "58287298b04ef75a8e94808e0f634feef742bfc5",
+    "af955553"
+  ],
+  "gates": {
+    "n1_hostile_court": "PASS",
+    "required_regressions": "PASS",
+    "existing_r5_reopen_audit": "PASS",
+    "current_consumer_admission": "PASS",
+    "parentage_revalidation": "PASS",
+    "succession_completion": "PASS"
+  },
+  "carrier": {
+    "path": "/tmp/fiabc_lm1_r1c_lits_a_r5_replacement_r1",
+    "physical_root_id": "7d85c5e4c3a91c3f6dc8f7896fe487cda116fc8cf67f0ab263a2654ff938afcd",
+    "logical_stream_digest": "076c6527f292c1d4ae2cce53c1f0363093eb9a5b5fb652edd96b448823589aba",
+    "canonical_rows": 34745595,
+    "member_count": 2121,
+    "member_inventory_sha256": "04dce8c3e942fc81a0558354c21a4b4a56faab417ce362657286f978b6686703"
+  },
+  "identities": {
+    "source_receipt": "b0df3042e27fda2d3288d44fdc27d46ed4e4f393301dd781eff43b5a5f13bdf1",
+    "derivative_receipt": "dbfe6014944a27ae9e31a32b201d9b8f2083111440ad435ea155583b6e4d33a4",
+    "parentage_bundle": "8b63de4ea902350ce197bc3ed49b59259bef2ad400c9f3c7db65ac96b015ace7",
+    "consumer_binding": "b7d852e63e803c8f9e8a9d67a5dae9354173d97c6577f1c247f07a3b24ebfb84",
+    "runtime_catalog": "5983d7d5c579b916ad46c1acf9e41c1c89b516a4e561a99b1d2b477bf5ad2d02",
+    "active_binding": "a5f36a81843fe2ebab0b5cccb369ce76035f842b93e602613b8b9f3a81103308"
+  },
+  "accounting": {
+    "old_r5_numeric_credit": 0,
+    "replacement": "EXECUTED_NOW",
+    "success_consumed": true,
+    "measured_p2x": false
+  },
+  "source_boundary": {
+    "lits_source_opened_by_r1e_admission": false,
+    "wvs7_opened": false,
+    "candidate_b_executed": false,
+    "candidate_c_executed": false,
+    "i03_i05_executed": false,
+    "measured_p2x_executed": false,
+    "r5_rebuilt": false,
+    "r5_members_mutated": false
+  },
+  "artifacts": [
+    "00_RETURN.md",
+    "01_N1_IMPLEMENTATION_RECEIPT.json",
+    "02_HOSTILE_REGRESSION_COURT.json",
+    "03_EXISTING_R5_REOPEN_AUDIT.json",
+    "04_CURRENT_CONSUMER_ADMISSION.json",
+    "05_IDENTITY_DELTA_LEDGER.csv",
+    "06_PARENTAGE_REVALIDATION.json",
+    "07_SUCCESSION_COMPLETION_RECEIPT.json",
+    "08_TEST_LEDGER.csv",
+    "RETURN.json"
+  ]
+}

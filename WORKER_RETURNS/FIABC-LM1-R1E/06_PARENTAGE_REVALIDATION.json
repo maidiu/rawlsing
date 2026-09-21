@@ -1,0 +1,31 @@
+{
+  "schema": "FIABC_LM1_R1E_PARENTAGE_REVALIDATION@1.0.0",
+  "status": "PASS",
+  "source_receipt_identity": "b0df3042e27fda2d3288d44fdc27d46ed4e4f393301dd781eff43b5a5f13bdf1",
+  "derivative_receipt_identity": "dbfe6014944a27ae9e31a32b201d9b8f2083111440ad435ea155583b6e4d33a4",
+  "bundle_identity": "8b63de4ea902350ce197bc3ed49b59259bef2ad400c9f3c7db65ac96b015ace7",
+  "physical_root_id": "7d85c5e4c3a91c3f6dc8f7896fe487cda116fc8cf67f0ab263a2654ff938afcd",
+  "logical_stream_digest": "076c6527f292c1d4ae2cce53c1f0363093eb9a5b5fb652edd96b448823589aba",
+  "canonical_source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+  "builder": {
+    "identity": "R5CompactLongShardedBuilder",
+    "code_blob": "92e364b31eaf27be1bca2081eff65f6ffb779c3d",
+    "owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+    "adapter_blob": "d4915e7e6755ba1850756aebff72f982f73a332b"
+  },
+  "reader_config": {
+    "reader": "pyreadstat",
+    "reader_version": "1.3.6",
+    "user_missing": true,
+    "apply_value_formats": false,
+    "encoding": "latin1",
+    "authority_status": "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY"
+  },
+  "derivation_operation": "BUILD_LITS_A_R5_FROM_CANONICAL_PHYSICAL_INCIDENCE",
+  "currentness": {
+    "runtime_catalog": "5983d7d5c579b916ad46c1acf9e41c1c89b516a4e561a99b1d2b477bf5ad2d02",
+    "active_binding": "a5f36a81843fe2ebab0b5cccb369ce76035f842b93e602613b8b9f3a81103308",
+    "runtime_release": "192926fabd9c9c3d40e43b1d7705ca2bcfe7f8d06e286be26d4b886d436df43f"
+  },
+  "verification": "verify_parentage_bundle PASS; source receipt, derivative receipt, bundle, root, logical stream, and currentness determinants unchanged"
+}

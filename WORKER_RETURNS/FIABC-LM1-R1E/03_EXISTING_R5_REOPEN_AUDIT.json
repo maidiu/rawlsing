@@ -1,0 +1,37 @@
+{
+  "schema": "FIABC_LM1_R1E_EXISTING_R5_REOPEN_AUDIT@1.0.0",
+  "status": "PASS",
+  "operation": "accepted Route-A adapter inspect_reopened_r5_physical_source plus exact physical-cell stream traversal",
+  "source_free": true,
+  "source_path": null,
+  "source_opened": false,
+  "carrier": {
+    "path": "/tmp/fiabc_lm1_r1c_lits_a_r5_replacement_r1",
+    "physical_root_id": "7d85c5e4c3a91c3f6dc8f7896fe487cda116fc8cf67f0ab263a2654ff938afcd",
+    "logical_stream_digest": "076c6527f292c1d4ae2cce53c1f0363093eb9a5b5fb652edd96b448823589aba",
+    "canonical_rows": 34745595,
+    "member_count": 2121,
+    "member_inventory_sha256": "04dce8c3e942fc81a0558354c21a4b4a56faab417ce362657286f978b6686703",
+    "member_inventory_bytes": 1479183,
+    "relation_counts": {
+      "source_metadata": 1,
+      "source_variables": 1198,
+      "source_physical_cells": 34744396
+    }
+  },
+  "accepted_owner": {
+    "owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+    "adapter_blob": "d4915e7e6755ba1850756aebff72f982f73a332b",
+    "builder_blob": "92e364b31eaf27be1bca2081eff65f6ffb779c3d",
+    "typed_codec": "PRE553_R5_TYPED_VALUE_CODEC@1.0.0"
+  },
+  "convergence": {
+    "root": "PASS",
+    "logical_stream": "PASS",
+    "canonical_rows": "PASS",
+    "member_count": "PASS",
+    "inventory": "PASS",
+    "member_bytes_rewritten": false,
+    "carrier_rebuilt": false
+  }
+}

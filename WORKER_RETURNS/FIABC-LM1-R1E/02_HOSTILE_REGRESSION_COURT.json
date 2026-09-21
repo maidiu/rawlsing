@@ -1,0 +1,28 @@
+{
+  "schema": "FIABC_LM1_R1E_HOSTILE_REGRESSION_COURT@1.0.0",
+  "terminal": "PASS",
+  "court": {
+    "R1_exact_physical_tokens": "PASS",
+    "R2_global_semantic_float_ban": "PASS",
+    "R3_physical_binding_key": "PASS",
+    "R4_response_raw_witness": "PASS",
+    "R5_coordinate_raw_witness": "PASS",
+    "R6_weight_boundary": "PASS",
+    "R7_unprojected_cell_preservation": "PASS",
+    "R8_deterministic_replay": "PASS",
+    "R9_candidate_neutrality": "PASS",
+    "R10_existing_r5_root_reopen": "PASS"
+  },
+  "evidence": {
+    "command": "python3 -m pytest -q rawlsing_next/tests/test_fiabc_lm1_r1e_n1_physical_boundary.py rawlsing_next/tests/test_pre553_source_backed_c11_facade.py",
+    "result": "17 passed",
+    "semantic_float_rejections": ["finite float", "NaN", "+Infinity", "-Infinity"],
+    "accepted_codec": "PRE553_R5_TYPED_VALUE_CODEC@1.0.0",
+    "candidate_specific_physical_helper": false,
+    "r5_root": "7d85c5e4c3a91c3f6dc8f7896fe487cda116fc8cf67f0ab263a2654ff938afcd",
+    "logical_stream_digest": "076c6527f292c1d4ae2cce53c1f0363093eb9a5b5fb652edd96b448823589aba",
+    "canonical_rows": 34745595,
+    "member_count": 2121,
+    "member_inventory_sha256": "04dce8c3e942fc81a0558354c21a4b4a56faab417ce362657286f978b6686703"
+  }
+}
