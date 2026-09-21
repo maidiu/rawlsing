@@ -1,0 +1,122 @@
+{
+  "schema": "CLOSED35_R3_ASIAN1_PHYSICAL_EDGE_BINDING@1.0.0",
+  "source": {
+    "family": "Asian Barometer",
+    "wave": "1",
+    "canonical_filename": "Asian Barometer Wave 1.sav",
+    "canonical_sha256": "ac0b8bc1ddb2fa6b952417e35b6379ce6a2cf8596776a43282ba44f48e0ae1a2",
+    "format": "SAV",
+    "reader_mode": "SAV_SOURCE_DECLARED_BIG5",
+    "source_declared_encoding": "BIG-5",
+    "compatibility_mode": "NO_SOURCE_SPECIFIC_COMPATIBILITY_OVERRIDE",
+    "replay_identity": "SOURCE_SHA256+ROW_ORDINAL",
+    "accepted_packet_geometry": {
+      "rows": 12217,
+      "variables": 217
+    }
+  },
+  "authority_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+  "applicable_s35_edge_classes": [
+    {
+      "edge_class": "EC01",
+      "name": "FORMAT_FAMILY_SAV_DTA",
+      "required_dimensions": ["physical_metadata", "variable_inventory_order", "raw_storage_values", "row_replay_identity"],
+      "semantic_boundary": "SAV format is physical only."
+    },
+    {
+      "edge_class": "EC02",
+      "name": "EXPLICIT_TEXT_DECODING_MODE",
+      "required_dimensions": ["reader_configuration", "decoded_text_evidence"],
+      "semantic_boundary": "BIG-5 reader authority does not create questionnaire or item semantic authority."
+    },
+    {
+      "edge_class": "EC05",
+      "name": "PHYSICAL_MISSINGNESS_MULTICLASS",
+      "required_dimensions": ["physical_missing_states", "raw_storage_values", "physical_metadata"],
+      "semantic_boundary": "System/user missing and ordinary storage remain distinct; physical missingness does not decide applicability."
+    },
+    {
+      "edge_class": "EC07",
+      "name": "NATIVE_ID_SCOPE_COLLISION_OR_NONINJECTIVITY",
+      "required_dimensions": ["row_replay_identity", "native_id_replay_evidence"],
+      "semantic_boundary": "Native IDs remain source-local attributes and never replace source-SHA plus row ordinal."
+    },
+    {
+      "edge_class": "EC09",
+      "name": "ORDERED_REPEATED_SLOT_TOPOLOGY",
+      "required_dimensions": ["ordered_repeated_slot_topology"],
+      "semantic_boundary": "q097 rank/order is physical topology; no scalarization or deduplication."
+    },
+    {
+      "edge_class": "EC12",
+      "name": "WEIGHT_DESIGN_MULTIPLICITY_AND_DOMAIN",
+      "required_dimensions": ["weight_design_variables"],
+      "semantic_boundary": "Nine raw carriers survive; presence/name/magnitude cannot select an estimand or default."
+    },
+    {
+      "edge_class": "EC13",
+      "name": "SOURCE_LOCAL_COORDINATE_CARRIERS",
+      "required_dimensions": ["source_local_coordinate_carriers"],
+      "semantic_boundary": "Wave-1 country/level3 coordinates remain source-scoped; no cross-wave recoding."
+    },
+    {
+      "edge_class": "EC14",
+      "name": "COMPOUND_EDGE_INTERACTION_COURT",
+      "composes": ["EC01", "EC02", "EC05", "EC07", "EC09", "EC12", "EC13"],
+      "required_dimensions": [],
+      "semantic_boundary": "All atomic requirements hold simultaneously; no special adapter or added semantic authority."
+    }
+  ],
+  "r35_hooks": {
+    "i01": {
+      "schema": "PRE553_PHYSICAL_METADATA@1.0.0",
+      "required": true,
+      "semantic_authority": false
+    },
+    "i02": {
+      "bundle_schema": "FIABC_DERIVATIVE_PARENTAGE_BUNDLE@1.0.0",
+      "required_for_non_direct_raw": true,
+      "semantic_authority": false
+    },
+    "i03": {
+      "source_scope_schema": "FIABC_R35_I03_SOURCE_PHYSICAL_SCOPE@1.0.0",
+      "expectation_schema": "FIABC_R35_I03_CANONICAL_PHYSICAL_EXPECTATION@1.0.0",
+      "candidate_realization_schema": "FIABC_R35_I03_CANDIDATE_PHYSICAL_REALIZATION@1.0.0",
+      "receipt_schema": "FIABC_R35_I03_WHOLE_SOURCE_PHYSICAL_EQUIVALENCE_RECEIPT@1.0.0",
+      "required_candidates": ["A", "B", "C"],
+      "required_dimensions": [
+        "physical_metadata",
+        "reader_configuration",
+        "decoded_text_evidence",
+        "variable_inventory_order",
+        "raw_storage_values",
+        "physical_missing_states",
+        "row_replay_identity",
+        "native_id_replay_evidence",
+        "ordered_repeated_slot_topology",
+        "weight_design_variables",
+        "source_local_coordinate_carriers"
+      ],
+      "semantic_authority": false
+    }
+  },
+  "source_specific_semantic_binding": {
+    "questionnaire_codebook_item_semantics": "BOUNDED_UNKNOWN",
+    "declared_missing_code_semantics": "BOUNDED_UNKNOWN",
+    "routing_applicability": "BOUNDED_UNKNOWN",
+    "weight_roles_estimands_normalization": "BOUNDED_UNKNOWN",
+    "survey_design_semantics": "BOUNDED_UNKNOWN",
+    "geography_cross_wave_reconciliation": "BOUNDED_UNKNOWN",
+    "decoded_big5_text_is_documentary_semantic_authority": false,
+    "semantic_owner_surface": "PRE553_SOURCE_BACKED_C11_FACADE@1.0.0",
+    "candidate_law": "A_B_C_SHARE_ONE_SOURCE_SPECIFIC_SEMANTIC_REALIZATION_IDENTITY"
+  },
+  "integration_state": {
+    "exact_base": "da33eb6a8225c14eee9490633a3263388dc5536c",
+    "real_source_executed": false,
+    "whole_source_physical_equivalence_receipt_materialized": false,
+    "abc_executed": false,
+    "i05_passed": false,
+    "measured_p2x_run": false
+  }
+}
