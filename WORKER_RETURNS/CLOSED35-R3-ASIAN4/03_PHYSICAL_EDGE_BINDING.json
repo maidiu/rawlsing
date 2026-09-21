@@ -1,0 +1,143 @@
+{
+  "schema": "CLOSED35_R3_ASIAN4_PHYSICAL_EDGE_BINDING@1.0.0",
+  "source": {
+    "family": "Asian Barometer",
+    "wave": "4",
+    "canonical_filename": "Asian Barometer Wave 4.sav",
+    "canonical_sha256": "4d914817509d0e5f3adde49707df148f696992055937f085080a016002a39200",
+    "format": "SAV",
+    "reader_mode": "SAV_NATIVE_GOVERNED",
+    "source_declared_encoding": "UTF-8",
+    "replay_identity": "SOURCE_SHA256+ROW_ORDINAL"
+  },
+  "authority_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+  "applicable_s35_edge_classes": [
+    {
+      "edge_class": "EC01",
+      "name": "FORMAT_FAMILY_SAV_DTA",
+      "required_dimensions": [
+        "physical_metadata",
+        "variable_inventory_order",
+        "raw_storage_values",
+        "row_replay_identity"
+      ],
+      "semantic_boundary": "SAV format and reader behavior are physical only."
+    },
+    {
+      "edge_class": "EC05",
+      "name": "PHYSICAL_MISSINGNESS_MULTICLASS",
+      "required_dimensions": [
+        "raw_storage_values",
+        "physical_missingness"
+      ],
+      "semantic_boundary": "Ordinary stored -1 is not system/user missing and physical state does not create response or routing semantics."
+    },
+    {
+      "edge_class": "EC09",
+      "name": "ORDERED_REPEATED_SLOT_TOPOLOGY",
+      "required_dimensions": [
+        "ordered_repeated_slot_topology"
+      ],
+      "semantic_boundary": "q20/q21/q22 and q99/q99a/q99b preserve order and multiplicity; topology does not authorize cross-slot semantic inference."
+    },
+    {
+      "edge_class": "EC10",
+      "name": "FORM_MODULE_SKIP_ROUTING_CARRIERS",
+      "required_dimensions": [
+        "form_module_skip_routing_carriers"
+      ],
+      "semantic_boundary": "q172 ASEAN-only documentary topology survives; exact row risk set is not inferred from storage/missingness."
+    },
+    {
+      "edge_class": "EC12",
+      "name": "WEIGHT_DESIGN_MULTIPLICITY_AND_DOMAIN",
+      "required_dimensions": [
+        "weight_design_variables"
+      ],
+      "semantic_boundary": "w and w_cross remain distinct physical carriers; preservation does not select estimand/default use."
+    },
+    {
+      "edge_class": "EC13",
+      "name": "SOURCE_LOCAL_COORDINATE_CARRIERS",
+      "required_dimensions": [
+        "source_local_coordinate_carriers"
+      ],
+      "semantic_boundary": "Merged country and instrument SE1 remain separate evidence layers; no harmonization without authority."
+    }
+  ],
+  "ec14_assigned": false,
+  "r35_hooks": {
+    "i01": {
+      "schema": "PRE553_PHYSICAL_METADATA@1.0.0",
+      "required": true,
+      "semantic_authority": false
+    },
+    "i02": {
+      "bundle_schema": "FIABC_DERIVATIVE_PARENTAGE_BUNDLE@1.0.0",
+      "required_for_non_direct_raw": true,
+      "semantic_authority": false
+    },
+    "i03": {
+      "source_scope_schema": "FIABC_R35_I03_SOURCE_PHYSICAL_SCOPE@1.0.0",
+      "expectation_schema": "FIABC_R35_I03_CANONICAL_PHYSICAL_EXPECTATION@1.0.0",
+      "candidate_realization_schema": "FIABC_R35_I03_CANDIDATE_PHYSICAL_REALIZATION@1.0.0",
+      "receipt_schema": "FIABC_R35_I03_WHOLE_SOURCE_PHYSICAL_EQUIVALENCE_RECEIPT@1.0.0",
+      "required_candidates": [
+        "A",
+        "B",
+        "C"
+      ],
+      "required_dimensions": [
+        "physical_metadata",
+        "variable_inventory_order",
+        "raw_storage_values",
+        "row_replay_identity",
+        "physical_missingness",
+        "ordered_repeated_slot_topology",
+        "form_module_skip_routing_carriers",
+        "weight_design_variables",
+        "source_local_coordinate_carriers"
+      ],
+      "semantic_authority": false
+    }
+  },
+  "source_specific_semantic_binding": {
+    "ordinary_minus1_physical_state": "OBSERVED_STORAGE_VALUE",
+    "ordinary_minus1_semantics": "BOUNDED_UNKNOWN__VARIABLE_LOCAL",
+    "merged_geography_carrier": "country",
+    "instrument_geography_carrier": "SE1",
+    "merged_to_instrument_reconciliation": "BOUNDED_UNKNOWN",
+    "ranked_slot_families": [
+      [
+        "q20",
+        "q21",
+        "q22"
+      ],
+      [
+        "q99",
+        "q99a",
+        "q99b"
+      ]
+    ],
+    "q172_documented_scope": "ASEAN_COUNTRIES_ONLY",
+    "q172_exact_merged_source_risk_set": "BOUNDED_UNKNOWN",
+    "weight_carriers": [
+      "w",
+      "w_cross"
+    ],
+    "weight_roles": "BOUNDED_UNKNOWN",
+    "semantic_owner_surface": "PRE553_SOURCE_BACKED_C11_FACADE@1.0.0",
+    "candidate_law": "A_B_C_SHARE_ONE_SOURCE_SPECIFIC_SEMANTIC_REALIZATION_IDENTITY",
+    "cross_wave_semantic_import_authorized": false
+  },
+  "integration_state": {
+    "exact_base": "da33eb6a8225c14eee9490633a3263388dc5536c",
+    "real_source_executed": false,
+    "whole_source_physical_equivalence_receipt_materialized": false,
+    "abc_executed": false,
+    "i05_passed": false,
+    "measured_p2x_run": false,
+    "tests_executed": false,
+    "test_status": "TESTS_AUTHORED__NOT_EXECUTED"
+  }
+}
