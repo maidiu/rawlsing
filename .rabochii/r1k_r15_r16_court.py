@@ -126,10 +126,10 @@ assert CARRIER.is_file()
 assert CARRIER.stat().st_size == EXPECTED["carrier_bytes"]
 assert sha256(CARRIER) == EXPECTED["carrier_sha256"]
 assert r1h["source_sha256"] == EXPECTED["source_sha256"]
-assert r1h["structural_preimage_identity"] == EXPECTED["structural_preimage"]
-assert r1h["parentage_bundle_identity"] == EXPECTED["parentage_bundle"]
-assert r1h["physical_expectation_identity"] == EXPECTED["physical_expectation"]
-assert r1h["mapping_authority_hash"] == EXPECTED["mapping_authority"]
+assert r1h["structural_preimage"] == EXPECTED["structural_preimage"]
+assert r1h["parentage_bundle"] == EXPECTED["parentage_bundle"]
+assert r1h["physical_expectation"] == EXPECTED["physical_expectation"]
+assert r1h["mapping_authority"] == EXPECTED["mapping_authority"]
 assert r1h["candidate_grammar"] == EXPECTED["candidate_grammar"]
 assert r1h["candidate_count"] == 46
 assert r1h["lock2"] == EXPECTED["lock2"]
@@ -138,13 +138,13 @@ assert pkg["source_sha256"] == EXPECTED["source_sha256"]
 assert pkg["lock2"] == EXPECTED["lock2"]
 assert pkg["counts"]["candidates"] == 46
 assert auth["authority_ref"]["authority_content_hash"] == EXPECTED["representation_authority"]
-assert auth["authority_snapshot_ref"]["content_hash"] == EXPECTED["representation_snapshot"]
-assert delta["new"]["response_binding"] == EXPECTED["response_binding"]
-assert delta["new"]["projection_authority"] == EXPECTED["projection_authority"]
-assert delta["new"]["projection_snapshot"] == EXPECTED["projection_snapshot"]
-assert delta["new"]["projection_identity"] == EXPECTED["projection_identity"]
+assert auth["snapshot_ref"]["content_hash"] == EXPECTED["representation_snapshot"]
+assert delta["reissued"]["response_binding"]["new"] == EXPECTED["response_binding"]
+assert delta["reissued"]["projection_authority"]["new"] == EXPECTED["projection_authority"]
+assert delta["reissued"]["projection_snapshot"]["new"] == EXPECTED["projection_snapshot"]
+assert delta["reissued"]["projection_identity"]["new"] == EXPECTED["projection_identity"]
 assert hostile["status"] == "PASS"
-assert hostile["candidate_a_b_c_executed"] is False
+assert hostile["forbidden_execution"]["candidate_abc"] is False
 assert source_free["status"] == "PASS"
 
 gate1 = {
