@@ -272,9 +272,23 @@ def test_wvs7_c_failure_receipt_serializes_with_manifest_sequence_index(tmp_path
             {
                 "hq": {"handoff_commit": "hq"},
                 "lock1": {"manifest_json_git_blob_sha1": "lock1"},
-                "lock2": {"hash": "lock2"},
+                "lock2": {
+                    "hash": "8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188"
+                },
                 "candidates": {"C": {"owner_blob": "owner-c"}},
                 "execution_seam": {"git_blob_sha1": "seam"},
+            }
+        ),
+        encoding="utf-8",
+    )
+    runtime = repo / backend.R6S_RUNTIME_PACKAGE
+    runtime.parent.mkdir(parents=True, exist_ok=True)
+    runtime.write_text(
+        json.dumps(
+            {
+                "lock2": backend.WVS_LOCK2,
+                "replay": backend.WVS_LOCK2_REPLAY,
+                "discovery_authority_hash": backend.WVS_DISCOVERY_AUTHORITY,
             }
         ),
         encoding="utf-8",
@@ -299,7 +313,74 @@ def test_wvs7_c_failure_receipt_serializes_with_manifest_sequence_index(tmp_path
     assert cell["source"] == "WVS7"
     assert cell["candidate"] == "C"
     assert cell["sequence_index"] == 5
+    assert cell["authority"]["lock2_hash"] == backend.WVS_LOCK2
+    assert cell["authority"]["lock2_replay_hash"] == backend.WVS_LOCK2_REPLAY
+    assert cell["authority"]["discovery_authority"] == backend.WVS_DISCOVERY_AUTHORITY
+    assert cell["authority"]["lock2_hash"] != "8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188"
+    assert cell["authority"]["discovery_authority"] != "24591678ebf50ac153fabdbbcd90d6ce818c5a89a5307c395c48a04fe5a8b1ab"
     assert len(backend._current_manifest_cell_order()) == 6
+
+
+def test_lits_failure_metadata_keeps_lock1_owner_and_seam_but_not_predecessor_lock2(tmp_path: Path, monkeypatch):
+    machine = _six_cell_machine()
+    monkeypatch.setattr(d, "load_current_execution_manifest", lambda _path: machine)
+    manifest_path = tmp_path / "current_manifest.json"
+    manifest_path.write_text("{}\n", encoding="utf-8")
+    monkeypatch.setenv("RAWLSING_FIABC_T5_CURRENT_EXECUTION_MANIFEST", str(manifest_path))
+
+    repo = tmp_path / "repo"
+    expectations = repo / "WORKER_RETURNS/EE-P2X/09_LOCAL_COURT_FROZEN_EXPECTATIONS.json"
+    expectations.parent.mkdir(parents=True, exist_ok=True)
+    expectations.write_text(
+        json.dumps(
+            {
+                "hq": {"handoff_commit": "hq"},
+                "lock1": {"manifest_json_git_blob_sha1": "lock1"},
+                "lock2": {
+                    "hash": "8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188"
+                },
+                "candidates": {"A": {"owner_blob": "owner-a"}},
+                "execution_seam": {"git_blob_sha1": "seam"},
+            }
+        ),
+        encoding="utf-8",
+    )
+    runtime = repo / backend.R6S_RUNTIME_PACKAGE
+    runtime.parent.mkdir(parents=True, exist_ok=True)
+    runtime.write_text(
+        json.dumps(
+            {
+                "lock2": backend.WVS_LOCK2,
+                "replay": backend.WVS_LOCK2_REPLAY,
+                "discovery_authority_hash": backend.WVS_DISCOVERY_AUTHORITY,
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    roots = SimpleNamespace(durable=tmp_path / "durable")
+    roots.durable.mkdir(parents=True)
+    stage = machine.get("LITS_I/A/S01_BUILD")
+    ctx = SimpleNamespace(
+        stage=stage,
+        roots=roots,
+        source_sha256="c" * 64,
+        input_identity_hash="d" * 64,
+    )
+    services = SimpleNamespace(repo_root=repo)
+    state = backend._new_state(ctx)
+    result = backend._failure(ctx, services, state, backend.BackendStop("typed failure"))
+    cell = json.loads(Path(result["output_artifacts"]["cell_receipt"]).read_text(encoding="utf-8"))
+
+    assert cell["sequence_index"] == 0
+    assert cell["authority"] == {
+        "hq_handoff_commit": "hq",
+        "lock1_manifest_blob": "lock1",
+        "lock2_hash": backend.WVS_LOCK2,
+        "lock2_replay_hash": backend.WVS_LOCK2_REPLAY,
+    }
+    assert cell["bindings"]["candidate_owner_blob"] == "owner-a"
+    assert cell["bindings"]["execution_seam_blob"] == "seam"
 
 
 def test_preentry_prefix_does_not_synthesize_current_ready_stage(tmp_path: Path, monkeypatch):

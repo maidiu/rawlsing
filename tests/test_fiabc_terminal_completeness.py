@@ -10,6 +10,7 @@ from rawlsing_next.fiabc_telemetry_semantics import (
 )
 from rawlsing_next.fiabc_terminal_completeness import (
     FROZEN_DISPOSITIVE_METRICS,
+    METRIC_STAGE as COMPLETENESS_METRIC_STAGE,
     TerminalCompletenessError,
     validate_terminal_telemetry_completeness,
 )
@@ -49,8 +50,13 @@ METRIC_STAGE = {
     "warm_retained_state_bytes": "S08_WARM_REPEATED_RESEARCH",
     "delete_rebuild_wall_ns": "S09_DELETION_REGEN_OR_A_PERSISTENCE",
     "source_release_invalidation_recomputation_units": "S10_SOURCE_RELEASE_INVALIDATION",
+    "source_release_invalidation_wall_ns": "S10_SOURCE_RELEASE_INVALIDATION",
+    "source_release_invalidation_bytes_rewritten": "S10_SOURCE_RELEASE_INVALIDATION",
     "semantic_authority_invalidation_recomputation_units": "S11_SEMANTIC_AUTHORITY_INVALIDATION",
+    "semantic_authority_invalidation_wall_ns": "S11_SEMANTIC_AUTHORITY_INVALIDATION",
+    "semantic_authority_invalidation_bytes_rewritten": "S11_SEMANTIC_AUTHORITY_INVALIDATION",
     "fresh_process_replay_wall_ns": "S15_FRESH_PROCESS_REPLAY",
+    "fresh_process_replay_cpu_ns": "S15_FRESH_PROCESS_REPLAY",
     "persistent_bytes_removable_with_zero_information_loss": "S16_TERMINAL_METRIC_VECTOR_COMPLETENESS",
     "implementation_moving_parts_count": "S16_TERMINAL_METRIC_VECTOR_COMPLETENESS",
 }
@@ -181,6 +187,31 @@ def set_metric_state(doc, name, state, value=None):
 
 
 class TerminalCompletenessHostileTests(unittest.TestCase):
+    def test_frozen_dispositive_metric_set_is_definition_identical_35_of_35(self):
+        self.assertEqual(len(METRIC_DEFINITIONS), 35)
+        self.assertEqual(len(FROZEN_DISPOSITIVE_METRICS), 35)
+        self.assertEqual(set(FROZEN_DISPOSITIVE_METRICS), set(METRIC_DEFINITIONS))
+
+    def test_all_lifecycle_grain_metrics_bind_exact_governed_stages(self):
+        lifecycle_names = {
+            name for name, definition in METRIC_DEFINITIONS.items()
+            if definition.grain == MetricGrain.LIFECYCLE
+        }
+        self.assertEqual(
+            {name: COMPLETENESS_METRIC_STAGE.get(name) for name in lifecycle_names},
+            {
+                "delete_rebuild_wall_ns": "S09_DELETION_REGEN_OR_A_PERSISTENCE",
+                "source_release_invalidation_recomputation_units": "S10_SOURCE_RELEASE_INVALIDATION",
+                "source_release_invalidation_wall_ns": "S10_SOURCE_RELEASE_INVALIDATION",
+                "source_release_invalidation_bytes_rewritten": "S10_SOURCE_RELEASE_INVALIDATION",
+                "semantic_authority_invalidation_recomputation_units": "S11_SEMANTIC_AUTHORITY_INVALIDATION",
+                "semantic_authority_invalidation_wall_ns": "S11_SEMANTIC_AUTHORITY_INVALIDATION",
+                "semantic_authority_invalidation_bytes_rewritten": "S11_SEMANTIC_AUTHORITY_INVALIDATION",
+                "fresh_process_replay_wall_ns": "S15_FRESH_PROCESS_REPLAY",
+                "fresh_process_replay_cpu_ns": "S15_FRESH_PROCESS_REPLAY",
+            },
+        )
+
     def test_one_missing_required_metric_blocks(self):
         m = manifest()
         t = telemetry()

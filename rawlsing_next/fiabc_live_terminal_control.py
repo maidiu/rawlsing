@@ -35,11 +35,8 @@ from rawlsing_next.pre553_independent_parity_oracle import (
     LITS_FRONTIER_SEAL,
     LITS_SOURCE_SHA256,
     NEGATIVE_STATE_LAW,
-    WVS7_DISCOVERY_AUTHORITY,
     WVS7_EMPIRICAL_UNIVERSE,
     WVS7_FAMILY_COUNTS,
-    WVS7_LOCK2_IDENTITY,
-    WVS7_LOCK2_REPLAY_IDENTITY,
     WVS7_MEASURE_BASIS,
     WVS7_ORDERED_CANDIDATE_HASHES,
     WVS7_RISK_SET,
@@ -449,9 +446,9 @@ def _court_constitution(
     }
     if source == "WVS7":
         base.update({
-            "lock2_hash": WVS7_LOCK2_IDENTITY,
-            "lock2_replay_hash": WVS7_LOCK2_REPLAY_IDENTITY,
-            "discovery_authority": WVS7_DISCOVERY_AUTHORITY,
+            "lock2_hash": WVS7_SUCCESSOR_LOCK2,
+            "lock2_replay_hash": WVS7_SUCCESSOR_LOCK2_REPLAY,
+            "discovery_authority": WVS7_SUCCESSOR_DISCOVERY_AUTHORITY,
             "empirical_universe": WVS7_EMPIRICAL_UNIVERSE,
             "risk_set": WVS7_RISK_SET,
             "measure_basis": WVS7_MEASURE_BASIS,
