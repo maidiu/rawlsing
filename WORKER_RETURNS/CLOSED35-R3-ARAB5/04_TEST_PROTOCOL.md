@@ -142,7 +142,19 @@ The authored suite directly covers:
 - undocumented semantic interpretation of Q101 extra codes;
 - candidate-specific semantic divergence.
 
-## T12 — cross-wave semantic leakage is forbidden\n\nInspect the source-specific realization payload.\n\nAssert:\n\n- family semantic imports are disabled;\n- Wave-2 semantics are not inherited;\n- Wave-8 semantics are not inherited.\n\nReject any source-local realization that fills Wave-5 bounded UNKNOWNs from another Arab Barometer release.\n\nThe authored Python suite contains this dedicated assertion.
+## T12 — cross-wave semantic leakage is forbidden
+
+Inspect the source-specific realization payload.
+
+Assert:
+
+- family semantic imports are disabled;
+- Wave-2 semantics are not inherited;
+- Wave-8 semantics are not inherited.
+
+Reject any source-local realization that fills Wave-5 bounded UNKNOWNs from another Arab Barometer release.
+
+The authored Python suite contains this dedicated assertion.
 
 ## Later real qualification order
 
