@@ -21,7 +21,7 @@ jobs:
         env:
           PYTHONPATH: .
         run: |
-          python -m pytest -q             rawlsing_next/tests/test_fiabc_lm2_r1e_bounded_mapping_recovery.py             rawlsing_next/tests/test_fiabc_lm1_r1e_n1_physical_boundary.py             rawlsing_next/tests/test_pre553_source_backed_c11_facade.py             rawlsing_next/tests/test_ee_p2r6s_projection.py
+          python -m pytest -q             rawlsing_next/tests/test_fiabc_lm2_r1e_bounded_mapping_recovery.py             rawlsing_next/tests/test_fiabc_lm1_r1e_n1_physical_boundary.py             rawlsing_next/tests/test_pre553_source_backed_c11_facade.py             rawlsing_next/tests/test_pre553_independent_parity_oracle.py
       - name: Emit deterministic prepared identities
         env:
           PYTHONPATH: .
