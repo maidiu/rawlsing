@@ -50,6 +50,13 @@ from rawlsing_next.fiabc_lm2_r1e_wvs7_mapping_authority import (
     TARGET_USE as MAPPING_TARGET_USE,
     mapping_authority_snapshot,
 )
+from rawlsing_next.fiabc_lm2_r1j_wvs7_representation_authority import (
+    AUTHORIZED_R5_TOKENS as REPRESENTATION_R5_TOKENS,
+    REPRESENTATION_AUTHORITY_MATERIAL,
+    REPRESENTATION_AUTHORITY_REF,
+    authorized_decoder_physical_value,
+    representation_authority_snapshot,
+)
 
 CONTRACT = "EE_P2R6S_WVS7_FROZEN_P2_PROJECTION_MATERIALIZER@1.0.0"
 SOURCE_SHA256 = "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
@@ -97,6 +104,30 @@ EVENT_SELECTOR_REF = ExactRef(
     "WVS7EventSelector@1.0.0",
     "urn:rawlsing:pre553:ee-p2f2:q291-singular-response:sha256:85e78275a4a75070b136b8d936a4a3dd15f9fb478105f32668b505fe9b02b5ea",
     "85e78275a4a75070b136b8d936a4a3dd15f9fb478105f32668b505fe9b02b5ea",
+)
+
+RESPONSE_BINDING_MATERIAL = {
+    "contract": "FIABC_LM2_R1J_WVS7_Q291_PHYSICAL_RESPONSE_BINDING@1.0.0",
+    "source_sha256": SOURCE_SHA256,
+    "variables": [
+        {"name": "Q291G5", "ordinal": 388},
+        {"name": "Q291P5", "ordinal": 394},
+    ],
+    "native_codes": list((*SUBSTANTIVE_CODES, *SPECIAL_RESPONSE_STATES.keys())),
+    "authorized_decoder_representations": [
+        {"native_code": code, "physical_r5_token": dict(REPRESENTATION_R5_TOKENS[code])}
+        for code in (*SUBSTANTIVE_CODES, *SPECIAL_RESPONSE_STATES.keys())
+    ],
+    "representation_authority_ref": REPRESENTATION_AUTHORITY_REF.as_dict(),
+    "source_response_semantics_ref": RESPONSE_SEMANTICS_REF.as_dict(),
+    "native_to_program_token_authority_ref": MAPPING_AUTHORITY_REF.as_dict(),
+    "system_missing": "SEPARATE_NONE_SYSTEM_MISSING_KEY__NOT_NATIVE_CODE",
+}
+RESPONSE_BINDING_HASH = semantic_hash(RESPONSE_BINDING_MATERIAL)
+RESPONSE_BINDING_REF = ExactRef(
+    "FIABC_LM2_R1J_WVS7_Q291_PHYSICAL_RESPONSE_BINDING@1.0.0",
+    f"urn:rawlsing:pre553:fiabc-lm2-r1j:q291-response-binding:sha256:{RESPONSE_BINDING_HASH}",
+    RESPONSE_BINDING_HASH,
 )
 
 COUNTRY_CODE_TO_NAME: Mapping[int, str] = {
@@ -263,6 +294,8 @@ PROJECTION_AUTHORITY_MATERIAL = {
     "response_state_semantics_ref": RESPONSE_SEMANTICS_REF.as_dict(),
     "response_mapping_authority_ref": MAPPING_AUTHORITY_REF.as_dict(),
     "response_mapping_target_use": MAPPING_TARGET_USE,
+    "response_representation_authority_ref": REPRESENTATION_AUTHORITY_REF.as_dict(),
+    "response_binding_ref": RESPONSE_BINDING_REF.as_dict(),
     "coordinate_slot_identity_ref": COORDINATE_SLOT_IDENTITY_REF.as_dict(),
     "routing_rule_ref": ROUTING_RULE_REF.as_dict(),
     "risk_set_ref": RISK_SET_REF.as_dict(),
@@ -280,6 +313,7 @@ PROJECTION_AUTH_REF = AuthorityRef(
 PROJECTION_IDENTITY_HASH = semantic_hash({
     "authority_ref": PROJECTION_AUTH_REF.as_dict(),
     "source_sha256": SOURCE_SHA256,
+    "response_binding_ref": RESPONSE_BINDING_REF.as_dict(),
     "coordinate_slot_identity_ref": COORDINATE_SLOT_IDENTITY_REF.as_dict(),
     "question_refs": [Q0_REF.as_dict(), Q1_REF.as_dict()],
     "risk_set_ref": RISK_SET_REF.as_dict(),
@@ -497,8 +531,9 @@ def _new_authority(
     )
 
 
-def r6s_authorities() -> tuple[AuthoritySnapshot, AuthoritySnapshot, AuthoritySnapshot]:
+def r6s_authorities() -> tuple[AuthoritySnapshot, AuthoritySnapshot, AuthoritySnapshot, AuthoritySnapshot]:
     mapping = mapping_authority_snapshot()
+    representation = representation_authority_snapshot()
     coordinate = _new_authority(
         authority_ref=COORDINATE_AUTH_REF,
         authority_kind="COORDINATE_SEMANTICS",
@@ -517,9 +552,16 @@ def r6s_authorities() -> tuple[AuthoritySnapshot, AuthoritySnapshot, AuthoritySn
             "RoutingEligibilityFact@1.0.0",
         ),
         material=PROJECTION_AUTHORITY_MATERIAL,
-        parents=(SOURCE_AUTH_REF, ROUTING_AUTH_REF, COORDINATE_AUTH_REF, REPLAY_AUTH_REF, MAPPING_AUTHORITY_REF),
+        parents=(
+            SOURCE_AUTH_REF,
+            ROUTING_AUTH_REF,
+            COORDINATE_AUTH_REF,
+            REPLAY_AUTH_REF,
+            MAPPING_AUTHORITY_REF,
+            REPRESENTATION_AUTHORITY_REF,
+        ),
     )
-    return mapping, coordinate, projection
+    return mapping, representation, coordinate, projection
 
 
 def adopted_universe() -> EmpiricalUniverse:
@@ -631,26 +673,38 @@ def _response_value_rules(variable: PhysicalVariable) -> tuple[ResponseValueRule
         {"kind": "SCALAR_SINGULAR", "index": 0},
     )
     for code in SUBSTANTIVE_CODES:
-        state, declaration = classify_physical_value(code, variable.missing_declarations)
-        key = physical_value_binding_key(code, state, declaration)
+        physical_value = authorized_decoder_physical_value(
+            source_sha256=SOURCE_SHA256,
+            variable_name=variable.name,
+            ordinal=variable.ordinal,
+            native_code=code,
+        )
+        state, declaration = classify_physical_value(physical_value, variable.missing_declarations)
+        key = physical_value_binding_key(physical_value, state, declaration)
         rules.append(ResponseValueRule(
             physical_key=key,
             response_state="SUBSTANTIVE_RESPONSE",
             occurrences=(scalar,),
             canonical_value=str(code),
             transform_authority_ref=MAPPING_AUTHORITY_REF,
-            extra_authority_refs=(SOURCE_AUTH_REF,),
+            extra_authority_refs=(SOURCE_AUTH_REF, REPRESENTATION_AUTHORITY_REF),
         ))
     for code, response_state in SPECIAL_RESPONSE_STATES.items():
-        state, declaration = classify_physical_value(code, variable.missing_declarations)
-        key = physical_value_binding_key(code, state, declaration)
+        physical_value = authorized_decoder_physical_value(
+            source_sha256=SOURCE_SHA256,
+            variable_name=variable.name,
+            ordinal=variable.ordinal,
+            native_code=code,
+        )
+        state, declaration = classify_physical_value(physical_value, variable.missing_declarations)
+        key = physical_value_binding_key(physical_value, state, declaration)
         rules.append(ResponseValueRule(
             physical_key=key,
             response_state=response_state,
             occurrences=(scalar,),
             canonical_value=None,
             transform_authority_ref=None,
-            extra_authority_refs=(SOURCE_AUTH_REF,),
+            extra_authority_refs=(SOURCE_AUTH_REF, REPRESENTATION_AUTHORITY_REF),
         ))
     system_key = physical_value_binding_key(None, PhysicalMissingState.SYSTEM_MISSING, None)
     if all(rule.physical_key != system_key for rule in rules):
@@ -802,8 +856,11 @@ def build_projection_fields(
 
     universe = adopted_universe()
     old_authorities = adopted_p2f2_projection_authorities()
-    mapping_auth, coordinate_auth, projection_auth = r6s_authorities()
-    authorities = tuple(sorted((*old_authorities, mapping_auth, coordinate_auth, projection_auth), key=lambda x: x.authority_ref.key))
+    mapping_auth, representation_auth, coordinate_auth, projection_auth = r6s_authorities()
+    authorities = tuple(sorted(
+        (*old_authorities, mapping_auth, representation_auth, coordinate_auth, projection_auth),
+        key=lambda x: x.authority_ref.key,
+    ))
 
     q_bindings = _question_bindings(universe)
     q_by_name = {"Q291G5": q_bindings[0], "Q291P5": q_bindings[1]}
@@ -1094,6 +1151,12 @@ def bind_exact_projection_fields(fields: Mapping[str, Any]) -> GovernedC11Projec
     )
     if len(mapping_matches) != 1 or mapping_matches[0].ref != mapping_authority_snapshot().ref:
         raise ValueError("frozen WVS7 P2 exact mapping authority parent/provenance substitution forbidden")
+    representation_matches = tuple(
+        a for a in fields.get("authority_snapshots", ())
+        if getattr(a, "authority_ref", None) == REPRESENTATION_AUTHORITY_REF
+    )
+    if len(representation_matches) != 1 or representation_matches[0].ref != representation_authority_snapshot().ref:
+        raise ValueError("frozen WVS7 P2 exact physical/native representation authority substitution forbidden")
     response_slots = tuple(fields.get("response_slots", ()))
     if len(response_slots) != 2:
         raise ValueError("frozen WVS7 P2 requires exactly two response slots")
@@ -1101,7 +1164,13 @@ def bind_exact_projection_fields(fields: Mapping[str, Any]) -> GovernedC11Projec
         raise ValueError("frozen WVS7 P2 exact response-slot identity/order drift")
     for slot in response_slots:
         canonical_tokens = []
+        system_key = physical_value_binding_key(None, PhysicalMissingState.SYSTEM_MISSING, None)
         for rule in slot.values:
+            if rule.physical_key == system_key:
+                if REPRESENTATION_AUTHORITY_REF in rule.extra_authority_refs:
+                    raise ValueError("system missing may not consume numeric representation authority")
+            elif REPRESENTATION_AUTHORITY_REF not in rule.extra_authority_refs:
+                raise ValueError("Q291 numeric physical binding lacks exact representation authority")
             if rule.canonical_value is not None:
                 if rule.transform_authority_ref != MAPPING_AUTHORITY_REF:
                     raise ValueError("frozen WVS7 P2 substantive response mapping authority substitution forbidden")
@@ -1147,7 +1216,7 @@ def binding_receipt(
 
 
 def authority_identity_receipt() -> Mapping[str, Any]:
-    mapping_auth, coordinate_auth, projection_auth = r6s_authorities()
+    mapping_auth, representation_auth, coordinate_auth, projection_auth = r6s_authorities()
     return {
         "schema": "EE_P2R6S_AUTHORITY_IDENTITY_RECEIPT@1.0.0",
         "adopted_hq_coordinate_authority_hash": HQ_COUNTRY_COORDINATE_AUTHORITY_HASH,
@@ -1157,6 +1226,11 @@ def authority_identity_receipt() -> Mapping[str, Any]:
         "mapping_authority_snapshot_ref": mapping_auth.ref.as_dict(),
         "mapping_authority_material": MAPPING_AUTHORITY_MATERIAL,
         "mapping_target_use": MAPPING_TARGET_USE,
+        "representation_authority_ref": representation_auth.authority_ref.as_dict(),
+        "representation_authority_snapshot_ref": representation_auth.ref.as_dict(),
+        "representation_authority_material": REPRESENTATION_AUTHORITY_MATERIAL,
+        "response_binding_ref": RESPONSE_BINDING_REF.as_dict(),
+        "response_binding_material": RESPONSE_BINDING_MATERIAL,
         "coordinate_authority_ref": coordinate_auth.authority_ref.as_dict(),
         "coordinate_authority_snapshot_ref": coordinate_auth.ref.as_dict(),
         "coordinate_slot_identity_ref": COORDINATE_SLOT_IDENTITY_REF.as_dict(),
@@ -1186,6 +1260,10 @@ __all__ = [
     "MAPPING_AUTHORITY_REF",
     "MAPPING_AUTHORITY_MATERIAL",
     "MAPPING_ROWS",
+    "REPRESENTATION_AUTHORITY_REF",
+    "REPRESENTATION_AUTHORITY_MATERIAL",
+    "RESPONSE_BINDING_REF",
+    "RESPONSE_BINDING_MATERIAL",
     "NATIVE_COUNTRY_COORDINATE_REF",
     "COUNTRY_UNIT_REF",
     "PROJECTION_AUTH_REF",
