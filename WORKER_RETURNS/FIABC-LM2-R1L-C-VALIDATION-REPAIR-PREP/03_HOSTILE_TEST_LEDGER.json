@@ -1,0 +1,100 @@
+{
+  "schema": "FIABC_LM2_R1L_C_HOSTILE_TEST_LEDGER@1.0.0",
+  "status": "PASS",
+  "implementation_head": "a0fcebeb14aecc628334d30cc84de634a5b8a721",
+  "implementation_module": {
+    "path": "rawlsing_next/fiabc_lm2_r1l_validation_authority_successor.py",
+    "blob_sha1": "f29e80345afd7e953f8f03fc52350b83b220f350"
+  },
+  "test_module": {
+    "path": "rawlsing_next/tests/test_fiabc_lm2_r1l_validation_authority_successor.py",
+    "blob_sha1": "fd265b004bae73e10d93c87e80772c6ad0af297e"
+  },
+  "github_actions": {
+    "run_id": 35626098364,
+    "job_id": 106420722226,
+    "protocol_self_test": "20 passed in 0.06s",
+    "governed_court": "45 passed in 0.99s",
+    "artifact_id": 10652766242,
+    "artifact_zip_sha256": "3e27ace8d1dc22b5a7121b935d491ddbe95e80d24463ae95280f644524071dfd"
+  },
+  "hostile_requirements": [
+    {
+      "id": 1,
+      "requirement": "exact 3-kind envelope passes",
+      "status": "PASS"
+    },
+    {
+      "id": 2,
+      "requirement": "missing one kind fails",
+      "status": "PASS"
+    },
+    {
+      "id": 3,
+      "requirement": "extra fourth kind fails without independent authority; minimal repair also refuses future-scope expansion",
+      "status": "PASS"
+    },
+    {
+      "id": 4,
+      "requirement": "wildcard / ALL fails",
+      "status": "PASS"
+    },
+    {
+      "id": 5,
+      "requirement": "candidate grammar mutation fails",
+      "status": "PASS"
+    },
+    {
+      "id": 6,
+      "requirement": "candidate pruning mutation fails",
+      "status": "PASS"
+    },
+    {
+      "id": 7,
+      "requirement": "predicate mutation fails",
+      "status": "PASS"
+    },
+    {
+      "id": 8,
+      "requirement": "query mutation fails",
+      "status": "PASS"
+    },
+    {
+      "id": 9,
+      "requirement": "outcome-derived authority fails",
+      "status": "PASS"
+    },
+    {
+      "id": 10,
+      "requirement": "candidate output / candidate-owned parent cannot parent authority",
+      "status": "PASS"
+    },
+    {
+      "id": 11,
+      "requirement": "old defective authority still fails unchanged generic I05",
+      "status": "PASS"
+    },
+    {
+      "id": 12,
+      "requirement": "successor authority crosses exact validation admission in unchanged generic I05",
+      "status": "PASS"
+    }
+  ],
+  "additional_conservation_tests": [
+    "successor changes only validation envelope plus proven replay/authority parentage",
+    "Lock2 successor seam changes transitive identities while preserving frozen frontier when succession court permits",
+    "MUST_REPLAY_BUT_EXPECTED_SAME requires exact 46-hash replay equality",
+    "succession evidence cannot authorize workload redesign or pruning",
+    "conditional runtime package preserves predicates/queries and re-materializes successor DiscoveryAuthority"
+  ],
+  "generic_regression_suites": [
+    "rawlsing_next/tests/test_pre553_discovery_exact.py",
+    "rawlsing_next/tests/test_pre553_empirical_objects_authority.py"
+  ],
+  "empirical_evaluation_performed": false,
+  "real_i05_performed": false,
+  "candidate_outputs_consulted": 0,
+  "candidate_processes_started": 0,
+  "source_access": false,
+  "generic_i05_code_modified": false
+}
