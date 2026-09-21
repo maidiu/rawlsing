@@ -1,0 +1,24 @@
+{
+  "schema": "FIABC_LM2_R1J_B_MINIMAL_METADATA_ONLY_FALLBACK@1.0.0",
+  "required": false,
+  "execution_performed": false,
+  "reason": "Exact browser-accessible Q291 variable-type evidence was recovered and frozen; no local verification is irreducible for Worker B.",
+  "contingency_only": {
+    "trigger": "Use only if the committed LM2 physical evidence is later invalidated or removed from accepted lineage.",
+    "source_sha256_required": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+    "respondent_values_requested": false,
+    "metadata_fields_requested": [
+      "readstat_variable_types.Q291G5",
+      "readstat_variable_types.Q291P5",
+      "original_variable_types.Q291G5",
+      "original_variable_types.Q291P5"
+    ],
+    "exact_operation": [
+      "Verify the local WVS Wave 7.sav SHA-256 equals the frozen canonical SHA.",
+      "Call pyreadstat.read_sav(path, metadataonly=True, apply_value_formats=False, user_missing=True) once.",
+      "Emit only the four named metadata dictionary entries above plus reader/version and source SHA."
+    ],
+    "reference_python": "_, meta = pyreadstat.read_sav(path, metadataonly=True, apply_value_formats=False, user_missing=True); result = {n: {'readstat_variable_type': meta.readstat_variable_types[n], 'original_variable_type': meta.original_variable_types[n]} for n in ('Q291G5','Q291P5')}",
+    "prohibited": "Do not request respondent rows, frequencies, marginals, value distributions, Candidate A/B/C output, I03, I05, or measured P2X."
+  }
+}
