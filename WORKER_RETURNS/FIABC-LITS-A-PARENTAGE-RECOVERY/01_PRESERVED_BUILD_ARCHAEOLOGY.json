@@ -1,0 +1,171 @@
+{
+  "schema": "FIABC_LITS_A_PRESERVED_BUILD_ARCHAEOLOGY@1.0.0",
+  "repository": "maidiu/rawlsing",
+  "exact_base": "357cc2ac6952a478fa2e38f9adbe45ebb3671081",
+  "branch": "agent/rabochii-premain-fiabc-lits-a-parentage-recovery-r1",
+  "holding": "BROWSER_ARCHAEOLOGY_EXHAUSTED__HISTORICAL_GENERIC_R35_PARENTAGE_NOT_PROVED",
+  "preserved_work_status": "DERIVATIVE_PRESENT_BUT_CURRENTNESS_UNPROVED",
+  "secondary_blockers": [
+    "CURRENT_R35_EXTERNAL_PARENTAGE_RECEIPT_FOR_HISTORICAL_E8F37557_ROOT_ABSENT",
+    "CURRENT_LIVE_BACKEND_R5_BUILDER_BLOB_PIN_IS_STALE_OR_MALFORMED_RELATIVE_TO_QUALIFIED_OWNER_OBJECT"
+  ],
+  "canonical_source": {
+    "source_id": "LITS_I",
+    "sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "bytes": 139531180,
+    "rows": 29002,
+    "variables": 1198
+  },
+  "qualifying_first_build": {
+    "governed_commit": "02a7ff71ae65b1aa8c52add0b315244a9eaea9df",
+    "path": "WORKER_RETURNS/EE-P2X/01_LITS_I_A_FIRST_BUILD_STAGE.json",
+    "committed_receipt_sha256": "5830aa25eccb7a0b70ee3fb70b2bd5d3a17c047bfd0f52faf19bdcd2f48e3558",
+    "status": "PASS__FRESH_ABSENT_TARGET_R5_FIRST_BUILD_COMPLETE__FOLLOW_ON_COURT_REQUIRED",
+    "physical_root_id": "e8f37557493b816e4562f5f47df110cf49b429e9ead54e5b624d6638ee07aa3d",
+    "canonical_rows": 34745595,
+    "steady_state_bytes": 224173803,
+    "final_shards": 2121,
+    "initial_runs": 8483,
+    "merge_passes": 4,
+    "logical_stream_digest": "de8f060aa72eff7e45f8355ed683cb8ee4b6aca7ff255167cb41bcf8e5a7e3d6",
+    "projection_cache_identity": "84361298ae702786a3fd1044bf619ffa4fe9ed2877040724386951e9c9d27872",
+    "c11_logical_release": "e6c954538fa1830820120465a10a6d065b8a18d1e6b7b08d3f863b0917741e26",
+    "replay_manifest": "6bfe9862abd6f373309ff6f8868f8871948bb9ed397906d880cda6776941a1dd",
+    "raw_receipt_sha256": "89bd0719f0c546bc3e6e0d3ef7678c01c3fb3ab51cf0c82c84f9a343e08d5337",
+    "stdout_sha256": "369357cc8dc587679ab7ecd83e5fdba964167dc9ee1203f16caca924a70aa7de",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "execution_runtime": {
+      "platform": "Darwin x86_64",
+      "python": "3.11.3",
+      "pyreadstat": "1.3.6",
+      "pyarrow": "25.0.1",
+      "decoder": "decode_dta(source_path, encoding=latin1)"
+    },
+    "exact_commit_inventory": [
+      "WORKER_RETURNS/EE-P2X/00_EXECUTION_BINDING.json",
+      "WORKER_RETURNS/EE-P2X/00_RETURN.md",
+      "WORKER_RETURNS/EE-P2X/01_LITS_I_A_FIRST_BUILD_STAGE.json"
+    ],
+    "external_source_verification_receipt_in_commit": false,
+    "external_derivative_parentage_receipt_in_commit": false,
+    "github_actions_runs_for_commit": 0
+  },
+  "evidence_surfaces": [
+    {
+      "id": "E01",
+      "surface": "EE-P2X first-build receipt @ 02a7ff71ae65b1aa8c52add0b315244a9eaea9df",
+      "classification": "CONTEMPORANEOUS_FIRST_BUILD_EVIDENCE",
+      "proves": [
+        "canonical source SHA",
+        "fresh absent-target build status",
+        "historical derivative identity",
+        "historical runtime envelope",
+        "build telemetry"
+      ],
+      "does_not_prove": [
+        "external canonical-source verification receipt identity",
+        "exact builder Git blob used by execution",
+        "complete build config",
+        "cryptographic derivative receipt parented to source receipt",
+        "current R35 currentness/ownership"
+      ]
+    },
+    {
+      "id": "E02",
+      "surface": "EE-R10L Candidate-A R5 calibration receipt/script",
+      "classification": "PRE_P2_CALIBRATION_CORROBORATION_ONLY",
+      "proves": [
+        "same source SHA",
+        "same physical_root_id e8f37557...",
+        "same logical stream digest",
+        "same row/shard geometry",
+        "source hash checked before decode in calibration script"
+      ],
+      "does_not_prove": [
+        "P2X first-build external parentage",
+        "dispositive P2 preserved numeric credit"
+      ]
+    },
+    {
+      "id": "E03",
+      "surface": "EE-P2R6O historical owner preservation",
+      "classification": "LATER_OWNER_SEAM_PRESERVATION",
+      "proves": [
+        "Candidate-A owner blob d4915e7...",
+        "historical first-build stage identity preserved",
+        "runtime catalog/active binding/runtime release"
+      ],
+      "does_not_prove": [
+        "source-to-derivative parentage of e8f37557..."
+      ]
+    },
+    {
+      "id": "E04",
+      "surface": "EE-P2R6X stopped-ledger reconciliation prep",
+      "classification": "PRESERVATION_OF_DURABLE_CARRIER_CLASS",
+      "proves": [
+        "reconciliation must not delete durable transformed carriers or external preserved physical carriers",
+        "LiTS-A S00/S01 preservation survives"
+      ],
+      "does_not_prove": [
+        "present filesystem existence of exact e8f37557 root",
+        "historical source receipt",
+        "historical derivative receipt"
+      ]
+    },
+    {
+      "id": "E05",
+      "surface": "FIABC-R35-I02 generic parentage law",
+      "classification": "CURRENT_GOVERNING_ADMISSION_LAW",
+      "proves": [
+        "external receipt chain required",
+        "self-asserted source SHA/path/shape/self-hash insufficient"
+      ],
+      "does_not_prove": [
+        "historical parentage itself"
+      ]
+    },
+    {
+      "id": "E06",
+      "surface": "FIABC-LM1-R1A historical archaeology",
+      "classification": "INDEPENDENT_EXHAUSTIVE_NEGATIVE_ADJUDICATION",
+      "evidence_candidates_inspected": 14,
+      "holding": "HISTORICAL_R5_PARENTAGE_NOT_PROVED",
+      "missing_links": [
+        "exact builder Git blob contemporaneously bound to first build",
+        "complete exact R5 build configuration",
+        "canonical-source verification receipt identity created before/during build",
+        "derivative-parentage receipt cryptographically parented to source receipt",
+        "current ownership/currentness bridge"
+      ]
+    },
+    {
+      "id": "E07",
+      "surface": "FIABC-LM1-R1C later governed replacement",
+      "classification": "WRONG_DERIVATIVE_FOR_HISTORICAL_PARENTAGE",
+      "replacement_root": "7d85c5e4c3a91c3f6dc8f7896fe487cda116fc8cf67f0ab263a2654ff938afcd",
+      "source_receipt_identity": "b0df3042e27fda2d3288d44fdc27d46ed4e4f393301dd781eff43b5a5f13bdf1",
+      "derivative_receipt_identity": "dbfe6014944a27ae9e31a32b201d9b8f2083111440ad435ea155583b6e4d33a4",
+      "bundle_identity": "8b63de4ea902350ce197bc3ed49b59259bef2ad400c9f3c7db65ac96b015ace7",
+      "admissible_for_e8f37557_root": false,
+      "reason": "receipt closes to a different newly-built derivative and cannot retroactively parent the preserved first build"
+    }
+  ],
+  "search_exhaustion": {
+    "branch_history": true,
+    "exact_first_build_commit": true,
+    "first_build_actions": true,
+    "r10l": true,
+    "p2r6o": true,
+    "p2r6x": true,
+    "continuation_reducer": true,
+    "r35_i02": true,
+    "final_readiness_audit": true,
+    "lm1_r1a_archaeology": true,
+    "lm1_r1c_later_bundle": true,
+    "exact_raw_receipt_hash_repo_search": "NO_REPOSITORY_RESULT",
+    "exact_stdout_hash_repo_search": "NO_REPOSITORY_RESULT",
+    "exact_old_root_repo_search": "NO_REPOSITORY_RESULT"
+  },
+  "rebuild_authorized": false
+}
