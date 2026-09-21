@@ -1,0 +1,47 @@
+{
+  "schema": "FIABC_LITS_A_PRESERVED_WORK_ACCOUNTING_DELTA@1.0.0",
+  "status": "PASS__ABSENT_ARTIFACT_CANNOT_DONATE_CURRENT_WORK",
+  "prior_t4_row": {
+    "row_id": "P006",
+    "source": "LITS_I",
+    "candidate": "A",
+    "classification": "PRESERVED_SEMANTIC_EVIDENCE_WITHOUT_NUMERIC_TELEMETRY",
+    "numeric_credit": "NO"
+  },
+  "new_current_fact": {
+    "historical_physical_root": "e8f37557493b816e4562f5f47df110cf49b429e9ead54e5b624d6638ee07aa3d",
+    "root_present_at_current_host": false,
+    "current_physical_realization_before_s01": "ABSENT"
+  },
+  "frozen_accounting_rule": {
+    "historical_semantic_receipts": "RETAINED_AS_HISTORY",
+    "historical_numeric_slots": "TYPED_NULL__NOT_CURRENT_CREDIT",
+    "historical_build_duration_to_current_measured_duration": false,
+    "historical_cpu_to_current": false,
+    "historical_rss_to_current": false,
+    "historical_io_to_current": false,
+    "missing_root_reused_as_preserved_work": false,
+    "current_lits_a_preserved_stage_consumption": [],
+    "current_s01_must_execute": true,
+    "current_s01_cost_class": "C2",
+    "current_s01_work_classification": "EXECUTED_NOW",
+    "current_s01_metric": "build_or_open_wall_ns"
+  },
+  "anti_suppression": [
+    "Historical LITS_A_FIRST_BUILD evidence may not mark current S01 DONE__PRESERVE.",
+    "NO_REPEAT_COMPLETED_LITS_A_FIRST_BUILD is obsolete for the current absent-root state and is rejected by current-manifest validation.",
+    "A prebuilt current target may not suppress the required cold S01 action.",
+    "R35 may not request a duplicate build after S01."
+  ],
+  "implementation": {
+    "current_manifest_s01": "READY__RUN_LOCALLY",
+    "source_access_required": true,
+    "physical_host_measurement_required": true,
+    "backend_cell_receipt_preserved_stage_consumption_for_lits_a": []
+  },
+  "source_free_test": {
+    "run_id": 35629679569,
+    "job_id": 106432556473,
+    "result": "23 passed in 0.21s"
+  }
+}
