@@ -1,0 +1,168 @@
+{
+  "schema": "CLOSED35_R3_ARAB1_PHYSICAL_EDGE_BINDING@1.0.0",
+  "worker": "CLOSED35-R3-ARAB1",
+  "source": {
+    "family": "Arab Barometer",
+    "wave": "Wave 1",
+    "canonical_filename": "Arab Barometer Wave 1.sav",
+    "canonical_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+    "format": "SAV",
+    "reader_mode": "SAV_NATIVE_GOVERNED",
+    "source_reported_encoding": "UTF-8",
+    "source_reported_character_code": 65001,
+    "compatibility_override": "NO_SOURCE_SPECIFIC_COMPATIBILITY_OVERRIDE",
+    "replay_identity": "SOURCE_SHA256+ROW_ORDINAL",
+    "native_id_field": "SER"
+  },
+  "authority": {
+    "class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+    "prep71_branch_head": "82a7893130a1fb95e92d4a628d301fea858d4119",
+    "prep72_synthesis_head": "3356b26f2dc518043ffde171c2dca0470b5ac79f",
+    "source_certified_by_authority71_72": false
+  },
+  "applicable_s35_edge_classes": [
+    {
+      "id": "EC01",
+      "name": "FORMAT_FAMILY_SAV_DTA",
+      "required_dimensions": [
+        "physical_metadata",
+        "variable_inventory_order",
+        "raw_storage_values",
+        "row_replay_identity"
+      ],
+      "arab1_binding": "SAV_NATIVE_GOVERNED",
+      "semantic_boundary": "SAV format and reader representation have no semantic jurisdiction."
+    },
+    {
+      "id": "EC07",
+      "name": "NATIVE_ID_SCOPE_COLLISION_OR_NONINJECTIVITY",
+      "required_dimensions": [
+        "row_replay_identity",
+        "native_id_replay_evidence"
+      ],
+      "arab1_binding": {
+        "hard_identity": [
+          "canonical_source_sha256",
+          "zero_based_source_row_ordinal"
+        ],
+        "native_id": "SER",
+        "native_id_scope": "SOURCE_LOCAL_ATTRIBUTE_ONLY",
+        "known_duplicate_fixture": {
+          "ser": 972,
+          "row_ordinals": [
+            3021,
+            3450
+          ]
+        }
+      },
+      "semantic_boundary": "SER or COUNTRY+SER cannot replace the hard replay key."
+    },
+    {
+      "id": "EC10",
+      "name": "FORM_MODULE_SKIP_ROUTING_CARRIERS",
+      "required_dimensions": [
+        "form_module_skip_routing_carriers"
+      ],
+      "arab1_binding": {
+        "documented_country_coordinate": {
+          "field": "COUNTRY",
+          "morocco_code": 4
+        },
+        "documented_routes": [
+          "q715withoutmorocco",
+          "V715onlymorocco"
+        ],
+        "routing_from_missingness": false,
+        "undocumented_routes": "ROUTING_BOUNDED_UNKNOWN",
+        "v715_alias_status": "PRINTED_Q715MOROCCOONLY_ALIAS_BINDING_BOUNDED_UNKNOWN"
+      },
+      "semantic_boundary": "Physical presence or missingness cannot create eligibility; only W1 documentary authority can."
+    },
+    {
+      "id": "EC14",
+      "name": "COMPOUND_EDGE_INTERACTION_COURT",
+      "composes": [
+        "EC01",
+        "EC07",
+        "EC10"
+      ],
+      "required_dimensions": [],
+      "arab1_named_hostiles": [
+        "literal C1-bearing source text",
+        "duplicate SER replay identity",
+        "Morocco/non-Morocco routing distinction",
+        "no inferred survey design"
+      ],
+      "semantic_boundary": "Compound coverage adds no special adapter and weakens no constituent invariant."
+    }
+  ],
+  "literal_text_binding": {
+    "canonical_hostile_example": {
+      "variable": "Q2311",
+      "code": 98,
+      "source_decoded_text": "can\u0092t choose"
+    },
+    "source_text_preserved_exactly": true,
+    "silent_typographic_normalization_allowed": false,
+    "display_transform_without_explicit_authority": "DISPLAY_TEXT_TRANSFORM_BOUNDED_UNKNOWN"
+  },
+  "design_binding": {
+    "broad_probability_sample_description_documented": true,
+    "exact_weight_field_authorized": false,
+    "weight_estimand_authorized": false,
+    "psu_stratum_implementation_authorized": false,
+    "default_estimator_authorized": false,
+    "physical_design_like_carriers_preserved_if_present": true,
+    "semantic_state": "DESIGN_BOUNDED_UNKNOWN"
+  },
+  "r35_hooks": {
+    "i01": {
+      "accepted_worker_branch": "agent/rabochii-premain-fiabc-r35-i01-raw-layout-metadata-r1",
+      "schema": "PRE553_PHYSICAL_METADATA@1.0.0",
+      "required": true,
+      "semantic_authority": false
+    },
+    "i02": {
+      "accepted_worker_branch": "agent/rabochii-premain-fiabc-r35-i02-derivative-parentage-r1",
+      "schema": "FIABC_DERIVATIVE_PARENTAGE_BUNDLE@1.0.0",
+      "required_for_non_direct_raw": true,
+      "semantic_authority": false
+    },
+    "i03": {
+      "accepted_worker_branch": "agent/rabochii-premain-fiabc-r35-i03-physical-equivalence-r1",
+      "source_scope_schema": "FIABC_R35_I03_SOURCE_PHYSICAL_SCOPE@1.0.0",
+      "expectation_schema": "FIABC_R35_I03_CANONICAL_PHYSICAL_EXPECTATION@1.0.0",
+      "candidate_realization_schema": "FIABC_R35_I03_CANDIDATE_PHYSICAL_REALIZATION@1.0.0",
+      "receipt_schema": "FIABC_R35_I03_WHOLE_SOURCE_PHYSICAL_EQUIVALENCE_RECEIPT@1.0.0",
+      "required_candidates": [
+        "A",
+        "B",
+        "C"
+      ],
+      "required_dimensions": [
+        "physical_metadata",
+        "variable_inventory_order",
+        "raw_storage_values",
+        "row_replay_identity",
+        "native_id_replay_evidence",
+        "form_module_skip_routing_carriers"
+      ],
+      "semantic_authority": false
+    }
+  },
+  "candidate_neutral_binding": {
+    "semantic_owner_surface": "PRE553_SOURCE_BACKED_C11_FACADE@1.0.0",
+    "candidate_specific_semantics_allowed": false,
+    "candidate_law": "A_B_C_SHARE_ONE_SOURCE_SPECIFIC_SEMANTIC_REALIZATION_IDENTITY"
+  },
+  "proof_boundary": {
+    "exact_base_sha": "da33eb6a8225c14eee9490633a3263388dc5536c",
+    "raw_sav_opened": false,
+    "source_processing_executed": false,
+    "source_decoding_executed": false,
+    "measured_p2x_run": false,
+    "whole_source_physical_equivalence_executed": false,
+    "abc_qualification_executed": false,
+    "tests_status": "TESTS_AUTHORED__NOT_EXECUTED"
+  }
+}
