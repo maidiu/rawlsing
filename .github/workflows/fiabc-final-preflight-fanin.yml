@@ -1,0 +1,79 @@
+name: FIABC Final Preflight HQ Fan-In
+
+on:
+  push:
+    branches:
+      - agent/vozhd-premain-fiabc-final-preflight-fanin-r1
+  workflow_dispatch:
+
+jobs:
+  final-source-independent-court:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: write
+    env:
+      PYTHONPATH: .
+      PYTHONHASHSEED: "0"
+      PYTEST_DISABLE_PLUGIN_AUTOLOAD: "1"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install source-free court dependencies
+        run: python -m pip install --disable-pip-version-check pytest pandas
+
+      - name: Compile production Python
+        run: python -m compileall -q rawlsing_next
+
+      - name: Final integrated state court
+        run: |
+          python -m pytest -q \
+            rawlsing_next/tests/test_fiabc_final_preflight_fanin.py \
+            rawlsing_next/tests/test_fiabc_lits_a_absent_root_current_court.py \
+            rawlsing_next/tests/test_fiabc_post_r1j_root_source_independent_courts.py \
+            rawlsing_next/tests/test_r35_i01_physical_metadata.py \
+            rawlsing_next/tests/test_fiabc_r35_i03_physical_equivalence.py \
+            rawlsing_next/tests/test_fiabc_t6_live_r35_convergence.py \
+            rawlsing_next/tests/test_fiabc_t2_six_cell_execution_binding.py \
+            rawlsing_next/tests/test_pre553_candidate_c_production_binding.py \
+            rawlsing_next/tests/test_fiabc_t3_oracle_process_envelope.py \
+            rawlsing_next/tests/test_fiabc_w3_i06a_process_isolation.py \
+            rawlsing_next/tests/test_fiabc_t4_live_accounting.py \
+            rawlsing_next/tests/test_pre553_independent_parity_oracle.py \
+            rawlsing_next/tests/test_fiabc_succession_preflight.py \
+            rawlsing_next/tests/test_fiabc_p2_terminal_verifier.py \
+            rawlsing_next/tests/test_fiabc_t5_live_terminal_control.py \
+            rawlsing_next/tests/test_pre553_empirical_objects_authority.py \
+            rawlsing_next/tests/test_pre553_empirical_query.py \
+            rawlsing_next/tests/test_pre553_discovery_exact.py \
+            rawlsing_next/tests/test_pre553_source_backed_c11_facade.py \
+            rawlsing_next/tests/test_pre553_source_backed_c11_facade_multi_owner_r1.py \
+            rawlsing_next/tests/test_pre553_source_backed_c11_facade_multi_owner_qualification_r1.py \
+            rawlsing_next/tests/test_fiabc_lm2_r1j_sav_representation_authority.py
+
+      - name: Exact final static assertions
+        run: |
+          python - <<'PY'
+          import ast, hashlib, json
+          from pathlib import Path
+          root=Path(".")
+          package=json.loads((root/"rawlsing_next/runtime/ee_p2x/02_WVS7_P2F2_RUNTIME_PACKAGE.json").read_text())
+          t2=json.loads((root/"WORKER_RETURNS/FIABC-T2/01_SIX_CELL_EXECUTION_MANIFEST.json").read_text())
+          t5=json.loads((root/"WORKER_RETURNS/FIABC-T5/04_CURRENT_SIX_CELL_COURT_CONTRACT.json").read_text())
+          oracle=json.loads((root/"WORKER_RETURNS/FIABC-LM2-R1M-LOCK2-SUCCESSOR-R16-ORACLE/07_FRESH_WVS_ORACLE.json").read_text())
+          assert package["lock2"]=="5e2a53f0e5f3b6ddd8db53b724b352ca41fe1a49408483fbf83dfdaa96283139"
+          assert package["discovery_authority_hash"]=="3aee36014e4c3b39dd36bfef46006d8e9058a93aa5eb53bd81aef627883c8873"
+          assert package["replay"]=="9b5ac1726a03798d07e965396192d1bfefbee6d2188bad5a3acfb467ef063d4a"
+          assert oracle["oracle_identity_sha256"]=="3694b8bd0b5468433a1a83bd469337c7e36e552c3a9a5fef65fff88df8fce800"
+          assert t2["entry_guard"]["first_unfinished_court_stage"]=="LITS_I/A/S01_CANDIDATE_PREPARATION_BUILD"
+          assert t5["wvs_successor_court"]["lock2"]==package["lock2"]
+          assert t5["lits_a_current_court"]["preserved_s01_numeric_credit"] is False
+          print("WVS_ORACLE_DOCUMENT_SHA256="+hashlib.sha256((root/"WORKER_RETURNS/FIABC-LM2-R1M-LOCK2-SUCCESSOR-R16-ORACLE/07_FRESH_WVS_ORACLE.json").read_bytes()).hexdigest())
+          print("FIABC_FINAL_PREFLIGHT_HQ_FANIN_STATIC_PASS")
+          PY
