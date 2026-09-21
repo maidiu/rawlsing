@@ -93,8 +93,8 @@ Ordinary final-P2 launch gates remain ordinary gates: accepted current code/mani
 
 GitHub Actions:
 
-- run: `35629679569`
-- job: `106432556473`
-- result: **23 passed in 0.21s**
+- run: `35630001075`
+- job: `106433616854`
+- result: **24 passed in 0.30s**
 
 These tests are static/source-free. They did not open LiTS, run a Candidate, execute I03/I05, or run measured P2X.
