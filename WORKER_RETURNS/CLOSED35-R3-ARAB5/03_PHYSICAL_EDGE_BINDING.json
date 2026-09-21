@@ -1,0 +1,192 @@
+{
+  "schema": "CLOSED35_R3_ARAB5_PHYSICAL_EDGE_BINDING@1.0.0",
+  "worker": "CLOSED35-R3-ARAB5",
+  "source": {
+    "family": "Arab Barometer",
+    "release": "Wave 5",
+    "filename": "Arab Barometer Wave 5.sav",
+    "sha256": "6a5cbad637ce1546833a1d4812ba6d1e8d75f85b5b199b0cf3ec5cf456068dbc",
+    "format": "sav",
+    "physical_mode": "SAV_NATIVE_GOVERNED",
+    "source_declared_encoding": "UTF-8",
+    "source_declared_character_code": 65001,
+    "replay_identity": [
+      "source_sha256",
+      "zero_based_source_row_ordinal"
+    ],
+    "launch_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED"
+  },
+  "accepted_packet_facts_without_reexecution": {
+    "rows": 27850,
+    "logical_variables": 359,
+    "storage_slots": 361,
+    "native_spss_mr_sets": 0,
+    "identity": {
+      "native_id_noninjective": true,
+      "country_plus_id_duplicate_pairs": 3,
+      "hard_replay_identity": "SOURCE_SHA256+ROW_ORDINAL"
+    },
+    "design_carriers": [
+      "WT",
+      "PSU",
+      "STRATUM",
+      "SAMPLE",
+      "MODE"
+    ],
+    "system_missing_design_carriers": [
+      "WT",
+      "PSU"
+    ],
+    "q101": {
+      "source_dictionary_codes": [-9, -8, 1, 2, 3, 4, 97, 98, 99],
+      "accepted_observed_codes": [1, 2, 3, 4, 98, 99],
+      "accepted_unobserved_extra_dictionary_codes": [-9, -8, 97],
+      "extra_code_semantics": "BOUNDED_UNKNOWN"
+    },
+    "ranked_slots": [
+      {
+        "variable": "Q2061A",
+        "rank": 1,
+        "role": "MOST_IMPORTANT_CHALLENGE"
+      },
+      {
+        "variable": "Q2061B",
+        "rank": 2,
+        "role": "SECOND_MOST_IMPORTANT_CHALLENGE"
+      }
+    ],
+    "split_carriers": {
+      "SPLITA": [1, 2],
+      "SPLITB": [1, 2, 3]
+    },
+    "unicode_storage_witness": {
+      "variable": "E2001B",
+      "row_ordinal": 19250,
+      "literal_text": "ظريف",
+      "width": 21,
+      "storage_slots": 3
+    },
+    "bounded_unknowns": [
+      "WT_ESTIMAND",
+      "WT_NORMALIZATION",
+      "PSU_ANALYTICAL_ROLE",
+      "STRATUM_ANALYTICAL_ROLE",
+      "SAMPLE_MODE_DESIGN_RELATION",
+      "Q101_EXTRA_DICTIONARY_CODE_SEMANTICS",
+      "UNJOINED_ITEM_ROUTING",
+      "CROSS_WAVE_SEMANTIC_EQUIVALENCE"
+    ]
+  },
+  "s35_edge_classes": [
+    {
+      "id": "EC01",
+      "name": "FORMAT_FAMILY_SAV_DTA",
+      "arab5_binding": "SAV_NATIVE_GOVERNED",
+      "required_dimensions": [
+        "physical_metadata",
+        "variable_inventory_order",
+        "raw_storage_values",
+        "row_replay_identity"
+      ],
+      "semantic_overlay": "NONE__FORMAT_HAS_NO_SEMANTIC_AUTHORITY"
+    },
+    {
+      "id": "EC05",
+      "name": "PHYSICAL_MISSINGNESS_MULTICLASS",
+      "arab5_binding": {
+        "wt_system_missing": "PRESERVE_PHYSICALLY",
+        "psu_system_missing": "PRESERVE_PHYSICALLY",
+        "system_missing_is_row_exclusion_authority": false,
+        "system_missing_is_design_semantics": false
+      }
+    },
+    {
+      "id": "EC07",
+      "name": "NATIVE_ID_SCOPE_COLLISION_NONINJECTIVITY",
+      "arab5_binding": {
+        "native_id_carrier": "ID",
+        "native_id_noninjective": true,
+        "country_plus_id_still_noninjective": true,
+        "hard_replay_identity": "SOURCE_SHA256+ROW_ORDINAL"
+      }
+    },
+    {
+      "id": "EC09",
+      "name": "ORDERED_REPEATED_SLOT_TOPOLOGY",
+      "arab5_binding": {
+        "slots": [
+          "Q2061A:RANK_1:MOST_IMPORTANT_CHALLENGE",
+          "Q2061B:RANK_2:SECOND_MOST_IMPORTANT_CHALLENGE"
+        ],
+        "flattening": "FORBIDDEN",
+        "reordering": "FORBIDDEN",
+        "native_mr_set_invention": "FORBIDDEN"
+      }
+    },
+    {
+      "id": "EC10",
+      "name": "FORM_MODULE_SKIP_ROUTING_CARRIERS",
+      "arab5_binding": {
+        "split_carriers": ["SPLITA", "SPLITB"],
+        "missingness_as_routing_authority": false,
+        "unjoined_item_routes": "BOUNDED_UNKNOWN"
+      }
+    },
+    {
+      "id": "EC11",
+      "name": "VARIABLE_DICTIONARY_IDENTITY_NONCOLLAPSE",
+      "arab5_binding": {
+        "q101_dictionary_preservation": "FULL",
+        "dictionary_membership_is_observation_authority": false,
+        "dictionary_membership_is_semantic_authority": false,
+        "unobserved_extra_codes": [-9, -8, 97],
+        "extra_code_semantics": "BOUNDED_UNKNOWN"
+      }
+    },
+    {
+      "id": "EC12",
+      "name": "WEIGHT_DESIGN_MULTIPLICITY_AND_DOMAIN",
+      "arab5_binding": {
+        "preserve_carriers": ["WT", "PSU", "STRATUM", "SAMPLE", "MODE"],
+        "default_weight": null,
+        "design_semantics": "BOUNDED_UNKNOWN",
+        "name_or_presence_authorizes_use": false,
+        "missingness_authorizes_row_drop": false
+      }
+    }
+  ],
+  "r35_hooks": {
+    "i01": {
+      "schema": "PRE553_PHYSICAL_METADATA@1.0.0",
+      "semantic_authority": false
+    },
+    "i02": {
+      "schema": "FIABC_DERIVATIVE_PARENTAGE_BUNDLE@1.0.0",
+      "required_for_non_direct_raw": true,
+      "semantic_authority": false
+    },
+    "i03": {
+      "source_scope_schema": "FIABC_R35_I03_SOURCE_PHYSICAL_SCOPE@1.0.0",
+      "canonical_expectation_schema": "FIABC_R35_I03_CANONICAL_PHYSICAL_EXPECTATION@1.0.0",
+      "candidate_realization_schema": "FIABC_R35_I03_CANDIDATE_PHYSICAL_REALIZATION@1.0.0",
+      "receipt_schema": "FIABC_R35_I03_WHOLE_SOURCE_PHYSICAL_EQUIVALENCE_RECEIPT@1.0.0",
+      "semantic_authority": false
+    }
+  },
+  "composition_law": {
+    "candidate_specific_semantics_allowed": false,
+    "semantic_owner": "ARAB5_SEMANTIC_OWNER_V1",
+    "generic_semantic_surface": "PRE553_SOURCE_BACKED_C11_FACADE@1.0.0",
+    "real_source_physical_equivalence_required_later": true
+  },
+  "proof_boundary": {
+    "raw_sav_opened_by_this_worker": false,
+    "source_processing_executed_by_this_worker": false,
+    "synthetic_tests_executed_by_this_worker": false,
+    "measured_p2x_run": false,
+    "physical_equivalence_executed": false,
+    "abc_qualification_executed": false,
+    "i05_executed": false,
+    "source_certification_claimed": false
+  }
+}
