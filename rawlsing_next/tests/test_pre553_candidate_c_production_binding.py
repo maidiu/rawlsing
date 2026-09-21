@@ -72,7 +72,7 @@ def test_current_candidate_c_specs_freeze_exact_source_projection_and_accelerato
 
     assert WVS7_CURRENT_SPEC.source_name == "WVS7"
     assert WVS7_CURRENT_SPEC.source_sha256 == "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
-    assert WVS7_CURRENT_SPEC.projection_cache_identity == "838070ff6b85d60d4f26f9153b0507ba425936c11a3de94a18d57bfcd083f24d"
+    assert WVS7_CURRENT_SPEC.projection_cache_identity == "f400c804fea9b526f25eac823138ecb30e10efaad3207c4578661f684adee665"
     assert WVS7_CURRENT_SPEC.permitted_accelerators == ()
     assert WVS7_CURRENT_SPEC.applicable_accelerators == ()
 
