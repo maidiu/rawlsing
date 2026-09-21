@@ -22,7 +22,7 @@ jobs:
           PYTHONPATH: .
         run: |
           python -m pytest -q             rawlsing_next/tests/test_fiabc_lm2_r1j_sav_representation_authority.py             rawlsing_next/tests/test_pre553_empirical_objects_authority.py             rawlsing_next/tests/test_pre553_source_backed_c11_facade.py
-      - name: Execute R15 real common C11 and R16 fresh independent oracle
+      - name: Execute R15 real common C11 then bounded R16 authority preflight
         env:
           PYTHONPATH: .
         run: python .rabochii/r1k_r15_r16_court.py
