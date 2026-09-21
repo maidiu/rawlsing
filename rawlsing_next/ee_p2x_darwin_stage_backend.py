@@ -59,7 +59,7 @@ R6S_LITS_SUPPORT = "rawlsing_next/runtime/ee_p2x/01_LITS_CURRENT_RUNTIME_MATERIA
 FROZEN_PYREADSTAT_VERSION = "1.3.6"
 WVS_MATERIALIZER_BLOB = "11b28416aac5a4899706150721f2f8ac8bb6ee43"
 LITS_A_ADAPTER_BLOB = "d4915e7e6755ba1850756aebff72f982f73a332b"
-LITS_R5_BUILDER_BLOB = "92e68693d72cbfcdd1c6d16e7f247ca3f60c8c55"
+LITS_R5_BUILDER_BLOB = "92e364b31eaf27be1bca2081eff65f6ffb779c3d"
 LITS_A_PARENTAGE_PATH_ENV = "RAWLSING_EE_P2X_LITS_A_R5_PARENTAGE_RECEIPT"
 LITS_A_PARENTAGE_ID_ENV = "RAWLSING_EE_P2X_LITS_A_R5_PARENTAGE_RECEIPT_IDENTITY"
 _SESSIONS: dict[tuple[str,str], tuple[Any,Any]] = {}
@@ -747,105 +747,238 @@ def _compose_current_candidate_c(ctx, services, state, runtime, projection, inci
     return binding, projection, runtime_authority
 
 
+def _lits_a_current_paths(ctx):
+    return (
+        ctx.roots.durable/"lits_a_r5",
+        ctx.roots.durable/"lits_a_r5.parentage.json",
+        ctx.roots.durable/"lits_a_r5.physical_realization_seed.json",
+    )
+
+
+def _lits_a_parentage_material(ctx, physical_root_id=None):
+    producer={
+        "identity":"R5CompactLongShardedBuilder",
+        "code_blob":LITS_R5_BUILDER_BLOB,
+        "version":"R5_LONG_SHARDED_TYPED_INCIDENCE_V1",
+        "owner_commit":OWNER_COMMIT,
+        "consumer_adapter_blob":LITS_A_ADAPTER_BLOB,
+    }
+    reader_config={
+        "reader":"pyreadstat",
+        "reader_version":FROZEN_PYREADSTAT_VERSION,
+        "user_missing":True,
+        "apply_value_formats":False,
+        "encoding":"latin1",
+        "authority_status":"COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY",
+    }
+    scope={
+        "source":"LITS_I",
+        "derivative_scope":"PRESERVED_R5_PHYSICAL_SOURCE_CARRIER",
+        "projection_identity":LITS_PROJECTION,
+        "runtime_catalog":R6O_RUNTIME_CATALOG,
+    }
+    currentness={
+        "owner_commit":OWNER_COMMIT,
+        "candidate_owner_blob":LITS_A_ADAPTER_BLOB,
+        "runtime_catalog":R6O_RUNTIME_CATALOG,
+        "active_binding":R6O_ACTIVE_BINDING,
+        "runtime_release":R6O_RUNTIME_RELEASE,
+    }
+    source_ownership={
+        "source":"LITS_I",
+        "candidate":"A",
+        "current_court_stage":"S01_CANDIDATE_PREPARATION_BUILD",
+        "root_lineage_identity":_root_lineage_identity(ctx),
+    }
+    derivative_ownership=dict(source_ownership)
+    if physical_root_id is not None:
+        derivative_ownership["physical_root_id"]=physical_root_id
+    return producer,reader_config,scope,currentness,source_ownership,derivative_ownership
+
+
+def _lits_a_inventory(reader, root_path):
+    from rawlsing_next.fiabc_derivative_parentage import ParentageError
+    inventory=reader.root.get("member_inventory")
+    if not isinstance(inventory,Mapping):
+        raise ParentageError("LiTS R5 member inventory missing")
+    inventory_path=root_path/str(inventory.get("path",""))
+    if (
+        not inventory_path.is_file()
+        or inventory_path.stat().st_size!=inventory.get("byte_length")
+        or _sha(inventory_path)!=inventory.get("sha256")
+    ):
+        raise ParentageError("LiTS R5 member inventory identity mismatch")
+    return inventory
+
+
+def _lits_a_verify_current_r5(ctx, services, state):
+    _ensure_r5(ctx, services)
+    from rawlsing_next.pre553_r5_compact_carrier import R5CompactLongShardedReader
+    from rawlsing_next.fiabc_derivative_parentage import (
+        ParentageError, assert_r5_root_parent, r5_root_metadata, verify_parentage_bundle,
+    )
+    root_path,parentage_path,seed_path=_lits_a_current_paths(ctx)
+    if not root_path.is_dir() or not parentage_path.is_file() or not seed_path.is_file():
+        raise SourceAuthorityStop(
+            "current LiTS-A S01 realization or contemporaneous parentage absent",
+            {"root":str(root_path),"parentage":str(parentage_path),"physical_seed":str(seed_path)},
+        )
+    reader=R5CompactLongShardedReader(root_path)
+    try:
+        assert_r5_root_parent(reader.root,expected_source_sha256=LITS_SHA)
+        inventory=_lits_a_inventory(reader,root_path)
+        bundle=json.loads(parentage_path.read_text(encoding="utf-8"))
+        seed=json.loads(seed_path.read_text(encoding="utf-8"))
+        physical_root_id=reader.root.get("physical_root_id")
+        producer,reader_config,scope,currentness,source_ownership,ownership = _lits_a_parentage_material(
+            ctx,physical_root_id
+        )
+        derivative_receipt=(bundle.get("derivative_receipt") or {})
+        source_receipt=(bundle.get("source_receipt") or {})
+        verify_parentage_bundle(
+            bundle,
+            expected_source_id="LITS_I",
+            expected_source_sha256=LITS_SHA,
+            expected_source_receipt_identity=source_receipt.get("receipt_identity"),
+            expected_source_operation="VERIFY_CANONICAL_LITS_I_RAW_SHA_FOR_CURRENT_S01_BUILD",
+            expected_source_producer=producer,
+            expected_source_reader_config=reader_config,
+            expected_source_scope_determinants=scope,
+            expected_source_currentness_determinants=currentness,
+            expected_source_ownership=source_ownership,
+            expected_derivative_class="LITS_A_PRESERVED_R5_CARRIER",
+            expected_derivative_identity=physical_root_id,
+            expected_derivative_receipt_identity=derivative_receipt.get("receipt_identity"),
+            expected_derivative_hash=physical_root_id,
+            expected_derivative_metadata=r5_root_metadata(reader.root),
+            expected_producer=producer,
+            expected_derivation_operation="BUILD_LITS_A_R5_FROM_CANONICAL_PHYSICAL_INCIDENCE",
+            expected_reader_config=reader_config,
+            expected_scope_determinants=scope,
+            expected_currentness_determinants=currentness,
+            expected_ownership=ownership,
+        )
+        unsigned_seed={k:v for k,v in seed.items() if k!="seed_identity"}
+        if _h(unsigned_seed)!=seed.get("seed_identity"):
+            raise ParentageError("LiTS-A physical realization seed identity mismatch")
+        if (
+            seed.get("source")!="LITS_I"
+            or seed.get("candidate")!="A"
+            or seed.get("physical_root_id")!=physical_root_id
+            or seed.get("parentage_bundle_identity")!=bundle.get("bundle_identity")
+            or seed.get("derivative_receipt_identity")!=derivative_receipt.get("receipt_identity")
+            or seed.get("r35_i03_status")!="PENDING__MUST_USE_SAME_S01_STATE__NO_SECOND_BUILD"
+        ):
+            raise ParentageError("LiTS-A current S01 physical realization seed drift")
+        state.setdefault("derivative_parentage",{})["LITS_A_R5"]={
+            "bundle_identity":bundle.get("bundle_identity"),
+            "source_receipt_identity":source_receipt.get("receipt_identity"),
+            "derivative_receipt_identity":derivative_receipt.get("receipt_identity"),
+            "physical_root_id":physical_root_id,
+            "logical_stream_digest":reader.root.get("logical_stream_digest"),
+            "member_inventory_sha256":inventory.get("sha256"),
+        }
+        state["lits_a_physical_realization_seed"]={
+            "path":str(seed_path),
+            "seed_identity":seed.get("seed_identity"),
+            "r35_i03_status":seed.get("r35_i03_status"),
+        }
+    except (ParentageError,json.JSONDecodeError) as exc:
+        raise SourceAuthorityStop("current LiTS-A R5 parentage/physical-state failure",{"error":str(exc)}) from exc
+    return reader
+
+
+def _lits_a_build_current_s01(ctx, services, state, incidence, projection):
+    from rawlsing_next.fiabc_derivative_parentage import (
+        ParentageError, assert_r5_root_parent, mint_derivative_parentage_receipt,
+        mint_parentage_bundle, mint_source_verification_receipt, r5_root_metadata,
+    )
+    if incidence is None:
+        raise BackendStop("LiTS-A current measured S01 requires canonical source incidence")
+    observed=getattr(incidence,"source_sha256",None)
+    if observed!=LITS_SHA:
+        raise SourceAuthorityStop("LiTS-A S01 incidence source identity drift")
+    root_path,parentage_path,seed_path=_lits_a_current_paths(ctx)
+    if root_path.exists() or parentage_path.exists() or seed_path.exists():
+        raise BackendStop(
+            "LiTS-A current measured S01 requires absent candidate-owned target",
+            {"no_historical_or_prebuilt_root_reuse":True,"root":str(root_path)},
+        )
+    _build_r5_from_incidence(ctx,services,incidence,projection,root_path)
+    from rawlsing_next.pre553_r5_compact_carrier import R5CompactLongShardedReader
+    reader=R5CompactLongShardedReader(root_path)
+    try:
+        assert_r5_root_parent(reader.root,expected_source_sha256=LITS_SHA)
+        inventory=_lits_a_inventory(reader,root_path)
+        physical_root_id=reader.root.get("physical_root_id")
+        producer,reader_config,scope,currentness,source_ownership,ownership = _lits_a_parentage_material(
+            ctx,physical_root_id
+        )
+        source_receipt=mint_source_verification_receipt(
+            source_id="LITS_I",
+            canonical_source_sha256=LITS_SHA,
+            observed_source_sha256=observed,
+            producer=producer,
+            operation="VERIFY_CANONICAL_LITS_I_RAW_SHA_FOR_CURRENT_S01_BUILD",
+            reader_config=reader_config,
+            scope_determinants=scope,
+            currentness_determinants=currentness,
+            ownership=source_ownership,
+        )
+        derivative_receipt=mint_derivative_parentage_receipt(
+            source_receipt=source_receipt,
+            derivative_class="LITS_A_PRESERVED_R5_CARRIER",
+            derivative_identity=physical_root_id,
+            derivative_hash=physical_root_id,
+            derivative_metadata=r5_root_metadata(reader.root),
+            producer=producer,
+            derivation_operation="BUILD_LITS_A_R5_FROM_CANONICAL_PHYSICAL_INCIDENCE",
+            reader_config=reader_config,
+            scope_determinants=scope,
+            currentness_determinants=currentness,
+            ownership=ownership,
+        )
+        bundle=mint_parentage_bundle(
+            source_receipt=source_receipt,
+            derivative_receipt=derivative_receipt,
+        )
+        _atomic(parentage_path,bundle)
+        seed_body={
+            "schema":"FIABC_LITS_A_CURRENT_S01_PHYSICAL_REALIZATION_SEED@1.0.0",
+            "source":"LITS_I",
+            "candidate":"A",
+            "stage":"S01_CANDIDATE_PREPARATION_BUILD",
+            "canonical_source_sha256":LITS_SHA,
+            "physical_root_id":physical_root_id,
+            "logical_stream_digest":reader.root.get("logical_stream_digest"),
+            "member_inventory_sha256":inventory.get("sha256"),
+            "source_receipt_identity":source_receipt.get("receipt_identity"),
+            "derivative_receipt_identity":derivative_receipt.get("receipt_identity"),
+            "parentage_bundle_identity":bundle.get("bundle_identity"),
+            "r35_i03_status":"PENDING__MUST_USE_SAME_S01_STATE__NO_SECOND_BUILD",
+            "physical_equivalence_claimed":False,
+            "semantic_parity_claimed":False,
+            "performance_admission":"BLOCKED_PENDING_R35_I03_AND_PARITY",
+        }
+        _atomic(seed_path,{**seed_body,"seed_identity":_h(seed_body)})
+    except ParentageError as exc:
+        raise SourceAuthorityStop("LiTS-A current S01 parentage mint failed",{"error":str(exc)}) from exc
+    # Re-open only the just-built candidate-owned root to verify the exact
+    # parentage/seed contract. This does not repeat the build.
+    return _lits_a_verify_current_r5(ctx,services,state)
+
+
 def _compose_lits(ctx, services, state, incidence):
     projection, _, _ = _lits_projection(ctx, services, state, incidence)
     runtime = _lits_runtime(ctx, services, projection)
     if ctx.stage.candidate == "A":
-        root = os.environ.get("RAWLSING_EE_P2X_LITS_A_R5_ROOT")
-        receipt_path = os.environ.get(LITS_A_PARENTAGE_PATH_ENV)
-        receipt_identity = os.environ.get(LITS_A_PARENTAGE_ID_ENV)
-        if not root:
-            raise BackendStop("preserved LiTS-A R5 runtime path unbound",
-                              {"required_env":"RAWLSING_EE_P2X_LITS_A_R5_ROOT","repeat_first_build":"FORBIDDEN"})
-        if not receipt_path or not receipt_identity:
-            raise SourceAuthorityStop(
-                "preserved LiTS-A R5 parentage receipt unbound",
-                {"required_env":[LITS_A_PARENTAGE_PATH_ENV,LITS_A_PARENTAGE_ID_ENV]},
-            )
-        _ensure_r5(ctx, services)
-        from rawlsing_next.pre553_r5_compact_carrier import R5CompactLongShardedReader
-        from rawlsing_next.fiabc_derivative_parentage import (
-            ParentageError,
-            assert_r5_root_parent,
-            r5_root_metadata,
-            verify_parentage_bundle,
-        )
-        reader=R5CompactLongShardedReader(Path(root))
-        try:
-            assert_r5_root_parent(reader.root,expected_source_sha256=LITS_SHA)
-            inventory=reader.root.get("member_inventory")
-            if not isinstance(inventory,Mapping):
-                raise ParentageError("LiTS R5 member inventory missing")
-            inventory_path=Path(root)/str(inventory.get("path",""))
-            if (
-                not inventory_path.is_file()
-                or inventory_path.stat().st_size!=inventory.get("byte_length")
-                or _sha(inventory_path)!=inventory.get("sha256")
-            ):
-                raise ParentageError("LiTS R5 member inventory identity mismatch")
-            p=Path(receipt_path)
-            if not p.is_file():
-                raise ParentageError("LiTS R5 external parentage receipt file absent")
-            bundle=json.loads(p.read_text(encoding="utf-8"))
-            producer={
-                "identity":"R5CompactLongShardedBuilder",
-                "code_blob":LITS_R5_BUILDER_BLOB,
-                "version":"R5_LONG_SHARDED_TYPED_INCIDENCE_V1",
-                "owner_commit":OWNER_COMMIT,
-                "consumer_adapter_blob":LITS_A_ADAPTER_BLOB,
-            }
-            reader_config={
-                "reader":"pyreadstat",
-                "reader_version":FROZEN_PYREADSTAT_VERSION,
-                "user_missing":True,
-                "apply_value_formats":False,
-                "encoding":"latin1",
-                "authority_status":"COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY",
-            }
-            scope={
-                "source":"LITS_I",
-                "derivative_scope":"PRESERVED_R5_PHYSICAL_SOURCE_CARRIER",
-                "projection_identity":LITS_PROJECTION,
-                "runtime_catalog":R6O_RUNTIME_CATALOG,
-            }
-            currentness={
-                "owner_commit":OWNER_COMMIT,
-                "candidate_owner_blob":LITS_A_ADAPTER_BLOB,
-                "runtime_catalog":R6O_RUNTIME_CATALOG,
-                "active_binding":R6O_ACTIVE_BINDING,
-                "runtime_release":R6O_RUNTIME_RELEASE,
-            }
-            ownership={
-                "source":"LITS_I",
-                "candidate":"A",
-                "physical_root_id":reader.root.get("physical_root_id"),
-            }
-            verify_parentage_bundle(
-                bundle,
-                expected_source_id="LITS_I",
-                expected_source_sha256=LITS_SHA,
-                expected_derivative_class="LITS_A_PRESERVED_R5_CARRIER",
-                expected_derivative_identity=reader.root.get("physical_root_id"),
-                expected_derivative_receipt_identity=receipt_identity,
-                expected_derivative_hash=reader.root.get("physical_root_id"),
-                expected_derivative_metadata=r5_root_metadata(reader.root),
-                expected_producer=producer,
-                expected_derivation_operation="BUILD_LITS_A_R5_FROM_CANONICAL_PHYSICAL_INCIDENCE",
-                expected_reader_config=reader_config,
-                expected_scope_determinants=scope,
-                expected_currentness_determinants=currentness,
-                expected_ownership=ownership,
-                expected_source_reader_config=reader_config,
-            )
-            state.setdefault("derivative_parentage",{})["LITS_A_R5"]={
-                "bundle_identity":bundle.get("bundle_identity"),
-                "derivative_receipt_identity":receipt_identity,
-                "physical_root_id":reader.root.get("physical_root_id"),
-                "logical_stream_digest":reader.root.get("logical_stream_digest"),
-                "member_inventory_sha256":inventory.get("sha256"),
-            }
-        except (ParentageError, json.JSONDecodeError) as exc:
-            raise SourceAuthorityStop("preserved LiTS-A R5 parentage failure",{"error":str(exc)}) from exc
+        # Current final-P2 law: the historical LiTS-A R5 is not a prerequisite.
+        # S01 owns exactly one absent-target build; later stages consume that
+        # same candidate-owned realization and its contemporaneous R35 parentage.
+        if ctx.stage.stage_id == "S01_CANDIDATE_PREPARATION_BUILD":
+            reader = _lits_a_build_current_s01(ctx, services, state, incidence, projection)
+        else:
+            reader = _lits_a_verify_current_r5(ctx, services, state)
         kwargs = {"reader": reader}
     elif ctx.stage.candidate == "B":
         if incidence is None:
@@ -940,11 +1073,11 @@ def _ensure_r5(ctx, services):
     import rawlsing_next
     repo = _repo(services)
     blobs = {
-        "pre553_r5_codec.py":"72f8e8a2b6b2330332030e3978077c11e38ec8db",
-        "pre553_r5_compact_carrier.py":"92e68693d72cbfcdd1c6d16e7f247ca3f60c8c55",
-        "pre553_r5_model.py":"62cea85788eb160796642ba09d9f0d41f987a3d43",
-        "pre553_r5_seam.py":"cef346fca029fa920db16e83db908d466018f39e",
-        "pre553_r5_single_pass_audit69.py":"ffb07a9d0bafbf685d27aa1161ce830bcfc810fc",
+        "pre553_r5_codec.py":"72f8f3c03ed065e86fea4e76bb17f8e06c2bf540",
+        "pre553_r5_compact_carrier.py":"92e364b31eaf27be1bca2081eff65f6ffb779c3d",
+        "pre553_r5_model.py":"62ce608829c3d9c2fb7c999aefe40188637edf80",
+        "pre553_r5_seam.py":"cef326ebbc40468428378f7fdbe76e4756179f39",
+        "pre553_r5_single_pass_audit69.py":"ffb063b93c86e215604eecb29a9545c7efdff399",
     }
     for name, blob in blobs.items():
         if importlib.util.find_spec("rawlsing_next." + name[:-3]) is not None:
@@ -1108,7 +1241,7 @@ def _cell(ctx,services,state,stopped):
                    "product_identity":state["outputs"].get("product_identity"),
                    "semantic_identity":state["outputs"].get("semantic_identity"),
                    "replay_identity":state["outputs"].get("replay_identity")},
-        "preserved_stage_consumption":["LITS_I_A_FIRST_BUILD"] if cell=="LITS_I/A" else
+        "preserved_stage_consumption":[] if cell=="LITS_I/A" else
                                       ["LITS_I_B_CACHELESS_C11"] if cell=="LITS_I/B" else [],
         "disposition":"AUTHORIZED_STOP" if stopped else "QUALIFYING_CELL_COMPLETE",
         "ranking_or_selection":False,
