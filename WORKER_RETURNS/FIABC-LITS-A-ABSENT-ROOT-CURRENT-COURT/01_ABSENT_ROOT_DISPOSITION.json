@@ -1,0 +1,42 @@
+{
+  "schema": "FIABC_LITS_A_ABSENT_ROOT_DISPOSITION@1.0.0",
+  "status": "PASS__CURRENT_DISPOSITION_FROZEN",
+  "exact_base": "89bfde652eb8a983e51ff51f5258e5fdfbb2433b",
+  "local_verification": {
+    "branch": "agent/rabochii-premain-fiabc-lits-a-parentage-local-verify-r1",
+    "tip": "002e424294221f5edb73366286ffe6c8fb850a30",
+    "terminal": "FIABC_LITS_A_LOCAL_PARENTAGE_VERIFY__HISTORICAL_ROOT_NOT_PRESENT__NO_REBUILD_PERFORMED"
+  },
+  "historical_root": {
+    "physical_root_id": "e8f37557493b816e4562f5f47df110cf49b429e9ead54e5b624d6638ee07aa3d",
+    "current_host_state": "ABSENT",
+    "reconstruct_or_archaeology_again": false,
+    "generic_r35_parentage_for_old_root": "NOT_APPLICABLE_TO_CURRENT_EXECUTION_BECAUSE_ROOT_ABSENT"
+  },
+  "historical_evidence": {
+    "semantic_build_evidence": "RETAINED_AS_HISTORY",
+    "prior_engineering_behavior_evidence_allowed": true,
+    "current_physical_realization_substitution_allowed": false,
+    "current_numeric_telemetry_credit_allowed": false
+  },
+  "current": {
+    "canonical_source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "physical_realization_before_s01": "ABSENT",
+    "preserved_s01_physical_work_credit": "ZERO__NOT_AVAILABLE",
+    "required_s01_disposition": "READY__RUN_LOCALLY",
+    "s01_source_access_required": true,
+    "s01_physical_host_measurement_required": true,
+    "first_unfinished_stage": "LITS_I/A/S01_CANDIDATE_PREPARATION_BUILD",
+    "prebuild_required": false,
+    "separate_r35_prebuild_allowed": false
+  },
+  "accounting": {
+    "historical_build_duration_current_credit": false,
+    "historical_cpu_current_credit": false,
+    "historical_rss_current_credit": false,
+    "historical_io_current_credit": false,
+    "historical_receipt_can_suppress_current_build": false,
+    "current_s01_build_accounting": "EXECUTED_NOW__C2_CANDIDATE_PHYSICAL_REALIZATION"
+  },
+  "terminal": "FIABC_LITS_A_ABSENT_ROOT_CURRENT_COURT_PASS__NO_HISTORICAL_ROOT_REUSE__NO_PREBUILD_REQUIRED__ONE_GOVERNED_MEASURED_S01_BUILD_WILL_SUPPLY_CURRENT_PARENTAGE_AND_PHYSICAL_REALIZATION"
+}
