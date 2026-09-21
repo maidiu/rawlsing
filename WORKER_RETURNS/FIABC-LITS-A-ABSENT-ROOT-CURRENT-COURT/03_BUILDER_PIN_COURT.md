@@ -51,4 +51,4 @@ The source-free hostile court proves:
 - skipping S01 by restoring first-unfinished S02 fails validation;
 - relabeling the absent root as present fails validation.
 
-GitHub Actions run `35629679569`, job `106432556473`: **23 passed in 0.21s**.
+GitHub Actions run `35630001075`, job `106433616854`: **24 passed in 0.30s**.
