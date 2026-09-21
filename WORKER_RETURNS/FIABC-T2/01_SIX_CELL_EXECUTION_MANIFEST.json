@@ -2,7 +2,7 @@
   "schema": "RAWLSING_FIABC_CURRENT_SIX_CELL_EXECUTION_MANIFEST@1.0.0",
   "status": "CURRENT__SIX_CELL_EXECUTION_CONTRACT__UNMEASURED",
   "desired_terminal": "FIABC_CURRENT_SIX_CELL_EXECUTION_CONTRACT__ALL_SIX_CELLS_TERMINAL_PASS",
-  "operative_repo_write": "FIABC_T2_SUCCESSOR_MANIFEST__HISTORICAL_CONTINUATION_MAP_IMMUTABLE",
+  "operative_repo_write": "FIABC_LITS_A_ABSENT_ROOT_CURRENT_SUCCESSION__HISTORICAL_CONTINUATION_IMMUTABLE",
   "authority": {
     "hq_checkpoint": "20260918T0210-0400",
     "hq_handoff_commit": "10c91b1e03285b50cae7a39ab1458826712c52b5",
@@ -16,11 +16,13 @@
     "p2r1_seam_path": "rawlsing_next/pre553_carrier_execution.py",
     "p2r1_seam_blob": "e7cda773e6a2426bfa12b22790fd8e005fe75153",
     "lock1": "FROZEN_UNCHANGED",
-    "lock2": "SEALED__8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188",
+    "lock2": "SUCCESSOR_SEALED__5e2a53f0e5f3b6ddd8db53b724b352ca41fe1a49408483fbf83dfdaa96283139",
     "fiabc_t1_live_transposition_tip": "86daba6838d72c70b1452db4178c338185e6e377",
     "fiabc_wave3_fanin_tip": "6c6e07415986c87cbd722a9a554032dd31ddc06a",
     "candidate_c_binding_contract": "PRE553_CANDIDATE_C_PRODUCTION_BINDING@1.0.0",
-    "candidate_c_binding_module": "rawlsing_next/pre553_candidate_c_production_binding.py"
+    "candidate_c_binding_module": "rawlsing_next/pre553_candidate_c_production_binding.py",
+    "lock2_predecessor": "8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188",
+    "lock2_supersession_reason": "DISCOVERY_VALIDATION_ENVELOPE_SERIALIZATION_REPAIR__NO_WORKLOAD_SEMANTIC_CHANGE"
   },
   "source_order": [
     "LITS_I",
@@ -41,10 +43,12 @@
     },
     "WVS7": {
       "sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
-      "lock2_replay_hash": "b1aa437406d94b1f81f0ef3c81b885a2fd542749d2e5441747897c016a5dd490",
-      "discovery_authority": "24591678ebf50ac153fabdbbcd90d6ce818c5a89a5307c395c48a04fe5a8b1ab",
+      "lock2_replay_hash": "9b5ac1726a03798d07e965396192d1bfefbee6d2188bad5a3acfb467ef063d4a",
+      "discovery_authority": "3aee36014e4c3b39dd36bfef46006d8e9058a93aa5eb53bd81aef627883c8873",
       "learned_candidates": 46,
-      "frontier_shape": "10_UNARY+1_PAIR_COTRAVEL+10_DIRECTED_BRANCH+25_JOINT_SUPPORT"
+      "frontier_shape": "10_UNARY+1_PAIR_COTRAVEL+10_DIRECTED_BRANCH+25_JOINT_SUPPORT",
+      "oracle_identity_sha256": "3694b8bd0b5468433a1a83bd469337c7e36e552c3a9a5fef65fff88df8fce800",
+      "oracle_truth_payload_identity": "eb2f9224219385dbf21af70d317e0978383012ff057ce2ac857b59c130472405"
     }
   },
   "evidence": {
@@ -78,12 +82,13 @@
     }
   },
   "prerequisites": {
-    "LITS_A": "Preserved qualifying R5 carrier + exact accepted Candidate-A owner at 0b96b8de9aac774566f872cf0630ebd4ddeb70e6 + exact LiTS GovernedC11Projection + P2R1 RuntimeObjectCatalog + bind_repository_builder -> CarrierNeutralResearchExecutor. Do not rebuild qualifying first-build.",
+    "LITS_A": "HISTORICAL_ONLY__DO_NOT_USE_AS_CURRENT_PREREQUISITE__old preserved LiTS-A R5 evidence remains history and donates no current S01 numeric credit.",
     "LITS_B": "Preserved standalone cacheless-C11 milestone + accepted source-backed owner + exact LiTS GovernedC11Projection + P2R1 RuntimeObjectCatalog + common runner. Actual unfinished source-backed I03/I05 sessions may reconstruct virtual C11; do not rerun the completed standalone preparatory milestone.",
     "LITS_C": "Candidate C remains SOURCE_BACKED_HYBRID_WITH_REGENERABLE_ACCELERATORS. For exact current LiTS-I F02, CACC1/CACC2 are permitted physical inventory but have no full-scope applicability; q310/q311 and all uncovered material execute by exact source-backed fallback. No CACC3 and no Candidate-B identity substitution.",
     "WVS_A": "Exact Lock2 authority/catalog + P2R1 PREPARATION_READY + exact Candidate-A owner at 0b96b8de9aac774566f872cf0630ebd4ddeb70e6. Build frozen WVS R5 carrier on Darwin, bind complete GovernedC11Projection, then common runner.",
     "WVS_B": "Exact Lock2 authority/catalog + P2R1 PREPARATION_READY + accepted source-backed owner + complete WVS GovernedC11Projection + common runner.",
-    "WVS_C": "Candidate C remains SOURCE_BACKED_HYBRID_WITH_REGENERABLE_ACCELERATORS with zero WVS accelerators. Execute exact source-backed C11/I03/I05 against canonical WVS7 source root; no WVS-specific CACC and no Candidate-B identity substitution."
+    "WVS_C": "Candidate C remains SOURCE_BACKED_HYBRID_WITH_REGENERABLE_ACCELERATORS with zero WVS accelerators. Execute exact source-backed C11/I03/I05 against canonical WVS7 source root; no WVS-specific CACC and no Candidate-B identity substitution.",
+    "LITS_A_CURRENT_ABSENT_TARGET_S01": "Historical Candidate-A R5 root is absent at the current execution host. Enter the actual LiTS-I/A S01 with an absent candidate-owned target; verify canonical LiTS-I SHA; execute exactly one governed Candidate-A R5 build as measured candidate work; mint source verification + derivative parentage + bundle from that same build; freeze a candidate-specific R35-I03 physical-realization seed from that same state; do not perform any separate R35/prebuild. Downstream performance remains inadmissible until parentage, physical-equivalence, and independent semantic/parity gates pass."
   },
   "stop_laws": {
     "PURE_B_NO_CACHE": "Frozen Candidate-B law is SOURCE_BACKED_VIRTUAL_C11 with zero retained transformed empirical payload; do not invent an optional cache solely to test stale/corrupt-cache behavior.",
@@ -99,7 +104,6 @@
     "NO_GOLDEN_PATH",
     "NO_SURROGATE_PERFORMANCE_DATA",
     "NO_CROSS_UNIVERSE_METRIC_POOLING",
-    "NO_REPEAT_COMPLETED_LITS_A_FIRST_BUILD",
     "NO_REPEAT_COMPLETED_LITS_B_CACHELESS_C11_PREPARATORY_STAGE",
     "NO_HISTORIC_PRODUCT_SUBSTITUTION_AS_FRESH_OUTPUT",
     "NO_HASH_INVERSION",
@@ -107,7 +111,9 @@
     "NO_MAIN_OR_SEMANTIC_PRE_MAIN_MUTATION",
     "NO_ALTERNATE_EDITION_EXPORT_OR_CLEANED_SOURCE",
     "NO_HISTORICAL_C_FAILURE_AS_CURRENT_CAPABILITY_LAW",
-    "NO_CANDIDATE_C_TO_B_IDENTITY_SUBSTITUTION"
+    "NO_CANDIDATE_C_TO_B_IDENTITY_SUBSTITUTION",
+    "NO_DUPLICATE_LITS_A_S01_PREBUILD_OR_R35_REBUILD",
+    "NO_HISTORICAL_LITS_A_S01_NUMERIC_CREDIT_WHEN_ROOT_ABSENT"
   ],
   "stage_catalog": [
     "S00_SOURCE_PREFLIGHT_IDENTITY",
@@ -132,7 +138,7 @@
     {
       "source": "LITS_I",
       "candidate": "A",
-      "prerequisite_ref": "LITS_A",
+      "prerequisite_ref": "LITS_A_CURRENT_ABSENT_TARGET_S01",
       "expected_receipt": "WORKER_RETURNS/EE-P2X/09_LITS_I_A_CONTINUATION_TERMINAL.json",
       "candidate_local_failure_next": "LITS_I/B/S00_SOURCE_PREFLIGHT_IDENTITY",
       "stages": {
@@ -144,10 +150,10 @@
           "S01_CANDIDATE_PREPARATION_BUILD"
         ],
         "S01_CANDIDATE_PREPARATION_BUILD": [
-          "DONE__PRESERVE",
-          "LITS_A_FIRST_BUILD",
-          false,
-          false,
+          "READY__RUN_LOCALLY",
+          null,
+          true,
+          true,
           "S02_C11_REACHABILITY"
         ],
         "S02_C11_REACHABILITY": [
@@ -914,17 +920,19 @@
     "hard_prohibitions": "top-level hard_prohibitions"
   },
   "entry_guard": {
-    "first_unfinished_court_stage": "LITS_I/A/S02_C11_REACHABILITY",
+    "first_unfinished_court_stage": "LITS_I/A/S01_CANDIDATE_PREPARATION_BUILD",
     "requirements": [
       "P2X branch == a954e2d6676843da8427ef2439b5d1ef33478359",
       "Darwin x86_64 / CPython 3.11.3 / pyreadstat 1.3.6 / pyarrow 25.0.1",
       "Lock1 frozen and Lock2 exact",
       "no concurrent heavy benchmark workload",
-      "before any fresh source access, require local source SHA == frozen SHA; this is a continuity guard, not repetition of the completed preflight stage",
       "current manifest schema == RAWLSING_FIABC_CURRENT_SIX_CELL_EXECUTION_MANIFEST@1.0.0",
       "all six current capabilities admitted; historical Candidate-C failure receipts are history only",
       "all A/B/C realizations for one source close to the same canonical source SHA",
-      "preserved/prebuilt derivative substitution requires exact canonical-source provenance and lawful I06C accounting classification"
+      "preserved/prebuilt derivative substitution requires exact canonical-source provenance and lawful I06C accounting classification",
+      "LiTS-I/A candidate-owned S01 R5 target must be absent before the measured S01 action; an old or prebuilt target may not suppress the current build",
+      "historical LiTS-A first-build receipts are evidence history only and donate zero current numeric S01 credit",
+      "one LiTS-A S01 build is the sole contemporaneous parentage/physical-realization opportunity; no separate R35 prebuild is permitted"
     ]
   },
   "final_stage": {
@@ -1028,7 +1036,7 @@
     },
     "WVS7": {
       "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
-      "projection_cache_identity": "838070ff6b85d60d4f26f9153b0507ba425936c11a3de94a18d57bfcd083f24d",
+      "projection_cache_identity": "f400c804fea9b526f25eac823138ecb30e10efaad3207c4578661f684adee665",
       "permitted_accelerators": [],
       "applicable_accelerators": [],
       "realization": "EXACT_SOURCE_BACKED_ZERO_ACCELERATOR",
@@ -1042,5 +1050,21 @@
     "current_six_cell_manifest_must_be_consumed_by_driver": true,
     "source_root_equality_must_pass": true,
     "preserved_derivative_accounting_receipt_required_before_measurement": true
+  },
+  "lits_a_absent_root_current_law": {
+    "schema": "FIABC_LITS_A_ABSENT_ROOT_CURRENT_LAW@1.0.0",
+    "local_verification_tip": "002e424294221f5edb73366286ffe6c8fb850a30",
+    "local_verification_terminal": "FIABC_LITS_A_LOCAL_PARENTAGE_VERIFY__HISTORICAL_ROOT_NOT_PRESENT__NO_REBUILD_PERFORMED",
+    "historical_root": "e8f37557493b816e4562f5f47df110cf49b429e9ead54e5b624d6638ee07aa3d",
+    "historical_root_current_host_state": "ABSENT",
+    "historical_semantic_build_evidence": "RETAINED_AS_HISTORY",
+    "current_physical_realization": "ABSENT_BEFORE_S01",
+    "preserved_s01_physical_work_credit": "ZERO__NOT_AVAILABLE",
+    "historical_r35_parentage": "NOT_APPLICABLE_TO_CURRENT_EXECUTION_BECAUSE_ROOT_ABSENT",
+    "prebuild_required": false,
+    "current_s01_action": "ONE_GOVERNED_MEASURED_CANDIDATE_A_BUILD_FROM_ABSENT_TARGET",
+    "separate_r35_prebuild_allowed": false,
+    "current_s01_parentage": "MINT_FROM_SAME_BUILD",
+    "current_s01_physical_realization": "SEED_FROM_SAME_BUILD__R35_I03_PASS_NOT_PRECLAIMED"
   }
 }
