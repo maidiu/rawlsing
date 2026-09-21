@@ -63,6 +63,8 @@ LITS_R5_BUILDER_BLOB = "92e364b31eaf27be1bca2081eff65f6ffb779c3d"
 LITS_A_PARENTAGE_PATH_ENV = "RAWLSING_EE_P2X_LITS_A_R5_PARENTAGE_RECEIPT"
 LITS_A_PARENTAGE_ID_ENV = "RAWLSING_EE_P2X_LITS_A_R5_PARENTAGE_RECEIPT_IDENTITY"
 _SESSIONS: dict[tuple[str,str], tuple[Any,Any]] = {}
+_T4_ACTIVE_CONTEXT = None
+_T4_ACTIVE_STATE = None
 
 EXPECTED_SOURCE = {"LITS_I": LITS_SHA, "WVS7": WVS_SHA}
 
@@ -89,15 +91,24 @@ READY = frozenset({
 METRICS = (
     "source_open_count", "source_decode_count", "source_reread_count",
     "bytes_read", "bytes_written", "bytes_rewritten",
-    "build_or_open_wall_ns", "cpu_user_ns", "cpu_system_ns", "peak_rss_bytes",
+    "candidate_total_wall_ns", "build_or_open_wall_ns",
+    "cpu_user_ns", "cpu_system_ns", "peak_rss_bytes",
     "peak_scratch_bytes", "peak_scratch_file_count",
     "durable_authoritative_bytes", "durable_transformed_regenerable_bytes",
+    "warm_retained_state_bytes",
     "cold_i03_latency_ns", "warm_i03_latency_ns",
     "i05_learned_production_wall_ns", "i05_learned_production_throughput_per_s",
-    "repeated_research_source_reread_count", "repeated_research_source_redecode_count",
-    "delete_rebuild_wall_ns", "source_release_invalidation_recomputation_units",
+    "repeated_research_source_open_count", "repeated_research_source_redecode_count",
+    "repeated_research_source_reread_count",
+    "delete_rebuild_wall_ns",
+    "source_release_invalidation_recomputation_units",
+    "source_release_invalidation_wall_ns",
+    "source_release_invalidation_bytes_rewritten",
     "semantic_authority_invalidation_recomputation_units",
-    "fresh_process_replay_wall_ns", "audit_wall_ns",
+    "semantic_authority_invalidation_wall_ns",
+    "semantic_authority_invalidation_bytes_rewritten",
+    "fresh_process_replay_wall_ns", "fresh_process_replay_cpu_ns",
+    "audit_wall_ns",
     "persistent_bytes_removable_with_zero_information_loss",
     "implementation_moving_parts_count",
 )
@@ -219,7 +230,7 @@ def _deploy(repo: Path, work: Path, commit: str, path: str, expected_blob: str |
     if dest.exists() and dest.read_bytes() != data:
         raise CourtAuthorityStop("deployed immutable bytes drift", {"path": str(dest)})
     if not dest.exists():
-        dest.write_bytes(data)
+        _write_bytes_tracked(dest, data, cost_class="C1")
     return dest
 
 
@@ -242,14 +253,21 @@ def _load(path: Path, name: str):
 def _atomic(path: Path, value: Mapping[str, Any]) -> Path:
     path.parent.mkdir(parents=True, exist_ok=True)
     data = json.dumps(value, indent=2, sort_keys=True, ensure_ascii=False).encode() + b"\n"
+    existed = path.exists()
     fd, tmp = tempfile.mkstemp(prefix="." + path.name + ".", dir=path.parent)
+    tmp_path = Path(tmp)
     try:
         with os.fdopen(fd, "wb") as f:
             f.write(data); f.flush(); os.fsync(f.fileno())
+        _tmp_oid="ATOMIC_TMP::"+_t4_object_id(tmp_path)
+        _t4_note_scratch_size(tmp_path,len(data),object_id=_tmp_oid)
         os.replace(tmp, path)
+        _t4_note_scratch_remove(tmp_path,object_id=_tmp_oid)
+        _t4_note_file_write(path, len(data), rewrite=existed)
     finally:
         with contextlib.suppress(FileNotFoundError):
-            Path(tmp).unlink()
+            tmp_path.unlink()
+        _t4_note_scratch_remove(tmp_path,object_id="ATOMIC_TMP::"+_t4_object_id(tmp_path))
     return path
 
 
@@ -302,6 +320,287 @@ def _dir_stats(p: Path) -> tuple[int, int]:
                 with contextlib.suppress(FileNotFoundError):
                     total += q.stat().st_size; count += 1
     return total, count
+
+
+def _t4_active():
+    return _T4_ACTIVE_CONTEXT, _T4_ACTIVE_STATE
+
+
+def _t4_object_id(path: Path) -> str:
+    ctx, _state = _t4_active()
+    p = path.resolve()
+    if ctx is not None:
+        for label, root in (
+            ("SCRATCH", getattr(ctx.roots, "scratch", None)),
+            ("DURABLE", getattr(ctx.roots, "durable", None)),
+            ("RECEIPTS", getattr(ctx.roots, "receipts", None)),
+            ("CELL", getattr(ctx.roots, "root", None)),
+        ):
+            if root is None:
+                continue
+            r = Path(root).resolve()
+            if p == r or r in p.parents:
+                return label + "::" + p.relative_to(r).as_posix()
+    return "PATH::" + str(p)
+
+
+def _t4_current_lifecycle_action_id(state):
+    return state.get("_t4_current_lifecycle_action_id")
+
+
+def _t4_io_event(state, *, operation, byte_count, object_id, rewrite_of=None,
+                 cost_class="C2", evidence_ref=None, lifecycle_action_id=None,
+                 process_token=None):
+    event = {
+        "operation": operation,
+        "byte_count": int(byte_count),
+        "object_id": str(object_id),
+        "rewrite_of": rewrite_of,
+        "cost_class": cost_class,
+        "evidence_ref": evidence_ref or "FIABC_T4_EXACT_IO_EVENT",
+        "lifecycle_action_id": lifecycle_action_id,
+    }
+    if process_token is not None:
+        event["process_token"] = process_token
+    state.setdefault("_t4_io_events", []).append(event)
+    return event
+
+
+def _t4_note_scratch_size(path: Path, size: int, *, object_id=None, cost_class="C2",
+                          lifecycle_action_id=None, process_token=None):
+    ctx, state = _t4_active()
+    if ctx is None or state is None:
+        return
+    p = path.resolve()
+    scratch = Path(ctx.roots.scratch).resolve()
+    if not (p == scratch or scratch in p.parents):
+        return
+    oid = object_id or _t4_object_id(path)
+    tracker = state.setdefault("_t4_scratch_tracker", {})
+    tracker[oid] = int(size)
+    event = {
+        "operation": "SIZE", "object_id": oid, "current_size_bytes": int(size),
+        "cost_class": cost_class,
+        "evidence_ref": "FIABC_T4_SCRATCH_MUTATION",
+        "lifecycle_action_id": lifecycle_action_id,
+    }
+    if process_token is not None:
+        event["process_token"] = process_token
+    state.setdefault("_t4_scratch_events", []).append(event)
+
+
+def _t4_note_scratch_temp(path: Path, size: int):
+    _t4_note_scratch_size(path, size, object_id="ATOMIC_TMP::"+_t4_object_id(path))
+
+
+def _t4_note_scratch_remove(path: Path, *, object_id=None, cost_class="C2",
+                            lifecycle_action_id=None, process_token=None):
+    ctx, state = _t4_active()
+    if ctx is None or state is None:
+        return
+    p = path.resolve()
+    scratch = Path(ctx.roots.scratch).resolve()
+    if not (p == scratch or scratch in p.parents):
+        return
+    oid = object_id or _t4_object_id(path)
+    tracker = state.setdefault("_t4_scratch_tracker", {})
+    tracker.pop(oid, None)
+    event = {
+        "operation": "REMOVE", "object_id": oid, "cost_class": cost_class,
+        "evidence_ref": "FIABC_T4_SCRATCH_MUTATION",
+        "lifecycle_action_id": lifecycle_action_id,
+    }
+    if process_token is not None:
+        event["process_token"] = process_token
+    state.setdefault("_t4_scratch_events", []).append(event)
+
+
+def _t4_note_file_write(path: Path, byte_count: int, *, rewrite=False, cost_class="C2",
+                        lifecycle_action_id=None, process_token=None):
+    ctx, state = _t4_active()
+    if ctx is None or state is None:
+        return
+    oid = _t4_object_id(path)
+    action_id = lifecycle_action_id
+    if action_id is None:
+        action_id = _t4_current_lifecycle_action_id(state)
+    _t4_io_event(
+        state, operation="WRITE", byte_count=byte_count, object_id=oid,
+        rewrite_of=oid if rewrite else None, cost_class=cost_class,
+        evidence_ref="FIABC_T4_EXACT_WRITE_EVENT",
+        lifecycle_action_id=action_id, process_token=process_token,
+    )
+    _t4_note_scratch_size(
+        path, byte_count, object_id=oid, cost_class=cost_class,
+        lifecycle_action_id=action_id, process_token=process_token,
+    )
+
+
+def _write_bytes_tracked(path: Path, data: bytes, *, cost_class="C2",
+                         lifecycle_action_id=None):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    existed = path.exists()
+    path.write_bytes(data)
+    _t4_note_file_write(
+        path, len(data), rewrite=existed, cost_class=cost_class,
+        lifecycle_action_id=lifecycle_action_id,
+    )
+    return path
+
+
+def _t4_note_file_read(path: Path, byte_count: int, *, cost_class="C2",
+                       lifecycle_action_id=None, process_token=None, role="EXACT_READ"):
+    _ctx, state = _t4_active()
+    if state is None:
+        return
+    _t4_io_event(
+        state, operation="READ", byte_count=byte_count, object_id=_t4_object_id(path),
+        rewrite_of=None, cost_class=cost_class,
+        evidence_ref="FIABC_T4_"+role, lifecycle_action_id=lifecycle_action_id,
+        process_token=process_token,
+    )
+
+
+def _t4_remove_tree(path: Path, *, cost_class="C2", lifecycle_action_id=None):
+    ctx, state = _t4_active()
+    if ctx is not None and state is not None and path.exists():
+        scratch = Path(ctx.roots.scratch).resolve()
+        p = path.resolve()
+        if p == scratch or scratch in p.parents:
+            for q in sorted((x for x in path.rglob("*") if x.is_file()), reverse=True):
+                _t4_note_scratch_size(
+                    q, q.stat().st_size, cost_class=cost_class,
+                    lifecycle_action_id=lifecycle_action_id,
+                )
+            for q in sorted((x for x in path.rglob("*") if x.is_file()), reverse=True):
+                _t4_note_scratch_remove(
+                    q, cost_class=cost_class, lifecycle_action_id=lifecycle_action_id,
+                )
+    shutil.rmtree(path, ignore_errors=True)
+
+
+def _t4_metric_unavailable(state, *, name, reason,
+                           metric_state="NOT_APPLICABLE_BY_FROZEN_COURT",
+                           cost_class="C2", evidence_ref=None,
+                           lifecycle_action_id=None):
+    state.setdefault("_t4_metric_unavailable", []).append({
+        "name": name, "state": metric_state, "reason": reason,
+        "cost_class": cost_class,
+        "evidence_ref": evidence_ref or "FIABC_T4_FROZEN_APPLICABILITY",
+        "lifecycle_action_id": lifecycle_action_id,
+    })
+
+
+def _deep_size_bytes(value) -> int:
+    seen=set()
+    def walk(obj):
+        oid=id(obj)
+        if oid in seen:
+            return 0
+        seen.add(oid)
+        size=sys.getsizeof(obj)
+        if isinstance(obj, Mapping):
+            return size + sum(walk(k)+walk(v) for k,v in obj.items())
+        if isinstance(obj, (tuple,list,set,frozenset)):
+            return size + sum(walk(v) for v in obj)
+        if dataclasses.is_dataclass(obj) and not isinstance(obj,type):
+            return size + sum(walk(getattr(obj,f.name)) for f in dataclasses.fields(obj))
+        raw=getattr(obj,"__dict__",None)
+        if isinstance(raw,dict):
+            size += walk(raw)
+        return size
+    return int(walk(value))
+
+
+def _durable_state_sizes(ctx):
+    root=Path(ctx.roots.durable)
+    authoritative=0
+    transformed=0
+    classified=[]
+    ignored={
+        "ee_p2x_backend_state.json",
+        "fiabc_t4_candidate_state_guard.json",
+    }
+    if not root.exists():
+        return 0,0,classified
+    for q in sorted(x for x in root.rglob("*") if x.is_file()):
+        rel=q.relative_to(root).as_posix()
+        size=q.stat().st_size
+        if rel in ignored:
+            continue
+        if (
+            rel.endswith(".parentage.json")
+            or rel.endswith(".physical_realization_seed.json")
+        ):
+            authoritative += size
+            classified.append(("AUTHORITATIVE",rel,size))
+        elif (
+            rel.startswith("lits_a_r5/")
+            or rel.startswith("wvs7_r5/")
+            or rel=="wvs7_projection_structural_input.json"
+            or rel.startswith("p4_optional_cache/")
+            or rel.startswith("p5_transient_compiler_state/")
+        ):
+            transformed += size
+            classified.append(("TRANSFORMED_REGENERABLE",rel,size))
+        else:
+            raise BackendStop(
+                "durable candidate state lacks frozen telemetry classification",
+                {"path":rel,"metric_scope":"DURABLE_STATE_SIZE"},
+            )
+    return authoritative,transformed,classified
+
+
+def _moving_parts_manifest(ctx,state):
+    key=(ctx.stage.source,ctx.stage.candidate)
+    session=_SESSIONS.get(key)
+    parts=[]
+    if session is not None:
+        parts.extend(["LIVE_BINDING","GOVERNED_PROJECTION"])
+        if session[2] is not None:
+            parts.append("RUNTIME_AUTHORITY_SET")
+    if ctx.stage.candidate=="A":
+        root=Path(ctx.roots.durable)/("lits_a_r5" if ctx.stage.source=="LITS_I" else "wvs7_r5")
+        if root.is_dir():
+            parts.append("PERSISTENT_R5_CARRIER")
+    if ctx.stage.candidate=="C":
+        receipt=state.get("candidate_c_binding_receipt") or {}
+        inv=receipt.get("accelerator_inventory") or receipt.get("current_f02_accelerator_inventory") or ()
+        for item in inv:
+            parts.append("ACCELERATOR::"+str(item))
+    if _candidate_state_guard_path(ctx).is_file():
+        parts.append("CANDIDATE_STATE_GUARD")
+    return tuple(sorted(set(parts)))
+
+
+def _t4_seed_scratch_baseline(ctx,state):
+    scratch=Path(ctx.roots.scratch)
+    tracker=state.setdefault("_t4_scratch_tracker",{})
+    if scratch.exists():
+        for q in sorted(x for x in scratch.rglob("*") if x.is_file()):
+            oid=_t4_object_id(q)
+            size=q.stat().st_size
+            tracker[oid]=size
+            state.setdefault("_t4_scratch_events",[]).append({
+                "operation":"SIZE","object_id":oid,"current_size_bytes":size,
+                "cost_class":"C2",
+                "evidence_ref":"FIABC_T4_STAGE_START_SCRATCH_BASELINE",
+                "lifecycle_action_id":None,
+            })
+
+
+def _t4_assert_scratch_coverage(ctx,state):
+    scratch=Path(ctx.roots.scratch)
+    tracker=state.setdefault("_t4_scratch_tracker",{})
+    actual={}
+    if scratch.exists():
+        for q in sorted(x for x in scratch.rglob("*") if x.is_file()):
+            actual[_t4_object_id(q)] = q.stat().st_size
+    if actual != tracker:
+        raise BackendStop(
+            "scratch mutation stream is incomplete",
+            {"actual":actual,"tracked":dict(tracker)},
+        )
 
 
 def _t4_metric_event(state, *, name, start_ns=None, stop_ns=None, value=None, unit=None,
@@ -381,6 +680,7 @@ def _child_process_event(*, stage, pid, before, after, wall_start_ns, wall_stop_
         "wall_start_ns":int(wall_start_ns),"wall_stop_ns":int(wall_stop_ns),
         "peak_rss_bytes":max(0,int(peak_rss_bytes)),
         "evidence_ref":stage.address+"::"+label,
+        "label":label,
     }
 
 
@@ -412,14 +712,12 @@ def _decode(ctx, state, reread: bool = False):
     observed_bytes = ctx.source_path.stat().st_size
     sa["open"] += 1; sa["decode"] += 1; sa["reread"] += int(reread); sa["bytes"] += observed_bytes
     state.setdefault("_t4_source_events", []).extend(["open", "decode"] + (["reread"] if reread else []))
-    state.setdefault("_t4_io_events", []).append({
-        "operation": "READ",
-        "byte_count": observed_bytes,
-        "object_id": "CANONICAL_SOURCE::" + ctx.source_sha256,
-        "rewrite_of": None,
-        "cost_class": "C1",
-        "evidence_ref": ctx.stage.address + "::FULL_SOURCE_DECODE",
-    })
+    _t4_io_event(
+        state, operation="READ", byte_count=observed_bytes,
+        object_id="CANONICAL_SOURCE::"+ctx.source_sha256, rewrite_of=None,
+        cost_class="C1", evidence_ref=ctx.stage.address+"::FULL_SOURCE_DECODE",
+        lifecycle_action_id=_t4_current_lifecycle_action_id(state),
+    )
     inc = decode_dta(ctx.source_path, encoding="latin1") if ctx.stage.source == "LITS_I" else decode_sav(ctx.source_path)
     if inc.source_sha256 != ctx.source_sha256:
         raise SourceAuthorityStop("decoder source identity drift")
@@ -449,8 +747,8 @@ def _lits_projection(ctx, services, state, incidence):
     accepted.mkdir(parents=True, exist_ok=True)
     ledger = accepted / Path(LITS_LEDGER).name
     package = accepted / Path(LITS_PACKAGE).name
-    ledger.write_bytes(_git_bytes(repo, LITS_BANKED_COMMIT, LITS_LEDGER))
-    package.write_bytes(_git_bytes(repo, LITS_BANKED_COMMIT, LITS_PACKAGE))
+    _write_bytes_tracked(ledger, _git_bytes(repo, LITS_BANKED_COMMIT, LITS_LEDGER), cost_class="C1")
+    _write_bytes_tracked(package, _git_bytes(repo, LITS_BANKED_COMMIT, LITS_PACKAGE), cost_class="C1")
     old_l, old_p = mod.LEDGER, mod.PACKAGE
     mod.LEDGER, mod.PACKAGE = ledger, package
     try:
@@ -823,7 +1121,11 @@ def _lits_a_verify_current_r5(ctx, services, state):
             "current LiTS-A S01 realization or contemporaneous parentage absent",
             {"root":str(root_path),"parentage":str(parentage_path),"physical_seed":str(seed_path)},
         )
-    reader=R5CompactLongShardedReader(root_path)
+    def _r5_fault(phase,detail):
+        if phase=="after_verified_read":
+            _t4_note_file_read(Path(detail["path"]),int(detail["length"]),cost_class="C2",role="R5_VERIFIED_READ")
+    reader=R5CompactLongShardedReader(root_path,fault_hook=_r5_fault)
+    _t4_note_file_read(root_path/"root.json",(root_path/"root.json").stat().st_size,cost_class="C2",role="R5_ROOT_READ")
     try:
         assert_r5_root_parent(reader.root,expected_source_sha256=LITS_SHA)
         inventory=_lits_a_inventory(reader,root_path)
@@ -904,7 +1206,7 @@ def _lits_a_build_current_s01(ctx, services, state, incidence, projection):
             "LiTS-A current measured S01 requires absent candidate-owned target",
             {"no_historical_or_prebuilt_root_reuse":True,"root":str(root_path)},
         )
-    _build_r5_from_incidence(ctx,services,incidence,projection,root_path)
+    _build_r5_from_incidence(ctx,services,state,incidence,projection,root_path)
     from rawlsing_next.pre553_r5_compact_carrier import R5CompactLongShardedReader
     reader=R5CompactLongShardedReader(root_path)
     try:
@@ -1021,18 +1323,108 @@ def _r5_release_identity(source: str, projection):
         c11_authority_digest=projection.projection_authority_ref.authority_content_hash,
     )
 
-def _build_r5_from_incidence(ctx,services,incidence,projection,target):
+def _build_r5_from_incidence(ctx,services,state,incidence,projection,target):
     _ensure_r5(ctx,services)
     from rawlsing_next.pre553_r5_compact_carrier import R5CompactLongShardedBuilder
     from rawlsing_next.pre553_r5_seam import iter_source_native_rows
     if target.exists():
         return
-    builder=R5CompactLongShardedBuilder()
-    builder.build(
+
+    class InstrumentedR5Builder(R5CompactLongShardedBuilder):
+        def _record_write(self,path,role):
+            p=Path(path)
+            _t4_note_file_write(p,p.stat().st_size,rewrite=False,cost_class="C2")
+            if ".work" in p.parts:
+                oid="R5_WORK::"+p.relative_to(target).as_posix()
+                state.setdefault("_t4_scratch_tracker",{})[oid]=p.stat().st_size
+                state.setdefault("_t4_scratch_events",[]).append({
+                    "operation":"SIZE","object_id":oid,
+                    "current_size_bytes":p.stat().st_size,"cost_class":"C2",
+                    "evidence_ref":"FIABC_T4_R5_TRANSIENT_WORK_OBJECT",
+                    "lifecycle_action_id":_t4_current_lifecycle_action_id(state),
+                })
+        def _record_read(self,path,role):
+            p=Path(path)
+            _t4_note_file_read(p,p.stat().st_size,cost_class="C2",role=role)
+        def _flush_run(self,directory,index,records):
+            path=super()._flush_run(directory,index,records)
+            self._record_write(path,"R5_TEMP_RUN")
+            return path
+        def _merge_group(self,source_dir,names,target_path):
+            for name in names:
+                self._record_read(source_dir/name,"R5_TEMP_MERGE_READ")
+            super()._merge_group(source_dir,names,target_path)
+            self._record_write(target_path,"R5_TEMP_MERGE_WRITE")
+        def _make_runs(self,rows,work):
+            manifest,telemetry=super()._make_runs(rows,work)
+            self._record_write(manifest,"R5_TEMP_MANIFEST")
+            return manifest,telemetry
+        def _reduce(self,manifest,work):
+            source_dir=work/"runs-0000"
+            pass_index=0
+            max_open=1
+            while True:
+                self._record_read(manifest,"R5_TEMP_MANIFEST_READ")
+                with manifest.open("r",encoding="utf-8") as handle:
+                    count=sum(1 for line in handle if line.strip())
+                if count <= self.config.merge_fan_in:
+                    return manifest,source_dir,pass_index,max_open
+                pass_index += 1
+                target_dir=work/f"runs-{pass_index:04d}"
+                target_dir.mkdir()
+                next_manifest=work/f"runs-{pass_index:04d}.txt"
+                next_count=0
+                with next_manifest.open("w",encoding="utf-8",newline="\n") as out:
+                    for group in self._groups(manifest,self.config.merge_fan_in):
+                        max_open=max(max_open,len(group))
+                        target_path=target_dir/f"run-{next_count:08d}.tmp.gz"
+                        self._merge_group(source_dir,group,target_path)
+                        out.write(target_path.name+"\n")
+                        next_count += 1
+                    out.flush(); os.fsync(out.fileno())
+                self._record_write(next_manifest,"R5_TEMP_MANIFEST")
+                for q in sorted(x for x in source_dir.rglob("*") if x.is_file()):
+                    oid="R5_WORK::"+q.relative_to(target).as_posix()
+                    state.setdefault("_t4_scratch_tracker",{}).pop(oid,None)
+                    state.setdefault("_t4_scratch_events",[]).append({
+                        "operation":"REMOVE","object_id":oid,"cost_class":"C2",
+                        "evidence_ref":"FIABC_T4_R5_TRANSIENT_WORK_REMOVE",
+                        "lifecycle_action_id":_t4_current_lifecycle_action_id(state),
+                    })
+                shutil.rmtree(source_dir)
+                oid="R5_WORK::"+manifest.relative_to(target).as_posix()
+                state.setdefault("_t4_scratch_tracker",{}).pop(oid,None)
+                state.setdefault("_t4_scratch_events",[]).append({
+                    "operation":"REMOVE","object_id":oid,"cost_class":"C2",
+                    "evidence_ref":"FIABC_T4_R5_TRANSIENT_WORK_REMOVE",
+                    "lifecycle_action_id":_t4_current_lifecycle_action_id(state),
+                })
+                manifest.unlink()
+                source_dir,manifest=target_dir,next_manifest
+        def _iter_final(self,manifest,source_dir):
+            self._record_read(manifest,"R5_FINAL_MANIFEST_READ")
+            names=[line.strip() for line in manifest.read_text(encoding="utf-8").splitlines() if line.strip()]
+            for name in names:
+                self._record_read(source_dir/name,"R5_FINAL_RUN_READ")
+            yield from super()._iter_final(manifest,source_dir)
+
+    builder=InstrumentedR5Builder()
+    telemetry=builder.build(
         iter_source_native_rows(incidence),
         release_identity=_r5_release_identity(ctx.stage.source,projection),
         target_directory=target,
     )
+    for q in sorted(x for x in target.rglob("*") if x.is_file() and ".work" not in x.parts):
+        _t4_note_file_write(q,q.stat().st_size,rewrite=False,cost_class="C2")
+    tracker=state.setdefault("_t4_scratch_tracker",{})
+    for oid in [k for k in tracker if k.startswith("R5_WORK::")]:
+        tracker.pop(oid,None)
+        state.setdefault("_t4_scratch_events",[]).append({
+            "operation":"REMOVE","object_id":oid,"cost_class":"C2",
+            "evidence_ref":"FIABC_T4_R5_TRANSIENT_WORK_REMOVE",
+            "lifecycle_action_id":_t4_current_lifecycle_action_id(state),
+        })
+    state["r5_build_telemetry"]=dict(telemetry)
 
 def _compose_wvs(ctx,services,state,incidence=None):
     projection=_wvs_projection(ctx,services,state)
@@ -1044,8 +1436,12 @@ def _compose_wvs(ctx,services,state,incidence=None):
         if not root.exists():
             if incidence is None:
                 raise BackendStop("WVS-A preserved R5 carrier absent at source-free stage")
-            _build_r5_from_incidence(ctx,services,incidence,projection,root)
-        reader=R5CompactLongShardedReader(root)
+            _build_r5_from_incidence(ctx,services,state,incidence,projection,root)
+        def _r5_fault(phase,detail):
+            if phase=="after_verified_read":
+                _t4_note_file_read(Path(detail["path"]),int(detail["length"]),cost_class="C2",role="R5_VERIFIED_READ")
+        reader=R5CompactLongShardedReader(root,fault_hook=_r5_fault)
+        _t4_note_file_read(root/"root.json",(root/"root.json").stat().st_size,cost_class="C2",role="R5_ROOT_READ")
         _assert_r5_canonical_source_root(reader, "WVS7")
         kwargs={"reader":reader}
     elif ctx.stage.candidate=="B":
@@ -1480,8 +1876,10 @@ def _s07(ctx,services,state):
 
 def _s08(ctx,services,state):
     key=(ctx.stage.source,ctx.stage.candidate)
-    retained=_session_object_id(ctx.stage.source,ctx.stage.candidate,_SESSIONS.get(key))
+    retained_session=_SESSIONS.get(key)
+    retained=_session_object_id(ctx.stage.source,ctx.stage.candidate,retained_session)
     before=[retained] if retained else []
+    before_access=dict(state["source_access"])
     action_id=_h({"stage":ctx.stage.address,"action":"WARM_RETAINED_STATE_USE","retained":retained})
     binding,projection,runtime_authority=_bind(ctx,services,state,ctx.source_path is not None); _binding_state(state,binding,projection)
     (_,identity),_=_measure(
@@ -1489,12 +1887,22 @@ def _s08(ctx,services,state):
         cost_class="C3",lifecycle_action_id=action_id,
     )
     after_id=_session_object_id(ctx.stage.source,ctx.stage.candidate,_SESSIONS.get(key))
-    _t4_metric_event(state,name="repeated_research_source_reread_count",
-                     value=state["source_access"]["reread"],unit="count",cost_class="C1",
-                     evidence_ref=ctx.stage.address+"::OBSERVED_REREAD_EVENTS")
-    _t4_metric_event(state,name="repeated_research_source_redecode_count",
-                     value=max(0,state["source_access"]["decode"]-1),unit="count",cost_class="C1",
-                     evidence_ref=ctx.stage.address+"::OBSERVED_REDECODE_EVENTS")
+    after_access=state["source_access"]
+    for name,key_name in (
+        ("repeated_research_source_open_count","open"),
+        ("repeated_research_source_redecode_count","decode"),
+        ("repeated_research_source_reread_count","reread"),
+    ):
+        _t4_metric_event(
+            state,name=name,value=int(after_access[key_name])-int(before_access[key_name]),
+            unit="count",cost_class="C1",
+            evidence_ref=ctx.stage.address+"::OBSERVED_STAGE_SOURCE_EVENT_DELTA",
+        )
+    _t4_metric_event(
+        state,name="warm_retained_state_bytes",
+        value=_deep_size_bytes(_SESSIONS.get(key)),unit="bytes",cost_class="C2",
+        evidence_ref=ctx.stage.address+"::RETAINED_SESSION_OBJECT_GRAPH",
+    )
     _t4_lifecycle_event(state,{
         "action":"WARM_RETAINED_STATE_USE","action_id":action_id,
         "governed_operation_id":"WARM_I03_RESEARCH","expected_terminal_identity":identity,
@@ -1523,6 +1931,18 @@ def _s09(ctx,services,state):
              "operational_persistence_value":{"value":"AVOIDS_REBUILD_ONLY"},
              "rebuild_cost":{"basis":"NOT_EXECUTED_AT_THIS_STAGE"},"expensive_to_rebuild_used_as_authority_basis":False}
         _atomic(path,obj)
+        _auth_bytes,_transformed_bytes,_classes=_durable_state_sizes(ctx)
+        _t4_metric_event(
+            state,name="persistent_bytes_removable_with_zero_information_loss",
+            value=_transformed_bytes,unit="bytes",cost_class="C2",
+            evidence_ref=ctx.stage.address+"::EXACT_REGENERABLE_STATE_INVENTORY",
+        )
+        _t4_metric_unavailable(
+            state,name="delete_rebuild_wall_ns",
+            reason="CANDIDATE_A_S09_IS_FROZEN_PERSISTENCE_INFORMATION_AUDIT_NOT_DELETE_REBUILD",
+            metric_state="NOT_APPLICABLE_BY_FROZEN_COURT",
+            evidence_ref=ctx.stage.address,
+        )
         identity=_h(obj)
         action_id=_h({"stage":ctx.stage.address,"action":"AUDIT_REVALIDATION","identity":identity})
         _t4_lifecycle_event(state,{
@@ -1542,9 +1962,18 @@ def _s09(ctx,services,state):
         raise BackendStop("deletion/regeneration requires an actually retained candidate session")
     deleted=[old_session]
     action_id=_h({"stage":ctx.stage.address,"action":"DELETION_REGENERATION","old":old_session})
+    _auth_bytes,_transformed_bytes,_classes=_durable_state_sizes(ctx)
+    removable=_transformed_bytes
+    for root in (ctx.roots.scratch/"p4_optional_cache",ctx.roots.scratch/"p5_transient_compiler_state"):
+        removable += _dir_stats(root)[0]
+    _t4_metric_event(
+        state,name="persistent_bytes_removable_with_zero_information_loss",
+        value=removable,unit="bytes",cost_class="C2",
+        evidence_ref=ctx.stage.address+"::PRE_DELETE_EXACT_P4_P5_STATE_INVENTORY",
+    )
     def cycle():
-        shutil.rmtree(ctx.roots.scratch/"p4_optional_cache",ignore_errors=True)
-        shutil.rmtree(ctx.roots.scratch/"p5_transient_compiler_state",ignore_errors=True)
+        _t4_remove_tree(ctx.roots.scratch/"p4_optional_cache",cost_class="C2",lifecycle_action_id=action_id)
+        _t4_remove_tree(ctx.roots.scratch/"p5_transient_compiler_state",cost_class="C2",lifecycle_action_id=action_id)
         _SESSIONS.pop(key,None)
         _bind(ctx,services,state,True)
     _,wall=_measure(ctx,state,cycle,"delete_rebuild_wall_ns",cost_class="C2",lifecycle_action_id=action_id)
@@ -1590,8 +2019,20 @@ def _rebind_session(ctx,services,state):
 
 def _s10(ctx,services,state):
     before_terminal=state["outputs"].get("replay_identity")
-    old,new=_rebind_session(ctx,services,state)
-    action_id=_h({"stage":ctx.stage.address,"action":"SOURCE_INVALIDATION","old":old,"new":new})
+    key=(ctx.stage.source,ctx.stage.candidate)
+    old_id=_session_object_id(ctx.stage.source,ctx.stage.candidate,_SESSIONS.get(key))
+    if not old_id:
+        raise BackendStop("source invalidation lacks retained candidate session")
+    action_id=_h({"stage":ctx.stage.address,"action":"SOURCE_INVALIDATION","old":old_id})
+    state["_t4_current_lifecycle_action_id"]=action_id
+    try:
+        (old,new),_wall=_measure(
+            ctx,state,lambda:_rebind_session(ctx,services,state),
+            "source_release_invalidation_wall_ns",cost_class="C2",
+            lifecycle_action_id=action_id,
+        )
+    finally:
+        state.pop("_t4_current_lifecycle_action_id",None)
     _t4_metric_event(state,name="source_release_invalidation_recomputation_units",
                      value=1,unit="units",cost_class="C2",evidence_ref=ctx.stage.address,
                      lifecycle_action_id=action_id)
@@ -1605,16 +2046,28 @@ def _s10(ctx,services,state):
         "invalidation_trigger_identity":ctx.source_sha256,
         "invalidated_unit_ids":[old],"recomputed_unit_ids":[new],
         "evidence_refs":[ctx.stage.address],
-        "metric_names":["source_release_invalidation_recomputation_units"],
+        "metric_names":["source_release_invalidation_recomputation_units","source_release_invalidation_wall_ns"],
     })
     return {"recomputation_units":1,"invalidated_unit_ids":[old],"recomputed_unit_ids":[new]}
 
 
 def _s11(ctx,services,state):
     before_terminal=state["outputs"].get("replay_identity")
-    old,new=_rebind_session(ctx,services,state)
+    key=(ctx.stage.source,ctx.stage.candidate)
+    old_id=_session_object_id(ctx.stage.source,ctx.stage.candidate,_SESSIONS.get(key))
+    if not old_id:
+        raise BackendStop("semantic invalidation lacks retained candidate session")
     authority_trigger=_h(state.get("bindings",{}))
-    action_id=_h({"stage":ctx.stage.address,"action":"AUTHORITY_SEMANTIC_INVALIDATION","old":old,"new":new,"authority":authority_trigger})
+    action_id=_h({"stage":ctx.stage.address,"action":"AUTHORITY_SEMANTIC_INVALIDATION","old":old_id,"authority":authority_trigger})
+    state["_t4_current_lifecycle_action_id"]=action_id
+    try:
+        (old,new),_wall=_measure(
+            ctx,state,lambda:_rebind_session(ctx,services,state),
+            "semantic_authority_invalidation_wall_ns",cost_class="C2",
+            lifecycle_action_id=action_id,
+        )
+    finally:
+        state.pop("_t4_current_lifecycle_action_id",None)
     _t4_metric_event(state,name="semantic_authority_invalidation_recomputation_units",
                      value=1,unit="units",cost_class="C2",evidence_ref=ctx.stage.address,
                      lifecycle_action_id=action_id)
@@ -1628,7 +2081,7 @@ def _s11(ctx,services,state):
         "invalidation_trigger_identity":authority_trigger,
         "invalidated_unit_ids":[old],"recomputed_unit_ids":[new],
         "evidence_refs":[ctx.stage.address],
-        "metric_names":["semantic_authority_invalidation_recomputation_units"],
+        "metric_names":["semantic_authority_invalidation_recomputation_units","semantic_authority_invalidation_wall_ns"],
     })
     return {"recomputation_units":1,"invalidated_unit_ids":[old],"recomputed_unit_ids":[new]}
 
@@ -1670,12 +2123,12 @@ def _s13(ctx,services,state):
     guard=_candidate_state_guard_path(ctx)
     if not guard.is_file(): _write_candidate_state_guard(ctx,state)
     original=guard.read_bytes(); original_id=hashlib.sha256(original).hexdigest()
-    guard.write_bytes(b"{CORRUPT")
+    _write_bytes_tracked(guard,b"{CORRUPT",cost_class="C2")
     corrupt_id=hashlib.sha256(guard.read_bytes()).hexdigest()
     detected=False
     try: json.loads(guard.read_text(encoding="utf-8"))
     except Exception: detected=True
-    guard.write_bytes(original)
+    _write_bytes_tracked(guard,original,cost_class="C2")
     recovered=hashlib.sha256(guard.read_bytes()).hexdigest()==original_id
     if not detected or not recovered: raise BackendStop("corrupt-state recovery exercise failed")
     eid=_h({"stage":ctx.stage.address,"target":original_id,"corrupt":corrupt_id,"recovered":recovered})
@@ -1715,11 +2168,16 @@ def _s14(ctx,services,state):
         raise BackendStop("interruption exercise did not enter governed replay operation",{"marker":marker})
     p.kill(); p.wait(); child_stop=time.perf_counter_ns(); child_after=_children_cpu_snapshot()
     if p.returncode==0: raise BackendStop("interruption exercise did not interrupt governed replay")
-    state.setdefault("_t4_child_process_envelopes",[]).append(_child_process_event(
+    interrupted_event=_child_process_event(
         stage=ctx.stage,pid=p.pid,before=child_before,after=child_after,
         wall_start_ns=child_start,wall_stop_ns=child_stop,
         peak_rss_bytes=marker.get("peak_rss_bytes",0),label="INTERRUPTED_GOVERNED_REPLAY",
-    ))
+    )
+    state.setdefault("_t4_child_process_envelopes",[]).append(interrupted_event)
+    for io_event in marker.get("io_events",[]):
+        state.setdefault("_t4_io_events",[]).append({**io_event,"process_token":interrupted_event["process_token"]})
+    for scratch in marker.get("scratch_events",[]):
+        state.setdefault("_t4_scratch_events",[]).append({**scratch,"process_token":interrupted_event["process_token"]})
     recovery_plan=_fresh_replay_plan(ctx,services)
     recovery_path=_atomic(ctx.roots.scratch/"interruption_recovery_plan.json",recovery_plan)
     recovery_before=_children_cpu_snapshot(); recovery_start=time.perf_counter_ns()
@@ -1728,11 +2186,16 @@ def _s14(ctx,services,state):
     qout,_=q.communicate(); recovery_stop=time.perf_counter_ns(); recovery_after=_children_cpu_snapshot()
     if q.returncode: raise BackendStop("interruption recovery replay failed",{"output":qout[-4000:]})
     doc=json.loads(qout.strip().splitlines()[-1])
-    state.setdefault("_t4_child_process_envelopes",[]).append(_child_process_event(
+    recovery_event=_child_process_event(
         stage=ctx.stage,pid=q.pid,before=recovery_before,after=recovery_after,
         wall_start_ns=recovery_start,wall_stop_ns=recovery_stop,
         peak_rss_bytes=doc.get("peak_rss_bytes",0),label="INTERRUPTION_RECOVERY_REPLAY",
-    ))
+    )
+    state.setdefault("_t4_child_process_envelopes",[]).append(recovery_event)
+    for io_event in doc.get("io_events",[]):
+        state.setdefault("_t4_io_events",[]).append({**io_event,"process_token":recovery_event["process_token"]})
+    for scratch in doc.get("scratch_events",[]):
+        state.setdefault("_t4_scratch_events",[]).append({**scratch,"process_token":recovery_event["process_token"]})
     expected=state["outputs"].get("exact_output_identity")
     if doc.get("terminal_identity")!=expected:
         raise BackendStop("interruption recovery reproduced wrong governed terminal identity",
@@ -1783,6 +2246,12 @@ def _fresh_replay_cli(plan_path: Path) -> int:
     child_usage_start=resource.getrusage(resource.RUSAGE_SELF)
     child_wall_start=time.perf_counter_ns()
     state=_new_state(ctx)
+    state["_t4_source_events"]=[]
+    state["_t4_io_events"]=[]
+    state["_t4_scratch_events"]=[]
+    state["_t4_scratch_tracker"]={}
+    global _T4_ACTIVE_CONTEXT, _T4_ACTIVE_STATE
+    _T4_ACTIVE_CONTEXT, _T4_ACTIVE_STATE = ctx, state
     binding,projection,runtime_authority=_bind(ctx,services,state,ctx.source_path is not None)
     _binding_state(state,binding,projection)
     if plan.get("interrupt_probe"):
@@ -1791,6 +2260,9 @@ def _fresh_replay_cli(plan_path: Path) -> int:
             "marker":"FIABC_T4_GOVERNED_REPLAY_STARTED","pid":os.getpid(),
             "peak_rss_bytes":max(0,int(usage.ru_maxrss)),
             "c11_binding_established":True,
+            "source_events":list(state.get("_t4_source_events",[])),
+            "io_events":list(state.get("_t4_io_events",[])),
+            "scratch_events":list(state.get("_t4_scratch_events",[])),
         },sort_keys=True),flush=True)
         time.sleep(60)
         return 22
@@ -1822,7 +2294,10 @@ def _fresh_replay_cli(plan_path: Path) -> int:
                       "pid":os.getpid(),"peak_rss_bytes":max(0,int(child_usage_stop.ru_maxrss)),
                       "child_cpu_user_ns":max(0,int((child_usage_stop.ru_utime-child_usage_start.ru_utime)*1e9)),
                       "child_cpu_system_ns":max(0,int((child_usage_stop.ru_stime-child_usage_start.ru_stime)*1e9)),
-                      "child_wall_start_ns":child_wall_start,"child_wall_stop_ns":child_wall_stop},sort_keys=True))
+                      "child_wall_start_ns":child_wall_start,"child_wall_stop_ns":child_wall_stop,
+                      "source_events":list(state.get("_t4_source_events",[])),
+                      "io_events":list(state.get("_t4_io_events",[])),
+                      "scratch_events":list(state.get("_t4_scratch_events",[]))},sort_keys=True))
     return 0
 
 def _s15(ctx,services,state):
@@ -1849,6 +2324,10 @@ def _s15(ctx,services,state):
         return doc
     doc,_=_measure(ctx,state,replay,"fresh_process_replay_wall_ns",cost_class="C3",lifecycle_action_id=action_id)
     state.setdefault("_t4_child_process_envelopes",[]).append(replay_box["event"])
+    for io_event in doc.get("io_events",[]):
+        state.setdefault("_t4_io_events",[]).append({**io_event,"process_token":replay_box["event"]["process_token"]})
+    for scratch in doc.get("scratch_events",[]):
+        state.setdefault("_t4_scratch_events",[]).append({**scratch,"process_token":replay_box["event"]["process_token"]})
     state["t5_fresh_process_terminal_projection"]=doc.get("terminal_projection")
     expected=state["outputs"].get("exact_output_identity")
     if doc.get("terminal_identity")!=expected:
@@ -1872,10 +2351,23 @@ def _s15(ctx,services,state):
             "process_boundary":"NEW_PYTHON_PROCESS"}
 
 def _s16(ctx,services,state):
-    # T4 deliberately does not use endpoint directory sizes as observed I/O or
-    # scratch peaks and does not formula-estimate implementation work.
-    # T5 remains responsible for post-I05 oracle comparison/performance admission.
+    authoritative,transformed,classification=_durable_state_sizes(ctx)
+    _t4_metric_event(
+        state,name="durable_authoritative_bytes",value=authoritative,unit="bytes",
+        cost_class="C2",evidence_ref=ctx.stage.address+"::EXACT_DURABLE_STATE_CLASSIFICATION",
+    )
+    _t4_metric_event(
+        state,name="durable_transformed_regenerable_bytes",value=transformed,unit="bytes",
+        cost_class="C2",evidence_ref=ctx.stage.address+"::EXACT_DURABLE_STATE_CLASSIFICATION",
+    )
+    moving_parts=_moving_parts_manifest(ctx,state)
+    _t4_metric_event(
+        state,name="implementation_moving_parts_count",value=len(moving_parts),unit="count",
+        cost_class="C2",evidence_ref=ctx.stage.address+"::EXACT_RUNTIME_PART_MANIFEST",
+    )
     return {
+        "durable_state_classification":classification,
+        "implementation_moving_parts":list(moving_parts),
         "t4_accounting_finalize": True,
         "semantic_state_identity": state["outputs"].get("exact_output_identity")
             or state["outputs"].get("replay_identity")
@@ -1942,20 +2434,33 @@ def run_stage(context, services):
     state["_t4_metric_events"]=[]
     state["_t4_source_events"]=[]
     state["_t4_io_events"]=[]
+    state["_t4_scratch_events"]=[]
+    state["_t4_scratch_tracker"]={}
+    state["_t4_metric_unavailable"]=[]
     state["_t4_child_process_envelopes"]=[]
     state["_t4_lifecycle_event"]=None
+    global _T4_ACTIVE_CONTEXT, _T4_ACTIVE_STATE
+    _T4_ACTIVE_CONTEXT, _T4_ACTIVE_STATE = context, state
+    _t4_seed_scratch_baseline(context,state)
     try:
         _gate(context,state)
         handler=HANDLERS.get(context.stage.stage_id)
         if handler is None: raise CourtAuthorityStop("READY stage lacks production handler")
         payload,_=_measure(context,state,lambda:handler(context,services,state))
+        _t4_assert_scratch_coverage(context,state)
         observations={
             "metric_events":list(state.pop("_t4_metric_events",[])),
+            "metric_unavailable":list(state.pop("_t4_metric_unavailable",[])),
             "source_events":list(state.pop("_t4_source_events",[])),
             "io_events":list(state.pop("_t4_io_events",[])),
+            "scratch_events":list(state.pop("_t4_scratch_events",[])),
             "child_process_envelopes":list(state.pop("_t4_child_process_envelopes",[])),
             "lifecycle_event":state.pop("_t4_lifecycle_event",None),
+            "io_coverage_complete":True,
+            "scratch_coverage_complete":True,
         }
+        state.pop("_t4_scratch_tracker",None)
+        _T4_ACTIVE_CONTEXT, _T4_ACTIVE_STATE = None, None
         state.pop("_t4_state_was_new",None)
         _save(context,state)
         artifacts=dict(payload.pop("_artifacts",{}))
@@ -1968,10 +2473,12 @@ def run_stage(context, services):
                            "stage_payload":payload,"ranking_or_selection":False},
                 "output_artifacts":artifacts,"verifier_complete":True}
     except BackendStop as exc:
+        _T4_ACTIVE_CONTEXT, _T4_ACTIVE_STATE = None, None
         if context.stage.source=="COURT" and not isinstance(exc,CourtAuthorityStop):
             exc=CourtAuthorityStop(str(exc),exc.detail)
         return _failure(context,services,state,exc)
     except Exception as exc:
+        _T4_ACTIVE_CONTEXT, _T4_ACTIVE_STATE = None, None
         stop_cls=CourtAuthorityStop if context.stage.source=="COURT" else BackendStop
         return _failure(context,services,state,stop_cls(
             "untyped production backend implementation failure",

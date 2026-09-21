@@ -350,8 +350,19 @@ class TelemetryLedger:
             receipt = self._lifecycle.get(ctx.lifecycle_action_id)
             if receipt is None:
                 raise TelemetryContractError("lifecycle metric lacks bound I06C action receipt")
-            if receipt.phase_id != ctx.phase_id or receipt.process_token != ctx.process_token:
-                raise TelemetryContractError("lifecycle metric provenance drifts from action receipt")
+            if receipt.phase_id != ctx.phase_id:
+                raise TelemetryContractError("lifecycle metric phase drifts from action receipt")
+            if receipt.process_token != ctx.process_token:
+                child = self._processes.get(ctx.process_token)
+                child_bound = (
+                    receipt.action_type == "FRESH_PROCESS_REPLAY"
+                    and child is not None
+                    and child.role == "CHILD"
+                    and child.parent_process_token == receipt.process_token
+                    and child.phase_id == receipt.phase_id
+                )
+                if not child_bound:
+                    raise TelemetryContractError("lifecycle metric process provenance drifts from action receipt")
 
     def _slot(self, definition: MetricDefinition, ctx: ObservationContext) -> Tuple[Any, ...]:
         base = (
@@ -603,6 +614,49 @@ class TelemetryLedger:
             internal=True,
         )
 
+    def mark_lifecycle_not_applicable(
+        self,
+        metric_name: str,
+        ctx: ObservationContext,
+        *,
+        reason: str,
+    ) -> MetricRecord:
+        """Write a frozen-court N/A lifecycle slot without inventing an action receipt."""
+        self._validate_context(ctx)
+        definition = METRIC_DEFINITIONS.get(metric_name)
+        if definition is None or definition.grain != MetricGrain.LIFECYCLE:
+            raise TelemetryContractError("lifecycle N/A helper requires a lifecycle-grain metric")
+        if ctx.lifecycle_action_id is not None:
+            raise TelemetryContractError("lifecycle N/A cannot bind a performed action")
+        if not reason:
+            raise TelemetryContractError("lifecycle N/A requires exact frozen-court reason")
+        key = (
+            definition.name,
+            self.cell.source_id,
+            self.cell.source_sha256,
+            self.cell.candidate_id,
+            "__NOT_APPLICABLE_BY_FROZEN_COURT__",
+        )
+        if key in self._metrics:
+            raise TelemetryContractError("immutable lifecycle N/A metric already written")
+        record = MetricRecord(
+            name=metric_name,
+            state=MetricState.NOT_APPLICABLE_BY_FROZEN_COURT,
+            value=None,
+            unit=definition.unit,
+            source_id=self.cell.source_id,
+            source_sha256=self.cell.source_sha256,
+            candidate_id=self.cell.candidate_id,
+            phase_id=ctx.phase_id,
+            process_token=ctx.process_token,
+            cost_class=ctx.cost_class.value,
+            lifecycle_action_id=None,
+            evidence_kind=f"TYPED_NULL::{reason}",
+            evidence_ref=ctx.evidence_ref,
+        )
+        self._metrics[key] = record
+        return record
+
     # ---------- source counters ----------
 
     def observe_source_event(self, ctx: ObservationContext, *, event: str) -> None:
@@ -673,6 +727,37 @@ class TelemetryLedger:
         self._io_events.append(event)
         return event
 
+    def seal_lifecycle_rewrite_bytes(
+        self,
+        metric_name: str,
+        ctx: ObservationContext,
+    ) -> MetricRecord:
+        """Seal a lifecycle rewrite metric from the exact bound WRITE event subset."""
+        if metric_name not in {
+            "source_release_invalidation_bytes_rewritten",
+            "semantic_authority_invalidation_bytes_rewritten",
+        }:
+            raise TelemetryContractError("unsupported lifecycle rewrite metric")
+        self._validate_context(ctx)
+        if ctx.lifecycle_action_id is None:
+            raise TelemetryContractError("lifecycle rewrite metric requires action id")
+        value = sum(
+            event.byte_count
+            for event in self._io_events
+            if event.charged_to_candidate
+            and event.operation == "WRITE"
+            and event.rewrite_of is not None
+            and event.lifecycle_action_id == ctx.lifecycle_action_id
+        )
+        return self._write(
+            metric_name,
+            ctx,
+            state=MetricState.MEASURED,
+            value=value,
+            evidence_kind="OBSERVED_LIFECYCLE_REWRITE_EVENT_ACCOUNTING_COMPLETE",
+            internal=True,
+        )
+
     def seal_io_accounting(self, ctx: ObservationContext) -> None:
         self._validate_context(ctx)
         if self._io_sealed:
@@ -727,6 +812,16 @@ class TelemetryLedger:
         current_files = len(self._scratch_sizes)
         self._scratch_peak_bytes = max(self._scratch_peak_bytes, current_bytes)
         self._scratch_peak_files = max(self._scratch_peak_files, current_files)
+
+    def observe_empty_scratch_baseline(self, ctx: ObservationContext) -> None:
+        """Record an observed empty scratch state without inventing a file object."""
+        self._validate_context(ctx)
+        if self._scratch_sealed:
+            raise TelemetryContractError("scratch high-water accounting already sealed")
+        if ctx.cost_class not in {CostClass.C2, CostClass.C3}:
+            raise TelemetryContractError("scratch state must be candidate-owned C2/C3")
+        self._scratch_observed = True
+        self._update_scratch_peaks()
 
     def seal_scratch_accounting(self, ctx: ObservationContext) -> None:
         self._validate_context(ctx)
