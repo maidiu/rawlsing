@@ -1,0 +1,32 @@
+{
+  "schema": "FIABC_LM2_R1J_A_PYREADSTAT_VERSION_GRAPH@1.0.0",
+  "role": "FROZEN_FIABC_LOCK1_MEASUREMENT_RUNTIME_STACK",
+  "pyreadstat": {
+    "version": "1.3.6",
+    "tag": "v1.3.6",
+    "tag_commit": "ae4bfa5d84ed5da0a1b040be472703585bdfeefc",
+    "setup_blob": "bc9ec8ed004e6f85827ef69811e61966a7f7138c",
+    "public_api_path": "pyreadstat/pyreadstat.py",
+    "public_api_blob": "97d5452eae2e033f92adad4abf91646eeff31e82",
+    "parser_path": "pyreadstat/_readstat_parser.pyx",
+    "parser_blob": "bd43be1928139e343469cbad456f8773c41131bf",
+    "changelog_blob": "6aa13e02478d32a9d04b2c8345cd795b1668a25c",
+    "build_law": "setup.py walks vendored src/ C sources and compiles them into the pyreadstat extensions; the tag therefore uses the vendored ReadStat source snapshot."
+  },
+  "readstat": {
+    "upstream_repo": "WizardMac/ReadStat",
+    "revision": "634f40a80d27221848ba57e9fb633b41146bac36",
+    "provenance": "pyreadstat v1.3.6 changelog explicitly records the ReadStat source update to this revision.",
+    "vendored_critical_blobs": {
+      "src/spss/readstat_sav_read.c": "5810f1ff8a92d010d8ad86d05ddd64aa227c0b92",
+      "src/spss/readstat_spss.c": "4bc7cde0813d379d59526e488b07135eeb99bb58",
+      "src/readstat_value.c": "62aac39820184626df90451f0d999887d77ea884"
+    },
+    "upstream_blob_identity_verified": true
+  },
+  "exact_refs": [
+    "https://github.com/Roche/pyreadstat/tree/ae4bfa5d84ed5da0a1b040be472703585bdfeefc",
+    "https://github.com/WizardMac/ReadStat/tree/634f40a80d27221848ba57e9fb633b41146bac36"
+  ],
+  "boundary": "VERSION_GRAPH_ONLY__NO_WVS_SOURCE_SEMANTICS"
+}
