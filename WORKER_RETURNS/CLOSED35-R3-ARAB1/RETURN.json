@@ -1,0 +1,113 @@
+{
+  "schema": "CLOSED35_R3_ARAB1_RETURN@1.0.0",
+  "worker_id": "CLOSED35-R3-ARAB1",
+  "repository": "maidiu/rawlsing",
+  "base": {
+    "branch": "agent/vozhd-closed35-l2r-r1-fanin-r1",
+    "sha": "da33eb6a8225c14eee9490633a3263388dc5536c"
+  },
+  "branch": "agent/rabochii-closed35-r3-arab1-realization-r1",
+  "return_path": "WORKER_RETURNS/CLOSED35-R3-ARAB1/",
+  "source": {
+    "family": "Arab Barometer",
+    "wave": "Wave 1",
+    "canonical_filename": "Arab Barometer Wave 1.sav",
+    "canonical_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+    "format": "SAV",
+    "reader_mode": "SAV_NATIVE_GOVERNED",
+    "replay_identity": "SOURCE_SHA256+ROW_ORDINAL"
+  },
+  "authority": {
+    "class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+    "prep71_branch_head": "82a7893130a1fb95e92d4a628d301fea858d4119",
+    "prep72_synthesis_head": "3356b26f2dc518043ffde171c2dca0470b5ac79f",
+    "authority71_72_effect": "PREPARATION_ONLY__NOT_SOURCE_CERTIFICATION"
+  },
+  "disposition": "IMPLEMENTED__CANDIDATE_NEUTRAL_SOURCE_SPECIFIC_REALIZATION__TESTS_AUTHORED_NOT_EXECUTED",
+  "terminal": "CLOSED35_R3_ARAB_BAROMETER_W1_SOURCE_SPECIFIC_REALIZATION_IMPLEMENTED__READY_FOR_ABC_QUALIFICATION",
+  "candidate_neutral_semantic_owner": "PRE553_SOURCE_BACKED_C11_FACADE@1.0.0",
+  "realized_law": {
+    "native_id_field": "SER",
+    "native_id_scope": "SOURCE_LOCAL_ATTRIBUTE_ONLY",
+    "hard_replay_identity": [
+      "canonical_source_sha256",
+      "zero_based_source_row_ordinal"
+    ],
+    "literal_source_text_preserved": true,
+    "silent_typography_normalization_allowed": false,
+    "morocco_country_code": 4,
+    "documented_routing_variables": [
+      "q715withoutmorocco",
+      "V715onlymorocco"
+    ],
+    "routing_from_missingness": false,
+    "design_inference_from_carrier_names": false,
+    "cross_wave_semantic_inheritance": false
+  },
+  "bounded_unknowns_preserved": [
+    "DISPLAY_TEXT_NORMALIZATION_BEYOND_ACCEPTED_SOURCE_EVIDENCE",
+    "EXACT_WEIGHT_DESIGN_ESTIMAND_AND_IMPLEMENTATION",
+    "UNDOCUMENTED_ROUTING_DETAILS",
+    "EXACT_DATASET_ALIAS_BINDING_FOR_V715ONLYMOROCCO_TO_PRINTED_Q715MOROCCOONLY",
+    "CROSS_WAVE_SEMANTIC_EQUIVALENCE"
+  ],
+  "s35_edge_classes": [
+    "EC01",
+    "EC07",
+    "EC10",
+    "EC14"
+  ],
+  "r35_hooks": {
+    "i01": {
+      "schema": "PRE553_PHYSICAL_METADATA@1.0.0",
+      "required": true
+    },
+    "i02": {
+      "schema": "FIABC_DERIVATIVE_PARENTAGE_BUNDLE@1.0.0",
+      "required_for_non_direct_raw": true
+    },
+    "i03": {
+      "source_scope_schema": "FIABC_R35_I03_SOURCE_PHYSICAL_SCOPE@1.0.0",
+      "expectation_schema": "FIABC_R35_I03_CANONICAL_PHYSICAL_EXPECTATION@1.0.0",
+      "candidate_realization_schema": "FIABC_R35_I03_CANDIDATE_PHYSICAL_REALIZATION@1.0.0",
+      "receipt_schema": "FIABC_R35_I03_WHOLE_SOURCE_PHYSICAL_EQUIVALENCE_RECEIPT@1.0.0",
+      "required_dimensions": [
+        "physical_metadata",
+        "variable_inventory_order",
+        "raw_storage_values",
+        "row_replay_identity",
+        "native_id_replay_evidence",
+        "form_module_skip_routing_carriers"
+      ]
+    }
+  },
+  "implementation": {
+    "module": "rawlsing_next/closed35_arab1_realization.py",
+    "tests": "rawlsing_next/tests/test_closed35_r3_arab1_realization.py",
+    "test_count": 11,
+    "test_status": "TESTS_AUTHORED__NOT_EXECUTED",
+    "real_source_bytes_used": false
+  },
+  "outputs": [
+    "WORKER_RETURNS/CLOSED35-R3-ARAB1/00_RETURN.md",
+    "WORKER_RETURNS/CLOSED35-R3-ARAB1/01_REALIZATION_CONTRACT.md",
+    "WORKER_RETURNS/CLOSED35-R3-ARAB1/02_IDENTITY_TEXT_ROUTING_MAP.csv",
+    "WORKER_RETURNS/CLOSED35-R3-ARAB1/03_PHYSICAL_EDGE_BINDING.json",
+    "WORKER_RETURNS/CLOSED35-R3-ARAB1/04_TEST_PROTOCOL.md",
+    "WORKER_RETURNS/CLOSED35-R3-ARAB1/RETURN.json",
+    "rawlsing_next/closed35_arab1_realization.py",
+    "rawlsing_next/tests/test_closed35_r3_arab1_realization.py"
+  ],
+  "proof_boundary": {
+    "raw_survey_carrier_opened": false,
+    "source_processing_executed": false,
+    "source_decoding_executed": false,
+    "measured_p2x_run": false,
+    "whole_source_physical_equivalence_pass_claimed": false,
+    "abc_execution_pass_claimed": false,
+    "i05_pass_claimed": false,
+    "source_certification_claimed": false
+  },
+  "ready_for_abc_qualification": true,
+  "commit_sha_note": "Final branch tip is reported externally because a commit cannot contain its own resulting hash in its preimage."
+}
