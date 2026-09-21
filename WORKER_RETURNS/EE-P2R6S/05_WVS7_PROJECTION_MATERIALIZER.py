@@ -1094,12 +1094,22 @@ def bind_exact_projection_fields(fields: Mapping[str, Any]) -> GovernedC11Projec
     )
     if len(mapping_matches) != 1 or mapping_matches[0].ref != mapping_authority_snapshot().ref:
         raise ValueError("frozen WVS7 P2 exact mapping authority parent/provenance substitution forbidden")
-    for slot in fields.get("response_slots", ()):
+    response_slots = tuple(fields.get("response_slots", ()))
+    if len(response_slots) != 2:
+        raise ValueError("frozen WVS7 P2 requires exactly two response slots")
+    if tuple(slot.slot.name for slot in response_slots) != ("Q291G5", "Q291P5"):
+        raise ValueError("frozen WVS7 P2 exact response-slot identity/order drift")
+    for slot in response_slots:
+        canonical_tokens = []
         for rule in slot.values:
-            if rule.canonical_value is not None and rule.transform_authority_ref != MAPPING_AUTHORITY_REF:
-                raise ValueError("frozen WVS7 P2 substantive response mapping authority substitution forbidden")
-            if rule.canonical_value is None and rule.transform_authority_ref is not None:
+            if rule.canonical_value is not None:
+                if rule.transform_authority_ref != MAPPING_AUTHORITY_REF:
+                    raise ValueError("frozen WVS7 P2 substantive response mapping authority substitution forbidden")
+                canonical_tokens.append(rule.canonical_value)
+            elif rule.transform_authority_ref is not None:
                 raise ValueError("frozen WVS7 P2 special/missing response canonicalization forbidden")
+        if tuple(sorted(canonical_tokens)) != ("1", "2", "3", "4", "5"):
+            raise ValueError("frozen WVS7 P2 exact program semantic token set drift")
     if fields.get("replay_authority_ref")!=REPLAY_AUTH_REF:
         raise ValueError("frozen WVS7 P2 replay authority substitution forbidden")
     if fields.get("tie_order_ref")!=TIE_ORDER_REF:
