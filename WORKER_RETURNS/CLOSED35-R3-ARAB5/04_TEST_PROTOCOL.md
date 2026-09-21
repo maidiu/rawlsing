@@ -142,7 +142,7 @@ The authored suite directly covers:
 - undocumented semantic interpretation of Q101 extra codes;
 - candidate-specific semantic divergence.
 
-Cross-wave semantic leakage is additionally frozen in the realization payload/contract and may be added as a dedicated runtime assertion if the later common ABC harness exposes a cross-wave-import input surface.
+## T12 — cross-wave semantic leakage is forbidden\n\nInspect the source-specific realization payload.\n\nAssert:\n\n- family semantic imports are disabled;\n- Wave-2 semantics are not inherited;\n- Wave-8 semantics are not inherited.\n\nReject any source-local realization that fills Wave-5 bounded UNKNOWNs from another Arab Barometer release.\n\nThe authored Python suite contains this dedicated assertion.
 
 ## Later real qualification order
 
@@ -154,7 +154,7 @@ canonical source identity
 
 -> R35 whole-source physical-equivalence receipts
 
--> T01-T11 realization court
+-> T01-T12 realization court
 
 -> common A/B/C comparison
 
