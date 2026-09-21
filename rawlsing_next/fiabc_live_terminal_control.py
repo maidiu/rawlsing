@@ -112,13 +112,13 @@ EXPECTED_PRESERVATION_ANCHORS = {
         },
         "wvs_projection_materializer": {
             "path": "rawlsing_next/runtime/ee_p2x/05_WVS7_PROJECTION_MATERIALIZER.py",
-            "blob": "11b28416aac5a4899706150721f2f8ac8bb6ee43",
+            "blob": "ec685803a7416032037ee415e8faf7bf60db8f1b",
         },
     },
     "t2_current_binding": {
         "candidate_c_module": {
             "path": "rawlsing_next/pre553_candidate_c_production_binding.py",
-            "blob": "347f65d8e18fa5d64ba057439c32b652a73dd6e7",
+            "blob": "47893688ed455ced2c2f2311ad0aead6fb5bf2d2",
         },
         "candidate_c_policy": "SOURCE_BACKED_HYBRID_WITH_REGENERABLE_ACCELERATORS",
         "six_cell_manifest_path": "WORKER_RETURNS/FIABC-T2/01_SIX_CELL_EXECUTION_MANIFEST.json",
@@ -127,7 +127,7 @@ EXPECTED_PRESERVATION_ANCHORS = {
     "t3_freeze_and_isolation": {
         "oracle_module": {
             "path": "rawlsing_next/pre553_independent_parity_oracle.py",
-            "blob": "b23bbea7cf7af28fa04ada5eaf2670b4a9691776",
+            "blob": "2b2b5fb869e8a1a47814dc8aaa7ff2e2ae20e757",
         },
         "process_envelope": {
             "path": "rawlsing_next/ee_p2x_candidate_process_envelope.py",
