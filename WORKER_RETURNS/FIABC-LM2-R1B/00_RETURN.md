@@ -162,9 +162,9 @@ No already-accepted **WVS7** positive authority of kind `NATIVE_CANONICAL_MAPPIN
 The archaeology does find accepted precedent for:
 
 1. source-native C11 response material with canonical fields absent; and
-2. exact authority objects derived mechanically from already-accepted premises for other authority families.
+2. exact authority objects derived mechanically from already-accepted premises for other authority families. R6S itself constructs bounded coordinate/projection authorities with explicit parent-authority provenance. That proves the *form* of derived authority is not alien to the system.
 
-But history alone does **not** prove that a new WVS7 native→canonical mapping authority may be minted from R6A/P2F2 semantics. That semantic adjudication belongs to LM2-R1A/R1C or HQ. Worker B does not create it.
+No inspected accepted precedent, however, derives a `NATIVE_CANONICAL_MAPPING_HARMONIZATION` grant merely from `SOURCE_SEMANTICS_TOPOLOGY`. Thus history alone does **not** prove that a new WVS7 native→canonical mapping authority may be minted from R6A/P2F2 semantics. That semantic adjudication belongs to LM2-R1A/R1C or HQ. Worker B does not create it.
 
 ## Minimum lawful rerun boundary
 
@@ -177,7 +177,7 @@ The frozen physical/source chain remains untouched:
 - Lock2 `8e5842eb…`: unchanged;
 - canonical physical expectation `9845c24d…`: unchanged.
 
-No source reread is historically justified by this semantic-authority reference defect.
+No source reread is historically justified by this semantic-authority reference defect. In the commission's rerun vocabulary, **no currently plausible repair has `REAL_SOURCE_RERUN_REQUIRED` at any listed dependency stage**.
 
 For any lawful repair that changes only the source-specific semantic projection / mapping authority layer, recovery can restart no earlier than:
 
