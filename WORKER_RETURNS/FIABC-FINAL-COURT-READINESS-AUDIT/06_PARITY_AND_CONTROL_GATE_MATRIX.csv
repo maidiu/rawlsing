@@ -1,0 +1,29 @@
+gate,owner,status,exact_current_state,required_before_admission
+Lock1,HQ final P2 manifest,FROZEN_AND_ALREADY_QUALIFIED,"Darwin x86_64; CPython 3.11.3; pyreadstat 1.3.6; pyarrow 25.0.1; serialized A/B/C",all measured cells
+Lock2,HQ Lock2 adoption,FROZEN_AND_ALREADY_QUALIFIED,"8e5842... / 46 candidates / 10+1+10+25",WVS oracle and candidates
+source identity,source receipts,FROZEN_AND_ALREADY_QUALIFIED,"LiTS 7cac43...; WVS 2bd2a2...",all source work
+candidate-neutral oracle causal freeze,T3,NEEDS_REQUALIFICATION_DUE_TO_LATER_CODE_CHANGE,"oracle implementation blob changed post-QF1",candidate start
+fresh source×candidate process,I06A/T3,FROZEN_AND_ALREADY_QUALIFIED,"process envelope + isolated backend unchanged",each cell
+strict C11,common facade,NEEDS_REQUALIFICATION_DUE_TO_LATER_CODE_CHANGE,"current facade 8a7611...; exact typed physical keys; no coercion",I03
+R1J physical→native authority,R1J-A/B/C,BLOCKED_BY_CURRENT_WVS_R1I_LINE,"not present at audited head",WVS common C11
+pyreadstat 1.3.2↔1.3.6 representation parity,R1J-A,BLOCKED_BY_CURRENT_WVS_R1I_LINE,"not adjudicated by Worker D",WVS oracle/candidate/performance
+R15 real common C11,R1H successor,BLOCKED_BY_CURRENT_WVS_R1I_LINE,"last R15 failed closed on unbound response value/state",WVS R16
+R16 fresh WVS oracle,T3/R1H successor,BLOCKED_BY_CURRENT_WVS_R1I_LINE,"not executed after R15 failure",WVS candidate start
+live R6S package adoption,T1/live backend,NEEDS_REQUALIFICATION_DUE_TO_LATER_CODE_CHANGE,"live materializer 11b284... still predates R1E/R1J representation repair",WVS candidate start
+R35 physical parentage,R35-I02,IMPLEMENTED_BUT_NEEDS_REAL_EXECUTION,"verifier qualified; WVS bundle exists; LiTS-A actual historical first-build bundle remains",physical guard
+R35 whole-source physical equivalence,R35-I03/T6,IMPLEMENTED_BUT_NEEDS_REAL_EXECUTION,"wrapper 707d1... exists; real A/B/C realizations pending",performance admission
+semantic parity,independent oracle,IMPLEMENTED_BUT_NEEDS_REAL_EXECUTION,"candidate must match one frozen source oracle",performance admission
+ExactRef/identity parity,independent oracle/I08,IMPLEMENTED_BUT_NEEDS_REAL_EXECUTION,"comparison grain implemented",performance admission
+replay parity,S15/I08,IMPLEMENTED_BUT_NEEDS_REAL_EXECUTION,"fresh process full C11/I03/I05 projection",terminal
+integrity/fail-closed,R35/PRE553,FROZEN_AND_ALREADY_QUALIFIED,"QF1 source-independent hostile suites passed",all gates
+complete frontier,I05/I08,IMPLEMENTED_BUT_NEEDS_REAL_EXECUTION,"50 LiTS / 46 WVS complete coverage required",terminal
+typed-negative parity,oracle/I08,IMPLEMENTED_BUT_NEEDS_REAL_EXECUTION,"negative-state manifest required",terminal
+I06B telemetry,T4,FROZEN_AND_ALREADY_QUALIFIED,"d061cd... unchanged",measurement
+I06C lifecycle,T4,FROZEN_AND_ALREADY_QUALIFIED,"a2977e... unchanged",measurement
+R6X reconciliation,R6X continuation,IMPLEMENTED_BUT_NEEDS_REAL_EXECUTION,"explicitly outside QF1/T6 and not applied by LM2",prelaunch control
+I07 current-head succession preflight,T5,IMPLEMENTED_BUT_NEEDS_REAL_EXECUTION,"e9591b... unchanged; receipt must bind final post-R1J repo head/contracts",candidate --run/--resume
+post-I05 independent oracle match,T5,NEEDS_REQUALIFICATION_DUE_TO_LATER_CODE_CHANGE,"T5 control implementation unchanged but oracle module changed",cell terminal
+I08 full-I05 terminal,T5,FROZEN_AND_ALREADY_QUALIFIED,"c9d31a... unchanged",cell terminal
+two-source six-cell completeness,T5 driver,I08,IMPLEMENTED_BUT_NEEDS_REAL_EXECUTION,"missing/failed cells cannot become court PASS; source-local failures remain evidence",court terminal
+HQ measured synthesis,HQ,IMPLEMENTED_BUT_NEEDS_REAL_EXECUTION,"no magic score; P2 cannot select",post-P2
+P3 hostile kill,HQ P3 process,IMPLEMENTED_BUT_NEEDS_REAL_EXECUTION,"post-provisional-favorite attack",final selection
