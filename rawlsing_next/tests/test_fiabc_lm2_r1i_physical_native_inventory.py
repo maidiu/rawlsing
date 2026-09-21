@@ -134,7 +134,32 @@ def test_r1i_exact_keyspace_inventory_and_difference(capsys):
             "intersection_keys": both,
         }
     assert physical_value_binding_key(1, PhysicalMissingState.OBSERVED_STORAGE_VALUE) != physical_value_binding_key(1.0, PhysicalMissingState.OBSERVED_STORAGE_VALUE)
+    module = _materializer()
+    structural_doc, variables, _country = _structural_material(module)
+    metadata = {
+        v.name: {
+            "ordinal": v.ordinal,
+            "storage_type": v.storage_type,
+            "missing_declarations": v.missing_declarations,
+        }
+        for v in variables if v.name in QUESTIONS
+    }
+    summary = {
+        q: {
+            "physical_key_count": diff[q]["physical_key_count"],
+            "rule_key_count": diff[q]["rule_key_count"],
+            "intersection_count": diff[q]["intersection_count"],
+            "physical_minus_rule_count": len(diff[q]["physical_minus_rule"]),
+            "rule_minus_physical_count": len(diff[q]["rule_minus_physical"]),
+            "physical_token_types": sorted({x["typed_raw_token"]["t"] for x in physical[q]}),
+            "physical_python_types": sorted({x["python_type_after_codec_decode"] for x in physical[q]}),
+            "realized_system_missing": any(x["physical_missing_state"] == "SYSTEM_MISSING" for x in physical[q]),
+        }
+        for q in QUESTIONS
+    }
     with capsys.disabled():
         print("FIABC_LM2_R1I_PHYSICAL_INVENTORY="+_j(physical))
         print("FIABC_LM2_R1I_RULE_INVENTORY="+_j(rules))
         print("FIABC_LM2_R1I_KEYSPACE_DIFF="+_j(diff))
+        print("FIABC_LM2_R1I_STRUCTURAL_METADATA="+_j(metadata))
+        print("FIABC_LM2_R1I_DIFF_SUMMARY="+_j(summary))
