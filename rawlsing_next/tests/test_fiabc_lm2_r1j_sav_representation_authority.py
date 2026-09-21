@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+from functools import lru_cache
 from pathlib import Path
 
 import pytest
@@ -42,6 +43,7 @@ OLD_PROJECTION_IDENTITY_HASH = "8d6ee3fac396d7bd0e0afdf2f4fb13bcc8f040e53d63dd4c
 LOCK2 = "8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188"
 
 
+@lru_cache(maxsize=1)
 def _projection_and_variables():
     module = _materializer()
     structural_doc, variables, _country = _structural_material(module)
