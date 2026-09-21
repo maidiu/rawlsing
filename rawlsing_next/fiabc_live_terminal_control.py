@@ -108,17 +108,17 @@ EXPECTED_PRESERVATION_ANCHORS = {
         },
         "wvs_runtime_package": {
             "path": "rawlsing_next/runtime/ee_p2x/02_WVS7_P2F2_RUNTIME_PACKAGE.json",
-            "blob": "e04e84b76f8b4eb53905276dd025938bf2e5f6fe",
+            "blob": "f016cdfdfd51e7973ab10b2196fe27ba5c90b3cd",
         },
         "wvs_projection_materializer": {
             "path": "rawlsing_next/runtime/ee_p2x/05_WVS7_PROJECTION_MATERIALIZER.py",
-            "blob": "11b28416aac5a4899706150721f2f8ac8bb6ee43",
+            "blob": "ec685803a7416032037ee415e8faf7bf60db8f1b",
         },
     },
     "t2_current_binding": {
         "candidate_c_module": {
             "path": "rawlsing_next/pre553_candidate_c_production_binding.py",
-            "blob": "347f65d8e18fa5d64ba057439c32b652a73dd6e7",
+            "blob": "47893688ed455ced2c2f2311ad0aead6fb5bf2d2",
         },
         "candidate_c_policy": "SOURCE_BACKED_HYBRID_WITH_REGENERABLE_ACCELERATORS",
         "six_cell_manifest_path": "WORKER_RETURNS/FIABC-T2/01_SIX_CELL_EXECUTION_MANIFEST.json",
@@ -127,7 +127,7 @@ EXPECTED_PRESERVATION_ANCHORS = {
     "t3_freeze_and_isolation": {
         "oracle_module": {
             "path": "rawlsing_next/pre553_independent_parity_oracle.py",
-            "blob": "b23bbea7cf7af28fa04ada5eaf2670b4a9691776",
+            "blob": "2b2b5fb869e8a1a47814dc8aaa7ff2e2ae20e757",
         },
         "process_envelope": {
             "path": "rawlsing_next/ee_p2x_candidate_process_envelope.py",
@@ -158,6 +158,12 @@ EXPECTED_PRESERVATION_ANCHORS = {
         "pre_t5_backend_blob": "f32fc0441efd649bcb7196a91354cc7311bc384b",
     },
 }
+WVS7_SUCCESSOR_DISCOVERY_AUTHORITY = "3aee36014e4c3b39dd36bfef46006d8e9058a93aa5eb53bd81aef627883c8873"
+WVS7_SUCCESSOR_LOCK2 = "5e2a53f0e5f3b6ddd8db53b724b352ca41fe1a49408483fbf83dfdaa96283139"
+WVS7_SUCCESSOR_LOCK2_REPLAY = "9b5ac1726a03798d07e965396192d1bfefbee6d2188bad5a3acfb467ef063d4a"
+WVS7_FRESH_ORACLE_IDENTITY = "3694b8bd0b5468433a1a83bd469337c7e36e552c3a9a5fef65fff88df8fce800"
+WVS7_FRESH_ORACLE_TRUTH_PAYLOAD = "eb2f9224219385dbf21af70d317e0978383012ff057ce2ac857b59c130472405"
+
 HISTORICAL_C_FAILURE_PATHS = frozenset({
     "WORKER_RETURNS/EE-P2X/05_LITS_I_C_TERMINAL_BINDING_BLOCKER.json",
     "WORKER_RETURNS/EE-P2X/13_WVS7_C_PRESERVED_PORTABILITY_FAILURE.json",
