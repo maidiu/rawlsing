@@ -13,6 +13,7 @@ from rawlsing_next.pre553_empirical_objects import (
     AuthorityRef,
     AuthoritySnapshot,
     ExactRef,
+    canonicalize,
     semantic_hash,
 )
 
@@ -242,10 +243,10 @@ def authority_parent_and_scope_ledger() -> Mapping[str, Any]:
         "authority_ref": MAPPING_AUTHORITY_REF.as_dict(),
         "authority_snapshot_ref": snapshot.ref.as_dict(),
         "authority_kind": snapshot.authority_kind,
-        "parents": [x.as_dict() for x in snapshot.parent_authority_refs],
+        "parents": canonicalize(snapshot.parent_authority_refs),
         "dependencies": [x.as_dict() for x in snapshot.dependency_refs],
-        "scope_envelope": snapshot.scope_envelope,
-        "negative_limit_refs": [x.as_dict() for x in snapshot.negative_limit_refs],
+        "scope_envelope": canonicalize(snapshot.scope_envelope),
+        "negative_limit_refs": canonicalize(snapshot.negative_limit_refs),
         "mapping_material": MAPPING_AUTHORITY_MATERIAL,
     }
 
