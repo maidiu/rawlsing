@@ -141,7 +141,7 @@ The relation registry and capability atlas are deliberate semantic/search-contro
 
 ## Historical driver mapping versus current driver constructor
 
-Rawlsing's historical driver architecture associated WVS items with drivers.
+Rawlsing's historical driver architecture associated WVS items with drivers. The OBL063 model-owner decision packet recovered an exact 40-row channel roster with **103 proxy references** and **42 unique WVS7 proxy identifiers** (plus 17 unique non-WVS channel identifiers). The packet itself marked that roster as candidate evidence and explicitly denied it authority effect until owner adoption.
 
 Current OBL063 owner law preserves the 40-driver registry concept and re-adopts the exact 22-driver type-weight matrix, but it deliberately refuses to treat historical WVS proxy availability as sufficient authority to scalarize drivers.
 

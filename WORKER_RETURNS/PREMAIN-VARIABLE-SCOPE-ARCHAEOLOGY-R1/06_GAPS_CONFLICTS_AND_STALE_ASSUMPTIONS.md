@@ -64,7 +64,7 @@ Current owner law states:
 - pending != zero;
 - pending != retired.
 
-The original path/source for the complete historical `driverSchema.json` is not present as a literal file in the sealed repo tree at this commit; current owner disposition is the authority for the 40/22/18 state.
+The original `driverSchema.json` is not present as a literal file in the sealed base tree, but the historical OBL063 decision-packet commit preserves its recovered 40-driver / 103-proxy channel roster, including 42 unique WVS7 proxy identifiers. That recovered roster remains historical candidate-channel evidence; current owner disposition governs the 40/22/18 state and explicitly defers WVS proxy transforms.
 
 ## Stale assumption 7 — “Field Forge requires a universal giant geometry”
 

@@ -82,6 +82,8 @@ A recovered historical Rawlsing model used a 22-driver type-weight matrix. That 
 - missing active-driver evidence is not zero;
 - no weight renormalization on missing.
 
+The historical model-owner decision packet also preserves an exact recovered **40-driver / 103 proxy-reference roster**, containing **42 unique WVS7 proxy identifiers**. That roster is historical evidence/candidate-channel provenance, not present-tense transform authority.
+
 But the same current owner disposition **does not activate the historical WVS proxy mappings**. For R1 it selects only six explicit external channels:
 
 - `collectivism <- hofstede.Individualism`
