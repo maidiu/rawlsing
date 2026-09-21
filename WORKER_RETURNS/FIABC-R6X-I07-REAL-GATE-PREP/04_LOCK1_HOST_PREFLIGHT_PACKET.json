@@ -1,0 +1,118 @@
+{
+  "schema": "FIABC_LOCK1_HOST_PREFLIGHT_PACKET@1.0.0",
+  "status": "BROWSER_FROZEN_PACKET__LOCAL_EXECUTION_REQUIRED__NOT_RUN",
+  "constitution": {
+    "implementation": "CPython",
+    "python": "3.11.3",
+    "system": "Darwin",
+    "machine": "x86_64",
+    "pyreadstat": "1.3.6",
+    "pyarrow": "25.0.1",
+    "ru_maxrss_unit_law": "DARWIN_RU_MAXRSS_ALREADY_BYTES",
+    "p2x_branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+    "required_resume_ancestor": "a954e2d6676843da8427ef2439b5d1ef33478359",
+    "p2r1_seam_path": "rawlsing_next/pre553_carrier_execution.py",
+    "p2r1_seam_blob": "e7cda773e6a2426bfa12b22790fd8e005fe75153",
+    "isolated_backend_module": "rawlsing_next.ee_p2x_process_isolated_backend",
+    "source_sha256": {
+      "LITS_I": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+      "WVS7": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
+    },
+    "known_source_byte_counts": {
+      "LITS_I": 139531180,
+      "WVS7": 185163494
+    }
+  },
+  "final_dynamic_pins": {
+    "final_repo_head": null,
+    "final_current_execution_manifest_path": "WORKER_RETURNS/FIABC-T2/01_SIX_CELL_EXECUTION_MANIFEST.json",
+    "final_current_execution_manifest_blob": "0864534765a34eded37137c545d750f741e31d7a",
+    "final_current_court_contract_path": null,
+    "final_current_court_contract_sha256": null,
+    "final_frozen_upstream_receipt_path": null,
+    "final_frozen_upstream_receipt_sha256": null,
+    "final_i07_receipt_path": null,
+    "final_i07_receipt_identity": null,
+    "lits_source_path": null,
+    "wvs_source_path": null,
+    "current_work_root": null
+  },
+  "work_root_law": {
+    "must_be": "ABSENT_OR_EMPTY_BEFORE_CURRENT_COURT_INITIALIZATION",
+    "must_not_equal_known_historical_root": "/private/tmp/ee-p2x-exec-r3",
+    "old_stage_ledger_import_allowed": false,
+    "old_backend_state_import_allowed": false,
+    "preserved_derivative_external_reference_allowed": true,
+    "candidate_roots": "created under new current work root and isolated by source x candidate"
+  },
+  "local_checks": [
+    {
+      "order": 1,
+      "id": "H01_RUNTIME",
+      "mechanic": "observe_host + verify_runtime_gate",
+      "expected": "exact CPython/Darwin/x86_64/3.11.3/pyreadstat1.3.6/pyarrow25.0.1 and Darwin RSS law",
+      "on_fail": "STOP__LOCK1_RUNTIME_DRIFT"
+    },
+    {
+      "order": 2,
+      "id": "H02_REPO",
+      "mechanic": "observe_repo + verify_repo_gate",
+      "expected": "exact P2X branch, resume head ancestor, P2R1 seam blob exact",
+      "on_fail": "STOP__LOCK1_REPO_DRIFT"
+    },
+    {
+      "order": 3,
+      "id": "H03_WORK_ROOT",
+      "mechanic": "operator verifies current work root absent/empty and not historical R6X root",
+      "expected": true,
+      "on_fail": "STOP__CURRENT_WORK_ROOT_NOT_CLEAN"
+    },
+    {
+      "order": 4,
+      "id": "H04_EXCLUSIVE_HOST",
+      "mechanic": "exclusive host reservation + current DriverInstanceLock",
+      "expected": "no concurrent benchmark workload; one FIABC driver",
+      "on_fail": "STOP__HOST_CONTENTION_NOT_CLOSED"
+    },
+    {
+      "order": 5,
+      "id": "H05_SOURCE_FILES",
+      "mechanic": "current driver preflight hashes explicit --lits-path and --wvs-path",
+      "expected": "exact frozen source SHAs",
+      "on_fail": "STOP__SOURCE_SHA_DRIFT"
+    },
+    {
+      "order": 6,
+      "id": "H06_OWNER_BLOBS",
+      "mechanic": "driver preflight resolves A/B/C frozen owner blobs at owner commit",
+      "expected": "A=d4915e7... B=7c509c2... C=abfdc91...",
+      "on_fail": "STOP__CANDIDATE_OWNER_DRIFT"
+    },
+    {
+      "order": 7,
+      "id": "H07_CURRENT_MANIFEST",
+      "mechanic": "load_current_execution_manifest",
+      "expected": "exact six current cells; first unfinished LITS_I/A/S02; historical C failures not current law",
+      "on_fail": "STOP__CURRENT_MANIFEST_DRIFT"
+    },
+    {
+      "order": 8,
+      "id": "H08_CONTROL_BINDINGS",
+      "mechanic": "validate final current-court contract, T3 frozen upstream receipt, and final I07 receipt",
+      "expected": "all bind exact final repo head/runtime/oracles",
+      "on_fail": "STOP__PRE_CANDIDATE_CONTROL_BINDING_INCOMPLETE"
+    }
+  ],
+  "contention_law": {
+    "driver_claim": "SINGLE_DRIVER_LOCK_ONLY__NO_PROCESS_NAME_IDLE_HEURISTIC",
+    "additional_required_observation": "NO_CONCURRENT_BENCHMARK_WORKLOAD",
+    "acceptable_proof": "exclusive-host reservation/operator observation recorded in preflight receipt",
+    "forbidden_proof": "process-name heuristic presented as exhaustive idle-host evidence"
+  },
+  "command_shape": {
+    "preflight": "python -m rawlsing_next.ee_p2x_darwin_court_driver --preflight --continuation-map <FINAL_CURRENT_MANIFEST> --work-root <NEW_CURRENT_WORK_ROOT> --repo-root <P2X_REPO> --lits-path <EXACT_LITS> --wvs-path <EXACT_WVS> --current-court-contract <FINAL_COURT_CONTRACT> --succession-manifest <SEALED_FINAL_I07_MANIFEST> --succession-lifecycle-context <FINAL_LIFECYCLE_CONTEXT>",
+    "note": "This is a future local non-measured control command. Worker 4 did not run it."
+  },
+  "candidate_execution": false,
+  "measured_p2x": false
+}
