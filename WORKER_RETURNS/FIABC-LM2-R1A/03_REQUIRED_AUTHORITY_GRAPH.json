@@ -1,0 +1,140 @@
+{
+  "schema": "FIABC_LM2_R1A_REQUIRED_AUTHORITY_GRAPH@1.0.0",
+  "worker": "FIABC-LM2-R1A",
+  "base_sha": "bf0f4ebb00e7304e1cda29f7ca9b6595fff248dc",
+  "central_holding": "SOURCE_SEMANTICS_TOPOLOGY closes source-native meaning/topology but cannot authorize canonical C11 material; NATIVE_CANONICAL_MAPPING_HARMONIZATION owns native-to-canonical mapping and does not itself imply cross-source equivalence.",
+  "nodes": [
+    {
+      "id": "A_SOURCE_NATIVE_SEMANTICS",
+      "claim": "WVS7 native question/value means X within WVS7",
+      "authority_kind": "SOURCE_SEMANTICS_TOPOLOGY",
+      "accepted_ref": {
+        "authority_id": "EE-P2F2-WVS7-SOURCE-SEMANTICS-TOPOLOGY",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "c7336ce479b8625b71e33743a05e43525c387dd50e4be1bb7af313667f9c341f"
+      },
+      "status": "POSITIVE_ACCEPTED"
+    },
+    {
+      "id": "B_SOURCE_TOPOLOGY",
+      "claim": "WVS7 response is scalar/special-state/topologically positioned as governed",
+      "authority_kind": "SOURCE_SEMANTICS_TOPOLOGY",
+      "accepted_ref": {
+        "authority_id": "EE-P2F2-WVS7-SOURCE-SEMANTICS-TOPOLOGY",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "c7336ce479b8625b71e33743a05e43525c387dd50e4be1bb7af313667f9c341f"
+      },
+      "status": "POSITIVE_ACCEPTED"
+    },
+    {
+      "id": "C_NATIVE_CANONICAL_QUESTION",
+      "claim": "WVS7 native question is mapped to a Rawlsing canonical question identity",
+      "authority_kind": "NATIVE_CANONICAL_MAPPING_HARMONIZATION",
+      "current_r6s_state": "TYPED_ABSENCE_NOT_AUTHORIZED",
+      "status": "NOT_CLAIMED__NO_REPAIR_REQUIRED"
+    },
+    {
+      "id": "C_NATIVE_CANONICAL_RESPONSE",
+      "claim": "WVS7 native substantive response code is mapped into canonical_response_value_if_authorized",
+      "authority_kind": "NATIVE_CANONICAL_MAPPING_HARMONIZATION",
+      "current_r6s_state": "CLAIMED_WITH_SOURCE_SEMANTICS_TOPOLOGY_REF",
+      "status": "UNSUPPORTED_CANONICAL_PROMOTION"
+    },
+    {
+      "id": "D_CROSS_SOURCE_EQUIVALENCE",
+      "claim": "Canonical identity is equivalent/comparable across multiple source universes",
+      "authority_kind": "SOURCE_EQUIVALENCE_OR_EXACT_SOURCE_RELATION_AUTHORITY",
+      "current_r6s_state": "DISTINCT_BY_DEFAULT__NO_CROSS_SOURCE_PROJECTION",
+      "status": "NOT_AUTHORIZED__NOT_REQUIRED"
+    },
+    {
+      "id": "QUERY_SEMANTIC_VALUE",
+      "claim": "Current WVS7 source-local predicates can evaluate event value without canonical response material",
+      "law": "canonical_response_value_if_authorized if present else raw_response_value",
+      "status": "PROVED_BY_CURRENT_QUERY_EVALUATOR_CONTRACT"
+    }
+  ],
+  "edges": [
+    {
+      "from": "A_SOURCE_NATIVE_SEMANTICS",
+      "to": "B_SOURCE_TOPOLOGY",
+      "relation": "MAY_SHARE_SOURCE_AUTHORITY_KIND",
+      "implication": false
+    },
+    {
+      "from": "A_SOURCE_NATIVE_SEMANTICS",
+      "to": "C_NATIVE_CANONICAL_RESPONSE",
+      "relation": "PREMISE_ONLY",
+      "implication": false,
+      "reason": "source semantic meaning does not itself establish canonical target/crosswalk"
+    },
+    {
+      "from": "B_SOURCE_TOPOLOGY",
+      "to": "C_NATIVE_CANONICAL_RESPONSE",
+      "relation": "PREMISE_ONLY",
+      "implication": false,
+      "reason": "source topology does not mint canonical semantic identity"
+    },
+    {
+      "from": "C_NATIVE_CANONICAL_RESPONSE",
+      "to": "D_CROSS_SOURCE_EQUIVALENCE",
+      "relation": "NO_IMPLICATION",
+      "implication": false,
+      "reason": "native-to-canonical mapping and cross-source equivalence are distinct authority claims"
+    },
+    {
+      "from": "C_NATIVE_CANONICAL_QUESTION",
+      "to": "D_CROSS_SOURCE_EQUIVALENCE",
+      "relation": "NO_IMPLICATION",
+      "implication": false
+    },
+    {
+      "from": "QUERY_SEMANTIC_VALUE",
+      "to": "C_NATIVE_CANONICAL_RESPONSE",
+      "relation": "CAN_AVOID_CLAIM",
+      "implication": false,
+      "reason": "native-only RespondentEvent remains queryable via raw_response_value under source semantics"
+    }
+  ],
+  "validator": {
+    "respondent_event_gate": {
+      "trigger": "canonical_question_ref_if_authorized != null OR canonical_response_value_if_authorized != null",
+      "required_ref": "value_transform_authority_ref",
+      "required_authority_kind": "NATIVE_CANONICAL_MAPPING_HARMONIZATION",
+      "holding": "KEEP_SEMANTIC_BOUNDARY"
+    },
+    "coarseness": "One transform ref gates both question and response canonical material; same ontology kind may cover identifier and value mappings, but exact claims/scopes are distinct and need not share one authority object."
+  },
+  "accepted_wvs7_mapping_search": {
+    "p2f2_runtime_package_mapping_authority_found": false,
+    "r6s_positive_mapping_authority_found": false,
+    "hb01_mapping_or_harmonization_promotion_found": false,
+    "holding": "NO_ACCEPTED_POSITIVE_WVS7_NATIVE_CANONICAL_MAPPING_AUTHORITY_IN_RELEVANT_ACCEPTED_CHAIN"
+  },
+  "derived_authority_rule": {
+    "lawful_only_if_all_premises_exist": [
+      "accepted source-native semantics",
+      "independently accepted canonical target identity/value law",
+      "exact deterministic native-to-canonical crosswalk",
+      "exact source/use scope",
+      "provenance to premises",
+      "negative limits excluding unproved cross-source equivalence"
+    ],
+    "current_status": "NOT_DERIVABLE_FROM_SOURCE_SEMANTICS_TOPOLOGY_ALONE",
+    "must_not_do": "RELABEL_EXISTING_SOURCE_AUTHORITY"
+  },
+  "minimal_repair": {
+    "question": "PRESERVE_TYPED_ABSENCE_NOT_AUTHORIZED",
+    "substantive_response_codes_1_5": {
+      "raw_response_value": "PRESERVE",
+      "typed_response_state": "PRESERVE",
+      "source_semantics_topology_authority": "PRESERVE",
+      "canonical_response_value_if_authorized": null,
+      "value_transform_authority_ref": null
+    },
+    "special_response_states": "UNCHANGED",
+    "c11_validator": "UNCHANGED",
+    "cross_source_posture": "DISTINCT_BY_DEFAULT__NO_CROSS_SOURCE_PROJECTION"
+  },
+  "frozen_physical_chain_impact": "NONE_BY_ONTOLOGY_ADJUDICATION"
+}
