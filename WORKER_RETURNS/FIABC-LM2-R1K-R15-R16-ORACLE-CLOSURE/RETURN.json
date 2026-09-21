@@ -1,0 +1,65 @@
+{
+  "schema": "FIABC_LM2_R1K_R15_R16_ORACLE_CLOSURE_RETURN@1.0.0",
+  "worker": "FIABC-LM2-R1K",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-premain-fiabc-lm2-r1k-r15-r16-oracle-closure-r1",
+  "exact_common_base": "357cc2ac6952a478fa2e38f9adbe45ebb3671081",
+  "return_path": "WORKER_RETURNS/FIABC-LM2-R1K-R15-R16-ORACLE-CLOSURE/",
+  "status": "BLOCKED_AT_R16_AFTER_R15_PASS",
+  "terminal": "FIABC_LM2_R1K_R15_PASS__R16_BLOCKED__FROZEN_DISCOVERY_AUTHORITY_VALIDATION_KIND_ENVELOPE_INCOMPLETE__LOCK2_PRESERVED__CANDIDATES_NOT_STARTED",
+  "r15": {
+    "status": "PASS",
+    "logical_release_identity": "e6881e9a08a48f8871790e781c28bddbc44ee35db894d6ad7b1105a6a8fd262f",
+    "replay_identity": "996ba218fc5da5e0ad1ddf0cdc7f91ce8fb8a7363ce62076dc3f4073b85c383f",
+    "source_release_manifest_hash": "a79ec6404330d34f0ae7cc365b895d09592e2f66749b5706111f42d6fb835570",
+    "projection_identity": "f400c804fea9b526f25eac823138ecb30e10efaad3207c4578661f684adee665",
+    "public_object_count": 486110,
+    "internal_record_count": 97222
+  },
+  "r16": {
+    "status": "BLOCKED",
+    "oracle_frozen": false,
+    "oracle_identity": null,
+    "blocker": "FROZEN_DISCOVERY_AUTHORITY_VALIDATION_KIND_ENVELOPE_INCOMPLETE",
+    "discovery_authority": "24591678ebf50ac153fabdbbcd90d6ce818c5a89a5307c395c48a04fe5a8b1ab",
+    "candidate_grammar": "a94bd2ed3b64b2c51f6d329560feef6b97f69da3527081d8ca6168ae63e5f7f6"
+  },
+  "r01_r18": {
+    "all_except_r16_pass": true,
+    "r15_real_material_pass": true,
+    "r16_pass": false
+  },
+  "conserved": {
+    "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+    "carrier_sha256": "1aea888d8d576fc8606d56dd7a3b1a552411b8f8126ea27a54c36ff6d551dd7e",
+    "structural_preimage": "151907b3163959d0eb5ebb020fa5253d33447362420e465600035744112fe5bc",
+    "parentage_bundle": "5037c55bf1a017112c0fe5f18ca5905696d66dfefcc4d8f47dcb0e7fcb13f37c",
+    "physical_expectation": "9845c24da0c03adb4dfd65118b7c8c39a60a30337f33cc4177ffc6c848d02390",
+    "representation_authority": "63543411892d8d30fb5670a39714a3dc115145e3f054a7017a325dab1c6cf053",
+    "r6s_response_binding": "f225e6289b553ab221902c95c1b416bbd01fb722efcc77c909e239d4ee02e87b",
+    "projection_identity": "f400c804fea9b526f25eac823138ecb30e10efaad3207c4578661f684adee665",
+    "lock2": "8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188",
+    "candidate_frontier_count": 46
+  },
+  "prohibited_execution": {
+    "wvs_sav_zip_opened": false,
+    "candidate_a_b_c": false,
+    "measured_p2x": false,
+    "lock2_mutated": false,
+    "r1j_authority_mutated": false,
+    "raw_value_semantic_inference": false
+  },
+  "candidate_outputs_consulted": 0,
+  "candidate_processes_started": 0,
+  "successor_gate": "P2F2_DISCOVERY_AUTHORITY_VALIDATION_KIND_REPAIR_WITH_NECESSARY_LOCK2_SUCCESSION_THEN_R16_RETRY",
+  "return_files": [
+    "WORKER_RETURNS/FIABC-LM2-R1K-R15-R16-ORACLE-CLOSURE/00_RETURN.md",
+    "WORKER_RETURNS/FIABC-LM2-R1K-R15-R16-ORACLE-CLOSURE/01_R1J_CONSERVATION_RECEIPT.json",
+    "WORKER_RETURNS/FIABC-LM2-R1K-R15-R16-ORACLE-CLOSURE/02_R15_COMMON_C11_RECEIPT.json",
+    "WORKER_RETURNS/FIABC-LM2-R1K-R15-R16-ORACLE-CLOSURE/03_R01_R18_FINAL_LEDGER.csv",
+    "WORKER_RETURNS/FIABC-LM2-R1K-R15-R16-ORACLE-CLOSURE/04_R16_FRESH_WVS_ORACLE.json",
+    "WORKER_RETURNS/FIABC-LM2-R1K-R15-R16-ORACLE-CLOSURE/05_ORACLE_INDEPENDENCE_PROOF.json",
+    "WORKER_RETURNS/FIABC-LM2-R1K-R15-R16-ORACLE-CLOSURE/06_LOCK2_FRONTIER_CONSERVATION.json",
+    "WORKER_RETURNS/FIABC-LM2-R1K-R15-R16-ORACLE-CLOSURE/07_COMMAND_TELEMETRY.json"
+  ]
+}
