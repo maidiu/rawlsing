@@ -1,0 +1,248 @@
+{
+  "schema": "FIABC_I07_FINAL_HEAD_BINDING_TEMPLATE@1.0.0",
+  "status": "TEMPLATE_ONLY__NOT_AN_I07_MANIFEST__NOT_SEALED__NOT_EXECUTABLE",
+  "purpose": "Freeze every currently knowable I07/T3/T5 binding and make future exact values explicit rather than guessed.",
+  "static_contracts": {
+    "i07_implementation": {
+      "path": "rawlsing_next/fiabc_succession_preflight.py",
+      "git_blob_sha1": "e9591b3f4beba3a5aa35039edc85163635582959",
+      "contract": "RAWLSING_FIABC_SUCCESSION_PREFLIGHT@1.0.0"
+    },
+    "manifest_schema": {
+      "path": "rawlsing_next/fiabc_succession_manifest_schema.json",
+      "git_blob_sha1": "484678375abcdd94151b72b425629ccb535be5eb",
+      "schema": "RAWLSING_FIABC_SUCCESSION_MANIFEST@1.0.0"
+    },
+    "governing_profile": {
+      "path": "rawlsing_next/fiabc_succession_governing_profile.json",
+      "git_blob_sha1": "57effa49428f8274cf7ca73e8442f75cca1b8267",
+      "schema": "RAWLSING_FIABC_SUCCESSION_GOVERNING_PROFILE@1.0.0"
+    },
+    "current_execution_manifest": {
+      "path": "WORKER_RETURNS/FIABC-T2/01_SIX_CELL_EXECUTION_MANIFEST.json",
+      "git_blob_sha1": "0864534765a34eded37137c545d750f741e31d7a",
+      "schema": "RAWLSING_FIABC_CURRENT_SIX_CELL_EXECUTION_MANIFEST@1.0.0"
+    },
+    "t3_freeze_schema": "RAWLSING_FIABC_CANDIDATE_NEUTRAL_FREEZE@2.0.0",
+    "t5_preflight_receipt_schema": "RAWLSING_FIABC_T5_LIVE_SUCCESSION_PREFLIGHT@1.0.0",
+    "claim_scope_id": "P2X_LITS_I_WVS7_RAW_SOURCE_LOCAL_WORKLOAD",
+    "sources": [
+      "LITS_I",
+      "WVS7"
+    ],
+    "candidates": [
+      "A",
+      "B",
+      "C"
+    ],
+    "comparison_terminal": "I05_LEARNED_EMPIRICAL_PRODUCT__WITH_EXACT_SEMANTIC_REPLAY_AND_OUTPUT_IDENTITY",
+    "source_sha256": {
+      "LITS_I": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+      "WVS7": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
+    },
+    "required_function_ids": [
+      "F001",
+      "F002",
+      "F003",
+      "F004",
+      "F005",
+      "F006",
+      "F007",
+      "F008",
+      "F009",
+      "F010",
+      "F011",
+      "F012",
+      "F013",
+      "F014",
+      "F015",
+      "F016",
+      "F017",
+      "F018",
+      "F020",
+      "F021",
+      "F022",
+      "F023",
+      "F024",
+      "F031",
+      "F032",
+      "F033",
+      "F034",
+      "F035",
+      "F036"
+    ],
+    "deferred_function_ids": [
+      "F019",
+      "F025",
+      "F026",
+      "F027",
+      "F028",
+      "F029",
+      "F030"
+    ],
+    "exact_frozen_candidate_owner_blobs": {
+      "A": "d4915e7e6755ba1850756aebff72f982f73a332b",
+      "B": "7c509c2098d0030f253344eb3f682471378812a8",
+      "C": "abfdc91a71ef5e18c4a8a6bf62fa65750d8d9889"
+    }
+  },
+  "pending_exact_bindings": {
+    "final_repo_head": {
+      "value": null,
+      "owner": "POST_R1K_POST_WORKER2_FANIN",
+      "validation": "40 lowercase hex; manifest generated_from_ref and generated_from_commit_sha must equal it"
+    },
+    "final_current_court_contract": {
+      "path": null,
+      "sha256": null,
+      "owner": "WORKER_2_FINAL_LIVE_REBIND",
+      "validation": "must validate against final current execution manifest"
+    },
+    "final_live_runtime_identity": {
+      "value": null,
+      "owner": "WORKER_2_FINAL_LIVE_REBIND",
+      "validation": "exact post-R1J live runtime/package identity; no pre-R1J pin"
+    },
+    "final_wvs_oracle": {
+      "path": null,
+      "oracle_identity_sha256": null,
+      "document_sha256": null,
+      "freeze_authority_ref": null,
+      "owner": "WORKER_1_R1K",
+      "validation": "strict R15 PASS then fresh R16; candidate outputs consulted=0"
+    },
+    "final_lits_oracle": {
+      "path": null,
+      "oracle_identity_sha256": null,
+      "document_sha256": null,
+      "freeze_authority_ref": null,
+      "owner": "FINAL_T3_FREEZE_ASSEMBLY",
+      "validation": "candidate-neutral accepted LiTS truth bound to current exact refs; candidate outputs consulted=0"
+    },
+    "final_lits_parentage": {
+      "path": null,
+      "receipt_identity": null,
+      "owner": "WORKER_3_LITS_A_PARENTAGE",
+      "validation": "generic R35 parentage; independently pinned; no derivative self-assertion"
+    },
+    "final_lits_r35_guard": {
+      "path": null,
+      "receipt_identity": null,
+      "owner": "LOCAL_R35_ADMISSION",
+      "validation": "one LiTS expectation + exact A/B/C physical realizations; physical-only PASS"
+    },
+    "final_wvs_r35_guard": {
+      "path": null,
+      "receipt_identity": null,
+      "owner": "LOCAL_R35_ADMISSION",
+      "validation": "persisted WVS expectation + exact A/B/C physical realizations; physical-only PASS"
+    },
+    "final_t3_frozen_upstream_receipt": {
+      "path": null,
+      "sha256": null,
+      "owner": "FINAL_LOCAL_CONTROL_ASSEMBLY",
+      "validation": "RAWLSING_FIABC_CANDIDATE_NEUTRAL_FREEZE@2.0.0; exact LiTS+WVS source/oracle entries"
+    },
+    "final_lifecycle_context": {
+      "path": null,
+      "sha256": null,
+      "owner": "FINAL_LOCAL_CONTROL_ASSEMBLY",
+      "validation": "state PROVED; no ambiguous/misclassified failure scope; lifecycle order matches; retry history fresh"
+    },
+    "final_i07_receipt": {
+      "path": null,
+      "receipt_identity": null,
+      "owner": "LIVE_PRE-CANDIDATE_PREFLIGHT",
+      "validation": "T5 wrapper PASS; binds exact final HEAD + manifest + lifecycle + court contract"
+    }
+  },
+  "manifest_assembly_law": {
+    "top_level_required": [
+      "manifest_schema",
+      "manifest_identity",
+      "court_scope",
+      "comparison_terminal",
+      "upstream_freeze",
+      "function_chains",
+      "abc_invariants",
+      "source_candidate_capabilities",
+      "parity_oracle",
+      "accounting_contract",
+      "preflight_evaluation"
+    ],
+    "manifest_identity": {
+      "generated_from_ref": "MUST_EQUAL_FINAL_REPO_HEAD",
+      "generated_from_commit_sha": "MUST_EQUAL_FINAL_REPO_HEAD",
+      "manifest_content_sha256": "COMPUTE_ONLY_WITH_ACCEPTED seal_manifest AFTER ALL FUTURE PINS FILLED",
+      "frozen_before_candidate_execution": true
+    },
+    "evidence_refs": "Every ref must be an immutable full commit SHA; no branch, HEAD, short SHA, or latest/default token. Optional declared blob/content hashes must match.",
+    "source_candidate_capabilities": "Exactly six, all PROVED/LIVE with exact production_realization_ref; synthetic fixtures forbidden.",
+    "parity_oracle": "PROVED; frozen before candidate output; candidate output cannot construct expected truth; exact oracle contract/material/frontier/negative-state refs required.",
+    "accounting": "PROVED; semantic owner != cost owner; candidate-local non-overwritten metric definitions; I06A/I06B/I06C current receipts required.",
+    "lifecycle_context_shape": {
+      "state": "PROVED",
+      "failure_scope_ambiguous": false,
+      "failure_scope_misclassified": false,
+      "lifecycle_order_matches": true,
+      "terminal_history_fresh_for_retry": true,
+      "evidence_refs": "NONEMPTY_EXACT_IMMUTABLE_REFS"
+    },
+    "seal_order": [
+      "fill all exact future bindings",
+      "resolve every evidence ref at immutable commits",
+      "assemble all F001-F036 chain nodes according to governing profile",
+      "assemble six production capability nodes",
+      "assemble parity oracle and accounting nodes",
+      "seal manifest with accepted seal_manifest",
+      "evaluate with GitEvidenceResolver + lifecycle context",
+      "require P00-P10 PASS",
+      "run T5 run_live_succession_preflight and bind exact final HEAD",
+      "only then allow --run/--resume"
+    ]
+  },
+  "t3_frozen_upstream_assembly": {
+    "schema": "RAWLSING_FIABC_CANDIDATE_NEUTRAL_FREEZE@2.0.0",
+    "candidate_neutral": true,
+    "frozen_before_candidate_execution": true,
+    "candidate_outputs_seen": 0,
+    "candidate_owned_roots_consulted": [],
+    "candidate_owned_state_reused": false,
+    "state": "FROZEN_READ_ONLY",
+    "source_freezes": {
+      "LITS_I": {
+        "source_id": "LITS_I",
+        "canonical_source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+        "source_identity_authority_ref": "FILL_EXACT_FINAL_REF",
+        "derivative_identity": "FILL_ONLY_IF_ADMITTED_DERIVATIVE",
+        "derivative_to_source_provenance_ref": "MUST_BE_PAIRED_WITH_DERIVATIVE_IDENTITY"
+      },
+      "WVS7": {
+        "source_id": "WVS7",
+        "canonical_source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+        "source_identity_authority_ref": "FILL_EXACT_FINAL_REF",
+        "derivative_identity": "FILL_ONLY_IF_ADMITTED_DERIVATIVE",
+        "derivative_to_source_provenance_ref": "MUST_BE_PAIRED_WITH_DERIVATIVE_IDENTITY"
+      }
+    },
+    "authority_identities": "FILL_EXACT_FINAL_MAPPING_BY_SOURCE",
+    "workload_identities": "FILL_EXACT_FINAL_MAPPING_BY_SOURCE",
+    "oracle_identities": {
+      "LITS_I": "FILL_FINAL_LITS_ORACLE_IDENTITY_AND_FREEZE_AUTHORITY_REF",
+      "WVS7": "FILL_R1K_WVS_ORACLE_IDENTITY_AND_FREEZE_AUTHORITY_REF"
+    },
+    "freeze_order": {
+      "source_identity_freeze_sequence": "INTEGER_A",
+      "authority_workload_freeze_sequence": "INTEGER_B_GREATER_THAN_A",
+      "oracle_materialize_freeze_sequence": "INTEGER_C_GREATER_THAN_B"
+    }
+  },
+  "prohibited": [
+    "NO_DUMMY_SHA",
+    "NO_GUESSED_R1K_ORACLE_IDENTITY",
+    "NO_PRE_R1J_LIVE_RUNTIME_PIN",
+    "NO_BRANCH_REF_AS_I07_EVIDENCE",
+    "NO_CANDIDATE_OUTPUT_AS_ORACLE",
+    "NO_I07_PASS_FROM_REPOSITORY_PRESENCE_ALONE"
+  ]
+}
