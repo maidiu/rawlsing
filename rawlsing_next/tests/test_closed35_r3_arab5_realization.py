@@ -186,3 +186,10 @@ def test_arab5_edge_scope_and_r35_hooks_are_frozen():
         R35_HOOK_BINDING["i03_source_scope"]["applicable_edge_classes"]
     ) == APPLICABLE_EDGE_CLASSES
     assert R35_HOOK_BINDING["i03_source_scope"]["semantic_authority"] is False
+
+
+def test_cross_wave_semantic_imports_are_explicitly_forbidden():
+    payload = source_specific_realization_payload()
+    assert payload["cross_wave"]["semantic_imports_allowed"] is False
+    assert payload["cross_wave"]["wave2_semantics_inherited"] is False
+    assert payload["cross_wave"]["wave8_semantics_inherited"] is False
