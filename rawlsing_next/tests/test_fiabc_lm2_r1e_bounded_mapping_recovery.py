@@ -18,6 +18,7 @@ from rawlsing_next.fiabc_lm2_r1e_wvs7_mapping_authority import (
     TARGET_USE,
     mapping_authority_snapshot,
 )
+from rawlsing_next.pre553_c11_integrity import C11IntegrityError
 from rawlsing_next.pre553_empirical_authority import (
     Pre553AuthorityError,
     require_positive_authority,
@@ -84,7 +85,7 @@ def test_r02_and_r18_source_semantics_alone_cannot_authorize_canonical_response(
     )
     bad = replace(p, response_slots=(replace(slot, values=values), *p.response_slots[1:]))
     stream = ExactPhysicalCellStream(fx["source_sha"], 3, lambda: iter(fx["cells"]))
-    with pytest.raises((SourceBackedC11FacadeError, Exception), match="authority|mapping"):
+    with pytest.raises((SourceBackedC11FacadeError, C11IntegrityError, Pre553AuthorityError), match="authority|mapping"):
         build_validated_source_backed_c11_release_from_stream(stream, bad)
 
 def test_r03_exact_derived_mapping_authority_is_accepted_by_source_free_r6s_binding():
