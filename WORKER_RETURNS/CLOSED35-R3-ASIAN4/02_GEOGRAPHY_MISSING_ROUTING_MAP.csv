@@ -1,0 +1,12 @@
+projection_id,projection_kind,source_identity_or_variables,governed_physical_or_topological_state,semantic_authority_state,forbidden_inference
+REPLAY_IDENTITY,ROW_REPLAY,"SOURCE_SHA256 + zero_based_row_ordinal","canonical hard replay key","CLOSED","native idnumber or country+idnumber as replay/cross-wave identity"
+ORDINARY_MINUS1,ORDINARY_STORAGE_SENTINEL,"variable-local raw -1","OBSERVED_STORAGE_VALUE; distinct from SYSTEM_MISSING and USER_MISSING","BOUNDED_UNKNOWN__VARIABLE_LOCAL_SEMANTICS","-1 == physical missing; one global semantic meaning; routing from -1 incidence"
+GEOGRAPHY_MERGED,SOURCE_LOCAL_COORDINATE,country,"raw merged SAV coordinate carrier preserved","SOURCE_LOCAL_PHYSICAL_AUTHORITY","instrument SE1 labels overwrite merged-data codes"
+GEOGRAPHY_INSTRUMENT,DOCUMENTARY_COORDINATE,SE1,"core-questionnaire country-code evidence retained as separate layer","SOURCE_NATIVE_DOCUMENTARY_AUTHORITY","SE1 code order treated as merged SAV code order"
+GEOGRAPHY_RECONCILIATION,COORDINATE_RELATION,"country <-> SE1","both evidence layers survive independently","BOUNDED_UNKNOWN__MERGED_TO_INSTRUMENT_MAPPING","silent harmonization; cross-wave geography mapping"
+RANKED_Q20_22,ORDERED_REPEATED_SLOT,"q20;q21;q22","ordered three-slot topology preserved","BOUNDED_UNKNOWN__ITEM_ROLE_REFINEMENT_WHERE_NOT_DOCUMENTED","slot flattening; reordering; deduplication"
+RANKED_Q99,ORDERED_REPEATED_SLOT,"q99;q99a;q99b","first response; optional second; optional third","SOURCE_NATIVE_COREQ_ROLE_AUTHORITY_AT_RANKED_GRAIN","slot flattening; reordering; normalization from another wave"
+ROUTE_Q172,ROUTING_MODULE,q172,"documented module scope = ASEAN_COUNTRIES_ONLY","BOUNDED_UNKNOWN__EXACT_MERGED_SOURCE_RISK_SET_AND_MINUS1_MEANING","all-country applicability; row routing from missingness or country-code guess"
+WEIGHT_W,WEIGHT_DESIGN_CARRIER,w,"distinct raw carrier preserved; no default selection","BOUNDED_UNKNOWN__ESTIMAND_NORMALIZATION_SCOPE_VARIANCE","automatic default use; alias to w_cross"
+WEIGHT_W_CROSS,WEIGHT_DESIGN_CARRIER,w_cross,"distinct raw carrier preserved; no default selection","BOUNDED_UNKNOWN__ESTIMAND_NORMALIZATION_SCOPE_VARIANCE","automatic default use; alias to w"
+CANDIDATE_OWNER,SEMANTIC_OWNER,"A;B;C","one immutable source-specific realization identity","PRE553_SOURCE_BACKED_C11_FACADE@1.0.0","candidate-specific source semantics"
