@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import ast
 import copy
 import json
 from pathlib import Path
@@ -118,3 +119,7 @@ def test_current_manifest_forbids_duplicate_prebuild_and_historical_numeric_cred
     assert "NO_DUPLICATE_LITS_A_S01_PREBUILD_OR_R35_REBUILD" in prohibitions
     assert "NO_HISTORICAL_LITS_A_S01_NUMERIC_CREDIT_WHEN_ROOT_ABSENT" in prohibitions
     assert "NO_REPEAT_COMPLETED_LITS_A_FIRST_BUILD" not in prohibitions
+
+
+def test_repaired_live_backend_is_python_syntax_valid():
+    ast.parse(BACKEND.read_text(encoding="utf-8"))
