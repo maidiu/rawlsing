@@ -42,7 +42,7 @@ def _load(path: Path):
 
 def _git_blob(path: Path) -> str:
     data = path.read_bytes()
-    return hashlib.sha1(b"blob " + str(len(data)).encode() + b"\\0" + data).hexdigest()
+    return hashlib.sha1(b"blob " + str(len(data)).encode() + b"\x00" + data).hexdigest()
 
 
 def _constants(path: Path):
@@ -102,8 +102,8 @@ def test_r1j_projection_is_conserved_but_does_not_own_successor_lock2():
 def test_exact_46_candidate_stream_is_conserved_by_successor_lock2():
     lock = _load(R1M_LOCK2)
     package = _load(PACKAGE)
-    assert lock["successor_lock2"] == SUCCESSOR_LOCK2
-    assert lock["successor_replay"] == SUCCESSOR_REPLAY
+    assert lock["successor_lock2_hash"] == SUCCESSOR_LOCK2
+    assert lock["successor_replay_hash"] == SUCCESSOR_REPLAY
     assert lock["candidate_count"] == 46
     assert len(lock["candidate_hashes"]) == 46
     assert package["lock2_receipt"]["lock2_hash"] == SUCCESSOR_LOCK2
