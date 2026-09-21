@@ -171,6 +171,84 @@ def _load_accepted_r1m(path: Path) -> Mapping[str, Any]:
     return doc
 
 
+def _ref_key(ref: Mapping[str, Any]) -> tuple[str, str, str]:
+    if not isinstance(ref, Mapping):
+        raise FinalOracleProducerError("exact ref must be a mapping")
+    key = (ref.get("kind"), ref.get("object_id"), ref.get("content_hash"))
+    if any(not isinstance(value, str) or not value for value in key):
+        raise FinalOracleProducerError("exact ref is malformed")
+    return key
+
+
+def _standardize_r1m_candidate_rows(truth: Mapping[str, Any]) -> list[Mapping[str, Any]]:
+    """Map R1M I05 rows into the exact live T5 observation row shape."""
+    raw_rows = truth.get("expected_fact_manifest")
+    frontier = truth.get("frontier_manifest")
+    constituent = truth.get("constituent_i03_fact_manifest")
+    if not isinstance(raw_rows, Sequence) or isinstance(raw_rows, (str, bytes)):
+        raise FinalOracleProducerError("R1M expected fact manifest missing")
+    if not isinstance(frontier, Mapping):
+        raise FinalOracleProducerError("R1M frontier manifest missing")
+    if not isinstance(constituent, Sequence) or isinstance(constituent, (str, bytes)):
+        raise FinalOracleProducerError("R1M constituent I03 fact manifest missing")
+
+    rows = []
+    observed_global = {}
+    for index, raw in enumerate(raw_rows):
+        if not isinstance(raw, Mapping):
+            raise FinalOracleProducerError(f"R1M candidate row {index} malformed")
+        identity = raw.get("candidate_identity")
+        support = raw.get("support_uncertainty_state")
+        refs = raw.get("empirical_fact_refs")
+        if not isinstance(identity, Mapping) or not isinstance(support, Mapping):
+            raise FinalOracleProducerError("R1M candidate identity/support state missing")
+        if not isinstance(refs, Sequence) or isinstance(refs, (str, bytes)):
+            raise FinalOracleProducerError("R1M candidate empirical fact refs missing")
+        states = support.get("fact_states")
+        if not isinstance(states, Sequence) or isinstance(states, (str, bytes)):
+            raise FinalOracleProducerError("R1M candidate fact states missing")
+        if len(refs) != len(states):
+            raise FinalOracleProducerError("R1M fact refs/states cardinality mismatch")
+        facts = []
+        for ref, state in zip(refs, states):
+            if not isinstance(state, str) or not state:
+                raise FinalOracleProducerError("R1M constituent I03 typed state missing")
+            key = _ref_key(ref)
+            item = {"ref": canonicalize(ref), "typed_state": state}
+            prior = observed_global.get(key)
+            if prior is not None and canonicalize(prior) != canonicalize(item):
+                raise FinalOracleProducerError("R1M constituent I03 fact state contradiction")
+            observed_global[key] = item
+            facts.append((key, item))
+        facts = [item for _key, item in sorted(facts, key=lambda pair: pair[0])]
+        candidate_hash = identity.get("candidate_hash")
+        if not isinstance(candidate_hash, str) or len(candidate_hash) != 64:
+            raise FinalOracleProducerError("R1M candidate hash missing")
+        if not isinstance(raw.get("typed_state"), str):
+            raise FinalOracleProducerError("R1M candidate typed state missing")
+        replay_ref = raw.get("replay_ref")
+        _ref_key(replay_ref)
+        rows.append({
+            "candidate_hash": candidate_hash,
+            "typed_state": raw["typed_state"],
+            "semantic_fields": {
+                "candidate_identity": canonicalize(identity),
+                "constituent_fact_manifest": facts,
+                "coverage_state": raw.get("coverage_state"),
+                "support_uncertainty_state": canonicalize(support),
+                "replay_ref": canonicalize(replay_ref),
+            },
+        })
+
+    frontier_hashes = frontier.get("ordered_candidate_hashes")
+    if [row["candidate_hash"] for row in rows] != list(frontier_hashes or ()):
+        raise FinalOracleProducerError("R1M candidate rows do not align with exact frontier order")
+    expected_global = {_ref_key(ref) for ref in constituent}
+    if set(observed_global) != expected_global:
+        raise FinalOracleProducerError("R1M candidate rows do not close over constituent I03 facts")
+    return canonicalize(rows)
+
+
 def _assert_live_successor_oracle_law() -> None:
     expected = {
         "WVS7_DISCOVERY_AUTHORITY": SUCCESSOR_DISCOVERY_AUTHORITY,
@@ -217,7 +295,7 @@ def standardize_wvs_r1m_oracle(
         "semantic_authority_closure": canonicalize(truth["semantic_authority_closure"]),
         "projection_and_release_refs": canonicalize(truth["projection_and_release_refs"]),
         "frontier_manifest": canonicalize(truth["frontier_manifest"]),
-        "expected_fact_manifest": canonicalize(truth["expected_fact_manifest"]),
+        "expected_fact_manifest": _standardize_r1m_candidate_rows(truth),
         "expected_learned_product": canonicalize(truth["expected_learned_product"]),
         "replay_manifest": canonicalize(truth["replay_manifest"]),
         "exact_ref_manifest": canonicalize(truth["exact_ref_manifest"]),
@@ -301,6 +379,12 @@ def _neutral_lits_material(
     services = types.SimpleNamespace(repo_root=repo_root)
     projection, _pctx, _banked = backend._lits_projection(ctx, services, {}, incidence)
     runtime = backend._lits_runtime(ctx, services, projection)
+    if (
+        backend.R6O_RUNTIME_CATALOG != LITS_RUNTIME_CATALOG
+        or backend.R6O_ACTIVE_BINDING != LITS_ACTIVE_BINDING
+        or backend.R6O_RUNTIME_RELEASE != LITS_RUNTIME_RELEASE
+    ):
+        raise FinalOracleProducerError("LiTS accepted runtime identity constants drift")
 
     repository, release = build_source_backed_c11_repository(incidence, projection)
     catalog = RuntimeObjectCatalog.from_documents(
