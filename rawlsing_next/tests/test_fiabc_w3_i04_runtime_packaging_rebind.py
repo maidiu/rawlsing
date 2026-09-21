@@ -16,7 +16,7 @@ NODE4A = ROOT / "WORKER_RETURNS/EE-P2R6O/SUPPORT/01_NODE4A_PREDICATE_INPUTS.py"
 EXPECTED_ASSET_BLOBS = {
     "01_LITS_CURRENT_RUNTIME_MATERIALIZER.py": "9406bacfd928393f6a159a46216aa1f7ec129f34",
     "02_WVS7_P2F2_RUNTIME_PACKAGE.json": "e04e84b76f8b4eb53905276dd025938bf2e5f6fe",
-    "05_WVS7_PROJECTION_MATERIALIZER.py": "11b28416aac5a4899706150721f2f8ac8bb6ee43",
+    "05_WVS7_PROJECTION_MATERIALIZER.py": "ec685803a7416032037ee415e8faf7bf60db8f1b",
 }
 NODE4A_BLOB = "504944f9533b7385d201076e2e834b8a9446dee8"
 OWNER_COMMIT = "0b96b8de9aac774566f872cf0630ebd4ddeb70e6"
@@ -97,7 +97,7 @@ class RuntimePackagingRebindTests(unittest.TestCase):
         self.assertEqual(const.get("R6O_ACTIVE_BINDING"), "a5f36a81843fe2ebab0b5cccb369ce76035f842b93e602613b8b9f3a81103308")
         self.assertEqual(const.get("R6O_RUNTIME_RELEASE"), "192926fabd9c9c3d40e43b1d7705ca2bcfe7f8d06e286be26d4b886d436df43f")
         self.assertEqual(const.get("WVS_LOCK2"), "8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188")
-        self.assertEqual(const.get("R6S_WVS_PROJECTION"), "838070ff6b85d60d4f26f9153b0507ba425936c11a3de94a18d57bfcd083f24d")
+        self.assertEqual(const.get("R6S_WVS_PROJECTION"), "f400c804fea9b526f25eac823138ecb30e10efaad3207c4578661f684adee665")
         package = json.loads((RUNTIME / "02_WVS7_P2F2_RUNTIME_PACKAGE.json").read_text(encoding="utf-8"))
         self.assertEqual(package.get("lock2"), const.get("WVS_LOCK2"))
         self.assertEqual(
