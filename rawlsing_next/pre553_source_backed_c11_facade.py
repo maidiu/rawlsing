@@ -8,6 +8,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, replace
 from fractions import Fraction
+import hashlib
 import math
 from typing import Any, Callable, Iterable, Mapping
 
@@ -34,6 +35,11 @@ from rawlsing_next.pre553_physical_c11_bridge import (
 from rawlsing_next.pre553_physical_decoder import (
     PhysicalCell, PhysicalMissingState, PhysicalSourceIncidence,
 )
+from rawlsing_next.pre553_r5_codec import (
+    CODEC_VERSION as R5_CODEC_VERSION,
+    R5TypedValueCodec,
+    canonical_bytes as r5_canonical_bytes,
+)
 
 CONTRACT_ID = "PRE553_SOURCE_BACKED_C11_FACADE@1.0.0"
 SLOT_OWNER_SET_CONTRACT_ID = "PRE553_C11_PHYSICAL_SLOT_OWNER_SET@1.0.0"
@@ -41,6 +47,11 @@ RESPONSE_OWNER_FAMILY = "RespondentEvent@1.0.0"
 COORDINATE_OWNER_FAMILY = "EmpiricalCoordinateFact@1.0.0"
 WEIGHT_OWNER_FAMILY = "WeightMeasureFact@1.0.0"
 _SUPPORTED_OWNER_FAMILIES = frozenset((RESPONSE_OWNER_FAMILY, COORDINATE_OWNER_FAMILY, WEIGHT_OWNER_FAMILY))
+
+PHYSICAL_VALUE_MATERIAL_SCHEMA = "PRE553_EXACT_PHYSICAL_VALUE_MATERIAL@1.0.0"
+PHYSICAL_BINDING_SCHEMA = "PRE553_PHYSICAL_VALUE_BINDING@2.0.0"
+RAW_WITNESS_SCHEMA = "PRE553_RAW_PHYSICAL_VALUE_WITNESS@1.0.0"
+_PHYSICAL_CODEC = R5TypedValueCodec()
 
 
 class SourceBackedC11FacadeError(ValueError):
@@ -70,13 +81,33 @@ def _opt_ref(value: Any, name: str) -> ExactRef | None:
     return None if value is None or isinstance(value, TypedAbsence) else exact_ref(value, name)
 
 
+def exact_physical_value_material(value: Any) -> dict[str, Any]:
+    """Return exact candidate-neutral physical material, never semantic material."""
+    return {
+        "schema": PHYSICAL_VALUE_MATERIAL_SCHEMA,
+        "codec": R5_CODEC_VERSION,
+        "token": _PHYSICAL_CODEC.encode(value),
+    }
+
+
+def raw_physical_value_witness(value: Any) -> dict[str, Any]:
+    """Carry an observed physical value as an opaque C11 witness."""
+    return {"$raw_physical_value": exact_physical_value_material(value)}
+
+
 def physical_value_binding_key(raw_value: Any, missing_state: PhysicalMissingState | str,
                                declaration: Mapping[str, Any] | None = None) -> str:
     state = missing_state.value if isinstance(missing_state, PhysicalMissingState) else missing_state
     if state not in {x.value for x in PhysicalMissingState}:
         raise SourceBackedC11FacadeError("unknown physical missing state")
-    return semantic_hash({"raw": canonicalize(raw_value), "physical_state": state,
-                          "declaration": canonicalize(declaration)})
+    material = {
+        "schema": PHYSICAL_BINDING_SCHEMA,
+        "codec": R5_CODEC_VERSION,
+        "raw_value": _PHYSICAL_CODEC.encode(raw_value),
+        "physical_state": state,
+        "source_missing_declaration": _PHYSICAL_CODEC.encode(declaration),
+    }
+    return hashlib.sha256(r5_canonical_bytes(material)).hexdigest()
 
 
 def _cell_key(cell: PhysicalCell) -> str:
@@ -373,7 +404,7 @@ def _event(source_sha, row, respondent, slot, cell, value, occ, p, owner_authori
         component_or_subitem_ref=component,
         event_group_id=f"urn:rawlsing:pre553:c05r2a:event-group:sha256:{group}",
         response_event_id_or_deterministic_index=f"urn:rawlsing:pre553:c05r2a:event:sha256:{eid}",
-        raw_response_value=canonicalize(cell.raw_value), canonical_response_value_if_authorized=canonicalize(value.canonical_value),
+        raw_response_value=raw_physical_value_witness(cell.raw_value), canonical_response_value_if_authorized=canonicalize(value.canonical_value),
         value_transform_authority_ref=value.transform_authority_ref, response_topology_ref=occ.topology_ref,
         multiplicity_order_rank_fields=canonicalize(occ.multiplicity_order_rank_fields), response_state=value.response_state)
 
@@ -402,7 +433,7 @@ def _coordinate(source_sha, row, respondent, slot, cell, rule, p, owner_authorit
         producer_replay_locator_or_reference_root=_dref("PRE553_C05R2A_COORDINATE_REPLAY_ROOT", "coordinate", material),
         empirical_universe_ref=respondent.empirical_universe_ref, scoped_respondent_ref=respondent.ref,
         native_coordinate_ref=slot.native_coordinate_ref, canonical_coordinate_ref_if_authorized=slot.canonical_coordinate_ref,
-        raw_coordinate_value=canonicalize(cell.raw_value), canonical_coordinate_value_if_authorized=canonicalize(canonical),
+        raw_coordinate_value=raw_physical_value_witness(cell.raw_value), canonical_coordinate_value_if_authorized=canonicalize(canonical),
         unit_category_taxonomy_ref=slot.unit_taxonomy_ref, effective_or_reference_time=canonicalize(slot.effective_time),
         coordinate_state=state, normalization_crosswalk_authority_ref=slot.normalization_ref,
         source_semantic_authority_ref=slot.source_semantic_authority_ref)
@@ -631,7 +662,8 @@ def execute_source_backed_empirical_query(*, source, projection, query: Empirica
 
 __all__ = [
     "CONTRACT_ID", "SLOT_OWNER_SET_CONTRACT_ID", "RESPONSE_OWNER_FAMILY", "COORDINATE_OWNER_FAMILY", "WEIGHT_OWNER_FAMILY",
-    "SourceBackedC11FacadeError", "PhysicalSlot", "PhysicalSlotOwnerAuthorization", "PhysicalSlotOwnerSet",
+    "SourceBackedC11FacadeError", "PHYSICAL_VALUE_MATERIAL_SCHEMA", "PHYSICAL_BINDING_SCHEMA", "RAW_WITNESS_SCHEMA",
+    "exact_physical_value_material", "raw_physical_value_witness", "PhysicalSlot", "PhysicalSlotOwnerAuthorization", "PhysicalSlotOwnerSet",
     "RowRespondentBinding", "OccurrenceRule", "ResponseValueRule", "ResponseSlotRule", "CoordinateValueRule",
     "CoordinateSlotRule", "WeightValueRule", "WeightSlotRule", "ExactPhysicalCellStream", "GovernedC11Projection",
     "SourceBackedFacadeKey", "SourceBackedC11SessionCache", "physical_value_binding_key",

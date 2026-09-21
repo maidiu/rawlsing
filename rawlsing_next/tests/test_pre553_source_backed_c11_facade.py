@@ -27,6 +27,7 @@ from rawlsing_next.pre553_source_backed_c11_facade import (
     build_validated_source_backed_c11_release,
     build_validated_source_backed_c11_release_from_stream,
     physical_value_binding_key, project_c11_candidate_from_physical_cells,
+    raw_physical_value_witness,
 )
 from rawlsing_next.tests.test_pre553_empirical_query import (
     _auth, _branch_predicate, _build_source, _cell_map, _h, _predicate, _query,
@@ -37,6 +38,8 @@ from rawlsing_next.tests.test_pre553_empirical_query import (
 def _fixture(tag="facade"):
     source_auth = _auth(f"source-{tag}", "SOURCE_SEMANTICS_TOPOLOGY",
                         families=("EmpiricalUniverse@1.0.0", "RespondentEvent@1.0.0"))
+    mapping_auth = _auth(f"mapping-{tag}", "NATIVE_CANONICAL_MAPPING_HARMONIZATION",
+                         families=("RespondentEvent@1.0.0",))
     coord_auth = _auth(f"coord-{tag}", "COORDINATE_SEMANTICS",
                        families=("EmpiricalCoordinateFact@1.0.0",))
     routing_auth = _auth(f"routing-{tag}", "ROUTING_RISK_SET",
@@ -49,7 +52,7 @@ def _fixture(tag="facade"):
         f"projection-{tag}", "SOURCE_SEMANTICS_TOPOLOGY",
         families=("RespondentEvent@1.0.0", "EmpiricalCoordinateFact@1.0.0", "WeightMeasureFact@1.0.0"),
     )
-    authorities = (source_auth, coord_auth, routing_auth, weight_auth, replay_auth, projection_auth)
+    authorities = (source_auth, mapping_auth, coord_auth, routing_auth, weight_auth, replay_auth, projection_auth)
     universe = EmpiricalUniverse(
         typed_state="UNIVERSE_IDENTIFIED", authority_snapshot_refs=(source_auth.authority_ref,), dependency_refs=(),
         producer_replay_locator_or_reference_root=_ref("REPLAY_ROOT", f"universe-{tag}"), raw_source_identity=f"RAW-{tag}",
@@ -106,36 +109,36 @@ def _fixture(tag="facade"):
     pkey = lambda raw, state=PhysicalMissingState.OBSERVED_STORAGE_VALUE: physical_value_binding_key(raw, state)
     scalar = lambda q: OccurrenceRule("0", _ref("TOPOLOGY", f"c05r2a-{q}-SCALAR"), {"kind":"SCALAR_SINGULAR","index":0})
     response_slots = (
-        ResponseSlotRule(PhysicalSlot(1,"X"), qbind["X"], (
-            ResponseValueRule(pkey("1"), "SUBSTANTIVE_RESPONSE", (scalar("X"),)),
-            ResponseValueRule(pkey("0"), "SUBSTANTIVE_RESPONSE", (scalar("X"),)),
+    ResponseSlotRule(PhysicalSlot(1,"X"), qbind["X"], (
+            ResponseValueRule(pkey("1"), "SUBSTANTIVE_RESPONSE", (scalar("X"),), "1", mapping_auth.authority_ref),
+            ResponseValueRule(pkey("0"), "SUBSTANTIVE_RESPONSE", (scalar("X"),), "0", mapping_auth.authority_ref),
             ResponseValueRule(pkey(None, PhysicalMissingState.SYSTEM_MISSING), "MISSING", (scalar("X"),)),
         )),
         ResponseSlotRule(PhysicalSlot(2,"Y"), qbind["Y"], (
-            ResponseValueRule(pkey("1"), "SUBSTANTIVE_RESPONSE", (scalar("Y"),)),
-            ResponseValueRule(pkey("0"), "SUBSTANTIVE_RESPONSE", (scalar("Y"),)),
+            ResponseValueRule(pkey("1"), "SUBSTANTIVE_RESPONSE", (scalar("Y"),), "1", mapping_auth.authority_ref),
+            ResponseValueRule(pkey("0"), "SUBSTANTIVE_RESPONSE", (scalar("Y"),), "0", mapping_auth.authority_ref),
         )),
         ResponseSlotRule(PhysicalSlot(3,"M"), qbind["M"], (
             ResponseValueRule(pkey("AB"), "SUBSTANTIVE_RESPONSE", (
                 OccurrenceRule("0", _ref("TOPOLOGY","c05r2a-M-MULTI"), {"kind":"MULTISELECT","index":0}),
                 OccurrenceRule("1", _ref("TOPOLOGY","c05r2a-M-MULTI"), {"kind":"MULTISELECT","index":1}),
-            )),
+            ), "AB", mapping_auth.authority_ref),
             ResponseValueRule(pkey("A"), "SUBSTANTIVE_RESPONSE", (
                 OccurrenceRule("0", _ref("TOPOLOGY","c05r2a-M-MULTI"), {"kind":"MULTISELECT","index":0}),
-            )),
-            ResponseValueRule(pkey(""), "SUBSTANTIVE_RESPONSE", ()),
+            ), "A", mapping_auth.authority_ref),
+            ResponseValueRule(pkey(""), "SUBSTANTIVE_RESPONSE", (), "", mapping_auth.authority_ref),
         )),
         ResponseSlotRule(PhysicalSlot(4,"O"), qbind["O"], tuple(
             ResponseValueRule(pkey(value), "SUBSTANTIVE_RESPONSE", (
                 OccurrenceRule("0", _ref("TOPOLOGY","c05r2a-O-ORDERED"), {"kind":"ORDERED_SEQUENCE","semantic_ordinal":0}),
                 OccurrenceRule("1", _ref("TOPOLOGY","c05r2a-O-ORDERED"), {"kind":"ORDERED_SEQUENCE","semantic_ordinal":1}),
-            )) for value in ("AB","BA")
+            ), value, mapping_auth.authority_ref) for value in ("AB","BA")
         )),
         ResponseSlotRule(PhysicalSlot(5,"R"), qbind["R"], tuple(
             ResponseValueRule(pkey(value), "SUBSTANTIVE_RESPONSE", (
                 OccurrenceRule("0", _ref("TOPOLOGY","c05r2a-R-REPEATED"), {"kind":"REPEATED_EVENT","multiplicity_index":0}),
                 OccurrenceRule("1", _ref("TOPOLOGY","c05r2a-R-REPEATED"), {"kind":"REPEATED_EVENT","multiplicity_index":1}),
-            )) for value in ("XY","XZ")
+            ), value, mapping_auth.authority_ref) for value in ("XY","XZ")
         )),
     )
     projection = GovernedC11Projection(
@@ -190,7 +193,7 @@ def _logical_oracle_release(fx):
                     empirical_universe_ref=respondent.empirical_universe_ref,scoped_respondent_ref=respondent.ref,native_question_ref=q.native_question_ref,
                     canonical_question_ref_if_authorized=None,component_or_subitem_ref=occ.component_ref,
                     event_group_id=f"urn:rawlsing:pre553:c05r2a:event-group:sha256:{group}",
-                    response_event_id_or_deterministic_index=f"urn:rawlsing:pre553:c05r2a:event:sha256:{eid}",raw_response_value=canonicalize(cell.raw_value),
+                    response_event_id_or_deterministic_index=f"urn:rawlsing:pre553:c05r2a:event:sha256:{eid}",raw_response_value=raw_physical_value_witness(cell.raw_value),
                     canonical_response_value_if_authorized=canonicalize(value.canonical_value),value_transform_authority_ref=value.transform_authority_ref,
                     response_topology_ref=occ.topology_ref,multiplicity_order_rank_fields=canonicalize(occ.multiplicity_order_rank_fields),response_state=value.response_state))
     coords=[]
@@ -204,7 +207,7 @@ def _logical_oracle_release(fx):
             typed_state="OBSERVED_COORDINATE",authority_snapshot_refs=auths((p.projection_authority_ref,slot.source_semantic_authority_ref)),dependency_refs=(respondent.ref,),
             producer_replay_locator_or_reference_root=dref("PRE553_C05R2A_COORDINATE_REPLAY_ROOT","coordinate",material),
             empirical_universe_ref=respondent.empirical_universe_ref,scoped_respondent_ref=respondent.ref,native_coordinate_ref=slot.native_coordinate_ref,
-            canonical_coordinate_ref_if_authorized=None,raw_coordinate_value=canonicalize(cell.raw_value),canonical_coordinate_value_if_authorized=None,
+            canonical_coordinate_ref_if_authorized=None,raw_coordinate_value=raw_physical_value_witness(cell.raw_value),canonical_coordinate_value_if_authorized=None,
             unit_category_taxonomy_ref=slot.unit_taxonomy_ref,effective_or_reference_time=slot.effective_time,coordinate_state="OBSERVED_COORDINATE",
             normalization_crosswalk_authority_ref=None,source_semantic_authority_ref=slot.source_semantic_authority_ref))
     weights=[]; slot=p.weight_slots[0]

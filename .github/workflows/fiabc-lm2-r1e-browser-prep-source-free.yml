@@ -1,0 +1,48 @@
+name: FIABC LM2 R1E Source-Free Recovery Court
+on:
+  push:
+    branches:
+      - agent/rabochii-premain-fiabc-lm2-r1e-bounded-mapping-c11-oracle-recovery-r1
+  pull_request:
+    branches:
+      - agent/vozhd-premain-fiabc-lm2-r1d-hq-fanin-r1
+  workflow_dispatch:
+
+jobs:
+  source-free-court:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install source-free test dependency
+        run: python -m pip install --disable-pip-version-check pytest pandas
+      - name: Run R1E source-free recovery court
+        env:
+          PYTHONPATH: .
+        run: |
+          python -m pytest -q \
+            rawlsing_next/tests/test_fiabc_lm2_r1e_bounded_mapping_recovery.py \
+            rawlsing_next/tests/test_fiabc_lm1_r1e_n1_physical_boundary.py \
+            rawlsing_next/tests/test_pre553_source_backed_c11_facade.py \
+            rawlsing_next/tests/test_pre553_independent_parity_oracle.py
+      - name: Emit deterministic prepared identities
+        env:
+          PYTHONPATH: .
+        run: |
+          python - <<'PY'
+          import importlib.util
+          import json
+          from pathlib import Path
+          from rawlsing_next.fiabc_lm2_r1e_wvs7_mapping_authority import authority_parent_and_scope_ledger
+          path = Path("WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py")
+          spec = importlib.util.spec_from_file_location("r6s", path)
+          module = importlib.util.module_from_spec(spec)
+          assert spec and spec.loader
+          spec.loader.exec_module(module)
+          print("FIABC_LM2_R1E_MAPPING_LEDGER="+json.dumps(authority_parent_and_scope_ledger(), sort_keys=True, separators=(",",":")))
+          print("FIABC_LM2_R1E_R6S_IDENTITIES="+json.dumps(module.authority_identity_receipt(), sort_keys=True, separators=(",",":")))
+          PY
