@@ -241,3 +241,29 @@ def test_current_manifest_law_rejects_nonzero_accelerator_cache_escape():
     cell["stages"]["S12_STALE_CACHE_OR_PERSISTENT_STATE"][0] = "READY__RUN_LOCALLY"
     with pytest.raises(p.SuccessionProducerError, match="zero-accelerator"):
         p._assert_current_manifest_law(hostile, t5)
+
+
+def test_checked_out_head_is_derived_from_git_not_a_baked_commit(monkeypatch, tmp_path: Path):
+    seen = []
+
+    def fake_git(repo_root: Path, *args: str, binary: bool = False):
+        del repo_root, binary
+        seen.append(args)
+        assert args == ("rev-parse", "--verify", "HEAD^{commit}")
+        return HEAD
+
+    monkeypatch.setattr(p, "_git", fake_git)
+    assert p.checked_out_head(tmp_path) == HEAD
+    assert seen == [("rev-parse", "--verify", "HEAD^{commit}")]
+
+
+def test_dirty_worktree_blocks_before_production(monkeypatch, tmp_path: Path):
+    monkeypatch.setattr(
+        p,
+        "_git",
+        lambda repo_root, *args, binary=False: " M rawlsing_next/file.py"
+        if args == ("status", "--porcelain")
+        else HEAD,
+    )
+    with pytest.raises(p.SuccessionProducerError, match="clean working tree"):
+        p.require_clean_worktree(tmp_path)
