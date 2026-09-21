@@ -213,6 +213,19 @@ telemetry: dict[str, Any] = {
         "generic_i05_modified": False,
         "candidate_a_b_c_processes_started": 0,
         "candidate_outputs_seen": 0,
+    }, {
+        "run_id": 35637413312,
+        "job_id": 106458116012,
+        "head_sha": "44ad55d86cd73e634c1be9199118e05d3db46524",
+        "requalification": "37 passed in 37.00s",
+        "r16_generic_i05": "PASS",
+        "independent_second_i05_replay": "PASS",
+        "oracle_independence_proof": "PASS",
+        "r01_r18_ledger": "PASS_REACHED_RETURN_EMISSION",
+        "failure": "POST_COURT_COMMAND_TELEMETRY_USED_FLOAT_DURATION_FORBIDDEN_BY_CANONICAL_JSON",
+        "generic_i05_modified": False,
+        "candidate_a_b_c_processes_started": 0,
+        "candidate_outputs_seen": 0,
     }],
     "github_actions_run_id": os.environ.get("GITHUB_RUN_ID"),
     "github_actions_run_attempt": os.environ.get("GITHUB_RUN_ATTEMPT"),
@@ -411,7 +424,7 @@ fanin = canonicalize({
         "R1L_B": b_receipt_ref.as_dict(),
     },
 })
-telemetry["stages"].append({"stage": "GATE_1_R1L_FANIN_ADJUDICATION", "status": "PASS", "seconds": time.perf_counter() - gate_start})
+telemetry["stages"].append({"stage": "GATE_1_R1L_FANIN_ADJUDICATION", "status": "PASS", "milliseconds": int(round((time.perf_counter() - gate_start) * 1000))})
 
 # Gate 2: issue exact minimal successor DiscoveryAuthority.
 gate_start = time.perf_counter()
@@ -448,7 +461,7 @@ successor_authority_artifact = canonicalize({
     "new_semantic_authority_premise": False,
     "repair_class": "INCOMPLETE_SERIALIZATION_OF_ALREADY_FROZEN_AUTHORITY",
 })
-telemetry["stages"].append({"stage": "GATE_2_SUCCESSOR_DISCOVERY_AUTHORITY", "status": "PASS", "seconds": time.perf_counter() - gate_start, "successor_discovery_authority": successor.content_hash})
+telemetry["stages"].append({"stage": "GATE_2_SUCCESSOR_DISCOVERY_AUTHORITY", "status": "PASS", "milliseconds": int(round((time.perf_counter() - gate_start) * 1000)), "successor_discovery_authority": successor.content_hash})
 
 # Gate 3: source-free replay of exact frozen frontier.
 gate_start = time.perf_counter()
@@ -483,7 +496,7 @@ frontier_receipt = canonicalize({
     "outcome_access": False,
     "source_access": False,
 })
-telemetry["stages"].append({"stage": "GATE_3_SOURCE_FREE_FRONTIER_REPLAY", "status": "PASS", "seconds": time.perf_counter() - gate_start, "candidate_count": 46})
+telemetry["stages"].append({"stage": "GATE_3_SOURCE_FREE_FRONTIER_REPLAY", "status": "PASS", "milliseconds": int(round((time.perf_counter() - gate_start) * 1000)), "candidate_count": 46})
 
 # Gate 4: successor replay and Lock2 with explicit supersession.
 gate_start = time.perf_counter()
@@ -545,7 +558,7 @@ successor_lock2_artifact = canonicalize({
     "adoption_identity": adoption_identity,
     "predecessor_preserved": True,
 })
-telemetry["stages"].append({"stage": "GATE_4_SUCCESSOR_LOCK2", "status": "PASS", "seconds": time.perf_counter() - gate_start, "successor_replay": lock2_prep["successor_replay_hash"], "successor_lock2": lock2_prep["successor_lock2_hash"]})
+telemetry["stages"].append({"stage": "GATE_4_SUCCESSOR_LOCK2", "status": "PASS", "milliseconds": int(round((time.perf_counter() - gate_start) * 1000)), "successor_replay": lock2_prep["successor_replay_hash"], "successor_lock2": lock2_prep["successor_lock2_hash"]})
 
 # Gate 5: R16 reentry. The full 486k-object R15 repository was not separately
 # persisted, so rehydrate the exact already-admitted release from the immutable
@@ -625,7 +638,7 @@ r16_receipt = {
     "wvs_zip_reread": False,
     "raw_source_reread": False,
 }
-telemetry["stages"].append({"stage": "GATE_5_R16_REENTRY", "status": "PASS", "seconds": time.perf_counter() - gate_start, "evaluated_frontier": result_1.evaluated_frontier_ref.content_hash, "i05_replay": result_1.replay_ref.content_hash})
+telemetry["stages"].append({"stage": "GATE_5_R16_REENTRY", "status": "PASS", "milliseconds": int(round((time.perf_counter() - gate_start) * 1000)), "evaluated_frontier": result_1.evaluated_frontier_ref.content_hash, "i05_replay": result_1.replay_ref.content_hash})
 
 # Gate 6: candidate-neutral oracle freeze plus independent deterministic replay.
 gate_start = time.perf_counter()
@@ -890,7 +903,7 @@ r16_receipt["deterministic_second_replay"] = {
     "i05_replay_ref": result_2.replay_ref.as_dict(),
     "learned_execution_identity": receipt_2["execution_identity"],
 }
-telemetry["stages"].append({"stage": "GATE_6_FRESH_ORACLE_AND_SECOND_REPLAY", "status": "PASS", "seconds": time.perf_counter() - gate_start, "oracle_identity": oracle_identity, "truth_payload_identity": truth_identity_1})
+telemetry["stages"].append({"stage": "GATE_6_FRESH_ORACLE_AND_SECOND_REPLAY", "status": "PASS", "milliseconds": int(round((time.perf_counter() - gate_start) * 1000)), "oracle_identity": oracle_identity, "truth_payload_identity": truth_identity_1})
 
 # Gate 7: R01-R18 all-green ledger.
 # The predecessor R16 blocker row was parsed and fail-closed in Gate 1, before
@@ -914,9 +927,9 @@ ledger = '"case","final_disposition","evidence"\n' + "".join(
     for case, disposition, evidence in ledger_rows
 )
 require(len(ledger_rows) == 18 and all(row[1].startswith("PASS") for row in ledger_rows), "R01-R18 final ledger is not all green")
-telemetry["stages"].append({"stage": "GATE_7_R01_R18_FINAL", "status": "PASS", "seconds": time.perf_counter() - gate_start, "all_green": True})
+telemetry["stages"].append({"stage": "GATE_7_R01_R18_FINAL", "status": "PASS", "milliseconds": int(round((time.perf_counter() - gate_start) * 1000)), "all_green": True})
 
-telemetry["total_seconds"] = time.perf_counter() - started
+telemetry["total_milliseconds"] = int(round((time.perf_counter() - started) * 1000))
 telemetry["candidate_a_b_c_processes_started"] = 0
 telemetry["candidate_a_b_c_outputs_seen"] = 0
 telemetry["candidate_owned_roots_consulted"] = []
