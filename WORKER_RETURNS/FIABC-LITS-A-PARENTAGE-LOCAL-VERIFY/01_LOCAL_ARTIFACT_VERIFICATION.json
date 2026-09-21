@@ -1,0 +1,61 @@
+{
+  "schema": "FIABC_LITS_A_LOCAL_ARTIFACT_VERIFICATION@1.0.0",
+  "terminal": "FIABC_LITS_A_LOCAL_PARENTAGE_VERIFY__HISTORICAL_ROOT_NOT_PRESENT__NO_REBUILD_PERFORMED",
+  "branch": "agent/rabochii-premain-fiabc-lits-a-parentage-local-verify-r1",
+  "exact_base": "7086d0334c1fe720ecaf0af0829677149f589d3b",
+  "expected": {
+    "physical_root_id": "e8f37557493b816e4562f5f47df110cf49b429e9ead54e5b624d6638ee07aa3d",
+    "logical_stream_digest": "de8f060aa72eff7e45f8355ed683cb8ee4b6aca7ff255167cb41bcf8e5a7e3d6",
+    "canonical_row_count": 34745595,
+    "member_inventory_count": 2121,
+    "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "raw_first_build_receipt_sha256": "89bd0719f0c546bc3e6e0d3ef7678c01c3fb3ab51cf0c82c84f9a343e08d5337"
+  },
+  "local_search": {
+    "classification": "BOUNDED_LOCAL_ARTIFACT_LOCATION_SEARCH",
+    "searched_roots": [
+      "/Users/matthewsmith/Desktop",
+      "/Users/matthewsmith/Documents",
+      "/Users/matthewsmith/Downloads",
+      "/Users/matthewsmith/.Trash",
+      "/Users/matthewsmith/Library/CloudStorage",
+      "/tmp",
+      "/private/tmp",
+      "/Volumes"
+    ],
+    "filename_queries": [
+      "root.json via Spotlight filename query",
+      "member_inventory.jsonl via filesystem name search",
+      "path names containing e8f37557 via filesystem name search"
+    ],
+    "preserved_root_found": false,
+    "member_inventory_found": false,
+    "expected_root_named_path_found": false
+  },
+  "verifier": {
+    "path": "WORKER_RETURNS/FIABC-LITS-A-PARENTAGE-RECOVERY/06_VERIFY_PRESERVED_ARTIFACTS.py",
+    "inspected": true,
+    "executed": false,
+    "not_executed_reason": "REQUIRED_PRESERVED_R5_ROOT_INPUT_NOT_FOUND"
+  },
+  "raw_first_build_receipt": {
+    "inspected": false,
+    "reason": "ROOT_ABSENT_TERMINAL_REQUIRES_STOP"
+  },
+  "claims": {
+    "historical_root_present": false,
+    "historical_root_identity_verified": false,
+    "generic_r35_parentage_proved": false,
+    "currentness_proved": false,
+    "rebuild_performed": false
+  },
+  "prohibitions": {
+    "raw_lits_source_opened": false,
+    "r5_member_payloads_opened": false,
+    "candidate_a_rebuilt": false,
+    "candidate_executed": false,
+    "i03_or_i05_executed": false,
+    "measured_p2x_executed": false,
+    "preserved_r5_root_mutated": false
+  }
+}
