@@ -62,6 +62,11 @@ LITS_A_ADAPTER_BLOB = "d4915e7e6755ba1850756aebff72f982f73a332b"
 LITS_R5_BUILDER_BLOB = "92e364b31eaf27be1bca2081eff65f6ffb779c3d"
 LITS_A_PARENTAGE_PATH_ENV = "RAWLSING_EE_P2X_LITS_A_R5_PARENTAGE_RECEIPT"
 LITS_A_PARENTAGE_ID_ENV = "RAWLSING_EE_P2X_LITS_A_R5_PARENTAGE_RECEIPT_IDENTITY"
+LITS_A_R5_EXPECTED_ROOT = "7d85c5e4c3a91c3f6dc8f7896fe487cda116fc8cf67f0ab263a2654ff938afcd"
+LITS_A_Q301_PHYSICAL_TYPE_AUTHORITY = {
+    "q301_2": {"ordinal": 194, "storage_type": "float"},
+    "q301_7": {"ordinal": 199, "storage_type": "float"},
+}
 _SESSIONS: dict[tuple[str,str], tuple[Any,Any]] = {}
 
 EXPECTED_SOURCE = {"LITS_I": LITS_SHA, "WVS7": WVS_SHA}
@@ -455,16 +460,118 @@ def _lits_projection(ctx, services, state, incidence):
     mod.LEDGER, mod.PACKAGE = ledger, package
     try:
         pkg, rows, slots = mod.read_banked_authority()
+        decoded_incidence = incidence
         if incidence is None:
             incidence=types.SimpleNamespace(
                 variables=tuple(types.SimpleNamespace(ordinal=int(row["slot"]),name=row["var"]) for row in rows)
             )
         projection, pctx = mod.build_projection(incidence, pkg, rows, slots)
+        projection = _reissue_lits_physical_keys(projection, incidence=decoded_incidence)
     finally:
         mod.LEDGER, mod.PACKAGE = old_l, old_p
     if projection.cache_identity != LITS_PROJECTION:
         raise SourceAuthorityStop("accepted LiTS projection identity drift")
     return projection, pctx, mod
+
+
+def _reissue_lits_physical_keys(projection, *, incidence):
+    """Rebind the historical LiTS projection to exact physical value keys.
+
+    The accepted banked projection preserved the governed response states and
+    the source's 1..7 response enumerants, but its physical keys were made from
+    a Decimal compatibility shim.  The exact accepted R5 source-variable
+    witness fixes q301_2 and q301_7 as float storage.  This function changes
+    only the physical-key material; semantic state, authority, topology, and
+    projection identity remain the banked contract.
+    """
+    from rawlsing_next.pre553_physical_decoder import PhysicalMissingState
+    from rawlsing_next.pre553_source_backed_c11_facade import physical_value_binding_key
+
+    if incidence is not None:
+        variables = {(int(v.ordinal), str(v.name)): v.storage_type for v in incidence.variables}
+        for name, authority in LITS_A_Q301_PHYSICAL_TYPE_AUTHORITY.items():
+            if variables.get((authority["ordinal"], name)) != authority["storage_type"]:
+                raise SourceAuthorityStop(
+                    "LiTS q301 physical storage-type authority mismatch",
+                    {"slot": name, "expected": authority, "observed": variables.get((authority["ordinal"], name))},
+                )
+    else:
+        root_text = os.environ.get("RAWLSING_EE_P2X_LITS_A_R5_ROOT")
+        if not root_text:
+            raise SourceAuthorityStop(
+                "LiTS source-free physical-key producer lacks the accepted R5 root authority",
+                {"required_env": "RAWLSING_EE_P2X_LITS_A_R5_ROOT"},
+            )
+        root_path = Path(root_text)
+        try:
+            root = json.loads((root_path / "root.json").read_text(encoding="ascii"))
+        except Exception as exc:
+            raise SourceAuthorityStop(
+                "LiTS source-free physical-key producer cannot read accepted R5 root authority",
+                {"root": str(root_path)},
+            ) from exc
+        if root.get("physical_root_id") != LITS_A_R5_EXPECTED_ROOT:
+            raise SourceAuthorityStop(
+                "LiTS source-free physical-key producer root authority mismatch",
+                {"expected_root": LITS_A_R5_EXPECTED_ROOT, "observed_root": root.get("physical_root_id")},
+            )
+
+    response_slots = []
+    for slot in projection.response_slots:
+        if slot.slot.name not in LITS_A_Q301_PHYSICAL_TYPE_AUTHORITY:
+            response_slots.append(slot)
+            continue
+        if len(slot.values) != 8:
+            raise SourceAuthorityStop("LiTS q301 response rule cardinality drift", {"slot": slot.slot.name})
+        rewritten = []
+        observed_index = 0
+        for rule in slot.values:
+            if rule.response_state == "MISSING":
+                if observed_index != 7:
+                    raise SourceAuthorityStop("LiTS q301 missing rule is not terminal", {"slot": slot.slot.name})
+                raw = None
+                state = PhysicalMissingState.SYSTEM_MISSING
+            else:
+                if observed_index >= 7:
+                    raise SourceAuthorityStop("LiTS q301 observed rule cardinality drift", {"slot": slot.slot.name})
+                raw = float(observed_index + 1)
+                state = PhysicalMissingState.OBSERVED_STORAGE_VALUE
+                observed_index += 1
+            rewritten.append(dataclasses.replace(rule, physical_key=physical_value_binding_key(raw, state)))
+        if observed_index != 7:
+            raise SourceAuthorityStop("LiTS q301 observed rule set is incomplete", {"slot": slot.slot.name})
+        response_slots.append(dataclasses.replace(slot, values=tuple(rewritten)))
+
+    coordinate_slots = []
+    for slot in projection.coordinate_slots:
+        rewritten = []
+        for rule in slot.values:
+            if rule.coordinate_state != "MISSING":
+                raise SourceAuthorityStop(
+                    "LiTS coordinate physical-key producer lacks exact raw-value authority",
+                    {"slot": slot.slot.name, "state": rule.coordinate_state},
+                )
+            rewritten.append(dataclasses.replace(
+                rule,
+                physical_key=physical_value_binding_key(None, PhysicalMissingState.SYSTEM_MISSING),
+            ))
+        coordinate_slots.append(dataclasses.replace(slot, values=tuple(rewritten)))
+
+    weight_slots = []
+    for slot in projection.weight_slots:
+        if slot.values:
+            raise SourceAuthorityStop(
+                "LiTS weight physical-key producer requires an exact governed raw-value authority",
+                {"slot": slot.slot.name, "rule_count": len(slot.values)},
+            )
+        weight_slots.append(slot)
+
+    return dataclasses.replace(
+        projection,
+        response_slots=tuple(response_slots),
+        coordinate_slots=tuple(coordinate_slots),
+        weight_slots=tuple(weight_slots),
+    )
 
 
 
