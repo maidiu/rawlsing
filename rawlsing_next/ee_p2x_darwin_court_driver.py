@@ -46,6 +46,22 @@ EXPECTED_RUNTIME = {
     "implementation": "CPython", "python": "3.11.3", "pyreadstat": "1.3.6",
     "pyarrow": "25.0.1", "system": "Darwin", "machine": "x86_64",
 }
+LITS_A_ABSENT_ROOT_CURRENT_LAW = {
+    "schema": "FIABC_LITS_A_ABSENT_ROOT_CURRENT_LAW@1.0.0",
+    "local_verification_tip": "002e424294221f5edb73366286ffe6c8fb850a30",
+    "local_verification_terminal": "FIABC_LITS_A_LOCAL_PARENTAGE_VERIFY__HISTORICAL_ROOT_NOT_PRESENT__NO_REBUILD_PERFORMED",
+    "historical_root": "e8f37557493b816e4562f5f47df110cf49b429e9ead54e5b624d6638ee07aa3d",
+    "historical_root_current_host_state": "ABSENT",
+    "historical_semantic_build_evidence": "RETAINED_AS_HISTORY",
+    "current_physical_realization": "ABSENT_BEFORE_S01",
+    "preserved_s01_physical_work_credit": "ZERO__NOT_AVAILABLE",
+    "historical_r35_parentage": "NOT_APPLICABLE_TO_CURRENT_EXECUTION_BECAUSE_ROOT_ABSENT",
+    "prebuild_required": False,
+    "current_s01_action": "ONE_GOVERNED_MEASURED_CANDIDATE_A_BUILD_FROM_ABSENT_TARGET",
+    "separate_r35_prebuild_allowed": False,
+    "current_s01_parentage": "MINT_FROM_SAME_BUILD",
+    "current_s01_physical_realization": "SEED_FROM_SAME_BUILD__R35_I03_PASS_NOT_PRECLAIMED",
+}
 R8B_RU_MAXRSS_LAW = "DARWIN_RU_MAXRSS_ALREADY_BYTES"
 LEDGER_SCHEMA = "RAWLSING_EE_P2X_DARWIN_STAGE_LEDGER@1.0.0"
 BACKEND_CONTRACT = "RAWLSING_EE_P2X_DARWIN_STAGE_BACKEND@1.0.0"
@@ -289,9 +305,28 @@ def validate_current_execution_manifest(doc: Mapping[str, Any], ident: MapIdenti
                 raise ContinuationMapError(f"{address}: unknown evidence/stop-law")
             n = f"{source}/{candidate}/{n}" if n in sm else n
             stages[address] = StageSpec(source, candidate, sid, d, e, sa, m, n, prereq, f"{receipt}#{sid}", fail)
+    if doc.get("lits_a_absent_root_current_law") != LITS_A_ABSENT_ROOT_CURRENT_LAW:
+        raise ContinuationMapError("LiTS-A absent-root current-law succession missing or drifted")
     first = doc.get("entry_guard", {}).get("first_unfinished_court_stage")
-    if first != "LITS_I/A/S02_C11_REACHABILITY" or first not in stages:
+    if first != "LITS_I/A/S01_CANDIDATE_PREPARATION_BUILD" or first not in stages:
         raise ContinuationMapError("first unfinished stage drift")
+    lits_a_s01 = stages["LITS_I/A/S01_CANDIDATE_PREPARATION_BUILD"]
+    if (
+        lits_a_s01.disposition != "READY__RUN_LOCALLY"
+        or lits_a_s01.evidence_or_stop_law_ref is not None
+        or lits_a_s01.empirical_source_access_required is not True
+        or lits_a_s01.physical_host_measurement_required is not True
+    ):
+        raise ContinuationMapError("LiTS-A absent-root S01 must be current measured candidate work")
+    prohibitions = set(doc.get("hard_prohibitions", ()))
+    if "NO_REPEAT_COMPLETED_LITS_A_FIRST_BUILD" in prohibitions:
+        raise ContinuationMapError("obsolete preserved-root no-repeat law suppresses required current LiTS-A S01")
+    for required in (
+        "NO_DUPLICATE_LITS_A_S01_PREBUILD_OR_R35_REBUILD",
+        "NO_HISTORICAL_LITS_A_S01_NUMERIC_CREDIT_WHEN_ROOT_ABSENT",
+    ):
+        if required not in prohibitions:
+            raise ContinuationMapError("LiTS-A absent-root nonduplication/accounting law missing")
     for source in EXPECTED_SOURCE_ORDER:
         for sid in ("S01_CANDIDATE_PREPARATION_BUILD", "S02_C11_REACHABILITY"):
             if stages[f"{source}/C/{sid}"].disposition != "READY__RUN_LOCALLY":
