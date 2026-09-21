@@ -1,0 +1,73 @@
+{
+  "schema": "CLOSED35_R3_ARAB5_RETURN@1.0.0",
+  "worker": "CLOSED35-R3-ARAB5",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-closed35-r3-arab5-realization-r1",
+  "exact_base_sha": "da33eb6a8225c14eee9490633a3263388dc5536c",
+  "canonical_source": {
+    "family": "Arab Barometer",
+    "release": "Wave 5",
+    "filename": "Arab Barometer Wave 5.sav",
+    "sha256": "6a5cbad637ce1546833a1d4812ba6d1e8d75f85b5b199b0cf3ec5cf456068dbc",
+    "authority_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+    "physical_mode": "SAV_NATIVE_GOVERNED",
+    "replay_identity": "SOURCE_SHA256+ROW_ORDINAL"
+  },
+  "candidate_neutral_semantic_owner": "ARAB5_SEMANTIC_OWNER_V1",
+  "bounded_unknowns_preserved": [
+    "WT_ESTIMAND",
+    "WT_NORMALIZATION",
+    "PSU_ANALYTICAL_ROLE",
+    "STRATUM_ANALYTICAL_ROLE",
+    "SAMPLE_MODE_DESIGN_RELATION",
+    "MISSING_WT_PSU_ESTIMATOR_TREATMENT",
+    "Q101_EXTRA_DICTIONARY_CODE_SEMANTICS",
+    "UNJOINED_ITEM_ROUTING",
+    "CROSS_WAVE_SEMANTIC_EQUIVALENCE"
+  ],
+  "s35_edge_classes_bound": [
+    "EC01",
+    "EC05",
+    "EC07",
+    "EC09",
+    "EC10",
+    "EC11",
+    "EC12"
+  ],
+  "r35_hooks_bound": {
+    "i01": "PRE553_PHYSICAL_METADATA@1.0.0",
+    "i02": "FIABC_DERIVATIVE_PARENTAGE_BUNDLE@1.0.0",
+    "i03": [
+      "FIABC_R35_I03_SOURCE_PHYSICAL_SCOPE@1.0.0",
+      "FIABC_R35_I03_CANONICAL_PHYSICAL_EXPECTATION@1.0.0",
+      "FIABC_R35_I03_CANDIDATE_PHYSICAL_REALIZATION@1.0.0",
+      "FIABC_R35_I03_WHOLE_SOURCE_PHYSICAL_EQUIVALENCE_RECEIPT@1.0.0"
+    ],
+    "semantic_authority": false
+  },
+  "implementation_files": [
+    "rawlsing_next/closed35_arab5_realization.py",
+    "rawlsing_next/tests/test_closed35_r3_arab5_realization.py"
+  ],
+  "return_files": [
+    "WORKER_RETURNS/CLOSED35-R3-ARAB5/00_RETURN.md",
+    "WORKER_RETURNS/CLOSED35-R3-ARAB5/01_REALIZATION_CONTRACT.md",
+    "WORKER_RETURNS/CLOSED35-R3-ARAB5/02_ID_DESIGN_DICTIONARY_MAP.csv",
+    "WORKER_RETURNS/CLOSED35-R3-ARAB5/03_PHYSICAL_EDGE_BINDING.json",
+    "WORKER_RETURNS/CLOSED35-R3-ARAB5/04_TEST_PROTOCOL.md",
+    "WORKER_RETURNS/CLOSED35-R3-ARAB5/RETURN.json"
+  ],
+  "tests_authored": 11,
+  "tests_execution_status": "TESTS_AUTHORED__NOT_EXECUTED",
+  "proof_boundary": {
+    "raw_survey_carrier_opened": false,
+    "real_source_processing_executed": false,
+    "real_source_execution_pass_claimed": false,
+    "whole_source_physical_equivalence_pass_claimed": false,
+    "abc_execution_pass_claimed": false,
+    "i05_claimed": false,
+    "measured_p2x_claimed": false,
+    "source_certification_beyond_accepted_authority_claimed": false
+  },
+  "terminal": "CLOSED35_R3_ARAB_BAROMETER_W5_SOURCE_SPECIFIC_REALIZATION_IMPLEMENTED__READY_FOR_ABC_QUALIFICATION"
+}
