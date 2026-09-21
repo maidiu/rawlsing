@@ -1,0 +1,91 @@
+{
+  "schema": "FIABC_LM2_R1L_C_VALIDATION_REPAIR_PREP_RETURN@1.0.0",
+  "worker": "FIABC-LM2-R1L-C",
+  "repository": "maidiu/rawlsing",
+  "exact_base": "89bfde652eb8a983e51ff51f5258e5fdfbb2433b",
+  "branch": "agent/rabochii-premain-fiabc-lm2-r1l-c-validation-repair-prep-r1",
+  "return_path": "WORKER_RETURNS/FIABC-LM2-R1L-C-VALIDATION-REPAIR-PREP/",
+  "status": "PASS__CONDITIONAL_REPAIR_READY__NOT_ACTIVATED",
+  "terminal": "FIABC_LM2_R1L_C_CONDITIONAL_REPAIR_READY__AWAITING_PROVENANCE_AND_LOCK2_SUCCESSION_COURTS",
+  "predecessor": {
+    "discovery_authority": "24591678ebf50ac153fabdbbcd90d6ce818c5a89a5307c395c48a04fe5a8b1ab",
+    "candidate_grammar": "a94bd2ed3b64b2c51f6d329560feef6b97f69da3527081d8ca6168ae63e5f7f6",
+    "lock2": "8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188",
+    "replay": "b1aa437406d94b1f81f0ef3c81b885a2fd542749d2e5441747897c016a5dd490",
+    "r15_logical_release": "e6881e9a08a48f8871790e781c28bddbc44ee35db894d6ad7b1105a6a8fd262f",
+    "r15_replay": "996ba218fc5da5e0ad1ddf0cdc7f91ce8fb8a7363ce62076dc3f4073b85c383f"
+  },
+  "exact_validation_kinds": [
+    "DISTRIBUTION_DIFFERS_FROM_BASELINE",
+    "JOINT_NOT_PRODUCT_OF_MARGINALS",
+    "TARGET_CELL_SUPPORTED"
+  ],
+  "implementation": {
+    "module": "rawlsing_next/fiabc_lm2_r1l_validation_authority_successor.py",
+    "module_blob_sha1": "f29e80345afd7e953f8f03fc52350b83b220f350",
+    "test_module": "rawlsing_next/tests/test_fiabc_lm2_r1l_validation_authority_successor.py",
+    "test_blob_sha1": "fd265b004bae73e10d93c87e80772c6ad0af297e",
+    "authority_successor_constructor": "build_conditional_discovery_successor",
+    "authority_validator": "validate_conditional_discovery_successor",
+    "provenance_validator": "validate_provenance_activation",
+    "succession_validator": "validate_succession_activation",
+    "lock2_successor_seam": "prepare_lock2_successor",
+    "runtime_package_preparer": "prepare_runtime_package_successor",
+    "generic_i05_modified": false
+  },
+  "qualification": {
+    "head": "a0fcebeb14aecc628334d30cc84de634a5b8a721",
+    "pull_request": 429,
+    "workflow": "Rabochii Governed Bounded Court",
+    "run_id": 35626098364,
+    "job_id": 106420722226,
+    "protocol_self_test": "20 passed",
+    "governed_court": "45 passed",
+    "artifact_id": 10652766242,
+    "artifact_zip_sha256": "3e27ace8d1dc22b5a7121b935d491ddbe95e80d24463ae95280f644524071dfd"
+  },
+  "prepared_properties": {
+    "canonical_three_kind_order": true,
+    "wildcard_forbidden": true,
+    "all_forbidden": true,
+    "future_kind_expansion_forbidden_by_minimal_repair": true,
+    "validation_implementations_unchanged": true,
+    "candidate_constructors_unchanged": true,
+    "predicates_unchanged": true,
+    "query_templates_unchanged": true,
+    "generic_i05_guard_unchanged": true,
+    "candidate_pruning_forbidden": true,
+    "candidate_addition_forbidden": true,
+    "outcome_derived_authority_forbidden": true,
+    "candidate_output_parentage_forbidden": true,
+    "successor_replay_recomputed": true,
+    "successor_lock2_recomputed_conditionally": true,
+    "preserve_hash_at_all_costs": false
+  },
+  "activation": {
+    "r1l_a_pass_required": true,
+    "r1l_b_pass_required": true,
+    "successor_discovery_identity": null,
+    "successor_replay_identity": null,
+    "successor_lock2_identity": null,
+    "reason_null": "No sibling PASS result is assumed or guessed by Worker C."
+  },
+  "prohibited_execution": {
+    "wvs_sav_zip_opened": false,
+    "empirical_outcomes_inspected": false,
+    "real_i05_executed": false,
+    "candidate_a_b_c_started": false,
+    "measured_p2x": false,
+    "lock2_activated": false,
+    "sibling_branch_merged_or_rebased": false
+  },
+  "outputs": [
+    "00_RETURN.md",
+    "01_CONDITIONAL_DISCOVERY_AUTHORITY_SUCCESSOR.json",
+    "02_CONDITIONAL_LOCK2_REISSUE_PLAN.md",
+    "03_HOSTILE_TEST_LEDGER.json",
+    "04_FANIN_ACTIVATION_REQUIREMENTS.md",
+    "RETURN.json"
+  ],
+  "return_commit": "SELF_COMMIT_REPORTED_EXTERNALLY__COMMIT_HASH_CANNOT_BE_EMBEDDED_IN_ITS_OWN_PREIMAGE"
+}
