@@ -1,0 +1,113 @@
+{
+  "schema": "FIABC_R6X_EXACT_RECONCILIATION_PLAN@1.0.0",
+  "status": "BROWSER_PREP_COMPLETE__CURRENT_MANIFEST_SUPERSEDES_HISTORICAL_LEDGER",
+  "audited_base": "357cc2ac6952a478fa2e38f9adbe45ebb3671081",
+  "historical_r6x": {
+    "historical_continuation_map": {
+      "path": "WORKER_RETURNS/EE-P2X-CONTINUATION-REDUCER-R1/01_CONTINUATION_STATE_MACHINE.json",
+      "sha256": "ffe7d40e5f2051f839a3a646fd434fbee3b93371e7571d959805ca7ca74e0422",
+      "git_blob_sha1": "e06e95dd370a4fd44235932088308c3372522ed4",
+      "role": "IMMUTABLE_HISTORY_ONLY__NOT_CURRENT_CAPABILITY_LAW"
+    },
+    "old_reconciler": {
+      "path": "WORKER_RETURNS/EE-P2R6X/03_RECONCILE_LOCAL_P2X_INFRASTRUCTURE_STOPS.py",
+      "git_blob_sha1": "12836e591be9ed0aa4d46436deacebde038d9de0",
+      "intended_pre_ledger_sha256": "7de7c91d539dd267e31098fd47285b3f4a7873e1c9ec7b542c45cac3908b8671",
+      "intended_scope": "HISTORICAL_INFRASTRUCTURE_STOP_PROPAGATION_ONLY",
+      "current_execution_authority": false
+    },
+    "divergent_lm3_observation": {
+      "branch": "agent/rabochii-premain-fiabc-lm3-r6x-ledger-reconciliation-r1",
+      "authoritative_for_current_lineage": false,
+      "observed_work_root": "/private/tmp/ee-p2x-exec-r3",
+      "pre_ledger_sha256": "7de7c91d539dd267e31098fd47285b3f4a7873e1c9ec7b542c45cac3908b8671",
+      "post_ledger_sha256": "4d0c412df4844906df78a94fbd0b3f6dff40412ca695e76137d3309cf1aaedd6",
+      "receipt_sha256": "cd346db0623ce1f138bd0f14d9a81f8edf45b62c576c4f35910241b98edc7b26",
+      "observation": "AUDIT_ONLY__ALREADY_RECONCILED",
+      "use": "ARCHAEOLOGY_ONLY__DO_NOT_ASSUME_LOCAL_FILE_STILL_EXISTS"
+    }
+  },
+  "current_execution": {
+    "manifest_path": "WORKER_RETURNS/FIABC-T2/01_SIX_CELL_EXECUTION_MANIFEST.json",
+    "manifest_git_blob_sha1": "0864534765a34eded37137c545d750f741e31d7a",
+    "schema": "RAWLSING_FIABC_CURRENT_SIX_CELL_EXECUTION_MANIFEST@1.0.0",
+    "first_unfinished": "LITS_I/A/S02_C11_REACHABILITY",
+    "six_current_cells": [
+      "LITS_I/A",
+      "LITS_I/B",
+      "LITS_I/C",
+      "WVS7/A",
+      "WVS7/B",
+      "WVS7/C"
+    ],
+    "historical_candidate_c_failure_is_current_law": false,
+    "current_c_s01_s02_executable": true,
+    "driver_path": "rawlsing_next/ee_p2x_darwin_court_driver.py",
+    "driver_blob": "4500cbb149fa187a766aca71568dc1f205a4c367",
+    "ledger_schema": "RAWLSING_EE_P2X_DARWIN_STAGE_LEDGER@1.0.0",
+    "ledger_identity_rule": "ledger.continuation_map MUST equal the exact current StateMachine MapIdentity",
+    "implication": "HISTORICAL_R6X_LEDGER_CANNOT_BE_REUSED_AS_CURRENT_LEDGER"
+  },
+  "final_disposition": {
+    "old_ledger_mutation_required_for_current_court": false,
+    "old_ledger_second_reconciliation_permitted": false,
+    "old_ledger_role": "PRESERVE_AS_HISTORICAL_EVIDENCE_ONLY",
+    "current_work_root_requirement": "NEW_ABSENT_OR_EMPTY_ROOT__NOT_THE_HISTORICAL_R6X_ROOT",
+    "current_ledger_initialization": "LET_CURRENT_DRIVER_CREATE_LEDGER_FROM_FINAL_CURRENT_EXECUTION_MANIFEST",
+    "preserved_lits_a_r5_rule": "MAY_REFERENCE_EXISTING_R5_DERIVATIVE_BY_EXPLICIT_PATH_ONLY_AFTER_GENERIC_R35_PARENTAGE; DO_NOT IMPORT_OLD_LEDGER_OR_BACKEND_STATE",
+    "preserved_lits_b_rule": "BIND_IMMUTABLE_PRESERVED_SEMANTIC_MILESTONE_THROUGH_CURRENT_MANIFEST; DO_NOT_IMPORT_OLD_STAGE_STATE"
+  },
+  "deterministic_local_checks": [
+    {
+      "id": "R6X-C01",
+      "check": "chosen current work root is absent or empty",
+      "on_fail": "STOP__CURRENT_WORK_ROOT_NOT_CLEAN"
+    },
+    {
+      "id": "R6X-C02",
+      "check": "chosen current work root is not the known historical stopped/R6X root",
+      "on_fail": "STOP__HISTORICAL_LEDGER_ROOT_REUSE_FORBIDDEN"
+    },
+    {
+      "id": "R6X-C03",
+      "check": "current execution manifest exact schema and six-cell law validate",
+      "on_fail": "STOP__CURRENT_MANIFEST_INVALID"
+    },
+    {
+      "id": "R6X-C04",
+      "check": "new StageLedger embeds final current manifest identity",
+      "on_fail": "STOP__CURRENT_MANIFEST_LEDGER_IDENTITY_MISMATCH"
+    },
+    {
+      "id": "R6X-C05",
+      "check": "historical Candidate-C terminal failure entries are absent from the new current ledger",
+      "on_fail": "STOP__HISTORICAL_C_FAILURE_LEAKED_INTO_CURRENT_LEDGER"
+    },
+    {
+      "id": "R6X-C06",
+      "check": "first unfinished address after lawful preserved-prefix binding is LITS_I/A/S02_C11_REACHABILITY",
+      "on_fail": "STOP__CURRENT_LEDGER_ENTRY_POINT_DRIFT"
+    },
+    {
+      "id": "R6X-C07",
+      "check": "no candidate process has started during initialization",
+      "on_fail": "STOP__R6X_CONTROL_PREP_CROSSED_CANDIDATE_BOUNDARY"
+    }
+  ],
+  "optional_historical_audit": {
+    "allowed": true,
+    "mutating": false,
+    "condition": "ONLY_IF_HISTORICAL_LOCAL_R6X_RECEIPT_IS_STILL_PRESENT",
+    "required_if_used": [
+      "receipt SHA == cd346db0623ce1f138bd0f14d9a81f8edf45b62c576c4f35910241b98edc7b26",
+      "post ledger SHA == 4d0c412df4844906df78a94fbd0b3f6dff40412ca695e76137d3309cf1aaedd6",
+      "candidate_roots_deleted == false",
+      "source_carrier_access_performed == false",
+      "empirical_measurement_performed == false"
+    ],
+    "missing_receipt_disposition": "NONBLOCKING_FOR_FRESH_CURRENT_MANIFEST_LEDGER__HISTORICAL_GIT_EVIDENCE_RETAINS_THE_GENEALOGY"
+  },
+  "candidate_execution": false,
+  "source_access": false,
+  "measured_p2x": false
+}
