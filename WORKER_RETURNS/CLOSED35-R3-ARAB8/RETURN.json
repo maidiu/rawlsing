@@ -1,0 +1,108 @@
+{
+  "schema": "CLOSED35_R3_ARAB8_RETURN@1.0.0",
+  "worker_id": "CLOSED35-R3-ARAB8",
+  "repository": "maidiu/rawlsing",
+  "base_branch": "agent/vozhd-closed35-l2r-r1-fanin-r1",
+  "base_tip": "da33eb6a8225c14eee9490633a3263388dc5536c",
+  "branch": "agent/rabochii-closed35-r3-arab8-realization-r1",
+  "return_path": "WORKER_RETURNS/CLOSED35-R3-ARAB8/",
+  "source": {
+    "filename": "Arab Barometer Wave 8.sav",
+    "sha256": "a5e83a953f03dd890e076a51da473051f1cfd1ca2e8ab93c2172eeb2517af998",
+    "authority_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+    "physical_mode": "SAV_NATIVE_GOVERNED",
+    "replay_identity": "SOURCE_SHA256+ROW_ORDINAL"
+  },
+  "status": "PASS",
+  "implementation_grain": "SOURCE_SPECIFIC_REALIZATION_IMPLEMENTED",
+  "semantic_owner": "ARAB8_SEMANTIC_OWNER_V1",
+  "implementation_files": [
+    "rawlsing_next/closed35_arab8_realization.py",
+    "rawlsing_next/tests/test_closed35_r3_arab8_realization.py"
+  ],
+  "realization": {
+    "candidate_neutral": true,
+    "id_zero_is_ordinary_source_state": true,
+    "id_as_hard_replay_identity": false,
+    "country_plus_id_as_hard_replay_identity": false,
+    "block_id_blank_is_ordinary_string": true,
+    "block_id_blank_semantics": "BOUNDED_UNKNOWN",
+    "q1_stratum_equal_vectors_alias_authority": false,
+    "q1_documentary_role": "GOVERNORATE_FIRST_ADMINISTRATIVE_DIVISION",
+    "stratum_design_semantics": "BOUNDED_UNKNOWN",
+    "q1a_pal_route": "COUNTRY==15",
+    "q622c_irq_route": "COUNTRY==7+SPLIT_A",
+    "q622c_irq_topology": "SELECT_ALL_THAT_APPLY",
+    "native_spss_mr_metadata_invented": false,
+    "routing_from_missingness": false,
+    "wt_estimand": "BOUNDED_UNKNOWN",
+    "wt_default_use_authorized": false,
+    "psu_documentary_role": "SOURCE_NATIVE_SAMPLING_VARIABLE",
+    "psu_analytic_design_use": "BOUNDED_UNKNOWN",
+    "cross_wave_semantic_authority": false
+  },
+  "edge_classes": [
+    "EC01",
+    "EC05",
+    "EC07",
+    "EC10",
+    "EC12",
+    "EC14"
+  ],
+  "r35_hooks": [
+    "PRE553_PHYSICAL_METADATA@1.0.0",
+    "FIABC_DERIVATIVE_PARENTAGE_BUNDLE@1.0.0",
+    "FIABC_R35_I03_SOURCE_PHYSICAL_SCOPE@1.0.0",
+    "FIABC_R35_I03_CANONICAL_PHYSICAL_EXPECTATION@1.0.0",
+    "FIABC_R35_I03_CANDIDATE_PHYSICAL_REALIZATION@1.0.0",
+    "FIABC_R35_I03_WHOLE_SOURCE_PHYSICAL_EQUIVALENCE_RECEIPT@1.0.0"
+  ],
+  "tests": {
+    "status": "TESTS_AUTHORED__NOT_EXECUTED",
+    "reason": "GitHub/browser-only worker; no synthetic Python execution environment invoked.",
+    "required_rejection_tests": [
+      "ID_ZERO_ROW_DELETION_OR_MISSING_IDENTITY_COERCION",
+      "ID_OR_COUNTRY_ID_AS_REPLAY_IDENTITY",
+      "BLANK_BLOCK_ID_COERCED_TO_SYSTEM_MISSING_OR_NULL",
+      "Q1_STRATUM_ALIAS_FROM_EQUAL_VECTORS",
+      "Q622C_MODULE_OR_SELECT_ALL_TOPOLOGY_COLLAPSE",
+      "NATIVE_MR_METADATA_INVENTION",
+      "ROUTING_FROM_MISSINGNESS",
+      "WT_PSU_STRATUM_ANALYTIC_DESIGN_INVENTION",
+      "CROSS_WAVE_SEMANTIC_LEAKAGE",
+      "SOURCE_SHA_DRIFT",
+      "CANDIDATE_SEMANTIC_DIVERGENCE",
+      "S35_R35_SCOPE_DRIFT"
+    ]
+  },
+  "bounded_unknowns_preserved": [
+    "BLOCK_ID_EXACT_SEMANTICS",
+    "BLOCK_ID_BLANK_EXACT_SEMANTICS",
+    "WT_ESTIMAND_AND_NORMALIZATION",
+    "STRATUM_DESIGN_SEMANTICS",
+    "PSU_ANALYTIC_DESIGN_USE_BEYOND_DOCUMENTED_CARRIER_ROLE",
+    "Q1_STRATUM_EQUALITY_CAUSAL_OR_SEMANTIC_RELATION",
+    "UNDOCUMENTED_COUNTRY_MODULE_ROUTING",
+    "CROSS_WAVE_SEMANTIC_EQUIVALENCE"
+  ],
+  "constraints_observed": {
+    "raw_carrier_opened": false,
+    "source_executed": false,
+    "source_processing_executed": false,
+    "measured_p2x_run": false,
+    "abc_executed": false,
+    "i05_executed": false,
+    "physical_equivalence_executed": false,
+    "source_certification_claimed": false
+  },
+  "proof_boundary": "BROWSER_IMPLEMENTATION_ONLY__NO_REAL_SOURCE_EXECUTION__NO_WHOLE_SOURCE_PHYSICAL_EQUIVALENCE_PASS__NO_ABC_EXECUTION_PASS__NO_I05__NO_MEASURED_P2X",
+  "outputs": [
+    "00_RETURN.md",
+    "01_REALIZATION_CONTRACT.md",
+    "02_ID_BLOCK_ROUTING_MAP.csv",
+    "03_PHYSICAL_EDGE_BINDING.json",
+    "04_TEST_PROTOCOL.md",
+    "RETURN.json"
+  ],
+  "terminal": "CLOSED35_R3_ARAB_BAROMETER_W8_SOURCE_SPECIFIC_REALIZATION_IMPLEMENTED__READY_FOR_ABC_QUALIFICATION"
+}
