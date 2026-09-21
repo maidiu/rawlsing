@@ -1,0 +1,54 @@
+{
+  "schema": "FIABC_LM2_R1L_B_LOCK2_SUCCESSION_RETURN@1.0.0",
+  "worker": "FIABC-LM2-R1L-B",
+  "repository": "maidiu/rawlsing",
+  "exact_base": "89bfde652eb8a983e51ff51f5258e5fdfbb2433b",
+  "branch": "agent/rabochii-premain-fiabc-lm2-r1l-b-lock2-succession-court-r1",
+  "return_path": "WORKER_RETURNS/FIABC-LM2-R1L-B-LOCK2-SUCCESSION/",
+  "status": "PASS__SUCCESSION_BOUNDARY_FROZEN_CONDITIONAL_ON_WORKER_A",
+  "terminal": "FIABC_LM2_R1L_B_LOCK2_SUCCESSION_COURT_COMPLETE__MINIMAL_INVALIDATION_BOUNDARY_FROZEN",
+  "holding": {
+    "narrow_successor_structurally_possible_if_independent_authority": true,
+    "candidate_hashes_forced_to_change_by_discovery_authority_change": false,
+    "candidate_hashes_must_be_replayed_and_expected_same": true,
+    "evaluated_frontier_forced_to_change": true,
+    "p2f2_replay_hash_forced_to_change": true,
+    "lock2_forced_to_change": true,
+    "predecessor_lock2_must_remain_immutable": true
+  },
+  "predecessor": {
+    "lock2": "8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188",
+    "replay_hash": "b1aa437406d94b1f81f0ef3c81b885a2fd542749d2e5441747897c016a5dd490",
+    "discovery_authority": "24591678ebf50ac153fabdbbcd90d6ce818c5a89a5307c395c48a04fe5a8b1ab",
+    "candidate_grammar": "a94bd2ed3b64b2c51f6d329560feef6b97f69da3527081d8ca6168ae63e5f7f6",
+    "candidate_count": 46,
+    "family_counts": {
+      "BOUNDED_K_WAY_RESPONSE_CONFIGURATION": 25,
+      "BRANCH_CONDITIONED_DISTRIBUTION": 10,
+      "PAIR_RESPONSE_COTRAVEL": 1,
+      "UNARY_SOCIAL_FORK": 10
+    }
+  },
+  "conditional_cases": {
+    "worker_a_blocked": "NO_SUCCESSOR__R16_REMAINS_BLOCKED",
+    "worker_a_pass_existing_bound_parent": "SUCCESSOR_DA_ENVELOPE__NEW_REPLAY__NEW_LOCK2__SAME_REPLAYED_46_CANDIDATES",
+    "worker_a_pass_existing_unbound_parent": "SUCCESSOR_DA_ENVELOPE_PLUS_PARENT_CLOSURE__NEW_REPLAY__NEW_LOCK2__SAME_REPLAYED_46_CANDIDATES"
+  },
+  "prohibited_execution": {
+    "wvs_sav_zip_opened": false,
+    "real_i05": false,
+    "candidate_outcomes_inspected": false,
+    "candidate_a_b_c": false,
+    "measured_p2x": false,
+    "successor_authority_issued": false,
+    "successor_lock2_issued": false
+  },
+  "return_files": [
+    "WORKER_RETURNS/FIABC-LM2-R1L-B-LOCK2-SUCCESSION/00_RETURN.md",
+    "WORKER_RETURNS/FIABC-LM2-R1L-B-LOCK2-SUCCESSION/01_LOCK2_DEPENDENCY_GRAPH.json",
+    "WORKER_RETURNS/FIABC-LM2-R1L-B-LOCK2-SUCCESSION/02_INVALIDATION_MATRIX.csv",
+    "WORKER_RETURNS/FIABC-LM2-R1L-B-LOCK2-SUCCESSION/03_SUCCESSOR_LOCK2_CONSTITUTION.md",
+    "WORKER_RETURNS/FIABC-LM2-R1L-B-LOCK2-SUCCESSION/04_R16_REENTRY_REQUIREMENTS.json",
+    "WORKER_RETURNS/FIABC-LM2-R1L-B-LOCK2-SUCCESSION/RETURN.json"
+  ]
+}
