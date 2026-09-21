@@ -66,6 +66,8 @@ This holding does **not** say that this repair preserves every later P2 query/or
 
 ## Conditional authority-reference lanes
 
+Accepted history shows mechanically derived authority objects can exist when their parent claims and scope are explicit; R6S's own coordinate/projection authority construction is one example. It does **not** establish a derived native→canonical mapping grant.
+
 If LM2-R1A/HQ proves either:
 
 1. an already-accepted exact WVS7 native→canonical mapping authority exists but R6S references the wrong object; or
@@ -105,7 +107,7 @@ History supplies no basis for that global broadening.
 
 ### Real-source reread as semantic repair
 
-Nothing in the collision contests the WVS7 bytes, physical expectation, parentage, or structural preimage. A real-source reread would add cost without resolving the missing/wrong mapping authority claim.
+Nothing in the collision contests the WVS7 bytes, physical expectation, parentage, or structural preimage. A real-source reread would add cost without resolving the missing/wrong mapping authority claim. Accordingly, the dependency matrix contains no `REAL_SOURCE_RERUN_REQUIRED` classification for any currently plausible repair.
 
 ## Exact recovery boundary
 
