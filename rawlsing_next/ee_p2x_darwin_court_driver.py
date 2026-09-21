@@ -462,7 +462,11 @@ class ProgressReporter:
                 )
 
     def emit_court_terminal(self, *, status: str, next_stage: str, ledger_sha256: str) -> None:
-        state = "PASS" if status == "COURT_SEQUENCE_COMPLETE__S17_VERIFIED" else "BLOCKED"
+        state = (
+            "PASS" if status == "COURT_SEQUENCE_COMPLETE__S17_VERIFIED"
+            else "CANDIDATE_LOCAL_FAILURE" if "CANDIDATE_LOCAL_FAILURE" in status
+            else "BLOCKED"
+        )
         event = {
             "event_type": "COURT_TERMINAL",
             "state": state,
@@ -967,14 +971,23 @@ def _final_ready(machine,ledger):
             if e["terminal_disposition"] in {"BLOCKED_BY_COMMON_SOURCE_AUTHORITY","BLOCKED_BY_COMMON_COURT_AUTHORITY"}: common.append(a)
     if common: raise CommonAuthorityBlocker("unresolved common blockers at S17",scope="COURT",receipt={"blockers":common})
     if machine.identity.schema == CURRENT_EXECUTION_MANIFEST_SCHEMA:
+        candidate_failures=[]
         for cell in machine.document.get("cells", ()):
             stage_ids = _manifest_ordered_stage_ids(machine.document, cell)
             if not stage_ids:
                 raise StageStateError(f"current cell has no governed stages: {cell}")
             terminal_address = f"{cell['source']}/{cell['candidate']}/{stage_ids[-1]}"
             terminal = ledger.stage_entry(terminal_address)
-            if not terminal or terminal.get("terminal_disposition") != "PASS":
-                raise StageStateError(f"current cell terminal PASS absent for {cell['source']}/{cell['candidate']}")
+            disposition = None if not terminal else terminal.get("terminal_disposition")
+            if disposition == "CANDIDATE_LOCAL_FAILURE":
+                candidate_failures.append(f"{cell['source']}/{cell['candidate']}")
+            elif disposition != "PASS":
+                raise StageStateError(f"current cell terminal PASS/failure absent for {cell['source']}/{cell['candidate']}")
+        if candidate_failures:
+            raise CandidateLocalFailure(
+                "current six-cell court contains lawful candidate-local failures; success-only S17 is not applicable",
+                receipt={"candidate_failure_cells":candidate_failures},
+            )
     elif ledger.stage_entry("WVS7/C/S01_CANDIDATE_PREPARATION_BUILD").get("terminal_disposition") != "CANDIDATE_LOCAL_FAILURE":
         raise StageStateError("historical WVS-C portability failure not bound")
 def _token(stage,receipt_hash,ledger_hash,head): return {"schema":SUPERVISOR_TOKEN_SCHEMA,"action":"COMMIT_AND_PUSH_EXISTING_P2X_BRANCH_BOUNDED_STAGE_EVIDENCE","stage_id":stage.address,"terminal_receipt_sha256":receipt_hash,"ledger_sha256":ledger_hash,"p2x_branch":P2X_BRANCH,"observed_branch_head":head}
@@ -1090,6 +1103,11 @@ class DarwinCourtDriver:
                     old=None
                 try:
                     _final_ready(self.machine,self.ledger)
+                except CandidateLocalFailure:
+                    return self._summary(
+                        "COURT_SEQUENCE_COMPLETE__CANDIDATE_LOCAL_FAILURES_RECORDED__S17_SUCCESS_VERIFIER_NOT_RUN",
+                        "__COURT_COMPLETE__",
+                    )
                 except CommonAuthorityBlocker:
                     self.progress.emit_stage(
                         stage,"BLOCKED",next_stage=stage.address,
