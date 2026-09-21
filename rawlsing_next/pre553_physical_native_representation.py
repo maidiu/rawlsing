@@ -142,14 +142,29 @@ def representation_authority_fingerprint(
     dependency_refs: Sequence[ExactRef | Mapping[str, Any]],
     negative_limit_refs: Sequence[ExactRef | Mapping[str, Any]],
 ) -> str:
+    # AuthoritySnapshot canonicalizes these fields as set-like collections.
+    # Fingerprinting must therefore be invariant to caller insertion order and
+    # must replay from the immutable snapshot's canonical ordering.
+    parents = tuple(sorted(
+        (authority_ref(x, "representation parent authority") for x in parent_authority_refs),
+        key=lambda x: x.key,
+    ))
+    dependencies = tuple(sorted(
+        (exact_ref(x, "representation evidence dependency") for x in dependency_refs),
+        key=lambda x: x.key,
+    ))
+    negatives = tuple(sorted(
+        (exact_ref(x, "representation negative limit") for x in negative_limit_refs),
+        key=lambda x: x.key,
+    ))
     return semantic_hash({
         "contract": CONTRACT,
         "authority_kind": AUTHORITY_KIND,
         "governed_operation": GOVERNED_OPERATION,
         "scope_envelope": canonicalize(scope_envelope),
-        "parent_authority_refs": canonicalize(parent_authority_refs),
-        "dependency_refs": canonicalize(dependency_refs),
-        "negative_limit_refs": canonicalize(negative_limit_refs),
+        "parent_authority_refs": [x.as_dict() for x in parents],
+        "dependency_refs": [x.as_dict() for x in dependencies],
+        "negative_limit_refs": [x.as_dict() for x in negatives],
     })
 
 
