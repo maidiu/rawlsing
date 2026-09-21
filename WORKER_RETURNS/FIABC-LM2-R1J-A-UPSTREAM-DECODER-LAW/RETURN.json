@@ -1,0 +1,87 @@
+{
+  "schema": "FIABC_LM2_R1J_A_UPSTREAM_DECODER_LAW_RETURN@1.0.0",
+  "worker": "FIABC-LM2-R1J-A",
+  "repository": "maidiu/rawlsing",
+  "exact_base": "74205b23f546d78fed449c2f351a714be184ed8c",
+  "branch": "agent/rabochii-premain-fiabc-lm2-r1j-a-upstream-decoder-law-r1",
+  "implementation_and_return_tip_before_RETURN_json": "e77213c2bfabd57405c283d76eaf4db6d4c230f9",
+  "status": "PASS",
+  "terminal": "FIABC_LM2_R1J_A_UPSTREAM_DECODER_LAW_PASS__EXACT_SAV_NUMERIC_REPRESENTATION_LAW_PROVED__VERSION_PARITY_DISPOSITION_FROZEN",
+  "parity_disposition": "REPRESENTATION_STACK_PARITY_PROVED__1_3_2_AND_1_3_6_EQUIVALENT_FOR_RELEVANT_SAV_NUMERIC_LANE",
+  "version_graph": {
+    "pyreadstat_1_3_2": {
+      "tag": "v1.3.2",
+      "commit": "97a124bfebcdf225ffbec7430e81f2868238a115",
+      "readstat_revision": "b2d5407d62caf3c33caadc0495c9f7684b6a0df7",
+      "parser_blob": "b9733bcf4112fed59271007533e7f5398d0ba5e6",
+      "sav_reader_blob": "731d8addb14379cc7a9700f17cf217cd0c927e01",
+      "spss_common_blob": "4bc7cde0813d379d59526e488b07135eeb99bb58",
+      "readstat_value_blob": "62aac39820184626df90451f0d999887d77ea884"
+    },
+    "pyreadstat_1_3_6": {
+      "tag": "v1.3.6",
+      "commit": "ae4bfa5d84ed5da0a1b040be472703585bdfeefc",
+      "readstat_revision": "634f40a80d27221848ba57e9fb633b41146bac36",
+      "parser_blob": "bd43be1928139e343469cbad456f8773c41131bf",
+      "sav_reader_blob": "5810f1ff8a92d010d8ad86d05ddd64aa227c0b92",
+      "spss_common_blob": "4bc7cde0813d379d59526e488b07135eeb99bb58",
+      "readstat_value_blob": "62aac39820184626df90451f0d999887d77ea884"
+    }
+  },
+  "propositions": {
+    "U01": "PROVED__SAV_NUMERIC_STRING_FORMAT_DECODER_DISTINCTION",
+    "U02": "PROVED__SAV_NUMERIC_VARIABLE_EXPOSED_AS_READSTAT_DOUBLE_LANE",
+    "U03": "PROVED__INTEGRAL_NUMERIC_VALUE_REMAINS_DOUBLE_FLOAT_REPRESENTATION",
+    "U04": "PROVED__NUMERIC_USER_MISSING_REMAINS_NUMERIC_DOUBLE_REPRESENTATION",
+    "U05": "PROVED__USER_MISSING_TRUE_PRESERVES_DEFINED_NUMERIC_MISSING_VALUES",
+    "U06": "PROVED__APPLY_VALUE_FORMATS_FALSE_RETAINS_UNDERLYING_VALUES",
+    "U07": "PROVED__PYTHON_FACING_RELEVANT_LANE_IS_FLOAT_NP_FLOAT64",
+    "U08": "PROVED__1_3_2_AND_1_3_6_MATERIALLY_IDENTICAL_FOR_U01_U07",
+    "U09": "PROVED_NO_MATERIAL_CHANGE__DIFFERENT_READSTAT_REVISIONS_DO_NOT_ALTER_RELEVANT_SAV_NUMERIC_USER_MISSING_LANE"
+  },
+  "parity_evidence": {
+    "readstat_compare_base": "b2d5407d62caf3c33caadc0495c9f7684b6a0df7",
+    "readstat_compare_head": "634f40a80d27221848ba57e9fb633b41146bac36",
+    "intervening_commits": 21,
+    "common_spss_blob_identical": true,
+    "readstat_value_blob_identical": true,
+    "sav_reader_endpoint_change": "ONE_SOURCE_LINE__MULTIPLE_RESPONSE_NAME_PARSE_CALL_GAINS_CTX__NUMERIC_AND_USER_MISSING_BLOCKS_UNCHANGED",
+    "pyreadstat_handle_value_relevant_block_identical": true,
+    "scope": "RELEVANT_SAV_NUMERIC_AND_DEFINED_USER_MISSING_REPRESENTATION_ONLY"
+  },
+  "authority_boundary": {
+    "representation_law_proved": true,
+    "exact_q291_variable_type_proved": false,
+    "wvs_physical_to_native_binding_issued": false,
+    "q291_float_to_native_code_relation_proved": false,
+    "global_int_float_equivalence": false,
+    "source_semantics_modified": false,
+    "c11_modified": false,
+    "r6s_modified": false,
+    "system_missing_source_native_binding": false,
+    "lawful_fanin_condition": "REQUIRES_INDEPENDENT_ACCEPTED_EXACT_Q291_SAV_NUMERIC_VARIABLE_PREMISE_AND_SEPARATE_GOVERNED_SOURCE_NATIVE_SEMANTICS"
+  },
+  "prohibited_execution": {
+    "user_mac_or_local_runtime_used": false,
+    "wvs7_sav_or_zip_opened_or_materialized": false,
+    "new_wvs_source_read": false,
+    "candidate_a_b_c_executed": false,
+    "i03_executed": false,
+    "i05_executed": false,
+    "measured_p2x_executed": false,
+    "r15_retried": false,
+    "raw_value_semantic_inference": false
+  },
+  "production_code_changed": false,
+  "changed_paths": [
+    "WORKER_RETURNS/FIABC-LM2-R1J-A-UPSTREAM-DECODER-LAW/00_RETURN.md",
+    "WORKER_RETURNS/FIABC-LM2-R1J-A-UPSTREAM-DECODER-LAW/01_PYREADSTAT_132_VERSION_GRAPH.json",
+    "WORKER_RETURNS/FIABC-LM2-R1J-A-UPSTREAM-DECODER-LAW/02_PYREADSTAT_136_VERSION_GRAPH.json",
+    "WORKER_RETURNS/FIABC-LM2-R1J-A-UPSTREAM-DECODER-LAW/03_READSTAT_SAV_NUMERIC_LAW.md",
+    "WORKER_RETURNS/FIABC-LM2-R1J-A-UPSTREAM-DECODER-LAW/04_USER_MISSING_AND_VALUE_FORMAT_LAW.md",
+    "WORKER_RETURNS/FIABC-LM2-R1J-A-UPSTREAM-DECODER-LAW/05_132_VS_136_PARITY_MATRIX.csv",
+    "WORKER_RETURNS/FIABC-LM2-R1J-A-UPSTREAM-DECODER-LAW/06_AUTHORITY_USABILITY_BOUNDARY.md",
+    "WORKER_RETURNS/FIABC-LM2-R1J-A-UPSTREAM-DECODER-LAW/RETURN.json"
+  ],
+  "hq_action": "FAN_IN_R1J_A_ONLY_WITH_INDEPENDENT_EXACT_Q291_VARIABLE_TYPE_PREMISE__DO_NOT_TREAT_R1J_A_ALONE_AS_WVS_PHYSICAL_NATIVE_AUTHORITY"
+}
