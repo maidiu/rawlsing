@@ -1,0 +1,249 @@
+{
+  "schema": "FIABC_R6X_I07_REAL_GATE_EXPECTED_RECEIPT_AND_STOP_LEDGER@1.0.0",
+  "status": "FROZEN_BROWSER_PREP",
+  "browser_prerequisites": [
+    {
+      "gate": "B01_R1K",
+      "expected_terminal": "FIABC_LM2_R1K_R15_R16_PASS__STRICT_REAL_COMMON_C11_ADMITTED__R01_R18_ALL_GREEN__FRESH_INDEPENDENT_WVS_ORACLE_FROZEN__LOCK2_PRESERVED__CANDIDATES_NOT_STARTED",
+      "required_outputs": [
+        "R15 strict common-C11 PASS receipt",
+        "R01-R18 all-green ledger",
+        "fresh WVS oracle document + identity + document SHA",
+        "oracle independence proof"
+      ],
+      "stop": "STOP__R1K_NOT_PASS"
+    },
+    {
+      "gate": "B02_LIVE_REBIND",
+      "expected_terminal": "FIABC_POST_R1J_LIVE_REBIND_REQUAL_PASS__R1J_R6S_TRANSPOSED__SOURCE_INDEPENDENT_COURT_GREEN__ONLY_R1K_ORACLE_DEPENDENT_PINS_REMAIN",
+      "required_outputs": [
+        "final live R6S/runtime identity",
+        "final source-independent qualification ledger",
+        "final current-court identity/pin set"
+      ],
+      "stop": "STOP__FINAL_LIVE_RUNTIME_NOT_QUALIFIED"
+    },
+    {
+      "gate": "B03_LITS_PARENTAGE",
+      "expected_terminal_options": [
+        "FIABC_LITS_A_PARENTAGE_RECOVERY_PASS__PRESERVED_FIRST_BUILD_LAWFULLY_BOUND_TO_GENERIC_R35_PARENTAGE__NO_REBUILD_REQUIRED",
+        "FIABC_LITS_A_PARENTAGE_RECOVERY_BOUNDED__MINIMAL_LOCAL_PARENTAGE_VERIFICATION_REQUIRED__NO_REBUILD_AUTHORIZED"
+      ],
+      "required_outputs": [
+        "exact currentness holding",
+        "generic R35 parentage receipt/bundle if browser recoverable OR minimal verification packet"
+      ],
+      "stop": "STOP__LITS_A_PARENTAGE_UNBOUNDED"
+    }
+  ],
+  "pre_candidate_local": [
+    {
+      "order": 1,
+      "gate": "L00_CURRENT_LEDGER_INITIALIZATION",
+      "expected_receipt": {
+        "schema": "RAWLSING_EE_P2X_DARWIN_STAGE_LEDGER@1.0.0",
+        "required_state": "new current-manifest ledger; no historical Candidate-C failures",
+        "exact_identity": "DYNAMIC__FINAL_CURRENT_MANIFEST_MAP_IDENTITY"
+      },
+      "stop_conditions": [
+        "current work root nonempty",
+        "historical R6X ledger imported",
+        "manifest identity mismatch",
+        "candidate process started"
+      ]
+    },
+    {
+      "order": 2,
+      "gate": "L01_LOCK1_PREFLIGHT",
+      "expected_receipt": {
+        "schema": "RAWLSING_EE_P2X_DARWIN_PREFLIGHT@1.0.0",
+        "status": "PASS",
+        "next_stage": "LITS_I/A/S02_C11_REACHABILITY",
+        "host_contention_claim": "SINGLE_DRIVER_LOCK_ONLY__NO_PROCESS_NAME_IDLE_HEURISTIC"
+      },
+      "extra_required_observation": "exclusive host reservation / no concurrent benchmark workload",
+      "stop_conditions": [
+        "runtime drift",
+        "repo branch/head/seam drift",
+        "source SHA drift",
+        "candidate owner blob drift",
+        "host contention not closed"
+      ]
+    },
+    {
+      "order": 3,
+      "gate": "L02_LITS_CANONICAL_R35_EXPECTATION",
+      "expected_receipt": {
+        "schema": "FIABC_R35_I03_CANONICAL_PHYSICAL_EXPECTATION@1.0.0",
+        "source": "LITS_I",
+        "edge_classes": [
+          "EC01",
+          "EC02",
+          "EC05",
+          "EC06",
+          "EC09",
+          "EC12"
+        ],
+        "expectation_identity": "DYNAMIC__DO_NOT_GUESS"
+      },
+      "execution_rule": "SKIP_LOCAL_MATERIALIZATION_IF_AN_ACCEPTED_EXPECTATION_IS_RECOVERED_BEFORE_LOCAL_RUN",
+      "stop_conditions": [
+        "raw physical required dimension missing",
+        "candidate derivative used as canonical expected truth",
+        "semantic evidence substituted for physical evidence"
+      ]
+    },
+    {
+      "order": 4,
+      "gate": "L03_T3_FREEZE",
+      "expected_receipt": {
+        "schema": "RAWLSING_FIABC_CANDIDATE_NEUTRAL_FREEZE@2.0.0",
+        "candidate_neutral": true,
+        "frozen_before_candidate_execution": true,
+        "candidate_outputs_seen": 0,
+        "candidate_owned_roots_consulted": [],
+        "candidate_owned_state_reused": false,
+        "state": "FROZEN_READ_ONLY",
+        "source_set": [
+          "LITS_I",
+          "WVS7"
+        ]
+      },
+      "dynamic_required": [
+        "final LiTS oracle document/identity",
+        "R1K WVS oracle document/identity",
+        "final source identity authority refs",
+        "final authority/workload identities"
+      ],
+      "stop_conditions": [
+        "oracle source-set mismatch",
+        "missing oracle freeze authority",
+        "candidate-owned dependency",
+        "derivative/provenance half-pair",
+        "freeze order not source<authority/workload<oracle"
+      ]
+    },
+    {
+      "order": 5,
+      "gate": "L04_I07_MANIFEST",
+      "expected_receipt": {
+        "schema": "RAWLSING_FIABC_SUCCESSION_MANIFEST@1.0.0",
+        "generated_from_commit_sha": "DYNAMIC__MUST_EQUAL_FINAL_REPO_HEAD",
+        "frozen_before_candidate_execution": true,
+        "preflight_status": "PASS"
+      },
+      "stop_conditions": [
+        "fuzzy/branch evidence ref",
+        "unresolved required F001-F036 function",
+        "missing production capability",
+        "oracle not pre-output",
+        "accounting unresolved",
+        "negative-state collapse",
+        "lifecycle context absent or stale"
+      ]
+    },
+    {
+      "order": 6,
+      "gate": "L05_T5_LIVE_I07_WRAPPER",
+      "expected_receipt": {
+        "schema": "RAWLSING_FIABC_T5_LIVE_SUCCESSION_PREFLIGHT@1.0.0",
+        "status": "PASS",
+        "repo_head": "DYNAMIC__FINAL_HEAD",
+        "candidate_execution_started": false,
+        "receipt_identity": "DYNAMIC__DO_NOT_GUESS"
+      },
+      "stop_conditions": [
+        "I07 P00-P10 BLOCK",
+        "manifest head != repo head",
+        "court contract drift",
+        "lifecycle context mismatch"
+      ]
+    }
+  ],
+  "r35_admission_during_cells": {
+    "canonical_expectations": {
+      "LITS_I": {
+        "identity": "DYNAMIC__LOCAL_ONLY_IF_STILL_ABSENT",
+        "edge_classes": [
+          "EC01",
+          "EC02",
+          "EC05",
+          "EC06",
+          "EC09",
+          "EC12"
+        ]
+      },
+      "WVS7": {
+        "path": "WORKER_RETURNS/FIABC-LM2/04_WVS7_CANONICAL_PHYSICAL_EXPECTATION.json",
+        "git_blob_sha1": "94d28db4fe031db03210303fd9f7b197a5b84c26",
+        "identity": "9845c24da0c03adb4dfd65118b7c8c39a60a30337f33cc4177ffc6c848d02390",
+        "edge_classes": [
+          "EC01",
+          "EC05",
+          "EC07",
+          "EC09",
+          "EC10",
+          "EC12",
+          "EC13"
+        ]
+      }
+    },
+    "candidate_realization_schema": "FIABC_R35_I03_CANDIDATE_PHYSICAL_REALIZATION@1.0.0",
+    "candidate_receipt_schema": "FIABC_R35_I03_WHOLE_SOURCE_PHYSICAL_EQUIVALENCE_RECEIPT@1.0.0",
+    "candidate_pass_status": "PHYSICAL_EQUIVALENCE_PASS__NOT_SEMANTIC_OR_CERTIFICATION_PASS",
+    "source_guard_schema": "FIABC_T6_LIVE_R35_PHYSICAL_GUARD_RECEIPT@1.0.0",
+    "two_source_pass_status": "FIABC_T6_CURRENT_TWO_SOURCE_PHYSICAL_GUARD_PASS__NOT_P2_SEMANTIC_OR_CERTIFICATION_PASS",
+    "stop_conditions": [
+      "source SHA mismatch",
+      "reader/config mismatch",
+      "physical metadata digest mismatch",
+      "edge-class mismatch",
+      "required evidence dimension missing or mismatched",
+      "non-raw realization without verified derivative parentage",
+      "semantic observation used as physical truth",
+      "attempt to claim semantic/source-certification/population authority from R35",
+      "attempt to duplicate expensive candidate build solely to obtain R35"
+    ]
+  },
+  "global_fail_closed": [
+    {
+      "code": "STOP__OLD_R6X_LEDGER_USED_AS_CURRENT",
+      "meaning": "historical ledger cannot satisfy current T2 machine identity"
+    },
+    {
+      "code": "STOP__R1K_ORACLE_NOT_FINAL",
+      "meaning": "no WVS candidate starts without exact fresh R1K oracle"
+    },
+    {
+      "code": "STOP__LIVE_RUNTIME_PIN_NOT_FINAL",
+      "meaning": "no I07 or candidate execution against stale pre-R1J runtime pins"
+    },
+    {
+      "code": "STOP__LITS_A_PARENTAGE_NOT_PROVED",
+      "meaning": "preserved LiTS-A R5 cannot be consumed on self-asserted source SHA"
+    },
+    {
+      "code": "STOP__T3_FREEZE_NOT_CANDIDATE_NEUTRAL",
+      "meaning": "candidate output/state cannot enter expected truth"
+    },
+    {
+      "code": "STOP__I07_NOT_EXACT_FINAL_HEAD_PASS",
+      "meaning": "repository presence or prior-head PASS is insufficient"
+    },
+    {
+      "code": "STOP__R35_PHYSICAL_MISMATCH",
+      "meaning": "semantic equality cannot upgrade physical nonequivalence"
+    },
+    {
+      "code": "STOP__DUPLICATE_BUILD_FOR_R35",
+      "meaning": "do not manufacture a second expensive realization to move the external guard earlier"
+    },
+    {
+      "code": "STOP__HOST_CONTENTION_NOT_CLOSED",
+      "meaning": "single driver lock alone is not proof that the host has no competing benchmark workload"
+    }
+  ],
+  "no_candidate_execution_by_worker4": true,
+  "no_source_open_by_worker4": true,
+  "no_measurement_by_worker4": true
+}
