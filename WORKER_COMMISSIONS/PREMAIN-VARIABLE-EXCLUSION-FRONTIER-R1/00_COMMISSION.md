@@ -47,9 +47,84 @@ Priority:
 2. WVS7 (613 variables)
 3. If methodology and repository assets make it cheap, note portability to the rest of the 35-source estate, but do not delay LiTS/WVS completion.
 
+## Critical correction — semantic relevance does NOT imply retaining every repeated physical instance
+
+The exclusion court must reason at both:
+
+- **semantic family / battery level**, and
+- **physical variable-instance level**.
+
+A question family may be substantively relevant to Rawlsing while many of its repeated member-indexed / roster-indexed / iteration-indexed physical columns are still provably unnecessary.
+
+This is especially important for LiTS, where some instruments repeat the same battery separately across many household/family members and can inflate source width by an order of magnitude.
+
+Do NOT apply this false rule:
+
+```
+QUESTION FAMILY IS PLAUSIBLY RELEVANT
+→
+KEEP EVERY PHYSICAL INSTANCE OF THAT FAMILY
+```
+
+Instead identify repeated-template families such as:
+
+- household-member / family-member roster expansions;
+- the same attribute repeated for member 1, member 2, ... member N;
+- the same substantive battery repeated across enumerated relatives;
+- repeated source slots whose only difference is member/iteration index;
+- mechanically expanded maximum-cardinality placeholders;
+- duplicated administrative or derived views of the same underlying source-native object.
+
+For each repeated family, determine separately:
+
+1. **family-level semantic relevance** — could Rawlsing use the concept at all?
+2. **required consumption grain** — respondent-level, household-summary, relationship-type, member-level, distributional, or other;
+3. **whether distinct member identity/order is itself needed** by any current/foreseeable PRE-V3 / Field Forge / V3-border function;
+4. **minimum physical instance set**, if any, needed to preserve that lawful information;
+5. **cardinality-excess instances** whose only contribution is repeated source enumeration beyond the consumption grain;
+6. whether the information can be represented by an already-governed aggregate/summary/relationship object without retaining every physical repeated slot.
+
+A repeated variable may therefore be class A even when its question family is class B/C, if there is affirmative evidence that the particular physical instance is cardinality-redundant for Rawlsing.
+
+Required exclusion-proof types must include, where applicable:
+
+- `SEMANTICALLY_OUTSIDE_ENVELOPE`
+- `REPEATED_TEMPLATE_CARDINALITY_EXCESS`
+- `DUPLICATE_PHYSICAL_INSTANCE`
+- `SUPERSEDED_DERIVED_OR_ADMIN_VIEW`
+- `SOURCE_PLACEHOLDER_OUTSIDE_REQUIRED_GRAIN`
+
+Do not infer redundancy from naming patterns alone. Use codebook/questionnaire structure, mapping registries, Long Memory / Field Forge / PRE-V3-V3 grain requirements, and exact source documentation.
+
+For repeated families, add these fields to the per-variable frontier outputs when applicable:
+
+- `template_family_id`
+- `instance_index_or_member_slot`
+- `family_semantically_relevant`
+- `required_consumption_grain`
+- `distinct_instance_identity_required`
+- `minimum_retained_instance_basis`
+- `exclusion_proof_type`
+
+Also produce:
+
+`08_REPEATED_BATTERY_AND_CARDINALITY_AUDIT.md`
+
+This must identify the largest width-inflating repeated families in LiTS-I and WVS7, show their physical instance counts, explain the Rawlsing-relevant information grain, and distinguish:
+
+- family relevant / all instances required;
+- family relevant / only bounded subset or summary required;
+- family relevant / individual indexed instances not required;
+- family irrelevant;
+- unresolved.
+
+The goal is specifically to avoid a naive semantic-text classifier preserving 10x physical width merely because each repeated column has a substantively interesting label.
+
 ## Required broad preservation envelope
 
-A variable is NOT guaranteed-excludable if it could plausibly support any current or foreseeable governed role including:
+A variable is NOT guaranteed-excludable merely because it could plausibly support a role at the **family/concept level**. First determine whether the **particular physical instance** contributes information at the consumption grain Rawlsing could lawfully use. Preserve the role envelope below, but do not let it force retention of cardinality-redundant repeated instances.
+
+Relevant roles include:
 
 - attitude / disposition / value / belief response;
 - social-position or demographic coordinate;
@@ -79,7 +154,7 @@ Every source variable must receive one of these dispositions:
 
 ### A. `GUARANTEED_EXCLUDE_CURRENT_ENVELOPE`
 
-Only when affirmative documentary/semantic evidence proves it cannot participate in any preserved role above.
+Only when affirmative documentary/semantic evidence proves either (a) it cannot participate in any preserved role above, **or (b) its semantic family may participate but this particular physical instance is provably redundant/excess relative to the lawful Rawlsing consumption grain**.
 
 This class must have a concrete exclusion proof, not "looks irrelevant."
 
@@ -177,7 +252,7 @@ Examples of potentially excludable classes may exist, such as pure export/proces
    - all 613 variables if the authoritative inventory permits complete enumeration.
 
 4. `03_EXCLUSION_PROOF_LEDGER.csv`
-   - only class-A guaranteed exclusions, each with exact proof.
+   - only class-A guaranteed exclusions, each with exact proof and exclusion-proof type.
 
 5. `04_KEEP_ENVELOPE_ROLE_SUMMARY.md`
    - what role classes force conservative retention.
@@ -195,6 +270,9 @@ Examples of potentially excludable classes may exist, such as pure export/proces
 
 8. `07_METHOD_PORTABILITY_TO_35_SOURCES.md`
    - bounded note on whether the same exclusion court can later run across all source waves.
+
+9. `08_REPEATED_BATTERY_AND_CARDINALITY_AUDIT.md`
+   - largest repeated-template width multipliers, required semantic grain, and provable per-instance excess.
 
 ## PASS law
 
