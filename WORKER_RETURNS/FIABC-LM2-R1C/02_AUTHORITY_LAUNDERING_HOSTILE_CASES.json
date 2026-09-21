@@ -1,0 +1,152 @@
+{
+  "schema": "FIABC_LM2_R1C_AUTHORITY_LAUNDERING_HOSTILE_CASES@1.0.0",
+  "worker": "FIABC-LM2-R1C",
+  "base_tip": "bf0f4ebb00e7304e1cda29f7ca9b6595fff248dc",
+  "governing_invariants": [
+    "SOURCE_TOPOLOGY_DOES_NOT_MINT_CANONICAL_SEMANTIC_AUTHORITY",
+    "EQUAL_LABEL_OR_CODE_DOES_NOT_PROVE_MAPPING",
+    "SOURCE_LOCAL_MAPPING_DOES_NOT_PROVE_CROSS_SOURCE_EQUIVALENCE",
+    "CANDIDATE_OUTPUT_CANNOT_PARENT_OR_MINT_AUTHORITY",
+    "GOVERNANCE_BLOCKED_IS_NOT_EMPIRICAL_TRUTH",
+    "PHYSICAL_EXPECTATION_CANNOT_BE_MUTATED_TO_SOLVE_SEMANTIC_AUTHORITY",
+    "STRUCTURAL_PARENTAGE_CANNOT_BE_REWRITTEN_WITHOUT_DETERMINANT"
+  ],
+  "ontology_evidence": {
+    "source_semantics_topology_ceiling": [
+      "native question/component meaning",
+      "response values/special states",
+      "response topology/multiplicity/order/rank"
+    ],
+    "native_canonical_mapping_ceiling": [
+      "native-to-canonical identifier/value transformation"
+    ],
+    "cross_source_relation_kinds_remain_separate": [
+      "SOURCE_EQUIVALENCE",
+      "SOURCE_RESPONDENT_LINKAGE",
+      "SOURCE_COMPOSITION_POOLING",
+      "SOURCE_BACKFILL"
+    ]
+  },
+  "exact_wvs7_case": {
+    "source_semantics_authority_ref": {
+      "authority_id": "EE-P2F2-WVS7-SOURCE-SEMANTICS-TOPOLOGY",
+      "authority_version": "1.0.0",
+      "authority_content_hash": "c7336ce479b8625b71e33743a05e43525c387dd50e4be1bb7af313667f9c341f"
+    },
+    "response_semantics_ref": {
+      "kind": "WVS7ResponseStateSemantics@1.0.0",
+      "content_hash": "8aaa37c601f0dac74870c585567403520ce77287feae525832c59841dac1b710"
+    },
+    "target_domain_replay_ref": {
+      "kind": "WVS7TargetDomainReplay@1.0.0",
+      "content_hash": "5d0a1ca4cc23c198a6afd4b935d425d51c7dd5cd143d056b351740c059608ef4"
+    },
+    "substantive_source_codes": [1, 2, 3, 4, 5],
+    "frozen_target_tokens": ["1", "2", "3", "4", "5"],
+    "special_source_codes_without_canonical_substantive_value": [-5, -4, -2, -1],
+    "canonical_question_mapping_currently_authorized": false
+  },
+  "cases": [
+    {
+      "id": "H01",
+      "mutation": "CHANGE_AUTHORITY_KIND_LABEL_ONLY",
+      "input": "SOURCE_SEMANTICS_TOPOLOGY evidence unchanged",
+      "required_result": "REJECT",
+      "reason": "Immutable authority content cannot be strengthened by relabeling."
+    },
+    {
+      "id": "H02",
+      "mutation": "VALIDATOR_ACCEPTS_SOURCE_SEMANTICS_TOPOLOGY_FOR_CANONICAL_VALUE",
+      "required_result": "REJECT",
+      "reason": "Collapses source-native semantics and native-to-canonical transformation authority."
+    },
+    {
+      "id": "H03",
+      "mutation": "MAP_BY_EQUAL_LABEL_OR_EQUAL_CODE",
+      "required_result": "REJECT",
+      "reason": "Lexical/numeric coincidence is not mapping authority."
+    },
+    {
+      "id": "H04",
+      "mutation": "DERIVED_MAPPING_WITHOUT_EXPLICIT_PARENT_PROVENANCE",
+      "required_result": "REJECT",
+      "reason": "A derived authority must expose every accepted semantic and target-identity premise."
+    },
+    {
+      "id": "H05",
+      "mutation": "DERIVED_MAPPING_ASSERTS_CROSS_SOURCE_EQUIVALENCE",
+      "required_result": "REJECT",
+      "reason": "Native-to-canonical WVS7 representation grants no SOURCE_EQUIVALENCE."
+    },
+    {
+      "id": "H06",
+      "mutation": "DERIVED_MAPPING_PARENTED_BY_CANDIDATE_A_B_OR_C_OUTPUT",
+      "required_result": "REJECT",
+      "reason": "Authority must preexist candidate output and oracle freeze."
+    },
+    {
+      "id": "H07",
+      "mutation": "DERIVED_MAPPING_ALSO_MAPS_CANONICAL_QUESTION_REF",
+      "required_result": "REJECT",
+      "reason": "R6S canonical question binding is explicitly NOT_AUTHORIZED; the current proven gap is response-value mapping only."
+    },
+    {
+      "id": "H08",
+      "mutation": "DERIVED_MAPPING_MAPS_SPECIAL_CODES_MINUS5_MINUS4_MINUS2_MINUS1_TO_SUBSTANTIVE_CANONICAL_TOKENS",
+      "required_result": "REJECT",
+      "reason": "Accepted R6S leaves those canonical values absent and carries typed special states."
+    },
+    {
+      "id": "H09",
+      "mutation": "DERIVED_MAPPING_CHANGES_LOCK2_QUERY_DOMAIN_OR_46_CANDIDATE_FRONTIER",
+      "required_result": "REJECT",
+      "reason": "The bounded repair is authority closure only; frozen workload semantics remain determinants."
+    },
+    {
+      "id": "H10",
+      "mutation": "CHANGE_WVS7_PHYSICAL_EXPECTATION_TO_BYPASS_MAPPING_ERROR",
+      "required_result": "REJECT",
+      "reason": "Physical expectation has no semantic authority."
+    },
+    {
+      "id": "H11",
+      "mutation": "REGENERATE_STRUCTURAL_PREIMAGE_WITHOUT_PHYSICAL_DETERMINANT",
+      "required_result": "REJECT",
+      "reason": "Mapping-authority repair does not alter source bytes or structural parentage."
+    },
+    {
+      "id": "H12",
+      "mutation": "START_CANDIDATE_PROCESS_BEFORE_FRESH_ORACLE_FREEZE",
+      "required_result": "REJECT",
+      "reason": "Oracle independence requires candidate-neutral successful common C11 and freeze first."
+    }
+  ],
+  "surviving_repair_contract": {
+    "repair_class": "DERIVED_NATIVE_TO_CANONICAL_MAPPING_AUTHORITY",
+    "authority_kind": "NATIVE_CANONICAL_MAPPING_HARMONIZATION",
+    "scope": {
+      "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+      "questions": ["Q291G5", "Q291P5"],
+      "mapping": {
+        "1": "1",
+        "2": "2",
+        "3": "3",
+        "4": "4",
+        "5": "5"
+      },
+      "target_use": "EXACT_FROZEN_WVS7_P2_PROGRAM_ONLY"
+    },
+    "must_not_grant": [
+      "CANONICAL_QUESTION_MAPPING",
+      "CROSS_SOURCE_EQUIVALENCE",
+      "SOURCE_POOLING",
+      "RESPONDENT_LINKAGE",
+      "NEW_RESPONSE_MEANING",
+      "NEW_ROUTING",
+      "NEW_WEIGHT_OR_ESTIMAND",
+      "NEW_COORDINATE_SEMANTICS",
+      "POPULATION_GENERALIZATION"
+    ],
+    "issued_by_this_worker": false
+  }
+}
