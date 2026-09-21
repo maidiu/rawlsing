@@ -97,6 +97,7 @@ CURRENT_REQUIRED_PATHS = tuple(sorted({
     T5_PATH,
     FINAL_HQ_PATH,
     "rawlsing_next/fiabc_succession_preflight.py",
+    "rawlsing_next/fiabc_succession_producer.py",
     "rawlsing_next/pre553_independent_parity_oracle.py",
     "rawlsing_next/fiabc_live_accounting_binding.py",
     "rawlsing_next/fiabc_telemetry_semantics.py",
@@ -742,9 +743,15 @@ def produce(
         )
 
     # Fail before producing anything if a current owner/binding required by
-    # succession law is not present at this exact HEAD.
-    for required_path in CURRENT_REQUIRED_PATHS:
-        current_ref(repo_root, head, required_path, "CURRENT_IMPLEMENTATION", "current-head producer prerequisite")
+    # succession law is not present at this exact HEAD, and retain the exact
+    # Git-object/content identities in the producer receipt.
+    prerequisite_refs = {
+        required_path: current_ref(
+            repo_root, head, required_path, "CURRENT_IMPLEMENTATION",
+            "current-head producer prerequisite",
+        )
+        for required_path in CURRENT_REQUIRED_PATHS
+    }
 
     t2 = _json_file(repo_root, T2_PATH)
     t5 = _json_file(repo_root, T5_PATH)
@@ -809,6 +816,13 @@ def produce(
             "t2_manifest_sha256": hashlib.sha256((repo_root / T2_PATH).read_bytes()).hexdigest(),
             "t5_contract_sha256": hashlib.sha256((repo_root / T5_PATH).read_bytes()).hexdigest(),
             "final_hq_return_sha256": hashlib.sha256((repo_root / FINAL_HQ_PATH).read_bytes()).hexdigest(),
+            "required_files": {
+                path: {
+                    "git_blob_sha": ref["git_blob_sha"],
+                    "content_sha256": ref["content_sha256"],
+                }
+                for path, ref in sorted(prerequisite_refs.items())
+            },
         },
     }
     if receipt_output is not None:
