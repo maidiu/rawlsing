@@ -1,0 +1,81 @@
+{
+  "schema": "FIABC_LM2_R1C_RETURN@1.0.0",
+  "worker": "FIABC-LM2-R1C",
+  "repository": "maidiu/rawlsing",
+  "base_branch": "agent/rabochii-premain-fiabc-lm2-wvs-parentage-oracle-physical-r1",
+  "base_tip": "bf0f4ebb00e7304e1cda29f7ca9b6595fff248dc",
+  "branch": "agent/rabochii-premain-fiabc-lm2-r1c-mapping-authority-hostile-court-r1",
+  "return_path": "WORKER_RETURNS/FIABC-LM2-R1C/",
+  "status": "PASS__HOSTILE_REPAIR_CLASS_ADJUDICATED",
+  "surviving_repair_count": 1,
+  "surviving_repair": {
+    "candidate": "C3",
+    "class": "DERIVED_NATIVE_TO_CANONICAL_MAPPING_AUTHORITY",
+    "authority_kind": "NATIVE_CANONICAL_MAPPING_HARMONIZATION",
+    "semantic_premise_change": false,
+    "new_immutable_authority_object_required": true,
+    "issued_by_this_worker": false,
+    "scope": "WVS7_Q291G5_Q291P5_SUBSTANTIVE_CODES_1_TO_5__FROZEN_P2_ONLY",
+    "cross_source_equivalence_granted": false,
+    "canonical_question_mapping_granted": false
+  },
+  "rejected_or_unproved_repairs": {
+    "C1_RELABEL": "REJECTED__AUTHORITY_LAUNDERING",
+    "C2_BROADEN_VALIDATOR": "REJECTED__GLOBAL_SEMANTIC_LAUNDERING",
+    "C4_NATIVE_ONLY": "REJECTED_FOR_CURRENT_LM2_RECOVERY__EARLIER_WORKLOAD_REISSUE_REQUIRED",
+    "C5_SPLIT_KINDS": "REJECTED_AS_UNNECESSARY_CURRENT_ONTOLOGY",
+    "C6_EXISTING_MAPPING_REF": "NOT_PROVED__NO_EXACT_POSITIVE_MAPPING_REF_IN_FROZEN_SET",
+    "C7_OTHER": "NONE_DISCOVERED"
+  },
+  "frozen_evidence": {
+    "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+    "source_rows": 97220,
+    "source_variables": 613,
+    "structural_preimage_identity": "151907b3163959d0eb5ebb020fa5253d33447362420e465600035744112fe5bc",
+    "parentage_bundle_identity": "5037c55bf1a017112c0fe5f18ca5905696d66dfefcc4d8f47dcb0e7fcb13f37c",
+    "lock2": "8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188",
+    "frontier_candidate_count": 46,
+    "physical_expectation_identity": "9845c24da0c03adb4dfd65118b7c8c39a60a30337f33cc4177ffc6c848d02390"
+  },
+  "oracle_recovery": {
+    "frontier_retained": true,
+    "lock2_retained": true,
+    "source_reread_required": false,
+    "structural_preimage_regeneration_required": false,
+    "parentage_regeneration_required": false,
+    "physical_expectation_regeneration_required": false,
+    "r6s_authority_reference_reissue_required": true,
+    "r6s_materializer_identity_recompute_required": true,
+    "common_c11_rematerialization_required": true,
+    "common_c11_input": "EXISTING_STRUCTURAL_PREIMAGE_AND_PARENTAGE",
+    "fresh_oracle_materialization_required": true,
+    "previous_oracle_identity_reusable": false,
+    "reason_previous_oracle_not_reusable": "NO_ORACLE_WAS_LAWFULLY_FROZEN",
+    "candidate_start_before_oracle_freeze": false
+  },
+  "regression_court": {
+    "status": "REGRESSION_COURT_SPECIFIED__NOT_EXECUTED_BY_R1C",
+    "source_bytes_required": false
+  },
+  "constraints": {
+    "wvs7_source_opened": false,
+    "structural_preimage_regenerated": false,
+    "candidate_process_started": false,
+    "i03_executed": false,
+    "i05_executed": false,
+    "measured_p2x_run": false,
+    "new_semantic_authority_silently_minted": false,
+    "c11_validator_weakened": false,
+    "physical_expectation_changed": false,
+    "structural_parentage_changed": false
+  },
+  "outputs": [
+    "00_RETURN.md",
+    "01_CANDIDATE_REPAIR_COURT.csv",
+    "02_AUTHORITY_LAUNDERING_HOSTILE_CASES.json",
+    "03_ORACLE_RECOVERY_BOUNDARY.md",
+    "04_REQUIRED_REGRESSION_COURT.md",
+    "RETURN.json"
+  ],
+  "terminal": "FIABC_LM2_R1C_HOSTILE_COURT_COMPLETE__LAWFUL_REPAIR_CLASS_AND_ORACLE_RECOVERY_BOUNDARY_PROVED"
+}
