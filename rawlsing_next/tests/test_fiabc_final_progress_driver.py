@@ -354,3 +354,31 @@ def test_sealed_current_manifest_reports_derived_102_89_6_17_shape():
     wvs_c = plan.position("WVS7/C/S16_TERMINAL_METRIC_VECTOR_COMPLETENESS")
     assert (wvs_c.cell_index, wvs_c.cell_total) == (6, 6)
     assert (wvs_c.stage_index, wvs_c.stage_total) == (17, 17)
+
+
+def test_current_six_cell_candidate_failure_stops_before_success_only_s17():
+    machine = _six_cell_machine()
+    entries = {}
+    for cell in machine.document["cells"]:
+        for sid in machine.document["stage_catalog"]:
+            address = f"{cell['source']}/{cell['candidate']}/{sid}"
+            entries[address] = {
+                "state": "TERMINAL",
+                "verifier_completion": True,
+                "terminal_disposition": "PASS",
+            }
+    entries["WVS7/C/S01_BUILD"]["terminal_disposition"] = "CANDIDATE_LOCAL_FAILURE"
+
+    class Ledger:
+        def stage_entry(self, address):
+            return entries.get(address)
+
+        def revalidate_terminal(self, address):
+            return entries[address]
+
+    try:
+        d._final_ready(machine, Ledger())
+    except d.CandidateLocalFailure as exc:
+        assert exc.receipt["candidate_failure_cells"] == ["WVS7/C"]
+    else:
+        raise AssertionError("success-only S17 gate admitted a candidate-local failure")
