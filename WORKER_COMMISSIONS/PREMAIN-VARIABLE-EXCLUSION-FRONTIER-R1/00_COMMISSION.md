@@ -1,0 +1,209 @@
+# PREMAIN GUARANTEED-NOT-USED VARIABLE EXCLUSION FRONTIER — R1
+
+**AGENT TYPE: BROWSER / GITHUB / CODEBOOK RESEARCH ONLY**
+
+**MODEL: GPT-5.6 Sol High**
+
+Repository: `maidiu/rawlsing`
+
+Exact sealed base: `445c2fd534db61de0d0d348a6d77a11faa419cc3`
+
+Branch: `agent/rabochii-premain-variable-exclusion-frontier-r1`
+
+Return directory:
+
+`WORKER_RETURNS/PREMAIN-VARIABLE-EXCLUSION-FRONTIER-R1/`
+
+## Hard prohibitions
+
+Do not use the user's Mac/local runtime.
+Do not open or materialize raw respondent-level LiTS/WVS SAV/DTA/ZIP/CSV data.
+Do not inspect raw response distributions/frequencies to infer semantics.
+Do not run Candidate A/B/C.
+Do not run measured P2X.
+Do not alter FIABC workloads or current semantic authorities.
+Do not infer "unused" merely because a variable is absent from the current FIABC proving slice.
+
+You MAY read:
+- codebooks;
+- variable dictionaries;
+- source metadata registries;
+- source/question mapping CSVs;
+- semantic authority ledgers;
+- questionnaire/instrument documentation;
+- Long Memory / PRE-MAIN / Field Forge / V3-boundary documents;
+- public codebook/instrument documentation if repository material is incomplete.
+
+## Mission
+
+Independently determine, with conservative proof standards, which LiTS and WVS variables are **guaranteed not to be needed by Rawlsing's present foreseeable empirical architecture envelope**, without pretending the positive/use frontier is final.
+
+The desired result is the complement-side optimization:
+
+> We may not yet know every variable Rawlsing WILL use, but can we prove that some variables WILL NOT be used for any lawful current/foreseeable PRE-V3, Field Forge, V3-border, routing, design, discovery, replay or audit function?
+
+Priority:
+1. LiTS-I (1,198 variables)
+2. WVS7 (613 variables)
+3. If methodology and repository assets make it cheap, note portability to the rest of the 35-source estate, but do not delay LiTS/WVS completion.
+
+## Required broad preservation envelope
+
+A variable is NOT guaranteed-excludable if it could plausibly support any current or foreseeable governed role including:
+
+- attitude / disposition / value / belief response;
+- social-position or demographic coordinate;
+- household/family/relationship context;
+- education, occupation, employment, resources, deprivation, class/status;
+- religion/sect, ethnicity/race/caste, migration, language;
+- geography, urban/rural, country/region/city;
+- age, sex/gender, cohort or temporal context;
+- routing, questionnaire exposure, form, ballot, split, module, applicability;
+- respondent identity / record linkage required by exact replay;
+- survey design, strata, cluster/PSU, weights, estimands;
+- question topology, multi-response, ranking, repeated/component structures;
+- same-respondent/J/coadministration authority;
+- comparator/discovery/relation construction;
+- Field Forge position geometry;
+- Field Forge disposition geometry;
+- position↔disposition pressure/conditional topology;
+- PRE-V3 learned-world production;
+- PRE-V3 → V3 interface requirements;
+- source authority, missingness, scale, transformation, provenance, replay, invalidation or audit.
+
+Do not exclude a variable solely because today's code does not consume it.
+
+## Classification system
+
+Every source variable must receive one of these dispositions:
+
+### A. `GUARANTEED_EXCLUDE_CURRENT_ENVELOPE`
+
+Only when affirmative documentary/semantic evidence proves it cannot participate in any preserved role above.
+
+This class must have a concrete exclusion proof, not "looks irrelevant."
+
+### B. `CURRENTLY_UNUSED_BUT_FUTURE_PLAUSIBLE`
+
+Not currently consumed by live workloads, but semantically capable of supporting a foreseeable Rawlsing role.
+
+### C. `KEEP_REQUIRED_OR_PLAUSIBLY_CONSUMABLE`
+
+Current authority/use or clear prospective relevance.
+
+### D. `UNRESOLVED__DO_NOT_PRUNE`
+
+Insufficient authority to exclude safely.
+
+Unknown defaults to D, never A.
+
+## Evidence hierarchy
+
+Prefer, in order:
+
+1. current source/semantic authority;
+2. current machine-readable relation/mapping registries;
+3. current PRE-MAIN/HQ governance;
+4. current/admitted Field Forge / V3-border requirements;
+5. bounded historical source mappings/codebooks;
+6. public codebook/instrument documentation;
+7. lexical inference only as a search aid, never final exclusion proof.
+
+Exploratory Field Forge documents may enlarge the conservative KEEP envelope when they preserve a plausible architecture requirement, but cannot by themselves prove source semantics.
+
+## Required repository assets
+
+At minimum inspect and reconcile:
+
+- `data/ddm_build_copy/authority/full_question_relation_authority/R1_20260814/question_structural_mapping_live_PLUS4_FINAL_APPLIED_R1.csv`
+- `data/ddm_build_copy/bindings/question_relation_registry_35wave_active_v1.csv`
+- `data/ddm_build_copy/authority/response_scale_encoding_registry_35wave_active_v1.csv`
+- `data/ddm_build_copy/manifests/question_wave_itinerary.csv`
+- `data/ddm_build_copy/manifests/country_source_mapping_registry.csv`
+- source/wave codebook material and codebook builders
+- LiTS 1,198-slot ownership/projection/exclusion ledger
+- LiTS accepted semantic-response authorities and any broader active semantic slots
+- WVS current mapping/authority package
+- O11/T15 wave capability atlas and relevant relation/J/routing authority
+- Field Forge codebook-grounded observability stress test
+- Field Forge PRE553 observatory / position/disposition requirements
+- current PRE-V3/V3-border authority and V3/PFF convergence documents
+- GitHub issue #421
+
+Search for additional master variable/codebook inventories. The 7.6MB full question structural mapping and 35-wave relation registry are expected to be central.
+
+## Special LiTS law
+
+Do not use the current two-response FIABC proving scope as the positive frontier.
+
+The 1,198-slot ledger's "nonparticipating in accepted projection" status is evidence only about that bounded projection, not permanent Rawlsing irrelevance.
+
+Specifically preserve the distinction between:
+- bounded proving response slots;
+- broader accepted semantic response slots;
+- Field Forge/PRE-V3 plausible positional/dispositional variables;
+- routing/design/weight/identity/audit variables;
+- truly provable exclusions.
+
+## Special WVS law
+
+Do not reduce WVS to Q291G5/Q291P5/B_COUNTRY merely because FIABC uses that proving pair.
+
+Rawlsing's historical/current project purpose includes broad WVS cultural/value drivers and later PRE-V3/Field Forge empirical work.
+
+## Exclusion proof requirements
+
+A class-A exclusion row must contain:
+- source/wave;
+- variable code/name;
+- codebook/source meaning;
+- current semantic disposition where known;
+- why it cannot support any preserved Rawlsing role;
+- exact evidence path/ref;
+- authority ceiling;
+- exclusion proof type;
+- confidence must be categorical `PROVED_WITHIN_CURRENT_ENVELOPE`, not a probability.
+
+Examples of potentially excludable classes may exist, such as pure export/processing artifacts or source-local administrative duplicates, but do NOT assume even these are excludable: form/routing/design/identity/provenance fields can look administrative and still be essential.
+
+## Required outputs
+
+1. `00_RETURN.md`
+
+2. `01_LITS_I_VARIABLE_FRONTIER.csv`
+   - all 1,198 variables if the authoritative inventory permits complete enumeration.
+
+3. `02_WVS7_VARIABLE_FRONTIER.csv`
+   - all 613 variables if the authoritative inventory permits complete enumeration.
+
+4. `03_EXCLUSION_PROOF_LEDGER.csv`
+   - only class-A guaranteed exclusions, each with exact proof.
+
+5. `04_KEEP_ENVELOPE_ROLE_SUMMARY.md`
+   - what role classes force conservative retention.
+
+6. `05_UNRESOLVED_AND_STALE_SEMANTICS.md`
+   - variables/classes that cannot yet be safely adjudicated.
+
+7. `06_PROJECTED_SAVINGS_WITHOUT_RAW_EXECUTION.json`
+   - counts only:
+     - total variables
+     - class A/B/C/D counts
+     - guaranteed-exclusion percentage by source
+   - NO runtime/time savings estimate unless supported by already-recorded measurements.
+   - NO raw source processing.
+
+8. `07_METHOD_PORTABILITY_TO_35_SOURCES.md`
+   - bounded note on whether the same exclusion court can later run across all source waves.
+
+## PASS law
+
+PASS does NOT mean "we know the final positive variable set."
+
+PASS means:
+- every LiTS-I/WVS7 variable is either conservatively classified or explicitly unresolved;
+- every guaranteed exclusion has affirmative evidence;
+- no proving-slice absence was promoted to permanent exclusion;
+- the result can safely tell HQ how much width can be removed **without foreclosing current foreseeable Rawlsing functions**.
+
+If the documentary estate cannot support a guaranteed exclusion for many variables, return that honestly. A small proven class-A set is better than a large guessed one.
