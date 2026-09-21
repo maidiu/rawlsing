@@ -1,0 +1,145 @@
+{
+  "schema": "CLOSED35_R3_EVS1990_RETURN@1.0.0",
+  "worker_id": "CLOSED35-R3-EVS1990",
+  "repository": "maidiu/rawlsing",
+  "base": {
+    "branch": "agent/vozhd-closed35-l2r-r1-fanin-r1",
+    "sha": "da33eb6a8225c14eee9490633a3263388dc5536c"
+  },
+  "branch": "agent/rabochii-closed35-r3-evs1990-realization-r1",
+  "return_path": "WORKER_RETURNS/CLOSED35-R3-EVS1990/",
+  "disposition": "SOURCE_SPECIFIC_REALIZATION_IMPLEMENTED__TESTS_AUTHORED_NOT_EXECUTED",
+  "terminal": "CLOSED35_R3_EVS1990_SOURCE_SPECIFIC_REALIZATION_IMPLEMENTED__READY_FOR_ABC_QUALIFICATION",
+  "source": {
+    "family": "EVS",
+    "wave": "1990",
+    "canonical_filename": "EVS 1990.sav",
+    "canonical_sha256": "66252a92c59bf6759b79a6b35b2be658b98a433373212a70c8ec94755d3e02ec",
+    "format": "SAV",
+    "authority_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+    "accepted_decoder_condition": "SAV_SOURCE_DECLARED_WINDOWS1252",
+    "source_declared_encoding": "windows-1252",
+    "machine_character_code": 1252,
+    "replay_identity": "SOURCE_SHA256+ZERO_BASED_SOURCE_ROW_ORDINAL",
+    "inherited_rows": 38213,
+    "inherited_variables": 390
+  },
+  "candidate_neutral_semantic_owner": "EVS1990_SEMANTIC_OWNER_V1",
+  "semantic_owner_surface": "PRE553_SOURCE_BACKED_C11_FACADE@1.0.0",
+  "candidate_law": "A_B_C_SHARE_ONE_SOURCE_SPECIFIC_SEMANTIC_REALIZATION",
+  "realization": {
+    "q745": {
+      "source_ordinal": 389,
+      "variable_identity_preserved": true,
+      "rows_seen": 38213,
+      "ordinary_present_count": 0,
+      "system_missing_count": 0,
+      "user_missing_count": 38213,
+      "observed_raw_code": -5,
+      "source_missing_declaration": [{"lo": -5, "hi": -1}],
+      "column_deletion_allowed": false,
+      "source_cell_absence_substitution_allowed": false,
+      "raw_value_erased_by_missing_classification": false
+    },
+    "ranked_triplets": [
+      [
+        {"ordinal": 271, "variable": "q530a", "role": "ORDERED_FIRST_SLOT"},
+        {"ordinal": 272, "variable": "f530a", "role": "INTERPOSED_SOURCE_FLAG"},
+        {"ordinal": 273, "variable": "q531b", "role": "ORDERED_SECOND_SLOT"}
+      ],
+      [
+        {"ordinal": 274, "variable": "q532a", "role": "ORDERED_FIRST_SLOT"},
+        {"ordinal": 275, "variable": "f532a", "role": "INTERPOSED_SOURCE_FLAG"},
+        {"ordinal": 276, "variable": "q533b", "role": "ORDERED_SECOND_SLOT"}
+      ]
+    ],
+    "split_coordinate_companions": ["country1", "c_abrv1", "cntry1_y"],
+    "cross_release_coordinate_harmonization": false,
+    "weight_carriers": [
+      {"ordinal": 11, "variable": "weight_g"},
+      {"ordinal": 12, "variable": "weight_s"}
+    ],
+    "weight_carrier_aliasing": false,
+    "default_weight_selected": false,
+    "weight_estimand_invented": false,
+    "native_id_promoted_to_replay_identity": false
+  },
+  "bounded_unknowns": [
+    "BOUNDED_UNKNOWN__NATIVE_ID_SCOPE",
+    "BOUNDED_UNKNOWN__WEIGHT_G_ESTIMAND",
+    "BOUNDED_UNKNOWN__WEIGHT_S_ESTIMAND",
+    "BOUNDED_UNKNOWN__WEIGHT_G_WEIGHT_S_RELATION_AND_DEFAULT_USE",
+    "BOUNDED_UNKNOWN__CROSS_RELEASE_COORDINATE_EQUIVALENCE"
+  ],
+  "s35_edge_classes": [
+    "EC01",
+    "EC02",
+    "EC05",
+    "EC06",
+    "EC09",
+    "EC12",
+    "EC13"
+  ],
+  "r35_hooks": {
+    "i01_schema": "PRE553_PHYSICAL_METADATA@1.0.0",
+    "i02_source_receipt_schema": "FIABC_CANONICAL_SOURCE_VERIFICATION_RECEIPT@1.0.0",
+    "i02_derivative_receipt_schema": "FIABC_DERIVATIVE_PARENTAGE_RECEIPT@1.0.0",
+    "i02_bundle_schema": "FIABC_DERIVATIVE_PARENTAGE_BUNDLE@1.0.0",
+    "i03_scope_schema": "FIABC_R35_I03_SOURCE_PHYSICAL_SCOPE@1.0.0",
+    "i03_expectation_schema": "FIABC_R35_I03_CANONICAL_PHYSICAL_EXPECTATION@1.0.0",
+    "i03_candidate_schema": "FIABC_R35_I03_CANDIDATE_PHYSICAL_REALIZATION@1.0.0",
+    "i03_receipt_schema": "FIABC_R35_I03_WHOLE_SOURCE_PHYSICAL_EQUIVALENCE_RECEIPT@1.0.0",
+    "i03_pass_state_if_later_obtained": "PHYSICAL_EQUIVALENCE_PASS__NOT_SEMANTIC_OR_CERTIFICATION_PASS",
+    "semantic_authority": false
+  },
+  "implementation": {
+    "kind": "DECLARATIVE_BROWSER_REALIZATION_PACKET",
+    "runtime_source_processing_files_added": [],
+    "candidate_neutral": true
+  },
+  "tests": {
+    "authored": true,
+    "status": "TESTS_AUTHORED__NOT_EXECUTED",
+    "executed_by_worker": false,
+    "rejection_tests": [
+      "ALL_USER_MISSING_COLUMN_DELETION",
+      "Q745_TREATED_AS_NONEXISTENT",
+      "Q745_USER_MISSING_STATE_COLLAPSE",
+      "RANKED_TRIPLET_FLATTENING_OR_DRIFT",
+      "CROSS_RELEASE_COORDINATE_HARMONIZATION",
+      "WEIGHT_G_WEIGHT_S_COLLAPSE",
+      "DEFAULT_WEIGHT_INVENTION",
+      "WEIGHT_ESTIMAND_FROM_VARIABLE_NAME",
+      "NATIVE_ID_PROMOTED_TO_REPLAY_IDENTITY",
+      "CROSS_WAVE_DECODER_SEMANTIC_LEAKAGE",
+      "ROUTING_INFERRED_FROM_ALL_MISSINGNESS",
+      "CROSS_WAVE_SEMANTIC_LEAKAGE",
+      "SOURCE_SHA_DRIFT",
+      "CANDIDATE_SPECIFIC_SEMANTIC_DIVERGENCE",
+      "S35_EDGE_SCOPE_DRIFT",
+      "PHYSICAL_RECEIPT_LAUNDERED_INTO_SEMANTIC_AUTHORITY",
+      "BROWSER_IMPLEMENTATION_PROMOTED_TO_SOURCE_QUALIFICATION"
+    ]
+  },
+  "outputs": [
+    "00_RETURN.md",
+    "01_REALIZATION_CONTRACT.md",
+    "02_MISSING_RANK_WEIGHT_MAP.csv",
+    "03_PHYSICAL_EDGE_BINDING.json",
+    "04_TEST_PROTOCOL.md",
+    "RETURN.json"
+  ],
+  "implementation_files": [],
+  "proof_boundary": {
+    "local_raw_sav_opened": false,
+    "real_source_processing_executed": false,
+    "source_decoding_reexecuted": false,
+    "authority71_fixtures_remeasured": false,
+    "whole_source_physical_equivalence_passed": false,
+    "abc_candidates_executed": false,
+    "i05_passed": false,
+    "source_certified_beyond_accepted_authority": false,
+    "measured_p2x_run": false
+  },
+  "commit_sha_note": "Final Git commit SHA is reported externally because a commit cannot contain its own hash in its preimage."
+}
