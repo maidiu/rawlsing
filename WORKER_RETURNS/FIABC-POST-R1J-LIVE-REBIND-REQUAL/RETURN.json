@@ -1,0 +1,84 @@
+{
+  "schema": "FIABC_POST_R1J_LIVE_REBIND_REQUAL_RETURN@1.0.0",
+  "worker": "FIABC-POST-R1J-LIVE-REBIND-REQUAL",
+  "repository": "maidiu/rawlsing",
+  "exact_base": "357cc2ac6952a478fa2e38f9adbe45ebb3671081",
+  "branch": "agent/rabochii-premain-fiabc-post-r1j-live-rebind-requal-r1",
+  "return_path": "WORKER_RETURNS/FIABC-POST-R1J-LIVE-REBIND-REQUAL/",
+  "status": "PASS",
+  "terminal": "FIABC_POST_R1J_LIVE_REBIND_REQUAL_PASS__R1J_R6S_TRANSPOSED__SOURCE_INDEPENDENT_COURT_GREEN__ONLY_R1K_ORACLE_DEPENDENT_PINS_REMAIN",
+  "qualification": {
+    "head": "f581bb55051ca6fd29e3b463ee5e7597b1d8d952",
+    "pull_request": 428,
+    "pull_request_closed_without_merge": true,
+    "workflow": "Rabochii Governed Bounded Court",
+    "run_id": 35583918045,
+    "job_id": 106282743603,
+    "protocol_tests": "20 passed",
+    "court_tests": "221 passed, 28 subtests passed",
+    "artifact_id": 10631552576,
+    "artifact_zip_sha256": "37f8dc120318ab8b05ed2fcc41264e15166870c544ed221b416814f2814923a4",
+    "first_attempt": {
+      "run_id": 35583753273,
+      "disposition": "ENVIRONMENT_DEPENDENCY_ONLY__PANDAS_MISSING",
+      "production_semantic_failure": false
+    }
+  },
+  "r1j_live_binding": {
+    "representation_authority": "63543411892d8d30fb5670a39714a3dc115145e3f054a7017a325dab1c6cf053",
+    "representation_snapshot": "e23ec7451d150597799bbd9049cdab45339e647694a9ccfacb2e53aaf09b609b",
+    "response_binding": "f225e6289b553ab221902c95c1b416bbd01fb722efcc77c909e239d4ee02e87b",
+    "projection_authority": "5e793e2fe255d0a0ef6dd405f4bd4c7df125c2d6fb23bd464a0f77d65cb1fcdf",
+    "projection_snapshot": "540914a3ddf3b0349720fd81de49b1a88f194929adf1ea5506718af94e65c0d2",
+    "projection_identity": "f400c804fea9b526f25eac823138ecb30e10efaad3207c4578661f684adee665",
+    "live_materializer_blob": "ec685803a7416032037ee415e8faf7bf60db8f1b"
+  },
+  "conserved": {
+    "lock2": "8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188",
+    "wvs_frontier_count": 46,
+    "p2f2_runtime_package_blob": "e04e84b76f8b4eb53905276dd025938bf2e5f6fe",
+    "candidate_meanings_unchanged": true,
+    "lock1_unchanged": true,
+    "lits_workload_unchanged": true,
+    "telemetry_semantics_unchanged": true,
+    "lifecycle_semantics_unchanged": true,
+    "i07_logic_unchanged": true,
+    "i08_logic_unchanged": true,
+    "same_host_measurement_law_unchanged": true
+  },
+  "successor_qualified_post_qf1_blobs": {
+    "source_backed_c11_facade": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+    "independent_parity_oracle": "2b2b5fb869e8a1a47814dc8aaa7ff2e2ae20e757"
+  },
+  "pending": {
+    "state": "PENDING_EXACT_R1K_ORACLE_PIN",
+    "fields": [
+      "WVS7 oracle_identity_sha256",
+      "WVS7 oracle_document_path",
+      "WVS7 oracle_document_sha256",
+      "WVS7 oracle_freeze_authority_ref",
+      "candidate-neutral freeze receipt SHA after exact R1K fan-in"
+    ],
+    "dummy_or_guessed_values_created": false
+  },
+  "prohibited_execution": {
+    "raw_survey_carriers_opened_or_materialized": false,
+    "candidate_a_b_c_run": false,
+    "real_i03_run": false,
+    "real_i05_run": false,
+    "measured_p2x_run": false,
+    "sibling_merge_or_rebase": false
+  },
+  "boundary": "This return closes Worker 2 live rebind/source-independent qualification only. It does not claim LiTS-A parentage or final real-gate/I07 completion.",
+  "outputs": [
+    "00_RETURN.md",
+    "01_LIVE_R6S_REBIND_LEDGER.csv",
+    "02_CURRENT_RUNTIME_IDENTITY_DELTA.json",
+    "03_SOURCE_INDEPENDENT_REQUALIFICATION_LEDGER.csv",
+    "04_STATIC_IDENTITY_LEDGER.csv",
+    "05_R1K_DEPENDENT_FINAL_PINS.json",
+    "06_FINAL_REBIND_COMPLETION_PLAN.md",
+    "RETURN.json"
+  ],
+  "return_commit": "SELF_COMMIT_REPORTED_EXTERNALLY__COMMIT_HASH_CANNOT_BE_EMBEDDED_IN_ITS_OWN_PREIMAGE"
+}
