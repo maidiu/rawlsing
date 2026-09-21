@@ -21,6 +21,8 @@ from rawlsing_next.fiabc_telemetry_semantics import (
     CellIdentity,
     CostClass,
     LifecycleActionReceipt as TelemetryLifecycleReceipt,
+    METRIC_DEFINITIONS,
+    MetricState as TelemetryMetricState,
     ObservationContext,
     ProcessEnvelopeReceipt as TelemetryProcessReceipt,
     TelemetryLedger,
@@ -45,6 +47,54 @@ LIVE_CONTRACT = "FIABC_T4_LIVE_ACCOUNTING_BINDING@1.0.0"
 JOURNAL_SCHEMA = "FIABC_T4_LIVE_ACCOUNTING_JOURNAL@1.0.0"
 PARENTAGE_SCHEMA = "FIABC_DERIVATIVE_PARENTAGE_BUNDLE@1.0.0"
 PRESERVED_SCHEMA = "FIABC_T4_PRESERVED_WORK_LIVE_ADJUDICATION@1.0.0"
+
+
+FROZEN_METRIC_PRODUCTION = {
+    "source_open_count": ("SOURCE_EVENT_LEDGER", "ALL_COMPLETED_CELLS"),
+    "source_decode_count": ("SOURCE_EVENT_LEDGER", "ALL_COMPLETED_CELLS"),
+    "source_reread_count": ("SOURCE_EVENT_LEDGER", "ALL_COMPLETED_CELLS"),
+    "bytes_read": ("COMPLETE_IO_EVENT_LEDGER", "ALL_COMPLETED_CELLS"),
+    "bytes_written": ("COMPLETE_IO_EVENT_LEDGER", "ALL_COMPLETED_CELLS"),
+    "bytes_rewritten": ("COMPLETE_IO_EVENT_LEDGER", "ALL_COMPLETED_CELLS"),
+    "candidate_total_wall_ns": ("T3_MAIN_PROCESS_ENVELOPE", "ALL_COMPLETED_CELLS"),
+    "build_or_open_wall_ns": ("S01_MONOTONIC_TIMER", "ALL_COMPLETED_CELLS"),
+    "cpu_user_ns": ("NONOVERLAPPING_PROCESS_SELF_ENVELOPES", "ALL_COMPLETED_CELLS"),
+    "cpu_system_ns": ("NONOVERLAPPING_PROCESS_SELF_ENVELOPES", "ALL_COMPLETED_CELLS"),
+    "peak_rss_bytes": ("MAX_PROCESS_LOCAL_RSS", "ALL_COMPLETED_CELLS"),
+    "peak_scratch_bytes": ("SCRATCH_MUTATION_HIGH_WATER", "ALL_COMPLETED_CELLS"),
+    "peak_scratch_file_count": ("SCRATCH_MUTATION_HIGH_WATER", "ALL_COMPLETED_CELLS"),
+    "durable_authoritative_bytes": ("S16_CLASSIFIED_DURABLE_INVENTORY", "ALL_COMPLETED_CELLS"),
+    "durable_transformed_regenerable_bytes": ("S16_CLASSIFIED_DURABLE_INVENTORY", "ALL_COMPLETED_CELLS"),
+    "warm_retained_state_bytes": ("S08_RETAINED_SESSION_OBJECT_GRAPH", "ALL_COMPLETED_CELLS"),
+    "cold_i03_latency_ns": ("S07_MONOTONIC_TIMER", "ALL_COMPLETED_CELLS"),
+    "warm_i03_latency_ns": ("S08_MONOTONIC_TIMER", "ALL_COMPLETED_CELLS"),
+    "i05_learned_production_wall_ns": ("S05_MONOTONIC_TIMER", "ALL_COMPLETED_CELLS"),
+    "i05_learned_production_throughput_per_s": ("S05_OBSERVED_COUNT_OVER_OBSERVED_WALL", "ALL_COMPLETED_CELLS"),
+    "repeated_research_source_open_count": ("S08_SOURCE_EVENT_DELTA", "ALL_COMPLETED_CELLS"),
+    "repeated_research_source_redecode_count": ("S08_SOURCE_EVENT_DELTA", "ALL_COMPLETED_CELLS"),
+    "repeated_research_source_reread_count": ("S08_SOURCE_EVENT_DELTA", "ALL_COMPLETED_CELLS"),
+    "delete_rebuild_wall_ns": ("S09_DELETION_REGEN_MONOTONIC_TIMER", "B_C_MEASURED__A_FROZEN_NOT_APPLICABLE"),
+    "source_release_invalidation_recomputation_units": ("S10_EXECUTED_RECOMPUTATION_LINEAGE", "ALL_COMPLETED_CELLS"),
+    "source_release_invalidation_wall_ns": ("S10_MONOTONIC_ACTION_TIMER", "ALL_COMPLETED_CELLS"),
+    "source_release_invalidation_bytes_rewritten": ("S10_ACTION_TAGGED_WRITE_SUBSET", "ALL_COMPLETED_CELLS"),
+    "semantic_authority_invalidation_recomputation_units": ("S11_EXECUTED_RECOMPUTATION_LINEAGE", "ALL_COMPLETED_CELLS"),
+    "semantic_authority_invalidation_wall_ns": ("S11_MONOTONIC_ACTION_TIMER", "ALL_COMPLETED_CELLS"),
+    "semantic_authority_invalidation_bytes_rewritten": ("S11_ACTION_TAGGED_WRITE_SUBSET", "ALL_COMPLETED_CELLS"),
+    "fresh_process_replay_wall_ns": ("S15_MONOTONIC_TIMER", "ALL_COMPLETED_CELLS"),
+    "fresh_process_replay_cpu_ns": ("S15_EXACT_CHILD_PROCESS_SELF_ENVELOPE", "ALL_COMPLETED_CELLS"),
+    "audit_wall_ns": ("S06_MONOTONIC_TIMER", "ALL_COMPLETED_CELLS"),
+    "persistent_bytes_removable_with_zero_information_loss": ("S09_EXACT_REGENERABLE_STATE_INVENTORY", "ALL_COMPLETED_CELLS"),
+    "implementation_moving_parts_count": ("S16_EXACT_RUNTIME_PART_MANIFEST", "ALL_COMPLETED_CELLS"),
+}
+
+
+def metric_production_manifest() -> Mapping[str, Mapping[str, str]]:
+    if set(FROZEN_METRIC_PRODUCTION) != set(METRIC_DEFINITIONS):
+        raise LiveAccountingError("frozen metric production manifest does not cover exact telemetry registry")
+    return {
+        name: {"producer": producer, "applicability": applicability}
+        for name, (producer, applicability) in sorted(FROZEN_METRIC_PRODUCTION.items())
+    }
 
 
 class LiveAccountingError(RuntimeError):
@@ -359,13 +409,19 @@ def _phase_rows(journal: Mapping[str, Any]):
     return [journal["stages"][k] for k in sorted(journal["stages"], key=lambda x: journal["stages"][x]["ordinal"])]
 
 
+def _require_complete_stage_coverage(rows, field: str, label: str) -> None:
+    if not rows or not all(row.get("observations",{}).get(field) is True for row in rows):
+        raise LiveAccountingError(f"{label} cannot seal before complete event coverage")
+
+
 def _materialize_telemetry(*, journal: Mapping[str, Any], roots: Any, source: str,
                            source_sha256: str, candidate: str, freeze: Mapping[str, Any],
                            semantic_state: str) -> Mapping[str, Any]:
     cell=_cell(source,source_sha256,candidate,freeze)
     ledger=TelemetryLedger(cell)
     rows=_phase_rows(journal)
-    if not rows: raise LiveAccountingError("cannot finalize telemetry without stage observations")
+    if not rows:
+        raise LiveAccountingError("cannot finalize telemetry without stage observations")
     first=rows[0]; final=rows[-1]
     first_env=first["process_envelope"]; final_env=final["process_envelope"]
     if first_env.get("cell_key")!=final_env.get("cell_key"):
@@ -392,13 +448,21 @@ def _materialize_telemetry(*, journal: Mapping[str, Any], roots: Any, source: st
         wall_stop_ns=int(stop["parent_envelope_stop_monotonic_ns"]),
         peak_rss_bytes=max(rss_samples),evidence_ref="T3_PROCESS_ENVELOPE",
     ))
+
     seen_child_tokens=set()
+    child_tokens={}
     for row in rows:
         for child in row.get("observations",{}).get("child_process_envelopes",[]):
             child_token=str(child["process_token"])
             if child_token in seen_child_tokens:
                 raise LiveAccountingError("child process accounting attempted to charge one child twice")
             seen_child_tokens.add(child_token)
+            label=str(child.get("label") or "")
+            key=(row["stage_id"],label)
+            if label and key in child_tokens:
+                raise LiveAccountingError("stage emitted duplicate child role label")
+            if label:
+                child_tokens[key]=child_token
             ledger.record_process_envelope(TelemetryProcessReceipt(
                 cell=cell,phase_id=str(child["phase_id"]),process_token=child_token,
                 pid=int(child["pid"]),role="CHILD",parent_process_token=token,
@@ -410,6 +474,7 @@ def _materialize_telemetry(*, journal: Mapping[str, Any], roots: Any, source: st
                 wall_start_ns=int(child["wall_start_ns"]),wall_stop_ns=int(child["wall_stop_ns"]),
                 peak_rss_bytes=int(child["peak_rss_bytes"]),evidence_ref=str(child["evidence_ref"]),
             ))
+
     previous=proc.get("post_backend_import_resource",{})
     for row in rows:
         env=row["process_envelope"]; current=env.get("resource_after_stage",{})
@@ -427,10 +492,11 @@ def _materialize_telemetry(*, journal: Mapping[str, Any], roots: Any, source: st
     ledger.seal_process_metrics(evidence_ref="T3_CELL_PROCESS_STOP")
 
     lifecycle_ids={}
+    scratch_event_count=0
     for row in rows:
         lr=row.get("lifecycle_receipt")
         if lr and lr.get("action_id"):
-            lifecycle_ids[row["stage_address"]]=lr["action_id"]
+            lifecycle_ids[row["stage_id"]]=lr["action_id"]
             ledger.bind_lifecycle_receipt(TelemetryLifecycleReceipt(
                 cell=cell,action_id=lr["action_id"],action_type=lr["action"],
                 phase_id=row["stage_id"],process_token=token,outcome=lr["disposition"],
@@ -440,41 +506,143 @@ def _materialize_telemetry(*, journal: Mapping[str, Any], roots: Any, source: st
         for m in observations.get("metric_events",[]):
             ctx=ObservationContext(
                 source_id=source,source_sha256=source_sha256,candidate_id=candidate,
-                phase_id=row["stage_id"],process_token=token,cost_class=_cost(m.get("cost_class","C2")),
+                phase_id=row["stage_id"],process_token=str(m.get("process_token") or token),
+                cost_class=_cost(m.get("cost_class","C2")),
                 lifecycle_action_id=m.get("lifecycle_action_id"),evidence_ref=m.get("evidence_ref"),
             )
             if m.get("kind")=="DURATION":
                 ledger.record_duration(
                     m["name"],ctx,monotonic_start_ns=int(m["start_ns"]),
-                    monotonic_stop_ns=int(m["stop_ns"]),state_predicate_ref=m.get("evidence_ref") or row["stage_address"],
+                    monotonic_stop_ns=int(m["stop_ns"]),
+                    state_predicate_ref=m.get("evidence_ref") or row["stage_address"],
                 )
             else:
-                ledger.record_observed_value(m["name"],ctx,float(m["value"]),evidence_kind="OBSERVED_BACKEND_EVENT")
+                ledger.record_observed_value(
+                    m["name"],ctx,float(m["value"]),evidence_kind="OBSERVED_BACKEND_EVENT"
+                )
+        for unavailable in observations.get("metric_unavailable",[]):
+            state_name=str(unavailable.get("state"))
+            try:
+                metric_state=TelemetryMetricState(state_name)
+            except Exception as exc:
+                raise LiveAccountingError("backend emitted unknown typed metric state") from exc
+            ctx=ObservationContext(
+                source_id=source,source_sha256=source_sha256,candidate_id=candidate,
+                phase_id=row["stage_id"],process_token=token,cost_class=_cost(unavailable.get("cost_class","C2")),
+                lifecycle_action_id=unavailable.get("lifecycle_action_id"),
+                evidence_ref=unavailable.get("evidence_ref") or row["stage_address"],
+            )
+            if metric_state is TelemetryMetricState.NOT_APPLICABLE_BY_FROZEN_COURT and ctx.lifecycle_action_id is None:
+                ledger.mark_lifecycle_not_applicable(
+                    unavailable["name"],ctx,reason=str(unavailable["reason"])
+                )
+            else:
+                ledger.mark_unavailable(
+                    unavailable["name"],ctx,state=metric_state,reason=str(unavailable["reason"])
+                )
         for event in observations.get("source_events",[]):
             ctx=ObservationContext(
                 source_id=source,source_sha256=source_sha256,candidate_id=candidate,
-                phase_id=row["stage_id"],process_token=token,cost_class=CostClass.C1,evidence_ref=row["stage_address"],
+                phase_id=row["stage_id"],process_token=token,cost_class=CostClass.C1,
+                evidence_ref=row["stage_address"],
             )
             ledger.observe_source_event(ctx,event=event)
-        for io in observations.get("io_events",[]):
+        for io_event in observations.get("io_events",[]):
+            io_token=str(io_event.get("process_token") or token)
             ctx=ObservationContext(
                 source_id=source,source_sha256=source_sha256,candidate_id=candidate,
-                phase_id=row["stage_id"],process_token=token,cost_class=_cost(io.get("cost_class","C1")),
-                lifecycle_action_id=None,evidence_ref=io.get("evidence_ref"),
+                phase_id=row["stage_id"],process_token=io_token,cost_class=_cost(io_event.get("cost_class","C1")),
+                lifecycle_action_id=io_event.get("lifecycle_action_id"),
+                evidence_ref=io_event.get("evidence_ref"),
             )
-            ledger.observe_io(ctx,operation=io["operation"],byte_count=int(io["byte_count"]),
-                              object_id=io["object_id"],rewrite_of=io.get("rewrite_of"))
+            ledger.observe_io(
+                ctx,operation=io_event["operation"],byte_count=int(io_event["byte_count"]),
+                object_id=io_event["object_id"],rewrite_of=io_event.get("rewrite_of"),
+            )
+        for scratch in observations.get("scratch_events",[]):
+            scratch_event_count += 1
+            scratch_token=str(scratch.get("process_token") or token)
+            ctx=ObservationContext(
+                source_id=source,source_sha256=source_sha256,candidate_id=candidate,
+                phase_id=row["stage_id"],process_token=scratch_token,
+                cost_class=_cost(scratch.get("cost_class","C2")),
+                lifecycle_action_id=scratch.get("lifecycle_action_id"),
+                evidence_ref=scratch.get("evidence_ref") or row["stage_address"],
+            )
+            operation=scratch.get("operation")
+            if operation=="SIZE":
+                ledger.observe_scratch_size(
+                    ctx,object_id=scratch["object_id"],
+                    current_size_bytes=int(scratch["current_size_bytes"]),
+                )
+            elif operation=="REMOVE":
+                ledger.observe_scratch_remove(ctx,object_id=scratch["object_id"])
+            elif operation=="EMPTY_BASELINE":
+                ledger.observe_empty_scratch_baseline(ctx)
+            else:
+                raise LiveAccountingError("unknown scratch observation operation")
+
     source_ctx=ObservationContext(
         source_id=source,source_sha256=source_sha256,candidate_id=candidate,
         phase_id="__SOURCE_EVENT_LEDGER__",process_token=token,cost_class=CostClass.C1,
         evidence_ref="T4_OBSERVED_SOURCE_EVENTS",
     )
     ledger.seal_source_event_counters(source_ctx)
-    # I/O remains intentionally unsealed until every candidate-local read/write/rewrite
-    # site is event-instrumented.  This leaves canonical I/O metrics typed null instead
-    # of manufacturing zeros from endpoint sizes.
-    return ledger.receipt(candidate_semantic_state=semantic_state)
 
+    _require_complete_stage_coverage(rows,"io_coverage_complete","canonical I/O metrics")
+    io_ctx=ObservationContext(
+        source_id=source,source_sha256=source_sha256,candidate_id=candidate,
+        phase_id="__IO_EVENT_LEDGER__",process_token=token,cost_class=CostClass.C2,
+        evidence_ref="T4_COMPLETE_CANDIDATE_LOCAL_IO_EVENT_STREAM",
+    )
+    ledger.seal_io_accounting(io_ctx)
+
+    _require_complete_stage_coverage(rows,"scratch_coverage_complete","scratch high-water metrics")
+    scratch_ctx=ObservationContext(
+        source_id=source,source_sha256=source_sha256,candidate_id=candidate,
+        phase_id="__SCRATCH_HIGH_WATER_LEDGER__",process_token=token,cost_class=CostClass.C2,
+        evidence_ref="T4_COMPLETE_SCRATCH_MUTATION_EVENT_STREAM",
+    )
+    if scratch_event_count==0:
+        ledger.observe_empty_scratch_baseline(scratch_ctx)
+    ledger.seal_scratch_accounting(scratch_ctx)
+
+    for stage_id,metric_name in (
+        ("S10_SOURCE_RELEASE_INVALIDATION","source_release_invalidation_bytes_rewritten"),
+        ("S11_SEMANTIC_AUTHORITY_INVALIDATION","semantic_authority_invalidation_bytes_rewritten"),
+    ):
+        action_id=lifecycle_ids.get(stage_id)
+        if action_id is None:
+            raise LiveAccountingError(f"{stage_id} lacks lifecycle action required for rewrite accounting")
+        ctx=ObservationContext(
+            source_id=source,source_sha256=source_sha256,candidate_id=candidate,
+            phase_id=stage_id,process_token=token,cost_class=CostClass.C2,
+            lifecycle_action_id=action_id,evidence_ref=stage_id+"::EXACT_REWRITE_EVENT_SUBSET",
+        )
+        ledger.seal_lifecycle_rewrite_bytes(metric_name,ctx)
+
+    fresh_action=lifecycle_ids.get("S15_FRESH_PROCESS_REPLAY")
+    fresh_child=child_tokens.get(("S15_FRESH_PROCESS_REPLAY","FRESH_PROCESS_REPLAY"))
+    if fresh_action is None or fresh_child is None:
+        raise LiveAccountingError("fresh-process replay CPU lacks exact lifecycle-bound child envelope")
+    fresh_ctx=ObservationContext(
+        source_id=source,source_sha256=source_sha256,candidate_id=candidate,
+        phase_id="S15_FRESH_PROCESS_REPLAY",process_token=fresh_child,cost_class=CostClass.C3,
+        lifecycle_action_id=fresh_action,evidence_ref="S15::EXACT_FRESH_REPLAY_CHILD_CPU",
+    )
+    ledger.seal_fresh_process_replay_cpu(process_token=fresh_child,ctx=fresh_ctx)
+
+    receipt=ledger.receipt(candidate_semantic_state=semantic_state)
+    missing=[]
+    for name,value in receipt["metrics"].items():
+        values=value if isinstance(value,list) else [value]
+        if any(row["state"]==TelemetryMetricState.MEASUREMENT_NOT_CAPTURED.value for row in values):
+            missing.append(name)
+    if missing:
+        raise LiveAccountingError(
+            "terminal metric vector still contains instrumentation-absent fields: "+",".join(sorted(missing))
+        )
+    return receipt
 
 def admit_live_stage_accounting(*, stage: Any, roots: Any, source_sha256: str,
                                 candidate_owner_identity: str, repo_head: str,
@@ -577,4 +745,5 @@ __all__=[
     "LIVE_CONTRACT","PARENTAGE_SCHEMA","LiveAccountingError","DerivativeParentage",
     "require_derivative_parentage","admit_live_stage_accounting",
     "preserved_stage_adjudication","authorized_same_cell_transitions",
+    "metric_production_manifest",
 ]
