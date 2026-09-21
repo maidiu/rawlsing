@@ -233,6 +233,16 @@ r15 = {
     "candidate_processes_started": 0,
 }
 telemetry["stages"].append({"stage": "R15_STRICT_COMMON_C11", "seconds": time.perf_counter() - r15_start, "status": "PASS"})
+print("R1K_R15_CAPTURE=" + json.dumps({
+    "release_ref": release.release_ref.as_dict(),
+    "replay_manifest_ref": release.replay_manifest.ref.as_dict(),
+    "source_release_manifest_hash": release.source_release_manifest_hash,
+    "semantic_release_hash": release.semantic_release_hash,
+    "projection_identity_ref": projection.projection_identity_ref.as_dict(),
+    "projection_authority_ref": projection.projection_authority_ref.as_dict(),
+    "public_object_count": len(release.public_objects),
+    "internal_record_count": len(release.internal_records),
+}, sort_keys=True, separators=(",", ":")), flush=True)
 
 # Build the exact candidate-neutral runtime above the admitted common release.
 oracle_start = time.perf_counter()
@@ -405,12 +415,21 @@ used_validation_kinds = sorted({
 })
 assert discovery.ref.content_hash == WVS7_DISCOVERY_AUTHORITY
 assert len(WVS7_ORDERED_CANDIDATE_HASHES) == 46
-assert used_validation_kinds == [
+expected_validation_kinds = [
     "DISTRIBUTION_DIFFERS_FROM_BASELINE",
     "JOINT_NOT_PRODUCT_OF_MARGINALS",
     "TARGET_CELL_SUPPORTED",
 ]
-assert allowed_validation_kinds == []
+if used_validation_kinds != expected_validation_kinds:
+    raise RuntimeError(
+        "frozen candidate grammar validation-kind inventory drift: "
+        + repr(used_validation_kinds)
+    )
+if allowed_validation_kinds:
+    raise RuntimeError(
+        "expected absent DiscoveryAuthority validation_rules.kinds, got "
+        + repr(allowed_validation_kinds)
+    )
 
 r16_blocker = {
     "schema": "FIABC_LM2_R1K_R16_FRESH_WVS_ORACLE_BLOCKER@1.0.0",
