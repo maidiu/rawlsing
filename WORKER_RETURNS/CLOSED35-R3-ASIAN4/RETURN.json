@@ -1,0 +1,70 @@
+{
+  "schema": "CLOSED35_R3_ASIAN4_RETURN@1.0.0",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-closed35-r3-asian4-realization-r1",
+  "base_branch": "agent/vozhd-closed35-l2r-r1-fanin-r1",
+  "base_sha": "da33eb6a8225c14eee9490633a3263388dc5536c",
+  "source": {
+    "canonical_filename": "Asian Barometer Wave 4.sav",
+    "canonical_sha256": "4d914817509d0e5f3adde49707df148f696992055937f085080a016002a39200",
+    "authority_class": "L1_EXECUTION_PACKET_READY__BOUNDED_UNKNOWNS_ALLOWED",
+    "replay_identity": "SOURCE_SHA256+ROW_ORDINAL"
+  },
+  "disposition": "SOURCE_SPECIFIC_REALIZATION_IMPLEMENTED",
+  "candidate_neutral_semantic_owner": "PRE553_SOURCE_BACKED_C11_FACADE@1.0.0",
+  "bounded_unknowns_preserved": [
+    "merged-data versus instrument geography reconciliation",
+    "variable-local ordinary -1 semantic meaning where not documentarily closed",
+    "exact q172 merged-source country/row risk set",
+    "w estimand/normalization/scope/default use",
+    "w_cross estimand/normalization/scope/default use",
+    "native-ID semantics beyond source-local attribute preservation"
+  ],
+  "s35_edge_classes": [
+    "EC01",
+    "EC05",
+    "EC09",
+    "EC10",
+    "EC12",
+    "EC13"
+  ],
+  "ec14_assigned": false,
+  "r35_hooks": [
+    "PRE553_PHYSICAL_METADATA@1.0.0",
+    "FIABC_DERIVATIVE_PARENTAGE_BUNDLE@1.0.0",
+    "FIABC_R35_I03_SOURCE_PHYSICAL_SCOPE@1.0.0",
+    "FIABC_R35_I03_CANONICAL_PHYSICAL_EXPECTATION@1.0.0",
+    "FIABC_R35_I03_CANDIDATE_PHYSICAL_REALIZATION@1.0.0",
+    "FIABC_R35_I03_WHOLE_SOURCE_PHYSICAL_EQUIVALENCE_RECEIPT@1.0.0"
+  ],
+  "implementation_files": [
+    "rawlsing_next/closed35_asian4_realization.py",
+    "rawlsing_next/tests/test_closed35_r3_asian4_realization.py"
+  ],
+  "return_files": [
+    "WORKER_RETURNS/CLOSED35-R3-ASIAN4/00_RETURN.md",
+    "WORKER_RETURNS/CLOSED35-R3-ASIAN4/01_REALIZATION_CONTRACT.md",
+    "WORKER_RETURNS/CLOSED35-R3-ASIAN4/02_GEOGRAPHY_MISSING_ROUTING_MAP.csv",
+    "WORKER_RETURNS/CLOSED35-R3-ASIAN4/03_PHYSICAL_EDGE_BINDING.json",
+    "WORKER_RETURNS/CLOSED35-R3-ASIAN4/04_TEST_PROTOCOL.md",
+    "WORKER_RETURNS/CLOSED35-R3-ASIAN4/RETURN.json"
+  ],
+  "tests": {
+    "authored_test_functions": 14,
+    "execution_status": "TESTS_AUTHORED__NOT_EXECUTED",
+    "executed": false
+  },
+  "proof_boundary": {
+    "real_source_executed": false,
+    "whole_source_physical_equivalence_pass": false,
+    "abc_executed": false,
+    "abc_execution_pass": false,
+    "i05_pass": false,
+    "measured_p2x": false,
+    "source_certified_beyond_accepted_authority": false,
+    "exact_q172_row_risk_set_closed": false,
+    "weight_estimands_closed": false,
+    "merged_instrument_geography_reconciled": false
+  },
+  "terminal": "CLOSED35_R3_ASIAN_BAROMETER_W4_SOURCE_SPECIFIC_REALIZATION_IMPLEMENTED__READY_FOR_ABC_QUALIFICATION"
+}
