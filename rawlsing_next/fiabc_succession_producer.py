@@ -257,7 +257,7 @@ def _cost_class(function_id: str) -> str:
         "F002", "F003", "F010", "F011", "F012", "F013", "F014", "F015",
         "F016", "F017", "F018", "F032", "F033", "F036",
     }
-    return "CANDIDATE_OWNED_EXECUTION" if function_id in candidate_owned else "COMMON_UPSTREAM_C0"
+    return "CANDIDATE_OWNED_EXECUTION" if function_id in candidate_owned else "COMMON_UPSTREAM_TRUTH"
 
 
 def _required_chain(
@@ -571,7 +571,7 @@ def build_manifest(
                 "metric_id": "CURRENT_FIABC_T4_CANDIDATE_LOCAL_METRIC_REGISTRY",
                 "definition_ref": telemetry_ref,
                 "candidate_local": True,
-                "accumulation_semantics": "CURRENT_WRITE_ONCE_CANDIDATE_LOCAL_REGISTRY",
+                "accumulation_semantics": "TOTAL_OVER_CANDIDATE_BOUNDARY",
                 "measurement_kind": "OBSERVED",
                 "overwritten_before_terminal": False,
                 "method_identity_across_candidates": "FIABC_T4_CURRENT_TELEMETRY_REGISTRY@1",
