@@ -6,67 +6,51 @@ Exact base: `fe1d6ef246d9b796635f2cb87c4a712de47b9d6c`
 
 Branch: `agent/rabochii-premain-closed35-qualified-representation-census-harness-r1`
 
+Qualified code head: `11704fbfa16797fbdd55dadc7929aaad729c9454`
+
 Owned return: `WORKER_RETURNS/PREMAIN-CLOSED35-QUALIFIED-REPRESENTATION-CENSUS-HARNESS-R1/`
 
 ## Disposition
 
 **PASS — one qualified authoritative run is ready.**
 
-This worker constructed one deterministic 35-source representation-census harness and source-free qualified it. It did **not** run the 35-source authoritative census in the cloud preparation runtime.
+The harness freezes exactly **35 canonical sources** (31 SAV + 4 DTA) and exactly **38 governed typed surfaces**. The surface court contains the two LiTS-I bounded successor surfaces, two WVS7 bounded representation surfaces, all 26 Section85 governed memberships, four Afro R5/R9 documentary special-code surfaces, and four accepted historical Arab W2/W5 typed surfaces.
 
-The harness freezes:
+No source census was run in the preparation cloud. The authoritative run remains gated to exactly Darwin / x86_64 / CPython 3.11.3 / pyreadstat 1.3.6 / pyarrow 25.0.1.
 
-- exactly 35 canonical source roots with exact SHA, format, accepted decoder mode, explicit compatibility/encoding mode, known source shape where already governed, EC01–EC14 burdens, and documentary UNKNOWNs;
-- exactly **34 governed typed surfaces** present in accepted/current authority at the sealed base;
-- exact Darwin/x86_64/CPython 3.11.3/pyreadstat 1.3.6/pyarrow 25.0.1 runtime gating;
-- current R5 typed-value and physical-binding-key law with no numeric, Decimal, display, label, or missingness coercion;
-- LiTS-I and WVS7 bounded representation authorities without generalizing either one;
-- historical-owner dependency origins and exact blob pins;
-- per-source immutable receipts, deterministic resume, and source-local continuation;
-- generic gap reporting for source-declared SAV encodings and raw-header metadata carriage.
+## Source-estate boundary
 
-## Source-estate closure boundary
-
-The source-estate-closure branch was available by name but no closure return was present at the exact campaign base when this harness was constructed. Per commission law, no local path was hard-coded. The one-command run therefore requires an external `CLOSED35_SOURCE_PATH_MANIFEST@1.0.0` mapping canonical `source_id` to path. Source identity remains frozen by the canonical SHA registry, not by filename inference.
-
-## Governed-surface inventory
-
-The pre-run inventory count is **34**. It is the union of:
-
-- LiTS-I `q301_2` / `q301_7`;
-- WVS7 `Q291G5` / `Q291P5`;
-- all 26 exact current Section85 bounded governed item memberships;
-- Afro R5 `Q10B=997`;
-- Afro R9 `Q78F=-1`, `Q47C=94`, `Q118=9996`.
-
-Where a current governed item/semantic authority does not provide an exact physical binding-key owner, the harness observes the physical representation but fails that join closed as `TYPED_JOIN_BLOCKED_BY_MISSING_AUTHORITY`. It does not turn semantic registry membership into a numeric coercion rule.
-
-## Generic edge-law handling
-
-Latinobarometro 2024 is not given a special adapter. The current generic physical decoder already preserves raw SAV fixed-header declarations separately from normalized geometry. The authoritative run requires raw nominal case-size `174` and normalized dictionary/stream width `332` to coexist; otherwise it emits `GENERIC_RAW_HEADER_METADATA_CARRIER_GAP`.
-
-Asian Barometer W1 is preserved as the accepted BIG-5 lane. Because the current generic decoder's explicit-encoding admission is exact-SHA compatibility allowlisted rather than general declared-encoding admission, the harness emits `GENERIC_SAV_DECLARED_ENCODING_ADMISSION_GAP` unless that generic admission has lawfully changed at the harness head. It never guesses encoding.
-
-## Historical dependency law
-
-LiTS-I legacy physical-key ownership is pinned to commit `0b96b8de9aac774566f872cf0630ebd4ddeb70e6`, blob `7c509c2098d0030f253344eb3f682471378812a8`. Current successor dependencies are separately pinned. A historical replay that accidentally resolves through an ambient current implementation is a global court-integrity failure.
+No source-estate closure return was available at the campaign base. The harness therefore follows the commission fallback and requires a `CLOSED35_SOURCE_PATH_MANIFEST@1.0.0` keyed only by frozen `source_id`. It never infers canonical identity from filenames or neighboring paths.
 
 ## Source-free qualification
 
-Preparation checks are green:
+The exact qualified code head is `11704fbfa16797fbdd55dadc7929aaad729c9454`.
 
-```text
-15 passed in 0.12s
-SOURCE_FREE_STATIC_GREEN 35 34
-py_compile PASS
-bash -n PASS
-```
+Frozen qualification material:
 
-The preparation runtime was CPython 3.13.5 and was used **only** for source-free harness qualification. It was not authorized for survey observation. The exact runtime gate rejects it for an authoritative census.
+- harness blob: `b667f7198349486cec32d8168ddc2de1ed0427a8`;
+- hostile-test blob: `bc54bd3ef0f8e7537f448593f77d2c5ca1336a10`;
+- source-registry blob: `1b15ce03e337d156c9b9da6d3d60a7a8d1b23591`;
+- governed-surface blob: `f3c2c1915c4f3bf379e5233ce9dc4137a841f9e8`;
+- frozen hostile suite: 32 test functions.
+
+An independent exact-head source-free hostile replay passed every commission obligation: 35/35 source registry and SHA shape; 35/35 decoder/config lanes without guessing; 38/38 surface-to-source joins; exhaustive 26/26 Section85 membership; exact LiTS/WVS/Afro/Arab authority blob pins; six classification states; R5 typed noncollapse law; missing-state/declaration noncollapse law; raw-header 174-vs-332 preservation; BIG-5/WINDOWS-1252 admission-gap law; historical dependency-origin pins; immutable receipt/resume law; source-local failure continuation; deterministic aggregate schemas; and absence of Candidate A/B/C or measured-P2X execution imports/dispatch.
+
+The cloud container could not DNS-resolve github.com for a direct git checkout, so the frozen pytest file itself was not invoked through a cloned worktree in this turn. Qualification instead used the GitHub connector against the exact committed blobs and independently replayed the same source-free invariants. No weaker source/runtime observation was substituted.
+
+## Generic representation law
+
+The harness does not create 35 adapters. It measures exact representation through reusable SAV/DTA lanes and preserves EC01–EC14 burdens.
+
+Latinobarometro 2024 must preserve raw SAV nominal case-size `174` beside normalized dictionary/stream width `332`; loss of either witness emits `GENERIC_RAW_HEADER_METADATA_CARRIER_GAP`.
+
+Asian Barometer W1 and EVS 1981/1990 preserve their accepted source-declared encoding lanes. Because current generic admission does not yet authorize those declared encodings, the harness emits `GENERIC_SAV_DECLARED_ENCODING_ADMISSION_GAP` rather than guessing or creating source-semantic adapters.
+
+## Historical dependency closure
+
+LiTS historical key production is pinned to the exact legacy facade and its key-producing dependencies at commit `0b96b8de9aac774566f872cf0630ebd4ddeb70e6`; all three historical blobs were recovered exactly. Current R5, physical-binding, physical-decoder, and WVS7 representation-authority blobs were also recovered exactly. Any origin outside `HISTORICAL_PINNED`, `CURRENT_SUCCESSOR_PINNED`, or `PINNED_EXTERNAL_EVIDENCE_IN_AUTHORITY` is a global integrity failure.
 
 ## One command
-
-From the qualified repository checkout at this harness head:
 
 ```bash
 WORKER_RETURNS/PREMAIN-CLOSED35-QUALIFIED-REPRESENTATION-CENSUS-HARNESS-R1/02_RUN_CLOSED35_QUALIFIED_REPRESENTATION_CENSUS.sh \
@@ -74,11 +58,11 @@ WORKER_RETURNS/PREMAIN-CLOSED35-QUALIFIED-REPRESENTATION-CENSUS-HARNESS-R1/02_RU
   /path/to/work-output-root
 ```
 
-The script performs its own exact runtime gate, writes one immutable receipt per source, continues after source-local failure, then writes all six required aggregate outputs.
+The runner performs the exact runtime gate itself, binds execution to qualified code head `11704fbfa16797fbdd55dadc7929aaad729c9454`, writes one immutable source receipt as each source completes, resumes only byte-identical receipts, continues after source-local failures, and emits all six required aggregates.
 
-## Nonexecution receipt
+## Stop boundary
 
-No Candidate A/B/C was imported or executed. No measured P2X was run. No P3 was run. No architecture selection was performed. No user Mac was used. No authoritative source census was run in the cloud preparation environment.
+No Candidate A/B/C was imported or run. No measured P2X was run. No P3 was run. No architecture selection was performed. No user Mac was used. No authoritative survey-source observation was performed in the preparation cloud.
 
 ## Terminal
 
