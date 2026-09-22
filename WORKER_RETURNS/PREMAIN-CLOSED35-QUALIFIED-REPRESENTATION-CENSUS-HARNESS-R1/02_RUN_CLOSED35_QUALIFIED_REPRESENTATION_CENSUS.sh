@@ -9,12 +9,7 @@ fi
 MANIFEST="$1"
 OUTPUT_ROOT="$2"
 EXPECTED_BRANCH="agent/rabochii-premain-closed35-qualified-representation-census-harness-r1"
-QUALIFIED_CODE_HEAD="__SOURCE_FREE_QUALIFIED_CODE_HEAD__"
-
-if [[ "$QUALIFIED_CODE_HEAD" == __SOURCE_FREE_QUALIFIED_CODE_HEAD__ ]]; then
-  echo "CLOSED35_REP_CENSUS BLOCKED: harness source-free qualification head not rebound" >&2
-  exit 88
-fi
+QUALIFIED_CODE_HEAD="11704fbfa16797fbdd55dadc7929aaad729c9454"
 
 REPO_ROOT="$(git rev-parse --show-toplevel)"
 CURRENT_BRANCH="$(git -C "$REPO_ROOT" branch --show-current)"
@@ -36,7 +31,6 @@ PYTHON_BIN="${PYTHON_BIN:-python3}"
 "$PYTHON_BIN" - <<'PY'
 import importlib.metadata
 import platform
-import sys
 expected = {
     "cpython": "3.11.3",
     "pyreadstat": "1.3.6",
