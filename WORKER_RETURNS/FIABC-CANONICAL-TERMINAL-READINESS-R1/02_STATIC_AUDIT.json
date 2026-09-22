@@ -271,5 +271,28 @@
       "WORKER_RETURNS/FIABC-FINAL-LAUNCH-FANIN-R1/"
     ],
     "production_code_after_green_head_allowed": false
+  },
+  "lits_representation_blocker": {
+    "execution_branch_head": "e8909490cdc619beb884029cdabdc7027db663cf",
+    "lock1_runtime_passed": true,
+    "source_hashes_passed": true,
+    "wvs_standardization_passed": true,
+    "lits_oracle_production_status": "BLOCK",
+    "error": "SourceBackedC11FacadeError: unbound response value/state; no label/frequency/missingness inference",
+    "downstream_not_run": [
+      "T3 freeze",
+      "succession preflight",
+      "Candidate A/B/C",
+      "measured P2X"
+    ],
+    "documentary_holding": "CURRENT_TYPED_PHYSICAL_KEY_CONTRACT_LACKS_CLOSED_LITS_REPRESENTATION_AUTHORITY",
+    "accepted_historical_candidate_b_owner_blob": "7c509c2098d0030f253344eb3f682471378812a8",
+    "current_facade_blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+    "accepted_historical_c11_release": "e6c954538fa1830820120465a10a6d065b8a18d1e6b7b08d3f863b0917741e26",
+    "old_key_law": "semantic_hash(canonicalize(raw/state/declaration))",
+    "current_key_law": "PRE553_PHYSICAL_VALUE_BINDING@2.0.0 + R5TypedValueCodec exact typed representation",
+    "speculative_numeric_coercion_admitted": false,
+    "diagnostic_path": "WORKER_RETURNS/FIABC-CANONICAL-TERMINAL-READINESS-R1/08_LITS_REPRESENTATION_DIAGNOSTIC.py",
+    "next_step": "RUN_CANDIDATE_NEUTRAL_REPRESENTATION_DIAGNOSTIC_ONLY"
   }
 }
