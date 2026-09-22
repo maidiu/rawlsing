@@ -114,7 +114,7 @@ assert bm==tm==cm
 pkg=json.loads(Path("rawlsing_next/runtime/ee_p2x/02_WVS7_P2F2_RUNTIME_PACKAGE.json").read_text())
 assert oracle.WVS7_LOCK2_IDENTITY==pkg["lock2"]==WVS7_SUCCESSOR_LOCK2
 assert oracle.WVS7_DISCOVERY_AUTHORITY==pkg["discovery_authority_hash"]==WVS7_SUCCESSOR_DISCOVERY_AUTHORITY
-assert oracle.WVS7_LOCK2_REPLAY==WVS7_SUCCESSOR_LOCK2_REPLAY
+assert oracle.WVS7_LOCK2_REPLAY_IDENTITY==WVS7_SUCCESSOR_LOCK2_REPLAY
 assert hasattr(backend,"_current_failure_authority")
 assert hasattr(backend,"_current_manifest_cell_order")
 print("RAWLSING_RECONCILED_FIABC_STATIC_CROSS_LANE_ASSERTIONS_PASS")
