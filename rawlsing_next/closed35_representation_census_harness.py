@@ -609,6 +609,11 @@ def _shape_check(source: Mapping[str, Any], metadata_receipt: Mapping[str, Any])
     expected_vars = expected.get("variables", expected.get("logical_variables"))
     if isinstance(expected_vars, int) and expected_vars != metadata_receipt["logical_variable_count"]:
         mismatches.append({"field": "variables", "expected": expected_vars, "observed": metadata_receipt["logical_variable_count"]})
+    expected_slots = expected.get("storage_slots")
+    if isinstance(expected_slots, int):
+        observed_slots = (metadata_receipt.get("raw_sav_fixed_header") or {}).get("nominal_case_size")
+        if observed_slots != expected_slots:
+            mismatches.append({"field": "storage_slots", "expected": expected_slots, "observed": observed_slots})
     return {"expected": expected, "mismatches": mismatches, "pass": not mismatches}
 
 
