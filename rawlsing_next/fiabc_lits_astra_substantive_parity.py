@@ -257,6 +257,16 @@ def normalize_accepted_astra_summary(
     if replay_receipt.get("schema") != "ASTRA_D04_R2_SOURCE_AND_REPLAY_RECEIPT@1.0.0":
         raise LitsAstraSubstantiveParityError("unexpected ASTRA replay receipt schema")
 
+    source = _mapping(replay_receipt.get("source"), "ASTRA replay source")
+    observed_source_identity = {
+        "source": "LITS_I",
+        "sha256": source.get("sha256"),
+        "rows": source.get("rows"),
+        "variables": source.get("variables"),
+    }
+    if observed_source_identity != ASTRA_SOURCE_IDENTITY:
+        raise LitsAstraSubstantiveParityError("ASTRA historical source identity drift")
+
     frontier = _mapping(product.get("frontier"), "ASTRA frontier")
     preoutcome = _mapping(replay_receipt.get("preoutcome"), "ASTRA preoutcome")
     if (
@@ -319,6 +329,18 @@ def normalize_accepted_astra_summary(
         },
     }
     recorded_hashes.append(p1["candidate_hash"])
+    p1_rel = p1["first_exact_dependence_witness"]
+    if (
+        p1_rel["joint_count"]
+        * p1_rel["marginal_0_denominator"]
+        * p1_rel["marginal_1_denominator"]
+        == p1_rel["joint_denominator"]
+        * p1_rel["marginal_0_count"]
+        * p1_rel["marginal_1_count"]
+    ):
+        raise LitsAstraSubstantiveParityError(
+            "ASTRA P1 recorded witness does not establish joint dependence"
+        )
 
     p2 = []
     for item in _sequence(product.get("P2_conditioned_frontier"), "ASTRA P2"):
@@ -357,13 +379,38 @@ def normalize_accepted_astra_summary(
         historical_rate_keys[role]: _fraction_material(value, f"ASTRA P3 {role}")
         for role, value in historical_rates.items()
     }
+    computed_pooled_sign = _sign(
+        _fraction_value(exact_rates["POOLED_POS"])
+        - _fraction_value(exact_rates["POOLED_NEG"])
+    )
+    computed_stratum_signs = [
+        _sign(
+            _fraction_value(exact_rates[f"STRATUM:{stratum}:POS"])
+            - _fraction_value(exact_rates[f"STRATUM:{stratum}:NEG"])
+        )
+        for stratum in ("Q310V1", "Q310V2", "Q310V3")
+    ]
+    recorded_pooled_sign = _integer(p3_validation["pooled_sign"], "ASTRA P3 pooled sign")
+    recorded_stratum_signs = [
+        _integer(x, "ASTRA P3 stratum sign") for x in p3_validation["stratum_signs"]
+    ]
+    if recorded_pooled_sign != computed_pooled_sign or recorded_stratum_signs != computed_stratum_signs:
+        raise LitsAstraSubstantiveParityError("ASTRA P3 recorded signs contradict exact fractions")
+    historical_reversal = (
+        computed_pooled_sign != 0
+        and bool(computed_stratum_signs)
+        and all(sign != 0 and sign == computed_stratum_signs[0] for sign in computed_stratum_signs)
+        and computed_stratum_signs[0] == -computed_pooled_sign
+    )
+    if p3_raw.get("terminal_state") != "EVALUATED_VALID_EMPTY" or historical_reversal:
+        raise LitsAstraSubstantiveParityError("ASTRA P3 is not the accepted validation-negative valid-empty")
     p3 = {
         "candidate_hash": p3_raw["candidate_hash"],
         "terminal_state": p3_raw["terminal_state"],
         "target_cell": _cell(p3_validation["target_cell"]),
         "exact_rates": canonicalize(exact_rates),
-        "pooled_sign": _integer(p3_validation["pooled_sign"], "ASTRA P3 pooled sign"),
-        "stratum_signs": [_integer(x, "ASTRA P3 stratum sign") for x in p3_validation["stratum_signs"]],
+        "pooled_sign": recorded_pooled_sign,
+        "stratum_signs": recorded_stratum_signs,
         "empty_mechanism": "VALIDATION_FALSE__NO_CONDITIONAL_REVERSAL",
     }
     recorded_hashes.append(p3["candidate_hash"])
