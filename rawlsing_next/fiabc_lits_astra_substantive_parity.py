@@ -37,6 +37,12 @@ EXPECTED_TERMINAL_COUNTS = {
     "EVALUATED_SUPPORTED": 49,
     "EVALUATED_VALID_EMPTY": 1,
 }
+ASTRA_SOURCE_IDENTITY = {
+    "source": "LITS_I",
+    "sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "rows": 29002,
+    "variables": 1198,
+}
 EXPECTED_RISK_ROOTS = {
     "R2": {
         "count": 24897,
@@ -768,6 +774,8 @@ def assert_substantive_parity(
         "schema": PARITY_RECEIPT_SCHEMA,
         "status": "PASS__CURRENT_LITS_EMPIRICAL_SUBSTANCE_EXACTLY_CONSERVES_ACCEPTED_ASTRA_D04_R2",
         "accepted_astra_inputs": canonicalize(list(accepted_inputs)),
+        "accepted_astra_source_identity": ASTRA_SOURCE_IDENTITY,
+        "current_d03_authority_content_hash": D03_AUTHORITY_CONTENT_HASH,
         "current_execution_identity": current_execution_identity,
         "current_replay_identity": current_replay_identity,
         "expected_empirical_summary_identity": expected_identity,
