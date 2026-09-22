@@ -1,0 +1,254 @@
+{
+  "schema": "PREMAIN_REP35_W2_SOURCE_REPRESENTATION_CENSUS@1.0.0",
+  "candidate_neutral": true,
+  "exact_base": "ef8eff9625f269173ac2c17af3f92d913babb275",
+  "branch": "agent/rabochii-premain-rep35-lits2-latin-southasia-r1",
+  "return_directory": "WORKER_RETURNS/PREMAIN-REP35-LITS2-LATIN-SOUTHASIA-R1/",
+  "runtime": {
+    "required": {
+      "cpython": "3.11.3",
+      "pyreadstat": "1.3.6",
+      "pyarrow": "25.0.1"
+    },
+    "observed_cloud_runtime": {
+      "cpython": "3.13.5",
+      "python3_11": "MISSING",
+      "pyreadstat": "MISSING",
+      "pyarrow": "MISSING",
+      "R": "MISSING",
+      "readstat_cli": "MISSING"
+    },
+    "authoritative_observation_status": "BLOCKED",
+    "blocker": "REPRESENTATION_FACT_BLOCKED__QUALIFIED_RUNTIME_UNAVAILABLE",
+    "law": "No observation from another runtime/decoder is promoted to representation authority."
+  },
+  "source_transport": {
+    "surveys_zip": {
+      "size_bytes": 158180333,
+      "sha256": "f68d2b33ec0eeb973699963e4c7122d624b99a541b40277e4daed8b87dc9d05f",
+      "status": "EXACT_SHA_VERIFIED_IN_LIBRARY"
+    }
+  },
+  "sources": [
+    {
+      "family": "LiTS",
+      "wave": "II",
+      "filename": "LiTS_II.dta",
+      "sha": "c43d0e1821c51398817d7dfdfad2c0a4a5bb0d492f6a58096670e623bb6130e9",
+      "size": 199716969,
+      "decoder": "DTA_DECODE_LATIN1_COMPAT_PHYSICAL_ONLY",
+      "access": "EXACT_SHA_VERIFIED_FROM_CANONICAL_LIBRARY_ARCHIVE",
+      "archive_member": "surveys/LiTS_II.dta",
+      "accepted_historical_dimensions": {
+        "rows": 38864,
+        "variables": 627
+      },
+      "edge_classes": [
+        "EC01",
+        "EC02",
+        "EC05",
+        "EC12"
+      ],
+      "accepted_historical_hazards": [
+        "localized Stata system missing in age5564/age65",
+        "ordinary -99/-98/-97 storage values",
+        "SerialID carrier",
+        "weight and XCweight distinct",
+        "ranked/repeated slots"
+      ],
+      "classification": "REPRESENTATION_FACT_BLOCKED",
+      "blocker": "REPRESENTATION_FACT_BLOCKED__QUALIFIED_RUNTIME_UNAVAILABLE",
+      "authoritative_variable_census": "NOT_OBSERVED_UNDER_QUALIFIED_RUNTIME",
+      "semantic_inference": false
+    },
+    {
+      "family": "Latinobarometro",
+      "wave": "1995",
+      "filename": "Latinobarometro 1995.sav",
+      "sha": "4b7fc6da17dfddafd6a835717e8dc06981208eb4120fa33bdd16e12ae95926f7",
+      "size": 2224483,
+      "decoder": "SAV_NATIVE_GOVERNED",
+      "access": "EXACT_SHA_VERIFIED_IN_LIBRARY",
+      "accepted_historical_dimensions": {
+        "rows": 9069,
+        "variables": 203
+      },
+      "edge_classes": [
+        "EC01",
+        "EC07",
+        "EC12"
+      ],
+      "accepted_historical_hazards": [
+        "noninjective enc",
+        "SPSS user-missing declarations",
+        "wt carrier",
+        "Brazil 1200-vs-1080 provenance contradiction"
+      ],
+      "classification": "REPRESENTATION_FACT_BLOCKED",
+      "blocker": "REPRESENTATION_FACT_BLOCKED__QUALIFIED_RUNTIME_UNAVAILABLE",
+      "authoritative_variable_census": "NOT_OBSERVED_UNDER_QUALIFIED_RUNTIME",
+      "semantic_inference": false
+    },
+    {
+      "family": "Latinobarometro",
+      "wave": "2011",
+      "filename": "Latinobarometro 2011.sav",
+      "sha": "a44e89e08e564e4e175199eeeabfa6163f32f4ba0a19a6c3f5b4752de6cca22e",
+      "size": 9900209,
+      "decoder": "SAV_NATIVE_GOVERNED",
+      "access": "EXACT_SHA_VERIFIED_IN_LIBRARY",
+      "accepted_historical_dimensions": {
+        "rows": 20204,
+        "variables": 414
+      },
+      "edge_classes": [
+        "EC01",
+        "EC05",
+        "EC12",
+        "EC13"
+      ],
+      "accepted_historical_hazards": [
+        "user-missing declarations",
+        "IDENPA/NUMENTRE source-local carriers",
+        "WT carrier",
+        "country/region code drift"
+      ],
+      "classification": "REPRESENTATION_FACT_BLOCKED",
+      "blocker": "REPRESENTATION_FACT_BLOCKED__QUALIFIED_RUNTIME_UNAVAILABLE",
+      "authoritative_variable_census": "NOT_OBSERVED_UNDER_QUALIFIED_RUNTIME",
+      "semantic_inference": false
+    },
+    {
+      "family": "Latinobarometro",
+      "wave": "2024",
+      "filename": "Latinobarometro 2024.sav",
+      "sha": "ff5cef18c87969026e7f993d09f10c38a547bf81d5d398784fb59b960b7b0a40",
+      "size": 7886834,
+      "decoder": "SAV_NATIVE_GOVERNED",
+      "access": "EXACT_SHA_VERIFIED_IN_LIBRARY",
+      "accepted_historical_dimensions": {
+        "rows": 19214,
+        "dictionary_variables": 332,
+        "nominal_header_case_size": 174
+      },
+      "edge_classes": [
+        "EC01",
+        "EC04",
+        "EC11",
+        "EC12",
+        "EC14"
+      ],
+      "accepted_historical_hazards": [
+        "raw header nominal_case_size 174 vs dictionary/data width 332",
+        "reused variable names with dictionary/label drift",
+        "WT raw max 19.7793",
+        "unresolved WT semantic/domain conflict"
+      ],
+      "classification": "REPRESENTATION_FACT_BLOCKED",
+      "blocker": "REPRESENTATION_FACT_BLOCKED__QUALIFIED_RUNTIME_UNAVAILABLE",
+      "authoritative_variable_census": "NOT_OBSERVED_UNDER_QUALIFIED_RUNTIME",
+      "semantic_inference": false
+    },
+    {
+      "family": "South Asia",
+      "wave": "Wave 1",
+      "filename": "South Asia Wave 1.sav",
+      "sha": "de7b51f9abf455b072555a84c5592e3ac46bb32c4f9f61bc055160f7d871e571",
+      "size": 595974,
+      "decoder": "SAV_NATIVE_GOVERNED",
+      "access": "EXACT_SHA_VERIFIED_IN_LIBRARY",
+      "library_alias": "SDSA 2005.sav",
+      "accepted_historical_dimensions": {
+        "rows": 8442,
+        "variables": 68
+      },
+      "edge_classes": [
+        "EC01",
+        "EC05",
+        "EC07",
+        "EC10",
+        "EC14"
+      ],
+      "accepted_historical_hazards": [
+        "system and SPSS user missing coexist",
+        "same code 8 ordinary in b7 but user-missing in c12",
+        "no safe native respondent replay ID",
+        "India-specific physical masks"
+      ],
+      "classification": "REPRESENTATION_FACT_BLOCKED",
+      "blocker": "REPRESENTATION_FACT_BLOCKED__QUALIFIED_RUNTIME_UNAVAILABLE",
+      "authoritative_variable_census": "NOT_OBSERVED_UNDER_QUALIFIED_RUNTIME",
+      "semantic_inference": false
+    },
+    {
+      "family": "South Asia",
+      "wave": "Wave 2",
+      "filename": "South Asia Wave 2.sav",
+      "sha": "6a5329ea16f4546188167edd691e0e6adbeae0737a015470aa26df0e01206f22",
+      "size": 894051,
+      "decoder": "SAV_NATIVE_GOVERNED",
+      "access": "EXACT_SHA_VERIFIED_FROM_CANONICAL_LIBRARY_ARCHIVE",
+      "archive_member": "surveys/South Asia Wave 2.sav",
+      "accepted_historical_dimensions": {
+        "rows": 10617,
+        "variables": 73
+      },
+      "edge_classes": [
+        "EC01",
+        "EC05",
+        "EC07",
+        "EC09",
+        "EC10",
+        "EC12",
+        "EC13",
+        "EC14"
+      ],
+      "accepted_historical_hazards": [
+        "resno missing/colliding",
+        "country-code drift",
+        "ordinary -1 country blocks",
+        "ranked GBC31a/b/c",
+        "country-specific system-missing masks"
+      ],
+      "classification": "REPRESENTATION_FACT_BLOCKED",
+      "blocker": "REPRESENTATION_FACT_BLOCKED__QUALIFIED_RUNTIME_UNAVAILABLE",
+      "authoritative_variable_census": "NOT_OBSERVED_UNDER_QUALIFIED_RUNTIME",
+      "semantic_inference": false
+    }
+  ],
+  "current_typed_key_law": {
+    "codec": "PRE553_R5_TYPED_VALUE_CODEC@1.0.0",
+    "physical_binding": "PRE553_PHYSICAL_VALUE_BINDING@2.0.0",
+    "separation": [
+      "int",
+      "float64_finite",
+      "decimal",
+      "str",
+      "bytes",
+      "none"
+    ],
+    "generic_numeric_coercion_authorized": false
+  },
+  "existing_bounded_precedents": [
+    {
+      "authority": "rawlsing_next/fiabc_lits_i_representation_authority.py",
+      "scope": "LiTS I q301_2/q301_7 only",
+      "cross_wave_extension_authorized": false
+    },
+    {
+      "authority": "rawlsing_next/fiabc_lm2_r1j_wvs7_representation_authority.py",
+      "scope": "WVS7 Q291G5/Q291P5 only",
+      "cross_source_extension_authorized": false
+    }
+  ],
+  "accepted_prior_evidence_only": [
+    "SR09-PRE R06 Latinobarometro raw-source reconnaissance",
+    "SR09-PRE R07 LiTS raw-source reconnaissance",
+    "SR09-PRE R08 South Asia raw-source reconnaissance",
+    "FIABC-S35-3 physical edge-class court",
+    "CLOSED35-L2-LAT1995 documentary packet"
+  ],
+  "new_authoritative_representation_observations": [],
+  "no_candidate_output_used": true,
+  "no_measured_p2x": true
+}
