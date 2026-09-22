@@ -216,7 +216,7 @@ class TerminalCompletenessHostileTests(unittest.TestCase):
         m = manifest()
         t = telemetry()
         del t["metrics"]["bytes_read"]
-        with self.assertRaisesRegex(TerminalCompletenessError, "TC_REQUIRED_METRIC_ABSENT"):
+        with self.assertRaisesRegex(TerminalCompletenessError, "TC_METRIC_SET_DRIFT"):
             validate_terminal_telemetry_completeness(
                 telemetry=t, source="LITS_I", candidate="A",
                 current_manifest=m, stage_receipts={},
