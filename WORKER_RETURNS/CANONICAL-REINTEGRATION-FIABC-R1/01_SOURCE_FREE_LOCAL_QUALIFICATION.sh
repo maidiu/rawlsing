@@ -21,10 +21,13 @@ readonly PYTHON_BIN
 
 TERMINAL_ORACLE_BLOB="6cf8d8bf8ac2d6421cd733a72a444687e241e659"
 TERMINAL_PRODUCER_BLOB="64c561d24a538057a4b1ce2d0a18b5539c30722a"
+TERMINAL_PREFLIGHT_TEST_BLOB="02c6dad5912fd7283cc1fc5b889cde62b9818101"
 [[ "$(git rev-parse HEAD:rawlsing_next/pre553_independent_parity_oracle.py)" == "$TERMINAL_ORACLE_BLOB" ]] \
   || die "terminal-readiness LiTS oracle owner drift"
 [[ "$(git rev-parse HEAD:rawlsing_next/fiabc_final_oracle_freeze_producers.py)" == "$TERMINAL_PRODUCER_BLOB" ]] \
   || die "terminal-readiness oracle producer drift"
+[[ "$(git rev-parse HEAD:rawlsing_next/tests/test_fiabc_final_preflight_fanin.py)" == "$TERMINAL_PREFLIGHT_TEST_BLOB" ]] \
+  || die "terminal-readiness preflight qualification test drift"
 
 for ref in "$PREMAIN_PARENT" "$FIABC_PARENT" "$MAIN_PARENT" "$CODE_HEAD"; do
   git merge-base --is-ancestor "$ref" HEAD || die "required cumulative ancestor $ref is absent"
@@ -32,7 +35,7 @@ done
 [[ -z "$(git status --porcelain)" ]] || die "working tree is not clean"
 
 unexpected="$(git diff --name-only "$FIABC_PARENT"..HEAD -- rawlsing_next | \
-  grep -Ev '^(rawlsing_next/pre553_independent_parity_oracle\.py|rawlsing_next/fiabc_final_oracle_freeze_producers\.py|rawlsing_next/rabochii_return_beacon\.py|rawlsing_next/rabochii_return_beacon_actionable\.py|rawlsing_next/rabochii_return_beacon_sweep\.py|rawlsing_next/tests/test_rabochii_return_beacon\.py|rawlsing_next/tests/test_rabochii_return_beacon_actionable\.py|rawlsing_next/tests/test_rabochii_return_beacon_sweep\.py)$' || true)"
+  grep -Ev '^(rawlsing_next/pre553_independent_parity_oracle\.py|rawlsing_next/fiabc_final_oracle_freeze_producers\.py|rawlsing_next/tests/test_fiabc_final_preflight_fanin\.py|rawlsing_next/rabochii_return_beacon\.py|rawlsing_next/rabochii_return_beacon_actionable\.py|rawlsing_next/rabochii_return_beacon_sweep\.py|rawlsing_next/tests/test_rabochii_return_beacon\.py|rawlsing_next/tests/test_rabochii_return_beacon_actionable\.py|rawlsing_next/tests/test_rabochii_return_beacon_sweep\.py)$' || true)"
 [[ -z "$unexpected" ]] || die "FIABC runtime/test drift after reconciliation: $unexpected"
 
 [[ "$(git rev-parse HEAD:.github/workflows/rabochii-return-beacon.yml)" == "$(git rev-parse "$MAIN_PARENT":.github/workflows/rabochii-return-beacon.yml)" ]] \
