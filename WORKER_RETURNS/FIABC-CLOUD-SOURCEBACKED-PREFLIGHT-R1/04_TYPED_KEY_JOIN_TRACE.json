@@ -1,0 +1,322 @@
+{
+  "schema": "FIABC_CLOUD_SOURCEBACKED_PREFLIGHT_TYPED_KEY_JOIN_TRACE@1.0.0",
+  "status": "STATIC_EXACT_TRACE_AVAILABLE__RUNTIME_JOIN_NOT_EXECUTED",
+  "provenance_ceiling": "Keys below were deterministically recomputed from the exact repository algorithms and accepted representation tokens; they are not a substitute for the blocked real-source production execution.",
+  "authority": {
+    "representation_authority": "FIABC-LITS-I-Q301-DTA-DECODER-REPRESENTATION-REPLAY@1.0.0",
+    "authority_content_hash": "9fce3b606413c2a5d3e9a05eda967067d191fbb31ff869d445d962bdf321393d",
+    "targets": {
+      "q301_2": 194,
+      "q301_7": 199
+    }
+  },
+  "response_surface": {
+    "variables": [
+      "q301_2/194",
+      "q301_7/199"
+    ],
+    "rows": [
+      {
+        "native_code": 1,
+        "accepted_decoder_source_token": {
+          "t": "float64_finite",
+          "bits": "3ff0000000000000"
+        },
+        "transport_adapted_token": {
+          "t": "decimal",
+          "v": {
+            "sign": 0,
+            "digits": [
+              1,
+              0
+            ],
+            "exponent": -1
+          }
+        },
+        "current_r5_key_of_raw_float": "47f141e43fb2a330ebd2286a0bb658eaa6320768d1bb75a0b969761731ace7bd",
+        "current_r5_key_of_transport_decimal": "ba43bb1a3192733dd20ccf2154751e321a1c58a45e88ae0c4eb3a134ca7ae012",
+        "current_governed_rule_token": {
+          "t": "decimal",
+          "v": {
+            "sign": 0,
+            "digits": [
+              1
+            ],
+            "exponent": 0
+          }
+        },
+        "current_governed_rule_key": "194d2b63023432d69ed1c4b67e73461ee8bef45ff0d58429dcab6db2d915fca2",
+        "historical_owner_physical_key": "02902fd4669292d549a57047ab839de6f93c893d44754dddde135f8b8e436b6c",
+        "successor_action": "rebind current_governed_rule_key -> historical_owner_physical_key",
+        "final_rule_key_used_by_legacy_replay": "02902fd4669292d549a57047ab839de6f93c893d44754dddde135f8b8e436b6c",
+        "static_exact_join_relation": "historical_owner_key(Decimal(code+'.0')) == historical_owner_key(Decimal(code))",
+        "runtime_join_result": "NOT_EXECUTED_RUNTIME_BLOCKED"
+      },
+      {
+        "native_code": 2,
+        "accepted_decoder_source_token": {
+          "t": "float64_finite",
+          "bits": "4000000000000000"
+        },
+        "transport_adapted_token": {
+          "t": "decimal",
+          "v": {
+            "sign": 0,
+            "digits": [
+              2,
+              0
+            ],
+            "exponent": -1
+          }
+        },
+        "current_r5_key_of_raw_float": "4b48b50efb20c6194106eaad0cc975ecd5df143681a0ee990e6647b1164e313f",
+        "current_r5_key_of_transport_decimal": "82361bc3e099fdd3ee4e66c303b4572ab6f1da3d225d4125546ca61c29c8b5ca",
+        "current_governed_rule_token": {
+          "t": "decimal",
+          "v": {
+            "sign": 0,
+            "digits": [
+              2
+            ],
+            "exponent": 0
+          }
+        },
+        "current_governed_rule_key": "80c274011d7b92122d3409b50f3782f3beee7e48a114cf58d94c6b8f8a8132c9",
+        "historical_owner_physical_key": "03e30a0ca1ef5091d9b0bd7daf04b7615d08235bc8deb11755c23508ed20c115",
+        "successor_action": "rebind current_governed_rule_key -> historical_owner_physical_key",
+        "final_rule_key_used_by_legacy_replay": "03e30a0ca1ef5091d9b0bd7daf04b7615d08235bc8deb11755c23508ed20c115",
+        "static_exact_join_relation": "historical_owner_key(Decimal(code+'.0')) == historical_owner_key(Decimal(code))",
+        "runtime_join_result": "NOT_EXECUTED_RUNTIME_BLOCKED"
+      },
+      {
+        "native_code": 3,
+        "accepted_decoder_source_token": {
+          "t": "float64_finite",
+          "bits": "4008000000000000"
+        },
+        "transport_adapted_token": {
+          "t": "decimal",
+          "v": {
+            "sign": 0,
+            "digits": [
+              3,
+              0
+            ],
+            "exponent": -1
+          }
+        },
+        "current_r5_key_of_raw_float": "f49594c4ccb0bd6c6e0da67a6cfb3142c45963fa0b3fa5e668f84e24eb9bd9f3",
+        "current_r5_key_of_transport_decimal": "c522dad670520946df5699fcdd2c92d6805258479f10e530924a7fad6ef94fe9",
+        "current_governed_rule_token": {
+          "t": "decimal",
+          "v": {
+            "sign": 0,
+            "digits": [
+              3
+            ],
+            "exponent": 0
+          }
+        },
+        "current_governed_rule_key": "72bd56404c8fa5d06dbc3de2a7d32155a88a213604a0644a54dc1e9b5e5a6580",
+        "historical_owner_physical_key": "0d368121ea299775c22fe8096eb95f9f2622022949a875509feab700a40142b9",
+        "successor_action": "rebind current_governed_rule_key -> historical_owner_physical_key",
+        "final_rule_key_used_by_legacy_replay": "0d368121ea299775c22fe8096eb95f9f2622022949a875509feab700a40142b9",
+        "static_exact_join_relation": "historical_owner_key(Decimal(code+'.0')) == historical_owner_key(Decimal(code))",
+        "runtime_join_result": "NOT_EXECUTED_RUNTIME_BLOCKED"
+      },
+      {
+        "native_code": 4,
+        "accepted_decoder_source_token": {
+          "t": "float64_finite",
+          "bits": "4010000000000000"
+        },
+        "transport_adapted_token": {
+          "t": "decimal",
+          "v": {
+            "sign": 0,
+            "digits": [
+              4,
+              0
+            ],
+            "exponent": -1
+          }
+        },
+        "current_r5_key_of_raw_float": "0fc6f4c7df003bf2a676503f9e9b4106fc1b0a9610144e1088a39e361534c28a",
+        "current_r5_key_of_transport_decimal": "9d61c350693aaf7fddd71655bdecc19c4dad17912193ced94df7a89663f1c958",
+        "current_governed_rule_token": {
+          "t": "decimal",
+          "v": {
+            "sign": 0,
+            "digits": [
+              4
+            ],
+            "exponent": 0
+          }
+        },
+        "current_governed_rule_key": "a0500d601fcc9ad20b201cf63eff204274c6d7aef559cc47654fb636cf47b856",
+        "historical_owner_physical_key": "b7eeab45a8efc3f3bbc9b672c9f30cdee980a312faf369f805ae69854618ce5a",
+        "successor_action": "rebind current_governed_rule_key -> historical_owner_physical_key",
+        "final_rule_key_used_by_legacy_replay": "b7eeab45a8efc3f3bbc9b672c9f30cdee980a312faf369f805ae69854618ce5a",
+        "static_exact_join_relation": "historical_owner_key(Decimal(code+'.0')) == historical_owner_key(Decimal(code))",
+        "runtime_join_result": "NOT_EXECUTED_RUNTIME_BLOCKED"
+      },
+      {
+        "native_code": 5,
+        "accepted_decoder_source_token": {
+          "t": "float64_finite",
+          "bits": "4014000000000000"
+        },
+        "transport_adapted_token": {
+          "t": "decimal",
+          "v": {
+            "sign": 0,
+            "digits": [
+              5,
+              0
+            ],
+            "exponent": -1
+          }
+        },
+        "current_r5_key_of_raw_float": "85e416fb9e8280d79f0cc9dbdc007edd6854ce19dc04e4942968a1fad743849e",
+        "current_r5_key_of_transport_decimal": "8bf6ed05151d77c52b875cef2eae41b73b6e371475336c4984b6a08b19bf7e2f",
+        "current_governed_rule_token": {
+          "t": "decimal",
+          "v": {
+            "sign": 0,
+            "digits": [
+              5
+            ],
+            "exponent": 0
+          }
+        },
+        "current_governed_rule_key": "ffcd9f37cdc45af0d77dbd4c4fc5e63127b9748a7a1c86cd7c7ca4229f81b909",
+        "historical_owner_physical_key": "5bd6da066d041d39a5b719c3d0f37ca52dd71f8c0341bd3e6b6c1669a4d854b1",
+        "successor_action": "rebind current_governed_rule_key -> historical_owner_physical_key",
+        "final_rule_key_used_by_legacy_replay": "5bd6da066d041d39a5b719c3d0f37ca52dd71f8c0341bd3e6b6c1669a4d854b1",
+        "static_exact_join_relation": "historical_owner_key(Decimal(code+'.0')) == historical_owner_key(Decimal(code))",
+        "runtime_join_result": "NOT_EXECUTED_RUNTIME_BLOCKED"
+      },
+      {
+        "native_code": 6,
+        "accepted_decoder_source_token": {
+          "t": "float64_finite",
+          "bits": "4018000000000000"
+        },
+        "transport_adapted_token": {
+          "t": "decimal",
+          "v": {
+            "sign": 0,
+            "digits": [
+              6,
+              0
+            ],
+            "exponent": -1
+          }
+        },
+        "current_r5_key_of_raw_float": "44efa07d48e810fba182ff9f44077ce4b35fa9ca6499437ade7a59cb7312b9ab",
+        "current_r5_key_of_transport_decimal": "ea5fd88292f6765193af1bb38079373057dafe5f351a4b93c7afd93742f7d1a3",
+        "current_governed_rule_token": {
+          "t": "decimal",
+          "v": {
+            "sign": 0,
+            "digits": [
+              6
+            ],
+            "exponent": 0
+          }
+        },
+        "current_governed_rule_key": "921b186117f9e63cd86023778c24ffac148ac5f50e491af99feb54931cf7653c",
+        "historical_owner_physical_key": "3a504762e28ee3cdb32c6904118c9b752c72dc19955fb6c2fb62869b13b26f15",
+        "successor_action": "rebind current_governed_rule_key -> historical_owner_physical_key",
+        "final_rule_key_used_by_legacy_replay": "3a504762e28ee3cdb32c6904118c9b752c72dc19955fb6c2fb62869b13b26f15",
+        "static_exact_join_relation": "historical_owner_key(Decimal(code+'.0')) == historical_owner_key(Decimal(code))",
+        "runtime_join_result": "NOT_EXECUTED_RUNTIME_BLOCKED"
+      },
+      {
+        "native_code": 7,
+        "accepted_decoder_source_token": {
+          "t": "float64_finite",
+          "bits": "401c0000000000"
+        },
+        "transport_adapted_token": {
+          "t": "decimal",
+          "v": {
+            "sign": 0,
+            "digits": [
+              7,
+              0
+            ],
+            "exponent": -1
+          }
+        },
+        "current_r5_key_of_raw_float": "3b24ceae6c8c238e99f85c6d1ae22f341b5087c04e6c4901d1f4faf7e08eafb1",
+        "current_r5_key_of_transport_decimal": "84a6ee05021760e0b678e331e7f14824740d31fca2c5aadab93df3200536557e",
+        "current_governed_rule_token": {
+          "t": "decimal",
+          "v": {
+            "sign": 0,
+            "digits": [
+              7
+            ],
+            "exponent": 0
+          }
+        },
+        "current_governed_rule_key": "5651281daa72325d6c10b664f1a84257dab1f9ffb21ab11eb6517614ee3bbfb0",
+        "historical_owner_physical_key": "55044306eb81bdee970b998957ee55e2945a2c9b8f69ab9a8e4a12a3d42e6bd3",
+        "successor_action": "rebind current_governed_rule_key -> historical_owner_physical_key",
+        "final_rule_key_used_by_legacy_replay": "55044306eb81bdee970b998957ee55e2945a2c9b8f69ab9a8e4a12a3d42e6bd3",
+        "static_exact_join_relation": "historical_owner_key(Decimal(code+'.0')) == historical_owner_key(Decimal(code))",
+        "runtime_join_result": "NOT_EXECUTED_RUNTIME_BLOCKED"
+      }
+    ],
+    "system_missing": {
+      "source_token": {
+        "t": "none"
+      },
+      "transport_token": {
+        "t": "none"
+      },
+      "current_r5_key": "c3bbe774f0c015f66c046559080bc7883103b437104c460f69c33a1709c5465d",
+      "historical_owner_key": "d4e74f818e324390a886c3551eef767cccca3c71ab7c9ab0349bf21b0848e380",
+      "final_rule_key": "d4e74f818e324390a886c3551eef767cccca3c71ab7c9ab0349bf21b0848e380",
+      "runtime_join_result": "NOT_EXECUTED_RUNTIME_BLOCKED",
+      "accepted_precedent_counts": {
+        "q301_2": 4,
+        "q301_7": 11
+      }
+    }
+  },
+  "coordinate_surface": {
+    "governed_slots": [
+      {
+        "name": "country",
+        "ordinal": 98
+      },
+      {
+        "name": "city",
+        "ordinal": 104
+      },
+      {
+        "name": "region",
+        "ordinal": 107
+      },
+      {
+        "name": "tablec",
+        "ordinal": 1117
+      },
+      {
+        "name": "tabled",
+        "ordinal": 1118
+      }
+    ],
+    "declared_value_rule_surface": "SYSTEM_MISSING_ONLY",
+    "system_missing_current_key": "c3bbe774f0c015f66c046559080bc7883103b437104c460f69c33a1709c5465d",
+    "system_missing_final_legacy_key": "d4e74f818e324390a886c3551eef767cccca3c71ab7c9ab0349bf21b0848e380",
+    "observed_values": "copy_observed_raw=True; no enumerated response-rule key exists; legacy physical key contributes replay identity material.",
+    "exhaustive_real_source_observed_token_trace": "NOT_AVAILABLE__DECODE_NEVER_EXECUTED"
+  },
+  "generic_numeric_coercion_used": false,
+  "labels_used_for_semantics": false,
+  "frequencies_used_for_semantics": false,
+  "missingness_used_for_semantic_inference": false
+}

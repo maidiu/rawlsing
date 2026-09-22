@@ -1,0 +1,142 @@
+{
+  "schema": "FIABC_CLOUD_SOURCEBACKED_PREFLIGHT_PRODUCTION_PATH_EXECUTION_RECEIPT@1.0.0",
+  "status": "BLOCKED_BEFORE_PRODUCTION_INVOCATION",
+  "logical_target": "WORKER_RETURNS/FIABC-FINAL-LAUNCH-FANIN-R1/02_PRE_CANDIDATE_LOCAL_PREFLIGHT.sh",
+  "launch_blob_at_dispatch": "a9f484a02861754b1a91d9839f10cf36b07c2d5f",
+  "steps": [
+    {
+      "step": "VERIFY_GOVERNED_EXECUTION_BRANCH_REMOTE_REF",
+      "status": "PASS",
+      "identity": "7b38c22dd469735eed0b0c01c304a028dd3046cf"
+    },
+    {
+      "step": "VERIFY_REPAIR_BRANCH_REMOTE_REF",
+      "status": "PASS",
+      "identity": "7b38c22dd469735eed0b0c01c304a028dd3046cf"
+    },
+    {
+      "step": "VERIFY_QUALIFIED_CODE_HEAD_ANCESTOR",
+      "status": "PASS",
+      "identity": "ea0baa4d87244a548ba9a6a46a883d307c65e3e4"
+    },
+    {
+      "step": "VERIFY_SOURCE_FREE_QUALIFICATION_ANCESTOR",
+      "status": "PASS",
+      "identity": "4c1641d1f1ec51a4116d0664dbf149e915465bdb"
+    },
+    {
+      "step": "MATERIALIZE_AND_SHA_LITS_I",
+      "status": "PASS",
+      "sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09"
+    },
+    {
+      "step": "MATERIALIZE_WVS7_ARCHIVE_EXTRACT_AND_SHA",
+      "status": "PASS",
+      "sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
+    },
+    {
+      "step": "REPRODUCE_CPYTHON_3_11_3",
+      "status": "BLOCKED",
+      "reason": "No local 3.11.3; uv exact install cannot resolve GitHub release host."
+    },
+    {
+      "step": "REPRODUCE_PYREADSTAT_1_3_6_AND_PYARROW_25_0_1",
+      "status": "BLOCKED",
+      "reason": "Packages absent; pip exact install cannot resolve PyPI."
+    },
+    {
+      "step": "MATERIALIZE_CURRENT_EXECUTABLE_CHECKOUT",
+      "status": "BLOCKED",
+      "reason": "Only recent FIABC-QF1 checkout located; Files raw-byte materialization denied by authorization path."
+    },
+    {
+      "step": "DARWIN_HOST_ATTESTATION",
+      "status": "SEPARATE_BY_LAW",
+      "observed": "Linux/x86_64",
+      "required": "Darwin/x86_64"
+    },
+    {
+      "step": "STANDARDIZE_WVS_CURRENT_PRODUCTION_COMMAND",
+      "status": "NOT_EXECUTED_DUE_PREREQUISITE_BLOCKER"
+    },
+    {
+      "step": "PRODUCE_LITS_CURRENT_SOURCE_BACKED_ORACLE",
+      "status": "NOT_EXECUTED_DUE_PREREQUISITE_BLOCKER"
+    },
+    {
+      "step": "FREEZE_T3",
+      "status": "NOT_EXECUTED"
+    },
+    {
+      "step": "SUCCESSION_PRODUCER",
+      "status": "NOT_EXECUTED"
+    },
+    {
+      "step": "SUCCESSION_PREFLIGHT",
+      "status": "NOT_EXECUTED"
+    },
+    {
+      "step": "CURRENT_DRIVER_PREFLIGHT",
+      "status": "NOT_EXECUTED"
+    },
+    {
+      "step": "CANDIDATE_A",
+      "status": "NOT_RUN"
+    },
+    {
+      "step": "CANDIDATE_B",
+      "status": "NOT_RUN"
+    },
+    {
+      "step": "CANDIDATE_C",
+      "status": "NOT_RUN"
+    },
+    {
+      "step": "MEASURED_P2X",
+      "status": "NOT_RUN"
+    },
+    {
+      "step": "P3",
+      "status": "NOT_RUN"
+    },
+    {
+      "step": "ARCHITECTURE_SELECTION",
+      "status": "NOT_RUN"
+    }
+  ],
+  "first_unmet_execution_prerequisite": {
+    "classification": "PRE_EXECUTION_INFRASTRUCTURE_BLOCKER",
+    "code": "QUALIFIED_RUNTIME_UNAVAILABLE",
+    "production_failure_classification": "NOT_REACHED",
+    "note": "This is not evidence of SOURCE_REPRESENTATION_GAP, TRANSPORT_ADAPTER_GAP, LEGACY_DEPENDENCY_LEAK, PHYSICAL_KEY_OWNER_MISMATCH, GUARD/LAUNCH_DEFECT, or OTHER_PRODUCTION_PATH_DEFECT because the real production functions were not invoked."
+  },
+  "launcher_host_gate_expected_drift": {
+    "implementation": [
+      "CPython",
+      "CPython"
+    ],
+    "python": [
+      "3.13.5",
+      "3.11.3"
+    ],
+    "system": [
+      "Linux",
+      "Darwin"
+    ],
+    "machine": [
+      "x86_64",
+      "x86_64"
+    ],
+    "pyreadstat": [
+      "MISSING",
+      "1.3.6"
+    ],
+    "pyarrow": [
+      "MISSING",
+      "25.0.1"
+    ]
+  },
+  "candidate_processes_started": 0,
+  "candidate_outputs_seen": 0,
+  "real_source_production_terminal_reached": false
+}

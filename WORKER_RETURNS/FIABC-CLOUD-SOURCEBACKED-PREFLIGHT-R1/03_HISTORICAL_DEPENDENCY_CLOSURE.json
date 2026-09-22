@@ -1,0 +1,158 @@
+{
+  "schema": "FIABC_CLOUD_SOURCEBACKED_PREFLIGHT_HISTORICAL_DEPENDENCY_CLOSURE@1.0.0",
+  "status": "STATIC_ARCHAEOLOGY_COMPLETE__MANDATORY_RUNTIME_IMPORT_PROVENANCE_BLOCKED",
+  "loader": {
+    "current_backend_blob": "813469f6cfa555e6afb9ba8a728844dc897eb7bf",
+    "mechanism": "_deploy() writes one immutable historical file; _load() uses importlib.util.spec_from_file_location and executes it under an ad-hoc module name.",
+    "isolation_property": "NO_DEPENDENCY_NAMESPACE_ISOLATION",
+    "consequence": "absolute imports from rawlsing_next.* resolve through the live process sys.modules/sys.path rather than automatically from the historical commit."
+  },
+  "dynamically_loaded_historical_modules": [
+    {
+      "role": "BANKED_LITS_PROJECTION_BUILDER",
+      "commit": "3ce639e1a8ab0ad48954c0aeff4b5c42f3d0b06f",
+      "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/AS4I0_CHETIRI_ROUTE_B_PRODUCTION_DRIVER_20260827/banked_as2b/run_as2b_lits1_mechanical_certification.py",
+      "blob": "c51b56779ab9d79126619b7733d41f5253c8150f",
+      "transport_normalizer": "exact_cell -> exact_decimal -> Decimal(str(float)); successor authorized_replay_cell now executes first for the two target response slots.",
+      "imports_runtime_namespace": [
+        {
+          "module": "pre553_c11_ingest",
+          "historical_blob": "332d3d0907a2de9a34cf828299f6125a1d2ddac5",
+          "current_blob": "37cd35fa2e3420a3eea272a2902e96ab9ba38aba",
+          "same": false
+        },
+        {
+          "module": "pre553_c11_integrity",
+          "historical_blob": "bda39b1ccd22f27ae24476207a7f3f3e9025b698",
+          "current_blob": "7c59aa13a2b7c8e3ab0dc90a1400df645b0b4bbd",
+          "same": false
+        },
+        {
+          "module": "pre553_c11_repository",
+          "historical_blob": "67c6eb6494522cd11aab1b93d0e73f9cef6036f3",
+          "current_blob": "67c6eb6494522cd11aab1b93d0e73f9cef6036f3",
+          "same": true
+        },
+        {
+          "module": "pre553_empirical_authority",
+          "historical_blob": "6714340facfe186c6cc521884cc85ab6340ad989",
+          "current_blob": "07e53bc919b7b635e222c0dfd1566e837459ca69",
+          "same": false
+        },
+        {
+          "module": "pre553_empirical_objects",
+          "historical_blob": "91974c52ce8c0acafa939be0d7d83f4a5c8085b7",
+          "current_blob": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+          "same": false,
+          "critical_subsurface": "_decimal_text/canonicalize/canonical_json/semantic_hash text is identical"
+        },
+        {
+          "module": "pre553_empirical_query",
+          "historical_blob": "d81e4ebebaf314ad39b4c56452f9331811c7e3a0",
+          "current_blob": "482778348d6b450f46985c2161af32f2961d8384",
+          "same": false
+        },
+        {
+          "module": "pre553_physical_decoder",
+          "historical_blob": "13aa733b511dc23e00bfcdf288c5b920e3f09983",
+          "current_blob": "86109c4a0b7ebd9b66e3b531b6334bfb48f03f78",
+          "same": false
+        },
+        {
+          "module": "pre553_source_backed_c11_facade",
+          "historical_blob": "fe4147853f9a42bd36dc2b5017ed05d7bc9ebf1b",
+          "current_blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+          "same": false,
+          "critical_role": "Current typed physical-key rule production; latest repair explicitly treats this as current and rebinds its exact rules to the legacy owner."
+        }
+      ],
+      "hybrid_classification": "INTENTIONAL_SUCCESSOR_HYBRID_ON_PHYSICAL_KEY_SURFACE__FULL_RUNTIME_PROVENANCE_NOT_CAPTURED"
+    },
+    {
+      "role": "ACCEPTED_LEGACY_PHYSICAL_KEY_OWNER",
+      "commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+      "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+      "blob": "7c509c2098d0030f253344eb3f682471378812a8",
+      "imported_dependencies": [
+        {
+          "module": "pre553_c11_ingest",
+          "historical_blob": "37cd35fa2e3420a3eea272a2902e96ab9ba38aba",
+          "current_blob": "37cd35fa2e3420a3eea272a2902e96ab9ba38aba",
+          "same": true
+        },
+        {
+          "module": "pre553_c11_integrity",
+          "historical_blob": "7c59aa13a2b7c8e3ab0dc90a1400df645b0b4bbd",
+          "current_blob": "7c59aa13a2b7c8e3ab0dc90a1400df645b0b4bbd",
+          "same": true
+        },
+        {
+          "module": "pre553_c11_repository",
+          "historical_blob": "67c6eb6494522cd11aab1b93d0e73f9cef6036f3",
+          "current_blob": "67c6eb6494522cd11aab1b93d0e73f9cef6036f3",
+          "same": true
+        },
+        {
+          "module": "pre553_empirical_authority",
+          "historical_blob": "c824bcf17257c0318e86497fc12ee31101bb6daf",
+          "current_blob": "07e53bc919b7b635e222c0dfd1566e837459ca69",
+          "same": false
+        },
+        {
+          "module": "pre553_empirical_objects",
+          "historical_blob": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+          "current_blob": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+          "same": true,
+          "critical_role": "canonicalize + semantic_hash + identity constructors"
+        },
+        {
+          "module": "_pre553_query_common",
+          "historical_blob": "6b38b0b749961358b65b31871a8cd5ca4a98fe77",
+          "current_blob": "938a6b03a63dd34ef4f0f63655ed8f11f65c5d92",
+          "same": false
+        },
+        {
+          "module": "pre553_empirical_query",
+          "historical_blob": "fbcd93b5b5336848744cfbb77e1d50a5d3ac6af7",
+          "current_blob": "482778348d6b450f46985c2161af32f2961d8384",
+          "same": false
+        },
+        {
+          "module": "pre553_physical_c11_bridge",
+          "historical_blob": "3e3497a6eb730524be33bb3d453f6cc63565052c",
+          "current_blob": "3e3497a6eb730524be33bb3d453f6cc63565052c",
+          "same": true
+        },
+        {
+          "module": "pre553_physical_decoder",
+          "historical_blob": "13aa733b511dc23e00bfcdf288c5b920e3f09983",
+          "current_blob": "86109c4a0b7ebd9b66e3b531b6334bfb48f03f78",
+          "same": false,
+          "critical_subsurface": "PhysicalMissingState enum declaration text is identical at both commits"
+        }
+      ],
+      "key_producing_dependency_result": {
+        "canonicalize_and_semantic_hash": "PINNED_BEHAVIOR_BY_IDENTICAL_BLOB",
+        "physical_missing_state_values": "TEXT_IDENTICAL_IN_HISTORICAL_AND_CURRENT_DECODER",
+        "response_rule_matching": "LOCAL_TO_PINNED_FACADE_FILE",
+        "no_changed_key_primitive_found_by_static_audit": true
+      },
+      "hybrid_classification": "NON_HERMETIC_LOAD_PRESENT__NO_STATIC_CHANGED_KEY_PRIMITIVE_FOUND__RUNTIME_PROVENANCE_REQUIRED"
+    }
+  ],
+  "current_successor_boundary": {
+    "producer_blob": "6c93b3a25e671af714ddb39ef6b335410cf4d0e7",
+    "representation_authority_blob": "94a833a7d8946bf3bd43296d9fe1e2239a3aa4b9",
+    "current_facade_blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+    "current_decoder_blob": "86109c4a0b7ebd9b66e3b531b6334bfb48f03f78",
+    "current_r5_codec_blob": "72f8f3c03ed065e86fea4e76bb17f8e06c2bf540",
+    "repair_scope": "Current Decimal(1..7)+system-missing rule keys are mapped to legacy owner keys only for q301_2/194 and q301_7/199; coordinate rules permit only system-missing rebound; weights forbidden."
+  },
+  "hostile_test": {
+    "class": "HISTORICAL_FILE + CURRENT_DEPENDENCY = ACCIDENTAL HYBRID COMPUTATION",
+    "static_result": "PATTERN_PRESENT",
+    "key_surface_result": "LEGACY_OWNER_KEY_PRIMITIVE_STATICALLY_STABLE; BANKED_BUILDER_CURRENT_TYPED_KEY_USE_EXPLICITLY_REBOUND_BY_SUCCESSOR",
+    "runtime_import_provenance": "NOT_CAPTURED__QUALIFIED_RUNTIME_AND_CURRENT_CHECKOUT_UNAVAILABLE",
+    "closure": "NOT_PROVED"
+  }
+}
