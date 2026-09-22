@@ -334,12 +334,23 @@ def normalize_accepted_astra_summary(
 
     p3_raw = _mapping(product.get("P3_conditional_reversal"), "ASTRA P3")
     p3_validation = _mapping(p3_raw.get("validation_details"), "ASTRA P3 validation")
-    exact_rates = {
-        role: _fraction_material(value, f"ASTRA P3 {role}")
-        for role, value in _mapping(p3_validation.get("exact_rates"), "ASTRA P3 exact rates").items()
+    historical_rate_keys = {
+        "POOLED_NEG": "POOLED_NEG",
+        "POOLED_POS": "POOLED_POS",
+        "Q310V1_NEG": "STRATUM:Q310V1:NEG",
+        "Q310V1_POS": "STRATUM:Q310V1:POS",
+        "Q310V2_NEG": "STRATUM:Q310V2:NEG",
+        "Q310V2_POS": "STRATUM:Q310V2:POS",
+        "Q310V3_NEG": "STRATUM:Q310V3:NEG",
+        "Q310V3_POS": "STRATUM:Q310V3:POS",
     }
-    if set(exact_rates) != set(P3_ROLES):
-        raise LitsAstraSubstantiveParityError("ASTRA P3 role-rate topology drift")
+    historical_rates = _mapping(p3_validation.get("exact_rates"), "ASTRA P3 exact rates")
+    if set(historical_rates) != set(historical_rate_keys):
+        raise LitsAstraSubstantiveParityError("ASTRA P3 historical role-rate topology drift")
+    exact_rates = {
+        historical_rate_keys[role]: _fraction_material(value, f"ASTRA P3 {role}")
+        for role, value in historical_rates.items()
+    }
     p3 = {
         "candidate_hash": p3_raw["candidate_hash"],
         "terminal_state": p3_raw["terminal_state"],
