@@ -102,10 +102,19 @@ def execute_empirical_query_current_runtime(**kwargs):
     )
 
 
-def execute_exact_bounded_discovery_runtime(*, runtime_authorities, **kwargs):
+def execute_exact_bounded_discovery_runtime(
+    *,
+    runtime_authorities,
+    runtime_catalog_identity: str | None = None,
+    **kwargs,
+):
     from rawlsing_next.pre553_discovery_exact import execute_exact_bounded_discovery
 
-    with bind_runtime(runtime_authorities, repository=kwargs.get("repository")):
+    with bind_runtime(
+        runtime_authorities,
+        repository=kwargs.get("repository"),
+        runtime_catalog_identity=runtime_catalog_identity,
+    ):
         return execute_exact_bounded_discovery(**kwargs)
 
 

@@ -50,7 +50,12 @@ from rawlsing_next.fiabc_lits_i_f02_event_representation_authority import (
 )
 from rawlsing_next.pre553_carrier_execution import RuntimeObjectCatalog
 from rawlsing_next.pre553_empirical_authority import AuthorityRegistry, Pre553AuthorityError
-from rawlsing_next.pre553_empirical_objects import AuthoritySnapshot, exact_ref, semantic_hash
+from rawlsing_next.pre553_empirical_objects import (
+    AuthoritySnapshot,
+    authority_ref,
+    exact_ref,
+    semantic_hash,
+)
 from rawlsing_next.pre553_empirical_query import _require_exact_i03_authority_fitness
 from rawlsing_next.pre553_runtime_authority import Pre553RuntimeAuthoritySet
 from rawlsing_next.pre553_runtime_context import bind_runtime
@@ -122,7 +127,7 @@ def i03_case():
         for role in candidate.query_roles
         if role.query.ref in QUERY_REFS
         and PARENT_AUTHORITY_REF in {
-            ref for ref in role.query.query_authority_refs
+            authority_ref(ref) for ref in role.query.query_authority_refs
         }
     )
     wrong_query = next(query for query in catalog.queries if query.ref not in QUERY_REFS)
@@ -136,6 +141,7 @@ def i03_case():
             exact_ref(value) for value in role.query.empirical_universe_refs
         ),
         "wrong_query": wrong_query,
+        "authority_registry": catalog.authority_registry,
     }
 
 
@@ -278,7 +284,7 @@ def test_i03_same_scope_under_another_catalog_cannot_consume_successor(i03_case)
             _require_exact_i03_authority_fitness(
                 query=i03_case["query"],
                 predicate=i03_case["predicate"],
-                authority_registry=_runtime_module().catalog_and_frontier()[0].authority_registry,
+                authority_registry=i03_case["authority_registry"],
                 universe_refs=i03_case["universe_refs"],
             )
 
@@ -292,7 +298,7 @@ def test_i03_successor_absent_runtime_catalog_identity_fails_closed(i03_case):
             _require_exact_i03_authority_fitness(
                 query=i03_case["query"],
                 predicate=i03_case["predicate"],
-                authority_registry=_runtime_module().catalog_and_frontier()[0].authority_registry,
+                authority_registry=i03_case["authority_registry"],
                 universe_refs=i03_case["universe_refs"],
             )
 
@@ -381,7 +387,7 @@ def test_i03_absent_runtime_context_retains_predecessor_failure(i03_case):
         _require_exact_i03_authority_fitness(
             query=i03_case["query"],
             predicate=i03_case["predicate"],
-            authority_registry=_runtime_module().catalog_and_frontier()[0].authority_registry,
+            authority_registry=i03_case["authority_registry"],
             universe_refs=i03_case["universe_refs"],
         )
 
