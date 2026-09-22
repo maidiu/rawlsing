@@ -15,18 +15,27 @@ fi
 }
 readonly PYTHON_BIN
 
-CODE_HEAD="aa15525750085f4e223d579010688660a9ae1b6b"
+QUALIFIED_CODE_HEAD="6e2b817c80fc8745354e4a54103ba97a04c4437d"
+QUALIFICATION_CLOSURE_HEAD="cbda295ec2e265709f1634b643e27abf704582d3"
 EXPECTED_BRANCH="agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1"
 
 : "${LITS_PATH:?set LITS_PATH to exact canonical LITS-2006-data.dta}"
 : "${WVS_PATH:?set WVS_PATH to exact canonical WVS Wave 7.sav}"
 : "${WORK_ROOT:?set WORK_ROOT to a fresh isolated court root}"
 
-git merge-base --is-ancestor "$CODE_HEAD" HEAD || { echo "qualified code head $CODE_HEAD is not an ancestor of HEAD" >&2; exit 2; }
-if git diff --name-only "$CODE_HEAD"..HEAD | grep -Ev '^WORKER_RETURNS/FIABC-FINAL-LAUNCH-FANIN-R1/' | grep -q .; then
-  echo "non-launch-pack code changed after qualified code head $CODE_HEAD" >&2; exit 2
+git merge-base --is-ancestor "$QUALIFIED_CODE_HEAD" HEAD || { echo "green-qualified code head $QUALIFIED_CODE_HEAD is not an ancestor of HEAD" >&2; exit 2; }
+git merge-base --is-ancestor "$QUALIFICATION_CLOSURE_HEAD" HEAD || { echo "qualification closure head $QUALIFICATION_CLOSURE_HEAD is not an ancestor of HEAD" >&2; exit 2; }
+unexpected="$(
+  git diff --name-only "$QUALIFIED_CODE_HEAD"..HEAD \
+    | grep -Ev '^(WORKER_RETURNS/FIABC-CANONICAL-TERMINAL-READINESS-R1/|WORKER_RETURNS/FIABC-FINAL-LAUNCH-FANIN-R1/)' \
+    || true
+)"
+if [[ -n "$unexpected" ]]; then
+  echo "non-qualified code changed after green source-free head $QUALIFIED_CODE_HEAD:" >&2
+  printf '%s\n' "$unexpected" >&2
+  exit 2
 fi
-[[ "$(git branch --show-current)" == "$EXPECTED_BRANCH" ]] || { echo "wrong branch" >&2; exit 2; }
+[[ "$(git branch --show-current)" == "$EXPECTED_BRANCH" ]] || { echo "wrong branch: expected $EXPECTED_BRANCH" >&2; exit 2; }
 [[ -z "$(git status --porcelain)" ]] || { echo "dirty worktree" >&2; exit 2; }
 
 "$PYTHON_BIN" - <<'PY'
