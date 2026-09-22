@@ -8,8 +8,12 @@ import pytest
 
 import rawlsing_next.ee_p2x_darwin_stage_backend as backend
 from rawlsing_next.fiabc_final_oracle_freeze_producers import (
+    LITS_BASE_CANDIDATE_PROJECTION,
+    LITS_R5B_BLOBS,
+    LITS_R5B_COMMIT,
+    LITS_R5B_DRIVER,
+    _lits_accepted_legacy_base_candidate,
     _lits_accepted_legacy_projection,
-    _lits_accepted_legacy_repository,
 )
 from rawlsing_next.fiabc_lits_i_representation_authority import (
     ACCEPTED_C11_RELEASE_IDENTITY,
@@ -235,13 +239,16 @@ def test_authority_snapshot_is_positive_narrow_and_candidate_neutral():
         assert limit in NEGATIVE_LIMITS
 
 
-def test_producer_helper_pins_accepted_release_before_returning(monkeypatch, tmp_path):
+def test_producer_helper_pins_accepted_base_candidate_before_returning(monkeypatch, tmp_path):
     class LegacyProjection:
         cache_identity = "84361298ae702786a3fd1044bf619ffa4fe9ed2877040724386951e9c9d27872"
 
     class LegacyStream:
         def __init__(self, **kwargs):
             self.kwargs = kwargs
+
+        def iter_cells(self):
+            return self.kwargs["cell_iter_factory"]()
 
     good_release = types.SimpleNamespace(
         release_ref=types.SimpleNamespace(content_hash=ACCEPTED_C11_RELEASE_IDENTITY),
@@ -253,14 +260,23 @@ def test_producer_helper_pins_accepted_release_before_returning(monkeypatch, tmp
     )
     replayed = []
 
-    def build_repository(stream, projection):
-        replayed.extend(stream.kwargs["cell_iter_factory"]())
-        return "repo", good_release
+    good_candidate = types.SimpleNamespace(
+        candidate_replay_manifest=types.SimpleNamespace(
+            semantic_projection_hash=LITS_BASE_CANDIDATE_PROJECTION
+        )
+    )
+
+    def project_candidate(*, cells, **_kwargs):
+        replayed.extend(cells)
+        return good_candidate
 
     legacy = types.SimpleNamespace(
         GovernedC11Projection=lambda **kwargs: LegacyProjection(),
         ExactPhysicalCellStream=LegacyStream,
-        build_source_backed_c11_repository=build_repository,
+        project_c11_candidate_from_physical_cells=project_candidate,
+        validate_c11_source_release=lambda candidate: (
+            good_release if candidate is good_candidate else None
+        ),
     )
     fake_backend = types.SimpleNamespace(
         _deploy=lambda *args: tmp_path / "legacy.py",
@@ -290,7 +306,7 @@ def test_producer_helper_pins_accepted_release_before_returning(monkeypatch, tmp
         "rawlsing_next.fiabc_final_oracle_freeze_producers._lits_accepted_legacy_projection",
         lambda **kwargs: (legacy, LegacyProjection()),
     )
-    repository, release = _lits_accepted_legacy_repository(
+    observed_legacy, observed_projection, candidate = _lits_accepted_legacy_base_candidate(
         incidence=incidence,
         projection=projection,
         repo_root=REPO,
@@ -298,6 +314,18 @@ def test_producer_helper_pins_accepted_release_before_returning(monkeypatch, tmp
         backend=fake_backend,
         banked=banked,
     )
-    assert repository == "repo"
-    assert release is good_release
+    assert observed_legacy is legacy
+    assert isinstance(observed_projection, LegacyProjection)
+    assert candidate is good_candidate
     assert [cell.raw_value for cell in replayed] == [Decimal("1.0"), Decimal("112.0")]
+
+
+def test_exact_adopted_r5b_successor_driver_and_support_are_source_free_pinned(tmp_path):
+    deployed = {
+        path: backend._deploy(REPO, tmp_path, LITS_R5B_COMMIT, path, blob)
+        for path, blob in LITS_R5B_BLOBS.items()
+    }
+    for path, blob in LITS_R5B_BLOBS.items():
+        assert backend._blob(deployed[path].read_bytes()) == blob
+    r5b = backend._load(deployed[LITS_R5B_DRIVER], "_fiabc_test_exact_r5b_successor")
+    assert r5b.verify_frozen_support()

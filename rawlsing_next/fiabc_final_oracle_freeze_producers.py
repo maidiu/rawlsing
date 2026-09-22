@@ -18,8 +18,6 @@ from rawlsing_next.pre553_independent_parity_oracle import (
     FreezeContext,
     LITS_ASTRA_D04_R2_COMMIT,
     LITS_CANDIDATE_COUNT,
-    LITS_C11_RELEASE_IDENTITY,
-    LITS_C11_REPLAY_IDENTITY,
     LITS_FRONTIER_SEAL,
     LITS_QUERY_ROLE_COUNT,
     LITS_LEARNED_PRODUCT_IDENTITY,
@@ -62,6 +60,20 @@ SUCCESSOR_LOCK2_REPLAY = "9b5ac1726a03798d07e965396192d1bfefbee6d2188bad5a3acfb4
 LITS_RUNTIME_CATALOG = "5983d7d5c579b916ad46c1acf9e41c1c89b516a4e561a99b1d2b477bf5ad2d02"
 LITS_ACTIVE_BINDING = "a5f36a81843fe2ebab0b5cccb369ce76035f842b93e602613b8b9f3a81103308"
 LITS_RUNTIME_RELEASE = "192926fabd9c9c3d40e43b1d7705ca2bcfe7f8d06e286be26d4b886d436df43f"
+LITS_RUNTIME_REPLAY = "30c168fbdf8425b23cbf2a2b2d2c9ab56f3438851f52e3562510089f1d381a08"
+LITS_RUNTIME_PROJECTION = "23912633a23318d22bad0da08027867031320331d8d436d944e9c0b21eb086eb"
+LITS_BASE_C11_RELEASE = "e6c954538fa1830820120465a10a6d065b8a18d1e6b7b08d3f863b0917741e26"
+LITS_BASE_C11_REPLAY = "6bfe9862abd6f373309ff6f8868f8871948bb9ed397906d880cda6776941a1dd"
+LITS_BASE_CANDIDATE_PROJECTION = "7f81a222ea2611638d7ce7ac55c695120b57323832e6dc17ff65c1992201659c"
+LITS_R5B_COMMIT = "648a39ad5bed42f66e066410af5869604d29c12d"
+LITS_R5B_DRIVER = "WORKER_RETURNS/EE-P2R5B/03_LOCAL_I02_SUCCESSOR_RELEASE_DRIVER.py"
+LITS_R5B_BLOBS = {
+    LITS_R5B_DRIVER: "b819fdff50470a71f1c570aa8021e28b361fa986",
+    "WORKER_RETURNS/EE-P2R5B/SUPPORT/FROZEN_BASE/AS2A_LITS1_SHARED_CERTIFICATION_20260827/01_LITS1_1198_SLOT_OWNERSHIP_PROJECTION_EXCLUSION_LEDGER.csv": "c24e0d6acc6f2b823f0fc3fa5fb8a52b7c1cab0c",
+    "WORKER_RETURNS/EE-P2R5B/SUPPORT/FROZEN_BASE/AS2A_LITS1_SHARED_CERTIFICATION_20260827/04_SOURCE_SPECIFIC_PROJECTION_AUTHORITY_PACKAGE.json": "174b931e8aa89111086e3d46159b47154bed7f16",
+    "WORKER_RETURNS/EE-P2R5B/SUPPORT/FROZEN_BASE/AS2B_LITS1_MECHANICAL_SOURCE_CERTIFICATION_20260827/run_as2b_lits1_mechanical_certification.py": "c51b56779ab9d79126619b7733d41f5253c8150f",
+    "WORKER_RETURNS/EE-P2R5B/SUPPORT/FROZEN_F02/prev3_lits1_selector_closure.py": "7b45b277164fa90c3da739aab26b516f7a8cb8dc",
+}
 LITS_ROWS = 29002
 LITS_VARIABLES = 1198
 WVS_ROWS = 97220
@@ -480,7 +492,7 @@ def _lits_accepted_legacy_projection(
     return legacy, legacy_projection
 
 
-def _lits_accepted_legacy_repository(
+def _lits_accepted_legacy_base_candidate(
     *,
     incidence: Any,
     projection: Any,
@@ -489,7 +501,7 @@ def _lits_accepted_legacy_repository(
     backend: Any,
     banked: Any,
 ):
-    """Replay the exact accepted LiTS C11 route under bounded successor authority."""
+    """Replay and verify the exact accepted base candidate from one incidence."""
     legacy, legacy_projection = _lits_accepted_legacy_projection(
         projection=projection,
         repo_root=repo_root,
@@ -513,11 +525,109 @@ def _lits_accepted_legacy_repository(
             + LITS_REPRESENTATION_AUTHORITY_REF.authority_content_hash
         ),
     )
-    repository, release = legacy.build_source_backed_c11_repository(stream, legacy_projection)
-    if release.release_ref.content_hash != LITS_C11_RELEASE_IDENTITY:
-        raise FinalOracleProducerError("LiTS accepted C11 release identity drift after representation replay")
-    if release.replay_manifest.ref.content_hash != LITS_C11_REPLAY_IDENTITY:
-        raise FinalOracleProducerError("LiTS accepted C11 replay identity drift after representation replay")
+    base_candidate = legacy.project_c11_candidate_from_physical_cells(
+        source_sha256=incidence.source_sha256,
+        row_count=incidence.row_count,
+        cells=stream.iter_cells(),
+        projection=legacy_projection,
+    )
+    if (
+        base_candidate.candidate_replay_manifest.semantic_projection_hash
+        != LITS_BASE_CANDIDATE_PROJECTION
+    ):
+        raise FinalOracleProducerError("LiTS accepted base candidate projection identity drift")
+    base_release = legacy.validate_c11_source_release(base_candidate)
+    if base_release.release_ref.content_hash != LITS_BASE_C11_RELEASE:
+        raise FinalOracleProducerError("LiTS accepted base C11 release identity drift")
+    if base_release.replay_manifest.ref.content_hash != LITS_BASE_C11_REPLAY:
+        raise FinalOracleProducerError("LiTS accepted base C11 replay identity drift")
+    return legacy, legacy_projection, base_candidate
+
+
+def _lits_accepted_legacy_repository(
+    *,
+    incidence: Any,
+    projection: Any,
+    repo_root: Path,
+    neutral_root: Path,
+    backend: Any,
+    banked: Any,
+):
+    """Replay the exact adopted R5B successor release from one decoded incidence."""
+    legacy, legacy_projection, base_candidate = _lits_accepted_legacy_base_candidate(
+        incidence=incidence,
+        projection=projection,
+        repo_root=repo_root,
+        neutral_root=neutral_root,
+        backend=backend,
+        banked=banked,
+    )
+
+    r5b_root = neutral_root / "accepted_r5b_successor"
+    deployed = {
+        path: backend._deploy(
+            repo_root, r5b_root, LITS_R5B_COMMIT, path, expected_blob
+        )
+        for path, expected_blob in LITS_R5B_BLOBS.items()
+    }
+    r5b = backend._load(deployed[LITS_R5B_DRIVER], "_fiabc_lits_i_exact_r5b_successor")
+    r5b.verify_frozen_support()
+    f02 = r5b.load_module(r5b.F02, "_fiabc_lits_i_exact_r5b_f02")
+    closure = f02.build_selector_closure()
+    if closure["new_release_ref"]["content_hash"] != r5b.FROZEN_F02_SCOPE_HASH:
+        raise FinalOracleProducerError("LiTS frozen F02 successor scope drift")
+    r5b.f02_source_scan(incidence, f02)
+
+    # R5B was adopted against the pinned legacy physical-key representation.
+    # Rebind only its facade constructors/functions to those exact deployed bytes.
+    for name in (
+        "OccurrenceRule", "PhysicalSlot", "ResponseSlotRule", "ResponseValueRule",
+        "physical_value_binding_key", "project_c11_candidate_from_physical_cells",
+    ):
+        setattr(r5b, name, getattr(legacy, name))
+
+    _package, _ledger, slots = banked.read_banked_authority()
+    (
+        extension_projection,
+        extension_questions,
+        extension_routing,
+        all_authorities,
+        extension_auth_refs,
+        _extension_projection_material,
+    ) = r5b.build_extension_projection(
+        base_projection=legacy_projection,
+        base_context={},
+        slots=slots,
+        closure=closure,
+        f02_module=f02,
+    )
+    selected = r5b.selected_incidence(incidence, ("country", "q310", "q311"))
+    extension_candidate = legacy.project_c11_candidate_from_physical_cells(
+        source_sha256=incidence.source_sha256,
+        row_count=incidence.row_count,
+        cells=r5b.exact_cells(selected, banked),
+        projection=extension_projection,
+    )
+    successor = r5b.build_successor_candidate(
+        base_candidate=base_candidate,
+        base_projection=legacy_projection,
+        extension_candidate=extension_candidate,
+        extension_questions=extension_questions,
+        extension_routing=extension_routing,
+        all_authorities=all_authorities,
+        f02_replay_authority_ref=extension_auth_refs["replay"],
+        f02_module=f02,
+    )
+    release = r5b.validate_c11_source_release(successor)
+    repository = r5b.C11Repository((release,))
+    if release.release_ref.content_hash != LITS_RUNTIME_RELEASE:
+        raise FinalOracleProducerError("LiTS accepted successor C11 release identity drift")
+    if release.replay_manifest.ref.content_hash != LITS_RUNTIME_REPLAY:
+        raise FinalOracleProducerError("LiTS accepted successor replay identity drift")
+    if successor.candidate_replay_manifest.semantic_projection_hash != LITS_RUNTIME_PROJECTION:
+        raise FinalOracleProducerError("LiTS accepted successor projection identity drift")
+    if repository.resolve_release_exact(release.release_ref).release_ref != release.release_ref:
+        raise FinalOracleProducerError("LiTS successor release exact repository resolution failed")
     return repository, release
 
 
