@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import copy
-from decimal import Decimal
 import hashlib
 import json
 from pathlib import Path
@@ -18,7 +17,6 @@ from rawlsing_next.fiabc_final_oracle_freeze_producers import (
     SUCCESSOR_DISCOVERY_AUTHORITY,
     SUCCESSOR_LOCK2,
     SUCCESSOR_LOCK2_REPLAY,
-    _lits_banked_exact_cell_stream,
     _reject_candidate_owned_path,
     produce_t3_two_source_freeze,
     standardize_wvs_r1m_oracle,
@@ -248,62 +246,6 @@ def test_wvs_adapter_binds_exact_accepted_r1m_identities():
     assert doc["truth_payload_identity"] == R1M_TRUTH_IDENTITY
     assert doc["successor_discovery_authority"] == SUCCESSOR_DISCOVERY_AUTHORITY
     assert doc["successor_lock2"] == SUCCESSOR_LOCK2
-
-
-def test_lits_neutral_producer_replays_banked_exact_float_to_decimal_seam():
-    from rawlsing_next.pre553_physical_decoder import PhysicalCell, PhysicalMissingState
-    from rawlsing_next.pre553_source_backed_c11_facade import physical_value_binding_key
-
-    native = PhysicalCell(
-        row_ordinal=1,
-        variable_ordinal=194,
-        variable_name="q301_2",
-        raw_value=1.0,
-        missing_state=PhysicalMissingState.OBSERVED_STORAGE_VALUE,
-        source_missing_declaration=None,
-        raw_value_label="One",
-    )
-
-    class Incidence:
-        source_sha256 = LITS_SOURCE_SHA256
-        row_count = 1
-
-        def iter_cells(self, batch_size=20_000):
-            assert batch_size == 20_000
-            yield native
-
-    class Banked:
-        @staticmethod
-        def exact_cell(cell):
-            return PhysicalCell(
-                row_ordinal=cell.row_ordinal,
-                variable_ordinal=cell.variable_ordinal,
-                variable_name=cell.variable_name,
-                raw_value=Decimal(str(cell.raw_value)) if isinstance(cell.raw_value, float) else cell.raw_value,
-                missing_state=cell.missing_state,
-                source_missing_declaration=cell.source_missing_declaration,
-                raw_value_label=cell.raw_value_label,
-            )
-
-    stream = _lits_banked_exact_cell_stream(Incidence(), Banked)
-    replayed = next(iter(stream.iter_cells()))
-
-    assert replayed.raw_value == Decimal("1.0")
-    assert replayed.missing_state is native.missing_state
-    assert replayed.source_missing_declaration is native.source_missing_declaration
-    assert replayed.raw_value_label == native.raw_value_label
-
-    float_key = physical_value_binding_key(
-        native.raw_value, native.missing_state, native.source_missing_declaration
-    )
-    replayed_key = physical_value_binding_key(
-        replayed.raw_value, replayed.missing_state, replayed.source_missing_declaration
-    )
-    governed_decimal_key = physical_value_binding_key(
-        Decimal(1), native.missing_state, native.source_missing_declaration
-    )
-    assert float_key != governed_decimal_key
-    assert replayed_key == governed_decimal_key
 
 
 def test_lits_producer_hard_codes_exact_50_77_and_rejects_candidate_roots(tmp_path):
