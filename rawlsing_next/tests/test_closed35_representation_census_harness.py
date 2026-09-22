@@ -52,9 +52,9 @@ def test_declared_encoding_admission_gaps_are_explicit_not_guessed():
 
 def test_surface_registry_count_and_owner_partition_are_explicit():
     surfaces = h.load_surface_registry(SURFACES)
-    assert len(surfaces) == 34
+    assert len(surfaces) == 38
     assert sum(x["owner_key_status"] == "MISSING_EXACT_VALUE_KEY_AUTHORITY" for x in surfaces) == 20
-    assert sum(x["owner_key_status"] != "MISSING_EXACT_VALUE_KEY_AUTHORITY" for x in surfaces) == 14
+    assert sum(x["owner_key_status"] != "MISSING_EXACT_VALUE_KEY_AUTHORITY" for x in surfaces) == 18
 
 
 def test_known_commission_surfaces_are_present():
@@ -78,6 +78,9 @@ def test_known_commission_surfaces_are_present():
     assert required <= pairs
     for name in ("abdefect", "abhlth", "abrape", "abany", "absingle", "abnomore"):
         assert ("GSS2010.sav", name) in pairs
+    for pair in (("Arab Barometer Wave 2.sav", "Q101"), ("Arab Barometer Wave 2.sav", "Q2062"),
+                 ("Arab Barometer Wave 5.sav", "Q101"), ("Arab Barometer Wave 5.sav", "Q2061B")):
+        assert pair in pairs
 
 
 def test_surface_registry_source_id_sha_join_is_exact():
