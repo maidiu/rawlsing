@@ -43,3 +43,11 @@ No empirical semantics, workload constitution, candidate design, oracle law, tel
   - records the user-reported 154-pass/9-fail qualification result, static diagnosis, bounded follow-up repair, and rerun requirement.
 
 No production FIABC, WVS, P2, PRE553, candidate, oracle, telemetry, workload, or architecture-selection implementation was modified by this follow-up.
+## Final static-assertion repair after second local qualification
+
+- `WORKER_RETURNS/CANONICAL-REINTEGRATION-FIABC-R1/01_SOURCE_FREE_LOCAL_QUALIFICATION.sh`
+  - corrected the final WVS successor replay assertion to use the authoritative exported symbol `WVS7_LOCK2_REPLAY_IDENTITY`.
+- `WORKER_RETURNS/FIABC-CANONICAL-TERMINAL-READINESS-R1/05_LOCAL_QUALIFICATION_FINAL_ASSERTION_FOLLOWUP.md`
+  - records the user-reported fully green pytest court, the final assertion typo, and the bounded repair.
+
+No production module or semantic identity changed in this follow-up.
