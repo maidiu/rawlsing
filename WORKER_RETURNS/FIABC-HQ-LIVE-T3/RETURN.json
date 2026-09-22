@@ -1,0 +1,26 @@
+{
+  "schema": "FIABC_LIVE_T1_T3_HQ_CHECKPOINT@1.0.0",
+  "repo": "maidiu/rawlsing",
+  "branch": "agent/vozhd-premain-fiabc-live-transposition-t3-fanin-r1",
+  "parent_branch": "agent/rabochii-premain-fiabc-t3-oracle-process-envelope-r1",
+  "holdings": {
+    "t1_pass": true,
+    "t2_pass": true,
+    "t3_pass": true,
+    "six_current_cells_bound": true,
+    "independent_oracle_before_candidate_start": true,
+    "fresh_process_per_cell": true,
+    "telemetry_lifecycle_transposed": false,
+    "succession_preflight_transposed": false,
+    "final_i05_terminal_transposed": false,
+    "source_independent_qualification_executed": false,
+    "measured_p2x_authorized": false
+  },
+  "next_layers": [
+    "T4",
+    "T5",
+    "QUAL",
+    "LOCAL"
+  ],
+  "terminal": "FIABC_LIVE_TRANSPOSITION_T1_T2_T3_COMPLETE__ACCOUNTING_PREFLIGHT_TERMINAL_LAYERS_PENDING"
+}

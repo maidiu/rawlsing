@@ -1,0 +1,61 @@
+{
+  "schema": "RAWLSING_HQ_CURRENT_CANONICAL_REINTEGRATION@1.0.0",
+  "checkpoint_id": "20260921T2050-0400",
+  "status": "RAWLSING_CANONICAL_REINTEGRATION_COMPLETE__CUMULATIVE_EXECUTION_HEAD_SEALED__FIABC_COURT_INFRASTRUCTURE_INHERITED__ARCHITECTURE_WINNER_STILL_OPEN__READY_FOR_SOURCE_FREE_LOCAL_QUALIFICATION",
+  "ancestry": {
+    "merge_base": "07e3c3bfde2bc35213278f4ef3a619b9c73bdddf",
+    "premain_parent": "d474f8e3c9630c4bcbb10d6e8359b71ba5b3060d",
+    "fiabc_parent": "91723d443f56acb05af63acc0d3a34fb9a97e3f4",
+    "main_parent": "25830fe7462bb9e29bc4087e6ae14f3f84cec377",
+    "fiabc_integrated_code_head": "aa15525750085f4e223d579010688660a9ae1b6b"
+  },
+  "first_missed_reintegration_event": {
+    "commit": "a4b5bc7a7cef07fb8acb48bc6f0300b155515f01",
+    "date": "2026-09-18",
+    "holding": "HQ adopted EE-P2R1 PASS while qualified implementation ancestry remained selectively fanned into detached P2X rather than cumulative PRE-MAIN."
+  },
+  "tree_conflict_court": {
+    "premain_unique_net_paths": 188,
+    "premain_unique_runtime_paths": 0,
+    "fiabc_unique_net_paths": 405,
+    "fiabc_unique_runtime_paths": 42,
+    "live_runtime_semantic_conflicts": 0,
+    "sole_same_path_conflict": "HQ_HANDOFF/LATEST.json",
+    "resolution": "NEW_RECONCILIATION_CHECKPOINT_POINTER"
+  },
+  "architecture_obligation": {
+    "id": "OBL001",
+    "status": "RETURN_REQUIRED",
+    "winner_selected": false,
+    "court_infrastructure_inherited": true
+  },
+  "fiabc": {
+    "order": [
+      "LITS_I/A",
+      "LITS_I/B",
+      "LITS_I/C",
+      "WVS7/A",
+      "WVS7/B",
+      "WVS7/C"
+    ],
+    "metric_count": 35,
+    "serialized": true,
+    "same_host_required": true,
+    "parity_before_performance": true,
+    "candidate_output_may_construct_oracle": false,
+    "discovery_authority": "3aee36014e4c3b39dd36bfef46006d8e9058a93aa5eb53bd81aef627883c8873",
+    "lock2": "5e2a53f0e5f3b6ddd8db53b724b352ca41fe1a49408483fbf83dfdaa96283139",
+    "lock2_replay": "9b5ac1726a03798d07e965396192d1bfefbee6d2188bad5a3acfb467ef063d4a"
+  },
+  "main_operational_state": {
+    "return_beacon_commits_inherited": 10,
+    "automatic_actions_disabled": true,
+    "workflow_trigger": "workflow_dispatch"
+  },
+  "next_action": {
+    "kind": "SOURCE_FREE_LOCAL_QUALIFICATION",
+    "command": "bash WORKER_RETURNS/CANONICAL-REINTEGRATION-FIABC-R1/01_SOURCE_FREE_LOCAL_QUALIFICATION.sh",
+    "candidates_forbidden_before_pass": true,
+    "measured_p2x_forbidden_before_pass": true
+  }
+}

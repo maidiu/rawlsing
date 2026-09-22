@@ -1,0 +1,29 @@
+{
+  "schema": "RAWLSING_EE_P2X_LITS_I_B_TERMINAL_BINDING_BLOCKER@1.0.0",
+  "status": "BLOCKED__FROZEN_RUNTIME_CATALOG_PREIMAGES_AND_C11_TO_D04_I05_BINDING_NOT_MATERIALIZED",
+  "source": {"id": "LITS_I", "sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09"},
+  "candidate": {"id": "B", "owner_blob": "7c509c2098d0030f253344eb3f682471378812a8"},
+  "proved_precondition": "03_LITS_I_B_CACHELESS_C11_STAGE.json",
+  "missing_frozen_execution_bindings": [
+    {
+      "authority_commit": "1d01bd7a1763bea642947557b924a7cfc6d15db6",
+      "artifact": "WORKER_RETURNS/EE-R10L/02_CURRENT_19_ROLE_RUNTIME_BINDINGS.json",
+      "status": "PARTIAL__RUNTIME_PREDICATE_REFS_RECOVERED__SEMANTIC_ATOM_CONTENT_HASH_PREIMAGES_NOT_YET_MATERIALIZED",
+      "effect": "The accepted Route-B production driver fail-closes instead of inventing canonical predicate/query object preimages."
+    },
+    {
+      "authority_commit": "e631de162c582423639b7067a4f36b29f8aa4d89",
+      "artifact": "ASTRA-D04-R2 return artifacts",
+      "required": "fresh 50-candidate/77-role product SHA-256 47d36b1459c2458c480b58631d2c78af68be4dde44015a9220b09177b1eeb28d and semantic replay 301735d4563314a0d7c133fa1afbb0ca57679b3fad887c66e77a909494779eb5",
+      "missing": "tracked callable I05 runner accepting Candidate-B C11/repository output"
+    }
+  ],
+  "inadmissible_actions_rejected": [
+    "invert SHA-256 refs into runtime catalog preimages",
+    "write a replacement Route-B/D04 executor",
+    "reuse D04 historical product as a B result",
+    "report I03/I05/lifecycle/replay or performance without the frozen binding"
+  ],
+  "stop_law_application": "SOURCE_LOCAL_CANDIDATE_B_TERMINAL_BINDING_BLOCKER__CONTINUE_ORDERED_LITS_I_C",
+  "ranking_or_selection": false
+}

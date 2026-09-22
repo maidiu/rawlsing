@@ -1,0 +1,28 @@
+name: FIABC LM2 R1K R15 R16 Oracle Closure
+on:
+  push:
+    branches:
+      - agent/rabochii-premain-fiabc-lm2-r1k-r15-r16-oracle-closure-r1
+  workflow_dispatch:
+
+jobs:
+  r15-r16-closure:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install source-free persisted-carrier court dependencies
+        run: python -m pip install --disable-pip-version-check pytest pandas
+      - name: Requalify R1J representation boundary and strict C11 law
+        env:
+          PYTHONPATH: .
+        run: |
+          python -m pytest -q             rawlsing_next/tests/test_fiabc_lm2_r1j_sav_representation_authority.py             rawlsing_next/tests/test_pre553_empirical_objects_authority.py             rawlsing_next/tests/test_pre553_source_backed_c11_facade.py
+      - name: Execute R15 real common C11 then bounded R16 authority preflight
+        env:
+          PYTHONPATH: .
+        run: python .rabochii/r1k_r15_r16_court.py

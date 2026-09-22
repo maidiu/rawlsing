@@ -1,0 +1,40 @@
+{
+  "schema": "FIABC_LM2_R1H_R15_REAL_MATERIAL_C11_RECEIPT@1.0.0",
+  "status": "FAIL_CLOSED__UNBOUND_RESPONSE_VALUE_STATE",
+  "r1c_case": "R15",
+  "command": "python -m pytest -q rawlsing_next/tests/test_fiabc_lm2_r1h_real_material_c11.py",
+  "wrapper_command": "python -m rawlsing_next.rabochii_bounded_court .rabochii/court_spec.json --receipt .rabochii/court_receipt.json",
+  "operation": "rawlsing_next.fiabc_lm2_r1e_common_c11.common_c11_receipt(CARRIER)",
+  "inputs": {
+    "carrier_sha256": "1aea888d8d576fc8606d56dd7a3b1a552411b8f8126ea27a54c36ff6d551dd7e",
+    "carrier_bytes": 83340882,
+    "mapping_authority": "76e63b2af0bf0b9a53319a74d2ded099c9ac175de99935d0741ac52f68086670",
+    "mapping_snapshot": "0e98540cf6c4a1fa993cfc070a701368b3a7bfa99414d84e4119c2017dd67970",
+    "repaired_projection_authority": "6b0dba629206c563d30bdb86f4f8bb112b24eb0ceaf05e47aec6aa049dbf23c0",
+    "repaired_projection_snapshot": "d798870557ae34cf01ca925ba7595e612a1f5080af722eaedbddc5b0400a8199",
+    "repaired_projection_identity": "8d6ee3fac396d7bd0e0afdf2f4fb13bcc8f040e53d63dd4c0d559b65c9ade4df"
+  },
+  "expected": {
+    "strict_common_c11_success": true,
+    "candidate_neutral": true,
+    "candidate_outputs_consulted": 0
+  },
+  "observed": {
+    "exception_type": "rawlsing_next.pre553_source_backed_c11_facade.SourceBackedC11FacadeError",
+    "exception_message": "unbound response value/state; no label/frequency/missingness inference",
+    "failure_location": "rawlsing_next/pre553_source_backed_c11_facade.py:537",
+    "gate1_preflight": "PASS",
+    "pytest_summary": "1 failed, 1 passed in 38.72s"
+  },
+  "candidate_neutrality": {
+    "candidate_processes_started": [],
+    "candidate_outputs_seen": 0,
+    "candidate_owned_roots_consulted": [],
+    "candidate_output_parentage": false
+  },
+  "disposition": "STOP_BLOCKED__NO_PATCH__RETURN_TO_HQ",
+  "github_actions_run_id": 35572953550,
+  "github_actions_job_id": 106248324441,
+  "evidence_execution_sha": "2513c182d4fdc4f4cadb0e5479706f412bdb7e52",
+  "pr_synthetic_sha": "8be0a5a9fcd7080df3315644e0301c32b6931f41"
+}

@@ -1,0 +1,163 @@
+{
+  "schema": "FIABC_LM2_R1F_HISTORICAL_RETURN_REFERENCE_GRAPH@1.0.0",
+  "nodes": [
+    {
+      "id": "WVS7_SAV",
+      "kind": "SOURCE_ARTIFACT",
+      "sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+      "rows": 97220,
+      "variables": 613
+    },
+    {
+      "id": "J05_PACKAGE",
+      "kind": "IDENTITY_RECEIPT",
+      "classification": "IDENTITY_ONLY__NO_PAYLOAD"
+    },
+    {
+      "id": "D03_D12",
+      "kind": "RESPONDENT_REPLAY",
+      "classification": "IDENTITY_ONLY__NO_PAYLOAD"
+    },
+    {
+      "id": "D11",
+      "kind": "SOURCE_LOCAL_UNIVERSE",
+      "classification": "SEMANTIC_ONLY__NO_PHYSICAL_PAYLOAD"
+    },
+    {
+      "id": "GSR07_R2",
+      "kind": "SOURCE_BACKED_C11_CERTIFICATION",
+      "classification": "IDENTITY_ONLY__NO_PAYLOAD"
+    },
+    {
+      "id": "P2F2",
+      "kind": "WORKLOAD_SEMANTICS",
+      "classification": "SEMANTIC_ONLY__NO_PHYSICAL_PAYLOAD"
+    },
+    {
+      "id": "R6S",
+      "kind": "PROJECTION_AUTHORITY",
+      "classification": "SEMANTIC_ONLY__NO_PHYSICAL_PAYLOAD"
+    },
+    {
+      "id": "LM2_STRUCTURAL",
+      "kind": "STRUCTURAL_PREIMAGE",
+      "identity": "151907b3163959d0eb5ebb020fa5253d33447362420e465600035744112fe5bc",
+      "classification": "PARTIAL__INSUFFICIENT"
+    },
+    {
+      "id": "LM2_PHYSICAL_EXPECTATION",
+      "kind": "PHYSICAL_EXPECTATION",
+      "identity": "9845c24da0c03adb4dfd65118b7c8c39a60a30337f33cc4177ffc6c848d02390",
+      "classification": "PARTIAL__INSUFFICIENT"
+    },
+    {
+      "id": "R1E",
+      "kind": "COMMON_C11_RECOVERY",
+      "classification": "IDENTITY_ONLY__NO_PAYLOAD"
+    },
+    {
+      "id": "R5_SR07_EPHEMERAL",
+      "kind": "HISTORICAL_REAL_SOURCE_SCRATCH",
+      "classification": "PAYLOAD_UNAVAILABLE_OR_EXPIRED"
+    },
+    {
+      "id": "RECOVERY_RESERVOIR",
+      "kind": "DOCUMENTARY_SOURCE_STRUCTURE",
+      "classification": "SEMANTIC_ONLY__NO_PHYSICAL_PAYLOAD"
+    },
+    {
+      "id": "R6M_LITS_SNAPSHOT",
+      "kind": "PERSISTED_C11_SNAPSHOT",
+      "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+      "classification": "WRONG_SOURCE_OR_SCOPE"
+    },
+    {
+      "id": "REQUIRED_Q291_CARRIER",
+      "kind": "FIABC_LM2_R1E_FROZEN_Q291_PHYSICAL_CELL_CARRIER@1.0.0",
+      "state": "ABSENT"
+    }
+  ],
+  "edges": [
+    {
+      "from": "WVS7_SAV",
+      "to": "J05_PACKAGE",
+      "relation": "IDENTITY_PROVED"
+    },
+    {
+      "from": "WVS7_SAV",
+      "to": "D03_D12",
+      "relation": "RAW_DECODE_EXECUTED_HISTORICALLY",
+      "note": "selected 20 columns exclude Q291G5/Q291P5"
+    },
+    {
+      "from": "D03_D12",
+      "to": "D11",
+      "relation": "ROW_SCOPE_REPLAY_PARENT"
+    },
+    {
+      "from": "WVS7_SAV",
+      "to": "GSR07_R2",
+      "relation": "SOURCE_BACKED_CERTIFICATION_EXECUTED_HISTORICALLY"
+    },
+    {
+      "from": "WVS7_SAV",
+      "to": "LM2_STRUCTURAL",
+      "relation": "STRUCTURAL_METADATA_AND_B_COUNTRY_DERIVATIVE",
+      "note": "no Q291 row values"
+    },
+    {
+      "from": "LM2_STRUCTURAL",
+      "to": "R6S",
+      "relation": "PROJECTION_STRUCTURAL_INPUT"
+    },
+    {
+      "from": "P2F2",
+      "to": "R1E",
+      "relation": "FROZEN_WORKLOAD_SEMANTICS"
+    },
+    {
+      "from": "R6S",
+      "to": "R1E",
+      "relation": "GOVERNED_PROJECTION"
+    },
+    {
+      "from": "LM2_STRUCTURAL",
+      "to": "R1E",
+      "relation": "FROZEN_STRUCTURAL_PREIMAGE"
+    },
+    {
+      "from": "LM2_PHYSICAL_EXPECTATION",
+      "to": "R1E",
+      "relation": "FROZEN_PHYSICAL_EXPECTATION"
+    },
+    {
+      "from": "REQUIRED_Q291_CARRIER",
+      "to": "R1E",
+      "relation": "REQUIRED_MISSING_INPUT"
+    },
+    {
+      "from": "WVS7_SAV",
+      "to": "R5_SR07_EPHEMERAL",
+      "relation": "TRANSIENT_REAL_SOURCE_EXECUTION",
+      "note": "scratch/carriers not committed"
+    },
+    {
+      "from": "RECOVERY_RESERVOIR",
+      "to": "REQUIRED_Q291_CARRIER",
+      "relation": "SEARCHED_NO_PAYLOAD"
+    },
+    {
+      "from": "R6M_LITS_SNAPSHOT",
+      "to": "REQUIRED_Q291_CARRIER",
+      "relation": "REJECTED_WRONG_SOURCE"
+    }
+  ],
+  "noninvertibility": [
+    "J05 source/package hashes identify the SAV but do not encode Q291 cells.",
+    "D03/D12 row-binding and selected-projection hashes cannot be inverted to Q291 observations.",
+    "GSR07 C11 release/ref hashes cannot recreate missing object bodies.",
+    "P2F2 semantic tokens 1..5 cannot locate or reconstruct physical special/system-missing states.",
+    "LM2 structural metadata can classify a supplied raw value but does not supply that raw value."
+  ],
+  "holding": "No directed path from any surviving browser-accessible payload node yields REQUIRED_Q291_CARRIER without rereading WVS7_SAV."
+}

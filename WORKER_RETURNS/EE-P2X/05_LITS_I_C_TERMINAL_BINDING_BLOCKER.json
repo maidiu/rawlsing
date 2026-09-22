@@ -1,0 +1,43 @@
+{
+  "schema": "RAWLSING_EE_P2X_LITS_I_C_TERMINAL_BINDING_BLOCKER@1.0.0",
+  "status": "BLOCKED__EXACT_ROUTE_C_CACC_DETERMINANTS_AND_CARRIER_NEUTRAL_D04_BINDING_NOT_MATERIALIZED",
+  "source": {"id": "LITS_I", "sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09"},
+  "candidate": {
+    "id": "C",
+    "owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+    "owner_path": "rawlsing_next/pre553_route_c_accelerators.py",
+    "owner_blob": "abfdc91a71ef5e18c4a8a6bf62fa65750d8d9889",
+    "permitted_accelerators": ["CACC1_LITS1_SEMANTIC_EXECUTION_BUNDLE", "CACC2_FRONTIER_ATOMIC_PREDICATE_RISK_MASK_BANK"],
+    "new_accelerator_created": false
+  },
+  "exact_owner_requirements": {
+    "cacc1": ["RouteCDeterminants", "ExactPhysicalCellStream", "GovernedC11Projection"],
+    "cacc2": ["Cacc2Determinants", "all 19 Cacc2AtomBinding roles", "CACC1 determinant linkage"],
+    "frozen_role_order": ["A000", "A1V1", "A1V2", "A1V3", "A1V4", "A1V5", "A1SSUB", "A1SSPS", "A1SMIS", "A1RAPP", "A2V1", "A2V2", "A2V3", "A2V4", "A2V5", "A2SSUB", "A2SSPS", "A2SMIS", "A2RAPP"]
+  },
+  "proved_missing_bindings": [
+    {
+      "authority_commit": "c88d2a92521de1f2ef85e41279194d7d4f5434cb",
+      "artifact": "WORKER_RETURNS/EE-R9L/01_PRODUCTION_CLOSURE_EVIDENCE.json",
+      "finding": "no accepted real-source RouteCDeterminants, Cacc2Determinants, or 19 atom bindings; only synthetic B20 fixture determinants/urn:test refs"
+    },
+    {
+      "authority_commit": "1d01bd7a1763bea642947557b924a7cfc6d15db6",
+      "artifact": "WORKER_RETURNS/EE-R10L/02_CURRENT_19_ROLE_RUNTIME_BINDINGS.json",
+      "finding": "PARTIAL__RUNTIME_PREDICATE_REFS_RECOVERED__SEMANTIC_ATOM_CONTENT_HASH_PREIMAGES_NOT_YET_MATERIALIZED"
+    },
+    {
+      "authority_commit": "e631de162c582423639b7067a4f36b29f8aa4d89",
+      "artifact": "ASTRA-D04-R2 return artifacts",
+      "finding": "no tracked carrier-neutral C11/CACC-to-50-candidate/77-role I05 runner"
+    }
+  ],
+  "inadmissible_actions_rejected": [
+    "use synthetic B20 fixture determinants",
+    "derive missing Route-C determinant or atom bindings",
+    "create a third accelerator or alter CACC1/CACC2",
+    "reuse the historical D04 product as Candidate-C output"
+  ],
+  "stop_law_application": "SOURCE_LOCAL_CANDIDATE_C_TERMINAL_BINDING_BLOCKER__LITS_I_SEQUENCE_COMPLETE__CONTINUE_WVS7_A",
+  "ranking_or_selection": false
+}

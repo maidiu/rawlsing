@@ -1,0 +1,165 @@
+{
+  "schema": "RAWLSING_CANONICAL_REINTEGRATION_LEDGER@1.0.0",
+  "topology": {
+    "merge_base": "07e3c3bfde2bc35213278f4ef3a619b9c73bdddf",
+    "premain": "d474f8e3c9630c4bcbb10d6e8359b71ba5b3060d",
+    "fiabc": "91723d443f56acb05af63acc0d3a34fb9a97e3f4",
+    "main": "25830fe7462bb9e29bc4087e6ae14f3f84cec377"
+  },
+  "first_missed_mandatory_reintegration": {
+    "commit": "a4b5bc7a7cef07fb8acb48bc6f0300b155515f01",
+    "date": "2026-09-18",
+    "reason": "First post-fork competent HQ adoption; EE-P2R1 implementation was selectively fanned into detached P2X rather than cumulative PRE-MAIN."
+  },
+  "post_divergence_hq_chronology": [
+    {
+      "range": "2026-09-18 HQD-035..038",
+      "status": "HQ_BANKED_NOT_CANONICALLY_INHERITED",
+      "effect": "EE-P2R1 seam, reducer/driver/verifier and local P2 wake adopted; implementation fan-ins remained on P2X."
+    },
+    {
+      "range": "2026-09-18 HQD-039..072",
+      "status": "HQ_BANKED_NOT_CANONICALLY_INHERITED",
+      "effect": "successive bounded P2R2-R6Q authority/runtime repairs and commissions advanced detached execution lineage."
+    },
+    {
+      "range": "2026-09-19 HQD-073..084",
+      "status": "HQ_BANKED_NOT_CANONICALLY_INHERITED",
+      "effect": "WVS current-country/projection/backend authority, exact runtime repair fan-ins, local-stop evidence and reconciliation-only wake remained detached from canonical PRE-MAIN ancestry."
+    },
+    {
+      "range": "2026-09-19 HQD-085",
+      "status": "CANONICAL_CONTROL_STATE_ONLY",
+      "effect": "functional-inheritance audit gate recorded on PRE-MAIN; no implementation ancestry repair."
+    },
+    {
+      "range": "2026-09-20..21 FIABC court buildout",
+      "status": "HQ_BANKED_NOT_CANONICALLY_INHERITED",
+      "effect": "T1-T6, LM2 successor authority/oracle, telemetry/completeness/progress, producer glue and final launch pack accumulated on FIABC limb."
+    },
+    {
+      "range": "2026-09-21 current act",
+      "status": "CANONICALLY_INHERITED",
+      "effect": "three-parent cumulative ancestry restored; architecture winner remains open."
+    }
+  ],
+  "premain_unique": {
+    "commits": 278,
+    "net_unique_paths": 188,
+    "runtime_paths": 0,
+    "classification": [
+      {
+        "status": "MUST_INHERIT_BEFORE_FIABC",
+        "material": "post-fork HQ decision/checkpoint/current-state chronology, including HQD-035..085"
+      },
+      {
+        "status": "ORTHOGONAL_BUT_MUST_EXIST_IN_CUMULATIVE_ANCESTRY",
+        "material": "sealed handoff/checkpoint history and project-control evidence"
+      },
+      {
+        "status": "REAL_CONFLICT__HQ_ADJUDICATION_REQUIRED",
+        "material": "HQ_HANDOFF/LATEST.json only",
+        "resolution": "superseded by checkpoint 20260921T2050-0400"
+      }
+    ]
+  },
+  "fiabc_unique": {
+    "commits": 341,
+    "net_unique_paths": 405,
+    "path_classes": {
+      "runtime": 42,
+      "runtime_tests": 37,
+      "fiabc_workflows": 5,
+      "worker_commissions": 8,
+      "worker_returns": 299,
+      "hq_state": 4,
+      "other": 10
+    },
+    "commit_clusters": {
+      "p2_execution_and_repairs": 84,
+      "fiabc_court_buildout": 83,
+      "wvs_lm2_authority_oracle": 127,
+      "final_oracle_succession_authority": 18,
+      "final_telemetry_completeness_progress": 18,
+      "final_launch_pack": 9,
+      "other": 2
+    },
+    "classification": [
+      {
+        "status": "MUST_INHERIT_BEFORE_FIABC",
+        "material": "accepted/current P2/FIABC implementation, telemetry/completeness/progress, successor WVS authority, oracle/freeze and succession producers, final launch machinery"
+      },
+      {
+        "status": "PRESERVED_NONCURRENT",
+        "material": "intermediate blocked/repair attempts and worker evidence superseded at exact grains by later fan-ins"
+      },
+      {
+        "status": "HQ_BANKED_NOT_CANONICALLY_INHERITED__NOW_REPAIRED",
+        "material": "detached implementation/evidence lineage prior to this reconciliation"
+      }
+    ]
+  },
+  "semantic_conflict_set": {
+    "live_runtime_or_semantic_path_conflicts": 0,
+    "control_pointer_conflicts": 1,
+    "path": "HQ_HANDOFF/LATEST.json"
+  },
+  "main_only": {
+    "commits": [
+      {
+        "sha": "f24d1207d64458dbbe1d145d958ab27cd9747e25",
+        "message": "Install repository-wide certified worker return beacon",
+        "disposition": "PRESERVED_OPERATIONAL_FOUNDATION"
+      },
+      {
+        "sha": "bf864978f8684e6fe8da9aefee039f75fec3b68d",
+        "message": "Return Beacon: immediate agent-branch sweep",
+        "disposition": "PRESERVED_OPERATIONAL_HISTORY"
+      },
+      {
+        "sha": "8c04996785a55fb30cc7540290141fa1520a3e4c",
+        "message": "Return Beacon: repair universal branch discovery",
+        "disposition": "PRESERVED_OPERATIONAL_HISTORY"
+      },
+      {
+        "sha": "32728947b98afda57fd829545012c00f6658988e",
+        "message": "placeholder",
+        "disposition": "PRESERVED_NONCURRENT_HISTORY"
+      },
+      {
+        "sha": "8db3fd9558574a21008e0aced4873ff29a0de819",
+        "message": "Complete actionable Return Beacon alert helper",
+        "disposition": "INHERITED_OPERATIONAL_IMPLEMENTATION"
+      },
+      {
+        "sha": "2aa45ebffe248285b2d46c0edd406d433afadf51",
+        "message": "Add actionable Return Beacon notification tests",
+        "disposition": "INHERITED_OPERATIONAL_TEST"
+      },
+      {
+        "sha": "4836693fcfc13c55c24ae43e50bd0c58fd8ab128",
+        "message": "Make Return Beacon alerts explicitly safe-to-cancel",
+        "disposition": "INHERITED_OPERATIONAL_IMPLEMENTATION"
+      },
+      {
+        "sha": "05a93ec9ee697cfa08cffde472c9b348e04b4f2b",
+        "message": "Trigger actionable Return Beacon self-test",
+        "disposition": "PRESERVED_NONCURRENT_TEST_HISTORY"
+      },
+      {
+        "sha": "4ba3569d2d69a89ade1ffa0b4ca8e0869654cf7e",
+        "message": "Remove temporary Return Beacon self-test marker",
+        "disposition": "PRESERVED_OPERATIONAL_CLEANUP"
+      },
+      {
+        "sha": "25830fe7462bb9e29bc4087e6ae14f3f84cec377",
+        "message": "Disable automatic Rawlsing return beacon Actions usage",
+        "disposition": "CURRENT_OPERATIONAL_INTENT__AUTOMATIC_ACTIONS_DISABLED"
+      }
+    ],
+    "net_paths": 9,
+    "semantic_authority_effect": false
+  },
+  "reconciliation_decision": "THREE_PARENT_ANCESTRY_PRESERVING_UNION__PREMAIN_CONTROL_STATE__FIABC_IMPLEMENTATION_EVIDENCE__MAIN_OPERATIONAL_RETURN_BEACON__NEW_LATEST_CHECKPOINT",
+  "architecture_winner": "OPEN"
+}

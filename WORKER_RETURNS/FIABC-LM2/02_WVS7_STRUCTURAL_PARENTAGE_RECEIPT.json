@@ -1,0 +1,127 @@
+{
+  "bundle_identity": "5037c55bf1a017112c0fe5f18ca5905696d66dfefcc4d8f47dcb0e7fcb13f37c",
+  "derivative_receipt": {
+    "canonical_source": {
+      "sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+      "source_id": "WVS7"
+    },
+    "currentness_determinants": {
+      "accepted_runtime_owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+      "execution_base": "7e33b76c7d46dcee31dd3be7b3b0230f3c18a152",
+      "execution_branch": "agent/rabochii-premain-fiabc-lm2-wvs-parentage-oracle-physical-r1",
+      "lock2": "8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188",
+      "materializer_blob": "11b28416aac5a4899706150721f2f8ac8bb6ee43",
+      "projection_identity": "838070ff6b85d60d4f26f9153b0507ba425936c11a3de94a18d57bfcd083f24d"
+    },
+    "derivation_operation": "MATERIALIZE_WVS7_STRUCTURAL_PREIMAGE_FROM_CANONICAL_SAV",
+    "derivative": {
+      "class": "WVS7_STRUCTURAL_PREIMAGE",
+      "hash": "151907b3163959d0eb5ebb020fa5253d33447362420e465600035744112fe5bc",
+      "identity": "151907b3163959d0eb5ebb020fa5253d33447362420e465600035744112fe5bc",
+      "metadata": {
+        "rows": 97220,
+        "schema": "EE_P2R6S_WVS7_PROJECTION_STRUCTURAL_INPUT@1.0.0",
+        "variables": 613
+      }
+    },
+    "ownership": {
+      "candidate": "NONE__CANDIDATE_NEUTRAL_PRE_CANDIDATE_MATERIALIZATION",
+      "candidate_processes_started": [],
+      "durable_root": "/private/tmp/fiabc-lm2-wvs-r1",
+      "process_owner": "FIABC-LM2",
+      "process_pid": 28361,
+      "return_root": "WORKER_RETURNS/FIABC-LM2",
+      "root_lineage_identity": "14a920bdd71c244da45a16e9080885ed964b3baa002c9e54f2eae385bfdfcc8e",
+      "source": "WVS7"
+    },
+    "parent_receipt_identity": "ea49d7b3fd3ced6090b5594e5b1c20f06df122230baefa7e6126248c4a41d885",
+    "producer": {
+      "code_blob": "11b28416aac5a4899706150721f2f8ac8bb6ee43",
+      "identity": "WVS7_PROJECTION_STRUCTURAL_MATERIALIZER",
+      "version": "EE_P2R6S_WVS7_FROZEN_P2_PROJECTION_MATERIALIZER@1.0.0"
+    },
+    "reader_config": {
+      "apply_value_formats": false,
+      "compatibility_mode": null,
+      "country_read": {
+        "usecols": [
+          "B_COUNTRY"
+        ]
+      },
+      "metadata_read": {
+        "metadataonly": true
+      },
+      "reader": "pyreadstat",
+      "reader_version": "1.3.6",
+      "user_missing": true
+    },
+    "receipt_identity": "fb19a7b18910c8fc6febae52c79c182cb340ca9570b66f10dfd935996a271d15",
+    "replay_parent_receipt_identity": null,
+    "schema": "FIABC_DERIVATIVE_PARENTAGE_RECEIPT@1.0.0",
+    "scope_determinants": {
+      "canonical_source_bytes": 185163494,
+      "canonical_source_path": "/Users/matthewsmith/Desktop/Rawlsing/data/Data/WVS Wave 7.sav",
+      "derivative_scope": "PROJECTION_STRUCTURAL_PREIMAGE",
+      "projection_identity": "838070ff6b85d60d4f26f9153b0507ba425936c11a3de94a18d57bfcd083f24d",
+      "source": "WVS7"
+    }
+  },
+  "schema": "FIABC_DERIVATIVE_PARENTAGE_BUNDLE@1.0.0",
+  "source_receipt": {
+    "canonical_source": {
+      "sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+      "source_id": "WVS7"
+    },
+    "currentness_determinants": {
+      "accepted_runtime_owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+      "execution_base": "7e33b76c7d46dcee31dd3be7b3b0230f3c18a152",
+      "execution_branch": "agent/rabochii-premain-fiabc-lm2-wvs-parentage-oracle-physical-r1",
+      "lock2": "8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188",
+      "materializer_blob": "11b28416aac5a4899706150721f2f8ac8bb6ee43",
+      "projection_identity": "838070ff6b85d60d4f26f9153b0507ba425936c11a3de94a18d57bfcd083f24d"
+    },
+    "observation": {
+      "observed_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+      "operation": "VERIFY_CANONICAL_WVS7_RAW_SHA_AND_EXTRACT_STRUCTURAL_INPUT"
+    },
+    "ownership": {
+      "candidate": "NONE__CANDIDATE_NEUTRAL_PRE_CANDIDATE_MATERIALIZATION",
+      "candidate_processes_started": [],
+      "durable_root": "/private/tmp/fiabc-lm2-wvs-r1",
+      "process_owner": "FIABC-LM2",
+      "process_pid": 28361,
+      "return_root": "WORKER_RETURNS/FIABC-LM2",
+      "root_lineage_identity": "14a920bdd71c244da45a16e9080885ed964b3baa002c9e54f2eae385bfdfcc8e",
+      "source": "WVS7"
+    },
+    "producer": {
+      "code_blob": "11b28416aac5a4899706150721f2f8ac8bb6ee43",
+      "identity": "WVS7_PROJECTION_STRUCTURAL_MATERIALIZER",
+      "version": "EE_P2R6S_WVS7_FROZEN_P2_PROJECTION_MATERIALIZER@1.0.0"
+    },
+    "reader_config": {
+      "apply_value_formats": false,
+      "compatibility_mode": null,
+      "country_read": {
+        "usecols": [
+          "B_COUNTRY"
+        ]
+      },
+      "metadata_read": {
+        "metadataonly": true
+      },
+      "reader": "pyreadstat",
+      "reader_version": "1.3.6",
+      "user_missing": true
+    },
+    "receipt_identity": "ea49d7b3fd3ced6090b5594e5b1c20f06df122230baefa7e6126248c4a41d885",
+    "schema": "FIABC_CANONICAL_SOURCE_VERIFICATION_RECEIPT@1.0.0",
+    "scope_determinants": {
+      "canonical_source_bytes": 185163494,
+      "canonical_source_path": "/Users/matthewsmith/Desktop/Rawlsing/data/Data/WVS Wave 7.sav",
+      "derivative_scope": "PROJECTION_STRUCTURAL_PREIMAGE",
+      "projection_identity": "838070ff6b85d60d4f26f9153b0507ba425936c11a3de94a18d57bfcd083f24d",
+      "source": "WVS7"
+    }
+  }
+}

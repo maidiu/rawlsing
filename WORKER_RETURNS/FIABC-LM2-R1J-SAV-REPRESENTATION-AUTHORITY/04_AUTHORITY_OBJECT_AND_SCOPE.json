@@ -1,0 +1,107 @@
+{
+  "schema": "FIABC_LM2_R1J_AUTHORITY_OBJECT_AND_SCOPE@1.0.0",
+  "authority_ref": {
+    "authority_id": "FIABC-LM2-R1J-WVS7-Q291-SAV-DECODER-REPRESENTATION",
+    "authority_version": "1.0.0",
+    "authority_content_hash": "63543411892d8d30fb5670a39714a3dc115145e3f054a7017a325dab1c6cf053"
+  },
+  "snapshot_ref": {
+    "kind": "AuthoritySnapshot@1.0.0",
+    "content_hash": "e23ec7451d150597799bbd9049cdab45339e647694a9ccfacb2e53aaf09b609b",
+    "object_id": "urn:rawlsing:pre553:AuthoritySnapshot:sha256:e23ec7451d150597799bbd9049cdab45339e647694a9ccfacb2e53aaf09b609b"
+  },
+  "authority_kind": "PHYSICAL_NATIVE_REPRESENTATION_BINDING",
+  "governed_operation": "FIABC_LM2_R1J_WVS7_Q291_SAV_NUMERIC_REPRESENTATION_BINDING@1.0.0",
+  "decision_state": "ALLOW",
+  "scope": {
+    "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+    "source_family": "WVS",
+    "wave": "W7",
+    "variables": [
+      {
+        "name": "Q291G5",
+        "ordinal": 388
+      },
+      {
+        "name": "Q291P5",
+        "ordinal": 394
+      }
+    ],
+    "reader_config": {
+      "format": "SAV",
+      "persisted_carrier_version": "1.3.2",
+      "accepted_runtime_version": "1.3.6",
+      "encoding": null,
+      "apply_value_formats": false,
+      "user_missing": true,
+      "q291_display_format": "F3.0"
+    },
+    "native_codes": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      -1,
+      -2,
+      -4,
+      -5
+    ],
+    "exact_r5_tokens": {
+      "1": {
+        "t": "float64_finite",
+        "bits": "3ff0000000000000"
+      },
+      "2": {
+        "t": "float64_finite",
+        "bits": "4000000000000000"
+      },
+      "3": {
+        "t": "float64_finite",
+        "bits": "4008000000000000"
+      },
+      "4": {
+        "t": "float64_finite",
+        "bits": "4010000000000000"
+      },
+      "5": {
+        "t": "float64_finite",
+        "bits": "4014000000000000"
+      },
+      "-1": {
+        "t": "float64_finite",
+        "bits": "bff0000000000000"
+      },
+      "-2": {
+        "t": "float64_finite",
+        "bits": "c000000000000000"
+      },
+      "-4": {
+        "t": "float64_finite",
+        "bits": "c010000000000000"
+      },
+      "-5": {
+        "t": "float64_finite",
+        "bits": "c014000000000000"
+      }
+    }
+  },
+  "ceiling": "PHYSICAL_DECODER_REPRESENTATION_ONLY",
+  "negative_limits": [
+    "NO_GLOBAL_INT_FLOAT_COERCION",
+    "NO_OTHER_VARIABLES",
+    "NO_OTHER_WVS_WAVES",
+    "NO_OTHER_SOURCES",
+    "NO_CANONICAL_QUESTION_MAPPING",
+    "NO_NATIVE_TO_CANONICAL_MAPPING_BEYOND_R1E",
+    "NO_CROSS_SOURCE_EQUIVALENCE",
+    "NO_LABEL_OR_FREQUENCY_AUTHORITY",
+    "NO_CANDIDATE_OUTPUT_PARENTAGE",
+    "NO_SYSTEM_MISSING_REINTERPRETATION"
+  ],
+  "relation_separation": {
+    "decoder_law": "representation",
+    "source_semantics": "EE-R6A/P2F2 unchanged",
+    "native_to_program_token": "R1E unchanged"
+  }
+}

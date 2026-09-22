@@ -1,0 +1,58 @@
+{
+  "activation_receipts": {
+    "R1L_A": {
+      "content_hash": "380d56a1596700f9c630c72ac40dc849308536af46b0e286d58102713e012628",
+      "kind": "FIABC_R1L_A_PROVENANCE_COURT@1.0.0",
+      "object_id": "urn:rawlsing:pre553:fiabc-lm2-r1m:r1l-a-provenance:sha256:380d56a1596700f9c630c72ac40dc849308536af46b0e286d58102713e012628"
+    },
+    "R1L_B": {
+      "content_hash": "11f19d94d417bed50077f889699b1e23b3037f63fff964c95c0b0adbbc742e37",
+      "kind": "FIABC_R1L_B_SUCCESSION_COURT@1.0.0",
+      "object_id": "urn:rawlsing:pre553:fiabc-lm2-r1m:r1l-b-succession:sha256:11f19d94d417bed50077f889699b1e23b3037f63fff964c95c0b0adbbc742e37"
+    }
+  },
+  "additional_authority_snapshot_required": false,
+  "authority_parent_already_in_predecessor": true,
+  "authority_parent_ref": {
+    "authority_content_hash": "f0f5634d42c61cc34878c8ab005bcfad98261d4fd147f76b5413c2fac5f9d6c7",
+    "authority_id": "EE-P2F2-WVS7-LOCK1-DISCOVERY-FRONTIER",
+    "authority_version": "1.0.0"
+  },
+  "candidate_a_b_c_processes_started": 0,
+  "candidate_output_is_parent_authority": false,
+  "candidate_outputs_consulted": 0,
+  "exact_base": "89bfde652eb8a983e51ff51f5258e5fdfbb2433b",
+  "generic_i05_blob": "c7380774e8a1959da5ed8c6f23c2fc3cf99ad18d",
+  "generic_i05_modified": false,
+  "new_validation_semantics_created": false,
+  "schema": "FIABC_LM2_R1M_R1L_FANIN_ADJUDICATION@1.0.0",
+  "siblings": {
+    "R1L_A": {
+      "accepted": true,
+      "branch": "agent/rabochii-premain-fiabc-lm2-r1l-a-validation-authority-provenance-r1",
+      "independent_preoutcome_authority": true,
+      "outcomes_inspected": false,
+      "terminal": "FIABC_LM2_R1L_A_PASS__THREE_VALIDATION_KINDS_HAVE_PREOUTCOME_AUTHORITY__DISCOVERY_ENVELOPE_OMISSION_IS_REPAIRABLE",
+      "tip": "6eb66f354b6d29808be7f959acbe5fb6215fda26"
+    },
+    "R1L_B": {
+      "accepted": true,
+      "branch": "agent/rabochii-premain-fiabc-lm2-r1l-b-lock2-succession-court-r1",
+      "compatible_with_A": true,
+      "outcomes_inspected": false,
+      "terminal": "FIABC_LM2_R1L_B_LOCK2_SUCCESSION_COURT_COMPLETE__MINIMAL_INVALIDATION_BOUNDARY_FROZEN",
+      "tip": "3e14440ed2c4d0359f458356c8b7a046fc03d1eb"
+    },
+    "R1L_C": {
+      "accepted": true,
+      "branch": "agent/rabochii-premain-fiabc-lm2-r1l-c-validation-repair-prep-r1",
+      "hostile_qualification_run": 35626098364,
+      "implementation_blob": "f29e80345afd7e953f8f03fc52350b83b220f350",
+      "outcomes_inspected": false,
+      "ported_blob_exact": true,
+      "terminal": "FIABC_LM2_R1L_C_CONDITIONAL_REPAIR_READY__AWAITING_PROVENANCE_AND_LOCK2_SUCCESSION_COURTS",
+      "tip": "ad06f9b1f5e8ae543cf53e99fad77620e6264007"
+    }
+  },
+  "status": "PASS"
+}

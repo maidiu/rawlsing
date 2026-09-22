@@ -1,0 +1,114 @@
+{
+  "schema": "FIABC_LM2_R1F_CARRIER_ARCHAEOLOGY_RETURN@1.0.0",
+  "repository": "maidiu/rawlsing",
+  "exact_base": "d543958cb068b7f4401bafbf9edba1a68b05fea3",
+  "branch": "agent/rabochii-premain-fiabc-lm2-r1f-q291-carrier-archaeology-r1",
+  "return_root": "WORKER_RETURNS/FIABC-LM2-R1F-CARRIER-ARCHAEOLOGY/",
+  "status": "ABSENT__NO_BROWSER_ACCESSIBLE_EXACT_OR_EQUIVALENT_Q291_PHYSICAL_CELL_CARRIER",
+  "browser_recovery_succeeded": false,
+  "browser_archaeology_exhausted": true,
+  "required_carrier": {
+    "schema": "FIABC_LM2_R1E_FROZEN_Q291_PHYSICAL_CELL_CARRIER@1.0.0",
+    "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+    "rows": 97220,
+    "questions": [
+      "Q291G5",
+      "Q291P5"
+    ],
+    "required_physical_cells": 194440,
+    "found": false,
+    "admitted_artifact": null
+  },
+  "strongest_candidates": [
+    {
+      "candidate": "J05 exact source recovery",
+      "classification": "IDENTITY_ONLY__NO_PAYLOAD"
+    },
+    {
+      "candidate": "D03/D12 respondent replay",
+      "classification": "IDENTITY_ONLY__NO_PAYLOAD"
+    },
+    {
+      "candidate": "LM2 structural preimage",
+      "classification": "PARTIAL__INSUFFICIENT"
+    },
+    {
+      "candidate": "Full GSR07 R2 C11 receipts",
+      "classification": "IDENTITY_ONLY__NO_PAYLOAD"
+    },
+    {
+      "candidate": "Full GSR07 R2 Actions artifacts",
+      "classification": "AGGREGATE_ONLY"
+    },
+    {
+      "candidate": "D11 source-local artifact",
+      "classification": "SEMANTIC_ONLY__NO_PHYSICAL_PAYLOAD"
+    },
+    {
+      "candidate": "P2F2/R6S",
+      "classification": "SEMANTIC_ONLY__NO_PHYSICAL_PAYLOAD"
+    },
+    {
+      "candidate": "P2R6M giant snapshot",
+      "classification": "WRONG_SOURCE_OR_SCOPE"
+    },
+    {
+      "candidate": "R5/SR07 historical scratch",
+      "classification": "PAYLOAD_UNAVAILABLE_OR_EXPIRED"
+    },
+    {
+      "candidate": "recovery reservoir",
+      "classification": "SEMANTIC_ONLY__NO_PHYSICAL_PAYLOAD"
+    }
+  ],
+  "exact_q291_structural_facts": {
+    "Q291G5": {
+      "ordinal": 388,
+      "missing_range": [
+        -5,
+        -1
+      ]
+    },
+    "Q291P5": {
+      "ordinal": 394,
+      "missing_range": [
+        -5,
+        -1
+      ]
+    }
+  },
+  "local_source_reread_performed": false,
+  "source_processing_performed": false,
+  "candidate_execution_performed": false,
+  "common_c11_executed": false,
+  "oracle_constructed": false,
+  "i03_executed": false,
+  "i05_executed": false,
+  "measured_p2x_executed": false,
+  "r1e_mutated": false,
+  "pr424_mutated": false,
+  "merge_rebase_or_hq_main_movement": false,
+  "minimal_local_packet": {
+    "frozen": true,
+    "executed": false,
+    "packet": "08_MINIMAL_LOCAL_Q291_EXTRACTION_PACKET.json",
+    "implementation": "09_LOCAL_EXTRACTION_SCRIPT_OR_EXACT_IMPLEMENTATION.md",
+    "cost_audit": "10_LOCAL_COST_AUDIT.md",
+    "next_gate": "HQ_AUTHORIZE_SINGLE_LOCAL_Q291_EXTRACTION_ONLY"
+  },
+  "required_return_files": [
+    "00_RETURN.md",
+    "01_SEARCH_SURFACE_LEDGER.json",
+    "02_BRANCH_AND_COMMIT_ARCHAEOLOGY.csv",
+    "03_CANDIDATE_ARTIFACT_MATRIX.csv",
+    "04_WORKFLOW_ARTIFACT_LEDGER.json",
+    "05_HISTORICAL_RETURN_REFERENCE_GRAPH.json",
+    "06_CARRIER_ADMISSION_COURT.md",
+    "07_ABSENCE_HOLDING.md",
+    "08_MINIMAL_LOCAL_Q291_EXTRACTION_PACKET.json",
+    "09_LOCAL_EXTRACTION_SCRIPT_OR_EXACT_IMPLEMENTATION.md",
+    "10_LOCAL_COST_AUDIT.md",
+    "RETURN.json"
+  ],
+  "terminal": "BROWSER_ARCHAEOLOGY_EXHAUSTED__LOCAL_Q291_EXTRACTION_PROVED_IRREDUCIBLE"
+}

@@ -1,0 +1,86 @@
+{
+  "schema": "FIABC_T3_ORACLE_FREEZE_PROCESS_ENVELOPE_RETURN@1.0.0",
+  "worker": "FIABC-T3",
+  "repo": "maidiu/rawlsing",
+  "branch": "agent/rabochii-premain-fiabc-t3-oracle-process-envelope-r1",
+  "base_branch": "agent/rabochii-premain-fiabc-t2-candidate-c-six-cell-binding-r1",
+  "base_sha": "eb190a1f2950baf8f0ae52e9832e9d58d0d3d9cc",
+  "implementation_code_seal_tip": "69e8e8cf4128bdd45977688094e9bf97bb4a5aed",
+  "return_path": "WORKER_RETURNS/FIABC-T3/",
+  "status": "PASS__ORACLE_FREEZE_AND_PROCESS_ENVELOPE_TRANSPOSED__UNMEASURED",
+  "terminal": "FIABC_T3_ORACLE_FREEZE_AND_PROCESS_ENVELOPE_TRANSPOSED__READY_FOR_NEXT_LAYER",
+  "execution_order": [
+    "SOURCE_IDENTITY_FREEZE",
+    "AUTHORITY_WORKLOAD_FREEZE",
+    "INDEPENDENT_ORACLE_MATERIALIZE_FREEZE",
+    "CANDIDATE_PROCESS_START",
+    "C11",
+    "I03",
+    "I05",
+    "LIFECYCLE",
+    "TERMINAL_VERIFICATION"
+  ],
+  "freeze_contract": {
+    "schema": "RAWLSING_FIABC_CANDIDATE_NEUTRAL_FREEZE@2.0.0",
+    "candidate_neutral": true,
+    "candidate_outputs_seen_required": 0,
+    "candidate_owned_roots_consulted_required": [],
+    "candidate_owned_state_reused_required": false,
+    "state_required": "FROZEN_READ_ONLY",
+    "source_fields_required": [
+      "source_id",
+      "canonical_source_sha256",
+      "source_identity_authority_ref",
+      "derivative_identity",
+      "derivative_to_source_provenance_ref"
+    ],
+    "derivative_identity_and_provenance_are_paired": true,
+    "source_family_hardcoded": false,
+    "closed_35_capable": true
+  },
+  "process_envelope": {
+    "driver_backend_required": "rawlsing_next.ee_p2x_process_isolated_backend",
+    "inner_backend_default": "rawlsing_next.ee_p2x_darwin_stage_backend",
+    "atomic_key": "source_id x candidate_id",
+    "fresh_child_process_per_cell": true,
+    "cross_cell_session_state_allowed": false,
+    "cross_cell_rss_history_allowed": false,
+    "cross_cell_scratch_or_durable_state_allowed": false,
+    "same_cell_retention_requires_explicit_lifecycle_authorization": true
+  },
+  "oracle_transposition": {
+    "module": "rawlsing_next/pre553_independent_parity_oracle.py",
+    "candidate_local_s03_oracle_minting_removed": true,
+    "candidate_self_replay_as_expected_truth_removed": true,
+    "s03_role": "PRE_FROZEN_ORACLE_IDENTITY_BINDING_ONLY",
+    "post_i05_independent_oracle_comparison_state": "PENDING__NEXT_LAYER_FAIL_CLOSED"
+  },
+  "production_files_changed_or_added": [
+    "rawlsing_next/ee_p2x_darwin_court_driver.py",
+    "rawlsing_next/ee_p2x_darwin_stage_backend.py",
+    "rawlsing_next/ee_p2x_candidate_process_envelope.py",
+    "rawlsing_next/ee_p2x_process_isolated_backend.py",
+    "rawlsing_next/pre553_independent_parity_oracle.py"
+  ],
+  "tests_added_or_transposed": [
+    "rawlsing_next/tests/test_fiabc_t3_oracle_process_envelope.py",
+    "rawlsing_next/tests/test_fiabc_w3_i06a_process_isolation.py",
+    "rawlsing_next/tests/fiabc_i06a_process_probe_backend.py",
+    "rawlsing_next/tests/test_pre553_independent_parity_oracle.py"
+  ],
+  "required_return_files": [
+    "00_RETURN.md",
+    "01_EXECUTION_ORDER_DIFF.md",
+    "02_SOURCE_FREEZE_CONTRACT.md",
+    "03_PROCESS_ENVELOPE_BINDING.md",
+    "04_TEST_COMMANDS.md",
+    "RETURN.json"
+  ],
+  "tests_executed_by_worker": false,
+  "tests_execution_disposition": "UNEXECUTED__GITHUB_BROWSER_WORKER_SURFACE",
+  "real_source_materialization_performed": false,
+  "measured_p2x_run": false,
+  "merge_performed": false,
+  "t2_six_cell_law_preserved": true,
+  "note": "RETURN.json cannot self-embed the commit SHA that contains it; resolve the branch ref after this commit."
+}

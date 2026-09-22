@@ -1,0 +1,217 @@
+{
+  "schema": "FIABC_LM2_R1F_SEARCH_SURFACE_LEDGER@1.0.0",
+  "repository": "maidiu/rawlsing",
+  "exact_base": "d543958cb068b7f4401bafbf9edba1a68b05fea3",
+  "worker_branch": "agent/rabochii-premain-fiabc-lm2-r1f-q291-carrier-archaeology-r1",
+  "required_carrier_schema": "FIABC_LM2_R1E_FROZEN_Q291_PHYSICAL_CELL_CARRIER@1.0.0",
+  "verdict": "ABSENT",
+  "browser_only": true,
+  "raw_source_opened": false,
+  "branch_searches": {
+    "primary_query": "wvs7",
+    "wvs7_named_branches_observed": 41,
+    "exact_tips": "SEE_02_BRANCH_AND_COMMIT_ARCHAEOLOGY.csv",
+    "additional_non_wvs_named_branches": [
+      "agent/rabochii-premain-fiabc-lm2-wvs-parentage-oracle-physical-r1",
+      "agent/rabochii-premain-fiabc-lm2-r1e-bounded-mapping-c11-oracle-recovery-r1",
+      "agent/rabochii-prev3-ee-p2r6m-local-validated-c11-snapshot-materialization-r1"
+    ],
+    "branch_families": [
+      "EE-P2F0/F1/F2 pre-outcome and PRE553 workload authority",
+      "EE-P2R6Q/R6S WVS projection authority/materializer",
+      "EE-R9W production-comparison lineage",
+      "W8-J05 carrier recovery",
+      "HB01 D03/D12 respondent replay and D11 source-local materialization",
+      "HB01 full GSR07 source-backed certification R1/R2",
+      "GSR07 R1/R2A/R2B/R2C/R3 documentary closure",
+      "R5 full-source and V4 courts",
+      "REC01/TIR014",
+      "SR07 P0/P1/P2 scale courts",
+      "GSR07 R3 HQ join/postbatch",
+      "FIABC LM2 parentage/physical and R1E recovery"
+    ]
+  },
+  "commit_searches": [
+    {
+      "query": "Q291G5",
+      "observed_matches": 0
+    },
+    {
+      "query": "Q291P5",
+      "observed_matches": 0
+    },
+    {
+      "query": "physical cell WVS7",
+      "observed_matches": 0
+    },
+    {
+      "query": "physical witness WVS7",
+      "observed_matches": 0
+    },
+    {
+      "query": "response carrier WVS7",
+      "observed_matches": 0
+    },
+    {
+      "query": "respondent carrier WVS7",
+      "observed_matches": 0
+    },
+    {
+      "query": "source-backed WVS7",
+      "observed_matches": 0
+    },
+    {
+      "query": "extracted carrier WVS7",
+      "observed_matches": 0
+    },
+    {
+      "query": "event carrier WVS7",
+      "observed_matches": 0
+    },
+    {
+      "query": "C11 release WVS7",
+      "observed_matches": 0
+    },
+    {
+      "query": "row payload WVS7",
+      "observed_matches": 0
+    },
+    {
+      "query": "replay WVS7",
+      "observed_matches": 0
+    },
+    {
+      "query": "parquet WVS7",
+      "observed_matches": 0
+    },
+    {
+      "query": "Arrow WVS7",
+      "observed_matches": 0
+    },
+    {
+      "query": "CSV WVS7",
+      "observed_matches": 0
+    },
+    {
+      "query": "JSONL WVS7",
+      "observed_matches": 0
+    },
+    {
+      "query": "spool WVS7",
+      "observed_matches": 0
+    },
+    {
+      "query": "shard WVS7",
+      "observed_matches": 0
+    },
+    {
+      "query": "checkpoint WVS7",
+      "observed_matches": 0
+    },
+    {
+      "query": "scratch persistence WVS7",
+      "observed_matches": 0
+    },
+    {
+      "query": "WVS7",
+      "observed_matches": 8,
+      "notable_messages": [
+        "Pin WVS7 R3 documentary batch branches",
+        "Accept WVS7 R2 A/B/C and authorize parallel documentary recovery",
+        "Authorize V4 single-pass full WVS7 certification court",
+        "Bank R5 bounded court and authorize full WVS7/LiTS courts"
+      ]
+    },
+    {
+      "query": "R5 WVS7",
+      "observed_matches": 1
+    },
+    {
+      "query": "source backed",
+      "observed_matches": 5
+    }
+  ],
+  "pull_request_searches": {
+    "queries": [
+      "WVS7",
+      "Q291",
+      "carrier",
+      "GSR07",
+      "P2R6S",
+      "source-backed C11"
+    ],
+    "notable_prs": [
+      424,
+      423,
+      416,
+      414,
+      413,
+      411,
+      356,
+      355,
+      350,
+      348,
+      347,
+      300
+    ],
+    "comments_checked": [
+      347,
+      356,
+      424
+    ],
+    "comments_payload_result": "NONE",
+    "issue_query": "WVS7 Q291",
+    "issue_result_count": 0
+  },
+  "git_object_search": {
+    "base_tree": "ffd4097ce4b931dfb8f70332c0851dddb3f52144",
+    "recursive_tree_truncated": false,
+    "lfs_configuration": {
+      ".gitattributes": "ABSENT",
+      ".lfsconfig": "ABSENT"
+    },
+    "binary_and_large_object_scan": true,
+    "generic_payload_rule": "generic names were retained as candidates until provenance disqualified them",
+    "recovery_reservoir_indexes": [
+      "ARCHIVE_MEMBER_INVENTORY.tsv",
+      "FULL_RECOVERY_UTILITY_LEDGER.tsv",
+      "LATENT_USE_REGISTRY.tsv",
+      "OBJECT_INDEX.tsv",
+      "RECOVERED_FROM_LIBRARY_DATE_SIZE_SHA256_TREE.tsv"
+    ],
+    "recovery_reservoir_object_index_blob": "2982f27c918c86e7315c436a652a94ce16c77c35",
+    "large_object_threshold_bytes": 1000000,
+    "all_large_object_index_rows_provenance_resolved": true,
+    "wvs7_reservoir_holding": "WVS7 recovery members are questionnaire/source-structure evidence; no row-level respondent carrier or raw SAV is committed in the reservoir",
+    "source_native_structure_holding": "global source-native structure tables include WVS7/Q291 question metadata only; schema contains question/document fields, not respondent row values"
+  },
+  "historical_returns_inspected": [
+    "WORKER_RETURNS/FIABC-LM2-R1E/",
+    "WORKER_RETURNS/FIABC-LM2-R1D-HQ-FANIN/",
+    "WORKER_RETURNS/FIABC-LM2/",
+    "WORKER_RETURNS/EE-P2F0/",
+    "WORKER_RETURNS/EE-P2F1/",
+    "WORKER_RETURNS/EE-P2F2/",
+    "WORKER_RETURNS/EE-P2R6M/",
+    "WORKER_RETURNS/EE-P2R6S/",
+    "J05 WVS7 carrier recovery return",
+    "D03_D12_RESPONDENT_REPLAY_R1",
+    "D11_SOURCE_LOCAL_66_R1",
+    "FULL_GSR07_WVS7_SOURCE_BACKED_CERTIFICATION_R1/R2",
+    "R5_FULL_WVS7_REAL_SOURCE_COURT",
+    "R5_FULL_WVS7_V4_AUDIT69_CERTIFICATION",
+    "SR07_P0_WVS7_SCALE_PREFLIGHT",
+    "SR07_P1_WVS7_C11_SCALE_PREFLIGHT",
+    "SR07_P2_WVS7_R4_REAL_SCALE_CONFIRMATION",
+    "REC01/TIR014 V2"
+  ],
+  "actions": "SEE_04_WORKFLOW_ARTIFACT_LEDGER.json",
+  "why_hashes_and_refs_are_insufficient": [
+    "A SHA-256 or ExactRef authenticates a preimage but does not encode the ordered 97,220 x 2 cell preimage.",
+    "Release/replay/object inventory hashes do not contain raw physical witness tokens or per-row missing-state/declaration material.",
+    "P2F2 exact comparator tokens cover semantic substantive codes 1..5 and cannot reconstruct physical special/system-missing cells or their row positions.",
+    "Row-binding digests authenticate respondent order but do not encode Q291G5/Q291P5 values.",
+    "Questionnaire/source-structure objects identify variable meaning/topology, not respondent observations."
+  ],
+  "terminal": "BROWSER_ARCHAEOLOGY_EXHAUSTED__LOCAL_Q291_EXTRACTION_PROVED_IRREDUCIBLE"
+}

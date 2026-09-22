@@ -1,0 +1,131 @@
+{
+  "schema": "FIABC_LM2_R1D_A_RETURN@1.0.0",
+  "worker": "FIABC-LM2-R1D-A",
+  "repository": "maidiu/rawlsing",
+  "base": {
+    "branch": "agent/vozhd-premain-fiabc-lm2-r1-fanin-r1",
+    "sha": "f5ccf2b2f12fcfe02842a2aefcacdc972b598c57"
+  },
+  "branch": "agent/rabochii-premain-fiabc-lm2-r1d-a-predicate-mapping-provenance-r1",
+  "return_path": "WORKER_RETURNS/FIABC-LM2-R1D-A/",
+  "status": "PASS__P2F2_INDEPENDENT_MAPPING_PREMISES_PROVED",
+  "terminal": "FIABC_LM2_R1D_A_P2F2_MAPPING_PROVENANCE_PASS__DERIVED_MAPPING_AUTHORITY_LAWFULLY_PARENTABLE",
+  "evidence": {
+    "p2f2": {
+      "branch": "agent/rabochii-prev3-ee-p2f2-wvs7-mechanical-pre553-issuer-r1",
+      "tip": "22667bd395e7293f99b285daddad36fe3a4377ef",
+      "source_access": false,
+      "outcome_computation": false,
+      "lock2": "8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188"
+    },
+    "r6s": {
+      "historical_tip": "48887a2b1523c9d20933e4d6c5e341e80d7a0ff6",
+      "later_than_p2f2": true
+    },
+    "n1": {
+      "branch": "agent/rabochii-premain-fiabc-lm1-r1e-c11-boundary-recovery-r1",
+      "tip": "827cc8457acaf8289ee8c70f54348008cd4f1b36",
+      "raw_response_value_law": "OPAQUE_TYPED_PHYSICAL_WITNESS"
+    }
+  },
+  "exact_semantic_refs": {
+    "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+    "source_semantics_authority": {
+      "authority_id": "EE-P2F2-WVS7-SOURCE-SEMANTICS-TOPOLOGY",
+      "authority_version": "1.0.0",
+      "authority_content_hash": "c7336ce479b8625b71e33743a05e43525c387dd50e4be1bb7af313667f9c341f"
+    },
+    "predicate_grammar_authority": {
+      "authority_id": "EE-P2F2-WVS7-PRE553-I03-PREDICATE-GRAMMAR",
+      "authority_version": "1.0.0",
+      "authority_content_hash": "92fc0bf93937b8e38cd181df7915c8786abdc16465833d731daa90ca1218dec5"
+    },
+    "response_semantics_hash": "8aaa37c601f0dac74870c585567403520ce77287feae525832c59841dac1b710",
+    "target_domain_replay_hash": "5d0a1ca4cc23c198a6afd4b935d425d51c7dd5cd143d056b351740c059608ef4",
+    "universe_hash": "f9b1cdffc5783ace87d258ebe2ae1c75040ce786c373e255f53da4be4259d95e",
+    "risk_set_hash": "0bf6a655a35617bec3e54f4d547e89282920e7835e406dcb43b3456774ab87d7",
+    "program_scope_hash": "ed669953b33512f0032abc40973f85be1bede1993f6d520f901c11bcd7e8666e"
+  },
+  "authority_test": {
+    "accepted_native_source_semantic_identity": "PROVED",
+    "accepted_target_semantic_identity_value_representation": "PROVED",
+    "exact_native_to_target_relation": "PROVED",
+    "source_use_scope": "PROVED",
+    "provenance_independent_of_candidate_output": "PROVED",
+    "no_cross_source_equivalence_claim": "PROVED"
+  },
+  "central_holding": {
+    "p2f2_is_merely_workload": false,
+    "p2f2_predicates_are_positive_mapping_provenance": true,
+    "p2f2_is_itself_c11_mapping_authority": false,
+    "future_bounded_derived_mapping_authority_lawfully_parentable": true,
+    "future_authority_separate_issuance_adoption_required": true,
+    "authority_issued_by_this_worker": false,
+    "authority_adopted_by_this_worker": false
+  },
+  "mapping_scope": {
+    "questions": [
+      "Q291G5",
+      "Q291P5"
+    ],
+    "substantive_codes": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "exact_program_tokens": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "mapping": {
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5"
+    },
+    "target_use": "EXACT_FROZEN_WVS7_P2_PROGRAM_ONLY"
+  },
+  "negative_limits": [
+    "NO_CANONICAL_QUESTION_MAPPING",
+    "NO_SPECIAL_CODE_MAPPING_MINUS5_MINUS4_MINUS2_MINUS1",
+    "NO_CROSS_SOURCE_EQUIVALENCE",
+    "NO_OTHER_WVS_QUESTION_OR_WAVE",
+    "NO_POOLING",
+    "NO_RESPONDENT_LINKAGE",
+    "NO_BACKFILL",
+    "NO_NEW_RESPONSE_MEANING",
+    "NO_NEW_TOPOLOGY_OR_ROUTING",
+    "NO_WEIGHT_DESIGN_ESTIMAND",
+    "NO_POPULATION_GENERALIZATION",
+    "NO_CANDIDATE_OUTPUT_AS_PARENT"
+  ],
+  "current_n1_interpretation": {
+    "exact_value_role": "SEMANTIC_COMPARATOR",
+    "raw_response_value_role": "OPAQUE_TYPED_PHYSICAL_WITNESS",
+    "raw_token_equivalence_assumed": false
+  },
+  "outputs": [
+    "00_RETURN.md",
+    "01_P2F2_VALUE_PROVENANCE.md",
+    "02_MAPPING_PREMISE_MATRIX.csv",
+    "03_EXACT_AUTHORITY_GRAPH.json",
+    "04_DERIVABILITY_HOLDING.md",
+    "RETURN.json"
+  ],
+  "proof_boundary": {
+    "wvs7_source_opened": false,
+    "structural_preimage_regenerated": false,
+    "candidate_a_b_c_executed": false,
+    "i03_executed": false,
+    "i05_executed": false,
+    "measured_p2x_executed": false,
+    "new_authority_object_issued": false,
+    "new_authority_object_adopted": false
+  }
+}

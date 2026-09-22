@@ -1,0 +1,25 @@
+{
+  "schema": "EE_P2R1_UNIVERSAL_SEAM_CONTRACT_API_RECEIPT@1.0.0",
+  "status": "PASS",
+  "implementation": {
+    "path": "rawlsing_next/pre553_carrier_execution.py",
+    "blob_sha1": "e7cda773e6a2426bfa12b22790fd8e005fe75153",
+    "contract": "PRE553_CARRIER_NEUTRAL_C11_I03_I05_EXECUTION_BINDING@1.0.0"
+  },
+  "api": [
+    "materialize_public_object",
+    "RuntimeObjectCatalog.from_documents",
+    "bind_governed_c11_projection",
+    "bind_repository_builder",
+    "CarrierNeutralResearchExecutor.execute_i03",
+    "CarrierNeutralResearchExecutor.execute_i05",
+    "learned_empirical_execution_receipt"
+  ],
+  "laws": {
+    "candidate_semantic_branching": false,
+    "source_wave_hardcoding": false,
+    "hash_inversion": false,
+    "latest_fuzzy_lookup": false,
+    "semantic_inference": false
+  }
+}

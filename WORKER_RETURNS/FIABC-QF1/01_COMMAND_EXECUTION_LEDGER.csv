@@ -1,0 +1,34 @@
+phase,commissioned_command,executed_command,status,exit,result
+P1,python -m json.tool rawlsing_next/fiabc_succession_manifest_schema.json >/dev/null,python -m json.tool rawlsing_next/fiabc_succession_manifest_schema.json >/dev/null,BLOCKED,127,python executable absent
+P1,python -m json.tool rawlsing_next/fiabc_succession_governing_profile.json >/dev/null,python -m json.tool rawlsing_next/fiabc_succession_governing_profile.json >/dev/null,BLOCKED,127,python executable absent
+P1,python -m json.tool rawlsing_next/tests/fixtures/fiabc_succession_preflight_hostile_cases.json >/dev/null,python -m json.tool rawlsing_next/tests/fixtures/fiabc_succession_preflight_hostile_cases.json >/dev/null,BLOCKED,127,python executable absent
+P1,python -m json.tool WORKER_RETURNS/FIABC-T5/04_CURRENT_SIX_CELL_COURT_CONTRACT.json >/dev/null,python -m json.tool WORKER_RETURNS/FIABC-T5/04_CURRENT_SIX_CELL_COURT_CONTRACT.json >/dev/null,BLOCKED,127,python executable absent
+P1,python -m json.tool WORKER_RETURNS/FIABC-R35-Q01/01_HOSTILE_FIXTURES.json >/dev/null,python -m json.tool WORKER_RETURNS/FIABC-R35-Q01/01_HOSTILE_FIXTURES.json >/dev/null,BLOCKED,127,python executable absent
+P1,python -m compileall -q rawlsing_next,python -m compileall -q rawlsing_next,BLOCKED,127,python executable absent
+P1,python -m json.tool required five files,python3 -m json.tool required five files,PASS,0,all five JSON documents parsed
+P1,python -m compileall -q rawlsing_next,python3 -m compileall -q rawlsing_next,FAIL,1,SyntaxError at rawlsing_next/ee_p2x_darwin_stage_backend.py:1102
+P2,python -m unittest rawlsing_next.tests.test_r35_i01_physical_metadata,python3 -m unittest rawlsing_next.tests.test_r35_i01_physical_metadata,PASS,0,6 tests
+P2,python -m unittest discover -s tests -p 'test_fiabc_derivative_parentage.py' -v,python3 -m unittest discover -s tests -p 'test_fiabc_derivative_parentage.py' -v,FAIL,1,8 passed and 1 error
+P2,python -m pytest -q rawlsing_next/tests/test_fiabc_r35_i03_physical_equivalence.py,python3 -m pytest -q rawlsing_next/tests/test_fiabc_r35_i03_physical_equivalence.py,FAIL,1,2 passed and 13 failed
+P2,python -m pytest -q tests/test_r35_generic_guard_court.py,python3 -m pytest -q tests/test_r35_generic_guard_court.py,PASS,0,10 tests and 29 subtests
+P2,python -m pytest -q rawlsing_next/tests/test_fiabc_t6_live_r35_convergence.py,python3 -m pytest -q rawlsing_next/tests/test_fiabc_t6_live_r35_convergence.py,PASS,0,6 tests
+P3,python -m pytest -q rawlsing_next/tests/test_fiabc_t2_six_cell_execution_binding.py,python3 -m pytest -q rawlsing_next/tests/test_fiabc_t2_six_cell_execution_binding.py,PASS,0,5 tests
+P3,python -m pytest -q rawlsing_next/tests/test_fiabc_t3_oracle_process_envelope.py,python3 -m pytest -q rawlsing_next/tests/test_fiabc_t3_oracle_process_envelope.py,PASS,0,6 tests
+P3,python -m pytest -q rawlsing_next/tests/test_fiabc_w3_i06a_process_isolation.py,python3 -m pytest -q rawlsing_next/tests/test_fiabc_w3_i06a_process_isolation.py,FAIL,1,8 passed and 1 failed
+P3,python -m pytest -q rawlsing_next/tests/test_fiabc_t4_live_accounting.py,python3 -m pytest -q rawlsing_next/tests/test_fiabc_t4_live_accounting.py,PASS,0,12 tests
+P3,python -m pytest -q tests/test_fiabc_telemetry_semantics.py,python3 -m pytest -q tests/test_fiabc_telemetry_semantics.py,PASS,0,18 tests
+P3,python -m pytest -q tests/test_fiabc_lifecycle_accounting.py,python3 -m pytest -q tests/test_fiabc_lifecycle_accounting.py,PASS,0,13 tests and 2 subtests
+P4,python -m pytest -q rawlsing_next/tests/test_pre553_independent_parity_oracle.py,python3 -m pytest -q rawlsing_next/tests/test_pre553_independent_parity_oracle.py,PASS,0,15 tests
+P4,python -m unittest discover -s rawlsing_next/tests -p 'test_fiabc_succession_preflight.py' -v,python3 -m unittest discover -s rawlsing_next/tests -p 'test_fiabc_succession_preflight.py' -v,PASS,0,8 tests
+P4,python -m pytest -q rawlsing_next/tests/test_fiabc_p2_terminal_verifier.py,python3 -m pytest -q rawlsing_next/tests/test_fiabc_p2_terminal_verifier.py,PASS,0,13 tests
+P4,python -m pytest -q rawlsing_next/tests/test_fiabc_t5_live_terminal_control.py,python3 -m pytest -q rawlsing_next/tests/test_fiabc_t5_live_terminal_control.py,PASS,0,12 tests
+P5,python -m pytest -q rawlsing_next/tests/test_pre553_empirical_objects_authority.py rawlsing_next/tests/test_pre553_empirical_query.py rawlsing_next/tests/test_pre553_discovery_exact.py,python3 -m pytest -q rawlsing_next/tests/test_pre553_empirical_objects_authority.py rawlsing_next/tests/test_pre553_empirical_query.py rawlsing_next/tests/test_pre553_discovery_exact.py,PASS,0,60 tests
+P5,find rawlsing_next/tests tests -type f \( -name 'test_fiabc_*.py' -o -name 'test_r35_*.py' \) -print | sort,same find command, PASS,0,15 focused files inventoried
+P5,additional inventoried focused suites not already run,python3 -m pytest -q rawlsing_next/tests/test_fiabc_w3_i04_runtime_packaging_rebind.py,FAIL,1,4 passed and 2 failed
+P6,git blob verification against WORKER_RETURNS/FIABC-T6/04_PRESERVATION_AND_IDENTITY_LEDGER.csv,python3 read-only git ls-tree verification,PASS,0,all ledger rows exact
+EXCLUDED,real local I07 preflight with LiTS-I/WVS7 paths,not executed,NOT_APPLICABLE,,prohibited real-source/local-only gate
+EXCLUDED,real six-cell source execution,not executed,NOT_APPLICABLE,,prohibited by source-independent court
+EXCLUDED,R6X on stopped local ledger,not executed,NOT_APPLICABLE,,prohibited by source-independent court
+EXCLUDED,measured P2X,not executed,NOT_APPLICABLE,,prohibited by source-independent court
+EXCLUDED,WVS oracle materialization from SAV,not executed,NOT_APPLICABLE,,prohibited by source-independent court
+EXCLUDED,LiTS-A real first-build parentage receipt,not created,NOT_APPLICABLE,,explicitly prohibited missing-receipt construction

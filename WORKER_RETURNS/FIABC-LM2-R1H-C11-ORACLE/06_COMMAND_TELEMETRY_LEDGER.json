@@ -1,0 +1,35 @@
+{
+  "schema": "FIABC_LM2_R1H_COMMAND_TELEMETRY_LEDGER@1.0.0",
+  "execution_mode": "GITHUB_BROWSER_ONLY",
+  "github_actions_run_id": 35572953550,
+  "github_actions_job_id": 106248324441,
+  "evidence_execution_sha": "2513c182d4fdc4f4cadb0e5479706f412bdb7e52",
+  "pr_synthetic_sha": "8be0a5a9fcd7080df3315644e0301c32b6931f41",
+  "commands": [
+    {
+      "command": "python -m pytest -q rawlsing_next/tests/test_rabochii_execution_protocol.py rawlsing_next/tests/test_rabochii_bounded_court.py",
+      "outcome": "PASS__20 passed in 0.06s"
+    },
+    {
+      "command": "python -m rawlsing_next.rabochii_execution_protocol court .rabochii/court_spec.json",
+      "outcome": "PASS"
+    },
+    {
+      "command": "python -m rawlsing_next.rabochii_bounded_court .rabochii/court_spec.json --receipt .rabochii/court_receipt.json",
+      "outcome": "FAIL__nested court 1 failed, 1 passed in 38.72s"
+    },
+    {
+      "command": "python -m pytest -q rawlsing_next/tests/test_fiabc_lm2_r1h_real_material_c11.py",
+      "outcome": "FAIL__R15 SourceBackedC11FacadeError"
+    }
+  ],
+  "prohibited_execution_counts": {
+    "wvs7_sav_or_zip_open": 0,
+    "new_source_read": 0,
+    "candidate_a_b_c_processes": 0,
+    "i03": 0,
+    "i05": 0,
+    "measured_p2x": 0
+  },
+  "stop_applied_after_r15_failure": true
+}

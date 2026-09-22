@@ -1,0 +1,57 @@
+{
+  "schema": "FIABC_LM2_R1K_R16_FRESH_WVS_ORACLE_BLOCKER@1.0.0",
+  "status": "BLOCKED__EXACT_DISCOVERY_VALIDATION_AUTHORITY_INCOMPLETE",
+  "oracle_frozen": false,
+  "oracle_identity_sha256": null,
+  "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+  "admitted_common_c11_release_ref": {
+    "kind": "C11LogicalRelease",
+    "object_id": "WVS7_FROZEN_P2_EXACT_SOURCE",
+    "content_hash": "e6881e9a08a48f8871790e781c28bddbc44ee35db894d6ad7b1105a6a8fd262f"
+  },
+  "discovery_authority_ref": {
+    "kind": "DiscoveryAuthority@1.0.0",
+    "object_id": "urn:rawlsing:pre553:DiscoveryAuthority:sha256:24591678ebf50ac153fabdbbcd90d6ce818c5a89a5307c395c48a04fe5a8b1ab",
+    "content_hash": "24591678ebf50ac153fabdbbcd90d6ce818c5a89a5307c395c48a04fe5a8b1ab"
+  },
+  "candidate_grammar_ref": {
+    "kind": "PRE553_I05_CANDIDATE_GRAMMAR@1.0.0",
+    "object_id": "urn:rawlsing:pre553:ee-p2f2:wvs7-lock1-grammar:sha256:a94bd2ed3b64b2c51f6d329560feef6b97f69da3527081d8ca6168ae63e5f7f6",
+    "content_hash": "a94bd2ed3b64b2c51f6d329560feef6b97f69da3527081d8ca6168ae63e5f7f6"
+  },
+  "frozen_runtime_package_blob_sha1": "e04e84b76f8b4eb53905276dd025938bf2e5f6fe",
+  "discovery_authority_validation_rules": {
+    "exact_authority_closure_required": true,
+    "exact_universe_scope_required": true,
+    "unresolved_predicate_or_query": "REJECT"
+  },
+  "allowed_validation_kinds": [],
+  "frozen_candidate_grammar_validation_kinds": [
+    "DISTRIBUTION_DIFFERS_FROM_BASELINE",
+    "JOINT_NOT_PRODUCT_OF_MARGINALS",
+    "TARGET_CELL_SUPPORTED"
+  ],
+  "generic_i05_guard": "used_validation must be a subset of DiscoveryAuthority.validation_rules.kinds; absent kinds resolves to empty set",
+  "first_real_i05_attempt": {
+    "run_id": 35583650883,
+    "job_id": 106281910026,
+    "head_sha": "e93aabb3496b2f5242158d21ea3aa72c6c35e464",
+    "exception": "Pre553AuthorityError: candidate validation rule exceeds exact discovery validation authority",
+    "r1j_c11_precheck": "35 passed in 37.37s",
+    "r15_completed_before_i05": true
+  },
+  "original_issuer_evidence": {
+    "branch": "agent/rabochii-prev3-ee-p2f2-wvs7-mechanical-pre553-issuer-r1",
+    "pre553_discovery_exact_blob_sha1": "b2b99460cc5991bc26aa2ffe5bda129b408fc197",
+    "current_pre553_discovery_exact_blob_sha1": "c7380774e8a1959da5ed8c6f23c2fc3cf99ad18d",
+    "guard_existed_on_original_issuer_branch": true,
+    "issuer_compiled_frontier_without_execute_exact_bounded_discovery": true
+  },
+  "lock2_reissue_permitted_by_this_worker": false,
+  "authority_bypass_used": false,
+  "old_historical_oracle_reused": false,
+  "candidate_outputs_consulted": 0,
+  "candidate_processes_started": 0,
+  "wvs_sav_reread": false,
+  "required_successor_action": "REISSUE_OR_OTHERWISE_LAWFULLY_REPAIR_P2F2_DISCOVERY_VALIDATION_AUTHORITY_AND_ITS_LOCK2_BINDING_BEFORE_R16_RETRY"
+}

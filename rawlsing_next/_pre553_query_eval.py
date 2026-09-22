@@ -342,6 +342,17 @@ def _evaluate_index_group(
     component_positive = [False] * plan.arity
     derived_branch_memberships = _compile_derived_branch_memberships(predicate.predicate_ast)
 
+    try:
+        from rawlsing_next.pre553_runtime_context import current_runtime_binding
+        runtime_binding = current_runtime_binding()
+    except ImportError:
+        runtime_binding = None
+    if runtime_binding is not None:
+        for index in indices:
+            index.runtime_authorities = runtime_binding.authorities
+            index.runtime_repository = runtime_binding.repository
+            index.runtime_predicate_grammar_authority_ref = predicate.grammar_authority_ref
+
     for index in sorted(indices, key=lambda item: item.universe.ref.key):
         used.extend([index.universe, index.release.replay_manifest])
         used_auth.extend(_validate_public_object_authorities(index.universe, registry))
@@ -537,8 +548,20 @@ def _build_fact(
     query_auth = _validate_public_object_authorities(query, registry)
     predicate_auth = _validate_public_object_authorities(predicate, registry)
     grammar_auth = _authority(predicate.grammar_authority_ref, "predicate.grammar_authority_ref")
-    if registry.resolve_exact(grammar_auth).snapshot.typed_state != "ALLOW":
-        raise Pre553AuthorityError("predicate grammar authority is not positive")
+    try:
+        grammar_snapshot = registry.resolve_exact(grammar_auth).snapshot
+    except Pre553AuthorityError:
+        try:
+            from rawlsing_next.pre553_runtime_context import current_runtime_authorities
+            runtime = current_runtime_authorities()
+        except ImportError:
+            runtime = None
+        if runtime is None or not runtime.is_positive_runtime_predicate_authority(grammar_auth):
+            raise
+        runtime.validate_predicate(predicate)
+    else:
+        if grammar_snapshot.typed_state != "ALLOW":
+            raise Pre553AuthorityError("predicate grammar authority is not positive")
     semantic_query_auths = _canonical_authorities(
         _authority(value, "query.query_authority_refs") for value in query.query_authority_refs
     )

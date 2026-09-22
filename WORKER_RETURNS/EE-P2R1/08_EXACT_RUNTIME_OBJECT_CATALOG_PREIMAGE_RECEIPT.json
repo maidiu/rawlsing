@@ -1,0 +1,32 @@
+{
+  "schema": "EE_P2R1_EXACT_RUNTIME_OBJECT_CATALOG_PREIMAGE_RECEIPT@1.0.0",
+  "status": "PASS",
+  "generic_materializer": "RuntimeObjectCatalog.from_documents + materialize_public_object",
+  "no_hash_inversion": true,
+  "WVS7": {
+    "authority_commit": "22667bd395e7293f99b285daddad36fe3a4377ef",
+    "exact_preimages": {
+      "authorities": 6,
+      "predicates": 11,
+      "queries": 3,
+      "discovery_authorities": 1
+    },
+    "frozen_frontier_candidates": 46,
+    "fresh_process_status": "PASS__EXACT_F2_PREIMAGES_MATERIALIZED__LOCK2_FRONTIER_RECOMPILED"
+  },
+  "LITS_I": {
+    "accepted_preimage_producer": "B12_AS3R3_NODE7_V2_PROSPECTIVE_FRESH_COMBINED_REPLAY_R1",
+    "accepted_return_commit": "46acf0b162bdcac5f47ce9cce0d9bb1d039fae2d",
+    "qualifying_driver_commit": "e5f9a14a77c2b84a86ce6eefaddb4b5c12b17e39",
+    "qualifying_driver_blob": "b308205e7454a896b57c24ef658ddf83d720b1d2",
+    "fresh_processes": 2,
+    "predicates_constructed": 19,
+    "distinct_predicates": 18,
+    "queries_constructed": 3,
+    "mapping_results": 22,
+    "distinct_successor_canonical_objects": 21,
+    "realization_sha256": "7dccb36d8b7bb5b4e7862d926b32cff3a055762b550938a347a980425f0d1979",
+    "prospective_mapping_sha256": "06f874df6bdd2e621886f748c8aa12397533e273649f99e654dc3779b5eb59db",
+    "consumption_law": "accepted B12 preimage producer feeds the generic exact runtime catalog; historical Node6 hash is not inverted"
+  }
+}

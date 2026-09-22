@@ -1,0 +1,20 @@
+{
+  "schema": "EE_P2R1_GOVERNED_PROJECTION_BINDING_RECEIPT@1.0.0",
+  "status": "PASS",
+  "mechanism": "bind_governed_c11_projection",
+  "behavior": "requires every GovernedC11Projection field explicitly and delegates all semantic/authority validation to the accepted projection contract",
+  "no_inference_from": [
+    "outcome_values",
+    "labels",
+    "distribution_shape",
+    "column_names",
+    "source_family_conventions"
+  ],
+  "proving_envelope": {
+    "LITS_I_A": "accepted LiTS projection + preserved R5 carrier can be passed through accepted A repository builder then common runner",
+    "LITS_I_B": "accepted LiTS projection + cacheless source-backed C11 owner can be passed to common runner",
+    "WVS7_A": "generic preparation machinery closed; no dispositive WVS-A run performed",
+    "WVS7_B": "generic source-backed preparation machinery closed; no dispositive WVS-B run performed"
+  },
+  "court_test": "test_governed_projection_binding_requires_complete_explicit_contract_and_delegates_validation"
+}

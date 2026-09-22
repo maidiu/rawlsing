@@ -953,3 +953,17 @@ Reverse V3 reading confirms substantial overlap: TD-R05 and CAN/ADP authorities 
 
 Therefore the next architecture move is **two-ended convergence**: continue chat-side personhood reasoning while simultaneously crosswalking from current V3 authority outward. New PFF work must be tethered to an exact existing owner, missing shared transition or falsifier. Free-standing adjacent psychology frontiers remain deferred.
 
+## CANONICAL FIABC REINTEGRATION OVERLAY — 20260921T2050-0400
+
+HQ has restored cumulative ancestry across canonical PRE-MAIN `d474f8e3c9630c4bcbb10d6e8359b71ba5b3060d`, final FIABC launch `91723d443f56acb05af63acc0d3a34fb9a97e3f4`, and main operational line `25830fe7462bb9e29bc4087e6ae14f3f84cec377` without force-reset, squash, or architecture selection.
+
+Exact divergence archaeology identifies `a4b5bc7a7cef07fb8acb48bc6f0300b155515f01` as the first mandatory reintegration miss: HQ adopted EE-P2R1 while its qualified implementation ancestry remained on detached P2X. Subsequent FIABC work inherited that omission.
+
+The merge-base tree court found zero PRE-MAIN-versus-FIABC live runtime/semantic same-path conflicts. PRE-MAIN's unique net delta is control/state chronology; FIABC carries the accepted/current court implementation/evidence delta. The sole same-path conflict was `HQ_HANDOFF/LATEST.json`, resolved by the new immutable checkpoint/pointer sequence.
+
+The 10 main-only Return Beacon commits are cumulatively inherited at operational grain. Final intended state remains manual dispatch only; automatic GitHub Actions consumption is disabled.
+
+OBL001 remains OPEN / RETURN_REQUIRED. The court mechanism is inherited; the persistent vs virtual/source-backed vs hybrid winner is unknown.
+
+Next exact gate: reconciliation-bound source-free FIABC qualification, then candidate-neutral preflight/freeze, then the six serialized measured cells. No survey decode, candidate process, or measured P2X was run during this reconciliation.
+
