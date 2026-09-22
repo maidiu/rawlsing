@@ -15,8 +15,8 @@ fi
 }
 readonly PYTHON_BIN
 
-QUALIFIED_CODE_HEAD="f6914345c9856acefba9879ff325c12ab6040b5c"
-QUALIFICATION_CLOSURE_HEAD="d578d19be7d58eb1866778bf5f42b0e1cfcf5fb6"
+QUALIFIED_CODE_HEAD="28b29ac728dc816eaf4ccd1e0d7a021d20bd935e"
+QUALIFICATION_CLOSURE_HEAD="96a9301d37f67bfb02c5bda1efc50b17b37b581d"
 EXPECTED_BRANCH="agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1"
 
 : "${LITS_PATH:?set LITS_PATH to exact canonical LITS-2006-data.dta}"
