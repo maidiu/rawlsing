@@ -15,8 +15,8 @@ Labels, frequencies, neighboring values, missingness density, field names, displ
 - canonical sources: **35**
 - SAV: **31**
 - DTA: **4**
-- governed variable surfaces enumerated before source execution: **34**
-- surfaces with an exact bounded/native-literal value owner: **14**
+- governed variable surfaces enumerated before source execution: **38**
+- surfaces with an exact bounded/native-literal value owner: **18**
 - governed item surfaces whose exact physical value-key owner is not presently enumerated: **20**
 
 The 20 owner-incomplete surfaces are deliberately retained so a governed question/item cannot be silently upgraded into a governed typed key. Their lawful typed-join disposition is `TYPED_JOIN_BLOCKED_BY_MISSING_AUTHORITY` unless a later explicit authority supersedes this registry.
