@@ -293,13 +293,24 @@ def _require_exact_i03_authority_fitness(
             "EmpiricalFact@1.0.0",
         ):
             for universe_ref in universe_refs:
-                require_positive_authority(
-                    snapshot,
-                    authority_kind="PREDICATE_GRAMMAR",
-                    operation=query_operation,
-                    object_family=family,
-                    source_universe_ref=universe_ref.as_dict(),
-                )
+                try:
+                    require_positive_authority(
+                        snapshot,
+                        authority_kind="PREDICATE_GRAMMAR",
+                        operation=query_operation,
+                        object_family=family,
+                        source_universe_ref=universe_ref.as_dict(),
+                    )
+                except Pre553AuthorityError:
+                    if runtime is None:
+                        raise
+                    runtime.authorize_i03_operation_successor(
+                        snapshot=snapshot,
+                        query=query,
+                        requested_operation=query_operation,
+                        universe_refs=universe_refs,
+                        required_object_family=family,
+                    )
 
     target_keys = (
         "target_use_ref",

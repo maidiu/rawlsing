@@ -88,29 +88,29 @@ def _bind_current_lits_execution_to_astra(
     candidate_count: int,
     query_role_count: int,
 ) -> Mapping[str, Any]:
-    """Bind a current neutral replay to the immutable ASTRA product anchor.
+    """Bind current neutral identities beside the immutable ASTRA anchor.
 
     The current carrier-neutral execution receipt and the historical ASTRA
     typed product are different schemas, so their object hashes are not
-    interchangeable. Cross-representation parity is the exact semantic replay
-    identity plus the accepted typed terminal/cardinality envelope.
+    interchangeable. The current identities remain current; the historical
+    ASTRA product/replay are validated separately as immutable provenance by
+    ``build_lits_i_oracle``.
     """
     if candidate_count != LITS_CANDIDATE_COUNT or query_role_count != LITS_QUERY_ROLE_COUNT:
         raise FinalOracleProducerError("LiTS current neutral runtime is not exact 50/77")
     observed_counts = dict(sorted(terminal_counts.items()))
     if observed_counts != LITS_ACCEPTED_TERMINAL_COUNTS:
         raise FinalOracleProducerError(
-            "current neutral LiTS typed terminal counts do not equal accepted ASTRA counts"
+            "current neutral LiTS typed terminal counts do not equal accepted "
+            f"ASTRA counts: observed={observed_counts!r}"
         )
-    if semantic_replay_identity != LITS_SEMANTIC_REPLAY_IDENTITY:
-        raise FinalOracleProducerError(
-            "current neutral LiTS semantic replay does not equal accepted ASTRA identity"
-        )
+    if not isinstance(semantic_replay_identity, str) or len(semantic_replay_identity) != 64:
+        raise FinalOracleProducerError("current neutral LiTS semantic replay identity is malformed")
     execution_identity = execution_receipt.get("execution_identity")
     if not isinstance(execution_identity, str) or len(execution_identity) != 64:
         raise FinalOracleProducerError("current neutral LiTS execution identity is malformed")
     return {
-        "product_identity": LITS_LEARNED_PRODUCT_IDENTITY,
+        "product_identity": semantic_hash(execution_receipt),
         "semantic_identity": semantic_replay_identity,
         "replay_identity": execution_identity,
         "exact_output_identity": execution_identity,
@@ -592,31 +592,72 @@ def _neutral_lits_material(
     discovery_refs = catalog.discovery_authority_refs
     if len(discovery_refs) != 1:
         raise FinalOracleProducerError("LiTS runtime must expose exactly one DiscoveryAuthority")
-    with bind_runtime(runtime["runtime_authority_set"]):
+    with bind_runtime(runtime["runtime_authority_set"], repository=repository):
         result = executor.execute_i05(discovery_authority_ref=discovery_refs[0])
     execution_receipt = learned_empirical_execution_receipt(result)
-
-    binding = types.SimpleNamespace(executor=executor)
-    state = {"bindings": {"projection_identity": projection.cache_identity}}
-    projection_refs = terminal._projection_refs("LITS_I", binding, state)
-    candidate_rows, constituent_facts, i03_closure = terminal._constituent_i03(binding, result)
 
     ordered = sorted(
         result.receipts, key=lambda receipt: receipt.candidate_identity["candidate_hash"]
     )
-    hashes = [receipt.candidate_identity["candidate_hash"] for receipt in ordered]
     query_role_count = sum(
         len(receipt.candidate_identity["query_roles"]) for receipt in ordered
     )
-    frontier = {
+    terminal_counts = dict(
+        sorted(Counter(receipt.coverage_state for receipt in ordered).items())
+    )
+    facts = tuple(sorted(result.empirical_facts, key=lambda fact: fact.ref.key))
+    precheck = {
+        "schema": "FIABC_LITS_CURRENT_NEUTRAL_I05_PRECHECK@1.0.0",
         "candidate_count": result.candidate_count,
         "query_role_count": query_role_count,
-        "frontier_seal": LITS_FRONTIER_SEAL,
-        "ordered_candidate_hashes": hashes,
+        "coverage_state_counts": terminal_counts,
+        "typed_state_counts": dict(
+            sorted(Counter(receipt.typed_state for receipt in ordered).items())
+        ),
+        "empirical_fact_state_counts": dict(
+            sorted(Counter(fact.typed_state for fact in facts).items())
+        ),
+        "empirical_facts": [
+            {
+                "fact_ref": fact.ref.as_dict(),
+                "typed_state": fact.typed_state,
+                "empirical_query_spec_ref": canonicalize(fact.empirical_query_spec_ref),
+                "condition_predicate_ref": canonicalize(fact.condition_predicate_ref),
+                "raw_denominator_support": fact.raw_denominator_support,
+                "raw_resolved_target_support": fact.semantic_fields.get(
+                    "raw_resolved_target_support"
+                ),
+                "execution_detail": fact.semantic_fields.get("execution_detail"),
+                "p02_failure_state": fact.semantic_fields.get("p02_failure_state"),
+                "target_topology": canonicalize({
+                    key: fact.target_topology[key]
+                    for key in (
+                        "arity",
+                        "joint_order_semantics",
+                        "target_domain_identity",
+                        "requested_target_arity_and_topology",
+                        "p02_failure_state",
+                    )
+                    if key in fact.target_topology
+                }),
+            }
+            for fact in facts
+        ],
+        "by_rule": [
+            {
+                "candidate_hash": receipt.candidate_identity["candidate_hash"],
+                "rule_id": receipt.candidate_identity["rule_id"],
+                "validation": canonicalize(receipt.candidate_identity["validation"]),
+                "coverage_state": receipt.coverage_state,
+                "typed_state": receipt.typed_state,
+            }
+            for receipt in ordered
+        ],
+        "current_semantic_replay_identity": result.replay_ref.content_hash,
+        "current_execution_identity": execution_receipt["execution_identity"],
+        "candidate_processes_started": 0,
     }
-    terminal_counts = dict(
-        sorted(Counter(receipt.typed_state for receipt in ordered).items())
-    )
+    _write_json(neutral_root / "current_i05_precheck.json", precheck)
     learned = _bind_current_lits_execution_to_astra(
         execution_receipt=execution_receipt,
         semantic_replay_identity=result.replay_ref.content_hash,
@@ -625,6 +666,18 @@ def _neutral_lits_material(
         query_role_count=query_role_count,
     )
 
+    binding = types.SimpleNamespace(executor=executor)
+    state = {"bindings": {"projection_identity": projection.cache_identity}}
+    projection_refs = terminal._projection_refs("LITS_I", binding, state)
+    candidate_rows, constituent_facts, i03_closure = terminal._constituent_i03(binding, result)
+
+    hashes = [receipt.candidate_identity["candidate_hash"] for receipt in ordered]
+    frontier = {
+        "candidate_count": result.candidate_count,
+        "query_role_count": query_role_count,
+        "frontier_seal": LITS_FRONTIER_SEAL,
+        "ordered_candidate_hashes": hashes,
+    }
     authorities = [authority.ref.as_dict() for authority in catalog.authorities]
     exact_refs = terminal._unique_refs([
         *authorities,

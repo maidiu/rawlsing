@@ -6,15 +6,24 @@ facts enter only through exact adopted authority records supplied by the caller.
 """
 from __future__ import annotations
 
+import base64
 from dataclasses import dataclass
+import hashlib
+import json
 from types import MappingProxyType
 from typing import Any, Iterable, Mapping, Sequence
+import zlib
 
 from rawlsing_next.pre553_c11_repository import C11LogicalRelease, C11Repository
-from rawlsing_next.pre553_empirical_authority import Pre553AuthorityError
+from rawlsing_next.pre553_empirical_authority import (
+    Pre553AuthorityError,
+    validate_authority_snapshot,
+)
 from rawlsing_next.pre553_empirical_objects import (
     AuthorityRef,
+    AuthoritySnapshot,
     EmpiricalPredicate,
+    EmpiricalQuerySpec,
     ExactRef,
     authority_ref,
     canonical_json,
@@ -31,6 +40,8 @@ R4A_SUCCESSOR_SCHEMA = "EE_P2R4A_PUBLIC_PREDICATE_SUCCESSOR_AUTHORITY_CANDIDATE@
 R5A_REALIZATION_SCHEMA = "EE_P2R5A_RELEASE_REALIZATION_RELATION_AUTHORITY_CANDIDATE@1.0.0"
 R5A_BINDING_SCHEMA = "EE_P2R5A_CONCRETE_REALIZATION_BINDING_SCHEMA@1.0.0"
 R5A_PRECONDITION_SCHEMA = "EE_P2R5A_R4A_RELEASE_PRECONDITION_SUCCESSOR_CLAUSE@1.0.0"
+I03_OPERATION_SUCCESSOR_SCHEMA = "FIABC_LITS_I_I03_OPERATION_SUCCESSOR_AUTHORITY@1.0.0"
+EXACT_RISK_SET_SUCCESSOR_SCHEMA = "FIABC_LITS_I_D03_RISK_SET_SUCCESSOR_AUTHORITY@1.0.0"
 CONCRETE_BINDING_SCHEMA = "RELEASE_REALIZATION_BINDING@1.0.0"
 ACTIVE_POSITIVE_BINDING = "ACTIVE_POSITIVE"
 
@@ -62,6 +73,29 @@ def _hash_identity(record: Mapping[str, Any], declared_hash: str, name: str) -> 
     if semantic_hash(material) != declared_hash:
         raise Pre553AuthorityError(f"{name} identity_material hash mismatch")
     return declared_hash
+
+
+def _canonical_json_scalar_member_token(value: Any, name: str) -> str:
+    """Validate a JSON object member name used as a typed scalar token.
+
+    JSON object member names are necessarily strings.  The dialect authority
+    uses each member name as the canonical JSON serialization of the source
+    scalar (for example, the member name ``1`` denotes integer 1, while
+    ``\"1\"`` would denote string "1").  Preserve that typed distinction rather
+    than serializing the member-name text a second time.
+    """
+    if not isinstance(value, str) or not value:
+        raise Pre553AuthorityError(f"{name} must be a canonical JSON scalar token")
+    try:
+        decoded = json.loads(value)
+        canonical = canonical_json(canonicalize(decoded))
+    except (TypeError, ValueError) as exc:
+        raise Pre553AuthorityError(
+            f"{name} must be a canonical JSON scalar token"
+        ) from exc
+    if isinstance(decoded, (Mapping, list)) or canonical != value:
+        raise Pre553AuthorityError(f"{name} must be a canonical JSON scalar token")
+    return value
 
 
 def _authority_key(ref: AuthorityRef | Mapping[str, Any]) -> str:
@@ -157,6 +191,60 @@ class ReleaseRealizationContract:
     required_proof_families: tuple[str, ...]
 
 
+@dataclass(frozen=True)
+class I03OperationSuccessorContract:
+    authority_content_hash: str
+    runtime_catalog_identity: str
+    runtime_snapshot_content_hash: str
+    parent_authority_ref: AuthorityRef
+    parent_operation: str
+    successor_operation: str
+    source_universe_refs: tuple[ExactRef, ...]
+    query_refs: tuple[ExactRef, ...]
+    governed_object_families: tuple[str, ...]
+
+
+@dataclass(frozen=True)
+class ExactRiskSetSuccessorContract:
+    authority_content_hash: str
+    source_sha256: str
+    row_count: int
+    release_ref: ExactRef
+    source_universe_ref: ExactRef
+    risk_set_ref: ExactRef
+    query_refs: tuple[ExactRef, ...]
+    target_role_map: Mapping[tuple[str, ...], str]
+    respondent_key_prefix: str
+    member_ordinals: Mapping[str, frozenset[int]]
+    canonical_roots: Mapping[str, str]
+
+    def respondent_row_ordinal(self, respondent_key: str) -> int:
+        if not isinstance(respondent_key, str) or not respondent_key.startswith(
+            self.respondent_key_prefix
+        ):
+            raise Pre553AuthorityError(
+                "respondent key is outside exact adopted risk-set identity law"
+            )
+        suffix = respondent_key[len(self.respondent_key_prefix):]
+        if len(suffix) != 12 or not suffix.isdigit():
+            raise Pre553AuthorityError(
+                "respondent key lacks exact twelve-digit source-row ordinal"
+            )
+        row = int(suffix)
+        if row < 1 or row > self.row_count:
+            raise Pre553AuthorityError("respondent source-row ordinal is out of scope")
+        return row
+
+    def is_member(self, *, respondent_key: str, target_refs: Sequence[ExactRef]) -> bool:
+        target_key = tuple(ref.key for ref in target_refs)
+        root_id = self.target_role_map.get(target_key)
+        if root_id is None:
+            raise Pre553AuthorityError(
+                "target tuple is outside exact adopted risk-set role map"
+            )
+        return self.respondent_row_ordinal(respondent_key) in self.member_ordinals[root_id]
+
+
 class Pre553RuntimeAuthoritySet:
     """Immutable exact successor-authority registry.
 
@@ -173,6 +261,9 @@ class Pre553RuntimeAuthoritySet:
         mixed_composition_authorities: Iterable[Mapping[str, Any]] = (),
         derived_predicate_contracts: Iterable[Mapping[str, Any]] = (),
         public_predicate_successor_authorities: Iterable[Mapping[str, Any]] = (),
+        i03_operation_successor_authorities: Iterable[Mapping[str, Any]] = (),
+        exact_risk_set_successor_authorities: Iterable[Mapping[str, Any]] = (),
+        historical_authority_snapshots: Iterable[AuthoritySnapshot] = (),
         release_realization_authorities: Iterable[Mapping[str, Any]] = (),
         realization_binding_schemas: Iterable[Mapping[str, Any]] = (),
         release_precondition_clauses: Iterable[Mapping[str, Any]] = (),
@@ -181,6 +272,263 @@ class Pre553RuntimeAuthoritySet:
         adopted = frozenset(_text(x, "adopted authority hash") for x in adopted_authority_hashes)
         self._adopted = adopted
         self._bindings = tuple(canonicalize(x) for x in realization_bindings)
+
+        historical: dict[str, AuthoritySnapshot] = {}
+        for raw_snapshot in historical_authority_snapshots:
+            snapshot = validate_authority_snapshot(raw_snapshot)
+            if snapshot.authority_ref.authority_content_hash not in adopted:
+                raise Pre553AuthorityError(
+                    "historical runtime authority snapshot is not exactly adopted"
+                )
+            if snapshot.authority_ref.key in historical:
+                raise Pre553AuthorityError(
+                    "duplicate exact historical runtime authority snapshot"
+                )
+            historical[snapshot.authority_ref.key] = snapshot
+        self._historical_authority_snapshots = MappingProxyType(historical)
+
+        i03_successors: list[I03OperationSuccessorContract] = []
+        for raw in i03_operation_successor_authorities:
+            record = _mapping(raw, "I03 operation successor authority")
+            if record.get("schema") != I03_OPERATION_SUCCESSOR_SCHEMA:
+                raise Pre553AuthorityError("unrecognized I03 operation successor authority schema")
+            digest = _text(
+                record.get("authority_content_hash"),
+                "I03 operation successor authority hash",
+            )
+            _hash_identity(record, digest, "I03 operation successor authority")
+            if digest not in adopted:
+                raise Pre553AuthorityError(
+                    "I03 operation successor authority is not exactly adopted"
+                )
+            material = _mapping(
+                record.get("identity_material"),
+                "I03 operation successor identity",
+            )
+            catalog_identity = _text(
+                material.get("runtime_catalog_identity"),
+                "I03 operation successor runtime catalog identity",
+            )
+            if len(catalog_identity) != 64:
+                raise Pre553AuthorityError(
+                    "I03 operation successor runtime catalog identity must be sha256"
+                )
+            snapshot_hash = _text(
+                material.get("runtime_snapshot_content_hash"),
+                "I03 operation successor runtime snapshot content hash",
+            )
+            if len(snapshot_hash) != 64:
+                raise Pre553AuthorityError(
+                    "I03 operation successor runtime snapshot hash must be sha256"
+                )
+            queries = tuple(sorted(
+                (
+                    exact_ref(ref, "I03 operation successor query ref")
+                    for ref in _sequence(material.get("query_refs"), "I03 query refs")
+                ),
+                key=lambda ref: ref.key,
+            ))
+            universes = tuple(sorted(
+                (
+                    exact_ref(ref, "I03 operation successor universe ref")
+                    for ref in _sequence(
+                        material.get("source_universe_refs"),
+                        "I03 source universe refs",
+                    )
+                ),
+                key=lambda ref: ref.key,
+            ))
+            families = tuple(sorted(
+                _text(value, "I03 governed object family")
+                for value in _sequence(
+                    material.get("governed_object_families"),
+                    "I03 governed object families",
+                )
+            ))
+            negative_limits = _sequence(
+                material.get("negative_limits"),
+                "I03 operation successor negative limits",
+            )
+            if "NO_GENERIC_OPERATION_ALIAS" not in negative_limits:
+                raise Pre553AuthorityError(
+                    "I03 operation successor must prohibit generic operation aliasing"
+                )
+            i03_successors.append(I03OperationSuccessorContract(
+                authority_content_hash=digest,
+                runtime_catalog_identity=catalog_identity,
+                runtime_snapshot_content_hash=snapshot_hash,
+                parent_authority_ref=authority_ref(
+                    material.get("parent_authority_ref"),
+                    "I03 parent authority ref",
+                ),
+                parent_operation=_text(
+                    material.get("parent_operation"), "I03 parent operation"
+                ),
+                successor_operation=_text(
+                    material.get("successor_operation"), "I03 successor operation"
+                ),
+                source_universe_refs=universes,
+                query_refs=queries,
+                governed_object_families=families,
+            ))
+        self._i03_operation_successors = tuple(sorted(
+            i03_successors, key=lambda contract: contract.authority_content_hash
+        ))
+
+        risk_set_successors: list[ExactRiskSetSuccessorContract] = []
+        for raw in exact_risk_set_successor_authorities:
+            record = _mapping(raw, "exact risk-set successor authority")
+            if record.get("schema") != EXACT_RISK_SET_SUCCESSOR_SCHEMA:
+                raise Pre553AuthorityError(
+                    "unrecognized exact risk-set successor authority schema"
+                )
+            digest = _text(
+                record.get("authority_content_hash"),
+                "exact risk-set successor authority hash",
+            )
+            _hash_identity(record, digest, "exact risk-set successor authority")
+            if digest not in adopted:
+                raise Pre553AuthorityError(
+                    "exact risk-set successor authority is not exactly adopted"
+                )
+            material = _mapping(
+                record.get("identity_material"), "exact risk-set successor identity"
+            )
+            row_count = material.get("row_count")
+            if (
+                not isinstance(row_count, int)
+                or isinstance(row_count, bool)
+                or row_count < 1
+            ):
+                raise Pre553AuthorityError(
+                    "exact risk-set successor row_count must be positive integer"
+                )
+            source_sha = _text(material.get("source_sha256"), "risk-set source sha256")
+            if len(source_sha) != 64:
+                raise Pre553AuthorityError("risk-set source identity must be sha256")
+            queries = tuple(sorted(
+                (
+                    exact_ref(ref, "exact risk-set successor query ref")
+                    for ref in _sequence(material.get("query_refs"), "risk-set query refs")
+                ),
+                key=lambda ref: ref.key,
+            ))
+            target_roles: dict[tuple[str, ...], str] = {}
+            for role in _sequence(material.get("target_role_map"), "target role map"):
+                role = _mapping(role, "target role")
+                targets = tuple(
+                    exact_ref(ref, "target role exact ref").key
+                    for ref in _sequence(role.get("target_refs"), "target role refs")
+                )
+                root_id = _text(role.get("root_id"), "target role root id")
+                if targets in target_roles:
+                    raise Pre553AuthorityError("duplicate exact target role tuple")
+                target_roles[targets] = root_id
+
+            accepted = _mapping(material.get("accepted_d03"), "accepted D03 material")
+            layout = _mapping(accepted.get("payload_layout"), "D03 payload layout")
+            if layout.get("encoding") != "ZLIB9_BASE64" or layout.get("row_count") != row_count:
+                raise Pre553AuthorityError("D03 payload encoding/layout drift")
+            payload_text = _text(record.get("payload_base64"), "D03 payload base64")
+            try:
+                compressed = base64.b64decode(payload_text, validate=True)
+            except Exception as exc:
+                raise Pre553AuthorityError("D03 payload base64 is malformed") from exc
+            if hashlib.sha256(compressed).hexdigest() != accepted.get("compressed_sha256"):
+                raise Pre553AuthorityError("D03 compressed payload identity drift")
+            try:
+                payload = zlib.decompress(compressed)
+            except zlib.error as exc:
+                raise Pre553AuthorityError("D03 payload decompression failed") from exc
+            if (
+                len(payload) != accepted.get("raw_payload_length")
+                or hashlib.sha256(payload).hexdigest() != accepted.get("raw_payload_sha256")
+            ):
+                raise Pre553AuthorityError("D03 raw payload identity drift")
+
+            def segment(offset_name: str, length_name: str) -> bytes:
+                offset, length = layout.get(offset_name), layout.get(length_name)
+                if (
+                    not isinstance(offset, int) or isinstance(offset, bool) or offset < 0
+                    or not isinstance(length, int) or isinstance(length, bool) or length < 1
+                    or offset + length > len(payload)
+                ):
+                    raise Pre553AuthorityError("D03 payload segment bounds drift")
+                return payload[offset:offset + length]
+
+            def two_bit_members(data: bytes) -> frozenset[int]:
+                code = layout.get("two_bit_member_code")
+                if code != 0 or len(data) * 4 < row_count:
+                    raise Pre553AuthorityError("D03 two-bit member layout drift")
+                return frozenset(
+                    row for row in range(1, row_count + 1)
+                    if ((data[(row - 1) // 4] >> (6 - 2 * ((row - 1) % 4))) & 3) == code
+                )
+
+            def bit_members(data: bytes) -> frozenset[int]:
+                code = layout.get("bit_member_code")
+                if code != 1 or len(data) * 8 < row_count:
+                    raise Pre553AuthorityError("D03 one-bit member layout drift")
+                return frozenset(
+                    row for row in range(1, row_count + 1)
+                    if ((data[(row - 1) // 8] >> (7 - ((row - 1) % 8))) & 1) == code
+                )
+
+            members = {
+                "R2": two_bit_members(segment("r2_offset", "r2_length")),
+                "R7": two_bit_members(segment("r7_offset", "r7_length")),
+                "R27": bit_members(segment("r27_offset", "r27_length")),
+            }
+            roots_doc = _mapping(accepted.get("roots"), "accepted D03 roots")
+            roots: dict[str, str] = {}
+            header = b"source_sha256\tone_based_source_row_ordinal\n"
+            for root_id, ordinals in members.items():
+                root = _mapping(roots_doc.get(root_id), f"accepted D03 {root_id}")
+                if len(ordinals) != root.get("member_count"):
+                    raise Pre553AuthorityError(f"D03 {root_id} member count drift")
+                expanded = bytearray(header)
+                for row in sorted(ordinals):
+                    expanded.extend(f"{source_sha}\t{row}\n".encode("ascii"))
+                observed_root = hashlib.sha256(expanded).hexdigest()
+                if observed_root != root.get("canonical_full_tsv_sha256"):
+                    raise Pre553AuthorityError(f"D03 {root_id} canonical root drift")
+                roots[root_id] = observed_root
+            if members["R27"] != members["R2"] & members["R7"]:
+                raise Pre553AuthorityError("D03 R27 is not exact R2/R7 intersection")
+            if set(target_roles.values()) != set(members):
+                raise Pre553AuthorityError("D03 target role map is not exact R2/R7/R27")
+            negative_limits = set(
+                _text(item, "risk-set negative limit")
+                for item in _sequence(material.get("negative_limits"), "risk-set negative limits")
+            )
+            required_limits = {
+                "NO_CURRENT_SOURCE_VALUE_DERIVATION",
+                "NO_GENERIC_MISSINGNESS_OR_DENOMINATOR_RULE",
+                "NO_CANDIDATE_OUTPUT_PARENTAGE",
+                "NO_C11_RELEASE_MUTATION",
+            }
+            if not required_limits <= negative_limits:
+                raise Pre553AuthorityError("exact risk-set negative limits are incomplete")
+            risk_set_successors.append(ExactRiskSetSuccessorContract(
+                authority_content_hash=digest,
+                source_sha256=source_sha,
+                row_count=row_count,
+                release_ref=exact_ref(material.get("release_ref"), "risk-set release ref"),
+                source_universe_ref=exact_ref(
+                    material.get("source_universe_ref"), "risk-set universe ref"
+                ),
+                risk_set_ref=exact_ref(material.get("risk_set_ref"), "risk-set ref"),
+                query_refs=queries,
+                target_role_map=MappingProxyType(target_roles),
+                respondent_key_prefix=_text(
+                    material.get("respondent_key_prefix"), "respondent key prefix"
+                ),
+                member_ordinals=MappingProxyType(members),
+                canonical_roots=MappingProxyType(roots),
+            ))
+        self._exact_risk_set_successors = tuple(sorted(
+            risk_set_successors, key=lambda contract: contract.authority_content_hash
+        ))
 
         compat: dict[str, Mapping[str, Any]] = {}
         for raw in respondent_compatibility_authorities:
@@ -333,7 +681,12 @@ class Pre553RuntimeAuthoritySet:
                 item = _mapping(binding, "question/value binding")
                 qhash = _text(item.get("question_content_hash"), "question content hash")
                 for native, response_hash in _mapping(item.get("values"), "response values").items():
-                    key = (qhash, canonical_json(canonicalize(native)))
+                    key = (
+                        qhash,
+                        _canonical_json_scalar_member_token(
+                            native, "response value native scalar token"
+                        ),
+                    )
                     response_hash = _text(response_hash, "response value content hash")
                     prior = qv.get(key)
                     if prior is not None and prior != response_hash:
@@ -443,6 +796,85 @@ class Pre553RuntimeAuthoritySet:
         if exact.key in self._compositions:
             return True
         return any(grammar_key == exact.key for grammar_key, _ in self._dialects)
+
+    def resolve_exact_runtime_authority(
+        self, ref: AuthorityRef | Mapping[str, Any]
+    ) -> AuthoritySnapshot | None:
+        """Return only an explicitly adopted exact historical snapshot."""
+        exact = authority_ref(ref, "historical runtime authority ref")
+        return self._historical_authority_snapshots.get(exact.key)
+
+    def authorize_i03_operation_successor(
+        self,
+        *,
+        snapshot: AuthoritySnapshot,
+        query: EmpiricalQuerySpec,
+        requested_operation: str,
+        universe_refs: Iterable[ExactRef],
+        required_object_family: str,
+    ) -> I03OperationSuccessorContract:
+        """Resolve one exact adopted operation-successor record or fail closed."""
+        if not isinstance(snapshot, AuthoritySnapshot):
+            raise Pre553AuthorityError("I03 operation successor requires AuthoritySnapshot")
+        if not isinstance(query, EmpiricalQuerySpec):
+            raise Pre553AuthorityError("I03 operation successor requires EmpiricalQuerySpec")
+        operation = _text(requested_operation, "requested I03 successor operation")
+        family = _text(required_object_family, "required I03 object family")
+        universes = tuple(sorted(set(universe_refs), key=lambda ref: ref.key))
+        matches = [
+            contract
+            for contract in self._i03_operation_successors
+            if contract.parent_authority_ref == snapshot.authority_ref
+            and contract.runtime_snapshot_content_hash == snapshot.content_hash
+            and contract.successor_operation == operation
+            and query.ref in contract.query_refs
+            and contract.source_universe_refs == universes
+            and family in contract.governed_object_families
+        ]
+        if len(matches) != 1:
+            raise Pre553AuthorityError(
+                "no unique exact adopted I03 operation successor authority"
+            )
+        contract = matches[0]
+        if snapshot.authority_kind != "PREDICATE_GRAMMAR" or snapshot.decision_state != "ALLOW":
+            raise Pre553AuthorityError(
+                "I03 operation successor runtime snapshot is not positive predicate authority"
+            )
+        query_authorities = {
+            authority_ref(ref, "query authority ref") for ref in query.query_authority_refs
+        }
+        if contract.parent_authority_ref not in query_authorities:
+            raise Pre553AuthorityError(
+                "I03 operation successor parent authority is absent from exact query"
+            )
+        return contract
+
+    def resolve_exact_risk_set_successor(
+        self,
+        *,
+        query: EmpiricalQuerySpec,
+        release_ref: ExactRef,
+        source_universe_ref: ExactRef,
+        risk_set_ref: ExactRef,
+        target_refs: Sequence[ExactRef],
+    ) -> ExactRiskSetSuccessorContract | None:
+        """Resolve only one adopted exact risk-set extension for this query scope."""
+        matches = [
+            contract
+            for contract in self._exact_risk_set_successors
+            if query.ref in contract.query_refs
+            and release_ref == contract.release_ref
+            and source_universe_ref == contract.source_universe_ref
+            and risk_set_ref == contract.risk_set_ref
+            and tuple(ref.key for ref in target_refs) in contract.target_role_map
+        ]
+        if not matches:
+            return None
+        if len(matches) != 1:
+            raise Pre553AuthorityError(
+                "multiple adopted exact risk-set successor authorities match"
+            )
+        return matches[0]
 
     def resolve_predicate_dialect(
         self,
@@ -736,6 +1168,10 @@ class Pre553RuntimeAuthoritySet:
 __all__ = [
     "ACTIVE_POSITIVE_BINDING",
     "CONCRETE_BINDING_SCHEMA",
+    "EXACT_RISK_SET_SUCCESSOR_SCHEMA",
+    "ExactRiskSetSuccessorContract",
+    "I03_OPERATION_SUCCESSOR_SCHEMA",
+    "I03OperationSuccessorContract",
     "MixedCompositionResolution",
     "PredicateDialectContract",
     "Pre553RuntimeAuthoritySet",

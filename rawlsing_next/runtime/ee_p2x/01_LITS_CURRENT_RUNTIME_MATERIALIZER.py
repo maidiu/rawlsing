@@ -14,6 +14,16 @@ from rawlsing_next.pre553_empirical_objects import (
 )
 from rawlsing_next.pre553_runtime_authority import Pre553RuntimeAuthoritySet
 from rawlsing_next.pre553_runtime_context import bind_runtime
+from rawlsing_next.fiabc_lits_i_i03_operation_authority import (
+    AUTHORITY_CONTENT_HASH as I03_OPERATION_SUCCESSOR_HASH,
+    PART_A_PROJECTION_AUTHORITY_HASH,
+    historical_projection_authority_snapshot,
+    operation_successor_authority_record,
+)
+from rawlsing_next.fiabc_lits_i_d03_risk_set_authority import (
+    AUTHORITY_CONTENT_HASH as D03_RISK_SET_SUCCESSOR_HASH,
+    risk_set_successor_authority_record,
+)
 
 ROOT=Path(__file__).resolve().parents[3]
 OWNER_COMMIT="0b96b8de9aac774566f872cf0630ebd4ddeb70e6"
@@ -48,6 +58,13 @@ QUARANTINED="fd4177eaddff07dc1e51a6f900c07f163965f996742b301932bbeb79a8690bb0"
 BASE_RELEASE="e6c954538fa1830820120465a10a6d065b8a18d1e6b7b08d3f863b0917741e26"
 RUNTIME_RELEASE="192926fabd9c9c3d40e43b1d7705ca2bcfe7f8d06e286be26d4b886d436df43f"
 R4_HASHES=("3ef0317887f6910838636d3816237a81d5a56b38e07595c8cc1f7c5e7f1fae74","0d7cfaac1d63cd438d29b109b590cb828805bd113fc37759a6f6f4c88d3c8f55","225e4b80390500451834ea784d955465eb9f145a4cd1f798dace51f3a6d3baa4","b87c387f9d222c83106c8d47d369af44f5c5368b274fd85e7a08b12c20d49cae")
+R5A="6586da01edac5e87fb81b6beb8d7b16fc0ea18ef"
+R5A_RELATION="WORKER_RETURNS/EE-P2R5A/02_RELEASE_REALIZATION_RELATION_AUTHORITY.json"; R5A_RELATION_BLOB="a0af45cc3db6e81def84357f50c310daac32b1e5"
+R5A_SCHEMA="WORKER_RETURNS/EE-P2R5A/03_CONCRETE_REALIZATION_BINDING_SCHEMA.json"; R5A_SCHEMA_BLOB="00159aae4117c00d9dfcc7e9b558e1c1d1637302"
+R5A_CLAUSE="WORKER_RETURNS/EE-P2R5A/04_R4A_RELEASE_PRECONDITION_SUCCESSOR_CLAUSE.json"; R5A_CLAUSE_BLOB="3a2802954412e075373920d1351cc3b37a2ebbd3"
+R6J="ab7e7f6e764eba43e85fe5c8629fee6cc0ba2a5c"
+R6J_BINDING="WORKER_RETURNS/EE-P2R6J/04_PROPOSED_ACTIVE_RUNTIME_BINDING_RECORD.json"; R6J_BINDING_BLOB="4ac8cd48aac62600e648ff9692488796c51c826f"
+R5_HASHES=("9da19997168612891f59012e69674bac59fbee417d9b30b003171f3074168bf5","d9aa476c493810651baefa8bad23990d9dd80812a48670ad2052353f0e7d52a2","a1da1ea78dce423ea3520726d0477b058057482d67964056743e08389d9045a0","d8e3d9a19fa36599e8cd6b1bc8e82092c425fd9119be478f7ba79335d05a1b3e")
 BASE_REFS={"A000":"ac3fcb4e32a41f9972004b2c31da61e9b32ba69568a795d2c1e584c9bed21be0","A1V1":"082157ea8f31fe0d209c6241552116108e3e3917f7ddb7a49fa365ad5362aeeb","A1V5":"9ba962d35fc630686b7538ae22dbabe2f5b51fe8c7b3473beab901214b1db43c"}
 F02_REFS={"Q310V1":"c9a0c8106d457bba7e3f3f5abb7ee7fb98482bd86af629d860e4a904ad58456a","Q310V2":"78dbd1a899fe43ac2e2ca6985ea0eccb086989fa2c4315fa518524e7ba94a6df","Q310V3":"c4d2dd827326b6ff29f3c02382c36fa33c47c6227bfbf8c8053c11e1089923ca","Q311V1":"69dc59f79014a7c17190ca658e193a004e167c322c7f713f4540882fb980feb8","Q311V2":"f63d6121776500912342ab377178a15fcf6fabf7071864f4f413d95babb43849","Q311V3":"a6494153b4defeb13e1658b73eead7c5df6e25847708c770dad5f42142492c7d"}
 QUERY_REFS={"T_Q301_2_RAW":"8a7bf5bbb1c2d8d6328dc5507416931a9c12e2c76668e0fc47af8add254c5d44","T_Q301_7_RAW":"deb71e653592d8bdb246f8c4d53359e290708d3875e38433f518b307f520c6f7","T_Q301_2_Q301_7_RAW":"ef8b19744ec3c06e352f7accf75efbc216ffc454905da09948763a2c54fdc053"}
@@ -105,7 +122,11 @@ def r4_runtime():
     def load(p): return json.loads(p.read_text())
     d=load(fix/"ee_p2r6a_r4a_01_dialect.json"); r=load(fix/"ee_p2r6a_r4a_02_respondent.json")
     m=load(fix/"ee_p2r6a_r4a_03_mixed.json"); der=load(fix/"ee_p2r6a_r4a_04_derived.json"); s=load(fix/"ee_p2r6a_r4a_05_successor.json")
-    return Pre553RuntimeAuthoritySet(adopted_authority_hashes=R4_HASHES,predicate_dialect_matrices=(d,),respondent_compatibility_authorities=(r,),mixed_composition_authorities=(m,),derived_predicate_contracts=(der,),public_predicate_successor_authorities=(s,))
+    for commit,path,blob in ((R5A,R5A_RELATION,R5A_RELATION_BLOB),(R5A,R5A_SCHEMA,R5A_SCHEMA_BLOB),(R5A,R5A_CLAUSE,R5A_CLAUSE_BLOB),(R6J,R6J_BINDING,R6J_BINDING_BLOB)):
+        if git_blob_sha(commit,path)!=blob: raise Pre553AuthorityError("exact adopted R5A/R6J runtime authority blob drift")
+    relation=git_json(R5A,R5A_RELATION); schema=git_json(R5A,R5A_SCHEMA); clause=git_json(R5A,R5A_CLAUSE); binding=git_json(R6J,R6J_BINDING)
+    if binding["binding_ref"]["content_hash"]!=ACTIVE_BINDING: raise Pre553AuthorityError("exact adopted active realization binding drift")
+    return Pre553RuntimeAuthoritySet(adopted_authority_hashes=(*R4_HASHES,*R5_HASHES,I03_OPERATION_SUCCESSOR_HASH,PART_A_PROJECTION_AUTHORITY_HASH,D03_RISK_SET_SUCCESSOR_HASH),predicate_dialect_matrices=(d,),respondent_compatibility_authorities=(r,),mixed_composition_authorities=(m,),derived_predicate_contracts=(der,),public_predicate_successor_authorities=(s,),i03_operation_successor_authorities=(operation_successor_authority_record(),),exact_risk_set_successor_authorities=(risk_set_successor_authority_record(),),historical_authority_snapshots=(historical_projection_authority_snapshot(),),release_realization_authorities=(relation,),realization_binding_schemas=(schema,),release_precondition_clauses=(clause,),realization_bindings=(binding,))
 
 def closure_snapshot(ref,kind="REPLAY_PROTOCOL",ops=("EXACT_REPOSITORY_BOUND_CLOSURE",),families=("EmpiricalPredicate@1.0.0","EmpiricalQuerySpec@1.0.0")):
     ar=authority_ref(ref)

@@ -356,6 +356,17 @@ def _evaluate_index_group(
     for index in sorted(indices, key=lambda item: item.universe.ref.key):
         used.extend([index.universe, index.release.replay_manifest])
         used_auth.extend(_validate_public_object_authorities(index.universe, registry))
+        exact_risk_set_contract = None
+        if runtime_binding is not None:
+            exact_risk_set_contract = (
+                runtime_binding.authorities.resolve_exact_risk_set_successor(
+                    query=query,
+                    release_ref=index.release.release_ref,
+                    source_universe_ref=index.universe.ref,
+                    risk_set_ref=risk_set_ref,
+                    target_refs=tuple(component.target_ref for component in plan.components),
+                )
+            )
         for respondent in sorted(index.respondents.values(), key=lambda item: item.ref.key):
             per_target_states: list[str] = []
             for i, component in enumerate(plan.components):
@@ -375,6 +386,18 @@ def _evaluate_index_group(
                 per_target_states,
                 profile=profile,
             )
+            if exact_risk_set_contract is not None:
+                exact_member = exact_risk_set_contract.is_member(
+                    respondent_key=respondent.respondent_key,
+                    target_refs=tuple(component.target_ref for component in plan.components),
+                )
+                if exact_member and not member:
+                    raise Pre553AuthorityError(
+                        "exact adopted risk-set member conflicts with C11 routing authority"
+                    )
+                member = exact_member
+                if not member:
+                    explicitly_inapplicable = False
             if explicitly_inapplicable:
                 inapplicable_count += 1
             if not member:

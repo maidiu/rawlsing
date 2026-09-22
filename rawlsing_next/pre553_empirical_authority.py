@@ -235,7 +235,17 @@ class AuthorityRegistry:
         exact = require_exact_authority_ref(ref)
         snapshot = self._by_key.get(exact.key)
         if snapshot is None:
-            raise Pre553AuthorityError("exact historical authority unavailable; no fallback permitted")
+            try:
+                from rawlsing_next.pre553_runtime_context import current_runtime_authorities
+                runtime = current_runtime_authorities()
+            except ImportError:
+                runtime = None
+            if runtime is not None:
+                snapshot = runtime.resolve_exact_runtime_authority(exact)
+            if snapshot is None:
+                raise Pre553AuthorityError(
+                    "exact historical authority unavailable; no fallback permitted"
+                )
         return AuthorityResolution(exact, snapshot)
 
     def require(

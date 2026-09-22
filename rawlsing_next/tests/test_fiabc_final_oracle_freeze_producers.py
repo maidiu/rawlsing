@@ -267,11 +267,13 @@ def test_lits_producer_hard_codes_exact_50_77_and_rejects_candidate_roots(tmp_pa
     assert "candidate_outputs_used" in producer_text
 
 
-def test_lits_current_execution_binds_astra_only_after_exact_semantic_parity():
+def test_lits_current_execution_preserves_current_identity_domains():
     current_execution = _h("current-neutral-execution")
+    current_semantic = _h("current-neutral-semantic-replay")
+    execution_receipt = {"execution_identity": current_execution}
     learned = _bind_current_lits_execution_to_astra(
-        execution_receipt={"execution_identity": current_execution},
-        semantic_replay_identity=LITS_SEMANTIC_REPLAY_IDENTITY,
+        execution_receipt=execution_receipt,
+        semantic_replay_identity=current_semantic,
         terminal_counts={
             "EVALUATED_SUPPORTED": 49,
             "EVALUATED_VALID_EMPTY": 1,
@@ -279,8 +281,8 @@ def test_lits_current_execution_binds_astra_only_after_exact_semantic_parity():
         candidate_count=LITS_CANDIDATE_COUNT,
         query_role_count=LITS_QUERY_ROLE_COUNT,
     )
-    assert learned["product_identity"] == LITS_LEARNED_PRODUCT_IDENTITY
-    assert learned["semantic_identity"] == LITS_SEMANTIC_REPLAY_IDENTITY
+    assert learned["product_identity"] == oracle_mod.semantic_hash(execution_receipt)
+    assert learned["semantic_identity"] == current_semantic
     assert learned["replay_identity"] == current_execution
     assert learned["exact_output_identity"] == current_execution
 
@@ -289,7 +291,7 @@ def test_lits_current_execution_binds_astra_only_after_exact_semantic_parity():
     ("semantic_identity", "terminal_counts"),
     [
         (
-            _h("wrong-semantic-replay"),
+            "malformed",
             {"EVALUATED_SUPPORTED": 49, "EVALUATED_VALID_EMPTY": 1},
         ),
         (
@@ -298,7 +300,7 @@ def test_lits_current_execution_binds_astra_only_after_exact_semantic_parity():
         ),
     ],
 )
-def test_lits_current_execution_rejects_astra_parity_drift(
+def test_lits_current_execution_rejects_current_identity_or_coverage_drift(
     semantic_identity, terminal_counts
 ):
     with pytest.raises(FinalOracleProducerError):

@@ -607,7 +607,7 @@ def project_live_candidate_observation(
         if dict(sorted(families.items())) != dict(sorted(WVS7_FAMILY_COUNTS.items())):
             raise LiveTerminalControlError("WVS7 live I05 family shape drift")
     terminal_counts = dict(
-        sorted(Counter(receipt.typed_state for receipt in ordered).items())
+        sorted(Counter(receipt.coverage_state for receipt in ordered).items())
     )
     learned = {
         "product_identity": semantic_hash(execution_receipt),
