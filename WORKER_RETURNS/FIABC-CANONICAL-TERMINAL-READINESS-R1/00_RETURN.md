@@ -87,6 +87,28 @@ All 12 required checks PASS:
 
 Machine-readable evidence is in `02_STATIC_AUDIT.json`.
 
+## Local qualification follow-up
+
+The user subsequently ran the required source-free local qualification from exact worker head `97329d51aac6bec495114b5e89e60260c2fcc846` and reported:
+
+```text
+154 passed, 9 failed, 28 subtests passed in 9.16s
+```
+
+The green terminal was therefore correctly not emitted.
+
+Static browser/GitHub diagnosis found all nine failures to be qualification-test/fixture drift rather than production semantic-law failures:
+
+- one completeness hostile test expected `TC_REQUIRED_METRIC_ABSENT`, but current exact 35-key set validation lawfully fails first with `TC_METRIC_SET_DRIFT`;
+- one R1J preflight test required the successor discovery SHA to be textually inlined even though the active backend binds that exact SHA through `WVS_DISCOVERY_AUTHORITY`;
+- seven legacy Darwin driver-mechanics fixtures directly supplied synthetic backend receipts without the now-governing exact T3 process envelope required by T4 live accounting.
+
+The bounded follow-up changed only those test/qualification surfaces. It did **not** weaken the production T3/T4 seam: the dedicated T3 process-envelope and T4 live-accounting test suites remain in the source-free qualification command.
+
+See `04_LOCAL_QUALIFICATION_FAILURE_FOLLOWUP.md` for exact diagnosis and repair.
+
+A fresh local source-free qualification rerun is required; this worker did not execute it.
+
 ## Runtime statement
 
 No runtime qualification was executed.
