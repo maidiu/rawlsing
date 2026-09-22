@@ -1,0 +1,59 @@
+{
+  "schema": "PREMAIN_REP35_W2_RETURN@1.0.0",
+  "worker": "PREMAIN REP35 W2 — LiTS II / Latinobarometro / South Asia Physical Representation Regime Court — R1",
+  "exact_base": "ef8eff9625f269173ac2c17af3f92d913babb275",
+  "branch": "agent/rabochii-premain-rep35-lits2-latin-southasia-r1",
+  "owned_path": "WORKER_RETURNS/PREMAIN-REP35-LITS2-LATIN-SOUTHASIA-R1/",
+  "status": "CLOSED_WITH_BLOCKED_SOURCE_DISPOSITIONS",
+  "source_dispositions": {
+    "LiTS_II.dta": {
+      "classification": "REPRESENTATION_FACT_BLOCKED",
+      "blocker": "REPRESENTATION_FACT_BLOCKED__QUALIFIED_RUNTIME_UNAVAILABLE"
+    },
+    "Latinobarometro 1995.sav": {
+      "classification": "REPRESENTATION_FACT_BLOCKED",
+      "blocker": "REPRESENTATION_FACT_BLOCKED__QUALIFIED_RUNTIME_UNAVAILABLE"
+    },
+    "Latinobarometro 2011.sav": {
+      "classification": "REPRESENTATION_FACT_BLOCKED",
+      "blocker": "REPRESENTATION_FACT_BLOCKED__QUALIFIED_RUNTIME_UNAVAILABLE"
+    },
+    "Latinobarometro 2024.sav": {
+      "classification": "REPRESENTATION_FACT_BLOCKED",
+      "blocker": "REPRESENTATION_FACT_BLOCKED__QUALIFIED_RUNTIME_UNAVAILABLE"
+    },
+    "South Asia Wave 1.sav": {
+      "classification": "REPRESENTATION_FACT_BLOCKED",
+      "blocker": "REPRESENTATION_FACT_BLOCKED__QUALIFIED_RUNTIME_UNAVAILABLE"
+    },
+    "South Asia Wave 2.sav": {
+      "classification": "REPRESENTATION_FACT_BLOCKED",
+      "blocker": "REPRESENTATION_FACT_BLOCKED__QUALIFIED_RUNTIME_UNAVAILABLE"
+    }
+  },
+  "exact_source_bytes_sha_verified_by_worker": [
+    "LiTS_II.dta",
+    "Latinobarometro 1995.sav",
+    "Latinobarometro 2011.sav",
+    "Latinobarometro 2024.sav",
+    "South Asia Wave 1.sav",
+    "South Asia Wave 2.sav"
+  ],
+  "qualified_runtime_established": false,
+  "qualified_runtime_blocker": "cloud runtime CPython 3.13.5; python3.11, pyreadstat, pyarrow, R, and readstat CLI unavailable",
+  "current_r5_noncoercion_preserved": true,
+  "existing_lits_i_authority_preserved": true,
+  "existing_lits_i_authority_extended_to_lits_ii": false,
+  "existing_wvs7_r1j_authority_preserved": true,
+  "new_generic_regime_candidates": 0,
+  "new_source_bounded_bridges": 0,
+  "latin2024_generic_ec04_carrier_gap_preserved": true,
+  "production_code_modified": false,
+  "raw_survey_bytes_committed": false,
+  "candidate_a_b_c_run": false,
+  "measured_p2x_run": false,
+  "p3_run": false,
+  "architecture_selection": false,
+  "semantic_inference": false,
+  "terminal": "PREMAIN_REP35_W2_LITS2_LATIN_SOUTHASIA_R1__REPRESENTATION_CENSUS_COMPLETE__NO_SEMANTIC_INFERENCE__NO_CANDIDATES_RUN"
+}
