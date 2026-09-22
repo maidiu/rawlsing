@@ -1,5 +1,19 @@
 #!/usr/bin/env bash
 set -euo pipefail
+
+if command -v python3 >/dev/null 2>&1; then
+  PYTHON_BIN="$(command -v python3)"
+elif command -v python >/dev/null 2>&1; then
+  PYTHON_BIN="$(command -v python)"
+else
+  echo "FIABC_MEASURED_SIX_CELL_BLOCKED: Python 3 interpreter not found (tried python3, python)" >&2
+  exit 2
+fi
+"$PYTHON_BIN" -c 'import sys; raise SystemExit(0 if sys.version_info.major == 3 else 2)' || {
+  echo "FIABC_MEASURED_SIX_CELL_BLOCKED: selected interpreter is not Python 3: $PYTHON_BIN" >&2
+  exit 2
+}
+readonly PYTHON_BIN
 CODE_HEAD="aa15525750085f4e223d579010688660a9ae1b6b"
 EXPECTED_BRANCH="agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1"
 
@@ -20,7 +34,7 @@ SUCCESSION_PREFLIGHT_RECEIPT="$WORK_ROOT/court/fiabc_t5_succession_preflight.jso
 test -f "$FROZEN_UPSTREAM_RECEIPT"
 test -f "$SUCCESSION_PREFLIGHT_RECEIPT"
 
-python rawlsing_next/ee_p2x_darwin_court_driver.py \
+"$PYTHON_BIN" rawlsing_next/ee_p2x_darwin_court_driver.py \
   --run \
   --continuation-map WORKER_RETURNS/FIABC-T2/01_SIX_CELL_EXECUTION_MANIFEST.json \
   --current-court-contract WORKER_RETURNS/FIABC-T5/04_CURRENT_SIX_CELL_COURT_CONTRACT.json \
