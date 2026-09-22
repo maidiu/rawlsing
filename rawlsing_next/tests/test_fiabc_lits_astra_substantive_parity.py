@@ -258,6 +258,11 @@ def _historical_docs():
     }
     replay = {
         "schema": "ASTRA_D04_R2_SOURCE_AND_REPLAY_RECEIPT@1.0.0",
+        "source": {
+            "sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+            "rows": 29002,
+            "variables": 1198,
+        },
         "preoutcome": {
             "candidate_count": 50,
             "query_role_count": 77,
