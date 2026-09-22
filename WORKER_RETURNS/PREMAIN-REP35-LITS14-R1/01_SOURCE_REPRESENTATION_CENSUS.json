@@ -1,0 +1,172 @@
+{
+  "schema": "PREMAIN_REP35_W1_LITS14_REPRESENTATION_CENSUS@1.0.0",
+  "status": "COMPLETE_WITH_REPRESENTATION_FACT_BLOCKERS",
+  "repository": "maidiu/rawlsing",
+  "exact_base": "ef8eff9625f269173ac2c17af3f92d913babb275",
+  "branch": "agent/rabochii-premain-rep35-lits14-r1",
+  "qualified_environment": {
+    "required": {
+      "python": "3.11.3",
+      "pyreadstat": "1.3.6",
+      "pyarrow": "25.0.1"
+    },
+    "available_cloud": {
+      "python": "3.13.5",
+      "pyreadstat": "ABSENT",
+      "pyarrow": "ABSENT"
+    },
+    "python_3_11_3_install_attempt": {
+      "tool": "uv",
+      "result": "FAILED_AFTER_3_RETRIES",
+      "cause": "CLOUD_DNS_RESOLUTION_FAILURE_TO_GITHUB_RELEASE_HOST"
+    },
+    "authoritative_source_observation_performed": false,
+    "alternate_runtime_promoted": false
+  },
+  "sources": [
+    {
+      "source_family": "LiTS",
+      "wave": "I",
+      "canonical_filename": "LiTS_I.dta",
+      "canonical_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+      "canonical_size_bytes": 139531180,
+      "accepted_decoder_mode": "DTA_DECODE_LATIN1_COMPAT_PHYSICAL_ONLY",
+      "compatibility_ceiling": "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY",
+      "current_library_transport_name": "LITS-2006-data.dta",
+      "source_bytes_accessible": true,
+      "independent_sha256_verified": true,
+      "fresh_authoritative_census": "BLOCKED",
+      "disposition": "REPRESENTATION_FACT_BLOCKED",
+      "blockers": [
+        "REPRESENTATION_FACT_BLOCKED__QUALIFIED_RUNTIME_UNAVAILABLE"
+      ],
+      "inherited_positive_control": {
+        "status": "ACCEPTED_EXISTING_BOUNDED_AUTHORITY__NOT_REMINTED",
+        "authority_module": "rawlsing_next/fiabc_lits_i_representation_authority.py",
+        "authority_content_hash": "9fce3b606413c2a5d3e9a05eda967067d191fbb31ff869d445d962bdf321393d",
+        "rows": 29002,
+        "variables": 1198,
+        "reader": {
+          "python": "3.11.3",
+          "pyreadstat": "1.3.6",
+          "format": "DTA",
+          "encoding": "latin1",
+          "apply_value_formats": false,
+          "user_missing": true
+        },
+        "target_variables": [
+          {
+            "name": "q301_2",
+            "ordinal": 194
+          },
+          {
+            "name": "q301_7",
+            "ordinal": 199
+          }
+        ],
+        "response_cells": 58004,
+        "observed_cells": 57989,
+        "system_missing_cells": 15,
+        "unique_representation_classes": 16,
+        "observed_decoder_r5_tokens": {
+          "1": {
+            "t": "float64_finite",
+            "bits": "3ff0000000000000"
+          },
+          "2": {
+            "t": "float64_finite",
+            "bits": "4000000000000000"
+          },
+          "3": {
+            "t": "float64_finite",
+            "bits": "4008000000000000"
+          },
+          "4": {
+            "t": "float64_finite",
+            "bits": "4010000000000000"
+          },
+          "5": {
+            "t": "float64_finite",
+            "bits": "4014000000000000"
+          },
+          "6": {
+            "t": "float64_finite",
+            "bits": "4018000000000000"
+          },
+          "7": {
+            "t": "float64_finite",
+            "bits": "401c000000000000"
+          }
+        },
+        "accepted_banked_token_shape": "decimal sign=0 digits=[native_code,0] exponent=-1",
+        "current_governed_rule_token_shape": "decimal sign=0 digits=[native_code] exponent=0",
+        "current_exact_typed_join": {
+          "observed_cells": 0,
+          "system_missing_cells": 15
+        },
+        "legacy_owner": {
+          "commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+          "blob": "7c509c2098d0030f253344eb3f682471378812a8"
+        },
+        "current_typed_facade_blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284"
+      },
+      "edge_classes": [
+        "EC01",
+        "EC02",
+        "EC05",
+        "EC06",
+        "EC09",
+        "EC12"
+      ],
+      "fresh_source_wide_variable_census_available": false
+    },
+    {
+      "source_family": "LiTS",
+      "wave": "IV",
+      "canonical_filename": "LiTS_IV.dta",
+      "canonical_sha256": "14e1032755c4f42d8d3dc61647097ccd7605ba281551e53953c76d22a223cd1c",
+      "canonical_size_bytes": 110465945,
+      "accepted_decoder_mode": "DTA_DECODE_LATIN1_COMPAT_PHYSICAL_ONLY",
+      "compatibility_ceiling": "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY",
+      "source_bytes_accessible": false,
+      "historical_inventory_identity_witness": {
+        "filename": "LiTS_IV.dta",
+        "sha256": "14e1032755c4f42d8d3dc61647097ccd7605ba281551e53953c76d22a223cd1c",
+        "size_bytes": 110465945,
+        "ceiling": "DOCUMENTARY_IDENTITY_ONLY__NOT_SOURCE_BYTES"
+      },
+      "fresh_authoritative_census": "BLOCKED",
+      "disposition": "REPRESENTATION_FACT_BLOCKED",
+      "blockers": [
+        "REPRESENTATION_FACT_BLOCKED__SOURCE_BYTES_UNAVAILABLE",
+        "REPRESENTATION_FACT_BLOCKED__QUALIFIED_RUNTIME_UNAVAILABLE"
+      ],
+      "edge_classes": [
+        "EC01",
+        "EC02",
+        "EC05",
+        "EC09",
+        "EC10",
+        "EC12",
+        "EC14"
+      ],
+      "documentary_physical_burdens": {
+        "skip_carrier_family": "134 *_skip",
+        "visit_blocks": 10,
+        "weight_carriers": "four base/pop/top-up weights",
+        "missingness": "complementary missingness"
+      },
+      "bounded_unknowns": [
+        "intended text encoding",
+        "TR token/top-up scope",
+        "exact skip semantics",
+        "default weight"
+      ],
+      "fresh_source_wide_variable_census_available": false
+    }
+  ],
+  "semantic_inference_used": false,
+  "candidate_output_used": false,
+  "raw_source_bytes_committed": false,
+  "terminal": "PREMAIN_REP35_W1_LITS14_R1__REPRESENTATION_CENSUS_COMPLETE__NO_SEMANTIC_INFERENCE__NO_CANDIDATES_RUN"
+}

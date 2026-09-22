@@ -1,0 +1,48 @@
+{
+  "schema": "PREMAIN_REP35_W1_LITS14_RETURN@1.0.0",
+  "worker": "PREMAIN REP35 W1 — LiTS I / IV Physical Representation Regime Court — R1",
+  "repository": "maidiu/rawlsing",
+  "exact_base": "ef8eff9625f269173ac2c17af3f92d913babb275",
+  "branch": "agent/rabochii-premain-rep35-lits14-r1",
+  "owned_return_directory": "WORKER_RETURNS/PREMAIN-REP35-LITS14-R1/",
+  "status": "COMPLETE_WITH_REPRESENTATION_FACT_BLOCKERS",
+  "source_dispositions": {
+    "LiTS_I.dta": {
+      "disposition": "REPRESENTATION_FACT_BLOCKED",
+      "exact_source_sha_verified": true,
+      "blockers": [
+        "REPRESENTATION_FACT_BLOCKED__QUALIFIED_RUNTIME_UNAVAILABLE"
+      ],
+      "existing_bounded_positive_control_preserved": true
+    },
+    "LiTS_IV.dta": {
+      "disposition": "REPRESENTATION_FACT_BLOCKED",
+      "exact_source_sha_verified": false,
+      "blockers": [
+        "REPRESENTATION_FACT_BLOCKED__SOURCE_BYTES_UNAVAILABLE",
+        "REPRESENTATION_FACT_BLOCKED__QUALIFIED_RUNTIME_UNAVAILABLE"
+      ],
+      "new_bridge_minted": false
+    }
+  },
+  "generic_regime_candidate_promoted": false,
+  "new_source_bounded_bridge_minted": false,
+  "semantic_inference_used": false,
+  "candidate_abc_run": false,
+  "measured_p2x_run": false,
+  "p3_run": false,
+  "architecture_selection_performed": false,
+  "raw_source_bytes_committed": false,
+  "production_code_modified": false,
+  "return_files": [
+    "00_RETURN.md",
+    "01_SOURCE_REPRESENTATION_CENSUS.json",
+    "02_VARIABLE_REGIME_APPLICABILITY.csv",
+    "03_LEGACY_TYPED_JOIN_MATRIX.csv",
+    "04_GENERIC_REGIME_CANDIDATES.json",
+    "05_SOURCE_BOUNDED_EXCEPTIONS.md",
+    "06_NEGATIVE_LIMITS_AND_UNKNOWNS.md",
+    "RETURN.json"
+  ],
+  "terminal": "PREMAIN_REP35_W1_LITS14_R1__REPRESENTATION_CENSUS_COMPLETE__NO_SEMANTIC_INFERENCE__NO_CANDIDATES_RUN"
+}

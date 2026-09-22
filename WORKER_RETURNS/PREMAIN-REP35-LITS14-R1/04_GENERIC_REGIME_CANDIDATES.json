@@ -1,0 +1,34 @@
+{
+  "schema": "PREMAIN_REP35_W1_GENERIC_REGIME_CANDIDATES@1.0.0",
+  "promoted_candidates": [],
+  "holding": "NO_NEW_GENERIC_REGIME_PROMOTED__EVIDENCE_BLOCKED",
+  "documentary_nonpromoted_hypothesis": {
+    "name": "DTA_EXACT_SHA_LATIN1_COMPAT_TO_R5_TYPED_PHYSICAL_INCIDENCE",
+    "status": "HYPOTHESIS_ONLY__NOT_A_COURT_CLASSIFICATION",
+    "existing_architecture_support": [
+      "decode_dta emits format-neutral PhysicalSourceIncidence",
+      "exact-SHA compatibility allowlist contains LiTS I/II/III/IV and pins latin1",
+      "R5TypedValueCodec preserves exact int/float64/Decimal/string lanes",
+      "physical_value_binding_key includes exact raw token + PhysicalMissingState + exact declaration",
+      "OccurrenceRule can retain repeated/order/rank topology",
+      "WeightSlotRule separates physical weight carrier from design/estimand authority"
+    ],
+    "predicates_still_required_for_promotion": [
+      "exact source bytes available and SHA verified",
+      "CPython 3.11.3 + pyreadstat 1.3.6 + pyarrow 25.0.1",
+      "source-wide variable/storage/Python/R5 census",
+      "physical missing-state/declaration census",
+      "LiTS-IV *_skip/visit/weight carrier preservation under same pass",
+      "exact current governed discrete-rule join census",
+      "no source-specific mismatch left unresolved by generic decoder/storage law"
+    ],
+    "why_not_promoted": "LiTS I could not be freshly reproduced in the qualified runtime and LiTS IV source bytes were unavailable."
+  },
+  "new_source_bounded_bridges_proposed": [],
+  "inherited_source_bounded_precedent": {
+    "source": "LiTS I",
+    "authority": "FIABC-LITS-I-Q301-DTA-DECODER-REPRESENTATION-REPLAY@1.0.0",
+    "scope": "exact source SHA + q301_2/194 + q301_7/199 + seven float64 tokens + exact system missing",
+    "genericization_forbidden": true
+  }
+}
