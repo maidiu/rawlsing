@@ -801,12 +801,20 @@ def assert_substantive_parity(
     if expected.get("schema") != SUMMARY_SCHEMA or observed.get("schema") != SUMMARY_SCHEMA:
         raise LitsAstraSubstantiveParityError("substantive parity summary schema drift")
     section_results = {}
+    section_identities = {}
     for section in PARITY_SECTIONS:
-        if canonicalize(expected.get(section)) != canonicalize(observed.get(section)):
+        expected_section = canonicalize(expected.get(section))
+        observed_section = canonicalize(observed.get(section))
+        if expected_section != observed_section:
             raise LitsAstraSubstantiveParityError(
                 f"LiTS current empirical substance drifted from accepted ASTRA section {section}"
             )
         section_results[section] = "PASS"
+        section_identities[section] = {
+            "status": "PASS",
+            "expected_identity": semantic_hash(expected_section),
+            "observed_identity": semantic_hash(observed_section),
+        }
 
     if not isinstance(current_execution_identity, str) or len(current_execution_identity) != 64:
         raise LitsAstraSubstantiveParityError("current execution identity malformed")
@@ -828,6 +836,7 @@ def assert_substantive_parity(
         "expected_empirical_summary_identity": expected_identity,
         "observed_empirical_summary_identity": observed_identity,
         "section_results": section_results,
+        "section_identities": section_identities,
         "historical_current_whole_object_hash_equality_required": False,
         "whole_object_hashes_compared_across_schema_domains": False,
         "candidate_processes_started": 0,
