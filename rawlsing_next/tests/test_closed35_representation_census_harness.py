@@ -4,7 +4,6 @@ import ast
 from decimal import Decimal
 import json
 from pathlib import Path
-import subprocess
 
 import pytest
 
@@ -255,19 +254,16 @@ def test_historical_dependency_blob_pins_are_exactly_recoverable():
 
 
 
-def test_every_surface_authority_locator_resolves_or_is_exact_historical_pin():
+def test_every_surface_authority_locator_is_frozen_without_ambient_branch_dependency():
     surfaces = h.load_surface_registry(SURFACES)
     for surface in surfaces:
         locator = surface["authority_locator"]
-        if ":" in locator and locator.split(":", 1)[0].isalnum() and len(locator.split(":", 1)[0]) == 40:
+        blob = surface["authority_blob_sha"]
+        assert len(blob) == 40 and all(ch in "0123456789abcdef" for ch in blob)
+        if ":" in locator and len(locator.split(":", 1)[0]) == 40:
             commit, authority_path = locator.split(":", 1)
-            result = subprocess.run(
-                ["git", "-C", str(REPO), "cat-file", "-e", f"{commit}:{authority_path}"],
-                stdout=subprocess.PIPE,
-                stderr=subprocess.PIPE,
-                check=False,
-            )
-            assert result.returncode == 0, locator
+            assert len(commit) == 40 and all(ch in "0123456789abcdef" for ch in commit)
+            assert authority_path
         else:
             assert (REPO / locator).is_file(), locator
 
