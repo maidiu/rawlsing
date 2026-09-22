@@ -135,6 +135,7 @@ class ExactBoundedDiscoveryResult:
     covered_candidate_count: int
     receipts: tuple[DiscoveryResultReceipt, ...]
     empirical_fact_refs: tuple[ExactRef, ...]
+    empirical_facts: tuple[EmpiricalFact, ...]
     valid_empty: bool
     replay_ref: ExactRef
 
@@ -149,6 +150,10 @@ class ExactBoundedDiscoveryResult:
             raise ExactBoundedDiscoveryError("receipts must be exact-ref sorted")
         if tuple(sorted(set(self.empirical_fact_refs), key=lambda r: r.key)) != self.empirical_fact_refs:
             raise ExactBoundedDiscoveryError("empirical_fact_refs must be canonical")
+        if tuple(sorted({f.ref.key: f for f in self.empirical_facts}.values(), key=lambda f: f.ref.key)) != self.empirical_facts:
+            raise ExactBoundedDiscoveryError("empirical_facts must be exact-ref canonical")
+        if tuple(f.ref for f in self.empirical_facts) != self.empirical_fact_refs:
+            raise ExactBoundedDiscoveryError("empirical fact preimages do not close over exact refs")
 
 
 CANDIDATE_GRAMMAR_CONTRACT: Mapping[str, Any] = {
@@ -1051,7 +1056,7 @@ def execute_exact_bounded_discovery(
         raise ExactBoundedDiscoveryError("minimum_raw_denominator must be exact nonnegative integer")
 
     receipts: list[DiscoveryResultReceipt] = []
-    all_facts: list[ExactRef] = []
+    all_facts: list[EmpiricalFact] = []
     release_refs_tuple = _canonical_refs(exact_ref(ref, "release_ref") for ref in release_refs)
     if not release_refs_tuple:
         raise ExactBoundedDiscoveryError("one or more exact C11 release refs required")
@@ -1067,7 +1072,7 @@ def execute_exact_bounded_discovery(
         if coverage_state not in TERMINAL_COVERAGE_STATES:
             raise ExactBoundedCoverageError("candidate did not receive terminal exact coverage state")
         fact_refs = _canonical_refs(f.ref for f in facts)
-        all_facts.extend(fact_refs)
+        all_facts.extend(facts)
         replay_material = {
             "contract": I05_CONTRACT_ID,
             "authority_ref": discovery_authority.ref.as_dict(),
@@ -1128,7 +1133,10 @@ def execute_exact_bounded_discovery(
     if any(r.coverage_state not in TERMINAL_COVERAGE_STATES for r in canonical_receipts):
         raise ExactBoundedCoverageError("complete frontier contains nonterminal candidate")
 
-    all_fact_refs = _canonical_refs(all_facts)
+    all_fact_objects = tuple(
+        sorted({fact.ref.key: fact for fact in all_facts}.values(), key=lambda fact: fact.ref.key)
+    )
+    all_fact_refs = tuple(fact.ref for fact in all_fact_objects)
     valid_empty = not canonical_receipts or all(
         r.typed_state == "VALID_EMPTY" for r in canonical_receipts
     )
@@ -1153,6 +1161,7 @@ def execute_exact_bounded_discovery(
         covered_candidate_count=len(canonical_receipts),
         receipts=canonical_receipts,
         empirical_fact_refs=all_fact_refs,
+        empirical_facts=all_fact_objects,
         valid_empty=valid_empty,
         replay_ref=final_replay,
     )

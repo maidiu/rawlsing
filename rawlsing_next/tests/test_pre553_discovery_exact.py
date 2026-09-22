@@ -190,6 +190,7 @@ def test_rules_only_validation_authority_executes_only_its_literal_kind():
         source, qauth, dauth, grammar, (all_p, x1), (yq,), authority=authority
     )
     assert result.candidate_count == result.covered_candidate_count == 1
+    assert tuple(fact.ref for fact in result.empirical_facts) == result.empirical_fact_refs
 
 
 def test_xor_zero_unary_signal_is_reached_without_unary_screen():

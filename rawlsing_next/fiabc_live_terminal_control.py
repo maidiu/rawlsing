@@ -489,25 +489,54 @@ def _constituent_i03(
 ) -> tuple[list[Mapping[str, Any]], list[Mapping[str, Any]], str]:
     candidate_rows = []
     global_facts: dict[tuple[str, str, str], Mapping[str, Any]] = {}
+    fact_preimages = {
+        _ref_key(fact.ref.as_dict()): fact
+        for fact in getattr(result, "empirical_facts", ())
+    }
+    all_expected = {_ref_key(ref.as_dict()) for ref in result.empirical_fact_refs}
+    if set(fact_preimages) != all_expected:
+        raise LiveTerminalControlError(
+            "retained I03 fact preimages do not close over I05 fact refs"
+        )
     ordered = sorted(
         result.receipts, key=lambda receipt: receipt.candidate_identity["candidate_hash"]
     )
     for receipt in ordered:
         per_candidate: dict[tuple[str, str, str], Mapping[str, Any]] = {}
         query_roles = receipt.candidate_identity["query_roles"]
-        for role in query_roles:
-            observed = binding.executor.execute_i03(
-                query_ref=role["query_ref"],
-                predicate_ref=role["predicate_ref"],
-            )
-            for fact in observed.facts:
-                row = {"ref": fact.ref.as_dict(), "typed_state": fact.typed_state}
-                per_candidate[_ref_key(row["ref"])] = row
-                global_facts[_ref_key(row["ref"])] = row
-        expected = {_ref_key(ref.as_dict()) for ref in receipt.empirical_fact_refs}
-        if set(per_candidate) != expected:
+        expected = {
+            _ref_key(ref if isinstance(ref, Mapping) else ref.as_dict())
+            for ref in receipt.empirical_fact_refs
+        }
+        support = receipt.support_uncertainty_state
+        states = support.get("fact_states") if isinstance(support, Mapping) else None
+        if (
+            not isinstance(states, Sequence)
+            or isinstance(states, (str, bytes))
+            or len(states) != len(receipt.empirical_fact_refs)
+        ):
+            raise LiveTerminalControlError("I05 receipt fact-state preimages are incomplete")
+        for ref, retained_state in zip(receipt.empirical_fact_refs, states):
+            ref_doc = ref if isinstance(ref, Mapping) else ref.as_dict()
+            fact = fact_preimages.get(_ref_key(ref_doc))
+            if fact is None or fact.typed_state != retained_state:
+                raise LiveTerminalControlError("I05 retained fact preimage/state mismatch")
+            row = {"ref": fact.ref.as_dict(), "typed_state": fact.typed_state}
+            per_candidate[_ref_key(row["ref"])] = row
+            global_facts[_ref_key(row["ref"])] = row
+
+        role_fact_refs = support.get("query_role_fact_refs")
+        role_names = {role.get("role") for role in query_roles if isinstance(role, Mapping)}
+        if not isinstance(role_fact_refs, Mapping) or set(role_fact_refs) != role_names:
+            raise LiveTerminalControlError("I05 query-role fact closure is incomplete")
+        role_closure = set()
+        for refs in role_fact_refs.values():
+            if not isinstance(refs, Sequence) or isinstance(refs, (str, bytes)):
+                raise LiveTerminalControlError("I05 query-role fact refs are malformed")
+            role_closure.update(_ref_key(ref) for ref in refs)
+        if set(per_candidate) != expected or role_closure != expected:
             raise LiveTerminalControlError(
-                "constituent I03 rerun does not close over I05 candidate facts"
+                "constituent I03 preimages do not close over I05 candidate facts"
             )
         candidate_rows.append({
             "candidate_hash": receipt.candidate_identity["candidate_hash"],
@@ -521,10 +550,9 @@ def _constituent_i03(
                 "support_uncertainty_state": canonicalize(
                     receipt.support_uncertainty_state
                 ),
-                "replay_ref": receipt.replay_ref.as_dict(),
+                "replay_ref": canonicalize(receipt.replay_ref),
             },
         })
-    all_expected = {_ref_key(ref.as_dict()) for ref in result.empirical_fact_refs}
     if set(global_facts) != all_expected:
         raise LiveTerminalControlError(
             "constituent I03 fact closure differs from I05 fact set"

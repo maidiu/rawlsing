@@ -3,6 +3,7 @@ from __future__ import annotations
 import copy
 import hashlib
 import json
+import types
 import pytest
 
 import rawlsing_next.fiabc_live_terminal_control as t5
@@ -12,6 +13,19 @@ from rawlsing_next.fiabc_live_terminal_control import (
     LiveTerminalControlError,
     validate_current_court_contract,
     validate_t4_terminal_accounting_receipt,
+)
+from rawlsing_next.tests.test_pre553_discovery_exact import (
+    _atom,
+    _branch_predicate,
+    _d_auth,
+    _execute,
+    _grammar,
+    _predicate,
+    _qt,
+    _query,
+    _query_authority,
+    _response_leaf,
+    _rule,
 )
 
 LITS="7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09"
@@ -118,3 +132,50 @@ def test_t4_terminal_accounting_receipt_byte_drift_fails_closed(tmp_path):
     row["telemetry_receipt_sha256"]="0"*64
     with pytest.raises(LiveTerminalControlError):
         validate_t4_terminal_accounting_receipt(row)
+
+
+def test_constituent_i03_uses_retained_exact_fact_preimages_without_catalog_fallback():
+    from rawlsing_next.tests.test_pre553_empirical_query import _build_source
+
+    source = _build_source("fiabc-retained-i03", [
+        {"id": "R1", "responses": {"X": 1, "Y": 1}},
+        {"id": "R2", "responses": {"X": 0, "Y": 0}},
+    ])
+    qauth = _query_authority("fiabc-retained-i03")
+    dauth = _d_auth("fiabc-retained-i03-discovery")
+    all_p = _branch_predicate(source, qauth, tag="all")
+    x1 = _predicate(source, qauth, _response_leaf(source, qauth, "X", 1), tag="x1")
+    yq = _query(source, qauth, all_p, ("Y",), tag="y")
+    validation = {"kind": "DISTRIBUTION_DIFFERS_FROM_BASELINE"}
+    grammar = _grammar(
+        operation="I03-OP-fiabc-retained-i03-discovery",
+        atoms=[_atom("ALL", all_p, "BRANCH"), _atom("X1", x1, "RESPONSE")],
+        templates=[_qt("Y", yq)],
+        rules=[_rule(
+            "pair", "PAIR_RESPONSE_COTRAVEL", "SINGLE_ATOM",
+            atom_ids=("X1",), baseline_atom_id="ALL", query_template_id="Y",
+            validation=validation,
+        )],
+    )
+    result = _execute(source, qauth, dauth, grammar, (all_p, x1), (yq,))
+
+    def forbidden_rerun(**kwargs):
+        raise AssertionError("derived query ref must not be fuzzy-resolved from template catalog")
+
+    binding = types.SimpleNamespace(
+        executor=types.SimpleNamespace(execute_i03=forbidden_rerun)
+    )
+    rows, facts, closure = t5._constituent_i03(binding, result)
+    assert len(rows) == 1
+    assert {tuple(sorted(row["ref"].items())) for row in facts} == {
+        tuple(sorted(ref.as_dict().items())) for ref in result.empirical_fact_refs
+    }
+    assert len(closure) == 64
+
+    missing = types.SimpleNamespace(
+        receipts=result.receipts,
+        empirical_fact_refs=result.empirical_fact_refs,
+        empirical_facts=(),
+    )
+    with pytest.raises(LiveTerminalControlError, match="preimages"):
+        t5._constituent_i03(binding, missing)
