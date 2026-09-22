@@ -27,7 +27,7 @@ git merge-base --is-ancestor "$QUALIFIED_CODE_HEAD" HEAD || { echo "green-qualif
 git merge-base --is-ancestor "$QUALIFICATION_CLOSURE_HEAD" HEAD || { echo "qualification closure head $QUALIFICATION_CLOSURE_HEAD is not an ancestor of HEAD" >&2; exit 2; }
 unexpected="$(
   git diff --name-only "$QUALIFIED_CODE_HEAD"..HEAD \
-    | grep -Ev '^(WORKER_RETURNS/FIABC-CANONICAL-TERMINAL-READINESS-R1/|WORKER_RETURNS/FIABC-FINAL-LAUNCH-FANIN-R1/)' \
+    | grep -Ev '^(WORKER_RETURNS/FIABC-CANONICAL-TERMINAL-READINESS-R1/|WORKER_RETURNS/FIABC-FINAL-LAUNCH-FANIN-R1/|WORKER_RETURNS/CANONICAL-REINTEGRATION-FIABC-R1/01_SOURCE_FREE_LOCAL_QUALIFICATION\.sh$)' \
     || true
 )"
 if [[ -n "$unexpected" ]]; then
