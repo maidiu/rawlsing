@@ -219,6 +219,14 @@ RAWLSING_CANONICAL_REINTEGRATION_SOURCE_FREE_QUALIFICATION_GREEN__READY_FOR_PRE_
 No source bytes, oracle, T3 freeze, Candidate A/B/C, or measured P2X were run.
 See `12_LITS_REPRESENTATION_SOURCE_FREE_QUALIFICATION_GREEN.md`.
 
+## Latest execution-guard rebind
+
+The pre-candidate and measured launch scripts now require qualified code head
+`d1833f9ebe363258575c6bd95737eb8f1b0f4154` and qualification closure head
+`2d93017626a2815d84fd13123ac872047614c353`. The dedicated execution-branch
+requirement and post-green path allowlist remain unchanged. See
+`13_LITS_REPRESENTATION_EXECUTION_GUARD_REBIND.md`.
+
 ## Runtime statement
 
 The latest repair executed the complete source-free qualification at exact code

@@ -102,3 +102,13 @@ Result: `172 passed, 28 subtests passed`, exact green terminal emitted.
 
 No source-backed oracle, T3, Candidate A/B/C, or measured P2X ran during this
 repair or qualification.
+
+## Post-qualification launch-guard rebind
+
+- `WORKER_RETURNS/FIABC-FINAL-LAUNCH-FANIN-R1/02_PRE_CANDIDATE_LOCAL_PREFLIGHT.sh`
+- `WORKER_RETURNS/FIABC-FINAL-LAUNCH-FANIN-R1/03_MEASURED_SIX_CELL_RUN.sh`
+  - now require qualified code head `d1833f9ebe363258575c6bd95737eb8f1b0f4154`;
+  - now require qualification closure head `2d93017626a2815d84fd13123ac872047614c353`;
+  - preserve the dedicated execution branch and exact post-green path allowlist.
+- `13_LITS_REPRESENTATION_EXECUTION_GUARD_REBIND.md`
+  - records the lawful fast-forward condition and unchanged stop boundary.
