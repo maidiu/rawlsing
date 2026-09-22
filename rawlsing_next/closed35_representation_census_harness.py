@@ -846,11 +846,18 @@ def dependency_provenance_records() -> tuple[Mapping[str, Any], ...]:
             "key_role": "LITS_HISTORICAL_KEY_STATE_DEPENDENCY",
         },
         {
-            "dependency": "wvs7_pyreadstat_readstat_version_evidence",
-            "origin": "PINNED_EXTERNAL_EVIDENCE_IN_AUTHORITY",
+            "dependency": "wvs7_representation_authority",
+            "origin": "CURRENT_SUCCESSOR_PINNED",
             "path": "rawlsing_next/fiabc_lm2_r1j_wvs7_representation_authority.py",
             "blob": "220c646df5b85eb927af70961c5d05be97edfb73",
-            "key_role": "WVS7_NUMERIC_REPRESENTATION_PROVENANCE",
+            "key_role": "WVS7_NUMERIC_REPRESENTATION_OWNER",
+        },
+        {
+            "dependency": "wvs7_pyreadstat_readstat_version_evidence",
+            "origin": "PINNED_EXTERNAL_EVIDENCE_IN_AUTHORITY",
+            "authority_path": "rawlsing_next/fiabc_lm2_r1j_wvs7_representation_authority.py",
+            "authority_blob": "220c646df5b85eb927af70961c5d05be97edfb73",
+            "key_role": "WVS7_NUMERIC_REPRESENTATION_UPSTREAM_PROVENANCE",
         },
     )
 
