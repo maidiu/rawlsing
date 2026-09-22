@@ -66,6 +66,10 @@ LITS_ROWS = 29002
 LITS_VARIABLES = 1198
 WVS_ROWS = 97220
 WVS_VARIABLES = 613
+LITS_ACCEPTED_TERMINAL_COUNTS = {
+    "EVALUATED_SUPPORTED": 49,
+    "EVALUATED_VALID_EMPTY": 1,
+}
 
 ASTRA_PRODUCT_PATH = "WORKER_RETURNS/ASTRA-D04-R2/01_TYPED_LEARNED_EMPIRICAL_PRODUCT.json"
 ASTRA_REPLAY_PATH = "WORKER_RETURNS/ASTRA-D04-R2/03_SOURCE_AND_REPLAY_RECEIPT.json"
@@ -74,6 +78,48 @@ CURRENT_SOURCE_MANIFEST_REF = "WORKER_RETURNS/FIABC-T2/01_SIX_CELL_EXECUTION_MAN
 
 class FinalOracleProducerError(RuntimeError):
     pass
+
+
+def _bind_current_lits_execution_to_astra(
+    *,
+    execution_receipt: Mapping[str, Any],
+    semantic_replay_identity: str,
+    terminal_counts: Mapping[str, int],
+    candidate_count: int,
+    query_role_count: int,
+) -> Mapping[str, Any]:
+    """Bind a current neutral replay to the immutable ASTRA product anchor.
+
+    The current carrier-neutral execution receipt and the historical ASTRA
+    typed product are different schemas, so their object hashes are not
+    interchangeable. Cross-representation parity is the exact semantic replay
+    identity plus the accepted typed terminal/cardinality envelope.
+    """
+    if candidate_count != LITS_CANDIDATE_COUNT or query_role_count != LITS_QUERY_ROLE_COUNT:
+        raise FinalOracleProducerError("LiTS current neutral runtime is not exact 50/77")
+    observed_counts = dict(sorted(terminal_counts.items()))
+    if observed_counts != LITS_ACCEPTED_TERMINAL_COUNTS:
+        raise FinalOracleProducerError(
+            "current neutral LiTS typed terminal counts do not equal accepted ASTRA counts"
+        )
+    if semantic_replay_identity != LITS_SEMANTIC_REPLAY_IDENTITY:
+        raise FinalOracleProducerError(
+            "current neutral LiTS semantic replay does not equal accepted ASTRA identity"
+        )
+    execution_identity = execution_receipt.get("execution_identity")
+    if not isinstance(execution_identity, str) or len(execution_identity) != 64:
+        raise FinalOracleProducerError("current neutral LiTS execution identity is malformed")
+    return {
+        "product_identity": LITS_LEARNED_PRODUCT_IDENTITY,
+        "semantic_identity": semantic_replay_identity,
+        "replay_identity": execution_identity,
+        "exact_output_identity": execution_identity,
+        "coverage": {
+            "candidate_count": candidate_count,
+            "query_role_count": query_role_count,
+            "typed_terminal_counts": observed_counts,
+        },
+    }
 
 
 def _canonical_bytes(value: Any) -> bytes:
@@ -568,31 +614,16 @@ def _neutral_lits_material(
         "frontier_seal": LITS_FRONTIER_SEAL,
         "ordered_candidate_hashes": hashes,
     }
-    if result.candidate_count != LITS_CANDIDATE_COUNT or query_role_count != LITS_QUERY_ROLE_COUNT:
-        raise FinalOracleProducerError("LiTS current neutral runtime is not exact 50/77")
-
     terminal_counts = dict(
         sorted(Counter(receipt.typed_state for receipt in ordered).items())
     )
-    learned = {
-        "product_identity": semantic_hash(execution_receipt),
-        "semantic_identity": result.replay_ref.content_hash,
-        "replay_identity": execution_receipt["execution_identity"],
-        "exact_output_identity": execution_receipt["execution_identity"],
-        "coverage": {
-            "candidate_count": result.candidate_count,
-            "query_role_count": query_role_count,
-            "typed_terminal_counts": terminal_counts,
-        },
-    }
-    if learned["product_identity"] != LITS_LEARNED_PRODUCT_IDENTITY:
-        raise FinalOracleProducerError(
-            "current neutral LiTS learned product does not equal accepted ASTRA identity"
-        )
-    if learned["semantic_identity"] != LITS_SEMANTIC_REPLAY_IDENTITY:
-        raise FinalOracleProducerError(
-            "current neutral LiTS semantic replay does not equal accepted ASTRA identity"
-        )
+    learned = _bind_current_lits_execution_to_astra(
+        execution_receipt=execution_receipt,
+        semantic_replay_identity=result.replay_ref.content_hash,
+        terminal_counts=terminal_counts,
+        candidate_count=result.candidate_count,
+        query_role_count=query_role_count,
+    )
 
     authorities = [authority.ref.as_dict() for authority in catalog.authorities]
     exact_refs = terminal._unique_refs([

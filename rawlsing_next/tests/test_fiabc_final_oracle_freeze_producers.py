@@ -17,6 +17,7 @@ from rawlsing_next.fiabc_final_oracle_freeze_producers import (
     SUCCESSOR_DISCOVERY_AUTHORITY,
     SUCCESSOR_LOCK2,
     SUCCESSOR_LOCK2_REPLAY,
+    _bind_current_lits_execution_to_astra,
     _reject_candidate_owned_path,
     produce_t3_two_source_freeze,
     standardize_wvs_r1m_oracle,
@@ -265,6 +266,49 @@ def test_lits_producer_hard_codes_exact_50_77_and_rejects_candidate_roots(tmp_pa
     assert "candidate_processes_started" in producer_text
     assert "candidate_outputs_used" in producer_text
 
+
+def test_lits_current_execution_binds_astra_only_after_exact_semantic_parity():
+    current_execution = _h("current-neutral-execution")
+    learned = _bind_current_lits_execution_to_astra(
+        execution_receipt={"execution_identity": current_execution},
+        semantic_replay_identity=LITS_SEMANTIC_REPLAY_IDENTITY,
+        terminal_counts={
+            "EVALUATED_SUPPORTED": 49,
+            "EVALUATED_VALID_EMPTY": 1,
+        },
+        candidate_count=LITS_CANDIDATE_COUNT,
+        query_role_count=LITS_QUERY_ROLE_COUNT,
+    )
+    assert learned["product_identity"] == LITS_LEARNED_PRODUCT_IDENTITY
+    assert learned["semantic_identity"] == LITS_SEMANTIC_REPLAY_IDENTITY
+    assert learned["replay_identity"] == current_execution
+    assert learned["exact_output_identity"] == current_execution
+
+
+@pytest.mark.parametrize(
+    ("semantic_identity", "terminal_counts"),
+    [
+        (
+            _h("wrong-semantic-replay"),
+            {"EVALUATED_SUPPORTED": 49, "EVALUATED_VALID_EMPTY": 1},
+        ),
+        (
+            LITS_SEMANTIC_REPLAY_IDENTITY,
+            {"EVALUATED_SUPPORTED": 50},
+        ),
+    ],
+)
+def test_lits_current_execution_rejects_astra_parity_drift(
+    semantic_identity, terminal_counts
+):
+    with pytest.raises(FinalOracleProducerError):
+        _bind_current_lits_execution_to_astra(
+            execution_receipt={"execution_identity": _h("current-neutral-execution")},
+            semantic_replay_identity=semantic_identity,
+            terminal_counts=terminal_counts,
+            candidate_count=LITS_CANDIDATE_COUNT,
+            query_role_count=LITS_QUERY_ROLE_COUNT,
+        )
 
 def test_t3_two_source_freeze_self_validates_zero_candidate_output(
     tmp_path, monkeypatch
