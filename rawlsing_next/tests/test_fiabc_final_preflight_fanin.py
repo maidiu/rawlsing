@@ -94,9 +94,13 @@ def test_r1j_projection_is_conserved_but_does_not_own_successor_lock2():
     assert materializer["PROJECTION_IDENTITY_REF"].content_hash if False else True
     assert _git_blob(MATERIALIZER) == R1J_MATERIALIZER_BLOB
 
+    assert backend["WVS_DISCOVERY_AUTHORITY"] == SUCCESSOR_DISCOVERY
     text = BACKEND.read_text(encoding="utf-8")
-    assert f'package.get("discovery_authority_hash")!="{SUCCESSOR_DISCOVERY}"' in text
-    assert 'package.get("discovery_authority_hash")!="24591678ebf50ac153fabdbbcd90d6ce818c5a89a5307c395c48a04fe5a8b1ab"' not in text
+    wvs_docs = text.split("def _wvs_docs(ctx, services):", 1)[1].split(
+        "def _wvs_materializer(ctx, services):", 1
+    )[0]
+    assert 'package.get("discovery_authority_hash")!=WVS_DISCOVERY_AUTHORITY' in wvs_docs
+    assert "24591678ebf50ac153fabdbbcd90d6ce818c5a89a5307c395c48a04fe5a8b1ab" not in wvs_docs
 
 
 def test_exact_46_candidate_stream_is_conserved_by_successor_lock2():
