@@ -61,3 +61,15 @@ No production module or semantic identity changed in this follow-up.
   - records final closure of the source-free canonical qualification court.
 
 No pre-candidate freeze, oracle generation/standardization, Candidate A/B/C, or measured P2X was performed by this closure update.
+## LiTS representation-blocker investigation
+
+- `WORKER_RETURNS/FIABC-CANONICAL-TERMINAL-READINESS-R1/08_LITS_REPRESENTATION_DIAGNOSTIC.py`
+  - candidate-neutral local diagnostic for exact q301_2/q301_7 decoder representation classes and current typed physical-key matches; does not mint semantic authority.
+- `WORKER_RETURNS/FIABC-CANONICAL-TERMINAL-READINESS-R1/09_LITS_REPRESENTATION_BLOCKER_HOLDING.md`
+  - documents the old canonicalized-key vs current typed-key transition and holds LiTS oracle production pending representation-authority closure.
+- `WORKER_RETURNS/FIABC-CANONICAL-TERMINAL-READINESS-R1/02_STATIC_AUDIT.json`
+  - records the local pre-candidate blocker and exact historical/current owner identities.
+- `WORKER_RETURNS/FIABC-CANONICAL-TERMINAL-READINESS-R1/00_RETURN.md`
+  - records the lawful pre-candidate entry and representation blocker.
+
+A speculative `exact_cell()` production repair was explored in intermediate commits and then fully reverted. Final production/test/qualification-script blobs are restored to their previously qualified content; no unqualified numeric coercion remains in the tree.
