@@ -31,6 +31,16 @@ from rawlsing_next.fiabc_lits_i_d03_risk_set_authority import (
     decode_membership_payload,
     risk_set_successor_authority_record,
 )
+from rawlsing_next.fiabc_lits_i_f02_event_representation_authority import (
+    AUTHORITY_CONTENT_HASH as F02_REPRESENTATION_AUTHORITY_CONTENT_HASH,
+    FROZEN_SCOPE_REF as F02_FROZEN_SCOPE_REF,
+    QUESTION_REFS as F02_QUESTION_REFS,
+    RESPONSE_HASHES as F02_RESPONSE_HASHES,
+    SCHEMA as F02_REPRESENTATION_SCHEMA,
+    SOURCE_SHA256 as F02_SOURCE_SHA256,
+    SUCCESSOR_RELEASE_REF as F02_SUCCESSOR_RELEASE_REF,
+    event_representation_successor_authority_record,
+)
 from rawlsing_next.pre553_carrier_execution import RuntimeObjectCatalog
 from rawlsing_next.pre553_empirical_authority import AuthorityRegistry, Pre553AuthorityError
 from rawlsing_next.pre553_empirical_objects import exact_ref, semantic_hash
@@ -269,11 +279,26 @@ def test_lits_f02_dialect_uses_typed_canonical_scalar_tokens_without_coercion():
         for native_value in (1, 2, 3)
     }
 
+    validated_bindings = set()
     for predicate, leaf in leaves.values():
         contract = runtime.resolve_predicate_dialect(
             predicate.grammar_authority_ref, leaf
         )
-        contract.validate_leaf(leaf)
+        question_ref, response_ref, native_value, scope_ref = contract.validate_leaf(leaf)
+        assert scope_ref == F02_FROZEN_SCOPE_REF
+        validated_bindings.add(
+            (question_ref.content_hash, response_ref.content_hash, native_value)
+        )
+    assert validated_bindings == {
+        (
+            binding["question_ref"]["content_hash"],
+            binding["response_value_ref"]["content_hash"],
+            binding["source_native_value"],
+        )
+        for binding in event_representation_successor_authority_record()[
+            "identity_material"
+        ]["bindings"]
+    }
 
     predicate, integer_leaf = next(
         value for key, value in leaves.items() if key[1] == 1
@@ -288,3 +313,137 @@ def test_lits_f02_dialect_uses_typed_canonical_scalar_tokens_without_coercion():
         match="exact question/value binding mismatch",
     ):
         contract.validate_leaf(string_leaf)
+
+
+def test_lits_f02_event_representation_authority_is_exact_six_binding_domain():
+    record = event_representation_successor_authority_record()
+    material = record["identity_material"]
+    assert record["schema"] == F02_REPRESENTATION_SCHEMA
+    assert record["authority_content_hash"] == F02_REPRESENTATION_AUTHORITY_CONTENT_HASH
+    assert semantic_hash(material) == F02_REPRESENTATION_AUTHORITY_CONTENT_HASH
+    assert material["source_sha256"] == F02_SOURCE_SHA256
+    assert material["frozen_scope_ref"] == F02_FROZEN_SCOPE_REF.as_dict()
+    assert material["runtime_release_ref"] == F02_SUCCESSOR_RELEASE_REF.as_dict()
+    assert len(material["bindings"]) == 6
+    assert {
+        (
+            binding["question_ref"]["content_hash"],
+            binding["response_value_ref"]["content_hash"],
+            binding["source_native_value"],
+            binding["exact_event_raw_response_value"]["$exact_decimal"],
+            binding["required_event_state"],
+        )
+        for binding in material["bindings"]
+    } == {
+        (
+            F02_QUESTION_REFS[question].content_hash,
+            F02_RESPONSE_HASHES[question][value],
+            value,
+            str(value),
+            "SUBSTANTIVE_RESPONSE",
+        )
+        for question in ("q310", "q311")
+        for value in (1, 2, 3)
+    }
+    assert {
+        "NO_GENERIC_INT_FLOAT_DECIMAL_COERCION",
+        "NO_STRING_NUMERIC_EQUIVALENCE",
+        "NO_OTHER_SOURCE_RELEASE_SCOPE_QUESTION_VALUE_OR_STATE",
+        "NO_C11_EVENT_OR_RELEASE_MUTATION",
+        "NO_CANDIDATE_OUTPUT_PARENTAGE",
+    } <= set(material["negative_limits"])
+
+
+def test_lits_f02_event_representation_authority_rejects_unadopted_and_tampered():
+    record = event_representation_successor_authority_record()
+    with pytest.raises(Pre553AuthorityError, match="not exactly adopted"):
+        Pre553RuntimeAuthoritySet(
+            event_representation_successor_authorities=(record,)
+        )
+
+    tampered = copy.deepcopy(record)
+    tampered["identity_material"]["bindings"][0][
+        "exact_event_raw_response_value"
+    ] = {"$exact_decimal": "1.0"}
+    with pytest.raises(Pre553AuthorityError, match="identity_material hash mismatch"):
+        Pre553RuntimeAuthoritySet(
+            adopted_authority_hashes=(F02_REPRESENTATION_AUTHORITY_CONTENT_HASH,),
+            event_representation_successor_authorities=(tampered,),
+        )
+
+
+def test_lits_f02_event_representation_matches_only_exact_adopted_successor_witness():
+    module = _runtime_module()
+    runtime = module.materialize_runtime_authority_set()
+    binding = event_representation_successor_authority_record()["identity_material"][
+        "bindings"
+    ][0]
+    question_ref = exact_ref(binding["question_ref"])
+    response_ref = exact_ref(binding["response_value_ref"])
+    native_value = binding["source_native_value"]
+    exact_witness = binding["exact_event_raw_response_value"]
+
+    assert runtime.match_exact_event_representation(
+        frozen_scope_ref=F02_FROZEN_SCOPE_REF,
+        runtime_release_ref=F02_SUCCESSOR_RELEASE_REF,
+        question_ref=question_ref,
+        response_value_ref=response_ref,
+        source_native_value=native_value,
+        event_raw_response_value=exact_witness,
+    )
+
+    with pytest.raises(
+        Pre553AuthorityError,
+        match="runtime event witness differs from exact adopted representation",
+    ):
+        runtime.match_exact_event_representation(
+            frozen_scope_ref=F02_FROZEN_SCOPE_REF,
+            runtime_release_ref=F02_SUCCESSOR_RELEASE_REF,
+            question_ref=question_ref,
+            response_value_ref=response_ref,
+            source_native_value=native_value,
+            event_raw_response_value={"$exact_decimal": "1.0"},
+        )
+
+    wrong_release = exact_ref({
+        **F02_SUCCESSOR_RELEASE_REF.as_dict(),
+        "object_id": "urn:test:wrong-release",
+    })
+    assert not runtime.match_exact_event_representation(
+        frozen_scope_ref=F02_FROZEN_SCOPE_REF,
+        runtime_release_ref=wrong_release,
+        question_ref=question_ref,
+        response_value_ref=response_ref,
+        source_native_value=native_value,
+        event_raw_response_value=exact_witness,
+    )
+    wrong_response = exact_ref({
+        **response_ref.as_dict(),
+        "object_id": "urn:test:wrong-response",
+    })
+    assert not runtime.match_exact_event_representation(
+        frozen_scope_ref=F02_FROZEN_SCOPE_REF,
+        runtime_release_ref=F02_SUCCESSOR_RELEASE_REF,
+        question_ref=question_ref,
+        response_value_ref=wrong_response,
+        source_native_value=native_value,
+        event_raw_response_value=exact_witness,
+    )
+
+    # The predecessor law remains exact canonical equality and gains no coercion.
+    assert runtime.match_exact_event_representation(
+        frozen_scope_ref=F02_FROZEN_SCOPE_REF,
+        runtime_release_ref=wrong_release,
+        question_ref=question_ref,
+        response_value_ref=wrong_response,
+        source_native_value=1,
+        event_raw_response_value=1,
+    )
+    assert not runtime.match_exact_event_representation(
+        frozen_scope_ref=F02_FROZEN_SCOPE_REF,
+        runtime_release_ref=wrong_release,
+        question_ref=question_ref,
+        response_value_ref=wrong_response,
+        source_native_value=1,
+        event_raw_response_value="1",
+    )

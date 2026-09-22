@@ -42,6 +42,9 @@ R5A_BINDING_SCHEMA = "EE_P2R5A_CONCRETE_REALIZATION_BINDING_SCHEMA@1.0.0"
 R5A_PRECONDITION_SCHEMA = "EE_P2R5A_R4A_RELEASE_PRECONDITION_SUCCESSOR_CLAUSE@1.0.0"
 I03_OPERATION_SUCCESSOR_SCHEMA = "FIABC_LITS_I_I03_OPERATION_SUCCESSOR_AUTHORITY@1.0.0"
 EXACT_RISK_SET_SUCCESSOR_SCHEMA = "FIABC_LITS_I_D03_RISK_SET_SUCCESSOR_AUTHORITY@1.0.0"
+EVENT_REPRESENTATION_SUCCESSOR_SCHEMA = (
+    "FIABC_LITS_I_F02_EVENT_REPRESENTATION_SUCCESSOR_AUTHORITY@1.0.0"
+)
 CONCRETE_BINDING_SCHEMA = "RELEASE_REALIZATION_BINDING@1.0.0"
 ACTIVE_POSITIVE_BINDING = "ACTIVE_POSITIVE"
 
@@ -245,6 +248,15 @@ class ExactRiskSetSuccessorContract:
         return self.respondent_row_ordinal(respondent_key) in self.member_ordinals[root_id]
 
 
+@dataclass(frozen=True)
+class EventRepresentationSuccessorContract:
+    authority_content_hash: str
+    source_sha256: str
+    frozen_scope_ref: ExactRef
+    runtime_release_ref: ExactRef
+    bindings: Mapping[tuple[str, str, str], Any]
+
+
 class Pre553RuntimeAuthoritySet:
     """Immutable exact successor-authority registry.
 
@@ -263,6 +275,7 @@ class Pre553RuntimeAuthoritySet:
         public_predicate_successor_authorities: Iterable[Mapping[str, Any]] = (),
         i03_operation_successor_authorities: Iterable[Mapping[str, Any]] = (),
         exact_risk_set_successor_authorities: Iterable[Mapping[str, Any]] = (),
+        event_representation_successor_authorities: Iterable[Mapping[str, Any]] = (),
         historical_authority_snapshots: Iterable[AuthoritySnapshot] = (),
         release_realization_authorities: Iterable[Mapping[str, Any]] = (),
         realization_binding_schemas: Iterable[Mapping[str, Any]] = (),
@@ -539,6 +552,101 @@ class Pre553RuntimeAuthoritySet:
             ))
         self._exact_risk_set_successors = tuple(sorted(
             risk_set_successors, key=lambda contract: contract.authority_content_hash
+        ))
+
+        event_representation_successors: list[EventRepresentationSuccessorContract] = []
+        for raw in event_representation_successor_authorities:
+            record = _mapping(raw, "event representation successor authority")
+            if record.get("schema") != EVENT_REPRESENTATION_SUCCESSOR_SCHEMA:
+                raise Pre553AuthorityError(
+                    "unrecognized event representation successor authority schema"
+                )
+            digest = _text(
+                record.get("authority_content_hash"),
+                "event representation successor authority hash",
+            )
+            _hash_identity(record, digest, "event representation successor authority")
+            if digest not in adopted:
+                raise Pre553AuthorityError(
+                    "event representation successor authority is not exactly adopted"
+                )
+            material = _mapping(
+                record.get("identity_material"),
+                "event representation successor identity",
+            )
+            source_sha = _text(
+                material.get("source_sha256"),
+                "event representation source sha256",
+            )
+            if len(source_sha) != 64:
+                raise Pre553AuthorityError(
+                    "event representation source identity must be sha256"
+                )
+            bindings: dict[tuple[str, str, str], Any] = {}
+            for item in _sequence(
+                material.get("bindings"), "event representation bindings"
+            ):
+                item = _mapping(item, "event representation binding")
+                if item.get("required_event_state") != "SUBSTANTIVE_RESPONSE":
+                    raise Pre553AuthorityError(
+                        "event representation binding state is not exact substantive response"
+                    )
+                question_ref = exact_ref(
+                    item.get("question_ref"), "event representation question ref"
+                )
+                response_ref = exact_ref(
+                    item.get("response_value_ref"),
+                    "event representation response-value ref",
+                )
+                native_value = canonicalize(item.get("source_native_value"))
+                key = (
+                    question_ref.key,
+                    response_ref.key,
+                    canonical_json(native_value),
+                )
+                if key in bindings:
+                    raise Pre553AuthorityError(
+                        "duplicate exact event representation binding"
+                    )
+                bindings[key] = canonicalize(
+                    item.get("exact_event_raw_response_value")
+                )
+            negative_limits = set(
+                _text(item, "event representation negative limit")
+                for item in _sequence(
+                    material.get("negative_limits"),
+                    "event representation negative limits",
+                )
+            )
+            required_limits = {
+                "NO_GENERIC_INT_FLOAT_DECIMAL_COERCION",
+                "NO_STRING_NUMERIC_EQUIVALENCE",
+                "NO_OTHER_SOURCE_RELEASE_SCOPE_QUESTION_VALUE_OR_STATE",
+                "NO_C11_EVENT_OR_RELEASE_MUTATION",
+                "NO_CANDIDATE_OUTPUT_PARENTAGE",
+            }
+            if not required_limits <= negative_limits:
+                raise Pre553AuthorityError(
+                    "event representation negative limits are incomplete"
+                )
+            event_representation_successors.append(
+                EventRepresentationSuccessorContract(
+                    authority_content_hash=digest,
+                    source_sha256=source_sha,
+                    frozen_scope_ref=exact_ref(
+                        material.get("frozen_scope_ref"),
+                        "event representation frozen scope ref",
+                    ),
+                    runtime_release_ref=exact_ref(
+                        material.get("runtime_release_ref"),
+                        "event representation runtime release ref",
+                    ),
+                    bindings=MappingProxyType(bindings),
+                )
+            )
+        self._event_representation_successors = tuple(sorted(
+            event_representation_successors,
+            key=lambda contract: contract.authority_content_hash,
         ))
 
         compat: dict[str, Mapping[str, Any]] = {}
@@ -914,6 +1022,45 @@ class Pre553RuntimeAuthoritySet:
                 raise Pre553AuthorityError(
                     "mixed successor grammar resolves multiple child dialect interpreters")
         raise Pre553AuthorityError("no exact adopted predicate dialect interpreter authority")
+
+    def match_exact_event_representation(
+        self,
+        *,
+        frozen_scope_ref: ExactRef,
+        runtime_release_ref: ExactRef,
+        question_ref: ExactRef,
+        response_value_ref: ExactRef,
+        source_native_value: Any,
+        event_raw_response_value: Any,
+    ) -> bool:
+        """Match one authority-declared successor event witness, if applicable."""
+        native = canonicalize(source_native_value)
+        observed = canonicalize(event_raw_response_value)
+        if observed == native:
+            return True
+        key = (
+            question_ref.key,
+            response_value_ref.key,
+            canonical_json(native),
+        )
+        scoped = [
+            contract
+            for contract in self._event_representation_successors
+            if contract.frozen_scope_ref == frozen_scope_ref
+            and contract.runtime_release_ref == runtime_release_ref
+            and key in contract.bindings
+        ]
+        if not scoped:
+            return False
+        if len(scoped) != 1:
+            raise Pre553AuthorityError(
+                "multiple exact event representation successor authorities match"
+            )
+        if scoped[0].bindings[key] != observed:
+            raise Pre553AuthorityError(
+                "runtime event witness differs from exact adopted representation"
+            )
+        return True
 
     def validate_predicate(self, predicate: EmpiricalPredicate) -> None:
         grammar = authority_ref(predicate.grammar_authority_ref, "predicate grammar authority")

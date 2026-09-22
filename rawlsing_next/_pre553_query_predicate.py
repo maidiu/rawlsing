@@ -198,7 +198,7 @@ def _leaf_match(
         contract = runtime_authorities.resolve_predicate_dialect(
             predicate_grammar_authority_ref, node
         )
-        question_ref, _response_ref, native_value, scope_ref = contract.validate_leaf(node)
+        question_ref, response_ref, native_value, scope_ref = contract.validate_leaf(node)
         runtime_authorities.require_realized_release(
             scope_ref,
             repository=repository,
@@ -212,7 +212,14 @@ def _leaf_match(
             used_auth.extend(_validate_public_object_authorities(event, registry))
             if event.typed_state != "SUBSTANTIVE_RESPONSE":
                 continue
-            result = result or canonicalize(event.raw_response_value) == native_value
+            result = result or runtime_authorities.match_exact_event_representation(
+                frozen_scope_ref=scope_ref,
+                runtime_release_ref=index.release.release_ref,
+                question_ref=question_ref,
+                response_value_ref=response_ref,
+                source_native_value=native_value,
+                event_raw_response_value=event.raw_response_value,
+            )
         return result
 
     if leaf_type == "SURVEY_RESPONSE_EVENT":

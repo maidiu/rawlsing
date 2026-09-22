@@ -24,6 +24,10 @@ from rawlsing_next.fiabc_lits_i_d03_risk_set_authority import (
     AUTHORITY_CONTENT_HASH as D03_RISK_SET_SUCCESSOR_HASH,
     risk_set_successor_authority_record,
 )
+from rawlsing_next.fiabc_lits_i_f02_event_representation_authority import (
+    AUTHORITY_CONTENT_HASH as F02_EVENT_REPRESENTATION_SUCCESSOR_HASH,
+    event_representation_successor_authority_record,
+)
 
 ROOT=Path(__file__).resolve().parents[3]
 OWNER_COMMIT="0b96b8de9aac774566f872cf0630ebd4ddeb70e6"
@@ -126,7 +130,7 @@ def r4_runtime():
         if git_blob_sha(commit,path)!=blob: raise Pre553AuthorityError("exact adopted R5A/R6J runtime authority blob drift")
     relation=git_json(R5A,R5A_RELATION); schema=git_json(R5A,R5A_SCHEMA); clause=git_json(R5A,R5A_CLAUSE); binding=git_json(R6J,R6J_BINDING)
     if binding["binding_ref"]["content_hash"]!=ACTIVE_BINDING: raise Pre553AuthorityError("exact adopted active realization binding drift")
-    return Pre553RuntimeAuthoritySet(adopted_authority_hashes=(*R4_HASHES,*R5_HASHES,I03_OPERATION_SUCCESSOR_HASH,PART_A_PROJECTION_AUTHORITY_HASH,D03_RISK_SET_SUCCESSOR_HASH),predicate_dialect_matrices=(d,),respondent_compatibility_authorities=(r,),mixed_composition_authorities=(m,),derived_predicate_contracts=(der,),public_predicate_successor_authorities=(s,),i03_operation_successor_authorities=(operation_successor_authority_record(),),exact_risk_set_successor_authorities=(risk_set_successor_authority_record(),),historical_authority_snapshots=(historical_projection_authority_snapshot(),),release_realization_authorities=(relation,),realization_binding_schemas=(schema,),release_precondition_clauses=(clause,),realization_bindings=(binding,))
+    return Pre553RuntimeAuthoritySet(adopted_authority_hashes=(*R4_HASHES,*R5_HASHES,I03_OPERATION_SUCCESSOR_HASH,PART_A_PROJECTION_AUTHORITY_HASH,D03_RISK_SET_SUCCESSOR_HASH,F02_EVENT_REPRESENTATION_SUCCESSOR_HASH),predicate_dialect_matrices=(d,),respondent_compatibility_authorities=(r,),mixed_composition_authorities=(m,),derived_predicate_contracts=(der,),public_predicate_successor_authorities=(s,),i03_operation_successor_authorities=(operation_successor_authority_record(),),exact_risk_set_successor_authorities=(risk_set_successor_authority_record(),),event_representation_successor_authorities=(event_representation_successor_authority_record(),),historical_authority_snapshots=(historical_projection_authority_snapshot(),),release_realization_authorities=(relation,),realization_binding_schemas=(schema,),release_precondition_clauses=(clause,),realization_bindings=(binding,))
 
 def closure_snapshot(ref,kind="REPLAY_PROTOCOL",ops=("EXACT_REPOSITORY_BOUND_CLOSURE",),families=("EmpiricalPredicate@1.0.0","EmpiricalQuerySpec@1.0.0")):
     ar=authority_ref(ref)
