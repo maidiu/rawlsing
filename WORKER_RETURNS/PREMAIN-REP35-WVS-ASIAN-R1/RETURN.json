@@ -1,0 +1,57 @@
+{
+  "schema": "PREMAIN_REP35_W4_RETURN@1.0.0",
+  "worker": "PREMAIN REP35 W4 — WVS / Asian Barometer Physical Representation Regime Court — R1",
+  "exact_base": "ef8eff9625f269173ac2c17af3f92d913babb275",
+  "branch": "agent/rabochii-premain-rep35-wvs-asian-r1",
+  "owned_path": "WORKER_RETURNS/PREMAIN-REP35-WVS-ASIAN-R1/",
+  "status": "CLOSED_WITH_BLOCKED_SOURCE_DISPOSITIONS",
+  "source_dispositions": {
+    "Asian Barometer Wave 1.sav": {
+      "classification": "REPRESENTATION_FACT_BLOCKED",
+      "blocker": "REPRESENTATION_FACT_BLOCKED__QUALIFIED_RUNTIME_UNAVAILABLE"
+    },
+    "Asian Barometer Wave 4.sav": {
+      "classification": "REPRESENTATION_FACT_BLOCKED",
+      "blocker": "REPRESENTATION_FACT_BLOCKED__SOURCE_BYTES_UNAVAILABLE__AND_QUALIFIED_RUNTIME_UNAVAILABLE"
+    },
+    "Asian Barometer Wave 5.sav": {
+      "classification": "REPRESENTATION_FACT_BLOCKED",
+      "blocker": "REPRESENTATION_FACT_BLOCKED__SOURCE_BYTES_UNAVAILABLE__AND_QUALIFIED_RUNTIME_UNAVAILABLE"
+    },
+    "WVS Wave 1.sav": {
+      "classification": "REPRESENTATION_FACT_BLOCKED",
+      "blocker": "REPRESENTATION_FACT_BLOCKED__QUALIFIED_RUNTIME_UNAVAILABLE"
+    },
+    "WVS Wave 4.sav": {
+      "classification": "REPRESENTATION_FACT_BLOCKED",
+      "blocker": "REPRESENTATION_FACT_BLOCKED__SOURCE_BYTES_UNAVAILABLE__AND_QUALIFIED_RUNTIME_UNAVAILABLE"
+    },
+    "WVS Wave 7.sav": {
+      "classification": "REPRESENTATION_FACT_BLOCKED",
+      "blocker": "REPRESENTATION_FACT_BLOCKED__POSITIVE_CONTROL_NOT_REOBSERVED__SOURCE_BYTES_UNAVAILABLE__AND_QUALIFIED_RUNTIME_UNAVAILABLE"
+    }
+  },
+  "exact_source_bytes_sha_verified_by_worker": [
+    "Asian Barometer Wave 1.sav",
+    "WVS Wave 1.sav"
+  ],
+  "source_bytes_not_accessed_by_worker": [
+    "Asian Barometer Wave 4.sav",
+    "Asian Barometer Wave 5.sav",
+    "WVS Wave 4.sav",
+    "WVS Wave 7.sav"
+  ],
+  "qualified_runtime_established": false,
+  "existing_wvs7_r1j_authority_preserved": true,
+  "existing_wvs7_r1j_reobserved": false,
+  "new_generic_regime_candidates": 0,
+  "new_source_bounded_bridges": 0,
+  "production_code_modified": false,
+  "raw_survey_bytes_committed": false,
+  "candidate_a_b_c_run": false,
+  "measured_p2x_run": false,
+  "p3_run": false,
+  "architecture_selection": false,
+  "semantic_inference": false,
+  "terminal": "PREMAIN_REP35_W4_WVS_ASIAN_R1__REPRESENTATION_CENSUS_COMPLETE__NO_SEMANTIC_INFERENCE__NO_CANDIDATES_RUN"
+}

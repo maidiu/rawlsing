@@ -1,0 +1,20 @@
+{
+  "schema": "PREMAIN_REP35_W4_GENERIC_REGIME_CANDIDATES@1.0.0",
+  "candidate_count": 0,
+  "candidates": [],
+  "reason": "No new generic representation regime may be minted without authoritative observation under CPython 3.11.3 / pyreadstat 1.3.6 / pyarrow 25.0.1.",
+  "preserved_documentary_hypotheses": [
+    {
+      "state": "NOT_AUTHORITY__REQUIRES_QUALIFIED_REPLAY",
+      "hypothesis": "Native SAV ReadStat double values may share reusable exact float64 R5 representation predicates where exact storage/decoder conditions match.",
+      "limit": "WVS7 R1J proves only Q291G5/Q291P5 for its exact source; its negative limits forbid cross-variable/wave/source promotion."
+    },
+    {
+      "state": "GENERIC_DECODER_ADMISSION_GAP__NOT_REPRESENTATION_AUTHORITY",
+      "source": "Asian Barometer Wave 1.sav",
+      "observation": "Canonical decoder regime is SAV_SOURCE_DECLARED_BIG5, while current pre553_physical_decoder explicit encoding allowlist contains only frozen latin1 compatibility SHAs.",
+      "required_next_step": "Test an explicit source-declared encoding admission path under the qualified runtime without automatic guessing or semantic label promotion."
+    }
+  ],
+  "coercion_authorized": false
+}
