@@ -1,6 +1,20 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+if command -v python3 >/dev/null 2>&1; then
+  PYTHON_BIN="$(command -v python3)"
+elif command -v python >/dev/null 2>&1; then
+  PYTHON_BIN="$(command -v python)"
+else
+  echo "FIABC_PRE_CANDIDATE_PREFLIGHT_BLOCKED: Python 3 interpreter not found (tried python3, python)" >&2
+  exit 2
+fi
+"$PYTHON_BIN" -c 'import sys; raise SystemExit(0 if sys.version_info.major == 3 else 2)' || {
+  echo "FIABC_PRE_CANDIDATE_PREFLIGHT_BLOCKED: selected interpreter is not Python 3: $PYTHON_BIN" >&2
+  exit 2
+}
+readonly PYTHON_BIN
+
 CODE_HEAD="aa15525750085f4e223d579010688660a9ae1b6b"
 EXPECTED_BRANCH="agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1"
 
@@ -15,14 +29,14 @@ fi
 [[ "$(git branch --show-current)" == "$EXPECTED_BRANCH" ]] || { echo "wrong branch" >&2; exit 2; }
 [[ -z "$(git status --porcelain)" ]] || { echo "dirty worktree" >&2; exit 2; }
 
-python - <<'PY'
+"$PYTHON_BIN" - <<'PY'
 from rawlsing_next.ee_p2x_darwin_court_driver import observe_host, verify_runtime_gate
 host=observe_host()
 verify_runtime_gate(host)
 print("FIABC_LOCK1_RUNTIME_PASS", host)
 PY
 
-python - "$LITS_PATH" "$WVS_PATH" <<'PY'
+"$PYTHON_BIN" - "$LITS_PATH" "$WVS_PATH" <<'PY'
 import hashlib, sys
 from pathlib import Path
 expected={
@@ -46,19 +60,19 @@ if [[ -e "$WORK_ROOT/ee_p2x_stage_ledger.json" || -e "$WORK_ROOT/cells" ]]; then
 fi
 mkdir -p "$WORK_ROOT/court/oracles" "$WORK_ROOT/court/t3"
 
-python -m rawlsing_next.fiabc_final_oracle_freeze_producers standardize-wvs \
+"$PYTHON_BIN" -m rawlsing_next.fiabc_final_oracle_freeze_producers standardize-wvs \
   --r1m WORKER_RETURNS/FIABC-LM2-R1M-LOCK2-SUCCESSOR-R16-ORACLE/07_FRESH_WVS_ORACLE.json \
   --output "$WORK_ROOT/court/oracles/WVS7.standard.json" \
   --freeze-sequence 30
 
-python -m rawlsing_next.fiabc_final_oracle_freeze_producers produce-lits \
+"$PYTHON_BIN" -m rawlsing_next.fiabc_final_oracle_freeze_producers produce-lits \
   --repo-root "$PWD" \
   --source "$LITS_PATH" \
   --work-root "$WORK_ROOT" \
   --output "$WORK_ROOT/court/oracles/LITS_I.standard.json" \
   --freeze-sequence 30
 
-python -m rawlsing_next.fiabc_final_oracle_freeze_producers freeze-t3 \
+"$PYTHON_BIN" -m rawlsing_next.fiabc_final_oracle_freeze_producers freeze-t3 \
   --lits-oracle "$WORK_ROOT/court/oracles/LITS_I.standard.json" \
   --wvs-oracle "$WORK_ROOT/court/oracles/WVS7.standard.json" \
   --work-root "$WORK_ROOT" \
@@ -69,20 +83,20 @@ SUCCESSION_MANIFEST="$WORK_ROOT/court/fiabc_i07_current_head_succession_manifest
 LIFECYCLE_CONTEXT="$WORK_ROOT/court/fiabc_p10_lifecycle_context.json"
 SUCCESSION_PRODUCER_RECEIPT="$WORK_ROOT/court/fiabc_i07_p10_producer_receipt.json"
 
-python -m rawlsing_next.fiabc_succession_producer \
+"$PYTHON_BIN" -m rawlsing_next.fiabc_succession_producer \
   --repo-root "$PWD" \
   --expected-head "$HEAD" \
   --manifest-output "$SUCCESSION_MANIFEST" \
   --lifecycle-output "$LIFECYCLE_CONTEXT" \
   --receipt-output "$SUCCESSION_PRODUCER_RECEIPT"
 
-python -m rawlsing_next.fiabc_succession_preflight \
+"$PYTHON_BIN" -m rawlsing_next.fiabc_succession_preflight \
   --manifest "$SUCCESSION_MANIFEST" \
   --lifecycle-context "$LIFECYCLE_CONTEXT" \
   --repo-root "$PWD" \
   --output "$WORK_ROOT/court/fiabc_i07_direct_preflight.json"
 
-python rawlsing_next/ee_p2x_darwin_court_driver.py \
+"$PYTHON_BIN" rawlsing_next/ee_p2x_darwin_court_driver.py \
   --preflight \
   --continuation-map WORKER_RETURNS/FIABC-T2/01_SIX_CELL_EXECUTION_MANIFEST.json \
   --current-court-contract WORKER_RETURNS/FIABC-T5/04_CURRENT_SIX_CELL_COURT_CONTRACT.json \
