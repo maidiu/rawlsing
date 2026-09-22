@@ -51,3 +51,13 @@ No production FIABC, WVS, P2, PRE553, candidate, oracle, telemetry, workload, or
   - records the user-reported fully green pytest court, the final assertion typo, and the bounded repair.
 
 No production module or semantic identity changed in this follow-up.
+## Green local qualification closure
+
+- `WORKER_RETURNS/FIABC-CANONICAL-TERMINAL-READINESS-R1/06_LOCAL_SOURCE_FREE_QUALIFICATION_GREEN.md`
+  - records the user-reported green source-free qualification at head `6e2b817c80fc8745354e4a54103ba97a04c4437d`, including the exact green terminal and stop boundary.
+- `WORKER_RETURNS/FIABC-CANONICAL-TERMINAL-READINESS-R1/02_STATIC_AUDIT.json`
+  - records final user-local qualification PASS and clears the source-free rerun requirement.
+- `WORKER_RETURNS/FIABC-CANONICAL-TERMINAL-READINESS-R1/00_RETURN.md`
+  - records final closure of the source-free canonical qualification court.
+
+No pre-candidate freeze, oracle generation/standardization, Candidate A/B/C, or measured P2X was performed by this closure update.
