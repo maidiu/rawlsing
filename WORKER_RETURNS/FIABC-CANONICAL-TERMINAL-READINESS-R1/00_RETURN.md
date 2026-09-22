@@ -123,6 +123,25 @@ The authoritative oracle export is `WVS7_LOCK2_REPLAY_IDENTITY`, and its value e
 
 See `05_LOCAL_QUALIFICATION_FINAL_ASSERTION_FOLLOWUP.md`. A fresh local rerun remains required; this Browser/GitHub worker did not execute it.
 
+## Final local source-free qualification closure
+
+The user completed the source-free local qualification from exact worker head `6e2b817c80fc8745354e4a54103ba97a04c4437d`.
+
+Reported result:
+
+```text
+163 passed, 28 subtests passed
+RAWLSING_CANONICAL_REINTEGRATION_SOURCE_FREE_QUALIFICATION_GREEN__READY_FOR_PRE_CANDIDATE_FREEZE
+```
+
+The user reported a clean worktree and confirmed the run stopped before pre-candidate freeze, oracle generation/standardization, Candidate A/B/C, and measured P2X.
+
+**Disposition: PASS. The source-free canonical qualification court is closed.**
+
+This is user-executed local evidence; the Browser/GitHub worker did not execute the local runtime itself. See `06_LOCAL_SOURCE_FREE_QUALIFICATION_GREEN.md`.
+
+The next phase is pre-candidate freeze under separate governing authorization; it was not started here.
+
 ## Runtime statement
 
 No runtime qualification was executed.
