@@ -1,0 +1,61 @@
+{
+  "schema": "PREMAIN_REP35_W3_GENERIC_REGIME_CANDIDATES@1.0.0",
+  "adoption_status": "NONE_ADOPTED__QUALIFIED_RUNTIME_OBSERVATION_BLOCKED",
+  "candidates": [
+    {
+      "id": "DTA_LATIN1_COMPAT_EXACT_TYPED_REPRESENTATION_REGIME_CANDIDATE",
+      "precedent": "LiTS-I current source-bounded positive control plus generic exact-SHA decoder allowlist",
+      "candidate_predicates": [
+        "format=DTA",
+        "exact source SHA is compatibility-allowlisted for latin1",
+        "decoder=pyreadstat 1.3.6",
+        "python=CPython 3.11.3",
+        "pyarrow=25.0.1",
+        "apply_value_formats=False",
+        "user_missing=True",
+        "typed physical material preserved without numeric coercion"
+      ],
+      "assigned_sources": [
+        "LiTS III"
+      ],
+      "current_result": "BLOCKED_PENDING_QUALIFIED_RUNTIME",
+      "not_authorized": [
+        "generic int/float/Decimal equivalence",
+        "intended text encoding claim",
+        "cross-wave semantic equivalence"
+      ]
+    },
+    {
+      "id": "SAV_NATIVE_EXACT_TYPED_REPRESENTATION_REGIME_CANDIDATE",
+      "precedent": "WVS7 current source-bounded positive control plus generic SAV physical decoder architecture",
+      "candidate_predicates": [
+        "format=SAV",
+        "decoder mode=SAV_NATIVE_GOVERNED",
+        "decoder=pyreadstat 1.3.6",
+        "python=CPython 3.11.3",
+        "pyarrow=25.0.1",
+        "apply_value_formats=False",
+        "user_missing=True",
+        "variable/dictionary identity preserved",
+        "physical missing state preserved",
+        "typed physical material preserved without numeric coercion"
+      ],
+      "assigned_sources": [
+        "Arab Barometer Wave 1",
+        "Arab Barometer Wave 2",
+        "Arab Barometer Wave 5",
+        "Arab Barometer Wave 8"
+      ],
+      "current_result": "BLOCKED_PENDING_QUALIFIED_RUNTIME",
+      "not_authorized": [
+        "generic SAV numerics are all the same",
+        "dictionary-label semantics",
+        "routing from missingness",
+        "weight semantics",
+        "native-ID identity"
+      ]
+    }
+  ],
+  "source_bounded_bridge_candidates": [],
+  "holding": "A source-bounded bridge may be proposed only after a qualified-runtime exact typed-key mismatch is observed and a broader decoder/storage regime cannot resolve it."
+}
