@@ -4,7 +4,7 @@ set -euo pipefail
 PREMAIN_PARENT="d474f8e3c9630c4bcbb10d6e8359b71ba5b3060d"
 FIABC_PARENT="91723d443f56acb05af63acc0d3a34fb9a97e3f4"
 MAIN_PARENT="25830fe7462bb9e29bc4087e6ae14f3f84cec377"
-CODE_HEAD="f6914345c9856acefba9879ff325c12ab6040b5c"
+CODE_HEAD="28b29ac728dc816eaf4ccd1e0d7a021d20bd935e"
 
 die() { printf 'RAWLSING_RECONCILED_FIABC_SOURCE_FREE_BLOCKED: %s\n' "$*" >&2; exit 2; }
 
@@ -20,7 +20,8 @@ fi
 readonly PYTHON_BIN
 
 TERMINAL_ORACLE_BLOB="6cf8d8bf8ac2d6421cd733a72a444687e241e659"
-TERMINAL_PRODUCER_BLOB="6c93b3a25e671af714ddb39ef6b335410cf4d0e7"
+TERMINAL_PRODUCER_BLOB="737230aa565b35b1cf1e1361839ba69a008b43f8"
+TERMINAL_PRODUCER_TEST_BLOB="6dca914cebf915a496e2b9000d74c038588e59e1"
 LITS_REPRESENTATION_AUTHORITY_BLOB="94a833a7d8946bf3bd43296d9fe1e2239a3aa4b9"
 LITS_REPRESENTATION_TEST_BLOB="35cbae0328b3aa695ed4ece3c979a3742f1a527d"
 DISCOVERY_EXACT_BLOB="ee0544115feb9d76c8c68b9dd773302c8fa8bb48"
@@ -32,6 +33,8 @@ TERMINAL_PREFLIGHT_TEST_BLOB="02c6dad5912fd7283cc1fc5b889cde62b9818101"
   || die "terminal-readiness LiTS oracle owner drift"
 [[ "$(git rev-parse HEAD:rawlsing_next/fiabc_final_oracle_freeze_producers.py)" == "$TERMINAL_PRODUCER_BLOB" ]] \
   || die "terminal-readiness oracle producer drift"
+[[ "$(git rev-parse HEAD:rawlsing_next/tests/test_fiabc_final_oracle_freeze_producers.py)" == "$TERMINAL_PRODUCER_TEST_BLOB" ]] \
+  || die "terminal-readiness oracle producer test drift"
 [[ "$(git rev-parse HEAD:rawlsing_next/fiabc_lits_i_representation_authority.py)" == "$LITS_REPRESENTATION_AUTHORITY_BLOB" ]] \
   || die "LiTS-I representation authority drift"
 [[ "$(git rev-parse HEAD:rawlsing_next/tests/test_fiabc_lits_i_representation_authority.py)" == "$LITS_REPRESENTATION_TEST_BLOB" ]] \
@@ -53,7 +56,7 @@ done
 [[ -z "$(git status --porcelain)" ]] || die "working tree is not clean"
 
 unexpected="$(git diff --name-only "$FIABC_PARENT"..HEAD -- rawlsing_next | \
-  grep -Ev '^(rawlsing_next/pre553_independent_parity_oracle\.py|rawlsing_next/pre553_discovery_exact\.py|rawlsing_next/fiabc_final_oracle_freeze_producers\.py|rawlsing_next/fiabc_lits_i_representation_authority\.py|rawlsing_next/fiabc_live_terminal_control\.py|rawlsing_next/tests/test_pre553_discovery_exact\.py|rawlsing_next/tests/test_fiabc_lits_i_representation_authority\.py|rawlsing_next/tests/test_fiabc_t5_live_terminal_control\.py|rawlsing_next/tests/test_fiabc_final_preflight_fanin\.py|rawlsing_next/rabochii_return_beacon\.py|rawlsing_next/rabochii_return_beacon_actionable\.py|rawlsing_next/rabochii_return_beacon_sweep\.py|rawlsing_next/tests/test_rabochii_return_beacon\.py|rawlsing_next/tests/test_rabochii_return_beacon_actionable\.py|rawlsing_next/tests/test_rabochii_return_beacon_sweep\.py)$' || true)"
+  grep -Ev '^(rawlsing_next/pre553_independent_parity_oracle\.py|rawlsing_next/pre553_discovery_exact\.py|rawlsing_next/fiabc_final_oracle_freeze_producers\.py|rawlsing_next/fiabc_lits_i_representation_authority\.py|rawlsing_next/fiabc_live_terminal_control\.py|rawlsing_next/tests/test_pre553_discovery_exact\.py|rawlsing_next/tests/test_fiabc_final_oracle_freeze_producers\.py|rawlsing_next/tests/test_fiabc_lits_i_representation_authority\.py|rawlsing_next/tests/test_fiabc_t5_live_terminal_control\.py|rawlsing_next/tests/test_fiabc_final_preflight_fanin\.py|rawlsing_next/rabochii_return_beacon\.py|rawlsing_next/rabochii_return_beacon_actionable\.py|rawlsing_next/rabochii_return_beacon_sweep\.py|rawlsing_next/tests/test_rabochii_return_beacon\.py|rawlsing_next/tests/test_rabochii_return_beacon_actionable\.py|rawlsing_next/tests/test_rabochii_return_beacon_sweep\.py)$' || true)"
 [[ -z "$unexpected" ]] || die "FIABC runtime/test drift after reconciliation: $unexpected"
 
 [[ "$(git rev-parse HEAD:.github/workflows/rabochii-return-beacon.yml)" == "$(git rev-parse "$MAIN_PARENT":.github/workflows/rabochii-return-beacon.yml)" ]] \
