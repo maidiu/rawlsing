@@ -1,0 +1,55 @@
+{
+  "schema": "PREMAIN_REP35_W5_EVS_GENERIC_REGIME_CANDIDATES@1.0.0",
+  "authority": "NONAUTHORITATIVE_CANDIDATES_ONLY__HQ_COMPARISON_REQUIRED",
+  "runtime_gate": "REPRESENTATION_FACT_BLOCKED__QUALIFIED_RUNTIME_UNAVAILABLE",
+  "candidates": [
+    {
+      "id": "RG_EVS_SAV_WINDOWS1252_EXPLICIT",
+      "sources": [
+        "EVS 1981.sav",
+        "EVS 1990.sav"
+      ],
+      "existing_physical_decoder_law": [
+        "EC01",
+        "EC02 explicit decoding"
+      ],
+      "candidate_representation_claim": "If the qualified runtime proves common Python/R5 token classes across same storage lanes, factor as reusable SAV+windows-1252 representation regime.",
+      "authorized_now": false
+    },
+    {
+      "id": "RG_EVS_SAV_UTF8_DECLARED_LATIN1_COMPAT_QUARANTINE",
+      "sources": [
+        "EVS 1999.sav",
+        "EVS 2008.sav"
+      ],
+      "existing_physical_decoder_law": "Exact-SHA latin1 compatibility allowlist already exists in pre553_physical_decoder.py; authority status COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY.",
+      "candidate_representation_claim": "Factor deterministic compatibility physical extraction separately from text semantics; representation token reuse still requires qualified-runtime proof.",
+      "authorized_now": false
+    },
+    {
+      "id": "RG_EVS_SAV_NATIVE_UTF8",
+      "sources": [
+        "EVS 2017.sav"
+      ],
+      "existing_physical_decoder_law": [
+        "EC01",
+        "EC02 native"
+      ],
+      "candidate_representation_claim": "Potential reusable native SAV/UTF-8 representation regime; cannot be generalized from declaration alone.",
+      "authorized_now": false
+    },
+    {
+      "id": "RG_SAV_NUMERIC_DOUBLE_TO_R5_FLOAT64",
+      "sources": [
+        "EVS 1981.sav",
+        "EVS 1990.sav",
+        "EVS 1999.sav",
+        "EVS 2008.sav",
+        "EVS 2017.sav"
+      ],
+      "candidate_representation_claim": "A cross-source numeric lane may exist if exact qualified observations prove decoder-emitted Python float values whose R5 keys are float64_finite (or typed missing states where applicable).",
+      "negative_law": "Do not infer from numeric equality; int, float, Decimal remain distinct typed tokens.",
+      "authorized_now": false
+    }
+  ]
+}
