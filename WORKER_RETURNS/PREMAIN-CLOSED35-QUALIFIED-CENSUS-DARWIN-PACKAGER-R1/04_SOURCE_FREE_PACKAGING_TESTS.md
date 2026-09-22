@@ -42,7 +42,7 @@ Exact blobs qualified:
 | incomplete authoritative receipt tree | PASS | result verifier requires exactly 35 source receipts regardless of PASS/BLOCKED source status |
 | result commit path spill | PASS | result helper allows exactly 35 receipt paths + six aggregate paths = 41 files |
 
-Replay summary: **24/24 hostile obligations green; 0 failed**.
+Replay summary: **24/24 hostile obligations green; 0 failed**. The automated replay used 21 grouped assertions because the three independent runtime-version obligations share one exact runtime-dictionary equality gate.
 
 The qualification is source-free. It proves packaging/rejection behavior and does **not** claim the authoritative 35-source representation census has already run.
 
