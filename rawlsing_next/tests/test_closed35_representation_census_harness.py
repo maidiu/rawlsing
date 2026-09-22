@@ -251,6 +251,31 @@ def test_historical_dependency_blob_pins_are_exactly_recoverable():
     assert by_name["lits_legacy_missing_state_enum"]["verified_blob"] == "13aa733b511dc23e00bfcdf288c5b920e3f09983"
 
 
+
+def test_every_surface_authority_locator_resolves_or_is_exact_historical_pin():
+    surfaces = h.load_surface_registry(SURFACES)
+    for surface in surfaces:
+        locator = surface["authority_locator"]
+        if ":" in locator and locator.split(":", 1)[0].isalnum() and len(locator.split(":", 1)[0]) == 40:
+            commit, authority_path = locator.split(":", 1)
+            result = subprocess.run(
+                ["git", "-C", str(REPO), "cat-file", "-e", f"{commit}:{authority_path}"],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                check=False,
+            )
+            assert result.returncode == 0, locator
+        else:
+            assert (REPO / locator).is_file(), locator
+
+
+def test_current_decoder_exposes_raw_header_and_normalized_geometry_separately():
+    source = (REPO / "rawlsing_next/pre553_physical_decoder.py").read_text(encoding="utf-8")
+    assert '"raw_layout_declarations"' in source
+    assert '"normalized_geometry"' in source
+    assert '"nominal_case_size"' in source
+    assert "automatic encoding guessing/fallback is forbidden" in source
+
 def test_source_receipt_schema_accepts_only_pass_or_blocked():
     receipt = {
         "schema": h.SOURCE_RECEIPT_SCHEMA,
