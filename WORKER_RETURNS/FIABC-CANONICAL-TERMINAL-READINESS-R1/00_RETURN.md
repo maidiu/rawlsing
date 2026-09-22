@@ -185,9 +185,45 @@ Current holding: **BLOCK pending LiTS representation-authority closure.**
 
 A candidate-neutral representation diagnostic has been added at `08_LITS_REPRESENTATION_DIAGNOSTIC.py`. See `09_LITS_REPRESENTATION_BLOCKER_HOLDING.md`.
 
+## LiTS representation-authority closure
+
+The user returned the candidate-neutral diagnostic receipt with SHA-256
+`74fc2c53610ad2af5867e4c36728604a812cf9ad3d7b0e4bceebda68fe4ac74b`.
+It established that all 57,989 observed q301_2/q301_7 cells are exact float64
+tokens for 1.0 through 7.0; the 15 exact system-missing cells already match.
+It also proved that the speculative historical helper does not match current
+typed rules because `Decimal(str(value))` carries exponent -1.
+
+A bounded successor representation authority was therefore added. It permits
+only the exact source, variables/ordinals, decoder/runtime, enumerated float64
+tokens, exact banked Decimal tokens, exact system-missing form, historical
+physical-key owner blob, and accepted projection/release/replay identities.
+The current typed-key law is unchanged and no generic coercion was introduced.
+
+Authority content hash:
+`9fce3b606413c2a5d3e9a05eda967067d191fbb31ff869d445d962bdf321393d`.
+
+See `10_LITS_REPRESENTATION_AUTHORITY_CLOSURE.md` and
+`11_LITS_REPRESENTATION_AUTHORITY_OBJECT.json`.
+
+## LiTS representation repair source-free qualification
+
+The complete governed source-free qualification passed from exact clean code
+head `d1833f9ebe363258575c6bd95737eb8f1b0f4154`:
+
+```text
+172 passed, 28 subtests passed in 21.87s
+RAWLSING_CANONICAL_REINTEGRATION_SOURCE_FREE_QUALIFICATION_GREEN__READY_FOR_PRE_CANDIDATE_FREEZE
+```
+
+No source bytes, oracle, T3 freeze, Candidate A/B/C, or measured P2X were run.
+See `12_LITS_REPRESENTATION_SOURCE_FREE_QUALIFICATION_GREEN.md`.
+
 ## Runtime statement
 
-No runtime qualification was executed.
+The latest repair executed the complete source-free qualification at exact code
+head `d1833f9ebe363258575c6bd95737eb8f1b0f4154`. No source-backed runtime court
+was executed by this repair worker.
 
 This worker also did **not**:
 
@@ -201,14 +237,11 @@ This worker also did **not**:
 
 ## Next lawful local command
 
-Run exactly:
-
-```bash
-bash WORKER_RETURNS/CANONICAL-REINTEGRATION-FIABC-R1/01_SOURCE_FREE_LOCAL_QUALIFICATION.sh
-```
-
-Then stop and inspect the source-free qualification result before any source/oracle/candidate work.
+Rebind both launch guards to the exact newly qualified code/closure heads,
+fast-forward the existing governed P2X execution branch, and then rerun the
+candidate-neutral pre-candidate script. Candidate A/B/C and measured P2X remain
+forbidden until that script reaches its exact green terminal.
 
 ## Terminal
 
-`FIABC_CANONICAL_TERMINAL_READINESS_REPAIR_R1__RETURNED__50_77_SYMBOL_BINDING_REPAIRED__PYTHON3_PORTABILITY_REPAIRED__LOCAL_SOURCE_FREE_QUALIFICATION_REQUIRED`
+`FIABC_LITS_REPRESENTATION_AUTHORITY_REPAIR__SOURCE_FREE_QUALIFIED__READY_FOR_GOVERNED_EXECUTION_BRANCH_REBIND`

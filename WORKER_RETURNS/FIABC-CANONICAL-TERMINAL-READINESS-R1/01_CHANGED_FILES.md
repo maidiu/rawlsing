@@ -73,3 +73,32 @@ No pre-candidate freeze, oracle generation/standardization, Candidate A/B/C, or 
   - records the lawful pre-candidate entry and representation blocker.
 
 A speculative `exact_cell()` production repair was explored in intermediate commits and then fully reverted. Final production/test/qualification-script blobs are restored to their previously qualified content; no unqualified numeric coercion remains in the tree.
+
+## LiTS representation-authority closure and qualification
+
+- `rawlsing_next/fiabc_lits_i_representation_authority.py`
+  - binds only the exact LiTS-I source, q301_2/q301_7 identities, seven
+    decoder-observed float64 tokens, exact banked Decimal tokens, exact system
+    missing, historical owner blob, and accepted projection/release/replay;
+  - states explicit no-generic-coercion, no-other-source/variable, no-label,
+    no-missingness-inference, no-semantic-remap, and no-candidate limits.
+- `rawlsing_next/fiabc_final_oracle_freeze_producers.py`
+  - loads the exact accepted historical physical-key owner by commit/blob;
+  - applies only the bounded representation bridge;
+  - fails closed unless the accepted C11 release and replay identities are
+    reproduced exactly;
+  - freezes the representation authority into LiTS court/provenance material.
+- `rawlsing_next/tests/test_fiabc_lits_i_representation_authority.py`
+  - adds focused hostile/source-free coverage, including the complete banked
+    projection conversion.
+- `WORKER_RETURNS/CANONICAL-REINTEGRATION-FIABC-R1/01_SOURCE_FREE_LOCAL_QUALIFICATION.sh`
+  - pins the new production/test blobs and includes them in the complete court.
+- `10_LITS_REPRESENTATION_AUTHORITY_CLOSURE.md`
+- `11_LITS_REPRESENTATION_AUTHORITY_OBJECT.json`
+- `12_LITS_REPRESENTATION_SOURCE_FREE_QUALIFICATION_GREEN.md`
+
+Exact qualified code head: `d1833f9ebe363258575c6bd95737eb8f1b0f4154`.
+Result: `172 passed, 28 subtests passed`, exact green terminal emitted.
+
+No source-backed oracle, T3, Candidate A/B/C, or measured P2X ran during this
+repair or qualification.
