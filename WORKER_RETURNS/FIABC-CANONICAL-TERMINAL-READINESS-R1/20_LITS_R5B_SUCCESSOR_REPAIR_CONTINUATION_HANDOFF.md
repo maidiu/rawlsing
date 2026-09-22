@@ -19,12 +19,17 @@ The producer had progressed through a sequence of real, fail-closed defects:
    source, regressing frozen WVS7 truth;
 6. the accepted base C11 release lacked q310/q311 and therefore could not
    satisfy the adopted runtime binding, which names the R5B successor release.
+7. the adopted successor stores q310/q311 response events as exact Decimal
+   witnesses while the frozen F02 predicate dialect retains integer
+   source-native tokens.
 
-Items 1–5 are repaired and source-free tested on the branch. Item 6 is the
-current source-backed verification boundary. Commit `152c4885...` reconstructs
-the exact adopted R5B successor without a second source decode. The live source
-run must prove that reconstruction and then expose the next concrete terminal,
-if any.
+Items 1–7 are repaired and source-free tested on the branch. Commit
+`152c4885...` reconstructs the exact adopted R5B successor without a second
+source decode. Commit `e4faa552...` binds the D03 risk sets to exactly the base
+and adopted successor releases. Commit `8ea52e74...` adds the exact, opt-in F02
+event-representation successor authority. A third live source pass must now
+prove the expected 49 supported / 1 valid-empty envelope or expose the next
+concrete terminal.
 
 This is still a **pre-candidate court**. It is not A/B/C execution, measured
 P2X, performance selection, promotion, or certification.
@@ -63,7 +68,7 @@ identity layers are checked separately.
 
 - Repository: `https://github.com/maidiu/rawlsing.git`
 - Continue branch: `agent/rabochii-premain-fiabc-lits-representation-authority-repair-r1`
-- Source-free code checkpoint: `e4faa55207c5a29bc2e2484dc0e7ae1fd535da21`
+- Source-free code checkpoint: `8ea52e744aeb238f503d62ddc030380ff31aa84e`
 - Continue from the fetched repair-branch tip containing this handoff and its
   adjacent continuation pointer receipt; the branch tip must descend from the
   source-free code checkpoint.
@@ -78,7 +83,7 @@ git fetch origin \
   agent/rabochii-premain-fiabc-terminal-readiness-r1 \
   agent/rabochii-premain-fiabc-lits-representation-authority-repair-r1 \
   agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1
-git merge-base --is-ancestor e4faa55207c5a29bc2e2484dc0e7ae1fd535da21 origin/agent/rabochii-premain-fiabc-lits-representation-authority-repair-r1
+git merge-base --is-ancestor 8ea52e744aeb238f503d62ddc030380ff31aa84e origin/agent/rabochii-premain-fiabc-lits-representation-authority-repair-r1
 git show origin/agent/rabochii-premain-fiabc-lits-representation-authority-repair-r1:WORKER_RETURNS/FIABC-CANONICAL-TERMINAL-READINESS-R1/20_LITS_R5B_SUCCESSOR_REPAIR_CONTINUATION_HANDOFF.md >/dev/null
 test "$(git rev-parse origin/agent/rabochii-premain-fiabc-terminal-readiness-r1)" = a8d4faac8912e9c03840d3f72a4f2ca8c83d6903
 test "$(git rev-parse origin/agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1)" = 78caf7eb4396dd576cf478c860372b7e26455cd9
@@ -94,11 +99,17 @@ The repair branch contains these consecutive checkpoints:
 4. `e4faa55207c5a29bc2e2484dc0e7ae1fd535da21` — exact D03
    R2/R7/R27 risk sets carried onto the adopted R5B successor under an explicit
    two-release preservation authority; no other release or target is admitted.
+5. `8ea52e744aeb238f503d62ddc030380ff31aa84e` — exact F02
+   q310/q311 runtime-event representation authority. It binds only six frozen
+   question/value pairs on the adopted successor release from integer
+   source-native tokens to exact Decimal event witnesses; generic numeric
+   coercion and every other source/release/scope/question/value/state remain
+   forbidden.
 
-The focused source-free court at `e4faa552...` is green:
+The focused source-free court at `8ea52e74...` is green:
 
 ```text
-68 passed in 20.36s
+71 passed
 ```
 
 The exact test command was:
@@ -112,6 +123,18 @@ The exact test command was:
   rawlsing_next/tests/test_pre553_independent_parity_oracle.py
 ```
 
+The canonical qualification pytest body, extended with the new LiTS authority
+tests, is also green:
+
+```text
+207 passed, 28 subtests passed in 27.49s
+```
+
+The historical `test_fiabc_w3_i04_runtime_packaging_rebind.py` still asserts an
+obsolete WVS lock and the pre-successor materializer blob. It is not silently
+rewritten here. The eventual full qualification wrapper must explicitly rebind
+the current materializer identity and preserve current WVS successor truth.
+
 ## Exact adopted identities
 
 - LiTS source SHA-256: `7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09`
@@ -124,7 +147,7 @@ The exact test command was:
 - Adopted R5B commit: `648a39ad5bed42f66e066410af5869604d29c12d`
 - Active runtime binding: `a5f36a81843fe2ebab0b5cccb369ce76035f842b93e602613b8b9f3a81103308`
 
-## Current unresolved boundary
+## Source-backed evidence and current unresolved boundary
 
 A fresh common LiTS source pass from `152c4885...` completed after about 46
 minutes with no A/B/C candidate process. It successfully reconstructed and
@@ -144,16 +167,43 @@ accepted D03 R2/R7/R27 denominators 24,897 / 28,325 / 24,630. The exact cause
 was a release-scope mismatch: the D03 overlay authority named only base release
 `e6c954...`, while I05 correctly executed adopted successor `192926...`.
 
-Commit `e4faa552...` repairs that boundary source-free. It admits exactly the
-base and adopted successor releases, binds the R5B preservation evidence, and
-continues to reject arbitrary releases and q310/q311/other-target expansion.
-The required next evidence is a fresh common LiTS source rerun. Therefore the
-source-backed pass is **not yet claimed green**.
+Commit `e4faa552...` repaired that boundary source-free. A second fresh common
+LiTS source pass then completed after about 46 minutes with no A/B/C candidate
+process. It proved the exact D03 repair and emitted:
+
+```text
+candidate_count = 50
+query_role_count = 77
+candidate_processes_started = 0
+coverage_state_counts = {"EVALUATED_SUPPORTED": 31, "EVALUATED_VALID_EMPTY": 19}
+fact_state_counts = {"SUPPORTED": 36, "ZERO_SUPPORT": 24}
+```
+
+All five P0 positive controls, the P1 joint-dependence candidate, and all 25 P4
+joint-cell candidates were supported. The single P3 conditional-reversal
+candidate was the expected valid-empty. All 18 P2 higher-order candidates were
+incorrectly valid-empty because their q310/q311 conditioner events never
+matched.
+
+The exact cause was representation, not missing data or risk-set authority:
+the adopted R5B `exact_cell()` path turns source floats into `Decimal(str(x))`,
+and the exact legacy facade stores canonical `{"$exact_decimal":"1"}` event
+witnesses. The frozen F02 dialect correctly retains integer
+`source_native_value` tokens. Predecessor code compared those exact objects
+directly, so all q310/q311 predicates selected zero respondents.
+
+Commit `8ea52e74...` repairs only that boundary. Authority content hash
+`96f32bef2d098ae67debd3487cc0f30d8fe4b2a3aacb775c037b854ef499b688`
+binds the exact six q310/q311 question/value pairs on successor release
+`192926...`; it adds no generic int/float/Decimal equivalence. The required next
+evidence is a third fresh common LiTS source rerun. The accepted source-backed
+49/1 terminal is therefore **not yet claimed green**.
 
 Failed-run evidence root on this host:
 
 ```text
 /private/tmp/fiabc-lits-successor-source.JN5rJj
+/private/tmp/fiabc-lits-d03-successor-rerun.oN1nb1
 ```
 
 That path is not portable. On this or another machine, rerun exactly:
@@ -232,7 +282,8 @@ Required runtime gate: CPython 3.11.3, `pyreadstat==1.3.6`, `pyarrow==25.0.1`.
   facade globally.
 - Current I03 operation authority and D03 exact risk-set overlay integrated.
 - Historical authority snapshot fallback bounded to exact adopted evidence.
-- q310/q311 scalar-token machinery made runtime-authority opt-in.
+- q310/q311 scalar-token and exact event-representation machinery made
+  runtime-authority opt-in.
 - Retained I03 fact-preimage closure repaired.
 - ASTRA cross-schema hash-domain defect repaired while preserving the immutable
   historical product identity.
@@ -243,7 +294,13 @@ Required runtime gate: CPython 3.11.3, `pyreadstat==1.3.6`, `pyarrow==25.0.1`.
   and isolated the D03 release-scope mismatch before the accepted terminal.
 - D03 R2/R7/R27 overlay extended to exactly the adopted R5B successor with
   explicit preservation and negative limits.
-- Focused source-free court green at 68 tests on `e4faa552...`.
+- Second successor-backed source pass proved the D03 repair and isolated the
+  exact F02 event-representation mismatch at 31 supported / 19 valid-empty.
+- Exact six-binding F02 representation successor authority added with hostile
+  negatives for wrong release, response ref, witness, and unadopted/tampered
+  authority.
+- Focused source-free court green at 71 tests on `8ea52e74...`; canonical
+  qualification pytest body green at 207 tests plus 28 subtests.
 - No A/B/C process and no measured P2X run by this repair.
 - Governed execution branch preserved at `78caf7eb...`.
 
@@ -251,7 +308,7 @@ Required runtime gate: CPython 3.11.3, `pyreadstat==1.3.6`, `pyarrow==25.0.1`.
 
 Proceed in this order and stop at the first failure:
 
-1. Finish or reproduce the fresh common LiTS source pass.
+1. Run the third fresh common LiTS source pass from `8ea52e74...`.
 2. If it fails, make the narrowest authority-preserving repair, add a hostile
    source-free regression, rerun the focused court, commit, and push.
 3. Repeat until the source pass emits the accepted 49/1 LiTS envelope and a
