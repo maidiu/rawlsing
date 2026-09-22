@@ -130,6 +130,11 @@ def _sha256_file(path: Path) -> str:
     return digest.hexdigest()
 
 
+def _typed_r5_digest(value: Any) -> str:
+    """Fingerprint physical metadata without stringifying typed mapping keys."""
+    return _sha256_bytes(r5_canonical_bytes(R5.encode(value)))
+
+
 def _git(repo_root: Path, *args: str, check: bool = True) -> str:
     result = subprocess.run(
         ["git", "-C", str(repo_root), *args],
@@ -543,38 +548,56 @@ def _metadata_receipt(source: Mapping[str, Any], source_path: Path, metadata: An
         with source_path.open("rb") as handle:
             raw_header = _sav_header_layout(handle.read(176))
 
-    metadata_maps = {
-        "missing_ranges": decoder_jsonable(getattr(metadata, "missing_ranges", {}) or {}),
-        "missing_user_values": decoder_jsonable(getattr(metadata, "missing_user_values", {}) or {}),
-        "variable_value_labels": decoder_jsonable(getattr(metadata, "variable_value_labels", {}) or {}),
-        "original_variable_types": decoder_jsonable(getattr(metadata, "original_variable_types", {}) or {}),
-        "readstat_variable_types": decoder_jsonable(getattr(metadata, "readstat_variable_types", {}) or {}),
-        "variable_storage_width": decoder_jsonable(getattr(metadata, "variable_storage_width", {}) or {}),
-        "variable_display_width": decoder_jsonable(getattr(metadata, "variable_display_width", {}) or {}),
-        "mr_sets": decoder_jsonable(getattr(metadata, "mr_sets", {}) or {}),
+    raw_metadata_maps = {
+        "missing_ranges": getattr(metadata, "missing_ranges", {}) or {},
+        "missing_user_values": getattr(metadata, "missing_user_values", {}) or {},
+        "variable_value_labels": getattr(metadata, "variable_value_labels", {}) or {},
+        "original_variable_types": getattr(metadata, "original_variable_types", {}) or {},
+        "readstat_variable_types": getattr(metadata, "readstat_variable_types", {}) or {},
+        "variable_storage_width": getattr(metadata, "variable_storage_width", {}) or {},
+        "variable_display_width": getattr(metadata, "variable_display_width", {}) or {},
+        "mr_sets": getattr(metadata, "mr_sets", {}) or {},
     }
     fingerprints = {
-        name: _sha256_bytes(_canonical_json_bytes(value))
-        for name, value in metadata_maps.items()
+        name: _typed_r5_digest(value)
+        for name, value in raw_metadata_maps.items()
     }
     counts = {
-        "variables_with_missing_ranges": len(metadata_maps["missing_ranges"]),
-        "variables_with_missing_user_values": len(metadata_maps["missing_user_values"]),
-        "variables_with_value_label_dictionaries": len(metadata_maps["variable_value_labels"]),
-        "native_mr_set_count": len(metadata_maps["mr_sets"]),
+        "variables_with_missing_ranges": len(raw_metadata_maps["missing_ranges"]),
+        "variables_with_missing_user_values": len(raw_metadata_maps["missing_user_values"]),
+        "variables_with_value_label_dictionaries": len(raw_metadata_maps["variable_value_labels"]),
+        "native_mr_set_count": len(raw_metadata_maps["mr_sets"]),
     }
+    ordered_inventory = [{"ordinal": i + 1, "name": name} for i, name in enumerate(names)]
+    variable_metadata = []
+    for ordinal, name in enumerate(names, 1):
+        declarations = decoder_missing_declarations(metadata, name, source["source_format"])
+        labels = raw_metadata_maps["variable_value_labels"].get(name, {}) or {}
+        variable_metadata.append({
+            "ordinal": ordinal,
+            "name": name,
+            "original_variable_type": decoder_jsonable(raw_metadata_maps["original_variable_types"].get(name)),
+            "readstat_variable_type": decoder_jsonable(raw_metadata_maps["readstat_variable_types"].get(name)),
+            "storage_width": decoder_jsonable(raw_metadata_maps["variable_storage_width"].get(name)),
+            "display_width": decoder_jsonable(raw_metadata_maps["variable_display_width"].get(name)),
+            "missing_declarations": list(declarations),
+            "missing_declarations_r5_sha256": _typed_r5_digest(list(declarations)),
+            "value_dictionary_entry_count": len(labels),
+            "value_dictionary_r5_sha256": _typed_r5_digest(labels),
+        })
     return {
         "number_rows": int(getattr(metadata, "number_rows", 0) or 0),
         "logical_variable_count": len(names),
-        "ordered_variable_inventory_sha256": _sha256_bytes(
-            _canonical_json_bytes([{"ordinal": i + 1, "name": name} for i, name in enumerate(names)])
-        ),
+        "ordered_variable_inventory": ordered_inventory,
+        "ordered_variable_inventory_sha256": _sha256_bytes(_canonical_json_bytes(ordered_inventory)),
         "file_encoding": decoder_jsonable(getattr(metadata, "file_encoding", None)),
         "file_format": decoder_jsonable(getattr(metadata, "file_format", None)),
         "raw_sav_fixed_header": raw_header,
-        "physical_metadata_map_sha256": fingerprints,
+        "physical_metadata_map_r5_sha256": fingerprints,
         "physical_metadata_counts": counts,
-        "mr_sets": metadata_maps["mr_sets"],
+        "variable_physical_metadata": variable_metadata,
+        "mr_sets": decoder_jsonable(raw_metadata_maps["mr_sets"]),
+        "mr_sets_r5_sha256": _typed_r5_digest(raw_metadata_maps["mr_sets"]),
     }
 
 
@@ -700,6 +723,8 @@ def observe_source(*, source: Mapping[str, Any], source_path_text: str | None,
     actual_sha = _sha256_file(source_path)
     if actual_sha != source["canonical_sha256"]:
         return _blocked_source_receipt(source, reason="CANONICAL_SHA256_MISMATCH", runtime=runtime, manifest_hash=manifest_hash)
+    if source_path.stat().st_size != source["size_bytes"]:
+        return _blocked_source_receipt(source, reason="CANONICAL_SIZE_MISMATCH", runtime=runtime, manifest_hash=manifest_hash)
     _, metadata = _metadata_only(source, source_path)
     meta = _metadata_receipt(source, source_path, metadata)
     shape = _shape_check(source, meta)
