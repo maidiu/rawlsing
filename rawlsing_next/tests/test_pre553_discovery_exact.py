@@ -1,5 +1,6 @@
 import pytest
 
+from rawlsing_next.pre553_empirical_authority import Pre553AuthorityError
 from rawlsing_next.pre553_empirical_objects import (
     DiscoveryAuthority,
     ExactRef,
@@ -10,6 +11,7 @@ from rawlsing_next.pre553_discovery_exact import (
     COVERAGE_CLAIM,
     ExactBoundedCoverageError,
     ExactBoundedDiscoveryError,
+    _allowed_validation_kinds,
     execute_exact_bounded_discovery,
 )
 from rawlsing_next.tests.test_pre553_empirical_query import (
@@ -130,6 +132,64 @@ def _rule(rule_id, family, form, **kwargs):
         "form": form,
         **kwargs,
     }
+
+
+def test_rules_only_validation_authority_is_exact_and_fail_closed():
+    kinds = {
+        "DISTRIBUTION_DIFFERS_FROM_BASELINE",
+        "JOINT_NOT_PRODUCT_OF_MARGINALS",
+        "CONDITIONAL_REVERSAL",
+        "TARGET_CELL_SUPPORTED",
+    }
+    rules = {"rules": tuple({"kind": kind} for kind in sorted(kinds))}
+    assert _allowed_validation_kinds(rules) == kinds
+    assert _allowed_validation_kinds({}) == set()
+    with pytest.raises(Pre553AuthorityError, match="unknown"):
+        _allowed_validation_kinds({"rules": ({"kind": "NMI"},)})
+    with pytest.raises(Pre553AuthorityError, match="contradict"):
+        _allowed_validation_kinds({
+            "kinds": ("TARGET_CELL_SUPPORTED",),
+            "rules": ({"kind": "CONDITIONAL_REVERSAL"},),
+        })
+
+
+def test_rules_only_validation_authority_executes_only_its_literal_kind():
+    source = _build_source("i05-rules-only", [
+        {"id": "R1", "responses": {"X": 1, "Y": 1}},
+        {"id": "R2", "responses": {"X": 0, "Y": 0}},
+    ])
+    qauth, dauth = _query_authority("i05-rules-only"), _d_auth("i05-rules-only-discovery")
+    all_p = _branch_predicate(source, qauth, tag="all")
+    x1 = _predicate(source, qauth, _response_leaf(source, qauth, "X", 1), tag="x1")
+    yq = _query(source, qauth, all_p, ("Y",), tag="y")
+    validation = {"kind": "DISTRIBUTION_DIFFERS_FROM_BASELINE"}
+    grammar = _grammar(
+        operation="I03-OP-i05-rules-only-discovery",
+        atoms=[_atom("ALL", all_p, "BRANCH"), _atom("X1", x1, "RESPONSE")],
+        templates=[_qt("Y", yq)],
+        rules=[_rule(
+            "pair", "PAIR_RESPONSE_COTRAVEL", "SINGLE_ATOM",
+            atom_ids=("X1",), baseline_atom_id="ALL", query_template_id="Y",
+            validation=validation,
+        )],
+    )
+    base_authority = _discovery_authority(source, grammar, dauth)
+    authority = DiscoveryAuthority(
+        typed_state=base_authority.typed_state,
+        authority_snapshot_refs=base_authority.authority_snapshot_refs,
+        dependency_refs=base_authority.dependency_refs,
+        producer_replay_locator_or_reference_root=(
+            base_authority.producer_replay_locator_or_reference_root
+        ),
+        **{
+            **dict(base_authority.semantic_fields),
+            "validation_rules": {"rules": (validation,)},
+        },
+    )
+    result = _execute(
+        source, qauth, dauth, grammar, (all_p, x1), (yq,), authority=authority
+    )
+    assert result.candidate_count == result.covered_candidate_count == 1
 
 
 def test_xor_zero_unary_signal_is_reached_without_unary_screen():

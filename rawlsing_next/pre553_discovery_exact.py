@@ -183,6 +183,47 @@ def _text(value: Any, name: str) -> str:
     return value.strip()
 
 
+def _allowed_validation_kinds(validation_rules: Any) -> set[str]:
+    """Read only exact declared validation kinds, including rules-only owners."""
+    envelope = _mapping(validation_rules, "validation_rules")
+    declared: set[str] | None = None
+    if "kinds" in envelope:
+        declared = {
+            _text(value, "validation_rules.kinds member")
+            for value in _sequence(
+                envelope["kinds"], "validation_rules.kinds", allow_empty=True
+            )
+        }
+        if not declared <= VALIDATION_KINDS:
+            raise Pre553AuthorityError(
+                "discovery validation authority declares an unknown validation kind"
+            )
+
+    ruled: set[str] | None = None
+    if "rules" in envelope:
+        ruled = set()
+        for raw in _sequence(
+            envelope["rules"], "validation_rules.rules", allow_empty=True
+        ):
+            rule = _mapping(raw, "validation_rules rule")
+            kind = _text(rule.get("kind"), "validation_rules rule kind")
+            if kind not in VALIDATION_KINDS:
+                raise Pre553AuthorityError(
+                    "discovery validation authority rule has an unknown kind"
+                )
+            ruled.add(kind)
+
+    if declared is None and ruled is None:
+        return set()
+    if declared is None:
+        return ruled or set()
+    if ruled is not None and not ruled <= declared:
+        raise Pre553AuthorityError(
+            "discovery validation authority kinds contradict its explicit rules"
+        )
+    return declared
+
+
 def _derived_ref(kind: str, namespace: str, material: Any) -> ExactRef:
     digest = semantic_hash(material)
     return ExactRef(kind, f"urn:rawlsing:pre553:i05:{namespace}:sha256:{digest}", digest)
@@ -987,7 +1028,7 @@ def execute_exact_bounded_discovery(
     templates = _catalog_templates(definition, query_template_catalog)
     _validate_catalog_scope(discovery_authority, atoms, templates)
     candidates = _compile_frontier(definition, atoms, templates)
-    allowed_validation = set(_mapping(discovery_authority.validation_rules, "validation_rules").get("kinds", ()))
+    allowed_validation = _allowed_validation_kinds(discovery_authority.validation_rules)
     used_validation = {c.validation["kind"] for c in candidates}
     if not used_validation <= allowed_validation:
         raise Pre553AuthorityError("candidate validation rule exceeds exact discovery validation authority")
