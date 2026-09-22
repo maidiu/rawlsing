@@ -170,7 +170,7 @@
     "WORKER_RETURNS/FIABC-FINAL-LAUNCH-FANIN-R1/02_PRE_CANDIDATE_LOCAL_PREFLIGHT.sh",
     "WORKER_RETURNS/FIABC-FINAL-LAUNCH-FANIN-R1/03_MEASURED_SIX_CELL_RUN.sh"
   ],
-  "next_local_command": "bash WORKER_RETURNS/CANONICAL-REINTEGRATION-FIABC-R1/01_SOURCE_FREE_LOCAL_QUALIFICATION.sh",
+  "next_local_command": null,
   "terminal": "FIABC_CANONICAL_TERMINAL_READINESS_REPAIR_R1__RETURNED__50_77_SYMBOL_BINDING_REPAIRED__PYTHON3_PORTABILITY_REPAIRED__LOCAL_SOURCE_FREE_QUALIFICATION_REQUIRED",
   "local_qualification_followup": {
     "user_reported_head": "97329d51aac6bec495114b5e89e60260c2fcc846",
@@ -231,5 +231,27 @@
     "production_semantics_changed": false,
     "worker_runtime_rerun_executed": false,
     "rerun_required": true
-  }
+  },
+  "final_local_source_free_qualification": {
+    "user_reported_head": "6e2b817c80fc8745354e4a54103ba97a04c4437d",
+    "worktree_clean": true,
+    "pytest": {
+      "passed": 163,
+      "failed": 0,
+      "subtests_passed": 28
+    },
+    "final_terminal": "RAWLSING_CANONICAL_REINTEGRATION_SOURCE_FREE_QUALIFICATION_GREEN__READY_FOR_PRE_CANDIDATE_FREEZE",
+    "status": "PASS",
+    "source_free_qualification_closed": true,
+    "stopped_before": {
+      "pre_candidate_freeze": true,
+      "lits_oracle_generation": true,
+      "wvs_oracle_standardization_or_freeze": true,
+      "candidate_abc_execution": true,
+      "measured_p2x": true
+    },
+    "executed_by_browser_github_worker": false,
+    "evidence_character": "USER_REPORTED_LOCAL_EXECUTION"
+  },
+  "next_phase": "PRE_CANDIDATE_FREEZE__SEPARATE_GOVERNING_AUTHORIZATION_REQUIRED"
 }
