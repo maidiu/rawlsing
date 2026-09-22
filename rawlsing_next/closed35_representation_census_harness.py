@@ -465,14 +465,33 @@ def _lits_bridge_check(surface: Mapping[str, str], source_sha: str, observation:
 
 
 def _wvs_representation_check(surface: Mapping[str, str], observation: Mapping[str, Any]) -> bool:
+    """Verify the exact R1J numeric representation lane without flattening missing state.
+
+    R6S constructs rule keys by first applying the bounded native-code -> float64
+    representation authority and then classifying that exact float against the
+    source variable's missing declarations. Negative Q291 codes therefore may
+    lawfully inhabit a FORMAT_USER_MISSING_* physical state. System missing is a
+    separate exact rule and does not consume the numeric representation authority.
+    """
     from rawlsing_next.fiabc_lm2_r1j_wvs7_representation_authority import AUTHORIZED_R5_TOKENS
     allowed = {r5_canonical_bytes(token) for token in AUTHORIZED_R5_TOKENS.values()}
     for item in observation["physical_domain"]:
-        if item["physical_missing_state"] != PhysicalMissingState.OBSERVED_STORAGE_VALUE.value:
+        state = item["physical_missing_state"]
+        declaration = R5.decode(item["source_missing_declaration_r5"])
+        raw_token = r5_canonical_bytes(item["raw_value_r5"])
+        if state == PhysicalMissingState.SYSTEM_MISSING.value:
+            if R5.decode(item["raw_value_r5"]) is not None or declaration is not None:
+                return False
+            continue
+        if raw_token not in allowed:
             return False
-        if r5_canonical_bytes(item["raw_value_r5"]) not in allowed:
+        if state == PhysicalMissingState.OBSERVED_STORAGE_VALUE.value and declaration is not None:
             return False
-        if R5.decode(item["source_missing_declaration_r5"]) is not None:
+        if state in {
+            PhysicalMissingState.FORMAT_USER_MISSING_VALUE.value,
+            PhysicalMissingState.FORMAT_USER_MISSING_RANGE.value,
+            PhysicalMissingState.FORMAT_EXTENDED_MISSING.value,
+        } and declaration is None:
             return False
     return True
 
