@@ -158,6 +158,33 @@ Both pre-candidate and measured launch scripts now bind the actual green-qualifi
 
 Do **not** relax the scripts to execute from the terminal-readiness worker branch. See `07_EXECUTION_BRANCH_TRANSITION_AND_PREFLIGHT_GUARD_REPAIR.md`.
 
+## LiTS typed-representation blocker after lawful pre-candidate entry
+
+The governed P2X execution branch was fast-forwarded correctly to `e8909490cdc619beb884029cdabdc7027db663cf`. The user then ran pre-candidate preflight.
+
+Reported passes:
+
+- Lock-1 runtime;
+- exact LiTS/WVS source hashes;
+- WVS candidate-neutral standardization.
+
+LiTS candidate-neutral oracle production then failed closed with:
+
+```text
+SourceBackedC11FacadeError:
+unbound response value/state; no label/frequency/missingness inference
+```
+
+No T3 freeze, succession preflight, Candidate A/B/C, or measured P2X ran.
+
+Documentary comparison establishes a physical-key contract transition: the accepted real LiTS-B pass used owner blob `7c509c...` with canonicalized value keys, while the current facade `8a7611...` uses the exact typed R5 physical-key contract. No LiTS-specific representation authority currently closes that transition.
+
+A speculative numeric-normalization patch was investigated and explicitly removed before user adoption because it lacked sufficient exact representation proof.
+
+Current holding: **BLOCK pending LiTS representation-authority closure.**
+
+A candidate-neutral representation diagnostic has been added at `08_LITS_REPRESENTATION_DIAGNOSTIC.py`. See `09_LITS_REPRESENTATION_BLOCKER_HOLDING.md`.
+
 ## Runtime statement
 
 No runtime qualification was executed.
