@@ -374,7 +374,13 @@ def _lits_accepted_legacy_projection(
 
 
 def _lits_accepted_legacy_repository(
-    *, incidence: Any, projection: Any, repo_root: Path, neutral_root: Path, backend: Any
+    *,
+    incidence: Any,
+    projection: Any,
+    repo_root: Path,
+    neutral_root: Path,
+    backend: Any,
+    banked: Any,
 ):
     """Replay the exact accepted LiTS C11 route under bounded successor authority."""
     legacy, legacy_projection = _lits_accepted_legacy_projection(
@@ -387,9 +393,11 @@ def _lits_accepted_legacy_repository(
         source_sha256=incidence.source_sha256,
         row_count=incidence.row_count,
         cell_iter_factory=lambda: (
-            authorized_lits_replay_cell(
-                source_sha256=incidence.source_sha256,
-                cell=cell,
+            banked.exact_cell(
+                authorized_lits_replay_cell(
+                    source_sha256=incidence.source_sha256,
+                    cell=cell,
+                )
             )
             for cell in incidence.iter_cells(batch_size=20_000)
         ),
@@ -444,7 +452,7 @@ def _neutral_lits_material(
 
     ctx = types.SimpleNamespace(work_root=neutral_root)
     services = types.SimpleNamespace(repo_root=repo_root)
-    projection, _pctx, _banked = backend._lits_projection(ctx, services, {}, incidence)
+    projection, _pctx, banked = backend._lits_projection(ctx, services, {}, incidence)
     runtime = backend._lits_runtime(ctx, services, projection)
     if (
         backend.R6O_RUNTIME_CATALOG != LITS_RUNTIME_CATALOG
@@ -459,6 +467,7 @@ def _neutral_lits_material(
         repo_root=repo_root,
         neutral_root=neutral_root,
         backend=backend,
+        banked=banked,
     )
     catalog = RuntimeObjectCatalog.from_documents(
         authority_documents=runtime["authorities"],

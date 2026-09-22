@@ -167,7 +167,7 @@ def test_legacy_facade_is_loaded_only_from_exact_commit_and_blob(tmp_path):
 def test_actual_banked_projection_converts_to_exact_accepted_legacy_owner(tmp_path):
     ctx = types.SimpleNamespace(work_root=tmp_path / "banked")
     services = types.SimpleNamespace(repo_root=REPO)
-    projection, _context, _banked = backend._lits_projection(ctx, services, {}, None)
+    projection, _context, banked = backend._lits_projection(ctx, services, {}, None)
     legacy, converted = _lits_accepted_legacy_projection(
         projection=projection,
         repo_root=REPO,
@@ -183,6 +183,12 @@ def test_actual_banked_projection_converts_to_exact_accepted_legacy_owner(tmp_pa
     ) == legacy.physical_value_binding_key(
         Decimal(1), PhysicalMissingState.OBSERVED_STORAGE_VALUE
     )
+    coordinate = _cell(
+        variable_name="country",
+        variable_ordinal=98,
+        raw_value=112.0,
+    )
+    assert banked.exact_cell(coordinate).raw_value == Decimal("112.0")
 
 
 def test_authority_snapshot_is_positive_narrow_and_candidate_neutral():
@@ -227,10 +233,16 @@ def test_producer_helper_pins_accepted_release_before_returning(monkeypatch, tmp
             )
         ),
     )
+    replayed = []
+
+    def build_repository(stream, projection):
+        replayed.extend(stream.kwargs["cell_iter_factory"]())
+        return "repo", good_release
+
     legacy = types.SimpleNamespace(
         GovernedC11Projection=lambda **kwargs: LegacyProjection(),
         ExactPhysicalCellStream=LegacyStream,
-        build_source_backed_c11_repository=lambda stream, projection: ("repo", good_release),
+        build_source_backed_c11_repository=build_repository,
     )
     fake_backend = types.SimpleNamespace(
         _deploy=lambda *args: tmp_path / "legacy.py",
@@ -239,7 +251,21 @@ def test_producer_helper_pins_accepted_release_before_returning(monkeypatch, tmp
     incidence = types.SimpleNamespace(
         source_sha256=SOURCE_SHA256,
         row_count=29002,
-        iter_cells=lambda **kwargs: iter(()),
+        iter_cells=lambda **kwargs: iter((
+            _cell(raw_value=1.0),
+            _cell(variable_name="country", variable_ordinal=98, raw_value=112.0),
+        )),
+    )
+    banked = types.SimpleNamespace(
+        exact_cell=lambda cell: PhysicalCell(
+            row_ordinal=cell.row_ordinal,
+            variable_ordinal=cell.variable_ordinal,
+            variable_name=cell.variable_name,
+            raw_value=Decimal(str(cell.raw_value)) if type(cell.raw_value) is float else cell.raw_value,
+            missing_state=cell.missing_state,
+            source_missing_declaration=cell.source_missing_declaration,
+            raw_value_label=cell.raw_value_label,
+        )
     )
     projection = types.SimpleNamespace()
     monkeypatch.setattr(
@@ -252,6 +278,8 @@ def test_producer_helper_pins_accepted_release_before_returning(monkeypatch, tmp
         repo_root=REPO,
         neutral_root=tmp_path,
         backend=fake_backend,
+        banked=banked,
     )
     assert repository == "repo"
     assert release is good_release
+    assert [cell.raw_value for cell in replayed] == [Decimal("1.0"), Decimal("112.0")]
