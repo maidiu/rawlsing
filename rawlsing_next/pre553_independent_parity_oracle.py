@@ -34,6 +34,8 @@ WVS7_SOURCE_SHA256 = "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c2672
 
 LITS_SOURCE_ROWS = 29002
 LITS_SOURCE_VARIABLES = 1198
+LITS_CANDIDATE_COUNT = 50
+LITS_QUERY_ROLE_COUNT = 77
 WVS7_SOURCE_ROWS = 97220
 WVS7_SOURCE_VARIABLES = 613
 
@@ -314,11 +316,11 @@ def _validate_terminal_identity(product: Mapping[str, Any], source: str) -> None
     for key in ("product_identity", "semantic_identity", "replay_identity", "exact_output_identity"):
         _sha(product.get(key), f"expected_learned_product.{key}")
     coverage = _mapping(product.get("coverage"), "expected_learned_product.coverage")
-    expected_candidates = 50 if source == "LITS_I" else 46
+    expected_candidates = LITS_CANDIDATE_COUNT if source == "LITS_I" else 46
     if coverage.get("candidate_count") != expected_candidates:
         raise ParityOracleError("I05 terminal coverage candidate count drift")
     if source == "LITS_I":
-        if coverage.get("query_role_count") != 77:
+        if coverage.get("query_role_count") != LITS_QUERY_ROLE_COUNT:
             raise ParityOracleError("LiTS I05 terminal coverage must bind 77 query roles")
         if coverage.get("typed_terminal_counts") != {
             "EVALUATED_SUPPORTED": 49,
@@ -348,9 +350,9 @@ def _validate_frontier(source: str, frontier: Mapping[str, Any], facts: Sequence
         fact_hashes.append(candidate_hash)
 
     if source == "LITS_I":
-        if frontier.get("candidate_count") != 50 or len(hashes) != 50:
+        if frontier.get("candidate_count") != LITS_CANDIDATE_COUNT or len(hashes) != LITS_CANDIDATE_COUNT:
             raise ParityOracleError("LiTS frontier must contain exactly 50 candidates")
-        if frontier.get("query_role_count") != 77:
+        if frontier.get("query_role_count") != LITS_QUERY_ROLE_COUNT:
             raise ParityOracleError("LiTS frontier must bind exactly 77 query roles")
         if frontier.get("frontier_seal") != LITS_FRONTIER_SEAL:
             raise ParityOracleError("LiTS frontier seal drift")
@@ -520,9 +522,9 @@ def build_lits_i_oracle(
     }:
         raise ParityOracleError("LiTS accepted prior typed terminal counts drift")
     prior_frontier = _mapping(product.get("frontier"), "prior_product.frontier")
-    if prior_frontier.get("candidate_count") != 50:
+    if prior_frontier.get("candidate_count") != LITS_CANDIDATE_COUNT:
         raise ParityOracleError("LiTS accepted prior frontier candidate count drift")
-    if prior_frontier.get("query_role_count") != 77:
+    if prior_frontier.get("query_role_count") != LITS_QUERY_ROLE_COUNT:
         raise ParityOracleError("LiTS accepted prior frontier role count drift")
     if prior_frontier.get("preexecution_seal") != LITS_FRONTIER_SEAL:
         raise ParityOracleError("LiTS accepted prior frontier seal drift")
@@ -537,7 +539,7 @@ def build_lits_i_oracle(
     if execution.get("run_2_output_sha256") != LITS_LEARNED_PRODUCT_IDENTITY:
         raise ParityOracleError("LiTS accepted prior run-2 product drift")
     preoutcome = _mapping(replay.get("preoutcome"), "prior_replay_receipt.preoutcome")
-    if preoutcome.get("candidate_count") != 50 or preoutcome.get("query_role_count") != 77:
+    if preoutcome.get("candidate_count") != LITS_CANDIDATE_COUNT or preoutcome.get("query_role_count") != LITS_QUERY_ROLE_COUNT:
         raise ParityOracleError("LiTS accepted prior replay frontier cardinality drift")
     if preoutcome.get("frontier_seal") != LITS_FRONTIER_SEAL:
         raise ParityOracleError("LiTS accepted prior replay frontier seal drift")
