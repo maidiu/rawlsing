@@ -66,10 +66,13 @@ ADDED_WORKTREE=1
 
 rm -rf "$WT/$RESULT_DIR"
 mkdir -p "$WT/$RESULT_DIR/source_receipts"
-for i in $(seq -w 1 35); do
+n=1
+while [[ "$n" -le 35 ]]; do
+  printf -v i "%02d" "$n"
   src="$OUTPUT_ROOT/source_receipts/SOURCE_${i}_REPRESENTATION_RECEIPT.json"
   [[ -f "$src" ]] || die "missing source receipt $i"
   cp "$src" "$WT/$RESULT_DIR/source_receipts/"
+  n=$((n + 1))
 done
 for name in "${AGGREGATES[@]}"; do
   [[ -f "$OUTPUT_ROOT/$name" ]] || die "missing aggregate $name"
@@ -81,15 +84,18 @@ if find "$WT/$RESULT_DIR" -type f \( -iname '*.sav' -o -iname '*.dta' -o -iname 
 fi
 
 git -C "$WT" add -- "$RESULT_DIR"
-mapfile -t staged < <(git -C "$WT" diff --cached --name-only)
-if [[ "${#staged[@]}" -eq 0 ]]; then
+staged_text="$(git -C "$WT" diff --cached --name-only)"
+if [[ -z "$staged_text" ]]; then
   echo "CLOSED35_POSTRUN_COMMIT no-op: results branch already contains byte-identical receipts"
   echo "branch: $RESULT_BRANCH"
   echo "head: $(git -C "$WT" rev-parse HEAD)"
   exit 0
 fi
-[[ "${#staged[@]}" -eq 41 ]] || die "expected exactly 41 staged receipt/aggregate files, got ${#staged[@]}"
-for path in "${staged[@]}"; do
+staged_count="$(printf '%s\n' "$staged_text" | sed '/^$/d' | wc -l | tr -d ' ')"
+[[ "$staged_count" -eq 41 ]] || die "expected exactly 41 staged receipt/aggregate files, got $staged_count"
+
+while IFS= read -r path; do
+  [[ -n "$path" ]] || continue
   case "$path" in
     "$RESULT_DIR"/source_receipts/SOURCE_??_REPRESENTATION_RECEIPT.json) ;;
     "$RESULT_DIR"/CLOSED35_REPRESENTATION_OBSERVATIONS.json) ;;
@@ -100,7 +106,9 @@ for path in "${staged[@]}"; do
     "$RESULT_DIR"/CLOSED35_CENSUS_SUMMARY.json) ;;
     *) die "disallowed staged path: $path" ;;
   esac
-done
+done <<EOF
+$staged_text
+EOF
 
 git -C "$WT" commit -m "PREMAIN CLOSED35: capture authoritative qualified census receipts"
 NEW_HEAD="$(git -C "$WT" rev-parse HEAD)"
