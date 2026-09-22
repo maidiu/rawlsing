@@ -1,0 +1,288 @@
+{
+  "schema": "PREMAIN_REP35_W3_SOURCE_REPRESENTATION_CENSUS@1.0.0",
+  "worker": "PREMAIN REP35 W3 — LiTS III / Arab Barometer Physical Representation Regime Court — R1",
+  "repository": "maidiu/rawlsing",
+  "base_commit": "ef8eff9625f269173ac2c17af3f92d913babb275",
+  "branch": "agent/rabochii-premain-rep35-lits3-arab-r1",
+  "source_identity_verification": {
+    "status": "PASS__ALL_FIVE_EXACT_SHA_MATCH",
+    "method": "Library materialization into cloud runtime followed by SHA-256 verification; LiTS III extracted only from exact surveys.zip member surveys/LiTS_III.dta",
+    "raw_bytes_committed": false
+  },
+  "qualified_runtime": {
+    "required": {
+      "cpython": "3.11.3",
+      "pyreadstat": "1.3.6",
+      "pyarrow": "25.0.1"
+    },
+    "available_cloud_runtime": {
+      "cpython": "3.13.5",
+      "pandas": "2.2.3",
+      "numpy": "2.3.5",
+      "pyreadstat": "UNAVAILABLE",
+      "pyarrow": "UNAVAILABLE"
+    },
+    "exact_runtime_attempt": {
+      "tool": "/opt/pyvenv/bin/uv python install 3.11.3",
+      "result": "FAILED",
+      "failure": "DNS failure while fetching cpython-3.11.3 standalone asset after 3 retries"
+    },
+    "authority_holding": "No source representation observation may be promoted under this runtime. No alternate decoder/version is authorized."
+  },
+  "typed_representation_contract": {
+    "current_base_lits_i_authority": "SOURCE_BOUNDED_POSITIVE_CONTROL_ONLY",
+    "current_base_wvs7_authority": "SOURCE_BOUNDED_POSITIVE_CONTROL_ONLY",
+    "generic_numeric_coercion_authorized": false,
+    "int_float_decimal_equivalence_authorized": false,
+    "source_backed_facade_requires_exact_physical_key": true,
+    "base_contains_assigned_arab_realization_modules": false
+  },
+  "sources": [
+    {
+      "source": "LiTS III",
+      "canonical_filename": "LiTS_III.dta",
+      "library_alias": "surveys.zip::surveys/LiTS_III.dta",
+      "sha256": "368ae5d07a44975a2f0a9ce3b1e564988a966b2632e28075c56a24d60065bcc8",
+      "size_bytes": 170487994,
+      "format": "DTA",
+      "decoder_mode": "DTA_DECODE_LATIN1_COMPAT_PHYSICAL_ONLY",
+      "edge_classes": [
+        "EC01",
+        "EC02",
+        "EC05",
+        "EC07",
+        "EC10",
+        "EC12",
+        "EC14"
+      ],
+      "historical_facts": {
+        "authority_status": "PREEXISTING_ACCEPTED_PHYSICAL_EVIDENCE_ONLY__NOT_CURRENT_QUALIFIED_RUNTIME_OBSERVATION",
+        "rows": 51206,
+        "variables": 1290,
+        "numeric_variables_scanned": 1235,
+        "variables_with_system_missing": 1178,
+        "system_missing_cells": 41915435,
+        "extended_stata_missing_observed": 0,
+        "identity": "ID injective in prior accepted scan; hhid system-missing on 28625 rows; country+hhid noninjective among present rows",
+        "country": "string carrier with 34 observed values in prior accepted scan",
+        "routing_topology": "308 PR* + 308 SR* variables; five visit/outcome blocks; repeated household slots",
+        "weights": [
+          "weight_population",
+          "weight_sample",
+          "weight_one",
+          "PSU_number"
+        ]
+      },
+      "current_authoritative_variable_census": "NOT_RUN__QUALIFIED_RUNTIME_UNAVAILABLE",
+      "decoder_observed_python_representation": "UNKNOWN",
+      "exact_r5_representation_class_token_form": "UNKNOWN",
+      "current_missing_declaration_census": "UNKNOWN",
+      "current_dictionary_topology_census": "UNKNOWN",
+      "disposition": "REPRESENTATION_FACT_BLOCKED",
+      "blocker": "QUALIFIED_RUNTIME_UNAVAILABLE__CPYTHON_3_11_3_PYREADSTAT_1_3_6_PYARROW_25_0_1_NOT_REPRODUCIBLE_IN_AVAILABLE_CLOUD_RUNTIME"
+    },
+    {
+      "source": "Arab Barometer Wave 1",
+      "canonical_filename": "Arab Barometer Wave 1.sav",
+      "library_alias": "ABI_English.sav",
+      "sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+      "size_bytes": 1531099,
+      "format": "SAV",
+      "decoder_mode": "SAV_NATIVE_GOVERNED",
+      "edge_classes": [
+        "EC01",
+        "EC07",
+        "EC10",
+        "EC14"
+      ],
+      "historical_facts": {
+        "authority_status": "PREEXISTING_ACCEPTED_DOCUMENTARY_PHYSICAL_EVIDENCE_ONLY__NOT_CURRENT_QUALIFIED_RUNTIME_OBSERVATION",
+        "duplicate_native_id_fixture": "SER=972 at distinct row ordinals 3021 and 3450",
+        "literal_text_fixture": "Q2311 code 98 has accepted decoded source string can\\u0092t choose",
+        "routing": "COUNTRY=4 documentary Morocco scope; q715withoutmorocco / V715onlymorocco kept distinct",
+        "design": "exact weight/design estimand remains bounded unknown"
+      },
+      "current_authoritative_variable_census": "NOT_RUN__QUALIFIED_RUNTIME_UNAVAILABLE",
+      "decoder_observed_python_representation": "UNKNOWN",
+      "exact_r5_representation_class_token_form": "UNKNOWN",
+      "current_missing_declaration_census": "UNKNOWN",
+      "current_dictionary_topology_census": "UNKNOWN",
+      "disposition": "REPRESENTATION_FACT_BLOCKED",
+      "blocker": "QUALIFIED_RUNTIME_UNAVAILABLE__CPYTHON_3_11_3_PYREADSTAT_1_3_6_PYARROW_25_0_1_NOT_REPRODUCIBLE_IN_AVAILABLE_CLOUD_RUNTIME"
+    },
+    {
+      "source": "Arab Barometer Wave 2",
+      "canonical_filename": "Arab Barometer Wave 2.sav",
+      "library_alias": "ABII_English.sav",
+      "sha256": "6529841b97bd56463490d810ad24ceaa4866066d12e4651a7081682d413606a1",
+      "size_bytes": 7192678,
+      "format": "SAV",
+      "decoder_mode": "SAV_NATIVE_GOVERNED",
+      "edge_classes": [
+        "EC01",
+        "EC05",
+        "EC09",
+        "EC10",
+        "EC12",
+        "EC14"
+      ],
+      "historical_facts": {
+        "authority_status": "PREEXISTING_ACCEPTED_DOCUMENTARY_PHYSICAL_EVIDENCE_ONLY__NOT_CURRENT_QUALIFIED_RUNTIME_OBSERVATION",
+        "rows": 12782,
+        "logical_variables": 468,
+        "native_spss_mr_sets": 0,
+        "q2062_hostile_classes": [
+          "SYSTEM_MISSING",
+          "ORDINARY_STORED_ZERO_WITH_SOURCE_DICTIONARY_LABEL_0_MISSING"
+        ],
+        "ranked_slots": [
+          "Q2061(rank1)",
+          "Q2062(rank2)"
+        ],
+        "preserved_carriers": [
+          "QID",
+          "COUNTRY",
+          "SAMP",
+          "WT"
+        ],
+        "bounded_unknowns": [
+          "Q2062_CODE0_EXACT_SEMANTIC_REASON",
+          "Q101_CODE0_EXACT_SEMANTIC_REASON",
+          "WT_ESTIMAND",
+          "WT_NORMALIZATION"
+        ]
+      },
+      "current_authoritative_variable_census": "NOT_RUN__QUALIFIED_RUNTIME_UNAVAILABLE",
+      "decoder_observed_python_representation": "UNKNOWN",
+      "exact_r5_representation_class_token_form": "UNKNOWN",
+      "current_missing_declaration_census": "UNKNOWN",
+      "current_dictionary_topology_census": "UNKNOWN",
+      "disposition": "REPRESENTATION_FACT_BLOCKED",
+      "blocker": "QUALIFIED_RUNTIME_UNAVAILABLE__CPYTHON_3_11_3_PYREADSTAT_1_3_6_PYARROW_25_0_1_NOT_REPRODUCIBLE_IN_AVAILABLE_CLOUD_RUNTIME"
+    },
+    {
+      "source": "Arab Barometer Wave 5",
+      "canonical_filename": "Arab Barometer Wave 5.sav",
+      "library_alias": "ArabBarometer_WaveV_English_v2.sav",
+      "sha256": "6a5cbad637ce1546833a1d4812ba6d1e8d75f85b5b199b0cf3ec5cf456068dbc",
+      "size_bytes": 11637259,
+      "format": "SAV",
+      "decoder_mode": "SAV_NATIVE_GOVERNED",
+      "edge_classes": [
+        "EC01",
+        "EC05",
+        "EC07",
+        "EC09",
+        "EC10",
+        "EC11",
+        "EC12"
+      ],
+      "historical_facts": {
+        "authority_status": "PREEXISTING_ACCEPTED_DOCUMENTARY_PHYSICAL_EVIDENCE_ONLY__NOT_CURRENT_QUALIFIED_RUNTIME_OBSERVATION",
+        "rows": 27850,
+        "logical_variables": 359,
+        "storage_slots": 361,
+        "native_spss_mr_sets": 0,
+        "identity": "native ID noninjective; 3 COUNTRY+ID duplicate pairs in accepted packet",
+        "design_carriers": [
+          "WT",
+          "PSU",
+          "STRATUM",
+          "SAMPLE",
+          "MODE"
+        ],
+        "system_missing_design_carriers": [
+          "WT",
+          "PSU"
+        ],
+        "q101_source_dictionary_codes": [
+          -9,
+          -8,
+          1,
+          2,
+          3,
+          4,
+          97,
+          98,
+          99
+        ],
+        "q101_observed_codes": [
+          1,
+          2,
+          3,
+          4,
+          98,
+          99
+        ],
+        "q101_unobserved_extra_dictionary_codes": [
+          -9,
+          -8,
+          97
+        ],
+        "unicode_witness": {
+          "variable": "E2001B",
+          "row_ordinal": 19250,
+          "literal_text": "ظريف",
+          "storage_slots": 3
+        }
+      },
+      "current_authoritative_variable_census": "NOT_RUN__QUALIFIED_RUNTIME_UNAVAILABLE",
+      "decoder_observed_python_representation": "UNKNOWN",
+      "exact_r5_representation_class_token_form": "UNKNOWN",
+      "current_missing_declaration_census": "UNKNOWN",
+      "current_dictionary_topology_census": "UNKNOWN",
+      "disposition": "REPRESENTATION_FACT_BLOCKED",
+      "blocker": "QUALIFIED_RUNTIME_UNAVAILABLE__CPYTHON_3_11_3_PYREADSTAT_1_3_6_PYARROW_25_0_1_NOT_REPRODUCIBLE_IN_AVAILABLE_CLOUD_RUNTIME"
+    },
+    {
+      "source": "Arab Barometer Wave 8",
+      "canonical_filename": "Arab Barometer Wave 8.sav",
+      "library_alias": "ArabBarometer_WaveVIII_English_v3.sav",
+      "sha256": "a5e83a953f03dd890e076a51da473051f1cfd1ca2e8ab93c2172eeb2517af998",
+      "size_bytes": 12275728,
+      "format": "SAV",
+      "decoder_mode": "SAV_NATIVE_GOVERNED",
+      "edge_classes": [
+        "EC01",
+        "EC05",
+        "EC07",
+        "EC10",
+        "EC12",
+        "EC14"
+      ],
+      "historical_facts": {
+        "authority_status": "PREEXISTING_ACCEPTED_DOCUMENTARY_PHYSICAL_EVIDENCE_ONLY__NOT_CURRENT_QUALIFIED_RUNTIME_OBSERVATION",
+        "rows": 15627,
+        "logical_variables": 690,
+        "storage_slots": 692,
+        "native_spss_mr_sets": 0,
+        "id_zero_count": 2400,
+        "block_id_ordinary_blank_count": 2408,
+        "block_id_system_missing_count": 0,
+        "q1_equals_stratum_all_rows": true,
+        "documentary_routes": [
+          "Q1A_PAL:COUNTRY==15",
+          "Q622C_IRQ_*:COUNTRY==7+SPLIT_A"
+        ],
+        "design_carriers": [
+          "WT",
+          "PSU",
+          "STRATUM"
+        ]
+      },
+      "current_authoritative_variable_census": "NOT_RUN__QUALIFIED_RUNTIME_UNAVAILABLE",
+      "decoder_observed_python_representation": "UNKNOWN",
+      "exact_r5_representation_class_token_form": "UNKNOWN",
+      "current_missing_declaration_census": "UNKNOWN",
+      "current_dictionary_topology_census": "UNKNOWN",
+      "disposition": "REPRESENTATION_FACT_BLOCKED",
+      "blocker": "QUALIFIED_RUNTIME_UNAVAILABLE__CPYTHON_3_11_3_PYREADSTAT_1_3_6_PYARROW_25_0_1_NOT_REPRODUCIBLE_IN_AVAILABLE_CLOUD_RUNTIME"
+    }
+  ],
+  "court_holding": {
+    "source_bounded_bridge_justified": false,
+    "reason": "No qualified-runtime physical→typed mismatch was observed. A bridge cannot be inferred from missing representation evidence.",
+    "generic_regime_promoted": false,
+    "generic_candidates_may_be_recorded_as_unadopted_hypotheses": true
+  }
+}
