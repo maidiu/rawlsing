@@ -1,26 +1,37 @@
 {
   "schema": "FIABC_LITS_R5B_SUCCESSOR_CONTINUATION_POINTER@1.0.0",
-  "status": "SOURCE_PASS_IN_PROGRESS__NOT_CLAIMED_GREEN",
+  "status": "D03_SUCCESSOR_SCOPE_REPAIRED_SOURCE_FREE__SOURCE_RERUN_REQUIRED__NOT_CLAIMED_GREEN",
   "repository": "https://github.com/maidiu/rawlsing.git",
   "continue_branch": "agent/rabochii-premain-fiabc-lits-representation-authority-repair-r1",
   "handoff_payload_commit": "97392da847542ef515d309b73f6046dae3503777",
-  "source_free_code_checkpoint": "152c48852937ed112e1de9ef5d390c79f2fca610",
+  "source_free_code_checkpoint": "e4faa55207c5a29bc2e2484dc0e7ae1fd535da21",
   "diagnostic_line_head": "a8d4faac8912e9c03840d3f72a4f2ca8c83d6903",
   "governed_p2x_execution_head": "78caf7eb4396dd576cf478c860372b7e26455cd9",
   "governed_p2x_execution_branch_advanced": false,
   "focused_source_free_result": {
     "status": "PASS",
-    "pytest_tests_passed": 67
+    "pytest_tests_passed": 68
   },
-  "live_source_pass_at_handoff": {
+  "latest_source_pass": {
     "portable": false,
     "host_local_root": "/private/tmp/fiabc-lits-successor-source.JN5rJj",
     "candidate_processes_started": 0,
-    "terminal_observed": false,
-    "restart_required_on_other_machine": true
+    "terminal_observed": true,
+    "candidate_count": 50,
+    "query_role_count": 77,
+    "coverage_state_counts": {
+      "EVALUATED_MISSING_OR_CONFLICTING_AUTHORITY": 50
+    },
+    "empirical_fact_state_counts": {
+      "UNRESOLVED": 36,
+      "ZERO_SUPPORT": 24
+    },
+    "diagnosis": "D03_R2_R7_R27_AUTHORITY_WAS_SCOPED_TO_BASE_RELEASE_NOT_ADOPTED_R5B_SUCCESSOR",
+    "repair_commit": "e4faa55207c5a29bc2e2484dc0e7ae1fd535da21",
+    "rerun_required": true
   },
   "continuation_document": "WORKER_RETURNS/FIABC-CANONICAL-TERMINAL-READINESS-R1/20_LITS_R5B_SUCCESSOR_REPAIR_CONTINUATION_HANDOFF.md",
-  "next_action": "FINISH_OR_REPRODUCE_COMMON_LITS_SOURCE_PASS__FIX_FIRST_CONCRETE_FAILURE__BANK_AND_PUSH__NO_ABC_OR_MEASURED_P2X",
+  "next_action": "RERUN_COMMON_LITS_SOURCE_PASS_FROM_E4FAA552__FIX_FIRST_CONCRETE_FAILURE__BANK_AND_PUSH__NO_ABC_OR_MEASURED_P2X",
   "wave_program_law": "WAVE_SPECIFIC_AUTHORITY_AND_OUTPUTS != WAVE_SPECIFIC_GENERIC_CODE",
   "remaining_wave_accounting": {
     "governed_pairs": 35,

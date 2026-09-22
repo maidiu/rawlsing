@@ -63,7 +63,7 @@ identity layers are checked separately.
 
 - Repository: `https://github.com/maidiu/rawlsing.git`
 - Continue branch: `agent/rabochii-premain-fiabc-lits-representation-authority-repair-r1`
-- Source-free code checkpoint: `152c48852937ed112e1de9ef5d390c79f2fca610`
+- Source-free code checkpoint: `e4faa55207c5a29bc2e2484dc0e7ae1fd535da21`
 - Continue from the fetched repair-branch tip containing this handoff and its
   adjacent continuation pointer receipt; the branch tip must descend from the
   source-free code checkpoint.
@@ -78,7 +78,7 @@ git fetch origin \
   agent/rabochii-premain-fiabc-terminal-readiness-r1 \
   agent/rabochii-premain-fiabc-lits-representation-authority-repair-r1 \
   agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1
-git merge-base --is-ancestor 152c48852937ed112e1de9ef5d390c79f2fca610 origin/agent/rabochii-premain-fiabc-lits-representation-authority-repair-r1
+git merge-base --is-ancestor e4faa55207c5a29bc2e2484dc0e7ae1fd535da21 origin/agent/rabochii-premain-fiabc-lits-representation-authority-repair-r1
 git show origin/agent/rabochii-premain-fiabc-lits-representation-authority-repair-r1:WORKER_RETURNS/FIABC-CANONICAL-TERMINAL-READINESS-R1/20_LITS_R5B_SUCCESSOR_REPAIR_CONTINUATION_HANDOFF.md >/dev/null
 test "$(git rev-parse origin/agent/rabochii-premain-fiabc-terminal-readiness-r1)" = a8d4faac8912e9c03840d3f72a4f2ca8c83d6903
 test "$(git rev-parse origin/agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1)" = 78caf7eb4396dd576cf478c860372b7e26455cd9
@@ -91,11 +91,14 @@ The repair branch contains these consecutive checkpoints:
 1. `3e4fad869e1b4fbfb410ec4812147d5c44bdc60f` — typed LiTS authority repairs.
 2. `b52a990b00e296a7d133b38b212a4f96d4da311f` — source-specific terminal-count domains; LiTS uses `coverage_state`, WVS7 preserves frozen `typed_state`, unknown sources fail closed.
 3. `152c48852937ed112e1de9ef5d390c79f2fca610` — exact adopted R5B successor construction from the already-decoded LiTS incidence, with historical base candidate/release/replay verification retained as an intermediate.
+4. `e4faa55207c5a29bc2e2484dc0e7ae1fd535da21` — exact D03
+   R2/R7/R27 risk sets carried onto the adopted R5B successor under an explicit
+   two-release preservation authority; no other release or target is admitted.
 
-The focused source-free court at `152c4885...` is green:
+The focused source-free court at `e4faa552...` is green:
 
 ```text
-67 passed in 17.98s
+68 passed in 20.36s
 ```
 
 The exact test command was:
@@ -123,15 +126,37 @@ The exact test command was:
 
 ## Current unresolved boundary
 
-A fresh common LiTS source pass was started from `152c4885...` with no A/B/C candidate process. At the time this handoff was written, it was still CPU-bound in the full base-release materialization phase and had emitted neither a pass nor a failure. Therefore the source-backed pass is **not yet claimed green**.
+A fresh common LiTS source pass from `152c4885...` completed after about 46
+minutes with no A/B/C candidate process. It successfully reconstructed and
+validated the exact base and successor candidate/release/replay layers, then
+reached common I05. Its terminal was:
 
-Same-host ephemeral run root:
+```text
+candidate_count = 50
+query_role_count = 77
+candidate_processes_started = 0
+coverage_state_counts = {"EVALUATED_MISSING_OR_CONFLICTING_AUTHORITY": 50}
+fact_state_counts = {"UNRESOLVED": 36, "ZERO_SUPPORT": 24}
+```
+
+The emitted facts exposed full-source denominators of 29,002 instead of the
+accepted D03 R2/R7/R27 denominators 24,897 / 28,325 / 24,630. The exact cause
+was a release-scope mismatch: the D03 overlay authority named only base release
+`e6c954...`, while I05 correctly executed adopted successor `192926...`.
+
+Commit `e4faa552...` repairs that boundary source-free. It admits exactly the
+base and adopted successor releases, binds the R5B preservation evidence, and
+continues to reject arbitrary releases and q310/q311/other-target expansion.
+The required next evidence is a fresh common LiTS source rerun. Therefore the
+source-backed pass is **not yet claimed green**.
+
+Failed-run evidence root on this host:
 
 ```text
 /private/tmp/fiabc-lits-successor-source.JN5rJj
 ```
 
-That path is not portable. On another machine, rerun exactly:
+That path is not portable. On this or another machine, rerun exactly:
 
 ```bash
 repo="$PWD"
@@ -214,7 +239,11 @@ Required runtime gate: CPython 3.11.3, `pyreadstat==1.3.6`, `pyarrow==25.0.1`.
 - WVS7 source-specific terminal-count regression repaired and anchored to its
   frozen oracle.
 - Exact R5B driver/support deployment and successor constitution added.
-- Focused source-free court green at 67 tests on `152c4885...`.
+- First successor-backed source pass proved exact base/successor construction
+  and isolated the D03 release-scope mismatch before the accepted terminal.
+- D03 R2/R7/R27 overlay extended to exactly the adopted R5B successor with
+  explicit preservation and negative limits.
+- Focused source-free court green at 68 tests on `e4faa552...`.
 - No A/B/C process and no measured P2X run by this repair.
 - Governed execution branch preserved at `78caf7eb...`.
 
