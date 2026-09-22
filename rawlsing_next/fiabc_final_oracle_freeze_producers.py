@@ -15,7 +15,9 @@ from rawlsing_next.pre553_empirical_objects import canonicalize, semantic_hash
 from rawlsing_next.pre553_independent_parity_oracle import (
     FreezeContext,
     LITS_ASTRA_D04_R2_COMMIT,
+    LITS_CANDIDATE_COUNT,
     LITS_FRONTIER_SEAL,
+    LITS_QUERY_ROLE_COUNT,
     LITS_LEARNED_PRODUCT_IDENTITY,
     LITS_SEMANTIC_REPLAY_IDENTITY,
     LITS_SOURCE_SHA256,
