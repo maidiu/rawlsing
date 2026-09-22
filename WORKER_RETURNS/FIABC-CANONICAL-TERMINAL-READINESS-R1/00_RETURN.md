@@ -142,6 +142,22 @@ This is user-executed local evidence; the Browser/GitHub worker did not execute 
 
 The next phase is pre-candidate freeze under separate governing authorization; it was not started here.
 
+## Execution branch transition holding
+
+The subsequent local pre-candidate attempt failed closed before source access because the launch scripts still carried the historical `aa155257...` qualified-head guard and required the governed P2X execution branch.
+
+Repository history confirms the branch requirement is intentional, while the old code-head guard is stale.
+
+The governed next step is therefore:
+
+1. keep the dedicated execution-branch identity `agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1`;
+2. fast-forward that existing branch from its old ancestor head to this repaired terminal-readiness line;
+3. run pre-candidate preflight from that execution branch.
+
+Both pre-candidate and measured launch scripts now bind the actual green-qualified code head `6e2b817c80fc8745354e4a54103ba97a04c4437d` plus qualification-closure head `cbda295ec2e265709f1634b643e27abf704582d3`, and permit after-green drift only inside the terminal-readiness return directory and final launch-pack directory.
+
+Do **not** relax the scripts to execute from the terminal-readiness worker branch. See `07_EXECUTION_BRANCH_TRANSITION_AND_PREFLIGHT_GUARD_REPAIR.md`.
+
 ## Runtime statement
 
 No runtime qualification was executed.
