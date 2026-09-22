@@ -402,10 +402,18 @@ def test_rerun_resume_does_not_reinvoke_completed_source_observer(monkeypatch, t
                  qualified_code_head="a" * 40, observer=forbidden_observer)
 
 
-def test_source_receipt_failure_does_not_prepopulate_observation_results():
+def test_input_registry_contains_no_authoritative_observation_payloads():
     registry = h.load_source_registry(REGISTRY)
-    assert all("observed" not in json.dumps(source).lower() or "observed" in source["accepted_physical_hazards"].lower()
-               for source in registry["sources"])
+    observational_keys = {
+        "physical_domain",
+        "physical_binding_key",
+        "decoder_observed_python_type",
+        "r5_token",
+        "classification",
+        "exact_join",
+    }
+    for source in registry["sources"]:
+        assert not observational_keys.intersection(source)
 
 
 def test_harness_import_graph_has_no_candidate_or_measured_p2x_imports():
