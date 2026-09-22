@@ -338,34 +338,6 @@ def _neutral_lits_authority_identity() -> Mapping[str, Any]:
     }
 
 
-def _lits_banked_exact_cell_stream(incidence: Any, banked_module: Any):
-    """Replay the accepted LiTS physical representation seam exactly.
-
-    The banked LiTS builder is deployed by the backend from the pinned
-    c51b56779ab9d79126619b7733d41f5253c8150f blob.  Its exact_cell()
-    converts decoder-observed Python floats to Decimal(str(value)) while
-    preserving row/slot identity and physical missing-state witnesses.
-    That normalization is part of the accepted LiTS replay path; bypassing it
-    changes PHYSICAL_BINDING_SCHEMA keys and falsely creates unbound states.
-    """
-    from rawlsing_next.pre553_source_backed_c11_facade import ExactPhysicalCellStream
-
-    normalizer = getattr(banked_module, "exact_cell", None)
-    if not callable(normalizer):
-        raise FinalOracleProducerError("accepted LiTS banked exact-cell normalizer absent")
-    return ExactPhysicalCellStream(
-        source_sha256=incidence.source_sha256,
-        row_count=incidence.row_count,
-        cell_iter_factory=lambda: (
-            normalizer(cell) for cell in incidence.iter_cells(batch_size=20_000)
-        ),
-        transport_identity=(
-            "LITS_I_ACCEPTED_BANKED_EXACT_CELL_REPLAY__"
-            "c51b56779ab9d79126619b7733d41f5253c8150f"
-        ),
-    )
-
-
 def _neutral_lits_material(
     *,
     source_path: Path,
@@ -416,8 +388,7 @@ def _neutral_lits_material(
     ):
         raise FinalOracleProducerError("LiTS accepted runtime identity constants drift")
 
-    exact_stream = _lits_banked_exact_cell_stream(incidence, _banked)
-    repository, release = build_source_backed_c11_repository(exact_stream, projection)
+    repository, release = build_source_backed_c11_repository(incidence, projection)
     catalog = RuntimeObjectCatalog.from_documents(
         authority_documents=runtime["authorities"],
         predicate_documents=runtime["predicates"],
