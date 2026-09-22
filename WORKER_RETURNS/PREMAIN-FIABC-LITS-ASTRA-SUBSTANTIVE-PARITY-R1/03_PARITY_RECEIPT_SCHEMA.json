@@ -1,0 +1,160 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:rawlsing:fiabc:lits-astra-substantive-parity-receipt:1.0.0",
+  "title": "FIABC LiTS ASTRA Substantive Parity Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "status",
+    "accepted_astra_inputs",
+    "accepted_astra_source_identity",
+    "current_d03_authority_content_hash",
+    "current_execution_identity",
+    "current_replay_identity",
+    "expected_empirical_summary_identity",
+    "observed_empirical_summary_identity",
+    "section_results",
+    "section_identities",
+    "historical_current_whole_object_hash_equality_required",
+    "whole_object_hashes_compared_across_schema_domains",
+    "candidate_processes_started",
+    "candidate_outputs_seen",
+    "candidate_owned_state_reused",
+    "oracle_freeze_authorized",
+    "parity_receipt_identity"
+  ],
+  "properties": {
+    "schema": {
+      "const": "FIABC_LITS_ASTRA_SUBSTANTIVE_PARITY_RECEIPT@1.0.0"
+    },
+    "status": {
+      "const": "PASS__CURRENT_LITS_EMPIRICAL_SUBSTANCE_EXACTLY_CONSERVES_ACCEPTED_ASTRA_D04_R2"
+    },
+    "accepted_astra_inputs": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "commit",
+          "path",
+          "git_blob_sha"
+        ],
+        "properties": {
+          "commit": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{40}$"
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "git_blob_sha": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{40}$"
+          }
+        }
+      }
+    },
+    "accepted_astra_source_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source",
+        "sha256",
+        "rows",
+        "variables"
+      ],
+      "properties": {
+        "source": {
+          "const": "LITS_I"
+        },
+        "sha256": {
+          "const": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09"
+        },
+        "rows": {
+          "const": 29002
+        },
+        "variables": {
+          "const": 1198
+        }
+      }
+    },
+    "current_d03_authority_content_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "current_execution_identity": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "current_replay_identity": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "expected_empirical_summary_identity": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "observed_empirical_summary_identity": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "section_results": {
+      "type": "object",
+      "additionalProperties": {
+        "const": "PASS"
+      }
+    },
+    "section_identities": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "status",
+          "expected_identity",
+          "observed_identity"
+        ],
+        "properties": {
+          "status": {
+            "const": "PASS"
+          },
+          "expected_identity": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "observed_identity": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    },
+    "historical_current_whole_object_hash_equality_required": {
+      "const": false
+    },
+    "whole_object_hashes_compared_across_schema_domains": {
+      "const": false
+    },
+    "candidate_processes_started": {
+      "const": 0
+    },
+    "candidate_outputs_seen": {
+      "const": 0
+    },
+    "candidate_owned_state_reused": {
+      "const": false
+    },
+    "oracle_freeze_authorized": {
+      "const": true
+    },
+    "parity_receipt_identity": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}
