@@ -166,6 +166,39 @@ def test_physical_binding_key_preserves_typed_numeric_noncollapse():
     assert len(keys) == 4
 
 
+def test_wvs7_representation_lane_preserves_user_missing_range_and_system_missing():
+    observation = {
+        "physical_domain": [
+            {
+                "raw_value_r5": R5.encode(1.0),
+                "physical_missing_state": PhysicalMissingState.OBSERVED_STORAGE_VALUE.value,
+                "source_missing_declaration_r5": R5.encode(None),
+            },
+            {
+                "raw_value_r5": R5.encode(-1.0),
+                "physical_missing_state": PhysicalMissingState.FORMAT_USER_MISSING_RANGE.value,
+                "source_missing_declaration_r5": R5.encode({"kind": "range", "lo": -5.0, "hi": -1.0}),
+            },
+            {
+                "raw_value_r5": R5.encode(None),
+                "physical_missing_state": PhysicalMissingState.SYSTEM_MISSING.value,
+                "source_missing_declaration_r5": R5.encode(None),
+            },
+        ]
+    }
+    assert h._wvs_representation_check({}, observation)
+    bad = {
+        "physical_domain": [
+            {
+                "raw_value_r5": R5.encode(-3.0),
+                "physical_missing_state": PhysicalMissingState.FORMAT_USER_MISSING_RANGE.value,
+                "source_missing_declaration_r5": R5.encode({"kind": "range", "lo": -5.0, "hi": -1.0}),
+            }
+        ]
+    }
+    assert not h._wvs_representation_check({}, bad)
+
+
 def test_missing_state_and_source_declaration_do_not_collapse():
     observed = physical_value_binding_key(997.0, PhysicalMissingState.OBSERVED_STORAGE_VALUE, None)
     user = physical_value_binding_key(
