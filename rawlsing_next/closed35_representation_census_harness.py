@@ -242,6 +242,9 @@ def load_surface_registry(path: Path) -> tuple[Mapping[str, str], ...]:
     for row in rows:
         if row["owner_key_status"] not in {"EXACT_BOUNDED_OWNER", "NATIVE_LITERAL_RULE_OWNER", "MISSING_EXACT_VALUE_KEY_AUTHORITY"}:
             raise GlobalIntegrityError("SURFACE_REGISTRY_INVALID: owner-key state")
+        blob = row.get("authority_blob_sha", "")
+        if len(blob) != 40 or any(ch not in "0123456789abcdef" for ch in blob):
+            raise GlobalIntegrityError("SURFACE_REGISTRY_INVALID: authority blob pin")
         if row["rule_native_domain_json"]:
             domain = json.loads(row["rule_native_domain_json"])
             if not isinstance(domain, list) or not domain:
@@ -502,6 +505,7 @@ def _surface_observation(surface: Mapping[str, str], variable_observation: Mappi
         "ordinal_registry": int(surface["ordinal"]) if surface["ordinal"] else None,
         "surface_kind": surface["surface_kind"],
         "authority_locator": surface["authority_locator"],
+        "authority_blob_sha": surface["authority_blob_sha"],
         "owner_key_status": surface["owner_key_status"],
         "representation_authority": surface["representation_authority"] or None,
         "rule_native_domain_r5": [R5.encode(x) for x in _rule_native_domain(surface)],
