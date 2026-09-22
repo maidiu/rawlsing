@@ -214,7 +214,16 @@ def _historical_docs():
             "terminal_state": "EVALUATED_VALID_EMPTY",
             "validation_details": {
                 "target_cell": {"$exact_decimal": "5"},
-                "exact_rates": copy.deepcopy(summary["P3"]["exact_rates"]),
+                "exact_rates": {
+                    "POOLED_NEG": copy.deepcopy(summary["P3"]["exact_rates"]["POOLED_NEG"]),
+                    "POOLED_POS": copy.deepcopy(summary["P3"]["exact_rates"]["POOLED_POS"]),
+                    "Q310V1_NEG": copy.deepcopy(summary["P3"]["exact_rates"]["STRATUM:Q310V1:NEG"]),
+                    "Q310V1_POS": copy.deepcopy(summary["P3"]["exact_rates"]["STRATUM:Q310V1:POS"]),
+                    "Q310V2_NEG": copy.deepcopy(summary["P3"]["exact_rates"]["STRATUM:Q310V2:NEG"]),
+                    "Q310V2_POS": copy.deepcopy(summary["P3"]["exact_rates"]["STRATUM:Q310V2:POS"]),
+                    "Q310V3_NEG": copy.deepcopy(summary["P3"]["exact_rates"]["STRATUM:Q310V3:NEG"]),
+                    "Q310V3_POS": copy.deepcopy(summary["P3"]["exact_rates"]["STRATUM:Q310V3:POS"]),
+                },
                 "pooled_sign": 1,
                 "stratum_signs": [1, 1, 1],
             },
