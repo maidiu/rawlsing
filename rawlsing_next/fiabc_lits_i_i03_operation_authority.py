@@ -234,7 +234,14 @@ def historical_i03_parent_authority_snapshot() -> AuthoritySnapshot:
     """Reconstruct the exact accepted AS2B I03 parent authority snapshot."""
     role = "i03_query"
     kind = "PREDICATE_GRAMMAR"
-    families = GOVERNED_OBJECT_FAMILIES
+    # Preserve the banked builder's pre-hash family sequence exactly.
+    # AuthoritySnapshot canonicalizes governed_object_families later, but the
+    # historical authority_content_hash was minted from this ordered material.
+    families = (
+        "EmpiricalPredicate@1.0.0",
+        "EmpiricalQuerySpec@1.0.0",
+        "EmpiricalFact@1.0.0",
+    )
     material = {
         "court": "AS2B_LITS1_MECHANICAL_SOURCE_CERTIFICATION_20260827",
         "role": role,
