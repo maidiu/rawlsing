@@ -4,7 +4,7 @@ set -euo pipefail
 PREMAIN_PARENT="d474f8e3c9630c4bcbb10d6e8359b71ba5b3060d"
 FIABC_PARENT="91723d443f56acb05af63acc0d3a34fb9a97e3f4"
 MAIN_PARENT="25830fe7462bb9e29bc4087e6ae14f3f84cec377"
-CODE_HEAD="ea0baa4d87244a548ba9a6a46a883d307c65e3e4"
+CODE_HEAD="3bef6f693778cb4191fee3007134987991490296"
 
 die() { printf 'RAWLSING_RECONCILED_FIABC_SOURCE_FREE_BLOCKED: %s\n' "$*" >&2; exit 2; }
 
@@ -23,6 +23,8 @@ TERMINAL_ORACLE_BLOB="6cf8d8bf8ac2d6421cd733a72a444687e241e659"
 TERMINAL_PRODUCER_BLOB="6c93b3a25e671af714ddb39ef6b335410cf4d0e7"
 LITS_REPRESENTATION_AUTHORITY_BLOB="94a833a7d8946bf3bd43296d9fe1e2239a3aa4b9"
 LITS_REPRESENTATION_TEST_BLOB="35cbae0328b3aa695ed4ece3c979a3742f1a527d"
+DISCOVERY_EXACT_BLOB="29260c71dbbd691c49d777b5b726364b90846793"
+DISCOVERY_EXACT_TEST_BLOB="7e2ec792ff67d21fdcd3c12aeec4c09efb7050e4"
 TERMINAL_PREFLIGHT_TEST_BLOB="02c6dad5912fd7283cc1fc5b889cde62b9818101"
 [[ "$(git rev-parse HEAD:rawlsing_next/pre553_independent_parity_oracle.py)" == "$TERMINAL_ORACLE_BLOB" ]] \
   || die "terminal-readiness LiTS oracle owner drift"
@@ -32,6 +34,10 @@ TERMINAL_PREFLIGHT_TEST_BLOB="02c6dad5912fd7283cc1fc5b889cde62b9818101"
   || die "LiTS-I representation authority drift"
 [[ "$(git rev-parse HEAD:rawlsing_next/tests/test_fiabc_lits_i_representation_authority.py)" == "$LITS_REPRESENTATION_TEST_BLOB" ]] \
   || die "LiTS-I representation hostile test drift"
+[[ "$(git rev-parse HEAD:rawlsing_next/pre553_discovery_exact.py)" == "$DISCOVERY_EXACT_BLOB" ]] \
+  || die "exact discovery validation interpreter drift"
+[[ "$(git rev-parse HEAD:rawlsing_next/tests/test_pre553_discovery_exact.py)" == "$DISCOVERY_EXACT_TEST_BLOB" ]] \
+  || die "exact discovery validation hostile test drift"
 [[ "$(git rev-parse HEAD:rawlsing_next/tests/test_fiabc_final_preflight_fanin.py)" == "$TERMINAL_PREFLIGHT_TEST_BLOB" ]] \
   || die "terminal-readiness preflight qualification test drift"
 
@@ -41,7 +47,7 @@ done
 [[ -z "$(git status --porcelain)" ]] || die "working tree is not clean"
 
 unexpected="$(git diff --name-only "$FIABC_PARENT"..HEAD -- rawlsing_next | \
-  grep -Ev '^(rawlsing_next/pre553_independent_parity_oracle\.py|rawlsing_next/fiabc_final_oracle_freeze_producers\.py|rawlsing_next/fiabc_lits_i_representation_authority\.py|rawlsing_next/tests/test_fiabc_lits_i_representation_authority\.py|rawlsing_next/tests/test_fiabc_final_preflight_fanin\.py|rawlsing_next/rabochii_return_beacon\.py|rawlsing_next/rabochii_return_beacon_actionable\.py|rawlsing_next/rabochii_return_beacon_sweep\.py|rawlsing_next/tests/test_rabochii_return_beacon\.py|rawlsing_next/tests/test_rabochii_return_beacon_actionable\.py|rawlsing_next/tests/test_rabochii_return_beacon_sweep\.py)$' || true)"
+  grep -Ev '^(rawlsing_next/pre553_independent_parity_oracle\.py|rawlsing_next/pre553_discovery_exact\.py|rawlsing_next/fiabc_final_oracle_freeze_producers\.py|rawlsing_next/fiabc_lits_i_representation_authority\.py|rawlsing_next/tests/test_pre553_discovery_exact\.py|rawlsing_next/tests/test_fiabc_lits_i_representation_authority\.py|rawlsing_next/tests/test_fiabc_final_preflight_fanin\.py|rawlsing_next/rabochii_return_beacon\.py|rawlsing_next/rabochii_return_beacon_actionable\.py|rawlsing_next/rabochii_return_beacon_sweep\.py|rawlsing_next/tests/test_rabochii_return_beacon\.py|rawlsing_next/tests/test_rabochii_return_beacon_actionable\.py|rawlsing_next/tests/test_rabochii_return_beacon_sweep\.py)$' || true)"
 [[ -z "$unexpected" ]] || die "FIABC runtime/test drift after reconciliation: $unexpected"
 
 [[ "$(git rev-parse HEAD:.github/workflows/rabochii-return-beacon.yml)" == "$(git rev-parse "$MAIN_PARENT":.github/workflows/rabochii-return-beacon.yml)" ]] \
@@ -90,6 +96,7 @@ PY
  rawlsing_next/fiabc_succession_producer.py \
  rawlsing_next/fiabc_final_oracle_freeze_producers.py \
  rawlsing_next/fiabc_lits_i_representation_authority.py \
+ rawlsing_next/pre553_discovery_exact.py \
  rawlsing_next/pre553_independent_parity_oracle.py
 
 "$PYTHON_BIN" -m pytest -q \
@@ -98,6 +105,7 @@ PY
  rawlsing_next/tests/test_fiabc_final_progress_driver.py \
  rawlsing_next/tests/test_fiabc_final_oracle_freeze_producers.py \
  rawlsing_next/tests/test_fiabc_lits_i_representation_authority.py \
+ rawlsing_next/tests/test_pre553_discovery_exact.py \
  rawlsing_next/tests/test_fiabc_succession_producer.py \
  rawlsing_next/tests/test_fiabc_final_preflight_fanin.py \
  rawlsing_next/tests/test_fiabc_t2_six_cell_execution_binding.py \
