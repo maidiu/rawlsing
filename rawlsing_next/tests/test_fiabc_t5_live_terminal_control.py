@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import copy
 import hashlib
+import inspect
 import json
 import types
 import pytest
@@ -30,6 +31,7 @@ from rawlsing_next.tests.test_pre553_discovery_exact import (
 
 LITS="7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09"
 WVS="2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
+R1M = "WORKER_RETURNS/FIABC-LM2-R1M-LOCK2-SUCCESSOR-R16-ORACLE/07_FRESH_WVS_ORACLE.json"
 
 def _manifest():
     return {
@@ -58,6 +60,84 @@ def test_active_t5_wvs_constitution_is_successor_bound_not_predecessor():
     assert "8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188" not in constitution.values()
     assert "b1aa437406d94b1f81f0ef3c81b885a2fd542749d2e5441747897c016a5dd490" not in constitution.values()
     assert "24591678ebf50ac153fabdbbcd90d6ce818c5a89a5307c395c48a04fe5a8b1ab" not in constitution.values()
+
+
+def test_wvs_terminal_count_projection_reproduces_frozen_r1m_typed_domain():
+    frozen = json.loads(open(R1M, encoding="utf-8").read())
+    truth = frozen["truth_payload"]
+    rows = truth["expected_fact_manifest"]
+    receipts = tuple(
+        types.SimpleNamespace(
+            typed_state=row["typed_state"],
+            coverage_state=row["coverage_state"],
+        )
+        for row in rows
+    )
+    expected = truth["expected_learned_product"]["coverage"][
+        "typed_terminal_counts"
+    ]
+    assert len(receipts) == 46
+    assert {receipt.coverage_state for receipt in receipts} == {
+        "EVALUATED_MISSING_OR_CONFLICTING_AUTHORITY"
+    }
+    assert t5._typed_terminal_counts("WVS7", receipts) == expected == {
+        "COVERAGE_LIMITED": 46
+    }
+
+
+def test_lits_terminal_count_projection_preserves_coverage_state_domain():
+    receipts = (
+        types.SimpleNamespace(
+            typed_state="DISCOVERED_RESULT_SUPPORTED",
+            coverage_state="EVALUATED_SUPPORTED",
+        ),
+        types.SimpleNamespace(
+            typed_state="VALID_EMPTY",
+            coverage_state="EVALUATED_VALID_EMPTY",
+        ),
+    )
+    assert t5._typed_terminal_counts("LITS_I", receipts) == {
+        "EVALUATED_SUPPORTED": 1,
+        "EVALUATED_VALID_EMPTY": 1,
+    }
+
+
+def test_terminal_count_projection_rejects_unknown_source():
+    with pytest.raises(
+        LiveTerminalControlError,
+        match="unknown source terminal-count compatibility domain",
+    ):
+        t5._typed_terminal_counts("UNKNOWN", ())
+
+
+def test_wvs_runtime_successor_fallbacks_remain_opt_in(monkeypatch):
+    import rawlsing_next.ee_p2x_darwin_stage_backend as backend
+    import rawlsing_next.pre553_carrier_execution as carrier
+    import rawlsing_next.pre553_runtime_context as runtime_context
+
+    assert "return binding,projection,None" in inspect.getsource(backend._compose_wvs)
+
+    sentinel = object()
+    executor = types.SimpleNamespace(
+        runtime_catalog=types.SimpleNamespace(
+            discovery_authority_refs=("wvs-discovery",)
+        ),
+        execute_i05=lambda **kwargs: sentinel,
+    )
+    binding = types.SimpleNamespace(executor=executor)
+
+    def forbidden_bind_runtime(*args, **kwargs):
+        raise AssertionError("WVS predecessor path must not bind runtime successors")
+
+    monkeypatch.setattr(runtime_context, "bind_runtime", forbidden_bind_runtime)
+    monkeypatch.setattr(
+        carrier,
+        "learned_empirical_execution_receipt",
+        lambda result: {"result_is_sentinel": result is sentinel},
+    )
+    result, receipt = backend._i05(binding, None)
+    assert result is sentinel
+    assert receipt == {"result_is_sentinel": True}
 
 def test_missing_sixth_current_capability_fails_closed():
     doc=_contract(); doc["cells"].pop()

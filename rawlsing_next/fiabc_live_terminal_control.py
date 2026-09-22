@@ -606,9 +606,7 @@ def project_live_candidate_observation(
             raise LiveTerminalControlError("WVS7 live I05 frontier order drift")
         if dict(sorted(families.items())) != dict(sorted(WVS7_FAMILY_COUNTS.items())):
             raise LiveTerminalControlError("WVS7 live I05 family shape drift")
-    terminal_counts = dict(
-        sorted(Counter(receipt.coverage_state for receipt in ordered).items())
-    )
+    terminal_counts = _typed_terminal_counts(source, ordered)
     learned = {
         "product_identity": semantic_hash(execution_receipt),
         "semantic_identity": result.replay_ref.content_hash,
@@ -671,6 +669,29 @@ def project_live_candidate_observation(
     }
     observation["observation_identity"] = _hash(observation)
     return observation
+
+
+def _typed_terminal_counts(
+    source: str, receipts: Sequence[Any]
+) -> Mapping[str, int]:
+    """Project the frozen source-specific terminal-state domain exactly."""
+    if source == "LITS_I":
+        field = "coverage_state"
+    elif source == "WVS7":
+        field = "typed_state"
+    else:
+        raise LiveTerminalControlError(
+            "unknown source terminal-count compatibility domain"
+        )
+    values = []
+    for receipt in receipts:
+        value = getattr(receipt, field, None)
+        if not isinstance(value, str) or not value:
+            raise LiveTerminalControlError(
+                f"{source} receipt lacks exact {field} terminal state"
+            )
+        values.append(value)
+    return dict(sorted(Counter(values).items()))
 
 
 def _terminal_projection_from_material(
