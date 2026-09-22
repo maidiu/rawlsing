@@ -25,11 +25,19 @@ COMPRESSED_SHA256 = "989e67a736663831a5595dfb3dbe1b1073a69e9f29a3ea16e1e69169d81
 RAW_PAYLOAD_SHA256 = "357aa62675c880b335d20e6c43fe18ce7c76c4890743f4a4ce3f84eb7480116b"
 RAW_PAYLOAD_LENGTH = 18_128
 
-RELEASE_REF = ExactRef(
+BASE_RELEASE_REF = ExactRef(
     "C11LogicalRelease",
     "LITS1-AS2B-C11-7cac43e2ca5b31cb-9dd1e6b7350ebb79",
     "e6c954538fa1830820120465a10a6d065b8a18d1e6b7b08d3f863b0917741e26",
 )
+SUCCESSOR_RELEASE_REF = ExactRef(
+    "C11LogicalRelease",
+    "LITS1-I02-F02-SUCCESSOR-7cac43e2ca5b31cb-bf305bf3f169d669",
+    "192926fabd9c9c3d40e43b1d7705ca2bcfe7f8d06e286be26d4b886d436df43f",
+)
+RELEASE_REFS = (BASE_RELEASE_REF, SUCCESSOR_RELEASE_REF)
+# Backward-compatible name for callers that explicitly test the historical base.
+RELEASE_REF = BASE_RELEASE_REF
 UNIVERSE_REF = ExactRef(
     "EmpiricalUniverse@1.0.0",
     "urn:rawlsing:pre553:EmpiricalUniverse:sha256:83af05f5891e8accc18eeb99e5a1fd99242a509d9a38276004675c0e26be8080",
@@ -77,7 +85,7 @@ IDENTITY_MATERIAL = canonicalize({
     "authority_version": "1.0.0",
     "source_sha256": SOURCE_SHA256,
     "row_count": ROW_COUNT,
-    "release_ref": RELEASE_REF.as_dict(),
+    "release_refs": [ref.as_dict() for ref in RELEASE_REFS],
     "source_universe_ref": UNIVERSE_REF.as_dict(),
     "risk_set_ref": RISK_SET_REF.as_dict(),
     "target_role_map": [
@@ -108,10 +116,22 @@ IDENTITY_MATERIAL = canonicalize({
         },
         "roots": ROOTS,
     },
+    "accepted_successor_preservation": {
+        "r5b_commit": "648a39ad5bed42f66e066410af5869604d29c12d",
+        "base_release_ref": BASE_RELEASE_REF.as_dict(),
+        "successor_release_ref": SUCCESSOR_RELEASE_REF.as_dict(),
+        "successor_replay_hash": "30c168fbdf8425b23cbf2a2b2d2c9ab56f3438851f52e3562510089f1d381a08",
+        "successor_candidate_projection_hash": "23912633a23318d22bad0da08027867031320331d8d436d944e9c0b21eb086eb",
+        "preservation_law": (
+            "BASE_Q301_QUESTION_BINDINGS_EVENTS_ROUTING_AND_RESPONDENTS_RETAINED_EXACT__"
+            "SUCCESSOR_ADDS_ONLY_F02_Q310_Q311"
+        ),
+    },
     "negative_limits": [
         "NO_VALUE_LABEL_OR_FREQUENCY_INFERENCE",
         "NO_CURRENT_SOURCE_VALUE_DERIVATION",
         "NO_OTHER_SOURCE_RELEASE_UNIVERSE_RISK_SET_TARGET_OR_QUERY",
+        "NO_RISK_SET_EXTENSION_TO_Q310_Q311_OR_OTHER_TARGETS",
         "NO_GENERIC_MISSINGNESS_OR_DENOMINATOR_RULE",
         "NO_CANDIDATE_OUTPUT_PARENTAGE",
         "NO_C11_RELEASE_MUTATION",
@@ -167,7 +187,8 @@ def decode_membership_payload() -> dict[str, frozenset[int]]:
 
 __all__ = [
     "SCHEMA", "SOURCE_SHA256", "ROW_COUNT", "D03_COMMIT", "D03_MANIFEST_BLOB",
-    "RELEASE_REF", "UNIVERSE_REF", "RISK_SET_REF", "Q301_2_REF", "Q301_7_REF",
+    "BASE_RELEASE_REF", "SUCCESSOR_RELEASE_REF", "RELEASE_REFS", "RELEASE_REF",
+    "UNIVERSE_REF", "RISK_SET_REF", "Q301_2_REF", "Q301_7_REF",
     "ROOTS", "RESPONDENT_KEY_PREFIX", "PAYLOAD_B64", "IDENTITY_MATERIAL",
     "AUTHORITY_CONTENT_HASH", "risk_set_successor_authority_record",
     "decode_membership_payload",

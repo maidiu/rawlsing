@@ -209,7 +209,7 @@ class ExactRiskSetSuccessorContract:
     authority_content_hash: str
     source_sha256: str
     row_count: int
-    release_ref: ExactRef
+    release_refs: tuple[ExactRef, ...]
     source_universe_ref: ExactRef
     risk_set_ref: ExactRef
     query_refs: tuple[ExactRef, ...]
@@ -509,11 +509,22 @@ class Pre553RuntimeAuthoritySet:
             }
             if not required_limits <= negative_limits:
                 raise Pre553AuthorityError("exact risk-set negative limits are incomplete")
+            release_refs = tuple(sorted(
+                (
+                    exact_ref(ref, "risk-set release ref")
+                    for ref in _sequence(
+                        material.get("release_refs"), "risk-set release refs"
+                    )
+                ),
+                key=lambda ref: ref.key,
+            ))
+            if len(set(release_refs)) != len(release_refs):
+                raise Pre553AuthorityError("duplicate exact risk-set release ref")
             risk_set_successors.append(ExactRiskSetSuccessorContract(
                 authority_content_hash=digest,
                 source_sha256=source_sha,
                 row_count=row_count,
-                release_ref=exact_ref(material.get("release_ref"), "risk-set release ref"),
+                release_refs=release_refs,
                 source_universe_ref=exact_ref(
                     material.get("source_universe_ref"), "risk-set universe ref"
                 ),
@@ -863,7 +874,7 @@ class Pre553RuntimeAuthoritySet:
             contract
             for contract in self._exact_risk_set_successors
             if query.ref in contract.query_refs
-            and release_ref == contract.release_ref
+            and release_ref in contract.release_refs
             and source_universe_ref == contract.source_universe_ref
             and risk_set_ref == contract.risk_set_ref
             and tuple(ref.key for ref in target_refs) in contract.target_role_map

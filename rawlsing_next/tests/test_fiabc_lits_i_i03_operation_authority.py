@@ -20,11 +20,13 @@ from rawlsing_next.fiabc_lits_i_d03_risk_set_authority import (
     AUTHORITY_CONTENT_HASH as D03_AUTHORITY_CONTENT_HASH,
     Q301_2_REF,
     Q301_7_REF,
+    RELEASE_REFS,
     RELEASE_REF,
     RISK_SET_REF,
     ROOTS,
     ROW_COUNT,
     SCHEMA as D03_SCHEMA,
+    SUCCESSOR_RELEASE_REF,
     UNIVERSE_REF,
     decode_membership_payload,
     risk_set_successor_authority_record,
@@ -170,14 +172,19 @@ def test_lits_d03_risk_set_contract_is_exact_query_and_scope_only():
         (Q301_2_REF, Q301_7_REF): "R27",
     }.items():
         query = by_targets[targets]
-        contract = runtime.resolve_exact_risk_set_successor(
-            query=query,
-            release_ref=RELEASE_REF,
-            source_universe_ref=UNIVERSE_REF,
-            risk_set_ref=RISK_SET_REF,
-            target_refs=targets,
-        )
-        assert contract is not None
+        contracts = [
+            runtime.resolve_exact_risk_set_successor(
+                query=query,
+                release_ref=release_ref,
+                source_universe_ref=UNIVERSE_REF,
+                risk_set_ref=RISK_SET_REF,
+                target_refs=targets,
+            )
+            for release_ref in RELEASE_REFS
+        ]
+        assert all(contract is not None for contract in contracts)
+        assert contracts[0] is contracts[1]
+        contract = contracts[0]
         member = min(memberships[root_id])
         nonmember = min(set(range(1, ROW_COUNT + 1)) - memberships[root_id])
         prefix = contract.respondent_key_prefix
@@ -199,6 +206,20 @@ def test_lits_d03_risk_set_contract_is_exact_query_and_scope_only():
         risk_set_ref=RISK_SET_REF,
         target_refs=tuple(exact_ref(ref) for ref in query.target_refs),
     ) is None
+
+
+def test_lits_d03_risk_set_successor_scope_is_exactly_base_and_adopted_r5b_release():
+    record = risk_set_successor_authority_record()
+    material = record["identity_material"]
+    assert material["release_refs"] == [ref.as_dict() for ref in RELEASE_REFS]
+    preservation = material["accepted_successor_preservation"]
+    assert preservation["base_release_ref"] == RELEASE_REF.as_dict()
+    assert preservation["successor_release_ref"] == SUCCESSOR_RELEASE_REF.as_dict()
+    assert preservation["r5b_commit"] == "648a39ad5bed42f66e066410af5869604d29c12d"
+    assert preservation["successor_replay_hash"] == (
+        "30c168fbdf8425b23cbf2a2b2d2c9ab56f3438851f52e3562510089f1d381a08"
+    )
+    assert "ADDS_ONLY_F02_Q310_Q311" in preservation["preservation_law"]
 
 
 def test_lits_d03_risk_set_record_rejects_unadopted_and_tampered_payload():
