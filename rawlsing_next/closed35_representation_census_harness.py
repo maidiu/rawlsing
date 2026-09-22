@@ -234,11 +234,11 @@ def load_source_registry(path: Path) -> Mapping[str, Any]:
 def load_surface_registry(path: Path) -> tuple[Mapping[str, str], ...]:
     with path.open("r", encoding="utf-8", newline="") as handle:
         rows = tuple(dict(row) for row in csv.DictReader(handle))
-    if len(rows) != 34:
-        raise GlobalIntegrityError(f"SURFACE_REGISTRY_INVALID: expected 34 surfaces, got {len(rows)}")
+    if len(rows) != 38:
+        raise GlobalIntegrityError(f"SURFACE_REGISTRY_INVALID: expected 38 surfaces, got {len(rows)}")
     ids = [x["surface_id"] for x in rows]
-    if ids != [f"S{i:03d}" for i in range(1, 35)]:
-        raise GlobalIntegrityError("SURFACE_REGISTRY_INVALID: ordered S001..S034 required")
+    if ids != [f"S{i:03d}" for i in range(1, 39)]:
+        raise GlobalIntegrityError("SURFACE_REGISTRY_INVALID: ordered S001..S038 required")
     for row in rows:
         if row["owner_key_status"] not in {"EXACT_BOUNDED_OWNER", "NATIVE_LITERAL_RULE_OWNER", "MISSING_EXACT_VALUE_KEY_AUTHORITY"}:
             raise GlobalIntegrityError("SURFACE_REGISTRY_INVALID: owner-key state")
@@ -476,7 +476,11 @@ def _wvs_representation_check(surface: Mapping[str, str], observation: Mapping[s
 
 def _surface_observation(surface: Mapping[str, str], variable_observation: Mapping[str, Any], source_sha: str) -> Mapping[str, Any]:
     join = _exact_rule_join_diagnostic(surface, variable_observation)
-    observed_types = sorted({x["r5_input_python_type"] for x in variable_observation["physical_domain"]})
+    observed_types = sorted({
+        x["r5_input_python_type"]
+        for x in variable_observation["physical_domain"]
+        if x["physical_missing_state"] != PhysicalMissingState.SYSTEM_MISSING.value
+    })
     bridge_pass = False
     representation_pass = False
     if "LITS-I-Q301" in surface["representation_authority"]:
