@@ -1,10 +1,10 @@
 {
   "schema": "FIABC_LITS_R5B_SUCCESSOR_CONTINUATION_POINTER@1.0.0",
-  "status": "F02_EXACT_EVENT_REPRESENTATION_REPAIRED_SOURCE_FREE__THIRD_SOURCE_RUN_REQUIRED__NOT_CLAIMED_GREEN",
+  "status": "F02_EXACT_AUTHORIZED_NONMATCH_REPAIRED_SOURCE_FREE__FOURTH_SOURCE_RUN_REQUIRED__NOT_CLAIMED_GREEN",
   "repository": "https://github.com/maidiu/rawlsing.git",
   "continue_branch": "agent/rabochii-premain-fiabc-lits-representation-authority-repair-r1",
   "handoff_payload_commit": "97392da847542ef515d309b73f6046dae3503777",
-  "source_free_code_checkpoint": "8ea52e744aeb238f503d62ddc030380ff31aa84e",
+  "source_free_code_checkpoint": "c3733e311c467a6130ba69cc49144b2afb9d6bc4",
   "diagnostic_line_head": "a8d4faac8912e9c03840d3f72a4f2ca8c83d6903",
   "governed_p2x_execution_head": "78caf7eb4396dd576cf478c860372b7e26455cd9",
   "governed_p2x_execution_branch_advanced": false,
@@ -16,26 +16,26 @@
   },
   "latest_source_pass": {
     "portable": false,
-    "host_local_root": "/private/tmp/fiabc-lits-d03-successor-rerun.oN1nb1",
+    "host_local_root": "/private/tmp/fiabc-lits-f02-successor-rerun.f45wvz",
     "candidate_processes_started": 0,
     "terminal_observed": true,
     "candidate_count": 50,
     "query_role_count": 77,
     "coverage_state_counts": {
       "EVALUATED_SUPPORTED": 31,
-      "EVALUATED_VALID_EMPTY": 19
+      "EVALUATED_MISSING_OR_CONFLICTING_AUTHORITY": 19
     },
     "empirical_fact_state_counts": {
       "SUPPORTED": 36,
-      "ZERO_SUPPORT": 24
+      "UNAVAILABLE": 24
     },
-    "diagnosis": "ADOPTED_R5B_Q310_Q311_EVENTS_HAVE_EXACT_DECIMAL_WITNESSES_WHILE_FROZEN_F02_PREDICATES_RETAIN_INTEGER_SOURCE_NATIVE_TOKENS",
-    "repair_commit": "8ea52e744aeb238f503d62ddc030380ff31aa84e",
+    "diagnosis": "ANOTHER_DECLARED_SAME_QUESTION_WITNESS_WAS_INCORRECTLY_TREATED_AS_MALFORMED_INSTEAD_OF_A_LEGITIMATE_FALSE_MATCH",
+    "repair_commit": "c3733e311c467a6130ba69cc49144b2afb9d6bc4",
     "repair_authority_content_hash": "96f32bef2d098ae67debd3487cc0f30d8fe4b2a3aacb775c037b854ef499b688",
     "rerun_required": true
   },
   "continuation_document": "WORKER_RETURNS/FIABC-CANONICAL-TERMINAL-READINESS-R1/20_LITS_R5B_SUCCESSOR_REPAIR_CONTINUATION_HANDOFF.md",
-  "next_action": "RUN_THIRD_COMMON_LITS_SOURCE_PASS_FROM_8EA52E74__FIX_FIRST_CONCRETE_FAILURE__BANK_AND_PUSH__NO_ABC_OR_MEASURED_P2X",
+  "next_action": "RUN_FOURTH_COMMON_LITS_SOURCE_PASS_FROM_C3733E31__FIX_FIRST_CONCRETE_FAILURE__BANK_AND_PUSH__NO_ABC_OR_MEASURED_P2X",
   "wave_program_law": "WAVE_SPECIFIC_AUTHORITY_AND_OUTPUTS != WAVE_SPECIFIC_GENERIC_CODE",
   "remaining_wave_accounting": {
     "governed_pairs": 35,

@@ -28,6 +28,8 @@ Items 1–7 are repaired and source-free tested on the branch. Commit
 source decode. Commit `e4faa552...` binds the D03 risk sets to exactly the base
 and adopted successor releases. Commit `8ea52e74...` adds the exact, opt-in F02
 event-representation successor authority. A third live source pass must now
+proved that the authority activates, but exposed an over-strict nonmatch path.
+Commit `c3733e31...` repairs that exact path. A fourth live source pass must now
 prove the expected 49 supported / 1 valid-empty envelope or expose the next
 concrete terminal.
 
@@ -68,7 +70,7 @@ identity layers are checked separately.
 
 - Repository: `https://github.com/maidiu/rawlsing.git`
 - Continue branch: `agent/rabochii-premain-fiabc-lits-representation-authority-repair-r1`
-- Source-free code checkpoint: `8ea52e744aeb238f503d62ddc030380ff31aa84e`
+- Source-free code checkpoint: `c3733e311c467a6130ba69cc49144b2afb9d6bc4`
 - Continue from the fetched repair-branch tip containing this handoff and its
   adjacent continuation pointer receipt; the branch tip must descend from the
   source-free code checkpoint.
@@ -83,7 +85,7 @@ git fetch origin \
   agent/rabochii-premain-fiabc-terminal-readiness-r1 \
   agent/rabochii-premain-fiabc-lits-representation-authority-repair-r1 \
   agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1
-git merge-base --is-ancestor 8ea52e744aeb238f503d62ddc030380ff31aa84e origin/agent/rabochii-premain-fiabc-lits-representation-authority-repair-r1
+git merge-base --is-ancestor c3733e311c467a6130ba69cc49144b2afb9d6bc4 origin/agent/rabochii-premain-fiabc-lits-representation-authority-repair-r1
 git show origin/agent/rabochii-premain-fiabc-lits-representation-authority-repair-r1:WORKER_RETURNS/FIABC-CANONICAL-TERMINAL-READINESS-R1/20_LITS_R5B_SUCCESSOR_REPAIR_CONTINUATION_HANDOFF.md >/dev/null
 test "$(git rev-parse origin/agent/rabochii-premain-fiabc-terminal-readiness-r1)" = a8d4faac8912e9c03840d3f72a4f2ca8c83d6903
 test "$(git rev-parse origin/agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1)" = 78caf7eb4396dd576cf478c860372b7e26455cd9
@@ -105,8 +107,13 @@ The repair branch contains these consecutive checkpoints:
    source-native tokens to exact Decimal event witnesses; generic numeric
    coercion and every other source/release/scope/question/value/state remain
    forbidden.
+6. `c3733e311c467a6130ba69cc49144b2afb9d6bc4` — exact same-question
+   nonmatch semantics. A requested leaf matches its one declared witness,
+   another declared witness in the same six-binding question domain is a
+   legitimate false result, and an undeclared or malformed witness still fails
+   closed.
 
-The focused source-free court at `8ea52e74...` is green:
+The focused source-free court at `c3733e31...` is green:
 
 ```text
 71 passed
@@ -195,15 +202,36 @@ directly, so all q310/q311 predicates selected zero respondents.
 Commit `8ea52e74...` repairs only that boundary. Authority content hash
 `96f32bef2d098ae67debd3487cc0f30d8fe4b2a3aacb775c037b854ef499b688`
 binds the exact six q310/q311 question/value pairs on successor release
-`192926...`; it adds no generic int/float/Decimal equivalence. The required next
-evidence is a third fresh common LiTS source rerun. The accepted source-backed
-49/1 terminal is therefore **not yet claimed green**.
+`192926...`; it adds no generic int/float/Decimal equivalence.
+
+A third fresh common LiTS source pass from `8ea52e74...` completed after about
+30 minutes with no A/B/C candidate process. It emitted:
+
+```text
+candidate_count = 50
+query_role_count = 77
+candidate_processes_started = 0
+coverage_state_counts = {"EVALUATED_SUPPORTED": 31, "EVALUATED_MISSING_OR_CONFLICTING_AUTHORITY": 19}
+fact_state_counts = {"SUPPORTED": 36, "UNAVAILABLE": 24}
+fact failure = MISSING_REQUIRED_AUTHORITY: runtime event witness differs from exact adopted representation
+```
+
+The authority was active, but the first implementation treated a legitimate
+same-question event for a different declared value as malformed. For example,
+while evaluating q310 = 1, an exact q310 value-2 witness must be a false match,
+not an authority failure. Commit `c3733e31...` now returns false for another
+declared witness in the same exact question domain while continuing to raise
+for undeclared/malformed witnesses. The focused 71-test court is green.
+
+The required next evidence is a fourth fresh common LiTS source rerun. The
+accepted source-backed 49/1 terminal is therefore **not yet claimed green**.
 
 Failed-run evidence root on this host:
 
 ```text
 /private/tmp/fiabc-lits-successor-source.JN5rJj
 /private/tmp/fiabc-lits-d03-successor-rerun.oN1nb1
+/private/tmp/fiabc-lits-f02-successor-rerun.f45wvz
 ```
 
 That path is not portable. On this or another machine, rerun exactly:
@@ -299,7 +327,11 @@ Required runtime gate: CPython 3.11.3, `pyreadstat==1.3.6`, `pyarrow==25.0.1`.
 - Exact six-binding F02 representation successor authority added with hostile
   negatives for wrong release, response ref, witness, and unadopted/tampered
   authority.
-- Focused source-free court green at 71 tests on `8ea52e74...`; canonical
+- Third successor-backed source pass proved the bridge activates and exposed
+  the over-strict handling of another authorized same-question witness.
+- Exact nonmatch semantics repaired: target witness true, another authorized
+  same-question witness false, undeclared/malformed witness fail closed.
+- Focused source-free court green at 71 tests on `c3733e31...`; canonical
   qualification pytest body green at 207 tests plus 28 subtests.
 - No A/B/C process and no measured P2X run by this repair.
 - Governed execution branch preserved at `78caf7eb...`.
@@ -308,7 +340,7 @@ Required runtime gate: CPython 3.11.3, `pyreadstat==1.3.6`, `pyarrow==25.0.1`.
 
 Proceed in this order and stop at the first failure:
 
-1. Run the third fresh common LiTS source pass from `8ea52e74...`.
+1. Run the fourth fresh common LiTS source pass from `c3733e31...`.
 2. If it fails, make the narrowest authority-preserving repair, add a hostile
    source-free regression, rerun the focused court, commit, and push.
 3. Repeat until the source pass emits the accepted 49/1 LiTS envelope and a
