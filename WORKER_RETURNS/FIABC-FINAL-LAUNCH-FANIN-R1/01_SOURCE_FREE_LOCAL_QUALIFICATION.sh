@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-EXPECTED_HEAD="aa15525750085f4e223d579010688660a9ae1b6b"
+CODE_HEAD="aa15525750085f4e223d579010688660a9ae1b6b"
 
 die() { printf 'FIABC_FINAL_SOURCE_FREE_QUALIFICATION_BLOCKED: %s\n' "$*" >&2; exit 2; }
 
-[[ "$(git rev-parse --verify HEAD^{commit})" == "$EXPECTED_HEAD" ]] || die "HEAD is not exact final fan-in head $EXPECTED_HEAD"
+git merge-base --is-ancestor "$CODE_HEAD" HEAD || die "qualified code head $CODE_HEAD is not an ancestor of HEAD"
+if git diff --name-only "$CODE_HEAD"..HEAD | grep -Ev '^WORKER_RETURNS/FIABC-FINAL-LAUNCH-FANIN-R1/' | grep -q .; then
+  die "non-launch-pack code changed after qualified code head $CODE_HEAD"
+fi
 [[ -z "$(git status --porcelain)" ]] || die "working tree is not clean"
 
 python - <<'PY'
