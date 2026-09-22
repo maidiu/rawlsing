@@ -253,5 +253,23 @@
     "executed_by_browser_github_worker": false,
     "evidence_character": "USER_REPORTED_LOCAL_EXECUTION"
   },
-  "next_phase": "PRE_CANDIDATE_FREEZE__SEPARATE_GOVERNING_AUTHORIZATION_REQUIRED"
+  "next_phase": "PRE_CANDIDATE_FREEZE__SEPARATE_GOVERNING_AUTHORIZATION_REQUIRED",
+  "execution_branch_transition": {
+    "disposition": "FAST_FORWARD_EXISTING_P2X_BRANCH__DO_NOT_RELAX_TO_TERMINAL_READINESS_BRANCH",
+    "existing_remote_head": "617c9c9426db12a3c0f7fea6b68a582c10759553",
+    "governed_branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+    "green_qualified_code_head": "6e2b817c80fc8745354e4a54103ba97a04c4437d",
+    "qualification_closure_head": "cbda295ec2e265709f1634b643e27abf704582d3",
+    "remote_head_is_ancestor_of_closure": true,
+    "stale_historical_code_head": "aa15525750085f4e223d579010688660a9ae1b6b",
+    "guard_repaired_in": [
+      "WORKER_RETURNS/FIABC-FINAL-LAUNCH-FANIN-R1/02_PRE_CANDIDATE_LOCAL_PREFLIGHT.sh",
+      "WORKER_RETURNS/FIABC-FINAL-LAUNCH-FANIN-R1/03_MEASURED_SIX_CELL_RUN.sh"
+    ],
+    "post_green_allowed_paths": [
+      "WORKER_RETURNS/FIABC-CANONICAL-TERMINAL-READINESS-R1/",
+      "WORKER_RETURNS/FIABC-FINAL-LAUNCH-FANIN-R1/"
+    ],
+    "production_code_after_green_head_allowed": false
+  }
 }
