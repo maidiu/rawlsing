@@ -392,6 +392,25 @@ def test_lits_f02_event_representation_matches_only_exact_adopted_successor_witn
         event_raw_response_value=exact_witness,
     )
 
+    # Another exact witness in the same six-binding question domain is a
+    # legitimate nonmatch, not an authority failure.
+    other_binding = next(
+        candidate
+        for candidate in event_representation_successor_authority_record()[
+            "identity_material"
+        ]["bindings"]
+        if candidate["question_ref"] == binding["question_ref"]
+        and candidate["source_native_value"] != native_value
+    )
+    assert not runtime.match_exact_event_representation(
+        frozen_scope_ref=F02_FROZEN_SCOPE_REF,
+        runtime_release_ref=F02_SUCCESSOR_RELEASE_REF,
+        question_ref=question_ref,
+        response_value_ref=response_ref,
+        source_native_value=native_value,
+        event_raw_response_value=other_binding["exact_event_raw_response_value"],
+    )
+
     with pytest.raises(
         Pre553AuthorityError,
         match="runtime event witness differs from exact adopted representation",
