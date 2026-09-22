@@ -702,7 +702,11 @@ def _neutral_lits_material(
     discovery_refs = catalog.discovery_authority_refs
     if len(discovery_refs) != 1:
         raise FinalOracleProducerError("LiTS runtime must expose exactly one DiscoveryAuthority")
-    with bind_runtime(runtime["runtime_authority_set"], repository=repository):
+    with bind_runtime(
+        runtime["runtime_authority_set"],
+        repository=repository,
+        runtime_catalog_identity=catalog.receipt()["catalog_identity"],
+    ):
         result = executor.execute_i05(discovery_authority_ref=discovery_refs[0])
     execution_receipt = learned_empirical_execution_receipt(result)
 

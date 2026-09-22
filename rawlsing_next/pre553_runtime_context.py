@@ -21,6 +21,7 @@ class RuntimeBinding:
     authorities: Pre553RuntimeAuthoritySet
     repository: C11Repository | None
     predicate_grammar_authority_ref: AuthorityRef | None
+    runtime_catalog_identity: str | None
 
 
 _CURRENT: ContextVar[RuntimeBinding | None] = ContextVar(
@@ -34,15 +35,24 @@ def bind_runtime(
     *,
     repository: C11Repository | None = None,
     predicate_grammar_authority_ref: AuthorityRef | None = None,
+    runtime_catalog_identity: str | None = None,
 ) -> Iterator[RuntimeBinding]:
     if not isinstance(authorities, Pre553RuntimeAuthoritySet):
         raise TypeError("authorities must be exact Pre553RuntimeAuthoritySet")
     if repository is not None and not isinstance(repository, C11Repository):
         raise TypeError("repository must be exact C11Repository")
+    if runtime_catalog_identity is not None:
+        if (
+            not isinstance(runtime_catalog_identity, str)
+            or len(runtime_catalog_identity) != 64
+            or any(ch not in "0123456789abcdef" for ch in runtime_catalog_identity)
+        ):
+            raise TypeError("runtime_catalog_identity must be an exact lowercase sha256")
     binding = RuntimeBinding(
         authorities=authorities,
         repository=repository,
         predicate_grammar_authority_ref=predicate_grammar_authority_ref,
+        runtime_catalog_identity=runtime_catalog_identity,
     )
     token = _CURRENT.set(binding)
     try:
@@ -60,7 +70,12 @@ def current_runtime_authorities() -> Pre553RuntimeAuthoritySet | None:
     return None if binding is None else binding.authorities
 
 
-def execute_empirical_query_runtime(*, runtime_authorities, **kwargs):
+def execute_empirical_query_runtime(
+    *,
+    runtime_authorities,
+    runtime_catalog_identity: str | None = None,
+    **kwargs,
+):
     from rawlsing_next.pre553_empirical_query import execute_empirical_query
 
     predicate = kwargs.get("predicate")
@@ -70,6 +85,7 @@ def execute_empirical_query_runtime(*, runtime_authorities, **kwargs):
         runtime_authorities,
         repository=repository,
         predicate_grammar_authority_ref=grammar_ref,
+        runtime_catalog_identity=runtime_catalog_identity,
     ):
         return execute_empirical_query(**kwargs)
 
@@ -81,6 +97,7 @@ def execute_empirical_query_current_runtime(**kwargs):
         return execute_empirical_query(**kwargs)
     return execute_empirical_query_runtime(
         runtime_authorities=binding.authorities,
+        runtime_catalog_identity=binding.runtime_catalog_identity,
         **kwargs,
     )
 

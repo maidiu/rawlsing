@@ -249,10 +249,11 @@ def _require_exact_i03_authority_fitness(
 
     grammar_ref = _authority(predicate.grammar_authority_ref, "predicate.grammar_authority_ref")
     try:
-        from rawlsing_next.pre553_runtime_context import current_runtime_authorities
-        runtime = current_runtime_authorities()
+        from rawlsing_next.pre553_runtime_context import current_runtime_binding
+        runtime_binding = current_runtime_binding()
     except ImportError:
-        runtime = None
+        runtime_binding = None
+    runtime = None if runtime_binding is None else runtime_binding.authorities
     runtime_grammar = (
         runtime is not None
         and runtime.is_positive_runtime_predicate_authority(grammar_ref)
@@ -306,6 +307,10 @@ def _require_exact_i03_authority_fitness(
                         raise
                     runtime.authorize_i03_operation_successor(
                         snapshot=snapshot,
+                        historical_parent_snapshot=runtime.resolve_exact_runtime_authority(
+                            snapshot.authority_ref
+                        ),
+                        runtime_catalog_identity=runtime_binding.runtime_catalog_identity,
                         query=query,
                         requested_operation=query_operation,
                         universe_refs=universe_refs,

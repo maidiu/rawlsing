@@ -230,6 +230,50 @@ def historical_projection_authority_snapshot() -> AuthoritySnapshot:
     )
 
 
+def historical_i03_parent_authority_snapshot() -> AuthoritySnapshot:
+    """Reconstruct the exact accepted AS2B I03 parent authority snapshot."""
+    role = "i03_query"
+    kind = "PREDICATE_GRAMMAR"
+    families = GOVERNED_OBJECT_FAMILIES
+    material = {
+        "court": "AS2B_LITS1_MECHANICAL_SOURCE_CERTIFICATION_20260827",
+        "role": role,
+        "kind": kind,
+        "source_sha256": SOURCE_SHA256,
+        "part_a_projection_authority_hash": PART_A_PROJECTION_AUTHORITY_HASH,
+        "families": families,
+    }
+    authority_hash = semantic_hash(material)
+    if authority_hash != PARENT_AUTHORITY_REF.authority_content_hash:
+        raise RuntimeError("banked AS2B I03 parent authority identity drift")
+    replay_root = _historical_ref("REPLAY_ROOT", f"authority-{role}", material)
+    return AuthoritySnapshot(
+        typed_state="ALLOW",
+        authority_snapshot_refs=(),
+        dependency_refs=(),
+        producer_replay_locator_or_reference_root=replay_root,
+        authority_id=PARENT_AUTHORITY_REF.authority_id,
+        authority_version=PARENT_AUTHORITY_REF.authority_version,
+        authority_content_hash=authority_hash,
+        authority_kind=kind,
+        decision_state="ALLOW",
+        governed_operations=(PARENT_OPERATION,),
+        governed_object_families=families,
+        scope_envelope={"source_universe_refs": "EXPLICIT_UNRESTRICTED"},
+        effective_time_or_interval="LITS1_2006_AS2B_EXECUTION",
+        parent_authority_refs=(),
+        negative_limit_refs=(),
+        supersession_refs=(),
+        interpretation_semantics_fingerprint=semantic_hash({
+            **material,
+            "ceiling": "AS2A_BANKED_ONLY",
+        }),
+        replay_protocol_ref=_historical_ref(
+            "REPLAY_PROTOCOL", f"authority-{role}", material
+        ),
+    )
+
+
 __all__ = [
     "SCHEMA",
     "SOURCE_SHA256",
@@ -248,4 +292,5 @@ __all__ = [
     "AUTHORITY_CONTENT_HASH",
     "operation_successor_authority_record",
     "historical_projection_authority_snapshot",
+    "historical_i03_parent_authority_snapshot",
 ]

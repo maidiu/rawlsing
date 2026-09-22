@@ -931,19 +931,39 @@ class Pre553RuntimeAuthoritySet:
         requested_operation: str,
         universe_refs: Iterable[ExactRef],
         required_object_family: str,
+        runtime_catalog_identity: str | None = None,
+        historical_parent_snapshot: AuthoritySnapshot | None = None,
     ) -> I03OperationSuccessorContract:
         """Resolve one exact adopted operation-successor record or fail closed."""
         if not isinstance(snapshot, AuthoritySnapshot):
             raise Pre553AuthorityError("I03 operation successor requires AuthoritySnapshot")
         if not isinstance(query, EmpiricalQuerySpec):
             raise Pre553AuthorityError("I03 operation successor requires EmpiricalQuerySpec")
+        catalog_identity = _text(
+            runtime_catalog_identity,
+            "I03 operation successor runtime catalog identity",
+        )
+        if (
+            len(catalog_identity) != 64
+            or any(ch not in "0123456789abcdef" for ch in catalog_identity)
+        ):
+            raise Pre553AuthorityError(
+                "I03 operation successor runtime catalog identity must be exact sha256"
+            )
+        if historical_parent_snapshot is not None and not isinstance(
+            historical_parent_snapshot, AuthoritySnapshot
+        ):
+            raise Pre553AuthorityError(
+                "I03 operation successor historical parent must be AuthoritySnapshot"
+            )
         operation = _text(requested_operation, "requested I03 successor operation")
         family = _text(required_object_family, "required I03 object family")
         universes = tuple(sorted(set(universe_refs), key=lambda ref: ref.key))
         matches = [
             contract
             for contract in self._i03_operation_successors
-            if contract.parent_authority_ref == snapshot.authority_ref
+            if contract.runtime_catalog_identity == catalog_identity
+            and contract.parent_authority_ref == snapshot.authority_ref
             and contract.runtime_snapshot_content_hash == snapshot.content_hash
             and contract.successor_operation == operation
             and query.ref in contract.query_refs
@@ -958,6 +978,33 @@ class Pre553RuntimeAuthoritySet:
         if snapshot.authority_kind != "PREDICATE_GRAMMAR" or snapshot.decision_state != "ALLOW":
             raise Pre553AuthorityError(
                 "I03 operation successor runtime snapshot is not positive predicate authority"
+            )
+        if historical_parent_snapshot is None:
+            raise Pre553AuthorityError(
+                "I03 operation successor exact historical parent snapshot is required"
+            )
+        adopted_parent = self.resolve_exact_runtime_authority(
+            contract.parent_authority_ref
+        )
+        if (
+            adopted_parent is None
+            or historical_parent_snapshot != adopted_parent
+            or historical_parent_snapshot.authority_ref
+            != contract.parent_authority_ref
+        ):
+            raise Pre553AuthorityError(
+                "I03 operation successor historical parent snapshot is not exactly adopted"
+            )
+        if (
+            historical_parent_snapshot.authority_kind != "PREDICATE_GRAMMAR"
+            or historical_parent_snapshot.decision_state != "ALLOW"
+        ):
+            raise Pre553AuthorityError(
+                "I03 operation successor historical parent is not positive predicate authority"
+            )
+        if contract.parent_operation not in historical_parent_snapshot.governed_operations:
+            raise Pre553AuthorityError(
+                "I03 operation successor parent operation is absent from exact historical authority"
             )
         query_authorities = {
             authority_ref(ref, "query authority ref") for ref in query.query_authority_refs
