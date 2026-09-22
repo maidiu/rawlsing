@@ -1,0 +1,172 @@
+{
+  "schema": "PREMAIN_CLOSED35_CONTRACT_AUDIT_RESIDUAL_R1_RETURN@1.0.0",
+  "worker": "PREMAIN-CLOSED35-CONTRACT-AUDIT-RESIDUAL-R1",
+  "lane": "RESIDUAL",
+  "repository": "maidiu/rawlsing",
+  "base": {
+    "branch": "agent/vozhd-closed35-l2r-r1-fanin-r1",
+    "sha": "da33eb6a8225c14eee9490633a3263388dc5536c"
+  },
+  "worker_branch": "agent/rabochii-premain-closed35-contract-audit-residual-r1",
+  "return_path": "WORKER_RETURNS/PREMAIN-CLOSED35-CONTRACT-AUDIT-RESIDUAL-R1/",
+  "read_only_comparison_points": {
+    "r3_fanin": "fe6714ed66c5f5c4e0440b6ea9f0f83e63c4f262",
+    "generic_pre553_fiabc": "78caf7eb4396dd576cf478c860372b7e26455cd9"
+  },
+  "source_count": 9,
+  "commissioned_minimum_sources": [
+    "GSS 1972",
+    "GSS 1973",
+    "GSS 1984",
+    "Afrobarometer R1",
+    "Afrobarometer R5",
+    "Afrobarometer R9",
+    "Latinobarometro 1995"
+  ],
+  "additional_sources_discovered": [
+    "EVS 1981",
+    "EVS 1990"
+  ],
+  "additional_source_discovery_holding": "NO_OTHER_ACCEPTED_R1_R2_R3_PACKET_BEARING_SOURCE_WITHOUT_CURRENT_EXECUTABLE_REALIZATION_MODULE_FOUND",
+  "source_dispositions": {
+    "GSS 1972": {
+      "estate": "REALIZATION_IMPLEMENTED_BUT_NOT_INTEGRATED",
+      "implementation_form": "DECLARATIVE_PACKET_ONLY",
+      "runtime_readiness": "READY_FOR_RUNTIME_PACKAGE"
+    },
+    "GSS 1973": {
+      "estate": "REALIZATION_IMPLEMENTED_BUT_NOT_INTEGRATED",
+      "implementation_form": "DECLARATIVE_PACKET_ONLY",
+      "runtime_readiness": "READY_FOR_RUNTIME_PACKAGE",
+      "bounded_unknowns_preserved": [
+        "Q105_CARD_XY_TO_FORM_RELATION",
+        "Q105_EXACT_BIRTH_YEAR_DIGIT_ROUTE"
+      ]
+    },
+    "GSS 1984": {
+      "estate": "REALIZATION_IMPLEMENTED_BUT_NOT_INTEGRATED",
+      "implementation_form": "DECLARATIVE_PACKET_ONLY",
+      "runtime_readiness": "READY_FOR_RUNTIME_PACKAGE",
+      "bounded_unknowns_preserved": [
+        "VARIABLE_FORM_MEMBERSHIP_UNMAPPED",
+        "VARIABLE_MODULE_MEMBERSHIP_UNMAPPED",
+        "ROUTING_APPLICABILITY_UNMAPPED",
+        "WEIGHT_DESIGN_USE_UNMAPPED"
+      ]
+    },
+    "Afrobarometer R1": {
+      "estate": "REALIZATION_IMPLEMENTED_BUT_NOT_INTEGRATED",
+      "implementation_form": "DECLARATIVE_PACKET_ONLY",
+      "runtime_readiness": "READY_FOR_RUNTIME_PACKAGE",
+      "bounded_unknowns_preserved": [
+        "CASENUMB_TO_DOCUMENTARY_RESPNUMB_RELATION",
+        "NATIONAL_INSTRUMENT_EQUIVALENCE_BEYOND_EXACT_PER_VARIABLE_DOCUMENTARY_AUTHORITY"
+      ]
+    },
+    "Afrobarometer R5": {
+      "estate": "RESIDUAL_AUTHORITY_BLOCKED",
+      "runtime_readiness": "NOT_YET_REALIZATION_READY",
+      "exact_residuals": [
+        "Q47C_997",
+        "EAST_AFR_EXACT_ALIAS",
+        "SOUTHERN_EXACT_ALIAS",
+        "NORTH_AF_EXACT_ALIAS",
+        "R1_ONLY",
+        "R2_ONLY",
+        "R3_ONLY",
+        "R4_ONLY"
+      ]
+    },
+    "Afrobarometer R9": {
+      "estate": "RESIDUAL_AUTHORITY_BLOCKED",
+      "runtime_readiness": "NOT_YET_REALIZATION_READY",
+      "exact_residuals": [
+        "Q118_11_EXACT_ROUND9_PRODUCER_BINDING",
+        "V397_A_EXACT_ROUND9_ALIAS_BINDING",
+        "V399_A_EXACT_ROUND9_ALIAS_AND_ROLE_BINDING"
+      ]
+    },
+    "Latinobarometro 1995": {
+      "estate": "RESIDUAL_AUTHORITY_BLOCKED",
+      "runtime_readiness": "NOT_YET_REALIZATION_READY",
+      "exact_residuals": [
+        "BRAZIL_120_ROW_CAUSAL_PROVENANCE",
+        "ENC_UNIQUENESS_SCOPE",
+        "WT_ESTIMAND_AND_POPULATION_DOMAIN",
+        "WT_NORMALIZATION",
+        "WT_CONSTRUCTION_CALIBRATION",
+        "EXTERNAL_RAW_DEFAULT_WEIGHTED_ESTIMATOR"
+      ]
+    },
+    "EVS 1981": {
+      "estate": "REALIZATION_IMPLEMENTED_BUT_NOT_INTEGRATED",
+      "implementation_form": "DECLARATIVE_PACKET_ONLY",
+      "runtime_readiness": "READY_FOR_RUNTIME_PACKAGE",
+      "bounded_unknowns_preserved": [
+        "NATIVE_ID_SCOPE",
+        "V308_CODE3_REASON",
+        "WEIGHT_G_ESTIMAND",
+        "CROSS_RELEASE_COORDINATE_EQUIVALENCE"
+      ]
+    },
+    "EVS 1990": {
+      "estate": "REALIZATION_IMPLEMENTED_BUT_NOT_INTEGRATED",
+      "implementation_form": "DECLARATIVE_PACKET_ONLY",
+      "runtime_readiness": "READY_FOR_RUNTIME_PACKAGE",
+      "bounded_unknowns_preserved": [
+        "NATIVE_ID_SCOPE",
+        "WEIGHT_G_ESTIMAND",
+        "WEIGHT_S_ESTIMAND",
+        "WEIGHT_G_WEIGHT_S_RELATION_AND_DEFAULT_USE",
+        "CROSS_RELEASE_COORDINATE_EQUIVALENCE"
+      ]
+    }
+  },
+  "generic_holdings": {
+    "absence_of_runtime_package_is_source_defect": false,
+    "declarative_source_realization_equals_runtime_package": false,
+    "exact_decoder_representation_must_bind_r5_key": true,
+    "magnitude_only_key_equivalence_forbidden": true,
+    "physical_missingness_semantic_applicability_noncollapse_required": true,
+    "frozen_runtime_catalog_preimages_required": true,
+    "dynamic_i05_generated_object_preimages_required_downstream": true,
+    "post_i05_fact_ref_without_preimage_is_insufficient": true,
+    "historical_current_dependency_scope_must_be_pinned": true,
+    "source_specific_terminal_state_domain_must_survive": true,
+    "whole_source_physical_edge_receipt_requires_later_qualified_source_observation": true,
+    "source_unknowns_may_not_be_closed_by_shape_name_value_or_neighbor_inference": true
+  },
+  "failure_classes_mapped": [
+    "DECODER_RUNTIME_TYPE__GOVERNED_KEY_NONINTERSECTION",
+    "LAWFUL_AUTHORITY_REPRESENTATION__CONSUMER_IGNORES_FORM",
+    "DYNAMIC_QUERY_REF__STATIC_CATALOG_ONLY_RESOLUTION",
+    "I05_FACT_EXISTS__POSTCONSUMER_PREIMAGE_MISSING",
+    "HISTORICAL_FILE__AMBIENT_CURRENT_DEPENDENCY",
+    "HISTORICAL_SUCCESSOR__RUNTIME_CATALOG_SCOPE_NOT_ENFORCED",
+    "SOURCE_SPECIFIC_TERMINAL_DOMAIN__GENERIC_FIELD_SUBSTITUTION",
+    "RISK_SET_DECLARED__MEMBERSHIP_PREIMAGE_UNAVAILABLE",
+    "QUESTION_VALUE_BINDING__EXACT_RESPONSE_REF_UNAVAILABLE",
+    "CURRENT_PRODUCT_SHAPE_MATCHES__SUBSTANTIVE_PRIOR_TRUTH_NOT_PROVED"
+  ],
+  "outputs": [
+    "00_RETURN.md",
+    "01_SOURCE_READINESS_MATRIX.csv",
+    "02_RUNTIME_PACKAGE_ADMISSION_GAPS.md",
+    "03_GENERIC_FAILURE_CLASS_APPLICABILITY.md",
+    "04_REQUIRED_NEXT_WORK.md",
+    "RETURN.json"
+  ],
+  "proof_boundary": {
+    "github_browser_only": true,
+    "raw_survey_files_opened_or_materialized": false,
+    "real_source_processing_executed": false,
+    "candidate_abc_run": false,
+    "i05_run_against_real_sources": false,
+    "measured_p2x_run": false,
+    "semantics_inferred_from_raw_values": false,
+    "existing_governed_branch_mutated": false,
+    "lits_repair_touched": false
+  },
+  "terminal": "PREMAIN_CLOSED35_CONTRACT_AUDIT_RESIDUAL_R1__SOURCE_FREE_AUDIT_COMPLETE__FAILURE_CLASSES_MAPPED__NO_SOURCE_EXECUTION__NO_CANDIDATES_RUN",
+  "commit_sha_note": "Final branch commit SHA is reported externally because a commit cannot embed its own hash in its preimage."
+}

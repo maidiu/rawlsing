@@ -1,0 +1,70 @@
+{
+  "schema": "PREMAIN_CLOSED35_CONTRACT_AUDIT_ASIAN_R1_RETURN@1.0.0",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-premain-closed35-contract-audit-asian-r1",
+  "base_sha": "fe6714ed66c5f5c4e0440b6ea9f0f83e63c4f262",
+  "audit_mode": "BROWSER_GITHUB_ONLY__FORENSIC_SOURCE_FREE",
+  "sources": [
+    {
+      "family": "Asian Barometer",
+      "wave": "1",
+      "sha256": "ac0b8bc1ddb2fa6b952417e35b6379ce6a2cf8596776a43282ba44f48e0ae1a2",
+      "realization": "rawlsing_next/closed35_asian1_realization.py",
+      "packet": "WORKER_RETURNS/CLOSED35-R3-ASIAN1/"
+    },
+    {
+      "family": "Asian Barometer",
+      "wave": "4",
+      "sha256": "4d914817509d0e5f3adde49707df148f696992055937f085080a016002a39200",
+      "realization": "rawlsing_next/closed35_asian4_realization.py",
+      "packet": "WORKER_RETURNS/CLOSED35-R3-ASIAN4/"
+    },
+    {
+      "family": "Asian Barometer",
+      "wave": "5",
+      "sha256": "2576e428ff8de3c8d93a418c9120a1c2955ab7b1f35961d8c18fa562bc4b5e63",
+      "realization": "rawlsing_next/closed35_asian5_realization.py",
+      "packet": "WORKER_RETURNS/CLOSED35-R2-ASIAN5/"
+    }
+  ],
+  "contract_check_counts": {
+    "PROVED_READY": 9,
+    "NOT_APPLICABLE": 0,
+    "SOURCE_FREE_GAP": 0,
+    "REQUIRES_RUNTIME_PACKAGE": 15,
+    "REQUIRES_QUALIFIED_SOURCE_OBSERVATION": 6,
+    "AUTHORITY_BLOCKED": 6
+  },
+  "generic_failure_class_counts": {
+    "APPLICABLE_NOW": 5,
+    "APPLICABLE_ONLY_AFTER_RUNTIME_PACKAGING": 21,
+    "NOT_APPLICABLE": 0,
+    "UNKNOWN_AUTHORITY_ABSENT": 4
+  },
+  "principal_findings": [
+    "No source-free defect was proved in the integrated Asian realization modules.",
+    "W1 source-declared BIG-5 reader law must be explicitly succeeded into a PRE553 runtime decoder/config package before execution; exact R5 typed-key intersection still requires qualified decoder observation.",
+    "W4 preserves ordinary -1 as observed storage, separates merged country from instrument SE1, and correctly leaves q172 exact source membership authority-blocked.",
+    "W5 preserves native MR identity/overlap, rejects COUNTRY+ID replay authority, and correctly leaves India/q186 exact routing and MR-Q112 semantic alias authority-blocked.",
+    "All three future runtime packages must freeze exact authority/catalog identities and retain dynamic query/fact preimages required by downstream consumers.",
+    "All three source modules explicitly preserve bounded UNKNOWN rather than infer semantics."
+  ],
+  "outputs": [
+    "00_RETURN.md",
+    "01_SOURCE_CONTRACT_MATRIX.csv",
+    "02_GENERIC_FAILURE_CLASS_APPLICABILITY.md",
+    "03_PRE_RUNTIME_PACKAGE_BLOCKERS.md",
+    "04_REQUIRED_HOSTILE_TESTS.md",
+    "RETURN.json"
+  ],
+  "prohibitions_observed": {
+    "raw_survey_files_opened_or_materialized": false,
+    "real_source_processing_executed": false,
+    "candidate_a_b_c_run": false,
+    "real_i05_run": false,
+    "measured_p2x_run": false,
+    "existing_governed_branch_mutated": false,
+    "raw_value_semantics_inferred": false
+  },
+  "terminal": "PREMAIN_CLOSED35_CONTRACT_AUDIT_ASIAN_R1__SOURCE_FREE_AUDIT_COMPLETE__FAILURE_CLASSES_MAPPED__NO_SOURCE_EXECUTION__NO_CANDIDATES_RUN"
+}

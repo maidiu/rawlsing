@@ -1,0 +1,106 @@
+{
+  "schema": "PREMAIN_CLOSED35_CONTRACT_AUDIT_ARAB_R1_RETURN@1.0.0",
+  "worker": "WORKER_B__ARAB_BAROMETER_REALIZATION_AUDIT",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-premain-closed35-contract-audit-arab-r1",
+  "base": "fe6714ed66c5f5c4e0440b6ea9f0f83e63c4f262",
+  "generic_pre553_comparison_base": "78caf7eb4396dd576cf478c860372b7e26455cd9",
+  "sources": [
+    {
+      "id": "ARAB1",
+      "name": "Arab Barometer Wave 1",
+      "realization_packet": "CLOSED35-R3-ARAB1",
+      "module": "rawlsing_next/closed35_arab1_realization.py",
+      "canonical_source_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18"
+    },
+    {
+      "id": "ARAB2",
+      "name": "Arab Barometer Wave 2",
+      "realization_packet": "CLOSED35-R2-ARAB2",
+      "module": "rawlsing_next/closed35_arab2_realization.py",
+      "canonical_source_sha256": "6529841b97bd56463490d810ad24ceaa4866066d12e4651a7081682d413606a1"
+    },
+    {
+      "id": "ARAB5",
+      "name": "Arab Barometer Wave 5",
+      "realization_packet": "CLOSED35-R3-ARAB5",
+      "module": "rawlsing_next/closed35_arab5_realization.py",
+      "canonical_source_sha256": "6a5cbad637ce1546833a1d4812ba6d1e8d75f85b5b199b0cf3ec5cf456068dbc"
+    },
+    {
+      "id": "ARAB8",
+      "name": "Arab Barometer Wave 8",
+      "realization_packet": "CLOSED35-R3-ARAB8",
+      "module": "rawlsing_next/closed35_arab8_realization.py",
+      "canonical_source_sha256": "a5e83a953f03dd890e076a51da473051f1cfd1ca2e8ab93c2172eeb2517af998"
+    }
+  ],
+  "disposition": "SOURCE_FREE_AUDIT_COMPLETE__NO_SOURCE_EXECUTION",
+  "contract_check_counts": {
+    "total": 48,
+    "PROVED_READY": 8,
+    "NOT_APPLICABLE": 0,
+    "SOURCE_FREE_GAP": 4,
+    "REQUIRES_RUNTIME_PACKAGE": 28,
+    "REQUIRES_QUALIFIED_SOURCE_OBSERVATION": 8,
+    "AUTHORITY_BLOCKED": 0
+  },
+  "principal_findings": {
+    "source_law_preserves_missingness_identity_topology_and_bounded_unknowns": true,
+    "current_arab_runtime_packages_present": false,
+    "runtime_package_absence_treated_as_defect": false,
+    "exact_decoder_representation_required_before_r5_key_freeze": true,
+    "exact_historical_documentary_dependency_closure_source_free_gap": true,
+    "whole_source_physical_equivalence_still_requires_qualified_source_observation": true,
+    "lits_style_source_successor_machinery_applicable": false,
+    "generic_pre553_risk_set_membership_conditionally_applicable_to_future_routed_targets": true,
+    "dynamic_query_and_fact_preimages_must_be_retained_by_future_runtime_terminal_path": true
+  },
+  "authority_blocked_if_future_claim_requested": {
+    "ARAB1": [
+      "display transform beyond authority",
+      "V715onlymorocco printed alias",
+      "undocumented routing",
+      "weight/design semantics",
+      "cross-wave equivalence"
+    ],
+    "ARAB2": [
+      "Q101/0 semantics",
+      "Q2062/0 semantics",
+      "WT estimand/normalization/default",
+      "unjoined country/module routing",
+      "cross-wave equivalence"
+    ],
+    "ARAB5": [
+      "Q101 -9/-8/97 semantics",
+      "design/weight roles",
+      "unjoined item routing",
+      "cross-wave equivalence"
+    ],
+    "ARAB8": [
+      "BLOCK_ID semantics",
+      "WT/STRATUM/PSU analytic design claims",
+      "Q1↔STRATUM semantic relation",
+      "unjoined routing",
+      "cross-wave equivalence"
+    ]
+  },
+  "constraints_observed": {
+    "user_mac_used": false,
+    "raw_survey_opened_or_materialized": false,
+    "source_processing_executed": false,
+    "candidates_run": false,
+    "real_source_i05_run": false,
+    "measured_p2x_run": false,
+    "existing_governed_branch_mutated": false
+  },
+  "outputs": [
+    "00_RETURN.md",
+    "01_SOURCE_CONTRACT_MATRIX.csv",
+    "02_GENERIC_FAILURE_CLASS_APPLICABILITY.md",
+    "03_PRE_RUNTIME_PACKAGE_BLOCKERS.md",
+    "04_REQUIRED_HOSTILE_TESTS.md",
+    "RETURN.json"
+  ],
+  "terminal": "PREMAIN_CLOSED35_CONTRACT_AUDIT_ARAB_R1__SOURCE_FREE_AUDIT_COMPLETE__FAILURE_CLASSES_MAPPED__NO_SOURCE_EXECUTION__NO_CANDIDATES_RUN"
+}
