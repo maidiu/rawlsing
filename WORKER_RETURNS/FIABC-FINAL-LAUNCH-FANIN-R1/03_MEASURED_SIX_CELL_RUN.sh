@@ -1,13 +1,16 @@
 #!/usr/bin/env bash
 set -euo pipefail
-EXPECTED_HEAD="aa15525750085f4e223d579010688660a9ae1b6b"
+CODE_HEAD="aa15525750085f4e223d579010688660a9ae1b6b"
 EXPECTED_BRANCH="agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1"
 
 : "${LITS_PATH:?set LITS_PATH}"
 : "${WVS_PATH:?set WVS_PATH}"
 : "${WORK_ROOT:?set WORK_ROOT}"
 
-[[ "$(git rev-parse --verify HEAD^{commit})" == "$EXPECTED_HEAD" ]] || { echo "wrong HEAD" >&2; exit 2; }
+git merge-base --is-ancestor "$CODE_HEAD" HEAD || { echo "qualified code head $CODE_HEAD is not an ancestor of HEAD" >&2; exit 2; }
+if git diff --name-only "$CODE_HEAD"..HEAD | grep -Ev '^WORKER_RETURNS/FIABC-FINAL-LAUNCH-FANIN-R1/' | grep -q .; then
+  echo "non-launch-pack code changed after qualified code head $CODE_HEAD" >&2; exit 2
+fi
 [[ "$(git branch --show-current)" == "$EXPECTED_BRANCH" ]] || { echo "wrong branch" >&2; exit 2; }
 [[ -z "$(git status --porcelain)" ]] || { echo "dirty worktree" >&2; exit 2; }
 
