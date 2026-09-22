@@ -1,0 +1,175 @@
+{
+  "schema": "FIABC_CANONICAL_TERMINAL_READINESS_STATIC_AUDIT_R1@1.0.0",
+  "base_sha": "3206bad6419e02c3aa12fff38e288e4faf13d82d",
+  "bounded_repair_head_before_return_packet": "00cc1c0fbe945cd7bbc6a8187aaf5533c9fb9b38",
+  "runtime_qualification_executed": false,
+  "github_actions_triggered": false,
+  "raw_survey_carriers_opened_or_materialized": false,
+  "candidate_abc_executed": false,
+  "lits_oracle_generated": false,
+  "wvs_oracle_standardized_or_frozen": false,
+  "pre_candidate_t3_freeze_executed": false,
+  "measured_p2x_executed": false,
+  "checks": [
+    {
+      "id": 1,
+      "status": "PASS",
+      "claim": "LITS_CANDIDATE_COUNT resolves from rawlsing_next/pre553_independent_parity_oracle.py",
+      "evidence": "single module-level definition LITS_CANDIDATE_COUNT = 50"
+    },
+    {
+      "id": 2,
+      "status": "PASS",
+      "claim": "LITS_CANDIDATE_COUNT is exactly 50",
+      "value": 50
+    },
+    {
+      "id": 3,
+      "status": "PASS",
+      "claim": "LITS_QUERY_ROLE_COUNT resolves from rawlsing_next/pre553_independent_parity_oracle.py",
+      "evidence": "single module-level definition LITS_QUERY_ROLE_COUNT = 77"
+    },
+    {
+      "id": 4,
+      "status": "PASS",
+      "claim": "LITS_QUERY_ROLE_COUNT is exactly 77",
+      "value": 77
+    },
+    {
+      "id": 5,
+      "status": "PASS",
+      "claim": "rawlsing_next/fiabc_final_oracle_freeze_producers.py resolves/re-exports both names",
+      "evidence": "both names are imported at module scope from pre553_independent_parity_oracle; the producer does not define competing values"
+    },
+    {
+      "id": 6,
+      "status": "PASS",
+      "claim": "existing test import has a valid symbol path",
+      "evidence": "rawlsing_next/tests/test_fiabc_final_oracle_freeze_producers.py imports both names from fiabc_final_oracle_freeze_producers; that producer now imports both at module scope"
+    },
+    {
+      "id": 7,
+      "status": "PASS",
+      "claim": "no FIABC/WVS/P2/PRE553 semantic identities changed",
+      "evidence": {
+        "oracle_literal_to_named_constant_refactor_only": true,
+        "producer_change_is_import_only": true,
+        "oracle_identity_assignment_lines_equal_to_base": true,
+        "producer_identity_assignment_lines_equal_to_base": true,
+        "unchanged_identities_include": [
+          "LiTS frontier seal",
+          "LiTS source SHA",
+          "LiTS learned-product identity",
+          "LiTS semantic replay identity",
+          "LiTS projection/release/replay identities",
+          "WVS7 successor Lock2",
+          "WVS7 successor Lock2 replay",
+          "WVS7 discovery authority",
+          "WVS7 empirical universe",
+          "WVS7 risk set",
+          "WVS7 measure basis"
+        ]
+      }
+    },
+    {
+      "id": 8,
+      "status": "PASS",
+      "claim": "all three requested launch scripts select Python 3 fail-closed",
+      "evidence": {
+        "behavior": [
+          "prefer python3",
+          "fallback to python",
+          "fail if neither exists",
+          "fail if selected interpreter major version is not 3",
+          "use selected PYTHON_BIN for subsequent Python operations"
+        ],
+        "scripts": [
+          "WORKER_RETURNS/CANONICAL-REINTEGRATION-FIABC-R1/01_SOURCE_FREE_LOCAL_QUALIFICATION.sh",
+          "WORKER_RETURNS/FIABC-FINAL-LAUNCH-FANIN-R1/02_PRE_CANDIDATE_LOCAL_PREFLIGHT.sh",
+          "WORKER_RETURNS/FIABC-FINAL-LAUNCH-FANIN-R1/03_MEASURED_SIX_CELL_RUN.sh"
+        ]
+      }
+    },
+    {
+      "id": 9,
+      "status": "PASS",
+      "claim": "no bare operational python invocation remains in the three scripts",
+      "evidence": "no line begins with bare python; literal python occurs only in interpreter discovery/fallback text"
+    },
+    {
+      "id": 10,
+      "status": "PASS",
+      "claim": "source-free qualification remains source-free and does not start oracle/candidate work",
+      "evidence": {
+        "absent_tokens": [
+          "LITS_PATH",
+          "WVS_PATH",
+          "produce-lits",
+          "standardize-wvs",
+          "freeze-t3",
+          "--run",
+          "--resume"
+        ],
+        "payload_python_operation_sequence_preserved_after_prepending_version_guard": true,
+        "exact_repaired_python_blobs_pinned_before_drift_allowlist": true
+      }
+    },
+    {
+      "id": 11,
+      "status": "PASS",
+      "claim": "pre-candidate preflight remains candidate-neutral",
+      "evidence": {
+        "contains_preflight": true,
+        "contains_candidate_run_or_resume": false,
+        "preexisting_payload_python_operation_sequence_preserved_after_prepending_version_guard": true
+      }
+    },
+    {
+      "id": 12,
+      "status": "PASS",
+      "claim": "measured runner remains exactly six serialized cells in frozen order",
+      "evidence": {
+        "shell_run_invocations": 1,
+        "manifest_source_order": [
+          "LITS_I",
+          "WVS7"
+        ],
+        "manifest_candidate_order": [
+          "A",
+          "B",
+          "C"
+        ],
+        "manifest_cells": [
+          "LITS_I/A",
+          "LITS_I/B",
+          "LITS_I/C",
+          "WVS7/A",
+          "WVS7/B",
+          "WVS7/C"
+        ],
+        "exact_six_frozen_order": true,
+        "driver_guards_expected_source_and_candidate_order": true,
+        "driver_serial_continuation_loop_preserved": true,
+        "runner_payload_python_operation_sequence_preserved_after_prepending_version_guard": true
+      }
+    }
+  ],
+  "authority_provenance": {
+    "owner": "rawlsing_next/pre553_independent_parity_oracle.py",
+    "independent_manifest": "WORKER_RETURNS/FIABC-T2/01_SIX_CELL_EXECUTION_MANIFEST.json",
+    "manifest_lits_values": {
+      "learned_candidates": 50,
+      "learned_roles": 77
+    },
+    "authority_character": "integration/export repair only; no new empirical authority minted"
+  },
+  "changed_repair_paths": [
+    "rawlsing_next/pre553_independent_parity_oracle.py",
+    "rawlsing_next/fiabc_final_oracle_freeze_producers.py",
+    "WORKER_RETURNS/CANONICAL-REINTEGRATION-FIABC-R1/01_SOURCE_FREE_LOCAL_QUALIFICATION.sh",
+    "WORKER_RETURNS/FIABC-FINAL-LAUNCH-FANIN-R1/02_PRE_CANDIDATE_LOCAL_PREFLIGHT.sh",
+    "WORKER_RETURNS/FIABC-FINAL-LAUNCH-FANIN-R1/03_MEASURED_SIX_CELL_RUN.sh"
+  ],
+  "next_local_command": "bash WORKER_RETURNS/CANONICAL-REINTEGRATION-FIABC-R1/01_SOURCE_FREE_LOCAL_QUALIFICATION.sh",
+  "terminal": "FIABC_CANONICAL_TERMINAL_READINESS_REPAIR_R1__RETURNED__50_77_SYMBOL_BINDING_REPAIRED__PYTHON3_PORTABILITY_REPAIRED__LOCAL_SOURCE_FREE_QUALIFICATION_REQUIRED"
+}
