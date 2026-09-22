@@ -12,6 +12,21 @@ from rawlsing_next import ee_p2x_darwin_court_driver as d
 def _banked_evidence_bytes(monkeypatch):
     monkeypatch.setattr(d, "_git_show_bytes", lambda *args, **kwargs: b"banked-evidence")
 
+    # These are state-machine/driver fixtures, not T3/T4 integration fixtures.
+    # The exact process-envelope/accounting seam is covered independently by
+    # test_fiabc_t3_oracle_process_envelope.py and test_fiabc_t4_live_accounting.py.
+    from rawlsing_next import fiabc_live_accounting_binding as t4
+
+    monkeypatch.setattr(
+        t4,
+        "admit_live_stage_accounting",
+        lambda **kwargs: {
+            "schema": t4.LIVE_CONTRACT,
+            "classification": "TEST_FIXTURE__DRIVER_MECHANICS_ONLY",
+            "semantic_state_modified": False,
+        },
+    )
+
 
 def _sha(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
