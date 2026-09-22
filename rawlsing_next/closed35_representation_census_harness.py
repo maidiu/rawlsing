@@ -519,6 +519,27 @@ def _metadata_receipt(source: Mapping[str, Any], source_path: Path, metadata: An
     if source["source_format"] == "SAV":
         with source_path.open("rb") as handle:
             raw_header = _sav_header_layout(handle.read(176))
+
+    metadata_maps = {
+        "missing_ranges": decoder_jsonable(getattr(metadata, "missing_ranges", {}) or {}),
+        "missing_user_values": decoder_jsonable(getattr(metadata, "missing_user_values", {}) or {}),
+        "variable_value_labels": decoder_jsonable(getattr(metadata, "variable_value_labels", {}) or {}),
+        "original_variable_types": decoder_jsonable(getattr(metadata, "original_variable_types", {}) or {}),
+        "readstat_variable_types": decoder_jsonable(getattr(metadata, "readstat_variable_types", {}) or {}),
+        "variable_storage_width": decoder_jsonable(getattr(metadata, "variable_storage_width", {}) or {}),
+        "variable_display_width": decoder_jsonable(getattr(metadata, "variable_display_width", {}) or {}),
+        "mr_sets": decoder_jsonable(getattr(metadata, "mr_sets", {}) or {}),
+    }
+    fingerprints = {
+        name: _sha256_bytes(_canonical_json_bytes(value))
+        for name, value in metadata_maps.items()
+    }
+    counts = {
+        "variables_with_missing_ranges": len(metadata_maps["missing_ranges"]),
+        "variables_with_missing_user_values": len(metadata_maps["missing_user_values"]),
+        "variables_with_value_label_dictionaries": len(metadata_maps["variable_value_labels"]),
+        "native_mr_set_count": len(metadata_maps["mr_sets"]),
+    }
     return {
         "number_rows": int(getattr(metadata, "number_rows", 0) or 0),
         "logical_variable_count": len(names),
@@ -528,7 +549,9 @@ def _metadata_receipt(source: Mapping[str, Any], source_path: Path, metadata: An
         "file_encoding": decoder_jsonable(getattr(metadata, "file_encoding", None)),
         "file_format": decoder_jsonable(getattr(metadata, "file_format", None)),
         "raw_sav_fixed_header": raw_header,
-        "mr_sets": decoder_jsonable(getattr(metadata, "mr_sets", {}) or {}),
+        "physical_metadata_map_sha256": fingerprints,
+        "physical_metadata_counts": counts,
+        "mr_sets": metadata_maps["mr_sets"],
     }
 
 
