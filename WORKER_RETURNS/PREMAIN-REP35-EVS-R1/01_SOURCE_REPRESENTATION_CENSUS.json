@@ -1,0 +1,196 @@
+{
+  "schema": "PREMAIN_REP35_W5_EVS_SOURCE_REPRESENTATION_CENSUS@1.0.0",
+  "base": "ef8eff9625f269173ac2c17af3f92d913babb275",
+  "branch": "agent/rabochii-premain-rep35-evs-r1",
+  "qualified_runtime": {
+    "code": "REPRESENTATION_FACT_BLOCKED__QUALIFIED_RUNTIME_UNAVAILABLE",
+    "required": {
+      "python": "3.11.3",
+      "pyreadstat": "1.3.6",
+      "pyarrow": "25.0.1"
+    },
+    "observed_cloud": {
+      "python": "3.13.5",
+      "pyreadstat": "UNAVAILABLE",
+      "pyarrow": "UNAVAILABLE"
+    },
+    "attempt": "uv python install 3.11.3",
+    "attempt_result": "FAILED__NETWORK_DNS_UNAVAILABLE",
+    "authority_consequence": "No fresh decoder-observed Python representation class or R5 typed-key join is authorized."
+  },
+  "source_access": {
+    "transport": "surveys.zip exact historical Library transport plus three individually surfaced Library members",
+    "transport_sha256": "f68d2b33ec0eeb973699963e4c7122d624b99a541b40277e4daed8b87dc9d05f",
+    "all_five_exact_source_sha_verified_in_cloud": true,
+    "raw_bytes_committed": false
+  },
+  "authority_boundary": {
+    "fresh_authoritative_representation_observation_performed": false,
+    "reason": "Qualified CPython 3.11.3 + pyreadstat 1.3.6 + pyarrow 25.0.1 could not be reproduced in cloud.",
+    "inherited_physical_facts_are_not_promoted_to_new_typed_representation_authority": true,
+    "semantic_inference_performed": false
+  },
+  "sources": [
+    {
+      "source_file": "EVS 1981.sav",
+      "source_sha256": "5b703173845c086382fd93252f1cbc91dfef74007755459adfc73785389172f2",
+      "size_bytes": 11815613,
+      "sha_verified_this_worker": true,
+      "rows_inherited_accepted": 19378,
+      "variables_inherited_accepted": 370,
+      "decoder_mode_required": "SAV_SOURCE_DECLARED_WINDOWS1252",
+      "source_declared_encoding_inherited": "windows-1252",
+      "machine_character_code_inherited": 1252,
+      "native_mr_set_count_inherited": 0,
+      "missing_declaration_variable_count_inherited": 363,
+      "observed_user_missing_variable_count_inherited": 260,
+      "user_missing_cell_count_inherited": 585266,
+      "system_missing_cell_count_inherited": 0,
+      "s35_edge_classes_inherited": [
+        "EC01",
+        "EC02",
+        "EC05",
+        "EC09",
+        "EC12",
+        "EC13"
+      ],
+      "fresh_variable_representation_census": {
+        "status": "BLOCKED",
+        "authoritative_variables": [],
+        "blocker": "REPRESENTATION_FACT_BLOCKED__QUALIFIED_RUNTIME_UNAVAILABLE"
+      },
+      "source_status": "REPRESENTATION_FACT_BLOCKED"
+    },
+    {
+      "source_file": "EVS 1990.sav",
+      "source_sha256": "66252a92c59bf6759b79a6b35b2be658b98a433373212a70c8ec94755d3e02ec",
+      "size_bytes": 24341244,
+      "sha_verified_this_worker": true,
+      "rows_inherited_accepted": 38213,
+      "variables_inherited_accepted": 390,
+      "decoder_mode_required": "SAV_SOURCE_DECLARED_WINDOWS1252",
+      "source_declared_encoding_inherited": "windows-1252",
+      "machine_character_code_inherited": 1252,
+      "native_mr_set_count_inherited": 0,
+      "missing_declaration_variable_count_inherited": 380,
+      "observed_user_missing_variable_count_inherited": 314,
+      "user_missing_cell_count_inherited": 1587207,
+      "system_missing_cell_count_inherited": 0,
+      "s35_edge_classes_inherited": [
+        "EC01",
+        "EC02",
+        "EC05",
+        "EC06",
+        "EC09",
+        "EC12",
+        "EC13"
+      ],
+      "fresh_variable_representation_census": {
+        "status": "BLOCKED",
+        "authoritative_variables": [],
+        "blocker": "REPRESENTATION_FACT_BLOCKED__QUALIFIED_RUNTIME_UNAVAILABLE"
+      },
+      "source_status": "REPRESENTATION_FACT_BLOCKED"
+    },
+    {
+      "source_file": "EVS 1999.sav",
+      "source_sha256": "6058644a9308aad574b95fa0afd1b026fedea289c6c95aca043aefb41ae0ab8a",
+      "size_bytes": 31857144,
+      "sha_verified_this_worker": true,
+      "rows_inherited_accepted": 41125,
+      "variables_inherited_accepted": 513,
+      "decoder_mode_required": "SAV_LATIN1_COMPAT_PHYSICAL_ONLY__SOURCE_DECLARES_UTF8",
+      "source_declared_encoding_inherited": "UTF-8",
+      "machine_character_code_inherited": 65001,
+      "native_mr_set_count_inherited": 0,
+      "missing_declaration_variable_count_inherited": 506,
+      "observed_user_missing_variable_count_inherited": 462,
+      "user_missing_cell_count_inherited": 7117691,
+      "system_missing_cell_count_inherited": 0,
+      "s35_edge_classes_inherited": [
+        "EC01",
+        "EC02",
+        "EC03",
+        "EC10",
+        "EC14"
+      ],
+      "fresh_variable_representation_census": {
+        "status": "BLOCKED",
+        "authoritative_variables": [],
+        "blocker": "REPRESENTATION_FACT_BLOCKED__QUALIFIED_RUNTIME_UNAVAILABLE"
+      },
+      "source_status": "REPRESENTATION_FACT_BLOCKED",
+      "text_quarantine": {
+        "source_declares_utf8": true,
+        "exact_sha_latin1_compatibility_only": true,
+        "compatibility_text_semantic_authority": false,
+        "normalization_or_repair_authorized": false
+      }
+    },
+    {
+      "source_file": "EVS 2008.sav",
+      "source_sha256": "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379",
+      "size_bytes": 63832833,
+      "sha_verified_this_worker": true,
+      "rows_inherited_accepted": 66280,
+      "variables_inherited_accepted": 477,
+      "decoder_mode_required": "SAV_LATIN1_COMPAT_PHYSICAL_ONLY__SOURCE_DECLARES_UTF8",
+      "source_declared_encoding_inherited": "UTF-8",
+      "machine_character_code_inherited": 65001,
+      "native_mr_set_count_inherited": 13,
+      "missing_declaration_variable_count_inherited": 450,
+      "observed_user_missing_variable_count_inherited": 443,
+      "user_missing_cell_count_inherited": 4169635,
+      "system_missing_cell_count_inherited": 0,
+      "s35_edge_classes_inherited": [
+        "EC01",
+        "EC02",
+        "EC03",
+        "EC08",
+        "EC14"
+      ],
+      "fresh_variable_representation_census": {
+        "status": "BLOCKED",
+        "authoritative_variables": [],
+        "blocker": "REPRESENTATION_FACT_BLOCKED__QUALIFIED_RUNTIME_UNAVAILABLE"
+      },
+      "source_status": "REPRESENTATION_FACT_BLOCKED",
+      "text_quarantine": {
+        "source_declares_utf8": true,
+        "exact_sha_latin1_compatibility_only": true,
+        "compatibility_text_semantic_authority": false,
+        "normalization_or_repair_authorized": false
+      }
+    },
+    {
+      "source_file": "EVS 2017.sav",
+      "source_sha256": "95096c2474b81ef12004726e4ed5b0919b1ea7bb672baff676ae40fb1b629bd2",
+      "size_bytes": 53499063,
+      "sha_verified_this_worker": true,
+      "rows_inherited_accepted": 59438,
+      "variables_inherited_accepted": 474,
+      "decoder_mode_required": "SAV_NATIVE_GOVERNED",
+      "source_declared_encoding_inherited": "UTF-8",
+      "machine_character_code_inherited": 65001,
+      "native_mr_set_count_inherited": 2,
+      "missing_declaration_variable_count_inherited": 451,
+      "observed_user_missing_variable_count_inherited": 449,
+      "user_missing_cell_count_inherited": 6975675,
+      "system_missing_cell_count_inherited": 11,
+      "s35_edge_classes_inherited": [
+        "EC01",
+        "EC02",
+        "EC05",
+        "EC08",
+        "EC10",
+        "EC12"
+      ],
+      "fresh_variable_representation_census": {
+        "status": "BLOCKED",
+        "authoritative_variables": [],
+        "blocker": "REPRESENTATION_FACT_BLOCKED__QUALIFIED_RUNTIME_UNAVAILABLE"
+      },
+      "source_status": "REPRESENTATION_FACT_BLOCKED"
+    }
+  ]
+}
