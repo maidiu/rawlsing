@@ -109,6 +109,20 @@ See `04_LOCAL_QUALIFICATION_FAILURE_FOLLOWUP.md` for exact diagnosis and repair.
 
 A fresh local source-free qualification rerun is required; this worker did not execute it.
 
+## Second local qualification follow-up
+
+The user reran source-free qualification from `c0fa63e0817bca56566049e86bf192934964868a`. Pytest was fully green:
+
+```text
+163 passed, 28 subtests passed in 9.49s
+```
+
+Qualification then stopped only in its final static cross-lane assertion because the shell script referenced non-existent `oracle.WVS7_LOCK2_REPLAY`.
+
+The authoritative oracle export is `WVS7_LOCK2_REPLAY_IDENTITY`, and its value exactly equals `WVS7_SUCCESSOR_LOCK2_REPLAY` in live terminal control. The qualification assertion was corrected to that exact symbol. No production Python module or semantic identity changed.
+
+See `05_LOCAL_QUALIFICATION_FINAL_ASSERTION_FOLLOWUP.md`. A fresh local rerun remains required; this Browser/GitHub worker did not execute it.
+
 ## Runtime statement
 
 No runtime qualification was executed.
