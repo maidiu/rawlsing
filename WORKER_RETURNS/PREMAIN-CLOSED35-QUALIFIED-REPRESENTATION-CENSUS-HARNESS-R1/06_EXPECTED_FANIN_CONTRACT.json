@@ -1,0 +1,67 @@
+{
+  "schema": "PREMAIN_CLOSED35_QUALIFIED_REPRESENTATION_CENSUS_FANIN_CONTRACT@1.0.0",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-premain-closed35-qualified-representation-census-harness-r1",
+  "exact_base": "fe1d6ef246d9b796635f2cb87c4a712de47b9d6c",
+  "status": "PRE_QUALIFICATION__RUNNER_HEAD_NOT_REBOUND",
+  "qualified_code_head": null,
+  "runner_rebound": false,
+  "source_registry": {
+    "count": 35,
+    "sav": 31,
+    "dta": 4,
+    "path": "WORKER_RETURNS/PREMAIN-CLOSED35-QUALIFIED-REPRESENTATION-CENSUS-HARNESS-R1/01_CLOSED35_CENSUS_INPUT_REGISTRY.json"
+  },
+  "governed_surface_registry": {
+    "count": 38,
+    "exact_owner_count": 18,
+    "missing_exact_owner_count": 20,
+    "path": "WORKER_RETURNS/PREMAIN-CLOSED35-QUALIFIED-REPRESENTATION-CENSUS-HARNESS-R1/03_GOVERNED_TYPED_SURFACE_REGISTRY.csv"
+  },
+  "required_runtime": {
+    "platform": "Darwin",
+    "machine": "x86_64",
+    "cpython": "3.11.3",
+    "pyreadstat": "1.3.6",
+    "pyarrow": "25.0.1"
+  },
+  "path_manifest_schema": "CLOSED35_SOURCE_PATH_MANIFEST@1.0.0",
+  "invocation": {
+    "runner": "WORKER_RETURNS/PREMAIN-CLOSED35-QUALIFIED-REPRESENTATION-CENSUS-HARNESS-R1/02_RUN_CLOSED35_QUALIFIED_REPRESENTATION_CENSUS.sh",
+    "arguments": [
+      "<source-path-manifest.json>",
+      "<work-output-root>"
+    ]
+  },
+  "per_source_receipt": "source_receipts/SOURCE_<NN>_REPRESENTATION_RECEIPT.json",
+  "aggregate_outputs": [
+    "CLOSED35_REPRESENTATION_OBSERVATIONS.json",
+    "CLOSED35_TYPED_JOIN_MATRIX.csv",
+    "CLOSED35_EDGE_PRESERVATION_RECEIPT.json",
+    "CLOSED35_HISTORICAL_DEPENDENCY_PROVENANCE.json",
+    "CLOSED35_RUNTIME_RECEIPT.json",
+    "CLOSED35_CENSUS_SUMMARY.json"
+  ],
+  "classifications": [
+    "EXACT_EXISTING_REGIME_APPLIES",
+    "EXACT_BOUNDED_SUCCESSOR_BRIDGE_APPLIES",
+    "NEW_GENERIC_REPRESENTATION_REGIME_REQUIRED",
+    "SOURCE_BOUNDED_REPRESENTATION_BRIDGE_REQUIRED",
+    "TYPED_JOIN_BLOCKED_BY_MISSING_AUTHORITY",
+    "SOURCE_BYTES_UNAVAILABLE"
+  ],
+  "global_stop_classes": [
+    "RUNTIME_GATE_FAILED",
+    "REGISTRY_INVALID",
+    "SURFACE_REGISTRY_INVALID",
+    "REPOSITORY_GUARD_FAILED",
+    "HISTORICAL_DEPENDENCY_AUDIT_FAILED"
+  ],
+  "source_local_failures_continue": true,
+  "immutable_resume": true,
+  "semantic_inference_from_raw_values": false,
+  "candidate_abc_run": false,
+  "measured_p2x_run": false,
+  "p3_run": false,
+  "architecture_selection_run": false
+}
