@@ -152,12 +152,20 @@ def validate_runtime_facts(facts: Mapping[str, str]) -> None:
 
 
 def require_qualified_runtime() -> RuntimeFacts:
+    try:
+        pyreadstat_version = importlib.metadata.version("pyreadstat")
+    except importlib.metadata.PackageNotFoundError:
+        pyreadstat_version = "UNAVAILABLE"
+    try:
+        pyarrow_version = importlib.metadata.version("pyarrow")
+    except importlib.metadata.PackageNotFoundError:
+        pyarrow_version = "UNAVAILABLE"
     facts = RuntimeFacts(
         platform=platform.system(),
         machine=platform.machine(),
         cpython=platform.python_version(),
-        pyreadstat=importlib.metadata.version("pyreadstat"),
-        pyarrow=importlib.metadata.version("pyarrow"),
+        pyreadstat=pyreadstat_version,
+        pyarrow=pyarrow_version,
     )
     validate_runtime_facts(facts.as_dict())
     return facts
@@ -918,6 +926,22 @@ def run_census(*, repo_root: Path, manifest_path: Path, output_root: Path, quali
     for source in registry["sources"]:
         sid = source["source_id"]
         receipt_path = receipt_root / f"SOURCE_{sid}_REPRESENTATION_RECEIPT.json"
+        if receipt_path.exists():
+            receipt = load_json(receipt_path)
+            validate_source_receipt(receipt)
+            if (
+                receipt.get("source_id") != sid
+                or receipt.get("canonical_sha256") != source["canonical_sha256"]
+                or receipt.get("runtime") != runtime.as_dict()
+                or receipt.get("path_manifest_sha256") != manifest_hash
+            ):
+                raise GlobalIntegrityError(f"immutable resume receipt input drift: {receipt_path}")
+            receipts.append(receipt)
+            print(
+                f"CLOSED35_REP_CENSUS {int(sid):02d}/35 {source['canonical_filename']} {receipt['status']}",
+                flush=True,
+            )
+            continue
         try:
             receipt = observer(
                 source=source,
