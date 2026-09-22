@@ -213,5 +213,23 @@
     ],
     "followup_runtime_qualification_executed_by_worker": false,
     "rerun_required": true
+  },
+  "second_local_qualification_followup": {
+    "user_reported_head": "c0fa63e0817bca56566049e86bf192934964868a",
+    "user_reported_pytest": {
+      "passed": 163,
+      "failed": 0,
+      "subtests_passed": 28
+    },
+    "green_terminal_emitted": false,
+    "final_failure": "AttributeError: pre553_independent_parity_oracle has no attribute WVS7_LOCK2_REPLAY",
+    "diagnosis": "qualification-script symbol typo",
+    "authoritative_oracle_symbol": "WVS7_LOCK2_REPLAY_IDENTITY",
+    "authoritative_oracle_value": "9b5ac1726a03798d07e965396192d1bfefbee6d2188bad5a3acfb467ef063d4a",
+    "terminal_control_symbol": "WVS7_SUCCESSOR_LOCK2_REPLAY",
+    "terminal_control_value": "9b5ac1726a03798d07e965396192d1bfefbee6d2188bad5a3acfb467ef063d4a",
+    "production_semantics_changed": false,
+    "worker_runtime_rerun_executed": false,
+    "rerun_required": true
   }
 }
