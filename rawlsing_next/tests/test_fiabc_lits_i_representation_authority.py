@@ -183,6 +183,24 @@ def test_actual_banked_projection_converts_to_exact_accepted_legacy_owner(tmp_pa
     ) == legacy.physical_value_binding_key(
         Decimal(1), PhysicalMissingState.OBSERVED_STORAGE_VALUE
     )
+    legacy_response_keys = {
+        legacy.physical_value_binding_key(
+            Decimal(code), PhysicalMissingState.OBSERVED_STORAGE_VALUE
+        )
+        for code in NATIVE_CODES
+    }
+    legacy_missing_key = legacy.physical_value_binding_key(
+        None, PhysicalMissingState.SYSTEM_MISSING
+    )
+    for slot in converted.response_slots:
+        assert {rule.physical_key for rule in slot.values} == (
+            legacy_response_keys | {legacy_missing_key}
+        )
+    for slot in converted.coordinate_slots:
+        assert {rule.physical_key for rule in slot.values} == {legacy_missing_key}
+    assert physical_value_binding_key(
+        Decimal(1), PhysicalMissingState.OBSERVED_STORAGE_VALUE
+    ) not in legacy_response_keys
     coordinate = _cell(
         variable_name="country",
         variable_ordinal=98,
@@ -269,8 +287,8 @@ def test_producer_helper_pins_accepted_release_before_returning(monkeypatch, tmp
     )
     projection = types.SimpleNamespace()
     monkeypatch.setattr(
-        "rawlsing_next.fiabc_final_oracle_freeze_producers.dataclasses.fields",
-        lambda value: (),
+        "rawlsing_next.fiabc_final_oracle_freeze_producers._lits_accepted_legacy_projection",
+        lambda **kwargs: (legacy, LegacyProjection()),
     )
     repository, release = _lits_accepted_legacy_repository(
         incidence=incidence,

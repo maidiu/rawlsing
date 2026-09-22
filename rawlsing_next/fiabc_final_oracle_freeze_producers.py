@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 from collections import Counter
 import dataclasses
+from decimal import Decimal
 import hashlib
 import json
 import os
@@ -41,7 +42,12 @@ from rawlsing_next.fiabc_lits_i_representation_authority import (
     LEGACY_FACADE_COMMIT as LITS_LEGACY_FACADE_COMMIT,
     LEGACY_FACADE_PATH as LITS_LEGACY_FACADE_PATH,
     REPRESENTATION_AUTHORITY_REF as LITS_REPRESENTATION_AUTHORITY_REF,
+    TARGET_VARIABLES as LITS_TARGET_VARIABLES,
     authorized_replay_cell as authorized_lits_replay_cell,
+)
+from rawlsing_next.pre553_physical_decoder import PhysicalMissingState
+from rawlsing_next.pre553_source_backed_c11_facade import (
+    physical_value_binding_key as current_typed_physical_value_binding_key,
 )
 
 PRODUCER_SCHEMA = "RAWLSING_FIABC_FINAL_ORACLE_FREEZE_PRODUCERS@1.0.0"
@@ -353,7 +359,7 @@ def _neutral_lits_authority_identity() -> Mapping[str, Any]:
 def _lits_accepted_legacy_projection(
     *, projection: Any, repo_root: Path, neutral_root: Path, backend: Any
 ):
-    """Load the pinned historical owner and preserve the exact banked projection."""
+    """Load the pinned owner and rebind only its exact historical physical keys."""
     legacy_path = backend._deploy(
         repo_root,
         neutral_root / "legacy_facade",
@@ -362,10 +368,65 @@ def _lits_accepted_legacy_projection(
         LITS_LEGACY_FACADE_BLOB,
     )
     legacy = backend._load(legacy_path, "_fiabc_lits_i_accepted_legacy_facade")
+    observed = PhysicalMissingState.OBSERVED_STORAGE_VALUE
+    system_missing = PhysicalMissingState.SYSTEM_MISSING
+    exact_current_to_legacy = {
+        current_typed_physical_value_binding_key(Decimal(code), observed):
+            legacy.physical_value_binding_key(Decimal(code), observed)
+        for code in range(1, 8)
+    }
+    current_missing = current_typed_physical_value_binding_key(None, system_missing)
+    legacy_missing = legacy.physical_value_binding_key(None, system_missing)
+
+    response_slots = []
+    observed_response_keys = set()
+    observed_response_slots = set()
+    for slot in projection.response_slots:
+        slot_key = slot.slot.key
+        if LITS_TARGET_VARIABLES.get(slot_key[1]) != slot_key[0]:
+            raise FinalOracleProducerError("LiTS legacy response slot outside exact authority")
+        observed_response_slots.add(slot_key)
+        values = []
+        for rule in slot.values:
+            if rule.physical_key == current_missing:
+                rebound = legacy_missing
+            else:
+                rebound = exact_current_to_legacy.get(rule.physical_key)
+                if rebound is None:
+                    raise FinalOracleProducerError(
+                        "LiTS legacy response rule outside exact representation authority"
+                    )
+                observed_response_keys.add(rule.physical_key)
+            values.append(dataclasses.replace(rule, physical_key=rebound))
+        response_slots.append(dataclasses.replace(slot, values=tuple(values)))
+    expected_slots = {(ordinal, name) for name, ordinal in LITS_TARGET_VARIABLES.items()}
+    if observed_response_slots != expected_slots:
+        raise FinalOracleProducerError("LiTS exact legacy response slot closure drift")
+    if observed_response_keys != set(exact_current_to_legacy):
+        raise FinalOracleProducerError("LiTS exact legacy response key closure drift")
+
+    coordinate_slots = []
+    for slot in projection.coordinate_slots:
+        values = []
+        for rule in slot.values:
+            if rule.physical_key != current_missing:
+                raise FinalOracleProducerError(
+                    "LiTS legacy coordinate rule outside exact system-missing binding"
+                )
+            values.append(dataclasses.replace(rule, physical_key=legacy_missing))
+        coordinate_slots.append(dataclasses.replace(slot, values=tuple(values)))
+    if projection.weight_slots:
+        raise FinalOracleProducerError("LiTS accepted projection unexpectedly contains weights")
+
+    rebound_projection = dataclasses.replace(
+        projection,
+        response_slots=tuple(response_slots),
+        coordinate_slots=tuple(coordinate_slots),
+    )
     legacy_fields = {field.name for field in dataclasses.fields(legacy.GovernedC11Projection)}
     legacy_projection = legacy.GovernedC11Projection(**{
-        field.name: getattr(projection, field.name)
-        for field in dataclasses.fields(projection)
+        field.name: getattr(rebound_projection, field.name)
+        for field in dataclasses.fields(rebound_projection)
         if field.name in legacy_fields
     })
     if legacy_projection.cache_identity != LITS_PROJECTION_IDENTITY:
