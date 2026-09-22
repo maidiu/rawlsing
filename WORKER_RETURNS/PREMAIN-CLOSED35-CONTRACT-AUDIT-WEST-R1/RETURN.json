@@ -1,0 +1,97 @@
+{
+  "schema": "PREMAIN_CLOSED35_CONTRACT_AUDIT_WEST_R1_RETURN@1.0.0",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-premain-closed35-contract-audit-west-r1",
+  "exact_base": "fe6714ed66c5f5c4e0440b6ea9f0f83e63c4f262",
+  "earlier_documentary_fanin": "da33eb6a8225c14eee9490633a3263388dc5536c",
+  "generic_pre553_comparison_base": "78caf7eb4396dd576cf478c860372b7e26455cd9",
+  "lane": "WEST",
+  "sources": [
+    "EVS 1999",
+    "EVS 2008",
+    "WVS Wave 1",
+    "Latinobarometro 2011"
+  ],
+  "status": "SOURCE_FREE_AUDIT_COMPLETE__FAILURE_CLASSES_MAPPED",
+  "terminal": "PREMAIN_CLOSED35_CONTRACT_AUDIT_WEST_R1__SOURCE_FREE_AUDIT_COMPLETE__FAILURE_CLASSES_MAPPED__NO_SOURCE_EXECUTION__NO_CANDIDATES_RUN",
+  "classification_counts": {
+    "PROVED_READY": 11,
+    "NOT_APPLICABLE": 0,
+    "SOURCE_FREE_GAP": 1,
+    "REQUIRES_RUNTIME_PACKAGE": 31,
+    "REQUIRES_QUALIFIED_SOURCE_OBSERVATION": 4,
+    "AUTHORITY_BLOCKED": 1,
+    "total": 48
+  },
+  "findings": {
+    "source_free_gaps": [
+      {
+        "source": "EVS 1999",
+        "check": "exact missing-state / user-missing noncollapse",
+        "reason": "reader freezes user_missing=True but R35 required physical dimensions omit typed_missingness and no typed missing-state projection is declared"
+      }
+    ],
+    "authority_blockers": [
+      {
+        "source": "WVS Wave 1",
+        "check": "exact risk-set ownership / replayable membership if demanded",
+        "reason": "routing/applicability remains BOUNDED_UNKNOWN where accepted source authority is absent; missingness/all-system incidence cannot mint a risk set"
+      }
+    ],
+    "runtime_boundary": "The four source-specific realization modules name the PRE553 source-backed C11 facade but are not current GovernedC11Projection runtime packages.",
+    "representation_boundary": "Exact R5 physical binding keys require qualified decoder-observed host representation plus physical missing state and exact source missing declaration.",
+    "no_defect_from_runtime_absence": true
+  },
+  "source_summary": {
+    "EVS 1999": {
+      "physical_compatibility": "SAV_LATIN1_COMPAT_PHYSICAL_ONLY__SOURCE_DECLARES_UTF8",
+      "bounded_unknown": "DOCUMENTARY_ALIGNMENT_UNKNOWN",
+      "whole_source_declared_edge_scope_ready": true,
+      "typed_missing_contract_ready": false
+    },
+    "EVS 2008": {
+      "physical_compatibility": "SAV_LATIN1_COMPAT_PHYSICAL_ONLY__SOURCE_DECLARES_UTF8",
+      "bounded_unknowns": [
+        "UNKNOWN_PRODUCER_TEXT",
+        "BOUNDED_UNKNOWN",
+        "UNKNOWN_WITHIN_PRODUCER_NEGATIVE_MISSING_DOMAIN"
+      ],
+      "typed_missing_contract_ready": true,
+      "native_mr_topology_ready": true
+    },
+    "WVS Wave 1": {
+      "raw_display_nonidentity_ready": true,
+      "typed_missing_contract_ready": true,
+      "all_system_column_retention_ready": true,
+      "preserved_weight_carrier_count": 13,
+      "default_weight_authorized": false,
+      "routing_authority": "BOUNDED_UNKNOWN_WHERE_NOT_DOCUMENTARILY_CLOSED"
+    },
+    "Latinobarometro 2011": {
+      "typed_missing_contract_ready": true,
+      "questionnaire_released_storage_layer_separation_ready": true,
+      "country_coordinate": "IDENPA",
+      "weight_carrier": "WT",
+      "default_weight_authorized": false,
+      "aggregate_estimand_authorized": false
+    }
+  },
+  "execution_boundary": {
+    "raw_survey_files_opened_or_materialized": false,
+    "real_source_processing_run": false,
+    "candidates_run": false,
+    "measured_p2x_run": false,
+    "real_source_i05_run": false,
+    "semantics_inferred_from_raw_values": false,
+    "existing_governed_branches_mutated": false,
+    "hostile_tests_executed": false
+  },
+  "required_returns": [
+    "00_RETURN.md",
+    "01_SOURCE_CONTRACT_MATRIX.csv",
+    "02_GENERIC_FAILURE_CLASS_APPLICABILITY.md",
+    "03_PRE_RUNTIME_PACKAGE_BLOCKERS.md",
+    "04_REQUIRED_HOSTILE_TESTS.md",
+    "RETURN.json"
+  ]
+}
