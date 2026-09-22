@@ -20,12 +20,18 @@ fi
 readonly PYTHON_BIN
 
 TERMINAL_ORACLE_BLOB="6cf8d8bf8ac2d6421cd733a72a444687e241e659"
-TERMINAL_PRODUCER_BLOB="64c561d24a538057a4b1ce2d0a18b5539c30722a"
+TERMINAL_PRODUCER_BLOB="b8c92c9fa4a72ac6f0f3fea843c14c81dbec729d"
+LITS_REPRESENTATION_AUTHORITY_BLOB="94a833a7d8946bf3bd43296d9fe1e2239a3aa4b9"
+LITS_REPRESENTATION_TEST_BLOB="7d9388f4d1ec18f6a6e145fe3f20f52d842605bd"
 TERMINAL_PREFLIGHT_TEST_BLOB="02c6dad5912fd7283cc1fc5b889cde62b9818101"
 [[ "$(git rev-parse HEAD:rawlsing_next/pre553_independent_parity_oracle.py)" == "$TERMINAL_ORACLE_BLOB" ]] \
   || die "terminal-readiness LiTS oracle owner drift"
 [[ "$(git rev-parse HEAD:rawlsing_next/fiabc_final_oracle_freeze_producers.py)" == "$TERMINAL_PRODUCER_BLOB" ]] \
   || die "terminal-readiness oracle producer drift"
+[[ "$(git rev-parse HEAD:rawlsing_next/fiabc_lits_i_representation_authority.py)" == "$LITS_REPRESENTATION_AUTHORITY_BLOB" ]] \
+  || die "LiTS-I representation authority drift"
+[[ "$(git rev-parse HEAD:rawlsing_next/tests/test_fiabc_lits_i_representation_authority.py)" == "$LITS_REPRESENTATION_TEST_BLOB" ]] \
+  || die "LiTS-I representation hostile test drift"
 [[ "$(git rev-parse HEAD:rawlsing_next/tests/test_fiabc_final_preflight_fanin.py)" == "$TERMINAL_PREFLIGHT_TEST_BLOB" ]] \
   || die "terminal-readiness preflight qualification test drift"
 
@@ -35,7 +41,7 @@ done
 [[ -z "$(git status --porcelain)" ]] || die "working tree is not clean"
 
 unexpected="$(git diff --name-only "$FIABC_PARENT"..HEAD -- rawlsing_next | \
-  grep -Ev '^(rawlsing_next/pre553_independent_parity_oracle\.py|rawlsing_next/fiabc_final_oracle_freeze_producers\.py|rawlsing_next/tests/test_fiabc_final_preflight_fanin\.py|rawlsing_next/rabochii_return_beacon\.py|rawlsing_next/rabochii_return_beacon_actionable\.py|rawlsing_next/rabochii_return_beacon_sweep\.py|rawlsing_next/tests/test_rabochii_return_beacon\.py|rawlsing_next/tests/test_rabochii_return_beacon_actionable\.py|rawlsing_next/tests/test_rabochii_return_beacon_sweep\.py)$' || true)"
+  grep -Ev '^(rawlsing_next/pre553_independent_parity_oracle\.py|rawlsing_next/fiabc_final_oracle_freeze_producers\.py|rawlsing_next/fiabc_lits_i_representation_authority\.py|rawlsing_next/tests/test_fiabc_lits_i_representation_authority\.py|rawlsing_next/tests/test_fiabc_final_preflight_fanin\.py|rawlsing_next/rabochii_return_beacon\.py|rawlsing_next/rabochii_return_beacon_actionable\.py|rawlsing_next/rabochii_return_beacon_sweep\.py|rawlsing_next/tests/test_rabochii_return_beacon\.py|rawlsing_next/tests/test_rabochii_return_beacon_actionable\.py|rawlsing_next/tests/test_rabochii_return_beacon_sweep\.py)$' || true)"
 [[ -z "$unexpected" ]] || die "FIABC runtime/test drift after reconciliation: $unexpected"
 
 [[ "$(git rev-parse HEAD:.github/workflows/rabochii-return-beacon.yml)" == "$(git rev-parse "$MAIN_PARENT":.github/workflows/rabochii-return-beacon.yml)" ]] \
@@ -64,6 +70,7 @@ required=(
  "rawlsing_next.fiabc_succession_preflight",
  "rawlsing_next.fiabc_succession_producer",
  "rawlsing_next.fiabc_final_oracle_freeze_producers",
+ "rawlsing_next.fiabc_lits_i_representation_authority",
  "rawlsing_next.pre553_independent_parity_oracle",
 )
 for name in required: importlib.import_module(name)
@@ -82,6 +89,7 @@ PY
  rawlsing_next/fiabc_succession_preflight.py \
  rawlsing_next/fiabc_succession_producer.py \
  rawlsing_next/fiabc_final_oracle_freeze_producers.py \
+ rawlsing_next/fiabc_lits_i_representation_authority.py \
  rawlsing_next/pre553_independent_parity_oracle.py
 
 "$PYTHON_BIN" -m pytest -q \
@@ -89,6 +97,7 @@ PY
  tests/test_fiabc_terminal_completeness.py \
  rawlsing_next/tests/test_fiabc_final_progress_driver.py \
  rawlsing_next/tests/test_fiabc_final_oracle_freeze_producers.py \
+ rawlsing_next/tests/test_fiabc_lits_i_representation_authority.py \
  rawlsing_next/tests/test_fiabc_succession_producer.py \
  rawlsing_next/tests/test_fiabc_final_preflight_fanin.py \
  rawlsing_next/tests/test_fiabc_t2_six_cell_execution_binding.py \
@@ -107,6 +116,7 @@ from rawlsing_next import ee_p2x_darwin_stage_backend as backend
 from rawlsing_next import fiabc_telemetry_semantics as telemetry
 from rawlsing_next import fiabc_terminal_completeness as completeness
 from rawlsing_next import pre553_independent_parity_oracle as oracle
+from rawlsing_next.fiabc_lits_i_representation_authority import REPRESENTATION_AUTHORITY_REF,TARGET_VARIABLES,LEGACY_FACADE_BLOB
 from rawlsing_next.fiabc_live_terminal_control import WVS7_SUCCESSOR_DISCOVERY_AUTHORITY,WVS7_SUCCESSOR_LOCK2,WVS7_SUCCESSOR_LOCK2_REPLAY
 tm=set(telemetry.METRIC_DEFINITIONS); bm=set(backend.METRICS); cm=set(completeness.FROZEN_DISPOSITIVE_METRICS)
 assert len(tm)==35
@@ -115,6 +125,9 @@ pkg=json.loads(Path("rawlsing_next/runtime/ee_p2x/02_WVS7_P2F2_RUNTIME_PACKAGE.j
 assert oracle.WVS7_LOCK2_IDENTITY==pkg["lock2"]==WVS7_SUCCESSOR_LOCK2
 assert oracle.WVS7_DISCOVERY_AUTHORITY==pkg["discovery_authority_hash"]==WVS7_SUCCESSOR_DISCOVERY_AUTHORITY
 assert oracle.WVS7_LOCK2_REPLAY_IDENTITY==WVS7_SUCCESSOR_LOCK2_REPLAY
+assert REPRESENTATION_AUTHORITY_REF.authority_content_hash=="9fce3b606413c2a5d3e9a05eda967067d191fbb31ff869d445d962bdf321393d"
+assert dict(TARGET_VARIABLES)=={"q301_2":194,"q301_7":199}
+assert LEGACY_FACADE_BLOB=="7c509c2098d0030f253344eb3f682471378812a8"
 assert hasattr(backend,"_current_failure_authority")
 assert hasattr(backend,"_current_manifest_cell_order")
 print("RAWLSING_RECONCILED_FIABC_STATIC_CROSS_LANE_ASSERTIONS_PASS")

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 from collections import Counter
+import dataclasses
 import hashlib
 import json
 import os
@@ -16,9 +17,12 @@ from rawlsing_next.pre553_independent_parity_oracle import (
     FreezeContext,
     LITS_ASTRA_D04_R2_COMMIT,
     LITS_CANDIDATE_COUNT,
+    LITS_C11_RELEASE_IDENTITY,
+    LITS_C11_REPLAY_IDENTITY,
     LITS_FRONTIER_SEAL,
     LITS_QUERY_ROLE_COUNT,
     LITS_LEARNED_PRODUCT_IDENTITY,
+    LITS_PROJECTION_IDENTITY,
     LITS_SEMANTIC_REPLAY_IDENTITY,
     LITS_SOURCE_SHA256,
     ORACLE_SCHEMA,
@@ -31,6 +35,13 @@ from rawlsing_next.pre553_independent_parity_oracle import (
 from rawlsing_next.ee_p2x_candidate_process_envelope import (
     FREEZE_RECEIPT_SCHEMA,
     load_frozen_upstream_receipt,
+)
+from rawlsing_next.fiabc_lits_i_representation_authority import (
+    LEGACY_FACADE_BLOB as LITS_LEGACY_FACADE_BLOB,
+    LEGACY_FACADE_COMMIT as LITS_LEGACY_FACADE_COMMIT,
+    LEGACY_FACADE_PATH as LITS_LEGACY_FACADE_PATH,
+    REPRESENTATION_AUTHORITY_REF as LITS_REPRESENTATION_AUTHORITY_REF,
+    authorized_replay_cell as authorized_lits_replay_cell,
 )
 
 PRODUCER_SCHEMA = "RAWLSING_FIABC_FINAL_ORACLE_FREEZE_PRODUCERS@1.0.0"
@@ -335,7 +346,64 @@ def _neutral_lits_authority_identity() -> Mapping[str, Any]:
         "runtime_catalog_identity": LITS_RUNTIME_CATALOG,
         "active_binding": LITS_ACTIVE_BINDING,
         "runtime_release": LITS_RUNTIME_RELEASE,
+        "representation_authority": LITS_REPRESENTATION_AUTHORITY_REF.authority_content_hash,
     }
+
+
+def _lits_accepted_legacy_projection(
+    *, projection: Any, repo_root: Path, neutral_root: Path, backend: Any
+):
+    """Load the pinned historical owner and preserve the exact banked projection."""
+    legacy_path = backend._deploy(
+        repo_root,
+        neutral_root / "legacy_facade",
+        LITS_LEGACY_FACADE_COMMIT,
+        LITS_LEGACY_FACADE_PATH,
+        LITS_LEGACY_FACADE_BLOB,
+    )
+    legacy = backend._load(legacy_path, "_fiabc_lits_i_accepted_legacy_facade")
+    legacy_fields = {field.name for field in dataclasses.fields(legacy.GovernedC11Projection)}
+    legacy_projection = legacy.GovernedC11Projection(**{
+        field.name: getattr(projection, field.name)
+        for field in dataclasses.fields(projection)
+        if field.name in legacy_fields
+    })
+    if legacy_projection.cache_identity != LITS_PROJECTION_IDENTITY:
+        raise FinalOracleProducerError("LiTS accepted legacy projection identity drift")
+    return legacy, legacy_projection
+
+
+def _lits_accepted_legacy_repository(
+    *, incidence: Any, projection: Any, repo_root: Path, neutral_root: Path, backend: Any
+):
+    """Replay the exact accepted LiTS C11 route under bounded successor authority."""
+    legacy, legacy_projection = _lits_accepted_legacy_projection(
+        projection=projection,
+        repo_root=repo_root,
+        neutral_root=neutral_root,
+        backend=backend,
+    )
+    stream = legacy.ExactPhysicalCellStream(
+        source_sha256=incidence.source_sha256,
+        row_count=incidence.row_count,
+        cell_iter_factory=lambda: (
+            authorized_lits_replay_cell(
+                source_sha256=incidence.source_sha256,
+                cell=cell,
+            )
+            for cell in incidence.iter_cells(batch_size=20_000)
+        ),
+        transport_identity=(
+            "FIABC_LITS_I_AUTHORIZED_ACCEPTED_REPLAY__"
+            + LITS_REPRESENTATION_AUTHORITY_REF.authority_content_hash
+        ),
+    )
+    repository, release = legacy.build_source_backed_c11_repository(stream, legacy_projection)
+    if release.release_ref.content_hash != LITS_C11_RELEASE_IDENTITY:
+        raise FinalOracleProducerError("LiTS accepted C11 release identity drift after representation replay")
+    if release.replay_manifest.ref.content_hash != LITS_C11_REPLAY_IDENTITY:
+        raise FinalOracleProducerError("LiTS accepted C11 replay identity drift after representation replay")
+    return repository, release
 
 
 def _neutral_lits_material(
@@ -346,9 +414,6 @@ def _neutral_lits_material(
 ) -> tuple[Mapping[str, Any], Mapping[str, Any], Mapping[str, Any]]:
     """Execute the common LiTS semantic path without composing A/B/C."""
     from rawlsing_next.pre553_physical_decoder import decode_dta
-    from rawlsing_next.pre553_source_backed_c11_facade import (
-        build_source_backed_c11_repository,
-    )
     from rawlsing_next.pre553_carrier_execution import (
         CarrierNeutralResearchExecutor,
         RuntimeObjectCatalog,
@@ -388,7 +453,13 @@ def _neutral_lits_material(
     ):
         raise FinalOracleProducerError("LiTS accepted runtime identity constants drift")
 
-    repository, release = build_source_backed_c11_repository(incidence, projection)
+    repository, release = _lits_accepted_legacy_repository(
+        incidence=incidence,
+        projection=projection,
+        repo_root=repo_root,
+        neutral_root=neutral_root,
+        backend=backend,
+    )
     catalog = RuntimeObjectCatalog.from_documents(
         authority_documents=runtime["authorities"],
         predicate_documents=runtime["predicates"],
@@ -506,6 +577,8 @@ def _neutral_lits_material(
         "candidate_outputs_seen": 0,
         "candidate_owned_roots_consulted": [],
         "candidate_owned_state_reused": False,
+        "representation_authority": LITS_REPRESENTATION_AUTHORITY_REF.as_dict(),
+        "accepted_legacy_facade_blob": LITS_LEGACY_FACADE_BLOB,
     }
     return material, audit, execution_receipt
 
@@ -532,6 +605,10 @@ def produce_lits_local_oracle(
             {
                 "owner_class": "ACCEPTED_AUTHORITY",
                 "identity": LITS_RUNTIME_CATALOG,
+            },
+            {
+                "owner_class": "BOUNDED_PHYSICAL_REPRESENTATION_AUTHORITY",
+                "identity": LITS_REPRESENTATION_AUTHORITY_REF.authority_content_hash,
             },
             {
                 "owner_class": "COMMON_SEMANTIC_PRODUCER",
