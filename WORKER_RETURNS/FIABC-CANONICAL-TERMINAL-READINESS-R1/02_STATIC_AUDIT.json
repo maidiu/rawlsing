@@ -171,5 +171,47 @@
     "WORKER_RETURNS/FIABC-FINAL-LAUNCH-FANIN-R1/03_MEASURED_SIX_CELL_RUN.sh"
   ],
   "next_local_command": "bash WORKER_RETURNS/CANONICAL-REINTEGRATION-FIABC-R1/01_SOURCE_FREE_LOCAL_QUALIFICATION.sh",
-  "terminal": "FIABC_CANONICAL_TERMINAL_READINESS_REPAIR_R1__RETURNED__50_77_SYMBOL_BINDING_REPAIRED__PYTHON3_PORTABILITY_REPAIRED__LOCAL_SOURCE_FREE_QUALIFICATION_REQUIRED"
+  "terminal": "FIABC_CANONICAL_TERMINAL_READINESS_REPAIR_R1__RETURNED__50_77_SYMBOL_BINDING_REPAIRED__PYTHON3_PORTABILITY_REPAIRED__LOCAL_SOURCE_FREE_QUALIFICATION_REQUIRED",
+  "local_qualification_followup": {
+    "user_reported_head": "97329d51aac6bec495114b5e89e60260c2fcc846",
+    "user_reported_result": {
+      "passed": 154,
+      "failed": 9,
+      "subtests_passed": 28,
+      "green_terminal_emitted": false
+    },
+    "user_reported_candidate_or_measured_execution": false,
+    "diagnosis": [
+      {
+        "class": "terminal_completeness_hostile_expectation",
+        "disposition": "TEST_EXPECTATION_DRIFT",
+        "repair": "expect TC_METRIC_SET_DRIFT when canonical metric key set is incomplete",
+        "production_semantics_changed": false
+      },
+      {
+        "class": "R1J_projection_preflight_assertion",
+        "disposition": "BRITTLE_LITERAL_SOURCE_ASSERTION",
+        "repair": "assert exact successor identity through WVS_DISCOVERY_AUTHORITY and scope text check to active _wvs_docs block",
+        "production_semantics_changed": false
+      },
+      {
+        "class": "seven_driver_fixture_failures",
+        "disposition": "LEGACY_UNIT_FIXTURE_CROSSED_NEW_T3_T4_INTEGRATION_SEAM",
+        "repair": "stub only admit_live_stage_accounting in driver-mechanics fixture; dedicated T3/T4 tests remain active",
+        "production_semantics_changed": false
+      }
+    ],
+    "repaired_test_blobs": {
+      "terminal_completeness": "d94090389f10cabe8eb475c9c63162dc11806548",
+      "final_preflight_fanin": "02c6dad5912fd7283cc1fc5b889cde62b9818101",
+      "darwin_court_driver": "f0c687948ef1a2ce03a4df4521c20720d5fbf7b7"
+    },
+    "qualification_script_blob": "2d3acdb96174c22c891b9228dbde12e803b6d7f9",
+    "dedicated_t3_t4_tests_remain_in_qualification": [
+      "rawlsing_next/tests/test_fiabc_t3_oracle_process_envelope.py",
+      "rawlsing_next/tests/test_fiabc_t4_live_accounting.py"
+    ],
+    "followup_runtime_qualification_executed_by_worker": false,
+    "rerun_required": true
+  }
 }
