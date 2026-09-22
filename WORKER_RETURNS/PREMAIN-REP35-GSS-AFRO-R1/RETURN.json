@@ -1,0 +1,45 @@
+{
+  "schema": "PREMAIN_REP35_W6_RETURN@1.0.0",
+  "repository": "maidiu/rawlsing",
+  "base": "ef8eff9625f269173ac2c17af3f92d913babb275",
+  "branch": "agent/rabochii-premain-rep35-gss-afro-r1",
+  "status": "COMPLETE_WITH_BLOCKED_SOURCE_DISPOSITIONS",
+  "terminal": "PREMAIN_REP35_W6_GSS_AFRO_R1__REPRESENTATION_CENSUS_COMPLETE__NO_SEMANTIC_INFERENCE__NO_CANDIDATES_RUN",
+  "source_count": 11,
+  "classifications": {
+    "REPRESENTATION_FACT_BLOCKED": 11,
+    "EXISTING_REGIME_EXACT": 0,
+    "NEW_GENERIC_REGIME_CANDIDATE": 0,
+    "SOURCE_BOUNDED_REPRESENTATION_BRIDGE_REQUIRED": 0
+  },
+  "source_access": {
+    "exact_sha_verified": 9,
+    "source_bytes_unavailable": 2,
+    "unavailable": [
+      "Afro Barometer Round 5.sav",
+      "Afro Barometer Round 9.sav"
+    ]
+  },
+  "qualified_runtime": {
+    "status": "UNAVAILABLE",
+    "required": "CPython 3.11.3 / pyreadstat 1.3.6 / pyarrow 25.0.1",
+    "observed_stock": "CPython 3.13.5 / pyreadstat absent / pyarrow absent",
+    "bootstrap_attempt": "uv python install 3.11.3 -> DNS failure after 3 retries"
+  },
+  "candidate_runs": 0,
+  "measured_p2x_runs": 0,
+  "p3_runs": 0,
+  "architecture_selection": false,
+  "semantic_inference": false,
+  "source_bounded_bridges_minted": 0,
+  "required_return_files": [
+    "00_RETURN.md",
+    "01_SOURCE_REPRESENTATION_CENSUS.json",
+    "02_VARIABLE_REGIME_APPLICABILITY.csv",
+    "03_LEGACY_TYPED_JOIN_MATRIX.csv",
+    "04_GENERIC_REGIME_CANDIDATES.json",
+    "05_SOURCE_BOUNDED_EXCEPTIONS.md",
+    "06_NEGATIVE_LIMITS_AND_UNKNOWNS.md",
+    "RETURN.json"
+  ]
+}

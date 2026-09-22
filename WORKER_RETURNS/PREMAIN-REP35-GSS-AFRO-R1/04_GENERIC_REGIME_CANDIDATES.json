@@ -1,0 +1,38 @@
+{
+  "schema": "PREMAIN_REP35_W6_GENERIC_REGIME_CANDIDATES@1.0.0",
+  "candidates": [
+    {
+      "candidate_id": "GENERIC_NATIVE_SAV_EXACT_TYPED_REPRESENTATION__UNQUALIFIED_CANDIDATE_ONLY",
+      "status": "NOT_AUTHORIZED__QUALIFIED_OBSERVATION_MISSING",
+      "documentary_scope": "All eleven assigned sources are canonically SAV_NATIVE_GOVERNED.",
+      "required_predicates": [
+        "exact source SHA",
+        "CPython 3.11.3",
+        "pyreadstat 1.3.6",
+        "pyarrow 25.0.1",
+        "no encoding override",
+        "exact physical missing declaration preservation",
+        "per-variable identity/ordinal preservation",
+        "R5TypedValueCodec exact host-type tokenization",
+        "no numeric coercion"
+      ],
+      "current_positive_control_limit": "WVS7 authority is source+variable bounded and expressly forbids extension to other sources/variables.",
+      "applicability": {
+        "GSS1972.sav": "UNPROVED__REPRESENTATION_FACT_BLOCKED",
+        "GSS1973.sav": "UNPROVED__REPRESENTATION_FACT_BLOCKED",
+        "GSS1984.sav": "UNPROVED__REPRESENTATION_FACT_BLOCKED",
+        "GSS1993.sav": "UNPROVED__REPRESENTATION_FACT_BLOCKED",
+        "GSS2002.sav": "UNPROVED__REPRESENTATION_FACT_BLOCKED",
+        "GSS2010.sav": "UNPROVED__REPRESENTATION_FACT_BLOCKED",
+        "GSS2016.sav": "UNPROVED__REPRESENTATION_FACT_BLOCKED",
+        "GSS2024.sav": "UNPROVED__REPRESENTATION_FACT_BLOCKED",
+        "Afro Barometer Round 1.sav": "UNPROVED__REPRESENTATION_FACT_BLOCKED",
+        "Afro Barometer Round 5.sav": "UNPROVED__REPRESENTATION_FACT_BLOCKED",
+        "Afro Barometer Round 9.sav": "UNPROVED__REPRESENTATION_FACT_BLOCKED"
+      },
+      "promotion_rule": "HQ may promote only after qualified source-level census demonstrates the predicates and exact legacy->typed joins where governed rules exist."
+    }
+  ],
+  "source_bounded_bridge_candidates": [],
+  "holding": "No source-bounded representation bridge is justified by a runtime/source-access failure. Absence of proof is not evidence of a representation exception."
+}
