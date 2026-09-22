@@ -379,6 +379,24 @@ def test_frozen_oracle_mutation_is_detected():
         verify_frozen_oracle(oracle)
 
 
+def test_current_wvs_constitution_is_successor_only_and_rejects_predecessor():
+    assert WVS7_LOCK2_IDENTITY == "5e2a53f0e5f3b6ddd8db53b724b352ca41fe1a49408483fbf83dfdaa96283139"
+    assert WVS7_LOCK2_REPLAY_IDENTITY == "9b5ac1726a03798d07e965396192d1bfefbee6d2188bad5a3acfb467ef063d4a"
+    assert WVS7_DISCOVERY_AUTHORITY == "3aee36014e4c3b39dd36bfef46006d8e9058a93aa5eb53bd81aef627883c8873"
+
+    material = _wvs_materializer_result()
+    material["court_constitution_refs"].update({
+        "lock2_hash": "8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188",
+        "lock2_replay_hash": "b1aa437406d94b1f81f0ef3c81b885a2fd542749d2e5441747897c016a5dd490",
+        "discovery_authority": "24591678ebf50ac153fabdbbcd90d6ce818c5a89a5307c395c48a04fe5a8b1ab",
+    })
+    with pytest.raises(ParityOracleError, match="WVS7 constitution drift"):
+        freeze_wvs7_oracle_from_common_material(
+            material=material,
+            freeze=FreezeContext(freeze_sequence=1),
+        )
+
+
 def test_wvs_source_free_freeze_accepts_exact_candidate_neutral_common_material():
     oracle = freeze_wvs7_oracle_from_common_material(
         material=_wvs_materializer_result(),

@@ -47,6 +47,8 @@ LITS_PROJECTION = "84361298ae702786a3fd1044bf619ffa4fe9ed2877040724386951e9c9d27
 LITS_PRODUCT = "47d36b1459c2458c480b58631d2c78af68be4dde44015a9220b09177b1eeb28d"
 LITS_REPLAY = "301735d4563314a0d7c133fa1afbb0ca57679b3fad887c66e77a909494779eb5"
 WVS_LOCK2 = "5e2a53f0e5f3b6ddd8db53b724b352ca41fe1a49408483fbf83dfdaa96283139"
+WVS_LOCK2_REPLAY = "9b5ac1726a03798d07e965396192d1bfefbee6d2188bad5a3acfb467ef063d4a"
+WVS_DISCOVERY_AUTHORITY = "3aee36014e4c3b39dd36bfef46006d8e9058a93aa5eb53bd81aef627883c8873"
 R6O_RUNTIME_CATALOG = "5983d7d5c579b916ad46c1acf9e41c1c89b516a4e561a99b1d2b477bf5ad2d02"
 R6O_ACTIVE_BINDING = "a5f36a81843fe2ebab0b5cccb369ce76035f842b93e602613b8b9f3a81103308"
 R6O_RUNTIME_RELEASE = "192926fabd9c9c3d40e43b1d7705ca2bcfe7f8d06e286be26d4b886d436df43f"
@@ -794,7 +796,11 @@ def _wvs_docs(ctx, services):
     if not path.is_file():
         raise CourtAuthorityStop("R6S packaged WVS runtime authority absent")
     package=json.loads(path.read_text(encoding="utf-8"))
-    if package.get("lock2")!=WVS_LOCK2 or package.get("discovery_authority_hash")!="3aee36014e4c3b39dd36bfef46006d8e9058a93aa5eb53bd81aef627883c8873":
+    if (
+        package.get("lock2")!=WVS_LOCK2
+        or package.get("replay")!=WVS_LOCK2_REPLAY
+        or package.get("discovery_authority_hash")!=WVS_DISCOVERY_AUTHORITY
+    ):
         raise SourceAuthorityStop("R6S WVS Lock2/runtime package identity drift")
     if package.get("counts")!={"authorities":6,"predicates":11,"queries":3,"discovery_authorities":1,"candidates":46}:
         raise SourceAuthorityStop("R6S WVS runtime-catalog cardinality drift")
@@ -1597,6 +1603,49 @@ def _fallback(ctx,label,detail=None):
                "candidate":ctx.stage.candidate,"label":label,"detail":detail})
 
 
+def _current_failure_authority(ctx, services) -> Mapping[str, Any]:
+    """Bind failure metadata to the adopted successor WVS court object.
+
+    The historical EE-P2X expectations file remains an exact Lock1/owner/seam
+    source, but its predecessor WVS Lock2 is never consulted here.
+    """
+    path=_repo(services)/R6S_RUNTIME_PACKAGE
+    if not path.is_file():
+        raise CourtAuthorityStop(
+            "current WVS successor runtime package absent for failure serialization",
+            {"path":R6S_RUNTIME_PACKAGE},
+        )
+    try:
+        package=json.loads(path.read_text(encoding="utf-8"))
+    except Exception as exc:
+        raise CourtAuthorityStop(
+            "current WVS successor runtime package malformed for failure serialization",
+            {"path":R6S_RUNTIME_PACKAGE},
+        ) from exc
+    observed={
+        "lock2_hash":package.get("lock2"),
+        "lock2_replay_hash":package.get("replay"),
+        "discovery_authority":package.get("discovery_authority_hash"),
+    }
+    expected={
+        "lock2_hash":WVS_LOCK2,
+        "lock2_replay_hash":WVS_LOCK2_REPLAY,
+        "discovery_authority":WVS_DISCOVERY_AUTHORITY,
+    }
+    if observed!=expected:
+        raise CourtAuthorityStop(
+            "current WVS successor authority drift during failure serialization",
+            {"expected":expected,"observed":observed},
+        )
+    authority={
+        "lock2_hash":observed["lock2_hash"],
+        "lock2_replay_hash":observed["lock2_replay_hash"],
+    }
+    if ctx.stage.source=="WVS7":
+        authority["discovery_authority"]=observed["discovery_authority"]
+    return authority
+
+
 def _current_manifest_cell_order() -> tuple[tuple[str, str], ...]:
     raw=os.environ.get("RAWLSING_FIABC_T5_CURRENT_EXECUTION_MANIFEST")
     if not raw:
@@ -1614,6 +1663,7 @@ def _current_manifest_cell_order() -> tuple[tuple[str, str], ...]:
 
 def _cell(ctx,services,state,stopped):
     exp=json.loads((_repo(services)/"WORKER_RETURNS/EE-P2X/09_LOCAL_COURT_FROZEN_EXPECTATIONS.json").read_text())
+    current_authority=_current_failure_authority(ctx,services)
     cell=ctx.stage.source+"/"+ctx.stage.candidate
     order=_current_manifest_cell_order()
     cell_key=(ctx.stage.source,ctx.stage.candidate)
@@ -1630,7 +1680,7 @@ def _cell(ctx,services,state,stopped):
         "source":ctx.stage.source,"candidate":ctx.stage.candidate,"sequence_index":order.index(cell_key),
         "authority":{"hq_handoff_commit":exp["hq"]["handoff_commit"],
                      "lock1_manifest_blob":exp["lock1"]["manifest_json_git_blob_sha1"],
-                     "lock2_hash":exp["lock2"]["hash"]},
+                     **current_authority},
         "host":{"identity_sha256":_host_id(),"same_physical_host_token":_host_id()},
         "runtime":{"platform":f"{platform.system()} {platform.machine()}","python":platform.python_version(),
                    "pyreadstat":_version("pyreadstat"),"pyarrow":_version("pyarrow"),

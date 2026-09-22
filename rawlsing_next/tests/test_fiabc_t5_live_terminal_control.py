@@ -5,6 +5,7 @@ import hashlib
 import json
 import pytest
 
+import rawlsing_next.fiabc_live_terminal_control as t5
 from rawlsing_next.fiabc_live_terminal_control import (
     CLAIM_SCOPE,
     COURT_CONTRACT_SCHEMA,
@@ -30,6 +31,19 @@ def _contract():
 
 def test_current_six_cell_contract_passes_static_identity_gate():
     assert len(validate_current_court_contract(_contract(),_manifest())) == 64
+
+def test_active_t5_wvs_constitution_is_successor_bound_not_predecessor():
+    freeze = {
+        "authority_identities": {"WVS7": {"authority": "frozen"}},
+        "workload_identities": {"WVS7": {"workload": "frozen"}},
+    }
+    constitution = t5._court_constitution("WVS7", freeze)
+    assert constitution["lock2_hash"] == t5.WVS7_SUCCESSOR_LOCK2
+    assert constitution["lock2_replay_hash"] == t5.WVS7_SUCCESSOR_LOCK2_REPLAY
+    assert constitution["discovery_authority"] == t5.WVS7_SUCCESSOR_DISCOVERY_AUTHORITY
+    assert "8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188" not in constitution.values()
+    assert "b1aa437406d94b1f81f0ef3c81b885a2fd542749d2e5441747897c016a5dd490" not in constitution.values()
+    assert "24591678ebf50ac153fabdbbcd90d6ce818c5a89a5307c395c48a04fe5a8b1ab" not in constitution.values()
 
 def test_missing_sixth_current_capability_fails_closed():
     doc=_contract(); doc["cells"].pop()

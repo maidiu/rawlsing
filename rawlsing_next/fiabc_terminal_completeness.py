@@ -27,6 +27,7 @@ COMPLETENESS_SCHEMA = "RAWLSING_FIABC_TERMINAL_TELEMETRY_COMPLETENESS@1.0.0"
 FROZEN_DISPOSITIVE_METRICS = (
     "source_open_count",
     "source_decode_count",
+    "source_reread_count",
     "bytes_read",
     "bytes_written",
     "bytes_rewritten",
@@ -49,12 +50,24 @@ FROZEN_DISPOSITIVE_METRICS = (
     "warm_retained_state_bytes",
     "delete_rebuild_wall_ns",
     "source_release_invalidation_recomputation_units",
+    "source_release_invalidation_wall_ns",
+    "source_release_invalidation_bytes_rewritten",
     "semantic_authority_invalidation_recomputation_units",
+    "semantic_authority_invalidation_wall_ns",
+    "semantic_authority_invalidation_bytes_rewritten",
     "fresh_process_replay_wall_ns",
+    "fresh_process_replay_cpu_ns",
     "audit_wall_ns",
     "persistent_bytes_removable_with_zero_information_loss",
     "implementation_moving_parts_count",
 )
+
+if set(FROZEN_DISPOSITIVE_METRICS) != set(METRIC_DEFINITIONS):
+    raise RuntimeError(
+        "FIABC terminal completeness metric constitution drift: "
+        "FROZEN_DISPOSITIVE_METRICS must be definition-identical to METRIC_DEFINITIONS"
+    )
+assert set(FROZEN_DISPOSITIVE_METRICS) == set(METRIC_DEFINITIONS)
 
 # Stage-local origin for dispositive metrics.  __CELL__ means the metric is a
 # whole-cell accounting seal rather than one stage's lifecycle product.
@@ -71,8 +84,13 @@ METRIC_STAGE = {
     "warm_retained_state_bytes": "S08_WARM_REPEATED_RESEARCH",
     "delete_rebuild_wall_ns": "S09_DELETION_REGEN_OR_A_PERSISTENCE",
     "source_release_invalidation_recomputation_units": "S10_SOURCE_RELEASE_INVALIDATION",
+    "source_release_invalidation_wall_ns": "S10_SOURCE_RELEASE_INVALIDATION",
+    "source_release_invalidation_bytes_rewritten": "S10_SOURCE_RELEASE_INVALIDATION",
     "semantic_authority_invalidation_recomputation_units": "S11_SEMANTIC_AUTHORITY_INVALIDATION",
+    "semantic_authority_invalidation_wall_ns": "S11_SEMANTIC_AUTHORITY_INVALIDATION",
+    "semantic_authority_invalidation_bytes_rewritten": "S11_SEMANTIC_AUTHORITY_INVALIDATION",
     "fresh_process_replay_wall_ns": "S15_FRESH_PROCESS_REPLAY",
+    "fresh_process_replay_cpu_ns": "S15_FRESH_PROCESS_REPLAY",
     "persistent_bytes_removable_with_zero_information_loss": "S16_TERMINAL_METRIC_VECTOR_COMPLETENESS",
     "implementation_moving_parts_count": "S16_TERMINAL_METRIC_VECTOR_COMPLETENESS",
 }
