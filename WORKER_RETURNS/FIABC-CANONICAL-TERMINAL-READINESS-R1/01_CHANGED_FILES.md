@@ -29,3 +29,17 @@ Exact base: `3206bad6419e02c3aa12fff38e288e4faf13d82d`
 - `WORKER_RETURNS/FIABC-CANONICAL-TERMINAL-READINESS-R1/03_LOCAL_QUALIFICATION_COMMAND.md`
 
 No empirical semantics, workload constitution, candidate design, oracle law, telemetry metric, architecture-selection law, source identity, candidate ordering, or frozen six-cell order was changed.
+## Follow-up qualification-test repair after user local run
+
+- `tests/test_fiabc_terminal_completeness.py`
+  - updated one hostile-test expectation from the superseded per-slot absence code to the stricter current exact-metric-set drift code; production completeness law unchanged.
+- `rawlsing_next/tests/test_fiabc_final_preflight_fanin.py`
+  - replaced brittle literal-in-source checking with a semantic assertion that `WVS_DISCOVERY_AUTHORITY` equals the exact successor authority, scoped to the active `_wvs_docs` validation block.
+- `tests/test_ee_p2x_darwin_court_driver.py`
+  - isolated legacy driver-mechanics fixtures from the independently tested T3/T4 integration seam by stubbing only live-stage accounting admission inside the unit fixture.
+- `WORKER_RETURNS/CANONICAL-REINTEGRATION-FIABC-R1/01_SOURCE_FREE_LOCAL_QUALIFICATION.sh`
+  - pins the exact repaired preflight-test Git blob and admits only that exact path through the existing reconciliation test-drift filter.
+- `WORKER_RETURNS/FIABC-CANONICAL-TERMINAL-READINESS-R1/04_LOCAL_QUALIFICATION_FAILURE_FOLLOWUP.md`
+  - records the user-reported 154-pass/9-fail qualification result, static diagnosis, bounded follow-up repair, and rerun requirement.
+
+No production FIABC, WVS, P2, PRE553, candidate, oracle, telemetry, workload, or architecture-selection implementation was modified by this follow-up.
