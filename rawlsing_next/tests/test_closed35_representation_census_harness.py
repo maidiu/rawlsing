@@ -3,6 +3,7 @@ from __future__ import annotations
 import ast
 from decimal import Decimal
 import json
+import re
 from pathlib import Path
 
 import pytest
@@ -80,6 +81,32 @@ def test_known_commission_surfaces_are_present():
     for pair in (("Arab Barometer Wave 2.sav", "Q101"), ("Arab Barometer Wave 2.sav", "Q2062"),
                  ("Arab Barometer Wave 5.sav", "Q101"), ("Arab Barometer Wave 5.sav", "Q2061B")):
         assert pair in pairs
+
+
+def test_section85_registry_inventory_is_exhaustively_represented():
+    surface_rows = h.load_surface_registry(SURFACES)
+    represented = {
+        (row["source_file"], row["variable_name"])
+        for row in surface_rows
+        if row["authority_locator"].startswith("section85/authority/registry_")
+    }
+    registry_sources = {
+        "section85/authority/registry_afrobarometer.yaml": "Afro Barometer Round 1.sav",
+        "section85/authority/registry_arab_barometer.yaml": "Arab Barometer Wave 1.sav",
+        "section85/authority/registry_asian_barometer.yaml": "Asian Barometer Wave 1.sav",
+        "section85/authority/registry_evs.yaml": "EVS 1981.sav",
+        "section85/authority/registry_gss.yaml": "GSS2010.sav",
+        "section85/authority/registry_latinobarometro.yaml": "Latinobarometro 1995.sav",
+        "section85/authority/registry_lits.yaml": "LiTS_I.dta",
+        "section85/authority/registry_south_asia.yaml": "South Asia Wave 1.sav",
+        "section85/authority/registry_wvs.yaml": "WVS Wave 1.sav",
+    }
+    authoritative = set()
+    for relative, source_file in registry_sources.items():
+        text = (REPO / relative).read_text(encoding="utf-8")
+        for variable in re.findall(r"^\\s*-\\s+var_code:\\s*['\"]?([^'\"\\n]+?)['\"]?\\s*$", text, re.MULTILINE):
+            authoritative.add((source_file, variable.strip()))
+    assert represented == authoritative
 
 
 def test_surface_registry_source_id_sha_join_is_exact():
