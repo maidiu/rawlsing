@@ -409,6 +409,8 @@ def _build_lits_canonical_empirical_closure(
         *catalog.predicates,
         *catalog.queries,
         *catalog.discovery_authorities,
+        *result.executed_predicates,
+        *result.executed_queries,
         *result.empirical_facts,
         *result.receipts,
         *support_objects,
@@ -578,6 +580,43 @@ def _validate_lits_canonical_empirical_closure(
     expected_inventory = dict(sorted(by_schema.items()))
     if canonicalize(closure.get("inventory")) != canonicalize(expected_inventory):
         raise FinalOracleProducerError("LiTS canonical empirical closure inventory drift")
+
+    def exact_refs_for_schema(schema_id: str) -> list[Mapping[str, Any]]:
+        return [
+            {
+                "kind": f"{obj.schema_id}@{obj.schema_version}",
+                "object_id": obj.object_id,
+                "content_hash": obj.content_hash,
+            }
+            for obj in by_ref.values()
+            if obj.schema_id == schema_id
+        ]
+
+    for manifest_key, schema_id in (
+        ("fact_refs", "EmpiricalFact"),
+        ("query_refs", "EmpiricalQuerySpec"),
+        ("predicate_refs", "EmpiricalPredicate"),
+        ("discovery_authority_refs", "DiscoveryAuthority"),
+        ("discovery_result_receipt_refs", "DiscoveryResultReceipt"),
+        ("empirical_universe_refs", "EmpiricalUniverse"),
+    ):
+        if canonicalize(closure.get(manifest_key)) != canonicalize(exact_refs_for_schema(schema_id)):
+            raise FinalOracleProducerError(
+                f"LiTS canonical empirical {manifest_key} do not close over exact object preimages"
+            )
+    expected_authority_refs = [
+        {
+            "authority_id": obj.authority_id,
+            "authority_version": obj.authority_version,
+            "authority_content_hash": obj.authority_content_hash,
+        }
+        for obj in by_ref.values()
+        if obj.schema_id == "AuthoritySnapshot"
+    ]
+    if canonicalize(closure.get("authority_refs")) != canonicalize(expected_authority_refs):
+        raise FinalOracleProducerError(
+            "LiTS canonical authority manifest does not close over exact snapshots"
+        )
     if by_schema.get("EmpiricalFact@1.0.0") != 60:
         raise FinalOracleProducerError("LiTS canonical empirical closure must retain all 60 facts")
     if by_schema.get("DiscoveryResultReceipt@1.0.0") != LITS_CANDIDATE_COUNT:
@@ -1166,14 +1205,15 @@ def _neutral_lits_material(
     if not source_path.is_file():
         raise FinalOracleProducerError("LiTS exact source file is required")
     _reject_candidate_owned_path(source_path, work_root, "LiTS source")
-    if _sha256_file(source_path) != LITS_SOURCE_SHA256:
-        raise FinalOracleProducerError("LiTS canonical source sha256 drift")
-
     neutral_root = work_root / "court" / "oracle_producers" / "LITS_I"
     _reject_candidate_owned_path(neutral_root, work_root, "LiTS neutral producer root")
     neutral_root.mkdir(parents=True, exist_ok=True)
 
-    incidence = decode_dta(source_path, encoding="latin1")
+    incidence = decode_dta(
+        source_path,
+        encoding="latin1",
+        expected_source_sha256=LITS_SOURCE_SHA256,
+    )
     if incidence.source_sha256 != LITS_SOURCE_SHA256:
         raise FinalOracleProducerError("LiTS decoder source identity drift")
     if incidence.row_count != LITS_ROWS or len(incidence.variables) != LITS_VARIABLES:
@@ -1320,6 +1360,8 @@ def _neutral_lits_material(
         *authorities,
         *[predicate.ref.as_dict() for predicate in catalog.predicates],
         *[query.ref.as_dict() for query in catalog.queries],
+        *[predicate.ref.as_dict() for predicate in result.executed_predicates],
+        *[query.ref.as_dict() for query in result.executed_queries],
         *[authority.ref.as_dict() for authority in catalog.discovery_authorities],
         *[ref.as_dict() for ref in executor.release_refs],
         result.discovery_authority_ref.as_dict(),

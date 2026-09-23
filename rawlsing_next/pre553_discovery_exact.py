@@ -136,6 +136,8 @@ class ExactBoundedDiscoveryResult:
     receipts: tuple[DiscoveryResultReceipt, ...]
     empirical_fact_refs: tuple[ExactRef, ...]
     empirical_facts: tuple[EmpiricalFact, ...]
+    executed_predicates: tuple[EmpiricalPredicate, ...]
+    executed_queries: tuple[EmpiricalQuerySpec, ...]
     valid_empty: bool
     replay_ref: ExactRef
 
@@ -154,6 +156,39 @@ class ExactBoundedDiscoveryResult:
             raise ExactBoundedDiscoveryError("empirical_facts must be exact-ref canonical")
         if tuple(f.ref for f in self.empirical_facts) != self.empirical_fact_refs:
             raise ExactBoundedDiscoveryError("empirical fact preimages do not close over exact refs")
+        for objects, cls, label in (
+            (self.executed_predicates, EmpiricalPredicate, "executed_predicates"),
+            (self.executed_queries, EmpiricalQuerySpec, "executed_queries"),
+        ):
+            if tuple(sorted(objects, key=lambda obj: obj.ref.key)) != objects:
+                raise ExactBoundedDiscoveryError(f"{label} must be exact-ref sorted")
+            if len({obj.ref.key for obj in objects}) != len(objects):
+                raise ExactBoundedDiscoveryError(f"{label} must be exact-ref unique")
+            for obj in objects:
+                _verify_object_identity(obj, cls, f"{label} item")
+
+        predicate_by_key = {obj.ref.key: obj for obj in self.executed_predicates}
+        query_by_key = {obj.ref.key: obj for obj in self.executed_queries}
+        for receipt in self.receipts:
+            identity = receipt.candidate_identity
+            roles = identity.get("query_roles") if isinstance(identity, Mapping) else None
+            if not isinstance(roles, Sequence) or isinstance(roles, (str, bytes)):
+                raise ExactBoundedDiscoveryError("receipt query roles are malformed")
+            for role in roles:
+                if not isinstance(role, Mapping):
+                    raise ExactBoundedDiscoveryError("receipt query role is malformed")
+                predicate_ref = exact_ref(role.get("predicate_ref"), "role predicate_ref")
+                query_ref = exact_ref(role.get("query_ref"), "role query_ref")
+                predicate = predicate_by_key.get(predicate_ref.key)
+                query = query_by_key.get(query_ref.key)
+                if predicate is None or query is None:
+                    raise ExactBoundedDiscoveryError(
+                        "executed role object closure omits exact predicate/query preimage"
+                    )
+                if exact_ref(query.condition_predicate_ref, "role query condition") != predicate_ref:
+                    raise ExactBoundedDiscoveryError(
+                        "executed role query does not bind its exact predicate"
+                    )
 
 
 CANDIDATE_GRAMMAR_CONTRACT: Mapping[str, Any] = {
@@ -1136,6 +1171,26 @@ def execute_exact_bounded_discovery(
     all_fact_objects = tuple(
         sorted({fact.ref.key: fact for fact in all_facts}.values(), key=lambda fact: fact.ref.key)
     )
+    predicate_objects: dict[str, EmpiricalPredicate] = {}
+    query_objects: dict[str, EmpiricalQuerySpec] = {}
+    for candidate in candidates:
+        for role in candidate.query_roles:
+            for collection, obj, cls, label in (
+                (predicate_objects, role.predicate, EmpiricalPredicate, "executed predicate"),
+                (query_objects, role.query, EmpiricalQuerySpec, "executed query"),
+            ):
+                _verify_object_identity(obj, cls, label)
+                previous = collection.setdefault(obj.ref.key, obj)
+                if canonical_json(previous.as_dict()) != canonical_json(obj.as_dict()):
+                    raise ExactBoundedDiscoveryError(
+                        f"conflicting {label} preimages share one exact ref"
+                    )
+    all_executed_predicates = tuple(
+        sorted(predicate_objects.values(), key=lambda obj: obj.ref.key)
+    )
+    all_executed_queries = tuple(
+        sorted(query_objects.values(), key=lambda obj: obj.ref.key)
+    )
     all_fact_refs = tuple(fact.ref for fact in all_fact_objects)
     valid_empty = not canonical_receipts or all(
         r.typed_state == "VALID_EMPTY" for r in canonical_receipts
@@ -1162,6 +1217,8 @@ def execute_exact_bounded_discovery(
         receipts=canonical_receipts,
         empirical_fact_refs=all_fact_refs,
         empirical_facts=all_fact_objects,
+        executed_predicates=all_executed_predicates,
+        executed_queries=all_executed_queries,
         valid_empty=valid_empty,
         replay_ref=final_replay,
     )

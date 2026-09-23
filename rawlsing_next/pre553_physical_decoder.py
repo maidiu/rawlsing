@@ -436,13 +436,29 @@ def _file_metadata_contract(
     }
 
 
-def _decode(path: str | Path, *, expected_format: str, encoding: str | None = None) -> PhysicalSourceIncidence:
+def _decode(
+    path: str | Path,
+    *,
+    expected_format: str,
+    encoding: str | None = None,
+    expected_source_sha256: str | None = None,
+) -> PhysicalSourceIncidence:
     import pyreadstat
 
     source = Path(path)
     if not source.is_file():
         raise DecoderError(f"source bytes unavailable: {source}")
     source_sha = _sha(source)
+    if expected_source_sha256 is not None:
+        if (
+            not isinstance(expected_source_sha256, str)
+            or len(expected_source_sha256) != 64
+            or expected_source_sha256.lower() != expected_source_sha256
+            or any(char not in "0123456789abcdef" for char in expected_source_sha256)
+        ):
+            raise DecoderError("expected_source_sha256 must be lowercase sha256")
+        if source_sha != expected_source_sha256:
+            raise DecoderError("source sha256 mismatch before governed decode")
     compatibility = _compatibility_config(source_sha, encoding)
     reader = pyreadstat.read_sav if expected_format == "sav" else pyreadstat.read_dta
     _metadata_frame, metadata = reader(str(source), metadataonly=True, apply_value_formats=False,
@@ -504,12 +520,32 @@ def _decode(path: str | Path, *, expected_format: str, encoding: str | None = No
     )
 
 
-def decode_sav(path: str | Path, *, encoding: str | None = None) -> PhysicalSourceIncidence:
-    return _decode(path, expected_format="sav", encoding=encoding)
+def decode_sav(
+    path: str | Path,
+    *,
+    encoding: str | None = None,
+    expected_source_sha256: str | None = None,
+) -> PhysicalSourceIncidence:
+    return _decode(
+        path,
+        expected_format="sav",
+        encoding=encoding,
+        expected_source_sha256=expected_source_sha256,
+    )
 
 
-def decode_dta(path: str | Path, *, encoding: str | None = None) -> PhysicalSourceIncidence:
-    return _decode(path, expected_format="dta", encoding=encoding)
+def decode_dta(
+    path: str | Path,
+    *,
+    encoding: str | None = None,
+    expected_source_sha256: str | None = None,
+) -> PhysicalSourceIncidence:
+    return _decode(
+        path,
+        expected_format="dta",
+        encoding=encoding,
+        expected_source_sha256=expected_source_sha256,
+    )
 
 
 __all__ = [

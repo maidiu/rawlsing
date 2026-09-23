@@ -148,6 +148,39 @@ def _fixture():
         },
         query_authority_refs=(auth.authority_ref,),
     )
+    generated_predicate_ast = {"op": "AND", "children": [ast]}
+    generated_predicate = EmpiricalPredicate(
+        typed_state="PREDICATE_RESOLVED_AUTHORIZED",
+        authority_snapshot_refs=(auth.authority_ref,),
+        dependency_refs=(predicate.ref,),
+        producer_replay_locator_or_reference_root=_ref(
+            "ReplayRoot@1.0.0", "generated-role-predicate-replay"
+        ),
+        predicate_ast=generated_predicate_ast,
+        predicate_hash=semantic_hash(generated_predicate_ast),
+        grammar_authority_ref=auth.authority_ref,
+        coordinate_question_value_refs=(target,),
+        risk_set_refs=(risk,),
+        scope_refs=(scope,),
+        same_respondent_binding_semantics="EXACT_SAME_RESPONDENT",
+        operator_semantics_refs=(_ref("Operator@1.0.0", "operator"),),
+    )
+    generated_query_fields = dict(query.semantic_fields)
+    generated_query_fields["condition_predicate_ref"] = generated_predicate.ref
+    generated_query = EmpiricalQuerySpec(
+        typed_state=query.typed_state,
+        authority_snapshot_refs=query.authority_snapshot_refs,
+        dependency_refs=tuple(
+            sorted(
+                {*query.dependency_refs, generated_predicate.ref},
+                key=lambda ref: ref.key,
+            )
+        ),
+        producer_replay_locator_or_reference_root=_ref(
+            "ReplayRoot@1.0.0", "generated-role-query-replay"
+        ),
+        **generated_query_fields,
+    )
     grammar = {"schema": "TEST_GRAMMAR", "rules": []}
     discovery = DiscoveryAuthority(
         typed_state="EXACT_BOUNDED_AUTHORIZED",
@@ -178,13 +211,15 @@ def _fixture():
     )
     facts = []
     for i in range(60):
+        fact_predicate = generated_predicate if i == 0 else predicate
+        fact_query = generated_query if i == 0 else query
         replay_ref = _ref("PRE553_I03_QUERY_REPLAY", f"fact-replay-{i:02d}")
         fact = EmpiricalFact(
             typed_state="SUPPORTED",
             authority_snapshot_refs=(auth.authority_ref,),
-            dependency_refs=(query.ref, predicate.ref, replay_ref, release_ref, universe.ref),
+            dependency_refs=(fact_query.ref, fact_predicate.ref, replay_ref, release_ref, universe.ref),
             producer_replay_locator_or_reference_root=replay_ref,
-            empirical_query_spec_ref=query.ref,
+            empirical_query_spec_ref=fact_query.ref,
             empirical_universe_refs=(universe.ref,),
             target_topology={
                 "arity": 1,
@@ -199,7 +234,7 @@ def _fixture():
                     }
                 ],
             },
-            condition_predicate_ref=predicate.ref,
+            condition_predicate_ref=fact_predicate.ref,
             risk_set_ref=risk,
             raw_numerator_support=i + 1,
             raw_denominator_support=100 + i,
@@ -233,8 +268,12 @@ def _fixture():
         roles = [
             {
                 "role": f"ROLE_{j}",
-                "predicate_ref": predicate.ref.as_dict(),
-                "query_ref": query.ref.as_dict(),
+                "predicate_ref": (
+                    generated_predicate.ref if i == 0 and j == 0 else predicate.ref
+                ).as_dict(),
+                "query_ref": (
+                    generated_query.ref if i == 0 and j == 0 else query.ref
+                ).as_dict(),
             }
             for j in range(role_count)
         ]
@@ -305,6 +344,8 @@ def _fixture():
     result = SimpleNamespace(
         empirical_facts=tuple(facts),
         receipts=tuple(receipts),
+        executed_predicates=tuple(sorted((predicate, generated_predicate), key=lambda obj: obj.ref.key)),
+        executed_queries=tuple(sorted((query, generated_query), key=lambda obj: obj.ref.key)),
     )
     closure = producer._build_lits_canonical_empirical_closure(
         catalog=catalog,
@@ -380,8 +421,11 @@ def test_complete_current_object_closure_round_trips_full_fact_query_and_predica
     )
     assert inventory["EmpiricalFact@1.0.0"] == 60
     assert inventory["DiscoveryResultReceipt@1.0.0"] == 50
-    assert inventory["EmpiricalQuerySpec@1.0.0"] == 1
-    assert inventory["EmpiricalPredicate@1.0.0"] == 1
+    assert inventory["EmpiricalQuerySpec@1.0.0"] == 2
+    assert inventory["EmpiricalPredicate@1.0.0"] == 2
+    generated_role = rows[0]["semantic_fields"]["candidate_identity"]["query_roles"][0]
+    assert generated_role["query_ref"] in closure["query_refs"]
+    assert generated_role["predicate_ref"] in closure["predicate_refs"]
     assert closure["preimage_fragments"]
     assert len(closure["preimage_fragments"]) < 60 * 3
     fact_doc = _doc(closure, "EmpiricalFact")
@@ -450,6 +494,55 @@ def test_predicate_query_substitution_in_frontier_is_detected():
             compact_facts=compact,
             projection_and_release_refs=projection,
         )
+
+
+def test_generated_executed_role_query_omission_fails_exact_closure():
+    closure, rows, compact, projection, _query, _predicate = _fixture()
+    generated_ref = rows[0]["semantic_fields"]["candidate_identity"]["query_roles"][0]["query_ref"]
+    mutated = copy.deepcopy(closure)
+    mutated["public_object_preimages"] = [
+        doc for doc in mutated["public_object_preimages"]
+        if not (
+            doc["schema_id"] == "EmpiricalQuerySpec"
+            and doc["object_id"] == generated_ref["object_id"]
+            and doc["content_hash"] == generated_ref["content_hash"]
+        )
+    ]
+    mutated["query_refs"] = [
+        ref for ref in mutated["query_refs"]
+        if ref["content_hash"] != generated_ref["content_hash"]
+    ]
+    mutated["inventory"]["EmpiricalQuerySpec@1.0.0"] -= 1
+    _reseal(mutated)
+    with pytest.raises(
+        producer.FinalOracleProducerError,
+        match="role predicate/query preimage substitution or omission",
+    ):
+        producer._validate_lits_canonical_empirical_closure(
+            mutated,
+            candidate_rows=rows,
+            compact_facts=compact,
+            projection_and_release_refs=projection,
+        )
+
+
+def test_duplicate_conflicting_exact_role_preimage_fails_closed():
+    _closure, _rows, _compact, _projection, _query, predicate = _fixture()
+    conflicting = SimpleNamespace(
+        ref=predicate.ref,
+        as_dict=lambda: {
+            **predicate.as_dict(),
+            "semantic_fields": {
+                **predicate.as_dict()["semantic_fields"],
+                "predicate_hash": _h("different-predicate-preimage"),
+            },
+        },
+    )
+    with pytest.raises(
+        producer.FinalOracleProducerError,
+        match="conflicting public-object preimages",
+    ):
+        producer._canonical_public_object_documents([predicate, conflicting])
 
 
 def test_release_drift_and_50_77_frontier_drift_fail_closed():
