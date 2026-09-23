@@ -44,9 +44,11 @@ from rawlsing_next.fiabc_lits_i_representation_authority import (
     LEGACY_FACADE_BLOB as LITS_LEGACY_FACADE_BLOB,
     LEGACY_FACADE_COMMIT as LITS_LEGACY_FACADE_COMMIT,
     LEGACY_FACADE_PATH as LITS_LEGACY_FACADE_PATH,
+    REPRESENTATION_AUTHORITY_MATERIAL as LITS_REPRESENTATION_AUTHORITY_MATERIAL,
     REPRESENTATION_AUTHORITY_REF as LITS_REPRESENTATION_AUTHORITY_REF,
     TARGET_VARIABLES as LITS_TARGET_VARIABLES,
     authorized_replay_cell as authorized_lits_replay_cell,
+    representation_authority_snapshot as lits_representation_authority_snapshot,
 )
 from rawlsing_next.pre553_physical_decoder import PhysicalMissingState
 from rawlsing_next.pre553_source_backed_c11_facade import (
@@ -92,12 +94,19 @@ LITS_ACCEPTED_TYPED_TERMINAL_COUNTS = {
     "VALID_EMPTY": 1,
 }
 LITS_MATERIALIZATION_CHECKPOINT_SCHEMA = (
+    "FIABC_LITS_CURRENT_NEUTRAL_I05_MATERIALIZATION_CHECKPOINT@3.0.0"
+)
+LITS_PARTIAL_MATERIALIZATION_CHECKPOINT_SCHEMA = (
     "FIABC_LITS_CURRENT_NEUTRAL_I05_MATERIALIZATION_CHECKPOINT@2.0.0"
 )
 LITS_LEGACY_MATERIALIZATION_CHECKPOINT_SCHEMA = (
     "FIABC_LITS_CURRENT_NEUTRAL_I05_MATERIALIZATION_CHECKPOINT@1.0.0"
 )
-LITS_MATERIALIZATION_CHECKPOINT_NAME = "current_i05_materialization_checkpoint_v2.json"
+LITS_CANONICAL_EMPIRICAL_CLOSURE_SCHEMA = (
+    "FIABC_LITS_CANONICAL_CURRENT_EMPIRICAL_OBJECT_CLOSURE@1.0.0"
+)
+LITS_C11_RELEASE_RETENTION_SCHEMA = "FIABC_LITS_C11_RELEASE_RETENTION@1.0.0"
+LITS_MATERIALIZATION_CHECKPOINT_NAME = "current_i05_materialization_checkpoint_v3.json"
 
 ASTRA_PRODUCT_PATH = "WORKER_RETURNS/ASTRA-D04-R2/01_TYPED_LEARNED_EMPIRICAL_PRODUCT.json"
 ASTRA_ROLE_PATH = "WORKER_RETURNS/ASTRA-D04-R2/02_77_ROLE_EXECUTION_RECEIPT.json"
@@ -255,6 +264,457 @@ def _check_zero_candidate_provenance(value: Mapping[str, Any], label: str) -> No
     processes = value.get("candidate_processes_started")
     if processes not in (None, 0):
         raise FinalOracleProducerError(f"{label} started candidate processes")
+
+
+
+def _canonical_public_object_documents(objects: Sequence[Any]) -> list[Mapping[str, Any]]:
+    """Serialize exact PRE553 public objects without projecting away identity material."""
+    by_key: dict[tuple[str, str, str], Mapping[str, Any]] = {}
+    for obj in objects:
+        ref = getattr(obj, "ref", None)
+        as_dict = getattr(obj, "as_dict", None)
+        if ref is None or not callable(as_dict):
+            raise FinalOracleProducerError("canonical closure received a non-public semantic object")
+        key = _ref_key(ref.as_dict())
+        doc = canonicalize(as_dict())
+        previous = by_key.setdefault(key, doc)
+        if canonicalize(previous) != doc:
+            raise FinalOracleProducerError("canonical closure contains conflicting public-object preimages")
+    return [by_key[key] for key in sorted(by_key)]
+
+
+
+_LITS_PREIMAGE_FRAGMENT_MARKER = "$canonical_preimage_fragment"
+
+
+def _store_lits_preimage_fragment(
+    value: Any,
+    fragments: dict[str, Any],
+) -> Mapping[str, str]:
+    material = canonicalize(value)
+    digest = semantic_hash(material)
+    previous = fragments.setdefault(digest, material)
+    if canonicalize(previous) != material:
+        raise FinalOracleProducerError("LiTS canonical preimage fragment hash collision")
+    return {_LITS_PREIMAGE_FRAGMENT_MARKER: digest}
+
+
+def _pack_lits_canonical_preimage(
+    document: Mapping[str, Any],
+    fragments: dict[str, Any],
+) -> Mapping[str, Any]:
+    """Losslessly deduplicate large identity-bearing fact fragments."""
+    packed = canonicalize(document)
+    if packed.get("schema_id") != "EmpiricalFact":
+        return packed
+    fields = dict(packed["semantic_fields"])
+    for name in ("risk_set_member_refs", "denominator_member_refs"):
+        if name in fields:
+            fields[name] = _store_lits_preimage_fragment(fields[name], fragments)
+    topology = fields.get("target_topology")
+    if isinstance(topology, Mapping) and "complete_cell_semantic_projection" in topology:
+        topology = dict(topology)
+        topology["complete_cell_semantic_projection"] = _store_lits_preimage_fragment(
+            topology["complete_cell_semantic_projection"],
+            fragments,
+        )
+        fields["target_topology"] = topology
+    packed = dict(packed)
+    packed["semantic_fields"] = fields
+    return canonicalize(packed)
+
+
+def _lits_preimage_fragment_map(
+    closure: Mapping[str, Any],
+) -> dict[str, Any]:
+    raw = closure.get("preimage_fragments")
+    if not isinstance(raw, Sequence) or isinstance(raw, (str, bytes)):
+        raise FinalOracleProducerError("LiTS canonical preimage fragment store is absent")
+    fragments: dict[str, Any] = {}
+    for entry in raw:
+        if not isinstance(entry, Mapping) or set(entry) != {"fragment_hash", "value"}:
+            raise FinalOracleProducerError("LiTS canonical preimage fragment entry is malformed")
+        digest = entry.get("fragment_hash")
+        value = entry.get("value")
+        if not isinstance(digest, str) or len(digest) != 64:
+            raise FinalOracleProducerError("LiTS canonical preimage fragment hash is malformed")
+        if semantic_hash(canonicalize(value)) != digest:
+            raise FinalOracleProducerError("LiTS canonical preimage fragment content hash drift")
+        previous = fragments.setdefault(digest, canonicalize(value))
+        if previous != canonicalize(value):
+            raise FinalOracleProducerError("LiTS canonical preimage fragment collision")
+    return fragments
+
+
+def _hydrate_lits_canonical_preimage(
+    value: Any,
+    fragments: Mapping[str, Any],
+) -> Any:
+    if isinstance(value, Mapping):
+        if set(value) == {_LITS_PREIMAGE_FRAGMENT_MARKER}:
+            digest = value.get(_LITS_PREIMAGE_FRAGMENT_MARKER)
+            if not isinstance(digest, str) or digest not in fragments:
+                raise FinalOracleProducerError("LiTS canonical preimage references missing fragment")
+            return canonicalize(fragments[digest])
+        return {
+            key: _hydrate_lits_canonical_preimage(item, fragments)
+            for key, item in value.items()
+        }
+    if isinstance(value, Sequence) and not isinstance(value, (str, bytes, bytearray)):
+        return [_hydrate_lits_canonical_preimage(item, fragments) for item in value]
+    return value
+
+
+def _lits_c11_release_retention_document(release: Any) -> Mapping[str, Any]:
+    replay = canonicalize(release.replay_manifest.as_dict())
+    replay_projection = {
+        key: replay[key]
+        for key in ("record_family", "record_version", "semantic_fields")
+    }
+    if semantic_hash(replay_projection) != replay.get("content_hash"):
+        raise FinalOracleProducerError("LiTS C11 replay-manifest preimage/hash mismatch")
+    if release.replay_manifest.ref.content_hash != replay.get("content_hash"):
+        raise FinalOracleProducerError("LiTS C11 replay-manifest ref/preimage mismatch")
+    return canonicalize({
+        "schema": LITS_C11_RELEASE_RETENTION_SCHEMA,
+        "release_ref": release.release_ref.as_dict(),
+        "source_artifact_ref": release.source_artifact_ref.as_dict(),
+        "source_release_manifest_hash": release.source_release_manifest_hash,
+        "semantic_release_hash": release.semantic_release_hash,
+        "replay_ref": release.replay_manifest.ref.as_dict(),
+        "replay_manifest": replay,
+        "m01_m18_coverage": release.m01_m18_coverage,
+    })
+
+
+def _build_lits_canonical_empirical_closure(
+    *,
+    catalog: Any,
+    result: Any,
+    release: Any,
+) -> Mapping[str, Any]:
+    """Retain the current PRE553 empirical object ontology, not an ASTRA-shaped projection."""
+    support_objects = [
+        obj
+        for obj in release.public_objects
+        if getattr(obj, "schema_id", None) in {
+            "AuthoritySnapshot",
+            "EmpiricalUniverse",
+            "SourceUniverseRelation",
+        }
+    ]
+    representation_snapshot = lits_representation_authority_snapshot()
+    full_documents = _canonical_public_object_documents([
+        *catalog.authorities,
+        *catalog.predicates,
+        *catalog.queries,
+        *catalog.discovery_authorities,
+        *result.empirical_facts,
+        *result.receipts,
+        *support_objects,
+        representation_snapshot,
+    ])
+    fragments: dict[str, Any] = {}
+    documents = [
+        _pack_lits_canonical_preimage(doc, fragments)
+        for doc in full_documents
+    ]
+    inventory = Counter(
+        f"{doc['schema_id']}@{doc['schema_version']}" for doc in documents
+    )
+    facts = [
+        doc for doc in documents
+        if doc["schema_id"] == "EmpiricalFact"
+    ]
+    queries = [
+        doc for doc in documents
+        if doc["schema_id"] == "EmpiricalQuerySpec"
+    ]
+    predicates = [
+        doc for doc in documents
+        if doc["schema_id"] == "EmpiricalPredicate"
+    ]
+    authorities = [
+        doc for doc in documents
+        if doc["schema_id"] == "AuthoritySnapshot"
+    ]
+    discovery_authorities = [
+        doc for doc in documents
+        if doc["schema_id"] == "DiscoveryAuthority"
+    ]
+    discovery_receipts = [
+        doc for doc in documents
+        if doc["schema_id"] == "DiscoveryResultReceipt"
+    ]
+    universes = [
+        doc for doc in documents
+        if doc["schema_id"] == "EmpiricalUniverse"
+    ]
+    release_doc = _lits_c11_release_retention_document(release)
+    body = canonicalize({
+        "schema": LITS_CANONICAL_EMPIRICAL_CLOSURE_SCHEMA,
+        "public_object_preimages": documents,
+        "preimage_fragments": [
+            {"fragment_hash": digest, "value": fragments[digest]}
+            for digest in sorted(fragments)
+        ],
+        "inventory": dict(sorted(inventory.items())),
+        "fact_refs": [
+            {
+                "kind": f"{doc['schema_id']}@{doc['schema_version']}",
+                "object_id": doc["object_id"],
+                "content_hash": doc["content_hash"],
+            }
+            for doc in facts
+        ],
+        "query_refs": [
+            {
+                "kind": f"{doc['schema_id']}@{doc['schema_version']}",
+                "object_id": doc["object_id"],
+                "content_hash": doc["content_hash"],
+            }
+            for doc in queries
+        ],
+        "predicate_refs": [
+            {
+                "kind": f"{doc['schema_id']}@{doc['schema_version']}",
+                "object_id": doc["object_id"],
+                "content_hash": doc["content_hash"],
+            }
+            for doc in predicates
+        ],
+        "authority_refs": [
+            {
+                "authority_id": doc["semantic_fields"]["authority_id"],
+                "authority_version": doc["semantic_fields"]["authority_version"],
+                "authority_content_hash": doc["semantic_fields"]["authority_content_hash"],
+            }
+            for doc in authorities
+        ],
+        "discovery_authority_refs": [
+            {
+                "kind": f"{doc['schema_id']}@{doc['schema_version']}",
+                "object_id": doc["object_id"],
+                "content_hash": doc["content_hash"],
+            }
+            for doc in discovery_authorities
+        ],
+        "discovery_result_receipt_refs": [
+            {
+                "kind": f"{doc['schema_id']}@{doc['schema_version']}",
+                "object_id": doc["object_id"],
+                "content_hash": doc["content_hash"],
+            }
+            for doc in discovery_receipts
+        ],
+        "empirical_universe_refs": [
+            {
+                "kind": f"{doc['schema_id']}@{doc['schema_version']}",
+                "object_id": doc["object_id"],
+                "content_hash": doc["content_hash"],
+            }
+            for doc in universes
+        ],
+        "representation_authority_ref": LITS_REPRESENTATION_AUTHORITY_REF.as_dict(),
+        "representation_authority_material": LITS_REPRESENTATION_AUTHORITY_MATERIAL,
+        "c11_release": release_doc,
+        "structural_admission_object_count": sum(
+            1 for doc in documents if doc["schema_id"] == "StructuralEmpiricalAdmission"
+        ),
+    })
+    return {**body, "closure_identity": semantic_hash(body)}
+
+
+def _validate_lits_canonical_empirical_closure(
+    closure: Mapping[str, Any],
+    *,
+    candidate_rows: Sequence[Mapping[str, Any]],
+    compact_facts: Sequence[Mapping[str, Any]],
+    projection_and_release_refs: Mapping[str, Any],
+) -> Mapping[str, int]:
+    """Rehydrate every retained current object and prove 50/77 exact-ref closure."""
+    from rawlsing_next.pre553_carrier_execution import materialize_public_object
+
+    if not isinstance(closure, Mapping) or closure.get("schema") != LITS_CANONICAL_EMPIRICAL_CLOSURE_SCHEMA:
+        raise FinalOracleProducerError("LiTS canonical empirical closure schema drift")
+    body = {
+        key: value for key, value in closure.items() if key != "closure_identity"
+    }
+    if closure.get("closure_identity") != semantic_hash(canonicalize(body)):
+        raise FinalOracleProducerError("LiTS canonical empirical closure identity drift")
+    docs = closure.get("public_object_preimages")
+    if not isinstance(docs, Sequence) or isinstance(docs, (str, bytes)) or not docs:
+        raise FinalOracleProducerError("LiTS canonical empirical object preimages are absent")
+
+    fragments = _lits_preimage_fragment_map(closure)
+    by_ref: dict[tuple[str, str, str], Any] = {}
+    by_schema: Counter[str] = Counter()
+    authority_refs: set[tuple[str, str, str]] = set()
+    for packed_doc in docs:
+        if not isinstance(packed_doc, Mapping):
+            raise FinalOracleProducerError("LiTS canonical empirical object preimage is malformed")
+        doc = _hydrate_lits_canonical_preimage(packed_doc, fragments)
+        try:
+            obj = materialize_public_object(doc)
+        except Exception as exc:
+            raise FinalOracleProducerError(
+                f"LiTS canonical empirical object failed exact re-materialization: {exc}"
+            ) from exc
+        if canonicalize(obj.as_dict()) != canonicalize(doc):
+            raise FinalOracleProducerError("LiTS canonical empirical object round-trip drift")
+        key = _ref_key(obj.ref.as_dict())
+        if key in by_ref:
+            raise FinalOracleProducerError("LiTS canonical empirical closure contains duplicate exact ref")
+        by_ref[key] = obj
+        schema = f"{obj.schema_id}@{obj.schema_version}"
+        by_schema[schema] += 1
+        if obj.schema_id == "AuthoritySnapshot":
+            authority_refs.add((
+                obj.authority_ref.authority_id,
+                obj.authority_ref.authority_version,
+                obj.authority_ref.authority_content_hash,
+            ))
+
+    expected_inventory = dict(sorted(by_schema.items()))
+    if canonicalize(closure.get("inventory")) != canonicalize(expected_inventory):
+        raise FinalOracleProducerError("LiTS canonical empirical closure inventory drift")
+    if by_schema.get("EmpiricalFact@1.0.0") != 60:
+        raise FinalOracleProducerError("LiTS canonical empirical closure must retain all 60 facts")
+    if by_schema.get("DiscoveryResultReceipt@1.0.0") != LITS_CANDIDATE_COUNT:
+        raise FinalOracleProducerError("LiTS canonical empirical closure must retain all 50 discovery receipts")
+    if by_schema.get("StructuralEmpiricalAdmission@1.0.0", 0) != 0:
+        raise FinalOracleProducerError("LiTS canonical empirical closure illegally contains structural admission")
+    if closure.get("structural_admission_object_count") != 0:
+        raise FinalOracleProducerError("LiTS canonical empirical closure structural-admission count drift")
+
+    fact_keys = {
+        key for key, obj in by_ref.items() if obj.schema_id == "EmpiricalFact"
+    }
+    compact_fact_keys = {_ref_key(row["ref"]) for row in compact_facts}
+    if fact_keys != compact_fact_keys:
+        raise FinalOracleProducerError("LiTS canonical fact preimages do not close over compact I03 manifest")
+
+    query_keys = {
+        key for key, obj in by_ref.items() if obj.schema_id == "EmpiricalQuerySpec"
+    }
+    predicate_keys = {
+        key for key, obj in by_ref.items() if obj.schema_id == "EmpiricalPredicate"
+    }
+    receipt_identity_by_candidate: dict[str, Mapping[str, Any]] = {}
+    receipt_fact_refs_by_candidate: dict[str, set[tuple[str, str, str]]] = {}
+    for obj in by_ref.values():
+        if obj.schema_id != "DiscoveryResultReceipt":
+            continue
+        identity = obj.candidate_identity
+        candidate_hash = identity.get("candidate_hash") if isinstance(identity, Mapping) else None
+        if not isinstance(candidate_hash, str) or len(candidate_hash) != 64:
+            raise FinalOracleProducerError("LiTS retained discovery receipt candidate identity is malformed")
+        if candidate_hash in receipt_identity_by_candidate:
+            raise FinalOracleProducerError("LiTS retained discovery receipts duplicate candidate hash")
+        receipt_identity_by_candidate[candidate_hash] = canonicalize(identity)
+        receipt_fact_refs_by_candidate[candidate_hash] = {
+            _ref_key(ref) for ref in obj.empirical_fact_refs
+        }
+
+    role_count = 0
+    for row in candidate_rows:
+        identity = row.get("semantic_fields", {}).get("candidate_identity")
+        if not isinstance(identity, Mapping):
+            raise FinalOracleProducerError("LiTS canonical closure candidate identity missing")
+        candidate_hash = row.get("candidate_hash")
+        if (
+            not isinstance(candidate_hash, str)
+            or canonicalize(receipt_identity_by_candidate.get(candidate_hash))
+            != canonicalize(identity)
+        ):
+            raise FinalOracleProducerError("LiTS compact frontier identity differs from retained discovery receipt")
+        compact_candidate_facts = {
+            _ref_key(item.get("ref"))
+            for item in row.get("semantic_fields", {}).get("constituent_fact_manifest", ())
+            if isinstance(item, Mapping)
+        }
+        if compact_candidate_facts != receipt_fact_refs_by_candidate.get(candidate_hash):
+            raise FinalOracleProducerError("LiTS compact candidate facts differ from retained discovery receipt")
+        roles = identity.get("query_roles")
+        if not isinstance(roles, Sequence) or isinstance(roles, (str, bytes)):
+            raise FinalOracleProducerError("LiTS canonical closure query roles malformed")
+        for role in roles:
+            if not isinstance(role, Mapping):
+                raise FinalOracleProducerError("LiTS canonical closure role binding malformed")
+            qref = role.get("query_ref")
+            pref = role.get("predicate_ref")
+            qkey = _ref_key(qref)
+            pkey = _ref_key(pref)
+            if qkey not in query_keys or pkey not in predicate_keys:
+                raise FinalOracleProducerError("LiTS role predicate/query preimage substitution or omission")
+            query = by_ref[qkey]
+            if _ref_key(query.condition_predicate_ref) != pkey:
+                raise FinalOracleProducerError("LiTS role query/predicate binding mismatch")
+            role_count += 1
+    if len(candidate_rows) != LITS_CANDIDATE_COUNT or role_count != LITS_QUERY_ROLE_COUNT:
+        raise FinalOracleProducerError("LiTS canonical empirical closure does not close over 50/77 frontier")
+
+    for key in fact_keys:
+        fact = by_ref[key]
+        qkey = _ref_key(fact.empirical_query_spec_ref)
+        pkey = _ref_key(fact.condition_predicate_ref)
+        if qkey not in query_keys or pkey not in predicate_keys:
+            raise FinalOracleProducerError("LiTS fact lost exact query/predicate preimage")
+        query = by_ref[qkey]
+        if _ref_key(query.condition_predicate_ref) != pkey:
+            raise FinalOracleProducerError("LiTS fact/query/predicate closure mismatch")
+
+    for obj in by_ref.values():
+        if obj.schema_id == "AuthoritySnapshot":
+            continue
+        for auth in obj.authority_snapshot_refs:
+            key = (
+                auth.authority_id,
+                auth.authority_version,
+                auth.authority_content_hash,
+            )
+            if key not in authority_refs:
+                raise FinalOracleProducerError("LiTS canonical empirical closure lost authority snapshot preimage")
+
+    representation_material = closure.get("representation_authority_material")
+    if (
+        not isinstance(representation_material, Mapping)
+        or semantic_hash(representation_material)
+        != LITS_REPRESENTATION_AUTHORITY_REF.authority_content_hash
+        or closure.get("representation_authority_ref")
+        != LITS_REPRESENTATION_AUTHORITY_REF.as_dict()
+    ):
+        raise FinalOracleProducerError("LiTS representation authority retention drift")
+
+    release_doc = closure.get("c11_release")
+    if not isinstance(release_doc, Mapping) or release_doc.get("schema") != LITS_C11_RELEASE_RETENTION_SCHEMA:
+        raise FinalOracleProducerError("LiTS retained C11 release identity document missing")
+    replay = release_doc.get("replay_manifest")
+    if not isinstance(replay, Mapping):
+        raise FinalOracleProducerError("LiTS retained C11 replay manifest missing")
+    replay_projection = {
+        key: replay.get(key)
+        for key in ("record_family", "record_version", "semantic_fields")
+    }
+    if semantic_hash(replay_projection) != replay.get("content_hash"):
+        raise FinalOracleProducerError("LiTS retained C11 replay preimage/hash drift")
+    if _ref_key(release_doc.get("replay_ref"))[2] != replay.get("content_hash"):
+        raise FinalOracleProducerError("LiTS retained C11 replay ref drift")
+    release_refs = projection_and_release_refs.get("release_refs")
+    if (
+        not isinstance(release_refs, Sequence)
+        or isinstance(release_refs, (str, bytes))
+        or len(release_refs) != 1
+        or canonicalize(release_doc.get("release_ref")) != canonicalize(release_refs[0])
+        or release_doc.get("semantic_release_hash") != release_refs[0].get("content_hash")
+        or projection_and_release_refs.get("c11_release_identity")
+        != release_doc.get("semantic_release_hash")
+        or projection_and_release_refs.get("c11_replay_identity")
+        != release_doc.get("replay_ref", {}).get("content_hash")
+    ):
+        raise FinalOracleProducerError("LiTS retained C11 release/replay identity drift")
+
+    return expected_inventory
 
 
 def _load_accepted_r1m(path: Path) -> Mapping[str, Any]:
@@ -688,7 +1148,7 @@ def _neutral_lits_material(
     source_path: Path,
     repo_root: Path,
     work_root: Path,
-) -> tuple[Mapping[str, Any], Mapping[str, Any], Mapping[str, Any]]:
+) -> tuple[Mapping[str, Any], Mapping[str, Any], Mapping[str, Any], Mapping[str, Any]]:
     """Execute the common LiTS semantic path without composing A/B/C."""
     from rawlsing_next.pre553_physical_decoder import decode_dta
     from rawlsing_next.pre553_carrier_execution import (
@@ -842,6 +1302,11 @@ def _neutral_lits_material(
     state = {"bindings": {"projection_identity": projection.cache_identity}}
     projection_refs = terminal._projection_refs("LITS_I", binding, state)
     candidate_rows, constituent_facts, i03_closure = terminal._constituent_i03(binding, result)
+    canonical_empirical_closure = _build_lits_canonical_empirical_closure(
+        catalog=catalog,
+        result=result,
+        release=release,
+    )
 
     hashes = [receipt.candidate_identity["candidate_hash"] for receipt in ordered]
     frontier = {
@@ -891,6 +1356,9 @@ def _neutral_lits_material(
         "exact_ref_manifest": canonicalize(exact_refs),
         "constituent_i03_fact_manifest": canonicalize(constituent_facts),
         "constituent_i03_closure_identity": i03_closure,
+        "canonical_empirical_object_closure": canonical_empirical_closure,
+        # Historical ASTRA is retained only as an audit/regression projection.
+        # It is not the canonical current empirical storage ontology.
         "astra_shaped_empirical_summary": astra_empirical_summary,
     }
     audit = {
@@ -899,6 +1367,9 @@ def _neutral_lits_material(
         "current_i05_execution_identity": execution_receipt["execution_identity"],
         "current_i05_replay_identity": result.replay_ref.content_hash,
         "astra_shaped_empirical_summary_identity": semantic_hash(astra_empirical_summary),
+        "astra_projection_role": "OPTIONAL_HISTORICAL_REGRESSION__NOT_CANONICAL_CURRENT_STORAGE",
+        "canonical_empirical_closure_identity": canonical_empirical_closure["closure_identity"],
+        "canonical_empirical_object_inventory": canonical_empirical_closure["inventory"],
         "constituent_i03_fact_count": len(constituent_facts),
         "constituent_i03_closure_identity": i03_closure,
         "exact_ref_count": len(exact_refs),
@@ -916,9 +1387,12 @@ def _neutral_lits_material(
 def _validate_lits_materialization_checkpoint_body(
     body: Mapping[str, Any],
 ) -> tuple[Mapping[str, Any], Mapping[str, Any], Mapping[str, Any], Mapping[str, Any]]:
-    if body.get("schema") == LITS_LEGACY_MATERIALIZATION_CHECKPOINT_SCHEMA:
+    if body.get("schema") in {
+        LITS_LEGACY_MATERIALIZATION_CHECKPOINT_SCHEMA,
+        LITS_PARTIAL_MATERIALIZATION_CHECKPOINT_SCHEMA,
+    }:
         raise FinalOracleProducerError(
-            "legacy LiTS checkpoint lacks parity-ready empirical summary; fresh source-backed I05 required"
+            "legacy LiTS checkpoint lacks complete canonical current empirical object preimages; fresh source-backed I05 required"
         )
     if body.get("schema") != LITS_MATERIALIZATION_CHECKPOINT_SCHEMA:
         raise FinalOracleProducerError("LiTS materialization checkpoint schema drift")
@@ -997,6 +1471,18 @@ def _validate_lits_materialization_checkpoint_body(
     )
     if dict(sorted(fact_counts.items())) != {"SUPPORTED": 60}:
         raise FinalOracleProducerError("LiTS checkpoint retained I03 fact state drift")
+
+    canonical_closure = material.get("canonical_empirical_object_closure")
+    canonical_inventory = _validate_lits_canonical_empirical_closure(
+        canonical_closure,
+        candidate_rows=rows,
+        compact_facts=facts,
+        projection_and_release_refs=material.get("projection_and_release_refs", {}),
+    )
+    if audit.get("canonical_empirical_closure_identity") != canonical_closure.get("closure_identity"):
+        raise FinalOracleProducerError("LiTS checkpoint canonical empirical closure audit identity drift")
+    if canonicalize(audit.get("canonical_empirical_object_inventory")) != canonicalize(canonical_inventory):
+        raise FinalOracleProducerError("LiTS checkpoint canonical empirical inventory audit drift")
 
     closure_facts: dict[tuple[str, str, str], Mapping[str, Any]] = {}
     expected_by_rule = []
@@ -1107,38 +1593,16 @@ def _validate_lits_materialization_checkpoint_body(
     ):
         raise FinalOracleProducerError("LiTS checkpoint successor release/replay identity drift")
 
+    # ASTRA is a bounded historical regression projection, not checkpoint ontology.
     summary = material.get("astra_shaped_empirical_summary")
-    if not isinstance(summary, Mapping):
-        raise FinalOracleProducerError(
-            "LiTS checkpoint lacks parity-ready ASTRA-shaped empirical summary"
-        )
-    if summary.get("schema") != "FIABC_LITS_ASTRA_SHAPED_EMPIRICAL_SUMMARY@1.0.0":
-        raise FinalOracleProducerError("LiTS checkpoint ASTRA-shaped summary schema drift")
-    summary_frontier = summary.get("frontier")
-    logical_rows = summary.get("logical_candidate_identity")
-    if (
-        not isinstance(summary_frontier, Mapping)
-        or summary_frontier.get("candidate_count") != LITS_CANDIDATE_COUNT
-        or summary_frontier.get("query_role_count") != LITS_QUERY_ROLE_COUNT
-        or summary_frontier.get("frontier_seal") != LITS_FRONTIER_SEAL
-        or not isinstance(logical_rows, Sequence)
-        or isinstance(logical_rows, (str, bytes))
-        or len(logical_rows) != LITS_CANDIDATE_COUNT
-        or len({
-            row.get("logical_candidate_key")
-            for row in logical_rows
-            if isinstance(row, Mapping)
-        }) != LITS_CANDIDATE_COUNT
-    ):
-        raise FinalOracleProducerError("LiTS checkpoint logical parity frontier drift")
-    p2_rows = summary.get("P2")
-    if not isinstance(p2_rows, Sequence) or isinstance(p2_rows, (str, bytes)) or len(p2_rows) != 18:
-        raise FinalOracleProducerError("LiTS checkpoint P2 logical frontier drift")
-    if canonicalize(summary.get("final_envelope")) != canonicalize(LITS_ACCEPTED_TERMINAL_COUNTS):
-        raise FinalOracleProducerError("LiTS checkpoint ASTRA-shaped terminal envelope drift")
-    summary_identity = semantic_hash(summary)
-    if audit.get("astra_shaped_empirical_summary_identity") != summary_identity:
-        raise FinalOracleProducerError("LiTS checkpoint ASTRA-shaped summary identity drift")
+    if summary is not None:
+        if not isinstance(summary, Mapping):
+            raise FinalOracleProducerError("LiTS ASTRA regression projection is malformed")
+        if summary.get("schema") != "FIABC_LITS_ASTRA_SHAPED_EMPIRICAL_SUMMARY@1.0.0":
+            raise FinalOracleProducerError("LiTS ASTRA regression projection schema drift")
+        summary_identity = semantic_hash(summary)
+        if audit.get("astra_shaped_empirical_summary_identity") != summary_identity:
+            raise FinalOracleProducerError("LiTS ASTRA regression projection identity drift")
 
     return material, audit, execution, precheck
 
@@ -1266,29 +1730,36 @@ def produce_lits_local_oracle(
             "decoder_calls": 1,
         }
     prior_product = _git_json(repo_root, LITS_ASTRA_D04_R2_COMMIT, ASTRA_PRODUCT_PATH)
-    prior_roles = _git_json(repo_root, LITS_ASTRA_D04_R2_COMMIT, ASTRA_ROLE_PATH)
     prior_replay = _git_json(repo_root, LITS_ASTRA_D04_R2_COMMIT, ASTRA_REPLAY_PATH)
-    accepted_inputs = _verified_astra_input_manifest(repo_root)
-    expected_astra_summary = normalize_accepted_astra_summary(
-        product=prior_product,
-        role_receipt=prior_roles,
-        replay_receipt=prior_replay,
-    )
-    parity_receipt = assert_lits_astra_substantive_parity(
-        expected_summary=expected_astra_summary,
-        observed_summary=material["astra_shaped_empirical_summary"],
-        accepted_inputs=accepted_inputs,
-        current_execution_identity=execution_receipt["execution_identity"],
-        current_replay_identity=material["replay_manifest"]["i05_replay_ref"]["content_hash"],
-    )
-    parity_path = (
-        Path(work_root).resolve()
-        / "court"
-        / "oracle_producers"
-        / "LITS_I"
-        / "astra_substantive_parity_receipt.json"
-    )
-    parity_document_sha = _write_json(parity_path, parity_receipt)
+    astra_projection = material.get("astra_shaped_empirical_summary")
+    parity_receipt = None
+    parity_path = None
+    parity_document_sha = None
+    astra_regression_status = "NOT_REQUIRED_FOR_CANONICAL_CURRENT_RESUME"
+    if astra_projection is not None:
+        prior_roles = _git_json(repo_root, LITS_ASTRA_D04_R2_COMMIT, ASTRA_ROLE_PATH)
+        accepted_inputs = _verified_astra_input_manifest(repo_root)
+        expected_astra_summary = normalize_accepted_astra_summary(
+            product=prior_product,
+            role_receipt=prior_roles,
+            replay_receipt=prior_replay,
+        )
+        parity_receipt = assert_lits_astra_substantive_parity(
+            expected_summary=expected_astra_summary,
+            observed_summary=astra_projection,
+            accepted_inputs=accepted_inputs,
+            current_execution_identity=execution_receipt["execution_identity"],
+            current_replay_identity=material["replay_manifest"]["i05_replay_ref"]["content_hash"],
+        )
+        parity_path = (
+            Path(work_root).resolve()
+            / "court"
+            / "oracle_producers"
+            / "LITS_I"
+            / "astra_substantive_parity_receipt.json"
+        )
+        parity_document_sha = _write_json(parity_path, parity_receipt)
+        astra_regression_status = "PASS__CURRENT_FACTS_PROJECTED_TO_HISTORICAL_ASTRA_LOGICAL_DOMAIN"
 
     provenance = {
         "builder": "FIABC_FINAL_LITS_CANDIDATE_NEUTRAL_LOCAL_ORACLE_PRODUCER_R1",
@@ -1348,15 +1819,22 @@ def produce_lits_local_oracle(
         "materialization_checkpoint_sha256": checkpoint_identity,
         "materialization_checkpoint_document_sha256": checkpoint_document_sha,
         "source_access": source_access,
-        "astra_substantive_parity_receipt_path": str(parity_path),
-        "astra_substantive_parity_receipt_identity": parity_receipt["parity_receipt_identity"],
+        "astra_regression_status": astra_regression_status,
+        "astra_substantive_parity_receipt_path": (
+            str(parity_path) if parity_path is not None else None
+        ),
+        "astra_substantive_parity_receipt_identity": (
+            parity_receipt["parity_receipt_identity"] if parity_receipt is not None else None
+        ),
         "astra_substantive_parity_document_sha256": parity_document_sha,
-        "astra_expected_empirical_summary_identity": parity_receipt[
-            "expected_empirical_summary_identity"
-        ],
-        "astra_observed_empirical_summary_identity": parity_receipt[
-            "observed_empirical_summary_identity"
-        ],
+        "astra_expected_empirical_summary_identity": (
+            parity_receipt["expected_empirical_summary_identity"]
+            if parity_receipt is not None else None
+        ),
+        "astra_observed_empirical_summary_identity": (
+            parity_receipt["observed_empirical_summary_identity"]
+            if parity_receipt is not None else None
+        ),
         "current_standardized_constituent_i03_fact_refs": [
             row["ref"] for row in material["constituent_i03_fact_manifest"]
         ],

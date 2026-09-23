@@ -19,7 +19,7 @@ NODE4A = ROOT / "WORKER_RETURNS/EE-P2R6O/SUPPORT/01_NODE4A_PREDICATE_INPUTS.py"
 R1M = ROOT / "WORKER_RETURNS/FIABC-LM2-R1M-LOCK2-SUCCESSOR-R16-ORACLE/07_FRESH_WVS_ORACLE.json"
 
 EXPECTED_ASSET_BLOBS = {
-    "01_LITS_CURRENT_RUNTIME_MATERIALIZER.py": "e0bbbc03d0e7160edef5e91b15a20666f3b34f7b",
+    "01_LITS_CURRENT_RUNTIME_MATERIALIZER.py": "d00c197fad1bda70aaccf6eb1a7f4851dd5f5178",
     "02_WVS7_P2F2_RUNTIME_PACKAGE.json": "f016cdfdfd51e7973ab10b2196fe27ba5c90b3cd",
     "05_WVS7_PROJECTION_MATERIALIZER.py": "ec685803a7416032037ee415e8faf7bf60db8f1b",
 }
@@ -192,9 +192,10 @@ class RuntimePackagingRebindTests(unittest.TestCase):
         self.assertEqual(
             overlay["checkpoint_law"],
             {
-                "schema": "FIABC_LITS_CURRENT_NEUTRAL_I05_MATERIALIZATION_CHECKPOINT@2.0.0",
-                "parity_ready_summary_required": True,
-                "legacy_v1_resume_authorized": False,
+                "schema": "FIABC_LITS_CURRENT_NEUTRAL_I05_MATERIALIZATION_CHECKPOINT@3.0.0",
+                "canonical_current_empirical_closure_required": True,
+                "astra_regression_projection_is_canonical_storage": False,
+                "legacy_v1_v2_resume_authorized": False,
             },
         )
         self.assertEqual(
