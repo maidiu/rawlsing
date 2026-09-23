@@ -108,6 +108,28 @@ def _runtime_with_parent(parent_snapshot: AuthoritySnapshot) -> Pre553RuntimeAut
     )
 
 
+def _rehashed_successor_record(**identity_changes):
+    record = copy.deepcopy(operation_successor_authority_record())
+    record["identity_material"].update(identity_changes)
+    record["authority_content_hash"] = semantic_hash(record["identity_material"])
+    assert record["authority_content_hash"] != AUTHORITY_CONTENT_HASH
+    return record
+
+
+def _runtime_with_successor_record(
+    record,
+    parent_snapshot: AuthoritySnapshot,
+) -> Pre553RuntimeAuthoritySet:
+    return Pre553RuntimeAuthoritySet(
+        adopted_authority_hashes=(
+            record["authority_content_hash"],
+            PARENT_AUTHORITY_REF.authority_content_hash,
+        ),
+        i03_operation_successor_authorities=(record,),
+        historical_authority_snapshots=(parent_snapshot,),
+    )
+
+
 @pytest.fixture(scope="module")
 def i03_case():
     module = _runtime_module()
@@ -262,6 +284,41 @@ def test_lits_i03_successor_rejects_unadopted_or_tampered_record():
                 adopted_authority_hashes=(AUTHORITY_CONTENT_HASH,),
                 i03_operation_successor_authorities=(tampered,),
             )
+
+
+
+def test_rehashed_adopted_wrong_catalog_fails_on_executing_catalog_jurisdiction(i03_case):
+    wrong_catalog = "0" * 64
+    record = _rehashed_successor_record(runtime_catalog_identity=wrong_catalog)
+    assert semantic_hash(record["identity_material"]) == record["authority_content_hash"]
+    runtime = _runtime_with_successor_record(record, i03_case["historical_parent"])
+
+    with pytest.raises(
+        Pre553AuthorityError,
+        match="no unique exact adopted I03 operation successor authority",
+    ):
+        _authorize_i03(
+            i03_case,
+            runtime=runtime,
+            runtime_catalog_identity=RUNTIME_CATALOG_IDENTITY,
+        )
+
+
+def test_rehashed_adopted_wrong_parent_operation_fails_on_exact_parent_jurisdiction(i03_case):
+    record = _rehashed_successor_record(parent_operation="OTHER_PARENT_OPERATION")
+    assert semantic_hash(record["identity_material"]) == record["authority_content_hash"]
+    runtime = _runtime_with_successor_record(record, i03_case["historical_parent"])
+
+    with pytest.raises(
+        Pre553AuthorityError,
+        match="parent operation is absent from exact historical authority",
+    ):
+        _authorize_i03(
+            i03_case,
+            runtime=runtime,
+            runtime_catalog_identity=RUNTIME_CATALOG_IDENTITY,
+            historical_parent_snapshot=i03_case["historical_parent"],
+        )
 
 
 def test_i03_successor_wrong_runtime_catalog_identity_fails_closed(i03_case):
