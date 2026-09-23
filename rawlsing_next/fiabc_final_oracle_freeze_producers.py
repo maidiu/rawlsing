@@ -1343,6 +1343,11 @@ def produce_lits_local_oracle(
         "oracle_identity_sha256": identity,
         "oracle_document_sha256": output_sha,
         "output_path": str(Path(output_path)),
+        "materialization_checkpoint_path": str(checkpoint_path),
+        "materialization_checkpoint_schema": LITS_MATERIALIZATION_CHECKPOINT_SCHEMA,
+        "materialization_checkpoint_sha256": checkpoint_identity,
+        "materialization_checkpoint_document_sha256": checkpoint_document_sha,
+        "source_access": source_access,
         "astra_substantive_parity_receipt_path": str(parity_path),
         "astra_substantive_parity_receipt_identity": parity_receipt["parity_receipt_identity"],
         "astra_substantive_parity_document_sha256": parity_document_sha,
@@ -1532,9 +1537,12 @@ def _parser() -> argparse.ArgumentParser:
         help="Candidate-neutral local LiTS common-path oracle producer",
     )
     lits.add_argument("--repo-root", required=True, type=Path)
-    lits.add_argument("--source", required=True, type=Path)
+    source = lits.add_mutually_exclusive_group(required=True)
+    source.add_argument("--source", type=Path)
+    source.add_argument("--resume-checkpoint", type=Path)
     lits.add_argument("--work-root", required=True, type=Path)
     lits.add_argument("--output", required=True, type=Path)
+    lits.add_argument("--checkpoint-output", type=Path)
     lits.add_argument("--freeze-sequence", type=int, default=30)
 
     t3 = sub.add_parser(
@@ -1562,6 +1570,8 @@ def main(argv: Sequence[str] | None = None) -> int:
             repo_root=args.repo_root,
             work_root=args.work_root,
             output_path=args.output,
+            checkpoint_output=args.checkpoint_output,
+            resume_checkpoint=args.resume_checkpoint,
             freeze_sequence=args.freeze_sequence,
         )
     elif args.command == "freeze-t3":
