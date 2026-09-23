@@ -278,7 +278,7 @@ def _observed_summary() -> dict:
 def _parity(expected=None, observed=None):
     return assert_substantive_parity(
         expected_summary=expected or _expected_summary(),
-        observed_summary=observed or _expected_summary(),
+        observed_summary=observed or _observed_summary(),
         accepted_inputs=[
             {"commit": producer.LITS_ASTRA_D04_R2_COMMIT, "path": producer.ASTRA_PRODUCT_PATH, "git_blob_sha": producer.ASTRA_INPUT_GIT_BLOBS[producer.ASTRA_PRODUCT_PATH]},
             {"commit": producer.LITS_ASTRA_D04_R2_COMMIT, "path": producer.ASTRA_ROLE_PATH, "git_blob_sha": producer.ASTRA_INPUT_GIT_BLOBS[producer.ASTRA_ROLE_PATH]},
@@ -304,7 +304,7 @@ def _mutate_p1_joint(doc): doc["P1"]["first_exact_dependence_witness"]["joint_co
 def _mutate_p1_marginal(doc): doc["P1"]["first_exact_dependence_witness"]["marginal_0_count"] += 1
 def _mutate_p2_witness(doc): doc["P2"][0]["first_exact_difference_witness"]["condition_count"] += 1
 def _mutate_p2_identity_permutation(doc):
-    doc["P2"][0]["candidate_hash"], doc["P2"][1]["candidate_hash"] = doc["P2"][1]["candidate_hash"], doc["P2"][0]["candidate_hash"]
+    doc["P2"][0]["logical_candidate_key"], doc["P2"][1]["logical_candidate_key"] = doc["P2"][1]["logical_candidate_key"], doc["P2"][0]["logical_candidate_key"]
 def _mutate_p3_pooled(doc): doc["P3"]["exact_rates"]["POOLED_POS"]["$exact_fraction"][0] += 1
 def _mutate_p3_stratum(doc): doc["P3"]["exact_rates"]["STRATUM:Q310V1:POS"]["$exact_fraction"][0] += 1
 def _mutate_p3_empty_mechanism(doc): doc["P3"]["empty_mechanism"] = "ZERO_SUPPORT"
@@ -318,7 +318,7 @@ def _mutate_role_risk(doc):
     row = next(x for x in doc["role_risk_set_topology"] if x["lane"] == "P2")
     row["risk_set"] = "R2"
 def _mutate_frontier_seal(doc): doc["frontier"]["frontier_seal"] = _h("wrong-frontier")
-def _mutate_candidate_identity(doc): doc["P0"][0]["candidate_hash"] = _h("wrong-candidate")
+def _mutate_candidate_identity(doc): doc["P0"][0]["logical_candidate_key"] = _h("wrong-candidate")
 def _mutate_role_count_76(doc): doc["role_execution"]["role_count"] = 76
 def _mutate_role_count_78(doc): doc["role_execution"]["role_count"] = 78
 
@@ -347,7 +347,7 @@ def _mutate_role_count_78(doc): doc["role_execution"]["role_count"] = 78
     ],
 )
 def test_hostile_substantive_drift_fails_closed(mutator):
-    observed = copy.deepcopy(_expected_summary())
+    observed = copy.deepcopy(_observed_summary())
     mutator(observed)
     with pytest.raises(LitsAstraSubstantiveParityError):
         _parity(observed=observed)
@@ -355,7 +355,7 @@ def test_hostile_substantive_drift_fails_closed(mutator):
 
 
 def _expect_selector_drift_failure(mutator):
-    observed = copy.deepcopy(_expected_summary())
+    observed = copy.deepcopy(_observed_summary())
     mutator(observed["f02_selector_populations"]["questions"])
     with pytest.raises(LitsAstraSubstantiveParityError, match="f02_selector_populations"):
         _parity(observed=observed)
@@ -411,7 +411,7 @@ def test_missing_count_drift_preserving_total_rows_fails():
 
 def test_same_50_77_49_1_and_p0_p4_material_cannot_hide_selector_substrate_drift():
     expected = _expected_summary()
-    observed = copy.deepcopy(expected)
+    observed = copy.deepcopy(_observed_summary())
     observed["f02_selector_populations"]["questions"]["q311"]["counts"]["MISSING"] += 1
     observed["f02_selector_populations"]["questions"]["q311"]["counts"]["2"] -= 1
     for section in ("frontier", "P0", "P1", "P2", "P3", "P4", "final_envelope"):
@@ -551,12 +551,17 @@ def _current_result_fixture():
 
 
 def test_current_source_free_fixture_normalizes_to_exact_astra_substance():
+    result, bindings = _rebind_fixture_to_real_current_frontier(_current_result_fixture())
     observed = normalize_current_lits_summary(
-        result=_current_result_fixture(),
+        result=result,
         frontier_seal=FRONTIER_SEAL,
         selector_scan=copy.deepcopy(SELECTOR_SCAN),
+        logical_candidate_bindings=bindings,
     )
-    assert observed == _expected_summary()
+    receipt = _parity(expected=_expected_summary(), observed=observed)
+    assert receipt["oracle_freeze_authorized"] is True
+    assert receipt["native_candidate_hash_equality_required"] is False
+    assert receipt["cross_schema_logical_candidate_key_required"] is True
 
 
 def test_current_normalizer_rejects_wrong_role_risk_set():
@@ -565,8 +570,14 @@ def test_current_normalizer_rejects_wrong_role_risk_set():
     ref = p2.support_uncertainty_state["query_role_fact_refs"]["CONDITION"][0]
     fact = next(f for f in result.empirical_facts if f.ref.content_hash == ref["content_hash"])
     fact.semantic_fields["risk_set_member_refs"] = _SizedRefs(ROOTS["R2"]["count"])
+    result, bindings = _rebind_fixture_to_real_current_frontier(result)
     with pytest.raises(LitsAstraSubstantiveParityError, match="wrong risk set"):
-        normalize_current_lits_summary(result=result, frontier_seal=FRONTIER_SEAL, selector_scan=copy.deepcopy(SELECTOR_SCAN))
+        normalize_current_lits_summary(
+            result=result,
+            frontier_seal=FRONTIER_SEAL,
+            selector_scan=copy.deepcopy(SELECTOR_SCAN),
+            logical_candidate_bindings=bindings,
+        )
 
 
 def test_current_normalizer_rejects_p3_empty_from_wrong_mechanism():
@@ -576,8 +587,14 @@ def test_current_normalizer_rejects_p3_empty_from_wrong_mechanism():
     fact = next(f for f in result.empirical_facts if f.ref.content_hash == ref["content_hash"])
     fact.typed_state = "ZERO_SUPPORT"
     fact.raw_denominator_support = 0
+    result, bindings = _rebind_fixture_to_real_current_frontier(result)
     with pytest.raises(LitsAstraSubstantiveParityError, match="not the accepted false reversal validator"):
-        normalize_current_lits_summary(result=result, frontier_seal=FRONTIER_SEAL, selector_scan=copy.deepcopy(SELECTOR_SCAN))
+        normalize_current_lits_summary(
+            result=result,
+            frontier_seal=FRONTIER_SEAL,
+            selector_scan=copy.deepcopy(SELECTOR_SCAN),
+            logical_candidate_bindings=bindings,
+        )
 
 
 def _fake_neutral_material(summary):
@@ -608,7 +625,7 @@ def _patch_producer_source_free(monkeypatch, summary):
 
 
 def test_parity_failure_prevents_oracle_freeze(tmp_path, monkeypatch):
-    bad = copy.deepcopy(_expected_summary())
+    bad = copy.deepcopy(_observed_summary())
     bad["P0"][0]["support"] += 1
     _patch_producer_source_free(monkeypatch, bad)
     called = {"build": False}
@@ -654,7 +671,7 @@ def test_selector_substrate_failure_prevents_oracle_freeze(tmp_path, monkeypatch
 
 
 def test_parity_pass_persists_receipt_before_oracle_build(tmp_path, monkeypatch):
-    _patch_producer_source_free(monkeypatch, _expected_summary())
+    _patch_producer_source_free(monkeypatch, _observed_summary())
     parity_path = (
         tmp_path / "work" / "court" / "oracle_producers" / "LITS_I"
         / "astra_substantive_parity_receipt.json"
