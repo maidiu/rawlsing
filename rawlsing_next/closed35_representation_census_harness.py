@@ -29,11 +29,16 @@ from rawlsing_next.pre553_physical_decoder import (
     COMPATIBILITY_ALLOWLIST,
     PhysicalMissingState,
     _jsonable as decoder_jsonable,
+    _physical_value as decoder_physical_value,
     _missing_declarations as decoder_missing_declarations,
     _sav_header_layout,
     classify_physical_value,
 )
-from rawlsing_next.pre553_r5_codec import R5TypedValueCodec, canonical_bytes as r5_canonical_bytes
+from rawlsing_next.pre553_r5_codec import (
+    R5TypedValueCodec,
+    canonical_bytes as r5_canonical_bytes,
+    normalize_decoder_physical_value,
+)
 from rawlsing_next.pre553_source_backed_c11_facade import physical_value_binding_key
 
 
@@ -132,7 +137,7 @@ def _sha256_file(path: Path) -> str:
 
 def _typed_r5_digest(value: Any) -> str:
     """Fingerprint physical metadata without stringifying typed mapping keys."""
-    return _sha256_bytes(r5_canonical_bytes(R5.encode(value)))
+    return _sha256_bytes(r5_canonical_bytes(R5.encode(normalize_decoder_physical_value(value))))
 
 
 def _git(repo_root: Path, *args: str, check: bool = True) -> str:
@@ -385,7 +390,7 @@ def _observe_variable_domain(frame: Any, metadata: Any, variable: str, source_fo
     pre_types: set[str] = set()
     for value in frame[variable].tolist():
         pre_types.add(type(value).__name__)
-        raw = decoder_jsonable(value)
+        raw = decoder_physical_value(value)
         state, declaration = classify_physical_value(raw, declarations)
         key = _domain_key(raw, state, declaration)
         if key not in domain:
@@ -401,7 +406,7 @@ def _observe_variable_domain(frame: Any, metadata: Any, variable: str, source_fo
     label_map = (getattr(metadata, "variable_value_labels", {}) or {}).get(variable, {}) or {}
     dictionary_tokens = []
     for key in label_map:
-        raw_key = decoder_jsonable(key)
+        raw_key = decoder_physical_value(key)
         dictionary_tokens.append({
             "python_type": type(raw_key).__name__,
             "r5_token": R5.encode(raw_key),
