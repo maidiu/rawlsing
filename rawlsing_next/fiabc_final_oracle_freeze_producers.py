@@ -1189,18 +1189,82 @@ def _load_lits_materialization_checkpoint(
 
 def produce_lits_local_oracle(
     *,
-    source_path: Path,
+    source_path: Path | None = None,
     repo_root: Path,
     work_root: Path,
     output_path: Path,
+    checkpoint_output: Path | None = None,
+    resume_checkpoint: Path | None = None,
     freeze_sequence: int = 30,
 ) -> Mapping[str, Any]:
-    material, audit, execution_receipt = _neutral_lits_material(
-        source_path=source_path,
-        repo_root=repo_root,
-        work_root=work_root,
-    )
     repo_root = Path(repo_root).resolve()
+    work_root = Path(work_root).resolve()
+    output_path = Path(output_path).resolve()
+    _reject_candidate_owned_path(output_path, work_root, "LiTS oracle output")
+
+    if resume_checkpoint is not None:
+        if source_path is not None or checkpoint_output is not None:
+            raise FinalOracleProducerError(
+                "LiTS checkpoint resume may not also specify source or checkpoint output"
+            )
+        if (work_root / "cells").exists():
+            raise FinalOracleProducerError(
+                "LiTS checkpoint resume requires a work root without candidate-owned cells"
+            )
+        resume_path = Path(resume_checkpoint).resolve()
+        if resume_path == output_path:
+            raise FinalOracleProducerError("LiTS checkpoint and oracle output paths must differ")
+        _reject_candidate_owned_path(resume_path, work_root, "LiTS materialization checkpoint")
+        (
+            material,
+            audit,
+            execution_receipt,
+            _precheck,
+            checkpoint_identity,
+            checkpoint_document_sha,
+        ) = _load_lits_materialization_checkpoint(resume_path)
+        source_access = {
+            "mode": "RESUME_VERIFIED_PARITY_READY_I05_CHECKPOINT",
+            "source_hash_passes": 0,
+            "decoder_calls": 0,
+        }
+        checkpoint_path = resume_path
+    else:
+        if source_path is None:
+            raise FinalOracleProducerError(
+                "LiTS source path or parity-ready verified I05 checkpoint is required"
+            )
+        material, audit, execution_receipt, precheck = _neutral_lits_material(
+            source_path=source_path,
+            repo_root=repo_root,
+            work_root=work_root,
+        )
+        checkpoint_path = (
+            Path(checkpoint_output).resolve()
+            if checkpoint_output is not None
+            else work_root
+            / "court"
+            / "oracle_producers"
+            / "LITS_I"
+            / LITS_MATERIALIZATION_CHECKPOINT_NAME
+        )
+        if checkpoint_path == output_path:
+            raise FinalOracleProducerError("LiTS checkpoint and oracle output paths must differ")
+        _reject_candidate_owned_path(
+            checkpoint_path, work_root, "LiTS materialization checkpoint"
+        )
+        checkpoint_identity, checkpoint_document_sha = _write_lits_materialization_checkpoint(
+            path=checkpoint_path,
+            material=material,
+            audit=audit,
+            execution_receipt=execution_receipt,
+            precheck=precheck,
+        )
+        source_access = {
+            "mode": "FRESH_SOURCE_BACKED_PARITY_READY_I05_MATERIALIZATION",
+            "source_hash_passes": 1,
+            "decoder_calls": 1,
+        }
     prior_product = _git_json(repo_root, LITS_ASTRA_D04_R2_COMMIT, ASTRA_PRODUCT_PATH)
     prior_roles = _git_json(repo_root, LITS_ASTRA_D04_R2_COMMIT, ASTRA_ROLE_PATH)
     prior_replay = _git_json(repo_root, LITS_ASTRA_D04_R2_COMMIT, ASTRA_REPLAY_PATH)
