@@ -421,7 +421,7 @@ def test_fact_hash_tampering_complete_cell_mutation_and_risk_drift_fail_closed(m
 def test_query_preimage_tampering_fails_exact_round_trip():
     closure, rows, compact, projection, _query, _predicate = _fixture()
     mutated = copy.deepcopy(closure)
-    _doc(mutated, "EmpiricalQuerySpec")["semantic_fields"]["target_refs"][0] = (
+    _packed_doc(mutated, "EmpiricalQuerySpec")["semantic_fields"]["target_refs"][0] = (
         _ref("QuestionValue@1.0.0", "wrong-target").as_dict()
     )
     _reseal(mutated)
