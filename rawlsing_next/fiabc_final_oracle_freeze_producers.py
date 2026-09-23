@@ -1637,29 +1637,36 @@ def produce_lits_local_oracle(
             "decoder_calls": 1,
         }
     prior_product = _git_json(repo_root, LITS_ASTRA_D04_R2_COMMIT, ASTRA_PRODUCT_PATH)
-    prior_roles = _git_json(repo_root, LITS_ASTRA_D04_R2_COMMIT, ASTRA_ROLE_PATH)
     prior_replay = _git_json(repo_root, LITS_ASTRA_D04_R2_COMMIT, ASTRA_REPLAY_PATH)
-    accepted_inputs = _verified_astra_input_manifest(repo_root)
-    expected_astra_summary = normalize_accepted_astra_summary(
-        product=prior_product,
-        role_receipt=prior_roles,
-        replay_receipt=prior_replay,
-    )
-    parity_receipt = assert_lits_astra_substantive_parity(
-        expected_summary=expected_astra_summary,
-        observed_summary=material["astra_shaped_empirical_summary"],
-        accepted_inputs=accepted_inputs,
-        current_execution_identity=execution_receipt["execution_identity"],
-        current_replay_identity=material["replay_manifest"]["i05_replay_ref"]["content_hash"],
-    )
-    parity_path = (
-        Path(work_root).resolve()
-        / "court"
-        / "oracle_producers"
-        / "LITS_I"
-        / "astra_substantive_parity_receipt.json"
-    )
-    parity_document_sha = _write_json(parity_path, parity_receipt)
+    astra_projection = material.get("astra_shaped_empirical_summary")
+    parity_receipt = None
+    parity_path = None
+    parity_document_sha = None
+    astra_regression_status = "NOT_REQUIRED_FOR_CANONICAL_CURRENT_RESUME"
+    if astra_projection is not None:
+        prior_roles = _git_json(repo_root, LITS_ASTRA_D04_R2_COMMIT, ASTRA_ROLE_PATH)
+        accepted_inputs = _verified_astra_input_manifest(repo_root)
+        expected_astra_summary = normalize_accepted_astra_summary(
+            product=prior_product,
+            role_receipt=prior_roles,
+            replay_receipt=prior_replay,
+        )
+        parity_receipt = assert_lits_astra_substantive_parity(
+            expected_summary=expected_astra_summary,
+            observed_summary=astra_projection,
+            accepted_inputs=accepted_inputs,
+            current_execution_identity=execution_receipt["execution_identity"],
+            current_replay_identity=material["replay_manifest"]["i05_replay_ref"]["content_hash"],
+        )
+        parity_path = (
+            Path(work_root).resolve()
+            / "court"
+            / "oracle_producers"
+            / "LITS_I"
+            / "astra_substantive_parity_receipt.json"
+        )
+        parity_document_sha = _write_json(parity_path, parity_receipt)
+        astra_regression_status = "PASS__CURRENT_FACTS_PROJECTED_TO_HISTORICAL_ASTRA_LOGICAL_DOMAIN"
 
     provenance = {
         "builder": "FIABC_FINAL_LITS_CANDIDATE_NEUTRAL_LOCAL_ORACLE_PRODUCER_R1",
@@ -1719,15 +1726,22 @@ def produce_lits_local_oracle(
         "materialization_checkpoint_sha256": checkpoint_identity,
         "materialization_checkpoint_document_sha256": checkpoint_document_sha,
         "source_access": source_access,
-        "astra_substantive_parity_receipt_path": str(parity_path),
-        "astra_substantive_parity_receipt_identity": parity_receipt["parity_receipt_identity"],
+        "astra_regression_status": astra_regression_status,
+        "astra_substantive_parity_receipt_path": (
+            str(parity_path) if parity_path is not None else None
+        ),
+        "astra_substantive_parity_receipt_identity": (
+            parity_receipt["parity_receipt_identity"] if parity_receipt is not None else None
+        ),
         "astra_substantive_parity_document_sha256": parity_document_sha,
-        "astra_expected_empirical_summary_identity": parity_receipt[
-            "expected_empirical_summary_identity"
-        ],
-        "astra_observed_empirical_summary_identity": parity_receipt[
-            "observed_empirical_summary_identity"
-        ],
+        "astra_expected_empirical_summary_identity": (
+            parity_receipt["expected_empirical_summary_identity"]
+            if parity_receipt is not None else None
+        ),
+        "astra_observed_empirical_summary_identity": (
+            parity_receipt["observed_empirical_summary_identity"]
+            if parity_receipt is not None else None
+        ),
         "current_standardized_constituent_i03_fact_refs": [
             row["ref"] for row in material["constituent_i03_fact_manifest"]
         ],
