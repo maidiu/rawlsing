@@ -8,6 +8,7 @@ from pathlib import Path
 import pytest
 
 import rawlsing_next.pre553_independent_parity_oracle as oracle_mod
+import rawlsing_next.fiabc_final_oracle_freeze_producers as producer_mod
 from rawlsing_next.fiabc_final_oracle_freeze_producers import (
     FinalOracleProducerError,
     LITS_CANDIDATE_COUNT,
@@ -19,6 +20,7 @@ from rawlsing_next.fiabc_final_oracle_freeze_producers import (
     SUCCESSOR_LOCK2_REPLAY,
     _bind_current_lits_execution_to_astra,
     _reject_candidate_owned_path,
+    produce_lits_local_oracle,
     produce_t3_two_source_freeze,
     standardize_wvs_r1m_oracle,
 )
@@ -197,6 +199,177 @@ def _write(path: Path, doc: dict) -> None:
     )
 
 
+def _lits_materialization_checkpoint_fixture() -> tuple[dict, dict, dict, dict]:
+    fact_rows = [
+        {
+            "ref": {
+                "kind": "EmpiricalFact@1.0.0",
+                "object_id": f"urn:test:lits:checkpoint-fact:{i:02d}",
+                "content_hash": _h(f"checkpoint-fact-{i:02d}"),
+            },
+            "typed_state": "SUPPORTED",
+        }
+        for i in range(60)
+    ]
+    fact_rows.sort(key=lambda fact: producer_mod._ref_key(fact["ref"]))
+    execution_body = {
+        "schema": "PRE553_LEARNED_EMPIRICAL_EXECUTION_RECEIPT@1.0.0",
+        "claim_kind": "LEARNED_EMPIRICAL_EXECUTION_ONLY",
+        "candidate_count": 50,
+    }
+    execution = {
+        **execution_body,
+        "execution_identity": oracle_mod.semantic_hash(execution_body),
+    }
+    semantic_replay = _h("checkpoint-semantic-replay")
+
+    candidate_rows = []
+    assigned_facts = []
+    fact_cursor = 0
+    for index in range(50):
+        candidate_hash = _h(f"checkpoint-candidate-{index:02d}")
+        fact_count = 2 if index < 10 else 1
+        constituent = fact_rows[fact_cursor:fact_cursor + fact_count]
+        fact_cursor += fact_count
+        assigned_facts.extend(constituent)
+        query_roles = [
+            {"role": f"query-role-{index:02d}-{role}"}
+            for role in range(2 if index < 27 else 1)
+        ]
+        coverage = "EVALUATED_VALID_EMPTY" if index == 49 else "EVALUATED_SUPPORTED"
+        typed = "VALID_EMPTY" if index == 49 else "DISCOVERED_RESULT_SUPPORTED"
+        identity = {
+            "candidate_hash": candidate_hash,
+            "rule_id": f"TEST_RULE_{index:02d}",
+            "validation": {"kind": "TEST_VALIDATION", "ordinal": index},
+            "query_roles": query_roles,
+        }
+        candidate_rows.append({
+            "candidate_hash": candidate_hash,
+            "typed_state": typed,
+            "semantic_fields": {
+                "candidate_identity": identity,
+                "constituent_fact_manifest": constituent,
+                "coverage_state": coverage,
+                "support_uncertainty_state": {},
+                "replay_ref": {
+                    "kind": "ReplayManifest@1.0.0",
+                    "object_id": f"urn:test:lits:checkpoint-replay:{index:02d}",
+                    "content_hash": _h(f"checkpoint-replay-{index:02d}"),
+                },
+            },
+        })
+
+    closure_identity = oracle_mod.semantic_hash({
+        "candidate_fact_rows": candidate_rows,
+        "constituent_fact_manifest": fact_rows,
+    })
+    frontier = {
+        "candidate_count": 50,
+        "query_role_count": 77,
+        "frontier_seal": LITS_FRONTIER_SEAL,
+        "ordered_candidate_hashes": [row["candidate_hash"] for row in candidate_rows],
+    }
+    learned = _bind_current_lits_execution_to_astra(
+        execution_receipt=execution,
+        semantic_replay_identity=semantic_replay,
+        terminal_counts={
+            "EVALUATED_SUPPORTED": 49,
+            "EVALUATED_VALID_EMPTY": 1,
+        },
+        candidate_count=50,
+        query_role_count=77,
+    )
+    exact_refs = [{
+        "kind": "EmpiricalQuerySpec@1.0.0",
+        "object_id": "urn:test:lits:checkpoint-query",
+        "content_hash": _h("checkpoint-query"),
+    }]
+    material = {
+        "source_identity": {
+            "source": "LITS_I",
+            "sha256": LITS_SOURCE_SHA256,
+            "rows": 29002,
+            "variables": 1198,
+        },
+        "court_constitution_refs": {
+            "frozen_authority_identity": producer_mod._neutral_lits_authority_identity(),
+            "frozen_workload_identity": frontier,
+        },
+        "semantic_authority_closure": [{
+            "kind": "AuthoritySnapshot@1.0.0",
+            "object_id": "urn:test:lits:checkpoint-authority",
+            "content_hash": _h("checkpoint-authority"),
+        }],
+        "projection_and_release_refs": {
+            "projection_identity": LITS_PROJECTION_IDENTITY,
+            "c11_release_identity": producer_mod.LITS_RUNTIME_RELEASE,
+            "c11_replay_identity": producer_mod.LITS_RUNTIME_REPLAY,
+        },
+        "frontier_manifest": frontier,
+        "comparison_fact_manifest": candidate_rows,
+        "expected_learned_product": learned,
+        "replay_manifest": {
+            "i05_replay_ref": {
+                "kind": "ReplayManifest@1.0.0",
+                "object_id": "urn:test:lits:checkpoint-i05",
+                "content_hash": semantic_replay,
+            },
+            "constituent_i03_closure_identity": closure_identity,
+            "dependency_root": _h("checkpoint-dependency-root"),
+        },
+        "exact_ref_manifest": exact_refs,
+        "constituent_i03_fact_manifest": fact_rows,
+        "constituent_i03_closure_identity": closure_identity,
+    }
+    audit = {
+        "runtime_catalog_identity": producer_mod.LITS_RUNTIME_CATALOG,
+        "common_execution_binding": {},
+        "current_i05_execution_identity": execution["execution_identity"],
+        "constituent_i03_fact_count": 60,
+        "constituent_i03_closure_identity": closure_identity,
+        "exact_ref_count": len(exact_refs),
+        "candidate_processes_started": 0,
+        "candidate_outputs_seen": 0,
+        "candidate_owned_roots_consulted": [],
+        "candidate_owned_state_reused": False,
+        "representation_authority": producer_mod.LITS_REPRESENTATION_AUTHORITY_REF.as_dict(),
+        "accepted_legacy_facade_blob": producer_mod.LITS_LEGACY_FACADE_BLOB,
+    }
+    precheck = {
+        "schema": "FIABC_LITS_CURRENT_NEUTRAL_I05_PRECHECK@1.0.0",
+        "candidate_count": 50,
+        "query_role_count": 77,
+        "coverage_state_counts": {
+            "EVALUATED_SUPPORTED": 49,
+            "EVALUATED_VALID_EMPTY": 1,
+        },
+        "typed_state_counts": {
+            "DISCOVERED_RESULT_SUPPORTED": 49,
+            "VALID_EMPTY": 1,
+        },
+        "empirical_fact_state_counts": {"SUPPORTED": 60},
+        "empirical_facts": [
+            {"fact_ref": fact["ref"], "typed_state": fact["typed_state"]}
+            for fact in fact_rows
+        ],
+        "by_rule": [
+            {
+                "candidate_hash": row["candidate_hash"],
+                "rule_id": row["semantic_fields"]["candidate_identity"]["rule_id"],
+                "validation": row["semantic_fields"]["candidate_identity"]["validation"],
+                "coverage_state": row["semantic_fields"]["coverage_state"],
+                "typed_state": row["typed_state"],
+            }
+            for row in candidate_rows
+        ],
+        "current_semantic_replay_identity": semantic_replay,
+        "current_execution_identity": execution["execution_identity"],
+        "candidate_processes_started": 0,
+    }
+    return material, audit, execution, precheck
+
+
 def test_wvs_r1m_standardization_is_source_free_deterministic_and_live_schema(
     tmp_path, monkeypatch
 ):
@@ -265,6 +438,71 @@ def test_lits_producer_hard_codes_exact_50_77_and_rejects_candidate_roots(tmp_pa
     assert "compose_p2r1_binding" not in producer_text
     assert "candidate_processes_started" in producer_text
     assert "candidate_outputs_used" in producer_text
+
+
+def test_lits_materialization_checkpoint_resumes_without_source_or_decode(tmp_path, monkeypatch):
+    material, audit, execution, precheck = _lits_materialization_checkpoint_fixture()
+    checkpoint = tmp_path / "current_i05_materialization_checkpoint.json"
+    checkpoint_identity, checkpoint_sha = producer_mod._write_lits_materialization_checkpoint(
+        path=checkpoint,
+        material=material,
+        audit=audit,
+        execution_receipt=execution,
+        precheck=precheck,
+    )
+    loaded = producer_mod._load_lits_materialization_checkpoint(checkpoint)
+    assert loaded[4] == checkpoint_identity
+    assert loaded[5] == checkpoint_sha
+    assert loaded[0] == material
+
+    monkeypatch.setattr(
+        producer_mod,
+        "_neutral_lits_material",
+        lambda **_kwargs: pytest.fail("resume must not reopen or decode the source"),
+    )
+    monkeypatch.setattr(producer_mod, "_git_json", lambda *_args: {})
+    monkeypatch.setattr(
+        producer_mod,
+        "build_lits_i_oracle",
+        lambda **_kwargs: {"oracle_identity_sha256": _h("resumed-oracle")},
+    )
+    monkeypatch.setattr(
+        producer_mod,
+        "verify_frozen_oracle",
+        lambda frozen: frozen["oracle_identity_sha256"],
+    )
+
+    receipt = produce_lits_local_oracle(
+        repo_root=REPO,
+        work_root=tmp_path / "resume-work",
+        output_path=tmp_path / "resumed-oracle.json",
+        resume_checkpoint=checkpoint,
+    )
+    assert receipt["status"] == "PASS"
+    assert receipt["materialization_checkpoint_sha256"] == checkpoint_identity
+    assert receipt["source_access"] == {
+        "mode": "RESUME_VERIFIED_I05_CHECKPOINT",
+        "source_hash_passes": 0,
+        "decoder_calls": 0,
+    }
+
+
+def test_lits_materialization_checkpoint_tampering_fails_closed(tmp_path):
+    material, audit, execution, precheck = _lits_materialization_checkpoint_fixture()
+    checkpoint = tmp_path / "checkpoint.json"
+    producer_mod._write_lits_materialization_checkpoint(
+        path=checkpoint,
+        material=material,
+        audit=audit,
+        execution_receipt=execution,
+        precheck=precheck,
+    )
+    doc = json.loads(checkpoint.read_text(encoding="utf-8"))
+    doc["precheck"]["candidate_count"] = 49
+    _write(checkpoint, doc)
+
+    with pytest.raises(FinalOracleProducerError, match="checkpoint digest mismatch"):
+        producer_mod._load_lits_materialization_checkpoint(checkpoint)
 
 
 def test_lits_current_execution_preserves_current_identity_domains():
