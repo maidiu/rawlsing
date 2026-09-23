@@ -387,42 +387,13 @@ def _lits_c11_release_retention_document(release: Any) -> Mapping[str, Any]:
     })
 
 
-def _build_lits_canonical_empirical_closure(
-    *,
-    catalog: Any,
-    result: Any,
-    release: Any,
-    runtime_authority_set: Any,
-) -> Mapping[str, Any]:
-    """Retain the current PRE553 empirical object ontology, not an ASTRA-shaped projection."""
-    support_objects = [
-        obj
-        for obj in release.public_objects
-        if getattr(obj, "schema_id", None) in {
-            "AuthoritySnapshot",
-            "EmpiricalUniverse",
-            "SourceUniverseRelation",
-        }
-    ]
-    representation_snapshot = lits_representation_authority_snapshot()
-    full_objects = [
-        *catalog.authorities,
-        *catalog.predicates,
-        *catalog.queries,
-        *catalog.discovery_authorities,
-        *result.executed_predicates,
-        *result.executed_queries,
-        *result.empirical_facts,
-        *result.receipts,
-        *support_objects,
-        representation_snapshot,
-    ]
+def _retain_exact_runtime_authority_snapshots(
+    objects: Sequence[Any], runtime_authority_set: Any
+) -> list[Any]:
+    """Close public-object authority refs over exact retained snapshot preimages."""
+    full_objects = list(objects)
     retained_authority_keys = {
-        (
-            obj.authority_id,
-            obj.authority_version,
-            obj.authority_content_hash,
-        )
+        (obj.authority_id, obj.authority_version, obj.authority_content_hash)
         for obj in full_objects
         if getattr(obj, "schema_id", None) == "AuthoritySnapshot"
     }
@@ -449,6 +420,39 @@ def _build_lits_canonical_empirical_closure(
             )
         full_objects.append(snapshot)
         retained_authority_keys.add(key)
+    return full_objects
+
+
+def _build_lits_canonical_empirical_closure(
+    *,
+    catalog: Any,
+    result: Any,
+    release: Any,
+    runtime_authority_set: Any,
+) -> Mapping[str, Any]:
+    """Retain the current PRE553 empirical object ontology, not an ASTRA-shaped projection."""
+    support_objects = [
+        obj
+        for obj in release.public_objects
+        if getattr(obj, "schema_id", None) in {
+            "AuthoritySnapshot",
+            "EmpiricalUniverse",
+            "SourceUniverseRelation",
+        }
+    ]
+    representation_snapshot = lits_representation_authority_snapshot()
+    full_objects = _retain_exact_runtime_authority_snapshots([
+        *catalog.authorities,
+        *catalog.predicates,
+        *catalog.queries,
+        *catalog.discovery_authorities,
+        *result.executed_predicates,
+        *result.executed_queries,
+        *result.empirical_facts,
+        *result.receipts,
+        *support_objects,
+        representation_snapshot,
+    ], runtime_authority_set)
     full_documents = _canonical_public_object_documents(full_objects)
     fragments: dict[str, Any] = {}
     documents = [

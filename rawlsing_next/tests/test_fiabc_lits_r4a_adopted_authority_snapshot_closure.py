@@ -9,7 +9,9 @@ import types
 import pytest
 
 import rawlsing_next.ee_p2x_darwin_stage_backend as backend
+import rawlsing_next.fiabc_final_oracle_freeze_producers as producer
 from rawlsing_next.pre553_carrier_execution import materialize_public_object
+from rawlsing_next.fiabc_final_oracle_freeze_producers import FinalOracleProducerError
 from rawlsing_next.pre553_empirical_authority import Pre553AuthorityError
 from rawlsing_next.pre553_empirical_objects import authority_ref, canonicalize
 from rawlsing_next.pre553_runtime_context import bind_runtime
@@ -208,6 +210,52 @@ def test_missing_substituted_and_mutated_authority_remain_fail_closed(source_fre
         support._r4a_mixed_grammar_adoption_snapshot(mutated, successor)
     with pytest.raises(Pre553AuthorityError, match="adoption decision must resolve once"):
         support._r4a_mixed_grammar_adoption_snapshot(fixture, successor, decision_records=[])
+
+
+def test_canonical_closure_retains_exact_hq_adopted_snapshot_preimage(source_free_materialization):
+    _support, runtime, catalog, _candidates, roles = source_free_materialization
+    role = next(role for role in roles if role.predicate.content_hash == MIXED_PREDICATE_HASH)
+    authority_set = runtime["runtime_authority_set"]
+    public_objects = [role.predicate, role.query]
+    exact_ref = authority_ref(MIXED_REF)
+    catalog_snapshots = [
+        obj for obj in catalog.authorities
+        if getattr(obj, "schema_id", None) == "AuthoritySnapshot"
+    ]
+    catalog_snapshot_keys = {obj.authority_ref.key for obj in catalog_snapshots}
+    assert exact_ref.key not in catalog_snapshot_keys
+    for obj in public_objects:
+        for ref in obj.authority_snapshot_refs:
+            assert ref == exact_ref or ref.key in catalog_snapshot_keys
+    # Simulate the exact pre-repair state: every authority snapshot already in
+    # the runtime catalog is retained, while the HQ-adopted mixed ref is absent.
+    objects_with_prior_closure = [*public_objects, *catalog_snapshots]
+
+    retained = producer._retain_exact_runtime_authority_snapshots(
+        objects_with_prior_closure, authority_set
+    )
+    retained_target = [
+        obj for obj in retained
+        if getattr(obj, "schema_id", None) == "AuthoritySnapshot"
+        and obj.authority_ref == exact_ref
+    ]
+    assert len(retained_target) == 1
+    assert retained[0].as_dict() == role.predicate.as_dict()
+    assert retained[1].as_dict() == role.query.as_dict()
+    assert canonicalize(
+        materialize_public_object(retained_target[0].as_dict()).as_dict()
+    ) == canonicalize(retained_target[0].as_dict())
+
+    without = copy.copy(authority_set)
+    historical = dict(authority_set._historical_authority_snapshots)
+    historical.pop(exact_ref.key)
+    without._historical_authority_snapshots = type(
+        authority_set._historical_authority_snapshots
+    )(historical)
+    with pytest.raises(FinalOracleProducerError, match="cannot resolve exact adopted authority snapshot preimage"):
+        producer._retain_exact_runtime_authority_snapshots(
+            objects_with_prior_closure, without
+        )
 
 
 def test_wvs7_frozen_identities_are_unchanged_and_no_structural_path_is_present():
