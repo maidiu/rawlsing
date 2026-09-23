@@ -271,6 +271,166 @@ def _current_risk_roots() -> Mapping[str, Any]:
     return canonicalize(roots)
 
 
+def _historical_logical_identity(
+    product: Mapping[str, Any],
+) -> tuple[Mapping[str, str], Mapping[str, str], list[Mapping[str, Any]], Mapping[str, Any]]:
+    """Recover shared logical keys while independently verifying native G02 hashes."""
+    native_to_logical: dict[str, str] = {}
+    p4_cell_to_logical: dict[str, str] = {}
+    logical_rows: list[Mapping[str, Any]] = []
+    native_rows: list[Mapping[str, Any]] = []
+
+    def add(
+        *,
+        lane: str,
+        parameters: Mapping[str, Any],
+        native_hash: str | None = None,
+        p4_cell: Any = None,
+    ) -> str:
+        semantics = candidate_semantics(lane=lane, parameters=parameters)
+        key = logical_candidate_key(semantics)
+        logical_rows.append(canonicalize({
+            "logical_candidate_key": key,
+            "logical_candidate_material": logical_candidate_material(semantics),
+        }))
+        if native_hash is not None:
+            if not isinstance(native_hash, str) or len(native_hash) != 64:
+                raise LitsAstraSubstantiveParityError("historical G02 native candidate hash malformed")
+            expected_native = g02_execution_candidate_hash(semantics)
+            if expected_native != native_hash:
+                raise LitsAstraSubstantiveParityError(
+                    f"historical G02 native hash does not match reconstructed candidate semantics for {lane}"
+                )
+            if native_hash in native_to_logical:
+                raise LitsAstraSubstantiveParityError("duplicate historical G02 native candidate hash")
+            native_to_logical[native_hash] = key
+            native_rows.append(canonicalize({
+                "lane": lane,
+                "logical_candidate_key": key,
+                "g02_execution_candidate_hash": native_hash,
+            }))
+        if p4_cell is not None:
+            cell_key = canonical_json(_cell(p4_cell))
+            if cell_key in p4_cell_to_logical:
+                raise LitsAstraSubstantiveParityError("duplicate historical P4 logical target cell")
+            p4_cell_to_logical[cell_key] = key
+        return key
+
+    for item in _sequence(product.get("P0_positive_controls"), "ASTRA P0"):
+        add(
+            lane="P0",
+            parameters={"target_cell": _cell(item["target_cell"])},
+            native_hash=item["candidate_hash"],
+        )
+
+    p1 = _mapping(product.get("P1_joint_dependence"), "ASTRA P1")
+    add(lane="P1", parameters={}, native_hash=p1["candidate_hash"])
+
+    for item in _sequence(product.get("P2_conditioned_frontier"), "ASTRA P2"):
+        params = _mapping(item.get("parameters"), "ASTRA P2 parameters")
+        normalized_params = {
+            "q301_2": _integer(params.get("q301_2"), "ASTRA P2 q301_2"),
+            "q310": _integer(params.get("q310"), "ASTRA P2 q310"),
+            "q311": _integer(params.get("q311"), "ASTRA P2 q311"),
+        }
+        add(lane="P2", parameters=normalized_params, native_hash=item["candidate_hash"])
+
+    p3 = _mapping(product.get("P3_conditional_reversal"), "ASTRA P3")
+    add(
+        lane="P3",
+        parameters={"stratum_atom_ids": ["Q310V1", "Q310V2", "Q310V3"]},
+        native_hash=p3["candidate_hash"],
+    )
+
+    p4 = _mapping(product.get("P4_joint_5x5_target_support"), "ASTRA P4")
+    for raw_cell in sorted(p4, key=lambda x: tuple(int(v) for v in x.split(","))):
+        cell = [int(v) for v in raw_cell.split(",")]
+        add(lane="P4", parameters={"target_cell": cell}, p4_cell=cell)
+
+    logical_rows = sorted(logical_rows, key=lambda x: x["logical_candidate_key"])
+    if len(logical_rows) != 50 or len({x["logical_candidate_key"] for x in logical_rows}) != 50:
+        raise LitsAstraSubstantiveParityError("historical logical candidate frontier is not exact unique 50")
+    if len(native_rows) != 25:
+        raise LitsAstraSubstantiveParityError("historical ASTRA must expose exactly 25 P0-P3 G02 native hashes")
+
+    provenance = canonicalize({
+        "native_hash_domain": "G02_EXECUTION_CANDIDATE_HASH",
+        "native_hash_equality_with_current_required": False,
+        "rows": sorted(native_rows, key=canonical_json),
+    })
+    return native_to_logical, p4_cell_to_logical, logical_rows, provenance
+
+
+def _current_logical_identity(
+    bindings: Sequence[Mapping[str, Any]],
+) -> tuple[Mapping[str, Mapping[str, Any]], list[Mapping[str, Any]], Mapping[str, Any]]:
+    by_native: dict[str, Mapping[str, Any]] = {}
+    logical_rows: list[Mapping[str, Any]] = []
+    provenance_rows: list[Mapping[str, Any]] = []
+    for raw in _sequence(bindings, "current PRE553 logical candidate bindings"):
+        row = _mapping(raw, "current PRE553 logical binding")
+        native_hash = row.get("current_pre553_candidate_hash")
+        key = row.get("logical_candidate_key")
+        material = row.get("logical_candidate_material")
+        if not isinstance(native_hash, str) or len(native_hash) != 64:
+            raise LitsAstraSubstantiveParityError("current PRE553 native candidate hash malformed")
+        if not isinstance(key, str) or len(key) != 64:
+            raise LitsAstraSubstantiveParityError("current logical candidate key malformed")
+        if semantic_hash(_mapping(material, "current logical candidate material")) != key:
+            raise LitsAstraSubstantiveParityError("current logical candidate key/material contradiction")
+        if native_hash in by_native:
+            raise LitsAstraSubstantiveParityError("duplicate current PRE553 native candidate hash")
+        by_native[native_hash] = row
+        logical_rows.append(canonicalize({
+            "logical_candidate_key": key,
+            "logical_candidate_material": material,
+        }))
+        if row.get("lane") != "P4":
+            provenance_rows.append(canonicalize({
+                "lane": row.get("lane"),
+                "logical_candidate_key": key,
+                "pre553_i05_candidate_hash": native_hash,
+                "role_bindings": row.get("role_bindings"),
+            }))
+    logical_rows = sorted(logical_rows, key=lambda x: x["logical_candidate_key"])
+    if len(logical_rows) != 50 or len({x["logical_candidate_key"] for x in logical_rows}) != 50:
+        raise LitsAstraSubstantiveParityError("current PRE553 logical candidate frontier is not exact unique 50")
+    if len(provenance_rows) != 25:
+        raise LitsAstraSubstantiveParityError("current PRE553 P0-P3 provenance row count is not 25")
+    provenance = canonicalize({
+        "native_hash_domain": "PRE553_I05_CANDIDATE_HASH",
+        "native_hash_equality_with_historical_required": False,
+        "rows": sorted(provenance_rows, key=canonical_json),
+    })
+    return by_native, logical_rows, provenance
+
+
+def _assert_current_binding_matches_receipt(
+    receipt: Any,
+    binding: Mapping[str, Any],
+) -> None:
+    identity = _mapping(receipt.candidate_identity, "current candidate identity")
+    if identity.get("candidate_hash") != binding.get("current_pre553_candidate_hash"):
+        raise LitsAstraSubstantiveParityError("current PRE553 binding/native hash mismatch")
+    expected = {
+        row["role"]: row
+        for row in _sequence(binding.get("role_bindings"), "current logical role bindings")
+    }
+    actual = {
+        row["role"]: row
+        for row in _sequence(identity.get("query_roles"), "current receipt query roles")
+    }
+    if set(expected) != set(actual):
+        raise LitsAstraSubstantiveParityError("current logical binding/receipt role-set mismatch")
+    for role in expected:
+        e = expected[role]
+        a = _mapping(actual[role], f"current receipt role {role}")
+        if canonicalize(a.get("predicate_ref")) != canonicalize(e.get("current_predicate_ref")):
+            raise LitsAstraSubstantiveParityError(f"current {role} predicate identity drift")
+        if canonicalize(a.get("query_ref")) != canonicalize(e.get("current_query_ref")):
+            raise LitsAstraSubstantiveParityError(f"current {role} query identity drift")
+
+
 def _role_rows_from_historical(
     product: Mapping[str, Any], roots: Mapping[str, Any]
 ) -> list[Mapping[str, Any]]:
