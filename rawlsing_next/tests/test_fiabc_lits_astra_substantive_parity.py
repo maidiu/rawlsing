@@ -648,7 +648,7 @@ def test_parity_failure_prevents_oracle_freeze(tmp_path, monkeypatch):
 
 
 def test_selector_substrate_failure_prevents_oracle_freeze(tmp_path, monkeypatch):
-    bad = copy.deepcopy(_expected_summary())
+    bad = copy.deepcopy(_observed_summary())
     bad["f02_selector_populations"]["questions"]["q310"]["counts"]["1"] += 1
     bad["f02_selector_populations"]["questions"]["q310"]["counts"]["2"] -= 1
     _patch_producer_source_free(monkeypatch, bad)
