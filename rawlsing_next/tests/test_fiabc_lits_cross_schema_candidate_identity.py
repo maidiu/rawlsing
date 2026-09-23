@@ -174,13 +174,13 @@ def _reseal_binding(binding):
 
 
 def _one_p2_binding(real_current_bindings):
-    return copy.deepcopy(next(
+    return next(
         row
         for row in real_current_bindings
         if row["lane"] == "P2"
         and row["logical_candidate_material"]["candidate_semantics"]["parameters"]
         == {"q301_2": 1, "q310": 1, "q311": 1}
-    ))
+    )
 
 
 def test_changed_historical_g02_hash_with_fixed_semantics_fails_closed():
