@@ -1,0 +1,87 @@
+{
+  "schema": "PREMAIN_FIABC_LITS_CROSS_SCHEMA_CANDIDATE_NORMALIZATION_R1_RETURN@1.0.0",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-premain-fiabc-lits-cross-schema-candidate-normalization-r1",
+  "audit_base": "b5737718cc2d3fd4eb5d3737c99fa7de0341e651",
+  "semantic_implementation_head": "1882662f861e93e33bb956e015b984458074e9bc",
+  "qualification_binding_tip": "2b328a6451305bdcb49273bd12bdacf408fbcf82",
+  "status": "PASS__SOURCE_FREE_QUALIFIED__INDEPENDENT_ACCEPTANCE_REQUIRED",
+  "native_hash_domains": {
+    "historical": "G02_EXECUTION_CANDIDATE_HASH",
+    "current": "PRE553_I05_CANDIDATE_HASH",
+    "equality_required": false,
+    "separately_verified": true
+  },
+  "cross_schema_logical_candidate_key": {
+    "contract": "FIABC_LITS_CROSS_SCHEMA_LOGICAL_CANDIDATE@1.0.0",
+    "total_candidates": 50,
+    "unique_logical_keys": 50,
+    "lanes": {
+      "P0": 5,
+      "P1": 1,
+      "P2": 18,
+      "P3": 1,
+      "P4": 25
+    },
+    "actual_current_pre553_frontier": true
+  },
+  "p2": {
+    "candidate_count": 18,
+    "parameters": [
+      "q301_2",
+      "q310",
+      "q311"
+    ],
+    "exact_current_refs": [
+      "CONDITION.predicate_ref",
+      "CONDITION.query_ref",
+      "BASELINE.predicate_ref",
+      "BASELINE.query_ref"
+    ],
+    "hostile_witness_held_fixed_tests": true
+  },
+  "wvs7_conservation": {
+    "terminal_counts": {
+      "COVERAGE_LIMITED": 46
+    },
+    "successor_lock2": "5e2a53f0e5f3b6ddd8db53b724b352ca41fe1a49408483fbf83dfdaa96283139",
+    "discovery_authority": "3aee36014e4c3b39dd36bfef46006d8e9058a93aa5eb53bd81aef627883c8873",
+    "oracle_identity": "3694b8bd0b5468433a1a83bd469337c7e36e552c3a9a5fef65fff88df8fce800",
+    "truth_identity": "eb2f9224219385dbf21af70d317e0978383012ff057ce2ac857b59c130472405",
+    "candidate_processes_started": 0,
+    "candidate_outputs_seen": 0
+  },
+  "qualification": {
+    "workflow": "Rabochii Governed Bounded Court",
+    "run_id": 35889692534,
+    "job_id": 107278727156,
+    "protocol_self_test": "20 passed",
+    "governed_tests": "100 passed",
+    "conclusion": "success"
+  },
+  "changed_implementation_files": [
+    "rawlsing_next/ee_p2x_darwin_stage_backend.py",
+    "rawlsing_next/fiabc_final_oracle_freeze_producers.py",
+    "rawlsing_next/fiabc_lits_astra_substantive_parity.py",
+    "rawlsing_next/fiabc_lits_cross_schema_candidate_identity.py",
+    "rawlsing_next/runtime/ee_p2x/01_LITS_CURRENT_RUNTIME_MATERIALIZER.py"
+  ],
+  "prohibited_activity": {
+    "user_mac_used": false,
+    "raw_lits_opened": false,
+    "raw_wvs_opened": false,
+    "real_source_i05_run": false,
+    "candidate_abc_run": false,
+    "measured_p2x_run": false,
+    "p3_run": false,
+    "architecture_selection": false,
+    "governed_execution_branch_mutated": false,
+    "banked_lits_checkpoint_consumed": false,
+    "banked_lits_oracle_altered": false
+  },
+  "banked_lits_downstream_evidence": {
+    "checkpoint_identity": "8593814c51456015e5167cbe6f05037de7dbeadcc36ab857c72192b9087f9062",
+    "oracle_identity": "eca0ce0ad4bf6299e3705899099c21a0d635e1828f7b4c7e2cee0be4e9f05db0"
+  },
+  "terminal": "PREMAIN_FIABC_LITS_CROSS_SCHEMA_CANDIDATE_NORMALIZATION_R1__G02_AND_PRE553_NATIVE_HASH_DOMAINS_SEPARATE__CROSS_SCHEMA_LOGICAL_CANDIDATE_KEY_EXACT__P2_PARAMETER_CONDITION_BASELINE_IDENTITY_CONSERVED__REAL_CURRENT_PRE553_FRONTIER_PROVEN__WVS7_CONSERVED__SOURCE_FREE_GREEN__NO_CANDIDATES_RUN"
+}
