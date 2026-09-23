@@ -487,6 +487,8 @@ def _validate_lits_canonical_empirical_closure(
         raise FinalOracleProducerError("LiTS canonical empirical closure inventory drift")
     if by_schema.get("EmpiricalFact@1.0.0") != 60:
         raise FinalOracleProducerError("LiTS canonical empirical closure must retain all 60 facts")
+    if by_schema.get("DiscoveryResultReceipt@1.0.0") != LITS_CANDIDATE_COUNT:
+        raise FinalOracleProducerError("LiTS canonical empirical closure must retain all 50 discovery receipts")
     if by_schema.get("StructuralEmpiricalAdmission@1.0.0", 0) != 0:
         raise FinalOracleProducerError("LiTS canonical empirical closure illegally contains structural admission")
     if closure.get("structural_admission_object_count") != 0:
@@ -505,11 +507,41 @@ def _validate_lits_canonical_empirical_closure(
     predicate_keys = {
         key for key, obj in by_ref.items() if obj.schema_id == "EmpiricalPredicate"
     }
+    receipt_identity_by_candidate: dict[str, Mapping[str, Any]] = {}
+    receipt_fact_refs_by_candidate: dict[str, set[tuple[str, str, str]]] = {}
+    for obj in by_ref.values():
+        if obj.schema_id != "DiscoveryResultReceipt":
+            continue
+        identity = obj.candidate_identity
+        candidate_hash = identity.get("candidate_hash") if isinstance(identity, Mapping) else None
+        if not isinstance(candidate_hash, str) or len(candidate_hash) != 64:
+            raise FinalOracleProducerError("LiTS retained discovery receipt candidate identity is malformed")
+        if candidate_hash in receipt_identity_by_candidate:
+            raise FinalOracleProducerError("LiTS retained discovery receipts duplicate candidate hash")
+        receipt_identity_by_candidate[candidate_hash] = canonicalize(identity)
+        receipt_fact_refs_by_candidate[candidate_hash] = {
+            _ref_key(ref) for ref in obj.empirical_fact_refs
+        }
+
     role_count = 0
     for row in candidate_rows:
         identity = row.get("semantic_fields", {}).get("candidate_identity")
         if not isinstance(identity, Mapping):
             raise FinalOracleProducerError("LiTS canonical closure candidate identity missing")
+        candidate_hash = row.get("candidate_hash")
+        if (
+            not isinstance(candidate_hash, str)
+            or canonicalize(receipt_identity_by_candidate.get(candidate_hash))
+            != canonicalize(identity)
+        ):
+            raise FinalOracleProducerError("LiTS compact frontier identity differs from retained discovery receipt")
+        compact_candidate_facts = {
+            _ref_key(item.get("ref"))
+            for item in row.get("semantic_fields", {}).get("constituent_fact_manifest", ())
+            if isinstance(item, Mapping)
+        }
+        if compact_candidate_facts != receipt_fact_refs_by_candidate.get(candidate_hash):
+            raise FinalOracleProducerError("LiTS compact candidate facts differ from retained discovery receipt")
         roles = identity.get("query_roles")
         if not isinstance(roles, Sequence) or isinstance(roles, (str, bytes)):
             raise FinalOracleProducerError("LiTS canonical closure query roles malformed")
