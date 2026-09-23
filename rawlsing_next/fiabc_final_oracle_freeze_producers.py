@@ -754,6 +754,7 @@ def _neutral_lits_material(
         result=result,
         frontier_seal=LITS_FRONTIER_SEAL,
         selector_scan=selector_scan,
+        logical_candidate_bindings=runtime["cross_schema_logical_candidate_bindings"],
     )
 
     ordered = sorted(

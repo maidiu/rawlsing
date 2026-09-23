@@ -31,6 +31,9 @@ from rawlsing_next.fiabc_lits_i_f02_event_representation_authority import (
     AUTHORITY_CONTENT_HASH as F02_EVENT_REPRESENTATION_SUCCESSOR_HASH,
     event_representation_successor_authority_record,
 )
+from rawlsing_next.fiabc_lits_cross_schema_candidate_identity import (
+    current_pre553_logical_candidate_bindings,
+)
 
 ROOT=Path(__file__).resolve().parents[3]
 OWNER_COMMIT="0b96b8de9aac774566f872cf0630ebd4ddeb70e6"
@@ -219,6 +222,11 @@ def materialize_runtime_package():
         raise RuntimeError("adopted R6O runtime catalog identity drift")
     if len(candidates)!=50 or sum(len(c.query_roles) for c in candidates)!=77:
         raise RuntimeError("adopted LiTS 50/77 workload drift")
+    logical_bindings=current_pre553_logical_candidate_bindings(
+        candidates=candidates,
+        primitives=primitives,
+        queries=queries,
+    )
     return {
         "schema":"EE_P2R6S_LITS_CURRENT_RUNTIME_PACKAGE@1.0.0",
         "runtime_catalog_identity":receipt["catalog_identity"],
@@ -230,6 +238,7 @@ def materialize_runtime_package():
         "discovery_authority_documents":[_public(x) for x in catalog.discovery_authorities],
         "candidate_count":len(candidates),
         "query_role_executions":sum(len(c.query_roles) for c in candidates),
+        "cross_schema_logical_candidate_bindings":[dict(x) for x in logical_bindings],
     }
 
 def materialize_runtime_authority_set():

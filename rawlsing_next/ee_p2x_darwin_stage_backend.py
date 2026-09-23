@@ -788,6 +788,7 @@ def _lits_runtime(ctx, services, projection):
         "predicates":package["predicate_documents"],
         "queries":package["query_documents"],
         "discoveries":package["discovery_authority_documents"],
+        "cross_schema_logical_candidate_bindings":package["cross_schema_logical_candidate_bindings"],
         "runtime_authority_set":support.materialize_runtime_authority_set(),
     }
 
