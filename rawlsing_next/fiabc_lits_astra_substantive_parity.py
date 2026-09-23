@@ -539,24 +539,32 @@ def normalize_accepted_astra_summary(
         "ASTRA preoutcome f02_selectors",
         row_root_field="row_root",
     )
+    (
+        historical_native_to_logical,
+        historical_p4_to_logical,
+        logical_candidate_rows,
+        native_candidate_provenance,
+    ) = _historical_logical_identity(product)
     p0 = []
-    recorded_hashes = []
+    recorded_logical_keys = []
     for item in _sequence(product.get("P0_positive_controls"), "ASTRA P0"):
+        logical_key = historical_native_to_logical[item["candidate_hash"]]
         row = {
-            "candidate_hash": item["candidate_hash"],
+            "logical_candidate_key": logical_key,
             "target_cell": _cell(item["target_cell"]),
             "denominator": _integer(item["denominator"], "ASTRA P0 denominator"),
             "support": _integer(item["support"], "ASTRA P0 support"),
             "terminal_state": item["terminal_state"],
         }
         p0.append(row)
-        recorded_hashes.append(row["candidate_hash"])
+        recorded_logical_keys.append(row["logical_candidate_key"])
     p0.sort(key=lambda x: x["target_cell"])
 
     p1_raw = _mapping(product.get("P1_joint_dependence"), "ASTRA P1")
     p1_w = _mapping(p1_raw.get("first_exact_dependence_witness"), "ASTRA P1 witness")
+    p1_logical_key = historical_native_to_logical[p1_raw["candidate_hash"]]
     p1 = {
-        "candidate_hash": p1_raw["candidate_hash"],
+        "logical_candidate_key": p1_logical_key,
         "terminal_state": p1_raw["terminal_state"],
         "first_exact_dependence_witness": {
             "cell": _cell(p1_w["cell"]),
@@ -568,7 +576,7 @@ def normalize_accepted_astra_summary(
             "marginal_1_denominator": _integer(p1_w["marginal_1_denominator"], "ASTRA P1 marginal 1 denominator"),
         },
     }
-    recorded_hashes.append(p1["candidate_hash"])
+    recorded_logical_keys.append(p1["logical_candidate_key"])
     p1_rel = p1["first_exact_dependence_witness"]
     if (
         p1_rel["joint_count"]
@@ -585,8 +593,15 @@ def normalize_accepted_astra_summary(
     p2 = []
     for item in _sequence(product.get("P2_conditioned_frontier"), "ASTRA P2"):
         witness = _mapping(item.get("first_exact_difference_witness"), "ASTRA P2 witness")
+        params = _mapping(item.get("parameters"), "ASTRA P2 parameters")
+        logical_key = historical_native_to_logical[item["candidate_hash"]]
         row = {
-            "candidate_hash": item["candidate_hash"],
+            "logical_candidate_key": logical_key,
+            "parameters": {
+                "q301_2": _integer(params.get("q301_2"), "ASTRA P2 q301_2"),
+                "q310": _integer(params.get("q310"), "ASTRA P2 q310"),
+                "q311": _integer(params.get("q311"), "ASTRA P2 q311"),
+            },
             "terminal_state": item["terminal_state"],
             "first_exact_difference_witness": {
                 "cell": _cell(witness["cell"]),
@@ -597,8 +612,8 @@ def normalize_accepted_astra_summary(
             },
         }
         p2.append(row)
-        recorded_hashes.append(row["candidate_hash"])
-    p2.sort(key=lambda x: x["candidate_hash"])
+        recorded_logical_keys.append(row["logical_candidate_key"])
+    p2.sort(key=lambda x: x["logical_candidate_key"])
 
     p3_raw = _mapping(product.get("P3_conditional_reversal"), "ASTRA P3")
     p3_validation = _mapping(p3_raw.get("validation_details"), "ASTRA P3 validation")
@@ -644,8 +659,9 @@ def normalize_accepted_astra_summary(
     )
     if p3_raw.get("terminal_state") != "EVALUATED_VALID_EMPTY" or historical_reversal:
         raise LitsAstraSubstantiveParityError("ASTRA P3 is not the accepted validation-negative valid-empty")
+    p3_logical_key = historical_native_to_logical[p3_raw["candidate_hash"]]
     p3 = {
-        "candidate_hash": p3_raw["candidate_hash"],
+        "logical_candidate_key": p3_logical_key,
         "terminal_state": p3_raw["terminal_state"],
         "target_cell": _cell(p3_validation["target_cell"]),
         "exact_rates": canonicalize(exact_rates),
@@ -653,14 +669,18 @@ def normalize_accepted_astra_summary(
         "stratum_signs": recorded_stratum_signs,
         "empty_mechanism": "VALIDATION_FALSE__NO_CONDITIONAL_REVERSAL",
     }
-    recorded_hashes.append(p3["candidate_hash"])
+    recorded_logical_keys.append(p3["logical_candidate_key"])
 
     p4 = []
     for key, support in _mapping(product.get("P4_joint_5x5_target_support"), "ASTRA P4").items():
         cell = [int(v) for v in key.split(",")]
         if len(cell) != 2:
             raise LitsAstraSubstantiveParityError("ASTRA P4 cell arity drift")
-        p4.append({"target_cell": cell, "support": _integer(support, "ASTRA P4 support")})
+        p4.append({
+            "logical_candidate_key": historical_p4_to_logical[canonical_json(cell)],
+            "target_cell": cell,
+            "support": _integer(support, "ASTRA P4 support"),
+        })
     p4.sort(key=lambda x: tuple(x["target_cell"]))
 
     terminal_counts = dict(_mapping(product.get("terminal_counts"), "ASTRA terminal counts"))
@@ -679,7 +699,7 @@ def normalize_accepted_astra_summary(
             "candidate_count": 50,
             "query_role_count": 77,
             "frontier_seal": frontier["preexecution_seal"],
-            "recorded_candidate_hashes": sorted(recorded_hashes),
+            "recorded_logical_candidate_keys": sorted(recorded_logical_keys),
             "lane_counts": EXPECTED_LANE_COUNTS,
         },
         "d03_risk_sets": roots,
@@ -690,7 +710,11 @@ def normalize_accepted_astra_summary(
             "role_result_reuse_count": 0,
             "roles_by_lane": {lane: EXPECTED_LANE_COUNTS[lane]["query_role_count"] for lane in EXPECTED_LANE_COUNTS},
         },
-        "role_risk_set_topology": _role_rows_from_historical(product, roots),
+        "logical_candidate_identity": logical_candidate_rows,
+        "native_candidate_provenance": native_candidate_provenance,
+        "role_risk_set_topology": _role_rows_from_historical(
+            product, roots, historical_native_to_logical, historical_p4_to_logical
+        ),
         "P0": p0,
         "P1": p1,
         "P2": p2,
