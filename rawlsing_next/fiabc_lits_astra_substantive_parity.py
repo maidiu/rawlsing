@@ -376,8 +376,79 @@ def _current_logical_identity(
             raise LitsAstraSubstantiveParityError("current PRE553 native candidate hash malformed")
         if not isinstance(key, str) or len(key) != 64:
             raise LitsAstraSubstantiveParityError("current logical candidate key malformed")
-        if semantic_hash(_mapping(material, "current logical candidate material")) != key:
+        material_map = _mapping(material, "current logical candidate material")
+        if semantic_hash(material_map) != key:
             raise LitsAstraSubstantiveParityError("current logical candidate key/material contradiction")
+
+        binding_identity = row.get("binding_identity")
+        binding_without_identity = {
+            k: v for k, v in row.items() if k != "binding_identity"
+        }
+        if (
+            not isinstance(binding_identity, str)
+            or len(binding_identity) != 64
+            or semantic_hash(canonicalize(binding_without_identity)) != binding_identity
+        ):
+            raise LitsAstraSubstantiveParityError("current logical binding identity/preimage contradiction")
+
+        native_preimage = _mapping(
+            row.get("current_pre553_native_candidate_preimage"),
+            "current PRE553 native candidate preimage",
+        )
+        if semantic_hash(native_preimage) != native_hash:
+            raise LitsAstraSubstantiveParityError("current PRE553 native candidate hash/preimage contradiction")
+        expected_candidate_id = f"urn:rawlsing:pre553:i05:candidate:sha256:{native_hash}"
+        if row.get("current_pre553_candidate_id") != expected_candidate_id:
+            raise LitsAstraSubstantiveParityError("current PRE553 candidate id/hash contradiction")
+
+        logical_semantics = _mapping(
+            material_map.get("candidate_semantics"),
+            "current logical candidate semantics",
+        )
+        if row.get("lane") != logical_semantics.get("lane"):
+            raise LitsAstraSubstantiveParityError("current logical binding lane/material contradiction")
+        if row.get("rule_id") != logical_semantics.get("rule_id"):
+            raise LitsAstraSubstantiveParityError("current logical binding rule/material contradiction")
+        if native_preimage.get("rule_id") != logical_semantics.get("rule_id"):
+            raise LitsAstraSubstantiveParityError("current native/logical rule identity contradiction")
+        if native_preimage.get("family") != logical_semantics.get("family"):
+            raise LitsAstraSubstantiveParityError("current native/logical family identity contradiction")
+        if canonicalize(native_preimage.get("validation")) != canonicalize(logical_semantics.get("validation")):
+            raise LitsAstraSubstantiveParityError("current native/logical validation identity contradiction")
+
+        role_bindings = {
+            x["role"]: _mapping(x, "current logical role binding")
+            for x in _sequence(row.get("role_bindings"), "current logical role bindings")
+        }
+        native_roles = {
+            x["role"]: _mapping(x, "current native query role")
+            for x in _sequence(native_preimage.get("query_roles"), "current native query roles")
+        }
+        logical_roles = {
+            x["role"]: _mapping(x, "current shared logical query role")
+            for x in _sequence(logical_semantics.get("query_roles"), "current shared logical query roles")
+        }
+        if set(role_bindings) != set(native_roles) or set(role_bindings) != set(logical_roles):
+            raise LitsAstraSubstantiveParityError("current role identity topology contradiction")
+        for role_name, binding_role in role_bindings.items():
+            native_role = native_roles[role_name]
+            logical_role = logical_roles[role_name]
+            if canonicalize(binding_role.get("current_predicate_ref")) != canonicalize(native_role.get("predicate_ref")):
+                raise LitsAstraSubstantiveParityError(f"current {role_name} predicate/native-preimage contradiction")
+            if canonicalize(binding_role.get("current_query_ref")) != canonicalize(native_role.get("query_ref")):
+                raise LitsAstraSubstantiveParityError(f"current {role_name} query/native-preimage contradiction")
+            if binding_role.get("logical_query_template_id") != logical_role.get("query_template_id"):
+                raise LitsAstraSubstantiveParityError(f"current {role_name} logical query-template contradiction")
+            if canonicalize(binding_role.get("logical_condition_atom_ids")) != canonicalize(
+                _mapping(logical_role.get("condition"), f"logical {role_name} condition").get("atom_ids")
+            ):
+                raise LitsAstraSubstantiveParityError(f"current {role_name} logical condition contradiction")
+
+        if row.get("lane") == "P2":
+            condition_predicate = role_bindings["CONDITION"].get("current_predicate_ref")
+            if canonicalize(native_preimage.get("winning_predicate_ref")) != canonicalize(condition_predicate):
+                raise LitsAstraSubstantiveParityError("current P2 winning/CONDITION predicate identity contradiction")
+
         if native_hash in by_native:
             raise LitsAstraSubstantiveParityError("duplicate current PRE553 native candidate hash")
         by_native[native_hash] = row
