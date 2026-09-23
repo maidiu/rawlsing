@@ -157,6 +157,56 @@ class RuntimePackagingRebindTests(unittest.TestCase):
             self.assertFalse(envelope["candidate_owned_state_reused"])
         self.assertNotIn(LITS_I03_SUCCESSOR_AUTHORITY_HASH, json.dumps(doc, sort_keys=True))
 
+    def test_lits_authority_overlay_v2_pins_integrated_normalized_sourcebacked_scope(self) -> None:
+        overlay_path = RUNTIME / "03_LITS_RUNTIME_AUTHORITY_OVERLAY_BINDING.json"
+        overlay = json.loads(overlay_path.read_text(encoding="utf-8"))
+        self.assertEqual(
+            overlay["schema"],
+            "FIABC_LITS_I_RUNTIME_AUTHORITY_OVERLAY_BINDING@2.0.0",
+        )
+        self.assertEqual(
+            overlay["predecessor_packaging_binding"]["git_blob_sha"],
+            git_blob_sha(MANIFEST),
+        )
+        self.assertEqual(
+            overlay["historical_lits_materializer"]["git_blob_sha"],
+            "9406bacfd928393f6a159a46216aa1f7ec129f34",
+        )
+        self.assertEqual(
+            overlay["active_lits_runtime_materializer"]["git_blob_sha"],
+            git_blob_sha(RUNTIME / "01_LITS_CURRENT_RUNTIME_MATERIALIZER.py"),
+        )
+        for relative, expected in overlay["source_free_successor_components"].items():
+            self.assertTrue((ROOT / relative).is_file(), relative)
+            self.assertEqual(git_blob_sha(ROOT / relative), expected, relative)
+        self.assertEqual(
+            overlay["cross_schema_identity_law"],
+            {
+                "contract": "FIABC_LITS_CROSS_SCHEMA_LOGICAL_CANDIDATE@1.0.0",
+                "historical_native_domain": "G02_EXECUTION_CANDIDATE_HASH",
+                "current_native_domain": "PRE553_I05_CANDIDATE_HASH",
+                "native_hash_equality_required": False,
+                "logical_candidate_count": 50,
+            },
+        )
+        self.assertEqual(
+            overlay["checkpoint_law"],
+            {
+                "schema": "FIABC_LITS_CURRENT_NEUTRAL_I05_MATERIALIZATION_CHECKPOINT@2.0.0",
+                "parity_ready_summary_required": True,
+                "legacy_v1_resume_authorized": False,
+            },
+        )
+        self.assertEqual(
+            overlay["wvs7_preservation"]["frozen_typed_terminal_counts"],
+            {"COVERAGE_LIMITED": 46},
+        )
+        self.assertEqual(
+            overlay["wvs7_preservation"]["oracle_identity"],
+            "3694b8bd0b5468433a1a83bd469337c7e36e552c3a9a5fef65fff88df8fce800",
+        )
+        self.assertFalse(overlay["scope"]["measured_p2x_authorized"])
+
     def test_current_tree_lookalike_cannot_replace_frozen_candidate_owner(self) -> None:
         manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
         preserved = manifest["preserved_runtime_identities"]
