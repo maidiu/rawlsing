@@ -1,0 +1,47 @@
+{
+  "astra_regression": "NOT_RUN_CANONICAL_OBJECT_CLOSURE_NOT_RETAINED",
+  "branch": "agent/rabochii-premain-fiabc-lits-executed-role-closure-repair-r1",
+  "candidate_a_b_c_processes": 0,
+  "candidate_outputs": 0,
+  "checkpoint_written": false,
+  "current_i05_frontier": {
+    "candidates": 50,
+    "facts": 60,
+    "roles": 77,
+    "supported": 49,
+    "valid_empty": 1
+  },
+  "decoder_calls": 1,
+  "ff02_ready": false,
+  "frozen_oracle_written": false,
+  "one_source_retry_performed": true,
+  "parent_retention_tip": "28cf3d174dcd80b2590f2afc7ab5b8f4acdbc1d8",
+  "prior_failed_attempt_commit": "19154c16fd37d697738db344e6f3328d34e17397",
+  "protected_abc_branch_advanced": false,
+  "qualified_execution_commit": "11d86982bd671674f4b320599a5ff18066e0e209",
+  "repository": "maidiu/rawlsing",
+  "schema": "PREMAIN_FIABC_LITS_EXECUTED_ROLE_CLOSURE_REPAIR_AND_SOURCE_RETRY_RETURN@1.0.0",
+  "smallest_exact_blocker": {
+    "affected_fact_ref": {
+      "content_hash": "c5b0e1ed85d2ae0c0714efeabf1b951ae827995d65441d419e45aac57b8057fc",
+      "kind": "EmpiricalFact@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalFact:sha256:c5b0e1ed85d2ae0c0714efeabf1b951ae827995d65441d419e45aac57b8057fc"
+    },
+    "affected_predicate_ref": {
+      "content_hash": "3dba42ac25eb61d46958587c46ecacbb4fff83f87de535a72d0d793e5c49b508",
+      "kind": "EmpiricalPredicate@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:3dba42ac25eb61d46958587c46ecacbb4fff83f87de535a72d0d793e5c49b508"
+    },
+    "authority_ref": {
+      "authority_content_hash": "0d7cfaac1d63cd438d29b109b590cb828805bd113fc37759a6f6f4c88d3c8f55",
+      "authority_id": "urn:rawlsing:prev3:p2r4a:pre553:mixed-predicate-grammar",
+      "authority_version": "1.0.0-candidate"
+    },
+    "error": "LiTS canonical empirical closure lost authority snapshot preimage",
+    "source_free_exact_snapshot_available": false,
+    "source_retry_remaining": 0
+  },
+  "source_hash_passes": 1,
+  "terminal": "BLOCKED__50_77_I05_GREEN__CHECKPOINT_PREWRITE_AUTHORITY_SNAPSHOT_PREIMAGE_MISSING__NO_SECOND_LITS_PASS",
+  "zero_source_resume": "NOT_RUN_NO_CHECKPOINT_DOCUMENT"
+}
