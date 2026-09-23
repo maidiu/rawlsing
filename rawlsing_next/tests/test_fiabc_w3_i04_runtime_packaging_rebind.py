@@ -6,17 +6,22 @@ import json
 from pathlib import Path
 import unittest
 
+from rawlsing_next.fiabc_lits_i_i03_operation_authority import (
+    AUTHORITY_CONTENT_HASH as LITS_I03_SUCCESSOR_AUTHORITY_HASH,
+)
+
 
 ROOT = Path(__file__).resolve().parents[2]
 RUNTIME = ROOT / "rawlsing_next/runtime/ee_p2x"
 BACKEND = ROOT / "rawlsing_next/ee_p2x_darwin_stage_backend.py"
 MANIFEST = RUNTIME / "RUNTIME_PACKAGING_BINDING.json"
 NODE4A = ROOT / "WORKER_RETURNS/EE-P2R6O/SUPPORT/01_NODE4A_PREDICATE_INPUTS.py"
+R1M = ROOT / "WORKER_RETURNS/FIABC-LM2-R1M-LOCK2-SUCCESSOR-R16-ORACLE/07_FRESH_WVS_ORACLE.json"
 
 EXPECTED_ASSET_BLOBS = {
-    "01_LITS_CURRENT_RUNTIME_MATERIALIZER.py": "9406bacfd928393f6a159a46216aa1f7ec129f34",
-    "02_WVS7_P2F2_RUNTIME_PACKAGE.json": "e04e84b76f8b4eb53905276dd025938bf2e5f6fe",
-    "05_WVS7_PROJECTION_MATERIALIZER.py": "11b28416aac5a4899706150721f2f8ac8bb6ee43",
+    "01_LITS_CURRENT_RUNTIME_MATERIALIZER.py": "e0bbbc03d0e7160edef5e91b15a20666f3b34f7b",
+    "02_WVS7_P2F2_RUNTIME_PACKAGE.json": "f016cdfdfd51e7973ab10b2196fe27ba5c90b3cd",
+    "05_WVS7_PROJECTION_MATERIALIZER.py": "ec685803a7416032037ee415e8faf7bf60db8f1b",
 }
 NODE4A_BLOB = "504944f9533b7385d201076e2e834b8a9446dee8"
 OWNER_COMMIT = "0b96b8de9aac774566f872cf0630ebd4ddeb70e6"
@@ -96,14 +101,61 @@ class RuntimePackagingRebindTests(unittest.TestCase):
         self.assertEqual(const.get("R6O_RUNTIME_CATALOG"), "5983d7d5c579b916ad46c1acf9e41c1c89b516a4e561a99b1d2b477bf5ad2d02")
         self.assertEqual(const.get("R6O_ACTIVE_BINDING"), "a5f36a81843fe2ebab0b5cccb369ce76035f842b93e602613b8b9f3a81103308")
         self.assertEqual(const.get("R6O_RUNTIME_RELEASE"), "192926fabd9c9c3d40e43b1d7705ca2bcfe7f8d06e286be26d4b886d436df43f")
-        self.assertEqual(const.get("WVS_LOCK2"), "8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188")
-        self.assertEqual(const.get("R6S_WVS_PROJECTION"), "838070ff6b85d60d4f26f9153b0507ba425936c11a3de94a18d57bfcd083f24d")
+        self.assertEqual(const.get("WVS_LOCK2"), "5e2a53f0e5f3b6ddd8db53b724b352ca41fe1a49408483fbf83dfdaa96283139")
+        self.assertEqual(const.get("WVS_LOCK2_REPLAY"), "9b5ac1726a03798d07e965396192d1bfefbee6d2188bad5a3acfb467ef063d4a")
+        self.assertEqual(const.get("WVS_DISCOVERY_AUTHORITY"), "3aee36014e4c3b39dd36bfef46006d8e9058a93aa5eb53bd81aef627883c8873")
+        self.assertEqual(const.get("R6S_WVS_PROJECTION"), "f400c804fea9b526f25eac823138ecb30e10efaad3207c4578661f684adee665")
+        self.assertEqual(const.get("WVS_MATERIALIZER_BLOB"), "ec685803a7416032037ee415e8faf7bf60db8f1b")
         package = json.loads((RUNTIME / "02_WVS7_P2F2_RUNTIME_PACKAGE.json").read_text(encoding="utf-8"))
         self.assertEqual(package.get("lock2"), const.get("WVS_LOCK2"))
+        self.assertEqual(package.get("replay"), const.get("WVS_LOCK2_REPLAY"))
+        self.assertEqual(
+            package.get("discovery_authority_hash"), const.get("WVS_DISCOVERY_AUTHORITY")
+        )
         self.assertEqual(
             package.get("counts"),
             {"authorities": 6, "predicates": 11, "queries": 3, "discovery_authorities": 1, "candidates": 46},
         )
+
+    def test_wvs7_current_successor_noninterference_receipt_is_exact(self) -> None:
+        doc = json.loads(R1M.read_text(encoding="utf-8"))
+        truth = doc["truth_payload"]
+        self.assertEqual(doc["successor_lock2"], "5e2a53f0e5f3b6ddd8db53b724b352ca41fe1a49408483fbf83dfdaa96283139")
+        self.assertEqual(
+            doc["successor_discovery_authority"],
+            "3aee36014e4c3b39dd36bfef46006d8e9058a93aa5eb53bd81aef627883c8873",
+        )
+        self.assertEqual(
+            doc["oracle_identity_sha256"],
+            "3694b8bd0b5468433a1a83bd469337c7e36e552c3a9a5fef65fff88df8fce800",
+        )
+        self.assertEqual(
+            doc["truth_payload_identity"],
+            "eb2f9224219385dbf21af70d317e0978383012ff057ce2ac857b59c130472405",
+        )
+        self.assertEqual(
+            truth["expected_learned_product"]["coverage"],
+            {
+                "candidate_count": 46,
+                "query_role_count": 58,
+                "typed_terminal_counts": {"COVERAGE_LIMITED": 46},
+            },
+        )
+        self.assertEqual(
+            truth["frontier_manifest"]["family_counts"],
+            {
+                "UNARY_SOCIAL_FORK": 10,
+                "PAIR_RESPONSE_COTRAVEL": 1,
+                "BRANCH_CONDITIONED_DISTRIBUTION": 10,
+                "BOUNDED_K_WAY_RESPONSE_CONFIGURATION": 25,
+            },
+        )
+        for envelope in (doc, doc["freeze_receipt"]):
+            self.assertEqual(envelope["candidate_processes_started"], 0)
+            self.assertEqual(envelope["candidate_outputs_seen"], 0)
+            self.assertEqual(envelope["candidate_owned_roots_consulted"], [])
+            self.assertFalse(envelope["candidate_owned_state_reused"])
+        self.assertNotIn(LITS_I03_SUCCESSOR_AUTHORITY_HASH, json.dumps(doc, sort_keys=True))
 
     def test_current_tree_lookalike_cannot_replace_frozen_candidate_owner(self) -> None:
         manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
