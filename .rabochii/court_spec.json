@@ -1,11 +1,14 @@
 {
   "schema_id": "RABOCHII_COURT_SPEC@1.0.0",
-  "semantic_candidate_sha": "78e09eb1d1000c635dee261032dae99c904fc396",
+  "semantic_candidate_sha": "fe8296b14da237c270d2b540aedba8ffe9f930b5",
   "python_version": "3.11",
   "determinism_mode": "EXACT",
   "tests": [
     "rawlsing_next/tests/test_fiabc_lits_cross_schema_candidate_identity.py",
-    "rawlsing_next/tests/test_fiabc_lits_astra_substantive_parity.py"
+    "rawlsing_next/tests/test_fiabc_lits_astra_substantive_parity.py",
+    "rawlsing_next/tests/test_fiabc_final_oracle_freeze_producers.py",
+    "rawlsing_next/tests/test_pre553_independent_parity_oracle.py",
+    "rawlsing_next/tests/test_fiabc_final_preflight_fanin.py"
   ],
   "env": {
     "PYTHONHASHSEED": "0",
