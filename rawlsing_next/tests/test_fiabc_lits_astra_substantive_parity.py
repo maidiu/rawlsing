@@ -610,7 +610,7 @@ def test_current_normalizer_rejects_wrong_role_risk_set():
     fact = next(f for f in result.empirical_facts if f.ref.content_hash == ref["content_hash"])
     fact.semantic_fields["risk_set_member_refs"] = _SizedRefs(ROOTS["R2"]["count"])
     with pytest.raises(LitsAstraSubstantiveParityError, match="wrong risk set"):
-        normalize_current_lits_summary(result=result, frontier_seal=FRONTIER_SEAL)
+        normalize_current_lits_summary(result=result, frontier_seal=FRONTIER_SEAL, selector_scan=copy.deepcopy(SELECTOR_SCAN))
 
 
 def test_current_normalizer_rejects_p3_empty_from_wrong_mechanism():
@@ -621,7 +621,7 @@ def test_current_normalizer_rejects_p3_empty_from_wrong_mechanism():
     fact.typed_state = "ZERO_SUPPORT"
     fact.raw_denominator_support = 0
     with pytest.raises(LitsAstraSubstantiveParityError, match="not the accepted false reversal validator"):
-        normalize_current_lits_summary(result=result, frontier_seal=FRONTIER_SEAL)
+        normalize_current_lits_summary(result=result, frontier_seal=FRONTIER_SEAL, selector_scan=copy.deepcopy(SELECTOR_SCAN))
 
 
 def _fake_neutral_material(summary):
