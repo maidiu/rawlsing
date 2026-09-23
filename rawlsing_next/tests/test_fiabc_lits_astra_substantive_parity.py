@@ -305,6 +305,21 @@ def _mutate_p1_marginal(doc): doc["P1"]["first_exact_dependence_witness"]["margi
 def _mutate_p2_witness(doc): doc["P2"][0]["first_exact_difference_witness"]["condition_count"] += 1
 def _mutate_p2_identity_permutation(doc):
     doc["P2"][0]["logical_candidate_key"], doc["P2"][1]["logical_candidate_key"] = doc["P2"][1]["logical_candidate_key"], doc["P2"][0]["logical_candidate_key"]
+
+@pytest.mark.parametrize("field", ["q301_2", "q310", "q311"])
+def test_p2_parameter_drift_with_empirical_witness_held_fixed_fails_closed(field):
+    expected = _expected_summary()
+    observed = copy.deepcopy(_observed_summary())
+    row = observed["P2"][0]
+    before_witness = copy.deepcopy(row["first_exact_difference_witness"])
+    current = row["parameters"][field]
+    row["parameters"][field] = 5 if field == "q301_2" and current != 5 else (
+        3 if field != "q301_2" and current != 3 else 1
+    )
+    assert row["first_exact_difference_witness"] == before_witness
+    with pytest.raises(LitsAstraSubstantiveParityError, match="section P2"):
+        _parity(expected=expected, observed=observed)
+
 def _mutate_p3_pooled(doc): doc["P3"]["exact_rates"]["POOLED_POS"]["$exact_fraction"][0] += 1
 def _mutate_p3_stratum(doc): doc["P3"]["exact_rates"]["STRATUM:Q310V1:POS"]["$exact_fraction"][0] += 1
 def _mutate_p3_empty_mechanism(doc): doc["P3"]["empty_mechanism"] = "ZERO_SUPPORT"
