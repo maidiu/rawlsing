@@ -328,11 +328,46 @@ def _reseal(closure):
     closure["closure_identity"] = semantic_hash(canonicalize(body))
 
 
-def _doc(closure, schema_id):
+def _packed_doc(closure, schema_id):
     return next(
         doc for doc in closure["public_object_preimages"]
         if doc["schema_id"] == schema_id
     )
+
+
+def _doc(closure, schema_id):
+    return producer._hydrate_lits_canonical_preimage(
+        _packed_doc(closure, schema_id),
+        producer._lits_preimage_fragment_map(closure),
+    )
+
+
+def _fragment_entry(closure, marker):
+    digest = marker[producer._LITS_PREIMAGE_FRAGMENT_MARKER]
+    return next(
+        entry for entry in closure["preimage_fragments"]
+        if entry["fragment_hash"] == digest
+    )
+
+
+def _mutate_fact_raw_support(closure):
+    _packed_doc(closure, "EmpiricalFact")["semantic_fields"]["raw_numerator_support"] = 99
+
+
+def _mutate_fact_complete_cell_fragment(closure):
+    marker = _packed_doc(closure, "EmpiricalFact")["semantic_fields"][
+        "target_topology"
+    ]["complete_cell_semantic_projection"]
+    _fragment_entry(closure, marker)["value"][0]["raw_numerator_support"] = 99
+
+
+def _mutate_fact_risk_fragment(closure):
+    marker = _packed_doc(closure, "EmpiricalFact")["semantic_fields"][
+        "risk_set_member_refs"
+    ]
+    _fragment_entry(closure, marker)["value"][0] = _ref(
+        "RespondentIdentity@1.0.0", "wrong-member"
+    ).as_dict()
 
 
 def test_complete_current_object_closure_round_trips_full_fact_query_and_predicate_preimages():
@@ -347,6 +382,8 @@ def test_complete_current_object_closure_round_trips_full_fact_query_and_predica
     assert inventory["DiscoveryResultReceipt@1.0.0"] == 50
     assert inventory["EmpiricalQuerySpec@1.0.0"] == 1
     assert inventory["EmpiricalPredicate@1.0.0"] == 1
+    assert closure["preimage_fragments"]
+    assert len(closure["preimage_fragments"]) < 60 * 3
     fact_doc = _doc(closure, "EmpiricalFact")
     assert fact_doc["semantic_fields"]["target_topology"]["complete_cell_semantic_projection"]
     assert fact_doc["semantic_fields"]["risk_set_member_refs"]
@@ -359,21 +396,20 @@ def test_complete_current_object_closure_round_trips_full_fact_query_and_predica
 @pytest.mark.parametrize(
     "mutator",
     [
-        lambda doc: doc["semantic_fields"].__setitem__("raw_numerator_support", 99),
-        lambda doc: doc["semantic_fields"]["target_topology"][
-            "complete_cell_semantic_projection"
-        ][0].__setitem__("raw_numerator_support", 99),
-        lambda doc: doc["semantic_fields"].__setitem__(
-            "risk_set_ref", _ref("RiskSet@1.0.0", "wrong-risk").as_dict()
-        ),
+        _mutate_fact_raw_support,
+        _mutate_fact_complete_cell_fragment,
+        _mutate_fact_risk_fragment,
     ],
 )
 def test_fact_hash_tampering_complete_cell_mutation_and_risk_drift_fail_closed(mutator):
     closure, rows, compact, projection, _query, _predicate = _fixture()
     mutated = copy.deepcopy(closure)
-    mutator(_doc(mutated, "EmpiricalFact"))
+    mutator(mutated)
     _reseal(mutated)
-    with pytest.raises(producer.FinalOracleProducerError, match="re-materialization"):
+    with pytest.raises(
+        producer.FinalOracleProducerError,
+        match="re-materialization|fragment content hash drift",
+    ):
         producer._validate_lits_canonical_empirical_closure(
             mutated,
             candidate_rows=rows,
