@@ -1,41 +1,58 @@
 {
   "schema": "FIABC_LITS_R5B_SUCCESSOR_CONTINUATION_POINTER@1.0.0",
-  "status": "F02_EXACT_AUTHORIZED_NONMATCH_REPAIRED_SOURCE_FREE__FOURTH_SOURCE_RUN_REQUIRED__NOT_CLAIMED_GREEN",
+  "status": "SOURCE_FREE_QUALIFICATION_GREEN__I05_49_1_PRECHECK_BANKED__FINAL_ORACLE_RECEIPT_REQUIRED",
   "repository": "https://github.com/maidiu/rawlsing.git",
   "continue_branch": "agent/rabochii-premain-fiabc-lits-representation-authority-repair-r1",
   "handoff_payload_commit": "97392da847542ef515d309b73f6046dae3503777",
-  "source_free_code_checkpoint": "c3733e311c467a6130ba69cc49144b2afb9d6bc4",
+  "source_free_code_checkpoint": "13f2eaebb76b407e7509d156cc0745901792f9bd",
   "diagnostic_line_head": "a8d4faac8912e9c03840d3f72a4f2ca8c83d6903",
   "governed_p2x_execution_head": "78caf7eb4396dd576cf478c860372b7e26455cd9",
   "governed_p2x_execution_branch_advanced": false,
   "focused_source_free_result": {
     "status": "PASS",
     "pytest_tests_passed": 71,
-    "canonical_qualification_pytest_body_passed": 207,
-    "canonical_qualification_subtests_passed": 28
+    "canonical_qualification_pytest_body_passed": 214,
+    "canonical_qualification_subtests_passed": 28,
+    "canonical_qualification_terminal": "RAWLSING_CANONICAL_REINTEGRATION_SOURCE_FREE_QUALIFICATION_GREEN__READY_FOR_PRE_CANDIDATE_FREEZE"
+  },
+  "runtime_packaging_overlay": {
+    "path": "rawlsing_next/runtime/ee_p2x/03_LITS_RUNTIME_AUTHORITY_OVERLAY_BINDING.json",
+    "git_blob_sha": "661c8f64d95fcf4be5236b1ff19c96485cb10b8b",
+    "historical_i04_manifest_preserved": true,
+    "wvs7_frozen_typed_terminal_counts": {
+      "COVERAGE_LIMITED": 46
+    }
   },
   "latest_source_pass": {
     "portable": false,
-    "host_local_root": "/private/tmp/fiabc-lits-f02-successor-rerun.f45wvz",
+    "host_local_root": "/private/tmp/fiabc-lits-f02-nonmatch-rerun.vTuCsn",
     "candidate_processes_started": 0,
-    "terminal_observed": true,
+    "i05_precheck_materialized": true,
+    "final_oracle_document_materialized": false,
+    "producer_receipt_materialized": false,
+    "terminal_observed": false,
     "candidate_count": 50,
     "query_role_count": 77,
     "coverage_state_counts": {
-      "EVALUATED_SUPPORTED": 31,
-      "EVALUATED_MISSING_OR_CONFLICTING_AUTHORITY": 19
+      "EVALUATED_SUPPORTED": 49,
+      "EVALUATED_VALID_EMPTY": 1
+    },
+    "typed_state_counts": {
+      "DISCOVERED_RESULT_SUPPORTED": 49,
+      "VALID_EMPTY": 1
     },
     "empirical_fact_state_counts": {
-      "SUPPORTED": 36,
-      "UNAVAILABLE": 24
+      "SUPPORTED": 60
     },
-    "diagnosis": "ANOTHER_DECLARED_SAME_QUESTION_WITNESS_WAS_INCORRECTLY_TREATED_AS_MALFORMED_INSTEAD_OF_A_LEGITIMATE_FALSE_MATCH",
+    "banked_precheck": "WORKER_RETURNS/FIABC-CANONICAL-TERMINAL-READINESS-R1/22_LITS_R5B_SUCCESSOR_I05_PRECHECK_PARTIAL.json",
+    "precheck_sha256": "1ffbcb0f02e0c6b89a09cb255ce9342cbcb162ab2a1302de0ca8ade24990eed6",
+    "diagnosis": "EXPECTED_I05_PRECHECK_REACHED_BUT_FINAL_PRODUCER_RECEIPT_AND_ORACLE_OUTPUT_ARE_ABSENT; FINAL_PROCESS_STATUS_AND_TRACEBACK_WERE_NOT_PERSISTED",
     "repair_commit": "c3733e311c467a6130ba69cc49144b2afb9d6bc4",
     "repair_authority_content_hash": "96f32bef2d098ae67debd3487cc0f30d8fe4b2a3aacb775c037b854ef499b688",
     "rerun_required": true
   },
   "continuation_document": "WORKER_RETURNS/FIABC-CANONICAL-TERMINAL-READINESS-R1/20_LITS_R5B_SUCCESSOR_REPAIR_CONTINUATION_HANDOFF.md",
-  "next_action": "RUN_FOURTH_COMMON_LITS_SOURCE_PASS_FROM_C3733E31__FIX_FIRST_CONCRETE_FAILURE__BANK_AND_PUSH__NO_ABC_OR_MEASURED_P2X",
+  "next_action": "RUN_FIFTH_COMMON_LITS_SOURCE_PASS_FROM_13F2EAEB__CAPTURE_PASS_RECEIPT_AND_ORACLE_DOCUMENT__BANK_EXACT_OUTPUTS__THEN_STOP_PENDING_EXPLICIT_PROMOTION_AUTHORITY__NO_EXECUTION_BRANCH_ADVANCE_NO_ABC_OR_MEASURED_P2X",
   "wave_program_law": "WAVE_SPECIFIC_AUTHORITY_AND_OUTPUTS != WAVE_SPECIFIC_GENERIC_CODE",
   "remaining_wave_accounting": {
     "governed_pairs": 35,

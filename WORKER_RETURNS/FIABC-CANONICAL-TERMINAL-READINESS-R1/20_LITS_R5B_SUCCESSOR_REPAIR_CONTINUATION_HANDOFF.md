@@ -1,6 +1,6 @@
 # FIABC LiTS R5B successor repair continuation handoff
 
-Date: 2026-09-22
+Date: 2026-09-23
 
 ## Mission and present position
 
@@ -22,16 +22,22 @@ The producer had progressed through a sequence of real, fail-closed defects:
 7. the adopted successor stores q310/q311 response events as exact Decimal
    witnesses while the frozen F02 predicate dialect retains integer
    source-native tokens.
+8. the historical I04 packaging test still pinned pre-successor asset bytes
+   and WVS identities, so it could not qualify the active LiTS authority overlay.
 
-Items 1–7 are repaired and source-free tested on the branch. Commit
+Items 1–8 are addressed and source-free tested on the branch. The packaging
+boundary is explicit now: the historical W3 manifest and original materializer
+remain byte-pinned, while a separate overlay binding pins the active LiTS
+materializer and its adopted authorities. WVS7's successor package, oracle,
+and `COVERAGE_LIMITED × 46` domain are tested against R1M. Commit
 `152c4885...` reconstructs the exact adopted R5B successor without a second
 source decode. Commit `e4faa552...` binds the D03 risk sets to exactly the base
 and adopted successor releases. Commit `8ea52e74...` adds the exact, opt-in F02
-event-representation successor authority. A third live source pass must now
-proved that the authority activates, but exposed an over-strict nonmatch path.
-Commit `c3733e31...` repairs that exact path. A fourth live source pass must now
-prove the expected 49 supported / 1 valid-empty envelope or expose the next
-concrete terminal.
+event-representation successor authority. A third live source pass proved
+that the authority activates, but exposed an over-strict nonmatch path. Commit
+`c3733e31...` repairs that exact path. A fourth pass reached the expected
+49/1 I05 envelope, but did not leave a final oracle receipt; a fifth full pass
+must complete and persist the oracle document.
 
 This is still a **pre-candidate court**. It is not A/B/C execution, measured
 P2X, performance selection, promotion, or certification.
@@ -70,7 +76,7 @@ identity layers are checked separately.
 
 - Repository: `https://github.com/maidiu/rawlsing.git`
 - Continue branch: `agent/rabochii-premain-fiabc-lits-representation-authority-repair-r1`
-- Source-free code checkpoint: `c3733e311c467a6130ba69cc49144b2afb9d6bc4`
+- Source-free code checkpoint: `13f2eaebb76b407e7509d156cc0745901792f9bd`
 - Continue from the fetched repair-branch tip containing this handoff and its
   adjacent continuation pointer receipt; the branch tip must descend from the
   source-free code checkpoint.
@@ -85,11 +91,39 @@ git fetch origin \
   agent/rabochii-premain-fiabc-terminal-readiness-r1 \
   agent/rabochii-premain-fiabc-lits-representation-authority-repair-r1 \
   agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1
-git merge-base --is-ancestor c3733e311c467a6130ba69cc49144b2afb9d6bc4 origin/agent/rabochii-premain-fiabc-lits-representation-authority-repair-r1
+git merge-base --is-ancestor 13f2eaebb76b407e7509d156cc0745901792f9bd origin/agent/rabochii-premain-fiabc-lits-representation-authority-repair-r1
 git show origin/agent/rabochii-premain-fiabc-lits-representation-authority-repair-r1:WORKER_RETURNS/FIABC-CANONICAL-TERMINAL-READINESS-R1/20_LITS_R5B_SUCCESSOR_REPAIR_CONTINUATION_HANDOFF.md >/dev/null
 test "$(git rev-parse origin/agent/rabochii-premain-fiabc-terminal-readiness-r1)" = a8d4faac8912e9c03840d3f72a4f2ca8c83d6903
 test "$(git rev-parse origin/agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1)" = 78caf7eb4396dd576cf478c860372b7e26455cd9
 ```
+
+### Pickup from another machine or account
+
+The repair code, partial I05 evidence, continuation pointer, and this
+instruction set are banked on the repair branch. The LiTS source and the pinned
+runtime are not in Git and do not transfer with the branch. The other machine
+must have authorized access to this repository, an independently supplied
+copy of the exact LiTS source, and the required runtime. Do not upload the
+source file to this repository.
+
+After cloning or entering the intended checkout, fetch the three named refs
+and apply the remote-head and ancestry checks above. Continue on the repair
+branch only; do not switch to or advance the governed execution branch. Confirm
+that the source supplied on the new machine is the same canonical source by
+letting the producer's enforced source-identity check validate it. Its expected
+SHA-256 is `7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09`;
+the host-local pathname below is only an example and may differ. The producer
+must run under CPython 3.11.3 on the qualified Darwin x86_64 host with
+`pyreadstat==1.3.6` and `pyarrow==25.0.1`. The prior venv pathname is ephemeral;
+recreate or obtain that exact approved environment and pass
+`verify_runtime_gate` before source access. Do not substitute current system
+Python or relax the gate.
+
+The partial fourth-pass precheck is portable and its exact bytes are stored as
+`22_LITS_R5B_SUCCESSOR_I05_PRECHECK_PARTIAL.json`. The fourth pass's `/private/tmp`
+work roots and missing final producer terminal are not portable evidence. A
+new machine must run the fifth fresh pass below and preserve its final oracle,
+stdout receipt, checksums, and exit status.
 
 ## Completed and pushed
 
@@ -112,6 +146,12 @@ The repair branch contains these consecutive checkpoints:
    another declared witness in the same six-binding question domain is a
    legitimate false result, and an undeclared or malformed witness still fails
    closed.
+7. `a50a708f81aaefbdf6e4500bb92d11e783e0a4d5` — explicit live LiTS runtime
+   authority overlay binding, while preserving the immutable original I04
+   packaging manifest and its historical materializer bytes.
+8. `13f2eaebb76b407e7509d156cc0745901792f9bd` — source-free qualification
+   rebind to the exact successor code/assets and the R1M WVS typed-terminal
+   count domain.
 
 The focused source-free court at `c3733e31...` is green:
 
@@ -130,17 +170,19 @@ The exact test command was:
   rawlsing_next/tests/test_pre553_independent_parity_oracle.py
 ```
 
-The canonical qualification pytest body, extended with the new LiTS authority
-tests, is also green:
+The canonical qualification pytest body, extended with the LiTS authority and
+runtime-overlay tests, is green:
 
 ```text
-207 passed, 28 subtests passed in 27.49s
+214 passed, 28 subtests passed in 28.50s
+RAWLSING_RECONCILED_FIABC_STATIC_CROSS_LANE_ASSERTIONS_PASS
+RAWLSING_CANONICAL_REINTEGRATION_SOURCE_FREE_QUALIFICATION_GREEN__READY_FOR_PRE_CANDIDATE_FREEZE
 ```
 
-The historical `test_fiabc_w3_i04_runtime_packaging_rebind.py` still asserts an
-obsolete WVS lock and the pre-successor materializer blob. It is not silently
-rewritten here. The eventual full qualification wrapper must explicitly rebind
-the current materializer identity and preserve current WVS successor truth.
+The W3 packaging test checks the original materializer at its source commit,
+the separate active LiTS overlay blob, and the current WVS successor package
+and projection identities. `RUNTIME_PACKAGING_BINDING.json` itself remains
+unchanged.
 
 ## Exact adopted identities
 
@@ -223,29 +265,71 @@ not an authority failure. Commit `c3733e31...` now returns false for another
 declared witness in the same exact question domain while continuing to raise
 for undeclared/malformed witnesses. The focused 71-test court is green.
 
-The required next evidence is a fourth fresh common LiTS source rerun. The
-accepted source-backed 49/1 terminal is therefore **not yet claimed green**.
+The fourth fresh common LiTS source pass from `629343c6...` reached the
+expected I05 precheck after about 30 minutes. Its exact source-derived
+precheck is preserved as
+`22_LITS_R5B_SUCCESSOR_I05_PRECHECK_PARTIAL.json` with SHA-256
+`1ffbcb0f02e0c6b89a09cb255ce9342cbcb162ab2a1302de0ca8ade24990eed6`. It
+records:
 
-Failed-run evidence root on this host:
+```text
+candidate_count = 50
+query_role_count = 77
+candidate_processes_started = 0
+coverage_state_counts = {"EVALUATED_SUPPORTED": 49, "EVALUATED_VALID_EMPTY": 1}
+typed_state_counts = {"DISCOVERED_RESULT_SUPPORTED": 49, "VALID_EMPTY": 1}
+empirical_fact_state_counts = {"SUPPORTED": 60}
+```
+
+All 18 P2 higher-order candidates are now supported; the single P3
+conditional-reversal candidate is valid-empty. The final output
+`lits_oracle_freeze.json` is absent, however, and the producer's final process
+status and traceback were not persisted when its session ended. This proves the
+I05 envelope only; it does not prove final oracle construction, identity, or
+serialization. The complete source-backed court is **not yet green**.
+
+The full source-free qualification is green at `13f2eaeb...`, including the
+runtime overlay and WVS conservation binding. Run a fifth fresh source pass
+from that qualified code checkpoint, require the producer PASS receipt and
+final oracle document, verify the receipt's oracle identity and document SHA,
+and capture the actual process exit status. Then stop before promotion or
+candidate work. The pre-candidate script currently requires the governed
+execution branch by name and regenerates a LiTS oracle from source; do not run
+it on this repair branch or advance the locked execution branch to satisfy it.
+After the LiTS pass is green, a governing promotion authority must explicitly
+authorize the next transition or provide a separately authorized pre-candidate
+route against the qualified repair code.
+
+Prior source-pass evidence roots on this host:
 
 ```text
 /private/tmp/fiabc-lits-successor-source.JN5rJj
 /private/tmp/fiabc-lits-d03-successor-rerun.oN1nb1
 /private/tmp/fiabc-lits-f02-successor-rerun.f45wvz
+/private/tmp/fiabc-lits-f02-nonmatch-rerun.vTuCsn
 ```
 
 That path is not portable. On this or another machine, rerun exactly:
 
 ```bash
+set -euo pipefail
 repo="$PWD"
-diagroot="$(mktemp -d /private/tmp/fiabc-lits-successor-source.XXXXXX)"
+: "${LITS_SOURCE:?set this to the exact supplied LiTS-I source file}"
+: "${FIABC_PYTHON:?set this to the qualified CPython 3.11.3 executable}"
+litssource="$LITS_SOURCE"
+pythonbin="$FIABC_PYTHON"
+diagroot="$(mktemp -d /private/tmp/fiabc-lits-f05-qualified.XXXXXX)"
 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH="$repo" \
-  /private/tmp/fiabc-runtime-venv.nW65x5/bin/python -u \
+  "$pythonbin" -u \
   -m rawlsing_next.fiabc_final_oracle_freeze_producers produce-lits \
   --repo-root "$repo" \
-  --source "/Users/matthewsmith/Desktop/Rawlsing/data/Data/LiTS_I.dta" \
+  --source "$litssource" \
   --work-root "$diagroot/work" \
-  --output "$diagroot/lits_oracle_freeze.json"
+  --output "$diagroot/lits_oracle_freeze.json" \
+  | tee "$diagroot/producer_receipt.json"
+test -s "$diagroot/lits_oracle_freeze.json"
+test -s "$diagroot/producer_receipt.json"
+shasum -a 256 "$diagroot/lits_oracle_freeze.json" "$diagroot/producer_receipt.json"
 ```
 
 Required runtime gate: CPython 3.11.3, `pyreadstat==1.3.6`, `pyarrow==25.0.1`.
@@ -331,8 +415,14 @@ Required runtime gate: CPython 3.11.3, `pyreadstat==1.3.6`, `pyarrow==25.0.1`.
   the over-strict handling of another authorized same-question witness.
 - Exact nonmatch semantics repaired: target witness true, another authorized
   same-question witness false, undeclared/malformed witness fail closed.
-- Focused source-free court green at 71 tests on `c3733e31...`; canonical
-  qualification pytest body green at 207 tests plus 28 subtests.
+- The source-free I04 overlay binding preserves the original packaging manifest
+  and exact historical materializer while pinning the current LiTS authority
+  modules and current WVS7 package/projection identities.
+- Full canonical source-free qualification green at `13f2eaeb...`: 214 passed,
+  28 subtests, WVS oracle conservation and static cross-lane assertions pass.
+- Fourth source-backed I05 precheck records the accepted LiTS 49/1 coverage,
+  60 supported facts, and zero candidate processes; its exact partial JSON is
+  banked, but the final oracle receipt/document is absent.
 - No A/B/C process and no measured P2X run by this repair.
 - Governed execution branch preserved at `78caf7eb...`.
 
@@ -340,23 +430,22 @@ Required runtime gate: CPython 3.11.3, `pyreadstat==1.3.6`, `pyarrow==25.0.1`.
 
 Proceed in this order and stop at the first failure:
 
-1. Run the fourth fresh common LiTS source pass from `c3733e31...`.
+1. Run the fifth fresh common LiTS source pass from the source-free qualified
+   checkpoint `13f2eaeb...`; tee the final PASS receipt, require the oracle
+   file, verify both checksums, and bank both exact outputs.
 2. If it fails, make the narrowest authority-preserving repair, add a hostile
    source-free regression, rerun the focused court, commit, and push.
 3. Repeat until the source pass emits the accepted 49/1 LiTS envelope and a
    verified frozen oracle with zero candidate processes.
-4. Run the full canonical source-free qualification, not only the focused 67
-   tests. Preserve its static cross-lane assertions and required subtests.
-5. Run the governed pre-candidate preflight only after the new code is
-   source-free green. It must remain candidate-neutral through the T3/oracle
-   boundary.
-6. Independently recheck WVS7 frozen truth and static noninterference after the
-   final LiTS repair.
-7. Prepare an exact promotion/transition receipt that names the qualified
-   repair SHA. Do not move the execution branch merely because a local source
-   pass succeeded.
-8. Only after the governing promotion authority explicitly permits it may the
-   execution branch advance and the A/B/C/P2X sequence resume.
+4. Independently recheck WVS7 frozen truth and static noninterference after the
+   final LiTS source pass.
+5. Stop at the repair-branch boundary. The existing governed pre-candidate
+   script pins the execution branch name and launches its own LiTS source
+   producer; do not use it from this repair branch or treat it as approval to
+   advance the protected branch.
+6. Prepare an exact promotion/transition receipt naming the qualified repair
+   SHA. Advance the execution branch or resume A/B/C/P2X only after explicit
+   governing promotion authority permits that transition.
 
 ## Banking for the 35-wave program
 
