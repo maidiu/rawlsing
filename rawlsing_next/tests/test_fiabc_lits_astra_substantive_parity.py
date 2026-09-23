@@ -629,11 +629,17 @@ def _fake_neutral_material(summary):
     }
     audit = {}
     execution = {"execution_identity": _h("current-execution")}
-    return material, audit, execution
+    precheck = {"candidate_processes_started": 0}
+    return material, audit, execution, precheck
 
 
 def _patch_producer_source_free(monkeypatch, summary):
     monkeypatch.setattr(producer, "_neutral_lits_material", lambda **kwargs: _fake_neutral_material(summary))
+    monkeypatch.setattr(
+        producer,
+        "_write_lits_materialization_checkpoint",
+        lambda **kwargs: (_h("checkpoint"), _h("checkpoint-document")),
+    )
     monkeypatch.setattr(producer, "_git_json", lambda *args, **kwargs: {})
     monkeypatch.setattr(producer, "_verified_astra_input_manifest", lambda *args, **kwargs: [{"immutable": True}])
     monkeypatch.setattr(producer, "normalize_accepted_astra_summary", lambda **kwargs: _expected_summary())
