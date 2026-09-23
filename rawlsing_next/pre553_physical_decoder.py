@@ -20,6 +20,7 @@ from typing import Any, Iterator, Mapping
 
 
 COMPATIBILITY_ONLY = "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY"
+SOURCE_DECLARED_ENCODING_ONLY = "SOURCE_DECLARED_EXACT_SHA_ENCODING__PHYSICAL_DECODING_ONLY"
 PHYSICAL_METADATA_CONTRACT = "PRE553_PHYSICAL_METADATA@1.0.0"
 DECODER_IMPLEMENTATION_ID = "rawlsing_next/pre553_physical_decoder.py"
 COMPATIBILITY_ALLOWLIST: Mapping[str, str] = {
@@ -29,6 +30,16 @@ COMPATIBILITY_ALLOWLIST: Mapping[str, str] = {
     "c43d0e1821c51398817d7dfdfad2c0a4a5bb0d492f6a58096670e623bb6130e9": "latin1",
     "368ae5d07a44975a2f0a9ce3b1e564988a966b2632e28075c56a24d60065bcc8": "latin1",
     "14e1032755c4f42d8d3dc61647097ccd7605ba281551e53953c76d22a223cd1c": "latin1",
+}
+
+# CLOSED35 D01: exact source-declared encoding admission is a separate physical
+# decoder lane from compatibility-only fallback.  The map binds only exact source
+# SHA -> declared decoder encoding; it authorizes no text semantics and no family-
+# or wave-level inheritance.
+DECLARED_ENCODING_ALLOWLIST: Mapping[str, str] = {
+    "ac0b8bc1ddb2fa6b952417e35b6379ce6a2cf8596776a43282ba44f48e0ae1a2": "BIG5",
+    "5b703173845c086382fd93252f1cbc91dfef74007755459adfc73785389172f2": "WINDOWS-1252",
+    "66252a92c59bf6759b79a6b35b2be658b98a433373212a70c8ec94755d3e02ec": "WINDOWS-1252",
 }
 
 
@@ -267,9 +278,12 @@ def _compatibility_config(source_sha: str, encoding: str | None) -> dict[str, An
     if encoding is None:
         return {"encoding": None, "authority_status": None}
     expected = COMPATIBILITY_ALLOWLIST.get(source_sha)
-    if expected != encoding:
-        raise DecoderError("encoding override is not in the frozen exact SHA/config allowlist")
-    return {"encoding": encoding, "authority_status": COMPATIBILITY_ONLY}
+    if expected == encoding:
+        return {"encoding": encoding, "authority_status": COMPATIBILITY_ONLY}
+    declared = DECLARED_ENCODING_ALLOWLIST.get(source_sha)
+    if declared == encoding:
+        return {"encoding": encoding, "authority_status": SOURCE_DECLARED_ENCODING_ONLY}
+    raise DecoderError("encoding override is not in an exact SHA/config representation allowlist")
 
 
 def _missing_declarations(metadata: Any, name: str, source_format: str) -> tuple[Mapping[str, Any], ...]:
@@ -515,6 +529,8 @@ def decode_dta(path: str | Path, *, encoding: str | None = None) -> PhysicalSour
 __all__ = [
     "COMPATIBILITY_ALLOWLIST",
     "COMPATIBILITY_ONLY",
+    "DECLARED_ENCODING_ALLOWLIST",
+    "SOURCE_DECLARED_ENCODING_ONLY",
     "DECODER_IMPLEMENTATION_ID",
     "PHYSICAL_METADATA_CONTRACT",
     "DecoderError",
