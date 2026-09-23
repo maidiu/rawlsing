@@ -9,6 +9,7 @@ from __future__ import annotations
 
 from typing import Any, Mapping, Sequence
 
+from rawlsing_next.pre553_discovery_exact import I05_CONTRACT_ID
 from rawlsing_next.pre553_empirical_objects import canonical_json, canonicalize, semantic_hash
 
 
@@ -310,15 +311,43 @@ def _binding_for_current_candidate(candidate: Any, primitives: Mapping[str, Any]
             "current_query_ref": role.query.ref.as_dict(),
         })
 
+    native_preimage = canonicalize({
+        "contract": I05_CONTRACT_ID,
+        "family": candidate.family,
+        "rule_id": candidate.rule_id,
+        "winning_predicate_ref": candidate.winning_predicate.ref.as_dict(),
+        "query_roles": [
+            {
+                "role": role.role,
+                "predicate_ref": role.predicate.ref.as_dict(),
+                "query_ref": role.query.ref.as_dict(),
+            }
+            for role in candidate.query_roles
+        ],
+        "validation": candidate.validation,
+        "ancestry_refs": [ref.as_dict() for ref in candidate.ancestry_refs],
+    })
+    recomputed_native = semantic_hash(native_preimage)
+    if recomputed_native != candidate.candidate_hash:
+        raise CrossSchemaCandidateIdentityError("current PRE553 native candidate hash/preimage contradiction")
+    expected_candidate_id = f"urn:rawlsing:pre553:i05:candidate:sha256:{recomputed_native}"
+    if candidate.candidate_id != expected_candidate_id:
+        raise CrossSchemaCandidateIdentityError("current PRE553 native candidate id/hash contradiction")
+
     key = logical_candidate_key(semantics)
-    return canonicalize({
+    binding = canonicalize({
         "logical_candidate_key": key,
         "logical_candidate_material": logical_candidate_material(semantics),
         "current_pre553_candidate_hash": candidate.candidate_hash,
         "current_pre553_candidate_id": candidate.candidate_id,
+        "current_pre553_native_candidate_preimage": native_preimage,
         "rule_id": candidate.rule_id,
         "lane": lane,
         "role_bindings": role_bindings,
+    })
+    return canonicalize({
+        **binding,
+        "binding_identity": semantic_hash(binding),
     })
 
 
