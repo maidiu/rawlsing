@@ -293,22 +293,27 @@ def _historical_logical_identity(
             "logical_candidate_key": key,
             "logical_candidate_material": logical_candidate_material(semantics),
         }))
+        expected_native = g02_execution_candidate_hash(semantics)
         if native_hash is not None:
             if not isinstance(native_hash, str) or len(native_hash) != 64:
                 raise LitsAstraSubstantiveParityError("historical G02 native candidate hash malformed")
-            expected_native = g02_execution_candidate_hash(semantics)
             if expected_native != native_hash:
                 raise LitsAstraSubstantiveParityError(
                     f"historical G02 native hash does not match reconstructed candidate semantics for {lane}"
                 )
-            if native_hash in native_to_logical:
-                raise LitsAstraSubstantiveParityError("duplicate historical G02 native candidate hash")
-            native_to_logical[native_hash] = key
-            native_rows.append(canonicalize({
-                "lane": lane,
-                "logical_candidate_key": key,
-                "g02_execution_candidate_hash": native_hash,
-            }))
+            provenance_basis = "ASTRA_RECORDED_AND_G02_PREIMAGE_RECOMPUTED"
+        else:
+            native_hash = expected_native
+            provenance_basis = "ACCEPTED_G02_PREIMAGE_DERIVED"
+        if native_hash in native_to_logical:
+            raise LitsAstraSubstantiveParityError("duplicate historical G02 native candidate hash")
+        native_to_logical[native_hash] = key
+        native_rows.append(canonicalize({
+            "lane": lane,
+            "logical_candidate_key": key,
+            "g02_execution_candidate_hash": native_hash,
+            "provenance_basis": provenance_basis,
+        }))
         if p4_cell is not None:
             cell_key = canonical_json(_cell(p4_cell))
             if cell_key in p4_cell_to_logical:
@@ -350,8 +355,8 @@ def _historical_logical_identity(
     logical_rows = sorted(logical_rows, key=lambda x: x["logical_candidate_key"])
     if len(logical_rows) != 50 or len({x["logical_candidate_key"] for x in logical_rows}) != 50:
         raise LitsAstraSubstantiveParityError("historical logical candidate frontier is not exact unique 50")
-    if len(native_rows) != 25:
-        raise LitsAstraSubstantiveParityError("historical ASTRA must expose exactly 25 P0-P3 G02 native hashes")
+    if len(native_rows) != 50:
+        raise LitsAstraSubstantiveParityError("historical logical frontier must preserve exactly 50 G02 native hashes")
 
     provenance = canonicalize({
         "native_hash_domain": "G02_EXECUTION_CANDIDATE_HASH",
@@ -456,18 +461,17 @@ def _current_logical_identity(
             "logical_candidate_key": key,
             "logical_candidate_material": material,
         }))
-        if row.get("lane") != "P4":
-            provenance_rows.append(canonicalize({
-                "lane": row.get("lane"),
-                "logical_candidate_key": key,
-                "pre553_i05_candidate_hash": native_hash,
-                "role_bindings": row.get("role_bindings"),
-            }))
+        provenance_rows.append(canonicalize({
+            "lane": row.get("lane"),
+            "logical_candidate_key": key,
+            "pre553_i05_candidate_hash": native_hash,
+            "role_bindings": row.get("role_bindings"),
+        }))
     logical_rows = sorted(logical_rows, key=lambda x: x["logical_candidate_key"])
     if len(logical_rows) != 50 or len({x["logical_candidate_key"] for x in logical_rows}) != 50:
         raise LitsAstraSubstantiveParityError("current PRE553 logical candidate frontier is not exact unique 50")
-    if len(provenance_rows) != 25:
-        raise LitsAstraSubstantiveParityError("current PRE553 P0-P3 provenance row count is not 25")
+    if len(provenance_rows) != 50:
+        raise LitsAstraSubstantiveParityError("current PRE553 native provenance row count is not 50")
     provenance = canonicalize({
         "native_hash_domain": "PRE553_I05_CANDIDATE_HASH",
         "native_hash_equality_with_historical_required": False,
@@ -1213,9 +1217,9 @@ def assert_substantive_parity(
         row["logical_candidate_key"]: row
         for row in _sequence(current_provenance.get("rows"), "current native provenance rows")
     }
-    if len(historical_rows) != 25 or len(current_rows) != 25 or set(historical_rows) != set(current_rows):
+    if len(historical_rows) != 50 or len(current_rows) != 50 or set(historical_rows) != set(current_rows):
         raise LitsAstraSubstantiveParityError(
-            "historical/current P0-P3 native provenance is not bound to the same 25 logical candidates"
+            "historical/current native provenance is not bound to the same 50 logical candidates"
         )
     for logical_key in historical_rows:
         historical_hash = historical_rows[logical_key].get("g02_execution_candidate_hash")
