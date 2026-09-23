@@ -15,6 +15,12 @@ from rawlsing_next.fiabc_lits_i_d03_risk_set_authority import (
     AUTHORITY_CONTENT_HASH as D03_AUTHORITY_CONTENT_HASH,
     ROOTS as CURRENT_D03_ROOTS,
 )
+from rawlsing_next.fiabc_lits_cross_schema_candidate_identity import (
+    candidate_semantics,
+    g02_execution_candidate_hash,
+    logical_candidate_key,
+    logical_candidate_material,
+)
 from rawlsing_next.pre553_empirical_objects import canonical_json, canonicalize, exact_ref, semantic_hash
 
 SUMMARY_SCHEMA = "FIABC_LITS_ASTRA_SHAPED_EMPIRICAL_SUMMARY@1.0.0"
@@ -72,6 +78,7 @@ PARITY_SECTIONS = (
     "d03_risk_sets",
     "f02_selector_populations",
     "role_execution",
+    "logical_candidate_identity",
     "role_risk_set_topology",
     "P0",
     "P1",
