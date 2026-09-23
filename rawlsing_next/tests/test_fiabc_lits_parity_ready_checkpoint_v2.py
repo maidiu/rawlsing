@@ -472,7 +472,6 @@ def test_v1_v2_checkpoints_fail_closed_for_missing_complete_current_object_preim
 def test_zero_source_resume_starts_no_source_decoder_or_candidate_process(tmp_path, monkeypatch):
     execution = {"execution_identity": _h("execution")}
     material = {
-        "astra_shaped_empirical_summary": {},
         "source_identity": {
             "source": "LITS_I",
             "sha256": producer.LITS_SOURCE_SHA256,
@@ -514,16 +513,26 @@ def test_zero_source_resume_starts_no_source_decoder_or_candidate_process(tmp_pa
         ),
     )
     monkeypatch.setattr(producer, "_git_json", lambda *_args, **_kwargs: {})
-    monkeypatch.setattr(producer, "_verified_astra_input_manifest", lambda *_args, **_kwargs: [])
-    monkeypatch.setattr(producer, "normalize_accepted_astra_summary", lambda **_kwargs: {})
+    monkeypatch.setattr(
+        producer,
+        "_verified_astra_input_manifest",
+        lambda *_args, **_kwargs: (_ for _ in ()).throw(
+            AssertionError("ASTRA regression inputs must not be required for canonical resume")
+        ),
+    )
+    monkeypatch.setattr(
+        producer,
+        "normalize_accepted_astra_summary",
+        lambda **_kwargs: (_ for _ in ()).throw(
+            AssertionError("ASTRA summary must not be required for canonical resume")
+        ),
+    )
     monkeypatch.setattr(
         producer,
         "assert_lits_astra_substantive_parity",
-        lambda **_kwargs: {
-            "parity_receipt_identity": _h("parity"),
-            "expected_empirical_summary_identity": _h("summary"),
-            "observed_empirical_summary_identity": _h("summary"),
-        },
+        lambda **_kwargs: (_ for _ in ()).throw(
+            AssertionError("ASTRA parity must not be required for canonical resume")
+        ),
     )
     monkeypatch.setattr(producer, "build_lits_i_oracle", lambda **_kwargs: {"fake": True})
     monkeypatch.setattr(producer, "verify_frozen_oracle", lambda _doc: _h("oracle"))
@@ -541,6 +550,8 @@ def test_zero_source_resume_starts_no_source_decoder_or_candidate_process(tmp_pa
         "source_hash_passes": 0,
         "decoder_calls": 0,
     }
+    assert receipt["astra_regression_status"] == "NOT_REQUIRED_FOR_CANONICAL_CURRENT_RESUME"
+    assert receipt["astra_substantive_parity_receipt_identity"] is None
     assert receipt["candidate_processes_started"] == 0
     assert receipt["candidate_outputs_seen"] == 0
     assert receipt["candidate_owned_roots_consulted"] == []
