@@ -432,14 +432,17 @@ def _assert_current_binding_matches_receipt(
 
 
 def _role_rows_from_historical(
-    product: Mapping[str, Any], roots: Mapping[str, Any]
+    product: Mapping[str, Any],
+    roots: Mapping[str, Any],
+    native_to_logical: Mapping[str, str],
+    p4_cell_to_logical: Mapping[str, str],
 ) -> list[Mapping[str, Any]]:
     rows: list[Mapping[str, Any]] = []
 
-    def add(lane: str, key: Mapping[str, Any], role: str, root_id: str) -> None:
+    def add(lane: str, logical_key: str, role: str, root_id: str) -> None:
         rows.append(canonicalize({
             "lane": lane,
-            **dict(key),
+            "logical_candidate_key": logical_key,
             "role": role,
             "risk_set": root_id,
             "risk_set_count": roots[root_id]["count"],
@@ -447,30 +450,31 @@ def _role_rows_from_historical(
         }))
 
     for item in _sequence(product.get("P0_positive_controls"), "ASTRA P0"):
-        add("P0", {"candidate_hash": item["candidate_hash"]}, "BASE", "R2")
+        add("P0", native_to_logical[item["candidate_hash"]], "BASE", "R2")
 
     p1 = _mapping(product.get("P1_joint_dependence"), "ASTRA P1")
-    p1key = {"candidate_hash": p1["candidate_hash"]}
+    p1key = native_to_logical[p1["candidate_hash"]]
     add("P1", p1key, "JOINT", "R27")
     add("P1", p1key, "MARGINAL_0", "R2")
     add("P1", p1key, "MARGINAL_1", "R7")
 
     for item in _sequence(product.get("P2_conditioned_frontier"), "ASTRA P2"):
-        key = {"candidate_hash": item["candidate_hash"]}
+        key = native_to_logical[item["candidate_hash"]]
         add("P2", key, "BASELINE", "R7")
         add("P2", key, "CONDITION", "R7")
 
     p3 = _mapping(product.get("P3_conditional_reversal"), "ASTRA P3")
+    p3key = native_to_logical[p3["candidate_hash"]]
     for role in P3_ROLES:
-        add("P3", {"candidate_hash": p3["candidate_hash"]}, role, "R7")
+        add("P3", p3key, role, "R7")
 
     p4 = _mapping(product.get("P4_joint_5x5_target_support"), "ASTRA P4")
     for raw_cell in sorted(p4, key=lambda x: tuple(int(v) for v in x.split(","))):
         cell = [int(v) for v in raw_cell.split(",")]
-        add("P4", {"target_cell": cell}, "BASE", "R27")
+        key = p4_cell_to_logical[canonical_json(cell)]
+        add("P4", key, "BASE", "R27")
 
     return sorted(rows, key=canonical_json)
-
 
 def normalize_accepted_astra_summary(
     *,
