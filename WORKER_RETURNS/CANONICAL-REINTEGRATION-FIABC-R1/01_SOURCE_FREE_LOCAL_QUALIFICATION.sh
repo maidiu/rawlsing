@@ -190,7 +190,7 @@ assert oracle.WVS7_LOCK2_IDENTITY==pkg["lock2"]==WVS7_SUCCESSOR_LOCK2
 assert oracle.WVS7_DISCOVERY_AUTHORITY==pkg["discovery_authority_hash"]==WVS7_SUCCESSOR_DISCOVERY_AUTHORITY
 assert oracle.WVS7_LOCK2_REPLAY_IDENTITY==WVS7_SUCCESSOR_LOCK2_REPLAY
 assert overlay["adopted_source_specific_authorities"]["lits_f02_event_representation_successor"]==LITS_F02_REPRESENTATION_AUTHORITY
-assert wvs_oracle["expected_learned_product"]["coverage"]["typed_terminal_counts"]=={"COVERAGE_LIMITED":46}
+assert wvs_oracle["truth_payload"]["expected_learned_product"]["coverage"]["typed_terminal_counts"]=={"COVERAGE_LIMITED":46}
 assert overlay["wvs7_preservation"]["frozen_typed_terminal_counts"]=={"COVERAGE_LIMITED":46}
 assert REPRESENTATION_AUTHORITY_REF.authority_content_hash=="9fce3b606413c2a5d3e9a05eda967067d191fbb31ff869d445d962bdf321393d"
 assert dict(TARGET_VARIABLES)=={"q301_2":194,"q301_7":199}
