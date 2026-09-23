@@ -269,13 +269,16 @@ REPRESENTATION_AUTHORITY_MATERIAL = {
                 "physical_declaration_by_code",
                 "expected_binding_key_by_code",
             }},
-            "physical_state_by_code": dict(row["physical_state_by_code"]),
-            "physical_declaration_by_code": dict(row["physical_declaration_by_code"]),
-            "expected_binding_key_by_code": dict(row["expected_binding_key_by_code"]),
-            "authorized_r5_tokens": {
-                code: dict(AUTHORIZED_R5_TOKENS[code])
+            "code_bindings": [
+                {
+                    "native_code": code,
+                    "physical_state": row["physical_state_by_code"][code],
+                    "physical_declaration": row["physical_declaration_by_code"][code],
+                    "expected_binding_key": row["expected_binding_key_by_code"][code],
+                    "authorized_r5_token": dict(AUTHORIZED_R5_TOKENS[code]),
+                }
                 for code in row["native_codes"]
-            },
+            ],
         }
         for row in APPLICABILITY_ROWS
     ],
