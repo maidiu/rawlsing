@@ -94,6 +94,38 @@ def test_historical_g02_hashes_recompute_from_immutable_candidate_semantics(real
     assert len(historical_keys) == 25
 
 
+def test_all_fifty_native_provenance_identities_are_preserved(real_current_bindings):
+    product = _astra_product()
+    native_to_logical, p4_by_cell, historical_logical_rows, historical_provenance = (
+        _historical_logical_identity(product)
+    )
+    current_by_native, current_logical_rows, current_provenance = _current_logical_identity(
+        real_current_bindings
+    )
+    assert len(native_to_logical) == 50
+    assert len(current_by_native) == 50
+    assert len(historical_logical_rows) == 50
+    assert len(current_logical_rows) == 50
+    assert len(historical_provenance["rows"]) == 50
+    assert len(current_provenance["rows"]) == 50
+    assert sum(
+        row["provenance_basis"] == "ASTRA_RECORDED_AND_G02_PREIMAGE_RECOMPUTED"
+        for row in historical_provenance["rows"]
+    ) == 25
+    assert sum(
+        row["provenance_basis"] == "ACCEPTED_G02_PREIMAGE_DERIVED"
+        for row in historical_provenance["rows"]
+    ) == 25
+
+    for raw_cell in product["P4_joint_5x5_target_support"]:
+        cell = [int(v) for v in raw_cell.split(",")]
+        semantics = candidate_semantics(lane="P4", parameters={"target_cell": cell})
+        g02_hash = g02_execution_candidate_hash(semantics)
+        key = logical_candidate_key(semantics)
+        assert native_to_logical[g02_hash] == key
+        assert p4_by_cell[json.dumps(cell, separators=(",", ":"))] == key
+
+
 def test_p2_exact_parameters_and_current_condition_baseline_refs_are_bound(real_current_bindings):
     product = _astra_product()
     current = {row["logical_candidate_key"]: row for row in real_current_bindings}
