@@ -1,0 +1,56 @@
+{
+  "schema": "FIABC_LITS_I_RUNTIME_AUTHORITY_OVERLAY_BINDING@1.0.0",
+  "predecessor_packaging_binding": {
+    "path": "rawlsing_next/runtime/ee_p2x/RUNTIME_PACKAGING_BINDING.json",
+    "git_blob_sha": "b7f54e7e291790c0558cb7acd2a7697f66310d98"
+  },
+  "historical_lits_materializer": {
+    "source_commit": "617c9c9426db12a3c0f7fea6b68a582c10759553",
+    "source_path": "WORKER_RETURNS/EE-P2R6S/SUPPORT/01_LITS_CURRENT_RUNTIME_MATERIALIZER.py",
+    "git_blob_sha": "9406bacfd928393f6a159a46216aa1f7ec129f34"
+  },
+  "active_lits_runtime_materializer": {
+    "path": "rawlsing_next/runtime/ee_p2x/01_LITS_CURRENT_RUNTIME_MATERIALIZER.py",
+    "git_blob_sha": "e4c2c8057e495a3a9a2fc1d7cb0896496d434ac1"
+  },
+  "source_free_successor_components": {
+    "rawlsing_next/_pre553_query_eval.py": "f808dfcd2008cc71e9203de3cadf1abe14223974",
+    "rawlsing_next/_pre553_query_predicate.py": "8590bacf464b2c61f319f581820a3af76ed1e60c",
+    "rawlsing_next/fiabc_final_oracle_freeze_producers.py": "59070006706dcbe6a2ee0a2649e1ecd211f6d7eb",
+    "rawlsing_next/fiabc_lits_i_d03_risk_set_authority.py": "65e87a45339a2c29443c7c619d2687dbd5b90056",
+    "rawlsing_next/fiabc_lits_i_f02_event_representation_authority.py": "0ee29ee14f21ec48c431e215ef5c6ca08dfad869",
+    "rawlsing_next/fiabc_lits_i_i03_operation_authority.py": "072fd760a649a1706e4acc988d2de46f678cbc61",
+    "rawlsing_next/fiabc_lits_i_representation_authority.py": "94a833a7d8946bf3bd43296d9fe1e2239a3aa4b9",
+    "rawlsing_next/fiabc_live_terminal_control.py": "95739544dceea60298a6e90a87a9062b4fed6df1",
+    "rawlsing_next/pre553_discovery_exact.py": "ee0544115feb9d76c8c68b9dd773302c8fa8bb48",
+    "rawlsing_next/pre553_empirical_authority.py": "ca65a7fd4d52f0c44447434559b1d09412e7aa39",
+    "rawlsing_next/pre553_empirical_query.py": "149e7a7d78f1d16c696cc5b75f561c2c2929e93e",
+    "rawlsing_next/pre553_independent_parity_oracle.py": "04555c145bf499e6c4c5d0f72e612baefa7319fa",
+    "rawlsing_next/pre553_runtime_authority.py": "9030b0f20f3d71482425b8acb864abc182adc4b0",
+    "rawlsing_next/runtime/ee_p2x/01_LITS_CURRENT_RUNTIME_MATERIALIZER.py": "e4c2c8057e495a3a9a2fc1d7cb0896496d434ac1"
+  },
+  "adopted_source_specific_authorities": {
+    "lits_i03_operation_successor": "615418b5fe4a43b38bbdd426b3fd608e2e28987906665a99092f441f44a0b4b2",
+    "lits_d03_risk_set_successor": "67055bb6d81c1d320ad9156fdb63b813016af7db9207e1c4b66026158aa970dc",
+    "lits_f02_event_representation_successor": "96f32bef2d098ae67debd3487cc0f30d8fe4b2a3aacb775c037b854ef499b688",
+    "lits_part_a_projection_authority": "9dd1e6b7350ebb795e028db86279131f8d319e939a044b74c3c5605ecacf5b06"
+  },
+  "scope": {
+    "source": "LITS_I",
+    "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "runtime_release": "192926fabd9c9c3d40e43b1d7705ca2bcfe7f8d06e286be26d4b886d436df43f",
+    "authority_activation": "EXPLICIT_PRE553_RUNTIME_AUTHORITY_SET_ONLY",
+    "unknown_source_or_release": "FAIL_CLOSED",
+    "measured_p2x_authorized": false
+  },
+  "wvs7_preservation": {
+    "runtime_package_blob": "f016cdfdfd51e7973ab10b2196fe27ba5c90b3cd",
+    "projection_materializer_blob": "ec685803a7416032037ee415e8faf7bf60db8f1b",
+    "lock2": "5e2a53f0e5f3b6ddd8db53b724b352ca41fe1a49408483fbf83dfdaa96283139",
+    "oracle_identity": "3694b8bd0b5468433a1a83bd469337c7e36e552c3a9a5fef65fff88df8fce800",
+    "truth_payload_identity": "eb2f9224219385dbf21af70d317e0978383012ff057ce2ac857b59c130472405",
+    "frozen_typed_terminal_counts": {
+      "COVERAGE_LIMITED": 46
+    }
+  }
+}

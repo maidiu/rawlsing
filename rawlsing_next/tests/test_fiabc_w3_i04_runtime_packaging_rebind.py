@@ -4,6 +4,7 @@ import ast
 import hashlib
 import json
 from pathlib import Path
+import subprocess
 import unittest
 
 
@@ -14,9 +15,9 @@ MANIFEST = RUNTIME / "RUNTIME_PACKAGING_BINDING.json"
 NODE4A = ROOT / "WORKER_RETURNS/EE-P2R6O/SUPPORT/01_NODE4A_PREDICATE_INPUTS.py"
 
 EXPECTED_ASSET_BLOBS = {
-    "01_LITS_CURRENT_RUNTIME_MATERIALIZER.py": "9406bacfd928393f6a159a46216aa1f7ec129f34",
-    "02_WVS7_P2F2_RUNTIME_PACKAGE.json": "e04e84b76f8b4eb53905276dd025938bf2e5f6fe",
-    "05_WVS7_PROJECTION_MATERIALIZER.py": "11b28416aac5a4899706150721f2f8ac8bb6ee43",
+    "01_LITS_CURRENT_RUNTIME_MATERIALIZER.py": "e4c2c8057e495a3a9a2fc1d7cb0896496d434ac1",
+    "02_WVS7_P2F2_RUNTIME_PACKAGE.json": "f016cdfdfd51e7973ab10b2196fe27ba5c90b3cd",
+    "05_WVS7_PROJECTION_MATERIALIZER.py": "ec685803a7416032037ee415e8faf7bf60db8f1b",
 }
 NODE4A_BLOB = "504944f9533b7385d201076e2e834b8a9446dee8"
 OWNER_COMMIT = "0b96b8de9aac774566f872cf0630ebd4ddeb70e6"
@@ -96,14 +97,45 @@ class RuntimePackagingRebindTests(unittest.TestCase):
         self.assertEqual(const.get("R6O_RUNTIME_CATALOG"), "5983d7d5c579b916ad46c1acf9e41c1c89b516a4e561a99b1d2b477bf5ad2d02")
         self.assertEqual(const.get("R6O_ACTIVE_BINDING"), "a5f36a81843fe2ebab0b5cccb369ce76035f842b93e602613b8b9f3a81103308")
         self.assertEqual(const.get("R6O_RUNTIME_RELEASE"), "192926fabd9c9c3d40e43b1d7705ca2bcfe7f8d06e286be26d4b886d436df43f")
-        self.assertEqual(const.get("WVS_LOCK2"), "8e5842eb01100e0b23c3fa0fe85736fee081d759ec5458fc0f95c307024c6188")
-        self.assertEqual(const.get("R6S_WVS_PROJECTION"), "838070ff6b85d60d4f26f9153b0507ba425936c11a3de94a18d57bfcd083f24d")
+        self.assertEqual(const.get("WVS_LOCK2"), "5e2a53f0e5f3b6ddd8db53b724b352ca41fe1a49408483fbf83dfdaa96283139")
+        self.assertEqual(const.get("R6S_WVS_PROJECTION"), "f400c804fea9b526f25eac823138ecb30e10efaad3207c4578661f684adee665")
         package = json.loads((RUNTIME / "02_WVS7_P2F2_RUNTIME_PACKAGE.json").read_text(encoding="utf-8"))
         self.assertEqual(package.get("lock2"), const.get("WVS_LOCK2"))
         self.assertEqual(
             package.get("counts"),
             {"authorities": 6, "predicates": 11, "queries": 3, "discovery_authorities": 1, "candidates": 46},
         )
+
+    def test_lits_authority_overlay_preserves_history_and_pins_active_scope(self) -> None:
+        overlay_path = RUNTIME / "03_LITS_RUNTIME_AUTHORITY_OVERLAY_BINDING.json"
+        overlay = json.loads(overlay_path.read_text(encoding="utf-8"))
+        self.assertEqual(
+            overlay["predecessor_packaging_binding"]["git_blob_sha"],
+            git_blob_sha(MANIFEST),
+        )
+        historical = overlay["historical_lits_materializer"]
+        self.assertEqual(historical["git_blob_sha"], "9406bacfd928393f6a159a46216aa1f7ec129f34")
+        self.assertEqual(
+            subprocess.run(
+                ["git", "rev-parse", f"{historical['source_commit']}:{historical['source_path']}"],
+                cwd=ROOT,
+                check=True,
+                capture_output=True,
+                text=True,
+            ).stdout.strip(),
+            historical["git_blob_sha"],
+        )
+        self.assertEqual(
+            overlay["active_lits_runtime_materializer"]["git_blob_sha"],
+            git_blob_sha(RUNTIME / "01_LITS_CURRENT_RUNTIME_MATERIALIZER.py"),
+        )
+        for relative, expected in overlay["source_free_successor_components"].items():
+            self.assertEqual(git_blob_sha(ROOT / relative), expected, relative)
+        self.assertEqual(
+            overlay["wvs7_preservation"]["frozen_typed_terminal_counts"],
+            {"COVERAGE_LIMITED": 46},
+        )
+        self.assertFalse(overlay["scope"]["measured_p2x_authorized"])
 
     def test_current_tree_lookalike_cannot_replace_frozen_candidate_owner(self) -> None:
         manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
