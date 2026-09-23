@@ -2,6 +2,40 @@
 
 Date: 2026-09-23
 
+## Current continuation state — authoritative update
+
+This section supersedes the older “fifth fresh pass” instructions and the
+pre-checkpoint failure description below. The fifth source pass did complete
+I05 with the accepted envelope, but final oracle construction exited 1 because
+the candidate-neutral provenance validator rejected the already-authorized
+owner class `BOUNDED_PHYSICAL_REPRESENTATION_AUTHORITY`. The pass produced no
+final oracle or producer receipt. Its I05 precheck exactly matches the already
+banked partial (`1ffbcb0f02e0c6b89a09cb255ce9342cbcb162ab2a1302de0ca8ade24990eed6`).
+
+The narrow owner-class allowlist repair now admits that bounded class while
+retaining rejection of unknown classes; hostile tests cover both cases. The
+producer also now writes a complete, integrity-checked post-I05 materialization
+checkpoint before final oracle construction. It contains the candidate-neutral
+candidate/fact preimages, exact refs, authority/replay/release/projection
+bindings, execution receipt, audit, and precheck. Resume revalidates these
+closures and explicitly records zero source hashes and zero decoder calls.
+Checkpoint tampering fails closed. This mechanism cannot recover the fifth
+pass because that run predates the checkpoint implementation; one sixth fresh
+source pass is therefore required. After that pass reaches I05, a finalizer
+failure can be resumed from its banked checkpoint without another source hash
+or decode. A failure before the checkpoint is written still requires a new
+source pass.
+
+Source-free qualification of the current repair is green at code checkpoint
+`573b33513125ac720ebfc5a45cbe4076c34a931b`: 218 tests and 28 subtests passed,
+including WVS7's exact `{"COVERAGE_LIMITED": 46}` truth and static
+noninterference. The protected P2X execution head remains
+`78caf7eb4396dd576cf478c860372b7e26455cd9`. The sixth pass must write its
+checkpoint to
+`WORKER_RETURNS/FIABC-CANONICAL-TERMINAL-READINESS-R1/24_LITS_R5B_SUCCESSOR_I05_MATERIALIZATION_CHECKPOINT.json`.
+No A/B/C, measured P2X, promotion, or execution-branch advance is authorized by
+this handoff.
+
 ## Mission and present position
 
 The immediate mission is to close the LiTS-I candidate-neutral oracle producer
@@ -76,7 +110,7 @@ identity layers are checked separately.
 
 - Repository: `https://github.com/maidiu/rawlsing.git`
 - Continue branch: `agent/rabochii-premain-fiabc-lits-representation-authority-repair-r1`
-- Source-free code checkpoint: `13f2eaebb76b407e7509d156cc0745901792f9bd`
+- Source-free code checkpoint: `573b33513125ac720ebfc5a45cbe4076c34a931b`
 - Continue from the fetched repair-branch tip containing this handoff and its
   adjacent continuation pointer receipt; the branch tip must descend from the
   source-free code checkpoint.
@@ -91,7 +125,7 @@ git fetch origin \
   agent/rabochii-premain-fiabc-terminal-readiness-r1 \
   agent/rabochii-premain-fiabc-lits-representation-authority-repair-r1 \
   agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1
-git merge-base --is-ancestor 13f2eaebb76b407e7509d156cc0745901792f9bd origin/agent/rabochii-premain-fiabc-lits-representation-authority-repair-r1
+git merge-base --is-ancestor 573b33513125ac720ebfc5a45cbe4076c34a931b origin/agent/rabochii-premain-fiabc-lits-representation-authority-repair-r1
 git show origin/agent/rabochii-premain-fiabc-lits-representation-authority-repair-r1:WORKER_RETURNS/FIABC-CANONICAL-TERMINAL-READINESS-R1/20_LITS_R5B_SUCCESSOR_REPAIR_CONTINUATION_HANDOFF.md >/dev/null
 test "$(git rev-parse origin/agent/rabochii-premain-fiabc-terminal-readiness-r1)" = a8d4faac8912e9c03840d3f72a4f2ca8c83d6903
 test "$(git rev-parse origin/agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1)" = 78caf7eb4396dd576cf478c860372b7e26455cd9
@@ -122,8 +156,9 @@ Python or relax the gate.
 The partial fourth-pass precheck is portable and its exact bytes are stored as
 `22_LITS_R5B_SUCCESSOR_I05_PRECHECK_PARTIAL.json`. The fourth pass's `/private/tmp`
 work roots and missing final producer terminal are not portable evidence. A
-new machine must run the fifth fresh pass below and preserve its final oracle,
-stdout receipt, checksums, and exit status.
+new machine must run the sixth fresh pass below, explicitly write the durable
+post-I05 checkpoint, and preserve the final oracle, producer receipt, stderr,
+checksums, and exit status. The prior failed run predates checkpoint support.
 
 ## Completed and pushed
 
@@ -152,6 +187,12 @@ The repair branch contains these consecutive checkpoints:
 8. `13f2eaebb76b407e7509d156cc0745901792f9bd` — source-free qualification
    rebind to the exact successor code/assets and the R1M WVS typed-terminal
    count domain.
+9. `a41085130b368f2369cd3dda0193811c57df7c6c` — accept the exact bounded
+   physical-representation provenance owner class and reject unknown classes.
+10. `e9ba103fc0769184e8aaa383d8047983a3105514` — rebind source-free
+    qualification to the owner-class repair.
+11. `573b33513125ac720ebfc5a45cbe4076c34a931b` — add the integrity-checked,
+    resumable post-I05 materialization checkpoint and hostile tests.
 
 The focused source-free court at `c3733e31...` is green:
 
@@ -288,17 +329,28 @@ status and traceback were not persisted when its session ended. This proves the
 I05 envelope only; it does not prove final oracle construction, identity, or
 serialization. The complete source-backed court is **not yet green**.
 
-The full source-free qualification is green at `13f2eaeb...`, including the
-runtime overlay and WVS conservation binding. Run a fifth fresh source pass
-from that qualified code checkpoint, require the producer PASS receipt and
-final oracle document, verify the receipt's oracle identity and document SHA,
-and capture the actual process exit status. Then stop before promotion or
-candidate work. The pre-candidate script currently requires the governed
-execution branch by name and regenerates a LiTS oracle from source; do not run
-it on this repair branch or advance the locked execution branch to satisfy it.
-After the LiTS pass is green, a governing promotion authority must explicitly
-authorize the next transition or provide a separately authorized pre-candidate
-route against the qualified repair code.
+The fifth fresh source pass from `13f2eaeb...` reached the exact accepted I05
+envelope and then exited 1 at final oracle construction. Its traceback ended
+with `OracleIndependenceError: unrecognized dependency owner class:
+'BOUNDED_PHYSICAL_REPRESENTATION_AUTHORITY'`. Commit
+`a41085130b368f2369cd3dda0193811c57df7c6c` admits only that bounded class and
+adds a hostile unknown-class regression. Checkpoint implementation is in
+`573b33513125ac720ebfc5a45cbe4076c34a931b`; the full source-free qualification
+is green at that exact code checkpoint: 218 passed, 28 subtests passed.
+
+Run the sixth fresh source pass from the qualified repair branch. Require a
+zero exit status, producer PASS receipt, final oracle document, the post-I05
+checkpoint, and matching receipt/document/checkpoint hashes. Capture stdout,
+stderr, and exit status as files; do not rely on terminal scrollback. If the
+finalizer fails after the checkpoint is materialized, resume from that exact
+checkpoint with `--resume-checkpoint`, omitting `--source`; the resume path
+must report `source_hash_passes: 0` and `decoder_calls: 0`. Then stop before
+promotion or candidate work. The pre-candidate script currently requires the
+governed execution branch by name and regenerates a LiTS oracle from source;
+do not run it on this repair branch or advance the locked execution branch to
+satisfy it. After the LiTS pass is green, a governing promotion authority must
+explicitly authorize the next transition or provide a separately authorized
+pre-candidate route against the qualified repair code.
 
 Prior source-pass evidence roots on this host:
 
@@ -318,19 +370,49 @@ repo="$PWD"
 : "${FIABC_PYTHON:?set this to the qualified CPython 3.11.3 executable}"
 litssource="$LITS_SOURCE"
 pythonbin="$FIABC_PYTHON"
-diagroot="$(mktemp -d /private/tmp/fiabc-lits-f05-qualified.XXXXXX)"
-PYTHONDONTWRITEBYTECODE=1 PYTHONPATH="$repo" \
-  "$pythonbin" -u \
+diagroot="$(mktemp -d /private/tmp/fiabc-lits-f06-qualified.XXXXXX)"
+checkpoint="$repo/WORKER_RETURNS/FIABC-CANONICAL-TERMINAL-READINESS-R1/24_LITS_R5B_SUCCESSOR_I05_MATERIALIZATION_CHECKPOINT.json"
+oracle="$repo/WORKER_RETURNS/FIABC-CANONICAL-TERMINAL-READINESS-R1/25_LITS_R5B_SUCCESSOR_FROZEN_ORACLE.json"
+receipt="$repo/WORKER_RETURNS/FIABC-CANONICAL-TERMINAL-READINESS-R1/26_LITS_R5B_SUCCESSOR_PRODUCER_RECEIPT.json"
+stderr="$repo/WORKER_RETURNS/FIABC-CANONICAL-TERMINAL-READINESS-R1/27_LITS_R5B_SUCCESSOR_PRODUCER_STDERR.log"
+exitfile="$repo/WORKER_RETURNS/FIABC-CANONICAL-TERMINAL-READINESS-R1/28_LITS_R5B_SUCCESSOR_PRODUCER_EXIT_CODE.txt"
+test ! -e "$checkpoint" && test ! -e "$oracle" && test ! -e "$receipt" \
+  && test ! -e "$stderr" && test ! -e "$exitfile"
+if PYTHONDONTWRITEBYTECODE=1 PYTHONPATH="$repo" "$pythonbin" -u \
   -m rawlsing_next.fiabc_final_oracle_freeze_producers produce-lits \
-  --repo-root "$repo" \
-  --source "$litssource" \
-  --work-root "$diagroot/work" \
-  --output "$diagroot/lits_oracle_freeze.json" \
-  | tee "$diagroot/producer_receipt.json"
-test -s "$diagroot/lits_oracle_freeze.json"
-test -s "$diagroot/producer_receipt.json"
-shasum -a 256 "$diagroot/lits_oracle_freeze.json" "$diagroot/producer_receipt.json"
+  --repo-root "$repo" --source "$litssource" --work-root "$diagroot/work" \
+  --output "$oracle" --checkpoint-output "$checkpoint" \
+  >"$receipt" 2>"$stderr"; then
+  rc=0
+else
+  rc=$?
+fi
+printf '%s\n' "$rc" >"$exitfile"
+test "$rc" -eq 0
+test -s "$checkpoint" && test -s "$oracle" && test -s "$receipt"
+shasum -a 256 "$checkpoint" "$oracle" "$receipt" "$stderr" "$exitfile"
 ```
+
+If the producer fails after the checkpoint was written, preserve the initial
+receipt/stderr/exit files and resume with distinct output-log paths:
+
+```bash
+if PYTHONDONTWRITEBYTECODE=1 PYTHONPATH="$repo" "$pythonbin" -u \
+  -m rawlsing_next.fiabc_final_oracle_freeze_producers produce-lits \
+  --repo-root "$repo" --resume-checkpoint "$checkpoint" \
+  --work-root "$diagroot/resume-work" --output "$oracle" \
+  >"$diagroot/resume_receipt.json" 2>"$diagroot/resume_stderr.log"; then
+  rc=0
+else
+  rc=$?
+fi
+printf '%s\n' "$rc" >"$diagroot/resume_exit_code.txt"
+test "$rc" -eq 0
+```
+
+On resume, do not specify `--source` or `--checkpoint-output`. Verify the
+receipt says `RESUME_VERIFIED_I05_CHECKPOINT`, zero source hashes, and zero
+decoder calls before accepting its terminal.
 
 Required runtime gate: CPython 3.11.3, `pyreadstat==1.3.6`, `pyarrow==25.0.1`.
 
@@ -418,11 +500,17 @@ Required runtime gate: CPython 3.11.3, `pyreadstat==1.3.6`, `pyarrow==25.0.1`.
 - The source-free I04 overlay binding preserves the original packaging manifest
   and exact historical materializer while pinning the current LiTS authority
   modules and current WVS7 package/projection identities.
-- Full canonical source-free qualification green at `13f2eaeb...`: 214 passed,
-  28 subtests, WVS oracle conservation and static cross-lane assertions pass.
-- Fourth source-backed I05 precheck records the accepted LiTS 49/1 coverage,
-  60 supported facts, and zero candidate processes; its exact partial JSON is
-  banked, but the final oracle receipt/document is absent.
+- Full canonical source-free qualification green at `573b3351...`: 218 passed,
+  28 subtests; WVS oracle conservation and static cross-lane assertions pass.
+- Fifth source-backed I05 reached 50 candidates / 77 roles, 49 supported / 1
+  valid-empty, 60 supported facts, and zero candidate processes. Final oracle
+  construction failed closed on the allowed bounded-representation owner
+  class; the exact precheck SHA matches the banked partial, but no final oracle
+  or receipt was emitted. A sixth fresh pass is required because this run
+  predates checkpoint support.
+- The post-I05 checkpoint/resume mechanism is now implemented and source-free
+  qualified; a finalizer-only failure on the next pass will not require another
+  source hash or decoder call.
 - No A/B/C process and no measured P2X run by this repair.
 - Governed execution branch preserved at `78caf7eb...`.
 
@@ -430,9 +518,11 @@ Required runtime gate: CPython 3.11.3, `pyreadstat==1.3.6`, `pyarrow==25.0.1`.
 
 Proceed in this order and stop at the first failure:
 
-1. Run the fifth fresh common LiTS source pass from the source-free qualified
-   checkpoint `13f2eaeb...`; tee the final PASS receipt, require the oracle
-   file, verify both checksums, and bank both exact outputs.
+1. Run the sixth fresh common LiTS source pass from code checkpoint
+   `573b3351...`; persist the complete post-I05 checkpoint at the stable
+   repository path named above and capture output, stderr, hashes, and actual
+   exit status. If final oracle construction fails after checkpoint creation,
+   resume from that checkpoint with zero source access.
 2. If it fails, make the narrowest authority-preserving repair, add a hostile
    source-free regression, rerun the focused court, commit, and push.
 3. Repeat until the source pass emits the accepted 49/1 LiTS envelope and a
