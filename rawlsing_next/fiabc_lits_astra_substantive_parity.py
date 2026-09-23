@@ -1124,14 +1124,62 @@ def assert_substantive_parity(
             "observed_identity": semantic_hash(observed_section),
         }
 
+    historical_provenance = _mapping(
+        expected.get("native_candidate_provenance"), "historical native candidate provenance"
+    )
+    current_provenance = _mapping(
+        observed.get("native_candidate_provenance"), "current native candidate provenance"
+    )
+    if historical_provenance.get("native_hash_domain") != "G02_EXECUTION_CANDIDATE_HASH":
+        raise LitsAstraSubstantiveParityError("historical candidate provenance domain drift")
+    if current_provenance.get("native_hash_domain") != "PRE553_I05_CANDIDATE_HASH":
+        raise LitsAstraSubstantiveParityError("current candidate provenance domain drift")
+    historical_rows = {
+        row["logical_candidate_key"]: row
+        for row in _sequence(historical_provenance.get("rows"), "historical native provenance rows")
+    }
+    current_rows = {
+        row["logical_candidate_key"]: row
+        for row in _sequence(current_provenance.get("rows"), "current native provenance rows")
+    }
+    if len(historical_rows) != 25 or len(current_rows) != 25 or set(historical_rows) != set(current_rows):
+        raise LitsAstraSubstantiveParityError(
+            "historical/current P0-P3 native provenance is not bound to the same 25 logical candidates"
+        )
+    for logical_key in historical_rows:
+        historical_hash = historical_rows[logical_key].get("g02_execution_candidate_hash")
+        current_hash = current_rows[logical_key].get("pre553_i05_candidate_hash")
+        if historical_hash == current_hash:
+            raise LitsAstraSubstantiveParityError(
+                "G02 and PRE553 native candidate identities must remain distinct provenance identities"
+            )
+        lane = current_rows[logical_key].get("lane")
+        bindings = _sequence(current_rows[logical_key].get("role_bindings"), "current role bindings")
+        if lane == "P2":
+            by_role = {row["role"]: row for row in bindings}
+            if set(by_role) != {"CONDITION", "BASELINE"}:
+                raise LitsAstraSubstantiveParityError("P2 CONDITION/BASELINE binding topology missing")
+            for role in ("CONDITION", "BASELINE"):
+                for ref_name in ("current_predicate_ref", "current_query_ref"):
+                    ref = _mapping(by_role[role].get(ref_name), f"P2 {role} {ref_name}")
+                    if not isinstance(ref.get("content_hash"), str) or len(ref["content_hash"]) != 64:
+                        raise LitsAstraSubstantiveParityError(
+                            f"P2 {role} exact predicate/query identity malformed"
+                        )
+
     if not isinstance(current_execution_identity, str) or len(current_execution_identity) != 64:
         raise LitsAstraSubstantiveParityError("current execution identity malformed")
     if not isinstance(current_replay_identity, str) or len(current_replay_identity) != 64:
         raise LitsAstraSubstantiveParityError("current replay identity malformed")
-    expected_identity = semantic_hash(expected)
-    observed_identity = semantic_hash(observed)
+
+    expected_projection = canonicalize({section: expected[section] for section in PARITY_SECTIONS})
+    observed_projection = canonicalize({section: observed[section] for section in PARITY_SECTIONS})
+    expected_identity = semantic_hash(expected_projection)
+    observed_identity = semantic_hash(observed_projection)
     if expected_identity != observed_identity:
-        raise LitsAstraSubstantiveParityError("canonical ASTRA-shaped summary identity mismatch")
+        raise LitsAstraSubstantiveParityError("cross-schema logical parity projection identity mismatch")
+    expected_document_identity = semantic_hash(expected)
+    observed_document_identity = semantic_hash(observed)
 
     receipt = {
         "schema": PARITY_RECEIPT_SCHEMA,
@@ -1143,6 +1191,13 @@ def assert_substantive_parity(
         "current_replay_identity": current_replay_identity,
         "expected_empirical_summary_identity": expected_identity,
         "observed_empirical_summary_identity": observed_identity,
+        "empirical_summary_identity_scope": "PARITY_SECTIONS_WITH_CROSS_SCHEMA_LOGICAL_CANDIDATE_IDENTITY",
+        "expected_summary_document_identity": expected_document_identity,
+        "observed_summary_document_identity": observed_document_identity,
+        "historical_native_candidate_hash_domain": "G02_EXECUTION_CANDIDATE_HASH",
+        "current_native_candidate_hash_domain": "PRE553_I05_CANDIDATE_HASH",
+        "native_candidate_hash_equality_required": False,
+        "cross_schema_logical_candidate_key_required": True,
         "section_results": section_results,
         "section_identities": section_identities,
         "historical_current_whole_object_hash_equality_required": False,
