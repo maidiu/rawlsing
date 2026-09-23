@@ -39,7 +39,7 @@ jobs:
           python-version: ${{ steps.spec.outputs.python_version }}
 
       - name: Install court dependency
-        run: python -m pip install --disable-pip-version-check pytest pandas
+        run: python -m pip install --disable-pip-version-check pytest
 
       - name: Protocol self-test
         run: >-
