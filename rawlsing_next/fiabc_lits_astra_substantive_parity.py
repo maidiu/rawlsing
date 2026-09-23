@@ -847,6 +847,7 @@ def normalize_current_lits_summary(
     result: Any,
     frontier_seal: str,
     selector_scan: Mapping[str, Any],
+    logical_candidate_bindings: Sequence[Mapping[str, Any]],
 ) -> Mapping[str, Any]:
     """Derive the ASTRA-shaped summary from the current candidate-neutral I05 result."""
     roots = _current_risk_roots()
@@ -859,17 +860,29 @@ def normalize_current_lits_summary(
     receipts = sorted(result.receipts, key=lambda r: r.candidate_identity["candidate_hash"])
     candidate_count = _integer(result.candidate_count, "current candidate_count")
     role_count = sum(len(_sequence(r.candidate_identity.get("query_roles"), "current query roles")) for r in receipts)
+    (
+        current_binding_by_native,
+        logical_candidate_rows,
+        native_candidate_provenance,
+    ) = _current_logical_identity(logical_candidate_bindings)
+    receipt_hashes = {r.candidate_identity["candidate_hash"] for r in receipts}
+    if receipt_hashes != set(current_binding_by_native):
+        raise LitsAstraSubstantiveParityError(
+            "current PRE553 execution receipts and source-free logical frontier bindings differ"
+        )
 
     by_rule: dict[str, list[Any]] = {P0_RULE: [], P1_RULE: [], P2_RULE: [], P3_RULE: [], P4_RULE: []}
     terminal_counts = Counter()
     role_state_counts = Counter()
     role_rows: list[Mapping[str, Any]] = []
-    recorded_hashes: list[str] = []
+    recorded_logical_keys: list[str] = []
 
     for receipt in receipts:
         rule_id = receipt.candidate_identity.get("rule_id")
         if rule_id not in by_rule:
             raise LitsAstraSubstantiveParityError(f"current LiTS candidate outside frozen ASTRA rules: {rule_id!r}")
+        binding = current_binding_by_native[receipt.candidate_identity["candidate_hash"]]
+        _assert_current_binding_matches_receipt(receipt, binding)
         by_rule[rule_id].append(receipt)
         terminal_counts[receipt.coverage_state] += 1
         for role_row in _sequence(receipt.candidate_identity.get("query_roles"), "current query roles"):
@@ -892,37 +905,39 @@ def normalize_current_lits_summary(
         validation = _mapping(identity.get("validation"), "current P0 validation")
         target = _cell(validation.get("target_cell"))
         candidate_hash = identity["candidate_hash"]
+        logical_key = current_binding_by_native[candidate_hash]["logical_candidate_key"]
         p0.append({
-            "candidate_hash": candidate_hash,
+            "logical_candidate_key": logical_key,
             "target_cell": target,
             "denominator": _integer(fact.raw_denominator_support, "current P0 denominator"),
             "support": _cell_support(fact, target),
             "terminal_state": receipt.coverage_state,
         })
-        recorded_hashes.append(candidate_hash)
+        recorded_logical_keys.append(logical_key)
         role_rows.append(_current_role_topology_row(
-            lane="P0", key={"candidate_hash": candidate_hash}, role="BASE", root_id="R2", fact=fact, roots=roots
+            lane="P0", key={"logical_candidate_key": logical_key}, role="BASE", root_id="R2", fact=fact, roots=roots
         ))
     p0.sort(key=lambda x: x["target_cell"])
 
     p1_receipt = by_rule[P1_RULE][0]
     p1_identity = p1_receipt.candidate_identity
     p1_hash = p1_identity["candidate_hash"]
+    p1_logical_key = current_binding_by_native[p1_hash]["logical_candidate_key"]
     p1_roles = [x["role"] for x in p1_identity["query_roles"]]
     if p1_roles != ["JOINT", "MARGINAL_0", "MARGINAL_1"]:
         raise LitsAstraSubstantiveParityError("P1 exact role topology drift")
     p1_facts = {role: _role_fact(p1_receipt, role, facts_by_key) for role in p1_roles}
     p1 = {
-        "candidate_hash": p1_hash,
+        "logical_candidate_key": p1_logical_key,
         "terminal_state": p1_receipt.coverage_state,
         "first_exact_dependence_witness": _first_joint_dependence(
             p1_facts["JOINT"], p1_facts["MARGINAL_0"], p1_facts["MARGINAL_1"]
         ),
     }
-    recorded_hashes.append(p1_hash)
+    recorded_logical_keys.append(p1_logical_key)
     for role, root_id in (("JOINT", "R27"), ("MARGINAL_0", "R2"), ("MARGINAL_1", "R7")):
         role_rows.append(_current_role_topology_row(
-            lane="P1", key={"candidate_hash": p1_hash}, role=role, root_id=root_id,
+            lane="P1", key={"logical_candidate_key": p1_logical_key}, role=role, root_id=root_id,
             fact=p1_facts[role], roots=roots
         ))
 
@@ -935,21 +950,34 @@ def normalize_current_lits_summary(
         condition = _role_fact(receipt, "CONDITION", facts_by_key)
         baseline = _role_fact(receipt, "BASELINE", facts_by_key)
         candidate_hash = identity["candidate_hash"]
+        binding = current_binding_by_native[candidate_hash]
+        logical_key = binding["logical_candidate_key"]
+        semantics = _mapping(
+            _mapping(binding["logical_candidate_material"], "P2 logical material").get("candidate_semantics"),
+            "P2 logical candidate semantics",
+        )
+        parameters = _mapping(semantics.get("parameters"), "P2 logical parameters")
         p2.append({
-            "candidate_hash": candidate_hash,
+            "logical_candidate_key": logical_key,
+            "parameters": {
+                "q301_2": _integer(parameters.get("q301_2"), "current P2 q301_2"),
+                "q310": _integer(parameters.get("q310"), "current P2 q310"),
+                "q311": _integer(parameters.get("q311"), "current P2 q311"),
+            },
             "terminal_state": receipt.coverage_state,
             "first_exact_difference_witness": _first_distribution_difference(condition, baseline),
         })
-        recorded_hashes.append(candidate_hash)
+        recorded_logical_keys.append(logical_key)
         for role, fact in (("BASELINE", baseline), ("CONDITION", condition)):
             role_rows.append(_current_role_topology_row(
-                lane="P2", key={"candidate_hash": candidate_hash}, role=role, root_id="R7", fact=fact, roots=roots
+                lane="P2", key={"logical_candidate_key": logical_key}, role=role, root_id="R7", fact=fact, roots=roots
             ))
-    p2.sort(key=lambda x: x["candidate_hash"])
+    p2.sort(key=lambda x: x["logical_candidate_key"])
 
     p3_receipt = by_rule[P3_RULE][0]
     p3_identity = p3_receipt.candidate_identity
     p3_hash = p3_identity["candidate_hash"]
+    p3_logical_key = current_binding_by_native[p3_hash]["logical_candidate_key"]
     roles = [x["role"] for x in p3_identity["query_roles"]]
     if set(roles) != set(P3_ROLES) or len(roles) != 8:
         raise LitsAstraSubstantiveParityError("P3 exact role topology drift")
@@ -966,7 +994,7 @@ def normalize_current_lits_summary(
                 f"P3 valid-empty arose from non-supported role {role}, not the accepted false reversal validator"
             )
         role_rows.append(_current_role_topology_row(
-            lane="P3", key={"candidate_hash": p3_hash}, role=role, root_id="R7", fact=fact, roots=roots
+            lane="P3", key={"logical_candidate_key": p3_logical_key}, role=role, root_id="R7", fact=fact, roots=roots
         ))
     rates = {
         role: _fraction_from_counts(_cell_support(fact, target), fact.raw_denominator_support, f"P3 {role}")
@@ -990,7 +1018,7 @@ def normalize_current_lits_summary(
     if reversal:
         raise LitsAstraSubstantiveParityError("P3 is supported reversal, not accepted validation-negative valid-empty")
     p3 = {
-        "candidate_hash": p3_hash,
+        "logical_candidate_key": p3_logical_key,
         "terminal_state": p3_receipt.coverage_state,
         "target_cell": target,
         "exact_rates": canonicalize(rates),
@@ -998,7 +1026,7 @@ def normalize_current_lits_summary(
         "stratum_signs": stratum_signs,
         "empty_mechanism": "VALIDATION_FALSE__NO_CONDITIONAL_REVERSAL",
     }
-    recorded_hashes.append(p3_hash)
+    recorded_logical_keys.append(p3_logical_key)
 
     p4 = []
     for receipt in by_rule[P4_RULE]:
@@ -1011,9 +1039,15 @@ def normalize_current_lits_summary(
         if not isinstance(target, list) or len(target) != 2:
             raise LitsAstraSubstantiveParityError("P4 target topology drift")
         fact = _role_fact(receipt, "BASE", facts_by_key)
-        p4.append({"target_cell": target, "support": _cell_support(fact, target)})
+        candidate_hash = identity["candidate_hash"]
+        logical_key = current_binding_by_native[candidate_hash]["logical_candidate_key"]
+        p4.append({
+            "logical_candidate_key": logical_key,
+            "target_cell": target,
+            "support": _cell_support(fact, target),
+        })
         role_rows.append(_current_role_topology_row(
-            lane="P4", key={"target_cell": target}, role="BASE", root_id="R27", fact=fact, roots=roots
+            lane="P4", key={"logical_candidate_key": logical_key}, role="BASE", root_id="R27", fact=fact, roots=roots
         ))
     p4.sort(key=lambda x: tuple(x["target_cell"]))
 
@@ -1031,7 +1065,7 @@ def normalize_current_lits_summary(
             "candidate_count": candidate_count,
             "query_role_count": role_count,
             "frontier_seal": frontier_seal,
-            "recorded_candidate_hashes": sorted(recorded_hashes),
+            "recorded_logical_candidate_keys": sorted(recorded_logical_keys),
             "lane_counts": {
                 lane: {
                     "candidate_count": len(by_rule[rule]),
@@ -1050,6 +1084,8 @@ def normalize_current_lits_summary(
             "role_result_reuse_count": 0,
             "roles_by_lane": roles_by_lane,
         },
+        "logical_candidate_identity": logical_candidate_rows,
+        "native_candidate_provenance": native_candidate_provenance,
         "role_risk_set_topology": sorted(role_rows, key=canonical_json),
         "P0": p0,
         "P1": p1,
