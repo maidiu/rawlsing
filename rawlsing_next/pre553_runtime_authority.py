@@ -1103,11 +1103,19 @@ class Pre553RuntimeAuthoritySet:
             raise Pre553AuthorityError(
                 "multiple exact event representation successor authorities match"
             )
-        if scoped[0].bindings[key] != observed:
-            raise Pre553AuthorityError(
-                "runtime event witness differs from exact adopted representation"
-            )
-        return True
+        contract = scoped[0]
+        if contract.bindings[key] == observed:
+            return True
+        authorized_question_witnesses = {
+            canonical_json(witness)
+            for binding_key, witness in contract.bindings.items()
+            if binding_key[0] == question_ref.key
+        }
+        if canonical_json(observed) in authorized_question_witnesses:
+            return False
+        raise Pre553AuthorityError(
+            "runtime event witness differs from exact adopted representation"
+        )
 
     def validate_predicate(self, predicate: EmpiricalPredicate) -> None:
         grammar = authority_ref(predicate.grammar_authority_ref, "predicate grammar authority")
