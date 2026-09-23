@@ -1,0 +1,35 @@
+{
+  "schema": "PREMAIN_CLOSED35_LEGACY_TO_TYPED_BRIDGE_REGISTRY@1.0.0",
+  "census_results_head": "b801c58c8e4d6d10e36e0a42ca62cf6908cbf25a",
+  "numeric_coercion_authorized": false,
+  "bridges": [
+    {
+      "bridge_id": "B01_LITS_I_Q301_BOUNDED_SUCCESSOR",
+      "source_id": "27",
+      "surface_ids": [
+        "S001",
+        "S002"
+      ],
+      "authority": "FIABC-LITS-I-Q301-DTA-DECODER-REPRESENTATION-REPLAY@1.0.0",
+      "authority_blob": "94a833a7d8946bf3bd43296d9fe1e2239a3aa4b9",
+      "status": "EXACT_BOUNDED_BRIDGE_PASS",
+      "applicability_law": "Only LiTS-I exact source SHA, q301_2 ordinal 194 and q301_7 ordinal 199, enumerated response tokens and exact missing-state law.",
+      "cross_source_generalization": false
+    },
+    {
+      "bridge_id": "B02_WVS7_Q291_BOUNDED_OWNER",
+      "source_id": "35",
+      "surface_ids": [
+        "S003",
+        "S004"
+      ],
+      "authority": "FIABC-LM2-R1J-WVS7-Q291-SAV-DECODER-REPRESENTATION@1.0.0",
+      "authority_blob": "220c646df5b85eb927af70961c5d05be97edfb73",
+      "status": "EXACT_BOUNDED_BRIDGE_PASS",
+      "applicability_law": "Only WVS7 exact source SHA, Q291G5/Q291P5, enumerated Q291 representation tokens and pinned pyreadstat/readstat evidence.",
+      "cross_source_generalization": false
+    }
+  ],
+  "bridge_count": 2,
+  "no_other_bridge_minted": true
+}

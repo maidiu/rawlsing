@@ -1,0 +1,385 @@
+{
+  "schema": "PREMAIN_CLOSED35_REPRESENTATION_REGIME_REGISTRY@1.0.0",
+  "census_results_head": "b801c58c8e4d6d10e36e0a42ca62cf6908cbf25a",
+  "qualified_harness_head": "efe8de2b032c93d1820fd3f8c82fe2f1acabbf87",
+  "qualified_code_head": "11704fbfa16797fbdd55dadc7929aaad729c9454",
+  "qualified_runtime": {
+    "platform": "Darwin",
+    "machine": "x86_64",
+    "cpython": "3.11.3",
+    "pyreadstat": "1.3.6",
+    "pyarrow": "25.0.1"
+  },
+  "measurement_input_provenance": {
+    "mode": "USER_AUTHORIZED_CANONICAL_PAYLOAD_VERIFICATION",
+    "canonical_payloads_verified_by_filename_size_sha256": 35,
+    "archive_roots_required_for_this_run": false,
+    "source_substitution": false,
+    "note": "The authoritative harness re-hashed each measured payload against the frozen 35-source canonical registry before observation."
+  },
+  "representation_identity_law": {
+    "numeric_coercion_authorized": false,
+    "prohibited_equalities": [
+      "int == float",
+      "float == Decimal",
+      "Decimal exponent normalization as physical identity"
+    ],
+    "identity_basis": [
+      "exact source SHA-256",
+      "decoder/version/config",
+      "physical missing state/source declaration",
+      "exact R5 typed token",
+      "exact physical binding key",
+      "explicit bounded authority where present"
+    ]
+  },
+  "generic_regimes": [
+    {
+      "regime_id": "R01_R5_EXACT_TYPED_IDENTITY_NO_COERCION",
+      "status": "FROZEN",
+      "source_count": 35,
+      "scope": "All CLOSED35 sources",
+      "law": "Physical identity is the exact R5 typed token plus missing-state/source-declaration context; no numeric coercion."
+    },
+    {
+      "regime_id": "R02_SAV_PYREADSTAT_NATIVE_PHYSICAL",
+      "status": "FROZEN",
+      "source_count": 31,
+      "scope": "All SAV sources",
+      "law": "Qualified pyreadstat 1.3.6 SAV decoding preserves native Python/physical representation; finite governed numeric observations are float64 lanes unless a narrower authority says otherwise."
+    },
+    {
+      "regime_id": "R03_DTA_PYREADSTAT_NATIVE_PHYSICAL",
+      "status": "FROZEN",
+      "source_count": 4,
+      "scope": "LiTS I-IV DTA",
+      "law": "Qualified pyreadstat 1.3.6 DTA decoding preserves exact observed native representation; exact-SHA compatibility decoding is reader configuration, not semantic authority."
+    },
+    {
+      "regime_id": "R04_EXACT_SHA_COMPATIBILITY_DECODING",
+      "status": "FROZEN_SOURCE_APPLICABILITY",
+      "source_count": 6,
+      "source_ids": [
+        "13",
+        "14",
+        "27",
+        "28",
+        "29",
+        "30"
+      ],
+      "law": "Non-default encoding is admitted only for enumerated exact source SHA identities; it does not imply intended-text semantics or cross-source equivalence."
+    },
+    {
+      "regime_id": "R05_RAW_HEADER_DICTIONARY_STREAM_DIVERGENCE_PRESERVATION",
+      "status": "FROZEN",
+      "source_count": 1,
+      "source_ids": [
+        "26"
+      ],
+      "law": "Raw SAV nominal case size and decoded dictionary/data width are distinct physical facts and must both be retained; equality is not required."
+    }
+  ],
+  "open_generic_representation_law_gaps": [
+    {
+      "gap_id": "G01_SAV_NATIVE_INT_RULE_TO_FLOAT64_PHYSICAL_BINDING",
+      "status": "NEW_REPRESENTATION_LAW_REQUIRED",
+      "source_ids": [
+        "02",
+        "06",
+        "21"
+      ],
+      "surface_ids": [
+        "S016",
+        "S037",
+        "S038",
+        "S005",
+        "S006",
+        "S007",
+        "S008",
+        "S009",
+        "S010"
+      ],
+      "surface_count": 9,
+      "law": "Current int-native rule literals do not exactly join qualified float64 physical keys. Similar numeric magnitude is not authority. One reusable successor law may be designed later, but this fan-in does not mint it."
+    }
+  ],
+  "bounded_authorities": [
+    {
+      "bridge_id": "B01_LITS_I_Q301_BOUNDED_SUCCESSOR",
+      "source_id": "27",
+      "surface_ids": [
+        "S001",
+        "S002"
+      ],
+      "authority": "FIABC-LITS-I-Q301-DTA-DECODER-REPRESENTATION-REPLAY@1.0.0",
+      "authority_blob": "94a833a7d8946bf3bd43296d9fe1e2239a3aa4b9",
+      "status": "EXACT_BOUNDED_BRIDGE_PASS"
+    },
+    {
+      "bridge_id": "B02_WVS7_Q291_BOUNDED_OWNER",
+      "source_id": "35",
+      "surface_ids": [
+        "S003",
+        "S004"
+      ],
+      "authority": "FIABC-LM2-R1J-WVS7-Q291-SAV-DECODER-REPRESENTATION@1.0.0",
+      "authority_blob": "220c646df5b85eb927af70961c5d05be97edfb73",
+      "status": "EXACT_BOUNDED_BRIDGE_PASS"
+    }
+  ],
+  "source_specific_exceptions": [
+    {
+      "exception_id": "X01_AFR9_GOVERNED_SURFACE_LOCATOR_MISMATCH",
+      "source_id": "03",
+      "surface_ids": [
+        "S017",
+        "S018",
+        "S019"
+      ],
+      "reason": "Registry requires Q78F/Q47C/Q118; qualified source inventory lacks Q118, so the source-wide governed-surface observation fails closed."
+    },
+    {
+      "exception_id": "X02_ARAB2_GOVERNED_SURFACE_LOCATOR_MISMATCH",
+      "source_id": "05",
+      "surface_ids": [
+        "S035",
+        "S036"
+      ],
+      "reason": "Registry requires Q101/Q2062; qualified source inventory lacks both names, so historical accepted rule surfaces require source-local locator reconciliation before representation admission."
+    }
+  ],
+  "generic_implementation_debts": [
+    {
+      "debt_id": "D01_DECLARED_ENCODING_GENERIC_ADMISSION",
+      "source_ids": [
+        "08",
+        "11",
+        "12"
+      ],
+      "status": "NONSEMANTIC_IMPLEMENTATION_DEBT",
+      "requirement": "Admit explicit source-declared BIG5/WINDOWS-1252 reader configurations generically only when source SHA, declared encoding, decoder/version and byte preservation are bound. No text semantics may be inferred."
+    },
+    {
+      "debt_id": "D02_OPAQUE_DATETIME_DECODER_VALUE_CARRIER",
+      "source_ids": [
+        "14"
+      ],
+      "status": "NONSEMANTIC_IMPLEMENTATION_DEBT",
+      "requirement": "R5 must preserve decoder date/time objects through an explicit opaque physical carrier instead of inventing date/time meaning or stringifying them semantically."
+    }
+  ],
+  "surface_dispositions": {
+    "S020": {
+      "source_id": "01",
+      "source_file": "Afro Barometer Round 1.sav",
+      "classification": "AUTHORITY_BLOCKED"
+    },
+    "S021": {
+      "source_id": "01",
+      "source_file": "Afro Barometer Round 1.sav",
+      "classification": "AUTHORITY_BLOCKED"
+    },
+    "S016": {
+      "source_id": "02",
+      "source_file": "Afro Barometer Round 5.sav",
+      "classification": "GENERIC_LAW_GAP"
+    },
+    "S017": {
+      "source_id": "03",
+      "source_file": "Afro Barometer Round 9.sav",
+      "classification": "SOURCE_SPECIFIC_REPRESENTATION_GAP"
+    },
+    "S018": {
+      "source_id": "03",
+      "source_file": "Afro Barometer Round 9.sav",
+      "classification": "SOURCE_SPECIFIC_REPRESENTATION_GAP"
+    },
+    "S019": {
+      "source_id": "03",
+      "source_file": "Afro Barometer Round 9.sav",
+      "classification": "SOURCE_SPECIFIC_REPRESENTATION_GAP"
+    },
+    "S022": {
+      "source_id": "04",
+      "source_file": "Arab Barometer Wave 1.sav",
+      "classification": "AUTHORITY_BLOCKED"
+    },
+    "S023": {
+      "source_id": "04",
+      "source_file": "Arab Barometer Wave 1.sav",
+      "classification": "AUTHORITY_BLOCKED"
+    },
+    "S035": {
+      "source_id": "05",
+      "source_file": "Arab Barometer Wave 2.sav",
+      "classification": "SOURCE_SPECIFIC_REPRESENTATION_GAP"
+    },
+    "S036": {
+      "source_id": "05",
+      "source_file": "Arab Barometer Wave 2.sav",
+      "classification": "SOURCE_SPECIFIC_REPRESENTATION_GAP"
+    },
+    "S037": {
+      "source_id": "06",
+      "source_file": "Arab Barometer Wave 5.sav",
+      "classification": "GENERIC_LAW_GAP"
+    },
+    "S038": {
+      "source_id": "06",
+      "source_file": "Arab Barometer Wave 5.sav",
+      "classification": "GENERIC_LAW_GAP"
+    },
+    "S024": {
+      "source_id": "08",
+      "source_file": "Asian Barometer Wave 1.sav",
+      "classification": "AUTHORITY_BLOCKED"
+    },
+    "S025": {
+      "source_id": "08",
+      "source_file": "Asian Barometer Wave 1.sav",
+      "classification": "AUTHORITY_BLOCKED"
+    },
+    "S026": {
+      "source_id": "11",
+      "source_file": "EVS 1981.sav",
+      "classification": "AUTHORITY_BLOCKED"
+    },
+    "S027": {
+      "source_id": "11",
+      "source_file": "EVS 1981.sav",
+      "classification": "AUTHORITY_BLOCKED"
+    },
+    "S028": {
+      "source_id": "11",
+      "source_file": "EVS 1981.sav",
+      "classification": "AUTHORITY_BLOCKED"
+    },
+    "S029": {
+      "source_id": "11",
+      "source_file": "EVS 1981.sav",
+      "classification": "AUTHORITY_BLOCKED"
+    },
+    "S005": {
+      "source_id": "21",
+      "source_file": "GSS2010.sav",
+      "classification": "GENERIC_LAW_GAP"
+    },
+    "S006": {
+      "source_id": "21",
+      "source_file": "GSS2010.sav",
+      "classification": "GENERIC_LAW_GAP"
+    },
+    "S007": {
+      "source_id": "21",
+      "source_file": "GSS2010.sav",
+      "classification": "GENERIC_LAW_GAP"
+    },
+    "S008": {
+      "source_id": "21",
+      "source_file": "GSS2010.sav",
+      "classification": "GENERIC_LAW_GAP"
+    },
+    "S009": {
+      "source_id": "21",
+      "source_file": "GSS2010.sav",
+      "classification": "GENERIC_LAW_GAP"
+    },
+    "S010": {
+      "source_id": "21",
+      "source_file": "GSS2010.sav",
+      "classification": "GENERIC_LAW_GAP"
+    },
+    "S011": {
+      "source_id": "24",
+      "source_file": "Latinobarometro 1995.sav",
+      "classification": "AUTHORITY_BLOCKED"
+    },
+    "S012": {
+      "source_id": "24",
+      "source_file": "Latinobarometro 1995.sav",
+      "classification": "AUTHORITY_BLOCKED"
+    },
+    "S013": {
+      "source_id": "24",
+      "source_file": "Latinobarometro 1995.sav",
+      "classification": "AUTHORITY_BLOCKED"
+    },
+    "S001": {
+      "source_id": "27",
+      "source_file": "LiTS_I.dta",
+      "classification": "EXACT_BOUNDED_BRIDGE_PASS"
+    },
+    "S002": {
+      "source_id": "27",
+      "source_file": "LiTS_I.dta",
+      "classification": "EXACT_BOUNDED_BRIDGE_PASS"
+    },
+    "S030": {
+      "source_id": "27",
+      "source_file": "LiTS_I.dta",
+      "classification": "AUTHORITY_BLOCKED"
+    },
+    "S031": {
+      "source_id": "27",
+      "source_file": "LiTS_I.dta",
+      "classification": "AUTHORITY_BLOCKED"
+    },
+    "S032": {
+      "source_id": "27",
+      "source_file": "LiTS_I.dta",
+      "classification": "AUTHORITY_BLOCKED"
+    },
+    "S014": {
+      "source_id": "31",
+      "source_file": "South Asia Wave 1.sav",
+      "classification": "AUTHORITY_BLOCKED"
+    },
+    "S015": {
+      "source_id": "31",
+      "source_file": "South Asia Wave 1.sav",
+      "classification": "AUTHORITY_BLOCKED"
+    },
+    "S033": {
+      "source_id": "33",
+      "source_file": "WVS Wave 1.sav",
+      "classification": "AUTHORITY_BLOCKED"
+    },
+    "S034": {
+      "source_id": "33",
+      "source_file": "WVS Wave 1.sav",
+      "classification": "AUTHORITY_BLOCKED"
+    },
+    "S003": {
+      "source_id": "35",
+      "source_file": "WVS Wave 7.sav",
+      "classification": "EXACT_BOUNDED_BRIDGE_PASS"
+    },
+    "S004": {
+      "source_id": "35",
+      "source_file": "WVS Wave 7.sav",
+      "classification": "EXACT_BOUNDED_BRIDGE_PASS"
+    }
+  },
+  "summary": {
+    "source_count": 35,
+    "source_classifications": {
+      "GENERIC_REGIME_FULLY_CLOSED": 19,
+      "GENERIC_REGIME_WITH_BOUNDED_BRIDGE": 1,
+      "GENERIC_REGIME_WITH_NONSEMANTIC_IMPLEMENTATION_DEBT": 2,
+      "SOURCE_BOUNDED_EXCEPTION_REQUIRED": 2,
+      "REPRESENTATION_AUTHORITY_STILL_BLOCKED": 11
+    },
+    "generic_regime_count": 5,
+    "bounded_authority_count": 2,
+    "source_specific_exception_count": 2,
+    "generic_implementation_debt_count": 2,
+    "governed_surface_count": 38,
+    "exact_typed_join_pass_count": 0,
+    "exact_bounded_bridge_pass_count": 4,
+    "generic_law_gap_count": 9,
+    "source_specific_representation_gap_count": 5,
+    "authority_blocked_count": 20,
+    "remaining_blocked_surface_count": 34,
+    "historical_dependency_leak_count": 0
+  }
+}
