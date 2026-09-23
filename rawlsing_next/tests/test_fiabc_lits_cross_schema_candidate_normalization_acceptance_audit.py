@@ -30,6 +30,16 @@ def _git(*args: str) -> str:
     return subprocess.check_output(["git", *args], cwd=ROOT, text=True).strip()
 
 
+def _ensure_history() -> None:
+    subprocess.run(
+        ["git", "fetch", "--no-tags", "origin", WORKER_BASE, WORKER_IMPLEMENTATION, WORKER_RETURN_TIP],
+        cwd=ROOT,
+        check=True,
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    )
+
+
 def test_worker_return_is_exactly_bound_to_qualified_semantic_head():
     ret = json.loads(RETURN.read_text(encoding="utf-8"))
     assert ret["audit_base"] == WORKER_BASE
@@ -41,11 +51,13 @@ def test_worker_return_is_exactly_bound_to_qualified_semantic_head():
 
 
 def test_worker_history_is_descended_from_exact_blocking_audit_base():
+    _ensure_history()
     assert _git("merge-base", WORKER_BASE, WORKER_IMPLEMENTATION) == WORKER_BASE
     assert _git("merge-base", WORKER_IMPLEMENTATION, WORKER_RETURN_TIP) == WORKER_IMPLEMENTATION
 
 
 def test_implementation_diff_contains_only_expected_production_files_plus_governance_tests():
+    _ensure_history()
     names = set(_git("diff", "--name-only", f"{WORKER_BASE}..{WORKER_IMPLEMENTATION}").splitlines())
     production = {n for n in names if n.startswith("rawlsing_next/") and "/tests/" not in n}
     # Commission/court-spec/test changes are governance evidence; only these five production files may change.
