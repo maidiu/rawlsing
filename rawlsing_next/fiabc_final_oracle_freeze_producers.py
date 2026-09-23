@@ -283,6 +283,88 @@ def _canonical_public_object_documents(objects: Sequence[Any]) -> list[Mapping[s
     return [by_key[key] for key in sorted(by_key)]
 
 
+
+_LITS_PREIMAGE_FRAGMENT_MARKER = "$canonical_preimage_fragment"
+
+
+def _store_lits_preimage_fragment(
+    value: Any,
+    fragments: dict[str, Any],
+) -> Mapping[str, str]:
+    material = canonicalize(value)
+    digest = semantic_hash(material)
+    previous = fragments.setdefault(digest, material)
+    if canonicalize(previous) != material:
+        raise FinalOracleProducerError("LiTS canonical preimage fragment hash collision")
+    return {_LITS_PREIMAGE_FRAGMENT_MARKER: digest}
+
+
+def _pack_lits_canonical_preimage(
+    document: Mapping[str, Any],
+    fragments: dict[str, Any],
+) -> Mapping[str, Any]:
+    """Losslessly deduplicate large identity-bearing fact fragments."""
+    packed = canonicalize(document)
+    if packed.get("schema_id") != "EmpiricalFact":
+        return packed
+    fields = dict(packed["semantic_fields"])
+    for name in ("risk_set_member_refs", "denominator_member_refs"):
+        if name in fields:
+            fields[name] = _store_lits_preimage_fragment(fields[name], fragments)
+    topology = fields.get("target_topology")
+    if isinstance(topology, Mapping) and "complete_cell_semantic_projection" in topology:
+        topology = dict(topology)
+        topology["complete_cell_semantic_projection"] = _store_lits_preimage_fragment(
+            topology["complete_cell_semantic_projection"],
+            fragments,
+        )
+        fields["target_topology"] = topology
+    packed = dict(packed)
+    packed["semantic_fields"] = fields
+    return canonicalize(packed)
+
+
+def _lits_preimage_fragment_map(
+    closure: Mapping[str, Any],
+) -> dict[str, Any]:
+    raw = closure.get("preimage_fragments")
+    if not isinstance(raw, Sequence) or isinstance(raw, (str, bytes)):
+        raise FinalOracleProducerError("LiTS canonical preimage fragment store is absent")
+    fragments: dict[str, Any] = {}
+    for entry in raw:
+        if not isinstance(entry, Mapping) or set(entry) != {"fragment_hash", "value"}:
+            raise FinalOracleProducerError("LiTS canonical preimage fragment entry is malformed")
+        digest = entry.get("fragment_hash")
+        value = entry.get("value")
+        if not isinstance(digest, str) or len(digest) != 64:
+            raise FinalOracleProducerError("LiTS canonical preimage fragment hash is malformed")
+        if semantic_hash(canonicalize(value)) != digest:
+            raise FinalOracleProducerError("LiTS canonical preimage fragment content hash drift")
+        previous = fragments.setdefault(digest, canonicalize(value))
+        if previous != canonicalize(value):
+            raise FinalOracleProducerError("LiTS canonical preimage fragment collision")
+    return fragments
+
+
+def _hydrate_lits_canonical_preimage(
+    value: Any,
+    fragments: Mapping[str, Any],
+) -> Any:
+    if isinstance(value, Mapping):
+        if set(value) == {_LITS_PREIMAGE_FRAGMENT_MARKER}:
+            digest = value.get(_LITS_PREIMAGE_FRAGMENT_MARKER)
+            if not isinstance(digest, str) or digest not in fragments:
+                raise FinalOracleProducerError("LiTS canonical preimage references missing fragment")
+            return canonicalize(fragments[digest])
+        return {
+            key: _hydrate_lits_canonical_preimage(item, fragments)
+            for key, item in value.items()
+        }
+    if isinstance(value, Sequence) and not isinstance(value, (str, bytes, bytearray)):
+        return [_hydrate_lits_canonical_preimage(item, fragments) for item in value]
+    return value
+
+
 def _lits_c11_release_retention_document(release: Any) -> Mapping[str, Any]:
     replay = canonicalize(release.replay_manifest.as_dict())
     replay_projection = {
@@ -322,7 +404,7 @@ def _build_lits_canonical_empirical_closure(
         }
     ]
     representation_snapshot = lits_representation_authority_snapshot()
-    documents = _canonical_public_object_documents([
+    full_documents = _canonical_public_object_documents([
         *catalog.authorities,
         *catalog.predicates,
         *catalog.queries,
@@ -332,6 +414,11 @@ def _build_lits_canonical_empirical_closure(
         *support_objects,
         representation_snapshot,
     ])
+    fragments: dict[str, Any] = {}
+    documents = [
+        _pack_lits_canonical_preimage(doc, fragments)
+        for doc in full_documents
+    ]
     inventory = Counter(
         f"{doc['schema_id']}@{doc['schema_version']}" for doc in documents
     )
@@ -367,6 +454,10 @@ def _build_lits_canonical_empirical_closure(
     body = canonicalize({
         "schema": LITS_CANONICAL_EMPIRICAL_CLOSURE_SCHEMA,
         "public_object_preimages": documents,
+        "preimage_fragments": [
+            {"fragment_hash": digest, "value": fragments[digest]}
+            for digest in sorted(fragments)
+        ],
         "inventory": dict(sorted(inventory.items())),
         "fact_refs": [
             {
@@ -455,12 +546,14 @@ def _validate_lits_canonical_empirical_closure(
     if not isinstance(docs, Sequence) or isinstance(docs, (str, bytes)) or not docs:
         raise FinalOracleProducerError("LiTS canonical empirical object preimages are absent")
 
+    fragments = _lits_preimage_fragment_map(closure)
     by_ref: dict[tuple[str, str, str], Any] = {}
     by_schema: Counter[str] = Counter()
     authority_refs: set[tuple[str, str, str]] = set()
-    for doc in docs:
-        if not isinstance(doc, Mapping):
+    for packed_doc in docs:
+        if not isinstance(packed_doc, Mapping):
             raise FinalOracleProducerError("LiTS canonical empirical object preimage is malformed")
+        doc = _hydrate_lits_canonical_preimage(packed_doc, fragments)
         try:
             obj = materialize_public_object(doc)
         except Exception as exc:
