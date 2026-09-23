@@ -127,16 +127,128 @@ def load_f02():
     assert {k:v.content_hash for k,v in out.items()}==F02_REFS
     return closure,out
 
+R4A_MIXED_AUTHORITY_ID="urn:rawlsing:prev3:p2r4a:pre553:mixed-predicate-grammar"
+R4A_MIXED_AUTHORITY_VERSION="1.0.0-candidate"
+R4A_MIXED_AUTHORITY_HASH="0d7cfaac1d63cd438d29b109b590cb828805bd113fc37759a6f6f4c88d3c8f55"
+R4A_SUCCESSOR_AUTHORITY_HASH="b87c387f9d222c83106c8d47d369af44f5c5368b274fd85e7a08b12c20d49cae"
+R4A_ADOPTION_DECISION_ID="HQD-2026-09-18-044"
+R4A_ADOPTION_DECISION_HASH="38ccf7e51fde4366f86c9d181b18da6efd59751be8f4b84f16685953cd79d891"
+
+
+def _r4a_mixed_grammar_adoption_snapshot(mixed, successor, decision_records=None):
+    """Materialize the exact HQ-adopted mixed-grammar ref as a history snapshot.
+
+    The R4A fixture remains an immutable candidate artifact. Its status field
+    records the worker's pre-adoption state; current activation is controlled
+    by the exact HQ decision and immutable authority identity below.
+    """
+    if decision_records is None:
+        ledger_path=ROOT/"HQ_HANDOFF/DECISION_LEDGER.jsonl"
+        decision_records=[json.loads(line) for line in ledger_path.read_text(encoding="utf-8").splitlines() if line]
+    matches=[(i,record) for i,record in enumerate(decision_records) if record.get("decision_id")==R4A_ADOPTION_DECISION_ID]
+    if len(matches)!=1:
+        raise Pre553AuthorityError("exact HQ R4A mixed-authority adoption decision must resolve once")
+    decision_index, decision=matches[0]
+    if (
+        decision.get("status")!="ADOPTED_BOUNDED_PRE553_PUBLIC_PREDICATE_AND_MIXED_COMPOSITION_SUCCESSOR_AUTHORITY"
+        or decision.get("subject")!="EE-P2R4A D02/F02 identity-preserving predicate dialect and mixed-composition authority"
+        or semantic_hash(decision)!=R4A_ADOPTION_DECISION_HASH
+    ):
+        raise Pre553AuthorityError("exact HQ R4A adoption decision identity/status drift")
+    for later in decision_records[decision_index+1:]:
+        supersedes=later.get("supersedes",())
+        if isinstance(supersedes,(list,tuple)) and ({R4A_ADOPTION_DECISION_ID,R4A_MIXED_AUTHORITY_HASH}&set(supersedes)):
+            raise Pre553AuthorityError("HQ R4A mixed-authority adoption was explicitly superseded")
+
+    ref=authority_ref(mixed.get("candidate_authority_ref"),"R4A mixed authority candidate ref")
+    if mixed.get("authority_content_hash")!=R4A_MIXED_AUTHORITY_HASH or semantic_hash(mixed.get("identity_material"))!=R4A_MIXED_AUTHORITY_HASH:
+        raise Pre553AuthorityError("R4A mixed composition authority preimage/hash mismatch")
+    if (ref.authority_id,ref.authority_version,ref.authority_content_hash)!=(
+        R4A_MIXED_AUTHORITY_ID,R4A_MIXED_AUTHORITY_VERSION,R4A_MIXED_AUTHORITY_HASH
+    ):
+        raise Pre553AuthorityError("R4A mixed authority exact ref drift")
+    material=mixed.get("identity_material")
+    if not isinstance(material,dict):
+        raise Pre553AuthorityError("R4A mixed authority identity material is absent")
+    successor_hash=successor.get("authority_candidate_content_hash")
+    if not isinstance(successor_hash,str):
+        raise Pre553AuthorityError("R4A successor authority hash is absent")
+    if semantic_hash(successor.get("identity_material"))!=successor_hash:
+        raise Pre553AuthorityError("R4A public predicate successor preimage/hash mismatch")
+    if successor_hash!=R4A_SUCCESSOR_AUTHORITY_HASH:
+        raise Pre553AuthorityError("R4A adopted successor authority identity drift")
+    successor_material=successor.get("identity_material")
+    if not isinstance(successor_material,dict):
+        raise Pre553AuthorityError("R4A successor authority identity material is absent")
+    if authority_ref(successor_material.get("mixed_grammar_authority_ref"))!=ref:
+        raise Pre553AuthorityError("R4A successor does not bind the exact mixed grammar authority")
+    approved={
+        R4A_MIXED_AUTHORITY_HASH,
+        R4A_SUCCESSOR_AUTHORITY_HASH,
+        "3ef0317887f6910838636d3816237a81d5a56b38e07595c8cc1f7c5e7f1fae74",
+        "225e4b80390500451834ea784d955465eb9f145a4cd1f798dace51f3a6d3baa4",
+    }
+    if not approved<=set(decision.get("authority_refs",())):
+        raise Pre553AuthorityError("HQ R4A decision omits one or more linked adopted authority refs")
+    if R4A_MIXED_AUTHORITY_HASH not in R4_HASHES:
+        raise Pre553AuthorityError("R4A mixed authority is absent from exact runtime adoption pins")
+
+    permitted=material.get("permitted_mixed_composition")
+    if not isinstance(permitted,dict):
+        raise Pre553AuthorityError("R4A permitted mixed composition is absent")
+    if permitted.get("ast_operation")!="AND" or permitted.get("maximum_arity")!=3:
+        raise Pre553AuthorityError("R4A exact mixed operation/arity scope drift")
+    decision_digest=semantic_hash(decision)
+    decision_ref=ExactRef(
+        "HQ_ADOPTION_DECISION",
+        f"urn:rawlsing:hq:decision:{R4A_ADOPTION_DECISION_ID}",
+        decision_digest,
+    )
+    scope={
+        "exact_workload_scope":material["exact_workload_scope"],
+        "allowed_input_grammar_refs":material["allowed_input_grammar_refs"],
+        "permitted_mixed_composition":permitted,
+        "leaf_operation_families":material["leaf_operation_families"],
+        "respondent_binding_compatibility_ref":material["respondent_binding_compatibility_ref"],
+        "identity_preservation":material["identity_preservation"],
+        "negative_cases":material["negative_cases"],
+        "no_adjacent_family_inference":material["no_adjacent_family_inference"],
+        "fail_closed":material["fail_closed"],
+        "adopted_successor_authority_ref":successor.get("candidate_ref"),
+    }
+    return AuthoritySnapshot(
+        typed_state="ALLOW",
+        authority_snapshot_refs=(),
+        dependency_refs=(decision_ref,),
+        producer_replay_locator_or_reference_root=decision_ref,
+        authority_id=ref.authority_id,
+        authority_version=ref.authority_version,
+        authority_content_hash=ref.authority_content_hash,
+        authority_kind="PREDICATE_GRAMMAR",
+        decision_state="ALLOW",
+        governed_operations=(permitted["ast_operation"],),
+        governed_object_families=("EmpiricalPredicate@1.0.0",),
+        scope_envelope=scope,
+        effective_time_or_interval=decision["date"],
+        parent_authority_refs=tuple(material["parent_authority_refs"]),
+        negative_limit_refs=(),
+        supersession_refs=(),
+        interpretation_semantics_fingerprint=semantic_hash(material),
+        replay_protocol_ref=decision_ref,
+    )
+
+
 def r4_runtime():
     fix=ROOT/"rawlsing_next/tests/fixtures"
     def load(p): return json.loads(p.read_text())
     d=load(fix/"ee_p2r6a_r4a_01_dialect.json"); r=load(fix/"ee_p2r6a_r4a_02_respondent.json")
     m=load(fix/"ee_p2r6a_r4a_03_mixed.json"); der=load(fix/"ee_p2r6a_r4a_04_derived.json"); s=load(fix/"ee_p2r6a_r4a_05_successor.json")
+    mixed_snapshot=_r4a_mixed_grammar_adoption_snapshot(m,s)
     for commit,path,blob in ((R5A,R5A_RELATION,R5A_RELATION_BLOB),(R5A,R5A_SCHEMA,R5A_SCHEMA_BLOB),(R5A,R5A_CLAUSE,R5A_CLAUSE_BLOB),(R6J,R6J_BINDING,R6J_BINDING_BLOB)):
         if git_blob_sha(commit,path)!=blob: raise Pre553AuthorityError("exact adopted R5A/R6J runtime authority blob drift")
     relation=git_json(R5A,R5A_RELATION); schema=git_json(R5A,R5A_SCHEMA); clause=git_json(R5A,R5A_CLAUSE); binding=git_json(R6J,R6J_BINDING)
     if binding["binding_ref"]["content_hash"]!=ACTIVE_BINDING: raise Pre553AuthorityError("exact adopted active realization binding drift")
-    return Pre553RuntimeAuthoritySet(adopted_authority_hashes=(*R4_HASHES,*R5_HASHES,I03_OPERATION_SUCCESSOR_HASH,I03_PARENT_AUTHORITY_REF.authority_content_hash,PART_A_PROJECTION_AUTHORITY_HASH,D03_RISK_SET_SUCCESSOR_HASH,F02_EVENT_REPRESENTATION_SUCCESSOR_HASH),predicate_dialect_matrices=(d,),respondent_compatibility_authorities=(r,),mixed_composition_authorities=(m,),derived_predicate_contracts=(der,),public_predicate_successor_authorities=(s,),i03_operation_successor_authorities=(operation_successor_authority_record(),),exact_risk_set_successor_authorities=(risk_set_successor_authority_record(),),event_representation_successor_authorities=(event_representation_successor_authority_record(),),historical_authority_snapshots=(historical_projection_authority_snapshot(),historical_i03_parent_authority_snapshot()),release_realization_authorities=(relation,),realization_binding_schemas=(schema,),release_precondition_clauses=(clause,),realization_bindings=(binding,))
+    return Pre553RuntimeAuthoritySet(adopted_authority_hashes=(*R4_HASHES,*R5_HASHES,I03_OPERATION_SUCCESSOR_HASH,I03_PARENT_AUTHORITY_REF.authority_content_hash,PART_A_PROJECTION_AUTHORITY_HASH,D03_RISK_SET_SUCCESSOR_HASH,F02_EVENT_REPRESENTATION_SUCCESSOR_HASH),predicate_dialect_matrices=(d,),respondent_compatibility_authorities=(r,),mixed_composition_authorities=(m,),derived_predicate_contracts=(der,),public_predicate_successor_authorities=(s,),i03_operation_successor_authorities=(operation_successor_authority_record(),),exact_risk_set_successor_authorities=(risk_set_successor_authority_record(),),event_representation_successor_authorities=(event_representation_successor_authority_record(),),historical_authority_snapshots=(historical_projection_authority_snapshot(),historical_i03_parent_authority_snapshot(),mixed_snapshot),release_realization_authorities=(relation,),realization_binding_schemas=(schema,),release_precondition_clauses=(clause,),realization_bindings=(binding,))
 
 def closure_snapshot(ref,kind="REPLAY_PROTOCOL",ops=("EXACT_REPOSITORY_BOUND_CLOSURE",),families=("EmpiricalPredicate@1.0.0","EmpiricalQuerySpec@1.0.0")):
     ar=authority_ref(ref)

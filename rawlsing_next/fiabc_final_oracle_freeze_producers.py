@@ -392,6 +392,7 @@ def _build_lits_canonical_empirical_closure(
     catalog: Any,
     result: Any,
     release: Any,
+    runtime_authority_set: Any,
 ) -> Mapping[str, Any]:
     """Retain the current PRE553 empirical object ontology, not an ASTRA-shaped projection."""
     support_objects = [
@@ -404,7 +405,7 @@ def _build_lits_canonical_empirical_closure(
         }
     ]
     representation_snapshot = lits_representation_authority_snapshot()
-    full_documents = _canonical_public_object_documents([
+    full_objects = [
         *catalog.authorities,
         *catalog.predicates,
         *catalog.queries,
@@ -415,7 +416,40 @@ def _build_lits_canonical_empirical_closure(
         *result.receipts,
         *support_objects,
         representation_snapshot,
-    ])
+    ]
+    retained_authority_keys = {
+        (
+            obj.authority_id,
+            obj.authority_version,
+            obj.authority_content_hash,
+        )
+        for obj in full_objects
+        if getattr(obj, "schema_id", None) == "AuthoritySnapshot"
+    }
+    requested_authorities = {}
+    for obj in full_objects:
+        if getattr(obj, "schema_id", None) == "AuthoritySnapshot":
+            continue
+        for authority_ref in getattr(obj, "authority_snapshot_refs", ()):
+            key = (
+                authority_ref.authority_id,
+                authority_ref.authority_version,
+                authority_ref.authority_content_hash,
+            )
+            if key not in retained_authority_keys:
+                requested_authorities[key] = authority_ref
+    for key in sorted(requested_authorities):
+        snapshot = runtime_authority_set.resolve_exact_runtime_authority(
+            requested_authorities[key]
+        )
+        if snapshot is None:
+            raise FinalOracleProducerError(
+                "LiTS canonical empirical closure cannot resolve exact adopted "
+                f"authority snapshot preimage: {key!r}"
+            )
+        full_objects.append(snapshot)
+        retained_authority_keys.add(key)
+    full_documents = _canonical_public_object_documents(full_objects)
     fragments: dict[str, Any] = {}
     documents = [
         _pack_lits_canonical_preimage(doc, fragments)
@@ -1346,6 +1380,7 @@ def _neutral_lits_material(
         catalog=catalog,
         result=result,
         release=release,
+        runtime_authority_set=runtime["runtime_authority_set"],
     )
 
     hashes = [receipt.candidate_identity["candidate_hash"] for receipt in ordered]
