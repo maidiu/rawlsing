@@ -126,6 +126,10 @@ def test_fresh_wvs_oracle_is_candidate_neutral_and_bound_to_successor():
     assert oracle["truth_payload_identity"] == WVS_TRUTH
     assert oracle["successor_lock2"] == SUCCESSOR_LOCK2
     assert oracle["successor_discovery_authority"] == SUCCESSOR_DISCOVERY
+    assert (
+        oracle["truth_payload"]["expected_learned_product"]["coverage"]["typed_terminal_counts"]
+        == {"COVERAGE_LIMITED": 46}
+    )
     assert oracle["candidate_outputs_seen"] == 0
     assert oracle["candidate_processes_started"] == 0
     assert oracle["candidate_owned_roots_consulted"] == []
