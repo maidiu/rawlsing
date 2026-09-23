@@ -35,6 +35,11 @@ from rawlsing_next.ee_p2x_candidate_process_envelope import (
     FREEZE_RECEIPT_SCHEMA,
     load_frozen_upstream_receipt,
 )
+from rawlsing_next.fiabc_lits_astra_substantive_parity import (
+    assert_substantive_parity as assert_lits_astra_substantive_parity,
+    normalize_accepted_astra_summary,
+    normalize_current_lits_summary,
+)
 from rawlsing_next.fiabc_lits_i_representation_authority import (
     LEGACY_FACADE_BLOB as LITS_LEGACY_FACADE_BLOB,
     LEGACY_FACADE_COMMIT as LITS_LEGACY_FACADE_COMMIT,
@@ -84,7 +89,13 @@ LITS_ACCEPTED_TERMINAL_COUNTS = {
 }
 
 ASTRA_PRODUCT_PATH = "WORKER_RETURNS/ASTRA-D04-R2/01_TYPED_LEARNED_EMPIRICAL_PRODUCT.json"
+ASTRA_ROLE_PATH = "WORKER_RETURNS/ASTRA-D04-R2/02_77_ROLE_EXECUTION_RECEIPT.json"
 ASTRA_REPLAY_PATH = "WORKER_RETURNS/ASTRA-D04-R2/03_SOURCE_AND_REPLAY_RECEIPT.json"
+ASTRA_INPUT_GIT_BLOBS = {
+    ASTRA_PRODUCT_PATH: "26fa18d10d242f3db212f6ee3e6f28abee3327ac",
+    ASTRA_ROLE_PATH: "211e19bb17cd8e3c63418b686ac20508072cb7d7",
+    ASTRA_REPLAY_PATH: "b2c70e992955853b540e498214c296ccc0e25b83",
+}
 CURRENT_SOURCE_MANIFEST_REF = "WORKER_RETURNS/FIABC-T2/01_SIX_CELL_EXECUTION_MANIFEST.json#source_root_law.canonical_source_sha256"
 
 
@@ -180,6 +191,36 @@ def _git_json(repo_root: Path, commit: str, path: str) -> Mapping[str, Any]:
     if not isinstance(value, Mapping):
         raise FinalOracleProducerError("historical JSON input is not an object")
     return value
+
+
+def _git_blob_sha(repo_root: Path, commit: str, path: str) -> str:
+    try:
+        return subprocess.check_output(
+            ["git", "-C", str(Path(repo_root).resolve()), "rev-parse", f"{commit}:{path}"],
+            stderr=subprocess.STDOUT,
+            text=True,
+        ).strip()
+    except subprocess.CalledProcessError as exc:
+        raise FinalOracleProducerError(
+            f"required immutable historical blob unavailable at {commit}:{path}"
+        ) from exc
+
+
+def _verified_astra_input_manifest(repo_root: Path) -> list[Mapping[str, Any]]:
+    inputs = []
+    for path, expected_blob in ASTRA_INPUT_GIT_BLOBS.items():
+        observed_blob = _git_blob_sha(repo_root, LITS_ASTRA_D04_R2_COMMIT, path)
+        if observed_blob != expected_blob:
+            raise FinalOracleProducerError(
+                f"immutable ASTRA-D04-R2 input blob drift: {path}: "
+                f"expected={expected_blob} observed={observed_blob}"
+            )
+        inputs.append({
+            "commit": LITS_ASTRA_D04_R2_COMMIT,
+            "path": path,
+            "git_blob_sha": observed_blob,
+        })
+    return canonicalize(inputs)
 
 
 def _candidate_cells_root(work_root: Path) -> Path:
@@ -576,7 +617,7 @@ def _lits_accepted_legacy_repository(
     closure = f02.build_selector_closure()
     if closure["new_release_ref"]["content_hash"] != r5b.FROZEN_F02_SCOPE_HASH:
         raise FinalOracleProducerError("LiTS frozen F02 successor scope drift")
-    r5b.f02_source_scan(incidence, f02)
+    selector_scan = r5b.f02_source_scan(incidence, f02)
 
     # R5B was adopted against the pinned legacy physical-key representation.
     # Rebind only its facade constructors/functions to those exact deployed bytes.
@@ -628,7 +669,7 @@ def _lits_accepted_legacy_repository(
         raise FinalOracleProducerError("LiTS accepted successor projection identity drift")
     if repository.resolve_release_exact(release.release_ref).release_ref != release.release_ref:
         raise FinalOracleProducerError("LiTS successor release exact repository resolution failed")
-    return repository, release
+    return repository, release, selector_scan
 
 
 def _neutral_lits_material(
@@ -678,7 +719,7 @@ def _neutral_lits_material(
     ):
         raise FinalOracleProducerError("LiTS accepted runtime identity constants drift")
 
-    repository, release = _lits_accepted_legacy_repository(
+    repository, release, selector_scan = _lits_accepted_legacy_repository(
         incidence=incidence,
         projection=projection,
         repo_root=repo_root,
@@ -709,6 +750,11 @@ def _neutral_lits_material(
     ):
         result = executor.execute_i05(discovery_authority_ref=discovery_refs[0])
     execution_receipt = learned_empirical_execution_receipt(result)
+    astra_empirical_summary = normalize_current_lits_summary(
+        result=result,
+        frontier_seal=LITS_FRONTIER_SEAL,
+        selector_scan=selector_scan,
+    )
 
     ordered = sorted(
         result.receipts, key=lambda receipt: receipt.candidate_identity["candidate_hash"]
@@ -833,11 +879,14 @@ def _neutral_lits_material(
         "exact_ref_manifest": canonicalize(exact_refs),
         "constituent_i03_fact_manifest": canonicalize(constituent_facts),
         "constituent_i03_closure_identity": i03_closure,
+        "astra_shaped_empirical_summary": astra_empirical_summary,
     }
     audit = {
         "runtime_catalog_identity": catalog.receipt()["catalog_identity"],
         "common_execution_binding": executor.binding_receipt(),
         "current_i05_execution_identity": execution_receipt["execution_identity"],
+        "current_i05_replay_identity": result.replay_ref.content_hash,
+        "astra_shaped_empirical_summary_identity": semantic_hash(astra_empirical_summary),
         "constituent_i03_fact_count": len(constituent_facts),
         "constituent_i03_closure_identity": i03_closure,
         "exact_ref_count": len(exact_refs),
@@ -864,8 +913,32 @@ def produce_lits_local_oracle(
         repo_root=repo_root,
         work_root=work_root,
     )
-    prior_product = _git_json(Path(repo_root), LITS_ASTRA_D04_R2_COMMIT, ASTRA_PRODUCT_PATH)
-    prior_replay = _git_json(Path(repo_root), LITS_ASTRA_D04_R2_COMMIT, ASTRA_REPLAY_PATH)
+    repo_root = Path(repo_root).resolve()
+    prior_product = _git_json(repo_root, LITS_ASTRA_D04_R2_COMMIT, ASTRA_PRODUCT_PATH)
+    prior_roles = _git_json(repo_root, LITS_ASTRA_D04_R2_COMMIT, ASTRA_ROLE_PATH)
+    prior_replay = _git_json(repo_root, LITS_ASTRA_D04_R2_COMMIT, ASTRA_REPLAY_PATH)
+    accepted_inputs = _verified_astra_input_manifest(repo_root)
+    expected_astra_summary = normalize_accepted_astra_summary(
+        product=prior_product,
+        role_receipt=prior_roles,
+        replay_receipt=prior_replay,
+    )
+    parity_receipt = assert_lits_astra_substantive_parity(
+        expected_summary=expected_astra_summary,
+        observed_summary=material["astra_shaped_empirical_summary"],
+        accepted_inputs=accepted_inputs,
+        current_execution_identity=execution_receipt["execution_identity"],
+        current_replay_identity=material["replay_manifest"]["i05_replay_ref"]["content_hash"],
+    )
+    parity_path = (
+        Path(work_root).resolve()
+        / "court"
+        / "oracle_producers"
+        / "LITS_I"
+        / "astra_substantive_parity_receipt.json"
+    )
+    parity_document_sha = _write_json(parity_path, parity_receipt)
+
     provenance = {
         "builder": "FIABC_FINAL_LITS_CANDIDATE_NEUTRAL_LOCAL_ORACLE_PRODUCER_R1",
         "dependencies": [
@@ -919,6 +992,15 @@ def produce_lits_local_oracle(
         "oracle_identity_sha256": identity,
         "oracle_document_sha256": output_sha,
         "output_path": str(Path(output_path)),
+        "astra_substantive_parity_receipt_path": str(parity_path),
+        "astra_substantive_parity_receipt_identity": parity_receipt["parity_receipt_identity"],
+        "astra_substantive_parity_document_sha256": parity_document_sha,
+        "astra_expected_empirical_summary_identity": parity_receipt[
+            "expected_empirical_summary_identity"
+        ],
+        "astra_observed_empirical_summary_identity": parity_receipt[
+            "observed_empirical_summary_identity"
+        ],
         "current_standardized_constituent_i03_fact_refs": [
             row["ref"] for row in material["constituent_i03_fact_manifest"]
         ],
