@@ -3,6 +3,9 @@ from __future__ import annotations
 import copy
 from collections.abc import Sequence
 import hashlib
+import importlib.util
+import json
+import subprocess
 from pathlib import Path
 from types import SimpleNamespace
 
@@ -15,6 +18,10 @@ from rawlsing_next.fiabc_lits_astra_substantive_parity import (
     assert_substantive_parity,
     normalize_accepted_astra_summary,
     normalize_current_lits_summary,
+)
+from rawlsing_next.fiabc_lits_cross_schema_candidate_identity import (
+    candidate_semantics,
+    logical_candidate_key,
 )
 from rawlsing_next.pre553_empirical_objects import ExactRef
 
@@ -150,174 +157,123 @@ def _role_topology(summary: dict) -> list[dict]:
     return sorted(rows, key=canonical_json)
 
 
-def _expected_summary() -> dict:
-    p0 = [
-        {
-            "candidate_hash": candidate_hash,
-            "target_cell": cell,
-            "denominator": 24897,
-            "support": support,
-            "terminal_state": "EVALUATED_SUPPORTED",
-        }
-        for candidate_hash, cell, support in P0
-    ]
-    p2 = [
-        {
-            "candidate_hash": candidate_hash,
-            "terminal_state": "EVALUATED_SUPPORTED",
-            "first_exact_difference_witness": {
-                "cell": 1,
-                "baseline_count": 2889,
-                "baseline_denominator": 28325,
-                "condition_count": count,
-                "condition_denominator": denominator,
-            },
-        }
-        for candidate_hash, count, denominator in P2
-    ]
-    p3 = {
-        "candidate_hash": P3_HASH,
-        "terminal_state": "EVALUATED_VALID_EMPTY",
-        "target_cell": 5,
-        "exact_rates": {
-            role: {"$exact_fraction": values}
-            for role, values in P3_RATES.items()
-        },
-        "pooled_sign": 1,
-        "stratum_signs": [1, 1, 1],
-        "empty_mechanism": "VALIDATION_FALSE__NO_CONDITIONAL_REVERSAL",
-    }
-    p4 = [
-        {"target_cell": list(cell), "support": support}
-        for cell, support in sorted(P4.items())
-    ]
-    recorded = [row["candidate_hash"] for row in p0] + [P1_HASH]
-    recorded += [row["candidate_hash"] for row in p2] + [P3_HASH]
-    summary = {
-        "schema": "FIABC_LITS_ASTRA_SHAPED_EMPIRICAL_SUMMARY@1.0.0",
-        "frontier": {
-            "candidate_count": 50,
-            "query_role_count": 77,
-            "frontier_seal": FRONTIER_SEAL,
-            "recorded_candidate_hashes": sorted(recorded),
-            "lane_counts": {
-                "P0": {"candidate_count": 5, "query_role_count": 5},
-                "P1": {"candidate_count": 1, "query_role_count": 3},
-                "P2": {"candidate_count": 18, "query_role_count": 36},
-                "P3": {"candidate_count": 1, "query_role_count": 8},
-                "P4": {"candidate_count": 25, "query_role_count": 25},
-            },
-        },
-        "d03_risk_sets": copy.deepcopy(ROOTS),
-        "f02_selector_populations": _selector_section(),
-        "role_execution": {
-            "role_count": 77,
-            "typed_role_states": {"SUPPORTED": 77},
-            "role_result_reuse_count": 0,
-            "roles_by_lane": {"P0": 5, "P1": 3, "P2": 36, "P3": 8, "P4": 25},
-        },
-        "P0": p0,
-        "P1": {
-            "candidate_hash": P1_HASH,
-            "terminal_state": "EVALUATED_SUPPORTED",
-            "first_exact_dependence_witness": {
-                "cell": [1, 1],
-                "joint_count": 1485,
-                "joint_denominator": 24630,
-                "marginal_0_count": 4377,
-                "marginal_0_denominator": 24897,
-                "marginal_1_count": 2889,
-                "marginal_1_denominator": 28325,
-            },
-        },
-        "P2": sorted(p2, key=lambda x: x["candidate_hash"]),
-        "P3": p3,
-        "P4": p4,
-        "final_envelope": {
-            "EVALUATED_SUPPORTED": 49,
-            "EVALUATED_VALID_EMPTY": 1,
-        },
-    }
-    summary["role_risk_set_topology"] = _role_topology(summary)
-    return summary
+ASTRA_COMMIT = "e631de162c582423639b7067a4f36b29f8aa4d89"
+ASTRA_PRODUCT_PATH = "WORKER_RETURNS/ASTRA-D04-R2/01_TYPED_LEARNED_EMPIRICAL_PRODUCT.json"
+ASTRA_ROLE_PATH = "WORKER_RETURNS/ASTRA-D04-R2/02_77_ROLE_EXECUTION_RECEIPT.json"
+ASTRA_REPLAY_PATH = "WORKER_RETURNS/ASTRA-D04-R2/03_SOURCE_AND_REPLAY_RECEIPT.json"
+MATERIALIZER_PATH = Path(__file__).resolve().parents[1] / "runtime/ee_p2x/01_LITS_CURRENT_RUNTIME_MATERIALIZER.py"
 
 
 def _historical_docs():
-    summary = _expected_summary()
-    product = {
-        "schema": "ASTRA_D04_R2_TYPED_LEARNED_EMPIRICAL_PRODUCT@1.0.0",
-        "frontier": {
-            "candidate_count": 50,
-            "query_role_count": 77,
-            "preexecution_seal": FRONTIER_SEAL,
-        },
-        "P0_positive_controls": copy.deepcopy(summary["P0"]),
-        "P1_joint_dependence": copy.deepcopy(summary["P1"]),
-        "P2_conditioned_frontier": copy.deepcopy(summary["P2"]),
-        "P3_conditional_reversal": {
-            "candidate_hash": P3_HASH,
-            "terminal_state": "EVALUATED_VALID_EMPTY",
-            "validation_details": {
-                "target_cell": {"$exact_decimal": "5"},
-                "exact_rates": {
-                    "POOLED_NEG": copy.deepcopy(summary["P3"]["exact_rates"]["POOLED_NEG"]),
-                    "POOLED_POS": copy.deepcopy(summary["P3"]["exact_rates"]["POOLED_POS"]),
-                    "Q310V1_NEG": copy.deepcopy(summary["P3"]["exact_rates"]["STRATUM:Q310V1:NEG"]),
-                    "Q310V1_POS": copy.deepcopy(summary["P3"]["exact_rates"]["STRATUM:Q310V1:POS"]),
-                    "Q310V2_NEG": copy.deepcopy(summary["P3"]["exact_rates"]["STRATUM:Q310V2:NEG"]),
-                    "Q310V2_POS": copy.deepcopy(summary["P3"]["exact_rates"]["STRATUM:Q310V2:POS"]),
-                    "Q310V3_NEG": copy.deepcopy(summary["P3"]["exact_rates"]["STRATUM:Q310V3:NEG"]),
-                    "Q310V3_POS": copy.deepcopy(summary["P3"]["exact_rates"]["STRATUM:Q310V3:POS"]),
-                },
-                "pooled_sign": 1,
-                "stratum_signs": [1, 1, 1],
-            },
-        },
-        "P4_joint_5x5_target_support": {
-            ",".join(map(str, row["target_cell"])): row["support"]
-            for row in summary["P4"]
-        },
-        "lane_accounting": {
-            lane: {
-                "candidate_count": row["candidate_count"],
-                "query_role_count": row["query_role_count"],
-                "terminal_counts": {},
-            }
-            for lane, row in summary["frontier"]["lane_counts"].items()
-        },
-        "terminal_counts": copy.deepcopy(summary["final_envelope"]),
-    }
-    roles = {
-        "schema": "ASTRA_D04_R2_77_ROLE_EXECUTION_RECEIPT@1.0.0",
-        "risk_set_composition": {
-            "q301_2_roles": "R2",
-            "q301_7_roles": "R7",
-            "joint_roles": "R27",
-            "predictor_missingness_denominator_rule_added": False,
-        },
-        "risk_set_roots": copy.deepcopy(ROOTS),
-        "role_count": 77,
-        "role_result_reuse_count": 0,
-        "roles_by_lane": {"P0": 5, "P1": 3, "P2": 36, "P3": 8, "P4": 25},
-        "typed_role_states": {"SUPPORTED": 77},
-    }
-    replay = {
-        "schema": "ASTRA_D04_R2_SOURCE_AND_REPLAY_RECEIPT@1.0.0",
-        "source": {
-            "sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
-            "rows": 29002,
-            "variables": 1198,
-        },
-        "preoutcome": {
-            "candidate_count": 50,
-            "query_role_count": 77,
-            "frontier_seal": FRONTIER_SEAL,
-            "d03_roots": copy.deepcopy(ROOTS),
-            "f02_selectors": _historical_selector_material(),
-        },
-    }
-    return product, roles, replay
+    cached = getattr(_historical_docs, "_cached", None)
+    if cached is not None:
+        return copy.deepcopy(cached)
+    root = Path(__file__).resolve().parents[2]
+    subprocess.run(
+        ["git", "fetch", "--no-tags", "origin", ASTRA_COMMIT],
+        cwd=root,
+        check=True,
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    )
+    docs = []
+    for historical_path in (ASTRA_PRODUCT_PATH, ASTRA_ROLE_PATH, ASTRA_REPLAY_PATH):
+        raw = subprocess.check_output(
+            ["git", "show", f"{ASTRA_COMMIT}:{historical_path}"],
+            cwd=root,
+        )
+        docs.append(json.loads(raw))
+    _historical_docs._cached = tuple(docs)
+    return copy.deepcopy(_historical_docs._cached)
 
+
+def _expected_summary() -> dict:
+    product, roles, replay = _historical_docs()
+    return normalize_accepted_astra_summary(
+        product=product,
+        role_receipt=roles,
+        replay_receipt=replay,
+    )
+
+
+def _real_current_bindings():
+    cached = getattr(_real_current_bindings, "_cached", None)
+    if cached is not None:
+        return copy.deepcopy(cached)
+    spec = importlib.util.spec_from_file_location("_lits_current_runtime_parity_test", MATERIALIZER_PATH)
+    assert spec and spec.loader
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    package = mod.materialize_runtime_package()
+    bindings = package["cross_schema_logical_candidate_bindings"]
+    assert package["candidate_count"] == 50
+    assert package["query_role_executions"] == 77
+    assert len(bindings) == 50
+    _real_current_bindings._cached = tuple(bindings)
+    return copy.deepcopy(_real_current_bindings._cached)
+
+
+def _p2_parameters_by_historical_hash():
+    product, _roles, _replay = _historical_docs()
+    return {
+        item["candidate_hash"]: copy.deepcopy(item["parameters"])
+        for item in product["P2_conditioned_frontier"]
+    }
+
+
+def _logical_key_for_fixture_receipt(receipt):
+    identity = receipt.candidate_identity
+    rule_id = identity["rule_id"]
+    if rule_id == "D02_P0_REAL_POSITIVE_CONTROL":
+        return logical_candidate_key(candidate_semantics(
+            lane="P0",
+            parameters={"target_cell": identity["validation"]["target_cell"]},
+        ))
+    if rule_id == "D02_P1_JOINT_DEPENDENCE":
+        return logical_candidate_key(candidate_semantics(lane="P1", parameters={}))
+    if rule_id == "D02_P2_HIGHER_ORDER_K3":
+        params = _p2_parameters_by_historical_hash()[identity["candidate_hash"]]
+        return logical_candidate_key(candidate_semantics(lane="P2", parameters=params))
+    if rule_id == "D02_P3_CONDITIONAL_REVERSAL":
+        return logical_candidate_key(candidate_semantics(
+            lane="P3",
+            parameters={"stratum_atom_ids": ["Q310V1", "Q310V2", "Q310V3"]},
+        ))
+    if rule_id == "D02_P4_MINORITY_NONMODAL_COMPLETE_JOINT_CELLS":
+        return logical_candidate_key(candidate_semantics(
+            lane="P4",
+            parameters={"target_cell": identity["validation"]["target_cell"]},
+        ))
+    raise AssertionError(f"unexpected fixture rule {rule_id}")
+
+
+def _rebind_fixture_to_real_current_frontier(result):
+    bindings = _real_current_bindings()
+    by_logical = {row["logical_candidate_key"]: row for row in bindings}
+    assert len(by_logical) == 50
+    for receipt in result.receipts:
+        logical_key = _logical_key_for_fixture_receipt(receipt)
+        binding = by_logical[logical_key]
+        receipt.candidate_identity["candidate_hash"] = binding["current_pre553_candidate_hash"]
+        receipt.candidate_identity["query_roles"] = [
+            {
+                "role": role["role"],
+                "predicate_ref": copy.deepcopy(role["current_predicate_ref"]),
+                "query_ref": copy.deepcopy(role["current_query_ref"]),
+            }
+            for role in binding["role_bindings"]
+        ]
+    return result, bindings
+
+
+def _observed_summary() -> dict:
+    result, bindings = _rebind_fixture_to_real_current_frontier(_current_result_fixture())
+    return normalize_current_lits_summary(
+        result=result,
+        frontier_seal=FRONTIER_SEAL,
+        selector_scan=copy.deepcopy(SELECTOR_SCAN),
+        logical_candidate_bindings=bindings,
+    )
 
 def _parity(expected=None, observed=None):
     return assert_substantive_parity(
