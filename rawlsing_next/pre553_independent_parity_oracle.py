@@ -3,8 +3,9 @@
 This module implements the FIABC Wave-3 I05 court-owned parity oracle.  It is
 deliberately outside candidate ownership: expected truth is frozen before any
 candidate output exists and may depend only on exact source identity, accepted
-candidate-neutral authority, common semantic producers, and explicitly
-accepted immutable prior empirical evidence.
+candidate-neutral authority, bounded physical-representation authority, common
+semantic producers, and explicitly accepted immutable prior empirical
+evidence.
 
 The oracle does not execute or select a candidate, does not infer semantics,
 and does not turn pairwise/self-replay equality into parity.
@@ -121,6 +122,7 @@ REQUIRED_CANDIDATES = ("A", "B", "C")
 ALLOWED_DEPENDENCY_OWNER_CLASSES = frozenset({
     "EXACT_SOURCE",
     "ACCEPTED_AUTHORITY",
+    "BOUNDED_PHYSICAL_REPRESENTATION_AUTHORITY",
     "COMMON_SEMANTIC_PRODUCER",
     "ACCEPTED_IMMUTABLE_PRIOR_EMPIRICAL_PRODUCT",
     "COURT_NEUTRAL",

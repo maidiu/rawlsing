@@ -87,6 +87,17 @@ LITS_ACCEPTED_TERMINAL_COUNTS = {
     "EVALUATED_SUPPORTED": 49,
     "EVALUATED_VALID_EMPTY": 1,
 }
+LITS_ACCEPTED_TYPED_TERMINAL_COUNTS = {
+    "DISCOVERED_RESULT_SUPPORTED": 49,
+    "VALID_EMPTY": 1,
+}
+LITS_MATERIALIZATION_CHECKPOINT_SCHEMA = (
+    "FIABC_LITS_CURRENT_NEUTRAL_I05_MATERIALIZATION_CHECKPOINT@2.0.0"
+)
+LITS_LEGACY_MATERIALIZATION_CHECKPOINT_SCHEMA = (
+    "FIABC_LITS_CURRENT_NEUTRAL_I05_MATERIALIZATION_CHECKPOINT@1.0.0"
+)
+LITS_MATERIALIZATION_CHECKPOINT_NAME = "current_i05_materialization_checkpoint_v2.json"
 
 ASTRA_PRODUCT_PATH = "WORKER_RETURNS/ASTRA-D04-R2/01_TYPED_LEARNED_EMPIRICAL_PRODUCT.json"
 ASTRA_ROLE_PATH = "WORKER_RETURNS/ASTRA-D04-R2/02_77_ROLE_EXECUTION_RECEIPT.json"
@@ -898,23 +909,362 @@ def _neutral_lits_material(
         "representation_authority": LITS_REPRESENTATION_AUTHORITY_REF.as_dict(),
         "accepted_legacy_facade_blob": LITS_LEGACY_FACADE_BLOB,
     }
-    return material, audit, execution_receipt
+    return material, audit, execution_receipt, precheck
+
+
+
+def _validate_lits_materialization_checkpoint_body(
+    body: Mapping[str, Any],
+) -> tuple[Mapping[str, Any], Mapping[str, Any], Mapping[str, Any], Mapping[str, Any]]:
+    if body.get("schema") == LITS_LEGACY_MATERIALIZATION_CHECKPOINT_SCHEMA:
+        raise FinalOracleProducerError(
+            "legacy LiTS checkpoint lacks parity-ready empirical summary; fresh source-backed I05 required"
+        )
+    if body.get("schema") != LITS_MATERIALIZATION_CHECKPOINT_SCHEMA:
+        raise FinalOracleProducerError("LiTS materialization checkpoint schema drift")
+    material = body.get("material")
+    audit = body.get("audit")
+    execution = body.get("execution_receipt")
+    precheck = body.get("precheck")
+    if not all(isinstance(value, Mapping) for value in (material, audit, execution, precheck)):
+        raise FinalOracleProducerError("LiTS materialization checkpoint body is incomplete")
+
+    expected_source = {
+        "source": "LITS_I",
+        "sha256": LITS_SOURCE_SHA256,
+        "rows": LITS_ROWS,
+        "variables": LITS_VARIABLES,
+    }
+    if body.get("source_identity") != expected_source or material.get("source_identity") != expected_source:
+        raise FinalOracleProducerError("LiTS checkpoint source identity drift")
+
+    frontier = material.get("frontier_manifest")
+    rows = material.get("comparison_fact_manifest")
+    if not isinstance(frontier, Mapping) or not isinstance(rows, Sequence) or isinstance(rows, (str, bytes)):
+        raise FinalOracleProducerError("LiTS checkpoint frontier material is incomplete")
+    hashes = frontier.get("ordered_candidate_hashes")
+    if (
+        frontier.get("candidate_count") != LITS_CANDIDATE_COUNT
+        or frontier.get("query_role_count") != LITS_QUERY_ROLE_COUNT
+        or frontier.get("frontier_seal") != LITS_FRONTIER_SEAL
+        or not isinstance(hashes, Sequence)
+        or isinstance(hashes, (str, bytes))
+        or len(hashes) != LITS_CANDIDATE_COUNT
+        or len(rows) != LITS_CANDIDATE_COUNT
+    ):
+        raise FinalOracleProducerError("LiTS checkpoint frontier cardinality or seal drift")
+
+    observed_hashes = []
+    role_count = 0
+    coverage_counts: Counter[str] = Counter()
+    typed_counts: Counter[str] = Counter()
+    for row in rows:
+        if not isinstance(row, Mapping):
+            raise FinalOracleProducerError("LiTS checkpoint candidate row is malformed")
+        candidate_hash = row.get("candidate_hash")
+        if not isinstance(candidate_hash, str) or len(candidate_hash) != 64:
+            raise FinalOracleProducerError("LiTS checkpoint candidate hash is malformed")
+        semantic_fields = row.get("semantic_fields")
+        if not isinstance(semantic_fields, Mapping):
+            raise FinalOracleProducerError("LiTS checkpoint candidate semantic fields are malformed")
+        identity = semantic_fields.get("candidate_identity")
+        if not isinstance(identity, Mapping) or identity.get("candidate_hash") != candidate_hash:
+            raise FinalOracleProducerError("LiTS checkpoint candidate identity/hash mismatch")
+        roles = identity.get("query_roles")
+        if not isinstance(roles, Sequence) or isinstance(roles, (str, bytes)):
+            raise FinalOracleProducerError("LiTS checkpoint candidate query roles are malformed")
+        role_count += len(roles)
+        coverage = semantic_fields.get("coverage_state")
+        typed = row.get("typed_state")
+        if not isinstance(coverage, str) or not isinstance(typed, str):
+            raise FinalOracleProducerError("LiTS checkpoint candidate terminal is malformed")
+        observed_hashes.append(candidate_hash)
+        coverage_counts[coverage] += 1
+        typed_counts[typed] += 1
+
+    if observed_hashes != list(hashes) or role_count != LITS_QUERY_ROLE_COUNT:
+        raise FinalOracleProducerError("LiTS checkpoint candidates do not close over frontier")
+    if dict(sorted(coverage_counts.items())) != LITS_ACCEPTED_TERMINAL_COUNTS:
+        raise FinalOracleProducerError("LiTS checkpoint coverage terminal drift")
+    if dict(sorted(typed_counts.items())) != LITS_ACCEPTED_TYPED_TERMINAL_COUNTS:
+        raise FinalOracleProducerError("LiTS checkpoint typed terminal drift")
+
+    facts = material.get("constituent_i03_fact_manifest")
+    if not isinstance(facts, Sequence) or isinstance(facts, (str, bytes)) or len(facts) != 60:
+        raise FinalOracleProducerError("LiTS checkpoint retained I03 fact closure is incomplete")
+    fact_counts = Counter(
+        fact.get("typed_state") for fact in facts if isinstance(fact, Mapping)
+    )
+    if dict(sorted(fact_counts.items())) != {"SUPPORTED": 60}:
+        raise FinalOracleProducerError("LiTS checkpoint retained I03 fact state drift")
+
+    closure_facts: dict[tuple[str, str, str], Mapping[str, Any]] = {}
+    expected_by_rule = []
+    for row in rows:
+        fields = row["semantic_fields"]
+        for fact in fields.get("constituent_fact_manifest", ()):
+            if not isinstance(fact, Mapping):
+                raise FinalOracleProducerError("LiTS checkpoint candidate fact preimage is malformed")
+            key = _ref_key(fact.get("ref"))
+            previous = closure_facts.setdefault(key, fact)
+            if canonicalize(previous) != canonicalize(fact):
+                raise FinalOracleProducerError("LiTS checkpoint fact preimages conflict")
+        identity = fields["candidate_identity"]
+        expected_by_rule.append({
+            "candidate_hash": row["candidate_hash"],
+            "rule_id": identity.get("rule_id"),
+            "validation": canonicalize(identity.get("validation")),
+            "coverage_state": fields["coverage_state"],
+            "typed_state": row["typed_state"],
+        })
+    ordered_closure = [closure_facts[key] for key in sorted(closure_facts)]
+    if canonicalize(ordered_closure) != canonicalize(facts):
+        raise FinalOracleProducerError("LiTS checkpoint facts do not close over candidate preimages")
+    closure_identity = semantic_hash({
+        "candidate_fact_rows": rows,
+        "constituent_fact_manifest": facts,
+    })
+    if (
+        material.get("constituent_i03_closure_identity") != closure_identity
+        or audit.get("constituent_i03_closure_identity") != closure_identity
+    ):
+        raise FinalOracleProducerError("LiTS checkpoint constituent-I03 closure identity drift")
+
+    expected_precheck = {
+        "schema": "FIABC_LITS_CURRENT_NEUTRAL_I05_PRECHECK@1.0.0",
+        "candidate_count": LITS_CANDIDATE_COUNT,
+        "query_role_count": LITS_QUERY_ROLE_COUNT,
+        "coverage_state_counts": LITS_ACCEPTED_TERMINAL_COUNTS,
+        "typed_state_counts": LITS_ACCEPTED_TYPED_TERMINAL_COUNTS,
+        "empirical_fact_state_counts": {"SUPPORTED": 60},
+        "candidate_processes_started": 0,
+    }
+    for key, value in expected_precheck.items():
+        if canonicalize(precheck.get(key)) != canonicalize(value):
+            raise FinalOracleProducerError(f"LiTS checkpoint precheck {key} drift")
+    if canonicalize(precheck.get("by_rule")) != canonicalize(expected_by_rule):
+        raise FinalOracleProducerError("LiTS checkpoint precheck candidate rows drift")
+    precheck_facts = precheck.get("empirical_facts")
+    if not isinstance(precheck_facts, Sequence) or isinstance(precheck_facts, (str, bytes)):
+        raise FinalOracleProducerError("LiTS checkpoint precheck fact preimages are absent")
+    expected_precheck_fact_refs = [
+        {"fact_ref": fact["ref"], "typed_state": fact["typed_state"]}
+        for fact in facts
+    ]
+    observed_precheck_fact_refs = [
+        {"fact_ref": fact.get("fact_ref"), "typed_state": fact.get("typed_state")}
+        for fact in precheck_facts
+        if isinstance(fact, Mapping)
+    ]
+    if canonicalize(observed_precheck_fact_refs) != canonicalize(expected_precheck_fact_refs):
+        raise FinalOracleProducerError("LiTS checkpoint precheck fact closure drift")
+    if precheck.get("current_execution_identity") != execution.get("execution_identity"):
+        raise FinalOracleProducerError("LiTS checkpoint precheck execution identity drift")
+    if precheck.get("current_semantic_replay_identity") != material.get(
+        "expected_learned_product", {}
+    ).get("semantic_identity"):
+        raise FinalOracleProducerError("LiTS checkpoint precheck semantic identity drift")
+
+    execution_body = dict(execution)
+    execution_identity = execution_body.pop("execution_identity", None)
+    if (
+        not isinstance(execution_identity, str)
+        or len(execution_identity) != 64
+        or semantic_hash(execution_body) != execution_identity
+    ):
+        raise FinalOracleProducerError("LiTS checkpoint I05 execution receipt identity drift")
+    _check_zero_candidate_provenance(audit, "LiTS materialization checkpoint")
+    if (
+        audit.get("runtime_catalog_identity") != LITS_RUNTIME_CATALOG
+        or audit.get("current_i05_execution_identity") != execution_identity
+        or audit.get("constituent_i03_fact_count") != 60
+        or audit.get("exact_ref_count") != len(material.get("exact_ref_manifest", ()))
+        or audit.get("representation_authority")
+        != LITS_REPRESENTATION_AUTHORITY_REF.as_dict()
+        or audit.get("accepted_legacy_facade_blob") != LITS_LEGACY_FACADE_BLOB
+    ):
+        raise FinalOracleProducerError("LiTS checkpoint authority/audit identity drift")
+
+    learned = material.get("expected_learned_product")
+    if not isinstance(learned, Mapping):
+        raise FinalOracleProducerError("LiTS checkpoint learned product is absent")
+    rebuilt_learned = _bind_current_lits_execution_to_astra(
+        execution_receipt=execution,
+        semantic_replay_identity=learned.get("semantic_identity"),
+        terminal_counts=LITS_ACCEPTED_TERMINAL_COUNTS,
+        candidate_count=LITS_CANDIDATE_COUNT,
+        query_role_count=LITS_QUERY_ROLE_COUNT,
+    )
+    if canonicalize(rebuilt_learned) != canonicalize(learned):
+        raise FinalOracleProducerError("LiTS checkpoint learned product does not bind its I05 receipt")
+
+    projection = material.get("projection_and_release_refs")
+    if not isinstance(projection, Mapping) or projection.get("projection_identity") != LITS_PROJECTION_IDENTITY:
+        raise FinalOracleProducerError("LiTS checkpoint projection identity drift")
+    if (
+        projection.get("c11_release_identity") != LITS_RUNTIME_RELEASE
+        or projection.get("c11_replay_identity") != LITS_RUNTIME_REPLAY
+    ):
+        raise FinalOracleProducerError("LiTS checkpoint successor release/replay identity drift")
+
+    summary = material.get("astra_shaped_empirical_summary")
+    if not isinstance(summary, Mapping):
+        raise FinalOracleProducerError(
+            "LiTS checkpoint lacks parity-ready ASTRA-shaped empirical summary"
+        )
+    if summary.get("schema") != "FIABC_LITS_ASTRA_SHAPED_EMPIRICAL_SUMMARY@1.0.0":
+        raise FinalOracleProducerError("LiTS checkpoint ASTRA-shaped summary schema drift")
+    summary_frontier = summary.get("frontier")
+    logical_rows = summary.get("logical_candidate_identity")
+    if (
+        not isinstance(summary_frontier, Mapping)
+        or summary_frontier.get("candidate_count") != LITS_CANDIDATE_COUNT
+        or summary_frontier.get("query_role_count") != LITS_QUERY_ROLE_COUNT
+        or summary_frontier.get("frontier_seal") != LITS_FRONTIER_SEAL
+        or not isinstance(logical_rows, Sequence)
+        or isinstance(logical_rows, (str, bytes))
+        or len(logical_rows) != LITS_CANDIDATE_COUNT
+        or len({
+            row.get("logical_candidate_key")
+            for row in logical_rows
+            if isinstance(row, Mapping)
+        }) != LITS_CANDIDATE_COUNT
+    ):
+        raise FinalOracleProducerError("LiTS checkpoint logical parity frontier drift")
+    p2_rows = summary.get("P2")
+    if not isinstance(p2_rows, Sequence) or isinstance(p2_rows, (str, bytes)) or len(p2_rows) != 18:
+        raise FinalOracleProducerError("LiTS checkpoint P2 logical frontier drift")
+    if canonicalize(summary.get("final_envelope")) != canonicalize(LITS_ACCEPTED_TERMINAL_COUNTS):
+        raise FinalOracleProducerError("LiTS checkpoint ASTRA-shaped terminal envelope drift")
+    summary_identity = semantic_hash(summary)
+    if audit.get("astra_shaped_empirical_summary_identity") != summary_identity:
+        raise FinalOracleProducerError("LiTS checkpoint ASTRA-shaped summary identity drift")
+
+    return material, audit, execution, precheck
+
+
+def _write_lits_materialization_checkpoint(
+    *,
+    path: Path,
+    material: Mapping[str, Any],
+    audit: Mapping[str, Any],
+    execution_receipt: Mapping[str, Any],
+    precheck: Mapping[str, Any],
+) -> tuple[str, str]:
+    path = Path(path).resolve()
+    if path.exists():
+        raise FinalOracleProducerError("LiTS materialization checkpoint path already exists")
+    body = canonicalize({
+        "schema": LITS_MATERIALIZATION_CHECKPOINT_SCHEMA,
+        "source_identity": material.get("source_identity"),
+        "material": material,
+        "audit": audit,
+        "execution_receipt": execution_receipt,
+        "precheck": precheck,
+    })
+    _validate_lits_materialization_checkpoint_body(body)
+    checkpoint_identity = hashlib.sha256(_canonical_bytes(body)).hexdigest()
+    document = {**body, "checkpoint_sha256": checkpoint_identity}
+    document_sha = _write_json(path, document)
+    return checkpoint_identity, document_sha
+
+
+def _load_lits_materialization_checkpoint(
+    path: Path,
+) -> tuple[Mapping[str, Any], Mapping[str, Any], Mapping[str, Any], Mapping[str, Any], str, str]:
+    path = Path(path).resolve()
+    raw = path.read_bytes()
+    document = _load_json(path)
+    if raw != _canonical_bytes(document):
+        raise FinalOracleProducerError("LiTS materialization checkpoint is not canonical JSON")
+    checkpoint_identity = document.get("checkpoint_sha256")
+    body = {key: value for key, value in document.items() if key != "checkpoint_sha256"}
+    observed_identity = hashlib.sha256(_canonical_bytes(body)).hexdigest()
+    if checkpoint_identity != observed_identity:
+        raise FinalOracleProducerError("LiTS materialization checkpoint digest mismatch")
+    material, audit, execution, precheck = _validate_lits_materialization_checkpoint_body(body)
+    document_sha = hashlib.sha256(raw).hexdigest()
+    return material, audit, execution, precheck, checkpoint_identity, document_sha
 
 
 def produce_lits_local_oracle(
     *,
-    source_path: Path,
+    source_path: Path | None = None,
     repo_root: Path,
     work_root: Path,
     output_path: Path,
+    checkpoint_output: Path | None = None,
+    resume_checkpoint: Path | None = None,
     freeze_sequence: int = 30,
 ) -> Mapping[str, Any]:
-    material, audit, execution_receipt = _neutral_lits_material(
-        source_path=source_path,
-        repo_root=repo_root,
-        work_root=work_root,
-    )
     repo_root = Path(repo_root).resolve()
+    work_root = Path(work_root).resolve()
+    output_path = Path(output_path).resolve()
+    _reject_candidate_owned_path(output_path, work_root, "LiTS oracle output")
+
+    if resume_checkpoint is not None:
+        if source_path is not None or checkpoint_output is not None:
+            raise FinalOracleProducerError(
+                "LiTS checkpoint resume may not also specify source or checkpoint output"
+            )
+        if (work_root / "cells").exists():
+            raise FinalOracleProducerError(
+                "LiTS checkpoint resume requires a work root without candidate-owned cells"
+            )
+        resume_path = Path(resume_checkpoint).resolve()
+        if resume_path == output_path:
+            raise FinalOracleProducerError("LiTS checkpoint and oracle output paths must differ")
+        _reject_candidate_owned_path(resume_path, work_root, "LiTS materialization checkpoint")
+        (
+            material,
+            audit,
+            execution_receipt,
+            _precheck,
+            checkpoint_identity,
+            checkpoint_document_sha,
+        ) = _load_lits_materialization_checkpoint(resume_path)
+        source_access = {
+            "mode": "RESUME_VERIFIED_PARITY_READY_I05_CHECKPOINT",
+            "source_hash_passes": 0,
+            "decoder_calls": 0,
+        }
+        checkpoint_path = resume_path
+    else:
+        if source_path is None:
+            raise FinalOracleProducerError(
+                "LiTS source path or parity-ready verified I05 checkpoint is required"
+            )
+        material, audit, execution_receipt, precheck = _neutral_lits_material(
+            source_path=source_path,
+            repo_root=repo_root,
+            work_root=work_root,
+        )
+        checkpoint_path = (
+            Path(checkpoint_output).resolve()
+            if checkpoint_output is not None
+            else work_root
+            / "court"
+            / "oracle_producers"
+            / "LITS_I"
+            / LITS_MATERIALIZATION_CHECKPOINT_NAME
+        )
+        if checkpoint_path == output_path:
+            raise FinalOracleProducerError("LiTS checkpoint and oracle output paths must differ")
+        _reject_candidate_owned_path(
+            checkpoint_path, work_root, "LiTS materialization checkpoint"
+        )
+        checkpoint_identity, checkpoint_document_sha = _write_lits_materialization_checkpoint(
+            path=checkpoint_path,
+            material=material,
+            audit=audit,
+            execution_receipt=execution_receipt,
+            precheck=precheck,
+        )
+        source_access = {
+            "mode": "FRESH_SOURCE_BACKED_PARITY_READY_I05_MATERIALIZATION",
+            "source_hash_passes": 1,
+            "decoder_calls": 1,
+        }
     prior_product = _git_json(repo_root, LITS_ASTRA_D04_R2_COMMIT, ASTRA_PRODUCT_PATH)
     prior_roles = _git_json(repo_root, LITS_ASTRA_D04_R2_COMMIT, ASTRA_ROLE_PATH)
     prior_replay = _git_json(repo_root, LITS_ASTRA_D04_R2_COMMIT, ASTRA_REPLAY_PATH)
@@ -993,6 +1343,11 @@ def produce_lits_local_oracle(
         "oracle_identity_sha256": identity,
         "oracle_document_sha256": output_sha,
         "output_path": str(Path(output_path)),
+        "materialization_checkpoint_path": str(checkpoint_path),
+        "materialization_checkpoint_schema": LITS_MATERIALIZATION_CHECKPOINT_SCHEMA,
+        "materialization_checkpoint_sha256": checkpoint_identity,
+        "materialization_checkpoint_document_sha256": checkpoint_document_sha,
+        "source_access": source_access,
         "astra_substantive_parity_receipt_path": str(parity_path),
         "astra_substantive_parity_receipt_identity": parity_receipt["parity_receipt_identity"],
         "astra_substantive_parity_document_sha256": parity_document_sha,
@@ -1182,9 +1537,12 @@ def _parser() -> argparse.ArgumentParser:
         help="Candidate-neutral local LiTS common-path oracle producer",
     )
     lits.add_argument("--repo-root", required=True, type=Path)
-    lits.add_argument("--source", required=True, type=Path)
+    source = lits.add_mutually_exclusive_group(required=True)
+    source.add_argument("--source", type=Path)
+    source.add_argument("--resume-checkpoint", type=Path)
     lits.add_argument("--work-root", required=True, type=Path)
     lits.add_argument("--output", required=True, type=Path)
+    lits.add_argument("--checkpoint-output", type=Path)
     lits.add_argument("--freeze-sequence", type=int, default=30)
 
     t3 = sub.add_parser(
@@ -1212,6 +1570,8 @@ def main(argv: Sequence[str] | None = None) -> int:
             repo_root=args.repo_root,
             work_root=args.work_root,
             output_path=args.output,
+            checkpoint_output=args.checkpoint_output,
+            resume_checkpoint=args.resume_checkpoint,
             freeze_sequence=args.freeze_sequence,
         )
     elif args.command == "freeze-t3":
