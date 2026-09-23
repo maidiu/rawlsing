@@ -581,8 +581,11 @@ def _validate_lits_canonical_empirical_closure(
         or isinstance(release_refs, (str, bytes))
         or len(release_refs) != 1
         or canonicalize(release_doc.get("release_ref")) != canonicalize(release_refs[0])
-        or release_doc.get("semantic_release_hash") != LITS_RUNTIME_RELEASE
-        or release_doc.get("replay_ref", {}).get("content_hash") != LITS_RUNTIME_REPLAY
+        or release_doc.get("semantic_release_hash") != release_refs[0].get("content_hash")
+        or projection_and_release_refs.get("c11_release_identity")
+        != release_doc.get("semantic_release_hash")
+        or projection_and_release_refs.get("c11_replay_identity")
+        != release_doc.get("replay_ref", {}).get("content_hash")
     ):
         raise FinalOracleProducerError("LiTS retained C11 release/replay identity drift")
 
