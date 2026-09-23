@@ -273,7 +273,14 @@ REPRESENTATION_AUTHORITY_MATERIAL = {
                 {
                     "native_code": code,
                     "physical_state": row["physical_state_by_code"][code],
-                    "physical_declaration": row["physical_declaration_by_code"][code],
+                    "physical_declaration": (
+                        None
+                        if row["physical_declaration_by_code"][code] is None
+                        else {
+                            "kind": row["physical_declaration_by_code"][code]["kind"],
+                            "value_r5": dict(AUTHORIZED_R5_TOKENS[code]),
+                        }
+                    ),
                     "expected_binding_key": row["expected_binding_key_by_code"][code],
                     "authorized_r5_token": dict(AUTHORIZED_R5_TOKENS[code]),
                 }
