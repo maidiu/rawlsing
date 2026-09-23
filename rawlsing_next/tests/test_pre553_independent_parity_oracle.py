@@ -360,6 +360,24 @@ def test_candidate_owned_oracle_dependency_is_rejected():
         _lits_oracle(dependency_owner="CANDIDATE_A")
 
 
+def test_bounded_physical_representation_authority_is_an_explicit_neutral_dependency():
+    oracle = _lits_oracle(
+        dependency_owner="BOUNDED_PHYSICAL_REPRESENTATION_AUTHORITY"
+    )
+
+    dependency_classes = {
+        item["owner_class"]
+        for item in oracle["oracle_build_provenance"]["dependencies"]
+    }
+    assert "BOUNDED_PHYSICAL_REPRESENTATION_AUTHORITY" in dependency_classes
+    assert verify_frozen_oracle(oracle) == oracle["oracle_identity_sha256"]
+
+
+def test_unrecognized_oracle_dependency_owner_still_fails_closed():
+    with pytest.raises(OracleIndependenceError, match="unrecognized dependency owner class"):
+        _lits_oracle(dependency_owner="UNAUTHORIZED_DEPENDENCY_OWNER")
+
+
 def test_oracle_cannot_freeze_after_candidate_output_exists():
     freeze = FreezeContext(
         freeze_sequence=20,

@@ -1,0 +1,57 @@
+{
+  "schema": "FIABC_LITS_R5B_SUCCESSOR_ORACLE_FREEZE_BLOCKER@1.0.0",
+  "status": "I05_49_1_PRECHECK_PASS__FINAL_ORACLE_BUILD_FAILED_CANDIDATE_NEUTRAL",
+  "repair_branch": "agent/rabochii-premain-fiabc-lits-representation-authority-repair-r1",
+  "source_free_code_head": "f6c98c0ea3d5b0a4d37cbfa28934f32f92757e2c",
+  "source": {
+    "name": "LITS_I",
+    "sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09"
+  },
+  "runtime": {
+    "implementation": "CPython",
+    "python": "3.11.3",
+    "system": "Darwin",
+    "machine": "x86_64",
+    "pyreadstat": "1.3.6",
+    "pyarrow": "25.0.1",
+    "runtime_gate": "PASS"
+  },
+  "i05_precheck": {
+    "sha256": "1ffbcb0f02e0c6b89a09cb255ce9342cbcb162ab2a1302de0ca8ade24990eed6",
+    "candidate_count": 50,
+    "query_role_count": 77,
+    "candidate_processes_started": 0,
+    "coverage_state_counts": {
+      "EVALUATED_SUPPORTED": 49,
+      "EVALUATED_VALID_EMPTY": 1
+    },
+    "typed_state_counts": {
+      "DISCOVERED_RESULT_SUPPORTED": 49,
+      "VALID_EMPTY": 1
+    },
+    "empirical_fact_state_counts": {
+      "SUPPORTED": 60
+    }
+  },
+  "producer": {
+    "exit_code": 1,
+    "stdout_receipt_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "99666f4196d843c77ca2c5db9ea5fbe9ab1b582f476227003cf11640d0d29c3d",
+    "oracle_document_materialized": false,
+    "candidate_processes_started": 0,
+    "failure_type": "OracleIndependenceError",
+    "failure_message": "unrecognized dependency owner class: 'BOUNDED_PHYSICAL_REPRESENTATION_AUTHORITY'",
+    "failure_site": "rawlsing_next.pre553_independent_parity_oracle._assert_candidate_neutral_provenance",
+    "traceback_frames": [
+      "rawlsing_next/fiabc_final_oracle_freeze_producers.py:1144 in <module>",
+      "rawlsing_next/fiabc_final_oracle_freeze_producers.py:1123 in main",
+      "rawlsing_next/fiabc_final_oracle_freeze_producers.py:893 in produce_lits_local_oracle",
+      "rawlsing_next/pre553_independent_parity_oracle.py:553 in build_lits_i_oracle",
+      "rawlsing_next/pre553_independent_parity_oracle.py:412 in _build_oracle_content",
+      "rawlsing_next/pre553_independent_parity_oracle.py:290 in _assert_candidate_neutral_provenance"
+    ]
+  },
+  "host_local_evidence_root": "/private/tmp/fiabc-lits-f05-qualified.bLpqSC",
+  "host_local_evidence_is_portable": false,
+  "diagnosis": "The neutral-oracle dependency allowlist rejected the producer's explicitly typed bounded physical representation authority. Preserve this distinct provenance owner class, retain unknown-owner and candidate-owner rejection, then rerun source-free qualification and a fresh LiTS source pass."
+}
