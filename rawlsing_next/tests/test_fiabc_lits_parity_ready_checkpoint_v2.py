@@ -283,7 +283,7 @@ def _fixture():
                 ],
                 "coverage_state": coverage,
                 "support_uncertainty_state": canonicalize(receipt.support_uncertainty_state),
-                "replay_ref": receipt.replay_ref.as_dict(),
+                "replay_ref": canonicalize(receipt.replay_ref),
             },
         })
 
