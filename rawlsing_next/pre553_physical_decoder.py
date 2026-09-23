@@ -18,6 +18,8 @@ import math
 from pathlib import Path
 from typing import Any, Iterator, Mapping
 
+from rawlsing_next.pre553_r5_codec import normalize_decoder_physical_value
+
 
 COMPATIBILITY_ONLY = "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY"
 PHYSICAL_METADATA_CONTRACT = "PRE553_PHYSICAL_METADATA@1.0.0"
@@ -121,7 +123,7 @@ class PhysicalSourceIncidence:
             batch: list[PhysicalCell] = []
             for local_row, row in enumerate(frame.itertuples(index=False, name=None), 1):
                 for variable, value in zip(variables, row):
-                    raw = _jsonable(value)
+                    raw = _physical_value(value)
                     state, declaration = classify_physical_value(raw, declarations[variable.name])
                     batch.append(PhysicalCell(row_offset + local_row, variable.ordinal, variable.name, raw, state,
                                               declaration, variable.value_labels.get(str(raw))))
@@ -176,6 +178,20 @@ def _jsonable(value: Any) -> Any:
         return [_jsonable(v) for v in value]
     return str(value)
 
+
+def _physical_value(value: Any) -> Any:
+    """Preserve decoder-native date/time objects only through the explicit opaque R5 seam."""
+    import datetime as _dt
+    if type(value) in {_dt.datetime, _dt.date, _dt.time}:
+        return normalize_decoder_physical_value(value)
+    if hasattr(value, "item"):
+        try:
+            item = value.item()
+            if type(item) in {_dt.datetime, _dt.date, _dt.time}:
+                return normalize_decoder_physical_value(item)
+        except Exception:
+            pass
+    return _jsonable(value)
 
 def _sha(path: Path) -> str:
     digest = hashlib.sha256()
@@ -525,6 +541,7 @@ __all__ = [
     "build_physical_metadata_payload",
     "compute_physical_metadata_digest",
     "classify_physical_value",
+    "_physical_value",
     "decode_sav",
     "decode_dta",
 ]
