@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import copy
 import importlib.util
 import json
 import subprocess
@@ -13,6 +14,11 @@ from rawlsing_next.fiabc_lits_cross_schema_candidate_identity import (
     g02_execution_candidate_hash,
     logical_candidate_key,
     logical_candidate_material,
+)
+from rawlsing_next.fiabc_lits_astra_substantive_parity import (
+    LitsAstraSubstantiveParityError,
+    _current_logical_identity,
+    _historical_logical_identity,
 )
 from rawlsing_next.pre553_empirical_objects import canonicalize, semantic_hash
 
@@ -159,3 +165,130 @@ def test_native_hash_is_not_the_shared_logical_key(real_current_bindings):
         assert row["current_pre553_candidate_hash"] != row["logical_candidate_key"]
         material = canonicalize(row["logical_candidate_material"])
         assert semantic_hash(material) == row["logical_candidate_key"]
+
+
+def _reseal_binding(binding):
+    material = {k: v for k, v in binding.items() if k != "binding_identity"}
+    binding["binding_identity"] = semantic_hash(canonicalize(material))
+    return binding
+
+
+def _one_p2_binding(real_current_bindings):
+    return copy.deepcopy(next(row for row in real_current_bindings if row["lane"] == "P2"))
+
+
+def test_changed_historical_g02_hash_with_fixed_semantics_fails_closed():
+    product = _astra_product()
+    product["P2_conditioned_frontier"][0]["candidate_hash"] = "0" * 64
+    with pytest.raises(LitsAstraSubstantiveParityError, match="native hash"):
+        _historical_logical_identity(product)
+
+
+def test_changed_current_pre553_hash_with_fixed_native_preimage_fails_closed(real_current_bindings):
+    rows = copy.deepcopy(list(real_current_bindings))
+    target = next(row for row in rows if row["lane"] == "P2")
+    target["current_pre553_candidate_hash"] = "1" * 64
+    target["current_pre553_candidate_id"] = (
+        "urn:rawlsing:pre553:i05:candidate:sha256:" + target["current_pre553_candidate_hash"]
+    )
+    _reseal_binding(target)
+    with pytest.raises(LitsAstraSubstantiveParityError, match="native candidate hash/preimage"):
+        _current_logical_identity(rows)
+
+
+def test_historical_g02_hash_injected_as_current_pre553_hash_fails_closed(real_current_bindings):
+    product = _astra_product()
+    historical = product["P2_conditioned_frontier"][0]
+    key = logical_candidate_key(candidate_semantics(lane="P2", parameters=historical["parameters"]))
+    rows = copy.deepcopy(list(real_current_bindings))
+    target = next(row for row in rows if row["logical_candidate_key"] == key)
+    target["current_pre553_candidate_hash"] = historical["candidate_hash"]
+    target["current_pre553_candidate_id"] = (
+        "urn:rawlsing:pre553:i05:candidate:sha256:" + historical["candidate_hash"]
+    )
+    _reseal_binding(target)
+    with pytest.raises(LitsAstraSubstantiveParityError, match="native candidate hash/preimage"):
+        _current_logical_identity(rows)
+
+
+@pytest.mark.parametrize(
+    "role,ref_field,error_fragment",
+    [
+        ("CONDITION", "current_predicate_ref", "CONDITION predicate/native-preimage"),
+        ("CONDITION", "current_query_ref", "CONDITION query/native-preimage"),
+        ("BASELINE", "current_predicate_ref", "BASELINE predicate/native-preimage"),
+        ("BASELINE", "current_query_ref", "BASELINE query/native-preimage"),
+    ],
+)
+def test_p2_exact_current_role_ref_mutation_fails_closed(
+    real_current_bindings, role, ref_field, error_fragment
+):
+    rows = copy.deepcopy(list(real_current_bindings))
+    target = next(row for row in rows if row["lane"] == "P2")
+    role_row = next(x for x in target["role_bindings"] if x["role"] == role)
+    hostile = copy.deepcopy(role_row[ref_field])
+    hostile["content_hash"] = "2" * 64
+    hostile["object_id"] = f"urn:hostile:{role.lower()}:{ref_field}:sha256:{'2' * 64}"
+    role_row[ref_field] = hostile
+    _reseal_binding(target)
+    with pytest.raises(LitsAstraSubstantiveParityError, match=error_fragment):
+        _current_logical_identity(rows)
+
+
+def test_p2_query_role_semantic_template_drift_fails_closed(real_current_bindings):
+    rows = copy.deepcopy(list(real_current_bindings))
+    target = next(row for row in rows if row["lane"] == "P2")
+    condition = next(x for x in target["role_bindings"] if x["role"] == "CONDITION")
+    condition["logical_query_template_id"] = "T_Q301_2_RAW"
+    _reseal_binding(target)
+    with pytest.raises(LitsAstraSubstantiveParityError, match="logical query-template"):
+        _current_logical_identity(rows)
+
+
+@pytest.mark.parametrize("field,value", [("q301_2", 5), ("q310", 2), ("q311", 3)])
+def test_p2_parameter_substitution_with_native_refs_held_fixed_fails_closed(
+    real_current_bindings, field, value
+):
+    rows = copy.deepcopy(list(real_current_bindings))
+    target = next(
+        row
+        for row in rows
+        if row["lane"] == "P2"
+        and row["logical_candidate_material"]["candidate_semantics"]["parameters"]
+        == {"q301_2": 1, "q310": 1, "q311": 1}
+    )
+    params = {"q301_2": 1, "q310": 1, "q311": 1}
+    params[field] = value
+    semantics = candidate_semantics(lane="P2", parameters=params)
+    target["logical_candidate_material"] = logical_candidate_material(semantics)
+    target["logical_candidate_key"] = logical_candidate_key(semantics)
+    _reseal_binding(target)
+    with pytest.raises(LitsAstraSubstantiveParityError):
+        _current_logical_identity(rows)
+
+
+def test_distinct_current_candidates_cannot_be_forced_onto_one_shared_key(real_current_bindings):
+    rows = copy.deepcopy(list(real_current_bindings))
+    first, second = [row for row in rows if row["lane"] == "P2"][:2]
+    second["logical_candidate_key"] = first["logical_candidate_key"]
+    _reseal_binding(second)
+    with pytest.raises(LitsAstraSubstantiveParityError, match="key/material"):
+        _current_logical_identity(rows)
+
+
+def test_arithmetic_equality_cannot_substitute_for_exact_candidate_semantics(real_current_bindings):
+    rows = copy.deepcopy(list(real_current_bindings))
+    target = _one_p2_binding(rows)
+    original_native_hash = target["current_pre553_candidate_hash"]
+    original_roles = copy.deepcopy(target["role_bindings"])
+    semantics = candidate_semantics(
+        lane="P2",
+        parameters={"q301_2": 5, "q310": 3, "q311": 3},
+    )
+    target["logical_candidate_material"] = logical_candidate_material(semantics)
+    target["logical_candidate_key"] = logical_candidate_key(semantics)
+    _reseal_binding(target)
+    assert target["current_pre553_candidate_hash"] == original_native_hash
+    assert target["role_bindings"] == original_roles
+    with pytest.raises(LitsAstraSubstantiveParityError):
+        _current_logical_identity(rows)
