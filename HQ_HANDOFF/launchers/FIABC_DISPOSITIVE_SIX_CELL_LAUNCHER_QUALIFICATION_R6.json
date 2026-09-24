@@ -1,0 +1,30 @@
+{
+  "schema": "RAWLSING_FIABC_DISPOSITIVE_LAUNCHER_QUALIFICATION_R6@1.0.0",
+  "status": "PASS__QUALIFIED_EXECUTION_HEAD_REBIND_ONLY__MEASURED_DRIVER_INVOCATION_UNCHANGED",
+  "qualified_execution_head": "3d8f2ad62600b6777dcb23a28404a067502e77a0",
+  "protected_execution_branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+  "previous_launcher_blob": "6382df7a6930d1def32ea3b555d9d0ef046d8472",
+  "current_launcher_blob": "64fb6bad86b739b5c930d745fa80191145fc508b",
+  "rebind_commit": "822e8908c8305ae5cec64cbfd990ee549c58ee66",
+  "delta": {
+    "changed_files": [
+      "HQ_HANDOFF/launchers/RUN_DISPOSITIVE_FIABC_SIX_CELL.sh"
+    ],
+    "additions": 1,
+    "deletions": 1,
+    "semantic_change": "EXPECTED_HEAD only"
+  },
+  "checks": {
+    "expected_head_is_qualified_implementation": true,
+    "old_expected_head_absent": true,
+    "preflight_uses_package_module": true,
+    "measured_run_uses_package_module": true,
+    "measured_run_has_no_B": true,
+    "mechanical_preflight_receipt_gate_preserved": true,
+    "preflight_green_marker_preserved": true,
+    "no_pythonpath_injection": true,
+    "no_global_pythondontwritebytecode_export": true
+  },
+  "measured_execution_performed": false,
+  "source_access_performed": false
+}
