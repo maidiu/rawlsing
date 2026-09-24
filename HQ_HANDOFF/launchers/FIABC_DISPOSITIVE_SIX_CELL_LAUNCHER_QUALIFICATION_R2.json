@@ -1,0 +1,47 @@
+{
+  "schema": "RAWLSING_FIABC_DISPOSITIVE_LAUNCHER_QUALIFICATION@1.1.0",
+  "status": "PASS__PREFLIGHT_BYTECODE_SELF_CONTAMINATION_REPAIRED__MEASURED_RUN_ENVIRONMENT_UNCHANGED",
+  "blocker": {
+    "observed": "rawlsing_next/__pycache__/ created by Python module import before succession producer clean-worktree gate",
+    "classification": "CONTROL_PLANE_LAUNCHER_SELF_CONTAMINATION__NO_CANDIDATE_STARTED__NO_COURT_MEASUREMENT",
+    "failed_component": "rawlsing_next.fiabc_succession_producer clean-worktree precondition"
+  },
+  "repair": {
+    "launcher_path": "HQ_HANDOFF/launchers/RUN_DISPOSITIVE_FIABC_SIX_CELL.sh",
+    "repair_commit": "d0838133148d89866fcbbeefaf31d5b64adf036a",
+    "launcher_git_blob_sha1": "43d250b36cc6dbba831b686a225b14497a2232e8",
+    "scope": [
+      "python -B -m rawlsing_next.fiabc_succession_producer",
+      "python -B -m rawlsing_next.fiabc_succession_preflight",
+      "python -B rawlsing_next/ee_p2x_darwin_court_driver.py --preflight"
+    ],
+    "measured_run_changed": false,
+    "measured_run_python_B": false,
+    "global_PYTHONDONTWRITEBYTECODE": false,
+    "production_python_changed": false,
+    "protected_execution_branch_changed": false
+  },
+  "regression_assertions": {
+    "exact_execution_head": "b53ff08921af263b9db4d1ad038f35fbc12b990a",
+    "producer_has_scoped_B": true,
+    "succession_preflight_has_scoped_B": true,
+    "driver_preflight_has_scoped_B": true,
+    "measured_driver_run_has_scoped_B": false,
+    "produce_lits_absent": true,
+    "freeze_t3_absent": true,
+    "exact_t3_sha256": "7dfb62362b983b92dee2774d862a46c0c0ce3ca2c3bb48850e0f400346936908",
+    "exact_pre_candidate_stop": "203fae32dc31ad6afe6dd2e85aed0ddf1a262d9a93efa6597a0c09173c64b384"
+  },
+  "retry_law": {
+    "preserve_failed_work_root": true,
+    "do_not_resume_failed_preflight_root": true,
+    "use_fresh_persistent_work_root": true,
+    "fresh_or_clean_protected_checkout_required": true,
+    "answer_key_unchanged": true
+  },
+  "benchmark_activity": {
+    "candidate_processes": 0,
+    "candidate_outputs": 0,
+    "measured_p2x": false
+  }
+}
