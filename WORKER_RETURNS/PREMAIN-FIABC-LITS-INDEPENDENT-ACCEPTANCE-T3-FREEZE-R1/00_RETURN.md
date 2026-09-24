@@ -13,4 +13,4 @@ No LiTS or WVS raw source was opened, hashed, or decoded. Candidate processes an
 See [RETURN.json](RETURN.json), [canonical closure audit](canonical_object_closure_audit.json), [LiTS acceptance receipt](independent_lits_acceptance.json), [WVS7 acceptance receipt](wvs7_standard_oracle_acceptance.json), [T3 receipt](t3_acceptance_receipt.json), [qualification receipt](qualification/qualification_receipt.json), and [file hash manifest](file_hash_manifest.json).
 
 
-Acceptance evidence commit and proposed HQ fast-forward target: `7d66d94f8d683f451c2b0f551ccbd6464f97cd31`. Remote readback verified 28 changed files byte-for-byte. Protected branch read back at `78caf7eb4396dd576cf478c860372b7e26455cd9`.
+Proposed HQ fast-forward target: `b53ff08921af263b9db4d1ad038f35fbc12b990a`; this commit contains the PASS return, remote readback receipt, accepted T3 freeze, PRE_CANDIDATE_STOP, and full acceptance packet. Remote readback verified 28 changed files byte-for-byte. Protected branch read back at `78caf7eb4396dd576cf478c860372b7e26455cd9`.
