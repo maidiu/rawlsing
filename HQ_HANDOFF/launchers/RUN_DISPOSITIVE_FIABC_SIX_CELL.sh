@@ -226,7 +226,18 @@ T5_PREFLIGHT="$WORK_ROOT/court/fiabc_t5_succession_preflight.json"
 
 "$PYTHON_BIN" -B -m rawlsing_next.fiabc_succession_preflight   --manifest "$SUCCESSION_MANIFEST"   --lifecycle-context "$LIFECYCLE_CONTEXT"   --repo-root "$FIABC_REPO_ROOT"   --output "$DIRECT_PREFLIGHT"
 
+set +e
 "$PYTHON_BIN" -B rawlsing_next/ee_p2x_darwin_court_driver.py   --preflight   --continuation-map "$CONTINUATION_MAP"   --current-court-contract "$COURT_CONTRACT"   --succession-manifest "$SUCCESSION_MANIFEST"   --succession-lifecycle-context "$LIFECYCLE_CONTEXT"   --work-root "$WORK_ROOT"   --repo-root "$FIABC_REPO_ROOT"   --lits-path "$LITS_PATH"   --wvs-path "$WVS_PATH"   >"$WORK_ROOT/court/logs/preflight.stdout.log"   2>"$WORK_ROOT/court/logs/preflight.stderr.log"
+preflight_rc=$?
+set -e
+if [[ "$preflight_rc" -ne 0 ]]; then
+  printf 'FIABC_DRIVER_PREFLIGHT_FAILED__EXIT_%s\n' "$preflight_rc" >&2
+  printf '%s\n' '--- preflight stderr ---' >&2
+  cat "$WORK_ROOT/court/logs/preflight.stderr.log" >&2 || true
+  printf '%s\n' '--- preflight stdout ---' >&2
+  cat "$WORK_ROOT/court/logs/preflight.stdout.log" >&2 || true
+  exit "$preflight_rc"
+fi
 
 [[ -f "$T5_PREFLIGHT" ]] || die "driver preflight did not emit $T5_PREFLIGHT"
 
