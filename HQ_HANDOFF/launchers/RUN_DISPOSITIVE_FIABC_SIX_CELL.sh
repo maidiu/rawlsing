@@ -227,7 +227,7 @@ T5_PREFLIGHT="$WORK_ROOT/court/fiabc_t5_succession_preflight.json"
 "$PYTHON_BIN" -B -m rawlsing_next.fiabc_succession_preflight   --manifest "$SUCCESSION_MANIFEST"   --lifecycle-context "$LIFECYCLE_CONTEXT"   --repo-root "$FIABC_REPO_ROOT"   --output "$DIRECT_PREFLIGHT"
 
 set +e
-"$PYTHON_BIN" -B rawlsing_next/ee_p2x_darwin_court_driver.py   --preflight   --continuation-map "$CONTINUATION_MAP"   --current-court-contract "$COURT_CONTRACT"   --succession-manifest "$SUCCESSION_MANIFEST"   --succession-lifecycle-context "$LIFECYCLE_CONTEXT"   --work-root "$WORK_ROOT"   --repo-root "$FIABC_REPO_ROOT"   --lits-path "$LITS_PATH"   --wvs-path "$WVS_PATH"   >"$WORK_ROOT/court/logs/preflight.stdout.log"   2>"$WORK_ROOT/court/logs/preflight.stderr.log"
+"$PYTHON_BIN" -B -m rawlsing_next.ee_p2x_darwin_court_driver   --preflight   --continuation-map "$CONTINUATION_MAP"   --current-court-contract "$COURT_CONTRACT"   --succession-manifest "$SUCCESSION_MANIFEST"   --succession-lifecycle-context "$LIFECYCLE_CONTEXT"   --work-root "$WORK_ROOT"   --repo-root "$FIABC_REPO_ROOT"   --lits-path "$LITS_PATH"   --wvs-path "$WVS_PATH"   >"$WORK_ROOT/court/logs/preflight.stdout.log"   2>"$WORK_ROOT/court/logs/preflight.stderr.log"
 preflight_rc=$?
 set -e
 if [[ "$preflight_rc" -ne 0 ]]; then
@@ -297,7 +297,7 @@ printf '%s\n' "T3_SHA256=$T3_SHA256"
 printf '%s\n' "PRE_CANDIDATE_STOP=$STOP_IDENTITY_SHA256"
 
 set +e
-"$PYTHON_BIN" rawlsing_next/ee_p2x_darwin_court_driver.py   --run   --continuation-map "$CONTINUATION_MAP"   --current-court-contract "$COURT_CONTRACT"   --succession-preflight-receipt "$T5_PREFLIGHT"   --frozen-upstream-receipt "$WORK_ROOT/court/t3/frozen-upstream.json"   --backend-module "$BACKEND_MODULE"   --work-root "$WORK_ROOT"   --repo-root "$FIABC_REPO_ROOT"   --lits-path "$LITS_PATH"   --wvs-path "$WVS_PATH"   >"$WORK_ROOT/court/logs/measured_run.stdout.log"   2> >(tee "$WORK_ROOT/court/logs/measured_run.stderr.log" >&2)
+"$PYTHON_BIN" -m rawlsing_next.ee_p2x_darwin_court_driver   --run   --continuation-map "$CONTINUATION_MAP"   --current-court-contract "$COURT_CONTRACT"   --succession-preflight-receipt "$T5_PREFLIGHT"   --frozen-upstream-receipt "$WORK_ROOT/court/t3/frozen-upstream.json"   --backend-module "$BACKEND_MODULE"   --work-root "$WORK_ROOT"   --repo-root "$FIABC_REPO_ROOT"   --lits-path "$LITS_PATH"   --wvs-path "$WVS_PATH"   >"$WORK_ROOT/court/logs/measured_run.stdout.log"   2> >(tee "$WORK_ROOT/court/logs/measured_run.stderr.log" >&2)
 rc=$?
 set -e
 
