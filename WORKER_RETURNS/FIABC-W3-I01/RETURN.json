@@ -1,0 +1,108 @@
+{
+  "schema": "FIABC_W3_I01_RETURN@1.0.0",
+  "worker": "FIABC-W3-I01",
+  "repo": "maidiu/rawlsing",
+  "branch": "agent/rabochii-premain-fiabc-w3-i01-diagnostic-successor-r1",
+  "base_sha": "56697a27e94eb9603dfa412a15ab8f1feb819b0c",
+  "return_path": "WORKER_RETURNS/FIABC-W3-I01/",
+  "obligations_implemented": [
+    "IMP01",
+    "IMP03"
+  ],
+  "production_files": [
+    "rawlsing_next/pre553_diagnostics.py"
+  ],
+  "test_files": [
+    "rawlsing_next/tests/test_pre553_diagnostics.py"
+  ],
+  "return_files": [
+    "WORKER_RETURNS/FIABC-W3-I01/00_RETURN.md",
+    "WORKER_RETURNS/FIABC-W3-I01/01_IMPLEMENTATION_DIFF_INVENTORY.md",
+    "WORKER_RETURNS/FIABC-W3-I01/02_TESTS_AND_EXECUTION_PROTOCOL.md",
+    "WORKER_RETURNS/FIABC-W3-I01/03_DIAGNOSTIC_CONTRACT.md",
+    "WORKER_RETURNS/FIABC-W3-I01/RETURN.json"
+  ],
+  "implementation": {
+    "current_owner": "rawlsing_next.pre553_diagnostics",
+    "producer_call_surface": "produce_governed_diagnostics",
+    "replay_call_surface": "replay_governed_diagnostics",
+    "product_kind": "PRE553_DIAGNOSTIC_PRODUCT",
+    "contract_id": "PRE553_GOVERNED_DIAGNOSTIC_SUCCESSOR@1.0.0",
+    "semantic_owner_change": false,
+    "empirical_fact_mutation": false,
+    "i05_frontier_control": false,
+    "structural_authority_effect": false,
+    "source_semantics_effect": false,
+    "historical_runtime_owner_resurrected": false
+  },
+  "metrics_implemented": [
+    "entropy_reduction",
+    "mutual_information",
+    "normalized_mutual_information",
+    "cramers_v",
+    "uplift",
+    "lift",
+    "joint_confidence_when_exact_components_are_supplied"
+  ],
+  "identity_bindings": [
+    "exact I03 fact ref",
+    "exact EmpiricalQuerySpec ref",
+    "exact source release refs",
+    "exact authority refs",
+    "I03 replay ref",
+    "fact producer replay root",
+    "query producer replay root",
+    "source empirical provenance refs",
+    "exact support determinant refs when supplied",
+    "exact joint-confidence determinant refs when supplied",
+    "typed states",
+    "formula contract and result material"
+  ],
+  "negative_state_law": {
+    "propagated_without_numeric_fabrication": [
+      "NONCOMPARABLE",
+      "UNAVAILABLE",
+      "UNRESOLVED",
+      "INTEGRITY_FAILURE",
+      "VALID_EMPTY"
+    ],
+    "underpowered_requires_exact_determinant": true,
+    "positive_nonjoint": "NOT_APPLICABLE",
+    "missing_joint_confidence_components": "UNCERTAINTY_UNQUANTIFIED",
+    "malformed_claimed_joint": "FAIL_CLOSED"
+  },
+  "tests_added": {
+    "file": "rawlsing_next/tests/test_pre553_diagnostics.py",
+    "expected_pytest_cases_after_parameter_expansion": 21,
+    "hostile_boundaries": [
+      "diagnostic cannot become EmpiricalFact truth",
+      "computed diagnostic cannot control I05 frontier",
+      "diagnostic product cannot enter I04 as EmpiricalFact",
+      "diagnostic cannot become structural or semantic authority",
+      "missing authority/release/query identity fails closed",
+      "negative and underpowered states are preserved"
+    ]
+  },
+  "tests_executed": false,
+  "tests_not_executed_and_why": "GitHub/browser repository tooling exposes no shell/pytest runner in this commission; local-machine Codex is explicitly forbidden; no GitHub CI checks were attached to the implementation tip inspected during the worker session. No test result was fabricated.",
+  "exact_commands_for_integrated_execution": [
+    "python -m py_compile rawlsing_next/pre553_diagnostics.py rawlsing_next/tests/test_pre553_diagnostics.py",
+    "python -m pytest -q rawlsing_next/tests/test_pre553_diagnostics.py",
+    "python -m pytest -q rawlsing_next/tests/test_pre553_empirical_query.py rawlsing_next/tests/test_pre553_discovery_exact.py rawlsing_next/tests/test_pre553_structural_admission.py rawlsing_next/tests/test_pre553_diagnostics.py",
+    "python -m pytest -q rawlsing_next/tests/test_pre553_*.py"
+  ],
+  "headline_findings": [
+    "F012 now has a current governed PRE553 quantitative diagnostic producer and replayable diagnostic product.",
+    "F018 now has a distinct replayable quantitative association/joint-confidence diagnostic product contract without conflation with I05 boolean validation or EmpiricalFact truth.",
+    "Joint confidence has no effective-N or other default; exact determinant inputs are mandatory and absence remains UNCERTAINTY_UNQUANTIFIED.",
+    "Diagnostic identity is content-addressed to exact fact/query/release/authority/provenance/replay determinants and recursively immutable.",
+    "Existing I03, I05, I04, source authority, candidate, and terminal owners were not modified."
+  ],
+  "exact_blockers": [],
+  "cross_worker_dependencies": [
+    "A non-null F018 joint-confidence value that requires effective-N must consume the exact I02 effective-N ratio/determinant after fan-in; I01 does not manufacture it."
+  ],
+  "measured_p2x_executed": false,
+  "final_branch_tip_note": "RETURN.json cannot self-embed the commit SHA that contains it. Resolve the exact final branch ref after this file is committed.",
+  "terminal": "FIABC_W3_I01_DIAGNOSTIC_SUCCESSOR_IMPLEMENTED__READY_FOR_FANIN"
+}
