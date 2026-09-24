@@ -5,11 +5,25 @@
   "base_branch": "integration/pre-main-reconciliation-r1",
   "base_commit": "36dbab16e8a82083de54dfc1e1e8228b50fe5b63",
   "qualified_implementation_commit": "818a17908dd0d8c16b8054da80beb765854ae92b",
+  "return_packet_commit": "d351d2beaa6740f75900679816d769657e2f3ca0",
+  "identity_audit_commit": "f340adacf25bc06f0b019f2f612fad67983f2374",
+  "branch_tip_at_identity_audit": "f340adacf25bc06f0b019f2f612fad67983f2374",
+  "branch_tip_resolution_note": "The qualified code head is 818a17908dd0d8c16b8054da80beb765854ae92b. Return and audit commits after it contain documentation only. RETURN.json cannot embed the hash of the commit that contains itself; resolve the published branch ref for the final documentation tip.",
   "commit_genealogy": [
     {
       "commit": "818a17908dd0d8c16b8054da80beb765854ae92b",
       "parent": "36dbab16e8a82083de54dfc1e1e8228b50fe5b63",
       "subject": "FIABC RUN3: qualify source-free repair stack"
+    },
+    {
+      "commit": "d351d2beaa6740f75900679816d769657e2f3ca0",
+      "parent": "818a17908dd0d8c16b8054da80beb765854ae92b",
+      "subject": "Bank FIABC RUN3 repair qualification"
+    },
+    {
+      "commit": "f340adacf25bc06f0b019f2f612fad67983f2374",
+      "parent": "d351d2beaa6740f75900679816d769657e2f3ca0",
+      "subject": "Complete FIABC repair identity audit"
     }
   ],
   "production_files_changed": [
