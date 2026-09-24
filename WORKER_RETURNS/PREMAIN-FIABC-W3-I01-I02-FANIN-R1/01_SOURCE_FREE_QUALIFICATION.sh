@@ -14,6 +14,19 @@ unexpected="$(git diff --name-only "$IMPLEMENTATION_HEAD".."$ACTUAL_HEAD" | grep
 [[ -z "$(git status --porcelain --untracked-files=all)" ]] || die "working tree is not clean"
 [[ ! -e "$QUAL_OUT" ]] || die "QUAL_OUT already exists"
 
+IMMUTABLE_EVIDENCE_COMMITS=(
+  "0b96b8de9aac774566f872cf0630ebd4ddeb70e6"
+  "76c73e5c15eb512fa0b3217bc9e313d2b54f9a2d"
+  "0c0dd1f23bc59017552afdbd5af2021f051d48f7"
+)
+for commit in "${IMMUTABLE_EVIDENCE_COMMITS[@]}"; do
+  if ! git cat-file -e "${commit}^{commit}" 2>/dev/null; then
+    git fetch --no-tags origin "$commit"
+  fi
+  git cat-file -e "${commit}^{commit}" 2>/dev/null || die "immutable succession evidence commit unavailable: $commit"
+done
+echo "FIABC_W3_I01_I02_IMMUTABLE_EVIDENCE_FETCH_PASS ${IMMUTABLE_EVIDENCE_COMMITS[*]}"
+
 "$PYTHON_BIN" -B - <<'PY'
 import importlib.metadata, platform
 expected = {
