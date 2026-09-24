@@ -21,7 +21,8 @@
   "p3_run": false,
   "pre_candidate_stop": "PASS",
   "pre_candidate_stop_identity_sha256": "203fae32dc31ad6afe6dd2e85aed0ddf1a262d9a93efa6597a0c09173c64b384",
-  "proposed_hq_fast_forward_target": "Will be the exact commit that first banks T3, PRE_CANDIDATE_STOP, and the complete acceptance packet; the SHA will be added after that commit is created.",
+  "proposed_hq_fast_forward_target": "7d66d94f8d683f451c2b0f551ccbd6464f97cd31",
+  "proposed_hq_fast_forward_target_reason": "This exact commit contains the accepted LiTS/WVS oracles, T3 freeze, PRE_CANDIDATE_STOP, source-free qualification, and all acceptance evidence.",
   "protected_branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
   "protected_branch_required_head": "78caf7eb4396dd576cf478c860372b7e26455cd9",
   "qualification": {
@@ -29,7 +30,9 @@
     "passed": 183,
     "subtests_passed": 28
   },
-  "remote_readback_status": "PENDING",
+  "remote_readback_evidence_commit": "7d66d94f8d683f451c2b0f551ccbd6464f97cd31",
+  "remote_readback_receipt": "remote_readback_receipt.json",
+  "remote_readback_status": "PASS",
   "retained_object_inventory": {
     "AuthoritySnapshot@1.0.0": 24,
     "DiscoveryAuthority@1.0.0": 1,
@@ -48,11 +51,11 @@
     "LiTS_I": 0,
     "WVS7": 0
   },
-  "status": "LOCAL_ACCEPTANCE_GREEN__REMOTE_READBACK_PENDING",
+  "status": "PASS",
   "structural_admission_run": false,
   "t3_schema": "RAWLSING_FIABC_CANDIDATE_NEUTRAL_FREEZE@2.0.0",
   "t3_sha256": "7dfb62362b983b92dee2774d862a46c0c0ce3ca2c3bb48850e0f400346936908",
-  "terminal": "LOCAL_ACCEPTANCE_GREEN__REMOTE_READBACK_PENDING",
+  "terminal": "PASS__LITS_INDEPENDENT_ACCEPTANCE_GREEN__WVS7_FROZEN_TRUTH_CONSERVED__TWO_SOURCE_T3_FROZEN__PRE_CANDIDATE_STOP_BANKED__READY_FOR_HQ_PROTECTED_BRANCH_FAST_FORWARD__NO_SOURCE__NO_CANDIDATES",
   "wvs7_accepted_r1m_oracle_identity_sha256": "3694b8bd0b5468433a1a83bd469337c7e36e552c3a9a5fef65fff88df8fce800",
   "wvs7_standard_oracle_document_sha256": "869e72112978949e349140b74ab1b4d4966923c9ccedef518e3db9b3f54f3194",
   "wvs7_standard_oracle_identity_sha256": "e546c15533ba138be9995095059ea3b70b64a6d7b5765e3789935cff7342ef00",

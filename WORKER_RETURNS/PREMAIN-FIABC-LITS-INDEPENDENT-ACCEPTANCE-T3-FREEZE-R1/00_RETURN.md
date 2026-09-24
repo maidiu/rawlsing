@@ -1,6 +1,6 @@
 # FIABC LiTS Independent Acceptance + Two-Source T3 Freeze — R1
 
-Disposition: **Local source-free acceptance PASS; acceptance-branch remote readback pending.**
+Terminal: **PASS__LITS_INDEPENDENT_ACCEPTANCE_GREEN__WVS7_FROZEN_TRUTH_CONSERVED__TWO_SOURCE_T3_FROZEN__PRE_CANDIDATE_STOP_BANKED__READY_FOR_HQ_PROTECTED_BRANCH_FAST_FORWARD__NO_SOURCE__NO_CANDIDATES**
 
 Independent source-free checkpoint acceptance passed. The `3404445161`-byte v3 checkpoint rehashed to `2704fd3fadc9c898a512183aaf5eebf0ca48d78c47e75a19d47e17281eaa5726`; its canonical closure identity is `f264dd8f83a0794716583d1ea8445947cc9470b99475e5d51fc2383e7196f415`. The fresh zero-source resume rehydrated 60 Facts, 63 QuerySpecs, 35 Predicates, 24 AuthoritySnapshots, and 50 discovery receipts; its 50-candidate / 77-role closure has 49 supported and 1 valid-empty candidate. The recreated LiTS oracle is byte-identical to the durable custody oracle (document SHA `cb1c6ae6f9ddef15d41897451ac9f60208d4615ea60ddbeaef8874ba1000e3f4`, identity `e5d66db4b6f8339672b0f4828b72a8df68b5525bf71ecfda899d0531d618a98a`).
 
@@ -11,3 +11,6 @@ The explicit stop is in [PRE_CANDIDATE_STOP.json](PRE_CANDIDATE_STOP.json). Qual
 No LiTS or WVS raw source was opened, hashed, or decoded. Candidate processes and outputs remain 0. FF02, measured P2X, P3, structural admission, and architecture selection were not run. The protected branch remains `78caf7eb4396dd576cf478c860372b7e26455cd9`.
 
 See [RETURN.json](RETURN.json), [canonical closure audit](canonical_object_closure_audit.json), [LiTS acceptance receipt](independent_lits_acceptance.json), [WVS7 acceptance receipt](wvs7_standard_oracle_acceptance.json), [T3 receipt](t3_acceptance_receipt.json), [qualification receipt](qualification/qualification_receipt.json), and [file hash manifest](file_hash_manifest.json).
+
+
+Acceptance evidence commit and proposed HQ fast-forward target: `7d66d94f8d683f451c2b0f551ccbd6464f97cd31`. Remote readback verified 28 changed files byte-for-byte. Protected branch read back at `78caf7eb4396dd576cf478c860372b7e26455cd9`.
