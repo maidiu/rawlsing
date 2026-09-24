@@ -1,0 +1,41 @@
+{
+  "schema": "RAWLSING_FIABC_DISPOSITIVE_LAUNCHER_QUALIFICATION@1.0.0",
+  "status": "PASS__DETERMINISTIC_CONTROL_PLANE_LAUNCHER_QUALIFIED__NO_BENCHMARK_EXECUTION",
+  "launcher_path": "HQ_HANDOFF/launchers/RUN_DISPOSITIVE_FIABC_SIX_CELL.sh",
+  "launcher_commit": "355a71cc27b8e95188a66d81eccc52abe2ee9d0a",
+  "launcher_git_blob_sha1": "fb79e4962fa4bc55dc94527d8834bf0c764b5471",
+  "syntax_qualification": {
+    "command": "bash -n -c <exact fetched committed launcher bytes>",
+    "status": "PASS"
+  },
+  "static_assertions": {
+    "exact_execution_branch": true,
+    "exact_execution_head": "b53ff08921af263b9db4d1ad038f35fbc12b990a",
+    "produce_lits_absent": true,
+    "freeze_t3_absent": true,
+    "succession_producer_present": true,
+    "succession_preflight_present": true,
+    "driver_preflight_present": true,
+    "driver_run_present": true,
+    "preflight_precedes_run": true,
+    "exact_process_isolated_backend": true,
+    "persistent_work_root_required": true,
+    "dirty_worktree_rejected": true,
+    "git_checkout_absent": true,
+    "git_reset_absent": true,
+    "git_ref_mutation_absent": true,
+    "t3_sha256": "7dfb62362b983b92dee2774d862a46c0c0ce3ca2c3bb48850e0f400346936908",
+    "pre_candidate_stop_identity_sha256": "203fae32dc31ad6afe6dd2e85aed0ddf1a262d9a93efa6597a0c09173c64b384",
+    "lits_oracle_document_sha256": "cb1c6ae6f9ddef15d41897451ac9f60208d4615ea60ddbeaef8874ba1000e3f4",
+    "wvs_oracle_document_sha256": "869e72112978949e349140b74ab1b4d4966923c9ccedef518e3db9b3f54f3194"
+  },
+  "benchmark_activity": {
+    "sources_opened": 0,
+    "sources_hashed": 0,
+    "sources_decoded": 0,
+    "candidate_processes": 0,
+    "candidate_outputs": 0,
+    "measured_p2x_run": false
+  },
+  "holding": "Qualification covers launcher syntax and fail-closed control-plane invariants only. It does not constitute a measured court run or empirical performance evidence."
+}
