@@ -1,0 +1,250 @@
+{
+  "schema": "FIABC_RUN3_LITSB_FROZEN_OWNER_TYPE_UNIVERSE_FORENSICS_RETURN@1.0.0",
+  "status": "COMPLETE__FORENSIC_ADJUDICATION_ONLY",
+  "terminal_classification": "RUN3_LITSB_VOID_AS_CANDIDATE_EVIDENCE__FROZEN_OWNER_TYPE_UNIVERSE_DEFECT_PROVED",
+  "scope": {
+    "repository": "maidiu/rawlsing",
+    "measured_execution_head": "bc832181b4284ac110d2be44fc83504e04de081e",
+    "forensic_branch": "agent/rabochii-fiabc-run3-litsb-frozen-owner-type-universe-forensics-r1",
+    "production_code_modified": false,
+    "raw_survey_files_opened_or_materialized": false,
+    "candidate_execution_performed": false,
+    "measured_p2x_performed": false
+  },
+  "frozen_owner": {
+    "commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+    "candidate_b_path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+    "candidate_b_blob": "7c509c2098d0030f253344eb3f682471378812a8",
+    "candidate_a_path": "rawlsing_next/pre553_r5_source_backed_adapter.py",
+    "candidate_a_blob": "d4915e7e6755ba1850756aebff72f982f73a332b",
+    "candidate_c_path": "rawlsing_next/pre553_route_c_accelerators.py",
+    "candidate_c_blob": "abfdc91a71ef5e18c4a8a6bf62fa65750d8d9889"
+  },
+  "current_components": {
+    "driver": {
+      "path": "rawlsing_next/ee_p2x_darwin_court_driver.py",
+      "blob": "0c7ace08fc3e8b83c33be7ad795936b42a88fc8c"
+    },
+    "backend": {
+      "path": "rawlsing_next/ee_p2x_darwin_stage_backend.py",
+      "blob": "1bb84723b2f9c33eedae87736564d36cc9504ff0"
+    },
+    "carrier_execution": {
+      "path": "rawlsing_next/pre553_carrier_execution.py",
+      "blob": "e7cda773e6a2426bfa12b22790fd8e005fe75153"
+    },
+    "source_backed_facade": {
+      "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+      "blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284"
+    }
+  },
+  "actual_runtime_seam": {
+    "frozen_b_synthetic_module": "_rawlsing_ee_p2x_owner_b_7c509c2098d0",
+    "frozen_b_deployed_path_pattern": "<work_root>/_exact_owner_modules/0b96b8de9aac774566f872cf0630ebd4ddeb70e6/B/pre553_source_backed_c11_facade.py",
+    "projection_constructor_module": "rawlsing_next.pre553_source_backed_c11_facade",
+    "projection_constructor_class": "GovernedC11Projection",
+    "frozen_guard_module": "_rawlsing_ee_p2x_owner_b_7c509c2098d0",
+    "frozen_guard_class": "GovernedC11Projection",
+    "class_objects_identical": false,
+    "isinstance_current_projection_under_frozen_guard": false,
+    "proof_basis": [
+      "DriverServices.compose_p2r1_binding calls current bind_governed_c11_projection before resolving the frozen accepted builder.",
+      "Current pre553_carrier_execution imports GovernedC11Projection from the canonical current source-backed facade and constructs that class.",
+      "Frozen B defines GovernedC11Projection in its own source file.",
+      "load_exact_owner_module executes those frozen bytes under a distinct synthetic module name, creating a distinct class object.",
+      "Frozen B uses nominal isinstance guards against its own class object."
+    ],
+    "relevant_frozen_b_checks": [
+      {
+        "function": "project_c11_candidate_from_physical_cells",
+        "requirement": "isinstance(projection, GovernedC11Projection)",
+        "failure": "explicit governed projection required; no semantic inference permitted"
+      },
+      {
+        "function": "build_validated_source_backed_c11_release",
+        "requirement": "isinstance(projection, GovernedC11Projection)",
+        "failure": "explicit governed projection required"
+      },
+      {
+        "function": "build_validated_source_backed_c11_release_from_stream",
+        "requirement": "isinstance(projection, GovernedC11Projection)",
+        "failure": "explicit governed projection required"
+      }
+    ],
+    "run3_observed_failure_matches_boundary": true
+  },
+  "liTS_projection": {
+    "banked_builder_commit": "3ce639e1a8ab0ad48954c0aeff4b5c42f3d0b06f",
+    "projection_cache_identity": "84361298ae702786a3fd1044bf619ffa4fe9ed2877040724386951e9c9d27872",
+    "response_slots": [
+      "q301_2",
+      "q301_7"
+    ],
+    "coordinate_slots": [
+      "country",
+      "city",
+      "region",
+      "tablec",
+      "tabled"
+    ],
+    "weight_slots": [],
+    "slot_owner_sets": [],
+    "current_backend_rebinds_projection_fields_through_current_carrier": true
+  },
+  "genealogy": {
+    "frozen_facade_blob": "7c509c2098d0030f253344eb3f682471378812a8",
+    "current_facade_blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+    "relevant_changes": [
+      {
+        "commit": "7ac1b44a49e54cdd07bbc038fe5d378008e4fbf5",
+        "effect": "Introduced PhysicalSlotOwnerSet/slot_owner_sets and explicit multi-family owner authority in the current facade."
+      },
+      {
+        "commit": "43c5c937e166a4888201fe73d9d7e057e2629b1d",
+        "effect": "Introduced exact typed physical-value material/binding with R5TypedValueCodec; current physical binding law differs from frozen B."
+      }
+    ],
+    "latent_seam": {
+      "description": "A top-level frozen-class wrapper alone is insufficient because current projection rule physical_key values can be minted under the newer helper while frozen B classifies incoming cells with its older helper.",
+      "reached_by_run3": false,
+      "adjudicative_effect": "Must be positively qualified after the nominal type-universe repair; it does not convert the observed nominal mismatch into candidate evidence."
+    }
+  },
+  "intended_frozen_owner_law": {
+    "classification": "E__EXACT_OWNER_BYTES_PLUS_COMMON_P2R1_SEAM_WITH_SEMANTICALLY_TRANSPARENT_DEPLOYMENT",
+    "closest_list_option": "A, qualified by coherent boundary identity",
+    "full_transitive_dependency_freeze_authorized": false,
+    "projection_serialization_contract_authorized": false,
+    "duck_typing_or_structural_protocol_authorized": false,
+    "authority_findings": [
+      "EE-P2R1 requires exact GovernedC11Projection binding followed by accepted-owner repository-builder and common runner.",
+      "EE-P2XD fixes that composition order and separately permits checkout/worktree/PYTHONPATH or another mechanically exact owner-byte deployment.",
+      "HQ explicitly labels historical-owner deployment a non-semantic deployment issue only.",
+      "No adopted authority was found that permits a deployment mechanism to duplicate the owner-defined boundary class and thereby change nominal contract behavior."
+    ]
+  },
+  "qualification_gap": {
+    "p2r6o_return_head": "8ffd4c51ace2928038ab7c553e50a32554f48af7",
+    "p2r6o_claim": "PASS__ACCEPTED_B_OWNER_TO_COMMON_P2R1_R6A_RUNTIME",
+    "actual_test_limit": "The A/B requalification test verifies blobs, historical receipts, matrix labels and source-code strings; it never dynamically passes a P2R1-bound projection through frozen B's nominal guard.",
+    "p2xd_limit": "Driver qualification proves exact-byte deployment/blob-drift rejection but has no positive frozen-B/current-projection interoperability test."
+  },
+  "run3_adjudication": {
+    "lawful_projection_received_by_b": false,
+    "candidate_architecture_exercised_past_projection_nominal_guard": false,
+    "failure_kind": "COURT_DEPLOYMENT_TYPE_UNIVERSE_DEFECT",
+    "valid_candidate_local_evidence": false,
+    "holding": "RUN3 LiTS/B S04 is void as evidence against virtual source-backed C11."
+  },
+  "minimal_lawful_repair_contract": {
+    "repair_surface": "COMMON_COURT_EXACT_OWNER_DEPLOYMENT_INFRASTRUCTURE",
+    "current_runtime_impact": "B_ONLY",
+    "semantic_candidate_change": false,
+    "requirements": [
+      "Preserve frozen B blob 7c509c2098d0030f253344eb3f682471378812a8 exactly.",
+      "Ensure the exact B builder and the projection supplied to it consult the same GovernedC11Projection class object.",
+      "Keep one coherent B-local facade law for nested projection rules and physical_value_binding_key; do not merely wrap the current top-level object.",
+      "Construct B-local governed projection material only from accepted authority/preimages, never from source-value inference.",
+      "Use a principled isolated exact-byte import environment, such as a fresh B-specific interpreter/worktree/PYTHONPATH arrangement where exact B bytes occupy the canonical facade path before dependent components import it; do not mutate the shared parent interpreter.",
+      "Fail closed as a common owner/seam compatibility blocker if current common code requires owner-interface material absent from the frozen contract.",
+      "Verify accepted LiTS projection identity and governed C11/oracle identity before resuming measured I03.",
+      "Do not change T2/T3/T5, source order, candidate semantics, or oracle truth."
+    ]
+  },
+  "spillover": {
+    "candidate_a": {
+      "affected_by_same_projection_class_split": false,
+      "reason": "Frozen A imports GovernedC11Projection from canonical rawlsing_next.pre553_source_backed_c11_facade rather than defining it; under current synthetic A loading that import resolves the same canonical current class used by P2R1.",
+      "mandatory_regression": true,
+      "warning": "A B repair must not replace the canonical facade in the shared parent interpreter."
+    },
+    "candidate_c": {
+      "affected_by_same_projection_class_split": false,
+      "reason": "Frozen C imports the class rather than defining it, and current measured production C uses current pre553_candidate_c_production_binding/current source-backed facade after loading the frozen C owner only for exact owner identity.",
+      "mandatory_regression": true
+    },
+    "fix_category": "COMMON_COURT_INFRASTRUCTURE__PRESENT_IMPACT_B_ONLY"
+  },
+  "required_regression_tests": [
+    "Exact B owner blob identity and drift rejection.",
+    "Positive class-object identity between B's nominal guard and supplied projection.",
+    "Negative reproduction of the old synthetic split classified as deployment defect.",
+    "Complete owner-universe projection schema compatibility with fail-closed extra/missing fields.",
+    "Fixture-only physical binding-key coherence between projection rules and frozen B cell classification.",
+    "Accepted LiTS projection cache identity 84361298ae702786a3fd1044bf619ffa4fe9ed2877040724386951e9c9d27872.",
+    "Tiny dynamic P2R1 -> exact B owner -> bind_repository_builder interoperability.",
+    "Historical/current governed C11/replay/repository identity conservation according to explicit supersession authority.",
+    "Parent-process canonical facade identity unchanged by B deployment.",
+    "Positive A nominal projection compatibility after its independent provenance repair.",
+    "Positive current C nominal projection compatibility and proof that frozen C provenance loading does not replace current C types.",
+    "Dynamic qualification replacing grep-only owner-seam evidence."
+  ],
+  "forbidden_shortcuts": [
+    "Delete or weaken isinstance.",
+    "Duck typing without explicit authority.",
+    "Pass None.",
+    "Skip projection validation.",
+    "Edit or casually thaw frozen B.",
+    "Monkeypatch runtime classes.",
+    "Opportunistically alias modules in the live shared interpreter.",
+    "Silently drop governed projection fields.",
+    "Infer or re-hash semantics from real source values.",
+    "Accept oracle/C11 drift merely to make execution green.",
+    "Change T2/T3/T5."
+  ],
+  "documentary_evidence": [
+    {
+      "path": "rawlsing_next/ee_p2x_darwin_court_driver.py",
+      "ref": "bc832181b4284ac110d2be44fc83504e04de081e",
+      "locus": "DriverServices.compose_p2r1_binding lines 820-826; load_exact_owner_module lines 828-842"
+    },
+    {
+      "path": "rawlsing_next/pre553_carrier_execution.py",
+      "ref": "bc832181b4284ac110d2be44fc83504e04de081e",
+      "blob": "e7cda773e6a2426bfa12b22790fd8e005fe75153",
+      "locus": "bind_governed_c11_projection and bind_repository_builder"
+    },
+    {
+      "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+      "ref": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+      "blob": "7c509c2098d0030f253344eb3f682471378812a8",
+      "locus": "GovernedC11Projection definition and nominal projection guards"
+    },
+    {
+      "path": "WORKER_COMMISSIONS/EE-P2R1/00_COMMISSION.md",
+      "ref": "bc832181b4284ac110d2be44fc83504e04de081e",
+      "locus": "lines 49-57 and 103-113"
+    },
+    {
+      "path": "WORKER_COMMISSIONS/EE-P2XD/00_COMMISSION.md",
+      "ref": "8f2b5fec8808824a43e119789adecb4dc4bba127",
+      "locus": "lines 99-113"
+    },
+    {
+      "path": "HQ_HANDOFF/EE_P2X_CONTINUATION_REDUCER_ADOPTION_AND_EE_P2XD_COMMISSION_20260918.md",
+      "ref": "bc832181b4284ac110d2be44fc83504e04de081e",
+      "locus": "lines 54-60"
+    },
+    {
+      "path": "WORKER_RETURNS/EE-P2R6O/09_AB_OWNER_SEAM_REQUALIFICATION_TEST.py",
+      "ref": "8ffd4c51ace2928038ab7c553e50a32554f48af7",
+      "locus": "lines 174-186"
+    },
+    {
+      "path": "tests/test_ee_p2x_darwin_court_driver.py",
+      "ref": "bc832181b4284ac110d2be44fc83504e04de081e",
+      "locus": "lines 315-318"
+    },
+    {
+      "path": "rawlsing_next/pre553_r5_source_backed_adapter.py",
+      "ref": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+      "blob": "d4915e7e6755ba1850756aebff72f982f73a332b",
+      "locus": "lines 20-24 and 336-347"
+    },
+    {
+      "path": "rawlsing_next/pre553_candidate_c_production_binding.py",
+      "ref": "bc832181b4284ac110d2be44fc83504e04de081e",
+      "locus": "current Candidate-C source-backed production binding"
+    }
+  ]
+}
