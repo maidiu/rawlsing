@@ -2,7 +2,7 @@
 set -euo pipefail
 
 EXPECTED_BRANCH="agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1"
-EXPECTED_HEAD="bc832181b4284ac110d2be44fc83504e04de081e"
+EXPECTED_HEAD="3d8f2ad62600b6777dcb23a28404a067502e77a0"
 
 LITS_SOURCE_SHA256="7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09"
 WVS_SOURCE_SHA256="2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
