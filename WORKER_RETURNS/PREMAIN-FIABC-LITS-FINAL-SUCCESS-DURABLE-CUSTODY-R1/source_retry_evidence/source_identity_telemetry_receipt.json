@@ -1,0 +1,30 @@
+{
+  "checkpoint_document_sha256": "2704fd3fadc9c898a512183aaf5eebf0ca48d78c47e75a19d47e17281eaa5726",
+  "checkpoint_identity_sha256": "3fab15f37db629f0ee24189620c65eff944d8a36c4b4509abb6b8bb2ea69c33f",
+  "command": "PYTHONHASHSEED=0 /tmp/fiabc-lits-onepass-r1-runtime.kHpXQb/bin/python -m rawlsing_next.fiabc_final_oracle_freeze_producers produce-lits --repo-root /private/tmp/fiabc-lits-final-canonical-closure-source-retry-r1 --source /Users/matthewsmith/Desktop/Rawlsing/data/Data/LiTS_I.dta --work-root /private/tmp/fiabc-lits-final-canonical-closure-source-retry-r1/WORKER_RETURNS/PREMAIN-FIABC-LITS-FINAL-CANONICAL-CLOSURE-SOURCE-RETRY-R1 --output /private/tmp/fiabc-lits-final-canonical-closure-source-retry-r1/WORKER_RETURNS/PREMAIN-FIABC-LITS-FINAL-CANONICAL-CLOSURE-SOURCE-RETRY-R1/court/oracle_producers/LITS_I/current_standard_lits_oracle.json --checkpoint-output /private/tmp/fiabc-lits-final-canonical-closure-source-retry-r1/WORKER_RETURNS/PREMAIN-FIABC-LITS-FINAL-CANONICAL-CLOSURE-SOURCE-RETRY-R1/court/oracle_producers/LITS_I/current_i05_materialization_checkpoint_v3.json",
+  "current_execution_identity": "e547bfc6b27e89fc3a205d808cc7d5ff295e54ef7f34bf0c825c4bc3be3b85c5",
+  "current_replay_identity": "dbd18f3c3393256b2062061f2096adcbf4c44605ad5b592b75d59824c0428640",
+  "evidence_basis": "The successful produce-lits producer result from the single authorized source-backed invocation; source identity is retained in the verified checkpoint and frozen oracle.",
+  "execution_commit": "045d62709bb65084f3ae7b3dda062dfedfa942b4",
+  "physical_source_file_uploaded": false,
+  "process_exit_code": 0,
+  "schema": "FIABC_LITS_SOURCE_IDENTITY_AND_TELEMETRY_RECEIPT@1.0.0",
+  "source_access": {
+    "additional_source_passes_after_materialization": 0,
+    "candidate_a_b_c_outputs": 0,
+    "candidate_a_b_c_processes": 0,
+    "decoder_calls": 1,
+    "source_hash_passes": 1,
+    "source_opens": null,
+    "source_opens_note": "The qualified producer reports hash passes and decoder calls; a physical open count is not reported.",
+    "standalone_prehash_passes": 0
+  },
+  "source_identity": {
+    "rows": 29002,
+    "sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "source": "LITS_I",
+    "variables": 1198
+  },
+  "source_local_path": "/Users/matthewsmith/Desktop/Rawlsing/data/Data/LiTS_I.dta",
+  "status": "PASS"
+}

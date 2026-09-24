@@ -1,0 +1,34 @@
+{
+  "all_object_authority_snapshot_refs_resolve_to_retained_exact_snapshots": true,
+  "authority_closure_digest": "aad04e65baf1dda42f2e820efddf7aee0fa8f36eb0a0a8cbcb5cc4ebb4ecd5d0",
+  "authority_snapshot_count": 24,
+  "canonical_empirical_closure_identity": "f264dd8f83a0794716583d1ea8445947cc9470b99475e5d51fc2383e7196f415",
+  "hq_adopted_executed_predicate_authority": {
+    "adoption_decision_content_hash": "38ccf7e51fde4366f86c9d181b18da6efd59751be8f4b84f16685953cd79d891",
+    "adoption_decision_id": "HQD-2026-09-18-044",
+    "authority_content_hash": "0d7cfaac1d63cd438d29b109b590cb828805bd113fc37759a6f6f4c88d3c8f55",
+    "authority_id": "urn:rawlsing:prev3:p2r4a:pre553:mixed-predicate-grammar",
+    "authority_kind": "PREDICATE_GRAMMAR",
+    "authority_snapshot_object_content_hash": "c22cccad0add0048047f4edc3852ebce5d7f87ca0e7b81acb18587abb98ece4e",
+    "authority_version": "1.0.0-candidate",
+    "governed_object_families": [
+      "EmpiricalPredicate@1.0.0"
+    ],
+    "governed_operations": [
+      "AND"
+    ],
+    "identity_evidence_source": "rawlsing_next/tests/test_fiabc_lits_r4a_adopted_authority_snapshot_closure.py and verified checkpoint closure",
+    "retained_in_canonical_checkpoint_object_closure": true,
+    "typed_state": "ALLOW"
+  },
+  "representation_authority": {
+    "authority_content_hash": "9fce3b606413c2a5d3e9a05eda967067d191fbb31ff869d445d962bdf321393d",
+    "authority_id": "FIABC-LITS-I-Q301-DTA-DECODER-REPRESENTATION-REPLAY",
+    "authority_version": "1.0.0"
+  },
+  "runtime_catalog_identity": "5983d7d5c579b916ad46c1acf9e41c1c89b516a4e561a99b1d2b477bf5ad2d02",
+  "schema": "FIABC_LITS_CURRENT_AUTHORITY_CLOSURE_RECEIPT@1.0.0",
+  "semantic_authority_closure_refs_in_oracle": 12,
+  "status": "PASS",
+  "verification_basis": "Source-backed checkpoint acceptance and zero-source resume both run _validate_lits_canonical_empirical_closure; it rematerializes each retained public object, recomputes its exact content identity, then checks every authority_snapshot_ref against the retained AuthoritySnapshot refs."
+}
