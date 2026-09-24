@@ -161,12 +161,13 @@ def merge(lits_root: Path, wvs_root: Path) -> Mapping[str, Any]:
             "LITS_I_macos_version": lits_os,
             "WVS7_macos_version": wvs_os,
             "hardware_runtime_fingerprint": lits_host,
-            "cross_source_absolute_physical_metric_comparison_allowed": bool(same_os),
+            "cross_source_absolute_physical_metric_comparison_allowed": False,
             "within_source_abc_comparison_preserved": True,
             "note": (
-                "Different macOS versions are admitted only as an explicitly recorded "
-                "source-nested host nuisance. HQ must not treat absolute LiTS-vs-WVS "
-                "physical timings as host-neutral when same_macos_version is false."
+                "Host is nested within source in the split design. Absolute LiTS-vs-WVS "
+                "physical timings are never treated as host-neutral, even when macOS "
+                "versions match. The admissible physical comparison unit is A/B/C within "
+                "each source; HQ synthesizes the two source-local comparisons afterward."
             ),
         },
         "candidate_failures": candidate_failures,
