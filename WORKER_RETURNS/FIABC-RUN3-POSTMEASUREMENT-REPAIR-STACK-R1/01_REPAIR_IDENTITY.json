@@ -1,14 +1,19 @@
 {
-  "schema": "FIABC_RUN3_REPAIR_IDENTITY@1.0.0",
-  "decision": "HQD-2026-09-24-093",
-  "branch": "agent/codex-fiabc-run3-postmeasurement-repair-stack-r1",
+  "access_and_execution": {
+    "candidate_processes_on_real_data": 0,
+    "measured_p2x": false,
+    "premain_modified": false,
+    "protected_execution_branch_modified": false,
+    "real_source_files_hashed": false,
+    "real_source_files_opened": false,
+    "run3_roots_accessed": false
+  },
   "base_branch": "integration/pre-main-reconciliation-r1",
   "base_commit": "36dbab16e8a82083de54dfc1e1e8228b50fe5b63",
-  "qualified_implementation_commit": "818a17908dd0d8c16b8054da80beb765854ae92b",
-  "return_packet_commit": "d351d2beaa6740f75900679816d769657e2f3ca0",
-  "identity_audit_commit": "f340adacf25bc06f0b019f2f612fad67983f2374",
+  "branch": "agent/codex-fiabc-run3-postmeasurement-repair-stack-r1",
   "branch_tip_at_identity_audit": "f340adacf25bc06f0b019f2f612fad67983f2374",
-  "branch_tip_resolution_note": "The qualified code head is 818a17908dd0d8c16b8054da80beb765854ae92b. Return and audit commits after it contain documentation only. RETURN.json cannot embed the hash of the commit that contains itself; resolve the published branch ref for the final documentation tip.",
+  "branch_tip_at_successor_qualification": "3d8f2ad62600b6777dcb23a28404a067502e77a0",
+  "branch_tip_resolution_note": "The exact code-qualified implementation is 3d8f2ad62600b6777dcb23a28404a067502e77a0. Its parent is a0e20d561310ed9f9fedeb4996eb733316a8bd80. Subsequent return-packet commits contain documentation and qualification evidence only; resolve the published repair-branch ref for the final packet tip.",
   "commit_genealogy": [
     {
       "commit": "818a17908dd0d8c16b8054da80beb765854ae92b",
@@ -24,58 +29,131 @@
       "commit": "f340adacf25bc06f0b019f2f612fad67983f2374",
       "parent": "d351d2beaa6740f75900679816d769657e2f3ca0",
       "subject": "Complete FIABC repair identity audit"
+    },
+    {
+      "commit": "b9de7084ab8dbedcc02e58dbf536cc874b87bcdd",
+      "parent": "f340adacf25bc06f0b019f2f612fad67983f2374",
+      "subject": "Record FIABC repair commit genealogy"
+    },
+    {
+      "commit": "a0e20d561310ed9f9fedeb4996eb733316a8bd80",
+      "parent": "b9de7084ab8dbedcc02e58dbf536cc874b87bcdd",
+      "subject": "Bind repaired FIABC execution provenance"
+    },
+    {
+      "commit": "3d8f2ad62600b6777dcb23a28404a067502e77a0",
+      "parent": "a0e20d561310ed9f9fedeb4996eb733316a8bd80",
+      "subject": "Bind execution provenance in FIABC succession manifest"
     }
   ],
+  "decision": "HQD-2026-09-24-093",
+  "frozen_owners": {
+    "A": {
+      "blob": "d4915e7e6755ba1850756aebff72f982f73a332b",
+      "path": "rawlsing_next/pre553_r5_source_backed_adapter.py"
+    },
+    "B": {
+      "blob": "7c509c2098d0030f253344eb3f682471378812a8",
+      "path": "rawlsing_next/pre553_source_backed_c11_facade.py"
+    },
+    "C_policy": {
+      "blob": "abfdc91a71ef5e18c4a8a6bf62fa65750d8d9889",
+      "candidate_hash": "a476e6e44c21b8029ae5d3e6d387428a5fa19549a2126d61aae7c71c50c64a3c",
+      "path": "rawlsing_next/pre553_route_c_accelerators.py"
+    },
+    "commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6"
+  },
+  "identity_audit_commit": "f340adacf25bc06f0b019f2f612fad67983f2374",
+  "implementation_file_blobs": {
+    "rawlsing_next/ee_p2x_darwin_court_driver.py": {
+      "git_blob": "33605355d9f2b6236d20fa207fbca59d357823e0",
+      "sha256": "7fb731549322e88a8d36f77e9777825b66f840af9bd1abd3c1dba2d831bcaf95"
+    },
+    "rawlsing_next/ee_p2x_darwin_stage_backend.py": {
+      "git_blob": "b655d8b8c73f7721dceb1996baf1b37388dffa60",
+      "sha256": "8a947864bc60caf6d2c80f94c75dd76b3f6455743c8843953805e065cf883eaf"
+    },
+    "rawlsing_next/fiabc_final_oracle_freeze_producers.py": {
+      "git_blob": "9b67df148528fbc35813cac473c27a28485d1f91",
+      "sha256": "e61011cf62865e1dc45bc8cc2218790896bb63a1b667252786941a9395ed033e"
+    },
+    "rawlsing_next/fiabc_lits_common_representation.py": {
+      "git_blob": "34ef9533964fb08b40dab594d2f9075296a9695e",
+      "sha256": "b4b9f6c061c5c660db87e004a0feb3af3a93138797460091843e84dc0ecefc47"
+    },
+    "rawlsing_next/fiabc_succession_manifest_schema.json": {
+      "git_blob": "87ef023c4d80d6b9199f4d48c3d7bfb0762cd673",
+      "sha256": "9b7af7de548ff70006fc349b83667f0e8c7a99860b3ffba235be860354133faa"
+    },
+    "rawlsing_next/fiabc_succession_preflight.py": {
+      "git_blob": "d074f137ea5530c466e8ff0081a5629f89eac200",
+      "sha256": "b769b90675271ed469be8f92f68dd18a4a04e05ef1e0e3d28d7cf87ab0379230"
+    },
+    "rawlsing_next/fiabc_succession_producer.py": {
+      "git_blob": "f21c0743f30b3510c5b838ba65bffa03a02fa85c",
+      "sha256": "6292e818f47b0e3dcb5ec954cd491fde7121ba91b76ac7ababcfdfb08f17669c"
+    },
+    "rawlsing_next/pre553_candidate_c_production_binding.py": {
+      "git_blob": "c2451b1b9d54b9588455022e0d6625083bb955d2",
+      "sha256": "ffeaf8a895a3484d0640cf98b7a44b11b19d0a5423a833dcf2c9642ed055ee3f"
+    },
+    "rawlsing_next/tests/test_fiabc_run3_postmeasurement_repair_stack.py": {
+      "git_blob": "81bcb648944402fa69f0448830f8c35267f36117",
+      "sha256": "29cf95fa3228c83d54c6059d14dd6c47a7eeaff470d5d282d401e72fa803f146"
+    },
+    "rawlsing_next/tests/test_fiabc_succession_preflight.py": {
+      "git_blob": "4e06184ea6b9c6453e3a6504438a1ec4fb4387e1",
+      "sha256": "5f36e27c331b8a0e61a975d6e008a94e261b62c0ad2375243609f8b0a33082a0"
+    },
+    "rawlsing_next/tests/test_fiabc_succession_producer.py": {
+      "git_blob": "18575702753031e4e499fab776dc0955436c9060",
+      "sha256": "13d76ea60d311e9ba30f13a86393a59c9994cea14a2aa5c6c9e390881c55e461"
+    }
+  },
+  "liTS_representation_authority": {
+    "identity": "9fce3b606413c2a5d3e9a05eda967067d191fbb31ff869d445d962bdf321393d",
+    "projection_owner_qualification": "4c1641d1f1ec51a4116d0664dbf149e915465bdb",
+    "projection_owner_rebind_commit": "ea0baa4d87244a548ba9a6a46a883d307c65e3e4",
+    "qualification_commit": "d1833f9ebe363258575c6bd95737eb8f1b0f4154"
+  },
   "production_files_changed": [
     "rawlsing_next/ee_p2x_darwin_court_driver.py",
     "rawlsing_next/ee_p2x_darwin_stage_backend.py",
     "rawlsing_next/fiabc_final_oracle_freeze_producers.py",
     "rawlsing_next/fiabc_lits_common_representation.py",
+    "rawlsing_next/fiabc_succession_manifest_schema.json",
+    "rawlsing_next/fiabc_succession_preflight.py",
+    "rawlsing_next/fiabc_succession_producer.py",
     "rawlsing_next/pre553_candidate_c_production_binding.py"
   ],
-  "implementation_file_blobs": {
-    "rawlsing_next/ee_p2x_darwin_court_driver.py": {"git_blob": "33605355d9f2b6236d20fa207fbca59d357823e0", "sha256": "7fb731549322e88a8d36f77e9777825b66f840af9bd1abd3c1dba2d831bcaf95"},
-    "rawlsing_next/ee_p2x_darwin_stage_backend.py": {"git_blob": "b655d8b8c73f7721dceb1996baf1b37388dffa60", "sha256": "8a947864bc60caf6d2c80f94c75dd76b3f6455743c8843953805e065cf883eaf"},
-    "rawlsing_next/fiabc_final_oracle_freeze_producers.py": {"git_blob": "9b67df148528fbc35813cac473c27a28485d1f91", "sha256": "e61011cf62865e1dc45bc8cc2218790896bb63a1b667252786941a9395ed033e"},
-    "rawlsing_next/fiabc_lits_common_representation.py": {"git_blob": "34ef9533964fb08b40dab594d2f9075296a9695e", "sha256": "b4b9f6c061c5c660db87e004a0feb3af3a93138797460091843e84dc0ecefc47"},
-    "rawlsing_next/pre553_candidate_c_production_binding.py": {"git_blob": "c2451b1b9d54b9588455022e0d6625083bb955d2", "sha256": "ffeaf8a895a3484d0640cf98b7a44b11b19d0a5423a833dcf2c9642ed055ee3f"},
-    "rawlsing_next/tests/test_fiabc_run3_postmeasurement_repair_stack.py": {"git_blob": "81bcb648944402fa69f0448830f8c35267f36117", "sha256": "29cf95fa3228c83d54c6059d14dd6c47a7eeaff470d5d282d401e72fa803f146"}
-  },
-  "test_files_added": [
-    "rawlsing_next/tests/test_fiabc_run3_postmeasurement_repair_stack.py"
-  ],
-  "frozen_owners": {
-    "commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
-    "A": {
-      "path": "rawlsing_next/pre553_r5_source_backed_adapter.py",
-      "blob": "d4915e7e6755ba1850756aebff72f982f73a332b"
-    },
-    "B": {
-      "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
-      "blob": "7c509c2098d0030f253344eb3f682471378812a8"
-    },
-    "C_policy": {
-      "path": "rawlsing_next/pre553_route_c_accelerators.py",
-      "blob": "abfdc91a71ef5e18c4a8a6bf62fa65750d8d9889",
-      "candidate_hash": "a476e6e44c21b8029ae5d3e6d387428a5fa19549a2126d61aae7c71c50c64a3c"
-    }
-  },
-  "liTS_representation_authority": {
-    "identity": "9fce3b606413c2a5d3e9a05eda967067d191fbb31ff869d445d962bdf321393d",
-    "qualification_commit": "d1833f9ebe363258575c6bd95737eb8f1b0f4154",
-    "projection_owner_rebind_commit": "ea0baa4d87244a548ba9a6a46a883d307c65e3e4",
-    "projection_owner_qualification": "4c1641d1f1ec51a4116d0664dbf149e915465bdb"
+  "qualified_implementation_commit": "3d8f2ad62600b6777dcb23a28404a067502e77a0",
+  "return_packet_commit": "d351d2beaa6740f75900679816d769657e2f3ca0",
+  "schema": "FIABC_RUN3_REPAIR_IDENTITY@1.0.0",
+  "source_free_current_head_qualification": {
+    "candidate_outputs": 0,
+    "candidate_processes": 0,
+    "implementation_head": "3d8f2ad62600b6777dcb23a28404a067502e77a0",
+    "measured_p2x": false,
+    "preflight_checks": 11,
+    "producer_and_preflight_status": "PASS",
+    "raw_sources_opened": false,
+    "required_execution_paths": [
+      "rawlsing_next/ee_p2x_darwin_stage_backend.py",
+      "rawlsing_next/fiabc_lits_common_representation.py",
+      "rawlsing_next/fiabc_lits_i_representation_authority.py",
+      "rawlsing_next/fiabc_final_oracle_freeze_producers.py"
+    ],
+    "required_manifest_binding_field": "current_head_bindings.required_files"
   },
   "source_sha256": {
     "LITS_I": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
     "WVS7": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
   },
-  "access_and_execution": {
-    "real_source_files_opened": false,
-    "real_source_files_hashed": false,
-    "run3_roots_accessed": false,
-    "candidate_processes_on_real_data": 0,
-    "measured_p2x": false,
-    "protected_execution_branch_modified": false
-  }
+  "test_files_added": [
+    "rawlsing_next/tests/test_fiabc_run3_postmeasurement_repair_stack.py"
+  ],
+  "test_files_changed": [
+    "rawlsing_next/tests/test_fiabc_succession_producer.py",
+    "rawlsing_next/tests/test_fiabc_succession_preflight.py"
+  ]
 }

@@ -1,0 +1,85 @@
+{
+  "artifact_file_sha256": {
+    "lifecycle_context.json": "059eda11b8ac89d665c143d9b1f6aee32fb895247fef55665f565474965a0132",
+    "preflight_result.json": "15277b2b7bd9c92b2b4524872d8d49505aef16e076578436c3c31d44abd8b192",
+    "producer_receipt.json": "0931bb27762f4fb355fcaa325a4bb735084df87ec61d4b4c2fd58e2cc2d8772d",
+    "succession_manifest.json": "b33f3e95da01edda9fd0c1b60b1dd1cadd5531af4916c2b969dce6b0677d392f"
+  },
+  "base_commit": "36dbab16e8a82083de54dfc1e1e8228b50fe5b63",
+  "branch": "agent/codex-fiabc-run3-postmeasurement-repair-stack-r1",
+  "candidate_neutrality": {
+    "candidate_outputs_seen": 0,
+    "candidate_owned_roots_consulted": [],
+    "candidate_processes_started": 0,
+    "cell_order": [
+      "LITS_I/A",
+      "LITS_I/B",
+      "LITS_I/C",
+      "WVS7/A",
+      "WVS7/B",
+      "WVS7/C"
+    ],
+    "ranking_or_selection": false
+  },
+  "canonical_content_identities": {
+    "lifecycle_context": "3a5c1532dc45ff7d10585676ebd2bd8462cb13d9f93c2adc45a37fd45988f47a",
+    "manifest": "95ce42dadd877754e83f19c82e8657d481f6b7b0e6b1a0b41fd68e8d1a9aee9f"
+  },
+  "current_head_provenance": {
+    "all_git_blob_and_content_sha256_values_independently_recomputed": true,
+    "manifest_field": "current_head_bindings.required_files",
+    "manifest_generated_from_commit_sha": "3d8f2ad62600b6777dcb23a28404a067502e77a0",
+    "preflight_p00_validated_evidence_refs": true,
+    "receipt_has_all_required_execution_paths": true,
+    "receipt_required_file_count": 25,
+    "required_execution_paths": [
+      {
+        "content_sha256": "8a947864bc60caf6d2c80f94c75dd76b3f6455743c8843953805e065cf883eaf",
+        "git_blob_sha": "b655d8b8c73f7721dceb1996baf1b37388dffa60",
+        "path": "rawlsing_next/ee_p2x_darwin_stage_backend.py",
+        "ref": "3d8f2ad62600b6777dcb23a28404a067502e77a0",
+        "resolved_commit_sha": "3d8f2ad62600b6777dcb23a28404a067502e77a0"
+      },
+      {
+        "content_sha256": "b4b9f6c061c5c660db87e004a0feb3af3a93138797460091843e84dc0ecefc47",
+        "git_blob_sha": "34ef9533964fb08b40dab594d2f9075296a9695e",
+        "path": "rawlsing_next/fiabc_lits_common_representation.py",
+        "ref": "3d8f2ad62600b6777dcb23a28404a067502e77a0",
+        "resolved_commit_sha": "3d8f2ad62600b6777dcb23a28404a067502e77a0"
+      },
+      {
+        "content_sha256": "fab5cd27aff26844c4fe3b43ddd77cec653939fc51717d136e55009379264007",
+        "git_blob_sha": "94a833a7d8946bf3bd43296d9fe1e2239a3aa4b9",
+        "path": "rawlsing_next/fiabc_lits_i_representation_authority.py",
+        "ref": "3d8f2ad62600b6777dcb23a28404a067502e77a0",
+        "resolved_commit_sha": "3d8f2ad62600b6777dcb23a28404a067502e77a0"
+      },
+      {
+        "content_sha256": "e61011cf62865e1dc45bc8cc2218790896bb63a1b667252786941a9395ed033e",
+        "git_blob_sha": "9b67df148528fbc35813cac473c27a28485d1f91",
+        "path": "rawlsing_next/fiabc_final_oracle_freeze_producers.py",
+        "ref": "3d8f2ad62600b6777dcb23a28404a067502e77a0",
+        "resolved_commit_sha": "3d8f2ad62600b6777dcb23a28404a067502e77a0"
+      }
+    ]
+  },
+  "manifest_schema": "RAWLSING_FIABC_SUCCESSION_MANIFEST@1.0.0",
+  "preflight": {
+    "check_count": 11,
+    "failure_codes": [],
+    "status": "PASS"
+  },
+  "preflight_contract": "RAWLSING_FIABC_SUCCESSION_PREFLIGHT@1.0.0",
+  "previous_published_repair_head": "b9de7084ab8dbedcc02e58dbf536cc874b87bcdd",
+  "qualified_implementation_head": "3d8f2ad62600b6777dcb23a28404a067502e77a0",
+  "repository": "maidiu/rawlsing",
+  "schema": "FIABC_CURRENT_HEAD_SUCCESSION_PROVENANCE_CLOSURE@1.0.0",
+  "semantic_owner_mapping_changed": false,
+  "source_access": {
+    "measured_p2x_run": false,
+    "raw_lits_source_opened": false,
+    "raw_source_files_hashed": false,
+    "raw_wvs7_source_opened": false
+  },
+  "status": "PASS"
+}
