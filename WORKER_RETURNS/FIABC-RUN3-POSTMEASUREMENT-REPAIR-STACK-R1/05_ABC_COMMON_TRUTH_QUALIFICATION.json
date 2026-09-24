@@ -1,0 +1,31 @@
+{
+  "schema": "FIABC_RUN3_ABC_COMMON_TRUTH_QUALIFICATION@1.0.0",
+  "status": "PASS_SOURCE_FREE_BOUNDED_FIXTURE",
+  "semantic_owner": {
+    "candidate": "B",
+    "commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+    "blob": "7c509c2098d0030f253344eb3f682471378812a8"
+  },
+  "physical_realizations": {
+    "A": "exact frozen A R5 stream",
+    "B": "current exact physical incidence",
+    "C": "current exact physical incidence plus current C production/policy binding"
+  },
+  "common_truth": {
+    "bounded_fixture_release_ref_equal_across_A_B_C": true,
+    "production_compose_release_ref_equal_across_A_B_C": true,
+    "current_candidate_c_binding_receipt_present": true,
+    "candidate_c_semantic_owner_moved": false,
+    "candidate_semantic_branching": false
+  },
+  "authority": {
+    "representation": "9fce3b606413c2a5d3e9a05eda967067d191fbb31ff869d445d962bdf321393d",
+    "accepted_release_identity": "e6c954538fa1830820120465a10a6d065b8a18d1e6b7b08d3f863b0917741e26",
+    "accepted_replay_identity": "6bfe9862abd6f373309ff6f8868f8871948bb9ed397906d880cda6776941a1dd"
+  },
+  "scope_limit": "Semantic equality was exercised on the bounded synthetic fixture and exact banked projection authority. No full real-source candidate execution was performed.",
+  "tests": [
+    "test_a_b_c_use_one_b_owner_c11_truth_and_current_c_policy",
+    "test_production_lits_composition_routes_a_b_c_through_one_bounded_truth_surface"
+  ]
+}

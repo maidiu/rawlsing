@@ -1,0 +1,35 @@
+{
+  "schema": "FIABC_RUN3_LITS_REPRESENTATION_QUALIFICATION@1.0.0",
+  "status": "PASS_SOURCE_FREE",
+  "authority_identity": "9fce3b606413c2a5d3e9a05eda967067d191fbb31ff869d445d962bdf321393d",
+  "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+  "source_family": "LiTS",
+  "instrument_release": "LiTS-I Final questionnaire 2006",
+  "exact_authority_slots": [
+    {"ordinal": 194, "name": "q301_2"},
+    {"ordinal": 199, "name": "q301_7"}
+  ],
+  "bridge": "Apply only the accepted decoder-native float64/token representation to those exact source/slot pairs before B's exact response lookup. Rebuild the projection in B's owner universe. Pass off-target cells through unchanged. Record the authority snapshot and transformed-cell counts.",
+  "not_permitted": [
+    "generic int/float/Decimal equivalence",
+    "label- or frequency-derived meaning",
+    "missingness inference from raw value",
+    "Candidate-C-only semantic path",
+    "historical identity copied into current native identity fields"
+  ],
+  "authority_identity_gate": {
+    "full_current_projection_identity": "84361298ae702786a3fd1044bf619ffa4fe9ed2877040724386951e9c9d27872",
+    "accepted_c11_release": "e6c954538fa1830820120465a10a6d065b8a18d1e6b7b08d3f863b0917741e26",
+    "accepted_c11_replay": "6bfe9862abd6f373309ff6f8868f8871948bb9ed397906d880cda6776941a1dd",
+    "wrong_release_or_replay_rejected": true
+  },
+  "synthetic_positive_checks": [
+    "authority-enumerated float64 cell maps to its exact governed Decimal key",
+    "exact SYSTEM_MISSING representation binds without numeric coercion",
+    "off-target cells retain their original object and value"
+  ],
+  "tests": [
+    "test_bounded_lits_representation_bridge_hostile_negatives",
+    "test_full_projection_c11_identity_gate_requires_accepted_release_and_replay"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "schema": "FIABC_RUN3_B_OWNER_UNIVERSE_QUALIFICATION@1.0.0",
+  "status": "PASS_SOURCE_FREE",
+  "exact_frozen_owner": {
+    "commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+    "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+    "blob": "7c509c2098d0030f253344eb3f682471378812a8"
+  },
+  "repair": "Load exact B bytes in its isolated owner module; adapt the already-authorized owner projection, reconstruct every frozen-owner-local dataclass and physical key using B's own classes/key function, then give that projection and B-owned stream to B's own builder through the common runner.",
+  "qualification": {
+    "split_universe_reproduction_fails_nominal_guard": true,
+    "repaired_projection_is_instance_of_exact_b_class": true,
+    "nested_response_occurrence_row_and_coordinate_types_are_exact_b_types": true,
+    "physical_key_and_response_rule_share_exact_b_key_law": true,
+    "all_required_projection_fields_retained": true,
+    "field_loss": false,
+    "exact_b_builder_returns_repository_and_release_through_common_runner": true,
+    "parent_canonical_facade_module_and_class_unchanged": true,
+    "global_sys_modules_aliasing_used": false,
+    "nominal_guard_weakened": false
+  },
+  "tests": [
+    "test_exact_b_universe_rebuilds_real_banked_projection_without_parent_aliasing",
+    "test_split_owner_projection_fails_then_exact_b_runs_common_semantic_builder"
+  ]
+}

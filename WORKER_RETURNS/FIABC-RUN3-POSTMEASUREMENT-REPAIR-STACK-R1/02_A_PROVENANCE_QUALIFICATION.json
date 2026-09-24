@@ -1,0 +1,43 @@
+{
+  "schema": "FIABC_RUN3_A_PROVENANCE_QUALIFICATION@1.0.0",
+  "status": "PASS_SOURCE_FREE",
+  "repair": "_r5_release_identity now derives source SHA and source artifact identity from the governed projection; the R5 release identity binds the exact SOURCE_ARTIFACT ref.",
+  "canonical_source_artifact_ref": {
+    "kind": "SOURCE_ARTIFACT",
+    "object_id": "projection.source_artifact_id",
+    "content_hash": "projection.expected_source_sha256"
+  },
+  "fail_closed_checks": [
+    "Projection source SHA must equal the canonical source contract.",
+    "Missing source artifact object_id is rejected.",
+    "A hash-only SOURCE_SHA256 root is rejected by canonical-root verification.",
+    "A source root whose ref differs from the exact projection source artifact is rejected."
+  ],
+  "exact_frozen_a_owner": {
+    "commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+    "blob": "d4915e7e6755ba1850756aebff72f982f73a332b",
+    "accepted_tiny_synthetic_r5_stream": true
+  },
+  "physical_payload_invariance": {
+    "same_lawful_provenance_is_deterministic": true,
+    "member_rows_equal_to_hash_only_historical_provenance": true,
+    "rows_compared": [
+      "source_metadata",
+      "source_variables",
+      "source_physical_cells"
+    ],
+    "physical_row_semantics_changed": false
+  },
+  "wvs_shared_infrastructure_regression": {
+    "projection_source_identity_used": true,
+    "canonical_wvs_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+    "synthetic_r5_row_payload_equal_before_and_after_provenance_correction": true,
+    "real_wvs_execution": false
+  },
+  "tests": [
+    "test_r5_release_identity_uses_exact_projection_source_artifact_and_fails_closed",
+    "test_exact_frozen_a_accepts_canonical_tiny_r5_and_rows_are_provenance_invariant",
+    "test_wvs_r5_provenance_uses_projection_source_identity_without_changing_wvs_sha",
+    "test_wvs_a_r5_round_trip_preserves_physical_rows_under_provenance_correction"
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "schema": "FIABC_RUN3_REPAIR_IDENTITY@1.0.0",
+  "decision": "HQD-2026-09-24-093",
+  "branch": "agent/codex-fiabc-run3-postmeasurement-repair-stack-r1",
+  "base_branch": "integration/pre-main-reconciliation-r1",
+  "base_commit": "36dbab16e8a82083de54dfc1e1e8228b50fe5b63",
+  "qualified_implementation_commit": "818a17908dd0d8c16b8054da80beb765854ae92b",
+  "commit_genealogy": [
+    {
+      "commit": "818a17908dd0d8c16b8054da80beb765854ae92b",
+      "parent": "36dbab16e8a82083de54dfc1e1e8228b50fe5b63",
+      "subject": "FIABC RUN3: qualify source-free repair stack"
+    }
+  ],
+  "production_files_changed": [
+    "rawlsing_next/ee_p2x_darwin_court_driver.py",
+    "rawlsing_next/ee_p2x_darwin_stage_backend.py",
+    "rawlsing_next/fiabc_final_oracle_freeze_producers.py",
+    "rawlsing_next/fiabc_lits_common_representation.py",
+    "rawlsing_next/pre553_candidate_c_production_binding.py"
+  ],
+  "test_files_added": [
+    "rawlsing_next/tests/test_fiabc_run3_postmeasurement_repair_stack.py"
+  ],
+  "frozen_owners": {
+    "commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+    "A": {
+      "path": "rawlsing_next/pre553_r5_source_backed_adapter.py",
+      "blob": "d4915e7e6755ba1850756aebff72f982f73a332b"
+    },
+    "B": {
+      "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+      "blob": "7c509c2098d0030f253344eb3f682471378812a8"
+    },
+    "C_policy": {
+      "path": "rawlsing_next/pre553_route_c_accelerators.py",
+      "blob": "abfdc91a71ef5e18c4a8a6bf62fa65750d8d9889",
+      "candidate_hash": "a476e6e44c21b8029ae5d3e6d387428a5fa19549a2126d61aae7c71c50c64a3c"
+    }
+  },
+  "liTS_representation_authority": {
+    "identity": "9fce3b606413c2a5d3e9a05eda967067d191fbb31ff869d445d962bdf321393d",
+    "qualification_commit": "d1833f9ebe363258575c6bd95737eb8f1b0f4154",
+    "projection_owner_rebind_commit": "ea0baa4d87244a548ba9a6a46a883d307c65e3e4",
+    "projection_owner_qualification": "4c1641d1f1ec51a4116d0664dbf149e915465bdb"
+  },
+  "source_sha256": {
+    "LITS_I": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "WVS7": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
+  },
+  "access_and_execution": {
+    "real_source_files_opened": false,
+    "real_source_files_hashed": false,
+    "run3_roots_accessed": false,
+    "candidate_processes_on_real_data": 0,
+    "measured_p2x": false,
+    "protected_execution_branch_modified": false
+  }
+}
