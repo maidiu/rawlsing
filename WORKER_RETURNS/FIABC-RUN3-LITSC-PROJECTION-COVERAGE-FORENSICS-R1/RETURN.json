@@ -1,0 +1,142 @@
+{
+  "schema": "FIABC_RUN3_LITSC_PROJECTION_COVERAGE_REPRESENTATION_FORENSICS_RETURN@1.0.0",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-fiabc-run3-litsc-projection-coverage-forensics-r1",
+  "base": "bc832181b4284ac110d2be44fc83504e04de081e",
+  "execution_constraints_observed": {
+    "raw_respondent_source_opened": false,
+    "raw_respondent_source_materialized": false,
+    "raw_respondent_source_decoded": false,
+    "candidate_abc_run": false,
+    "real_source_i03_i05_run": false,
+    "measured_p2x_run": false,
+    "production_code_modified": false
+  },
+  "projection": {
+    "identity": "84361298ae702786a3fd1044bf619ffa4fe9ed2877040724386951e9c9d27872",
+    "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "as2a_projection_authority_content_hash": "9dd1e6b7350ebb795e028db86279131f8d319e939a044b74c3c5605ecacf5b06",
+    "slot_ledger_sha256": "65bdb972c2004d7ea6539b991125d2111e3705aee2d3e76159208d04e4a3fa60",
+    "banked_builder_commit": "3ce639e1a8ab0ad48954c0aeff4b5c42f3d0b06f",
+    "banked_builder_blob": "c51b56779ab9d79126619b7733d41f5253c8150f",
+    "response_slots": [
+      {
+        "name": "q301_2",
+        "ordinal": 194
+      },
+      {
+        "name": "q301_7",
+        "ordinal": 199
+      }
+    ],
+    "response_rule_construction": {
+      "observed_values": "Decimal(1)..Decimal(7)",
+      "observed_missing_state": "OBSERVED_STORAGE_VALUE",
+      "observed_source_missing_declaration": null,
+      "system_missing_raw_value": null,
+      "system_missing_state": "SYSTEM_MISSING",
+      "system_missing_source_missing_declaration": null
+    }
+  },
+  "current_physical_key_law": {
+    "facade_blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+    "schema": "PRE553_PHYSICAL_VALUE_BINDING@2.0.0",
+    "codec": "PRE553_R5_TYPED_VALUE_CODEC@1.0.0",
+    "preimage_fields": [
+      "schema",
+      "codec",
+      "R5TypedValueCodec.encode(raw_value)",
+      "physical_state",
+      "R5TypedValueCodec.encode(source_missing_declaration)"
+    ],
+    "digest": "SHA256(R5 canonical bytes)",
+    "type_equivalence": "NONE__INT_FLOAT_DECIMAL_STRING_ARE_DISTINCT"
+  },
+  "prior_representation_court": {
+    "diagnostic_receipt_sha256": "74fc2c53610ad2af5867e4c36728604a812cf9ad3d7b0e4bceebda68fe4ac74b",
+    "representation_authority_content_hash": "9fce3b606413c2a5d3e9a05eda967067d191fbb31ff869d445d962bdf321393d",
+    "representation_authority_snapshot_hash": "9ac03b6d6e1464da29018ad1e6e803c490ff652a1ec4d9b18691b3e82d98ec7b",
+    "proved_decoder_lane": "q301_2/q301_7 observed response cells use exact float64 token classes under the qualified DTA decoder",
+    "proved_projection_lane": "current governed response rules use Decimal tokens; system missing is exact and already compatible",
+    "observed_current_rule_coverage": "only exact system missing matched; observed float64 response cells did not match Decimal-keyed rules",
+    "no_current_typed_key_equivalence": true,
+    "source_free_qualification_head": "d1833f9ebe363258575c6bd95737eb8f1b0f4154",
+    "legacy_projection_owner_rebind_head": "ea0baa4d87244a548ba9a6a46a883d307c65e3e4",
+    "legacy_projection_owner_rebind_qualification": "4c1641d1f1ec51a4116d0664dbf149e915465bdb"
+  },
+  "accepted_historical_replay": {
+    "candidate_b_owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+    "candidate_b_owner_blob": "7c509c2098d0030f253344eb3f682471378812a8",
+    "c11_release_identity": "e6c954538fa1830820120465a10a6d065b8a18d1e6b7b08d3f863b0917741e26",
+    "c11_replay_identity": "6bfe9862abd6f373309ff6f8868f8871948bb9ed397906d880cda6776941a1dd",
+    "historical_key_law": "semantic_hash(canonicalize(raw,state,declaration))"
+  },
+  "measured_backend_integration": {
+    "candidate_c_strategy": "EXACT_SOURCE_BACKED_FALLBACK_FOR_CURRENT_F02",
+    "candidate_c_projection_identity": "84361298ae702786a3fd1044bf619ffa4fe9ed2877040724386951e9c9d27872",
+    "representation_authority_invoked_on_c_s01_path": false,
+    "authorized_replay_cell_invoked_on_c_s01_path": false,
+    "legacy_projection_owner_adaptation_invoked_on_c_s01_path": false,
+    "disposition": "COURT_INTEGRATION_OMISSION_AT_COMMON_LITS_PHYSICAL_TO_C11_SEAM"
+  },
+  "commonality": {
+    "candidate_c": "DIRECTLY_REACHES_SHARED_CURRENT_SOURCE_BACKED_FACADE_IN_S01__NOT_C_LOCAL_SEMANTICS",
+    "candidate_b": "EARLIER_TYPE_UNIVERSE_SEAM_MASKS_DOWNSTREAM_KEY_DOMAIN_MISMATCH__TYPE_ONLY_REPAIR_WOULD_NOT_CLOSE_REPRESENTATION_SEAM",
+    "candidate_a": "R5_PRESERVES_EXACT_DECODER_NATIVE_TYPED_VALUE_AND_ADAPTER_FEEDS_COMMON_FACADE__EARLIER_PROVENANCE_SEAM_MASKS_SAME_DOWNSTREAM_REPRESENTATION_SEAM",
+    "ranking_performed": false
+  },
+  "exact_run3_failing_key": {
+    "status": "EXACT_RUN3_FAILING_PHYSICAL_KEY_REQUIRES_READ_ONLY_LOCAL_FORENSIC_EXTRACTION",
+    "adjudication_dependency": false,
+    "requested_fields": [
+      "stage and exception provenance",
+      "variable name and ordinal",
+      "row ordinal only if needed for localization",
+      "canonical physical binding key",
+      "raw-value R5 type/tag only",
+      "physical missing state",
+      "canonical source-missing declaration representation",
+      "projection identity",
+      "available governed physical-key hashes for the slot",
+      "membership boolean",
+      "throwing facade/module blob and owner provenance"
+    ],
+    "prohibited_extraction_outputs": [
+      "response label",
+      "frequency-derived meaning",
+      "raw-value semantic interpretation",
+      "missingness inference"
+    ],
+    "source_reread_required": false
+  },
+  "adjudicated_failure_scope": [
+    "COMMON_LITS_TYPED_REPRESENTATION_INCOMPATIBILITY",
+    "COMMON_PROJECTION_KEY_DOMAIN_INTEGRATION_DEFECT",
+    "MEASURED_COURT_BYPASSES_ACCEPTED_REPRESENTATION_AUTHORITY"
+  ],
+  "excluded_scope": [
+    "CANDIDATE_C_LOCAL_CORRECTNESS_FAILURE",
+    "NEW_RESPONSE_SEMANTIC_RULE_REQUIRED",
+    "GENERIC_NUMERIC_EQUIVALENCE_AUTHORIZED"
+  ],
+  "minimal_lawful_repair_invariant": "Before exact response lookup, decoder-native LiTS q301 physical cells and governed response-slot rules must inhabit the same explicitly authorized physical-key domain. Reuse the already-qualified accepted replay plus projection-owner adaptation within its exact scope, or issue a new common decoder-native typed projection authority with exact semantic/replay conservation. No generic coercion and no Candidate-C-only semantic patch.",
+  "qualification_plan": [
+    "source-free exact representation-coverage court over authority-enumerated tokens",
+    "cross-owner physical-key-domain adaptation court where legacy facade is used",
+    "A/B/C common semantic C11 truth-surface court without candidate semantic ownership",
+    "identity conservation for source/projection/C11/runtime lineage",
+    "hostile adjacent-type/token/state/declaration/source/slot rejection",
+    "full governed source-free qualification before any fresh measured retry"
+  ],
+  "prohibited_shortcuts": [
+    "NO_GENERIC_INT_FLOAT_DECIMAL_COERCION",
+    "NO_LABEL_FREQUENCY_OR_MISSINGNESS_INFERENCE",
+    "NO_RAW_VALUE_TO_MEANING_INFERENCE",
+    "NO_CANDIDATE_C_ONLY_SEMANTIC_PATCH",
+    "NO_GLOBAL_TYPED_KEY_LAW_WEAKENING",
+    "NO_UNPROVED_PROJECTION_IDENTITY_REUSE",
+    "NO_ASTRA_HISTORICAL_HASH_AS_CURRENT_NATIVE_HASH",
+    "NO_SOURCE_REREAD_FOR_CONFIRMATORY_RUN3_KEY_EXTRACTION"
+  ],
+  "terminal": "RUN3_LITSC_VOID_AS_CANDIDATE_EVIDENCE__COMMON_PROJECTION_OR_REPRESENTATION_DEFECT_PROVED"
+}
