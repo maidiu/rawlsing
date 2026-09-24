@@ -241,9 +241,46 @@ fi
 
 [[ -f "$T5_PREFLIGHT" ]] || die "driver preflight did not emit $T5_PREFLIGHT"
 
-if [[ -d "$WORK_ROOT/cells" ]] && [[ -n "$(find "$WORK_ROOT/cells" -type f -print -quit)" ]]; then
-  die "candidate cell artifacts appeared during preflight"
-fi
+"$PYTHON_BIN" - "$WORK_ROOT/cells" <<'PY'
+import json
+from pathlib import Path
+import sys
+
+cells = Path(sys.argv[1])
+if not cells.exists():
+    print("FIABC_PREFLIGHT_CELL_RECEIPTS_PASS NO_CELL_TREE")
+    raise SystemExit(0)
+
+unexpected_files = []
+bad_receipts = []
+receipt_count = 0
+for path in cells.rglob("*"):
+    if not path.is_file():
+        continue
+    rel = path.relative_to(cells)
+    parts = rel.parts
+    if len(parts) < 4 or parts[-2] != "receipts" or path.suffix != ".json":
+        unexpected_files.append(str(rel))
+        continue
+    receipt_count += 1
+    try:
+        doc = json.loads(path.read_text(encoding="utf-8"))
+    except Exception as exc:
+        bad_receipts.append(f"{rel}: unreadable JSON: {exc}")
+        continue
+    if doc.get("execution_performed") is not False:
+        bad_receipts.append(f"{rel}: execution_performed={doc.get('execution_performed')!r}")
+    if doc.get("measurement_performed") is not False:
+        bad_receipts.append(f"{rel}: measurement_performed={doc.get('measurement_performed')!r}")
+
+if unexpected_files or bad_receipts:
+    raise SystemExit(
+        "FIABC_DISPOSITIVE_LAUNCH_BLOCKED: preflight cell tree contains non-mechanical artifacts: "
+        f"unexpected_files={unexpected_files!r} bad_receipts={bad_receipts!r}"
+    )
+
+print("FIABC_PREFLIGHT_CELL_RECEIPTS_PASS", receipt_count)
+PY
 
 "$PYTHON_BIN" - "$T5_PREFLIGHT" "$WORK_ROOT/court/t3/frozen-upstream.json" "$T3_SHA256" <<'PY'
 import hashlib
