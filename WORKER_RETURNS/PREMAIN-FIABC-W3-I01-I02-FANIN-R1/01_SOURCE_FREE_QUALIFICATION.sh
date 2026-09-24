@@ -1,13 +1,16 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-EXPECTED_HEAD="ebb0da371f809a47bce68c6beb331208846573a9"
+IMPLEMENTATION_HEAD="ebb0da371f809a47bce68c6beb331208846573a9"
+ACTUAL_HEAD="$(git rev-parse --verify HEAD^{commit})"
 : "${QUAL_OUT:?set QUAL_OUT to a fresh persistent qualification output directory}"
 PYTHON_BIN="${PYTHON_BIN:-python3}"
 
 die() { printf 'FIABC_W3_I01_I02_QUAL_BLOCKED: %s\n' "$*" >&2; exit 2; }
 
-[[ "$(git rev-parse --verify HEAD^{commit})" == "$EXPECTED_HEAD" ]] || die "wrong HEAD"
+git merge-base --is-ancestor "$IMPLEMENTATION_HEAD" "$ACTUAL_HEAD" || die "implementation head is not an ancestor of checkout"
+unexpected="$(git diff --name-only "$IMPLEMENTATION_HEAD".."$ACTUAL_HEAD" | grep -Ev '^WORKER_RETURNS/PREMAIN-FIABC-W3-I01-I02-FANIN-R1/' || true)"
+[[ -z "$unexpected" ]] || die "non-qualification files changed after implementation head: $unexpected"
 [[ -z "$(git status --porcelain --untracked-files=all)" ]] || die "working tree is not clean"
 [[ ! -e "$QUAL_OUT" ]] || die "QUAL_OUT already exists"
 
@@ -88,7 +91,7 @@ PY
 
 mkdir -p "$QUAL_OUT"
 
-"$PYTHON_BIN" -B -m rawlsing_next.fiabc_succession_producer   --repo-root "$PWD"   --expected-head "$EXPECTED_HEAD"   --manifest-output "$QUAL_OUT/fiabc_i07_current_head_succession_manifest.json"   --lifecycle-output "$QUAL_OUT/fiabc_p10_lifecycle_context.json"   --receipt-output "$QUAL_OUT/fiabc_i07_p10_producer_receipt.json"
+"$PYTHON_BIN" -B -m rawlsing_next.fiabc_succession_producer   --repo-root "$PWD"   --expected-head "$ACTUAL_HEAD"   --manifest-output "$QUAL_OUT/fiabc_i07_current_head_succession_manifest.json"   --lifecycle-output "$QUAL_OUT/fiabc_p10_lifecycle_context.json"   --receipt-output "$QUAL_OUT/fiabc_i07_p10_producer_receipt.json"
 
 "$PYTHON_BIN" -B -m rawlsing_next.fiabc_succession_preflight   --manifest "$QUAL_OUT/fiabc_i07_current_head_succession_manifest.json"   --lifecycle-context "$QUAL_OUT/fiabc_p10_lifecycle_context.json"   --repo-root "$PWD"   --output "$QUAL_OUT/fiabc_i07_direct_preflight.json"
 
@@ -103,5 +106,6 @@ PY
 [[ -z "$(git status --porcelain --untracked-files=all)" ]] || die "qualification dirtied worktree"
 
 echo "PASS__FIABC_W3_I01_I02_FANIN_CURRENT_LAW_SOURCE_FREE_QUALIFIED"
-echo "REPAIR_HEAD=$EXPECTED_HEAD"
+echo "IMPLEMENTATION_HEAD=$IMPLEMENTATION_HEAD"
+echo "QUALIFICATION_HEAD=$ACTUAL_HEAD"
 echo "QUAL_OUT=$QUAL_OUT"
