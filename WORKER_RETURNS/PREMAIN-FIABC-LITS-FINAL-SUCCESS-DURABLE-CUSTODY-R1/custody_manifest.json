@@ -352,7 +352,8 @@
       "source_retry_evidence/protected_branch_state_receipt.json",
       "source_retry_evidence/source_identity_telemetry_receipt.json",
       "source_retry_evidence/source_retry_artifact_manifest.json",
-      "source_retry_evidence/zero_source_resume_receipt.json"
+      "source_retry_evidence/zero_source_resume_receipt.json",
+      "remote_readback_receipt.json"
     ],
     "persistent_local_heavyweight_checkpoint_payload": "The full return tree, including checkpoint-v3, resides at the persistent local path above. No checkpoint bytes are staged as an ordinary Git blob."
   },
@@ -376,6 +377,12 @@
     "remote_readback_before_banking": "78caf7eb4396dd576cf478c860372b7e26455cd9",
     "required_remote_head": "78caf7eb4396dd576cf478c860372b7e26455cd9",
     "this_task_mutated": false
+  },
+  "remote_readback_evidence": {
+    "final_branch_tip_receipt_path": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_CUSTODY/PREMAIN-FIABC-LITS-FINAL-SUCCESS-DURABLE-CUSTODY-R1/remote_readback_receipt.json",
+    "initial_push_commit": "84bb77ecf036fc12a3232b04f5a09dce078f295d",
+    "initial_push_status": "PASS__REMOTE_BRANCH_AND_EVIDENCE_READBACK_VERIFIED",
+    "initial_receipt_git_path": "remote_readback_receipt.json"
   },
   "repository": "maidiu/rawlsing",
   "return_terminal": "PASS__FINAL_LITS_RETRY_BANKED_COMPLETE_CANONICAL_EMPIRICAL_CLOSURE__ZERO_SOURCE_RESUME_GREEN__FIABC_ORACLE_FROZEN__FF02_READY__NO_CANDIDATES_RUN",

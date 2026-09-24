@@ -15,6 +15,8 @@ The payload contains 3405790125 regular-file bytes. Every file has matching SHA-
 
 The LiTS DTA was not opened, hashed, or decoded for this custody commission. Candidate A/B/C, measured P2X, P3, architecture selection, FF02, and structural admission were not run.
 
+The initial success commit passed remote readback; its receipt is remote_readback_receipt.json. The exact final remote branch tip and final post-push readback are recorded in the persistent local sidecar at /Users/matthewsmith/Desktop/Rawlsing/LOCAL_CUSTODY/PREMAIN-FIABC-LITS-FINAL-SUCCESS-DURABLE-CUSTODY-R1/remote_readback_receipt.json.
+
 The protected remote Candidate A/B/C branch remains at `78caf7eb4396dd576cf478c860372b7e26455cd9`; this task does not update it.
 
 Disposition: **ready for independent HQ acceptance / T3 fan-in; not FF02.**
