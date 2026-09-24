@@ -270,6 +270,7 @@ def bind_candidate_c_repository(
     source: Any,
     projection: GovernedC11Projection,
     accelerator_inventory: Iterable[str] = (),
+    common_semantic_result: tuple[C11Repository, Any] | None = None,
 ) -> CandidateCProductionBinding:
     """Bind Candidate C through exact source-backed reconstruction.
 
@@ -289,11 +290,34 @@ def bind_candidate_c_repository(
         projection=projection,
         observed_accelerators=observed,
     )
-    repository, release = build_source_backed_c11_repository(
-        source,
-        projection,
-        cache=None,
-    )
+    if common_semantic_result is None:
+        repository, release = build_source_backed_c11_repository(
+            source,
+            projection,
+            cache=None,
+        )
+    else:
+        if (
+            not isinstance(common_semantic_result, tuple)
+            or len(common_semantic_result) != 2
+            or not isinstance(common_semantic_result[0], C11Repository)
+        ):
+            raise CandidateCProductionBindingError("common semantic result must be an exact C11 repository/release pair")
+        repository, release = common_semantic_result
+        release_ref = getattr(release, "release_ref", None)
+        source_ref = getattr(release, "source_artifact_ref", None)
+        if (
+            release_ref is None
+            or source_ref is None
+            or getattr(source_ref, "content_hash", None) != spec.source_sha256
+        ):
+            raise CandidateCProductionBindingError("common semantic result source identity mismatch")
+        try:
+            exact_release = repository.resolve_release_exact(release_ref)
+        except KeyError as exc:
+            raise CandidateCProductionBindingError("common semantic release absent from exact repository") from exc
+        if exact_release is not release:
+            raise CandidateCProductionBindingError("common semantic result release object is not exact repository member")
     return CandidateCProductionBinding(
         repository=repository,
         release=release,
@@ -309,6 +333,7 @@ def bind_current_candidate_c_repository(
     source: Any,
     projection: GovernedC11Projection,
     accelerator_inventory: Iterable[str] = (),
+    common_semantic_result: tuple[C11Repository, Any] | None = None,
 ) -> CandidateCProductionBinding:
     try:
         spec = CURRENT_SOURCE_SPECS[source_name]
@@ -321,6 +346,7 @@ def bind_current_candidate_c_repository(
         source=source,
         projection=projection,
         accelerator_inventory=accelerator_inventory,
+        common_semantic_result=common_semantic_result,
     )
 
 
@@ -329,6 +355,7 @@ def build_lits_candidate_c_repository(
     source: Any,
     projection: GovernedC11Projection,
     accelerator_inventory: Iterable[str] = (),
+    common_semantic_result: tuple[C11Repository, Any] | None = None,
 ):
     """Repository-builder-compatible LiTS-I Candidate-C production entrypoint."""
     binding = bind_current_candidate_c_repository(
@@ -336,6 +363,7 @@ def build_lits_candidate_c_repository(
         source=source,
         projection=projection,
         accelerator_inventory=accelerator_inventory,
+        common_semantic_result=common_semantic_result,
     )
     return binding.repository, binding.release, binding.receipt()
 

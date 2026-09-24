@@ -61,6 +61,7 @@ R6S_LITS_SUPPORT = "rawlsing_next/runtime/ee_p2x/01_LITS_CURRENT_RUNTIME_MATERIA
 FROZEN_PYREADSTAT_VERSION = "1.3.6"
 WVS_MATERIALIZER_BLOB = "ec685803a7416032037ee415e8faf7bf60db8f1b"
 LITS_A_ADAPTER_BLOB = "d4915e7e6755ba1850756aebff72f982f73a332b"
+LITS_B_FACADE_BLOB = "7c509c2098d0030f253344eb3f682471378812a8"
 LITS_R5_BUILDER_BLOB = "92e364b31eaf27be1bca2081eff65f6ffb779c3d"
 LITS_A_PARENTAGE_PATH_ENV = "RAWLSING_EE_P2X_LITS_A_R5_PARENTAGE_RECEIPT"
 LITS_A_PARENTAGE_ID_ENV = "RAWLSING_EE_P2X_LITS_A_R5_PARENTAGE_RECEIPT_IDENTITY"
@@ -992,8 +993,16 @@ def _wvs_projection(ctx, services, state):
     return projection
 
 
-def _assert_r5_canonical_source_root(reader, source_name):
-    expected = {"kind": "SOURCE_SHA256", "content_hash": EXPECTED_SOURCE[source_name]}
+def _assert_r5_canonical_source_root(reader, source_name, projection):
+    if projection.expected_source_sha256 != EXPECTED_SOURCE[source_name]:
+        raise SourceAuthorityStop("R5 projection source SHA differs from the canonical source contract")
+    expected = {
+        "kind": "SOURCE_ARTIFACT",
+        "object_id": projection.source_artifact_id,
+        "content_hash": projection.expected_source_sha256,
+    }
+    if not isinstance(expected["object_id"], str) or not expected["object_id"]:
+        raise SourceAuthorityStop("R5 projection omits the governed source artifact object_id")
     release_identity = getattr(reader, "release_identity", {})
     observed = release_identity.get("source_artifact_ref")
     if observed != expected:
@@ -1050,6 +1059,51 @@ def _compose_current_candidate_c(ctx, services, state, runtime, projection, inci
     )
     state["candidate_c_binding_receipt"] = receipt_box["candidate_c"]
     return binding, projection, runtime_authority
+
+
+def _assert_lits_common_c11_identity(projection, release):
+    """Pin full current LiTS materialization to the accepted C11/replay pair."""
+    if projection.cache_identity != LITS_PROJECTION:
+        return {
+            "schema": "FIABC_LITS_COMMON_C11_IDENTITY_GATE@1.0.0",
+            "enforced": False,
+            "reason": "SOURCE_FREE_BOUNDED_FIXTURE_PROJECTION",
+            "projection_cache_identity": projection.cache_identity,
+        }
+    if projection.expected_source_sha256 != LITS_SHA:
+        raise SourceAuthorityStop("accepted LiTS C11 identity gate received a different source SHA")
+    from rawlsing_next.fiabc_lits_i_representation_authority import (
+        ACCEPTED_C11_RELEASE_IDENTITY,
+        ACCEPTED_C11_REPLAY_IDENTITY,
+    )
+    replay_manifest = getattr(release, "replay_manifest", None)
+    replay_ref = getattr(replay_manifest, "ref", None)
+    observed_release = getattr(release, "semantic_release_hash", None)
+    observed_replay = getattr(replay_ref, "content_hash", None)
+    if (
+        observed_release != ACCEPTED_C11_RELEASE_IDENTITY
+        or observed_replay != ACCEPTED_C11_REPLAY_IDENTITY
+    ):
+        raise SourceAuthorityStop(
+            "LiTS accepted base C11/replay identity drift",
+            {
+                "expected_c11_release": ACCEPTED_C11_RELEASE_IDENTITY,
+                "observed_c11_release": observed_release,
+                "expected_c11_replay": ACCEPTED_C11_REPLAY_IDENTITY,
+                "observed_c11_replay": observed_replay,
+            },
+        )
+    return {
+        "schema": "FIABC_LITS_COMMON_C11_IDENTITY_GATE@1.0.0",
+        "enforced": True,
+        "projection_cache_identity": projection.cache_identity,
+        "source_sha256": projection.expected_source_sha256,
+        "accepted_c11_release_identity": ACCEPTED_C11_RELEASE_IDENTITY,
+        "observed_c11_release_identity": observed_release,
+        "accepted_c11_replay_identity": ACCEPTED_C11_REPLAY_IDENTITY,
+        "observed_c11_replay_identity": observed_replay,
+        "candidate_semantic_branching": False,
+    }
 
 
 def _lits_a_current_paths(ctx):
@@ -1116,7 +1170,7 @@ def _lits_a_inventory(reader, root_path):
     return inventory
 
 
-def _lits_a_verify_current_r5(ctx, services, state):
+def _lits_a_verify_current_r5(ctx, services, state, projection):
     _ensure_r5(ctx, services)
     from rawlsing_next.pre553_r5_compact_carrier import R5CompactLongShardedReader
     from rawlsing_next.fiabc_derivative_parentage import (
@@ -1134,6 +1188,7 @@ def _lits_a_verify_current_r5(ctx, services, state):
     reader=R5CompactLongShardedReader(root_path,fault_hook=_r5_fault)
     _t4_note_file_read(root_path/"root.json",(root_path/"root.json").stat().st_size,cost_class="C2",role="R5_ROOT_READ")
     try:
+        _assert_r5_canonical_source_root(reader, "LITS_I", projection)
         assert_r5_root_parent(reader.root,expected_source_sha256=LITS_SHA)
         inventory=_lits_a_inventory(reader,root_path)
         bundle=json.loads(parentage_path.read_text(encoding="utf-8"))
@@ -1274,12 +1329,50 @@ def _lits_a_build_current_s01(ctx, services, state, incidence, projection):
         raise SourceAuthorityStop("LiTS-A current S01 parentage mint failed",{"error":str(exc)}) from exc
     # Re-open only the just-built candidate-owned root to verify the exact
     # parentage/seed contract. This does not repeat the build.
-    return _lits_a_verify_current_r5(ctx,services,state)
+    return _lits_a_verify_current_r5(ctx,services,state,projection)
 
 
 def _compose_lits(ctx, services, state, incidence):
     projection, _, _ = _lits_projection(ctx, services, state, incidence)
+    current_projection = projection
     runtime = _lits_runtime(ctx, services, projection)
+    from rawlsing_next.fiabc_final_oracle_freeze_producers import _lits_accepted_legacy_projection
+    from rawlsing_next.fiabc_lits_common_representation import (
+        LiTSRepresentationBridgeError,
+        authorized_lits_cell,
+        reconstruct_exact_owner_projection,
+        representation_authority_receipt,
+        validate_lits_projection_scope,
+    )
+    from rawlsing_next.fiabc_lits_i_representation_authority import (
+        ACCEPTED_C11_RELEASE_IDENTITY,
+        ACCEPTED_C11_REPLAY_IDENTITY,
+    )
+
+    owner_b = services.load_exact_owner_module("B")
+    try:
+        legacy_owner, adapted_projection = _lits_accepted_legacy_projection(
+            projection=projection,
+            repo_root=_repo(services),
+            neutral_root=ctx.work_root / "_lits_common_representation",
+            backend=sys.modules[__name__],
+            legacy_module=owner_b,
+        )
+        b_projection, owner_projection_receipt = reconstruct_exact_owner_projection(
+            current_projection=projection,
+            adapted_projection=adapted_projection,
+            owner_module=legacy_owner,
+        )
+        validate_lits_projection_scope(projection)
+    except Exception as exc:
+        if isinstance(exc, (SourceAuthorityStop, BackendStop)):
+            raise
+        raise SourceAuthorityStop(
+            "accepted LiTS representation/projection-owner adaptation failed",
+            {"error": f"{type(exc).__name__}: {exc}"},
+        ) from exc
+
+    base_cell_iterator = None
     if ctx.stage.candidate == "A":
         # Current final-P2 law: the historical LiTS-A R5 is not a prerequisite.
         # S01 owns exactly one absent-target build; later stages consume that
@@ -1287,42 +1380,202 @@ def _compose_lits(ctx, services, state, incidence):
         if ctx.stage.stage_id == "S01_CANDIDATE_PREPARATION_BUILD":
             reader = _lits_a_build_current_s01(ctx, services, state, incidence, projection)
         else:
-            reader = _lits_a_verify_current_r5(ctx, services, state)
-        kwargs = {"reader": reader}
+            reader = _lits_a_verify_current_r5(ctx, services, state, projection)
+        _assert_r5_canonical_source_root(reader, "LITS_I", projection)
+        owner_a = services.load_exact_owner_module("A")
+        try:
+            base_stream, descriptor = owner_a.prepare_r5_exact_physical_cell_stream(
+                reader, expected_source_sha256=projection.expected_source_sha256
+            )
+        except Exception as exc:
+            raise SourceAuthorityStop(
+                "exact Candidate-A R5 adapter rejected the canonical current carrier",
+                {"error": f"{type(exc).__name__}: {exc}"},
+            ) from exc
+        base_cell_iterator = base_stream.iter_cells
+        physical_transport_identity = base_stream.transport_identity
+        source_row_count = descriptor.row_count
+        if base_stream.source_sha256 != projection.expected_source_sha256 or base_stream.row_count != source_row_count:
+            raise SourceAuthorityStop("Candidate-A exact R5 stream geometry/source identity drift")
     elif ctx.stage.candidate == "B":
         if incidence is None:
             raise BackendStop("LiTS-B exact source incidence required by reducer")
-        kwargs = {"source": incidence}
+        base_cell_iterator = lambda: incidence.iter_cells(batch_size=20_000)
+        physical_transport_identity = "CURRENT_EXACT_LITS_PHYSICAL_INCIDENCE"
+        source_row_count = incidence.row_count
     elif ctx.stage.candidate == "C":
-        return _compose_current_candidate_c(
-            ctx, services, state, runtime, projection, incidence, runtime["runtime_authority_set"]
-        )
+        if incidence is None:
+            raise BackendStop("LiTS-C exact source incidence required by current six-cell contract")
+        base_cell_iterator = lambda: incidence.iter_cells(batch_size=20_000)
+        physical_transport_identity = "CURRENT_EXACT_LITS_PHYSICAL_INCIDENCE"
+        source_row_count = incidence.row_count
+        services.load_exact_owner_module("C")
     else:
         raise BackendStop("unknown LiTS candidate")
-    binding = services.compose_p2r1_binding(
-        authority_documents=runtime["authorities"], predicate_documents=runtime["predicates"],
-        query_documents=runtime["queries"], discovery_authority_documents=runtime["discoveries"],
-        projection_fields=_projection_fields(projection), candidate=ctx.stage.candidate,
-        builder_kwargs=kwargs,
-        builder_identity={"candidate":ctx.stage.candidate,"owner_commit":OWNER_COMMIT,
-                          "source":"LITS_I","projection":projection.cache_identity,
-                          "runtime_catalog":R6O_RUNTIME_CATALOG,
-                          "active_binding":R6O_ACTIVE_BINDING,
-                          "runtime_release":R6O_RUNTIME_RELEASE},
+
+    transformed_counts = {}
+
+    def authorized_cells():
+        for cell in base_cell_iterator():
+            try:
+                rebound = authorized_lits_cell(
+                    source_sha256=projection.expected_source_sha256,
+                    cell=cell,
+                )
+            except LiTSRepresentationBridgeError as exc:
+                raise SourceAuthorityStop(
+                    "LiTS bounded representation authority rejected a physical cell",
+                    {"error": str(exc)},
+                ) from exc
+            if rebound is not cell:
+                kind = "system_missing" if cell.missing_state.value == "SYSTEM_MISSING" else "observed"
+                key = f"{cell.variable_ordinal}:{cell.variable_name}:{kind}"
+                transformed_counts[key] = transformed_counts.get(key, 0) + 1
+            yield rebound
+
+    b_stream = legacy_owner.ExactPhysicalCellStream(
+        source_sha256=projection.expected_source_sha256,
+        row_count=source_row_count,
+        cell_iter_factory=authorized_cells,
+        transport_identity=(
+            f"FIABC_LITS_AUTHORIZED_EXACT_B_OWNER_STREAM::{physical_transport_identity}::"
+            f"{legacy_owner.__name__}"
+        ),
     )
+
+    representation_receipt_seed = representation_authority_receipt(
+        projection=projection,
+        transformed_counts={},
+    )
+    binding_identity = {
+        "candidate": ctx.stage.candidate,
+        "semantic_owner_candidate": "B",
+        "owner_commit": OWNER_COMMIT,
+        "semantic_owner_commit": OWNER_COMMIT,
+        "source": "LITS_I",
+        "projection": projection.cache_identity,
+        "projection_owner_reconstruction": owner_projection_receipt,
+        "representation_authority": {
+            "authority_ref": representation_receipt_seed["authority_ref"],
+            "authority_snapshot": representation_receipt_seed["authority_snapshot"],
+            "authority_snapshot_identity": representation_receipt_seed["authority_snapshot_identity"],
+        },
+        "accepted_base_c11_identity_gate": {
+            "projection_cache_identity": LITS_PROJECTION,
+            "release_identity": ACCEPTED_C11_RELEASE_IDENTITY,
+            "replay_identity": ACCEPTED_C11_REPLAY_IDENTITY,
+        },
+        "physical_transport_identity": physical_transport_identity,
+        "runtime_catalog": R6O_RUNTIME_CATALOG,
+        "active_binding": R6O_ACTIVE_BINDING,
+        "runtime_release": R6O_RUNTIME_RELEASE,
+        "semantic_inference": False,
+    }
+
+    common_truth_receipt_box = {}
+
+    def exact_b_common_builder(*, source, projection):
+        built = legacy_owner.build_source_backed_c11_repository(
+            source, projection, cache=None
+        )
+        if not isinstance(built, tuple) or len(built) < 2:
+            raise BackendStop("exact B owner did not return a C11 repository/release pair")
+        common_truth_receipt_box["identity_gate"] = _assert_lits_common_c11_identity(
+            current_projection, built[1]
+        )
+        return built
+
+    repository_builder_override = exact_b_common_builder
+    if ctx.stage.candidate == "C":
+        from rawlsing_next.pre553_candidate_c_production_binding import (
+            candidate_c_builder_identity,
+            candidate_c_repository_builder_for_source,
+        )
+
+        current_c_builder = candidate_c_repository_builder_for_source("LITS_I")
+        c_receipt_box = {}
+
+        def current_candidate_c_common_builder(*, source, projection):
+            common_repository, common_release = exact_b_common_builder(
+                source=source, projection=projection
+            )[:2]
+            built = current_c_builder(
+                source=incidence,
+                projection=current_projection,
+                accelerator_inventory=(),
+                common_semantic_result=(common_repository, common_release),
+            )
+            if not isinstance(built, tuple) or len(built) != 3 or not isinstance(built[2], Mapping):
+                raise BackendStop("current Candidate-C binding omitted its common-truth receipt")
+            c_receipt_box["receipt"] = dict(built[2])
+            return built
+
+        repository_builder_override = current_candidate_c_common_builder
+        binding_identity.update(candidate_c_builder_identity("LITS_I"))
+        binding_identity.update({
+            "candidate": "C",
+            "semantic_owner_candidate": "B",
+            "common_semantic_owner_blob": LITS_B_FACADE_BLOB,
+            "candidate_c_policy_receipt": "EMBEDDED_IN_C11_BUILDER_RETURN",
+        })
+    elif ctx.stage.candidate == "A":
+        binding_identity.update({
+            "physical_owner": {
+                "candidate": "A",
+                "commit": OWNER_COMMIT,
+                "path": "rawlsing_next/pre553_r5_source_backed_adapter.py",
+                "blob": LITS_A_ADAPTER_BLOB,
+            },
+            "common_semantic_owner_blob": LITS_B_FACADE_BLOB,
+        })
+    else:
+        binding_identity["common_semantic_owner_blob"] = LITS_B_FACADE_BLOB
+
+    binding = services.compose_p2r1_binding(
+        authority_documents=runtime["authorities"],
+        predicate_documents=runtime["predicates"],
+        query_documents=runtime["queries"],
+        discovery_authority_documents=runtime["discoveries"],
+        projection_fields=_projection_fields(projection),
+        candidate=ctx.stage.candidate,
+        semantic_owner_candidate="B",
+        projection_override=b_projection,
+        builder_kwargs={"source": b_stream},
+        builder_identity=binding_identity,
+        repository_builder_override=repository_builder_override,
+    )
+    representation_receipt = representation_authority_receipt(
+        projection=projection,
+        transformed_counts=transformed_counts,
+    )
+    representation_receipt["receipt_identity"] = _h(representation_receipt)
+    state["lits_representation_binding_receipt"] = representation_receipt
+    state["lits_common_c11_identity_gate"] = common_truth_receipt_box["identity_gate"]
+    if ctx.stage.candidate == "C":
+        state["candidate_c_binding_receipt"] = c_receipt_box["receipt"]
     return binding, projection, runtime["runtime_authority_set"]
 
 def _r5_release_identity(source: str, projection):
     from rawlsing_next.pre553_r5_model import R5ReleaseIdentity
-    source_sha=EXPECTED_SOURCE[source]
+    source_sha=projection.expected_source_sha256
+    if source_sha != EXPECTED_SOURCE[source]:
+        raise SourceAuthorityStop("R5 projection source SHA differs from the canonical source contract")
+    source_artifact_ref={
+        "kind":"SOURCE_ARTIFACT",
+        "object_id":projection.source_artifact_id,
+        "content_hash":source_sha,
+    }
+    if not isinstance(source_artifact_ref["object_id"],str) or not source_artifact_ref["object_id"]:
+        raise SourceAuthorityStop("R5 projection omits the governed source artifact object_id")
     material={"source":source,"source_sha256":source_sha,
+              "source_artifact_ref":source_artifact_ref,
               "projection_identity":projection.projection_identity_ref.content_hash,
               "candidate":"A","owner_commit":OWNER_COMMIT}
     identity=_h(material)
     return R5ReleaseIdentity(
         release_id=f"EE-P2R6S-{source}-A-{identity[:16]}",
         semantic_release_hash=identity,
-        source_artifact_ref={"kind":"SOURCE_SHA256","content_hash":source_sha},
+        source_artifact_ref=source_artifact_ref,
         source_release_manifest_hash=_h({"source_sha256":source_sha,"release":identity}),
         m01_m18_coverage={},
         decoder_receipt={"source_sha256":source_sha,"contract":"PRE553_FROZEN_PHYSICAL_DECODER"},
@@ -1449,7 +1702,7 @@ def _compose_wvs(ctx,services,state,incidence=None):
                 _t4_note_file_read(Path(detail["path"]),int(detail["length"]),cost_class="C2",role="R5_VERIFIED_READ")
         reader=R5CompactLongShardedReader(root,fault_hook=_r5_fault)
         _t4_note_file_read(root/"root.json",(root/"root.json").stat().st_size,cost_class="C2",role="R5_ROOT_READ")
-        _assert_r5_canonical_source_root(reader, "WVS7")
+        _assert_r5_canonical_source_root(reader, "WVS7", projection)
         kwargs={"reader":reader}
     elif ctx.stage.candidate=="B":
         if incidence is None:

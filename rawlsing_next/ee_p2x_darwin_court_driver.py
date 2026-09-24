@@ -817,13 +817,27 @@ class DriverServices:
         m = self.load_exact_owner_module(candidate); b = getattr(m, OWNER_SPECS[candidate]["builder"], None)
         if not callable(b): raise OwnerDeploymentError(f"accepted Candidate-{candidate} builder absent")
         return b
-    def compose_p2r1_binding(self, *, authority_documents: Iterable[Mapping[str,Any]], predicate_documents: Iterable[Mapping[str,Any]], query_documents: Iterable[Mapping[str,Any]], discovery_authority_documents: Iterable[Mapping[str,Any]], projection_fields: Mapping[str,Any], candidate: str, builder_kwargs: Mapping[str,Any], builder_identity: Mapping[str,Any]):
+    def compose_p2r1_binding(self, *, authority_documents: Iterable[Mapping[str,Any]], predicate_documents: Iterable[Mapping[str,Any]], query_documents: Iterable[Mapping[str,Any]], discovery_authority_documents: Iterable[Mapping[str,Any]], projection_fields: Mapping[str,Any], candidate: str, builder_kwargs: Mapping[str,Any], builder_identity: Mapping[str,Any], semantic_owner_candidate: str | None = None, projection_override: Any | None = None, repository_builder_override: Callable[..., Any] | None = None):
         from rawlsing_next.pre553_carrier_execution import RuntimeObjectCatalog, bind_governed_c11_projection, bind_repository_builder
         catalog = RuntimeObjectCatalog.from_documents(authority_documents=authority_documents, predicate_documents=predicate_documents, query_documents=query_documents, discovery_authority_documents=discovery_authority_documents)
-        projection = bind_governed_c11_projection(projection_fields); kw = dict(builder_kwargs)
+        owner_candidate = semantic_owner_candidate or candidate
+        if owner_candidate not in OWNER_SPECS:
+            raise StageExecutionError("semantic owner candidate is not admitted")
+        owner_module = self.load_exact_owner_module(owner_candidate)
+        if projection_override is None:
+            projection = bind_governed_c11_projection(projection_fields)
+        else:
+            expected_projection_type = getattr(owner_module, "GovernedC11Projection", None)
+            if expected_projection_type is None or not isinstance(projection_override, expected_projection_type):
+                raise StageExecutionError("projection is outside the exact semantic-owner type universe")
+            projection = projection_override
+        kw = dict(builder_kwargs)
         if "projection" in kw and kw["projection"] is not projection: raise StageExecutionError("projection substitution forbidden")
         kw["projection"] = projection
-        return bind_repository_builder(repository_builder=self.accepted_repository_builder(candidate), builder_kwargs=kw, builder_identity=builder_identity, runtime_catalog=catalog)
+        repository_builder = repository_builder_override or getattr(owner_module, OWNER_SPECS[owner_candidate]["builder"], None)
+        if not callable(repository_builder):
+            raise OwnerDeploymentError(f"exact Candidate-{owner_candidate} repository builder absent")
+        return bind_repository_builder(repository_builder=repository_builder, builder_kwargs=kw, builder_identity=builder_identity, runtime_catalog=catalog)
 
 def load_exact_owner_module(candidate: str, *, repo_root: Path, work_root: Path):
     if candidate not in OWNER_SPECS: raise OwnerDeploymentError(f"unknown candidate {candidate}")

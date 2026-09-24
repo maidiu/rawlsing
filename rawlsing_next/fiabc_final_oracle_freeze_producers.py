@@ -1004,17 +1004,34 @@ def _neutral_lits_authority_identity() -> Mapping[str, Any]:
 
 
 def _lits_accepted_legacy_projection(
-    *, projection: Any, repo_root: Path, neutral_root: Path, backend: Any
+    *, projection: Any, repo_root: Path, neutral_root: Path, backend: Any,
+    legacy_module: Any | None = None,
 ):
     """Load the pinned owner and rebind only its exact historical physical keys."""
-    legacy_path = backend._deploy(
-        repo_root,
-        neutral_root / "legacy_facade",
-        LITS_LEGACY_FACADE_COMMIT,
-        LITS_LEGACY_FACADE_PATH,
-        LITS_LEGACY_FACADE_BLOB,
-    )
-    legacy = backend._load(legacy_path, "_fiabc_lits_i_accepted_legacy_facade")
+    if legacy_module is None:
+        legacy_path = backend._deploy(
+            repo_root,
+            neutral_root / "legacy_facade",
+            LITS_LEGACY_FACADE_COMMIT,
+            LITS_LEGACY_FACADE_PATH,
+            LITS_LEGACY_FACADE_BLOB,
+        )
+        legacy = backend._load(legacy_path, "_fiabc_lits_i_accepted_legacy_facade")
+    else:
+        legacy = legacy_module
+        if not callable(getattr(legacy, "physical_value_binding_key", None)) or not callable(
+            getattr(legacy, "build_source_backed_c11_repository", None)
+        ):
+            raise FinalOracleProducerError("exact legacy owner module lacks its frozen C11 surface")
+        owner_path = getattr(legacy, "__file__", None)
+        if not isinstance(owner_path, str) or not Path(owner_path).is_file():
+            raise FinalOracleProducerError("exact legacy owner module has no deployed source file")
+        owner_bytes = Path(owner_path).read_bytes()
+        owner_blob = hashlib.sha1(
+            b"blob " + str(len(owner_bytes)).encode("ascii") + b"\0" + owner_bytes
+        ).hexdigest()
+        if owner_blob != LITS_LEGACY_FACADE_BLOB:
+            raise FinalOracleProducerError("supplied legacy owner module blob differs from the frozen owner")
     observed = PhysicalMissingState.OBSERVED_STORAGE_VALUE
     system_missing = PhysicalMissingState.SYSTEM_MISSING
     exact_current_to_legacy = {
