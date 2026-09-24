@@ -1,0 +1,25 @@
+{
+  "schema": "RAWLSING_FIABC_DISPOSITIVE_LAUNCHER_QUALIFICATION@1.2.0",
+  "status": "PASS__STATIC_CONTROL_PLANE_REBIND_TO_QUALIFIED_I01_I02_HEAD",
+  "launcher_path": "HQ_HANDOFF/launchers/RUN_DISPOSITIVE_FIABC_SIX_CELL.sh",
+  "launcher_binding_commit": "590558a703107e492bd769715ec4531c2c82ce26",
+  "launcher_git_blob_sha1": "852cffd259e2cd73092ae179a7cb6a5e0506e8aa",
+  "expected_execution_head": "bc832181b4284ac110d2be44fc83504e04de081e",
+  "immutable_succession_evidence_commits": [
+    "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+    "76c73e5c15eb512fa0b3217bc9e313d2b54f9a2d",
+    "0c0dd1f23bc59017552afdbd5af2021f051d48f7"
+  ],
+  "static_assertions": {
+    "exact_head_bound": true,
+    "exact_three_off_lineage_evidence_commits_bound": true,
+    "produce_lits_absent": true,
+    "freeze_t3_absent": true,
+    "preflight_python_B_scoped": true,
+    "measured_run_python_B": false,
+    "exact_t3_sha256": "7dfb62362b983b92dee2774d862a46c0c0ce3ca2c3bb48850e0f400346936908",
+    "exact_pre_candidate_stop_identity": "203fae32dc31ad6afe6dd2e85aed0ddf1a262d9a93efa6597a0c09173c64b384"
+  },
+  "measured_run_semantics_changed": false,
+  "note": "Static control-plane audit only for the head/evidence-fetch rebinding. The measured driver --run invocation and protected execution code are unchanged by this launcher-side edit."
+}
