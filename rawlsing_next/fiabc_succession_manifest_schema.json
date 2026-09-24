@@ -8,6 +8,7 @@
   "required": [
     "manifest_schema",
     "manifest_identity",
+    "current_head_bindings",
     "court_scope",
     "comparison_terminal",
     "upstream_freeze",
@@ -21,6 +22,7 @@
   "properties": {
     "manifest_schema": {"const": "RAWLSING_FIABC_SUCCESSION_MANIFEST@1.0.0"},
     "manifest_identity": {"$ref": "#/$defs/manifestIdentity"},
+    "current_head_bindings": {"$ref": "#/$defs/currentHeadBindings"},
     "court_scope": {"$ref": "#/$defs/courtScope"},
     "comparison_terminal": {"$ref": "#/$defs/comparisonTerminal"},
     "upstream_freeze": {"$ref": "#/$defs/upstreamFreeze"},
@@ -122,6 +124,30 @@
         "generated_from_commit_sha": {"$ref": "#/$defs/commitSha"},
         "manifest_content_sha256": {"$ref": "#/$defs/sha256"},
         "frozen_before_candidate_execution": {"type": "boolean"}
+      }
+    },
+    "currentHeadBindings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["generated_from_commit_sha", "required_files"],
+      "properties": {
+        "generated_from_commit_sha": {"$ref": "#/$defs/commitSha"},
+        "required_files": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "rawlsing_next/ee_p2x_darwin_stage_backend.py",
+            "rawlsing_next/fiabc_lits_common_representation.py",
+            "rawlsing_next/fiabc_lits_i_representation_authority.py",
+            "rawlsing_next/fiabc_final_oracle_freeze_producers.py"
+          ],
+          "properties": {
+            "rawlsing_next/ee_p2x_darwin_stage_backend.py": {"$ref": "#/$defs/evidenceRef"},
+            "rawlsing_next/fiabc_lits_common_representation.py": {"$ref": "#/$defs/evidenceRef"},
+            "rawlsing_next/fiabc_lits_i_representation_authority.py": {"$ref": "#/$defs/evidenceRef"},
+            "rawlsing_next/fiabc_final_oracle_freeze_producers.py": {"$ref": "#/$defs/evidenceRef"}
+          }
+        }
       }
     },
     "courtScope": {

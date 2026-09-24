@@ -40,6 +40,12 @@ _RE_SHA64 = re.compile(r"^[0-9a-f]{64}$")
 
 _SCHEMA_PATH = Path(__file__).with_name("fiabc_succession_manifest_schema.json")
 _PROFILE_PATH = Path(__file__).with_name("fiabc_succession_governing_profile.json")
+REQUIRED_CURRENT_EXECUTION_PROVENANCE_PATHS: tuple[str, ...] = (
+    "rawlsing_next/ee_p2x_darwin_stage_backend.py",
+    "rawlsing_next/fiabc_lits_common_representation.py",
+    "rawlsing_next/fiabc_lits_i_representation_authority.py",
+    "rawlsing_next/fiabc_final_oracle_freeze_producers.py",
+)
 
 
 @dataclass(frozen=True)
@@ -508,6 +514,28 @@ def evaluate_manifest(
     if prior_evaluation.get("evaluated_manifest_sha256") != digest:
         acc.fail("P00", "PF_REF_CONTENT_MISMATCH")
     invalid_refs = _validate_evidence_refs(manifest, lifecycle_context, resolver, acc)
+    head_bindings = _as_dict(manifest.get("current_head_bindings"))
+    manifest_head = identity.get("generated_from_commit_sha")
+    binding_head = head_bindings.get("generated_from_commit_sha")
+    required_files = _as_dict(head_bindings.get("required_files"))
+    if (
+        not isinstance(manifest_head, str)
+        or not _RE_SHA40.fullmatch(manifest_head)
+        or binding_head != manifest_head
+    ):
+        acc.fail("P00", "PF_CURRENT_HEAD_BINDING_HEAD_MISMATCH")
+    for path in REQUIRED_CURRENT_EXECUTION_PROVENANCE_PATHS:
+        ref = required_files.get(path)
+        if not _is_evidence_ref(ref):
+            acc.fail("P00", "PF_CURRENT_HEAD_BINDING_MISSING")
+            continue
+        if (
+            ref.get("path") != path
+            or ref.get("ref") != manifest_head
+            or ref.get("resolved_commit_sha") != manifest_head
+            or ref.get("evidence_class") != "CURRENT_IMPLEMENTATION"
+        ):
+            acc.fail("P00", "PF_CURRENT_HEAD_BINDING_MISMATCH", ref)
 
     scope = _as_dict(manifest.get("court_scope"))
     terminal = _as_dict(manifest.get("comparison_terminal"))

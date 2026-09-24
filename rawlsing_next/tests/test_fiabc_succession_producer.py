@@ -255,12 +255,17 @@ def test_real_current_head_producer_binds_repaired_dependencies_exactly(tmp_path
     assert receipt["generated_from_commit_sha"] == head
     assert receipt["expected_head"] == head
     assert receipt["clean_worktree_required"] is True
+    manifest_bindings = manifest["current_head_bindings"]
+    assert manifest_bindings["generated_from_commit_sha"] == head
+    manifest_files = manifest_bindings["required_files"]
     receipt_files = receipt["current_head_bindings"]["required_files"]
     required = set(p.CURRENT_EXECUTION_PROVENANCE_PATHS)
+    assert required == set(manifest_files)
     assert required <= set(receipt_files)
     assert written_receipt == receipt
 
     for path in sorted(required):
+        manifest_ref = manifest_files[path]
         ref = receipt_files[path]
         blob = subprocess.check_output(
             ["git", "-C", str(ROOT), "rev-parse", "--verify", f"{head}:{path}"],
@@ -272,6 +277,12 @@ def test_real_current_head_producer_binds_repaired_dependencies_exactly(tmp_path
         assert ref["resolved_commit_sha"] == head
         assert ref["git_blob_sha"] == blob
         assert ref["content_sha256"] == hashlib.sha256(content).hexdigest()
+        assert manifest_ref["path"] == path
+        assert manifest_ref["ref"] == head
+        assert manifest_ref["resolved_commit_sha"] == head
+        assert manifest_ref["evidence_class"] == "CURRENT_IMPLEMENTATION"
+        assert manifest_ref["git_blob_sha"] == blob
+        assert manifest_ref["content_sha256"] == hashlib.sha256(content).hexdigest()
 
     assert receipt["evaluator_status"] == "PASS"
     assert receipt["evaluator_failure_codes"] == []

@@ -23,6 +23,12 @@ BASE = "56697a27e94eb9603dfa412a15ab8f1feb819b0c"
 WORKLOAD = "617c9c9426db12a3c0f7fea6b68a582c10759553"
 DEAD = "f" * 40
 FIXTURES = Path(__file__).with_name("fixtures") / "fiabc_succession_preflight_hostile_cases.json"
+CURRENT_EXECUTION_PROVENANCE_PATHS = (
+    "rawlsing_next/ee_p2x_darwin_stage_backend.py",
+    "rawlsing_next/fiabc_lits_common_representation.py",
+    "rawlsing_next/fiabc_lits_i_representation_authority.py",
+    "rawlsing_next/fiabc_final_oracle_freeze_producers.py",
+)
 
 
 class FakeResolver(EvidenceResolver):
@@ -248,6 +254,13 @@ def passing_manifest() -> dict[str, Any]:
             "manifest_content_sha256": "0" * 64,
             "frozen_before_candidate_execution": True,
         },
+        "current_head_bindings": {
+            "generated_from_commit_sha": BASE,
+            "required_files": {
+                path: ev(path, "CURRENT_IMPLEMENTATION")
+                for path in CURRENT_EXECUTION_PROVENANCE_PATHS
+            },
+        },
         "court_scope": {
             "sources": list(scope["sources"]),
             "candidates": list(scope["candidates"]),
@@ -470,6 +483,52 @@ class SuccessionPreflightTests(unittest.TestCase):
         self.assertEqual(result.status, "PASS", result.failure_codes)
         self.assertEqual(len(result.checks), 11)
         self.assertTrue(all(item["status"] == "PASS" for item in result.checks))
+
+    def test_current_execution_provenance_requires_all_four_exact_head_bindings(self) -> None:
+        manifest = passing_manifest()
+        result = evaluate_manifest(
+            manifest,
+            resolver=FakeResolver(),
+            lifecycle_context=passing_lifecycle(),
+        )
+        self.assertEqual(result.status, "PASS", result.failure_codes)
+        bindings = manifest["current_head_bindings"]
+        self.assertEqual(bindings["generated_from_commit_sha"], BASE)
+        self.assertEqual(set(bindings["required_files"]), set(CURRENT_EXECUTION_PROVENANCE_PATHS))
+        p00 = next(check for check in result.checks if check["check_id"] == "P00")
+        p00_paths = {ref["path"] for ref in p00["evidence_refs"]}
+        self.assertTrue(set(CURRENT_EXECUTION_PROVENANCE_PATHS) <= p00_paths)
+        self.assertTrue(
+            all(
+                ref["path"] == path
+                and ref["ref"] == BASE
+                and ref["resolved_commit_sha"] == BASE
+                for path, ref in bindings["required_files"].items()
+            )
+        )
+
+        missing = copy.deepcopy(manifest)
+        del missing["current_head_bindings"]["required_files"][CURRENT_EXECUTION_PROVENANCE_PATHS[0]]
+        missing = seal_manifest(missing)
+        missing_result = evaluate_manifest(
+            missing,
+            resolver=FakeResolver(),
+            lifecycle_context=passing_lifecycle(),
+        )
+        self.assertEqual(missing_result.status, "BLOCK")
+        self.assertIn("PF_CURRENT_HEAD_BINDING_MISSING", missing_result.failure_codes)
+
+        mismatched = copy.deepcopy(manifest)
+        mismatched["current_head_bindings"]["required_files"][CURRENT_EXECUTION_PROVENANCE_PATHS[0]]["ref"] = DEAD
+        mismatched["current_head_bindings"]["required_files"][CURRENT_EXECUTION_PROVENANCE_PATHS[0]]["resolved_commit_sha"] = DEAD
+        mismatched = seal_manifest(mismatched)
+        mismatch_result = evaluate_manifest(
+            mismatched,
+            resolver=FakeResolver(),
+            lifecycle_context=passing_lifecycle(),
+        )
+        self.assertEqual(mismatch_result.status, "BLOCK")
+        self.assertIn("PF_CURRENT_HEAD_BINDING_MISMATCH", mismatch_result.failure_codes)
 
     def test_missing_lifecycle_context_fails_closed(self) -> None:
         result = evaluate_manifest(

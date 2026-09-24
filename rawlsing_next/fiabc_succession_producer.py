@@ -434,6 +434,7 @@ def build_manifest(
     head: str,
     t2: Mapping[str, Any],
     t5: Mapping[str, Any],
+    current_execution_provenance_refs: Mapping[str, Mapping[str, Any]] | None = None,
     profile: Mapping[str, Any] | None = None,
 ) -> dict[str, Any]:
     governing = dict(profile) if profile is not None else load_governing_profile()
@@ -450,6 +451,22 @@ def build_manifest(
         repo_root, head, FINAL_HQ_PATH, "GOVERNED_EXECUTION_RECEIPT",
         "accepted final source-independent HQ preflight/fan-in return",
     )
+    if current_execution_provenance_refs is None:
+        current_execution_provenance_refs = {
+            path: current_ref(
+                repo_root, head, path, "CURRENT_IMPLEMENTATION",
+                "current-head execution/provenance dependency",
+            )
+            for path in CURRENT_EXECUTION_PROVENANCE_PATHS
+        }
+    missing_execution_refs = set(CURRENT_EXECUTION_PROVENANCE_PATHS) - set(
+        current_execution_provenance_refs
+    )
+    if missing_execution_refs:
+        raise SuccessionProducerError(
+            "current-head execution provenance refs are incomplete: "
+            + ",".join(sorted(missing_execution_refs))
+        )
     historical_ref = evidence_ref(
         repo_root,
         commit=WAVE1_LEDGER_COMMIT,
@@ -529,6 +546,13 @@ def build_manifest(
             "generated_from_commit_sha": head,
             "manifest_content_sha256": "0" * 64,
             "frozen_before_candidate_execution": True,
+        },
+        "current_head_bindings": {
+            "generated_from_commit_sha": head,
+            "required_files": {
+                path: copy.deepcopy(dict(current_execution_provenance_refs[path]))
+                for path in CURRENT_EXECUTION_PROVENANCE_PATHS
+            },
         },
         "court_scope": {
             "sources": list(profile_scope["sources"]),
@@ -694,6 +718,28 @@ def assert_exact_head_binding(
     identity = manifest.get("manifest_identity", {})
     if identity.get("generated_from_commit_sha") != actual_head or identity.get("generated_from_ref") != actual_head:
         raise SuccessionProducerError("succession manifest is stale or not bound to checked-out HEAD")
+    head_bindings = manifest.get("current_head_bindings")
+    if not isinstance(head_bindings, Mapping) or head_bindings.get("generated_from_commit_sha") != actual_head:
+        raise SuccessionProducerError("current-head execution provenance is stale or not bound to checked-out HEAD")
+    required_files = head_bindings.get("required_files")
+    if not isinstance(required_files, Mapping):
+        raise SuccessionProducerError("current-head execution provenance required_files is missing")
+    for path in CURRENT_EXECUTION_PROVENANCE_PATHS:
+        ref = required_files.get(path)
+        if (
+            not isinstance(ref, Mapping)
+            or ref.get("path") != path
+            or ref.get("ref") != actual_head
+            or ref.get("resolved_commit_sha") != actual_head
+            or ref.get("evidence_class") != "CURRENT_IMPLEMENTATION"
+            or not isinstance(ref.get("git_blob_sha"), str)
+            or not _RE_SHA40.fullmatch(ref["git_blob_sha"])
+            or not isinstance(ref.get("content_sha256"), str)
+            or not _RE_SHA64.fullmatch(ref["content_sha256"])
+        ):
+            raise SuccessionProducerError(
+                f"current-head execution provenance binding is not exact for {path}"
+            )
     if lifecycle_context.get("generated_from_commit_sha") != actual_head:
         raise SuccessionProducerError("P10 lifecycle context is stale or not bound to checked-out HEAD")
     if identity.get("frozen_before_candidate_execution") is not True:
@@ -779,7 +825,15 @@ def produce(
 
     t2 = _json_file(repo_root, T2_PATH)
     t5 = _json_file(repo_root, T5_PATH)
-    manifest = build_manifest(repo_root=repo_root, head=head, t2=t2, t5=t5)
+    manifest = build_manifest(
+        repo_root=repo_root,
+        head=head,
+        t2=t2,
+        t5=t5,
+        current_execution_provenance_refs={
+            path: prerequisite_refs[path] for path in CURRENT_EXECUTION_PROVENANCE_PATHS
+        },
+    )
     lifecycle = build_lifecycle_context(repo_root=repo_root, head=head, t2=t2, t5=t5)
     assert_exact_head_binding(
         manifest, lifecycle, actual_head=head, expected_head=expected_head
