@@ -1,0 +1,15 @@
+{
+  "banked_copies_verified_byte_identical": true,
+  "lits_resume": "PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 PYTHONPATH=/private/tmp/fiabc-lits-independent-acceptance-t3-freeze-r1 /private/tmp/fiabc-lits-onepass-r1-runtime.kHpXQb/bin/python -m rawlsing_next.fiabc_final_oracle_freeze_producers produce-lits --repo-root /private/tmp/fiabc-lits-independent-acceptance-t3-freeze-r1 --resume-checkpoint /Users/matthewsmith/Desktop/Rawlsing/LOCAL_CUSTODY/PREMAIN-FIABC-LITS-FINAL-SUCCESS-DURABLE-CUSTODY-R1/payload/PREMAIN-FIABC-LITS-FINAL-CANONICAL-CLOSURE-SOURCE-RETRY-R1/court/oracle_producers/LITS_I/current_i05_materialization_checkpoint_v3.json --work-root /private/tmp/fiabc-lits-independent-acceptance-t3-freeze-r1/work --output /private/tmp/fiabc-lits-independent-acceptance-t3-freeze-r1/work/court/oracles/LITS_I.standard.json",
+  "runtime": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONHASHSEED": "0",
+    "pyarrow": "25.0.1",
+    "pyreadstat": "1.3.6",
+    "python": "3.11.3"
+  },
+  "schema": "FIABC_ACCEPTANCE_EXECUTION_COMMANDS@1.0.0",
+  "two_source_freeze": "PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 PYTHONPATH=/private/tmp/fiabc-lits-independent-acceptance-t3-freeze-r1 /private/tmp/fiabc-lits-onepass-r1-runtime.kHpXQb/bin/python -m rawlsing_next.fiabc_final_oracle_freeze_producers freeze-t3 --lits-oracle /private/tmp/fiabc-lits-independent-acceptance-t3-freeze-r1/work/court/oracles/LITS_I.standard.json --wvs-oracle /private/tmp/fiabc-lits-independent-acceptance-t3-freeze-r1/work/court/oracles/WVS7.standard.json --work-root /private/tmp/fiabc-lits-independent-acceptance-t3-freeze-r1/work --output /private/tmp/fiabc-lits-independent-acceptance-t3-freeze-r1/work/court/t3/frozen-upstream.json",
+  "work_root_initial_state": "Created fresh; cells/ absent throughout producer execution.",
+  "wvs7_standardize": "PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 PYTHONPATH=/private/tmp/fiabc-lits-independent-acceptance-t3-freeze-r1 /private/tmp/fiabc-lits-onepass-r1-runtime.kHpXQb/bin/python -m rawlsing_next.fiabc_final_oracle_freeze_producers standardize-wvs --r1m WORKER_RETURNS/FIABC-LM2-R1M-LOCK2-SUCCESSOR-R16-ORACLE/07_FRESH_WVS_ORACLE.json --output /private/tmp/fiabc-lits-independent-acceptance-t3-freeze-r1/work/court/oracles/WVS7.standard.json --freeze-sequence 30"
+}

@@ -1,0 +1,36 @@
+{
+  "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=0 PYTHONPATH=/private/tmp/fiabc-lits-independent-acceptance-t3-freeze-r1 /private/tmp/fiabc-lits-onepass-r1-runtime.kHpXQb/bin/python -m pytest -q -p no:cacheprovider rawlsing_next/tests/test_fiabc_final_oracle_freeze_producers.py rawlsing_next/tests/test_pre553_independent_parity_oracle.py rawlsing_next/tests/test_fiabc_t3_oracle_process_envelope.py rawlsing_next/tests/test_fiabc_w3_i06a_process_isolation.py rawlsing_next/tests/test_fiabc_t5_live_terminal_control.py rawlsing_next/tests/test_fiabc_final_preflight_fanin.py rawlsing_next/tests/test_fiabc_succession_preflight.py rawlsing_next/tests/test_fiabc_t2_six_cell_execution_binding.py rawlsing_next/tests/test_fiabc_lits_i_representation_authority.py rawlsing_next/tests/test_fiabc_lits_i_i03_operation_authority.py rawlsing_next/tests/test_fiabc_lits_r4a_adopted_authority_snapshot_closure.py rawlsing_next/tests/test_fiabc_lits_parity_ready_checkpoint_v2.py rawlsing_next/tests/test_fiabc_lits_banked_checkpoint_admissibility.py rawlsing_next/tests/test_fiabc_lits_astra_substantive_parity.py",
+  "elapsed_seconds": 50.29,
+  "failed": 0,
+  "fixture_compatibility_change": "rawlsing_next/tests/test_fiabc_lits_parity_ready_checkpoint_v2.py now passes an exact-authority resolver to the closure builder required by the current API; production code and semantics were unchanged.",
+  "initial_fixture_run": {
+    "disposition": "The fixture was corrected to supply an exact authority resolver; final rerun passed 183 tests and 28 subtests. No producer implementation or semantics were changed.",
+    "failed": 10,
+    "failure_class": "TypeError in the synthetic checkpoint fixture because the current private closure builder now requires runtime_authority_set",
+    "passed": 173
+  },
+  "passed": 183,
+  "pyarrow": "25.0.1",
+  "pyreadstat": "1.3.6",
+  "pytest_log": "qualification/pytest.log",
+  "python": "CPython 3.11.3",
+  "schema": "FIABC_SOURCE_FREE_QUALIFICATION_COMMAND@1.0.0",
+  "status": "PASS",
+  "subtests_passed": 28,
+  "test_modules": [
+    "rawlsing_next/tests/test_fiabc_final_oracle_freeze_producers.py",
+    "rawlsing_next/tests/test_pre553_independent_parity_oracle.py",
+    "rawlsing_next/tests/test_fiabc_t3_oracle_process_envelope.py",
+    "rawlsing_next/tests/test_fiabc_w3_i06a_process_isolation.py",
+    "rawlsing_next/tests/test_fiabc_t5_live_terminal_control.py",
+    "rawlsing_next/tests/test_fiabc_final_preflight_fanin.py",
+    "rawlsing_next/tests/test_fiabc_succession_preflight.py",
+    "rawlsing_next/tests/test_fiabc_t2_six_cell_execution_binding.py",
+    "rawlsing_next/tests/test_fiabc_lits_i_representation_authority.py",
+    "rawlsing_next/tests/test_fiabc_lits_i_i03_operation_authority.py",
+    "rawlsing_next/tests/test_fiabc_lits_r4a_adopted_authority_snapshot_closure.py",
+    "rawlsing_next/tests/test_fiabc_lits_parity_ready_checkpoint_v2.py",
+    "rawlsing_next/tests/test_fiabc_lits_banked_checkpoint_admissibility.py",
+    "rawlsing_next/tests/test_fiabc_lits_astra_substantive_parity.py"
+  ]
+}

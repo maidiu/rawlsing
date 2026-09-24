@@ -351,6 +351,22 @@ def _fixture():
         catalog=catalog,
         result=result,
         release=release,
+        runtime_authority_set=SimpleNamespace(
+            resolve_exact_runtime_authority=lambda ref: (
+                auth
+                if (
+                    ref.authority_id,
+                    ref.authority_version,
+                    ref.authority_content_hash,
+                )
+                == (
+                    auth.authority_id,
+                    auth.authority_version,
+                    auth.authority_content_hash,
+                )
+                else None
+            )
+        ),
     )
     compact_facts = [
         {"ref": fact.ref.as_dict(), "typed_state": fact.typed_state}
