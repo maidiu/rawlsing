@@ -1,0 +1,195 @@
+{
+  "schema": "FIABC_RUN3_LITSA_R5_PROVENANCE_FORENSICS_R1@1.0.0",
+  "terminal_classification": "RUN3_LITSA_VOID_AS_CANDIDATE_EVIDENCE__COURT_PROVENANCE_GLUE_DEFECT_PROVED",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-fiabc-run3-litsa-r5-provenance-forensics-r1",
+  "base_measured_execution_head": "bc832181b4284ac110d2be44fc83504e04de081e",
+  "protected_execution_branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+  "frozen_candidate_a": {
+    "owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+    "owner_path": "rawlsing_next/pre553_r5_source_backed_adapter.py",
+    "owner_blob": "d4915e7e6755ba1850756aebff72f982f73a332b",
+    "builder": "build_r5_source_backed_c11_repository",
+    "adjudication": "OWNER_CORRECTLY_REJECTED_MALFORMED_COURT_INPUT"
+  },
+  "frozen_control": {
+    "t3": "7dfb62362b983b92dee2774d862a46c0c0ce3ca2c3bb48850e0f400346936908",
+    "pre_candidate_stop": "203fae32dc31ad6afe6dd2e85aed0ddf1a262d9a93efa6597a0c09173c64b384"
+  },
+  "exact_required_source_artifact_ref": {
+    "kind": "SOURCE_ARTIFACT",
+    "object_id": "urn:rawlsing:source:lits1:sha256:7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "content_hash": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "object_id_authority": "accepted GovernedC11Projection.source_artifact_id",
+    "kind_authority": "SourceReleaseManifest.source_artifact_ref -> ExactRef('SOURCE_ARTIFACT', source_artifact_id, source_artifact_content_hash)"
+  },
+  "measured_backend": {
+    "path": "rawlsing_next/ee_p2x_darwin_stage_backend.py",
+    "blob": "1bb84723b2f9c33eedae87736564d36cc9504ff0",
+    "function": "_r5_release_identity",
+    "emitted_source_artifact_ref": {
+      "kind": "SOURCE_SHA256",
+      "object_id": null,
+      "content_hash": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09"
+    },
+    "mismatch": [
+      "object_id absent although frozen owner requires nonempty object_id",
+      "kind SOURCE_SHA256 conflicts with canonical C11 SOURCE_ARTIFACT ExactRef"
+    ],
+    "initial_backend_commit_with_same_defect": "548d7ae9be4a8a624601b5d468fb2e19693ca597",
+    "history_disposition": "DEFECT_PRESENT_FROM_BACKEND_INTRODUCTION_THROUGH_MEASURED_HEAD"
+  },
+  "direct_cause": {
+    "failure_exception_type": "R5SourceBackedAdapterError",
+    "failure_substance": "R5 release source ref object_id missing",
+    "cause_class": "MALFORMED_BACKEND_COURT_PROVENANCE_GLUE",
+    "candidate_architecture_failure_proved": false,
+    "lawful_candidate_input_proved": false,
+    "missing_upstream_authority": false,
+    "authority_conflict": false
+  },
+  "candidate_local_label_mechanism": {
+    "backend_stop_default_terminal": "CANDIDATE_LOCAL_FAILURE",
+    "finding": "run_stage catches non-BackendStop owner exception on a non-COURT source and wraps it in generic BackendStop; therefore terminal label does not establish causal ownership"
+  },
+  "authority_chain": [
+    {
+      "path": "rawlsing_next/pre553_r5_source_backed_adapter.py",
+      "ref": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+      "lines": "203-210",
+      "holding": "frozen owner requires mapping, SHA content_hash, nonempty kind, nonempty object_id"
+    },
+    {
+      "path": "rawlsing_next/pre553_empirical_objects.py",
+      "ref": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+      "lines": "279-288",
+      "holding": "ExactRef requires kind/object_id/content_hash"
+    },
+    {
+      "path": "rawlsing_next/pre553_c11_ingest.py",
+      "ref": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+      "lines": "134-136",
+      "holding": "source_artifact_ref is ExactRef(SOURCE_ARTIFACT, source_artifact_id, source_artifact_content_hash)"
+    },
+    {
+      "path": "rawlsing_next/tests/test_pre553_r5_source_backed_adapter.py",
+      "ref": "8103a70b43dc657a41d2f42401eef9dfadcd3c1f",
+      "blob": "25e905868a21bb36035269065b7bc3640201b7d8",
+      "holding": "qualification constructs R5 source ref from validated C11 release source_artifact_ref.as_dict()"
+    },
+    {
+      "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/AS4I0_CHETIRI_ROUTE_B_PRODUCTION_DRIVER_20260827/banked_as2b/run_as2b_lits1_mechanical_certification.py",
+      "ref": "3ce639e1a8ab0ad48954c0aeff4b5c42f3d0b06f",
+      "blob": "c51b56779ab9d79126619b7733d41f5253c8150f",
+      "lines": "349-357",
+      "holding": "accepted LiTS projection fixes source_artifact_id to urn:rawlsing:source:lits1:sha256:<SOURCE_SHA>"
+    },
+    {
+      "path": "WORKER_RETURNS/EE-P2R1/10_ABC_ADAPTER_QUALIFICATION_MATRIX.json",
+      "ref": "9511f44728a8469d685463ec0fc880864c9187de",
+      "holding": "LiTS-I/A READY__PRESERVED_R5_PLUS_ACCEPTED_PROJECTION_TO_COMMON_RUNNER"
+    },
+    {
+      "path": "rawlsing_next/ee_p2x_darwin_stage_backend.py",
+      "ref": "bc832181b4284ac110d2be44fc83504e04de081e",
+      "lines": "1315-1331",
+      "holding": "measured backend emits malformed two-field SOURCE_SHA256 mapping"
+    },
+    {
+      "path": "rawlsing_next/ee_p2x_darwin_stage_backend.py",
+      "ref": "bc832181b4284ac110d2be44fc83504e04de081e",
+      "lines": "1418-1423",
+      "holding": "malformed _r5_release_identity is serialized into candidate A R5 build"
+    },
+    {
+      "path": "rawlsing_next/ee_p2x_darwin_court_driver.py",
+      "ref": "bc832181b4284ac110d2be44fc83504e04de081e",
+      "lines": "73-76,816-842",
+      "holding": "driver pins and loads exact frozen Candidate-A owner blob"
+    },
+    {
+      "path": "rawlsing_next/pre553_r5_compact_carrier.py",
+      "ref": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+      "lines": "531-568",
+      "holding": "release_identity is embedded in hashed unsigned_root; provenance correction changes root serialization and physical_root_id"
+    },
+    {
+      "path": "rawlsing_next/fiabc_derivative_parentage.py",
+      "ref": "bc832181b4284ac110d2be44fc83504e04de081e",
+      "lines": "402-410",
+      "holding": "current parentage guard validates only source content_hash, allowing malformed kind/object_id to reach frozen owner"
+    }
+  ],
+  "historical_qualification": {
+    "b19r_repair_commit": "8103a70b43dc657a41d2f42401eef9dfadcd3c1f",
+    "b19r_effect": "test-only identity repair; candidate A implementation unchanged",
+    "b19q2": {
+      "frozen_owner_blob": "d4915e7e6755ba1850756aebff72f982f73a332b",
+      "repaired_test_blob": "25e905868a21bb36035269065b7bc3640201b7d8",
+      "run1": "8/8 PASS",
+      "run2": "8/8 PASS"
+    },
+    "p2x_preserved_lits_a_first_build_commit": "02a7ff71ae65b1aa8c52add0b315244a9eaea9df"
+  },
+  "minimal_lawful_repair": {
+    "primary_surface": "rawlsing_next/ee_p2x_darwin_stage_backend.py",
+    "required_functions": [
+      "_r5_release_identity",
+      "_assert_r5_canonical_source_root"
+    ],
+    "construct_from": [
+      "projection.source_artifact_id",
+      "projection.expected_source_sha256"
+    ],
+    "candidate_a_owner_change": false,
+    "source_authority_change": false,
+    "answer_key_change": false,
+    "metric_law_change": false,
+    "optional_hardening": [
+      "validate full source ExactRef in fiabc_derivative_parentage.assert_r5_root_parent",
+      "use one shared canonical provenance helper to prevent backend schema drift"
+    ]
+  },
+  "repair_effects": {
+    "candidate_a_semantics_changed": false,
+    "source_referent_changed": false,
+    "source_sha_changed": false,
+    "source_native_r5_rows_changed": false,
+    "r5_member_payloads_changed": false,
+    "serialized_root_metadata_changed": true,
+    "physical_root_id_changed": true,
+    "metric_law_changed": false,
+    "measured_root_bytes_may_change": true,
+    "frozen_answer_key_changed": false,
+    "interpretation": "already-required provenance metadata is restored; because release identity is hashed into the R5 root, a lawful successor must remeasure rather than patch RUN3 in place"
+  },
+  "source_free_qualification_tests": [
+    "canonical full source ExactRef construction from governed projection",
+    "frozen owner intake accepts backend-built bounded R5 using canonical ref",
+    "missing object_id remains fail-closed",
+    "SOURCE_SHA256 wrong-kind backend provenance fails qualification",
+    "LiTS source_artifact_id comes from accepted projection authority without raw-value inference",
+    "backend canonical-root assertion uses full ExactRef",
+    "root determinism and logical-stream invariance across provenance-only change",
+    "parentage full-ref hardening if that optional guard is changed",
+    "exception-scope regression prevents malformed court input from becoming candidate evidence",
+    "frozen owner/T3/PRE_CANDIDATE_STOP/oracle/metric-law no-drift assertions"
+  ],
+  "must_remain_frozen": [
+    "Candidate-A owner commit/blob",
+    "accepted LiTS source SHA and source_artifact_id",
+    "accepted LiTS governed projection semantics",
+    "R5 source-native row and typed-cell semantics",
+    "T3",
+    "PRE_CANDIDATE_STOP",
+    "frozen answer key/oracle",
+    "metric definitions/equal-work law",
+    "existing RUN3 evidence as immutable historical evidence"
+  ],
+  "residual_uncertainty": "No conflict on source_artifact_ref. This return does not independently certify every other synthetic field produced by _r5_release_identity; those are outside the minimum proof needed for this failure.",
+  "documentary_return_commit": "70e7d75aca0a1974b4f7e675c1e64ad9169eaa17",
+  "production_code_modified": false,
+  "raw_source_access": false,
+  "candidate_execution": false,
+  "measured_p2x_execution": false
+}
