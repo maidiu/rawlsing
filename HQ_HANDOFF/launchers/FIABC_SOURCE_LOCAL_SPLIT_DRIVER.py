@@ -235,6 +235,8 @@ def _write_source_terminal(
     candidate_terminals: dict[str, Any] = {}
     candidate_failures: list[str] = []
     common_blockers: list[str] = []
+    incomplete_stages: list[str] = []
+    allow_incomplete = status == "BLOCKED__COMMON_COURT_AUTHORITY"
 
     for cell in cells:
         candidate = str(cell["candidate"])
@@ -245,6 +247,9 @@ def _write_source_terminal(
             address = f"{source}/{candidate}/{stage_id}"
             entry = driver.ledger.stage_entry(address)
             if not entry or entry.get("terminal_disposition") not in base.COMPLETE_LEDGER_DISPOSITIONS:
+                if allow_incomplete:
+                    incomplete_stages.append(address)
+                    continue
                 raise SourceLocalRunnerError(f"source-local terminal has incomplete stage: {address}")
             entry = driver.ledger.revalidate_terminal(address)
             disposition = entry.get("terminal_disposition")
@@ -254,15 +259,27 @@ def _write_source_terminal(
             }:
                 common_blockers.append(address)
         terminal_address = f"{source}/{candidate}/{stage_ids[-1]}"
-        terminal = driver.ledger.revalidate_terminal(terminal_address)
-        terminal_disposition = terminal.get("terminal_disposition")
-        candidate_terminals[candidate] = {
-            "address": terminal_address,
-            "terminal_disposition": terminal_disposition,
-            "receipt_hash": terminal.get("receipt_hash"),
-        }
-        if terminal_disposition == "CANDIDATE_LOCAL_FAILURE":
-            candidate_failures.append(candidate)
+        terminal = driver.ledger.stage_entry(terminal_address)
+        if terminal and terminal.get("terminal_disposition") in base.COMPLETE_LEDGER_DISPOSITIONS:
+            terminal = driver.ledger.revalidate_terminal(terminal_address)
+            terminal_disposition = terminal.get("terminal_disposition")
+            candidate_terminals[candidate] = {
+                "address": terminal_address,
+                "terminal_disposition": terminal_disposition,
+                "receipt_hash": terminal.get("receipt_hash"),
+            }
+            if terminal_disposition == "CANDIDATE_LOCAL_FAILURE":
+                candidate_failures.append(candidate)
+        elif allow_incomplete:
+            candidate_terminals[candidate] = {
+                "address": terminal_address,
+                "terminal_disposition": "INCOMPLETE_DUE_COMMON_COURT_BLOCKER",
+                "receipt_hash": None,
+            }
+        else:
+            raise SourceLocalRunnerError(
+                f"source-local terminal stage absent: {terminal_address}"
+            )
 
     if common_blockers and not status.startswith("BLOCKED"):
         raise SourceLocalRunnerError(
@@ -286,6 +303,7 @@ def _write_source_terminal(
         "candidate_terminals": candidate_terminals,
         "candidate_failure_cells": [f"{source}/{c}" for c in candidate_failures],
         "common_blockers": common_blockers,
+        "incomplete_stages": incomplete_stages,
         "stage_ledger_sha256": driver.ledger.hash(),
         "execution_branch": driver.repo.branch,
         "execution_head": driver.repo.head,
