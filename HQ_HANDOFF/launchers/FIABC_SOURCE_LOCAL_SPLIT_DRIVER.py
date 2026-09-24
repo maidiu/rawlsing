@@ -574,75 +574,77 @@ def main(argv: list[str] | None = None) -> int:
     source_paths = {args.source: source_path}
     backend = base._load_backend(args.backend_module) if args.backend_module else None
 
-    driver = base.DarwinCourtDriver(
-        machine=machine,
-        work_root=work_root,
-        repo_root=repo_root,
-        source_paths=source_paths,
-        host=host,
-        repo=repo,
-        backend=backend,
-    )
-
-    if args.preflight:
-        if args.succession_manifest is None or args.succession_lifecycle_context is None:
-            raise SourceLocalRunnerError(
-                "--preflight requires succession manifest and lifecycle context"
-            )
-        out = _source_preflight(
-            base=base,
-            driver=driver,
+    lock_root = repo_root / ".git" if (repo_root / ".git").is_dir() else work_root
+    with base.DriverInstanceLock(lock_root):
+        driver = base.DarwinCourtDriver(
             machine=machine,
-            source=args.source,
-            source_path=source_path,
+            work_root=work_root,
             repo_root=repo_root,
-            court_contract_path=court_contract,
-            succession_manifest=args.succession_manifest.resolve(),
-            succession_lifecycle_context=args.succession_lifecycle_context.resolve(),
-            freeze_path=freeze_path,
-        )
-    elif args.verify_only:
-        out = _verify_source_block(
-            base=base, driver=driver, machine=machine, source=args.source
-        )
-    else:
-        if backend is None or args.backend_module != base.ISOLATED_BACKEND_MODULE:
-            raise SourceLocalRunnerError(
-                "source-local measured execution requires the exact process-isolated backend"
-            )
-        if args.succession_preflight_receipt is None:
-            raise SourceLocalRunnerError(
-                "--run requires the source-local/full-court succession preflight receipt"
-            )
-
-        preflight_receipt = args.succession_preflight_receipt.resolve()
-        validate_live_succession_preflight_receipt(
-            preflight_receipt,
-            repo_head=repo.head,
-            court_contract_path=court_contract,
-            current_manifest=machine.document,
-        )
-        load_frozen_source_oracle(
-            freeze_path=freeze_path, source=args.source, work_root=work_root
+            source_paths=source_paths,
+            host=host,
+            repo=repo,
+            backend=backend,
         )
 
-        os.environ[base.FROZEN_UPSTREAM_ENV] = str(freeze_path)
-        os.environ["RAWLSING_FIABC_T5_CURRENT_COURT_CONTRACT"] = str(court_contract)
-        os.environ["RAWLSING_FIABC_T5_CURRENT_EXECUTION_MANIFEST"] = str(
-            args.continuation_map.resolve()
-        )
-        os.environ["RAWLSING_FIABC_T5_SUCCESSION_PREFLIGHT_RECEIPT"] = str(
-            preflight_receipt
-        )
-        os.environ["RAWLSING_EE_P2X_WARM_STATE_TRANSITIONS"] = ",".join(
-            authorized_same_cell_transitions(
-                machine.document.get("stage_catalog", ())
+        if args.preflight:
+            if args.succession_manifest is None or args.succession_lifecycle_context is None:
+                raise SourceLocalRunnerError(
+                    "--preflight requires succession manifest and lifecycle context"
+                )
+            out = _source_preflight(
+                base=base,
+                driver=driver,
+                machine=machine,
+                source=args.source,
+                source_path=source_path,
+                repo_root=repo_root,
+                court_contract_path=court_contract,
+                succession_manifest=args.succession_manifest.resolve(),
+                succession_lifecycle_context=args.succession_lifecycle_context.resolve(),
+                freeze_path=freeze_path,
             )
-        )
+        elif args.verify_only:
+            out = _verify_source_block(
+                base=base, driver=driver, machine=machine, source=args.source
+            )
+        else:
+            if backend is None or args.backend_module != base.ISOLATED_BACKEND_MODULE:
+                raise SourceLocalRunnerError(
+                    "source-local measured execution requires the exact process-isolated backend"
+                )
+            if args.succession_preflight_receipt is None:
+                raise SourceLocalRunnerError(
+                    "--run requires the source-local/full-court succession preflight receipt"
+                )
 
-        out = _run_source_block(
-            base=base, driver=driver, machine=machine, source=args.source
-        )
+            preflight_receipt = args.succession_preflight_receipt.resolve()
+            validate_live_succession_preflight_receipt(
+                preflight_receipt,
+                repo_head=repo.head,
+                court_contract_path=court_contract,
+                current_manifest=machine.document,
+            )
+            load_frozen_source_oracle(
+                freeze_path=freeze_path, source=args.source, work_root=work_root
+            )
+
+            os.environ[base.FROZEN_UPSTREAM_ENV] = str(freeze_path)
+            os.environ["RAWLSING_FIABC_T5_CURRENT_COURT_CONTRACT"] = str(court_contract)
+            os.environ["RAWLSING_FIABC_T5_CURRENT_EXECUTION_MANIFEST"] = str(
+                args.continuation_map.resolve()
+            )
+            os.environ["RAWLSING_FIABC_T5_SUCCESSION_PREFLIGHT_RECEIPT"] = str(
+                preflight_receipt
+            )
+            os.environ["RAWLSING_EE_P2X_WARM_STATE_TRANSITIONS"] = ",".join(
+                authorized_same_cell_transitions(
+                    machine.document.get("stage_catalog", ())
+                )
+            )
+
+            out = _run_source_block(
+                base=base, driver=driver, machine=machine, source=args.source
+            )
 
     print(json.dumps(out, sort_keys=True, indent=2))
     return 0
