@@ -1,0 +1,36 @@
+{
+  "schema": "RAWLSING_HQ_CURRENT_FIABC_MODULE_ENTRYPOINT_REPAIR@1.0.0",
+  "checkpoint_id": "20260924T0112-0400",
+  "status": "RAWLSING_FIABC_DRIVER_ENTRYPOINT_REPAIRED__RUN1_PRE_CANDIDATE_STOP_BANKED__MEASURED_RETRY_AUTHORIZED",
+  "decision": "HQD-2026-09-24-091",
+  "run1": {
+    "work_root": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/FIABC-P2X-DISPOSITIVE-R1-RUN1",
+    "classification": "PRE_CANDIDATE_DRIVER_IMPORT_STOP",
+    "succession_producer_pass": true,
+    "direct_succession_preflight_pass": true,
+    "driver_preflight_initialized": false,
+    "t5_preflight_receipt": false,
+    "candidate_processes_started": 0,
+    "candidate_outputs_seen": 0,
+    "error": "ModuleNotFoundError: No module named 'rawlsing_next'"
+  },
+  "launcher": {
+    "path": "HQ_HANDOFF/launchers/RUN_DISPOSITIVE_FIABC_SIX_CELL.sh",
+    "repair_commit": "f102dccfe53ecd57d146b256900962705ef24c50",
+    "blob_sha1": "37d2a3c33eb2958c873cecc3ab083ffee2c0e144",
+    "qualification_receipt": "HQ_HANDOFF/launchers/FIABC_DISPOSITIVE_SIX_CELL_LAUNCHER_QUALIFICATION_R4.json",
+    "preflight_entrypoint": "python -B -m rawlsing_next.ee_p2x_darwin_court_driver",
+    "measured_entrypoint": "python -m rawlsing_next.ee_p2x_darwin_court_driver",
+    "pythonpath_injected": false,
+    "measured_python_B": false
+  },
+  "protected_execution": {
+    "branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+    "head": "bc832181b4284ac110d2be44fc83504e04de081e"
+  },
+  "frozen_answer_key": {
+    "t3_sha256": "7dfb62362b983b92dee2774d862a46c0c0ce3ca2c3bb48850e0f400346936908",
+    "pre_candidate_stop_identity_sha256": "203fae32dc31ad6afe6dd2e85aed0ddf1a262d9a93efa6597a0c09173c64b384"
+  },
+  "next_action": "FRESH_TERMINAL_MEASURED_SIX_CELL_RETRY_WITH_MODULE_ENTRYPOINT_LAUNCHER"
+}
