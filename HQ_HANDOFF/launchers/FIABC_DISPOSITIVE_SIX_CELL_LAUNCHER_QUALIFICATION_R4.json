@@ -1,0 +1,42 @@
+{
+  "schema": "RAWLSING_FIABC_DISPOSITIVE_LAUNCHER_QUALIFICATION@1.3.0",
+  "status": "PASS__PACKAGE_MODULE_ENTRYPOINT_REPAIR__MEASURED_DRIVER_CODE_UNCHANGED",
+  "observed_stop": {
+    "work_root": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/FIABC-P2X-DISPOSITIVE-R1-RUN1",
+    "driver_preflight_initialized": false,
+    "error": "ModuleNotFoundError: No module named 'rawlsing_next'",
+    "t5_preflight_receipt_emitted": false,
+    "candidate_processes_started": 0,
+    "candidate_outputs_seen": 0,
+    "classification": "LAUNCHER_PYTHON_ENTRYPOINT_PACKAGING_ERROR__PRE_CANDIDATE"
+  },
+  "repair": {
+    "commit": "f102dccfe53ecd57d146b256900962705ef24c50",
+    "launcher_blob_sha1": "37d2a3c33eb2958c873cecc3ab083ffee2c0e144",
+    "changed_file": "HQ_HANDOFF/launchers/RUN_DISPOSITIVE_FIABC_SIX_CELL.sh",
+    "preflight_entrypoint": "python -B -m rawlsing_next.ee_p2x_darwin_court_driver",
+    "measured_entrypoint": "python -m rawlsing_next.ee_p2x_darwin_court_driver",
+    "direct_script_entrypoint_removed": true,
+    "PYTHONPATH_added": false,
+    "global_PYTHONDONTWRITEBYTECODE_added": false,
+    "measured_run_python_B": false,
+    "protected_execution_code_changed": false,
+    "protected_execution_head": "bc832181b4284ac110d2be44fc83504e04de081e"
+  },
+  "static_assertions": {
+    "exact_delta_one_launcher_file": true,
+    "additions": 2,
+    "deletions": 2,
+    "module_preflight": true,
+    "module_run": true,
+    "measured_run_no_B": true,
+    "no_pythonpath": true,
+    "no_global_dontwrite": true,
+    "exact_execution_head_bound": true
+  },
+  "frozen_answer_key_unchanged": {
+    "t3_sha256": "7dfb62362b983b92dee2774d862a46c0c0ce3ca2c3bb48850e0f400346936908",
+    "pre_candidate_stop_identity_sha256": "203fae32dc31ad6afe6dd2e85aed0ddf1a262d9a93efa6597a0c09173c64b384"
+  },
+  "holding": "The driver module already exposes a standard __main__ entrypoint. Invoking it with -m supplies the repository parent on sys.path so absolute rawlsing_next imports resolve. No production Python code, candidate code, metric law, frozen answer key, or protected execution commit changed."
+}
