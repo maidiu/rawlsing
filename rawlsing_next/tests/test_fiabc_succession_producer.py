@@ -1,8 +1,10 @@
 from __future__ import annotations
 
 import copy
+import hashlib
 import json
 from pathlib import Path
+import subprocess
 from typing import Any, Mapping
 
 import pytest
@@ -217,6 +219,89 @@ def test_current_owner_mapping_covers_exact_profile_required_function_set():
     assert set(profile["function_boundary"]["all_functions"]) == (
         required | set(profile["function_boundary"]["deferred_beyond_terminal"])
     )
+
+
+def test_repaired_execution_dependencies_are_provenance_not_semantic_owners():
+    required = {
+        "rawlsing_next/ee_p2x_darwin_stage_backend.py",
+        "rawlsing_next/fiabc_lits_common_representation.py",
+        "rawlsing_next/fiabc_lits_i_representation_authority.py",
+        "rawlsing_next/fiabc_final_oracle_freeze_producers.py",
+    }
+    assert required <= set(p.CURRENT_EXECUTION_PROVENANCE_PATHS)
+    assert required <= set(p.CURRENT_REQUIRED_PATHS)
+    assert not required.intersection(p.CURRENT_OWNER_PATHS.values())
+
+
+def test_real_current_head_producer_binds_repaired_dependencies_exactly(tmp_path: Path):
+    head = p.checked_out_head(ROOT)
+    manifest_path = tmp_path / "succession_manifest.json"
+    lifecycle_path = tmp_path / "lifecycle_context.json"
+    receipt_path = tmp_path / "producer_receipt.json"
+    receipt = p.produce(
+        repo_root=ROOT,
+        manifest_output=manifest_path,
+        lifecycle_output=lifecycle_path,
+        receipt_output=receipt_path,
+        expected_head=head,
+        require_clean=True,
+    )
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    lifecycle = json.loads(lifecycle_path.read_text(encoding="utf-8"))
+    written_receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
+
+    assert manifest["manifest_identity"]["generated_from_commit_sha"] == head
+    assert lifecycle["generated_from_commit_sha"] == head
+    assert receipt["generated_from_commit_sha"] == head
+    assert receipt["expected_head"] == head
+    assert receipt["clean_worktree_required"] is True
+    receipt_files = receipt["current_head_bindings"]["required_files"]
+    required = set(p.CURRENT_EXECUTION_PROVENANCE_PATHS)
+    assert required <= set(receipt_files)
+    assert written_receipt == receipt
+
+    for path in sorted(required):
+        ref = receipt_files[path]
+        blob = subprocess.check_output(
+            ["git", "-C", str(ROOT), "rev-parse", "--verify", f"{head}:{path}"],
+            text=True,
+        ).strip()
+        content = subprocess.check_output(
+            ["git", "-C", str(ROOT), "show", f"{head}:{path}"]
+        )
+        assert ref["resolved_commit_sha"] == head
+        assert ref["git_blob_sha"] == blob
+        assert ref["content_sha256"] == hashlib.sha256(content).hexdigest()
+
+    assert receipt["evaluator_status"] == "PASS"
+    assert receipt["evaluator_failure_codes"] == []
+    assert receipt["candidate_processes_started"] == 0
+    assert receipt["candidate_outputs_seen"] == 0
+    assert receipt["candidate_owned_roots_consulted"] == []
+    assert lifecycle["candidate_processes_started"] == 0
+    assert lifecycle["candidate_outputs_seen"] == 0
+    assert lifecycle["candidate_owned_roots_consulted"] == []
+    assert lifecycle["cell_order"] == [
+        {"source": "LITS_I", "candidate": "A"},
+        {"source": "LITS_I", "candidate": "B"},
+        {"source": "LITS_I", "candidate": "C"},
+        {"source": "WVS7", "candidate": "A"},
+        {"source": "WVS7", "candidate": "B"},
+        {"source": "WVS7", "candidate": "C"},
+    ]
+    capability_realizations = {
+        (item["source_id"], item["candidate_id"]): item["production_realization_ref"]
+        for item in manifest["source_candidate_capabilities"]
+    }
+    assert p.CANDIDATE_REALIZATIONS == {
+        "A": (p.OWNER_COMMIT, "rawlsing_next/pre553_r5_source_backed_adapter.py"),
+        "B": (p.OWNER_COMMIT, "rawlsing_next/pre553_source_backed_c11_facade.py"),
+        "C": ("CURRENT_HEAD", "rawlsing_next/pre553_candidate_c_production_binding.py"),
+    }
+    for source in ("LITS_I", "WVS7"):
+        assert capability_realizations[(source, "A")]["resolved_commit_sha"] == p.OWNER_COMMIT
+        assert capability_realizations[(source, "B")]["resolved_commit_sha"] == p.OWNER_COMMIT
+        assert capability_realizations[(source, "C")]["resolved_commit_sha"] == head
 
 
 def test_current_manifest_law_rejects_preserved_lits_a_s01():

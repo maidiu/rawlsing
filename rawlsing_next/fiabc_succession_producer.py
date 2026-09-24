@@ -43,6 +43,7 @@ OWNER_COMMIT = "0b96b8de9aac774566f872cf0630ebd4ddeb70e6"
 EXPECTED_T2_SCHEMA = "RAWLSING_FIABC_CURRENT_SIX_CELL_EXECUTION_MANIFEST@1.0.0"
 EXPECTED_T5_SCHEMA = "RAWLSING_FIABC_T5_CURRENT_SIX_CELL_COURT_CONTRACT@1.0.0"
 _RE_SHA40 = re.compile(r"^[0-9a-f]{40}$")
+_RE_SHA64 = re.compile(r"^[0-9a-f]{64}$")
 
 # This mapping is the current executable-owner instantiation of the already
 # adopted Wave-1/Wave-2 function boundary.  It does not create semantic
@@ -83,6 +84,16 @@ EXTRA_PROVENANCE_PATHS: Mapping[str, tuple[str, ...]] = {
     "F018": ("rawlsing_next/pre553_effective_n.py",),
 }
 
+# Direct execution/provenance dependencies of the repaired measured path.
+# These are current-head implementation inputs, not additional F001-F036
+# semantic owners; keep the adopted function-boundary ownership map intact.
+CURRENT_EXECUTION_PROVENANCE_PATHS: tuple[str, ...] = (
+    "rawlsing_next/ee_p2x_darwin_stage_backend.py",
+    "rawlsing_next/fiabc_lits_common_representation.py",
+    "rawlsing_next/fiabc_lits_i_representation_authority.py",
+    "rawlsing_next/fiabc_final_oracle_freeze_producers.py",
+)
+
 CANDIDATE_REALIZATIONS: Mapping[str, tuple[str, str]] = {
     "A": (OWNER_COMMIT, "rawlsing_next/pre553_r5_source_backed_adapter.py"),
     "B": (OWNER_COMMIT, "rawlsing_next/pre553_source_backed_c11_facade.py"),
@@ -103,6 +114,7 @@ CURRENT_REQUIRED_PATHS = tuple(sorted({
     "rawlsing_next/fiabc_telemetry_semantics.py",
     "rawlsing_next/ee_p2x_candidate_process_envelope.py",
     "rawlsing_next/ee_p2x_process_isolated_backend.py",
+    *CURRENT_EXECUTION_PROVENANCE_PATHS,
     *CURRENT_OWNER_PATHS.values(),
     *(p for values in EXTRA_PROVENANCE_PATHS.values() for p in values),
     CANDIDATE_REALIZATIONS["C"][1],
@@ -752,6 +764,18 @@ def produce(
         )
         for required_path in CURRENT_REQUIRED_PATHS
     }
+    for path, ref in prerequisite_refs.items():
+        if (
+            ref.get("ref") != head
+            or ref.get("resolved_commit_sha") != head
+            or not isinstance(ref.get("git_blob_sha"), str)
+            or not _RE_SHA40.fullmatch(ref["git_blob_sha"])
+            or not isinstance(ref.get("content_sha256"), str)
+            or not _RE_SHA64.fullmatch(ref["content_sha256"])
+        ):
+            raise SuccessionProducerError(
+                f"current-head required-file identity is not exact for {path}"
+            )
 
     t2 = _json_file(repo_root, T2_PATH)
     t5 = _json_file(repo_root, T5_PATH)
@@ -813,11 +837,13 @@ def produce(
         "candidate_b_no_cache_ref": lifecycle["candidate_b_no_cache"]["stop_law_ref"],
         "wvs7_c_zero_accelerator_ref": lifecycle["wvs7_c_zero_accelerator_no_cache"]["stop_law_ref"],
         "current_head_bindings": {
+            "generated_from_commit_sha": head,
             "t2_manifest_sha256": hashlib.sha256((repo_root / T2_PATH).read_bytes()).hexdigest(),
             "t5_contract_sha256": hashlib.sha256((repo_root / T5_PATH).read_bytes()).hexdigest(),
             "final_hq_return_sha256": hashlib.sha256((repo_root / FINAL_HQ_PATH).read_bytes()).hexdigest(),
             "required_files": {
                 path: {
+                    "resolved_commit_sha": ref["resolved_commit_sha"],
                     "git_blob_sha": ref["git_blob_sha"],
                     "content_sha256": ref["content_sha256"],
                 }
