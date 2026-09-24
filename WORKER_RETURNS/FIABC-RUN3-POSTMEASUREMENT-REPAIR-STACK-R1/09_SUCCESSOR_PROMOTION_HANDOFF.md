@@ -9,3 +9,5 @@ The source-free repair is ready for HQ review on `agent/codex-fiabc-run3-postmea
 - Source-free qualification: 115/115 tests passed under the pinned runtime.
 
 HQ should review and, if adopted, promote this repair through its normal successor/preflight process. The repair does not authorize a new measured run, RUN4, P2 synthesis, or P3. A future measured court requires separate HQ authorization and a fresh court root; the preserved RUN3 evidence remains immutable.
+
+The corrected R5 serialized source reference can change `root.json` and therefore the R5 `physical_root_id`; a future authorized fresh court must measure and verify that new physical identity. This source-free qualification makes no physical-root or performance claim.
