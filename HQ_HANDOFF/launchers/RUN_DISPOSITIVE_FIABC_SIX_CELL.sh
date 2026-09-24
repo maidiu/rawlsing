@@ -209,11 +209,11 @@ SUCCESSION_PRODUCER_RECEIPT="$WORK_ROOT/court/fiabc_i07_p10_producer_receipt.jso
 DIRECT_PREFLIGHT="$WORK_ROOT/court/fiabc_i07_direct_preflight.json"
 T5_PREFLIGHT="$WORK_ROOT/court/fiabc_t5_succession_preflight.json"
 
-"$PYTHON_BIN" -m rawlsing_next.fiabc_succession_producer   --repo-root "$FIABC_REPO_ROOT"   --expected-head "$HEAD"   --manifest-output "$SUCCESSION_MANIFEST"   --lifecycle-output "$LIFECYCLE_CONTEXT"   --receipt-output "$SUCCESSION_PRODUCER_RECEIPT"
+"$PYTHON_BIN" -B -m rawlsing_next.fiabc_succession_producer   --repo-root "$FIABC_REPO_ROOT"   --expected-head "$HEAD"   --manifest-output "$SUCCESSION_MANIFEST"   --lifecycle-output "$LIFECYCLE_CONTEXT"   --receipt-output "$SUCCESSION_PRODUCER_RECEIPT"
 
-"$PYTHON_BIN" -m rawlsing_next.fiabc_succession_preflight   --manifest "$SUCCESSION_MANIFEST"   --lifecycle-context "$LIFECYCLE_CONTEXT"   --repo-root "$FIABC_REPO_ROOT"   --output "$DIRECT_PREFLIGHT"
+"$PYTHON_BIN" -B -m rawlsing_next.fiabc_succession_preflight   --manifest "$SUCCESSION_MANIFEST"   --lifecycle-context "$LIFECYCLE_CONTEXT"   --repo-root "$FIABC_REPO_ROOT"   --output "$DIRECT_PREFLIGHT"
 
-"$PYTHON_BIN" rawlsing_next/ee_p2x_darwin_court_driver.py   --preflight   --continuation-map "$CONTINUATION_MAP"   --current-court-contract "$COURT_CONTRACT"   --succession-manifest "$SUCCESSION_MANIFEST"   --succession-lifecycle-context "$LIFECYCLE_CONTEXT"   --work-root "$WORK_ROOT"   --repo-root "$FIABC_REPO_ROOT"   --lits-path "$LITS_PATH"   --wvs-path "$WVS_PATH"   >"$WORK_ROOT/court/logs/preflight.stdout.log"   2>"$WORK_ROOT/court/logs/preflight.stderr.log"
+"$PYTHON_BIN" -B rawlsing_next/ee_p2x_darwin_court_driver.py   --preflight   --continuation-map "$CONTINUATION_MAP"   --current-court-contract "$COURT_CONTRACT"   --succession-manifest "$SUCCESSION_MANIFEST"   --succession-lifecycle-context "$LIFECYCLE_CONTEXT"   --work-root "$WORK_ROOT"   --repo-root "$FIABC_REPO_ROOT"   --lits-path "$LITS_PATH"   --wvs-path "$WVS_PATH"   >"$WORK_ROOT/court/logs/preflight.stdout.log"   2>"$WORK_ROOT/court/logs/preflight.stderr.log"
 
 [[ -f "$T5_PREFLIGHT" ]] || die "driver preflight did not emit $T5_PREFLIGHT"
 
