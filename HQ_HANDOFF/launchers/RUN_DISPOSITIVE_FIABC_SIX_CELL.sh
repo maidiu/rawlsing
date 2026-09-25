@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-EXPECTED_BRANCH="agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1"
-EXPECTED_HEAD="bc832181b4284ac110d2be44fc83504e04de081e"
+EXPECTED_BRANCH="agent/rabochii-fiabc-cache-neutral-joined-successor-r1"
+SUCCESSOR_COMMISSION="79b10777df2c8733edee56f6a18d880b3c664779"
+PHYSICAL_EPOCH_IDENTITY="fc6afc9bc7b287f8fd0654e1da546faee7e6c85491e6735ebe4a161b0db3de35"
+CACHE_HELPER="HQ_HANDOFF/launchers/FIABC_PYTHON_CACHE_NEUTRALITY_SUCCESSOR.py"
 
 LITS_SOURCE_SHA256="7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09"
 WVS_SOURCE_SHA256="2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
@@ -83,8 +85,8 @@ PY
 cd "$FIABC_REPO_ROOT"
 
 [[ "$(git branch --show-current)" == "$EXPECTED_BRANCH" ]] || die "wrong branch: expected $EXPECTED_BRANCH"
-[[ "$(git rev-parse --verify HEAD^{commit})" == "$EXPECTED_HEAD" ]] || die "wrong HEAD: expected $EXPECTED_HEAD"
-[[ -z "$(git status --porcelain --untracked-files=all)" ]] || die "protected execution worktree is dirty"
+git merge-base --is-ancestor "$SUCCESSOR_COMMISSION" HEAD || die "successor commission is not an ancestor of HEAD"
+[[ -z "$(git status --porcelain --untracked-files=all)" ]] || die "protected successor worktree is dirty"
 
 IMMUTABLE_SUCCESSION_EVIDENCE_COMMITS=(
   "0b96b8de9aac774566f872cf0630ebd4ddeb70e6"
@@ -327,6 +329,29 @@ Path(sys.argv[1], "court", "dispositive_launcher_receipt.json").write_text(
 )
 PY
 
+# Cache-neutral physical epoch C0. Preflight above is candidate-free and unmeasured.
+# These variables are deliberately exported only now, before the measured driver
+# interpreter exists. Existing ordinary __pycache__ trees are not deleted; the
+# empty redirected prefix makes them nonparticipants.
+CACHE_PREFIX="$WORK_ROOT/court/_python_cache_neutral_prefix"
+test -d "$CACHE_PREFIX" || mkdir -p "$CACHE_PREFIX"
+test -z "$(find "$CACHE_PREFIX" -mindepth 1 -print -quit)" || die "cache-neutral prefix is not empty before measured entry"
+export PYTHONDONTWRITEBYTECODE=1
+export PYTHONPYCACHEPREFIX="$CACHE_PREFIX"
+export RAWLSING_EE_P2X_CACHE_NEUTRAL_SUCCESSOR=1
+export RAWLSING_EE_P2X_PHYSICAL_EPOCH_IDENTITY="$PHYSICAL_EPOCH_IDENTITY"
+
+"$PYTHON_BIN" "$CACHE_HELPER" runtime-check --work-root "$WORK_ROOT" \
+  >"$WORK_ROOT/court/logs/cache_neutral_runtime_check.stdout.log"
+"$PYTHON_BIN" "$CACHE_HELPER" receipt \
+  --work-root "$WORK_ROOT" \
+  --scope JOINED_SIX_CELL \
+  --protected-head "$HEAD" \
+  --joined-successor-identity "$PHYSICAL_EPOCH_IDENTITY" \
+  --output "$WORK_ROOT/court/cache_neutral_runtime_receipt.json" \
+  >"$WORK_ROOT/court/logs/cache_neutral_receipt.stdout.log"
+test -z "$(find "$CACHE_PREFIX" -mindepth 1 -print -quit)" || die "cache-neutral prefix acquired descendants before measured driver start"
+
 printf '%s\n' "FIABC_DISPOSITIVE_PREFLIGHT_GREEN__STARTING_SIX_CELL_MEASURED_COURT"
 printf '%s\n' "WORK_ROOT=$WORK_ROOT"
 printf '%s\n' "EXECUTION_HEAD=$HEAD"
@@ -337,6 +362,10 @@ set +e
 "$PYTHON_BIN" -m rawlsing_next.ee_p2x_darwin_court_driver   --run   --continuation-map "$CONTINUATION_MAP"   --current-court-contract "$COURT_CONTRACT"   --succession-preflight-receipt "$T5_PREFLIGHT"   --frozen-upstream-receipt "$WORK_ROOT/court/t3/frozen-upstream.json"   --backend-module "$BACKEND_MODULE"   --work-root "$WORK_ROOT"   --repo-root "$FIABC_REPO_ROOT"   --lits-path "$LITS_PATH"   --wvs-path "$WVS_PATH"   >"$WORK_ROOT/court/logs/measured_run.stdout.log"   2> >(tee "$WORK_ROOT/court/logs/measured_run.stderr.log" >&2)
 rc=$?
 set -e
+
+if [[ -n "$(find "$CACHE_PREFIX" -mindepth 1 -print -quit)" ]]; then
+  die "cache-neutral prefix acquired descendants during measured court"
+fi
 
 printf '%s\n' "$rc" >"$WORK_ROOT/court/measured_run.exit_code"
 if [[ "$rc" -ne 0 ]]; then
