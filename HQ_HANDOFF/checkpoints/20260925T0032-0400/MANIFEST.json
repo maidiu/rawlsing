@@ -1,0 +1,27 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_MANIFEST@1.1.0",
+  "checkpoint_id": "20260925T0032-0400",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "governing_decision": "HQD-2026-09-25-097",
+  "files": {
+    "current_md": {
+      "path": "HQ_HANDOFF/checkpoints/20260925T0032-0400/CURRENT.md",
+      "git_blob_sha": "fa8e249a214279c9cbc583c0ba876fa1ea256709"
+    },
+    "current_json": {
+      "path": "HQ_HANDOFF/checkpoints/20260925T0032-0400/CURRENT.json",
+      "git_blob_sha": "668254b726da5d097b9436e1535bf96fc97e3933"
+    },
+    "decision_ledger": {
+      "path": "HQ_HANDOFF/DECISION_LEDGER.jsonl",
+      "git_blob_sha": "1a186672937829ca11e1a1bb70fe263658d50328"
+    },
+    "promotion": {
+      "path": "HQ_HANDOFF/FIABC_SOURCE_SPLIT_PANDAS_RUNTIME_REPAIR_PROMOTION_R1.md",
+      "git_blob_sha": "5c2f1226ebd4c22a1f1dbbea32d429eca012cb62"
+    }
+  },
+  "protected_execution_head": "3d8f2ad62600b6777dcb23a28404a067502e77a0",
+  "source_split_control_head": "4f0ee6bbc7e3387fb1c71837c1ae8bea658f64a2",
+  "next_action": "PREPARE_BOTH_MACHINES_FRESH_AND_RETURN_READINESS"
+}
