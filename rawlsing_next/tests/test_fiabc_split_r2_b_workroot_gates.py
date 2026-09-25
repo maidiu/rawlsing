@@ -167,8 +167,15 @@ class SplitR2BWorkrootGateTests(unittest.TestCase):
                 self.assertFalse(wvs["candidate_owned_semantic_state_prebuilt"])
                 self.assertFalse(wvs["candidate_owned_carrier_state_prebuilt"])
                 receipt = work / "court" / "joined_prestate_receipt.json"
-                GATES.verify_joined_prestate(
-                    source="WVS7", repo_root=repo, work_root=work, receipt_path=receipt
+                with self.assertRaisesRegex(
+                    GATES.SplitR2GateError, "software prestate remains unclosed"
+                ):
+                    GATES.verify_joined_prestate(
+                        source="WVS7", repo_root=repo, work_root=work, receipt_path=receipt
+                    )
+                self.assertEqual(
+                    wvs["joined_import_cache_state"],
+                    "BLOCKED__JOINED_LITS_GENERATED_PYTHON_BYTECODE_CACHE_NOT_REPRODUCED",
                 )
                 rogue = work / "_be1_immutable" / "rogue.py"
                 rogue.parent.mkdir(parents=True, exist_ok=True)
