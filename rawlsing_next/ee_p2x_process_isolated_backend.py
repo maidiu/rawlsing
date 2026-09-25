@@ -63,6 +63,15 @@ def run_stage(context, services):
     }
 
 
+def stop_after_outer_nonpass(*, source: str, candidate: str, reason: str):
+    controller = _CONTROLLER
+    if controller is None:
+        return None
+    return controller.stop_after_outer_nonpass(
+        source=source, candidate=candidate, reason=reason
+    )
+
+
 def _close() -> None:
     global _CONTROLLER
     if _CONTROLLER is not None:
@@ -73,4 +82,9 @@ def _close() -> None:
 atexit.register(_close)
 
 
-__all__ = ["BACKEND_CONTRACT", "INNER_BACKEND_DEFAULT", "run_stage"]
+__all__ = [
+    "BACKEND_CONTRACT",
+    "INNER_BACKEND_DEFAULT",
+    "run_stage",
+    "stop_after_outer_nonpass",
+]
