@@ -83,6 +83,10 @@ FORBIDDEN_PREPROVISION_ROOTS = (
     "_lits_common_representation",
     "cells",
 )
+ALLOWED_PRESTATE_ROOTS = (
+    "_be1_immutable",
+    "_exact_owner_modules",
+)
 
 
 class SplitR2GateError(RuntimeError):
@@ -461,6 +465,17 @@ def _prestate_material(repo_root: Path) -> list[Mapping[str, Any]]:
     return material
 
 
+def _relative_files(root: Path, prefixes: Sequence[str]) -> list[str]:
+    out = []
+    for prefix in prefixes:
+        base = root / prefix
+        if not base.exists():
+            continue
+        for path in sorted(p for p in base.rglob("*") if p.is_file()):
+            out.append(path.relative_to(root).as_posix())
+    return out
+
+
 def provision_joined_prestate(
     *, source: str, repo_root: Path, work_root: Path, output: Path
 ) -> Mapping[str, Any]:
@@ -474,6 +489,11 @@ def provision_joined_prestate(
             raise SplitR2GateError(
                 f"candidate/source semantic state exists before preprovision: {name}"
             )
+    existing_prestate = _relative_files(work_root, ALLOWED_PRESTATE_ROOTS)
+    if existing_prestate:
+        raise SplitR2GateError(
+            f"joined prestate namespaces must be empty before provisioning: {existing_prestate}"
+        )
     written = []
     if source == "WVS7":
         for item in _prestate_material(repo_root):
@@ -524,6 +544,12 @@ def verify_joined_prestate(
     got = doc.get("preprovisioned_objects", [])
     if {x.get("destination") for x in got} != set(expected_by_dest):
         raise SplitR2GateError("joined prestate object inventory drift")
+    actual_prestate = set(_relative_files(work_root, ALLOWED_PRESTATE_ROOTS))
+    if actual_prestate != set(expected_by_dest):
+        raise SplitR2GateError(
+            f"joined prestate namespace has missing/extra files: "
+            f"expected={sorted(expected_by_dest)} actual={sorted(actual_prestate)}"
+        )
     for dest_rel, item in expected_by_dest.items():
         dest = work_root / dest_rel
         if not dest.is_file() or _sha256_file(dest) != item["sha256"]:
