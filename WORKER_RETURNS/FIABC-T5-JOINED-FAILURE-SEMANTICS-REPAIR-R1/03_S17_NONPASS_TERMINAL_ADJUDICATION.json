@@ -1,0 +1,52 @@
+{
+  "schema": "RAWLSING_FIABC_T5_S17_NONPASS_TERMINAL_ADJUDICATION@1.0.0",
+  "status": "PASS__S17_SUCCESS_ONLY__NONPASS_EVIDENCE_EXPLICIT",
+  "implementation_head": "41eea54d7610a47f1adc342c6caacaf11324a40c",
+  "success_law": {
+    "s17_backend_may_run_only_after": "_final_ready proves every source/candidate stage terminal with no candidate-local or common blocker",
+    "all_six_pass_behavior": "UNCHANGED__verify_live_final_terminal remains the success path",
+    "pass_terminal": "COURT_SEQUENCE_COMPLETE__S17_VERIFIED"
+  },
+  "candidate_local_failure": {
+    "final_status": "COURT_SEQUENCE_COMPLETE__CANDIDATE_LOCAL_FAILURES_RECORDED__S17_SUCCESS_VERIFIER_NOT_RUN",
+    "final_terminal_disposition": "CANDIDATE_LOCAL_FAILURE",
+    "s17_success_backend_invoked": false,
+    "s17_success_claimed": false,
+    "terminal_bundle_fabricated": false,
+    "missing_success_evidence_synthesized": false,
+    "detail": "candidate_failure_cells carries the exact failed source/candidate identities"
+  },
+  "common_source_failure": {
+    "final_status": "COURT_SEQUENCE_COMPLETE__COMMON_SOURCE_BLOCKERS_RECORDED__S17_SUCCESS_VERIFIER_NOT_RUN",
+    "final_terminal_disposition": "BLOCKED_BY_COMMON_SOURCE_AUTHORITY",
+    "smallest_scope_preserved": "SOURCE_ONLY",
+    "prior_source_blockers_retained": true,
+    "court_wide_relabel_forbidden": true,
+    "s17_success_backend_invoked": false
+  },
+  "common_court_failure": {
+    "immediate_status": "BLOCKED__COMMON_COURT_AUTHORITY",
+    "terminal_disposition": "BLOCKED_BY_COMMON_COURT_AUTHORITY",
+    "blocking_scope": "COURT_UNTIL_RESUME",
+    "later_execution": "FORBIDDEN_UNTIL_RESUME",
+    "resume_with_unresolved_blocker": "emits explicit final non-PASS evidence again; does not enter success S17"
+  },
+  "final_nonpass_receipt": {
+    "path": "WORK_ROOT/court/fiabc_t5_final_nonpass.json",
+    "schema": "RAWLSING_FIABC_T5_LIVE_FINAL_NONPASS@1.0.0",
+    "false_claim_fields": {
+      "s17_success_backend_invoked": false,
+      "s17_success_claimed": false,
+      "six_cell_pass_claimed": false,
+      "terminal_bundle_fabricated": false,
+      "missing_success_evidence_synthesized": false,
+      "ranking_or_selection": false
+    }
+  },
+  "final_failure_priority": [
+    "actual common-court blocker if present",
+    "actual common-source blocker without scope escalation",
+    "candidate-local failure set",
+    "otherwise success-only S17"
+  ]
+}
