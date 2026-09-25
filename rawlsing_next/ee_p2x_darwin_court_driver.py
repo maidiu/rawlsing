@@ -1166,14 +1166,25 @@ def _stop_backend_after_posthook_nonpass(backend,stage,backend_terminal,ledger_d
     return stopped
 
 def _final_ready(machine,ledger):
-    common=[]
+    common_source=[]
+    common_court=[]
     for cell in machine.document["cells"]:
         for sid in machine.document["stage_catalog"]:
             a=f"{cell['source']}/{cell['candidate']}/{sid}"; e=ledger.stage_entry(a)
             if not e or e.get("terminal_disposition") not in COMPLETE_LEDGER_DISPOSITIONS: raise StageStateError(f"final S17 gate: nonterminal reducer stage {a}")
             e=ledger.revalidate_terminal(a)
-            if e["terminal_disposition"] in {"BLOCKED_BY_COMMON_SOURCE_AUTHORITY","BLOCKED_BY_COMMON_COURT_AUTHORITY"}: common.append(a)
-    if common: raise CommonAuthorityBlocker("unresolved common blockers at S17",scope="COURT",receipt={"blockers":common})
+            if e["terminal_disposition"]=="BLOCKED_BY_COMMON_SOURCE_AUTHORITY": common_source.append(a)
+            elif e["terminal_disposition"]=="BLOCKED_BY_COMMON_COURT_AUTHORITY": common_court.append(a)
+    if common_court:
+        raise CommonAuthorityBlocker(
+            "unresolved common-court blockers at S17",scope="COURT",
+            receipt={"common_court_blockers":common_court,"common_source_blockers":common_source},
+        )
+    if common_source:
+        raise CommonAuthorityBlocker(
+            "common-source blockers prevent success-only S17",scope="SOURCE",
+            receipt={"common_source_blockers":common_source},
+        )
     if machine.identity.schema == CURRENT_EXECUTION_MANIFEST_SCHEMA:
         candidate_failures=[]
         for cell in machine.document.get("cells", ()):
@@ -1330,19 +1341,27 @@ class DarwinCourtDriver:
                         terminal_evidence_path=evidence,
                     )
                 except CommonAuthorityBlocker as exc:
+                    if exc.scope=="SOURCE":
+                        final_status="COURT_SEQUENCE_COMPLETE__COMMON_SOURCE_BLOCKERS_RECORDED__S17_SUCCESS_VERIFIER_NOT_RUN"
+                        final_disposition="BLOCKED_BY_COMMON_SOURCE_AUTHORITY"
+                        final_next="__COURT_COMPLETE__"
+                    else:
+                        final_status="BLOCKED__UNRESOLVED_COMMON_COURT_AUTHORITY_AT_S17"
+                        final_disposition="BLOCKED_BY_COMMON_COURT_AUTHORITY"
+                        final_next=stage.address
                     self.progress.emit_stage(
-                        stage,"BLOCKED",next_stage=stage.address,
+                        stage,"BLOCKED",next_stage=final_next,
                         elapsed_stage_ns=self.progress.now_ns()-stage_start_ns,
-                        terminal_disposition="BLOCKED_BY_COMMON_COURT_AUTHORITY",
+                        terminal_disposition=final_disposition,
                     )
                     evidence=self._write_final_nonpass(
-                        status="BLOCKED__UNRESOLVED_COMMON_AUTHORITY_AT_S17",
-                        terminal_disposition="BLOCKED_BY_COMMON_COURT_AUTHORITY",
-                        detail=dict(exc.receipt),
-                        next_stage=stage.address,
+                        status=final_status,
+                        terminal_disposition=final_disposition,
+                        detail={"scope":exc.scope,**dict(exc.receipt)},
+                        next_stage=final_next,
                     )
                     return self._summary(
-                        "BLOCKED__UNRESOLVED_COMMON_AUTHORITY_AT_S17",stage.address,
+                        final_status,final_next,
                         terminal_evidence_path=evidence,
                     )
             sha=self.source_sha_for_stage(stage); roots=_candidate_roots(self.work_root,stage.source,stage.candidate); ih=_input_identity(self.machine,stage,sha,self.repo.head)
