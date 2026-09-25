@@ -1,0 +1,35 @@
+{
+  "schema": "RAWLSING_FIABC_T5_REPAIR_PROTECTED_BASE_DRIFT_AUDIT@1.0.0",
+  "status": "PASS__ONLY_COMMISSIONED_CONTROL_SURFACES_AND_TEST_CHANGED",
+  "protected_base": "3d8f2ad62600b6777dcb23a28404a067502e77a0",
+  "implementation_head": "41eea54d7610a47f1adc342c6caacaf11324a40c",
+  "merge_base": "3d8f2ad62600b6777dcb23a28404a067502e77a0",
+  "implementation_changed_files": [
+    "rawlsing_next/fiabc_live_terminal_control.py",
+    "rawlsing_next/ee_p2x_darwin_court_driver.py",
+    "rawlsing_next/ee_p2x_candidate_process_envelope.py",
+    "rawlsing_next/ee_p2x_process_isolated_backend.py",
+    "rawlsing_next/tests/test_fiabc_t5_joined_failure_semantics_repair.py"
+  ],
+  "branch_scaffolding": [
+    "WORKER_COMMISSIONS/FIABC-T5-JOINED-FAILURE-SEMANTICS-REPAIR-R1/00_COMMISSION.md"
+  ],
+  "protected_objects_proved_unchanged": {
+    "WORKER_RETURNS/FIABC-T2/01_SIX_CELL_EXECUTION_MANIFEST.json": "49692c1c8527680c97af073039b36125edd7e56d",
+    "WORKER_RETURNS/EE-P2X/10B_DARWIN_DRIVER_RECEIPT_BINDING.json": "24311d54ca92a3255dcbbf05e7bc2b8d3ef19cb0"
+  },
+  "forbidden_or_unrelated_changes": {
+    "t2_manifest": false,
+    "candidate_owner_implementations": false,
+    "raw_source_files": false,
+    "measured_roots": false,
+    "architecture_selection": false,
+    "split_control_branch": false
+  },
+  "promotion_binding_debt": {
+    "historical_10b_binding_left_intact": true,
+    "historical_driver_blob": "02ca7cc9f5bf8665de712980a05fdcc059b93331",
+    "repaired_driver_blob": "70bf233492b543d3d728cedfdda36218504ef3d4",
+    "law": "HQ must issue/requalify the driver-bound receipt binding if this protected-code repair is promoted. Worker did not rewrite historical qualification evidence in place."
+  }
+}
