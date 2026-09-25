@@ -2557,6 +2557,12 @@ def _fresh_replay_cli(plan_path: Path) -> int:
     plan=json.loads(plan_path.read_text(encoding="utf-8"))
     if plan.get("schema")!="EE_P2R6S_FRESH_REPLAY_PLAN@1.0.0":
         return 21
+    from rawlsing_next.ee_p2x_candidate_process_envelope import (
+        attest_cache_neutral_runtime,
+    )
+    cache_attestation=attest_cache_neutral_runtime(
+        Path(plan["work_root"]), phase="FRESH_REPLAY_CHILD_PRE_SEMANTIC_WORK"
+    )
     from rawlsing_next.ee_p2x_darwin_court_driver import DriverServices
     roots=types.SimpleNamespace(durable=Path(plan["durable"]),scratch=Path(plan["scratch"]))
     stage=types.SimpleNamespace(source=plan["source"],candidate=plan["candidate"],address="FRESH_PROCESS_REPLAY")
@@ -2583,6 +2589,7 @@ def _fresh_replay_cli(plan_path: Path) -> int:
             "marker":"FIABC_T4_GOVERNED_REPLAY_STARTED","pid":os.getpid(),
             "peak_rss_bytes":max(0,int(usage.ru_maxrss)),
             "c11_binding_established":True,
+            "cache_neutral_attestation":cache_attestation,
             "source_events":list(state.get("_t4_source_events",[])),
             "io_events":list(state.get("_t4_io_events",[])),
             "scratch_events":list(state.get("_t4_scratch_events",[])),
@@ -2618,12 +2625,20 @@ def _fresh_replay_cli(plan_path: Path) -> int:
                       "child_cpu_user_ns":max(0,int((child_usage_stop.ru_utime-child_usage_start.ru_utime)*1e9)),
                       "child_cpu_system_ns":max(0,int((child_usage_stop.ru_stime-child_usage_start.ru_stime)*1e9)),
                       "child_wall_start_ns":child_wall_start,"child_wall_stop_ns":child_wall_stop,
+                      "cache_neutral_attestation":cache_attestation,
                       "source_events":list(state.get("_t4_source_events",[])),
                       "io_events":list(state.get("_t4_io_events",[])),
                       "scratch_events":list(state.get("_t4_scratch_events",[]))},sort_keys=True))
     return 0
 
 def _s15(ctx,services,state):
+    from rawlsing_next.ee_p2x_candidate_process_envelope import (
+        attest_cache_neutral_runtime,
+        validate_cache_neutral_attestation,
+    )
+    parent_pre_attestation=attest_cache_neutral_runtime(
+        Path(ctx.work_root), phase="S15_PARENT_PRE_FRESH_REPLAY"
+    )
     plan=_fresh_replay_plan(ctx,services)
     plan_path=_atomic(ctx.roots.scratch/"fresh_replay_plan.json",plan)
     action_id=_h({"stage":ctx.stage.address,"action":"FRESH_PROCESS_REPLAY","plan":_sha(plan_path)})
@@ -2640,12 +2655,26 @@ def _s15(ctx,services,state):
         line=out.strip().splitlines()[-1] if out.strip() else ""
         try: doc=json.loads(line)
         except Exception as exc: raise BackendStop("fresh-process replay receipt malformed",{"output":out[-4000:]}) from exc
+        try:
+            validate_cache_neutral_attestation(
+                doc.get("cache_neutral_attestation", {}),
+                work_root=Path(ctx.work_root),
+                expected_phase="FRESH_REPLAY_CHILD_PRE_SEMANTIC_WORK",
+            )
+        except Exception as exc:
+            raise BackendStop(
+                "fresh-process replay cache-neutral attestation failed",
+                {"exception_type":type(exc).__name__,"exception":str(exc)},
+            ) from exc
         replay_box["event"]=_child_process_event(
             stage=ctx.stage,pid=p.pid,before=before,after=after,wall_start_ns=start,wall_stop_ns=stop,
             peak_rss_bytes=doc.get("peak_rss_bytes",0),label="FRESH_PROCESS_REPLAY",
         )
         return doc
     doc,_=_measure(ctx,state,replay,"fresh_process_replay_wall_ns",cost_class="C3",lifecycle_action_id=action_id)
+    parent_post_attestation=attest_cache_neutral_runtime(
+        Path(ctx.work_root), phase="S15_PARENT_POST_FRESH_REPLAY"
+    )
     state.setdefault("_t4_child_process_envelopes",[]).append(replay_box["event"])
     for io_event in doc.get("io_events",[]):
         state.setdefault("_t4_io_events",[]).append({**io_event,"process_token":replay_box["event"]["process_token"]})
@@ -2665,12 +2694,20 @@ def _s15(ctx,services,state):
         "state_after_id":_h({"terminal":doc.get("terminal_identity"),"phase":"after"}),
         "terminal_identity":doc.get("terminal_identity"),
         "parent_process_token":parent_token,"replay_process_token":replay_token,
-        "evidence_refs":[ctx.stage.address,str(plan_path)],
+        "evidence_refs":[
+            ctx.stage.address,
+            str(plan_path),
+            doc["cache_neutral_attestation"]["receipt_identity"],
+            parent_post_attestation["receipt_identity"],
+        ],
         "metric_names":["fresh_process_replay_wall_ns"],
     })
     return {"fresh_process_replay_identity":doc.get("terminal_identity"),
             "fresh_process_i03_identity":doc.get("i03_identity"),
             "fresh_process_terminal_projection":doc.get("terminal_projection"),
+            "cache_neutral_attestation":doc.get("cache_neutral_attestation"),
+            "parent_pre_replay_cache_attestation":parent_pre_attestation,
+            "parent_post_replay_cache_attestation":parent_post_attestation,
             "process_boundary":"NEW_PYTHON_PROCESS"}
 
 def _s16(ctx,services,state):
