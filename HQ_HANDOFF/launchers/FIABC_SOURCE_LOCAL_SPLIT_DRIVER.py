@@ -15,6 +15,7 @@ from __future__ import annotations
 import argparse
 import dataclasses
 import hashlib
+import importlib.metadata
 import json
 import os
 from pathlib import Path
@@ -113,8 +114,15 @@ def _sysctl(name: str) -> str | None:
 
 def _hardware_fingerprint(base_host: Any) -> Mapping[str, Any]:
     memory = _sysctl("hw.memsize")
+    governed_runtime = dataclasses.asdict(base_host)
+    dependency_versions = dict(governed_runtime.get("dependency_versions", {}))
+    dependency_versions.update({
+        "pandas": importlib.metadata.version("pandas"),
+        "numpy": importlib.metadata.version("numpy"),
+    })
+    governed_runtime["dependency_versions"] = dependency_versions
     return {
-        "governed_runtime": dataclasses.asdict(base_host),
+        "governed_runtime": governed_runtime,
         "macos_version": platform.mac_ver()[0] or None,
         "hardware_model": _sysctl("hw.model"),
         "cpu_brand": _sysctl("machdep.cpu.brand_string"),
