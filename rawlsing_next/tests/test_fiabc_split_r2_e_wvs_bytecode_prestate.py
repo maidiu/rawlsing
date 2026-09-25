@@ -159,7 +159,7 @@ class CacheNeutralityTests(unittest.TestCase):
             self.assertEqual(doc["value"], "source")
             self.assertTrue(doc["dont_write"])
             self.assertEqual(str(Path(doc["prefix"]).resolve()), str(prefix.resolve()))
-            self.assertEqual(tuple(p for p in prefix.rglob("*") if p.is_file()), ())
+            self.assertEqual(tuple(prefix.rglob("*")), ())
 
     def test_current_protected_envelope_propagates_parent_environment_to_main_child(self):
         source = PROTECTED_ENVELOPE.read_text(encoding="utf-8")
