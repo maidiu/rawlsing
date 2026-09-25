@@ -1,0 +1,54 @@
+{
+  "schema": "RAWLSING_FIABC_SPLIT_R2_B_STATIC_QUALIFICATION@1.0.0",
+  "status": "STATIC_AUDIT_COMPLETE__HOSTILE_TESTS_BANKED_UNEXECUTED__WVS_MEASUREMENT_FAIL_CLOSED",
+  "common_base": "e1b82095c83dd15a64b409dba0e4ae7d4f4460c6",
+  "commission_commit": "0b0f284b952869f828660aa47c45cd174ae89358",
+  "protected_execution_head": "3d8f2ad62600b6777dcb23a28404a067502e77a0",
+  "implementation_test_head": "673c47ab9f158ebdd8858b3cfca7ee2295ffd01d",
+  "implementation_blobs": {
+    "HQ_HANDOFF/launchers/FIABC_SPLIT_R2_WORKROOT_GATES.py": "ad202e936923113b8fcf55b6ebc413f1060146a2",
+    "HQ_HANDOFF/launchers/FIABC_SOURCE_LOCAL_SPLIT_DRIVER.py": "700cdb38f1ce241e3f97486f352654e9656f0157",
+    "HQ_HANDOFF/launchers/RUN_FIABC_SOURCE_LOCAL_SPLIT.sh": "70c6a70d9257989b0531060470354f9c3d5f05ac",
+    "rawlsing_next/tests/test_fiabc_split_r2_b_workroot_gates.py": "118894b9caadbbe11352431b31a1a7cb4b43f293"
+  },
+  "static_checks": [
+    "read governing global-assumption commission and differential parity addendum",
+    "protected execution remained unmodified",
+    "source-local driver binds lock to git worktree administrative identity rather than WORK_ROOT fallback",
+    "runtime gate imports pyreadstat+pyarrow+pandas+numpy jointly before metadata acceptance",
+    "readiness path occurs before SOURCE_PATH requirement/hash and records zero raw access",
+    "pair member revalidation binds the exact launch WORK_ROOT named by readiness",
+    "WVS C0 prestate copies exact Git source bytes only into allowed neutral/code namespaces",
+    "prestate verifier requires exact allowed namespace file set and forbids semantic/candidate roots",
+    "verify-only invokes postrun classifier before accepting a dirty protected checkout",
+    "postrun baseline reads exact HEAD live evidence through Git and separately inventories ignored files",
+    "unclassified ignored files, governed mutation, nonselected source evidence, rename/copy and deletion fail closed",
+    "WVS prestate verifier now blocks measured entry on unreproduced joined bytecode/import-cache state"
+  ],
+  "hostile_tests_banked": [
+    "combined import failure despite pinned metadata",
+    "pair hardware-memory mismatch",
+    "WVS prestate exact file inventory / rogue file",
+    "forbidden cells/semantic prestate",
+    "linked-worktree same-checkout double-lock rejection",
+    "HEAD baseline versus legitimate selected-source live mutation",
+    "nonselected-source live evidence rejection",
+    "governed code mutation rejection",
+    "arbitrary ignored file rejection",
+    "launcher/driver binding and readiness-before-source ordering"
+  ],
+  "executed_tests": {
+    "count": 0,
+    "reason": "The worker branch has no CI/check run executing this new test file. The commission forbids use of the user's Mac and no permitted remote execution surface was available in this lane.",
+    "false_pass_claimed": false
+  },
+  "actions_not_taken": [
+    "no raw LiTS/WVS open/hash/decode",
+    "no Candidate A/B/C launch",
+    "no measured P2X",
+    "no modification of protected execution",
+    "no mutation of fan-in branch",
+    "no use of prior RUN4/RUN5 roots"
+  ],
+  "dispositive_blocker": "Joined LiTS can populate persistent Python bytecode caches for modules imported inside later WVS S01 measured build/open work. Current source-free preprovision reproduces exact source files but not that exact runtime-generated cache state, so WVS measured entry is intentionally blocked."
+}
