@@ -1,0 +1,94 @@
+{
+  "schema": "RAWLSING_FIABC_SPLIT_R2_B_SOURCE_HOST_HISTORY_EQUIVALENCE_LIMITS@1.0.0",
+  "status": "BLOCKED__SOFTWARE_CACHE_PRESTATE_UNCLOSED__HOST_HISTORY_SEPARATELY_BOUNDED",
+  "joined_reference": {
+    "order": [
+      "LITS_I/A",
+      "LITS_I/B",
+      "LITS_I/C",
+      "WVS7/A",
+      "WVS7/B",
+      "WVS7/C"
+    ],
+    "one_host_serial": true,
+    "pre_candidate_source_hash_passes_per_source": 3,
+    "basis": [
+      "canonical launcher performs one SHA-256 pass over each raw source",
+      "separate driver --preflight process ensure_source_verified hashes each source once",
+      "separate driver --run process hashes each source once at its first empirical-access stage and caches that verification within the driver process"
+    ],
+    "pre_candidate_decoder_calls_per_source": 0
+  },
+  "split_reference": {
+    "selected_source_hash_passes": 3,
+    "sequence": [
+      {
+        "ordinal": 1,
+        "actor": "source-local shell",
+        "operation": "SHA256_ONLY",
+        "classification": "COURT_ADMINISTRATION"
+      },
+      {
+        "ordinal": 2,
+        "actor": "source-local preflight driver process",
+        "operation": "ensure_source_verified",
+        "classification": "COURT_ADMINISTRATION"
+      },
+      {
+        "ordinal": 3,
+        "actor": "source-local measured driver process before first candidate stage",
+        "operation": "ensure_source_verified",
+        "classification": "COURT_ADMINISTRATION"
+      }
+    ],
+    "decoder_calls_before_candidate": 0,
+    "readiness_pair_gate_raw_source_access": 0,
+    "prestate_provision_raw_source_access": 0,
+    "extra_candidate_semantic_read_before_joined_equivalent": false
+  },
+  "equivalent_or_closed": [
+    {
+      "state": "immutable support source deployment",
+      "law": "WVS C0 preprovisions exact Git bytes for four R5 support modules that joined LiTS would already have deployed."
+    },
+    {
+      "state": "exact owner source deployment",
+      "law": "WVS C0 preprovisions exact A/B/C owner Git bytes."
+    },
+    {
+      "state": "raw-source administrative hash count/order",
+      "law": "split selected source preserves joined count of three SHA-only passes before/at measured entry and adds no decode."
+    },
+    {
+      "state": "in-memory candidate module/session state",
+      "law": "not inherited across joined sources because process isolation creates a fresh child per source×candidate."
+    }
+  ],
+  "irreducible_host_history": [
+    "filesystem page cache and VM cache warmth",
+    "thermal/frequency history",
+    "scheduler history",
+    "background OS activity"
+  ],
+  "host_history_law": {
+    "classification": "HOST_NESTED_WITHIN_SOURCE",
+    "absolute_cross_source_physical_metric_comparison_authorized": false,
+    "pair_gate_role": "Hardware/runtime equivalence is checked before launch, but a two-host split cannot claim identical serial one-host physical history."
+  },
+  "unresolved_software_state": [
+    "WORK_ROOT/_be1_immutable/**/__pycache__/*.pyc produced by joined LiTS imports",
+    "WORK_ROOT/_exact_owner_modules/**/__pycache__/*.pyc produced by joined LiTS owner imports",
+    "REPO/rawlsing_next/**/__pycache__/*.pyc for protected dependencies imported during joined LiTS measured work"
+  ],
+  "why_blocking": {
+    "measured_interval": "Protected S01 measures _bind as build_or_open_wall_ns.",
+    "effect": "A valid pre-existing .pyc can replace source compilation with bytecode loading inside that measured interval.",
+    "asymmetry": "Joined LiTS can populate those caches before WVS/A; a fresh split WVS host/root does not inherit that exact software cache state.",
+    "source_free_exactness_problem": "The exact cache set and byte identity are runtime/path/mtime/import-closure dependent. The current lane did not execute candidates and therefore did not fabricate a cache snapshot.",
+    "result": "WVS split measured entry is fail-closed until exact software-cache equivalence is lawfully qualified or protected measurement law is changed by a separate authorized court."
+  },
+  "next_lawful_options": [
+    "Qualify a deterministic, source-free, candidate-free cache-prestate construction that proves equivalent import-cost behavior without prebuilding semantic/carrier state.",
+    "Or amend/qualify protected physical-measurement law so candidate S01 excludes this control/import-cache cost symmetrically; Worker B did not modify protected execution."
+  ]
+}
