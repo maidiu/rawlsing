@@ -1296,7 +1296,17 @@ class DarwinCourtDriver:
                     a=_source_stop(self.machine,self.ledger,source=stage.source,head=self.repo.head,source_sha=self.frozen_source_sha(stage.source),blocker=a)
                     self.progress.emit_completed_cells()
                     continue
-                if n=="__COMMON_COURT_BLOCKER__": return self._summary("BLOCKED__COMMON_COURT_AUTHORITY",a)
+                if n=="__COMMON_COURT_BLOCKER__":
+                    evidence=self._write_final_nonpass(
+                        status="BLOCKED__COMMON_COURT_AUTHORITY",
+                        terminal_disposition="BLOCKED_BY_COMMON_COURT_AUTHORITY",
+                        detail={"blocker_stage":a,"resume_path":True},
+                        next_stage=a,
+                    )
+                    return self._summary(
+                        "BLOCKED__COMMON_COURT_AUTHORITY",a,
+                        terminal_evidence_path=evidence,
+                    )
                 a=n; continue
             if old and old.get("state")=="RUNNING" and not resume: raise StageStateError(f"partial stage {a}; use --resume")
             is_final = stage.address==self.machine.final_stage_id
@@ -1307,18 +1317,34 @@ class DarwinCourtDriver:
                     old=None
                 try:
                     _final_ready(self.machine,self.ledger)
-                except CandidateLocalFailure:
+                except CandidateLocalFailure as exc:
+                    evidence=self._write_final_nonpass(
+                        status="COURT_SEQUENCE_COMPLETE__CANDIDATE_LOCAL_FAILURES_RECORDED__S17_SUCCESS_VERIFIER_NOT_RUN",
+                        terminal_disposition="CANDIDATE_LOCAL_FAILURE",
+                        detail=dict(exc.receipt),
+                        next_stage="__COURT_COMPLETE__",
+                    )
                     return self._summary(
                         "COURT_SEQUENCE_COMPLETE__CANDIDATE_LOCAL_FAILURES_RECORDED__S17_SUCCESS_VERIFIER_NOT_RUN",
                         "__COURT_COMPLETE__",
+                        terminal_evidence_path=evidence,
                     )
-                except CommonAuthorityBlocker:
+                except CommonAuthorityBlocker as exc:
                     self.progress.emit_stage(
                         stage,"BLOCKED",next_stage=stage.address,
                         elapsed_stage_ns=self.progress.now_ns()-stage_start_ns,
                         terminal_disposition="BLOCKED_BY_COMMON_COURT_AUTHORITY",
                     )
-                    return self._summary("BLOCKED__UNRESOLVED_COMMON_AUTHORITY_AT_S17",stage.address)
+                    evidence=self._write_final_nonpass(
+                        status="BLOCKED__UNRESOLVED_COMMON_AUTHORITY_AT_S17",
+                        terminal_disposition="BLOCKED_BY_COMMON_COURT_AUTHORITY",
+                        detail=dict(exc.receipt),
+                        next_stage=stage.address,
+                    )
+                    return self._summary(
+                        "BLOCKED__UNRESOLVED_COMMON_AUTHORITY_AT_S17",stage.address,
+                        terminal_evidence_path=evidence,
+                    )
             sha=self.source_sha_for_stage(stage); roots=_candidate_roots(self.work_root,stage.source,stage.candidate); ih=_input_identity(self.machine,stage,sha,self.repo.head)
             if stage.disposition=="DONE__PRESERVE":
                 a,_=_preserve(self.machine,self.ledger,stage,self.repo_root,self.repo.head,sha)
@@ -1345,6 +1371,9 @@ class DarwinCourtDriver:
             except CommonAuthorityBlocker as exc: result=BackendResult("COMMON_SOURCE_BLOCKER" if exc.scope=="SOURCE" else "COMMON_COURT_BLOCKER",{"error":str(exc),"scope":exc.scope,**exc.receipt},verifier_complete=True)
             except Exception as exc: raise StageExecutionError(f"untyped backend failure at {a}: {exc}") from exc
             n,rh,disp=_backend_terminal(self.machine,self.ledger,stage,self.repo.head,sha,result)
+            _stop_backend_after_posthook_nonpass(
+                self.backend,stage,result.terminal_disposition,disp
+            )
             if stage.physical_host_measurement_required:
                 print("RAWLSING_LOCAL_SUPERVISOR_ACTION "+json.dumps(_token(stage,rh,self.ledger.hash(),self.repo.head),sort_keys=True,separators=(",",":")),file=sys.stderr,flush=True)
             if disp=="CANDIDATE_LOCAL_FAILURE" and stage.address!=self.machine.final_stage_id:
@@ -1369,12 +1398,46 @@ class DarwinCourtDriver:
             )
             self.progress.emit_completed_cells()
             if disp=="BLOCKED_BY_COMMON_COURT_AUTHORITY":
-                return self._summary("BLOCKED__COMMON_COURT_AUTHORITY",stage.address)
+                evidence=self._write_final_nonpass(
+                    status="BLOCKED__COMMON_COURT_AUTHORITY",
+                    terminal_disposition=disp,
+                    detail={"blocker_stage":stage.address},
+                    next_stage=stage.address,
+                )
+                return self._summary(
+                    "BLOCKED__COMMON_COURT_AUTHORITY",stage.address,
+                    terminal_evidence_path=evidence,
+                )
         return self._summary("COURT_SEQUENCE_COMPLETE__S17_VERIFIED",a)
-    def _summary(self,status,address):
+    def _write_final_nonpass(self, *, status, terminal_disposition, detail, next_stage):
+        payload={
+            "schema":"RAWLSING_FIABC_T5_LIVE_FINAL_NONPASS@1.0.0",
+            "status":status,
+            "terminal_disposition":terminal_disposition,
+            "next_stage":next_stage,
+            "execution_head":self.repo.head,
+            "current_execution_manifest":dataclasses.asdict(self.machine.identity),
+            "detail":dict(detail),
+            "s17_success_backend_invoked":False,
+            "s17_success_claimed":False,
+            "six_cell_pass_claimed":False,
+            "terminal_bundle_fabricated":False,
+            "missing_success_evidence_synthesized":False,
+            "ranking_or_selection":False,
+        }
+        payload["receipt_identity"]=_semantic_hash(payload)
+        path=self.work_root/"court"/"fiabc_t5_final_nonpass.json"
+        _atomic_write_json(path,payload)
+        return path
+    def _summary(self,status,address,terminal_evidence_path=None):
         ledger_sha=self.ledger.hash()
         self.progress.emit_court_terminal(status=status,next_stage=address,ledger_sha256=ledger_sha)
-        return {"schema":"RAWLSING_EE_P2X_DARWIN_DRIVER_RUN@1.0.0","status":status,"next_stage":address,"ledger_sha256":ledger_sha,"observed_p2x_head":self.repo.head,"measured_synthesis_performed":False,"progress_jsonl":str(self.progress.path)}
+        out={"schema":"RAWLSING_EE_P2X_DARWIN_DRIVER_RUN@1.0.0","status":status,"next_stage":address,"ledger_sha256":ledger_sha,"observed_p2x_head":self.repo.head,"measured_synthesis_performed":False,"progress_jsonl":str(self.progress.path)}
+        if terminal_evidence_path is not None:
+            p=Path(terminal_evidence_path)
+            out["t5_final_nonpass_path"]=str(p)
+            out["t5_final_nonpass_sha256"]=_sha256_file(p)
+        return out
 
 # ---- CLI ------------------------------------------------------------------------------
 def _parser():
