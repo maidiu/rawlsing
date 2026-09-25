@@ -506,6 +506,17 @@ class WorkerDPortableEvidenceTests(unittest.TestCase):
                     require_clean=True,
                 )
 
+            _git(root, "checkout", "-b", "wrong-control-branch")
+            with self.assertRaisesRegex(
+                EVIDENCE.EvidenceClosureError,
+                "wrong control branch",
+            ):
+                EVIDENCE.verify_control_binding(
+                    binding_path=binding,
+                    control_root=root,
+                    require_clean=False,
+                )
+
     def test_orchestration_failure_receipt_is_fail_closed_and_never_candidate_local(
         self,
     ):
