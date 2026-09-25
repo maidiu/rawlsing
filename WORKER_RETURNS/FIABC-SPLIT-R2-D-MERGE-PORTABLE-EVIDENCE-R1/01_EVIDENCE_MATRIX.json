@@ -1,0 +1,116 @@
+{
+  "schema": "RAWLSING_FIABC_SPLIT_R2_D_EVIDENCE_MATRIX@1.0.0",
+  "terminal": "PASS__SPLIT_R2_D_MERGE_PORTABLE_EVIDENCE__READY_FOR_FANIN",
+  "implementation_head": "d0b8c289428ace3df0d71581ee7f5afaeb42c057",
+  "protected_execution_head": "3d8f2ad62600b6777dcb23a28404a067502e77a0",
+  "rows": [
+    {
+      "id": "D1",
+      "burden": "non-circular exact qualified control binding",
+      "status": "PASS",
+      "surface": "FIABC_SOURCE_LOCAL_SPLIT_EVIDENCE.py:create_control_binding/verify_control_binding",
+      "hostile": [
+        "hash drift",
+        "dirty checkout",
+        "wrong branch",
+        "missing qualified commit"
+      ]
+    },
+    {
+      "id": "D2",
+      "burden": "orchestration failure receipt",
+      "status": "PASS",
+      "surface": "FIABC_SOURCE_LOCAL_SPLIT_EVIDENCE.py:write_orchestration_failure_receipt",
+      "hostile": [
+        "nonzero exit",
+        "partial ledger",
+        "no terminal",
+        "no automatic retry"
+      ]
+    },
+    {
+      "id": "D3",
+      "burden": "post-terminal portable evidence closure",
+      "status": "PASS",
+      "surface": "FIABC_SOURCE_LOCAL_SPLIT_EVIDENCE.py:build_portable_evidence_closure",
+      "hostile": [
+        "foreign source stage",
+        "RUNNING stage",
+        "receipt tamper",
+        "unbound repo-live mutation"
+      ]
+    },
+    {
+      "id": "D4",
+      "burden": "merge independently verifies ledger/receipts",
+      "status": "PASS",
+      "surface": "FIABC_SOURCE_LOCAL_SPLIT_MERGE.py",
+      "hostile": [
+        "receipt tamper",
+        "ledger tamper",
+        "closure mismatch"
+      ]
+    },
+    {
+      "id": "D5",
+      "burden": "canonical source/flags/inventory/blocker completeness",
+      "status": "PASS",
+      "surface": "evidence helper + merge",
+      "hostile": [
+        "source SHA drift",
+        "candidate terminal mismatch",
+        "common-court incomplete law"
+      ]
+    },
+    {
+      "id": "D6",
+      "burden": "portable repo-live evidence/control compatibility",
+      "status": "PASS",
+      "surface": "evidence helper + merge",
+      "hostile": [
+        "portable hash drift",
+        "nonlocal inclusion",
+        "different control without receipt"
+      ]
+    },
+    {
+      "id": "D7",
+      "burden": "hardware/runtime law and absolute cross-source physical comparison ban",
+      "status": "PASS",
+      "surface": "FIABC_SOURCE_LOCAL_SPLIT_MERGE.py",
+      "hostile": [
+        "hardware mismatch",
+        "macOS mismatch separately recorded"
+      ]
+    },
+    {
+      "id": "D8",
+      "burden": "WVS RUN5 compatibility framework; no silent grandfather",
+      "status": "PASS",
+      "surface": "legacy_wvs_run5_framework + validate_control_compatibility_receipt",
+      "hostile": [
+        "legacy WVS without explicit compatibility receipt"
+      ]
+    }
+  ],
+  "source_free_qualification": {
+    "tests_run": 9,
+    "tests_passed": 9,
+    "exit_code": 0,
+    "raw_source_opens": 0,
+    "raw_source_hash_passes": 0,
+    "decoder_calls": 0,
+    "candidate_launches": 0,
+    "candidate_outputs": 0,
+    "measured_execution": false
+  },
+  "fanin_wiring_required": [
+    "baseline before measured entry",
+    "failure receipt on nonzero driver exit",
+    "portable closure after terminal",
+    "seal control binding after integrated qualification",
+    "pass control root to merge"
+  ],
+  "protected_execution_mutated": false,
+  "prior_measured_roots_mutated": false
+}
