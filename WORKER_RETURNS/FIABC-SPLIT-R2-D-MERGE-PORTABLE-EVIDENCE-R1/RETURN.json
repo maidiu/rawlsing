@@ -1,0 +1,75 @@
+{
+  "schema": "RAWLSING_FIABC_SPLIT_R2_WORKER_RETURN@1.0.0",
+  "worker": "D",
+  "terminal": "PASS__SPLIT_R2_D_MERGE_PORTABLE_EVIDENCE__READY_FOR_FANIN",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-fiabc-split-r2-d-merge-portable-evidence-r1",
+  "common_base": "e1b82095c83dd15a64b409dba0e4ae7d4f4460c6",
+  "commission_commit": "5019995462f7ae8ffccdd45c2a6932823e4ffd8e",
+  "protected_execution_branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+  "protected_execution_head": "3d8f2ad62600b6777dcb23a28404a067502e77a0",
+  "implementation_test_head": "d0b8c289428ace3df0d71581ee7f5afaeb42c057",
+  "evidence_tip_before_RETURN_json": "1ce087d929fc091d4a521dba013bce928211d08c",
+  "implementation_files": [
+    "HQ_HANDOFF/launchers/FIABC_SOURCE_LOCAL_SPLIT_EVIDENCE.py",
+    "HQ_HANDOFF/launchers/FIABC_SOURCE_LOCAL_SPLIT_MERGE.py",
+    "rawlsing_next/tests/test_fiabc_split_r2_d_merge_portable_evidence.py"
+  ],
+  "return_files": [
+    "WORKER_RETURNS/FIABC-SPLIT-R2-D-MERGE-PORTABLE-EVIDENCE-R1/00_RETURN.md",
+    "WORKER_RETURNS/FIABC-SPLIT-R2-D-MERGE-PORTABLE-EVIDENCE-R1/01_EVIDENCE_MATRIX.json",
+    "WORKER_RETURNS/FIABC-SPLIT-R2-D-MERGE-PORTABLE-EVIDENCE-R1/02_SOURCE_FREE_TEST_OUTPUT.txt",
+    "WORKER_RETURNS/FIABC-SPLIT-R2-D-MERGE-PORTABLE-EVIDENCE-R1/03_FANIN_INTEGRATION_CONTRACT.md",
+    "WORKER_RETURNS/FIABC-SPLIT-R2-D-MERGE-PORTABLE-EVIDENCE-R1/04_WVS_RUN5_COMPATIBILITY_FRAMEWORK.json",
+    "WORKER_RETURNS/FIABC-SPLIT-R2-D-MERGE-PORTABLE-EVIDENCE-R1/05_PROTECTED_REPO_LIVE_WRITE_AUDIT.json",
+    "WORKER_RETURNS/FIABC-SPLIT-R2-D-MERGE-PORTABLE-EVIDENCE-R1/RETURN.json"
+  ],
+  "burdens": {
+    "exact_control_binding": "PASS",
+    "dirty_control_rejection": "PASS",
+    "wrong_control_branch_rejection": "PASS",
+    "orchestration_failure_receipt": "PASS",
+    "portable_source_evidence_closure": "PASS",
+    "independent_merge_ledger_receipt_verification": "PASS",
+    "canonical_source_sha_validation": "PASS",
+    "source_local_no_s17_no_synthesis_validation": "PASS",
+    "candidate_terminal_and_blocker_coherence": "PASS",
+    "repo_live_delta_and_portable_copy_verification": "PASS",
+    "same_qualified_control_default_law": "PASS",
+    "legacy_wvs_explicit_compatibility_only": "PASS",
+    "hardware_runtime_comparison": "PASS",
+    "macos_mismatch_separate_record": "PASS",
+    "absolute_cross_source_physical_comparison_banned": "PASS"
+  },
+  "source_free_qualification": {
+    "tests_run": 9,
+    "tests_passed": 9,
+    "exit_code": 0,
+    "raw_source_opens": 0,
+    "raw_source_hash_passes": 0,
+    "decoder_calls": 0,
+    "candidate_process_launch_attempts": 0,
+    "candidate_outputs": 0,
+    "measured_execution": false
+  },
+  "forensic_findings": {
+    "protected_LOCAL_COURT_mutable_writes_surface_through_backend_output_artifacts": true,
+    "unledgered_LOCAL_COURT_mutation_policy": "FAIL_CLOSED",
+    "WVS_RUN5_conservation": "HOLD__HQ_EXPLICIT_COMPATIBILITY_ADJUDICATION_REQUIRED"
+  },
+  "fanin_contract": {
+    "worker_B_shell_overlap_intentionally_avoided": true,
+    "required_wiring": [
+      "capture repo-live baseline before measured source-block entry",
+      "emit orchestration failure receipt on nonzero driver exit",
+      "emit portable closure only after source terminal and measured timing complete",
+      "seal immutable control binding after integrated source-free qualification",
+      "invoke merge with control root",
+      "supply explicit compatibility receipt only for HQ-adjudicated legacy WVS exception"
+    ],
+    "current_worker_D_blocker": null
+  },
+  "protected_execution_mutated": false,
+  "canonical_six_cell_launcher_mutated": false,
+  "prior_RUN4_RUN5_roots_mutated": false
+}
