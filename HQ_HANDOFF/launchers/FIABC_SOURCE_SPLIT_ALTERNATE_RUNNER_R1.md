@@ -2,7 +2,7 @@
 
 Status:
 
-`DRAFTED__ISOLATED_FROM_CANONICAL_SIX_CELL_RUNNER__SOURCE_FREE_QUALIFICATION_REQUIRED_BEFORE_MEASUREMENT`
+`SOURCE_FREE_QUALIFICATION_BANKED__HQ_LAUNCH_AUTHORIZATION_PENDING`
 
 This alternate path exists so LiTS-I and WVS7 may be measured concurrently on two materially equivalent Macs without modifying the already-qualified canonical six-cell launcher or protected execution code.
 
@@ -135,9 +135,15 @@ and does not authorize P2 itself.
 
 ## Current measured-use status
 
-Do not run measured source-local A/B/C yet.
+The dedicated source-free qualification is banked at:
 
-Before measured use, this alternate runner must receive a dedicated source-free qualification covering at minimum:
+`WORKER_RETURNS/FIABC-SOURCE-LOCAL-SPLIT-SOURCE-FREE-QUALIFICATION-R1/`
+
+It exercised the alternate orchestration with synthetic manifests, temporary receipts, and fake backends. It did not open or hash LiTS-I/WVS7, decode survey data, create candidate outputs, launch candidate processes, execute S17, or authorize P2 synthesis. Its positive terminal qualifies this runner implementation only.
+
+Do not run measured source-local A/B/C until HQ reviews this return and issues explicit measured-use authorization.
+
+The banked qualification covers at minimum:
 
 1. Python/shell syntax and packaging;
 2. exact protected-module import provenance;
@@ -153,4 +159,4 @@ Before measured use, this alternate runner must receive a dedicated source-free 
 12. merge positive/negative fixtures, including OS-version mismatch;
 13. byte identity of the canonical six-cell launcher before and after this branch.
 
-Until that qualification is banked, this branch is an alternate runner implementation candidate, not a measured-court authorization.
+Until HQ reviews the banked return and issues explicit measured-use authorization, this branch remains a qualified alternate runner without measured-court authorization.
