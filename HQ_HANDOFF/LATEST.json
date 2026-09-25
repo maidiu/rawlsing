@@ -1,12 +1,12 @@
 {
   "schema": "RAWLSING_HQ_HANDOFF_POINTER@1.1.0",
-  "checkpoint_id": "20260925T0219-0400",
-  "handoff_commit": "4e270be7eae871b241e157a58c7a61070c7f6e4c",
-  "semantic_pre_main_tip": "3d8f2ad62600b6777dcb23a28404a067502e77a0",
+  "checkpoint_id": "20260925T1611-0400",
+  "handoff_commit": "eeebd1056e9b7bd48da58e5e83f258319e959159",
+  "semantic_pre_main_tip": "41eea54d7610a47f1adc342c6caacaf11324a40c",
   "control_branch": "integration/pre-main-reconciliation-r1",
-  "current_md_path": "HQ_HANDOFF/checkpoints/20260925T0219-0400/CURRENT.md",
-  "current_json_path": "HQ_HANDOFF/checkpoints/20260925T0219-0400/CURRENT.json",
-  "manifest_path": "HQ_HANDOFF/checkpoints/20260925T0219-0400/MANIFEST.json",
+  "current_md_path": "HQ_HANDOFF/checkpoints/20260925T1611-0400/CURRENT.md",
+  "current_json_path": "HQ_HANDOFF/checkpoints/20260925T1611-0400/CURRENT.json",
+  "manifest_path": "HQ_HANDOFF/checkpoints/20260925T1611-0400/MANIFEST.json",
   "decision_ledger_path": "HQ_HANDOFF/DECISION_LEDGER.jsonl",
   "protocol_path": "HQ_HANDOFF/PROTOCOL.md",
   "start_here_path": "HQ_HANDOFF/START_HERE.md",
@@ -15,6 +15,10 @@
   "temporal_reconciliation_law": "SEALED_CHECKPOINT_AUTHORITY_NE_POST_CHECKPOINT_PENDING_RETURN_NE_UNAUTHORIZED_POST_CHECKPOINT_MOVEMENT",
   "maintenance_law": "AFTER_EVERY_MATERIAL_HQ_STATE_CHANGE__CREATE_NEW_IMMUTABLE_CHECKPOINT__ADVANCE_AND_VERIFY_LATEST_BEFORE_TRANSITION_IS_SEALED",
   "protected_execution_head": "3d8f2ad62600b6777dcb23a28404a067502e77a0",
-  "next_action": "LAUNCH_BOTH_SOURCE_LOCAL_RUN5_BLOCKS_AND_PRESERVE_RETURNS",
-  "source_split_control_head": "4f0ee6bbc7e3387fb1c71837c1ae8bea658f64a2"
+  "next_action": "NEW_HQ_SELF_REPORT_THEN_RUN_OR_RECEIVE_CACHE_NEUTRAL_JOINED_SUCCESSOR",
+  "source_split_control_head": "4f0ee6bbc7e3387fb1c71837c1ae8bea658f64a2",
+  "active_joined_successor_head": "79b10777df2c8733edee56f6a18d880b3c664779",
+  "paused_split_fanin_head": "a11d3f6d264ff6d0cc6c3e4eadfd2791baa07966",
+  "measured_execution_authorized": false,
+  "primary_succession_handoff_path": "HQ_HANDOFF/FIABC_HQ_SUCCESSION_CACHE_NEUTRAL_SPLIT_R2_R1.md"
 }
