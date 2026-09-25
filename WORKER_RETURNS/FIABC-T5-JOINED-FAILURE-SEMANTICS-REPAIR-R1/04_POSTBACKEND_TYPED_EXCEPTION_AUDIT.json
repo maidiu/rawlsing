@@ -1,0 +1,57 @@
+{
+  "schema": "RAWLSING_FIABC_T5_POSTBACKEND_TYPED_EXCEPTION_AUDIT@1.0.0",
+  "status": "PASS__EXPECTED_GOVERNED_FAILURES_TYPED__PROGRAMMING_ERRORS_NOT_SWALLOWED",
+  "implementation_head": "41eea54d7610a47f1adc342c6caacaf11324a40c",
+  "audited_hooks": [
+    {
+      "hook": "T4 admit_live_stage_accounting",
+      "execution_position": "after backend child result, before ledger terminalization",
+      "expected_exception": "LiveAccountingError",
+      "repaired_disposition": "COMMON_COURT_BLOCKER",
+      "kind": "COMMON_COURT_AUTHORITY_FAILURE",
+      "scope": "COURT_UNTIL_RESUME",
+      "rationale": "Accounting contract failure invalidates court evidentiary admission, not candidate semantics."
+    },
+    {
+      "hook": "T5 admit_post_i05_oracle_match",
+      "execution_position": "after backend S05 PASS",
+      "expected_candidate_mismatch": "returned typed CANDIDATE_LOCAL_FAILURE/PARITY_ORACLE_FAILURE",
+      "expected_missing_peer_or_three_way_mismatch": "returned typed COMMON_SOURCE_BLOCKER/PARITY_ORACLE_FAILURE",
+      "residual_control_exception": "LiveTerminalControlError -> COMMON_COURT_BLOCKER/COMMON_COURT_AUTHORITY_FAILURE",
+      "broad_exception_catch": false
+    },
+    {
+      "hook": "T5 seal_live_cell_terminal",
+      "execution_position": "after backend S16 PASS",
+      "expected_exception": "LiveTerminalControlError",
+      "repaired_disposition": "CANDIDATE_LOCAL_FAILURE",
+      "kind": "CANDIDATE_LOCAL_CORRECTNESS_FAILURE",
+      "scope": "CANDIDATE_ONLY",
+      "rationale": "A cell that cannot satisfy its terminal qualification is not a qualifying cell."
+    }
+  ],
+  "failure_evidence": {
+    "outer_nonpass_backend_envelope_uses_effective_terminal_disposition": true,
+    "required_roles": [
+      "cell_receipt",
+      "failure_receipt"
+    ],
+    "failure_schema": "RAWLSING_EE_P2X_FAILURE_STOP_RECEIPT@1.0.0",
+    "common_source_candidate": null,
+    "synthetic_fallback_used": false,
+    "qualifying_cell_terminal_fabricated": false
+  },
+  "programming_error_law": {
+    "example": "ValueError raised by post-I05 hook",
+    "expected": "propagates as programming/untyped failure rather than being laundered into governed failure semantics",
+    "test": "test_unexpected_programming_error_in_post_i05_hook_still_escapes"
+  },
+  "process_lifecycle": {
+    "new_reusable_interface": "ProcessIsolationController.stop_after_outer_nonpass(source,candidate,reason)",
+    "adapter_interface": "ee_p2x_process_isolated_backend.stop_after_outer_nonpass",
+    "driver_rule": "If backend child returned PASS but an outer T4/T5 hook converts the stage to non-PASS, the retained same-cell process is gracefully stopped before propagation.",
+    "c_s05_none_stop_forbidden": true,
+    "cross_cell_stop_forbidden": true,
+    "ordinary_PASS_warm_transition_law_changed": false
+  }
+}
