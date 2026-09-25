@@ -1,0 +1,23 @@
+{
+  "schema": "RAWLSING_FIABC_CACHE_NEUTRAL_T5_FAILURE_REPAIR_REGRESSION@1.0.0",
+  "status": "PASS",
+  "implementation_head": "16f5e7d5f691e908d85dc1dd26b8a59a29f668f4",
+  "t5_qualified_base": "41eea54d7610a47f1adc342c6caacaf11324a40c",
+  "conserved_t5_terminal_control_blob": "e67f0c18bc52f81f2e0924799aa54745a53306a9",
+  "matrix": {
+    "dedicated_source_free_cases_from_t5_repair": 67,
+    "c_s05_missing_peer_observation_crash": false,
+    "same_source_three_way_gate_conserved": true,
+    "typed_outer_t4_t5_failure_semantics_conserved": true,
+    "retained_process_stopped_on_outer_nonpass": true,
+    "success_only_s17_conserved": true,
+    "typed_final_nonpass_evidence_conserved": true,
+    "all_six_pass_semantic_drift": false
+  },
+  "exact_runtime_regression": {
+    "workflow_run_id": 36190412538,
+    "included_test": "rawlsing_next/tests/test_fiabc_t5_joined_failure_semantics_repair.py",
+    "full_court_result": "160 passed, 28 subtests passed",
+    "behavioral_failures": 0
+  }
+}

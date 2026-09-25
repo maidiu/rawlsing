@@ -1,0 +1,145 @@
+{
+  "schema_id": "RABOCHII_RETURN_MANIFEST@1.0.0",
+  "task_id": "FIABC-CACHE-NEUTRAL-JOINED-SUCCESSOR-R1",
+  "branch": "agent/rabochii-fiabc-cache-neutral-joined-successor-r1",
+  "commission": {
+    "authority_ref": "79b10777df2c8733edee56f6a18d880b3c664779",
+    "exact_start_sha": "79b10777df2c8733edee56f6a18d880b3c664779"
+  },
+  "return": {
+    "result": "PASS",
+    "terminal": "PASS__FIABC_CACHE_NEUTRAL_JOINED_SUCCESSOR_SOURCE_FREE_QUALIFIED__RETURN_TO_HQ",
+    "phase": "CLOSURE_ONLY",
+    "completion": {
+      "commission_consumed": true,
+      "all_required_outputs_durable": true,
+      "no_required_work_remaining": true,
+      "no_background_work_remaining": true,
+      "return_packet_durable": true,
+      "terminal_state_entered": true
+    }
+  },
+  "separation": {
+    "performed_only_commissioned_role": true,
+    "no_uncommissioned_repair": true,
+    "no_uncommissioned_review": true
+  },
+  "return_packet": {
+    "path": "WORKER_RETURNS/FIABC-CACHE-NEUTRAL-JOINED-SUCCESSOR-R1/00_RETURN.md",
+    "blob_sha": "6f5a4d237d2d8d5b007ecd50e4a3518368a2319f"
+  },
+  "required_outputs": [
+    {
+      "name": "00_return",
+      "kind": "path",
+      "path": "WORKER_RETURNS/FIABC-CACHE-NEUTRAL-JOINED-SUCCESSOR-R1/00_RETURN.md",
+      "blob_sha": "6f5a4d237d2d8d5b007ecd50e4a3518368a2319f",
+      "status": "DURABLE"
+    },
+    {
+      "name": "return",
+      "kind": "path",
+      "path": "WORKER_RETURNS/FIABC-CACHE-NEUTRAL-JOINED-SUCCESSOR-R1/RETURN.json",
+      "blob_sha": "df6479d4849dce6692b434a33740d9e2a8d6f1a5",
+      "status": "DURABLE"
+    },
+    {
+      "name": "01_cache_neutral_physical_epoch",
+      "kind": "path",
+      "path": "WORKER_RETURNS/FIABC-CACHE-NEUTRAL-JOINED-SUCCESSOR-R1/01_CACHE_NEUTRAL_PHYSICAL_EPOCH.json",
+      "blob_sha": "0efd83e7c85d37408ab4361d2a9db5406debcbd6",
+      "status": "DURABLE"
+    },
+    {
+      "name": "02_process_cache_attestation",
+      "kind": "path",
+      "path": "WORKER_RETURNS/FIABC-CACHE-NEUTRAL-JOINED-SUCCESSOR-R1/02_PROCESS_CACHE_ATTESTATION.json",
+      "blob_sha": "16f99b0488ad50313da67da6aed2d50ca1599de9",
+      "status": "DURABLE"
+    },
+    {
+      "name": "03_s15_cache_attestation",
+      "kind": "path",
+      "path": "WORKER_RETURNS/FIABC-CACHE-NEUTRAL-JOINED-SUCCESSOR-R1/03_S15_CACHE_ATTESTATION.json",
+      "blob_sha": "52684683f2711ad75d50c808eb4a1586a8b53564",
+      "status": "DURABLE"
+    },
+    {
+      "name": "04_driver_successor_binding",
+      "kind": "path",
+      "path": "WORKER_RETURNS/FIABC-CACHE-NEUTRAL-JOINED-SUCCESSOR-R1/04_DRIVER_SUCCESSOR_BINDING.json",
+      "blob_sha": "9769db181df10a2e76dbfc621e86a66a8acc5896",
+      "status": "DURABLE"
+    },
+    {
+      "name": "05_joined_launcher_qualification",
+      "kind": "path",
+      "path": "WORKER_RETURNS/FIABC-CACHE-NEUTRAL-JOINED-SUCCESSOR-R1/05_JOINED_LAUNCHER_QUALIFICATION.json",
+      "blob_sha": "84119357a07ba70d84522410c2057b0fc73f0ece",
+      "status": "DURABLE"
+    },
+    {
+      "name": "06_t5_failure_repair_regression",
+      "kind": "path",
+      "path": "WORKER_RETURNS/FIABC-CACHE-NEUTRAL-JOINED-SUCCESSOR-R1/06_T5_FAILURE_REPAIR_REGRESSION.json",
+      "blob_sha": "e20e2964d51b117713625fcd41d17655a1a76d1f",
+      "status": "DURABLE"
+    },
+    {
+      "name": "07_full_driver_bound_qualification",
+      "kind": "path",
+      "path": "WORKER_RETURNS/FIABC-CACHE-NEUTRAL-JOINED-SUCCESSOR-R1/07_FULL_DRIVER_BOUND_QUALIFICATION.json",
+      "blob_sha": "22558c8ad960205dea5eb022ee706470e6b2cedc",
+      "status": "DURABLE"
+    },
+    {
+      "name": "08_split_reuse_contract",
+      "kind": "path",
+      "path": "WORKER_RETURNS/FIABC-CACHE-NEUTRAL-JOINED-SUCCESSOR-R1/08_SPLIT_REUSE_CONTRACT.json",
+      "blob_sha": "1a3ac01732fafb6a9a1c3e560156ed245fc3fb6b",
+      "status": "DURABLE"
+    },
+    {
+      "name": "09_source_free_telemetry",
+      "kind": "path",
+      "path": "WORKER_RETURNS/FIABC-CACHE-NEUTRAL-JOINED-SUCCESSOR-R1/09_SOURCE_FREE_TELEMETRY.json",
+      "blob_sha": "91dfdf97cd2c949eb60cb67823ec6d3d1150bd66",
+      "status": "DURABLE"
+    },
+    {
+      "name": "10_exact_test_output",
+      "kind": "path",
+      "path": "WORKER_RETURNS/FIABC-CACHE-NEUTRAL-JOINED-SUCCESSOR-R1/10_EXACT_TEST_OUTPUT.txt",
+      "blob_sha": "1744ed4ec9f1d962592a5fdc6c49ed0222e8c03e",
+      "status": "DURABLE"
+    },
+    {
+      "name": "11_implementation_blob_table",
+      "kind": "path",
+      "path": "WORKER_RETURNS/FIABC-CACHE-NEUTRAL-JOINED-SUCCESSOR-R1/11_IMPLEMENTATION_BLOB_TABLE.json",
+      "blob_sha": "e8dad642ac9dfd8780d3d6b2f605ab92714f86f8",
+      "status": "DURABLE"
+    },
+    {
+      "name": "12_qualification_evidence",
+      "kind": "path",
+      "path": "WORKER_RETURNS/FIABC-CACHE-NEUTRAL-JOINED-SUCCESSOR-R1/12_QUALIFICATION_EVIDENCE.json",
+      "blob_sha": "74fb8bb9f69c65160224ea1c2b5f3de567194e33",
+      "status": "DURABLE"
+    },
+    {
+      "name": "qualified_implementation_head",
+      "kind": "commit",
+      "sha": "16f5e7d5f691e908d85dc1dd26b8a59a29f668f4",
+      "status": "DURABLE"
+    }
+  ],
+  "evidence": {
+    "required": true,
+    "workflow_run_id": 36190412538,
+    "workflow_name": "FIABC Cache-Neutral Joined Successor Qualification",
+    "conclusion": "success",
+    "evidence_execution_sha": "66cacfc1fae085cee2b96672151b48793658549e",
+    "artifact_id": 10887568942
+  }
+}

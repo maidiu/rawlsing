@@ -1,0 +1,25 @@
+FIABC Cache-Neutral Joined Successor Qualification
+workflow_run_id=36190412538
+job_id=108253912431
+semantic_candidate_sha=16f5e7d5f691e908d85dc1dd26b8a59a29f668f4
+evidence_execution_sha=66cacfc1fae085cee2b96672151b48793658549e
+
+python -m pytest -q \
+  rawlsing_next/tests/test_fiabc_cache_neutral_joined_successor.py \
+  rawlsing_next/tests/test_fiabc_t5_joined_failure_semantics_repair.py \
+  rawlsing_next/tests/test_fiabc_t5_live_terminal_control.py \
+  rawlsing_next/tests/test_fiabc_t4_live_accounting.py \
+  rawlsing_next/tests/test_fiabc_t3_oracle_process_envelope.py \
+  rawlsing_next/tests/test_ee_p2x_local_court_driver_integration.py \
+  rawlsing_next/tests/test_fiabc_succession_preflight.py \
+  rawlsing_next/tests/test_fiabc_p2_terminal_verifier.py \
+  rawlsing_next/tests/test_fiabc_t2_six_cell_execution_binding.py
+
+........................................................................ [ 45%]
+........................................................................................                             [100%]
+160 passed, 28 subtests passed in 34.06s
+
+qualification-tests.txt sha256=26c46eaa751d77bb736c67fe2cb64e87703b735c22a13ded5c2d24ebb19fd870
+qualification-runtime.txt sha256=b51a9f25e3a899076bd778089a9c6465fc4b0661150964e88555cb7896d69b7c
+artifact_id=10887568942
+artifact_zip_digest=sha256:000151dcb9d1e1744418342016af8626b98eeb3c9dc5970f8139be2d7a5cce97

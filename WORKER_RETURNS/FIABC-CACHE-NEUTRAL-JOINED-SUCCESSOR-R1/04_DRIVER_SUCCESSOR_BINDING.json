@@ -1,0 +1,50 @@
+{
+  "schema": "RAWLSING_FIABC_CACHE_NEUTRAL_DRIVER_SUCCESSOR_BINDING_RETURN@1.0.0",
+  "status": "PASS",
+  "implementation_head": "16f5e7d5f691e908d85dc1dd26b8a59a29f668f4",
+  "historical_binding": {
+    "path": "WORKER_RETURNS/EE-P2X/10B_DARWIN_DRIVER_RECEIPT_BINDING.json",
+    "git_blob_sha1": "24311d54ca92a3255dcbbf05e7bc2b8d3ef19cb0",
+    "mutated": false,
+    "role": "HISTORICAL_EVIDENCE_ONLY"
+  },
+  "successor_binding": {
+    "path": "WORKER_RETURNS/EE-P2X/10C_DARWIN_DRIVER_SUCCESSOR_BINDING.json",
+    "git_blob_sha1": "247725e51ed141cf31c112084590b69953765032",
+    "schema": "RAWLSING_EE_P2X_DARWIN_DRIVER_SUCCESSOR_BINDING@1.0.0",
+    "authority_class": "CACHE_NEUTRAL_SUCCESSOR_IMPLEMENTATION_BINDING__NON_OPERATIVE_UNTIL_HQ_PROMOTION"
+  },
+  "driver": {
+    "path": "rawlsing_next/ee_p2x_darwin_court_driver.py",
+    "git_blob_sha1": "6472ae95d5d70f10b7c385104a0bd559b80c03a4"
+  },
+  "protected_surfaces": {
+    "process_envelope": "8ce84e7685fc11901dcc50f0f8df609a84aadbf8",
+    "process_isolated_backend": "6afd66d1234dd59c6eee97c9538b78bee9fcfd28",
+    "stage_backend": "97ee2cd993da1ff94dede48a4ab30e7f5524c375",
+    "t5_terminal_control": "e67f0c18bc52f81f2e0924799aa54745a53306a9",
+    "joined_launcher": "e84c575919eea9de591eb5c8b60ad80382537ef5"
+  },
+  "six_cell_manifest": {
+    "path": "WORKER_RETURNS/FIABC-T2/01_SIX_CELL_EXECUTION_MANIFEST.json",
+    "git_blob_sha1": "49692c1c8527680c97af073039b36125edd7e56d"
+  },
+  "physical_epoch_identity": "fc6afc9bc7b287f8fd0654e1da546faee7e6c85491e6735ebe4a161b0db3de35",
+  "terminal_vocabulary": {
+    "pass": "COURT_SEQUENCE_COMPLETE__S17_VERIFIED",
+    "candidate_local_nonpass": "COURT_SEQUENCE_COMPLETE__CANDIDATE_LOCAL_FAILURES_RECORDED__S17_SUCCESS_VERIFIER_NOT_RUN",
+    "common_source_nonpass": "COURT_SEQUENCE_COMPLETE__COMMON_SOURCE_BLOCKERS_RECORDED__S17_SUCCESS_VERIFIER_NOT_RUN",
+    "success_verifier_runs_after_nonpass": false
+  },
+  "verifier": {
+    "path": "WORKER_RETURNS/EE-P2X/12A_verify_ee_p2x_driver_bound_local_court.py",
+    "git_blob_sha1": "073da5709806cb5d893178dbcf0ac69368cc3964",
+    "consumes": "10C_DARWIN_DRIVER_SUCCESSOR_BINDING.json"
+  },
+  "exact_runtime_driver_bound_qualification": {
+    "workflow_run_id": 36190412538,
+    "behavioral_failures": 0,
+    "successor_binding_drift_failures": 0,
+    "conclusion": "PASS"
+  }
+}

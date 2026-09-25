@@ -1,0 +1,42 @@
+{
+  "schema": "RAWLSING_FIABC_CACHE_NEUTRAL_PROCESS_ATTESTATION_QUALIFICATION@1.0.0",
+  "status": "PASS",
+  "implementation_head": "16f5e7d5f691e908d85dc1dd26b8a59a29f668f4",
+  "implementation_path": "rawlsing_next/ee_p2x_candidate_process_envelope.py",
+  "implementation_git_blob_sha1": "8ce84e7685fc11901dcc50f0f8df609a84aadbf8",
+  "attestation_schema": "RAWLSING_FIABC_P2X_CACHE_NEUTRAL_ATTESTATION@1.0.0",
+  "physical_epoch_identity": "fc6afc9bc7b287f8fd0654e1da546faee7e6c85491e6735ebe4a161b0db3de35",
+  "required_facts": {
+    "sys_dont_write_bytecode": true,
+    "sys_pycache_prefix": "$WORK_ROOT/court/_python_cache_neutral_prefix",
+    "RAWLSING_EE_P2X_CACHE_NEUTRAL_SUCCESSOR": "1",
+    "RAWLSING_EE_P2X_PHYSICAL_EPOCH_IDENTITY": "fc6afc9bc7b287f8fd0654e1da546faee7e6c85491e6735ebe4a161b0db3de35",
+    "redirected_prefix_descendants": []
+  },
+  "governed_phases": [
+    "PARENT_PRE_CELL_START",
+    "MAIN_CELL_CHILD_PRE_BACKEND_IMPORT",
+    "PARENT_PRE_CELL_STOP",
+    "MAIN_CELL_CHILD_STOP",
+    "PARENT_POST_CELL_STOP"
+  ],
+  "pre_backend_import_required": true,
+  "included_in_process_handshake": true,
+  "included_in_process_envelope_evidence": true,
+  "fail_before_backend_import_on_mismatch": true,
+  "qualification": {
+    "workflow_run_id": 36190412538,
+    "evidence_execution_sha": "66cacfc1fae085cee2b96672151b48793658549e",
+    "exact_runtime": true,
+    "real_repository_warm_pyc_left_in_place_and_nonparticipating": true,
+    "spec_from_file_location_hostility": true,
+    "package_import_hostility": true,
+    "work_root_cache_standin": true,
+    "exact_owner_cache_standin": true,
+    "protected_repository_cache_standin": true,
+    "site_or_stdlib_writable_standin": true,
+    "dynamic_non_candidate_handshake_probe": "COURT/ALL",
+    "candidate_abc_owner_processes_started": 0,
+    "redirected_prefix_descendants_after_probe": 0
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "schema": "RAWLSING_FIABC_S15_CACHE_NEUTRAL_ATTESTATION_QUALIFICATION@1.0.0",
+  "status": "PASS",
+  "implementation_head": "16f5e7d5f691e908d85dc1dd26b8a59a29f668f4",
+  "stage_backend_path": "rawlsing_next/ee_p2x_darwin_stage_backend.py",
+  "stage_backend_git_blob_sha1": "97ee2cd993da1ff94dede48a4ab30e7f5524c375",
+  "attestation_schema": "RAWLSING_FIABC_P2X_CACHE_NEUTRAL_ATTESTATION@1.0.0",
+  "physical_epoch_identity": "fc6afc9bc7b287f8fd0654e1da546faee7e6c85491e6735ebe4a161b0db3de35",
+  "s15_contract": {
+    "parent_pre_phase": "S15_PARENT_PRE_FRESH_REPLAY",
+    "child_pre_semantic_work_phase": "FRESH_REPLAY_CHILD_PRE_SEMANTIC_WORK",
+    "parent_post_phase": "S15_PARENT_POST_FRESH_REPLAY",
+    "child_independently_attests": [
+      "sys.dont_write_bytecode is True",
+      "exact resolved sys.pycache_prefix",
+      "RAWLSING_EE_P2X_CACHE_NEUTRAL_SUCCESSOR == 1",
+      "exact physical epoch identity",
+      "redirected prefix has zero descendants"
+    ],
+    "child_receipt_validated_by_parent": true,
+    "popen_env_override": false,
+    "inheritance_is_receipt_checked_not_assumed": true,
+    "cache_writes_permitted": false
+  },
+  "qualification": {
+    "workflow_run_id": 36190412538,
+    "exact_runtime": "CPython 3.11.3 / Darwin x86_64",
+    "source_free_subprocess_runtime_attestation": "PASS",
+    "s15_spawn_surface_verified_to_inherit_parent_environment": true,
+    "child_attestation_position_verified_before_driver_services_and_semantic_replay_work": true,
+    "parent_child_parent_attestation_chain_verified": true,
+    "redirected_prefix_creation_observed": false,
+    "candidate_abc_process_launch_attempts": 0
+  }
+}
