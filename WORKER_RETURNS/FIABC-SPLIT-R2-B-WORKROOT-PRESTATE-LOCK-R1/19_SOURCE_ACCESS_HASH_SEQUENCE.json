@@ -1,0 +1,62 @@
+{
+  "schema": "RAWLSING_FIABC_SPLIT_R2_B_SOURCE_ACCESS_HASH_SEQUENCE@1.0.0",
+  "status": "PASS__SOURCE_ADMIN_SEQUENCE_PARITY_ESTABLISHED_SOURCE_FREE",
+  "raw_bytes_opened_by_worker_b": 0,
+  "raw_hashes_performed_by_worker_b": 0,
+  "decoder_calls_by_worker_b": 0,
+  "candidate_processes_launched_by_worker_b": 0,
+  "joined_canonical": {
+    "LITS_I": {
+      "sha_only_passes_before_or_at_candidate_entry": 3,
+      "order": [
+        "launcher SHA-256 gate",
+        "driver --preflight ensure_source_verified",
+        "driver --run ensure_source_verified at first empirical-access stage"
+      ],
+      "decoder_calls_before_candidate": 0
+    },
+    "WVS7": {
+      "sha_only_passes_before_or_at_candidate_entry": 3,
+      "order": [
+        "launcher SHA-256 gate",
+        "driver --preflight ensure_source_verified",
+        "driver --run ensure_source_verified at first empirical-access stage"
+      ],
+      "decoder_calls_before_candidate": 0
+    },
+    "implementation_fact": "DarwinCourtDriver caches source verification within one process, but canonical preflight and run are separate processes."
+  },
+  "split_source_local": {
+    "selected_source": {
+      "sha_only_passes_before_or_at_candidate_entry": 3,
+      "order": [
+        "source-local launcher selected-source SHA-256 gate",
+        "source-local driver --preflight ensure_source_verified",
+        "source-local driver --run ensure_source_verified before source block"
+      ],
+      "decoder_calls_before_candidate": 0
+    },
+    "pair_readiness": {
+      "raw_source_open_count": 0,
+      "raw_source_hash_count": 0,
+      "decoder_count": 0
+    },
+    "joined_prestate_provision": {
+      "raw_source_open_count": 0,
+      "raw_source_hash_count": 0,
+      "decoder_count": 0
+    }
+  },
+  "conclusion": {
+    "extra_split_raw_hash_passes": false,
+    "extra_split_decoder_calls": false,
+    "pre_candidate_semantic_source_read_added": false,
+    "remaining_history_issue": "Python software bytecode cache prestate, documented separately in 15_SOURCE_HOST_HISTORY_EQUIVALENCE_LIMITS.json"
+  },
+  "evidence_paths": [
+    "HQ_HANDOFF/launchers/RUN_DISPOSITIVE_FIABC_SIX_CELL.sh",
+    "HQ_HANDOFF/launchers/RUN_FIABC_SOURCE_LOCAL_SPLIT.sh",
+    "rawlsing_next/ee_p2x_darwin_court_driver.py",
+    "HQ_HANDOFF/launchers/FIABC_SOURCE_LOCAL_SPLIT_DRIVER.py"
+  ]
+}
