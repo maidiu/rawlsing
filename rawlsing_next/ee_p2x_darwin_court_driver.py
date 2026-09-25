@@ -36,6 +36,7 @@ LITS_I_CANONICAL_SOURCE_SHA256 = "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da4
 WVS7_CANONICAL_SOURCE_SHA256 = "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
 CANDIDATE_C_POLICY = "SOURCE_BACKED_HYBRID_WITH_REGENERABLE_ACCELERATORS"
 P2X_BRANCH = "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1"
+EXECUTION_BRANCH = "agent/rabochii-fiabc-cache-neutral-joined-successor-r1"
 P2X_RESUME_HEAD = "a954e2d6676843da8427ef2439b5d1ef33478359"
 P2R1_PASS = "9511f44728a8469d685463ec0fc880864c9187de"
 P2R1_SEAM_PATH = "rawlsing_next/pre553_carrier_execution.py"
@@ -45,7 +46,8 @@ EXPECTED_SOURCE_ORDER = ("LITS_I", "WVS7")
 EXPECTED_CANDIDATE_ORDER = ("A", "B", "C")
 EXPECTED_RUNTIME = {
     "implementation": "CPython", "python": "3.11.3", "pyreadstat": "1.3.6",
-    "pyarrow": "25.0.1", "system": "Darwin", "machine": "x86_64",
+    "pyarrow": "25.0.1", "pandas": "2.3.1", "numpy": "2.3.2",
+    "system": "Darwin", "machine": "x86_64",
 }
 LITS_A_ABSENT_ROOT_CURRENT_LAW = {
     "schema": "FIABC_LITS_A_ABSENT_ROOT_CURRENT_LAW@1.0.0",
@@ -520,13 +522,19 @@ def _git_show_bytes(root: Path, commit: str, path: str) -> bytes:
 
 def observe_host() -> HostFingerprint:
     deps = {}
-    for pkg in ("pyreadstat", "pyarrow"):
+    for pkg in ("pyreadstat", "pyarrow", "pandas", "numpy"):
         try: deps[pkg] = importlib.metadata.version(pkg)
         except importlib.metadata.PackageNotFoundError: deps[pkg] = "MISSING"
     v = sys.version_info
     return HostFingerprint(platform.python_implementation(), f"{v.major}.{v.minor}.{v.micro}", platform.system(), platform.machine(), deps, int(resource.getrusage(resource.RUSAGE_SELF).ru_maxrss))
 def verify_runtime_gate(h: HostFingerprint) -> None:
-    got = {"implementation": h.implementation, "python": h.python, "system": h.system, "machine": h.machine, "pyreadstat": h.dependency_versions.get("pyreadstat", "MISSING"), "pyarrow": h.dependency_versions.get("pyarrow", "MISSING")}
+    got = {
+        "implementation": h.implementation,
+        "python": h.python,
+        "system": h.system,
+        "machine": h.machine,
+        **{pkg: h.dependency_versions.get(pkg, "MISSING") for pkg in ("pyreadstat", "pyarrow", "pandas", "numpy")},
+    }
     drift = {k: (got.get(k), v) for k, v in EXPECTED_RUNTIME.items() if got.get(k) != v}
     if drift: raise RuntimeGateError(f"Darwin runtime gate drift: {drift}")
     if h.ru_maxrss_unit_law != R8B_RU_MAXRSS_LAW or h.ru_maxrss_value < 0: raise RuntimeGateError("accepted R8B ru_maxrss law not bound")
@@ -536,7 +544,7 @@ def observe_repo(root: Path) -> RepoFingerprint:
     seam = _run_git(root, "rev-parse", f"HEAD:{P2R1_SEAM_PATH}", check=False); blob = seam.stdout.strip() if seam.returncode == 0 else "MISSING"
     return RepoFingerprint(branch, head, anc, blob)
 def verify_repo_gate(r: RepoFingerprint) -> None:
-    if r.branch != P2X_BRANCH: raise RuntimeGateError(f"driver must run on existing P2X branch {P2X_BRANCH}")
+    if r.branch != EXECUTION_BRANCH: raise RuntimeGateError(f"driver must run on cache-neutral successor branch {EXECUTION_BRANCH}")
     if not r.resume_head_is_ancestor: raise RuntimeGateError("frozen P2X resume head is not an ancestor of HEAD")
     if r.p2r1_seam_blob != P2R1_SEAM_BLOB: raise RuntimeGateError("adopted P2R1 seam blob identity drift")
 
