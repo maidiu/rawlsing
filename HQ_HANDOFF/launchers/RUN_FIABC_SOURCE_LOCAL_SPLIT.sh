@@ -134,7 +134,6 @@ done
 for p in "$LITS_ORACLE_REL" "$WVS_ORACLE_REL" "$T3_REL" "$STOP_REL" "$CONTINUATION_MAP" "$COURT_CONTRACT"; do
   [[ -f "$p" ]] || die "required governed file missing: $p"
 done
-[[ -f "$SOURCE_PATH" ]] || die "selected source missing: $SOURCE_PATH"
 
 "$PYTHON_BIN" "$WORKROOT_GATES" runtime-gate >/dev/null || die "combined import/ABI runtime gate failed"
 
@@ -164,6 +163,7 @@ import sys
 print(Path(sys.argv[1]).resolve())
 PY
 )"
+[[ -f "$SOURCE_PATH" ]] || die "selected source missing: $SOURCE_PATH"
 
 "$PYTHON_BIN" "$WORKROOT_GATES" verify-member \
   --source "$SOURCE" \
