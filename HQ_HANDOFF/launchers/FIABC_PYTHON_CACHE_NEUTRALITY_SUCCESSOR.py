@@ -41,13 +41,10 @@ def _hash(value: Any) -> str:
     return hashlib.sha256(_canon(value)).hexdigest()
 
 
-def _files(root: Path) -> tuple[str, ...]:
+def _entries(root: Path) -> tuple[str, ...]:
     if not root.exists():
         return ()
-    return tuple(
-        p.relative_to(root).as_posix()
-        for p in sorted(q for q in root.rglob("*") if q.is_file())
-    )
+    return tuple(p.relative_to(root).as_posix() for p in sorted(root.rglob("*")))
 
 
 def cache_prefix(work_root: Path) -> Path:
@@ -57,9 +54,9 @@ def cache_prefix(work_root: Path) -> Path:
 def prepare_environment(work_root: Path) -> Mapping[str, str]:
     """Prepare an empty redirected cache namespace without importing any project code."""
     prefix = cache_prefix(work_root)
-    if _files(prefix):
+    if _entries(prefix):
         raise CacheNeutralityError(
-            f"cache-neutral prefix is not empty before candidate entry: {_files(prefix)!r}"
+            f"cache-neutral prefix is not empty before candidate entry: {_entries(prefix)!r}"
         )
     prefix.mkdir(parents=True, exist_ok=True)
     return {
@@ -71,10 +68,10 @@ def prepare_environment(work_root: Path) -> Mapping[str, str]:
 
 def assert_prefix_empty(work_root: Path) -> None:
     prefix = cache_prefix(work_root)
-    files = _files(prefix)
-    if files:
+    entries = _entries(prefix)
+    if entries:
         raise CacheNeutralityError(
-            f"cache-neutral prefix acquired files during candidate execution: {files!r}"
+            f"cache-neutral prefix acquired filesystem entries during candidate execution: {entries!r}"
         )
 
 
@@ -98,7 +95,7 @@ def assert_runtime_configuration(work_root: Path) -> Mapping[str, Any]:
     return {
         "dont_write_bytecode": True,
         "pycache_prefix": str(prefix),
-        "prefix_file_inventory": [],
+        "prefix_entry_inventory": [],
     }
 
 
