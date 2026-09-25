@@ -381,6 +381,25 @@ def test_joined_launcher_establishes_cache_neutral_epoch_immediately_before_meas
     assert "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d" in source
 
 
+def test_driver_successor_repo_and_runtime_gate_close_exact_target():
+    from rawlsing_next import ee_p2x_darwin_court_driver as driver
+
+    assert driver.EXECUTION_BRANCH == "agent/rabochii-fiabc-cache-neutral-joined-successor-r1"
+    assert driver.P2X_BRANCH == "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1"
+    assert driver.EXPECTED_RUNTIME == {
+        "implementation": "CPython",
+        "python": "3.11.3",
+        "pyreadstat": "1.3.6",
+        "pyarrow": "25.0.1",
+        "pandas": "2.3.1",
+        "numpy": "2.3.2",
+        "system": "Darwin",
+        "machine": "x86_64",
+    }
+    if os.environ.get("FIABC_REQUIRE_EXACT_DARWIN_RUNTIME") == "1":
+        driver.verify_runtime_gate(driver.observe_host())
+
+
 def test_10c_successor_binding_closes_exact_blobs_and_10b_is_immutable():
     binding = json.loads(BINDING_PATH.read_text(encoding="utf-8"))
     assert git_blob_sha1(HISTORICAL_BINDING) == HISTORICAL_10B_BLOB
