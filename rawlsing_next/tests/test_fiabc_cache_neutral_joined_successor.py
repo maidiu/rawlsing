@@ -222,6 +222,118 @@ def test_preseeded_cache_standins_are_nonparticipants(standin, tmp_path):
     assert tuple(prefix.rglob("*")) == ()
 
 
+def test_real_repository_warm_pyc_is_left_in_place_but_cannot_participate(tmp_path):
+    real_source = ROOT / "rawlsing_next" / "fiabc_live_terminal_control.py"
+    warmed_pyc = Path(
+        py_compile.compile(
+            str(real_source),
+            doraise=True,
+            invalidation_mode=py_compile.PycInvalidationMode.TIMESTAMP,
+        )
+    )
+    assert warmed_pyc.is_file()
+    work = tmp_path / "real-repo-neutral"
+    env, prefix = _neutral_env(work)
+    code = (
+        "import json,pathlib;"
+        "import rawlsing_next.fiabc_live_terminal_control as m;"
+        "print(json.dumps({'file':m.__file__,'cached':m.__cached__}))"
+    )
+    proc = subprocess.run(
+        [sys.executable, "-c", code],
+        cwd=ROOT,
+        env=env,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True,
+        check=True,
+    )
+    doc = json.loads(proc.stdout)
+    assert Path(doc["file"]).resolve() == real_source.resolve()
+    assert Path(doc["cached"]).resolve().is_relative_to(prefix)
+    assert warmed_pyc.is_file()
+    assert tuple(prefix.rglob("*")) == ()
+
+
+def test_process_envelope_handshake_dynamically_binds_cache_neutral_fields_without_candidate_owner(tmp_path):
+    work = tmp_path / "court-probe"
+    env, prefix = _neutral_env(work)
+    backend = tmp_path / "source_free_probe_backend.py"
+    backend.write_text(
+        "BACKEND_CONTRACT='RAWLSING_EE_P2X_DARWIN_STAGE_BACKEND@1.0.0'\n"
+        "_SESSIONS={}\n"
+        "def run_stage(context, services):\n"
+        "    raise RuntimeError('qualification probe must never run a stage')\n",
+        encoding="utf-8",
+    )
+    source, candidate, cell_key = "COURT", "ALL", "COURT/ALL"
+    freeze_sha = "f" * 64
+    env.update({
+        "RAWLSING_EE_P2X_CELL_SOURCE": source,
+        "RAWLSING_EE_P2X_CELL_CANDIDATE": candidate,
+        "RAWLSING_EE_P2X_CELL_KEY": cell_key,
+        "RAWLSING_EE_P2X_UPSTREAM_FREEZE_SHA256": freeze_sha,
+    })
+    proc = subprocess.Popen(
+        [
+            sys.executable,
+            "-m",
+            "rawlsing_next.ee_p2x_candidate_process_envelope",
+            "--child",
+            "--backend-spec",
+            str(backend),
+            "--context-mode",
+            "SIMPLE_TEST_ONLY",
+        ],
+        cwd=ROOT,
+        env=env,
+        stdin=subprocess.PIPE,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
+        bufsize=1,
+    )
+    assert proc.stdin is not None and proc.stdout is not None
+    start = {
+        "schema": "RAWLSING_FIABC_P2X_CELL_PROCESS_PROTOCOL@1.0.0",
+        "op": "START",
+        "source": source,
+        "candidate": candidate,
+        "cell_key": cell_key,
+        "parent_envelope_start_monotonic_ns": 1,
+        "freeze_receipt_sha256": freeze_sha,
+        "work_root": str(work),
+    }
+    proc.stdin.write(json.dumps(start, sort_keys=True) + "\n")
+    proc.stdin.flush()
+    line = proc.stdout.readline().strip()
+    protocol_prefix = "RAWLSING_FIABC_CELL_PROCESS "
+    assert line.startswith(protocol_prefix), line
+    handshake = json.loads(line[len(protocol_prefix):])
+    assert handshake["op"] == "HANDSHAKE"
+    att = handshake["cache_neutral_attestation"]
+    assert att["phase"] == "MAIN_CELL_CHILD_PRE_BACKEND_IMPORT"
+    assert att["sys_dont_write_bytecode"] is True
+    assert Path(att["sys_pycache_prefix"]).resolve() == prefix
+    assert att["redirected_prefix_descendants"] == []
+
+    proc.stdin.write(json.dumps({
+        "schema": "RAWLSING_FIABC_P2X_CELL_PROCESS_PROTOCOL@1.0.0",
+        "op": "STOP",
+        "cell_key": cell_key,
+        "reason": "SOURCE_FREE_QUALIFICATION_COMPLETE",
+    }, sort_keys=True) + "\n")
+    proc.stdin.flush()
+    stop_line = proc.stdout.readline().strip()
+    assert stop_line.startswith(protocol_prefix), stop_line
+    stopped = json.loads(stop_line[len(protocol_prefix):])
+    assert stopped["op"] == "STOPPED"
+    assert stopped["cache_neutral_attestation"]["phase"] == "MAIN_CELL_CHILD_STOP"
+    proc.stdin.close()
+    assert proc.wait(timeout=20) == 0
+    assert tuple(prefix.rglob("*")) == ()
+
+
 def test_process_envelope_attests_before_backend_import_and_at_cell_stop():
     source = ENVELOPE.read_text(encoding="utf-8")
     child = source[source.index("def _child_main"):source.index("class ProcessIsolationController")]
