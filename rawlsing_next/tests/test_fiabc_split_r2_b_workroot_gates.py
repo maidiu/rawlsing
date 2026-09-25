@@ -166,6 +166,17 @@ class SplitR2BWorkrootGateTests(unittest.TestCase):
                 self.assertTrue((work / synthetic[1]["destination"]).is_file())
                 self.assertFalse(wvs["candidate_owned_semantic_state_prebuilt"])
                 self.assertFalse(wvs["candidate_owned_carrier_state_prebuilt"])
+                receipt = work / "court" / "joined_prestate_receipt.json"
+                GATES.verify_joined_prestate(
+                    source="WVS7", repo_root=repo, work_root=work, receipt_path=receipt
+                )
+                rogue = work / "_be1_immutable" / "rogue.py"
+                rogue.parent.mkdir(parents=True, exist_ok=True)
+                rogue.write_text("ROGUE = True\n", encoding="utf-8")
+                with self.assertRaisesRegex(GATES.SplitR2GateError, "missing/extra files"):
+                    GATES.verify_joined_prestate(
+                        source="WVS7", repo_root=repo, work_root=work, receipt_path=receipt
+                    )
 
             work2 = base / "work-lits"
             work2.mkdir()
