@@ -1,0 +1,38 @@
+{
+  "schema": "FIABC_SPLIT_R2_C_RETURN@1.0.0",
+  "worker": "C",
+  "branch": "agent/rabochii-fiabc-split-r2-c-t5-process-failure-parity-r1",
+  "commission_commit": "48a201ee846294a56618f520f166eafa4282b1a3",
+  "exact_common_base": "e1b82095c83dd15a64b409dba0e4ae7d4f4460c6",
+  "protected_execution_branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+  "protected_execution_head": "3d8f2ad62600b6777dcb23a28404a067502e77a0",
+  "terminal": "BLOCKED__PREEXISTING_JOINED_T5_FAILURE_PATH_DEFECT",
+  "blocker": {
+    "class": "PREEXISTING_JOINED_T5_FAILURE_PATH_DEFECT",
+    "locus": "fiabc_live_terminal_control.admit_post_i05_oracle_match candidate-C three-way observation load",
+    "joined_failure_surface": "ee_p2x_darwin_court_driver._backend_terminal is outside backend.run_stage typed catch",
+    "split_failure_surface": "FIABC_SOURCE_LOCAL_SPLIT_DRIVER._run_source_block likewise calls base._backend_terminal outside backend typed catch",
+    "triggers": "A or B candidate-local failure before or at S05, for either source"
+  },
+  "process_lifecycle_verdict": "PASS__NO_FOREIGN_CANDIDATE_WARM_STATE_INHERITANCE_FOUND",
+  "t5_source_locality_verdict": "PASS__CROSS_SOURCE_LIVE_OUTPUT_NOT_REQUIRED_BEFORE_S17",
+  "wvs_run5_semantic_conservation": "CONDITIONAL__YES_IF_NATURALLY_TERMINAL_AND_HASH_REVALIDATABLE__PHYSICAL_METRICS_SEPARATE",
+  "protected_code_modified": false,
+  "split_control_code_modified": false,
+  "zero_execution_law": {
+    "raw_source_opens": 0,
+    "source_hash_passes": 0,
+    "decoder_calls": 0,
+    "candidate_process_launch_attempts": 0,
+    "candidate_outputs": 0,
+    "measured_execution": false
+  },
+  "artifacts": [
+    "00_RETURN.md",
+    "RETURN.json",
+    "12_PROCESS_LIFECYCLE_DIFFERENTIAL.json",
+    "13_T5_SOURCE_LOCAL_DEPENDENCY_AND_FAILURE_PATHS.json",
+    "14_WVS_RUN5_SEMANTIC_CONSERVATION.json",
+    "15_SOURCE_FREE_FORENSIC_HARNESS.json"
+  ]
+}

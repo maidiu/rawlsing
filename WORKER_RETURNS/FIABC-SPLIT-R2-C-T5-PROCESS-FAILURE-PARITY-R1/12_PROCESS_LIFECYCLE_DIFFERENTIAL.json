@@ -1,0 +1,63 @@
+{
+  "schema": "FIABC_SPLIT_R2_C_PROCESS_LIFECYCLE_DIFFERENTIAL@1.0.0",
+  "status": "PASS__PROCESS_ISOLATION_POLICY_PARITY_WITH_PREEXISTING_T5_POSTBACKEND_EXCEPTION_CAVEAT",
+  "protected_execution_head": "3d8f2ad62600b6777dcb23a28404a067502e77a0",
+  "protected_blobs": {
+    "process_controller": "e8b653991887855ac7dee730bb19706219332422",
+    "court_driver": "33605355d9f2b6236d20fa207fbca59d357823e0",
+    "live_accounting": "31aaf0dadffad260bb77ef65c530188a560b32a1",
+    "manifest": "49692c1c8527680c97af073039b36125edd7e56d"
+  },
+  "findings": {
+    "one_main_candidate_process_at_a_time": "PASS__controller has one _active lab and refuses a different cell_key",
+    "same_cell_retention": "PASS__only same-cell PASS edges with an authorized adjacent-stage token may retain",
+    "candidate_local_failure_stop": "PASS__terminal != PASS forces _stop before returning the stage result",
+    "common_source_blocker_stop": "PASS__non-PASS terminal forces _stop",
+    "common_court_blocker_stop": "PASS__non-PASS terminal forces _stop",
+    "a_to_b_stop": "PASS__cell-terminal pass/failure edges leave A cell",
+    "b_to_c_stop": "PASS__cell-terminal pass/failure edges leave B cell",
+    "source_boundary_stop": "PASS__LITS_I/C S16 PASS points to WVS7/A and therefore stops",
+    "foreign_candidate_warm_state_inheritance": "PROHIBITED__cross-cell active process raises CrossCandidateReuseError",
+    "s15_fresh_replay": "PASS__new Python subprocess; source/candidate in replay plan; parent cell token recorded",
+    "split_difference": "NONE_IN_PROTECTED_PROCESS_POLICY__split invokes the same exact protected adapter/controller blobs"
+  },
+  "exact_cell_terminal_pass_edges": [
+    [
+      "LITS_I/A",
+      "LITS_I/B/S00_SOURCE_PREFLIGHT_IDENTITY"
+    ],
+    [
+      "LITS_I/B",
+      "LITS_I/C/S00_SOURCE_PREFLIGHT_IDENTITY"
+    ],
+    [
+      "LITS_I/C",
+      "WVS7/A/S00_SOURCE_PREFLIGHT_IDENTITY"
+    ],
+    [
+      "WVS7/A",
+      "WVS7/B/S00_SOURCE_PREFLIGHT_IDENTITY"
+    ],
+    [
+      "WVS7/B",
+      "WVS7/C/S01_CANDIDATE_PREPARATION_BUILD"
+    ],
+    [
+      "WVS7/C",
+      "COURT/S17_FINAL_COMPLETENESS_AND_VERIFICATION"
+    ]
+  ],
+  "caveat": {
+    "defect_surface": "C/S05 backend returns PASS, controller lawfully retains same-cell process for S06, then outer _backend_terminal can throw LiveTerminalControlError while composing T5 three-way parity",
+    "consequence": "driver has no typed catch around _backend_terminal; orchestration aborts without a candidate-local/source terminal. Process cleanup eventually occurs through controller close/atexit, but failure semantics are already broken.",
+    "classification": "PREEXISTING_JOINED_T5_FAILURE_PATH_DEFECT"
+  },
+  "zero_execution_law": {
+    "raw_source_opens": 0,
+    "source_hash_passes": 0,
+    "decoder_calls": 0,
+    "candidate_process_launch_attempts": 0,
+    "candidate_outputs": 0,
+    "measured_execution": false
+  }
+}

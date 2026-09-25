@@ -1,0 +1,136 @@
+{
+  "schema": "FIABC_SPLIT_R2_C_T5_SOURCE_LOCAL_DEPENDENCY_AND_FAILURE_PATHS@1.0.0",
+  "status": "BLOCKED__PREEXISTING_JOINED_T5_FAILURE_PATH_DEFECT",
+  "protected_execution_head": "3d8f2ad62600b6777dcb23a28404a067502e77a0",
+  "protected_blobs": {
+    "live_terminal_control": "95739544dceea60298a6e90a87a9062b4fed6df1",
+    "court_driver": "33605355d9f2b6236d20fa207fbca59d357823e0",
+    "manifest": "49692c1c8527680c97af073039b36125edd7e56d"
+  },
+  "dependency_graph_before_s17": {
+    "A_S05": [
+      "A current-source/candidate observation",
+      "same source frozen oracle"
+    ],
+    "B_S05": [
+      "B current-source/candidate observation",
+      "same source frozen oracle"
+    ],
+    "C_S05": [
+      "C current-source/candidate observation",
+      "same source frozen oracle",
+      "A observation same source",
+      "B observation same source",
+      "C observation same source"
+    ],
+    "each_S16": [
+      "current-cell candidate observation",
+      "current-cell independent-oracle match",
+      "current source freeze",
+      "current execution manifest",
+      "current-cell T4 accounting journal",
+      "current-cell S15 lifecycle receipt",
+      "current S16 backend fresh-replay projection"
+    ],
+    "cross_source_live_output_first_required": "COURT/S17_FINAL_COMPLETENESS_AND_VERIFICATION"
+  },
+  "source_locality": {
+    "LITS_I": "PASS__no WVS7 live output required by T5 before S17",
+    "WVS7": "PASS__no LITS_I live output required by T5 before S17",
+    "c_three_way_scope": "stage.source only"
+  },
+  "defect_proof_chain": [
+    "candidate-local failure is returned as non-PASS; ProcessIsolationController stops the failed candidate process",
+    "joined driver _candidate_stop marks the failed candidate's remaining measured stages CANDIDATE_LOCAL_FAILURE and continues to the later candidate",
+    "admit_post_i05_oracle_match runs only for PASS S05, so a candidate failing before or at S05 has no fiabc_t5_candidate_observation.json",
+    "C/S05 unconditionally loops EXPECTED_CANDIDATES A/B/C and _load()s each same-source observation file",
+    "_load() hard-raises LiveTerminalControlError on an absent receipt/document",
+    "_backend_terminal() is called after the joined driver's backend.run_stage try/except, so this T5 exception is not converted to a typed candidate-local/common blocker",
+    "the split driver has the same post-backend _backend_terminal exception surface",
+    "the T5/process/manifest blobs at split common base are byte-identical to the protected execution head, proving the defect predates the split"
+  ],
+  "applies_identically_to_sources": [
+    "LITS_I",
+    "WVS7"
+  ],
+  "failure_patterns_per_source": [
+    {
+      "failed_candidate": "A",
+      "failure_position": "BEFORE_S05",
+      "c_s05": "ATTEMPTED",
+      "required_observation_missing": "A",
+      "outcome": "UNTYPED_T5_TERMINAL_CONTROL_CRASH_AT_C_S05"
+    },
+    {
+      "failed_candidate": "A",
+      "failure_position": "AT_S05",
+      "c_s05": "ATTEMPTED",
+      "required_observation_missing": "A",
+      "outcome": "UNTYPED_T5_TERMINAL_CONTROL_CRASH_AT_C_S05"
+    },
+    {
+      "failed_candidate": "A",
+      "failure_position": "AFTER_S05",
+      "c_s05": "ATTEMPTED",
+      "required_observation_missing": null,
+      "outcome": "NO_MISSING_OBSERVATION_CRASH_FROM_THIS_FAILURE_POSITION"
+    },
+    {
+      "failed_candidate": "B",
+      "failure_position": "BEFORE_S05",
+      "c_s05": "ATTEMPTED",
+      "required_observation_missing": "B",
+      "outcome": "UNTYPED_T5_TERMINAL_CONTROL_CRASH_AT_C_S05"
+    },
+    {
+      "failed_candidate": "B",
+      "failure_position": "AT_S05",
+      "c_s05": "ATTEMPTED",
+      "required_observation_missing": "B",
+      "outcome": "UNTYPED_T5_TERMINAL_CONTROL_CRASH_AT_C_S05"
+    },
+    {
+      "failed_candidate": "B",
+      "failure_position": "AFTER_S05",
+      "c_s05": "ATTEMPTED",
+      "required_observation_missing": null,
+      "outcome": "NO_MISSING_OBSERVATION_CRASH_FROM_THIS_FAILURE_POSITION"
+    },
+    {
+      "failed_candidate": "C",
+      "failure_position": "BEFORE_S05",
+      "c_s05": "NOT_ATTEMPTED",
+      "required_observation_missing": "C",
+      "outcome": "NO_MISSING_OBSERVATION_CRASH_FROM_THIS_FAILURE_POSITION"
+    },
+    {
+      "failed_candidate": "C",
+      "failure_position": "AT_S05",
+      "c_s05": "NOT_ATTEMPTED",
+      "required_observation_missing": "C",
+      "outcome": "NO_MISSING_OBSERVATION_CRASH_FROM_THIS_FAILURE_POSITION"
+    },
+    {
+      "failed_candidate": "C",
+      "failure_position": "AFTER_S05",
+      "c_s05": "ALREADY_PASSED",
+      "required_observation_missing": null,
+      "outcome": "NO_MISSING_OBSERVATION_CRASH_FROM_THIS_FAILURE_POSITION"
+    },
+    {
+      "failed_candidate": "ANY",
+      "failure_position": "AT_S16",
+      "c_s05": "ALREADY_PASSED",
+      "required_observation_missing": null,
+      "outcome": "NO_MISSING_OBSERVATION_CRASH_FROM_THIS_FAILURE_POSITION"
+    }
+  ],
+  "exact_blocker_trigger_count_across_both_sources": 8,
+  "lawful_specific_cases": {
+    "A_or_B_fail_after_S05": "their observation already exists; this specific C/S05 missing-observation crash is not triggered",
+    "C_fail_before_or_at_S05": "C/S05 does not PASS, so the three-way gate is not invoked",
+    "C_fail_after_S05": "three-way parity was already materialized",
+    "S16_candidate_local_failure": "occurs after S05; this specific missing-observation crash is not triggered"
+  },
+  "repair_requirement": "Protected joined T5 failure semantics must be adjudicated/repaired before candidate-local failure robustness can be claimed. Alternate split control must not paper over it."
+}

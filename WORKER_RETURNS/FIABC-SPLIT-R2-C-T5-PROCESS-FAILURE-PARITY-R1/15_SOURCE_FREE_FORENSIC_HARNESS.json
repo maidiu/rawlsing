@@ -1,0 +1,113 @@
+{
+  "schema": "FIABC_SPLIT_R2_C_SOURCE_FREE_FORENSIC_HARNESS@1.0.0",
+  "status": "PASS__16_OF_16_ASSERTIONS",
+  "method": "Authenticated GitHub exact-ref reads plus deterministic structural/manifest assertions; no local survey/source/candidate execution.",
+  "protected_execution_head": "3d8f2ad62600b6777dcb23a28404a067502e77a0",
+  "split_common_base": "e1b82095c83dd15a64b409dba0e4ae7d4f4460c6",
+  "assertions": [
+    {
+      "id": "protected_controller_cross_cell_guard",
+      "status": "PASS"
+    },
+    {
+      "id": "protected_controller_failure_stop",
+      "status": "PASS"
+    },
+    {
+      "id": "protected_controller_same_cell_auth",
+      "status": "PASS"
+    },
+    {
+      "id": "all_adjacent_same_cell_transitions_authorized",
+      "status": "PASS"
+    },
+    {
+      "id": "s15_new_python_child",
+      "status": "PASS"
+    },
+    {
+      "id": "s15_cell_attribution_in_plan",
+      "status": "PASS"
+    },
+    {
+      "id": "c_s05_requires_same_source_abc_observations",
+      "status": "PASS"
+    },
+    {
+      "id": "missing_observation_is_hard_error",
+      "status": "PASS"
+    },
+    {
+      "id": "joined_backend_terminal_outside_typed_backend_catch",
+      "status": "PASS"
+    },
+    {
+      "id": "split_backend_terminal_outside_typed_backend_catch",
+      "status": "PASS"
+    },
+    {
+      "id": "s16_cell_local_inputs",
+      "status": "PASS"
+    },
+    {
+      "id": "s17_first_cross_source_live_composition",
+      "status": "PASS"
+    },
+    {
+      "id": "derived_failure_matrix_exact_trigger",
+      "status": "PASS"
+    },
+    {
+      "id": "all_cell_terminal_pass_edges_stop",
+      "status": "PASS"
+    },
+    {
+      "id": "source_boundary_stop",
+      "status": "PASS"
+    },
+    {
+      "id": "split_common_base_uses_exact_protected_t5_process_blobs",
+      "status": "PASS"
+    }
+  ],
+  "derived_blocker_trigger_cases": [
+    "LITS_I:A:BEFORE_S05",
+    "LITS_I:A:AT_S05",
+    "LITS_I:B:BEFORE_S05",
+    "LITS_I:B:AT_S05",
+    "WVS7:A:BEFORE_S05",
+    "WVS7:A:AT_S05",
+    "WVS7:B:BEFORE_S05",
+    "WVS7:B:AT_S05"
+  ],
+  "exact_blob_identity": [
+    {
+      "path": "rawlsing_next/ee_p2x_candidate_process_envelope.py",
+      "blob": "e8b653991887855ac7dee730bb19706219332422"
+    },
+    {
+      "path": "rawlsing_next/ee_p2x_darwin_court_driver.py",
+      "blob": "33605355d9f2b6236d20fa207fbca59d357823e0"
+    },
+    {
+      "path": "rawlsing_next/fiabc_live_terminal_control.py",
+      "blob": "95739544dceea60298a6e90a87a9062b4fed6df1"
+    },
+    {
+      "path": "rawlsing_next/fiabc_live_accounting_binding.py",
+      "blob": "31aaf0dadffad260bb77ef65c530188a560b32a1"
+    },
+    {
+      "path": "WORKER_RETURNS/FIABC-T2/01_SIX_CELL_EXECUTION_MANIFEST.json",
+      "blob": "49692c1c8527680c97af073039b36125edd7e56d"
+    }
+  ],
+  "zero_execution_law": {
+    "raw_source_opens": 0,
+    "source_hash_passes": 0,
+    "decoder_calls": 0,
+    "candidate_process_launch_attempts": 0,
+    "candidate_outputs": 0,
+    "measured_execution": false
+  }
+}
