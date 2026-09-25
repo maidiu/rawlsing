@@ -1,0 +1,62 @@
+{
+  "schema": "RAWLSING_FIABC_T5_JOINED_FAILURE_SOURCE_FREE_QUALIFICATION@1.0.0",
+  "status": "PASS",
+  "semantic_candidate_sha": "41eea54d7610a47f1adc342c6caacaf11324a40c",
+  "exact_qualification_head": "cc8f0c83138fc515cad32083063e29d546b23227",
+  "qualification_only_delta": ".rabochii/court_spec.json on disposable branch agent/qualification-fiabc-t5-joined-failure-semantics-r1",
+  "repair_branch_qualification_spec_mutated": false,
+  "github_actions": {
+    "workflow": "Rabochii Governed Bounded Court",
+    "run_id": 36187125580,
+    "job_id": 108243175558,
+    "conclusion": "success",
+    "protocol_self_test": "20 passed",
+    "repair_and_adjacent_court": "103 passed",
+    "elapsed_seconds_from_receipt": 0.781538,
+    "artifact_id": 10887225909,
+    "artifact_digest": "sha256:19c3b0d1529b7584288587f7a74c617339d47b0875f8956091557fe40181bcce",
+    "court_receipt": {
+      "schema_id": "RABOCHII_BOUNDED_COURT_RECEIPT@1.0.0",
+      "result": "PASS",
+      "exit_code": 0,
+      "semantic_candidate_sha": "41eea54d7610a47f1adc342c6caacaf11324a40c",
+      "evidence_execution_sha": "cc8f0c83138fc515cad32083063e29d546b23227",
+      "spec_sha256": "882f97272d53ab8b6473dd5fb0e75029294de6eaa467940f4f6798144108a4e1",
+      "python": "3.11.16",
+      "implementation": "CPython",
+      "determinism_mode": "EXACT"
+    },
+    "tests": [
+      "rawlsing_next/tests/test_fiabc_t5_joined_failure_semantics_repair.py",
+      "rawlsing_next/tests/test_fiabc_t5_live_terminal_control.py",
+      "rawlsing_next/tests/test_fiabc_t4_live_accounting.py",
+      "rawlsing_next/tests/test_fiabc_t3_oracle_process_envelope.py"
+    ]
+  },
+  "dedicated_repair_matrix_cases": 67,
+  "source_free_counters": {
+    "raw_source_paths_supplied": 0,
+    "raw_source_opens": 0,
+    "raw_source_hashes": 0,
+    "decoder_calls": 0,
+    "candidate_process_launches": 0,
+    "candidate_outputs": 0,
+    "measured_p2x_runs": 0
+  },
+  "first_broad_run": {
+    "run_id": 36187032269,
+    "result": "EXPECTED_PROMOTION_BINDING_DRIFT_ONLY",
+    "passed": 108,
+    "failed": 5,
+    "every_failure": "test_ee_p2x_local_court_driver_integration.py blocked first on historical 10B driver blob pin",
+    "historical_driver_blob": "02ca7cc9f5bf8665de712980a05fdcc059b93331",
+    "repaired_driver_blob": "70bf233492b543d3d728cedfdda36218504ef3d4",
+    "behavioral_failure_observed": false
+  },
+  "disposable_pr": {
+    "number": 447,
+    "merged": false,
+    "final_state": "closed",
+    "purpose": "qualification only; never a promotion path"
+  }
+}
