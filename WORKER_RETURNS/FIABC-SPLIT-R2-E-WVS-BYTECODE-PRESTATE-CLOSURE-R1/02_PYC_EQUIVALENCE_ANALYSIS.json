@@ -1,0 +1,62 @@
+{
+  "schema": "RAWLSING_FIABC_SPLIT_R2_E_PYC_EQUIVALENCE_ANALYSIS@1.0.0",
+  "terminal_analysis": "STRATEGY_1_AND_2_REJECTED__STRATEGY_3_REQUIRED",
+  "current_reference": {
+    "protected_head": "3d8f2ad62600b6777dcb23a28404a067502e77a0",
+    "measured_joined_launcher": "HQ_HANDOFF/launchers/RUN_DISPOSITIVE_FIABC_SIX_CELL.sh",
+    "measured_run_cache_neutrality_env_present": false,
+    "source_local_split_launcher_cache_neutrality_env_present": false
+  },
+  "strategy_1_exact_reproduction": {
+    "verdict": "REJECTED__NOT_SOURCE_FREE_DERIVABLE",
+    "reasons": [
+      "realized import set contains at least one raw-value-dependent branch (conditional NumPy import)",
+      "runtime-generated work-root .pyc validity/identity depends on interpreter/cache mode and deployed source path metadata",
+      "protected-repo and site-package ignored cache state is host/prehistory state not frozen by current court law",
+      "canonical joined prehistory and strengthened split readiness prehistory do not execute identical imports"
+    ]
+  },
+  "strategy_2_precompile_or_prime": {
+    "verdict": "REJECTED__NO_PROOF_OF_CURRENT_JOINED_PHYSICAL_EQUIVALENCE",
+    "compileall": "A blanket compile creates a superset of caches that joined LiTS may never create; that can give WVS a split-only compile-elision advantage.",
+    "selective_py_compile": "A selective list cannot be exact without knowing the realized dynamic import set. Timestamp/hash invalidation choice and source metadata/path must also match.",
+    "import_priming": "Executing owner/support modules merely to populate caches performs top-level code and can cross candidate/source-neutral C0 boundaries; it is not admitted.",
+    "pyc_identity_burden": "If this strategy were used, exact CPython 3.11.3 magic/invalidation mode/source metadata/co_filename/destination/import acceptance would require proof. Worker E deliberately does not claim those burdens closed."
+  },
+  "strategy_3_shared_cache_neutral_law": {
+    "verdict": "SCIENTIFICALLY_CLEAN_SOLUTION__REQUIRES_JOINED_SUCCESSOR_ADOPTION",
+    "environment": {
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONPYCACHEPREFIX": "<WORK_ROOT>/court/_python_cache_neutral_prefix",
+      "RAWLSING_EE_P2X_CACHE_NEUTRAL_SUCCESSOR": "1"
+    },
+    "precondition": "redirected prefix has zero descendants before candidate entry",
+    "runtime_law": [
+      "interpreter starts with sys.dont_write_bytecode == True",
+      "sys.pycache_prefix resolves exactly to the bound empty court prefix",
+      "ordinary source-tree __pycache__ is outside the interpreter cache lookup path",
+      "no .pyc is written into redirected prefix",
+      "prefix remains without descendants through measured candidate execution",
+      "main candidate child inherits environment before interpreter startup",
+      "S15 fresh-replay child inherits same environment"
+    ],
+    "why_pyc_byte_identity_becomes_irrelevant": "No governed candidate process reads or writes ordinary or alternate bytecode cache artifacts, so current joined runtime-generated pyc byte identity is removed from the measurement state space rather than imitated.",
+    "physical_effect": "Candidate startup/binding may perform source compilation that a warm current joined court could have elided. CPU/wall/RSS can therefore shift. This creates a new physical-measurement epoch and must apply identically to both joined and split future courts.",
+    "previous_physical_metrics_reusable": false
+  },
+  "python_reference_truth": {
+    "official_3_11_semantics": [
+      "sys.pycache_prefix redirects both writes and reads to the parallel prefix and ignores source-tree __pycache__",
+      "PYTHONDONTWRITEBYTECODE/-B suppresses attempts to write pyc"
+    ],
+    "exact_governed_runtime_fixture_executed": false,
+    "reason": "No CPython 3.11.3 execution surface was available in this worker lane.",
+    "supporting_runtime_fixture": {
+      "runtime": "CPython 3.13.5 container",
+      "ordinary_valid_timestamp_pyc_result": "cachex",
+      "cache_neutral_result": "source",
+      "redirected_prefix_descendants_after_import": 0,
+      "authority": "SUPPORTING_ONLY__NOT_GOVERNED_3_11_3_QUALIFICATION"
+    }
+  }
+}

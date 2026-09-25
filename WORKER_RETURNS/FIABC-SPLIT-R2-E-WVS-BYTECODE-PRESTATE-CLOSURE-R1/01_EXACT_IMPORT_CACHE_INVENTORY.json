@@ -1,0 +1,139 @@
+{
+  "schema": "RAWLSING_FIABC_SPLIT_R2_E_EXACT_IMPORT_CACHE_INVENTORY@1.0.0",
+  "status": "CLOSED_AS_NEGATIVE_REPRODUCTION_RESULT__REALIZED_JOINED_CACHE_SET_IS_NOT_SOURCE_FREE_DETERMINABLE",
+  "protected_execution_head": "3d8f2ad62600b6777dcb23a28404a067502e77a0",
+  "worker_b_implementation_base": "673c47ab9f158ebdd8858b3cfca7ee2295ffd01d",
+  "path_classes": [
+    {
+      "path_class": "WORK_ROOT/_be1_immutable/0b96b8de9aac774566f872cf0630ebd4ddeb70e6/rawlsing_next/*.py",
+      "cache_destination_under_current_law": "adjacent __pycache__ unless redirected/disabled",
+      "exact_current_source_objects": [
+        [
+          "pre553_r5_compact_carrier.py",
+          "92e364b31eaf27be1bca2081eff65f6ffb779c3d"
+        ],
+        [
+          "pre553_r5_model.py",
+          "62ce608829c3d9c2fb7c999aefe40188637edf80"
+        ],
+        [
+          "pre553_r5_seam.py",
+          "cef326ebbc40468428378f7fdbe76e4756179f39"
+        ],
+        [
+          "pre553_r5_single_pass_audit69.py",
+          "ffb063b93c86e215604eecb29a9545c7efdff399"
+        ]
+      ],
+      "joined_lits_role": "LiTS can deploy/import these before WVS; Worker B already preprovisions exact .py bytes for WVS.",
+      "physical_relevance": "YES__cache hit can remove compilation/import work from later WVS measured binding.",
+      "determinacy": "SOURCE_BYTES_EXACT__REALIZED_PYC_SET_NOT_STATIC"
+    },
+    {
+      "path_class": "WORK_ROOT/_exact_owner_modules/0b96b8de9aac774566f872cf0630ebd4ddeb70e6/<A|B|C>/*.py",
+      "exact_objects": {
+        "A": [
+          "pre553_r5_source_backed_adapter.py",
+          "d4915e7e6755ba1850756aebff72f982f73a332b"
+        ],
+        "B": [
+          "pre553_source_backed_c11_facade.py",
+          "7c509c2098d0030f253344eb3f682471378812a8"
+        ],
+        "C": [
+          "pre553_route_c_accelerators.py",
+          "abfdc91a71ef5e18c4a8a6bf62fa65750d8d9889"
+        ]
+      },
+      "cache_destination_under_current_law": "adjacent __pycache__ unless redirected/disabled",
+      "joined_lits_role": "Exact owner modules are imported in LiTS A/B/C and survive as filesystem cache into joined WVS.",
+      "physical_relevance": "YES",
+      "determinacy": "EXACT_SOURCE_OBJECTS__PYC_BYTES_AND_REALIZED_TRANSITIVE_IMPORT_SET_RUNTIME_DEPENDENT"
+    },
+    {
+      "path_class": "PROTECTED_REPO/rawlsing_next/**/*.py",
+      "exact_known_lits_path_witnesses": [
+        [
+          "pre553_physical_decoder.py",
+          "d2a074a41fb556a1cd5928a5fe1421ef3672a4e5"
+        ],
+        [
+          "pre553_carrier_execution.py",
+          "e7cda773e6a2426bfa12b22790fd8e005fe75153"
+        ],
+        [
+          "pre553_candidate_c_production_binding.py",
+          "c2451b1b9d54b9588455022e0d6625083bb955d2"
+        ],
+        "fiabc_derivative_parentage.py",
+        "fiabc_final_oracle_freeze_producers.py",
+        "fiabc_lits_common_representation.py",
+        "fiabc_lits_i_representation_authority.py",
+        "pre553_c11_ingest.py",
+        "pre553_c11_integrity.py",
+        "pre553_c11_repository.py",
+        "pre553_empirical_authority.py",
+        "pre553_empirical_objects.py",
+        "pre553_empirical_query.py",
+        "pre553_physical_c11_bridge.py"
+      ],
+      "joined_lits_role": "Imported by backend/owners during LiTS candidate work; ignored repo-local __pycache__ persists across serial joined source boundary.",
+      "physical_relevance": "YES__later WVS child can consume valid repo-local pyc under current law.",
+      "determinacy": "REALIZED_TRANSITIVE_SET_DEPENDS_ON_EXECUTED_BRANCHES_AND_EXISTING_HOST_CACHE"
+    },
+    {
+      "path_class": "PYTHON_STDLIB source-backed modules",
+      "witnesses": [
+        "dataclasses",
+        "typing",
+        "hashlib wrappers",
+        "json",
+        "pathlib",
+        "fractions",
+        "gzip",
+        "decimal",
+        "base64",
+        "struct",
+        "importlib"
+      ],
+      "physical_relevance": "POTENTIALLY__normal source-backed imports can consult pyc; much stdlib may already be imported before candidate stage.",
+      "determinacy": "HOST_INTERPRETER_PRESTATE__NOT_BOUND_BY_PACKAGE_VERSION_METADATA_ALONE"
+    },
+    {
+      "path_class": "SITE_PACKAGES source-backed Python modules",
+      "witnesses": [
+        "pyreadstat (imported by physical decoder on source decode; package also includes extension machinery)",
+        "numpy (conditionally imported by pre553_r5_seam finite-float vector path)",
+        "pyarrow (conditionally imported by Route-C accelerator code; split readiness gate imports it unconditionally)",
+        "pandas (split readiness gate imports it unconditionally)"
+      ],
+      "physical_relevance": "YES_OR_POTENTIAL__Python portions and dependency trees can have pyc; C extensions themselves do not use .pyc.",
+      "determinacy": "CURRENT_JOINED_AND_SPLIT_PREHISTORIES_DIFFER"
+    },
+    {
+      "path_class": "C-extension/shared-library code",
+      "examples": [
+        "pyreadstat native extension",
+        "pyarrow native extension",
+        "numpy native extension"
+      ],
+      "physical_relevance": "OUTSIDE_THIS_PYC_BLOCKER__loader/page-cache state remains host-history/runtime concern",
+      "determinacy": "NOT_CLOSED_BY_BYTECODE_POLICY__already governed by runtime/hardware/host-nested law"
+    }
+  ],
+  "data_dependent_import_witness": {
+    "module": "rawlsing_next/pre553_r5_seam.py",
+    "owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+    "blob": "cef326ebbc40468428378f7fdbe76e4756179f39",
+    "condition": "normalize_decoder_batch enters vector path only when permit_vector_hot_path and _all_finite_floats(batch)",
+    "conditional_import": "import numpy as np",
+    "source_free_consequence": "Whether canonical joined LiTS executes this import depends on raw physical cell values. Worker E may not inspect those values. Therefore the exact realized joined cache/import set cannot be derived source-free."
+  },
+  "split_only_prehistory_witness": {
+    "surface": "Worker B combined_import_abi_gate",
+    "behavior": "imports pyreadstat, pyarrow, pandas, numpy before split measurement",
+    "current_joined_difference": "canonical joined launcher runtime gate uses metadata queries rather than the same combined-import gate",
+    "consequence": "without cache neutrality, the strengthened split readiness gate itself can create cache prestate absent from the canonical joined prehistory"
+  },
+  "conclusion": "The exact current joined WVS-entry pyc filesystem state is not a fixed source-free-reconstructable object. Exact source bytes are fixed; cache realization is runtime/path/mtime/import-branch/host-state dependent."
+}

@@ -1,0 +1,27 @@
+{
+  "schema": "RAWLSING_FIABC_SPLIT_R2_E_RETURN@1.0.0",
+  "worker": "E",
+  "branch": "agent/rabochii-fiabc-split-r2-e-wvs-bytecode-prestate-closure-r1",
+  "commission_commit": "2f813045ffec137b8a3f48d1294245e88a0d49be",
+  "worker_b_implementation_base": "673c47ab9f158ebdd8858b3cfca7ee2295ffd01d",
+  "exact_implementation_head": "3b3529133da5e92bba41b357464b501af9580675",
+  "protected_execution_head": "3d8f2ad62600b6777dcb23a28404a067502e77a0",
+  "terminal": "BLOCKED__SPLIT_R2_E_WVS_BYTECODE_PRESTATE_EQUIVALENCE_REMAINS",
+  "reason": "A real closure strategy is proved, but it changes the candidate physical-measurement cache law and must be adopted identically by a future joined runner and split runner. Current protected joined execution does not adopt it, while exact current joined pyc state is not source-free reproducible.",
+  "chosen_strategy": "SHARED_CACHE_NEUTRAL_SUCCESSOR__EMPTY_PYCACHE_PREFIX_PLUS_DONT_WRITE",
+  "current_wvs_split_measurement_authorized": false,
+  "compileall_solution": false,
+  "protected_execution_modified": false,
+  "active_worker_b_control_modified": false,
+  "worker_b_repairs_retained": true,
+  "zero_governed_execution": {
+    "raw_source_opens": 0,
+    "raw_source_hash_passes": 0,
+    "decoder_calls": 0,
+    "candidate_process_launches": 0,
+    "candidate_outputs": 0,
+    "measured_p2x": false
+  },
+  "supporting_runtime_fixture": "PASS__CPYTHON_3_13_5_ONLY__NOT_GOVERNED_3_11_3",
+  "required_next_action": "ADOPT_AND_QUALIFY_CACHE_NEUTRAL_LAW_ON_JOINED_SUCCESSOR_AND_SPLIT_SUCCESSOR__THEN_REQUALIFY_WVS_ENTRY"
+}

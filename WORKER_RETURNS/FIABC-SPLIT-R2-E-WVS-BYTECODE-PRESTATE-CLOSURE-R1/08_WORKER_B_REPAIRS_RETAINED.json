@@ -1,0 +1,33 @@
+{
+  "schema": "RAWLSING_FIABC_SPLIT_R2_E_WORKER_B_REPAIRS_RETAINED@1.0.0",
+  "status": "PASS__WORKER_B_IMPLEMENTATION_BYTES_RETAINED",
+  "worker_b_implementation_head": "673c47ab9f158ebdd8858b3cfca7ee2295ffd01d",
+  "worker_e_implementation_head": "3b3529133da5e92bba41b357464b501af9580675",
+  "retained": [
+    "worktree lock bound to Git worktree administrative identity",
+    "combined scientific import/ABI gate",
+    "prelaunch machine-pair compatibility",
+    "mode-aware postrun dirty-checkout verification",
+    "exact immutable support and owner source-byte preprovision",
+    "selected-source source-hash sequence law"
+  ],
+  "exact_blobs": [
+    [
+      "HQ_HANDOFF/launchers/FIABC_SPLIT_R2_WORKROOT_GATES.py",
+      "ad202e936923113b8fcf55b6ebc413f1060146a2"
+    ],
+    [
+      "HQ_HANDOFF/launchers/FIABC_SOURCE_LOCAL_SPLIT_DRIVER.py",
+      "700cdb38f1ce241e3f97486f352654e9656f0157"
+    ],
+    [
+      "HQ_HANDOFF/launchers/RUN_FIABC_SOURCE_LOCAL_SPLIT.sh",
+      "70c6a70d9257989b0531060470354f9c3d5f05ac"
+    ],
+    [
+      "rawlsing_next/tests/test_fiabc_split_r2_b_workroot_gates.py",
+      "118894b9caadbbe11352431b31a1a7cb4b43f293"
+    ]
+  ],
+  "note": "Worker E intentionally did not weaken Worker B's current fail-closed verify_joined_prestate gate. Current WVS remains blocked until a joined successor adopts the shared cache-neutral law."
+}
