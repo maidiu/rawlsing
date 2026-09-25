@@ -6,7 +6,10 @@ successor cache-neutrality control and static protected/control code surfaces.
 from __future__ import annotations
 
 import importlib.util
+import json
+import os
 from pathlib import Path
+import py_compile
 import subprocess
 import sys
 import tempfile
@@ -81,6 +84,82 @@ class CacheNeutralityTests(unittest.TestCase):
                         __import__("os").environ.pop(key, None)
                     else:
                         __import__("os").environ[key] = value
+
+
+    def test_redirected_empty_prefix_ignores_valid_source_tree_pyc_and_writes_nothing(self):
+        """A valid ordinary .pyc must be invisible under the successor cache law."""
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            source = root / "sample_cache_probe.py"
+            cached_text = "VALUE = 'cachex'\n"
+            source_text = "VALUE = 'source'\n"
+            self.assertEqual(len(cached_text), len(source_text))
+            source.write_text(cached_text, encoding="utf-8")
+            stamp = source.stat().st_mtime_ns
+            pyc = Path(
+                py_compile.compile(
+                    str(source),
+                    doraise=True,
+                    invalidation_mode=py_compile.PycInvalidationMode.TIMESTAMP,
+                )
+            )
+            self.assertTrue(pyc.is_file())
+            # Keep timestamp and size identical so the ordinary timestamp pyc remains valid.
+            source.write_text(source_text, encoding="utf-8")
+            os.utime(source, ns=(stamp, stamp))
+            self.assertEqual(source.stat().st_size, len(source_text.encode("utf-8")))
+
+            ordinary = subprocess.run(
+                [
+                    sys.executable,
+                    "-c",
+                    (
+                        "import importlib.util, json, pathlib, sys;"
+                        "p=pathlib.Path(sys.argv[1]);"
+                        "spec=importlib.util.spec_from_file_location('probe',p);"
+                        "m=importlib.util.module_from_spec(spec);"
+                        "spec.loader.exec_module(m);"
+                        "print(json.dumps({'value':m.VALUE,'prefix':sys.pycache_prefix,"
+                        "'dont_write':sys.dont_write_bytecode}))"
+                    ),
+                    str(source),
+                ],
+                check=True,
+                stdout=subprocess.PIPE,
+                text=True,
+            )
+            self.assertEqual(json.loads(ordinary.stdout)["value"], "cachex")
+
+            prefix = root / "neutral-prefix"
+            prefix.mkdir()
+            env = dict(os.environ)
+            env["PYTHONDONTWRITEBYTECODE"] = "1"
+            env["PYTHONPYCACHEPREFIX"] = str(prefix)
+            neutral = subprocess.run(
+                [
+                    sys.executable,
+                    "-c",
+                    (
+                        "import importlib.util, json, pathlib, sys;"
+                        "p=pathlib.Path(sys.argv[1]);"
+                        "spec=importlib.util.spec_from_file_location('probe',p);"
+                        "m=importlib.util.module_from_spec(spec);"
+                        "spec.loader.exec_module(m);"
+                        "print(json.dumps({'value':m.VALUE,'prefix':sys.pycache_prefix,"
+                        "'dont_write':sys.dont_write_bytecode}))"
+                    ),
+                    str(source),
+                ],
+                check=True,
+                stdout=subprocess.PIPE,
+                text=True,
+                env=env,
+            )
+            doc = json.loads(neutral.stdout)
+            self.assertEqual(doc["value"], "source")
+            self.assertTrue(doc["dont_write"])
+            self.assertEqual(str(Path(doc["prefix"]).resolve()), str(prefix.resolve()))
+            self.assertEqual(tuple(p for p in prefix.rglob("*") if p.is_file()), ())
 
     def test_current_protected_envelope_propagates_parent_environment_to_main_child(self):
         source = PROTECTED_ENVELOPE.read_text(encoding="utf-8")
