@@ -24,6 +24,11 @@ import subprocess
 import sys
 from typing import Any, Mapping
 
+_LAUNCHER_DIR = str(Path(__file__).resolve().parent)
+if _LAUNCHER_DIR not in sys.path:
+    sys.path.insert(0, _LAUNCHER_DIR)
+import FIABC_SPLIT_R2_WORKROOT_GATES as split_gates  # noqa: E402
+
 EXPECTED_EXECUTION_BRANCH = "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1"
 EXPECTED_EXECUTION_HEAD = "3d8f2ad62600b6777dcb23a28404a067502e77a0"
 EXPECTED_SOURCES = ("LITS_I", "WVS7")
@@ -64,7 +69,9 @@ def _git(root: Path, *args: str, check: bool = True) -> subprocess.CompletedProc
     )
 
 
-def _require_exact_execution_checkout(repo_root: Path) -> tuple[str, str]:
+def _require_exact_execution_checkout(
+    repo_root: Path, *, allow_postrun_classification: bool = False
+) -> tuple[str, str]:
     branch = _git(repo_root, "branch", "--show-current").stdout.strip()
     head = _git(repo_root, "rev-parse", "--verify", "HEAD^{commit}").stdout.strip()
     if branch != EXPECTED_EXECUTION_BRANCH:
@@ -78,7 +85,7 @@ def _require_exact_execution_checkout(repo_root: Path) -> tuple[str, str]:
     dirty = _git(
         repo_root, "status", "--porcelain", "--untracked-files=all"
     ).stdout.strip()
-    if dirty:
+    if dirty and not allow_postrun_classification:
         raise SourceLocalRunnerError("protected execution checkout is dirty")
     return branch, head
 
@@ -302,6 +309,11 @@ def _write_source_terminal(
     runner_sha = os.environ.get("RAWLSING_FIABC_SPLIT_RUNNER_SHA256")
     driver_sha = _sha256_file(Path(__file__).resolve())
 
+    prestate_path = driver.work_root / "court" / "joined_prestate_receipt.json"
+    baseline_path = driver.work_root / "court" / "repo_prestate_baseline.json"
+    if not prestate_path.is_file() or not baseline_path.is_file():
+        raise SourceLocalRunnerError("source terminal requires joined-prestate and repo-baseline receipts")
+
     payload = {
         "schema": SOURCE_TERMINAL_SCHEMA,
         "status": status,
@@ -313,6 +325,8 @@ def _write_source_terminal(
         "common_blockers": common_blockers,
         "incomplete_stages": incomplete_stages,
         "stage_ledger_sha256": driver.ledger.hash(),
+        "joined_prestate_receipt_sha256": _sha256_file(prestate_path),
+        "repo_prestate_baseline_sha256": _sha256_file(baseline_path),
         "execution_branch": driver.repo.branch,
         "execution_head": driver.repo.head,
         "current_execution_manifest": dataclasses.asdict(machine.identity),
@@ -532,6 +546,9 @@ def _verify_source_block(*, base: Any, driver: Any, machine: Any, source: str) -
         if entry.get("terminal_disposition") in base.COMPLETE_LEDGER_DISPOSITIONS:
             driver.ledger.revalidate_terminal(address)
     terminal = driver.work_root / "court" / "source_local_terminal.json"
+    postrun = driver.work_root / "court" / "repo_postrun_verification.json"
+    if not postrun.is_file():
+        raise SourceLocalRunnerError("postrun checkout verification receipt absent")
     return {
         "schema": "RAWLSING_FIABC_SOURCE_LOCAL_VERIFY@1.0.0",
         "status": "PASS",
@@ -539,6 +556,7 @@ def _verify_source_block(*, base: Any, driver: Any, machine: Any, source: str) -
         "ledger_sha256": driver.ledger.hash(),
         "source_terminal_present": terminal.is_file(),
         "source_terminal_sha256": _sha256_file(terminal) if terminal.is_file() else None,
+        "repo_postrun_verification_sha256": _sha256_file(postrun),
         "six_cell_s17_executed": False,
     }
 
@@ -570,7 +588,23 @@ def main(argv: list[str] | None = None) -> int:
     work_root = args.work_root.resolve()
     source_path = args.source_path.resolve()
 
-    _require_exact_execution_checkout(repo_root)
+    _require_exact_execution_checkout(
+        repo_root, allow_postrun_classification=args.verify_only
+    )
+    if args.verify_only:
+        baseline_path = work_root / "court" / "repo_prestate_baseline.json"
+        if not baseline_path.is_file():
+            raise SourceLocalRunnerError("verify-only requires pre-measurement repo baseline")
+        try:
+            split_gates.verify_postrun_checkout(
+                repo_root=repo_root,
+                work_root=work_root,
+                source=args.source,
+                baseline_path=baseline_path,
+                output=work_root / "court" / "repo_postrun_verification.json",
+            )
+        except split_gates.SplitR2GateError as exc:
+            raise SourceLocalRunnerError(f"postrun checkout verification failed: {exc}") from exc
     base = _load_base(repo_root)
 
     machine = base.load_current_execution_manifest(args.continuation_map.resolve())
@@ -600,7 +634,10 @@ def main(argv: list[str] | None = None) -> int:
     source_paths = {args.source: source_path}
     backend = base._load_backend(args.backend_module) if args.backend_module else None
 
-    lock_root = repo_root / ".git" if (repo_root / ".git").is_dir() else work_root
+    try:
+        lock_root = split_gates.worktree_lock_root(repo_root)
+    except split_gates.SplitR2GateError as exc:
+        raise SourceLocalRunnerError(f"unable to derive worktree-safe lock root: {exc}") from exc
     with base.DriverInstanceLock(lock_root):
         driver = base.DarwinCourtDriver(
             machine=machine,
@@ -642,6 +679,25 @@ def main(argv: list[str] | None = None) -> int:
                 raise SourceLocalRunnerError(
                     "--run requires the source-local/full-court succession preflight receipt"
                 )
+
+            prestate_receipt = work_root / "court" / "joined_prestate_receipt.json"
+            if not prestate_receipt.is_file():
+                raise SourceLocalRunnerError("--run requires joined-court prestate receipt")
+            try:
+                split_gates.verify_joined_prestate(
+                    source=args.source,
+                    repo_root=repo_root,
+                    work_root=work_root,
+                    receipt_path=prestate_receipt,
+                )
+                split_gates.capture_repo_prestate_baseline(
+                    repo_root=repo_root,
+                    work_root=work_root,
+                    source=args.source,
+                    output=work_root / "court" / "repo_prestate_baseline.json",
+                )
+            except split_gates.SplitR2GateError as exc:
+                raise SourceLocalRunnerError(f"pre-measurement workroot/repo gate failed: {exc}") from exc
 
             preflight_receipt = args.succession_preflight_receipt.resolve()
             validate_live_succession_preflight_receipt(
