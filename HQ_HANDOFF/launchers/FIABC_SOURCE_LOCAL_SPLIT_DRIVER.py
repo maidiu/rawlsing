@@ -154,6 +154,319 @@ def _stage_addresses(base: Any, machine: Any, source: str) -> list[str]:
     return out
 
 
+
+class SourceLocalManifestProgressPlan:
+    """Selected-source progress ordinals over the exact protected manifest.
+
+    The protected ProgressReporter remains the emitter.  Only its administrative
+    address universe is replaced so a split source block can represent all 51
+    governed rows for that source without admitting the other source or S17.
+    """
+
+    def __init__(self, base: Any, machine: Any, source: str):
+        self.base = base
+        self.machine = machine
+        self.source = source
+        self.cells = tuple(_cells_for_source(machine, source))
+        self.cell_addresses: dict[tuple[str, str], tuple[str, ...]] = {}
+        self.cell_meta: dict[tuple[str, str], Mapping[str, Any]] = {}
+        flattened: list[str] = []
+        sources = (
+            machine.document.get("sources", {})
+            if isinstance(machine.document.get("sources", {}), Mapping)
+            else {}
+        )
+
+        for cell_index, cell in enumerate(self.cells, 1):
+            candidate = str(cell["candidate"])
+            key = (source, candidate)
+            stage_ids = base._manifest_ordered_stage_ids(machine.document, cell)
+            addresses = tuple(f"{source}/{candidate}/{sid}" for sid in stage_ids)
+            for address in addresses:
+                stage = machine.get(address)
+                if stage.source != source or stage.candidate != candidate:
+                    raise SourceLocalRunnerError(
+                        f"source-local progress address escaped selected cell: {address}"
+                    )
+            self.cell_addresses[key] = addresses
+            src_doc = (
+                sources.get(source, {})
+                if isinstance(sources.get(source, {}), Mapping)
+                else {}
+            )
+            self.cell_meta[key] = {
+                "cell_index": cell_index,
+                "source_name": str(
+                    cell.get("source_name")
+                    or src_doc.get("display_name")
+                    or src_doc.get("name")
+                    or src_doc.get("label")
+                    or source
+                ),
+                "candidate_name": str(cell.get("candidate_name") or candidate),
+                "stage_ids": stage_ids,
+            }
+            flattened.extend(addresses)
+
+        if len(flattened) != 51:
+            raise SourceLocalRunnerError(
+                f"source-local progress universe must contain 51 current rows, got {len(flattened)}"
+            )
+        if any(not address.startswith(f"{source}/") for address in flattened):
+            raise SourceLocalRunnerError("source-local progress universe contains another source")
+        if any(address.startswith("COURT/") or "/S17_" in address for address in flattened):
+            raise SourceLocalRunnerError("source-local progress universe contains COURT/S17")
+
+        self.governed_addresses = tuple(flattened)
+        self.executable_addresses = tuple(
+            address
+            for address in self.governed_addresses
+            if machine.get(address).disposition == "READY__RUN_LOCALLY"
+        )
+        self._overall = {
+            address: index
+            for index, address in enumerate(self.governed_addresses, 1)
+        }
+        self._executable = {
+            address: index
+            for index, address in enumerate(self.executable_addresses, 1)
+        }
+
+    @property
+    def overall_total(self) -> int:
+        return len(self.governed_addresses)
+
+    @property
+    def executable_total(self) -> int:
+        return len(self.executable_addresses)
+
+    @property
+    def cell_total(self) -> int:
+        return len(self.cells)
+
+    def position(self, address: str):
+        if address not in self._overall:
+            raise SourceLocalRunnerError(
+                f"progress address is outside selected source {self.source}: {address}"
+            )
+        stage = self.machine.get(address)
+        key = (stage.source, stage.candidate)
+        meta = self.cell_meta[key]
+        stage_ids = meta["stage_ids"]
+        return self.base.ProgressPosition(
+            address=address,
+            overall_index=self._overall[address],
+            overall_total=self.overall_total,
+            executable_index=self._executable.get(address),
+            executable_total=self.executable_total,
+            cell_index=int(meta["cell_index"]),
+            cell_total=self.cell_total,
+            source=stage.source,
+            candidate=stage.candidate,
+            source_name=str(meta["source_name"]),
+            candidate_name=str(meta["candidate_name"]),
+            stage_id=stage.stage_id,
+            stage_index=stage_ids.index(stage.stage_id) + 1,
+            stage_total=len(stage_ids),
+            is_court_final=False,
+        )
+
+
+def _install_source_local_progress(
+    *, base: Any, driver: Any, machine: Any, source: str
+) -> SourceLocalManifestProgressPlan:
+    """Retain the protected reporter, replacing only its full-court address plan."""
+    plan = SourceLocalManifestProgressPlan(base, machine, source)
+    driver.progress.plan = plan
+    return plan
+
+
+def _ordered_manifest_addresses(base: Any, machine: Any) -> list[str]:
+    ordered: list[str] = []
+    for cell in machine.document.get("cells", ()):
+        if not isinstance(cell, Mapping):
+            continue
+        source = cell.get("source")
+        candidate = cell.get("candidate")
+        if not isinstance(source, str) or not isinstance(candidate, str):
+            raise SourceLocalRunnerError("manifest cell source/candidate malformed")
+        for stage_id in base._manifest_ordered_stage_ids(machine.document, cell):
+            ordered.append(f"{source}/{candidate}/{stage_id}")
+    return ordered
+
+
+def _joined_preflight_prefix(base: Any, machine: Any) -> tuple[str, ...]:
+    first = getattr(machine, "first_unfinished", None)
+    if not isinstance(first, str):
+        return ()
+    ordered = _ordered_manifest_addresses(base, machine)
+    try:
+        index = ordered.index(first)
+    except ValueError as exc:
+        raise SourceLocalRunnerError(
+            "joined first_unfinished is absent from manifest order"
+        ) from exc
+    return tuple(ordered[:index])
+
+
+def _joined_all_pass_trace(machine: Any) -> tuple[str, ...]:
+    first = getattr(machine, "first_unfinished", None)
+    final = getattr(machine, "final_stage_id", None)
+    if not isinstance(first, str) or not isinstance(final, str):
+        return ()
+    address = first
+    seen: set[str] = set()
+    trace: list[str] = []
+    while address != "__COURT_COMPLETE__":
+        if address in seen:
+            raise SourceLocalRunnerError(f"joined pass graph cycles at {address}")
+        seen.add(address)
+        trace.append(address)
+        if address == final:
+            break
+        address = machine.get(address).next_stage_on_pass
+    return tuple(trace)
+
+
+def _transition_differential(base: Any, machine: Any, source: str) -> Mapping[str, Any]:
+    """Exact protected joined-source segment versus split materialization model."""
+    selected = tuple(_stage_addresses(base, machine, source))
+    preflight = tuple(
+        address
+        for address in _joined_preflight_prefix(base, machine)
+        if address.startswith(f"{source}/")
+    )
+    joined_run = tuple(
+        address
+        for address in _joined_all_pass_trace(machine)
+        if address.startswith(f"{source}/")
+    )
+    split_run = tuple(address for address in selected if address not in preflight)
+
+    joined_backend = tuple(
+        address
+        for address in joined_run
+        if machine.get(address).disposition == "READY__RUN_LOCALLY"
+    )
+    split_backend = tuple(
+        address
+        for address in split_run
+        if machine.get(address).disposition == "READY__RUN_LOCALLY"
+    )
+    extras = tuple(address for address in split_run if address not in joined_run)
+    missing = tuple(address for address in joined_run if address not in split_run)
+    approved_extras: list[str] = []
+    for address in extras:
+        stage = machine.get(address)
+        if (
+            source == "WVS7"
+            and address == "WVS7/C/S00_SOURCE_PREFLIGHT_IDENTITY"
+            and stage.disposition == "DONE__PRESERVE"
+            and stage.empirical_source_access_required is False
+            and stage.physical_host_measurement_required is False
+        ):
+            approved_extras.append(address)
+
+    return {
+        "source": source,
+        "selected_stage_count": len(selected),
+        "joined_preflight": list(preflight),
+        "joined_run": list(joined_run),
+        "split_preflight": list(preflight),
+        "split_run": list(split_run),
+        "joined_candidate_backend_addresses": list(joined_backend),
+        "split_candidate_backend_addresses": list(split_backend),
+        "candidate_backend_addresses_identical": joined_backend == split_backend,
+        "split_extra_addresses": list(extras),
+        "approved_mechanical_extra_addresses": approved_extras,
+        "split_missing_addresses": list(missing),
+        "other_source_or_s17_in_split": [
+            address
+            for address in selected
+            if not address.startswith(f"{source}/")
+            or address.startswith("COURT/")
+            or "/S17_" in address
+        ],
+    }
+
+
+def _assert_transition_parity(base: Any, machine: Any, source: str) -> Mapping[str, Any]:
+    # Synthetic unit fixtures from the first split court predate actual-manifest
+    # differential qualification.  Exact runtime machines always expose these.
+    if not isinstance(getattr(machine, "first_unfinished", None), str):
+        return {"source": source, "synthetic_fixture": True}
+    diff = _transition_differential(base, machine, source)
+    if diff["selected_stage_count"] != 51:
+        raise SourceLocalRunnerError("selected source no longer has exactly 51 governed stages")
+    if diff["other_source_or_s17_in_split"]:
+        raise SourceLocalRunnerError("source-local traversal escaped selected source or admitted S17")
+    if diff["split_missing_addresses"]:
+        raise SourceLocalRunnerError(
+            f"split traversal drops joined source stages: {diff['split_missing_addresses']}"
+        )
+    if diff["candidate_backend_addresses_identical"] is not True:
+        raise SourceLocalRunnerError("split candidate backend address/order differs from joined source segment")
+    extras = tuple(diff["split_extra_addresses"])
+    approved = tuple(diff["approved_mechanical_extra_addresses"])
+    if extras != approved:
+        raise SourceLocalRunnerError(
+            f"unapproved split-only stage materialization: {extras}"
+        )
+    expected_extra = () if source == "LITS_I" else ("WVS7/C/S00_SOURCE_PREFLIGHT_IDENTITY",)
+    if approved != expected_extra:
+        raise SourceLocalRunnerError(
+            f"source-cut mechanical differential drift for {source}: {approved!r}"
+        )
+    if source == "LITS_I" and tuple(diff["joined_preflight"]) != (
+        "LITS_I/A/S00_SOURCE_PREFLIGHT_IDENTITY",
+    ):
+        raise SourceLocalRunnerError("LiTS/A/S00 joined preflight-prefix law drift")
+    if source == "LITS_I" and len(diff["joined_run"]) != 50:
+        raise SourceLocalRunnerError("joined LiTS run is no longer exactly 50 stages")
+    if source == "WVS7" and len(diff["joined_run"]) != 50:
+        raise SourceLocalRunnerError("joined WVS run is no longer exactly 50 stages")
+    return diff
+
+
+def _materialize_source_preflight_prefix(
+    *, base: Any, driver: Any, machine: Any, source: str, source_sha: str
+) -> tuple[str, ...]:
+    """Reproduce joined preflight-prefix mechanics without candidate execution."""
+    addresses = tuple(
+        address
+        for address in _joined_preflight_prefix(base, machine)
+        if address.startswith(f"{source}/")
+    )
+    for address in addresses:
+        stage = machine.get(address)
+        old = driver.ledger.stage_entry(address)
+        if old is not None:
+            driver.ledger.revalidate_terminal(address)
+            continue
+        if stage.disposition == "DONE__PRESERVE":
+            base._preserve(
+                machine,
+                driver.ledger,
+                stage,
+                driver.repo_root,
+                driver.repo.head,
+                source_sha,
+            )
+        elif stage.disposition == "SKIP__NOT_APPLICABLE_BY_FROZEN_LAW":
+            base._skip(
+                machine,
+                driver.ledger,
+                stage,
+                driver.repo.head,
+                source_sha,
+            )
+        else:
+            raise SourceLocalRunnerError(
+                f"source preflight prefix contains executable/nonmechanical stage: {address}"
+            )
+    return addresses
+
+
 def _source_preflight(
     *,
     base: Any,
@@ -173,6 +486,15 @@ def _source_preflight(
     expected_sha = machine.document["sources"][source]["sha256"]
     if observed_sha != expected_sha:
         raise SourceLocalRunnerError("selected source identity drift")
+
+    transition_diff = _assert_transition_parity(base, machine, source)
+    preflight_prefix = _materialize_source_preflight_prefix(
+        base=base,
+        driver=driver,
+        machine=machine,
+        source=source,
+        source_sha=observed_sha,
+    )
 
     # Bind all three frozen owner blobs exactly, but do not instantiate a
     # candidate process or candidate-owned root.
@@ -221,6 +543,8 @@ def _source_preflight(
         "t5_succession_preflight_path": str(t5_path),
         "candidate_processes_started": 0,
         "candidate_outputs_seen": 0,
+        "joined_split_transition_differential": transition_diff,
+        "mechanical_preflight_prefix": list(preflight_prefix),
         "source_local_only": True,
         "six_cell_s17_authorized": False,
         "p2_synthesis_authorized": False,
@@ -344,6 +668,7 @@ def _run_source_block(
 ) -> Mapping[str, Any]:
     driver.verify_static_gates()
     source_sha = driver.ensure_source_verified(source)
+    _assert_transition_parity(base, machine, source)
 
     addresses = _stage_addresses(base, machine, source)
     blocked_status: str | None = None
@@ -476,7 +801,7 @@ def _run_source_block(
             )
             progress_state = "CANDIDATE_LOCAL_FAILURE"
         elif disposition == "BLOCKED_BY_COMMON_SOURCE_AUTHORITY":
-            base._mark_source_blocked(
+            inherited_global_next = base._mark_source_blocked(
                 machine,
                 driver.ledger,
                 source=source,
@@ -484,6 +809,8 @@ def _run_source_block(
                 source_sha256=source_sha,
                 blocker_stage=address,
             )
+            if isinstance(inherited_global_next, str):
+                next_stage = inherited_global_next
             blocked_status = "BLOCKED__COMMON_SOURCE_AUTHORITY"
             progress_state = "BLOCKED"
         elif disposition == "BLOCKED_BY_COMMON_COURT_AUTHORITY":
@@ -611,6 +938,10 @@ def main(argv: list[str] | None = None) -> int:
             repo=repo,
             backend=backend,
         )
+        _install_source_local_progress(
+            base=base, driver=driver, machine=machine, source=args.source
+        )
+        _assert_transition_parity(base, machine, args.source)
 
         if args.preflight:
             if args.succession_manifest is None or args.succession_lifecycle_context is None:
