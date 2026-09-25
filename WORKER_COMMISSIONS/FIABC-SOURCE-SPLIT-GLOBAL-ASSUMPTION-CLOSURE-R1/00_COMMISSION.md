@@ -465,6 +465,16 @@ For each row report:
 
 ---
 
+# MANDATORY SECOND-PASS ADDENDUM
+
+Before implementation or qualification is considered complete, read and execute in full:
+
+`WORKER_COMMISSIONS/FIABC-SOURCE-SPLIT-GLOBAL-ASSUMPTION-CLOSURE-R1/01_JOINED_RUNNER_DIFFERENTIAL_PARITY_ADDENDUM.md`
+
+The addendum is cumulative, not optional. Its joined-runner differential parity burdens apply to BOTH LiTS-I and WVS7.
+
+No PASS terminal is lawful unless the addendum's two explicit source verdicts are both PASS.
+
 # REQUIRED RETURN
 
 Return under:
