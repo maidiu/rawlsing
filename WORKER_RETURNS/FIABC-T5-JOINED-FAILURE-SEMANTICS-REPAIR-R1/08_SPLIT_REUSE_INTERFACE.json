@@ -1,0 +1,36 @@
+{
+  "schema": "RAWLSING_FIABC_T5_REPAIR_SPLIT_REUSE_INTERFACE@1.0.0",
+  "status": "PASS__ONE_SHARED_FAILURE_SEMANTICS__FANIN_CALLSITE_REQUIRED",
+  "implementation_head": "41eea54d7610a47f1adc342c6caacaf11324a40c",
+  "fact": "The exact protected-base branch used for this repair does not contain HQ_HANDOFF/launchers/FIABC_SOURCE_LOCAL_SPLIT_DRIVER.py; therefore this lane cannot patch a split callsite without importing later split-control history.",
+  "reusable_interfaces": [
+    {
+      "symbol": "fiabc_live_terminal_control.admit_post_i05_oracle_match",
+      "contract": "Returns PASS or a typed existing governed non-PASS disposition; never requires split-specific semantics."
+    },
+    {
+      "symbol": "ee_p2x_darwin_court_driver._backend_terminal",
+      "contract": "Consumes that T5 result and terminalizes the stage with the effective typed disposition plus standard failure evidence."
+    },
+    {
+      "symbol": "ee_p2x_darwin_court_driver._stop_backend_after_posthook_nonpass",
+      "contract": "Must be called immediately after _backend_terminal by any orchestration reusing the helper when an outer T4/T5 gate can convert backend PASS to effective non-PASS."
+    },
+    {
+      "symbol": "ee_p2x_process_isolated_backend.stop_after_outer_nonpass",
+      "contract": "Delegates to the process controller for graceful same-cell stop; returns None if no active process."
+    }
+  ],
+  "fanin_requirement": {
+    "rule": "Later split-control fan-in must call _stop_backend_after_posthook_nonpass after base._backend_terminal, before candidate/source propagation, exactly as the repaired joined driver does.",
+    "split_specific_failure_vocabulary_needed": false,
+    "second_semantics_forbidden": true,
+    "t5_locality_preserved": true
+  },
+  "source_local_behavior": {
+    "a_b_s05": "individual same-source oracle match only",
+    "c_s05": "same-source A/B/C three-way only",
+    "cross_source_dependency_before_s17": false,
+    "source_blocker_allows_other_source": true
+  }
+}
