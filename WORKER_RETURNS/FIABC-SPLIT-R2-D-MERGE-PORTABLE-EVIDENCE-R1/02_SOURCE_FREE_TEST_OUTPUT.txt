@@ -1,0 +1,38 @@
+FIABC SPLIT R2 WORKER D — SOURCE-FREE HOSTILE QUALIFICATION
+
+Implementation head under test:
+d0b8c289428ace3df0d71581ee7f5afaeb42c057
+
+Protected execution authority:
+3d8f2ad62600b6777dcb23a28404a067502e77a0
+
+Execution mode:
+SOURCE-FREE / CANDIDATE-FREE / NON-MEASURED
+
+test_control_binding_is_non_circular_and_rejects_hash_drift_and_dirty_checkout ... ok
+  includes wrong-control-branch rejection after the final control-binding patch
+test_exact_source_stage_universe_is_51_and_never_crosses_source_or_s17 ... ok
+test_legacy_wvs_framework_is_hold_not_admission ... ok
+test_merge_rejects_canonical_source_drift_running_stage_and_hardware_mismatch ... ok
+test_merge_requires_explicit_legacy_wvs_compatibility_and_never_silent_grandfathers ... ok
+test_merge_revalidates_full_ledger_and_accepts_only_same_qualified_control_by_default ... ok
+test_orchestration_failure_receipt_is_fail_closed_and_never_candidate_local ... ok
+test_stage_receipt_index_rejects_foreign_running_and_hash_drift ... ok
+test_static_worker_d_code_has_no_raw_source_or_candidate_execution_surface ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests
+OK
+exit_code=0
+
+Source/candidate telemetry:
+raw_source_opens=0
+raw_source_hash_passes=0
+decoder_calls=0
+candidate_process_launch_attempts=0
+candidate_outputs=0
+measured_execution=false
+
+Note: the isolated Python runtime printed an unrelated artifact-tool spreadsheet
+warmup timeout before unittest execution. It did not affect the test process
+exit code or any Worker D assertion; all nine tests executed and passed.
