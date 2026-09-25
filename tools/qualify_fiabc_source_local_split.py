@@ -21,11 +21,11 @@ CONTROL_ROOT = Path(__file__).resolve().parents[1]
 TEST_PATH = CONTROL_ROOT / "rawlsing_next" / "tests" / "test_fiabc_source_local_split_qualification.py"
 RUNNER_REL = Path("HQ_HANDOFF/launchers/RUN_FIABC_SOURCE_LOCAL_SPLIT.sh")
 CANONICAL_REL = Path("HQ_HANDOFF/launchers/RUN_DISPOSITIVE_FIABC_SIX_CELL.sh")
-EXPECTED_CONTROL_BRANCH = "agent/vozhd-fiabc-source-split-alternate-runner-r1"
+EXPECTED_CONTROL_BRANCH = "agent/vozhd-fiabc-source-split-pandas-runtime-repair-r1"
 EXPECTED_EXECUTION_BRANCH = "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1"
 EXPECTED_EXECUTION_HEAD = "3d8f2ad62600b6777dcb23a28404a067502e77a0"
 EXPECTED_PREMAIN_BRANCH = "integration/pre-main-reconciliation-r1"
-EXPECTED_PREMAIN_HEAD = "0fe82197f3ec6476f165d1404870209870e7fa57"
+EXPECTED_PREMAIN_HEAD = "cbfbdd76e5a51dee1c267b2856d6946a3e6bb479"
 EXPECTED_CANONICAL_SHA256 = "fa9d34c5e274792475f5a83ff08b7859287d7e7e596e1043601a6e5e1e9c98fe"
 EXPECTED_PROTECTED_CANONICAL_SHA256 = "9d1907508734428404fa33def6e8ad8be4686f4f9ef2a5b431e97c60b84b5565"
 EXPECTED_RUNTIME = {
@@ -33,6 +33,8 @@ EXPECTED_RUNTIME = {
     "python": "3.11.3",
     "pyreadstat": "1.3.6",
     "pyarrow": "25.0.1",
+    "pandas": "2.3.1",
+    "numpy": "2.3.2",
     "system": "Darwin",
     "machine": "x86_64",
 }
@@ -57,6 +59,8 @@ def _runtime_identity() -> dict[str, str]:
         "python": platform.python_version(),
         "pyreadstat": importlib.metadata.version("pyreadstat"),
         "pyarrow": importlib.metadata.version("pyarrow"),
+        "pandas": importlib.metadata.version("pandas"),
+        "numpy": importlib.metadata.version("numpy"),
         "system": platform.system(),
         "machine": platform.machine(),
     }
