@@ -1,0 +1,18 @@
+{
+  "schema": "FIABC_SPLIT_R2_A_RUN5_PROGRESS_CRASH_REPRODUCTION@1.0.0",
+  "protected_execution_head": "3d8f2ad62600b6777dcb23a28404a067502e77a0",
+  "protected_driver_git_blob_sha1": "33605355d9f2b6236d20fa207fbca59d357823e0",
+  "manifest_git_blob_sha1": "49692c1c8527680c97af073039b36125edd7e56d",
+  "first_unfinished": "LITS_I/A/S01_CANDIDATE_PREPARATION_BUILD",
+  "observed_split_first_materialization": "LITS_I/A/S00_SOURCE_PREFLIGHT_IDENTITY",
+  "protected_progress_plan_law": "ManifestProgressPlan slices flattened manifest addresses from first_unfinished onward",
+  "consequence": "LITS_I/A/S00 is absent from protected full-court progress _overall map, so ProgressReporter.emit_stage(S00) raises StageStateError before candidate work",
+  "reproduction_basis": "EXACT_PROTECTED_CLASS_SOURCE_PLUS_EXACT_PROTECTED_MANIFEST",
+  "repair": "retain protected ProgressReporter; replace only its administrative plan with SourceLocalManifestProgressPlan; materialize LiTS/A/S00 during source-local preflight with no progress emission",
+  "raw_source_opens": 0,
+  "raw_source_hash_passes": 0,
+  "decoder_calls": 0,
+  "candidate_launches": 0,
+  "measured_execution": false,
+  "status": "PASS__DEFECT_CLASS_IDENTIFIED_AND_CLOSED_IN_ALTERNATE_SPLIT_CONTROL"
+}

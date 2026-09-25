@@ -1,0 +1,42 @@
+{
+  "schema": "FIABC_SPLIT_R2_A_RETURN@1.0.0",
+  "terminal": "PASS__SPLIT_R2_A_PROGRESS_TRANSITION_PARITY__READY_FOR_FANIN",
+  "branch": "agent/rabochii-fiabc-split-r2-a-progress-transition-parity-r1",
+  "common_base": "e1b82095c83dd15a64b409dba0e4ae7d4f4460c6",
+  "commission_commit": "64affcb34c1ec2c7823a9fc9238b3e4cf7fb9c62",
+  "integration_branch": "agent/vozhd-fiabc-split-r2-fanin-r1",
+  "integration_commission": "a11d3f6d264ff6d0cc6c3e4eadfd2791baa07966",
+  "protected_execution_head": "3d8f2ad62600b6777dcb23a28404a067502e77a0",
+  "implementation_head": "36315c423f824be0308d7995d405a1139a08299c",
+  "implementation_files": [
+    {
+      "path": "HQ_HANDOFF/launchers/FIABC_SOURCE_LOCAL_SPLIT_DRIVER.py",
+      "git_blob_sha1": "295a3cc557d624cf0a26df0aa6d8b86ef002811e"
+    },
+    {
+      "path": "rawlsing_next/tests/test_fiabc_split_r2_a_progress_transition_parity.py",
+      "git_blob_sha1": "853261315afecd09294f335008478504c0f4df91"
+    }
+  ],
+  "exact_manifest": {
+    "git_blob_sha1": "49692c1c8527680c97af073039b36125edd7e56d",
+    "row_count": 102
+  },
+  "verdicts": {
+    "LITS_PROGRESS_PREFIX_TRANSITION_PARITY": "PASS",
+    "WVS_PROGRESS_TRANSITION_PARITY_WITH_ONE_MECHANICAL_GAP_CLOSURE": "PASS",
+    "CANDIDATE_BACKEND_ADDRESS_ORDER_PARITY": "PASS",
+    "OTHER_SOURCE_DISPATCH_EXCLUDED": "PASS",
+    "COURT_S17_DISPATCH_EXCLUDED": "PASS",
+    "PYTHON_ACTUAL_OBJECT_TEST_EXECUTED_IN_THIS_SESSION": false,
+    "FANIN_ACTUAL_OBJECT_TEST_EXECUTION_REQUIRED": true
+  },
+  "source_free_telemetry": {
+    "raw_source_opens": 0,
+    "raw_source_hash_passes": 0,
+    "decoder_calls": 0,
+    "candidate_process_launches": 0,
+    "candidate_outputs": 0,
+    "measured_execution": false
+  }
+}

@@ -1,0 +1,290 @@
+{
+  "schema": "FIABC_SPLIT_R2_A_HOSTILE_SCENARIO_MATRIX@1.0.0",
+  "protected_execution_head": "3d8f2ad62600b6777dcb23a28404a067502e77a0",
+  "scenario_count": 32,
+  "scenarios": [
+    {
+      "source": "LITS_I",
+      "scenario": "ALL_PASS",
+      "candidate_backend_order": "MUST_MATCH_JOINED",
+      "allowed_split_only_terminal": null
+    },
+    {
+      "source": "LITS_I",
+      "scenario": "CANDIDATE_LOCAL_FAILURE__A__S01_CANDIDATE_PREPARATION_BUILD",
+      "inject_at": "LITS_I/A/S01_CANDIDATE_PREPARATION_BUILD",
+      "joined_failure_edge": "LITS_I/B/S00_SOURCE_PREFLIGHT_IDENTITY",
+      "split_law": "PROPAGATE_FAILED_CANDIDATE_REMAINDER_WITH_PROTECTED__candidate_stop__THEN_CONTINUE_LATER_CANDIDATES_IN_SELECTED_SOURCE_ONLY",
+      "candidate_backend_order": "MUST_MATCH_JOINED",
+      "allowed_split_only_terminal": null
+    },
+    {
+      "source": "LITS_I",
+      "scenario": "CANDIDATE_LOCAL_FAILURE__A__S05_I05_LEARNED_PRODUCTION",
+      "inject_at": "LITS_I/A/S05_I05_LEARNED_PRODUCTION",
+      "joined_failure_edge": "LITS_I/B/S00_SOURCE_PREFLIGHT_IDENTITY",
+      "split_law": "PROPAGATE_FAILED_CANDIDATE_REMAINDER_WITH_PROTECTED__candidate_stop__THEN_CONTINUE_LATER_CANDIDATES_IN_SELECTED_SOURCE_ONLY",
+      "candidate_backend_order": "MUST_MATCH_JOINED",
+      "allowed_split_only_terminal": null
+    },
+    {
+      "source": "LITS_I",
+      "scenario": "CANDIDATE_LOCAL_FAILURE__A__S16_TERMINAL_METRIC_VECTOR_COMPLETENESS",
+      "inject_at": "LITS_I/A/S16_TERMINAL_METRIC_VECTOR_COMPLETENESS",
+      "joined_failure_edge": "LITS_I/B/S00_SOURCE_PREFLIGHT_IDENTITY",
+      "split_law": "PROPAGATE_FAILED_CANDIDATE_REMAINDER_WITH_PROTECTED__candidate_stop__THEN_CONTINUE_LATER_CANDIDATES_IN_SELECTED_SOURCE_ONLY",
+      "candidate_backend_order": "MUST_MATCH_JOINED",
+      "allowed_split_only_terminal": null
+    },
+    {
+      "source": "LITS_I",
+      "scenario": "CANDIDATE_LOCAL_FAILURE__B__S01_CANDIDATE_PREPARATION_BUILD",
+      "inject_at": "LITS_I/B/S01_CANDIDATE_PREPARATION_BUILD",
+      "joined_failure_edge": "LITS_I/C/S00_SOURCE_PREFLIGHT_IDENTITY",
+      "split_law": "PROPAGATE_FAILED_CANDIDATE_REMAINDER_WITH_PROTECTED__candidate_stop__THEN_CONTINUE_LATER_CANDIDATES_IN_SELECTED_SOURCE_ONLY",
+      "candidate_backend_order": "MUST_MATCH_JOINED",
+      "allowed_split_only_terminal": null
+    },
+    {
+      "source": "LITS_I",
+      "scenario": "CANDIDATE_LOCAL_FAILURE__B__S05_I05_LEARNED_PRODUCTION",
+      "inject_at": "LITS_I/B/S05_I05_LEARNED_PRODUCTION",
+      "joined_failure_edge": "LITS_I/C/S00_SOURCE_PREFLIGHT_IDENTITY",
+      "split_law": "PROPAGATE_FAILED_CANDIDATE_REMAINDER_WITH_PROTECTED__candidate_stop__THEN_CONTINUE_LATER_CANDIDATES_IN_SELECTED_SOURCE_ONLY",
+      "candidate_backend_order": "MUST_MATCH_JOINED",
+      "allowed_split_only_terminal": null
+    },
+    {
+      "source": "LITS_I",
+      "scenario": "CANDIDATE_LOCAL_FAILURE__B__S16_TERMINAL_METRIC_VECTOR_COMPLETENESS",
+      "inject_at": "LITS_I/B/S16_TERMINAL_METRIC_VECTOR_COMPLETENESS",
+      "joined_failure_edge": "LITS_I/C/S00_SOURCE_PREFLIGHT_IDENTITY",
+      "split_law": "PROPAGATE_FAILED_CANDIDATE_REMAINDER_WITH_PROTECTED__candidate_stop__THEN_CONTINUE_LATER_CANDIDATES_IN_SELECTED_SOURCE_ONLY",
+      "candidate_backend_order": "MUST_MATCH_JOINED",
+      "allowed_split_only_terminal": null
+    },
+    {
+      "source": "LITS_I",
+      "scenario": "CANDIDATE_LOCAL_FAILURE__C__S01_CANDIDATE_PREPARATION_BUILD",
+      "inject_at": "LITS_I/C/S01_CANDIDATE_PREPARATION_BUILD",
+      "joined_failure_edge": "WVS7/A/S00_SOURCE_PREFLIGHT_IDENTITY",
+      "split_law": "PROPAGATE_FAILED_CANDIDATE_REMAINDER_WITH_PROTECTED__candidate_stop__THEN_CONTINUE_LATER_CANDIDATES_IN_SELECTED_SOURCE_ONLY",
+      "candidate_backend_order": "MUST_MATCH_JOINED",
+      "allowed_split_only_terminal": null
+    },
+    {
+      "source": "LITS_I",
+      "scenario": "CANDIDATE_LOCAL_FAILURE__C__S05_I05_LEARNED_PRODUCTION",
+      "inject_at": "LITS_I/C/S05_I05_LEARNED_PRODUCTION",
+      "joined_failure_edge": "WVS7/A/S00_SOURCE_PREFLIGHT_IDENTITY",
+      "split_law": "PROPAGATE_FAILED_CANDIDATE_REMAINDER_WITH_PROTECTED__candidate_stop__THEN_CONTINUE_LATER_CANDIDATES_IN_SELECTED_SOURCE_ONLY",
+      "candidate_backend_order": "MUST_MATCH_JOINED",
+      "allowed_split_only_terminal": null
+    },
+    {
+      "source": "LITS_I",
+      "scenario": "CANDIDATE_LOCAL_FAILURE__C__S16_TERMINAL_METRIC_VECTOR_COMPLETENESS",
+      "inject_at": "LITS_I/C/S16_TERMINAL_METRIC_VECTOR_COMPLETENESS",
+      "joined_failure_edge": "WVS7/A/S00_SOURCE_PREFLIGHT_IDENTITY",
+      "split_law": "PROPAGATE_FAILED_CANDIDATE_REMAINDER_WITH_PROTECTED__candidate_stop__THEN_CONTINUE_LATER_CANDIDATES_IN_SELECTED_SOURCE_ONLY",
+      "candidate_backend_order": "MUST_MATCH_JOINED",
+      "allowed_split_only_terminal": null
+    },
+    {
+      "source": "LITS_I",
+      "scenario": "COMMON_SOURCE_BLOCKER__EARLY",
+      "inject_at": "LITS_I/A/S01_CANDIDATE_PREPARATION_BUILD",
+      "split_law": "USE_PROTECTED_SOURCE_STOP_PROPAGATION_BUT_DO_NOT_FOLLOW_CROSS_SOURCE_OR_S17_EDGE",
+      "candidate_backend_order": "MUST_MATCH_JOINED_UP_TO_BLOCKER",
+      "allowed_split_only_terminal": null
+    },
+    {
+      "source": "LITS_I",
+      "scenario": "COMMON_SOURCE_BLOCKER__MIDDLE",
+      "inject_at": "LITS_I/B/S08_WARM_REPEATED_RESEARCH",
+      "split_law": "USE_PROTECTED_SOURCE_STOP_PROPAGATION_BUT_DO_NOT_FOLLOW_CROSS_SOURCE_OR_S17_EDGE",
+      "candidate_backend_order": "MUST_MATCH_JOINED_UP_TO_BLOCKER",
+      "allowed_split_only_terminal": null
+    },
+    {
+      "source": "LITS_I",
+      "scenario": "COMMON_SOURCE_BLOCKER__LATE",
+      "inject_at": "LITS_I/C/S16_TERMINAL_METRIC_VECTOR_COMPLETENESS",
+      "split_law": "USE_PROTECTED_SOURCE_STOP_PROPAGATION_BUT_DO_NOT_FOLLOW_CROSS_SOURCE_OR_S17_EDGE",
+      "candidate_backend_order": "MUST_MATCH_JOINED_UP_TO_BLOCKER",
+      "allowed_split_only_terminal": null
+    },
+    {
+      "source": "LITS_I",
+      "scenario": "COMMON_COURT_BLOCKER__EARLY",
+      "inject_at": "LITS_I/A/S01_CANDIDATE_PREPARATION_BUILD",
+      "split_law": "STOP_SOURCE_LOCAL_BLOCK_IMMEDIATELY_WITH_REMAINDER_EXPLICITLY_INCOMPLETE",
+      "candidate_backend_order": "MUST_MATCH_JOINED_UP_TO_BLOCKER",
+      "allowed_split_only_terminal": null
+    },
+    {
+      "source": "LITS_I",
+      "scenario": "COMMON_COURT_BLOCKER__MIDDLE",
+      "inject_at": "LITS_I/B/S08_WARM_REPEATED_RESEARCH",
+      "split_law": "STOP_SOURCE_LOCAL_BLOCK_IMMEDIATELY_WITH_REMAINDER_EXPLICITLY_INCOMPLETE",
+      "candidate_backend_order": "MUST_MATCH_JOINED_UP_TO_BLOCKER",
+      "allowed_split_only_terminal": null
+    },
+    {
+      "source": "LITS_I",
+      "scenario": "COMMON_COURT_BLOCKER__LATE",
+      "inject_at": "LITS_I/C/S16_TERMINAL_METRIC_VECTOR_COMPLETENESS",
+      "split_law": "STOP_SOURCE_LOCAL_BLOCK_IMMEDIATELY_WITH_REMAINDER_EXPLICITLY_INCOMPLETE",
+      "candidate_backend_order": "MUST_MATCH_JOINED_UP_TO_BLOCKER",
+      "allowed_split_only_terminal": null
+    },
+    {
+      "source": "WVS7",
+      "scenario": "ALL_PASS",
+      "candidate_backend_order": "MUST_MATCH_JOINED",
+      "allowed_split_only_terminal": "WVS7/C/S00_SOURCE_PREFLIGHT_IDENTITY"
+    },
+    {
+      "source": "WVS7",
+      "scenario": "CANDIDATE_LOCAL_FAILURE__A__S01_CANDIDATE_PREPARATION_BUILD",
+      "inject_at": "WVS7/A/S01_CANDIDATE_PREPARATION_BUILD",
+      "joined_failure_edge": "WVS7/B/S00_SOURCE_PREFLIGHT_IDENTITY",
+      "split_law": "PROPAGATE_FAILED_CANDIDATE_REMAINDER_WITH_PROTECTED__candidate_stop__THEN_CONTINUE_LATER_CANDIDATES_IN_SELECTED_SOURCE_ONLY",
+      "candidate_backend_order": "MUST_MATCH_JOINED",
+      "allowed_split_only_terminal": "WVS7/C/S00_SOURCE_PREFLIGHT_IDENTITY"
+    },
+    {
+      "source": "WVS7",
+      "scenario": "CANDIDATE_LOCAL_FAILURE__A__S05_I05_LEARNED_PRODUCTION",
+      "inject_at": "WVS7/A/S05_I05_LEARNED_PRODUCTION",
+      "joined_failure_edge": "WVS7/B/S00_SOURCE_PREFLIGHT_IDENTITY",
+      "split_law": "PROPAGATE_FAILED_CANDIDATE_REMAINDER_WITH_PROTECTED__candidate_stop__THEN_CONTINUE_LATER_CANDIDATES_IN_SELECTED_SOURCE_ONLY",
+      "candidate_backend_order": "MUST_MATCH_JOINED",
+      "allowed_split_only_terminal": "WVS7/C/S00_SOURCE_PREFLIGHT_IDENTITY"
+    },
+    {
+      "source": "WVS7",
+      "scenario": "CANDIDATE_LOCAL_FAILURE__A__S16_TERMINAL_METRIC_VECTOR_COMPLETENESS",
+      "inject_at": "WVS7/A/S16_TERMINAL_METRIC_VECTOR_COMPLETENESS",
+      "joined_failure_edge": "WVS7/B/S00_SOURCE_PREFLIGHT_IDENTITY",
+      "split_law": "PROPAGATE_FAILED_CANDIDATE_REMAINDER_WITH_PROTECTED__candidate_stop__THEN_CONTINUE_LATER_CANDIDATES_IN_SELECTED_SOURCE_ONLY",
+      "candidate_backend_order": "MUST_MATCH_JOINED",
+      "allowed_split_only_terminal": "WVS7/C/S00_SOURCE_PREFLIGHT_IDENTITY"
+    },
+    {
+      "source": "WVS7",
+      "scenario": "CANDIDATE_LOCAL_FAILURE__B__S01_CANDIDATE_PREPARATION_BUILD",
+      "inject_at": "WVS7/B/S01_CANDIDATE_PREPARATION_BUILD",
+      "joined_failure_edge": "WVS7/C/S01_CANDIDATE_PREPARATION_BUILD",
+      "split_law": "PROPAGATE_FAILED_CANDIDATE_REMAINDER_WITH_PROTECTED__candidate_stop__THEN_CONTINUE_LATER_CANDIDATES_IN_SELECTED_SOURCE_ONLY",
+      "candidate_backend_order": "MUST_MATCH_JOINED",
+      "allowed_split_only_terminal": "WVS7/C/S00_SOURCE_PREFLIGHT_IDENTITY"
+    },
+    {
+      "source": "WVS7",
+      "scenario": "CANDIDATE_LOCAL_FAILURE__B__S05_I05_LEARNED_PRODUCTION",
+      "inject_at": "WVS7/B/S05_I05_LEARNED_PRODUCTION",
+      "joined_failure_edge": "WVS7/C/S01_CANDIDATE_PREPARATION_BUILD",
+      "split_law": "PROPAGATE_FAILED_CANDIDATE_REMAINDER_WITH_PROTECTED__candidate_stop__THEN_CONTINUE_LATER_CANDIDATES_IN_SELECTED_SOURCE_ONLY",
+      "candidate_backend_order": "MUST_MATCH_JOINED",
+      "allowed_split_only_terminal": "WVS7/C/S00_SOURCE_PREFLIGHT_IDENTITY"
+    },
+    {
+      "source": "WVS7",
+      "scenario": "CANDIDATE_LOCAL_FAILURE__B__S16_TERMINAL_METRIC_VECTOR_COMPLETENESS",
+      "inject_at": "WVS7/B/S16_TERMINAL_METRIC_VECTOR_COMPLETENESS",
+      "joined_failure_edge": "WVS7/C/S01_CANDIDATE_PREPARATION_BUILD",
+      "split_law": "PROPAGATE_FAILED_CANDIDATE_REMAINDER_WITH_PROTECTED__candidate_stop__THEN_CONTINUE_LATER_CANDIDATES_IN_SELECTED_SOURCE_ONLY",
+      "candidate_backend_order": "MUST_MATCH_JOINED",
+      "allowed_split_only_terminal": "WVS7/C/S00_SOURCE_PREFLIGHT_IDENTITY"
+    },
+    {
+      "source": "WVS7",
+      "scenario": "CANDIDATE_LOCAL_FAILURE__C__S01_CANDIDATE_PREPARATION_BUILD",
+      "inject_at": "WVS7/C/S01_CANDIDATE_PREPARATION_BUILD",
+      "joined_failure_edge": "COURT/S17_FINAL_COMPLETENESS_AND_VERIFICATION",
+      "split_law": "PROPAGATE_FAILED_CANDIDATE_REMAINDER_WITH_PROTECTED__candidate_stop__THEN_CONTINUE_LATER_CANDIDATES_IN_SELECTED_SOURCE_ONLY",
+      "candidate_backend_order": "MUST_MATCH_JOINED",
+      "allowed_split_only_terminal": "WVS7/C/S00_SOURCE_PREFLIGHT_IDENTITY"
+    },
+    {
+      "source": "WVS7",
+      "scenario": "CANDIDATE_LOCAL_FAILURE__C__S05_I05_LEARNED_PRODUCTION",
+      "inject_at": "WVS7/C/S05_I05_LEARNED_PRODUCTION",
+      "joined_failure_edge": "COURT/S17_FINAL_COMPLETENESS_AND_VERIFICATION",
+      "split_law": "PROPAGATE_FAILED_CANDIDATE_REMAINDER_WITH_PROTECTED__candidate_stop__THEN_CONTINUE_LATER_CANDIDATES_IN_SELECTED_SOURCE_ONLY",
+      "candidate_backend_order": "MUST_MATCH_JOINED",
+      "allowed_split_only_terminal": "WVS7/C/S00_SOURCE_PREFLIGHT_IDENTITY"
+    },
+    {
+      "source": "WVS7",
+      "scenario": "CANDIDATE_LOCAL_FAILURE__C__S16_TERMINAL_METRIC_VECTOR_COMPLETENESS",
+      "inject_at": "WVS7/C/S16_TERMINAL_METRIC_VECTOR_COMPLETENESS",
+      "joined_failure_edge": "COURT/S17_FINAL_COMPLETENESS_AND_VERIFICATION",
+      "split_law": "PROPAGATE_FAILED_CANDIDATE_REMAINDER_WITH_PROTECTED__candidate_stop__THEN_CONTINUE_LATER_CANDIDATES_IN_SELECTED_SOURCE_ONLY",
+      "candidate_backend_order": "MUST_MATCH_JOINED",
+      "allowed_split_only_terminal": "WVS7/C/S00_SOURCE_PREFLIGHT_IDENTITY"
+    },
+    {
+      "source": "WVS7",
+      "scenario": "COMMON_SOURCE_BLOCKER__EARLY",
+      "inject_at": "WVS7/A/S01_CANDIDATE_PREPARATION_BUILD",
+      "split_law": "USE_PROTECTED_SOURCE_STOP_PROPAGATION_BUT_DO_NOT_FOLLOW_CROSS_SOURCE_OR_S17_EDGE",
+      "candidate_backend_order": "MUST_MATCH_JOINED_UP_TO_BLOCKER",
+      "allowed_split_only_terminal": "WVS7/C/S00_SOURCE_PREFLIGHT_IDENTITY"
+    },
+    {
+      "source": "WVS7",
+      "scenario": "COMMON_SOURCE_BLOCKER__MIDDLE",
+      "inject_at": "WVS7/B/S08_WARM_REPEATED_RESEARCH",
+      "split_law": "USE_PROTECTED_SOURCE_STOP_PROPAGATION_BUT_DO_NOT_FOLLOW_CROSS_SOURCE_OR_S17_EDGE",
+      "candidate_backend_order": "MUST_MATCH_JOINED_UP_TO_BLOCKER",
+      "allowed_split_only_terminal": "WVS7/C/S00_SOURCE_PREFLIGHT_IDENTITY"
+    },
+    {
+      "source": "WVS7",
+      "scenario": "COMMON_SOURCE_BLOCKER__LATE",
+      "inject_at": "WVS7/C/S16_TERMINAL_METRIC_VECTOR_COMPLETENESS",
+      "split_law": "USE_PROTECTED_SOURCE_STOP_PROPAGATION_BUT_DO_NOT_FOLLOW_CROSS_SOURCE_OR_S17_EDGE",
+      "candidate_backend_order": "MUST_MATCH_JOINED_UP_TO_BLOCKER",
+      "allowed_split_only_terminal": "WVS7/C/S00_SOURCE_PREFLIGHT_IDENTITY"
+    },
+    {
+      "source": "WVS7",
+      "scenario": "COMMON_COURT_BLOCKER__EARLY",
+      "inject_at": "WVS7/A/S01_CANDIDATE_PREPARATION_BUILD",
+      "split_law": "STOP_SOURCE_LOCAL_BLOCK_IMMEDIATELY_WITH_REMAINDER_EXPLICITLY_INCOMPLETE",
+      "candidate_backend_order": "MUST_MATCH_JOINED_UP_TO_BLOCKER",
+      "allowed_split_only_terminal": "WVS7/C/S00_SOURCE_PREFLIGHT_IDENTITY"
+    },
+    {
+      "source": "WVS7",
+      "scenario": "COMMON_COURT_BLOCKER__MIDDLE",
+      "inject_at": "WVS7/B/S08_WARM_REPEATED_RESEARCH",
+      "split_law": "STOP_SOURCE_LOCAL_BLOCK_IMMEDIATELY_WITH_REMAINDER_EXPLICITLY_INCOMPLETE",
+      "candidate_backend_order": "MUST_MATCH_JOINED_UP_TO_BLOCKER",
+      "allowed_split_only_terminal": "WVS7/C/S00_SOURCE_PREFLIGHT_IDENTITY"
+    },
+    {
+      "source": "WVS7",
+      "scenario": "COMMON_COURT_BLOCKER__LATE",
+      "inject_at": "WVS7/C/S16_TERMINAL_METRIC_VECTOR_COMPLETENESS",
+      "split_law": "STOP_SOURCE_LOCAL_BLOCK_IMMEDIATELY_WITH_REMAINDER_EXPLICITLY_INCOMPLETE",
+      "candidate_backend_order": "MUST_MATCH_JOINED_UP_TO_BLOCKER",
+      "allowed_split_only_terminal": "WVS7/C/S00_SOURCE_PREFLIGHT_IDENTITY"
+    }
+  ],
+  "actual_object_test_file": "rawlsing_next/tests/test_fiabc_split_r2_a_progress_transition_parity.py",
+  "test_git_blob_sha1": "853261315afecd09294f335008478504c0f4df91",
+  "test_uses": [
+    "protected StateMachine",
+    "protected StageSpec",
+    "protected StageLedger",
+    "protected ProgressReporter",
+    "protected _candidate_stop",
+    "protected _source_stop"
+  ],
+  "candidate_processes_launched": 0,
+  "raw_source_access_required": false,
+  "status": "QUALIFICATION_TEST_AUTHORED__FANIN_MUST_EXECUTE_ON_EXACT_PROTECTED_CHECKOUT"
+}
