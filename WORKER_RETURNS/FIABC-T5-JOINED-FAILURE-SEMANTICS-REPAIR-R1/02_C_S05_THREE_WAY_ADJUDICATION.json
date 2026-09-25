@@ -1,0 +1,90 @@
+{
+  "schema": "RAWLSING_FIABC_T5_C_S05_THREE_WAY_FAILURE_ADJUDICATION@1.0.0",
+  "status": "PASS__TYPED_SOURCE_LOCAL_FAILURE_SEMANTICS",
+  "implementation_head": "41eea54d7610a47f1adc342c6caacaf11324a40c",
+  "defect_before_repair": {
+    "trigger": "A or B candidate-local failure before/at S05 leaves no same-source fiabc_t5_candidate_observation.json; later C passes backend S05.",
+    "old_behavior": "admit_post_i05_oracle_match unconditionally loaded A/B/C observations; missing peer raised LiveTerminalControlError after backend.run_stage returned, outside the driver's typed backend catch.",
+    "old_result": "UNTYPED_ORCHESTRATION_CRASH",
+    "process_lifecycle_side_effect": "C process had been retained for S06 after backend PASS and was only aborted later instead of receiving a lawful typed stop."
+  },
+  "repaired_law": {
+    "own_candidate_gate": "Every candidate observation is first checked only against the same frozen candidate-neutral oracle.",
+    "own_mismatch": {
+      "disposition": "CANDIDATE_LOCAL_FAILURE",
+      "kind": "PARITY_ORACLE_FAILURE",
+      "blocking_scope": "CANDIDATE_ONLY",
+      "performance_admitted": false
+    },
+    "c_three_way_prerequisite": "Three-way PASS requires three actual same-source A/B/C passing observations. Missing or malformed peer observations are never synthesized.",
+    "missing_or_malformed_peer": {
+      "disposition": "COMMON_SOURCE_BLOCKER",
+      "ledger_disposition": "BLOCKED_BY_COMMON_SOURCE_AUTHORITY",
+      "kind": "PARITY_ORACLE_FAILURE",
+      "blocking_scope": "SOURCE_ONLY",
+      "candidate": null,
+      "c_own_independent_match_retained": true,
+      "c_qualifying_cell_terminal_claimed": false,
+      "three_way_pass_claimed": false,
+      "synthetic_missing_observation": false,
+      "later_same_source_stages": "BLOCKED_BY_COMMON_SOURCE_AUTHORITY",
+      "later_source": "REMAINS_ELIGIBLE"
+    },
+    "actual_three_way_mismatch": {
+      "disposition": "COMMON_SOURCE_BLOCKER",
+      "kind": "PARITY_ORACLE_FAILURE",
+      "blocking_scope": "SOURCE_ONLY",
+      "c_own_independent_match_retained": true
+    },
+    "all_three_actual_match": {
+      "disposition": "PASS",
+      "wrapper_schema": "RAWLSING_FIABC_T5_LIVE_THREE_WAY_ORACLE_MATCH@1.0.0",
+      "legacy_pass_shape_preserved": true
+    }
+  },
+  "locality": {
+    "a_s05_dependencies": [
+      "own candidate observation",
+      "same-source frozen oracle"
+    ],
+    "b_s05_dependencies": [
+      "own candidate observation",
+      "same-source frozen oracle"
+    ],
+    "c_s05_dependencies": [
+      "own candidate observation",
+      "same-source frozen oracle",
+      "same-source A observation",
+      "same-source B observation"
+    ],
+    "foreign_source_observations_eligible": false,
+    "first_cross_source_live_dependency": "COURT/S17_FINAL_COMPLETENESS_AND_VERIFICATION"
+  },
+  "evidence": {
+    "nonpass_receipt": "WORK_ROOT/court/t5_oracle/<source>__C__S05_NONPASS.json",
+    "nonpass_schema": "RAWLSING_FIABC_T5_POST_I05_NONPASS@1.0.0",
+    "required_false_flags": [
+      "three_way_parity_claimed",
+      "missing_observation_synthesized"
+    ],
+    "repo_live_failure_evidence": [
+      "WORKER_RETURNS/EE-P2X/LOCAL_COURT/court/<source>__C__S05_I05_LEARNED_PRODUCTION__POSTBACKEND__PARITY_ORACLE_FAILURE.json",
+      "WORKER_RETURNS/EE-P2X/LOCAL_COURT/failures/<source>__COMMON__PARITY_ORACLE_FAILURE.json"
+    ]
+  },
+  "source_free_cases_qualified": 8,
+  "source_free_case_domain": {
+    "sources": [
+      "LITS_I",
+      "WVS7"
+    ],
+    "failed_peer": [
+      "A",
+      "B"
+    ],
+    "peer_failure_position": [
+      "BEFORE_S05",
+      "AT_S05"
+    ]
+  }
+}
