@@ -377,11 +377,25 @@ def _validate_control_pair(
     wvs_terminal_head = wvs["closure"].get(
         "terminal_control_head"
     )
+    lits_observed_head = lits["closure"].get(
+        "control_binding", {}
+    ).get("observed_control_checkout_head")
+    wvs_observed_head = wvs["closure"].get(
+        "control_binding", {}
+    ).get("observed_control_checkout_head")
+    lits_legacy = lits["closure"].get(
+        "terminal_control_legacy_allowed_for_packaging"
+    ) is True
+    wvs_legacy = wvs["closure"].get(
+        "terminal_control_legacy_allowed_for_packaging"
+    ) is True
 
     default_compatible = (
         lits_q == wvs_q
-        and lits_terminal_head == lits_q
-        and wvs_terminal_head == wvs_q
+        and not lits_legacy
+        and not wvs_legacy
+        and lits_terminal_head == lits_observed_head
+        and wvs_terminal_head == wvs_observed_head
         and _sha256_file(lits["binding_path"])
         == _sha256_file(wvs["binding_path"])
     )
@@ -406,9 +420,13 @@ def _validate_control_pair(
             )
         except EvidenceClosureError as exc:
             _raise_from_evidence(exc)
-        if lits_terminal_head != lits_q:
+        if lits_legacy or lits_terminal_head != lits_observed_head:
             raise SplitMergeError(
                 "LiTS control mismatch cannot be grandfathered"
+            )
+        if not wvs_legacy:
+            raise SplitMergeError(
+                "control compatibility exception requires explicit legacy WVS packaging"
             )
         if (
             compatibility.get("source_exception")
