@@ -868,6 +868,13 @@ def _load_backend(module_or_path: str) -> StageBackend:
             if isinstance(r, BackendResult): return r
             if not isinstance(r, Mapping): raise StageExecutionError("backend result must be mapping")
             return BackendResult(r.get("terminal_disposition", "PASS"), r.get("receipt", {}), {str(k): Path(v) for k,v in r.get("output_artifacts", {}).items()}, bool(r.get("verifier_complete", False)))
+        def stop_after_outer_nonpass(self, stage, reason):
+            stop = getattr(mod, "stop_after_outer_nonpass", None)
+            if not callable(stop):
+                raise StageExecutionError(
+                    "backend lacks lawful retained-process stop for outer typed non-PASS"
+                )
+            return stop(source=stage.source, candidate=stage.candidate, reason=reason)
     return B()
 
 # ---- stage mechanics -------------------------------------------------------------------
@@ -941,40 +948,223 @@ def _source_stop(machine,ledger,*,source,head,source_sha,blocker):
     return f"{next_source}/{next_cell['candidate']}/{next_stage_ids[0]}"
 def _mark_source_blocked(machine, ledger, *, source: str, observed_head: str, source_sha256: str, blocker_stage: str):
     return _source_stop(machine, ledger, source=source, head=observed_head, source_sha=source_sha256, blocker=blocker_stage)
+def _repo_rel(repo_root: Path, path: Path) -> str:
+    root = repo_root.resolve()
+    resolved = path.resolve()
+    if resolved != root and root not in resolved.parents:
+        raise StageStateError(f"post-backend evidence escapes protected checkout: {resolved}")
+    return resolved.relative_to(root).as_posix()
+
+
+def _postbackend_failure_evidence(
+    *,
+    ledger: StageLedger,
+    stage: StageSpec,
+    original_terminal_disposition: str,
+    effective_terminal_disposition: str,
+    kind: str,
+    blocking_scope: str,
+    detail: Mapping[str, Any],
+) -> tuple[Mapping[str, str], Mapping[str, Path]]:
+    if effective_terminal_disposition not in {
+        "CANDIDATE_LOCAL_FAILURE", "COMMON_SOURCE_BLOCKER", "COMMON_COURT_BLOCKER"
+    }:
+        raise StageStateError("post-backend failure evidence requires a non-PASS disposition")
+    if blocking_scope not in {"CANDIDATE_ONLY", "SOURCE_ONLY", "COURT_UNTIL_RESUME"}:
+        raise StageStateError("post-backend failure evidence has unknown scope")
+    candidate = stage.candidate if blocking_scope == "CANDIDATE_ONLY" else None
+    evidence = ledger.repo_root / "WORKER_RETURNS/EE-P2X/LOCAL_COURT"
+    scope_path = (
+        evidence / "court"
+        / f"{stage.source}__{stage.candidate}__{stage.stage_id}__POSTBACKEND__{kind}.json"
+    )
+    failure_path = (
+        evidence / "failures"
+        / f"{stage.source}__{candidate or 'COMMON'}__{kind}.json"
+    )
+    scope_obj = {
+        "schema": "RAWLSING_EE_P2X_POSTBACKEND_FAILURE_SCOPE_RECEIPT@1.0.0",
+        "source": stage.source,
+        "candidate": candidate,
+        "stage": stage.address,
+        "kind": kind,
+        "blocking_scope": blocking_scope,
+        "candidate_neutral": candidate is None,
+        "backend_terminal_disposition": original_terminal_disposition,
+        "effective_terminal_disposition": effective_terminal_disposition,
+        "backend_detail": dict(detail),
+        "qualifying_cell_terminal_fabricated": False,
+        "ranking_or_selection": False,
+    }
+    failure_obj = {
+        "schema": "RAWLSING_EE_P2X_FAILURE_STOP_RECEIPT@1.0.0",
+        "source": stage.source,
+        "candidate": candidate,
+        "kind": kind,
+        "blocking_scope": blocking_scope,
+        "disposition": (
+            f"EE_P2X_{stage.source}_{stage.candidate}_{stage.stage_id}__{kind}"
+        ),
+        "evidence_paths": [
+            _repo_rel(ledger.repo_root, scope_path),
+            _repo_rel(ledger.repo_root, failure_path),
+        ],
+        "later_lawful_cells_suppressed": False,
+        "synthetic_fallback_used": False,
+        "backend_detail": dict(detail),
+        "ranking_or_selection": False,
+    }
+    _atomic_write_json(scope_path, scope_obj)
+    _atomic_write_json(failure_path, failure_obj)
+    rels = {
+        "cell_receipt": _repo_rel(ledger.repo_root, scope_path),
+        "failure_receipt": _repo_rel(ledger.repo_root, failure_path),
+    }
+    paths = {"cell_receipt": scope_path, "failure_receipt": failure_path}
+    return rels, paths
+
+
 def _backend_terminal(machine,ledger,stage,head,source_sha,result):
     if result.terminal_disposition not in {"PASS","CANDIDATE_LOCAL_FAILURE","COMMON_SOURCE_BLOCKER","COMMON_COURT_BLOCKER"}: raise StageStateError("backend terminal disposition invalid")
     if not result.verifier_complete: raise StageStateError("backend result incomplete: verifier did not complete")
     ih=_input_identity(machine,stage,source_sha,head); roots=_candidate_roots(ledger.work_root,stage.source,stage.candidate)
     measured_payload=dict(result.receipt)
-    from rawlsing_next.fiabc_live_accounting_binding import admit_live_stage_accounting
+    effective_terminal=result.terminal_disposition
+    post_failure=None
+
+    from rawlsing_next.fiabc_live_accounting_binding import admit_live_stage_accounting, LiveAccountingError
     owner_identity=OWNER_SPECS.get(stage.candidate,{}).get("blob","COURT_ADMINISTRATION")
-    measured_payload["t4_accounting"]=admit_live_stage_accounting(
-        stage=stage,roots=roots,source_sha256=source_sha,
-        candidate_owner_identity=owner_identity,repo_head=head,
-        backend_receipt=measured_payload,terminal_disposition=result.terminal_disposition,
-    )
-    if result.terminal_disposition=="PASS" and stage.stage_id=="S05_I05_LEARNED_PRODUCTION":
-        from rawlsing_next.fiabc_live_terminal_control import admit_post_i05_oracle_match
+    try:
+        measured_payload["t4_accounting"]=admit_live_stage_accounting(
+            stage=stage,roots=roots,source_sha256=source_sha,
+            candidate_owner_identity=owner_identity,repo_head=head,
+            backend_receipt=measured_payload,terminal_disposition=result.terminal_disposition,
+        )
+    except LiveAccountingError as exc:
+        if result.terminal_disposition!="PASS":
+            raise
+        effective_terminal="COMMON_COURT_BLOCKER"
+        post_failure={
+            "kind":"COMMON_COURT_AUTHORITY_FAILURE",
+            "blocking_scope":"COURT_UNTIL_RESUME",
+            "detail":{"phase":"T4_POSTBACKEND_ACCOUNTING","error":str(exc)},
+        }
+        measured_payload["t4_accounting_failure"]=dict(post_failure["detail"])
+
+    if (
+        post_failure is None
+        and result.terminal_disposition=="PASS"
+        and stage.stage_id=="S05_I05_LEARNED_PRODUCTION"
+    ):
+        from rawlsing_next.fiabc_live_terminal_control import (
+            LiveTerminalControlError, admit_post_i05_oracle_match,
+        )
         freeze=os.environ.get(FROZEN_UPSTREAM_ENV)
         if not freeze:
             raise StageStateError("T5 post-I05 oracle match lacks T3 freeze receipt")
-        measured_payload["t5_oracle_match"]=admit_post_i05_oracle_match(
-            stage=stage,roots=roots,work_root=ledger.work_root,
-            freeze_path=Path(freeze),backend_receipt=measured_payload,
+        try:
+            gate=admit_post_i05_oracle_match(
+                stage=stage,roots=roots,work_root=ledger.work_root,
+                freeze_path=Path(freeze),backend_receipt=measured_payload,
+            )
+        except LiveTerminalControlError as exc:
+            effective_terminal="COMMON_COURT_BLOCKER"
+            post_failure={
+                "kind":"COMMON_COURT_AUTHORITY_FAILURE",
+                "blocking_scope":"COURT_UNTIL_RESUME",
+                "detail":{"phase":"T5_POST_I05_CONTROL","error":str(exc)},
+            }
+            measured_payload["t5_oracle_match_failure"]=dict(post_failure["detail"])
+        else:
+            measured_payload["t5_oracle_match"]=gate
+            if gate.get("status")!="PASS":
+                effective_terminal=str(gate.get("terminal_disposition"))
+                post_failure={
+                    "kind":str(gate.get("kind")),
+                    "blocking_scope":str(gate.get("blocking_scope")),
+                    "detail":{
+                        "phase":"T5_POST_I05_ADJUDICATION",
+                        "adjudication_identity":gate.get("adjudication_identity"),
+                        "adjudication_path":gate.get("adjudication_path"),
+                        "own_oracle_match_retained":gate.get("own_oracle_match_retained"),
+                        "detail":gate.get("detail"),
+                    },
+                }
+
+    if (
+        post_failure is None
+        and result.terminal_disposition=="PASS"
+        and stage.stage_id=="S16_TERMINAL_METRIC_VECTOR_COMPLETENESS"
+    ):
+        from rawlsing_next.fiabc_live_terminal_control import (
+            LiveTerminalControlError, seal_live_cell_terminal,
         )
-    if result.terminal_disposition=="PASS" and stage.stage_id=="S16_TERMINAL_METRIC_VECTOR_COMPLETENESS":
-        from rawlsing_next.fiabc_live_terminal_control import seal_live_cell_terminal
         freeze=os.environ.get(FROZEN_UPSTREAM_ENV)
         if not freeze:
             raise StageStateError("T5 cell terminal lacks T3 freeze receipt")
-        measured_payload["t5_cell_terminal"]=seal_live_cell_terminal(
-            stage=stage,roots=roots,work_root=ledger.work_root,freeze_path=Path(freeze),
-            backend_receipt=measured_payload,
+        try:
+            measured_payload["t5_cell_terminal"]=seal_live_cell_terminal(
+                stage=stage,roots=roots,work_root=ledger.work_root,freeze_path=Path(freeze),
+                backend_receipt=measured_payload,
+            )
+        except LiveTerminalControlError as exc:
+            effective_terminal="CANDIDATE_LOCAL_FAILURE"
+            post_failure={
+                "kind":"CANDIDATE_LOCAL_CORRECTNESS_FAILURE",
+                "blocking_scope":"CANDIDATE_ONLY",
+                "detail":{"phase":"T5_S16_CELL_TERMINAL_QUALIFICATION","error":str(exc)},
+            }
+            measured_payload["t5_cell_terminal_failure"]=dict(post_failure["detail"])
+
+    output_artifacts=dict(result.output_artifacts)
+    if post_failure is not None:
+        rels, paths = _postbackend_failure_evidence(
+            ledger=ledger,
+            stage=stage,
+            original_terminal_disposition=result.terminal_disposition,
+            effective_terminal_disposition=effective_terminal,
+            kind=post_failure["kind"],
+            blocking_scope=post_failure["blocking_scope"],
+            detail=post_failure["detail"],
         )
-    receipt=_write_receipt(roots,stage,{"schema":"RAWLSING_EE_P2X_DARWIN_STAGE_RECEIPT_ENVELOPE@1.0.0","stage":stage.address,"backend_contract":BACKEND_CONTRACT,"terminal_disposition":result.terminal_disposition,"input_identity_hash":ih,"measured_payload":measured_payload})
-    arts=_artifact_hashes(ledger.work_root,ledger.repo_root,result.output_artifacts)
-    disp,nxt={"PASS":("PASS",stage.next_stage_on_pass),"CANDIDATE_LOCAL_FAILURE":("CANDIDATE_LOCAL_FAILURE",stage.next_stage_on_candidate_local_failure),"COMMON_SOURCE_BLOCKER":("BLOCKED_BY_COMMON_SOURCE_AUTHORITY","__COMMON_SOURCE_BLOCKER__"),"COMMON_COURT_BLOCKER":("BLOCKED_BY_COMMON_COURT_AUTHORITY","__COMMON_COURT_BLOCKER__")}[result.terminal_disposition]
+        existing_evidence=measured_payload.get("evidence_artifacts",{})
+        if not isinstance(existing_evidence,Mapping):
+            raise StageStateError("backend evidence_artifacts must remain a mapping")
+        if set(rels) & set(existing_evidence):
+            raise StageStateError("post-backend failure evidence role collides with backend output")
+        measured_payload["evidence_artifacts"]={**dict(existing_evidence),**rels}
+        measured_payload["postbackend_failure_adjudication"]={
+            "kind":post_failure["kind"],
+            "blocking_scope":post_failure["blocking_scope"],
+            "backend_terminal_disposition":result.terminal_disposition,
+            "effective_terminal_disposition":effective_terminal,
+        }
+        output_artifacts.update(paths)
+
+    receipt=_write_receipt(roots,stage,{"schema":"RAWLSING_EE_P2X_DARWIN_STAGE_RECEIPT_ENVELOPE@1.0.0","stage":stage.address,"backend_contract":BACKEND_CONTRACT,"terminal_disposition":effective_terminal,"input_identity_hash":ih,"measured_payload":measured_payload})
+    arts=_artifact_hashes(ledger.work_root,ledger.repo_root,output_artifacts)
+    disp,nxt={"PASS":("PASS",stage.next_stage_on_pass),"CANDIDATE_LOCAL_FAILURE":("CANDIDATE_LOCAL_FAILURE",stage.next_stage_on_candidate_local_failure),"COMMON_SOURCE_BLOCKER":("BLOCKED_BY_COMMON_SOURCE_AUTHORITY","__COMMON_SOURCE_BLOCKER__"),"COMMON_COURT_BLOCKER":("BLOCKED_BY_COMMON_COURT_AUTHORITY","__COMMON_COURT_BLOCKER__")}[effective_terminal]
     ledger.complete(stage,input_identity_hash=ih,terminal_disposition=disp,receipt_path=receipt,output_artifact_hashes=arts,verifier_complete=True,next_stage=nxt); return nxt,_sha256_file(receipt),disp
+
+
+def _stop_backend_after_posthook_nonpass(backend,stage,backend_terminal,ledger_disposition):
+    if backend_terminal!="PASS" or ledger_disposition=="PASS":
+        return None
+    stop=getattr(backend,"stop_after_outer_nonpass",None)
+    if not callable(stop):
+        raise StageExecutionError(
+            "outer typed non-PASS cannot leave a retained candidate process without a stop hook"
+        )
+    stopped=stop(
+        stage,
+        reason=f"OUTER_TYPED_NONPASS::{stage.address}::{ledger_disposition}",
+    )
+    if stage.stage_id=="S05_I05_LEARNED_PRODUCTION" and stopped is None:
+        raise StageExecutionError(
+            "S05 outer non-PASS expected a retained same-cell candidate process to stop"
+        )
+    return stopped
+
 def _final_ready(machine,ledger):
     common=[]
     for cell in machine.document["cells"]:
