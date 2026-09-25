@@ -1,0 +1,270 @@
+{
+  "schema": "RAWLSING_EE_P2X_DARWIN_DRIVER_SUCCESSOR_BINDING@1.0.0",
+  "authority_class": "CACHE_NEUTRAL_SUCCESSOR_IMPLEMENTATION_BINDING__NON_OPERATIVE_UNTIL_HQ_PROMOTION",
+  "purpose": "Bind the repaired T5 driver and cache-neutral joined/split physical epoch to exact protected runtime blobs while preserving historical 10B unchanged.",
+  "hq_authority": {
+    "successor_branch": "agent/rabochii-fiabc-cache-neutral-joined-successor-r1",
+    "commission_commit": "79b10777df2c8733edee56f6a18d880b3c664779",
+    "t5_qualified_base": "41eea54d7610a47f1adc342c6caacaf11324a40c",
+    "historical_protected_execution_head": "3d8f2ad62600b6777dcb23a28404a067502e77a0",
+    "historical_10b_path": "WORKER_RETURNS/EE-P2X/10B_DARWIN_DRIVER_RECEIPT_BINDING.json",
+    "historical_10b_git_blob_sha1": "24311d54ca92a3255dcbbf05e7bc2b8d3ef19cb0",
+    "promotion_required": true
+  },
+  "continuation_map": {
+    "path": "WORKER_RETURNS/EE-P2X-CONTINUATION-REDUCER-R1/01_CONTINUATION_STATE_MACHINE.json",
+    "schema": "RAWLSING_EE_P2X_CONTINUATION_STATE_MACHINE@1.0.0",
+    "git_blob_sha1": "e06e95dd370a4fd44235932088308c3372522ed4",
+    "sha256": "ffe7d40e5f2051f839a3a646fd434fbee3b93371e7571d959805ca7ca74e0422",
+    "first_unfinished_stage": "LITS_I/A/S02_C11_REACHABILITY",
+    "final_stage": "COURT/S17_FINAL_COMPLETENESS_AND_VERIFICATION"
+  },
+  "driver": {
+    "path": "rawlsing_next/ee_p2x_darwin_court_driver.py",
+    "git_blob_sha1": "70bf233492b543d3d728cedfdda36218504ef3d4",
+    "ledger_schema": "RAWLSING_EE_P2X_DARWIN_STAGE_LEDGER@1.0.0",
+    "backend_contract": "RAWLSING_EE_P2X_DARWIN_STAGE_BACKEND@1.0.0",
+    "supervisor_token_schema": "RAWLSING_EE_P2X_LOCAL_SUPERVISOR_ACTION@1.0.0",
+    "cli_modes": [
+      "--preflight",
+      "--status",
+      "--run",
+      "--resume",
+      "--verify-only"
+    ],
+    "cli_output_schemas": {
+      "--preflight": "RAWLSING_EE_P2X_DARWIN_PREFLIGHT@1.0.0",
+      "--status": "RAWLSING_EE_P2X_DARWIN_DRIVER_STATUS@1.0.0",
+      "--run": "RAWLSING_EE_P2X_DARWIN_DRIVER_RUN@1.0.0",
+      "--resume": "RAWLSING_EE_P2X_DARWIN_DRIVER_RUN@1.0.0",
+      "--verify-only": "RAWLSING_EE_P2X_DARWIN_LEDGER_VERIFICATION@1.0.0"
+    },
+    "terminal_ledger_dispositions": [
+      "PASS",
+      "PRESERVED",
+      "SKIPPED_BY_FROZEN_LAW",
+      "CANDIDATE_LOCAL_FAILURE",
+      "BLOCKED_BY_COMMON_SOURCE_AUTHORITY",
+      "BLOCKED_BY_COMMON_COURT_AUTHORITY"
+    ],
+    "stage_receipt_schemas": {
+      "backend_envelope": "RAWLSING_EE_P2X_DARWIN_STAGE_RECEIPT_ENVELOPE@1.0.0",
+      "preserved_stage": "RAWLSING_EE_P2X_PRESERVED_STAGE_BINDING@1.0.0",
+      "frozen_skip": "RAWLSING_EE_P2X_FROZEN_LAW_SKIP@1.0.0",
+      "preserved_candidate_failure": "RAWLSING_EE_P2X_PRESERVED_CANDIDATE_LOCAL_FAILURE@1.0.0",
+      "candidate_stop_propagation": "RAWLSING_EE_P2X_CANDIDATE_LOCAL_STOP_PROPAGATION@1.0.0",
+      "common_source_stop_propagation": "RAWLSING_EE_P2X_COMMON_SOURCE_BLOCK_PROPAGATION@1.0.0"
+    },
+    "backend_to_ledger_disposition": {
+      "PASS": "PASS",
+      "CANDIDATE_LOCAL_FAILURE": "CANDIDATE_LOCAL_FAILURE",
+      "COMMON_SOURCE_BLOCKER": "BLOCKED_BY_COMMON_SOURCE_AUTHORITY",
+      "COMMON_COURT_BLOCKER": "BLOCKED_BY_COMMON_COURT_AUTHORITY"
+    }
+  },
+  "normalized_packet": {
+    "frozen_expectations": "WORKER_RETURNS/EE-P2X/09_LOCAL_COURT_FROZEN_EXPECTATIONS.json",
+    "receipt_contract": "WORKER_RETURNS/EE-P2X/10_LOCAL_COURT_RECEIPT_CONTRACT.json",
+    "manifest_contract": "WORKER_RETURNS/EE-P2X/10A_COURT_RUN_MANIFEST_CONTRACT.json",
+    "seed_script": "WORKER_RETURNS/EE-P2X/11_seed_ee_p2x_local_receipts.py",
+    "legacy_normalized_verifier": "WORKER_RETURNS/EE-P2X/12_verify_ee_p2x_local_court.py",
+    "wvs_c_preserved_failure": "WORKER_RETURNS/EE-P2X/13_WVS7_C_PRESERVED_PORTABILITY_FAILURE.json",
+    "driver_bound_verifier": "WORKER_RETURNS/EE-P2X/12A_verify_ee_p2x_driver_bound_local_court.py",
+    "driver_manifest_sync": "WORKER_RETURNS/EE-P2X/11A_sync_ee_p2x_driver_manifest.py"
+  },
+  "ledger_entry_required_fields": [
+    "stage_id",
+    "source",
+    "candidate",
+    "input_identity_hash",
+    "state",
+    "output_artifact_hashes",
+    "receipt_path",
+    "receipt_hash",
+    "verifier_completion",
+    "terminal_disposition",
+    "next_stage"
+  ],
+  "backend_measured_payload_bridge": {
+    "field": "evidence_artifacts",
+    "shape": "mapping from normalized evidence role to repository-relative path",
+    "allowed_roles": [
+      "cell_receipt",
+      "failure_receipt",
+      "learned_receipt",
+      "deletion_receipt",
+      "persistence_receipt"
+    ],
+    "binding_law": "Every declared repository-relative evidence artifact must also appear in the same terminal ledger entry output_artifact_hashes as repo:<path> with exact SHA-256.",
+    "required_roles": {
+      "S05_I05_LEARNED_PRODUCTION__PASS": [
+        "learned_receipt"
+      ],
+      "S09_DELETION_REGEN_OR_A_PERSISTENCE__PASS__A": [
+        "persistence_receipt"
+      ],
+      "S09_DELETION_REGEN_OR_A_PERSISTENCE__PASS__B_OR_C": [
+        "deletion_receipt"
+      ],
+      "S16_TERMINAL_METRIC_VECTOR_COMPLETENESS__PASS": [
+        "cell_receipt"
+      ],
+      "ANY_BACKEND_TERMINAL_FAILURE": [
+        "cell_receipt",
+        "failure_receipt"
+      ]
+    }
+  },
+  "driver_specific_failure_extension": {
+    "kind": "COMMON_COURT_AUTHORITY_FAILURE",
+    "driver_backend_disposition": "COMMON_COURT_BLOCKER",
+    "ledger_disposition": "BLOCKED_BY_COMMON_COURT_AUTHORITY",
+    "normalized_blocking_scope": "COURT_UNTIL_RESUME",
+    "law": "The driver-bound verifier returns the normalized failure receipt disposition directly and does not force this driver-only court-wide authority blocker through the older normalized verifier vocabulary."
+  },
+  "supervisor_tokens": {
+    "capture_directory": "WORKER_RETURNS/EE-P2X/LOCAL_COURT/supervisor_tokens",
+    "file_rule": "replace '/' in stage address with '__' and append '.json'",
+    "required_for": "every actually executed backend-envelope stage whose reducer tuple has physical_host_measurement_required=true",
+    "required_fields": [
+      "schema",
+      "action",
+      "stage_id",
+      "terminal_receipt_sha256",
+      "ledger_sha256",
+      "p2x_branch",
+      "observed_branch_head"
+    ],
+    "action": "COMMIT_AND_PUSH_EXISTING_P2X_BRANCH_BOUNDED_STAGE_EVIDENCE",
+    "historical_ledger_hash_law": "ledger_sha256 is the exact point-in-time post-stage ledger hash emitted by the driver; it is not replaced by the final ledger hash."
+  },
+  "preservation_laws": [
+    "DONE__PRESERVE is never accepted with a backend execution envelope.",
+    "SKIP__NOT_APPLICABLE_BY_FROZEN_LAW is never accepted with a backend execution envelope.",
+    "LiTS-A qualifying first build and LiTS-B standalone cacheless C11 remain repetition-forbidden.",
+    "WVS7/C S01 is accepted only as the driver's preserved candidate-local portability failure and all later WVS7/C stages remain mechanical frozen-law skips.",
+    "Candidate-local/common-source propagation receipts are non-execution terminalization and must point backward to an actual typed blocker stage.",
+    "No source/candidate result is inferred from absence of a receipt."
+  ],
+  "final_verification_law": {
+    "precondition": "All S00-S16 reducer stages must be terminal and hash-revalidated by the driver-bound verifier.",
+    "common_court_short_circuit": "If a backend envelope terminalizes as COMMON_COURT_BLOCKER, return the exact normalized failure disposition after validating its driver binding; do not manufacture later-cell evidence.",
+    "normalized_verification": "Otherwise synchronize the normalized court manifest from driver evidence bindings, then run the existing normalized verifier unchanged.",
+    "post_run": "After driver run/resume returns, execute driver --verify-only and retain its exact PASS output alongside normalized final verification.",
+    "pass_terminal": "PASS__FINAL_TWO_SOURCE_P2_EVIDENCE_COMPLETE"
+  },
+  "scope": {
+    "empirical_carrier_access": false,
+    "library_carrier_access": false,
+    "measured_execution": false,
+    "surrogate_performance": false,
+    "prepopulated_measurements": false,
+    "lock_mutation": false,
+    "ranking_or_selection": false
+  },
+  "common_scope_normalization": {
+    "common_source": {
+      "backend_disposition": "COMMON_SOURCE_BLOCKER",
+      "permitted_failure_kinds": [
+        "COMMON_SOURCE_AUTHORITY_FAILURE",
+        "PARITY_ORACLE_FAILURE"
+      ],
+      "blocking_scope": "SOURCE_ONLY",
+      "candidate": null,
+      "law": "A common-source failure receipt is candidate-neutral so the same exact receipt may lawfully cover later unattempted candidates on that source; later sources remain eligible."
+    },
+    "common_court": {
+      "backend_disposition": "COMMON_COURT_BLOCKER",
+      "permitted_failure_kinds": [
+        "COMMON_COURT_AUTHORITY_FAILURE"
+      ],
+      "blocking_scope": "COURT_UNTIL_RESUME",
+      "candidate": null,
+      "law": "A common-court authority failure is candidate-neutral and terminates the court until resume; the driver-bound verifier short-circuits before the legacy normalized verifier."
+    }
+  },
+  "six_cell_execution_manifest": {
+    "path": "WORKER_RETURNS/FIABC-T2/01_SIX_CELL_EXECUTION_MANIFEST.json",
+    "schema": "RAWLSING_FIABC_CURRENT_SIX_CELL_EXECUTION_MANIFEST@1.0.0",
+    "git_blob_sha1": "49692c1c8527680c97af073039b36125edd7e56d",
+    "source_order": [
+      "LITS_I",
+      "WVS7"
+    ],
+    "candidate_order": [
+      "A",
+      "B",
+      "C"
+    ],
+    "no_cross_source_metric_pooling": true
+  },
+  "physical_epoch": {
+    "path": "WORKER_RETURNS/FIABC-CACHE-NEUTRAL-JOINED-SUCCESSOR-R1/01_CACHE_NEUTRAL_PHYSICAL_EPOCH.json",
+    "schema": "RAWLSING_FIABC_CACHE_NEUTRAL_PHYSICAL_EPOCH@1.0.0",
+    "git_blob_sha1": "0efd83e7c85d37408ab4361d2a9db5406debcbd6",
+    "receipt_identity": "fc6afc9bc7b287f8fd0654e1da546faee7e6c85491e6735ebe4a161b0db3de35",
+    "joined_and_split_same_epoch_required": true
+  },
+  "successor_surfaces": {
+    "process_envelope": {
+      "path": "rawlsing_next/ee_p2x_candidate_process_envelope.py",
+      "git_blob_sha1": "8ce84e7685fc11901dcc50f0f8df609a84aadbf8",
+      "cache_attestation_schema": "RAWLSING_FIABC_P2X_CACHE_NEUTRAL_ATTESTATION@1.0.0"
+    },
+    "process_isolated_backend": {
+      "path": "rawlsing_next/ee_p2x_process_isolated_backend.py",
+      "git_blob_sha1": "6afd66d1234dd59c6eee97c9538b78bee9fcfd28"
+    },
+    "stage_backend": {
+      "path": "rawlsing_next/ee_p2x_darwin_stage_backend.py",
+      "git_blob_sha1": "97ee2cd993da1ff94dede48a4ab30e7f5524c375"
+    },
+    "t5_terminal_control": {
+      "path": "rawlsing_next/fiabc_live_terminal_control.py",
+      "git_blob_sha1": "e67f0c18bc52f81f2e0924799aa54745a53306a9"
+    },
+    "joined_launcher": {
+      "path": "HQ_HANDOFF/launchers/RUN_DISPOSITIVE_FIABC_SIX_CELL.sh",
+      "git_blob_sha1": "e84c575919eea9de591eb5c8b60ad80382537ef5"
+    },
+    "worker_e_cache_control": {
+      "path": "HQ_HANDOFF/launchers/FIABC_PYTHON_CACHE_NEUTRALITY_SUCCESSOR.py",
+      "git_blob_sha1": "0822b4e185fee4022a9a6920216fda423aa26a28",
+      "ported_without_change": true
+    }
+  },
+  "implementation_binding_scheme": {
+    "schema": "RAWLSING_FIABC_NON_CIRCULAR_EXACT_BLOB_SET@1.0.0",
+    "law": "A checkout is the cache-neutral joined successor implementation iff it descends from the commission commit and every bound implementation path has the exact git blob recorded here. Documentation-only descendants are permitted; the binding does not self-pin its own blob or commit.",
+    "ancestor_required": "79b10777df2c8733edee56f6a18d880b3c664779",
+    "exact_blob_paths": [
+      "rawlsing_next/ee_p2x_darwin_court_driver.py",
+      "rawlsing_next/ee_p2x_candidate_process_envelope.py",
+      "rawlsing_next/ee_p2x_process_isolated_backend.py",
+      "rawlsing_next/ee_p2x_darwin_stage_backend.py",
+      "rawlsing_next/fiabc_live_terminal_control.py",
+      "HQ_HANDOFF/launchers/RUN_DISPOSITIVE_FIABC_SIX_CELL.sh",
+      "HQ_HANDOFF/launchers/FIABC_PYTHON_CACHE_NEUTRALITY_SUCCESSOR.py"
+    ]
+  },
+  "terminal_vocabulary": {
+    "pass_status": "COURT_SEQUENCE_COMPLETE__S17_VERIFIED",
+    "candidate_local_nonpass": "COURT_SEQUENCE_COMPLETE__CANDIDATE_LOCAL_FAILURES_RECORDED__S17_SUCCESS_VERIFIER_NOT_RUN",
+    "common_source_nonpass": "COURT_SEQUENCE_COMPLETE__COMMON_SOURCE_BLOCKERS_RECORDED__S17_SUCCESS_VERIFIER_NOT_RUN",
+    "success_verifier_must_not_run_after_any_nonpass": true
+  },
+  "cache_neutrality_law": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONPYCACHEPREFIX": "$WORK_ROOT/court/_python_cache_neutral_prefix",
+    "RAWLSING_EE_P2X_CACHE_NEUTRAL_SUCCESSOR": "1",
+    "redirected_prefix_zero_descendants_required_at": [
+      "before_measured_entry",
+      "every_cell_start",
+      "every_cell_stop",
+      "after_s15_fresh_replay",
+      "final_measured_exit"
+    ],
+    "ordinary_source_tree_pycache_participation": false,
+    "cache_deletion_as_parity_strategy": false
+  }
+}
