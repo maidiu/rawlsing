@@ -1,0 +1,74 @@
+{
+  "schema": "RAWLSING_FIABC_SPLIT_R2_B_PRELAUNCH_PAIR_COMPATIBILITY@1.0.0",
+  "status": "IMPLEMENTED__SOURCE_FREE__NO_MEASUREMENT",
+  "machine_readiness": {
+    "schema": "RAWLSING_FIABC_SPLIT_R2_MACHINE_READINESS@1.0.0",
+    "generated_before_source_path_is_required": true,
+    "source_bytes_opened": 0,
+    "source_hash_passes": 0,
+    "decoder_calls": 0,
+    "candidate_process_launches": 0,
+    "exact_fields": [
+      "assigned source",
+      "canonical source SHA identity",
+      "fresh exact WORK_ROOT path",
+      "protected branch/head",
+      "qualified split-control head",
+      "launcher SHA-256",
+      "source-local driver SHA-256",
+      "workroot-gate helper SHA-256",
+      "runtime tuple",
+      "hardware model",
+      "CPU brand",
+      "hw.memsize physical memory",
+      "architecture",
+      "macOS version"
+    ]
+  },
+  "runtime_gate": {
+    "mode": "COMBINED_IMPORT_AND_METADATA",
+    "exact": {
+      "implementation": "CPython",
+      "python": "3.11.3",
+      "pyreadstat": "1.3.6",
+      "pyarrow": "25.0.1",
+      "pandas": "2.3.1",
+      "numpy": "2.3.2",
+      "system": "Darwin",
+      "machine": "x86_64"
+    },
+    "imports_in_one_interpreter": [
+      "pyreadstat",
+      "pyarrow",
+      "pandas",
+      "numpy"
+    ],
+    "metadata_only_is_insufficient": true
+  },
+  "pair_gate": {
+    "schema": "RAWLSING_FIABC_SPLIT_R2_PAIR_COMPATIBILITY@1.0.0",
+    "exact_match_required": [
+      "runtime",
+      "protected execution identity",
+      "qualified control implementation bytes",
+      "hardware model",
+      "CPU brand",
+      "physical memory",
+      "architecture"
+    ],
+    "source_assignments": [
+      "LITS_I",
+      "WVS7"
+    ],
+    "macos_version": "RECORDED_SEPARATELY_UNDER_EXISTING_HOST_NESTED_WITHIN_SOURCE_LAW",
+    "absolute_cross_source_physical_metric_comparison_authorized": false,
+    "measured_launcher_rebind": "Each host revalidates its signed readiness receipt, pair membership, exact current WORK_ROOT, control bytes, runtime and hardware before the first source SHA pass."
+  },
+  "hostile_fixture": {
+    "combined_import_failure": "metadata can report pinned versions while synthetic pyarrow import raises; gate must block",
+    "hardware_pair_failure": "physical memory mismatch must block",
+    "macos_difference": "recorded without upgrading to absolute cross-source physical comparability",
+    "tests_path": "rawlsing_next/tests/test_fiabc_split_r2_b_workroot_gates.py",
+    "executed_in_this_lane": false
+  }
+}
