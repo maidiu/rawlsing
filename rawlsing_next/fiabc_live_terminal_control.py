@@ -41,6 +41,7 @@ from rawlsing_next.pre553_independent_parity_oracle import (
     WVS7_ORDERED_CANDIDATE_HASHES,
     WVS7_RISK_SET,
     WVS7_SOURCE_SHA256,
+    OracleMismatchError,
     validate_candidate_observation,
     validate_three_way_parity,
     verify_frozen_oracle,
@@ -53,6 +54,8 @@ THREE_WAY_WRAPPER_SCHEMA = "RAWLSING_FIABC_T5_LIVE_THREE_WAY_ORACLE_MATCH@1.0.0"
 PREFLIGHT_RECEIPT_SCHEMA = "RAWLSING_FIABC_T5_LIVE_SUCCESSION_PREFLIGHT@1.0.0"
 CELL_TERMINAL_SCHEMA = "RAWLSING_FIABC_T5_LIVE_CELL_TERMINAL@1.0.0"
 FINAL_COMPOSITION_SCHEMA = "RAWLSING_FIABC_T5_LIVE_FINAL_COMPOSITION@1.0.0"
+POST_I05_NONPASS_SCHEMA = "RAWLSING_FIABC_T5_POST_I05_NONPASS@1.0.0"
+FINAL_NONPASS_SCHEMA = "RAWLSING_FIABC_T5_LIVE_FINAL_NONPASS@1.0.0"
 CLAIM_SCOPE = "P2X_LITS_I_WVS7_RAW_SOURCE_LOCAL_WORKLOAD__CLAIM_SCOPED_ONLY"
 
 EXPECTED_SOURCES = ("LITS_I", "WVS7")
@@ -835,6 +838,56 @@ def _cell_receipts_root(work_root: Path, source: str, candidate: str) -> Path:
     return Path(work_root) / "cells" / source / candidate / "receipts"
 
 
+def _post_i05_nonpass(
+    *,
+    stage: Any,
+    work_root: Path,
+    terminal_disposition: str,
+    kind: str,
+    blocking_scope: str,
+    detail: Mapping[str, Any],
+    own_oracle_match_retained: bool,
+) -> Mapping[str, Any]:
+    if terminal_disposition not in {"CANDIDATE_LOCAL_FAILURE", "COMMON_SOURCE_BLOCKER"}:
+        raise LiveTerminalControlError("unsupported post-I05 non-PASS disposition")
+    if blocking_scope not in {"CANDIDATE_ONLY", "SOURCE_ONLY"}:
+        raise LiveTerminalControlError("unsupported post-I05 blocking scope")
+    candidate = stage.candidate if blocking_scope == "CANDIDATE_ONLY" else None
+    body = {
+        "schema": POST_I05_NONPASS_SCHEMA,
+        "status": "NON_PASS",
+        "source": stage.source,
+        "candidate": candidate,
+        "stage": stage.address,
+        "terminal_disposition": terminal_disposition,
+        "kind": kind,
+        "blocking_scope": blocking_scope,
+        "own_oracle_match_retained": own_oracle_match_retained,
+        "three_way_parity_claimed": False,
+        "missing_observation_synthesized": False,
+        "detail": canonicalize(detail),
+    }
+    body["receipt_identity"] = _hash(body)
+    path = (
+        Path(work_root)
+        / "court"
+        / "t5_oracle"
+        / f"{stage.source}__{stage.candidate}__S05_NONPASS.json"
+    )
+    _atomic(path, body)
+    return {
+        "status": "NON_PASS",
+        "terminal_disposition": terminal_disposition,
+        "kind": kind,
+        "blocking_scope": blocking_scope,
+        "detail": canonicalize(detail),
+        "adjudication_path": str(path),
+        "adjudication_identity": body["receipt_identity"],
+        "own_oracle_match_retained": own_oracle_match_retained,
+        "three_way_receipt_identity": None,
+    }
+
+
 def admit_post_i05_oracle_match(
     *,
     stage: Any,
@@ -847,19 +900,48 @@ def admit_post_i05_oracle_match(
         raise LiveTerminalControlError("oracle match is only lawful after I05")
     payload = backend_receipt.get("stage_payload")
     if not isinstance(payload, Mapping):
-        raise LiveTerminalControlError("S05 backend receipt lacks payload")
+        return _post_i05_nonpass(
+            stage=stage,
+            work_root=work_root,
+            terminal_disposition="CANDIDATE_LOCAL_FAILURE",
+            kind="PARITY_ORACLE_FAILURE",
+            blocking_scope="CANDIDATE_ONLY",
+            detail={"reason": "S05_BACKEND_RECEIPT_LACKS_STAGE_PAYLOAD"},
+            own_oracle_match_retained=False,
+        )
     observation = payload.get("t5_candidate_observation")
     if (
         not isinstance(observation, Mapping)
         or observation.get("schema") != OBSERVATION_SCHEMA
+        or observation.get("candidate") != stage.candidate
     ):
-        raise LiveTerminalControlError("complete candidate observation absent after I05")
-    if observation.get("candidate") != stage.candidate:
-        raise LiveTerminalControlError("candidate observation identity drift")
+        return _post_i05_nonpass(
+            stage=stage,
+            work_root=work_root,
+            terminal_disposition="CANDIDATE_LOCAL_FAILURE",
+            kind="PARITY_ORACLE_FAILURE",
+            blocking_scope="CANDIDATE_ONLY",
+            detail={"reason": "COMPLETE_CANDIDATE_OBSERVATION_ABSENT_OR_IDENTITY_DRIFT"},
+            own_oracle_match_retained=False,
+        )
     oracle, _freeze, _freeze_sha = load_frozen_source_oracle(
         freeze_path=freeze_path, source=stage.source, work_root=work_root
     )
-    accepted = validate_candidate_observation(oracle, observation)
+    try:
+        accepted = validate_candidate_observation(oracle, observation)
+    except OracleMismatchError as exc:
+        return _post_i05_nonpass(
+            stage=stage,
+            work_root=work_root,
+            terminal_disposition="CANDIDATE_LOCAL_FAILURE",
+            kind="PARITY_ORACLE_FAILURE",
+            blocking_scope="CANDIDATE_ONLY",
+            detail={
+                "reason": "INDEPENDENT_ORACLE_MISMATCH",
+                "error": str(exc),
+            },
+            own_oracle_match_retained=False,
+        )
     wrapper = {
         "schema": MATCH_WRAPPER_SCHEMA,
         "status": "PASS",
@@ -880,18 +962,59 @@ def admit_post_i05_oracle_match(
     three_way = None
     if stage.candidate == "C":
         observations = {}
+        missing = []
+        malformed = []
         for candidate in EXPECTED_CANDIDATES:
             p = (
                 _cell_receipts_root(work_root, stage.source, candidate)
                 / "fiabc_t5_candidate_observation.json"
             )
-            row = _load(p)
+            if not p.is_file():
+                missing.append(candidate)
+                continue
+            try:
+                row = _load(p)
+            except LiveTerminalControlError as exc:
+                malformed.append({"candidate": candidate, "error": str(exc)})
+                continue
             if row.get("candidate") != candidate:
-                raise LiveTerminalControlError(
-                    "three-way gate encountered candidate substitution"
-                )
+                malformed.append({
+                    "candidate": candidate,
+                    "error": "THREE_WAY_CANDIDATE_SUBSTITUTION",
+                })
+                continue
             observations[candidate] = row
-        accepted_three = validate_three_way_parity(oracle, observations)
+        if missing or malformed:
+            return _post_i05_nonpass(
+                stage=stage,
+                work_root=work_root,
+                terminal_disposition="COMMON_SOURCE_BLOCKER",
+                kind="PARITY_ORACLE_FAILURE",
+                blocking_scope="SOURCE_ONLY",
+                detail={
+                    "reason": "THREE_WAY_GATE_REQUIRES_THREE_ACTUAL_PASSING_OBSERVATIONS",
+                    "missing_candidates": sorted(missing),
+                    "malformed_candidates": malformed,
+                    "available_candidates": sorted(observations),
+                },
+                own_oracle_match_retained=True,
+            )
+        try:
+            accepted_three = validate_three_way_parity(oracle, observations)
+        except OracleMismatchError as exc:
+            return _post_i05_nonpass(
+                stage=stage,
+                work_root=work_root,
+                terminal_disposition="COMMON_SOURCE_BLOCKER",
+                kind="PARITY_ORACLE_FAILURE",
+                blocking_scope="SOURCE_ONLY",
+                detail={
+                    "reason": "THREE_WAY_PARITY_REJECTED",
+                    "error": str(exc),
+                    "available_candidates": sorted(observations),
+                },
+                own_oracle_match_retained=True,
+            )
         three_way = {
             "schema": THREE_WAY_WRAPPER_SCHEMA,
             "status": "PASS",
