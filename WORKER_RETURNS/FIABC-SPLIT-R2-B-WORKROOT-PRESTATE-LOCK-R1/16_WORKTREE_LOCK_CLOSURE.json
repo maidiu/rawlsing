@@ -1,0 +1,35 @@
+{
+  "schema": "RAWLSING_FIABC_SPLIT_R2_B_WORKTREE_LOCK_CLOSURE@1.0.0",
+  "status": "IMPLEMENTED__SOURCE_FREE__HOSTILE_TEST_BANKED_UNEXECUTED",
+  "defect": {
+    "prior_law": "repo_root/.git only when .git is a directory, else WORK_ROOT",
+    "failure": "In a linked Git worktree .git is a file. Distinct external work roots therefore obtained distinct locks while sharing one protected checkout and repo-local evidence surface."
+  },
+  "repair": {
+    "helper": "HQ_HANDOFF/launchers/FIABC_SPLIT_R2_WORKROOT_GATES.py",
+    "function": "worktree_lock_root",
+    "command": "git rev-parse --path-format=absolute --git-dir",
+    "fallback": "resolve git rev-parse --git-dir relative to protected worktree",
+    "driver_binding": "FIABC_SOURCE_LOCAL_SPLIT_DRIVER.py passes that exact worktree-admin directory to protected DriverInstanceLock",
+    "work_root_independent": true,
+    "protected_backend_modified": false
+  },
+  "semantics": [
+    "Two source-local runners with different WORK_ROOT values but the same protected Git worktree resolve the same worktree administrative directory and therefore the same .ee_p2x_darwin_driver.lock.",
+    "Independent protected checkouts/worktrees resolve distinct administrative directories and remain independently lockable.",
+    "The lock continues to use the protected driver's existing fcntl nonblocking exclusive-lock implementation."
+  ],
+  "hostile_fixture": {
+    "test": "test_linked_worktree_lock_identity_is_checkout_scoped_not_workroot_scoped",
+    "path": "rawlsing_next/tests/test_fiabc_split_r2_b_workroot_gates.py",
+    "assertions": [
+      "create a real temporary linked Git worktree",
+      "derive lock root from linked worktree",
+      "hold first protected DriverInstanceLock",
+      "second lock acquisition against the same worktree identity must raise RuntimeGateError",
+      "after first release the lock can be acquired again"
+    ],
+    "executed_in_this_worker_lane": false,
+    "reason": "No branch CI/test runner is attached to this worker branch; commission forbids using the user's Mac."
+  }
+}
