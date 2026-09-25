@@ -515,6 +515,19 @@ def provision_joined_prestate(
         "candidate_neutral_c0_only": True,
         "candidate_owned_semantic_state_prebuilt": False,
         "candidate_owned_carrier_state_prebuilt": False,
+        "joined_import_cache_state": (
+            "BLOCKED__JOINED_LITS_GENERATED_PYTHON_BYTECODE_CACHE_NOT_REPRODUCED"
+            if source == "WVS7"
+            else "NOT_APPLICABLE__LITS_IS_FIRST_JOINED_SOURCE"
+        ),
+        "joined_import_cache_reason": (
+            "Joined LiTS candidate processes can populate Python bytecode caches for "
+            "R5 support, exact-owner, and protected dependency modules before WVS/A. "
+            "Those caches are software prestate and imports occur inside measured WVS "
+            "S01 build_or_open_wall_ns. Source-byte preprovisioning alone is insufficient."
+            if source == "WVS7"
+            else None
+        ),
         "forbidden_roots_absent": {
             name: not (work_root / name).exists() for name in FORBIDDEN_PREPROVISION_ROOTS
         },
@@ -557,6 +570,12 @@ def verify_joined_prestate(
     for name in FORBIDDEN_PREPROVISION_ROOTS:
         if (work_root / name).exists():
             raise SplitR2GateError(f"forbidden prebuilt state appeared: {name}")
+    if source == "WVS7" and doc.get("joined_import_cache_state") != "EXACTLY_REPRODUCED":
+        raise SplitR2GateError(
+            "WVS joined-court software prestate remains unclosed: LiTS-generated Python "
+            "bytecode/import caches can change measured WVS S01 build_or_open cost; "
+            "source-byte preprovisioning does not reproduce that state"
+        )
     return doc
 
 
