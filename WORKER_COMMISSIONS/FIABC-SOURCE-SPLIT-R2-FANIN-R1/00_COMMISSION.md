@@ -81,3 +81,14 @@ Otherwise:
 `BLOCKED__FIABC_SOURCE_SPLIT_R2_FANIN`
 
 No measured execution.
+
+
+# MANDATORY SUCCESSOR ADDENDUM
+
+Before integration, read and execute in full:
+
+`WORKER_COMMISSIONS/FIABC-SOURCE-SPLIT-R2-FANIN-R1/01_CACHE_NEUTRAL_SUCCESSOR_ADOPTION_ADDENDUM.md`
+
+It is cumulative and supersedes earlier references to protected head `3d8f2ad...` for future measurement.
+
+No PASS terminal is lawful unless the addendum is fully satisfied.
