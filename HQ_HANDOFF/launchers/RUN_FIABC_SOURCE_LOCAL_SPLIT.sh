@@ -170,6 +170,7 @@ PY
   --readiness "$FIABC_MACHINE_READINESS_RECEIPT" \
   --pair "$FIABC_PAIR_COMPATIBILITY_RECEIPT" \
   --repo-root "$FIABC_REPO_ROOT" \
+  --work-root "$WORK_ROOT" \
   --control-root "$CONTROL_ROOT" \
   --qualified-control-head "$FIABC_QUALIFIED_CONTROL_HEAD" \
   --launcher "${BASH_SOURCE[0]}" \
