@@ -918,6 +918,7 @@ class ProcessIsolationController:
             candidate=candidate,
             cell_key=cell_key,
             root=root,
+            work_root=work_root,
             process=process,
             parent_start_monotonic_ns=parent_start_ns,
             start_mode=start_mode,
