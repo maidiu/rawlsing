@@ -303,7 +303,10 @@ def _make_source_root(
             "portable_sha256": _sha(binding_copy),
         },
         "terminal_control_head": terminal_control_head,
-        "terminal_control_legacy_allowed_for_packaging": False,
+        "terminal_control_legacy_allowed_for_packaging": (
+            terminal_control_head
+            != binding_summary["observed_control_checkout_head"]
+        ),
         "host": terminal["host"],
         "source_local_only": True,
         "six_cell_s17_executed": False,
