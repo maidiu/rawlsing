@@ -359,7 +359,10 @@ def _write_terminal(root: Path, source: str, *, os_version="13.2.1", memory=16 *
         "host": {
             "governed_runtime": {
                 "implementation": "CPython", "python": "3.11.3", "system": "Darwin",
-                "machine": "x86_64", "dependency_versions": {"pyreadstat": "1.3.6", "pyarrow": "25.0.1"},
+                "machine": "x86_64", "dependency_versions": {
+                    "pyreadstat": "1.3.6", "pyarrow": "25.0.1",
+                    "pandas": "2.3.1", "numpy": "2.3.2",
+                },
             },
             "hardware_model": hardware,
             "cpu_brand": "Intel(R) Core(TM) i9-9880H CPU @ 2.30GHz",
@@ -656,6 +659,27 @@ class SourceLocalSplitQualificationTests(unittest.TestCase):
         self.assertTrue(found, "driver must expose only args.source in source_paths")
         self.assertTrue(SHELL_PATH.read_text(encoding="utf-8").find('LITS_I) EXPECTED_SOURCE_SHA256=') >= 0)
         self.assertTrue(SHELL_PATH.read_text(encoding="utf-8").find('WVS7) EXPECTED_SOURCE_SHA256=') >= 0)
+
+    def test_runtime_gate_pins_pandas_numpy_and_merge_rejects_dependency_drift(self):
+        shell_source = SHELL_PATH.read_text(encoding="utf-8")
+        driver_source = DRIVER_PATH.read_text(encoding="utf-8")
+        self.assertIn('"pandas": "2.3.1"', shell_source)
+        self.assertIn('"numpy": "2.3.2"', shell_source)
+        self.assertIn('importlib.metadata.version("pandas")', driver_source)
+        self.assertIn('importlib.metadata.version("numpy")', driver_source)
+
+        with tempfile.TemporaryDirectory() as tmp:
+            lits, wvs = Path(tmp) / "lits", Path(tmp) / "wvs"
+            _write_terminal(lits, "LITS_I")
+            _write_terminal(wvs, "WVS7")
+            path = wvs / "court" / "source_local_terminal.json"
+            doc = json.loads(path.read_text(encoding="utf-8"))
+            doc["host"]["governed_runtime"]["dependency_versions"]["pandas"] = "2.3.2"
+            material = {k: v for k, v in doc.items() if k != "receipt_identity"}
+            doc["receipt_identity"] = hashlib.sha256(MERGE._canon(material)).hexdigest()
+            path.write_text(json.dumps(doc, sort_keys=True, indent=2) + "\n", encoding="utf-8")
+            with self.assertRaisesRegex(MERGE.SplitMergeError, "fingerprints differ"):
+                MERGE.merge(lits, wvs)
 
     def test_supervisor_token_matches_protected_backend_contract(self):
         text = DRIVER_PATH.read_text(encoding="utf-8")
