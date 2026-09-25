@@ -1,0 +1,61 @@
+{
+  "schema": "RAWLSING_FIABC_T5_JOINED_FAILURE_SEMANTICS_REPAIR_RETURN@1.0.0",
+  "worker": "FIABC T5 JOINED FAILURE SEMANTICS REPAIR R1",
+  "terminal": "PASS__FIABC_T5_JOINED_FAILURE_SEMANTICS_SOURCE_FREE_QUALIFIED__HQ_PROMOTION_REQUIRED",
+  "branch": "agent/rabochii-fiabc-t5-joined-failure-semantics-repair-r1",
+  "commission_commit": "56a8958b4e2ee9fa4f5096b6922ca390f69f9442",
+  "protected_base": "3d8f2ad62600b6777dcb23a28404a067502e77a0",
+  "implementation_head": "41eea54d7610a47f1adc342c6caacaf11324a40c",
+  "protected_execution_mutated": false,
+  "source_free": true,
+  "candidate_free": true,
+  "measured_p2x": false,
+  "repair_summary": [
+    "C/S05 no longer crashes when A/B has no actual same-source observation.",
+    "Own candidate oracle mismatch is a candidate-local PARITY_ORACLE_FAILURE.",
+    "C own match may be retained, but missing/malformed A/B or rejected three-way parity becomes COMMON_SOURCE_BLOCKER/PARITY_ORACLE_FAILURE/SOURCE_ONLY.",
+    "No missing observation or three-way PASS is synthesized.",
+    "Outer T4/T5 expected governed failures are terminalized through the same driver ledger/failure-evidence surface; unexpected programming exceptions remain untyped.",
+    "Backend PASS converted by outer control to non-PASS now gracefully stops any retained same-cell candidate process before propagation.",
+    "S17 success is success-only; any candidate/common failure gets explicit final non-PASS evidence with no fabricated terminal bundle.",
+    "Final source-only blockers retain SOURCE_ONLY scope instead of being escalated to a new court-wide blocker.",
+    "All-six-PASS T5 wrapper/driver transition surfaces remain semantically unchanged by source-free tests."
+  ],
+  "qualification": {
+    "dedicated_matrix_cases": 67,
+    "github_actions_run_id": 36187125580,
+    "protocol_self_tests": "20/20 PASS",
+    "executable_repair_and_adjacent_tests": "103/103 PASS",
+    "artifact_id": 10887225909,
+    "artifact_digest": "sha256:19c3b0d1529b7584288587f7a74c617339d47b0875f8956091557fe40181bcce",
+    "evidence_execution_sha": "cc8f0c83138fc515cad32083063e29d546b23227",
+    "semantic_candidate_sha": "41eea54d7610a47f1adc342c6caacaf11324a40c"
+  },
+  "broader_binding_check": {
+    "github_actions_run_id": 36187032269,
+    "passed": 108,
+    "failed": 5,
+    "classification": "EXPECTED_HISTORICAL_10B_DRIVER_BLOB_PIN_DRIFT_ONLY",
+    "old_blob": "02ca7cc9f5bf8665de712980a05fdcc059b93331",
+    "repaired_blob": "70bf233492b543d3d728cedfdda36218504ef3d4",
+    "behavioral_failures": 0
+  },
+  "hq_promotion_required": [
+    "Review and promote protected-code repair from implementation_head.",
+    "Reissue/requalify WORKER_RETURNS/EE-P2X/10B_DARWIN_DRIVER_RECEIPT_BINDING.json (or its lawful successor) against repaired driver blob 70bf233492b543d3d728cedfdda36218504ef3d4; historical binding was intentionally not rewritten.",
+    "When split-control fan-in later consumes the repaired helper, call base._stop_backend_after_posthook_nonpass immediately after base._backend_terminal before propagation.",
+    "Rerun the full governed source-free driver-bound court against the promoted/rebound protected head before any measured execution."
+  ],
+  "return_artifacts": [
+    "00_RETURN.md",
+    "01_FAILURE_SEMANTICS_MATRIX.json",
+    "02_C_S05_THREE_WAY_ADJUDICATION.json",
+    "03_S17_NONPASS_TERMINAL_ADJUDICATION.json",
+    "04_POSTBACKEND_TYPED_EXCEPTION_AUDIT.json",
+    "05_SOURCE_FREE_QUALIFICATION.json",
+    "06_PROTECTED_BASE_NO_UNRELATED_DRIFT.json",
+    "07_IMPLEMENTATION_HEAD.json",
+    "08_SPLIT_REUSE_INTERFACE.json",
+    "RETURN.json"
+  ]
+}
