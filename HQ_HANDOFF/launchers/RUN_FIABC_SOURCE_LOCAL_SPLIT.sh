@@ -3,7 +3,7 @@ set -euo pipefail
 
 EXPECTED_EXECUTION_BRANCH="agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1"
 EXPECTED_EXECUTION_HEAD="3d8f2ad62600b6777dcb23a28404a067502e77a0"
-EXPECTED_CONTROL_BRANCH="agent/vozhd-fiabc-source-split-alternate-runner-r1"
+EXPECTED_CONTROL_BRANCH="${FIABC_EXPECTED_CONTROL_BRANCH:-agent/vozhd-fiabc-source-split-alternate-runner-r1}"
 
 LITS_SOURCE_SHA256="7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09"
 WVS_SOURCE_SHA256="2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
@@ -30,7 +30,15 @@ Usage:
   SOURCE=LITS_I SOURCE_PATH=/path/to/LiTS_I.dta \
   WORK_ROOT=/persistent/fresh/root FIABC_REPO_ROOT=/path/to/protected-checkout \
   PYTHON_BIN=/path/to/pinned/python \
+  FIABC_QUALIFIED_CONTROL_HEAD=<exact-qualified-control-head> \
+  FIABC_MACHINE_READINESS_RECEIPT=/path/to/this-host-readiness.json \
+  FIABC_PAIR_COMPATIBILITY_RECEIPT=/path/to/pair-compatibility.json \
   bash HQ_HANDOFF/launchers/RUN_FIABC_SOURCE_LOCAL_SPLIT.sh
+
+Before measurement, generate one source-free readiness receipt on each host:
+  FIABC_READINESS_ONLY=1 FIABC_READINESS_OUTPUT=/persistent/readiness.json ...
+Then run FIABC_SPLIT_R2_WORKROOT_GATES.py pair on the two receipts.  The
+measured launcher refuses to proceed without the resulting exact pair binding.
 
 or SOURCE=WVS7 with SOURCE_PATH pointing to the exact canonical WVS7 SAV.
 
@@ -46,9 +54,9 @@ die() {
 }
 
 : "${SOURCE:?set SOURCE to LITS_I or WVS7}"
-: "${SOURCE_PATH:?set SOURCE_PATH to the selected exact canonical source}"
 : "${WORK_ROOT:?set WORK_ROOT to a fresh persistent root outside temporary directories}"
 : "${FIABC_REPO_ROOT:?set FIABC_REPO_ROOT to the protected execution checkout}"
+: "${FIABC_QUALIFIED_CONTROL_HEAD:?set FIABC_QUALIFIED_CONTROL_HEAD to the exact qualified split-control head}"
 PYTHON_BIN="${PYTHON_BIN:-python3}"
 
 case "$SOURCE" in
@@ -61,12 +69,15 @@ command -v "$PYTHON_BIN" >/dev/null 2>&1 || die "Python interpreter not found: $
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SOURCE_LOCAL_DRIVER="$SCRIPT_DIR/FIABC_SOURCE_LOCAL_SPLIT_DRIVER.py"
+WORKROOT_GATES="$SCRIPT_DIR/FIABC_SPLIT_R2_WORKROOT_GATES.py"
 [[ -f "$SOURCE_LOCAL_DRIVER" ]] || die "source-local driver missing: $SOURCE_LOCAL_DRIVER"
+[[ -f "$WORKROOT_GATES" ]] || die "workroot gate helper missing: $WORKROOT_GATES"
 
 CONTROL_ROOT="$(git -C "$SCRIPT_DIR" rev-parse --show-toplevel 2>/dev/null)" || die "launcher must live in a Git checkout"
 CONTROL_BRANCH="$(git -C "$CONTROL_ROOT" branch --show-current)"
 CONTROL_HEAD="$(git -C "$CONTROL_ROOT" rev-parse --verify HEAD^{commit})"
 [[ "$CONTROL_BRANCH" == "$EXPECTED_CONTROL_BRANCH" ]] || die "wrong control branch: $CONTROL_BRANCH"
+[[ "$CONTROL_HEAD" == "$FIABC_QUALIFIED_CONTROL_HEAD" ]] || die "unqualified control HEAD: $CONTROL_HEAD"
 [[ -z "$(git -C "$CONTROL_ROOT" status --porcelain --untracked-files=all)" ]] || die "control checkout is dirty"
 
 LAUNCHER_SHA256="$(shasum -a 256 "${BASH_SOURCE[0]}" | awk '{print $1}')"
@@ -86,13 +97,6 @@ import sys
 print(Path(sys.argv[1]).resolve())
 PY
 )"
-SOURCE_PATH="$("$PYTHON_BIN" - "$SOURCE_PATH" <<'PY'
-from pathlib import Path
-import sys
-print(Path(sys.argv[1]).resolve())
-PY
-)"
-
 case "$WORK_ROOT" in
   /private/tmp|/private/tmp/*|/tmp|/tmp/*) die "WORK_ROOT must be persistent and outside temporary directories" ;;
 esac
@@ -132,33 +136,46 @@ for p in "$LITS_ORACLE_REL" "$WVS_ORACLE_REL" "$T3_REL" "$STOP_REL" "$CONTINUATI
 done
 [[ -f "$SOURCE_PATH" ]] || die "selected source missing: $SOURCE_PATH"
 
-"$PYTHON_BIN" - <<'PY'
-import importlib.metadata
-import platform
-expected = {
-    "implementation": "CPython",
-    "python": "3.11.3",
-    "pyreadstat": "1.3.6",
-    "pyarrow": "25.0.1",
-    "pandas": "2.3.1",
-    "numpy": "2.3.2",
-    "system": "Darwin",
-    "machine": "x86_64",
-}
-observed = {
-    "implementation": platform.python_implementation(),
-    "python": platform.python_version(),
-    "pyreadstat": importlib.metadata.version("pyreadstat"),
-    "pyarrow": importlib.metadata.version("pyarrow"),
-    "pandas": importlib.metadata.version("pandas"),
-    "numpy": importlib.metadata.version("numpy"),
-    "system": platform.system(),
-    "machine": platform.machine(),
-}
-if observed != expected:
-    raise SystemExit(f"FIABC_SOURCE_LOCAL_LAUNCH_BLOCKED: runtime mismatch: expected={expected!r} observed={observed!r}")
-print("FIABC_SOURCE_LOCAL_RUNTIME_GATE_PASS", observed)
+"$PYTHON_BIN" "$WORKROOT_GATES" runtime-gate >/dev/null || die "combined import/ABI runtime gate failed"
+
+if [[ "${FIABC_READINESS_ONLY:-0}" == "1" ]]; then
+  : "${FIABC_READINESS_OUTPUT:?set FIABC_READINESS_OUTPUT outside WORK_ROOT}"
+  "$PYTHON_BIN" "$WORKROOT_GATES" readiness \
+    --source "$SOURCE" \
+    --repo-root "$FIABC_REPO_ROOT" \
+    --work-root "$WORK_ROOT" \
+    --control-root "$CONTROL_ROOT" \
+    --qualified-control-head "$FIABC_QUALIFIED_CONTROL_HEAD" \
+    --launcher "${BASH_SOURCE[0]}" \
+    --driver "$SOURCE_LOCAL_DRIVER" \
+    --helper "$WORKROOT_GATES" \
+    --output "$FIABC_READINESS_OUTPUT"
+  printf '%s\n' "FIABC_SOURCE_LOCAL_READINESS_ONLY__NO_SOURCE_ACCESS__NO_MEASUREMENT"
+  exit 0
+fi
+
+: "${SOURCE_PATH:?set SOURCE_PATH to the selected exact canonical source}"
+: "${FIABC_MACHINE_READINESS_RECEIPT:?set FIABC_MACHINE_READINESS_RECEIPT}"
+: "${FIABC_PAIR_COMPATIBILITY_RECEIPT:?set FIABC_PAIR_COMPATIBILITY_RECEIPT}"
+
+SOURCE_PATH="$("$PYTHON_BIN" - "$SOURCE_PATH" <<'PY'
+from pathlib import Path
+import sys
+print(Path(sys.argv[1]).resolve())
 PY
+)"
+
+"$PYTHON_BIN" "$WORKROOT_GATES" verify-member \
+  --source "$SOURCE" \
+  --readiness "$FIABC_MACHINE_READINESS_RECEIPT" \
+  --pair "$FIABC_PAIR_COMPATIBILITY_RECEIPT" \
+  --repo-root "$FIABC_REPO_ROOT" \
+  --control-root "$CONTROL_ROOT" \
+  --qualified-control-head "$FIABC_QUALIFIED_CONTROL_HEAD" \
+  --launcher "${BASH_SOURCE[0]}" \
+  --driver "$SOURCE_LOCAL_DRIVER" \
+  --helper "$WORKROOT_GATES" >/dev/null \
+  || die "prelaunch pair compatibility gate failed"
 
 "$PYTHON_BIN" - "$SOURCE" "$SOURCE_PATH" "$EXPECTED_SOURCE_SHA256" <<'PY'
 import hashlib
@@ -280,6 +297,13 @@ if cells.exists() and any(p.is_file() for p in cells.rglob("*")):
 print("FIABC_SOURCE_LOCAL_ZERO_CANDIDATE_STATE_PASS")
 PY
 
+"$PYTHON_BIN" "$WORKROOT_GATES" preprovision \
+  --source "$SOURCE" \
+  --repo-root "$FIABC_REPO_ROOT" \
+  --work-root "$WORK_ROOT" \
+  --output "$WORK_ROOT/court/joined_prestate_receipt.json" >/dev/null \
+  || die "joined-court prestate provisioning failed"
+
 "$PYTHON_BIN" - "$WORK_ROOT" "$SOURCE" "$CONTROL_HEAD" "$LAUNCHER_SHA256" "$SOURCE_LOCAL_DRIVER_SHA256" <<'PY'
 import json
 from pathlib import Path
@@ -339,6 +363,21 @@ if [[ "$rc" -ne 0 ]]; then
 fi
 
 [[ -f "$WORK_ROOT/court/source_local_terminal.json" ]] || die "source-local terminal receipt absent after zero exit"
+
+"$PYTHON_BIN" -B "$SOURCE_LOCAL_DRIVER" \
+  --verify-only \
+  --source "$SOURCE" \
+  --continuation-map "$FIABC_REPO_ROOT/$CONTINUATION_MAP" \
+  --current-court-contract "$FIABC_REPO_ROOT/$COURT_CONTRACT" \
+  --work-root "$WORK_ROOT" \
+  --repo-root "$FIABC_REPO_ROOT" \
+  --source-path "$SOURCE_PATH" \
+  --frozen-upstream-receipt "$WORK_ROOT/court/t3/frozen-upstream.json" \
+  >"$WORK_ROOT/court/logs/source_local_verify.stdout.log" \
+  2>"$WORK_ROOT/court/logs/source_local_verify.stderr.log" \
+  || die "post-run verify-only cleanliness/evidence gate failed"
+
+[[ -f "$WORK_ROOT/court/repo_postrun_verification.json" ]] || die "postrun checkout verification receipt absent"
 
 printf '%s\n' "FIABC_SOURCE_LOCAL_MEASURED_BLOCK_EXITED_ZERO"
 printf '%s\n' "SOURCE_LOCAL_TERMINAL=$WORK_ROOT/court/source_local_terminal.json"
