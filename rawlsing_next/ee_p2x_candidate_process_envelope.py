@@ -847,6 +847,26 @@ class ProcessIsolationController:
             )
             self._active = None
 
+    def stop_after_outer_nonpass(
+        self, *, source: str, candidate: str, reason: str
+    ) -> Mapping[str, Any] | None:
+        """Lawfully stop a retained same-cell process after an outer typed gate fails.
+
+        The candidate stage itself may have returned PASS and therefore retained
+        its process for the next same-cell stage. T4/T5 outer control can still
+        convert that stage into a governed non-PASS. In that case the retained
+        process must be stopped, not left warm until atexit and not reused.
+        """
+        active = self._active
+        if active is None:
+            return None
+        expected = f"{source}/{candidate}"
+        if active.cell_key != expected:
+            raise CrossCandidateReuseError(
+                f"outer non-PASS belongs to {expected} but active process is {active.cell_key}"
+            )
+        return self._stop(reason)
+
     def close(self) -> None:
         if self._active is not None:
             self._abort_active("controller closed before lawful cell terminal")
