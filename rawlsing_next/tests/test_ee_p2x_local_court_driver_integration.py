@@ -11,7 +11,7 @@ from rawlsing_next import ee_p2x_darwin_court_driver as driver
 
 REPO = Path(__file__).resolve().parents[2]
 P2X = REPO / "WORKER_RETURNS" / "EE-P2X"
-BINDING = json.loads((P2X / "10B_DARWIN_DRIVER_RECEIPT_BINDING.json").read_text(encoding="utf-8"))
+BINDING = json.loads((P2X / "10C_DARWIN_DRIVER_SUCCESSOR_BINDING.json").read_text(encoding="utf-8"))
 
 spec = importlib.util.spec_from_file_location(
     "ee_p2x_driver_bound_verify",
@@ -25,6 +25,16 @@ spec.loader.exec_module(bridge)
 def git_blob_sha1(path: Path) -> str:
     data = path.read_bytes()
     return hashlib.sha1(b"blob " + str(len(data)).encode() + b"\0" + data).hexdigest()
+
+
+
+
+def test_historical_10b_binding_remains_immutable_and_successor_uses_10c():
+    historical = P2X / "10B_DARWIN_DRIVER_RECEIPT_BINDING.json"
+    assert git_blob_sha1(historical) == "24311d54ca92a3255dcbbf05e7bc2b8d3ef19cb0"
+    assert BINDING["schema"] == "RAWLSING_EE_P2X_DARWIN_DRIVER_SUCCESSOR_BINDING@1.0.0"
+    assert BINDING["hq_authority"]["historical_10b_git_blob_sha1"] == git_blob_sha1(historical)
+    assert BINDING["driver"]["git_blob_sha1"] == git_blob_sha1(REPO / BINDING["driver"]["path"])
 
 
 def _base_ledger():
