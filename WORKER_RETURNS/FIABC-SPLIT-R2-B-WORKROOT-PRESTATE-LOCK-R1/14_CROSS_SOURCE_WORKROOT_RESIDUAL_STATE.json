@@ -1,0 +1,154 @@
+{
+  "schema": "RAWLSING_FIABC_SPLIT_R2_B_CROSS_SOURCE_WORKROOT_RESIDUAL_STATE@1.0.0",
+  "worker": "B",
+  "status": "BLOCKED__SPLIT_R2_B_WVS_JOINED_BYTECODE_CACHE_PRESTATE_NOT_EXACTLY_REPRODUCED",
+  "protected_execution": {
+    "branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+    "head": "3d8f2ad62600b6777dcb23a28404a067502e77a0",
+    "mutated": false
+  },
+  "implementation_test_head": "673c47ab9f158ebdd8858b3cfca7ee2295ffd01d",
+  "inventory": [
+    {
+      "path_class": "WORK_ROOT/_be1_immutable/<commit>/...",
+      "classification": "IMMUTABLE_CANDIDATE_NEUTRAL_SUPPORT",
+      "joined_behavior": "LiTS can deploy four R5 support source modules absent from the protected checkout before WVS/A. First deployment writes are T4-visible while active.",
+      "split_closure": "SOURCE_BYTES_PREPROVISIONED_FOR_WVS_C0",
+      "exact_source_objects": [
+        [
+          "rawlsing_next/pre553_r5_compact_carrier.py",
+          "92e364b31eaf27be1bca2081eff65f6ffb779c3d"
+        ],
+        [
+          "rawlsing_next/pre553_r5_model.py",
+          "62ce608829c3d9c2fb7c999aefe40188637edf80"
+        ],
+        [
+          "rawlsing_next/pre553_r5_seam.py",
+          "cef326ebbc40468428378f7fdbe76e4756179f39"
+        ],
+        [
+          "rawlsing_next/pre553_r5_single_pass_audit69.py",
+          "ffb063b93c86e215604eecb29a9545c7efdff399"
+        ]
+      ],
+      "note": "pre553_r5_codec.py is already present in the protected checkout and is therefore not copied into this namespace."
+    },
+    {
+      "path_class": "WORK_ROOT/_exact_owner_modules/<owner_commit>/<A|B|C>/...",
+      "classification": "IMMUTABLE_EXACT_OWNER_CODE_BYTES__NOT_CANDIDATE_STATE",
+      "joined_behavior": "LiTS A/B/C can materialize exact owner source bytes before WVS.",
+      "split_closure": "A_B_C_OWNER_SOURCE_BYTES_PREPROVISIONED_FOR_WVS_C0",
+      "owner_commit": "0b96b8de9aac774566f872cf0630ebd4ddeb70e6",
+      "objects": {
+        "A": [
+          "rawlsing_next/pre553_r5_source_backed_adapter.py",
+          "d4915e7e6755ba1850756aebff72f982f73a332b"
+        ],
+        "B": [
+          "rawlsing_next/pre553_source_backed_c11_facade.py",
+          "7c509c2098d0030f253344eb3f682471378812a8"
+        ],
+        "C": [
+          "rawlsing_next/pre553_route_c_accelerators.py",
+          "abfdc91a71ef5e18c4a8a6bf62fa65750d8d9889"
+        ]
+      }
+    },
+    {
+      "path_class": "WORK_ROOT/_be1_lits_projection/**",
+      "classification": "LITS_SOURCE_LOCAL_SEMANTIC_STATE",
+      "joined_behavior": "Created/read only by LiTS projection construction.",
+      "split_closure": "FORBIDDEN_FROM_WVS_PREPROVISION",
+      "rationale": "Copying it would seed source-local semantic state rather than reproduce neutral code deployment."
+    },
+    {
+      "path_class": "WORK_ROOT/_lits_common_representation/**",
+      "classification": "LITS_SOURCE_LOCAL_SEMANTIC_REPRESENTATION_STATE",
+      "joined_behavior": "Created/read by LiTS current/legacy representation reconciliation.",
+      "split_closure": "FORBIDDEN_FROM_WVS_PREPROVISION"
+    },
+    {
+      "path_class": "WORK_ROOT/cells/<source>/<candidate>/**",
+      "classification": "CANDIDATE_OWNED_STATE",
+      "split_closure": "ABSOLUTELY_FORBIDDEN_FROM_PREPROVISION"
+    },
+    {
+      "path_class": "WORK_ROOT/ee_p2x_stage_ledger.json",
+      "classification": "ADMINISTRATIVE_EVIDENTIARY_STATE",
+      "joined_behavior": "Contains prior LiTS terminal entries before joined WVS begins.",
+      "candidate_metric_effect": "Driver orchestration reads/writes it outside candidate backend physical measurement; candidate child does not consume it as semantic input.",
+      "split_closure": "SOURCE_LOCAL_LEDGER_ONLY__DO_NOT_PREBUILD_LITS_ENTRIES"
+    },
+    {
+      "path_class": "WORK_ROOT/fiabc_driver_progress.jsonl",
+      "classification": "C4_ADMINISTRATIVE_PROGRESS_TELEMETRY",
+      "joined_behavior": "Contains prior LiTS progress before WVS.",
+      "candidate_metric_effect": "Progress emission is driver-side and separated from candidate metrics.",
+      "split_closure": "SOURCE_LOCAL_ONLY__NO_JOINED_HISTORY_SYNTHESIS"
+    },
+    {
+      "path_class": "WORK_ROOT/court/**",
+      "classification": "COURT_ADMINISTRATION_AND_FROZEN_ORACLE_STATE",
+      "joined_behavior": "Frozen oracles/T3/stop/succession material plus logs and court receipts.",
+      "split_closure": "Selected-source launcher reproduces governed frozen inputs and source-local court administration; no candidate-semantic state is prebuilt."
+    },
+    {
+      "path_class": "REPO/WORKER_RETURNS/EE-P2X/LOCAL_COURT/**",
+      "classification": "REPO_LOCAL_LIVE_EVIDENTIARY_OUTPUT",
+      "joined_behavior": "Backend can modify tracked baseline JSON and add selected-source learned/persistence/deletion/failure/court evidence.",
+      "split_closure": "POSTRUN_DELTA_CLASSIFIER_BINDING_EXACT_HEAD_BASELINE_TO_SELECTED_SOURCE"
+    },
+    {
+      "path_class": "WORK_ROOT/_be1_immutable/**/__pycache__/*.pyc",
+      "classification": "NON_AUTHORITATIVE_SOFTWARE_CACHE__CANDIDATE_RELEVANT_PHYSICAL_PRESTATE",
+      "joined_behavior": "LiTS candidate processes can compile deployed R5 support modules; cache files survive into WVS/A.",
+      "split_closure": "UNRESOLVED__BLOCKING"
+    },
+    {
+      "path_class": "WORK_ROOT/_exact_owner_modules/**/__pycache__/*.pyc",
+      "classification": "NON_AUTHORITATIVE_SOFTWARE_CACHE__CANDIDATE_RELEVANT_PHYSICAL_PRESTATE",
+      "joined_behavior": "LiTS A/B/C import exact owner modules; bytecode caches can survive into corresponding WVS cells.",
+      "split_closure": "UNRESOLVED__BLOCKING"
+    },
+    {
+      "path_class": "REPO/rawlsing_next/**/__pycache__/*.pyc",
+      "classification": "IGNORED_RUNTIME_SOFTWARE_CACHE__CANDIDATE_RELEVANT_PHYSICAL_PRESTATE",
+      "joined_behavior": "Protected dependencies imported inside LiTS measured S01 can be bytecode-cached before WVS/A.",
+      "split_closure": "UNRESOLVED__BLOCKING",
+      "note": "Pre-run Git cleanliness does not by itself control ignored bytecode files."
+    }
+  ],
+  "preprovision_law": {
+    "source_free": true,
+    "before_candidate_measurement": true,
+    "raw_source_reads": 0,
+    "raw_source_hashes": 0,
+    "decoder_calls": 0,
+    "candidate_processes": 0,
+    "semantic_or_carrier_prebuild": false,
+    "exact_allowed_namespaces": [
+      "_be1_immutable",
+      "_exact_owner_modules"
+    ],
+    "forbidden_namespaces": [
+      "_be1_lits_projection",
+      "_lits_common_representation",
+      "cells"
+    ],
+    "exact_namespace_inventory_enforced": true
+  },
+  "blocker": {
+    "fact_chain": [
+      "The protected source×candidate envelope creates a fresh child for each cell, so in-memory sys.modules state does not cross LiTS to WVS.",
+      "Filesystem bytecode caches are not process-local and can survive the LiTS block.",
+      "WVS S01 calls _bind under the measured build_or_open_wall_ns interval.",
+      "_bind/compose loads R5 support and exact-owner modules inside that measured interval.",
+      "Joined LiTS can therefore remove source-compilation work from later joined WVS S01.",
+      "Precopying exact .py source bytes removes T4 first-deployment writes but does not reproduce the joined .pyc import-cache state.",
+      "Exact joined bytecode cache bytes/path/mtime/import closure are runtime-generated and are not proven reproducible by the current source-free C0 prestate."
+    ],
+    "fail_closed_gate": "verify_joined_prestate rejects WVS7 unless joined_import_cache_state == EXACTLY_REPRODUCED.",
+    "prohibited_shortcut": "Do not relabel this software-state asymmetry as generic host noise and do not prebuild candidate semantic/carrier state."
+  }
+}
