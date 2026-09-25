@@ -370,6 +370,7 @@ def verify_pair_member(
     pair: Mapping[str, Any],
     source: str,
     repo_root: Path,
+    work_root: Path,
     control_root: Path,
     qualified_control_head: str,
     launcher_path: Path,
@@ -403,7 +404,10 @@ def verify_pair_member(
         raise SplitR2GateError("runtime drift since readiness")
     if readiness.get("hardware") != _hardware():
         raise SplitR2GateError("hardware fingerprint drift since readiness")
-    _assert_fresh_work_root(Path(readiness["fresh_work_root"]["path"]))
+    current_work_root = work_root.resolve()
+    if readiness.get("fresh_work_root", {}).get("path") != str(current_work_root):
+        raise SplitR2GateError("WORK_ROOT identity drift since readiness")
+    _assert_fresh_work_root(current_work_root)
 
 
 def _write_exact(path: Path, data: bytes) -> None:
@@ -561,14 +565,24 @@ def _filesystem_inventory(root: Path) -> Mapping[str, Any]:
     return out
 
 
-def _repo_python_cache_inventory(repo_root: Path) -> Mapping[str, Any]:
+def _ignored_file_inventory(repo_root: Path) -> Mapping[str, Any]:
+    raw = _git(
+        repo_root, "ls-files", "--others", "-i", "--exclude-standard", "-z"
+    ).stdout
     out = {}
-    for p in sorted(repo_root.rglob("*.pyc")):
-        if "__pycache__" not in p.parts or not p.is_file():
+    for raw_rel in raw.split(b"\0"):
+        if not raw_rel:
             continue
-        rel = p.relative_to(repo_root).as_posix()
-        out[rel] = {"sha256": _sha256_file(p), "size": p.stat().st_size}
-    return out
+        rel = raw_rel.decode("utf-8", "surrogateescape")
+        path = repo_root / rel
+        if path.is_file():
+            out[rel] = {"sha256": _sha256_file(path), "size": path.stat().st_size}
+    return dict(sorted(out.items()))
+
+
+def _is_python_cache_path(rel: str) -> bool:
+    p = Path(rel)
+    return p.suffix == ".pyc" and "__pycache__" in p.parts
 
 
 def capture_repo_prestate_baseline(
@@ -588,7 +602,7 @@ def capture_repo_prestate_baseline(
         "execution": repo,
         "head_tracked_live_evidence": _head_live_evidence(repo_root),
         "filesystem_live_evidence": _filesystem_inventory(live),
-        "python_cache_inventory": _repo_python_cache_inventory(repo_root),
+        "ignored_file_inventory": _ignored_file_inventory(repo_root),
         "work_root": str(work_root.resolve()),
     }
     payload["receipt_identity"] = _semantic_hash(payload)
@@ -716,17 +730,21 @@ def verify_postrun_checkout(
             **classification,
         })
 
-    py_before = baseline.get("python_cache_inventory", {})
-    py_after = _repo_python_cache_inventory(repo_root)
+    ignored_before = baseline.get("ignored_file_inventory", {})
+    ignored_after = _ignored_file_inventory(repo_root)
     cache_delta = []
-    for rel in sorted(set(py_before) | set(py_after)):
-        if py_before.get(rel) == py_after.get(rel):
+    for rel in sorted(set(ignored_before) | set(ignored_after)):
+        if ignored_before.get(rel) == ignored_after.get(rel):
             continue
+        if not _is_python_cache_path(rel):
+            raise SplitR2GateError(
+                f"unclassified ignored-file mutation in protected checkout: {rel}"
+            )
         cache_delta.append({
             "path": rel,
             "change": (
-                "CREATED" if rel not in py_before
-                else "DELETED" if rel not in py_after
+                "CREATED" if rel not in ignored_before
+                else "DELETED" if rel not in ignored_after
                 else "MODIFIED"
             ),
             "classification": "NON_EVIDENTIARY_PYTHON_RUNTIME_CACHE",
@@ -784,6 +802,7 @@ def _parser() -> argparse.ArgumentParser:
     member.add_argument("--readiness", type=Path, required=True)
     member.add_argument("--pair", type=Path, required=True)
     member.add_argument("--repo-root", type=Path, required=True)
+    member.add_argument("--work-root", type=Path, required=True)
     member.add_argument("--control-root", type=Path, required=True)
     member.add_argument("--qualified-control-head", required=True)
     member.add_argument("--launcher", type=Path, required=True)
@@ -827,6 +846,7 @@ def main(argv: list[str] | None = None) -> int:
             pair=_load_json(args.pair),
             source=args.source,
             repo_root=args.repo_root,
+            work_root=args.work_root,
             control_root=args.control_root,
             qualified_control_head=args.qualified_control_head,
             launcher_path=args.launcher,
