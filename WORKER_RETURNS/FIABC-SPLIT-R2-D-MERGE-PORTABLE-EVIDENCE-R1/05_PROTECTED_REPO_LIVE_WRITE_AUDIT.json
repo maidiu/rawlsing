@@ -1,0 +1,48 @@
+{
+  "schema": "RAWLSING_FIABC_SPLIT_R2_D_PROTECTED_REPO_LIVE_WRITE_AUDIT@1.0.0",
+  "status": "PASS__PROTECTED_LIVE_WRITES_LEDGER_ATTRIBUTABLE",
+  "protected_execution_head": "3d8f2ad62600b6777dcb23a28404a067502e77a0",
+  "protected_file": "rawlsing_next/ee_p2x_darwin_stage_backend.py",
+  "live_root": "WORKER_RETURNS/EE-P2X/LOCAL_COURT",
+  "observed_write_surfaces": [
+    {
+      "surface": "cell/failure serialization",
+      "approx_lines": "1970-2013",
+      "paths": [
+        "cells/<source>__<candidate>.json",
+        "failures/<source>__<candidate-or-COMMON>__<kind>.json",
+        "court/<stage>__COMMON_COURT_SCOPE.json"
+      ],
+      "returned_through_output_artifacts": true
+    },
+    {
+      "surface": "S05 learned receipt",
+      "approx_lines": "2154-2169",
+      "paths": [
+        "learned/<source>__<candidate>.json"
+      ],
+      "returned_through_output_artifacts": true
+    },
+    {
+      "surface": "S09 A persistence receipt",
+      "approx_lines": "2251-2283",
+      "paths": [
+        "persistence/<source>__A.json"
+      ],
+      "returned_through_output_artifacts": true
+    },
+    {
+      "surface": "S09 deletion/regeneration receipt",
+      "approx_lines": "2306-2327",
+      "paths": [
+        "deletion/<source>__<candidate>.json"
+      ],
+      "returned_through_output_artifacts": true
+    }
+  ],
+  "backend_result_binding": "run_stage returns payload _artifacts as output_artifacts; protected driver converts repo-local output_artifacts to repo: locators and hashes them into StageLedger",
+  "conclusion": "Post-run delta closure may lawfully fail closed on any LOCAL_COURT mutation not attributable to a selected-source StageLedger repo: output-artifact locator. No backend relocation or semantic change is required.",
+  "raw_source_access_performed": false,
+  "candidate_execution_performed": false,
+  "protected_code_mutated": false
+}
