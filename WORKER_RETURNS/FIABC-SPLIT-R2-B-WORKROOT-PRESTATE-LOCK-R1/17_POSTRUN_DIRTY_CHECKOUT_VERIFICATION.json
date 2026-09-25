@@ -1,0 +1,44 @@
+{
+  "schema": "RAWLSING_FIABC_SPLIT_R2_B_POSTRUN_DIRTY_CHECKOUT_VERIFICATION@1.0.0",
+  "status": "IMPLEMENTED__SOURCE_FREE__HOSTILE_TESTS_BANKED_UNEXECUTED",
+  "law": {
+    "preflight_and_run": "Exact protected branch/head plus clean git status required before measurement.",
+    "verify_only": "Exact protected branch/head remains mandatory, but dirt is admitted only after source-bound postrun classification.",
+    "tracked_baseline": "Hash exact HEAD tree for WORKER_RETURNS/EE-P2X/LOCAL_COURT using git ls-tree + git show, rather than treating the directory as initially empty.",
+    "filesystem_baseline": "Record premeasurement live-evidence files and all Git-ignored files.",
+    "selected_source_live_prefixes": [
+      "cells/<SOURCE>__*",
+      "learned/<SOURCE>__*",
+      "persistence/<SOURCE>__*",
+      "deletion/<SOURCE>__*",
+      "failures/<SOURCE>__*"
+    ],
+    "common_admin": "court/** and failures/COURT__COMMON__* are admitted only when parseable JSON recursively attributes itself to the selected source and does not contain the nonselected source.",
+    "ignored_runtime_byproduct": "Only __pycache__/*.pyc deltas are classified as non-evidentiary Python runtime cache.",
+    "forbidden": [
+      "governed code/config mutation",
+      "repo mutation outside LOCAL_COURT except classified ignored .pyc",
+      "nonselected-source live-evidence mutation",
+      "rename/copy mutation",
+      "live-evidence deletion",
+      "arbitrary ignored/untracked files"
+    ]
+  },
+  "receipts": {
+    "premeasurement": "WORK_ROOT/court/repo_prestate_baseline.json",
+    "postrun": "WORK_ROOT/court/repo_postrun_verification.json",
+    "postrun_status": "PASS__ONLY_CLASSIFIED_POSTRUN_MUTATIONS",
+    "source_terminal_binds_premeasurement_baseline": true,
+    "verify_receipt_binds_postrun_receipt": true
+  },
+  "hostile_tests": [
+    "test_head_baseline_is_distinct_from_selected_source_live_mutation",
+    "test_postrun_rejects_nonselected_code_and_ignored_arbitrary_mutation"
+  ],
+  "tests_executed_in_this_lane": false,
+  "static_evidence": {
+    "helper_blob": "ad202e936923113b8fcf55b6ebc413f1060146a2",
+    "driver_blob": "700cdb38f1ce241e3f97486f352654e9656f0157",
+    "launcher_blob": "70c6a70d9257989b0531060470354f9c3d5f05ac"
+  }
+}
