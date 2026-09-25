@@ -798,11 +798,11 @@ def build_portable_evidence_closure(
     if not allow_legacy_terminal_control:
         if (
             terminal_control_head
-            != binding["qualified_implementation_head"]
+            != binding["observed_control_checkout_head"]
         ):
             raise EvidenceClosureError(
-                f"{source}: terminal control head is not the qualified "
-                "implementation head"
+                f"{source}: terminal control head does not match the "
+                "verified control checkout head"
             )
         if (
             terminal_control.get("launcher_sha256")
