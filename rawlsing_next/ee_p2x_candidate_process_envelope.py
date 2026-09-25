@@ -32,12 +32,23 @@ CELL_SOURCE_ENV = "RAWLSING_EE_P2X_CELL_SOURCE"
 CELL_CANDIDATE_ENV = "RAWLSING_EE_P2X_CELL_CANDIDATE"
 CELL_KEY_ENV = "RAWLSING_EE_P2X_CELL_KEY"
 FREEZE_SHA_ENV = "RAWLSING_EE_P2X_UPSTREAM_FREEZE_SHA256"
+CACHE_NEUTRAL_ADOPTION_ENV = "RAWLSING_EE_P2X_CACHE_NEUTRAL_SUCCESSOR"
+CACHE_NEUTRAL_EPOCH_ENV = "RAWLSING_EE_P2X_PHYSICAL_EPOCH_IDENTITY"
+CACHE_NEUTRAL_DONT_WRITE_ENV = "PYTHONDONTWRITEBYTECODE"
+CACHE_NEUTRAL_PREFIX_ENV = "PYTHONPYCACHEPREFIX"
+CACHE_NEUTRAL_PREFIX_REL = Path("court") / "_python_cache_neutral_prefix"
+CACHE_NEUTRAL_ATTESTATION_SCHEMA = "RAWLSING_FIABC_P2X_CACHE_NEUTRAL_ATTESTATION@1.0.0"
+CACHE_NEUTRAL_PHYSICAL_EPOCH_IDENTITY = "fc6afc9bc7b287f8fd0654e1da546faee7e6c85491e6735ebe4a161b0db3de35"
 
 COLD_REQUIRED = "COLD_REQUIRED"
 SAME_CELL_RESUME_EXPLICIT = "SAME_CELL_RESUME_EXPLICIT"
 
 
 class ProcessIsolationError(RuntimeError):
+    pass
+
+
+class CacheNeutralityViolation(ProcessIsolationError):
     pass
 
 
@@ -87,6 +98,7 @@ class _ActiveLab:
     candidate: str
     cell_key: str
     root: Path
+    work_root: Path
     process: subprocess.Popen
     parent_start_monotonic_ns: int
     start_mode: str
@@ -104,6 +116,116 @@ def _sha256_file(path: Path) -> str:
         for chunk in iter(lambda: fh.read(1024 * 1024), b""):
             h.update(chunk)
     return h.hexdigest()
+
+
+def _cache_prefix_entries(prefix: Path) -> tuple[str, ...]:
+    if not prefix.exists():
+        return ()
+    return tuple(
+        p.relative_to(prefix).as_posix()
+        for p in sorted(prefix.rglob("*"))
+    )
+
+
+def _cache_attestation_identity(payload: Mapping[str, Any]) -> str:
+    return _sha256_bytes(
+        json.dumps(
+            payload,
+            sort_keys=True,
+            separators=(",", ":"),
+            ensure_ascii=False,
+            default=str,
+        ).encode("utf-8")
+    )
+
+
+def validate_cache_neutral_attestation(
+    document: Mapping[str, Any],
+    *,
+    work_root: Path,
+    expected_phase: str,
+) -> None:
+    expected_prefix = (Path(work_root).resolve() / CACHE_NEUTRAL_PREFIX_REL).resolve()
+    if document.get("schema") != CACHE_NEUTRAL_ATTESTATION_SCHEMA:
+        raise CacheNeutralityViolation("cache-neutral attestation schema drift")
+    identity = document.get("receipt_identity")
+    material = {k: v for k, v in document.items() if k != "receipt_identity"}
+    if identity != _cache_attestation_identity(material):
+        raise CacheNeutralityViolation("cache-neutral attestation identity drift")
+    if document.get("status") != "PASS__CACHE_NEUTRAL_RUNTIME_ATTESTED":
+        raise CacheNeutralityViolation("cache-neutral attestation status drift")
+    if document.get("phase") != expected_phase:
+        raise CacheNeutralityViolation("cache-neutral attestation phase drift")
+    if document.get("sys_dont_write_bytecode") is not True:
+        raise CacheNeutralityViolation("cache-neutral attestation lost sys.dont_write_bytecode")
+    if document.get("sys_pycache_prefix") != str(expected_prefix):
+        raise CacheNeutralityViolation("cache-neutral attestation pycache prefix drift")
+    env = document.get("environment")
+    if not isinstance(env, Mapping):
+        raise CacheNeutralityViolation("cache-neutral attestation environment absent")
+    expected_env = {
+        CACHE_NEUTRAL_DONT_WRITE_ENV: "1",
+        CACHE_NEUTRAL_PREFIX_ENV: str(expected_prefix),
+        CACHE_NEUTRAL_ADOPTION_ENV: "1",
+        CACHE_NEUTRAL_EPOCH_ENV: CACHE_NEUTRAL_PHYSICAL_EPOCH_IDENTITY,
+    }
+    if dict(env) != expected_env:
+        raise CacheNeutralityViolation("cache-neutral attestation environment drift")
+    if document.get("redirected_prefix_descendants") != []:
+        raise CacheNeutralityViolation("cache-neutral attestation prefix is not empty")
+
+
+def attest_cache_neutral_runtime(
+    work_root: Path,
+    *,
+    phase: str,
+) -> Mapping[str, Any]:
+    work = Path(work_root).resolve()
+    expected_prefix = (work / CACHE_NEUTRAL_PREFIX_REL).resolve()
+    raw_prefix = os.environ.get(CACHE_NEUTRAL_PREFIX_ENV)
+    if raw_prefix is None:
+        raise CacheNeutralityViolation("PYTHONPYCACHEPREFIX is absent")
+    observed_prefix = Path(raw_prefix).resolve()
+    sys_prefix = None if sys.pycache_prefix is None else Path(sys.pycache_prefix).resolve()
+    entries = _cache_prefix_entries(expected_prefix)
+    if sys.dont_write_bytecode is not True:
+        raise CacheNeutralityViolation("sys.dont_write_bytecode is not true")
+    if observed_prefix != expected_prefix or sys_prefix != expected_prefix:
+        raise CacheNeutralityViolation(
+            f"cache-neutral prefix drift: expected {expected_prefix}, env={observed_prefix}, sys={sys_prefix}"
+        )
+    if os.environ.get(CACHE_NEUTRAL_DONT_WRITE_ENV) != "1":
+        raise CacheNeutralityViolation("PYTHONDONTWRITEBYTECODE binding absent")
+    if os.environ.get(CACHE_NEUTRAL_ADOPTION_ENV) != "1":
+        raise CacheNeutralityViolation("cache-neutral successor adoption marker absent")
+    if os.environ.get(CACHE_NEUTRAL_EPOCH_ENV) != CACHE_NEUTRAL_PHYSICAL_EPOCH_IDENTITY:
+        raise CacheNeutralityViolation("cache-neutral physical epoch identity drift")
+    if entries:
+        raise CacheNeutralityViolation(
+            f"cache-neutral prefix has descendants at {phase}: {entries!r}"
+        )
+    payload = {
+        "schema": CACHE_NEUTRAL_ATTESTATION_SCHEMA,
+        "status": "PASS__CACHE_NEUTRAL_RUNTIME_ATTESTED",
+        "phase": phase,
+        "work_root": str(work),
+        "sys_dont_write_bytecode": True,
+        "sys_pycache_prefix": str(expected_prefix),
+        "environment": {
+            CACHE_NEUTRAL_DONT_WRITE_ENV: "1",
+            CACHE_NEUTRAL_PREFIX_ENV: str(expected_prefix),
+            CACHE_NEUTRAL_ADOPTION_ENV: "1",
+            CACHE_NEUTRAL_EPOCH_ENV: CACHE_NEUTRAL_PHYSICAL_EPOCH_IDENTITY,
+        },
+        "redirected_prefix_descendants": [],
+        "ordinary_source_tree_pycache_participation": False,
+        "bytecode_cache_writes_permitted": False,
+    }
+    payload["receipt_identity"] = _cache_attestation_identity(payload)
+    validate_cache_neutral_attestation(
+        payload, work_root=work, expected_phase=phase
+    )
+    return payload
 
 
 def _json_line(value: Mapping[str, Any]) -> str:
@@ -427,6 +549,10 @@ def _child_main(backend_spec: str, context_mode: str) -> int:
             raise CellProcessProtocolError("cell key environment attribution mismatch")
         if os.environ.get(FREEZE_SHA_ENV) != start["freeze_receipt_sha256"]:
             raise CellProcessProtocolError("upstream freeze environment attribution mismatch")
+        work_root = Path(start["work_root"]).resolve()
+        cache_attestation = attest_cache_neutral_runtime(
+            work_root, phase="MAIN_CELL_CHILD_PRE_BACKEND_IMPORT"
+        )
 
         pre_import_ns = time.perf_counter_ns()
         pre_import_resource = _resource_snapshot()
@@ -459,6 +585,7 @@ def _child_main(backend_spec: str, context_mode: str) -> int:
             "post_backend_import_resource": _resource_snapshot(),
             "session_registry_empty_at_start": True,
             "candidate_owner_modules_before_backend_import": list(owner_modules_before),
+            "cache_neutral_attestation": cache_attestation,
             "rss_scope": "RUSAGE_SELF__THIS_CELL_PROCESS_ONLY",
             "environment_attribution": {
                 CELL_SOURCE_ENV: source,
@@ -499,6 +626,9 @@ def _child_main(backend_spec: str, context_mode: str) -> int:
                     "resource_after_stage": _resource_snapshot(),
                 })
             elif command.get("op") == "STOP":
+                cache_stop_attestation = attest_cache_neutral_runtime(
+                    work_root, phase="MAIN_CELL_CHILD_STOP"
+                )
                 sessions = getattr(backend, "_SESSIONS", None)
                 session_keys = []
                 if isinstance(sessions, Mapping):
@@ -521,6 +651,7 @@ def _child_main(backend_spec: str, context_mode: str) -> int:
                     "resource_at_stop": _resource_snapshot(),
                     "session_keys_at_stop": session_keys,
                     "reason": command.get("reason"),
+                    "cache_neutral_attestation": cache_stop_attestation,
                     "rss_scope": "RUSAGE_SELF__THIS_CELL_PROCESS_ONLY",
                 })
                 return 0
@@ -686,6 +817,10 @@ class ProcessIsolationController:
         candidate = context.stage.candidate
         cell_key = f"{source}/{candidate}"
         start_mode = cold["start_mode"]
+        work_root = Path(context.work_root).resolve()
+        parent_cache_attestation = attest_cache_neutral_runtime(
+            work_root, phase="PARENT_PRE_CELL_START"
+        )
         parent_start_ns = time.perf_counter_ns()
 
         marker = root / OWNER_MARKER
@@ -739,6 +874,7 @@ class ProcessIsolationController:
             candidate=candidate,
             cell_key=cell_key,
             root=root,
+            work_root=work_root,
             process=process,
             parent_start_monotonic_ns=parent_start_ns,
             start_mode=start_mode,
@@ -754,8 +890,16 @@ class ProcessIsolationController:
                 "cell_key": cell_key,
                 "parent_envelope_start_monotonic_ns": parent_start_ns,
                 "freeze_receipt_sha256": self.freeze_receipt_sha256,
+                "work_root": str(work_root),
             })
             handshake = self._read_protocol(process, "HANDSHAKE")
+            validate_cache_neutral_attestation(
+                handshake.get("cache_neutral_attestation", {}),
+                work_root=work_root,
+                expected_phase="MAIN_CELL_CHILD_PRE_BACKEND_IMPORT",
+            )
+            handshake = dict(handshake)
+            handshake["parent_pre_cell_start_cache_attestation"] = parent_cache_attestation
         except Exception:
             process.kill()
             process.wait()
@@ -788,6 +932,9 @@ class ProcessIsolationController:
         if active is None:
             raise CellProcessProtocolError("no active cell process to stop")
         try:
+            parent_pre_stop = attest_cache_neutral_runtime(
+                active.work_root, phase="PARENT_PRE_CELL_STOP"
+            )
             self._send(active, {
                 "schema": PROTOCOL_SCHEMA,
                 "op": "STOP",
@@ -795,6 +942,11 @@ class ProcessIsolationController:
                 "reason": reason,
             })
             stop = self._read_protocol(active.process, "STOPPED")
+            validate_cache_neutral_attestation(
+                stop.get("cache_neutral_attestation", {}),
+                work_root=active.work_root,
+                expected_phase="MAIN_CELL_CHILD_STOP",
+            )
             if active.process.stdin is not None:
                 active.process.stdin.close()
             rc = active.process.wait(timeout=20)
@@ -817,10 +969,15 @@ class ProcessIsolationController:
                 encoding="utf-8",
             )
             parent_stop_ns = time.perf_counter_ns()
+            parent_post_stop = attest_cache_neutral_runtime(
+                active.work_root, phase="PARENT_POST_CELL_STOP"
+            )
             return {
                 **stop,
                 "parent_envelope_stop_monotonic_ns": parent_stop_ns,
                 "process_returncode": rc,
+                "parent_pre_cell_stop_cache_attestation": parent_pre_stop,
+                "parent_post_cell_stop_cache_attestation": parent_post_stop,
             }
         finally:
             self._active = None
@@ -998,6 +1155,11 @@ __all__ = [
     "ProcessIsolationController",
     "IsolatedBackendResult",
     "ProcessIsolationError",
+    "CacheNeutralityViolation",
+    "CACHE_NEUTRAL_ATTESTATION_SCHEMA",
+    "CACHE_NEUTRAL_PHYSICAL_EPOCH_IDENTITY",
+    "attest_cache_neutral_runtime",
+    "validate_cache_neutral_attestation",
     "FrozenUpstreamError",
     "RootIsolationError",
     "ColdStateViolation",
