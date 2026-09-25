@@ -536,9 +536,17 @@ def create_control_binding(
             body = bytes(body)
         files[rel] = _sha256_bytes(bytes(body))
 
+    qualified_branch = _git(
+        control_root, "branch", "--show-current"
+    ).stdout.strip()
+    if not qualified_branch:
+        raise EvidenceClosureError(
+            "qualified control checkout must be on a named branch"
+        )
     payload = {
         "schema": CONTROL_BINDING_SCHEMA,
         "status": "QUALIFIED_SOURCE_FREE_CONTROL_IMPLEMENTATION",
+        "qualified_control_branch": qualified_branch,
         "qualified_implementation_head": qualified_implementation_head,
         "protected_execution_head": EXPECTED_EXECUTION_HEAD,
         "qualification_return_ref": qualification_return_ref,
@@ -582,6 +590,18 @@ def verify_control_binding(
         raise EvidenceClosureError(
             "qualified control implementation commit unavailable"
         )
+    expected_branch = doc.get("qualified_control_branch")
+    observed_branch = _git(
+        control_root, "branch", "--show-current"
+    ).stdout.strip()
+    if not isinstance(expected_branch, str) or not expected_branch:
+        raise EvidenceClosureError(
+            "control binding qualified branch malformed"
+        )
+    if observed_branch != expected_branch:
+        raise EvidenceClosureError(
+            f"wrong control branch: expected {expected_branch}, got {observed_branch}"
+        )
 
     bound = doc.get("bound_files")
     if not isinstance(bound, Mapping):
@@ -623,6 +643,7 @@ def verify_control_binding(
     return {
         "binding_receipt_sha256": _sha256_file(binding_path),
         "binding_receipt_identity": doc.get("receipt_identity"),
+        "qualified_control_branch": expected_branch,
         "qualified_implementation_head": qualified,
         "observed_control_checkout_head": current_head,
         "protected_execution_head": EXPECTED_EXECUTION_HEAD,
