@@ -140,6 +140,8 @@ expected = {
     "python": "3.11.3",
     "pyreadstat": "1.3.6",
     "pyarrow": "25.0.1",
+    "pandas": "2.3.1",
+    "numpy": "2.3.2",
     "system": "Darwin",
     "machine": "x86_64",
 }
@@ -148,6 +150,8 @@ observed = {
     "python": platform.python_version(),
     "pyreadstat": importlib.metadata.version("pyreadstat"),
     "pyarrow": importlib.metadata.version("pyarrow"),
+    "pandas": importlib.metadata.version("pandas"),
+    "numpy": importlib.metadata.version("numpy"),
     "system": platform.system(),
     "machine": platform.machine(),
 }
