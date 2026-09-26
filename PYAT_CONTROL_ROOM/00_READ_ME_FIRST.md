@@ -2,7 +2,9 @@
 
 Status: `ACTIVE_CONTROL_ROOM__R2_REGROUNDED__B_ROUTE_PRE_FIELD_FORGE_PROGRAM_CENTER`
 
-Current governing decision: `HQD-2026-09-26-112`
+Current architecture/program decision: `HQD-2026-09-26-112`
+
+Current immediate sequencing refinement: `HQD-2026-09-26-113`
 
 Selected physical policy: `B__SOURCE_BACKED_VIRTUAL_C11`
 
@@ -86,7 +88,7 @@ A fresh Pyat/Vozhd SHALL:
 2. read `STATUS.json`;
 3. read `13_FRESH_HQ_FULL_GROK_PROTOCOL.md`;
 4. resolve the live control HEAD and `HQ_HANDOFF/LATEST.json`;
-5. read HQ decisions 109 → 112 in order;
+5. read HQ decisions 109 → 113 in order;
 6. read the complete `PYAT_R2_REGROUNDING_R1/` package;
 7. read `10_R2_CURRENT_AUTHORITY_AND_ANTI_RESURRECTION.md`;
 8. read `11_CURRENT_HQ_HANDOFF_20260926.md`;
