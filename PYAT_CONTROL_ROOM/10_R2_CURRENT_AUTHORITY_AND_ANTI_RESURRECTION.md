@@ -33,7 +33,7 @@ Preserve its evidence.
 Do not use its stage-shaped architecture/program framing as current law.
 
 ### HQD-2026-09-26-112
-Current Pyat governing decision.
+Current Pyat architecture/program governing decision.
 
 It supersedes HQD-111 at:
 
@@ -46,6 +46,11 @@ It freezes the current program as:
 `Route B empirical/learned world → Field Forge → objective PRE-V3 world → later re-derived PRE-V3/V3 seam`.
 
 Production implementation remains unauthorized.
+
+### HQD-2026-09-26-113
+Current immediate sequencing refinement.
+
+It preserves HQD-112 and requires selected-B production-constitution grok before automatic LiTS FF02 dispatch. It does not reopen architecture or authorize implementation/source execution.
 
 ## 2. Current architecture invariants
 
