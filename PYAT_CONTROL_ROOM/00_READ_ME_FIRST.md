@@ -1,83 +1,128 @@
 # VOZHD PYAT — READ ME FIRST
 
-Status: `ACTIVE_CONTROL_ROOM__RECONNAISSANCE_AND_PROGRAM_SYNTHESIS`
+Status: `ACTIVE_CONTROL_ROOM__R2_REGROUNDED__B_ROUTE_PRE_FIELD_FORGE_PROGRAM_CENTER`
 
-Governing decision: `HQD-2026-09-26-109`
+Current governing decision: `HQD-2026-09-26-112`
+
+Selected physical policy: `B__SOURCE_BACKED_VIRTUAL_C11`
 
 Control branch: `integration/pre-main-reconciliation-r1`
 
-## Identity
+## 0. What Pyat is now
 
-**Pyat is the command that converts Rawlsing's already-large body of Dva/Trii/Chetiri/Long-Memory/W31-W35/Field-Forge work into one exact, buildable source→V558 program.**
+Pyat is the central integration/HQ function that harmonizes Rawlsing's already-large Dva, Trii, Chetiri, Long Memory, Verkhovod, W31–W35, Field Forge, Empirical Engine, FIABC and downstream V3/PFF work into one chronology-aware, zero-loss development program.
 
-Pyat is not another archaeology-from-zero campaign.
+Pyat is **not** another archaeology-from-zero campaign and is **not** the semantic owner of every domain.
 
-Pyat's first law is:
+Its governing method is:
 
-`INHERIT_FIRST__DELTA_AUDIT_SECOND__NEW_ARCHAEOLOGY_ONLY_ON_PROVEN_RESIDUALS`
+`INHERIT_FIRST__CHRONOLOGY_AND_SUCCESSION_SECOND__DELTA_AUDIT_THIRD__NEW_ARCHAEOLOGY_ONLY_ON_PROVEN_RESIDUALS`
 
-## Fixed physical premise
+Pyat must not become the average of every document it reads, the first thing it reads, the last thing it reads, or the numerically largest historical campaign. Every claim must be placed on a chronology/succession axis:
 
-PRE553 physical route is selected:
+`WHEN_CREATED + WHAT_IT_KNEW + EXACT_GRAIN + LATER_AWARENESS + CURRENT_AUTHORITY_STATUS`.
+
+## 1. Current architecture center
+
+HQD-2026-09-26-112 corrected Pyat R1's stage-shaped interpretation.
+
+The current project spine is:
+
+```text
+THE PAST / GOVERNED SOURCE + SOURCE-SEMANTIC AUTHORITY
+        ↓
+SELECTED ROUTE B SOURCE-BACKED LOGICAL EMPIRICAL REALIZATION
+        ↓
+PRE-FIELD-FORGE EMPIRICAL / LEARNED-WORLD PRODUCER DAG
+        ↓
+FIELD FORGE ACTOR-INDEPENDENT STRUCTURAL RELATION / OBSERVATORY LAW
+        ↓
+OBJECTIVE PRE-V3 SOCIAL / STRUCTURAL / TEMPORAL / CONSEQUENCE PRODUCER DAG
+        ↓
+TERMINAL PRE-V3 OBJECTIVE-WORLD SERVING CONTRACT
+        ↓
+[DELIBERATELY DEFERRED UNTIL THE SOCIOLOGICAL WORLD IS MATURE]
+PRE-V3 → V3 SEAM
+        ↓
+V3 + CAN-008 → PFF → V2
+```
+
+Historical Dva stage labels such as V553–V558 remain function/jurisdiction genealogy and compatibility vocabulary. They are **not mandatory current physical nodes**.
+
+## 2. Route B is fixed
+
+HQD-2026-09-26-109 selected:
 
 `B = SOURCE_BACKED_VIRTUAL_C11`
 
-This selection is an HQ/project-owner development decision. It is **not** a claim that FIABC measured B as a winner.
+as project policy and terminated FIABC A/B/C competition as a development dependency.
 
-Pyat SHALL NOT reopen A/B/C competition unless it proves a concrete current required semantic/terminal capability that B cannot satisfy.
+This is **not** a measured-winner claim.
 
-Candidate A and Candidate C remain retrievable evidence. They are not active competing routes.
+A/C remain historical/comparator evidence. C-style accelerators may be added later only as disposable, regenerable, nonauthoritative optimizations after a demonstrated need.
 
-Optional C-style regenerable accelerators may later be attached to B only after a demonstrated profiling need. They must remain disposable, nonauthoritative, source-reconstructable, and semantically equivalent.
+## 3. The current immediate problem
 
-## Terminal objective
+Do **not** jump directly from "LiTS is FF02-ready" to a one-off Field Forge court.
 
-Produce the authoritative development program for:
+Current Pyat is first determining whether Rawlsing has a **canonical post-selection Route-B source→pre-Field-Forge artifact factory** that is:
 
-```text
-GOVERNED SOURCE FILES
-  -> frozen source access / decoder law
-  -> B / source-backed virtual C11
-  -> I03 exact empirical query
-  -> I05 + all current learned-world successor functions
-  -> I04 structural admission
-  -> adopted pre-V553 / Field-Forge-derived structural producers
-  -> V553
-  -> V554
-  -> V555
-  -> V556
-  -> V557
-  -> V558 immutable StructuralPriorRepository + deterministic ContextResolver
-  -> final standalone PRE-V3 structural world
-```
+- owned by current selected-B code/authority rather than a frozen FIABC compatibility owner;
+- explicit about its canonical learned empirical product/release bundle;
+- replayable and selectively invalidatable;
+- qualified across unlike source families/waves;
+- capable of producing the horizontal source breadth needed to test Field Forge;
+- vertically composable into Field Forge and then the objective PRE-V3 world.
 
-The final plan must preserve every materially required current successor of old DDM V550–V552/J functionality and must identify every missing producer, authority, implementation, proof, seam, and end-to-end composition obligation.
+LiTS is a very strong B-semantic positive control, but current evidence does not yet justify calling its FIABC-era candidate-neutral oracle wrapper the canonical post-HQD-109 production factory.
 
-## Phase-1 prohibition
+Read `11_CURRENT_HQ_HANDOFF_20260926.md` and `12_B_ROUTE_PRE_FIELD_FORGE_GROK_DOCKET.md` for the exact live audit.
 
-Pyat Phase 1 is reconnaissance, compilation, status adjudication and development planning.
+## 4. Fresh-HQ startup order
 
-**NO NEW PRODUCTION IMPLEMENTATION IN PHASE 1.**
+A fresh Pyat/Vozhd SHALL:
 
-A discovered hole is recorded and classified. It is not silently filled.
+1. read this file;
+2. read `STATUS.json`;
+3. read `13_FRESH_HQ_FULL_GROK_PROTOCOL.md`;
+4. resolve the live control HEAD and `HQ_HANDOFF/LATEST.json`;
+5. read HQ decisions 109 → 112 in order;
+6. read the complete `PYAT_R2_REGROUNDING_R1/` package;
+7. read `10_R2_CURRENT_AUTHORITY_AND_ANTI_RESURRECTION.md`;
+8. read `11_CURRENT_HQ_HANDOFF_20260926.md`;
+9. read `12_B_ROUTE_PRE_FIELD_FORGE_GROK_DOCKET.md`;
+10. then traverse the governing inheritance spine in `02_GOVERNING_INHERITANCE.md` using the chronology rules in the grok protocol;
+11. inspect live current code and tests at the live control head;
+12. produce the required fresh-HQ articulation before dispatching workers or proposing implementation.
 
-## Browser-HQ startup gate
+Files 07–09 preserve predecessor/R0/R1 history. They are not the current architecture/program authority where HQD-112 supersedes them.
 
-A fresh Pyat Browser HQ must:
+## 5. Hard stop laws
 
-1. read this control room completely;
-2. resolve the live PRE-MAIN head;
-3. read the governing inheritance spine in `02_GOVERNING_INHERITANCE.md`;
-4. inspect the current implementation surfaces named by the campaign;
-5. produce a detailed articulation of what it understands:
-   - whole-machine purpose;
-   - B-route consequences;
-   - inherited closed law;
-   - known open fronts;
-   - Field Forge status;
-   - DDM conservation problem;
-   - V553–V558 architecture-versus-implementation state;
-   - proposed Rabochii dispatch;
-6. return that articulation for predecessor/HQ review **before dispatching workers**.
+Until separately authorized:
 
-Pyat is expected to reach at least the understanding encoded here, then go materially deeper through live repository grounding.
+- no production implementation;
+- no reopening A/B/C;
+- no raw-source execution merely to repeat already-banked evidence;
+- no promotion of a historical stage/carrier into current ontology;
+- no Field Forge semantic invention;
+- no V3/PFF seam implementation;
+- no declaration of project-wide composition from one canary;
+- no claim that source bytes recreate manual/adjudicated semantic authority.
+
+## 6. Pyat success criterion
+
+Pyat succeeds when a successor engineer can identify, without archaeology from zero:
+
+- the exact selected-B source→logical empirical path;
+- the canonical pre-Field-Forge empirical/learned products and their lifecycle;
+- which survey/wave/source scopes are actually qualified to produce them;
+- the horizontal qualification matrix still needed;
+- the exact Field Forge input and structural-admission contracts;
+- the objective PRE-V3 producer graph required downstream;
+- every surviving historical function and its current owner/successor/retirement;
+- replay, currentness and selective invalidation at each edge;
+- why the PRE-V3→V3 seam remains intentionally deferred;
+- and the dependency-ordered next development program.
+
+Start with `13_FRESH_HQ_FULL_GROK_PROTOCOL.md`.
