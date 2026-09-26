@@ -8,7 +8,7 @@ No Rabochii dispatch before this report.
 
 ## R1 — Parallel primary lanes
 
-### PYAT-A — INHERITANCE COMPILATION + RESIDUAL AUDIT
+### PYAT-A — INHERITANCE COMPILATION + TRUE RESIDUAL AUDIT
 
 Not archaeology from zero.
 
@@ -41,19 +41,18 @@ Separate:
 
 Identify the exact present terminal object(s) and missing links toward structural producers.
 
-### PYAT-C — FIELD FORGE CANONICALIZATION
+### PYAT-C — ADOPTED FIELD FORGE SUCCESSION + PRODUCER MAP
 
-Read W48 first, then underlying Field Forge as necessary.
+Start from the current adopted Field Forge R2/post-R2 authority surface, not the original exploratory room.
 
-Classify each substantive Field Forge proposal by current ownership/adoption status and proposed jurisdiction.
+Compile:
+- adopted R2 and post-R2 exact authorities;
+- current producer/object/module owners;
+- exact ingress/consumer paths;
+- exploratory/dormant/claim-conditional remainder;
+- any still-unowned source→V558 prerequisite.
 
-Answer:
-- what is already provided by current PRE553/Dva;
-- what should become a pre-V553 producer;
-- what belongs inside V553–V556;
-- what belongs in V3/later;
-- what remains exploratory;
-- what additional authority/research is needed.
+Do not reopen adopted R2 or already-closed OBL040/041/042/005/043.
 
 No implementation.
 
@@ -77,6 +76,8 @@ Identify the exact standalone V558 artifact target.
 ### PYAT-E — SEAM + COMPOSITION AUDIT
 
 Inspect only producer→consumer boundaries.
+
+Start from the current fact that one genuine 19,210-respondent Route-B vertical canary exists; determine exactly what it proves and what it does not.
 
 Prove or disprove:
 - every current semantic object has one owner;
