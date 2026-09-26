@@ -2,6 +2,12 @@
 
 Pyat must ground from live GitHub, not memory.
 
+## Tier -1 — Predecessor integrated synthesis
+
+Read `PYAT_CONTROL_ROOM/07_PREDECESSOR_HQ_SYNTHESIS.md` before beginning deep reconstruction.
+
+It is the predecessor HQ's integrated starting model: **orientation to verify and deepen, never substitute authority**. Use it to avoid rediscovering already-integrated conclusions, then challenge every material claim against the primary/current evidence below.
+
 ## Tier 0 — Current HQ / currentness
 
 - `HQ_HANDOFF/LATEST.json`
