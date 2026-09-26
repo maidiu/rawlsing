@@ -6,6 +6,8 @@
 
 **Protected successor:** `agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1` at `16f5e7d5f691e908d85dc1dd26b8a59a29f668f4`.
 
+**Evidence/docs tip:** `b210affcd749be03b962588facdad68f3eea1bde`, a later docs-only descendant where the external control binding was verified with a clean checkout. The final return-metadata commit is a further evidence-only descendant.
+
 ## Result
 
 The source-local runner is qualified against the exact cache-neutral joined successor. It binds the 10C successor object, the joined split-reuse contract, physical epoch `fc6afc9bc7b287f8fd0654e1da546faee7e6c85491e6735ebe4a161b0db3de35`, the exact Darwin runtime, and a separate control implementation receipt. The actual-object gate compares protected manifest `StageSpec` transitions and temporary `StageLedger` receipts; it does not open or hash survey payloads.
