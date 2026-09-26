@@ -12,6 +12,10 @@ Browser bootstrap:
 
 `PYAT_CONTROL_ROOM/06_BROWSER_HQ_BOOTSTRAP.md`
 
+Predecessor synthesis:
+
+`PYAT_CONTROL_ROOM/07_PREDECESSOR_HQ_SYNTHESIS.md`
+
 ## Holding
 
 The project owner has selected Route B / `SOURCE_BACKED_VIRTUAL_C11` as the PRE553 physical production route.
@@ -43,7 +47,7 @@ No new production implementation until Pyat has:
 
 Read:
 1. `PYAT_CONTROL_ROOM/00_READ_ME_FIRST.md`
-2. remaining `PYAT_CONTROL_ROOM/` files in numeric order
+2. remaining `PYAT_CONTROL_ROOM/` files in numeric order, including `07_PREDECESSOR_HQ_SYNTHESIS.md`
 3. live currentness/authority/open ledgers cited there
 4. current code surfaces named there.
 
