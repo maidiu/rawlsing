@@ -264,22 +264,56 @@ def verify_successor_binding(
     epoch_material = {k: v for k, v in epoch.items() if k != "receipt_identity"}
     if hashlib.sha256(_canon(epoch_material)).hexdigest() != epoch_identity:
         raise SplitR2GateError("cache-neutral epoch self-identity drift")
-    if epoch_identity != EXPECTED_PHYSICAL_EPOCH_IDENTITY or epoch.get("runtime") != EXPECTED_RUNTIME:
+    epoch_runtime = epoch.get("runtime", {})
+    normalized_epoch_runtime = {
+        "implementation": epoch_runtime.get("python_implementation"),
+        "python": epoch_runtime.get("python_version"),
+        "system": epoch_runtime.get("system"),
+        "machine": epoch_runtime.get("machine"),
+        "pyreadstat": epoch_runtime.get("pyreadstat"),
+        "pyarrow": epoch_runtime.get("pyarrow"),
+        "pandas": epoch_runtime.get("pandas"),
+        "numpy": epoch_runtime.get("numpy"),
+    }
+    if (
+        epoch_identity != EXPECTED_PHYSICAL_EPOCH_IDENTITY
+        or normalized_epoch_runtime != EXPECTED_RUNTIME
+    ):
         raise SplitR2GateError("cache-neutral epoch identity/runtime drift")
 
     protected_blobs = dict(contract.get("protected_blobs", {}))
+    binding_surfaces = dict(binding.get("successor_surfaces", {}))
+    surfaces = dict(binding_surfaces)
+    surfaces["driver"] = binding.get("driver", {})
     joined_launcher = contract.get("joined_launcher", {})
-    worker_e_helper = contract.get("worker_e_cache_control", {})
-    protected_blobs[joined_launcher.get("path", "")] = joined_launcher.get("git_blob_sha1")
-    protected_blobs[worker_e_helper.get("path", "")] = worker_e_helper.get("git_blob_sha1")
-    checked_blobs: dict[str, str] = {}
-    for rel, expected_blob in protected_blobs.items():
-        if not rel or not isinstance(expected_blob, str):
+    worker_e_helper = surfaces.get("worker_e_cache_control", {})
+    if (
+        joined_launcher != binding_surfaces.get("joined_launcher")
+        or worker_e_helper.get("git_blob_sha1") is None
+    ):
+        raise SplitR2GateError("split reuse contract successor surface inventory drift")
+    checked_blobs: dict[str, Mapping[str, str]] = {}
+    expected_surface_names = set(protected_blobs) | {
+        "joined_launcher",
+        "worker_e_cache_control",
+    }
+    if set(surfaces) - {"driver", "process_envelope", "process_isolated_backend", "stage_backend", "t5_terminal_control", "joined_launcher", "worker_e_cache_control"}:
+        raise SplitR2GateError("unexpected joined successor surface name")
+    for name in sorted(expected_surface_names):
+        surface = surfaces.get(name)
+        expected_blob = (
+            protected_blobs.get(name)
+            if name in protected_blobs
+            else surface.get("git_blob_sha1") if isinstance(surface, Mapping) else None
+        )
+        rel = surface.get("path") if isinstance(surface, Mapping) else None
+        surface_blob = surface.get("git_blob_sha1") if isinstance(surface, Mapping) else None
+        if not rel or not isinstance(expected_blob, str) or surface_blob != expected_blob:
             raise SplitR2GateError("split reuse contract protected blob inventory malformed")
         actual_blob = _git_text(repo_root, "rev-parse", f"HEAD:{rel}")
         if actual_blob != expected_blob:
             raise SplitR2GateError(f"protected successor code blob drift: {rel}")
-        checked_blobs[rel] = actual_blob
+        checked_blobs[name] = {"path": rel, "git_blob_sha1": actual_blob}
 
     return {
         "status": "PASS__EXACT_10C_AND_SPLIT_REUSE_CONTRACT_BOUND",
