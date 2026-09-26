@@ -1,54 +1,47 @@
-# RAWLSING HQ → VOZHD PYAT BOOTSTRAP — R1
+# RAWLSING HQ → VOZHD PYAT BOOTSTRAP — CURRENT POINTER
 
-Governing decision: `HQD-2026-09-26-109`
+Historical filename retained for compatibility.
 
-Live PRE-MAIN at creation: `10be15578044429cdd6c9653ae1b1dd4e0627306`
+Do **not** use this file's former R1 source→V558 / V553–V558 program as current law.
 
-Pyat control room:
-
-`PYAT_CONTROL_ROOM/00_READ_ME_FIRST.md`
-
-Browser bootstrap:
+Current entrypoint:
 
 `PYAT_CONTROL_ROOM/06_BROWSER_HQ_BOOTSTRAP.md`
 
-Predecessor synthesis:
+Current front door:
 
-`PYAT_CONTROL_ROOM/07_PREDECESSOR_HQ_SYNTHESIS.md`
+`PYAT_CONTROL_ROOM/00_READ_ME_FIRST.md`
 
-## Holding
+Current architecture/program authority:
 
-The project owner has selected Route B / `SOURCE_BACKED_VIRTUAL_C11` as the PRE553 physical production route.
+`HQD-2026-09-26-112`
 
-This is a development-policy decision, not a claim of a completed FIABC measured winner.
+Current immediate sequencing refinement:
 
-No further A/B/C bakeoff is required for development progression.
+`HQD-2026-09-26-113`
 
-Pyat is the successor command responsible for producing the complete, zero-loss, current source→V558 development program.
+Selected route:
 
-## First duty
+`B__SOURCE_BACKED_VIRTUAL_C11`
 
-A new Pyat Browser HQ must grok the full control room and governing live repository inheritance, then return a detailed articulation for predecessor-HQ review before dispatching Rabochii.
+Current active program center:
 
-It must go deeper than the control room rather than merely paraphrasing it.
+`ROUTE_B_SOURCE_TO_PRE_FIELD_FORGE_LEARNED_WORLD__FIELD_FORGE__OBJECTIVE_PREV3`
 
-## Phase-1 law
+Current immediate gate:
 
-Reconnaissance / compilation / adjudication / program synthesis only.
+`SELECTED_B_PRODUCTION_CONSTITUTION_GROK_BEFORE_AUTOMATIC_LITS_FF02_DISPATCH`
 
-No new production implementation until Pyat has:
-- joined prior inheritance;
-- canonicalized Field Forge;
-- reconciled V553–V558 architecture vs implementation;
-- identified exact seams;
-- produced the master development DAG.
+PRE-V3→V3 seam:
 
-## Entry
+`DELIBERATELY_DEFERRED_PENDING_SOCIOLOGICAL_WORLD_MATURITY`
 
-Read:
-1. `PYAT_CONTROL_ROOM/00_READ_ME_FIRST.md`
-2. remaining `PYAT_CONTROL_ROOM/` files in numeric order, including `07_PREDECESSOR_HQ_SYNTHESIS.md`
-3. live currentness/authority/open ledgers cited there
-4. current code surfaces named there.
+Production implementation:
 
-Then produce the mandatory R0 grok report.
+`NOT_AUTHORIZED`
+
+A fresh Pyat must follow the current control-room curriculum and live HQ_HANDOFF/LATEST pointer. Files 07–09 and PYAT_R1_FANIN_R1 remain historical/forensic evidence only where HQD-112 supersedes their architecture/program framing.
+
+Terminal:
+
+`PYAT_CURRENT_BOOTSTRAP_POINTER__USE_CONTROL_ROOM_R2_CURRICULUM`
