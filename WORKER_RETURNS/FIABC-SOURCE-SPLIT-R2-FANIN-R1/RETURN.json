@@ -1,0 +1,76 @@
+{
+  "10c_reuse_contract_binding_proof": "10C_REUSE_CONTRACT_BINDING_PROOF.json",
+  "artifact_sha256": {
+    "102_STAGE_MATRIX.csv": "64c35799c7037a57ef650aef27f8ff7d7d927ca072a069f04899efac76d6dcb6",
+    "102_STAGE_MATRIX.json": "16df1ee8a87c59b3ff4c7441e02ffca38e0d1b502a7c434f1523c0e48559d28b",
+    "10C_REUSE_CONTRACT_BINDING_PROOF.json": "1993f42f7a952dcf8476c1f790be6ad47abd0f573a129e31bb250ff5c5b5c307",
+    "CACHE_NEUTRAL_EPOCH_BINDING_RECEIPT.json": "5fed5feccbb13aafae33d492ba0c725e12792076e357630819e77601971f8a5a",
+    "CONTROL_BINDING.json": "f9b66c55316144f72c75a73864b6106c529ebf971b2751fff9af57db70cae819",
+    "CONTROL_BINDING_PRESEAL_CHECK.json": "4a55c16c757cfcef08670ca9118f403a89b1e4230a98d065874d5ba2f12c0f25",
+    "HOSTILE_TEST_OUTPUT.txt": "2f939659ea77e378d3d92c7b04c4de47e5f0db55e92834ad050772f874a62e7f",
+    "JOINED_VS_SPLIT_DIFFERENTIAL.json": "44b6cdf69342aec8e5f2603baeeb87a648151725ead416ed7bf4e4965033dd42",
+    "PROTECTED_SUCCESSOR_NO_DRIFT.json": "2e6f41db6caca59c3cceb44b554487a38d7dce642d93e5138a72a2c439925401",
+    "source_access_telemetry.json": "b2dca4c5776c8cfa5ef805132be8854e8147e62e9a997164c440db221144cdd9"
+  },
+  "cache_neutral_epoch_receipt": "CACHE_NEUTRAL_EPOCH_BINDING_RECEIPT.json",
+  "commission_head": "d60616d167987766f29762cb169b4f379df0e695",
+  "control_binding_path": "CONTROL_BINDING.json",
+  "control_binding_receipt_identity": "8a31dcb0b9b7c7f32061fe32a6786bbff1aa663e713e2adb726f3fb733563762",
+  "control_binding_verification_path": "CONTROL_BINDING_PRESEAL_CHECK.json",
+  "control_branch": "agent/vozhd-fiabc-split-r2-fanin-r1",
+  "differential_report": "JOINED_VS_SPLIT_DIFFERENTIAL.json",
+  "equivalence_verdicts": {
+    "LITS_I": "LITS_SPLIT_RUNNER_EQUIVALENT_TO_JOINED_SOURCE_SEGMENT__PASS",
+    "WVS7": "WVS7_SPLIT_RUNNER_EQUIVALENT_TO_JOINED_SOURCE_SEGMENT__PASS"
+  },
+  "evidence_docs_tip_commit": null,
+  "exact_stage_matrix": {
+    "csv": "102_STAGE_MATRIX.csv",
+    "json": "102_STAGE_MATRIX.json",
+    "rows": 102
+  },
+  "hostile_test_output": "HOSTILE_TEST_OUTPUT.txt",
+  "hq_promotion_required": true,
+  "integrated_implementation_blob_table": {
+    "count": 17,
+    "path": "INTEGRATED_IMPLEMENTATION_BLOBS.csv",
+    "sha256": "73b5ac136f5d4b7f55f28e9e2c037d9750857888ad88bac77e94a06f5b656bb0"
+  },
+  "later_evidence_docs_tip_distinct_from_implementation": true,
+  "machine_preparation_or_measurement_performed": false,
+  "next_action": "HQ adjudication; no push or promotion performed",
+  "physical_epoch_identity": "fc6afc9bc7b287f8fd0654e1da546faee7e6c85491e6735ebe4a161b0db3de35",
+  "production_candidate_processes_or_outputs_performed": false,
+  "protected_execution_branch": "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1",
+  "protected_execution_head": "16f5e7d5f691e908d85dc1dd26b8a59a29f668f4",
+  "protected_successor_no_drift_proof": "PROTECTED_SUCCESSOR_NO_DRIFT.json",
+  "qualification": {
+    "actual_object_102_stage_parity_and_failure_matrices": "PASS",
+    "adjacent_t3_t4_t5_process_envelope_suites": "PASS",
+    "fan_in_integrated_suite": "102 passed, 65 subtests passed",
+    "full_driver_bound_10c_integration": "PASS",
+    "protected_joined_successor_suites": "86 passed",
+    "source_free_orchestration_both_sources": "PASS",
+    "total_subtests_passed": 65,
+    "total_tests_passed": 188,
+    "worker_b_runtime_pair_postrun_and_workroot_hostility": "PASS",
+    "worker_d_merge_receipt_hostility": "PASS",
+    "worker_e_cache_neutral_hostility": "PASS"
+  },
+  "qualified_implementation_head": "ed8dabf015d1fd4b4ade9b55816a420b0bc1811e",
+  "repository": "maidiu/rawlsing",
+  "schema": "RAWLSING_FIABC_SOURCE_SPLIT_R2_FANIN_RETURN@1.0.0",
+  "source_access_telemetry": "source_access_telemetry.json",
+  "source_free_scope": true,
+  "status": "PASS__FIABC_SOURCE_SPLIT_R2_FANIN_SOURCE_FREE_QUALIFIED__HQ_PROMOTION_REQUIRED",
+  "synthetic_process_envelope_probe_launches": 10,
+  "worker_provenance_path": "WORKER_PROVENANCE.md",
+  "zero_execution_law": {
+    "candidate_abc_process_launch_attempts": 0,
+    "candidate_outputs": 0,
+    "decoder_calls": 0,
+    "measured_p2x_executions": 0,
+    "raw_source_hash_sha_passes": 0,
+    "raw_source_opens": 0
+  }
+}
