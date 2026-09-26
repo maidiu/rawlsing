@@ -1,122 +1,191 @@
 # VOZHD PYAT — GOVERNING INHERITANCE SPINE
 
-Pyat must ground from live GitHub, not memory.
+Status: `CURRENT_R2_CHRONOLOGY_AWARE_SPINE`
 
-## Tier -1 — Predecessor integrated synthesis
+Pyat must ground from live GitHub, not memory. Read this spine using the chronology protocol in `13_FRESH_HQ_FULL_GROK_PROTOCOL.md`.
 
-Read `PYAT_CONTROL_ROOM/07_PREDECESSOR_HQ_SYNTHESIS.md` before beginning deep reconstruction.
+## Tier 0 — live HQ/currentness
 
-It is the predecessor HQ's integrated starting model: **orientation to verify and deepen, never substitute authority**. Use it to avoid rediscovering already-integrated conclusions, then challenge every material claim against the primary/current evidence below.
-
-## Tier 0 — Current HQ / currentness
+Always begin with:
 
 - `HQ_HANDOFF/LATEST.json`
 - `HQ_HANDOFF/DECISION_LEDGER.jsonl`
-- `data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/CANONICAL_GOVERNANCE_R1/CURRENT_AUTHORITY_INDEX.tsv`
-- current OPEN / anti-resurrection / preservation surfaces under PRE_MAIN_RECONCILIATION_R1
+- `PYAT_CONTROL_ROOM/STATUS.json`
+- live `integration/pre-main-reconciliation-r1` HEAD
+- current authority/open-obligation/anti-resurrection surfaces under `PRE_MAIN_RECONCILIATION_R1`.
 
-## Tier 1 — Current unfinished frontier
+Read HQD-2026-09-26-109, 110, 111 and 112 in chronological order.
 
-Read and reconcile:
-- `PROJECT_INHERITANCE_R1/SOURCE_CORPORA/W45_VERKHOVOD_PREV3_INHERITANCE/UNFINISHED_FRONTIER.tsv`
+Key succession:
 
-At Pyat establishment, especially important:
-- UF02 — PRE553 publication seam vs continuous content-addressed DAG;
-- UF03 — remaining learned-world functional coverage;
-- UF04 — complete source→PRE-V3 vertical compiler composition;
-- UF05 — fracture-map current runtime readmission.
+- 109 selects Route B and terminates A/B/C as development dependency;
+- 110 authorizes Pyat R1 forensic dispatch;
+- 111 joins valuable R1 forensic evidence but becomes stage-shaped at program grain;
+- 112 explicitly supersedes 111 at architecture-map, residual-register and development-program grain while preserving its evidence.
 
-UF01/UF06 A/B/C competition are superseded as Pyat development dependencies by HQD-109 B-route selection. Preserve them as history, not live selection gates.
+## Tier 1 — current Pyat R2 correction and live handoff
 
-## Tier 2 — Dva whole-machine law
+Read all of:
 
-Read at minimum:
-- `data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/RAWLSING_GOVERNING_SPIRIT.md`
-- `.../TERMINAL_DEMAND_ENVELOPE.md`
-- `.../ARCHITECTURE_PASS_LAW.md`
-- `.../CAPABILITY_MATRIX.md`
-- `.../integration/WHOLE_MACHINE_ARCHITECTURE_CLOSURE_RULING.md`
-- `.../integration/SEAM_INTEGRITY_CLOSURE_RULING.md`
-- `.../integration/V553_COMPLETION_IMPLEMENTATION_RULING.md`
-- `.../integration/V554_COMPLETION_IMPLEMENTATION_RULING.md`
-- `.../integration/V555_COMPLETION_IMPLEMENTATION_RULING.md`
-- `.../integration/V556_COMPLETION_IMPLEMENTATION_RULING.md`
-- `.../integration/V557_V558_COMPLETION_IMPLEMENTATION_RULING.md`
-- `.../integration/IMPLEMENTATION_RELEASE_SYNTHESIS_RULING.md`
-- accepted TD-R00 through TD-R07 results as needed.
+- `PYAT_R2_REGROUNDING_R1/00_GROUNDING_RECEIPT.md`
+- `01_CORRECTIVE_HQ_JOIN.md`
+- `02_CHRONOLOGY_AND_SUCCESSION_LEDGER.tsv`
+- `03_CANONICAL_ARCHITECTURE_SPINE.md`
+- `04_FUNCTION_CONSERVATION_CROSSWALK.tsv`
+- `05_CURRENT_GAP_REGISTER.tsv`
+- `06_DEPENDENCY_ORDERED_PROGRAM.md`
+- `PYAT_CONTROL_ROOM/10_R2_CURRENT_AUTHORITY_AND_ANTI_RESURRECTION.md`
+- `11_CURRENT_HQ_HANDOFF_20260926.md`
+- `12_B_ROUTE_PRE_FIELD_FORGE_GROK_DOCKET.md`
 
-Dva architecture is not to be casually redesigned. Pyat's job is to identify implementation/authority/composition gaps against it and test whether later current law legitimately superseded any grain.
+These are the current Pyat orientation. Older 07–09 control-room files are preserved predecessor/R1 evidence and must be interpreted through HQD-112.
 
-## Tier 3 — Trii empirical and learned-world reconstruction
+## Tier 2 — canonical current PRE-MAIN / Long Memory / Verkhovod
 
-Read at minimum:
-- `data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/51_VOZHD_TRII_NEW_CHAT_HANDOFF_20260821.md`
-- source-native constitution / decoder contract as referenced there;
-- PRE553 object/query/discovery/admission contracts;
-- shared PRE553 DAG authority-conservation materials;
-- Long Memory materials where current reconciliation points to them.
+Use current reconciliation before fresh archaeology:
 
-Important inherited law:
-- old representation is not automatically canonical;
-- old functionality/authority lineage must not silently disappear;
-- use delta-from-closure audit, not archaeology-from-zero.
+- `PRE_MAIN_RECONCILIATION_R1/00_RAWLSING_GROUND.md`
+- `CENTRAL_PROJECT_STATE_R1/`
+- `CANONICAL_GOVERNANCE_R1/CURRENT_AUTHORITY_INDEX.tsv`
+- current `OPEN_OBLIGATIONS.tsv`
+- W31–W35 current governance/currentness materials;
+- W43 Trii inheritance;
+- W45 Verkhovod PRE-V3 inheritance;
+- W46 Long Memory recovery/inheritance;
+- W47 authority/semantic inheritance;
+- W48 Field Forge forward inheritance.
 
-## Tier 4 — Chetiri source-backed correction
+Authority31 and Authority39 are especially important:
+- producer-owned semantic DAG / physical-stage neutrality;
+- living function succession / no silent loss.
 
-Read:
-- `.../VOZHD_CHETIRI_COMPILER_PERSISTENCE/00_READ_ME_FIRST.md`
-- `.../17_TRII_TO_CHETIRI_ORIENTATION_AND_OBLIGATION_CROSSWALK.md`
-- `.../18_DVA_TRII_TO_CHETIRI_FORWARD_TERMINAL_DISCOVERY_AND_PRODUCT_CROSSWALK.md`
-- accepted source-backed B owner/current implementation surfaces.
+## Tier 3 — Chetiri source-backed architecture
 
-Consume Chetiri's separation of:
-- semantic capability obligation;
-- physical persistence;
-- replay determinant;
-- regenerable execution state.
+Chetiri is central because Route B was later selected.
 
-Do not revive the A/B/C competition.
+Read the Chetiri control room and exact accepted returns, especially:
 
-## Tier 5 — W31–W35 and reconstructed current function capital
+- `VOZHD_CHETIRI_COMPILER_PERSISTENCE/00_READ_ME_FIRST.md`
+- `17_TRII_TO_CHETIRI_ORIENTATION_AND_OBLIGATION_CROSSWALK.md`
+- `18_DVA_TRII_TO_CHETIRI_FORWARD_TERMINAL_DISCOVERY_AND_PRODUCT_CROSSWALK.md`
+- C05R2A source-backed C11 facade acceptance;
+- C05R2B / later real-source execution evidence;
+- C06 replay/DAG/incremental-build;
+- C07 learned-world product/service constitution;
+- C08/final reconciliation evidence;
+- manual authority preservation/non-automation law;
+- G0 minimum persistence adjudication.
 
-Read current reconciliation materials sufficient to know:
-- current authority/lifecycle status;
-- Long Memory living succession;
-- W32 reconstructed functions;
-- W35 currentness and open ledgers;
-- Job3/O12 obligations;
-- current J01-A and routing Contract@2 authority ceilings.
+Consume Chetiri's distinctions:
 
-Six specifically reconstructed functions identified by W48:
-- R4 functional-dependency compaction;
-- adaptive discovery;
-- component authority vector;
-- recursive handoff;
-- authority maintenance;
-- source-backed positioned-subject possibility.
+`THE_PAST != THE_LEARNED_WORLD != THE_LIFE`
 
-Do not infer that "reconstructed" means end-to-end composed.
+`LOGICAL_C11_REQUIREMENT != PERMANENT_TRANSFORMED_CARRIER`
 
-## Tier 6 — Field Forge
+`REBUILDABLE != SEMANTICALLY_DISPOSABLE`
 
-Read:
-- `PROJECT_INHERITANCE_R1/SOURCE_CORPORA/W48_FIELD_FORGE_FORWARD_INHERITANCE/00_WORKER_RETURN.md`
-- `01_ARCHITECTURAL_DIGEST.md`
-- `03_ARCHITECTURAL_CANDIDATES.md`
-- then the underlying Field Forge corpus where an adoption question requires it.
+`DISCOVERY_CANDIDATE != VALIDATED_EMPIRICAL_RELATION != STRUCTURAL_ADMISSION`.
 
-Field Forge's preserved room predates later current reconciliation. It must consume W31-W35 currentness rather than becoming an alternate constitution.
+## Tier 4 — Trii empirical/source constitution and source estate
 
-## Tier 7 — Current code
+Read Trii for source-native/decoder/C11/I03/I05/I04 law and hostile source obligations.
 
-Inspect actual modules and tests, especially:
+Important current/history surfaces include:
+
+- source-native constitution;
+- format decoder contract;
+- source physical census;
+- Authority 70/71/72 source-certification terrain;
+- `SOURCE_CERT_PREP72_R10/` 34-source synthesis;
+- later certification/current-source successors where they exist;
+- PRE553 empirical object/query/discovery/admission contracts.
+
+Authority72 is historical but provides an unusually valuable adversarial source matrix:
+34 non-WVS7 source snapshots across nine families, with WVS7 as the 35th major proving source.
+
+Do not assume Authority72 launch status remained current; use it as source-terrain evidence and reconcile later successors.
+
+## Tier 5 — current selected-B implementation and empirical engine
+
+Inspect live current code at the live control head, including:
+
+- `rawlsing_next/pre553_physical_decoder.py`
 - `rawlsing_next/pre553_source_backed_c11_facade.py`
-- `rawlsing_next/pre553_empirical_query.py`
-- `rawlsing_next/pre553_discovery_exact.py`
-- `rawlsing_next/pre553_structural_admission.py`
-- W32 reconstructed-function modules;
-- current V553/V554/V555/V556/V557/V558 modules and tests;
-- publication/repository and ContextResolver implementations.
+- `rawlsing_next/pre553_carrier_execution.py`
+- `pre553_empirical_query.py`
+- `pre553_discovery_exact.py`
+- adaptive/recursive/component-authority/maintenance/positioned-subject successor modules;
+- current runtime/source-specific projection owners;
+- current tests.
 
-A design document saying "implemented" does not replace code inspection.
-Code existing does not replace accepted authority.
+Then inspect the Sep-2026 Empirical Engine common contract / EE01–EE16 materials and determine what is authority, implementation, populated learned product, and composition.
+
+Do not confuse an FIABC oracle/freeze wrapper with the canonical post-selection production owner.
+
+## Tier 6 — LiTS/WVS current empirical evidence
+
+LiTS and WVS are mandatory grok controls because they prove different things.
+
+### LiTS
+
+Read the final canonical closure return and code lineage documented in `11_CURRENT_HQ_HANDOFF_20260926.md`.
+
+LiTS currently proves fresh source-backed common semantic execution and a complete canonical empirical object closure. It is FF02-ready without source reopen.
+
+But the closure producer pins a historical accepted B-style facade/R5B release inside a candidate-neutral FIABC common-path producer. Pyat is currently adjudicating succession to the current selected-B production owner.
+
+### WVS7
+
+Read the accepted R1M successor/oracle return.
+
+WVS proves stable common-C11/I05 learned empirical truth over the admitted release, but the R1M court rehydrated an already-admitted logical release rather than performing the same fresh current-B source-backed materialization as LiTS.
+
+Together they are controls, not yet a universal production constitution.
+
+## Tier 7 — Field Forge current authority
+
+Start from adopted/current Field Forge R2 and post-R2 authority, not original exploratory R1 rhetoric.
+
+Read:
+
+- `FIELD_FORGE_R2_ADOPTED_AUTHORITY_R1/`
+- OBL040 / OBL041 / OBL042 / OBL005 / OBL043 closure/adoption evidence;
+- W48 forward inheritance;
+- concrete Field Forge producer/ingress tests and real canaries;
+- FF01/FF02 history only as chronology-aware evidence.
+
+Field Forge is not a universal geometry/master-carrier license. Strong nouns, homology, pressure and causal/mechanism claims remain authority-bounded.
+
+## Tier 8 — Dva as function/jurisdiction genealogy
+
+Read Dva whole-machine governing spirit, terminal demand, architecture pass, capability matrix, and closure/seam rulings to recover:
+
+- person/world separation;
+- direct producer ownership;
+- temporal/applicability/mediation/higher-order/publication/resolution functions;
+- no semantic laundering.
+
+Do **not** restore V553–V558 as mandatory physical stages. Later Trii/Chetiri/Authority31 work superseded that topology inference while preserving the functions.
+
+## Tier 9 — downstream V3/PFF/CAN-008 capital
+
+Read the later V3/PFF reconciliation, U1 owner topology, CAN-008 R2, V2 expression and related firewalls.
+
+Interpretation law:
+
+This work is **preserved downstream constitutional/interface capital** and may constrain the future seam.
+
+It is **not the current construction frontier**. The project intentionally parked the seam and returned upstream so the final PRE-V3→V3 contract can be informed by the sociological world PRE-V3 actually builds.
+
+## Tier 10 — predecessor/R1 Pyat evidence
+
+Only after the above, use:
+
+- `07_PREDECESSOR_HQ_SYNTHESIS.md`
+- `08_R0_PREDECESSOR_REVIEW_AND_R1_AUTHORIZATION.md`
+- `09_R1_FANIN_AND_TERMINAL.md`
+- `PYAT_R1_FANIN_R1/`
+
+for forensic findings, worker evidence and historical reasoning.
+
+HQD-112 controls wherever those materials imply numbered-stage current topology or the old development order.
