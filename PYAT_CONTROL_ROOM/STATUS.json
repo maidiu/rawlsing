@@ -1,12 +1,12 @@
 {
   "schema": "RAWLSING_PYAT_CONTROL_STATUS@1.0.0",
-  "status": "ACTIVE__R0_BROWSER_HQ_GROK_REQUIRED",
+  "status": "R1_FORENSIC_DISPATCH_AUTHORIZED__R0_ACCEPTED",
   "governing_decision": "HQD-2026-09-26-109",
   "control_branch": "integration/pre-main-reconciliation-r1",
   "semantic_pre_main_tip": "f5810c6c52c7df0e25a93bb1a2a95f248ef3706c",
   "selected_pre553_physical_route": "B__SOURCE_BACKED_VIRTUAL_C11",
   "fiabc_competition": "TERMINATED_AS_DEVELOPMENT_DEPENDENCY__NO_MEASURED_WINNER_CLAIM",
-  "phase": "R0",
+  "phase": "R1",
   "implementation_authorized": false,
   "rabochii_dispatch_authorized_after": "PYAT_BROWSER_HQ_GROK_REPORT_REVIEW",
   "entrypoint": "PYAT_CONTROL_ROOM/00_READ_ME_FIRST.md",
@@ -24,5 +24,16 @@
     "PYAT_CONTROL_ROOM/07_PREDECESSOR_HQ_SYNTHESIS.md"
   ],
   "r0_grok_must_compare_against_predecessor_synthesis": true,
-  "r0_grok_must_report_material_disagreements_and_true_residual_unknowns": true
+  "r0_grok_must_report_material_disagreements_and_true_residual_unknowns": true,
+  "rabochii_dispatch_authorized": true,
+  "rabochii_dispatch_authorized_by": "HQD-2026-09-26-110",
+  "r0_review": "PYAT_CONTROL_ROOM/08_R0_PREDECESSOR_REVIEW_AND_R1_AUTHORIZATION.md",
+  "primary_r1_lanes": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "next_action": "PYAT_HQ_DRAFT_AND_DISPATCH_FIVE_R1_FORENSIC_RABOCHII__THEN_JOIN"
 }
