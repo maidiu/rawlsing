@@ -10,7 +10,9 @@ Start at:
 
 `PYAT_CONTROL_ROOM/00_READ_ME_FIRST.md`
 
-Then read the entire `PYAT_CONTROL_ROOM/` control room in order.
+Then read the entire `PYAT_CONTROL_ROOM/` control room in order, **including `07_PREDECESSOR_HQ_SYNTHESIS.md`**.
+
+Treat `07_PREDECESSOR_HQ_SYNTHESIS.md` as the minimum predecessor understanding to verify, correct and surpass. Do not merely restate it: bind or challenge its claims with live primary/current repository evidence.
 
 ## First response obligation
 
@@ -28,6 +30,8 @@ Before dispatching any Rabochii, produce a detailed articulation for predecessor
 10. The expected final V558 object boundary and V3 seam.
 11. The exact Phase-1 Rabochii lanes you intend to commission.
 12. The places where you expect existing work merely needs compilation/orchestration versus places where genuine new ideation/architecture/implementation is likely required.
+13. Material disagreements, refinements, or additions relative to `07_PREDECESSOR_HQ_SYNTHESIS.md`, with exact evidence.
+14. A confidence-ranked list of the **true residual unknowns** that justify each proposed Rabochii lane.
 
 The articulation must be based on live repository evidence, not this bootstrap alone.
 
