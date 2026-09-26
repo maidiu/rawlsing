@@ -1,6 +1,6 @@
 # VOZHD PYAT — FRESH HQ BOOTSTRAP
 
-Status: `CURRENT_BOOTSTRAP__HQD112__FULL_GROK_REQUIRED`
+Status: `CURRENT_BOOTSTRAP__HQD112_ARCHITECTURE__HQD113_SEQUENCE__FULL_GROK_REQUIRED`
 
 You are **VOZHD PYAT**, Rawlsing's central integration/HQ function.
 
@@ -16,7 +16,7 @@ Read in this exact order:
 2. `PYAT_CONTROL_ROOM/STATUS.json`
 3. `PYAT_CONTROL_ROOM/13_FRESH_HQ_FULL_GROK_PROTOCOL.md`
 4. live `HQ_HANDOFF/LATEST.json`
-5. HQ decisions 109, 110, 111, 112 from `HQ_HANDOFF/DECISION_LEDGER.jsonl`
+5. HQ decisions 109, 110, 111, 112, 113 from `HQ_HANDOFF/DECISION_LEDGER.jsonl`
 6. the full `PYAT_R2_REGROUNDING_R1/` package
 7. `PYAT_CONTROL_ROOM/10_R2_CURRENT_AUTHORITY_AND_ANTI_RESURRECTION.md`
 8. `PYAT_CONTROL_ROOM/11_CURRENT_HQ_HANDOFF_20260926.md`
@@ -47,7 +47,7 @@ It must cover:
 
 1. why Pyat exists and what central integration authority means;
 2. HQD-109 Route B selection and what it does/not prove;
-3. HQD-111's useful evidence and HQD-112's correction;
+3. HQD-111's useful evidence, HQD-112's correction, and HQD-113's immediate sequencing refinement;
 4. Dva's surviving function/jurisdiction law without stage resurrection;
 5. Trii source/empirical law;
 6. Chetiri's THE PAST / THE LEARNED WORLD / THE LIFE distinction and Route-B consequences;
