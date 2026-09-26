@@ -14,14 +14,15 @@ Always begin with:
 - live `integration/pre-main-reconciliation-r1` HEAD
 - current authority/open-obligation/anti-resurrection surfaces under `PRE_MAIN_RECONCILIATION_R1`.
 
-Read HQD-2026-09-26-109, 110, 111 and 112 in chronological order.
+Read HQD-2026-09-26-109, 110, 111, 112 and 113 in chronological order.
 
 Key succession:
 
 - 109 selects Route B and terminates A/B/C as development dependency;
 - 110 authorizes Pyat R1 forensic dispatch;
 - 111 joins valuable R1 forensic evidence but becomes stage-shaped at program grain;
-- 112 explicitly supersedes 111 at architecture-map, residual-register and development-program grain while preserving its evidence.
+- 112 explicitly supersedes 111 at architecture-map, residual-register and development-program grain while preserving its evidence;
+- 113 preserves 112 and moves the immediate gate upstream to selected-B production-constitution grok before automatic FF02 dispatch.
 
 ## Tier 1 — current Pyat R2 correction and live handoff
 
