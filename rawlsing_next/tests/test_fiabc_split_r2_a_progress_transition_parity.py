@@ -21,7 +21,7 @@ import unittest
 CONTROL_ROOT = Path(__file__).resolve().parents[2]
 DRIVER_PATH = CONTROL_ROOT / "HQ_HANDOFF" / "launchers" / "FIABC_SOURCE_LOCAL_SPLIT_DRIVER.py"
 EXECUTION_BRANCH = "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1"
-EXECUTION_HEAD = "3d8f2ad62600b6777dcb23a28404a067502e77a0"
+EXECUTION_HEAD = "16f5e7d5f691e908d85dc1dd26b8a59a29f668f4"
 SOURCES = ("LITS_I", "WVS7")
 CANDIDATES = ("A", "B", "C")
 LITS_PREFIX = "LITS_I/A/S00_SOURCE_PREFLIGHT_IDENTITY"
@@ -103,6 +103,9 @@ class ProgressTransitionParityTests(unittest.TestCase):
                 "schema": "FIABC_SPLIT_R2_A_SOURCE_FREE_SIMULATION@1.0.0",
                 "stage": stage.address,
                 "source_free": True,
+                "source_access_performed": False,
+                "measurement_performed": False,
+                "execution_performed": False,
                 "candidate_process_launched": False,
             },
         )
@@ -212,6 +215,12 @@ class ProgressTransitionParityTests(unittest.TestCase):
         ledger = self._ledger(Path(temp.name))
         self._materialize_joined_prefix(ledger, source)
         source_sha = self.machine.document["sources"][source]["sha256"]
+        if source == "WVS7":
+            self._mechanical(
+                ledger,
+                self.machine.get(WVS_C_S00),
+                source_sha,
+            )
         calls: list[str] = []
         for address in CONTROL._stage_addresses(self.base, self.machine, source):
             old = ledger.stage_entry(address)
@@ -263,7 +272,7 @@ class ProgressTransitionParityTests(unittest.TestCase):
                     next_stage=stage.next_stage_on_pass,
                     source_sha=source_sha, begin=True,
                 )
-        return calls, dict(ledger.data["stages"])
+        return calls, dict(ledger.data["stages"]), ledger.work_root
 
     def test_run5_lits_progress_crash_reproduced_then_closed(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -383,6 +392,42 @@ class ProgressTransitionParityTests(unittest.TestCase):
             self.assertFalse(receipt["measurement_performed"])
             self.assertFalse(receipt["source_access_performed"])
 
+    def test_wvs_c_s00_split_only_closure_uses_actual_source_free_preserve(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            ledger = self._ledger(Path(tmp))
+            driver = types.SimpleNamespace(
+                ledger=ledger,
+                repo_root=self.execution_root,
+                repo=types.SimpleNamespace(head=EXECUTION_HEAD),
+            )
+            closure = CONTROL._materialize_split_only_mechanical_closure(
+                base=self.base,
+                driver=driver,
+                machine=self.machine,
+                source="WVS7",
+                source_sha=self.machine.document["sources"]["WVS7"]["sha256"],
+            )
+            self.assertEqual(closure, (WVS_C_S00,))
+            stage = self.machine.get(WVS_C_S00)
+            self.assertEqual(stage.disposition, "DONE__PRESERVE")
+            self.assertFalse(stage.empirical_source_access_required)
+            self.assertFalse(stage.physical_host_measurement_required)
+            entry = ledger.revalidate_terminal(WVS_C_S00)
+            self.assertEqual(entry["terminal_disposition"], "PRESERVED")
+            receipt = json.loads(
+                (ledger.work_root / entry["receipt_path"])
+                .read_text(encoding="utf-8")
+            )
+            self.assertFalse(receipt["source_access_performed"])
+            self.assertFalse(receipt["measurement_performed"])
+            self.assertFalse(receipt["execution_performed"])
+            source = DRIVER_PATH.read_text(encoding="utf-8")
+            preflight = source[source.index("def _source_preflight("):]
+            self.assertLess(
+                preflight.index("_materialize_split_only_mechanical_closure("),
+                preflight.index("driver.ensure_source_verified(source)"),
+            )
+
     def test_failure_and_blocker_differential_uses_actual_state_machine_and_ledger(self):
         candidate_cases = [
             ("CANDIDATE", f"{source}/{candidate}/{stage}")
@@ -411,7 +456,7 @@ class ProgressTransitionParityTests(unittest.TestCase):
         for source, outcome in cases:
             with self.subTest(source=source, outcome=outcome):
                 joined_calls, joined_ledger = self._simulate_joined(source, outcome)
-                split_calls, split_ledger = self._simulate_split(source, outcome)
+                split_calls, split_ledger, split_root = self._simulate_split(source, outcome)
                 self.assertEqual(
                     split_calls,
                     joined_calls,
@@ -422,6 +467,27 @@ class ProgressTransitionParityTests(unittest.TestCase):
 
                 shared = set(joined_ledger) & set(split_ledger)
                 for address in shared:
+                    if address == WVS_C_S00:
+                        # The split source cut closes this latent row as an
+                        # exact mechanical PRESERVED terminal. Joined
+                        # execution can propagate a later source stop over it
+                        # before the joined cursor reaches the row.
+                        self.assertEqual(
+                            split_ledger[address]["terminal_disposition"],
+                            "PRESERVED",
+                        )
+                        self.assertIn(
+                            joined_ledger[address]["terminal_disposition"],
+                            {"PRESERVED", "BLOCKED_BY_COMMON_SOURCE_AUTHORITY"},
+                        )
+                        receipt = json.loads(
+                            (split_root / split_ledger[address]["receipt_path"])
+                            .read_text(encoding="utf-8")
+                        )
+                        self.assertFalse(receipt["source_access_performed"])
+                        self.assertFalse(receipt["measurement_performed"])
+                        self.assertFalse(receipt["execution_performed"])
+                        continue
                     self.assertEqual(
                         split_ledger[address]["terminal_disposition"],
                         joined_ledger[address]["terminal_disposition"],

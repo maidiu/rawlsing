@@ -126,6 +126,9 @@ def _make_source_root(
     terminal_control_head: str,
     os_version="13.2.1",
     hardware="MacBookPro15,1",
+    common_blocker_start: str | None = None,
+    candidate_failure_cell: str | None = None,
+    runtime_version_overrides: dict[str, str] | None = None,
 ):
     root.mkdir(parents=True, exist_ok=True)
     stages = {}
@@ -153,6 +156,21 @@ def _make_source_root(
             "terminal_disposition": "PASS",
             "next_stage": "__SYNTHETIC_NEXT__",
         }
+    if candidate_failure_cell is not None:
+        prefix = f"{source}/{candidate_failure_cell}/"
+        for address, entry in stages.items():
+            if address.startswith(prefix):
+                entry["terminal_disposition"] = "CANDIDATE_LOCAL_FAILURE"
+    if common_blocker_start is not None:
+        blocker_source, blocker_candidate, blocker_stage = common_blocker_start.split("/")
+        candidate_index = EVIDENCE.EXPECTED_CANDIDATES.index(blocker_candidate)
+        stage_index = EVIDENCE.STAGE_CATALOG.index(blocker_stage)
+        for candidate in EVIDENCE.EXPECTED_CANDIDATES[candidate_index:]:
+            start_index = stage_index if candidate == blocker_candidate else 0
+            for stage_id in EVIDENCE.STAGE_CATALOG[start_index:]:
+                stages[f"{blocker_source}/{candidate}/{stage_id}"][
+                    "terminal_disposition"
+                ] = "BLOCKED_BY_COMMON_SOURCE_AUTHORITY"
     ledger = {
         "schema": EVIDENCE.LEDGER_SCHEMA,
         "continuation_map": _manifest_identity(),
@@ -180,29 +198,45 @@ def _make_source_root(
         )
         candidate_terminals[candidate] = {
             "address": address,
-            "terminal_disposition": "PASS",
+            "terminal_disposition": stages[address]["terminal_disposition"],
             "receipt_hash": stages[address]["receipt_hash"],
         }
+    common_blockers = sorted(
+        address for address, entry in stages.items()
+        if entry["terminal_disposition"] == "BLOCKED_BY_COMMON_SOURCE_AUTHORITY"
+    )
+    candidate_failures = sorted({
+        "/".join(address.split("/")[:2])
+        for address, entry in stages.items()
+        if entry["terminal_disposition"] == "CANDIDATE_LOCAL_FAILURE"
+    })
+    host = _host(
+        os_version=os_version,
+        hardware=hardware,
+    )
+    if runtime_version_overrides:
+        host["governed_runtime"]["dependency_versions"].update(
+            runtime_version_overrides
+        )
     terminal = {
         "schema": EVIDENCE.TERMINAL_SCHEMA,
         "status": (
-            "SOURCE_BLOCK_SEQUENCE_COMPLETE__ALL_THREE_CELLS_TERMINAL"
+            "BLOCKED__COMMON_SOURCE_AUTHORITY"
+            if common_blockers
+            else "SOURCE_BLOCK_SEQUENCE_COMPLETE__ALL_THREE_CELLS_TERMINAL"
         ),
         "source": source,
         "source_sha256": EVIDENCE.EXPECTED_SOURCE_SHA256[source],
         "candidate_order": list(EVIDENCE.EXPECTED_CANDIDATES),
         "candidate_terminals": candidate_terminals,
-        "candidate_failure_cells": [],
-        "common_blockers": [],
+        "candidate_failure_cells": candidate_failures,
+        "common_blockers": common_blockers,
         "incomplete_stages": [],
         "stage_ledger_sha256": ledger_sha,
         "execution_branch": EVIDENCE.EXPECTED_EXECUTION_BRANCH,
         "execution_head": EVIDENCE.EXPECTED_EXECUTION_HEAD,
         "current_execution_manifest": _manifest_identity(),
-        "host": _host(
-            os_version=os_version,
-            hardware=hardware,
-        ),
+        "host": host,
         "control_runner": {
             "control_head": terminal_control_head,
             "launcher_sha256": binding_summary[
@@ -668,10 +702,55 @@ class WorkerDPortableEvidenceTests(unittest.TestCase):
                     control_root=control,
                 )
 
+    def test_merge_preserves_common_blockers_and_candidate_failures(self):
+        with tempfile.TemporaryDirectory() as td:
+            tmp = Path(td)
+            control, head, binding = _make_control_repo(tmp)
+            summary = EVIDENCE.verify_control_binding(
+                binding_path=binding,
+                control_root=control,
+                require_clean=True,
+            )
+            lits = _make_source_root(
+                tmp / "lits",
+                "LITS_I",
+                binding,
+                summary,
+                terminal_control_head=head,
+                common_blocker_start="LITS_I/C/S00_SOURCE_PREFLIGHT_IDENTITY",
+                candidate_failure_cell="B",
+            )
+            wvs = _make_source_root(
+                tmp / "wvs",
+                "WVS7",
+                binding,
+                summary,
+                terminal_control_head=head,
+            )
+            merged = MERGE.merge(
+                lits,
+                wvs,
+                control_root=control,
+            )
+            self.assertEqual(
+                merged["status"],
+                "BLOCKED__SOURCE_LOCAL_COMMON_AUTHORITY",
+            )
+            self.assertEqual(
+                merged["candidate_failures"]["LITS_I"],
+                ["LITS_I/B"],
+            )
+            blockers = merged["common_blockers"]["LITS_I"]
+            self.assertEqual(len(blockers), len(EVIDENCE.STAGE_CATALOG))
+            self.assertEqual(
+                blockers[0],
+                "LITS_I/C/S00_SOURCE_PREFLIGHT_IDENTITY",
+            )
+
     def test_merge_rejects_canonical_source_drift_running_stage_and_hardware_mismatch(
         self,
     ):
-        for mode in ("source", "running", "hardware"):
+        for mode in ("source", "running", "hardware", "runtime"):
             with self.subTest(mode=mode):
                 with tempfile.TemporaryDirectory() as td:
                     tmp = Path(td)
@@ -702,6 +781,11 @@ class WorkerDPortableEvidenceTests(unittest.TestCase):
                             "OtherMac"
                             if mode == "hardware"
                             else "MacBookPro15,1"
+                        ),
+                        runtime_version_overrides=(
+                            {"pyarrow": "25.0.2"}
+                            if mode == "runtime"
+                            else None
                         ),
                     )
                     if mode == "source":

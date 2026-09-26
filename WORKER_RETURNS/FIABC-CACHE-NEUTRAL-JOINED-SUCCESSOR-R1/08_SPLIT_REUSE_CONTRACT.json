@@ -1,0 +1,61 @@
+{
+  "schema": "RAWLSING_FIABC_CACHE_NEUTRAL_JOINED_SUCCESSOR_SPLIT_REUSE_CONTRACT@1.0.0",
+  "status": "PASS__EXACT_JOINED_IDENTITIES_BANKED_FOR_SPLIT_REUSE",
+  "joined_successor_implementation_head": "16f5e7d5f691e908d85dc1dd26b8a59a29f668f4",
+  "physical_epoch": {
+    "path": "WORKER_RETURNS/FIABC-CACHE-NEUTRAL-JOINED-SUCCESSOR-R1/01_CACHE_NEUTRAL_PHYSICAL_EPOCH.json",
+    "git_blob_sha1": "0efd83e7c85d37408ab4361d2a9db5406debcbd6",
+    "receipt_identity": "fc6afc9bc7b287f8fd0654e1da546faee7e6c85491e6735ebe4a161b0db3de35"
+  },
+  "protected_blobs": {
+    "driver": "6472ae95d5d70f10b7c385104a0bd559b80c03a4",
+    "process_envelope": "8ce84e7685fc11901dcc50f0f8df609a84aadbf8",
+    "process_isolated_backend": "6afd66d1234dd59c6eee97c9538b78bee9fcfd28",
+    "stage_backend": "97ee2cd993da1ff94dede48a4ab30e7f5524c375",
+    "t5_terminal_control": "e67f0c18bc52f81f2e0924799aa54745a53306a9"
+  },
+  "cache_neutral_environment": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONPYCACHEPREFIX": "$WORK_ROOT/court/_python_cache_neutral_prefix",
+    "RAWLSING_EE_P2X_CACHE_NEUTRAL_SUCCESSOR": "1",
+    "RAWLSING_EE_P2X_PHYSICAL_EPOCH_IDENTITY": "fc6afc9bc7b287f8fd0654e1da546faee7e6c85491e6735ebe4a161b0db3de35"
+  },
+  "attestation": {
+    "schema": "RAWLSING_FIABC_P2X_CACHE_NEUTRAL_ATTESTATION@1.0.0",
+    "main_child_required_phase": "MAIN_CELL_CHILD_PRE_BACKEND_IMPORT",
+    "s15_child_required_phase": "FRESH_REPLAY_CHILD_PRE_SEMANTIC_WORK",
+    "zero_prefix_descendants_required": true
+  },
+  "successor_binding": {
+    "path": "WORKER_RETURNS/EE-P2X/10C_DARWIN_DRIVER_SUCCESSOR_BINDING.json",
+    "git_blob_sha1": "247725e51ed141cf31c112084590b69953765032"
+  },
+  "joined_launcher": {
+    "path": "HQ_HANDOFF/launchers/RUN_DISPOSITIVE_FIABC_SIX_CELL.sh",
+    "git_blob_sha1": "e84c575919eea9de591eb5c8b60ad80382537ef5"
+  },
+  "exact_runtime": {
+    "implementation": "CPython",
+    "python": "3.11.3",
+    "system": "Darwin",
+    "machine": "x86_64",
+    "pyreadstat": "1.3.6",
+    "pyarrow": "25.0.1",
+    "pandas": "2.3.1",
+    "numpy": "2.3.2"
+  },
+  "split_half_requirements_to_claim_same_epoch": [
+    "Bind this exact physical epoch receipt identity.",
+    "Set cache-neutral variables before the split measured driver interpreter is created.",
+    "Begin with a fresh redirected prefix having zero descendants.",
+    "Require zero descendants at every measured cell start and stop, after S15 replay, and at final exit.",
+    "Use the exact runtime tuple recorded here.",
+    "Receipt-bind main candidate child cache neutrality before backend import.",
+    "Receipt-bind S15 fresh replay child cache neutrality before semantic replay work.",
+    "Do not consume ordinary repo/work-root/site-package __pycache__ entries.",
+    "Do not seed the redirected prefix and do not use compileall/precompiled substitution.",
+    "Retain Worker-B source-byte/prestate constraints where applicable.",
+    "Bind this exact 10C successor identity and joined launcher identity rather than guessing successors.",
+    "Preserve no absolute cross-source physical comparison."
+  ]
+}

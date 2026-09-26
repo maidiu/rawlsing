@@ -2,8 +2,10 @@
 set -euo pipefail
 
 EXPECTED_EXECUTION_BRANCH="agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1"
-EXPECTED_EXECUTION_HEAD="3d8f2ad62600b6777dcb23a28404a067502e77a0"
-EXPECTED_CONTROL_BRANCH="${FIABC_EXPECTED_CONTROL_BRANCH:-agent/vozhd-fiabc-source-split-alternate-runner-r1}"
+EXPECTED_EXECUTION_HEAD="16f5e7d5f691e908d85dc1dd26b8a59a29f668f4"
+EXPECTED_CONTROL_BRANCH="agent/vozhd-fiabc-split-r2-fanin-r1"
+EXPECTED_JOINED_SUCCESSOR_BINDING_BLOB="247725e51ed141cf31c112084590b69953765032"
+EXPECTED_PHYSICAL_EPOCH_IDENTITY="fc6afc9bc7b287f8fd0654e1da546faee7e6c85491e6735ebe4a161b0db3de35"
 
 LITS_SOURCE_SHA256="7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09"
 WVS_SOURCE_SHA256="2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d"
@@ -30,7 +32,7 @@ Usage:
   SOURCE=LITS_I SOURCE_PATH=/path/to/LiTS_I.dta \
   WORK_ROOT=/persistent/fresh/root FIABC_REPO_ROOT=/path/to/protected-checkout \
   PYTHON_BIN=/path/to/pinned/python \
-  FIABC_QUALIFIED_CONTROL_HEAD=<exact-qualified-control-head> \
+  FIABC_CONTROL_BINDING_PATH=/path/to/CONTROL_BINDING.json \
   FIABC_MACHINE_READINESS_RECEIPT=/path/to/this-host-readiness.json \
   FIABC_PAIR_COMPATIBILITY_RECEIPT=/path/to/pair-compatibility.json \
   bash HQ_HANDOFF/launchers/RUN_FIABC_SOURCE_LOCAL_SPLIT.sh
@@ -56,7 +58,6 @@ die() {
 : "${SOURCE:?set SOURCE to LITS_I or WVS7}"
 : "${WORK_ROOT:?set WORK_ROOT to a fresh persistent root outside temporary directories}"
 : "${FIABC_REPO_ROOT:?set FIABC_REPO_ROOT to the protected execution checkout}"
-: "${FIABC_QUALIFIED_CONTROL_HEAD:?set FIABC_QUALIFIED_CONTROL_HEAD to the exact qualified split-control head}"
 PYTHON_BIN="${PYTHON_BIN:-python3}"
 
 case "$SOURCE" in
@@ -70,19 +71,35 @@ command -v "$PYTHON_BIN" >/dev/null 2>&1 || die "Python interpreter not found: $
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SOURCE_LOCAL_DRIVER="$SCRIPT_DIR/FIABC_SOURCE_LOCAL_SPLIT_DRIVER.py"
 WORKROOT_GATES="$SCRIPT_DIR/FIABC_SPLIT_R2_WORKROOT_GATES.py"
+EVIDENCE_HELPER="$SCRIPT_DIR/FIABC_SOURCE_LOCAL_SPLIT_EVIDENCE.py"
+CACHE_NEUTRAL_HELPER="$SCRIPT_DIR/FIABC_PYTHON_CACHE_NEUTRALITY_SUCCESSOR.py"
 [[ -f "$SOURCE_LOCAL_DRIVER" ]] || die "source-local driver missing: $SOURCE_LOCAL_DRIVER"
 [[ -f "$WORKROOT_GATES" ]] || die "workroot gate helper missing: $WORKROOT_GATES"
+[[ -f "$EVIDENCE_HELPER" ]] || die "source-local evidence helper missing: $EVIDENCE_HELPER"
+[[ -f "$CACHE_NEUTRAL_HELPER" ]] || die "cache-neutral successor helper missing: $CACHE_NEUTRAL_HELPER"
 
 CONTROL_ROOT="$(git -C "$SCRIPT_DIR" rev-parse --show-toplevel 2>/dev/null)" || die "launcher must live in a Git checkout"
 CONTROL_BRANCH="$(git -C "$CONTROL_ROOT" branch --show-current)"
-CONTROL_HEAD="$(git -C "$CONTROL_ROOT" rev-parse --verify HEAD^{commit})"
+OBSERVED_CONTROL_HEAD="$(git -C "$CONTROL_ROOT" rev-parse --verify HEAD^{commit})"
 [[ "$CONTROL_BRANCH" == "$EXPECTED_CONTROL_BRANCH" ]] || die "wrong control branch: $CONTROL_BRANCH"
-[[ "$CONTROL_HEAD" == "$FIABC_QUALIFIED_CONTROL_HEAD" ]] || die "unqualified control HEAD: $CONTROL_HEAD"
 [[ -z "$(git -C "$CONTROL_ROOT" status --porcelain --untracked-files=all)" ]] || die "control checkout is dirty"
+
+CONTROL_BINDING_PATH="${FIABC_CONTROL_BINDING_PATH:-$CONTROL_ROOT/WORKER_RETURNS/FIABC-SOURCE-SPLIT-R2-FANIN-R1/CONTROL_BINDING.json}"
+[[ -f "$CONTROL_BINDING_PATH" ]] || die "qualified control binding missing: $CONTROL_BINDING_PATH"
+CONTROL_BINDING_JSON="$("$PYTHON_BIN" -B "$EVIDENCE_HELPER" verify-control-binding \
+  --control-root "$CONTROL_ROOT" --binding "$CONTROL_BINDING_PATH")" \
+  || die "qualified control binding rejected"
+QUALIFIED_CONTROL_HEAD="$(printf '%s' "$CONTROL_BINDING_JSON" | "$PYTHON_BIN" -c 'import json,sys; print(json.load(sys.stdin)["qualified_implementation_head"])')"
+CONTROL_BINDING_IDENTITY="$(printf '%s' "$CONTROL_BINDING_JSON" | "$PYTHON_BIN" -c 'import json,sys; print(json.load(sys.stdin)["binding_receipt_identity"])')"
+[[ -n "$QUALIFIED_CONTROL_HEAD" ]] || die "qualified implementation head absent from binding"
+[[ -n "$CONTROL_BINDING_IDENTITY" ]] || die "control binding identity absent"
+CONTROL_HEAD="$QUALIFIED_CONTROL_HEAD"
 
 LAUNCHER_SHA256="$(shasum -a 256 "${BASH_SOURCE[0]}" | awk '{print $1}')"
 SOURCE_LOCAL_DRIVER_SHA256="$(shasum -a 256 "$SOURCE_LOCAL_DRIVER" | awk '{print $1}')"
 export RAWLSING_FIABC_SPLIT_CONTROL_HEAD="$CONTROL_HEAD"
+export RAWLSING_FIABC_SPLIT_CONTROL_CHECKOUT_HEAD="$OBSERVED_CONTROL_HEAD"
+export RAWLSING_FIABC_SPLIT_CONTROL_BINDING_IDENTITY="$CONTROL_BINDING_IDENTITY"
 export RAWLSING_FIABC_SPLIT_RUNNER_SHA256="$LAUNCHER_SHA256"
 
 FIABC_REPO_ROOT="$("$PYTHON_BIN" - "$FIABC_REPO_ROOT" <<'PY'
@@ -119,6 +136,10 @@ cd "$FIABC_REPO_ROOT"
 [[ "$(git rev-parse --verify HEAD^{commit})" == "$EXPECTED_EXECUTION_HEAD" ]] || die "wrong execution HEAD"
 [[ -z "$(git status --porcelain --untracked-files=all)" ]] || die "protected execution checkout is dirty"
 
+"$PYTHON_BIN" -B "$WORKROOT_GATES" verify-successor-binding \
+  --repo-root "$FIABC_REPO_ROOT" --control-root "$CONTROL_ROOT" >/dev/null \
+  || die "exact joined 10C successor/split reuse contract binding failed"
+
 IMMUTABLE_SUCCESSION_EVIDENCE_COMMITS=(
   "0b96b8de9aac774566f872cf0630ebd4ddeb70e6"
   "76c73e5c15eb512fa0b3217bc9e313d2b54f9a2d"
@@ -144,7 +165,8 @@ if [[ "${FIABC_READINESS_ONLY:-0}" == "1" ]]; then
     --repo-root "$FIABC_REPO_ROOT" \
     --work-root "$WORK_ROOT" \
     --control-root "$CONTROL_ROOT" \
-    --qualified-control-head "$FIABC_QUALIFIED_CONTROL_HEAD" \
+    --control-binding "$CONTROL_BINDING_PATH" \
+    --qualified-control-head "$QUALIFIED_CONTROL_HEAD" \
     --launcher "${BASH_SOURCE[0]}" \
     --driver "$SOURCE_LOCAL_DRIVER" \
     --helper "$WORKROOT_GATES" \
@@ -172,7 +194,8 @@ PY
   --repo-root "$FIABC_REPO_ROOT" \
   --work-root "$WORK_ROOT" \
   --control-root "$CONTROL_ROOT" \
-  --qualified-control-head "$FIABC_QUALIFIED_CONTROL_HEAD" \
+  --control-binding "$CONTROL_BINDING_PATH" \
+  --qualified-control-head "$QUALIFIED_CONTROL_HEAD" \
   --launcher "${BASH_SOURCE[0]}" \
   --driver "$SOURCE_LOCAL_DRIVER" \
   --helper "$WORKROOT_GATES" >/dev/null \
@@ -305,7 +328,14 @@ PY
   --output "$WORK_ROOT/court/joined_prestate_receipt.json" >/dev/null \
   || die "joined-court prestate provisioning failed"
 
-"$PYTHON_BIN" - "$WORK_ROOT" "$SOURCE" "$CONTROL_HEAD" "$LAUNCHER_SHA256" "$SOURCE_LOCAL_DRIVER_SHA256" <<'PY'
+"$PYTHON_BIN" -B "$EVIDENCE_HELPER" baseline \
+  --source "$SOURCE" \
+  --repo-root "$FIABC_REPO_ROOT" \
+  --output "$WORK_ROOT/court/repo_prestate_baseline.json" \
+  >/dev/null \
+  || die "repo-live pre-run baseline failed"
+
+"$PYTHON_BIN" - "$WORK_ROOT" "$SOURCE" "$CONTROL_HEAD" "$OBSERVED_CONTROL_HEAD" "$LAUNCHER_SHA256" "$SOURCE_LOCAL_DRIVER_SHA256" "$CONTROL_BINDING_PATH" <<'PY'
 import json
 from pathlib import Path
 import platform
@@ -315,10 +345,14 @@ payload = {
     "schema": "RAWLSING_FIABC_SOURCE_LOCAL_LAUNCH_RECEIPT@1.0.0",
     "state": "SOURCE_LOCAL_PREFLIGHT_GREEN__ENTERING_MEASURED_SOURCE_BLOCK",
     "source": sys.argv[2],
-    "execution_head": "3d8f2ad62600b6777dcb23a28404a067502e77a0",
+    "execution_head": "16f5e7d5f691e908d85dc1dd26b8a59a29f668f4",
     "control_head": sys.argv[3],
-    "launcher_sha256": sys.argv[4],
-    "source_local_driver_sha256": sys.argv[5],
+    "observed_control_checkout_head": sys.argv[4],
+    "control_binding_path": sys.argv[7],
+    "joined_successor_binding_blob_sha1": "247725e51ed141cf31c112084590b69953765032",
+    "physical_epoch_identity": "fc6afc9bc7b287f8fd0654e1da546faee7e6c85491e6735ebe4a161b0db3de35",
+    "launcher_sha256": sys.argv[5],
+    "source_local_driver_sha256": sys.argv[6],
     "host": {
         "system": platform.system(),
         "machine": platform.machine(),
@@ -339,6 +373,26 @@ printf '%s\n' "WORK_ROOT=$WORK_ROOT"
 printf '%s\n' "EXECUTION_HEAD=$EXPECTED_EXECUTION_HEAD"
 printf '%s\n' "CONTROL_HEAD=$CONTROL_HEAD"
 
+CACHE_PREFIX="$WORK_ROOT/court/_python_cache_neutral_prefix"
+mkdir -p "$CACHE_PREFIX"
+[[ -z "$(find "$CACHE_PREFIX" -mindepth 1 -print -quit)" ]] \
+  || die "cache-neutral prefix is not empty before measured candidate entry"
+export PYTHONDONTWRITEBYTECODE="1"
+export PYTHONPYCACHEPREFIX="$CACHE_PREFIX"
+export RAWLSING_EE_P2X_CACHE_NEUTRAL_SUCCESSOR="1"
+export RAWLSING_EE_P2X_PHYSICAL_EPOCH_IDENTITY="$EXPECTED_PHYSICAL_EPOCH_IDENTITY"
+"$PYTHON_BIN" "$CACHE_NEUTRAL_HELPER" receipt \
+  --work-root "$WORK_ROOT" \
+  --scope SPLIT_SOURCE_LOCAL \
+  --protected-head "$EXPECTED_EXECUTION_HEAD" \
+  --joined-successor-identity "$EXPECTED_EXECUTION_HEAD" \
+  --joined-successor-binding-blob-sha1 "$EXPECTED_JOINED_SUCCESSOR_BINDING_BLOB" \
+  --output "$WORK_ROOT/court/cache_neutrality_receipt.json" \
+  >/dev/null \
+  || die "cache-neutral successor runtime receipt failed"
+[[ -z "$(find "$CACHE_PREFIX" -mindepth 1 -print -quit)" ]] \
+  || die "cache-neutral prefix acquired entries before candidate entry"
+
 set +e
 "$PYTHON_BIN" "$SOURCE_LOCAL_DRIVER" \
   --run \
@@ -358,6 +412,16 @@ set -e
 
 printf '%s\n' "$rc" >"$WORK_ROOT/court/source_local_measured.exit_code"
 if [[ "$rc" -ne 0 ]]; then
+  if ! "$PYTHON_BIN" -B "$EVIDENCE_HELPER" failure \
+    --source "$SOURCE" \
+    --work-root "$WORK_ROOT" \
+    --exit-code "$rc" \
+    --control-root "$CONTROL_ROOT" \
+    --control-binding "$CONTROL_BINDING_PATH" \
+    --output "$WORK_ROOT/court/source_local_orchestration_failure.json" \
+    >/dev/null; then
+    printf '%s\n' "FIABC_SOURCE_LOCAL_ORCHESTRATION_FAILURE_RECEIPT_FAILED" >&2
+  fi
   printf 'FIABC_SOURCE_LOCAL_MEASURED_BLOCK_STOPPED__EXIT_%s\n' "$rc" >&2
   printf 'PRESERVE_WORK_ROOT=%s\n' "$WORK_ROOT" >&2
   exit "$rc"
@@ -379,6 +443,17 @@ fi
   || die "post-run verify-only cleanliness/evidence gate failed"
 
 [[ -f "$WORK_ROOT/court/repo_postrun_verification.json" ]] || die "postrun checkout verification receipt absent"
+
+"$PYTHON_BIN" -B "$EVIDENCE_HELPER" closure \
+  --source "$SOURCE" \
+  --work-root "$WORK_ROOT" \
+  --repo-root "$FIABC_REPO_ROOT" \
+  --baseline "$WORK_ROOT/court/repo_prestate_baseline.json" \
+  --control-root "$CONTROL_ROOT" \
+  --control-binding "$CONTROL_BINDING_PATH" \
+  --output "$WORK_ROOT/court/portable_source_evidence_closure.json" \
+  >/dev/null \
+  || die "portable repo-live evidence closure failed"
 
 printf '%s\n' "FIABC_SOURCE_LOCAL_MEASURED_BLOCK_EXITED_ZERO"
 printf '%s\n' "SOURCE_LOCAL_TERMINAL=$WORK_ROOT/court/source_local_terminal.json"

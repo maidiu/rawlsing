@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
 """Successor-only FIABC Python bytecode-cache neutrality control.
 
-This module does not authorize current protected execution.  It defines the
-source-free C0 environment and receipts required if HQ adopts a future law that
-normalizes Python bytecode-cache participation for BOTH joined and split
-candidate execution.
+This module binds the source-free C0 environment adopted by the joined
+cache-neutral successor and required by its split reuse contract.
 
 It never imports candidate owners, opens survey sources, decodes data, or
 launches candidate processes.
@@ -20,11 +18,14 @@ import sys
 from typing import Any, Mapping
 
 SCHEMA = "RAWLSING_FIABC_PYTHON_CACHE_NEUTRALITY_SUCCESSOR@1.0.0"
-EXPECTED_CURRENT_PROTECTED_HEAD = "3d8f2ad62600b6777dcb23a28404a067502e77a0"
+EXPECTED_CURRENT_PROTECTED_HEAD = "16f5e7d5f691e908d85dc1dd26b8a59a29f668f4"
+EXPECTED_PHYSICAL_EPOCH_IDENTITY = "fc6afc9bc7b287f8fd0654e1da546faee7e6c85491e6735ebe4a161b0db3de35"
+EXPECTED_SUCCESSOR_BINDING_BLOB_SHA1 = "247725e51ed141cf31c112084590b69953765032"
 PREFIX_REL = Path("court") / "_python_cache_neutral_prefix"
 DONT_WRITE_ENV = "PYTHONDONTWRITEBYTECODE"
 PYCACHE_PREFIX_ENV = "PYTHONPYCACHEPREFIX"
 ADOPTION_ENV = "RAWLSING_EE_P2X_CACHE_NEUTRAL_SUCCESSOR"
+PHYSICAL_EPOCH_ENV = "RAWLSING_EE_P2X_PHYSICAL_EPOCH_IDENTITY"
 
 
 class CacheNeutralityError(RuntimeError):
@@ -63,6 +64,7 @@ def prepare_environment(work_root: Path) -> Mapping[str, str]:
         DONT_WRITE_ENV: "1",
         PYCACHE_PREFIX_ENV: str(prefix),
         ADOPTION_ENV: "1",
+        PHYSICAL_EPOCH_ENV: EXPECTED_PHYSICAL_EPOCH_IDENTITY,
     }
 
 
@@ -91,6 +93,8 @@ def assert_runtime_configuration(work_root: Path) -> Mapping[str, Any]:
         raise CacheNeutralityError("PYTHONPYCACHEPREFIX environment binding drift")
     if os.environ.get(ADOPTION_ENV) != "1":
         raise CacheNeutralityError("cache-neutral successor adoption marker absent")
+    if os.environ.get(PHYSICAL_EPOCH_ENV) != EXPECTED_PHYSICAL_EPOCH_IDENTITY:
+        raise CacheNeutralityError("cache-neutral physical epoch identity drift")
     assert_prefix_empty(work_root)
     return {
         "dont_write_bytecode": True,
@@ -105,6 +109,7 @@ def build_receipt(
     scope: str,
     protected_head: str,
     joined_successor_identity: str | None,
+    joined_successor_binding_blob_sha1: str | None = None,
 ) -> Mapping[str, Any]:
     if scope not in {"JOINED_SIX_CELL", "SPLIT_SOURCE_LOCAL"}:
         raise CacheNeutralityError(f"unknown cache-neutrality scope: {scope}")
@@ -116,6 +121,8 @@ def build_receipt(
         "protected_execution_head": protected_head,
         "current_protected_reference_head": EXPECTED_CURRENT_PROTECTED_HEAD,
         "joined_successor_identity": joined_successor_identity,
+        "joined_successor_binding_blob_sha1": joined_successor_binding_blob_sha1,
+        "physical_epoch_identity": EXPECTED_PHYSICAL_EPOCH_IDENTITY,
         "joined_successor_adopted": joined_successor_identity is not None,
         "runtime": runtime,
         "law": {
@@ -156,6 +163,12 @@ def verify_receipt(
         raise CacheNeutralityError("cache-neutrality receipt status drift")
     if document.get("scope") != expected_scope:
         raise CacheNeutralityError("cache-neutrality receipt scope drift")
+    if document.get("protected_execution_head") != EXPECTED_CURRENT_PROTECTED_HEAD:
+        raise CacheNeutralityError("cache-neutrality protected successor head drift")
+    if document.get("current_protected_reference_head") != EXPECTED_CURRENT_PROTECTED_HEAD:
+        raise CacheNeutralityError("cache-neutrality protected reference head drift")
+    if document.get("physical_epoch_identity") != EXPECTED_PHYSICAL_EPOCH_IDENTITY:
+        raise CacheNeutralityError("cache-neutrality physical epoch identity drift")
     law = document.get("law")
     if not isinstance(law, Mapping) or any(
         law.get(key) is not True
@@ -172,9 +185,14 @@ def verify_receipt(
         raise CacheNeutralityError("cache-neutrality law is incomplete")
     if law.get("compileall_or_precompiled_cache_substitution_authorized") is not False:
         raise CacheNeutralityError("precompiled-cache substitution was incorrectly authorized")
-    if require_joined_successor and document.get("joined_successor_adopted") is not True:
+    if require_joined_successor and (
+        document.get("joined_successor_adopted") is not True
+        or document.get("joined_successor_identity") != EXPECTED_CURRENT_PROTECTED_HEAD
+        or document.get("joined_successor_binding_blob_sha1")
+        != EXPECTED_SUCCESSOR_BINDING_BLOB_SHA1
+    ):
         raise CacheNeutralityError(
-            "split cache neutrality cannot admit parity before joined successor adoption"
+            "split cache neutrality is not bound to the exact joined successor binding"
         )
 
 
@@ -195,6 +213,7 @@ def _parser() -> argparse.ArgumentParser:
     receipt.add_argument("--scope", choices=("JOINED_SIX_CELL", "SPLIT_SOURCE_LOCAL"), required=True)
     receipt.add_argument("--protected-head", required=True)
     receipt.add_argument("--joined-successor-identity")
+    receipt.add_argument("--joined-successor-binding-blob-sha1", required=True)
     receipt.add_argument("--output", type=Path, required=True)
     return p
 
@@ -212,6 +231,7 @@ def main() -> int:
         scope=args.scope,
         protected_head=args.protected_head,
         joined_successor_identity=args.joined_successor_identity,
+        joined_successor_binding_blob_sha1=args.joined_successor_binding_blob_sha1,
     )
     _write(args.output, doc)
     print(json.dumps(doc, sort_keys=True))

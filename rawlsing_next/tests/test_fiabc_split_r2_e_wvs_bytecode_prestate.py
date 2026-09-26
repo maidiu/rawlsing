@@ -41,6 +41,10 @@ class CacheNeutralityTests(unittest.TestCase):
             self.assertEqual(env["PYTHONDONTWRITEBYTECODE"], "1")
             self.assertEqual(env["PYTHONPYCACHEPREFIX"], str(prefix))
             self.assertEqual(env["RAWLSING_EE_P2X_CACHE_NEUTRAL_SUCCESSOR"], "1")
+            self.assertEqual(
+                env["RAWLSING_EE_P2X_PHYSICAL_EPOCH_IDENTITY"],
+                CACHE.EXPECTED_PHYSICAL_EPOCH_IDENTITY,
+            )
             rogue = prefix / "rogue.pyc"
             rogue.write_bytes(b"not-bytecode")
             with self.assertRaisesRegex(CACHE.CacheNeutralityError, "not empty"):
@@ -56,6 +60,7 @@ class CacheNeutralityTests(unittest.TestCase):
                     "PYTHONDONTWRITEBYTECODE",
                     "PYTHONPYCACHEPREFIX",
                     "RAWLSING_EE_P2X_CACHE_NEUTRAL_SUCCESSOR",
+                    "RAWLSING_EE_P2X_PHYSICAL_EPOCH_IDENTITY",
                 )
             }
             try:
@@ -70,9 +75,34 @@ class CacheNeutralityTests(unittest.TestCase):
                     protected_head=CACHE.EXPECTED_CURRENT_PROTECTED_HEAD,
                     joined_successor_identity=None,
                 )
-                with self.assertRaisesRegex(CACHE.CacheNeutralityError, "joined successor adoption"):
+                with self.assertRaisesRegex(CACHE.CacheNeutralityError, "exact joined successor binding"):
                     CACHE.verify_receipt(
                         doc,
+                        expected_scope="SPLIT_SOURCE_LOCAL",
+                        require_joined_successor=True,
+                    )
+                admitted = CACHE.build_receipt(
+                    work_root=work,
+                    scope="SPLIT_SOURCE_LOCAL",
+                    protected_head=CACHE.EXPECTED_CURRENT_PROTECTED_HEAD,
+                    joined_successor_identity=CACHE.EXPECTED_CURRENT_PROTECTED_HEAD,
+                    joined_successor_binding_blob_sha1=(
+                        CACHE.EXPECTED_SUCCESSOR_BINDING_BLOB_SHA1
+                    ),
+                )
+                CACHE.verify_receipt(
+                    admitted,
+                    expected_scope="SPLIT_SOURCE_LOCAL",
+                    require_joined_successor=True,
+                )
+                tampered = dict(admitted)
+                tampered["joined_successor_binding_blob_sha1"] = "f" * 40
+                tampered["receipt_identity"] = CACHE._hash(
+                    {key: value for key, value in tampered.items() if key != "receipt_identity"}
+                )
+                with self.assertRaisesRegex(CACHE.CacheNeutralityError, "exact joined successor binding"):
+                    CACHE.verify_receipt(
+                        tampered,
                         expected_scope="SPLIT_SOURCE_LOCAL",
                         require_joined_successor=True,
                     )
@@ -187,13 +217,22 @@ class CacheNeutralityTests(unittest.TestCase):
         self.assertIn("for batch in iter_normalized_batches(", seam)
         self.assertIn("yield cell_record_row(cell)", seam)
 
-    def test_current_launchers_do_not_yet_adopt_cache_neutral_successor(self):
-        joined = JOINED_LAUNCHER.read_text(encoding="utf-8")
+    def test_split_and_protected_joined_launchers_adopt_the_same_cache_neutral_successor(self):
+        protected_joined = subprocess.run(
+            [
+                "git", "-C", str(ROOT), "show",
+                f"{CACHE.EXPECTED_CURRENT_PROTECTED_HEAD}:HQ_HANDOFF/launchers/RUN_DISPOSITIVE_FIABC_SIX_CELL.sh",
+            ],
+            check=True,
+            stdout=subprocess.PIPE,
+            text=True,
+        ).stdout
         split = SPLIT_LAUNCHER.read_text(encoding="utf-8")
-        for source in (joined, split):
-            self.assertNotIn("RAWLSING_EE_P2X_CACHE_NEUTRAL_SUCCESSOR", source)
-            self.assertNotIn("PYTHONPYCACHEPREFIX", source)
-        self.assertIn("-m rawlsing_next.ee_p2x_darwin_court_driver", joined)
+        for source in (protected_joined, split):
+            self.assertIn("RAWLSING_EE_P2X_CACHE_NEUTRAL_SUCCESSOR", source)
+            self.assertIn("PYTHONPYCACHEPREFIX", source)
+            self.assertIn("RAWLSING_EE_P2X_PHYSICAL_EPOCH_IDENTITY", source)
+        self.assertIn("-m rawlsing_next.ee_p2x_darwin_court_driver", protected_joined)
 
     def test_compileall_is_explicitly_not_an_admission_strategy(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -205,6 +244,7 @@ class CacheNeutralityTests(unittest.TestCase):
                     "PYTHONDONTWRITEBYTECODE",
                     "PYTHONPYCACHEPREFIX",
                     "RAWLSING_EE_P2X_CACHE_NEUTRAL_SUCCESSOR",
+                    "RAWLSING_EE_P2X_PHYSICAL_EPOCH_IDENTITY",
                 )
             }
             try:

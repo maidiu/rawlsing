@@ -6,6 +6,7 @@ gates, temporary Git repositories, and exact protected lock mechanics.
 from __future__ import annotations
 
 import importlib.util
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -99,6 +100,30 @@ def _signed_readiness(source: str, *, memory=16_000_000_000, macos="13.2.1"):
 
 
 class SplitR2BWorkrootGateTests(unittest.TestCase):
+    def test_actual_protected_10c_binding_matches_exact_split_reuse_epoch(self):
+        raw = os.environ.get("FIABC_SOURCE_SPLIT_EXECUTION_ROOT")
+        if not raw:
+            self.skipTest(
+                "qualification runner must supply the exact protected execution checkout"
+            )
+        proof = GATES.verify_successor_binding(
+            repo_root=Path(raw),
+            control_root=ROOT,
+        )
+        self.assertEqual(
+            proof["successor_binding_blob_sha1"],
+            "247725e51ed141cf31c112084590b69953765032",
+        )
+        self.assertEqual(
+            proof["physical_epoch_identity"],
+            "fc6afc9bc7b287f8fd0654e1da546faee7e6c85491e6735ebe4a161b0db3de35",
+        )
+        self.assertEqual(
+            proof["joined_successor_implementation_head"],
+            "16f5e7d5f691e908d85dc1dd26b8a59a29f668f4",
+        )
+        self.assertEqual(proof["runtime"], GATES.EXPECTED_RUNTIME)
+
     def test_combined_import_gate_blocks_even_when_metadata_would_be_pinned(self):
         def import_side_effect(name):
             if name == "pyarrow":
@@ -167,15 +192,53 @@ class SplitR2BWorkrootGateTests(unittest.TestCase):
                 self.assertFalse(wvs["candidate_owned_semantic_state_prebuilt"])
                 self.assertFalse(wvs["candidate_owned_carrier_state_prebuilt"])
                 receipt = work / "court" / "joined_prestate_receipt.json"
-                with self.assertRaisesRegex(
-                    GATES.SplitR2GateError, "software prestate remains unclosed"
-                ):
+                cache = GATES._cache_neutral_helper()
+                old_env = {
+                    key: __import__("os").environ.get(key)
+                    for key in (
+                        cache.DONT_WRITE_ENV,
+                        cache.PYCACHE_PREFIX_ENV,
+                        cache.ADOPTION_ENV,
+                        cache.PHYSICAL_EPOCH_ENV,
+                    )
+                }
+                old_write = sys.dont_write_bytecode
+                old_prefix = sys.pycache_prefix
+                try:
+                    __import__("os").environ.update(cache.prepare_environment(work))
+                    sys.dont_write_bytecode = True
+                    sys.pycache_prefix = str(cache.cache_prefix(work))
+                    cache_receipt = cache.build_receipt(
+                        work_root=work,
+                        scope="SPLIT_SOURCE_LOCAL",
+                        protected_head=GATES.EXPECTED_EXECUTION_HEAD,
+                        joined_successor_identity=GATES.EXPECTED_EXECUTION_HEAD,
+                        joined_successor_binding_blob_sha1=(
+                            GATES.EXPECTED_SUCCESSOR_BINDING_BLOB_SHA1
+                        ),
+                    )
+                    cache_path = work / GATES.SPLIT_CACHE_RECEIPT_REL
+                    cache_path.parent.mkdir(parents=True, exist_ok=True)
+                    cache_path.write_text(
+                        __import__("json").dumps(cache_receipt), encoding="utf-8"
+                    )
+                finally:
+                    sys.dont_write_bytecode = old_write
+                    sys.pycache_prefix = old_prefix
+                    for key, value in old_env.items():
+                        if value is None:
+                            __import__("os").environ.pop(key, None)
+                        else:
+                            __import__("os").environ[key] = value
+                self.assertEqual(
                     GATES.verify_joined_prestate(
                         source="WVS7", repo_root=repo, work_root=work, receipt_path=receipt
-                    )
+                    )["joined_import_cache_state"],
+                    "WVS_BYTECODE_PRESTATE_NEUTRALIZED_BY_SHARED_JOINED_SPLIT_SUCCESSOR_LAW",
+                )
                 self.assertEqual(
                     wvs["joined_import_cache_state"],
-                    "BLOCKED__JOINED_LITS_GENERATED_PYTHON_BYTECODE_CACHE_NOT_REPRODUCED",
+                    "WVS_BYTECODE_PRESTATE_NEUTRALIZED_BY_SHARED_JOINED_SPLIT_SUCCESSOR_LAW",
                 )
                 rogue = work / "_be1_immutable" / "rogue.py"
                 rogue.parent.mkdir(parents=True, exist_ok=True)

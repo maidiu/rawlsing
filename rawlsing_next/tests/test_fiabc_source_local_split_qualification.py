@@ -26,8 +26,8 @@ LAUNCHERS = CONTROL_ROOT / "HQ_HANDOFF" / "launchers"
 DRIVER_PATH = LAUNCHERS / "FIABC_SOURCE_LOCAL_SPLIT_DRIVER.py"
 MERGE_PATH = LAUNCHERS / "FIABC_SOURCE_LOCAL_SPLIT_MERGE.py"
 SHELL_PATH = LAUNCHERS / "RUN_FIABC_SOURCE_LOCAL_SPLIT.sh"
-EXECUTION_HEAD = "3d8f2ad62600b6777dcb23a28404a067502e77a0"
-CONTROL_BRANCH = "agent/vozhd-fiabc-source-split-alternate-runner-r1"
+EXECUTION_HEAD = "16f5e7d5f691e908d85dc1dd26b8a59a29f668f4"
+CONTROL_BRANCH = "agent/vozhd-fiabc-split-r2-fanin-r1"
 EXECUTION_BRANCH = "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1"
 SOURCES = ("LITS_I", "WVS7")
 CANDIDATES = ("A", "B", "C")
@@ -45,6 +45,8 @@ def _load_script(name: str, path: Path):
 
 DRIVER = _load_script("fiabc_source_local_split_driver_qualification", DRIVER_PATH)
 MERGE = _load_script("fiabc_source_local_split_merge_qualification", MERGE_PATH)
+D_TEST_PATH = CONTROL_ROOT / "rawlsing_next" / "tests" / "test_fiabc_split_r2_d_merge_portable_evidence.py"
+D_FIXTURES = _load_script("fiabc_split_r2_d_merge_portable_evidence_fixtures", D_TEST_PATH)
 
 
 @dataclasses.dataclass(frozen=True)
@@ -180,6 +182,7 @@ class FakeBackend:
         self.blocker_scope = blocker_scope
         self.calls: list[StageContext] = []
         self.processes_started = 0
+        self.stop_requests: list[tuple[Stage, str]] = []
 
     def run_stage(self, context: StageContext, services):
         self.calls.append(context)
@@ -188,6 +191,10 @@ class FakeBackend:
         if context.stage.address == self.blocker_address:
             raise CommonAuthorityBlocker(self.blocker_scope)
         return BackendResult("PASS", {"synthetic": True})
+
+    def stop_after_outer_nonpass(self, stage, *, reason):
+        self.stop_requests.append((stage, reason))
+        return {"status": "STOPPED", "reason": reason}
 
 
 class FakeBase:
@@ -209,6 +216,7 @@ class FakeBase:
 
     def __init__(self):
         self.events: list[tuple] = []
+        self.outer_disposition_override: str | None = None
         for candidate, spec in self.OWNER_SPECS.items():
             body = f"synthetic owner {candidate}".encode()
             spec["blob"] = hashlib.sha1(f"blob {len(body)}\0".encode() + body).hexdigest()
@@ -254,8 +262,7 @@ class FakeBase:
             "observed_p2x_head": head,
         }
 
-    @staticmethod
-    def _backend_terminal(machine, ledger, stage, head, source_sha, result):
+    def _backend_terminal(self, machine, ledger, stage, head, source_sha, result):
         disposition = {
             "PASS": "PASS",
             "CANDIDATE_LOCAL_FAILURE": "CANDIDATE_LOCAL_FAILURE",
@@ -268,12 +275,25 @@ class FakeBase:
             "COMMON_SOURCE_BLOCKER": "__SOURCE_BLOCKED__",
             "COMMON_COURT_BLOCKER": "__COMMON_COURT_BLOCKER__",
         }[result.terminal_disposition]
+        if result.terminal_disposition == "PASS" and self.outer_disposition_override:
+            disposition = self.outer_disposition_override
+            next_stage = "__COMMON_COURT_BLOCKER__"
+        self.events.append(("backend-terminal", stage.address, disposition))
         old = ledger.stage_entry(stage.address) or {}
         old.update({"state": "TERMINAL", "terminal_disposition": disposition,
                     "receipt_hash": hashlib.sha256(stage.address.encode()).hexdigest(),
                     "next_stage": next_stage})
         ledger.entries[stage.address] = old
         return next_stage, old["receipt_hash"], disposition
+
+    def _stop_backend_after_posthook_nonpass(self, backend, stage, backend_terminal, ledger_disposition):
+        self.events.append(("posthook-stop", stage.address, backend_terminal, ledger_disposition))
+        if backend_terminal != "PASS" or ledger_disposition == "PASS":
+            return None
+        stop = getattr(backend, "stop_after_outer_nonpass", None)
+        if not callable(stop):
+            raise AssertionError("outer non-PASS did not stop the retained backend")
+        return stop(stage, reason=f"OUTER_TYPED_NONPASS::{stage.address}::{ledger_disposition}")
 
     @staticmethod
     def _candidate_stop(machine, ledger, *, source, candidate, head, source_sha, blocker):
@@ -303,9 +323,43 @@ class FakeBase:
 
 
 class FakeDriver:
-    def __init__(self, root: Path, backend: FakeBackend | None = None):
+    def __init__(
+        self,
+        root: Path,
+        backend: FakeBackend | None = None,
+        *,
+        source: str = "LITS_I",
+    ):
         self.work_root = root
         (root / "court").mkdir(parents=True, exist_ok=True)
+        (root / "court" / "joined_prestate_receipt.json").write_text("{}\n", encoding="utf-8")
+        (root / "court" / "repo_prestate_baseline.json").write_text("{}\n", encoding="utf-8")
+        preflight = {
+            "schema": DRIVER.SOURCE_PREFLIGHT_SCHEMA,
+            "status": "PASS",
+            "source": source,
+            "split_only_mechanical_closure": (
+                list(DRIVER.WVS_SPLIT_ONLY_MECHANICAL_CLOSURE)
+                if source == "WVS7"
+                else []
+            ),
+            "split_only_mechanical_closure_law": {
+                "source_free": True,
+                "candidate_processes_started": 0,
+                "physical_measurement_performed": False,
+                "empirical_source_access_performed": False,
+                "authorized_addresses": list(
+                    DRIVER.WVS_SPLIT_ONLY_MECHANICAL_CLOSURE
+                ),
+            },
+        }
+        preflight["receipt_identity"] = hashlib.sha256(
+            DRIVER._canon(preflight)
+        ).hexdigest()
+        (root / "court" / "source_local_preflight.json").write_text(
+            json.dumps(preflight, sort_keys=True, indent=2) + "\n",
+            encoding="utf-8",
+        )
         self.repo_root = root / "execution"
         self.repo = types.SimpleNamespace(branch=EXECUTION_BRANCH, head=EXECUTION_HEAD)
         self.host = {"synthetic": True}
@@ -313,7 +367,13 @@ class FakeDriver:
         self.progress = FakeProgress()
         self.backend = backend or FakeBackend()
         self.services = object()
-        self.source_paths = {"LITS_I": Path("/synthetic/source/LiTS-I.dta")}
+        self.source_paths = {
+            source: Path(
+                "/synthetic/source/LiTS-I.dta"
+                if source == "LITS_I"
+                else "/synthetic/source/WVS7.sav"
+            )
+        }
         self.verified_sources: list[str] = []
 
     def verify_static_gates(self):
@@ -339,7 +399,7 @@ def _synthetic_stages(source="LITS_I", *, empirical=True, physical=False):
 def _write_terminal(root: Path, source: str, *, os_version="13.2.1", memory=16 * 1024**3,
                     hardware="MacBookPro15,1", blockers=None, failures=None, overrides=None):
     doc = {
-        "schema": MERGE.TERMINAL_SCHEMA,
+        "schema": DRIVER.SOURCE_TERMINAL_SCHEMA,
         "status": "SOURCE_BLOCK_SEQUENCE_COMPLETE__ALL_THREE_CELLS_TERMINAL",
         "source": source,
         "source_sha256": "1" * 64,
@@ -385,10 +445,28 @@ def _write_terminal(root: Path, source: str, *, os_version="13.2.1", memory=16 *
 
 
 class SourceLocalSplitQualificationTests(unittest.TestCase):
-    def _fake_driver(self, backend=None):
+    def setUp(self):
+        cache_gate = mock.patch.object(
+            DRIVER, "_assert_cache_neutral_work_root", return_value={}
+        )
+        receipt_gate = mock.patch.object(
+            DRIVER,
+            "_verify_cache_neutral_receipt",
+            return_value={"receipt_identity": "e" * 64},
+        )
+        cache_gate.start()
+        receipt_gate.start()
+        self.addCleanup(cache_gate.stop)
+        self.addCleanup(receipt_gate.stop)
+
+    def _fake_driver(self, backend=None, *, source="LITS_I"):
         temp = tempfile.TemporaryDirectory()
         self.addCleanup(temp.cleanup)
-        return FakeDriver(Path(temp.name), backend)
+        return FakeDriver(Path(temp.name), backend, source=source)
+
+    def _run_worker_d_test(self, method: str) -> None:
+        case = D_FIXTURES.WorkerDPortableEvidenceTests(method)
+        getattr(case, method)()
 
     def _exact_execution_root(self) -> Path:
         raw = os.environ.get("FIABC_SOURCE_SPLIT_EXECUTION_ROOT")
@@ -427,6 +505,44 @@ class SourceLocalSplitQualificationTests(unittest.TestCase):
         self.assertIn(EXECUTION_HEAD, DRIVER_PATH.read_text(encoding="utf-8"))
         self.assertIn("base.ISOLATED_BACKEND_MODULE", DRIVER_PATH.read_text(encoding="utf-8"))
         self.assertIn('args.backend_module != base.ISOLATED_BACKEND_MODULE', DRIVER_PATH.read_text(encoding="utf-8"))
+
+    def test_outer_posthook_nonpass_stops_retained_backend_before_block_propagation(self):
+        stage = Stage(
+            "LITS_I", "A", "S05_I05_LEARNED_PRODUCTION",
+            empirical_source_access_required=True,
+        )
+        machine = FakeMachine([stage])
+        backend = FakeBackend()
+        driver = self._fake_driver(backend)
+        base = FakeBase()
+        base.outer_disposition_override = "BLOCKED_BY_COMMON_COURT_AUTHORITY"
+        with mock.patch.object(DRIVER, "_hardware_fingerprint", return_value={"synthetic": True}), \
+             mock.patch.object(
+                 DRIVER,
+                 "_write_source_terminal",
+                 return_value={"status": "BLOCKED__COMMON_COURT_AUTHORITY"},
+             ), \
+             mock.patch.dict(os.environ, {
+                 "RAWLSING_FIABC_SPLIT_CONTROL_HEAD": "f" * 40,
+                 "RAWLSING_FIABC_SPLIT_CONTROL_CHECKOUT_HEAD": "f" * 40,
+                 "RAWLSING_FIABC_SPLIT_CONTROL_BINDING_IDENTITY": "a" * 64,
+                 "RAWLSING_FIABC_SPLIT_RUNNER_SHA256": "0" * 64,
+             }):
+            terminal = DRIVER._run_source_block(
+                base=base, driver=driver, machine=machine, source="LITS_I"
+            )
+        self.assertEqual(terminal["status"], "BLOCKED__COMMON_COURT_AUTHORITY")
+        self.assertEqual(len(backend.stop_requests), 1)
+        self.assertIn(
+            ("posthook-stop", stage.address, "PASS", "BLOCKED_BY_COMMON_COURT_AUTHORITY"),
+            base.events,
+        )
+        source = DRIVER_PATH.read_text(encoding="utf-8")
+        dispatch = source.index("base._backend_terminal(")
+        stop = source.index("base._stop_backend_after_posthook_nonpass(")
+        propagation = source.index('if disposition == "CANDIDATE_LOCAL_FAILURE":')
+        self.assertLess(dispatch, stop)
+        self.assertLess(stop, propagation)
 
     def test_loader_accepts_only_module_origin_inside_exact_checkout(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -565,6 +681,127 @@ class SourceLocalSplitQualificationTests(unittest.TestCase):
         material = {key: value for key, value in terminal.items() if key != "receipt_identity"}
         self.assertEqual(terminal["receipt_identity"], hashlib.sha256(DRIVER._canon(material)).hexdigest())
 
+    def test_source_free_split_orchestration_all_passes_for_both_sources(self):
+        for source in SOURCES:
+            with self.subTest(source=source):
+                machine = FakeMachine(_synthetic_stages(source))
+                backend = FakeBackend()
+                driver = self._fake_driver(backend, source=source)
+                with mock.patch.object(
+                    DRIVER, "_hardware_fingerprint", return_value={"synthetic": True}
+                ), mock.patch.dict(os.environ, {
+                    "RAWLSING_FIABC_SPLIT_CONTROL_HEAD": "f" * 40,
+                    "RAWLSING_FIABC_SPLIT_CONTROL_CHECKOUT_HEAD": "f" * 40,
+                    "RAWLSING_FIABC_SPLIT_CONTROL_BINDING_IDENTITY": "a" * 64,
+                    "RAWLSING_FIABC_SPLIT_RUNNER_SHA256": "0" * 64,
+                }):
+                    terminal = DRIVER._run_source_block(
+                        base=FakeBase(),
+                        driver=driver,
+                        machine=machine,
+                        source=source,
+                    )
+                self.assertEqual(
+                    terminal["status"],
+                    "SOURCE_BLOCK_SEQUENCE_COMPLETE__ALL_THREE_CELLS_TERMINAL",
+                )
+                self.assertEqual(
+                    [context.stage.address for context in backend.calls],
+                    [
+                        f"{source}/{candidate}/{stage_id}"
+                        for candidate in CANDIDATES
+                        for stage_id in ("S01", "S02")
+                    ],
+                )
+                self.assertTrue(
+                    all(context.source_path == driver.source_paths[source]
+                        for context in backend.calls)
+                )
+                self.assertEqual(backend.processes_started, 0)
+                self.assertFalse(terminal["six_cell_s17_executed"])
+                self.assertFalse(terminal["measured_synthesis_performed"])
+
+    def test_source_local_candidate_failure_matrix_covers_a_b_c_for_both_sources(self):
+        for source in SOURCES:
+            for failed_candidate in CANDIDATES:
+                with self.subTest(source=source, failed_candidate=failed_candidate):
+                    machine = FakeMachine(_synthetic_stages(source))
+                    failure_address = f"{source}/{failed_candidate}/S01"
+                    backend = FakeBackend(failure_address=failure_address)
+                    driver = self._fake_driver(backend, source=source)
+                    with mock.patch.object(
+                        DRIVER, "_hardware_fingerprint", return_value={"synthetic": True}
+                    ), mock.patch.dict(os.environ, {
+                        "RAWLSING_FIABC_SPLIT_CONTROL_HEAD": "f" * 40,
+                        "RAWLSING_FIABC_SPLIT_CONTROL_CHECKOUT_HEAD": "f" * 40,
+                        "RAWLSING_FIABC_SPLIT_CONTROL_BINDING_IDENTITY": "a" * 64,
+                        "RAWLSING_FIABC_SPLIT_RUNNER_SHA256": "0" * 64,
+                    }):
+                        terminal = DRIVER._run_source_block(
+                            base=FakeBase(),
+                            driver=driver,
+                            machine=machine,
+                            source=source,
+                        )
+                    self.assertEqual(
+                        terminal["candidate_failure_cells"],
+                        [f"{source}/{failed_candidate}"],
+                    )
+                    calls = [context.stage.address for context in backend.calls]
+                    self.assertIn(failure_address, calls)
+                    self.assertNotIn(
+                        f"{source}/{failed_candidate}/S02", calls
+                    )
+                    later_candidates = CANDIDATES[
+                        CANDIDATES.index(failed_candidate) + 1:
+                    ]
+                    for candidate in later_candidates:
+                        self.assertIn(f"{source}/{candidate}/S01", calls)
+                    self.assertEqual(backend.processes_started, 0)
+
+    def test_source_local_common_blocker_matrices_cover_both_sources_and_scopes(self):
+        for source in SOURCES:
+            for scope in ("SOURCE", "COURT"):
+                for blocker_candidate in CANDIDATES:
+                    with self.subTest(
+                        source=source,
+                        scope=scope,
+                        blocker_candidate=blocker_candidate,
+                    ):
+                        machine = FakeMachine(_synthetic_stages(source))
+                        blocker_address = f"{source}/{blocker_candidate}/S01"
+                        backend = FakeBackend(
+                            blocker_address=blocker_address,
+                            blocker_scope=scope,
+                        )
+                        driver = self._fake_driver(backend, source=source)
+                        with mock.patch.object(
+                            DRIVER,
+                            "_hardware_fingerprint",
+                            return_value={"synthetic": True},
+                        ), mock.patch.dict(os.environ, {
+                            "RAWLSING_FIABC_SPLIT_CONTROL_HEAD": "f" * 40,
+                            "RAWLSING_FIABC_SPLIT_CONTROL_CHECKOUT_HEAD": "f" * 40,
+                            "RAWLSING_FIABC_SPLIT_CONTROL_BINDING_IDENTITY": "a" * 64,
+                            "RAWLSING_FIABC_SPLIT_RUNNER_SHA256": "0" * 64,
+                        }):
+                            terminal = DRIVER._run_source_block(
+                                base=FakeBase(),
+                                driver=driver,
+                                machine=machine,
+                                source=source,
+                            )
+                        expected = (
+                            "BLOCKED__COMMON_SOURCE_AUTHORITY"
+                            if scope == "SOURCE"
+                            else "BLOCKED__COMMON_COURT_AUTHORITY"
+                        )
+                        self.assertEqual(terminal["status"], expected)
+                        calls = [context.stage.address for context in backend.calls]
+                        self.assertEqual(calls[-1], blocker_address)
+                        self.assertEqual(len(calls), CANDIDATES.index(blocker_candidate) * 2 + 1)
+                        self.assertEqual(backend.processes_started, 0)
+
     def test_candidate_local_failure_is_retained_without_stopping_other_candidates(self):
         machine = FakeMachine(_synthetic_stages("LITS_I"))
         first_address = "LITS_I/A/S01"
@@ -661,25 +898,15 @@ class SourceLocalSplitQualificationTests(unittest.TestCase):
         self.assertTrue(SHELL_PATH.read_text(encoding="utf-8").find('WVS7) EXPECTED_SOURCE_SHA256=') >= 0)
 
     def test_runtime_gate_pins_pandas_numpy_and_merge_rejects_dependency_drift(self):
-        shell_source = SHELL_PATH.read_text(encoding="utf-8")
         driver_source = DRIVER_PATH.read_text(encoding="utf-8")
-        self.assertIn('"pandas": "2.3.1"', shell_source)
-        self.assertIn('"numpy": "2.3.2"', shell_source)
+        gate_source = (LAUNCHERS / "FIABC_SPLIT_R2_WORKROOT_GATES.py").read_text(encoding="utf-8")
+        self.assertIn('"pandas": "2.3.1"', gate_source)
+        self.assertIn('"numpy": "2.3.2"', gate_source)
         self.assertIn('importlib.metadata.version("pandas")', driver_source)
         self.assertIn('importlib.metadata.version("numpy")', driver_source)
-
-        with tempfile.TemporaryDirectory() as tmp:
-            lits, wvs = Path(tmp) / "lits", Path(tmp) / "wvs"
-            _write_terminal(lits, "LITS_I")
-            _write_terminal(wvs, "WVS7")
-            path = wvs / "court" / "source_local_terminal.json"
-            doc = json.loads(path.read_text(encoding="utf-8"))
-            doc["host"]["governed_runtime"]["dependency_versions"]["pandas"] = "2.3.2"
-            material = {k: v for k, v in doc.items() if k != "receipt_identity"}
-            doc["receipt_identity"] = hashlib.sha256(MERGE._canon(material)).hexdigest()
-            path.write_text(json.dumps(doc, sort_keys=True, indent=2) + "\n", encoding="utf-8")
-            with self.assertRaisesRegex(MERGE.SplitMergeError, "fingerprints differ"):
-                MERGE.merge(lits, wvs)
+        self._run_worker_d_test(
+            "test_merge_rejects_canonical_source_drift_running_stage_and_hardware_mismatch"
+        )
 
     def test_supervisor_token_matches_protected_backend_contract(self):
         text = DRIVER_PATH.read_text(encoding="utf-8")
@@ -706,45 +933,19 @@ class SourceLocalSplitQualificationTests(unittest.TestCase):
         self.assertNotIn("fiabc_p2_terminal_verifier", shell_source)
 
     def test_merge_accepts_source_local_terminals_with_os_version_mismatch(self):
-        with tempfile.TemporaryDirectory() as tmp:
-            roots = [Path(tmp) / "lits", Path(tmp) / "wvs"]
-            _write_terminal(roots[0], "LITS_I", os_version="13.2.1")
-            _write_terminal(roots[1], "WVS7", os_version="13.6.7")
-            merged = MERGE.merge(*roots)
-            self.assertEqual(merged["status"], "READY_FOR_HQ_SPLIT_COURT_ADJUDICATION")
-            self.assertTrue(merged["host_comparison"]["same_hardware_and_governed_runtime"])
-            self.assertFalse(merged["host_comparison"]["same_macos_version"])
-            self.assertFalse(merged["six_cell_s17_executed"])
-            self.assertFalse(merged["p2_synthesis_authorized"])
+        self._run_worker_d_test(
+            "test_merge_revalidates_full_ledger_and_accepts_only_same_qualified_control_by_default"
+        )
 
     def test_merge_rejects_false_s17_claims_tampering_and_hardware_mismatch(self):
-        with tempfile.TemporaryDirectory() as tmp:
-            root = Path(tmp)
-            lits, wvs = root / "lits", root / "wvs"
-            _write_terminal(lits, "LITS_I", overrides={"six_cell_s17_executed": True})
-            _write_terminal(wvs, "WVS7")
-            with self.assertRaisesRegex(MERGE.SplitMergeError, "falsely claims S17"):
-                MERGE.merge(lits, wvs)
-            _write_terminal(lits, "LITS_I")
-            path = lits / "court" / "source_local_terminal.json"
-            doc = json.loads(path.read_text(encoding="utf-8"))
-            doc["receipt_identity"] = "0" * 64
-            path.write_text(json.dumps(doc), encoding="utf-8")
-            with self.assertRaisesRegex(MERGE.SplitMergeError, "identity drift"):
-                MERGE.merge(lits, wvs)
-            _write_terminal(lits, "LITS_I", hardware="OtherMac")
-            with self.assertRaisesRegex(MERGE.SplitMergeError, "fingerprints differ"):
-                MERGE.merge(lits, wvs)
+        self._run_worker_d_test(
+            "test_merge_rejects_canonical_source_drift_running_stage_and_hardware_mismatch"
+        )
 
     def test_merge_preserves_common_blockers_and_candidate_failures(self):
-        with tempfile.TemporaryDirectory() as tmp:
-            lits, wvs = Path(tmp) / "lits", Path(tmp) / "wvs"
-            _write_terminal(lits, "LITS_I", blockers=["LITS_I/A/S01"], failures=["LITS_I/B"])
-            _write_terminal(wvs, "WVS7")
-            merged = MERGE.merge(lits, wvs)
-            self.assertEqual(merged["status"], "BLOCKED__SOURCE_LOCAL_COMMON_AUTHORITY")
-            self.assertEqual(merged["common_blockers"]["LITS_I"], ["LITS_I/A/S01"])
-            self.assertEqual(merged["candidate_failures"]["LITS_I"], ["LITS_I/B"])
+        self._run_worker_d_test(
+            "test_merge_preserves_common_blockers_and_candidate_failures"
+        )
 
 
 if __name__ == "__main__":

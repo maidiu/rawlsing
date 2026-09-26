@@ -10,6 +10,7 @@ import argparse
 import hashlib
 import importlib
 import importlib.metadata
+import importlib.util
 import json
 import os
 from pathlib import Path
@@ -19,7 +20,19 @@ import sys
 from typing import Any, Mapping, Sequence
 
 EXPECTED_EXECUTION_BRANCH = "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1"
-EXPECTED_EXECUTION_HEAD = "3d8f2ad62600b6777dcb23a28404a067502e77a0"
+EXPECTED_EXECUTION_HEAD = "16f5e7d5f691e908d85dc1dd26b8a59a29f668f4"
+EXPECTED_SUCCESSOR_BINDING_BLOB_SHA1 = "247725e51ed141cf31c112084590b69953765032"
+EXPECTED_REUSE_CONTRACT_BLOB_SHA1 = "1a3ac01732fafb6a9a1c3e560156ed245fc3fb6b"
+EXPECTED_EPOCH_BLOB_SHA1 = "0efd83e7c85d37408ab4361d2a9db5406debcbd6"
+EXPECTED_PHYSICAL_EPOCH_IDENTITY = "fc6afc9bc7b287f8fd0654e1da546faee7e6c85491e6735ebe4a161b0db3de35"
+EXPECTED_CONTROL_BRANCH = "agent/vozhd-fiabc-split-r2-fanin-r1"
+SUCCESSOR_BINDING_REL = "WORKER_RETURNS/EE-P2X/10C_DARWIN_DRIVER_SUCCESSOR_BINDING.json"
+REUSE_CONTRACT_REL = "WORKER_RETURNS/FIABC-CACHE-NEUTRAL-JOINED-SUCCESSOR-R1/08_SPLIT_REUSE_CONTRACT.json"
+EPOCH_REL = "WORKER_RETURNS/FIABC-CACHE-NEUTRAL-JOINED-SUCCESSOR-R1/01_CACHE_NEUTRAL_PHYSICAL_EPOCH.json"
+SPLIT_CACHE_RECEIPT_REL = Path("court") / "cache_neutrality_receipt.json"
+CONTROL_BINDING_REL = Path(
+    "WORKER_RETURNS/FIABC-SOURCE-SPLIT-R2-FANIN-R1/CONTROL_BINDING.json"
+)
 OWNER_COMMIT = "0b96b8de9aac774566f872cf0630ebd4ddeb70e6"
 LIVE_EVIDENCE_REL = Path("WORKER_RETURNS/EE-P2X/LOCAL_COURT")
 BASELINE_SCHEMA = "RAWLSING_FIABC_SPLIT_R2_REPO_PRESTATE_BASELINE@1.0.0"
@@ -173,7 +186,154 @@ def exact_repo_identity(repo_root: Path) -> Mapping[str, str]:
         raise SplitR2GateError(
             f"execution head drift: expected {EXPECTED_EXECUTION_HEAD}, got {head}"
         )
+    binding_blob = _git_text(root, "rev-parse", f"HEAD:{SUCCESSOR_BINDING_REL}")
+    if binding_blob != EXPECTED_SUCCESSOR_BINDING_BLOB_SHA1:
+        raise SplitR2GateError(
+            "protected 10C successor binding blob drift: "
+            f"expected {EXPECTED_SUCCESSOR_BINDING_BLOB_SHA1}, got {binding_blob}"
+        )
     return {"branch": branch, "head": head}
+
+
+def verify_successor_binding(
+    *, repo_root: Path, control_root: Path
+) -> Mapping[str, Any]:
+    """Verify the exact joined 10C successor and split reuse contract."""
+    repo_root = repo_root.resolve()
+    control_root = control_root.resolve()
+    execution = exact_repo_identity(repo_root)
+    control_branch = _git_text(control_root, "branch", "--show-current")
+    if control_branch != EXPECTED_CONTROL_BRANCH:
+        raise SplitR2GateError(
+            f"wrong split-control branch: expected {EXPECTED_CONTROL_BRANCH}, got {control_branch}"
+        )
+
+    reuse_blob = _git_text(control_root, "rev-parse", f"HEAD:{REUSE_CONTRACT_REL}")
+    epoch_blob = _git_text(control_root, "rev-parse", f"HEAD:{EPOCH_REL}")
+    if reuse_blob != EXPECTED_REUSE_CONTRACT_BLOB_SHA1:
+        raise SplitR2GateError("split reuse contract blob drift")
+    if epoch_blob != EXPECTED_EPOCH_BLOB_SHA1:
+        raise SplitR2GateError("cache-neutral epoch blob drift")
+
+    binding = json.loads(
+        _git_text(repo_root, "show", f"HEAD:{SUCCESSOR_BINDING_REL}")
+    )
+    contract = json.loads(
+        _git_text(control_root, "show", f"HEAD:{REUSE_CONTRACT_REL}")
+    )
+    epoch = json.loads(_git_text(control_root, "show", f"HEAD:{EPOCH_REL}"))
+
+    if binding.get("schema") != "RAWLSING_EE_P2X_DARWIN_DRIVER_SUCCESSOR_BINDING@1.0.0":
+        raise SplitR2GateError("10C successor binding schema drift")
+    if binding.get("authority_class") != "CACHE_NEUTRAL_SUCCESSOR_IMPLEMENTATION_BINDING__NON_OPERATIVE_UNTIL_HQ_PROMOTION":
+        raise SplitR2GateError("10C successor binding authority class drift")
+    if binding.get("driver", {}).get("execution_checkout_branch") != "agent/rabochii-fiabc-cache-neutral-joined-successor-r1":
+        raise SplitR2GateError("10C joined successor branch drift")
+    if binding.get("physical_epoch", {}).get("receipt_identity") != EXPECTED_PHYSICAL_EPOCH_IDENTITY:
+        raise SplitR2GateError("10C physical epoch identity drift")
+
+    if contract.get("schema") != "RAWLSING_FIABC_CACHE_NEUTRAL_JOINED_SUCCESSOR_SPLIT_REUSE_CONTRACT@1.0.0":
+        raise SplitR2GateError("split reuse contract schema drift")
+    if contract.get("status") != "PASS__EXACT_JOINED_IDENTITIES_BANKED_FOR_SPLIT_REUSE":
+        raise SplitR2GateError("split reuse contract is not PASS")
+    if contract.get("joined_successor_implementation_head") != EXPECTED_EXECUTION_HEAD:
+        raise SplitR2GateError("split reuse contract joined head drift")
+    contract_epoch = contract.get("physical_epoch", {})
+    if (
+        contract_epoch.get("receipt_identity") != EXPECTED_PHYSICAL_EPOCH_IDENTITY
+        or contract_epoch.get("git_blob_sha1") != EXPECTED_EPOCH_BLOB_SHA1
+    ):
+        raise SplitR2GateError("split reuse contract epoch binding drift")
+    if contract.get("successor_binding", {}).get("git_blob_sha1") != EXPECTED_SUCCESSOR_BINDING_BLOB_SHA1:
+        raise SplitR2GateError("split reuse contract 10C binding drift")
+    if contract.get("exact_runtime") != EXPECTED_RUNTIME:
+        raise SplitR2GateError("split reuse contract runtime tuple drift")
+    cache_law = contract.get("cache_neutral_environment", {})
+    expected_cache_law = {
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONPYCACHEPREFIX": "$WORK_ROOT/court/_python_cache_neutral_prefix",
+        "RAWLSING_EE_P2X_CACHE_NEUTRAL_SUCCESSOR": "1",
+        "RAWLSING_EE_P2X_PHYSICAL_EPOCH_IDENTITY": EXPECTED_PHYSICAL_EPOCH_IDENTITY,
+    }
+    if cache_law != expected_cache_law:
+        raise SplitR2GateError("split reuse contract cache-neutral environment drift")
+    if contract.get("attestation", {}).get("schema") != "RAWLSING_FIABC_P2X_CACHE_NEUTRAL_ATTESTATION@1.0.0":
+        raise SplitR2GateError("split reuse contract child attestation schema drift")
+
+    epoch_identity = epoch.get("receipt_identity")
+    epoch_material = {k: v for k, v in epoch.items() if k != "receipt_identity"}
+    if hashlib.sha256(_canon(epoch_material)).hexdigest() != epoch_identity:
+        raise SplitR2GateError("cache-neutral epoch self-identity drift")
+    if epoch_identity != EXPECTED_PHYSICAL_EPOCH_IDENTITY or epoch.get("runtime") != EXPECTED_RUNTIME:
+        raise SplitR2GateError("cache-neutral epoch identity/runtime drift")
+
+    protected_blobs = dict(contract.get("protected_blobs", {}))
+    joined_launcher = contract.get("joined_launcher", {})
+    worker_e_helper = contract.get("worker_e_cache_control", {})
+    protected_blobs[joined_launcher.get("path", "")] = joined_launcher.get("git_blob_sha1")
+    protected_blobs[worker_e_helper.get("path", "")] = worker_e_helper.get("git_blob_sha1")
+    checked_blobs: dict[str, str] = {}
+    for rel, expected_blob in protected_blobs.items():
+        if not rel or not isinstance(expected_blob, str):
+            raise SplitR2GateError("split reuse contract protected blob inventory malformed")
+        actual_blob = _git_text(repo_root, "rev-parse", f"HEAD:{rel}")
+        if actual_blob != expected_blob:
+            raise SplitR2GateError(f"protected successor code blob drift: {rel}")
+        checked_blobs[rel] = actual_blob
+
+    return {
+        "status": "PASS__EXACT_10C_AND_SPLIT_REUSE_CONTRACT_BOUND",
+        "execution": execution,
+        "control_branch": control_branch,
+        "joined_successor_implementation_head": EXPECTED_EXECUTION_HEAD,
+        "successor_binding_path": SUCCESSOR_BINDING_REL,
+        "successor_binding_blob_sha1": EXPECTED_SUCCESSOR_BINDING_BLOB_SHA1,
+        "split_reuse_contract_path": REUSE_CONTRACT_REL,
+        "split_reuse_contract_blob_sha1": reuse_blob,
+        "epoch_path": EPOCH_REL,
+        "epoch_blob_sha1": epoch_blob,
+        "physical_epoch_identity": EXPECTED_PHYSICAL_EPOCH_IDENTITY,
+        "runtime": dict(EXPECTED_RUNTIME),
+        "protected_blob_checks": dict(sorted(checked_blobs.items())),
+    }
+
+
+def _control_binding_helper(control_root: Path):
+    path = control_root.resolve() / "HQ_HANDOFF/launchers/FIABC_SOURCE_LOCAL_SPLIT_EVIDENCE.py"
+    spec = importlib.util.spec_from_file_location(
+        "_fiabc_split_control_binding_helper", path
+    )
+    if spec is None or spec.loader is None:
+        raise SplitR2GateError("qualified split-control evidence helper is unavailable")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def _control_snapshot(
+    *, control_root: Path, control_binding_path: Path, qualified_control_head: str
+) -> Mapping[str, Any]:
+    control_root = control_root.resolve()
+    helper = _control_binding_helper(control_root)
+    try:
+        binding = helper.verify_control_binding(
+            binding_path=control_binding_path,
+            control_root=control_root,
+            require_clean=True,
+        )
+    except Exception as exc:
+        raise SplitR2GateError(f"qualified split-control binding rejected: {exc}") from exc
+    if binding.get("qualified_control_branch") != EXPECTED_CONTROL_BRANCH:
+        raise SplitR2GateError("qualified control binding names a different branch")
+    if binding.get("qualified_implementation_head") != qualified_control_head:
+        raise SplitR2GateError("qualified control implementation head differs from readiness request")
+    return {
+        "qualified_implementation_head": binding["qualified_implementation_head"],
+        "observed_checkout_head": binding["observed_control_checkout_head"],
+        "binding_receipt_identity": binding["binding_receipt_identity"],
+        "bound_files": dict(binding["bound_files"]),
+        "control_checkout_clean": binding["control_checkout_clean"],
+    }
 
 
 def worktree_lock_root(repo_root: Path) -> Path:
@@ -264,6 +424,7 @@ def machine_readiness(
     repo_root: Path,
     work_root: Path,
     control_root: Path,
+    control_binding_path: Path,
     qualified_control_head: str,
     launcher_path: Path,
     driver_path: Path,
@@ -274,11 +435,14 @@ def machine_readiness(
     repo = exact_repo_identity(repo_root)
     runtime = combined_import_abi_gate()
     control_root = control_root.resolve()
-    control_head = _git_text(control_root, "rev-parse", "--verify", "HEAD^{commit}")
-    if control_head != qualified_control_head:
-        raise SplitR2GateError(
-            f"unqualified split-control head: expected {qualified_control_head}, got {control_head}"
-        )
+    successor_binding = verify_successor_binding(
+        repo_root=repo_root, control_root=control_root
+    )
+    control = _control_snapshot(
+        control_root=control_root,
+        control_binding_path=control_binding_path,
+        qualified_control_head=qualified_control_head,
+    )
     fresh = _assert_fresh_work_root(work_root)
     payload = {
         "schema": READINESS_SCHEMA,
@@ -292,11 +456,12 @@ def machine_readiness(
         "fresh_work_root": fresh,
         "protected_execution": repo,
         "qualified_control": {
-            "head": control_head,
+            **control,
             "launcher_sha256": _sha256_file(launcher_path.resolve()),
             "driver_sha256": _sha256_file(driver_path.resolve()),
             "workroot_gates_sha256": _sha256_file(helper_path.resolve()),
         },
+        "joined_successor_binding": successor_binding,
         "runtime": runtime["observed"],
         "combined_import_gate": runtime,
         "hardware": _hardware(),
@@ -376,6 +541,7 @@ def verify_pair_member(
     repo_root: Path,
     work_root: Path,
     control_root: Path,
+    control_binding_path: Path,
     qualified_control_head: str,
     launcher_path: Path,
     driver_path: Path,
@@ -393,17 +559,24 @@ def verify_pair_member(
     if readiness.get("protected_execution") != repo:
         raise SplitR2GateError("protected execution drift since readiness")
     control_root = control_root.resolve()
-    head = _git_text(control_root, "rev-parse", "--verify", "HEAD^{commit}")
-    if head != qualified_control_head:
-        raise SplitR2GateError("control head drift since readiness")
+    successor_binding = verify_successor_binding(
+        repo_root=repo_root, control_root=control_root
+    )
+    control = _control_snapshot(
+        control_root=control_root,
+        control_binding_path=control_binding_path,
+        qualified_control_head=qualified_control_head,
+    )
     observed_control = {
-        "head": head,
+        **control,
         "launcher_sha256": _sha256_file(launcher_path.resolve()),
         "driver_sha256": _sha256_file(driver_path.resolve()),
         "workroot_gates_sha256": _sha256_file(helper_path.resolve()),
     }
     if readiness.get("qualified_control") != observed_control:
         raise SplitR2GateError("control implementation bytes drift since readiness")
+    if readiness.get("joined_successor_binding") != successor_binding:
+        raise SplitR2GateError("joined successor/10C binding drift since readiness")
     if readiness.get("runtime") != combined_import_abi_gate()["observed"]:
         raise SplitR2GateError("runtime drift since readiness")
     if readiness.get("hardware") != _hardware():
@@ -476,6 +649,38 @@ def _relative_files(root: Path, prefixes: Sequence[str]) -> list[str]:
     return out
 
 
+def _cache_neutral_helper():
+    path = Path(__file__).resolve().with_name(
+        "FIABC_PYTHON_CACHE_NEUTRALITY_SUCCESSOR.py"
+    )
+    spec = importlib.util.spec_from_file_location(
+        "_fiabc_split_cache_neutrality_successor", path
+    )
+    if spec is None or spec.loader is None:
+        raise SplitR2GateError("cache-neutral successor helper is unavailable")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def _verify_split_cache_receipt(work_root: Path) -> Mapping[str, Any]:
+    path = work_root.resolve() / SPLIT_CACHE_RECEIPT_REL
+    if not path.is_file():
+        raise SplitR2GateError("split cache-neutrality receipt is missing")
+    try:
+        document = json.loads(path.read_text(encoding="utf-8"))
+        helper = _cache_neutral_helper()
+        helper.verify_receipt(
+            document,
+            expected_scope="SPLIT_SOURCE_LOCAL",
+            require_joined_successor=True,
+        )
+        helper.assert_prefix_empty(work_root)
+    except Exception as exc:
+        raise SplitR2GateError(f"split cache-neutrality receipt rejected: {exc}") from exc
+    return document
+
+
 def provision_joined_prestate(
     *, source: str, repo_root: Path, work_root: Path, output: Path
 ) -> Mapping[str, Any]:
@@ -516,18 +721,18 @@ def provision_joined_prestate(
         "candidate_owned_semantic_state_prebuilt": False,
         "candidate_owned_carrier_state_prebuilt": False,
         "joined_import_cache_state": (
-            "BLOCKED__JOINED_LITS_GENERATED_PYTHON_BYTECODE_CACHE_NOT_REPRODUCED"
+            "WVS_BYTECODE_PRESTATE_NEUTRALIZED_BY_SHARED_JOINED_SPLIT_SUCCESSOR_LAW"
             if source == "WVS7"
-            else "NOT_APPLICABLE__LITS_IS_FIRST_JOINED_SOURCE"
+            else "SHARED_CACHE_NEUTRAL_SUCCESSOR_LAW_APPLIES_UNIFORMLY"
         ),
         "joined_import_cache_reason": (
-            "Joined LiTS candidate processes can populate Python bytecode caches for "
-            "R5 support, exact-owner, and protected dependency modules before WVS/A. "
-            "Those caches are software prestate and imports occur inside measured WVS "
-            "S01 build_or_open_wall_ns. Source-byte preprovisioning alone is insufficient."
-            if source == "WVS7"
-            else None
+            "Joined and split measured interpreters redirect cache lookup to the same "
+            "fresh empty prefix and disable bytecode writes; ordinary source-tree pycs "
+            "cannot participate in either source's candidate work."
         ),
+        "joined_successor_implementation_head": EXPECTED_EXECUTION_HEAD,
+        "successor_binding_blob_sha1": EXPECTED_SUCCESSOR_BINDING_BLOB_SHA1,
+        "physical_epoch_identity": EXPECTED_PHYSICAL_EPOCH_IDENTITY,
         "forbidden_roots_absent": {
             name: not (work_root / name).exists() for name in FORBIDDEN_PREPROVISION_ROOTS
         },
@@ -570,12 +775,22 @@ def verify_joined_prestate(
     for name in FORBIDDEN_PREPROVISION_ROOTS:
         if (work_root / name).exists():
             raise SplitR2GateError(f"forbidden prebuilt state appeared: {name}")
-    if source == "WVS7" and doc.get("joined_import_cache_state") != "EXACTLY_REPRODUCED":
-        raise SplitR2GateError(
-            "WVS joined-court software prestate remains unclosed: LiTS-generated Python "
-            "bytecode/import caches can change measured WVS S01 build_or_open cost; "
-            "source-byte preprovisioning does not reproduce that state"
-        )
+    expected_cache_state = (
+        "WVS_BYTECODE_PRESTATE_NEUTRALIZED_BY_SHARED_JOINED_SPLIT_SUCCESSOR_LAW"
+        if source == "WVS7"
+        else "SHARED_CACHE_NEUTRAL_SUCCESSOR_LAW_APPLIES_UNIFORMLY"
+    )
+    if doc.get("joined_import_cache_state") != expected_cache_state:
+        raise SplitR2GateError("joined import-cache classification is not the shared successor law")
+    if (
+        doc.get("joined_successor_implementation_head") != EXPECTED_EXECUTION_HEAD
+        or doc.get("successor_binding_blob_sha1") != EXPECTED_SUCCESSOR_BINDING_BLOB_SHA1
+        or doc.get("physical_epoch_identity") != EXPECTED_PHYSICAL_EPOCH_IDENTITY
+    ):
+        raise SplitR2GateError("joined prestate successor or physical-epoch binding drift")
+    cache_receipt = _verify_split_cache_receipt(work_root)
+    if not cache_receipt.get("receipt_identity"):
+        raise SplitR2GateError("cache-neutrality receipt identity is absent")
     return doc
 
 
@@ -826,11 +1041,16 @@ def _parser() -> argparse.ArgumentParser:
 
     sub.add_parser("runtime-gate")
 
+    successor = sub.add_parser("verify-successor-binding")
+    successor.add_argument("--repo-root", type=Path, required=True)
+    successor.add_argument("--control-root", type=Path, required=True)
+
     r = sub.add_parser("readiness")
     r.add_argument("--source", required=True, choices=tuple(SOURCE_SHA256))
     r.add_argument("--repo-root", type=Path, required=True)
     r.add_argument("--work-root", type=Path, required=True)
     r.add_argument("--control-root", type=Path, required=True)
+    r.add_argument("--control-binding", type=Path, required=True)
     r.add_argument("--qualified-control-head", required=True)
     r.add_argument("--launcher", type=Path, required=True)
     r.add_argument("--driver", type=Path, required=True)
@@ -849,6 +1069,7 @@ def _parser() -> argparse.ArgumentParser:
     member.add_argument("--repo-root", type=Path, required=True)
     member.add_argument("--work-root", type=Path, required=True)
     member.add_argument("--control-root", type=Path, required=True)
+    member.add_argument("--control-binding", type=Path, required=True)
     member.add_argument("--qualified-control-head", required=True)
     member.add_argument("--launcher", type=Path, required=True)
     member.add_argument("--driver", type=Path, required=True)
@@ -867,12 +1088,18 @@ def main(argv: list[str] | None = None) -> int:
     args = _parser().parse_args(argv)
     if args.command == "runtime-gate":
         out = combined_import_abi_gate()
+    elif args.command == "verify-successor-binding":
+        out = verify_successor_binding(
+            repo_root=args.repo_root,
+            control_root=args.control_root,
+        )
     elif args.command == "readiness":
         out = machine_readiness(
             source=args.source,
             repo_root=args.repo_root,
             work_root=args.work_root,
             control_root=args.control_root,
+            control_binding_path=args.control_binding,
             qualified_control_head=args.qualified_control_head,
             launcher_path=args.launcher,
             driver_path=args.driver,
@@ -893,6 +1120,7 @@ def main(argv: list[str] | None = None) -> int:
             repo_root=args.repo_root,
             work_root=args.work_root,
             control_root=args.control_root,
+            control_binding_path=args.control_binding,
             qualified_control_head=args.qualified_control_head,
             launcher_path=args.launcher,
             driver_path=args.driver,

@@ -30,11 +30,14 @@ if _LAUNCHER_DIR not in sys.path:
 import FIABC_SPLIT_R2_WORKROOT_GATES as split_gates  # noqa: E402
 
 EXPECTED_EXECUTION_BRANCH = "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1"
-EXPECTED_EXECUTION_HEAD = "3d8f2ad62600b6777dcb23a28404a067502e77a0"
+EXPECTED_EXECUTION_HEAD = "16f5e7d5f691e908d85dc1dd26b8a59a29f668f4"
 EXPECTED_SOURCES = ("LITS_I", "WVS7")
 EXPECTED_CANDIDATES = ("A", "B", "C")
 SOURCE_TERMINAL_SCHEMA = "RAWLSING_FIABC_SOURCE_LOCAL_TERMINAL@1.0.0"
 SOURCE_PREFLIGHT_SCHEMA = "RAWLSING_FIABC_SOURCE_LOCAL_PREFLIGHT@1.0.0"
+WVS_SPLIT_ONLY_MECHANICAL_CLOSURE = (
+    "WVS7/C/S00_SOURCE_PREFLIGHT_IDENTITY",
+)
 
 
 class SourceLocalRunnerError(RuntimeError):
@@ -57,6 +60,27 @@ def _sha256_file(path: Path) -> str:
         for block in iter(lambda: fh.read(8 * 1024 * 1024), b""):
             h.update(block)
     return h.hexdigest()
+
+
+def _assert_cache_neutral_work_root(work_root: Path) -> Mapping[str, Any]:
+    try:
+        helper = split_gates._cache_neutral_helper()
+        runtime = helper.assert_runtime_configuration(work_root)
+        helper.assert_prefix_empty(work_root)
+        return runtime
+    except Exception as exc:
+        raise SourceLocalRunnerError(
+            f"cache-neutral successor runtime/prefix gate failed: {exc}"
+        ) from exc
+
+
+def _verify_cache_neutral_receipt(work_root: Path) -> Mapping[str, Any]:
+    try:
+        return split_gates._verify_split_cache_receipt(work_root)
+    except Exception as exc:
+        raise SourceLocalRunnerError(
+            f"cache-neutral successor receipt failed: {exc}"
+        ) from exc
 
 
 def _git(root: Path, *args: str, check: bool = True) -> subprocess.CompletedProcess[str]:
@@ -474,6 +498,43 @@ def _materialize_source_preflight_prefix(
     return addresses
 
 
+def _materialize_split_only_mechanical_closure(
+    *, base: Any, driver: Any, machine: Any, source: str, source_sha: str
+) -> tuple[str, ...]:
+    """Close the one approved split-only row before any source/candidate work."""
+    addresses = (
+        WVS_SPLIT_ONLY_MECHANICAL_CLOSURE if source == "WVS7" else ()
+    )
+    for address in addresses:
+        stage = machine.get(address)
+        if (
+            stage.disposition != "DONE__PRESERVE"
+            or stage.empirical_source_access_required is not False
+            or stage.physical_host_measurement_required is not False
+        ):
+            raise SourceLocalRunnerError(
+                f"split-only mechanical closure lost its exact source-free law: {address}"
+            )
+        old = driver.ledger.stage_entry(address)
+        if old is not None:
+            entry = driver.ledger.revalidate_terminal(address)
+        else:
+            base._preserve(
+                machine,
+                driver.ledger,
+                stage,
+                driver.repo_root,
+                driver.repo.head,
+                source_sha,
+            )
+            entry = driver.ledger.revalidate_terminal(address)
+        if entry.get("terminal_disposition") != "PRESERVED":
+            raise SourceLocalRunnerError(
+                f"split-only mechanical closure did not preserve exact row: {address}"
+            )
+    return tuple(addresses)
+
+
 def _source_preflight(
     *,
     base: Any,
@@ -488,20 +549,26 @@ def _source_preflight(
     freeze_path: Path,
 ) -> Mapping[str, Any]:
     driver.verify_static_gates()
-
-    observed_sha = driver.ensure_source_verified(source)
     expected_sha = machine.document["sources"][source]["sha256"]
-    if observed_sha != expected_sha:
-        raise SourceLocalRunnerError("selected source identity drift")
-
     transition_diff = _assert_transition_parity(base, machine, source)
     preflight_prefix = _materialize_source_preflight_prefix(
         base=base,
         driver=driver,
         machine=machine,
         source=source,
-        source_sha=observed_sha,
+        source_sha=expected_sha,
     )
+    split_only_mechanical_closure = _materialize_split_only_mechanical_closure(
+        base=base,
+        driver=driver,
+        machine=machine,
+        source=source,
+        source_sha=expected_sha,
+    )
+
+    observed_sha = driver.ensure_source_verified(source)
+    if observed_sha != expected_sha:
+        raise SourceLocalRunnerError("selected source identity drift")
 
     # Bind all three frozen owner blobs exactly, but do not instantiate a
     # candidate process or candidate-owned root.
@@ -552,6 +619,14 @@ def _source_preflight(
         "candidate_outputs_seen": 0,
         "joined_split_transition_differential": transition_diff,
         "mechanical_preflight_prefix": list(preflight_prefix),
+        "split_only_mechanical_closure": list(split_only_mechanical_closure),
+        "split_only_mechanical_closure_law": {
+            "source_free": True,
+            "candidate_processes_started": 0,
+            "physical_measurement_performed": False,
+            "empirical_source_access_performed": False,
+            "authorized_addresses": list(WVS_SPLIT_ONLY_MECHANICAL_CLOSURE),
+        },
         "source_local_only": True,
         "six_cell_s17_authorized": False,
         "p2_synthesis_authorized": False,
@@ -630,13 +705,55 @@ def _write_source_terminal(
         raise SourceLocalRunnerError("source identity missing from source-local ledger")
 
     control_head = os.environ.get("RAWLSING_FIABC_SPLIT_CONTROL_HEAD")
+    observed_control_head = os.environ.get(
+        "RAWLSING_FIABC_SPLIT_CONTROL_CHECKOUT_HEAD"
+    )
+    control_binding_identity = os.environ.get(
+        "RAWLSING_FIABC_SPLIT_CONTROL_BINDING_IDENTITY"
+    )
     runner_sha = os.environ.get("RAWLSING_FIABC_SPLIT_RUNNER_SHA256")
     driver_sha = _sha256_file(Path(__file__).resolve())
 
     prestate_path = driver.work_root / "court" / "joined_prestate_receipt.json"
     baseline_path = driver.work_root / "court" / "repo_prestate_baseline.json"
-    if not prestate_path.is_file() or not baseline_path.is_file():
-        raise SourceLocalRunnerError("source terminal requires joined-prestate and repo-baseline receipts")
+    preflight_path = driver.work_root / "court" / "source_local_preflight.json"
+    if not prestate_path.is_file() or not baseline_path.is_file() or not preflight_path.is_file():
+        raise SourceLocalRunnerError(
+            "source terminal requires joined-prestate, repo-baseline, and source-preflight receipts"
+        )
+    preflight_receipt = json.loads(preflight_path.read_text(encoding="utf-8"))
+    preflight_material = {
+        key: value
+        for key, value in preflight_receipt.items()
+        if key != "receipt_identity"
+    }
+    expected_split_closure = list(
+        WVS_SPLIT_ONLY_MECHANICAL_CLOSURE if source == "WVS7" else ()
+    )
+    if (
+        preflight_receipt.get("schema") != SOURCE_PREFLIGHT_SCHEMA
+        or preflight_receipt.get("source") != source
+        or preflight_receipt.get("receipt_identity")
+        != _sha256_bytes(_canon(preflight_material))
+        or preflight_receipt.get("split_only_mechanical_closure")
+        != expected_split_closure
+    ):
+        raise SourceLocalRunnerError(
+            "source terminal preflight or split-only mechanical-closure identity drift"
+        )
+    closure_law = preflight_receipt.get("split_only_mechanical_closure_law")
+    if (
+        not isinstance(closure_law, Mapping)
+        or closure_law.get("source_free") is not True
+        or closure_law.get("candidate_processes_started") != 0
+        or closure_law.get("physical_measurement_performed") is not False
+        or closure_law.get("empirical_source_access_performed") is not False
+        or closure_law.get("authorized_addresses")
+        != list(WVS_SPLIT_ONLY_MECHANICAL_CLOSURE)
+    ):
+        raise SourceLocalRunnerError(
+            "split-only mechanical-closure law is incomplete or drifted"
+        )
 
     payload = {
         "schema": SOURCE_TERMINAL_SCHEMA,
@@ -651,12 +768,29 @@ def _write_source_terminal(
         "stage_ledger_sha256": driver.ledger.hash(),
         "joined_prestate_receipt_sha256": _sha256_file(prestate_path),
         "repo_prestate_baseline_sha256": _sha256_file(baseline_path),
+        "source_local_preflight_sha256": _sha256_file(preflight_path),
+        "split_only_mechanical_closure": preflight_receipt.get(
+            "split_only_mechanical_closure", []
+        ),
+        "split_only_mechanical_closure_law": preflight_receipt.get(
+            "split_only_mechanical_closure_law"
+        ),
+        "cache_neutrality": {
+            "receipt_identity": _verify_cache_neutral_receipt(
+                driver.work_root
+            ).get("receipt_identity"),
+            "physical_epoch_identity": split_gates.EXPECTED_PHYSICAL_EPOCH_IDENTITY,
+            "joined_successor_binding_blob_sha1": split_gates.EXPECTED_SUCCESSOR_BINDING_BLOB_SHA1,
+            "prefix_entry_inventory": [],
+        },
         "execution_branch": driver.repo.branch,
         "execution_head": driver.repo.head,
         "current_execution_manifest": dataclasses.asdict(machine.identity),
         "host": _hardware_fingerprint(driver.host),
         "control_runner": {
-            "control_head": control_head,
+            "control_head": observed_control_head,
+            "qualified_implementation_head": control_head,
+            "control_binding_identity": control_binding_identity,
             "launcher_sha256": runner_sha,
             "source_local_driver_sha256": driver_sha,
         },
@@ -746,6 +880,8 @@ def _run_source_block(
         )
         driver.ledger.begin(stage, input_identity)
 
+        _assert_cache_neutral_work_root(driver.work_root)
+
         context = base.StageContext(
             base.BACKEND_CONTRACT,
             stage,
@@ -782,9 +918,18 @@ def _run_source_block(
                 f"untyped backend failure at {address}: {exc}"
             ) from exc
 
+        _assert_cache_neutral_work_root(driver.work_root)
+
         next_stage, receipt_hash, disposition = base._backend_terminal(
             machine, driver.ledger, stage, driver.repo.head, source_sha, result
         )
+
+        if result.terminal_disposition == "PASS" and disposition != "PASS":
+            base._stop_backend_after_posthook_nonpass(
+                driver.backend, stage, result.terminal_disposition, disposition
+            )
+
+        _assert_cache_neutral_work_root(driver.work_root)
 
         if stage.physical_host_measurement_required:
             print(
@@ -918,6 +1063,9 @@ def main(argv: list[str] | None = None) -> int:
     _require_exact_execution_checkout(
         repo_root, allow_postrun_classification=args.verify_only
     )
+    if args.run:
+        _assert_cache_neutral_work_root(work_root)
+        _verify_cache_neutral_receipt(work_root)
     if args.verify_only:
         baseline_path = work_root / "court" / "repo_prestate_baseline.json"
         if not baseline_path.is_file():

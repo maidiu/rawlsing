@@ -23,7 +23,7 @@ import shutil
 import subprocess
 from typing import Any, Mapping, Sequence
 
-EXPECTED_EXECUTION_HEAD = "3d8f2ad62600b6777dcb23a28404a067502e77a0"
+EXPECTED_EXECUTION_HEAD = "16f5e7d5f691e908d85dc1dd26b8a59a29f668f4"
 EXPECTED_EXECUTION_BRANCH = "agent/rabochii-prev3-ee-p2x-final-abc-equal-work-execution-r1"
 EXPECTED_SOURCES = ("LITS_I", "WVS7")
 EXPECTED_CANDIDATES = ("A", "B", "C")
@@ -76,6 +76,10 @@ CONTROL_PATHS = (
     "HQ_HANDOFF/launchers/FIABC_SOURCE_LOCAL_SPLIT_DRIVER.py",
     "HQ_HANDOFF/launchers/FIABC_SOURCE_LOCAL_SPLIT_MERGE.py",
     "HQ_HANDOFF/launchers/FIABC_SOURCE_LOCAL_SPLIT_EVIDENCE.py",
+    "HQ_HANDOFF/launchers/FIABC_SPLIT_R2_WORKROOT_GATES.py",
+    "HQ_HANDOFF/launchers/FIABC_PYTHON_CACHE_NEUTRALITY_SUCCESSOR.py",
+    "WORKER_RETURNS/FIABC-CACHE-NEUTRAL-JOINED-SUCCESSOR-R1/01_CACHE_NEUTRAL_PHYSICAL_EPOCH.json",
+    "WORKER_RETURNS/FIABC-CACHE-NEUTRAL-JOINED-SUCCESSOR-R1/08_SPLIT_REUSE_CONTRACT.json",
 )
 
 
@@ -610,7 +614,7 @@ def verify_control_binding(
         )
     if set(CONTROL_PATHS) - set(bound):
         raise EvidenceClosureError(
-            "control binding omits required launcher/driver/merge/helper"
+            "control binding omits required launcher/driver/merge/helper/cache-law files"
         )
     observed: dict[str, str] = {}
     for rel in CONTROL_PATHS:
@@ -640,6 +644,18 @@ def verify_control_binding(
     current_head = _git(
         control_root, "rev-parse", "--verify", "HEAD^{commit}"
     ).stdout.strip()
+    ancestor = _git(
+        control_root,
+        "merge-base",
+        "--is-ancestor",
+        qualified,
+        current_head,
+        check=False,
+    )
+    if ancestor.returncode != 0:
+        raise EvidenceClosureError(
+            "observed control checkout is not a descendant of the qualified implementation head"
+        )
     return {
         "binding_receipt_sha256": _sha256_file(binding_path),
         "binding_receipt_identity": doc.get("receipt_identity"),
@@ -1157,6 +1173,10 @@ def _parser() -> argparse.ArgumentParser:
     )
     bind.add_argument("--output", type=Path, required=True)
 
+    verify_binding = sub.add_parser("verify-control-binding")
+    verify_binding.add_argument("--control-root", type=Path, required=True)
+    verify_binding.add_argument("--binding", type=Path, required=True)
+
     closure = sub.add_parser("closure")
     closure.add_argument(
         "--source", choices=EXPECTED_SOURCES, required=True
@@ -1210,6 +1230,12 @@ def main(argv: Sequence[str] | None = None) -> int:
             ),
             output_path=args.output,
             qualification_return_ref=args.qualification_return_ref,
+        )
+    elif args.command == "verify-control-binding":
+        result = verify_control_binding(
+            binding_path=args.binding,
+            control_root=args.control_root,
+            require_clean=True,
         )
     elif args.command == "closure":
         result = build_portable_evidence_closure(
