@@ -1,10 +1,10 @@
 # VOZHD PYAT — READ ME FIRST
 
-Status: `ACTIVE_CONTROL_ROOM__HQD116_RECONCILED__ROUTE_B_BUILD_PROGRAM_NEXT`
+Status: `ACTIVE_CONTROL_ROOM__HQD117_FULL_B_PREFIELD_FORGE_PROGRAM_ACTIVE`
 
 Current architecture/program decision: `HQD-2026-09-26-112`
 
-Current forward-program decision: `HQD-2026-09-27-116`
+Current forward-program decision: `HQD-2026-09-27-117`
 
 HQD-113 grok prerequisite: `SATISFIED__PRESERVED_AS_HISTORY`
 
@@ -67,17 +67,23 @@ A/C remain historical/comparator evidence. C-style accelerators may be added lat
 
 ## 3. Current forward program
 
-HQD-115 remains the accepted R2.1 grok baseline. Post-HQD115 FF02 work is reconciled under HQD-116.
+HQD-115 remains the accepted R2.1 baseline. HQD-116 correctly re-centered Pyat on building Route B before abstract Field Forge redesign. HQD-117 refines the whole-pipeline picture after the full EE01–EE16 completion audit.
 
-Read `14_R2_1_GROK_ACCEPTANCE_AND_FORWARD_PROGRAM.md` as the accepted baseline, then read `15_HQD116_CONTROL_RECONCILIATION_AND_ROUTE_B_FORWARD_PROGRAM.md` as the current sequencing authority.
+Read `14_R2_1_GROK_ACCEPTANCE_AND_FORWARD_PROGRAM.md`, then `15_HQD116_CONTROL_RECONCILIATION_AND_ROUTE_B_FORWARD_PROGRAM.md`, then `16_HQD117_FULL_B_PREFIELD_FORGE_COMPLETION_PROGRAM.md`.
 
-The FF02 semantic court is closed at its exact present grain: 49 positive relation-family dispositions + one `VALID_EMPTY`. Exact LiTS relation materialization/current-selection is deferred behind D2 and is not a Route-B construction prerequisite.
+The first missing implementation seam remains M01, the thin selected-B source→C11→I03/I05 execution compositor. But M01 does not complete the learned world.
 
-The next active program is:
+The active parallel program is:
 
-`BUILD_SELECTED_ROUTE_B_PIPELINE -> PRESENT_REAL_B_PRODUCTS_TO_FIELD_FORGE -> REFINE_FIELD_FORGE_FROM_ACTUAL_INGRESS -> CONTINUE_OBJECTIVE_PREV3`
+`M01 EXECUTION COMPOSITOR`
++
+`M1 LEARNED EMPIRICAL ADJUDICATION CONSTITUTION`
++
+`M2 LEARNED-PRODUCT RELEASE/PUBLICATION CONSTITUTION`
++
+`M3 LEARNED-PRODUCT LIFECYCLE/CURRENT-SELECTION CONSTITUTION`
 
-The next bounded gate is preparation/dispatch of `PYAT_ROUTE_B_PRODUCTION_COMPOSITOR_R1`, source-free and composition-only. No raw-source execution or Field Forge mutation belongs in that first build.
+followed by source-specific live proving, product dispatch/composition, claim-scoped learned-world population, and Field Forge ingress at the exact authority-required producer grain.
 
 ## 4. Fresh-HQ startup order
 
@@ -87,12 +93,12 @@ A fresh Pyat/Vozhd SHALL:
 2. read `STATUS.json`;
 3. read `13_FRESH_HQ_FULL_GROK_PROTOCOL.md`;
 4. resolve the live control HEAD and `HQ_HANDOFF/LATEST.json`;
-5. read HQ decisions 109, 112, 113, 114, 115 and 116 in order;
+5. read HQ decisions 109, 112, 113, 114, 115, 116 and 117 in order;
 6. read the complete `PYAT_R2_REGROUNDING_R1/` package;
 7. read `10_R2_CURRENT_AUTHORITY_AND_ANTI_RESURRECTION.md`;
 8. read `11_CURRENT_HQ_HANDOFF_20260926.md`;
 9. read `12_B_ROUTE_PRE_FIELD_FORGE_GROK_DOCKET.md` as the now-completed prerequisite docket;
-10. read `14_R2_1_GROK_ACCEPTANCE_AND_FORWARD_PROGRAM.md` as the accepted R2.1 baseline, then `15_HQD116_CONTROL_RECONCILIATION_AND_ROUTE_B_FORWARD_PROGRAM.md` as the current forward-program authority;
+10. read `14_R2_1_GROK_ACCEPTANCE_AND_FORWARD_PROGRAM.md`, then `15_HQD116_CONTROL_RECONCILIATION_AND_ROUTE_B_FORWARD_PROGRAM.md`, then `16_HQD117_FULL_B_PREFIELD_FORGE_COMPLETION_PROGRAM.md` as the current forward-program authority;
 11. then traverse the governing inheritance spine in `02_GOVERNING_INHERITANCE.md` using the chronology rules in the grok protocol;
 12. inspect live current code and tests at the live control head;
 13. perform only a freshness/delta articulation; do not re-prove the completed R2.1 grok before forward motion. fresh-HQ articulation before dispatching workers or proposing implementation.
@@ -127,4 +133,4 @@ Pyat succeeds when a successor engineer can identify, without archaeology from z
 - why the PRE-V3→V3 seam remains intentionally deferred;
 - and the dependency-ordered next development program.
 
-Start with `HQ_HANDOFF/LATEST.json`, then `14_R2_1_GROK_ACCEPTANCE_AND_FORWARD_PROGRAM.md`, then `15_HQD116_CONTROL_RECONCILIATION_AND_ROUTE_B_FORWARD_PROGRAM.md`.
+Start with `HQ_HANDOFF/LATEST.json`, then control-room files 14, 15 and 16 in order.
