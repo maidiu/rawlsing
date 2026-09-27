@@ -1,6 +1,6 @@
 # VOZHD PYAT — R2 CURRENT AUTHORITY + ANTI-RESURRECTION MAP
 
-Status: `CURRENT_ORIENTATION_UNDER_HQD_2026_09_26_112`
+Status: `CURRENT_ORIENTATION__HQD112_ARCHITECTURE__HQD115_FORWARD_PROGRAM`
 
 Purpose: give a fresh Pyat a compact statement of what is currently frozen before it opens the deeper corpus.
 
@@ -48,9 +48,17 @@ It freezes the current program as:
 Production implementation remains unauthorized.
 
 ### HQD-2026-09-26-113
-Current immediate sequencing refinement.
+Historical immediate sequencing refinement.
 
-It preserves HQD-112 and requires selected-B production-constitution grok before automatic LiTS FF02 dispatch. It does not reopen architecture or authorize implementation/source execution.
+It preserved HQD-112 and required selected-B production-constitution grok before automatic LiTS FF02 dispatch.
+
+### HQD-2026-09-26-114
+Bootstrap/currentness hygiene. It propagated HQD-113 through fresh-HQ entrypoints without changing the program.
+
+### HQD-2026-09-26-115
+Current forward-program decision.
+
+It accepts the completed R2.1 grok, closes HQD-113's prerequisite grain, and releases the final canonical LiTS empirical closure to the source-free Field Forge successor relation/admission court. It explicitly rejects repeating another broad production-constitution court. Production implementation and source execution remain unauthorized.
 
 ## 2. Current architecture invariants
 
@@ -124,17 +132,19 @@ Current frontier is application/population against real learned empirical produc
 
 ## 4. Current Pyat live problem
 
-The current question is **not**:
+The broad selected-B production-constitution question is sufficiently reconciled for forward motion.
 
-> Is Route B conceptually possible?
+The immediate bounded problem is now:
 
-That has been answered.
+> What actor-independent structural relation, if any, may current Field Forge lawfully constitute from the final exact LiTS canonical empirical closure?
 
-The current question is:
+The next court is:
 
-> What exact current production owner turns a certified source/release into the canonical pre-Field-Forge learned-product DAG under selected Route B, and how do we prove that factory horizontally across unlike source terrains before using its outputs to exercise Field Forge and objective PRE-V3 vertically?
+`PYAT_R2_LITS_FF02_SUCCESSOR_RELATION_FORMATION_AND_STRUCTURAL_ADMISSION_COURT_R1`
 
-This is why the next automatic action is not yet FF02.
+It is source-free. Lawful typed refusal counts as success.
+
+The current-vs-historical LiTS facade/release identity issue survives only as a narrow later succession/parity residual and does not block Field Forge consumption of the retained canonical empirical objects.
 
 ## 5. Anti-resurrection list
 
@@ -157,7 +167,8 @@ Continue with:
 
 - `11_CURRENT_HQ_HANDOFF_20260926.md`
 - `12_B_ROUTE_PRE_FIELD_FORGE_GROK_DOCKET.md`
-- `13_FRESH_HQ_FULL_GROK_PROTOCOL.md`.
+- `13_FRESH_HQ_FULL_GROK_PROTOCOL.md` as the accepted-baseline/delta protocol;
+- `14_R2_1_GROK_ACCEPTANCE_AND_FORWARD_PROGRAM.md` as the current joined holding.
 
 Terminal:
 
