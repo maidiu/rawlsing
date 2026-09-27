@@ -751,12 +751,12 @@ def test_risk_set_identity_and_ordered_repeated_topology_are_preserved():
     ordered = [
         obj
         for obj in events
-        if obj.native_question_ref == fx["qrefs"]["O"]
+        if dict(obj.native_question_ref) == fx["qrefs"]["O"].as_dict()
     ]
     repeated = [
         obj
         for obj in events
-        if obj.native_question_ref == fx["qrefs"]["R"]
+        if dict(obj.native_question_ref) == fx["qrefs"]["R"].as_dict()
     ]
     assert len(ordered) == 6
     assert len(repeated) == 6
