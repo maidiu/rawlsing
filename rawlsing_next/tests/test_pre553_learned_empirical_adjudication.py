@@ -297,13 +297,10 @@ def _receipt_with_fact(
     replay = _ref("M1_DISCOVERY_REPLAY", tag)
     fields["replay_ref"] = replay
 
-    old_fact_refs = {
-        ExactRef(**dict(ref)).key for ref in (*receipt.empirical_fact_refs, *receipt.validation_fact_refs)
-    }
     dependencies = [
-        ref for ref in receipt.dependency_refs if ref.key not in old_fact_refs
+        new_fact.ref if ref == old_fact.ref else ref
+        for ref in receipt.dependency_refs
     ]
-    dependencies.append(new_fact.ref)
 
     return DiscoveryResultReceipt(
         typed_state=typed_state or receipt.typed_state,
