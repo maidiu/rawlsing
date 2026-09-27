@@ -1246,7 +1246,7 @@ def _validation_result(
         reason_code=reason_code,
         relation_proposition_identity_ref=None,
         semantic_claim_identity_ref=None,
-        semantic_assertion_polarity_or_state=outcome,
+        semantic_assertion_polarity_or_state="NONE",
         semantic_ceiling=binding.semantic_ceiling,
         determinant_material=determinant,
         explanation_material=explanation,
