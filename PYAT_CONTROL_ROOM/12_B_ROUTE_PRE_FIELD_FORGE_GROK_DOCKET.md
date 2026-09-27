@@ -1,3 +1,5 @@
+> **Currentness notice — HQD-2026-09-27-116:** This docket is completed and accepted under HQD-115. Do not rerun it. Current Route-B construction sequencing is in `PYAT_CONTROL_ROOM/15_HQD116_CONTROL_RECONCILIATION_AND_ROUTE_B_FORWARD_PROGRAM.md`.
+
 # PYAT R2.1 — SELECTED-B SOURCE→PRE-FIELD-FORGE GROK DOCKET
 
 Status:
