@@ -16,9 +16,13 @@ Current architecture/program authority:
 
 `HQD-2026-09-26-112`
 
-Current immediate sequencing refinement:
+Current forward-program decision:
 
-`HQD-2026-09-26-113`
+`HQD-2026-09-26-115`
+
+HQD-113 prerequisite status:
+
+`SATISFIED__PRESERVED_AS_HISTORY`
 
 Selected route:
 
@@ -30,7 +34,7 @@ Current active program center:
 
 Current immediate gate:
 
-`SELECTED_B_PRODUCTION_CONSTITUTION_GROK_BEFORE_AUTOMATIC_LITS_FF02_DISPATCH`
+`PYAT_R2_LITS_FF02_SUCCESSOR_RELATION_FORMATION_AND_STRUCTURAL_ADMISSION_COURT_R1__SOURCE_FREE`
 
 PRE-V3→V3 seam:
 
@@ -40,8 +44,8 @@ Production implementation:
 
 `NOT_AUTHORIZED`
 
-A fresh Pyat must follow the current control-room curriculum and live HQ_HANDOFF/LATEST pointer. Files 07–09 and PYAT_R1_FANIN_R1 remain historical/forensic evidence only where HQD-112 supersedes their architecture/program framing.
+A fresh Pyat must follow the live `HQ_HANDOFF/LATEST.json` pointer and the current control-room bootstrap. The completed R2.1 grok is constitutive under HQD-115; do not redo it from zero. Files 07–09 and PYAT_R1_FANIN_R1 remain historical/forensic evidence only where HQD-112 supersedes their architecture/program framing.
 
 Terminal:
 
-`PYAT_CURRENT_BOOTSTRAP_POINTER__USE_CONTROL_ROOM_R2_CURRICULUM`
+`PYAT_CURRENT_BOOTSTRAP_POINTER__HQD115_FORWARD_PROGRAM__USE_LATEST_AND_CONTROL_ROOM`
