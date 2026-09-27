@@ -1,0 +1,26 @@
+check_id	court_or_collision	count_or_status	disposition	evidence	J1_effect
+C01	DUPLICATE_CURRENT_CANDIDATE_ID	0	PASS	D8 GLOBAL_COLLISION_REPORT.csv	No current identity collision
+C02	CONTRADICTORY_CURRENT_SUCCESSION_STATE	0	PASS	D8 GLOBAL_COLLISION_REPORT.csv	Every J01-A candidate exactly one succession state
+C03	CURRENT_FAMILY_JURISDICTION_CONFLICT	0	PASS	D8 GLOBAL_COLLISION_REPORT.csv	Five lane sets are disjoint exact J01-A family slices
+C04	HISTORICAL_PREDECESSOR_CROSS_FAMILY_COLLISION	0	PASS	D8 GLOBAL_COLLISION_REPORT.csv	No incompatible predecessor reuse
+C05	HISTORICAL_RESIDUAL_REFERENCED_OTHER_LANE	0	PASS	D8 GLOBAL_COLLISION_REPORT.csv	Residual/reference sets remain lane-disjoint
+C06	CARRIER_HASH_POINTER_MISMATCH	0	PASS	D8 GLOBAL_COLLISION_REPORT.csv	Exact lane transport verified
+C07	UNAUTHORIZED_CURRENT_SUCCESSION_STATE	0	PASS	D8 GLOBAL_COLLISION_REPORT.csv	Current state vocabulary exact
+C08	UNAUTHORIZED_HISTORICAL_RESIDUAL_STATE	0	PASS	D8 GLOBAL_COLLISION_REPORT.csv	Residual state vocabulary exact
+C09	CURRENT_FREEZE_MUTATION_OR_EFFECT	0	PASS	D8 GLOBAL_COLLISION_REPORT.csv	J01-A carrier unchanged; review requests zero
+K01	Current union completeness	1411/1411	PASS	D8 GLOBAL_COMPLETENESS_LEDGER G01	Missing 0 / extra 0 / duplicate 0
+K02	Lane partition completeness	662+239+268+73+169=1411	PASS	D8 GLOBAL_COMPLETENESS_LEDGER G02	Exact disjoint family jurisdiction
+K03	Historical conservation	689+1810=2499	PASS	D8 GLOBAL_COMPLETENESS_LEDGER G03	No historical-capital loss
+K04	Reference/residual overlap	0	PASS	D8 GLOBAL_COMPLETENESS_LEDGER G03	Every historical ID accounted once at conservation grain
+K05	Frozen J01-A hash agreement	5/5 lanes	PASS	D8 GLOBAL_COMPLETENESS_LEDGER G06	All lanes bind b21a79947f...
+K06	Freeze review requests	0	PASS	D8 GLOBAL_COMPLETENESS_LEDGER G06	History did not request J01-A mutation
+K07	Semantic readjudication during global join	false	PASS	D8 GLOBAL_COMPLETENESS_LEDGER G05	Lane states preserved verbatim
+A01	W47 says J01-B/Contract@1 OPEN	TRUE AT 2026-08-30 W35 CEILING	NOT A CURRENT COLLISION	W47 commit 69f01b7... / starting W35 2bb9b814...	Treat as historical bounded state
+A02	W50 inheritance says N027 RETURN_REQUIRED	TRUE AT 2026-08-31 PRE-ADOPTION CEILING	NOT A CURRENT COLLISION	W50 commit 1351d749...	Treat as historical bounded state
+A03	D8 global court arrives	2026-09-07 PASS	SUCCESSOR	commit ed641eb7...	Supplies exact missing court W47 requested
+A04	Vozhd/HQ adopts OBL009	2026-09-07 CLOSED / PROJECT-CURRENT	AUTHORITATIVE SUCCESSOR	commit 805418167...	Closes J01-B/Contract@1 at exact grain
+A05	Explicit later OBL009 remand/revocation located	0	PASS__NO_REVOCATION_FOUND	Repository search for OBL009/J01B remand/revoke/supersession	HQ adoption remains current absent competent contrary act
+A06	HQ120-B says J01-B/Contract@1 still open	POST-ADOPTION MISCLASSIFICATION	COLLISION RESOLVED IN FAVOR OF 805418167...	HQ120-B tip 150784559...	Close GAP-J-001/GAP-J-002 only
+A07	HQ120 fan-in R1 inherits J01-B open status	POST-ADOPTION DERIVED COLLISION	COLLISION RESOLVED BY J1	PYAT_HQ120_FANIN_R1/00_HQ_JOIN.md + 01_J_RESIDUAL_CLASSIFICATION.md	Return corrected current contract to HQ
+A08	J01-A denominator after J1	UNCHANGED	PASS	J01-A SHA b21a79947... and D8 freeze checks	No historical denominator resurrection
+A09	Positive J execution/load after J1	NOT PROVED BY J1	PASS__CEILING PRESERVED	805418167 adoption exclusions + D8 G07	Remains separate later authority/load gate
