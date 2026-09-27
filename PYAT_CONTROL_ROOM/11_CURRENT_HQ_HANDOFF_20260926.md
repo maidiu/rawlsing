@@ -1,3 +1,5 @@
+> **Currentness notice — HQD-2026-09-27-116:** This file is preserved as a pre-HQD115/HQD116 handoff input and is superseded as the current handoff. For present sequencing read `PYAT_CONTROL_ROOM/15_HQD116_CONTROL_RECONCILIATION_AND_ROUTE_B_FORWARD_PROGRAM.md` and `HQ_HANDOFF/LATEST.json`.
+
 # VOZHD PYAT — CURRENT HQ HANDOFF — 2026-09-26
 
 Status:
