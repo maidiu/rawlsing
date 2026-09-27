@@ -1,0 +1,138 @@
+{
+  "admitted_historical_refs": [
+    "277d1a88e720ab5b5dbedf3daf41821656435b3f",
+    "03de44e4232df9a9c709f60eb3f8c8b628eb034a"
+  ],
+  "artifact_set_commit_before_pointer": "3c9ca6eabf5a55beb2dc28f0d6a89eecfc1bda46",
+  "current_lane_rows": 169,
+  "exact_starting_head": "ca5f0db650b22555c2f2c9fd61540b42a5b514be",
+  "frozen_current_ref": "44e97e420d38b6a2b0c44034929b5994a352d8b6",
+  "git_committed_outputs": {
+    "AMBIGUITIES.csv": {
+      "bytes": 1176,
+      "sha256": "7769f17931a55983f1a35cd08880a076aa243722a758bb08f31f88a04ab184ad"
+    },
+    "CHANGED_FILES.txt": {
+      "bytes": 2733,
+      "sha256": "33b5d8034bf4fc389d0b3c61a7d607583f613a9e9a090a73a47359ab24e3b6f0"
+    },
+    "COUNTS.json": {
+      "bytes": 759,
+      "sha256": "bd1a3880ba8e71f5f6e03539ba413a61aefc04d4665b366a038a9b47245de650"
+    },
+    "CURRENT_FREEZE_REVIEW_REQUESTS.csv": {
+      "bytes": 159,
+      "sha256": "069951689eeba7f9b1adeb5cbfcb1e02d8ef68c6b39318f46bf7ca922c372a97"
+    },
+    "RESULT.md": {
+      "bytes": 4207,
+      "sha256": "092aa3a2ec1db756e58767b609769f9276ff3fbfe362cbf09eccf9fc17079c52"
+    },
+    "VALIDATION.json": {
+      "bytes": 6081,
+      "sha256": "8fb8c26232a5b860914460f7ac6b856e86133e66a842fe6a5b22340e0a5a48b3"
+    }
+  },
+  "historical_lane_memberships": 7954,
+  "historical_lane_structures": 897,
+  "lane_pass_does_not_close_global_j01b": true,
+  "large_exact_carrier_archive": {
+    "archive_members": {
+      "CURRENT_SUCCESSION_CROSSWALK.csv": {
+        "bytes": 154065,
+        "columns": [
+          "current_source_structure_id",
+          "source_family",
+          "wave_or_scope",
+          "current_member_ids_or_native_members",
+          "succession_state",
+          "matched_historical_structure_ids",
+          "historical_member_identity_or_set",
+          "historical_scope",
+          "membership_relation",
+          "scope_relation",
+          "match_basis",
+          "historical_evidence_ref",
+          "historical_evidence_hash_or_locator",
+          "ambiguity_or_gap",
+          "confidence_class"
+        ],
+        "rows": 169,
+        "sha256": "2ffd94620212fc00af49c4e775b99a83144b71c72387c1da69d412c7edc7f33a"
+      },
+      "HISTORICAL_RESIDUAL_DISPOSITION.csv": {
+        "bytes": 429364,
+        "columns": [
+          "historical_source_structure_id",
+          "source_family",
+          "historical_wave_or_scope",
+          "historical_structure_type",
+          "historical_structure_label",
+          "historical_member_count",
+          "historical_members",
+          "residual_state",
+          "residual_basis",
+          "historical_evidence_ref",
+          "historical_evidence_hash_or_locator",
+          "confidence_class"
+        ],
+        "rows": 719,
+        "sha256": "6890fab1800d98880dfa2bf2bb3d072e8d2ed928f7ba9a5f4b84fd27d3563db7"
+      },
+      "MATCH_EVIDENCE_MANIFEST.csv": {
+        "bytes": 159057,
+        "columns": [
+          "current_source_structure_id",
+          "historical_source_structure_id",
+          "source_family",
+          "current_wave_or_scope",
+          "historical_wave",
+          "historical_structure_type",
+          "historical_structure_label",
+          "claim_type",
+          "match_method",
+          "current_member_count",
+          "historical_member_count",
+          "intersection_member_count",
+          "current_only_members",
+          "historical_only_members",
+          "membership_relation",
+          "scope_relation",
+          "match_basis",
+          "c07_registry_ref",
+          "c07_registry_sha256",
+          "c07_memberships_sha256",
+          "c10_corroboration_ref",
+          "confidence_class"
+        ],
+        "rows": 196,
+        "sha256": "9c5ffd5a35fccbb676cd828edae41712dbc6ad3f2a1f53a7640b3abe92648506"
+      }
+    },
+    "bytes": 61875,
+    "file_id": "file_00000000d19c81f68b3b98a73c0ef4f1",
+    "library_file_id": "libfile_64dd382a81148191a7645c98972802f4",
+    "library_path": "/Rawlsing/J01B_D5_SOUTHASIA_LITS_SUCCESSION_R1/J01B_D5_EXACT_CARRIERS.zip",
+    "roundtrip_verified": true,
+    "sha256": "0765b7981fd710b315f8a6439be5a4ca5520c1b5fbd7bc166d72401c72774097"
+  },
+  "repository": "maidiu/rawlsing",
+  "required_output_storage": {
+    "AMBIGUITIES.csv": "GIT",
+    "CHANGED_FILES.txt": "GIT",
+    "COUNTS.json": "GIT",
+    "CURRENT_FREEZE_REVIEW_REQUESTS.csv": "GIT",
+    "CURRENT_SUCCESSION_CROSSWALK.csv": "LIBRARY_ARCHIVE_MEMBER",
+    "HISTORICAL_RESIDUAL_DISPOSITION.csv": "LIBRARY_ARCHIVE_MEMBER",
+    "MATCH_EVIDENCE_MANIFEST.csv": "LIBRARY_ARCHIVE_MEMBER",
+    "RESULT.md": "GIT",
+    "RETURN_POINTER.json": "GIT",
+    "VALIDATION.json": "GIT"
+  },
+  "return_pointer_self_reference_note": "The commit containing RETURN_POINTER.json is the final branch tip; the file cannot contain its own containing commit SHA.",
+  "schema": "SUBV_D_OBL009_J01B_SOUTHASIA_LITS_SUCCESSION_RETURN_POINTER_R1",
+  "shared_succession_authority_ref": "296300619799df81ebd3d6d9af0d13d011bd0b25",
+  "terminal": "PASS__SUBV_D_OBL009_J01B_SOUTHASIA_LITS_SUCCESSION_CURRENT_GRAIN_R1",
+  "worker_branch": "agent/rabochii-subv-d-obl009-j01b-southasia-lits-succession-r1",
+  "write_surface": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/WHOLE_SPINE_BUILD_CONSTITUTION_R1/RAWLSING_BUILD_WAR_PLAN_R1/CENTRAL_SYNTHESIS_R1/SUB_VOZHD_CAMPAIGN_INTEGRATION_R1/D_CURRENT_ADMISSION_JOINT_AUTHORITY_R1/WORKERS/D5_OBL009_J01B_SOUTHASIA_LITS_SUCCESSION_R1/RETURN/"
+}
