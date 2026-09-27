@@ -14,6 +14,8 @@
 - BOUNDED_RUNTIME_TESTS.txt: 89 current source-free CAV/J-role/M1/M2 tests, independent of live occupancy. Test code unchanged.
 - HQ123_08_SOURCE_FREE_VS_LIVE_OCCUPANCY_BOUNDARY.md and HQ123_09_EXACT_REMAINING_GAPS.tsv: exact adopted court at e7e6fdb25031b8d0ebc1bc8b357460814f385f01.
 - EVIDENCE_SHA256.json: committed evidence byte sizes/hashes, excluding itself. Local raw hashes are in execution receipts.
+- FOLLOWUP_AUTHORITY_CHECK.json: current HQ/control and bounded authority check, with exact inspected hashes. No extra source reads or role assignments.
+- 13_CURRENT_AUTHORITY_INTAKE.tsv, 14_POSITIVE_OCCUPANCY_FOLLOWUP.md and 15_AUTHORITY_FOLLOWUP_AUDIT.md: exact 17-component missing-input packet for a possible positive follow-up; these issue no authority and leave the completed court unchanged.
 
 execute_physical_court.py verifies/reuses existing receipts without source rereads and refuses automatic rereads after interruption. recover_wvs_from_retained.py uses exact local incidence plus retained metadata. finalize_return.py regenerates ledgers and verifies diagnostic CAVs without decoding sources. prepare_return.py is disabled to protect the frozen carrier.
 
