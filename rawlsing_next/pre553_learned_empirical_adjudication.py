@@ -509,6 +509,10 @@ class M1FamilyRuleBinding(_M1ExactObject):
             "claim_family_id": self.claim_family_id,
             "claim_rule_id": self.claim_rule_id,
             "validator_authority_ref": self.validator_authority_ref,
+            "selection_purpose": self.selection_purpose,
+            "current_selection_authority_ref": self.current_selection_authority_ref,
+            "applicability_scope": self.applicability_scope,
+            "authority_closure_refs": self.authority_closure_refs,
             "allowed_input_object_families_and_states": self.allowed_input_object_families_and_states,
             "required_prerequisite_channels": self.required_prerequisite_channels,
             "required_source_relation_kinds": self.required_source_relation_kinds,
@@ -1604,17 +1608,38 @@ def _verify_binding(
                 f"missing required prerequisite channel {channel_id}"
             )
         if channel.state == "INTEGRITY_FAILURE":
-            raise M1IntegrityError(
+            exc = M1IntegrityError(
                 f"required prerequisite channel {channel_id} has integrity failure"
             )
+            if channel.detail.get("terminal_reason_code") is not None:
+                setattr(
+                    exc,
+                    "reason_code",
+                    _text(channel.detail["terminal_reason_code"], "terminal_reason_code"),
+                )
+            raise exc
         if channel.state in {"UNKNOWN", "UNRESOLVED"}:
-            raise M1UnresolvedError(
+            exc = M1UnresolvedError(
                 f"required prerequisite channel {channel_id} is {channel.state}"
             )
+            if channel.detail.get("terminal_reason_code") is not None:
+                setattr(
+                    exc,
+                    "reason_code",
+                    _text(channel.detail["terminal_reason_code"], "terminal_reason_code"),
+                )
+            raise exc
         if channel.state != "SATISFIED":
-            raise M1BlockedError(
+            exc = M1BlockedError(
                 f"required prerequisite channel {channel_id} is {channel.state}"
             )
+            if channel.detail.get("terminal_reason_code") is not None:
+                setattr(
+                    exc,
+                    "reason_code",
+                    _text(channel.detail["terminal_reason_code"], "terminal_reason_code"),
+                )
+            raise exc
 
     relation_kinds = {
         kind for channel in channels.values() for kind in channel.relation_kinds
@@ -2158,7 +2183,9 @@ def adjudicate_learned_empirical(
             bundle=input_bundle,
             binding=family_rule_binding,
             outcome="INTEGRITY_FAILURE",
-            reason_code="M1_BINDING_OR_PREMISE_INTEGRITY_FAILURE",
+            reason_code=getattr(
+                exc, "reason_code", "M1_BINDING_OR_PREMISE_INTEGRITY_FAILURE"
+            ),
             detail=str(exc),
         )
         return _build_disposition(
@@ -2173,7 +2200,9 @@ def adjudicate_learned_empirical(
             bundle=input_bundle,
             binding=family_rule_binding,
             outcome="UNRESOLVED",
-            reason_code="REQUIRED_PREREQUISITE_UNRESOLVED",
+            reason_code=getattr(
+                exc, "reason_code", "REQUIRED_PREREQUISITE_UNRESOLVED"
+            ),
             detail=str(exc),
         )
         return _build_disposition(
@@ -2188,7 +2217,9 @@ def adjudicate_learned_empirical(
             bundle=input_bundle,
             binding=family_rule_binding,
             outcome="BLOCKED",
-            reason_code="RULE_BINDING_OR_PREREQUISITE_BLOCKED",
+            reason_code=getattr(
+                exc, "reason_code", "RULE_BINDING_OR_PREREQUISITE_BLOCKED"
+            ),
             detail=str(exc),
         )
         return _build_disposition(

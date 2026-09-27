@@ -1,0 +1,29 @@
+case_id	status	witness
+J2R-H01	PASS	accepted match + VALUE role + relation eligibility -> relation_component
+J2R-H02	PASS	accepted matched context -> context_component and relation_count unchanged
+J2R-H03	PASS	special/missing premise -> special_or_missing_component
+J2R-H04	PASS	governed explained nonrelation -> explained_nonrelation_component
+J2R-H05	PASS	ambiguous match -> blocked_component / BLOCKED / J_AMBIGUOUS_COMPONENT_MATCH
+J2R-H06	PASS	unresolved match -> unresolved_component / UNRESOLVED / J_COMPONENT_CONTRIBUTION_UNRESOLVED
+J2R-H07	PASS	exactly one relation component -> RULE_NOT_SATISFIED / INSUFFICIENT_JOINT_RELATION_COMPONENTS
+J2R-H08	PASS	at least two relation components certify without historical packet executor
+J2R-H09	PASS	relation + context-like -> J_JOINT_RELATION_EVIDENCE_WITH_CONTEXT
+J2R-H10	PASS	DENIED role channel blocks before relation promotion
+J2R-H11	PASS	changed exact role authority changes binding/fingerprint; stale registration rejected
+J2R-H12	PASS	missing predecessor/current mapping -> UNRESOLVED; no target_case fallback
+J2R-H13	PASS	unknown positive role digest -> INTEGRITY_FAILURE even when metadata string says target_case
+J2R-H14	PASS	component-set/order mismatch -> INTEGRITY_FAILURE / J_COMPONENT_SET_MISMATCH
+J2R-H15	PASS	tampered serialized role-vector replay -> INTEGRITY_FAILURE / J_ROLE_VECTOR_REPLAY_MISMATCH
+J2I-X01	PASS	deterministic role-vector reload equality
+J2I-X02	PASS	deterministic M1 disposition / determinant / replay equality
+J2I-X03	PASS	exact validator-parameters registration mismatch rejected
+J2I-X04	PASS	exact current-selection authority mismatch changes fingerprint and stale registration is rejected
+J2I-X05	PASS	duplicate role binding -> BLOCKED
+J2I-X06	PASS	two relation components with no context -> J_JOINT_RELATION_EVIDENCE
+J2I-X07	PASS	all M1 downstream side-effect booleans false
+J2I-X08	PASS	static import/call court: no Field Forge, B5 lifecycle, historical J executor, pyreadstat/pandas or open() dependency
+REG-CAV	PASS	current component-authority-vector regression
+REG-M1	PASS	current M1 learned-empirical-adjudication regression
+REG-I4	PASS	current I4 learned-world-composition regression
+COURT-FINAL	PASS	GitHub bounded court run 36342507604: 89 passed
+PROTOCOL	PASS	Rabochii protocol self-tests: 20 passed
