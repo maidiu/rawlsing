@@ -1,5 +1,6 @@
 # Evidence map
 
+- `evidence/USER_CONFIRMED_LIBRARY_PRESENCE.json`: user-reported independent current Library presence; separate from local byte/hash verification.
 - `evidence/AUTHORITY_RECOVERY_PROVENANCE.json`: exact commit/path/byte hashes for recovered authoritative inputs.
 - `evidence/J01A_CANDIDATE_LIBRARY_POINTER.csv`, `evidence/J01A_RETURN_POINTER.json`: unavailable current row carrier, exact expected identity and storage location.
 - `evidence/J01B_GLOBAL_POINTER.json`: adopted virtual-union current contract; D2 and D5 exact carrier bindings.

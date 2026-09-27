@@ -59,7 +59,7 @@ Both supplied source files have the commissioned SHA-256, dimensions and variabl
 
 The branch omits the two requisite HQ123 reference files; their exact bytes were recovered from adopted court e7e6fdb25031b8d0ebc1bc8b357460814f385f01 and read. HQD-124 remains the governing architecture theorem.
 
-The J01-A Git CSV is a one-row Library pointer, not the candidate CSV. Its bytes cannot pass the commissioned current carrier hash. Exact LiTS I candidate IDs/member order cannot be lawfully manufactured from aggregate counts, question wording or historical membership. Current J01-B's WVS/EVS D2 crosswalk was recovered and verified; the LiTS/South Asia D5 crosswalk is an exact member of a Library archive unavailable through this session's tools. No Library connector is installed, and local Desktop/Documents/Downloads searches found no materialized copy.
+The J01-A Git CSV is a one-row Library pointer, not the candidate CSV. Its bytes cannot pass the commissioned current carrier hash. Exact LiTS I candidate IDs/member order cannot be lawfully manufactured from aggregate counts, question wording or historical membership. Current J01-B's WVS/EVS D2 crosswalk was recovered and verified; the LiTS/South Asia D5 crosswalk is an exact member of a Library archive unavailable through this session's tools. The user independently confirmed that both exact artifacts are currently present in ChatGPT Library. No callable ChatGPT Library retrieval tool is available in this session, the in-app browser is logged out of ChatGPT, this task has no attached copies, and local Desktop/Documents/Downloads searches found no materialized copy. The artifacts exist; their exact bytes are not yet accessible to this local execution court. Do not reconstruct them.
 
 This is an input-access limit on completion, not a negative live result. L1–L7 ledger entries distinguish pending/not-executed from denied/unresolved occupancy. No component vectors, LearnedEmpiricalDisposition, release cores, Field Forge relation objects or lifecycle actions were fabricated.
 
@@ -73,6 +73,8 @@ md('10_FIELD_FORGE_HANDOFF_PACKET_IF_ANY.md','''# No Field Forge handoff
 No live M1 disposition or retained B learned product exists in this attempt. No handoff packet is constituted; no Field Forge mutation, publication, lifecycle action, current selection or PRE-V3 permission occurred.''')
 md('11_NEXT_SCOPE_RECOMMENDATION.md','''# Resume the same bounded commission
 
+The user confirmed the exact artifacts below exist in ChatGPT Library. The remaining input step is an exact inbound transfer into this local execution environment, followed by byte/hash verification. No reconstruction is authorized or needed.
+
 Required exact materialized artifacts:
 
 - `CURRENT_J_CANDIDATE_UNIVERSE_FROZEN.csv`: 1,641,446 bytes, SHA-256 `b21a79947f19f4c520ea493480a38ef8b23cb6797444eeb913bc8575b6cafb64`; Library `libfile_3f6b0d93bb74819195702d808e3093ec`, file `file_000000005144822fa27f7502f6e9307b`.
@@ -84,6 +86,7 @@ After exact row access, freeze the specimen receipt before any outcome read. Res
 ''')
 md('12_EVIDENCE_MAP.md','''# Evidence map
 
+- `evidence/USER_CONFIRMED_LIBRARY_PRESENCE.json`: user-reported independent current Library presence; separate from local byte/hash verification.
 - `evidence/AUTHORITY_RECOVERY_PROVENANCE.json`: exact commit/path/byte hashes for recovered authoritative inputs.
 - `evidence/J01A_CANDIDATE_LIBRARY_POINTER.csv`, `evidence/J01A_RETURN_POINTER.json`: unavailable current row carrier, exact expected identity and storage location.
 - `evidence/J01B_GLOBAL_POINTER.json`: adopted virtual-union current contract; D2 and D5 exact carrier bindings.

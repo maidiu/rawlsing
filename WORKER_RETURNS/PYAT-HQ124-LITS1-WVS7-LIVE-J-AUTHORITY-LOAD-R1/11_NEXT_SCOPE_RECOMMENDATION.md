@@ -1,5 +1,7 @@
 # Resume the same bounded commission
 
+The user confirmed the exact artifacts below exist in ChatGPT Library. The remaining input step is an exact inbound transfer into this local execution environment, followed by byte/hash verification. No reconstruction is authorized or needed.
+
 Required exact materialized artifacts:
 
 - `CURRENT_J_CANDIDATE_UNIVERSE_FROZEN.csv`: 1,641,446 bytes, SHA-256 `b21a79947f19f4c520ea493480a38ef8b23cb6797444eeb913bc8575b6cafb64`; Library `libfile_3f6b0d93bb74819195702d808e3093ec`, file `file_000000005144822fa27f7502f6e9307b`.
