@@ -437,40 +437,76 @@ def test_j3_h14_component_scalarization_requires_exact_vector_law(j3):
     assert unanimous.scalar_value_digest == digest
 
 
-def test_j3_h15_typed_valid_empty_blocked_and_review_like_states_survive():
-    valid_empty, _, _ = _disposition("j3-valid-empty", valid_empty=True, outcome="ABSTAINED")
-    valid_result = i4.compose_learned_world(
-        _contract(tag="j3-valid-empty"),
+def _compose_j3_with_channel(j3, *, tag: str, channel_state: str):
+    validator_auth = _m1_authority(tag)
+    channel = m1.M1PrerequisiteChannel(
+        channel_id="j3-required-context",
+        channel_kind="COMPARABILITY",
+        state=channel_state,
+        detail={"fixture": "J3_EXACT_J_SHAPED", "state": channel_state},
+    )
+    binding = _binding(
+        validator_auth,
+        required_channels=("j3-required-context",),
+    )
+    return i4.compose_learned_world(
+        _contract(route="M01_M1_M2_B5", binding=binding, tag=tag),
         m2_repository=M2Repository(),
         lifecycle_executor=LearnedProductLifecycleExecutor(),
-        m1_disposition=valid_empty,
+        m01_result=j3["m01"],
+        selected_discovery_receipt_refs=(j3["receipt"].ref,),
+        requested_scope={"fixture": "J3_EXACT_J_SHAPED", "variant": channel_state},
+        m1_family_rule_binding=binding,
+        validator_registry=_registry(binding),
+        m1_authority_snapshots=(validator_auth,),
+        prerequisite_channels=(channel,),
+        additional_dependency_refs=(j3["vector"].ref, j3["role_ref"]),
+    )
+
+
+def test_j3_h15_typed_valid_empty_blocked_and_review_like_states_survive(j3):
+    valid_empty_receipt = next(
+        receipt for receipt in j3["m01"].i05_result.receipts
+        if receipt.typed_state == "VALID_EMPTY"
+    )
+    validator_auth = _m1_authority("j3-valid-empty")
+    binding = _binding(validator_auth)
+    valid_result = i4.compose_learned_world(
+        _contract(route="M01_M1_M2_B5", binding=binding, tag="j3-valid-empty"),
+        m2_repository=M2Repository(),
+        lifecycle_executor=LearnedProductLifecycleExecutor(),
+        m01_result=j3["m01"],
+        selected_discovery_receipt_refs=(valid_empty_receipt.ref,),
+        requested_scope={"fixture": "J3_EXACT_J_SHAPED", "variant": "VALID_EMPTY"},
+        m1_family_rule_binding=binding,
+        validator_registry=_registry(binding),
+        m1_authority_snapshots=(validator_auth,),
+        additional_dependency_refs=(j3["vector"].ref, j3["role_ref"]),
     )
     states = {
-        row["state"] if isinstance(row, dict) else row["state"]
+        row["state"]
         for row in valid_result.receipt.conserved_state_material["conserved_empirical_states"]
     }
     assert "VALID_EMPTY" in states
+    assert j3["vector"].ref in valid_result.m2_artifacts.dependency_closure.member_refs
 
-    blocked, _, _ = _disposition("j3-blocked", channel_state="BLOCKED")
-    blocked_result = i4.compose_learned_world(
-        _contract(tag="j3-blocked"),
-        m2_repository=M2Repository(),
-        lifecycle_executor=LearnedProductLifecycleExecutor(),
-        m1_disposition=blocked,
+    blocked_result = _compose_j3_with_channel(
+        j3, tag="j3-blocked", channel_state="BLOCKED"
     )
     assert blocked_result.receipt.terminal_state == "BLOCKED"
-    assert "BLOCKED" in blocked_result.receipt.conserved_state_material["required_prerequisite_channel_states"].values()
+    assert "BLOCKED" in blocked_result.receipt.conserved_state_material[
+        "required_prerequisite_channel_states"
+    ].values()
+    assert j3["vector"].ref in blocked_result.m2_artifacts.dependency_closure.member_refs
 
-    review_like, _, _ = _disposition("j3-review", channel_state="UNKNOWN")
-    review_result = i4.compose_learned_world(
-        _contract(tag="j3-review"),
-        m2_repository=M2Repository(),
-        lifecycle_executor=LearnedProductLifecycleExecutor(),
-        m1_disposition=review_like,
+    review_result = _compose_j3_with_channel(
+        j3, tag="j3-review", channel_state="UNKNOWN"
     )
     assert review_result.receipt.terminal_state == "UNRESOLVED"
-    assert "UNKNOWN" in review_result.receipt.conserved_state_material["required_prerequisite_channel_states"].values()
-
+    assert "UNKNOWN" in review_result.receipt.conserved_state_material[
+        "required_prerequisite_channel_states"
+    ].values()
+    assert j3["vector"].ref in review_result.m2_artifacts.dependency_closure.member_refs
 
 def test_j3_h16_publication_and_current_selection_do_not_mutate_context(j3):
     contract = _contract(
