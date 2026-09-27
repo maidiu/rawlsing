@@ -1,6 +1,6 @@
 # VOZHD PYAT — R2 CURRENT AUTHORITY + ANTI-RESURRECTION MAP
 
-Status: `CURRENT_ORIENTATION__HQD112_ARCHITECTURE__HQD117_FORWARD_PROGRAM`
+Status: `CURRENT_ORIENTATION__HQD112_ARCHITECTURE__HQD118_FORWARD_PROGRAM`
 
 Purpose: give a fresh Pyat a compact statement of what is currently frozen before it opens the deeper corpus.
 
@@ -69,6 +69,11 @@ It reconciles the post-HQD115 FF02 returns at exact grain: the FF02 semantic cou
 Current full Route-B pre-Field-Forge completion sequencing decision.
 
 It preserves the M01 thin compositor as the first execution-composition repair while correcting the broader claim that only one compositor remained. Generic learned empirical adjudication, learned-product release/publication and learned-product lifecycle/current-selection remain open current-owner/provider work; source/comparability/composition and other advanced services remain claim- or source-scoped.
+
+### HQD-2026-09-27-118
+Current learned-world implementation sequencing decision.
+
+M01 selected-B execution packaging is source-free green and integrated. M1 learned empirical adjudication and M2 release-core/resolution constitutions are adopted. OBL034/B5 remains the current learned-product lifecycle authority; M3 is adopted only as a B5/P2-conserving runtime refinement. Next work is source-free M1/M2/B5-lifecycle implementation.
 
 ## 2. Current architecture invariants
 
