@@ -1,6 +1,6 @@
 # VOZHD PYAT — R2 CURRENT AUTHORITY + ANTI-RESURRECTION MAP
 
-Status: `CURRENT_ORIENTATION__HQD112_ARCHITECTURE__HQD115_FORWARD_PROGRAM`
+Status: `CURRENT_ORIENTATION__HQD112_ARCHITECTURE__HQD116_FORWARD_PROGRAM`
 
 Purpose: give a fresh Pyat a compact statement of what is currently frozen before it opens the deeper corpus.
 
@@ -59,6 +59,11 @@ Bootstrap/currentness hygiene. It propagated HQD-113 through fresh-HQ entrypoint
 Current forward-program decision.
 
 It accepts the completed R2.1 grok, closes HQD-113's prerequisite grain, and releases the final canonical LiTS empirical closure to the source-free Field Forge successor relation/admission court. It explicitly rejects repeating another broad production-constitution court. Production implementation and source execution remain unauthorized.
+
+### HQD-2026-09-27-116
+Current forward-program sequencing decision.
+
+It reconciles the post-HQD115 FF02 returns at exact grain: the FF02 semantic court is closed; exact LiTS relation-object preimage/materialization remains deferred behind D2; D2 is not a Route-B pipeline blocker. Pyat is re-centered on selected Route-B production pipeline realization/composition. Broad Field Forge architecture remains closed and refinement waits for actual B-produced ingress. HQD-116 itself does not authorize production mutation.
 
 ## 2. Current architecture invariants
 
@@ -132,19 +137,13 @@ Current frontier is application/population against real learned empirical produc
 
 ## 4. Current Pyat live problem
 
-The broad selected-B production-constitution question is sufficiently reconciled for forward motion.
+The immediate problem is now construction of the smallest missing selected-B production composition seam:
 
-The immediate bounded problem is now:
+`LIVE_ROUTE_B_REPOSITORY_BINDING -> EXACT_I03/I05_EXECUTION -> PREFIELD_FORGE_EXACT_OBJECT_GRAPH_EXPORT`
 
-> What actor-independent structural relation, if any, may current Field Forge lawfully constitute from the final exact LiTS canonical empirical closure?
+The next bounded implementation commission is `PYAT_ROUTE_B_PRODUCTION_COMPOSITOR_R1`, source-free. It must compose current owners rather than invent new semantics, and it must not mutate Field Forge.
 
-The next court is:
-
-`PYAT_R2_LITS_FF02_SUCCESSOR_RELATION_FORMATION_AND_STRUCTURAL_ADMISSION_COURT_R1`
-
-It is source-free. Lawful typed refusal counts as success.
-
-The current-vs-historical LiTS facade/release identity issue survives only as a narrow later succession/parity residual and does not block Field Forge consumption of the retained canonical empirical objects.
+FF02 semantic adjudication is closed at current grain. D2 is a deferred LiTS relation-materialization residual and does not block Route-B construction.
 
 ## 5. Anti-resurrection list
 
@@ -168,7 +167,8 @@ Continue with:
 - `11_CURRENT_HQ_HANDOFF_20260926.md`
 - `12_B_ROUTE_PRE_FIELD_FORGE_GROK_DOCKET.md`
 - `13_FRESH_HQ_FULL_GROK_PROTOCOL.md` as the accepted-baseline/delta protocol;
-- `14_R2_1_GROK_ACCEPTANCE_AND_FORWARD_PROGRAM.md` as the current joined holding.
+- `14_R2_1_GROK_ACCEPTANCE_AND_FORWARD_PROGRAM.md` as the accepted R2.1 baseline;
+- `15_HQD116_CONTROL_RECONCILIATION_AND_ROUTE_B_FORWARD_PROGRAM.md` as the current forward-program authority.
 
 Terminal:
 
