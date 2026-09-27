@@ -1,10 +1,12 @@
 # VOZHD PYAT — READ ME FIRST
 
-Status: `ACTIVE_CONTROL_ROOM__R2_REGROUNDED__B_ROUTE_PRE_FIELD_FORGE_PROGRAM_CENTER`
+Status: `ACTIVE_CONTROL_ROOM__R2_1_GROK_ACCEPTED__FORWARD_PROGRAM_ACTIVE`
 
 Current architecture/program decision: `HQD-2026-09-26-112`
 
-Current immediate sequencing refinement: `HQD-2026-09-26-113`
+Current forward-program decision: `HQD-2026-09-26-115`
+
+HQD-113 grok prerequisite: `SATISFIED__PRESERVED_AS_HISTORY`
 
 Selected physical policy: `B__SOURCE_BACKED_VIRTUAL_C11`
 
@@ -63,22 +65,21 @@ This is **not** a measured-winner claim.
 
 A/C remain historical/comparator evidence. C-style accelerators may be added later only as disposable, regenerable, nonauthoritative optimizations after a demonstrated need.
 
-## 3. The current immediate problem
+## 3. Current forward program
 
-Do **not** jump directly from "LiTS is FF02-ready" to a one-off Field Forge court.
+The selected-B production-constitution grok required by HQD-113 is complete and accepted under HQD-115.
 
-Current Pyat is first determining whether Rawlsing has a **canonical post-selection Route-B source→pre-Field-Forge artifact factory** that is:
+Read `14_R2_1_GROK_ACCEPTANCE_AND_FORWARD_PROGRAM.md` as the constitutive joined result.
 
-- owned by current selected-B code/authority rather than a frozen FIABC compatibility owner;
-- explicit about its canonical learned empirical product/release bundle;
-- replayable and selectively invalidatable;
-- qualified across unlike source families/waves;
-- capable of producing the horizontal source breadth needed to test Field Forge;
-- vertically composable into Field Forge and then the objective PRE-V3 world.
+Do **not** repeat the broad Route-B/product/Field-Forge grok as a new court.
 
-LiTS is a very strong B-semantic positive control, but current evidence does not yet justify calling its FIABC-era candidate-neutral oracle wrapper the canonical post-HQD-109 production factory.
+The next bounded program gate is:
 
-Read `11_CURRENT_HQ_HANDOFF_20260926.md` and `12_B_ROUTE_PRE_FIELD_FORGE_GROK_DOCKET.md` for the exact live audit.
+`PYAT_R2_LITS_FF02_SUCCESSOR_RELATION_FORMATION_AND_STRUCTURAL_ADMISSION_COURT_R1`
+
+It is source-free and consumes the final canonical LiTS empirical closure. The correct result may be a lawful structural relation or typed refusal.
+
+The live-facade versus historical LiTS release-identity succession question remains a narrower later residual; it is not a prerequisite for Field Forge consumption of the already-valid retained empirical closure.
 
 ## 4. Fresh-HQ startup order
 
@@ -88,14 +89,15 @@ A fresh Pyat/Vozhd SHALL:
 2. read `STATUS.json`;
 3. read `13_FRESH_HQ_FULL_GROK_PROTOCOL.md`;
 4. resolve the live control HEAD and `HQ_HANDOFF/LATEST.json`;
-5. read HQ decisions 109 → 113 in order;
+5. read HQ decisions 109, 112, 113, 114 and 115 in order;
 6. read the complete `PYAT_R2_REGROUNDING_R1/` package;
 7. read `10_R2_CURRENT_AUTHORITY_AND_ANTI_RESURRECTION.md`;
 8. read `11_CURRENT_HQ_HANDOFF_20260926.md`;
-9. read `12_B_ROUTE_PRE_FIELD_FORGE_GROK_DOCKET.md`;
-10. then traverse the governing inheritance spine in `02_GOVERNING_INHERITANCE.md` using the chronology rules in the grok protocol;
-11. inspect live current code and tests at the live control head;
-12. produce the required fresh-HQ articulation before dispatching workers or proposing implementation.
+9. read `12_B_ROUTE_PRE_FIELD_FORGE_GROK_DOCKET.md` as the now-completed prerequisite docket;
+10. read `14_R2_1_GROK_ACCEPTANCE_AND_FORWARD_PROGRAM.md` as the accepted current join;
+11. then traverse the governing inheritance spine in `02_GOVERNING_INHERITANCE.md` using the chronology rules in the grok protocol;
+12. inspect live current code and tests at the live control head;
+13. perform only a freshness/delta articulation; do not re-prove the completed R2.1 grok before forward motion. fresh-HQ articulation before dispatching workers or proposing implementation.
 
 Files 07–09 preserve predecessor/R0/R1 history. They are not the current architecture/program authority where HQD-112 supersedes them.
 
@@ -127,4 +129,4 @@ Pyat succeeds when a successor engineer can identify, without archaeology from z
 - why the PRE-V3→V3 seam remains intentionally deferred;
 - and the dependency-ordered next development program.
 
-Start with `13_FRESH_HQ_FULL_GROK_PROTOCOL.md`.
+Start with `HQ_HANDOFF/LATEST.json`, then `14_R2_1_GROK_ACCEPTANCE_AND_FORWARD_PROGRAM.md` after the bootstrap sequence.
