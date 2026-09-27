@@ -1,3 +1,5 @@
+> **Currentness notice — HQD-2026-09-27-116:** The full R2.1 grok is inherited, not repeated. Fresh HQs verify the latest checkpoint, read HQD-115 baseline plus `PYAT_CONTROL_ROOM/15_HQD116_CONTROL_RECONCILIATION_AND_ROUTE_B_FORWARD_PROGRAM.md`, and perform delta reconciliation only.
+
 # VOZHD PYAT — FRESH HQ FULL-GROK PROTOCOL
 
 Status: `BASELINE_CURRICULUM__COMPLETED_AND_ACCEPTED_UNDER_HQD_2026_09_26_115__SUCCESSORS_USE_DELTA_MODE`
