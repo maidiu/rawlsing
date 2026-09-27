@@ -1,8 +1,8 @@
 # VOZHD PYAT — FRESH HQ FULL-GROK PROTOCOL
 
-Status: `MANDATORY_FRESH_HQ_CURRICULUM`
+Status: `BASELINE_CURRICULUM__COMPLETED_AND_ACCEPTED_UNDER_HQD_2026_09_26_115__SUCCESSORS_USE_DELTA_MODE`
 
-Purpose: prevent a new Pyat from becoming anchored to one compartment, one date, one vocabulary, or the largest corpus it happens to encounter.
+Purpose: preserve the reasoning discipline that produced the accepted R2.1 baseline. The full curriculum was completed and accepted under HQD-115. Successor HQs read the accepted join in `14_R2_1_GROK_ACCEPTANCE_AND_FORWARD_PROGRAM.md` and repeat deep passes only where a live delta proves the baseline stale.
 
 This protocol is a **guided reading and adjudication method**, not a substitute for primary evidence.
 
@@ -52,6 +52,21 @@ Current top-level vocabulary:
 - V3/CAN-008/PFF/V2.
 
 Historical V550–V558 labels are allowed only where they identify genealogy, function or compatibility code.
+
+## Current successor law
+
+HQD-115 closes the full-grok prerequisite at the accepted baseline.
+
+A new HQ SHALL:
+- resolve live HEAD and `HQ_HANDOFF/LATEST.json`;
+- read the immutable checkpoint and HQD-115;
+- read `14_R2_1_GROK_ACCEPTANCE_AND_FORWARD_PROGRAM.md`;
+- classify any post-checkpoint movement;
+- run only the grok pass(es) implicated by an actual changed owner, authority, implementation, source proof or composition edge.
+
+Do not make every successor reproduce the entire R2.1 investigation before forward motion.
+
+The passes below remain the canonical deep-review curriculum when a delta or contradiction wakes them.
 
 ## GROK PASS A — current HQ and Pyat succession
 
@@ -243,6 +258,10 @@ For every claimed current implementation name:
 
 ## GROK PASS I — joined fresh-HQ articulation
 
+Historical baseline note: this pass was completed and accepted under HQD-115. For ordinary succession, use a bounded delta articulation instead; only regenerate the full report when material authority/currentness changed.
+
+
+
 Before dispatching workers, produce one report containing:
 
 ### I1. Chronology map
@@ -296,6 +315,6 @@ A fresh HQ has failed grokking if it:
 
 ## Fresh-HQ completion token
 
-A new Pyat may consider itself fully up to speed only after it can truthfully return:
+The accepted R2.1 baseline returned the following token. A successor may inherit it after verifying the HQD-115 checkpoint and finding no material contradictory delta:
 
 `PYAT_FRESH_HQ_FULL_GROK_COMPLETE__CHRONOLOGY_CURRENTNESS_ROUTE_B_PRODUCT_FIELD_FORGE_AND_PREV3_PROGRAM_RECONCILED`
