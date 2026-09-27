@@ -193,6 +193,40 @@ def _authority(value: AuthorityRef | Mapping[str, Any], name: str = "authority_r
         raise LearnedProductLifecycleError(str(exc)) from exc
 
 
+def _authority_determinant_ref(value: AuthorityRef | Mapping[str, Any]) -> ExactRef:
+    """Represent an exact AuthorityRef as a neutral determinant key.
+
+    This is not an AuthoritySnapshot alias and carries no authority-lifecycle
+    semantics. It only lets B5 LCR-009 route an exact authority change through
+    the product determinant graph.
+    """
+    ref = _authority(value)
+    projection = {"determinant_class": "SEMANTIC_AUTHORITY_REF", "authority_ref": ref.as_dict()}
+    digest = semantic_hash(projection)
+    return ExactRef(
+        "B5Lifecycle:AUTHORITY_DETERMINANT",
+        f"urn:rawlsing:pre553:b5-lifecycle:authority-determinant:sha256:{digest}",
+        digest,
+    )
+
+
+def _determinant(value: ExactRef | AuthorityRef | Mapping[str, Any]) -> ExactRef:
+    if isinstance(value, AuthorityRef):
+        return _authority_determinant_ref(value)
+    if isinstance(value, Mapping) and set(value) == {
+        "authority_id", "authority_version", "authority_content_hash"
+    }:
+        return _authority_determinant_ref(value)
+    return _exact_any(value, "determinant_ref")
+
+
+def _determinant_refs(
+    values: Iterable[ExactRef | AuthorityRef | Mapping[str, Any]]
+) -> tuple[ExactRef, ...]:
+    refs = {_determinant(value).key: _determinant(value) for value in values}
+    return tuple(refs[key] for key in sorted(refs))
+
+
 def _exact_refs(values: Iterable[ExactRef | Mapping[str, Any]], *, allow_authority_kind: bool = False) -> tuple[ExactRef, ...]:
     parser = _exact_any if allow_authority_kind else _exact
     refs = {parser(value).key: parser(value) for value in values}
@@ -1216,9 +1250,14 @@ class LearnedProductDeterminantGraph:
         determinant_edges: list[tuple[ExactRef, ExactRef]] = []
         dependency_edges: list[tuple[ExactRef, ExactRef]] = []
         for item in items:
+            authority_determinants = tuple(
+                _authority_determinant_ref(ref) for ref in item.authority_snapshot_refs
+            )
             seen: dict[str, ExactRef] = {
                 ref.key: ref for ref in (
-                    tuple(item.determinant_refs) + tuple(item.direct_dependency_refs)
+                    tuple(item.determinant_refs)
+                    + tuple(item.direct_dependency_refs)
+                    + authority_determinants
                 )
             }
             for ref in seen.values():
@@ -1234,9 +1273,10 @@ class LearnedProductDeterminantGraph:
         )
 
     def affected(
-        self, changed_refs: Iterable[ExactRef | Mapping[str, Any]]
+        self,
+        changed_refs: Iterable[ExactRef | AuthorityRef | Mapping[str, Any]],
     ) -> tuple[tuple[ExactRef, ...], tuple[ExactRef, ...]]:
-        changed = {ref.key for ref in _exact_refs(changed_refs, allow_authority_kind=True)}
+        changed = {ref.key for ref in _determinant_refs(changed_refs)}
         direct = {
             release.key: release
             for determinant, release in self.determinant_edges
@@ -2129,7 +2169,7 @@ class LearnedProductLifecycleExecutor:
 
     def declare_invalidation(
         self,
-        changed_determinant_refs: Iterable[ExactRef],
+        changed_determinant_refs: Iterable[ExactRef | AuthorityRef | Mapping[str, Any]],
         *,
         event_authority_ref: ExactRef,
         event_rule_ref: ExactRef,
@@ -2138,7 +2178,7 @@ class LearnedProductLifecycleExecutor:
         current_transitions: Mapping[str, ExactRef | None] | None = None,
         evidence_refs: Iterable[ExactRef] = (),
     ) -> InvalidationReceipt:
-        changed = _exact_refs(changed_determinant_refs, allow_authority_kind=True)
+        changed = _determinant_refs(changed_determinant_refs)
         if not changed:
             raise LearnedProductLifecycleError(
                 "invalidation requires at least one exact changed determinant"
