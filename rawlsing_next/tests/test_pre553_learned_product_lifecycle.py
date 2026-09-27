@@ -412,18 +412,11 @@ def test_h15_semantic_change_on_rebuild_requires_new_upstream_product_identity()
     changed_same_product = LearnedProductLifecycleSubject(
         **{**changed.__dict__, "product_ref": old.product_ref}
     )
-    _register(executor, changed_same_product)
 
-    with pytest.raises(LearnedProductLifecycleError, match="new product identity"):
-        executor.link_rebuild(
-            old.release_ref,
-            new_release_ref=changed_same_product.release_ref,
-            rebuild_state="REBUILT",
-            rebuild_determinant_set_hash=changed_same_product.determinant_set_hash,
-            replay_or_execution_receipt_ref=_ref("ExecutionReceipt", "rebuild"),
-            event_authority_ref=_authority("rebuild"),
-            event_rule_ref=_rule("rebuild"),
-        )
+    # The B5 owner refuses the contradiction at the earliest lawful boundary:
+    # a changed semantic projection cannot even be staged under the old product id.
+    with pytest.raises(LearnedProductLifecycleConflict, match="same product_ref"):
+        executor.stage_release(changed_same_product)
 
 
 def test_h16_missing_rebuild_inputs_yield_typed_blocker_not_fabricated_successor():
@@ -802,3 +795,61 @@ def test_withdrawal_can_atomically_replace_current_with_other_lawful_product():
     assert executor.resolve_selection_exact(key.ref, new_receipt_ref).selected_release_ref == replacement.release_ref
     assert executor.lifecycle_state(old.release_ref).validity == "WITHDRAWN"
     assert executor.lifecycle_state(replacement.release_ref).validity == "VALID"
+
+
+def test_select_after_explicit_no_current_requires_and_accepts_exact_no_current_receipt():
+    executor = LearnedProductLifecycleExecutor()
+    scope = _ref("SelectionScope", "after-no-current")
+    family = _ref("ProductFamily", "after-no-current")
+    a = _register(executor, _subject("anc-a", selection_scope_ref=scope, product_family_ref=family), publish=True)
+    b = _register(executor, _subject("anc-b", selection_scope_ref=scope, product_family_ref=family), publish=True)
+    key = _key(executor, a)
+    selected = _select(executor, key, a, tag="anc-a")
+    cleared = executor.declare_no_current(
+        key.ref,
+        expected_previous_receipt_ref=selected.ref,
+        event_authority_ref=_authority("anc-clear"),
+        event_rule_ref=_rule("anc-clear"),
+        selection_attestation_ref=_attest("anc-clear"),
+        reason_ref=_ref("Reason", "anc-clear"),
+    )
+    reselected = _select(executor, key, b, previous=cleared.ref, tag="anc-b")
+    assert executor.resolve_selection_exact(key.ref, reselected.ref).selected_release_ref == b.release_ref
+
+
+def test_withdrawn_release_cannot_replace_itself_current():
+    executor = LearnedProductLifecycleExecutor()
+    subject = _register(executor, _subject("withdraw-self"), publish=True)
+    key = _key(executor, subject)
+    _select(executor, key, subject)
+    before = executor.export_checkpoint()["checkpoint_hash"]
+    with pytest.raises(LearnedProductLifecycleError, match="cannot be its own"):
+        executor.withdraw_product(
+            subject.release_ref,
+            withdrawal_reason_ref=_ref("WithdrawalReason", "self"),
+            withdrawal_scope_ref=subject.selection_scope_ref,
+            event_authority_ref=_authority("withdraw-self"),
+            event_rule_ref=_rule("withdraw-self"),
+            selection_attestation_ref=_attest("withdraw-self"),
+            current_transitions={key.ref.key: subject.release_ref},
+        )
+    assert executor.export_checkpoint()["checkpoint_hash"] == before
+
+
+def test_invalidated_release_cannot_be_selected_as_its_own_replacement():
+    executor = LearnedProductLifecycleExecutor()
+    determinant = _ref("SemanticDeterminant", "invalid-self")
+    subject = _register(executor, _subject("invalid-self", determinant_refs=(determinant,)), publish=True)
+    key = _key(executor, subject)
+    _select(executor, key, subject)
+    before = executor.export_checkpoint()["checkpoint_hash"]
+    with pytest.raises(LearnedProductLifecycleError, match="invalidated release"):
+        executor.declare_invalidation(
+            (determinant,),
+            event_authority_ref=_authority("invalid-self"),
+            event_rule_ref=_rule("invalid-self"),
+            dependency_closure_receipt_ref=_ref("DependencyClosure", "invalid-self"),
+            selection_attestation_ref=_attest("invalid-self"),
+            current_transitions={key.ref.key: subject.release_ref},
+        )
+    assert executor.export_checkpoint()["checkpoint_hash"] == before
