@@ -1,6 +1,6 @@
 # VOZHD PYAT — GOVERNING INHERITANCE SPINE
 
-Status: `CURRENT_R2_1_HQD115_CHRONOLOGY_AWARE_SPINE`
+Status: `CURRENT_HQD116_CHRONOLOGY_AWARE_SPINE`
 
 Pyat must ground from live GitHub, not memory. Read this spine using the chronology protocol in `13_FRESH_HQ_FULL_GROK_PROTOCOL.md`.
 
@@ -14,7 +14,7 @@ Always begin with:
 - live `integration/pre-main-reconciliation-r1` HEAD
 - current authority/open-obligation/anti-resurrection surfaces under `PRE_MAIN_RECONCILIATION_R1`.
 
-Read HQD-2026-09-26-109, 112, 113, 114 and 115 as the operative succession chain; use 110/111 for predecessor evidence.
+Read HQD-2026-09-26-109, 112, 113, 114, 115 and HQD-2026-09-27-116 as the operative succession chain; use 110/111 for predecessor evidence.
 
 Key succession:
 
@@ -24,7 +24,8 @@ Key succession:
 - 112 explicitly supersedes 111 at architecture-map, residual-register and development-program grain while preserving its evidence;
 - 113 preserves 112 and moved the immediate gate upstream to selected-B production-constitution grok;
 - 114 propagated that currentness law through bootstrap surfaces;
-- 115 accepts the completed grok, closes the prerequisite, and releases the source-free LiTS Field Forge successor court as the next bounded gate.
+- 115 accepts the completed grok, closes the prerequisite, and releases the source-free LiTS Field Forge successor court as the next bounded gate;
+- 116 reconciles the completed FF02 semantic court, defers D2 as a non-Route-B blocker, and re-centers the active program on selected Route-B production pipeline realization/composition.
 
 ## Tier 1 — current Pyat R2 correction and live handoff
 
@@ -40,7 +41,8 @@ Read all of:
 - `PYAT_CONTROL_ROOM/10_R2_CURRENT_AUTHORITY_AND_ANTI_RESURRECTION.md`
 - `11_CURRENT_HQ_HANDOFF_20260926.md`
 - `12_B_ROUTE_PRE_FIELD_FORGE_GROK_DOCKET.md` — completed prerequisite docket
-- `14_R2_1_GROK_ACCEPTANCE_AND_FORWARD_PROGRAM.md` — current accepted join and forward program
+- `14_R2_1_GROK_ACCEPTANCE_AND_FORWARD_PROGRAM.md` — accepted R2.1 baseline
+- `15_HQD116_CONTROL_RECONCILIATION_AND_ROUTE_B_FORWARD_PROGRAM.md` — current forward-program authority
 
 These are the current Pyat orientation. Older 07–09 control-room files are preserved predecessor/R1 evidence and must be interpreted through HQD-112.
 
