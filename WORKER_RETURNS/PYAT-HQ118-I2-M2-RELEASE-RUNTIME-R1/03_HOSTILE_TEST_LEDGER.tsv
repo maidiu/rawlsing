@@ -1,0 +1,25 @@
+commission_case	requirement	test_surface	result	evidence
+1	same exact preimage -> same release id	test_01_same_exact_preimage_same_release_id	PASS	run 36326255638
+2	constitutive closure change -> new release id	test_02_constitutive_closure_change_changes_release_id	PASS	run 36326255638
+3	physical relayout/path/endpoint -> same release core different binding	test_03_physical_relayout_changes_binding_not_release_core	PASS	run 36326255638
+4	exact subject required	test_04_exact_subject_required	PASS	run 36326255638
+5	producer contract mismatch fails closed	test_05_producer_contract_mismatch_fails_closed	PASS	run 36326255638
+6	incomplete closure fails closed	test_06_incomplete_required_closure_fails_closed	PASS	run 36326255638
+7	no latest/default/fuzzy/nearest/semver fallback	test_07_no_latest_default_fuzzy_nearest_semver_fallback	PASS_5_PARAMETER_CASES	run 36326255638
+8	virtual rebuild parity where claimed	test_08_virtual_rebuild_parity_and_mismatch_detection	PASS	run 36326255638
+9	materialized/virtual semantic parity	test_09_materialized_virtual_semantic_parity	PASS	run 36326255638
+10	VALID_EMPTY publishes without invented positive object	test_10_valid_empty_disposition_publishes_without_positive_invention	PASS	run 36326255638
+11	NONCOMPARABLE/BLOCKED/UNKNOWN/INTEGRITY_FAILURE preserved	test_11_nonpositive_states_preserved	PASS_4_PARAMETER_CASES	run 36326255638
+12	no negative-state laundering	test_12_no_negative_state_laundering_through_representation	PASS	run 36326255638
+13	no B5 lifecycle PUBLISHED minted	test_13_no_b5_lifecycle_published_state_minted	PASS	run 36326255638
+14	no current-selection minted	test_14_no_current_selection_minted	PASS	run 36326255638
+15	no consumer permission minted	test_15_no_consumer_permission_minted	PASS	run 36326255638
+16	direct producer dereference preserves ownership	test_16_direct_producer_dereference_preserves_owner	PASS	run 36326255638
+17	publication binding cannot resolve different release	test_17_binding_cannot_resolve_different_release	PASS	run 36326255638
+18	endpoint failover only among same release	test_18_endpoint_failover_only_among_same_release	PASS	run 36326255638
+19	deterministic historical resolution	test_19_deterministic_historical_resolution	PASS	run 36326255638
+20	M1 LearnedEmpiricalDisposition exact synthetic release subject	test_20_m1_learned_empirical_disposition_is_exact_release_subject	PASS	run 36326255638
+21	graph-only affected-release set remains selective	test_21_affected_release_refs_is_graph_only_and_selective	PASS	run 36326255638
+
+# Governed court total: 28 collected cases / 28 PASS.
+# Protocol self-test: 20 / 20 PASS.
