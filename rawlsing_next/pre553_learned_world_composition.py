@@ -756,6 +756,7 @@ def build_m1_bundle_from_m01(
     requested_scope: Mapping[str, Any],
     additional_authority_snapshots: Iterable[Any] = (),
     prerequisite_channels: Iterable[M1PrerequisiteChannel] = (),
+    additional_dependency_refs: Iterable[ExactRef] = (),
 ) -> M1AdjudicationInputBundle:
     """Adapt one exact M01 graph to M1 without choosing a family rule."""
     if contract.route != "M01_M1_M2_B5":
@@ -793,6 +794,9 @@ def build_m1_bundle_from_m01(
         *result.object_graph.authority_snapshots,
         *tuple(additional_authority_snapshots),
     )
+    exact_additional_dependencies = _refs(
+        additional_dependency_refs, "additional_dependency_ref"
+    )
     return build_m1_adjudication_input_bundle(
         requested_claim_family_id=family_rule_binding.claim_family_id,
         requested_claim_rule_id=family_rule_binding.claim_rule_id,
@@ -804,7 +808,10 @@ def build_m1_bundle_from_m01(
         authority_snapshots=authorities,
         requested_scope=requested_scope,
         prerequisite_channels=tuple(prerequisite_channels),
-        additional_dependency_refs=(result.c11_release.release_ref,),
+        additional_dependency_refs=(
+            result.c11_release.release_ref,
+            *exact_additional_dependencies,
+        ),
     )
 
 
@@ -1103,6 +1110,7 @@ def compose_learned_world(
     validator_registry: M1ValidatorRegistry | None = None,
     m1_authority_snapshots: Iterable[Any] = (),
     prerequisite_channels: Iterable[M1PrerequisiteChannel] = (),
+    additional_dependency_refs: Iterable[ExactRef] = (),
     m1_disposition: LearnedEmpiricalDisposition | None = None,
 ) -> LearnedWorldCompositionResult:
     """Compose the exact existing owners.  Never changes route on missing input."""
@@ -1115,6 +1123,13 @@ def compose_learned_world(
     if not isinstance(lifecycle_executor, LearnedProductLifecycleExecutor):
         raise LearnedWorldCompositionIntegrityError(
             "exact LearnedProductLifecycleExecutor required"
+        )
+    exact_additional_dependencies = _refs(
+        additional_dependency_refs, "additional_dependency_ref"
+    )
+    if contract.route != "M01_M1_M2_B5" and exact_additional_dependencies:
+        raise LearnedWorldCompositionBlocked(
+            "additional dependency refs may only enter through exact M01->M1 input construction"
         )
     if contract.route == "DIRECT_PRODUCER":
         receipt = _receipt_from_parts(
@@ -1155,6 +1170,7 @@ def compose_learned_world(
                 requested_scope=requested_scope or {},
                 additional_authority_snapshots=m1_authority_snapshots,
                 prerequisite_channels=prerequisite_channels,
+                additional_dependency_refs=exact_additional_dependencies,
             )
             disposition = adjudicate_learned_empirical(
                 bundle,
