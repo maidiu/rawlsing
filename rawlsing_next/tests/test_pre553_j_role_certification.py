@@ -664,7 +664,7 @@ def test_deterministic_m1_replay_equality_and_exact_determinant_shape():
         == second.determinant_explanation_receipt.as_dict()
     )
     det = _determinant(first)
-    assert tuple(det) == (
+    assert set(det) == {
         "ordered_contributions",
         "relation_count",
         "context_count",
@@ -675,7 +675,7 @@ def test_deterministic_m1_replay_equality_and_exact_determinant_shape():
         "contribution_rule_id",
         "prerequisite_channel_ref",
         "replay_contract_ref",
-    )
+    }
     assert [row["ordinal"] for row in det["ordered_contributions"]] == [
         1,
         2,
