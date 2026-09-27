@@ -1,3 +1,5 @@
+> **Compatibility notice — HQD-2026-09-27-116:** This legacy bootstrap is not a current succession path. Resolve the immediate gate from `HQ_HANDOFF/LATEST.json` and `PYAT_CONTROL_ROOM/06_BROWSER_HQ_BOOTSTRAP.md`.
+
 # RAWLSING HQ → VOZHD PYAT BOOTSTRAP — CURRENT POINTER
 
 Historical filename retained for compatibility.

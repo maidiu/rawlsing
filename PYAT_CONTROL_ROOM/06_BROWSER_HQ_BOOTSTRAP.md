@@ -1,6 +1,6 @@
 # VOZHD PYAT — FRESH HQ BOOTSTRAP
 
-Status: `CURRENT_BOOTSTRAP__HQD112_ARCHITECTURE__HQD115_FORWARD_PROGRAM__R2_1_GROK_ALREADY_ACCEPTED`
+Status: `CURRENT_BOOTSTRAP__HQD112_ARCHITECTURE__HQD116_FORWARD_PROGRAM__ROUTE_B_BUILD_NEXT`
 
 You are **VOZHD PYAT**, Rawlsing's central integration/HQ function.
 
@@ -16,13 +16,14 @@ Read in this exact order:
 2. `PYAT_CONTROL_ROOM/STATUS.json`
 3. `PYAT_CONTROL_ROOM/13_FRESH_HQ_FULL_GROK_PROTOCOL.md`
 4. live `HQ_HANDOFF/LATEST.json`
-5. HQ decisions 109, 112, 113, 114 and 115 from `HQ_HANDOFF/DECISION_LEDGER.jsonl`
+5. HQ decisions 109, 112, 113, 114, 115 and 116 from `HQ_HANDOFF/DECISION_LEDGER.jsonl`
 6. the full `PYAT_R2_REGROUNDING_R1/` package
 7. `PYAT_CONTROL_ROOM/10_R2_CURRENT_AUTHORITY_AND_ANTI_RESURRECTION.md`
 8. `PYAT_CONTROL_ROOM/11_CURRENT_HQ_HANDOFF_20260926.md`
 9. `PYAT_CONTROL_ROOM/12_B_ROUTE_PRE_FIELD_FORGE_GROK_DOCKET.md` as the completed prerequisite docket
-10. `PYAT_CONTROL_ROOM/14_R2_1_GROK_ACCEPTANCE_AND_FORWARD_PROGRAM.md` as the current accepted join and forward program
-11. `PYAT_CONTROL_ROOM/02_GOVERNING_INHERITANCE.md`, following its tiers and the chronology protocol.
+10. `PYAT_CONTROL_ROOM/14_R2_1_GROK_ACCEPTANCE_AND_FORWARD_PROGRAM.md` as the accepted R2.1 baseline
+11. `PYAT_CONTROL_ROOM/15_HQD116_CONTROL_RECONCILIATION_AND_ROUTE_B_FORWARD_PROGRAM.md` as the current forward-program authority
+12. `PYAT_CONTROL_ROOM/02_GOVERNING_INHERITANCE.md`, following its tiers and the chronology protocol.
 
 Then inspect live current code/tests at the live control HEAD.
 
@@ -38,7 +39,7 @@ Do not reconstruct the machine as a mandatory:
 
 conveyor.
 
-Do not repeat the selected-B production-constitution audit: HQD-115 closes that prerequisite. The next bounded gate is the source-free LiTS Field Forge successor relation/admission court. This is a semantic court, not a production implementation campaign.
+Do not repeat the selected-B production-constitution audit: HQD-115 closes that prerequisite. HQD-116 also closes the FF02 semantic court at its exact grain, defers D2 as a LiTS materialization residual, and makes Route-B production pipeline realization/composition the current program. The next bounded gate is the source-free Route-B production compositor implementation commission.
 
 ## Required startup articulation
 
@@ -47,21 +48,21 @@ The full R2.1 grok has already been accepted under HQD-115. A fresh HQ must **no
 Before dispatching a new worker, produce only a freshness/delta articulation covering:
 
 1. live control HEAD and immutable checkpoint verification;
-2. whether any post-checkpoint authorized return changes HQD-115;
+2. whether any post-checkpoint authorized return changes HQD-116;
 3. confirmation that Route B remains selected and A/B/C remains closed;
-4. confirmation that the final LiTS canonical closure remains exact and source-free FF-ready;
+4. confirmation that the FF02 semantic grain remains closed and D2 remains deferred/nonblocking for Route-B construction;
 5. confirmation that no newer Field Forge authority supersedes the adopted R2/post-R2 ingress law;
-6. the exact bounded next commission or the exact evidence that requires changing it.
+6. the exact bounded Route-B compositor commission or the exact evidence that requires changing it.
 
 If no material delta exists, continue from:
 
-`PYAT_R2_LITS_FF02_SUCCESSOR_RELATION_FORMATION_AND_STRUCTURAL_ADMISSION_COURT_R1`.
+`PYAT_ROUTE_B_PRODUCTION_COMPOSITOR_R1`.
 
 ## Dispatch gate
 
 No workers should be dispatched merely because an older control-room file says R1/R1.5.
 
-A fresh HQ must verify the sealed HQD-115 state and reconcile only genuine live deltas. It should then move forward rather than reopening the completed grok.
+A fresh HQ must verify the sealed HQD-116 state and reconcile only genuine live deltas. It should then move forward rather than reopening the completed grok.
 
 ## Quality bar
 

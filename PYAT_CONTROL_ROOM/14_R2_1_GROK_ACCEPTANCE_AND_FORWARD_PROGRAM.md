@@ -1,3 +1,5 @@
+> **Current disposition — HQD-2026-09-27-116:** HQD-115 remains the accepted R2.1 baseline. Its immediate FF02 gate and dispatch scope were satisfied/refined by post-seal evidence. Current sequencing is in `PYAT_CONTROL_ROOM/15_HQD116_CONTROL_RECONCILIATION_AND_ROUTE_B_FORWARD_PROGRAM.md`.
+
 # VOZHD PYAT — FRESH-HQ GROK ACCEPTANCE AND FORWARD PROGRAM
 
 Status: `ADOPTED__R2_1_FULL_GROK_GATE_CLOSED__FORWARD_PROGRAM_ACTIVE`
