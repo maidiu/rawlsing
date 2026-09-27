@@ -699,8 +699,13 @@ def verify_route_b_replay_receipt(receipt: Mapping[str, Any]) -> str:
         objects = tuple(materialize_public_object(document) for document in documents)
         if any(not isinstance(obj, expected_type) for obj in objects):
             raise RouteBProductionError(f"{family} contains wrong exact object family")
-        if tuple(sorted(objects, key=lambda obj: obj.ref.key)) != objects:
-            raise RouteBProductionError(f"{family} preimages are not exact-ref canonical")
+        canonical_key = (
+            (lambda obj: obj.authority_ref.key)
+            if family == "authority_snapshots"
+            else (lambda obj: obj.ref.key)
+        )
+        if tuple(sorted(objects, key=canonical_key)) != objects:
+            raise RouteBProductionError(f"{family} preimages are not canonically ordered")
         if len({obj.ref.key for obj in objects}) != len(objects):
             raise RouteBProductionError(f"{family} preimages contain duplicate exact ref")
         rebuilt[family] = objects
