@@ -1,6 +1,6 @@
 # VOZHD PYAT — GOVERNING INHERITANCE SPINE
 
-Status: `CURRENT_R2_CHRONOLOGY_AWARE_SPINE`
+Status: `CURRENT_R2_1_HQD115_CHRONOLOGY_AWARE_SPINE`
 
 Pyat must ground from live GitHub, not memory. Read this spine using the chronology protocol in `13_FRESH_HQ_FULL_GROK_PROTOCOL.md`.
 
@@ -14,7 +14,7 @@ Always begin with:
 - live `integration/pre-main-reconciliation-r1` HEAD
 - current authority/open-obligation/anti-resurrection surfaces under `PRE_MAIN_RECONCILIATION_R1`.
 
-Read HQD-2026-09-26-109, 110, 111, 112 and 113 in chronological order.
+Read HQD-2026-09-26-109, 112, 113, 114 and 115 as the operative succession chain; use 110/111 for predecessor evidence.
 
 Key succession:
 
@@ -22,7 +22,9 @@ Key succession:
 - 110 authorizes Pyat R1 forensic dispatch;
 - 111 joins valuable R1 forensic evidence but becomes stage-shaped at program grain;
 - 112 explicitly supersedes 111 at architecture-map, residual-register and development-program grain while preserving its evidence;
-- 113 preserves 112 and moves the immediate gate upstream to selected-B production-constitution grok before automatic FF02 dispatch.
+- 113 preserves 112 and moved the immediate gate upstream to selected-B production-constitution grok;
+- 114 propagated that currentness law through bootstrap surfaces;
+- 115 accepts the completed grok, closes the prerequisite, and releases the source-free LiTS Field Forge successor court as the next bounded gate.
 
 ## Tier 1 — current Pyat R2 correction and live handoff
 
@@ -37,7 +39,8 @@ Read all of:
 - `06_DEPENDENCY_ORDERED_PROGRAM.md`
 - `PYAT_CONTROL_ROOM/10_R2_CURRENT_AUTHORITY_AND_ANTI_RESURRECTION.md`
 - `11_CURRENT_HQ_HANDOFF_20260926.md`
-- `12_B_ROUTE_PRE_FIELD_FORGE_GROK_DOCKET.md`
+- `12_B_ROUTE_PRE_FIELD_FORGE_GROK_DOCKET.md` — completed prerequisite docket
+- `14_R2_1_GROK_ACCEPTANCE_AND_FORWARD_PROGRAM.md` — current accepted join and forward program
 
 These are the current Pyat orientation. Older 07–09 control-room files are preserved predecessor/R1 evidence and must be interpreted through HQD-112.
 
@@ -133,7 +136,7 @@ Read the final canonical closure return and code lineage documented in `11_CURRE
 
 LiTS currently proves fresh source-backed common semantic execution and a complete canonical empirical object closure. It is FF02-ready without source reopen.
 
-But the closure producer pins a historical accepted B-style facade/R5B release inside a candidate-neutral FIABC common-path producer. Pyat is currently adjudicating succession to the current selected-B production owner.
+But the closure producer pins a historical accepted B-style facade/R5B release inside a candidate-neutral FIABC common-path producer. HQD-115 has adjudicated the broad production-constitution question sufficiently for forward motion. The live-facade-to-historical-LiTS identity relation remains only a narrow later succession/parity residual.
 
 ### WVS7
 
@@ -141,7 +144,7 @@ Read the accepted R1M successor/oracle return.
 
 WVS proves stable common-C11/I05 learned empirical truth over the admitted release, but the R1M court rehydrated an already-admitted logical release rather than performing the same fresh current-B source-backed materialization as LiTS.
 
-Together they are controls, not yet a universal production constitution.
+Together they are complementary controls. HQD-115 does not universalize them across all 35 sources; it does establish enough production constitution to proceed to the source-free LiTS structural court.
 
 ## Tier 7 — Field Forge current authority
 
