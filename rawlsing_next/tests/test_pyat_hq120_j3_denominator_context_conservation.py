@@ -379,7 +379,7 @@ def test_j3_h10_final_exact_dereference_recovers_native_context(j3):
 
 def test_j3_h11_no_readiness_or_support_scalar_replaces_context(j3):
     closure = j3["result"].m2_artifacts.dependency_closure
-    material = repr(closure.as_dict()).upper()
+    material = repr((closure.closure_kind, closure.member_refs, closure.metadata)).upper()
     assert j3["fact"].ref in closure.member_refs
     assert j3["vector"].ref in closure.member_refs
     assert "READINESS_SCORE" not in material
@@ -519,7 +519,7 @@ def test_j3_h17_m2_physical_relayout_does_not_mutate_context(j3):
     assert before.ref == after.ref
     assert before.member_refs == after.member_refs
     assert j3["fact"].ref in after.member_refs
-    assert resolved.release.ref == release.ref
+    assert resolved.release_core.ref == release.ref
 
 
 def test_j3_h18_tampered_denominator_fails_exact_m1_closure(j3):
