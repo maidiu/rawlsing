@@ -1,3 +1,13 @@
-id	scope	state	classification	occupancy_inference	architecture_reopen
-ACCESS-J01A	LiTS_I+WVS7	EXACT_CANDIDATE_ARTIFACT_NOT_MATERIALIZED	AUTHORITY_ARTIFACT_ACCESS__NOT_NEGATIVE_OCCUPANCY	NONE	False
-ACCESS-D5	LiTS_I	EXACT_J01B_D5_ARCHIVE_NOT_MATERIALIZED	AUTHORITY_ARTIFACT_ACCESS__NOT_NEGATIVE_OCCUPANCY	NONE	False
+source	current_j_candidate_id	stage	typed_state	reason	absence_is_not_denial	positive_occupancy_proved	architecture_reopen	evidence
+LiTS_I	cssu.r2.lits.2006.c675f00abc752045b7af	L2	UNRESOLVED	Whole grid lacks qualified applicability/risk-set binding; same-row cells do not authorize denominator	True	False	False	evidence/LIVE_GATE_ADJUDICATION.json|evidence/LiTS_I_MISSING_ROLE_LOAD_CAV.json
+LiTS_I	cssu.r2.lits.2006.c675f00abc752045b7af	L3	UNRESOLVED	No competent per-component role value-authority and mapping in supplied current authority	True	False	False	evidence/LIVE_GATE_ADJUDICATION.json|evidence/LiTS_I_MISSING_ROLE_LOAD_CAV.json
+LiTS_I	cssu.r2.lits.2006.c675f00abc752045b7af	L4	VECTOR_INCOMPLETE_COVERAGE	Every role-load binding missing; diagnostic CAV reload verified; no scalarization	True	False	False	evidence/LIVE_GATE_ADJUDICATION.json|evidence/LiTS_I_MISSING_ROLE_LOAD_CAV.json
+LiTS_I	cssu.r2.lits.2006.c675f00abc752045b7af	L5	NOT_EXECUTED	Conditional permission L1-L4 not satisfied	True	False	False	evidence/LIVE_GATE_ADJUDICATION.json|evidence/LiTS_I_MISSING_ROLE_LOAD_CAV.json
+LiTS_I	cssu.r2.lits.2006.c675f00abc752045b7af	L6	NOT_EXECUTED	Named role channel and M01 fact prerequisites absent	True	False	False	evidence/LIVE_GATE_ADJUDICATION.json|evidence/LiTS_I_MISSING_ROLE_LOAD_CAV.json
+LiTS_I	cssu.r2.lits.2006.c675f00abc752045b7af	L7	NOT_EXECUTED	No exact M1 disposition; B5 lifecycle authority absent	True	False	False	evidence/LIVE_GATE_ADJUDICATION.json|evidence/LiTS_I_MISSING_ROLE_LOAD_CAV.json
+WVS7	cssu.r2.wvs.w7.d395c3494c5c7f5e301b	L2	UNRESOLVED	Whole grid lacks qualified applicability/risk-set binding; same-row cells do not authorize denominator	True	False	False	evidence/LIVE_GATE_ADJUDICATION.json|evidence/WVS7_MISSING_ROLE_LOAD_CAV.json
+WVS7	cssu.r2.wvs.w7.d395c3494c5c7f5e301b	L3	UNRESOLVED	No competent per-component role value-authority and mapping in supplied current authority	True	False	False	evidence/LIVE_GATE_ADJUDICATION.json|evidence/WVS7_MISSING_ROLE_LOAD_CAV.json
+WVS7	cssu.r2.wvs.w7.d395c3494c5c7f5e301b	L4	VECTOR_INCOMPLETE_COVERAGE	Every role-load binding missing; diagnostic CAV reload verified; no scalarization	True	False	False	evidence/LIVE_GATE_ADJUDICATION.json|evidence/WVS7_MISSING_ROLE_LOAD_CAV.json
+WVS7	cssu.r2.wvs.w7.d395c3494c5c7f5e301b	L5	NOT_EXECUTED	Conditional permission L1-L4 not satisfied	True	False	False	evidence/LIVE_GATE_ADJUDICATION.json|evidence/WVS7_MISSING_ROLE_LOAD_CAV.json
+WVS7	cssu.r2.wvs.w7.d395c3494c5c7f5e301b	L6	NOT_EXECUTED	Named role channel and M01 fact prerequisites absent	True	False	False	evidence/LIVE_GATE_ADJUDICATION.json|evidence/WVS7_MISSING_ROLE_LOAD_CAV.json
+WVS7	cssu.r2.wvs.w7.d395c3494c5c7f5e301b	L7	NOT_EXECUTED	No exact M1 disposition; B5 lifecycle authority absent	True	False	False	evidence/LIVE_GATE_ADJUDICATION.json|evidence/WVS7_MISSING_ROLE_LOAD_CAV.json
