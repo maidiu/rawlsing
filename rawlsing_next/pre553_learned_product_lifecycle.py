@@ -1744,7 +1744,7 @@ class LearnedProductLifecycleExecutor:
                 "selected_product_ref": subject.product_ref.as_dict(),
                 "previous_current_product_ref_or_null": (
                     None
-                    if previous is None
+                    if previous is None or previous.key in self._no_current_receipts
                     else self._selected_product_for_receipt(previous).as_dict()
                 ),
                 "selection_attestation_ref": _exact(
@@ -2089,6 +2089,11 @@ class LearnedProductLifecycleExecutor:
             raise LearnedProductLifecycleError("product is already withdrawn")
         keys = self._current_keys_for_release(subject.release_ref)
         transitions = dict(current_transitions or {})
+        for raw_target in transitions.values():
+            if raw_target is not None and _exact(raw_target) == subject.release_ref:
+                raise LearnedProductLifecycleError(
+                    "withdrawn release cannot be its own explicit current replacement"
+                )
         withdrawal = self._event(
             event_kind="PRODUCT_WITHDRAWN",
             subject=subject,
@@ -2152,6 +2157,12 @@ class LearnedProductLifecycleExecutor:
             raise LearnedProductLifecycleError(
                 "current invalidation requires explicit replacement/NO_CURRENT for every affected current key"
             )
+        affected_release_keys = {ref.key for ref in affected}
+        for raw_target in transitions.values():
+            if raw_target is not None and _exact(raw_target).key in affected_release_keys:
+                raise LearnedProductLifecycleError(
+                    "invalidated release cannot be selected as its own replacement"
+                )
 
         events: list[LearnedProductLifecycleEvent] = []
         parent = self._events[-1].ref if self._events else None
@@ -2241,14 +2252,15 @@ class LearnedProductLifecycleExecutor:
     ) -> RebuildEligibilityReceipt:
         subject = self._subject(release_ref)
         blockers: list[str] = []
+        source_inputs = tuple(source_or_upstream_refs)
         inputs = _exact_refs(
-            tuple(source_or_upstream_refs)
+            source_inputs
             + tuple(subject.direct_dependency_refs)
             + (subject.producer_contract_ref, subject.replay_root_ref)
             + tuple(subject.determinant_refs),
             allow_authority_kind=True,
         )
-        if not source_or_upstream_refs and not subject.direct_dependency_refs:
+        if not source_inputs and not subject.direct_dependency_refs:
             blockers.append("REBUILD_NOT_PROVED")
         if not subject.authority_snapshot_refs:
             blockers.append("MISSING_SEMANTIC_AUTHORITY")
