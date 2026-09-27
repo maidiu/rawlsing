@@ -719,8 +719,7 @@ def test_raw_and_weighted_are_distinct_and_missing_weight_never_defaults_to_one(
     assert weighted.measure_kind == "GOVERNED_WEIGHTED"
     assert raw.weighted_denominator_support_if_authorized is None
     assert weighted.weighted_denominator_support_if_authorized == {
-        "numerator": 3,
-        "denominator": 1,
+        "$exact_fraction": [3, 1],
     }
     assert raw.raw_denominator_support == weighted.raw_denominator_support == 2
 
