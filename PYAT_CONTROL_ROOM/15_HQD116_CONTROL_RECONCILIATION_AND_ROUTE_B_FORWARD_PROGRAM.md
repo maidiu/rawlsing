@@ -1,3 +1,5 @@
+> **Current disposition — HQD-2026-09-27-117:** HQD-116 remains the correct Route-B recentering decision, but its whole-pipeline interpretation is refined by `PYAT_CONTROL_ROOM/16_HQD117_FULL_B_PREFIELD_FORGE_COMPLETION_PROGRAM.md`. The thin compositor is M01 early core only; it does not complete the full pre-Field-Forge learned world.
+
 # VOZHD PYAT — HQD-116 CONTROL RECONCILIATION AND ROUTE-B FORWARD PROGRAM
 
 Status:
