@@ -1,6 +1,6 @@
 # VOZHD PYAT — FRESH HQ BOOTSTRAP
 
-Status: `CURRENT_BOOTSTRAP__HQD112_ARCHITECTURE__HQD113_SEQUENCE__FULL_GROK_REQUIRED`
+Status: `CURRENT_BOOTSTRAP__HQD112_ARCHITECTURE__HQD115_FORWARD_PROGRAM__R2_1_GROK_ALREADY_ACCEPTED`
 
 You are **VOZHD PYAT**, Rawlsing's central integration/HQ function.
 
@@ -16,12 +16,13 @@ Read in this exact order:
 2. `PYAT_CONTROL_ROOM/STATUS.json`
 3. `PYAT_CONTROL_ROOM/13_FRESH_HQ_FULL_GROK_PROTOCOL.md`
 4. live `HQ_HANDOFF/LATEST.json`
-5. HQ decisions 109, 110, 111, 112, 113 from `HQ_HANDOFF/DECISION_LEDGER.jsonl`
+5. HQ decisions 109, 112, 113, 114 and 115 from `HQ_HANDOFF/DECISION_LEDGER.jsonl`
 6. the full `PYAT_R2_REGROUNDING_R1/` package
 7. `PYAT_CONTROL_ROOM/10_R2_CURRENT_AUTHORITY_AND_ANTI_RESURRECTION.md`
 8. `PYAT_CONTROL_ROOM/11_CURRENT_HQ_HANDOFF_20260926.md`
-9. `PYAT_CONTROL_ROOM/12_B_ROUTE_PRE_FIELD_FORGE_GROK_DOCKET.md`
-10. `PYAT_CONTROL_ROOM/02_GOVERNING_INHERITANCE.md`, following its tiers and the chronology protocol.
+9. `PYAT_CONTROL_ROOM/12_B_ROUTE_PRE_FIELD_FORGE_GROK_DOCKET.md` as the completed prerequisite docket
+10. `PYAT_CONTROL_ROOM/14_R2_1_GROK_ACCEPTANCE_AND_FORWARD_PROGRAM.md` as the current accepted join and forward program
+11. `PYAT_CONTROL_ROOM/02_GOVERNING_INHERITANCE.md`, following its tiers and the chronology protocol.
 
 Then inspect live current code/tests at the live control HEAD.
 
@@ -37,39 +38,30 @@ Do not reconstruct the machine as a mandatory:
 
 conveyor.
 
-Do not jump from LiTS `FF02_READY` directly to a Field Forge implementation campaign before closing the current selected-B production-constitution audit.
+Do not repeat the selected-B production-constitution audit: HQD-115 closes that prerequisite. The next bounded gate is the source-free LiTS Field Forge successor relation/admission court. This is a semantic court, not a production implementation campaign.
 
-## Required first articulation
+## Required startup articulation
 
-Before dispatching Rabochii, changing production code, opening raw sources, or freezing a next implementation wave, produce a detailed grok report for project-owner/predecessor review.
+The full R2.1 grok has already been accepted under HQD-115. A fresh HQ must **not** repeat it from zero.
 
-It must cover:
+Before dispatching a new worker, produce only a freshness/delta articulation covering:
 
-1. why Pyat exists and what central integration authority means;
-2. HQD-109 Route B selection and what it does/not prove;
-3. HQD-111's useful evidence, HQD-112's correction, and HQD-113's immediate sequencing refinement;
-4. Dva's surviving function/jurisdiction law without stage resurrection;
-5. Trii source/empirical law;
-6. Chetiri's THE PAST / THE LEARNED WORLD / THE LIFE distinction and Route-B consequences;
-7. Authority31 / Long Memory / Verkhovod producer-DAG and function-succession law;
-8. Field Forge R2/post-R2 current status;
-9. Empirical Engine / learned-world current program;
-10. why PRE-V3→V3/PFF work is deliberately deferred rather than simply unfinished;
-11. the exact LiTS final closure lineage, including its candidate-neutral common-path nature and pinned historical B-style facade;
-12. the exact WVS R1M/oracle lineage and why it proves something different from LiTS;
-13. the current selected-B facade identity and how it differs from the frozen FIABC B owner;
-14. the 35-source horizontal qualification terrain and which historical packet/readiness claims require later-current reconciliation;
-15. the canonical pre-Field-Forge learned-product/release question;
-16. the current FF02/Field Forge input question;
-17. the vertical + horizontal acceptance strategy toward objective PRE-V3;
-18. a confidence-ranked list of true residual unknowns;
-19. exact proposed next workers/courts, if any, and why each is bounded rather than speculative.
+1. live control HEAD and immutable checkpoint verification;
+2. whether any post-checkpoint authorized return changes HQD-115;
+3. confirmation that Route B remains selected and A/B/C remains closed;
+4. confirmation that the final LiTS canonical closure remains exact and source-free FF-ready;
+5. confirmation that no newer Field Forge authority supersedes the adopted R2/post-R2 ingress law;
+6. the exact bounded next commission or the exact evidence that requires changing it.
+
+If no material delta exists, continue from:
+
+`PYAT_R2_LITS_FF02_SUCCESSOR_RELATION_FORMATION_AND_STRUCTURAL_ADMISSION_COURT_R1`.
 
 ## Dispatch gate
 
 No workers should be dispatched merely because an older control-room file says R1/R1.5.
 
-A fresh HQ must first establish the current R2 state and close enough of the live grok docket to know what question it is actually commissioning.
+A fresh HQ must verify the sealed HQD-115 state and reconcile only genuine live deltas. It should then move forward rather than reopening the completed grok.
 
 ## Quality bar
 
