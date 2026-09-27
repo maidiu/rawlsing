@@ -853,3 +853,22 @@ def test_invalidated_release_cannot_be_selected_as_its_own_replacement():
             current_transitions={key.ref.key: subject.release_ref},
         )
     assert executor.export_checkpoint()["checkpoint_hash"] == before
+
+
+def test_lcr009_authority_change_routes_as_explicit_neutral_determinant():
+    executor = LearnedProductLifecycleExecutor()
+    subject = _register(executor, _subject("authority-determinant"))
+    changed_authority = subject.authority_snapshot_refs[0]
+
+    receipt = executor.declare_invalidation(
+        (changed_authority,),
+        event_authority_ref=_authority("authority-change"),
+        event_rule_ref=_rule("authority-change"),
+        dependency_closure_receipt_ref=_ref("DependencyClosure", "authority-change"),
+        selection_attestation_ref=_attest("authority-change"),
+        current_transitions={},
+    )
+
+    assert receipt.directly_affected_release_refs == (subject.release_ref,)
+    assert executor.lifecycle_state(subject.release_ref).validity == "INVALIDATED_REBUILD_REQUIRED"
+    assert not hasattr(executor, "promote_authority")
