@@ -74,7 +74,7 @@ The exact D2 classification should be:
 
 ### Remain governing
 
-- `HQD-2026-09-26-009` — checkpoint maintenance law.
+- `HQD-2026-09-14-009` — checkpoint maintenance law.
 - `HQD-2026-09-14-012` — temporal reconciliation / active-worker / dependency-graph fidelity law.
 - `HQD-2026-09-26-109` — Route B selected; A/B/C competition terminated as development dependency.
 - `HQD-2026-09-26-112` — producer-owned semantic DAG; Route B → learned world → Field Forge → objective PRE-V3; PRE-V3→V3 deferred.
