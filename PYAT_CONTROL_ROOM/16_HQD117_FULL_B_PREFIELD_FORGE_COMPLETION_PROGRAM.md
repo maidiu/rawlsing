@@ -1,3 +1,5 @@
+> **Current disposition — HQD-2026-09-27-118:** HQD-117 remains the governing anti-amputation/full-pipeline decision, but its OBL034/M3 provider-status reading is corrected. OBL034 was already CLOSED under current B5 lifecycle authority; M3 is a B5-conserving runtime refinement, not a replacement owner. Current sequencing is in `PYAT_CONTROL_ROOM/17_HQD118_M01_AND_LEARNED_WORLD_OWNER_ADOPTION.md`.
+
 # VOZHD PYAT — HQD-117 FULL B PRE-FIELD-FORGE COMPLETION PROGRAM
 
 Status:

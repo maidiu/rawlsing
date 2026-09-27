@@ -1,10 +1,10 @@
 # VOZHD PYAT — READ ME FIRST
 
-Status: `ACTIVE_CONTROL_ROOM__HQD117_FULL_B_PREFIELD_FORGE_PROGRAM_ACTIVE`
+Status: `ACTIVE_CONTROL_ROOM__HQD118_M01_CURRENT__M1_M2_B5_RUNTIME_NEXT`
 
 Current architecture/program decision: `HQD-2026-09-26-112`
 
-Current forward-program decision: `HQD-2026-09-27-117`
+Current forward-program decision: `HQD-2026-09-27-118`
 
 HQD-113 grok prerequisite: `SATISFIED__PRESERVED_AS_HISTORY`
 
@@ -98,7 +98,7 @@ A fresh Pyat/Vozhd SHALL:
 7. read `10_R2_CURRENT_AUTHORITY_AND_ANTI_RESURRECTION.md`;
 8. read `11_CURRENT_HQ_HANDOFF_20260926.md`;
 9. read `12_B_ROUTE_PRE_FIELD_FORGE_GROK_DOCKET.md` as the now-completed prerequisite docket;
-10. read `14_R2_1_GROK_ACCEPTANCE_AND_FORWARD_PROGRAM.md`, then `15_HQD116_CONTROL_RECONCILIATION_AND_ROUTE_B_FORWARD_PROGRAM.md`, then `16_HQD117_FULL_B_PREFIELD_FORGE_COMPLETION_PROGRAM.md` as the current forward-program authority;
+10. read `14_R2_1_GROK_ACCEPTANCE_AND_FORWARD_PROGRAM.md`, then `15_HQD116_CONTROL_RECONCILIATION_AND_ROUTE_B_FORWARD_PROGRAM.md`, then `16_HQD117_FULL_B_PREFIELD_FORGE_COMPLETION_PROGRAM.md` as the anti-amputation baseline, then `17_HQD118_M01_AND_LEARNED_WORLD_OWNER_ADOPTION.md` as the current forward-program authority;
 11. then traverse the governing inheritance spine in `02_GOVERNING_INHERITANCE.md` using the chronology rules in the grok protocol;
 12. inspect live current code and tests at the live control head;
 13. perform only a freshness/delta articulation; do not re-prove the completed R2.1 grok before forward motion. fresh-HQ articulation before dispatching workers or proposing implementation.
