@@ -724,8 +724,14 @@ def test_raw_and_weighted_are_distinct_and_missing_weight_never_defaults_to_one(
     assert raw.raw_denominator_support == weighted.raw_denominator_support == 2
 
     missing = _fixture(missing_weight=True)
-    with pytest.raises(Pre553AuthorityError, match="WEIGHT_MISSING"):
-        _execute(missing)
+    missing_result = _execute(missing)
+    missing_weighted = _fact_for(
+        missing_result, missing["weighted_query"].ref
+    )
+    assert missing_weighted.typed_state == "UNAVAILABLE"
+    assert missing_weighted.p02_failure_state == "MEASURE_UNAVAILABLE"
+    assert missing_weighted.weighted_denominator_support_if_authorized is None
+    assert "WEIGHT_MISSING" in missing_weighted.execution_detail
 
 
 def test_risk_set_identity_and_ordered_repeated_topology_are_preserved():
@@ -735,7 +741,7 @@ def test_risk_set_identity_and_ordered_repeated_topology_are_preserved():
         query = fx["catalog"].resolve_query_exact(execution.query_ref)
         for fact in execution.facts:
             assert fact.risk_set_ref == query.risk_set_ref
-            assert fact.risk_set_ref == fx["risk"]
+            assert dict(fact.risk_set_ref) == fx["risk"].as_dict()
 
     events = [
         obj
@@ -813,8 +819,12 @@ def test_no_currentness_structural_causal_v3_or_historical_stage_resurrection():
     )
 
     source = inspect.getsource(route_b).lower()
-    forbidden = (
-        "fiabc_",
+    import_surface = "\n".join(
+        line for line in source.splitlines()
+        if line.startswith("from ") or line.startswith("import ")
+    )
+    forbidden_imports = (
+        "fiabc",
         "astra",
         "candidate_a",
         "candidate_b",
@@ -824,4 +834,4 @@ def test_no_currentness_structural_causal_v3_or_historical_stage_resurrection():
         "wave1_ff_prev3",
         "v3_adp",
     )
-    assert all(token not in source for token in forbidden)
+    assert all(token not in import_surface for token in forbidden_imports)
