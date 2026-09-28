@@ -1,10 +1,10 @@
 # VOZHD PYAT — READ ME FIRST
 
-Status: `ACTIVE_CONTROL_ROOM__HQD118_M01_CURRENT__M1_M2_B5_RUNTIME_NEXT`
+Status: `ACTIVE_CONTROL_ROOM__HQD125_DDM_FUNCTIONAL_GATE_CURRENT__HQD124_ARCHITECTURE_THEOREM_RETAINED`
 
 Current architecture/program decision: `HQD-2026-09-26-112`
 
-Current forward-program decision: `HQD-2026-09-27-118`
+Current forward-program decision: `HQD-2026-09-28-125`
 
 HQD-113 grok prerequisite: `SATISFIED__PRESERVED_AS_HISTORY`
 
@@ -67,23 +67,41 @@ A/C remain historical/comparator evidence. C-style accelerators may be added lat
 
 ## 3. Current forward program
 
-HQD-115 remains the accepted R2.1 baseline. HQD-116 correctly re-centered Pyat on building Route B before abstract Field Forge redesign. HQD-117 refines the whole-pipeline picture after the full EE01–EE16 completion audit.
+HQD-124 remains the accepted source-free six-family conservation theorem:
 
-Read `14_R2_1_GROK_ACCEPTANCE_AND_FORWARD_PROGRAM.md`, then `15_HQD116_CONTROL_RECONCILIATION_AND_ROUTE_B_FORWARD_PROGRAM.md`, then `16_HQD117_FULL_B_PREFIELD_FORGE_COMPLETION_PROGRAM.md`.
+`SOURCE_FREE_PRE553_ARCHITECTURE_COMPLETE_AT_AUDITED_GRAIN`.
 
-The first missing implementation seam remains M01, the thin selected-B source→C11→I03/I05 execution compositor. But M01 does not complete the learned world.
+HQD-125 now governs the **functional acceptance target**.
 
-The active parallel program is:
+Read:
 
-`M01 EXECUTION COMPOSITOR`
-+
-`M1 LEARNED EMPIRICAL ADJUDICATION CONSTITUTION`
-+
-`M2 LEARNED-PRODUCT RELEASE/PUBLICATION CONSTITUTION`
-+
-`M3 LEARNED-PRODUCT LIFECYCLE/CURRENT-SELECTION CONSTITUTION`
+- `23_HQD124_SIX_STAGE_SOURCE_FREE_ARCHITECTURE_COMPLETION.md`;
+- `24_HQD125_DDM_FUNCTIONAL_CONSERVATION_AND_PREV3_ACCEPTANCE_LAW.md`;
+- `25_HQD125_DDM_FUNCTIONAL_CONSERVATION_CROSSWALK.md`.
 
-followed by source-specific live proving, product dispatch/composition, claim-scoped learned-world population, and Field Forge ingress at the exact authority-required producer grain.
+Pyat completion is not established by preserving isolated historical responsibilities or by producing isolated Route-B / M1 / Field-Forge products.
+
+The current DAG must ultimately realize:
+
+```text
+answer distribution
+→ position-conditioned determinicity
+→ majority/minority/outlier branches
+→ secondary/recursive splitters
+→ response-response co-signatures / attitude clouds
+→ same-respondent joint configurations
+→ structural empirical interpretation
+→ parent/coparent possibility priors
+→ multi-source / multi-field structural pressure
+→ cross-wave temporal pressure
+→ positioned-subject / person-generation usability
+```
+
+Route B, M01/M1/M2/B5/I4, Field Forge and PRE-V3 producer contracts are infrastructure for this empirical-social possibility engine.
+
+The LiTS I / WVS7 work remains useful canary evidence. It is not the program center and must not induce source-specific architecture or a universal J2I role requirement.
+
+The next large external refinement/audit should evaluate the existing DAG against HQD-125 F1–F8 rather than optimizing toward the narrower terminal `B_PRODUCTS → FIELD_FORGE`.
 
 ## 4. Fresh-HQ startup order
 
@@ -98,10 +116,11 @@ A fresh Pyat/Vozhd SHALL:
 7. read `10_R2_CURRENT_AUTHORITY_AND_ANTI_RESURRECTION.md`;
 8. read `11_CURRENT_HQ_HANDOFF_20260926.md`;
 9. read `12_B_ROUTE_PRE_FIELD_FORGE_GROK_DOCKET.md` as the now-completed prerequisite docket;
-10. read `14_R2_1_GROK_ACCEPTANCE_AND_FORWARD_PROGRAM.md`, then `15_HQD116_CONTROL_RECONCILIATION_AND_ROUTE_B_FORWARD_PROGRAM.md`, then `16_HQD117_FULL_B_PREFIELD_FORGE_COMPLETION_PROGRAM.md` as the anti-amputation baseline, then `17_HQD118_M01_AND_LEARNED_WORLD_OWNER_ADOPTION.md` as the current forward-program authority;
-11. then traverse the governing inheritance spine in `02_GOVERNING_INHERITANCE.md` using the chronology rules in the grok protocol;
-12. inspect live current code and tests at the live control head;
-13. perform only a freshness/delta articulation; do not re-prove the completed R2.1 grok before forward motion. fresh-HQ articulation before dispatching workers or proposing implementation.
+10. read `14_R2_1_GROK_ACCEPTANCE_AND_FORWARD_PROGRAM.md`, `15_HQD116_CONTROL_RECONCILIATION_AND_ROUTE_B_FORWARD_PROGRAM.md`, `16_HQD117_FULL_B_PREFIELD_FORGE_COMPLETION_PROGRAM.md`, and the later adopted control decisions through `23_HQD124_SIX_STAGE_SOURCE_FREE_ARCHITECTURE_COMPLETION.md`;
+11. read `24_HQD125_DDM_FUNCTIONAL_CONSERVATION_AND_PREV3_ACCEPTANCE_LAW.md` and `25_HQD125_DDM_FUNCTIONAL_CONSERVATION_CROSSWALK.md` as the current functional acceptance authority;
+12. then traverse the governing inheritance spine in `02_GOVERNING_INHERITANCE.md` using the chronology rules in the grok protocol;
+13. inspect live current code and tests at the live control head;
+14. perform only a freshness/delta articulation; do not re-prove the completed source-free conservation theorem before forward motion; articulate how proposed work advances HQD-125 F1–F8.
 
 Files 07–09 preserve predecessor/R0/R1 history. They are not the current architecture/program authority where HQD-112 supersedes them.
 
@@ -116,21 +135,29 @@ Until separately authorized:
 - no Field Forge semantic invention;
 - no V3/PFF seam implementation;
 - no declaration of project-wide composition from one canary;
-- no claim that source bytes recreate manual/adjudicated semantic authority.
+- no claim that source bytes recreate manual/adjudicated semantic authority;
+- no declaration of full Pyat/PRE-V3 completion that bypasses HQD-125 F1–F8;
+- no use of special semantic-relation absence to erase lawful empirical co-travel;
+- no flattening of recursive minority/outlier branch structure into modal stereotypes;
+- no restoration of the historical nine fixed strata as mandatory current ontology.
 
 ## 6. Pyat success criterion
 
-Pyat succeeds when a successor engineer can identify, without archaeology from zero:
+Pyat succeeds only when a successor engineer can identify, without archaeology from zero:
 
 - the exact selected-B source→logical empirical path;
 - the canonical pre-Field-Forge empirical/learned products and their lifecycle;
 - which survey/wave/source scopes are actually qualified to produce them;
-- the horizontal qualification matrix still needed;
+- the exact current owners and carriers for predictor/determinicity, branching/forks, empirical co-signatures/attitude clouds, joints, structural interpretation, multi-source composition, temporalization and positioned-subject possibility;
+- which of those functions are merely representable versus compositionally realized and live-proved;
 - the exact Field Forge input and structural-admission contracts;
 - the objective PRE-V3 producer graph required downstream;
 - every surviving historical function and its current owner/successor/retirement;
 - replay, currentness and selective invalidation at each edge;
+- how parent/coparent possibility priors can be exposed without crossing the actor firewall;
 - why the PRE-V3→V3 seam remains intentionally deferred;
 - and the dependency-ordered next development program.
 
-Start with `HQ_HANDOFF/LATEST.json`, then control-room files 14, 15 and 16 in order.
+Full completion additionally requires the composed current DAG to satisfy HQD-125 functional gates F1–F8 at declared scope.
+
+Start with `HQ_HANDOFF/LATEST.json`, then control-room files 23, 24 and 25.
