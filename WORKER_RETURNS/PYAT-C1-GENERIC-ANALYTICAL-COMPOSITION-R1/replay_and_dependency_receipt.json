@@ -1,6 +1,6 @@
 {
-  "schema": "PYAT_C1_00_REPLAY_DEPENDENCY_RECEIPT@2",
-  "status": "R2_CORRECTED_STATIC_CONTRACT__NO_EXECUTION",
+  "schema": "PYAT_C1_00_REPLAY_DEPENDENCY_RECEIPT@3",
+  "status": "R3_CORRECTED_STATIC_CONTRACT__NO_EXECUTION",
   "replay_grades": [
     {
       "grade": "CONSUMER_BOUNDED_REPLAY",
@@ -61,7 +61,9 @@
     "measure_kind",
     "target component/topology/domain material",
     "constructed PossibilitySliceEvidence.evidence_ref",
-    "slice projection schema hash c00e038dd2c1177bfc7842f12febef7b3e30b92bc421df244e2a8e3c4a20b17a"
+    "slice projection schema hash c00e038dd2c1177bfc7842f12febef7b3e30b92bc421df244e2a8e3c4a20b17a",
+    "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE_PREIMAGE@1 canonical hash/material excluding evidence_ref",
+    "owner-native C1-AT07-QUERY AuthorityRef with exact source_universe_refs scope"
   ],
   "weighted_extension": [
     "used WeightMeasureFact.ref(s)",
@@ -129,5 +131,30 @@
       "NO_CURRENT",
       "CONFLICTING_CURRENT_SELECTION"
     ]
+  },
+  "R3_evidence_identity_closure": {
+    "preimage_schema": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE_PREIMAGE@1",
+    "self_reference_forbidden": true,
+    "expected_forward_evidence_hash": "fe5cd7783ac84f0298fb7f56a621d7b0e494bd9348d080dc68ceee09abb546f5",
+    "expected_reverse_evidence_hash": "b54201c8ba8743922e51627e621cc4f3d1c563a43b70167a0720fbb0028ccf72",
+    "replay_requirement": "Fresh full-composition recomputation must reconstruct the exact noncircular evidence preimage and reproduce the evidence ref before comparing composed result identity.",
+    "authority_scope_requirement": "Fresh source-free recomputation must use C1-AT07-QUERY AuthorityRef b59ef578...fd767 bound to exact AT07 source_universe_refs."
+  },
+  "R3_unknown_state": {
+    "owner": "rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleExecutor.current_selection_receipt_ref",
+    "setup": "registered exact SelectionKey; no current-selection/no-current receipt",
+    "expected_exception": "LearnedProductLifecycleError('UNKNOWN_CURRENTNESS')",
+    "distinct_from": [
+      "EXPLICIT_UNKNOWN_UNVISITED",
+      "UNRESOLVED",
+      "UNAVAILABLE",
+      "NO_CURRENT",
+      "CONFLICTING_CURRENT_SELECTION"
+    ]
+  },
+  "R3_contract_refs": {
+    "authority_scope": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/02_OWNER_NATIVE_AUTHORITY_SCOPE_FREEZE.json",
+    "unknown_currentness": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/03_UNKNOWN_CURRENTNESS_FIXTURE.json",
+    "evidence_identity": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/04_EVIDENCE_IDENTITY_PREIMAGE.json"
   }
 }
