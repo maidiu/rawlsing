@@ -1,6 +1,6 @@
 {
-  "schema": "PYAT_C1_00_ANALYTICAL_PRODUCTS@2",
-  "status": "R2_CORRECTED_DOCUMENTARY_CONTRACT__NO_RUNTIME_PRODUCTS",
+  "schema": "PYAT_C1_00_ANALYTICAL_PRODUCTS@3",
+  "status": "R3_CORRECTED_DOCUMENTARY_CONTRACT__NO_RUNTIME_PRODUCTS",
   "products": [],
   "reason": "C1-00 forbids C1-01 production implementation/execution. No candidate output exists.",
   "proposed_output_type": {
@@ -77,8 +77,23 @@
       "schema_hash": "c00e038dd2c1177bfc7842f12febef7b3e30b92bc421df244e2a8e3c4a20b17a",
       "raw_support_meaning": "EmpiricalFact.raw_denominator_support",
       "supported_geometry": "exact C1_POSSIBILITY_SLICE_GEOMETRY@1; no alternate compatible encoding",
-      "witness_mandatory": true
+      "witness_mandatory": true,
+      "evidence_identity_preimage_schema": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE_PREIMAGE@1",
+      "evidence_identity_preimage_excludes": "evidence_ref",
+      "evidence_identity_contract_ref": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/04_EVIDENCE_IDENTITY_PREIMAGE.json",
+      "expected_AT07_forward_evidence_ref": "fe5cd7783ac84f0298fb7f56a621d7b0e494bd9348d080dc68ceee09abb546f5",
+      "expected_AT07_reverse_evidence_ref": "b54201c8ba8743922e51627e621cc4f3d1c563a43b70167a0720fbb0028ccf72"
     },
-    "identity_law": "Composed result identity includes condition-value witness, subject preimage, predicate leaf and pairing ground-truth refs; relation-only mutation reidentifies the result."
+    "identity_law": "Composed result identity includes condition-value witness, subject preimage, predicate leaf and pairing ground-truth refs; relation-only mutation reidentifies the result.",
+    "owner_native_AT07_identity": {
+      "source_universe_ref_hash": "ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2",
+      "release_ref_hash": "8afa807cc06a3a10e660d13bbd831f4f758ae829e835a454c62831bfd8f4d939",
+      "query_authority_content_hash": "b59ef578314515268fa7b280a8480b4c95c80c9cfd831c39c2bfc4214b6fd767"
+    },
+    "R3_contract_refs": {
+      "owner_native_authority_scope": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/02_OWNER_NATIVE_AUTHORITY_SCOPE_FREEZE.json",
+      "unknown_currentness_fixture": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/03_UNKNOWN_CURRENTNESS_FIXTURE.json",
+      "evidence_identity_preimage": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/04_EVIDENCE_IDENTITY_PREIMAGE.json"
+    }
   }
 }
