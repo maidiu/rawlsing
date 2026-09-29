@@ -1,78 +1,71 @@
 {
   "schema": "PYAT_OMEGA_ACTIVE_TASK_BOARD@1",
-  "revision": 6,
-  "status": "C1_R3_RETURNED_INTERNAL_EXACT_REF_CONTRADICTION__C1_R4_BOUND__C3_03_RETURNED_EXECUTION_BLOCKED__C3_03_INDEPENDENT_REVIEW_BOUND",
+  "revision": 7,
+  "status": "C1_R4_RETURNED_REVIEW_READY__C1_R4_INDEPENDENT_REREVIEW_BOUND__C3_03_STATIC_PASS_EXECUTION_BLOCKED__CODEX_FALLBACK_BOUND",
   "control_branch": "integration/pre-main-reconciliation-r1",
   "implementation_baseline": "b3b2fa13049513078c301a1f6574b661fcf390c5",
   "observed_returns": [
     {
-      "id": "C1-00-R3",
-      "return_head": "696210c2aca2c42b49eed1fe9f75dfca5bf2e93c",
-      "declared_terminal": "C1_00_R3_CORRECTIONS_READY_FOR_INDEPENDENT_REREVIEW",
-      "hq_disposition": "NOT_YET_REVIEWABLE__INTERNAL_EXACT_REF_CONTRADICTION",
-      "defect": "UNKNOWN_CURRENTNESS SelectionKey is 53683ac6... in R3 fixture artifact but a0c54c56... in current analytical contract/fixture manifest; recomputation receipt omits owner-native key recomputation.",
-      "hq_effect": "C1_R4_EXACT_REF_SYNCHRONIZATION_ISSUED__C1_01_REMAINS_BLOCKED"
+      "id": "C1-00-R4",
+      "return_head": "233a91d7cb7789a8e338405abdfef15a5a8ee764",
+      "hq_disposition": "READY_FOR_FINAL_INDEPENDENT_REREVIEW",
+      "accepted_intermediate": "OWNER_NATIVE_SELECTION_KEY_SYNCHRONIZED__53683ac6_ACTIVE__a0c54c56_STALE_ONLY",
+      "hq_effect": "C1_01_REMAINS_BLOCKED_PENDING_INDEPENDENT_REREVIEW_AND_HQ_FREEZE"
     },
     {
-      "id": "C3-03",
-      "return_head": "ede7d350be23d0a340bed221da272d8c0124e049",
-      "semantic_candidate": "901e3e77f905847d3ef8d86b458280d8fe422dd0",
-      "execution_commit": "283d2c5d2b187c4e62ae1aecb236a0b51ddeffb1",
-      "declared_terminal": "C3_03_BLOCKED_EXECUTION_CAPABILITY__HQ_ADJUDICATION_REQUIRED",
-      "hq_disposition": "SEMANTIC_AND_EXECUTION_SEPARATION_STATICALLY_CONFORMANT__QUALIFICATION_BLOCKED_BY_RUNNER_ASSIGNMENT",
-      "runner_evidence": {
-        "workflow_run": 36627731035,
-        "attempts": [
-          1,
-          2,
-          3
-        ],
-        "attempt_3_job": 109616351235,
-        "result": "FAIL_BEFORE_RUNNER__STEPS_NULL__RUNNER_ID_0"
-      },
-      "hq_effect": "INDEPENDENT_C3_03_REVIEW_ISSUED__ADOPTION_REMAINS_BLOCKED"
+      "id": "C3-03-R",
+      "return_head": "1b92286cc1f8e40f73b8a3bcf61e11d36aabe2a0",
+      "static_disposition": "PASS_AT_DECLARED_GRAIN",
+      "execution_disposition": "BLOCKED_EXECUTION_CAPABILITY",
+      "execution_attempts": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "hq_effect": "STATIC_PASS_ACCEPTED__CODEX_EXECUTION_FALLBACK_BOUND__C3_ADOPTION_BLOCKED"
     }
   ],
   "active_tasks": [
     {
-      "id": "C1-00-R4",
-      "branch": "agent/rabochii-pyat-hq126-c1-00-contract-correction-r4",
-      "commission_tip": "4482f28e436a6ef48e66f9aefda40d354c3866f5",
-      "base": "696210c2aca2c42b49eed1fe9f75dfca5bf2e93c",
+      "id": "C1-00-R4-R",
+      "branch": "agent/reviewer-pyat-hq126-c1-00-r4-rereview-r1",
+      "commission_tip": "bcaa43885dafaa9391a4466620eb41a0e570eebb",
+      "base": "233a91d7cb7789a8e338405abdfef15a5a8ee764",
       "state": "BOUND_AWAITING_USER_MEDIATED_LAUNCH",
-      "scope": "DOCUMENTARY_ONLY__OWNER_NATIVE_SELECTION_KEY_REF_RECOMPUTE_AND_PROPAGATION",
-      "pass_wake": "FRESH_INDEPENDENT_C1_REREVIEW",
+      "scope": "FINAL_INDEPENDENT_DOCUMENTARY_REREVIEW_A_THROUGH_E_PLUS_R4_EXACT_REF_SYNCHRONIZATION",
+      "pass_wake": "HQ_FREEZES_EXACT_C1_01_CONTRACT_ORACLE_WRITE_ALLOWLIST__C1_01_NOT_AUTOMATIC",
       "blocker_effect": "C1_01_BLOCKED"
     },
     {
-      "id": "C3-03-R",
-      "branch": "agent/reviewer-pyat-hq126-c3-03-physical-repair-r1",
-      "commission_tip": "eb0193fbb8b48b3fe455de553a88cc44b5a61170",
-      "base": "ede7d350be23d0a340bed221da272d8c0124e049",
-      "state": "BOUND_AWAITING_USER_MEDIATED_LAUNCH",
-      "scope": "INDEPENDENT_STATIC_DIFF_CONTRACT_REVIEW_PLUS_AT_MOST_ONE_UNCHANGED_SHA_EXECUTION_RETRY",
-      "pass_wake": "HQ_ADJUDICATION__C3_ADOPTION_ONLY_IF_STATIC_AND_EXECUTION_BOTH_PASS",
-      "blocker_effect": "C3_ADOPTION_BLOCKED_UNTIL_SOURCE_FREE_EXECUTION_PASS"
+      "id": "C3-03-CODEX-EXEC",
+      "branch": "agent/codex-pyat-hq126-c3-03-source-free-execution-r1",
+      "commission_tip": "01d393e94b185f9cbb7f8aa85d25b7ee8f79a64a",
+      "base": "1b92286cc1f8e40f73b8a3bcf61e11d36aabe2a0",
+      "exact_execution_sha": "283d2c5d2b187c4e62ae1aecb236a0b51ddeffb1",
+      "state": "BOUND_AWAITING_USER_MEDIATED_CODEX_LAUNCH",
+      "scope": "DETERMINISTIC_SOURCE_FREE_EXECUTION_ONLY__EXACT_FROZEN_EXECUTION_COMMIT__NO_CODE_CHANGES",
+      "pass_wake": "HQ_ADJUDICATION_FOR_C3_ADOPTION",
+      "blocker_effect": "C3_ADOPTION_BLOCKED_UNTIL_EXECUTION_PASS"
     }
   ],
   "held": [
-    "C1-01 until C1 R4 passes fresh independent rereview and HQ freezes contract/oracle/write allowlist",
+    "C1-01 until C1 R4 independent rereview approves and HQ freezes exact contract/oracle/write allowlist",
     "C1-02 until C1-01",
     "C1-03 until C1-02",
     "C1-R until C1-03",
     "C2-02 until HQ declares exact next proving workload after accepted C1 contract",
     "C2-R until C2-02",
-    "C3 adoption until independent C3-03 static review plus source-free execution qualification pass",
-    "JOIN-01 until applicable independently reviewed outputs",
+    "C3 adoption until exact C3-03 source-free execution qualification passes",
+    "JOIN-01 until applicable independently reviewed/qualified outputs",
     "OMEGA-1 until scoped source-free join"
   ],
   "prohibitions": [
     "NO_RAW_SOURCE_EXECUTION",
     "NO_NEW_SEMANTIC_OR_COMPARABILITY_AUTHORITY",
-    "NO_C1_01_BEFORE_R4_INDEPENDENT_REREVIEW_AND_HQ_FREEZE",
-    "NO_C3_ADOPTION_WITH_STATIC_ONLY_REVIEW",
-    "NO_WHOLE_HISTORICAL_DECODER_REPLACEMENT",
-    "NO_C3_FACADE_EDIT",
+    "NO_C1_01_BEFORE_FINAL_R4_REREVIEW_AND_HQ_FREEZE",
+    "NO_C3_ADOPTION_WITH_STATIC_PASS_ONLY",
+    "NO_C3_CODE_OR_TEST_MUTATION_IN_CODEX_FALLBACK",
     "NO_PREV3_TO_V3_ACTOR_IMPLEMENTATION"
   ]
 }
