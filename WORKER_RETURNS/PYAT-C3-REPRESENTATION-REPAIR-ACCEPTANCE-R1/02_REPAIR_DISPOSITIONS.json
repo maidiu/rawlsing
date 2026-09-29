@@ -1,0 +1,52 @@
+{
+  "schema": "PYAT_C3_01_SEPARATE_REPAIR_DISPOSITIONS@1.0.0",
+  "dispositions": {
+    "G01": {
+      "disposition": "ACCEPT",
+      "accepted_grain": "EXACT_NINE_SURFACE_SAV_NATIVE_INT_RULE_TO_FLOAT64_PHYSICAL_REPRESENTATION_SUCCESSOR",
+      "candidate": "8ed091e1323f46335a4bcbf6ab92ac9e3f228848",
+      "current_relation": "MISSING_FROM_CURRENT_BASELINE_AS_SEPARATE_AUTHORITY_MODULE",
+      "prohibited_widening": [
+        "GLOBAL_NUMERIC_COERCION",
+        "ARITHMETIC_INT_FLOAT_IDENTITY",
+        "OTHER_SOURCE_VARIABLE_OR_CODE",
+        "DTA_APPLICABILITY",
+        "CROSS_WAVE_INHERITANCE",
+        "LABEL_OR_DISPLAY_SEMANTICS",
+        "MISSING_STATE_REINTERPRETATION"
+      ],
+      "current_facade_compatible": true
+    },
+    "D01": {
+      "disposition": "ACCEPT",
+      "accepted_grain": "EXACT_SOURCE_SHA_PLUS_DECLARED_ENCODING_PHYSICAL_DECODER_ADMISSION",
+      "candidate": "f6613cbef8c23148c14d9464e9b6a869474a418f",
+      "current_relation": "NOT_PRESENT_IN_CURRENT_DECODER; CURRENT_DECODER_RETAINS_ONLY_OLDER_EXACT_SHA_COMPATIBILITY_LANE",
+      "prohibited_widening": [
+        "ENCODING_GUESSING",
+        "WRONG_SHA_ADMISSION",
+        "WRONG_ENCODING_ADMISSION",
+        "DECLARATION_FREE_AUTHORITY",
+        "CROSS_SOURCE_INHERITANCE",
+        "TEXT_SEMANTIC_AUTHORITY"
+      ],
+      "current_facade_compatible": true
+    },
+    "D02": {
+      "disposition": "ACCEPT",
+      "accepted_grain": "EXPLICIT_OPAQUE_DECODER_NATIVE_NAIVE_DATE_TIME_CARRIER_REPRESENTATION_ONLY",
+      "candidate": "e2d7674701e1b743dc513ce3bd525ee181bfda17",
+      "current_relation": "OPAQUE_CODEC_LANE_EXISTS_CURRENTLY_BUT_DATETIME_CONSTRUCTOR_NORMALIZER_AND_DECODER_ROUTE_ARE_ABSENT",
+      "prohibited_widening": [
+        "BARE_R5_DATETIME_ACCEPTANCE",
+        "TIMEZONE_AWARE_CARRIER",
+        "CANONICAL_SURVEY_DATETIME_INTERPRETATION",
+        "DISPLAY_FORMAT_INTERPRETATION",
+        "CONVENIENCE_STRING_NORMALIZATION_AS_SEMANTICS"
+      ],
+      "current_facade_compatible": true
+    }
+  },
+  "gate": "HQ_MUST_FREEZE_MINIMAL_C3_02_PATCH_ALLOWLIST_BEFORE_IMPLEMENTATION",
+  "terminal": "C3_01_G01_D01_D02_SEPARATE_DISPOSITIONS_READY_FOR_INDEPENDENT_REVIEW"
+}
