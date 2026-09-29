@@ -1,0 +1,99 @@
+{
+  "schema": "PYAT_C1_00_REPLAY_DEPENDENCY_RECEIPT@1",
+  "status": "STATIC_CONTRACT__NO_EXECUTION",
+  "replay_grades": [
+    {
+      "grade": "CONSUMER_BOUNDED_REPLAY",
+      "owner": "verify_positioned_subject_possibility_replay",
+      "meaning": "re-evaluates consumer over retained query/rule/evidence only"
+    },
+    {
+      "grade": "I03_EXACT_REPLAY",
+      "owner": "replay_empirical_query",
+      "meaning": "reruns exact empirical query and requires exact fact refs"
+    },
+    {
+      "grade": "DISCOVERY_EXACT_FRONTIER_REPLAY",
+      "owner": "pre553_discovery_exact",
+      "meaning": "exact frontier/receipt/fact closure"
+    },
+    {
+      "grade": "RECURSIVE_HANDOFF_REPLAY",
+      "owner": "write/load_recursive_handoff_bundle + replay_recursive_branch_membership",
+      "meaning": "fresh-process branch custody/membership plus later generation"
+    },
+    {
+      "grade": "ADAPTIVE_RUN_REPLAY",
+      "owner": "verify_adaptive_replay",
+      "meaning": "replays exact adaptive policy/determinants/visited state"
+    },
+    {
+      "grade": "FULL_COMPOSITION_FRESH_PROCESS_RECOMPUTE",
+      "owner": "future C1 adapter court",
+      "meaning": "rerun producer route, rebuild slice, call actual consumer, compare composed identity"
+    }
+  ],
+  "direct_determinants": [
+    "EmpiricalQuerySpec.ref",
+    "EmpiricalPredicate.ref",
+    "release refs",
+    "source universe refs",
+    "EmpiricalFact.ref",
+    "fact replay_ref / producer replay root",
+    "risk_set_ref",
+    "measure_basis_ref",
+    "response_state_semantics_ref",
+    "target_domain_replay_ref(s)",
+    "fact authority_snapshot_refs",
+    "fact source_empirical_provenance_refs",
+    "PositionedSubjectPossibilityQuery.ref",
+    "full ConditionerBinding fingerprint",
+    "consumer comparability authority refs",
+    "model/walkback authority refs",
+    "model rule hash",
+    "selected proxy evidence/authority refs if any"
+  ],
+  "weighted_extension": [
+    "used WeightMeasureFact.ref(s)",
+    "weight_basis_id",
+    "weight_source_ref",
+    "design_authority_ref",
+    "estimand_authority_ref",
+    "normalization_or_recalibration_rule_ref",
+    "effective_scope_ref"
+  ],
+  "route_extensions": {
+    "exact_discovery": [
+      "discovery_authority_ref",
+      "candidate_grammar_ref",
+      "evaluated_frontier_ref",
+      "receipt ref",
+      "discovery replay_ref",
+      "coverage_state"
+    ],
+    "recursive": [
+      "handoff ref",
+      "immediate parent ref",
+      "winning predicate ref",
+      "scope context ref",
+      "coverage/pruning ref",
+      "deterministic parameters ref"
+    ],
+    "adaptive": [
+      "search_policy_ref",
+      "determinant_state_ref",
+      "checkpoint ref",
+      "visited refs",
+      "unvisited refs",
+      "completeness_state"
+    ]
+  },
+  "lifecycle_law": {
+    "owner": "rawlsing_next.pre553_learned_product_lifecycle.LearnedProductDeterminantGraph",
+    "use": "only for lifecycle-governed learned products/families",
+    "direct_empirical_route_requires_B5": false,
+    "selective_invalidation_expectation": "changed exact determinant reaches all and only graph-dependent releases; unaffected releases remain usable"
+  },
+  "execution_receipts": [],
+  "unexecuted_reason": "C1-00 is documentary and runtime identity is not yet frozen."
+}
