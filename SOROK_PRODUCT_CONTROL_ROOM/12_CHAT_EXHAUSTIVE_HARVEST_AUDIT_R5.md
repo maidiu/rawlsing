@@ -1462,6 +1462,76 @@ Home: D001/02
 
 ---
 
+# T2. Relationalization delta surfaced by final correction
+
+## H176 — Inherited PFF gives mediated personhood; Sorok adds relationally constituted personhood
+Disposition: SOROK_NOVEL_HYPOTHESIS
+Home: D001/03
+
+## H177 — D-band causal personhood must not be read as pre-relational inner substance
+Disposition: SOROK_NOVEL_HYPOTHESIS
+Home: D001/03
+
+## H178 — C-band standing self is partly constituted through real/internalized others, roles and recognition
+Disposition: SOROK_NOVEL_HYPOTHESIS
+Home: D001/03
+
+## H179 — Person-stable does not mean relation-free
+Disposition: SOROK_NOVEL_HYPOTHESIS
+Homes: 02 Provisional Relational Ontology; D001/03
+
+## H180 — Current B-band relation is not merely a trait activator
+Claim:
+A specific relation can instantiate a historically formed organization of self-with-other rather than merely selecting a fixed trait.
+Disposition: SOROK_NOVEL_HYPOTHESIS
+Home: D001/03
+
+## H181 — Defense can be understood as historically learned preservation/regulation of relations or positions
+Disposition: SOROK_NOVEL_HYPOTHESIS
+Home: D001/03
+
+## H182 — Needs are relationally organized by target, role and expected cost
+Disposition: SOROK_NOVEL_HYPOTHESIS
+Home: D001/03
+
+## H183 — Isolation is a relational formation, not a zero-relation state
+Disposition: SOROK_NOVEL_HYPOTHESIS
+Homes: 02 Provisional Relational Ontology; D001/03
+
+## H184 — Self-knowledge itself can be relation-conditioned
+Claim:
+Some parts of self become nameable/thinkable only under particular relational safety, role or recognition conditions.
+Disposition: SOROK_NOVEL_HYPOTHESIS
+Home: D001/03
+
+## H185 — Dyad is real without consuming the persons
+Disposition: SOROK_ANTI_COLLAPSE_LAW
+Home: D001/03
+
+## H186 — Personal continuity is cross-relational historical organization, not context-free essence
+Disposition: SOROK_NOVEL_HYPOTHESIS
+Home: D001/03
+
+## H187 — Models of the other and metaperception become constitutive causal material under relational ontology
+Disposition: SOROK_NOVEL_HYPOTHESIS
+Home: D001/03
+
+## H188 — Network/third-party relations can alter the dyad and current person×event processing
+Disposition: SOROK_NOVEL_HYPOTHESIS
+Home: D001/03
+
+## H189 — Intimacy changes causal relational organization, not merely access to hidden lore
+Disposition: SOROK_NOVEL_PRODUCT_THEORY
+Home: D001/03
+
+## H190 — Deep recursive theorem
+Claim:
+Relations produce persons who enter relations that reproduce, disconfirm or transform persons and worlds.
+Disposition: SOROK_NOVEL_ONTOLOGICAL_THESIS
+Homes: 02 Provisional Relational Ontology; D001/03
+
+---
+
 # T. Genuine unresolved items surfaced by this harvest
 
 These are not missing memory. They are real next design questions:
@@ -1497,7 +1567,7 @@ These are not missing memory. They are real next design questions:
 
 At this audit grain:
 
-CHAT_SALIENT_INTERACTION_PROPOSITIONS_IDENTIFIED = 175
+CHAT_SALIENT_INTERACTION_PROPOSITIONS_IDENTIFIED = 190
 
 KNOWN_MATERIAL_CHAT_ONLY_PROPOSITIONS_AFTER_R5 = 0, subject to the explicit registry additions named in this audit and final integrity verification.
 
@@ -1523,9 +1593,15 @@ not
 
 = NEW SOROK DISCOVERY.
 
-Sorok's novel contribution here is the product pressure-test:
-can those inherited mediation laws support a live, embodied, time-constrained, partially observed relationship game without leaking hidden psychology or collapsing into chatbot theater?
+Sorok's novel contribution is now stated more strongly:
+
+1. product pressure-test the inherited mediation laws in a live, embodied, time-constrained, partially observed relationship game; and
+2. **relationalize the ontology beneath those laws**, so the durable person and standing self are themselves understood as historically relation-produced rather than as a monadic interior later modified by relationships.
+
+The actual frontier is:
+
+`MEDIATED PERSONHOOD → RELATIONALLY CONSTITUTED MEDIATED PERSONHOOD`.
 
 ## R5 terminal
 
-R5_CHAT_HARVEST_COMPLETE_AT_CURRENT_TRANSCRIPT_GRAIN__INHERITED_PSYCHIC_MEDIATION_RESTORED__REGISTRY_DELTA_AND_RESTART_RECONCILIATION_PENDING
+R5_CHAT_HARVEST_COMPLETE_AT_CURRENT_TRANSCRIPT_GRAIN__INHERITED_PSYCHIC_MEDIATION_RESTORED__RELATIONALIZATION_DELTA_EXPLICIT__REGISTRY_AND_INTEGRITY_RECONCILIATION_PENDING
