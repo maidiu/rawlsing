@@ -12,7 +12,13 @@ Storage, time, messaging, game mechanics and player modeling will all ossify the
 
 ## Current hypothesis
 
-Do **not** assume a new monolithic “later dyadic runtime.”
+The actual Sorok delta is now sharper:
+
+**inherit PFF-mediated personhood, but relationalize personhood all the way down.**
+
+The durable person is not a context-free monad that relations merely activate. Their relatively stable organization is itself historically produced through relations, roles, absences, dependencies, recognitions, conflicts, institutions and material interdependence. Current relations then instantiate, reproduce, disconfirm or transform that organization.
+
+At the same time, do **not** collapse the person into the dyad or assume a new monolithic “later dyadic runtime.”
 
 The prior architecture already distinguishes:
 - durable/from-birth and persistent V3 developmental ownership;
@@ -28,7 +34,7 @@ This boundary is provisional, but the prior split is inherited architecture, not
 
 ## Required distinctions to adjudicate
 
-- disposition;
+- relationally constituted cross-relational disposition;
 - relational prior;
 - role-conditioned tendency;
 - developmental residue;
@@ -50,6 +56,9 @@ This boundary is provisional, but the prior split is inherited architecture, not
 3. Can dyadic history alter the person over time without erasing the distinction between person state and relationship state?
 4. Can the ontology represent isolation as formative relation?
 5. Can the LLM remain expressive rather than ontological?
+6. Can durable V3 represent a person's relationally formed organization without turning every property into specific-dyad state?
+7. Can the same durable person instantiate materially different organizations across role/counterpart without treating them as inconsistency?
+8. Can relationship history recursively change the person without making the dyad the sole owner of personhood?
 
 ## Repo / architecture review required
 
@@ -74,3 +83,7 @@ A finite ontology table:
 plus an exact proposed ownership/seam map, any genuinely ownerless remainder, and alternatives rejected.
 
 Inherited temporal-grain architecture is banked in `01_INHERITED_TEMPORAL_GRAIN_ARCHITECTURE_R1.md` and is mandatory context for this docket.
+
+
+The explicit Sorok delta over inherited PFF is banked in:
+`03_SOROK_RELATIONALIZATION_DELTA_OVER_INHERITED_PFF_R1.md`.
