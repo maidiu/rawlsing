@@ -148,23 +148,29 @@
   ],
   "pairing_ground_truth": [
     {
-      "role": "POSITION_P1__POSITION_EQ_P1",
-      "subject_preimage_ref": {
-        "kind": "C1_SYNTHETIC_SUBJECT_CONDITION_PREIMAGE",
-        "object_id": "urn:test:c1:at07:subject-condition:POSITION_P1",
-        "content_hash": "df3f992bc93dd5e23ca1e0230885cca253cdd1c4d02e8c8a8bd4221d7804b9a3"
+      "material": {
+        "schema": "C1_SYNTHETIC_VALUE_PAIRING_GROUND_TRUTH@1",
+        "fixture_id": "AT07_BIDIRECTIONAL_100",
+        "role": "POSITION_P1__POSITION_EQ_P1",
+        "subject_preimage_ref": {
+          "kind": "C1_SYNTHETIC_SUBJECT_CONDITION_PREIMAGE",
+          "object_id": "urn:test:c1:at07:subject-condition:POSITION_P1",
+          "content_hash": "df3f992bc93dd5e23ca1e0230885cca253cdd1c4d02e8c8a8bd4221d7804b9a3"
+        },
+        "predicate_leaf_preimage_ref": {
+          "kind": "C1_SYNTHETIC_PREDICATE_LEAF_PREIMAGE",
+          "object_id": "urn:test:c1:at07:predicate-leaf:POSITION_EQ_P1",
+          "content_hash": "62deeeb5968ea313b345d7427af416ce6d7384e7560e2fd063d660bcccacda6d"
+        },
+        "required_semantic_ref": {
+          "kind": "QUESTION_NATIVE",
+          "object_id": "urn:test:i03:question_native:c1-at07-POSITION",
+          "content_hash": "df6d11b23fb0494ebb9ad89a1e173012b8225bafc0b62d3c4a7a3eae5aaf6bf5"
+        },
+        "required_exact_value": "P1",
+        "pairing_rule": "SUBJECT_VALUE_AND_SEMANTIC_REF_MUST_EQUAL_PREDICATE_LEAF_VALUE_AND_SEMANTIC_REF",
+        "authority_effect": "FIXTURE_ORACLE_ONLY__NO_REAL_SOURCE_AUTHORITY"
       },
-      "predicate_leaf_preimage_ref": {
-        "kind": "C1_SYNTHETIC_PREDICATE_LEAF_PREIMAGE",
-        "object_id": "urn:test:c1:at07:predicate-leaf:POSITION_EQ_P1",
-        "content_hash": "62deeeb5968ea313b345d7427af416ce6d7384e7560e2fd063d660bcccacda6d"
-      },
-      "required_semantic_ref": {
-        "kind": "QUESTION_NATIVE",
-        "object_id": "urn:test:i03:question_native:c1-at07-POSITION",
-        "content_hash": "df6d11b23fb0494ebb9ad89a1e173012b8225bafc0b62d3c4a7a3eae5aaf6bf5"
-      },
-      "required_exact_value": "P1",
       "ref": {
         "kind": "C1_SYNTHETIC_VALUE_PAIRING_GROUND_TRUTH",
         "object_id": "urn:test:c1:at07:value-pairing:POSITION_P1__POSITION_EQ_P1",
@@ -172,23 +178,29 @@
       }
     },
     {
-      "role": "POSITION_P2__POSITION_EQ_P2",
-      "subject_preimage_ref": {
-        "kind": "C1_SYNTHETIC_SUBJECT_CONDITION_PREIMAGE",
-        "object_id": "urn:test:c1:at07:subject-condition:POSITION_P2",
-        "content_hash": "312e4f4ef7efd0d1f9ccddc52792b734cda518eaf09772797ac61ccff9b1d16e"
+      "material": {
+        "schema": "C1_SYNTHETIC_VALUE_PAIRING_GROUND_TRUTH@1",
+        "fixture_id": "AT07_BIDIRECTIONAL_100",
+        "role": "POSITION_P2__POSITION_EQ_P2",
+        "subject_preimage_ref": {
+          "kind": "C1_SYNTHETIC_SUBJECT_CONDITION_PREIMAGE",
+          "object_id": "urn:test:c1:at07:subject-condition:POSITION_P2",
+          "content_hash": "312e4f4ef7efd0d1f9ccddc52792b734cda518eaf09772797ac61ccff9b1d16e"
+        },
+        "predicate_leaf_preimage_ref": {
+          "kind": "C1_SYNTHETIC_PREDICATE_LEAF_PREIMAGE",
+          "object_id": "urn:test:c1:at07:predicate-leaf:POSITION_EQ_P2",
+          "content_hash": "b173f48d17dfe44f5709b6d5014cf019ca276b7b4f78b945a1587f834623bdf8"
+        },
+        "required_semantic_ref": {
+          "kind": "QUESTION_NATIVE",
+          "object_id": "urn:test:i03:question_native:c1-at07-POSITION",
+          "content_hash": "df6d11b23fb0494ebb9ad89a1e173012b8225bafc0b62d3c4a7a3eae5aaf6bf5"
+        },
+        "required_exact_value": "P2",
+        "pairing_rule": "SUBJECT_VALUE_AND_SEMANTIC_REF_MUST_EQUAL_PREDICATE_LEAF_VALUE_AND_SEMANTIC_REF",
+        "authority_effect": "FIXTURE_ORACLE_ONLY__NO_REAL_SOURCE_AUTHORITY"
       },
-      "predicate_leaf_preimage_ref": {
-        "kind": "C1_SYNTHETIC_PREDICATE_LEAF_PREIMAGE",
-        "object_id": "urn:test:c1:at07:predicate-leaf:POSITION_EQ_P2",
-        "content_hash": "b173f48d17dfe44f5709b6d5014cf019ca276b7b4f78b945a1587f834623bdf8"
-      },
-      "required_semantic_ref": {
-        "kind": "QUESTION_NATIVE",
-        "object_id": "urn:test:i03:question_native:c1-at07-POSITION",
-        "content_hash": "df6d11b23fb0494ebb9ad89a1e173012b8225bafc0b62d3c4a7a3eae5aaf6bf5"
-      },
-      "required_exact_value": "P2",
       "ref": {
         "kind": "C1_SYNTHETIC_VALUE_PAIRING_GROUND_TRUTH",
         "object_id": "urn:test:c1:at07:value-pairing:POSITION_P2__POSITION_EQ_P2",
@@ -196,23 +208,29 @@
       }
     },
     {
-      "role": "ANSWER_YES__ANSWER_EQ_YES",
-      "subject_preimage_ref": {
-        "kind": "C1_SYNTHETIC_SUBJECT_CONDITION_PREIMAGE",
-        "object_id": "urn:test:c1:at07:subject-condition:ANSWER_YES",
-        "content_hash": "8adabf8ea0306b8c7fa9a4d3d564bffabd6cdc2194507dda08b3f1f4941a4a9c"
+      "material": {
+        "schema": "C1_SYNTHETIC_VALUE_PAIRING_GROUND_TRUTH@1",
+        "fixture_id": "AT07_BIDIRECTIONAL_100",
+        "role": "ANSWER_YES__ANSWER_EQ_YES",
+        "subject_preimage_ref": {
+          "kind": "C1_SYNTHETIC_SUBJECT_CONDITION_PREIMAGE",
+          "object_id": "urn:test:c1:at07:subject-condition:ANSWER_YES",
+          "content_hash": "8adabf8ea0306b8c7fa9a4d3d564bffabd6cdc2194507dda08b3f1f4941a4a9c"
+        },
+        "predicate_leaf_preimage_ref": {
+          "kind": "C1_SYNTHETIC_PREDICATE_LEAF_PREIMAGE",
+          "object_id": "urn:test:c1:at07:predicate-leaf:ANSWER_EQ_YES",
+          "content_hash": "2ee38647262bf67b32de7f8be96dd74e6fd6852453ee65f00949f46d568adddd"
+        },
+        "required_semantic_ref": {
+          "kind": "QUESTION_NATIVE",
+          "object_id": "urn:test:i03:question_native:c1-at07-ANSWER",
+          "content_hash": "e6f8992046c0941a5192585cbe9c2ec86e03963e68207c1f05988df2c9105513"
+        },
+        "required_exact_value": "yes",
+        "pairing_rule": "SUBJECT_VALUE_AND_SEMANTIC_REF_MUST_EQUAL_PREDICATE_LEAF_VALUE_AND_SEMANTIC_REF",
+        "authority_effect": "FIXTURE_ORACLE_ONLY__NO_REAL_SOURCE_AUTHORITY"
       },
-      "predicate_leaf_preimage_ref": {
-        "kind": "C1_SYNTHETIC_PREDICATE_LEAF_PREIMAGE",
-        "object_id": "urn:test:c1:at07:predicate-leaf:ANSWER_EQ_YES",
-        "content_hash": "2ee38647262bf67b32de7f8be96dd74e6fd6852453ee65f00949f46d568adddd"
-      },
-      "required_semantic_ref": {
-        "kind": "QUESTION_NATIVE",
-        "object_id": "urn:test:i03:question_native:c1-at07-ANSWER",
-        "content_hash": "e6f8992046c0941a5192585cbe9c2ec86e03963e68207c1f05988df2c9105513"
-      },
-      "required_exact_value": "yes",
       "ref": {
         "kind": "C1_SYNTHETIC_VALUE_PAIRING_GROUND_TRUTH",
         "object_id": "urn:test:c1:at07:value-pairing:ANSWER_YES__ANSWER_EQ_YES",
@@ -221,27 +239,44 @@
     }
   ],
   "witness_schema": {
-    "schema": "C1_CONDITION_VALUE_BINDING_WITNESS_SCHEMA@2",
-    "required_fields": [
-      "consumer_query_ref",
-      "consumer_binding_material",
-      "consumer_binding_fingerprint",
-      "subject_condition_preimage_ref",
-      "subject_condition_preimage_material",
-      "producer_query_ref",
-      "producer_predicate_ref",
-      "producer_predicate_hash",
-      "producer_predicate_leaf_ref",
-      "producer_predicate_leaf_projection",
-      "pairing_ground_truth_ref",
-      "pairing_authority_ref",
-      "source_universe_ref",
-      "release_ref",
-      "effective_time_or_interval",
-      "binding_mode"
-    ],
-    "binding_mode": "EXPLICIT_VALUE_BEARING_RELATION__NO_INFERENCE",
-    "identity_algorithm": "sha256(canonical_json(full_material))",
+    "material": {
+      "schema": "C1_CONDITION_VALUE_BINDING_WITNESS_SCHEMA@2",
+      "identity_algorithm": "sha256(canonical_json(full_material))",
+      "canonical_json": "recursive lexicographic object-key ordering; arrays order-preserving; UTF-8; no insignificant whitespace",
+      "required_fields": [
+        "consumer_query_ref",
+        "consumer_binding_material",
+        "consumer_binding_fingerprint",
+        "subject_condition_preimage_ref",
+        "subject_condition_preimage_material",
+        "producer_query_ref",
+        "producer_predicate_ref",
+        "producer_predicate_hash",
+        "producer_predicate_leaf_ref",
+        "producer_predicate_leaf_projection",
+        "pairing_ground_truth_ref",
+        "pairing_authority_ref",
+        "source_universe_ref",
+        "release_ref",
+        "effective_time_or_interval",
+        "binding_mode"
+      ],
+      "binding_mode": "EXPLICIT_VALUE_BEARING_RELATION__NO_INFERENCE",
+      "deterministic_checks": [
+        "consumer_binding_material.subject_fact_ref == subject_condition_preimage_ref",
+        "consumer_binding_material.empirical_coordinate_ref == subject_condition_preimage_material.empirical_semantic_ref",
+        "consumer_binding_material.comparability_authority_ref == pairing_authority_ref",
+        "consumer_binding_material.source_universe_ref == source_universe_ref",
+        "consumer_binding_material.release_ref == release_ref",
+        "consumer_binding_material.effective_time_or_interval == effective_time_or_interval",
+        "producer predicate canonical leaf projection hashes to producer_predicate_leaf_ref",
+        "producer_predicate_leaf_projection.question_semantic_ref == subject_condition_preimage_material.empirical_semantic_ref",
+        "producer_predicate_leaf_projection.operator == EQ",
+        "producer_predicate_leaf_projection.exact_value == subject_condition_preimage_material.exact_value",
+        "pairing_ground_truth_ref is the exact frozen relation for subject_condition_preimage_ref + producer_predicate_leaf_ref",
+        "any mismatch -> CONDITION_VALUE_RELATION_MISMATCH before PossibilitySliceEvidence construction"
+      ]
+    },
     "exact_schema_hash": "0a881f32dee7142979d76ebf4f3462df16d8a6bad55a23b2e8fc22834ed04f36"
   },
   "deterministic_adapter_checks": [
