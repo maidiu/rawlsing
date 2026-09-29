@@ -17,11 +17,12 @@ A new Sorok control-room session should not reconstruct this program from chat m
 9. Read `08_INTERACTION_SYSTEM_SYNTHESIS_R1.md`.
 10. Read `11_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R4.md`.
 11. Read `12_CHAT_EXHAUSTIVE_HARVEST_AUDIT_R5.md`.
-12. Read D001 `02_INHERITED_PSYCHIC_MEDIATION_PFF_V2_GENEALOGY_R1.md`.
-13. Read D001 `03_SOROK_RELATIONALIZATION_DELTA_OVER_INHERITED_PFF_R1.md`.
-14. Read the question / decision / risk ledgers.
-15. Resolve the live Sorok branch head and compare against the recorded Pyat base before making any current-system claim.
-16. Read only the dockets relevant to the next action.
+12. Read `13_R5_CHAT_HARVEST_INTEGRITY_RECEIPT.md`.
+13. Read D001 `02_INHERITED_PSYCHIC_MEDIATION_PFF_V2_GENEALOGY_R1.md`.
+14. Read D001 `03_SOROK_RELATIONALIZATION_DELTA_OVER_INHERITED_PFF_R1.md`.
+15. Read the question / decision / risk ledgers.
+16. Resolve the live Sorok branch head and compare against the recorded Pyat base before making any current-system claim.
+17. Read only the dockets relevant to the next action.
 
 ## Required fresh-session articulation
 
