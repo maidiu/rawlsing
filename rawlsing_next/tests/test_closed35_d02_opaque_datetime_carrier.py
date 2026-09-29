@@ -1,20 +1,6 @@
 from __future__ import annotations
 
 import datetime as dt
-import importlib.util
-import subprocess
-import sys
-
-# The generic governed-court workflow installs only pytest, while the frozen
-# unchanged facade regression imports pandas. Established source-free Rawlsing
-# workflows install pytest+pandas. Bootstrap that test-only dependency here so
-# the exact six-file C3-02 court can execute together without editing CI.
-if importlib.util.find_spec("pandas") is None:
-    subprocess.run(
-        [sys.executable, "-m", "pip", "install", "--disable-pip-version-check", "pandas"],
-        check=True,
-    )
-
 import pytest
 
 from rawlsing_next import pre553_physical_decoder as decoder
@@ -108,6 +94,19 @@ def test_timezone_aware_values_fail_closed_at_carrier_and_decoder_route(value):
         opaque_decoder_value(value)
     with pytest.raises(R5CodecError, match="separate explicit decoder carrier authority"):
         decoder._physical_value(value)
+
+
+@pytest.mark.parametrize(
+    "value",
+    [
+        dt.datetime(2008, 4, 5, tzinfo=dt.timezone.utc),
+        dt.time(6, 7, tzinfo=dt.timezone.utc),
+    ],
+)
+def test_item_unwrapped_timezone_aware_values_fail_closed(value):
+    wrapped = _ItemWrapper(value)
+    with pytest.raises(R5CodecError, match="separate explicit decoder carrier authority"):
+        decoder._physical_value(wrapped)
 
 
 def test_string_masquerade_and_unrelated_scalar_lanes_remain_distinct():

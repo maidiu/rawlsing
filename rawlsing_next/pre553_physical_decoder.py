@@ -198,10 +198,11 @@ def _physical_value(value: Any) -> Any:
     if hasattr(value, "item"):
         try:
             item = value.item()
-            if type(item) in {_dt.datetime, _dt.date, _dt.time}:
-                return normalize_decoder_physical_value(item)
         except Exception:
             pass
+        else:
+            if type(item) in {_dt.datetime, _dt.date, _dt.time}:
+                return normalize_decoder_physical_value(item)
     return _jsonable(value)
 
 
