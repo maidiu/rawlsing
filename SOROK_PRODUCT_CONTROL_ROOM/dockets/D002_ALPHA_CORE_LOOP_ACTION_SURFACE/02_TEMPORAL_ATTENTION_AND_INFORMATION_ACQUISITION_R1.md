@@ -218,3 +218,50 @@ That price may include:
 - opportunity cost.
 
 The player should ordinarily experience that price through the unfolding world, not a game-economy overlay.
+
+
+## 13. Duration plausibility / no punitive time tax
+
+Variable time must remain **commensurate with the actual act**.
+
+The system must not inflate duration merely to make observation costly.
+
+Examples:
+- a glance at a refrigerator may take seconds;
+- reading one visible heading may take seconds;
+- reading a full bill may take longer;
+- inspecting many objects carefully may accumulate meaningful time;
+- searching drawers or moving through rooms may take substantially longer.
+
+The scarcity mechanism is realistic accumulation and opportunity cost, not arbitrary punishment.
+
+A user request for “more detail” should consume only the plausible additional attention required to acquire that detail.
+
+## 14. Cumulative micro-time matters
+
+Small observational acts can each be cheap while their aggregate becomes consequential.
+
+Five glances do not each need to be expensive.
+
+But:
+- glance;
+- re-read;
+- move closer;
+- inspect amount;
+- examine menu;
+- inspect magnets;
+- turn one over;
+
+can cumulatively consume enough time for the surrounding scene to change.
+
+This preserves both realism and tension.
+
+## 15. Query-invariant temporal semantics
+
+Paraphrasing the same attentional act should not materially change its duration merely because one prompt is verbose.
+
+Duration should follow the realized perceptual/action operation, not token count or rhetorical wording.
+
+Similarly, a user should not gain extra world-time efficiency by packing many independent observations into one long prompt.
+
+The parser must decompose the requested operations and realize their cumulative duration.
