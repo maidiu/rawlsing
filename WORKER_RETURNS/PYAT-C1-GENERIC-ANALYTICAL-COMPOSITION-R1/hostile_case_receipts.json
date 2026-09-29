@@ -1,6 +1,6 @@
 {
-  "schema": "PYAT_C1_00_HOSTILE_CASE_RECEIPTS@2",
-  "status": "R2_CORRECTED_FROZEN_EXPECTATIONS__NOT_EXECUTED",
+  "schema": "PYAT_C1_00_HOSTILE_CASE_RECEIPTS@3",
+  "status": "R3_CORRECTED_DOCUMENTARY_HOSTILES__NOT_EXECUTED",
   "cases": [
     {
       "id": "HC01",
@@ -111,6 +111,54 @@
       "id": "HC20",
       "attack": "mutate only condition-value witness/pairing ground-truth determinant while counts/query/risk/measure/target remain fixed",
       "expected": "composed result reidentified; dependent lifecycle product invalidates/reidentifies where B5 governs; unrelated products remain usable"
+    },
+    {
+      "id": "HC21",
+      "case": "OWNER_NATIVE_QUERY_AUTHORITY_SCOPE",
+      "status": "FROZEN__NOT_EXECUTED",
+      "attack": "Use corrected C1-AT07-QUERY in current I03 source-scoped authority fitness.",
+      "expected": "scope_envelope.source_universe_refs contains the exact AT07 universe; exact containment passes for every required I03 object family."
+    },
+    {
+      "id": "HC22",
+      "case": "REACHABLE_UNKNOWN_CURRENTNESS",
+      "status": "FROZEN__NOT_EXECUTED",
+      "attack": "Register SelectionKey but create neither current-selection nor no-current receipt, then call current_selection_receipt_ref.",
+      "expected": "LearnedProductLifecycleError('UNKNOWN_CURRENTNESS'); not adaptive unvisited, UNRESOLVED, UNAVAILABLE, NO_CURRENT, or conflict."
+    },
+    {
+      "id": "HC23",
+      "case": "NONCIRCULAR_EVIDENCE_REF",
+      "status": "HASH_ORACLE_FROZEN__NOT_EXECUTED",
+      "attack": "Construct evidence identity only from C1_POSITIONED_SUBJECT_SLICE_EVIDENCE_PREIMAGE@1, which excludes evidence_ref.",
+      "expected": "forward fe5cd778...546f5; reverse b54201c8...ccf72; no self-reference."
+    },
+    {
+      "id": "HC24",
+      "case": "SAME_VISIBLE_RATIO_DIFFERENT_DENOMINATOR_MEMBER_REF",
+      "status": "HASH_ORACLE_FROZEN__NOT_EXECUTED",
+      "attack": "Replace one exact denominator-member ref while retaining visible 54/60 arithmetic.",
+      "expected_hash": "f3f33cc8ae6404ea2d463641e42a9a537db577099a1edbee97929f96735ca37f",
+      "baseline_hash": "fe5cd7783ac84f0298fb7f56a621d7b0e494bd9348d080dc68ceee09abb546f5",
+      "expected": "REIDENTIFY"
+    },
+    {
+      "id": "HC25",
+      "case": "GEOMETRY_MUTATION",
+      "status": "HASH_ORACLE_FROZEN__NOT_EXECUTED",
+      "attack": "Change first forward cell from 6/60 to 5/60.",
+      "expected_hash": "b6ee0bce50141576f9e186fb92cf1f0d038354b4f3e40509df58fb09142c57b0",
+      "baseline_hash": "fe5cd7783ac84f0298fb7f56a621d7b0e494bd9348d080dc68ceee09abb546f5",
+      "expected": "REIDENTIFY"
+    },
+    {
+      "id": "HC26",
+      "case": "RELATION_WITNESS_AUTHORITY_MUTATION",
+      "status": "HASH_ORACLE_FROZEN__NOT_EXECUTED",
+      "attack": "Change pairing AuthorityRef, recompute witness, propagate changed witness/authority refs into evidence identity.",
+      "expected_hash": "08c73ee366f7368408459fc3df3d0e81f589b1da12cf86aa0567d2684507fa72",
+      "baseline_hash": "fe5cd7783ac84f0298fb7f56a621d7b0e494bd9348d080dc68ceee09abb546f5",
+      "expected": "REIDENTIFY"
     }
   ],
   "R2_oracle_refs": {
@@ -118,5 +166,11 @@
     "authority_freeze": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/03_SYNTHETIC_AUTHORITY_FREEZE.json",
     "slice_projection": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/04_SLICE_PROJECTION.json",
     "state_determinants": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/05_STATE_AND_DETERMINANT_CLOSURE.json"
+  },
+  "R3_oracle_refs": {
+    "authority_scope": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/02_OWNER_NATIVE_AUTHORITY_SCOPE_FREEZE.json",
+    "unknown_currentness": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/03_UNKNOWN_CURRENTNESS_FIXTURE.json",
+    "evidence_identity": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/04_EVIDENCE_IDENTITY_PREIMAGE.json",
+    "recomputation": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/05_RECOMPUTATION_RECEIPT.json"
   }
 }
