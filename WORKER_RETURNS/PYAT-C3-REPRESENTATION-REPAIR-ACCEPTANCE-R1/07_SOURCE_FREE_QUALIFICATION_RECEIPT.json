@@ -1,0 +1,58 @@
+{
+  "schema": "PYAT_C3_01_SOURCE_FREE_QUALIFICATION_RECEIPT@1.0.0",
+  "executed_on": "2026-09-29",
+  "execution_mode": "GITHUB_ACTIONS_RERUN_OF_EXACT_HISTORICAL_SOURCE_FREE_QUALIFICATION_COMMITS",
+  "raw_source_execution": false,
+  "runs": {
+    "G01": {
+      "semantic_candidate": "8ed091e1323f46335a4bcbf6ab92ac9e3f228848",
+      "execution_commit": "a9069d0a3d3b3526bc72a9b7c9dccc02bd01f243",
+      "execution_delta": "COURT_SPEC_ONLY",
+      "workflow_run": 35884185279,
+      "fresh_job": 109531459446,
+      "protocol": "20 passed",
+      "governed": "25 passed",
+      "conclusion": "success",
+      "artifact_id": 11050980609,
+      "artifact_digest": "sha256:47d74c0474e32520d4934ad671e2e8d9b6ff299e1cf01c3e5a66e779656ecbb3"
+    },
+    "D01": {
+      "semantic_candidate": "f6613cbef8c23148c14d9464e9b6a869474a418f",
+      "execution_commit": "4a19af8bbc5d2ef602ad375873feeba96bf47eaa",
+      "execution_delta": "COURT_SPEC_ONLY",
+      "workflow_run": 35883052865,
+      "fresh_job": 109531476500,
+      "protocol": "20 passed",
+      "governed": "14 passed",
+      "conclusion": "success",
+      "artifact_id": 11049874988,
+      "artifact_digest": "sha256:d3bf6d5fa2a336aa434c641ecd30b3be50a8fe8d773a8676d1aa0b913ff0cf32"
+    },
+    "D02": {
+      "semantic_candidate": "e2d7674701e1b743dc513ce3bd525ee181bfda17",
+      "execution_commit": "76ce34c8e24db5f080a96fdca6d0c4c982215089",
+      "execution_delta": "COURT_SPEC_ONLY",
+      "workflow_run": 35883745809,
+      "fresh_job": 109531487944,
+      "protocol": "20 passed",
+      "governed": "24 passed",
+      "conclusion": "success",
+      "artifact_id": 11051220376,
+      "artifact_digest": "sha256:6da9440db3772f17e8674bfcfd48e2abde8a1814f6cfb3d00cc2fe2c80e55552"
+    },
+    "INTERACTION": {
+      "semantic_candidate": "3cefb4ebf61ccdb6a8c5a03815438bdcda021292",
+      "execution_commit": "3d6d45e0d97cdf9a60105e140583e043a42ccfba",
+      "execution_delta": "COURT_SPEC_ONLY",
+      "workflow_run": 35887617559,
+      "fresh_job": 109531501528,
+      "protocol": "20 passed",
+      "governed": "42 passed",
+      "conclusion": "success",
+      "artifact_id": 11050338899,
+      "artifact_digest": "sha256:4918ca1338974463428f2e6fda451b2590748612275e49de7b934596fd41f4ca"
+    }
+  },
+  "interpretation": "Fresh reruns qualify exact historical repair candidates source-free. They do not establish that current baseline already contains those repairs and do not replace independent authority review.",
+  "terminal": "SOURCE_FREE_EXECUTION_EVIDENCE_COMPLETE"
+}
