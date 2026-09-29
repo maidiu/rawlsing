@@ -1,0 +1,100 @@
+{
+  "schema": "PYAT_C1_00_R4_SELECTION_KEY_IDENTITY_RECOMPUTATION@1",
+  "status": "OWNER_NATIVE_DETERMINISTIC_RECOMPUTATION_PASS__DOCUMENTARY_ONLY",
+  "branch": "agent/rabochii-pyat-hq126-c1-00-contract-correction-r4",
+  "commission_tip": "4482f28e436a6ef48e66f9aefda40d354c3866f5",
+  "exact_base": "696210c2aca2c42b49eed1fe9f75dfca5bf2e93c",
+  "owner": {
+    "path": "rawlsing_next/pre553_learned_product_lifecycle.py",
+    "blob": "a11c9eb73abab9be118ef4f0b6e325e676059f27",
+    "contract_id": "PRE553_LEARNED_PRODUCT_LIFECYCLE_CANDIDATE@1.0.0",
+    "law": [
+      "SelectionKey.semantic_projection()",
+      "SelectionKey.ref -> _record_ref('SELECTION_KEY', semantic_projection)",
+      "_record_ref -> semantic_hash(projection)",
+      "semantic_hash -> sha256(canonical_json(projection).encode('utf-8'))",
+      "LearnedProductLifecycleExecutor.selection_key(...) constructs/registers exactly that SelectionKey"
+    ]
+  },
+  "exact_R3_fixture_inputs": {
+    "product_family_ref": {
+      "kind": "UNKNOWN-CURRENTNESS-FAMILY",
+      "object_id": "urn:test:c1:r3:UNKNOWN-CURRENTNESS-FAMILY",
+      "content_hash": "17e74d0419dbc1ee5c6c5aed6457bf6ae39bcfa54bdcb127e429727c03f5b1a9"
+    },
+    "selection_scope_ref": {
+      "kind": "UNKNOWN-CURRENTNESS-SCOPE",
+      "object_id": "urn:test:c1:r3:UNKNOWN-CURRENTNESS-SCOPE",
+      "content_hash": "f8484aa71432f9f3db01fe855d5a67f34e61cde0ab0292072ebd556132d318f4"
+    },
+    "selection_purpose_ref": {
+      "kind": "UNKNOWN-CURRENTNESS-PURPOSE",
+      "object_id": "urn:test:c1:r3:UNKNOWN-CURRENTNESS-PURPOSE",
+      "content_hash": "ce9057a86c14a0817bd06dd65a0ce7def2efe153cbeaf90f534d4a78095d427b"
+    },
+    "consumer_context_partition_ref": null
+  },
+  "semantic_projection": {
+    "contract_id": "PRE553_LEARNED_PRODUCT_LIFECYCLE_CANDIDATE@1.0.0",
+    "record_type": "SelectionKey",
+    "product_family_ref": {
+      "kind": "UNKNOWN-CURRENTNESS-FAMILY",
+      "object_id": "urn:test:c1:r3:UNKNOWN-CURRENTNESS-FAMILY",
+      "content_hash": "17e74d0419dbc1ee5c6c5aed6457bf6ae39bcfa54bdcb127e429727c03f5b1a9"
+    },
+    "selection_scope_ref": {
+      "kind": "UNKNOWN-CURRENTNESS-SCOPE",
+      "object_id": "urn:test:c1:r3:UNKNOWN-CURRENTNESS-SCOPE",
+      "content_hash": "f8484aa71432f9f3db01fe855d5a67f34e61cde0ab0292072ebd556132d318f4"
+    },
+    "selection_purpose_ref": {
+      "kind": "UNKNOWN-CURRENTNESS-PURPOSE",
+      "object_id": "urn:test:c1:r3:UNKNOWN-CURRENTNESS-PURPOSE",
+      "content_hash": "ce9057a86c14a0817bd06dd65a0ce7def2efe153cbeaf90f534d4a78095d427b"
+    },
+    "consumer_context_partition_ref": null
+  },
+  "canonical_json": "{\"consumer_context_partition_ref\":null,\"contract_id\":\"PRE553_LEARNED_PRODUCT_LIFECYCLE_CANDIDATE@1.0.0\",\"product_family_ref\":{\"content_hash\":\"17e74d0419dbc1ee5c6c5aed6457bf6ae39bcfa54bdcb127e429727c03f5b1a9\",\"kind\":\"UNKNOWN-CURRENTNESS-FAMILY\",\"object_id\":\"urn:test:c1:r3:UNKNOWN-CURRENTNESS-FAMILY\"},\"record_type\":\"SelectionKey\",\"selection_purpose_ref\":{\"content_hash\":\"ce9057a86c14a0817bd06dd65a0ce7def2efe153cbeaf90f534d4a78095d427b\",\"kind\":\"UNKNOWN-CURRENTNESS-PURPOSE\",\"object_id\":\"urn:test:c1:r3:UNKNOWN-CURRENTNESS-PURPOSE\"},\"selection_scope_ref\":{\"content_hash\":\"f8484aa71432f9f3db01fe855d5a67f34e61cde0ab0292072ebd556132d318f4\",\"kind\":\"UNKNOWN-CURRENTNESS-SCOPE\",\"object_id\":\"urn:test:c1:r3:UNKNOWN-CURRENTNESS-SCOPE\"}}",
+  "canonical_utf8_byte_length": 728,
+  "sha256_self_test": {
+    "input": "abc",
+    "expected": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+    "recomputed": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+    "pass": true
+  },
+  "selection_key_ref_recomputation_check": {
+    "recomputed_sha256": "53683ac6353055af69af9f2d5cb93d889ccc5338b6aa915990c6a541ad942cb6",
+    "expected_exact_ref": {
+      "kind": "B5Lifecycle:SELECTION_KEY",
+      "object_id": "urn:rawlsing:pre553:b5-lifecycle:selection_key:sha256:53683ac6353055af69af9f2d5cb93d889ccc5338b6aa915990c6a541ad942cb6",
+      "content_hash": "53683ac6353055af69af9f2d5cb93d889ccc5338b6aa915990c6a541ad942cb6"
+    },
+    "owner_record_kind": "B5Lifecycle:SELECTION_KEY",
+    "owner_object_id_template": "urn:rawlsing:pre553:b5-lifecycle:selection_key:sha256:<digest>",
+    "pass": true
+  },
+  "candidate_classification": {
+    "candidate_53683ac": {
+      "hash": "53683ac6353055af69af9f2d5cb93d889ccc5338b6aa915990c6a541ad942cb6",
+      "matches_owner_native_recomputation": true,
+      "classification": "CORRECT__FREEZE"
+    },
+    "candidate_a0c54c": {
+      "hash": "a0c54c568eee1351a67ecfee43c297e82aba509daf4bce6932b5ae7331ca03cd",
+      "matches_owner_native_recomputation": false,
+      "classification": "STALE_WRONG_FOR_EXACT_FROZEN_R3_FIXTURE"
+    }
+  },
+  "executor_registration_law": {
+    "method": "LearnedProductLifecycleExecutor.selection_key",
+    "construction": "SelectionKey(product_family_ref, selection_scope_ref, selection_purpose_ref, consumer_context_partition_ref=None)",
+    "registry_key": "key.ref.key",
+    "expected_registered_ref_hash": "53683ac6353055af69af9f2d5cb93d889ccc5338b6aa915990c6a541ad942cb6"
+  },
+  "scope": {
+    "raw_source_reads": 0,
+    "C1_01_executed": false,
+    "production_code_edits": false,
+    "production_test_edits": false
+  }
+}
