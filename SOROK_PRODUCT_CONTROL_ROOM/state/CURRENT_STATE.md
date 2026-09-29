@@ -115,6 +115,7 @@ Top-level:
 - `21_COURT7_HOMOLOGOUS_PEER_HABITUS_FRICTION_R1.md` — current primary-route synthesis
 - `22_COURT8_EMBODIMENT_TRANSLATION_CONSTITUTION_R1.md` — embodiment translation court
 - `22A_COURT8_FIRST_ADJUDICATION_MATRIX_R1.md` — first carry/homologize/bracket adjudication
+- `22D_COURT8_OPTIONAL_PORTAL_PROFILE_R1.md` — optional personal-details / purpose-bound Portal Profile
 - `23_COURT9_MINIMUM_DURABLE_RELATIONSHIP_ONTOLOGY_R1.md` — minimum relationship ontology court
 - `23A_COURT9_FIRST_OWNER_CROSSWALK_R1.md` — first owner crosswalk + external-player seam finding
 - `24_COURT10_FLOURISHING_MORAL_PHYSICS_R1.md` — open flourishing/moral-physics court
