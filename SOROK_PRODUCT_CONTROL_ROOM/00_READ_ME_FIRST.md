@@ -290,3 +290,17 @@ Court 7 contains the current deepest homologous-peer synthesis:
 - persona and player as complementary answers to the alternate-self question;
 - neighbor-love without self-projection;
 - user enters Rawlsing's recursive person-forming relation late.
+
+
+## Courts 8–9 first adjudication
+
+Court 8 first finding:
+`22A_COURT8_FIRST_ADJUDICATION_MATRIX_R1.md`
+
+Court 9 first finding:
+`23A_COURT9_FIRST_OWNER_CROSSWALK_R1.md`
+
+Important Court 9 architecture result:
+- reuse ADP-015 thin relationship entity;
+- no new generic dyad psyche/trust/intimacy store;
+- external human player participation is the real missing seam requiring further architecture court.
