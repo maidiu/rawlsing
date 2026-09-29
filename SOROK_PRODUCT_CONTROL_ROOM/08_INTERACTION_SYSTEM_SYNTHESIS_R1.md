@@ -336,3 +336,95 @@ not an arbitrary number of “investigate” actions.
 
 Full coverage audit:
 `09_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R2.md`.
+
+
+## 17. R3 completeness corrections
+
+A third audit added the missing “user inside the world” and epistemic-provenance layer.
+
+### Player embodiment
+Physical scenes require a diegetically situated player-presence state.
+
+No-avatar does not mean disembodied.
+
+### Lawful encounter
+Unchosen-person assignment is distinct from social access.
+
+The simulation must explain why the user is:
+- in the room;
+- invited;
+- known;
+- permitted to interact with people/objects at the current level.
+
+### ATTEND versus physical action
+Observation cannot silently:
+- move;
+- open;
+- pick up;
+- turn over;
+- enter;
+- reach.
+
+Required physical changes are DO.
+
+### Player resources
+User prose does not conjure:
+- cars;
+- cash;
+- tools;
+- skills;
+- credentials.
+
+### Epistemic provenance
+Keep separate:
+- narrator/world fact;
+- actor testimony;
+- user observation;
+- user inference;
+- actor belief;
+- hidden system truth.
+
+Displayed language does not share one truth status.
+
+### Lazy world
+Implementation-unmaterialized detail is not diegetic absence.
+
+Later completion must remain compatible with:
+- history;
+- actor knowledge;
+- prior use;
+- material constraint;
+- effective time.
+
+### Ambient scene frame
+Scene entry provides coarse immediate perception sufficient to act.
+
+Focused ATTEND provides additional resolution.
+
+### Concurrency
+SAY / DO / ATTEND may overlap when physically compatible.
+
+Concurrency shares:
+- attention;
+- gaze;
+- hands;
+- posture;
+- time.
+
+### Interruptible attention
+Long observation can be interrupted and may yield only partial information.
+
+Control returns when continuing would require a new user decision.
+
+### Third-party autonomy
+If the simulation claims a third party has:
+- memory;
+- changed aspiration;
+- injury;
+- conflict;
+- later behavior;
+
+that actor requires enough independent causal state for the claim.
+
+Full R3 audit:
+`10_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R3.md`.
