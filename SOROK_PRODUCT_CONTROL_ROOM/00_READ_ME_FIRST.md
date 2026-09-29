@@ -263,3 +263,30 @@ The full Rawlsing gate creates the general HQ-level grounding. The 00A specializ
 - a takeover comprehension test.
 
 A new Vozhd is not considered sufficiently grokked for D001 if it only knows the Sorok summary and has not understood where the inherited material lives and how its authority levels differ.
+
+
+## Current forward Sorok courts
+
+Primary route under investigation:
+**homologous-peer transposition**.
+
+Read current forward courts in sequence:
+
+1. `16_COURT1_COURT2_PLAYER_ENCOUNTER_RELATIONSHIP_SYNTHESIS_R1.md`
+2. `18_COURT3_COURT4_LIFE_PROGRESS_SYNTHESIS_R1.md`
+3. `19_COURT5_VEILED_SELF_MATERIAL_EMBODIMENT_R1.md`
+4. `20_COURT6_PORTAL_REALITY_PEER_TRANSPOSE_COMPARISON_R1.md`
+5. `21_COURT7_HOMOLOGOUS_PEER_HABITUS_FRICTION_R1.md`
+6. `22_COURT8_EMBODIMENT_TRANSLATION_CONSTITUTION_R1.md`
+7. `23_COURT9_MINIMUM_DURABLE_RELATIONSHIP_ONTOLOGY_R1.md`
+8. `24_COURT10_FLOURISHING_MORAL_PHYSICS_R1.md`
+9. `25_COURT11_PLAYER_PRAXIS_REFLECTION_R1.md`
+
+Court 7 contains the current deepest homologous-peer synthesis:
+- structurally local / developmentally foreign;
+- same field, different formation;
+- veil as task rather than starting condition;
+- self-recognition through habitus friction;
+- persona and player as complementary answers to the alternate-self question;
+- neighbor-love without self-projection;
+- user enters Rawlsing's recursive person-forming relation late.
