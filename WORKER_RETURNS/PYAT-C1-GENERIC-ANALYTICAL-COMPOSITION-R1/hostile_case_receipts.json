@@ -1,14 +1,19 @@
 {
-  "schema": "PYAT_C1_00_HOSTILE_CASE_RECEIPTS@1",
-  "status": "FROZEN_EXPECTATIONS__NOT_EXECUTED",
+  "schema": "PYAT_C1_00_HOSTILE_CASE_RECEIPTS@2",
+  "status": "R2_CORRECTED_FROZEN_EXPECTATIONS__NOT_EXECUTED",
   "cases": [
     {
       "id": "HC01",
       "attack": "same conditioner ID; different value-specific subject fact / producer predicate",
-      "expected": "CONDITION_VALUE_IDENTITY_MISMATCH before consumer call",
+      "expected": "CONDITION_VALUE_RELATION_MISMATCH before PossibilitySliceEvidence construction and before consumer call",
       "guards": [
         "full consumer binding fingerprint",
         "consumer_query.ref",
+        "exact frozen subject-condition preimage ref/material",
+        "exact normalized producer predicate leaf ref/projection",
+        "exact fixture-only pairing ground-truth ref",
+        "exact pairing AuthorityRef",
+        "exact source/release/effective-time equality",
         "producer query/predicate refs"
       ]
     },
@@ -81,6 +86,37 @@
       "id": "HC15",
       "attack": "failed learned claim relabeled DIRECT_PRODUCER",
       "expected": "route legitimacy rejection; existing family authority remains controlling"
+    },
+    {
+      "id": "HC16",
+      "attack": "subject preimage POSITION=P1 paired to producer predicate leaf POSITION==P2 under same binding_id/source/release/target",
+      "expected": "CONDITION_VALUE_RELATION_MISMATCH before slice construction"
+    },
+    {
+      "id": "HC17",
+      "attack": "same synthetic authority_id/version but changed governed operation/scope/material while old authority_content_hash is reused",
+      "expected": "SYNTHETIC_AUTHORITY_ORACLE_HASH_MISMATCH"
+    },
+    {
+      "id": "HC18",
+      "attack": "lifecycle selection has no established current/no-current receipt while adaptive frontier separately contains unvisited units",
+      "expected": "preserve UNKNOWN_CURRENTNESS separately from EXPLICIT_UNKNOWN_UNVISITED and UNRESOLVED"
+    },
+    {
+      "id": "HC19",
+      "attack": "alternate supported-slice encoding changes raw_support from raw denominator to raw_resolved_target_support or changes geometry keys",
+      "expected": "SLICE_PROJECTION_CONTRACT_MISMATCH; only frozen C1_POSSIBILITY_SLICE_GEOMETRY@1 accepted"
+    },
+    {
+      "id": "HC20",
+      "attack": "mutate only condition-value witness/pairing ground-truth determinant while counts/query/risk/measure/target remain fixed",
+      "expected": "composed result reidentified; dependent lifecycle product invalidates/reidentifies where B5 governs; unrelated products remain usable"
     }
-  ]
+  ],
+  "R2_oracle_refs": {
+    "value_relation": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/02_VALUE_RELATION_ORACLE.json",
+    "authority_freeze": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/03_SYNTHETIC_AUTHORITY_FREEZE.json",
+    "slice_projection": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/04_SLICE_PROJECTION.json",
+    "state_determinants": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/05_STATE_AND_DETERMINANT_CLOSURE.json"
+  }
 }
