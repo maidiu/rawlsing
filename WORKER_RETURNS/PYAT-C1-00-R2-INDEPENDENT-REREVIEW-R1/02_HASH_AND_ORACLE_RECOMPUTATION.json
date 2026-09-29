@@ -1,0 +1,202 @@
+{
+  "schema": "PYAT_C1_00_R2_INDEPENDENT_HASH_AND_ORACLE_RECOMPUTATION@1",
+  "hash_law": "sha256(canonical JSON with recursively lexicographically sorted object keys; arrays order-preserving; UTF-8; no insignificant whitespace)",
+  "hash_implementation_self_test": {
+    "input": "abc",
+    "recomputed": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+    "expected": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+    "match": true
+  },
+  "value_relation_hashes": [
+    {
+      "object": "POSITION_P1",
+      "declared": "df3f992bc93dd5e23ca1e0230885cca253cdd1c4d02e8c8a8bd4221d7804b9a3",
+      "recomputed": "df3f992bc93dd5e23ca1e0230885cca253cdd1c4d02e8c8a8bd4221d7804b9a3",
+      "match": true
+    },
+    {
+      "object": "POSITION_P2",
+      "declared": "312e4f4ef7efd0d1f9ccddc52792b734cda518eaf09772797ac61ccff9b1d16e",
+      "recomputed": "312e4f4ef7efd0d1f9ccddc52792b734cda518eaf09772797ac61ccff9b1d16e",
+      "match": true
+    },
+    {
+      "object": "ANSWER_YES",
+      "declared": "8adabf8ea0306b8c7fa9a4d3d564bffabd6cdc2194507dda08b3f1f4941a4a9c",
+      "recomputed": "8adabf8ea0306b8c7fa9a4d3d564bffabd6cdc2194507dda08b3f1f4941a4a9c",
+      "match": true
+    },
+    {
+      "object": "POSITION_EQ_P1",
+      "declared": "62deeeb5968ea313b345d7427af416ce6d7384e7560e2fd063d660bcccacda6d",
+      "recomputed": "62deeeb5968ea313b345d7427af416ce6d7384e7560e2fd063d660bcccacda6d",
+      "match": true
+    },
+    {
+      "object": "POSITION_EQ_P2",
+      "declared": "b173f48d17dfe44f5709b6d5014cf019ca276b7b4f78b945a1587f834623bdf8",
+      "recomputed": "b173f48d17dfe44f5709b6d5014cf019ca276b7b4f78b945a1587f834623bdf8",
+      "match": true
+    },
+    {
+      "object": "ANSWER_EQ_YES",
+      "declared": "2ee38647262bf67b32de7f8be96dd74e6fd6852453ee65f00949f46d568adddd",
+      "recomputed": "2ee38647262bf67b32de7f8be96dd74e6fd6852453ee65f00949f46d568adddd",
+      "match": true
+    },
+    {
+      "object": "PAIR_POSITION_P1",
+      "declared": "020f3f2a103a0fb7cf216b98f6965637de6ace71ebda950274c0c7987c2ec44b",
+      "recomputed": "020f3f2a103a0fb7cf216b98f6965637de6ace71ebda950274c0c7987c2ec44b",
+      "match": true
+    },
+    {
+      "object": "PAIR_POSITION_P2",
+      "declared": "e1a6b801c769b89c117e914c2d5877178aedb626b29d24c74d15d09feec1e7ff",
+      "recomputed": "e1a6b801c769b89c117e914c2d5877178aedb626b29d24c74d15d09feec1e7ff",
+      "match": true
+    },
+    {
+      "object": "PAIR_ANSWER_YES",
+      "declared": "bb60f094cef1f8634eaaa5220193396a270e06a336300349f74a9926dc0f4a84",
+      "recomputed": "bb60f094cef1f8634eaaa5220193396a270e06a336300349f74a9926dc0f4a84",
+      "match": true
+    },
+    {
+      "object": "WITNESS_SCHEMA",
+      "declared": "0a881f32dee7142979d76ebf4f3462df16d8a6bad55a23b2e8fc22834ed04f36",
+      "recomputed": "0a881f32dee7142979d76ebf4f3462df16d8a6bad55a23b2e8fc22834ed04f36",
+      "match": true
+    }
+  ],
+  "authority_hashes": [
+    {
+      "authority_id": "C1-AT07-SOURCE",
+      "declared": "4d565f1b40adb2bd3c9c3c2965226a4f9be9222338323ed6b649b8a68a973dab",
+      "recomputed": "4d565f1b40adb2bd3c9c3c2965226a4f9be9222338323ed6b649b8a68a973dab",
+      "match": true
+    },
+    {
+      "authority_id": "C1-AT07-ROUTING",
+      "declared": "a71a90ab7106f6300ced46204769fae1beba237d9a16aa3dba6f03a93c35ecc0",
+      "recomputed": "a71a90ab7106f6300ced46204769fae1beba237d9a16aa3dba6f03a93c35ecc0",
+      "match": true
+    },
+    {
+      "authority_id": "C1-AT07-COORDINATE",
+      "declared": "fb5e0415c7ab810578156b13a36abd72fdae4e118f49ed9d66e91331eebce6cb",
+      "recomputed": "fb5e0415c7ab810578156b13a36abd72fdae4e118f49ed9d66e91331eebce6cb",
+      "match": true
+    },
+    {
+      "authority_id": "C1-AT07-REPLAY",
+      "declared": "c75f5d105e8cdb6ac1ad8efc5bdba70eff7d083e4166e94c0d34255c27f233fa",
+      "recomputed": "c75f5d105e8cdb6ac1ad8efc5bdba70eff7d083e4166e94c0d34255c27f233fa",
+      "match": true
+    },
+    {
+      "authority_id": "C1-AT07-QUERY",
+      "declared": "b485ea6ddba78b0e0ccc4c4c0b2097b783d4f9f39fede9717b716edfb5f54a45",
+      "recomputed": "b485ea6ddba78b0e0ccc4c4c0b2097b783d4f9f39fede9717b716edfb5f54a45",
+      "match": true
+    },
+    {
+      "authority_id": "C1-AT07-COMPARABILITY",
+      "declared": "69cb883e7ccc115da614091635f36f7eca92cc1f517732e57a37fe77afb2676f",
+      "recomputed": "69cb883e7ccc115da614091635f36f7eca92cc1f517732e57a37fe77afb2676f",
+      "match": true
+    },
+    {
+      "authority_id": "C1-AT07-MODEL",
+      "declared": "2876572dcb4eba80b52361853047d409323fff0c63228d7e6a361c972e1b38bb",
+      "recomputed": "2876572dcb4eba80b52361853047d409323fff0c63228d7e6a361c972e1b38bb",
+      "match": true
+    },
+    {
+      "authority_id": "C1-AT07-WALKBACK",
+      "declared": "3f5dda8f607f69cefb5c3a57d8417ff9fc8abf957c87088d160d2eacc0bccbbf",
+      "recomputed": "3f5dda8f607f69cefb5c3a57d8417ff9fc8abf957c87088d160d2eacc0bccbbf",
+      "match": true
+    }
+  ],
+  "authority_mutations": [
+    {
+      "authority_id": "C1-AT07-QUERY",
+      "mutation": "scope",
+      "baseline": "b485ea6ddba78b0e0ccc4c4c0b2097b783d4f9f39fede9717b716edfb5f54a45",
+      "mutated": "811f4ae064db592a753d090c6f5f7b51b88da2024524d8f43a7dd404e79742be",
+      "reidentified": true
+    },
+    {
+      "authority_id": "C1-AT07-QUERY",
+      "mutation": "operation",
+      "baseline": "b485ea6ddba78b0e0ccc4c4c0b2097b783d4f9f39fede9717b716edfb5f54a45",
+      "mutated": "cd7aa26f8d3ba3c9311d0a55ec764e7ccf844be475199b935af442f9b2571d33",
+      "reidentified": true
+    },
+    {
+      "authority_id": "C1-AT07-MODEL",
+      "mutation": "model algorithm",
+      "baseline": "2876572dcb4eba80b52361853047d409323fff0c63228d7e6a361c972e1b38bb",
+      "mutated": "700bbfd2238c0cd0ffd941cda61cde58554bcf0a6b582439a216f7278b723319",
+      "reidentified": true
+    },
+    {
+      "authority_id": "C1-AT07-COMPARABILITY",
+      "mutation": "pairing set",
+      "baseline": "69cb883e7ccc115da614091635f36f7eca92cc1f517732e57a37fe77afb2676f",
+      "mutated": "a2f1e6d2a98688fe19ca98218705f2ae06c176d9fd07b3e78b0d48d7b9b9750d",
+      "reidentified": true
+    }
+  ],
+  "slice_projection_schema": {
+    "declared": "c00e038dd2c1177bfc7842f12febef7b3e30b92bc421df244e2a8e3c4a20b17a",
+    "recomputed": "c00e038dd2c1177bfc7842f12febef7b3e30b92bc421df244e2a8e3c4a20b17a",
+    "match": true
+  },
+  "at07_arithmetic": {
+    "total": {
+      "derivation": "54+6+8+32",
+      "value": 100,
+      "pass": true
+    },
+    "forward": {
+      "numerator": 54,
+      "denominator": 60,
+      "reduced": [
+        9,
+        10
+      ],
+      "pass": true
+    },
+    "forward_complement": {
+      "numerator": 6,
+      "denominator": 60,
+      "reduced": [
+        1,
+        10
+      ],
+      "pass": true
+    },
+    "reverse": {
+      "numerator": 54,
+      "denominator": 62,
+      "reduced": [
+        27,
+        31
+      ],
+      "pass": true
+    },
+    "reverse_p2": {
+      "numerator": 8,
+      "denominator": 62,
+      "reduced": [
+        4,
+        31
+      ],
+      "pass": true
+    }
+  },
+  "candidate_output_used": false,
+  "raw_source_reads": 0
+}
