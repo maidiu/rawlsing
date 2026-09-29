@@ -95,9 +95,10 @@ The deepest longitudinal mirror is the user's own relational praxis.
 17. `state/CURRENT_STATE.md`
 18. machine-readable ledgers in `registers/`
 19. `15_SOROK_WIDE_OPEN_FRONTIER_PROGRAM_R1.md` — current open-question dependency/program map
-20. `16_COURT1_COURT2_PLAYER_ENCOUNTER_RELATIONSHIP_SYNTHESIS_R1.md` — first forward ideation court
-21. `17_FULL_RAWLSING_VOZHD_GROUNDING_INTEGRITY_R1.md` — takeover grounding verification
-22. open scoped investigations in `dockets/`
+20. `16_COURT1_COURT2_PLAYER_ENCOUNTER_RELATIONSHIP_SYNTHESIS_R1.md` — player/encounter + relationship-state ideation
+21. `18_COURT3_COURT4_LIFE_PROGRESS_SYNTHESIS_R1.md` — life outside user + progress-without-score ideation
+22. `17_FULL_RAWLSING_VOZHD_GROUNDING_INTEGRITY_R1.md` — takeover grounding verification
+23. open scoped investigations in `dockets/`
 
 ## 4. Anti-sprawl law
 
