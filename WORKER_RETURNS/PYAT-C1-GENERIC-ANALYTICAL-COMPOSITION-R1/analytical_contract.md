@@ -1,6 +1,6 @@
-# C1-00 analytical-composition contract freeze — R1 + R2 + R3 corrections
+# C1-00 analytical-composition contract freeze — R1 + R2 + R3 + R4 corrections
 
-Status: `C1_00_R3_CORRECTIONS_READY_FOR_INDEPENDENT_REREVIEW`
+Status: `C1_00_R4_EXACT_SELECTION_KEY_SYNCHRONIZATION_READY_FOR_INDEPENDENT_REREVIEW`
 
 This is a **documentary contract/oracle freeze only**. It does not self-approve C1-00, execute C1-01, edit production code, create survey/model/comparability authority, or claim real-source proof.
 
@@ -516,7 +516,7 @@ The R3 fixture:
 
 The frozen SelectionKey ref is:
 
-`B5Lifecycle:SELECTION_KEY | a0c54c568eee1351a67ecfee43c297e82aba509daf4bce6932b5ae7331ca03cd`.
+`B5Lifecycle:SELECTION_KEY | 53683ac6353055af69af9f2d5cb93d889ccc5338b6aa915990c6a541ad942cb6`.
 
 `resolve_selection_exact` with a fabricated receipt is explicitly not the witness. This remains lifecycle-currentness uncertainty, distinct from `NO_CURRENT`, `CONFLICTING_CURRENT_SELECTION`, adaptive `EXPLICIT_UNKNOWN_UNVISITED`, empirical `UNRESOLVED`, and `UNAVAILABLE`.
 
@@ -582,3 +582,43 @@ Deterministic hash/oracle recomputation is recorded in:
 `WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/05_RECOMPUTATION_RECEIPT.json`.
 
 This is `STATIC_INSPECTION + DETERMINISTIC DOCUMENTARY HASH/ORACLE FREEZE` only. C1-01 remains unimplemented and unexecuted, and remains blocked pending independent R3 rereview plus HQ adjudication.
+
+
+## R4 exact UNKNOWN_CURRENTNESS SelectionKey synchronization
+
+R4 corrects one bounded R3 documentary identity contradiction only. It does not reopen R3-B authority scope, R3-D evidence identity, accepted R2 A/E, or any production behavior.
+
+The exact frozen R3 UNKNOWN_CURRENTNESS SelectionKey inputs are:
+
+- `product_family_ref = UNKNOWN-CURRENTNESS-FAMILY | urn:test:c1:r3:UNKNOWN-CURRENTNESS-FAMILY | 17e74d0419dbc1ee5c6c5aed6457bf6ae39bcfa54bdcb127e429727c03f5b1a9`;
+- `selection_scope_ref = UNKNOWN-CURRENTNESS-SCOPE | urn:test:c1:r3:UNKNOWN-CURRENTNESS-SCOPE | f8484aa71432f9f3db01fe855d5a67f34e61cde0ab0292072ebd556132d318f4`;
+- `selection_purpose_ref = UNKNOWN-CURRENTNESS-PURPOSE | urn:test:c1:r3:UNKNOWN-CURRENTNESS-PURPOSE | ce9057a86c14a0817bd06dd65a0ce7def2efe153cbeaf90f534d4a78095d427b`;
+- `consumer_context_partition_ref = null`.
+
+Under the frozen B5 owner law:
+
+`SelectionKey.semantic_projection() -> semantic_hash(...) -> _record_ref("SELECTION_KEY", projection)`
+
+the exact canonical JSON hashes to:
+
+`53683ac6353055af69af9f2d5cb93d889ccc5338b6aa915990c6a541ad942cb6`.
+
+Therefore the one correct fixture ref is:
+
+`B5Lifecycle:SELECTION_KEY | urn:rawlsing:pre553:b5-lifecycle:selection_key:sha256:53683ac6353055af69af9f2d5cb93d889ccc5338b6aa915990c6a541ad942cb6 | 53683ac6353055af69af9f2d5cb93d889ccc5338b6aa915990c6a541ad942cb6`.
+
+The formerly current packet hash
+
+`a0c54c568eee1351a67ecfee43c297e82aba509daf4bce6932b5ae7331ca03cd`
+
+is stale/wrong for the frozen R3 fixture because it does not equal the owner-native hash of the exact R3 semantic projection.
+
+No R3-B or R3-D identity embeds this SelectionKey ref, so their accepted hashes remain unchanged.
+
+R4 derivation and propagation audit:
+
+- `WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R4/01_SELECTION_KEY_IDENTITY_RECOMPUTATION.json`
+- `WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R4/02_PROPAGATION_AUDIT.json`
+- `WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R4/03_UPDATED_BLOB_MANIFEST.json`
+
+C1-01 remains unimplemented and unexecuted.
