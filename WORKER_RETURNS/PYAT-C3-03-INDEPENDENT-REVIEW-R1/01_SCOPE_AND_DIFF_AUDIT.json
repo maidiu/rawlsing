@@ -1,0 +1,69 @@
+{
+  "schema": "PYAT_C3_03_INDEPENDENT_SCOPE_AND_DIFF_AUDIT@1.0.0",
+  "static_repair_disposition": "PASS_AT_DECLARED_GRAIN",
+  "reviewer_branch": "agent/reviewer-pyat-hq126-c3-03-physical-repair-r1",
+  "commission_tip": "eb0193fbb8b48b3fe455de553a88cc44b5a61170",
+  "worker_return": "ede7d350be23d0a340bed221da272d8c0124e049",
+  "prior_review_head": "c874a134077e6eb416b584157d0209eabdd0d723",
+  "c3_03_commission_tip": "a68fb242e8a000a4b06037118e8eb804ee3365b5",
+  "semantic_candidate": "901e3e77f905847d3ef8d86b458280d8fe422dd0",
+  "execution_commit": "283d2c5d2b187c4e62ae1aecb236a0b51ddeffb1",
+  "prior_review_to_semantic": {
+    "commits": 2,
+    "files": [
+      "WORKER_RETURNS/PYAT-C3-03-PHYSICAL-REPAIR-CORRECTION-R1/00_COMMISSION.md",
+      "rawlsing_next/pre553_physical_decoder.py",
+      "rawlsing_next/tests/test_closed35_d02_opaque_datetime_carrier.py"
+    ],
+    "conforms": true
+  },
+  "repair_commit_only": {
+    "base": "a68fb242e8a000a4b06037118e8eb804ee3365b5",
+    "head": "901e3e77f905847d3ef8d86b458280d8fe422dd0",
+    "commits": 1,
+    "files": [
+      {
+        "path": "rawlsing_next/pre553_physical_decoder.py",
+        "additions": 3,
+        "deletions": 2,
+        "blob": "d3d828c171ea9fdd0e90563aff6ef705f5aae2cf"
+      },
+      {
+        "path": "rawlsing_next/tests/test_closed35_d02_opaque_datetime_carrier.py",
+        "additions": 13,
+        "deletions": 14,
+        "blob": "3901f10a487856f5f232ae6700fff407ac99725e"
+      }
+    ],
+    "exact_allowlist": true
+  },
+  "semantic_to_execution": {
+    "commits": 1,
+    "files": [
+      {
+        "path": ".github/workflows/pyat-c3-03-physical-repair-source-free.yml",
+        "blob": "322f5699a3ddd4858887986a6c712e3d61c7c710"
+      },
+      {
+        "path": ".rabochii/court_spec.json",
+        "blob": "f408ae9a113b19f49c6c30d67c3177e3a7f787e4"
+      }
+    ],
+    "exact_allowlist": true
+  },
+  "preserved_identities": {
+    "g01_authority_blob": "31a9afd7d91ed4cb2fb1c1aab3ef86a5fdda1f85",
+    "d01_test_blob": "8fc05965386055a208e5b3988112e67a2e6333e2",
+    "c11_facade_blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284"
+  },
+  "forbidden_or_widened": {
+    "g01_semantics_changed": false,
+    "d01_semantics_changed": false,
+    "c11_facade_changed": false,
+    "historical_census_harness_present": false,
+    "historical_qualified_receipt_tree_present": false,
+    "historical_decoder_resurrected": false,
+    "d02_type_widening": false,
+    "raw_source_access": false
+  }
+}

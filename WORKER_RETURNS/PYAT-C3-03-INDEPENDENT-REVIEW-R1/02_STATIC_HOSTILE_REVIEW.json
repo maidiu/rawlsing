@@ -1,0 +1,43 @@
+{
+  "schema": "PYAT_C3_03_INDEPENDENT_STATIC_HOSTILE_REVIEW@1.0.0",
+  "disposition": "PASS_AT_DECLARED_GRAIN",
+  "evidence_grade": "STATIC_DIFF_CONTRACT_REVIEW",
+  "d02_exception_boundary": {
+    "extraction_try_scope": "value.item() only",
+    "normalize_after_success": "outside extraction exception guard",
+    "timezone_aware_r5codecerror_propagates": true,
+    "item_unwrapped_timezone_value_stringification_through_repaired_path": false,
+    "exact_types_only": [
+      "datetime.datetime",
+      "datetime.date",
+      "datetime.time"
+    ],
+    "type_widening": false
+  },
+  "environment_ownership": {
+    "import_time_pip_install": false,
+    "importlib_util_bootstrap": false,
+    "subprocess_bootstrap": false,
+    "sys_bootstrap": false,
+    "dependency_provisioning_location": "execution workflow before pytest collection"
+  },
+  "hostile_coverage": {
+    "item_wrapped_timezone_aware_datetime": true,
+    "item_wrapped_timezone_aware_time": true,
+    "expected_exception": "R5CodecError",
+    "expected_message_fragment": "separate explicit decoder carrier authority",
+    "direct_timezone_hostiles_preserved": true,
+    "naive_item_unwrap_positive_case_preserved": true,
+    "facade_binding_case_preserved": true,
+    "d01_d02_composition_case_preserved": true
+  },
+  "preserved_negative_boundaries": [
+    "no timezone-aware carrier authority",
+    "no date/time semantic interpretation",
+    "no type widening",
+    "no G01 widening",
+    "no D01 widening",
+    "no C11 facade edit",
+    "no historical decoder/census resurrection"
+  ]
+}

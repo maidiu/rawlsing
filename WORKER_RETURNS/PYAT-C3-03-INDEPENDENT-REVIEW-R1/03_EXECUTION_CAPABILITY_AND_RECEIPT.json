@@ -1,0 +1,49 @@
+{
+  "schema": "PYAT_C3_03_INDEPENDENT_EXECUTION_CAPABILITY_AND_RECEIPT@1.0.0",
+  "execution_qualification_disposition": "BLOCKED_EXECUTION_CAPABILITY",
+  "workflow_run": 36627731035,
+  "execution_sha": "283d2c5d2b187c4e62ae1aecb236a0b51ddeffb1",
+  "reviewer_retry_limit": 1,
+  "reviewer_retries_used": 1,
+  "prior_attempt_3": {
+    "job_id": 109616351235,
+    "conclusion": "failure",
+    "steps": null,
+    "runner_id": 0,
+    "pytest_collection": false,
+    "artifacts": false
+  },
+  "independent_attempt_4": {
+    "run_attempt": 4,
+    "job_id": 109643559497,
+    "status": "completed",
+    "conclusion": "failure",
+    "head_sha": "283d2c5d2b187c4e62ae1aecb236a0b51ddeffb1",
+    "labels": [
+      "ubuntu-latest"
+    ],
+    "runner_id": 0,
+    "runner_name": "",
+    "runner_group_id": 0,
+    "runner_group_name": "",
+    "steps": [],
+    "pytest_collection": false,
+    "protocol_self_test": false,
+    "court_spec_validation": false,
+    "court_execution": false,
+    "artifacts": []
+  },
+  "qualification_evidence": {
+    "protocol_counts": null,
+    "six_file_court_counts": null,
+    "python_version": null,
+    "pytest_version": null,
+    "pandas_version": null,
+    "pip_freeze_sha256": null,
+    "receipt_artifact": null,
+    "environment_artifact": null
+  },
+  "interpretation": "Execution did not begin. This is not a semantic failure and cannot be classified as source-free PASS.",
+  "raw_source_access": false,
+  "adoption_authorized": false
+}
