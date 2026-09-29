@@ -2,7 +2,7 @@
 
 Updated: 2026-09-29
 
-Status: `INTERACTION_IDEATION_R3_COMPLETENESS_AUDITED__ADDITIONAL_GAPS_CORRECTED__ONTOLOGY_PROVISIONAL__ALPHA_NOT_YET_IMPLEMENTATION_SPECIFIED`
+Status: `INTERACTION_IDEATION_R4_COMPLETENESS_AUDITED__CAUSAL_MECHANICS_CORRECTED__ONTOLOGY_PROVISIONAL__ALPHA_NOT_YET_IMPLEMENTATION_SPECIFIED`
 
 ## Current base
 
@@ -59,6 +59,16 @@ Status: `INTERACTION_IDEATION_R3_COMPLETENESS_AUDITED__ADDITIONAL_GAPS_CORRECTED
 44. SAY/DO/ATTEND may overlap concurrently when physically compatible, with shared body/attention/time constraints.
 45. Long ATTEND and compound plans are interruptible; partial information may be returned and the user may replan.
 46. Third-party actors require sufficient independent causal state whenever the simulation claims their own perception, welfare, memory or trajectory is materially affected.
+47. Physical/object consequences must be resolved from admitted state + realized operation + governing transition law before narration.
+48. Equivalent realized actions against equivalent state should have causally stable outcomes; narrator sampling must not arbitrarily change consequence.
+49. Objective events fan out into actor-specific sensory/perceptual packets before appraisal; no actor automatically receives the whole event.
+50. Actor attention is finite and may produce partial, delayed, missed or ambiguous perception.
+51. Private appraisal/internal response and outward expression remain distinct causal layers.
+52. Actor memory is distinct from objective event history and may forget, retain gist, reactivate or reconsolidate.
+53. Delayed world/network effects require enough causal provenance to distinguish actual contribution from actor/user attribution.
+54. Rawlsing should resist monocausal user-credit; the user may be one cause among many, marginal, or causally irrelevant.
+55. World events should arise from actor/institution/material causality rather than hidden moral-test or engagement dramaturgy.
+56. The live world does not owe the user complete moral legibility or eventual explanation of every consequence.
 
 ## R1 interaction ideation bank
 
@@ -66,6 +76,7 @@ Top-level:
 - `08_INTERACTION_SYSTEM_SYNTHESIS_R1.md`
 - `09_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R2.md`
 - `10_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R3.md`
+- `11_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R4.md`
 
 Architecture inheritance:
 - `dockets/D001_RELATIONAL_ONTOLOGY_V3_BOUNDARY/01_INHERITED_TEMPORAL_GRAIN_ARCHITECTURE_R1.md`
@@ -75,10 +86,13 @@ D002:
 - `02_TEMPORAL_ATTENTION_AND_INFORMATION_ACQUISITION_R1.md`
 - `03_RECIPROCAL_OBSERVATION_PRIVACY_AND_PRESENTATION_R1.md`
 - `04_NONCURATORIAL_WORLD_DETAIL_AND_BINDING_REALITY_R1.md`
-- `05_CANONICAL_SCENARIO_BANK_R1.md` — now through SCE-026
+- `05_CANONICAL_SCENARIO_BANK_R1.md` — now through SCE-036
 - `06_PLAYER_EMBODIMENT_ENTRY_AND_AFFORDANCE_R1.md`
 - `07_EPISTEMIC_PROVENANCE_ASSERTION_AND_LAZY_WORLD_R1.md`
 - `08_SCENE_FRAME_CONCURRENCY_INTERRUPTION_AND_CONTROL_RETURN_R1.md`
+- `09_WORLD_CAUSALITY_ACTION_RESOLUTION_AND_COUNTERFACTUAL_STABILITY_R1.md`
+- `10_ACTOR_PERCEPTION_APPRAISAL_EXPRESSION_AND_MEMORY_R1.md`
+- `11_CAUSAL_PROVENANCE_DELAYED_EFFECTS_AND_NONTELEOLOGICAL_WORLD_R1.md`
 
 The scenario bank currently preserves 15 concrete probes including:
 - bathroom/medicine-cabinet access;
@@ -100,6 +114,16 @@ The scenario bank currently preserves 15 concrete probes including:
 ## Highest-priority unresolved questions
 
 - What is the minimum relational ontology necessary for a non-theatrical dyad?
+- What minimum object-state/transition vocabulary is needed for causal physical actions?
+- What deterministic/seeded stochasticity law preserves causal stability?
+- What actor-specific perception packet schema is required before CAN-008 uptake?
+- How should finite actor attention interact with ongoing agendas?
+- How should internal response and outward presentation be split across CAN-008/PFF/V2?
+- What memory/significance model supports forgetting, gist, reactivation and pattern confidence?
+- What causal-provenance representation is sufficient for delayed multi-agent consequences?
+- How should multi-causal contribution constrain user-impact/flourishing attribution?
+- What event-generation law prevents moral-test/engagement dramaturgy?
+- What ambiguity policy should the natural-language action parser use?
 - Where do newly required relational semantics belong across durable V3, CAN-008, PFF and V2?
 - What exact promotion rules move interaction-fast/session material into durable V3 relationship memory/history?
 - How should flourishing / health be constituted and audited?
