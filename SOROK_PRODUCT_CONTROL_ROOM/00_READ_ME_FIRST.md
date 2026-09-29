@@ -83,9 +83,10 @@ The deepest longitudinal mirror is the user's own relational praxis.
 5. `05_PROGRAM_MAP.md`
 6. `06_OPERATING_METHOD.md`
 7. `08_INTERACTION_SYSTEM_SYNTHESIS_R1.md` — current cross-cutting interaction synthesis
-8. `state/CURRENT_STATE.md`
-9. machine-readable ledgers in `registers/`
-10. open scoped investigations in `dockets/`
+8. `09_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R2.md` — coverage audit and R2 corrections; read this before assuming the interaction corpus is complete
+9. `state/CURRENT_STATE.md`
+10. machine-readable ledgers in `registers/`
+11. open scoped investigations in `dockets/`
 
 ## 4. Anti-sprawl law
 
@@ -134,3 +135,23 @@ Start with:
 - D002 `05_CANONICAL_SCENARIO_BANK_R1.md`
 
 These files preserve the current interaction design without promoting it into governed Pyat/V3 implementation law.
+
+
+## 8. Completeness audit
+
+The first interaction ideation corpus received a second pass on 2026-09-29.
+
+Read:
+`09_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R2.md`.
+
+That audit found and corrected:
+- a stale generic live-recurrence pipeline;
+- missing explicit four-view interaction semantics;
+- missing non-player-centric actor-agenda law;
+- missing narrator-directed ATTEND vs diegetic SAY distinction;
+- under-specified player-private intention/deception;
+- missing perceptual-salience detail-selection rule;
+- missing no-artificial-observation-quota rule;
+- under-specified plausible/cumulative/query-invariant duration law.
+
+Do not reintroduce the superseded generic `PERSON-STATE RECURSION → DYAD / NETWORK RECURSION` formulation.
