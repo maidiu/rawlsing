@@ -1,0 +1,63 @@
+{
+  "schema": "PYAT_C1_00_FAMILY_BINDING_MANIFEST@1",
+  "status": "CONTRACT_FREEZE__NO_ADOPTION",
+  "families": [
+    {
+      "id": "DIRECT_EMPIRICAL_POSITIONED_SUBJECT",
+      "route": "execute_empirical_query -> C1 adapter -> evaluate_positioned_subject_possibility",
+      "phase": "C1-01",
+      "authority_class": "DIRECT_EMPIRICAL",
+      "requires": [
+        "exact query/predicate/release/risk/measure authority",
+        "existing consumer model/walkback authority",
+        "explicit condition binding witness"
+      ],
+      "does_not_require_universally": [
+        "M1",
+        "M2",
+        "B5",
+        "I4",
+        "S14"
+      ],
+      "current_status": "REPRESENTABLE_AT_NARROW_SOURCE_FREE_SCALAR_GRAIN"
+    },
+    {
+      "id": "EXACT_DISCOVERY_EMPIRICAL",
+      "route": "execute_exact_bounded_discovery -> exact receipt/fact/query/predicate closure -> C1 adapter -> consumer",
+      "phase": "C1-02/C1-03",
+      "authority_class": "DIRECT_EMPIRICAL_DISCOVERY",
+      "special_law": "complete exact declared frontier; no ranking/pruning shortcut",
+      "current_status": "CONTRACT_RESERVED__NOT_EXECUTED_C1_00"
+    },
+    {
+      "id": "RECURSIVE_DISCOVERY_EMPIRICAL",
+      "route": "execute_exact_bounded_discovery_with_handoffs -> persisted handoff + full discovery record -> later exact query -> consumer",
+      "phase": "C1-02/C1-03",
+      "authority_class": "DIRECT_EMPIRICAL_DISCOVERY",
+      "special_law": "positive handoff does not replace full negative/coverage record",
+      "current_status": "CONTRACT_RESERVED__NOT_EXECUTED_C1_00"
+    },
+    {
+      "id": "ADAPTIVE_EXPLORATORY",
+      "route": "execute_adaptive_exploration",
+      "phase": "C1-03_WHEN_APPLICABLE",
+      "authority_class": "SEARCH_ORDER_ONLY",
+      "special_law": "never a global empirical negative; unvisited explicit",
+      "consumer_use": "only through separately competent sealed empirical output",
+      "current_status": "COVERAGE_CONTRACT_ONLY"
+    },
+    {
+      "id": "LEARNED_OR_ADJUDICATED_FAMILIES",
+      "route": "existing family-specific M1/M2/B5/I4 owners when required by that family's current authority",
+      "phase": "C1-03_CONDITIONAL",
+      "authority_class": "CONDITIONAL_EXISTING_OWNER",
+      "law": "failed learned claim may not be relabeled direct; competent direct outputs may not be forced through a universal learned wrapper",
+      "current_status": "NO_UNIVERSAL_BINDING_CREATED"
+    }
+  ],
+  "s14_law": {
+    "empirical_cotravel_without_S14": "AVAILABLE when the direct empirical query/discovery contract is otherwise competent",
+    "semantic_relation_interpretation_without_S14": "BLOCKED",
+    "universal_S14_dependency": false
+  }
+}
