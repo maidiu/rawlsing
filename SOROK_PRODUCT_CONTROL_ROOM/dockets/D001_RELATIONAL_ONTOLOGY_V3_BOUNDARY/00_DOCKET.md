@@ -62,13 +62,15 @@ This boundary is provisional, but the prior split is inherited architecture, not
 
 ## Mandatory Vozhd inheritance gate
 
-Before D001 adjudication, read:
+Before D001 adjudication, first read and pass:
 
-`SOROK_PRODUCT_CONTROL_ROOM/00A_VOZHD_TAKEOVER_RELATIONAL_PSYCHIC_GATE_R1.md`
+`SOROK_PRODUCT_CONTROL_ROOM/00_FULL_RAWLSING_VOZHD_GROUNDING_GATE_R1.md`
 
-and pass its takeover comprehension test.
+Then read and pass:
 
-That gate is the canonical route to the historical implementation, Dva authority, PFF conceptual corpus, CAN-008 R2 owner-reduction material, and formal interface-freeze evidence required for deep comprehension.
+`SOROK_PRODUCT_CONTROL_ROOM/00A_VOZHD_TAKEOVER_RELATIONAL_PSYCHIC_GATE_R1.md`.
+
+The full gate is the canonical route to live PRE-MAIN/current state, general conceptual inheritance, PRE-V3, accepted V3/V2 and whole-machine authority. The 00A gate then routes into historical implementation, PFF conceptual corpus, CAN-008 R2 owner-reduction material and formal interface-freeze evidence.
 
 A new Vozhd must not infer current owner topology from the old PFF vision corpus alone.
 
