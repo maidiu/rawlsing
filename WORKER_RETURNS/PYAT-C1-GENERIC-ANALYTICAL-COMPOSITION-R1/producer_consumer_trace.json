@@ -1,6 +1,6 @@
 {
-  "schema": "PYAT_C1_00_PRODUCER_CONSUMER_TRACE@1",
-  "status": "STATIC_INSPECTION__NO_EXECUTION",
+  "schema": "PYAT_C1_00_PRODUCER_CONSUMER_TRACE@2",
+  "status": "R2_CORRECTED_STATIC_INSPECTION__NO_EXECUTION",
   "implementation_baseline": "b3b2fa13049513078c301a1f6574b661fcf390c5",
   "routes": [
     {
@@ -17,11 +17,15 @@
       "producer_output": "QueryExecutionResult[facts: tuple[EmpiricalFact,...]]",
       "adapter_steps": [
         "verify empirical query/predicate exact identity and actual QueryExecutionResult.query_ref",
+        "resolve the exact frozen subject-condition preimage for every consumer ConditionerBinding.subject_fact_ref",
+        "extract the canonical value-bearing relation projection from the actual producer predicate leaf and hash/compare it to the frozen predicate-leaf preimage",
+        "require exact semantic-ref + exact-value equality between subject preimage and producer predicate leaf under the exact fixture-only pairing ground-truth ref; reject CONDITION_VALUE_RELATION_MISMATCH before slice construction",
+        "verify consumer binding source/release/effective time and comparability AuthorityRef against the condition-value witness",
         "select exact fact only under exact source/release/target grain; retain full fact preimage",
-        "recompute full consumer conditioner-binding fingerprint and validate ConditionValueBindingWitness against consumer_query.ref + producer query/predicate",
         "validate source/release, target component/topology/domain, risk/denominator, measure/design/estimand and support identities",
-        "construct PossibilitySliceEvidence from actual EmpiricalFact complete-cell projection and provenance",
-        "pass only the validated per-consumer evidence set"
+        "construct only the frozen C1_POSSIBILITY_SLICE_GEOMETRY@1 projection from actual EmpiricalFact + EmpiricalQuerySpec + condition witness",
+        "set PossibilitySliceEvidence.raw_support exactly to EmpiricalFact.raw_denominator_support and derive evidence_ref from the full frozen payload including witness relation",
+        "pass only the validated per-consumer evidence set to the actual evaluate_positioned_subject_possibility consumer"
       ],
       "consumer_entrypoint": "rawlsing_next.source_backed_positioned_subject_possibility.evaluate_positioned_subject_possibility",
       "consumer_inputs": [
@@ -30,8 +34,12 @@
         "Iterable[PossibilitySliceEvidence]"
       ],
       "consumer_output": "PositionedSubjectPossibilityResult",
-      "full_output": "AnalyticalCompositionResult outer envelope + actual consumer result",
-      "current_collision": "consumer _find keys evidence by source/release/target/retained_conditioner_ids and does not inspect full ConditionerBinding material"
+      "full_output": "AnalyticalCompositionResult outer envelope + actual consumer result; composed identity includes value-relation witness/preimages and exact slice evidence ref",
+      "current_collision": "Legacy consumer _find still keys evidence by source/release/target/retained_conditioner_ids. R2 therefore makes condition/value relation validation and evidence construction a mandatory adapter precondition; no pooled/preconstructed slice input is accepted.",
+      "R2_contract_refs": {
+        "value_relation_oracle": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/02_VALUE_RELATION_ORACLE.json",
+        "slice_projection": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/04_SLICE_PROJECTION.json"
+      }
     },
     {
       "id": "EXACT_DISCOVERY_TO_POSITIONED_SUBJECT",
@@ -111,5 +119,9 @@
       "blob": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
       "lines": "72-184, 399-463"
     }
-  ]
+  ],
+  "state_side_paths": {
+    "UNKNOWN_CURRENTNESS": "existing B5 lifecycle owner; distinct from adaptive unvisited and empirical unresolved",
+    "EXPLICIT_UNKNOWN_UNVISITED": "adaptive checkpoint unvisited_unit_refs only"
+  }
 }
