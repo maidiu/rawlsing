@@ -1,4 +1,4 @@
-# D002 — Interaction Constitution R1
+# D002 — Interaction Constitution R1.1
 
 Status: `PROVISIONAL_PRODUCT_LAW_INPUT__NOT_YET_DOCKET_DECISION`
 
@@ -117,17 +117,20 @@ Long speech may likewise be interrupted when the other actor would not realistic
 Candidate pipeline:
 
 `USER INPUT`
-→ `ATTEMPT PARSE`
+→ `CHANNEL / ATTEMPT PARSE (SAY / DO / ATTEND / DECLARED SELF-INTENT)`
 → `WORLD FEASIBILITY / HIDDEN CONSTRAINT CHECK`
 → `REALIZED OBJECTIVE EVENTS`
 → `PERCEPTION FAN-OUT BY ACTOR`
-→ `PERSON-STATE RECURSION`
-→ `DYAD / NETWORK RECURSION`
-→ `ACTOR ACTION GENERATION`
-→ `WORLD CONSEQUENCE ADMISSION`
-→ `USER-PERCEPTIBLE NARRATION`
+→ `CAN-008 PERSON×EVENT RECEIVABILITY / UPTAKE / APPRAISAL / IMMEDIATE RESPONSE`
+→ `PFF INTERACTION-FAST / SESSION / USER-OPACITY STATE`
+→ `ACTOR ACTION PROPOSAL + CAUSAL ADMISSION`
+→ `OPTIONAL DURABLE-V3 PROMOTION THROUGH GOVERNED OWNER/RULE`
+→ `WORLD / NETWORK CONSEQUENCE ADMISSION`
+→ `V2 / NARRATOR USER-PERCEPTIBLE SURFACE`
 
 No direct `user prose → persona reaction` shortcut.
+
+This pipeline is a product-facing conceptual crosswalk over inherited architecture, not a new ownership ruling. Exact D001 placement remains open.
 
 ## 8. Binding reality law
 
@@ -254,3 +257,170 @@ Rawlsing must permit:
 - non-rewarded care.
 
 The game therefore trains attention to another person's reality rather than optimization of visible approval.
+
+
+## 15. Four operational views — not new architecture owners
+
+For interaction reasoning, Sorok may use four simultaneous **views** without confusing them with the inherited SDTF/V3/CAN-008/PFF/V2 owners.
+
+### A. Objective world view
+What has actually been admitted as existing/occurring:
+- objects;
+- locations;
+- bodies;
+- schedules;
+- material constraints;
+- realized actions;
+- other actors;
+- events;
+- consequences.
+
+### B. Actor-private state view
+What is causally active inside a generated actor at the relevant temporal grain:
+- durable V3 developmental organization;
+- memory/history;
+- current need/pressure;
+- CAN-008 uptake/appraisal/response;
+- PFF interaction-fast recruitment/presentation where applicable.
+
+This view is not user-visible merely because the engine has it.
+
+### C. Relational / distributed-knowledge view
+What exists between actors or differs across their models:
+- shared history;
+- commitments;
+- injuries;
+- trust/dependency hypotheses;
+- who knows what;
+- who believes what;
+- models of one another;
+- possible meta-models;
+- network consequences.
+
+Exact semantic ownership remains D001 work.
+
+### D. User phenomenal surface
+What the user can currently:
+- see;
+- hear;
+- smell;
+- touch;
+- remember;
+- infer from already learned facts;
+- lawfully inspect through ATTEND.
+
+The narrator operates here.
+
+These views answer different questions:
+- what happened?
+- what is active in the person?
+- what do different people think/know about one another?
+- what can the user actually encounter?
+
+They must not be collapsed.
+
+## 16. Non-player-centricity / autonomous agenda law
+
+The persona and world do not exist in a waiting state for the player.
+
+At scene entry, other actors may already be:
+- cooking;
+- working;
+- leaving;
+- arguing;
+- caring for a child;
+- expecting a phone call;
+- tired;
+- distracted;
+- occupied elsewhere;
+- pursuing goals unrelated to the user.
+
+A user action does not require a bespoke “reaction” if the actor:
+- does not perceive it;
+- does not find it salient;
+- chooses not to respond;
+- prioritizes another task;
+- delays response;
+- leaves;
+- continues what they were already doing.
+
+The user is one causal participant in another person's life, not the world's center of attention.
+
+This law is necessary for both live scenes and asynchronous life.
+
+## 17. Interface-channel separation
+
+Natural-language interaction must distinguish **diegetic speech** from **interface-directed observation**.
+
+Examples:
+
+> “What's on the fridge?”
+
+may mean ATTEND: user asks the narrator/interface for available perceptual detail.
+
+> I ask Nadia, “What's on your fridge?”
+
+is SAY: an audible utterance to Nadia.
+
+The system must not accidentally convert a narrator-directed information request into speech another actor heard.
+
+Likewise a DO description can include silent intention without becoming dialogue.
+
+A future UI may make the channels more explicit, but natural-language freedom should remain.
+
+## 18. Player-private intention and deception
+
+The user may author or disclose their own attempted intention at action time.
+
+Examples:
+- “I genuinely forgot her warning.”
+- “I remember what she said and ignore it.”
+- “I pretend I forgot.”
+- “I try to look apologetic even though I don't care.”
+
+This can be preserved separately from:
+- external behavior;
+- what another actor perceives;
+- what another actor infers;
+- what the user later claims in dialogue.
+
+Thus Nadia may be wrong about the user.
+
+The user may also lie to Nadia.
+
+Open design question:
+**when and how does user-declared private intention become binding player-state, and how do we prevent retroactive self-exonerating rewrites?**
+
+Until adjudicated, Sorok should preserve the distinction without assuming every later explanation rewrites prior intent.
+
+## 19. Perceptual selection versus hidden salience
+
+A narrator cannot literally enumerate every visible pixel.
+
+When selecting which surface details to mention, selection should be driven by **perceptual salience and the user's attentional request**, not hidden psychological importance.
+
+Candidate lawful selectors:
+- proximity;
+- size;
+- movement;
+- contrast;
+- sound intensity;
+- obvious obstruction;
+- ordinary scene organization;
+- explicit user target/depth.
+
+Forbidden selector:
+- “this object matters emotionally to Nadia, so mention it.”
+
+This preserves a useful narrator without turning narration into covert interpretation.
+
+## 20. No artificial observation quota
+
+The user may continue asking for more perceptible detail as long as:
+- the information is physically/perceptually available;
+- the world state permits continued observation;
+- they accept elapsed time, interruption, visibility and opportunity cost.
+
+Do not impose an arbitrary “three inspections per scene” mechanic merely to create scarcity.
+
+Scarcity should arise from the world.
