@@ -92,3 +92,37 @@ Current hypothesis:
 → `INFERENCE + NEXT ACTION`
 
 The principal remaining D002 work is to specify the minimum implementable action ontology and prototype these laws against hostile/ordinary scenarios.
+
+
+## R3 completeness additions
+
+Third-pass audit added:
+
+6. `06_PLAYER_EMBODIMENT_ENTRY_AND_AFFORDANCE_R1.md`
+   - player world position;
+   - ATTEND cannot silently DO;
+   - resources/capabilities;
+   - lawful encounter/access;
+   - no-avatar ≠ disembodied;
+   - future language question.
+
+7. `07_EPISTEMIC_PROVENANCE_ASSERTION_AND_LAZY_WORLD_R1.md`
+   - narrator fact vs actor testimony vs user inference;
+   - knowledge provenance;
+   - implementation-unmaterialized ≠ diegetically absent;
+   - history-compatible lazy completion;
+   - effective time.
+
+8. `08_SCENE_FRAME_CONCURRENCY_INTERRUPTION_AND_CONTROL_RETURN_R1.md`
+   - ambient scene frame;
+   - focused ATTEND;
+   - concurrent SAY/DO/ATTEND;
+   - resource contention;
+   - interruptible observation;
+   - partial information;
+   - control-return cadence.
+
+The scenario bank now runs through `SCE-026`.
+
+Full R3 coverage audit:
+`SOROK_PRODUCT_CONTROL_ROOM/10_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R3.md`.
