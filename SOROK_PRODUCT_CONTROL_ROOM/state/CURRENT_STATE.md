@@ -4,6 +4,23 @@ Updated: 2026-09-29
 
 Status: `INTERACTION_IDEATION_R5_CHAT_HARVESTED__PFF_INHERITANCE_RESTORED__RELATIONALIZATION_DELTA_EXPLICIT__ONTOLOGY_PROVISIONAL__ALPHA_NOT_YET_IMPLEMENTATION_SPECIFIED`
 
+## Mandatory takeover inheritance
+
+Any new Sorok Vozhd must read:
+
+`SOROK_PRODUCT_CONTROL_ROOM/00A_VOZHD_TAKEOVER_RELATIONAL_PSYCHIC_GATE_R1.md`
+
+before D001/V3/PFF adjudication.
+
+The gate contains:
+- inherited PFF psychic noncollapse;
+- CAN-008 R2 / narrowed PFF / V2 owner topology;
+- Sorok relationalization delta;
+- exact historical repo branch/path map for deep comprehension;
+- takeover comprehension test.
+
+A summary-only understanding is insufficient for D001.
+
 ## Current base
 
 - Sorok branch: `agent/sorok-product-ontology-control-room-r1`
