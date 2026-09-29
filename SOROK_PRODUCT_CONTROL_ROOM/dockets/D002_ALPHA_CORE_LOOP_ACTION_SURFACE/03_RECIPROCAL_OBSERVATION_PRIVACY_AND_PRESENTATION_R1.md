@@ -175,3 +175,26 @@ Across sufficient history, attention behavior may reveal patterns such as:
 - willingness to tolerate not knowing.
 
 These are observational hypotheses, not diagnoses.
+
+
+## 11. Inherited user-opacity qualification
+
+“The player authors the performance” means the player controls the **attempted outward performance** within the interface.
+
+It does not by itself mean Rawlsing has metaphysical access to the real user's private motive.
+
+Inherited PFF law preserves:
+
+`USER SELF-REPORT != USER HIDDEN REALITY`
+
+`MACHINE USER HYPOTHESIS != USER TRUE INTERNAL STATE`
+
+Therefore the product may know:
+- what the user typed;
+- what presentation they explicitly attempted;
+- what occurred in-world;
+- what Nadia perceived/inferred;
+
+without necessarily knowing the user's actual private emotional motive.
+
+Whether a role-authored mode allows users to canonically author an inner player-character state remains an open Sorok decision.
