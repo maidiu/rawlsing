@@ -12,6 +12,10 @@ Selected physical policy: `B__SOURCE_BACKED_VIRTUAL_C11`
 
 Control branch: `integration/pre-main-reconciliation-r1`
 
+## Uploaded C1–C3 draft work orders
+
+The [phase-1 draft packet](ASTRA_PYAT_PHASE1_COMMISSION_BINDINGS_R1/README.md) now binds exact inputs, proposed write terrain and acceptance cases for [C1](ASTRA_PYAT_PHASE1_COMMISSION_BINDINGS_R1/C1.md), [C2](ASTRA_PYAT_PHASE1_COMMISSION_BINDINGS_R1/C2.md) and [C3](ASTRA_PYAT_PHASE1_COMMISSION_BINDINGS_R1/C3.md). Review the [readiness ledger](ASTRA_PYAT_PHASE1_COMMISSION_BINDINGS_R1/READINESS.json) before issuance. These drafts are **not issued, dispatched or implementation authorization**. See the [delivery record](27_ASTRA_PHASE1_DRAFT_WORK_ORDERS_DELIVERY.md).
+
 ## Astra integrated audit and development handoff — user-directed delivery
 
 The full audit is now delivered in [ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/README.md](ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/README.md). Read the [development program](ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/PROGRAM.md), [dependency DAG](ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/DEPENDENCY_DAG.md), [exact evidence](ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/EVIDENCE_INDEX.md) and [commission runbooks](ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/COMMISSIONS.md). The [delivery record](26_ASTRA_INTEGRATED_AUDIT_DELIVERY_AND_DEVELOPMENT_HANDOFF.md) defines authority and proof limits.
