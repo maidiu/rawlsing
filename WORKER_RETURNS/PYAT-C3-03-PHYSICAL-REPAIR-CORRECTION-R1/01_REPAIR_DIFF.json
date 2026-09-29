@@ -1,0 +1,58 @@
+{
+  "schema": "PYAT_C3_03_REPAIR_DIFF@1.0.0",
+  "status": "PASS_STATIC_BOUNDARIES__EXECUTION_BLOCKED",
+  "commission_tip": "a68fb242e8a000a4b06037118e8eb804ee3365b5",
+  "semantic_candidate": "901e3e77f905847d3ef8d86b458280d8fe422dd0",
+  "semantic_candidate_diff": {
+    "commit_count": 1,
+    "exact_allowlist": true,
+    "files": [
+      {
+        "path": "rawlsing_next/pre553_physical_decoder.py",
+        "additions": 3,
+        "deletions": 2,
+        "before_blob": "5a21bdbf314f240a8718fe64b6db734e839a8581",
+        "after_blob": "d3d828c171ea9fdd0e90563aff6ef705f5aae2cf"
+      },
+      {
+        "path": "rawlsing_next/tests/test_closed35_d02_opaque_datetime_carrier.py",
+        "additions": 13,
+        "deletions": 14,
+        "before_blob": "9571768fb75b58d37fc3021e7d7fce62100c5385",
+        "after_blob": "3901f10a487856f5f232ae6700fff407ac99725e"
+      }
+    ],
+    "no_workflow_or_court_change": true
+  },
+  "execution_commit": "283d2c5d2b187c4e62ae1aecb236a0b51ddeffb1",
+  "semantic_to_execution": {
+    "commit_count": 1,
+    "exact_allowlist": true,
+    "files": [
+      {
+        "path": ".rabochii/court_spec.json",
+        "additions": 1,
+        "deletions": 1,
+        "after_blob": "f408ae9a113b19f49c6c30d67c3177e3a7f787e4"
+      },
+      {
+        "path": ".github/workflows/pyat-c3-03-physical-repair-source-free.yml",
+        "status": "added",
+        "after_blob": "322f5699a3ddd4858887986a6c712e3d61c7c710"
+      }
+    ]
+  },
+  "unchanged": {
+    "g01_authority_blob": "31a9afd7d91ed4cb2fb1c1aab3ef86a5fdda1f85",
+    "d01_test_blob": "8fc05965386055a208e5b3988112e67a2e6333e2",
+    "c11_facade_blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+    "expected_c11_facade_blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284"
+  },
+  "prohibited_changes": {
+    "g01_semantics": false,
+    "d01_semantics": false,
+    "facade": false,
+    "historical_decoder_or_census": false,
+    "raw_sources": false
+  }
+}

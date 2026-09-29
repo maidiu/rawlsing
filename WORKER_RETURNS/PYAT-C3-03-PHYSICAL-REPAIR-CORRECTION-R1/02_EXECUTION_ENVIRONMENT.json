@@ -1,0 +1,58 @@
+{
+  "schema": "PYAT_C3_03_EXECUTION_ENVIRONMENT_RETURN@1.0.0",
+  "status": "BLOCKED_BEFORE_RUNNER_ALLOCATION",
+  "execution_sha": "283d2c5d2b187c4e62ae1aecb236a0b51ddeffb1",
+  "intended_environment": {
+    "runner": "ubuntu-latest",
+    "python": "3.11",
+    "direct_dependency_pins": {
+      "pytest": "9.1.1",
+      "pandas": "2.3.3"
+    },
+    "provisioning_phase": "BEFORE_ANY_PYTEST_COLLECTION",
+    "freeze_command": "python -m pip freeze --all | LC_ALL=C sort",
+    "freeze_hash": "SHA-256"
+  },
+  "observed_attempts": [
+    {
+      "workflow_run": 36627731035,
+      "attempt": 1,
+      "job_id": 109608913544,
+      "conclusion": "failure",
+      "runner_id": 0,
+      "runner_name": "",
+      "steps": [],
+      "environment_materialized": false
+    },
+    {
+      "workflow_run": 36627731035,
+      "attempt": 2,
+      "job_id": 109609370151,
+      "conclusion": "failure",
+      "runner_id": 0,
+      "runner_name": "",
+      "steps": [],
+      "environment_materialized": false
+    }
+  ],
+  "control_route": {
+    "purpose": "Distinguish new-workflow defect from repository-wide hosted-runner acquisition failure",
+    "pr": 477,
+    "pr_final_state": "closed_unmerged",
+    "workflow": "Rabochii Governed Bounded Court",
+    "workflow_run": 36628050628,
+    "job_id": 109609985991,
+    "execution_sha": "283d2c5d2b187c4e62ae1aecb236a0b51ddeffb1",
+    "conclusion": "failure",
+    "runner_id": 0,
+    "runner_name": "",
+    "steps": [],
+    "interpretation": "Existing previously working governed workflow also failed before runner allocation."
+  },
+  "resolved_environment": null,
+  "python_version": null,
+  "pytest_version": null,
+  "pandas_version": null,
+  "pip_freeze_sha256": null,
+  "environment_artifact": null
+}

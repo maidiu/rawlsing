@@ -1,0 +1,41 @@
+{
+  "schema": "PYAT_C3_03_QUALIFICATION_RECEIPT@1.0.0",
+  "status": "BLOCKED_EXECUTION_CAPABILITY",
+  "semantic_candidate_sha": "901e3e77f905847d3ef8d86b458280d8fe422dd0",
+  "execution_sha": "283d2c5d2b187c4e62ae1aecb236a0b51ddeffb1",
+  "source_access": {
+    "raw_survey_sources_opened": false,
+    "raw_survey_sources_materialized": false,
+    "raw_survey_sources_decoded": false,
+    "candidate_a_b_c_run": false,
+    "measured_p2x_run": false,
+    "current_real_source_execution": false
+  },
+  "dedicated_workflow": {
+    "name": "PYAT C3-03 Physical Repair Source-Free Qualification",
+    "run": 36627731035,
+    "run_attempts": 2,
+    "jobs": [
+      109608913544,
+      109609370151
+    ],
+    "head_sha": "283d2c5d2b187c4e62ae1aecb236a0b51ddeffb1",
+    "trigger": "push",
+    "runner_acquired": false,
+    "pytest_collection_reached": false,
+    "court_executed": false,
+    "receipt_artifact": null,
+    "environment_artifact": null
+  },
+  "exact_six_file_court": [
+    "rawlsing_next/tests/test_closed35_g01_sav_numeric_representation_authority.py",
+    "rawlsing_next/tests/test_closed35_d01_declared_encoding_admission.py",
+    "rawlsing_next/tests/test_closed35_d02_opaque_datetime_carrier.py",
+    "rawlsing_next/tests/test_fiabc_lm2_r1j_sav_representation_authority.py",
+    "rawlsing_next/tests/test_r35_i01_physical_metadata.py",
+    "rawlsing_next/tests/test_pre553_source_backed_c11_facade.py"
+  ],
+  "protocol_counts": null,
+  "court_counts": null,
+  "qualification_claim": "NO_PASS_CLAIM__EXECUTION_DID_NOT_START"
+}

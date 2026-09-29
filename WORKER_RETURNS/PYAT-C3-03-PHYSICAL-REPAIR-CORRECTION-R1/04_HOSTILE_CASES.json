@@ -1,0 +1,33 @@
+{
+  "schema": "PYAT_C3_03_HOSTILE_CASES@1.0.0",
+  "status": "STATICALLY_PRESENT__EXECUTION_BLOCKED",
+  "semantic_candidate_sha": "901e3e77f905847d3ef8d86b458280d8fe422dd0",
+  "repaired_defects": {
+    "item_unwrap_exception_boundary": {
+      "code_holding": "value.item() extraction is inside try/except; normalize_decoder_physical_value(item) is in else and its R5CodecError is not swallowed",
+      "expected_behavior": "item-wrapped timezone-aware datetime/time fail closed"
+    },
+    "import_time_dependency_mutation": {
+      "code_holding": "D02 test imports only datetime and pytest at top-level; no importlib/subprocess/sys bootstrap and no pip invocation",
+      "expected_behavior": "dependency provisioning occurs only in dedicated workflow before collection"
+    }
+  },
+  "newly_added_hostiles": [
+    "item-wrapper returning timezone-aware datetime must raise R5CodecError matching separate explicit decoder carrier authority",
+    "item-wrapper returning timezone-aware time must raise R5CodecError matching separate explicit decoder carrier authority"
+  ],
+  "preserved_hostiles": [
+    "direct timezone-aware datetime rejection",
+    "direct timezone-aware time rejection",
+    "string masquerade rejection",
+    "bare R5 date/datetime/time rejection",
+    "field/type-sensitive opaque identity",
+    "D01+D02 shared decoder composition",
+    "unchanged facade binding"
+  ],
+  "execution": {
+    "executed": false,
+    "reason": "GitHub-hosted runner not assigned; zero workflow steps on dedicated and control routes",
+    "do_not_call_pass": true
+  }
+}
