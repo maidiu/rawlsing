@@ -23,7 +23,7 @@ At the same time, do **not** collapse the person into the dyad or assume a new m
 The prior architecture already distinguishes:
 - durable/from-birth and persistent V3 developmental ownership;
 - CAN-008 person×event receivability / uptake / appraisal / recruitment / immediate response;
-- PFF interaction-fast / session / user-opacity state;
+- narrowed PFF interaction specialization / user-opacity / minimum fast carryover, after CAN-008 R2 owner reduction;
 - V2 expression.
 
 D001 must place each relational semantic into that existing temporal-grain and ownership structure first.
@@ -59,6 +59,18 @@ This boundary is provisional, but the prior split is inherited architecture, not
 6. Can durable V3 represent a person's relationally formed organization without turning every property into specific-dyad state?
 7. Can the same durable person instantiate materially different organizations across role/counterpart without treating them as inconsistency?
 8. Can relationship history recursively change the person without making the dyad the sole owner of personhood?
+
+## Mandatory Vozhd inheritance gate
+
+Before D001 adjudication, read:
+
+`SOROK_PRODUCT_CONTROL_ROOM/00A_VOZHD_TAKEOVER_RELATIONAL_PSYCHIC_GATE_R1.md`
+
+and pass its takeover comprehension test.
+
+That gate is the canonical route to the historical implementation, Dva authority, PFF conceptual corpus, CAN-008 R2 owner-reduction material, and formal interface-freeze evidence required for deep comprehension.
+
+A new Vozhd must not infer current owner topology from the old PFF vision corpus alone.
 
 ## Repo / architecture review required
 
