@@ -1,6 +1,6 @@
-# C1-00 analytical-composition contract freeze — R1 + R2 corrections
+# C1-00 analytical-composition contract freeze — R1 + R2 + R3 corrections
 
-Status: `C1_00_R2_CORRECTIONS_READY_FOR_INDEPENDENT_REREVIEW`
+Status: `C1_00_R3_CORRECTIONS_READY_FOR_INDEPENDENT_REREVIEW`
 
 This is a **documentary contract/oracle freeze only**. It does not self-approve C1-00, execute C1-01, edit production code, create survey/model/comparability authority, or claim real-source proof.
 
@@ -464,3 +464,121 @@ R2 does not weaken or reopen the already accepted C1-00 holdings for:
 C1-01 remains unimplemented and unauthorized pending independent rereview of this corrected packet.
 
 `C1_00_R2_CORRECTIONS_READY_FOR_INDEPENDENT_REREVIEW`
+
+
+## R3 authoritative correction overlay
+
+R3 is a bounded documentary overlay on the independently rereviewed R2 packet. It changes no production owner, executes no C1-01 path, accesses no raw survey source, and creates no real-source semantic/comparability/model/pooling/survey authority. The accepted R2 A value-relation repair and E determinant/replay/invalidation repair remain unchanged.
+
+### R3-B — owner-native source scope for the synthetic I03 query authority
+
+The synthetic AT07 universe is now frozen **before** the source-scoped query authority:
+
+`EmpiricalUniverse@1.0.0`
+`ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2`
+
+The exact source-free C11 release derived from the frozen AT07 rows/current I02 identity law is:
+
+`C11LogicalRelease | REL-c1-at07 | 8afa807cc06a3a10e660d13bbd831f4f758ae829e835a454c62831bfd8f4d939`
+
+The R2 `C1-AT07-QUERY` material is changed in exactly one owner-native scope dimension: its `scope_envelope` now contains
+
+`source_universe_refs = [<the exact frozen AT07 universe ref>]`.
+
+No unrestricted wildcard and no irrelevant scope dimension is added. The corrected AuthorityRef is:
+
+`C1-AT07-QUERY | 1.0.0 | b59ef578314515268fa7b280a8480b4c95c80c9cfd831c39c2bfc4214b6fd767`.
+
+Current I03 at blob `03facecf70890bfd13b80418620d274cbcd69d02` supplies `source_universe_ref` to `require_positive_authority`; current authority owner blob `ca65a7fd4d52f0c44447434559b1d09412e7aa39` checks the exact `scope_envelope["source_universe_refs"]` key. The frozen R3 authority therefore contains the exact owner-native scope needed for the narrow source-free AT07 public path.
+
+Inspection of the other C1-01 synthetic authorities finds no additional R3 scope mutation required at this grain: SOURCE/ROUTING/COORDINATE/REPLAY are consumed through owner checks that do not supply another source/target/predicate scope dimension here; COMPARABILITY/MODEL/WALKBACK are fixture-only consumer AuthorityRefs, not PRE553 AuthoritySnapshots.
+
+Canonical material, the exact synthetic universe/release spine, and the owner-compatibility oracle are frozen in:
+
+`WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/02_OWNER_NATIVE_AUTHORITY_SCOPE_FREEZE.json`.
+
+### R3-C — reachable B5 UNKNOWN_CURRENTNESS witness
+
+The state vocabulary remains the R2 vocabulary. Only the defective witness path is superseded.
+
+The exact current owner is:
+
+`rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleExecutor`
+blob `a11c9eb73abab9be118ef4f0b6e325e676059f27`.
+
+The R3 fixture:
+
+1. instantiates a fresh `LearnedProductLifecycleExecutor`;
+2. registers the frozen `SelectionKey` through `executor.selection_key(...)`;
+3. creates neither a current-selection receipt nor a no-current receipt;
+4. calls `executor.current_selection_receipt_ref(selection_key.ref)`;
+5. requires exact `LearnedProductLifecycleError("UNKNOWN_CURRENTNESS")`.
+
+The frozen SelectionKey ref is:
+
+`B5Lifecycle:SELECTION_KEY | a0c54c568eee1351a67ecfee43c297e82aba509daf4bce6932b5ae7331ca03cd`.
+
+`resolve_selection_exact` with a fabricated receipt is explicitly not the witness. This remains lifecycle-currentness uncertainty, distinct from `NO_CURRENT`, `CONFLICTING_CURRENT_SELECTION`, adaptive `EXPLICIT_UNKNOWN_UNVISITED`, empirical `UNRESOLVED`, and `UNAVAILABLE`.
+
+Exact fixture:
+`WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/03_UNKNOWN_CURRENTNESS_FIXTURE.json`.
+
+### R3-D — noncircular PossibilitySliceEvidence identity
+
+R2's `C1_POSSIBILITY_SLICE_GEOMETRY@1`, exact geometry keys/material, and
+`PossibilitySliceEvidence.raw_support = EmpiricalFact.raw_denominator_support`
+remain unchanged.
+
+The evidence identity is now frozen over an explicit nonselfreferential preimage:
+
+`C1_POSITIONED_SUBJECT_SLICE_EVIDENCE_PREIMAGE@1`.
+
+The preimage contains exactly:
+
+- schema and contract id;
+- source universe ref;
+- release ref;
+- target ref;
+- retained conditioner ids;
+- evidence state;
+- exact R2 geometry;
+- raw support;
+- uncertainty state;
+- canonical provenance refs;
+- canonical authority refs.
+
+It **excludes `evidence_ref` itself**.
+
+Construction law:
+
+`digest = sha256(canonical_json(exact_nonselfreferential_preimage))`
+
+`evidence_ref.kind = C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1`
+
+`evidence_ref.object_id = urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:<digest>`
+
+`evidence_ref.content_hash = <digest>`.
+
+Under the complete frozen source-free AT07 identity spine, expected evidence hashes are:
+
+- forward POSITION=P1: `fe5cd7783ac84f0298fb7f56a621d7b0e494bd9348d080dc68ceee09abb546f5`;
+- reverse ANSWER=yes: `b54201c8ba8743922e51627e621cc4f3d1c563a43b70167a0720fbb0028ccf72`.
+
+Independent documentary recomputation also freezes three hostile reidentifications from the forward baseline:
+
+- changed exact denominator member, same visible 54/60: `f3f33cc8ae6404ea2d463641e42a9a537db577099a1edbee97929f96735ca37f`;
+- changed geometry cell: `b6ee0bce50141576f9e186fb92cf1f0d038354b4f3e40509df58fb09142c57b0`;
+- changed relation/pairing authority propagated through the witness/provenance/authority material: `08c73ee366f7368408459fc3df3d0e81f589b1da12cf86aa0567d2684507fa72`.
+
+Exact preimages and hostile material:
+`WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/04_EVIDENCE_IDENTITY_PREIMAGE.json`.
+
+### R3 bookkeeping and proof ceiling
+
+The current superseding worker return lists only C1 packet files actually modified by R3. `family_binding_manifest.json` remains at its previously accepted blob and is not listed as an R3 change.
+
+Deterministic hash/oracle recomputation is recorded in:
+
+`WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/05_RECOMPUTATION_RECEIPT.json`.
+
+This is `STATIC_INSPECTION + DETERMINISTIC DOCUMENTARY HASH/ORACLE FREEZE` only. C1-01 remains unimplemented and unexecuted, and remains blocked pending independent R3 rereview plus HQ adjudication.
