@@ -1,0 +1,118 @@
+{
+  "schema": "PYAT_C1_00_R4_SELECTION_KEY_PROPAGATION_AUDIT@1",
+  "status": "CURRENT_C1_PACKET_SYNCHRONIZED__DOCUMENTARY_ONLY",
+  "correct_selection_key_ref": {
+    "kind": "B5Lifecycle:SELECTION_KEY",
+    "object_id": "urn:rawlsing:pre553:b5-lifecycle:selection_key:sha256:53683ac6353055af69af9f2d5cb93d889ccc5338b6aa915990c6a541ad942cb6",
+    "content_hash": "53683ac6353055af69af9f2d5cb93d889ccc5338b6aa915990c6a541ad942cb6"
+  },
+  "stale_wrong_selection_key_ref": {
+    "kind": "B5Lifecycle:SELECTION_KEY",
+    "object_id": "urn:rawlsing:pre553:b5-lifecycle:selection_key:sha256:a0c54c568eee1351a67ecfee43c297e82aba509daf4bce6932b5ae7331ca03cd",
+    "content_hash": "a0c54c568eee1351a67ecfee43c297e82aba509daf4bce6932b5ae7331ca03cd"
+  },
+  "current_packet_scan": [
+    {
+      "path": "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/00_COMMISSION.md",
+      "blob": "cf161512c618acb71ee6f7e2882a0ad6dbb64b3c",
+      "correct_occurrences": 0,
+      "stale_occurrences": 0,
+      "changed_R4": false
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/analytical_contract.md",
+      "blob": "0abe15f7e7365832fdd1dcfab45d2e831774f99a",
+      "correct_occurrences": 4,
+      "stale_occurrences": 1,
+      "changed_R4": true,
+      "stale_context_classification": "EXPLICITLY LABELED FORMERLY CURRENT / STALE-WRONG; no stale identity claim remains"
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/analytical_products.json",
+      "blob": "e29e1d5d99fcb14331b45297f32491d91711f0f2",
+      "correct_occurrences": 0,
+      "stale_occurrences": 0,
+      "changed_R4": false
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/family_binding_manifest.json",
+      "blob": "cb430c1eb8ccc1f9f94ba0e9e241807c971b228a",
+      "correct_occurrences": 0,
+      "stale_occurrences": 0,
+      "changed_R4": false
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/fixture_oracle_manifest.json",
+      "blob": "3ea3a5938c72e00bb35593f607e1bf33299085fc",
+      "correct_occurrences": 4,
+      "stale_occurrences": 4,
+      "changed_R4": true,
+      "stale_context_classification": "ONLY under stale_wrong_ref fields; active selection_key_ref is owner-native correct ref"
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/hostile_case_receipts.json",
+      "blob": "3a393b1e457d9e59f2061ff63df0e0674b2c61d1",
+      "correct_occurrences": 0,
+      "stale_occurrences": 0,
+      "changed_R4": false
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/producer_consumer_trace.json",
+      "blob": "c3165b0fc9323999c426f0ec4056c4c7d4b6f1bd",
+      "correct_occurrences": 0,
+      "stale_occurrences": 0,
+      "changed_R4": false
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/replay_and_dependency_receipt.json",
+      "blob": "553f6c0dc8de43b60ac0132089c86aff7f339f5f",
+      "correct_occurrences": 0,
+      "stale_occurrences": 0,
+      "changed_R4": false
+    },
+    {
+      "path": "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/worker_return.json",
+      "blob": "e03452cdaa62af07a8dcdca711bf409b1bae830c",
+      "correct_occurrences": 2,
+      "stale_occurrences": 2,
+      "changed_R4": true,
+      "stale_context_classification": "ONLY under stale_wrong_selection_key_ref administrative field"
+    }
+  ],
+  "identity_propagation": {
+    "genuinely_selection_key_dependent_current_packet_files": [
+      "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/analytical_contract.md",
+      "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/fixture_oracle_manifest.json"
+    ],
+    "administrative_status_bookkeeping_file": "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/worker_return.json",
+    "unchanged_current_packet_files": [
+      "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/00_COMMISSION.md",
+      "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/analytical_products.json",
+      "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/family_binding_manifest.json",
+      "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/hostile_case_receipts.json",
+      "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/producer_consumer_trace.json",
+      "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/replay_and_dependency_receipt.json"
+    ]
+  },
+  "downstream_identity_audit": {
+    "R3_B_query_authority_hash": "b59ef578314515268fa7b280a8480b4c95c80c9cfd831c39c2bfc4214b6fd767",
+    "R3_B_selection_key_dependency": false,
+    "R3_D_forward_evidence_hash": "fe5cd7783ac84f0298fb7f56a621d7b0e494bd9348d080dc68ceee09abb546f5",
+    "R3_D_reverse_evidence_hash": "b54201c8ba8743922e51627e621cc4f3d1c563a43b70167a0720fbb0028ccf72",
+    "R3_D_selection_key_dependency": false,
+    "R2_A_selection_key_dependency": false,
+    "R2_E_selection_key_dependency": false,
+    "recomputed_downstream_semantic_oracle_hashes": [],
+    "reason": "No accepted R3-B/R3-D or R2-A/R2-E identity preimage embeds the UNKNOWN_CURRENTNESS SelectionKey ref."
+  },
+  "historical_artifact_law": {
+    "R3_artifacts_modified": false,
+    "note": "Historical R3 files remain immutable. R4 supersedes the stale current-packet assertion without rewriting historical return evidence."
+  },
+  "scope": {
+    "raw_source_reads": 0,
+    "C1_01_executed": false,
+    "production_code_edits": false,
+    "production_test_edits": false
+  }
+}
