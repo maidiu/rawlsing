@@ -1,6 +1,6 @@
 {
-  "schema": "PYAT_C1_00_PRODUCER_CONSUMER_TRACE@2",
-  "status": "R2_CORRECTED_STATIC_INSPECTION__NO_EXECUTION",
+  "schema": "PYAT_C1_00_PRODUCER_CONSUMER_TRACE@3",
+  "status": "R3_CORRECTED_STATIC_INSPECTION__NO_EXECUTION",
   "implementation_baseline": "b3b2fa13049513078c301a1f6574b661fcf390c5",
   "routes": [
     {
@@ -16,6 +16,7 @@
       ],
       "producer_output": "QueryExecutionResult[facts: tuple[EmpiricalFact,...]]",
       "adapter_steps": [
+        "resolve the exact frozen AT07 source universe/release at the source-free fixture grain and require C1-AT07-QUERY authority scope_envelope.source_universe_refs to contain that exact universe before I03 execution",
         "verify empirical query/predicate exact identity and actual QueryExecutionResult.query_ref",
         "resolve the exact frozen subject-condition preimage for every consumer ConditionerBinding.subject_fact_ref",
         "extract the canonical value-bearing relation projection from the actual producer predicate leaf and hash/compare it to the frozen predicate-leaf preimage",
@@ -24,8 +25,8 @@
         "select exact fact only under exact source/release/target grain; retain full fact preimage",
         "validate source/release, target component/topology/domain, risk/denominator, measure/design/estimand and support identities",
         "construct only the frozen C1_POSSIBILITY_SLICE_GEOMETRY@1 projection from actual EmpiricalFact + EmpiricalQuerySpec + condition witness",
-        "set PossibilitySliceEvidence.raw_support exactly to EmpiricalFact.raw_denominator_support and derive evidence_ref from the full frozen payload including witness relation",
-        "pass only the validated per-consumer evidence set to the actual evaluate_positioned_subject_possibility consumer"
+        "pass only the validated per-consumer evidence set to the actual evaluate_positioned_subject_possibility consumer",
+        "construct C1_POSITIONED_SUBJECT_SLICE_EVIDENCE_PREIMAGE@1 from every identity-bearing PossibilitySliceEvidence field except evidence_ref itself; set raw_support exactly to EmpiricalFact.raw_denominator_support; derive evidence_ref as sha256(canonical_json(nonselfreferential preimage))"
       ],
       "consumer_entrypoint": "rawlsing_next.source_backed_positioned_subject_possibility.evaluate_positioned_subject_possibility",
       "consumer_inputs": [
@@ -39,6 +40,10 @@
       "R2_contract_refs": {
         "value_relation_oracle": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/02_VALUE_RELATION_ORACLE.json",
         "slice_projection": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/04_SLICE_PROJECTION.json"
+      },
+      "R3_contract_refs": {
+        "owner_native_authority_scope": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/02_OWNER_NATIVE_AUTHORITY_SCOPE_FREEZE.json",
+        "evidence_identity": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/04_EVIDENCE_IDENTITY_PREIMAGE.json"
       }
     },
     {
@@ -121,7 +126,12 @@
     }
   ],
   "state_side_paths": {
-    "UNKNOWN_CURRENTNESS": "existing B5 lifecycle owner; distinct from adaptive unvisited and empirical unresolved",
+    "UNKNOWN_CURRENTNESS": "LearnedProductLifecycleExecutor.selection_key registers the exact key; with no current/no-current receipt, current_selection_receipt_ref(selection_key.ref) raises LearnedProductLifecycleError('UNKNOWN_CURRENTNESS').",
     "EXPLICIT_UNKNOWN_UNVISITED": "adaptive checkpoint unvisited_unit_refs only"
+  },
+  "R3_contract_refs": {
+    "owner_native_authority_scope": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/02_OWNER_NATIVE_AUTHORITY_SCOPE_FREEZE.json",
+    "unknown_currentness_fixture": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/03_UNKNOWN_CURRENTNESS_FIXTURE.json",
+    "evidence_identity_preimage": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/04_EVIDENCE_IDENTITY_PREIMAGE.json"
   }
 }
