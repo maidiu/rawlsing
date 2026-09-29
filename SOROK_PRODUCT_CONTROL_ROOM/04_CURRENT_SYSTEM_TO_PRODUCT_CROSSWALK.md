@@ -67,9 +67,11 @@ Sorok must preserve the already-developed distinction rather than inventing a ge
 
 **CAN-008** owns shared person×event coupling semantics: actor receivability, uptake/appraisal, situated recruitment, immediate multi-stream response/metabolism and bounded current consequence. Immediate response is not automatically persistent developmental change.
 
-**PFF** owns the interaction-fast / session / user-opacity remainder between durable V3 person-state and V2 expression. Prior PFF work distinguishes turn-ephemeral state, session-live RAW and durable V3 person state; PFF must not become a second durable biography/person engine.
+**PFF** must be understood through the later PFF/CAN-008 reduction, not the earlier broad RAW shorthand. PFF remains interaction specialization: bounded modality/interpretive evidence, interaction/session context, constitutional user opacity, actor-lawful expression-constraint handoff, output occurrence/re-entry gating, and only the minimum causally necessary fast carryover. The formal-freeze candidate retains two independent fast carryover families only: actor-local interaction hypotheses and non-durable response residue.
 
-**V2** owns expression/phenomenological rendering from actor-safe inputs.
+PFF's extensive present-conscious-field / defense / leakage / metaperception / self-output work remains MUST-FACTOR conceptual capital, but later elimination courts explicitly reject creating separate persistent PFF consciousness, defense, emotion, chemistry, self-feedback or recruitment subsystems. Actor receivability, uptake/appraisal and situated recruitment are CAN-008 R2 jurisdiction.
+
+**V2** owns actor-limited phenomenology/expression planning and rendering from actor-safe inputs. Current V2 authority preserves renderer-not-decider, actor-access ceilings, valid-empty output, semantic-plan-before-prompt, renderer narrowing, and renderer-rescue prohibition.
 
 Therefore the current Sorok question is **not** “should we invent a new dyadic runtime?” by default. It is:
 
@@ -110,3 +112,30 @@ The product vision should change upstream architecture **only where the finished
 Do not route every product concern backward.
 
 Apply the same whole-picture / bounded-jurisdiction discipline already used elsewhere in Rawlsing.
+
+
+## 6. Inherited psychic-mediation crosswalk
+
+Sorok must read:
+
+`dockets/D001_RELATIONAL_ONTOLOGY_V3_BOUNDARY/02_INHERITED_PSYCHIC_MEDIATION_PFF_V2_GENEALOGY_R1.md`
+
+before treating any of the following as new product psychology:
+- hidden causal material versus actor self-knowledge;
+- standing conscious self;
+- present conscious field;
+- relational activation;
+- recognition / misattribution;
+- defense / inhibition;
+- self-presentation;
+- leakage;
+- communicative intention;
+- actor-local hypotheses;
+- self-output recursion;
+- memory accessibility versus memory meaning;
+- perspective asymmetry;
+- renderer hidden-cause firewall.
+
+The product contribution is to pressure-test these inherited semantics against an actual interactive game/world and identify exact starvation, ownership and application-realization requirements.
+
+It is **not** to recreate the broad PFF psychology frontier.
