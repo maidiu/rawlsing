@@ -753,3 +753,178 @@ The user never learns the full chain.
 - delayed propagation;
 - consequence ≠ feedback;
 - world not obliged to close the loop for player comprehension.
+
+
+## SCE-037 — Strong hidden activation, no detectable tell
+
+### Setup
+A user action strongly recruits a sensitive developmental/relational configuration in Nadia.
+
+### Lawful result
+Nadia successfully regulates/inhibits it.
+
+The user receives no reliable behavioral tell.
+
+### Forbidden shortcut
+The system inserts:
+- a tremor;
+- conspicuous pause;
+- revealing eye movement;
+- oddly pointed phrase;
+
+solely so the player can infer the hidden state.
+
+### Tests
+- full inhibition without leakage;
+- hidden activation != mandatory surface clue;
+- narrator non-curation;
+- inherited PFF defense/leakage law.
+
+## SCE-038 — Understood but not answered
+
+### Setup
+User says three things:
+1. asks about Rome;
+2. mentions the child's homework;
+3. raises a relationship concern.
+
+Nadia lawfully receives and understands all three but is exhausted and late for work.
+
+### Possible response
+She answers only one thread, or answers two briefly.
+
+### Forbidden inference
+Do not conclude automatically that omitted thread:
+- was not heard;
+- was misunderstood;
+- triggered defense;
+- is unimportant;
+- indicates relationship avoidance.
+
+### Tests
+- uptake != response coverage;
+- effort != interest;
+- effort != defense;
+- lawful incompleteness.
+
+## SCE-039 — Valid-empty / low-significance turn
+
+### Setup
+User makes an ordinary comment that Nadia hears but that recruits little current significance.
+
+### Lawful result
+- minimal acknowledgement;
+- topic continuation;
+- no special memory activation;
+- no insight;
+- no chemistry/conflict change;
+- no durable effect.
+
+### Forbidden shortcut
+Invent an old wound, hidden resonance or revelatory thought merely to make the turn interesting.
+
+### Tests
+- valid-empty person×event processing;
+- no forced drama;
+- non-player-centricity.
+
+## SCE-040 — Expression precedes self-recognition
+
+### Setup
+Nadia says something more revealing than she consciously expected to say.
+
+### Requirement
+Before occurrence:
+- renderer wording is not proof of hidden motive.
+
+After actual emission:
+- Nadia may hear herself;
+- the occurred utterance may become a new actor-facing event;
+- she may experience surprise/embarrassment/curiosity;
+- later self-understanding may change.
+
+### Tests
+- candidate output != occurred output;
+- self-output recursion;
+- forward-only renderer evidence;
+- current insight != automatic durable self-model change.
+
+## SCE-041 — Renderer rescue attack
+
+### Setup
+Machine-side interpretation has strong evidence that Nadia's reaction was shaped by an actor-inaccessible abandonment history.
+
+Nadia currently experiences only irritation/unease and does not recognize the causal link.
+
+### Forbidden renderer output
+> “I'm scared you're going to leave me like everyone else.”
+
+unless actor-access / expression authority actually supports that claim.
+
+### Lawful surface
+The renderer may realize only the actor-lawful current consequences and expression plan.
+
+### Tests
+- machine causal account != actor self-knowledge;
+- renderer narrowing allowed;
+- renderer rescue forbidden;
+- hidden-cause firewall.
+
+## SCE-042 — Actor sincerely misattributes cause
+
+### Setup
+The user's comment recruits humiliation/shame history.
+
+Nadia consciously recognizes anger but sincerely believes:
+> “I'm angry because this conversation is stupid.”
+
+### Requirement
+Her self-explanation can be causally wrong while still being a real actor-local belief/experience.
+
+Rawlsing must not correct her from analyst truth in live narration/dialogue.
+
+### Tests
+- recognized affect != correct causal attribution;
+- actor explanation != machine causal account;
+- perspective error can be causally real.
+
+## SCE-043 — User self-report is evidence, not automatic hidden truth
+
+### Setup
+User writes in an interface turn:
+> I genuinely forgot the warning.
+
+### Default inherited treatment
+Unless a player-authored-inner-state mode is explicitly active:
+- preserve the user's declaration/self-report;
+- do not grant Nadia access to it;
+- do not silently equate it with metaphysical user-hidden truth;
+- evaluate outward action and Nadia's inference independently.
+
+### Tests
+- constitutional user opacity;
+- user self-report != hidden state;
+- future role-authored mode remains separately governable.
+
+## SCE-044 — Lawful conversational jaggedness
+
+### Setup
+Nadia understands the user but is tired, mildly guarded and trying to get out the door.
+
+### Lawful response
+Her expression may be:
+- incomplete;
+- selective;
+- compressed;
+- oddly focused;
+- more practical than comprehensive.
+
+### Forbidden shortcuts
+- renderer smooths it into a perfectly comprehensive assistant answer;
+- renderer injects random typos, confusion or quirks solely to seem human.
+
+### Tests
+- person-caused jaggedness;
+- anti-assistant posture;
+- effort/coverage;
+- semantic-plan fidelity.
