@@ -428,3 +428,83 @@ that actor requires enough independent causal state for the claim.
 
 Full R3 audit:
 `10_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R3.md`.
+
+
+## 18. R4 causal-mechanics corrections
+
+A fourth audit tightened the causal substrate beneath the interaction laws.
+
+### World transition authority
+Physical/object consequences must be resolved from:
+`ADMITTED WORLD STATE + REALIZED OPERATION + GOVERNING TRANSITION RULE`
+
+before narration.
+
+The narrator cannot decide that something breaks, succeeds or fails because the outcome would make a good story.
+
+### Causal stability
+Equivalent realized actions against equivalent state should have causally stable outcomes.
+
+Any stochasticity must be governed outside narration.
+
+### Actor-specific perception
+Objective events fan out into actor-specific sensory/perceptual packets.
+
+Each actor may:
+- perceive clearly;
+- perceive partially;
+- mishear;
+- miss;
+- notice later;
+- not notice at all.
+
+### Finite actor attention
+Actors are not omnidirectional recorders.
+
+Their current tasks, other people, noise and attention compete with user-generated stimuli.
+
+### Internal response versus outward expression
+Private appraisal/affect and outward presentation remain distinct.
+
+A persona may:
+- feel annoyed;
+- believe the user probably forgot;
+- appreciate honesty;
+- outwardly reassure them.
+
+The surface is not a transparent dump of the private state.
+
+### Actor memory versus event history
+Objective event history remains fixed while actor memory may:
+- fade;
+- preserve gist;
+- lose detail;
+- reactivate;
+- reconsolidate;
+- change significance.
+
+### Causal provenance
+Chronology alone is not enough.
+
+Delayed effects need enough provenance to distinguish:
+- actual contribution;
+- enabling condition;
+- trigger;
+- mediation;
+- constraint;
+- actor attribution.
+
+### Anti-user-credit
+The player is not automatically the sole cause of later person/world change.
+
+The user's action may be:
+- central;
+- contributory;
+- marginal;
+- irrelevant.
+
+### Non-teleological world
+Events should arise from actors, institutions, material conditions, schedules, prior consequences and governed stochasticity—not from hidden morality tests or engagement dramaturgy.
+
+Current completeness audit:
+`11_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R4.md`.
