@@ -547,3 +547,101 @@ CANONICALIZED_AUTHORITY_FAMILY__RENDERER_NOT_DECIDER__ACTOR_ACCESS_CEILING__NO_S
 
 Sorok product scenarios:
 NEW PRODUCT PRESSURE / TEST CASES OVER INHERITED PSYCHIC MEDIATION__NOT NEW PSYCHOLOGY BY DEFAULT
+
+
+---
+
+## 13. Valid-empty / low-significance interaction is inherited law
+
+Historical V2/PFF zero-loss work explicitly preserves the possibility that an event is:
+- perceived;
+- understood enough;
+- yet psychically low-significance;
+- not worth responding to;
+- not memory-triggering;
+- not insight-producing;
+- not chemistry-producing;
+- not conflict-producing.
+
+Therefore:
+
+EVERY USER TURN != MEANINGFUL PSYCHIC EVENT
+
+NO INTERESTING ACTIVATION != SYSTEM FAILURE
+
+NO MEMORY RECALL != RETRIEVAL FAILURE
+
+NO SELF-INSIGHT != INCOMPLETE PERSON MODEL
+
+Sorok's non-player-centric world should inherit this directly.
+
+## 14. Effort / response coverage is distinct from uptake
+
+A persona may:
+- receive several conversational threads;
+- understand them;
+- care about more than one;
+
+while lacking current willingness, attention, energy or communicative effort to answer all of them.
+
+Inherited noncollapse:
+
+ACTOR UPTAKE != RESPONSE COVERAGE
+
+SALIENCE != EFFORT
+
+EFFORT != DEFENSE
+
+EFFORT != INTEREST
+
+UNDERSTOOD BUT NOT WORTH RESPONDING TO = LAWFUL
+
+UNDERSTOOD BUT TOO TIRED/OVERLOADED TO ELABORATE = LAWFUL WHERE GROUNDED
+
+Later CAN-008 R2 explicitly permits bounded current effort/reachable-bandwidth relation without treating omission as nonreception, defense, durable incapacity or health state.
+
+## 15. Imperfect speech compression / lawful jaggedness
+
+Historical V2 sought humanly uneven conversation:
+- incomplete;
+- selective;
+- oddly focused;
+- digressive;
+- compressed;
+- asymmetrical.
+
+Later zero-loss work preserves this only when caused by the person/current condition.
+
+JAGGEDNESS = CONSEQUENCE OF PERSON + CURRENT STATE + EFFORT + DEFENSE + INTENTION + RENDER REALIZATION
+
+not:
+
+JAGGEDNESS = RANDOM STYLE NOISE
+
+A fluent renderer must not polish away lawful incompleteness.
+
+It also must not add confusion, grammatical damage or fake quirks merely to appear human.
+
+## 16. Whole person outside prompt / audit trace outside actor mind
+
+Two inherited engineering-epistemic laws are directly relevant to Sorok:
+
+WHOLE PERSON != PROMPT
+
+A prompt/render packet is a bounded working projection over canonical personhood, not the source of the person's existence.
+
+And:
+
+AUDIT TRACE != ACTOR SELF-KNOWLEDGE
+
+The system may preserve rich provenance proving:
+- actual user material;
+- machine interpretation evidence;
+- actor uptake/recruitment;
+- actor access restrictions;
+- expression constraints;
+- V2 decisions;
+- renderer variation;
+- actual emitted output;
+
+without making that analyst trace visible or claimable by the persona.
