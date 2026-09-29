@@ -76,23 +76,24 @@ The deepest longitudinal mirror is the user's own relational praxis.
 
 ## 3. Read order
 
-1. `01_PRODUCT_CHARTER.md`
-2. `02_PROVISIONAL_RELATIONAL_ONTOLOGY.md`
-3. `03_REAL_ALPHA_SPINE.md`
-4. `04_CURRENT_SYSTEM_TO_PRODUCT_CROSSWALK.md`
-5. `05_PROGRAM_MAP.md`
-6. `06_OPERATING_METHOD.md`
-7. `08_INTERACTION_SYSTEM_SYNTHESIS_R1.md` — current cross-cutting interaction synthesis
-8. `09_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R2.md` — second-pass corrections
-9. `10_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R3.md` — third-pass corrections
-10. `11_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R4.md` — prior causal-mechanics completeness audit
-11. `12_CHAT_EXHAUSTIVE_HARVEST_AUDIT_R5.md` — current exhaustive chat-harvest audit
-12. `13_R5_CHAT_HARVEST_INTEGRITY_RECEIPT.md` — mechanical + semantic closure receipt
-13. `dockets/D001_RELATIONAL_ONTOLOGY_V3_BOUNDARY/02_INHERITED_PSYCHIC_MEDIATION_PFF_V2_GENEALOGY_R1.md` — inherited mediation genealogy
-14. `dockets/D001_RELATIONAL_ONTOLOGY_V3_BOUNDARY/03_SOROK_RELATIONALIZATION_DELTA_OVER_INHERITED_PFF_R1.md` — current novel ontology frontier
-15. `state/CURRENT_STATE.md`
-16. machine-readable ledgers in `registers/`
-17. open scoped investigations in `dockets/`
+1. `00A_VOZHD_TAKEOVER_RELATIONAL_PSYCHIC_GATE_R1.md` — **mandatory takeover gate; do not do ontology/V3/PFF work before reading**
+2. `01_PRODUCT_CHARTER.md`
+3. `02_PROVISIONAL_RELATIONAL_ONTOLOGY.md`
+4. `03_REAL_ALPHA_SPINE.md`
+5. `04_CURRENT_SYSTEM_TO_PRODUCT_CROSSWALK.md`
+6. `05_PROGRAM_MAP.md`
+7. `06_OPERATING_METHOD.md`
+8. `08_INTERACTION_SYSTEM_SYNTHESIS_R1.md` — current cross-cutting interaction synthesis
+9. `09_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R2.md` — second-pass corrections
+10. `10_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R3.md` — third-pass corrections
+11. `11_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R4.md` — prior causal-mechanics completeness audit
+12. `12_CHAT_EXHAUSTIVE_HARVEST_AUDIT_R5.md` — current exhaustive chat-harvest audit
+13. `13_R5_CHAT_HARVEST_INTEGRITY_RECEIPT.md` — mechanical + semantic closure receipt
+14. `dockets/D001_RELATIONAL_ONTOLOGY_V3_BOUNDARY/02_INHERITED_PSYCHIC_MEDIATION_PFF_V2_GENEALOGY_R1.md` — inherited mediation genealogy
+15. `dockets/D001_RELATIONAL_ONTOLOGY_V3_BOUNDARY/03_SOROK_RELATIONALIZATION_DELTA_OVER_INHERITED_PFF_R1.md` — current novel ontology frontier
+16. `state/CURRENT_STATE.md`
+17. machine-readable ledgers in `registers/`
+18. open scoped investigations in `dockets/`
 
 ## 4. Anti-sprawl law
 
@@ -227,3 +228,29 @@ It is:
 Read D001/03 before proposing new person/dyad ontology.
 
 "Everything is relational" must not be interpreted as "everything belongs to a dyad object." Preserve person, relation-class prior, role-conditioned organization, specific dyad, network context and current person×event configuration as potentially distinct grains.
+
+
+## 12. Mandatory Vozhd inheritance gate
+
+Any agent taking over Sorok as Vozhd must read:
+
+`00A_VOZHD_TAKEOVER_RELATIONAL_PSYCHIC_GATE_R1.md`
+
+before adjudicating:
+- D001 ontology;
+- V3 relational sufficiency;
+- PFF semantics;
+- actor self-knowledge;
+- defense/leakage;
+- expression mediation;
+- PRE-V3→V3 relational-history requirements.
+
+That file contains:
+- the inherited PFF noncollapse constitution;
+- the later CAN-008 / narrowed-PFF / V2 owner topology;
+- Sorok's relationalization delta;
+- anti-collapse laws;
+- an exact repo archaeology map into the historical implementation, Dva authorities, PFF corpus, HQ owner-reduction work and formal interface-freeze work;
+- a takeover comprehension test.
+
+A new Vozhd is not considered sufficiently grokked for D001 if it only knows the Sorok summary and has not understood where the inherited material lives and how its authority levels differ.
