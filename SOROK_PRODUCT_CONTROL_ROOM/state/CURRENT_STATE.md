@@ -112,6 +112,11 @@ Top-level:
 - `18_COURT3_COURT4_LIFE_PROGRESS_SYNTHESIS_R1.md` — life-outside-user + progress-without-score ideation
 - `19_COURT5_VEILED_SELF_MATERIAL_EMBODIMENT_R1.md` — as-self participation under veiled local material constraint
 - `20_COURT6_PORTAL_REALITY_PEER_TRANSPOSE_COMPARISON_R1.md` — 24/7 portal countermodel + peer-normalized transposition comparison
+- `21_COURT7_HOMOLOGOUS_PEER_HABITUS_FRICTION_R1.md` — current primary-route synthesis
+- `22_COURT8_EMBODIMENT_TRANSLATION_CONSTITUTION_R1.md` — open embodiment translation court
+- `23_COURT9_MINIMUM_DURABLE_RELATIONSHIP_ONTOLOGY_R1.md` — open minimum relationship ontology court
+- `24_COURT10_FLOURISHING_MORAL_PHYSICS_R1.md` — open flourishing/moral-physics court
+- `25_COURT11_PLAYER_PRAXIS_REFLECTION_R1.md` — open player-reflection court
 - `17_FULL_RAWLSING_VOZHD_GROUNDING_INTEGRITY_R1.md` — takeover verification
 - `08_INTERACTION_SYSTEM_SYNTHESIS_R1.md`
 - `09_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R2.md`
@@ -215,6 +220,22 @@ The current lean is:
 - intimacy as transformation of relational affordances/expectations/stakes rather than hidden-lore unlock.
 
 This remains hypothesis-level and should now be compared against alternate encounter/player models.
+
+Current primary player route:
+- **homologous-peer transposition** is the provisional main-mode focus;
+- the player is intentionally **structurally local / developmentally foreign**;
+- the user receives homologous field position, not imported local habitus;
+- the veil becomes the task: assumption → friction → attention → inference → action → consequence → model revision;
+- the generated persona shows what the world can make of a person; the player shows what that world does to the person history already made them;
+- their relation is the playable veil;
+- over long time, the user enters Rawlsing's recursive person-forming relation late and accumulates real history inside the generated field;
+- local adaptation is not the win condition; intra-field contradiction and user resistance/persuasion remain lawful.
+
+Current newly opened courts:
+- Court 8: embodiment translation;
+- Court 9: minimum durable relationship ontology;
+- Court 10: flourishing / non-dominating care;
+- Court 11: player praxis reflection.
 
 Additional current lean from Court 6:
 - preserve a full 24/7 real-time friend/portal version as a comparative countermodel even if not built as the main product;
