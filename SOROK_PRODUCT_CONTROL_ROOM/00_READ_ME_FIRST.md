@@ -84,10 +84,11 @@ The deepest longitudinal mirror is the user's own relational praxis.
 6. `06_OPERATING_METHOD.md`
 7. `08_INTERACTION_SYSTEM_SYNTHESIS_R1.md` — current cross-cutting interaction synthesis
 8. `09_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R2.md` — second-pass corrections
-9. `10_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R3.md` — current completeness audit; read this before assuming the interaction corpus is complete
-10. `state/CURRENT_STATE.md`
-11. machine-readable ledgers in `registers/`
-12. open scoped investigations in `dockets/`
+9. `10_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R3.md` — third-pass corrections
+10. `11_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R4.md` — current completeness audit; read this before assuming the interaction corpus is complete
+11. `state/CURRENT_STATE.md`
+12. machine-readable ledgers in `registers/`
+13. open scoped investigations in `dockets/`
 
 ## 4. Anti-sprawl law
 
@@ -177,3 +178,23 @@ R3 additionally closed representation gaps around:
 - third-party actor independence.
 
 R3 does not claim these mechanisms are fully designed. It claims the open design obligations are now durably represented.
+
+
+## 10. R4 completeness audit
+
+Current completeness authority for interaction ideation:
+`11_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R4.md`.
+
+R4 adds/clarifies:
+- world/object transition authority before narration;
+- causal stability / governed stochasticity;
+- actor-specific perception packets;
+- finite actor attention;
+- internal response versus outward expression;
+- actor memory versus objective event history;
+- causal provenance across delayed effects;
+- multi-causality / anti-user-credit;
+- non-teleological world-event generation;
+- no guaranteed moral legibility.
+
+R4 also constrains D003: persona flourishing changes may not be automatically credited/debited to the user without causal support.
