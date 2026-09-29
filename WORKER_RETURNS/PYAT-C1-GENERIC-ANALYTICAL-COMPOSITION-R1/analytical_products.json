@@ -1,6 +1,6 @@
 {
-  "schema": "PYAT_C1_00_ANALYTICAL_PRODUCTS@1",
-  "status": "NO_RUNTIME_PRODUCTS__CONTRACT_ONLY",
+  "schema": "PYAT_C1_00_ANALYTICAL_PRODUCTS@2",
+  "status": "R2_CORRECTED_DOCUMENTARY_CONTRACT__NO_RUNTIME_PRODUCTS",
   "products": [],
   "reason": "C1-00 forbids C1-01 production implementation/execution. No candidate output exists.",
   "proposed_output_type": {
@@ -39,7 +39,13 @@
       "replay_refs",
       "possibility_slice_evidence_or_null",
       "consumer_result_or_null",
-      "consumer_model_rule_hash"
+      "consumer_model_rule_hash",
+      "condition_value_binding_witness_ref_or_hash",
+      "subject_condition_preimage_refs",
+      "producer_predicate_leaf_refs",
+      "pairing_ground_truth_refs",
+      "slice_projection_schema_hash",
+      "composed_result_identity_hash"
     ],
     "state_preservation": [
       "SUPPORTED",
@@ -52,11 +58,27 @@
       "UNAVAILABLE",
       "NONCOMPARABLE",
       "NOT_APPLICABLE",
+      "UNKNOWN_CURRENTNESS",
+      "NO_CURRENT",
+      "CONFLICTING_CURRENT_SELECTION",
       "EXPLICIT_UNKNOWN_UNVISITED",
       "PARTIAL_INTERRUPTED",
       "PARTIAL_BUDGET_EXHAUSTED",
       "BLOCKED_REQUIRED_AUTHORITY",
       "INTEGRITY_FAILURE_EXCEPTION"
-    ]
+    ],
+    "R2_contract_refs": {
+      "value_relation_oracle": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/02_VALUE_RELATION_ORACLE.json",
+      "synthetic_authority_freeze": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/03_SYNTHETIC_AUTHORITY_FREEZE.json",
+      "slice_projection": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/04_SLICE_PROJECTION.json",
+      "state_and_determinant_closure": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/05_STATE_AND_DETERMINANT_CLOSURE.json"
+    },
+    "slice_projection_law": {
+      "schema_hash": "c00e038dd2c1177bfc7842f12febef7b3e30b92bc421df244e2a8e3c4a20b17a",
+      "raw_support_meaning": "EmpiricalFact.raw_denominator_support",
+      "supported_geometry": "exact C1_POSSIBILITY_SLICE_GEOMETRY@1; no alternate compatible encoding",
+      "witness_mandatory": true
+    },
+    "identity_law": "Composed result identity includes condition-value witness, subject preimage, predicate leaf and pairing ground-truth refs; relation-only mutation reidentifies the result."
   }
 }
