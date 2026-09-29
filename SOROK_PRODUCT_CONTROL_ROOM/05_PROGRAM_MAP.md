@@ -1,0 +1,97 @@
+# Sorok Program Map
+
+Status: `ACTIVE_EXPLORATORY_PROGRAM_R1`
+
+Sorok organizes product work by bounded workstream. Each workstream may spawn dockets. Cross-cutting decisions are reconciled here before becoming requirements.
+
+## S0 — Governing purpose / integrity
+Question: what must remain true even if another design is more engaging or profitable?
+Output: charter, anti-goals, integrity constraints.
+
+## S1 — Relational ontology
+Question: what entities and causal distinctions must exist for relationships to be real rather than LLM theater?
+Output: ontology, ownership boundaries, state classes.
+
+## S2 — PRE-V3 / V3 / runtime crosswalk
+Question: what does the finished product require from the current machine, and where should each new semantic responsibility live?
+Output: accepted architecture requirements for eventual Pyat handoff.
+
+## S3 — V3 relational redevelopment
+Question: how should V3 represent personhood as relationally constituted rather than monadic?
+Output: candidate V3 relational-prior schema and developmental derivation plan.
+
+## S4 — Relationship engine / game mechanics
+Question: how do trust, expectation, injury, access, dependency, reciprocity, repair and mutual models change through actual interaction?
+Output: relationship-state model and consequence laws.
+
+## S5 — Persona health / flourishing
+Question: what does “benefit to the other” mean independently of liking, compliance or dependency?
+Output: explicit normative model, evidence base, uncertainty law, anti-therapist-God constraints.
+
+## S6 — Persistent life / time / world events
+Question: what happens while the user is away, how does real time enter, and when would the persona contact them?
+Output: life-advancement and messaging constitution.
+
+## S7 — Player praxis model
+Question: what can Rawlsing validly infer from repeated relational behavior, and how should it reflect that back without pseudo-diagnosis?
+Output: player-model schema, feedback cadence, privacy model.
+
+## S8 — Interaction / action semantics
+Question: what can the user actually do besides talk, and how are actions represented, simulated and admitted?
+Output: action vocabulary / open-action interpreter / consequence contract.
+
+## S9 — LLM expression
+Question: what context may the model see, what may it invent, and what requires admission before becoming world history?
+Output: prompt/runtime boundary, expression tests, anti-sycophancy controls.
+
+## S10 — Memory / persistence / replay / cost
+Question: how can decades of life and relationship remain coherent and affordable?
+Output: state hierarchy, event log, summaries, retrieval law, checkpointing, simulation budget.
+
+## S11 — UX / UI
+Question: how does the user experience encounter, advancement, opacity, time, commitments, repair and retrospection without reducing people to stats?
+Output: flows, prototypes, progressive disclosure, accessibility.
+
+## S12 — Social layer
+Question: should users encounter one another, each other's personas, shared worlds, reputations or relationship histories?
+Output: social options matrix, abuse analysis, minimum safe social architecture.
+
+## S13 — Monetization / business model
+Question: what can be sold without making attachment, suffering or compulsive return the revenue engine?
+Output: aligned revenue hypotheses and prohibited incentives.
+
+## S14 — Safety / privacy / abuse
+Question: what happens when users dominate, harass, sexually pressure, manipulate, stalk, game or exploit personas; what happens when social features expose real users?
+Output: safety constitution, abuse simulation law, privacy boundaries.
+
+## S15 — Alpha / evaluation
+Question: what minimum product can falsify the core theorem?
+Output: alpha spec, prototype sequence, qualitative + quantitative evaluation.
+
+## S16 — Product→engineering handoff
+Question: when is a Sorok conclusion mature enough to constrain governed architecture?
+Output: requirement packet with rationale, alternatives, evidence, dependencies, exact affected owners and reopen test.
+
+## Dependency rule
+
+Do not solve these serially and do not solve them all at once.
+
+Primary spine:
+
+`S0 → S1 → S3/S4/S5 → S15 alpha`
+
+In parallel:
+- S2 continuously crosswalks against current Rawlsing;
+- S6/S8/S9/S10 establish feasibility;
+- S11 turns causal design into usable experience;
+- S13 studies viability without governing S0;
+- S12 remains deferred until single-user relational core is credible.
+
+## Current highest-leverage dockets
+
+1. **D001 — relational ontology / V3 ownership boundary**
+2. **D002 — alpha core loop and minimum action surface**
+3. **D003 — flourishing without attachment/compliance collapse**
+4. **D004 — persistent time, life advancement and asynchronous contact**
+5. **D005 — canonical memory / event / dyad persistence architecture**
+6. **D006 — player praxis model and reflective return**
