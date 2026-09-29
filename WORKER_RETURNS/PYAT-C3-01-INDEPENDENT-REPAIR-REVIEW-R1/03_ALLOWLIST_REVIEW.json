@@ -1,0 +1,133 @@
+{
+  "schema": "PYAT_C3_01_INDEPENDENT_C3_02_ALLOWLIST_REVIEW@1.0.0",
+  "reviewer_branch": "agent/reviewer-pyat-hq126-c3-01-repair-acceptance-r1",
+  "commission_tip": "2b7dd60cf220ccac0424501028587d48610177f9",
+  "reviewed_return": "d9462674d45f228b5985a5ce3158723b87ca6fa6",
+  "disposition": "APPROVE_WITH_REVIEWER_TIGHTENING",
+  "rationale": "The worker's production allowlist is minimal. Its test note must be made exact because two historical test dependencies are absent from the current baseline and may not be resurrected.",
+  "current_baseline": "b3b2fa13049513078c301a1f6574b661fcf390c5",
+  "baseline_identities": {
+    "decoder_blob": "d2a074a41fb556a1cd5928a5fe1421ef3672a4e5",
+    "r5_codec_blob": "72f8f3c03ed065e86fea4e76bb17f8e06c2bf540",
+    "facade_blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+    "historical_common_decoder_blob": "86109c4a0b7ebd9b66e3b531b6334bfb48f03f78",
+    "historical_common_r5_codec_blob": "72f8f3c03ed065e86fea4e76bb17f8e06c2bf540",
+    "historical_common_facade_blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284"
+  },
+  "semantic_candidate_allowlist": [
+    {
+      "path": "rawlsing_next/closed35_g01_sav_numeric_representation_authority.py",
+      "action": "ADD",
+      "scope": "G01 only",
+      "allowed_change": "Port the accepted finite nine-surface authority module at semantic-equivalent content grain.",
+      "forbidden": [
+        "new source/variable/code applicability",
+        "generic int/float coercion",
+        "DTA applicability",
+        "semantic interpretation"
+      ]
+    },
+    {
+      "path": "rawlsing_next/pre553_physical_decoder.py",
+      "action": "MODIFY",
+      "scope": "D01 + D02 only",
+      "allowed_change": [
+        "D01: add SOURCE_DECLARED_ENCODING_ONLY physical-only status",
+        "D01: add exactly the three accepted SHA->encoding pairs",
+        "D01: extend _compatibility_config with exact declared SHA+encoding branch while preserving the current compatibility lane and fail-closed guessing",
+        "D01: export only required new constants",
+        "D02: import normalize_decoder_physical_value",
+        "D02: add narrow _physical_value exact naive built-in date/datetime/time route, including item()-unwrapped exact native types",
+        "D02: route PhysicalCell raw-value capture through _physical_value",
+        "D02: export _physical_value only if required by the current-port tests/contract"
+      ],
+      "forbidden": [
+        "whole historical decoder replacement",
+        "removal of intervening current behavior",
+        "extra SHA/encoding",
+        "encoding guessing",
+        "semantic date/time interpretation"
+      ]
+    },
+    {
+      "path": "rawlsing_next/pre553_r5_codec.py",
+      "action": "MODIFY",
+      "scope": "D02 only",
+      "allowed_change": [
+        "import datetime module",
+        "add opaque_decoder_value for exact built-in naive date/datetime/time types",
+        "add recursive normalize_decoder_physical_value",
+        "export only required new helpers"
+      ],
+      "forbidden": [
+        "bare date/time semantic lane",
+        "timezone-aware carrier",
+        "calendar/display normalization"
+      ]
+    },
+    {
+      "path": "rawlsing_next/tests/test_closed35_g01_sav_numeric_representation_authority.py",
+      "action": "ADD_CURRENT_BASELINE_PORT",
+      "scope": "G01 qualification only",
+      "required_porting": "Do not read/copy the absent historical WORKER_RETURNS/PREMAIN-CLOSED35-QUALIFIED-REPRESENTATION-CENSUS-RESULTS-R1 tree. Re-express the independent frozen oracle as exact test fixtures/references and preserve all hostile noncoercion cases.",
+      "forbidden": [
+        "historical receipt-tree integration",
+        "new applicability rows"
+      ]
+    },
+    {
+      "path": "rawlsing_next/tests/test_closed35_d01_declared_encoding_admission.py",
+      "action": "ADD",
+      "scope": "D01 qualification only",
+      "required_porting": "Semantic-equivalent accepted test is permitted against the current decoder.",
+      "forbidden": [
+        "extra source/encoding cases as ALLOW"
+      ]
+    },
+    {
+      "path": "rawlsing_next/tests/test_closed35_d02_opaque_datetime_carrier.py",
+      "action": "ADD_CURRENT_BASELINE_PORT",
+      "scope": "D02 qualification only",
+      "required_porting": "Remove the historical closed35_representation_census_harness import/_typed_r5_digest assertion because the harness is absent from current baseline and must not be resurrected. Retain exact-type/field, bare-R5 rejection, timezone-aware rejection, string-masquerade and decoder-route hostiles. Add or retain a direct compatibility assertion that the unchanged facade can bind the resulting R5OpaqueValue.",
+      "forbidden": [
+        "historical harness restoration",
+        "timezone-aware acceptance",
+        "semantic calendar/display assertions"
+      ]
+    }
+  ],
+  "execution_only_delta": {
+    "path": ".rabochii/court_spec.json",
+    "status": "ALLOWED_ONLY_ABOVE_THE_C3_02_SEMANTIC_CANDIDATE_FOR_GOVERNED_SOURCE_FREE_QUALIFICATION",
+    "integration_status": "DO_NOT_TREAT_AS_SEMANTIC_IMPLEMENTATION"
+  },
+  "explicitly_forbidden_paths": [
+    "rawlsing_next/pre553_source_backed_c11_facade.py",
+    "rawlsing_next/closed35_representation_census_harness.py",
+    "WORKER_RETURNS/PREMAIN-CLOSED35-QUALIFIED-REPRESENTATION-CENSUS-RESULTS-R1/**",
+    "raw survey files or source payloads",
+    "source-semantic / question-semantic / structural-authority artifacts"
+  ],
+  "required_unmodified_regressions_to_run": [
+    "rawlsing_next/tests/test_fiabc_lm2_r1j_sav_representation_authority.py",
+    "rawlsing_next/tests/test_r35_i01_physical_metadata.py",
+    "rawlsing_next/tests/test_pre553_source_backed_c11_facade.py"
+  ],
+  "fresh_c3_02_acceptance_requirements": [
+    "Run the three current-ported repair tests together on the exact current-baseline-derived semantic candidate.",
+    "Run required unmodified regressions above.",
+    "Prove D01×D02 shared-decoder composition on the current decoder rather than the historical candidate.",
+    "Prove unchanged facade compatibility.",
+    "Preserve wrong SHA/encoding/guess/fallback, G01 wrong type/source/variable/ordinal/code, D02 bare/tz-aware/string hostile failures.",
+    "Bind final semantic candidate SHA separately from the execution court-spec commit.",
+    "No raw survey source execution is needed for C3-02 source-free acceptance."
+  ],
+  "not_authorized": [
+    "whole-file historical decoder replacement",
+    "historical snapshot integration",
+    "facade edit",
+    "raw-source access",
+    "semantic authority expansion",
+    "CLOSED35 census rerun"
+  ]
+}

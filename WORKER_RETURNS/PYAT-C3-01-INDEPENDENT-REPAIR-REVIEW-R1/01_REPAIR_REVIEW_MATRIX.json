@@ -1,0 +1,162 @@
+{
+  "schema": "PYAT_C3_01_INDEPENDENT_REPAIR_REVIEW_MATRIX@1.0.0",
+  "reviewer_branch": "agent/reviewer-pyat-hq126-c3-01-repair-acceptance-r1",
+  "commission_tip": "2b7dd60cf220ccac0424501028587d48610177f9",
+  "reviewed_return": "d9462674d45f228b5985a5ce3158723b87ca6fa6",
+  "overall_disposition": "APPROVE_AT_DECLARED_GRAIN",
+  "review_law": {
+    "g01": "EXACT_NINE_SURFACE_SAV_NATIVE_INT_RULE_TO_FLOAT64_PHYSICAL_REPRESENTATION_SUCCESSOR",
+    "d01": "EXACT_SOURCE_SHA_PLUS_DECLARED_ENCODING_PHYSICAL_DECODER_ADMISSION",
+    "d02": "EXPLICIT_OPAQUE_DECODER_NATIVE_NAIVE_DATE_TIME_CARRIER__REPRESENTATION_ONLY",
+    "boundary": "PHYSICAL_REPRESENTATION_ONLY__NO_NEW_SOURCE_TEXT_DATE_TIME_OR_STRUCTURAL_SEMANTIC_AUTHORITY"
+  },
+  "return_write_terrain_check": {
+    "status": "PASS",
+    "compare_base": "afffba327286a3f49ce852409d520bf944efed3c",
+    "compare_head": "d9462674d45f228b5985a5ce3158723b87ca6fa6",
+    "commits": 10,
+    "changed_files": 10,
+    "all_changed_files_under": "WORKER_RETURNS/PYAT-C3-REPRESENTATION-REPAIR-ACCEPTANCE-R1/**",
+    "production_code_changed_by_c3_01": false
+  },
+  "repairs": {
+    "G01": {
+      "disposition": "APPROVE_AT_DECLARED_GRAIN",
+      "semantic_candidate": "8ed091e1323f46335a4bcbf6ab92ac9e3f228848",
+      "candidate_authority_module_blob": "31a9afd7d91ed4cb2fb1c1aab3ef86a5fdda1f85",
+      "candidate_test_blob": "de6b068607c8ff48bf0912c42905fbf83d0599dd",
+      "independent_oracle": [
+        "Accepted representation audit A10: one repeated int-rule/float64-physical class over exactly nine surfaces.",
+        "Accepted representation audit A11: no current int<->float equivalence authority.",
+        "Future-admission contract forbids int/float equality as physical identity and cross-wave inheritance."
+      ],
+      "exact_scope": {
+        "sources": [
+          "02",
+          "06",
+          "21"
+        ],
+        "surfaces": [
+          "S005",
+          "S006",
+          "S007",
+          "S008",
+          "S009",
+          "S010",
+          "S016",
+          "S037",
+          "S038"
+        ],
+        "source_variable_code_examples": [
+          "02/Q10B/997",
+          "06/Q101/98,99",
+          "06/Q2061B/97",
+          "21/abdefect|abhlth|abrape|abany|absingle|abnomore/1,2"
+        ]
+      },
+      "code_check": [
+        "Applicability lookup requires exact source SHA + variable name + ordinal.",
+        "Native code requires exact Python int type; float/string/bool/Decimal are rejected.",
+        "Authorized float64 values are explicit representation literals with exact R5 tokens and expected physical binding keys.",
+        "Negative limits expressly forbid global coercion, other sources/variables/codes, DTA, labels/display semantics, missing-state reinterpretation and cross-wave inheritance.",
+        "G01 does not edit pre553_physical_decoder.py."
+      ],
+      "hostile_check": [
+        "float/string/bool/Decimal native-code substitutes fail closed",
+        "wrong source SHA fails closed",
+        "wrong variable fails closed",
+        "wrong ordinal fails closed",
+        "neighboring/unlisted code fails closed",
+        "R5 int token and physical binding remain distinct from float64 successor token/binding"
+      ],
+      "current_baseline_relation": "Authority module absent from b3b2fa baseline; facade function physical_value_binding_key is unchanged and byte-identical.",
+      "proof_grade": "STATIC_EXACT_GITHUB_INSPECTION_PLUS_FRESH_SOURCE_FREE_EXECUTION_IDENTITY",
+      "residuals": [
+        "No current-baseline port exists yet.",
+        "No raw-source rerun is established by C3-01.",
+        "No applicability outside the exact nine surfaces is accepted."
+      ]
+    },
+    "D01": {
+      "disposition": "APPROVE_AT_DECLARED_GRAIN",
+      "semantic_candidate": "f6613cbef8c23148c14d9464e9b6a869474a418f",
+      "candidate_decoder_blob": "4af3a8502ee99aa262bb5086404ca9f8a8892807",
+      "candidate_test_blob": "8fc05965386055a208e5b3988112e67a2e6333e2",
+      "exact_declared_pairs": [
+        {
+          "source_id": "08",
+          "sha256": "ac0b8bc1ddb2fa6b952417e35b6379ce6a2cf8596776a43282ba44f48e0ae1a2",
+          "encoding": "BIG5"
+        },
+        {
+          "source_id": "11",
+          "sha256": "5b703173845c086382fd93252f1cbc91dfef74007755459adfc73785389172f2",
+          "encoding": "WINDOWS-1252"
+        },
+        {
+          "source_id": "12",
+          "sha256": "66252a92c59bf6759b79a6b35b2be658b98a433373212a70c8ec94755d3e02ec",
+          "encoding": "WINDOWS-1252"
+        }
+      ],
+      "independent_oracle": [
+        "Accepted implementation debt D01 binds source SHA, declared encoding, reader/runtime/config and fail-closed admission while forbidding text-semantic inference.",
+        "Authoritative census receipts independently carry the exact three SHA identities and decoder_lane encodings shown above."
+      ],
+      "code_check": [
+        "Declared encoding lane is separate from the pre-existing compatibility-only allowlist.",
+        "auto/guess/fallback are rejected.",
+        "encoding=None remains unprivileged with authority_status=None.",
+        "wrong SHA or wrong encoding rejects.",
+        "Only the exact three SHA/encoding pairs produce SOURCE_DECLARED_EXACT_SHA_ENCODING__PHYSICAL_DECODING_ONLY.",
+        "No source-family/cross-source inheritance or text-semantic normalization is introduced."
+      ],
+      "current_baseline_relation": "Current decoder blob d2a074... lacks the D01 lane and differs from historical decoder parent 86109c...; narrow transplant is required.",
+      "proof_grade": "STATIC_EXACT_GITHUB_INSPECTION_PLUS_FRESH_SOURCE_FREE_EXECUTION_IDENTITY",
+      "residuals": [
+        "D01 does not close other value-key/semantic blockers for sources 08/11/12.",
+        "No successful decode becomes text-semantic authority.",
+        "No current-baseline port exists yet."
+      ]
+    },
+    "D02": {
+      "disposition": "APPROVE_AT_DECLARED_GRAIN",
+      "semantic_candidate": "e2d7674701e1b743dc513ce3bd525ee181bfda17",
+      "candidate_codec_blob": "064484a7ddbc754f52df7a4a4a87e8b7a028ea86",
+      "candidate_decoder_blob": "1d848d2506430006883555aba9c9c2d8426fad15",
+      "candidate_test_blob": "7dac3d259f30fe3f3e2d6e7d7df66dca549b81ed",
+      "independent_oracle": [
+        "Accepted D02 implementation debt is an opaque physical carrier only.",
+        "Authoritative source-14 receipt records blocker: date/time meaning may not be invented by the R5 codec; use an explicit opaque decoder value."
+      ],
+      "exact_admitted_types": [
+        "exact built-in datetime.datetime with tzinfo is None",
+        "exact built-in datetime.date",
+        "exact built-in datetime.time with tzinfo is None"
+      ],
+      "code_check": [
+        "opaque_decoder_value uses exact built-in type tests and deterministic binary field payloads.",
+        "timezone-aware datetime/time reject pending separate authority.",
+        "R5TypedValueCodec.encode continues to reject bare date/time objects.",
+        "decoder _physical_value routes only exact naive date/time objects (including item()-unwrapped exact types) to the opaque carrier.",
+        "ordinary strings and int/float lanes are unchanged.",
+        "No calendar/display/timezone/source semantics are assigned."
+      ],
+      "current_baseline_relation": "Current codec parent is byte-identical to historical D02 parent; current decoder differs and must receive only the narrow D02 route. Current facade is byte-identical and already consumes R5OpaqueValue through the existing typed codec.",
+      "proof_grade": "STATIC_EXACT_GITHUB_INSPECTION_PLUS_FRESH_SOURCE_FREE_EXECUTION_IDENTITY",
+      "residuals": [
+        "Historical closed35_representation_census_harness.py is absent from current baseline and must not be restored.",
+        "Timezone-aware carriage remains outside accepted authority.",
+        "No survey date/time semantics are established.",
+        "No current-baseline port exists yet."
+      ]
+    }
+  },
+  "controlling_evidence": {
+    "representation_acceptance_audit_blob": "89000485e69c6716008b4199e301df8ace3e2869",
+    "acceptance_matrix_blob": "def6e218d79f62d4f1886c843cbd1270538f58ad",
+    "future_source_admission_blob": "9bc6e58cb92404d3695d97e90f12d1ceaa6032b0",
+    "generic_implementation_debt_blob": "8be7b43c14307421dea7d34dec0abec2c7275f67",
+    "source_applicability_blob": "77074261a0594884ac306d2ee40c83d393af266e"
+  }
+}

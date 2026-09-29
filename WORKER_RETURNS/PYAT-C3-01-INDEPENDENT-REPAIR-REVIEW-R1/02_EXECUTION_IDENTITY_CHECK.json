@@ -1,0 +1,136 @@
+{
+  "schema": "PYAT_C3_01_EXECUTION_IDENTITY_CHECK@1.0.0",
+  "reviewer_branch": "agent/reviewer-pyat-hq126-c3-01-repair-acceptance-r1",
+  "commission_tip": "2b7dd60cf220ccac0424501028587d48610177f9",
+  "reviewed_return": "d9462674d45f228b5985a5ce3158723b87ca6fa6",
+  "overall_status": "PASS",
+  "interpretation": "Fresh runs prove the exact historical semantic candidates source-free at their declared grains. They do not prove an unbuilt current-baseline port.",
+  "runs": {
+    "G01": {
+      "semantic_candidate": "8ed091e1323f46335a4bcbf6ab92ac9e3f228848",
+      "execution_commit": "a9069d0a3d3b3526bc72a9b7c9dccc02bd01f243",
+      "candidate_to_execution": {
+        "commits": 1,
+        "changed_files": [
+          ".rabochii/court_spec.json"
+        ],
+        "status": "COURT_SPEC_ONLY"
+      },
+      "court_spec_blob": "26e772ca1d857153092f9eb38bf04df8fbf9f4be",
+      "court_tests": [
+        "rawlsing_next/tests/test_closed35_g01_sav_numeric_representation_authority.py",
+        "rawlsing_next/tests/test_fiabc_lm2_r1j_sav_representation_authority.py",
+        "rawlsing_next/tests/test_r35_i01_physical_metadata.py"
+      ],
+      "workflow_run": 35884185279,
+      "run_attempt": 2,
+      "run_head_sha": "a9069d0a3d3b3526bc72a9b7c9dccc02bd01f243",
+      "job_id": 109531459446,
+      "job_conclusion": "success",
+      "protocol_result": "20 passed",
+      "governed_result": "25 passed",
+      "artifact_id": 11050980609,
+      "artifact_digest": "sha256:47d74c0474e32520d4934ad671e2e8d9b6ff299e1cf01c3e5a66e779656ecbb3",
+      "log_identity_check": "PASS__checkout_and_RABOCHII_EVIDENCE_EXECUTION_SHA_match execution commit"
+    },
+    "D01": {
+      "semantic_candidate": "f6613cbef8c23148c14d9464e9b6a869474a418f",
+      "execution_commit": "4a19af8bbc5d2ef602ad375873feeba96bf47eaa",
+      "candidate_to_execution": {
+        "commits": 1,
+        "changed_files": [
+          ".rabochii/court_spec.json"
+        ],
+        "status": "COURT_SPEC_ONLY"
+      },
+      "court_spec_blob": "4cccc3bcae01e2ff8e3f6a82c20a0b60bca8b766",
+      "court_tests": [
+        "rawlsing_next/tests/test_closed35_d01_declared_encoding_admission.py",
+        "rawlsing_next/tests/test_r35_i01_physical_metadata.py"
+      ],
+      "workflow_run": 35883052865,
+      "run_attempt": 2,
+      "run_head_sha": "4a19af8bbc5d2ef602ad375873feeba96bf47eaa",
+      "job_id": 109531476500,
+      "job_conclusion": "success",
+      "protocol_result": "20 passed",
+      "governed_result": "14 passed",
+      "artifact_id": 11049874988,
+      "artifact_digest": "sha256:d3bf6d5fa2a336aa434c641ecd30b3be50a8fe8d773a8676d1aa0b913ff0cf32",
+      "log_identity_check": "PASS__checkout_and_RABOCHII_EVIDENCE_EXECUTION_SHA_match execution commit"
+    },
+    "D02": {
+      "semantic_candidate": "e2d7674701e1b743dc513ce3bd525ee181bfda17",
+      "execution_commit": "76ce34c8e24db5f080a96fdca6d0c4c982215089",
+      "candidate_to_execution": {
+        "commits": 2,
+        "commit_file_checks": [
+          {
+            "commit": "e1b14fac23ec4fa60f54cea8d4e8089c44cc3e79",
+            "changed_files": [
+              ".rabochii/court_spec.json"
+            ]
+          },
+          {
+            "commit": "76ce34c8e24db5f080a96fdca6d0c4c982215089",
+            "changed_files": [
+              ".rabochii/court_spec.json"
+            ]
+          }
+        ],
+        "net_changed_files": [
+          ".rabochii/court_spec.json"
+        ],
+        "status": "ALL_POST_CANDIDATE_COMMITS_COURT_SPEC_ONLY"
+      },
+      "court_spec_blob": "cbdc35dcfda48928e87de650b5d4857a4eed9406",
+      "court_tests": [
+        "rawlsing_next/tests/test_closed35_d02_opaque_datetime_carrier.py",
+        "rawlsing_next/tests/test_fiabc_lm2_r1j_sav_representation_authority.py",
+        "rawlsing_next/tests/test_r35_i01_physical_metadata.py"
+      ],
+      "workflow_run": 35883745809,
+      "run_attempt": 2,
+      "run_head_sha": "76ce34c8e24db5f080a96fdca6d0c4c982215089",
+      "job_id": 109531487944,
+      "job_conclusion": "success",
+      "protocol_result": "20 passed",
+      "governed_result": "24 passed",
+      "artifact_id": 11051220376,
+      "artifact_digest": "sha256:6da9440db3772f17e8674bfcfd48e2abde8a1814f6cfb3d00cc2fe2c80e55552",
+      "log_identity_check": "PASS__checkout_and_RABOCHII_EVIDENCE_EXECUTION_SHA_match execution commit"
+    },
+    "INTERACTION": {
+      "semantic_candidate": "3cefb4ebf61ccdb6a8c5a03815438bdcda021292",
+      "execution_commit": "3d6d45e0d97cdf9a60105e140583e043a42ccfba",
+      "candidate_to_execution": {
+        "commits": 1,
+        "changed_files": [
+          ".rabochii/court_spec.json"
+        ],
+        "status": "COURT_SPEC_ONLY"
+      },
+      "court_spec_blob": "334c94d2422b6d628ac09c97a281a716e57caeb5",
+      "court_tests": [
+        "rawlsing_next/tests/test_closed35_g01_sav_numeric_representation_authority.py",
+        "rawlsing_next/tests/test_closed35_d01_declared_encoding_admission.py",
+        "rawlsing_next/tests/test_closed35_d02_opaque_datetime_carrier.py",
+        "rawlsing_next/tests/test_fiabc_lm2_r1j_sav_representation_authority.py",
+        "rawlsing_next/tests/test_r35_i01_physical_metadata.py"
+      ],
+      "workflow_run": 35887617559,
+      "run_attempt": 2,
+      "run_head_sha": "3d6d45e0d97cdf9a60105e140583e043a42ccfba",
+      "job_id": 109531501528,
+      "job_conclusion": "success",
+      "protocol_result": "20 passed",
+      "governed_result": "42 passed",
+      "artifact_id": 11050338899,
+      "artifact_digest": "sha256:4918ca1338974463428f2e6fda451b2590748612275e49de7b934596fd41f4ca",
+      "log_identity_check": "PASS__checkout_and_RABOCHII_EVIDENCE_EXECUTION_SHA_match execution commit"
+    }
+  },
+  "raw_source_execution": false,
+  "source_free_execution_only": true,
+  "current_baseline_proof": false
+}
