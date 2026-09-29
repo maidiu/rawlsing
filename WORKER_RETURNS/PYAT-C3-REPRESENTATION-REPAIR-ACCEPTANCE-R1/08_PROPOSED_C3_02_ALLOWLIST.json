@@ -1,0 +1,82 @@
+{
+  "schema": "PYAT_C3_01_PROPOSED_C3_02_MINIMAL_PATCH_ALLOWLIST@1.0.0",
+  "status": "PROPOSED_ONLY__HQ_MUST_FREEZE_BEFORE_C3_02",
+  "baseline": "b3b2fa13049513078c301a1f6574b661fcf390c5",
+  "rules": [
+    "NO_WHOLE_FILE_HISTORICAL_DECODER_REPLACEMENT",
+    "NO_FACADE_EDIT",
+    "NO_SOURCE_SEMANTIC_EDIT",
+    "NO_CLOSED35_HISTORICAL_CENSUS_HARNESS_RESURRECTION",
+    "NO_GENERIC_NUMERIC_COERCION",
+    "NO_ENCODING_GUESSING",
+    "NO_DATETIME_SEMANTIC_INTERPRETATION"
+  ],
+  "G01": {
+    "disposition": "ACCEPT",
+    "allowed_files": {
+      "rawlsing_next/closed35_g01_sav_numeric_representation_authority.py": [
+        "add exact authority module from accepted G01 candidate at semantic-equivalent content grain"
+      ]
+    },
+    "prohibited": [
+      "pre553_physical_decoder.py edit for G01",
+      "generic int/float canonicalization",
+      "new applicability rows"
+    ]
+  },
+  "D01": {
+    "disposition": "ACCEPT",
+    "allowed_files": {
+      "rawlsing_next/pre553_physical_decoder.py": [
+        "add SOURCE_DECLARED_ENCODING_ONLY physical-only status",
+        "add exact three-row DECLARED_ENCODING_ALLOWLIST",
+        "extend _compatibility_config with exact declared SHA+encoding branch while preserving existing compatibility lane and fail-closed guessing",
+        "export the new exact constants"
+      ]
+    },
+    "prohibited": [
+      "whole historical decoder replacement",
+      "extra source SHA",
+      "extra encoding",
+      "automatic guessing/fallback",
+      "text semantic normalization"
+    ]
+  },
+  "D02": {
+    "disposition": "ACCEPT",
+    "allowed_files": {
+      "rawlsing_next/pre553_r5_codec.py": [
+        "add datetime module import",
+        "add exact opaque_decoder_value for naive exact built-in date/datetime/time types",
+        "add recursive normalize_decoder_physical_value",
+        "export only required new helpers"
+      ],
+      "rawlsing_next/pre553_physical_decoder.py": [
+        "import normalize_decoder_physical_value",
+        "add narrow _physical_value exact date/datetime/time route including item()-unwrapped exact native types",
+        "route physical cell raw-value capture through _physical_value instead of convenience _jsonable for the supported carrier seam"
+      ]
+    },
+    "prohibited": [
+      "timezone-aware acceptance",
+      "bare datetime R5 semantic lane",
+      "calendar/display semantic normalization",
+      "historical census harness restoration"
+    ]
+  },
+  "current_facade": {
+    "file": "rawlsing_next/pre553_source_backed_c11_facade.py",
+    "baseline_blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+    "edit_allowed": false,
+    "reason": "byte-identical and already compatible across all historical candidates and current baseline"
+  },
+  "tests": {
+    "note": "C3-02 should add/current-port only tests needed to prove the exact accepted boundaries and must run a fresh current-baseline source-free combined court.",
+    "required_hostiles": [
+      "G01 wrong type/source/variable/ordinal/code",
+      "D01 wrong SHA/wrong encoding/guess/fallback/no-authority-on-None",
+      "D02 bare datetime/tz-aware/string masquerade/type-field collision",
+      "combined facade/physical-metadata regressions"
+    ]
+  }
+}
