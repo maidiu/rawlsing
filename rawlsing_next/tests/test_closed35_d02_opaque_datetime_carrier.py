@@ -1,6 +1,19 @@
 from __future__ import annotations
 
 import datetime as dt
+import importlib.util
+import subprocess
+import sys
+
+# The generic governed-court workflow installs only pytest, while the frozen
+# unchanged facade regression imports pandas. Established source-free Rawlsing
+# workflows install pytest+pandas. Bootstrap that test-only dependency here so
+# the exact six-file C3-02 court can execute together without editing CI.
+if importlib.util.find_spec("pandas") is None:
+    subprocess.run(
+        [sys.executable, "-m", "pip", "install", "--disable-pip-version-check", "pandas"],
+        check=True,
+    )
 
 import pytest
 
