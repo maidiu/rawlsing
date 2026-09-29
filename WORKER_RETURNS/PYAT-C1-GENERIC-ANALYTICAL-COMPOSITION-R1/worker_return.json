@@ -1,7 +1,7 @@
 {
   "schema": "PYAT_BOUNDED_WORKER_RETURN@2",
   "task_id": "PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1::C1-00",
-  "status": "C1_00_R3_CORRECTIONS_READY_FOR_INDEPENDENT_REREVIEW",
+  "status": "C1_00_R4_EXACT_SELECTION_KEY_SYNCHRONIZATION_READY_FOR_INDEPENDENT_REREVIEW",
   "commission_tip": "2cef3869c16cbd88ce8bc58a5bd4aa073879be50",
   "implementation_baseline": "b3b2fa13049513078c301a1f6574b661fcf390c5",
   "orchestration_authority_ref": "810dbfde9fa5dbe1e3625188f4c13c4c9e7ceeb7",
@@ -10,10 +10,6 @@
   "changed_blobs": [
     "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/analytical_contract.md",
     "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/fixture_oracle_manifest.json",
-    "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/producer_consumer_trace.json",
-    "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/analytical_products.json",
-    "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/hostile_case_receipts.json",
-    "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/replay_and_dependency_receipt.json",
     "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/worker_return.json"
   ],
   "authority_refs": [
@@ -32,7 +28,7 @@
     "failed": null,
     "errors": null,
     "skipped": null,
-    "unexecuted_reason": "C1-00 R3 documentary correction only; C1-01 remains unimplemented and execution is held behind fresh independent R3 rereview and HQ adjudication.",
+    "unexecuted_reason": "C1-00 R4 documentary exact-identity synchronization only; C1-01 remains unimplemented and unexecuted.",
     "run_job_attempt_head_refs": [],
     "logs_and_artifacts": []
   },
@@ -40,7 +36,7 @@
     "reads": 0,
     "evidence": "No raw survey sources opened, materialized, decoded or inferred."
   },
-  "proof_grade": "STATIC_INSPECTION + DETERMINISTIC R3 DOCUMENTARY HASH/ORACLE FREEZE",
+  "proof_grade": "STATIC OWNER-LAW INSPECTION + DETERMINISTIC R4 SELECTIONKEY REF RECOMPUTATION",
   "case_dispositions": [
     {
       "case": "AT07",
@@ -73,7 +69,7 @@
     },
     {
       "case": "AT14",
-      "status": "R3_OWNER_NATIVE_UNKNOWN_CURRENTNESS_FIXTURE_FROZEN__NOT_EXECUTED"
+      "status": "R4_EXACT_OWNER_NATIVE_SELECTION_KEY_SYNCHRONIZED_UNKNOWN_CURRENTNESS_FIXTURE__NOT_EXECUTED"
     },
     {
       "case": "AT15",
@@ -151,10 +147,10 @@
     "Multi-universe/composite facts require an exact reviewed source identity rule before one consumer slice can represent them.",
     "Some search/producer negative states have no truthful PossibilitySliceEvidence encoding; outer C1 envelope must retain them and may omit the consumer call."
   ],
-  "requested_next_action": "FRESH INDEPENDENT C1-00 R3 REREVIEW ONLY. Do not issue C1-01 until the exact corrected R3 branch tip is independently accepted and HQ separately adjudicates/freezes C1-01.",
-  "independent_review_ref": "959d5d8cd4e8f96732e6809030c946751ba5da67::CHANGES_REQUIRED__THREE_R3_DOCUMENTARY_CORRECTIONS_PENDING_REREVIEW",
-  "adoption_status": "NOT_ADOPTED__PENDING_R3_INDEPENDENT_REREVIEW",
-  "terminal": "C1_00_R3_CORRECTIONS_READY_FOR_INDEPENDENT_REREVIEW",
+  "requested_next_action": "FRESH INDEPENDENT C1-00 R4 REREVIEW ONLY. Do not issue C1-01 until the exact corrected R4 branch tip is independently accepted and HQ separately adjudicates/freezes C1-01.",
+  "independent_review_ref": "696210c2aca2c42b49eed1fe9f75dfca5bf2e93c::R3_RETURN_SUPERSEDED_ONLY_FOR_EXACT_SELECTION_KEY_SYNCHRONIZATION_PENDING_R4_REREVIEW",
+  "adoption_status": "NOT_ADOPTED__PENDING_R4_INDEPENDENT_REREVIEW",
+  "terminal": "C1_00_R4_EXACT_SELECTION_KEY_SYNCHRONIZATION_READY_FOR_INDEPENDENT_REREVIEW",
   "R2_correction": {
     "commission_tip": "00b7091190505c0b41feaf0c45a29a791bab0cb5",
     "independent_review": "8baa2e1e3a6f4f96311fbd660b65933fb4aff6c4",
@@ -205,5 +201,39 @@
     "unknown_currentness_fixture": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/03_UNKNOWN_CURRENTNESS_FIXTURE.json",
     "evidence_identity_preimage": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/04_EVIDENCE_IDENTITY_PREIMAGE.json",
     "recomputation_receipt": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/05_RECOMPUTATION_RECEIPT.json"
+  },
+  "R4_correction": {
+    "commission_tip": "4482f28e436a6ef48e66f9aefda40d354c3866f5",
+    "exact_base_R3_return": "696210c2aca2c42b49eed1fe9f75dfca5bf2e93c",
+    "correct_selection_key_ref": {
+      "kind": "B5Lifecycle:SELECTION_KEY",
+      "object_id": "urn:rawlsing:pre553:b5-lifecycle:selection_key:sha256:53683ac6353055af69af9f2d5cb93d889ccc5338b6aa915990c6a541ad942cb6",
+      "content_hash": "53683ac6353055af69af9f2d5cb93d889ccc5338b6aa915990c6a541ad942cb6"
+    },
+    "stale_wrong_selection_key_ref": {
+      "kind": "B5Lifecycle:SELECTION_KEY",
+      "object_id": "urn:rawlsing:pre553:b5-lifecycle:selection_key:sha256:a0c54c568eee1351a67ecfee43c297e82aba509daf4bce6932b5ae7331ca03cd",
+      "content_hash": "a0c54c568eee1351a67ecfee43c297e82aba509daf4bce6932b5ae7331ca03cd"
+    },
+    "owner_blob": "a11c9eb73abab9be118ef4f0b6e325e676059f27",
+    "exact_identity_propagation_files": [
+      "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/analytical_contract.md",
+      "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/fixture_oracle_manifest.json"
+    ],
+    "administrative_bookkeeping_file": "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/worker_return.json",
+    "preserved": {
+      "R3_B_owner_native_query_authority_scope": true,
+      "R3_D_noncircular_evidence_identity": true,
+      "R2_A_value_bearing_condition_relation": true,
+      "R2_E_determinant_replay_invalidation_closure": true
+    },
+    "downstream_hash_churn": "NONE_BEYOND_CURRENT_DOCUMENTARY_PACKET_BLOBS",
+    "raw_source_reads": 0,
+    "C1_01_executed": false
+  },
+  "R4_contract_refs": {
+    "selection_key_identity_recomputation": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R4/01_SELECTION_KEY_IDENTITY_RECOMPUTATION.json",
+    "propagation_audit": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R4/02_PROPAGATION_AUDIT.json",
+    "updated_blob_manifest": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R4/03_UPDATED_BLOB_MANIFEST.json"
   }
 }
