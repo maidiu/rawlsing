@@ -43,7 +43,7 @@ Status: `INTERACTION_IDEATION_R5_CHAT_HARVESTED__PFF_INHERITANCE_RESTORED__RELAT
 28. A future `RAWlsing / Rawlsing` mode distinction may vary epistemic/agency scaffolding while preserving identical underlying moral physics and hidden psychology.
 29. The world/persona are non-player-centric: actors retain independent agendas and may ignore, delay, interrupt, leave or prioritize other tasks rather than “respond” to every user act.
 30. Interaction reasoning uses four operational views—objective world, actor-private state, relational/distributed-knowledge state and user phenomenal surface—without replacing inherited architecture owners.
-31. Narrator-directed ATTEND, diegetic SAY, embodied DO and player-private intention must remain distinct channels even when mixed inside one natural-language turn.
+31. Narrator-directed ATTEND, diegetic SAY, embodied DO and user-declared intention/self-report metadata must remain distinct channels even when mixed inside one natural-language turn; any stronger player-authored-inner-state authority remains open.
 32. User-declared intention/self-report is distinct from realized behavior and later self-description; inherited user-opacity law means it is not automatically omniscient truth about the human user's hidden state. A stronger player-authored-inner-state mode remains open.
 33. Finite narrator detail should follow perceptual salience and explicit attention, never hidden psychological importance.
 34. Variable duration must remain physically/socially plausible rather than punitive; cheap micro-observations may accumulate consequential time.
