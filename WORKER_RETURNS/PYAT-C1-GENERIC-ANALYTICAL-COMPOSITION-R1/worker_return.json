@@ -1,0 +1,135 @@
+{
+  "schema": "PYAT_BOUNDED_WORKER_RETURN@1",
+  "task_id": "PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1::C1-00",
+  "status": "C1_00_CONTRACT_ORACLE_PACKET_READY_FOR_INDEPENDENT_REVIEW",
+  "commission_tip": "2cef3869c16cbd88ce8bc58a5bd4aa073879be50",
+  "implementation_baseline": "b3b2fa13049513078c301a1f6574b661fcf390c5",
+  "orchestration_authority_ref": "810dbfde9fa5dbe1e3625188f4c13c4c9e7ceeb7",
+  "return_commit": null,
+  "return_commit_reason": "Git commit identity cannot truthfully self-reference inside its own content. Reviewer must inspect the exact branch tip reported after this file commit.",
+  "changed_blobs": [
+    "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/analytical_contract.md",
+    "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/fixture_oracle_manifest.json",
+    "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/producer_consumer_trace.json",
+    "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/analytical_products.json",
+    "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/hostile_case_receipts.json",
+    "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/replay_and_dependency_receipt.json",
+    "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/family_binding_manifest.json",
+    "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/worker_return.json"
+  ],
+  "authority_refs": [
+    "810dbfde9fa5dbe1e3625188f4c13c4c9e7ceeb7:PYAT_CONTROL_ROOM/OMEGA_VOZHD_ORCHESTRATION_R1/05_C1_EXECUTION_SPEC.md",
+    "810dbfde9fa5dbe1e3625188f4c13c4c9e7ceeb7:PYAT_CONTROL_ROOM/OMEGA_VOZHD_ORCHESTRATION_R1/01_COMMAND_CHARTER.md",
+    "810dbfde9fa5dbe1e3625188f4c13c4c9e7ceeb7:PYAT_CONTROL_ROOM/OMEGA_VOZHD_ORCHESTRATION_R1/08_REVIEW_AND_INTEGRATION.md",
+    "b3b2fa13049513078c301a1f6574b661fcf390c5:PYAT_CONTROL_ROOM/ASTRA_PYAT_PHASE1_COMMISSION_BINDINGS_R1/C1.json"
+  ],
+  "fixture_oracle_ref": "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/fixture_oracle_manifest.json",
+  "runtime": null,
+  "runtime_reason": "NOT_YET_FROZEN__NO_EXECUTION_REQUIRED_FOR_DOCUMENTARY_CONTRACT_FREEZE",
+  "tests": {
+    "commands": [],
+    "exit_status": null,
+    "passed": null,
+    "failed": null,
+    "errors": null,
+    "skipped": null,
+    "unexecuted_reason": "C1-00 only; production implementation and execution are explicitly held behind independent review.",
+    "run_job_attempt_head_refs": [],
+    "logs_and_artifacts": []
+  },
+  "source_access": {
+    "reads": 0,
+    "evidence": "No raw survey sources opened, materialized, decoded or inferred."
+  },
+  "proof_grade": "STATIC_INSPECTION + INDEPENDENT_SYNTHETIC_ORACLE_FREEZE",
+  "case_dispositions": [
+    {
+      "case": "AT07",
+      "status": "ORACLE_FROZEN__NOT_EXECUTED",
+      "expectation": "54/60 forward; 54/62 reverse"
+    },
+    {
+      "case": "AT08",
+      "status": "FIXTURE_FROZEN__NOT_EXECUTED"
+    },
+    {
+      "case": "AT09",
+      "status": "FIXTURE_FROZEN__NOT_EXECUTED"
+    },
+    {
+      "case": "AT10",
+      "status": "FIXTURE_FROZEN__NOT_EXECUTED"
+    },
+    {
+      "case": "AT11",
+      "status": "FIXTURE_FROZEN__NOT_EXECUTED"
+    },
+    {
+      "case": "AT12",
+      "status": "FIXTURE_FROZEN__NOT_EXECUTED"
+    },
+    {
+      "case": "AT13",
+      "status": "FIXTURE_FROZEN__NOT_EXECUTED"
+    },
+    {
+      "case": "AT14",
+      "status": "STATE_MATRIX_FROZEN__NOT_EXECUTED"
+    },
+    {
+      "case": "AT15",
+      "status": "ROUTE_LAW_FROZEN__NOT_EXECUTED"
+    },
+    {
+      "case": "AT16",
+      "status": "TRACE_FROZEN__NOT_EXECUTED"
+    },
+    {
+      "case": "AT17",
+      "status": "TRACE_FROZEN__NOT_EXECUTED"
+    },
+    {
+      "case": "AT18",
+      "status": "REPLAY_GRADES_FROZEN__NOT_EXECUTED"
+    },
+    {
+      "case": "AT19",
+      "status": "SELECTIVE_INVALIDATION_ORACLE_FROZEN__NOT_EXECUTED"
+    }
+  ],
+  "consumer_trace": "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/producer_consumer_trace.json",
+  "replay_grade": "NOT_EXECUTED__GRADES_DISTINGUISHED_IN_REPLAY_RECEIPT",
+  "dependency_proof": "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/replay_and_dependency_receipt.json",
+  "retained_failure_refs": [],
+  "scope_limits": [
+    "C1-00 only",
+    "no production-code edit",
+    "no C1-01 execution",
+    "no raw survey source access",
+    "no FIABC or Candidate A/B/C",
+    "no new semantic/comparability/model authority",
+    "scalar direct C1-01 contract only; multi-target/composite-source remain reviewed later extensions"
+  ],
+  "proposed_future_write_allowlist": [
+    "rawlsing_next/pre553_analytical_composition.py",
+    "rawlsing_next/tests/test_pre553_analytical_composition.py",
+    "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/**"
+  ],
+  "proposed_execution_court": {
+    "runtime_identity": "TO_BE_FROZEN_BY_HQ_AFTER_C1_00_INDEPENDENT_ACCEPTANCE",
+    "primary_command": "python -m pytest rawlsing_next/tests/test_pre553_analytical_composition.py -q",
+    "source_free": true,
+    "candidate_A_B_C": false,
+    "FIABC": false
+  },
+  "unresolved_questions": [
+    "Real-source owner/authority for exact generated-subject fact to empirical condition/value comparability remains external to C1; C1 does not invent it.",
+    "Multi-target positioned-consumer identity requires independent C1-02 review; current consumer has one target_ref.",
+    "Multi-universe/composite facts require an exact reviewed source identity rule before one consumer slice can represent them.",
+    "Some search/producer negative states have no truthful PossibilitySliceEvidence encoding; outer C1 envelope must retain them and may omit the consumer call."
+  ],
+  "requested_next_action": "INDEPENDENT_C1_00_REVIEW_ONLY. Reviewer must attack conditioner-value aliasing, state collapse, denominator/member identity, target topology/domain, measure identity, recursive ancestry and replay-grade claims before HQ may issue C1-01.",
+  "independent_review_ref": null,
+  "adoption_status": "NOT_ADOPTED",
+  "terminal": "C1_00_CONTRACT_ORACLE_PACKET_READY_FOR_INDEPENDENT_REVIEW"
+}
