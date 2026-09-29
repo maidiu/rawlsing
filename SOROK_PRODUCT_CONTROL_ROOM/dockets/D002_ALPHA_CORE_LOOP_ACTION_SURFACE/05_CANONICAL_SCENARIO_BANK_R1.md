@@ -549,3 +549,207 @@ The system should:
 - query-invariant duration;
 - concurrency limits;
 - no prompt-packing exploit.
+
+
+## SCE-027 — Fragile chain mechanics
+
+### Setup
+The toilet chain has an admitted fragile/loose condition.
+
+Nadia warned the user to flush gently.
+
+The user performs a rough flush.
+
+### Requirement
+The chain outcome must be resolved from:
+- fixture state;
+- realized flush operation;
+- governing object-transition rule / bounded stochasticity if used.
+
+The narrator must not decide “this would be a good consequence.”
+
+### Tests
+- object state;
+- causal transition authority;
+- narrator-after-world ordering;
+- counterfactual stability.
+
+## SCE-028 — Half-heard cabinet event
+
+### Setup
+Nadia is at the stove with water running and the child speaking.
+
+The user opens the bathroom cabinet and later shouts a sentence.
+
+### Possible actor perception
+Nadia may:
+- hear the shout clearly;
+- hear a cabinet noise vaguely;
+- fail to identify which cabinet;
+- not know what was touched;
+- miss some words.
+
+### Tests
+- graded sensory access;
+- actor attention;
+- noise masking;
+- perception packet ≠ objective event.
+
+## SCE-029 — Magnanimity over private annoyance
+
+### Setup
+The user breaks the toilet chain, tries to fix it, fails, and reports it forthrightly.
+
+### Possible Nadia processing
+- immediate annoyance;
+- belief that user probably forgot;
+- appreciation of disclosure;
+- decision not to escalate;
+- outward generous reassurance;
+- weak residual significance trace.
+
+### Required surface
+Only outward behavior/speech becomes directly user-visible.
+
+### Tests
+- internal response ≠ expression;
+- multi-stream appraisal;
+- private significance;
+- no inner-state narration.
+
+## SCE-030 — Memory fading and later reactivation
+
+### Setup
+A minor practical failure occurs once and carries little salience.
+
+Months later several similar failures occur.
+
+### Requirement
+The first event may:
+- have lost detail;
+- retain gist;
+- regain significance when reactivated;
+- contribute weak evidence to a later pattern hypothesis.
+
+It should not behave as a perfect permanent recording in Nadia's conscious memory.
+
+### Tests
+- actor memory ≠ event log;
+- selective encoding;
+- forgetting;
+- reconsolidation;
+- pattern confidence.
+
+## SCE-031 — Child aspiration has multiple causes
+
+### Setup
+The user's stories contribute to a child becoming more ambitious.
+
+Other active causes include:
+- teacher encouragement;
+- existing interest;
+- media;
+- peer influence.
+
+### Requirement
+Rawlsing must not assign sole authorship of the aspiration to the user merely because their interaction is narratively salient.
+
+### Tests
+- causal contribution;
+- multi-causality;
+- anti-user-credit;
+- third-party autonomy.
+
+## SCE-032 — World event with no moral function
+
+### Setup
+During a visit, Nadia receives notice that her work shift changed because of a scheduling decision made elsewhere.
+
+### Requirement
+The event arises from workplace/institutional causality.
+
+It was not generated because:
+- Rawlsing wanted to test whether the user would help;
+- the relationship needed drama;
+- engagement was falling.
+
+The user may choose to respond, ignore it or never fully understand it.
+
+### Tests
+- non-teleological event generation;
+- independent institutions;
+- world not arranged around pedagogy.
+
+## SCE-033 — User thinks they caused something but did not
+
+### Setup
+The user gives Nadia advice.
+
+Later Nadia changes a plan.
+
+### Hidden causal truth
+The change was already driven by another commitment/event and the advice was not materially causal.
+
+### Requirement
+The product must allow the user to over-attribute influence to themselves without silently validating that belief.
+
+### Tests
+- actual causation ≠ user attribution;
+- non-player-centricity;
+- causal provenance.
+
+## SCE-034 — Ambiguous natural-language action
+
+### Setup
+User writes:
+> I grab it and put it over there while telling her I'll handle it.
+
+Multiple objects/locations are plausible.
+
+### Requirement
+The parser must not confidently invent a materially consequential target when ambiguity matters.
+
+Possible policies:
+- bounded clarification;
+- conservative interpretation;
+- return available ambiguity.
+
+### Tests
+- parser uncertainty;
+- action-resolution discipline;
+- no arbitrary LLM action completion.
+
+## SCE-035 — Actor-specific processing fan-out
+
+### Setup
+The user makes a joke audible to Nadia and her child.
+
+### Possible result
+- child finds it exciting and remembers it;
+- Nadia hears it but is occupied and barely registers it;
+- another guest mishears it;
+- each actor later behaves differently.
+
+### Tests
+- independent actor processing;
+- perception/appraisal/memory fan-out;
+- no focal-person shortcut.
+
+## SCE-036 — Delayed causal chain without user feedback
+
+### Setup
+User's unnoticed action changes a household condition.
+
+That later affects:
+- Nadia;
+- Samir;
+- a practical decision;
+- another relationship.
+
+The user never learns the full chain.
+
+### Tests
+- causal provenance;
+- delayed propagation;
+- consequence ≠ feedback;
+- world not obliged to close the loop for player comprehension.
