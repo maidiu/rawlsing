@@ -110,6 +110,7 @@ Top-level:
 - `15_SOROK_WIDE_OPEN_FRONTIER_PROGRAM_R1.md` — 71-question dependency/work map
 - `16_COURT1_COURT2_PLAYER_ENCOUNTER_RELATIONSHIP_SYNTHESIS_R1.md` — player/encounter + relationship-state ideation
 - `18_COURT3_COURT4_LIFE_PROGRESS_SYNTHESIS_R1.md` — life-outside-user + progress-without-score ideation
+- `19_COURT5_VEILED_SELF_MATERIAL_EMBODIMENT_R1.md` — as-self participation under veiled local material constraint
 - `17_FULL_RAWLSING_VOZHD_GROUNDING_INTEGRITY_R1.md` — takeover verification
 - `08_INTERACTION_SYSTEM_SYNTHESIS_R1.md`
 - `09_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R2.md`
@@ -213,6 +214,13 @@ The current lean is:
 - intimacy as transformation of relational affordances/expectations/stakes rather than hidden-lore unlock.
 
 This remains hypothesis-level and should now be compared against alternate encounter/player models.
+
+Additional current lean from Court 5:
+- the real user remains the moral/agentic subject rather than roleplaying a fully fictional character;
+- the veil assigns a bounded local material envelope—housing, money, time, transport, access, possessions, obligations—so care has real opportunity cost;
+- the player is an exogenous current self transposed into a constrained local position, not a claim that they would have remained the same person if born there;
+- ordinary user prose cannot mint resources or biography;
+- any later real-world donation/solidarity bridge must remain causally separate from in-world effectiveness.
 
 Additional current lean from Courts 3–4:
 - life advances through replayable event-driven causality rather than an always-on LLM stream;
