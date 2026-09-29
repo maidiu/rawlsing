@@ -1,0 +1,84 @@
+{
+  "schema": "PYAT_C3_02_INDEPENDENT_HOSTILE_CASE_REVIEW@1.0.0",
+  "disposition": "CHANGES_REQUIRED",
+  "G01": {
+    "result": "PASS",
+    "evidence": [
+      "STATIC_INSPECTION",
+      "SOURCE_FREE_EXECUTED"
+    ],
+    "hostiles": [
+      "float/string/bool/Decimal native-code substitutes rejected",
+      "wrong source SHA rejected",
+      "wrong variable rejected",
+      "wrong ordinal rejected",
+      "unlisted code rejected",
+      "int/float/Decimal physical identities remain distinct"
+    ]
+  },
+  "D01": {
+    "result": "PASS",
+    "evidence": [
+      "STATIC_INSPECTION",
+      "SOURCE_FREE_EXECUTED"
+    ],
+    "exact_pairs": [
+      [
+        "ac0b8bc1ddb2fa6b952417e35b6379ce6a2cf8596776a43282ba44f48e0ae1a2",
+        "BIG5"
+      ],
+      [
+        "5b703173845c086382fd93252f1cbc91dfef74007755459adfc73785389172f2",
+        "WINDOWS-1252"
+      ],
+      [
+        "66252a92c59bf6759b79a6b35b2be658b98a433373212a70c8ec94755d3e02ec",
+        "WINDOWS-1252"
+      ]
+    ],
+    "hostiles": [
+      "wrong SHA/encoding pairs rejected",
+      "auto/guess/fallback rejected",
+      "None carries no authority",
+      "compatibility-only lane remains separate",
+      "status ceiling remains PHYSICAL_DECODING_ONLY"
+    ]
+  },
+  "D02": {
+    "result": "FAIL__BOUNDED_COUNTEREXAMPLE",
+    "evidence": [
+      "STATIC_INSPECTION",
+      "SOURCE_FREE_EXECUTED_FOR_EXISTING_CASES"
+    ],
+    "passing_existing_cases": [
+      "bare R5 date/datetime/time rejection",
+      "exact naive built-in opaque carriers",
+      "field/type sensitivity",
+      "direct and naive item-unwrapped positive route",
+      "direct timezone-aware datetime/time rejection",
+      "string masquerade separation",
+      "unchanged facade binding",
+      "D01+D02 shared decoder composition"
+    ],
+    "counterexample": {
+      "label": "STATIC_INSPECTION",
+      "construction": "object.item() returns exact built-in timezone-aware datetime or time",
+      "code_path": [
+        "_physical_value calls item()",
+        "exact datetime/time is passed to normalize_decoder_physical_value",
+        "opaque_decoder_value raises R5CodecError because tzinfo is not None",
+        "_physical_value catches Exception broadly and suppresses that rejection",
+        "fallback _jsonable calls item() again and stringifies the timezone-aware datetime/time"
+      ],
+      "consequence": "A timezone-aware decoder-native value can cross the physical decoder as an ordinary string instead of failing closed.",
+      "violated_declared_boundary": "D02 rejects timezone-aware values while supporting item()-unwrapped exact native date/time values.",
+      "minimal_fix": "Catch item() extraction failure only; let normalize_decoder_physical_value/opaque_decoder_value rejection propagate. Add item-wrapper timezone-aware hostile tests."
+    }
+  },
+  "environment_hostile": {
+    "result": "FAIL",
+    "test": "rawlsing_next/tests/test_closed35_d02_opaque_datetime_carrier.py",
+    "behavior": "At import time, if pandas is absent, test invokes python -m pip install --disable-pip-version-check pandas.",
+    "consequence": "The semantic test mutates runtime capability and depends on mutable network/package-index state during collection."
+  }
+}

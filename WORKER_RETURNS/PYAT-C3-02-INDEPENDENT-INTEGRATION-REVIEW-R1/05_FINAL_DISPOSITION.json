@@ -1,0 +1,50 @@
+{
+  "schema": "PYAT_C3_02_INDEPENDENT_FINAL_DISPOSITION@1.0.0",
+  "disposition": "CHANGES_REQUIRED",
+  "terminal": "C3_02_INDEPENDENT_INTEGRATION_REVIEW_COMPLETE__HQ_ADJUDICATION_REQUIRED",
+  "semantic_candidate": "31fd2f4b7c7c2cdf72bed295b7cb5ca94528349f",
+  "reviewer_execution": {
+    "sha": "ba4a371fb77543d570c65cfe6e221260b445459a",
+    "workflow_run": 36619077886,
+    "job_id": 109579533802,
+    "artifact_id": 11057736422,
+    "artifact_digest": "sha256:8ef0d0f821a3946082a07bd0d3060288263cb60b2458ba5d335ef0334838236e",
+    "result": "53_PASSED__SOURCE_FREE_EXECUTED"
+  },
+  "accepted_findings": {
+    "G01": "STATIC_AND_SOURCE_FREE_EXECUTION_PASS_AT_DECLARED_GRAIN",
+    "D01": "STATIC_AND_SOURCE_FREE_EXECUTION_PASS_AT_DECLARED_GRAIN",
+    "D02_existing_direct_cases": "SOURCE_FREE_EXECUTION_PASS",
+    "facade_identity": "PASS__8a761119e4a8d68eb291fc4edfadb52e027f8284",
+    "execution_delta": "PASS__WORKER_CANDIDATE_TO_EXECUTION_COURT_SPEC_ONLY"
+  },
+  "required_changes": [
+    {
+      "id": "C3-02-R1",
+      "class": "EXECUTION_ENVIRONMENT_OWNERSHIP_AND_REPRODUCIBILITY",
+      "grain": "Remove import-time pandas installation from semantic test; provision dependency at court/environment layer; rerun exact six-file source-free qualification.",
+      "semantic_widening": false
+    },
+    {
+      "id": "C3-02-R2",
+      "class": "D02_FAIL_CLOSED_ITEM_UNWRAP",
+      "grain": "Do not swallow timezone-aware carrier rejection after item() unwrap; add item-wrapped timezone-aware datetime/time hostile coverage.",
+      "semantic_widening": false
+    }
+  ],
+  "documentary_residual": {
+    "class": "MISSING_MUST_READ_PATHS",
+    "paths": [
+      "PYAT_CONTROL_ROOM/OMEGA_VOZHD_ORCHESTRATION_R1/07_C3_EXECUTION_SPEC.md",
+      "PYAT_CONTROL_ROOM/OMEGA_VOZHD_ORCHESTRATION_R1/08_REVIEW_AND_INTEGRATION.md"
+    ],
+    "effect": "Recorded. Does not negate direct inspection of active court machinery, but HQ should repair/reference the authoritative location if these documents are intended to govern."
+  },
+  "not_certified": [
+    "raw survey execution",
+    "CURRENT_REAL_SOURCE_EXECUTED",
+    "CLOSED35 horizontal occupancy",
+    "source semantics",
+    "F1 project-wide completion"
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "schema": "PYAT_C3_02_INDEPENDENT_SCOPE_AND_DIFF_AUDIT@1.0.0",
+  "disposition": "CHANGES_REQUIRED",
+  "evidence_label": "STATIC_INSPECTION",
+  "reviewer_branch": "agent/reviewer-pyat-hq126-c3-02-physical-repair-integration-r1",
+  "commission_tip": "ba4a371fb77543d570c65cfe6e221260b445459a",
+  "implementation_baseline": "b3b2fa13049513078c301a1f6574b661fcf390c5",
+  "worker_commission": "e1420435591d727f48b7a4d5964709f87fcf5a4f",
+  "semantic_candidate": "31fd2f4b7c7c2cdf72bed295b7cb5ca94528349f",
+  "worker_execution_commit": "a26279dfad85ddc2a37f7cb396094da308bc58e4",
+  "worker_return": "d3204dc2a74e4628ac34e09e196e60b06ae8e135",
+  "commission_to_semantic_candidate": {
+    "commit_count": 3,
+    "exact_six_file_allowlist": true,
+    "files": [
+      "rawlsing_next/closed35_g01_sav_numeric_representation_authority.py",
+      "rawlsing_next/pre553_physical_decoder.py",
+      "rawlsing_next/pre553_r5_codec.py",
+      "rawlsing_next/tests/test_closed35_d01_declared_encoding_admission.py",
+      "rawlsing_next/tests/test_closed35_d02_opaque_datetime_carrier.py",
+      "rawlsing_next/tests/test_closed35_g01_sav_numeric_representation_authority.py"
+    ]
+  },
+  "semantic_candidate_to_worker_execution": {
+    "commit_count": 1,
+    "files": [
+      ".rabochii/court_spec.json"
+    ],
+    "court_spec_only": true
+  },
+  "blobs": {
+    "g01_authority": "31a9afd7d91ed4cb2fb1c1aab3ef86a5fdda1f85",
+    "decoder": "5a21bdbf314f240a8718fe64b6db734e839a8581",
+    "codec": "6000a1704d713f65e07610d81e9b3fd8bdd515ca",
+    "test_g01": "fb7b090809a609a3b0157f1ed8fcdcd8e8784525",
+    "test_d01": "8fc05965386055a208e5b3988112e67a2e6333e2",
+    "test_d02": "9571768fb75b58d37fc3021e7d7fce62100c5385",
+    "source_backed_c11_facade": "8a761119e4a8d68eb291fc4edfadb52e027f8284"
+  },
+  "forbidden_integration": {
+    "facade_edited": false,
+    "historical_census_harness_present": false,
+    "historical_qualified_receipt_tree_integrated": false,
+    "historical_decoder_whole_replacement": false,
+    "raw_survey_access": false
+  },
+  "grain_checks": {
+    "G01": "PASS__FINITE_EXACT_NINE_SURFACE_AND_HOSTILE_NONCOERCION",
+    "D01": "PASS__EXACT_THREE_SHA_ENCODING_PHYSICAL_ONLY",
+    "D02_direct": "PASS__EXACT_NAIVE_OPAQUE_DIRECT_AND_DIRECT_TZ_REJECT",
+    "D02_item_unwrapped_timezone_aware": "FAIL__R5_REJECTION_SWALLOWED_BY_BROAD_EXCEPTION_THEN_STRINGIFIED",
+    "D01_D02_composition": "PASS__NO_CROSS_AUTHORITY",
+    "unchanged_facade_binding": "PASS"
+  },
+  "missing_must_read_refs": {
+    "status": "MISSING_AT_COMMISSION_TIP",
+    "paths": [
+      "PYAT_CONTROL_ROOM/OMEGA_VOZHD_ORCHESTRATION_R1/07_C3_EXECUTION_SPEC.md",
+      "PYAT_CONTROL_ROOM/OMEGA_VOZHD_ORCHESTRATION_R1/08_REVIEW_AND_INTEGRATION.md"
+    ],
+    "treatment": "RECORDED_AS_DOCUMENTARY_RESIDUAL__NOT_SILENTLY_INVENTED"
+  }
+}

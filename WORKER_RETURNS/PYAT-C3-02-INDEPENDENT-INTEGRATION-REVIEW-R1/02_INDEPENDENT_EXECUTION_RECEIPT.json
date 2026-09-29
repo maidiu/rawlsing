@@ -1,0 +1,62 @@
+{
+  "schema": "PYAT_C3_02_INDEPENDENT_EXECUTION_RECEIPT@1.0.0",
+  "evidence_label": "SOURCE_FREE_EXECUTED",
+  "semantic_candidate_sha": "31fd2f4b7c7c2cdf72bed295b7cb5ca94528349f",
+  "reviewer_execution_sha": "ba4a371fb77543d570c65cfe6e221260b445459a",
+  "relevant_tree_relation": {
+    "worker_execution_sha": "a26279dfad85ddc2a37f7cb396094da308bc58e4",
+    "worker_execution_to_reviewer_execution_commits": 2,
+    "changed_paths": [
+      "WORKER_RETURNS/PYAT-C3-02-PHYSICAL-REPAIR-INTEGRATION-R1/00_RETURN.md",
+      "WORKER_RETURNS/PYAT-C3-02-PHYSICAL-REPAIR-INTEGRATION-R1/01_IMPLEMENTATION_MANIFEST.json",
+      "WORKER_RETURNS/PYAT-C3-02-PHYSICAL-REPAIR-INTEGRATION-R1/02_CURRENT_PORT_DIFF.json",
+      "WORKER_RETURNS/PYAT-C3-02-PHYSICAL-REPAIR-INTEGRATION-R1/03_QUALIFICATION_RECEIPT.json",
+      "WORKER_RETURNS/PYAT-C3-02-PHYSICAL-REPAIR-INTEGRATION-R1/04_HOSTILE_CASES.json",
+      "WORKER_RETURNS/PYAT-C3-02-PHYSICAL-REPAIR-INTEGRATION-R1/05_REMAINING_OBLIGATIONS.md",
+      "WORKER_RETURNS/PYAT-C3-02-INDEPENDENT-INTEGRATION-REVIEW-R1/00_COMMISSION.md"
+    ],
+    "production_test_or_court_spec_changes": false,
+    "relevant_executable_tree_equivalent": true
+  },
+  "run": {
+    "workflow": "Rabochii Governed Bounded Court",
+    "workflow_run": 36619077886,
+    "job_id": 109579533802,
+    "run_attempt": 1,
+    "event": "pull_request",
+    "evidence_pr": 476,
+    "evidence_pr_final_state": "closed_unmerged",
+    "head_sha": "ba4a371fb77543d570c65cfe6e221260b445459a",
+    "python": "CPython 3.11.16",
+    "protocol_self_test": {
+      "passed": 20,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "governed_court": {
+      "passed": 53,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "elapsed_seconds_from_log": 36.94
+    },
+    "artifact": {
+      "id": 11057736422,
+      "name": "rabochii-court-receipt-36619077886",
+      "digest": "sha256:8ef0d0f821a3946082a07bd0d3060288263cb60b2458ba5d335ef0334838236e",
+      "expired": false
+    }
+  },
+  "tests": [
+    "rawlsing_next/tests/test_closed35_g01_sav_numeric_representation_authority.py",
+    "rawlsing_next/tests/test_closed35_d01_declared_encoding_admission.py",
+    "rawlsing_next/tests/test_closed35_d02_opaque_datetime_carrier.py",
+    "rawlsing_next/tests/test_fiabc_lm2_r1j_sav_representation_authority.py",
+    "rawlsing_next/tests/test_r35_i01_physical_metadata.py",
+    "rawlsing_next/tests/test_pre553_source_backed_c11_facade.py"
+  ],
+  "raw_source_execution": false,
+  "current_real_source_executed": false,
+  "qualification_interpretation": "EXECUTION_REPRODUCED__NOT_HERMETICALLY_ACCEPTED_BECAUSE_TEST_IMPORT_MUTATES_RUNTIME_WITH_PIP_INSTALL"
+}
