@@ -1,0 +1,69 @@
+{
+  "schema": "PYAT_C3_02_HOSTILE_CASES@1.0.0",
+  "semantic_candidate_sha": "31fd2f4b7c7c2cdf72bed295b7cb5ca94528349f",
+  "execution_sha": "a26279dfad85ddc2a37f7cb396094da308bc58e4",
+  "final_court_passed": 53,
+  "G01": {
+    "accepted_grain": "EXACT_NINE_SURFACE_SAV_NATIVE_INT_RULE_TO_FLOAT64_PHYSICAL_REPRESENTATION_SUCCESSOR",
+    "executed": true,
+    "cases": [
+      "exact nine-surface oracle is frozen to sources 02/06/21, exact variables, ordinals and native-code sets",
+      "float native-code substitute rejected",
+      "string native-code substitute rejected",
+      "bool native-code substitute rejected",
+      "Decimal native-code substitute rejected",
+      "wrong source SHA rejected",
+      "wrong variable rejected",
+      "wrong ordinal rejected",
+      "neighboring/unlisted native code rejected",
+      "R5 int token remains distinct from float64 token",
+      "physical binding key(int) remains distinct from successor float binding key",
+      "float and Decimal remain distinct",
+      "Q10B/997 user-missing state and discrete declaration preserved",
+      "negative limits retain no DTA, no other source/variable/code, no cross-wave inheritance, no label/display semantics"
+    ]
+  },
+  "D01": {
+    "accepted_grain": "EXACT_SOURCE_SHA_PLUS_DECLARED_ENCODING_PHYSICAL_DECODER_ADMISSION",
+    "executed": true,
+    "cases": [
+      "exact three SHA->encoding declarations only",
+      "wrong encoding for known SHA rejected",
+      "unknown zero SHA rejected",
+      "unknown f SHA rejected",
+      "auto rejected",
+      "guess rejected",
+      "fallback rejected",
+      "encoding=None remains unprivileged with authority_status=None",
+      "pre-existing compatibility-only lane conserved",
+      "cross-source inheritance rejected",
+      "authority status remains PHYSICAL_DECODING_ONLY and does not mint text semantics"
+    ]
+  },
+  "D02": {
+    "accepted_grain": "EXPLICIT_OPAQUE_DECODER_NATIVE_NAIVE_DATE_TIME_CARRIER__REPRESENTATION_ONLY",
+    "executed": true,
+    "cases": [
+      "bare date/datetime/time rejected by ordinary R5 encode",
+      "exact naive built-in date/datetime/time produce opaque carriers",
+      "type identity distinguishes date from datetime",
+      "field/microsecond change changes opaque identity",
+      "nested decoder metadata normalization preserves opaque types",
+      "direct decoder route returns opaque carrier instead of convenience string",
+      "item()-unwrapped exact native date/time route covered",
+      "timezone-aware datetime rejected",
+      "timezone-aware time rejected",
+      "timezone-aware values reject through decoder route",
+      "ordinary date-looking string remains string and cannot masquerade as carrier",
+      "int and float lanes remain distinct",
+      "unchanged facade binds R5OpaqueValue directly and remains field-sensitive",
+      "D01 declared-encoding admission and D02 physical-value carrier compose on the same current decoder without cross-authority"
+    ]
+  },
+  "unmodified_regressions": [
+    "rawlsing_next/tests/test_fiabc_lm2_r1j_sav_representation_authority.py",
+    "rawlsing_next/tests/test_r35_i01_physical_metadata.py",
+    "rawlsing_next/tests/test_pre553_source_backed_c11_facade.py"
+  ],
+  "result": "PASS__ALL_REQUIRED_HOSTILES_AND_REGRESSIONS_IN_ONE_FINAL_GOVERNED_COURT"
+}

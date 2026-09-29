@@ -1,0 +1,93 @@
+{
+  "schema": "PYAT_C3_02_CURRENT_PORT_DIFF@1.0.0",
+  "implementation_base": "b3b2fa13049513078c301a1f6574b661fcf390c5",
+  "commission_tip": "e1420435591d727f48b7a4d5964709f87fcf5a4f",
+  "semantic_candidate": "31fd2f4b7c7c2cdf72bed295b7cb5ca94528349f",
+  "execution_sha": "a26279dfad85ddc2a37f7cb396094da308bc58e4",
+  "commission_tip_to_semantic_candidate": {
+    "commit_count": 3,
+    "net_changed_files": 6,
+    "files": [
+      {
+        "path": "rawlsing_next/closed35_g01_sav_numeric_representation_authority.py",
+        "status": "added",
+        "additions": 375,
+        "deletions": 0
+      },
+      {
+        "path": "rawlsing_next/pre553_physical_decoder.py",
+        "status": "modified",
+        "additions": 38,
+        "deletions": 4
+      },
+      {
+        "path": "rawlsing_next/pre553_r5_codec.py",
+        "status": "modified",
+        "additions": 44,
+        "deletions": 0
+      },
+      {
+        "path": "rawlsing_next/tests/test_closed35_d01_declared_encoding_admission.py",
+        "status": "added",
+        "additions": 62,
+        "deletions": 0
+      },
+      {
+        "path": "rawlsing_next/tests/test_closed35_d02_opaque_datetime_carrier.py",
+        "status": "added",
+        "additions": 149,
+        "deletions": 0
+      },
+      {
+        "path": "rawlsing_next/tests/test_closed35_g01_sav_numeric_representation_authority.py",
+        "status": "added",
+        "additions": 216,
+        "deletions": 0
+      }
+    ],
+    "allowlist_exact": true,
+    "forbidden_path_changes": 0
+  },
+  "semantic_candidate_to_execution": {
+    "commit_count": 1,
+    "files": [
+      {
+        "path": ".rabochii/court_spec.json",
+        "status": "modified",
+        "additions": 7,
+        "deletions": 9
+      }
+    ],
+    "court_spec_only": true
+  },
+  "decoder_port": {
+    "current_baseline_blob": "d2a074a41fb556a1cd5928a5fe1421ef3672a4e5",
+    "final_blob": "5a21bdbf314f240a8718fe64b6db734e839a8581",
+    "historical_combined_candidate_decoder_blob": "37013eb52efb8b61ef202b0d686f729f459d79c5",
+    "historical_d01_candidate_decoder_blob": "4af3a8502ee99aa262bb5086404ca9f8a8892807",
+    "historical_d02_candidate_decoder_blob": "1d848d2506430006883555aba9c9c2d8426fad15",
+    "whole_historical_replacement": false,
+    "preserved_current_r35_i01_metadata_contract": true,
+    "accepted_changes": [
+      "D01 exact three-row declared encoding allowlist/status and exact _compatibility_config branch",
+      "D02 normalize_decoder_physical_value import",
+      "D02 exact naive built-in date/datetime/time _physical_value route including item()-unwrapped exact types",
+      "D02 PhysicalCell raw capture through _physical_value"
+    ]
+  },
+  "codec_port": {
+    "current_baseline_blob": "72f8f3c03ed065e86fea4e76bb17f8e06c2bf540",
+    "final_blob": "6000a1704d713f65e07610d81e9b3fd8bdd515ca",
+    "accepted_changes": [
+      "datetime import",
+      "opaque_decoder_value exact naive built-in date/datetime/time",
+      "normalize_decoder_physical_value recursive helper",
+      "required helper exports"
+    ]
+  },
+  "test_ports": {
+    "G01": "No historical receipt tree is imported; exact frozen nine-surface identities and hostiles are direct fixtures.",
+    "D01": "Accepted historical D01 test content is source-free and reused at exact semantic content grain.",
+    "D02": "Historical census harness import/assertion removed; facade binding and shared-decoder composition added. Test-only pandas dependency is bootstrapped only when absent because the generic bounded-court workflow installs pytest alone."
+  }
+}

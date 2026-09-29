@@ -1,0 +1,95 @@
+{
+  "schema": "PYAT_C3_02_IMPLEMENTATION_MANIFEST@1.0.0",
+  "repository": "maidiu/rawlsing",
+  "assigned_branch": "agent/rabochii-pyat-hq126-c3-02-physical-repair-integration-r1",
+  "commission_tip": "e1420435591d727f48b7a4d5964709f87fcf5a4f",
+  "implementation_base": "b3b2fa13049513078c301a1f6574b661fcf390c5",
+  "accepted_c3_01_return": "d9462674d45f228b5985a5ce3158723b87ca6fa6",
+  "independent_approval": "f8f152c60747a6146e92539a36af76ddc97a8d23",
+  "final_semantic_candidate_sha": "31fd2f4b7c7c2cdf72bed295b7cb5ca94528349f",
+  "final_execution_sha": "a26279dfad85ddc2a37f7cb396094da308bc58e4",
+  "frozen_grains": {
+    "G01": "EXACT_NINE_SURFACE_SAV_NATIVE_INT_RULE_TO_FLOAT64_PHYSICAL_REPRESENTATION_SUCCESSOR",
+    "D01": "EXACT_SOURCE_SHA_PLUS_DECLARED_ENCODING_PHYSICAL_DECODER_ADMISSION",
+    "D02": "EXPLICIT_OPAQUE_DECODER_NATIVE_NAIVE_DATE_TIME_CARRIER__REPRESENTATION_ONLY"
+  },
+  "semantic_paths": [
+    {
+      "path": "rawlsing_next/closed35_g01_sav_numeric_representation_authority.py",
+      "action": "ADD",
+      "before_blob": null,
+      "after_blob": "31a9afd7d91ed4cb2fb1c1aab3ef86a5fdda1f85",
+      "note": "accepted G01 finite authority module at accepted semantic content grain"
+    },
+    {
+      "path": "rawlsing_next/pre553_physical_decoder.py",
+      "action": "MODIFY",
+      "before_blob": "d2a074a41fb556a1cd5928a5fe1421ef3672a4e5",
+      "after_blob": "5a21bdbf314f240a8718fe64b6db734e839a8581",
+      "note": "current-baseline D01 declared-encoding branch plus D02 physical-value route; not a historical decoder replacement"
+    },
+    {
+      "path": "rawlsing_next/pre553_r5_codec.py",
+      "action": "MODIFY",
+      "before_blob": "72f8f3c03ed065e86fea4e76bb17f8e06c2bf540",
+      "after_blob": "6000a1704d713f65e07610d81e9b3fd8bdd515ca",
+      "note": "D02 exact naive built-in date/datetime/time opaque carrier helpers"
+    },
+    {
+      "path": "rawlsing_next/tests/test_closed35_g01_sav_numeric_representation_authority.py",
+      "action": "ADD_CURRENT_BASELINE_PORT",
+      "before_blob": null,
+      "after_blob": "fb7b090809a609a3b0157f1ed8fcdcd8e8784525",
+      "note": "frozen nine-surface oracle encoded directly; no historical receipt-tree dependency"
+    },
+    {
+      "path": "rawlsing_next/tests/test_closed35_d01_declared_encoding_admission.py",
+      "action": "ADD",
+      "before_blob": null,
+      "after_blob": "8fc05965386055a208e5b3988112e67a2e6333e2",
+      "note": "accepted exact D01 hostile test"
+    },
+    {
+      "path": "rawlsing_next/tests/test_closed35_d02_opaque_datetime_carrier.py",
+      "action": "ADD_CURRENT_BASELINE_PORT",
+      "before_blob": null,
+      "after_blob": "9571768fb75b58d37fc3021e7d7fce62100c5385",
+      "note": "historical census-harness dependency removed; direct facade compatibility and D01×D02 composition added; test-only pandas bootstrap when absent"
+    }
+  ],
+  "unchanged_or_forbidden": {
+    "facade": {
+      "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+      "baseline_blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+      "semantic_candidate_blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+      "edited": false
+    },
+    "historical_census_harness": {
+      "path": "rawlsing_next/closed35_representation_census_harness.py",
+      "present_in_semantic_candidate": false,
+      "resurrected": false
+    },
+    "historical_qualified_census_receipt_tree_integrated": false,
+    "raw_survey_source_access": false,
+    "semantic_authority_broadened": false
+  },
+  "exact_d01_pairs": [
+    [
+      "ac0b8bc1ddb2fa6b952417e35b6379ce6a2cf8596776a43282ba44f48e0ae1a2",
+      "BIG5"
+    ],
+    [
+      "5b703173845c086382fd93252f1cbc91dfef74007755459adfc73785389172f2",
+      "WINDOWS-1252"
+    ],
+    [
+      "66252a92c59bf6759b79a6b35b2be658b98a433373212a70c8ec94755d3e02ec",
+      "WINDOWS-1252"
+    ]
+  ],
+  "execution_only_delta": {
+    "path": ".rabochii/court_spec.json",
+    "semantic_candidate_to_execution_commits": 1,
+    "only_changed_path": true
+  }
+}

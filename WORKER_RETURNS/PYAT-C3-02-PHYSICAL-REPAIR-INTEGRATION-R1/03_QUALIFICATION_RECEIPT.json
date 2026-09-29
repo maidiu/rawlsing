@@ -1,0 +1,86 @@
+{
+  "schema": "PYAT_C3_02_QUALIFICATION_RECEIPT@1.0.0",
+  "status": "PASS",
+  "semantic_candidate_sha": "31fd2f4b7c7c2cdf72bed295b7cb5ca94528349f",
+  "execution_sha": "a26279dfad85ddc2a37f7cb396094da308bc58e4",
+  "source_access": {
+    "raw_survey_sources_opened": false,
+    "raw_survey_sources_materialized": false,
+    "raw_survey_sources_decoded": false,
+    "candidate_a_b_c_run": false,
+    "measured_p2x_run": false
+  },
+  "final_run": {
+    "workflow": "Rabochii Governed Bounded Court",
+    "workflow_run": 36615231777,
+    "job_id": 109566427495,
+    "run_attempt": 1,
+    "event": "pull_request",
+    "evidence_pr": 475,
+    "evidence_pr_final_state": "closed_unmerged",
+    "head_sha": "a26279dfad85ddc2a37f7cb396094da308bc58e4",
+    "python": "CPython 3.11.16",
+    "runner": "ubuntu-latest",
+    "protocol_self_test": {
+      "command": "python -m pytest -q rawlsing_next/tests/test_rabochii_execution_protocol.py rawlsing_next/tests/test_rabochii_bounded_court.py",
+      "passed": 20,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "court_spec_validation": "PASS",
+    "governed_court": {
+      "launcher": "python -m rawlsing_next.rabochii_bounded_court .rabochii/court_spec.json --receipt .rabochii/court_receipt.json",
+      "pytest_command": [
+        "python",
+        "-m",
+        "pytest",
+        "-q",
+        "rawlsing_next/tests/test_closed35_g01_sav_numeric_representation_authority.py",
+        "rawlsing_next/tests/test_closed35_d01_declared_encoding_admission.py",
+        "rawlsing_next/tests/test_closed35_d02_opaque_datetime_carrier.py",
+        "rawlsing_next/tests/test_fiabc_lm2_r1j_sav_representation_authority.py",
+        "rawlsing_next/tests/test_r35_i01_physical_metadata.py",
+        "rawlsing_next/tests/test_pre553_source_backed_c11_facade.py"
+      ],
+      "passed": 53,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "elapsed_seconds_from_pytest_log": 47.26
+    },
+    "artifact": {
+      "id": 11055435060,
+      "name": "rabochii-court-receipt-36615231777",
+      "digest": "sha256:e823e3fcc269357584fce20d03676f05f9a6e605617d0101e205e721d37a68fe",
+      "expired": false
+    }
+  },
+  "preserved_failed_attempt": {
+    "semantic_candidate_sha": "42ddc284f7a959797d864e6f8e656fbd94d82348",
+    "execution_sha": "9a158eea3ff450292486b2d40ae8f19d21fc9f12",
+    "workflow_run": 36614460693,
+    "job_id": 109563805093,
+    "run_attempt": 1,
+    "protocol_passed": 20,
+    "governed_result": "COLLECTION_ERROR_BEFORE_C3_TEST_EXECUTION",
+    "error": "ModuleNotFoundError: No module named 'pandas' while collecting rawlsing_next/tests/test_pre553_source_backed_c11_facade.py",
+    "classification": "EXECUTION_CAPABILITY_DEPENDENCY_GAP__NOT_REPAIR_FAILURE",
+    "artifact": {
+      "id": 11054548103,
+      "digest": "sha256:b4cc555128c59d7456ffbae0fc77ee734f65d8932a4ca3805dacdf548808c9b5"
+    },
+    "evidence_preserved": true
+  },
+  "dependency_routing": {
+    "generic_bounded_court_workflow_installs": [
+      "pytest"
+    ],
+    "unchanged_facade_regression_requires": [
+      "pandas"
+    ],
+    "resolution": "allowlisted D02 qualification test installs pandas via pip only if absent before facade-test collection",
+    "precedent": "existing Rawlsing source-free workflows install pytest+pandas",
+    "production_semantics_changed_by_resolution": false
+  }
+}
