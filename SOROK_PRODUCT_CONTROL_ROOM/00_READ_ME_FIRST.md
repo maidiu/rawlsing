@@ -82,9 +82,10 @@ The deepest longitudinal mirror is the user's own relational praxis.
 4. `04_CURRENT_SYSTEM_TO_PRODUCT_CROSSWALK.md`
 5. `05_PROGRAM_MAP.md`
 6. `06_OPERATING_METHOD.md`
-7. `state/CURRENT_STATE.md`
-8. machine-readable ledgers in `registers/`
-9. open scoped investigations in `dockets/`
+7. `08_INTERACTION_SYSTEM_SYNTHESIS_R1.md` — current cross-cutting interaction synthesis
+8. `state/CURRENT_STATE.md`
+9. machine-readable ledgers in `registers/`
+10. open scoped investigations in `dockets/`
 
 ## 4. Anti-sprawl law
 
@@ -117,3 +118,19 @@ Sorok must never collapse these statuses.
 This R1 seed does **not** pretend the product is designed.
 
 It establishes the professional machinery by which the product can now be designed without losing questions, conflating speculation with decisions, or reopening governed engineering by accident.
+
+
+## 7. Current interaction-system bank
+
+The first substantial Sorok product pass is now serialized rather than chat-dependent.
+
+Start with:
+- `08_INTERACTION_SYSTEM_SYNTHESIS_R1.md`
+- D001 `01_INHERITED_TEMPORAL_GRAIN_ARCHITECTURE_R1.md`
+- D002 `01_INTERACTION_CONSTITUTION_R1.md`
+- D002 `02_TEMPORAL_ATTENTION_AND_INFORMATION_ACQUISITION_R1.md`
+- D002 `03_RECIPROCAL_OBSERVATION_PRIVACY_AND_PRESENTATION_R1.md`
+- D002 `04_NONCURATORIAL_WORLD_DETAIL_AND_BINDING_REALITY_R1.md`
+- D002 `05_CANONICAL_SCENARIO_BANK_R1.md`
+
+These files preserve the current interaction design without promoting it into governed Pyat/V3 implementation law.
