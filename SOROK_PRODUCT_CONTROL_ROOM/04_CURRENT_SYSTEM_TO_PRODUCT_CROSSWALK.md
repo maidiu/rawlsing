@@ -59,37 +59,34 @@ Enough exact historical/relational input for V3 to derive:
 
 This is a **candidate terminal-demand requirement**, not current Pyat law.
 
-### V3 candidate responsibility
-V3 should likely produce a person whose psychology includes:
-- dispositions;
-- developmental organization;
-- relational priors;
-- role-conditioned tendencies;
-- defenses;
-- need / trust / conflict grammars;
-- self-model and other-model capacities;
-- dynamic attractors and health potentials.
+### Existing V3 / CAN-008 / PFF temporal-grain split
 
-V3 should not own the entire future relationship with a particular user.
+Sorok must preserve the already-developed distinction rather than inventing a generic “live V3” layer.
 
-### Post-V3 relational runtime candidate owner
-A separate dyadic / network runtime may need to own:
-- user↔persona relationship state;
+**Durable / formative V3** owns generated developmental life and durable biography/state: long-run developmental organization, realized history, persistent change, memory/causal traces, relationships/genealogy, attractor history and other owner-governed durable state.
+
+**CAN-008** owns shared person×event coupling semantics: actor receivability, uptake/appraisal, situated recruitment, immediate multi-stream response/metabolism and bounded current consequence. Immediate response is not automatically persistent developmental change.
+
+**PFF** owns the interaction-fast / session / user-opacity remainder between durable V3 person-state and V2 expression. Prior PFF work distinguishes turn-ephemeral state, session-live RAW and durable V3 person state; PFF must not become a second durable biography/person engine.
+
+**V2** owns expression/phenomenological rendering from actor-safe inputs.
+
+Therefore the current Sorok question is **not** “should we invent a new dyadic runtime?” by default. It is:
+
+> Which new relational semantics required by the product already belong inside durable V3 owners, CAN-008 person×event coupling, PFF interaction-fast/session state, or V2 rendering—and only after that decomposition, is any genuinely ownerless dyadic/network semantic class left?
+
+Candidate relational requirements to place through that existing split include:
+- user↔persona relationship history;
 - mutual models;
-- admitted shared history;
-- commitments;
-- injuries;
-- repair;
-- trust dynamics;
-- dependency;
+- commitments and injuries;
+- trust / repair / dependency dynamics;
 - invitations / access;
 - network consequences;
-- relationship-conditioned activation of V3 priors.
-
-Whether this belongs in PFF, V2, application runtime or a new named layer is OPEN.
+- relationship-conditioned activation of durable V3 priors;
+- promotion rules by which interaction-fast/session material becomes admitted durable V3 history.
 
 ### Expression layer
-The LLM should render only lawfully accessible state and should not silently update canonical relationship or person state.
+The LLM should render only lawfully accessible state and should not silently update canonical relationship or person state. Rendered artifacts require the already-governed causal/admission path before becoming durable life.
 
 ## 4. Likely future architecture questions for Pyat
 
