@@ -1,6 +1,6 @@
-# C1-00 analytical-composition contract freeze — R1
+# C1-00 analytical-composition contract freeze — R1 + R2 corrections
 
-Status: `C1_00_CONTRACT_ORACLE_PACKET_READY_FOR_INDEPENDENT_REVIEW`
+Status: `C1_00_R2_CORRECTIONS_READY_FOR_INDEPENDENT_REREVIEW`
 
 This is a **documentary contract/oracle freeze only**. It does not self-approve C1-00, execute C1-01, edit production code, create survey/model/comparability authority, or claim real-source proof.
 
@@ -309,3 +309,158 @@ The reviewer should derive counterexamples before reading any future success nar
 - replay that proves only the consumer but is reported as full recomputation.
 
 This packet is ready for independent review only. It is **not** an approval and does not authorize C1-01 by itself.
+
+
+## R2 authoritative correction addendum
+
+This addendum is part of the corrected C1-00 contract. Where it is more specific than the R1 text above, **R2 controls**. It corrects exactly the five defects returned by independent review at `8baa2e1e3a6f4f96311fbd660b65933fb4aff6c4`; all previously reviewed PASS holdings remain unchanged.
+
+Exact correction packet:
+
+- `WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/01_CORRECTION_MATRIX.json`
+- `WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/02_VALUE_RELATION_ORACLE.json`
+- `WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/03_SYNTHETIC_AUTHORITY_FREEZE.json`
+- `WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/04_SLICE_PROJECTION.json`
+- `WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/05_STATE_AND_DETERMINANT_CLOSURE.json`
+
+### R2-A — condition/value identity is a value-bearing relation, not co-custody
+
+The R1 `ConditionValueBindingWitness` definition is superseded by `C1_CONDITION_VALUE_BINDING_WITNESS_SCHEMA@2`, schema hash:
+
+`0a881f32dee7142979d76ebf4f3462df16d8a6bad55a23b2e8fc22834ed04f36`.
+
+For every retained conditioner, the witness must include and bind:
+
+- exact full `ConditionerBinding.material()`;
+- full consumer-binding fingerprint and `consumer_query.ref`;
+- exact source-free subject-condition preimage ref **and material**;
+- exact producer query and predicate refs/hash;
+- exact normalized value-bearing producer predicate-leaf ref/projection;
+- exact fixture-only pairing-ground-truth ref;
+- exact pairing/comparability `AuthorityRef`;
+- exact source universe, release and effective time;
+- `binding_mode = EXPLICIT_VALUE_BEARING_RELATION__NO_INFERENCE`.
+
+The adapter must deterministically verify, before any `PossibilitySliceEvidence` construction:
+
+1. `ConditionerBinding.subject_fact_ref == subject_condition_preimage_ref`;
+2. `ConditionerBinding.empirical_coordinate_ref == subject_preimage.empirical_semantic_ref`;
+3. the binding's pairing/comparability authority equals the exact frozen fixture AuthorityRef;
+4. binding and witness source/release/effective-time material match exactly;
+5. the actual producer predicate contains the exact normalized leaf whose projection hashes to the frozen leaf ref;
+6. subject preimage semantic ref equals predicate-leaf semantic ref;
+7. subject preimage exact value equals predicate-leaf exact value;
+8. the exact frozen pairing-ground-truth ref names **that specific subject-preimage / predicate-leaf pair**.
+
+Failure of any check is `CONDITION_VALUE_RELATION_MISMATCH`, before slice construction and before the consumer call.
+
+The mandatory hostile is now exact: same `binding_id="position"`, same source/release/target, frozen subject preimage `POSITION=P1`, but producer leaf `POSITION==P2` => reject. The adapter may not turn this wrong relation into a stable identity merely by hashing both sides.
+
+The frozen value preimages, leaf preimages and pairings are in `02_VALUE_RELATION_ORACLE.json`. They are fixture/oracle material only and create **no real-source comparability law**. Real-source subject↔survey pairing remains blocked unless an existing competent owner supplies the relation.
+
+### R2-B — complete synthetic authority preimages are frozen
+
+The R1 tag-only authority freeze is superseded by `03_SYNTHETIC_AUTHORITY_FREEZE.json`.
+
+For every synthetic authority needed by C1-01, the packet now freezes:
+
+- complete canonical authority preimage/material;
+- class/purpose;
+- governed operation(s);
+- exact scope;
+- version and effective interval;
+- governed object families where the existing PRE553 `AuthoritySnapshot` owner applies;
+- replay/semantic material where applicable;
+- exact expected `AuthorityRef` content hash.
+
+Hash law:
+
+`authority_content_hash = sha256(canonical_json(complete_frozen_authority_preimage))`.
+
+Therefore a changed scope, operation, model rule, pairing set, effective interval or other frozen authority material under the same human-readable label **must** change identity. Reusing an old hash is an oracle failure.
+
+Five entries use existing PRE553 authority kinds for the synthetic I03 fixture. Three `FIXTURE_ONLY_*` entries exist only to satisfy existing consumer `AuthorityRef` inputs at the source-free court; they are **not new production authority kinds** and have zero real-source effect.
+
+### R2-C — UNKNOWN is distinct from UNVISITED and UNRESOLVED
+
+The R1 phrase “adaptive unvisited/unknown” was too coarse. R2 freezes separate owner-native states:
+
+- `UNKNOWN_CURRENTNESS` — existing B5 lifecycle selection owner;
+- `NO_CURRENT` — existing explicit B5 no-current receipt;
+- `CONFLICTING_CURRENT_SELECTION` — existing B5 conflict;
+- `EXPLICIT_UNKNOWN_UNVISITED` — adaptive search territory not visited;
+- `UNRESOLVED` — empirical/query/consumer unresolved path;
+- `UNAVAILABLE` — missing exact source/authority/risk/measure path.
+
+None may be substituted for another. The explicit UNKNOWN witness is the existing B5 `UNKNOWN_CURRENTNESS` path in baseline blob `a11c9eb73abab9be118ef4f0b6e325e676059f27`. No synonym or new owner is invented.
+
+### R2-D — exact consumer slice projection
+
+C1-01 has exactly one lawful supported-slice projection:
+
+`C1_POSSIBILITY_SLICE_PROJECTION@1`
+
+schema hash:
+
+`c00e038dd2c1177bfc7842f12febef7b3e30b92bc421df244e2a8e3c4a20b17a`.
+
+Full schema: `04_SLICE_PROJECTION.json`.
+
+For a supported scalar slice, `PossibilitySliceEvidence.geometry` is exactly `C1_POSSIBILITY_SLICE_GEOMETRY@1`, with frozen keys for:
+
+- exact source fact/query/predicate/witness refs;
+- exact target ref, arity, joint-order semantics, full component material and target-domain identity;
+- exact risk-set ref/type, risk-set member refs and denominator member refs;
+- exact raw denominator and authorized weighted denominator;
+- exact measure kind/basis, optional weight basis and exact design/estimand context;
+- complete producer cell material/state;
+- raw numerator per cell and authorized weighted numerator;
+- exact reduced-fraction cell probability.
+
+`PossibilitySliceEvidence.raw_support` means **exactly `EmpiricalFact.raw_denominator_support`**. It never means resolved-target support or one cell numerator.
+
+The exact evidence ref is content-addressed over the complete frozen evidence payload including the value-relation witness. Alternate geometry keys or alternate `raw_support` meanings fail the adapter contract.
+
+For AT07:
+
+- forward P1 slice: `raw_support=60`, yes `54/60=9/10`, no `6/60=1/10`;
+- reverse yes slice: `raw_support=62`, P1 `54/62=27/31`, P2 `8/62=4/31`.
+
+Producer states that cannot be represented losslessly in the consumer vocabulary remain in the outer envelope and may lawfully produce `consumer_result=null`; they are not fabricated as supported geometry.
+
+### R2-E — determinant, replay and invalidation closure
+
+The direct composition determinant set now necessarily includes, in addition to every R1 determinant:
+
+- condition-value witness ref/hash;
+- every subject-condition preimage ref;
+- every producer predicate-leaf ref/projection used for conditioning;
+- every pairing-ground-truth ref;
+- every pairing/comparability AuthorityRef;
+- exact risk-set and denominator member refs;
+- measure kind as well as measure-basis ref;
+- full target component/topology/domain material;
+- constructed slice evidence ref;
+- slice projection schema hash.
+
+The composed result identity includes these relation determinants. Fresh-process full-composition replay must reload/reconstruct them before it can claim `FULL_COMPOSITION_FRESH_PROCESS_RECOMPUTE`.
+
+Mandatory AT19 R2 mutation: hold producer counts, query/predicate, source/release, risk members, denominator members, measure, target and model rule fixed; mutate only the exact condition-value relation/witness determinant. The composed direct result **must reidentify**. If the family is lifecycle-governed, existing B5 determinant edges must invalidate/reidentify all and only dependent releases. Unrelated releases remain usable. C1 still does not impose B5 on competent direct empirical output.
+
+### R2 preserved PASS holdings
+
+R2 does not weaken or reopen the already accepted C1-00 holdings for:
+
+- exact source universe + release identity;
+- target topology/domain/component identity;
+- risk/eligibility/denominator/member identity;
+- RAW versus governed-weighted measure/design/estimand identity;
+- recursive immediate-parent ancestry and positive-handoff/full-coverage distinction;
+- replay-grade separation;
+- direct versus learned/adjudicated route legitimacy;
+- AT07 arithmetic `54/60` forward and `54/62` reverse;
+- the narrow C1-01 future write allowlist.
+
+C1-01 remains unimplemented and unauthorized pending independent rereview of this corrected packet.
+
+`C1_00_R2_CORRECTIONS_READY_FOR_INDEPENDENT_REREVIEW`
