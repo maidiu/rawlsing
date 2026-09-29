@@ -83,10 +83,11 @@ The deepest longitudinal mirror is the user's own relational praxis.
 5. `05_PROGRAM_MAP.md`
 6. `06_OPERATING_METHOD.md`
 7. `08_INTERACTION_SYSTEM_SYNTHESIS_R1.md` — current cross-cutting interaction synthesis
-8. `09_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R2.md` — coverage audit and R2 corrections; read this before assuming the interaction corpus is complete
-9. `state/CURRENT_STATE.md`
-10. machine-readable ledgers in `registers/`
-11. open scoped investigations in `dockets/`
+8. `09_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R2.md` — second-pass corrections
+9. `10_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R3.md` — current completeness audit; read this before assuming the interaction corpus is complete
+10. `state/CURRENT_STATE.md`
+11. machine-readable ledgers in `registers/`
+12. open scoped investigations in `dockets/`
 
 ## 4. Anti-sprawl law
 
@@ -155,3 +156,24 @@ That audit found and corrected:
 - under-specified plausible/cumulative/query-invariant duration law.
 
 Do not reintroduce the superseded generic `PERSON-STATE RECURSION → DYAD / NETWORK RECURSION` formulation.
+
+
+## 9. R3 completeness audit
+
+Current completeness authority for the interaction ideation corpus:
+`10_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R3.md`.
+
+R3 additionally closed representation gaps around:
+- player embodiment and position;
+- lawful encounter/access;
+- player resources/capabilities;
+- ATTEND not silently performing DO;
+- typed testimony/observation/inference;
+- user knowledge provenance;
+- lazy-world versus diegetic existence;
+- ambient scene framing;
+- concurrent SAY/DO/ATTEND;
+- interruptible ATTEND and partial information;
+- third-party actor independence.
+
+R3 does not claim these mechanisms are fully designed. It claims the open design obligations are now durably represented.
