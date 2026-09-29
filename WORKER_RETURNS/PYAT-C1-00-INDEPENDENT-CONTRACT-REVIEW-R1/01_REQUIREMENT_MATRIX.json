@@ -1,0 +1,164 @@
+{
+  "schema": "PYAT_C1_00_INDEPENDENT_REQUIREMENT_MATRIX@1",
+  "reviewed_return": "df6f2d36e274744d217dc4a380c73e2c7e18e83f",
+  "implementation_baseline": "b3b2fa13049513078c301a1f6574b661fcf390c5",
+  "reviewer_commission_tip": "642e48f26f94fb144ef5e26942ba56fdb7881307",
+  "disposition": "CHANGES_REQUIRED",
+  "rows": [
+    {
+      "id": "R01_SOURCE_IDENTITY",
+      "status": "PASS",
+      "requirement": "Exact source universe + exact release identity; identical-looking values from another release must not alias.",
+      "evidence": [
+        "worker analytical_contract.md blob 2bbac259201c84dfdd124ec26942e95a76dadbe8 §5 Source",
+        "baseline pre553_empirical_query.py blob 03facecf70890bfd13b80418620d274cbcd69d02 execute_empirical_query",
+        "baseline _pre553_query_eval.py blob f808dfcd2008cc71e9203de3cadf1abe14223974 lines 515-535 replay material"
+      ],
+      "review": "Worker requires exact universe and C11 release refs and forbids fuzzy/latest substitution. Producer replay/fact identity carries release refs."
+    },
+    {
+      "id": "R02_CONDITION_VALUE_IDENTITY",
+      "status": "FAIL",
+      "requirement": "Exact predicate AND exact condition/value binding; identical conditioner IDs with different values must not alias.",
+      "evidence": [
+        "baseline source_backed_positioned_subject_possibility.py blob 62e5eced47b64512f47b004e3e13a6ef3fe21de7 lines 72-184",
+        "same file lines 399-463: _find keys only source/release/target/retained_conditioner_ids",
+        "worker analytical_contract.md blob 2bbac259201c84dfdd124ec26942e95a76dadbe8 lines 91-107"
+      ],
+      "counterexample": "Use consumer binding subject_fact_ref=F_P1 and producer predicate POSITION==P2. The proposed witness can recompute consumer_query_ref, full binding fingerprint, producer_query_ref, producer_predicate_ref/hash and canonical P2 AST consistently. No frozen rule dereferences F_P1 to a value preimage or requires that preimage to equal the exact predicate leaf/value. The witness therefore content-addresses a wrong pairing instead of disproving it.",
+      "required_correction": "Freeze a value-bearing per-binding relation, not a bag of exact refs. For each conditioner, the contract must name an independently frozen subject-condition preimage/material (or existing resolvable owner), exact producer predicate leaf identity/value, and a deterministic equality/relation check. Synthetic C1-01 may use fixture-only ground truth; real-source comparability remains blocked unless an existing competent owner/authority supplies it."
+    },
+    {
+      "id": "R03_TARGET_TOPOLOGY_DOMAIN",
+      "status": "PASS",
+      "requirement": "Exact ordered target refs, arity, topology, component/domain identity and response-state semantics.",
+      "evidence": [
+        "worker analytical_contract.md blob 2bbac259201c84dfdd124ec26942e95a76dadbe8 §3 Output and §5 Target",
+        "baseline _pre553_query_common.py blob 938a6b03a63dd34ef4f0f63655ed8f11f65c5d92 _parse_target_plan",
+        "baseline _pre553_query_eval.py blob f808dfcd2008cc71e9203de3cadf1abe14223974 target_domain_identity and complete_cell_semantic_projection"
+      ],
+      "review": "The proposed C1-01 grain is intentionally scalar, while preserving the full producer topology/domain identity and refusing silent scalarization of non-scalar shapes."
+    },
+    {
+      "id": "R04_RISK_ELIGIBILITY_DENOMINATOR",
+      "status": "PASS",
+      "requirement": "Exact risk set, eligibility/applicability, denominator members and support identity.",
+      "evidence": [
+        "worker analytical_contract.md §5 Denominator / risk / eligibility / support",
+        "baseline _pre553_query_eval.py blob f808dfcd2008cc71e9203de3cadf1abe14223974 replay material includes risk_member_refs and denominator_member_refs"
+      ],
+      "review": "Equal denominator counts with different member refs remain different identities; routing/applicability inputs are retained through producer provenance."
+    },
+    {
+      "id": "R05_MEASURE_WEIGHT_DESIGN_ESTIMAND",
+      "status": "PASS",
+      "requirement": "RAW versus governed weighted plus exact design/estimand identity.",
+      "evidence": [
+        "worker analytical_contract.md §5 Measure / weight / design / estimand",
+        "baseline WeightMeasureFact owner in pre553_empirical_objects.py blob a61365b994e5c3c50de0f598fcf40e90abf757b6",
+        "baseline _pre553_query_eval.py blob f808dfcd2008cc71e9203de3cadf1abe14223974 weighted fact/provenance construction"
+      ],
+      "review": "The contract requires dereferencing used WeightMeasureFact provenance and retaining weight source, design authority, estimand authority, normalization and effective scope."
+    },
+    {
+      "id": "R06_NEGATIVE_COVERAGE_STATE_CONSERVATION",
+      "status": "FAIL",
+      "requirement": "Zero, valid-empty, unknown, unresolved, unvisited, noncomparable, blocked and integrity failure must remain distinct.",
+      "evidence": [
+        "worker analytical_products.json blob 2b6386c6d7b490531ca9f5af93e9d99e368ba182 lines 44-61",
+        "worker fixture_oracle_manifest.json blob f666b0ae36a415640e8d4aeb5cf498e2f587ec83 AT14 state matrix",
+        "baseline pre553_learned_product_lifecycle.py blob a11c9eb73abab9be118ef4f0b6e325e676059f27 lines 33-40 and 1885-1928"
+      ],
+      "counterexample": "Worker freezes EXPLICIT_UNKNOWN_UNVISITED but no distinct UNKNOWN/UNKNOWN_CURRENTNESS case. Current B5 explicitly has UNKNOWN_CURRENTNESS distinct from NO_CURRENT/current/conflict. The packet therefore does not freeze the user-required unknown-vs-unvisited distinction.",
+      "required_correction": "Add a distinct UNKNOWN fixture/oracle and analytical state, preferably using the existing B5 UNKNOWN_CURRENTNESS path where lifecycle is applicable; keep it separate from adaptive unvisited and from UNRESOLVED."
+    },
+    {
+      "id": "R07_ACTUAL_PRODUCER_ADAPTER_CONSUMER_BINDING",
+      "status": "FAIL",
+      "requirement": "Actual producer output must be converted by a frozen adapter contract and supplied to the actual consumer, not a handwritten slice.",
+      "evidence": [
+        "worker producer_consumer_trace.json blob adb2595a90391910bb9fc15dca8788f2413fd223 DIRECT_I03_TO_POSITIONED_SUBJECT",
+        "worker analytical_contract.md lines 81-145",
+        "baseline PossibilitySliceEvidence owner lines 153-184 in blob 62e5eced47b64512f47b004e3e13a6ef3fe21de7"
+      ],
+      "counterexample": "Current PossibilitySliceEvidence accepts arbitrary geometry Mapping and an otherwise unconstrained nonnegative raw_support. The worker says 'exact complete-cell geometry' but freezes no exact geometry schema and no meaning for raw_support. Two implementations can pass different support/geometry projections to the consumer while both claiming compliance.",
+      "required_correction": "Freeze the exact C1-01 slice projection: canonical geometry keys/material, exact numerator and denominator representation, cell states, measure identity, and the semantic meaning of PossibilitySliceEvidence.raw_support. The consumer call must receive this exact derived projection."
+    },
+    {
+      "id": "R08_RECURSIVE_ANCESTRY_AND_COVERAGE",
+      "status": "PASS",
+      "requirement": "Recursive immediate-parent ancestry must not alias; positive handoff must remain distinct from full coverage/negative record.",
+      "evidence": [
+        "worker producer_consumer_trace.json recursive route",
+        "baseline pre553_recursive_handoff.py blob 868f43bf9869af5501fd67c3de7a2703ba4cb1b4 lines 343-418"
+      ],
+      "review": "RecursiveBranchHandoff validates an exact immediate parent and retained discovery result remains the negative/coverage owner."
+    },
+    {
+      "id": "R09_REPLAY_GRADE_SEPARATION",
+      "status": "PASS",
+      "requirement": "Consumer replay, producer replay, recursive/adaptive replay and fresh full recomputation must not be conflated.",
+      "evidence": [
+        "worker replay_and_dependency_receipt.json blob f26202b2f8ed24bf8d6b8d06a08c2f7bdb4eb144 replay_grades"
+      ],
+      "review": "Six replay grades are separated and full fresh-process recomputation is explicitly stronger than consumer bounded replay."
+    },
+    {
+      "id": "R10_DETERMINANT_DEPENDENCY_CLOSURE",
+      "status": "FAIL",
+      "requirement": "Every semantic determinant crossing producer/adapter/consumer boundaries must be registered in closure.",
+      "evidence": [
+        "worker analytical_products.json requires condition_binding_witness_ref_or_hash",
+        "worker replay_and_dependency_receipt.json blob f26202b2f8ed24bf8d6b8d06a08c2f7bdb4eb144 lines 36-53"
+      ],
+      "counterexample": "The output contract carries condition_binding_witness_ref_or_hash, but the frozen direct_determinants list includes only the full ConditionerBinding fingerprint and comparability refs, not the condition-binding witness/ref itself. Once the witness becomes the relation that proves producer predicate ↔ consumer value, changing it must change/invalidate composed identity.",
+      "required_correction": "Add the exact condition-value binding witness ref/hash (and any frozen subject-condition preimage/relation ref introduced by R02 repair) to direct determinants, replay identity and selective invalidation fixtures."
+    },
+    {
+      "id": "R11_SYNTHETIC_AUTHORITY_FREEZE",
+      "status": "FAIL",
+      "requirement": "Governed fixture authorities must be frozen before candidate implementation.",
+      "evidence": [
+        "worker fixture_oracle_manifest.json blob f666b0ae36a415640e8d4aeb5cf498e2f587ec83 lines 10-24"
+      ],
+      "counterexample": "The manifest freezes authority tag strings but not canonical authority snapshot/material, governed operations, scopes, versions or expected hashes. C1-01 could choose materially different authority semantics while reusing the same tags.",
+      "required_correction": "Freeze exact canonical test-authority material and expected identity/hash for each synthetic authority actually required by C1-01. Do not create a new production comparability authority kind; fixture-only pairing authority/ground truth must remain explicitly test-only."
+    },
+    {
+      "id": "R12_AT07_ORACLE",
+      "status": "PASS",
+      "requirement": "Independent AT07 arithmetic must be 54/60 forward and 54/62 reverse.",
+      "evidence": [
+        "worker fixture_oracle_manifest.json AT07_BIDIRECTIONAL_100"
+      ],
+      "review": "Independent arithmetic: P1 row = 54+6=60, so P(yes|P1)=54/60=9/10. yes column = 54+8=62, so P(P1|yes)=54/62=27/31. No candidate output exists or was used."
+    },
+    {
+      "id": "R13_WRITE_TERRAIN",
+      "status": "PASS",
+      "requirement": "C1-00 return must not edit production; proposed C1-01 allowlist must remain narrow.",
+      "evidence": [
+        "base-to-return compare 2cef3869c16cbd88ce8bc58a5bd4aa073879be50...df6f2d36e274744d217dc4a380c73e2c7e18e83f shows only eight added worker-return files",
+        "worker analytical_contract.md §10"
+      ],
+      "review": "No production/test owner changed. Proposed later allowlist is only new analytical module, new test module, and worker returns."
+    },
+    {
+      "id": "R14_DIRECT_VS_LEARNED_ANTI_BYPASS",
+      "status": "PASS_AT_DOCUMENTARY_GRAIN",
+      "requirement": "A failed learned family may not be relabeled DIRECT to evade M1/M2/B5/I4; competent direct output need not be universally wrapped.",
+      "evidence": [
+        "worker family_binding_manifest.json blob cb430c1eb8ccc1f9f94ba0e9e241807c971b228a"
+      ],
+      "review": "The rule is correctly frozen as conditional family law. Concrete family-specific execution remains C1-03 work and is not claimed executed here."
+    }
+  ],
+  "blocking_rows": [
+    "R02_CONDITION_VALUE_IDENTITY",
+    "R06_NEGATIVE_COVERAGE_STATE_CONSERVATION",
+    "R07_ACTUAL_PRODUCER_ADAPTER_CONSUMER_BINDING",
+    "R10_DETERMINANT_DEPENDENCY_CLOSURE",
+    "R11_SYNTHETIC_AUTHORITY_FREEZE"
+  ],
+  "approval_after_correction": "Re-review the corrected exact C1-00 return. Do not issue C1-01 from df6f2d36e274744d217dc4a380c73e2c7e18e83f."
+}
