@@ -303,3 +303,249 @@ The same information can be pursued by:
 ### Tests
 - information identity does not imply relational-action identity;
 - social acquisition route matters.
+
+
+## SCE-016 — Too far away to read
+
+### Setup
+User stands across the kitchen and asks the narrator:
+
+> What exactly does the electricity bill say?
+
+### Required behavior
+The system may provide only what is perceptible from the current position.
+
+It must not silently move the user to the refrigerator.
+
+Possible output:
+- utility-company logo visible;
+- red marking visible;
+- text too small to read.
+
+### Tests
+- player world-position;
+- sensory access;
+- ATTEND ≠ hidden DO;
+- progressive perceptual resolution.
+
+## SCE-017 — Unchosen person, lawful access
+
+### Setup
+The product assigns Nadia as the user's unchosen focal person.
+
+A later scene occurs in Nadia's apartment.
+
+### Required question
+Why is the user there?
+
+The simulation must preserve a causal relationship/encounter history sufficient to explain:
+- invitation/access;
+- Nadia's expectations;
+- whether the child knows the user;
+- which rooms/actions are socially available.
+
+### Tests
+- random person ≠ random teleportation;
+- encounter route;
+- relational permission;
+- access as progression.
+
+## SCE-018 — “I already paid it”
+
+### Setup
+User notices a past-due-looking electricity bill.
+
+Nadia says:
+> “I already paid that. I just haven't thrown it away.”
+
+### Required state
+Canonical:
+- Nadia uttered that sentence.
+
+Not automatically canonical:
+- payment actually occurred.
+
+Later evidence may:
+- confirm;
+- contradict;
+- remain unavailable.
+
+### Tests
+- actor testimony ≠ objective truth;
+- lying/mistake possible;
+- user knowledge provenance;
+- assisted memory should say “Nadia told you...”.
+
+## SCE-019 — Lazy drawer / prior history
+
+### Setup
+No explicit inventory has ever been materialized for a kitchen drawer.
+
+Weeks earlier, Nadia was canonically observed taking a wooden spoon from that drawer.
+
+User now opens the drawer and inspects it.
+
+### Requirement
+New completion cannot decide:
+- drawer contains no utensils;
+- household owns no wooden spoon;
+
+unless an intervening event explains the change.
+
+### Tests
+- unmaterialized ≠ absent;
+- history-compatible completion;
+- effective time;
+- object persistence/replay.
+
+## SCE-020 — Simultaneous cover
+
+### Setup
+User says:
+> “Rome? You actually went?”
+
+while maintaining eye contact and sneaking a brief glance down toward the bill.
+
+### Requirement
+Represent overlapping:
+- SAY;
+- ATTEND;
+- attempted casual presentation.
+
+Do not execute as a fully completed speech followed by a separate obvious bill inspection.
+
+### Tests
+- concurrency;
+- divided attention;
+- performance visibility;
+- shared duration.
+
+## SCE-021 — Interrupted reading
+
+### Setup
+User begins reading the school lunch schedule in detail.
+
+Halfway through, Nadia asks:
+> “Can you grab that pot?”
+
+### Possible result
+Return only the information acquired so far and give the user control.
+
+Do not auto-finish reading before allowing response if the interruption changes the choice surface.
+
+### Tests
+- ATTEND interruptibility;
+- partial information;
+- control return;
+- concurrent world.
+
+## SCE-022 — Initial scene frame
+
+### Setup
+User enters Nadia's kitchen.
+
+### Desired baseline
+Enough immediate surface orientation to act:
+- Nadia at stove;
+- child at table;
+- obvious room layout;
+- perhaps clutter/papers on fridge;
+- audible timer or obvious haste if perceptible.
+
+### Forbidden baseline
+- exhaustive inventory;
+- psychological interpretation;
+- “important” clue highlighting;
+- detailed bill contents without focused attention.
+
+### Tests
+- ambient perception;
+- usable surface narration;
+- non-curatorial scene framing.
+
+## SCE-023 — Conjured car
+
+### Setup
+User writes:
+> I tell Nadia I'll drive her to work and grab my keys.
+
+### Requirement
+The engine must know whether the user's diegetic presence actually has:
+- a car;
+- keys/access;
+- legal/physical ability to drive;
+- relevant location.
+
+The prose itself does not create them.
+
+### Tests
+- player inventory/capability authority;
+- attempted action vs means;
+- user prose ≠ world fact.
+
+## SCE-024 — Child as independent actor
+
+### Setup
+User's stories inspire Nadia's child to pursue an ambitious goal.
+
+### Requirement
+The child's:
+- excitement;
+- later behavior;
+- memory;
+- aspirations;
+- conflict with Nadia;
+
+must not exist merely as scripted output for Nadia's character arc.
+
+The child requires enough independent actor state for the trajectory the simulation claims.
+
+### Tests
+- third-party autonomy;
+- network consequence;
+- multi-actor causality.
+
+## SCE-025 — No bespoke reaction
+
+### Setup
+User makes a mildly odd comment while Nadia is handling a boiling pot and responding to her child.
+
+### Possible lawful outcome
+Nadia:
+- hears but does not answer;
+- half-hears and continues;
+- responds later;
+- does not treat the event as salient.
+
+### Tests
+- non-player-centricity;
+- independent agenda;
+- perception/salience gating;
+- absence of chatbot response compulsion.
+
+## SCE-026 — Verbose prompt packing
+
+### Setup
+User submits one long instruction requesting:
+- inspect fridge;
+- read bill;
+- identify school;
+- study menu prices;
+- inspect every magnet;
+- listen to Nadia;
+- keep eye contact.
+
+### Requirement
+One message does not make all operations instantaneous.
+
+The system should:
+- decompose operations;
+- recognize incompatible/competing attention;
+- accumulate plausible time;
+- permit interruption;
+- return control when needed.
+
+### Tests
+- query-invariant duration;
+- concurrency limits;
+- no prompt-packing exploit.
