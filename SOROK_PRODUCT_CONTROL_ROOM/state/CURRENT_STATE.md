@@ -4,22 +4,29 @@ Updated: 2026-09-29
 
 Status: `INTERACTION_IDEATION_R5_CHAT_HARVESTED__PFF_INHERITANCE_RESTORED__RELATIONALIZATION_DELTA_EXPLICIT__ONTOLOGY_PROVISIONAL__ALPHA_NOT_YET_IMPLEMENTATION_SPECIFIED`
 
-## Mandatory takeover inheritance
+## Mandatory two-stage takeover grounding
 
-Any new Sorok Vozhd must read:
+Any new Sorok Vozhd must first read:
+
+`SOROK_PRODUCT_CONTROL_ROOM/00_FULL_RAWLSING_VOZHD_GROUNDING_GATE_R1.md`
+
+and follow its live PRE-MAIN grounding route so the agent understands Rawlsing as a whole: project purpose, current state, authority/status law, conceptual inheritance, PRE-V3 jurisdiction, accepted V3/V2 architecture, and where to deepen before making claims.
+
+Only then read:
 
 `SOROK_PRODUCT_CONTROL_ROOM/00A_VOZHD_TAKEOVER_RELATIONAL_PSYCHIC_GATE_R1.md`
 
-before D001/V3/PFF adjudication.
+for the Sorok-specific psychic/relational specialization.
 
-The gate contains:
+The two gates together contain:
+- general Rawlsing/PRE-MAIN cognition;
 - inherited PFF psychic noncollapse;
 - CAN-008 R2 / narrowed PFF / V2 owner topology;
 - Sorok relationalization delta;
-- exact historical repo branch/path map for deep comprehension;
-- takeover comprehension test.
+- exact live/historical repo branch/path maps for deep comprehension;
+- takeover comprehension tests.
 
-A summary-only understanding is insufficient for D001.
+A Sorok-summary-only understanding is insufficient.
 
 ## Current base
 
