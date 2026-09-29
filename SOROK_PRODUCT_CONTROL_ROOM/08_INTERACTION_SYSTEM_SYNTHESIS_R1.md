@@ -194,8 +194,9 @@ Existing architecture already distinguishes:
 - SDTF/upstream structural-developmental transduction;
 - durable/formative from-birth V3;
 - CAN-008 person×event immediate response;
-- PFF interaction-fast/session/user-opacity state;
-- V2 expression.
+- CAN-008 R2 actor receivability / uptake-appraisal / situated recruitment / immediate multi-stream response;
+- narrowed PFF interaction specialization and minimal fast carryover;
+- V2 actor-limited expression/rendering.
 
 Sorok must place new relational semantics through those owners before proposing anything new.
 
@@ -288,7 +289,7 @@ Natural-language input must preserve:
 - narrator-directed ATTEND;
 - diegetic SAY;
 - embodied DO;
-- player-private declared intention.
+- user-declared intention/self-report evidence, with any stronger player-authored-inner-state mode still open.
 
 The interface may remain open-ended, but these channels must not leak into one another.
 
@@ -508,3 +509,46 @@ Events should arise from actors, institutions, material conditions, schedules, p
 
 Current completeness audit:
 `11_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R4.md`.
+
+
+## 18. R5 psychic-mediation inheritance and relationalization
+
+R5 corrected two things simultaneously.
+
+### Inherited mediation
+
+Rawlsing/PFF already established the noncollapse among:
+- total causal person;
+- standing conscious self;
+- current relational activation;
+- present conscious experience;
+- recognition / self-explanation;
+- intention / defense / presentation;
+- outward expression.
+
+Later CAN-008/PFF/V2 work places these phenomena across existing owners without reviving broad PFF consciousness/defense/recruitment subsystems.
+
+### Sorok delta
+
+Sorok now proposes that the durable person on the upstream side of those walls is **relationally constituted**.
+
+The person's:
+- dispositions;
+- self-model;
+- expectations;
+- defenses;
+- needs;
+- accessibility patterns;
+
+may themselves be sedimented histories of relation.
+
+Thus the current dyad does not merely activate a pre-relational trait bundle.
+
+It may instantiate, reproduce, disconfirm or transform a historically formed organization of self-with-other.
+
+Compact:
+
+`RELATIONS PRODUCE PERSONS WHO ENTER RELATIONS THAT REPRODUCE OR TRANSFORM PERSONS AND WORLDS`.
+
+Detailed home:
+`dockets/D001_RELATIONAL_ONTOLOGY_V3_BOUNDARY/03_SOROK_RELATIONALIZATION_DELTA_OVER_INHERITED_PFF_R1.md`.
