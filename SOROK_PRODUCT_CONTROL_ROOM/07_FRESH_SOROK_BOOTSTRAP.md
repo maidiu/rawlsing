@@ -15,9 +15,10 @@ A new Sorok control-room session should not reconstruct this program from chat m
 7. Read `05_PROGRAM_MAP.md`.
 8. Read `06_OPERATING_METHOD.md`.
 9. Read `08_INTERACTION_SYSTEM_SYNTHESIS_R1.md`.
-10. Read the question / decision / risk ledgers.
-11. Resolve the live Sorok branch head and compare against the recorded Pyat base before making any current-system claim.
-12. Read only the dockets relevant to the next action.
+10. Read `10_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R3.md`.
+11. Read the question / decision / risk ledgers.
+12. Resolve the live Sorok branch head and compare against the recorded Pyat base before making any current-system claim.
+13. Read only the dockets relevant to the next action.
 
 ## Required fresh-session articulation
 
