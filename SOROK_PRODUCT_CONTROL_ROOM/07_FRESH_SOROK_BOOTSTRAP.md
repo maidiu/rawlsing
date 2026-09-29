@@ -7,27 +7,28 @@ A new Sorok control-room session should not reconstruct this program from chat m
 ## Startup order
 
 1. Read `SOROK_PRODUCT_CONTROL_ROOM/00_READ_ME_FIRST.md`.
-2. Read `00A_VOZHD_TAKEOVER_RELATIONAL_PSYCHIC_GATE_R1.md`.
-3. Read `state/CURRENT_STATE.md`.
-4. Read `01_PRODUCT_CHARTER.md`.
-5. Read `02_PROVISIONAL_RELATIONAL_ONTOLOGY.md`.
-6. Read `03_REAL_ALPHA_SPINE.md`.
-7. Read `04_CURRENT_SYSTEM_TO_PRODUCT_CROSSWALK.md`.
-8. Read `05_PROGRAM_MAP.md`.
-9. Read `06_OPERATING_METHOD.md`.
-10. Read `08_INTERACTION_SYSTEM_SYNTHESIS_R1.md`.
-11. Read `11_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R4.md`.
-12. Read `12_CHAT_EXHAUSTIVE_HARVEST_AUDIT_R5.md`.
-13. Read `13_R5_CHAT_HARVEST_INTEGRITY_RECEIPT.md`.
-14. Read D001 `02_INHERITED_PSYCHIC_MEDIATION_PFF_V2_GENEALOGY_R1.md`.
-15. Read D001 `03_SOROK_RELATIONALIZATION_DELTA_OVER_INHERITED_PFF_R1.md`.
-16. Read the question / decision / risk ledgers.
-17. Resolve the live Sorok branch head and compare against the recorded Pyat base before making any current-system claim.
-18. Read only the dockets relevant to the next action.
+2. Read `00_FULL_RAWLSING_VOZHD_GROUNDING_GATE_R1.md` and follow its PRE-MAIN grounding route.
+3. Read `00A_VOZHD_TAKEOVER_RELATIONAL_PSYCHIC_GATE_R1.md`.
+4. Read `state/CURRENT_STATE.md`.
+5. Read `01_PRODUCT_CHARTER.md`.
+6. Read `02_PROVISIONAL_RELATIONAL_ONTOLOGY.md`.
+7. Read `03_REAL_ALPHA_SPINE.md`.
+8. Read `04_CURRENT_SYSTEM_TO_PRODUCT_CROSSWALK.md`.
+9. Read `05_PROGRAM_MAP.md`.
+10. Read `06_OPERATING_METHOD.md`.
+11. Read `08_INTERACTION_SYSTEM_SYNTHESIS_R1.md`.
+12. Read `11_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R4.md`.
+13. Read `12_CHAT_EXHAUSTIVE_HARVEST_AUDIT_R5.md`.
+14. Read `13_R5_CHAT_HARVEST_INTEGRITY_RECEIPT.md`.
+15. Read D001 `02_INHERITED_PSYCHIC_MEDIATION_PFF_V2_GENEALOGY_R1.md`.
+16. Read D001 `03_SOROK_RELATIONALIZATION_DELTA_OVER_INHERITED_PFF_R1.md`.
+17. Read the question / decision / risk ledgers.
+18. Resolve the live Sorok branch head and compare against the recorded Pyat base before making any current-system claim.
+19. Read only the dockets relevant to the next action.
 
 ## Required fresh-session articulation
 
-Before major new design work, the fresh Sorok must first pass the takeover test in `00A_VOZHD_TAKEOVER_RELATIONAL_PSYCHIC_GATE_R1.md`, then state:
+Before major new design work, the fresh Sorok must first pass the general Rawlsing comprehension test in `00_FULL_RAWLSING_VOZHD_GROUNDING_GATE_R1.md`, then the Sorok-specific takeover test in `00A_VOZHD_TAKEOVER_RELATIONAL_PSYCHIC_GATE_R1.md`, then state:
 - deepest product purpose;
 - current product thesis;
 - provisional ontology;
@@ -67,11 +68,11 @@ If the session produced only brainstorming with no state change, do not churn st
 
 ## Mandatory takeover failure condition
 
-If the new agent cannot distinguish:
+If the new agent cannot first explain Rawlsing's general machine, PRE-MAIN authority/status discipline, PRE-V3 firewall, V3 and V2 jurisdictions, **or** cannot distinguish:
 1. inherited PFF psychic mediation;
 2. later CAN-008 / narrowed-PFF / V2 ownership;
 3. Sorok's relationalization delta;
 
 it must not adjudicate D001 yet.
 
-It should follow the exact archaeology map in `00A_VOZHD_TAKEOVER_RELATIONAL_PSYCHIC_GATE_R1.md` and recover the source material first.
+It should follow `00_FULL_RAWLSING_VOZHD_GROUNDING_GATE_R1.md` first, then the exact archaeology map in `00A_VOZHD_TAKEOVER_RELATIONAL_PSYCHIC_GATE_R1.md`, and recover the source material before designing.
