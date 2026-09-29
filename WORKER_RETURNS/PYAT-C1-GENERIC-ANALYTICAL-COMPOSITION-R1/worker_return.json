@@ -1,7 +1,7 @@
 {
   "schema": "PYAT_BOUNDED_WORKER_RETURN@2",
   "task_id": "PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1::C1-00",
-  "status": "C1_00_R2_CORRECTIONS_READY_FOR_INDEPENDENT_REREVIEW",
+  "status": "C1_00_R3_CORRECTIONS_READY_FOR_INDEPENDENT_REREVIEW",
   "commission_tip": "2cef3869c16cbd88ce8bc58a5bd4aa073879be50",
   "implementation_baseline": "b3b2fa13049513078c301a1f6574b661fcf390c5",
   "orchestration_authority_ref": "810dbfde9fa5dbe1e3625188f4c13c4c9e7ceeb7",
@@ -14,7 +14,6 @@
     "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/analytical_products.json",
     "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/hostile_case_receipts.json",
     "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/replay_and_dependency_receipt.json",
-    "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/family_binding_manifest.json",
     "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/worker_return.json"
   ],
   "authority_refs": [
@@ -33,7 +32,7 @@
     "failed": null,
     "errors": null,
     "skipped": null,
-    "unexecuted_reason": "C1-00 R2 documentary correction only; C1-01 remains unimplemented and execution held behind independent rereview.",
+    "unexecuted_reason": "C1-00 R3 documentary correction only; C1-01 remains unimplemented and execution is held behind fresh independent R3 rereview and HQ adjudication.",
     "run_job_attempt_head_refs": [],
     "logs_and_artifacts": []
   },
@@ -41,7 +40,7 @@
     "reads": 0,
     "evidence": "No raw survey sources opened, materialized, decoded or inferred."
   },
-  "proof_grade": "STATIC_INSPECTION + R2 VALUE-RELATION/AUTHORITY/SLICE/STATE/DETERMINANT ORACLE FREEZE",
+  "proof_grade": "STATIC_INSPECTION + DETERMINISTIC R3 DOCUMENTARY HASH/ORACLE FREEZE",
   "case_dispositions": [
     {
       "case": "AT07",
@@ -74,7 +73,7 @@
     },
     {
       "case": "AT14",
-      "status": "R2_STATE_MATRIX_FROZEN__UNKNOWN_CURRENTNESS_DISTINCT__NOT_EXECUTED"
+      "status": "R3_OWNER_NATIVE_UNKNOWN_CURRENTNESS_FIXTURE_FROZEN__NOT_EXECUTED"
     },
     {
       "case": "AT15",
@@ -101,12 +100,24 @@
       "status": "VALUE_RELATION_MISMATCH_ORACLE_FROZEN__NOT_EXECUTED"
     },
     {
-      "case": "R2-AUTHORITY-DRIFT",
-      "status": "FULL_AUTHORITY_PREIMAGE_HASH_ORACLE_FROZEN__NOT_EXECUTED"
+      "case": "R3-AUTHORITY-SCOPE",
+      "status": "OWNER_NATIVE_SOURCE_UNIVERSE_SCOPE_AND_HASH_ORACLE_FROZEN__NOT_EXECUTED"
     },
     {
-      "case": "R2-SLICE-PROJECTION",
-      "status": "EXACT_GEOMETRY_AND_RAW_SUPPORT_CONTRACT_FROZEN__NOT_EXECUTED"
+      "case": "R3-SLICE-EVIDENCE-IDENTITY",
+      "status": "NONCIRCULAR_PREIMAGE_AND_EXPECTED_EVIDENCE_REFS_FROZEN__NOT_EXECUTED"
+    },
+    {
+      "case": "R3-HC-DENOMINATOR-MEMBER",
+      "status": "EVIDENCE_REIDENTIFICATION_HASH_ORACLE_FROZEN__NOT_EXECUTED"
+    },
+    {
+      "case": "R3-HC-GEOMETRY",
+      "status": "EVIDENCE_REIDENTIFICATION_HASH_ORACLE_FROZEN__NOT_EXECUTED"
+    },
+    {
+      "case": "R3-HC-RELATION-AUTHORITY",
+      "status": "EVIDENCE_REIDENTIFICATION_HASH_ORACLE_FROZEN__NOT_EXECUTED"
     }
   ],
   "consumer_trace": "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/producer_consumer_trace.json",
@@ -140,10 +151,10 @@
     "Multi-universe/composite facts require an exact reviewed source identity rule before one consumer slice can represent them.",
     "Some search/producer negative states have no truthful PossibilitySliceEvidence encoding; outer C1 envelope must retain them and may omit the consumer call."
   ],
-  "requested_next_action": "INDEPENDENT C1-00 R2 REREVIEW ONLY. Do not issue C1-01 until the corrected exact branch tip is accepted.",
-  "independent_review_ref": "8baa2e1e3a6f4f96311fbd660b65933fb4aff6c4::CHANGES_REQUIRED__SATISFIED_BY_R2_PENDING_REREVIEW",
-  "adoption_status": "NOT_ADOPTED__PENDING_R2_INDEPENDENT_REREVIEW",
-  "terminal": "C1_00_R2_CORRECTIONS_READY_FOR_INDEPENDENT_REREVIEW",
+  "requested_next_action": "FRESH INDEPENDENT C1-00 R3 REREVIEW ONLY. Do not issue C1-01 until the exact corrected R3 branch tip is independently accepted and HQ separately adjudicates/freezes C1-01.",
+  "independent_review_ref": "959d5d8cd4e8f96732e6809030c946751ba5da67::CHANGES_REQUIRED__THREE_R3_DOCUMENTARY_CORRECTIONS_PENDING_REREVIEW",
+  "adoption_status": "NOT_ADOPTED__PENDING_R3_INDEPENDENT_REREVIEW",
+  "terminal": "C1_00_R3_CORRECTIONS_READY_FOR_INDEPENDENT_REREVIEW",
   "R2_correction": {
     "commission_tip": "00b7091190505c0b41feaf0c45a29a791bab0cb5",
     "independent_review": "8baa2e1e3a6f4f96311fbd660b65933fb4aff6c4",
@@ -164,5 +175,35 @@
     "authority_freeze": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/03_SYNTHETIC_AUTHORITY_FREEZE.json",
     "slice_projection": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/04_SLICE_PROJECTION.json",
     "state_determinants": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/05_STATE_AND_DETERMINANT_CLOSURE.json"
+  },
+  "R3_correction": {
+    "commission_tip": "e50bc716cf0fd017081e351a5803d3da61a00a38",
+    "exact_base_R2_rereview": "959d5d8cd4e8f96732e6809030c946751ba5da67",
+    "correction_return_dir": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/",
+    "corrected_residuals": [
+      "owner-native synthetic query-authority source_universe_refs scope",
+      "reachable B5 UNKNOWN_CURRENTNESS fixture through current_selection_receipt_ref",
+      "noncircular PossibilitySliceEvidence evidence_ref preimage plus expected AT07 refs",
+      "changed_blobs bookkeeping exactness"
+    ],
+    "preserved_accepted_corrections": [
+      "R2-A value-bearing condition relation",
+      "R2-E determinant/replay/invalidation closure"
+    ],
+    "exact_AT07_universe_hash": "ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2",
+    "exact_AT07_release_hash": "8afa807cc06a3a10e660d13bbd831f4f758ae829e835a454c62831bfd8f4d939",
+    "corrected_query_authority_hash": "b59ef578314515268fa7b280a8480b4c95c80c9cfd831c39c2bfc4214b6fd767",
+    "expected_forward_evidence_hash": "fe5cd7783ac84f0298fb7f56a621d7b0e494bd9348d080dc68ceee09abb546f5",
+    "expected_reverse_evidence_hash": "b54201c8ba8743922e51627e621cc4f3d1c563a43b70167a0720fbb0028ccf72",
+    "execution_claim": "NONE__DOCUMENTARY_ONLY",
+    "source_reads": 0,
+    "C1_01_started": false
+  },
+  "R3_contract_refs": {
+    "correction_matrix": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/01_CORRECTION_MATRIX.json",
+    "owner_native_authority_scope": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/02_OWNER_NATIVE_AUTHORITY_SCOPE_FREEZE.json",
+    "unknown_currentness_fixture": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/03_UNKNOWN_CURRENTNESS_FIXTURE.json",
+    "evidence_identity_preimage": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/04_EVIDENCE_IDENTITY_PREIMAGE.json",
+    "recomputation_receipt": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/05_RECOMPUTATION_RECEIPT.json"
   }
 }
