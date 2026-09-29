@@ -111,6 +111,7 @@ Top-level:
 - `16_COURT1_COURT2_PLAYER_ENCOUNTER_RELATIONSHIP_SYNTHESIS_R1.md` — player/encounter + relationship-state ideation
 - `18_COURT3_COURT4_LIFE_PROGRESS_SYNTHESIS_R1.md` — life-outside-user + progress-without-score ideation
 - `19_COURT5_VEILED_SELF_MATERIAL_EMBODIMENT_R1.md` — as-self participation under veiled local material constraint
+- `20_COURT6_PORTAL_REALITY_PEER_TRANSPOSE_COMPARISON_R1.md` — 24/7 portal countermodel + peer-normalized transposition comparison
 - `17_FULL_RAWLSING_VOZHD_GROUNDING_INTEGRITY_R1.md` — takeover verification
 - `08_INTERACTION_SYSTEM_SYNTHESIS_R1.md`
 - `09_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R2.md`
@@ -214,6 +215,13 @@ The current lean is:
 - intimacy as transformation of relational affordances/expectations/stakes rather than hidden-lore unlock.
 
 This remains hypothesis-level and should now be compared against alternate encounter/player models.
+
+Additional current lean from Court 6:
+- preserve a full 24/7 real-time friend/portal version as a comparative countermodel even if not built as the main product;
+- evaluate reality-coupling features by what relational habits they rehearse, not merely by immersion;
+- current strongest main-mode candidate is peer-normalized transposition: psychically/normatively the actual user, materially/power-wise translated into a locally comparable position;
+- peer normalization is multidimensional power/opportunity equivalence, not merely same income percentile;
+- user external family/friends/job should remain bounded/off-stage unless causally relevant, rather than forcing total-life simulation.
 
 Additional current lean from Court 5:
 - the real user remains the moral/agentic subject rather than roleplaying a fully fictional character;
