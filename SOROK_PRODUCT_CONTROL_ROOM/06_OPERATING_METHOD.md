@@ -166,9 +166,10 @@ Anything we would regret forgetting must be serialized into Sorok before the ses
 
 A new Sorok Vozhd must not begin major ontology or architecture work from summaries alone.
 
-Mandatory first-principles gate:
+Mandatory two-stage grounding:
 
-`00A_VOZHD_TAKEOVER_RELATIONAL_PSYCHIC_GATE_R1.md`
+1. `00_FULL_RAWLSING_VOZHD_GROUNDING_GATE_R1.md` — become a grounded Rawlsing HQ reader through the live PRE-MAIN cognition stack.
+2. `00A_VOZHD_TAKEOVER_RELATIONAL_PSYCHIC_GATE_R1.md` — specialize into the PFF/CAN-008/relational frontier.
 
 For D001/V3/PFF work, the agent must distinguish:
 - historical implementation continuity;
@@ -193,4 +194,4 @@ For any proposed new psychology owner:
 
 `INHERIT → CROSSWALK → IDENTIFY TRUE STARVATION → PROPOSE MINIMUM REQUIREMENT → GOVERNED HANDOFF`.
 
-The takeover gate contains exact branch/path references for the necessary deep reading.
+The two gates contain exact live PRE-MAIN and historical/current branch/path references for deep reading. Sorok agents should know where to deepen instead of guessing from summaries.
