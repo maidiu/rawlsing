@@ -1,0 +1,457 @@
+{
+  "schema": "PYAT_C1_00_FIXTURE_ORACLE_MANIFEST@1",
+  "status": "FROZEN_DOCUMENTARY_ORACLE__NOT_EXECUTED",
+  "oracle_independence": {
+    "rule": "Expected results are hand-derived from frozen synthetic rows and existing owner laws before any C1 candidate output.",
+    "candidate_output_used": false,
+    "real_survey_source_used": false,
+    "source_reads": 0
+  },
+  "authorities": {
+    "scope": "SYNTHETIC_TEST_ONLY__NO_SURVEY_OR_MODEL_AUTHORITY_CREATED",
+    "frozen_tags": [
+      "C1:SYNTHETIC:SOURCE_SEMANTICS",
+      "C1:SYNTHETIC:ROUTING_RISK_SET",
+      "C1:SYNTHETIC:QUERY",
+      "C1:SYNTHETIC:CONDITION_BINDING",
+      "C1:SYNTHETIC:DISCOVERY",
+      "C1:SYNTHETIC:MODEL_RULE",
+      "C1:SYNTHETIC:WALKBACK"
+    ],
+    "construction_rule": "C1-01 tests must deterministically content-address these exact tag/material tuples using existing ExactRef/AuthoritySnapshot helpers; no mutable/latest selector."
+  },
+  "fixtures": [
+    {
+      "id": "AT07_BIDIRECTIONAL_100",
+      "acceptance": [
+        "AT07",
+        "AT16",
+        "AT17"
+      ],
+      "source": {
+        "universes": 1,
+        "releases": 1,
+        "risk_set": "R_ALL_100",
+        "measure_kind": "RAW"
+      },
+      "variables": {
+        "condition_question": "POSITION",
+        "target_question": "ANSWER"
+      },
+      "cells": [
+        {
+          "position": "P1",
+          "answer": "yes",
+          "count": 54,
+          "id_prefix": "P1Y"
+        },
+        {
+          "position": "P1",
+          "answer": "no",
+          "count": 6,
+          "id_prefix": "P1N"
+        },
+        {
+          "position": "P2",
+          "answer": "yes",
+          "count": 8,
+          "id_prefix": "P2Y"
+        },
+        {
+          "position": "P2",
+          "answer": "no",
+          "count": 32,
+          "id_prefix": "P2N"
+        }
+      ],
+      "exact_totals": {
+        "total": 100,
+        "P1": 60,
+        "P2": 40,
+        "yes": 62,
+        "no": 38
+      },
+      "oracle": {
+        "P(yes|P1)": {
+          "numerator": 54,
+          "denominator": 60,
+          "reduced": [
+            9,
+            10
+          ]
+        },
+        "P(no|P1)": {
+          "numerator": 6,
+          "denominator": 60,
+          "reduced": [
+            1,
+            10
+          ]
+        },
+        "P(P1|yes)": {
+          "numerator": 54,
+          "denominator": 62,
+          "reduced": [
+            27,
+            31
+          ]
+        },
+        "P(P2|yes)": {
+          "numerator": 8,
+          "denominator": 62,
+          "reduced": [
+            4,
+            31
+          ]
+        }
+      }
+    },
+    {
+      "id": "AT08_AT09_THREE_WAY_16",
+      "acceptance": [
+        "AT08",
+        "AT09"
+      ],
+      "description": "Binary A/B/C higher-order fixture: every A/B combination has four respondents; C is 3:1 when A==B and 1:3 when A!=B.",
+      "cells": [
+        {
+          "A": 1,
+          "B": 1,
+          "C": 1,
+          "count": 3
+        },
+        {
+          "A": 1,
+          "B": 1,
+          "C": 0,
+          "count": 1
+        },
+        {
+          "A": 1,
+          "B": 0,
+          "C": 1,
+          "count": 1
+        },
+        {
+          "A": 1,
+          "B": 0,
+          "C": 0,
+          "count": 3
+        },
+        {
+          "A": 0,
+          "B": 1,
+          "C": 1,
+          "count": 1
+        },
+        {
+          "A": 0,
+          "B": 1,
+          "C": 0,
+          "count": 3
+        },
+        {
+          "A": 0,
+          "B": 0,
+          "C": 1,
+          "count": 3
+        },
+        {
+          "A": 0,
+          "B": 0,
+          "C": 0,
+          "count": 1
+        }
+      ],
+      "oracle": {
+        "P(C=1|A=1,B=1)": [
+          3,
+          4
+        ],
+        "P(C=1|A=1,B=0)": [
+          1,
+          4
+        ],
+        "P(C=1|A=1)": [
+          4,
+          8
+        ],
+        "P(C=1|B=1)": [
+          4,
+          8
+        ],
+        "P(C=1)": [
+          8,
+          16
+        ],
+        "condition_change_changes_identity": true,
+        "higher_order_signal_survives_equal_single_condition_marginals": true
+      }
+    },
+    {
+      "id": "AT10_MINORITY_100",
+      "acceptance": [
+        "AT10"
+      ],
+      "cells": [
+        {
+          "cell": "MAIN",
+          "count": 90
+        },
+        {
+          "cell": "MINORITY",
+          "count": 7
+        },
+        {
+          "cell": "COUNTERPATTERN",
+          "count": 3
+        }
+      ],
+      "oracle": {
+        "denominator": 100,
+        "all_three_supported": true,
+        "ranking_may_not_delete_supported_cells": true
+      }
+    },
+    {
+      "id": "AT11_RECURSIVE_8",
+      "acceptance": [
+        "AT11"
+      ],
+      "rows": [
+        {
+          "ids": [
+            "R1",
+            "R2",
+            "R3",
+            "R4"
+          ],
+          "parent": "A=1"
+        },
+        {
+          "ids": [
+            "R1",
+            "R2"
+          ],
+          "child": "A=1 AND B=1"
+        },
+        {
+          "ids": [
+            "R5",
+            "R6"
+          ],
+          "lookalike_child_other_parent": "A=0 AND B=1"
+        }
+      ],
+      "oracle": {
+        "parent_support": 4,
+        "child_support": 2,
+        "child_parent_must_equal_exact_parent_ref": true,
+        "lookalike_child_must_not_alias": true,
+        "unvisited_branch_state": "EXPLICIT_UNKNOWN_UNVISITED"
+      }
+    },
+    {
+      "id": "AT12_COTRAVEL_NO_S14",
+      "acceptance": [
+        "AT12"
+      ],
+      "cells": [
+        {
+          "X": 1,
+          "Y": 1,
+          "count": 2
+        },
+        {
+          "X": 1,
+          "Y": 0,
+          "count": 1
+        },
+        {
+          "X": 0,
+          "Y": 1,
+          "count": 1
+        },
+        {
+          "X": 0,
+          "Y": 0,
+          "count": 0
+        }
+      ],
+      "oracle": {
+        "empirical_joint_denominator": 4,
+        "empirical_joint_remains_available_without_S14": true,
+        "semantic_relation_interpretation_without_authority": "BLOCKED"
+      }
+    },
+    {
+      "id": "AT13_RANKED_NATIVE_ORDER",
+      "acceptance": [
+        "AT13"
+      ],
+      "rows": [
+        {
+          "id": "R1",
+          "ranked": [
+            "A",
+            "B",
+            "C"
+          ]
+        },
+        {
+          "id": "R2",
+          "ranked": [
+            "B",
+            "A",
+            "C"
+          ]
+        },
+        {
+          "id": "R3",
+          "ranked": [
+            "A",
+            "C",
+            "B"
+          ]
+        }
+      ],
+      "oracle": {
+        "denominator": 3,
+        "topology": "RANKED_RESPONSE",
+        "order_must_remain_source_native": true,
+        "scalarization_forbidden": true
+      }
+    },
+    {
+      "id": "AT14_STATE_MATRIX",
+      "acceptance": [
+        "AT14"
+      ],
+      "cases": [
+        {
+          "case": "SUPPORTED_OBSERVED_ZERO",
+          "denominator": 10,
+          "target_cell_count": 0,
+          "expected_outer": "SUPPORTED",
+          "expected_cell": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET"
+        },
+        {
+          "case": "ZERO_SUPPORT",
+          "denominator": 0,
+          "expected_outer": "ZERO_SUPPORT"
+        },
+        {
+          "case": "ZERO_OVERLAP",
+          "denominator": 0,
+          "expected_outer": "ZERO_OVERLAP"
+        },
+        {
+          "case": "VALID_EMPTY",
+          "declared_target_domain": [],
+          "expected_outer": "VALID_EMPTY"
+        },
+        {
+          "case": "UNRESOLVED",
+          "denominator": 1,
+          "resolved_target_support": 0,
+          "expected_outer": "UNRESOLVED"
+        },
+        {
+          "case": "UNAVAILABLE",
+          "expected_outer": "UNAVAILABLE"
+        },
+        {
+          "case": "NONCOMPARABLE",
+          "expected_outer": "NONCOMPARABLE"
+        },
+        {
+          "case": "NOT_APPLICABLE",
+          "expected_outer": "NOT_APPLICABLE"
+        },
+        {
+          "case": "UNDERPOWERED_DISCOVERY",
+          "minimum_raw_denominator": 5,
+          "actual_denominator": 4,
+          "expected_coverage": "EVALUATED_UNDERPOWERED"
+        },
+        {
+          "case": "ADAPTIVE_UNVISITED",
+          "expected_outer": "EXPLICIT_UNKNOWN_UNVISITED",
+          "global_negative_claim": false
+        },
+        {
+          "case": "BLOCKED_REQUIRED_AUTHORITY",
+          "expected_outer": "BLOCKED_REQUIRED_AUTHORITY"
+        },
+        {
+          "case": "INTEGRITY_FAILURE",
+          "expected": "RAISE_TYPED_INTEGRITY_EXCEPTION"
+        }
+      ]
+    },
+    {
+      "id": "AT19_SELECTIVE_INVALIDATION_PAIR",
+      "acceptance": [
+        "AT19"
+      ],
+      "products": [
+        {
+          "id": "A",
+          "determinants": [
+            "predicate:P1",
+            "query:A",
+            "release:R",
+            "risk:R",
+            "measure:RAW"
+          ]
+        },
+        {
+          "id": "B",
+          "determinants": [
+            "predicate:Q1",
+            "query:B",
+            "release:R",
+            "risk:R",
+            "measure:RAW"
+          ]
+        }
+      ],
+      "mutation": "predicate:P1 -> predicate:P2",
+      "oracle": {
+        "directly_affected": [
+          "A"
+        ],
+        "unaffected": [
+          "B"
+        ],
+        "cache_cannot_restore_authority": true
+      }
+    }
+  ],
+  "conditioner_collision_fixture": {
+    "id": "HC_CONDITION_VALUE_ALIAS",
+    "shared": {
+      "binding_id": "position",
+      "source_universe": "U",
+      "release": "R",
+      "target": "ANSWER"
+    },
+    "left": {
+      "subject_fact_ref_tag": "SUBJECT_POSITION_P1",
+      "fixture_value": "P1",
+      "producer_predicate_tag": "POSITION_EQ_P1"
+    },
+    "right": {
+      "subject_fact_ref_tag": "SUBJECT_POSITION_P2",
+      "fixture_value": "P2",
+      "producer_predicate_tag": "POSITION_EQ_P2"
+    },
+    "oracle": {
+      "consumer_query_refs_must_differ": true,
+      "consumer_conditioner_ids_intentionally_equal": true,
+      "naive_consumer_find_key_can_collide": true,
+      "C1_adapter_must_reject_cross_query_slice_reuse": true,
+      "expected_disposition": "CONDITION_VALUE_IDENTITY_MISMATCH"
+    }
+  }
+}
