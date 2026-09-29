@@ -1,83 +1,79 @@
 {
   "schema": "PYAT_OMEGA_ACTIVE_TASK_BOARD@1",
-  "revision": 4,
-  "status": "C1_R2_RETURNED__INDEPENDENT_REREVIEW_BOUND__C3_02_RETURNED__INDEPENDENT_INTEGRATION_REVIEW_BOUND",
+  "revision": 5,
+  "status": "C1_R2_REREVIEW_CHANGES_REQUIRED__C1_R3_BOUND__C3_02_REVIEW_CHANGES_REQUIRED__C3_03_BOUND",
   "control_branch": "integration/pre-main-reconciliation-r1",
   "implementation_baseline": "b3b2fa13049513078c301a1f6574b661fcf390c5",
-  "inherited_adjudicated_reviews": [
+  "adjudicated_reviews": [
     {
-      "id": "C1-00-R",
-      "return_head": "8baa2e1e3a6f4f96311fbd660b65933fb4aff6c4",
+      "id": "C1-00-R2-R",
+      "return_head": "959d5d8cd4e8f96732e6809030c946751ba5da67",
       "disposition": "CHANGES_REQUIRED",
-      "hq_effect": "C1_01_BLOCKED__BOUNDED_R2_CORRECTION_COMPLETED"
+      "accepted": [
+        "A_VALUE_BEARING_CONDITION_RELATION",
+        "E_DETERMINANT_REPLAY_INVALIDATION_CLOSURE",
+        "ALL_PRESERVED_PRIOR_HOLDINGS"
+      ],
+      "defects": [
+        "B_OWNER_NATIVE_SOURCE_UNIVERSE_SCOPE_MISSING",
+        "C_UNKNOWN_CURRENTNESS_FIXTURE_UNREACHABLE",
+        "D_EVIDENCE_REF_PREIMAGE_CIRCULAR"
+      ],
+      "hq_effect": "C1_01_REMAINS_BLOCKED__C1_R3_BOUNDED_DOCUMENTARY_CORRECTION_ISSUED"
     },
     {
-      "id": "C3-01-R",
-      "return_head": "f8f152c60747a6146e92539a36af76ddc97a8d23",
-      "disposition": "APPROVE_AT_DECLARED_GRAIN",
-      "hq_effect": "G01_D01_D02_ACCEPTED_AT_DECLARED_PHYSICAL_GRAINS__C3_02_COMPLETED_PENDING_INDEPENDENT_REVIEW"
-    }
-  ],
-  "returned_pending_review": [
-    {
-      "id": "C1-00-R2",
-      "worker_branch": "agent/rabochii-pyat-hq126-c1-00-contract-correction-r2",
-      "commission_tip": "00b7091190505c0b41feaf0c45a29a791bab0cb5",
-      "return_head": "a94649020346383e9d9cd18cc2b5a448e0a09ad7",
-      "return_blob": "0a75addb8be3be110a886038cacc653db027f988",
-      "classification": "POST_CHECKPOINT_PENDING_RETURN__VALID_GOVERNED_LINEAGE",
-      "proof_grade": "STATIC_INSPECTION_PLUS_DETERMINISTIC_DOCUMENTARY_HASH_ORACLE_FREEZE",
-      "hq_status": "NOT_ADOPTED__INDEPENDENT_REREVIEW_BOUND"
-    },
-    {
-      "id": "C3-02",
-      "worker_branch": "agent/rabochii-pyat-hq126-c3-02-physical-repair-integration-r1",
-      "commission_tip": "e1420435591d727f48b7a4d5964709f87fcf5a4f",
-      "return_head": "d3204dc2a74e4628ac34e09e196e60b06ae8e135",
-      "semantic_candidate": "31fd2f4b7c7c2cdf72bed295b7cb5ca94528349f",
-      "worker_execution_commit": "a26279dfad85ddc2a37f7cb396094da308bc58e4",
-      "worker_run": 36615231777,
-      "classification": "POST_CHECKPOINT_PENDING_RETURN__VALID_GOVERNED_LINEAGE",
-      "proof_grade": "SOURCE_FREE_EXECUTED_BY_WORKER__NOT_INDEPENDENTLY_ACCEPTED",
-      "hq_status": "NOT_ADOPTED__INDEPENDENT_INTEGRATION_REVIEW_BOUND",
-      "review_focus": "IMPORT_TIME_PIP_INSTALL_PANDAS_IN_ALLOWLISTED_D02_TEST_MUST_BE_ADJUDICATED"
+      "id": "C3-02-R",
+      "return_head": "c874a134077e6eb416b584157d0209eabdd0d723",
+      "disposition": "CHANGES_REQUIRED",
+      "accepted": [
+        "G01_DECLARED_GRAIN",
+        "D01_DECLARED_GRAIN",
+        "D02_EXISTING_DIRECT_CASES",
+        "UNCHANGED_FACADE",
+        "WORKER_EXECUTION_SEPARATION"
+      ],
+      "defects": [
+        "D02_ITEM_UNWRAPPED_TIMEZONE_AWARE_REJECTION_SWALLOWED",
+        "SEMANTIC_TEST_IMPORT_TIME_PIP_INSTALL"
+      ],
+      "hq_effect": "C3_NOT_ADOPTED__C3_03_BOUNDED_REPAIR_AND_HERMETIC_QUALIFICATION_ISSUED"
     }
   ],
   "active_tasks": [
     {
-      "id": "C1-00-R2-R",
-      "branch": "agent/reviewer-pyat-hq126-c1-00-r2-rereview-r1",
-      "commission_tip": "9e47d9d9db5c45c7073ce5608bcc8bcf461f43ca",
-      "base": "a94649020346383e9d9cd18cc2b5a448e0a09ad7",
+      "id": "C1-00-R3",
+      "branch": "agent/rabochii-pyat-hq126-c1-00-contract-correction-r3",
+      "commission_tip": "e50bc716cf0fd017081e351a5803d3da61a00a38",
+      "base": "959d5d8cd4e8f96732e6809030c946751ba5da67",
       "state": "BOUND_AWAITING_USER_MEDIATED_LAUNCH",
-      "scope": "INDEPENDENT_DOCUMENTARY_REREVIEW_OF_FIVE_R2_DEFECT_CLASSES",
-      "pass_wake": "HQ_ADJUDICATION__ONLY_APPROVAL_CAN_ENABLE_SEPARATE_C1_01_FREEZE_AND_ISSUANCE"
+      "scope": "DOCUMENTARY_ONLY__OWNER_NATIVE_AUTHORITY_SCOPE__REACHABLE_UNKNOWN_FIXTURE__NONCIRCULAR_EVIDENCE_IDENTITY",
+      "pass_wake": "FRESH_INDEPENDENT_R3_REREVIEW_REQUIRED__C1_01_NOT_AUTOMATIC"
     },
     {
-      "id": "C3-02-R",
-      "branch": "agent/reviewer-pyat-hq126-c3-02-physical-repair-integration-r1",
-      "commission_tip": "ba4a371fb77543d570c65cfe6e221260b445459a",
-      "base": "d3204dc2a74e4628ac34e09e196e60b06ae8e135",
+      "id": "C3-03",
+      "branch": "agent/rabochii-pyat-hq126-c3-03-physical-repair-correction-r1",
+      "commission_tip": "a68fb242e8a000a4b06037118e8eb804ee3365b5",
+      "base": "c874a134077e6eb416b584157d0209eabdd0d723",
       "state": "BOUND_AWAITING_USER_MEDIATED_LAUNCH",
-      "scope": "INDEPENDENT_FINAL_INTEGRATION_REVIEW_PLUS_SOURCE_FREE_REPRODUCTION",
-      "pass_wake": "HQ_ADJUDICATION__ONLY_APPROVAL_CAN_ENABLE_C3_INTEGRATION_ADOPTION"
+      "scope": "D02_FAIL_CLOSED_ITEM_UNWRAP_PLUS_TEST_BOOTSTRAP_REMOVAL_PLUS_PINNED_EXECUTION_LAYER_QUALIFICATION",
+      "pass_wake": "FRESH_INDEPENDENT_C3_03_REVIEW_REQUIRED__C3_ADOPTION_NOT_AUTOMATIC"
     }
   ],
   "held": [
-    "C1-01 until corrected C1-00 packet passes independent rereview and HQ freezes contract/oracle/write allowlist",
+    "C1-01 until C1 R3 passes fresh independent rereview and HQ freezes contract/oracle/write allowlist",
     "C1-02 until C1-01",
     "C1-03 until C1-02",
     "C1-R until C1-03",
     "C2-02 until HQ declares exact next proving workload after accepted C1 contract",
     "C2-R until C2-02",
-    "C3 adoption until C3-02 independent integration review and HQ adjudication",
-    "JOIN-01 until applicable reviewed outputs",
+    "C3 adoption until C3-03 passes fresh independent review and HQ adjudication",
+    "JOIN-01 until applicable independently reviewed outputs",
     "OMEGA-1 until scoped source-free join"
   ],
   "prohibitions": [
     "NO_RAW_SOURCE_EXECUTION",
     "NO_NEW_SEMANTIC_OR_COMPARABILITY_AUTHORITY",
-    "NO_C1_01_BEFORE_R2_INDEPENDENT_REREVIEW_AND_HQ_FREEZE",
+    "NO_C1_01_BEFORE_R3_INDEPENDENT_REREVIEW_AND_HQ_FREEZE",
     "NO_WHOLE_HISTORICAL_DECODER_REPLACEMENT",
     "NO_C3_FACADE_EDIT",
     "NO_PREV3_TO_V3_ACTOR_IMPLEMENTATION"
