@@ -4,7 +4,7 @@ Status: `OPEN__P0`
 
 ## Question
 
-What is the minimum ontology necessary to represent a historically produced person in relation, and which parts belong to V3 versus a downstream dyadic/network runtime?
+What is the minimum ontology necessary to represent a historically produced person in relation, how should each semantic be placed across PRE-V3, durable V3, CAN-008, PFF and V2, and what if anything remains genuinely ownerless?
 
 ## Why this is first
 
@@ -71,4 +71,6 @@ The N-M-L child-development work should be reviewed for developmental continuity
 A finite ontology table:
 `OBJECT | OWNER | CREATED_FROM | MUTATED_BY | OBSERVABLE_TO | PERSISTENCE | DOWNSTREAM_CONSUMERS | MUST_NOT_MEAN`
 
-plus an exact proposed V3/dyad seam and alternatives rejected.
+plus an exact proposed ownership/seam map, any genuinely ownerless remainder, and alternatives rejected.
+
+Inherited temporal-grain architecture is banked in `01_INHERITED_TEMPORAL_GRAIN_ARCHITECTURE_R1.md` and is mandatory context for this docket.
