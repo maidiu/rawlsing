@@ -1,0 +1,116 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.0.0",
+  "checkpoint_id": "20260929-PYAT-C1R2-C3I-REVIEWS-BOUND-R1",
+  "status": "C1_R2_RETURN_VALID_PENDING_REREVIEW__C3_02_RETURN_VALID_PENDING_INDEPENDENT_REVIEW",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "902640dfddce431d0c5ba151d3eb851d6b84d7a3",
+  "implementation_baseline": "b3b2fa13049513078c301a1f6574b661fcf390c5",
+  "governing_decisions": [
+    "HQD-2026-09-27-124",
+    "HQD-2026-09-28-125"
+  ],
+  "predecessor_checkpoint": "20260929-PYAT-C1R2-C3I-BOUND-R1",
+  "reconciled_pending_returns": [
+    {
+      "id": "C1-00-R2",
+      "branch": "agent/rabochii-pyat-hq126-c1-00-contract-correction-r2",
+      "commission_tip": "00b7091190505c0b41feaf0c45a29a791bab0cb5",
+      "return_head": "a94649020346383e9d9cd18cc2b5a448e0a09ad7",
+      "classification": "POST_CHECKPOINT_PENDING_RETURN__VALID_GOVERNED_LINEAGE",
+      "adopted": false
+    },
+    {
+      "id": "C3-02",
+      "branch": "agent/rabochii-pyat-hq126-c3-02-physical-repair-integration-r1",
+      "commission_tip": "e1420435591d727f48b7a4d5964709f87fcf5a4f",
+      "return_head": "d3204dc2a74e4628ac34e09e196e60b06ae8e135",
+      "semantic_candidate": "31fd2f4b7c7c2cdf72bed295b7cb5ca94528349f",
+      "execution_commit": "a26279dfad85ddc2a37f7cb396094da308bc58e4",
+      "run_id": 36615231777,
+      "job_id": 109566427495,
+      "classification": "POST_CHECKPOINT_PENDING_RETURN__VALID_GOVERNED_LINEAGE",
+      "adopted": false,
+      "mandatory_review_question": "IMPORT_TIME_PIP_INSTALL_PANDAS_IN_D02_TEST"
+    }
+  ],
+  "active_workers": [
+    {
+      "id": "C1-00-R2-R",
+      "branch": "agent/reviewer-pyat-hq126-c1-00-r2-rereview-r1",
+      "commission_tip": "9e47d9d9db5c45c7073ce5608bcc8bcf461f43ca",
+      "observed_head_at_checkpoint": "9e47d9d9db5c45c7073ce5608bcc8bcf461f43ca",
+      "grain": "INDEPENDENT_DOCUMENTARY_REREVIEW_OF_CORRECTED_C1_00_CONTRACT_ORACLES",
+      "library_access": "NO",
+      "pass_wake": "HQ_ADJUDICATION_BEFORE_ANY_C1_01_FREEZE_OR_ISSUANCE",
+      "blocker_effect": "C1_01_BLOCKED",
+      "hard_forbidden": [
+        "PRODUCTION_CODE_EDIT",
+        "PRODUCTION_TEST_EDIT",
+        "RAW_SOURCE_ACCESS",
+        "NEW_SEMANTIC_OR_COMPARABILITY_AUTHORITY"
+      ]
+    },
+    {
+      "id": "C3-02-R",
+      "branch": "agent/reviewer-pyat-hq126-c3-02-physical-repair-integration-r1",
+      "commission_tip": "ba4a371fb77543d570c65cfe6e221260b445459a",
+      "observed_head_at_checkpoint": "ba4a371fb77543d570c65cfe6e221260b445459a",
+      "grain": "INDEPENDENT_FINAL_CURRENT_BASELINE_G01_D01_D02_INTEGRATION_REVIEW",
+      "library_access": "NO",
+      "pass_wake": "HQ_ADJUDICATION_BEFORE_C3_ADOPTION",
+      "blocker_effect": "C3_INTEGRATION_NOT_ADOPTED",
+      "hard_forbidden": [
+        "RAW_SOURCE_ACCESS",
+        "PRODUCTION_OR_TEST_SOURCE_EDIT",
+        "FACADE_EDIT",
+        "WHOLE_HISTORICAL_DECODER_REPLACEMENT",
+        "SEMANTIC_WIDENING"
+      ]
+    }
+  ],
+  "held_gates": {
+    "C1_01": "WAIT_C1_00_R2_INDEPENDENT_REREVIEW_AND_HQ_FREEZE",
+    "C2_02": "WAIT_ACCEPTED_C1_CONTRACT_AND_HQ_EXACT_WORKLOAD",
+    "C3_ADOPTION": "WAIT_C3_02_INDEPENDENT_INTEGRATION_REVIEW_AND_HQ_ADJUDICATION",
+    "JOIN_01": "WAIT_APPLICABLE_INDEPENDENTLY_REVIEWED_OUTPUTS",
+    "OMEGA_1": "WAIT_SCOPED_SOURCE_FREE_JOIN"
+  },
+  "dependency_graph": {
+    "C1_00_R2_R": {
+      "status": "ACTIVE_REVIEW_BOUND",
+      "prerequisites": [
+        "C1_00_R2_RETURN"
+      ],
+      "wake_effect": "MAY_ALLOW_HQ_TO_FREEZE_C1_01_INPUTS_IF_APPROVED",
+      "prohibited_early_actions": [
+        "C1_01_IMPLEMENTATION"
+      ]
+    },
+    "C3_02_R": {
+      "status": "ACTIVE_REVIEW_BOUND",
+      "prerequisites": [
+        "C3_02_RETURN"
+      ],
+      "wake_effect": "MAY_ALLOW_HQ_TO_ADOPT_C3_SOURCE_FREE_REPAIRS_IF_APPROVED",
+      "prohibited_early_actions": [
+        "C3_INTEGRATION_ADOPTION"
+      ]
+    },
+    "JOIN_01": {
+      "status": "HELD",
+      "prerequisites": [
+        "APPLICABLE_REVIEWED_C1_OUTPUT",
+        "APPLICABLE_REVIEWED_C3_OUTPUT_AS_NEEDED",
+        "REQUIRED_C2_AUTHORITY_CELLS"
+      ],
+      "wake_effect": "OMEGA_1_PACKET_ELIGIBLE",
+      "prohibited_early_actions": [
+        "PRODUCTION_READINESS_TRANSITION"
+      ]
+    }
+  },
+  "source_execution_authorized": false,
+  "actor_implementation_authorized": false,
+  "astra_escalation_triggered": false,
+  "next_action": "USER_LAUNCH_C1_00_R2_REREVIEW_AND_C3_02_INDEPENDENT_REVIEW__HQ_ADJUDICATES_RETURNS"
+}
