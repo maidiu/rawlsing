@@ -1,0 +1,70 @@
+{
+  "schema": "PYAT_C1_00_R2_INDEPENDENT_REREVIEW_DEFECT_DISPOSITION@1",
+  "reviewed_return": "a94649020346383e9d9cd18cc2b5a448e0a09ad7",
+  "reviewer_commission_tip": "9e47d9d9db5c45c7073ce5608bcc8bcf461f43ca",
+  "disposition": "CHANGES_REQUIRED",
+  "defects": [
+    {
+      "id": "A_VALUE_BEARING_CONDITION_RELATION",
+      "status": "PASS",
+      "basis": [
+        "Subject-condition preimages are value-bearing and exact.",
+        "Producer predicate-leaf preimages are exact.",
+        "Pairing-ground-truth refs bind exact subject preimage to exact predicate leaf.",
+        "P1 subject + P2 producer leaf has equal semantic ref but unequal exact value and no frozen pairing; frozen checks reject before slice construction.",
+        "P1 and P2 exact preimage refs differ despite shared conditioner id."
+      ]
+    },
+    {
+      "id": "B_COMPLETE_SYNTHETIC_AUTHORITY_FREEZE",
+      "status": "FAIL",
+      "basis": [
+        "All eight declared authority hashes independently reproduce from frozen canonical material.",
+        "Targeted scope/operation/model/pairing mutations reidentify.",
+        "But C1-AT07-QUERY scope_envelope omits source_universe_refs.",
+        "Current I03 calls require_positive_authority with source_universe_ref for every query authority and universe.",
+        "Current authority owner tests only scope_envelope[source_universe_refs] for that requirement; absent key fails closed.",
+        "Therefore the frozen query authority is reproducible but not usable by the declared current public I03 path."
+      ],
+      "smallest_fix": "Freeze the exact synthetic universe ref(s) and owner-native source_universe_refs scope (or an explicitly lawful owner-recognized unrestricted source scope), then recompute all affected authority/downstream hashes."
+    },
+    {
+      "id": "C_UNKNOWN_UNVISITED_UNRESOLVED_SEPARATION",
+      "status": "FAIL_AS_FROZEN_FIXTURE",
+      "basis": [
+        "The state vocabulary correctly distinguishes UNKNOWN_CURRENTNESS, EXPLICIT_UNKNOWN_UNVISITED, UNRESOLVED, UNAVAILABLE, NO_CURRENT, and CONFLICTING_CURRENT_SELECTION.",
+        "B5 current owner contains UNKNOWN_CURRENTNESS.",
+        "R2 freezes resolve_selection_exact as the UNKNOWN witness for a key with no current/no-current receipt.",
+        "That method requires a supplied ExactRef and rejects receipt mismatch before its terminal UNKNOWN_CURRENTNESS branch when the selection index is absent.",
+        "current_selection_receipt_ref is the reachable current-owner path that explicitly raises UNKNOWN_CURRENTNESS for an unselected key."
+      ],
+      "smallest_fix": "Freeze the exact reachable B5 method/setup/expected UNKNOWN_CURRENTNESS exception and retain the existing state distinctions."
+    },
+    {
+      "id": "D_EXACT_POSSIBILITY_SLICE_PROJECTION",
+      "status": "FAIL_ON_EVIDENCE_IDENTITY_PREIMAGE",
+      "basis": [
+        "Projection schema hash independently reproduces.",
+        "Geometry, denominator/risk members, target topology/domain, measure, exact fractions and raw_support semantics are frozen.",
+        "raw_support is exactly EmpiricalFact.raw_denominator_support.",
+        "But evidence_ref is defined as hash over the complete PossibilitySliceEvidence payload; evidence_ref is itself a payload field.",
+        "Current PossibilitySliceEvidence has no owner-native derived-ref/material method that resolves this circularity."
+      ],
+      "smallest_fix": "Freeze an explicit noncircular evidence identity preimage, excluding evidence_ref or otherwise defining exact derivation, and freeze expected AT07 evidence refs."
+    },
+    {
+      "id": "E_DETERMINANT_REPLAY_INVALIDATION_CLOSURE",
+      "status": "PASS",
+      "basis": [
+        "Relation witness, subject preimage, predicate leaf and pairing refs are mandatory determinants.",
+        "Full fresh-process recomputation explicitly requires their exact material/refs.",
+        "Replay omitting relation inputs cannot claim FULL_COMPOSITION_FRESH_PROCESS_RECOMPUTE.",
+        "Relation-only determinant mutation necessarily changes canonical composed-result material.",
+        "B5 invalidation remains conditional on lifecycle-governed families rather than imposed universally."
+      ]
+    }
+  ],
+  "preserved_prior_holdings": "PASS",
+  "c1_01_blocked": true,
+  "terminal": "C1_00_R2_INDEPENDENT_REREVIEW_COMPLETE__HQ_ADJUDICATION_REQUIRED"
+}
