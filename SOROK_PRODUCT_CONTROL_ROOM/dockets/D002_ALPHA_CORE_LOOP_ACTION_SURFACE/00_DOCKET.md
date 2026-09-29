@@ -126,3 +126,38 @@ The scenario bank now runs through `SCE-026`.
 
 Full R3 coverage audit:
 `SOROK_PRODUCT_CONTROL_ROOM/10_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R3.md`.
+
+
+## R4 completeness additions
+
+Fourth-pass audit added:
+
+9. `09_WORLD_CAUSALITY_ACTION_RESOLUTION_AND_COUNTERFACTUAL_STABILITY_R1.md`
+   - world/object transition authority;
+   - bounded object state;
+   - deterministic/seeded stochasticity question;
+   - causal stability;
+   - parser ambiguity;
+   - multi-causal contribution.
+
+10. `10_ACTOR_PERCEPTION_APPRAISAL_EXPRESSION_AND_MEMORY_R1.md`
+   - actor-specific perception packets;
+   - finite actor attention;
+   - internal appraisal versus expression;
+   - partial self-access;
+   - selective memory/forgetting;
+   - pattern confidence/counterevidence;
+   - independent third-party processing.
+
+11. `11_CAUSAL_PROVENANCE_DELAYED_EFFECTS_AND_NONTELEOLOGICAL_WORLD_R1.md`
+   - causal lineage;
+   - actual cause versus actor attribution;
+   - delayed effects;
+   - anti-user-credit;
+   - non-teleological event generation;
+   - no guaranteed moral legibility.
+
+Scenario bank now runs through `SCE-036`.
+
+Current completeness audit:
+`SOROK_PRODUCT_CONTROL_ROOM/11_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R4.md`.
