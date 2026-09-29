@@ -6,6 +6,20 @@ Date: 2026-09-29
 
 Purpose: perform a fourth independent pass over the interaction ideation, now targeting causal-mechanics gaps rather than missing UX/epistemic concepts.
 
+## R5 genealogy correction notice
+
+R5 archaeology established that several R4 items were not new Rawlsing psychological discoveries. In particular:
+- internal response != outward expression;
+- partial actor self-access;
+- actor memory != objective event history;
+- recognition/misattribution/defense/leakage/self-output distinctions;
+
+were already deeply developed in early Rawlsing and the PFF corpus.
+
+R4 remains valid as the pass that made them explicit in **Sorok product scenarios**, but its “new” language is superseded genealogically by:
+- D001/02_INHERITED_PSYCHIC_MEDIATION_PFF_V2_GENEALOGY_R1.md
+- 12_CHAT_EXHAUSTIVE_HARVEST_AUDIT_R5.md
+
 ## 1. R4 result
 
 R3 established:
@@ -150,7 +164,7 @@ actor-perception file
 SPD-0043
 Q-ATTNACTOR-001
 
-## 8. Internal response versus outward presentation — STRONGER / NOW EXPLICIT
+## 8. Internal response versus outward presentation — INHERITED PFF LAW, newly explicit in Sorok R4
 
 ### Example
 Nadia may simultaneously:
@@ -169,7 +183,7 @@ SPD-0044
 Q-EXPR-002
 RISK-041
 
-## 9. Partial self-access — NEWLY EXPLICIT
+## 9. Partial self-access — INHERITED PFF LAW, newly explicit in Sorok R4
 
 The persona need not be perfectly introspectively transparent to themselves.
 
@@ -184,7 +198,7 @@ This is a bounded design possibility, not permission for arbitrary hidden psycho
 ### Home
 actor-perception file
 
-## 10. Actor memory versus event history — PREVIOUSLY TOO COARSE / NOW BANKED
+## 10. Actor memory versus event history — INHERITED DISTINCTION, product application strengthened in R4
 
 Objective event history is not the same as what a person remembers.
 
