@@ -1,0 +1,182 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Sorok Product Control Room Records",
+  "type": "object",
+  "$defs": {
+    "question": {
+      "type": "object",
+      "required": [
+        "id",
+        "workstream",
+        "priority",
+        "status",
+        "question",
+        "depends_on"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^Q-[A-Z]+-[0-9]{3}$"
+        },
+        "workstream": {
+          "type": "string",
+          "pattern": "^S[0-9]+$"
+        },
+        "priority": {
+          "enum": [
+            "P0",
+            "P1",
+            "P2",
+            "P3"
+          ]
+        },
+        "status": {
+          "enum": [
+            "OPEN",
+            "FRAMED",
+            "RESEARCHING",
+            "PROTOTYPING",
+            "READY_FOR_DECISION",
+            "DECIDED",
+            "DEFERRED",
+            "OBSOLETE"
+          ]
+        },
+        "question": {
+          "type": "string",
+          "minLength": 1
+        },
+        "depends_on": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "docket": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": true
+    },
+    "decision": {
+      "type": "object",
+      "required": [
+        "id",
+        "date",
+        "status",
+        "decision",
+        "reopen_condition"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^SPD-[0-9]{4}$"
+        },
+        "date": {
+          "type": "string",
+          "format": "date"
+        },
+        "status": {
+          "enum": [
+            "VISION",
+            "HYPOTHESIS",
+            "PROVISIONAL_PRODUCT_LAW",
+            "ACCEPTED_PRODUCT_REQUIREMENT",
+            "GOVERNED_ARCHITECTURE_REQUIREMENT",
+            "IMPLEMENTED_AND_PROVED",
+            "REJECTED",
+            "DEFERRED"
+          ]
+        },
+        "decision": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reopen_condition": {
+          "type": "string",
+          "minLength": 1
+        },
+        "questions_closed": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "affected_workstreams": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "risk": {
+      "type": "object",
+      "required": [
+        "id",
+        "severity",
+        "category",
+        "risk",
+        "mitigation_direction"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^RISK-[0-9]{3}$"
+        },
+        "severity": {
+          "enum": [
+            "CRITICAL",
+            "HIGH",
+            "MEDIUM",
+            "LOW"
+          ]
+        },
+        "category": {
+          "type": "string"
+        },
+        "risk": {
+          "type": "string",
+          "minLength": 1
+        },
+        "mitigation_direction": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "enum": [
+            "OPEN",
+            "MITIGATING",
+            "ACCEPTED",
+            "CLOSED"
+          ]
+        },
+        "owner_workstream": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}
