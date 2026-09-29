@@ -180,7 +180,7 @@ The following prior C1-00 artifacts were modified by R2:
 | artifact | blob |
 |---|---|
 | `01_CORRECTION_MATRIX.json` | `55fa6dfbb763b66203e0f7d5cbfa23a734c991ab` |
-| `02_VALUE_RELATION_ORACLE.json` | `bacda45e651d8c3ed73bb73b0169d0ed2ddefd53` |
+| `02_VALUE_RELATION_ORACLE.json` | `c6acafae820c065215fdbe7a703480a8b19fbc57` |
 | `03_SYNTHETIC_AUTHORITY_FREEZE.json` | `333989fa7b57c221d6aa5ebfc25d9d76e0acad32` |
 | `04_SLICE_PROJECTION.json` | `8e5bd3d23db1e39aebee0a55d49934a0d400dd48` |
 | `05_STATE_AND_DETERMINANT_CLOSURE.json` | `96b260781ddfa5374c34afa7433fefd1be5502f7` |
