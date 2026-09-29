@@ -1,6 +1,6 @@
 # VOZHD PYAT — READ ME FIRST
 
-Status: `ACTIVE_CONTROL_ROOM__HQD125_CURRENT__ASTRA_INTEGRATED_AUDIT_DELIVERED`
+Status: `ACTIVE_CONTROL_ROOM__HQD125_CURRENT__OMEGA_BROWSER_ORCHESTRATION_DELIVERED`
 
 Current architecture/program decision: `HQD-2026-09-26-112`
 
@@ -11,6 +11,12 @@ HQD-113 grok prerequisite: `SATISFIED__PRESERVED_AS_HISTORY`
 Selected physical policy: `B__SOURCE_BACKED_VIRTUAL_C11`
 
 Control branch: `integration/pre-main-reconciliation-r1`
+
+## Current operating instruction: browser HQ, occasional Astra
+
+The [Omega-Vozhd operating packet](OMEGA_VOZHD_ORCHESTRATION_R1/README.md) now supplies the dependency-ordered program through PRE-V3, detailed first source-free tranche, role prompts, task board and escalation rules. Start with the [ready-to-paste browser HQ instruction](OMEGA_VOZHD_ORCHESTRATION_R1/HQ_BOOTSTRAP.md) and [delivery/authorization reconciliation](28_OMEGA_VOZHD_BROWSER_HQ_ORCHESTRATION.md). Browser GPT-5.6 Sol High is the operating default; Codex 5.6/6.0 is a bounded fallback; Astra handles defined decision gates.
+
+The user's later build/orchestration instructions authorize the initial bounded source-free C1/C2/C3 scope after HQ binds concrete assignments and acceptance inputs. Earlier draft-only statements below and in historical delivery objects describe their earlier cut; they no longer mean that ordinary initial source-free implementation needs renewed user permission. No workers were dispatched by this documentary delivery. Raw-source/production transition, semantic-authority and actor boundaries remain separate.
 
 ## Uploaded C1–C3 draft work orders
 
