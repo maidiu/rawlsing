@@ -160,3 +160,37 @@ At the end of a substantive Sorok session:
 Chat is an ideation surface, not the durable project state.
 
 Anything we would regret forgetting must be serialized into Sorok before the session ends.
+
+
+## 10. Vozhd takeover inheritance law
+
+A new Sorok Vozhd must not begin major ontology or architecture work from summaries alone.
+
+Mandatory first-principles gate:
+
+`00A_VOZHD_TAKEOVER_RELATIONAL_PSYCHIC_GATE_R1.md`
+
+For D001/V3/PFF work, the agent must distinguish:
+- historical implementation continuity;
+- PFF MUST-FACTOR conceptual capital;
+- HQ-adopted CAN-008 R2 semantic ownership;
+- narrowed/candidate PFF interface-freeze remainder;
+- V2 actor-limited expression authority;
+- Sorok's relationalization hypothesis.
+
+If a vivid product phenomenon appears to require:
+- partial self-knowledge;
+- hidden affect;
+- defense;
+- leakage;
+- relational activation;
+- memory resonance;
+- self-output surprise;
+
+the default move is **repo archaeology and crosswalk**, not invention of a new psychology subsystem.
+
+For any proposed new psychology owner:
+
+`INHERIT → CROSSWALK → IDENTIFY TRUE STARVATION → PROPOSE MINIMUM REQUIREMENT → GOVERNED HANDOFF`.
+
+The takeover gate contains exact branch/path references for the necessary deep reading.
