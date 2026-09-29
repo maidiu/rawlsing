@@ -1,41 +1,66 @@
 {
   "schema": "PYAT_OMEGA_ACTIVE_TASK_BOARD@1",
-  "revision": 3,
-  "status": "C1_00_REVIEW_CHANGES_REQUIRED__C1_R2_CORRECTION_BOUND__C3_01_REVIEW_APPROVED__C3_02_INTEGRATION_BOUND",
+  "revision": 4,
+  "status": "C1_R2_RETURNED__INDEPENDENT_REREVIEW_BOUND__C3_02_RETURNED__INDEPENDENT_INTEGRATION_REVIEW_BOUND",
   "control_branch": "integration/pre-main-reconciliation-r1",
   "implementation_baseline": "b3b2fa13049513078c301a1f6574b661fcf390c5",
-  "adjudicated_reviews": [
+  "inherited_adjudicated_reviews": [
     {
       "id": "C1-00-R",
       "return_head": "8baa2e1e3a6f4f96311fbd660b65933fb4aff6c4",
       "disposition": "CHANGES_REQUIRED",
-      "hq_effect": "C1_01_REMAINS_BLOCKED__BOUNDED_C1_00_R2_CORRECTION_ISSUED"
+      "hq_effect": "C1_01_BLOCKED__BOUNDED_R2_CORRECTION_COMPLETED"
     },
     {
       "id": "C3-01-R",
       "return_head": "f8f152c60747a6146e92539a36af76ddc97a8d23",
       "disposition": "APPROVE_AT_DECLARED_GRAIN",
-      "hq_effect": "G01_D01_D02_ACCEPTED_AT_DECLARED_PHYSICAL_GRAINS__C3_02_ALLOWLIST_FROZEN_AND_ISSUED"
+      "hq_effect": "G01_D01_D02_ACCEPTED_AT_DECLARED_PHYSICAL_GRAINS__C3_02_COMPLETED_PENDING_INDEPENDENT_REVIEW"
+    }
+  ],
+  "returned_pending_review": [
+    {
+      "id": "C1-00-R2",
+      "worker_branch": "agent/rabochii-pyat-hq126-c1-00-contract-correction-r2",
+      "commission_tip": "00b7091190505c0b41feaf0c45a29a791bab0cb5",
+      "return_head": "a94649020346383e9d9cd18cc2b5a448e0a09ad7",
+      "return_blob": "0a75addb8be3be110a886038cacc653db027f988",
+      "classification": "POST_CHECKPOINT_PENDING_RETURN__VALID_GOVERNED_LINEAGE",
+      "proof_grade": "STATIC_INSPECTION_PLUS_DETERMINISTIC_DOCUMENTARY_HASH_ORACLE_FREEZE",
+      "hq_status": "NOT_ADOPTED__INDEPENDENT_REREVIEW_BOUND"
+    },
+    {
+      "id": "C3-02",
+      "worker_branch": "agent/rabochii-pyat-hq126-c3-02-physical-repair-integration-r1",
+      "commission_tip": "e1420435591d727f48b7a4d5964709f87fcf5a4f",
+      "return_head": "d3204dc2a74e4628ac34e09e196e60b06ae8e135",
+      "semantic_candidate": "31fd2f4b7c7c2cdf72bed295b7cb5ca94528349f",
+      "worker_execution_commit": "a26279dfad85ddc2a37f7cb396094da308bc58e4",
+      "worker_run": 36615231777,
+      "classification": "POST_CHECKPOINT_PENDING_RETURN__VALID_GOVERNED_LINEAGE",
+      "proof_grade": "SOURCE_FREE_EXECUTED_BY_WORKER__NOT_INDEPENDENTLY_ACCEPTED",
+      "hq_status": "NOT_ADOPTED__INDEPENDENT_INTEGRATION_REVIEW_BOUND",
+      "review_focus": "IMPORT_TIME_PIP_INSTALL_PANDAS_IN_ALLOWLISTED_D02_TEST_MUST_BE_ADJUDICATED"
     }
   ],
   "active_tasks": [
     {
-      "id": "C1-00-R2",
-      "branch": "agent/rabochii-pyat-hq126-c1-00-contract-correction-r2",
-      "commission_tip": "00b7091190505c0b41feaf0c45a29a791bab0cb5",
-      "base": "df6f2d36e274744d217dc4a380c73e2c7e18e83f",
+      "id": "C1-00-R2-R",
+      "branch": "agent/reviewer-pyat-hq126-c1-00-r2-rereview-r1",
+      "commission_tip": "9e47d9d9db5c45c7073ce5608bcc8bcf461f43ca",
+      "base": "a94649020346383e9d9cd18cc2b5a448e0a09ad7",
       "state": "BOUND_AWAITING_USER_MEDIATED_LAUNCH",
-      "scope": "DOCUMENTARY_CORRECTION_ONLY__FIVE_REVIEW_DEFECTS",
-      "pass_wake": "INDEPENDENT_REREVIEW_ONLY__C1_01_STILL_NOT_AUTOMATIC"
+      "scope": "INDEPENDENT_DOCUMENTARY_REREVIEW_OF_FIVE_R2_DEFECT_CLASSES",
+      "pass_wake": "HQ_ADJUDICATION__ONLY_APPROVAL_CAN_ENABLE_SEPARATE_C1_01_FREEZE_AND_ISSUANCE"
     },
     {
-      "id": "C3-02",
-      "branch": "agent/rabochii-pyat-hq126-c3-02-physical-repair-integration-r1",
-      "commission_tip": "e1420435591d727f48b7a4d5964709f87fcf5a4f",
-      "base": "b3b2fa13049513078c301a1f6574b661fcf390c5",
+      "id": "C3-02-R",
+      "branch": "agent/reviewer-pyat-hq126-c3-02-physical-repair-integration-r1",
+      "commission_tip": "ba4a371fb77543d570c65cfe6e221260b445459a",
+      "base": "d3204dc2a74e4628ac34e09e196e60b06ae8e135",
       "state": "BOUND_AWAITING_USER_MEDIATED_LAUNCH",
-      "scope": "CURRENT_BASELINE_G01_D01_D02_PORT_AND_SOURCE_FREE_QUALIFICATION",
-      "pass_wake": "C3_R_INDEPENDENT_REVIEW_OF_EXACT_INTEGRATED_COMMIT"
+      "scope": "INDEPENDENT_FINAL_INTEGRATION_REVIEW_PLUS_SOURCE_FREE_REPRODUCTION",
+      "pass_wake": "HQ_ADJUDICATION__ONLY_APPROVAL_CAN_ENABLE_C3_INTEGRATION_ADOPTION"
     }
   ],
   "held": [
@@ -43,31 +68,16 @@
     "C1-02 until C1-01",
     "C1-03 until C1-02",
     "C1-R until C1-03",
-    "C2-02 until HQ declares exact next proving workload after C1 contract acceptance",
+    "C2-02 until HQ declares exact next proving workload after accepted C1 contract",
     "C2-R until C2-02",
-    "C3-R until C3-02 return",
+    "C3 adoption until C3-02 independent integration review and HQ adjudication",
     "JOIN-01 until applicable reviewed outputs",
     "OMEGA-1 until scoped source-free join"
-  ],
-  "c1_review_required_corrections": [
-    "VALUE_BEARING_CONDITION_RELATION_NOT_CO_CUSTODY",
-    "COMPLETE_SYNTHETIC_AUTHORITY_MATERIAL_AND_HASH_FREEZE",
-    "DISTINCT_UNKNOWN_VS_UNVISITED_VS_UNRESOLVED",
-    "EXACT_CONSUMER_SLICE_PROJECTION_AND_RAW_SUPPORT_MEANING",
-    "CONDITION_RELATION_IN_DETERMINANT_REPLAY_INVALIDATION_CLOSURE"
-  ],
-  "c3_frozen_allowlist": [
-    "rawlsing_next/closed35_g01_sav_numeric_representation_authority.py",
-    "rawlsing_next/pre553_physical_decoder.py",
-    "rawlsing_next/pre553_r5_codec.py",
-    "rawlsing_next/tests/test_closed35_g01_sav_numeric_representation_authority.py",
-    "rawlsing_next/tests/test_closed35_d01_declared_encoding_admission.py",
-    "rawlsing_next/tests/test_closed35_d02_opaque_datetime_carrier.py"
   ],
   "prohibitions": [
     "NO_RAW_SOURCE_EXECUTION",
     "NO_NEW_SEMANTIC_OR_COMPARABILITY_AUTHORITY",
-    "NO_C1_01_BEFORE_R2_INDEPENDENT_REREVIEW",
+    "NO_C1_01_BEFORE_R2_INDEPENDENT_REREVIEW_AND_HQ_FREEZE",
     "NO_WHOLE_HISTORICAL_DECODER_REPLACEMENT",
     "NO_C3_FACADE_EDIT",
     "NO_PREV3_TO_V3_ACTOR_IMPLEMENTATION"
