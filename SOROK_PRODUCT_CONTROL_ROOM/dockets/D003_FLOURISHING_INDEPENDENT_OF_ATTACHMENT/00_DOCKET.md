@@ -70,3 +70,40 @@ The docket must answer how the model treats:
 ## Deliverable
 
 A candidate multidimensional flourishing constitution, epistemic limits, anti-colonial/cultural checks, relation to Enneagram health, and explicit statement of what cannot be inferred from the persona's self-report.
+
+
+## Causal-attribution constraint from R4
+
+Flourishing change and user impact must not be collapsed.
+
+If the persona becomes:
+- more agentic;
+- less dependent;
+- more connected;
+- more hopeful;
+- more avoidant;
+- more distressed;
+
+Rawlsing must not automatically credit or debit the user merely because the change occurred after user interaction.
+
+D003 must distinguish:
+- user action;
+- demonstrable causal contribution;
+- enabling condition;
+- repeated relational pattern;
+- independent world/person causes;
+- uncertain causal weight.
+
+The same applies to harm.
+
+A hidden health model becomes invalid if it converts:
+`later persona state change`
+into
+`user moral impact`
+without causal support.
+
+This constraint inherits:
+- `Q-CAUSAL-001`;
+- `Q-MULTICAUSE-001`;
+- SPD-0046 / SPD-0047;
+- RISK-043 / RISK-044.
