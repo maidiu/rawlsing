@@ -2,7 +2,7 @@
 
 Updated: 2026-09-29
 
-Status: `CONTROL_ROOM_SEEDED__INTERACTION_SYSTEM_R1_BANKED__ONTOLOGY_PROVISIONAL__ALPHA_NOT_YET_IMPLEMENTATION_SPECIFIED`
+Status: `INTERACTION_IDEATION_R2_COMPLETENESS_AUDITED__GAPS_CORRECTED__ONTOLOGY_PROVISIONAL__ALPHA_NOT_YET_IMPLEMENTATION_SPECIFIED`
 
 ## Current base
 
@@ -41,11 +41,20 @@ Status: `CONTROL_ROOM_SEEDED__INTERACTION_SYSTEM_R1_BANKED__ONTOLOGY_PROVISIONAL
 26. Ordinary objects are socially produced evidence, not necessarily author-planted clues; the world may be meaningful before the user learns the meaning.
 27. Attention allocation is itself candidate player-praxis evidence distinct from attention capacity.
 28. A future `RAWlsing / Rawlsing` mode distinction may vary epistemic/agency scaffolding while preserving identical underlying moral physics and hidden psychology.
+29. The world/persona are non-player-centric: actors retain independent agendas and may ignore, delay, interrupt, leave or prioritize other tasks rather than “respond” to every user act.
+30. Interaction reasoning uses four operational views—objective world, actor-private state, relational/distributed-knowledge state and user phenomenal surface—without replacing inherited architecture owners.
+31. Narrator-directed ATTEND, diegetic SAY, embodied DO and player-private intention must remain distinct channels even when mixed inside one natural-language turn.
+32. Player-private intention is distinct from later self-description; exact anti-retroactive-rewrite semantics remain open.
+33. Finite narrator detail should follow perceptual salience and explicit attention, never hidden psychological importance.
+34. Variable duration must remain physically/socially plausible rather than punitive; cheap micro-observations may accumulate consequential time.
+35. Prompt packing/verbosity must not compress or inflate world-time; duration follows realized operations.
+36. No arbitrary per-scene observation quota is preferred; scarcity should arise from the world itself.
 
 ## R1 interaction ideation bank
 
 Top-level:
 - `08_INTERACTION_SYSTEM_SYNTHESIS_R1.md`
+- `09_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R2.md`
 
 Architecture inheritance:
 - `dockets/D001_RELATIONAL_ONTOLOGY_V3_BOUNDARY/01_INHERITED_TEMPORAL_GRAIN_ARCHITECTURE_R1.md`
@@ -83,6 +92,11 @@ The scenario bank currently preserves 15 concrete probes including:
 - What is the minimum alpha action vocabulary beyond SAY/DO/ATTEND?
 - How should open natural-language actions be decomposed and sequentially interrupted?
 - What variable-duration model is sufficient without over-simulating physics?
+- How should ongoing actor agendas/tasks be represented so the world remains non-player-centric?
+- How should mixed SAY/DO/ATTEND/private-intent turns be parsed without channel leakage?
+- When does user-declared private intention become binding, and how are retroactive rewrites prevented?
+- What perceptual-salience algorithm is sufficient for finite narration without hidden-salience leakage?
+- How should cumulative micro-observations consume time without prompt-packing exploits?
 - How should lawful world completion work for previously unresolved environmental detail?
 - How should reciprocal observation, cover, false suspicion and meta-models be represented?
 - Which attention-allocation patterns can validly enter the player praxis model?
