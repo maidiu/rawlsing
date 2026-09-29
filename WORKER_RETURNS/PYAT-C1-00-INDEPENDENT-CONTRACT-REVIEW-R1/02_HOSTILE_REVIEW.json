@@ -1,0 +1,113 @@
+{
+  "schema": "PYAT_C1_00_INDEPENDENT_HOSTILE_REVIEW@1",
+  "reviewed_return": "df6f2d36e274744d217dc4a380c73e2c7e18e83f",
+  "disposition": "CHANGES_REQUIRED",
+  "hostiles": [
+    {
+      "id": "H01_SAME_CONDITIONER_ID_DIFFERENT_VALUES",
+      "result": "FAIL",
+      "attack": {
+        "consumer_binding_id": "position",
+        "consumer_subject_fact": "F_P1",
+        "producer_predicate": "POSITION == P2",
+        "same_source_release_target": true
+      },
+      "finding": "The proposed witness can faithfully hash Q(F_P1), predicate(P2), and the P2 AST without proving F_P1 denotes P1 or equals the predicate leaf/value. Exact co-custody is not an exact semantic relation.",
+      "smallest_fix": "Freeze a per-binding value-bearing relation/preimage and verify it against the exact producer predicate leaf/value before slice construction."
+    },
+    {
+      "id": "H02_CONTAMINATED_EVIDENCE_POOL_SAME_IDS",
+      "result": "PASS_IF_R02_REPAIRED",
+      "attack": "Reuse a P1-derived slice under a P2 consumer query with the same retained conditioner IDs.",
+      "finding": "Binding to consumer_query.ref plus a validated full binding relation can reject cross-query reuse before the consumer. As currently written, the guard is directionally correct but inherits H01's missing value proof."
+    },
+    {
+      "id": "H03_SAME_VISIBLE_RATIO_DIFFERENT_DENOMINATOR_MEMBERS",
+      "result": "PASS",
+      "attack": "Two facts have equal counts/ratio but different exact denominator_member_refs.",
+      "finding": "I03 producer fact/replay identity carries denominator_member_refs and the C1 envelope explicitly retains them; they cannot lawfully alias."
+    },
+    {
+      "id": "H04_RAW_VS_WEIGHTED_EQUAL_NUMERIC_RATIO",
+      "result": "PASS",
+      "attack": "RAW and GOVERNED_WEIGHTED produce numerically equal proportions.",
+      "finding": "Worker freezes measure_kind, measure_basis_ref, weight_basis_id and used WeightMeasureFact design/estimand context. Equal visible ratio is not identity."
+    },
+    {
+      "id": "H05_SAME_TARGET_REF_CHANGED_TOPOLOGY_DOMAIN",
+      "result": "PASS",
+      "attack": "Reuse evidence when the target ref is unchanged but topology/domain/replay material changes.",
+      "finding": "Producer query identity and target_domain_identity change; C1 requires full topology/domain/replay material and refuses non-scalar scalarization at C1-01."
+    },
+    {
+      "id": "H06_OBSERVED_ZERO_ZERO_SUPPORT_VALID_EMPTY",
+      "result": "PASS",
+      "attack": "Collapse all zero-like outcomes.",
+      "finding": "Worker preserves SUPPORTED observed-zero cell, ZERO_SUPPORT/ZERO_OVERLAP, and VALID_EMPTY separately. I03 complete-cell state and outer analytical state make the distinction representable."
+    },
+    {
+      "id": "H07_UNKNOWN_VS_UNVISITED_VS_UNRESOLVED",
+      "result": "FAIL",
+      "attack": "Represent a lifecycle state whose currentness is unknown and an adaptive unit that is merely unvisited.",
+      "finding": "The return freezes EXPLICIT_UNKNOWN_UNVISITED and UNRESOLVED but not a distinct UNKNOWN/UNKNOWN_CURRENTNESS case. Existing B5 exposes UNKNOWN_CURRENTNESS separately, so the omission is not forced by current owners.",
+      "smallest_fix": "Add UNKNOWN_CURRENTNESS (or another exact owner-native UNKNOWN path) to the state matrix and output state vocabulary, independently from adaptive unvisited and unresolved."
+    },
+    {
+      "id": "H08_ADAPTIVE_UNVISITED_TERRITORY",
+      "result": "PASS",
+      "attack": "Treat a partial/exhausted exploratory frontier as global negative evidence.",
+      "finding": "Adaptive checkpoint retains exact unvisited_unit_refs and forbids global_negative_claim. Worker correctly refuses fabricated PossibilitySliceEvidence for unvisited territory."
+    },
+    {
+      "id": "H09_RECURSIVE_CHILD_DIFFERENT_IMMEDIATE_PARENT",
+      "result": "PASS",
+      "attack": "Two child predicates look alike but descend from different immediate parent refs.",
+      "finding": "RecursiveBranchHandoff validates exact parent_branch_ref in its replay binding; worker retains handoff plus full discovery record."
+    },
+    {
+      "id": "H10_REPLAY_GRADE_OVERCLAIM",
+      "result": "PASS",
+      "attack": "Report verify_positioned_subject_possibility_replay as full empirical recomputation.",
+      "finding": "Worker explicitly separates bounded consumer replay from I03, discovery, recursive, adaptive and full composition fresh-process recomputation."
+    },
+    {
+      "id": "H11_RELABEL_FAILED_LEARNED_FAMILY_DIRECT",
+      "result": "PASS_AT_CONTRACT_GRAIN",
+      "attack": "Bypass M1/M2/B5/I4 after a learned/adjudicated claim fails by calling it DIRECT_PRODUCER.",
+      "finding": "Family binding manifest explicitly forbids this and also forbids universal learned wrapping of competent direct output. Concrete family exercises remain later mandatory work."
+    },
+    {
+      "id": "H12_SLICE_GEOMETRY_AMBIGUITY",
+      "result": "FAIL",
+      "attack": "Implementation A sets PossibilitySliceEvidence.raw_support=denominator and geometry contains exact cell counts/rates; implementation B sets raw_support=resolved-target support and uses another exact geometry mapping. Current consumer accepts either.",
+      "finding": "Worker prose requires exact complete-cell geometry but does not freeze a canonical geometry schema or raw_support meaning. The consumer class validates only Mapping + nonnegative integer.",
+      "smallest_fix": "Freeze one canonical C1-01 evidence projection and raw_support meaning before implementation."
+    },
+    {
+      "id": "H13_FIXTURE_AUTHORITY_DRIFT",
+      "result": "FAIL",
+      "attack": "Reuse the same synthetic authority tag but change governed operation/scope/material in C1-01.",
+      "finding": "fixture_oracle_manifest freezes tags, not full authority material or expected hashes; the future implementation can alter authority semantics without violating the manifest text.",
+      "smallest_fix": "Freeze complete test-only authority material and exact expected refs/hashes now."
+    },
+    {
+      "id": "H14_BINDING_WITNESS_MUTATION_NOT_IN_DETERMINANTS",
+      "result": "FAIL",
+      "attack": "Change the relation witness while query/predicate/binding fingerprint remain otherwise fixed.",
+      "finding": "Analytical output carries condition_binding_witness_ref_or_hash, but replay_and_dependency_receipt.direct_determinants omits it.",
+      "smallest_fix": "Make witness/relation ref a mandatory composition determinant and selective-invalidation input."
+    }
+  ],
+  "core_counterexample": {
+    "name": "RIGHT_IDENTITIES_WRONG_RELATION",
+    "construction": [
+      "Create consumer query Q1 whose ConditionerBinding has binding_id=position and subject_fact_ref=F_P1.",
+      "Use exact producer query/predicate P2 selecting POSITION == P2 with the same U/R/target/risk/measure.",
+      "Construct the proposed ConditionValueBindingWitness with Q1.ref, Q1 full binding fingerprint, P2 query ref, P2 predicate ref/hash and canonical P2 AST.",
+      "All fields can be recomputed exactly from supplied objects, yet no frozen rule resolves F_P1 to P1 or rejects its pairing with P2."
+    ],
+    "consequence": "The adapter can manufacture an exact but false condition/value bridge without violating the frozen contract.",
+    "classification": "ORDINARY_CONTRACT_DEFECT__NOT_ARCHITECTURE_WARRANT",
+    "reason": "At the synthetic source-free C1-01 grain, the packet can be repaired by freezing value-bearing fixture preimages/relations and exact adapter checks. Real-source comparability remains separately blocked rather than invented."
+  }
+}
