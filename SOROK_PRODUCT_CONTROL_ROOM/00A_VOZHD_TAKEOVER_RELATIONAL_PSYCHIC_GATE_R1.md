@@ -4,6 +4,18 @@ Status: `MANDATORY_TAKEOVER_INHERITANCE_GATE__NON_DISPOSITIVE_TO_GOVERNED_PYAT`
 
 Date: 2026-09-29
 
+## -1. Prerequisite general HQ grounding
+
+This is a **specialization gate**, not the complete Rawlsing onboarding.
+
+Before this file, a new Vozhd must read and follow:
+
+`SOROK_PRODUCT_CONTROL_ROOM/00_FULL_RAWLSING_VOZHD_GROUNDING_GATE_R1.md`
+
+which routes into the live PRE-MAIN Ground/current-state/governance/inheritance stack and the accepted PRE-V3/V3/V2 whole-machine architecture.
+
+Do not use this PFF-focused file as a substitute for knowing Rawlsing.
+
 ## 0. Why this file exists
 
 Any agent taking over Sorok as Vozhd must understand one distinction before doing substantive ontology, V3, PFF, interaction, memory, or relationship-design work:
