@@ -281,7 +281,9 @@ What is causally active inside a generated actor at the relevant temporal grain:
 - memory/history;
 - current need/pressure;
 - CAN-008 uptake/appraisal/response;
-- PFF interaction-fast recruitment/presentation where applicable.
+- CAN-008 current uptake/appraisal/recruitment and immediate response;
+- bounded PFF actor-local hypothesis / response-residue carryover where causally necessary;
+- current actor-lawful expression/presentation consequences before V2 realization.
 
 This view is not user-visible merely because the engine has it.
 
@@ -368,30 +370,41 @@ Likewise a DO description can include silent intention without becoming dialogue
 
 A future UI may make the channels more explicit, but natural-language freedom should remain.
 
-## 18. Player-private intention and deception
+## 18. User-declared intention, user opacity and deception
 
-The user may author or disclose their own attempted intention at action time.
+Inherited PFF perspective law requires a correction:
 
-Examples:
+**Rawlsing ordinarily does not possess omniscient access to the human user's hidden/private mind.**
+
+A user may declare or author an intended stance in the interface:
+
 - “I genuinely forgot her warning.”
 - “I remember what she said and ignore it.”
 - “I pretend I forgot.”
 - “I try to look apologetic even though I don't care.”
 
-This can be preserved separately from:
-- external behavior;
-- what another actor perceives;
-- what another actor infers;
-- what the user later claims in dialogue.
+But until Sorok explicitly adopts a player-authored-inner-state mode, the system must distinguish:
+
+- user self-report / declared intention;
+- realized external behavior;
+- machine interpretation of available evidence;
+- Nadia's actor-local inference;
+- the user's actual hidden/private mental reality, which remains outside Rawlsing direct authority.
 
 Thus Nadia may be wrong about the user.
 
-The user may also lie to Nadia.
+Rawlsing may also remain uncertain whether the user's private declaration should be treated as role-authored truth, self-report evidence, or merely action-direction metadata.
+
+The user may lie to Nadia; the user may also make interface claims about their own motive whose truth status is a separate product-design question.
 
 Open design question:
-**when and how does user-declared private intention become binding player-state, and how do we prevent retroactive self-exonerating rewrites?**
+**when, if ever, does user-declared private intention become binding player-state, and how do we prevent retroactive self-exonerating rewrites while preserving intentional roleplay?**
 
-Until adjudicated, Sorok should preserve the distinction without assuming every later explanation rewrites prior intent.
+Until adjudicated:
+
+`USER SELF-REPORT != OMNISCIENT USER-HIDDEN-STATE READ`
+
+and later self-description never silently rewrites prior event history.
 
 ## 19. Perceptual selection versus hidden salience
 
