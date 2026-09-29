@@ -14,12 +14,25 @@ Rawlsing should model:
 
 Relations do not merely happen to a completed person. They participate in producing the person.
 
+This is now an explicit **relationalization of inherited PFF mediation**, not a replacement for PFF.
+
+PFF already distinguished total causal personhood, standing conscious self, current relational activation, present conscious experience/self-interpretation and outward expression. Sorok's added claim is that the supposedly "deeper" person and standing self must not be read as pre-relational interior substances.
+
+`PERSON-STABLE != RELATION-FREE`.
+
+Durable dispositions, self-models, defenses, expectations, needs and accessibility patterns may themselves be sedimented products of histories of care, recognition, authority, dependence, absence, conflict, role and institutional position.
+
+See:
+`dockets/D001_RELATIONAL_ONTOLOGY_V3_BOUNDARY/03_SOROK_RELATIONALIZATION_DELTA_OVER_INHERITED_PFF_R1.md`.
+
 Isolation is not absence of relation; it is a socially and historically formative relation to absent, inaccessible, withdrawn, lost, imagined or threatening others.
 
 ## 2. Required ontological distinctions
 
 ### Person-stable disposition
 Relatively persistent tendencies with developmental history.
+
+"Person-stable" means cross-situationally/cross-relationally persistent enough to belong to the person's durable organization. It does **not** mean relation-independent essence.
 
 ### Relational prior
 Learned expectation about what other people do, what care means, what need costs, what conflict threatens, what trust requires.
@@ -144,3 +157,35 @@ It does not author:
 - the persona's full internal truth.
 
 Rendered output enters world history only through explicit admission.
+
+
+## 9. Relationalization without dyadic collapse
+
+Everything being relational does not mean every fact belongs to a relationship object.
+
+Preserve:
+- person != dyad;
+- dyad != network;
+- current dyad != total developmental explanation;
+- relationally constituted != immediately dyad-owned;
+- cross-relational organization != context-free essence.
+
+The architecture must be able to represent:
+- durable relationally formed person organization;
+- relation-class / role-conditioned priors;
+- specific dyadic history;
+- current person×event configuration;
+- network/third-party effects;
+
+without collapsing them into one "relationship state."
+
+## 10. Recursive theorem
+
+Candidate deepest ontology:
+
+`RELATIONS PRODUCE PERSONS`
+→ `PERSONS ENTER RELATIONS`
+→ `RELATIONS REPRODUCE / DISCONFIRM / TRANSFORM PERSON ORGANIZATION`
+→ `CHANGED PERSONS ALTER OTHER RELATIONS AND WORLDS`.
+
+This is the Sorok frontier over inherited psychic mediation.
