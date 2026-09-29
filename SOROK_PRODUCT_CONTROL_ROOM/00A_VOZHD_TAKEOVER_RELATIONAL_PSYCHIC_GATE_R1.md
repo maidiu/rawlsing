@@ -444,7 +444,15 @@ The PFF 00–64 corpus is **MUST-FACTOR conceptual capital**, not blanket produc
 
 ## 8. Deep repo archaeology map — owner reduction and CAN-008 R2
 
-For the owner-topology transition, inspect the PFF HQ trajectory material:
+For the owner-topology transition, inspect the PFF HQ trajectory material.
+
+A dedicated reconciliation branch also exists and is a useful direct archaeology target:
+
+`agent/rabochii-hq-unified-v3-pff-person-metabolism-reconciliation-r1`
+
+Do not assume branch-local presence alone settles later adoption status; use the governance/adoption records below.
+
+Then inspect the PFF HQ trajectory material:
 
 Base directory under the same recovery tree:
 
