@@ -1,6 +1,6 @@
 {
-  "schema": "PYAT_C1_00_FIXTURE_ORACLE_MANIFEST@2",
-  "status": "R2_CORRECTED_FROZEN_DOCUMENTARY_ORACLE__NOT_EXECUTED",
+  "schema": "PYAT_C1_00_FIXTURE_ORACLE_MANIFEST@3",
+  "status": "R3_CORRECTED_FROZEN_DOCUMENTARY_ORACLE__NOT_EXECUTED",
   "oracle_independence": {
     "rule": "Expected results are hand-derived from frozen synthetic rows and existing owner laws before any C1 candidate output.",
     "candidate_output_used": false,
@@ -9,7 +9,7 @@
   },
   "authorities": {
     "scope": "SYNTHETIC_TEST_ONLY__NO_SURVEY_OR_MODEL_AUTHORITY_CREATED",
-    "complete_freeze_ref": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/03_SYNTHETIC_AUTHORITY_FREEZE.json",
+    "complete_freeze_ref": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/02_OWNER_NATIVE_AUTHORITY_SCOPE_FREEZE.json",
     "hash_law": "authority_content_hash = sha256(canonical_json(complete frozen authority preimage)); same label with changed material must change identity",
     "expected_authority_refs": [
       {
@@ -35,7 +35,7 @@
       {
         "authority_id": "C1-AT07-QUERY",
         "authority_version": "1.0.0",
-        "authority_content_hash": "b485ea6ddba78b0e0ccc4c4c0b2097b783d4f9f39fede9717b716edfb5f54a45"
+        "authority_content_hash": "b59ef578314515268fa7b280a8480b4c95c80c9cfd831c39c2bfc4214b6fd767"
       },
       {
         "authority_id": "C1-AT07-COMPARABILITY",
@@ -53,7 +53,19 @@
         "authority_content_hash": "3f5dda8f607f69cefb5c3a57d8417ff9fc8abf957c87088d160d2eacc0bccbbf"
       }
     ],
-    "real_source_effect": false
+    "real_source_effect": false,
+    "R2_complete_freeze_ref": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/03_SYNTHETIC_AUTHORITY_FREEZE.json",
+    "owner_native_scope_rule": "C1-AT07-QUERY is frozen only after the exact AT07 universe and carries owner-native scope_envelope.source_universe_refs=[exact AT07 universe ref].",
+    "exact_AT07_universe_ref": {
+      "kind": "EmpiricalUniverse@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2",
+      "content_hash": "ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2"
+    },
+    "exact_AT07_release_ref": {
+      "kind": "C11LogicalRelease",
+      "object_id": "REL-c1-at07",
+      "content_hash": "8afa807cc06a3a10e660d13bbd831f4f758ae829e835a454c62831bfd8f4d939"
+    }
   },
   "fixtures": [
     {
@@ -424,7 +436,7 @@
         },
         {
           "case": "UNKNOWN_CURRENTNESS",
-          "owner": "B5 lifecycle selection resolution",
+          "owner": "rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleExecutor.current_selection_receipt_ref",
           "expected_outer": "UNKNOWN_CURRENTNESS",
           "must_not_equal": [
             "EXPLICIT_UNKNOWN_UNVISITED",
@@ -432,7 +444,16 @@
             "UNAVAILABLE",
             "NO_CURRENT",
             "CONFLICTING_CURRENT_SELECTION"
-          ]
+          ],
+          "setup": "Register exact synthetic SelectionKey through executor.selection_key; establish neither current selection nor no-current receipt.",
+          "selection_key_ref": {
+            "kind": "B5Lifecycle:SELECTION_KEY",
+            "object_id": "urn:rawlsing:pre553:b5-lifecycle:selection_key:sha256:a0c54c568eee1351a67ecfee43c297e82aba509daf4bce6932b5ae7331ca03cd",
+            "content_hash": "a0c54c568eee1351a67ecfee43c297e82aba509daf4bce6932b5ae7331ca03cd"
+          },
+          "expected_exception_class": "LearnedProductLifecycleError",
+          "expected_exception_message": "UNKNOWN_CURRENTNESS",
+          "forbidden_witness": "resolve_selection_exact with fabricated receipt"
         },
         {
           "case": "NO_CURRENT",
@@ -554,6 +575,21 @@
         8,
         62
       ]
+    },
+    "R3_evidence_identity_contract_ref": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/04_EVIDENCE_IDENTITY_PREIMAGE.json",
+    "evidence_preimage_schema": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE_PREIMAGE@1",
+    "evidence_ref_excludes_self": true,
+    "expected_evidence_refs": {
+      "forward_P1": {
+        "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+        "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:fe5cd7783ac84f0298fb7f56a621d7b0e494bd9348d080dc68ceee09abb546f5",
+        "content_hash": "fe5cd7783ac84f0298fb7f56a621d7b0e494bd9348d080dc68ceee09abb546f5"
+      },
+      "reverse_yes": {
+        "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+        "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:b54201c8ba8743922e51627e621cc4f3d1c563a43b70167a0720fbb0028ccf72",
+        "content_hash": "b54201c8ba8743922e51627e621cc4f3d1c563a43b70167a0720fbb0028ccf72"
+      }
     }
   },
   "R2_correction_refs": {
@@ -562,5 +598,12 @@
     "authority_freeze": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/03_SYNTHETIC_AUTHORITY_FREEZE.json",
     "slice_projection": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/04_SLICE_PROJECTION.json",
     "state_determinants": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/05_STATE_AND_DETERMINANT_CLOSURE.json"
+  },
+  "R3_correction_refs": {
+    "correction_matrix": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/01_CORRECTION_MATRIX.json",
+    "owner_native_authority_scope": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/02_OWNER_NATIVE_AUTHORITY_SCOPE_FREEZE.json",
+    "unknown_currentness_fixture": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/03_UNKNOWN_CURRENTNESS_FIXTURE.json",
+    "evidence_identity_preimage": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/04_EVIDENCE_IDENTITY_PREIMAGE.json",
+    "recomputation_receipt": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/05_RECOMPUTATION_RECEIPT.json"
   }
 }
