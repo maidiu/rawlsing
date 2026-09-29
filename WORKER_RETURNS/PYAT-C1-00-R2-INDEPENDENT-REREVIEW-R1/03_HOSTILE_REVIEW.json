@@ -1,0 +1,87 @@
+{
+  "schema": "PYAT_C1_00_R2_INDEPENDENT_HOSTILE_REVIEW@1",
+  "reviewed_return": "a94649020346383e9d9cd18cc2b5a448e0a09ad7",
+  "hostiles": [
+    {
+      "id": "H01_P1_SUBJECT_P2_PREDICATE",
+      "result": "PASS",
+      "attack": "Same conditioner id/source/release/target; subject preimage POSITION=P1; producer leaf POSITION==P2.",
+      "finding": "Semantic ref matches but exact value does not, and no frozen P1↔P2 pairing exists. Frozen relation checks reject before slice construction."
+    },
+    {
+      "id": "H02_SAME_CONDITIONER_ID_DISTINCT_VALUES",
+      "result": "PASS",
+      "attack": "POSITION=P1 and POSITION=P2 under binding_id=position.",
+      "finding": "Subject preimage refs differ: df3f...b9a3 versus 312e...d16e."
+    },
+    {
+      "id": "H03_AUTHORITY_SCOPE_MUTATION",
+      "result": "PASS_HASH_LAW_BUT_BASE_AUTHORITY_UNUSABLE",
+      "attack": "Change C1-AT07-QUERY scope while retaining human label.",
+      "finding": "Hash reidentifies, but the unmutated frozen scope itself omits source_universe_refs required by current I03. Correction B therefore still fails."
+    },
+    {
+      "id": "H04_DENOMINATOR_MEMBER_SET_COLLISION",
+      "result": "PASS_AT_CONTRACT_GRAIN",
+      "attack": "Same visible ratio/count with different denominator_member_refs.",
+      "finding": "Frozen geometry retains exact denominator_member_refs and determinant closure retains them. Once evidence identity preimage is corrected, different member sets cannot lawfully alias."
+    },
+    {
+      "id": "H05_RAW_WEIGHTED_EQUAL_RATIO",
+      "result": "PASS",
+      "attack": "RAW and GOVERNED_WEIGHTED yield same numeric proportion.",
+      "finding": "Measure kind/basis and weighted design/estimand context remain identity material."
+    },
+    {
+      "id": "H06_UNKNOWN_VS_UNVISITED_VS_UNRESOLVED",
+      "result": "FAIL_FIXTURE_PATH",
+      "attack": "Use the frozen AT14 UNKNOWN_CURRENTNESS setup.",
+      "finding": "State names are distinct, but resolve_selection_exact cannot reach UNKNOWN_CURRENTNESS for an unselected key because receipt mismatch raises first. current_selection_receipt_ref is the reachable owner-native witness."
+    },
+    {
+      "id": "H07_ALTERNATE_GEOMETRY_RAW_SUPPORT",
+      "result": "PASS_ON_SCHEMA_AND_RAW_SUPPORT",
+      "attack": "Use alternative geometry keys or raw_support=resolved-target support.",
+      "finding": "Projection freezes exact keys and raw_support=EmpiricalFact.raw_denominator_support. Alternative meanings violate the contract."
+    },
+    {
+      "id": "H08_EVIDENCE_REF_SELF_REFERENCE",
+      "result": "FAIL",
+      "attack": "Construct evidence_ref using the frozen instruction to hash the complete PossibilitySliceEvidence payload.",
+      "finding": "PossibilitySliceEvidence contains evidence_ref itself. No exact exclusion/preimage rule is frozen, so literal construction is circular and alternate silent conventions remain possible."
+    },
+    {
+      "id": "H09_RELATION_ONLY_DETERMINANT_MUTATION",
+      "result": "PASS_AT_DOCUMENTARY_GRAIN",
+      "attack": "Hold producer counts/query/source/risk/measure/target/model fixed and mutate only the condition relation/witness determinant.",
+      "finding": "Relation determinant is mandatory composed identity material; canonical composed material changes and prior direct result cannot retain the same lawful identity."
+    },
+    {
+      "id": "H10_REPLAY_OMITS_RELATION_INPUTS",
+      "result": "PASS",
+      "attack": "Claim FULL_COMPOSITION_FRESH_PROCESS_RECOMPUTE while omitting witness/preimage/leaf/pairing inputs.",
+      "finding": "Frozen replay closure explicitly denies the full-composition grade when those inputs are omitted."
+    }
+  ],
+  "owner_counterexamples": {
+    "i03_authority_scope": {
+      "query_authority": "C1-AT07-QUERY",
+      "frozen_scope_keys": [
+        "fixture_id",
+        "source_family",
+        "source_seed",
+        "use"
+      ],
+      "current_i03_requirement": "require_positive_authority(... source_universe_ref=universe_ref.as_dict())",
+      "current_owner_lookup": "scope_envelope['source_universe_refs']",
+      "result": "FAIL_CLOSED"
+    },
+    "b5_unknown_fixture": {
+      "frozen_method": "resolve_selection_exact",
+      "unselected_key_index_value": null,
+      "supplied_receipt_type": "ExactRef required",
+      "first_failure": "currentness requires the exact current selection/no-current receipt",
+      "reachable_unknown_witness": "current_selection_receipt_ref(selection_key_ref) -> LearnedProductLifecycleError('UNKNOWN_CURRENTNESS')"
+    }
+  }
+}
