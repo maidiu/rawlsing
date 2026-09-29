@@ -1,6 +1,6 @@
 # VOZHD PYAT — READ ME FIRST
 
-Status: `ACTIVE_CONTROL_ROOM__HQD125_DDM_FUNCTIONAL_GATE_CURRENT__HQD124_ARCHITECTURE_THEOREM_RETAINED`
+Status: `ACTIVE_CONTROL_ROOM__HQD125_CURRENT__ASTRA_INTEGRATED_AUDIT_DELIVERED`
 
 Current architecture/program decision: `HQD-2026-09-26-112`
 
@@ -11,6 +11,12 @@ HQD-113 grok prerequisite: `SATISFIED__PRESERVED_AS_HISTORY`
 Selected physical policy: `B__SOURCE_BACKED_VIRTUAL_C11`
 
 Control branch: `integration/pre-main-reconciliation-r1`
+
+## Astra integrated audit and development handoff — user-directed delivery
+
+The full audit is now delivered in [ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/README.md](ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/README.md). Read the [development program](ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/PROGRAM.md), [dependency DAG](ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/DEPENDENCY_DAG.md), [exact evidence](ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/EVIDENCE_INDEX.md) and [commission runbooks](ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/COMMISSIONS.md). The [delivery record](26_ASTRA_INTEGRATED_AUDIT_DELIVERY_AND_DEVELOPMENT_HANDOFF.md) defines authority and proof limits.
+
+The audit is complete; composed F1–F8 realization is not. C1 generic analytical composition is the first proposed court, with C2 authority succession and C3 repair acceptance independently parallel. The drafts are not dispatched or source/production/actor execution permission. Resolve the latest immutable checkpoint before preparing scoped commission decisions. Do not restart the audit or read its preserved old pass stop instructions as fresh commands.
 
 ## 0. What Pyat is now
 
@@ -101,7 +107,7 @@ Route B, M01/M1/M2/B5/I4, Field Forge and PRE-V3 producer contracts are infrastr
 
 The LiTS I / WVS7 work remains useful canary evidence. It is not the program center and must not induce source-specific architecture or a universal J2I role requirement.
 
-The next large external refinement/audit should evaluate the existing DAG against HQD-125 F1–F8 rather than optimizing toward the narrower terminal `B_PRODUCTS → FIELD_FORGE`.
+The delivered Astra audit evaluates the existing DAG against HQD-125 F1–F8. Its integrated packet is the current documentary development handoff; the narrower terminal `B_PRODUCTS → FIELD_FORGE` does not establish completion.
 
 ## 4. Fresh-HQ startup order
 
