@@ -12,11 +12,19 @@ Storage, time, messaging, game mechanics and player modeling will all ossify the
 
 ## Current hypothesis
 
-V3 should own person-internal developmental organization and relational priors.
+Do **not** assume a new monolithic “later dyadic runtime.”
 
-A later runtime should own actual user↔persona dyadic history, mutual models, trust/injury/repair, commitments and network consequences.
+The prior architecture already distinguishes:
+- durable/from-birth and persistent V3 developmental ownership;
+- CAN-008 person×event receivability / uptake / appraisal / recruitment / immediate response;
+- PFF interaction-fast / session / user-opacity state;
+- V2 expression.
 
-This boundary is provisional.
+D001 must place each relational semantic into that existing temporal-grain and ownership structure first.
+
+Only semantics that remain genuinely ownerless after that crosswalk may justify a new runtime owner.
+
+This boundary is provisional, but the prior split is inherited architecture, not a green-field suggestion.
 
 ## Required distinctions to adjudicate
 
