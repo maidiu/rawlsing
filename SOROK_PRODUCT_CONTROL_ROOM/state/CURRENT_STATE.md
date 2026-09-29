@@ -113,8 +113,10 @@ Top-level:
 - `19_COURT5_VEILED_SELF_MATERIAL_EMBODIMENT_R1.md` — as-self participation under veiled local material constraint
 - `20_COURT6_PORTAL_REALITY_PEER_TRANSPOSE_COMPARISON_R1.md` — 24/7 portal countermodel + peer-normalized transposition comparison
 - `21_COURT7_HOMOLOGOUS_PEER_HABITUS_FRICTION_R1.md` — current primary-route synthesis
-- `22_COURT8_EMBODIMENT_TRANSLATION_CONSTITUTION_R1.md` — open embodiment translation court
-- `23_COURT9_MINIMUM_DURABLE_RELATIONSHIP_ONTOLOGY_R1.md` — open minimum relationship ontology court
+- `22_COURT8_EMBODIMENT_TRANSLATION_CONSTITUTION_R1.md` — embodiment translation court
+- `22A_COURT8_FIRST_ADJUDICATION_MATRIX_R1.md` — first carry/homologize/bracket adjudication
+- `23_COURT9_MINIMUM_DURABLE_RELATIONSHIP_ONTOLOGY_R1.md` — minimum relationship ontology court
+- `23A_COURT9_FIRST_OWNER_CROSSWALK_R1.md` — first owner crosswalk + external-player seam finding
 - `24_COURT10_FLOURISHING_MORAL_PHYSICS_R1.md` — open flourishing/moral-physics court
 - `25_COURT11_PLAYER_PRAXIS_REFLECTION_R1.md` — open player-reflection court
 - `17_FULL_RAWLSING_VOZHD_GROUNDING_INTEGRITY_R1.md` — takeover verification
@@ -230,6 +232,21 @@ Current primary player route:
 - their relation is the playable veil;
 - over long time, the user enters Rawlsing's recursive person-forming relation late and accumulates real history inside the generated field;
 - local adaptation is not the win condition; intra-field contradiction and user resistance/persuasion remain lawful.
+
+Court 8 first finding:
+- do not collect/translate real SES by default;
+- assign an independently generated local peer resource/power envelope;
+- separate actual user subjectivity, diegetic embodiment/legibility, local material position and admitted player history;
+- language may be semantically mediated without granting local pragmatic fluency;
+- autobiographical transport remains the hardest unresolved identity seam.
+
+Court 9 first finding:
+- ADP-015 already provides the correct thin shared relationship entity;
+- current architecture explicitly rejects generic trust/intimacy scores;
+- domain-specific relational expectation fits CAN-010 scoping;
+- psychological richness should remain distributed across person-owned authorities;
+- no generic dyad psyche is justified;
+- the genuine starvation is a stable external-human player-participant binding usable by relationship/event machinery without generated user psyche.
 
 Current newly opened courts:
 - Court 8: embodiment translation;
