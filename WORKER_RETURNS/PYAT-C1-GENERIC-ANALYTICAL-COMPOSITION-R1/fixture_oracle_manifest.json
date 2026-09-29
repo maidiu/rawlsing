@@ -1,6 +1,6 @@
 {
-  "schema": "PYAT_C1_00_FIXTURE_ORACLE_MANIFEST@1",
-  "status": "FROZEN_DOCUMENTARY_ORACLE__NOT_EXECUTED",
+  "schema": "PYAT_C1_00_FIXTURE_ORACLE_MANIFEST@2",
+  "status": "R2_CORRECTED_FROZEN_DOCUMENTARY_ORACLE__NOT_EXECUTED",
   "oracle_independence": {
     "rule": "Expected results are hand-derived from frozen synthetic rows and existing owner laws before any C1 candidate output.",
     "candidate_output_used": false,
@@ -9,16 +9,51 @@
   },
   "authorities": {
     "scope": "SYNTHETIC_TEST_ONLY__NO_SURVEY_OR_MODEL_AUTHORITY_CREATED",
-    "frozen_tags": [
-      "C1:SYNTHETIC:SOURCE_SEMANTICS",
-      "C1:SYNTHETIC:ROUTING_RISK_SET",
-      "C1:SYNTHETIC:QUERY",
-      "C1:SYNTHETIC:CONDITION_BINDING",
-      "C1:SYNTHETIC:DISCOVERY",
-      "C1:SYNTHETIC:MODEL_RULE",
-      "C1:SYNTHETIC:WALKBACK"
+    "complete_freeze_ref": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/03_SYNTHETIC_AUTHORITY_FREEZE.json",
+    "hash_law": "authority_content_hash = sha256(canonical_json(complete frozen authority preimage)); same label with changed material must change identity",
+    "expected_authority_refs": [
+      {
+        "authority_id": "C1-AT07-SOURCE",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "4d565f1b40adb2bd3c9c3c2965226a4f9be9222338323ed6b649b8a68a973dab"
+      },
+      {
+        "authority_id": "C1-AT07-ROUTING",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "a71a90ab7106f6300ced46204769fae1beba237d9a16aa3dba6f03a93c35ecc0"
+      },
+      {
+        "authority_id": "C1-AT07-COORDINATE",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "fb5e0415c7ab810578156b13a36abd72fdae4e118f49ed9d66e91331eebce6cb"
+      },
+      {
+        "authority_id": "C1-AT07-REPLAY",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "c75f5d105e8cdb6ac1ad8efc5bdba70eff7d083e4166e94c0d34255c27f233fa"
+      },
+      {
+        "authority_id": "C1-AT07-QUERY",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "b485ea6ddba78b0e0ccc4c4c0b2097b783d4f9f39fede9717b716edfb5f54a45"
+      },
+      {
+        "authority_id": "C1-AT07-COMPARABILITY",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "69cb883e7ccc115da614091635f36f7eca92cc1f517732e57a37fe77afb2676f"
+      },
+      {
+        "authority_id": "C1-AT07-MODEL",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "2876572dcb4eba80b52361853047d409323fff0c63228d7e6a361c972e1b38bb"
+      },
+      {
+        "authority_id": "C1-AT07-WALKBACK",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "3f5dda8f607f69cefb5c3a57d8417ff9fc8abf957c87088d160d2eacc0bccbbf"
+      }
     ],
-    "construction_rule": "C1-01 tests must deterministically content-address these exact tag/material tuples using existing ExactRef/AuthoritySnapshot helpers; no mutable/latest selector."
+    "real_source_effect": false
   },
   "fixtures": [
     {
@@ -386,6 +421,36 @@
         {
           "case": "INTEGRITY_FAILURE",
           "expected": "RAISE_TYPED_INTEGRITY_EXCEPTION"
+        },
+        {
+          "case": "UNKNOWN_CURRENTNESS",
+          "owner": "B5 lifecycle selection resolution",
+          "expected_outer": "UNKNOWN_CURRENTNESS",
+          "must_not_equal": [
+            "EXPLICIT_UNKNOWN_UNVISITED",
+            "UNRESOLVED",
+            "UNAVAILABLE",
+            "NO_CURRENT",
+            "CONFLICTING_CURRENT_SELECTION"
+          ]
+        },
+        {
+          "case": "NO_CURRENT",
+          "owner": "B5 explicit no-current receipt",
+          "expected_outer": "NO_CURRENT",
+          "must_not_equal": [
+            "UNKNOWN_CURRENTNESS",
+            "CONFLICTING_CURRENT_SELECTION"
+          ]
+        },
+        {
+          "case": "CONFLICTING_CURRENT_SELECTION",
+          "owner": "B5 lifecycle conflict",
+          "expected_outer": "CONFLICTING_CURRENT_SELECTION",
+          "must_not_equal": [
+            "UNKNOWN_CURRENTNESS",
+            "NO_CURRENT"
+          ]
         }
       ]
     },
@@ -429,29 +494,73 @@
     }
   ],
   "conditioner_collision_fixture": {
-    "id": "HC_CONDITION_VALUE_ALIAS",
+    "id": "HC_CONDITION_VALUE_ALIAS_R2",
     "shared": {
       "binding_id": "position",
-      "source_universe": "U",
-      "release": "R",
-      "target": "ANSWER"
+      "same_source_release_target": true
     },
     "left": {
-      "subject_fact_ref_tag": "SUBJECT_POSITION_P1",
-      "fixture_value": "P1",
-      "producer_predicate_tag": "POSITION_EQ_P1"
+      "subject_condition_preimage_ref": {
+        "kind": "C1_SYNTHETIC_SUBJECT_CONDITION_PREIMAGE",
+        "object_id": "urn:test:c1:at07:subject-condition:POSITION_P1",
+        "content_hash": "df3f992bc93dd5e23ca1e0230885cca253cdd1c4d02e8c8a8bd4221d7804b9a3"
+      },
+      "predicate_leaf_ref": {
+        "kind": "C1_SYNTHETIC_PREDICATE_LEAF_PREIMAGE",
+        "object_id": "urn:test:c1:at07:predicate-leaf:POSITION_EQ_P1",
+        "content_hash": "62deeeb5968ea313b345d7427af416ce6d7384e7560e2fd063d660bcccacda6d"
+      },
+      "pairing_ground_truth_ref": {
+        "kind": "C1_SYNTHETIC_VALUE_PAIRING_GROUND_TRUTH",
+        "object_id": "urn:test:c1:at07:value-pairing:POSITION_P1__POSITION_EQ_P1",
+        "content_hash": "020f3f2a103a0fb7cf216b98f6965637de6ace71ebda950274c0c7987c2ec44b"
+      }
     },
-    "right": {
-      "subject_fact_ref_tag": "SUBJECT_POSITION_P2",
-      "fixture_value": "P2",
-      "producer_predicate_tag": "POSITION_EQ_P2"
+    "hostile": {
+      "subject_condition_preimage_ref": {
+        "kind": "C1_SYNTHETIC_SUBJECT_CONDITION_PREIMAGE",
+        "object_id": "urn:test:c1:at07:subject-condition:POSITION_P1",
+        "content_hash": "df3f992bc93dd5e23ca1e0230885cca253cdd1c4d02e8c8a8bd4221d7804b9a3"
+      },
+      "predicate_leaf_ref": {
+        "kind": "C1_SYNTHETIC_PREDICATE_LEAF_PREIMAGE",
+        "object_id": "urn:test:c1:at07:predicate-leaf:POSITION_EQ_P2",
+        "content_hash": "b173f48d17dfe44f5709b6d5014cf019ca276b7b4f78b945a1587f834623bdf8"
+      },
+      "expected": "CONDITION_VALUE_RELATION_MISMATCH before slice construction and consumer call"
     },
-    "oracle": {
-      "consumer_query_refs_must_differ": true,
-      "consumer_conditioner_ids_intentionally_equal": true,
-      "naive_consumer_find_key_can_collide": true,
-      "C1_adapter_must_reject_cross_query_slice_reuse": true,
-      "expected_disposition": "CONDITION_VALUE_IDENTITY_MISMATCH"
+    "oracle_ref": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/02_VALUE_RELATION_ORACLE.json"
+  },
+  "slice_projection": {
+    "contract_ref": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/04_SLICE_PROJECTION.json",
+    "schema_hash": "c00e038dd2c1177bfc7842f12febef7b3e30b92bc421df244e2a8e3c4a20b17a",
+    "raw_support_meaning": "EmpiricalFact.raw_denominator_support",
+    "forward_P1": {
+      "yes": [
+        54,
+        60
+      ],
+      "no": [
+        6,
+        60
+      ]
+    },
+    "reverse_yes": {
+      "P1": [
+        54,
+        62
+      ],
+      "P2": [
+        8,
+        62
+      ]
     }
+  },
+  "R2_correction_refs": {
+    "correction_matrix": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/01_CORRECTION_MATRIX.json",
+    "value_relation": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/02_VALUE_RELATION_ORACLE.json",
+    "authority_freeze": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/03_SYNTHETIC_AUTHORITY_FREEZE.json",
+    "slice_projection": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/04_SLICE_PROJECTION.json",
+    "state_determinants": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/05_STATE_AND_DETERMINANT_CLOSURE.json"
   }
 }
