@@ -1,0 +1,115 @@
+{
+  "schema": "PYAT_C1_00_PRODUCER_CONSUMER_TRACE@1",
+  "status": "STATIC_INSPECTION__NO_EXECUTION",
+  "implementation_baseline": "b3b2fa13049513078c301a1f6574b661fcf390c5",
+  "routes": [
+    {
+      "id": "DIRECT_I03_TO_POSITIONED_SUBJECT",
+      "c1_phase": "C1-01",
+      "producer_entrypoint": "rawlsing_next.pre553_empirical_query.execute_empirical_query",
+      "producer_inputs": [
+        "C11Repository",
+        "EmpiricalQuerySpec",
+        "EmpiricalPredicate",
+        "AuthorityRegistry",
+        "Iterable[ExactRef release_refs]"
+      ],
+      "producer_output": "QueryExecutionResult[facts: tuple[EmpiricalFact,...]]",
+      "adapter_steps": [
+        "verify empirical query/predicate exact identity and actual QueryExecutionResult.query_ref",
+        "select exact fact only under exact source/release/target grain; retain full fact preimage",
+        "recompute full consumer conditioner-binding fingerprint and validate ConditionValueBindingWitness against consumer_query.ref + producer query/predicate",
+        "validate source/release, target component/topology/domain, risk/denominator, measure/design/estimand and support identities",
+        "construct PossibilitySliceEvidence from actual EmpiricalFact complete-cell projection and provenance",
+        "pass only the validated per-consumer evidence set"
+      ],
+      "consumer_entrypoint": "rawlsing_next.source_backed_positioned_subject_possibility.evaluate_positioned_subject_possibility",
+      "consumer_inputs": [
+        "PositionedSubjectPossibilityQuery",
+        "PositionedSubjectPossibilityModelRule",
+        "Iterable[PossibilitySliceEvidence]"
+      ],
+      "consumer_output": "PositionedSubjectPossibilityResult",
+      "full_output": "AnalyticalCompositionResult outer envelope + actual consumer result",
+      "current_collision": "consumer _find keys evidence by source/release/target/retained_conditioner_ids and does not inspect full ConditionerBinding material"
+    },
+    {
+      "id": "EXACT_DISCOVERY_TO_POSITIONED_SUBJECT",
+      "c1_phase": "C1-02/C1-03",
+      "producer_entrypoint": "rawlsing_next.pre553_discovery_exact.execute_exact_bounded_discovery",
+      "internal_call": "execute_empirical_query for every exact candidate query role",
+      "output": "ExactBoundedDiscoveryResult",
+      "required_closure": [
+        "DiscoveryResultReceipt",
+        "EmpiricalFact preimages",
+        "executed EmpiricalPredicate preimages",
+        "executed EmpiricalQuerySpec preimages",
+        "evaluated_frontier_ref",
+        "replay_ref",
+        "coverage_state"
+      ],
+      "adapter_law": "consume exact receipt/fact/query/predicate closure; never consume score/label alone"
+    },
+    {
+      "id": "RECURSIVE_DISCOVERY_TO_POSITIONED_SUBJECT",
+      "c1_phase": "C1-02/C1-03",
+      "producer_entrypoint": "rawlsing_next.pre553_recursive_handoff.execute_exact_bounded_discovery_with_handoffs",
+      "internal_call": "execute_exact_bounded_discovery -> execute_empirical_query",
+      "output": "RecursiveHandoffDiscoveryResult",
+      "positive_handoff_type": "RecursiveBranchHandoff",
+      "negative_coverage_owner": "attached ExactBoundedDiscoveryResult",
+      "replay": [
+        "write_recursive_handoff_bundle",
+        "load_recursive_handoff_bundle",
+        "replay_recursive_branch_membership"
+      ],
+      "adapter_law": "handoff is positive selection only; full discovery coverage remains separately retained"
+    },
+    {
+      "id": "ADAPTIVE_COVERAGE",
+      "c1_phase": "C1-03 when applicable",
+      "producer_entrypoint": "rawlsing_next.pre553_discovery_adaptive.execute_adaptive_exploration",
+      "output": "AdaptiveSearchResult",
+      "states": [
+        "PARTIAL_BUDGET_EXHAUSTED",
+        "PARTIAL_INTERRUPTED",
+        "EXPLORATORY_POLICY_FRONTIER_EXHAUSTED"
+      ],
+      "unvisited": "checkpoint.unvisited_unit_refs => EXPLICIT_UNKNOWN_UNVISITED",
+      "forbidden": "global negative inference from partial or exhausted exploratory policy",
+      "consumer_call": "only when a sealed unit supplies a separately competent empirical result and exact binding; adaptive search state itself is not PossibilitySliceEvidence"
+    }
+  ],
+  "exact_owner_evidence": [
+    {
+      "path": "rawlsing_next/pre553_empirical_query.py",
+      "blob": "03facecf70890bfd13b80418620d274cbcd69d02",
+      "lines": "373-575"
+    },
+    {
+      "path": "rawlsing_next/_pre553_query_eval.py",
+      "blob": "f808dfcd2008cc71e9203de3cadf1abe14223974",
+      "lines": "318-726"
+    },
+    {
+      "path": "rawlsing_next/pre553_discovery_exact.py",
+      "blob": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+      "lines": "128-203, 994-1237"
+    },
+    {
+      "path": "rawlsing_next/pre553_recursive_handoff.py",
+      "blob": "868f43bf9869af5501fd67c3de7a2703ba4cb1b4",
+      "lines": "343-684"
+    },
+    {
+      "path": "rawlsing_next/pre553_discovery_adaptive.py",
+      "blob": "58e32770381fa8d901701d6a2c676f28261aa3e3",
+      "lines": "32-425, 569-772"
+    },
+    {
+      "path": "rawlsing_next/source_backed_positioned_subject_possibility.py",
+      "blob": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+      "lines": "72-184, 399-463"
+    }
+  ]
+}
