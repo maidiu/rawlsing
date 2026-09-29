@@ -1,64 +1,75 @@
 {
   "schema": "PYAT_OMEGA_ACTIVE_TASK_BOARD@1",
-  "revision": 2,
-  "status": "FIRST_TRANCHE_RETURNS_RECEIVED__C1_C3_INDEPENDENT_REVIEWS_BOUND__C2_02_HELD_FOR_WORKLOAD",
+  "revision": 3,
+  "status": "C1_00_REVIEW_CHANGES_REQUIRED__C1_R2_CORRECTION_BOUND__C3_01_REVIEW_APPROVED__C3_02_INTEGRATION_BOUND",
   "control_branch": "integration/pre-main-reconciliation-r1",
   "implementation_baseline": "b3b2fa13049513078c301a1f6574b661fcf390c5",
-  "returned_tasks": [
-    {
-      "id": "C1-00",
-      "return_head": "df6f2d36e274744d217dc4a380c73e2c7e18e83f",
-      "state": "RETURN_RECEIVED__INDEPENDENT_REVIEW_REQUIRED"
-    },
-    {
-      "id": "C2-01",
-      "return_head": "42b89c09480c5848d8889b2282e986855c5822ef",
-      "state": "RETURN_RECEIVED__HQ_SPOT_CHECK__C2_02_WAITING_FOR_EXACT_WORKLOAD"
-    },
-    {
-      "id": "C3-01",
-      "return_head": "d9462674d45f228b5985a5ce3158723b87ca6fa6",
-      "state": "RETURN_RECEIVED__INDEPENDENT_REVIEW_REQUIRED"
-    }
-  ],
-  "active_reviews": [
+  "adjudicated_reviews": [
     {
       "id": "C1-00-R",
-      "branch": "agent/reviewer-pyat-hq126-c1-00-contract-r1",
-      "commission_tip": "642e48f26f94fb144ef5e26942ba56fdb7881307",
-      "reviewed_return": "df6f2d36e274744d217dc4a380c73e2c7e18e83f",
-      "state": "BOUND_AWAITING_USER_MEDIATED_LAUNCH"
+      "return_head": "8baa2e1e3a6f4f96311fbd660b65933fb4aff6c4",
+      "disposition": "CHANGES_REQUIRED",
+      "hq_effect": "C1_01_REMAINS_BLOCKED__BOUNDED_C1_00_R2_CORRECTION_ISSUED"
     },
     {
       "id": "C3-01-R",
-      "branch": "agent/reviewer-pyat-hq126-c3-01-repair-acceptance-r1",
-      "commission_tip": "2b7dd60cf220ccac0424501028587d48610177f9",
-      "reviewed_return": "d9462674d45f228b5985a5ce3158723b87ca6fa6",
-      "state": "BOUND_AWAITING_USER_MEDIATED_LAUNCH"
+      "return_head": "f8f152c60747a6146e92539a36af76ddc97a8d23",
+      "disposition": "APPROVE_AT_DECLARED_GRAIN",
+      "hq_effect": "G01_D01_D02_ACCEPTED_AT_DECLARED_PHYSICAL_GRAINS__C3_02_ALLOWLIST_FROZEN_AND_ISSUED"
+    }
+  ],
+  "active_tasks": [
+    {
+      "id": "C1-00-R2",
+      "branch": "agent/rabochii-pyat-hq126-c1-00-contract-correction-r2",
+      "commission_tip": "00b7091190505c0b41feaf0c45a29a791bab0cb5",
+      "base": "df6f2d36e274744d217dc4a380c73e2c7e18e83f",
+      "state": "BOUND_AWAITING_USER_MEDIATED_LAUNCH",
+      "scope": "DOCUMENTARY_CORRECTION_ONLY__FIVE_REVIEW_DEFECTS",
+      "pass_wake": "INDEPENDENT_REREVIEW_ONLY__C1_01_STILL_NOT_AUTOMATIC"
+    },
+    {
+      "id": "C3-02",
+      "branch": "agent/rabochii-pyat-hq126-c3-02-physical-repair-integration-r1",
+      "commission_tip": "e1420435591d727f48b7a4d5964709f87fcf5a4f",
+      "base": "b3b2fa13049513078c301a1f6574b661fcf390c5",
+      "state": "BOUND_AWAITING_USER_MEDIATED_LAUNCH",
+      "scope": "CURRENT_BASELINE_G01_D01_D02_PORT_AND_SOURCE_FREE_QUALIFICATION",
+      "pass_wake": "C3_R_INDEPENDENT_REVIEW_OF_EXACT_INTEGRATED_COMMIT"
     }
   ],
   "held": [
-    "C1-01 until C1-00-R independent approval and HQ contract/oracle freeze",
+    "C1-01 until corrected C1-00 packet passes independent rereview and HQ freezes contract/oracle/write allowlist",
     "C1-02 until C1-01",
     "C1-03 until C1-02",
     "C1-R until C1-03",
-    "C2-02 until HQ declares exact next proving workload",
+    "C2-02 until HQ declares exact next proving workload after C1 contract acceptance",
     "C2-R until C2-02",
-    "C3-02 until C3-01-R approval and HQ minimal patch allowlist freeze",
-    "C3-R until C3-02",
+    "C3-R until C3-02 return",
     "JOIN-01 until applicable reviewed outputs",
     "OMEGA-1 until scoped source-free join"
   ],
-  "current_hq_disposition": {
-    "c1_00": "PLAUSIBLE_PACKET__NOT_ADOPTED__REVIEW_BOUND",
-    "c2_01": "CONSERVATIVE_LEDGER_RETURN__NOT_ADOPTED__NO_C2_02_YET",
-    "c3_01": "THREE_ACCEPT_RECOMMENDATIONS_WITH_FRESH_SOURCE_FREE_RECEIPTS__NOT_ADOPTED__REVIEW_BOUND"
-  },
+  "c1_review_required_corrections": [
+    "VALUE_BEARING_CONDITION_RELATION_NOT_CO_CUSTODY",
+    "COMPLETE_SYNTHETIC_AUTHORITY_MATERIAL_AND_HASH_FREEZE",
+    "DISTINCT_UNKNOWN_VS_UNVISITED_VS_UNRESOLVED",
+    "EXACT_CONSUMER_SLICE_PROJECTION_AND_RAW_SUPPORT_MEANING",
+    "CONDITION_RELATION_IN_DETERMINANT_REPLAY_INVALIDATION_CLOSURE"
+  ],
+  "c3_frozen_allowlist": [
+    "rawlsing_next/closed35_g01_sav_numeric_representation_authority.py",
+    "rawlsing_next/pre553_physical_decoder.py",
+    "rawlsing_next/pre553_r5_codec.py",
+    "rawlsing_next/tests/test_closed35_g01_sav_numeric_representation_authority.py",
+    "rawlsing_next/tests/test_closed35_d01_declared_encoding_admission.py",
+    "rawlsing_next/tests/test_closed35_d02_opaque_datetime_carrier.py"
+  ],
   "prohibitions": [
     "NO_RAW_SOURCE_EXECUTION",
     "NO_NEW_SEMANTIC_OR_COMPARABILITY_AUTHORITY",
-    "NO_C1_PRODUCTION_IMPLEMENTATION_BEFORE_REVIEW",
-    "NO_C3_SHARED_DECODER_INTEGRATION_BEFORE_REVIEW_AND_FROZEN_ALLOWLIST",
+    "NO_C1_01_BEFORE_R2_INDEPENDENT_REREVIEW",
+    "NO_WHOLE_HISTORICAL_DECODER_REPLACEMENT",
+    "NO_C3_FACADE_EDIT",
     "NO_PREV3_TO_V3_ACTOR_IMPLEMENTATION"
   ]
 }
