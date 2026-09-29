@@ -257,3 +257,82 @@ Read:
 - `dockets/D002_ALPHA_CORE_LOOP_ACTION_SURFACE/05_CANONICAL_SCENARIO_BANK_R1.md`
 
 Machine-readable open issues, provisional decisions and risks remain in `registers/`.
+
+
+## 16. R2 completeness corrections
+
+A second audit identified and corrected several concepts that were previously implicit or under-specified.
+
+### Four operational views
+Interaction reasoning now explicitly distinguishes:
+1. objective world;
+2. actor-private state;
+3. relational/distributed-knowledge state;
+4. user phenomenal surface.
+
+These are operational views, not new architecture owners.
+
+### Non-player-centric world
+Actors continue independent agendas and are not required to generate a bespoke response to every user act.
+
+Valid outcomes include:
+- no perception;
+- no salience;
+- delayed response;
+- continuation of current task;
+- prioritization of another person;
+- leaving.
+
+### Interface-channel separation
+Natural-language input must preserve:
+- narrator-directed ATTEND;
+- diegetic SAY;
+- embodied DO;
+- player-private declared intention.
+
+The interface may remain open-ended, but these channels must not leak into one another.
+
+### Player-private intention
+User intent is distinct from:
+- behavior;
+- impact;
+- persona inference;
+- later self-description.
+
+Exact binding/anti-retroactive-rewrite semantics remain open.
+
+### Perceptual-salience narration
+Finite narrator detail should be selected by:
+- access;
+- proximity;
+- prominence;
+- movement;
+- sensory intensity;
+- explicit attentional target;
+
+not by hidden emotional significance.
+
+### Plausible duration
+Observation time is not a punishment mechanic.
+
+A glance costs roughly what a glance should cost.
+Deep reading costs more.
+Many small acts may accumulate into consequential time.
+
+Prompt verbosity must not alter or compress world-time.
+
+### No artificial observation quota
+The user may keep inspecting while the world permits it.
+
+Scarcity comes from:
+- time;
+- interruption;
+- access;
+- visibility;
+- privacy;
+- opportunity cost;
+
+not an arbitrary number of “investigate” actions.
+
+Full coverage audit:
+`09_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R2.md`.
