@@ -1,0 +1,96 @@
+{
+  "schema": "PYAT_C1_00_INDEPENDENT_ORACLE_CHECK@1",
+  "reviewed_return": "df6f2d36e274744d217dc4a380c73e2c7e18e83f",
+  "oracle_source": "Independent arithmetic from frozen synthetic cell counts only; no candidate implementation/output and no raw survey source.",
+  "source_reads": 0,
+  "candidate_output_used": false,
+  "checks": [
+    {
+      "id": "AT07_FORWARD",
+      "rows": "P1: yes=54, no=6",
+      "denominator_derivation": "54 + 6 = 60",
+      "numerator": 54,
+      "denominator": 60,
+      "reduced_fraction": [
+        9,
+        10
+      ],
+      "result": "PASS"
+    },
+    {
+      "id": "AT07_REVERSE",
+      "rows": "yes column: P1=54, P2=8",
+      "denominator_derivation": "54 + 8 = 62",
+      "numerator": 54,
+      "denominator": 62,
+      "reduced_fraction": [
+        27,
+        31
+      ],
+      "result": "PASS"
+    },
+    {
+      "id": "AT07_COMPLEMENT_FORWARD",
+      "numerator": 6,
+      "denominator": 60,
+      "reduced_fraction": [
+        1,
+        10
+      ],
+      "result": "PASS"
+    },
+    {
+      "id": "AT07_REVERSE_P2",
+      "numerator": 8,
+      "denominator": 62,
+      "reduced_fraction": [
+        4,
+        31
+      ],
+      "result": "PASS"
+    },
+    {
+      "id": "AT07_TOTAL",
+      "derivation": "54 + 6 + 8 + 32 = 100",
+      "result": "PASS"
+    },
+    {
+      "id": "AT08_AT09_THREE_WAY_SANITY",
+      "derivation": {
+        "A=1,C=1": "3 + 1 = 4 of 8",
+        "B=1,C=1": "3 + 1 = 4 of 8",
+        "C=1_total": "3 + 1 + 1 + 3 = 8 of 16",
+        "A=1,B=1,C=1": "3 of 4",
+        "A=1,B=0,C=1": "1 of 4"
+      },
+      "result": "PASS_ARITHMETIC_ONLY",
+      "note": "Confirms the fixture has equal single-condition marginals while joint A/B configurations differ. Execution/discovery behavior is later C1 work."
+    },
+    {
+      "id": "AT10_MINORITY_TOTAL",
+      "derivation": "90 + 7 + 3 = 100",
+      "result": "PASS_ARITHMETIC_ONLY"
+    },
+    {
+      "id": "AT12_COTRAVEL_TOTAL",
+      "derivation": "2 + 1 + 1 + 0 = 4",
+      "result": "PASS_ARITHMETIC_ONLY"
+    },
+    {
+      "id": "AT13_RANKED_COUNT",
+      "derivation": "three explicit ranked rows",
+      "result": "PASS_FIXTURE_COUNT_ONLY"
+    }
+  ],
+  "authority_oracle_check": {
+    "result": "FAIL_NOT_FULLY_FROZEN",
+    "finding": "The manifest lists synthetic authority tags but no complete canonical authority material or expected identity hashes. Arithmetic is independently frozen; authority premises are not yet independently reproducible.",
+    "required_correction": "Add exact test-only authority materials and expected refs/hashes before C1-01."
+  },
+  "condition_binding_oracle_check": {
+    "result": "FAIL_RELATION_NOT_FULLY_FROZEN",
+    "finding": "The collision fixture names F_P1/P1 and F_P2/P2 conceptually but does not freeze a value-bearing subject preimage plus exact rule that proves equality to the producer predicate leaf/value.",
+    "required_correction": "Freeze exact value-bearing subject fixture material and per-binding predicate leaf/value pairing."
+  },
+  "final_oracle_disposition": "AT07_ARITHMETIC_APPROVED__C1_00_GATE_NOT_APPROVED"
+}
