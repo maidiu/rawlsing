@@ -85,10 +85,13 @@ The deepest longitudinal mirror is the user's own relational praxis.
 7. `08_INTERACTION_SYSTEM_SYNTHESIS_R1.md` — current cross-cutting interaction synthesis
 8. `09_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R2.md` — second-pass corrections
 9. `10_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R3.md` — third-pass corrections
-10. `11_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R4.md` — current completeness audit; read this before assuming the interaction corpus is complete
-11. `state/CURRENT_STATE.md`
-12. machine-readable ledgers in `registers/`
-13. open scoped investigations in `dockets/`
+10. `11_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R4.md` — prior causal-mechanics completeness audit
+11. `12_CHAT_EXHAUSTIVE_HARVEST_AUDIT_R5.md` — current exhaustive chat-harvest audit
+12. `dockets/D001_RELATIONAL_ONTOLOGY_V3_BOUNDARY/02_INHERITED_PSYCHIC_MEDIATION_PFF_V2_GENEALOGY_R1.md` — inherited mediation genealogy
+13. `dockets/D001_RELATIONAL_ONTOLOGY_V3_BOUNDARY/03_SOROK_RELATIONALIZATION_DELTA_OVER_INHERITED_PFF_R1.md` — current novel ontology frontier
+14. `state/CURRENT_STATE.md`
+15. machine-readable ledgers in `registers/`
+16. open scoped investigations in `dockets/`
 
 ## 4. Anti-sprawl law
 
@@ -198,3 +201,28 @@ R4 adds/clarifies:
 - no guaranteed moral legibility.
 
 R4 also constrains D003: persona flourishing changes may not be automatically credited/debited to the user without causal support.
+
+
+## 11. R5 exhaustive harvest and relationalization correction
+
+Current completeness authority for the **conversation harvest** is:
+`12_CHAT_EXHAUSTIVE_HARVEST_AUDIT_R5.md`.
+
+R5:
+- enumerates 190 materially useful propositions from the interaction ideation;
+- crosswalks each to law, hypothesis, scenario, inherited architecture or open question;
+- restores early Rawlsing/PFF psychic-mediation inheritance;
+- corrects the owner map against later CAN-008 R2 / PFF interface work;
+- distinguishes user self-report from omniscient access to user-hidden reality;
+- adds hostile scenarios through SCE-044;
+- makes the actual Sorok novelty explicit.
+
+That novelty is not "we discovered that personas have hidden psychology."
+
+It is:
+
+`MEDIATED PERSONHOOD → RELATIONALLY CONSTITUTED MEDIATED PERSONHOOD`.
+
+Read D001/03 before proposing new person/dyad ontology.
+
+"Everything is relational" must not be interpreted as "everything belongs to a dyad object." Preserve person, relation-class prior, role-conditioned organization, specific dyad, network context and current person×event configuration as potentially distinct grains.
