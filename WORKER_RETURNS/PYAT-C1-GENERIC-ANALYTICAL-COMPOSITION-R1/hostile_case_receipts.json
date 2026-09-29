@@ -1,0 +1,86 @@
+{
+  "schema": "PYAT_C1_00_HOSTILE_CASE_RECEIPTS@1",
+  "status": "FROZEN_EXPECTATIONS__NOT_EXECUTED",
+  "cases": [
+    {
+      "id": "HC01",
+      "attack": "same conditioner ID; different value-specific subject fact / producer predicate",
+      "expected": "CONDITION_VALUE_IDENTITY_MISMATCH before consumer call",
+      "guards": [
+        "full consumer binding fingerprint",
+        "consumer_query.ref",
+        "producer query/predicate refs"
+      ]
+    },
+    {
+      "id": "HC02",
+      "attack": "same retained conditioner IDs from contaminated evidence pool",
+      "expected": "CROSS_QUERY_EVIDENCE_REUSE_REJECTED before consumer call"
+    },
+    {
+      "id": "HC03",
+      "attack": "different exact release with identical-looking cell values",
+      "expected": "SOURCE_RELEASE_MISMATCH"
+    },
+    {
+      "id": "HC04",
+      "attack": "same target ref; changed topology/domain or target-domain replay identity",
+      "expected": "TARGET_TOPOLOGY_OR_DOMAIN_MISMATCH"
+    },
+    {
+      "id": "HC05",
+      "attack": "same denominator count; different risk/denominator member refs",
+      "expected": "DENOMINATOR_IDENTITY_MISMATCH"
+    },
+    {
+      "id": "HC06",
+      "attack": "RAW versus GOVERNED_WEIGHTED produces same visible ratio",
+      "expected": "MEASURE_IDENTITY_MISMATCH; never alias"
+    },
+    {
+      "id": "HC07",
+      "attack": "denominator>0, target cell count=0",
+      "expected": "SUPPORTED with OBSERVED_ZERO_IN_SUPPORTED_RISK_SET; not ZERO_SUPPORT"
+    },
+    {
+      "id": "HC08",
+      "attack": "denominator=0",
+      "expected": "ZERO_SUPPORT or ZERO_OVERLAP according to producer state; not observed zero or generic valid-empty"
+    },
+    {
+      "id": "HC09",
+      "attack": "empty declared target domain",
+      "expected": "VALID_EMPTY; distinct from zero support"
+    },
+    {
+      "id": "HC10",
+      "attack": "unresolved target, missing authority/source/risk/measure, noncomparability",
+      "expected": "preserve distinct owner-native UNRESOLVED / UNAVAILABLE / NONCOMPARABLE states"
+    },
+    {
+      "id": "HC11",
+      "attack": "adaptive partial frontier contains unvisited units",
+      "expected": "EXPLICIT_UNKNOWN_UNVISITED; no global negative and no fabricated evidence"
+    },
+    {
+      "id": "HC12",
+      "attack": "recursive child has same display text but different immediate parent",
+      "expected": "distinct ancestry/identity; no alias"
+    },
+    {
+      "id": "HC13",
+      "attack": "tampered query/predicate/fact/ref identity",
+      "expected": "typed integrity exception; never laundered into analytical negative"
+    },
+    {
+      "id": "HC14",
+      "attack": "consumer bounded replay reported as full producer recomputation",
+      "expected": "REPLAY_GRADE_OVERCLAIM rejection"
+    },
+    {
+      "id": "HC15",
+      "attack": "failed learned claim relabeled DIRECT_PRODUCER",
+      "expected": "route legitimacy rejection; existing family authority remains controlling"
+    }
+  ]
+}
