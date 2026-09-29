@@ -1,6 +1,6 @@
 {
-  "schema": "PYAT_C1_00_REPLAY_DEPENDENCY_RECEIPT@1",
-  "status": "STATIC_CONTRACT__NO_EXECUTION",
+  "schema": "PYAT_C1_00_REPLAY_DEPENDENCY_RECEIPT@2",
+  "status": "R2_CORRECTED_STATIC_CONTRACT__NO_EXECUTION",
   "replay_grades": [
     {
       "grade": "CONSUMER_BOUNDED_REPLAY",
@@ -51,7 +51,17 @@
     "consumer comparability authority refs",
     "model/walkback authority refs",
     "model rule hash",
-    "selected proxy evidence/authority refs if any"
+    "selected proxy evidence/authority refs if any",
+    "condition-value binding witness ref/hash",
+    "subject-condition preimage ref(s)",
+    "producer predicate leaf ref(s)/projection(s)",
+    "pairing ground-truth ref(s)",
+    "risk_set_member_refs",
+    "denominator_member_refs",
+    "measure_kind",
+    "target component/topology/domain material",
+    "constructed PossibilitySliceEvidence.evidence_ref",
+    "slice projection schema hash c00e038dd2c1177bfc7842f12febef7b3e30b92bc421df244e2a8e3c4a20b17a"
   ],
   "weighted_extension": [
     "used WeightMeasureFact.ref(s)",
@@ -95,5 +105,29 @@
     "selective_invalidation_expectation": "changed exact determinant reaches all and only graph-dependent releases; unaffected releases remain usable"
   },
   "execution_receipts": [],
-  "unexecuted_reason": "C1-00 is documentary and runtime identity is not yet frozen."
+  "unexecuted_reason": "C1-00 is documentary and runtime identity is not yet frozen.",
+  "R2_relation_closure": {
+    "value_relation_oracle": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/02_VALUE_RELATION_ORACLE.json",
+    "state_and_determinant_closure": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/05_STATE_AND_DETERMINANT_CLOSURE.json",
+    "full_composition_fresh_process_requires": [
+      "condition-value binding witness exact material/ref",
+      "subject-condition preimage exact material/ref",
+      "producer predicate leaf exact projection/ref",
+      "pairing ground-truth exact material/ref",
+      "frozen synthetic authority preimages/refs at source-free fixture grain",
+      "slice projection schema hash"
+    ],
+    "selective_invalidation": "Mutating only the relation/witness determinant while all producer counts and unrelated determinants remain fixed must reidentify the direct composed product; lifecycle-governed dependent releases must be invalidated/reidentified through existing B5 edges."
+  },
+  "R2_unknown_state": {
+    "owner": "rawlsing_next.pre553_learned_product_lifecycle",
+    "state": "UNKNOWN_CURRENTNESS",
+    "distinct_from": [
+      "EXPLICIT_UNKNOWN_UNVISITED",
+      "UNRESOLVED",
+      "UNAVAILABLE",
+      "NO_CURRENT",
+      "CONFLICTING_CURRENT_SELECTION"
+    ]
+  }
 }
