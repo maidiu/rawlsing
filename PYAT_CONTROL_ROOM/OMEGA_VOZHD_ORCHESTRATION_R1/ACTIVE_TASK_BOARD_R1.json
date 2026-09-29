@@ -1,89 +1,64 @@
 {
   "schema": "PYAT_OMEGA_ACTIVE_TASK_BOARD@1",
-  "revision": 1,
-  "status": "HQ_ACTIVATED__FIRST_TRANCHE_BRANCHES_BOUND__USER_MEDIATED_BROWSER_LAUNCH_REQUIRED",
+  "revision": 2,
+  "status": "FIRST_TRANCHE_RETURNS_RECEIVED__C1_C3_INDEPENDENT_REVIEWS_BOUND__C2_02_HELD_FOR_WORKLOAD",
   "control_branch": "integration/pre-main-reconciliation-r1",
-  "live_control_head_at_activation": "1c66d3d63e7ffab85213b918ca2d3b23d82b11f6",
-  "immutable_checkpoint": "20260929T1133-0400-PYAT-OMEGA-BROWSER-HQ-ORCHESTRATION",
-  "handoff_commit": "810dbfde9fa5dbe1e3625188f4c13c4c9e7ceeb7",
   "implementation_baseline": "b3b2fa13049513078c301a1f6574b661fcf390c5",
-  "empirical_code_drift_from_baseline_to_activation": false,
-  "capabilities": {
-    "github": "READ_WRITE_BRANCH_FILE_COMPARE_PR_API_PRESENT",
-    "library": "AVAILABLE__C2_ESCALATION_ONLY__C1_C3_NO",
-    "local_repo_execution": "NOT_BOUND_IN_THIS_BROWSER_HQ",
-    "ci": "PR_TRIGGERED_RABOCHII_GOVERNED_BOUNDED_COURT_EXISTS__ARBITRARY_WORKFLOW_DISPATCH_TOOL_UNAVAILABLE",
-    "agent_launch": "UNAVAILABLE_IN_THIS_HQ_TOOLSET__USER_MEDIATED_BROWSER_AGENT_LAUNCH_REQUIRED",
-    "codex": "NO_DIRECT_CODEX_EXECUTOR_BOUND_IN_THIS_HQ_SESSION"
-  },
-  "existing_named_worker": {
-    "id": "PYAT-HQ124-LITS1-WVS7-LIVE-J-AUTHORITY-LOAD-R1",
-    "branch": "agent/rabochii-pyat-hq124-lits1-wvs7-live-j-authority-load-r1",
-    "observed_head": "e0ec556156160bf692e92c6912d8b25a596a1930",
-    "movement_since_checkpoint": "NONE",
-    "disposition": "PRESERVE_BOUNDED_DIAGNOSTIC__NOT_PROGRAM_CENTER"
-  },
-  "tasks": [
+  "returned_tasks": [
     {
       "id": "C1-00",
-      "state": "BOUND_AWAITING_USER_MEDIATED_LAUNCH",
-      "role": "BROWSER_SOL_HIGH_RABOCHII",
-      "branch": "agent/rabochii-pyat-hq126-c1-analytical-composition-r1",
-      "base_commit": "b3b2fa13049513078c301a1f6574b661fcf390c5",
-      "commission_tip": "2cef3869c16cbd88ce8bc58a5bd4aa073879be50",
-      "commission_path": "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/00_COMMISSION.md",
-      "scope": "C1_00_CONTRACT_AND_ORACLE_FREEZE_ONLY",
-      "library_mode": "NO",
-      "raw_source": false,
-      "production_code_edit": false,
-      "reviewer_gate": "SEPARATE_C1_00_CONTRACT_REVIEW_REQUIRED_BEFORE_C1_01"
+      "return_head": "df6f2d36e274744d217dc4a380c73e2c7e18e83f",
+      "state": "RETURN_RECEIVED__INDEPENDENT_REVIEW_REQUIRED"
     },
     {
       "id": "C2-01",
-      "state": "BOUND_AWAITING_USER_MEDIATED_LAUNCH",
-      "role": "BROWSER_SOL_HIGH_DOCUMENTARY_RABOCHII",
-      "branch": "agent/rabochii-pyat-hq126-c2-authority-coverage-r1",
-      "base_commit": "b3b2fa13049513078c301a1f6574b661fcf390c5",
-      "commission_tip": "d3c219fde9dc838819420034505aa2d4443bdf07",
-      "commission_path": "WORKER_RETURNS/PYAT-C2-AUTHORITY-SUCCESSION-COVERAGE-R1/00_COMMISSION.md",
-      "scope": "C2_01_AUTHORITY_SUCCESSION_AND_COVERAGE_ONLY",
-      "library_mode": "ESCALATION_ONLY",
-      "raw_source": false,
-      "production_code_edit": false,
-      "reviewer_gate": "C2_R_AFTER_C2_02__HQ_MAY_SPOT_CHECK_C2_01_CRITICAL_ROWS"
+      "return_head": "42b89c09480c5848d8889b2282e986855c5822ef",
+      "state": "RETURN_RECEIVED__HQ_SPOT_CHECK__C2_02_WAITING_FOR_EXACT_WORKLOAD"
     },
     {
       "id": "C3-01",
-      "state": "BOUND_AWAITING_USER_MEDIATED_LAUNCH",
-      "role": "BROWSER_SOL_HIGH_PHYSICAL_REVIEW_RABOCHII",
-      "branch": "agent/rabochii-pyat-hq126-c3-physical-repair-acceptance-r1",
-      "base_commit": "b3b2fa13049513078c301a1f6574b661fcf390c5",
-      "commission_tip": "afffba327286a3f49ce852409d520bf944efed3c",
-      "commission_path": "WORKER_RETURNS/PYAT-C3-REPRESENTATION-REPAIR-ACCEPTANCE-R1/00_COMMISSION.md",
-      "scope": "C3_01_G01_D01_D02_SEPARATE_ACCEPTANCE_ONLY",
-      "library_mode": "NO",
-      "raw_source": false,
-      "production_code_edit": false,
-      "reviewer_gate": "SEPARATE_ACCEPTANCE_REVIEW_REQUIRED_BEFORE_C3_02"
+      "return_head": "d9462674d45f228b5985a5ce3158723b87ca6fa6",
+      "state": "RETURN_RECEIVED__INDEPENDENT_REVIEW_REQUIRED"
     }
   ],
-  "blocked_until_returns": [
-    "C1-01",
-    "C1-02",
-    "C1-03",
-    "C1-R",
-    "C2-02",
-    "C2-R",
-    "C3-02",
-    "C3-R",
-    "JOIN-01",
-    "OMEGA-1"
+  "active_reviews": [
+    {
+      "id": "C1-00-R",
+      "branch": "agent/reviewer-pyat-hq126-c1-00-contract-r1",
+      "commission_tip": "642e48f26f94fb144ef5e26942ba56fdb7881307",
+      "reviewed_return": "df6f2d36e274744d217dc4a380c73e2c7e18e83f",
+      "state": "BOUND_AWAITING_USER_MEDIATED_LAUNCH"
+    },
+    {
+      "id": "C3-01-R",
+      "branch": "agent/reviewer-pyat-hq126-c3-01-repair-acceptance-r1",
+      "commission_tip": "2b7dd60cf220ccac0424501028587d48610177f9",
+      "reviewed_return": "d9462674d45f228b5985a5ce3158723b87ca6fa6",
+      "state": "BOUND_AWAITING_USER_MEDIATED_LAUNCH"
+    }
   ],
-  "exact_blockers": [
-    "NO_BROWSER_AGENT_LAUNCH_TOOL_IN_CURRENT_HQ",
-    "NO_ARBITRARY_WORKFLOW_DISPATCH_TOOL_IN_CURRENT_HQ",
-    "PR_CREATION_ATTEMPT_BLOCKED_BY_CONNECTOR_WRITE_GUARD__WORKERS_OR_USER_CAN_CREATE_PR_AFTER_LAUNCH",
-    "C1_01_REQUIRES_C1_00_INDEPENDENT_CONTRACT_ACCEPTANCE_AND_FROZEN_ORACLE",
-    "C3_02_REQUIRES_PER_REPAIR_ACCEPTANCE_AND_FROZEN_ALLOWLIST"
+  "held": [
+    "C1-01 until C1-00-R independent approval and HQ contract/oracle freeze",
+    "C1-02 until C1-01",
+    "C1-03 until C1-02",
+    "C1-R until C1-03",
+    "C2-02 until HQ declares exact next proving workload",
+    "C2-R until C2-02",
+    "C3-02 until C3-01-R approval and HQ minimal patch allowlist freeze",
+    "C3-R until C3-02",
+    "JOIN-01 until applicable reviewed outputs",
+    "OMEGA-1 until scoped source-free join"
+  ],
+  "current_hq_disposition": {
+    "c1_00": "PLAUSIBLE_PACKET__NOT_ADOPTED__REVIEW_BOUND",
+    "c2_01": "CONSERVATIVE_LEDGER_RETURN__NOT_ADOPTED__NO_C2_02_YET",
+    "c3_01": "THREE_ACCEPT_RECOMMENDATIONS_WITH_FRESH_SOURCE_FREE_RECEIPTS__NOT_ADOPTED__REVIEW_BOUND"
+  },
+  "prohibitions": [
+    "NO_RAW_SOURCE_EXECUTION",
+    "NO_NEW_SEMANTIC_OR_COMPARABILITY_AUTHORITY",
+    "NO_C1_PRODUCTION_IMPLEMENTATION_BEFORE_REVIEW",
+    "NO_C3_SHARED_DECODER_INTEGRATION_BEFORE_REVIEW_AND_FROZEN_ALLOWLIST",
+    "NO_PREV3_TO_V3_ACTOR_IMPLEMENTATION"
   ]
 }
