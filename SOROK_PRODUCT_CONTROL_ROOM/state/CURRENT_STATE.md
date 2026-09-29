@@ -2,7 +2,7 @@
 
 Updated: 2026-09-29
 
-Status: `INTERACTION_IDEATION_R4_COMPLETENESS_AUDITED__CAUSAL_MECHANICS_CORRECTED__ONTOLOGY_PROVISIONAL__ALPHA_NOT_YET_IMPLEMENTATION_SPECIFIED`
+Status: `INTERACTION_IDEATION_R5_CHAT_HARVESTED__PFF_INHERITANCE_RESTORED__RELATIONALIZATION_DELTA_EXPLICIT__ONTOLOGY_PROVISIONAL__ALPHA_NOT_YET_IMPLEMENTATION_SPECIFIED`
 
 ## Current base
 
@@ -20,7 +20,7 @@ Status: `INTERACTION_IDEATION_R4_COMPLETENESS_AUDITED__CAUSAL_MECHANICS_CORRECTE
 5. Greater intimacy may increase difficulty by activating expectation, need, conflict, dependency risk, developmental residues and social-network consequences.
 6. Rawlsing should longitudinally model the user's **relational praxis** without pretending to diagnose the user.
 7. Persona life should persist beyond a chat session; asynchronous contact should be causally generated from life events + persona + relationship rather than engagement optimization.
-8. V3 must be reconsidered as relational-developmental rather than monadic, but Sorok must preserve the already-developed temporal-grain split: SDTF/upstream transduction → durable/formative V3 → CAN-008 person×event response → PFF interaction-fast/session/user-opacity → V2 expression.
+8. V3 must be reconsidered as relational-developmental rather than monadic. Sorok's current novel thesis is **relationally constituted mediated personhood**: person-stable organization may itself be sedimented relational history. Preserve the inherited split: SDTF/upstream transduction → durable/formative V3 → CAN-008 R2 receivability/uptake-appraisal/situated recruitment/immediate response → narrowed PFF interaction specialization/minimal fast carryover → V2 actor-limited expression/rendering.
 9. A new dyadic runtime owner is **not presumed**. New relational semantics must first be placed through the existing owner structure; only a genuine remainder may justify a new owner.
 10. No-avatar remains the preferred product direction.
 11. The core interaction is **situated action inside a causally live scene**, not open-ended chat.
@@ -44,7 +44,7 @@ Status: `INTERACTION_IDEATION_R4_COMPLETENESS_AUDITED__CAUSAL_MECHANICS_CORRECTE
 29. The world/persona are non-player-centric: actors retain independent agendas and may ignore, delay, interrupt, leave or prioritize other tasks rather than “respond” to every user act.
 30. Interaction reasoning uses four operational views—objective world, actor-private state, relational/distributed-knowledge state and user phenomenal surface—without replacing inherited architecture owners.
 31. Narrator-directed ATTEND, diegetic SAY, embodied DO and player-private intention must remain distinct channels even when mixed inside one natural-language turn.
-32. Player-private intention is distinct from later self-description; exact anti-retroactive-rewrite semantics remain open.
+32. User-declared intention/self-report is distinct from realized behavior and later self-description; inherited user-opacity law means it is not automatically omniscient truth about the human user's hidden state. A stronger player-authored-inner-state mode remains open.
 33. Finite narrator detail should follow perceptual salience and explicit attention, never hidden psychological importance.
 34. Variable duration must remain physically/socially plausible rather than punitive; cheap micro-observations may accumulate consequential time.
 35. Prompt packing/verbosity must not compress or inflate world-time; duration follows realized operations.
@@ -63,12 +63,22 @@ Status: `INTERACTION_IDEATION_R4_COMPLETENESS_AUDITED__CAUSAL_MECHANICS_CORRECTE
 48. Equivalent realized actions against equivalent state should have causally stable outcomes; narrator sampling must not arbitrarily change consequence.
 49. Objective events fan out into actor-specific sensory/perceptual packets before appraisal; no actor automatically receives the whole event.
 50. Actor attention is finite and may produce partial, delayed, missed or ambiguous perception.
-51. Private appraisal/internal response and outward expression remain distinct causal layers.
+51. Private appraisal/internal response and outward expression remain distinct causal layers; this is inherited Rawlsing/PFF mediation rather than a new R4 invention.
 52. Actor memory is distinct from objective event history and may forget, retain gist, reactivate or reconsolidate.
 53. Delayed world/network effects require enough causal provenance to distinguish actual contribution from actor/user attribution.
 54. Rawlsing should resist monocausal user-credit; the user may be one cause among many, marginal, or causally irrelevant.
 55. World events should arise from actor/institution/material causality rather than hidden moral-test or engagement dramaturgy.
 56. The live world does not owe the user complete moral legibility or eventual explanation of every consequence.
+57. Inherited PFF psychic mediation remains binding: causal activity, conscious presence, self-interpretation, intention, defense/presentation and expression are noncollapsible.
+58. Later PFF/CAN-008 reconciliation does not justify new PFF consciousness/defense/recruitment subsystems; CAN-008 R2 owns event-time receivability, uptake/appraisal, situated recruitment and immediate response.
+59. Valid-empty / low-significance person×event processing is lawful; not every turn must generate memory, insight, chemistry or conflict.
+60. Actor uptake is distinct from response coverage/effort; understood material may be omitted without proving nonreception or defense.
+61. Hidden activation need not leak; the system must not manufacture behavioral tells for player convenience.
+62. Lawful conversational jaggedness should be person-caused, not random "human" noise.
+63. **Person-stable != relation-free.** Durable dispositions, self-models, defenses, needs and accessibility patterns may be historically relation-produced.
+64. **Relationally constituted != dyad-owned.** Person, relation-class prior, role-conditioned organization, specific dyadic history, network context and current event-time configuration remain distinct candidate grains.
+65. Intimacy should be investigated as changing relational causal organization, not merely unlocking deeper hidden lore.
+66. Relations produce persons who enter relations that reproduce, disconfirm or transform persons and worlds.
 
 ## R1 interaction ideation bank
 
@@ -77,16 +87,19 @@ Top-level:
 - `09_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R2.md`
 - `10_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R3.md`
 - `11_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R4.md`
+- `12_CHAT_EXHAUSTIVE_HARVEST_AUDIT_R5.md` — 190-proposition chat harvest
 
-Architecture inheritance:
+Architecture inheritance / relational frontier:
 - `dockets/D001_RELATIONAL_ONTOLOGY_V3_BOUNDARY/01_INHERITED_TEMPORAL_GRAIN_ARCHITECTURE_R1.md`
+- `dockets/D001_RELATIONAL_ONTOLOGY_V3_BOUNDARY/02_INHERITED_PSYCHIC_MEDIATION_PFF_V2_GENEALOGY_R1.md`
+- `dockets/D001_RELATIONAL_ONTOLOGY_V3_BOUNDARY/03_SOROK_RELATIONALIZATION_DELTA_OVER_INHERITED_PFF_R1.md`
 
 D002:
 - `01_INTERACTION_CONSTITUTION_R1.md`
 - `02_TEMPORAL_ATTENTION_AND_INFORMATION_ACQUISITION_R1.md`
 - `03_RECIPROCAL_OBSERVATION_PRIVACY_AND_PRESENTATION_R1.md`
 - `04_NONCURATORIAL_WORLD_DETAIL_AND_BINDING_REALITY_R1.md`
-- `05_CANONICAL_SCENARIO_BANK_R1.md` — now through SCE-036
+- `05_CANONICAL_SCENARIO_BANK_R1.md` — now through SCE-044
 - `06_PLAYER_EMBODIMENT_ENTRY_AND_AFFORDANCE_R1.md`
 - `07_EPISTEMIC_PROVENANCE_ASSERTION_AND_LAZY_WORLD_R1.md`
 - `08_SCENE_FRAME_CONCURRENCY_INTERRUPTION_AND_CONTROL_RETURN_R1.md`
@@ -94,7 +107,7 @@ D002:
 - `10_ACTOR_PERCEPTION_APPRAISAL_EXPRESSION_AND_MEMORY_R1.md`
 - `11_CAUSAL_PROVENANCE_DELAYED_EFFECTS_AND_NONTELEOLOGICAL_WORLD_R1.md`
 
-The scenario bank currently preserves 15 concrete probes including:
+The scenario bank now preserves 44 canonical scenario/probe IDs, including:
 - bathroom/medicine-cabinet access;
 - sensitive toilet-chain warning/failure/repair/disclosure;
 - homework help;
@@ -161,11 +174,11 @@ The scenario bank currently preserves 15 concrete probes including:
 Keep D001–D003 as the primary program.
 
 ### D001
-Turn the inherited temporal-grain architecture plus relational ontology into an exact ownership table:
+Adjudicate the relationalization frontier over inherited PFF, then turn the temporal-grain architecture plus relational ontology into an exact ownership table:
 `OBJECT | OWNER | CREATED_FROM | MUTATED_BY | OBSERVABLE_TO | PERSISTENCE | DOWNSTREAM_CONSUMERS | MUST_NOT_MEAN`.
 
 ### D002
-The interaction laws are now sufficiently coherent to move from ideation into **minimum alpha action ontology + hostile scenario prototype specification**.
+The interaction laws and chat harvest are now sufficiently serialized to move from ideation into **minimum alpha action ontology + hostile scenario prototype specification**, while preserving inherited valid-empty, effort/coverage, hidden-cause and renderer constraints.
 
 ### D003
 Develop the multidimensional flourishing constitution needed to distinguish attachment/compliance from benefit.
