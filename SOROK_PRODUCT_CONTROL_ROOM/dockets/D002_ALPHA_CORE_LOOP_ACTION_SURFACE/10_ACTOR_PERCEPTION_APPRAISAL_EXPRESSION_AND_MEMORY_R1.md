@@ -1,22 +1,44 @@
 # D002 — Actor Perception, Appraisal, Expression and Memory R1
 
-Status: `PROVISIONAL_PRODUCT_LAW_INPUT__OPEN_D001_OWNERSHIP`
+Status: `PRODUCT_SCENARIO_APPLICATION_OVER_INHERITED_PSYCHIC_MEDIATION__OPEN_EXACT_PRODUCT_REALIZATION`
+
+## 0. Genealogy correction
+
+The core psychic distinctions in this file are **not newly invented by Sorok**.
+
+They inherit early Rawlsing V1/V2/V3 mediation machinery and the later PFF constitutional corpus, especially the established noncollapse between:
+- total causal personhood;
+- standing conscious self;
+- current relational activation;
+- present conscious field;
+- actor interpretation/self-explanation;
+- current intention/inhibition/defense;
+- outward expression.
+
+Later PFF/CAN-008 work further established that these phenomena do not justify a new monolithic PFF psyche engine: CAN-008 R2 owns event-time receivability, uptake/appraisal, situated recruitment and immediate response; durable V3 owners retain persistent state; PFF keeps only bounded interaction specialization/fast carryover; V2 owns actor-limited expression/rendering.
+
+This file therefore applies inherited mediation theory to Sorok's live-scene product cases.
+
+See D001:
+`02_INHERITED_PSYCHIC_MEDIATION_PFF_V2_GENEALOGY_R1.md`.
 
 ## 1. Core theorem
 
 Objective event does not equal actor experience.
 
-For every affected actor, Rawlsing may need a distinct path:
+For every affected actor, Rawlsing must preserve the semantic equivalent of a noncollapsed path such as:
 
 `OBJECTIVE EVENT`
-→ `SENSORY ACCESS`
-→ `ATTENTIONAL UPTAKE`
-→ `INTERPRETATION / APPRAISAL`
-→ `IMMEDIATE INTERNAL RESPONSE`
-→ `OUTWARD ACTION / PRESENTATION`
-→ `MEMORY / SIGNIFICANCE TRACE`
+→ `SENSORY / OBSERVATIONAL ACCESS`
+→ `CAN-008 RECEIVABILITY / UPTAKE-APPRAISAL + SITUATED RECRUITMENT`
+→ `IMMEDIATE MULTI-STREAM RESPONSE / METABOLISM`
+→ `PRESENT ACTOR EXPERIENCE / AWARENESS / SELF-INTERPRETATION WHERE LAWFUL`
+→ `CURRENT INTENTION / INHIBITION / DEFENSE / PRESENTATION CONSEQUENCES`
+→ `V2 ACTOR-LAWFUL OUTWARD ACTION / EXPRESSION`
+→ `ACTUAL OCCURRENCE / POSSIBLE RE-ENTRY`
+→ `DURABLE MEMORY / RELATIONSHIP / SELF-MODEL EFFECT ONLY THROUGH COMPETENT V3 OWNER`
 
-Exact ownership across CAN-008, PFF and durable V3 remains D001 work.
+This is conceptual decomposition, not a claim that every arrow is a separate stored object or that the process is strictly linear. PFF explicitly established valid nonlinear paths, including expression preceding self-recognition.
 
 ## 2. Perception is actor-specific
 
@@ -67,7 +89,7 @@ She may:
 
 Non-player-centricity therefore requires not only independent agenda but finite actor attention.
 
-## 5. Uptake is not equivalent to conscious proposition
+## 5. Uptake is not equivalent to conscious proposition — inherited law
 
 An event can alter current response without the actor explicitly formulating:
 
@@ -81,7 +103,7 @@ A mild annoyance may remain:
 
 Do not force every causal state into explicit inner monologue.
 
-## 6. Internal response ≠ outward expression
+## 6. Internal response ≠ outward expression — inherited law
 
 Nadia may:
 - feel annoyed;
@@ -94,7 +116,7 @@ The expression is one causal output of the internal response, not a transparent 
 
 PFF/CAN-008 ownership must preserve this gap.
 
-## 7. Self-access can also be partial
+## 7. Self-access can also be partial — inherited law, not a new Sorok hypothesis
 
 The persona need not possess perfect introspective access to their own state.
 
@@ -104,7 +126,20 @@ Potentially:
 - she later recognizes that multiple incidents had accumulated;
 - she misattributes a feeling.
 
-This should be used carefully and must not become a license for arbitrary hidden psychology.
+This is already constrained by inherited PFF laws:
+
+- causal activity != conscious presence;
+- felt != named;
+- recognized state != correct causal explanation;
+- actor self-explanation != machine causal account;
+- hidden cause may produce conscious effect without becoming actor knowledge;
+- defense may act before, within or after awareness;
+- leakage is possible but not mandatory;
+- full inhibition without detectable leakage is lawful;
+- expression may trigger later self-recognition;
+- renderer wording cannot retroactively prove prior hidden cause.
+
+Therefore this is not a license for arbitrary “mystery unconscious” invention. Hidden influence must be generated through lawful person/event causality and actor-access boundaries.
 
 ## 8. Memory encoding is selective
 
@@ -171,7 +206,14 @@ The private causal machinery exists precisely so that the surface can remain opa
 
 ## 12. D001 implication
 
-D001 must eventually distinguish owners for:
+Several owner questions are already narrowed by inherited authority:
+
+- CAN-008 R2 owns actor receivability / uptake-appraisal / situated recruitment / immediate multi-stream response;
+- durable memory/access, durable relationship state, durable self-model/developmental change and other lasting effects stay under exact V3 owners;
+- PFF does not get a separate consciousness/defense/emotion/recruitment subsystem merely because these phenomena occur;
+- V2 remains expression/render jurisdiction.
+
+D001 must still crosswalk exact product-required semantics for:
 - sensory/perceptual packet;
 - attentional uptake;
 - current appraisal;
