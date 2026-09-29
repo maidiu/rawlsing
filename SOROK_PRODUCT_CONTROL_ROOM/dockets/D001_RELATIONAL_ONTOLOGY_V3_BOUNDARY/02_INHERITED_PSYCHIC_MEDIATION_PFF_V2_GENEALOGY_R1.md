@@ -645,3 +645,30 @@ The system may preserve rich provenance proving:
 - actual emitted output;
 
 without making that analyst trace visible or claimable by the persona.
+
+
+---
+
+## 17. Sorok does not stop at inheritance: relationalization delta
+
+Everything above establishes the inherited mediation architecture.
+
+Sorok's new D001 claim is stronger than "use PFF correctly."
+
+The person on each side of the PFF walls is now proposed to be **relationally constituted**:
+- D-band causal organization is sedimented relational history, not pre-relational substance;
+- C-band standing self is partly stabilized through real/internalized others and social roles;
+- B-band current activation is a relation-specific realization of relation-formed personhood, not merely a mask over a monad;
+- A-band expression is the current relational edge of that history.
+
+The full delta and anti-collapse law are in:
+
+`03_SOROK_RELATIONALIZATION_DELTA_OVER_INHERITED_PFF_R1.md`.
+
+Therefore:
+
+INHERIT PFF NONCOLLAPSE
++
+RELATIONALIZE THE ONTOLOGY ON BOTH SIDES OF EACH WALL.
+
+Do not confuse this new ontology with creation of new runtime owners.
