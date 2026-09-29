@@ -87,11 +87,12 @@ The deepest longitudinal mirror is the user's own relational praxis.
 9. `10_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R3.md` — third-pass corrections
 10. `11_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R4.md` — prior causal-mechanics completeness audit
 11. `12_CHAT_EXHAUSTIVE_HARVEST_AUDIT_R5.md` — current exhaustive chat-harvest audit
-12. `dockets/D001_RELATIONAL_ONTOLOGY_V3_BOUNDARY/02_INHERITED_PSYCHIC_MEDIATION_PFF_V2_GENEALOGY_R1.md` — inherited mediation genealogy
-13. `dockets/D001_RELATIONAL_ONTOLOGY_V3_BOUNDARY/03_SOROK_RELATIONALIZATION_DELTA_OVER_INHERITED_PFF_R1.md` — current novel ontology frontier
-14. `state/CURRENT_STATE.md`
-15. machine-readable ledgers in `registers/`
-16. open scoped investigations in `dockets/`
+12. `13_R5_CHAT_HARVEST_INTEGRITY_RECEIPT.md` — mechanical + semantic closure receipt
+13. `dockets/D001_RELATIONAL_ONTOLOGY_V3_BOUNDARY/02_INHERITED_PSYCHIC_MEDIATION_PFF_V2_GENEALOGY_R1.md` — inherited mediation genealogy
+14. `dockets/D001_RELATIONAL_ONTOLOGY_V3_BOUNDARY/03_SOROK_RELATIONALIZATION_DELTA_OVER_INHERITED_PFF_R1.md` — current novel ontology frontier
+15. `state/CURRENT_STATE.md`
+16. machine-readable ledgers in `registers/`
+17. open scoped investigations in `dockets/`
 
 ## 4. Anti-sprawl law
 
