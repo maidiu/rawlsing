@@ -107,6 +107,9 @@ A Sorok-summary-only understanding is insufficient.
 ## R1 interaction ideation bank
 
 Top-level:
+- `15_SOROK_WIDE_OPEN_FRONTIER_PROGRAM_R1.md` — 71-question dependency/work map
+- `16_COURT1_COURT2_PLAYER_ENCOUNTER_RELATIONSHIP_SYNTHESIS_R1.md` — current forward ideation
+- `17_FULL_RAWLSING_VOZHD_GROUNDING_INTEGRITY_R1.md` — takeover verification
 - `08_INTERACTION_SYSTEM_SYNTHESIS_R1.md`
 - `09_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R2.md`
 - `10_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R3.md`
@@ -194,6 +197,20 @@ The scenario bank now preserves 44 canonical scenario/probe IDs, including:
 - Which epistemic-scaffolding differences, if any, should define RAWlsing versus assisted Rawlsing modes?
 
 ## Immediate next work
+
+Use `15_SOROK_WIDE_OPEN_FRONTIER_PROGRAM_R1.md` as the exploration map.
+
+Current active conceptual court:
+**Court 1 — player / encounter premise + Court 2 — relationship state**, banked provisionally in `16_COURT1_COURT2_PLAYER_ENCOUNTER_RELATIONSHIP_SYNTHESIS_R1.md`.
+
+The current lean is:
+- bounded diegetic user presence rather than omniscient cursor or fully fictional default;
+- lawful unchosen encounter route;
+- sparse objective shared relational history/commitments/access;
+- asymmetric actor-owned models, expectations and domain-specific trust rather than a scalar friendship meter;
+- intimacy as transformation of relational affordances/expectations/stakes rather than hidden-lore unlock.
+
+This remains hypothesis-level and should now be compared against alternate encounter/player models.
 
 Keep D001–D003 as the primary program.
 
