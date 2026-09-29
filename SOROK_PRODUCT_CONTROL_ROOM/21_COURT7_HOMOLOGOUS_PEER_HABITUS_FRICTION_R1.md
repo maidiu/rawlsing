@@ -318,3 +318,294 @@ This is currently the strongest conceptual successor to the original alternate-s
 6. Can the game avoid requiring a full fictional native biography?
 7. Does local learning become instrumentally necessary rather than tutorialized?
 8. Does the persona remain one person among billions rather than a national/cultural representative?
+
+---
+
+## 18. Impossible-subject formulation
+
+The homologous-peer player is intentionally an **impossible subject**:
+
+`STRUCTURALLY LOCAL / DEVELOPMENTALLY FOREIGN`.
+
+They occupy a position that someone in the generated world can plausibly occupy.
+
+Other actors may read them as socially ordinary enough to belong in the field.
+
+But the consciousness making choices was actually formed elsewhere.
+
+This contradiction is not an implementation defect to conceal.
+
+It is the experiment.
+
+Rawlsing should not falsely claim:
+
+> this is the person you would really have become if born here.
+
+That person would need to be generated through a different developmental history and would no longer be the present user.
+
+Instead:
+
+> this is what your present historically formed subjectivity does when deprived of its original structural position and placed inside another field of constraints and relations.
+
+---
+
+## 19. Same field, different formation
+
+Critical distinction:
+
+`HOMOLOGOUS FIELD POSITION != IMPORTED LOCAL HABITUS`.
+
+The user should not receive the persona's dispositions, expectations, family grammar, communicative norms, defenses or ordinary relational assumptions merely because they occupy a comparable local position.
+
+Those are exactly the kinds of things a developmental Rawlsing person acquires through lived history.
+
+The homologous user gets:
+- comparable structural/material position;
+- locally coherent affordances;
+- locally legible peer status where the mode requires it;
+
+while retaining:
+- their present judgments;
+- interpretive habits;
+- moral intuitions;
+- memories;
+- ideological assumptions;
+- real habits of attention and relation.
+
+So the game places two differently formed subjects inside overlapping constraints.
+
+---
+
+## 20. The veil becomes the task
+
+Classical veil formulations begin by imagining away knowledge of one's actual social position.
+
+Sorok cannot erase the user's historical formation.
+
+Instead the game can make movement **toward veil-like understanding** the gameplay process.
+
+The user begins partial:
+- carrying assumptions produced elsewhere;
+- confident about what seems normal, healthy, fair or practical.
+
+They are then materially denied the position from which those assumptions originally became easy or self-evident.
+
+Playable movement:
+
+`ASSUMPTION`
+→ `FRICTION`
+→ `ATTENTION`
+→ `INFERENCE`
+→ `ACTION`
+→ `CONSEQUENCE`
+→ `MODEL REVISION`.
+
+The user does not begin impartial.
+
+Reality works on their partiality.
+
+---
+
+## 21. Self-recognition through persistence of habitus
+
+Homologous-peer mode may create a distinctive reflexive effect:
+
+> the user discovers their own habitus by watching it fail to disappear when the surrounding world changes.
+
+In obvious-outsider mode, misfit can be externalized:
+> of course this is awkward; I'm foreign.
+
+In homologous-peer mode, some of that shield is removed.
+
+The player may be forced to notice:
+- assumptions about privacy;
+- communication;
+- independence;
+- reciprocity;
+- family obligation;
+- religion;
+- gender;
+- authority;
+- help;
+- money;
+- time;
+- care;
+
+as **their own historically produced expectations**, rather than transparent common sense.
+
+This is one of the strongest candidate pedagogical mechanisms currently identified.
+
+---
+
+## 22. Ideology becomes practical
+
+Homologous peer should make normative commitments operate under unfamiliar material constraints.
+
+Example form:
+
+> adults should simply communicate their needs explicitly.
+
+The game does not answer this proposition abstractly.
+
+It places the user inside:
+- these institutions;
+- these wages;
+- these household structures;
+- these buses;
+- these dependency relations;
+- these social sanctions;
+- these particular people.
+
+The user may discover:
+- the proposition still works;
+- it works only partly;
+- it produces unexpected costs;
+- a local alternative has advantages;
+- the local norm is itself harmful;
+- both require transformation.
+
+The machine should not decide the conclusion in advance.
+
+It should make the proposition **live causally**.
+
+---
+
+## 23. Persona and player as complementary answers to the old alternate-self question
+
+The original Rawlsing impulse asked:
+
+> who might you have been here?
+
+Sorok can operationalize this without pretending the present user literally becomes that alternate self.
+
+The **generated persona** answers one side:
+
+> here is a person this world actually formed.
+
+The **homologous-peer user** answers the other:
+
+> here is what the person history actually made you does when placed inside comparable constraints beside them.
+
+Neither alone constitutes the veil.
+
+The **relation between them** becomes the experiment.
+
+This is a dialectical continuation rather than abandonment of the original alternate-self idea.
+
+---
+
+## 24. Neighbor-love without collapsing the neighbor into the self
+
+A weak reading of "love your neighbor as yourself" can become projection:
+
+> I assume the other person basically wants what I would want.
+
+Homologous-peer Rawlsing can operationalize a harder form:
+
+> I am placed materially close enough that your world constrains me too, while remaining psychologically different enough that I have to learn who you actually are.
+
+Thus:
+
+`NEIGHBOR LOVE != SELF-PROJECTION`.
+
+The neighbor remains other.
+
+The user remains implicated.
+
+Care requires attention rather than imaginative substitution.
+
+---
+
+## 25. The user enters Rawlsing's recursion late
+
+At the beginning, the homologous-peer user is unusual:
+
+- structurally embedded;
+- psychologically imported;
+- lacking the developmental history normally associated with that position.
+
+But if the relationship/world persists for years, the user begins accumulating **actual history inside the generated field**.
+
+They may acquire:
+- shared jokes;
+- local practical competencies;
+- routines;
+- relationships;
+- obligations;
+- loyalties;
+- resentments;
+- knowledge of places;
+- expectations grounded in actual events;
+- new habits of interpretation;
+- revised models of others and self.
+
+The user does not become an "authentic native" through points or imitation.
+
+They become somebody who has genuinely **lived a history here**.
+
+This means the player is not exempt from Rawlsing's deepest recursive law:
+
+`RELATIONS PRODUCE PERSONS WHO ENTER RELATIONS THAT TRANSFORM PERSONS`.
+
+The user simply enters the recursion late.
+
+---
+
+## 26. Long-run transformation without cultural-XP logic
+
+Avoid:
+
+- cultural mastery score;
+- authenticity meter;
+- "localization" progress;
+- correctness points for adopting norms.
+
+A user's long-run transformation should instead be visible through:
+- better predictions;
+- fewer crude generalizations;
+- changed practical habits;
+- newly formed relationships;
+- greater differentiation among local actors;
+- specific shared history;
+- altered expectations;
+- novel hybrid practices;
+- selective resistance;
+- real competencies earned through participation.
+
+The user may become **more locally competent without becoming more conformist**.
+
+---
+
+## 27. Main-route holding
+
+Current program focus:
+
+**HOMOLOGOUS-PEER TRANSPOSTION IS THE PRIMARY MAIN-MODE ROUTE FOR CURRENT SOROK IDEATION.**
+
+This is a provisional program focus, not irreversible architecture adoption.
+
+Retain as countermodels:
+- obvious-outsider / foreign-neighbor;
+- full 24/7 portal;
+- thin generic shell;
+- native-alternate;
+- fully fictional avatar.
+
+Use those countermodels to expose what homologous peer gains, loses or distorts.
+
+Do not reopen the entire player ontology every session absent a concrete failure case.
+
+---
+
+## 28. Current deepest theorem
+
+> **The persona shows what this world can make of a person. The player shows what the world does to the person history already made them. Their relation is the playable veil.**
+
+That is currently the strongest synthesis of:
+- alternate-self Rawlsing;
+- veil of ignorance;
+- relationally constituted personhood;
+- love of neighbor;
+- habitus friction;
+- material constraint;
+- user self-recognition.
