@@ -1,79 +1,76 @@
 {
   "schema": "PYAT_OMEGA_ACTIVE_TASK_BOARD@1",
-  "revision": 5,
-  "status": "C1_R2_REREVIEW_CHANGES_REQUIRED__C1_R3_BOUND__C3_02_REVIEW_CHANGES_REQUIRED__C3_03_BOUND",
+  "revision": 6,
+  "status": "C1_R3_RETURNED_INTERNAL_EXACT_REF_CONTRADICTION__C1_R4_BOUND__C3_03_RETURNED_EXECUTION_BLOCKED__C3_03_INDEPENDENT_REVIEW_BOUND",
   "control_branch": "integration/pre-main-reconciliation-r1",
   "implementation_baseline": "b3b2fa13049513078c301a1f6574b661fcf390c5",
-  "adjudicated_reviews": [
+  "observed_returns": [
     {
-      "id": "C1-00-R2-R",
-      "return_head": "959d5d8cd4e8f96732e6809030c946751ba5da67",
-      "disposition": "CHANGES_REQUIRED",
-      "accepted": [
-        "A_VALUE_BEARING_CONDITION_RELATION",
-        "E_DETERMINANT_REPLAY_INVALIDATION_CLOSURE",
-        "ALL_PRESERVED_PRIOR_HOLDINGS"
-      ],
-      "defects": [
-        "B_OWNER_NATIVE_SOURCE_UNIVERSE_SCOPE_MISSING",
-        "C_UNKNOWN_CURRENTNESS_FIXTURE_UNREACHABLE",
-        "D_EVIDENCE_REF_PREIMAGE_CIRCULAR"
-      ],
-      "hq_effect": "C1_01_REMAINS_BLOCKED__C1_R3_BOUNDED_DOCUMENTARY_CORRECTION_ISSUED"
+      "id": "C1-00-R3",
+      "return_head": "696210c2aca2c42b49eed1fe9f75dfca5bf2e93c",
+      "declared_terminal": "C1_00_R3_CORRECTIONS_READY_FOR_INDEPENDENT_REREVIEW",
+      "hq_disposition": "NOT_YET_REVIEWABLE__INTERNAL_EXACT_REF_CONTRADICTION",
+      "defect": "UNKNOWN_CURRENTNESS SelectionKey is 53683ac6... in R3 fixture artifact but a0c54c56... in current analytical contract/fixture manifest; recomputation receipt omits owner-native key recomputation.",
+      "hq_effect": "C1_R4_EXACT_REF_SYNCHRONIZATION_ISSUED__C1_01_REMAINS_BLOCKED"
     },
     {
-      "id": "C3-02-R",
-      "return_head": "c874a134077e6eb416b584157d0209eabdd0d723",
-      "disposition": "CHANGES_REQUIRED",
-      "accepted": [
-        "G01_DECLARED_GRAIN",
-        "D01_DECLARED_GRAIN",
-        "D02_EXISTING_DIRECT_CASES",
-        "UNCHANGED_FACADE",
-        "WORKER_EXECUTION_SEPARATION"
-      ],
-      "defects": [
-        "D02_ITEM_UNWRAPPED_TIMEZONE_AWARE_REJECTION_SWALLOWED",
-        "SEMANTIC_TEST_IMPORT_TIME_PIP_INSTALL"
-      ],
-      "hq_effect": "C3_NOT_ADOPTED__C3_03_BOUNDED_REPAIR_AND_HERMETIC_QUALIFICATION_ISSUED"
+      "id": "C3-03",
+      "return_head": "ede7d350be23d0a340bed221da272d8c0124e049",
+      "semantic_candidate": "901e3e77f905847d3ef8d86b458280d8fe422dd0",
+      "execution_commit": "283d2c5d2b187c4e62ae1aecb236a0b51ddeffb1",
+      "declared_terminal": "C3_03_BLOCKED_EXECUTION_CAPABILITY__HQ_ADJUDICATION_REQUIRED",
+      "hq_disposition": "SEMANTIC_AND_EXECUTION_SEPARATION_STATICALLY_CONFORMANT__QUALIFICATION_BLOCKED_BY_RUNNER_ASSIGNMENT",
+      "runner_evidence": {
+        "workflow_run": 36627731035,
+        "attempts": [
+          1,
+          2,
+          3
+        ],
+        "attempt_3_job": 109616351235,
+        "result": "FAIL_BEFORE_RUNNER__STEPS_NULL__RUNNER_ID_0"
+      },
+      "hq_effect": "INDEPENDENT_C3_03_REVIEW_ISSUED__ADOPTION_REMAINS_BLOCKED"
     }
   ],
   "active_tasks": [
     {
-      "id": "C1-00-R3",
-      "branch": "agent/rabochii-pyat-hq126-c1-00-contract-correction-r3",
-      "commission_tip": "e50bc716cf0fd017081e351a5803d3da61a00a38",
-      "base": "959d5d8cd4e8f96732e6809030c946751ba5da67",
+      "id": "C1-00-R4",
+      "branch": "agent/rabochii-pyat-hq126-c1-00-contract-correction-r4",
+      "commission_tip": "4482f28e436a6ef48e66f9aefda40d354c3866f5",
+      "base": "696210c2aca2c42b49eed1fe9f75dfca5bf2e93c",
       "state": "BOUND_AWAITING_USER_MEDIATED_LAUNCH",
-      "scope": "DOCUMENTARY_ONLY__OWNER_NATIVE_AUTHORITY_SCOPE__REACHABLE_UNKNOWN_FIXTURE__NONCIRCULAR_EVIDENCE_IDENTITY",
-      "pass_wake": "FRESH_INDEPENDENT_R3_REREVIEW_REQUIRED__C1_01_NOT_AUTOMATIC"
+      "scope": "DOCUMENTARY_ONLY__OWNER_NATIVE_SELECTION_KEY_REF_RECOMPUTE_AND_PROPAGATION",
+      "pass_wake": "FRESH_INDEPENDENT_C1_REREVIEW",
+      "blocker_effect": "C1_01_BLOCKED"
     },
     {
-      "id": "C3-03",
-      "branch": "agent/rabochii-pyat-hq126-c3-03-physical-repair-correction-r1",
-      "commission_tip": "a68fb242e8a000a4b06037118e8eb804ee3365b5",
-      "base": "c874a134077e6eb416b584157d0209eabdd0d723",
+      "id": "C3-03-R",
+      "branch": "agent/reviewer-pyat-hq126-c3-03-physical-repair-r1",
+      "commission_tip": "eb0193fbb8b48b3fe455de553a88cc44b5a61170",
+      "base": "ede7d350be23d0a340bed221da272d8c0124e049",
       "state": "BOUND_AWAITING_USER_MEDIATED_LAUNCH",
-      "scope": "D02_FAIL_CLOSED_ITEM_UNWRAP_PLUS_TEST_BOOTSTRAP_REMOVAL_PLUS_PINNED_EXECUTION_LAYER_QUALIFICATION",
-      "pass_wake": "FRESH_INDEPENDENT_C3_03_REVIEW_REQUIRED__C3_ADOPTION_NOT_AUTOMATIC"
+      "scope": "INDEPENDENT_STATIC_DIFF_CONTRACT_REVIEW_PLUS_AT_MOST_ONE_UNCHANGED_SHA_EXECUTION_RETRY",
+      "pass_wake": "HQ_ADJUDICATION__C3_ADOPTION_ONLY_IF_STATIC_AND_EXECUTION_BOTH_PASS",
+      "blocker_effect": "C3_ADOPTION_BLOCKED_UNTIL_SOURCE_FREE_EXECUTION_PASS"
     }
   ],
   "held": [
-    "C1-01 until C1 R3 passes fresh independent rereview and HQ freezes contract/oracle/write allowlist",
+    "C1-01 until C1 R4 passes fresh independent rereview and HQ freezes contract/oracle/write allowlist",
     "C1-02 until C1-01",
     "C1-03 until C1-02",
     "C1-R until C1-03",
     "C2-02 until HQ declares exact next proving workload after accepted C1 contract",
     "C2-R until C2-02",
-    "C3 adoption until C3-03 passes fresh independent review and HQ adjudication",
+    "C3 adoption until independent C3-03 static review plus source-free execution qualification pass",
     "JOIN-01 until applicable independently reviewed outputs",
     "OMEGA-1 until scoped source-free join"
   ],
   "prohibitions": [
     "NO_RAW_SOURCE_EXECUTION",
     "NO_NEW_SEMANTIC_OR_COMPARABILITY_AUTHORITY",
-    "NO_C1_01_BEFORE_R3_INDEPENDENT_REREVIEW_AND_HQ_FREEZE",
+    "NO_C1_01_BEFORE_R4_INDEPENDENT_REREVIEW_AND_HQ_FREEZE",
+    "NO_C3_ADOPTION_WITH_STATIC_ONLY_REVIEW",
     "NO_WHOLE_HISTORICAL_DECODER_REPLACEMENT",
     "NO_C3_FACADE_EDIT",
     "NO_PREV3_TO_V3_ACTOR_IMPLEMENTATION"
