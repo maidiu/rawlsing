@@ -60,25 +60,31 @@ For Sorok, CAN-008 is the natural place to ask how the current user event is:
 
 It is not by itself the entire durable relationship.
 
-### PFF interaction-fast / session grain
+### PFF interaction specialization / fast carryover grain
 
-Prior Psychic Field Forge work already separated faster interaction/session phenomena from durable developmental V3 state.
+Prior Psychic Field Forge work separated interaction/session phenomena from durable developmental V3 state, but later U1/CAN-008 reconciliation narrowed the owner map substantially.
 
-Sorok must preserve the distinction among:
-- turn-ephemeral state;
-- session-live / RAW interaction state;
-- durable V3 person state.
+Sorok must preserve:
+- turn/current interaction consequences;
+- session-live continuity;
+- durable V3 person state;
 
-PFF is therefore the first inherited candidate owner for:
-- interaction-fast ambiguity;
-- current presentation/defense;
-- user-opacity;
-- temporary recruitment;
-- immediately live relational configuration;
-- session-local self/other modeling;
-- transient salience before durable promotion.
+without treating those temporal grains as proof of separate psychology owners.
 
-PFF must not become a second biography generator.
+Current inherited holding from the later PFF/CAN-008 work:
+
+- CAN-008 R2 owns actor receivability, uptake/appraisal, situated recruitment and immediate multi-stream response/metabolism.
+- PFF remains interaction specialization: bounded modality/interpretive evidence, interaction/session context, constitutional user opacity, bounded expression constraints, output occurrence/re-entry gating and only the minimum causally required fast carryover.
+- The PFF formal-freeze candidate retained two independent fast carryover families only:
+  1. actor-local interaction hypotheses;
+  2. non-durable response residue.
+- Present-conscious-field, defense, leakage, focality, chemistry, self-output feedback and similar phenomena remain MUST-FACTOR psychological distinctions, but the later PFF elimination work explicitly rejected creating independent persistent PFF subsystems/stores for them.
+- Durable changes remain under exact V3 owners.
+
+PFF must not become a second biography generator or a duplicate CAN-008 psyche engine.
+
+See:
+02_INHERITED_PSYCHIC_MEDIATION_PFF_V2_GENEALOGY_R1.md.
 
 ### V2 expression
 
@@ -94,9 +100,9 @@ For every newly proposed relational semantic, D001 should ask in order:
 
 1. Is this an **objective PRE-V3 world fact**?
 2. Is this a **durable developed property/history of the actor**, belonging to durable V3?
-3. Is this a **current actor×event uptake/response**, belonging to CAN-008?
-4. Is this **interaction-fast/session/user-opacity state**, belonging to PFF?
-5. Is this merely **phenomenological/expression rendering**, belonging to V2?
+3. Is this a **current actor×event receivability / uptake-appraisal / recruitment / immediate response**, belonging to CAN-008?
+4. Is this **interaction-specialization evidence/context or one of the minimum causally required fast carryover classes**, potentially within PFF's narrowed remainder?
+5. Is this **actor-limited expression planning/render realization**, belonging to V2?
 6. Is it genuinely a **relationship/network object that remains ownerless** after those tests?
 
 Only step 6 can justify proposing a new owner.
@@ -126,8 +132,10 @@ No placement above is decided merely by this file.
 A single event such as “the user broke the toilet chain after a warning” may produce:
 
 `current event`
-→ `CAN-008 immediate person×event response`
-→ `PFF live presentation / session configuration`
+→ `CAN-008 person×event receivability / uptake-appraisal / situated recruitment / immediate response`
+→ `bounded PFF interaction consequence / hypothesis-or-residue carryover only where causally necessary`
+→ `V2 actor-lawful expression / render`
+→ `actual occurrence gate`
 → `possibly no durable change`
 
 while leaving an episodic trace that later events can reactivate.
