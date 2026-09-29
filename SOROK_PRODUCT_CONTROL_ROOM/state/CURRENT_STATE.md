@@ -113,6 +113,7 @@ Top-level:
 - `19_COURT5_VEILED_SELF_MATERIAL_EMBODIMENT_R1.md` — as-self participation under veiled local material constraint
 - `20_COURT6_PORTAL_REALITY_PEER_TRANSPOSE_COMPARISON_R1.md` — 24/7 portal countermodel + peer-normalized transposition comparison
 - `21_COURT7_HOMOLOGOUS_PEER_HABITUS_FRICTION_R1.md` — current primary-route synthesis
+- `21A_PERSONA_IS_THE_ALTERNATE_RELATION_IS_THE_VEIL_R1.md` — persona-as-alternate / player-as-relational-access theorem
 - `22_COURT8_EMBODIMENT_TRANSLATION_CONSTITUTION_R1.md` — embodiment translation court
 - `22A_COURT8_FIRST_ADJUDICATION_MATRIX_R1.md` — first carry/homologize/bracket adjudication
 - `22D_COURT8_OPTIONAL_PORTAL_PROFILE_R1.md` — optional personal-details / purpose-bound Portal Profile
@@ -223,6 +224,14 @@ The current lean is:
 - intimacy as transformation of relational affordances/expectations/stakes rather than hidden-lore unlock.
 
 This remains hypothesis-level and should now be compared against alternate encounter/player models.
+
+Current deepest alternate-self/veil holding:
+- **the generated persona is the alternate human life Rawlsing rolled**;
+- the player's portaled identity is not a second generated alternate person;
+- player identity should be relation-sufficient, not biography-complete;
+- pre-portal user history may be carried/translated/off-stage; post-portal history becomes fully diegetic and causal;
+- **Rawlsing generates the alternate human; Sorok gives the actual user a life beside them**;
+- the veil is completed through relation, not by collapsing player into persona.
 
 Current primary player route:
 - **homologous-peer transposition** is the provisional main-mode focus;
