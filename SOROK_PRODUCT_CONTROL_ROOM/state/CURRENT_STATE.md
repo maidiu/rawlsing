@@ -2,7 +2,7 @@
 
 Updated: 2026-09-29
 
-Status: `INTERACTION_IDEATION_R2_COMPLETENESS_AUDITED__GAPS_CORRECTED__ONTOLOGY_PROVISIONAL__ALPHA_NOT_YET_IMPLEMENTATION_SPECIFIED`
+Status: `INTERACTION_IDEATION_R3_COMPLETENESS_AUDITED__ADDITIONAL_GAPS_CORRECTED__ONTOLOGY_PROVISIONAL__ALPHA_NOT_YET_IMPLEMENTATION_SPECIFIED`
 
 ## Current base
 
@@ -49,12 +49,23 @@ Status: `INTERACTION_IDEATION_R2_COMPLETENESS_AUDITED__GAPS_CORRECTED__ONTOLOGY_
 34. Variable duration must remain physically/socially plausible rather than punitive; cheap micro-observations may accumulate consequential time.
 35. Prompt packing/verbosity must not compress or inflate world-time; duration follows realized operations.
 36. No arbitrary per-scene observation quota is preferred; scarcity should arise from the world itself.
+37. Physical scenes require a diegetically situated player-presence state; no-avatar does not mean disembodied.
+38. Unchosen-person assignment is distinct from lawful encounter/access; the system must causally explain why the user is in contact with the persona and what access they have.
+39. ATTEND cannot silently perform DO; movement, opening, handling and repositioning needed for perception must be realized separately.
+40. User prose cannot conjure money, vehicles, tools, access or capabilities merely by naming them.
+41. Displayed language requires typed epistemic provenance: narrator/world fact, actor testimony, user observation/inference, actor belief and hidden analytic truth must remain distinct.
+42. Implementation-unmaterialized world detail is not equivalent to diegetic absence; lazy completion must be history/effective-time compatible.
+43. Scene entry should provide coarse ambient perception sufficient for orientation; focused ATTEND acquires deeper resolution.
+44. SAY/DO/ATTEND may overlap concurrently when physically compatible, with shared body/attention/time constraints.
+45. Long ATTEND and compound plans are interruptible; partial information may be returned and the user may replan.
+46. Third-party actors require sufficient independent causal state whenever the simulation claims their own perception, welfare, memory or trajectory is materially affected.
 
 ## R1 interaction ideation bank
 
 Top-level:
 - `08_INTERACTION_SYSTEM_SYNTHESIS_R1.md`
 - `09_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R2.md`
+- `10_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R3.md`
 
 Architecture inheritance:
 - `dockets/D001_RELATIONAL_ONTOLOGY_V3_BOUNDARY/01_INHERITED_TEMPORAL_GRAIN_ARCHITECTURE_R1.md`
@@ -64,7 +75,10 @@ D002:
 - `02_TEMPORAL_ATTENTION_AND_INFORMATION_ACQUISITION_R1.md`
 - `03_RECIPROCAL_OBSERVATION_PRIVACY_AND_PRESENTATION_R1.md`
 - `04_NONCURATORIAL_WORLD_DETAIL_AND_BINDING_REALITY_R1.md`
-- `05_CANONICAL_SCENARIO_BANK_R1.md`
+- `05_CANONICAL_SCENARIO_BANK_R1.md` — now through SCE-026
+- `06_PLAYER_EMBODIMENT_ENTRY_AND_AFFORDANCE_R1.md`
+- `07_EPISTEMIC_PROVENANCE_ASSERTION_AND_LAZY_WORLD_R1.md`
+- `08_SCENE_FRAME_CONCURRENCY_INTERRUPTION_AND_CONTROL_RETURN_R1.md`
 
 The scenario bank currently preserves 15 concrete probes including:
 - bathroom/medicine-cabinet access;
@@ -90,6 +104,17 @@ The scenario bank currently preserves 15 concrete probes including:
 - What exact promotion rules move interaction-fast/session material into durable V3 relationship memory/history?
 - How should flourishing / health be constituted and audited?
 - What is the minimum alpha action vocabulary beyond SAY/DO/ATTEND?
+- What is the minimum player-presence/embodiment schema?
+- How is encounter/access causally generated without compromising random/unselected assignment?
+- What resources/capabilities may the user bring into the world?
+- How should cross-language interaction work?
+- What epistemic-provenance schema distinguishes world truth, testimony, observation, inference and belief?
+- How should lazy world completion preserve effective time and prior actor knowledge?
+- What baseline ambient scene frame is playable without becoming curatorial?
+- How should concurrent SAY/DO/ATTEND share attention/body resources?
+- When should control return during interruptions and partial observations?
+- What fidelity must third-party actors have for network consequences?
+- What save/retry semantics preserve contingency without making experimentation punitive?
 - How should open natural-language actions be decomposed and sequentially interrupted?
 - What variable-duration model is sufficient without over-simulating physics?
 - How should ongoing actor agendas/tasks be represented so the world remains non-player-centric?
