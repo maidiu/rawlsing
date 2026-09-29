@@ -16,9 +16,12 @@ A new Sorok control-room session should not reconstruct this program from chat m
 8. Read `06_OPERATING_METHOD.md`.
 9. Read `08_INTERACTION_SYSTEM_SYNTHESIS_R1.md`.
 10. Read `11_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R4.md`.
-11. Read the question / decision / risk ledgers.
-12. Resolve the live Sorok branch head and compare against the recorded Pyat base before making any current-system claim.
-13. Read only the dockets relevant to the next action.
+11. Read `12_CHAT_EXHAUSTIVE_HARVEST_AUDIT_R5.md`.
+12. Read D001 `02_INHERITED_PSYCHIC_MEDIATION_PFF_V2_GENEALOGY_R1.md`.
+13. Read D001 `03_SOROK_RELATIONALIZATION_DELTA_OVER_INHERITED_PFF_R1.md`.
+14. Read the question / decision / risk ledgers.
+15. Resolve the live Sorok branch head and compare against the recorded Pyat base before making any current-system claim.
+16. Read only the dockets relevant to the next action.
 
 ## Required fresh-session articulation
 
@@ -28,7 +31,9 @@ Before major new design work, the fresh Sorok should state:
 - provisional ontology;
 - alpha theorem;
 - current interaction-system laws and their provisional status;
-- inherited SDTF → durable V3 → CAN-008 → PFF → V2 temporal-grain split;
+- inherited SDTF → durable V3 → CAN-008 → narrowed PFF interaction specialization → V2 temporal-grain split;
+- inherited PFF psychic noncollapse versus Sorok's new relationalization delta;
+- the law that person-stable != relation-free and relationally constituted != dyad-owned;
 - separation from Pyat;
 - top unresolved P0 questions;
 - exact dockets currently active;
