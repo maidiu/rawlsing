@@ -6,7 +6,7 @@ Date: 2026-09-29
 
 ## 0. Purpose
 
-Sorok now has 71 explicit open questions.
+Sorok's registry has now expanded beyond the original 71-question harvest as Courts 5–11 exposed further player-transposition and habitus questions. The current registry count is 82 open questions.
 
 The next problem is no longer idea loss. It is **order of attack**.
 
@@ -384,3 +384,41 @@ The player/encounter premise and the relationship-state premise are mutually con
 Use concrete lives/scenes, not abstract schemas, and continually crosscheck inherited Rawlsing ownership, relational ontology, alpha playability, privacy, anti-domination and implementation cost.
 
 The result should be a provisional product-world premise, not a final architecture.
+
+---
+
+# 6. R2 forward-court update
+
+Current primary player route:
+**homologous-peer transposition**.
+
+This is a provisional program focus, not final architecture.
+
+The current forward court sequence is now:
+
+- Court 5 — veiled self / material embodiment;
+- Court 6 — portal-reality comparative model / peer normalization;
+- Court 7 — homologous-peer habitus friction;
+- Court 8 — embodiment translation constitution;
+- Court 9 — minimum durable relationship ontology;
+- Court 10 — flourishing / harm / non-dominating care;
+- Court 11 — player praxis reflection.
+
+The other player models remain comparison controls:
+- obvious-outsider / foreign-neighbor;
+- full 24/7 portal;
+- thin generic shell;
+- native-alternate;
+- fictional avatar.
+
+Do not reopen player-mode choice generically unless a court exposes a concrete homologous-peer failure.
+
+Current conceptual spine:
+
+`HOMOLOGOUS-PEER PLAYER`
+→ `EMBODIMENT TRANSLATION`
+→ `MINIMUM DURABLE RELATIONSHIP OBJECTS`
+→ `FLOURISHING / MORAL PHYSICS`
+→ `PLAYER PRAXIS REFLECTION`.
+
+Courts 8–11 are intended to tighten this spine while D001 owner crosswalk proceeds.
