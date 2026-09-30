@@ -1,0 +1,48 @@
+{
+  "schema": "PYAT_C1_01_R6_TEST_AND_HOSTILE_AUDIT@1",
+  "execution_claim": "NONE__STATIC_REVIEW_ONLY",
+  "test_file": "rawlsing_next/tests/test_pre553_analytical_composition.py",
+  "positive_coverage": {
+    "public_producer_to_frozen_adapter_to_public_consumer": true,
+    "forward_54_over_60": true,
+    "reverse_54_over_62": true,
+    "new_query_identities": true,
+    "new_witness_identities": true,
+    "new_evidence_identities": true,
+    "actual_producer_identity_against_r3_spine": true,
+    "producer_denominator_raw_support": true,
+    "stale_mutated_witness_fail_closed": true,
+    "p1_subject_p2_leaf_relation_mismatch_before_evidence_and_consumer": true,
+    "no_preconstructed_final_slice": true,
+    "historical_query_hashes_not_current": true
+  },
+  "missing_mandatory_hostiles": [
+    {
+      "id": "CLOSED_16_KEY_NO_EXTRAS",
+      "finding": "ABSENT",
+      "consequence": "Would expose current frozen-owner required.issubset(identity) counterexample."
+    },
+    {
+      "id": "AT19_RELATION_DETERMINANT_REIDENTIFICATION",
+      "finding": "INCOMPLETE",
+      "required": "Create a newly identified valid mutation of the relation/witness determinant with producer counts/query/predicate/source/release/risk/measure/target/model held fixed and prove composed_result_identity_hash changes.",
+      "current_test": "Mutates binding_mode while keeping stale witness_ref and proves fail-closed only."
+    },
+    {
+      "id": "R3_HC_DENOMINATOR_MEMBER",
+      "finding": "ABSENT",
+      "required": "Changed exact denominator member with same visible 54/60 must reidentify evidence."
+    },
+    {
+      "id": "R3_HC_GEOMETRY_CELL",
+      "finding": "ABSENT",
+      "required": "Changed exact geometry cell must reidentify evidence."
+    },
+    {
+      "id": "R3_HC_RELATION_AUTHORITY",
+      "finding": "ABSENT",
+      "required": "Changed pairing/comparability authority propagated through witness/provenance/authority material must reidentify evidence."
+    }
+  ],
+  "adequacy_disposition": "CHANGES_REQUIRED_IN_TEST_COURT_EVEN_IF_OWNER_COUNTEREXAMPLE_IS_SEPARATELY_REPAIRED"
+}
