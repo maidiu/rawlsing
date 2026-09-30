@@ -1,0 +1,39 @@
+{
+  "schema": "PYAT_C1_01_R8_DOWNSTREAM_IDENTITY_CLOSURE@1",
+  "directions": ["forward", "reverse"],
+  "unchanged": [
+    "source universe ref",
+    "source manifest hash",
+    "query authority AuthorityRef",
+    "forward producer predicate_hash",
+    "reverse producer predicate_hash",
+    "subject-condition preimage refs/material",
+    "producer predicate-leaf refs/projections",
+    "pairing ground-truth refs",
+    "pairing/model/walkback AuthorityRefs",
+    "target refs/topology/domain",
+    "risk set ref/member identities",
+    "measure basis",
+    "forward 54/60 arithmetic",
+    "reverse 54/62 arithmetic"
+  ],
+  "reidentified_direct_or_fixture_execution": [
+    "four source AuthoritySnapshot outer refs",
+    "candidate projection hash",
+    "C11 replay manifest ref",
+    "C11 release ref",
+    "forward/reverse producer predicate outer refs",
+    "forward/reverse producer query refs"
+  ],
+  "reidentified_transitively": [
+    "forward/reverse producer fact refs",
+    "forward/reverse producer replay refs",
+    "forward/reverse consumer query refs",
+    "forward/reverse condition-value witness refs",
+    "forward/reverse possibility-slice evidence refs",
+    "forward/reverse composed result identities"
+  ],
+  "complete_current_spine": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R8/04_CURRENT_AT07_IDENTITY_SPINE.json",
+  "complete_supersession_map": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R8/05_SUPERSESSION_MAP.json",
+  "historical_r3_r6_r7_preserved": true
+}

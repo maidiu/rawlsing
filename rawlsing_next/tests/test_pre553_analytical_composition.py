@@ -33,11 +33,12 @@ from rawlsing_next.source_backed_positioned_subject_possibility import (
 ROOT = Path(__file__).resolve().parents[2]
 R2 = ROOT / "WORKER_RETURNS" / "PYAT-C1-00-CONTRACT-CORRECTION-R2"
 R3 = ROOT / "WORKER_RETURNS" / "PYAT-C1-00-CONTRACT-CORRECTION-R3"
-R6 = ROOT / "WORKER_RETURNS" / "PYAT-C1-00-CONTRACT-CORRECTION-R6"
+R8 = ROOT / "WORKER_RETURNS" / "PYAT-C1-00-CONTRACT-CORRECTION-R8"
 R2_RELATION = R2 / "02_VALUE_RELATION_ORACLE.json"
 R2_AUTHORITIES = R2 / "03_SYNTHETIC_AUTHORITY_FREEZE.json"
 R2_SLICE = R2 / "04_SLICE_PROJECTION.json"
-R3_EVIDENCE = R3 / "04_EVIDENCE_IDENTITY_PREIMAGE.json"
+R3_AUTHORITY = R3 / "02_OWNER_NATIVE_AUTHORITY_SCOPE_FREEZE.json"
+R8_SPINE = R8 / "04_CURRENT_AT07_IDENTITY_SPINE.json"
 
 OLD = {
     "forward_query": "83727ca59eaf43085324ee7dc7db5ce4ecf4e4bf1f1284692cd3ad3f192df027",
@@ -65,6 +66,15 @@ def _snapshot(authority_class):
     material.pop("purpose", None)
     expected = entry["expected_authority_ref"]
     material["authority_content_hash"] = expected["authority_content_hash"]
+    return AuthoritySnapshot(**material)
+
+
+def _query_snapshot():
+    entry = _load(R3_AUTHORITY)["repaired_query_authority"]
+    material = dict(entry["canonical_material"])
+    material.pop("schema", None)
+    material.pop("purpose", None)
+    material["authority_content_hash"] = entry["expected_authority_ref"]["authority_content_hash"]
     return AuthoritySnapshot(**material)
 
 
@@ -99,7 +109,7 @@ def at07(monkeypatch):
     routing_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::ROUTING_RISK_SET")
     coord_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::COORDINATE_SEMANTICS")
     replay_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::REPLAY_PROTOCOL")
-    query_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::PREDICATE_GRAMMAR")
+    query_auth = _query_snapshot()
 
     original_auth = i03._auth
     exact_by_kind = {
@@ -124,7 +134,7 @@ def at07(monkeypatch):
     )
     source["risk_refs"]["R"] = source["risk_refs"]["R_ALL_100"]
 
-    spine = _load(R3_EVIDENCE)["exact_identity_spine"]
+    spine = _load(R8_SPINE)["identity_spine"]
     assert source["universe"].ref.as_dict() == spine["universe_ref"]
     assert source["release_ref"].as_dict() == spine["release_ref"]
     assert query_auth.authority_ref.as_dict() == spine["query_authority_ref"]
@@ -174,8 +184,9 @@ def _producer(source, query_auth, direction):
         requested_output_grain=query.requested_output_grain,
         query_authority_refs=query.query_authority_refs,
     )
-    frozen = _load(R3_EVIDENCE)["exact_identity_spine"][direction]
+    frozen = _load(R8_SPINE)["identity_spine"][direction]
     assert predicate.ref.as_dict() == frozen["producer_predicate_ref"]
+    assert predicate.predicate_hash == frozen["producer_predicate_hash"]
     assert query.ref.as_dict() == frozen["producer_query_ref"]
     return predicate, query
 
@@ -205,7 +216,7 @@ def _consumer(source, direction, *, pairing=None):
             source["universe"].ref, source["release_ref"], (binding,),
             {"kind": "C1_AT07_CONDITIONAL_DISTRIBUTION", "direction": "POSITION_P1_TO_ANSWER", "target_role": "ANSWER"},
         )
-        assert query.ref.content_hash == R6_FORWARD_QUERY_HASH
+        assert query.ref.as_dict() == _load(R8_SPINE)["identity_spine"][direction]["consumer_query_ref"]
     else:
         subject_material = {
             "schema": "C1_SYNTHETIC_POSITIONED_SUBJECT@1",
@@ -228,7 +239,7 @@ def _consumer(source, direction, *, pairing=None):
             source["universe"].ref, source["release_ref"], (binding,),
             {"kind": "C1_AT07_CONDITIONAL_DISTRIBUTION", "direction": "ANSWER_YES_TO_POSITION", "target_role": "POSITION"},
         )
-        assert query.ref.content_hash == R6_REVERSE_QUERY_HASH
+        assert query.ref.as_dict() == _load(R8_SPINE)["identity_spine"][direction]["consumer_query_ref"]
     return query, binding
 
 
@@ -362,12 +373,12 @@ def _assert_unrelated_direct_determinants_unchanged(baseline, mutated):
         assert getattr(mutated, name) == getattr(baseline, name), name
 
 
-def test_r6_queries_supersede_underdetermined_historical_hashes(at07):
+def test_r8_queries_supersede_documentary_r6_hashes(at07):
     source, _, _ = at07
     forward, _ = _consumer(source, "forward")
     reverse, _ = _consumer(source, "reverse")
-    assert forward.ref.content_hash == R6_FORWARD_QUERY_HASH != OLD["forward_query"]
-    assert reverse.ref.content_hash == R6_REVERSE_QUERY_HASH != OLD["reverse_query"]
+    assert forward.ref.content_hash not in {R6_FORWARD_QUERY_HASH, OLD["forward_query"]}
+    assert reverse.ref.content_hash not in {R6_REVERSE_QUERY_HASH, OLD["reverse_query"]}
 
 
 @pytest.mark.parametrize(("direction", "denominator", "numerators"), (
@@ -384,8 +395,7 @@ def test_at07_r6_executes_public_producer_adapter_consumer(at07, direction, deno
     assert result.consumer_result_or_null.exact_evidence_ref == result.possibility_slice_evidence_or_null.evidence_ref
     cells = {x["cell"]: x["raw_numerator_support"] for x in result.complete_cell_geometry}
     assert cells == numerators
-    r6 = _load(R6 / "04_EVIDENCE_RECOMPUTATION.json")
-    expected = r6[direction]
+    expected = _load(R8_SPINE)["identity_spine"][direction]
     assert witness.witness_ref.content_hash == expected["witness_ref"]["content_hash"]
     assert consumer_query.ref.content_hash == expected["consumer_query_ref"]["content_hash"]
     assert result.possibility_slice_evidence_or_null.evidence_ref.as_dict() == expected["evidence_ref"]

@@ -479,7 +479,9 @@ The synthetic AT07 universe is now frozen **before** the source-scoped query aut
 
 The exact source-free C11 release derived from the frozen AT07 rows/current I02 identity law is:
 
-`C11LogicalRelease | REL-c1-at07 | 8afa807cc06a3a10e660d13bbd831f4f758ae829e835a454c62831bfd8f4d939`
+`C11LogicalRelease | REL-c1-at07 | dfd6ca5e08d1abe0f1494b4dc0e38869925739cceb306c62a3540922b12ff5b3`
+
+R8 execution supersedes the historical documentary `8afa807c...d939` value as current executable truth; the historical R3 artifact remains unchanged evidence.
 
 The R2 `C1-AT07-QUERY` material is changed in exactly one owner-native scope dimension: its `scope_envelope` now contains
 
@@ -561,8 +563,8 @@ Construction law:
 
 Under the complete frozen source-free AT07 identity spine, expected evidence hashes are:
 
-- forward POSITION=P1: `fe5cd7783ac84f0298fb7f56a621d7b0e494bd9348d080dc68ceee09abb546f5`;
-- reverse ANSWER=yes: `b54201c8ba8743922e51627e621cc4f3d1c563a43b70167a0720fbb0028ccf72`.
+- forward POSITION=P1: `b2407eeb3d22cc0d71e5d13308b0149338761efc4ef40921ab363c3cd9c78307`;
+- reverse ANSWER=yes: `e40c31eaf25c8e4f163ff340f968f0dc5ee650fc8383a586ea251a43ee8851d6`.
 
 Independent documentary recomputation also freezes three hostile reidentifications from the forward baseline:
 
@@ -628,7 +630,7 @@ C1-01 remains unimplemented and unexecuted.
 
 R5 established that the historical AT07 consumer-query and condition-value-witness hashes were underdetermined. HQ132 supersedes those fixture-only identities with a complete forward-computable R6 convention; historical hashes remain evidence and are not preimages to recover.
 
-Current R6 fixture identities:
+Historical R6/R7 fixture identities (preserved evidence, superseded as current execution truth):
 - forward consumer query `8f7444dbae4250cdda8a7a4c89bb331bd1f960072a97e8b11f05c4bd68c770d9`
 - reverse consumer query `2909672ca01a2b5fcb5d07351f8691bb10bf82d3e794d92f73981d2e70fc4f0e`
 - forward witness `f4123258625589513da2afc0d4f10a2438b6238b0b4f0a5338acb03ef8932da5`
@@ -636,4 +638,6 @@ Current R6 fixture identities:
 - forward evidence `c5e5930b6b368605c6828b70de02bf00ca77b9636c890706ac755b0074f61374`
 - reverse evidence `0cd3b5b868852db956a079835c5052c206561b0fe2a7480931e6de0dc5d81844`
 
-R6 changes fixture identity only. Forward 54/60, reverse 54/62, producer-derived denominator support, value-bearing relation law, source/release/risk/measure/provenance semantics, noncircular evidence construction, and fail-closed ordering remain unchanged. Execution remains separately receipted; current return is patch-ready with runtime capability blocked.
+R6 changed fixture identity only. Forward 54/60, reverse 54/62, producer-derived denominator support, value-bearing relation law, source/release/risk/measure/provenance semantics, noncircular evidence construction, and fail-closed ordering remain unchanged. R8 now carries the source-free execution receipt and current executable identity spine.
+
+Current executed R8 fixture identities are frozen in `WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R8/04_CURRENT_AT07_IDENTITY_SPINE.json`: forward consumer query `0e966cca...61330`, witness `fb3a3b56...84db5`, evidence `b2407eeb...78307`; reverse consumer query `02b3eabf...5f323`, witness `0c75b6ca...bf2df`, evidence `e40c31ea...851d6`. Full predicate custody and supersession classification are in the same R8 packet.

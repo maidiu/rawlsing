@@ -1,8 +1,8 @@
 {
   "schema": "PYAT_C1_00_ANALYTICAL_PRODUCTS@3",
-  "status": "R3_CORRECTED_DOCUMENTARY_CONTRACT__NO_RUNTIME_PRODUCTS",
+  "status": "R8_CURRENT_AT07_EXECUTED_IDENTITY__CONTRACT_DOCUMENT_ONLY",
   "products": [],
-  "reason": "C1-00 forbids C1-01 production implementation/execution. No candidate output exists.",
+  "reason": "This C1-00 contract document stores no candidate output. R8 C1-01 source-free execution is receipted separately.",
   "proposed_output_type": {
     "name": "AnalyticalCompositionResult",
     "authority_effect": "NONE__ANALYTICAL_CUSTODY_ONLY",
@@ -80,20 +80,25 @@
       "witness_mandatory": true,
       "evidence_identity_preimage_schema": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE_PREIMAGE@1",
       "evidence_identity_preimage_excludes": "evidence_ref",
-      "evidence_identity_contract_ref": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/04_EVIDENCE_IDENTITY_PREIMAGE.json",
-      "expected_AT07_forward_evidence_ref": "fe5cd7783ac84f0298fb7f56a621d7b0e494bd9348d080dc68ceee09abb546f5",
-      "expected_AT07_reverse_evidence_ref": "b54201c8ba8743922e51627e621cc4f3d1c563a43b70167a0720fbb0028ccf72"
+      "evidence_identity_contract_ref": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R8/04_CURRENT_AT07_IDENTITY_SPINE.json",
+      "expected_AT07_forward_evidence_ref": "b2407eeb3d22cc0d71e5d13308b0149338761efc4ef40921ab363c3cd9c78307",
+      "expected_AT07_reverse_evidence_ref": "e40c31eaf25c8e4f163ff340f968f0dc5ee650fc8383a586ea251a43ee8851d6"
     },
     "identity_law": "Composed result identity includes condition-value witness, subject preimage, predicate leaf and pairing ground-truth refs; relation-only mutation reidentifies the result.",
     "owner_native_AT07_identity": {
       "source_universe_ref_hash": "ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2",
-      "release_ref_hash": "8afa807cc06a3a10e660d13bbd831f4f758ae829e835a454c62831bfd8f4d939",
+      "release_ref_hash": "dfd6ca5e08d1abe0f1494b4dc0e38869925739cceb306c62a3540922b12ff5b3",
       "query_authority_content_hash": "b59ef578314515268fa7b280a8480b4c95c80c9cfd831c39c2bfc4214b6fd767"
     },
-    "R3_contract_refs": {
+    "R3_historical_contract_refs": {
       "owner_native_authority_scope": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/02_OWNER_NATIVE_AUTHORITY_SCOPE_FREEZE.json",
       "unknown_currentness_fixture": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/03_UNKNOWN_CURRENTNESS_FIXTURE.json",
       "evidence_identity_preimage": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/04_EVIDENCE_IDENTITY_PREIMAGE.json"
+    },
+    "R8_current_contract_refs": {
+      "release_owner_receipt": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R8/01_EXECUTED_RELEASE_OWNER_RECEIPT.json",
+      "predicate_custody": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R8/03_PRODUCER_PREDICATE_PREIMAGE_CUSTODY.json",
+      "identity_spine": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R8/04_CURRENT_AT07_IDENTITY_SPINE.json"
     }
   }
 }

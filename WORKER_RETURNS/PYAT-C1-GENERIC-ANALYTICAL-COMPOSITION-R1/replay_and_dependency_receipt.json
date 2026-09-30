@@ -1,6 +1,6 @@
 {
   "schema": "PYAT_C1_00_REPLAY_DEPENDENCY_RECEIPT@3",
-  "status": "R3_CORRECTED_STATIC_CONTRACT__NO_EXECUTION",
+  "status": "R8_AT07_EXECUTED_SOURCE_FREE__OTHER_REPLAY_GRADES_DOCUMENTARY",
   "replay_grades": [
     {
       "grade": "CONSUMER_BOUNDED_REPLAY",
@@ -106,8 +106,8 @@
     "direct_empirical_route_requires_B5": false,
     "selective_invalidation_expectation": "changed exact determinant reaches all and only graph-dependent releases; unaffected releases remain usable"
   },
-  "execution_receipts": [],
-  "unexecuted_reason": "C1-00 is documentary and runtime identity is not yet frozen.",
+  "execution_receipts": ["WORKER_RETURNS/PYAT-C1-01-R8-RELEASE-SPINE-REBASELINE-R1/05_EXECUTION_RECEIPT.json"],
+  "unexecuted_reason": null,
   "R2_relation_closure": {
     "value_relation_oracle": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/02_VALUE_RELATION_ORACLE.json",
     "state_and_determinant_closure": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/05_STATE_AND_DETERMINANT_CLOSURE.json",
@@ -132,13 +132,14 @@
       "CONFLICTING_CURRENT_SELECTION"
     ]
   },
-  "R3_evidence_identity_closure": {
+  "R8_current_evidence_identity_closure": {
     "preimage_schema": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE_PREIMAGE@1",
     "self_reference_forbidden": true,
-    "expected_forward_evidence_hash": "fe5cd7783ac84f0298fb7f56a621d7b0e494bd9348d080dc68ceee09abb546f5",
-    "expected_reverse_evidence_hash": "b54201c8ba8743922e51627e621cc4f3d1c563a43b70167a0720fbb0028ccf72",
+    "expected_forward_evidence_hash": "b2407eeb3d22cc0d71e5d13308b0149338761efc4ef40921ab363c3cd9c78307",
+    "expected_reverse_evidence_hash": "e40c31eaf25c8e4f163ff340f968f0dc5ee650fc8383a586ea251a43ee8851d6",
     "replay_requirement": "Fresh full-composition recomputation must reconstruct the exact noncircular evidence preimage and reproduce the evidence ref before comparing composed result identity.",
-    "authority_scope_requirement": "Fresh source-free recomputation must use C1-AT07-QUERY AuthorityRef b59ef578...fd767 bound to exact AT07 source_universe_refs."
+    "authority_scope_requirement": "Fresh source-free recomputation must use C1-AT07-QUERY AuthorityRef b59ef578...fd767 bound to exact AT07 source_universe_refs.",
+    "current_spine": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R8/04_CURRENT_AT07_IDENTITY_SPINE.json"
   },
   "R3_unknown_state": {
     "owner": "rawlsing_next.pre553_learned_product_lifecycle.LearnedProductLifecycleExecutor.current_selection_receipt_ref",
