@@ -1,7 +1,7 @@
 {
   "schema": "PYAT_OMEGA_ACTIVE_TASK_BOARD@1",
-  "revision": 16,
-  "status": "HQ_EFFECTIVENESS_RULES_ACTIVE__C1_R7_RETURNS_PENDING_ADJUDICATION__C2_PREP_COMPLETE__C3_ADOPTED",
+  "revision": 17,
+  "status": "HQ137_EFFECTIVENESS_ADOPTED__C1_R8_COHERENT_REPAIR_QUALIFICATION_BOUND__C2_PREP_COMPLETE__C3_ADOPTED",
   "control_branch": "integration/pre-main-reconciliation-r1",
   "adopted_preparation": [
     {
@@ -17,41 +17,44 @@
   ],
   "observed_returns": [
     {
-      "id": "C1-01-R7",
-      "head": "0da3c9c13ffd91cf50ab93f6280949eb960792c0",
-      "disposition": "PATCH_READY__REVIEW_AND_EXECUTION_REQUIRED",
-      "owner_blob": "26f3380cb83cbbcedc87c74aaf603b0492c8ce8f",
-      "witness_packet_blob": "57f4caf5a5c148d60fcfe8322ff2016de5b4f4a1",
-      "test_blob": "db6b876f15d145cfc48cc6d944e48da4460842d3"
+      "id": "C1-01-R7-REVIEW",
+      "head": "8d11504d576f2e96b0f7a7ab31795f88f0fe0cfa",
+      "disposition": "CHANGES_REQUIRED",
+      "adjudication": "ADOPT_BLOCKER__PRODUCER_PREDICATE_HASH_CUSTODY_GAP"
+    },
+    {
+      "id": "C1-01-R7-EXEC",
+      "head": "f5c77a8a853c37a2f9fd9cb1e51f2fffb5dd136c",
+      "disposition": "FAIL_SOURCE_FREE_QUALIFICATION",
+      "counts": {
+        "passed": 48,
+        "failed": 0,
+        "errors": 10,
+        "skipped": 0
+      },
+      "adjudication": "ADOPT_BLOCKER__AT07_RELEASE_IDENTITY_SETUP_MISMATCH"
     }
   ],
   "active_tasks": [
     {
-      "id": "C1-01-R7-REVIEW",
-      "branch": "agent/reviewer-pyat-hq136-c1-01-r7-r1",
-      "commission_tip": "4771288033607a4b6cac2c9d4c99cfc284f34ad7",
-      "base": "0da3c9c13ffd91cf50ab93f6280949eb960792c0",
-      "state": "RETURNED_PENDING_HQ_ADJUDICATION",
-      "observed_return_head": "8d11504d576f2e96b0f7a7ab31795f88f0fe0cfa",
-      "reported_disposition": "CHANGES_REQUIRED"
-    },
-    {
-      "id": "C1-01-R7-EXEC",
-      "branch": "agent/codex-pyat-hq136-c1-01-r7-execution-r1",
-      "commission_tip": "5dffa927f8160f387a60404db77ff48c218fdd70",
-      "base": "0da3c9c13ffd91cf50ab93f6280949eb960792c0",
-      "state": "RETURNED_PENDING_HQ_ADJUDICATION",
-      "observed_return_head": "f5c77a8a853c37a2f9fd9cb1e51f2fffb5dd136c",
-      "reported_disposition": "FAIL_SOURCE_FREE_QUALIFICATION"
+      "id": "C1-01-R8",
+      "branch": "agent/codex-pyat-hq137-c1-01-r8-release-spine-rebaseline-r1",
+      "commission_tip": "fc61bf8417c39d8855987b6768fc739b1a4829d8",
+      "base": "f5c77a8a853c37a2f9fd9cb1e51f2fffb5dd136c",
+      "state": "BOUND_AWAITING_USER_MEDIATED_LAUNCH",
+      "launch_surface": "CODEX",
+      "model": "GPT-5.6_SOL_HIGH",
+      "scope": "ONE_OWNER_REPAIR_EXECUTE_DOCUMENT_LOOP__RELEASE_SPINE__PREDICATE_CUSTODY__FULL_C1_01_QUALIFICATION",
+      "pass_wake": "ONE_INDEPENDENT_C1_R8_ACCEPTANCE_REVIEW"
     }
   ],
   "held": [
-    "C1-02 until C1-01 R7 independent review and exact-patch execution both pass",
+    "C1-02 until C1-01 R8 source-free qualification PASS plus one independent acceptance review",
     "C1-03 until C1-02",
     "C1-R until C1-03",
-    "C4 until accepted C1 plus later exact raw-source warrant",
-    "JOIN-01 until C1-R",
-    "OMEGA-1 until scoped source-free join"
+    "JOIN-01 until C1-R with relevant C2/C3",
+    "OMEGA-1 until JOIN-01 and competent next workload proposal",
+    "C4 until accepted C1 plus relevant C2/C3 plus OMEGA-1 plus exact raw-source warrant"
   ],
   "prohibitions": [
     "NO_RAW_SOURCE_EXECUTION",
@@ -60,6 +63,12 @@
     "NO_PREV3_TO_V3_ACTOR_IMPLEMENTATION"
   ],
   "prior_git_blob_sha1": "49f6c704fa088ce2cdc70c3ebbe82668e355abc6",
-  "next_action": "HQ_ADJUDICATE_BOTH_COMPLETED_R7_RETURNS__BIND_ONE_COHERENT_REPAIR_AND_QUALIFICATION_JOB",
-  "operating_requirements": "PYAT_CONTROL_ROOM/HQ_OPERATING_REQUIREMENTS_EFFECTIVENESS_R1.md"
+  "next_action": "USER_LAUNCH_C1_R8_IN_CODEX_SOL_HIGH_WITH_EXPLICIT_MAC_AUTHORIZATION__ONE_OWNER_ITERATES_TO_FULL_SOURCE_FREE_QUALIFICATION",
+  "operating_requirements": "PYAT_CONTROL_ROOM/HQ_OPERATING_REQUIREMENTS_EFFECTIVENESS_R1.md",
+  "grounding": {
+    "live_control_head": "a9eb1b7c2e3bc7ee8847db550136da980b2fc817",
+    "current_implementation_snapshot": "b3b2fa13049513078c301a1f6574b661fcf390c5",
+    "control_delta": "91_COMMITS__98_FILES__0_RAWLSING_NEXT",
+    "disposition": "CURRENT_FOR_C1_R8__NO_MECHANICAL_REBASE_REQUIRED"
+  }
 }
