@@ -96,7 +96,7 @@ def at07(monkeypatch):
     routing_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::ROUTING_RISK_SET")
     coord_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::COORDINATE_SEMANTICS")
     replay_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::REPLAY_PROTOCOL")
-    query_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::PREDICATE_GRAMMAR_QUERY_EXECUTION")
+    query_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::PREDICATE_GRAMMAR")
 
     original_auth = i03._auth
     exact_by_kind = {
