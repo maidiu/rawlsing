@@ -1,7 +1,7 @@
 {
   "schema": "PYAT_OMEGA_ACTIVE_TASK_BOARD@1",
-  "revision": 10,
-  "status": "C3_SOURCE_FREE_INTEGRATION_ADOPTED__C2_01_ACCEPTED_C2_02_BOUND__C1_01_PREIMAGE_COUNTEREXAMPLE_ACCEPTED_R5_BOUND",
+  "revision": 11,
+  "status": "C1_R5_UNDERDETERMINATION_ACCEPTED_R6_CODEX_BOUND__C2_02_RETURNED_REVIEW_BOUND__D02_LOCATOR_ARCHAEOLOGY_BOUND__C3_ADOPTED",
   "control_branch": "integration/pre-main-reconciliation-r1",
   "implementation_baseline": "b3b2fa13049513078c301a1f6574b661fcf390c5",
   "accepted_source_free_integrations": [
@@ -9,68 +9,83 @@
       "id": "C3",
       "branch": "integration/pyat-hq130-c3-source-free-accepted-r1",
       "head": "30686b185d4ceb2c94f61815ef70d8c8e76255d6",
-      "review_head": "462e6bf1ed514056f9316dad761054e690a7755d",
-      "disposition": "ADOPTED_AT_DECLARED_SOURCE_FREE_GRAIN",
-      "qualification": "20_PROTOCOL_PASS__55_SIX_FILE_COURT_PASS"
+      "disposition": "ADOPTED_AT_DECLARED_SOURCE_FREE_GRAIN"
     }
   ],
   "observed_returns": [
     {
-      "id": "C1-01",
-      "return_head": "d20466c21ec62e62c3abbf6f83481984aa113000",
-      "disposition": "BLOCKED_CONTRACT_COUNTEREXAMPLE",
-      "hq_disposition": "ACCEPT_TYPED_COUNTEREXAMPLE__BANK_IMPLEMENTATION__ISSUE_R5_PREIMAGE_COMPLETION"
+      "id": "C1-01-R5",
+      "return_head": "73346b423616e9c18b25b110009ba6c8bb14c268",
+      "disposition": "PREIMAGE_UNDERDETERMINED__CONTRACT_CORRECTION_REQUIRED",
+      "hq_disposition": "ACCEPT_UNDERDETERMINATION__SUPERSEDE_FIXTURE_IDENTITIES_NORMATIVELY_AT_R6"
     },
     {
-      "id": "C2-01-R",
-      "return_head": "c5cb9ea33192dfc438b9559691832e1a6aaf96fc",
-      "disposition": "APPROVE_AT_DECLARED_GRAIN",
-      "hq_disposition": "ACCEPT_DOCUMENTARY_LEDGER__PRESERVE_C2_EPCLASS_PAYLOAD_001__ISSUE_C2_02"
-    },
-    {
-      "id": "C3-INTEGRATION-R",
-      "return_head": "462e6bf1ed514056f9316dad761054e690a7755d",
-      "disposition": "APPROVE_AT_DECLARED_GRAIN",
-      "hq_disposition": "ADOPT_SOURCE_FREE_C3_INTEGRATION"
+      "id": "C2-02",
+      "return_head": "6f6ab9dfe5ad8f9359630dd05abf43c3fd11a1b5",
+      "disposition": "INPUT_OR_CUSTODY_BLOCKER",
+      "provisional_set": [
+        "02",
+        "06",
+        "08",
+        "12",
+        "14",
+        "26",
+        "27",
+        "35"
+      ],
+      "blocker": "C2-02-BLOCK-D02-LOCATOR-001",
+      "hq_disposition": "PROVISIONAL_ONLY__INDEPENDENT_REVIEW_AND_LOCATOR_ARCHAEOLOGY_REQUIRED"
     }
   ],
   "active_tasks": [
     {
-      "id": "C1-01-R5",
-      "branch": "agent/rabochii-pyat-hq131-c1-01-preimage-completion-r1",
-      "commission_tip": "eb01a888aef9403fdf1a387d9700de51e8e4c691",
-      "base": "d20466c21ec62e62c3abbf6f83481984aa113000",
-      "state": "BOUND_AWAITING_USER_MEDIATED_LAUNCH",
-      "scope": "FOUR_CANONICAL_PREIMAGE_COMPLETION__C1_01_CONTINUATION__NO_SEMANTIC_BROADENING",
-      "pass_wake": "C1_01_INDEPENDENT_REVIEW_OR_EXECUTION_QUALIFICATION_AS_RETURN_REQUIRES",
+      "id": "C1-01-R6",
+      "branch": "agent/codex-pyat-hq132-c1-01-normative-identity-r6-r1",
+      "commission_tip": "8a038b99d432cc13e9342f9073382ec10076b04d",
+      "base": "73346b423616e9c18b25b110009ba6c8bb14c268",
+      "state": "BOUND_AWAITING_USER_MEDIATED_CODEX_LAUNCH",
+      "scope": "NORMATIVE_SOURCE_FREE_AT07_QUERY_WITNESS_IDENTITY_SUPERSESSION__FORWARD_RECOMPUTATION__EXECUTION",
+      "pass_wake": "C1_01_INDEPENDENT_REVIEW_THEN_C1_02",
       "blocker_effect": "C1_02_HELD"
     },
     {
-      "id": "C2-02",
-      "branch": "agent/rabochii-pyat-hq131-c2-02-proving-workload-r1",
-      "commission_tip": "440e0a600f66103aad6076979cb23209f0a0ae4a",
-      "base": "c5cb9ea33192dfc438b9559691832e1a6aaf96fc",
+      "id": "C2-02-R",
+      "branch": "agent/reviewer-pyat-hq132-c2-02-proving-workload-r1",
+      "commission_tip": "568ec56774f11814af50cea80e834abe0f11f5fa",
+      "base": "6f6ab9dfe5ad8f9359630dd05abf43c3fd11a1b5",
       "state": "BOUND_AWAITING_USER_MEDIATED_LAUNCH",
-      "scope": "C4_N4_AT01_AT02_AT20_AT21_AT27_MINIMAL_HETEROGENEOUS_PROVING_SET_SELECTION",
-      "pass_wake": "C2_R_AND_HQ_C4_FREEZE_PREPARATION",
-      "blocker_effect": "C4_EXECUTION_NOT_AUTHORIZED"
+      "scope": "INDEPENDENT_EIGHT_SOURCE_MINIMALITY_READ_ECONOMY_D02_BLOCKER_AND_ALL35_ACCOUNTING_REVIEW",
+      "pass_wake": "HQ_C2_02_ADOPTION_SUBJECT_TO_D02_BLOCKER",
+      "blocker_effect": "C4_FREEZE_HELD"
+    },
+    {
+      "id": "D02-LOCATOR",
+      "branch": "agent/rabochii-pyat-hq132-d02-evs2008-locator-archaeology-r1",
+      "commission_tip": "57d7ee585f7364383394d067c6aeb871470edda4",
+      "base": "6f6ab9dfe5ad8f9359630dd05abf43c3fd11a1b5",
+      "state": "BOUND_AWAITING_USER_MEDIATED_LAUNCH",
+      "scope": "RETAINED_EVIDENCE_ONLY_EVS2008_D02_LOCATOR_OR_TRAVERSAL_ORACLE_RECOVERY",
+      "pass_wake": "C4_D02_INPUT_BLOCKER_CLOSURE",
+      "blocker_effect": "NO_RAW_SOURCE_ACCESS"
     }
   ],
   "held": [
-    "C1-02 until accepted C1-01",
+    "C1-02 until accepted R6 C1-01 and required independent review",
     "C1-03 until C1-02",
     "C1-R until C1-03",
-    "C2-R until C2-02",
-    "C4 source execution until exact warrant / Omega path",
+    "C2 proving-set adoption until C2-02 independent review",
+    "C4 freeze until C2-02 review + D02 blocker disposition + C1-01 accepted",
+    "C4 source execution until exact source warrant / Omega path",
     "JOIN-01 until C1-R and relevant C2 output; C3 ready",
     "OMEGA-1 until scoped source-free join"
   ],
   "prohibitions": [
     "NO_RAW_SOURCE_EXECUTION",
-    "NO_C4_EXECUTION_FROM_C2_02",
-    "NO_NEW_SEMANTIC_OR_COMPARABILITY_AUTHORITY",
-    "NO_PREIMAGE_HASH_BRUTE_FORCE_OR_HISTORICAL_INVENTION",
-    "NO_C1_PRODUCTION_IMPLEMENTATION_EDIT_IN_R5_COMMISSION",
+    "NO_EVS2008_RAW_ACCESS_IN_D02_ARCHAEOLOGY",
+    "NO_C4_EXECUTION",
+    "NO_REVERSE_ENGINEERING_OLD_C1_HASHES",
+    "NO_REAL_SOURCE_SEMANTIC_OR_COMPARABILITY_AUTHORITY_FROM_R6",
+    "NO_C1_PRODUCTION_IMPLEMENTATION_EDIT_IN_R6",
     "NO_PREV3_TO_V3_ACTOR_IMPLEMENTATION"
   ]
 }
