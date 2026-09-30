@@ -18,4 +18,6 @@ The active test loads a single R8 current identity spine. The producer predicate
 
 Early executable feedback passed both forward and reverse public producer → adapter → public consumer cases. The analytical file passed all 13 tests, including CLOSED-16 and H1–H5. The complete commissioned court passed 58 tests with zero failures, errors or skips.
 
+The exact clean implementation and packet commit tested was `9e265581819e7bb3e697c1dccbc3ba711764ded4`. The command, environment, relevant blobs, clean status and full output are recorded in `05_EXECUTION_RECEIPT.json` and `09_FINAL_PYTEST_OUTPUT.txt`.
+
 No raw survey files were accessed or materialized. No Candidate A/B/C, measured P2X, real-source C11, C1-02, C4, or PRE-V3→V3 actor seam work was performed. This PASS is not self-adoption.

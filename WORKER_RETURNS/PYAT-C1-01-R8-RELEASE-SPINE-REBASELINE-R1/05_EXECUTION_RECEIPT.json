@@ -1,0 +1,36 @@
+{
+  "schema": "PYAT_C1_01_R8_EXECUTION_RECEIPT@1",
+  "disposition": "PASS_SOURCE_FREE_PATCH_READY__INDEPENDENT_REVIEW_REQUIRED",
+  "exact_tested_commit": "9e265581819e7bb3e697c1dccbc3ba711764ded4",
+  "branch": "agent/codex-pyat-hq137-c1-01-r8-release-spine-rebaseline-r1",
+  "environment": {
+    "platform": "macOS 13.7.8",
+    "python": "3.12.14",
+    "pytest": "9.1.1",
+    "isolation": "sparse worktree and isolated /tmp/c1-01-r8-release-spine-venv virtual environment",
+    "raw_survey_files_accessed_or_materialized": false
+  },
+  "exact_command": "python -m pytest -q rawlsing_next/tests/test_pre553_analytical_composition.py rawlsing_next/tests/test_pre553_empirical_query.py rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py",
+  "execution_environment_prefix": "PYTHONDONTWRITEBYTECODE=1 PATH=/tmp/c1-01-r8-release-spine-venv/bin:$PATH",
+  "git_status_before": "CLEAN",
+  "git_status_after": "CLEAN",
+  "exit_code": 0,
+  "passed": 58,
+  "failed": 0,
+  "errors": 0,
+  "skipped": 0,
+  "full_output": "WORKER_RETURNS/PYAT-C1-01-R8-RELEASE-SPINE-REBASELINE-R1/09_FINAL_PYTEST_OUTPUT.txt",
+  "output_summary": "58 passed in 4.01s",
+  "baseline_failure_preimage": "WORKER_RETURNS/PYAT-C1-01-R8-RELEASE-SPINE-REBASELINE-R1/07_BASELINE_FAILURE_OUTPUT.txt",
+  "early_public_producer_adapter_consumer_output": "WORKER_RETURNS/PYAT-C1-01-R8-RELEASE-SPINE-REBASELINE-R1/08_EARLY_CASE_OUTPUT.txt",
+  "relevant_blobs_at_exact_tested_commit": {
+    "rawlsing_next/tests/test_pre553_analytical_composition.py": "68631fb1a18f3dc79f2b711cee8fd85ff0ebcac4",
+    "rawlsing_next/tests/test_pre553_empirical_query.py": "cc7d93db1f87d9c311170c229dbe3506937b404a",
+    "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R8/01_EXECUTED_RELEASE_OWNER_RECEIPT.json": "4d37a668f6217194f470639f842e25d40954a2cd",
+    "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R8/02_RELEASE_DIVERGENCE_FORENSICS.json": "08cb715b35d0dad96a1220ad5d7938c8cc694742",
+    "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R8/03_PRODUCER_PREDICATE_PREIMAGE_CUSTODY.json": "946360afeb92a64c06bbe5bd6853e99cd6bf52d1",
+    "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R8/04_CURRENT_AT07_IDENTITY_SPINE.json": "462bb282ddc2cc9667f1890f2d65f2fae9a3a72c",
+    "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/fixture_oracle_manifest.json": "060e0678ea9204dcff370858e567648dc4357ad5"
+  },
+  "final_return_commit_note": "This receipt and the updated full-output text are documentary additions after the clean tested implementation commit. The commissioned court is rerun on the final return head before push; that final head is reported in the worker handoff."
+}
