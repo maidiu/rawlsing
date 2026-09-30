@@ -1,0 +1,71 @@
+{
+  "schema": "PYAT_C1_01_R2_AT07_ASSERTION_MATRIX@1",
+  "overall": "PREIMAGE_UNDERDETERMINED",
+  "assertions": [
+    {
+      "id": "FORWARD_PRODUCER_ARITHMETIC",
+      "status": "PRESERVED_FROM_ACCEPTED_ORACLE",
+      "value": "54/60"
+    },
+    {
+      "id": "REVERSE_PRODUCER_ARITHMETIC",
+      "status": "PRESERVED_FROM_ACCEPTED_ORACLE",
+      "value": "54/62"
+    },
+    {
+      "id": "FORWARD_EVIDENCE_HASH",
+      "status": "PRESERVED_NOT_RECOMPUTED_FROM_MISSING_WITNESS_PREIMAGE",
+      "value": "fe5cd7783ac84f0298fb7f56a621d7b0e494bd9348d080dc68ceee09abb546f5"
+    },
+    {
+      "id": "REVERSE_EVIDENCE_HASH",
+      "status": "PRESERVED_NOT_RECOMPUTED_FROM_MISSING_WITNESS_PREIMAGE",
+      "value": "b54201c8ba8743922e51627e621cc4f3d1c563a43b70167a0720fbb0028ccf72"
+    },
+    {
+      "id": "FORWARD_QUERY_PREIMAGE",
+      "status": "UNDERDETERMINED",
+      "missing": [
+        "query_id",
+        "subject_ref",
+        "requested_projection",
+        "conditioner effective_time_or_interval"
+      ]
+    },
+    {
+      "id": "REVERSE_QUERY_PREIMAGE",
+      "status": "UNDERDETERMINED",
+      "missing": [
+        "query_id",
+        "subject_ref",
+        "requested_projection",
+        "conditioner effective_time_or_interval"
+      ]
+    },
+    {
+      "id": "FORWARD_WITNESS_PREIMAGE",
+      "status": "UNDERDETERMINED",
+      "missing": [
+        "binding effective_time_or_interval",
+        "binding fingerprint",
+        "producer_predicate_hash",
+        "exact closed witness field set"
+      ]
+    },
+    {
+      "id": "REVERSE_WITNESS_PREIMAGE",
+      "status": "UNDERDETERMINED",
+      "missing": [
+        "binding effective_time_or_interval",
+        "binding fingerprint",
+        "producer_predicate_hash",
+        "exact closed witness field set"
+      ]
+    },
+    {
+      "id": "PUBLIC_PRODUCER_ADAPTER_CONSUMER_TEST",
+      "status": "NOT_LAWFULLY_CONSTRUCTIBLE_AT_FROZEN_IDENTITY",
+      "reason": "Would require invented missing preimage material."
+    }
+  ]
+}
