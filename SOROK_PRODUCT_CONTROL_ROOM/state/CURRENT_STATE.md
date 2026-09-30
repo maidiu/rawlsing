@@ -384,3 +384,18 @@ The current user/Vozhd conversational critical path is the **7 ALPHA_SPEC blocke
 - notification delivery must remain neutral and user-controllable rather than amplifying actor toxicity;
 - relational warrant is not compliance: refusal, boundaries, confrontation, distance and even ending a relationship may be the reality-responsive move;
 - current strongest invocation: **Become neighbor to a life that could have been yours.**
+
+- `46_PORTAL_OCCUPANCY_USER_ABSENCE_NO_AUTOPILOT_R1.md` — no-autopilot alpha, portal occupancy, missed-contact/commitment semantics
+
+## Current user-absence holding
+
+- Nadia/world continue living while the user is absent;
+- Rawlsing does **not** continue being the user;
+- meaningful physical co-presence requires active portal occupancy;
+- outside the portal, relationship identity/history/channels persist but no autonomous user speech, intimacy, promises, repair, consent or self-disclosure is fabricated;
+- low-level material bookkeeping may continue without becoming user personality/action;
+- Nadia knows only diegetic evidence of absence/nonresponse, never app-open state;
+- messages, calls, knocks and invitations can become real history even when unanswered;
+- explicit commitments can be genuinely missed;
+- opening the portal does not summon Nadia;
+- notification controls change delivery to the user, not Nadia's life or actor-owned communications.
