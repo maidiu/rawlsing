@@ -374,3 +374,13 @@ The current user/Vozhd conversational critical path is the **7 ALPHA_SPEC blocke
 - no outbound human invite before relational warrant;
 - each new synthetic persona allocation grants exactly one outbound real-human invite;
 - early invitation delivery should favor a one-time token carried through an existing human relationship channel; mystery should live in veil/person/reason rather than cold anonymous email.
+
+- `45_RENDERER_TIERING_ENDOGENOUS_TOXICITY_AND_NEIGHBOR_INVOCATION_R1.md` — cheaper renderer tiering, endogenous persona toxicity, neutral notification mediation, and current neighbor invocation
+
+## Current endogenous-toxicity / invocation holding
+
+- Call-B does not require premium Sonnet 5.5; choose the cheapest renderer that passes voice/style/fact-discipline benchmarks;
+- Rawlsing itself may not manipulate the user for retention, but generated personas may lawfully be manipulative or unhealthy when their causal history produces it;
+- notification delivery must remain neutral and user-controllable rather than amplifying actor toxicity;
+- relational warrant is not compliance: refusal, boundaries, confrontation, distance and even ending a relationship may be the reality-responsive move;
+- current strongest invocation: **Become neighbor to a life that could have been yours.**
