@@ -321,3 +321,179 @@ No PRE-V3 -> V3 actor implementation.
 Terminal:
 
 `C1_01_R8_RELEASE_SPINE_REBASELINE_RETURNED__HQ_ADJUDICATION_REQUIRED`
+
+---
+
+# HQ137 EFFECTIVENESS + GROUNDING AMENDMENT
+
+This amendment is governing for execution mechanics and supersedes any narrower procedural reading above.
+
+Operating refinement adopted from:
+
+`PYAT_CONTROL_ROOM/HQ_OPERATING_REQUIREMENTS_EFFECTIVENESS_R1.md`
+
+blob:
+
+`9cbe83088ea7c9d42f2616e02a45931350f451b3`
+
+## Launch surface
+
+**LAUNCH IN: Codex — GPT-5.6 Sol High**
+
+This job requires both source-free runtime access and cross-object identity/root-cause reasoning. Do not split diagnosis, repair, fixture synchronization and execution into separate user-mediated workers.
+
+## Live grounding receipt
+
+Live HQ control resolved before this amendment:
+
+`integration/pre-main-reconciliation-r1 @ a9eb1b7c2e3bc7ee8847db550136da980b2fc817`
+
+Semantic PRE-MAIN tip remains:
+
+`902640dfddce431d0c5ba151d3eb851d6b84d7a3`
+
+Verified current implementation snapshot remains:
+
+`b3b2fa13049513078c301a1f6574b661fcf390c5`
+
+Exact control delta from implementation snapshot:
+
+- 91 commits ahead;
+- 98 changed files;
+- all changes under governance/control terrain;
+- **0 `rawlsing_next/` implementation files changed**.
+
+Therefore the R7/R8 implementation lineage remains current for this lane.
+
+Grounding disposition:
+
+`CURRENT_IMPLEMENTATION_SNAPSHOT_CONFIRMED__NO_MECHANICAL_REBASE_REQUIRED__GOVERNANCE_DELTA_READ_AND_BOUND`
+
+Do not merge/rebase current control merely to import documentary commits into the worker lineage.
+
+If live implementation code has moved by the time you begin, fail closed and report the exact changed implementation files before substantive work.
+
+## One outcome, one owner, one working loop
+
+You own the complete bounded outcome:
+
+`C1_01_EXECUTABLE_SYNTHETIC_FIXTURE_IDENTITY_CLOSURE_AND_SOURCE_FREE_QUALIFICATION`
+
+Routine diagnosis, in-scope correction, source-free execution, test iteration and packet synchronization belong to this same job.
+
+Do not stop after the first ordinary fixture/test mismatch merely to request another HQ commission.
+
+When a source-free failure is within the existing synthetic C1 fixture/identity/test scope:
+
+1. preserve the exact failing run and preimage;
+2. diagnose it against the governing contract;
+3. make the smallest lawful correction;
+4. rerun the smallest meaningful producer → adapter → consumer case;
+5. continue until the full commissioned source-free court either passes or exposes a true authority/owner boundary.
+
+Do not copy an observed hash into expected truth merely to green the court.
+Derive expected identities mechanically from complete serialized synthetic inputs.
+
+## Early executable feedback
+
+Before polishing the final R8 packet:
+
+1. establish the exact executable checkout and isolated environment;
+2. reproduce the known AT07 setup mismatch;
+3. derive the release identity from the governing owner;
+4. make the smallest lawful synthetic fixture/identity correction;
+5. run the smallest meaningful public I03 producer → analytical adapter → public possibility consumer case;
+6. only then finalize all documentary identities and run the full court.
+
+A setup assertion that prevents composition-test bodies from running is a blocker, not partial composition proof.
+
+## Working runtime
+
+The prior Mac execution surface is known to work.
+
+When the user launches this commission with explicit Mac authorization, use that surface rather than retrying the already-failed cloud checkout path.
+
+Do not repeat cloud materialization experiments absent a changed condition.
+
+## Directly exposed in-scope synthetic fixture repairs
+
+In addition to the original write allowlist, you may create:
+
+`rawlsing_next/tests/c1_at07_fixture.py`
+
+or an equivalently narrow new C1-specific source-free fixture helper if doing so is the cleanest way to serialize the complete reproducible AT07 synthetic inputs once and derive all current digests mechanically.
+
+You may also update:
+
+`rawlsing_next/tests/test_pre553_analytical_composition.py`
+
+and the active C1 packet / R8 correction artifacts already allowed.
+
+You still may **not** edit:
+
+- `rawlsing_next/tests/test_pre553_empirical_query.py`;
+- production C11 ingest/repository/integrity/identity owners;
+- `rawlsing_next/pre553_analytical_composition.py` unless a new independent owner counterexample is actually proved.
+
+If a repair requires changing shared I03 fixture semantics or production owner meaning, stop with the exact counterexample and boundary.
+
+## Preserve full original C1-01 acceptance
+
+A final PASS must still cover all original C1-01 acceptance burden, including:
+
+- actual public empirical producer;
+- actual analytical adapter;
+- actual public positioned-subject possibility consumer;
+- forward 54/60 and reverse 54/62;
+- exact target topology/domain;
+- exact denominator/risk/member identity;
+- exact source/release provenance;
+- CLOSED 16-key witness law;
+- H1-H5 hostile/reidentification courts;
+- no preconstructed final slice;
+- evidence raw_support equals producer raw denominator support;
+- exact fractions, no float substitution;
+- fixture-only authority ceiling;
+- replay/provenance identity closure;
+- fail-closed negative behavior already retained from R6/R7.
+
+Do not narrow acceptance merely because the currently visible failure is release identity.
+
+## Predicate custody defect is part of the same outcome
+
+The independent R7 reviewer finding at:
+
+`8d11504d576f2e96b0f7a7ab31795f88f0fe0cfa`
+
+is adopted as an in-scope blocker.
+
+Close it in this same job by freezing immutable, complete producer predicate preimages sufficient to audit both `producer_predicate_hash` values without test-code archaeology.
+
+Do not commission a separate provenance worker.
+
+## Final execution and return
+
+Iterate locally as necessary, preserving failed runs.
+
+Before final return, run the complete commissioned pytest command on the final exact patch.
+
+Return only when one of these is true:
+
+- the complete source-free court passes and the patch/packet are synchronized;
+- an actual production-owner/shared-I03/authority boundary is proved;
+- a reproducible blocker remains after a materially changed repair mechanism.
+
+Final success disposition:
+
+`PASS_SOURCE_FREE_PATCH_READY__INDEPENDENT_REVIEW_REQUIRED`
+
+A PASS here is still not self-adoption.
+HQ will issue **one** independent acceptance review of the completed coherent outcome.
+
+## Integration hygiene
+
+Do not claim that this worker branch is itself the final integration branch.
+
+If independently accepted, HQ will re-ground the accepted implementation against the then-current implementation snapshot, construct/update the named source-free integration branch, and run the affected combined integration court before calling C1 banked.
+
+
