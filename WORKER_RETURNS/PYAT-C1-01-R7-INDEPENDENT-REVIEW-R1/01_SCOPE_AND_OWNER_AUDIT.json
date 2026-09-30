@@ -1,0 +1,55 @@
+{
+  "schema": "PYAT_C1_01_R7_INDEPENDENT_SCOPE_AND_OWNER_AUDIT@1",
+  "disposition": "CHANGES_REQUIRED",
+  "reviewer_commission_tip": "4771288033607a4b6cac2c9d4c99cfc284f34ad7",
+  "r7_return_head": "0da3c9c13ffd91cf50ab93f6280949eb960792c0",
+  "exact_diff": {
+    "base": "7ea809f3b4433d24c027eb0ad3e98b0a6d3fb607",
+    "head": "0da3c9c13ffd91cf50ab93f6280949eb960792c0",
+    "commits_ahead": 3,
+    "changed_file_count": 9,
+    "all_inside_r7_allowlist": true,
+    "changed_files": [
+      "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R6/02_NORMATIVE_WITNESS_MATERIALS.json",
+      "WORKER_RETURNS/PYAT-C1-01-R7-OWNER-CLOSURE-R1/00_RETURN.md",
+      "WORKER_RETURNS/PYAT-C1-01-R7-OWNER-CLOSURE-R1/01_SCOPE_AND_OWNER_DIFF.json",
+      "WORKER_RETURNS/PYAT-C1-01-R7-OWNER-CLOSURE-R1/02_FULL_WITNESS_PREIMAGE_AUDIT.json",
+      "WORKER_RETURNS/PYAT-C1-01-R7-OWNER-CLOSURE-R1/03_HOSTILE_COURT_MATRIX.json",
+      "WORKER_RETURNS/PYAT-C1-01-R7-OWNER-CLOSURE-R1/04_EXECUTION_STATUS.json",
+      "WORKER_RETURNS/PYAT-C1-01-R7-OWNER-CLOSURE-R1/05_FINAL_DISPOSITION.json",
+      "rawlsing_next/pre553_analytical_composition.py",
+      "rawlsing_next/tests/test_pre553_analytical_composition.py"
+    ]
+  },
+  "owner": {
+    "path": "rawlsing_next/pre553_analytical_composition.py",
+    "before_blob": "5c85d33987d7dc78efe98ceb5e78afe1ddc89b20",
+    "after_blob": "26f3380cb83cbbcedc87c74aaf603b0492c8ce8f",
+    "expected_blob_match": true,
+    "only_production_semantic_edit": "required-subset acceptance replaced by exact identity key-set equality plus missing/extra typed detail",
+    "exact_required_key_count": 16,
+    "missing_keys_fail_closed": true,
+    "extra_keys_fail_closed": true,
+    "other_production_semantic_diff": false
+  },
+  "prior_counterexample": {
+    "added_field": {
+      "extra_fixture_identity_key": "R6-CLOSED-MAP-COUNTEREXAMPLE"
+    },
+    "recomputed_17_key_hash": "a60df340c9a0ce2a895ad67a1615d11760798647cbd9ba6716bf7ca3b70fa42e",
+    "matches_r6_review": true,
+    "verify_identity_self_hash_can_pass": true,
+    "adapter_exact_key_set_rejects": true,
+    "counterexample_closed": true
+  },
+  "authority_ceiling": {
+    "real_source_semantics_created": false,
+    "real_source_comparability_created": false,
+    "new_model_authority_created": false,
+    "structural_truth_created": false,
+    "actor_inference_created": false,
+    "c1_02_started": false
+  },
+  "execution_pass_claimed": false,
+  "terminal": "C1_01_R7_INDEPENDENT_REVIEW_COMPLETE__HQ_ADJUDICATION_REQUIRED"
+}

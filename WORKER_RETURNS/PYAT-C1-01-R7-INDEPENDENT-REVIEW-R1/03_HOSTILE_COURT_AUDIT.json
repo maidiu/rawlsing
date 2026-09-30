@@ -1,0 +1,74 @@
+{
+  "schema": "PYAT_C1_01_R7_INDEPENDENT_HOSTILE_COURT_AUDIT@1",
+  "disposition": "CHANGES_REQUIRED",
+  "test_file": "rawlsing_next/tests/test_pre553_analytical_composition.py",
+  "test_blob": "db6b876f15d145cfc48cc6d944e48da4460842d3",
+  "expected_blob_match": true,
+  "execution_claim": "NONE__STATIC_SEMANTIC_REVIEW_ONLY",
+  "courts": [
+    {
+      "id": "H1",
+      "test": "test_r7_closed_16_key_witness_rejects_matching_hash_with_extra_field",
+      "status": "PASS_STATIC",
+      "findings": [
+        "Adds a seventeenth identity-bearing key.",
+        "Recomputes witness content_hash over the 17-key map.",
+        "Calls witness.verify_identity() before composition, proving this is not stale-hash rejection.",
+        "Requires ConditionValueRelationMismatch specifically on identity field-set mismatch."
+      ]
+    },
+    {
+      "id": "H2",
+      "test": "test_at19_valid_relation_determinant_reidentifies_composed_result",
+      "status": "PASS_STATIC",
+      "findings": [
+        "Mutates effective_time_or_interval in the conditioner binding.",
+        "Rebuilds the consumer query and witness so both are internally reidentified rather than stale.",
+        "Composes the mutated path and requires composed_result_identity_hash change.",
+        "Explicitly holds producer query/predicate/fact, source/release, target, risk/denominator, measure, and model-rule determinants fixed."
+      ]
+    },
+    {
+      "id": "H3",
+      "test": "test_r7_denominator_member_identity_hostile_preserves_visible_54_over_60",
+      "status": "PASS_STATIC",
+      "findings": [
+        "Starts from the actual built evidence preimage.",
+        "Replaces one exact denominator-member ref.",
+        "Preserves raw support 60 and visible yes=54/no=6 cells.",
+        "Requires evidence preimage hash change."
+      ]
+    },
+    {
+      "id": "H4",
+      "test": "test_r7_geometry_cell_identity_hostile_reidentifies_evidence",
+      "status": "PASS_STATIC",
+      "findings": [
+        "Starts from the actual evidence preimage.",
+        "Changes the no-cell raw numerator and exact fraction.",
+        "Keeps denominator 60.",
+        "Requires evidence preimage hash change."
+      ]
+    },
+    {
+      "id": "H5",
+      "test": "test_r7_fixture_pairing_authority_reidentifies_witness_evidence_and_composed_result",
+      "status": "PASS_STATIC",
+      "findings": [
+        "Creates a test-only fixture-labeled comparability AuthorityRef with real_source_effect=false in its hash material.",
+        "Propagates it through binding, rebuilt consumer query, witness identity, evidence authority refs, and composed authority refs.",
+        "Requires witness, evidence, and composed identities to change.",
+        "Uses the same unrelated-determinant invariance helper as H2; no production authority owner is changed."
+      ]
+    }
+  ],
+  "retained_r6_positive_and_fail_closed_coverage": {
+    "positive_public_producer_adapter_consumer": true,
+    "stale_witness_hash_fail_closed": true,
+    "relation_mismatch_before_evidence_and_consumer": true,
+    "no_preconstructed_slice_input": true,
+    "raw_denominator_law": true
+  },
+  "authority_ceiling_static_pass": true,
+  "execution_pass_claimed": false
+}

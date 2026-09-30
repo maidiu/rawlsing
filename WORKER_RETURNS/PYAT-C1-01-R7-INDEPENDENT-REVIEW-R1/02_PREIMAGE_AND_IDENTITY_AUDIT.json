@@ -1,0 +1,90 @@
+{
+  "schema": "PYAT_C1_01_R7_INDEPENDENT_PREIMAGE_AND_IDENTITY_AUDIT@1",
+  "disposition": "CHANGES_REQUIRED",
+  "packet": {
+    "path": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R6/02_NORMATIVE_WITNESS_MATERIALS.json",
+    "blob": "57f4caf5a5c148d60fcfe8322ff2016de5b4f4a1",
+    "expected_blob_match": true,
+    "schema_tag": "PYAT_C1_00_R6_NORMATIVE_WITNESS_MATERIALS@1",
+    "forward_exact_16_keys": true,
+    "reverse_exact_16_keys": true,
+    "no_extra_identity_keys": true,
+    "duplicated_audit_fields_equal_literal_identity_material": true
+  },
+  "independent_recomputation": {
+    "forward_binding_fingerprint": {
+      "computed": "ba02f3a5cab6c25588074b79bfd8565e169d59185549d6da0cf1c4de8042619c",
+      "expected": "ba02f3a5cab6c25588074b79bfd8565e169d59185549d6da0cf1c4de8042619c",
+      "match": true
+    },
+    "reverse_binding_fingerprint": {
+      "computed": "e7510cba0b51347ed95a68443accdae5469506cfa4b2456e7b611250a634a492",
+      "expected": "e7510cba0b51347ed95a68443accdae5469506cfa4b2456e7b611250a634a492",
+      "match": true
+    },
+    "forward_query": {
+      "computed": "8f7444dbae4250cdda8a7a4c89bb331bd1f960072a97e8b11f05c4bd68c770d9",
+      "expected": "8f7444dbae4250cdda8a7a4c89bb331bd1f960072a97e8b11f05c4bd68c770d9",
+      "match": true
+    },
+    "reverse_query": {
+      "computed": "2909672ca01a2b5fcb5d07351f8691bb10bf82d3e794d92f73981d2e70fc4f0e",
+      "expected": "2909672ca01a2b5fcb5d07351f8691bb10bf82d3e794d92f73981d2e70fc4f0e",
+      "match": true
+    },
+    "forward_witness": {
+      "computed": "f4123258625589513da2afc0d4f10a2438b6238b0b4f0a5338acb03ef8932da5",
+      "expected": "f4123258625589513da2afc0d4f10a2438b6238b0b4f0a5338acb03ef8932da5",
+      "match": true
+    },
+    "reverse_witness": {
+      "computed": "a5410dd09f9a16ada260b6d18e902e5a101b7b41346a407f17283de8d726fdb0",
+      "expected": "a5410dd09f9a16ada260b6d18e902e5a101b7b41346a407f17283de8d726fdb0",
+      "match": true
+    },
+    "forward_evidence": {
+      "computed": "c5e5930b6b368605c6828b70de02bf00ca77b9636c890706ac755b0074f61374",
+      "expected": "c5e5930b6b368605c6828b70de02bf00ca77b9636c890706ac755b0074f61374",
+      "match": true,
+      "method": "accepted R3 preimage with exactly two historical witness-ref occurrences replaced by R6 witness ref"
+    },
+    "reverse_evidence": {
+      "computed": "0cd3b5b868852db956a079835c5052c206561b0fe2a7480931e6de0dc5d81844",
+      "expected": "0cd3b5b868852db956a079835c5052c206561b0fe2a7480931e6de0dc5d81844",
+      "match": true,
+      "method": "accepted R3 preimage with exactly two historical witness-ref occurrences replaced by R6 witness ref"
+    }
+  },
+  "selected_input_crosschecks": {
+    "r2_subject_preimages_match": true,
+    "r2_predicate_leaf_projections_match": true,
+    "r2_pairing_ground_truth_refs_match": true,
+    "r2_pairing_authority_ref_matches": true,
+    "r3_producer_query_refs_match": true,
+    "r3_producer_predicate_refs_match": true,
+    "r3_universe_ref_matches": true,
+    "r3_release_ref_matches": true,
+    "r6_query_refs_match": true,
+    "r6_evidence_refs_match": true
+  },
+  "immutable_dependency_blobs": {
+    "r2_value_relation_oracle": "c6acafae820c065215fdbe7a703480a8b19fbc57",
+    "r2_synthetic_authority_freeze": "333989fa7b57c221d6aa5ebfc25d9d76e0acad32",
+    "r3_evidence_identity_preimage": "1d1e9eddeebf7e1f26189355dc06e71bf70a367f",
+    "r6_normative_query_materials": "83da592a46ce33edd1779781a68078cd0769bdc8",
+    "r6_evidence_recomputation": "1da9e35f69f597019395f8d17068593dd257f43a"
+  },
+  "dependency_custody_defect": {
+    "status": "FAIL__PRODUCER_PREDICATE_HASH_NOT_AUDITABLE_FROM_FROZEN_DEPENDENCIES",
+    "forward_producer_predicate_hash": "fc7ee1774226e94491688b14a395acfbf9c5ccfc9184744963e01af1ee52dc55",
+    "reverse_producer_predicate_hash": "20d43386e508f7bb26b7219d06f858c0df42d736ce9a4de6e6f0f80ffd33d8e6",
+    "forward_hash_occurs_in_frozen_dependency_files": false,
+    "reverse_hash_occurs_in_frozen_dependency_files": false,
+    "r3_contains_producer_predicate_refs_but_not_predicate_hashes": true,
+    "r2_leaf_projection_is_not_complete_producer_predicate_ast": true,
+    "consequence": "The two literal predicate_hash fields can only be validated by reconstructing the producer predicate from test code or execution; the current immutable locator set is therefore not sufficient for no-test-archaeology audit.",
+    "minimal_repair": "Freeze an exact path+blob to accepted producer predicate preimages/AST+predicate_hash, or serialize those predicate preimages with an immutable upstream locator."
+  },
+  "identity_drift_found": false,
+  "execution_pass_claimed": false
+}
