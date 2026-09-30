@@ -157,6 +157,7 @@ class AnalyticalCompositionResult:
     producer_predicate_ref: ExactRef
     producer_fact_ref: ExactRef
     producer_fact_state: str
+    producer_result: Any
     source_universe_refs: tuple[ExactRef, ...]
     release_refs: tuple[ExactRef, ...]
     consumer_query_ref: ExactRef
@@ -198,6 +199,12 @@ class AnalyticalCompositionResult:
             "producer_predicate_ref": self.producer_predicate_ref.as_dict(),
             "producer_fact_ref": self.producer_fact_ref.as_dict(),
             "producer_fact_state": self.producer_fact_state,
+            "producer_result_envelope": {
+                "query_ref": self.producer_result.query_ref.as_dict(),
+                "source_scope_mode": self.producer_result.source_scope_mode,
+                "release_refs": [x.as_dict() for x in self.producer_result.release_refs],
+                "fact_refs": [x.ref.as_dict() for x in self.producer_result.facts],
+            },
             "source_universe_refs": [x.as_dict() for x in self.source_universe_refs],
             "release_refs": [x.as_dict() for x in self.release_refs],
             "consumer_query_ref": self.consumer_query_ref.as_dict(),
@@ -626,6 +633,7 @@ def compose_positioned_subject_possibility(
         producer_predicate_ref=predicate.ref,
         producer_fact_ref=fact.ref,
         producer_fact_state=fact.typed_state,
+        producer_result=producer_result,
         source_universe_refs=_refs(
             fact.empirical_universe_refs, "fact.empirical_universe_refs"
         ),
