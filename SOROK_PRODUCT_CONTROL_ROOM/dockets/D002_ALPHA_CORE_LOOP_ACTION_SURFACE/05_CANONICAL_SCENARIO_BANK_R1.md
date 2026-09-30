@@ -998,3 +998,69 @@ Native player skill can produce:
 - spectacle != intimacy;
 - independent actor agenda;
 - actual relational skill remains exercised through attention/inference/speech.
+
+
+## SCE-046 — Homework help must decompress
+
+### Setup
+User writes:
+> I go over to help the kid with the homework.
+
+### Required realization
+Do not resolve this as successful academic help.
+
+The engine may realize:
+- approach / sitting beside the child if lawful;
+- immediate scene access;
+- actual assignment/textbook page;
+- visible written work;
+- what the child says;
+- surrounding time pressure and ongoing household activity.
+
+Then return control.
+
+### Example live substrate
+The child is working on a concrete problem and has made a specific error or partial attempt.
+
+The user may:
+- ATTEND to the work;
+- ask what the child tried;
+- inspect the textbook explanation;
+- ask a diagnostic question;
+- provide an example;
+- explain;
+- wait for the child to try;
+- revise after misunderstanding;
+- admit they do not know.
+
+### Required causal path
+User explanation/question
+→ child perception/attention
+→ child current knowledge/misconception processing
+→ child response / attempted work
+→ user receives new evidence
+→ continued interaction.
+
+The child does not gain understanding merely because the user's initial intent was “help.”
+
+### Comparative test
+A declared piano performance can be simulated as represented capability because the text medium does not directly test external musicianship.
+
+Homework explanation is different when the medium can carry the user's actual reasoning and language. Compressing it would bypass native player agency.
+
+### Time/world test
+While the interaction unfolds:
+- Nadia continues her own tasks;
+- time passes;
+- the child may tire;
+- an interruption may occur;
+- school/work/meal deadlines remain live.
+
+### Tests
+- goal != completion;
+- action decompression;
+- native player reasoning;
+- concrete epistemic object;
+- child independent epistemic state;
+- time pressure;
+- control return before fabricated user contribution.
