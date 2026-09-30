@@ -1,64 +1,63 @@
 {
-  "schema": "PYAT_D02_EVS2008_C4_BINDING_EFFECT@1.0.0",
+  "schema": "PYAT_D02_EVS2008_C4_BINDING_EFFECT@1.1.0",
   "blocker_id": "C2-02-BLOCK-D02-LOCATOR-001",
-  "blocker_state_after_archaeology": "OPEN",
+  "blocker_state_after_archaeology": "RESOLVED_BY_RETAINED_PRE_C4_PHYSICAL_LOCATOR",
+  "disposition": "EXACT_RETAINED_D02_LOCATOR_RECOVERED",
   "source": {
     "source_id": "SRC14",
     "source_file": "EVS 2008.sav",
     "sha256": "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379"
   },
-  "recovered_authority": {
-    "exact_source_historical_D02_failure": true,
-    "generic_decoder_native_datetime_date_time_carrier_law": true,
-    "exact_real_source_locator": false,
-    "source_specific_expected_native_type": false,
-    "independently_frozen_whole_source_D02_traversal_oracle": false
-  },
-  "c4_effect": {
-    "fresh_EV2008_D02_probe_lawful_now": false,
-    "reason": "AT20 independence is not satisfiable from retained evidence because the expected D02 physical witness is not independently located or enumerated before C4 output.",
-    "forbidden_sequence": [
-      "open EVS 2008 in C4",
-      "discover the date/time-bearing object adaptively",
-      "retroactively designate that discovery as the expected oracle witness"
-    ],
-    "allowed_without_source_read": [
-      "reuse the accepted generic C3 opaque carrier law source-free",
-      "retain SRC14 exact SHA/custody and historical D02 occurrence as bounded documentary evidence",
-      "carry the D02 real-source proof as blocked"
-    ]
-  },
-  "lawful_wake_conditions": [
-    {
-      "kind": "EXACT_RETAINED_LOCATOR",
-      "requirement": [
-        "immutable pre-C4 retained artifact",
-        "exact EVS-2008 physical variable/column/cell or metadata map/key locator",
-        "expected decoder-native Python type/value class sufficient for D02",
-        "exact source SHA/custody",
-        "provenance predating future C4 output"
-      ]
+  "frozen_pre_c4_oracle_material": {
+    "locator": {
+      "variable": "v372",
+      "ordinal": 466
     },
-    {
-      "kind": "INDEPENDENTLY_FROZEN_TRAVERSAL_ORACLE",
-      "requirement": [
-        "governed before C4 source execution",
-        "deterministic traversal order",
-        "exact D02 type predicate",
-        "termination law",
-        "expected match set and cardinality",
-        "exact source accounting",
-        "expected result independent of C4 output"
-      ]
+    "fixture_id": "EVS08_DATE_MISSING_V372",
+    "witness_class": "TYPED_DATE_USER_MISSING_SENTINEL",
+    "rendered_witness": "1582-10-13",
+    "expected_counts": {
+      "rows_seen": 66280,
+      "ordinary_present": 64363,
+      "system_missing": 0,
+      "user_missing": 1917,
+      "rendered_witness_user_missing": 1917
+    },
+    "provenance": {
+      "branch": "agent/vozhd-trii-srcprep71-r04-evs",
+      "tip": "3bc063aa7bf461caf5baf581ff32a434ba9e09a3",
+      "commit_time": "2026-08-22T10:03:56Z",
+      "path": "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/SOURCE_CERT_PREP71/RETURNS/R04/HOSTILE_FIXTURES.csv",
+      "blob": "12f6adb77ef5692511055c8f0520e42c454f3867",
+      "authority_basis": "SOURCE_PHYSICAL_OR_READER_METADATA_AUTHORITY__NON_SEMANTIC"
     }
+  },
+  "lawful_future_C4_predeclaration": [
+    "Verify exact source SHA before decoding.",
+    "Use the frozen physical column locator v372 / ordinal 466; do not discover a D02 column adaptively.",
+    "Freeze the expected historical witness class TYPED_DATE_USER_MISSING_SENTINEL.",
+    "Freeze retained rendered witness 1582-10-13 and user-missing cardinality 1917.",
+    "Freeze total rows 66280, ordinary-present 64363 and system-missing 0 as independent physical comparison facts.",
+    "Require current decoder output for the frozen witness to enter the accepted C3 D02 opaque date/time carrier law.",
+    "Do not predeclare a specific built-in Python subclass from the historical evidence; accept only the C3-authorized naive datetime/date/time set and record the observed exact current subclass.",
+    "Fail closed on source SHA, column identity/ordinal, witness class, cardinality, or D02-carrier mismatch."
   ],
-  "non_wake_conditions": [
-    "source-level statement that EVS 2008 is D02-affected",
-    "latin1 compatibility decoding",
-    "questionnaire-label or semantic inference",
-    "new source scan created during C4",
-    "generic C3 D02 law without independent source locator"
-  ],
-  "selected_C4_workload_effect": "SRC14 remains the D02 edge source but its fresh D02 real-source read is conditional and not yet lawfully frozen.",
-  "disposition": "INPUT_OR_CUSTODY_BLOCKER_REMAINS"
+  "current_D02_owner": {
+    "accepted_integration": "30686b185d4ceb2c94f61815ef70d8c8e76255d6",
+    "law": "exact built-in naive datetime.datetime/date/time -> opaque carrier; timezone-aware datetime/time fail closed"
+  },
+  "authority_boundaries": {
+    "physical_locator_is_semantic_authority": false,
+    "compatibility_encoding_is_locator": false,
+    "questionnaire_semantics_used_for_locator": false,
+    "exact_negative_missing_subcode_authorized": false,
+    "producer_semantic_reason_required_for_D02": false,
+    "exact_historical_python_subclass_authorized": false
+  },
+  "no_longer_required": {
+    "whole_source_D02_traversal_oracle": true,
+    "adaptive_C4_locator_discovery": true,
+    "new_pre_C4_source_scan": true
+  },
+  "C4_status_effect": "SRC14 D02 is no longer blocked by C2-02-BLOCK-D02-LOCATOR-001. Other independent C4 prerequisites remain whatever HQ has separately frozen; this return changes only the D02 locator blocker."
 }
