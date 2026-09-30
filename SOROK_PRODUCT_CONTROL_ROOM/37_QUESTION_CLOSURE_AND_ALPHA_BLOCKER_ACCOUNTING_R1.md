@@ -51,38 +51,38 @@ Every question now also carries `blocking_stage`:
 
 ## 3. Exact current counts
 
-Total surfaced questions: **105**.
+Total surfaced questions: **109**.
 
 By closure state:
 - `CLOSED_FOR_ALPHA`: **8**
 - `PROVISIONALLY_ANSWERED`: **20**
-- `NEEDS_PROTOTYPE`: **21**
-- `NEEDS_ARCHITECTURE_ADJUDICATION`: **40**
-- `OPEN_DISCOVERY`: **10**
+- `NEEDS_PROTOTYPE`: **22**
+- `NEEDS_ARCHITECTURE_ADJUDICATION`: **42**
+- `OPEN_DISCOVERY`: **11**
 - `DEFERRED_POST_ALPHA`: **6**
 
 By blocking stage:
-- `ALPHA_SPEC`: **6**
-- `ALPHA_IMPLEMENTATION`: **33**
-- `ALPHA_VALIDATION`: **22**
+- `ALPHA_SPEC`: **7**
+- `ALPHA_IMPLEMENTATION`: **35**
+- `ALPHA_VALIDATION`: **23**
 - `POST_ALPHA`: **18**
 - `NONE`: **26**
 
-Current total alpha blockers in the broad sense: **39**.
+Current total alpha blockers in the broad sense: **42**.
 
 But this splits critically into:
 
-> **6 product/spec questions that Vozhd + user still need to adjudicate**
+> **7 product/spec questions that Vozhd + user still need to adjudicate**
 
 and
 
-> **33 implementation/architecture questions that should largely be handled after product semantics are sufficiently fixed.**
+> **35 implementation/architecture questions that should largely be handled after product semantics are sufficiently fixed.**
 
 Thus the meaningful current conversational progress number is **8**, not 103, 94 or 9.
 
 ---
 
-## 4. Current six ALPHA_SPEC blockers
+## 4. Current seven ALPHA_SPEC blockers
 
 ### Q-WORLD-001
 What present-world/current-event ingestion and admission law keeps persona life coupled to the historical present without equating external occurrence with actor exposure, knowledge or effect?
@@ -99,6 +99,9 @@ What exact invite economy—seed cohort, invite scarcity, inviter disclosure, no
 ### Q-PRIV-001
 What user data is required for longitudinal relational modeling, what should never be collected, and what deletion/export boundaries are required?
 
+### Q-ABSENCE-001
+What bounded background/autopilot continuity, if any, may represent the portaled user's ordinary existence while the real user is away without fabricating relational agency?
+
 ### Q-ALPHA-001
 What evidence would falsify or support the core alpha theorem that earned relationship with an unchosen persona is compelling and spiritually productive?
 
@@ -107,9 +110,9 @@ What evidence would falsify or support the core alpha theorem that earned relati
 - `Q-LIFETOPO-001`: PROVISIONALLY_ANSWERED / ALPHA_IMPLEMENTATION — independent present life generated from V3/world state with computable→flesh→computable feedback.
 - `Q-DISCLOSE-001`: PROVISIONALLY_ANSWERED / ALPHA_IMPLEMENTATION — actor-owned event-time disclosure from relational tension/cathexis rather than trust threshold.
 
-## 5. What the 33 implementation blockers mean
+## 5. What the 35 implementation blockers mean
 
-These are not thirty-three new conceptual conversations the user must personally answer.
+These are not thirty-five new conceptual conversations the user must personally answer.
 
 They are mostly exact architecture questions such as:
 - V3/CAN-008/PFF/V2 ownership;
@@ -170,7 +173,7 @@ Progress reports should instead say:
 
 ## 8. Current critical path
 
-The six ALPHA_SPEC blockers are not equally urgent.
+The seven ALPHA_SPEC blockers are not equally urgent.
 
 Current recommended order:
 
@@ -194,6 +197,6 @@ The system is no longer:
 
 It is:
 
-> **105 frontiers have been surfaced and preserved. Six still require product-level adjudication before the current alpha can be fully specified. Thirty-three more require architecture work before governed implementation. Twenty-two should be learned by prototyping, not armchair design.**
+> **109 frontiers have been surfaced and preserved. Seven still require product-level adjudication before the current alpha can be fully specified. Thirty-five more require architecture work before governed implementation. Twenty-three should be learned by prototyping, not armchair design.**
 
 This is the current canonical progress interpretation.
