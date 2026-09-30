@@ -1,0 +1,95 @@
+{
+  "schema": "PYAT_C2_01_INDEPENDENT_SCOPE_AND_COUNT_AUDIT@1.0.0",
+  "disposition": "APPROVE_AT_DECLARED_GRAIN",
+  "worker_return": "42b89c09480c5848d8889b2282e986855c5822ef",
+  "commission_to_return": {
+    "base": "d3c219fde9dc838819420034505aa2d4443bdf07",
+    "head": "42b89c09480c5848d8889b2282e986855c5822ef",
+    "commits": 1,
+    "files": [
+      "WORKER_RETURNS/PYAT-C2-AUTHORITY-SUCCESSION-COVERAGE-R1/authority_succession_manifest.json",
+      "WORKER_RETURNS/PYAT-C2-AUTHORITY-SUCCESSION-COVERAGE-R1/estate_function_coverage.json",
+      "WORKER_RETURNS/PYAT-C2-AUTHORITY-SUCCESSION-COVERAGE-R1/exact_authority_residuals.json",
+      "WORKER_RETURNS/PYAT-C2-AUTHORITY-SUCCESSION-COVERAGE-R1/worker_return.json"
+    ],
+    "exact_write_terrain": true
+  },
+  "mechanically_recomputed": {
+    "long_memory_rows": {
+      "expected": 44,
+      "actual": 44,
+      "missing": 0,
+      "duplicates": 0,
+      "row_field_mismatches": 0
+    },
+    "accepted_responsibilities": {
+      "expected": 53,
+      "actual": 53,
+      "missing": 0,
+      "duplicates": 0
+    },
+    "responsibility_inventory_disposition_join": {
+      "expected": 53,
+      "actual": 53,
+      "unmatched_inventory": 0,
+      "unmatched_disposition": 0,
+      "row_field_mismatches": 0
+    },
+    "sources": {
+      "expected": 35,
+      "actual": 35,
+      "missing": 0,
+      "duplicates": 0,
+      "duplicate_canonical_sha256_groups": 0,
+      "row_field_mismatches": 0
+    },
+    "gates": {
+      "expected": [
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "F5",
+        "F6",
+        "F7",
+        "F8"
+      ],
+      "actual": [
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "F5",
+        "F6",
+        "F7",
+        "F8"
+      ],
+      "duplicates": 0
+    },
+    "source_gate_cells": {
+      "expected": 280,
+      "actual": 280,
+      "missing": 0,
+      "extra": 0,
+      "duplicates": 0
+    },
+    "historical_representation": {
+      "total": 35,
+      "pass": 20,
+      "blocked": 15
+    },
+    "residual_ids": {
+      "total": 148,
+      "duplicates": 0
+    }
+  },
+  "residual_shapes": {
+    "long_memory_residuals": 30,
+    "responsibility_occupancy_boundaries": 53,
+    "source_residuals": 35,
+    "gate_residuals": 8,
+    "functional_residuals": 21
+  },
+  "source_access": 0,
+  "c2_02_performed": false
+}

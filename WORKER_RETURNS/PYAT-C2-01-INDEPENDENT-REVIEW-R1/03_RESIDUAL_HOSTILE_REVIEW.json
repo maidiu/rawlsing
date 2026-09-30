@@ -1,0 +1,39 @@
+{
+  "schema": "PYAT_C2_01_INDEPENDENT_RESIDUAL_HOSTILE_REVIEW@1.0.0",
+  "disposition": "PASS_WITH_RETAINED_TYPED_RESIDUAL",
+  "residual_integrity": {
+    "unique_ids": true,
+    "long_memory_scopes_valid": true,
+    "responsibility_scopes_valid": true,
+    "source_scopes_valid": true,
+    "gate_scopes_valid": true,
+    "functional_scopes_valid": true,
+    "cross_reference_field_mismatches": 0
+  },
+  "named_residual": {
+    "id": "C2-EPCLASS-PAYLOAD-001",
+    "worker_state": "UNRESOLVED__NOT_MISSING_PROVED",
+    "independent_state": "UNRESOLVED__NOT_MISSING_PROVED",
+    "classification_exact": true,
+    "reason": [
+      "G1A law requires PRE553_MANUAL_AND_GOVERNED_AUTHORITY_INVENTORY.csv and MANUAL_VS_DERIVED_EPISTEMIC_CLASS_MATRIX.csv.",
+      "No exact payload filename was present in inspected immutable Git trees.",
+      "Repository search found references to the names and a historical G1A_RESULT.json, but that result itself records G1A_BLOCKED__MANUAL_SEMANTIC_AUTHORITY_PRESERVATION_NOT_PROVED and no exact lossless supersession/class closure.",
+      "Binding missingness law requires broader surfaces, including Library/local historical custody, before MISSING_PROVED; that search is outside this review."
+    ],
+    "c2_01_acceptance_effect": "DOES_NOT_BLOCK_DOCUMENTARY_LEDGER_APPROVAL__UNRESOLVED_CLASS_IS_TRUTHFULLY_PRESERVED",
+    "blocks": [
+      "row-level MANUAL/DERIVED/PRECEDENT/REVIEW/PROHIBITED origin classification for the 97 LongMemory/responsibility rows",
+      "G1A provenance-class closure based on C2-01",
+      "lossless supersession/candidate-equivalence claims requiring exact epistemic-origin provenance",
+      "class-sensitive downstream proof claims that depend on those unresolved rows"
+    ],
+    "does_not_block": [
+      "44/53/35 inventory accounting",
+      "20 PASS / 15 BLOCKED historical representation accounting",
+      "truthful F1-F8 coarse unresolved coverage ledger",
+      "later C2-02 preparation after HQ binds a workload, provided the residual remains unresolved where relevant"
+    ]
+  },
+  "raw_source_access": 0
+}
