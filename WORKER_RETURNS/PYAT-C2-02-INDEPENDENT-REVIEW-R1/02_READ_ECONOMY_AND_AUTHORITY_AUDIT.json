@@ -1,0 +1,55 @@
+{
+  "schema": "PYAT_C2_02_INDEPENDENT_READ_ECONOMY_AUTHORITY_AUDIT@1.0.0",
+  "disposition": "APPROVE_AT_DECLARED_GRAIN",
+  "C3": {
+    "integration_head": "30686b185d4ceb2c94f61815ef70d8c8e76255d6",
+    "review": "462e6bf1ed514056f9316dad761054e690a7755d",
+    "supplies_source_free_owner_behavior": [
+      "G01",
+      "D01",
+      "D02"
+    ],
+    "substitutes_for_live_occupancy": false
+  },
+  "read_plan": {
+    "fresh_full_route": [
+      "SRC27"
+    ],
+    "bounded_fresh_physical": [
+      "SRC02",
+      "SRC06",
+      "SRC08",
+      "SRC12",
+      "SRC26"
+    ],
+    "conditional_fresh": [
+      "SRC14"
+    ],
+    "no_fresh_raw_read": [
+      "SRC35"
+    ],
+    "excluded_source_reads": 0
+  },
+  "economy_holding": "MINIMUM_LAWFUL_PLAN_AT_DECLARED_C4_EDGE_GRAIN",
+  "rationale": "AT20 explicitly denies live occupancy from source-free fixtures. Current C3 code proof therefore does not replace bounded real-source occupancy for edge classes selected into the C4 horizontal certificate. WVS7 retained proof must not be reread merely for freshness.",
+  "authority_ceiling": {
+    "full_semantic_route": [
+      "SRC27",
+      "SRC35"
+    ],
+    "physical_only": [
+      "SRC02",
+      "SRC06",
+      "SRC08",
+      "SRC12",
+      "SRC14",
+      "SRC26"
+    ],
+    "broadening_result": "TYPED_AUTHORITY_RESIDUAL"
+  },
+  "all35": {
+    "accounted": true,
+    "universal_execution_required": false,
+    "universal_green_claim_forbidden": true
+  }
+}
