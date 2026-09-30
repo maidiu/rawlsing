@@ -122,6 +122,8 @@ Top-level:
 - `23A_COURT9_FIRST_OWNER_CROSSWALK_R1.md` — first owner crosswalk + external-player seam finding
 - `24_COURT10_FLOURISHING_MORAL_PHYSICS_R1.md` — open flourishing/moral-physics court
 - `25_COURT11_PLAYER_PRAXIS_REFLECTION_R1.md` — open player-reflection court
+- `26_COURT8F_D002_NATIVE_PLAYER_SKILL_VS_DECLARED_CAPABILITY_R1.md` — native player skill vs unverifiable declared capability
+- `27_D002_MEDIUM_NATIVE_AGENCY_AND_ACTION_DECOMPRESSION_R1.md` — current action-decompression / medium-native agency law
 - `17_FULL_RAWLSING_VOZHD_GROUNDING_INTEGRITY_R1.md` — takeover verification
 - `08_INTERACTION_SYSTEM_SYNTHESIS_R1.md`
 - `09_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R2.md`
