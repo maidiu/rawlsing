@@ -1,0 +1,26 @@
+{
+  "schema": "PYAT_C1_02_FINAL_DISPOSITION@1",
+  "disposition": "PASS_SOURCE_FREE_PATCH_READY__INDEPENDENT_REVIEW_REQUIRED",
+  "terminal_token": "C1_02_HIGHER_ORDER_RECURSIVE_RETURNED__HQ_ADJUDICATION_REQUIRED",
+  "scope_limitation": "AT08–AT13 only; AT14–AT19 not implemented",
+  "prohibitions_respected": {
+    "raw_survey_files": true,
+    "candidate_abc": true,
+    "measured_p2x": true,
+    "real_source_c11_execution": true,
+    "new_real_source_authority": true,
+    "implicit_pooling": true,
+    "v3_actor_implementation": true,
+    "c1_03_implementation": true,
+    "c4_work": true
+  },
+  "c1_01_regression_status": "PRESERVED",
+  "tests": {
+    "passed": 83,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "blocker_summary": "None. Patch is branch-local and ready for HQ independent adjudication.",
+  "next_required_action": "HQ independent review and adoption decision on the returned branch."
+}

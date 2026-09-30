@@ -1,0 +1,147 @@
+{
+  "schema": "PYAT_C1_02_AT08_AT13_ACCEPTANCE_MATRIX@1",
+  "status": "ALL_AT08_AT13_PASSED",
+  "rows": [
+    {
+      "at": "AT08",
+      "summary": "Attitude-to-attitude and joint-to-target conditioning",
+      "positive_assertions": [
+        "Attitude/value condition can drive a different attitude target through actual public producer and actual consumer",
+        "Known multi-component/joint configuration can drive remaining target distribution",
+        "Conditioner values are present in identity/provenance",
+        "Changing one conditioner value changes the query/composed identity",
+        "Consumer-facing result preserves all conditioners and support, not collapsed to a display label"
+      ],
+      "hostile_assertions": [
+        "Incompatible source/release/risk/measure context fails closed rather than being coerced"
+      ],
+      "test_names": [
+        "test_at08_attitude_to_attitude_conditioning",
+        "test_at08_joint_target_conditioning",
+        "test_at08_condition_change_changes_identity",
+        "test_at08_context_mismatch_fails_closed"
+      ],
+      "producer_owner": "rawlsing_next.pre553_empirical_query.execute_empirical_query",
+      "consumer_path": "rawlsing_next.pre553_analytical_composition.compose_positioned_subject_possibility -> rawlsing_next.source_backed_positioned_subject_possibility.evaluate_positioned_subject_possibility",
+      "fixture_refs": [
+        "AT07_BIDIRECTIONAL_100",
+        "AT08_AT09_THREE_WAY_16"
+      ],
+      "execution_status": "PASSED",
+      "evidence_grade": "source-free executed producer + consumer use"
+    },
+    {
+      "at": "AT09",
+      "summary": "Higher-order signal: XOR/parity and equal marginals/different joints",
+      "positive_assertions": [
+        "XOR/parity configuration carries supported target signal not visible in individual/pairwise marginals",
+        "Two configurations with equal relevant marginals but different joint structure produce distinct outcomes",
+        "Composed analytical/consumer path preserves the distinction"
+      ],
+      "hostile_assertions": [
+        "Marginal-only or pairwise shortcut fails the court"
+      ],
+      "test_names": [
+        "test_at09_xor_parity_higher_order_signal",
+        "test_at09_equal_marginals_different_joints"
+      ],
+      "producer_owner": "rawlsing_next.pre553_discovery_exact.execute_exact_bounded_discovery",
+      "consumer_path": "rawlsing_next.pre553_analytical_composition.compose_positioned_subject_possibility -> consumer",
+      "fixture_refs": [
+        "AT08_AT09_THREE_WAY_16"
+      ],
+      "execution_status": "PASSED",
+      "evidence_grade": "source-free executed discovery + consumer use"
+    },
+    {
+      "at": "AT10",
+      "summary": "Minority / contradictory / counterpattern survival",
+      "positive_assertions": [
+        "Supported minority/counterpattern branch survives modal majority",
+        "Distinct state preserved even when ranking/selection is present"
+      ],
+      "hostile_assertions": [
+        "Ranking/selection may not delete supported alternative silently"
+      ],
+      "test_names": [
+        "test_at10_minority_counterpattern_survives"
+      ],
+      "producer_owner": "rawlsing_next.pre553_empirical_query.execute_empirical_query",
+      "consumer_path": "analytical composition -> consumer",
+      "fixture_refs": [
+        "AT10_MINORITY_100"
+      ],
+      "execution_status": "PASSED",
+      "evidence_grade": "source-free executed producer + consumer use"
+    },
+    {
+      "at": "AT11",
+      "summary": "Recursive ancestry and fresh-process continuation",
+      "positive_assertions": [
+        "Generation one performed through execute_exact_bounded_discovery_with_handoffs",
+        "Selected discovered branch persisted with write_recursive_handoff_bundle",
+        "Bundle loaded from retained material",
+        "Fresh Python process replays retained child membership",
+        "Second generation / depth-two continuation performed",
+        "Depth-two result consumed through C1 analytical/consumer path"
+      ],
+      "hostile_assertions": [
+        "Two child predicates with lookalike visible text but different lineage must not alias"
+      ],
+      "test_names": [
+        "test_at11_recursive_ancestry_and_fresh_process_continuation"
+      ],
+      "producer_owner": "rawlsing_next.pre553_recursive_handoff.execute_exact_bounded_discovery_with_handoffs",
+      "consumer_path": "analytical composition -> consumer",
+      "fixture_refs": [
+        "AT11_RECURSIVE_8"
+      ],
+      "execution_status": "PASSED",
+      "evidence_grade": "retained serialization replay + fresh-process empirical recomputation + consumer use"
+    },
+    {
+      "at": "AT12",
+      "summary": "Empirical co-travel without S14 semantic relation authority",
+      "positive_assertions": [
+        "Empirical configuration/co-travel result remains available to analytical/possibility consumer at its lawful direct empirical grade",
+        "Only the unavailable semantic interpretation is absent/blocked"
+      ],
+      "hostile_assertions": [
+        "Lack of S14 must not erase empirical co-travel evidence"
+      ],
+      "test_names": [
+        "test_at12_empirical_cotravel_without_s14"
+      ],
+      "producer_owner": "rawlsing_next.pre553_empirical_query.execute_empirical_query",
+      "consumer_path": "analytical composition -> consumer",
+      "fixture_refs": [
+        "AT12_COTRAVEL_NO_S14"
+      ],
+      "execution_status": "PASSED",
+      "evidence_grade": "source-free executed producer + consumer use"
+    },
+    {
+      "at": "AT13",
+      "summary": "Joint morphology and component scope",
+      "positive_assertions": [
+        "Genuinely non-scalar governed configuration preserved source-native component order",
+        "Component/value identity, arity/topology, component authority, target domain identity, and exact support preserved"
+      ],
+      "hostile_assertions": [
+        "Missing component vector must not be scalarized",
+        "Reordered components must reidentify lawfully or fail according to owner law",
+        "Heterogeneous component authority may not silently become universal J2I authority"
+      ],
+      "test_names": [
+        "test_at13_joint_morphology_component_scope"
+      ],
+      "producer_owner": "rawlsing_next.pre553_discovery_exact.execute_exact_bounded_discovery",
+      "consumer_path": "analytical composition -> consumer",
+      "fixture_refs": [
+        "AT13_RANKED_NATIVE_ORDER"
+      ],
+      "execution_status": "PASSED",
+      "evidence_grade": "source-free executed discovery + consumer use"
+    }
+  ]
+}

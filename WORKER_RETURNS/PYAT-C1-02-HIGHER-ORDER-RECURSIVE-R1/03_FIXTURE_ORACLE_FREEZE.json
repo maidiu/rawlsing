@@ -1,0 +1,80 @@
+{
+  "schema": "PYAT_C1_02_FIXTURE_ORACLE_FREEZE@1",
+  "oracle_independence": {
+    "rule": "Expected results are hand-derived from frozen synthetic rows and existing owner laws before any C1 candidate output.",
+    "candidate_output_used": false,
+    "real_survey_source_used": false,
+    "source_reads": 0
+  },
+  "fixture_files": [
+    {
+      "path": "rawlsing_next/tests/c1_at08_at13_fixture.py",
+      "purpose": "Synthetic source-free fixtures and hand-derived oracles for AT08–AT13"
+    }
+  ],
+  "frozen_oracles": [
+    {
+      "fixture_id": "AT08_ATTITUDE_TO_ATTITUDE",
+      "description": "Use POSITION=YES as conditioner and ANSWER as target on AT07 bidirectional 100 fixture.",
+      "expected": {
+        "P(yes|P=yes)": [54, 62],
+        "P(no|P=yes)": [8, 62]
+      }
+    },
+    {
+      "fixture_id": "AT08_JOINT_TARGET_CONDITIONING",
+      "description": "Joint A=1,B=1 conditions C target on AT08_AT09_THREE_WAY_16.",
+      "expected": {
+        "P(C=1|A=1,B=1)": [3, 4]
+      }
+    },
+    {
+      "fixture_id": "AT09_XOR_PARITY",
+      "description": "A xor B predicts C; marginals over A or B alone are flat.",
+      "expected": {
+        "P(C=1|A=1)": [4, 8],
+        "P(C=1|B=1)": [4, 8],
+        "P(C=1|A=1,B=1)": [3, 4],
+        "P(C=1|A=1,B=0)": [1, 4]
+      }
+    },
+    {
+      "fixture_id": "AT09_EQUAL_MARGINALS_DIFFERENT_JOINTS",
+      "description": "Two synthetic universes with identical A/B/C marginals but different joint distributions produce different consumer results.",
+      "expected": "consumer results differ; identity hashes differ"
+    },
+    {
+      "fixture_id": "AT10_MINORITY",
+      "description": "Modal 90, minority 7, counterpattern 3; all present in consumer result.",
+      "expected": "three distinct supported branches in evidence"
+    },
+    {
+      "fixture_id": "AT11_RECURSIVE_DEPTH_TWO",
+      "description": "Parent predicate A=1; child A=1&B=1; depth-two continuation in fresh process.",
+      "expected": {
+        "parent_support": 4,
+        "child_support": 2,
+        "lineage_preserved": true,
+        "lookalike_does_not_alias": true
+      }
+    },
+    {
+      "fixture_id": "AT12_COTRAVEL_NO_S14",
+      "description": "Empirical joint X/Y available; semantic relation authority absent.",
+      "expected": {
+        "P(X=1,Y=1)": [2, 4],
+        "s14_authority": "BLOCKED"
+      }
+    },
+    {
+      "fixture_id": "AT13_RANKED_NATIVE_ORDER",
+      "description": "Ranked multiselect component vector preserved in native order.",
+      "expected": {
+        "denominator": 3,
+        "topology": "RANKED_RESPONSE",
+        "order_preserved": true
+      }
+    }
+  ],
+  "hash_law": "authority_content_hash = sha256(canonical_json(complete frozen authority preimage)); same label with changed material must change identity"
+}

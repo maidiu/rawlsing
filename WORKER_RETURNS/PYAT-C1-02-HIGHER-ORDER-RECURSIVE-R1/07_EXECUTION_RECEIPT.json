@@ -1,0 +1,36 @@
+{
+  "schema": "PYAT_C1_02_EXECUTION_RECEIPT@1",
+  "head_tested": "88181e69852721f1e29c868ec5f5256095716a19",
+  "git_status_before": {
+    "clean_vs_base": false,
+    "modified_allowed": [
+      "rawlsing_next/pre553_analytical_composition.py",
+      "rawlsing_next/tests/test_pre553_analytical_composition.py"
+    ],
+    "untracked_allowed": [
+      "rawlsing_next/tests/c1_at08_at13_fixture.py",
+      "rawlsing_next/tests/c1_at08_at13_fresh_process_runner.py",
+      "rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py"
+    ],
+    "note": "Unrelated untracked files (.DS_Store, survey data files, deepseek-harness, etc.) existed in workspace and were not touched; they are outside allowed write terrain and not part of this return."
+  },
+  "python_version": "3.12.14",
+  "pytest_version": "9.1.1",
+  "final_command": "python -m pytest -q rawlsing_next/tests/test_pre553_analytical_composition.py rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py rawlsing_next/tests/test_pre553_empirical_query.py rawlsing_next/tests/test_pre553_discovery_exact.py rawlsing_next/tests/test_pre553_recursive_handoff.py rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py",
+  "python_executable": "/tmp/c1-01-r8-release-spine-venv/bin/python",
+  "exit_code": 0,
+  "pass": 83,
+  "fail": 0,
+  "error": 0,
+  "skip": 0,
+  "breakdown": {
+    "test_pre553_analytical_composition.py": "58 passed",
+    "test_pre553_analytical_composition_higher_order.py": "9 passed",
+    "test_pre553_empirical_query.py": "passed",
+    "test_pre553_discovery_exact.py": "passed",
+    "test_pre553_recursive_handoff.py": "passed",
+    "test_source_backed_positioned_subject_possibility.py": "passed"
+  },
+  "final_output_file": "WORKER_RETURNS/PYAT-C1-02-HIGHER-ORDER-RECURSIVE-R1/FINAL_COURT.txt",
+  "materially_informative_failures": []
+}

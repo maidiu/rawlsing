@@ -1,0 +1,63 @@
+{
+  "schema": "PYAT_C1_02_COVERAGE_AND_HOSTILE_AUDIT@1",
+  "coverage_grades_distinct": [
+    "static inspection",
+    "source-free executed producer",
+    "discovery execution",
+    "retained serialization replay",
+    "fresh-process empirical recomputation",
+    "consumer use"
+  ],
+  "hostile_cases": [
+    {
+      "at": "AT08",
+      "case": "context_mismatch_fails_closed",
+      "description": "Incompatible source/release/risk/measure context fails closed",
+      "expected": "raises typed exception before consumer call",
+      "test_name": "test_at08_context_mismatch_fails_closed"
+    },
+    {
+      "at": "AT09",
+      "case": "xor_parity_marginals_flat",
+      "description": "Single-conditioner marginals are insufficient; joint XOR configuration carries signal",
+      "expected": "P(C=1|A=1) != P(C=1|A=1,B=1)",
+      "test_name": "test_at09_xor_parity_higher_order_signal"
+    },
+    {
+      "at": "AT09",
+      "case": "equal_marginals_different_joints",
+      "description": "Two universes with identical marginals but different joint structure produce different consumer identities",
+      "expected": "consumer result identities differ",
+      "test_name": "test_at09_equal_marginals_different_joints"
+    },
+    {
+      "at": "AT10",
+      "case": "minority_counterpattern_not_deleted",
+      "description": "Supported minority/counterpattern branch survives modal ranking",
+      "expected": "minority and counterpattern branches remain in evidence",
+      "test_name": "test_at10_minority_counterpattern_survives"
+    },
+    {
+      "at": "AT11",
+      "case": "lookalike_child_must_not_alias",
+      "description": "Child predicate with lookalike text under different parent does not alias",
+      "expected": "lineage mismatch raises RecursiveLineageMismatch",
+      "test_name": "test_at11_recursive_ancestry_and_fresh_process_continuation"
+    },
+    {
+      "at": "AT12",
+      "case": "s14_absent_blocks_only_semantic_interpretation",
+      "description": "Empirical co-travel remains available; only S14 semantic relation authority is blocked",
+      "expected": "empirical joint present; semantic relation path absent",
+      "test_name": "test_at12_empirical_cotravel_without_s14"
+    },
+    {
+      "at": "AT13",
+      "case": "component_vector_not_scalarized",
+      "description": "Ranked component vector preserved as vector",
+      "expected": "consumer evidence retains native component order",
+      "test_name": "test_at13_joint_morphology_component_scope"
+    }
+  ],
+  "authority_gaps_or_owner_changes_required": []
+}

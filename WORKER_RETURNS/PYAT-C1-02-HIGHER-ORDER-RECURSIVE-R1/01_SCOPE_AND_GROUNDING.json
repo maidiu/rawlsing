@@ -1,0 +1,38 @@
+{
+  "schema": "PYAT_C1_02_SCOPE_AND_GROUNDING@1",
+  "commission": "PYAT-C1-02-HIGHER-ORDER-RECURSIVE-R1",
+  "commission_tip": "88181e69852721f1e29c868ec5f5256095716a19",
+  "branch": "agent/opencode-pyat-hq139-c1-02-higher-order-recursive-r1",
+  "accepted_c1_01_base": "5fafb499d53dddadaf8a7b4fd46506e91a09d270",
+  "accepted_c1_01_executable_return": "3c09a2d5de6d5335874bb1d2b787cfe69ec2d9e5",
+  "independent_c1_01_review_return": "98825f710e5238e794c78bf0acbb43faaea355e4",
+  "governing_spec": "PYAT_CONTROL_ROOM/OMEGA_VOZHD_ORCHESTRATION_R1/05_C1_EXECUTION_SPEC.md",
+  "current_implementation_snapshot_confirmed": true,
+  "snapshot_confirmation_note": "Live integration/pre-main-reconciliation-r1 compared; no implementation delta relevant to this terrain. No merges or rebases performed.",
+  "scope": "AT08–AT13 only",
+  "c1_03_at14_at19": "NOT_IMPLEMENTED",
+  "c4": "NOT_IMPLEMENTED",
+  "primary_owner": "rawlsing_next/pre553_analytical_composition.py",
+  "public_producers_reused": {
+    "direct_empirical_query": "rawlsing_next.pre553_empirical_query.execute_empirical_query",
+    "exact_bounded_discovery": "rawlsing_next.pre553_discovery_exact.execute_exact_bounded_discovery",
+    "recursive_handoff": "rawlsing_next.pre553_recursive_handoff.execute_exact_bounded_discovery_with_handoffs",
+    "consumer": "rawlsing_next.source_backed_positioned_subject_possibility.evaluate_positioned_subject_possibility",
+    "retained_recursive_bundle": [
+      "write_recursive_handoff_bundle",
+      "load_recursive_handoff_bundle",
+      "replay_recursive_branch_membership"
+    ]
+  },
+  "prohibited_items_asserted_absent": [
+    "raw survey files",
+    "Candidate A/B/C",
+    "measured P2X",
+    "real-source C11 execution",
+    "new real-source semantic/comparability authority",
+    "implicit pooling",
+    "V3 actor/person implementation",
+    "C1-03 implementation beyond incidental preservation",
+    "C4 work"
+  ]
+}

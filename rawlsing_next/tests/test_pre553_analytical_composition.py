@@ -630,9 +630,11 @@ def test_composer_has_no_preconstructed_possibility_slice_input():
     sig = inspect.signature(compose_positioned_subject_possibility)
     assert "evidence" not in sig.parameters
     assert "possibility_slice_evidence" not in sig.parameters
+    # C1-01 core parameters + C1-02 optional extensions
     assert set(sig.parameters) == {
         "repository", "empirical_query", "predicate", "authority_registry", "release_refs",
         "consumer_query", "model_rule", "condition_binding_witness",
+        "discovery_result", "discovery_receipt_ref", "recursive_handoff",
     }
 
 

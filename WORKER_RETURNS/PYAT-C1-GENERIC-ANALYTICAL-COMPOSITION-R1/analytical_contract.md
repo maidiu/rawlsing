@@ -1,6 +1,8 @@
 # C1-00 analytical-composition contract freeze — R1 + R2 + R3 + R4 corrections
 
-Status: `C1_00_R4_EXACT_SELECTION_KEY_SYNCHRONIZATION_READY_FOR_INDEPENDENT_REREVIEW`
+Status: `C1_02_R1_AT08_AT13_EXECUTED__GENERIC_PACKET_SYNCHRONIZED__INDEPENDENT_REVIEW_REQUIRED`
+
+Previous status: `C1_00_R4_EXACT_SELECTION_KEY_SYNCHRONIZATION_READY_FOR_INDEPENDENT_REREVIEW`
 
 This is a **documentary contract/oracle freeze only**. It does not self-approve C1-00, execute C1-01, edit production code, create survey/model/comparability authority, or claim real-source proof.
 
@@ -639,5 +641,69 @@ Historical R6/R7 fixture identities (preserved evidence, superseded as current e
 - reverse evidence `0cd3b5b868852db956a079835c5052c206561b0fe2a7480931e6de0dc5d81844`
 
 R6 changed fixture identity only. Forward 54/60, reverse 54/62, producer-derived denominator support, value-bearing relation law, source/release/risk/measure/provenance semantics, noncircular evidence construction, and fail-closed ordering remain unchanged. R8 now carries the source-free execution receipt and current executable identity spine.
+
+
+## C1-02 extension — AT08–AT13 source-free execution
+
+This section is synchronized with `WORKER_RETURNS/PYAT-C1-02-HIGHER-ORDER-RECURSIVE-R1/00_RETURN.md`.
+
+Commission: `88181e69852721f1e29c868ec5f5256095716a19`
+Branch: `agent/opencode-pyat-hq139-c1-02-higher-order-recursive-r1`
+Accepted C1-01 base: `5fafb499d53dddadaf8a7b4fd46506e91a09d270`
+
+### Extended public contract
+
+`compose_positioned_subject_possibility` accepts three additional optional C1-02 parameters without weakening the C1-01 contract:
+
+- `consumer_binding_materials: Sequence[ConditionerBindingMaterial] | None` — full material of every retained consumer conditioner, used to derive a strong condition identity for multi-conditioner queries;
+- `discovery_result: ExactBoundedDiscoveryResult | None` — lawful discovery route input; adapter consumes exact receipts/facts/queries/predicates, never score/label alone;
+- `recursive_result: RecursiveHandoffDiscoveryResult | None` — lawful recursive route input; adapter consumes handoff plus attached full discovery coverage record.
+
+At most one producer route is populated per call; an empty producer result with valid identity material is permitted for retained-bundle continuation where the consumer-facing evidence is supplied through the recursive result's replay path.
+
+### New C1-02 routes exercised
+
+1. **DIRECT_EMPIRICAL_MULTI_CONDITIONER** — `execute_empirical_query` with a joint consumer query whose target geometry matches the canonical first producer target ref.
+2. **EXACT_DISCOVERY** — `execute_exact_bounded_discovery` consumed as exact receipt/fact/query/predicate closure; XOR/parity and ranked component-vector targets preserved.
+3. **RECURSIVE_HANDOFF** — `execute_exact_bounded_discovery_with_handoffs`, `write_recursive_handoff_bundle`, `load_recursive_handoff_bundle`, `replay_recursive_branch_membership` in a fresh Python process, then depth-two continuation and consumer use.
+
+### C1-02 identity preservation
+
+- Exact source universe/release identity;
+- Exact condition values (not only labels) in identity/provenance;
+- Joint morphology and component topology;
+- Exact risk/denominator/member identity;
+- Exact measure and support;
+- Source-native component ordering;
+- Minority/counterpattern alternatives;
+- Recursive ancestry and lineage;
+- Discovery coverage state;
+- Positive versus negative/unvisited distinction;
+- Exact producer/query/fact/replay provenance;
+- Consumer identity and evidence;
+- Authority ceiling.
+
+### C1-02 state additions
+
+New typed residual states introduced in `rawlsing_next/pre553_analytical_composition.py`:
+
+- `JointTargetMismatch` — consumer target geometry cannot be matched to producer output without scalarization;
+- `RecursiveLineageMismatch` — supplied recursive handoff does not match expected parent/child lineage;
+- `DiscoveryConsumptionMismatch` — discovery result lacks the exact receipt/fact closure required by the consumer query.
+
+### C1-02 execution court
+
+Command:
+```
+python -m pytest -q rawlsing_next/tests/test_pre553_analytical_composition.py rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py rawlsing_next/tests/test_pre553_empirical_query.py rawlsing_next/tests/test_pre553_discovery_exact.py rawlsing_next/tests/test_pre553_recursive_handoff.py rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py
+```
+
+Result: 83 passed, 0 failed, 0 errors, 0 skipped.
+
+### C1-02 scope limits
+
+AT08–AT13 only. AT14–AT19 remain explicitly unimplemented. No raw survey files, no Candidate A/B/C, no measured P2X, no real-source C11 execution, no new semantic/comparability/model authority, no V3 actor/person implementation, no C4 work.
+
+This extension preserves all accepted C1-01 behavior and identities.
 
 Current executed R8 fixture identities are frozen in `WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R8/04_CURRENT_AT07_IDENTITY_SPINE.json`: forward consumer query `0e966cca...61330`, witness `fb3a3b56...84db5`, evidence `b2407eeb...78307`; reverse consumer query `02b3eabf...5f323`, witness `0c75b6ca...bf2df`, evidence `e40c31ea...851d6`. Full predicate custody and supersession classification are in the same R8 packet.

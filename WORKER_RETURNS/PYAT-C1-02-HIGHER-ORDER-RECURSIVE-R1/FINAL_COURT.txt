@@ -1,0 +1,25 @@
+PYAT C1-02 Final Required Court
+================================
+
+Command:
+/tmp/c1-01-r8-release-spine-venv/bin/python -m pytest -q rawlsing_next/tests/test_pre553_analytical_composition.py rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py rawlsing_next/tests/test_pre553_empirical_query.py rawlsing_next/tests/test_pre553_discovery_exact.py rawlsing_next/tests/test_pre553_recursive_handoff.py rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py
+
+Python: 3.12.14
+pytest: 9.1.1
+
+Output:
+........................................................................ [ 86%]
+...........                                                              [100%]
+83 passed in 8.22s
+
+Exit code: 0
+
+Summary:
+- test_pre553_analytical_composition.py: 58 passed (C1-01 regression court)
+- test_pre553_analytical_composition_higher_order.py: 9 passed (C1-02 AT08–AT13 court)
+- test_pre553_empirical_query.py: passed
+- test_pre553_discovery_exact.py: passed
+- test_pre553_recursive_handoff.py: passed
+- test_source_backed_positioned_subject_possibility.py: passed
+
+Total: 83 passed, 0 failed, 0 errors, 0 skipped

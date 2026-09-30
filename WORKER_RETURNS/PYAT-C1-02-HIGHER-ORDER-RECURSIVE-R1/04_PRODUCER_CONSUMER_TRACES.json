@@ -1,0 +1,52 @@
+{
+  "schema": "PYAT_C1_02_PRODUCER_CONSUMER_TRACES@1",
+  "trace_summary": "Source-free producer outputs were routed through the extended C1 analytical composition owner and then into the actual possibility consumer.",
+  "routes_exercised": [
+    {
+      "route": "DIRECT_EMPIRICAL",
+      "producer": "rawlsing_next.pre553_empirical_query.execute_empirical_query",
+      "composition_owner": "rawlsing_next.pre553_analytical_composition.compose_positioned_subject_possibility",
+      "consumer": "rawlsing_next.source_backed_positioned_subject_possibility.evaluate_positioned_subject_possibility",
+      "ats": ["AT08", "AT10", "AT12"]
+    },
+    {
+      "route": "EXACT_BOUNDED_DISCOVERY",
+      "producer": "rawlsing_next.pre553_discovery_exact.execute_exact_bounded_discovery",
+      "composition_owner": "rawlsing_next.pre553_analytical_composition.compose_positioned_subject_possibility",
+      "consumer": "rawlsing_next.source_backed_positioned_subject_possibility.evaluate_positioned_subject_possibility",
+      "ats": ["AT09", "AT13"]
+    },
+    {
+      "route": "RECURSIVE_HANDOFF",
+      "producer": "rawlsing_next.pre553_recursive_handoff.execute_exact_bounded_discovery_with_handoffs",
+      "composition_owner": "rawlsing_next.pre553_analytical_composition.compose_positioned_subject_possibility",
+      "consumer": "rawlsing_next.source_backed_positioned_subject_possibility.evaluate_positioned_subject_possibility",
+      "ats": ["AT11"]
+    }
+  ],
+  "composition_extensions_used": [
+    "legacy/new-format multi-conditioner witness detection",
+    "joint target geometry",
+    "discovery route consumption",
+    "recursive route consumption",
+    "identity_material handling for producer_result=None",
+    "JointTargetMismatch",
+    "RecursiveLineageMismatch",
+    "DiscoveryConsumptionMismatch"
+  ],
+  "consumer_preservation_assertions": [
+    "exact source universe and release identity",
+    "exact condition values, not labels alone",
+    "joint morphology",
+    "exact risk/denominator/member identity",
+    "exact measure",
+    "source-native component ordering",
+    "minority/counterpattern alternatives",
+    "recursive ancestry",
+    "discovery coverage state",
+    "positive versus negative/unvisited distinction",
+    "exact producer/query/fact/replay provenance",
+    "consumer identity and evidence",
+    "authority ceiling"
+  ]
+}

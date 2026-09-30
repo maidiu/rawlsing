@@ -1,0 +1,47 @@
+{
+  "schema": "PYAT_C1_02_RECURSIVE_FRESH_PROCESS_RECEIPT@1",
+  "at": "AT11",
+  "test_name": "test_at11_recursive_ancestry_and_fresh_process_continuation",
+  "runner_file": "rawlsing_next/tests/c1_at08_at13_fresh_process_runner.py",
+  "steps": [
+    {
+      "step": 1,
+      "grade": "source-free executed producer",
+      "owner": "rawlsing_next.pre553_recursive_handoff.execute_exact_bounded_discovery_with_handoffs",
+      "action": "Perform generation-one discovery with parent predicate A=1"
+    },
+    {
+      "step": 2,
+      "grade": "retained serialization replay",
+      "owner": "rawlsing_next.pre553_recursive_handoff.write_recursive_handoff_bundle",
+      "action": "Persist selected discovered branch to temporary bundle"
+    },
+    {
+      "step": 3,
+      "grade": "retained serialization replay",
+      "owner": "rawlsing_next.pre553_recursive_handoff.load_recursive_handoff_bundle",
+      "action": "Load bundle from retained material"
+    },
+    {
+      "step": 4,
+      "grade": "fresh-process empirical recomputation",
+      "owner": "rawlsing_next.tests.c1_at08_at13_fresh_process_runner.py",
+      "action": "Spawn new Python process, replay child membership, run depth-two continuation",
+      "process": "subprocess with isolated sys.path"
+    },
+    {
+      "step": 5,
+      "grade": "consumer use",
+      "owner": "rawlsing_next.pre553_analytical_composition.compose_positioned_subject_possibility",
+      "action": "Compose depth-two result and route to consumer"
+    }
+  ],
+  "lineage_assertions": {
+    "parent_predicate_preserved": true,
+    "ancestor_chain_preserved": true,
+    "child_cohort_identity_preserved": true,
+    "support_preserved": true,
+    "lookalike_other_parent_not_aliased": true
+  },
+  "coverage_distinction": "Handoff-selected positives are explicitly distinguished from negative/unselected/unvisited coverage; no claim of exhaustive coverage from adaptive/partial frontier."
+}
