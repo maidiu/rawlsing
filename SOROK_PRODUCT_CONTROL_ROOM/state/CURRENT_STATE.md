@@ -130,6 +130,7 @@ Top-level:
 - `31_ENTRY_PRIMER_AND_BEGINNING_TO_KNOW_LOOP_R1.md` — first-session primer / reciprocal acquaintance formation layer
 - `32_DUAL_INTERFACE_SCENE_EXIT_MESSAGING_AND_SUCCESSION_R1.md` — dual portal/message surface, natural scene exit, messaging roster and relationship succession
 - `33_RELATIONAL_WARRANT_FOR_SUCCESSION_R1.md` — relational warrant for introducing another unresolved human life
+- `34_PERSON_TO_PERSON_SEEDING_AND_RELATIONAL_VIRAL_LOOP_R1.md` — person-to-person seeding / relational viral distribution
 - `17_FULL_RAWLSING_VOZHD_GROUNDING_INTEGRITY_R1.md` — takeover verification
 - `08_INTERACTION_SYSTEM_SYNTHESIS_R1.md`
 - `09_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R2.md`
