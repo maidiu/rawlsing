@@ -1,0 +1,126 @@
+{
+  "schema": "PYAT_D02_EVS2008_SEARCH_AND_CUSTODY_AUDIT@1.0.0",
+  "commission_tip": "57d7ee585f7364383394d067c6aeb871470edda4",
+  "exact_base": "6f6ab9dfe5ad8f9359630dd05abf43c3fd11a1b5",
+  "source": {
+    "source_id": "SRC14",
+    "source_file": "EVS 2008.sav",
+    "sha256": "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379"
+  },
+  "prohibitions_observed": {
+    "raw_sav_opened": false,
+    "raw_sav_materialized": false,
+    "raw_sav_downloaded": false,
+    "raw_sav_decoded": false,
+    "raw_sav_inspected": false,
+    "user_mac_used": false,
+    "new_source_scanning_algorithm_created": false,
+    "semantic_locator_inferred": false
+  },
+  "search_order": [
+    {
+      "order": 1,
+      "terrain": "CLOSED35 physical representation/census returns",
+      "evidence": [
+        {
+          "commit": "b801c58c8e4d6d10e36e0a42ca62cf6908cbf25a",
+          "path": "WORKER_RETURNS/PREMAIN-CLOSED35-QUALIFIED-REPRESENTATION-CENSUS-RESULTS-R1/source_receipts/SOURCE_14_REPRESENTATION_RECEIPT.json",
+          "blob": "3e08e2ace5ab585336950dc3e6b555ce09405ebc",
+          "finding": "EXACT_SOURCE_D02_FAILURE_RETAINED__NO_LOCATOR__NO_NATIVE_INSTANCE_TYPE"
+        },
+        {
+          "commit": "11704fbfa16797fbdd55dadc7929aaad729c9454",
+          "path": "rawlsing_next/closed35_representation_census_harness.py",
+          "blob": "b667f7198349486cec32d8168ddc2de1ed0427a8",
+          "finding": "HASH_AND_SIZE_GATED_METADATA_OBSERVATION__EXCEPTION_WRAPPER_DISCARDS_FAILING_SUBLOCATION"
+        },
+        {
+          "commit": "463a388b306b742e0323c91b086805e34f714dde",
+          "path": "WORKER_RETURNS/PREMAIN-CLOSED35-REPRESENTATION-REGIME-R1/00_RETURN.md",
+          "finding": "FANIN_FREEZES_D02_AS_NONSEMANTIC_DEBT_EXPOSED_BY_EVS2008__NO_LOCATOR"
+        }
+      ],
+      "result": "NO_COMPETENT_EXACT_LOCATOR_OR_TRAVERSAL_ORACLE"
+    },
+    {
+      "order": 2,
+      "terrain": "C3-01/C3-02/C3-03 historical worker/reviewer artifacts",
+      "evidence": [
+        {
+          "commit": "30686b185d4ceb2c94f61815ef70d8c8e76255d6",
+          "path": "rawlsing_next/pre553_r5_codec.py",
+          "finding": "GENERIC_NATIVE_DATETIME_DATE_TIME_OPAQUE_CARRIER_LAW_ONLY"
+        },
+        {
+          "commit": "901e3e77f905847d3ef8d86b458280d8fe422dd0",
+          "paths": [
+            "rawlsing_next/pre553_physical_decoder.py",
+            "rawlsing_next/tests/test_closed35_d02_opaque_datetime_carrier.py"
+          ],
+          "finding": "SOURCE_FREE_DECODER_ROUTE_AND_HOSTILES_ONLY__NO_EVS2008_LOCATOR"
+        },
+        {
+          "commit": "462e6bf1ed514056f9316dad761054e690a7755d",
+          "path": "WORKER_RETURNS/PYAT-C3-SOURCE-FREE-INTEGRATION-REVIEW-R1/04_FINAL_DISPOSITION.json",
+          "finding": "INDEPENDENTLY_APPROVES_GENERIC_D02_LAW__RAW_SOURCE_ACCESS_ZERO"
+        }
+      ],
+      "result": "TYPE_CLASS_LAW_RECOVERED__SOURCE_LOCATOR_NOT_RECOVERED"
+    },
+    {
+      "order": 3,
+      "terrain": "FIABC LM2/R1J upstream decoder/representation returns",
+      "result": "NO_EVS2008_D02_LOCATOR_FOUND; R1J retained owner terrain is WVS7-specific and cannot substitute for SRC14"
+    },
+    {
+      "order": 4,
+      "terrain": "SR03 source-native metadata probe outputs and retained receipts",
+      "evidence": [
+        {
+          "ref": "6f6ab9dfe5ad8f9359630dd05abf43c3fd11a1b5",
+          "path": "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/SR03_SOURCE_NATIVE_METADATA_PROBE.py",
+          "blob": "58d26c20cba301270488d6d396cecd5710ad15ed",
+          "finding": "EXACT_SHA_COMPATIBILITY_METADATA_PROBE__NO_RETAINED_D02_LOCATOR"
+        },
+        {
+          "ref": "6f6ab9dfe5ad8f9359630dd05abf43c3fd11a1b5",
+          "path": "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/16_SR03_R3_ADJUDICATION.md",
+          "blob": "fde75ccad487adfc6148f12843448798551874b7",
+          "finding": "EVS2008_COMPATIBILITY_EXECUTION_RETAINED__NO_D02_LOCATOR"
+        }
+      ],
+      "result": "CUSTODY_AND_DECODER_CONFIGURATION_ONLY"
+    },
+    {
+      "order": 5,
+      "terrain": "source certification / PRE553 physical reconnaissance returns",
+      "result": "EXACT_SOURCE_SHA_AND_COMPATIBILITY_CUSTODY_FOUND__NO_D02_LOCATOR_OR_FROZEN_D02_TRAVERSAL_ORACLE"
+    },
+    {
+      "order": 6,
+      "terrain": "Chetiri C03/C04/C05 source-backed historical receipts",
+      "evidence": [
+        {
+          "ref": "6f6ab9dfe5ad8f9359630dd05abf43c3fd11a1b5",
+          "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/PROJECT_INHERITANCE_R1/CAMPAIGNS/N010_CHETIRI_SOURCE_BACKED_ARCHITECTURE/CORPUS/ORIGINAL/334b4563dc43__C05_RESULT.json",
+          "blob": "334b4563dc4376a6f06e1292f86659f5a3e9be3a",
+          "finding": "EVS2008_NAMED_SOURCE_BACKED_TERRAIN__NO_D02_LOCATOR"
+        }
+      ],
+      "result": "NO_COMPETENT_D02_LOCATOR_OR_ORACLE"
+    },
+    {
+      "order": 7,
+      "terrain": "Project Library named retained artifacts",
+      "result": "NOT_INVOKED__REPOSITORY_CUSTODY_DID_NOT_POINT_TO_A_NAMED_MISSING_RETAINED_D02_ARTIFACT"
+    }
+  ],
+  "custody_holding": {
+    "exact_source_sha_proved_in_historical_census_receipt": true,
+    "hash_checked_before_historical_failure": true,
+    "basis": "qualified harness observe_source hashes full source and checks exact size before metadata-only read; immutable SRC14 failure receipt was emitted only after entering that exact-source path",
+    "historical_receipt_predates_future_c4": true,
+    "historical_receipt_commit_time": "2026-09-23T07:28:16Z"
+  },
+  "terminal_search_result": "NO_COMPETENT_RETAINED_LOCATOR_OR_ORACLE_FOUND"
+}
