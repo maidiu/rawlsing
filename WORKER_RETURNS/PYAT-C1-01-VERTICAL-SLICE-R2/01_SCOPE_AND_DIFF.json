@@ -1,0 +1,27 @@
+{
+  "schema": "PYAT_C1_01_R2_SCOPE_AND_DIFF@1",
+  "status": "PREIMAGE_UNDERDETERMINED__CONTRACT_CORRECTION_REQUIRED",
+  "branch": "agent/rabochii-pyat-hq131-c1-01-preimage-completion-r1",
+  "exact_base": "d20466c21ec62e62c3abbf6f83481984aa113000",
+  "commission_tip": "eb01a888aef9403fdf1a387d9700de51e8e4c691",
+  "frozen_production_blob": {
+    "path": "rawlsing_next/pre553_analytical_composition.py",
+    "blob_sha": "5c85d33987d7dc78efe98ceb5e78afe1ddc89b20",
+    "edited": false
+  },
+  "successful_correction_gate_reached": false,
+  "edited_current_c1_packet": false,
+  "edited_test_file": false,
+  "edited_historical_R2_R3_R4": false,
+  "writes": [
+    "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R5/**",
+    "WORKER_RETURNS/PYAT-C1-01-VERTICAL-SLICE-R2/**"
+  ],
+  "omitted_success_only_writes": [
+    "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/analytical_contract.md",
+    "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/fixture_oracle_manifest.json",
+    "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/worker_return.json",
+    "rawlsing_next/tests/test_pre553_analytical_composition.py"
+  ],
+  "reason_for_omission": "Commission authorizes these continuation edits only if all four preimages reconstruct exactly; that gate did not occur."
+}
