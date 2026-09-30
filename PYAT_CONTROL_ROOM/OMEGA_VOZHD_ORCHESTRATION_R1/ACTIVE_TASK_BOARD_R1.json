@@ -1,27 +1,13 @@
 {
   "schema": "PYAT_OMEGA_ACTIVE_TASK_BOARD@1",
-  "revision": 14,
-  "status": "C2_SOURCE_FREE_PREPARATION_COMPLETE__D02_LOCATOR_CLOSED__C1_R7_OWNER_CLOSURE_BOUND__C3_ADOPTED",
+  "revision": 15,
+  "status": "C1_R7_PATCH_READY_REVIEW_AND_EXECUTION_BOUND__C2_PREP_COMPLETE__C3_ADOPTED",
   "control_branch": "integration/pre-main-reconciliation-r1",
-  "implementation_baseline": "b3b2fa13049513078c301a1f6574b661fcf390c5",
   "adopted_preparation": [
     {
       "id": "C2",
       "state": "COMPLETE_AT_DECLARED_C4_PREPARATION_GRAIN",
-      "selected_sources": [
-        "02",
-        "06",
-        "08",
-        "12",
-        "14",
-        "26",
-        "27",
-        "35"
-      ],
-      "independent_review": "105e68c4e7b0d991299ef0bf33616b7a6d67349a",
-      "d02_locator_review": "dbff6acdb9557ab65dda0bd564295cec5fc55062",
-      "d02_blocker": "CLOSED_AT_DECLARED_GRAIN",
-      "c4_execution_authorized": false
+      "d02_blocker": "CLOSED_AT_DECLARED_GRAIN"
     },
     {
       "id": "C3",
@@ -31,56 +17,42 @@
   ],
   "observed_returns": [
     {
-      "id": "C1-01-R6-REVIEW",
-      "head": "458f839845fc149874e5a64af5eda41bbd52c4e1",
-      "disposition": "ESCALATE_WITH_COUNTEREXAMPLE"
-    },
-    {
-      "id": "C1-01-R6-EXEC",
-      "head": "a92f977e9ce4615326b09ad9e3407b3b02684788",
-      "disposition": "BLOCKED_EXECUTION_CAPABILITY",
-      "pytest_started": false,
-      "patch_failed": false
-    },
-    {
-      "id": "D02-LOCATOR-REVIEW",
-      "head": "dbff6acdb9557ab65dda0bd564295cec5fc55062",
-      "disposition": "APPROVE_AT_DECLARED_GRAIN"
+      "id": "C1-01-R7",
+      "head": "0da3c9c13ffd91cf50ab93f6280949eb960792c0",
+      "disposition": "PATCH_READY__REVIEW_AND_EXECUTION_REQUIRED",
+      "owner_blob": "26f3380cb83cbbcedc87c74aaf603b0492c8ce8f",
+      "witness_packet_blob": "57f4caf5a5c148d60fcfe8322ff2016de5b4f4a1",
+      "test_blob": "db6b876f15d145cfc48cc6d944e48da4460842d3"
     }
   ],
   "active_tasks": [
     {
-      "id": "C1-01-R7",
-      "branch": "agent/rabochii-pyat-hq135-c1-01-r7-owner-closure-r1",
-      "commission_tip": "7ea809f3b4433d24c027eb0ad3e98b0a6d3fb607",
-      "base": "458f839845fc149874e5a64af5eda41bbd52c4e1",
-      "state": "BOUND_AWAITING_USER_MEDIATED_LAUNCH",
-      "scope": "EXACT_16_KEY_OWNER_REPAIR__FULL_WITNESS_PREIMAGE_FREEZE__MANDATORY_HOSTILE_RESTORE",
-      "pass_wake": "C1_01_R7_INDEPENDENT_REVIEW_AND_EXACT_PATCH_EXECUTION"
-    }
-  ],
-  "superseded_tasks": [
+      "id": "C1-01-R7-REVIEW",
+      "branch": "agent/reviewer-pyat-hq136-c1-01-r7-r1",
+      "commission_tip": "4771288033607a4b6cac2c9d4c99cfc284f34ad7",
+      "base": "0da3c9c13ffd91cf50ab93f6280949eb960792c0",
+      "state": "BOUND_AWAITING_USER_MEDIATED_LAUNCH"
+    },
     {
-      "id": "D02-ORACLE-CONTRACT",
-      "branch": "agent/rabochii-pyat-hq133-d02-traversal-oracle-contract-r1",
-      "state": "SUPERSEDED_DO_NOT_LAUNCH",
-      "reason": "EXACT_RETAINED_LOCATOR_INDEPENDENTLY_ACCEPTED"
+      "id": "C1-01-R7-EXEC",
+      "branch": "agent/codex-pyat-hq136-c1-01-r7-execution-r1",
+      "commission_tip": "5dffa927f8160f387a60404db77ff48c218fdd70",
+      "base": "0da3c9c13ffd91cf50ab93f6280949eb960792c0",
+      "state": "BOUND_AWAITING_USER_MEDIATED_CODEX_LAUNCH"
     }
   ],
   "held": [
-    "C1-01 R7 independent review and exact-patch execution until R7 return exists",
-    "C1-02 until C1-01 accepted",
+    "C1-02 until C1-01 R7 independent review and exact-patch execution both pass",
     "C1-03 until C1-02",
     "C1-R until C1-03",
-    "C4 execution until C1 accepted plus later exact raw-source warrant",
-    "JOIN-01 until C1-R; C2 preparation and C3 ready",
+    "C4 until accepted C1 plus later exact raw-source warrant",
+    "JOIN-01 until C1-R",
     "OMEGA-1 until scoped source-free join"
   ],
   "prohibitions": [
     "NO_RAW_SOURCE_EXECUTION",
     "NO_C4_EXECUTION",
     "NO_C1_02_BEFORE_C1_01_ACCEPTANCE",
-    "NO_REAL_SOURCE_SEMANTIC_OR_COMPARABILITY_AUTHORITY_FROM_D02_PHYSICAL_LOCATOR",
     "NO_PREV3_TO_V3_ACTOR_IMPLEMENTATION"
   ]
 }
