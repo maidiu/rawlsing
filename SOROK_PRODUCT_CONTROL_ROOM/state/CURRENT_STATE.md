@@ -134,6 +134,7 @@ Top-level:
 - `34_PERSON_TO_PERSON_SEEDING_AND_RELATIONAL_VIRAL_LOOP_R1.md` — person-to-person seeding / relational viral distribution
 - `35_CONCRETE_FIRST_SESSION_SPINE_R1.md` — concrete invitation → portal → finite encounter → message-channel alpha spine
 - `36_RECENT_CHAT_HARVEST_INTEGRITY_R6.md` — PASS receipt proving recent chat discoveries/repairs are durably banked
+- `37_QUESTION_CLOSURE_AND_ALPHA_BLOCKER_ACCOUNTING_R1.md` — canonical question closure / alpha blocker progress accounting
 - `17_FULL_RAWLSING_VOZHD_GROUNDING_INTEGRITY_R1.md` — takeover verification
 - `08_INTERACTION_SYSTEM_SYNTHESIS_R1.md`
 - `09_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R2.md`
@@ -314,3 +315,26 @@ Develop the multidimensional flourishing constitution needed to distinguish atta
 D004 time/life-advancement and D005 persistence can now inherit the D002 temporal/epistemic laws, but should still wait on D001 object ownership before selecting implementation/storage mechanisms.
 
 Social and monetization work remain registered but should not dictate the core single-user relational architecture before D001–D003.
+
+
+## Current progress-accounting holding
+
+Raw question count is a frontier census, not a remaining-work counter.
+
+Current exact accounting:
+- 103 surfaced questions;
+- 8 CLOSED_FOR_ALPHA;
+- 18 PROVISIONALLY_ANSWERED;
+- 21 NEEDS_PROTOTYPE;
+- 38 NEEDS_ARCHITECTURE_ADJUDICATION;
+- 12 OPEN_DISCOVERY;
+- 6 DEFERRED_POST_ALPHA.
+
+Blocking-stage view:
+- 8 ALPHA_SPEC;
+- 29 ALPHA_IMPLEMENTATION;
+- 22 ALPHA_VALIDATION;
+- 18 POST_ALPHA;
+- 26 NONE.
+
+The current user/Vozhd conversational critical path is the **8 ALPHA_SPEC blockers**, not the raw 103.
