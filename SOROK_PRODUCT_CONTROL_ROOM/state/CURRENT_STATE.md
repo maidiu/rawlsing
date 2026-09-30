@@ -322,22 +322,22 @@ Social and monetization work remain registered but should not dictate the core s
 Raw question count is a frontier census, not a remaining-work counter.
 
 Current exact accounting:
-- 112 surfaced questions;
+- 113 surfaced questions;
 - 8 CLOSED_FOR_ALPHA;
-- 22 PROVISIONALLY_ANSWERED;
+- 23 PROVISIONALLY_ANSWERED;
 - 24 NEEDS_PROTOTYPE;
-- 43 NEEDS_ARCHITECTURE_ADJUDICATION;
-- 9 OPEN_DISCOVERY;
+- 44 NEEDS_ARCHITECTURE_ADJUDICATION;
+- 8 OPEN_DISCOVERY;
 - 6 DEFERRED_POST_ALPHA.
 
 Blocking-stage view:
-- 5 ALPHA_SPEC;
-- 38 ALPHA_IMPLEMENTATION;
+- 4 ALPHA_SPEC;
+- 39 ALPHA_IMPLEMENTATION;
 - 25 ALPHA_VALIDATION;
 - 18 POST_ALPHA;
-- 26 NONE.
+- 27 NONE.
 
-The current user/Vozhd conversational critical path is the **5 ALPHA_SPEC blockers**, not the raw 112.
+The current user/Vozhd conversational critical path is the **4 ALPHA_SPEC blockers**, not the raw 113.
 
 - `38_PRESENT_COUPLED_COMPUTABLE_FLESH_RECURSION_R1.md` — present-coupled life / computable→flesh→computable recursion / hard curiosity firewall
 - `39_SUPPORTING_ACTOR_FIDELITY_AND_COST_ENVELOPE_R1.md` — progressive supporting-actor fidelity / lazy promotion / cost envelope
@@ -430,5 +430,5 @@ The current user/Vozhd conversational critical path is the **5 ALPHA_SPEC blocke
 - alpha should use a bounded focal-life currentness budget: proactive checking only for currentness-sensitive represented dependencies, demand-driven retrieval for other named/current factual needs, and learned-world prior for generic texture;
 - real public constraints may govern a synthetic private/local world; alpha need not mirror every real shop, neighbor, workplace or street event;
 - late-discovered external facts may backfill only when compatible with admitted history; material collision with causally closed history is a typed currentness/integrity defect, never a silent retcon;
-- Q-WORLD-001 remains open at product grain only for final external-anchor granularity/currentness-envelope adjudication before promotion to PROVISIONALLY_ANSWERED.
+- Q-WORLD-001 is now PROVISIONALLY_ANSWERED / NONE at product grain. Its exact implementation successor is Q-CURRENTINGRESS-001 (ALPHA_IMPLEMENTATION).
 
