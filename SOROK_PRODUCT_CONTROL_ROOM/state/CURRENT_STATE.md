@@ -322,22 +322,22 @@ Social and monetization work remain registered but should not dictate the core s
 Raw question count is a frontier census, not a remaining-work counter.
 
 Current exact accounting:
-- 113 surfaced questions;
+- 114 surfaced questions;
 - 8 CLOSED_FOR_ALPHA;
-- 23 PROVISIONALLY_ANSWERED;
+- 24 PROVISIONALLY_ANSWERED;
 - 24 NEEDS_PROTOTYPE;
-- 44 NEEDS_ARCHITECTURE_ADJUDICATION;
-- 8 OPEN_DISCOVERY;
+- 45 NEEDS_ARCHITECTURE_ADJUDICATION;
+- 7 OPEN_DISCOVERY;
 - 6 DEFERRED_POST_ALPHA.
 
 Blocking-stage view:
-- 4 ALPHA_SPEC;
-- 39 ALPHA_IMPLEMENTATION;
+- 3 ALPHA_SPEC;
+- 40 ALPHA_IMPLEMENTATION;
 - 25 ALPHA_VALIDATION;
 - 18 POST_ALPHA;
-- 27 NONE.
+- 28 NONE.
 
-The current user/Vozhd conversational critical path is the **4 ALPHA_SPEC blockers**, not the raw 113.
+The current user/Vozhd conversational critical path is the **3 ALPHA_SPEC blockers**, not the raw 114.
 
 - `38_PRESENT_COUPLED_COMPUTABLE_FLESH_RECURSION_R1.md` — present-coupled life / computable→flesh→computable recursion / hard curiosity firewall
 - `39_SUPPORTING_ACTOR_FIDELITY_AND_COST_ENVELOPE_R1.md` — progressive supporting-actor fidelity / lazy promotion / cost envelope
@@ -431,4 +431,20 @@ The current user/Vozhd conversational critical path is the **4 ALPHA_SPEC blocke
 - real public constraints may govern a synthetic private/local world; alpha need not mirror every real shop, neighbor, workplace or street event;
 - late-discovered external facts may backfill only when compatible with admitted history; material collision with causally closed history is a typed currentness/integrity defect, never a silent retcon;
 - Q-WORLD-001 is now PROVISIONALLY_ANSWERED / NONE at product grain. Its exact implementation successor is Q-CURRENTINGRESS-001 (ALPHA_IMPLEMENTATION).
+
+- `52_Q_ACCESS_001_RELATIONAL_REACHABILITY_TOPOLOGY_R1.md` — Q-ACCESS-001 closure: sparse typed routes into an independent life; controller/scope/condition/provenance law; nonmonotonic domain-specific access; third-party firewall; no access meter
+
+## Current Q-ACCESS-001 holding
+
+- relational access is a **sparse typed multigraph of reachability**, not a scalar closeness/trust/intimacy level;
+- independently existing life domains, people, places, channels, projects, routines, events and resources are nodes; access consists of specific lawful routes into them;
+- meaningful routes preserve target, mode, causal basis, controller/authority, scope, conditions, temporality, revocability/change path, dependencies and provenance at product grain;
+- focal-person desire does not override third-party, institutional or material authority;
+- possible route, current permission/eligibility, concrete opportunity/invitation and realized participation remain distinct;
+- access to person/place/object/event, permission to inspect/ask, disclosure and objective knowledge remain noncollapsed;
+- access is domain-specific, asymmetric and nonmonotonic; gains/losses do not imply global relational success/failure;
+- replace moralized `earned access` with **historically formed / causally established access**: practical need, role, emergency, dependency, manipulation, trust or affection may all create routes;
+- access through Nadia never owns third-party consent, liking, disclosure or future relationship;
+- access topology should be learned through concrete world facts—keys, invitations, routines, refusals, introductions, channels, expired opportunities—not a dashboard/unlock tree;
+- Q-ACCESS-001 is now PROVISIONALLY_ANSWERED / NONE. Exact owner/storage/derivation work continues as Q-ACCESSIMPL-001 under ALPHA_IMPLEMENTATION.
 
