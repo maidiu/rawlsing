@@ -399,3 +399,15 @@ The current user/Vozhd conversational critical path is the **7 ALPHA_SPEC blocke
 - explicit commitments can be genuinely missed;
 - opening the portal does not summon Nadia;
 - notification controls change delivery to the user, not Nadia's life or actor-owned communications.
+
+- `48_AMBIENT_PERSISTENCE_ELASTIC_TIME_NONTOXIC_TETHER_R1.md` — cognitive persistence rather than calendar capture; elastic default, cancellable pending events, optional tighter sync
+
+## Current elastic-time / social-health holding
+
+- default objective is **cognitive persistence, not calendar capture**;
+- persona/world remain historically present-coupled, but planned portal meetings use bounded elastic rendezvous windows by default;
+- a diegetic Friday-at-seven need not claim the external user's literal Friday at seven;
+- scheduled scenes can be canceled/rescheduled/declined through ordinary messaging, which resolves the pending branch;
+- tighter real-time synchronization may exist only as explicit opt-in temporal embodiment, never as morally superior or progression-enhancing play;
+- product notifications remain bounded and neutral; actor-originated contact may persist, but no platform guilt/streak/absence escalation;
+- alpha/early-beta must treat synthetic-social displacement, notification anxiety and calendar capture as product failures even if they improve retention.
