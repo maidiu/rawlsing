@@ -1,0 +1,38 @@
+{
+  "schema": "PYAT_C1_01_R7_HOSTILE_COURT_MATRIX@1",
+  "execution_state": "IMPLEMENTED__NOT_EXECUTED",
+  "test_file": "rawlsing_next/tests/test_pre553_analytical_composition.py",
+  "test_blob": "db6b876f15d145cfc48cc6d944e48da4460842d3",
+  "courts": [
+    {
+      "id": "H1_CLOSED_16_KEY_NO_EXTRAS",
+      "test": "test_r7_closed_16_key_witness_rejects_matching_hash_with_extra_field",
+      "construction": "Add a 17th identity field, recompute a matching witness hash, independently call verify_identity(), then require adapter rejection on exact key-set mismatch.",
+      "closes_review_defect": true
+    },
+    {
+      "id": "H2_AT19_VALID_DETERMINANT_REIDENTIFICATION",
+      "test": "test_at19_valid_relation_determinant_reidentifies_composed_result",
+      "construction": "Mutate the fixture-only conditioner effective-time determinant, rebuild the consumer query and a valid matching witness, compose, require query/witness/composed reidentification while producer/source/release/risk/measure/target/model determinants remain fixed.",
+      "invalid_stale_ref_only": false
+    },
+    {
+      "id": "H3_DENOMINATOR_MEMBER_IDENTITY",
+      "test": "test_r7_denominator_member_identity_hostile_preserves_visible_54_over_60",
+      "construction": "Reconstruct the exact evidence preimage from the actual baseline evidence; replace one exact denominator-member ref while preserving visible 54/60 and cell arithmetic; require evidence preimage hash change."
+    },
+    {
+      "id": "H4_GEOMETRY_CELL_IDENTITY",
+      "test": "test_r7_geometry_cell_identity_hostile_reidentifies_evidence",
+      "construction": "Reconstruct baseline evidence preimage, mutate one geometry cell determinant, and require evidence preimage hash change."
+    },
+    {
+      "id": "H5_RELATION_PAIRING_AUTHORITY_IDENTITY",
+      "test": "test_r7_fixture_pairing_authority_reidentifies_witness_evidence_and_composed_result",
+      "construction": "Use a hostile fixture-only AuthorityRef as a test determinant, rebuild binding/query/witness lawfully, compose, and require witness/evidence/composed reidentification plus authority propagation. It grants no real-source authority."
+    }
+  ],
+  "retained_existing_r6_coverage": true,
+  "fixture_only_authority_ceiling": true,
+  "real_source_comparability_created": false
+}

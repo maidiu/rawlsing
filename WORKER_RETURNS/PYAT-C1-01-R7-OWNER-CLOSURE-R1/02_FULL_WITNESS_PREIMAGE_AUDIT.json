@@ -1,0 +1,73 @@
+{
+  "schema": "PYAT_C1_01_R7_FULL_WITNESS_PREIMAGE_AUDIT@1",
+  "status": "STATIC_POST_WRITE_PASS__EXECUTION_SEPARATE",
+  "packet": {
+    "path": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R6/02_NORMATIVE_WITNESS_MATERIALS.json",
+    "blob": "57f4caf5a5c148d60fcfe8322ff2016de5b4f4a1",
+    "packet_schema": "PYAT_C1_00_R6_NORMATIVE_WITNESS_MATERIALS@1",
+    "closed_key_count": 16,
+    "exact_key_law": "set(identity_material) == required"
+  },
+  "required_identity_keys": [
+    "binding_mode",
+    "consumer_binding_fingerprint",
+    "consumer_binding_material",
+    "consumer_query_ref",
+    "effective_time_or_interval",
+    "pairing_authority_ref",
+    "pairing_ground_truth_ref",
+    "producer_predicate_hash",
+    "producer_predicate_leaf_projection",
+    "producer_predicate_leaf_ref",
+    "producer_predicate_ref",
+    "producer_query_ref",
+    "release_ref",
+    "source_universe_ref",
+    "subject_condition_preimage_material",
+    "subject_condition_preimage_ref"
+  ],
+  "forward": {
+    "literal_identity_material_present": true,
+    "exact_key_count": 16,
+    "exact_key_set_match": true,
+    "effective_time_or_interval": null,
+    "binding_mode": "EXPLICIT_VALUE_BEARING_RELATION__NO_INFERENCE",
+    "witness_ref_hash": "f4123258625589513da2afc0d4f10a2438b6238b0b4f0a5338acb03ef8932da5",
+    "consumer_query_hash": "8f7444dbae4250cdda8a7a4c89bb331bd1f960072a97e8b11f05c4bd68c770d9",
+    "evidence_hash": "c5e5930b6b368605c6828b70de02bf00ca77b9636c890706ac755b0074f61374"
+  },
+  "reverse": {
+    "literal_identity_material_present": true,
+    "exact_key_count": 16,
+    "exact_key_set_match": true,
+    "effective_time_or_interval": null,
+    "binding_mode": "EXPLICIT_VALUE_BEARING_RELATION__NO_INFERENCE",
+    "witness_ref_hash": "a5410dd09f9a16ada260b6d18e902e5a101b7b41346a407f17283de8d726fdb0",
+    "consumer_query_hash": "2909672ca01a2b5fcb5d07351f8691bb10bf82d3e794d92f73981d2e70fc4f0e",
+    "evidence_hash": "0cd3b5b868852db956a079835c5052c206561b0fe2a7480931e6de0dc5d81844"
+  },
+  "immutable_dependencies": {
+    "value_relation_oracle": {
+      "path": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/02_VALUE_RELATION_ORACLE.json",
+      "blob": "c6acafae820c065215fdbe7a703480a8b19fbc57"
+    },
+    "synthetic_authority_freeze": {
+      "path": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/03_SYNTHETIC_AUTHORITY_FREEZE.json",
+      "blob": "333989fa7b57c221d6aa5ebfc25d9d76e0acad32"
+    },
+    "r3_evidence_identity_preimage": {
+      "path": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/04_EVIDENCE_IDENTITY_PREIMAGE.json",
+      "blob": "1d1e9eddeebf7e1f26189355dc06e71bf70a367f"
+    },
+    "r6_normative_query_materials": {
+      "path": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R6/01_NORMATIVE_QUERY_MATERIALS.json",
+      "blob": "83da592a46ce33edd1779781a68078cd0769bdc8"
+    },
+    "r6_evidence_recomputation": {
+      "path": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R6/04_EVIDENCE_RECOMPUTATION.json",
+      "blob": "1da9e35f69f597019395f8d17068593dd257f43a"
+    }
+  },
+  "audit_note": "Post-write GitHub audit parsed both literal maps and found exactly the frozen 16 keys. Accepted hashes are preserved as frozen by the governing R6 materials; execution/hash replay remains part of the unrun source-free court.",
+  "real_source_effect": false
+}
