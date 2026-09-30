@@ -415,3 +415,4 @@ The current user/Vozhd conversational critical path is the **7 ALPHA_SPEC blocke
 
 - `49_SOROK_R11_NEW_CHAT_HANDOFF_R1.md` — full new-chat Sorok/Vozhd handoff through elastic present R11
 - `50_SOROK_R11_FULL_SEMANTIC_CHAT_LOG_R1.txt` — semantic chronology of the current Sorok conversation, tool chatter omitted
+- `51_SOROK_R12_POST_HANDOFF_FINAL_HARVEST_INTEGRITY_R1.md` — final post-handoff coverage matrix / PASS receipt for the recent discovery run
