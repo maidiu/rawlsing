@@ -2,7 +2,7 @@
 
 Disposition:
 
-`NO_COMPETENT_RETAINED_LOCATOR_OR_ORACLE_FOUND`
+`EXACT_RETAINED_D02_LOCATOR_RECOVERED`
 
 Blocker:
 
@@ -10,104 +10,198 @@ Blocker:
 
 Source:
 
-- file: `EVS 2008.sav`
 - source id: `SRC14`
+- file: `EVS 2008.sav`
 - SHA-256: `5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379`
 
-No raw survey source was opened, materialized, downloaded, decoded, or inspected in this lane. No user-Mac access occurred. No new traversal/scanning algorithm was created.
+No raw EVS-2008 SAV bytes were opened, materialized, downloaded, decoded, inspected, or inferred from in this lane. The user's Mac was not used. The Library copy was observed only as a Library directory entry; it was not read.
 
 ## Holding
 
-Retained project evidence competently proves that the exact hashed EVS-2008 source historically triggered the D02 class, and current accepted C3 source-free code competently defines the generic decoder-native type law. It does **not** retain the missing independent witness required by AT20:
+The blocker is resolved at the exact commissioned documentary grain.
 
-1. no exact EVS-2008 variable/column/cell locator;
-2. no exact metadata map/key/subfield locator for the historical failing date/time object;
-3. no retained expected match identity or cardinality;
-4. no already-governed deterministic D02 traversal oracle with frozen order, type predicate, termination law, expected match set/cardinality, and source accounting.
+The project already retained, before future C4, a competent exact physical D02 witness for EVS 2008:
 
-Therefore the existing blocker is not resolved.
+- physical variable: `v372`;
+- exact source variable ordinal: `466`;
+- physical fixture id: `EVS08_DATE_MISSING_V372`;
+- fixture kind: `VARIABLE_MISSING_DECLARATION`;
+- exact sufficient D02 witness class: `TYPED_DATE_USER_MISSING_SENTINEL`;
+- exact retained rendered witness: `1582-10-13`;
+- accepted user-missing cardinality: `1917`;
+- accepted ordinary-present cardinality: `64363`;
+- accepted system-missing cardinality: `0`;
+- accepted source rows: `66280`;
+- exact source SHA-256: `5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379`.
 
-## Decisive historical receipt
+This is not a locator inferred from questionnaire semantics. It is frozen in a source-physical hostile fixture whose authority basis is explicitly:
 
-The authoritative CLOSED35 qualified census result commit:
+`SOURCE_PHYSICAL_OR_READER_METADATA_AUTHORITY__NON_SEMANTIC`.
 
-`b801c58c8e4d6d10e36e0a42ca62cf6908cbf25a`
+The fixture predates C4 by more than a month.
 
-predates this C4 preparation lane and retains the exact SRC14 receipt:
+## Decisive retained physical witness
 
-`WORKER_RETURNS/PREMAIN-CLOSED35-QUALIFIED-REPRESENTATION-CENSUS-RESULTS-R1/source_receipts/SOURCE_14_REPRESENTATION_RECEIPT.json`
+Immutable worker branch:
 
-blob:
+`agent/vozhd-trii-srcprep71-r04-evs`
 
-`3e08e2ace5ab585336950dc3e6b555ce09405ebc`
+Immutable branch tip:
 
-The receipt freezes:
+`3bc063aa7bf461caf5baf581ff32a434ba9e09a3`
 
-- canonical source SHA exactly matching `5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379`;
-- qualified runtime Darwin/x86_64, CPython 3.11.3, pyreadstat 1.3.6, pyarrow 25.0.1;
-- path-manifest SHA-256 `0a4edcf54a98aba3c48b6bc85e7c75d99c0ac6ab9078a407f309cdcc0e0327be`;
-- terminal source-local failure:
-  `R5CodecError:date/time meaning may not be invented by the R5 codec; use an explicit opaque decoder value`.
+Commit date:
 
-But that same immutable receipt has `surfaces: []` and contains no failing locator or native object instance/type. It is competent evidence that the D02 class occurred on the exact source, not a competent D02 locator witness.
+`2026-08-22T10:03:56Z`
 
-## Why the CLOSED35 harness is not the alternative traversal oracle
+Retained file:
 
-The qualified CLOSED35 harness at:
+`data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/SOURCE_CERT_PREP71/RETURNS/R04/HOSTILE_FIXTURES.csv`
 
-- commit `11704fbfa16797fbdd55dadc7929aaad729c9454`;
-- path `rawlsing_next/closed35_representation_census_harness.py`;
-- blob `b667f7198349486cec32d8168ddc2de1ed0427a8`
+Git blob:
 
-hashes and size-checks each exact source before metadata observation. For SRC14, it performs a metadata-only reader call and then constructs a metadata receipt. The historical failure occurs inside that source observation before a successful SRC14 metadata receipt is returned; the generic exception wrapper records only exception class/message and replaces the substantive source receipt with `surfaces: []`.
+`12f6adb77ef5692511055c8f0520e42c454f3867`
 
-This does not satisfy the commissioned traversal-oracle alternative. The retained harness does not freeze, for D02:
+The exact EVS-2008 row is:
 
-- a traversal explicitly governed to identify date/time objects;
-- the expected failing metadata map/key or variable/cell;
-- an expected D02 match set;
-- an expected match cardinality;
-- a D02-specific termination condition after proving that cardinality;
-- an independently frozen expected identity against which future C4 output can be compared.
+- fixture id: `EVS08_DATE_MISSING_V372`;
+- source SHA: exact commissioned SHA;
+- fixture class: `VARIABLE_MISSING_DECLARATION`;
+- ordinal: `466`;
+- variable: `v372`;
+- physical class: `TYPED_DATE_USER_MISSING_SENTINEL`;
+- missing range: `lo=1582-10-13, hi=1582-10-13`;
+- physical counts:
+  - rows seen = `66280`;
+  - ordinary present = `64363`;
+  - system missing = `0`;
+  - user missing = `1917`;
+  - native rendered user-missing witness `1582-10-13` = `1917`;
+- semantic interpretation at that physical court: explicitly unresolved;
+- authority basis: source physical / reader metadata, nonsemantic.
 
-Re-running or modifying that harness to discover the location would be a new source scan. This lane does not promote such a prospective scan into recovered historical authority.
+That row was prepared from the already accepted SR03 source-physical manifest, not from future C4 output.
 
-## Generic type law recovered, but not source locator
+## Provenance chain
 
-Accepted C3 integration commit:
+The physical witness is independently corroborated by later pre-C4 retained archaeology without changing its physical authority.
+
+### CLOSED35-L2-EVS2008
+
+Branch tip:
+
+`dd17c06606709bad5e56189a21db729cdd6ca859`
+
+Commit date:
+
+`2026-09-20T18:13:31Z`
+
+Its return states that accepted physical evidence has `v372` as a **typed user-missing date** rendered `1582-10-13`, affecting exactly `1917` records, under the same canonical source SHA.
+
+### CLOSED35-L2R-EVS2008
+
+Branch tip:
+
+`3201d94156742870562c6f98c239673a1a6ef2ba`
+
+Commit date:
+
+`2026-09-20T18:47:18Z`
+
+Its immutable V372 authority freezes:
+
+- physical variable `v372`;
+- source ordinal `466`;
+- rendered physical user-missing witness `1582-10-13`;
+- user-missing count `1917`;
+- ordinary-present count `64363`;
+- source rows `66280`;
+- exact source SHA.
+
+It additionally proves that the rendered date must not be promoted into an invented substantive date or a guessed missing-reason code.
+
+### CLOSED35-R2-EVS2008
+
+Branch tip:
+
+`6f9dbb1f3cdc0fc2ec92d5705a43b353b7b56594`
+
+Commit date:
+
+`2026-09-20T19:20:07Z`
+
+Its source-specific realization retains the same locator/count/ordinal and reader boundary. It explicitly did not open or execute the raw source.
+
+## D02 type-law binding
+
+Accepted C3 integration:
 
 `30686b185d4ceb2c94f61815ef70d8c8e76255d6`
 
-supplies the source-free generic D02 carrier law:
+defines the generic source-free D02 carrier law for exact built-in naive:
 
-- exact built-in naive `datetime.datetime` -> opaque carrier `python.datetime.datetime@1`;
-- exact built-in `datetime.date` -> opaque carrier `python.datetime.date@1`;
-- exact built-in naive `datetime.time` -> opaque carrier `python.datetime.time@1`;
-- timezone-aware datetime/time fail closed.
+- `datetime.datetime`;
+- `datetime.date`;
+- `datetime.time`;
 
-This is sufficient to specify the allowed generic native Python type class **once a value is independently located**. It does not say which EVS-2008 physical object produced the historical failure.
+with timezone-aware datetime/time failing closed.
 
-## Other retained terrain
+The historical EVS witness does **not** retain a literal Python `type(value).__name__` that would justify choosing `datetime.date` versus `datetime.datetime` in advance. It instead retains the stronger-for-this-purpose source-bound physical class:
 
-The retained SR03 probe and adjudication prove exact-SHA EVS-2008 compatibility decoding and historical source-native metadata work, but do not expose a competent exact D02 locator or frozen D02 traversal oracle.
+`TYPED_DATE_USER_MISSING_SENTINEL`
 
-The retained Chetiri C05 source-backed result names EVS 2008 and its source-backed execution limitations but likewise does not retain a D02 physical locator.
+together with an exact column locator, exact rendered witness and exact cardinality.
 
-FIABC LM2/R1J retained authority is useful for WVS7 representation/replay terrain; no inspected retained R1J authority supplies an EVS-2008 D02 locator.
+Under the commission's competence law—"expected physical/native type or exact sufficient D02 witness class"—that is sufficient to predeclare the D02 real-source witness without inventing a Python subclass.
 
-Compatibility encoding (`latin1`) is explicitly not treated as a locator.
+Future C4 must therefore **not** claim that historical evidence proves a particular built-in subclass. It must require the current decoder's value at the frozen `v372` witness to enter the accepted D02 date/time carrier path and fail closed if it does not.
 
-No questionnaire label or semantic field name was used to infer a physical location.
+## Library custody finding
 
-## C4 binding effect
+The Project Library contains:
 
-`C2-02-BLOCK-D02-LOCATOR-001` remains open.
+`/Rawlsing/EVS 2008.sav`
 
-A lawful future C4 D02 real-source proof still requires **before the EVS-2008 source read** either:
+The SAV itself was not opened or materialized. Its Library presence was used only to confirm custody terrain and to search adjacent retained documentary artifacts. The decisive locator authority remains the immutable Git physical fixture above.
 
-1. recovery of a competent immutable historical witness naming the exact physical locator and expected native type/value class, bound to the exact source SHA and pre-C4 provenance; or
-2. a separately governed pre-C4 traversal oracle whose order, type predicate, termination law, expected match set/cardinality and source accounting are frozen independently of C4 output.
+Library search also surfaced retained September EVS-2008 documentary commissions that pointed back to the already existing Git branches. Those branches were then read directly and immutably.
 
-This return does not authorize creation of such an oracle by scanning EVS 2008.
+## Why this is not semantic inference
+
+The decisive locator existed before the later documentary finding that `v372` means "date of interview."
+
+The locator is therefore not being selected because of that meaning.
+
+The chronological and authority chain is:
+
+`SR03 exact-source physical census -> PREP71 source-physical hostile fixture EVS08_DATE_MISSING_V372 -> later L2/L2R documentary interpretation -> future C4`
+
+Only the first two links are necessary to locate D02.
+
+The later documentary work is corroboration and a negative semantic guard.
+
+## C4 predeclaration now available
+
+A future governed C4 D02 check may predeclare, before opening the source:
+
+1. source SHA exactly `5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379`;
+2. physical column `v372`, ordinal `466`;
+3. expected physical class `TYPED_DATE_USER_MISSING_SENTINEL`;
+4. exact retained rendered witness `1582-10-13`;
+5. expected user-missing cardinality `1917`;
+6. expected ordinary-present cardinality `64363`;
+7. expected total rows `66280`;
+8. expected D02 behavior: current decoder must preserve the located decoder-native date/time object through the accepted opaque D02 carrier law, without semantic stringification;
+9. any source SHA, column identity/ordinal, physical class, cardinality, or carrier mismatch fails closed.
+
+No whole-source traversal oracle is needed once this exact retained locator is admitted.
+
+## Correction to the provisional archaeology return
+
+The earlier provisional return on this branch reported no competent locator because the initial Git search had not yet traversed the older PREP71 EVS worker branch, and the Library path had not yet been supplied.
+
+That conclusion is superseded by this corrected return.
+
+`C2-02-BLOCK-D02-LOCATOR-001` is resolved by retained pre-C4 evidence.
 
 `D02_EVS2008_LOCATOR_ARCHAEOLOGY_RETURNED__HQ_ADJUDICATION_REQUIRED`
