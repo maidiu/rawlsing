@@ -1,0 +1,96 @@
+{
+  "schema": "PYAT_D02_RETAINED_LOCATOR_PROVENANCE_AND_INDEPENDENCE_AUDIT@1.0.0",
+  "disposition": "APPROVE_AT_DECLARED_GRAIN",
+  "source": {
+    "file": "EVS 2008.sav",
+    "sha256": "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379"
+  },
+  "provenance_chain": [
+    {
+      "stage": "SR03_ACCEPTED_PHYSICAL_CENSUS",
+      "execution_head": "d3d6169dc93754533987673cdb44f2dbc72b9c4f",
+      "adjudication_path": "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/16_SR03_R3_ADJUDICATION.md",
+      "adjudication_blob": "fde75ccad487adfc6148f12843448798551874b7",
+      "holdings": [
+        "all 35 manifests produced from exact frozen SHA-256 source bytes",
+        "no source substitution",
+        "row/cell conservation passed",
+        "physical source census only; no semantic certification"
+      ]
+    },
+    {
+      "stage": "PREP71_EVSWAVE_PACKETIZATION",
+      "branch": "agent/vozhd-trii-srcprep71-r04-evs",
+      "tip": "3bc063aa7bf461caf5baf581ff32a434ba9e09a3",
+      "result_blob": "9564992fe299c7d69a426e44159154e350440f2f",
+      "ledger_blob": "2cd01b99958c51a430df71e006c5d531d553ac92",
+      "hostile_fixture_blob": "12f6adb77ef5692511055c8f0520e42c454f3867",
+      "packet_contract_blob": "d7dddd6dc25a5b4b356f539a7bed8bf6797f82b5",
+      "holdings": [
+        "EVS 2008 ledger explicitly anchors to accepted SR03 physical manifest",
+        "packet order is source SHA -> decoder/config -> hostile physical fixtures -> documentary assertions",
+        "physical facts and semantic authority must be separated",
+        "browser packetization did not substitute another SAV reader"
+      ]
+    },
+    {
+      "stage": "DECISIVE_FROZEN_FIXTURE",
+      "fixture_id": "EVS08_DATE_MISSING_V372",
+      "variable": "v372",
+      "ordinal": 466,
+      "witness_class": "TYPED_DATE_USER_MISSING_SENTINEL",
+      "authority_status": "SOURCE_PHYSICAL_OR_READER_METADATA_AUTHORITY__NON_SEMANTIC",
+      "semantic_reason": "UNKNOWN_PENDING_DOCUMENTARY_AUTHORITY"
+    }
+  ],
+  "chronology": [
+    {
+      "event": "decisive_PREP71_fixture_tip",
+      "sha": "3bc063aa7bf461caf5baf581ff32a434ba9e09a3",
+      "time": "2026-08-22T10:03:56Z"
+    },
+    {
+      "event": "C2-02_C4_proving_workload_commission",
+      "sha": "440e0a600f66103aad6076979cb23209f0a0ae4a",
+      "time": "2026-09-30T04:04:23Z"
+    },
+    {
+      "event": "C2-02_C4_proving_workload_return",
+      "sha": "6f6ab9dfe5ad8f9359630dd05abf43c3fd11a1b5",
+      "time": "2026-09-30T04:26:59Z"
+    },
+    {
+      "event": "D02_archaeology_commission",
+      "sha": "57d7ee585f7364383394d067c6aeb871470edda4",
+      "time": "2026-09-30T07:47:09Z"
+    },
+    {
+      "event": "corrected_archaeology_head",
+      "sha": "bb4db6c5131be50fded8d91961ee81683459e22e",
+      "time": "2026-09-30T14:47:47Z"
+    },
+    {
+      "event": "independent_review_commission",
+      "sha": "edcc171632a5c04605e89250dd0db867955e1e5b",
+      "time": "2026-09-30T15:18:15Z"
+    }
+  ],
+  "independence_findings": {
+    "predates_current_C4_proving_workload_preparation": true,
+    "predates_D02_blocker_discovery": true,
+    "predates_D02_archaeology": true,
+    "selected_from_future_C4_output": false,
+    "C4_execution_output_exists": false,
+    "governing_C4_dossier_status": "DRAFT__NOT_DISPATCHED__ISSUANCE_REQUIRES_EXACT_SCOPE",
+    "chronology_scope_note": "The competent claim is independence from the current C4 proving-workload/oracle process and any C4 output; no claim is needed that the August fixture predates every abstract historical mention of a future C4 phase."
+  },
+  "later_corroboration_role": {
+    "CLOSED35_L2_EVS2008_tip": "dd17c06606709bad5e56189a21db729cdd6ca859",
+    "CLOSED35_L2R_EVS2008_tip": "3201d94156742870562c6f98c239673a1a6ef2ba",
+    "CLOSED35_R2_EVS2008_tip": "6f9dbb1f3cdc0fc2ec92d5705a43b353b7b56594",
+    "role": "CORROBORATION_ONLY__NOT_ORIGIN_OF_LOCATOR"
+  },
+  "result": "PASS",
+  "raw_source_accessed": false,
+  "user_mac_used": false
+}
