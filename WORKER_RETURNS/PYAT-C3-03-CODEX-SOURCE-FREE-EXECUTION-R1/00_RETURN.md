@@ -1,89 +1,30 @@
 # PYAT C3-03 — CODEX SOURCE-FREE EXECUTION FALLBACK — R1
 
-Status:
+Status: `PASS_SOURCE_FREE_QUALIFICATION`
 
-`BLOCKED_CODEX_EXECUTION_CAPABILITY`
+Commission branch: `agent/codex-pyat-hq126-c3-03-source-free-execution-r1`
 
-Branch:
-`agent/codex-pyat-hq126-c3-03-source-free-execution-r1`
+Exact tested detached commit: `283d2c5d2b187c4e62ae1aecb236a0b51ddeffb1`
 
-Commission tip:
-`01d393e94b185f9cbb7f8aa85d25b7ee8f79a64a`
+Semantic candidate: `901e3e77f905847d3ef8d86b458280d8fe422dd0`
 
-Exact semantic candidate:
-`901e3e77f905847d3ef8d86b458280d8fe422dd0`
+## Execution
 
-Exact execution commit under test:
-`283d2c5d2b187c4e62ae1aecb236a0b51ddeffb1`
+The user explicitly authorized execution on the Mac after the off-Mac GitHub runner again failed before assignment on attempt 5 (`runner_id=0`, no steps). A sparse, detached checkout of the exact execution commit was used. CPython 3.11.3, pytest 9.1.1, and pandas 2.3.3 were installed in an isolated environment. The sorted `pip freeze --all` SHA-256 was recorded before test collection: `9cde8e5ab9abba46a9e98826100ed084a0943a77fee7bc232a3c7643334da2eb`.
 
-## Frozen identity checks
+Protocol self-test: **20 passed, 0 failed, 0 errors, 0 skipped**.
 
-GitHub connector verification of the frozen execution commit succeeded.
+Court-spec validation: **PASS**.
 
-- execution commit: `283d2c5d2b187c4e62ae1aecb236a0b51ddeffb1`
-- court-spec blob: `f408ae9a113b19f49c6c30d67c3177e3a7f787e4`
-- court-spec semantic candidate: `901e3e77f905847d3ef8d86b458280d8fe422dd0`
-- court-spec Python contract: `3.11`
-- exact six commissioned court test paths: verified
-- source-backed C11 facade blob: `8a761119e4a8d68eb291fc4edfadb52e027f8284`
+Final six-file bounded court: **55 passed, 0 failed, 0 errors, 0 skipped**. The exact generated receipt is `03_COURT_RECEIPT.json`; SHA-256: `716bb59b228ff448a60a7c77155f068d7dc98066b4e5a9f781ad4368979a3487`. The court receipt binds execution SHA `283d2c5d2b187c4e62ae1aecb236a0b51ddeffb1` and semantic candidate `901e3e77f905847d3ef8d86b458280d8fe422dd0` and has no synthetic PR merge SHA.
 
-The commission branch itself is exactly one documentary commission commit above independent static-review head `1b92286cc1f8e40f73b8a3bcf61e11d36aabe2a0`.
+Two preceding court attempts were incomplete because the sparse checkout omitted tracked fixture files. Their failure counts and hashes are preserved in `04_SCOPE_AND_INTEGRITY.json`; they are not semantic qualification results. The final court used the same frozen commit, spec, code, tests, and pinned environment with only the required tracked fixtures added to the sparse checkout.
 
-## Cloud execution capability check
+The tested tracked tree was unchanged throughout. It was clean before the final court and clean afterward once generated Python bytecode caches were removed. No raw survey source file was present or opened, materialized, or decoded. The source-free court read its frozen structural derivative fixture. Candidate A/B/C, measured P2X, and real-source C11 materialization were not run. No code, test, workflow, or court-spec file was edited.
 
-The available source-free cloud execution container is not the user's Mac.
+The active Codex session was GPT-6; the earlier 5.6 preference could not be selected within this running task.
 
-Before any pytest collection, the available runtime was recorded:
-
-- Python: `CPython 3.13.5`
-- pip: `25.1.1`
-- ambient pytest: `9.0.2`
-- ambient pandas: `2.2.3`
-- sorted ambient `pip freeze --all` entries: `507`
-- sorted ambient freeze SHA-256:
-  `36dcd5bfb474ceecfbda8de237668998286c26d99c80728413b931681eee1b93`
-
-No CPython 3.11 executable or cached 3.11 runtime was present.
-
-The managed runtime installer was then asked to install Python 3.11. It selected:
-
-`cpython-3.11.14-linux-x86_64-gnu`
-
-and failed after three download retries because DNS/network access from the cloud execution container was unavailable:
-
-`Temporary failure in name resolution`
-
-No exact CPython 3.11 environment could therefore be created.
-
-Under the commission law, substituting CPython 3.13.5 is forbidden. The exact pinned dependency qualification was not attempted under the wrong interpreter, and no pytest collection was performed.
-
-## Execution disposition
-
-- protocol self-test: **NOT RUN**
-- court-spec executable validation: **NOT RUN**
-- bounded six-file court: **NOT RUN**
-- generated bounded-court receipt: **NONE**
-- qualification PASS claim: **NONE**
-- execution semantic failure claim: **NONE**
-
-Disposition:
-
-`BLOCKED_CODEX_EXECUTION_CAPABILITY`
-
-This is an execution-environment capability block before qualification, not evidence against the already static-reviewed semantic repair.
-
-## Source-access declaration
-
-- user's Mac used: **no**
-- raw survey files opened: **0**
-- raw survey files materialized: **0**
-- raw survey files decoded: **0**
-- Candidate A/B/C: **not run**
-- measured P2X: **not run**
-- current real-source C11 materialization: **not run**
-- production/test/workflow/court-spec files modified: **0**
-
-No C3 integration or adoption is performed.
+This return is qualification evidence only. HQ adjudication is required before any adoption or integration.
 
 Terminal:
 

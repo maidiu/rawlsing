@@ -1,42 +1,33 @@
 {
-  "schema": "PYAT_C3_03_CODEX_EXECUTION_ENVIRONMENT@1.0.0",
-  "disposition": "BLOCKED_CODEX_EXECUTION_CAPABILITY",
-  "required_environment": {
-    "python": "CPython 3.11",
-    "pytest": "9.1.1",
-    "pandas": "2.3.3"
+  "direct_dependency_pins": {
+    "pandas": "2.3.3",
+    "pytest": "9.1.1"
   },
-  "collection_started": false,
-  "available_cloud_environment": {
-    "user_mac": false,
-    "python_implementation": "CPython",
-    "python_version": "3.13.5",
-    "pip": "25.1.1",
-    "pytest": "9.0.2",
-    "pandas": "2.2.3",
-    "sorted_pip_freeze_all": {
-      "entry_count": 507,
-      "sha256": "36dcd5bfb474ceecfbda8de237668998286c26d99c80728413b931681eee1b93",
-      "purpose": "ambient cloud capability evidence only; not qualification environment",
-      "exact_bytes_retained_in_execution_session": true
-    }
+  "execution_host": {
+    "machine": "x86_64",
+    "platform": "macOS-13.2.1-x86_64-i386-64bit",
+    "processor": "i386",
+    "release": "22.3.0",
+    "system": "Darwin"
   },
-  "python_311_discovery": {
-    "executable_found": false,
-    "cached_runtime_found": false,
-    "uv_present": true,
-    "uv_version": "0.10.0"
+  "pandas": "2.3.3",
+  "pip": "pip 22.3.1 from /private/tmp/pyat-c3-03-venv-r1-1bBy2S/lib/python3.11/site-packages/pip (python 3.11)",
+  "pytest": "9.1.1",
+  "python": {
+    "executable": "/private/tmp/pyat-c3-03-venv-r1-1bBy2S/bin/python",
+    "full_version": "3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0 (clang-1300.0.29.30)]",
+    "implementation": "CPython",
+    "version": "3.11.3"
   },
-  "python_311_install_attempt": {
-    "command": "/opt/pyvenv/bin/uv python install 3.11",
-    "selected_distribution": "cpython-3.11.14-linux-x86_64-gnu",
-    "exit_code": 1,
-    "retries": 3,
-    "failure_class": "NETWORK_DNS_UNAVAILABLE",
-    "terminal_error": "failed to lookup address information: Temporary failure in name resolution",
-    "download_url": "https://github.com/astral-sh/python-build-standalone/releases/download/20260203/cpython-3.11.14%2B20260203-x86_64-unknown-linux-gnu-install_only_stripped.tar.gz"
-  },
-  "exact_environment_created": false,
-  "pinned_dependencies_installed_under_python_311": false,
-  "substituted_runtime_used": false
+  "recorded_at_utc": "2026-09-30T01:19:08.312653+00:00",
+  "recorded_before_pytest_collection": true,
+  "schema": "PYAT_C3_03_CODEX_EXECUTION_ENVIRONMENT@1.1.0",
+  "sorted_pip_freeze_all": {
+    "byte_count": 205,
+    "encoding": "utf-8",
+    "entry_count": 13,
+    "exact_text": "Pygments==2.21.0\niniconfig==2.3.0\nnumpy==2.4.6\npackaging==26.3\npandas==2.3.3\npip==22.3.1\npluggy==1.6.0\npytest==9.1.1\npython-dateutil==2.9.0.post0\npytz==2026.4\nsetuptools==65.5.0\nsix==1.17.0\ntzdata==2026.4\n",
+    "sha256": "9cde8e5ab9abba46a9e98826100ed084a0943a77fee7bc232a3c7643334da2eb",
+    "sort": "LC_ALL=C sort"
+  }
 }

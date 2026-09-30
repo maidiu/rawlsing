@@ -1,14 +1,36 @@
 {
-  "schema": "PYAT_C3_03_CODEX_FINAL_DISPOSITION@1.0.0",
-  "disposition": "BLOCKED_CODEX_EXECUTION_CAPABILITY",
-  "exact_execution_sha": "283d2c5d2b187c4e62ae1aecb236a0b51ddeffb1",
-  "exact_semantic_candidate_sha": "901e3e77f905847d3ef8d86b458280d8fe422dd0",
-  "blocking_requirement": "Exact CPython 3.11 runtime could not be provisioned in the available cloud execution container because no 3.11 runtime was installed/cached and managed download failed for lack of DNS/network access.",
-  "protocol_pass": false,
-  "court_pass": false,
-  "c3_adoption_claim": false,
-  "raw_source_access": 0,
-  "integration_performed": false,
-  "next_requirement": "Run the unchanged execution commit in an authorized source-free environment that can provide CPython 3.11 plus pytest==9.1.1 and pandas==2.3.3, then execute the exact commissioned protocol and bounded court.",
-  "terminal": "C3_03_CODEX_SOURCE_FREE_EXECUTION_FALLBACK_COMPLETE__HQ_ADJUDICATION_REQUIRED"
+  "adjudication_required": true,
+  "bounded_court": {
+    "errors": 0,
+    "exit_code": 0,
+    "failed": 0,
+    "files": 6,
+    "generated_receipt_sha256": "716bb59b228ff448a60a7c77155f068d7dc98066b4e5a9f781ad4368979a3487",
+    "passed": 55,
+    "skipped": 0
+  },
+  "clean_tree_post_execution": true,
+  "clean_tree_pre_final_court": true,
+  "court_spec_validation": "PASS",
+  "disposition": "PASS_SOURCE_FREE_QUALIFICATION",
+  "environment": {
+    "pandas": "2.3.3",
+    "pip": "pip 22.3.1 from /private/tmp/pyat-c3-03-venv-r1-1bBy2S/lib/python3.11/site-packages/pip (python 3.11)",
+    "pytest": "9.1.1",
+    "python_implementation": "CPython",
+    "python_version": "3.11.3",
+    "sorted_pip_freeze_all_sha256": "9cde8e5ab9abba46a9e98826100ed084a0943a77fee7bc232a3c7643334da2eb"
+  },
+  "execution_sha": "283d2c5d2b187c4e62ae1aecb236a0b51ddeffb1",
+  "prior_incomplete_sparse_checkout_attempts": 2,
+  "protocol": {
+    "errors": 0,
+    "exit_code": 0,
+    "failed": 0,
+    "passed": 20,
+    "skipped": 0
+  },
+  "raw_survey_source_reads_materializations_decodes": 0,
+  "schema": "PYAT_C3_03_CODEX_FINAL_DISPOSITION@1.1.0",
+  "semantic_candidate_sha": "901e3e77f905847d3ef8d86b458280d8fe422dd0"
 }

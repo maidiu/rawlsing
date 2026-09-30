@@ -1,51 +1,92 @@
 {
-  "schema": "PYAT_C3_03_CODEX_SCOPE_AND_INTEGRITY@1.0.0",
-  "execution_commit": {
-    "sha": "283d2c5d2b187c4e62ae1aecb236a0b51ddeffb1",
-    "verified_via_github": true
-  },
-  "semantic_candidate_sha": "901e3e77f905847d3ef8d86b458280d8fe422dd0",
-  "court_spec": {
-    "blob": "f408ae9a113b19f49c6c30d67c3177e3a7f787e4",
-    "python_version": "3.11",
-    "semantic_candidate_sha": "901e3e77f905847d3ef8d86b458280d8fe422dd0",
-    "determinism_mode": "EXACT",
-    "env": {
-      "PYTHONHASHSEED": "0",
-      "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1"
+  "attempt_history": [
+    {
+      "attempt": 1,
+      "errors": 0,
+      "failed": 6,
+      "generated_receipt_sha256": "6e242f092c6885289304ee7e0ec5bda774853b3317206128e34967f60680132e",
+      "missing_paths": [
+        "WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py",
+        "WORKER_RETURNS/FIABC-LM2-R1I-PHYSICAL-NATIVE-BINDING/01_PHYSICAL_KEY_INVENTORY.json"
+      ],
+      "passed": 49,
+      "skipped": 0,
+      "status": "INCOMPLETE_SPARSE_CHECKOUT",
+      "stdout_stderr_sha256": "424e87353b46ec63805f0e03c353351fc25e9e87fb94c8229924022b607ac456"
     },
-    "tests": [
+    {
+      "attempt": 2,
+      "errors": 0,
+      "failed": 5,
+      "generated_receipt_sha256": "82cc013c34e52a21489c0418646baee624cb71f60389d96589b8fc6c0da23027",
+      "missing_paths": [
+        "WORKER_RETURNS/FIABC-LM2/wvs7_projection_structural_input.json"
+      ],
+      "passed": 50,
+      "skipped": 0,
+      "status": "INCOMPLETE_SPARSE_CHECKOUT",
+      "stdout_stderr_sha256": "50bb03019df45e9102ff49726889cb9f3a3fc613bdb46b27ac45789c01433403"
+    },
+    {
+      "attempt": 3,
+      "errors": 0,
+      "failed": 0,
+      "generated_receipt_sha256": "716bb59b228ff448a60a7c77155f068d7dc98066b4e5a9f781ad4368979a3487",
+      "passed": 55,
+      "skipped": 0,
+      "status": "COMPLETE_SOURCE_FREE_COURT",
+      "stdout_stderr_exact": ".......................................................                  [100%]\n55 passed in 45.85s\n",
+      "stdout_stderr_sha256": "0ab54fe72ed667fba07d08efd40bbc7db9ace54bc0c33f91375c05088d9355a4"
+    }
+  ],
+  "execution_commit": "283d2c5d2b187c4e62ae1aecb236a0b51ddeffb1",
+  "frozen_identity": {
+    "court_spec_blob": "f408ae9a113b19f49c6c30d67c3177e3a7f787e4",
+    "court_spec_sha256": "fe2dadeb5ce7402ec0daae214fd7ced98a1e4a9bf6316e8f113cc355131066de",
+    "six_test_paths": [
       "rawlsing_next/tests/test_closed35_g01_sav_numeric_representation_authority.py",
       "rawlsing_next/tests/test_closed35_d01_declared_encoding_admission.py",
       "rawlsing_next/tests/test_closed35_d02_opaque_datetime_carrier.py",
       "rawlsing_next/tests/test_fiabc_lm2_r1j_sav_representation_authority.py",
       "rawlsing_next/tests/test_r35_i01_physical_metadata.py",
       "rawlsing_next/tests/test_pre553_source_backed_c11_facade.py"
-    ]
+    ],
+    "source_backed_c11_facade_blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284"
   },
-  "c11_facade_blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
-  "tested_worktree": {
-    "materialized": false,
-    "clean_tree_pretest": null,
-    "clean_tree_posttest": null,
-    "reason": "Qualification did not proceed past exact-runtime provisioning; no source checkout was used for execution."
-  },
+  "model_note": "Active Codex session was GPT-6; the earlier 5.6 preference could not be selected within this running task.",
+  "schema": "PYAT_C3_03_CODEX_SCOPE_AND_INTEGRITY@1.1.0",
   "scope": {
-    "user_mac_used": false,
-    "raw_survey_opened": 0,
-    "raw_survey_materialized": 0,
-    "raw_survey_decoded": 0,
     "candidate_a_b_c_run": false,
+    "court_spec_edits": 0,
+    "frozen_structural_derivative_fixture_read": true,
     "measured_p2x_run": false,
-    "real_source_c11_materialization": false,
-    "code_edits": 0,
+    "production_code_edits": 0,
+    "raw_survey_source_files_decoded": 0,
+    "raw_survey_source_files_materialized": 0,
+    "raw_survey_source_files_opened": 0,
+    "raw_survey_source_files_present": [],
+    "real_source_c11_materialization_run": false,
     "test_edits": 0,
-    "workflow_edits": 0,
-    "court_spec_edits": 0
+    "user_mac_execution_authorized_by_user": true,
+    "workflow_edits": 0
   },
-  "evidence_integrity": {
-    "no_execution_pass_claim": true,
-    "no_semantic_failure_claim": true,
-    "no_manufactured_court_receipt": true
+  "semantic_candidate_sha": "901e3e77f905847d3ef8d86b458280d8fe422dd0",
+  "sparse_fixture_files_materialized": [
+    "WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py",
+    "WORKER_RETURNS/FIABC-LM2-R1I-PHYSICAL-NATIVE-BINDING/01_PHYSICAL_KEY_INVENTORY.json",
+    "WORKER_RETURNS/FIABC-LM2/wvs7_projection_structural_input.json"
+  ],
+  "tested_checkout": {
+    "clean_post_execution": true,
+    "clean_pre_final_court": true,
+    "detached": true,
+    "generated_bytecode_caches_removed_after_execution": true,
+    "head": "283d2c5d2b187c4e62ae1aecb236a0b51ddeffb1",
+    "path": "/private/tmp/pyat-c3-03-exec-r1-bnGSOm",
+    "post_execution_after_generated_cache_removal_status_porcelain": "",
+    "pre_final_court_status_porcelain": "",
+    "sparse": true,
+    "staged_diff_exit_code": 0,
+    "tracked_diff_exit_code": 0
   }
 }
