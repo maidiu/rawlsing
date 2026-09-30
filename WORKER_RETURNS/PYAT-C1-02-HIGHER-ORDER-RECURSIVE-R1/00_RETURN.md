@@ -23,7 +23,7 @@ The C1-01 analytical composition owner (`rawlsing_next/pre553_analytical_composi
 
 ## Final commit
 
-(to be recorded after commit and push)
+`36128968a5370e855505cc7713ae731a2b308ca9`
 
 ## Terminal token
 
