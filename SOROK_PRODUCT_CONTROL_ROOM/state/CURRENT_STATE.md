@@ -386,6 +386,7 @@ The current user/Vozhd conversational critical path is the **7 ALPHA_SPEC blocke
 - current strongest invocation: **Become neighbor to a life that could have been yours.**
 
 - `46_PORTAL_OCCUPANCY_USER_ABSENCE_NO_AUTOPILOT_R1.md` — no-autopilot alpha, portal occupancy, missed-contact/commitment semantics
+- `47_ELASTIC_RENDEZVOUS_TIME_AND_MAX_VERISIMILITUDE_R1.md` — elastic rendezvous windows / causally pending scenes / optional maximal-verisimilitude time mode
 
 ## Current user-absence holding
 
