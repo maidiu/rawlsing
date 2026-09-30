@@ -1,0 +1,56 @@
+{
+  "schema": "PYAT_C1_00_R4_INDEPENDENT_REREVIEW_SCOPE_AND_DIFF_AUDIT@1",
+  "reviewed_head": "233a91d7cb7789a8e338405abdfef15a5a8ee764",
+  "reviewer_commission_tip": "bcaa43885dafaa9391a4466620eb41a0e570eebb",
+  "r4_commission_tip": "4482f28e436a6ef48e66f9aefda40d354c3866f5",
+  "implementation_baseline": "b3b2fa13049513078c301a1f6574b661fcf390c5",
+  "r4_compare": {
+    "status": "ahead",
+    "ahead_by": 7,
+    "behind_by": 0,
+    "total_commits": 7,
+    "changed_files": [
+      "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R4/00_RETURN.md",
+      "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R4/01_SELECTION_KEY_IDENTITY_RECOMPUTATION.json",
+      "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R4/02_PROPAGATION_AUDIT.json",
+      "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R4/03_UPDATED_BLOB_MANIFEST.json",
+      "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/analytical_contract.md",
+      "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/fixture_oracle_manifest.json",
+      "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/worker_return.json"
+    ],
+    "terrain_pass": true,
+    "production_code_changed": false,
+    "production_tests_changed": false,
+    "historical_R2_R3_review_or_correction_dirs_changed": false
+  },
+  "current_packet_blobs": {
+    "analytical_contract": "0abe15f7e7365832fdd1dcfab45d2e831774f99a",
+    "analytical_products": "e29e1d5d99fcb14331b45297f32491d91711f0f2",
+    "family_binding_manifest": "cb430c1eb8ccc1f9f94ba0e9e241807c971b228a",
+    "fixture_oracle_manifest": "3ea3a5938c72e00bb35593f607e1bf33299085fc",
+    "hostile_case_receipts": "3a393b1e457d9e59f2061ff63df0e0674b2c61d1",
+    "producer_consumer_trace": "c3165b0fc9323999c426f0ec4056c4c7d4b6f1bd",
+    "replay_and_dependency_receipt": "553f6c0dc8de43b60ac0132089c86aff7f339f5f",
+    "worker_return": "e03452cdaa62af07a8dcdca711bf409b1bae830c"
+  },
+  "current_worker_changed_blobs": [
+    "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/analytical_contract.md",
+    "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/fixture_oracle_manifest.json",
+    "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/worker_return.json"
+  ],
+  "changed_blob_bookkeeping": "PASS_AT_R4_GRAIN__worker_return lists the three changed current-C1 packet files; R4 03_UPDATED_BLOB_MANIFEST separately freezes R4 return artifacts.",
+  "source_access": {
+    "raw_source_reads": 0
+  },
+  "execution": {
+    "C1_01": false,
+    "candidate_output_used": false
+  },
+  "authority_creation": {
+    "semantic": false,
+    "comparability": false,
+    "pooling": false,
+    "model": false,
+    "survey": false
+  }
+}
