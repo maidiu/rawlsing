@@ -622,3 +622,18 @@ R4 derivation and propagation audit:
 - `WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R4/03_UPDATED_BLOB_MANIFEST.json`
 
 C1-01 remains unimplemented and unexecuted.
+
+
+## R6 normative fixture identity completion (HQ132)
+
+R5 established that the historical AT07 consumer-query and condition-value-witness hashes were underdetermined. HQ132 supersedes those fixture-only identities with a complete forward-computable R6 convention; historical hashes remain evidence and are not preimages to recover.
+
+Current R6 fixture identities:
+- forward consumer query `8f7444dbae4250cdda8a7a4c89bb331bd1f960072a97e8b11f05c4bd68c770d9`
+- reverse consumer query `2909672ca01a2b5fcb5d07351f8691bb10bf82d3e794d92f73981d2e70fc4f0e`
+- forward witness `f4123258625589513da2afc0d4f10a2438b6238b0b4f0a5338acb03ef8932da5`
+- reverse witness `a5410dd09f9a16ada260b6d18e902e5a101b7b41346a407f17283de8d726fdb0`
+- forward evidence `c5e5930b6b368605c6828b70de02bf00ca77b9636c890706ac755b0074f61374`
+- reverse evidence `0cd3b5b868852db956a079835c5052c206561b0fe2a7480931e6de0dc5d81844`
+
+R6 changes fixture identity only. Forward 54/60, reverse 54/62, producer-derived denominator support, value-bearing relation law, source/release/risk/measure/provenance semantics, noncircular evidence construction, and fail-closed ordering remain unchanged. Execution remains separately receipted; current return is patch-ready with runtime capability blocked.
