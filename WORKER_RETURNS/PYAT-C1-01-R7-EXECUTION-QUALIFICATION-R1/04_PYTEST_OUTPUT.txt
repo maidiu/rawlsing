@@ -1,0 +1,474 @@
+EEEEEEEEEE................................................               [100%]
+==================================== ERRORS ====================================
+_ ERROR at setup of test_r6_queries_supersede_underdetermined_historical_hashes _
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10b2c93d0>
+
+    @pytest.fixture
+    def at07(monkeypatch):
+        source_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::SOURCE_SEMANTICS_TOPOLOGY")
+        routing_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::ROUTING_RISK_SET")
+        coord_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::COORDINATE_SEMANTICS")
+        replay_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::REPLAY_PROTOCOL")
+        query_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::PREDICATE_GRAMMAR")
+    
+        original_auth = i03._auth
+        exact_by_kind = {
+            "SOURCE_SEMANTICS_TOPOLOGY": source_auth,
+            "ROUTING_RISK_SET": routing_auth,
+            "COORDINATE_SEMANTICS": coord_auth,
+            "REPLAY_PROTOCOL": replay_auth,
+        }
+    
+        def frozen_auth(tag, kind, *, families):
+            if kind in exact_by_kind:
+                return exact_by_kind[kind]
+            return original_auth(tag, kind, families=families)
+    
+        monkeypatch.setattr(i03, "_auth", frozen_auth)
+        source = i03._build_source(
+            "c1-at07",
+            _rows(),
+            question_namespace="c1-at07",
+            risk_sets={"R_ALL_100": {"POSITION": {r["id"] for r in _rows()}, "ANSWER": {r["id"] for r in _rows()}}},
+            risk_namespace="c1-at07",
+        )
+        source["risk_refs"]["R"] = source["risk_refs"]["R_ALL_100"]
+    
+        spine = _load(R3_EVIDENCE)["exact_identity_spine"]
+        assert source["universe"].ref.as_dict() == spine["universe_ref"]
+>       assert source["release_ref"].as_dict() == spine["release_ref"]
+E       AssertionError: assert {'kind': 'C11...0922b12ff5b3'} == {'kind': 'C11...31bfd8f4d939'}
+E         
+E         Omitting 2 identical items, use -vv to show
+E         Differing items:
+E         {'content_hash': 'dfd6ca5e08d1abe0f1494b4dc0e38869925739cceb306c62a3540922b12ff5b3'} != {'content_hash': '8afa807cc06a3a10e660d13bbd831f4f758ae829e835a454c62831bfd8f4d939'}
+E         Use -v to get more diff
+
+rawlsing_next/tests/test_pre553_analytical_composition.py:129: AssertionError
+_ ERROR at setup of test_at07_r6_executes_public_producer_adapter_consumer[forward-60-numerators0] _
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10bba8f20>
+
+    @pytest.fixture
+    def at07(monkeypatch):
+        source_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::SOURCE_SEMANTICS_TOPOLOGY")
+        routing_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::ROUTING_RISK_SET")
+        coord_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::COORDINATE_SEMANTICS")
+        replay_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::REPLAY_PROTOCOL")
+        query_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::PREDICATE_GRAMMAR")
+    
+        original_auth = i03._auth
+        exact_by_kind = {
+            "SOURCE_SEMANTICS_TOPOLOGY": source_auth,
+            "ROUTING_RISK_SET": routing_auth,
+            "COORDINATE_SEMANTICS": coord_auth,
+            "REPLAY_PROTOCOL": replay_auth,
+        }
+    
+        def frozen_auth(tag, kind, *, families):
+            if kind in exact_by_kind:
+                return exact_by_kind[kind]
+            return original_auth(tag, kind, families=families)
+    
+        monkeypatch.setattr(i03, "_auth", frozen_auth)
+        source = i03._build_source(
+            "c1-at07",
+            _rows(),
+            question_namespace="c1-at07",
+            risk_sets={"R_ALL_100": {"POSITION": {r["id"] for r in _rows()}, "ANSWER": {r["id"] for r in _rows()}}},
+            risk_namespace="c1-at07",
+        )
+        source["risk_refs"]["R"] = source["risk_refs"]["R_ALL_100"]
+    
+        spine = _load(R3_EVIDENCE)["exact_identity_spine"]
+        assert source["universe"].ref.as_dict() == spine["universe_ref"]
+>       assert source["release_ref"].as_dict() == spine["release_ref"]
+E       AssertionError: assert {'kind': 'C11...0922b12ff5b3'} == {'kind': 'C11...31bfd8f4d939'}
+E         
+E         Omitting 2 identical items, use -vv to show
+E         Differing items:
+E         {'content_hash': 'dfd6ca5e08d1abe0f1494b4dc0e38869925739cceb306c62a3540922b12ff5b3'} != {'content_hash': '8afa807cc06a3a10e660d13bbd831f4f758ae829e835a454c62831bfd8f4d939'}
+E         Use -v to get more diff
+
+rawlsing_next/tests/test_pre553_analytical_composition.py:129: AssertionError
+_ ERROR at setup of test_at07_r6_executes_public_producer_adapter_consumer[reverse-62-numerators1] _
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10c0a40b0>
+
+    @pytest.fixture
+    def at07(monkeypatch):
+        source_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::SOURCE_SEMANTICS_TOPOLOGY")
+        routing_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::ROUTING_RISK_SET")
+        coord_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::COORDINATE_SEMANTICS")
+        replay_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::REPLAY_PROTOCOL")
+        query_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::PREDICATE_GRAMMAR")
+    
+        original_auth = i03._auth
+        exact_by_kind = {
+            "SOURCE_SEMANTICS_TOPOLOGY": source_auth,
+            "ROUTING_RISK_SET": routing_auth,
+            "COORDINATE_SEMANTICS": coord_auth,
+            "REPLAY_PROTOCOL": replay_auth,
+        }
+    
+        def frozen_auth(tag, kind, *, families):
+            if kind in exact_by_kind:
+                return exact_by_kind[kind]
+            return original_auth(tag, kind, families=families)
+    
+        monkeypatch.setattr(i03, "_auth", frozen_auth)
+        source = i03._build_source(
+            "c1-at07",
+            _rows(),
+            question_namespace="c1-at07",
+            risk_sets={"R_ALL_100": {"POSITION": {r["id"] for r in _rows()}, "ANSWER": {r["id"] for r in _rows()}}},
+            risk_namespace="c1-at07",
+        )
+        source["risk_refs"]["R"] = source["risk_refs"]["R_ALL_100"]
+    
+        spine = _load(R3_EVIDENCE)["exact_identity_spine"]
+        assert source["universe"].ref.as_dict() == spine["universe_ref"]
+>       assert source["release_ref"].as_dict() == spine["release_ref"]
+E       AssertionError: assert {'kind': 'C11...0922b12ff5b3'} == {'kind': 'C11...31bfd8f4d939'}
+E         
+E         Omitting 2 identical items, use -vv to show
+E         Differing items:
+E         {'content_hash': 'dfd6ca5e08d1abe0f1494b4dc0e38869925739cceb306c62a3540922b12ff5b3'} != {'content_hash': '8afa807cc06a3a10e660d13bbd831f4f758ae829e835a454c62831bfd8f4d939'}
+E         Use -v to get more diff
+
+rawlsing_next/tests/test_pre553_analytical_composition.py:129: AssertionError
+_ ERROR at setup of test_r6_witness_mutation_reidentifies_and_stale_ref_fails_closed _
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10c0a5f10>
+
+    @pytest.fixture
+    def at07(monkeypatch):
+        source_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::SOURCE_SEMANTICS_TOPOLOGY")
+        routing_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::ROUTING_RISK_SET")
+        coord_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::COORDINATE_SEMANTICS")
+        replay_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::REPLAY_PROTOCOL")
+        query_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::PREDICATE_GRAMMAR")
+    
+        original_auth = i03._auth
+        exact_by_kind = {
+            "SOURCE_SEMANTICS_TOPOLOGY": source_auth,
+            "ROUTING_RISK_SET": routing_auth,
+            "COORDINATE_SEMANTICS": coord_auth,
+            "REPLAY_PROTOCOL": replay_auth,
+        }
+    
+        def frozen_auth(tag, kind, *, families):
+            if kind in exact_by_kind:
+                return exact_by_kind[kind]
+            return original_auth(tag, kind, families=families)
+    
+        monkeypatch.setattr(i03, "_auth", frozen_auth)
+        source = i03._build_source(
+            "c1-at07",
+            _rows(),
+            question_namespace="c1-at07",
+            risk_sets={"R_ALL_100": {"POSITION": {r["id"] for r in _rows()}, "ANSWER": {r["id"] for r in _rows()}}},
+            risk_namespace="c1-at07",
+        )
+        source["risk_refs"]["R"] = source["risk_refs"]["R_ALL_100"]
+    
+        spine = _load(R3_EVIDENCE)["exact_identity_spine"]
+        assert source["universe"].ref.as_dict() == spine["universe_ref"]
+>       assert source["release_ref"].as_dict() == spine["release_ref"]
+E       AssertionError: assert {'kind': 'C11...0922b12ff5b3'} == {'kind': 'C11...31bfd8f4d939'}
+E         
+E         Omitting 2 identical items, use -vv to show
+E         Differing items:
+E         {'content_hash': 'dfd6ca5e08d1abe0f1494b4dc0e38869925739cceb306c62a3540922b12ff5b3'} != {'content_hash': '8afa807cc06a3a10e660d13bbd831f4f758ae829e835a454c62831bfd8f4d939'}
+E         Use -v to get more diff
+
+rawlsing_next/tests/test_pre553_analytical_composition.py:129: AssertionError
+_ ERROR at setup of test_r7_closed_16_key_witness_rejects_matching_hash_with_extra_field _
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10c0752e0>
+
+    @pytest.fixture
+    def at07(monkeypatch):
+        source_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::SOURCE_SEMANTICS_TOPOLOGY")
+        routing_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::ROUTING_RISK_SET")
+        coord_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::COORDINATE_SEMANTICS")
+        replay_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::REPLAY_PROTOCOL")
+        query_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::PREDICATE_GRAMMAR")
+    
+        original_auth = i03._auth
+        exact_by_kind = {
+            "SOURCE_SEMANTICS_TOPOLOGY": source_auth,
+            "ROUTING_RISK_SET": routing_auth,
+            "COORDINATE_SEMANTICS": coord_auth,
+            "REPLAY_PROTOCOL": replay_auth,
+        }
+    
+        def frozen_auth(tag, kind, *, families):
+            if kind in exact_by_kind:
+                return exact_by_kind[kind]
+            return original_auth(tag, kind, families=families)
+    
+        monkeypatch.setattr(i03, "_auth", frozen_auth)
+        source = i03._build_source(
+            "c1-at07",
+            _rows(),
+            question_namespace="c1-at07",
+            risk_sets={"R_ALL_100": {"POSITION": {r["id"] for r in _rows()}, "ANSWER": {r["id"] for r in _rows()}}},
+            risk_namespace="c1-at07",
+        )
+        source["risk_refs"]["R"] = source["risk_refs"]["R_ALL_100"]
+    
+        spine = _load(R3_EVIDENCE)["exact_identity_spine"]
+        assert source["universe"].ref.as_dict() == spine["universe_ref"]
+>       assert source["release_ref"].as_dict() == spine["release_ref"]
+E       AssertionError: assert {'kind': 'C11...0922b12ff5b3'} == {'kind': 'C11...31bfd8f4d939'}
+E         
+E         Omitting 2 identical items, use -vv to show
+E         Differing items:
+E         {'content_hash': 'dfd6ca5e08d1abe0f1494b4dc0e38869925739cceb306c62a3540922b12ff5b3'} != {'content_hash': '8afa807cc06a3a10e660d13bbd831f4f758ae829e835a454c62831bfd8f4d939'}
+E         Use -v to get more diff
+
+rawlsing_next/tests/test_pre553_analytical_composition.py:129: AssertionError
+_ ERROR at setup of test_at19_valid_relation_determinant_reidentifies_composed_result _
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10c01a1b0>
+
+    @pytest.fixture
+    def at07(monkeypatch):
+        source_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::SOURCE_SEMANTICS_TOPOLOGY")
+        routing_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::ROUTING_RISK_SET")
+        coord_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::COORDINATE_SEMANTICS")
+        replay_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::REPLAY_PROTOCOL")
+        query_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::PREDICATE_GRAMMAR")
+    
+        original_auth = i03._auth
+        exact_by_kind = {
+            "SOURCE_SEMANTICS_TOPOLOGY": source_auth,
+            "ROUTING_RISK_SET": routing_auth,
+            "COORDINATE_SEMANTICS": coord_auth,
+            "REPLAY_PROTOCOL": replay_auth,
+        }
+    
+        def frozen_auth(tag, kind, *, families):
+            if kind in exact_by_kind:
+                return exact_by_kind[kind]
+            return original_auth(tag, kind, families=families)
+    
+        monkeypatch.setattr(i03, "_auth", frozen_auth)
+        source = i03._build_source(
+            "c1-at07",
+            _rows(),
+            question_namespace="c1-at07",
+            risk_sets={"R_ALL_100": {"POSITION": {r["id"] for r in _rows()}, "ANSWER": {r["id"] for r in _rows()}}},
+            risk_namespace="c1-at07",
+        )
+        source["risk_refs"]["R"] = source["risk_refs"]["R_ALL_100"]
+    
+        spine = _load(R3_EVIDENCE)["exact_identity_spine"]
+        assert source["universe"].ref.as_dict() == spine["universe_ref"]
+>       assert source["release_ref"].as_dict() == spine["release_ref"]
+E       AssertionError: assert {'kind': 'C11...0922b12ff5b3'} == {'kind': 'C11...31bfd8f4d939'}
+E         
+E         Omitting 2 identical items, use -vv to show
+E         Differing items:
+E         {'content_hash': 'dfd6ca5e08d1abe0f1494b4dc0e38869925739cceb306c62a3540922b12ff5b3'} != {'content_hash': '8afa807cc06a3a10e660d13bbd831f4f758ae829e835a454c62831bfd8f4d939'}
+E         Use -v to get more diff
+
+rawlsing_next/tests/test_pre553_analytical_composition.py:129: AssertionError
+_ ERROR at setup of test_r7_denominator_member_identity_hostile_preserves_visible_54_over_60 _
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10c243500>
+
+    @pytest.fixture
+    def at07(monkeypatch):
+        source_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::SOURCE_SEMANTICS_TOPOLOGY")
+        routing_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::ROUTING_RISK_SET")
+        coord_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::COORDINATE_SEMANTICS")
+        replay_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::REPLAY_PROTOCOL")
+        query_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::PREDICATE_GRAMMAR")
+    
+        original_auth = i03._auth
+        exact_by_kind = {
+            "SOURCE_SEMANTICS_TOPOLOGY": source_auth,
+            "ROUTING_RISK_SET": routing_auth,
+            "COORDINATE_SEMANTICS": coord_auth,
+            "REPLAY_PROTOCOL": replay_auth,
+        }
+    
+        def frozen_auth(tag, kind, *, families):
+            if kind in exact_by_kind:
+                return exact_by_kind[kind]
+            return original_auth(tag, kind, families=families)
+    
+        monkeypatch.setattr(i03, "_auth", frozen_auth)
+        source = i03._build_source(
+            "c1-at07",
+            _rows(),
+            question_namespace="c1-at07",
+            risk_sets={"R_ALL_100": {"POSITION": {r["id"] for r in _rows()}, "ANSWER": {r["id"] for r in _rows()}}},
+            risk_namespace="c1-at07",
+        )
+        source["risk_refs"]["R"] = source["risk_refs"]["R_ALL_100"]
+    
+        spine = _load(R3_EVIDENCE)["exact_identity_spine"]
+        assert source["universe"].ref.as_dict() == spine["universe_ref"]
+>       assert source["release_ref"].as_dict() == spine["release_ref"]
+E       AssertionError: assert {'kind': 'C11...0922b12ff5b3'} == {'kind': 'C11...31bfd8f4d939'}
+E         
+E         Omitting 2 identical items, use -vv to show
+E         Differing items:
+E         {'content_hash': 'dfd6ca5e08d1abe0f1494b4dc0e38869925739cceb306c62a3540922b12ff5b3'} != {'content_hash': '8afa807cc06a3a10e660d13bbd831f4f758ae829e835a454c62831bfd8f4d939'}
+E         Use -v to get more diff
+
+rawlsing_next/tests/test_pre553_analytical_composition.py:129: AssertionError
+_ ERROR at setup of test_r7_geometry_cell_identity_hostile_reidentifies_evidence _
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10bdfc530>
+
+    @pytest.fixture
+    def at07(monkeypatch):
+        source_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::SOURCE_SEMANTICS_TOPOLOGY")
+        routing_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::ROUTING_RISK_SET")
+        coord_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::COORDINATE_SEMANTICS")
+        replay_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::REPLAY_PROTOCOL")
+        query_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::PREDICATE_GRAMMAR")
+    
+        original_auth = i03._auth
+        exact_by_kind = {
+            "SOURCE_SEMANTICS_TOPOLOGY": source_auth,
+            "ROUTING_RISK_SET": routing_auth,
+            "COORDINATE_SEMANTICS": coord_auth,
+            "REPLAY_PROTOCOL": replay_auth,
+        }
+    
+        def frozen_auth(tag, kind, *, families):
+            if kind in exact_by_kind:
+                return exact_by_kind[kind]
+            return original_auth(tag, kind, families=families)
+    
+        monkeypatch.setattr(i03, "_auth", frozen_auth)
+        source = i03._build_source(
+            "c1-at07",
+            _rows(),
+            question_namespace="c1-at07",
+            risk_sets={"R_ALL_100": {"POSITION": {r["id"] for r in _rows()}, "ANSWER": {r["id"] for r in _rows()}}},
+            risk_namespace="c1-at07",
+        )
+        source["risk_refs"]["R"] = source["risk_refs"]["R_ALL_100"]
+    
+        spine = _load(R3_EVIDENCE)["exact_identity_spine"]
+        assert source["universe"].ref.as_dict() == spine["universe_ref"]
+>       assert source["release_ref"].as_dict() == spine["release_ref"]
+E       AssertionError: assert {'kind': 'C11...0922b12ff5b3'} == {'kind': 'C11...31bfd8f4d939'}
+E         
+E         Omitting 2 identical items, use -vv to show
+E         Differing items:
+E         {'content_hash': 'dfd6ca5e08d1abe0f1494b4dc0e38869925739cceb306c62a3540922b12ff5b3'} != {'content_hash': '8afa807cc06a3a10e660d13bbd831f4f758ae829e835a454c62831bfd8f4d939'}
+E         Use -v to get more diff
+
+rawlsing_next/tests/test_pre553_analytical_composition.py:129: AssertionError
+_ ERROR at setup of test_r7_fixture_pairing_authority_reidentifies_witness_evidence_and_composed_result _
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10bbfc560>
+
+    @pytest.fixture
+    def at07(monkeypatch):
+        source_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::SOURCE_SEMANTICS_TOPOLOGY")
+        routing_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::ROUTING_RISK_SET")
+        coord_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::COORDINATE_SEMANTICS")
+        replay_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::REPLAY_PROTOCOL")
+        query_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::PREDICATE_GRAMMAR")
+    
+        original_auth = i03._auth
+        exact_by_kind = {
+            "SOURCE_SEMANTICS_TOPOLOGY": source_auth,
+            "ROUTING_RISK_SET": routing_auth,
+            "COORDINATE_SEMANTICS": coord_auth,
+            "REPLAY_PROTOCOL": replay_auth,
+        }
+    
+        def frozen_auth(tag, kind, *, families):
+            if kind in exact_by_kind:
+                return exact_by_kind[kind]
+            return original_auth(tag, kind, families=families)
+    
+        monkeypatch.setattr(i03, "_auth", frozen_auth)
+        source = i03._build_source(
+            "c1-at07",
+            _rows(),
+            question_namespace="c1-at07",
+            risk_sets={"R_ALL_100": {"POSITION": {r["id"] for r in _rows()}, "ANSWER": {r["id"] for r in _rows()}}},
+            risk_namespace="c1-at07",
+        )
+        source["risk_refs"]["R"] = source["risk_refs"]["R_ALL_100"]
+    
+        spine = _load(R3_EVIDENCE)["exact_identity_spine"]
+        assert source["universe"].ref.as_dict() == spine["universe_ref"]
+>       assert source["release_ref"].as_dict() == spine["release_ref"]
+E       AssertionError: assert {'kind': 'C11...0922b12ff5b3'} == {'kind': 'C11...31bfd8f4d939'}
+E         
+E         Omitting 2 identical items, use -vv to show
+E         Differing items:
+E         {'content_hash': 'dfd6ca5e08d1abe0f1494b4dc0e38869925739cceb306c62a3540922b12ff5b3'} != {'content_hash': '8afa807cc06a3a10e660d13bbd831f4f758ae829e835a454c62831bfd8f4d939'}
+E         Use -v to get more diff
+
+rawlsing_next/tests/test_pre553_analytical_composition.py:129: AssertionError
+_ ERROR at setup of test_relation_mismatch_fails_before_evidence_and_consumer __
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10c225940>
+
+    @pytest.fixture
+    def at07(monkeypatch):
+        source_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::SOURCE_SEMANTICS_TOPOLOGY")
+        routing_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::ROUTING_RISK_SET")
+        coord_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::COORDINATE_SEMANTICS")
+        replay_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::REPLAY_PROTOCOL")
+        query_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::PREDICATE_GRAMMAR")
+    
+        original_auth = i03._auth
+        exact_by_kind = {
+            "SOURCE_SEMANTICS_TOPOLOGY": source_auth,
+            "ROUTING_RISK_SET": routing_auth,
+            "COORDINATE_SEMANTICS": coord_auth,
+            "REPLAY_PROTOCOL": replay_auth,
+        }
+    
+        def frozen_auth(tag, kind, *, families):
+            if kind in exact_by_kind:
+                return exact_by_kind[kind]
+            return original_auth(tag, kind, families=families)
+    
+        monkeypatch.setattr(i03, "_auth", frozen_auth)
+        source = i03._build_source(
+            "c1-at07",
+            _rows(),
+            question_namespace="c1-at07",
+            risk_sets={"R_ALL_100": {"POSITION": {r["id"] for r in _rows()}, "ANSWER": {r["id"] for r in _rows()}}},
+            risk_namespace="c1-at07",
+        )
+        source["risk_refs"]["R"] = source["risk_refs"]["R_ALL_100"]
+    
+        spine = _load(R3_EVIDENCE)["exact_identity_spine"]
+        assert source["universe"].ref.as_dict() == spine["universe_ref"]
+>       assert source["release_ref"].as_dict() == spine["release_ref"]
+E       AssertionError: assert {'kind': 'C11...0922b12ff5b3'} == {'kind': 'C11...31bfd8f4d939'}
+E         
+E         Omitting 2 identical items, use -vv to show
+E         Differing items:
+E         {'content_hash': 'dfd6ca5e08d1abe0f1494b4dc0e38869925739cceb306c62a3540922b12ff5b3'} != {'content_hash': '8afa807cc06a3a10e660d13bbd831f4f758ae829e835a454c62831bfd8f4d939'}
+E         Use -v to get more diff
+
+rawlsing_next/tests/test_pre553_analytical_composition.py:129: AssertionError
+=========================== short test summary info ============================
+ERROR rawlsing_next/tests/test_pre553_analytical_composition.py::test_r6_queries_supersede_underdetermined_historical_hashes
+ERROR rawlsing_next/tests/test_pre553_analytical_composition.py::test_at07_r6_executes_public_producer_adapter_consumer[forward-60-numerators0]
+ERROR rawlsing_next/tests/test_pre553_analytical_composition.py::test_at07_r6_executes_public_producer_adapter_consumer[reverse-62-numerators1]
+ERROR rawlsing_next/tests/test_pre553_analytical_composition.py::test_r6_witness_mutation_reidentifies_and_stale_ref_fails_closed
+ERROR rawlsing_next/tests/test_pre553_analytical_composition.py::test_r7_closed_16_key_witness_rejects_matching_hash_with_extra_field
+ERROR rawlsing_next/tests/test_pre553_analytical_composition.py::test_at19_valid_relation_determinant_reidentifies_composed_result
+ERROR rawlsing_next/tests/test_pre553_analytical_composition.py::test_r7_denominator_member_identity_hostile_preserves_visible_54_over_60
+ERROR rawlsing_next/tests/test_pre553_analytical_composition.py::test_r7_geometry_cell_identity_hostile_reidentifies_evidence
+ERROR rawlsing_next/tests/test_pre553_analytical_composition.py::test_r7_fixture_pairing_authority_reidentifies_witness_evidence_and_composed_result
+ERROR rawlsing_next/tests/test_pre553_analytical_composition.py::test_relation_mismatch_fails_before_evidence_and_consumer
+48 passed, 10 errors in 3.40s
