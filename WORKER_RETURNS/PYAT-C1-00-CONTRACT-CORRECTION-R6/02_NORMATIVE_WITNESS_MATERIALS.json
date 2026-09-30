@@ -1,0 +1,24 @@
+{
+  "schema": "PYAT_C1_00_R6_NORMATIVE_WITNESS_MATERIALS@1",
+  "closed_key_count": 16,
+  "binding_mode": "EXPLICIT_VALUE_BEARING_RELATION__NO_INFERENCE",
+  "forward": {
+    "witness_ref": {
+      "kind": "C1_CONDITION_VALUE_BINDING_WITNESS@2",
+      "object_id": "urn:test:c1:at07:condition-value-witness:r6-forward-p1",
+      "content_hash": "f4123258625589513da2afc0d4f10a2438b6238b0b4f0a5338acb03ef8932da5"
+    },
+    "consumer_binding_fingerprint": "ba02f3a5cab6c25588074b79bfd8565e169d59185549d6da0cf1c4de8042619c",
+    "producer_predicate_hash": "fc7ee1774226e94491688b14a395acfbf9c5ccfc9184744963e01af1ee52dc55"
+  },
+  "reverse": {
+    "witness_ref": {
+      "kind": "C1_CONDITION_VALUE_BINDING_WITNESS@2",
+      "object_id": "urn:test:c1:at07:condition-value-witness:r6-reverse-yes",
+      "content_hash": "a5410dd09f9a16ada260b6d18e902e5a101b7b41346a407f17283de8d726fdb0"
+    },
+    "consumer_binding_fingerprint": "e7510cba0b51347ed95a68443accdae5469506cfa4b2456e7b611250a634a492",
+    "producer_predicate_hash": "20d43386e508f7bb26b7219d06f858c0df42d736ce9a4de6e6f0f80ffd33d8e6"
+  },
+  "construction": "Test constructs the exact closed 16-field material from actual accepted fixture/owner objects and asserts these refs."
+}
