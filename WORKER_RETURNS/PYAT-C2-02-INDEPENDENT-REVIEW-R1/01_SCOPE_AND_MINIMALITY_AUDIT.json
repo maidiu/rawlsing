@@ -1,0 +1,76 @@
+{
+  "schema": "PYAT_C2_02_INDEPENDENT_SCOPE_MINIMALITY_AUDIT@1.0.0",
+  "disposition": "APPROVE_AT_DECLARED_GRAIN",
+  "reviewed_return": "6f6ab9dfe5ad8f9359630dd05abf43c3fd11a1b5",
+  "scope": {
+    "commission": "440e0a600f66103aad6076979cb23209f0a0ae4a",
+    "changed_file_count": 7,
+    "all_changes_under_commissioned_return_directory": true,
+    "production_changes": false
+  },
+  "selected": [
+    "SRC02",
+    "SRC06",
+    "SRC08",
+    "SRC12",
+    "SRC14",
+    "SRC26",
+    "SRC27",
+    "SRC35"
+  ],
+  "per_source": {
+    "SRC02": {
+      "edge": "G01_USER_MISSING",
+      "necessary": true,
+      "reason": "Distinct missing-state/declaration path; observed G01 does not cover it."
+    },
+    "SRC06": {
+      "edge": "G01_OBSERVED",
+      "necessary": true,
+      "reason": "Distinct observed-value G01 path. SRC21 is alternate scope but not a stronger/cleaner specimen and remains separately blocked."
+    },
+    "SRC08": {
+      "edge": "D01_BIG5",
+      "necessary": true,
+      "reason": "Unique selected BIG5 exact-SHA decoder-admission specimen."
+    },
+    "SRC12": {
+      "edge": "D01_WINDOWS_1252",
+      "necessary": true,
+      "reason": "Cleaner WINDOWS-1252 specimen and EVS multi-wave member. SRC11 is an equal-edge alternate but carries additional S026-S029 blocked surfaces; substitution preserves cardinality but does not dominate SRC12."
+    },
+    "SRC14": {
+      "edge": "D02_OPAQUE_DATETIME",
+      "necessary": true,
+      "reason": "CLOSED35 sole D02-affected source and second EVS wave."
+    },
+    "SRC26": {
+      "edge": "R05_HEADER_DICTIONARY_DIVERGENCE",
+      "necessary": true,
+      "reason": "Unique R05 source in the 35-source ledger."
+    },
+    "SRC27": {
+      "edge": "LITS_FRESH_CURRENT_ROUTE_B_B01",
+      "necessary": true,
+      "reason": "Carries fresh-current full-route half of AT21 plus retained LiTS oracle/preimage and B01."
+    },
+    "SRC35": {
+      "edge": "WVS7_RETAINED_ROUTE_B_B02",
+      "necessary": true,
+      "reason": "Carries retained/no-reread comparator half of AT21 plus B02 and accepted replay/oracle."
+    }
+  },
+  "cardinality_minimal": true,
+  "mathematical_identity_uniqueness_claim": false,
+  "identity_uniqueness_note": "SRC11 could substitute for SRC12 at equal cardinality; approval is of the selected minimum competent set under dominance, not uniqueness among all possible 8-source sets.",
+  "same_family_multi_wave": {
+    "pair": [
+      "SRC12",
+      "SRC14"
+    ],
+    "family": "EVS",
+    "semantic_comparability_claimed": false
+  },
+  "all35_execution_implied": false,
+  "epistemic_residual": "C2-EPCLASS-PAYLOAD-001 = UNRESOLVED__NOT_MISSING_PROVED"
+}
