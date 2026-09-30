@@ -1,38 +1,61 @@
 {
-  "schema": "PYAT_D02_EVS2008_FINAL_DISPOSITION@1.0.0",
-  "disposition": "NO_COMPETENT_RETAINED_LOCATOR_OR_ORACLE_FOUND",
+  "schema": "PYAT_D02_EVS2008_FINAL_DISPOSITION@1.1.0",
+  "disposition": "EXACT_RETAINED_D02_LOCATOR_RECOVERED",
   "blocker_id": "C2-02-BLOCK-D02-LOCATOR-001",
-  "blocker_resolved": false,
+  "blocker_resolved": true,
   "exact_source_sha256": "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379",
-  "strongest_retained_witness": {
-    "commit": "b801c58c8e4d6d10e36e0a42ca62cf6908cbf25a",
-    "path": "WORKER_RETURNS/PREMAIN-CLOSED35-QUALIFIED-REPRESENTATION-CENSUS-RESULTS-R1/source_receipts/SOURCE_14_REPRESENTATION_RECEIPT.json",
-    "blob": "3e08e2ace5ab585336950dc3e6b555ce09405ebc",
-    "proves": [
-      "exact SRC14 canonical SHA custody",
-      "historical qualified runtime",
-      "historical D02-class R5CodecError on EVS 2008",
-      "pre-C4 provenance"
-    ],
-    "does_not_prove": [
-      "exact physical locator",
-      "which accepted datetime/date/time native class occurred",
-      "expected D02 match set/cardinality",
-      "independent whole-source traversal oracle"
-    ]
+  "recovered_locator": {
+    "variable": "v372",
+    "source_variable_ordinal": 466,
+    "fixture_id": "EVS08_DATE_MISSING_V372",
+    "fixture_kind": "VARIABLE_MISSING_DECLARATION",
+    "exact_sufficient_D02_witness_class": "TYPED_DATE_USER_MISSING_SENTINEL",
+    "rendered_witness": "1582-10-13",
+    "user_missing_count": 1917,
+    "ordinary_present_count": 64363,
+    "system_missing_count": 0,
+    "source_rows": 66280
   },
-  "generic_type_law": {
-    "accepted_C3_commit": "30686b185d4ceb2c94f61815ef70d8c8e76255d6",
-    "exact_native_classes": [
-      "datetime.datetime naive",
-      "datetime.date",
-      "datetime.time naive"
-    ],
-    "source_specific_class_unresolved": true
+  "decisive_immutable_witness": {
+    "branch": "agent/vozhd-trii-srcprep71-r04-evs",
+    "tip": "3bc063aa7bf461caf5baf581ff32a434ba9e09a3",
+    "commit_time": "2026-08-22T10:03:56Z",
+    "path": "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/SOURCE_CERT_PREP71/RETURNS/R04/HOSTILE_FIXTURES.csv",
+    "blob": "12f6adb77ef5692511055c8f0520e42c454f3867",
+    "authority_basis": "SOURCE_PHYSICAL_OR_READER_METADATA_AUTHORITY__NON_SEMANTIC",
+    "predates_future_C4": true
   },
+  "provenance_corroboration": [
+    {
+      "tip": "dd17c06606709bad5e56189a21db729cdd6ca859",
+      "date": "2026-09-20T18:13:31Z",
+      "holding": "accepted physical evidence: v372 typed user-missing date rendered 1582-10-13, 1917 records"
+    },
+    {
+      "tip": "3201d94156742870562c6f98c239673a1a6ef2ba",
+      "date": "2026-09-20T18:47:18Z",
+      "holding": "v372 ordinal 466, exact count geometry and source SHA retained; semantic negative subcode remains nonrecoverable"
+    }
+  ],
+  "accepted_C3_generic_D02_owner": {
+    "integration_commit": "30686b185d4ceb2c94f61815ef70d8c8e76255d6",
+    "accepted_classes": [
+      "naive built-in datetime.datetime",
+      "built-in datetime.date",
+      "naive built-in datetime.time"
+    ],
+    "timezone_aware": "FAIL_CLOSED"
+  },
+  "exact_historical_builtin_python_subclass": {
+    "frozen": false,
+    "consequence": "Do not claim datetime.date versus datetime.datetime from retained evidence. The commissioned competence requirement is met by the exact source-bound sufficient witness class TYPED_DATE_USER_MISSING_SENTINEL."
+  },
+  "traversal_oracle_needed": false,
   "raw_source_accessed": false,
+  "raw_source_library_entry_opened": false,
   "user_mac_used": false,
   "new_scan_authority_created": false,
-  "C4_binding_effect": "D02 fresh EVS-2008 real-source proof remains blocked pending one commissioned wake condition.",
+  "semantic_locator_inference_used": false,
+  "C4_binding_effect": "The specific D02 locator blocker is closed. Future C4 may predeclare v372/ordinal466 and the retained typed-date sentinel/count oracle before source execution, then require the current value to pass the accepted C3 opaque date/time carrier law.",
   "terminal": "D02_EVS2008_LOCATOR_ARCHAEOLOGY_RETURNED__HQ_ADJUDICATION_REQUIRED"
 }
