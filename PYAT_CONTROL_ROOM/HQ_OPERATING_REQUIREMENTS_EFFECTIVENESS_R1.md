@@ -4,6 +4,9 @@ Record: USER_DIRECTED_PYAT_HQ_EFFECTIVENESS_20260930
 Applies to: operating HQ, Sub-Vozdhi, implementers and reviewers.
 Read alongside the [existing Omega plan](OMEGA_VOZHD_ORCHESTRATION_R1/README.md) and [HQ bootstrap](OMEGA_VOZHD_ORCHESTRATION_R1/HQ_BOOTSTRAP.md). This refinement controls execution mechanics where older prompts prescribe unnecessary fragmentation. It preserves substantive acceptance, source permissions, independent review and Omega decision boundaries.
 
+## Active resource mode
+[Browser Economy](BROWSER_ECONOMY_MODE_R1.md) currently controls routing. Keep the effectiveness mechanics below, but do not interpret one-owner/working-runtime guidance as transferring the whole job to Codex. Browser ownership plus a necessary bounded execution helper satisfies the rule. Speed or convenience alone is insufficient. Its C1 application supersedes the historical “Apply this now” routing context below; HQ137 already adjudicated the R7 returns.
+
 ## The operating objective
 Maximize accepted, working capability per unit of user attention, elapsed time and finite usage. Counts of commissions, packets, reviews, hashes and checkpoints are not progress. Use the existing task board and return format; this instruction does not introduce a new standing report, committee or approval stage.
 

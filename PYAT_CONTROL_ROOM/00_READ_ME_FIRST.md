@@ -12,9 +12,13 @@ Selected physical policy: `B__SOURCE_BACKED_VIRTUAL_C11`
 
 Control branch: `integration/pre-main-reconciliation-r1`
 
+## Active mode: Browser Economy
+
+[Browser Economy requirements](BROWSER_ECONOMY_MODE_R1.md) govern current routing. Browser Sol High owns ordinary work; Codex is only a necessary bounded exception, never a convenience default. The speed-oriented EFFICIENCY_FIRST mode is inactive and requires explicit user selection. HQ137's whole-job Codex R8 launch instruction is superseded; amend the existing job to browser ownership without restarting it.
+
 ## Current operating refinement: effective delivery
 
-Read [HQ operating requirements](HQ_OPERATING_REQUIREMENTS_EFFECTIVENESS_R1.md) before the older bootstrap. The default is one coherent outcome, one implementer with an executable repair loop, and one independent acceptance review. Reuse the same job for routine corrections; minimize user-mediated handoffs. Completed R7 review/execution returns now await joint HQ adjudication. This refinement changes operating mechanics, not source/semantic/actor permissions.
+Read [HQ operating requirements](HQ_OPERATING_REQUIREMENTS_EFFECTIVENESS_R1.md) before the older bootstrap. The default is one coherent outcome, one implementer with an executable repair loop, and one independent acceptance review. Reuse the same job for routine corrections; minimize user-mediated handoffs. HQ137 has jointly adjudicated R7; the current R8 outcome remains, with browser ownership under the active mode. This refinement changes operating mechanics, not source/semantic/actor permissions.
 
 ## Current operating instruction: browser HQ, occasional Astra
 
