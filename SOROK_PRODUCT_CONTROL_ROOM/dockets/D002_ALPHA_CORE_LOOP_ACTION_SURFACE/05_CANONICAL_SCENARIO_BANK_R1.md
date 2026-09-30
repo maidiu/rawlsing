@@ -1064,3 +1064,104 @@ While the interaction unfolds:
 - child independent epistemic state;
 - time pressure;
 - control return before fabricated user contribution.
+
+
+## SCE-047 — Laundry under-specified task
+
+### Setup
+User writes:
+> I fold the laundry.
+
+### Required realization
+Omitted detail is not evidence of sloppiness or exceptional care.
+
+The engine may:
+- identify the current clean load;
+- fold it to an ordinary competent baseline;
+- pair obvious pairs;
+- create usable stacks;
+- consume plausible time.
+
+It should not automatically:
+- stuff items carelessly;
+- iron everything;
+- reorganize closets;
+- enter private drawers;
+- infer the user's character from prompt brevity.
+
+### Salient fork
+If putting items away requires knowing whose drawers are whose or household-specific organization, return control unless a known routine resolves it.
+
+### Surface feedback
+Give enough outcome detail that the user knows what was instantiated.
+
+### Tests
+- low detail != low effort;
+- neutral task baseline;
+- privacy/boundary fork;
+- actor reaction attaches to realized event, not prompt verbosity.
+
+## SCE-048 — Groceries task scope and salient interruption
+
+### Setup
+Many grocery bags remain outside. Nadia is already carrying some.
+User writes:
+> I help bring in the groceries.
+
+### Required realization
+Interpret as task-level participation, not one arbitrary bag:
+- take plausible loads;
+- make repeated trips;
+- continue until ordinary completion or interruption.
+
+Do not:
+- maximize carrying to absurdity;
+- stop after one trip solely because the prompt was terse.
+
+### Possible control returns
+- paper handle begins tearing;
+- fragile item shifts;
+- child calls from inside;
+- Nadia gives a new instruction;
+- bags reach kitchen and putting items away requires household knowledge.
+
+### Contrast
+> I grab one bag.
+should normally realize only that narrower operation.
+
+### Tests
+- task commitment versus single operation;
+- dynamic zoom;
+- physically plausible compression;
+- salient-fork return;
+- independent world interruption.
+
+## SCE-049 — Make dinner without invented expression
+
+### Setup
+User writes:
+> I make dinner.
+
+### Branch A — plan exists
+Ingredients are already set out for a known meal / Nadia already asked for a specific dish.
+
+The engine may compress routine preparation and return control at surprises or meaningful decisions.
+
+### Branch B — no plan exists
+Multiple plausible meals differ in:
+- ingredients/cost;
+- time;
+- household preference;
+- cultural meaning;
+- complexity.
+
+The engine should not silently choose one and attribute that expressive decision to the user.
+
+Surface available context and return control for meal choice, or ask a minimal bounded question.
+
+### Tests
+- procedural compression versus expressive choice;
+- no hidden user preference;
+- resource/time salience;
+- task scope;
+- household routine as lawful default.
