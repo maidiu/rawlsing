@@ -1,6 +1,6 @@
 # Sorok Current State
 
-Updated: 2026-09-29
+Updated: 2026-09-30
 
 Status: `INTERACTION_IDEATION_R5_CHAT_HARVESTED__PFF_INHERITANCE_RESTORED__RELATIONALIZATION_DELTA_EXPLICIT__ONTOLOGY_PROVISIONAL__ALPHA_NOT_YET_IMPLEMENTATION_SPECIFIED`
 
@@ -122,6 +122,7 @@ Top-level:
 - `23A_COURT9_FIRST_OWNER_CROSSWALK_R1.md` — first owner crosswalk + external-player seam finding
 - `24_COURT10_FLOURISHING_MORAL_PHYSICS_R1.md` — open flourishing/moral-physics court
 - `25_COURT11_PLAYER_PRAXIS_REFLECTION_R1.md` — open player-reflection court
+- `26_COURT8F_COURT11A_UNVERIFIABLE_SELF_CLAIMS_AND_HONESTY_INCENTIVES_R1.md` — unverifiable self-claims, spectacle, and honesty incentives
 - `26_COURT8F_D002_NATIVE_PLAYER_SKILL_VS_DECLARED_CAPABILITY_R1.md` — native player skill vs unverifiable declared capability
 - `27_D002_MEDIUM_NATIVE_AGENCY_AND_ACTION_DECOMPRESSION_R1.md` — current action-decompression / medium-native agency law
 - `28_D002_DELEGATED_TASK_EXECUTION_AND_SALIENT_FORKS_R1.md` — neutral delegated chores / dynamic zoom / salient-fork law
@@ -131,6 +132,7 @@ Top-level:
 - `32_DUAL_INTERFACE_SCENE_EXIT_MESSAGING_AND_SUCCESSION_R1.md` — dual portal/message surface, natural scene exit, messaging roster and relationship succession
 - `33_RELATIONAL_WARRANT_FOR_SUCCESSION_R1.md` — relational warrant for introducing another unresolved human life
 - `34_PERSON_TO_PERSON_SEEDING_AND_RELATIONAL_VIRAL_LOOP_R1.md` — person-to-person seeding / relational viral distribution
+- `35_CONCRETE_FIRST_SESSION_SPINE_R1.md` — concrete invitation → portal → finite encounter → message-channel alpha spine
 - `17_FULL_RAWLSING_VOZHD_GROUNDING_INTEGRITY_R1.md` — takeover verification
 - `08_INTERACTION_SYSTEM_SYNTHESIS_R1.md`
 - `09_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R2.md`
