@@ -1165,3 +1165,64 @@ Surface available context and return control for meal choice, or ask a minimal b
 - resource/time salience;
 - task scope;
 - household routine as lawful default.
+
+
+## SCE-050 — Groceries task-entry affordance reveal
+
+### Setup
+User writes:
+> I help with the groceries.
+
+### Required response
+Do not silently complete the task.
+
+Reveal enough concrete task state for meaningful action, e.g.:
+- number/type of bags;
+- obvious heavy/fragile/awkward items;
+- distance/stairs;
+- what Nadia is already carrying;
+- time/context.
+
+Then return control.
+
+### User attempt
+User writes:
+> I grab all twelve bags.
+
+### Resolution
+Resolve against:
+- admitted bag weights/bulk/handle condition;
+- portaled-player body/carry capacity;
+- stairs/environment;
+- fatigue;
+- lawful bounded stochasticity.
+
+Possible outcomes include:
+- succeeds;
+- succeeds awkwardly/with strain;
+- cannot secure all handles;
+- drops one;
+- bag tears;
+- has to set some down.
+
+Do not choose outcome for drama.
+
+### Persona response
+Nadia reacts only to what she perceives of the realized attempt:
+- competence;
+- efficiency;
+- recklessness;
+- humor;
+- unnecessary showmanship;
+- concern;
+- indifference.
+
+Her interpretation remains actor-local.
+
+### Tests
+- broad task intent -> task-entry reveal;
+- physical world concretization before choice;
+- attempt != success;
+- bounded feasibility estimation;
+- persona reacts to realized event, not prompt;
+- no hidden moralization.
