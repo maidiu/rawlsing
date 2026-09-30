@@ -1,0 +1,55 @@
+{
+  "schema": "PYAT_C1_01_R6_EXECUTION_RECEIPT@1.0.0",
+  "target_git_commit": "663379caa7c9b8a80bca889d8d5b59d0486ff901",
+  "branch_at_start": "agent/codex-pyat-hq133-c1-01-r6-execution-r1",
+  "commission_tip_verified": "bdf5bc2bea525f71ab8f0af4451918a74e701f04",
+  "commission_tip_parent_verified": "663379caa7c9b8a80bca889d8d5b59d0486ff901",
+  "exact_command": "python -m pytest -q rawlsing_next/tests/test_pre553_analytical_composition.py rawlsing_next/tests/test_pre553_empirical_query.py rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py",
+  "execution": {
+    "pytest_started": false,
+    "target_patch_materialized": false,
+    "exit_code": null,
+    "counts": {
+      "passed": null,
+      "failed": null,
+      "errors": null,
+      "skipped": null
+    },
+    "collection_errors": "NOT_AVAILABLE__COLLECTION_NOT_STARTED",
+    "result_class": "BLOCKED_EXECUTION_CAPABILITY"
+  },
+  "capability_attempts": [
+    {
+      "operation": "exact repository checkout transport",
+      "command": "git clone --filter=blob:none --no-checkout https://github.com/maidiu/rawlsing.git /tmp/rawlsing",
+      "exit_code": 128,
+      "stderr": "fatal: unable to access 'https://github.com/maidiu/rawlsing.git/': Could not resolve host: github.com"
+    },
+    {
+      "operation": "GitHub reachability probe",
+      "command": "git ls-remote https://github.com/maidiu/rawlsing.git 663379caa7c9b8a80bca889d8d5b59d0486ff901",
+      "exit_code": 128,
+      "stderr": "fatal: unable to access 'https://github.com/maidiu/rawlsing.git/': Could not resolve host: github.com"
+    },
+    {
+      "operation": "local exact-worktree probe",
+      "command": "git -C /tmp/c1r6 status --porcelain=v1 -b",
+      "exit_code": 128,
+      "stderr": "fatal: not a git repository (or any of the parent directories): .git"
+    }
+  ],
+  "evidence_boundary": {
+    "patch_failure_claimed": false,
+    "patch_pass_claimed": false,
+    "reason": "No exact executable Git worktree for the target patch could be materialized in the isolated shell. Reconstructing a subset from documentary connector reads was rejected because it would not support authoritative exact-patch or clean/dirty-worktree provenance.",
+    "implementation_modified": false,
+    "tests_modified": false,
+    "c1_packet_modified": false,
+    "workflows_modified": false,
+    "court_specs_modified": false,
+    "raw_survey_accessed": false,
+    "candidate_abc_run": false,
+    "measured_p2x_run": false,
+    "real_source_c11_materialization_run": false
+  }
+}
