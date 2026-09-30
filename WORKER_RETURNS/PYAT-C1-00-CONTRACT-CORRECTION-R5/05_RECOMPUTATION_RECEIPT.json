@@ -1,0 +1,27 @@
+{
+  "schema": "PYAT_C1_00_R5_PREIMAGE_RECOMPUTATION_RECEIPT@1",
+  "status": "RECOMPUTATION_NOT_LAWFULLY_REACHABLE__PREIMAGE_UNDERDETERMINED",
+  "hash_law": "sha256(canonical_json(material))",
+  "expected": {
+    "forward_query": "83727ca59eaf43085324ee7dc7db5ce4ecf4e4bf1f1284692cd3ad3f192df027",
+    "reverse_query": "cb2d085675c137848bb40f191ba8992100513eaa904a09cd54064f6ef51d3d8a",
+    "forward_witness": "c93e840c06da9ab8de9ca237863d52858fe6765d5bfd7c7efb42b879440663c9",
+    "reverse_witness": "e81c4e19144a749877a6f6e7e48a213e869bfe5d04ba81372ca5384b7cf5e700"
+  },
+  "independently_recomputed": {
+    "forward_query": false,
+    "reverse_query": false,
+    "forward_witness": false,
+    "reverse_witness": false
+  },
+  "reason": "Accepted fixture/owner material does not uniquely determine all identity-bearing preimage fields. Testing invented values against the frozen hashes would violate the commission's no-brute-force/no-invented-history law.",
+  "decisive_owner_facts": [
+    "PositionedSubjectPossibilityQuery.material includes caller-defined query_id, subject_ref, conditioner_bindings, requested_projection.",
+    "Owner validation does not derive query_id, subject_ref, requested_projection, or binding effective_time_or_interval.",
+    "R2 requires producer_predicate_hash in witness material, but accepted C1 artifacts freeze only outer EmpiricalPredicate.ref and normalized leaf identity, not that AST hash value.",
+    "R2 witness_schema.required_fields is a minimum list and does not freeze an exact closed identity-material key set."
+  ],
+  "historical_artifacts_modified": false,
+  "evidence_oracles_changed": false,
+  "production_implementation_changed": false
+}
