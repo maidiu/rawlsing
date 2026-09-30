@@ -78,7 +78,7 @@ and
 
 > **38 implementation/architecture questions that should largely be handled after product semantics are sufficiently fixed.**
 
-Thus the meaningful current conversational progress number is **8**, not 103, 94 or 9.
+Thus the meaningful current conversational progress number is **5 product-spec blockers**, not the raw frontier or decision counts.
 
 ---
 
@@ -124,13 +124,13 @@ They are mostly exact architecture questions such as:
 - object/action state;
 - expression separation.
 
-Many will collapse or become straightforward once the eight product-spec blockers are settled.
+Many will collapse or become straightforward once the five product-spec blockers are settled.
 
-Therefore do not treat `29` as a queue to discuss sequentially with the user.
+Therefore do not treat the `38` implementation blockers as a queue to discuss sequentially with the user.
 
 ---
 
-## 6. What the 22 validation questions mean
+## 6. What the 25 validation questions mean
 
 These are things that should be **prototyped rather than debated to death**.
 
@@ -179,7 +179,7 @@ Current recommended order:
 4. `Q-PRIV-001` — minimum data/deletion/export constitution;
 5. `Q-ALPHA-001` — final proximal kill-test/falsification constitution.
 
-Why put alpha evidence last among the six?
+Why put alpha evidence last among the five?
 
 Because the falsification criteria should test the product we actually define, not an earlier abstraction of it.
 
