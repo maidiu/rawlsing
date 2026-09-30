@@ -129,6 +129,7 @@ Top-level:
 - `30_LIFE_AND_RELATION_TOPOLOGY_ABOVE_TASK_FLUX_R1.md` — macro layer above chores: conversation, invitation, disclosure, life domains and changing access
 - `31_ENTRY_PRIMER_AND_BEGINNING_TO_KNOW_LOOP_R1.md` — first-session primer / reciprocal acquaintance formation layer
 - `32_DUAL_INTERFACE_SCENE_EXIT_MESSAGING_AND_SUCCESSION_R1.md` — dual portal/message surface, natural scene exit, messaging roster and relationship succession
+- `33_RELATIONAL_WARRANT_FOR_SUCCESSION_R1.md` — relational warrant for introducing another unresolved human life
 - `17_FULL_RAWLSING_VOZHD_GROUNDING_INTEGRITY_R1.md` — takeover verification
 - `08_INTERACTION_SYSTEM_SYNTHESIS_R1.md`
 - `09_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R2.md`
