@@ -1,0 +1,114 @@
+{
+  "schema": "PYAT_C2_02_C4_FINAL_DISPOSITION@1.0.0",
+  "disposition": "INPUT_OR_CUSTODY_BLOCKER",
+  "selected_set_status": "EDGE_MINIMAL_EIGHT_SOURCE_SET_SELECTED_AND_JUSTIFIED",
+  "terminal": "C2_02_C4_PROVING_WORKLOAD_RETURNED__HQ_ADJUDICATION_REQUIRED",
+  "commission_tip": "440e0a600f66103aad6076979cb23209f0a0ae4a",
+  "exact_base": "c5cb9ea33192dfc438b9559691832e1a6aaf96fc",
+  "selected_source_ids": [
+    "02",
+    "06",
+    "08",
+    "12",
+    "14",
+    "26",
+    "27",
+    "35"
+  ],
+  "selected_count": 8,
+  "minimality_claim": {
+    "grain": "declared C4 proving obligations / edge classes",
+    "lower_bound_3_rejected": true,
+    "reason": "Independent G01 user-missing+observed, D01 BIG5+WINDOWS-1252, D02, R05, B01/LiTS full-route and B02/WVS retained-route obligations require eight distinct exact source identities. EVS1990+EVS2008 simultaneously satisfy the same-family multi-wave requirement.",
+    "remove_any_selected_source_loses_required_edge": true
+  },
+  "blocker": {
+    "id": "C2-02-BLOCK-D02-LOCATOR-001",
+    "class": "INPUT_OR_CUSTODY_BLOCKER",
+    "source": "SRC14",
+    "source_file": "EVS 2008.sav",
+    "source_sha256": "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379",
+    "accepted_generic_owner": "C3 D02 opaque decoder-native date/time carrier",
+    "exact_missing_input": "Predeclared exact real-source date/time-bearing physical column/cell locator, or an independently frozen whole-source traversal oracle that identifies the expected D02 occurrence without consulting C4 output.",
+    "evidence_state": "The inspected CLOSED35/C2-01 source-free ledgers freeze SRC14 as the sole D02-affected source but do not expose an exact physical locator.",
+    "why_blocking": "Without a predeclared locator/oracle, a fresh EVS2008 D02 source probe would discover its own witness and could not satisfy AT20 independent oracle/source-accounting law.",
+    "wake_condition": "HQ supplies or commissions recovery of an exact immutable D02 physical locator/expected native-type witness from competent retained evidence, or freezes a whole-source deterministic traversal oracle independently of C4 output.",
+    "forbidden_workaround": "Do not inspect EVS2008 raw data in C2-02; do not let C4 output select the D02 witness retroactively."
+  },
+  "pre_execution_dependencies_not_the_primary_blocker": [
+    {
+      "id": "C1-01",
+      "state": "REQUIRED",
+      "note": "C1-00 contract/oracle is independently accepted, but C1-01 implementation/execution is not present in inspected evidence. C4 full-route composition cannot start until a separately accepted C1-01 exists."
+    },
+    {
+      "id": "C3-INTEGRATION-ANCESTRY",
+      "state": "REQUIRED",
+      "accepted_integration_head": "30686b185d4ceb2c94f61815ef70d8c8e76255d6",
+      "note": "The C2-02 exact base does not itself contain the accepted C3 G01/D01/D02 implementation. The later C4 execution head must include that accepted integration or exact blob-equivalent content."
+    }
+  ],
+  "exact_fresh_read_plan": {
+    "full_route_fresh": [
+      "SRC27 LiTS I — exactly one governed fresh current source-backed pass after all prerequisites"
+    ],
+    "bounded_physical_fresh": [
+      "SRC02 Afro Barometer Round 5 — G01 user-missing edge",
+      "SRC06 Arab Barometer Wave 5 — G01 observed edge",
+      "SRC08 Asian Barometer Wave 1 — D01 BIG5 exact-SHA decoder admission",
+      "SRC12 EVS 1990 — D01 WINDOWS-1252 exact-SHA decoder admission",
+      "SRC26 Latinobarometro 2024 — R05 header/dictionary divergence"
+    ],
+    "conditional_fresh": [
+      "SRC14 EVS 2008 — D02 only after blocker wake condition"
+    ],
+    "no_fresh_raw_read": [
+      "SRC35 WVS7 — retained admitted release/replay/oracle comparator"
+    ],
+    "excluded_sources_fresh_reads": 0
+  },
+  "retained_evidence_use": {
+    "LiTS_I": "Retained independent canonical closure/checkpoint/oracle is the pre-existing oracle against which the one fresh current pass is compared.",
+    "WVS7": "Retained admitted release/replay/oracle proves retained-vs-fresh distinction without a gratuitous WVS raw reread.",
+    "C3": "Source-free-qualified G01/D01/D02 implementation proves generic current code behavior but does not by itself substitute for bounded current real-source edge reads.",
+    "CLOSED35": "Historical all-35 representation census supplies independent source/edge applicability and physical expected values, not current semantic Route-B truth."
+  },
+  "authority_boundary": {
+    "full_semantic_route_selected_only_for": [
+      "SRC27",
+      "SRC35"
+    ],
+    "physical_edge_only": [
+      "SRC02",
+      "SRC06",
+      "SRC08",
+      "SRC12",
+      "SRC14",
+      "SRC26"
+    ],
+    "if_C4_scope_is_broadened_to_full_semantic_route_on_physical_edge_only_sources": "TYPED_AUTHORITY_RESIDUAL",
+    "no_new_semantic_authority_created": true
+  },
+  "AT_dispositions": {
+    "AT01": "WORKLOAD_CONTRACT_SELECTED__EXECUTION_PENDING",
+    "AT02": "EXACT_AUTHORITY_BOUNDARIES_SELECTED__NO_INFERENCE__EXECUTION_PENDING",
+    "AT20": "INDEPENDENT_ORACLE_AND_SOURCE_ACCOUNTING_PLAN_SELECTED__D02_LOCATOR_BLOCKER",
+    "AT21": "LITS_FRESH_VS_WVS_RETAINED_PROOF_SHAPE_SELECTED",
+    "AT27": "ALL35_ACCOUNTING_PLAN_COMPLETE__NO_ALL35_GREEN_CLAIM"
+  },
+  "carried_residual": {
+    "id": "C2-EPCLASS-PAYLOAD-001",
+    "state": "UNRESOLVED__NOT_MISSING_PROVED",
+    "changed": false
+  },
+  "prohibited_activity": {
+    "C4_executed": false,
+    "raw_survey_data_accessed": false,
+    "production_code_mutated": false,
+    "semantic_authority_created": false,
+    "epistemic_origin_classification_invented": false,
+    "Candidate_A_B_C_run": false,
+    "measured_P2X_run": false
+  },
+  "HQ_decision_requested": "Accept the eight-source proving-set selection, recover/freeze the exact SRC14 D02 locator or independent traversal oracle, ensure accepted C1-01 and C3 integration ancestry, then issue the final governed C4 execution freeze."
+}
