@@ -1,0 +1,42 @@
+{
+  "schema": "PYAT_C3_03_CODEX_EXECUTION_ENVIRONMENT@1.0.0",
+  "disposition": "BLOCKED_CODEX_EXECUTION_CAPABILITY",
+  "required_environment": {
+    "python": "CPython 3.11",
+    "pytest": "9.1.1",
+    "pandas": "2.3.3"
+  },
+  "collection_started": false,
+  "available_cloud_environment": {
+    "user_mac": false,
+    "python_implementation": "CPython",
+    "python_version": "3.13.5",
+    "pip": "25.1.1",
+    "pytest": "9.0.2",
+    "pandas": "2.2.3",
+    "sorted_pip_freeze_all": {
+      "entry_count": 507,
+      "sha256": "36dcd5bfb474ceecfbda8de237668998286c26d99c80728413b931681eee1b93",
+      "purpose": "ambient cloud capability evidence only; not qualification environment",
+      "exact_bytes_retained_in_execution_session": true
+    }
+  },
+  "python_311_discovery": {
+    "executable_found": false,
+    "cached_runtime_found": false,
+    "uv_present": true,
+    "uv_version": "0.10.0"
+  },
+  "python_311_install_attempt": {
+    "command": "/opt/pyvenv/bin/uv python install 3.11",
+    "selected_distribution": "cpython-3.11.14-linux-x86_64-gnu",
+    "exit_code": 1,
+    "retries": 3,
+    "failure_class": "NETWORK_DNS_UNAVAILABLE",
+    "terminal_error": "failed to lookup address information: Temporary failure in name resolution",
+    "download_url": "https://github.com/astral-sh/python-build-standalone/releases/download/20260203/cpython-3.11.14%2B20260203-x86_64-unknown-linux-gnu-install_only_stripped.tar.gz"
+  },
+  "exact_environment_created": false,
+  "pinned_dependencies_installed_under_python_311": false,
+  "substituted_runtime_used": false
+}

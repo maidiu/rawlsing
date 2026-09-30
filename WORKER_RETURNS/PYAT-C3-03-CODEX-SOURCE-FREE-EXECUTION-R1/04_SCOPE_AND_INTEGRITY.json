@@ -1,0 +1,51 @@
+{
+  "schema": "PYAT_C3_03_CODEX_SCOPE_AND_INTEGRITY@1.0.0",
+  "execution_commit": {
+    "sha": "283d2c5d2b187c4e62ae1aecb236a0b51ddeffb1",
+    "verified_via_github": true
+  },
+  "semantic_candidate_sha": "901e3e77f905847d3ef8d86b458280d8fe422dd0",
+  "court_spec": {
+    "blob": "f408ae9a113b19f49c6c30d67c3177e3a7f787e4",
+    "python_version": "3.11",
+    "semantic_candidate_sha": "901e3e77f905847d3ef8d86b458280d8fe422dd0",
+    "determinism_mode": "EXACT",
+    "env": {
+      "PYTHONHASHSEED": "0",
+      "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1"
+    },
+    "tests": [
+      "rawlsing_next/tests/test_closed35_g01_sav_numeric_representation_authority.py",
+      "rawlsing_next/tests/test_closed35_d01_declared_encoding_admission.py",
+      "rawlsing_next/tests/test_closed35_d02_opaque_datetime_carrier.py",
+      "rawlsing_next/tests/test_fiabc_lm2_r1j_sav_representation_authority.py",
+      "rawlsing_next/tests/test_r35_i01_physical_metadata.py",
+      "rawlsing_next/tests/test_pre553_source_backed_c11_facade.py"
+    ]
+  },
+  "c11_facade_blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+  "tested_worktree": {
+    "materialized": false,
+    "clean_tree_pretest": null,
+    "clean_tree_posttest": null,
+    "reason": "Qualification did not proceed past exact-runtime provisioning; no source checkout was used for execution."
+  },
+  "scope": {
+    "user_mac_used": false,
+    "raw_survey_opened": 0,
+    "raw_survey_materialized": 0,
+    "raw_survey_decoded": 0,
+    "candidate_a_b_c_run": false,
+    "measured_p2x_run": false,
+    "real_source_c11_materialization": false,
+    "code_edits": 0,
+    "test_edits": 0,
+    "workflow_edits": 0,
+    "court_spec_edits": 0
+  },
+  "evidence_integrity": {
+    "no_execution_pass_claim": true,
+    "no_semantic_failure_claim": true,
+    "no_manufactured_court_receipt": true
+  }
+}
