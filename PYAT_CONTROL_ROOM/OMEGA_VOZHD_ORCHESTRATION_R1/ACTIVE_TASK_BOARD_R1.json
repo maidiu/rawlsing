@@ -1,7 +1,7 @@
 {
   "schema": "PYAT_OMEGA_ACTIVE_TASK_BOARD@1",
-  "revision": 18,
-  "status": "BROWSER_ECONOMY_ACTIVE__C1_R8_ROUTING_AMENDMENT_REQUIRED__C2_PREP_COMPLETE__C3_ADOPTED",
+  "revision": 19,
+  "status": "BROWSER_ECONOMY_ACTIVE__C1_R8_PATCH_READY__INDEPENDENT_REVIEW_BOUND__C2_PREP_COMPLETE__C3_ADOPTED",
   "control_branch": "integration/pre-main-reconciliation-r1",
   "adopted_preparation": [
     {
@@ -33,22 +33,31 @@
         "skipped": 0
       },
       "adjudication": "ADOPT_BLOCKER__AT07_RELEASE_IDENTITY_SETUP_MISMATCH"
+    },
+    {
+      "id": "C1-01-R8",
+      "head": "3c09a2d5de6d5335874bb1d2b787cfe69ec2d9e5",
+      "disposition": "PASS_SOURCE_FREE_PATCH_READY__INDEPENDENT_REVIEW_REQUIRED",
+      "counts": {
+        "passed": 58,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "adjudication": "PATCH_READY_ONLY__INDEPENDENT_ACCEPTANCE_REVIEW_REQUIRED"
     }
   ],
   "active_tasks": [
     {
-      "id": "C1-01-R8",
-      "branch": "agent/codex-pyat-hq137-c1-01-r8-release-spine-rebaseline-r1",
-      "commission_tip": "fc61bf8417c39d8855987b6768fc739b1a4829d8",
-      "base": "f5c77a8a853c37a2f9fd9cb1e51f2fffb5dd136c",
-      "state": "BOUND__BROWSER_ROUTING_AMENDMENT_REQUIRED",
+      "id": "C1-01-R8-REVIEW",
+      "branch": "agent/reviewer-pyat-hq138-c1-01-r8-r1",
+      "commission_tip": "b30d1bf977adb4ac337f32e323ef01953267b054",
+      "base": "3c09a2d5de6d5335874bb1d2b787cfe69ec2d9e5",
+      "state": "BOUND_AWAITING_USER_MEDIATED_LAUNCH",
       "launch_surface": "BROWSER",
       "model": "GPT-5.6_SOL_HIGH",
-      "scope": "ONE_OWNER_REPAIR_EXECUTE_DOCUMENT_LOOP__RELEASE_SPINE__PREDICATE_CUSTODY__FULL_C1_01_QUALIFICATION",
-      "pass_wake": "ONE_INDEPENDENT_C1_R8_ACCEPTANCE_REVIEW",
-      "prior_launch_surface": "CODEX",
-      "executor_policy": "NECESSARY_BOUNDED_EXECUTION_HELPER_ONLY",
-      "routing_override_record": "USER_DIRECTED_PYAT_BROWSER_ECONOMY_20260930"
+      "scope": "INDEPENDENT_ACCEPTANCE_REVIEW__R8_RELEASE_FORENSICS__PREDICATE_CUSTODY__ORIGINAL_C1_01_ACCEPTANCE__EXECUTION_PROVENANCE",
+      "codex_policy": "NO_CODEX_UNLESS_REVIEW_IDENTIFIES_ONE_CONCRETE_UNRESOLVED_EXECUTABLE_CLAIM"
     }
   ],
   "held": [
@@ -66,26 +75,21 @@
     "NO_PREV3_TO_V3_ACTOR_IMPLEMENTATION"
   ],
   "prior_git_blob_sha1": "66b666991d9a8c614710687c7640277cb75fc8c6",
-  "next_action": "HQ_AMEND_EXISTING_C1_R8_TO_BROWSER_OWNERSHIP__CODEX_ONLY_FOR_NECESSARY_BOUNDED_EXECUTION",
+  "next_action": "USER_LAUNCH_C1_R8_INDEPENDENT_REVIEW_IN_BROWSER_SOL_HIGH__HQ_ADJUDICATES_RETURN",
   "operating_requirements": "PYAT_CONTROL_ROOM/BROWSER_ECONOMY_MODE_R1.md",
   "grounding": {
-    "live_control_head": "a9eb1b7c2e3bc7ee8847db550136da980b2fc817",
+    "live_control_head": "480997288b381efeeef0205531ed5361c39dc629",
     "current_implementation_snapshot": "b3b2fa13049513078c301a1f6574b661fcf390c5",
-    "control_delta": "91_COMMITS__98_FILES__0_RAWLSING_NEXT",
-    "disposition": "CURRENT_FOR_C1_R8__NO_MECHANICAL_REBASE_REQUIRED"
+    "control_delta": "99_COMMITS__105_FILES__0_RAWLSING_NEXT",
+    "disposition": "CURRENT_FOR_C1_R8_REVIEW__NO_MECHANICAL_REBASE_REQUIRED"
   },
   "operating_mode": {
     "selected": "BROWSER_ECONOMY",
     "requirements_path": "PYAT_CONTROL_ROOM/BROWSER_ECONOMY_MODE_R1.md",
     "record_id": "USER_DIRECTED_PYAT_BROWSER_ECONOMY_20260930",
     "default_owner": "BROWSER_GPT_5_6_SOL_HIGH",
-    "codex_exception": "NECESSARY_OPERATION_UNAVAILABLE_THROUGH_ACTUALLY_AVAILABLE_AUTHORIZED_BROWSER_OR_SERVICE_ROUTES",
-    "convenience_or_speed_sufficient": false,
+    "codex_exception": "ONLY_ONE_NECESSARY_OPERATION_UNAVAILABLE_THROUGH_AUTHORIZED_NON_CODEX_ROUTE",
     "whole_job_codex_default": false,
-    "astra": "EXISTING_OMEGA_AND_SUBSTANTIVE_ESCALATION_GATES_ONLY",
-    "alternate_mode": "EFFICIENCY_FIRST",
-    "alternate_active": false,
-    "switch_requires": "EXPLICIT_USER_DIRECTION",
-    "usage_budget_tokens": null
+    "efficiency_first_active": false
   }
 }
