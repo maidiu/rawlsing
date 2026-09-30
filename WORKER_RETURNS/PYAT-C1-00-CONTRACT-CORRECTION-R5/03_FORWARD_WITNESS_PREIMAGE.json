@@ -1,0 +1,49 @@
+{
+  "schema": "PYAT_C1_00_R5_FORWARD_WITNESS_PREIMAGE@1",
+  "status": "PREIMAGE_UNDERDETERMINED__NOT_RECONSTRUCTED",
+  "expected_hash": "c93e840c06da9ab8de9ca237863d52858fe6765d5bfd7c7efb42b879440663c9",
+  "frozen_consumer_query_ref": {
+    "kind": "POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_QUERY@1",
+    "object_id": "urn:rawlsing:learned-world:positioned-subject-query:sha256:83727ca59eaf43085324ee7dc7db5ce4ecf4e4bf1f1284692cd3ad3f192df027",
+    "content_hash": "83727ca59eaf43085324ee7dc7db5ce4ecf4e4bf1f1284692cd3ad3f192df027"
+  },
+  "fixed_relation_inputs": {
+    "subject_condition_preimage_ref": {
+      "kind": "C1_SYNTHETIC_SUBJECT_CONDITION_PREIMAGE",
+      "object_id": "urn:test:c1:at07:subject-condition:POSITION_P1",
+      "content_hash": "df3f992bc93dd5e23ca1e0230885cca253cdd1c4d02e8c8a8bd4221d7804b9a3"
+    },
+    "producer_query_ref": {
+      "kind": "EmpiricalQuerySpec@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:293db4ee7e1899c1a6df4f9178b4181a3f83496dc0b53790b80a7f951d3472ce",
+      "content_hash": "293db4ee7e1899c1a6df4f9178b4181a3f83496dc0b53790b80a7f951d3472ce"
+    },
+    "producer_predicate_ref": {
+      "kind": "EmpiricalPredicate@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:13c14707d4d0544b2c1c1a43c07a308ff7fffbca196905c47c2d31f2ea8a2e6b",
+      "content_hash": "13c14707d4d0544b2c1c1a43c07a308ff7fffbca196905c47c2d31f2ea8a2e6b"
+    },
+    "producer_predicate_leaf_ref": {
+      "kind": "C1_SYNTHETIC_PREDICATE_LEAF_PREIMAGE",
+      "object_id": "urn:test:c1:at07:predicate-leaf:POSITION_EQ_P1",
+      "content_hash": "62deeeb5968ea313b345d7427af416ce6d7384e7560e2fd063d660bcccacda6d"
+    },
+    "pairing_ground_truth_ref": {
+      "kind": "C1_SYNTHETIC_VALUE_PAIRING_GROUND_TRUTH",
+      "object_id": "urn:test:c1:at07:value-pairing:POSITION_P1__POSITION_EQ_P1",
+      "content_hash": "020f3f2a103a0fb7cf216b98f6965637de6ace71ebda950274c0c7987c2ec44b"
+    },
+    "pairing_authority_ref": {
+      "authority_id": "C1-AT07-COMPARABILITY",
+      "authority_version": "1.0.0",
+      "authority_content_hash": "69cb883e7ccc115da614091635f36f7eca92cc1f517732e57a37fe77afb2676f"
+    }
+  },
+  "underdetermined_identity_inputs": [
+    "consumer_binding_material.effective_time_or_interval",
+    "consumer_binding_fingerprint (depends on exact binding material)",
+    "producer_predicate_hash (required by R2 witness schema; not frozen in accepted C1 artifacts)",
+    "exact closed witness field set/material (R2 specifies required_fields, not an exact no-extra-fields identity schema)"
+  ],
+  "reconstruction_result": null
+}
