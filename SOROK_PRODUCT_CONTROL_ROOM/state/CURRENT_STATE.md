@@ -124,6 +124,7 @@ Top-level:
 - `25_COURT11_PLAYER_PRAXIS_REFLECTION_R1.md` — open player-reflection court
 - `26_COURT8F_D002_NATIVE_PLAYER_SKILL_VS_DECLARED_CAPABILITY_R1.md` — native player skill vs unverifiable declared capability
 - `27_D002_MEDIUM_NATIVE_AGENCY_AND_ACTION_DECOMPRESSION_R1.md` — current action-decompression / medium-native agency law
+- `28_D002_DELEGATED_TASK_EXECUTION_AND_SALIENT_FORKS_R1.md` — neutral delegated chores / dynamic zoom / salient-fork law
 - `17_FULL_RAWLSING_VOZHD_GROUNDING_INTEGRITY_R1.md` — takeover verification
 - `08_INTERACTION_SYSTEM_SYNTHESIS_R1.md`
 - `09_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R2.md`
