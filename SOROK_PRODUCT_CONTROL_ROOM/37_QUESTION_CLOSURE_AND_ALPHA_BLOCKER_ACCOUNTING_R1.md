@@ -51,68 +51,64 @@ Every question now also carries `blocking_stage`:
 
 ## 3. Exact current counts
 
-Total surfaced questions: **109**.
+Total surfaced questions: **112**.
 
 By closure state:
 - `CLOSED_FOR_ALPHA`: **8**
-- `PROVISIONALLY_ANSWERED`: **20**
-- `NEEDS_PROTOTYPE`: **22**
-- `NEEDS_ARCHITECTURE_ADJUDICATION`: **42**
-- `OPEN_DISCOVERY`: **11**
+- `PROVISIONALLY_ANSWERED`: **22**
+- `NEEDS_PROTOTYPE`: **24**
+- `NEEDS_ARCHITECTURE_ADJUDICATION`: **43**
+- `OPEN_DISCOVERY`: **9**
 - `DEFERRED_POST_ALPHA`: **6**
 
 By blocking stage:
-- `ALPHA_SPEC`: **7**
-- `ALPHA_IMPLEMENTATION`: **35**
-- `ALPHA_VALIDATION`: **23**
+- `ALPHA_SPEC`: **5**
+- `ALPHA_IMPLEMENTATION`: **38**
+- `ALPHA_VALIDATION`: **25**
 - `POST_ALPHA`: **18**
 - `NONE`: **26**
 
-Current total alpha blockers in the broad sense: **42**.
+Current total alpha blockers in the broad sense: **43**.
 
 But this splits critically into:
 
-> **7 product/spec questions that Vozhd + user still need to adjudicate**
+> **5 product/spec questions that Vozhd + user still need to adjudicate**
 
 and
 
-> **35 implementation/architecture questions that should largely be handled after product semantics are sufficiently fixed.**
+> **38 implementation/architecture questions that should largely be handled after product semantics are sufficiently fixed.**
 
 Thus the meaningful current conversational progress number is **8**, not 103, 94 or 9.
 
 ---
 
-## 4. Current seven ALPHA_SPEC blockers
+## 4. Current five ALPHA_SPEC blockers
 
 ### Q-WORLD-001
-What present-world/current-event ingestion and admission law keeps persona life coupled to the historical present without equating external occurrence with actor exposure, knowledge or effect?
-
-### Q-MSGTIME-001
-What asynchronous time law governs message delivery, reply timing and life advancement outside portal scenes without requiring continuous wall-clock coupling or making the persona feel always available?
+What exact present-world/current-event ingestion and admission law keeps persona life coupled to the historical present without equating external occurrence with actor exposure, knowledge or effect?
 
 ### Q-ACCESS-001
 What exact relational-access topology governs how the user becomes able to enter previously unavailable parts of the persona's life without scalar unlocks or guaranteed disclosure?
 
 ### Q-INVITEGRAPH-001
-What exact invite economy—seed cohort, invite scarcity, inviter disclosure, note semantics and later outbound-invite eligibility—lets Rawlsing grow person-to-person without status capture or referral spam?
+What exact residual invite-economy rules remain after the one-for-one warrant-coupled law: invite consumption on send/accept, decline/expiry/failure restoration, inviter visibility, abuse controls, seed-cohort/public-demand transition?
 
 ### Q-PRIV-001
 What user data is required for longitudinal relational modeling, what should never be collected, and what deletion/export boundaries are required?
 
-### Q-ABSENCE-001
-What bounded background/autopilot continuity, if any, may represent the portaled user's ordinary existence while the real user is away without fabricating relational agency?
-
 ### Q-ALPHA-001
-What evidence would falsify or support the core alpha theorem that earned relationship with an unchosen persona is compelling and spiritually productive?
+What evidence would falsify or support the proximal alpha theorem that a persistent, independently living generated person can become intrinsically worth knowing through accumulated relation rather than scores, scripted drama or novelty?
 
 ### Newly moved out of ALPHA_SPEC
-- `Q-RETRY-001`: CLOSED_FOR_ALPHA — no user save slots/branch reloads; restart loses continuity/people.
-- `Q-LIFETOPO-001`: PROVISIONALLY_ANSWERED / ALPHA_IMPLEMENTATION — independent present life generated from V3/world state with computable→flesh→computable feedback.
-- `Q-DISCLOSE-001`: PROVISIONALLY_ANSWERED / ALPHA_IMPLEMENTATION — actor-owned event-time disclosure from relational tension/cathexis rather than trust threshold.
+- `Q-RETRY-001`: CLOSED_FOR_ALPHA — no save branches; restart loses continuity/people.
+- `Q-LIFETOPO-001`: PROVISIONALLY_ANSWERED / ALPHA_IMPLEMENTATION — deep computational person + recursively materialized world flesh + supporting-actor fidelity.
+- `Q-DISCLOSE-001`: PROVISIONALLY_ANSWERED / ALPHA_IMPLEMENTATION — actor-owned relational-tension/cathexis disclosure.
+- `Q-ABSENCE-001`: PROVISIONALLY_ANSWERED / ALPHA_IMPLEMENTATION — no meaningful player autopilot; portal occupancy gates co-presence.
+- `Q-MSGTIME-001`: PROVISIONALLY_ANSWERED / ALPHA_IMPLEMENTATION — elastic-present default, cancellable/reschedulable pending rendezvous, optional tighter sync, ambient-persistence product budget.
 
-## 5. What the 35 implementation blockers mean
+## 5. What the 38 implementation blockers mean
 
-These are not thirty-five new conceptual conversations the user must personally answer.
+These are not thirty-eight new conceptual conversations the user must personally answer.
 
 They are mostly exact architecture questions such as:
 - V3/CAN-008/PFF/V2 ownership;
@@ -173,15 +169,15 @@ Progress reports should instead say:
 
 ## 8. Current critical path
 
-The seven ALPHA_SPEC blockers are not equally urgent.
+The five ALPHA_SPEC blockers are not equally urgent.
 
 Current recommended order:
 
-1. `Q-WORLD-001` + `Q-MSGTIME-001` — jointly settle present coupling and outside-portal time;
+1. `Q-WORLD-001` — present-world/current-event ingestion boundary;
 2. `Q-ACCESS-001` — changing relational reach without unlock metaphysics;
-3. `Q-INVITEGRAPH-001` — initial person-to-person distribution;
+3. `Q-INVITEGRAPH-001` — residual one-for-one invite-economy details;
 4. `Q-PRIV-001` — minimum data/deletion/export constitution;
-5. `Q-ALPHA-001` — final falsification/evidence constitution once the product shell is concrete enough to test.
+5. `Q-ALPHA-001` — final proximal kill-test/falsification constitution.
 
 Why put alpha evidence last among the six?
 
@@ -197,6 +193,6 @@ The system is no longer:
 
 It is:
 
-> **109 frontiers have been surfaced and preserved. Seven still require product-level adjudication before the current alpha can be fully specified. Thirty-five more require architecture work before governed implementation. Twenty-three should be learned by prototyping, not armchair design.**
+> **112 frontiers have been surfaced and preserved. Five still require product-level adjudication before the current alpha can be fully specified. Thirty-eight more require architecture work before governed implementation. Twenty-five should be learned by prototyping rather than armchair design.**
 
 This is the current canonical progress interpretation.
