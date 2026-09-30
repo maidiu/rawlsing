@@ -1,6 +1,6 @@
 # Sorok — Q-WORLD-001 Present-World Ingress Constitution R1
 
-Status: `PROVISIONAL_PRODUCT_CONSTITUTION__Q_WORLD_001_FIRST_ADJUDICATION__NON_DISPOSITIVE_TO_PYAT_PREMAIN`
+Status: `PROVISIONAL_PRODUCT_CONSTITUTION__Q_WORLD_001_CLOSED_FOR_ALPHA_SPEC__NON_DISPOSITIVE_TO_PYAT_PREMAIN`
 
 Date: 2026-09-30
 
@@ -481,3 +481,68 @@ And:
 And:
 
 > **Currentness belongs first to the world. Whether it reaches the person is a later causal question.**
+
+## 20. Final alpha external-anchor granularity
+
+Crosscheck against the homologous-peer / portal constitution resolves the remaining product fork.
+
+Homologous peer requires:
+- a locally coherent social/material field;
+- comparable local structural position;
+- locally legible affordances;
+- a generated local dwelling/livelihood/institutional position;
+- actual-user consciousness preserved as developmentally foreign.
+
+It does **not** require literal street-by-street reproduction of the actual locality.
+
+Therefore alpha should default to:
+
+### Real external anchor
+- actual historical date;
+- real country/region/city-or-metro grain where lawfully available and product-relevant;
+- actual broad public legal/institutional/infrastructure/weather/conflict conditions at that claimed grain;
+- exact real named public entities only when explicitly adopted into the continuity.
+
+### Synthetic micro-local field
+- generated dwelling;
+- generated private workplace by default;
+- generated neighbors/coworkers/private businesses;
+- generated block/building/interior particulars;
+- generated private schedules and local histories;
+
+all constrained by the admitted real public substrate.
+
+Exact real address, exact real private business, or dense real neighborhood mirroring is **not an alpha requirement**.
+
+This prevents the portal's local field from becoming a brittle digital-twin project while preserving historical-present material constraint.
+
+Compact law:
+
+`REAL MACRO-HISTORICAL CONSTRAINT + SYNTHETIC MICRO-LIVED WORLD`.
+
+Named real micro-entities may be introduced later only by making an explicit higher-resolution factual commitment.
+
+---
+
+## 21. Q-WORLD-001 disposition
+
+At product-spec grain:
+
+`Q-WORLD-001 = PROVISIONALLY_ANSWERED / CLOSED_FOR_ALPHA_SPEC`.
+
+The remaining work is implementation/architecture:
+- external-anchor representation;
+- factual source/provenance contracts;
+- freshness/caching;
+- objective dependency routing;
+- effective-time admission;
+- causal-closure checks;
+- late-currentness collision handling;
+- learned-prior/current-fact boundary enforcement.
+
+These should continue under exact ALPHA_IMPLEMENTATION questions rather than keeping the product-design blocker open.
+
+Next product-spec blocker:
+
+`Q-ACCESS-001`.
+
