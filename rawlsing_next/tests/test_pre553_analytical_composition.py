@@ -1,3 +1,4 @@
+import copy
 import inspect
 import json
 from pathlib import Path
@@ -17,6 +18,8 @@ from rawlsing_next.pre553_empirical_authority import AuthorityRegistry
 from rawlsing_next.pre553_analytical_composition import (
     ConditionValueBindingWitness,
     ConditionValueRelationMismatch,
+    EVIDENCE_CONTRACT_ID,
+    EVIDENCE_PREIMAGE_SCHEMA,
     SLICE_PROJECTION_SCHEMA_HASH,
     compose_positioned_subject_possibility,
     _build_evidence,
@@ -177,8 +180,9 @@ def _producer(source, query_auth, direction):
     return predicate, query
 
 
-def _consumer(source, direction):
-    pairing = _fixture_authority("FIXTURE_ONLY_CONDITION_VALUE_PAIRING")
+def _consumer(source, direction, *, pairing=None):
+    if pairing is None:
+        pairing = _fixture_authority("FIXTURE_ONLY_CONDITION_VALUE_PAIRING")
     if direction == "forward":
         subject_material = {
             "schema": "C1_SYNTHETIC_POSITIONED_SUBJECT@1",
@@ -239,7 +243,7 @@ def _witness(source, direction, consumer_query, binding, producer_query, predica
         leaf = _relation("ANSWER_EQ_YES", "predicate_leaf_preimages")
         pair = _relation("ANSWER_YES__ANSWER_EQ_YES", "pairing_ground_truth")
         object_id = "urn:test:c1:at07:condition-value-witness:r6-reverse-yes"
-    pairing = _fixture_authority("FIXTURE_ONLY_CONDITION_VALUE_PAIRING")
+    pairing = binding.comparability_authority_ref
     material = {
         "consumer_query_ref": consumer_query.ref.as_dict(),
         "consumer_binding_material": canonicalize(binding.material()),
@@ -255,7 +259,7 @@ def _witness(source, direction, consumer_query, binding, producer_query, predica
         "pairing_authority_ref": pairing.as_dict(),
         "source_universe_ref": source["universe"].ref.as_dict(),
         "release_ref": source["release_ref"].as_dict(),
-        "effective_time_or_interval": None,
+        "effective_time_or_interval": canonicalize(binding.effective_time_or_interval),
         "binding_mode": "EXPLICIT_VALUE_BEARING_RELATION__NO_INFERENCE",
     }
     assert set(material) == {
@@ -304,6 +308,58 @@ def _execute(at07, direction):
         condition_binding_witness=witness,
     )
     return result, witness, consumer_query, binding, predicate, producer_query
+
+
+def _query_with_binding(query, binding):
+    return PositionedSubjectPossibilityQuery(
+        query.query_id,
+        query.subject_ref,
+        query.target_ref,
+        query.source_universe_ref,
+        query.release_ref,
+        (binding,),
+        query.requested_projection,
+        purpose=query.purpose,
+    )
+
+
+def _evidence_preimage(evidence):
+    return {
+        "schema": EVIDENCE_PREIMAGE_SCHEMA,
+        "contract_id": EVIDENCE_CONTRACT_ID,
+        "source_universe_ref": evidence.source_universe_ref.as_dict(),
+        "release_ref": evidence.release_ref.as_dict(),
+        "target_ref": evidence.target_ref.as_dict(),
+        "retained_conditioner_ids": list(evidence.retained_conditioner_ids),
+        "evidence_state": evidence.evidence_state,
+        "geometry": canonicalize(evidence.geometry),
+        "raw_support": evidence.raw_support,
+        "uncertainty_state": evidence.uncertainty_state,
+        "provenance_refs": [x.as_dict() for x in evidence.provenance_refs],
+        "authority_refs": [x.as_dict() for x in evidence.authority_refs],
+    }
+
+
+def _assert_unrelated_direct_determinants_unchanged(baseline, mutated):
+    for name in (
+        "producer_query_ref",
+        "producer_predicate_ref",
+        "producer_fact_ref",
+        "source_universe_refs",
+        "release_refs",
+        "ordered_target_refs",
+        "target_arity_and_topology",
+        "target_domain_identity",
+        "risk_set_ref",
+        "risk_set_member_refs",
+        "denominator_member_refs",
+        "raw_denominator_support",
+        "measure_kind",
+        "measure_basis_ref",
+        "weight_basis_id_or_null",
+        "consumer_model_rule_hash",
+    ):
+        assert getattr(mutated, name) == getattr(baseline, name), name
 
 
 def test_r6_queries_supersede_underdetermined_historical_hashes(at07):
@@ -359,6 +415,166 @@ def test_r6_witness_mutation_reidentifies_and_stale_ref_fails_closed(at07):
             consumer_query=consumer_query, model_rule=_model(source),
             condition_binding_witness=stale,
         )
+
+
+def test_r7_closed_16_key_witness_rejects_matching_hash_with_extra_field(at07):
+    source, _, registry = at07
+    _, witness, consumer_query, _, predicate, producer_query = _execute(at07, "forward")
+    mutated = dict(witness.identity_material)
+    mutated["extra_fixture_identity_key"] = "R7-CLOSED-MAP-COUNTEREXAMPLE"
+    hostile = ConditionValueBindingWitness(
+        witness_ref=ExactRef(
+            witness.witness_ref.kind,
+            witness.witness_ref.object_id,
+            semantic_hash(mutated),
+        ),
+        identity_material=mutated,
+        subject_condition_preimage_ref=witness.subject_condition_preimage_ref,
+        subject_condition_preimage_material=witness.subject_condition_preimage_material,
+        producer_predicate_leaf_ref=witness.producer_predicate_leaf_ref,
+        producer_predicate_leaf_projection=witness.producer_predicate_leaf_projection,
+        pairing_ground_truth_ref=witness.pairing_ground_truth_ref,
+        pairing_ground_truth_material=witness.pairing_ground_truth_material,
+        pairing_authority_ref=witness.pairing_authority_ref,
+    )
+    hostile.verify_identity()
+    assert len(hostile.identity_material) == 17
+    with pytest.raises(
+        ConditionValueRelationMismatch,
+        match="witness identity field set mismatch",
+    ):
+        compose_positioned_subject_possibility(
+            repository=source["repo"], empirical_query=producer_query, predicate=predicate,
+            authority_registry=registry, release_refs=(source["release_ref"],),
+            consumer_query=consumer_query, model_rule=_model(source),
+            condition_binding_witness=hostile,
+        )
+
+
+def test_at19_valid_relation_determinant_reidentifies_composed_result(at07):
+    source, _, registry = at07
+    baseline, baseline_witness, consumer_query, binding, predicate, producer_query = _execute(
+        at07, "forward"
+    )
+    mutated_binding = ConditionerBinding(
+        binding.binding_id,
+        binding.subject_fact_ref,
+        binding.empirical_coordinate_ref,
+        binding.comparability_authority_ref,
+        binding.source_universe_ref,
+        binding.release_ref,
+        "AT19_FIXTURE_ONLY_TIME_MUTATION",
+    )
+    mutated_query = _query_with_binding(consumer_query, mutated_binding)
+    mutated_witness = _witness(
+        source, "forward", mutated_query, mutated_binding, producer_query, predicate
+    )
+    assert mutated_witness.witness_ref != baseline_witness.witness_ref
+    mutated_witness.verify_identity()
+    mutated = compose_positioned_subject_possibility(
+        repository=source["repo"], empirical_query=producer_query, predicate=predicate,
+        authority_registry=registry, release_refs=(source["release_ref"],),
+        consumer_query=mutated_query, model_rule=_model(source),
+        condition_binding_witness=mutated_witness,
+    )
+    assert mutated.composed_result_identity_hash != baseline.composed_result_identity_hash
+    assert mutated.consumer_query_ref != baseline.consumer_query_ref
+    assert (
+        mutated.condition_binding_witness_ref_or_hash
+        != baseline.condition_binding_witness_ref_or_hash
+    )
+    assert mutated.raw_denominator_support == baseline.raw_denominator_support == 60
+    assert mutated.complete_cell_geometry == baseline.complete_cell_geometry
+    _assert_unrelated_direct_determinants_unchanged(baseline, mutated)
+
+
+def test_r7_denominator_member_identity_hostile_preserves_visible_54_over_60(at07):
+    result, _, _, _, _, _ = _execute(at07, "forward")
+    evidence = result.possibility_slice_evidence_or_null
+    baseline = _evidence_preimage(evidence)
+    assert semantic_hash(baseline) == evidence.evidence_ref.content_hash
+    assert baseline["raw_support"] == 60
+    assert {x["cell"]: x["raw_numerator_support"] for x in baseline["geometry"]["cells"]} == {
+        "yes": 54,
+        "no": 6,
+    }
+
+    mutated = copy.deepcopy(baseline)
+    hostile_hash = semantic_hash({"fixture_only": "H3_DENOMINATOR_MEMBER_MUTATION"})
+    hostile_member = ExactRef(
+        "C11Internal:RespondentIdentity",
+        f"urn:test:c1:hostile:denominator-member:sha256:{hostile_hash}",
+        hostile_hash,
+    )
+    mutated["geometry"]["denominator"]["denominator_member_refs"][0] = hostile_member.as_dict()
+
+    assert mutated["raw_support"] == baseline["raw_support"] == 60
+    assert mutated["geometry"]["cells"] == baseline["geometry"]["cells"]
+    assert semantic_hash(mutated) != evidence.evidence_ref.content_hash
+
+
+def test_r7_geometry_cell_identity_hostile_reidentifies_evidence(at07):
+    result, _, _, _, _, _ = _execute(at07, "forward")
+    evidence = result.possibility_slice_evidence_or_null
+    baseline = _evidence_preimage(evidence)
+    assert semantic_hash(baseline) == evidence.evidence_ref.content_hash
+
+    mutated = copy.deepcopy(baseline)
+    no_cell = next(x for x in mutated["geometry"]["cells"] if x["cell"] == "no")
+    assert no_cell["raw_numerator_support"] == 6
+    no_cell["raw_numerator_support"] = 5
+    no_cell["raw_probability_exact_fraction"] = {"$exact_fraction": [1, 12]}
+
+    assert mutated["geometry"]["denominator"]["raw_denominator_support"] == 60
+    assert semantic_hash(mutated) != evidence.evidence_ref.content_hash
+
+
+def test_r7_fixture_pairing_authority_reidentifies_witness_evidence_and_composed_result(at07):
+    source, _, registry = at07
+    baseline, baseline_witness, consumer_query, binding, predicate, producer_query = _execute(
+        at07, "forward"
+    )
+    hostile_authority = AuthorityRef(
+        authority_id="C1-AT07-COMPARABILITY-H5-FIXTURE",
+        authority_version="1.0.0",
+        authority_content_hash=semantic_hash(
+            {
+                "fixture_only": True,
+                "hostile_court": "H5_RELATION_PAIRING_AUTHORITY",
+                "real_source_effect": False,
+            }
+        ),
+    )
+    mutated_binding = ConditionerBinding(
+        binding.binding_id,
+        binding.subject_fact_ref,
+        binding.empirical_coordinate_ref,
+        hostile_authority,
+        binding.source_universe_ref,
+        binding.release_ref,
+        binding.effective_time_or_interval,
+    )
+    mutated_query = _query_with_binding(consumer_query, mutated_binding)
+    mutated_witness = _witness(
+        source, "forward", mutated_query, mutated_binding, producer_query, predicate
+    )
+    mutated_witness.verify_identity()
+    mutated = compose_positioned_subject_possibility(
+        repository=source["repo"], empirical_query=producer_query, predicate=predicate,
+        authority_registry=registry, release_refs=(source["release_ref"],),
+        consumer_query=mutated_query, model_rule=_model(source),
+        condition_binding_witness=mutated_witness,
+    )
+
+    assert mutated_witness.witness_ref != baseline_witness.witness_ref
+    assert (
+        mutated.possibility_slice_evidence_or_null.evidence_ref
+        != baseline.possibility_slice_evidence_or_null.evidence_ref
+    )
+    assert mutated.composed_result_identity_hash != baseline.composed_result_identity_hash
+    assert hostile_authority in mutated.possibility_slice_evidence_or_null.authority_refs
+    assert hostile_authority in mutated.authority_refs
+    _assert_unrelated_direct_determinants_unchanged(baseline, mutated)
 
 
 def test_relation_mismatch_fails_before_evidence_and_consumer(monkeypatch, at07):

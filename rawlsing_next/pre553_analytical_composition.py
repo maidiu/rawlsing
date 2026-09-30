@@ -283,8 +283,13 @@ def _verify_witness(
         "effective_time_or_interval",
         "binding_mode",
     }
-    if not required.issubset(identity):
-        raise ConditionValueRelationMismatch("witness missing frozen required field")
+    identity_keys = set(identity)
+    if identity_keys != required:
+        missing = sorted(required - identity_keys)
+        extra = sorted(identity_keys - required)
+        raise ConditionValueRelationMismatch(
+            f"witness identity field set mismatch: missing={missing!r}; extra={extra!r}"
+        )
 
     fingerprint = _binding_fingerprint(binding)
     expected_fields = {
