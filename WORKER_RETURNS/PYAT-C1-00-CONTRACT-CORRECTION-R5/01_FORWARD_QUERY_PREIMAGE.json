@@ -1,0 +1,77 @@
+{
+  "schema": "PYAT_C1_00_R5_FORWARD_QUERY_PREIMAGE@1",
+  "status": "PREIMAGE_UNDERDETERMINED__NOT_RECONSTRUCTED",
+  "expected_hash": "83727ca59eaf43085324ee7dc7db5ce4ecf4e4bf1f1284692cd3ad3f192df027",
+  "owner_material_fields": [
+    "contract",
+    "query_id",
+    "purpose",
+    "subject_ref",
+    "target_ref",
+    "source_universe_ref",
+    "release_ref",
+    "conditioner_bindings",
+    "requested_projection"
+  ],
+  "fixed_by_accepted_material": {
+    "contract": "POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_QUERY@1",
+    "purpose": "EMPIRICAL_POSSIBILITY_ONLY",
+    "target_ref": {
+      "kind": "QUESTION_NATIVE",
+      "object_id": "urn:test:i03:question_native:c1-at07-ANSWER",
+      "content_hash": "e6f8992046c0941a5192585cbe9c2ec86e03963e68207c1f05988df2c9105513"
+    },
+    "source_universe_ref": {
+      "kind": "EmpiricalUniverse@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalUniverse:sha256:ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2",
+      "content_hash": "ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2"
+    },
+    "release_ref": {
+      "kind": "C11LogicalRelease",
+      "object_id": "REL-c1-at07",
+      "content_hash": "8afa807cc06a3a10e660d13bbd831f4f758ae829e835a454c62831bfd8f4d939"
+    },
+    "conditioner_binding_partial": {
+      "binding_id": "position",
+      "subject_fact_ref": {
+        "kind": "C1_SYNTHETIC_SUBJECT_CONDITION_PREIMAGE",
+        "object_id": "urn:test:c1:at07:subject-condition:POSITION_P1",
+        "content_hash": "df3f992bc93dd5e23ca1e0230885cca253cdd1c4d02e8c8a8bd4221d7804b9a3"
+      },
+      "empirical_coordinate_ref": {
+        "kind": "QUESTION_NATIVE",
+        "object_id": "urn:test:i03:question_native:c1-at07-POSITION",
+        "content_hash": "df6d11b23fb0494ebb9ad89a1e173012b8225bafc0b62d3c4a7a3eae5aaf6bf5"
+      },
+      "comparability_authority_ref": {
+        "authority_id": "C1-AT07-COMPARABILITY",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "69cb883e7ccc115da614091635f36f7eca92cc1f517732e57a37fe77afb2676f"
+      }
+    }
+  },
+  "underdetermined_identity_fields": [
+    {
+      "field": "query_id",
+      "owner_constraint": "nonempty non-fuzzy string",
+      "accepted_freeze": null
+    },
+    {
+      "field": "subject_ref",
+      "owner_constraint": "ExactRef",
+      "accepted_freeze": null
+    },
+    {
+      "field": "requested_projection",
+      "owner_constraint": "canonicalizable Mapping",
+      "accepted_freeze": null
+    },
+    {
+      "field": "conditioner_bindings[0].effective_time_or_interval",
+      "owner_constraint": "canonicalizable Any",
+      "accepted_freeze": null
+    }
+  ],
+  "prohibited_resolution": "Do not invent candidate values and hash-test them against expected_hash.",
+  "reconstruction_result": null
+}
