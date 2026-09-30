@@ -1,0 +1,97 @@
+{
+  "schema": "PYAT_C3_SOURCE_FREE_INTEGRATION_REVIEW_EXACT_DIFF@1.0.0",
+  "disposition": "PASS_EXACT_INTEGRATION_EQUIVALENCE",
+  "implementation_baseline": "b3b2fa13049513078c301a1f6574b661fcf390c5",
+  "integration_head": "30686b185d4ceb2c94f61815ef70d8c8e76255d6",
+  "integration_branch": "integration/pyat-hq130-c3-source-free-accepted-r1",
+  "accepted_semantic_candidate": "901e3e77f905847d3ef8d86b458280d8fe422dd0",
+  "compare": {
+    "status": "ahead",
+    "ahead_by": 6,
+    "behind_by": 0,
+    "total_commits": 6,
+    "exact_changed_file_count": 6
+  },
+  "files": [
+    {
+      "path": "rawlsing_next/closed35_g01_sav_numeric_representation_authority.py",
+      "status": "added",
+      "expected_blob": "31a9afd7d91ed4cb2fb1c1aab3ef86a5fdda1f85",
+      "integration_blob": "31a9afd7d91ed4cb2fb1c1aab3ef86a5fdda1f85",
+      "semantic_candidate_blob": "31a9afd7d91ed4cb2fb1c1aab3ef86a5fdda1f85",
+      "exact_equal": true
+    },
+    {
+      "path": "rawlsing_next/pre553_physical_decoder.py",
+      "status": "modified",
+      "expected_blob": "d3d828c171ea9fdd0e90563aff6ef705f5aae2cf",
+      "integration_blob": "d3d828c171ea9fdd0e90563aff6ef705f5aae2cf",
+      "semantic_candidate_blob": "d3d828c171ea9fdd0e90563aff6ef705f5aae2cf",
+      "exact_equal": true
+    },
+    {
+      "path": "rawlsing_next/pre553_r5_codec.py",
+      "status": "modified",
+      "expected_blob": "6000a1704d713f65e07610d81e9b3fd8bdd515ca",
+      "integration_blob": "6000a1704d713f65e07610d81e9b3fd8bdd515ca",
+      "semantic_candidate_blob": "6000a1704d713f65e07610d81e9b3fd8bdd515ca",
+      "exact_equal": true
+    },
+    {
+      "path": "rawlsing_next/tests/test_closed35_g01_sav_numeric_representation_authority.py",
+      "status": "added",
+      "expected_blob": "fb7b090809a609a3b0157f1ed8fcdcd8e8784525",
+      "integration_blob": "fb7b090809a609a3b0157f1ed8fcdcd8e8784525",
+      "semantic_candidate_blob": "fb7b090809a609a3b0157f1ed8fcdcd8e8784525",
+      "exact_equal": true
+    },
+    {
+      "path": "rawlsing_next/tests/test_closed35_d01_declared_encoding_admission.py",
+      "status": "added",
+      "expected_blob": "8fc05965386055a208e5b3988112e67a2e6333e2",
+      "integration_blob": "8fc05965386055a208e5b3988112e67a2e6333e2",
+      "semantic_candidate_blob": "8fc05965386055a208e5b3988112e67a2e6333e2",
+      "exact_equal": true
+    },
+    {
+      "path": "rawlsing_next/tests/test_closed35_d02_opaque_datetime_carrier.py",
+      "status": "added",
+      "expected_blob": "3901f10a487856f5f232ae6700fff407ac99725e",
+      "integration_blob": "3901f10a487856f5f232ae6700fff407ac99725e",
+      "semantic_candidate_blob": "3901f10a487856f5f232ae6700fff407ac99725e",
+      "exact_equal": true
+    }
+  ],
+  "forbidden_diff_categories": {
+    "worker_return_documentation_present": false,
+    "workflow_file_present": false,
+    "court_spec_file_present": false,
+    "unrelated_code_present": false
+  },
+  "conflict_resolution_drift": false,
+  "hidden_semantic_drift": false,
+  "proof_basis": "Every changed integration file is byte-identical by Git blob identity to the independently reviewed semantic candidate; the baseline-to-integration diff contains no other file.",
+  "unchanged_court_dependencies": {
+    "source_backed_c11_facade": {
+      "baseline_blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+      "integration_blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+      "semantic_candidate_blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284"
+    },
+    "fiabc_lm2_r1j_test": {
+      "baseline_blob": "223d959755e688a93638857fd551f2244b87f5a8",
+      "integration_blob": "223d959755e688a93638857fd551f2244b87f5a8",
+      "semantic_candidate_blob": "223d959755e688a93638857fd551f2244b87f5a8"
+    },
+    "r35_i01_physical_metadata_test": {
+      "baseline_blob": "11a78ccb67e9185325be79a19b489d505b489a16",
+      "integration_blob": "11a78ccb67e9185325be79a19b489d505b489a16",
+      "semantic_candidate_blob": "11a78ccb67e9185325be79a19b489d505b489a16"
+    },
+    "source_backed_c11_facade_test": {
+      "baseline_blob": "daf9368a0c3ff277da0b46c4f27e4686c1de8b12",
+      "integration_blob": "daf9368a0c3ff277da0b46c4f27e4686c1de8b12",
+      "semantic_candidate_blob": "daf9368a0c3ff277da0b46c4f27e4686c1de8b12"
+    }
+  },
+  "raw_survey_access": 0
+}
