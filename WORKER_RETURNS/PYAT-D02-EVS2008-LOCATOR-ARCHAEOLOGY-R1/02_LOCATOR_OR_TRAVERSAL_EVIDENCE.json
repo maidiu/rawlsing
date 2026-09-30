@@ -1,0 +1,112 @@
+{
+  "schema": "PYAT_D02_EVS2008_LOCATOR_OR_TRAVERSAL_EVIDENCE@1.0.0",
+  "source": {
+    "source_id": "SRC14",
+    "source_file": "EVS 2008.sav",
+    "sha256": "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379"
+  },
+  "exact_locator_candidate": {
+    "recovered": false,
+    "variable_name": null,
+    "column_ordinal": null,
+    "row_ordinal": null,
+    "cell_locator": null,
+    "metadata_map": null,
+    "metadata_key": null,
+    "metadata_subfield": null,
+    "reason": "The immutable CLOSED35 SRC14 receipt retains only the source-local R5CodecError and surfaces=[], not the failing physical sublocation."
+  },
+  "decoder_native_type_class": {
+    "recovered_generic_law": true,
+    "authority_commit": "30686b185d4ceb2c94f61815ef70d8c8e76255d6",
+    "accepted_exact_types": [
+      "builtins exact datetime.datetime with tzinfo is None",
+      "builtins exact datetime.date",
+      "builtins exact datetime.time with tzinfo is None"
+    ],
+    "opaque_carriers": [
+      "python.datetime.datetime@1",
+      "python.datetime.date@1",
+      "python.datetime.time@1"
+    ],
+    "forbidden_types": [
+      "timezone-aware datetime.datetime without separate explicit authority",
+      "timezone-aware datetime.time without separate explicit authority"
+    ],
+    "source_specific_expected_type": null,
+    "limitation": "The generic law does not establish which one of the three accepted native classes occurred in EVS 2008."
+  },
+  "decisive_historical_failure": {
+    "commit": "b801c58c8e4d6d10e36e0a42ca62cf6908cbf25a",
+    "commit_time": "2026-09-23T07:28:16Z",
+    "path": "WORKER_RETURNS/PREMAIN-CLOSED35-QUALIFIED-REPRESENTATION-CENSUS-RESULTS-R1/source_receipts/SOURCE_14_REPRESENTATION_RECEIPT.json",
+    "blob": "3e08e2ace5ab585336950dc3e6b555ce09405ebc",
+    "canonical_sha256": "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379",
+    "path_manifest_sha256": "0a4edcf54a98aba3c48b6bc85e7c75d99c0ac6ab9078a407f309cdcc0e0327be",
+    "runtime": {
+      "platform": "Darwin",
+      "machine": "x86_64",
+      "cpython": "3.11.3",
+      "pyreadstat": "1.3.6",
+      "pyarrow": "25.0.1"
+    },
+    "status": "BLOCKED",
+    "blocker": "SOURCE_LOCAL_MEASUREMENT_FAILURE:R5CodecError:date/time meaning may not be invented by the R5 codec; use an explicit opaque decoder value",
+    "surfaces": [],
+    "competence": "COMPETENT_FOR_EXACT_SOURCE_D02_OCCURRENCE_CLASS_AND_CUSTODY__INCOMPETENT_FOR_EXACT_LOCATOR_OR_SOURCE_SPECIFIC_NATIVE_TYPE"
+  },
+  "historical_execution_path": {
+    "harness_commit": "11704fbfa16797fbdd55dadc7929aaad729c9454",
+    "harness_path": "rawlsing_next/closed35_representation_census_harness.py",
+    "harness_blob": "b667f7198349486cec32d8168ddc2de1ed0427a8",
+    "relevant_order": [
+      "verify source path exists",
+      "full-file SHA-256 check against canonical source SHA",
+      "exact byte-size check",
+      "pyreadstat metadata-only read using governed decoder lane",
+      "construct metadata receipt",
+      "only later, if governed surfaces exist, bounded surface reads"
+    ],
+    "src14_surface_state": "NO_GOVERNED_SURFACES_RETAINED_IN_FAILURE_RECEIPT",
+    "failure_boundary": "During source observation after exact SHA/size gate and before a completed metadata receipt was retained.",
+    "locator_loss": "The outer source-local exception wrapper records only exception class/message and writes surfaces=[]; it does not persist the metadata map/key/value that raised.",
+    "inference_prohibited": "The failing metadata substructure cannot be reconstructed from questionnaire semantics or from the order of possible metadata maps."
+  },
+  "traversal_oracle_candidate": {
+    "recovered": false,
+    "historical_harness_is_not_sufficient": true,
+    "missing_frozen_elements": [
+      "D02-specific traversal order over possible physical values",
+      "exact type predicate bound as the historical expected predicate",
+      "expected source-specific match set",
+      "expected source-specific match cardinality",
+      "D02-specific termination law",
+      "locator-bearing match identities",
+      "independent expected result frozen before future C4"
+    ],
+    "reason": "CLOSED35 was a representation census whose SRC14 execution failed while building metadata fingerprints. It did not retain a governed D02 enumeration oracle. Reusing or modifying it to locate the object would be a new scan, not recovered authority."
+  },
+  "rejected_false_positives": [
+    {
+      "candidate": "SRC14 is D02-affected",
+      "verdict": "INSUFFICIENT",
+      "reason": "Source-level applicability does not identify the physical object."
+    },
+    {
+      "candidate": "EVS 2008 exact-SHA latin1 compatibility decoder lane",
+      "verdict": "INSUFFICIENT",
+      "reason": "Reader compatibility configuration is not a D02 locator."
+    },
+    {
+      "candidate": "C3 generic datetime/date/time opaque carrier law",
+      "verdict": "INSUFFICIENT_ALONE",
+      "reason": "Defines handling once a value is independently located; does not locate the EVS-2008 value."
+    },
+    {
+      "candidate": "CLOSED35 qualified harness",
+      "verdict": "INSUFFICIENT_AS_TRAVERSAL_ORACLE",
+      "reason": "No frozen D02 match set/cardinality/locator or D02-specific stop law."
+    }
+  ],
+  "finding": "NO_COMPETENT_RETAINED_LOCATOR_OR_ORACLE_FOUND"
+}
