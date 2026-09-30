@@ -1,0 +1,52 @@
+{
+  "schema": "PYAT_C1_00_R6_NORMATIVE_QUERY_MATERIALS@1",
+  "authority": "HQ132_C1_01_R6",
+  "forward": {
+    "query_id": "c1-at07-forward-position-p1-to-answer",
+    "subject_material": {
+      "schema": "C1_SYNTHETIC_POSITIONED_SUBJECT@1",
+      "fixture_id": "AT07_BIDIRECTIONAL_100",
+      "role": "FORWARD_POSITION_P1",
+      "real_subject": false
+    },
+    "subject_ref": {
+      "kind": "C1_SYNTHETIC_POSITIONED_SUBJECT@1",
+      "object_id": "urn:test:c1:at07:positioned-subject:forward-position-p1",
+      "content_hash": "6b7931181d57c097dc7a7073c78a181001005f969f8efa5dfe735484762e5657"
+    },
+    "requested_projection": {
+      "kind": "C1_AT07_CONDITIONAL_DISTRIBUTION",
+      "direction": "POSITION_P1_TO_ANSWER",
+      "target_role": "ANSWER"
+    },
+    "consumer_query_ref": {
+      "kind": "POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_QUERY@1",
+      "object_id": "urn:rawlsing:learned-world:positioned-subject-query:sha256:8f7444dbae4250cdda8a7a4c89bb331bd1f960072a97e8b11f05c4bd68c770d9",
+      "content_hash": "8f7444dbae4250cdda8a7a4c89bb331bd1f960072a97e8b11f05c4bd68c770d9"
+    }
+  },
+  "reverse": {
+    "query_id": "c1-at07-reverse-answer-yes-to-position",
+    "subject_material": {
+      "schema": "C1_SYNTHETIC_POSITIONED_SUBJECT@1",
+      "fixture_id": "AT07_BIDIRECTIONAL_100",
+      "role": "REVERSE_ANSWER_YES",
+      "real_subject": false
+    },
+    "subject_ref": {
+      "kind": "C1_SYNTHETIC_POSITIONED_SUBJECT@1",
+      "object_id": "urn:test:c1:at07:positioned-subject:reverse-answer-yes",
+      "content_hash": "11716903b229b853ee0404a2739f948655a9d3b9c6968cbecd877d406b9696bb"
+    },
+    "requested_projection": {
+      "kind": "C1_AT07_CONDITIONAL_DISTRIBUTION",
+      "direction": "ANSWER_YES_TO_POSITION",
+      "target_role": "POSITION"
+    },
+    "consumer_query_ref": {
+      "kind": "POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_QUERY@1",
+      "object_id": "urn:rawlsing:learned-world:positioned-subject-query:sha256:2909672ca01a2b5fcb5d07351f8691bb10bf82d3e794d92f73981d2e70fc4f0e",
+      "content_hash": "2909672ca01a2b5fcb5d07351f8691bb10bf82d3e794d92f73981d2e70fc4f0e"
+    }
+  }
+}
