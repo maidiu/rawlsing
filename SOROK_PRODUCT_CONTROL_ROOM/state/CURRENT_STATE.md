@@ -322,19 +322,37 @@ Social and monetization work remain registered but should not dictate the core s
 Raw question count is a frontier census, not a remaining-work counter.
 
 Current exact accounting:
-- 103 surfaced questions;
+- 105 surfaced questions;
 - 8 CLOSED_FOR_ALPHA;
-- 18 PROVISIONALLY_ANSWERED;
+- 20 PROVISIONALLY_ANSWERED;
 - 21 NEEDS_PROTOTYPE;
-- 38 NEEDS_ARCHITECTURE_ADJUDICATION;
-- 12 OPEN_DISCOVERY;
+- 40 NEEDS_ARCHITECTURE_ADJUDICATION;
+- 10 OPEN_DISCOVERY;
 - 6 DEFERRED_POST_ALPHA.
 
 Blocking-stage view:
-- 8 ALPHA_SPEC;
-- 29 ALPHA_IMPLEMENTATION;
+- 6 ALPHA_SPEC;
+- 33 ALPHA_IMPLEMENTATION;
 - 22 ALPHA_VALIDATION;
 - 18 POST_ALPHA;
 - 26 NONE.
 
-The current user/Vozhd conversational critical path is the **8 ALPHA_SPEC blockers**, not the raw 103.
+The current user/Vozhd conversational critical path is the **6 ALPHA_SPEC blockers**, not the raw 105.
+
+- `38_PRESENT_COUPLED_COMPUTABLE_FLESH_RECURSION_R1.md` — present-coupled life / computable→flesh→computable recursion / hard curiosity firewall
+- `39_SUPPORTING_ACTOR_FIDELITY_AND_COST_ENVELOPE_R1.md` — progressive supporting-actor fidelity / lazy promotion / cost envelope
+- `40_ACTOR_OWNED_DISCLOSURE_RELATIONAL_TENSION_CATHEXIS_R1.md` — actor-owned disclosure from relational tension/cathexis, including lying and self-narrative divergence
+
+## Current live-world continuation holding
+
+- persona life is anchored to the historical present; current external events enter only through relevance/exposure/admission, never by automatic knowledge/impact;
+- accepted V3 inheritance is code-owned causal state + event ledger + bounded LLM proposal + governed admission + downstream render;
+- live interaction extends this as a computable → flesh → computable loop;
+- user curiosity may trigger materialization of unresolved background truth but may not condition its substance;
+- admitted particulars become immutable causal history and feed later recomputation;
+- history, current causal state, memory/accessibility, self-narrative and utterance remain noncollapsed;
+- Nadia may intentionally lie for person/relationship-specific reasons; the lie is stored as presentation/history while underlying truth remains unchanged;
+- supporting actors use progressive fidelity rather than continuous full-agent execution;
+- focal children/partners/co-parents and other developmentally formative actors likely require independent V3 histories;
+- disclosure is event-time actor action from relation-specific tension/cathexis, self-accessibility, presentation/defense, goals, expected reception and situation—not a trust threshold;
+- alpha has no save slots/branch reloads; restart abandons the continuity and its people.
