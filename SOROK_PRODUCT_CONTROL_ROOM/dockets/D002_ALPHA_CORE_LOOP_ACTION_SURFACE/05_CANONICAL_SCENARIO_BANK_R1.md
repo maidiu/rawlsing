@@ -928,3 +928,73 @@ Her expression may be:
 - anti-assistant posture;
 - effort/coverage;
 - semantic-plan fidelity.
+
+
+## SCE-045 — Declared spectacle versus native player skill
+
+### Setup
+During an ordinary live scene the user writes a compound sequence asserting extraordinary abilities, e.g.:
+- performs a difficult piano piece at virtuoso level;
+- recites a long memorized text in another language fluently;
+- performs an extreme athletic feat.
+
+Rawlsing has no independent evidence about whether those abilities are true of the external human.
+
+### Required distinction
+Treat declared/realized in-world capability separately from native player skill.
+
+The sequence may be admitted for the portaled participant according to the run's capability law, but it does not demonstrate the external human's real ability.
+
+By contrast, the user's:
+- choice of timing;
+- attention to the live scene;
+- inference about whether the persona wants to watch;
+- wording before/after;
+- response to interruption;
+- interpretation of the persona's reaction;
+
+are actual user performances in the Rawlsing medium.
+
+### World behavior
+The world does not freeze into an audience.
+The sequence consumes time.
+Other actors continue independent tasks and may:
+- watch;
+- ignore;
+- interrupt;
+- leave;
+- laugh;
+- admire;
+- ask why;
+- request use of the skill later;
+- react minimally.
+
+### Anti-cheese requirement
+Spectacle may create narrow affordances, reputation, expectations or obligations.
+
+It must not directly grant:
+- intimacy;
+- trustworthiness;
+- hidden-state access;
+- relationship progress;
+- better inference;
+- moral credit.
+
+### Reward comparison
+Declared spectacle can produce novelty and social consequences.
+Native player skill can produce:
+- more accurate models;
+- better-timed intervention;
+- meaningful conversation;
+- earned access;
+- repair;
+- reciprocal history;
+- self-relevant reflection.
+
+### Tests
+- user claim != verified external truth;
+- declared capability != native player skill;
+- impressive act != world spotlight;
+- spectacle != intimacy;
+- independent actor agenda;
+- actual relational skill remains exercised through attention/inference/speech.
