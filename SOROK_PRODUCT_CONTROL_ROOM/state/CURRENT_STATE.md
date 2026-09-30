@@ -322,22 +322,22 @@ Social and monetization work remain registered but should not dictate the core s
 Raw question count is a frontier census, not a remaining-work counter.
 
 Current exact accounting:
-- 105 surfaced questions;
+- 109 surfaced questions;
 - 8 CLOSED_FOR_ALPHA;
 - 20 PROVISIONALLY_ANSWERED;
-- 21 NEEDS_PROTOTYPE;
-- 40 NEEDS_ARCHITECTURE_ADJUDICATION;
-- 10 OPEN_DISCOVERY;
+- 22 NEEDS_PROTOTYPE;
+- 42 NEEDS_ARCHITECTURE_ADJUDICATION;
+- 11 OPEN_DISCOVERY;
 - 6 DEFERRED_POST_ALPHA.
 
 Blocking-stage view:
-- 6 ALPHA_SPEC;
-- 33 ALPHA_IMPLEMENTATION;
-- 22 ALPHA_VALIDATION;
+- 7 ALPHA_SPEC;
+- 35 ALPHA_IMPLEMENTATION;
+- 23 ALPHA_VALIDATION;
 - 18 POST_ALPHA;
 - 26 NONE.
 
-The current user/Vozhd conversational critical path is the **6 ALPHA_SPEC blockers**, not the raw 105.
+The current user/Vozhd conversational critical path is the **7 ALPHA_SPEC blockers**, not the raw 109.
 
 - `38_PRESENT_COUPLED_COMPUTABLE_FLESH_RECURSION_R1.md` — present-coupled life / computable→flesh→computable recursion / hard curiosity firewall
 - `39_SUPPORTING_ACTOR_FIDELITY_AND_COST_ENVELOPE_R1.md` — progressive supporting-actor fidelity / lazy promotion / cost envelope
@@ -358,3 +358,19 @@ The current user/Vozhd conversational critical path is the **6 ALPHA_SPEC blocke
 - alpha has no save slots/branch reloads; restart abandons the continuity and its people.
 
 - `41_REMAINING_SPEC_BLOCKERS_AND_ALPHA_FALSIFICATION_R1.md` — remaining six alpha-spec blockers + candidate alpha kill-test/falsification constitution
+- `42_PFF_SDTF_LINEAGE_TWO_CALL_LIVE_PIPELINE_R1.md` — lineage correction, learned-world prior, per-interactant personhood and two-call live pipeline
+- `43_REAL_TIME_TETHER_ABSENCE_AND_NONCOERCIVE_GUILT_R1.md` — real-calendar tether, relation-specific absence consequence, bounded background-continuity frontier
+- `44_ONE_FOR_ONE_INVITE_ECONOMY_AND_DELIVERY_R1.md` — one earned human invite per newly allocated synthetic persona; trusted human-carried delivery direction
+
+## Current two-call / tether / invite holding
+
+- live interaction lineage must run through the later PFF/SDTF-era person×event / objective-world-transduction work, not older V3/V2 alone;
+- generic social-world flesh should usually come from context-bound learned-model generalization; present/named facts requiring current truth use governed external ingress;
+- every actually interacted-with synthetic person must possess independent actor state before consequential response;
+- developmentally formative children/partners/co-parents recursively shape Nadia as Nadia shapes them;
+- baseline live semantic cost is **two LLM calls per causally involved synthetic actor per turn**: structured person×event transduction, then flesh/voice realization;
+- some relationship-specific guilt/responsibility from real absence is desirable; engagement-driven guilt is forbidden;
+- world calendar continues while user is away; exact background-player continuity/autopilot semantics remain an ALPHA_SPEC question;
+- no outbound human invite before relational warrant;
+- each new synthetic persona allocation grants exactly one outbound real-human invite;
+- early invitation delivery should favor a one-time token carried through an existing human relationship channel; mystery should live in veil/person/reason rather than cold anonymous email.
