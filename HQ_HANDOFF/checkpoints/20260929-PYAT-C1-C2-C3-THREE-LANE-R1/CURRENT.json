@@ -1,0 +1,52 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.0.0",
+  "checkpoint_id": "20260929-PYAT-C1-C2-C3-THREE-LANE-R1",
+  "status": "C1_00_APPROVED__C1_01_BOUND__C2_01_REVIEW_BOUND__C3_SOURCE_FREE_QUALIFIED__C3_INTEGRATION_REVIEW_BOUND",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "902640dfddce431d0c5ba151d3eb851d6b84d7a3",
+  "implementation_baseline": "b3b2fa13049513078c301a1f6574b661fcf390c5",
+  "predecessor_checkpoint": "20260929-PYAT-C1APPROVED-C101-C2R-BOUND-C3QUARANTINED-R1",
+  "governing_decisions": [
+    "HQD-2026-09-27-124",
+    "HQD-2026-09-28-125",
+    "HQD-2026-09-29-126",
+    "HQD-2026-09-29-127",
+    "HQD-2026-09-29-128",
+    "HQD-2026-09-29-129",
+    "HQD-2026-09-29-130"
+  ],
+  "corrections": {
+    "HQD-2026-09-29-129": "C3 provenance/admissibility portion superseded by HQD-2026-09-29-130 after explicit user clarification."
+  },
+  "active_frontier": [
+    {
+      "id": "C1-01",
+      "branch": "agent/rabochii-pyat-hq130-c1-01-vertical-slice-r1",
+      "commission_tip": "c833ac97afccf5eee3f6d3bc0fac5d89ceb2aec8"
+    },
+    {
+      "id": "C2-01-R",
+      "branch": "agent/reviewer-pyat-hq130-c2-01-authority-coverage-r1",
+      "commission_tip": "9adb0344678ceb4f24dbc512dce310d7a3f6160d"
+    },
+    {
+      "id": "C3-INTEGRATION-R",
+      "branch": "agent/reviewer-pyat-hq130-c3-source-free-integration-r1",
+      "commission_tip": "4ded1143cf27e64df7635c357bc23c63c335db9b",
+      "integration_head": "30686b185d4ceb2c94f61815ef70d8c8e76255d6"
+    }
+  ],
+  "c3": {
+    "qualification_return": "257c2ebfd38d106f1669afbfd701a33e600cf4c5",
+    "execution_disposition": "PASS_SOURCE_FREE_QUALIFICATION",
+    "protocol_passed": 20,
+    "court_passed": 55,
+    "integration_branch": "integration/pyat-hq130-c3-source-free-accepted-r1",
+    "integration_head": "30686b185d4ceb2c94f61815ef70d8c8e76255d6",
+    "final_integration_adoption_pending": true
+  },
+  "next_action": "USER_LAUNCH_THREE_READY_LANES__C1_01__C2_01_REVIEW__C3_INTEGRATION_REVIEW__HQ_ADJUDICATES_RETURNS",
+  "source_execution_authorized": false,
+  "actor_implementation_authorized": false,
+  "astra_escalation_triggered": false
+}
