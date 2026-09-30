@@ -1,0 +1,39 @@
+{
+  "schema": "PYAT_C1_01_R6_EXECUTION_ENVIRONMENT@1.0.0",
+  "target_git_commit": "663379caa7c9b8a80bca889d8d5b59d0486ff901",
+  "commission_tip": "bdf5bc2bea525f71ab8f0af4451918a74e701f04",
+  "observed_at_utc": "2026-09-30T15:49:08Z",
+  "runtime": {
+    "isolation": "OpenAI isolated cloud container; not user's Mac",
+    "os_uname": "Linux f7477dadec53 6.18.44 #1 SMP Sat Sep 26 20:02:31 UTC 2026 x86_64 GNU/Linux",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+    "python_implementation": "CPython",
+    "python_version": "3.13.5",
+    "python_executable": "/opt/pyvenv/bin/python",
+    "pytest_version": "9.0.2",
+    "git_version": "2.47.3",
+    "dependencies": {
+      "pytest": "9.0.2",
+      "pluggy": "1.6.0",
+      "iniconfig": "2.3.0",
+      "packaging": "25.0",
+      "Pygments": "2.20.0"
+    }
+  },
+  "worktree": {
+    "before": "NOT_AVAILABLE__NO_GIT_WORKTREE_MATERIALIZED",
+    "after": "NOT_AVAILABLE__NO_GIT_WORKTREE_MATERIALIZED",
+    "status_probe_exit_code": 128,
+    "status_probe_stderr": "fatal: not a git repository (or any of the parent directories): .git"
+  },
+  "repository_transport": {
+    "pre_mounted_checkout": false,
+    "github_shell_network_available": false,
+    "network_probe_exit_code": 128,
+    "network_probe_stderr": "fatal: unable to access 'https://github.com/maidiu/rawlsing.git/': Could not resolve host: github.com",
+    "github_connector_documentary_access": true,
+    "exact_executable_worktree_handoff_available": false
+  },
+  "raw_survey_accessed": false,
+  "raw_survey_materialized": false
+}
