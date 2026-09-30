@@ -1,7 +1,7 @@
 {
   "schema": "PYAT_OMEGA_ACTIVE_TASK_BOARD@1",
-  "revision": 8,
-  "status": "C1_00_APPROVED__C1_01_BOUND__C2_01_REVIEW_BOUND__C3_STATIC_PASS_EXECUTION_PENDING_MAC_EVIDENCE_QUARANTINED",
+  "revision": 9,
+  "status": "C1_00_APPROVED__C1_01_BOUND__C2_01_REVIEW_BOUND__C3_SOURCE_FREE_QUALIFIED__C3_INTEGRATION_REVIEW_BOUND",
   "control_branch": "integration/pre-main-reconciliation-r1",
   "implementation_baseline": "b3b2fa13049513078c301a1f6574b661fcf390c5",
   "observed_returns": [
@@ -9,7 +9,7 @@
       "id": "C1-00-R4-R",
       "return_head": "171200320b4acdbb8ba32106a992d76fa8ac7d8a",
       "disposition": "APPROVE_AT_DECLARED_GRAIN",
-      "hq_effect": "C1_00_ACCEPTED__C1_01_EXACT_FREEZE_ISSUED"
+      "hq_effect": "C1_00_ACCEPTED__C1_01_ISSUED"
     },
     {
       "id": "C2-01",
@@ -19,13 +19,14 @@
     },
     {
       "id": "C3-03-CODEX",
-      "commissioned_off_mac_return_commit": "0b6c56db8d6a59f09bfd28e97ea9d509e36faec7",
-      "commissioned_off_mac_disposition": "BLOCKED_CODEX_EXECUTION_CAPABILITY",
-      "later_branch_head": "257c2ebfd38d106f1669afbfd701a33e600cf4c5",
-      "later_reported_disposition": "PASS_SOURCE_FREE_QUALIFICATION",
-      "later_execution_host": "USER_MAC__macOS_13_2_1_x86_64",
-      "hq_disposition": "QUARANTINED__NONADMISSIBLE_FOR_C3_QUALIFICATION",
-      "hq_effect": "C3_STATIC_PASS_PRESERVED__EXECUTION_QUALIFICATION_STILL_OPEN"
+      "return_head": "257c2ebfd38d106f1669afbfd701a33e600cf4c5",
+      "static_disposition": "PASS_AT_DECLARED_GRAIN",
+      "execution_disposition": "PASS_SOURCE_FREE_QUALIFICATION",
+      "user_mac_override": "EXPLICITLY_CONFIRMED_BY_USER_FOR_ACTUAL_CODEX_WORKER",
+      "protocol_passed": 20,
+      "court_passed": 55,
+      "raw_source_access": 0,
+      "hq_effect": "QUALIFICATION_ADMITTED__EXACT_SOURCE_FREE_INTEGRATION_PORT_CREATED"
     }
   ],
   "active_tasks": [
@@ -36,11 +37,6 @@
       "base": "171200320b4acdbb8ba32106a992d76fa8ac7d8a",
       "state": "BOUND_AWAITING_USER_MEDIATED_LAUNCH",
       "scope": "EXACT_AT07_QUERY_TO_DERIVED_SLICE_TO_PUBLIC_CONSUMER_VERTICAL_COMPOSITION",
-      "write_allowlist": [
-        "rawlsing_next/pre553_analytical_composition.py",
-        "rawlsing_next/tests/test_pre553_analytical_composition.py",
-        "WORKER_RETURNS/PYAT-C1-01-VERTICAL-SLICE-R1/**"
-      ],
       "pass_wake": "C1_02",
       "blocker_effect": "C1_02_HELD"
     },
@@ -53,17 +49,17 @@
       "scope": "INDEPENDENT_44_53_35_280_AUTHORITY_SUCCESSION_COVERAGE_AND_RESIDUAL_REVIEW",
       "pass_wake": "HQ_EXACT_NEXT_PROVING_WORKLOAD_DECLARATION_THEN_C2_02",
       "blocker_effect": "C2_02_HELD"
-    }
-  ],
-  "execution_blocks": [
+    },
     {
-      "id": "C3-03",
-      "static_disposition": "PASS_AT_DECLARED_GRAIN",
-      "valid_off_mac_block_commit": "0b6c56db8d6a59f09bfd28e97ea9d509e36faec7",
-      "github_attempts_without_runner": 5,
-      "quarantined_mac_pass_commit": "257c2ebfd38d106f1669afbfd701a33e600cf4c5",
-      "state": "WAIT_LAWFUL_OFF_MAC_SOURCE_FREE_CP311_EXECUTION_SURFACE",
-      "repeated_immediate_retry": "NOT_AUTHORIZED_BY_HQ"
+      "id": "C3-INTEGRATION-R",
+      "branch": "agent/reviewer-pyat-hq130-c3-source-free-integration-r1",
+      "commission_tip": "4ded1143cf27e64df7635c357bc23c63c335db9b",
+      "base": "30686b185d4ceb2c94f61815ef70d8c8e76255d6",
+      "integration_branch": "integration/pyat-hq130-c3-source-free-accepted-r1",
+      "state": "BOUND_AWAITING_USER_MEDIATED_LAUNCH",
+      "scope": "EXACT_SIX_BLOB_SOURCE_FREE_INTEGRATION_EQUIVALENCE_AND_AFFECTED_SUITE_REVIEW",
+      "pass_wake": "HQ_FINAL_C3_SOURCE_FREE_INTEGRATION_ADOPTION",
+      "blocker_effect": "C3_FINAL_INTEGRATION_ADOPTION_HELD"
     }
   ],
   "held": [
@@ -72,7 +68,7 @@
     "C1-R until C1-03",
     "C2-02 until C2-01 independent review plus HQ exact next proving-workload declaration",
     "C2-R until C2-02",
-    "C3 adoption until lawful off-Mac source-free execution qualification",
+    "C3 final integration adoption until exact integration review",
     "JOIN-01 until applicable independently reviewed/qualified outputs",
     "OMEGA-1 until scoped source-free join"
   ],
@@ -81,8 +77,6 @@
     "NO_NEW_SEMANTIC_OR_COMPARABILITY_AUTHORITY",
     "NO_C1_WRITES_OUTSIDE_C1_01_ALLOWLIST",
     "NO_C2_02_BEFORE_C2_01_REVIEW_AND_HQ_WORKLOAD_BINDING",
-    "NO_C3_ADOPTION_FROM_QUARANTINED_MAC_EXECUTION",
-    "NO_REPEATED_BLIND_C3_RUNNER_RETRIES",
     "NO_PREV3_TO_V3_ACTOR_IMPLEMENTATION"
   ]
 }
