@@ -1,0 +1,71 @@
+{
+  "schema": "PYAT_C1_01_AT07_ASSERTION_MATRIX@1",
+  "overall": "BLOCKED_AT_EXACT_FROZEN_CONSUMER_WITNESS_PREIMAGE",
+  "assertions": [
+    {
+      "id": "AT07_FORWARD_PRODUCER_IDENTITY",
+      "status": "DOCUMENTARY_RECONSTRUCTION_CONFIRMED__NOT_EXECUTED",
+      "condition": "POSITION=P1",
+      "target": "ANSWER",
+      "predicate_hash": "13c14707d4d0544b2c1c1a43c07a308ff7fffbca196905c47c2d31f2ea8a2e6b",
+      "query_hash": "293db4ee7e1899c1a6df4f9178b4181a3f83496dc0b53790b80a7f951d3472ce",
+      "fact_hash": "96907345225b6badf88c8d22f3c047fc8f8cc227e1a11b3185fd95806326854f",
+      "counts": {
+        "yes": 54,
+        "no": 6,
+        "raw_denominator": 60
+      }
+    },
+    {
+      "id": "AT07_REVERSE_PRODUCER_IDENTITY",
+      "status": "DOCUMENTARY_RECONSTRUCTION_CONFIRMED__NOT_EXECUTED",
+      "condition": "ANSWER=yes",
+      "target": "POSITION",
+      "predicate_hash": "899f2539824e79c448169b9096fe28b557c503671c665a4db25c8e76e0eb077f",
+      "query_hash": "547c66cdb5b4bf38c50e9c67c6f522ee0c502bf1e7c51fd2888732cc94a89da3",
+      "fact_hash": "b82560d8ac1963a1f7a8763195367666d0ff013746b462d74e3e0f9c10f2a4f1",
+      "counts": {
+        "P1": 54,
+        "P2": 8,
+        "raw_denominator": 62
+      }
+    },
+    {
+      "id": "NONCIRCULAR_FORWARD_EVIDENCE_ORACLE",
+      "status": "STATIC_ORACLE_PREIMAGE_AVAILABLE__EXECUTION_NOT_RUN",
+      "expected_hash": "fe5cd7783ac84f0298fb7f56a621d7b0e494bd9348d080dc68ceee09abb546f5",
+      "preimage_excludes_evidence_ref": true
+    },
+    {
+      "id": "NONCIRCULAR_REVERSE_EVIDENCE_ORACLE",
+      "status": "STATIC_ORACLE_PREIMAGE_AVAILABLE__EXECUTION_NOT_RUN",
+      "expected_hash": "b54201c8ba8743922e51627e621cc4f3d1c563a43b70167a0720fbb0028ccf72",
+      "preimage_excludes_evidence_ref": true
+    },
+    {
+      "id": "FORWARD_ACTUAL_CONSUMER_QUERY_RECOMPUTATION",
+      "status": "BLOCKED_CONTRACT_PREIMAGE_MISSING",
+      "expected_hash": "83727ca59eaf43085324ee7dc7db5ce4ecf4e4bf1f1284692cd3ad3f192df027"
+    },
+    {
+      "id": "REVERSE_ACTUAL_CONSUMER_QUERY_RECOMPUTATION",
+      "status": "BLOCKED_CONTRACT_PREIMAGE_MISSING",
+      "expected_hash": "cb2d085675c137848bb40f191ba8992100513eaa904a09cd54064f6ef51d3d8a"
+    },
+    {
+      "id": "FORWARD_WITNESS_RECOMPUTATION",
+      "status": "BLOCKED_CONTRACT_PREIMAGE_MISSING",
+      "expected_hash": "c93e840c06da9ab8de9ca237863d52858fe6765d5bfd7c7efb42b879440663c9"
+    },
+    {
+      "id": "REVERSE_WITNESS_RECOMPUTATION",
+      "status": "BLOCKED_CONTRACT_PREIMAGE_MISSING",
+      "expected_hash": "e81c4e19144a749877a6f6e7e48a213e869bfe5d04ba81372ca5384b7cf5e700"
+    },
+    {
+      "id": "PUBLIC_PRODUCER_TO_DERIVED_EVIDENCE_TO_PUBLIC_CONSUMER",
+      "status": "IMPLEMENTED_PATH_BANKED__EXACT_FROZEN_AT07_PROOF_BLOCKED",
+      "preconstructed_slice_input": false
+    }
+  ]
+}
