@@ -51,68 +51,65 @@ Every question now also carries `blocking_stage`:
 
 ## 3. Exact current counts
 
-Total surfaced questions: **103**.
+Total surfaced questions: **105**.
 
 By closure state:
 - `CLOSED_FOR_ALPHA`: **8**
-- `PROVISIONALLY_ANSWERED`: **18**
+- `PROVISIONALLY_ANSWERED`: **20**
 - `NEEDS_PROTOTYPE`: **21**
-- `NEEDS_ARCHITECTURE_ADJUDICATION`: **38**
-- `OPEN_DISCOVERY`: **12**
+- `NEEDS_ARCHITECTURE_ADJUDICATION`: **40**
+- `OPEN_DISCOVERY`: **10**
 - `DEFERRED_POST_ALPHA`: **6**
 
 By blocking stage:
-- `ALPHA_SPEC`: **8**
-- `ALPHA_IMPLEMENTATION`: **29**
+- `ALPHA_SPEC`: **6**
+- `ALPHA_IMPLEMENTATION`: **33**
 - `ALPHA_VALIDATION`: **22**
 - `POST_ALPHA`: **18**
 - `NONE`: **26**
 
-Current total alpha blockers in the broad sense: **37**.
+Current total alpha blockers in the broad sense: **39**.
 
 But this splits critically into:
 
-> **8 product/spec questions that Vozhd + user still need to adjudicate**
+> **6 product/spec questions that Vozhd + user still need to adjudicate**
 
 and
 
-> **29 implementation/architecture questions that should largely be handled after product semantics are sufficiently fixed.**
+> **33 implementation/architecture questions that should largely be handled after product semantics are sufficiently fixed.**
 
 Thus the meaningful current conversational progress number is **8**, not 103, 94 or 9.
 
 ---
 
-## 4. Current eight ALPHA_SPEC blockers
+## 4. Current six ALPHA_SPEC blockers
 
-### Q-ALPHA-001
-What evidence would falsify or support the core alpha theorem that earned relationship with an unchosen persona is compelling and spiritually productive?
-
-### Q-PRIV-001
-What user data is required for longitudinal relational modeling, what should never be collected, and what deletion/export boundaries are required?
-
-### Q-RETRY-001
-What undo/retry/save semantics, if any, preserve contingency and consequence without making experimentation punitive or allowing cost-free optimization across every relational branch?
-
-### Q-LIFETOPO-001
-What minimum independent life-domain model—work, family, religion/community, interests, projects, other relationships—supports a person whose life remains causally active whether or not the user is present?
-
-### Q-ACCESS-001
-What exact relational-access topology governs how the user becomes able to enter previously unavailable parts of the persona's life without scalar unlocks or guaranteed disclosure?
-
-### Q-DISCLOSE-001
-What governs persona disclosure, withholding, refusal, evasion and later reinterpretation so conversation remains actor-owned rather than exposition delivery?
-
-### Q-INVITEGRAPH-001
-What exact invite economy—seed cohort, invite scarcity, inviter disclosure, note semantics and later outbound-invite eligibility—lets Rawlsing grow person-to-person without status capture or referral spam?
+### Q-WORLD-001
+What present-world/current-event ingestion and admission law keeps persona life coupled to the historical present without equating external occurrence with actor exposure, knowledge or effect?
 
 ### Q-MSGTIME-001
 What asynchronous time law governs message delivery, reply timing and life advancement outside portal scenes without requiring continuous wall-clock coupling or making the persona feel always available?
 
----
+### Q-ACCESS-001
+What exact relational-access topology governs how the user becomes able to enter previously unavailable parts of the persona's life without scalar unlocks or guaranteed disclosure?
 
-## 5. What the 29 implementation blockers mean
+### Q-INVITEGRAPH-001
+What exact invite economy—seed cohort, invite scarcity, inviter disclosure, note semantics and later outbound-invite eligibility—lets Rawlsing grow person-to-person without status capture or referral spam?
 
-These are not twenty-nine new conceptual conversations the user must personally answer.
+### Q-PRIV-001
+What user data is required for longitudinal relational modeling, what should never be collected, and what deletion/export boundaries are required?
+
+### Q-ALPHA-001
+What evidence would falsify or support the core alpha theorem that earned relationship with an unchosen persona is compelling and spiritually productive?
+
+### Newly moved out of ALPHA_SPEC
+- `Q-RETRY-001`: CLOSED_FOR_ALPHA — no user save slots/branch reloads; restart loses continuity/people.
+- `Q-LIFETOPO-001`: PROVISIONALLY_ANSWERED / ALPHA_IMPLEMENTATION — independent present life generated from V3/world state with computable→flesh→computable feedback.
+- `Q-DISCLOSE-001`: PROVISIONALLY_ANSWERED / ALPHA_IMPLEMENTATION — actor-owned event-time disclosure from relational tension/cathexis rather than trust threshold.
+
+## 5. What the 33 implementation blockers mean
+
+These are not thirty-three new conceptual conversations the user must personally answer.
 
 They are mostly exact architecture questions such as:
 - V3/CAN-008/PFF/V2 ownership;
@@ -173,20 +170,17 @@ Progress reports should instead say:
 
 ## 8. Current critical path
 
-The eight ALPHA_SPEC blockers are not equally urgent.
+The six ALPHA_SPEC blockers are not equally urgent.
 
 Current recommended order:
 
-1. `Q-MSGTIME-001` — outside-portal time/message law;
-2. `Q-LIFETOPO-001` — minimum independent life that exists between encounters;
-3. `Q-DISCLOSE-001` — actor-owned conversation/disclosure mechanics;
-4. `Q-ACCESS-001` — how relational reach changes without lore unlocking;
-5. `Q-RETRY-001` — continuity / reset / branching semantics;
-6. `Q-INVITEGRAPH-001` — initial person-to-person distribution rules;
-7. `Q-PRIV-001` — minimum data / deletion / inspection boundaries;
-8. `Q-ALPHA-001` — final falsification/evidence constitution after the product shell is concrete enough to test.
+1. `Q-WORLD-001` + `Q-MSGTIME-001` — jointly settle present coupling and outside-portal time;
+2. `Q-ACCESS-001` — changing relational reach without unlock metaphysics;
+3. `Q-INVITEGRAPH-001` — initial person-to-person distribution;
+4. `Q-PRIV-001` — minimum data/deletion/export constitution;
+5. `Q-ALPHA-001` — final falsification/evidence constitution once the product shell is concrete enough to test.
 
-Why put alpha evidence last among the eight?
+Why put alpha evidence last among the six?
 
 Because the falsification criteria should test the product we actually define, not an earlier abstraction of it.
 
@@ -200,6 +194,6 @@ The system is no longer:
 
 It is:
 
-> **103 frontiers have been surfaced and preserved. Eight still require product-level adjudication before the current alpha can be fully specified. Twenty-nine more require architecture work before governed implementation. Twenty-two should be learned by prototyping, not armchair design.**
+> **105 frontiers have been surfaced and preserved. Six still require product-level adjudication before the current alpha can be fully specified. Thirty-three more require architecture work before governed implementation. Twenty-two should be learned by prototyping, not armchair design.**
 
 This is the current canonical progress interpretation.
