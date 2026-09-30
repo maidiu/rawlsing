@@ -1,0 +1,189 @@
+{
+  "schema": "PYAT_C1_00_R4_INDEPENDENT_REREVIEW_RECOMPUTATION@1",
+  "status": "INDEPENDENT_DOCUMENTARY_RECOMPUTATION_COMPLETE",
+  "canonical_hash_law": "PRE553 canonical_json: recursive lexicographic object-key order; arrays preserve order; UTF-8; no insignificant whitespace; sha256",
+  "sha256_self_test": {
+    "input": "abc",
+    "recomputed": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+    "expected": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+    "pass": true
+  },
+  "A_VALUE_BEARING_CONDITION_RELATION": {
+    "status": "PASS",
+    "subject_preimage_hashes": {
+      "POSITION_P1": "df3f992bc93dd5e23ca1e0230885cca253cdd1c4d02e8c8a8bd4221d7804b9a3",
+      "POSITION_P2": "312e4f4ef7efd0d1f9ccddc52792b734cda518eaf09772797ac61ccff9b1d16e",
+      "ANSWER_YES": "8adabf8ea0306b8c7fa9a4d3d564bffabd6cdc2194507dda08b3f1f4941a4a9c"
+    },
+    "producer_leaf_hashes": {
+      "POSITION_EQ_P1": "62deeeb5968ea313b345d7427af416ce6d7384e7560e2fd063d660bcccacda6d",
+      "POSITION_EQ_P2": "b173f48d17dfe44f5709b6d5014cf019ca276b7b4f78b945a1587f834623bdf8",
+      "ANSWER_EQ_YES": "2ee38647262bf67b32de7f8be96dd74e6fd6852453ee65f00949f46d568adddd"
+    },
+    "pairing_hashes": {
+      "POSITION_P1__POSITION_EQ_P1": "020f3f2a103a0fb7cf216b98f6965637de6ace71ebda950274c0c7987c2ec44b",
+      "POSITION_P2__POSITION_EQ_P2": "e1a6b801c769b89c117e914c2d5877178aedb626b29d24c74d15d09feec1e7ff",
+      "ANSWER_YES__ANSWER_EQ_YES": "bb60f094cef1f8634eaaa5220193396a270e06a336300349f74a9926dc0f4a84"
+    },
+    "witness_schema_hash": "0a881f32dee7142979d76ebf4f3462df16d8a6bad55a23b2e8fc22834ed04f36",
+    "hostile_P1_subject_vs_P2_leaf": {
+      "same_semantic_ref": true,
+      "exact_value_equal": false,
+      "frozen_pair_exists": false,
+      "result": "CONDITION_VALUE_RELATION_MISMATCH_BEFORE_SLICE"
+    },
+    "same_semantic_id_different_values_reidentify": true
+  },
+  "B_SYNTHETIC_AUTHORITY_SCOPE": {
+    "status": "PASS",
+    "universe_hash": {
+      "expected": "ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2",
+      "recomputed": "ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2",
+      "pass": true
+    },
+    "query_authority_hash": {
+      "expected": "b59ef578314515268fa7b280a8480b4c95c80c9cfd831c39c2bfc4214b6fd767",
+      "recomputed": "b59ef578314515268fa7b280a8480b4c95c80c9cfd831c39c2bfc4214b6fd767",
+      "pass": true
+    },
+    "query_authority_outer_snapshot_hash": {
+      "expected": "ddce68bad384945dbec3da9413f915cc968147fb06ba9562aaa4a63ffdbb5724",
+      "recomputed": "ddce68bad384945dbec3da9413f915cc968147fb06ba9562aaa4a63ffdbb5724",
+      "pass": true
+    },
+    "owner_scope_check": {
+      "authority_kind": "PREDICATE_GRAMMAR",
+      "operation": "C1_AT07_QUERY",
+      "required_object_families": [
+        "EmpiricalPredicate@1.0.0",
+        "EmpiricalQuerySpec@1.0.0",
+        "EmpiricalFact@1.0.0"
+      ],
+      "source_universe_refs_exactly_contains_frozen_AT07_universe": true,
+      "target_use_scope_required_for_frozen_narrow_path": false,
+      "predicate_or_risk_scope_required_for_frozen_narrow_path": false,
+      "pass": true
+    },
+    "authority_hash_note": "The query AuthorityRef is a frozen C1 synthetic fixture preimage identity. Current AuthoritySnapshot validation accepts the exact supplied AuthorityRef; owner-native use fitness is independently established by decision/kind/operation/family/source scope.",
+    "downstream_old_query_authority_substitution": {
+      "baseline_forward_evidence_hash": "fe5cd7783ac84f0298fb7f56a621d7b0e494bd9348d080dc68ceee09abb546f5",
+      "old_authority_variant_hash": "72ea7a3240e2360917aa5617941b93ea08c604f62110298838d2b94c8b94c847",
+      "reidentifies": true
+    }
+  },
+  "C_UNKNOWN_CURRENTNESS": {
+    "status": "PASS",
+    "selection_key_canonical_utf8_bytes": 728,
+    "selection_key_hash": {
+      "expected_correct": "53683ac6353055af69af9f2d5cb93d889ccc5338b6aa915990c6a541ad942cb6",
+      "recomputed": "53683ac6353055af69af9f2d5cb93d889ccc5338b6aa915990c6a541ad942cb6",
+      "pass": true
+    },
+    "stale_candidate": {
+      "hash": "a0c54c568eee1351a67ecfee43c297e82aba509daf4bce6932b5ae7331ca03cd",
+      "matches_owner_native_projection": false,
+      "classification": "STALE_WRONG_FOR_FROZEN_FIXTURE"
+    },
+    "owner_path": "LearnedProductLifecycleExecutor.selection_key -> current_selection_receipt_ref",
+    "setup": "register exact SelectionKey; establish neither current-selection nor no-current receipt",
+    "expected_exception_class": "LearnedProductLifecycleError",
+    "expected_exception_message": "UNKNOWN_CURRENTNESS",
+    "state_distinctions": [
+      "NO_CURRENT",
+      "CONFLICTING_CURRENT_SELECTION",
+      "EXPLICIT_UNKNOWN_UNVISITED",
+      "UNRESOLVED",
+      "UNAVAILABLE"
+    ]
+  },
+  "D_POSSIBILITY_SLICE_EVIDENCE": {
+    "status": "PASS",
+    "projection_schema_hash": {
+      "expected": "c00e038dd2c1177bfc7842f12febef7b3e30b92bc421df244e2a8e3c4a20b17a",
+      "recomputed": "c00e038dd2c1177bfc7842f12febef7b3e30b92bc421df244e2a8e3c4a20b17a",
+      "pass": true
+    },
+    "identity_preimage": {
+      "schema": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE_PREIMAGE@1",
+      "excludes_field": "evidence_ref",
+      "covers_all_other_current_PossibilitySliceEvidence_fields": true
+    },
+    "forward_evidence_hash": {
+      "expected": "fe5cd7783ac84f0298fb7f56a621d7b0e494bd9348d080dc68ceee09abb546f5",
+      "recomputed": "fe5cd7783ac84f0298fb7f56a621d7b0e494bd9348d080dc68ceee09abb546f5",
+      "pass": true
+    },
+    "reverse_evidence_hash": {
+      "expected": "b54201c8ba8743922e51627e621cc4f3d1c563a43b70167a0720fbb0028ccf72",
+      "recomputed": "b54201c8ba8743922e51627e621cc4f3d1c563a43b70167a0720fbb0028ccf72",
+      "pass": true
+    },
+    "raw_support": {
+      "forward": {
+        "raw_support": 60,
+        "geometry_denominator": 60,
+        "AT07_denominator": 60,
+        "pass": true
+      },
+      "reverse": {
+        "raw_support": 62,
+        "geometry_denominator": 62,
+        "AT07_denominator": 62,
+        "pass": true
+      }
+    },
+    "independent_mutations": {
+      "denominator_member": {
+        "mutated_hash": "7f3646f7f370d11383ab57eb6dbfb727fb71bf275b06a77fc5b0181d68808580",
+        "reidentifies": true
+      },
+      "geometry": {
+        "mutated_hash": "b6ee0bce50141576f9e186fb92cf1f0d038354b4f3e40509df58fb09142c57b0",
+        "reidentifies": true
+      },
+      "pairing_authority": {
+        "mutated_hash": "193670d1c9777922bc11b71d19275bafa417eed2a707d935afa3bbe12d453669",
+        "reidentifies": true
+      }
+    }
+  },
+  "E_DETERMINANT_REPLAY_INVALIDATION": {
+    "status": "PASS",
+    "required_determinants_present": [
+      "condition-value binding witness ref/hash",
+      "subject-condition preimage refs",
+      "producer predicate leaf refs/projections",
+      "pairing ground-truth refs",
+      "risk_set_member_refs",
+      "denominator_member_refs",
+      "constructed PossibilitySliceEvidence.evidence_ref",
+      "slice projection schema hash"
+    ],
+    "full_fresh_process_requires_relation_inputs": true,
+    "omission_of_relation_inputs_can_earn_full_composition_grade": false,
+    "relation_only_mutation_reidentifies": true,
+    "lifecycle_selective_invalidation_is_conditional_on_existing_B5_governance": true
+  },
+  "at07_arithmetic": {
+    "forward": {
+      "yes": 54,
+      "no": 6,
+      "denominator": 60,
+      "P_yes_given_P1": [
+        9,
+        10
+      ]
+    },
+    "reverse": {
+      "P1": 54,
+      "P2": 8,
+      "denominator": 62,
+      "P_P1_given_yes": [
+        27,
+        31
+      ]
+    }
+  },
+  "raw_source_reads": 0,
+  "C1_01_executed": false
+}
