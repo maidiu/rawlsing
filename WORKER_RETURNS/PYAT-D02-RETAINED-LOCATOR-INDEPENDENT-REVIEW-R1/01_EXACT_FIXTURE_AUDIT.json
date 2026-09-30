@@ -1,0 +1,75 @@
+{
+  "schema": "PYAT_D02_RETAINED_LOCATOR_EXACT_FIXTURE_AUDIT@1.0.0",
+  "disposition": "APPROVE_AT_DECLARED_GRAIN",
+  "reviewed_corrected_archaeology_head": "bb4db6c5131be50fded8d91961ee81683459e22e",
+  "correction_scope": {
+    "provisional_head": "e8d43c4769371b2d68ea73429fe595732ef6ef60",
+    "corrected_head": "bb4db6c5131be50fded8d91961ee81683459e22e",
+    "compare_status": "ahead",
+    "ahead_by": 5,
+    "changed_files": [
+      "WORKER_RETURNS/PYAT-D02-EVS2008-LOCATOR-ARCHAEOLOGY-R1/00_RETURN.md",
+      "WORKER_RETURNS/PYAT-D02-EVS2008-LOCATOR-ARCHAEOLOGY-R1/01_SEARCH_AND_CUSTODY_AUDIT.json",
+      "WORKER_RETURNS/PYAT-D02-EVS2008-LOCATOR-ARCHAEOLOGY-R1/02_LOCATOR_OR_TRAVERSAL_EVIDENCE.json",
+      "WORKER_RETURNS/PYAT-D02-EVS2008-LOCATOR-ARCHAEOLOGY-R1/03_C4_BINDING_EFFECT.json",
+      "WORKER_RETURNS/PYAT-D02-EVS2008-LOCATOR-ARCHAEOLOGY-R1/04_FINAL_DISPOSITION.json"
+    ],
+    "unrelated_changes": false,
+    "result": "PASS"
+  },
+  "decisive_fixture": {
+    "branch": "agent/vozhd-trii-srcprep71-r04-evs",
+    "tip": "3bc063aa7bf461caf5baf581ff32a434ba9e09a3",
+    "commit_time": "2026-08-22T10:03:56Z",
+    "path": "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/SOURCE_CERT_PREP71/RETURNS/R04/HOSTILE_FIXTURES.csv",
+    "expected_blob": "12f6adb77ef5692511055c8f0520e42c454f3867",
+    "fetched_blob": "12f6adb77ef5692511055c8f0520e42c454f3867",
+    "blob_identity_pass": true,
+    "csv_line": 30,
+    "parsed_row": {
+      "worker_id": "SOURCE-CERT-PREP71-R04",
+      "family": "EVS",
+      "source_file": "EVS 2008.sav",
+      "source_sha256": "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379",
+      "fixture_id": "EVS08_DATE_MISSING_V372",
+      "fixture_kind": "VARIABLE_MISSING_DECLARATION",
+      "row_ordinal": null,
+      "var_ordinal": 466,
+      "var_name": "v372",
+      "physical_state_expected": "TYPED_DATE_USER_MISSING_SENTINEL",
+      "raw_value_expected_json": null,
+      "metadata_expected_json": {
+        "missing_ranges": [
+          {
+            "hi": "1582-10-13",
+            "lo": "1582-10-13"
+          }
+        ],
+        "physical_counts": {
+          "ordinary_present_count": 64363,
+          "rows_seen": 66280,
+          "system_missing_count": 0,
+          "user_missing_by_native_code": {
+            "1582-10-13": 1917
+          },
+          "user_missing_count": 1917
+        }
+      },
+      "documentary_expected_json": {
+        "semantic_reason_for_1582_10_13": "UNKNOWN_PENDING_DOCUMENTARY_AUTHORITY"
+      },
+      "assertion_scope": "PHYSICAL_MISSINGNESS_ONLY",
+      "purpose": "Catch typed-date sentinel destruction.",
+      "authority_status": "SOURCE_PHYSICAL_OR_READER_METADATA_AUTHORITY__NON_SEMANTIC"
+    },
+    "claimed_fields_all_match": true,
+    "exact_source_sha_bound": true,
+    "exact_locator_bound": true,
+    "exact_sufficient_physical_witness_class_bound": true,
+    "semantic_reason_left_unknown": true,
+    "result": "PASS"
+  },
+  "raw_source_accessed": false,
+  "C4_executed": false,
+  "user_mac_used": false
+}
