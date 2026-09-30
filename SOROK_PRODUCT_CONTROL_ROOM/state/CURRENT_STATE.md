@@ -116,7 +116,8 @@ Top-level:
 - `21A_PERSONA_IS_THE_ALTERNATE_RELATION_IS_THE_VEIL_R1.md` — persona-as-alternate / player-as-relational-access theorem
 - `22_COURT8_EMBODIMENT_TRANSLATION_CONSTITUTION_R1.md` — embodiment translation court
 - `22A_COURT8_FIRST_ADJUDICATION_MATRIX_R1.md` — first carry/homologize/bracket adjudication
-- `22D_COURT8_OPTIONAL_PORTAL_PROFILE_R1.md` — optional personal-details / purpose-bound Portal Profile
+- `22D_COURT8_OPTIONAL_PORTAL_PROFILE_R1.md` — optional personal-details design space; **advanced/research mode, not main onboarding**
+- `22E_COURT8_ZERO_PROFILE_MAIN_MODE_R1.md` — current main-mode zero-profile / anti-self-construction correction
 - `23_COURT9_MINIMUM_DURABLE_RELATIONSHIP_ONTOLOGY_R1.md` — minimum relationship ontology court
 - `23A_COURT9_FIRST_OWNER_CROSSWALK_R1.md` — first owner crosswalk + external-player seam finding
 - `24_COURT10_FLOURISHING_MORAL_PHYSICS_R1.md` — open flourishing/moral-physics court
