@@ -1,71 +1,88 @@
 {
   "schema": "PYAT_OMEGA_ACTIVE_TASK_BOARD@1",
-  "revision": 7,
-  "status": "C1_R4_RETURNED_REVIEW_READY__C1_R4_INDEPENDENT_REREVIEW_BOUND__C3_03_STATIC_PASS_EXECUTION_BLOCKED__CODEX_FALLBACK_BOUND",
+  "revision": 8,
+  "status": "C1_00_APPROVED__C1_01_BOUND__C2_01_REVIEW_BOUND__C3_STATIC_PASS_EXECUTION_PENDING_MAC_EVIDENCE_QUARANTINED",
   "control_branch": "integration/pre-main-reconciliation-r1",
   "implementation_baseline": "b3b2fa13049513078c301a1f6574b661fcf390c5",
   "observed_returns": [
     {
-      "id": "C1-00-R4",
-      "return_head": "233a91d7cb7789a8e338405abdfef15a5a8ee764",
-      "hq_disposition": "READY_FOR_FINAL_INDEPENDENT_REREVIEW",
-      "accepted_intermediate": "OWNER_NATIVE_SELECTION_KEY_SYNCHRONIZED__53683ac6_ACTIVE__a0c54c56_STALE_ONLY",
-      "hq_effect": "C1_01_REMAINS_BLOCKED_PENDING_INDEPENDENT_REREVIEW_AND_HQ_FREEZE"
+      "id": "C1-00-R4-R",
+      "return_head": "171200320b4acdbb8ba32106a992d76fa8ac7d8a",
+      "disposition": "APPROVE_AT_DECLARED_GRAIN",
+      "hq_effect": "C1_00_ACCEPTED__C1_01_EXACT_FREEZE_ISSUED"
     },
     {
-      "id": "C3-03-R",
-      "return_head": "1b92286cc1f8e40f73b8a3bcf61e11d36aabe2a0",
-      "static_disposition": "PASS_AT_DECLARED_GRAIN",
-      "execution_disposition": "BLOCKED_EXECUTION_CAPABILITY",
-      "execution_attempts": [
-        1,
-        2,
-        3,
-        4
-      ],
-      "hq_effect": "STATIC_PASS_ACCEPTED__CODEX_EXECUTION_FALLBACK_BOUND__C3_ADOPTION_BLOCKED"
+      "id": "C2-01",
+      "return_head": "42b89c09480c5848d8889b2282e986855c5822ef",
+      "disposition": "READY_FOR_REVIEW__NOT_ADOPTED",
+      "hq_effect": "INDEPENDENT_REVIEW_BOUND"
+    },
+    {
+      "id": "C3-03-CODEX",
+      "commissioned_off_mac_return_commit": "0b6c56db8d6a59f09bfd28e97ea9d509e36faec7",
+      "commissioned_off_mac_disposition": "BLOCKED_CODEX_EXECUTION_CAPABILITY",
+      "later_branch_head": "257c2ebfd38d106f1669afbfd701a33e600cf4c5",
+      "later_reported_disposition": "PASS_SOURCE_FREE_QUALIFICATION",
+      "later_execution_host": "USER_MAC__macOS_13_2_1_x86_64",
+      "hq_disposition": "QUARANTINED__NONADMISSIBLE_FOR_C3_QUALIFICATION",
+      "hq_effect": "C3_STATIC_PASS_PRESERVED__EXECUTION_QUALIFICATION_STILL_OPEN"
     }
   ],
   "active_tasks": [
     {
-      "id": "C1-00-R4-R",
-      "branch": "agent/reviewer-pyat-hq126-c1-00-r4-rereview-r1",
-      "commission_tip": "bcaa43885dafaa9391a4466620eb41a0e570eebb",
-      "base": "233a91d7cb7789a8e338405abdfef15a5a8ee764",
+      "id": "C1-01",
+      "branch": "agent/rabochii-pyat-hq130-c1-01-vertical-slice-r1",
+      "commission_tip": "c833ac97afccf5eee3f6d3bc0fac5d89ceb2aec8",
+      "base": "171200320b4acdbb8ba32106a992d76fa8ac7d8a",
       "state": "BOUND_AWAITING_USER_MEDIATED_LAUNCH",
-      "scope": "FINAL_INDEPENDENT_DOCUMENTARY_REREVIEW_A_THROUGH_E_PLUS_R4_EXACT_REF_SYNCHRONIZATION",
-      "pass_wake": "HQ_FREEZES_EXACT_C1_01_CONTRACT_ORACLE_WRITE_ALLOWLIST__C1_01_NOT_AUTOMATIC",
-      "blocker_effect": "C1_01_BLOCKED"
+      "scope": "EXACT_AT07_QUERY_TO_DERIVED_SLICE_TO_PUBLIC_CONSUMER_VERTICAL_COMPOSITION",
+      "write_allowlist": [
+        "rawlsing_next/pre553_analytical_composition.py",
+        "rawlsing_next/tests/test_pre553_analytical_composition.py",
+        "WORKER_RETURNS/PYAT-C1-01-VERTICAL-SLICE-R1/**"
+      ],
+      "pass_wake": "C1_02",
+      "blocker_effect": "C1_02_HELD"
     },
     {
-      "id": "C3-03-CODEX-EXEC",
-      "branch": "agent/codex-pyat-hq126-c3-03-source-free-execution-r1",
-      "commission_tip": "01d393e94b185f9cbb7f8aa85d25b7ee8f79a64a",
-      "base": "1b92286cc1f8e40f73b8a3bcf61e11d36aabe2a0",
-      "exact_execution_sha": "283d2c5d2b187c4e62ae1aecb236a0b51ddeffb1",
-      "state": "BOUND_AWAITING_USER_MEDIATED_CODEX_LAUNCH",
-      "scope": "DETERMINISTIC_SOURCE_FREE_EXECUTION_ONLY__EXACT_FROZEN_EXECUTION_COMMIT__NO_CODE_CHANGES",
-      "pass_wake": "HQ_ADJUDICATION_FOR_C3_ADOPTION",
-      "blocker_effect": "C3_ADOPTION_BLOCKED_UNTIL_EXECUTION_PASS"
+      "id": "C2-01-R",
+      "branch": "agent/reviewer-pyat-hq130-c2-01-authority-coverage-r1",
+      "commission_tip": "9adb0344678ceb4f24dbc512dce310d7a3f6160d",
+      "base": "42b89c09480c5848d8889b2282e986855c5822ef",
+      "state": "BOUND_AWAITING_USER_MEDIATED_LAUNCH",
+      "scope": "INDEPENDENT_44_53_35_280_AUTHORITY_SUCCESSION_COVERAGE_AND_RESIDUAL_REVIEW",
+      "pass_wake": "HQ_EXACT_NEXT_PROVING_WORKLOAD_DECLARATION_THEN_C2_02",
+      "blocker_effect": "C2_02_HELD"
+    }
+  ],
+  "execution_blocks": [
+    {
+      "id": "C3-03",
+      "static_disposition": "PASS_AT_DECLARED_GRAIN",
+      "valid_off_mac_block_commit": "0b6c56db8d6a59f09bfd28e97ea9d509e36faec7",
+      "github_attempts_without_runner": 5,
+      "quarantined_mac_pass_commit": "257c2ebfd38d106f1669afbfd701a33e600cf4c5",
+      "state": "WAIT_LAWFUL_OFF_MAC_SOURCE_FREE_CP311_EXECUTION_SURFACE",
+      "repeated_immediate_retry": "NOT_AUTHORIZED_BY_HQ"
     }
   ],
   "held": [
-    "C1-01 until C1 R4 independent rereview approves and HQ freezes exact contract/oracle/write allowlist",
-    "C1-02 until C1-01",
+    "C1-02 until accepted C1-01",
     "C1-03 until C1-02",
     "C1-R until C1-03",
-    "C2-02 until HQ declares exact next proving workload after accepted C1 contract",
+    "C2-02 until C2-01 independent review plus HQ exact next proving-workload declaration",
     "C2-R until C2-02",
-    "C3 adoption until exact C3-03 source-free execution qualification passes",
+    "C3 adoption until lawful off-Mac source-free execution qualification",
     "JOIN-01 until applicable independently reviewed/qualified outputs",
     "OMEGA-1 until scoped source-free join"
   ],
   "prohibitions": [
     "NO_RAW_SOURCE_EXECUTION",
     "NO_NEW_SEMANTIC_OR_COMPARABILITY_AUTHORITY",
-    "NO_C1_01_BEFORE_FINAL_R4_REREVIEW_AND_HQ_FREEZE",
-    "NO_C3_ADOPTION_WITH_STATIC_PASS_ONLY",
-    "NO_C3_CODE_OR_TEST_MUTATION_IN_CODEX_FALLBACK",
+    "NO_C1_WRITES_OUTSIDE_C1_01_ALLOWLIST",
+    "NO_C2_02_BEFORE_C2_01_REVIEW_AND_HQ_WORKLOAD_BINDING",
+    "NO_C3_ADOPTION_FROM_QUARANTINED_MAC_EXECUTION",
+    "NO_REPEATED_BLIND_C3_RUNNER_RETRIES",
     "NO_PREV3_TO_V3_ACTOR_IMPLEMENTATION"
   ]
 }
