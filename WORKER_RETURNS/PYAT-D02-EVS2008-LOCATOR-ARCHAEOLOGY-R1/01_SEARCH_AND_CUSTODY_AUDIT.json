@@ -1,5 +1,5 @@
 {
-  "schema": "PYAT_D02_EVS2008_SEARCH_AND_CUSTODY_AUDIT@1.0.0",
+  "schema": "PYAT_D02_EVS2008_SEARCH_AND_CUSTODY_AUDIT@1.1.0",
   "commission_tip": "57d7ee585f7364383394d067c6aeb871470edda4",
   "exact_base": "6f6ab9dfe5ad8f9359630dd05abf43c3fd11a1b5",
   "source": {
@@ -15,7 +15,31 @@
     "raw_sav_inspected": false,
     "user_mac_used": false,
     "new_source_scanning_algorithm_created": false,
-    "semantic_locator_inferred": false
+    "questionnaire_semantics_used_to_select_locator": false
+  },
+  "decisive_recovery": {
+    "worker_branch": "agent/vozhd-trii-srcprep71-r04-evs",
+    "immutable_tip": "3bc063aa7bf461caf5baf581ff32a434ba9e09a3",
+    "commit_time": "2026-08-22T10:03:56Z",
+    "path": "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/SOURCE_CERT_PREP71/RETURNS/R04/HOSTILE_FIXTURES.csv",
+    "blob": "12f6adb77ef5692511055c8f0520e42c454f3867",
+    "fixture_id": "EVS08_DATE_MISSING_V372",
+    "authority_basis": "SOURCE_PHYSICAL_OR_READER_METADATA_AUTHORITY__NON_SEMANTIC",
+    "source_sha_bound": true,
+    "locator": {
+      "variable": "v372",
+      "ordinal": 466
+    },
+    "witness_class": "TYPED_DATE_USER_MISSING_SENTINEL",
+    "rendered_witness": "1582-10-13",
+    "physical_counts": {
+      "rows_seen": 66280,
+      "ordinary_present_count": 64363,
+      "system_missing_count": 0,
+      "user_missing_count": 1917,
+      "rendered_user_missing_count": 1917
+    },
+    "result": "COMPETENT_EXACT_RETAINED_D02_LOCATOR"
   },
   "search_order": [
     {
@@ -26,21 +50,16 @@
           "commit": "b801c58c8e4d6d10e36e0a42ca62cf6908cbf25a",
           "path": "WORKER_RETURNS/PREMAIN-CLOSED35-QUALIFIED-REPRESENTATION-CENSUS-RESULTS-R1/source_receipts/SOURCE_14_REPRESENTATION_RECEIPT.json",
           "blob": "3e08e2ace5ab585336950dc3e6b555ce09405ebc",
-          "finding": "EXACT_SOURCE_D02_FAILURE_RETAINED__NO_LOCATOR__NO_NATIVE_INSTANCE_TYPE"
+          "finding": "EXACT_SOURCE_D02_FAILURE_RETAINED__SOURCE_LEVEL_ONLY"
         },
         {
           "commit": "11704fbfa16797fbdd55dadc7929aaad729c9454",
           "path": "rawlsing_next/closed35_representation_census_harness.py",
           "blob": "b667f7198349486cec32d8168ddc2de1ed0427a8",
-          "finding": "HASH_AND_SIZE_GATED_METADATA_OBSERVATION__EXCEPTION_WRAPPER_DISCARDS_FAILING_SUBLOCATION"
-        },
-        {
-          "commit": "463a388b306b742e0323c91b086805e34f714dde",
-          "path": "WORKER_RETURNS/PREMAIN-CLOSED35-REPRESENTATION-REGIME-R1/00_RETURN.md",
-          "finding": "FANIN_FREEZES_D02_AS_NONSEMANTIC_DEBT_EXPOSED_BY_EVS2008__NO_LOCATOR"
+          "finding": "EXACT_SHA_GATED_HISTORICAL_FAILURE_PATH__NO_FAILING_SUBLOCATION_PERSISTED_IN_THIS_LATER_RECEIPT"
         }
       ],
-      "result": "NO_COMPETENT_EXACT_LOCATOR_OR_TRAVERSAL_ORACLE"
+      "result": "LATER_CLOSED35_RECEIPT_ALONE_INSUFFICIENT__SEARCH_CONTINUED_BACKWARD"
     },
     {
       "order": 2,
@@ -49,78 +68,106 @@
         {
           "commit": "30686b185d4ceb2c94f61815ef70d8c8e76255d6",
           "path": "rawlsing_next/pre553_r5_codec.py",
-          "finding": "GENERIC_NATIVE_DATETIME_DATE_TIME_OPAQUE_CARRIER_LAW_ONLY"
-        },
-        {
-          "commit": "901e3e77f905847d3ef8d86b458280d8fe422dd0",
-          "paths": [
-            "rawlsing_next/pre553_physical_decoder.py",
-            "rawlsing_next/tests/test_closed35_d02_opaque_datetime_carrier.py"
-          ],
-          "finding": "SOURCE_FREE_DECODER_ROUTE_AND_HOSTILES_ONLY__NO_EVS2008_LOCATOR"
+          "finding": "GENERIC_D02_OPAQUE_CARRIER_LAW_FOR_NAIVE_BUILTIN_DATETIME_DATE_TIME"
         },
         {
           "commit": "462e6bf1ed514056f9316dad761054e690a7755d",
           "path": "WORKER_RETURNS/PYAT-C3-SOURCE-FREE-INTEGRATION-REVIEW-R1/04_FINAL_DISPOSITION.json",
-          "finding": "INDEPENDENTLY_APPROVES_GENERIC_D02_LAW__RAW_SOURCE_ACCESS_ZERO"
+          "finding": "GENERIC_D02_LAW_INDEPENDENTLY_APPROVED__RAW_SOURCE_ACCESS_ZERO"
         }
       ],
-      "result": "TYPE_CLASS_LAW_RECOVERED__SOURCE_LOCATOR_NOT_RECOVERED"
+      "result": "GENERIC_TYPE_LAW_RECOVERED__SOURCE_LOCATOR_REQUIRED_FROM_OLDER_PHYSICAL_TERRAIN"
     },
     {
       "order": 3,
       "terrain": "FIABC LM2/R1J upstream decoder/representation returns",
-      "result": "NO_EVS2008_D02_LOCATOR_FOUND; R1J retained owner terrain is WVS7-specific and cannot substitute for SRC14"
+      "result": "NO_EVS2008_LOCATOR_REQUIRED_FROM_R1J__WVS7_SPECIFIC_TERRAIN"
     },
     {
       "order": 4,
-      "terrain": "SR03 source-native metadata probe outputs and retained receipts",
+      "terrain": "SR03 source-native metadata probe and accepted physical census",
       "evidence": [
         {
-          "ref": "6f6ab9dfe5ad8f9359630dd05abf43c3fd11a1b5",
-          "path": "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/SR03_SOURCE_NATIVE_METADATA_PROBE.py",
-          "blob": "58d26c20cba301270488d6d396cecd5710ad15ed",
-          "finding": "EXACT_SHA_COMPATIBILITY_METADATA_PROBE__NO_RETAINED_D02_LOCATOR"
+          "accepted_execution_head": "d3d6169dc93754533987673cdb44f2dbc72b9c4f",
+          "adjudication_path": "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/16_SR03_R3_ADJUDICATION.md",
+          "adjudication_blob": "fde75ccad487adfc6148f12843448798551874b7",
+          "finding": "35_SOURCE_EXACT_SHA_PHYSICAL_CENSUS_ACCEPTED__SOURCE_PHYSICAL_MANIFESTS_BECAME_PREP71_INPUT"
         },
         {
-          "ref": "6f6ab9dfe5ad8f9359630dd05abf43c3fd11a1b5",
-          "path": "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/16_SR03_R3_ADJUDICATION.md",
-          "blob": "fde75ccad487adfc6148f12843448798551874b7",
-          "finding": "EVS2008_COMPATIBILITY_EXECUTION_RETAINED__NO_D02_LOCATOR"
+          "path": "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/SR03_SOURCE_NATIVE_METADATA_PROBE.py",
+          "blob": "58d26c20cba301270488d6d396cecd5710ad15ed",
+          "finding": "DETERMINISTIC_EXACT_SHA_SOURCE_PHYSICAL_PROBE__DATE_LIKE_VALUES_SERIALIZED_FOR_MANIFEST"
         }
       ],
-      "result": "CUSTODY_AND_DECODER_CONFIGURATION_ONLY"
+      "result": "UPSTREAM_PHYSICAL_AUTHORITY_CHAIN_LOCATED"
     },
     {
       "order": 5,
       "terrain": "source certification / PRE553 physical reconnaissance returns",
-      "result": "EXACT_SOURCE_SHA_AND_COMPATIBILITY_CUSTODY_FOUND__NO_D02_LOCATOR_OR_FROZEN_D02_TRAVERSAL_ORACLE"
+      "evidence": [
+        {
+          "branch": "agent/vozhd-trii-srcprep71-r04-evs",
+          "tip": "3bc063aa7bf461caf5baf581ff32a434ba9e09a3",
+          "path": "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/SOURCE_CERT_PREP71/RETURNS/R04/HOSTILE_FIXTURES.csv",
+          "blob": "12f6adb77ef5692511055c8f0520e42c454f3867",
+          "finding": "EXACT_RETAINED_D02_LOCATOR_RECOVERED"
+        },
+        {
+          "path": "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/SOURCE_CERT_PREP71/RETURNS/R04/SOURCE_CERTIFICATION_LEDGER.csv",
+          "blob": "2cd01b99958c51a430df71e006c5d531d553ac92",
+          "finding": "EXACT_SHA_66280x477_SOURCE_PHYSICAL_PACKET_AND_READER_BOUNDARY"
+        }
+      ],
+      "result": "MISSION_RESOLVED"
     },
     {
       "order": 6,
       "terrain": "Chetiri C03/C04/C05 source-backed historical receipts",
-      "evidence": [
-        {
-          "ref": "6f6ab9dfe5ad8f9359630dd05abf43c3fd11a1b5",
-          "path": "data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/PROJECT_INHERITANCE_R1/CAMPAIGNS/N010_CHETIRI_SOURCE_BACKED_ARCHITECTURE/CORPUS/ORIGINAL/334b4563dc43__C05_RESULT.json",
-          "blob": "334b4563dc4376a6f06e1292f86659f5a3e9be3a",
-          "finding": "EVS2008_NAMED_SOURCE_BACKED_TERRAIN__NO_D02_LOCATOR"
-        }
-      ],
-      "result": "NO_COMPETENT_D02_LOCATOR_OR_ORACLE"
+      "result": "NOT_NEEDED_TO_ESTABLISH_LOCATOR_AFTER_STRONGER_PREP71_PHYSICAL_WITNESS_RECOVERED"
     },
     {
       "order": 7,
-      "terrain": "Project Library named retained artifacts",
-      "result": "NOT_INVOKED__REPOSITORY_CUSTODY_DID_NOT_POINT_TO_A_NAMED_MISSING_RETAINED_D02_ARTIFACT"
+      "terrain": "Project Library",
+      "library_folder": "/Rawlsing",
+      "raw_source_entry": {
+        "name": "EVS 2008.sav",
+        "library_file_id": "libfile_7c2aad505d788191900a6c341837ab8b",
+        "file_id": "file_00000000aa8481f5a9a2b3d840c2100a",
+        "size_bytes": 63832833,
+        "content_read": false
+      },
+      "retained_documentary_search_result": "Library search surfaced older CLOSED35-L2/L2R EVS2008 documentary work, which routed archaeology to immutable Git branches.",
+      "result": "CUSTODY_TERRAIN_CONFIRMED__RAW_SAV_NOT_OPENED"
+    }
+  ],
+  "corroborating_pre_c4_artifacts": [
+    {
+      "tip": "dd17c06606709bad5e56189a21db729cdd6ca859",
+      "commit_time": "2026-09-20T18:13:31Z",
+      "path": "WORKER_RETURNS/CLOSED35-L2-EVS2008/00_RETURN.md",
+      "blob": "07f98ed0da16923b87ed56decfa797750fd24562",
+      "finding": "v372 typed user-missing date rendered 1582-10-13; 1917 records; exact source SHA"
+    },
+    {
+      "tip": "3201d94156742870562c6f98c239673a1a6ef2ba",
+      "commit_time": "2026-09-20T18:47:18Z",
+      "path": "WORKER_RETURNS/CLOSED35-L2R-EVS2008/01_V372_AUTHORITY.md",
+      "blob": "59e875f93ef6a477c52eb0c950358c41898cf281",
+      "finding": "v372 ordinal 466; 1917 user-missing; 64363 present; 66280 rows; exact source SHA"
+    },
+    {
+      "tip": "6f9dbb1f3cdc0fc2ec92d5705a43b353b7b56594",
+      "commit_time": "2026-09-20T19:20:07Z",
+      "path": "WORKER_RETURNS/CLOSED35-R2-EVS2008/RETURN.json",
+      "blob": "fe76737b6f6a14893b4c37e73fd56ff639953fb7",
+      "finding": "same exact v372 locator/count/ordinal retained in source-specific realization; no real source execution"
     }
   ],
   "custody_holding": {
-    "exact_source_sha_proved_in_historical_census_receipt": true,
-    "hash_checked_before_historical_failure": true,
-    "basis": "qualified harness observe_source hashes full source and checks exact size before metadata-only read; immutable SRC14 failure receipt was emitted only after entering that exact-source path",
-    "historical_receipt_predates_future_c4": true,
-    "historical_receipt_commit_time": "2026-09-23T07:28:16Z"
+    "exact_source_sha_bound_in_decisive_fixture": true,
+    "historical_physical_authority_predates_future_c4": true,
+    "decisive_witness_commit_time": "2026-08-22T10:03:56Z",
+    "locator_not_derived_from_semantics": true
   },
-  "terminal_search_result": "NO_COMPETENT_RETAINED_LOCATOR_OR_ORACLE_FOUND"
+  "terminal_search_result": "EXACT_RETAINED_D02_LOCATOR_RECOVERED"
 }
