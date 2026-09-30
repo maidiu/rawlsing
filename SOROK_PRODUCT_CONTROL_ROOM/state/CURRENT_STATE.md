@@ -411,3 +411,6 @@ The current user/Vozhd conversational critical path is the **7 ALPHA_SPEC blocke
 - tighter real-time synchronization may exist only as explicit opt-in temporal embodiment, never as morally superior or progression-enhancing play;
 - product notifications remain bounded and neutral; actor-originated contact may persist, but no platform guilt/streak/absence escalation;
 - alpha/early-beta must treat synthetic-social displacement, notification anxiety and calendar capture as product failures even if they improve retention.
+
+- `49_SOROK_R11_NEW_CHAT_HANDOFF_R1.md` — full new-chat Sorok/Vozhd handoff through elastic present R11
+- `50_SOROK_R11_FULL_SEMANTIC_CHAT_LOG_R1.txt` — semantic chronology of the current Sorok conversation, tool chatter omitted
