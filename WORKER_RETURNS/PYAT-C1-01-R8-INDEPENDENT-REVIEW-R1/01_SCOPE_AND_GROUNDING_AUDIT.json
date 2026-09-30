@@ -1,0 +1,59 @@
+{
+  "schema": "PYAT_C1_01_R8_SCOPE_AND_GROUNDING_AUDIT@1",
+  "review_branch": "agent/reviewer-pyat-hq138-c1-01-r8-r1",
+  "review_head": "b30d1bf977adb4ac337f32e323ef01953267b054",
+  "r8_return_head": "3c09a2d5de6d5335874bb1d2b787cfe69ec2d9e5",
+  "amended_commission_tip": "fc61bf8417c39d8855987b6768fc739b1a4829d8",
+  "clean_tested_commit": "9e265581819e7bb3e697c1dccbc3ba711764ded4",
+  "scope_verification": {
+    "diff_commission_to_return": {
+      "from": "fc61bf8417c39d8855987b6768fc739b1a4829d8",
+      "to": "3c09a2d5de6d5335874bb1d2b787cfe69ec2d9e5",
+      "changed_files": 24,
+      "all_inside_allowlist": true,
+      "production_implementation_changed": false,
+      "shared_i03_fixture_changed": false,
+      "historical_r2_r7_artifacts_rewritten": false,
+      "only_active_c1_synthetic_packet_test_and_r8_artifacts_changed": true
+    },
+    "write_terrain_compliance": {
+      "all_writes_under": "WORKER_RETURNS/PYAT-C1-01-R8-INDEPENDENT-REVIEW-R1/",
+      "no_edits_to_commission": true,
+      "no_edits_to_implementation": true,
+      "no_edits_to_tests": true,
+      "no_edits_to_active_fixtures": true,
+      "no_edits_to_historical_returns": true
+    },
+    "authority_expansion_check": {
+      "hidden_owner_expansion": false,
+      "hidden_authority_expansion": false,
+      "new_real_source_semantics": false,
+      "new_real_source_comparability": false,
+      "new_model_pooling_authority": false,
+      "actor_state_introduced": false,
+      "c4_source_warrant": false
+    }
+  },
+  "hq_grounding_recheck": {
+    "control_branch": "integration/pre-main-reconciliation-r1",
+    "control_head": "480997288b381efeeef0205531ed5361c39dc629",
+    "semantic_pre_main": "902640dfddce431d0c5ba151d3eb851d6b84d7a3",
+    "verified_implementation_snapshot": "b3b2fa13049513078c301a1f6574b661fcf390c5",
+    "control_delta": {
+      "commits": 99,
+      "changed_files": 105,
+      "rawlsing_next_files": 0
+    },
+    "grounding_disposition": "CURRENT_IMPLEMENTATION_SNAPSHOT_CONFIRMED__NO_MECHANICAL_REBASE_REQUIRED",
+    "implementation_files_moved": false,
+    "delta_classified_before_acceptance": true
+  },
+  "browser_economy_mode": "PYAT_CONTROL_ROOM/BROWSER_ECONOMY_MODE_R1.md",
+  "operating_constraints_respected": {
+    "no_raw_survey_access": true,
+    "no_c1_02_work": true,
+    "no_implementation_fixes": true,
+    "no_redundant_execution_demanded": true
+  },
+  "audit_result": "PASS_SCOPE_AND_GROUNDING_CONFIRMED"
+}

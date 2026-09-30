@@ -1,0 +1,115 @@
+{
+  "schema": "PYAT_C1_01_R8_PREDICATE_AND_IDENTITY_AUDIT@1",
+  "producer_predicate_custody": {
+    "canonicalization": "PRE553 canonicalize/canonical_json with recursive lexicographic mapping-key order, array order preserved, UTF-8, no insignificant whitespace, then SHA-256",
+    "identity_laws": {
+      "predicate_hash": "sha256(canonical_json(predicate_ast))",
+      "outer_predicate_ref": "sha256(canonical_json(predicate_semantic_projection))"
+    },
+    "immutable_source_locators": [
+      "rawlsing_next/tests/test_pre553_empirical_query.py@cc7d93db1f87d9c311170c229dbe3506937b404a",
+      "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/03_SYNTHETIC_AUTHORITY_FREEZE.json@333989fa7b57c221d6aa5ebfc25d9d76e0acad32",
+      "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/02_OWNER_NATIVE_AUTHORITY_SCOPE_FREEZE.json@5d1583dc31c837282ea40448285109a31bb1db41",
+      "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R8/01_EXECUTED_RELEASE_OWNER_RECEIPT.json@4d37a668f6217194f470639f842e25d40954a2cd"
+    ],
+    "directions": {
+      "forward": {
+        "producer_predicate_ref": {
+          "kind": "EmpiricalPredicate@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:8fe1a7e827ee09d8ab8121fe76fc1b219c1518b74e743098adba1a754dd7a3ac",
+          "content_hash": "8fe1a7e827ee09d8ab8121fe76fc1b219c1518b74e743098adba1a754dd7a3ac"
+        },
+        "predicate_hash": "fc7ee1774226e94491688b14a395acfbf9c5ccfc9184744963e01af1ee52dc55",
+        "predicate_ast_complete": true,
+        "outer_semantic_projection_complete": true,
+        "recomputation": {
+          "predicate_hash_match": true,
+          "outer_ref_hash_match": true,
+          "evidence_category": "independently_recomputed_fact"
+        }
+      },
+      "reverse": {
+        "producer_predicate_ref": {
+          "kind": "EmpiricalPredicate@1.0.0",
+          "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:81080d5b877742bc883073604ac2f002908e248d50fd518a74e86135e6115201",
+          "content_hash": "81080d5b877742bc883073604ac2f002908e248d50fd518a74e86135e6115201"
+        },
+        "predicate_hash": "20d43386e508f7bb26b7219d06f858c0df42d736ce9a4de6e6f0f80ffd33d8e6",
+        "predicate_ast_complete": true,
+        "outer_semantic_projection_complete": true,
+        "recomputation": {
+          "predicate_hash_match": true,
+          "outer_ref_hash_match": true,
+          "evidence_category": "independently_recomputed_fact"
+        }
+      }
+    },
+    "no_test_helper_archaeology_required": true
+  },
+  "downstream_identity_closure": {
+    "current_at07_identity_spine": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R8/04_CURRENT_AT07_IDENTITY_SPINE.json",
+    "supersession_map": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R8/05_SUPERSESSION_MAP.json",
+    "recomputation_receipt": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R8/06_RECOMPUTATION_RECEIPT.json",
+    "classification_coherence": {
+      "three_way_classification_present": true,
+      "categories_used": [
+        "UNCHANGED",
+        "SUPERSEDED__EXECUTED_AUTHORITY_SNAPSHOT_OUTER_REFS",
+        "SUPERSEDED__EXECUTED_COMPLETE_OUTER_PREIMAGE",
+        "SUPERSEDED_TRANSITIVELY",
+        "SUPERSEDED_TRANSITIVELY_FROM_PREDICATE_REF",
+        "SUPERSEDED__QUERY_AND_RELEASE_PROVENANCE",
+        "SUPERSEDED__DIRECT_RELEASE_DETERMINANT",
+        "SUPERSEDED__CONSUMER_QUERY_PRODUCER_REFS_AND_RELEASE",
+        "CURRENT_EXECUTED_FREEZE",
+        "UNCHANGED__EXECUTABLE_FIXTURE_NOW_USES_IT"
+      ],
+      "both_directions_covered": true,
+      "chain_traced": [
+        "producer_predicate_ref/hash",
+        "producer_query",
+        "producer_replay/fact",
+        "consumer_query",
+        "condition_value_witness",
+        "possibility_evidence",
+        "composed_result"
+      ]
+    },
+    "historical_preservation": {
+      "historical_r3_r6_r7_identities_preserved": true,
+      "historical_artifacts_modified": false,
+      "supersession_not_rewrite": true
+    },
+    "recomputation_verification": {
+      "all_checks_pass": true,
+      "checks": 20,
+      "forward_arithmetic": {
+        "raw_support": 60,
+        "cells": {"yes": 54, "no": 6},
+        "exact_probability_yes": "9/10"
+      },
+      "reverse_arithmetic": {
+        "raw_support": 62,
+        "cells": {"P1": 54, "P2": 8},
+        "exact_probability_P1": "27/31"
+      },
+      "hostile_courts_verified": {
+        "H1_matching_hash_17_key_witness": "5fb2fd7d92984e6f45990d9c8d395bb856b420efd9c721bf632bcdf1418d2279",
+        "H2_valid_relation_mutation": {
+          "query": "29dfec2e177418706c73530d3e3034b591b471b6d63496880781a8e6424629d7",
+          "witness": "44be3838337b29ed657d5257028f2a9f7d36c151a638b42f62045aa1cd9c82d8",
+          "evidence": "f5b1343cc27b480e180a96d242dfa4fa5cfc7057429dfb3d1ccaa85eea26a7d4",
+          "composed": "13fbcd9012c3be1738fc24721467fc26872eeeefa06aff0fd4b977bb19afc5d3"
+        },
+        "H3_same_visible_54_over_60_new_member": "a6005c03c2b7a3e4e595dc1bb181379a32c6a35700633ade548a1f814f8bc03b",
+        "H4_geometry_cell_mutation": "f00ed452bc608f3e7fed77876cc46607feedc6d0d55e0b11d8b465e5cc3618e5",
+        "H5_fixture_pairing_authority": {
+          "witness": "7f2f72b6a353cff224b6eb81b22199c7681f855b682ef37294525a38dc625264",
+          "evidence": "83ccef3edd1d8371c6ed1739bca85a75773c7699a8dc66a9528d452210d35336",
+          "composed": "17d62ea2fb75f41b90306aa0d33f746c08c42e9cec5693dd02420503c66ce872"
+        }
+      },
+      "evidence_category": "executed_evidence"
+    }
+  }
+}
