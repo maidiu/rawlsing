@@ -1,0 +1,48 @@
+{
+  "schema": "PYAT_C1_00_R6_EVIDENCE_RECOMPUTATION@1",
+  "forward": {
+    "consumer_query_ref": {
+      "kind": "POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_QUERY@1",
+      "object_id": "urn:rawlsing:learned-world:positioned-subject-query:sha256:8f7444dbae4250cdda8a7a4c89bb331bd1f960072a97e8b11f05c4bd68c770d9",
+      "content_hash": "8f7444dbae4250cdda8a7a4c89bb331bd1f960072a97e8b11f05c4bd68c770d9"
+    },
+    "witness_ref": {
+      "kind": "C1_CONDITION_VALUE_BINDING_WITNESS@2",
+      "object_id": "urn:test:c1:at07:condition-value-witness:r6-forward-p1",
+      "content_hash": "f4123258625589513da2afc0d4f10a2438b6238b0b4f0a5338acb03ef8932da5"
+    },
+    "evidence_ref": {
+      "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+      "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:c5e5930b6b368605c6828b70de02bf00ca77b9636c890706ac755b0074f61374",
+      "content_hash": "c5e5930b6b368605c6828b70de02bf00ca77b9636c890706ac755b0074f61374"
+    },
+    "expected_raw_support": 60,
+    "expected_cells": {
+      "yes": 54,
+      "no": 6
+    }
+  },
+  "reverse": {
+    "consumer_query_ref": {
+      "kind": "POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_QUERY@1",
+      "object_id": "urn:rawlsing:learned-world:positioned-subject-query:sha256:2909672ca01a2b5fcb5d07351f8691bb10bf82d3e794d92f73981d2e70fc4f0e",
+      "content_hash": "2909672ca01a2b5fcb5d07351f8691bb10bf82d3e794d92f73981d2e70fc4f0e"
+    },
+    "witness_ref": {
+      "kind": "C1_CONDITION_VALUE_BINDING_WITNESS@2",
+      "object_id": "urn:test:c1:at07:condition-value-witness:r6-reverse-yes",
+      "content_hash": "a5410dd09f9a16ada260b6d18e902e5a101b7b41346a407f17283de8d726fdb0"
+    },
+    "evidence_ref": {
+      "kind": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+      "object_id": "urn:rawlsing:c1:positioned-subject-slice-evidence:sha256:0cd3b5b868852db956a079835c5052c206561b0fe2a7480931e6de0dc5d81844",
+      "content_hash": "0cd3b5b868852db956a079835c5052c206561b0fe2a7480931e6de0dc5d81844"
+    },
+    "expected_raw_support": 62,
+    "expected_cells": {
+      "P1": 54,
+      "P2": 8
+    }
+  },
+  "recomputation_law": "R3 noncircular evidence preimage with only the R6 witness ref substituted at its two identity-bearing occurrences (geometry + provenance), then semantic_hash."
+}
