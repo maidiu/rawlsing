@@ -1,0 +1,56 @@
+{
+  "schema": "PYAT_C1_01_R2_HOSTILE_CASE_MATRIX@1",
+  "execution_status": "NOT_EXECUTED__SUCCESSFUL_PREIMAGE_GATE_NOT_REACHED",
+  "preservation": "All mandatory C1-01 hostile obligations remain unchanged and unwaived.",
+  "cases": [
+    {
+      "id": "P1_SUBJECT_P2_PRODUCER_LEAF",
+      "status": "OBLIGATION_PRESERVED",
+      "expected": "CONDITION_VALUE_RELATION_MISMATCH before slice construction and consumer invocation"
+    },
+    {
+      "id": "CHANGED_EXACT_CONDITION_VALUE",
+      "status": "OBLIGATION_PRESERVED"
+    },
+    {
+      "id": "CHANGED_PAIRING_GROUND_TRUTH_OR_WITNESS",
+      "status": "OBLIGATION_PRESERVED"
+    },
+    {
+      "id": "CHANGED_SOURCE_OR_RELEASE",
+      "status": "OBLIGATION_PRESERVED"
+    },
+    {
+      "id": "CHANGED_RISK_SET_IDENTITY",
+      "status": "OBLIGATION_PRESERVED"
+    },
+    {
+      "id": "CHANGED_MEASURE_KIND_OR_AUTHORITY",
+      "status": "OBLIGATION_PRESERVED"
+    },
+    {
+      "id": "DIFFERENT_QUERY_CONDITIONS_REIDENTIFY",
+      "status": "OBLIGATION_PRESERVED"
+    },
+    {
+      "id": "OBSERVED_ZERO_IN_NONZERO_DENOMINATOR",
+      "status": "OBLIGATION_PRESERVED"
+    },
+    {
+      "id": "ZERO_SUPPORT",
+      "status": "OBLIGATION_PRESERVED"
+    },
+    {
+      "id": "INCOMPATIBLE_SOURCE_RELEASE_RISK_MEASURE",
+      "status": "OBLIGATION_PRESERVED"
+    },
+    {
+      "id": "UNSUPPORTED_AUTHORITY_SCOPE",
+      "status": "OBLIGATION_PRESERVED"
+    }
+  ],
+  "new_preimage_hostile": {
+    "attack": "Guess any unfrozen query_id/subject_ref/requested_projection/effective-time material and retain it only because its hash matches a frozen digest.",
+    "expected": "REJECT_AS_PROHIBITED_HASH_FITTING__NOT_LAWFUL_RECONSTRUCTION"
+  }
+}
