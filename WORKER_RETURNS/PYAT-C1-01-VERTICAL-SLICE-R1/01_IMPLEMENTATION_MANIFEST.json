@@ -1,0 +1,51 @@
+{
+  "schema": "PYAT_C1_01_IMPLEMENTATION_MANIFEST@1",
+  "status": "BANKED__BLOCKED_CONTRACT_COUNTEREXAMPLE",
+  "branch": "agent/rabochii-pyat-hq130-c1-01-vertical-slice-r1",
+  "commission_tip": "c833ac97afccf5eee3f6d3bc0fac5d89ceb2aec8",
+  "exact_base": "171200320b4acdbb8ba32106a992d76fa8ac7d8a",
+  "files": [
+    {
+      "path": "rawlsing_next/pre553_analytical_composition.py",
+      "blob_sha": "5c85d33987d7dc78efe98ceb5e78afe1ddc89b20",
+      "role": "C1_DIRECT_ANALYTICAL_COMPOSITION"
+    },
+    {
+      "path": "rawlsing_next/tests/test_pre553_analytical_composition.py",
+      "blob_sha": "f71ce53de7be91f2c8fb80ce31c9a25ac8ce6cea",
+      "role": "C1_CONTRACT_AND_COMPOSITION_REGRESSION"
+    }
+  ],
+  "write_allowlist_respected": true,
+  "existing_owner_edits": [],
+  "public_producer": "rawlsing_next.pre553_empirical_query.execute_empirical_query",
+  "public_consumer": "rawlsing_next.source_backed_positioned_subject_possibility.evaluate_positioned_subject_possibility",
+  "accepts_preconstructed_final_slice": false,
+  "evidence_identity": {
+    "schema": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE_PREIMAGE@1",
+    "contract_id": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1",
+    "noncircular": true,
+    "raw_support_source": "EmpiricalFact.raw_denominator_support",
+    "projection_schema_hash": "c00e038dd2c1177bfc7842f12febef7b3e30b92bc421df244e2a8e3c4a20b17a"
+  },
+  "frozen_oracles": {
+    "forward_ratio": "54/60",
+    "reverse_ratio": "54/62",
+    "forward_evidence_hash": "fe5cd7783ac84f0298fb7f56a621d7b0e494bd9348d080dc68ceee09abb546f5",
+    "reverse_evidence_hash": "b54201c8ba8743922e51627e621cc4f3d1c563a43b70167a0720fbb0028ccf72",
+    "forward_consumer_query_hash": "83727ca59eaf43085324ee7dc7db5ce4ecf4e4bf1f1284692cd3ad3f192df027",
+    "reverse_consumer_query_hash": "cb2d085675c137848bb40f191ba8992100513eaa904a09cd54064f6ef51d3d8a",
+    "forward_witness_hash": "c93e840c06da9ab8de9ca237863d52858fe6765d5bfd7c7efb42b879440663c9",
+    "reverse_witness_hash": "e81c4e19144a749877a6f6e7e48a213e869bfe5d04ba81372ca5384b7cf5e700"
+  },
+  "contract_counterexample": {
+    "missing": [
+      "forward complete canonical PositionedSubjectPossibilityQuery.material()",
+      "reverse complete canonical PositionedSubjectPossibilityQuery.material()",
+      "forward complete canonical C1_CONDITION_VALUE_BINDING_WITNESS@2 material",
+      "reverse complete canonical C1_CONDITION_VALUE_BINDING_WITNESS@2 material"
+    ],
+    "consequence": "Cannot recompute frozen consumer/witness identities and simultaneously reproduce frozen evidence refs without trusting opaque hashes.",
+    "existing_owner_change_required": false
+  }
+}
