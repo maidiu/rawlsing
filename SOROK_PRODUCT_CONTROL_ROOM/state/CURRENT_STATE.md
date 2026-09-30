@@ -127,6 +127,7 @@ Top-level:
 - `28_D002_DELEGATED_TASK_EXECUTION_AND_SALIENT_FORKS_R1.md` — neutral delegated chores / dynamic zoom / salient-fork law
 - `29_D002_TASK_ENTRY_DECOMPRESSION_AND_AFFORDANCE_REVEAL_R1.md` — task-entry reveal / user-selected method
 - `30_LIFE_AND_RELATION_TOPOLOGY_ABOVE_TASK_FLUX_R1.md` — macro layer above chores: conversation, invitation, disclosure, life domains and changing access
+- `31_ENTRY_PRIMER_AND_BEGINNING_TO_KNOW_LOOP_R1.md` — first-session primer / reciprocal acquaintance formation layer
 - `17_FULL_RAWLSING_VOZHD_GROUNDING_INTEGRITY_R1.md` — takeover verification
 - `08_INTERACTION_SYSTEM_SYNTHESIS_R1.md`
 - `09_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R2.md`
