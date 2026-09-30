@@ -1,112 +1,132 @@
 {
-  "schema": "PYAT_D02_EVS2008_LOCATOR_OR_TRAVERSAL_EVIDENCE@1.0.0",
+  "schema": "PYAT_D02_EVS2008_LOCATOR_OR_TRAVERSAL_EVIDENCE@1.1.0",
+  "disposition": "EXACT_RETAINED_D02_LOCATOR_RECOVERED",
   "source": {
     "source_id": "SRC14",
     "source_file": "EVS 2008.sav",
     "sha256": "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379"
   },
-  "exact_locator_candidate": {
-    "recovered": false,
-    "variable_name": null,
-    "column_ordinal": null,
-    "row_ordinal": null,
-    "cell_locator": null,
-    "metadata_map": null,
-    "metadata_key": null,
-    "metadata_subfield": null,
-    "reason": "The immutable CLOSED35 SRC14 receipt retains only the source-local R5CodecError and surfaces=[], not the failing physical sublocation."
+  "exact_locator": {
+    "recovered": true,
+    "variable_name": "v372",
+    "source_variable_ordinal": 466,
+    "locator_grain": "PHYSICAL_SOURCE_COLUMN",
+    "physical_fixture_id": "EVS08_DATE_MISSING_V372",
+    "fixture_kind": "VARIABLE_MISSING_DECLARATION",
+    "fixture_source": {
+      "branch": "agent/vozhd-trii-srcprep71-r04-evs",
+      "immutable_tip": "3bc063aa7bf461caf5baf581ff32a434ba9e09a3",
+      "commit_time": "2026-08-22T10:03:56Z",
+      "path": "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/SOURCE_CERT_PREP71/RETURNS/R04/HOSTILE_FIXTURES.csv",
+      "blob": "12f6adb77ef5692511055c8f0520e42c454f3867"
+    },
+    "authority_basis": "SOURCE_PHYSICAL_OR_READER_METADATA_AUTHORITY__NON_SEMANTIC",
+    "semantic_selection_used": false
   },
-  "decoder_native_type_class": {
-    "recovered_generic_law": true,
-    "authority_commit": "30686b185d4ceb2c94f61815ef70d8c8e76255d6",
-    "accepted_exact_types": [
-      "builtins exact datetime.datetime with tzinfo is None",
-      "builtins exact datetime.date",
-      "builtins exact datetime.time with tzinfo is None"
+  "expected_physical_witness": {
+    "exact_sufficient_D02_witness_class": "TYPED_DATE_USER_MISSING_SENTINEL",
+    "retained_rendered_witness": "1582-10-13",
+    "missing_ranges": [
+      {
+        "lo": "1582-10-13",
+        "hi": "1582-10-13"
+      }
+    ],
+    "physical_counts": {
+      "rows_seen": 66280,
+      "ordinary_present_count": 64363,
+      "system_missing_count": 0,
+      "user_missing_count": 1917,
+      "user_missing_by_native_rendered_witness": {
+        "1582-10-13": 1917
+      }
+    },
+    "semantic_reason_at_physical_fixture": "UNKNOWN_PENDING_DOCUMENTARY_AUTHORITY",
+    "exact_builtin_python_subclass_historically_frozen": false,
+    "exact_builtin_python_subclass_claim": "NOT_MADE",
+    "competence_reason": "Commission accepts expected physical/native type OR exact sufficient D02 witness class. The source-bound class TYPED_DATE_USER_MISSING_SENTINEL, exact column locator, exact rendered witness, and exact cardinality are all frozen independently before C4."
+  },
+  "accepted_C3_D02_law": {
+    "integration_commit": "30686b185d4ceb2c94f61815ef70d8c8e76255d6",
+    "exact_accepted_native_classes": [
+      "built-in naive datetime.datetime",
+      "built-in datetime.date",
+      "built-in naive datetime.time"
     ],
     "opaque_carriers": [
       "python.datetime.datetime@1",
       "python.datetime.date@1",
       "python.datetime.time@1"
     ],
-    "forbidden_types": [
-      "timezone-aware datetime.datetime without separate explicit authority",
-      "timezone-aware datetime.time without separate explicit authority"
-    ],
-    "source_specific_expected_type": null,
-    "limitation": "The generic law does not establish which one of the three accepted native classes occurred in EVS 2008."
+    "timezone_aware_datetime_or_time": "FAIL_CLOSED",
+    "binding_to_historical_witness": "C4 must require the current decoder value at frozen v372 to enter the accepted D02 date/time carrier path. Historical evidence does not authorize preselecting datetime.date versus datetime.datetime."
   },
-  "decisive_historical_failure": {
-    "commit": "b801c58c8e4d6d10e36e0a42ca62cf6908cbf25a",
-    "commit_time": "2026-09-23T07:28:16Z",
-    "path": "WORKER_RETURNS/PREMAIN-CLOSED35-QUALIFIED-REPRESENTATION-CENSUS-RESULTS-R1/source_receipts/SOURCE_14_REPRESENTATION_RECEIPT.json",
-    "blob": "3e08e2ace5ab585336950dc3e6b555ce09405ebc",
-    "canonical_sha256": "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379",
-    "path_manifest_sha256": "0a4edcf54a98aba3c48b6bc85e7c75d99c0ac6ab9078a407f309cdcc0e0327be",
-    "runtime": {
-      "platform": "Darwin",
-      "machine": "x86_64",
-      "cpython": "3.11.3",
-      "pyreadstat": "1.3.6",
-      "pyarrow": "25.0.1"
+  "upstream_physical_chain": {
+    "SR03": {
+      "execution_head": "d3d6169dc93754533987673cdb44f2dbc72b9c4f",
+      "accepted_adjudication_path": "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/16_SR03_R3_ADJUDICATION.md",
+      "adjudication_blob": "fde75ccad487adfc6148f12843448798551874b7",
+      "holding": "35-source exact-SHA physical census accepted"
     },
-    "status": "BLOCKED",
-    "blocker": "SOURCE_LOCAL_MEASUREMENT_FAILURE:R5CodecError:date/time meaning may not be invented by the R5 codec; use an explicit opaque decoder value",
-    "surfaces": [],
-    "competence": "COMPETENT_FOR_EXACT_SOURCE_D02_OCCURRENCE_CLASS_AND_CUSTODY__INCOMPETENT_FOR_EXACT_LOCATOR_OR_SOURCE_SPECIFIC_NATIVE_TYPE"
+    "PREP71_R04": {
+      "branch": "agent/vozhd-trii-srcprep71-r04-evs",
+      "tip": "3bc063aa7bf461caf5baf581ff32a434ba9e09a3",
+      "hostile_fixture_blob": "12f6adb77ef5692511055c8f0520e42c454f3867",
+      "source_ledger_blob": "2cd01b99958c51a430df71e006c5d531d553ac92",
+      "derivation": "Packet preparation explicitly consumes the accepted SR03 physical manifest and freezes source-specific hostile fixtures."
+    }
   },
-  "historical_execution_path": {
-    "harness_commit": "11704fbfa16797fbdd55dadc7929aaad729c9454",
-    "harness_path": "rawlsing_next/closed35_representation_census_harness.py",
-    "harness_blob": "b667f7198349486cec32d8168ddc2de1ed0427a8",
-    "relevant_order": [
-      "verify source path exists",
-      "full-file SHA-256 check against canonical source SHA",
-      "exact byte-size check",
-      "pyreadstat metadata-only read using governed decoder lane",
-      "construct metadata receipt",
-      "only later, if governed surfaces exist, bounded surface reads"
-    ],
-    "src14_surface_state": "NO_GOVERNED_SURFACES_RETAINED_IN_FAILURE_RECEIPT",
-    "failure_boundary": "During source observation after exact SHA/size gate and before a completed metadata receipt was retained.",
-    "locator_loss": "The outer source-local exception wrapper records only exception class/message and writes surfaces=[]; it does not persist the metadata map/key/value that raised.",
-    "inference_prohibited": "The failing metadata substructure cannot be reconstructed from questionnaire semantics or from the order of possible metadata maps."
+  "later_pre_c4_corroboration": {
+    "L2": {
+      "tip": "dd17c06606709bad5e56189a21db729cdd6ca859",
+      "commit_time": "2026-09-20T18:13:31Z",
+      "return_blob": "07f98ed0da16923b87ed56decfa797750fd24562",
+      "source_admission_blob": "10b0302a5a699ce6634420b1c298fe765afededb",
+      "confirms": [
+        "v372",
+        "typed user-missing date",
+        "1582-10-13",
+        "1917 affected records",
+        "exact source SHA"
+      ]
+    },
+    "L2R": {
+      "tip": "3201d94156742870562c6f98c239673a1a6ef2ba",
+      "commit_time": "2026-09-20T18:47:18Z",
+      "authority_blob": "59e875f93ef6a477c52eb0c950358c41898cf281",
+      "packet_blob": "6f4465f34168eb09cda4959ae91ce90f07dca985",
+      "confirms": [
+        "v372",
+        "ordinal 466",
+        "1917 user-missing",
+        "64363 ordinary-present",
+        "66280 total rows",
+        "exact source SHA"
+      ],
+      "negative_law": "Rendered 1582-10-13 does not reveal the underlying producer negative missing subcode and must not be semantically overinterpreted."
+    }
   },
-  "traversal_oracle_candidate": {
-    "recovered": false,
-    "historical_harness_is_not_sufficient": true,
-    "missing_frozen_elements": [
-      "D02-specific traversal order over possible physical values",
-      "exact type predicate bound as the historical expected predicate",
-      "expected source-specific match set",
-      "expected source-specific match cardinality",
-      "D02-specific termination law",
-      "locator-bearing match identities",
-      "independent expected result frozen before future C4"
-    ],
-    "reason": "CLOSED35 was a representation census whose SRC14 execution failed while building metadata fingerprints. It did not retain a governed D02 enumeration oracle. Reusing or modifying it to locate the object would be a new scan, not recovered authority."
+  "traversal_oracle": {
+    "required": false,
+    "reason": "The exact retained physical column locator and sufficient D02 witness class are recovered. The alternate whole-source traversal route is unnecessary."
   },
   "rejected_false_positives": [
     {
-      "candidate": "SRC14 is D02-affected",
-      "verdict": "INSUFFICIENT",
-      "reason": "Source-level applicability does not identify the physical object."
+      "candidate": "EVS 2008 is D02-affected",
+      "verdict": "INSUFFICIENT_ALONE"
     },
     {
-      "candidate": "EVS 2008 exact-SHA latin1 compatibility decoder lane",
-      "verdict": "INSUFFICIENT",
-      "reason": "Reader compatibility configuration is not a D02 locator."
+      "candidate": "latin1 compatibility lane",
+      "verdict": "NOT_A_LOCATOR"
     },
     {
-      "candidate": "C3 generic datetime/date/time opaque carrier law",
-      "verdict": "INSUFFICIENT_ALONE",
-      "reason": "Defines handling once a value is independently located; does not locate the EVS-2008 value."
+      "candidate": "producer meaning 'date of interview'",
+      "verdict": "NOT_USED_TO_SELECT_LOCATOR"
     },
     {
-      "candidate": "CLOSED35 qualified harness",
-      "verdict": "INSUFFICIENT_AS_TRAVERSAL_ORACLE",
-      "reason": "No frozen D02 match set/cardinality/locator or D02-specific stop law."
+      "candidate": "infer datetime.date from rendered date string",
+      "verdict": "FORBIDDEN_AND_NOT_NEEDED"
     }
   ],
-  "finding": "NO_COMPETENT_RETAINED_LOCATOR_OR_ORACLE_FOUND"
+  "result": "EXACT_RETAINED_D02_LOCATOR_RECOVERED"
 }
