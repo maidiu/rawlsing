@@ -1,0 +1,84 @@
+{
+  "schema": "PYAT_C1_01_R6_PREIMAGE_COMPLETENESS_AUDIT@1",
+  "status": "FAIL",
+  "documentary_packet_defect": {
+    "file": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R6/02_NORMATIVE_WITNESS_MATERIALS.json",
+    "finding": "RESULT_HASHES_AND_SUMMARIES_ONLY__FULL_16_FIELD_PREIMAGES_NOT_FROZEN",
+    "forward_recorded_keys": [
+      "witness_ref",
+      "consumer_binding_fingerprint",
+      "producer_predicate_hash"
+    ],
+    "reverse_recorded_keys": [
+      "witness_ref",
+      "consumer_binding_fingerprint",
+      "producer_predicate_hash"
+    ],
+    "required_identity_keys": [
+      "consumer_query_ref",
+      "consumer_binding_material",
+      "consumer_binding_fingerprint",
+      "subject_condition_preimage_ref",
+      "subject_condition_preimage_material",
+      "producer_query_ref",
+      "producer_predicate_ref",
+      "producer_predicate_hash",
+      "producer_predicate_leaf_ref",
+      "producer_predicate_leaf_projection",
+      "pairing_ground_truth_ref",
+      "pairing_authority_ref",
+      "source_universe_ref",
+      "release_ref",
+      "effective_time_or_interval",
+      "binding_mode"
+    ],
+    "missing_literal_material": [
+      "consumer_binding_material",
+      "subject_condition_preimage_ref",
+      "subject_condition_preimage_material",
+      "producer_query_ref",
+      "producer_predicate_ref",
+      "producer_predicate_leaf_ref",
+      "producer_predicate_leaf_projection",
+      "pairing_ground_truth_ref",
+      "pairing_authority_ref",
+      "source_universe_ref",
+      "release_ref",
+      "effective_time_or_interval"
+    ],
+    "note": "consumer_query_ref is available elsewhere in the R6 packet, and binding_mode is top-level, but neither complete per-direction 16-field map is serialized; the packet also lacks exact dependency locators selecting the prior source objects.",
+    "required_repair": "Serialize exact forward.identity_material and reverse.identity_material as literal CLOSED 16-key mappings; also freeze exact dependency file/blob locators and role selectors."
+  },
+  "immutable_dependency_blobs_recommended": {
+    "value_relation_oracle": {
+      "path": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/02_VALUE_RELATION_ORACLE.json",
+      "blob": "c6acafae820c065215fdbe7a703480a8b19fbc57"
+    },
+    "synthetic_authority_freeze": {
+      "path": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/03_SYNTHETIC_AUTHORITY_FREEZE.json",
+      "blob": "333989fa7b57c221d6aa5ebfc25d9d76e0acad32"
+    },
+    "r3_evidence_preimage": {
+      "path": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/04_EVIDENCE_IDENTITY_PREIMAGE.json",
+      "blob": "1d1e9eddeebf7e1f26189355dc06e71bf70a367f"
+    }
+  },
+  "frozen_owner_counterexample": {
+    "status": "FAIL__COUNTEREXAMPLE",
+    "owner_blob": "5c85d33987d7dc78efe98ceb5e78afe1ddc89b20",
+    "normative_law": "identity material is a CLOSED mapping containing exactly 16 keys and no extras",
+    "owner_check": "required.issubset(identity)",
+    "consequence": "A 17th field is not rejected; it changes semantic_hash(identity_material) while all 16 validated fields remain identical.",
+    "canonical_forward_hash_16": "f4123258625589513da2afc0d4f10a2438b6238b0b4f0a5338acb03ef8932da5",
+    "added_field": {
+      "extra_fixture_identity_key": "R6-CLOSED-MAP-COUNTEREXAMPLE"
+    },
+    "counterexample_hash_17": "a60df340c9a0ce2a895ad67a1615d11760798647cbd9ba6716bf7ca3b70fa42e",
+    "static_acceptance_reason": [
+      "ConditionValueBindingWitness.verify_identity accepts any matching semantic_hash(identity_material)",
+      "_verify_witness rejects only when required keys are missing",
+      "_verify_witness compares only the 16 expected fields and ignores extra keys"
+    ],
+    "repair_requires_owner_change": true
+  }
+}
