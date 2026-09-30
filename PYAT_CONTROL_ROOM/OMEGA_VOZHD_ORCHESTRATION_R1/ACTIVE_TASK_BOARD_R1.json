@@ -1,7 +1,7 @@
 {
   "schema": "PYAT_OMEGA_ACTIVE_TASK_BOARD@1",
-  "revision": 15,
-  "status": "C1_R7_PATCH_READY_REVIEW_AND_EXECUTION_BOUND__C2_PREP_COMPLETE__C3_ADOPTED",
+  "revision": 16,
+  "status": "HQ_EFFECTIVENESS_RULES_ACTIVE__C1_R7_RETURNS_PENDING_ADJUDICATION__C2_PREP_COMPLETE__C3_ADOPTED",
   "control_branch": "integration/pre-main-reconciliation-r1",
   "adopted_preparation": [
     {
@@ -31,14 +31,18 @@
       "branch": "agent/reviewer-pyat-hq136-c1-01-r7-r1",
       "commission_tip": "4771288033607a4b6cac2c9d4c99cfc284f34ad7",
       "base": "0da3c9c13ffd91cf50ab93f6280949eb960792c0",
-      "state": "BOUND_AWAITING_USER_MEDIATED_LAUNCH"
+      "state": "RETURNED_PENDING_HQ_ADJUDICATION",
+      "observed_return_head": "8d11504d576f2e96b0f7a7ab31795f88f0fe0cfa",
+      "reported_disposition": "CHANGES_REQUIRED"
     },
     {
       "id": "C1-01-R7-EXEC",
       "branch": "agent/codex-pyat-hq136-c1-01-r7-execution-r1",
       "commission_tip": "5dffa927f8160f387a60404db77ff48c218fdd70",
       "base": "0da3c9c13ffd91cf50ab93f6280949eb960792c0",
-      "state": "BOUND_AWAITING_USER_MEDIATED_CODEX_LAUNCH"
+      "state": "RETURNED_PENDING_HQ_ADJUDICATION",
+      "observed_return_head": "f5c77a8a853c37a2f9fd9cb1e51f2fffb5dd136c",
+      "reported_disposition": "FAIL_SOURCE_FREE_QUALIFICATION"
     }
   ],
   "held": [
@@ -54,5 +58,8 @@
     "NO_C4_EXECUTION",
     "NO_C1_02_BEFORE_C1_01_ACCEPTANCE",
     "NO_PREV3_TO_V3_ACTOR_IMPLEMENTATION"
-  ]
+  ],
+  "prior_git_blob_sha1": "49f6c704fa088ce2cdc70c3ebbe82668e355abc6",
+  "next_action": "HQ_ADJUDICATE_BOTH_COMPLETED_R7_RETURNS__BIND_ONE_COHERENT_REPAIR_AND_QUALIFICATION_JOB",
+  "operating_requirements": "PYAT_CONTROL_ROOM/HQ_OPERATING_REQUIREMENTS_EFFECTIVENESS_R1.md"
 }

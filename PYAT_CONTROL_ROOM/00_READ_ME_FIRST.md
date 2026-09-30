@@ -12,6 +12,10 @@ Selected physical policy: `B__SOURCE_BACKED_VIRTUAL_C11`
 
 Control branch: `integration/pre-main-reconciliation-r1`
 
+## Current operating refinement: effective delivery
+
+Read [HQ operating requirements](HQ_OPERATING_REQUIREMENTS_EFFECTIVENESS_R1.md) before the older bootstrap. The default is one coherent outcome, one implementer with an executable repair loop, and one independent acceptance review. Reuse the same job for routine corrections; minimize user-mediated handoffs. Completed R7 review/execution returns now await joint HQ adjudication. This refinement changes operating mechanics, not source/semantic/actor permissions.
+
 ## Current operating instruction: browser HQ, occasional Astra
 
 The [Omega-Vozhd operating packet](OMEGA_VOZHD_ORCHESTRATION_R1/README.md) now supplies the dependency-ordered program through PRE-V3, detailed first source-free tranche, role prompts, task board and escalation rules. Start with the [ready-to-paste browser HQ instruction](OMEGA_VOZHD_ORCHESTRATION_R1/HQ_BOOTSTRAP.md) and [delivery/authorization reconciliation](28_OMEGA_VOZHD_BROWSER_HQ_ORCHESTRATION.md). Browser GPT-5.6 Sol High is the operating default; Codex 5.6/6.0 is a bounded fallback; Astra handles defined decision gates.
