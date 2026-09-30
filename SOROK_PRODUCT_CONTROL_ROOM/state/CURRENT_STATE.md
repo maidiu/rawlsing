@@ -356,3 +356,5 @@ The current user/Vozhd conversational critical path is the **6 ALPHA_SPEC blocke
 - focal children/partners/co-parents and other developmentally formative actors likely require independent V3 histories;
 - disclosure is event-time actor action from relation-specific tension/cathexis, self-accessibility, presentation/defense, goals, expected reception and situation—not a trust threshold;
 - alpha has no save slots/branch reloads; restart abandons the continuity and its people.
+
+- `41_REMAINING_SPEC_BLOCKERS_AND_ALPHA_FALSIFICATION_R1.md` — remaining six alpha-spec blockers + candidate alpha kill-test/falsification constitution
