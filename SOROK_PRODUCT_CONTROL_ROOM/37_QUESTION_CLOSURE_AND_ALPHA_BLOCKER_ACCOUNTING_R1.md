@@ -1,91 +1,66 @@
 # Sorok — Question Closure and Alpha-Blocker Accounting R1
 
-Status: `ACTIVE_PROGRESS_ACCOUNTING__REPLACES_RAW_QUESTION_COUNT_AS_PROGRESS_SIGNAL`
+Status: `ACTIVE_PROGRESS_ACCOUNTING__CURRENT_THROUGH_Q_WORLD_001_CLOSURE`
 
 Date: 2026-09-30
 
-## 0. Why this exists
+## 0. Governing accounting law
 
-The raw count of entries in `QUESTIONS.jsonl` is a **frontier census**, not a remaining-work counter.
+The raw number of entries in `QUESTIONS.jsonl` is a frontier census, not a remaining-work counter.
 
-A question may remain historically present even after strong provisional decisions constrain it, because later prototype or architecture work may still reopen or sharpen it.
+Progress is tracked by:
+- `closure_state`;
+- `blocking_stage`;
+- `alpha_blocker`;
+- exact resolution references.
 
-Likewise, one decision may constrain several questions and one question may require several decisions.
+One decision may constrain many questions and one question may require many decisions. Do not subtract decision count from question count.
 
-Therefore:
+## 1. Closure states
 
-`QUESTION_COUNT - DECISION_COUNT`
+- `CLOSED_FOR_ALPHA`
+- `PROVISIONALLY_ANSWERED`
+- `NEEDS_PROTOTYPE`
+- `NEEDS_ARCHITECTURE_ADJUDICATION`
+- `OPEN_DISCOVERY`
+- `DEFERRED_POST_ALPHA`
 
-has no valid progress meaning.
+## 2. Blocking stages
 
----
+- `ALPHA_SPEC` — product/Vozhd adjudication still required before alpha specification is clean.
+- `ALPHA_IMPLEMENTATION` — architecture/owner/runtime work required before governed implementation.
+- `ALPHA_VALIDATION` — buildable now; prototype evidence is needed.
+- `POST_ALPHA` — intentionally later.
+- `NONE` — no current alpha blocker.
 
-## 1. New closure states
-
-Every question now carries `closure_state`:
-
-- `CLOSED_FOR_ALPHA` — sufficiently settled that it does not require further product adjudication for the alpha;
-- `PROVISIONALLY_ANSWERED` — strong current answer exists; reopen only on contradictory prototype/research/architecture evidence;
-- `NEEDS_PROTOTYPE` — conceptual direction exists but must be tested through concrete interaction/UI behavior;
-- `NEEDS_ARCHITECTURE_ADJUDICATION` — product direction exists or is bounded enough, but exact owner/schema/runtime placement remains unresolved;
-- `OPEN_DISCOVERY` — genuinely unresolved product/design question;
-- `DEFERRED_POST_ALPHA` — intentionally postponed beyond the core alpha.
-
-Legacy `status=OPEN/DEFERRED` remains for historical compatibility but MUST NOT be used as the progress measure.
-
----
-
-## 2. New blocking stages
-
-Every question now also carries `blocking_stage`:
-
-- `ALPHA_SPEC` — user/product-design adjudication still needed before the alpha can be specified cleanly;
-- `ALPHA_IMPLEMENTATION` — exact architecture/owner/runtime work needed before governed implementation;
-- `ALPHA_VALIDATION` — does not block building; must be tested to know whether alpha thesis works;
-- `POST_ALPHA` — explicitly not needed to establish the first alpha;
-- `NONE` — sufficiently answered for current alpha purposes.
-
-`alpha_blocker=true` only for `ALPHA_SPEC` and `ALPHA_IMPLEMENTATION`.
-
----
+`alpha_blocker=true` applies to ALPHA_SPEC and ALPHA_IMPLEMENTATION.
 
 ## 3. Exact current counts
 
-Total surfaced questions: **112**.
+Total surfaced questions: **113**.
 
 By closure state:
 - `CLOSED_FOR_ALPHA`: **8**
-- `PROVISIONALLY_ANSWERED`: **22**
+- `PROVISIONALLY_ANSWERED`: **23**
 - `NEEDS_PROTOTYPE`: **24**
-- `NEEDS_ARCHITECTURE_ADJUDICATION`: **43**
-- `OPEN_DISCOVERY`: **9**
+- `NEEDS_ARCHITECTURE_ADJUDICATION`: **44**
+- `OPEN_DISCOVERY`: **8**
 - `DEFERRED_POST_ALPHA`: **6**
 
 By blocking stage:
-- `ALPHA_SPEC`: **5**
-- `ALPHA_IMPLEMENTATION`: **38**
+- `ALPHA_SPEC`: **4**
+- `ALPHA_IMPLEMENTATION`: **39**
 - `ALPHA_VALIDATION`: **25**
 - `POST_ALPHA`: **18**
-- `NONE`: **26**
+- `NONE`: **27**
 
-Current total alpha blockers in the broad sense: **43**.
+Broad alpha blockers remain **43**, split into:
+- **4 product/spec blockers**;
+- **39 implementation/architecture blockers**.
 
-But this splits critically into:
+The conversational critical path is the four product/spec blockers, not the raw frontier count.
 
-> **5 product/spec questions that Vozhd + user still need to adjudicate**
-
-and
-
-> **38 implementation/architecture questions that should largely be handled after product semantics are sufficiently fixed.**
-
-Thus the meaningful current conversational progress number is **5 product-spec blockers**, not the raw frontier or decision counts.
-
----
-
-## 4. Current five ALPHA_SPEC blockers
-
-### Q-WORLD-001
-What exact present-world/current-event ingestion and admission law keeps persona life coupled to the historical present without equating external occurrence with actor exposure, knowledge or effect?
+## 4. Current four ALPHA_SPEC blockers
 
 ### Q-ACCESS-001
 What exact relational-access topology governs how the user becomes able to enter previously unavailable parts of the persona's life without scalar unlocks or guaranteed disclosure?
@@ -99,100 +74,62 @@ What user data is required for longitudinal relational modeling, what should nev
 ### Q-ALPHA-001
 What evidence would falsify or support the proximal alpha theorem that a persistent, independently living generated person can become intrinsically worth knowing through accumulated relation rather than scores, scripted drama or novelty?
 
-### Newly moved out of ALPHA_SPEC
-- `Q-RETRY-001`: CLOSED_FOR_ALPHA — no save branches; restart loses continuity/people.
-- `Q-LIFETOPO-001`: PROVISIONALLY_ANSWERED / ALPHA_IMPLEMENTATION — deep computational person + recursively materialized world flesh + supporting-actor fidelity.
-- `Q-DISCLOSE-001`: PROVISIONALLY_ANSWERED / ALPHA_IMPLEMENTATION — actor-owned relational-tension/cathexis disclosure.
-- `Q-ABSENCE-001`: PROVISIONALLY_ANSWERED / ALPHA_IMPLEMENTATION — no meaningful player autopilot; portal occupancy gates co-presence.
-- `Q-MSGTIME-001`: PROVISIONALLY_ANSWERED / ALPHA_IMPLEMENTATION — elastic-present default, cancellable/reschedulable pending rendezvous, optional tighter sync, ambient-persistence product budget.
+## 5. Q-WORLD-001 closure
 
-## 5. What the 38 implementation blockers mean
+`Q-WORLD-001` is now:
 
-These are not thirty-eight new conceptual conversations the user must personally answer.
+`PROVISIONALLY_ANSWERED / NONE / alpha_blocker=false`.
 
-They are mostly exact architecture questions such as:
-- V3/CAN-008/PFF/V2 ownership;
-- player participant binding;
-- memory and promotion;
-- perception packets;
-- world completion;
-- assertion provenance;
-- resource envelope;
-- relation facts;
-- portal binding;
-- actor agendas;
-- object/action state;
-- expression separation.
+Controlling artifact:
+- `51_Q_WORLD_001_PRESENT_WORLD_INGRESS_CONSTITUTION_R1.md`.
 
-Many will collapse or become straightforward once the five product-spec blockers are settled.
+Core holding:
+- bounded historical-present constraint layer, not digital twin;
+- `REAL MACRO-HISTORICAL CONSTRAINT + SYNTHETIC MICRO-LIVED WORLD`;
+- explicit external-anchor envelope;
+- current/named public fact authority separated from learned-world prior;
+- `NOT_YET_INGESTED_EXTERNAL_FACT != ABSENT_EXTERNAL_EVENT`;
+- external occurrence, world admission, objective effect/exposure, actor access, uptake and durable effect remain noncollapsed;
+- external relevance is objective dependency intersection, not user interest/newsworthiness/engagement value;
+- curiosity may trigger checking but cannot condition truth;
+- no silent retroactive rewrite after a late currentness collision.
 
-Therefore do not treat the `38` implementation blockers as a queue to discuss sequentially with the user.
+Implementation successor:
+- `Q-CURRENTINGRESS-001` — exact external-anchor, source/provenance, freshness/cache, dependency-routing, effective-time, causal-closure and late-collision contracts.
 
----
+This successor is `ALPHA_IMPLEMENTATION`, not a reopened product blocker.
 
-## 6. What the 25 validation questions mean
+## 6. Other recently moved-out product blockers
 
-These are things that should be **prototyped rather than debated to death**.
+- `Q-RETRY-001`: closed for alpha — no save branches; restart abandons continuity.
+- `Q-LIFETOPO-001`: product direction answered; implementation remains.
+- `Q-DISCLOSE-001`: product direction answered; implementation remains.
+- `Q-ABSENCE-001`: no meaningful player autopilot; implementation remains.
+- `Q-MSGTIME-001`: elastic-present default and cancellable/reschedulable pending rendezvous; implementation remains.
+
+## 7. Validation interpretation
+
+The 25 ALPHA_VALIDATION questions should generally be prototyped rather than debated into false precision.
 
 Examples include:
 - whether the primer works;
 - whether first-contact curiosity emerges;
-- whether dual interfaces improve the experience;
-- whether narrator salience feels usable;
-- whether scene framing gives enough information;
-- whether control returns at the right moments;
-- whether persona reciprocity feels actor-owned;
-- whether early relational rewards are palpable.
-
-These should generate test fixtures and prototypes, not endless pre-implementation ontology.
-
----
-
-## 7. Progress rule going forward
-
-Whenever a new question is added, it MUST receive:
-- `closure_state`;
-- `blocking_stage`;
-- `alpha_blocker`;
-- `resolution_refs` when an existing artifact/decision already constrains it.
-
-Question-count growth by itself must never again be presented as regression or remaining-work growth.
-
-Progress reports should instead say:
-
-> `ALPHA_SPEC blockers: N`
-> `ALPHA_IMPLEMENTATION blockers: N`
-> `ALPHA_VALIDATION questions: N`
-> `POST_ALPHA / NONE: N`
-
----
+- whether reciprocal inquiry feels actor-owned;
+- whether narrator salience is usable;
+- whether control returns at the right grain;
+- whether dual portal/message surfaces improve relational persistence.
 
 ## 8. Current critical path
 
-The five ALPHA_SPEC blockers are not equally urgent.
+1. `Q-ACCESS-001` — changing relational reach without unlock mechanics;
+2. `Q-INVITEGRAPH-001` — residual one-for-one invitation constitution;
+3. `Q-PRIV-001` — minimum data/deletion/export constitution;
+4. `Q-ALPHA-001` — final proximal alpha falsification/evidence constitution.
 
-Current recommended order:
+Alpha evidence remains last because it should test the product actually specified, not an earlier abstraction.
 
-1. `Q-WORLD-001` — present-world/current-event ingestion boundary;
-2. `Q-ACCESS-001` — changing relational reach without unlock metaphysics;
-3. `Q-INVITEGRAPH-001` — residual one-for-one invite-economy details;
-4. `Q-PRIV-001` — minimum data/deletion/export constitution;
-5. `Q-ALPHA-001` — final proximal kill-test/falsification constitution.
+## 9. Current interpretation
 
-Why put alpha evidence last among the five?
+> **113 frontiers have been surfaced and preserved. Four still require product-level adjudication before the current alpha can be fully specified. Thirty-nine require architecture work before governed implementation. Twenty-five should be learned through prototype evidence rather than armchair design.**
 
-Because the falsification criteria should test the product we actually define, not an earlier abstraction of it.
-
----
-
-## 9. Interpretation
-
-The system is no longer:
-
-> 103 questions remain.
-
-It is:
-
-> **112 frontiers have been surfaced and preserved. Five still require product-level adjudication before the current alpha can be fully specified. Thirty-eight more require architecture work before governed implementation. Twenty-five should be learned by prototyping rather than armchair design.**
-
-This is the current canonical progress interpretation.
+That is the current progress signal.
