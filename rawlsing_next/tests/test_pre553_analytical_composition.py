@@ -18,6 +18,12 @@ R3_EVIDENCE = (
     / "PYAT-C1-00-CONTRACT-CORRECTION-R3"
     / "04_EVIDENCE_IDENTITY_PREIMAGE.json"
 )
+R2_SLICE = (
+    ROOT
+    / "WORKER_RETURNS"
+    / "PYAT-C1-00-CONTRACT-CORRECTION-R2"
+    / "04_SLICE_PROJECTION.json"
+)
 R2_RELATION = (
     ROOT
     / "WORKER_RETURNS"
@@ -50,7 +56,7 @@ def test_c1_00_evidence_oracles_are_noncircular_and_exact():
     assert semantic_hash(reverse["preimage"]) == REVERSE_EVIDENCE_HASH
     assert forward["preimage"]["raw_support"] == 60
     assert reverse["preimage"]["raw_support"] == 62
-    assert oracle["projection_schema_hash"] == SLICE_PROJECTION_SCHEMA_HASH
+    assert _load(R2_SLICE)["projection_schema_hash"] == SLICE_PROJECTION_SCHEMA_HASH
 
 
 def test_c1_00_identity_spine_matches_frozen_consumer_and_witness_refs():
