@@ -1,0 +1,85 @@
+{
+  "schema": "PYAT_C1_01_HOSTILE_CASE_MATRIX@1",
+  "execution_state": "NOT_EXECUTED",
+  "reason": "Exact frozen consumer-query/witness construction material is missing; dynamic hostile court cannot lawfully instantiate the accepted AT07 identities.",
+  "cases": [
+    {
+      "id": "HC_VALUE_ALIAS_P1_SUBJECT_P2_LEAF",
+      "required": true,
+      "implementation_guard": "_verify_witness exact subject value/semantic ref vs actual producer leaf; runs before _build_evidence and consumer",
+      "expected": "CONDITION_VALUE_RELATION_MISMATCH",
+      "dynamic_proof": "BLOCKED_BY_FROZEN_WITNESS_PREIMAGE"
+    },
+    {
+      "id": "HC_CHANGED_EXACT_CONDITION_VALUE",
+      "required": true,
+      "implementation_guard": "actual producer leaf compared to frozen predicate-leaf projection and subject exact_value",
+      "expected": "CONDITION_VALUE_RELATION_MISMATCH",
+      "dynamic_proof": "BLOCKED_BY_FROZEN_WITNESS_PREIMAGE"
+    },
+    {
+      "id": "HC_CHANGED_PAIRING_GROUND_TRUTH_OR_WITNESS",
+      "required": true,
+      "implementation_guard": "semantic_hash of pairing material and full witness identity material",
+      "expected": "REIDENTIFY_OR_CONDITION_VALUE_RELATION_MISMATCH",
+      "dynamic_proof": "BLOCKED_BY_FROZEN_WITNESS_PREIMAGE"
+    },
+    {
+      "id": "HC_CHANGED_SOURCE_OR_RELEASE",
+      "required": true,
+      "implementation_guard": "_validate_direct_grain + binding/witness exact source/release equality",
+      "expected": "SOURCE_UNIVERSE_MISMATCH_OR_SOURCE_RELEASE_MISMATCH",
+      "dynamic_proof": "NOT_EXECUTED"
+    },
+    {
+      "id": "HC_CHANGED_RISK_SET_IDENTITY",
+      "required": true,
+      "implementation_guard": "producer fact risk_set_ref must equal producer query risk_set_ref; evidence retains member refs",
+      "expected": "DENOMINATOR_IDENTITY_MISMATCH_OR_REIDENTIFY",
+      "dynamic_proof": "NOT_EXECUTED"
+    },
+    {
+      "id": "HC_CHANGED_MEASURE_KIND_OR_AUTHORITY",
+      "required": true,
+      "implementation_guard": "fact/query measure basis equality; AT07 direct projection admits RAW only",
+      "expected": "MEASURE_IDENTITY_MISMATCH",
+      "dynamic_proof": "NOT_EXECUTED"
+    },
+    {
+      "id": "HC_DIFFERENT_QUERY_CONDITION",
+      "required": true,
+      "implementation_guard": "producer query/predicate refs + witness + complete evidence preimage are identity determinants",
+      "expected": "REIDENTIFY",
+      "dynamic_proof": "BLOCKED_BY_FROZEN_WITNESS_PREIMAGE"
+    },
+    {
+      "id": "HC_OBSERVED_ZERO_NONZERO_DENOMINATOR",
+      "required": true,
+      "implementation_guard": "SUPPORTED complete cell geometry retains raw numerator 0 with positive denominator and exact 0/denominator fraction",
+      "expected": "SUPPORTED_OBSERVED_ZERO_CELL_NOT_ZERO_SUPPORT",
+      "dynamic_proof": "NOT_EXECUTED"
+    },
+    {
+      "id": "HC_ZERO_SUPPORT",
+      "required": true,
+      "implementation_guard": "non-SUPPORTED producer state is preserved in outer envelope; no fabricated supported evidence or consumer call",
+      "expected": "ZERO_SUPPORT_OR_OWNER_NATIVE_NEGATIVE",
+      "dynamic_proof": "NOT_EXECUTED"
+    },
+    {
+      "id": "HC_INCOMPATIBLE_SOURCE_RELEASE_RISK_MEASURE",
+      "required": true,
+      "implementation_guard": "exact direct-grain, risk and measure comparisons before evidence consumption",
+      "expected": "FAIL_CLOSED_TYPED_ERROR_OR_OWNER_NATIVE_STATE",
+      "dynamic_proof": "NOT_EXECUTED"
+    },
+    {
+      "id": "HC_UNSUPPORTED_AUTHORITY_SCOPE",
+      "required": true,
+      "implementation_guard": "public execute_empirical_query remains authority gate; C1 does not bypass producer authority resolution",
+      "expected": "PUBLIC_PRODUCER_AUTHORITY_REJECTION",
+      "dynamic_proof": "NOT_EXECUTED"
+    }
+  ],
+  "ordering_invariant": "Condition-value relation verification occurs before PossibilitySliceEvidence construction and before evaluate_positioned_subject_possibility invocation."
+}
