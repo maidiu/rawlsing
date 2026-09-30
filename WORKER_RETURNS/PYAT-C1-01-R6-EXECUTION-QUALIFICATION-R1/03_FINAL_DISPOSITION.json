@@ -1,0 +1,23 @@
+{
+  "schema": "PYAT_C1_01_R6_FINAL_DISPOSITION@1.0.0",
+  "disposition": "BLOCKED_EXECUTION_CAPABILITY",
+  "target_git_commit": "663379caa7c9b8a80bca889d8d5b59d0486ff901",
+  "commission_tip": "bdf5bc2bea525f71ab8f0af4451918a74e701f04",
+  "qualification_granted": false,
+  "patch_failed": false,
+  "pytest_executed": false,
+  "blocker": {
+    "id": "C1-01-R6-BLOCK-EXECUTION-WORKTREE-001",
+    "class": "EXECUTION_CAPABILITY",
+    "statement": "The isolated pytest-capable runtime has no network/authenticated transport to materialize the exact GitHub worktree, while the GitHub documentary connector cannot hand executable repository bytes into that runtime.",
+    "lawful_wake_condition": "Run the exact commissioned pytest command in an isolated source-free runtime that has an exact checkout of 663379caa7c9b8a80bca889d8d5b59d0486ff901 and can report authoritative clean/dirty status before and after."
+  },
+  "prohibitions_preserved": {
+    "raw_survey_access_or_materialization": true,
+    "candidate_abc_not_run": true,
+    "measured_p2x_not_run": true,
+    "real_source_c11_not_materialized": true,
+    "implementation_tests_packet_workflows_court_specs_unchanged": true
+  },
+  "terminal": "C1_01_R6_EXECUTION_QUALIFICATION_RETURNED__HQ_ADJUDICATION_REQUIRED"
+}
