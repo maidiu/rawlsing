@@ -23,7 +23,7 @@ The C1-01 analytical composition owner (`rawlsing_next/pre553_analytical_composi
 
 ## Final commit
 
-`36128968a5370e855505cc7713ae731a2b308ca9`
+The exact branch tip is reported separately because a commit cannot truthfully contain its own SHA. The code-under-test commit is `36128968a5370e855505cc7713ae731a2b308ca9`.
 
 ## Terminal token
 
