@@ -1,0 +1,27 @@
+{
+  "schema": "PYAT_C1_01_R2_FINAL_DISPOSITION@1",
+  "disposition": "PREIMAGE_UNDERDETERMINED__CONTRACT_CORRECTION_REQUIRED",
+  "terminal": "C1_01_PREIMAGE_COMPLETION_RETURNED__HQ_ADJUDICATION_REQUIRED",
+  "merge_recommendation": "BANK_R5_UNDERDETERMINATION_AS_CORRECTION_EVIDENCE; DO_NOT CLAIM C1-01 SOURCE-FREE PASS",
+  "preimages_reconstructed": false,
+  "frozen_production_implementation_edited": false,
+  "current_c1_packet_edited": false,
+  "test_file_edited": false,
+  "historical_R2_R3_R4_edited": false,
+  "exact_underdetermination": {
+    "query_material": [
+      "query_id is caller-defined and not frozen",
+      "query-level subject_ref is caller-defined and not frozen",
+      "requested_projection is caller-defined/canonicalizable and not frozen",
+      "ConditionerBinding.effective_time_or_interval is caller-defined/canonicalizable and not frozen"
+    ],
+    "witness_material": [
+      "full binding material/fingerprint depends on unfrozen effective time",
+      "producer_predicate_hash required by R2 witness schema is not frozen in accepted C1 artifacts",
+      "R2 specifies witness required_fields but not an exact closed identity-material field set"
+    ]
+  },
+  "prohibited_shortcut": "Do not hash-fit invented candidate values to old digest strings.",
+  "next_required_authority_action": "Freeze missing canonical caller-defined inputs normatively or provide an already-existing accepted artifact containing the exact historical materials; then recompute all downstream identities honestly.",
+  "c1_02_started": false
+}
