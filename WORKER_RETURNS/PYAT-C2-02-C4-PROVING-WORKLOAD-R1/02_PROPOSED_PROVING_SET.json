@@ -1,0 +1,287 @@
+{
+  "schema": "PYAT_C2_02_C4_PROPOSED_PROVING_SET@1.0.0",
+  "status": "SELECTED__CONDITIONAL_ON_EXACT_PREREQUISITES",
+  "commission_tip": "440e0a600f66103aad6076979cb23209f0a0ae4a",
+  "exact_base": "c5cb9ea33192dfc438b9559691832e1a6aaf96fc",
+  "set_size": 8,
+  "logical_family_wave_lower_bound": 3,
+  "lower_bound_insufficient_because": [
+    "G01 requires both a user-missing physical-state specimen and an observed-value specimen.",
+    "D01 requires both BIG5 and WINDOWS-1252 exact-SHA declared-encoding specimens.",
+    "D02 is source-bound to EVS 2008.",
+    "R05 is unique to Latinobarometro 2024.",
+    "B01 is source-bound to LiTS I and B02 is source-bound to WVS7.",
+    "These edge classes cannot be collapsed by mere family/wave counting."
+  ],
+  "workload_tiers": {
+    "full_route_empirical_anchors": [
+      "SRC27 LiTS_I.dta — fresh-current Route-B production witness after all prerequisites; compare to retained independent canonical closure/oracle.",
+      "SRC35 WVS Wave 7.sav — retained admitted-release/replay/oracle comparator; no fresh raw read required merely to prove currentness."
+    ],
+    "bounded_physical_edge_witnesses": [
+      "SRC02 Afro Barometer Round 5 — G01 user-missing native-int→float64 representation.",
+      "SRC06 Arab Barometer Wave 5 — G01 observed native-int→float64 representation.",
+      "SRC08 Asian Barometer Wave 1 — D01 BIG5 declared encoding.",
+      "SRC12 EVS 1990 — D01 WINDOWS-1252 declared encoding and first member of explicit EVS multi-wave pair.",
+      "SRC14 EVS 2008 — D02 opaque date/time carrier and second member of explicit EVS multi-wave pair.",
+      "SRC26 Latinobarometro 2024 — R05 raw-header/dictionary-stream divergence."
+    ]
+  },
+  "sources": [
+    {
+      "source_key": "SRC02",
+      "source_id": "02",
+      "family": "Afrobarometer",
+      "wave": "Round 5",
+      "source_file": "Afro Barometer Round 5.sav",
+      "canonical_sha256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+      "format": "SAV",
+      "selection_role": "G01_USER_MISSING_REPRESENTATION",
+      "exact_governed_operations": [
+        {
+          "owner": "accepted C3 G01 representation authority",
+          "variable_name": "Q10B",
+          "ordinal": 58,
+          "native_codes": [
+            997
+          ],
+          "expected_successor_type": "float64",
+          "expected_missing_state": "FORMAT_USER_MISSING_VALUE",
+          "expected_source_declaration": {
+            "kind": "discrete",
+            "value": 997
+          }
+        }
+      ],
+      "proposed_C4_source_activity": "BOUNDED_FRESH_PHYSICAL_READ_ONLY_IF_C3_INTEGRATED_OWNER_IS_IN_EXECUTION_ANCESTRY",
+      "semantic_route_status": "NOT_SELECTED_AS_SEMANTIC_ROUTE_ANCHOR"
+    },
+    {
+      "source_key": "SRC06",
+      "source_id": "06",
+      "family": "Arab Barometer",
+      "wave": "Wave 5",
+      "source_file": "Arab Barometer Wave 5.sav",
+      "canonical_sha256": "6a5cbad637ce1546833a1d4812ba6d1e8d75f85b5b199b0cf3ec5cf456068dbc",
+      "format": "SAV",
+      "selection_role": "G01_OBSERVED_REPRESENTATION",
+      "exact_governed_operations": [
+        {
+          "owner": "accepted C3 G01 representation authority",
+          "variable_name": "Q101",
+          "ordinal": 20,
+          "native_codes": [
+            98,
+            99
+          ],
+          "expected_successor_type": "float64",
+          "expected_missing_state": "OBSERVED_STORAGE_VALUE"
+        },
+        {
+          "owner": "accepted C3 G01 representation authority",
+          "variable_name": "Q2061B",
+          "ordinal": 19,
+          "native_codes": [
+            97
+          ],
+          "expected_successor_type": "float64",
+          "expected_missing_state": "OBSERVED_STORAGE_VALUE"
+        }
+      ],
+      "proposed_C4_source_activity": "BOUNDED_FRESH_PHYSICAL_READ_ONLY_IF_C3_INTEGRATED_OWNER_IS_IN_EXECUTION_ANCESTRY",
+      "semantic_route_status": "NOT_SELECTED_AS_SEMANTIC_ROUTE_ANCHOR"
+    },
+    {
+      "source_key": "SRC08",
+      "source_id": "08",
+      "family": "Asian Barometer",
+      "wave": "Wave 1",
+      "source_file": "Asian Barometer Wave 1.sav",
+      "canonical_sha256": "ac0b8bc1ddb2fa6b952417e35b6379ce6a2cf8596776a43282ba44f48e0ae1a2",
+      "format": "SAV",
+      "selection_role": "D01_DECLARED_ENCODING_BIG5",
+      "exact_governed_operations": [
+        {
+          "owner": "accepted C3 D01 decoder admission",
+          "operation": "EXACT_SHA_DECLARED_ENCODING_ADMISSION",
+          "declared_encoding": "BIG5",
+          "scope": "source-wide decoder configuration; not survey semantics"
+        }
+      ],
+      "proposed_C4_source_activity": "BOUNDED_METADATA_OR_REQUIRED_COLUMN_READ_AFTER_EXACT_SHA_GATE",
+      "semantic_route_status": "NOT_SELECTED_AS_SEMANTIC_ROUTE_ANCHOR"
+    },
+    {
+      "source_key": "SRC12",
+      "source_id": "12",
+      "family": "EVS",
+      "wave": "1990",
+      "source_file": "EVS 1990.sav",
+      "canonical_sha256": "66252a92c59bf6759b79a6b35b2be658b98a433373212a70c8ec94755d3e02ec",
+      "format": "SAV",
+      "selection_role": "D01_DECLARED_ENCODING_WINDOWS_1252__EVS_MULTI_WAVE_MEMBER_1",
+      "exact_governed_operations": [
+        {
+          "owner": "accepted C3 D01 decoder admission",
+          "operation": "EXACT_SHA_DECLARED_ENCODING_ADMISSION",
+          "declared_encoding": "WINDOWS-1252",
+          "scope": "source-wide decoder configuration; not survey semantics"
+        }
+      ],
+      "proposed_C4_source_activity": "BOUNDED_METADATA_OR_REQUIRED_COLUMN_READ_AFTER_EXACT_SHA_GATE",
+      "semantic_route_status": "NOT_SELECTED_AS_SEMANTIC_ROUTE_ANCHOR",
+      "multi_wave_pair_with": "SRC14"
+    },
+    {
+      "source_key": "SRC14",
+      "source_id": "14",
+      "family": "EVS",
+      "wave": "2008",
+      "source_file": "EVS 2008.sav",
+      "canonical_sha256": "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379",
+      "format": "SAV",
+      "selection_role": "D02_OPAQUE_DATETIME__EVS_MULTI_WAVE_MEMBER_2",
+      "exact_governed_operations": [
+        {
+          "owner": "accepted C3 D02 codec/decoder law",
+          "operation": "OPAQUE_DECODER_NATIVE_DATE_TIME_CARRIER",
+          "source_level_applicability": "frozen by CLOSED35",
+          "exact_real_source_column_or_cell_locator": "UNRESOLVED_IN_INSPECTED_SOURCE_FREE_EVIDENCE",
+          "law": "exact built-in naive datetime/date/time -> R5OpaqueValue; timezone-aware datetime/time fail closed"
+        }
+      ],
+      "proposed_C4_source_activity": "NO_FRESH_REAL_SOURCE_D02_PROBE_UNTIL_EXACT_PHYSICAL_LOCATOR_OR_EQUIVALENT_PREDECLARED_TRAVERSAL_ORACLE_IS_FROZEN",
+      "semantic_route_status": "NOT_SELECTED_AS_SEMANTIC_ROUTE_ANCHOR",
+      "multi_wave_pair_with": "SRC12"
+    },
+    {
+      "source_key": "SRC26",
+      "source_id": "26",
+      "family": "Latinobarometro",
+      "wave": "2024",
+      "source_file": "Latinobarometro 2024.sav",
+      "canonical_sha256": "ff5cef18c87969026e7f993d09f10c38a547bf81d5d398784fb59b960b7b0a40",
+      "format": "SAV",
+      "selection_role": "R05_RAW_HEADER_DICTIONARY_STREAM_DIVERGENCE",
+      "exact_governed_operations": [
+        {
+          "owner": "CLOSED35 R05 frozen physical law",
+          "operation": "PRESERVE_RAW_HEADER_AND_READER_NORMALIZED_GEOMETRY_SEPARATELY",
+          "expected_raw_nominal_case_size": 174,
+          "expected_decoded_dictionary_data_width": 332,
+          "equality_required": false
+        }
+      ],
+      "proposed_C4_source_activity": "BOUNDED_HEADER_PREFIX_PLUS_READER_METADATA_READ_AFTER_EXACT_SHA_GATE",
+      "semantic_route_status": "NOT_SELECTED_AS_SEMANTIC_ROUTE_ANCHOR"
+    },
+    {
+      "source_key": "SRC27",
+      "source_id": "27",
+      "family": "LiTS",
+      "wave": "I / 2006",
+      "source_file": "LiTS_I.dta",
+      "canonical_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+      "format": "DTA",
+      "selection_role": "FULL_ROUTE_FRESH_CURRENT_ANCHOR__B01_DTA_BOUNDED_BRIDGE",
+      "exact_governed_operations": [
+        {
+          "owner": "B01_LITS_I_Q301_BOUNDED_SUCCESSOR",
+          "operation": "Q301 DTA physical representation bridge",
+          "variable_name": "q301/Q301 as frozen by the accepted source-specific authority package",
+          "note": "Do not infer semantic role from spelling; consume the accepted exact binding."
+        },
+        {
+          "owner": "retained LiTS canonical closure",
+          "operation": "fresh current Route-B producer replay over the exact frozen 50-candidate/77-role workload after C1-01 acceptance",
+          "retained_closure_identity": "f264dd8f83a0794716583d1ea8445947cc9470b99475e5d51fc2383e7196f415",
+          "retained_checkpoint_sha256": "2704fd3fadc9c898a512183aaf5eebf0ca48d78c47e75a19d47e17281eaa5726",
+          "retained_oracle_identity": "e5d66db4b6f8339672b0f4828b72a8df68b5525bf71ecfda899d0531d618a98a",
+          "retained_object_counts": {
+            "AuthoritySnapshot": 24,
+            "DiscoveryAuthority": 1,
+            "DiscoveryResultReceipt": 50,
+            "EmpiricalFact": 60,
+            "EmpiricalPredicate": 35,
+            "EmpiricalQuerySpec": 63,
+            "EmpiricalUniverse": 1
+          }
+        }
+      ],
+      "proposed_C4_source_activity": "EXACTLY_ONE_GOVERNED_FRESH_SOURCE_BACKED_PASS__NO_CANDIDATE_A_B_C__NO_MEASURED_P2X",
+      "semantic_route_status": "COMPETENT_RETAINED_SOURCE_SPECIFIC_AUTHORITY_EXISTS__FRESH_CURRENT_RUN_REQUIRES_CURRENT_C1_01_AND_CURRENT_EXECUTION_STACK"
+    },
+    {
+      "source_key": "SRC35",
+      "source_id": "35",
+      "family": "WVS",
+      "wave": "Wave 7",
+      "source_file": "WVS Wave 7.sav",
+      "canonical_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+      "format": "SAV",
+      "selection_role": "RETAINED_FULL_ROUTE_COMPARATOR__B02_Q291_BOUNDED_BRIDGE",
+      "exact_governed_operations": [
+        {
+          "owner": "B02_WVS7_Q291_BOUNDED_OWNER",
+          "operation": "Q291 SAV physical representation bridge"
+        },
+        {
+          "owner": "FIABC-LM2-R1M",
+          "operation": "retained admitted release + exact replay/oracle",
+          "logical_release_identity": "e6881e9a08a48f8871790e781c28bddbc44ee35db894d6ad7b1105a6a8fd262f",
+          "replay_identity": "996ba218fc5da5e0ad1ddf0cdc7f91ce8fb8a7363ce62076dc3f4073b85c383f",
+          "oracle_identity": "3694b8bd0b5468433a1a83bd469337c7e36e552c3a9a5fef65fff88df8fce800",
+          "candidate_count": 46
+        }
+      ],
+      "proposed_C4_source_activity": "NO_FRESH_RAW_READ_REQUIRED_FOR_AT21_RETAINED_COMPARATOR__EXACT_REPLAY_ONLY_UNLESS_HQ_SEPARATELY_ORDERS_A_NEW_SOURCE_PASS",
+      "semantic_route_status": "COMPETENT_RETAINED_SOURCE_SPECIFIC_RELEASE_REPLAY_ORACLE"
+    }
+  ],
+  "family_coverage": [
+    "Afrobarometer",
+    "Arab Barometer",
+    "Asian Barometer",
+    "EVS",
+    "Latinobarometro",
+    "LiTS",
+    "WVS"
+  ],
+  "explicit_same_family_multi_wave_pair": {
+    "family": "EVS",
+    "sources": [
+      "SRC12",
+      "SRC14"
+    ],
+    "waves": [
+      "1990",
+      "2008"
+    ]
+  },
+  "proposed_public_route": {
+    "producer": "current Route-B source-backed C11/I03 producer stack",
+    "adapter": "future accepted C1-01 analytical composition adapter",
+    "consumer": "rawlsing_next.source_backed_positioned_subject_possibility.evaluate_positioned_subject_possibility",
+    "full_route_sources": [
+      "SRC27",
+      "SRC35"
+    ],
+    "bounded_physical_only_sources": [
+      "SRC02",
+      "SRC06",
+      "SRC08",
+      "SRC12",
+      "SRC14",
+      "SRC26"
+    ]
+  },
+  "stop_law": [
+    "Hash/source identity before any decode or materialization.",
+    "Require exact decoder/version/config and exact applicable authority before physical-edge use.",
+    "Do not promote physical success into survey semantics.",
+    "Do not start C4 full-route composition before C1-01 is independently accepted and the C3 integration is in the execution ancestry or exactly blob-equivalent.",
+    "Do not source-read SRC14 for D02 until an exact physical locator or a separately frozen whole-source traversal oracle makes the probe non-adaptive.",
+    "Do not rerun WVS7 merely to relabel retained evidence as fresh.",
+    "No Candidate A/B/C, measured P2X, structural admission, or V3 actor implementation."
+  ]
+}
