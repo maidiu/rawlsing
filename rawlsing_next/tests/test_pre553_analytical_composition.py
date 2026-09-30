@@ -9,6 +9,7 @@ from rawlsing_next.pre553_empirical_objects import (
     AuthorityRef,
     AuthoritySnapshot,
     ExactRef,
+    EmpiricalQuerySpec,
     canonicalize,
     semantic_hash,
 )
@@ -144,6 +145,32 @@ def _producer(source, query_auth, direction):
             source, query_auth, predicate, ("POSITION",),
             risk="R", tag="c1-at07-reverse-answer-yes-to-position",
         )
+    domain = ["no", "yes"] if direction == "forward" else ["P1", "P2"]
+    target = "ANSWER" if direction == "forward" else "POSITION"
+    component = dict(query.target_arity_and_topology["components"][0])
+    component["domain"] = domain
+    component["target_domain_replay_ref"] = i03._ref(
+        "TARGET_DOMAIN", f"{target}-{'-'.join(domain)}"
+    )
+    query = EmpiricalQuerySpec(
+        typed_state=query.typed_state,
+        authority_snapshot_refs=query.authority_snapshot_refs,
+        dependency_refs=query.dependency_refs,
+        producer_replay_locator_or_reference_root=query.producer_replay_locator_or_reference_root,
+        target_refs=query.target_refs,
+        target_arity_and_topology={
+            "arity": 1,
+            "joint_order_semantics": "SEMANTIC_ORDERED",
+            "components": [component],
+        },
+        condition_predicate_ref=query.condition_predicate_ref,
+        risk_set_ref=query.risk_set_ref,
+        empirical_universe_refs=query.empirical_universe_refs,
+        scope_refs=query.scope_refs,
+        measure_basis_ref=query.measure_basis_ref,
+        requested_output_grain=query.requested_output_grain,
+        query_authority_refs=query.query_authority_refs,
+    )
     frozen = _load(R3_EVIDENCE)["exact_identity_spine"][direction]
     assert predicate.ref.as_dict() == frozen["producer_predicate_ref"]
     assert query.ref.as_dict() == frozen["producer_query_ref"]
