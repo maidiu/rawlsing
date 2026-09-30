@@ -133,6 +133,7 @@ Top-level:
 - `33_RELATIONAL_WARRANT_FOR_SUCCESSION_R1.md` — relational warrant for introducing another unresolved human life
 - `34_PERSON_TO_PERSON_SEEDING_AND_RELATIONAL_VIRAL_LOOP_R1.md` — person-to-person seeding / relational viral distribution
 - `35_CONCRETE_FIRST_SESSION_SPINE_R1.md` — concrete invitation → portal → finite encounter → message-channel alpha spine
+- `36_RECENT_CHAT_HARVEST_INTEGRITY_R6.md` — PASS receipt proving recent chat discoveries/repairs are durably banked
 - `17_FULL_RAWLSING_VOZHD_GROUNDING_INTEGRITY_R1.md` — takeover verification
 - `08_INTERACTION_SYSTEM_SYNTHESIS_R1.md`
 - `09_INTERACTION_IDEATION_COMPLETENESS_AUDIT_R2.md`
@@ -150,7 +151,7 @@ D002:
 - `02_TEMPORAL_ATTENTION_AND_INFORMATION_ACQUISITION_R1.md`
 - `03_RECIPROCAL_OBSERVATION_PRIVACY_AND_PRESENTATION_R1.md`
 - `04_NONCURATORIAL_WORLD_DETAIL_AND_BINDING_REALITY_R1.md`
-- `05_CANONICAL_SCENARIO_BANK_R1.md` — now through SCE-044
+- `05_CANONICAL_SCENARIO_BANK_R1.md` — now through SCE-050
 - `06_PLAYER_EMBODIMENT_ENTRY_AND_AFFORDANCE_R1.md`
 - `07_EPISTEMIC_PROVENANCE_ASSERTION_AND_LAZY_WORLD_R1.md`
 - `08_SCENE_FRAME_CONCURRENCY_INTERRUPTION_AND_CONTROL_RETURN_R1.md`
@@ -158,7 +159,7 @@ D002:
 - `10_ACTOR_PERCEPTION_APPRAISAL_EXPRESSION_AND_MEMORY_R1.md`
 - `11_CAUSAL_PROVENANCE_DELAYED_EFFECTS_AND_NONTELEOLOGICAL_WORLD_R1.md`
 
-The scenario bank now preserves 44 canonical scenario/probe IDs, including:
+The scenario bank now preserves 50 canonical scenario/probe IDs, including:
 - bathroom/medicine-cabinet access;
 - sensitive toilet-chain warning/failure/repair/disclosure;
 - homework help;
