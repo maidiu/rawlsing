@@ -1,82 +1,76 @@
 {
   "schema": "PYAT_OMEGA_ACTIVE_TASK_BOARD@1",
-  "revision": 9,
-  "status": "C1_00_APPROVED__C1_01_BOUND__C2_01_REVIEW_BOUND__C3_SOURCE_FREE_QUALIFIED__C3_INTEGRATION_REVIEW_BOUND",
+  "revision": 10,
+  "status": "C3_SOURCE_FREE_INTEGRATION_ADOPTED__C2_01_ACCEPTED_C2_02_BOUND__C1_01_PREIMAGE_COUNTEREXAMPLE_ACCEPTED_R5_BOUND",
   "control_branch": "integration/pre-main-reconciliation-r1",
   "implementation_baseline": "b3b2fa13049513078c301a1f6574b661fcf390c5",
+  "accepted_source_free_integrations": [
+    {
+      "id": "C3",
+      "branch": "integration/pyat-hq130-c3-source-free-accepted-r1",
+      "head": "30686b185d4ceb2c94f61815ef70d8c8e76255d6",
+      "review_head": "462e6bf1ed514056f9316dad761054e690a7755d",
+      "disposition": "ADOPTED_AT_DECLARED_SOURCE_FREE_GRAIN",
+      "qualification": "20_PROTOCOL_PASS__55_SIX_FILE_COURT_PASS"
+    }
+  ],
   "observed_returns": [
     {
-      "id": "C1-00-R4-R",
-      "return_head": "171200320b4acdbb8ba32106a992d76fa8ac7d8a",
+      "id": "C1-01",
+      "return_head": "d20466c21ec62e62c3abbf6f83481984aa113000",
+      "disposition": "BLOCKED_CONTRACT_COUNTEREXAMPLE",
+      "hq_disposition": "ACCEPT_TYPED_COUNTEREXAMPLE__BANK_IMPLEMENTATION__ISSUE_R5_PREIMAGE_COMPLETION"
+    },
+    {
+      "id": "C2-01-R",
+      "return_head": "c5cb9ea33192dfc438b9559691832e1a6aaf96fc",
       "disposition": "APPROVE_AT_DECLARED_GRAIN",
-      "hq_effect": "C1_00_ACCEPTED__C1_01_ISSUED"
+      "hq_disposition": "ACCEPT_DOCUMENTARY_LEDGER__PRESERVE_C2_EPCLASS_PAYLOAD_001__ISSUE_C2_02"
     },
     {
-      "id": "C2-01",
-      "return_head": "42b89c09480c5848d8889b2282e986855c5822ef",
-      "disposition": "READY_FOR_REVIEW__NOT_ADOPTED",
-      "hq_effect": "INDEPENDENT_REVIEW_BOUND"
-    },
-    {
-      "id": "C3-03-CODEX",
-      "return_head": "257c2ebfd38d106f1669afbfd701a33e600cf4c5",
-      "static_disposition": "PASS_AT_DECLARED_GRAIN",
-      "execution_disposition": "PASS_SOURCE_FREE_QUALIFICATION",
-      "user_mac_override": "EXPLICITLY_CONFIRMED_BY_USER_FOR_ACTUAL_CODEX_WORKER",
-      "protocol_passed": 20,
-      "court_passed": 55,
-      "raw_source_access": 0,
-      "hq_effect": "QUALIFICATION_ADMITTED__EXACT_SOURCE_FREE_INTEGRATION_PORT_CREATED"
+      "id": "C3-INTEGRATION-R",
+      "return_head": "462e6bf1ed514056f9316dad761054e690a7755d",
+      "disposition": "APPROVE_AT_DECLARED_GRAIN",
+      "hq_disposition": "ADOPT_SOURCE_FREE_C3_INTEGRATION"
     }
   ],
   "active_tasks": [
     {
-      "id": "C1-01",
-      "branch": "agent/rabochii-pyat-hq130-c1-01-vertical-slice-r1",
-      "commission_tip": "c833ac97afccf5eee3f6d3bc0fac5d89ceb2aec8",
-      "base": "171200320b4acdbb8ba32106a992d76fa8ac7d8a",
+      "id": "C1-01-R5",
+      "branch": "agent/rabochii-pyat-hq131-c1-01-preimage-completion-r1",
+      "commission_tip": "eb01a888aef9403fdf1a387d9700de51e8e4c691",
+      "base": "d20466c21ec62e62c3abbf6f83481984aa113000",
       "state": "BOUND_AWAITING_USER_MEDIATED_LAUNCH",
-      "scope": "EXACT_AT07_QUERY_TO_DERIVED_SLICE_TO_PUBLIC_CONSUMER_VERTICAL_COMPOSITION",
-      "pass_wake": "C1_02",
+      "scope": "FOUR_CANONICAL_PREIMAGE_COMPLETION__C1_01_CONTINUATION__NO_SEMANTIC_BROADENING",
+      "pass_wake": "C1_01_INDEPENDENT_REVIEW_OR_EXECUTION_QUALIFICATION_AS_RETURN_REQUIRES",
       "blocker_effect": "C1_02_HELD"
     },
     {
-      "id": "C2-01-R",
-      "branch": "agent/reviewer-pyat-hq130-c2-01-authority-coverage-r1",
-      "commission_tip": "9adb0344678ceb4f24dbc512dce310d7a3f6160d",
-      "base": "42b89c09480c5848d8889b2282e986855c5822ef",
+      "id": "C2-02",
+      "branch": "agent/rabochii-pyat-hq131-c2-02-proving-workload-r1",
+      "commission_tip": "440e0a600f66103aad6076979cb23209f0a0ae4a",
+      "base": "c5cb9ea33192dfc438b9559691832e1a6aaf96fc",
       "state": "BOUND_AWAITING_USER_MEDIATED_LAUNCH",
-      "scope": "INDEPENDENT_44_53_35_280_AUTHORITY_SUCCESSION_COVERAGE_AND_RESIDUAL_REVIEW",
-      "pass_wake": "HQ_EXACT_NEXT_PROVING_WORKLOAD_DECLARATION_THEN_C2_02",
-      "blocker_effect": "C2_02_HELD"
-    },
-    {
-      "id": "C3-INTEGRATION-R",
-      "branch": "agent/reviewer-pyat-hq130-c3-source-free-integration-r1",
-      "commission_tip": "4ded1143cf27e64df7635c357bc23c63c335db9b",
-      "base": "30686b185d4ceb2c94f61815ef70d8c8e76255d6",
-      "integration_branch": "integration/pyat-hq130-c3-source-free-accepted-r1",
-      "state": "BOUND_AWAITING_USER_MEDIATED_LAUNCH",
-      "scope": "EXACT_SIX_BLOB_SOURCE_FREE_INTEGRATION_EQUIVALENCE_AND_AFFECTED_SUITE_REVIEW",
-      "pass_wake": "HQ_FINAL_C3_SOURCE_FREE_INTEGRATION_ADOPTION",
-      "blocker_effect": "C3_FINAL_INTEGRATION_ADOPTION_HELD"
+      "scope": "C4_N4_AT01_AT02_AT20_AT21_AT27_MINIMAL_HETEROGENEOUS_PROVING_SET_SELECTION",
+      "pass_wake": "C2_R_AND_HQ_C4_FREEZE_PREPARATION",
+      "blocker_effect": "C4_EXECUTION_NOT_AUTHORIZED"
     }
   ],
   "held": [
     "C1-02 until accepted C1-01",
     "C1-03 until C1-02",
     "C1-R until C1-03",
-    "C2-02 until C2-01 independent review plus HQ exact next proving-workload declaration",
     "C2-R until C2-02",
-    "C3 final integration adoption until exact integration review",
-    "JOIN-01 until applicable independently reviewed/qualified outputs",
+    "C4 source execution until exact warrant / Omega path",
+    "JOIN-01 until C1-R and relevant C2 output; C3 ready",
     "OMEGA-1 until scoped source-free join"
   ],
   "prohibitions": [
     "NO_RAW_SOURCE_EXECUTION",
+    "NO_C4_EXECUTION_FROM_C2_02",
     "NO_NEW_SEMANTIC_OR_COMPARABILITY_AUTHORITY",
-    "NO_C1_WRITES_OUTSIDE_C1_01_ALLOWLIST",
-    "NO_C2_02_BEFORE_C2_01_REVIEW_AND_HQ_WORKLOAD_BINDING",
+    "NO_PREIMAGE_HASH_BRUTE_FORCE_OR_HISTORICAL_INVENTION",
+    "NO_C1_PRODUCTION_IMPLEMENTATION_EDIT_IN_R5_COMMISSION",
     "NO_PREV3_TO_V3_ACTOR_IMPLEMENTATION"
   ]
 }
