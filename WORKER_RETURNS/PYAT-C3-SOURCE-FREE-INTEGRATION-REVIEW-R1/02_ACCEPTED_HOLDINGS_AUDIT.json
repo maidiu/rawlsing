@@ -1,0 +1,95 @@
+{
+  "schema": "PYAT_C3_SOURCE_FREE_INTEGRATION_REVIEW_ACCEPTED_HOLDINGS@1.0.0",
+  "disposition": "PASS_PRESERVED_ACCEPTED_C3_HOLDINGS",
+  "integration_head": "30686b185d4ceb2c94f61815ef70d8c8e76255d6",
+  "accepted_semantic_candidate": "901e3e77f905847d3ef8d86b458280d8fe422dd0",
+  "independent_static_review_head": "1b92286cc1f8e40f73b8a3bcf61e11d36aabe2a0",
+  "holdings": {
+    "G01_bounded_SAV_native_int_to_float64_representation": {
+      "status": "PASS",
+      "blob": "31a9afd7d91ed4cb2fb1c1aab3ef86a5fdda1f85",
+      "evidence": [
+        "Applicability is exactly nine frozen surfaces across source IDs 02, 06, 21.",
+        "Native-code input requires exact Python int type and exact enumerated code membership.",
+        "Authorized successors are exact float literals with exact frozen float64 R5 tokens.",
+        "Tests require R5 int identity != R5 float identity and reject float/string/bool/Decimal hostile native-code types.",
+        "Negative limits explicitly forbid global int/float coercion, arithmetic magnitude identity, other sources/variables/codes, DTA applicability, semantic inference, and missing-state reinterpretation."
+      ]
+    },
+    "D01_exact_SHA_declared_encoding_admission": {
+      "status": "PASS",
+      "decoder_blob": "d3d828c171ea9fdd0e90563aff6ef705f5aae2cf",
+      "test_blob": "8fc05965386055a208e5b3988112e67a2e6333e2",
+      "exact_declared_bindings": {
+        "ac0b8bc1ddb2fa6b952417e35b6379ce6a2cf8596776a43282ba44f48e0ae1a2": "BIG5",
+        "5b703173845c086382fd93252f1cbc91dfef74007755459adfc73785389172f2": "WINDOWS-1252",
+        "66252a92c59bf6759b79a6b35b2be658b98a433373212a70c8ec94755d3e02ec": "WINDOWS-1252"
+      },
+      "evidence": [
+        "Declared encoding lane is distinct from compatibility-only allowlist.",
+        "Wrong SHA or wrong encoding fails exact-SHA/config admission.",
+        "Automatic guessing/fallback remains forbidden.",
+        "Authority status is PHYSICAL_DECODING_ONLY; no text semantics or cross-source inheritance is granted."
+      ]
+    },
+    "D02_opaque_decoder_native_date_time": {
+      "status": "PASS",
+      "decoder_blob": "d3d828c171ea9fdd0e90563aff6ef705f5aae2cf",
+      "codec_blob": "6000a1704d713f65e07610d81e9b3fd8bdd515ca",
+      "test_blob": "3901f10a487856f5f232ae6700fff407ac99725e",
+      "evidence": [
+        "Exact built-in naive datetime/date/time values are converted to R5OpaqueValue with exact type ids and field-sensitive binary payloads.",
+        "R5 codec itself refuses direct date/time semantic interpretation.",
+        "Timezone-aware datetime/time require a separate explicit decoder carrier authority and fail closed.",
+        "String masquerades and unrelated scalar lanes remain distinct."
+      ]
+    },
+    "corrected_item_unwrapped_timezone_aware_rejection": {
+      "status": "PASS",
+      "evidence": [
+        "pre553_physical_decoder._physical_value catches only failure of value.item() extraction.",
+        "After successful item() unwrapping, exact built-in date/time normalization occurs in the else branch outside the extraction exception guard.",
+        "R5CodecError raised for timezone-aware datetime/time therefore propagates instead of falling through to _jsonable/stringification.",
+        "D02 test contains explicit item-wrapped timezone-aware datetime and time hostile cases."
+      ]
+    },
+    "no_import_time_dependency_installation": {
+      "status": "PASS",
+      "evidence": [
+        "D02 test contains no importlib.util, subprocess, sys, pip, or package-install bootstrap.",
+        "Integrated decoder/codec changes contain no dependency installation path.",
+        "Dependency provisioning remains execution-environment responsibility."
+      ]
+    },
+    "source_backed_C11_facade_compatibility": {
+      "status": "PASS",
+      "facade_blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+      "facade_unchanged_from_baseline": true,
+      "facade_equal_semantic_candidate": true,
+      "facade_test_blob": "daf9368a0c3ff277da0b46c4f27e4686c1de8b12",
+      "evidence": [
+        "Facade production blob is identical at baseline, semantic candidate, and integration head.",
+        "D02 accepted test directly exercises physical_value_binding_key with opaque carriers.",
+        "G01 authority uses the unchanged facade physical_value_binding_key."
+      ]
+    },
+    "no_historical_CLOSED35_census_infrastructure_resurrection": {
+      "status": "PASS",
+      "evidence": [
+        "Baseline-to-integration diff contains no historical census harness, receipt-tree path, workflow, court spec, or decoder infrastructure file.",
+        "G01 module carries frozen documentary census result/receipt identifiers as bounded authority evidence constants only.",
+        "G01 test explicitly uses frozen constants and does not import or resurrect the historical CLOSED35 qualified-census receipt tree.",
+        "G01 module imports only current PRE553 owner modules, not a historical census execution subsystem."
+      ]
+    }
+  },
+  "adoption_boundary": {
+    "certifies_source_free_C3_integration_only": true,
+    "survey_semantics_certified": false,
+    "CLOSED35_rerun": false,
+    "raw_source_authority_created": false,
+    "full_horizontal_F1_F6_F7_F8_closed": false,
+    "PRE_V3_to_V3_actor_implementation_authorized": false
+  },
+  "raw_survey_access": 0
+}
