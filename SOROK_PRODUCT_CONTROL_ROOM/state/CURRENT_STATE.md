@@ -322,22 +322,22 @@ Social and monetization work remain registered but should not dictate the core s
 Raw question count is a frontier census, not a remaining-work counter.
 
 Current exact accounting:
-- 109 surfaced questions;
+- 112 surfaced questions;
 - 8 CLOSED_FOR_ALPHA;
-- 20 PROVISIONALLY_ANSWERED;
-- 22 NEEDS_PROTOTYPE;
-- 42 NEEDS_ARCHITECTURE_ADJUDICATION;
-- 11 OPEN_DISCOVERY;
+- 22 PROVISIONALLY_ANSWERED;
+- 24 NEEDS_PROTOTYPE;
+- 43 NEEDS_ARCHITECTURE_ADJUDICATION;
+- 9 OPEN_DISCOVERY;
 - 6 DEFERRED_POST_ALPHA.
 
 Blocking-stage view:
-- 7 ALPHA_SPEC;
-- 35 ALPHA_IMPLEMENTATION;
-- 23 ALPHA_VALIDATION;
+- 5 ALPHA_SPEC;
+- 38 ALPHA_IMPLEMENTATION;
+- 25 ALPHA_VALIDATION;
 - 18 POST_ALPHA;
 - 26 NONE.
 
-The current user/Vozhd conversational critical path is the **7 ALPHA_SPEC blockers**, not the raw 109.
+The current user/Vozhd conversational critical path is the **5 ALPHA_SPEC blockers**, not the raw 112.
 
 - `38_PRESENT_COUPLED_COMPUTABLE_FLESH_RECURSION_R1.md` — present-coupled life / computable→flesh→computable recursion / hard curiosity firewall
 - `39_SUPPORTING_ACTOR_FIDELITY_AND_COST_ENVELOPE_R1.md` — progressive supporting-actor fidelity / lazy promotion / cost envelope
@@ -416,3 +416,19 @@ The current user/Vozhd conversational critical path is the **7 ALPHA_SPEC blocke
 - `49_SOROK_R11_NEW_CHAT_HANDOFF_R1.md` — full new-chat Sorok/Vozhd handoff through elastic present R11
 - `50_SOROK_R11_FULL_SEMANTIC_CHAT_LOG_R1.txt` — semantic chronology of the current Sorok conversation, tool chatter omitted
 - `51_SOROK_R12_POST_HANDOFF_FINAL_HARVEST_INTEGRITY_R1.md` — final post-handoff coverage matrix / PASS receipt for the recent discovery run
+
+- `51_Q_WORLD_001_PRESENT_WORLD_INGRESS_CONSTITUTION_R1.md` — first Q-WORLD-001 product adjudication: bounded historical-present constraint layer, declared external-anchor envelope, objective dependency routing, no digital-twin promise, no late silent retcon
+
+## Current Q-WORLD-001 first-adjudication holding
+
+- present-coupled Rawlsing is **not a digital twin**; it carries a bounded historical-present constraint layer at the resolution it actually claims;
+- world truth is split among externally evidenced current/named public reality, admitted synthetic lived-world particulars, and context-bound learned-world prior;
+- within the declared external-anchor envelope, `NOT_YET_INGESTED_EXTERNAL_FACT != ABSENT_EXTERNAL_EVENT`; retrieval discovers an external constraint rather than creating it;
+- external occurrence, world admission, objective local consequence/exposure opportunity, actor-specific access, CAN-008 uptake and durable effect remain noncollapsed;
+- current-event relevance is objective dependency intersection at represented resolution, not newsworthiness, user ideology/interest, moral usefulness or engagement value;
+- user curiosity may trigger external checking but may not condition external truth;
+- alpha should use a bounded focal-life currentness budget: proactive checking only for currentness-sensitive represented dependencies, demand-driven retrieval for other named/current factual needs, and learned-world prior for generic texture;
+- real public constraints may govern a synthetic private/local world; alpha need not mirror every real shop, neighbor, workplace or street event;
+- late-discovered external facts may backfill only when compatible with admitted history; material collision with causally closed history is a typed currentness/integrity defect, never a silent retcon;
+- Q-WORLD-001 remains open at product grain only for final external-anchor granularity/currentness-envelope adjudication before promotion to PROVISIONALLY_ANSWERED.
+
