@@ -1,0 +1,167 @@
+{
+  "schema": "PYAT_C2_02_C4_AUTHORITY_ORACLE_RETENTION_REQUIREMENTS@1.0.0",
+  "status": "PRE_EXECUTION_REQUIREMENTS_FROZEN__ONE_INPUT_CUSTODY_GAP_REMAINS",
+  "execution_ancestry_requirements": [
+    {
+      "id": "REQ-C1-01",
+      "state": "REQUIRED_BEFORE_C4_FULL_ROUTE_EXECUTION",
+      "current_evidence": "C1-00 R4 contract/oracle independently approved; C1-01 remains unimplemented/unexecuted in inspected evidence.",
+      "requirement": "A separately HQ-frozen, independently accepted C1-01 implementation/court for the direct I03 -> PossibilitySliceEvidence -> positioned-subject consumer route.",
+      "forbidden_inference": "C1-00 documentary approval != C1-01 implementation approval."
+    },
+    {
+      "id": "REQ-C3",
+      "state": "REQUIRED_BEFORE_C4_PHYSICAL_EDGE_EXECUTION",
+      "accepted_integration_head": "30686b185d4ceb2c94f61815ef70d8c8e76255d6",
+      "independent_integration_review_head": "462e6bf1ed514056f9316dad761054e690a7755d",
+      "requirement": "C4 execution ancestry must contain the accepted C3 integration or prove exact blob equality for all six accepted implementation/test files.",
+      "note": "The exact C2-02 base c5cb9ea... does not itself contain the C3 G01/D01/D02 implementation blobs."
+    }
+  ],
+  "physical_authority_prerequisites": {
+    "G01": {
+      "required_blobs": {
+        "authority_module": "31a9afd7d91ed4cb2fb1c1aab3ef86a5fdda1f85",
+        "test": "fb7b090809a609a3b0157f1ed8fcdcd8e8784525"
+      },
+      "exact_sources": [
+        "SRC02",
+        "SRC06"
+      ],
+      "authority_ceiling": "PHYSICAL_NATIVE_REPRESENTATION_BINDING_ONLY__NO_SEMANTIC_INFERENCE"
+    },
+    "D01": {
+      "required_blobs": {
+        "decoder": "d3d828c171ea9fdd0e90563aff6ef705f5aae2cf",
+        "test": "8fc05965386055a208e5b3988112e67a2e6333e2"
+      },
+      "exact_bindings": {
+        "SRC08": "BIG5",
+        "SRC12": "WINDOWS-1252"
+      },
+      "authority_ceiling": "SOURCE_DECLARED_EXACT_SHA_ENCODING__PHYSICAL_DECODING_ONLY"
+    },
+    "D02": {
+      "required_blobs": {
+        "decoder": "d3d828c171ea9fdd0e90563aff6ef705f5aae2cf",
+        "codec": "6000a1704d713f65e07610d81e9b3fd8bdd515ca",
+        "test": "3901f10a487856f5f232ae6700fff407ac99725e"
+      },
+      "exact_source": "SRC14",
+      "source_sha256": "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379",
+      "generic_law": "exact built-in naive datetime/date/time -> opaque physical carrier; timezone-aware datetime/time fail closed",
+      "current_input_custody_gap": "No exact real-source EVS 2008 date/time-bearing column/cell locator or predeclared whole-source D02 traversal oracle was located in the inspected source-free evidence.",
+      "wake_condition": "Freeze a competent exact physical locator/expected type+carrier witness, or an independently frozen whole-source traversal oracle that identifies D02 occurrence without consulting C4 output.",
+      "forbidden": "Do not adaptively discover a D02 column from the C4 result and then treat that discovery as an independent oracle."
+    },
+    "R05": {
+      "source": "SRC26",
+      "source_sha256": "ff5cef18c87969026e7f993d09f10c38a547bf81d5d398784fb59b960b7b0a40",
+      "expected_raw_nominal_case_size": 174,
+      "expected_decoded_dictionary_data_width": 332,
+      "law": "retain both physical facts; do not force equality"
+    }
+  },
+  "retained_full_route_oracles": {
+    "LiTS_I": {
+      "source": "SRC27",
+      "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+      "canonical_empirical_closure_identity": "f264dd8f83a0794716583d1ea8445947cc9470b99475e5d51fc2383e7196f415",
+      "checkpoint_sha256": "2704fd3fadc9c898a512183aaf5eebf0ca48d78c47e75a19d47e17281eaa5726",
+      "oracle_identity": "e5d66db4b6f8339672b0f4828b72a8df68b5525bf71ecfda899d0531d618a98a",
+      "T3_sha256": "7dfb62362b983b92dee2774d862a46c0c0ce3ca2c3bb48850e0f400346936908",
+      "constituent_i03_closure_identity": "784d73e913e798d3c50951775bb6cc5e62291897dd66ebcef6d24313c7595ef9",
+      "retained_counts": {
+        "candidates": 50,
+        "query_roles": 77,
+        "empirical_facts": 60,
+        "discovery_receipts": 50
+      },
+      "comparison_law": "Fresh current C4 source-backed result must be compared to retained exact identities/preimages; retained proof is the oracle, not the fresh run's output."
+    },
+    "WVS7": {
+      "source": "SRC35",
+      "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+      "logical_release_identity": "e6881e9a08a48f8871790e781c28bddbc44ee35db894d6ad7b1105a6a8fd262f",
+      "replay_identity": "996ba218fc5da5e0ad1ddf0cdc7f91ce8fb8a7363ce62076dc3f4073b85c383f",
+      "oracle_identity": "3694b8bd0b5468433a1a83bd469337c7e36e552c3a9a5fef65fff88df8fce800",
+      "evaluated_frontier_identity": "b2c3c50b68bcadb94ff2bf898d11c2b72694ced9fee4154e535db2694e26a4f3",
+      "candidate_count": 46,
+      "comparison_law": "Use admitted release/replay/oracle without new raw-source read unless HQ separately requires a fresh WVS pass."
+    }
+  },
+  "C1_composition_identity_requirements": [
+    "exact source universe and release refs",
+    "exact EmpiricalQuerySpec and EmpiricalPredicate refs/preimages",
+    "exact EmpiricalFact ref/preimage and replay ref",
+    "risk-set and denominator member refs",
+    "measure basis and any governed weight/design/estimand material",
+    "condition-value witness + subject-condition preimage + pairing ground truth",
+    "noncircular PossibilitySliceEvidence identity",
+    "actual positioned-subject consumer result",
+    "full composition fresh-process replay identity"
+  ],
+  "independent_oracle_law": [
+    "Expected source SHA/config/physical edge/oracle must exist before the corresponding source read.",
+    "Candidate/current output cannot author its own expected result.",
+    "For retained LiTS/WVS, compare current/replayed results against exact retained identities rather than labels or counts alone.",
+    "For physical edge witnesses, use exact C3/CLOSED35 owner material; do not infer survey meaning from successful representation/decoding.",
+    "Any mismatch fails closed and remains a typed result, not a cue to broaden authority."
+  ],
+  "source_access_accounting_required_per_fresh_source": [
+    "source identity + byte count",
+    "full-file SHA-256 passes",
+    "path-level open count with accounting basis",
+    "decoder invocations",
+    "metadata-only reads",
+    "raw-header prefix reads where applicable",
+    "selected-column/full reads and exact reader configuration",
+    "source retries",
+    "candidate A/B/C process count = 0",
+    "measured P2X process count = 0"
+  ],
+  "runtime_prerequisites": {
+    "physical_reproducibility_anchor": {
+      "platform": "Darwin/x86_64 where the frozen CLOSED35 representation evidence is invoked as runtime-specific proof",
+      "CPython": "3.11.3",
+      "pyreadstat": "1.3.6",
+      "pyarrow": "25.0.1"
+    },
+    "C3_source_free_qualification_anchor": {
+      "CPython": "3.11.3",
+      "pytest": "9.1.1",
+      "pandas": "2.3.3",
+      "pip_freeze_sha256": "9cde8e5ab9abba46a9e98826100ed084a0943a77fee7bc232a3c7643334da2eb"
+    },
+    "law": "C4 must freeze the actual execution environment and state which retained proof is runtime-specific. No import-time dependency installation."
+  },
+  "retention_requirements": [
+    "Retain exact C4 workload manifest and source identities.",
+    "Retain source-access telemetry separately from empirical result identities.",
+    "Retain complete canonical public-object preimages needed for replay, not labels/counts only.",
+    "Retain exact C1 composed evidence/result identity and determinant closure for full-route anchors.",
+    "Do not retain or commit raw respondent-level source bytes merely to prove custody.",
+    "Do not treat transient source-backed materialization as new semantic authority."
+  ],
+  "authority_boundary": {
+    "full_route_sources_with_retained_competent_source_specific_empirical_authority": [
+      "SRC27",
+      "SRC35"
+    ],
+    "physical_only_sources_in_this_selection": [
+      "SRC02",
+      "SRC06",
+      "SRC08",
+      "SRC12",
+      "SRC14",
+      "SRC26"
+    ],
+    "if_HQ_requires_full_semantic_RouteB_on_physical_only_sources": "TYPED_AUTHORITY_RESIDUAL__SEPARATE_SOURCE_SPECIFIC_SEMANTIC_AUTHORITY_REQUIRED",
+    "no_new_semantic_authority_created": true
+  },
+  "carried_residual": {
+    "id": "C2-EPCLASS-PAYLOAD-001",
+    "state": "UNRESOLVED__NOT_MISSING_PROVED",
+    "consequence": "No epistemic-origin classification may be manufactured for the C4 workload."
+  }
+}
