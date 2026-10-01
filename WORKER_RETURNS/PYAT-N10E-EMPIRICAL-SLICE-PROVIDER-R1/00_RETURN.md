@@ -125,20 +125,26 @@ definitions were not upgraded into executed proof.
 - No raw survey files, no Candidate A/B/C, no measured P2X, no real-source C11 execution, no C4, no C1-02/C1-03 implementation.
 - Multi-conditioner governed composition is not extended; this lane wraps the accepted C1-01 scalar single-conditioner grain.
 
-## 8. Authority/branch note (disclosed, no material effect)
+## 8. Authority/branch note (resolved)
 
-The commission tip `b631e1c40fc9078cf6473004c28532a99308c5db` was **not obtainable**
-in the local clone: no such ref or object, and `git fetch origin` fails with
-`could not read Username for 'https://github.com'`. Per the commission's own
-statement that `5fafb499d53dddadaf8a7b4fd46506e91a09d270` is the exact accepted base
-and branch point, work was performed from that base in a clean git worktree. The
-commission document is preserved byte-exact here (`00_COMMISSION.md`, sha256
-`83334164a8228ceddb330bdb0ae58265b786961d045327aa72b1804b9a5c5365`). Every owner and
-fixture this lane reads is byte-identical between the base and any tip that contains
-the allowlist terrain only.
+At the start of this lane the commission tip `b631e1c40fc9078cf6473004c28532a99308c5db`
+was **not present** in the local clone, and `git fetch origin` failed for lack of an
+`origin` credential. Per the commission's own statement that
+`5fafb499d53dddadaf8a7b4fd46506e91a09d270` is the exact accepted base and branch
+point, work began from that base in a clean git worktree.
+
+**Resolved:** once a credential was available, the assigned branch was fetched and
+the tip was confirmed as `b631e1c40` — exactly the declared commission tip, adding
+only `00_COMMISSION.md` (blob
+`63e8cf3eaa54b4adb6b6bf5cd9c280e2b7dfe487`, byte-identical to the commission copy
+preserved here, sha256
+`83334164a8228ceddb330bdb0ae58265b786961d045327aa72b1804b9a5c5365`). This lane's
+commits were rebased onto that tip and pushed as a fast-forward, so the returned
+history sits directly on the issued commission tip.
 
 The primary repository working tree (carrying unrelated in-flight C1-02 correction
-modifications) was **never** used for execution and was left untouched.
+modifications) was **never** used for execution and was left untouched; all work
+occurred in a separate git worktree.
 
 ## 9. Changed files
 
@@ -167,34 +173,40 @@ file was edited.
 
 ## 10. Git completion status
 
-**Implementation commit:** `5288a0b1d8ec634445ce0cb45db832b57fa91631`
+**Implementation commit:** `e3bcbbb4faf7ce700828d15899a3a07f7038bc71`
 (author `Maidiu <matthewdavidsmith86@gmail.com>`, matching repo convention)
 
 Diff from `5fafb499d53dddadaf8a7b4fd46506e91a09d270` is **entirely inside the
-commission write allowlist**: 14 files added, 3416 insertions, **zero existing files
-modified**.
+commission write allowlist**: 14 files added, **zero existing files modified**.
 
-**Push: NOT COMPLETED — authorization gap, not an implementation failure.**
+**Rebase note.** The branch was rebased onto the issued commission tip
+`b631e1c40fc9078cf6473004c28532a99308c5db`, which the remote branch already carried.
+That commit adds exactly one file —
+`WORKER_RETURNS/PYAT-N10E-EMPIRICAL-SLICE-PROVIDER-R1/00_COMMISSION.md`, blob
+`63e8cf3eaa54b4adb6b6bf5cd9c280e2b7dfe487` — **byte-identical** to the commission
+copy this lane committed, so the remote blob was kept and the duplicate dropped.
+Only commit SHAs changed: all four implementation/test blobs are byte-identical
+before and after the rebase, and the complete court was re-run on the rebased tree
+(88 passed). The pushed result is a **fast-forward** over the commission tip.
 
-The required push of the assigned branch could not be performed because this
-environment holds no usable `origin` credential:
+**Push: COMPLETED.** See §10a.
 
-| Probe | Result |
+Earlier in this lane the push failed because this sandbox holds no `origin`
+credential of its own (no keychain entry readable — `security` calls fail with
+"Module Directory Service error" — no token env, and the local SSH key is not
+registered). With a caller-supplied token the push authenticated successfully; the
+initial non-fast-forward rejection was solely the missing commission tip, resolved
+by the rebase above. The token was used via a `chmod 700` temporary askpass file,
+never written into git config, never printed, and deleted afterwards.
+
+## 10a. Pushed remote state
+
+| Item | Value |
 |---|---|
-| `git remote get-url origin` | `https://github.com/maidiu/rawlsing.git` |
-| `git push --dry-run` | `fatal: could not read Username for 'https://github.com': terminal prompts disabled` |
-| `credential.helper` | `osxkeychain` (configured, but **no stored credential** for github.com) |
-| token/askpass env (`GITHUB_TOKEN`, `GH_TOKEN`, `GIT_ASKPASS`) | none set |
-| SSH alternative | `~/.ssh/id_ed25519.pub` exists, but `ssh -T git@github.com` returns `Permission denied (publickey)` — key not registered on the account |
-
-Nothing was partially pushed. The commit exists locally on
-`agent/deepseek-pyat-hq140-n10e-empirical-slice-provider-r1` and is ready to push
-**unchanged** as soon as a credential exists. No evidence, receipt or test count
-depends on the push: everything was produced from the committed tree.
-
-To complete the push, either store an `origin` credential (`git push` after a
-successful HTTPS auth, or a PAT via `GIT_ASKPASS`), or register the existing SSH key
-and push over `git@github.com:maidiu/rawlsing.git`.
+| Remote | `https://github.com/maidiu/rawlsing.git` |
+| Branch | `agent/deepseek-pyat-hq140-n10e-empirical-slice-provider-r1` |
+| Mode | fast-forward (`b631e1c40` is an ancestor of the pushed HEAD) |
+| Forced update | none |
 
 ## 11. Next
 
