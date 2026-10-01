@@ -1,0 +1,67 @@
+{
+  "schema": "PYAT_C1_03A_R4_FINAL_INDEPENDENT_REREVIEW_REQUIREMENT_MATRIX@1",
+  "reviewed_return": "b46fcf2b951d3ecbc7d17be45a36b37ff7c2f494",
+  "r4_return": "3bd481163ac1b2b1e30817b2704e89341099a960",
+  "prior_rereview": "3ebde6d268abcb005a48e42eb6d0b52ec4a3c025",
+  "disposition": "CHANGES_REQUIRED",
+  "refusal_authenticity": {
+    "disposition": "FAIL",
+    "blocker": "C1-03A-R4-FINAL-REVIEW-BLOCK-EMPIRICAL-CAPTURE-OWNER-FAMILY-001",
+    "bare_integrity_exception_can_mint": false,
+    "bare_authority_exception_can_mint": false,
+    "caller_producer_ref_parameter_removed": true,
+    "caller_supporting_refs_parameter_removed": true,
+    "hand_built_witness_with_wrong_token_rejected": true,
+    "discovery_capture_invokes_real_owner": true,
+    "discovery_capture_fail_closed_on_accept": true,
+    "empirical_capture_invokes_claimed_empirical_query_owner": false,
+    "empirical_capture_gate": "isinstance(original_object, CanonicalSemanticObject)",
+    "cross_family_canonical_object_accepted": true,
+    "caller_defined_canonical_subclass_accepted_by_gate": true,
+    "actual_refusing_operation": "type(original_object) canonical constructor",
+    "minted_owner_label": "rawlsing_next.pre553_empirical_query.execute_empirical_query",
+    "false_owner_attribution_possible": true,
+    "states_distinct": true
+  },
+  "final_sha_method_shape": {
+    "disposition": "PASS",
+    "empirical_refusal_factory_classmethod_count": 1,
+    "blocked_refusal_factory_classmethod_count": 1,
+    "nested_classmethod_present": false,
+    "normal_direct_callability": true
+  },
+  "G5": {
+    "disposition": "PASS",
+    "route_obligation_source_identical_to_R3": true,
+    "receipt_truth_dominates_evaluation": true,
+    "forged_positive_from_negative_receipt": false,
+    "contradictory_positive_requested_use_rejected": true
+  },
+  "AT15": {
+    "disposition": "PASS",
+    "route_guard_source_identical_to_R3": true,
+    "genuine_admitted_route_preserved": true,
+    "failed_or_deny_laundering_closed": true
+  },
+  "AT16": {
+    "disposition": "PASS",
+    "positive_court_source_identical_to_R3": true,
+    "denominator": 60,
+    "numerators": {
+      "support": 54,
+      "oppose": 6
+    },
+    "composition_state": "SUPPORTED",
+    "retained_state": "SUPPORTED",
+    "producer_composition_named_consumer_path_preserved": true
+  },
+  "other_preservation": {
+    "exact_owner_family_gates": true,
+    "adaptive_determinant_provenance": true,
+    "recursive_custody": true,
+    "no_invented_completeness": true,
+    "eight_mandatory_states_distinct_in_tests": true,
+    "adaptive_unvisited_real": true,
+    "C1_02_touched": false
+  }
+}

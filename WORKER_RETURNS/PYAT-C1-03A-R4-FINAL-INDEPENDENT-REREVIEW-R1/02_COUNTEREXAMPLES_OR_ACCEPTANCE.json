@@ -1,0 +1,37 @@
+{
+  "schema": "PYAT_C1_03A_R4_FINAL_COUNTEREXAMPLES_OR_ACCEPTANCE@1",
+  "disposition": "CHANGES_REQUIRED",
+  "blocking_counterexample": {
+    "id": "C1-03A-R4-FINAL-REVIEW-BLOCK-EMPIRICAL-CAPTURE-OWNER-FAMILY-001",
+    "title": "Empirical refusal capture accepts arbitrary canonical owner families and relabels constructor refusal as empirical-query refusal",
+    "source_surface": "rawlsing_next/pre553_analytical_state_and_route.py::capture_empirical_integrity_refusal",
+    "gate": "isinstance(original_object, CanonicalSemanticObject)",
+    "owner_operation_invoked": "type(original_object)(**kwargs)",
+    "witness_owner_label": "rawlsing_next.pre553_empirical_query.execute_empirical_query",
+    "construction": [
+      "Supply a genuine CanonicalSemanticObject from a different public family, or a caller-defined CanonicalSemanticObject subclass.",
+      "Provide a semantic override while the copied body retains its original object_id/content_hash.",
+      "The supplied object's constructor raises Pre553IntegrityError.",
+      "The capture catches that refusal and emits refusal_kind=EMPIRICAL_INTEGRITY_REFUSAL.",
+      "The witness is labeled as execute_empirical_query even though that owner did not execute/refuse."
+    ],
+    "fixture_confirmation": "integrity_failure_fixture itself names the actual refusing owner as the CanonicalSemanticObject constructor, while the final projection asserts the empirical-query owner label.",
+    "impact": "Trusted AT14 INTEGRITY_FAILURE provenance can be minted from the wrong competent family / caller-shaped subclass under a false owner identity.",
+    "required_correction": "Bind exact empirical owner/family and governed object provenance, or truthfully classify the actual canonical constructor owner if governing AT14 law permits it; reject broad CanonicalSemanticObject/subclass inputs."
+  },
+  "accepted_findings": [
+    "Manual bare Pre553IntegrityError no longer mints trusted state.",
+    "Manual bare Pre553AuthorityError no longer mints trusted state.",
+    "Projection factories no longer accept caller producer_ref/supporting_refs/reason.",
+    "Discovery refusal capture invokes real execute_exact_bounded_discovery.",
+    "Owner acceptance does not mint refusal.",
+    "Refusal kinds keep INTEGRITY_FAILURE distinct from BLOCKED_REQUIRED_AUTHORITY.",
+    "Final-SHA classmethod shape is corrected.",
+    "G5 remains closed.",
+    "AT15 route law remains accepted.",
+    "AT16 54/6 positive consumer witness remains accepted."
+  ],
+  "token_note": "The review does not rely on importing the module-private _TRUST_TOKEN; the owner-family counterexample is independently sufficient.",
+  "architecture_warrant": false,
+  "repair_grain": "NARROW_EMPIRICAL_REFUSAL_CAPTURE_OWNER_BINDING"
+}

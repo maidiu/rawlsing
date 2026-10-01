@@ -1,0 +1,72 @@
+{
+  "schema": "PYAT_C1_03A_R4_FINAL_INDEPENDENT_REREVIEW_EXECUTION_RECEIPT@1",
+  "status": "STATIC_BROWSER_REREVIEW_PLUS_RECONCILED_WORKER_EXECUTION",
+  "review_branch": "agent/reviewer-pyat-hq157-c1-03a-r4-final-rereview-r1",
+  "review_issue_tip": "be9194ff86abfb89dd9b3b185d019815aadcb52c",
+  "reviewed_return": "b46fcf2b951d3ecbc7d17be45a36b37ff7c2f494",
+  "final_sha_diff": {
+    "base": "3bd481163ac1b2b1e30817b2704e89341099a960",
+    "head": "b46fcf2b951d3ecbc7d17be45a36b37ff7c2f494",
+    "production_change": "one line deleted from pre553_analytical_state_and_route.py",
+    "tests_added": 4,
+    "fixture_modified": false,
+    "owner_modules_modified": false
+  },
+  "recorded_court": {
+    "passed": 212,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "runtime_seconds": 12.54,
+    "clean_commit_under_test": "72ef80aef4ea4148b0814c9b89f3e5b6eb61a96d",
+    "return_commit": "b46fcf2b951d3ecbc7d17be45a36b37ff7c2f494",
+    "per_file": {
+      "test_pre553_analytical_state_and_route.py": 75,
+      "test_pre553_analytical_composition_higher_order.py": 35,
+      "test_pre553_empirical_query.py": 32,
+      "test_pre553_structural_admission.py": 17,
+      "test_pre553_discovery_exact.py": 14,
+      "test_pre553_analytical_composition.py": 13,
+      "test_source_backed_positioned_subject_possibility.py": 13,
+      "test_pre553_discovery_adaptive.py": 8,
+      "test_pre553_discovery_adaptive_admission.py": 3,
+      "test_pre553_recursive_handoff.py": 2
+    },
+    "sum": 212
+  },
+  "static_reconciliation": {
+    "state_route": "75 direct test functions",
+    "empirical_query": "30 functions + one 3-case parametrized court = 32",
+    "structural_admission": "13 functions + one 5-case parametrized court = 17",
+    "analytical_composition": "12 functions + one 2-case parametrized court = 13",
+    "total": 212
+  },
+  "source_preservation": {
+    "route_obligation_R3_to_final_identical": true,
+    "route_guards_R3_to_final_identical": true,
+    "AT15_courts_R3_to_final_identical": true,
+    "AT16_positive_court_R3_to_final_identical": true,
+    "unchanged_owner_blobs": {
+      "rawlsing_next/pre553_empirical_query.py": "03facecf70890bfd13b80418620d274cbcd69d02",
+      "rawlsing_next/pre553_discovery_exact.py": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+      "rawlsing_next/pre553_empirical_objects.py": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+      "rawlsing_next/pre553_empirical_authority.py": "ca65a7fd4d52f0c44447434559b1d09412e7aa39",
+      "rawlsing_next/pre553_analytical_composition.py": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b"
+    }
+  },
+  "reviewer_runtime": {
+    "fresh_execution_available": false,
+    "execution_proof_grade": "RECONCILED_WORKER_EXECUTION_EVIDENCE",
+    "blocker_proof_grade": "EXACT_COMMITTED_SOURCE_COUNTEREXAMPLE"
+  },
+  "prohibited_actions": {
+    "implementation_modified": false,
+    "merge": false,
+    "self_adoption": false,
+    "c1_03_join": false,
+    "raw_source_access": false,
+    "c4_c7": false,
+    "c1_r": false,
+    "v3": false
+  }
+}
