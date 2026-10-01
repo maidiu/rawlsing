@@ -1,0 +1,101 @@
+{
+  "schema": "PYAT_N10E_FINAL_DISPOSITION@1",
+  "status": "FINAL",
+  "disposition": "PASS_SOURCE_FREE_PATCH_READY__INDEPENDENT_REVIEW_REQUIRED",
+  "terminal_token": "N10E_EMPIRICAL_SLICE_PROVIDER_RETURNED__HQ_ADJUDICATION_REQUIRED",
+  "disposition_is_allowed_value": true,
+  "adoption": {
+    "branch_local_pass_is_adoption": false,
+    "requires": "independent review and HQ adjudication",
+    "merged": false
+  },
+  "objective_met": {
+    "public_source_free_provider_created": true,
+    "accepts_exact_producer_and_governed_consumer_inputs": true,
+    "slice_obtained_from_accepted_analytical_producer_path": true,
+    "caller_supplied_handwritten_evidence_rejected_as_substitute": true,
+    "preserves_universe_release_target_conditioners_denominator_measure_provenance_authority_replay": true,
+    "feeds_existing_public_positioned_subject_consumer": true,
+    "auditable_receipt_producer_input_generated_evidence_consumer_result_identity": true,
+    "fails_closed_on_mismatched_source_release_target_dependency_context": true,
+    "no_smoothing_no_independent_trait_draw_no_stereotype_default_no_actor_person_state": true,
+    "does_not_duplicate_empirical_calculation": true
+  },
+  "owner_change_status": {
+    "existing_owner_change_required": false,
+    "existing_owner_change_required_terminal": null,
+    "analytical_owner_blob_at_base_matches_commission": true,
+    "possibility_owner_blob_at_base_matches_commission": true,
+    "owners_modified": []
+  },
+  "acceptance_coverage_at_declared_grain": {
+    "AT07": "EXECUTED_PASS (forward 54/60 = 9/10 and reverse 54/62 = 27/31 exact slices through the provider)",
+    "AT17": "EXECUTED_PASS at the declared R1 core grain (identity/dependency closure, determinant mutation reidentifies provider output, unconsumed material is not a determinant)",
+    "AT33": "NOT_CLAIMED__EXPLICITLY_OUT_OF_SCOPE_FOR_THIS_R1_CORE"
+  },
+  "evidence_package": [
+    "00_COMMISSION.md",
+    "00_RETURN.md",
+    "01_SCOPE_AND_GROUNDING.json",
+    "02_PROVIDER_CONTRACT.json",
+    "03_FIXTURE_AND_ORACLE_FREEZE.json",
+    "04_PRODUCER_CONSUMER_TRACE.json",
+    "05_HOSTILE_AND_REPLAY_AUDIT.json",
+    "06_EXECUTION_RECEIPT.json",
+    "07_FINAL_DISPOSITION.json",
+    "08_FINAL_PYTEST_OUTPUT.txt"
+  ],
+  "final_test_counts": {
+    "passed": 88,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "new_provider_tests": 30
+  },
+  "changed_files": [
+    "rawlsing_next/pre553_empirical_possibility_provider.py",
+    "rawlsing_next/tests/test_pre553_empirical_possibility_provider.py",
+    "rawlsing_next/tests/n10e_empirical_slice_fixture.py",
+    "rawlsing_next/tests/n10e_empirical_slice_fresh_process_runner.py",
+    "WORKER_RETURNS/PYAT-N10E-EMPIRICAL-SLICE-PROVIDER-R1/00_COMMISSION.md",
+    "WORKER_RETURNS/PYAT-N10E-EMPIRICAL-SLICE-PROVIDER-R1/00_RETURN.md",
+    "WORKER_RETURNS/PYAT-N10E-EMPIRICAL-SLICE-PROVIDER-R1/01_SCOPE_AND_GROUNDING.json",
+    "WORKER_RETURNS/PYAT-N10E-EMPIRICAL-SLICE-PROVIDER-R1/02_PROVIDER_CONTRACT.json",
+    "WORKER_RETURNS/PYAT-N10E-EMPIRICAL-SLICE-PROVIDER-R1/03_FIXTURE_AND_ORACLE_FREEZE.json",
+    "WORKER_RETURNS/PYAT-N10E-EMPIRICAL-SLICE-PROVIDER-R1/04_PRODUCER_CONSUMER_TRACE.json",
+    "WORKER_RETURNS/PYAT-N10E-EMPIRICAL-SLICE-PROVIDER-R1/05_HOSTILE_AND_REPLAY_AUDIT.json",
+    "WORKER_RETURNS/PYAT-N10E-EMPIRICAL-SLICE-PROVIDER-R1/06_EXECUTION_RECEIPT.json",
+    "WORKER_RETURNS/PYAT-N10E-EMPIRICAL-SLICE-PROVIDER-R1/07_FINAL_DISPOSITION.json",
+    "WORKER_RETURNS/PYAT-N10E-EMPIRICAL-SLICE-PROVIDER-R1/08_FINAL_PYTEST_OUTPUT.txt"
+  ],
+  "allowlist_conformance": {
+    "diff_confined_to_write_allowlist": true,
+    "existing_production_owners_modified": false,
+    "existing_test_files_modified": false,
+    "c1_generic_packets_modified": false,
+    "c1_02_terrain_modified": false,
+    "hq_control_files_modified": false,
+    "verified_by": "git diff --name-only <base>..<head>"
+  },
+  "limitations": [
+    "AT33 progressive multi-conditioner/world-conditioned possibility is not implemented or claimed; it remains downstream of competent higher-order and world inputs.",
+    "The lane wraps the accepted C1-01 scalar single-conditioner grain; multi-conditioner governed composition is not extended here.",
+    "The fresh-process replay runs on the same host interpreter; it is not a cross-machine or cross-version replay proof.",
+    "The fixture is synthetic and source-free; nothing here proves real-source empirical competence.",
+    "A branch-local PASS is not adoption."
+  ],
+  "blocker": null,
+  "next": "HQ adjudication of this branch-local source-free provider return, followed by independent review before any adoption claim.",
+  "push_status": {
+    "pushed": true,
+    "mode": "fast-forward over the issued commission tip b631e1c40",
+    "verified_by": "authenticated git ls-remote origin refs/heads/agent/deepseek-pyat-hq140-n10e-empirical-slice-provider-r1",
+    "self_referential_sha_omitted": "The canonical pushed HEAD SHA is deliberately not recorded inside these files: a commit cannot contain its own hash. This follows the repository convention established by 21254c57d 'Remove self-referential commit SHA from return contents'. The authoritative pushed HEAD is the remote ref itself and the value reported to HQ."
+  },
+  "rebase_note": "Rebased onto commission tip b631e1c40; content unchanged, SHAs updated.",
+  "implementation_commit_sha": "e3bcbbb4faf7ce700828d15899a3a07f7038bc71",
+  "pushed_branch": "agent/deepseek-pyat-hq140-n10e-empirical-slice-provider-r1",
+  "pushed_remote": "https://github.com/maidiu/rawlsing.git",
+  "worktree_path": "/Users/matthewsmith/Desktop/Rawlsing/rawlsing-pyat-hq140-n10e-r1",
+  "historical_provenance_note": "Historical pre-rebase context (not a current limitation): during the early local phase of the original N10E lane the commission tip b631e1c40fc9078cf6473004c28532a99308c5db was unavailable \u2014 the object was absent from the local clone and 'git fetch origin' failed for lack of an origin credential in that sandbox (no readable keychain entry, no token environment variable, and the local SSH key was not registered). Work therefore began from the declared accepted base 5fafb499d53dddadaf8a7b4fd46506e91a09d270 in a separate git worktree. Credentials later became available: the assigned branch was fetched, the tip was confirmed as the issued commission tip, the lane's commits were rebased onto it, and the court was re-run. ANCESTRY IS LAWFUL AND RESOLVED: the final history sits directly on b631e1c40 and the returned branch is a lawful descendant. The early unavailability is retained here only as provenance history and must not be read as a standing blocker."
+}

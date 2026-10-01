@@ -1,0 +1,119 @@
+{
+  "schema": "PYAT_N10E_EXECUTION_RECEIPT@1",
+  "status": "EXECUTED_SOURCE_FREE",
+  "date_context": "executed in this lane against accepted base 5fafb499d53dddadaf8a7b4fd46506e91a09d270",
+  "toolchain": {
+    "interpreter": "/Users/matthewsmith/Desktop/rawlsing_v550_builder_bundle/.venv/bin/python",
+    "python_version": "3.11.15",
+    "pytest_version": "9.0.3",
+    "environment_note": "/usr/local/bin/python3 and the Python 3.11 framework binary are zero-byte (unusable); /usr/bin/python3 is 3.9.6 without pytest. An existing working venv was used read-only. No dependency was installed.",
+    "working_tree": "clean git worktree created at the accepted base commit; the primary repo working tree (with unrelated C1-02 modifications) was never used for execution"
+  },
+  "court_executed": {
+    "command": "python -m pytest rawlsing_next/tests/test_pre553_analytical_composition.py rawlsing_next/tests/test_pre553_empirical_query.py rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py rawlsing_next/tests/test_pre553_empirical_possibility_provider.py -v",
+    "targeted_development_runs": "provider court only, iterated to coherence",
+    "complete_court_runs": 1,
+    "final_result": "88 passed",
+    "duration_seconds_final": 15.14,
+    "output_file": "08_FINAL_PYTEST_OUTPUT.txt",
+    "correction_note": "REV-N10E-002: after the corrected P6 changed-source test, the commissioned four-file court was run exactly ONCE on branch agent/deepseek-pyat-hq144-n10e-proof-provenance-correction-r1 at commission tip a7f7eecdeaee58e4d8021b7c571b4956e6301464. The command, counts and duration below are that single run and agree with 00_RETURN.md and 08_FINAL_PYTEST_OUTPUT.txt. Earlier durations recorded during the pre-correction lane are superseded and are not presented as final."
+  },
+  "test_counts": {
+    "total_passed": 88,
+    "total_failed": 0,
+    "total_errors": 0,
+    "total_skipped": 0,
+    "by_file": {
+      "rawlsing_next/tests/test_pre553_analytical_composition.py": 13,
+      "rawlsing_next/tests/test_pre553_empirical_query.py": 32,
+      "rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py": 13,
+      "rawlsing_next/tests/test_pre553_empirical_possibility_provider.py": 30
+    },
+    "baseline_before_this_lane_pre_existing_three_files": "58 passed",
+    "new_tests_added": 30,
+    "count_verification": "per-file counts re-derived by counting PASSED lines per file in 08_FINAL_PYTEST_OUTPUT.txt for the single final run; 13+32+13+30 = 88, matching the recording summary line '88 passed in 15.14s'.",
+    "superseded_durations_seconds": [
+      20.01,
+      19.09,
+      22.84,
+      16.44
+    ]
+  },
+  "count_derivation_note": "Per-file counts are derived from the verbose run recorded in 08_FINAL_PYTEST_OUTPUT.txt; the authoritative total is the pytest summary line '88 passed'.",
+  "commissioned_court_coverage": {
+    "pre553_analytical_composition_court": "PASS (unchanged)",
+    "pre553_empirical_query_court": "PASS (unchanged)",
+    "source_backed_positioned_subject_possibility_court": "PASS (unchanged)",
+    "new_provider_court_P1_P2_P3_P4_P5_P6_P7": "PASS"
+  },
+  "c1_02_dependency_check": {
+    "imports_unfinished_c1_02_higher_order_test": false,
+    "c1_02_modules_present_at_base": false,
+    "note": "The provider lane runs entirely on the accepted C1-01 seam at the base commit."
+  },
+  "fresh_process_receipts": {
+    "forward": {
+      "provider_state": "EXACT_SUPPORTED_SLICE_PRODUCED",
+      "receipt_ref_hash": "b10736893e58c668c17ac63698c5483fd13bd64162637b33ad896855f5023489",
+      "result_identity_hash": "9c7c5c39796e39afc374859b41cef2fba9b6eea901238a214929f7eb0f2fd2d4",
+      "evidence_ref_hash": "b2407eeb3d22cc0d71e5d13308b0149338761efc4ef40921ab363c3cd9c78307",
+      "consumer_result_hash": "47b51a3b6df4ec051b5b9fb04a92760c791f4ac761f20a157966cbe1b481a4be",
+      "consumer_result_state": "EXACT_SUPPORTED",
+      "raw_denominator_support": 60,
+      "cell_numerators": {
+        "yes": 54,
+        "no": 6
+      }
+    },
+    "reverse": {
+      "provider_state": "EXACT_SUPPORTED_SLICE_PRODUCED",
+      "receipt_ref_hash": "fbc76a9ff48254d370a0fe2ea9c131ef8b61ec802f0657629a1c6cb0e43f3921",
+      "result_identity_hash": "451c25bf645a775f0210e257abf8f23a3c2e33f1fb0793d834f898461fbf3145",
+      "evidence_ref_hash": "e40c31eaf25c8e4f163ff340f968f0dc5ee650fc8383a586ea251a43ee8851d6",
+      "consumer_result_hash": "dcb47a70f056b841c5a4d24eca4fab7e0ce2b46995138ccaef98a5085f5f28c0",
+      "consumer_result_state": "EXACT_SUPPORTED",
+      "raw_denominator_support": 62,
+      "cell_numerators": {
+        "P1": 54,
+        "P2": 8
+      }
+    }
+  },
+  "material_failures_encountered_and_resolved": [
+    {
+      "failure": "RecursionError: provider receipt material included its own receipt_ref, producing a self-referential digest",
+      "resolution": "split receipt 'material()' (display/preimage data) from 'identity_material()' (identity preimage excluding the receipt's own ref/hash), matching the accepted composition pattern",
+      "grade": "REAL_DEFECT_FOUND_AND_FIXED"
+    },
+    {
+      "failure": "provider court initially drove the refusal branch with a DERIVED_BRANCH_COHORT predicate, which the accepted C1-01 scalar path correctly rejects",
+      "resolution": "refusal branch now exercised through the real provider entry point by substituting only the producer fact typed_state; the unsupported-predicate variant is retained as a separate custody-witness counterexample",
+      "grade": "TEST_TERRAIN_CORRECTION_NOT_IMPLEMENTATION_CHANGE"
+    },
+    {
+      "failure": "an early universe-mismatch test assumed the conditioned-owner constructor rejected a coherent foreign-universe binding pair",
+      "resolution": "probe established the actual owner law: the binding/query pair must agree; a coherent foreign pair is constructible and then fails closed at composition with SOURCE_UNIVERSE_MISMATCH. Tests were rewritten to both halves of that law.",
+      "grade": "TEST_TERRAIN_CORRECTION_NOT_IMPLEMENTATION_CHANGE"
+    }
+  ],
+  "determinism_cross_check": "The forward evidence ref and composed result identity produced through the new provider equal the committed R8 identity spine values, independently confirming that the provider wraps the accepted path rather than recomputing it.",
+  "implementation_commit_sha": "e3bcbbb4faf7ce700828d15899a3a07f7038bc71",
+  "implementation_commit_author": "Maidiu <matthewdavidsmith86@gmail.com>",
+  "git_completion": {
+    "diff_from_base_confined_to_write_allowlist": true,
+    "committed": true,
+    "pushed": true,
+    "push_blocker": null,
+    "nothing_partially_pushed": true,
+    "pushed_as": "fast-forward (b631e1c40 is an ancestor of the pushed HEAD)",
+    "remote_tip_after_push": "NOT_RECORDED_SELF_REFERENTIAL",
+    "verified_by": "authenticated git ls-remote",
+    "self_referential_sha_omitted": true
+  },
+  "implementation_commit_sha_superseded": "5288a0b1d8ec634445ce0cb45db832b57fa91631",
+  "rebase_note": "The branch was rebased onto the issued commission tip b631e1c40fc9078cf6473004c28532a99308c5db, which the remote branch already carried. That commit adds only WORKER_RETURNS/PYAT-N10E-EMPIRICAL-SLICE-PROVIDER-R1/00_COMMISSION.md with blob 63e8cf3eaa54b4adb6b6bf5cd9c280e2b7dfe487, byte-identical to the commission copy this lane committed; the remote blob was kept. Only commit SHAs changed; no source, test or evidence content changed.",
+  "worktree_path": "/Users/matthewsmith/Desktop/Rawlsing/rawlsing-pyat-hq140-n10e-r1",
+  "pushed_branch": "agent/deepseek-pyat-hq140-n10e-empirical-slice-provider-r1",
+  "provider_implementation_unchanged": true,
+  "provider_blob": "23167aa25291fb148b1e3cf210ac33fe7769b783"
+}

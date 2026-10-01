@@ -1,0 +1,90 @@
+{
+  "schema": "PYAT_N10E_PROOF_PROVENANCE_CORRECTION_FINAL_DISPOSITION@1",
+  "status": "FINAL",
+  "disposition": "PASS_PROOF_AND_PROVENANCE_CORRECTED__NARROW_INDEPENDENT_REREVIEW_REQUIRED",
+  "disposition_is_allowed_value": true,
+  "terminal_token": "N10E_PROOF_PROVENANCE_CORRECTION_RETURNED__HQ_ADJUDICATION_REQUIRED",
+  "correction_lane": {
+    "branch": "agent/deepseek-pyat-hq144-n10e-proof-provenance-correction-r1",
+    "commission_tip": "a7f7eecdeaee58e4d8021b7c571b4956e6301464",
+    "review_return_corrected_against": "b89268d1824409d20a91a37a0a3ff7751a7ae75a",
+    "review_disposition_addressed": "CHANGES_REQUIRED",
+    "scope": "narrow proof/provenance correction only"
+  },
+  "findings_disposition": {
+    "REV-N10E-001": {
+      "class": "BLOCKING_EVIDENCE_INTEGRITY",
+      "status": "CORRECTED",
+      "summary": "P6 changed-source test now builds a second genuinely different source-free empirical law (110 rows) and runs the real provider against it; denominators and cells follow the changed law (70; yes 54 / no 16; 27/35, 8/35) with a reverse control proving the difference is caused by the source law."
+    },
+    "REV-N10E-002": {
+      "class": "BLOCKING_EVIDENCE_INTEGRITY",
+      "status": "CORRECTED",
+      "summary": "One exact final court run recorded consistently as '88 passed in 15.14s' across 00_RETURN.md, 06_EXECUTION_RECEIPT.json and 08_FINAL_PYTEST_OUTPUT.txt; earlier durations marked superseded."
+    },
+    "REV-N10E-003": {
+      "class": "NONBLOCKING_DOCUMENTARY",
+      "status": "CORRECTED",
+      "summary": "Stale 'commission tip unavailable' limitation removed from the final limitations list and preserved as explicit historical pre-rebase provenance context."
+    }
+  },
+  "provider_implementation": {
+    "modified_by_this_correction": false,
+    "blob_before": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+    "blob_after": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+    "counterexample_found": false,
+    "counterexample_terminal_used": false,
+    "implementation_commit": "e3bcbbb4faf7ce700828d15899a3a07f7038bc71"
+  },
+  "owners_preserved": {
+    "rawlsing_next/pre553_analytical_composition.py": "26f3380cb83cbbcedc87c74aaf603b0492c8ce8f",
+    "rawlsing_next/source_backed_positioned_subject_possibility.py": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+    "modified": false
+  },
+  "final_test_counts": {
+    "command": "python -m pytest rawlsing_next/tests/test_pre553_analytical_composition.py rawlsing_next/tests/test_pre553_empirical_query.py rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py rawlsing_next/tests/test_pre553_empirical_possibility_provider.py -v",
+    "passed": 88,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "duration_seconds": 15.14,
+    "runs_recorded_as_final": 1
+  },
+  "accepted_review_findings_preserved": [
+    "provider seam",
+    "no handwritten-evidence provider bypass",
+    "owner blob preservation",
+    "forward/reverse slice proof",
+    "P3 determinant closure",
+    "receipt identity well-foundedness",
+    "P5 fail-closed behavior",
+    "P7 replay",
+    "authority ceiling"
+  ],
+  "authority_ceiling": {
+    "at33_progressive_world_claimed": false,
+    "real_source_qualification_claimed": false,
+    "structural_world_claim": false,
+    "actor_person_v3_state": false,
+    "new_smoothing_or_proxy_authority": false,
+    "provider_broadened": false,
+    "merged": false,
+    "self_adopted": false
+  },
+  "write_allowlist_conformance": {
+    "all_changes_inside_allowlist": true,
+    "independent_review_return_modified": false,
+    "provider_modified": false,
+    "owners_modified": false
+  },
+  "limitations": [
+    "AT33 progressive multi-conditioner/world-conditioned possibility is not implemented or claimed; it remains downstream of competent higher-order and world inputs.",
+    "The lane wraps the accepted C1-01 scalar single-conditioner grain; multi-conditioner governed composition is not extended here.",
+    "The fresh-process replay runs on the same host interpreter; it is not a cross-machine or cross-version replay proof.",
+    "The fixture is synthetic and source-free; nothing here proves real-source empirical competence.",
+    "A branch-local PASS is not adoption."
+  ],
+  "historical_provenance_note": "See 07_FINAL_DISPOSITION.json in WORKER_RETURNS/PYAT-N10E-EMPIRICAL-SLICE-PROVIDER-R1/ for the preserved pre-rebase history of the commission tip fetch; it is context, not a standing blocker.",
+  "blocker": null,
+  "next": "Narrow independent re-review of the corrected P6 changed-source proof and the reconciled single-run record, then HQ adjudication."
+}

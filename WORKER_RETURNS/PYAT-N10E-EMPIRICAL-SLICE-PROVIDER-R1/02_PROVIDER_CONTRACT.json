@@ -1,0 +1,132 @@
+{
+  "schema": "PYAT_N10E_PROVIDER_CONTRACT@1",
+  "status": "EXECUTED_SOURCE_FREE",
+  "module": "rawlsing_next/pre553_empirical_possibility_provider.py",
+  "contract_id": "N10E_EMPIRICAL_POSSIBILITY_SLICE_PROVIDER@1.0.0",
+  "provider_route": "EMPIRICAL_QUERY__C1_ANALYTICAL_COMPOSITION__GENERATED_EVIDENCE",
+  "provider_input_mode": "EXACT_DETERMINANTS_ONLY__NO_PRECOMPUTED_SLICE_GEOMETRY",
+  "receipt_schema": "N10E_EMPIRICAL_SLICE_PROVIDER_RECEIPT@1",
+  "receipt_contract_id": "N10E_EMPIRICAL_SLICE_PROVIDER_RECEIPT_REF@1",
+  "public_entry_point": {
+    "symbol": "provide_empirical_possibility_slice",
+    "keyword_only": true,
+    "parameters": [
+      "repository",
+      "empirical_query",
+      "predicate",
+      "authority_registry",
+      "release_refs",
+      "consumer_query",
+      "model_rule",
+      "condition_binding_witness"
+    ],
+    "forbidden_authoritative_input_names": [
+      "evidence",
+      "possibility_slice_evidence",
+      "slice_evidence",
+      "geometry",
+      "slice_geometry",
+      "precomputed_geometry",
+      "probability",
+      "probabilities",
+      "probability_geometry"
+    ],
+    "no_precomputed_geometry_channel": true
+  },
+  "other_public_symbols": {
+    "replay_empirical_possibility_slice": "deterministic replay check over the same frozen determinants",
+    "evaluate_generated_slice_directly": "low-level consumer pass-through for an already-generated slice; grants no authority and is not the provider path",
+    "assert_provider_public_api_excludes_handwritten_slice": "fails closed if the public API ever grows a precomputed-slice channel"
+  },
+  "typed_objects": {
+    "EmpiricalPossibilityProviderRequest": {
+      "role": "exact caller-supplied determinants for one invocation",
+      "handles_carried_not_identity_hashed": ["repository", "authority_registry"],
+      "identity_bound_by_exact_refs": [
+        "empirical_query.ref",
+        "predicate.ref/predicate_hash",
+        "release_refs",
+        "consumer_query.ref",
+        "consumer_binding_fingerprint",
+        "model_rule.rule_hash",
+        "condition_binding_witness.witness_ref",
+        "source_universe_ref",
+        "target_ref"
+      ]
+    },
+    "EmpiricalPossibilitySliceProviderReceipt": {
+      "role": "auditable provider receipt",
+      "identity_is_well_founded": "receipt identity hashes a preimage that excludes the receipt's own ref/hash (no self-referential digest)",
+      "binds": [
+        "producer query identity",
+        "producer predicate identity",
+        "producer fact identity and typed state",
+        "source universe refs",
+        "release refs",
+        "consumer query ref",
+        "consumer binding fingerprint",
+        "condition binding witness ref",
+        "model rule hash",
+        "generated evidence ref (or null)",
+        "producer-derived evidence flag",
+        "consumer result state and identity hash (or null)",
+        "composed result identity hash",
+        "refusal state (or null)"
+      ]
+    },
+    "EmpiricalPossibilitySliceProviderResult": {
+      "role": "provider output",
+      "states": ["EXACT_SUPPORTED_SLICE_PRODUCED", "TYPED_REFUSAL"],
+      "carries": [
+        "provider receipt",
+        "the underlying accepted AnalyticalCompositionResult",
+        "the generated PossibilitySliceEvidence",
+        "the consumer PositionedSubjectPossibilityResult"
+      ]
+    }
+  },
+  "invariants": [
+    "An EXACT result must carry generated evidence and a consumer result that are the very objects produced by the accepted composition (identity check, not equality).",
+    "A REFUSED result must carry no evidence, no consumer result and no geometry.",
+    "A receipt/result provider-state mismatch is rejected at construction.",
+    "A receipt/result composed-identity mismatch is rejected at construction.",
+    "The provider must not accept precomputed probability geometry as authoritative input.",
+    "The provider must not duplicate empirical calculation by manually constructing probabilities."
+  ],
+  "refusal_states": [
+    "MISSING_EXACT_MODEL_OR_PRODUCER_AUTHORITY",
+    "SLICE_NOT_SUPPORTED_UNDER_EXACT_MODEL_LAW",
+    "OWNER_TYPED_REFUSAL"
+  ],
+  "fail_closed_law": {
+    "owner_law_errors_propagate_unlaundered": [
+      "SOURCE_UNIVERSE_MISMATCH",
+      "SOURCE_RELEASE_MISMATCH",
+      "TARGET_TOPOLOGY_OR_DOMAIN_MISMATCH",
+      "DENOMINATOR_IDENTITY_MISMATCH",
+      "MEASURE_IDENTITY_MISMATCH",
+      "CONDITION_VALUE_RELATION_MISMATCH"
+    ],
+    "typed_refusals": [
+      "producer fact typed_state not SUPPORTED -> typed refusal, no geometry",
+      "model source-universe out of scope -> consumer returns FAIL_CLOSED / MODEL_SOURCE_UNIVERSE_OUT_OF_SCOPE as an exact-lane result"
+    ],
+    "no_implicit_coercion_or_bridging": true
+  },
+  "non_authority_ceiling": {
+    "creates_new_proxy_authority": false,
+    "creates_new_smoothing_or_interpolation": false,
+    "independent_trait_draw": false,
+    "stereotype_default": false,
+    "actor_or_person_state": false,
+    "structural_world_claim": false,
+    "is_adoption": false,
+    "note": "An N10E provider receipt is a branch-local proof artifact, not adoption and not an AT33 progressive-world claim."
+  },
+  "consumer_and_producer_ownership": {
+    "duplicates_accepted_calculation": false,
+    "modifies_existing_owners": false,
+    "probability_arithmetic_in_provider_source": false,
+    "evidence_cross_check": "The provider module source contains no 'Fraction(', no 'float(' and no local '_exact_fraction' helper; all geometry, fractions and support flow from the accepted C1-01 path."
+  }
+}
