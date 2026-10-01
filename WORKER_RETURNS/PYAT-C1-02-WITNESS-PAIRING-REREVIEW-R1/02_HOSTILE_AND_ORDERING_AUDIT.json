@@ -1,0 +1,79 @@
+{
+  "schema": "PYAT_C1_02_WITNESS_PAIRING_REREVIEW_HOSTILE_ORDERING_AUDIT@1",
+  "blocker_closed": true,
+  "helper": {
+    "path": "rawlsing_next/tests/c1_at08_at13_fixture.py",
+    "name": "readdress_witness_with_false_pairing",
+    "structural_validity": "SUPPORTED",
+    "behavior": [
+      "mutates exactly one pairing semantic field",
+      "recomputes mutated pairing content hash/ref",
+      "replaces pairing refs/materials in witness identity material",
+      "recomputes enclosing witness ref",
+      "preserves subject refs/materials",
+      "preserves producer leaf refs/projections",
+      "preserves pairing authority refs",
+      "preserves consumer query/bindings by not modifying them"
+    ],
+    "stale_hash_shortcut_used": false
+  },
+  "false_semantic_ref_hostile": {
+    "test": "test_pairing_hostile_false_required_semantic_ref_is_rejected",
+    "conditioner_index": 0,
+    "false_field": "required_semantic_ref",
+    "verify_identity_succeeds_before_composition": true,
+    "pairing_ref_readdressed": true,
+    "witness_ref_readdressed": true,
+    "subject_truth_unchanged": true,
+    "producer_leaf_truth_unchanged": true,
+    "pairing_authority_unchanged": true,
+    "expected_exception": "ConditionValueRelationMismatch",
+    "semantic_rejection_point": "conditioner 0: pairing semantic ref mismatch",
+    "verdict": "VALID_HOSTILE"
+  },
+  "false_exact_value_hostile": {
+    "test": "test_pairing_hostile_false_required_exact_value_is_rejected",
+    "conditioner_index": 1,
+    "truthful_value": "0",
+    "false_value": "1",
+    "verify_identity_succeeds_before_composition": true,
+    "subject_materials_unchanged": true,
+    "expected_exception": "ConditionValueRelationMismatch",
+    "semantic_rejection_point": "conditioner 1: pairing exact value mismatch",
+    "verdict": "VALID_HOSTILE"
+  },
+  "baseline_control": {
+    "test": "test_pairing_hostile_baseline_witness_is_accepted",
+    "result": "SUPPORTED / EXACT_SUPPORTED",
+    "significance": "Shows honest two-conditioner material survives the repaired per-index relation checks; this would fail under the naive leaked-last-subject de-indent."
+  },
+  "ordering_proof": {
+    "test": "test_pairing_hostile_rejection_precedes_evidence_and_consumer",
+    "evidence_builder_substituted": true,
+    "possibility_consumer_substituted": true,
+    "post_repair_exception": "ConditionValueRelationMismatch",
+    "post_repair_touched": [],
+    "evidence_constructed_post_repair": false,
+    "consumer_invoked_post_repair": false,
+    "pre_repair_same_ordering_hostile_reached_evidence": true,
+    "pre_repair_evidence": "AssertionError: possibility evidence must not be constructed",
+    "verdict": "DECISIVE_ORDERING_PROOF"
+  },
+  "documentary_correction": {
+    "severity": "NON_BLOCKING_EVIDENCE_PACKET_ERROR",
+    "affected_artifacts": [
+      "WORKER_RETURNS/PYAT-C1-02-WITNESS-PAIRING-REPAIR-R1/00_RETURN.md",
+      "WORKER_RETURNS/PYAT-C1-02-WITNESS-PAIRING-REPAIR-R1/01_BLOCKER_REPRODUCTION.json",
+      "WORKER_RETURNS/PYAT-C1-02-WITNESS-PAIRING-REPAIR-R1/FINAL_COURT.txt"
+    ],
+    "inaccurate_claim": "The preserved pre-repair run had two `DID NOT RAISE ConditionValueRelationMismatch` failures.",
+    "actual_pre_repair_result": {
+      "total": "3 failed, 1 passed",
+      "false_semantic_ref": "DID NOT RAISE ConditionValueRelationMismatch",
+      "false_exact_value": "test supplied false_exact_value='0' while truthful value was also '0'; its own inequality assertion failed before composition",
+      "ordering": "evidence sentinel fired"
+    },
+    "acceptance_effect": "NONE",
+    "reason": "The semantic-ref hostile and ordering hostile independently reproduce the blocker before repair. The current exact-value hostile is corrected to '1', is hash-consistent, and is rejected post-repair."
+  }
+}
