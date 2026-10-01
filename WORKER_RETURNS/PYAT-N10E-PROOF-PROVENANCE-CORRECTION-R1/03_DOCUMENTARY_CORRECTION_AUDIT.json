@@ -1,0 +1,32 @@
+{
+  "schema": "PYAT_N10E_DOCUMENTARY_CORRECTION_AUDIT@1",
+  "status": "EXECUTED_SOURCE_FREE",
+  "finding": "REV-N10E-003",
+  "finding_class": "NONBLOCKING_DOCUMENTARY",
+  "disposition": "CORRECTED",
+  "defect_as_reviewed": {
+    "description": "07_FINAL_DISPOSITION.json listed as a current final limitation that commission tip b631e1c 'was not obtainable in the local clone' and that work was performed from 5fafb499, while the same packet later recorded that credentials became available, the branch was rebased onto b631e1c, and the court was re-run. In a final limitations section the sentence was stale and could mislead provenance readers.",
+    "review_reference": "Documentary note in WORKER_RETURNS/PYAT-N10E-EMPIRICAL-SLICE-PROVIDER-INDEPENDENT-REVIEW-R1/00_REVIEW.md"
+  },
+  "correction": {
+    "action": "The stale sentence was removed from the final limitations list and replaced by an explicit 'historical_provenance_note' field that preserves the full truthful history without presenting it as a standing blocker.",
+    "removed_from_limitations": "The commission tip object b631e1c was not obtainable in the local clone (no network credentials); work was performed from the declared accepted base 5fafb499, with the commission document preserved byte-exact in this return directory.",
+    "final_limitations_now": [
+      "AT33 progressive multi-conditioner/world-conditioned possibility is not implemented or claimed; it remains downstream of competent higher-order and world inputs.",
+      "The lane wraps the accepted C1-01 scalar single-conditioner grain; multi-conditioner governed composition is not extended here.",
+      "The fresh-process replay runs on the same host interpreter; it is not a cross-machine or cross-version replay proof.",
+      "The fixture is synthetic and source-free; nothing here proves real-source empirical competence.",
+      "A branch-local PASS is not adoption."
+    ]
+  },
+  "historical_truth_preserved": {
+    "early_local_phase": "commission tip b631e1c40fc9078cf6473004c28532a99308c5db was genuinely absent from the local clone, and 'git fetch origin' failed for lack of an origin credential in that sandbox (no readable keychain entry — 'security' calls failed with a Module Directory Service error — no token environment variable, and the local SSH key was not registered on the account).",
+    "declared_base_used_for_early_work": "5fafb499d53dddadaf8a7b4fd46506e91a09d270",
+    "credentials_later_became_available": true,
+    "branch_fetched_and_confirmed": "the assigned branch head was confirmed to be exactly the issued commission tip b631e1c40",
+    "rebased_onto_governed_tip": true,
+    "final_ancestry": "LAWFUL_AND_RESOLVED — the final history sits directly on b631e1c40 and the returned branch is a lawful descendant",
+    "still_presented_as_current_limitation": false
+  },
+  "grade": "STATIC_INSPECTION"
+}

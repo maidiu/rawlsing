@@ -61,18 +61,32 @@ Neither owner was modified. `EXISTING_OWNER_CHANGE_REQUIRED` was **not** trigger
 
 ## 3. Acceptance court — executed
 
-Complete commissioned court, run once the patch was coherent:
+One exact final run of the commissioned four-file court, on the correction branch
+`agent/deepseek-pyat-hq144-n10e-proof-provenance-correction-r1` at commission tip
+`a7f7eecdeaee58e4d8021b7c571b4956e6301464`, after the corrected P6 changed-source
+test (REV-N10E-001 / REV-N10E-002):
 
 ```
-88 passed in 20.01s
+python -m pytest \
+  rawlsing_next/tests/test_pre553_analytical_composition.py \
+  rawlsing_next/tests/test_pre553_empirical_query.py \
+  rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py \
+  rawlsing_next/tests/test_pre553_empirical_possibility_provider.py -v
+
+88 passed in 15.14s
 ```
+
+That command, count and duration are the **single final record** and agree across
+`00_RETURN.md`, `06_EXECUTION_RECEIPT.json` and `08_FINAL_PYTEST_OUTPUT.txt`.
+Durations recorded earlier in the pre-correction lane (20.01s, 19.09s, 22.84s,
+16.44s) are superseded and are not presented as final.
 
 | Court | Tests | Result |
 |---|---|---|
 | `test_pre553_analytical_composition.py` | 13 | PASS (unchanged) |
 | `test_pre553_empirical_query.py` | 32 | PASS (unchanged) |
 | `test_source_backed_positioned_subject_possibility.py` | 13 | PASS (unchanged) |
-| `test_pre553_empirical_possibility_provider.py` | **30** | PASS (new) |
+| `test_pre553_empirical_possibility_provider.py` | **30** | PASS (1 corrected) |
 
 Baseline before this lane (pre-existing three files): 58 passed. Full verbose output:
 `08_FINAL_PYTEST_OUTPUT.txt`.
@@ -86,8 +100,34 @@ Baseline before this lane (pre-existing three files): 58 passed. Full verbose ou
 | **P3** | identity/dependency closure; determinant mutation reidentifies receipt/result; unconsumed material is not a determinant | PASS |
 | **P4** | no handwritten slice substitution; public API cannot bypass the empirical producer | PASS |
 | **P5** | fail-closed on source-universe, release and target/dependency mismatch | PASS |
-| **P6** | no unauthorized smoothing or proxy laundering; unsupported slice → typed refusal, no geometry | PASS |
+| **P6** | no unauthorized smoothing or proxy laundering; unsupported slice → typed refusal, no geometry; **changed source law moves the geometry** | PASS (corrected) |
 | **P7** | replay: same-process and **fresh-process** identity reproduction | PASS |
+
+### P6 changed-source proof (REV-N10E-001 corrected)
+
+`test_p6_geometry_is_recomputed_not_fixed_when_the_empirical_slice_changes` now builds
+a **second, genuinely different source-free empirical law** through the same fixture
+procedure and runs the real provider against it:
+
+| Law | Rows | Forward denominator | Forward cells | Exact fractions |
+|---|---|---|---|---|
+| canonical AT07 | 100 | 60 | yes 54 / no 6 | 9/10, 1/10 |
+| changed source law | 110 | **70** | yes 54 / **no 16** | **27/35, 8/35** |
+
+The changed slice is the composition's own generated evidence, and its raw support
+equals the changed producer fact's `raw_denominator_support`. A **control** direction
+proves the change is caused by the source law rather than by "any second case":
+the changed law's reverse direction shares the unchanged 62 respondents, so its counts
+do not move.
+
+The changed law also needs its own explicitly universe-scoped query authority, because
+the canonical AT07 authority names only the canonical universe. The fixture builds one
+whose explicit scope names the changed universe — no implicit widening, no
+`latest`/`default` fallback, and the canonical authority is untouched.
+
+> Pre-correction, this test constructed `narrowed_rows` but re-ran the unchanged
+> canonical case, so it proved nothing about changed geometry. That is the defect the
+> independent review recorded as REV-N10E-001 and it is now repaired.
 
 The forward evidence ref `b2407eeb…` and composed result identity `03610f9d…`
 produced through the new provider equal the committed **R8 identity spine** values,

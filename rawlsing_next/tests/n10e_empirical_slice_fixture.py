@@ -73,6 +73,43 @@ FROZEN_ORACLE = {
 
 N10E_EXACT_ALLOWED_CONSUMER_STATES = frozenset({"EXACT_SUPPORTED"})
 
+#: Second, genuinely different source-free empirical law used by the corrected P6
+#: changed-source proof. It appends 10 extra ``POSITION=P1, ANSWER=no`` respondents,
+#: which keeps both target domains ({no,yes} and {P1,P2}), the risk-set construction
+#: and the conditioner grain identical while changing the empirical counts. The
+#: P1-positive cohort stays at 60, so the forward denominator is the *complement*
+#: count that moves: 60 -> 70.
+CHANGED_SOURCE_VARIANT = "CHANGED_SOURCE_LAW"
+CHANGED_SOURCE_EXTRA_ROWS = 10
+
+FROZEN_CHANGED_ORACLE = {
+    "fixture_id": "AT07_BIDIRECTIONAL_110_CHANGED_SOURCE_LAW",
+    "fixture_rows": 110,
+    "forward": {
+        "direction": "POSITION_P1_TO_ANSWER",
+        "denominator": 70,
+        "cells": {"yes": 54, "no": 16},
+        "expected_fraction_yes": {"$exact_fraction": [27, 35]},
+        "expected_fraction_no": {"$exact_fraction": [8, 35]},
+        "expected_consumer_state": "EXACT_SUPPORTED",
+    },
+    "reverse": {
+        "direction": "ANSWER_YES_TO_POSITION",
+        "denominator": 62,
+        "cells": {"P1": 54, "P2": 8},
+        "expected_fraction_P1": {"$exact_fraction": [27, 31]},
+        "expected_consumer_state": "EXACT_SUPPORTED",
+    },
+    "expected_relation_to_canonical": {
+        "forward_denominator_differs": True,
+        "forward_cells_differ": True,
+        "forward_yes_cell_unchanged": True,
+        "reverse_denominator_unchanged": True,
+        "source_universe_ref_differs": True,
+        "source_release_ref_differs": True,
+    },
+}
+
 
 def load_json(path: Path) -> Any:
     return json.loads(Path(path).read_text(encoding="utf-8"))
@@ -97,6 +134,21 @@ def at07_rows() -> list[dict[str, Any]]:
             for n in range(1, count + 1)
         )
     return rows
+
+
+def changed_source_rows() -> list[dict[str, Any]]:
+    """The canonical AT07 law plus 10 extra ``POSITION=P1, ANSWER=no`` respondents.
+
+    Independent arithmetic on this law: the conditioner cohort is still the 60
+    ``POSITION=P1`` respondents, but the target denominator follows the changed
+    cohort composition, giving 54/70 = 27/35 for "yes" and 16/70 = 8/35 for "no".
+    """
+
+    extra = [
+        {"id": f"P1X{n:03d}", "responses": {"POSITION": "P1", "ANSWER": "no"}}
+        for n in range(1, CHANGED_SOURCE_EXTRA_ROWS + 1)
+    ]
+    return at07_rows() + extra
 
 
 def _authority_entry(authority_class: str) -> Any:
@@ -139,9 +191,51 @@ def _relation(role: str, family: str) -> Any:
     return next(x for x in data[family] if x["material"]["role"] == role)
 
 
+def frozen_changed_source_query_authority(universe_ref: Any) -> AuthoritySnapshot:
+    """A source-free query authority whose explicit scope names ``universe_ref``.
+
+    The canonical AT07 query authority is *explicitly* scoped to the single canonical
+    universe. The changed-source law lives in a different universe, so it requires an
+    authority that explicitly names that universe — no implicit scope widening and no
+    "latest"/"default" fallback. This copies the canonical snapshot's governed
+    semantics, replaces only the explicit universe scope, and rebinds the authority
+    content hash to the new semantic material (the hash is validated as sha256 and is
+    the exact-identity binding of that material).
+    """
+
+    base = _query_snapshot()
+    material = dict(base.semantic_fields)
+    material["typed_state"] = base.typed_state
+    material["producer_replay_locator_or_reference_root"] = (
+        base.producer_replay_locator_or_reference_root
+    )
+    material["authority_snapshot_refs"] = tuple(base.authority_snapshot_refs)
+    material["dependency_refs"] = tuple(base.dependency_refs)
+    scope = dict(material["scope_envelope"])
+    scope["source_universe_refs"] = [canonicalize(universe_ref)]
+    material["scope_envelope"] = scope
+    material["authority_id"] = "C1-AT07-CHANGED-SOURCE-QUERY"
+    material["authority_content_hash"] = semantic_hash(canonicalize(material))
+    return AuthoritySnapshot(**material)
+
+
 @contextmanager
-def frozen_at07_source():
-    """Yield the exact AT07 synthetic source with frozen C1-00 authority snapshots."""
+def frozen_at07_source(
+    *,
+    tag: str = "c1-at07",
+    rows: list[dict[str, Any]] | None = None,
+    question_namespace: str = "c1-at07",
+    risk_namespace: str = "c1-at07",
+    scope_query_authority_to_universe: bool = False,
+):
+    """Yield a source-free synthetic source with the frozen C1-00 authority snapshots.
+
+    Defaults reproduce the canonical AT07 law exactly. Passing ``rows`` (and a distinct
+    ``tag``) yields a *different empirical source law* built the same way, while the
+    authority snapshots, question/risk namespaces and consumer fixture semantics stay
+    identical — so a changed-source case exercises the real producer/consumer seam
+    rather than a different fixture procedure.
+    """
 
     source_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::SOURCE_SEMANTICS_TOPOLOGY")
     routing_auth = _snapshot("PRE553_AUTHORITY_SNAPSHOT::ROUTING_RISK_SET")
@@ -157,30 +251,32 @@ def frozen_at07_source():
         "REPLAY_PROTOCOL": replay_auth,
     }
 
-    def frozen_auth(tag, kind, *, families):
+    def frozen_auth(tag_, kind, *, families):
         if kind in exact_by_kind:
             return exact_by_kind[kind]
-        return original_auth(tag, kind, families=families)
+        return original_auth(tag_, kind, families=families)
 
     i03._auth = frozen_auth
     try:
-        rows = at07_rows()
+        active_rows = at07_rows() if rows is None else rows
         source = i03._build_source(
-            "c1-at07",
-            rows,
-            question_namespace="c1-at07",
+            tag,
+            active_rows,
+            question_namespace=question_namespace,
             risk_sets={
                 "R_ALL_100": {
-                    "POSITION": {r["id"] for r in rows},
-                    "ANSWER": {r["id"] for r in rows},
+                    "POSITION": {r["id"] for r in active_rows},
+                    "ANSWER": {r["id"] for r in active_rows},
                 }
             },
-            risk_namespace="c1-at07",
+            risk_namespace=risk_namespace,
         )
     finally:
         i03._auth = original_auth
 
     source["risk_refs"]["R"] = source["risk_refs"]["R_ALL_100"]
+    if scope_query_authority_to_universe:
+        query_auth = frozen_changed_source_query_authority(source["universe"].ref)
     registry = AuthorityRegistry((*source["authorities"], query_auth))
     yield source, query_auth, registry
 
@@ -386,10 +482,28 @@ def build_model_rule(source: Any) -> PositionedSubjectPossibilityModelRule:
     )
 
 
-def build_provider_case(direction: str) -> dict[str, Any]:
-    """Assemble one complete frozen provider case for ``direction``."""
+def build_provider_case(direction: str, *, variant: str | None = None) -> dict[str, Any]:
+    """Assemble one complete frozen provider case for ``direction``.
 
-    with frozen_at07_source() as (source, query_auth, registry):
+    ``variant=None`` (default) builds the canonical AT07 case that the frozen R8
+    identity spine binds. ``variant="CHANGED_SOURCE_LAW"`` builds a *different
+    empirical source law* through the same fixture procedure, keeping the accepted
+    authority snapshots, question/risk namespaces and consumer fixture semantics
+    identical so the only difference is the empirical response law itself.
+    """
+
+    if variant is None:
+        source_kwargs: dict[str, Any] = {}
+    elif variant == CHANGED_SOURCE_VARIANT:
+        source_kwargs = {
+            "tag": "c1-at07-changed",
+            "rows": changed_source_rows(),
+            "scope_query_authority_to_universe": True,
+        }
+    else:
+        raise ValueError(f"unknown N10E fixture variant: {variant!r}")
+
+    with frozen_at07_source(**source_kwargs) as (source, query_auth, registry):
         predicate, producer_query = build_producer(source, query_auth, direction)
         consumer_query, binding = build_consumer(source, direction)
         witness = build_witness(
@@ -398,6 +512,7 @@ def build_provider_case(direction: str) -> dict[str, Any]:
         model_rule = build_model_rule(source)
         return {
             "direction": direction,
+            "variant": variant,
             "source": source,
             "query_authority": query_auth,
             "registry": registry,
@@ -421,12 +536,17 @@ __all__ = [
     "R3_AUTHORITY",
     "R8_SPINE",
     "FROZEN_ORACLE",
+    "FROZEN_CHANGED_ORACLE",
+    "CHANGED_SOURCE_VARIANT",
+    "CHANGED_SOURCE_EXTRA_ROWS",
+    "changed_source_rows",
     "N10E_EXACT_ALLOWED_CONSUMER_STATES",
     "load_json",
     "frozen_spine",
     "at07_rows",
     "fixture_authority",
     "frozen_at07_source",
+    "frozen_changed_source_query_authority",
     "build_producer",
     "build_consumer",
     "build_witness",

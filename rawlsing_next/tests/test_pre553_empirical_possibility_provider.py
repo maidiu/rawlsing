@@ -64,7 +64,7 @@ def _provide(case, **overrides):
     return provide_empirical_possibility_slice(**kwargs)
 
 
-def _cell_numerators(case, result):
+def _cell_numerators(result):
     return {
         cell["cell"]: cell["raw_numerator_support"]
         for cell in result.generated_evidence_or_null.geometry["cells"]
@@ -121,7 +121,7 @@ def test_p1_forward_slice_is_actually_computed_and_producer_derived():
 
     # Geometry truth is frozen arithmetic on the synthetic source law (54 yes / 60).
     assert evidence.raw_support == oracle["denominator"] == 60
-    assert _cell_numerators(case, result) == oracle["cells"] == {"yes": 54, "no": 6}
+    assert _cell_numerators(result) == oracle["cells"] == {"yes": 54, "no": 6}
     assert _cell_fractions(result) == {
         "yes": oracle["expected_fraction"],
         "no": {"$exact_fraction": [1, 10]},
@@ -225,7 +225,7 @@ def test_p2_reverse_slice_preserves_target_topology_risk_support_and_exact_fract
     assert result.provider_state == PROVIDER_STATE_EXACT
     evidence = result.generated_evidence_or_null
     assert evidence.raw_support == oracle["denominator"] == 62
-    assert _cell_numerators(case, result) == oracle["cells"] == {"P1": 54, "P2": 8}
+    assert _cell_numerators(result) == oracle["cells"] == {"P1": 54, "P2": 8}
     assert _cell_fractions(result)["P1"] == oracle["expected_fraction"]
 
     # Target topology and risk support are the accepted reverse direction's.
@@ -710,27 +710,115 @@ def test_p6_zero_support_predicate_mutation_is_caught_by_custody_witness():
 
 
 def test_p6_geometry_is_recomputed_not_fixed_when_the_empirical_slice_changes():
-    """Independent cross-check: change the source law, geometry must follow exactly."""
+    """Changed-source proof (REV-N10E-001).
 
-    case = fx.build_provider_case("forward")
-    full = _provide(case)
-    assert full.generated_evidence_or_null.raw_support == 60
+    A second, genuinely different source-free empirical law is built through the same
+    fixture procedure and the *real* provider is run against it. The provider's
+    denominator and cell geometry must follow the changed empirical product — proving
+    the geometry is derived from the empirical source law rather than fixed.
+    """
 
-    # A strictly narrower but valid conditioner grain: P1 respondents only (60 of them).
-    narrowed_rows = [
-        row for row in fx.at07_rows() if row["responses"]["POSITION"] == "P1"
-    ]
-    assert len(narrowed_rows) == 60
-    narrowed = _provide(case)
-    # Provider output equals the frozen arithmetic on the source law it was given,
-    # and the denominator tracks the producer fact rather than a constant.
-    assert _cell_numerators(case, narrowed) == {"yes": 54, "no": 6}
-    assert narrowed.generated_evidence_or_null.raw_support == len(narrowed_rows) == (
-        narrowed.composition_result.raw_denominator_support
-    )
+    canonical = fx.build_provider_case("forward")
+    changed = fx.build_provider_case("forward", variant=fx.CHANGED_SOURCE_VARIANT)
+    oracle = fx.FROZEN_CHANGED_ORACLE
+    relation = oracle["expected_relation_to_canonical"]
+
+    # --- the changed case really is a different empirical source -----------------
+    assert changed["variant"] == fx.CHANGED_SOURCE_VARIANT
+    assert changed["source"]["universe"].ref != canonical["source"]["universe"].ref
+    assert changed["source"]["release_ref"] != canonical["source"]["release_ref"]
+    assert relation["source_universe_ref_differs"] is True
+    assert relation["source_release_ref_differs"] is True
+    assert len(changed["source"]["respondents"]) == oracle["fixture_rows"] == 110
+    assert len(canonical["source"]["respondents"]) == 100
+    # Same fixture procedure: same question refs, same conditioner grain, same domains.
+    assert changed["source"]["qrefs"] == canonical["source"]["qrefs"]
     assert (
-        narrowed.generated_evidence_or_null.raw_support
-        == narrowed.composition_result.producer_result.facts[0].raw_denominator_support
+        changed["consumer_query"].conditioner_ids
+        == canonical["consumer_query"].conditioner_ids
+    )
+
+    # --- run the real provider on both ------------------------------------------
+    canonical_result = _provide(canonical)
+    changed_result = _provide(changed)
+
+    assert canonical_result.provider_state == PROVIDER_STATE_EXACT
+    assert changed_result.provider_state == PROVIDER_STATE_EXACT
+
+    # --- geometry follows the changed source law, not a constant -----------------
+    assert canonical_result.generated_evidence_or_null.raw_support == 60
+    assert changed_result.generated_evidence_or_null.raw_support == oracle["forward"]["denominator"] == 70
+    assert (
+        changed_result.generated_evidence_or_null.raw_support
+        != canonical_result.generated_evidence_or_null.raw_support
+    ), "changed empirical law must change the produced denominator"
+
+    changed_cells = _cell_numerators(changed_result)
+    assert changed_cells == oracle["forward"]["cells"] == {"yes": 54, "no": 16}
+    assert changed_cells != _cell_numerators(canonical_result)
+    assert _cell_fractions(changed_result) == {
+        "yes": oracle["forward"]["expected_fraction_yes"],
+        "no": oracle["forward"]["expected_fraction_no"],
+    }
+    # The conditioner cohort is unchanged, so the "yes" cell is unchanged while the
+    # denominator and the "no" cell move: the change is in the empirical product.
+    assert changed_cells["yes"] == _cell_numerators(canonical_result)["yes"]
+    assert relation["forward_yes_cell_unchanged"] is True
+    assert relation["forward_denominator_differs"] is True
+    assert relation["forward_cells_differ"] is True
+
+    # --- the changed slice still comes through the accepted seam -----------------
+    changed_composition = changed_result.composition_result
+    changed_evidence = changed_result.generated_evidence_or_null
+    assert (
+        changed_evidence
+        is changed_composition.possibility_slice_evidence_or_null
+    ), "changed-source evidence must be the composition's generated object"
+    assert (
+        changed_result.consumer_result_or_null
+        is changed_composition.consumer_result_or_null
+    )
+    assert changed_result.provider_receipt.generated_evidence_identity_is_producer_derived
+    # ... and it tracks the changed producer fact, not a fabricated one.
+    changed_fact = changed_composition.producer_result.facts[0]
+    assert (
+        changed_evidence.raw_support
+        == changed_fact.raw_denominator_support
+        == changed_composition.raw_denominator_support
+        == 70
+    )
+    assert changed_composition.producer_fact_ref == changed_fact.ref
+    assert changed_composition.producer_fact_ref != canonical_result.composition_result.producer_fact_ref
+    assert changed_evidence.evidence_ref != canonical_result.generated_evidence_or_null.evidence_ref
+    assert changed_result.receipt_ref != canonical_result.receipt_ref
+    assert changed_result.consumer_result_or_null.result_state == (
+        oracle["forward"]["expected_consumer_state"]
+    )
+
+    # --- the reverse direction of the changed law is a genuine control -----------
+    # It shares the unchanged 62 respondents, so its geometry must NOT move: this
+    # rules out "the provider just returned something different for any second case".
+    changed_reverse = _provide(
+        fx.build_provider_case("reverse", variant=fx.CHANGED_SOURCE_VARIANT)
+    )
+    canonical_reverse = _provide(fx.build_provider_case("reverse"))
+    assert changed_reverse.generated_evidence_or_null.raw_support == (
+        oracle["reverse"]["denominator"]
+    ) == 62
+    assert (
+        changed_reverse.generated_evidence_or_null.raw_support
+        == canonical_reverse.generated_evidence_or_null.raw_support
+    )
+    assert _cell_numerators(changed_reverse) == oracle["reverse"]["cells"] == {
+        "P1": 54,
+        "P2": 8,
+    }
+    assert relation["reverse_denominator_unchanged"] is True
+    # The reverse slices are distinct because the source identity differs, even
+    # though the counts agree: identity follows the empirical source, not the number.
+    assert (
+        changed_reverse.generated_evidence_or_null.evidence_ref
+        != canonical_reverse.generated_evidence_or_null.evidence_ref
     )
 
 

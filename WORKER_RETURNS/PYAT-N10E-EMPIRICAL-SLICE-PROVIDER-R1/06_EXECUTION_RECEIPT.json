@@ -12,10 +12,11 @@
   "court_executed": {
     "command": "python -m pytest rawlsing_next/tests/test_pre553_analytical_composition.py rawlsing_next/tests/test_pre553_empirical_query.py rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py rawlsing_next/tests/test_pre553_empirical_possibility_provider.py -v",
     "targeted_development_runs": "provider court only, iterated to coherence",
-    "complete_court_runs": 2,
+    "complete_court_runs": 1,
     "final_result": "88 passed",
-    "duration_seconds_final": 20.01,
-    "output_file": "08_FINAL_PYTEST_OUTPUT.txt"
+    "duration_seconds_final": 15.14,
+    "output_file": "08_FINAL_PYTEST_OUTPUT.txt",
+    "correction_note": "REV-N10E-002: after the corrected P6 changed-source test, the commissioned four-file court was run exactly ONCE on branch agent/deepseek-pyat-hq144-n10e-proof-provenance-correction-r1 at commission tip a7f7eecdeaee58e4d8021b7c571b4956e6301464. The command, counts and duration below are that single run and agree with 00_RETURN.md and 08_FINAL_PYTEST_OUTPUT.txt. Earlier durations recorded during the pre-correction lane are superseded and are not presented as final."
   },
   "test_counts": {
     "total_passed": 88,
@@ -30,7 +31,13 @@
     },
     "baseline_before_this_lane_pre_existing_three_files": "58 passed",
     "new_tests_added": 30,
-    "count_verification": "per-file counts were re-derived by counting PASSED lines per test file in 08_FINAL_PYTEST_OUTPUT.txt after an earlier hand estimate was found wrong; 13+32+13+30 = 88"
+    "count_verification": "per-file counts re-derived by counting PASSED lines per file in 08_FINAL_PYTEST_OUTPUT.txt for the single final run; 13+32+13+30 = 88, matching the recording summary line '88 passed in 15.14s'.",
+    "superseded_durations_seconds": [
+      20.01,
+      19.09,
+      22.84,
+      16.44
+    ]
   },
   "count_derivation_note": "Per-file counts are derived from the verbose run recorded in 08_FINAL_PYTEST_OUTPUT.txt; the authoritative total is the pytest summary line '88 passed'.",
   "commissioned_court_coverage": {
@@ -106,5 +113,7 @@
   "implementation_commit_sha_superseded": "5288a0b1d8ec634445ce0cb45db832b57fa91631",
   "rebase_note": "The branch was rebased onto the issued commission tip b631e1c40fc9078cf6473004c28532a99308c5db, which the remote branch already carried. That commit adds only WORKER_RETURNS/PYAT-N10E-EMPIRICAL-SLICE-PROVIDER-R1/00_COMMISSION.md with blob 63e8cf3eaa54b4adb6b6bf5cd9c280e2b7dfe487, byte-identical to the commission copy this lane committed; the remote blob was kept. Only commit SHAs changed; no source, test or evidence content changed.",
   "worktree_path": "/Users/matthewsmith/Desktop/Rawlsing/rawlsing-pyat-hq140-n10e-r1",
-  "pushed_branch": "agent/deepseek-pyat-hq140-n10e-empirical-slice-provider-r1"
+  "pushed_branch": "agent/deepseek-pyat-hq140-n10e-empirical-slice-provider-r1",
+  "provider_implementation_unchanged": true,
+  "provider_blob": "23167aa25291fb148b1e3cf210ac33fe7769b783"
 }

@@ -113,11 +113,12 @@
     {
       "id": "H13",
       "threat": "geometry is a hardcoded constant rather than honestly derived from the empirical product",
-      "law_under_test": "denominator and numerators track the producer fact",
+      "law_under_test": "a genuinely different empirical source law changes the produced denominator and cell geometry, which still flows through the accepted seam",
       "test": "test_p6_geometry_is_recomputed_not_fixed_when_the_empirical_slice_changes",
       "result": "PASS",
-      "evidence": "provider raw_support equals the producer fact's raw_denominator_support and the frozen arithmetic on the source law",
-      "grade": "source_free_executed_producer"
+      "evidence": "Two distinct source-free empirical laws are built through the same fixture procedure and both are run through the real provider. Canonical AT07 law -> denominator 60, cells {yes:54, no:6}. Changed law (10 extra POSITION=P1/ANSWER=no respondents, 110 rows) -> denominator 70, cells {yes:54, no:16}, exact fractions yes=27/35 and no=8/35. The changed provider evidence is the composition's generated object, and its raw support equals the changed producer fact's raw_denominator_support. Control: the changed law's reverse direction shares the unchanged 62 respondents, so its counts do not move - ruling out 'any second case returns something different'. Source universe and release refs differ between the two laws.",
+      "grade": "source_free_executed_producer",
+      "correction": "REV-N10E-001. The pre-correction test constructed narrowed_rows but re-ran the unchanged canonical case, so it proved nothing about changed geometry. The corrected test actually builds and runs a changed source."
     },
     {
       "id": "H14",

@@ -1,0 +1,113 @@
+{
+  "schema": "PYAT_N10E_CHANGED_SOURCE_PROOF_AUDIT@1",
+  "status": "EXECUTED_SOURCE_FREE",
+  "finding": "REV-N10E-001",
+  "finding_class": "BLOCKING_EVIDENCE_INTEGRITY",
+  "disposition": "CORRECTED",
+  "corrected_test": "rawlsing_next/tests/test_pre553_empirical_possibility_provider.py::test_p6_geometry_is_recomputed_not_fixed_when_the_empirical_slice_changes",
+  "defect_as_reviewed": {
+    "description": "The test constructed `narrowed_rows` but never rebuilt or passed a repository/query/case from those rows; it called _provide(case) again on the unchanged canonical case. It passed only because the canonical forward denominator (60) happened to equal len(narrowed_rows) (60), so it proved nothing about changed geometry.",
+    "review_reference": "REV-N10E-001 in WORKER_RETURNS/PYAT-N10E-EMPIRICAL-SLICE-PROVIDER-INDEPENDENT-REVIEW-R1/00_REVIEW.md",
+    "unsupported_claim_withdrawn": "The pre-correction 05_HOSTILE_AND_REPLAY_AUDIT.json H13 entry presented this test as changed-source executed evidence."
+  },
+  "correction": {
+    "approach": "Build a second, genuinely different source-free empirical law through the same fixture procedure and run the real public provider against it.",
+    "new_fixture_symbols": [
+      "CHANGED_SOURCE_VARIANT",
+      "CHANGED_SOURCE_EXTRA_ROWS",
+      "FROZEN_CHANGED_ORACLE",
+      "changed_source_rows",
+      "frozen_changed_source_query_authority"
+    ],
+    "fixture_extension": "rawlsing_next/tests/n10e_empirical_slice_fixture.py now parameterizes frozen_at07_source(tag, rows, namespaces, scope_query_authority_to_universe) and build_provider_case(direction, variant=...). Canonical defaults are unchanged; the changed path is opt-in.",
+    "provider_implementation_modified": false,
+    "provider_blob_at_tip": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+    "provider_blob_after_correction": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+    "counterexample_found": false,
+    "counterexample_terminal_not_used": "COUNTEREXAMPLE_REQUIRES_PROVIDER_REOPEN"
+  },
+  "changed_source_law": {
+    "variant_id": "CHANGED_SOURCE_LAW",
+    "construction": "canonical AT07 law plus 10 additional POSITION=P1, ANSWER=no respondents (110 rows)",
+    "held_constant": [
+      "same frozen C1-00 authority snapshots (source/routing/coordinate/replay)",
+      "same question and risk namespaces, hence identical question refs",
+      "same consumer fixture subject semantics and conditioner grain",
+      "same provider entry point and accepted C1-01 composition seam"
+    ],
+    "differs_in": [
+      "empirical respondent rows (110 vs 100)",
+      "source universe ref",
+      "source release ref",
+      "explicitly universe-scoped query authority"
+    ]
+  },
+  "independent_frozen_expected_truth": {
+    "canonical_forward": {"denominator": 60, "cells": {"yes": 54, "no": 6}},
+    "changed_forward": {
+      "denominator": 70,
+      "cells": {"yes": 54, "no": 16},
+      "exact_fraction_yes": {"$exact_fraction": [27, 35]},
+      "exact_fraction_no": {"$exact_fraction": [8, 35]}
+    },
+    "changed_reverse_control": {"denominator": 62, "cells": {"P1": 54, "P2": 8}},
+    "arithmetic_basis": "exact arithmetic on the row counts: 54/70 = 27/35 and 16/70 = 8/35; the 10 added rows are POSITION=P1 so the ANSWER=yes cohort stays at 62"
+  },
+  "observed_on_execution": {
+    "canonical_forward": {"denominator": 60, "cells": {"yes": 54, "no": 6}},
+    "changed_forward": {"denominator": 70, "cells": {"yes": 54, "no": 16}},
+    "changed_reverse": {"denominator": 62, "cells": {"P1": 54, "P2": 8}},
+    "matches_frozen_expected_truth": true,
+    "grade": "source_free_executed_producer"
+  },
+  "proof_obligations_and_how_each_is_met": [
+    {
+      "obligation": "the provider actually consumes changed empirical input",
+      "met_by": "a second repository/release/query/predicate/witness/case is built from the changed rows and passed to provide_empirical_possibility_slice",
+      "grade": "source_free_executed_producer"
+    },
+    {
+      "obligation": "produced denominator/cell geometry follows the changed empirical product",
+      "met_by": "changed raw_support == 70 and cells {yes:54, no:16}, both differing from canonical (60 and {yes:54, no:6}) and equal to the independently frozen changed oracle",
+      "grade": "source_free_executed_producer"
+    },
+    {
+      "obligation": "the changed result still flows through the accepted composition/provider seam",
+      "met_by": "changed evidence IS the composition's possibility_slice_evidence_or_null; consumer result IS the composition's consumer_result_or_null; receipt reports generated_evidence_identity_is_producer_derived == True",
+      "grade": "generated_evidence + consumer_execution"
+    },
+    {
+      "obligation": "geometry is not fabricated to match",
+      "met_by": "changed evidence raw_support == changed producer fact raw_denominator_support == composition raw_denominator_support; provider source still contains no probability arithmetic (no Fraction(, no float(), no local _exact_fraction)",
+      "grade": "source_free_executed_producer + static_inspection"
+    },
+    {
+      "obligation": "the difference is attributable to the source law, not to 'any second case differs'",
+      "met_by": "control: the changed law's reverse direction shares the unchanged 62 respondents and its counts do NOT move (62; P1 54 / P2 8); only identity refs differ",
+      "grade": "source_free_executed_producer"
+    },
+    {
+      "obligation": "no hard-coded geometry inside the provider and no producer bypass",
+      "met_by": "provider implementation blob is byte-identical before and after this correction (23167aa2...), so no implementation change was needed or made",
+      "grade": "static_inspection"
+    }
+  ],
+  "authority_scope_handling": {
+    "problem": "The canonical AT07 query authority is explicitly scoped to exactly one universe ref, so the changed-source universe was refused with Pre553AuthorityError('exact authority scope does not include source_universe_refs') -> typed UNAVAILABLE / MISSING_REQUIRED_AUTHORITY rather than silently coerced.",
+    "resolution": "The fixture builds a changed-source query authority whose explicit scope names the changed universe (frozen_changed_source_query_authority), copying the canonical governed semantics and replacing only the explicit universe scope, with the authority content hash rebound to the new material.",
+    "implicit_scope_widening": false,
+    "latest_or_default_fallback": false,
+    "canonical_authority_unchanged": true,
+    "note": "This is a fixture-only authority construction. It does not alter provider behaviour, owner law, or the canonical AT07 authority."
+  },
+  "write_allowlist_conformance": {
+    "files_changed": [
+      "rawlsing_next/tests/test_pre553_empirical_possibility_provider.py",
+      "rawlsing_next/tests/n10e_empirical_slice_fixture.py"
+    ],
+    "provider_unchanged": true,
+    "fresh_process_runner_unchanged": true,
+    "independent_review_return_untouched": true,
+    "owners_untouched": true
+  }
+}

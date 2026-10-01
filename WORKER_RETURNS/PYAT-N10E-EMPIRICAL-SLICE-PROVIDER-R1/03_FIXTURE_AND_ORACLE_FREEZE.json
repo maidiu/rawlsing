@@ -11,21 +11,58 @@
   ],
   "frozen_source_law": {
     "rows": 100,
-    "forward_grain": {"conditioner": "POSITION=P1", "target": "ANSWER", "members": 60, "cells": {"yes": 54, "no": 6}},
-    "reverse_grain": {"conditioner": "ANSWER=yes", "target": "POSITION", "members": 62, "cells": {"P1": 54, "P2": 8}}
+    "forward_grain": {
+      "conditioner": "POSITION=P1",
+      "target": "ANSWER",
+      "members": 60,
+      "cells": {
+        "yes": 54,
+        "no": 6
+      }
+    },
+    "reverse_grain": {
+      "conditioner": "ANSWER=yes",
+      "target": "POSITION",
+      "members": 62,
+      "cells": {
+        "P1": 54,
+        "P2": 8
+      }
+    }
   },
   "frozen_expected_truth": {
     "forward": {
       "denominator": 60,
-      "cells": {"yes": 54, "no": 6},
-      "exact_fraction_yes": {"$exact_fraction": [9, 10]},
-      "exact_fraction_no": {"$exact_fraction": [1, 10]},
+      "cells": {
+        "yes": 54,
+        "no": 6
+      },
+      "exact_fraction_yes": {
+        "$exact_fraction": [
+          9,
+          10
+        ]
+      },
+      "exact_fraction_no": {
+        "$exact_fraction": [
+          1,
+          10
+        ]
+      },
       "consumer_state": "EXACT_SUPPORTED"
     },
     "reverse": {
       "denominator": 62,
-      "cells": {"P1": 54, "P2": 8},
-      "exact_fraction_P1": {"$exact_fraction": [27, 31]},
+      "cells": {
+        "P1": 54,
+        "P2": 8
+      },
+      "exact_fraction_P1": {
+        "$exact_fraction": [
+          27,
+          31
+        ]
+      },
       "consumer_state": "EXACT_SUPPORTED"
     }
   },
@@ -50,5 +87,66 @@
     "purpose": "The fixture law must still be the accepted AT07 law; a drifting copy fails."
   },
   "grade": "EXECUTED_SOURCE_FREE",
-  "not_claimed": "This freeze does not upgrade documentary fixture definitions into executed proof beyond the tests actually executed and recorded in 08_FINAL_PYTEST_OUTPUT.txt."
+  "not_claimed": "This freeze does not upgrade documentary fixture definitions into executed proof beyond the tests actually executed and recorded in 08_FINAL_PYTEST_OUTPUT.txt.",
+  "changed_source_law_fixture": {
+    "purpose": "REV-N10E-001 second source-free fixture used by the corrected P6 changed-source proof",
+    "variant_id": "CHANGED_SOURCE_LAW",
+    "fixture_id": "AT07_BIDIRECTIONAL_110_CHANGED_SOURCE_LAW",
+    "construction": "canonical AT07 law plus 10 additional POSITION=P1, ANSWER=no respondents (110 rows total)",
+    "procedure_held_constant": [
+      "same frozen C1-00 authority snapshots for source/routing/coordinate/replay semantics",
+      "same question and risk namespaces (identical question refs)",
+      "same consumer fixture subject semantics and conditioner grain (direction POSITION_P1 -> ANSWER)",
+      "same provider entry point and accepted C1-01 composition seam"
+    ],
+    "independent_frozen_expected_truth": {
+      "forward": {
+        "denominator": 70,
+        "cells": {
+          "yes": 54,
+          "no": 16
+        },
+        "exact_fraction_yes": {
+          "$exact_fraction": [
+            27,
+            35
+          ]
+        },
+        "exact_fraction_no": {
+          "$exact_fraction": [
+            8,
+            35
+          ]
+        },
+        "consumer_state": "EXACT_SUPPORTED"
+      },
+      "reverse_control": {
+        "denominator": 62,
+        "cells": {
+          "P1": 54,
+          "P2": 8
+        },
+        "note": "unchanged, because the 10 added respondents are all POSITION=P1 and therefore do not enter the ANSWER=yes cohort"
+      }
+    },
+    "arithmetic": "54/70 = 27/35 and 16/70 = 8/35 (exact fractions, independently derived from the row counts)",
+    "scope_authority_note": "The canonical AT07 query authority explicitly names only the canonical universe. The changed law lives in a different universe, so the fixture builds a changed-source query authority whose explicit scope names that universe (frozen_changed_source_query_authority). No implicit scope widening, no 'latest'/'default' fallback, and the canonical authority is unchanged.",
+    "observed_on_execution": {
+      "canonical": {
+        "denominator": 60,
+        "cells": {
+          "yes": 54,
+          "no": 6
+        }
+      },
+      "changed": {
+        "denominator": 70,
+        "cells": {
+          "yes": 54,
+          "no": 16
+        }
+      },
+      "matches_frozen_expected_truth": true
+    }
+  }
 }
