@@ -1,0 +1,39 @@
+{
+  "schema": "PYAT_C1_02_OWNER_FIXES@1",
+  "owner": "rawlsing_next/pre553_analytical_composition.py",
+  "principle": "Each fix below was forced by a real court that could not be written or could not pass without it. All three are minimal generalizations inside the C1 analytical owner, which the commission permits, and all three preserve accepted C1-01 behaviour (the 58 C1-01 regression tests pass unchanged).",
+  "fixes": [
+    {
+      "id": "FIX-1",
+      "title": "Witness relation law ignored governed empirical-position coordinate leaves",
+      "location": "_actual_leaves(); _verify_witness() leaf-matching block; helper _leaf_semantic_ref(); VALUE_BEARING_LEAF_TYPES",
+      "defect": "_actual_leaves collected only leaf_type == 'SURVEY_RESPONSE_EVENT'. A conditioner on a governed empirical-position coordinate produced zero actual leaves, so _verify_witness could never match the frozen leaf projection and always raised CONDITION_VALUE_RELATION_MISMATCH. The analytical owner therefore could not express any coordinate conditioner, even though the discovery owner exposes RESPONSE_X_COORDINATE families and the commission requires conditioning on governed non-response coordinates.",
+      "fix": "Treat 'EMPIRICAL_POSITION_COORDINATE' as a value-bearing leaf alongside 'SURVEY_RESPONSE_EVENT', and match the frozen leaf projection against the actual leaf using the semantic-ref key that belongs to each leaf type (coordinate_semantic_ref vs question_semantic_ref), still requiring exact leaf_type, operator and exact_value agreement.",
+      "c01_preservation": "The SURVEY_RESPONSE_EVENT path and the legacy single-conditioner witness format are unchanged; C1-01 AT07 forward/reverse identities are unaffected.",
+      "court_that_forced_it": "test_at10_minority_branch_survives_c1_composition and test_at10_no_supported_discovery_branch_is_silently_deleted",
+      "test_only_support_change": "c1_at08_at13_fixture._leaf_projection and build_witness_for_binding gained a leaf_type parameter so the frozen projection uses the owner-native key for the conditioner kind."
+    },
+    {
+      "id": "FIX-2",
+      "title": "Discovery consumption consumed fact_refs[0] instead of the candidate fact",
+      "location": "_validate_discovery_consumption()",
+      "defect": "The receipt's empirical_fact_refs list carries the baseline fact alongside the candidate fact. Taking index 0 is arbitrary and, for a MINORITY_OR_NONMODAL_DEPARTURE grammar, selected the baseline fact, so the check 'fact predicate == winning predicate' failed with DISCOVERY_CONSUMPTION_MISMATCH even though the receipt was valid and supported.",
+      "fix": "Select the fact whose condition_predicate_ref equals the winning predicate ref; raise DiscoveryConsumptionMismatch only when no such fact exists.",
+      "c01_preservation": "For the single-fact-per-receipt case exercised by the C1-02 return's AT10 court, the selected fact is the same object as before.",
+      "court_that_forced_it": "test_at10_no_supported_discovery_branch_is_silently_deleted"
+    },
+    {
+      "id": "FIX-3",
+      "title": "Recursive lineage could not reach past the immediate parent",
+      "location": "_validate_recursive_lineage()",
+      "defect": "Lineage was assembled from the handoff ref, the immediate parent branch ref and an optional scope_context parent_branch_refs list. A depth-two continuation reaches its earlier generation through the discovered grammar atom's ancestry_refs, so the full ancestor chain was structurally unreachable. The commission explicitly requires 'full ancestor chain required by the owner', and requires a depth-two continuation to be consumed.",
+      "fix": "Also absorb every atom ancestry_refs entry from the retained candidate_universe_definition, de-duplicating by ref key while preserving order.",
+      "c01_preservation": "Direct and discovery routes do not use this function; the C1-02 return's depth-one AT11 assertions still hold.",
+      "court_that_forced_it": "test_at11_depth_two_continuation_reaches_the_recursive_owner_twice and test_at11_depth_two_continuation_is_reproducible_in_a_fresh_process"
+    }
+  ],
+  "upstream_owner_changes_made": [],
+  "existing_owner_change_required_raised": false,
+  "authority_gap_raised": false,
+  "note": "No upstream empirical, discovery, recursive or consumer owner was edited. AT13's required non-scalar grain (RANKED_RESPONSE component vectors) turned out to be expressible in existing owners, so EXISTING_OWNER_CHANGE_REQUIRED and AUTHORITY_GAP do not apply."
+}

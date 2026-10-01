@@ -1,79 +1,105 @@
 {
-  "schema": "PYAT_C1_02_RECURSIVE_FRESH_PROCESS_RECEIPT@2",
-  "correction_note": "Version 1 claimed a 'second generation / depth-two continuation' step. No such step exists in the implementation. Version 2 records only the steps that actually execute.",
+  "schema": "PYAT_C1_02_RECURSIVE_FRESH_PROCESS_RECEIPT@3",
+  "supersedes": "PYAT_C1_02_RECURSIVE_FRESH_PROCESS_RECEIPT@2 (pre-correction)",
   "at": "AT11",
   "test_names": [
     "test_at11_recursive_handoff_composition_continues_lineage",
     "test_at11_recursive_handoff_rejects_predicate_mismatch",
-    "test_at11_fresh_process_runner_reproduces_recursive_composition"
+    "test_at11_fresh_process_runner_reproduces_recursive_composition",
+    "test_at11_depth_two_continuation_reaches_the_recursive_owner_twice",
+    "test_at11_lookalike_child_under_different_lineage_does_not_alias",
+    "test_at11_depth_two_continuation_is_reproducible_in_a_fresh_process"
   ],
-  "runner_file": "rawlsing_next/tests/c1_at08_at13_fresh_process_runner.py",
+  "runner_files": [
+    "rawlsing_next/tests/c1_at08_at13_fresh_process_runner.py (run: depth-one, preserved from the C1-02 return)",
+    "rawlsing_next/tests/c1_at08_at13_fresh_process_runner.py (run_depth_two: depth-two, added by this correction; entrypoint --depth-two)"
+  ],
+  "fixture": "6 respondents R1..R6; X=1 for R1..R4, H=1 for R1,R2,R5",
   "steps_that_actually_execute": [
     {
       "step": 1,
       "grade": "source-free executed producer",
       "owner": "rawlsing_next.pre553_recursive_handoff.execute_exact_bounded_discovery_with_handoffs",
-      "action": "Generation-one exact bounded discovery with a RECURSIVE_SUBGROUP_FORK rule over parent branch (all 6 respondents) against atom X=1",
-      "outcome": "g1.handoffs[0]; underlying receipt typed_state DISCOVERED_RESULT_SUPPORTED"
+      "action": "Generation one: exact bounded discovery with RECURSIVE_SUBGROUP_FORK, parent branch = all six respondents, fork atom X=1",
+      "outcome": "one DISCOVERED_RESULT_SUPPORTED receipt; one handoff; replayed cohort size 4"
     },
     {
       "step": 2,
       "grade": "retained serialization",
       "owner": "rawlsing_next.pre553_recursive_handoff.write_recursive_handoff_bundle",
-      "action": "Persist the child handoff to a tmp_path bundle file"
+      "action": "Persist the child handoff to a tmp bundle file"
     },
     {
       "step": 3,
       "grade": "fresh-process custody load",
       "owner": "rawlsing_next.pre553_recursive_handoff.load_recursive_handoff_bundle",
-      "action": "Reload bundle inside a fresh Python interpreter; assert exactly one handoff",
-      "location": "c1_at08_at13_fresh_process_runner.run()"
+      "action": "Reload inside a fresh interpreter; assert exactly one handoff and that the re-executed generation-one handoff ref equals the persisted ref",
+      "shared_identity_source": "c1_at08_at13_fresh_process_runner.gen1_material() is called by both the persisting court and the fresh process, so writer and replayer cannot drift"
     },
     {
       "step": 4,
       "grade": "fresh-process membership replay",
       "owner": "rawlsing_next.pre553_recursive_handoff.replay_recursive_branch_membership",
-      "action": "Replay retained child cohort membership against a freshly constructed synthetic repository",
-      "output_field": "child_member_refs"
+      "action": "Replay the retained generation-one child cohort (4 members) in the fresh process"
     },
     {
       "step": 5,
-      "grade": "consumer use",
-      "owner": "rawlsing_next.pre553_analytical_composition.compose_positioned_subject_possibility",
-      "action": "Compose the reloaded generation-1 handoff into a positioned-subject possibility slice and invoke the actual consumer",
-      "outcome": "producer_route MX01R2_RECURSIVE_TO_POSITIONED_SUBJECT; analytical_state SUPPORTED; coverage_state RECURSIVE_DEPTH_CONTINUATION; consumer EXACT_SUPPORTED"
+      "grade": "source-free executed producer (SECOND ENTRY INTO THE RECURSIVE OWNER)",
+      "owner": "rawlsing_next.pre553_recursive_handoff.execute_exact_bounded_discovery_with_handoffs",
+      "action": "Generation two: the persisted branch becomes the branch atom via the exact public recursive_parent_atom(handoff1, 'CHILD'); fork atom H=1",
+      "outcome": "one DISCOVERED_RESULT_SUPPORTED receipt; handoff2.ref != handoff1.ref; handoff2.immediate_parent_branch_ref == handoff1.winning_predicate.ref; handoff1.ref present in handoff2 candidate grammar atom ancestry_refs; replayed cohort size 2, strictly nested inside the 4-member cohort"
     },
     {
       "step": 6,
+      "grade": "consumer use",
+      "owner": "rawlsing_next.pre553_analytical_composition.compose_positioned_subject_possibility",
+      "action": "Consume the depth-two handoff through the C1 analytical path and the actual possibility consumer",
+      "outcome": "producer_route MX01R2_RECURSIVE_TO_POSITIONED_SUBJECT; analytical_state SUPPORTED; raw_denominator_support 2; consumer EXACT_SUPPORTED; recursive_lineage_refs contains handoff1.ref"
+    },
+    {
+      "step": 7,
       "grade": "determinism witness",
-      "action": "Run the fresh-process runner twice as independent subprocesses and require byte-identical payloads",
+      "action": "Run the fresh-process depth-two runner twice as independent subprocesses and require byte-identical payloads",
       "outcome": "outputs[0] == outputs[1]"
     }
   ],
-  "commissioned_steps_NOT_performed": [
-    {
-      "commissioned": "second generation / depth-two continuation",
-      "status": "NOT_PERFORMED",
-      "detail": "The recursive owner execute_exact_bounded_discovery_with_handoffs is invoked exactly once. The fresh runner re-consumes the persisted generation-1 handoff; it does not re-enter the recursive owner to produce a generation-2 handoff. 'RECURSIVE_DEPTH_CONTINUATION' is a label, not a depth-two execution."
-    },
-    {
-      "commissioned": "two child predicates with lookalike visible text but different lineage must not alias",
-      "status": "NOT_PERFORMED",
-      "detail": "The hostile test test_at11_recursive_handoff_rejects_predicate_mismatch supplies a materially different predicate (X=0 instead of X=1). No fixture constructs two children with identical visible text under different parents, so the aliasing attack is untested."
-    }
-  ],
-  "lineage_assertions_actually_verified": {
+  "depth_two_is_real": {
+    "recursive_owner_entry_count": 2,
+    "gen2_branch_atom_source": "recursive_parent_atom (public owner function)",
+    "gen2_cohort_size": 2,
+    "gen1_cohort_size": 4,
+    "strictly_nested": true,
+    "note": "RECURSIVE_DEPTH_CONTINUATION is no longer merely a label; a second generation is produced by the recursive owner and consumed at its own denominator."
+  },
+  "lineage_assertions_verified": {
     "immediate_parent_branch_ref_retained": true,
     "winning_predicate_retained": true,
     "bundle_ref_retained": true,
     "handoff_ref_retained": true,
     "child_member_refs_retained": true,
+    "full_ancestor_chain_reaches_generation_one": true,
     "recursive_lineage_refs_retained": true,
     "evidence_ref_retained": true,
     "composed_result_identity_hash_retained": true,
-    "full_ancestor_chain_depth_asserted": false,
-    "support_asserted_explicitly": false
+    "support_asserted_explicitly": true,
+    "required_owner_fix": "full ancestor chain required the lineage closure fix recorded in 06_OWNER_FIXES.json"
   },
-  "coverage_distinction_status": "NOT_ESTABLISHED",
-  "coverage_distinction_note": "The commissioned requirement to retain the complete discovery coverage record and explicitly distinguish handoff-selected positives from negative/unselected/unvisited coverage was not implemented. Only a single coverage_state string is emitted."
+  "hostile_lineage_anti_aliasing": {
+    "court": "test_at11_lookalike_child_under_different_lineage_does_not_alias",
+    "construction": "the identical X=1 fork atom is applied under two different parent cohorts (six-member vs five-member), producing lookalike visible child text",
+    "asserted": [
+      "winning-predicate hashes differ",
+      "handoff refs differ",
+      "immediate parent branch refs differ",
+      "evaluated frontier refs differ",
+      "consuming one lineage under the other's predicate raises RecursiveLineageMismatch"
+    ],
+    "aliasing_possible": false
+  },
+  "coverage_distinction": {
+    "status": "PARTIAL",
+    "retained": "Each generation retains its exact declared-frontier receipt set with SUPPORTED typed states, and handoff-selected positives remain distinguishable from the attached full discovery record.",
+    "not_exercised": "EXPLICIT_UNKNOWN_UNVISITED adaptive territory, because no adaptive/partial route is consumed at this grain.",
+    "exhaustive_coverage_claimed": false
+  }
 }

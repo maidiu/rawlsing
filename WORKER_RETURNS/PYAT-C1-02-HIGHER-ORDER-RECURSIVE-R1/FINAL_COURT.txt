@@ -1,25 +1,50 @@
-PYAT C1-02 Final Required Court
-================================
+PYAT C1-02 CORRECTION — Final Commissioned Court
+================================================
+
+HEAD tested:  795bd0814980b06174119a766a3f3940a2842385
+Branch:       agent/opencode-pyat-hq139-c1-02-correction-r1
+Base:         21254c57d92c6411282de13450fc2bdfab21d345 (immutable Kimi C1-02 return)
+Accepted C1-01 baseline: 5fafb499d53dddadaf8a7b4fd46506e91a09d270
+
+Runtime:
+  python: 3.12.14  (/tmp/c1-01-r8-release-spine-venv/bin/python)
+  pytest:  9.1.1
 
 Command:
-/tmp/c1-01-r8-release-spine-venv/bin/python -m pytest -q rawlsing_next/tests/test_pre553_analytical_composition.py rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py rawlsing_next/tests/test_pre553_empirical_query.py rawlsing_next/tests/test_pre553_discovery_exact.py rawlsing_next/tests/test_pre553_recursive_handoff.py rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py
-
-Python: 3.12.14
-pytest: 9.1.1
+  /tmp/c1-01-r8-release-spine-venv/bin/python -m pytest -q \
+    rawlsing_next/tests/test_pre553_analytical_composition.py \
+    rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py \
+    rawlsing_next/tests/test_pre553_empirical_query.py \
+    rawlsing_next/tests/test_pre553_discovery_exact.py \
+    rawlsing_next/tests/test_pre553_recursive_handoff.py \
+    rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py
 
 Output:
-........................................................................ [ 86%]
-...........                                                              [100%]
-83 passed in 8.22s
+........................................................................ [ 68%]
+.................................                                        [100%]
+105 passed in 10.41s
 
 Exit code: 0
 
-Summary:
-- test_pre553_analytical_composition.py: 58 passed (C1-01 regression court)
-- test_pre553_analytical_composition_higher_order.py: 9 passed (C1-02 AT08–AT13 court)
-- test_pre553_empirical_query.py: passed
-- test_pre553_discovery_exact.py: passed
-- test_pre553_recursive_handoff.py: passed
-- test_source_backed_positioned_subject_possibility.py: passed
+Per-file test counts (pytest --collect-only):
+  test_pre553_analytical_composition.py .................  13
+  test_pre553_analytical_composition_higher_order.py ...  31
+  test_pre553_empirical_query.py .......................  32
+  test_pre553_discovery_exact.py .......................  14
+  test_pre553_recursive_handoff.py .....................   2
+  test_source_backed_positioned_subject_possibility.py .  13
+                                                        ----
+                                                         105
 
-Total: 83 passed, 0 failed, 0 errors, 0 skipped
+Totals: 105 passed, 0 failed, 0 errors, 0 skipped
+
+C1-01 regression law: PRESERVED (all 13 accepted C1-01 analytical-composition
+tests pass on the corrected owner; legacy single-conditioner witness format and
+AT07 forward/reverse identities unchanged).
+
+Wider regression attribution:
+  NO_WIDER_REGRESSIONS_DETECTED_AT_ACCEPTED_C1_01_BASELINE_GRAIN
+  (correction 795bd0814 == Kimi 21254c57d == accepted baseline 5fafb499, 53/53)
+
+Terminal token:
+  C1_02_HIGHER_ORDER_RECURSIVE_RETURNED__HQ_ADJUDICATION_REQUIRED

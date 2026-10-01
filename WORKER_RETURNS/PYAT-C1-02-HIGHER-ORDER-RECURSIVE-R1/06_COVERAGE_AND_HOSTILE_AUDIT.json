@@ -1,5 +1,5 @@
 {
-  "schema": "PYAT_C1_02_COVERAGE_AND_HOSTILE_AUDIT@1",
+  "schema": "PYAT_C1_02_COVERAGE_AND_HOSTILE_AUDIT@2",
   "coverage_grades_distinct": [
     "static inspection",
     "source-free executed producer",
@@ -11,53 +11,115 @@
   "hostile_cases": [
     {
       "at": "AT08",
-      "case": "context_mismatch_fails_closed",
-      "description": "Incompatible source/release/risk/measure context fails closed",
-      "expected": "raises typed exception before consumer call",
-      "test_name": "test_at08_context_mismatch_fails_closed"
+      "case": "incompatible_release_context",
+      "expected": "SOURCE_RELEASE_MISMATCH before consumer call",
+      "test_name": "test_at08_incompatible_release_context_fails_closed",
+      "status": "EXECUTED"
+    },
+    {
+      "at": "AT08",
+      "case": "incompatible_universe_context",
+      "expected": "SOURCE_UNIVERSE_MISMATCH before consumer call",
+      "test_name": "test_at08_incompatible_universe_context_fails_closed",
+      "status": "EXECUTED"
+    },
+    {
+      "at": "AT08",
+      "case": "measure_basis_never_bridged",
+      "expected": "AnalyticalCompositionError; RAW and weighted never alias",
+      "test_name": "test_at08_incompatible_measure_context_fails_closed",
+      "status": "EXECUTED"
+    },
+    {
+      "at": "AT08",
+      "case": "witness_binding_count_mismatch",
+      "expected": "ConditionValueRelationMismatch",
+      "test_name": "test_at13_witness_binding_count_mismatch_fails_closed",
+      "status": "EXECUTED"
     },
     {
       "at": "AT09",
-      "case": "xor_parity_marginals_flat",
-      "description": "Single-conditioner marginals are insufficient; joint XOR configuration carries signal",
-      "expected": "P(C=1|A=1) != P(C=1|A=1,B=1)",
-      "test_name": "test_at09_xor_parity_higher_order_signal"
-    },
-    {
-      "at": "AT09",
-      "case": "equal_marginals_different_joints",
-      "description": "Two universes with identical marginals but different joint structure produce different consumer identities",
-      "expected": "consumer result identities differ",
-      "test_name": "test_at09_equal_marginals_different_joints"
+      "case": "marginal_only_shortcut_cannot_represent_joint",
+      "expected": "marginal composition yields 1/2 while joint yields 0/1 on the same frozen table; identities and fingerprints differ",
+      "test_name": "test_at09_marginal_only_shortcut_cannot_represent_the_joint_outcome",
+      "status": "EXECUTED"
     },
     {
       "at": "AT10",
-      "case": "minority_counterpattern_not_deleted",
-      "description": "Supported minority/counterpattern branch survives modal ranking",
-      "expected": "minority and counterpattern branches remain in evidence",
-      "test_name": "test_at10_minority_counterpattern_survives"
+      "case": "no_supported_branch_silently_deleted",
+      "expected": "3 supported discovery receipts produce 3 distinct composed results with denominators 10/8/2",
+      "test_name": "test_at10_no_supported_discovery_branch_is_silently_deleted",
+      "status": "EXECUTED"
+    },
+    {
+      "at": "AT10",
+      "case": "wrong_discovery_receipt_ref",
+      "expected": "DiscoveryConsumptionMismatch 'receipt not found'",
+      "test_name": "test_at10_discovery_route_rejects_wrong_receipt_ref",
+      "status": "EXECUTED"
     },
     {
       "at": "AT11",
-      "case": "lookalike_child_must_not_alias",
-      "description": "Child predicate with lookalike text under different parent does not alias",
-      "expected": "lineage mismatch raises RecursiveLineageMismatch",
-      "test_name": "test_at11_recursive_ancestry_and_fresh_process_continuation"
+      "case": "lookalike_child_different_lineage_must_not_alias",
+      "expected": "identical X=1 fork atom under different parents yields different winning-predicate hashes, handoff refs, immediate parents and frontiers; cross-lineage consumption raises RecursiveLineageMismatch",
+      "test_name": "test_at11_lookalike_child_under_different_lineage_does_not_alias",
+      "status": "EXECUTED"
+    },
+    {
+      "at": "AT11",
+      "case": "handoff_winning_predicate_mismatch",
+      "expected": "RecursiveLineageMismatch",
+      "test_name": "test_at11_recursive_handoff_rejects_predicate_mismatch",
+      "status": "EXECUTED"
     },
     {
       "at": "AT12",
-      "case": "s14_absent_blocks_only_semantic_interpretation",
-      "description": "Empirical co-travel remains available; only S14 semantic relation authority is blocked",
-      "expected": "empirical joint present; semantic relation path absent",
-      "test_name": "test_at12_empirical_cotravel_without_s14"
+      "case": "no_semantic_relation_authority_in_closure",
+      "expected": "authority kinds restricted to the empirical owner set; no governed operation names a semantic relation",
+      "test_name": "test_at12_lack_of_semantic_relation_authority_does_not_erase_cotravel",
+      "status": "EXECUTED"
+    },
+    {
+      "at": "AT12",
+      "case": "co_travel_not_relabelled_as_semantic_authority",
+      "expected": "no semantic-relation/S14 parameter on the composition surface; no such result field; route is the direct empirical route",
+      "test_name": "test_at12_composition_surface_exposes_no_semantic_relation_authority",
+      "status": "EXECUTED"
     },
     {
       "at": "AT13",
-      "case": "component_vector_not_scalarized",
-      "description": "Ranked component vector preserved as vector",
-      "expected": "consumer evidence retains native component order",
-      "test_name": "test_at13_joint_morphology_component_scope"
+      "case": "ranked_vector_may_not_be_scalarized",
+      "expected": "fact not SUPPORTED, denominator 0, owner failure state UNSUPPORTED_RESPONSE_TOPOLOGY",
+      "test_name": "test_at13_missing_component_vector_may_not_be_scalarized",
+      "status": "EXECUTED"
+    },
+    {
+      "at": "AT13",
+      "case": "reordered_components_reidentify",
+      "expected": "same arity and denominator, different ordered value vector, different composed identity hash",
+      "test_name": "test_at13_reordered_components_reidentify_lawfully",
+      "status": "EXECUTED"
+    },
+    {
+      "at": "AT13",
+      "case": "heterogeneous_component_authority_not_universal",
+      "expected": "component citing a non-binding authority yields a non-SUPPORTED fact with denominator 0",
+      "test_name": "test_at13_heterogeneous_component_authority_is_fail_closed_not_universal",
+      "status": "EXECUTED"
+    },
+    {
+      "at": "AT12/AT13",
+      "case": "joint_target_arity_guard",
+      "expected": "JointTargetMismatch on arity mismatch",
+      "test_name": "test_at12_joint_target_count_mismatch_fails_closed",
+      "status": "EXECUTED",
+      "note": "Carried over from the C1-02 return. Note that _validate_joint_grain is an internal helper exercised directly here; the compose path validates grains through _validate_direct_grain."
     }
   ],
-  "authority_gaps_or_owner_changes_required": []
+  "authority_gaps_or_owner_changes_required": [],
+  "supersedes": "PYAT_C1_02_COVERAGE_AND_HOSTILE_AUDIT@1",
+  "open_non_claims": [
+    "AT10 underpowered / adaptive partial branch distinct state (out of C1-02 scope).",
+    "AT11 EXPLICIT_UNKNOWN_UNVISITED adaptive territory (no adaptive route consumed; no exhaustive-coverage claim)."
+  ]
 }

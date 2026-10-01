@@ -1,0 +1,114 @@
+{
+  "schema": "PYAT_C1_02_WIDER_REGRESSION_ATTRIBUTION@1",
+  "question": "Did C1-02 (the Kimi return and/or this correction) introduce any failure in the wider rawlsing_next/tests suite beyond what already existed at the accepted C1-01 baseline?",
+  "method": {
+    "probe_set": "The exact failing and erroring node IDs observed in the wider-suite run, re-run as an explicit node-ID probe (so the 9 broken collectors cannot abort collection).",
+    "trees": [
+      {"label": "CURRENT_CORRECTION", "ref": "795bd0814 (branch agent/opencode-pyat-hq139-c1-02-correction-r1)"},
+      {"label": "KIMI_C1_02_RETURN", "ref": "21254c57d92c6411282de13450fc2bdfab21d345"},
+      {"label": "ACCEPTED_C1_01_BASELINE", "ref": "5fafb499d53dddadaf8a7b4fd46506e91a09d270"}
+    ],
+    "isolation": "Each tree was run in its own detached git worktree so no working tree was modified.",
+    "node_counts": {"failed_nodes": 45, "error_nodes": 7, "total_probe": 52}
+  },
+  "results": {
+    "failing_set_size_current": 53,
+    "failing_set_size_kimi": 53,
+    "failing_set_size_accepted_baseline": 53,
+    "set_diff_current_vs_kimi": "IDENTICAL",
+    "set_diff_kimi_vs_accepted_baseline": "IDENTICAL",
+    "nodes_failing_now_but_passing_at_accepted_baseline": [],
+    "verdict": "NO_WIDER_REGRESSIONS_DETECTED_AT_ACCEPTED_C1_01_BASELINE_GRAIN"
+  },
+  "classification": {
+    "PRE_EXISTING_BEFORE_C1_02": {
+      "count": 45,
+      "failed_nodes": 45,
+      "error_nodes": 7,
+      "collection_error_files": 9,
+      "stray_artifact_error_lines": 1,
+      "basis": "Every one of these fails identically at 5fafb499, so they predate both the Kimi C1-02 return and this correction.",
+      "node_ids": [
+        "rawlsing_next/tests/test_ee_p2x_local_court_driver_integration.py::test_actual_preserved_receipt_schema_is_accepted_without_execution",
+        "rawlsing_next/tests/test_ee_p2x_local_court_driver_integration.py::test_backend_envelope_on_done_preserve_is_rejected",
+        "rawlsing_next/tests/test_ee_p2x_local_court_driver_integration.py::test_binding_is_exactly_the_qualified_driver_and_adopted_map",
+        "rawlsing_next/tests/test_ee_p2x_local_court_driver_integration.py::test_driver_payload_rejects_ranking_or_selection_surface",
+        "rawlsing_next/tests/test_ee_p2x_local_court_driver_integration.py::test_ready_stage_next_transition_is_exact_and_drift_rejects",
+        "rawlsing_next/tests/test_f07_second_canary_prev3_admission.py::test_current_entrypoint_seals_receipt_and_m1_replay",
+        "rawlsing_next/tests/test_f07_second_canary_prev3_admission.py::test_d09_evidence_or_roster_artifact_mutation_fails_closed",
+        "rawlsing_next/tests/test_f07_second_canary_prev3_admission.py::test_e10_authority_hash_mismatch_fails_closed",
+        "rawlsing_next/tests/test_f07_second_canary_prev3_admission.py::test_exact_current_e10_d09_inputs_validate_and_snapshot_losslessly",
+        "rawlsing_next/tests/test_f07_second_canary_prev3_admission.py::test_exact_one_receipt_preserves_authority_permission_roster_and_full_roster_ref",
+        "rawlsing_next/tests/test_f07_second_canary_prev3_admission.py::test_exact_receipt_identity_is_deterministic",
+        "rawlsing_next/tests/test_f07_second_canary_prev3_admission.py::test_existing_m1_v554_ingress_accepts_and_same_input_replay_is_identical",
+        "rawlsing_next/tests/test_f07_second_canary_prev3_admission.py::test_instantiated_receipt_permission_or_authority_mutation_becomes_typed_integrity_failure",
+        "rawlsing_next/tests/test_f07_second_canary_prev3_admission.py::test_operand_coordinate_or_order_mutation_fails_closed",
+        "rawlsing_next/tests/test_f07_second_canary_prev3_admission.py::test_permission_widening_fails_closed",
+        "rawlsing_next/tests/test_f07_second_canary_prev3_admission.py::test_relation_family_or_claim_substitution_fails_closed",
+        "rawlsing_next/tests/test_f07_second_canary_prev3_admission.py::test_state_deletion_or_exact_zero_reinterpretation_fails_closed",
+        "rawlsing_next/tests/test_f07_second_canary_prev3_admission.py::test_support_or_replay_identity_mutation_fails_closed",
+        "rawlsing_next/tests/test_fiabc_final_preflight_fanin.py::test_live_candidate_c_and_packaging_bind_final_hq_state",
+        "rawlsing_next/tests/test_fiabc_final_preflight_fanin.py::test_t5_contract_binds_final_successor_and_lits_current_law",
+        "rawlsing_next/tests/test_fiabc_lits_i_representation_authority.py::test_actual_banked_projection_converts_to_exact_accepted_legacy_owner",
+        "rawlsing_next/tests/test_fiabc_lm2_r1h_real_material_c11.py::test_r15_real_candidate_neutral_common_c11",
+        "rawlsing_next/tests/test_fiabc_lm2_r1i_physical_native_hostile.py::test_native_to_canonical_mapping_authority_does_not_bridge_physical_representation",
+        "rawlsing_next/tests/test_fiabc_lm2_r1i_physical_native_hostile.py::test_special_states_remain_noncanonical_and_mapping_authority_does_not_leak",
+        "rawlsing_next/tests/test_fiabc_succession_producer.py::test_real_current_head_producer_binds_repaired_dependencies_exactly",
+        "rawlsing_next/tests/test_fiabc_w3_i04_runtime_packaging_rebind.py::RuntimePackagingRebindTests::test_lits_authority_overlay_v2_pins_integrated_normalized_sourcebacked_scope",
+        "rawlsing_next/tests/test_gt34_obl055_replay_reconstruction_r2.py::test_r2_01_mechanical_chain_reconstructs_all_source_objects",
+        "rawlsing_next/tests/test_gt34_obl055_replay_reconstruction_r2.py::test_r2_02_h1_causal_semantic_ref_swap_is_closed",
+        "rawlsing_next/tests/test_gt34_obl055_replay_reconstruction_r2.py::test_r2_03_h1_causal_auth_ref_swap_is_closed",
+        "rawlsing_next/tests/test_gt34_obl055_replay_reconstruction_r2.py::test_r2_04_h1_subject_auth_ref_swap_is_closed",
+        "rawlsing_next/tests/test_gt34_obl055_replay_reconstruction_r2.py::test_r2_05_h1_phase_pointer_swaps_are_closed[phase_authentication_ref-fake1]",
+        "rawlsing_next/tests/test_gt34_obl055_replay_reconstruction_r2.py::test_r2_05_h1_phase_pointer_swaps_are_closed[phase_state_receipt_ref-fake0]",
+        "rawlsing_next/tests/test_gt34_obl055_replay_reconstruction_r2.py::test_r2_06_h1_app_auth_ref_swap_is_closed",
+        "rawlsing_next/tests/test_gt34_obl055_replay_reconstruction_r2.py::test_r2_07_h1_contact_pointer_swaps_are_closed[CONTACT_OCCURRENCE_WITNESS-evidence_authentication_ref-fake1]",
+        "rawlsing_next/tests/test_gt34_obl055_replay_reconstruction_r2.py::test_r2_07_h1_contact_pointer_swaps_are_closed[CONTACT_OCCURRENCE_WITNESS-semantic_evidence_ref-fake0]",
+        "rawlsing_next/tests/test_gt34_obl055_replay_reconstruction_r2.py::test_r2_07_h1_contact_pointer_swaps_are_closed[CONTACT_WITNESS_INDEPENDENCE-evidence_authentication_ref-fake3]",
+        "rawlsing_next/tests/test_gt34_obl055_replay_reconstruction_r2.py::test_r2_07_h1_contact_pointer_swaps_are_closed[CONTACT_WITNESS_INDEPENDENCE-semantic_evidence_ref-fake2]",
+        "rawlsing_next/tests/test_gt34_obl055_replay_reconstruction_r2.py::test_r2_08_source_bundle_itself_cannot_be_relabelled_and_readdressed",
+        "rawlsing_next/tests/test_gt34_obl056_r3_current_entry_provenance_hostile_audit.py::test_16_matched_integrity_invalid_member_rejected",
+        "rawlsing_next/tests/test_gt34_obl056_r3_current_entry_provenance_hostile_audit.py::test_29_exact_relevant_blobs_are_frozen_and_w2_untouched",
+        "rawlsing_next/tests/test_gt34_obl056_r3_current_entry_provenance_hostile_court.py::test_01_fresh_h3_surface_except_known_scaffold_only_misclassification_is_green",
+        "rawlsing_next/tests/test_gt34_obl056_r3_h2_hostile_compatibility.py::test_h2_applicable_hostile_surface_remains_green",
+        "rawlsing_next/tests/test_pre553_reservoir_preintegration.py::test_downstream_m1_m6_render_and_psepf_bytes_match_frozen_base_git_blobs",
+        "rawlsing_next/tests/test_pre553_whole_machine_hostile_acceptance.py::test_r15_h15_frozen_semantic_blobs_are_byte_exact",
+        "rawlsing_next/tests/test_wave1_gt12_a2_real_gt1.py::test_a2_claim_scoped_authorities_bind_actual_release_universe_and_replay"
+      ],
+      "error_nodes": [
+        "rawlsing_next/tests/test_fiabc_lits_r4a_adopted_authority_snapshot_closure.py::test_77_role_refs_and_60_fact_chains_resolve_and_query_predicate_preimages_round_trip",
+        "rawlsing_next/tests/test_fiabc_lits_r4a_adopted_authority_snapshot_closure.py::test_canonical_closure_retains_exact_hq_adopted_snapshot_preimage",
+        "rawlsing_next/tests/test_fiabc_lits_r4a_adopted_authority_snapshot_closure.py::test_exact_hq_adopted_snapshot_resolves_without_mutating_candidate_fixture",
+        "rawlsing_next/tests/test_fiabc_lits_r4a_adopted_authority_snapshot_closure.py::test_missing_substituted_and_mutated_authority_remain_fail_closed",
+        "rawlsing_next/tests/test_gt34_q2_same_source_c11_release.py::test_q2_builds_one_validated_same_source_release_without_identity_collapse",
+        "rawlsing_next/tests/test_gt34_q2_same_source_c11_release.py::test_q2_release_identity_is_deterministic_and_bounded",
+        "rawlsing_next/tests/test_gt34_q2_same_source_c11_release.py::test_q2_reuses_exact_objects_from_accepted_q86_claim_scoped_release"
+      ],
+      "collection_error_files": [
+        "rawlsing_next/tests/test_fiabc_lm1_r1e_n1_physical_boundary.py",
+        "rawlsing_next/tests/test_fiabc_lm2_r1e_bounded_mapping_recovery.py",
+        "rawlsing_next/tests/test_fiabc_run3_postmeasurement_repair_stack.py",
+        "rawlsing_next/tests/test_objective_consumer_bounded_evidence_d07.py",
+        "rawlsing_next/tests/test_pre553_candidate_c_production_binding.py",
+        "rawlsing_next/tests/test_pre553_r4_compaction.py",
+        "rawlsing_next/tests/test_pre553_source_backed_c11_facade.py",
+        "rawlsing_next/tests/test_pre553_sr06_decoder_carrier.py",
+        "rawlsing_next/tests/test_subv_e_obl059_positive_applicability_r13_independent_review_r1_corrected.py"
+      ],
+      "collection_error_basis": "Each of the nine files fails to collect at 5fafb499, at 21254c57d and at the correction HEAD identically.",
+      "stray_artifact": "The 53rd result line is 'file or directory not found: rawlsing_next/tests/test_gt34_obl056_repaired_input_authority_acceptance_hostile_audit.py'. It is emitted by test_gt34_obl056_r3_h2_hostile_compatibility.py, which shells out to pytest against a sibling file that does not exist in the repository. Present identically in all three trees; unrelated to C1-02."
+    },
+    "INTRODUCED_BY_KIMI_C1_02": {"count": 0, "basis": "The Kimi failing set is byte-identical to the accepted C1-01 baseline failing set."},
+    "INTRODUCED_BY_SPACE_BUNNY_CORRECTION": {"count": 0, "basis": "The correction failing set is byte-identical to the Kimi failing set, so the three owner fixes and 22 new courts introduced no wider failure."},
+    "EXPECTED_GOVERNED_FREEZE_INVALIDATION": {
+      "count": 0,
+      "basis": "The three byte-frozen-blob courts that appear in the pre-existing set (test_r15_h15_frozen_semantic_blobs_are_byte_exact, test_downstream_m1_m6_render_and_psepf_bytes_match_frozen_base_git_blobs, test_29_exact_relevant_blobs_are_frozen_and_w2_untouched) already fail at the accepted baseline, and their frozen lists do NOT contain rawlsing_next/pre553_analytical_composition.py. Verified by grep and by reading the baseline assertion output, whose drift list covers only pre553_empirical_objects, pre553_empirical_authority, pre553_c11_ingest, pre553_c11_integrity, _pre553_query_common, _pre553_query_eval, _pre553_query_predicate, pre553_empirical_query, test_pre553_empirical_query, m3_v556_higher_order_structural and m4_v557_v558_publication_repository. Editing the analytical owner therefore invalidates no frozen expectation."
+    },
+    "UNRESOLVED": {
+      "count": 0,
+      "note": "No attribution question remained open after the three-tree comparison."
+    }
+  },
+  "frozen_expectations_updated": false,
+  "frozen_expectations_note": "No frozen expectation, frozen blob or fixture-only oracle was edited to make any suite green. The only fixture changes were in the C1-02 test-owned fixture module, which is inside the commission's write terrain."
+}

@@ -1,26 +1,44 @@
 {
-  "schema": "PYAT_C1_02_FINAL_DISPOSITION@1",
+  "schema": "PYAT_C1_02_FINAL_DISPOSITION@2",
+  "supersedes": "PYAT_C1_02_FINAL_DISPOSITION@1 (asserted PASS on a fabricated acceptance matrix)",
+  "branch": "agent/opencode-pyat-hq139-c1-02-correction-r1",
+  "code_under_test_commit": "795bd0814980b06174119a766a3f3940a2842385",
+  "immutable_return_under_review": "21254c57d92c6411282de13450fc2bdfab21d345",
   "disposition": "PASS_SOURCE_FREE_PATCH_READY__INDEPENDENT_REVIEW_REQUIRED",
   "terminal_token": "C1_02_HIGHER_ORDER_RECURSIVE_RETURNED__HQ_ADJUDICATION_REQUIRED",
-  "scope_limitation": "AT08–AT13 only; AT14–AT19 not implemented",
+  "basis": [
+    "All six commissioned AT08-AT13 courts now have real, executed tests. The acceptance matrix cites only test names that exist in the court file.",
+    "105 passed in the complete commissioned court, 0 failed, 0 errors, 0 skipped.",
+    "All 13 accepted C1-01 analytical-composition tests still pass; C1-01 identities and the legacy witness format are preserved.",
+    "Three real owner defects were found and repaired in the C1 analytical owner, each forced by a court that could not otherwise pass.",
+    "Three-tree regression attribution shows zero wider regressions against the accepted C1-01 baseline.",
+    "No frozen expectation or frozen blob was edited to make anything green."
+  ],
   "prohibitions_respected": {
     "raw_survey_files": true,
-    "candidate_abc": true,
+    "candidate_a_b_c": true,
     "measured_p2x": true,
     "real_source_c11_execution": true,
-    "new_real_source_authority": true,
+    "new_real_source_semantic_or_comparability_authority": true,
     "implicit_pooling": true,
-    "v3_actor_implementation": true,
+    "v3_actor_person_implementation": true,
     "c1_03_implementation": true,
-    "c4_work": true
+    "c4_work": true,
+    "upstream_owner_edits": true,
+    "merging_kimi_branch": true,
+    "self_adoption": true
   },
   "c1_01_regression_status": "PRESERVED",
-  "tests": {
-    "passed": 83,
-    "failed": 0,
-    "errors": 0,
-    "skipped": 0
-  },
-  "blocker_summary": "None. Patch is branch-local and ready for HQ independent adjudication.",
-  "next_required_action": "HQ independent review and adoption decision on the returned branch."
+  "tests": {"passed": 105, "failed": 0, "errors": 0, "skipped": 0},
+  "wider_regression_verdict": "NO_WIDER_REGRESSIONS_DETECTED_AT_ACCEPTED_C1_01_BASELINE_GRAIN",
+  "open_non_claims": [
+    "AT10 underpowered / adaptive partial branch distinct state is not exercised; the commission places the AT14 negative-state estate out of C1-02 scope and no adaptive route is consumed at this grain.",
+    "AT11 EXPLICIT_UNKNOWN_UNVISITED adaptive territory is not exercised for the same reason. No exhaustive-coverage claim is made anywhere in this return."
+  ],
+  "known_defects_not_fixed_here": [
+    "45 failing and 7 erroring nodes plus 9 non-collecting test files exist in rawlsing_next/tests at the accepted C1-01 baseline. They are pre-existing and were deliberately left untouched; see 07_WIDER_REGRESSION_ATTRIBUTION.json.",
+    "test_gt34_obl056_r3_h2_hostile_compatibility.py shells out to a sibling test file that does not exist in the repository. Pre-existing and out of C1-02 write terrain."
+  ],
+  "blocker_summary": "None. The corrected patch is branch-local and ready for HQ independent adjudication. The previously fabricated acceptance matrix has been withdrawn and replaced from executed evidence.",
+  "next_required_action": "HQ independent acceptance review of the corrected C1-02 source-free patch. This branch is not merged and not self-adopted."
 }

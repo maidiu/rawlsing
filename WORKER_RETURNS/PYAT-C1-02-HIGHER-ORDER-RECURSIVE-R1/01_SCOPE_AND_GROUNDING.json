@@ -1,5 +1,5 @@
 {
-  "schema": "PYAT_C1_02_SCOPE_AND_GROUNDING@1",
+  "schema": "PYAT_C1_02_SCOPE_AND_GROUNDING@2",
   "commission": "PYAT-C1-02-HIGHER-ORDER-RECURSIVE-R1",
   "commission_tip": "88181e69852721f1e29c868ec5f5256095716a19",
   "branch": "agent/opencode-pyat-hq139-c1-02-higher-order-recursive-r1",
@@ -9,7 +9,7 @@
   "governing_spec": "PYAT_CONTROL_ROOM/OMEGA_VOZHD_ORCHESTRATION_R1/05_C1_EXECUTION_SPEC.md",
   "current_implementation_snapshot_confirmed": true,
   "snapshot_confirmation_note": "Live integration/pre-main-reconciliation-r1 compared; no implementation delta relevant to this terrain. No merges or rebases performed.",
-  "scope": "AT08–AT13 only",
+  "scope": "AT08\u2013AT13 only",
   "c1_03_at14_at19": "NOT_IMPLEMENTED",
   "c4": "NOT_IMPLEMENTED",
   "primary_owner": "rawlsing_next/pre553_analytical_composition.py",
@@ -34,5 +34,12 @@
     "V3 actor/person implementation",
     "C1-03 implementation beyond incidental preservation",
     "C4 work"
-  ]
+  ],
+  "correction_provenance": {
+    "correction_branch": "agent/opencode-pyat-hq139-c1-02-correction-r1",
+    "immutable_return_under_review": "21254c57d92c6411282de13450fc2bdfab21d345",
+    "reason": "The C1-02 return receipt asserted six AT08-AT13 passes citing test names that did not exist. A receipt audit against the actual court file showed AT10/AT12/AT13 unimplemented, AT08/AT09 partial, and AT11 without depth-two continuation.",
+    "kimi_implementation_preserved": true,
+    "returned_branch_modified_or_force_pushed": false
+  }
 }

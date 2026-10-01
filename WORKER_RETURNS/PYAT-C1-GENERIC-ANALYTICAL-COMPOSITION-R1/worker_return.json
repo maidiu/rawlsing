@@ -1,20 +1,13 @@
 {
   "schema": "PYAT_BOUNDED_WORKER_RETURN@2",
   "task_id": "PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1::C1-00",
-  "status": "C1_02_R1_AT08_AT13_EXECUTED__INDEPENDENT_REVIEW_REQUIRED",
+  "status": "C1_02_CORRECTION_R1_AT08_AT13_EXECUTED__INDEPENDENT_REVIEW_REQUIRED",
   "commission_tip": "2cef3869c16cbd88ce8bc58a5bd4aa073879be50",
   "implementation_baseline": "b3b2fa13049513078c301a1f6574b661fcf390c5",
   "orchestration_authority_ref": "810dbfde9fa5dbe1e3625188f4c13c4c9e7ceeb7",
   "return_commit": null,
-  "return_commit_reason": "Git commit identity cannot truthfully self-reference inside its own content. Reviewer must inspect the exact branch tip reported after this file commit.",
+  "return_commit_reason": "Git commit identity cannot truthfully self-reference inside its own content.",
   "changed_blobs": [
-    "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/analytical_contract.md",
-    "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/analytical_products.json",
-    "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/fixture_oracle_manifest.json",
-    "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/hostile_case_receipts.json",
-    "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/replay_and_dependency_receipt.json",
-    "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/family_binding_manifest.json",
-    "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/worker_return.json",
     "WORKER_RETURNS/PYAT-C1-02-HIGHER-ORDER-RECURSIVE-R1/00_RETURN.md",
     "WORKER_RETURNS/PYAT-C1-02-HIGHER-ORDER-RECURSIVE-R1/01_SCOPE_AND_GROUNDING.json",
     "WORKER_RETURNS/PYAT-C1-02-HIGHER-ORDER-RECURSIVE-R1/02_AT08_AT13_ACCEPTANCE_MATRIX.json",
@@ -22,9 +15,13 @@
     "WORKER_RETURNS/PYAT-C1-02-HIGHER-ORDER-RECURSIVE-R1/04_PRODUCER_CONSUMER_TRACES.json",
     "WORKER_RETURNS/PYAT-C1-02-HIGHER-ORDER-RECURSIVE-R1/05_RECURSIVE_FRESH_PROCESS_RECEIPT.json",
     "WORKER_RETURNS/PYAT-C1-02-HIGHER-ORDER-RECURSIVE-R1/06_COVERAGE_AND_HOSTILE_AUDIT.json",
+    "WORKER_RETURNS/PYAT-C1-02-HIGHER-ORDER-RECURSIVE-R1/06_OWNER_FIXES.json",
     "WORKER_RETURNS/PYAT-C1-02-HIGHER-ORDER-RECURSIVE-R1/07_EXECUTION_RECEIPT.json",
+    "WORKER_RETURNS/PYAT-C1-02-HIGHER-ORDER-RECURSIVE-R1/07_WIDER_REGRESSION_ATTRIBUTION.json",
     "WORKER_RETURNS/PYAT-C1-02-HIGHER-ORDER-RECURSIVE-R1/08_FINAL_DISPOSITION.json",
     "WORKER_RETURNS/PYAT-C1-02-HIGHER-ORDER-RECURSIVE-R1/FINAL_COURT.txt",
+    "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/worker_return.json",
+    "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/analytical_contract.md",
     "rawlsing_next/pre553_analytical_composition.py",
     "rawlsing_next/tests/test_pre553_analytical_composition.py",
     "rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py",
@@ -45,7 +42,7 @@
       "python -m pytest -q rawlsing_next/tests/test_pre553_analytical_composition.py rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py rawlsing_next/tests/test_pre553_empirical_query.py rawlsing_next/tests/test_pre553_discovery_exact.py rawlsing_next/tests/test_pre553_recursive_handoff.py rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py"
     ],
     "exit_status": 0,
-    "passed": 83,
+    "passed": 105,
     "failed": 0,
     "errors": 0,
     "skipped": 0,
@@ -54,7 +51,16 @@
     "logs_and_artifacts": [
       "WORKER_RETURNS/PYAT-C1-01-R8-RELEASE-SPINE-REBASELINE-R1/05_EXECUTION_RECEIPT.json",
       "WORKER_RETURNS/PYAT-C1-01-R8-RELEASE-SPINE-REBASELINE-R1/09_FINAL_PYTEST_OUTPUT.txt"
-    ]
+    ],
+    "correction_note": "The earlier '58 passed' figure was the three-file C1-01 command total (composition 13 + empirical_query 32 + consumer 13), not test_pre553_analytical_composition.py alone, which contains 13 tests.",
+    "per_file_counts": {
+      "test_pre553_analytical_composition.py": 13,
+      "test_pre553_analytical_composition_higher_order.py": 31,
+      "test_pre553_empirical_query.py": 32,
+      "test_pre553_discovery_exact.py": 14,
+      "test_pre553_recursive_handoff.py": 2,
+      "test_source_backed_positioned_subject_possibility.py": 13
+    }
   },
   "source_access": {
     "reads": 0,
@@ -69,27 +75,33 @@
     },
     {
       "case": "AT08",
-      "status": "C1_02_R1_SOURCE_FREE_EXECUTED_PASS"
+      "status": "C1_02_CORRECTION_R1_SOURCE_FREE_EXECUTED_PASS",
+      "correction_note": "See WORKER_RETURNS/PYAT-C1-02-HIGHER-ORDER-RECURSIVE-R1/02_AT08_AT13_ACCEPTANCE_MATRIX.json@3"
     },
     {
       "case": "AT09",
-      "status": "C1_02_R1_SOURCE_FREE_EXECUTED_PASS"
+      "status": "C1_02_CORRECTION_R1_SOURCE_FREE_EXECUTED_PASS",
+      "correction_note": "See WORKER_RETURNS/PYAT-C1-02-HIGHER-ORDER-RECURSIVE-R1/02_AT08_AT13_ACCEPTANCE_MATRIX.json@3"
     },
     {
       "case": "AT10",
-      "status": "C1_02_R1_SOURCE_FREE_EXECUTED_PASS"
+      "status": "C1_02_CORRECTION_R1_SOURCE_FREE_EXECUTED_PASS",
+      "correction_note": "See WORKER_RETURNS/PYAT-C1-02-HIGHER-ORDER-RECURSIVE-R1/02_AT08_AT13_ACCEPTANCE_MATRIX.json@3"
     },
     {
       "case": "AT11",
-      "status": "C1_02_R1_SOURCE_FREE_EXECUTED_PASS"
+      "status": "C1_02_CORRECTION_R1_SOURCE_FREE_EXECUTED_PASS",
+      "correction_note": "See WORKER_RETURNS/PYAT-C1-02-HIGHER-ORDER-RECURSIVE-R1/02_AT08_AT13_ACCEPTANCE_MATRIX.json@3"
     },
     {
       "case": "AT12",
-      "status": "C1_02_R1_SOURCE_FREE_EXECUTED_PASS"
+      "status": "C1_02_CORRECTION_R1_SOURCE_FREE_EXECUTED_PASS",
+      "correction_note": "See WORKER_RETURNS/PYAT-C1-02-HIGHER-ORDER-RECURSIVE-R1/02_AT08_AT13_ACCEPTANCE_MATRIX.json@3"
     },
     {
       "case": "AT13",
-      "status": "C1_02_R1_SOURCE_FREE_EXECUTED_PASS"
+      "status": "C1_02_CORRECTION_R1_SOURCE_FREE_EXECUTED_PASS",
+      "correction_note": "See WORKER_RETURNS/PYAT-C1-02-HIGHER-ORDER-RECURSIVE-R1/02_AT08_AT13_ACCEPTANCE_MATRIX.json@3"
     },
     {
       "case": "AT14",
@@ -147,14 +159,14 @@
     "WORKER_RETURNS/PYAT-C1-01-R8-RELEASE-SPINE-REBASELINE-R1/07_BASELINE_FAILURE_OUTPUT.txt"
   ],
   "scope_limits": [
-    "source-free synthetic AT07–AT13 only",
+    "source-free synthetic AT07\u2013AT13 only",
     "C1-02 higher-order/joint/recursive analytical composition extension",
     "no raw survey source access",
     "no FIABC or Candidate A/B/C",
     "no measured P2X",
     "no real-source C11 execution",
     "no new semantic/comparability/model authority",
-    "AT14–AT19 remain explicitly unimplemented",
+    "AT14\u2013AT19 remain explicitly unimplemented",
     "no V3 actor/person implementation",
     "no C4 work"
   ],
@@ -182,7 +194,7 @@
     "Multi-universe/composite facts require an exact reviewed source identity rule before one consumer slice can represent them.",
     "Some search/producer negative states have no truthful PossibilitySliceEvidence encoding; outer C1 envelope must retain them and may omit the consumer call."
   ],
-  "requested_next_action": "HQ independent acceptance review of the coherent C1-02 source-free patch; do not self-adopt.",
+  "requested_next_action": "HQ independent acceptance review of the corrected C1-02 source-free patch; do not self-adopt or merge.",
   "c1_02_return_ref": "WORKER_RETURNS/PYAT-C1-02-HIGHER-ORDER-RECURSIVE-R1/00_RETURN.md",
   "independent_review_ref": "8d11504d576f2e96b0f7a7ab31795f88f0fe0cfa::R7_FINDINGS_ADDRESSED_IN_R8__R8_ACCEPTANCE_PENDING",
   "adoption_status": "NOT_ADOPTED__R8_INDEPENDENT_ACCEPTANCE_REQUIRED",
@@ -292,10 +304,14 @@
   },
   "C1_02_execution": {
     "status": "PASS_SOURCE_FREE_PATCH_READY__INDEPENDENT_REVIEW_REQUIRED",
-    "commission_tip": "88181e69852721f1e29c868ec5f5256095716a19",
-    "branch": "agent/opencode-pyat-hq139-c1-02-higher-order-recursive-r1",
-    "accepted_c1_01_base": "5fafb499d53dddadaf8a7b4fd46506e91a09d270",
+    "correction_branch": "agent/opencode-pyat-hq139-c1-02-correction-r1",
+    "code_under_test_commit": "795bd0814980b06174119a766a3f3940a2842385",
+    "immutable_return_under_review": "21254c57d92c6411282de13450fc2bdfab21d345",
+    "accepted_c1_01_baseline": "5fafb499d53dddadaf8a7b4fd46506e91a09d270",
     "return_ref": "WORKER_RETURNS/PYAT-C1-02-HIGHER-ORDER-RECURSIVE-R1/00_RETURN.md",
+    "acceptance_matrix": "WORKER_RETURNS/PYAT-C1-02-HIGHER-ORDER-RECURSIVE-R1/02_AT08_AT13_ACCEPTANCE_MATRIX.json",
+    "owner_fixes": "WORKER_RETURNS/PYAT-C1-02-HIGHER-ORDER-RECURSIVE-R1/06_OWNER_FIXES.json",
+    "wider_regression_attribution": "WORKER_RETURNS/PYAT-C1-02-HIGHER-ORDER-RECURSIVE-R1/07_WIDER_REGRESSION_ATTRIBUTION.json",
     "execution_receipt": "WORKER_RETURNS/PYAT-C1-02-HIGHER-ORDER-RECURSIVE-R1/07_EXECUTION_RECEIPT.json",
     "final_court": "WORKER_RETURNS/PYAT-C1-02-HIGHER-ORDER-RECURSIVE-R1/FINAL_COURT.txt",
     "terminal": "C1_02_HIGHER_ORDER_RECURSIVE_RETURNED__HQ_ADJUDICATION_REQUIRED"

@@ -1,27 +1,44 @@
 {
-  "schema": "PYAT_C1_02_PRODUCER_CONSUMER_TRACES@1",
+  "schema": "PYAT_C1_02_PRODUCER_CONSUMER_TRACES@2",
   "trace_summary": "Source-free producer outputs were routed through the extended C1 analytical composition owner and then into the actual possibility consumer.",
   "routes_exercised": [
     {
-      "route": "DIRECT_EMPIRICAL",
+      "route": "DIRECT_I03_TO_POSITIONED_SUBJECT",
       "producer": "rawlsing_next.pre553_empirical_query.execute_empirical_query",
       "composition_owner": "rawlsing_next.pre553_analytical_composition.compose_positioned_subject_possibility",
       "consumer": "rawlsing_next.source_backed_positioned_subject_possibility.evaluate_positioned_subject_possibility",
-      "ats": ["AT08", "AT10", "AT12"]
+      "ats": [
+        "AT08",
+        "AT09",
+        "AT12",
+        "AT13"
+      ],
+      "evidence": "Executed via c1_at08_at13_fixture.direct_condition_composition and the ranked-topology court. 4 of the 31 court tests assert SUPPORTED/EXACT_SUPPORTED through this route."
     },
     {
-      "route": "EXACT_BOUNDED_DISCOVERY",
+      "route": "I05_EXACT_BOUNDED_TO_POSITIONED_SUBJECT",
       "producer": "rawlsing_next.pre553_discovery_exact.execute_exact_bounded_discovery",
+      "families_exercised": [
+        "MINORITY_OR_NONMODAL_DEPARTURE (AT10)",
+        "PAIR_RESPONSE_COTRAVEL (carried over from the C1-02 return)"
+      ],
       "composition_owner": "rawlsing_next.pre553_analytical_composition.compose_positioned_subject_possibility",
       "consumer": "rawlsing_next.source_backed_positioned_subject_possibility.evaluate_positioned_subject_possibility",
-      "ats": ["AT09", "AT13"]
+      "ats": [
+        "AT10"
+      ],
+      "evidence": "test_at10_no_supported_discovery_branch_is_silently_deleted composes all three supported receipts; test_at10_discovery_route_rejects_wrong_receipt_ref is the receipt-custody hostile."
     },
     {
-      "route": "RECURSIVE_HANDOFF",
+      "route": "MX01R2_RECURSIVE_TO_POSITIONED_SUBJECT",
       "producer": "rawlsing_next.pre553_recursive_handoff.execute_exact_bounded_discovery_with_handoffs",
+      "recursive_owner_entry_count": 2,
       "composition_owner": "rawlsing_next.pre553_analytical_composition.compose_positioned_subject_possibility",
       "consumer": "rawlsing_next.source_backed_positioned_subject_possibility.evaluate_positioned_subject_possibility",
-      "ats": ["AT11"]
+      "ats": [
+        "AT11"
+      ],
+      "evidence": "Generation two is produced by re-entering the recursive owner through recursive_parent_atom and consumed at denominator 2; also reproduced byte-identically in two fresh processes."
     }
   ],
   "composition_extensions_used": [
@@ -48,5 +65,21 @@
     "exact producer/query/fact/replay provenance",
     "consumer identity and evidence",
     "authority ceiling"
+  ],
+  "supersedes": "PYAT_C1_02_PRODUCER_CONSUMER_TRACES@1",
+  "owner_fixes_required_to_reach_these_routes": [
+    "FIX-1 witness relation law for governed coordinate leaves (needed by the AT10 coordinate conditioners)",
+    "FIX-2 candidate-fact selection in discovery consumption (needed by multi-receipt AT10)",
+    "FIX-3 full recursive ancestor chain closure (needed by AT11 depth two)"
+  ],
+  "routes_not_exercised": [
+    {
+      "route": "ADAPTIVE_EXPLORATORY",
+      "reason": "No adaptive/partial route is consumed at C1-02 grain. No EXPLICIT_UNKNOWN_UNVISITED claim is made."
+    },
+    {
+      "route": "SOURCE_INDEXED_MULTI_UNIVERSE",
+      "reason": "The AT09 equal-marginal distinction was built as two independently composable single-universe sources, so no multi-universe or composite source authority was needed."
+    }
   ]
 }

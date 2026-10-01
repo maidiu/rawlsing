@@ -707,3 +707,37 @@ AT08–AT13 only. AT14–AT19 remain explicitly unimplemented. No raw survey fil
 This extension preserves all accepted C1-01 behavior and identities.
 
 Current executed R8 fixture identities are frozen in `WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R8/04_CURRENT_AT07_IDENTITY_SPINE.json`: forward consumer query `0e966cca...61330`, witness `fb3a3b56...84db5`, evidence `b2407eeb...78307`; reverse consumer query `02b3eabf...5f323`, witness `0c75b6ca...bf2df`, evidence `e40c31ea...851d6`. Full predicate custody and supersession classification are in the same R8 packet.
+
+
+## C1-02 correction R1 — reconciled acceptance state
+
+This section supersedes the earlier C1-02 section above, which was synchronized against a return receipt that cited test names absent from the court file.
+
+Commission tip: `88181e69852721f1e29c868ec5f5256095716a19`
+Immutable C1-02 return under review: `21254c57d92c6411282de13450fc2bdfab21d345`
+Correction branch: `agent/opencode-pyat-hq139-c1-02-correction-r1`
+Accepted C1-01 baseline: `5fafb499d53dddadaf8a7b4fd46506e91a09d270`
+
+### Actual AT07–AT13 state
+
+AT07 remains the accepted R8 source-free execution with its exact forward 54/60 and reverse 54/62 identities and unchanged evidence refs.
+
+AT08–AT13 are now each backed by real executed courts in `rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py` (31 tests). The accepted C1-01 contract is unchanged: the C1 analytical owner was generalized only where a court could not otherwise be expressed, and all 13 accepted C1-01 tests still pass.
+
+Two requirements are explicitly **not** claimed rather than passed silently: the AT10 underpowered/adaptive branch distinct state, and the AT11 adaptive unvisited territory. No exhaustive-coverage claim is made anywhere.
+
+### Owner generalizations added
+
+1. Governed `EMPIRICAL_POSITION_COORDINATE` leaves participate in the condition-value witness relation law alongside `SURVEY_RESPONSE_EVENT` leaves, matched on the semantic-ref key belonging to each leaf type.
+2. Discovery consumption selects the candidate fact whose condition predicate is the winning predicate, instead of positionally taking `fact_refs[0]`.
+3. Recursive lineage closure absorbs the retained discovered-grammar atom ancestry refs, so the full ancestor chain required by the owner reaches past the immediate parent.
+
+No upstream empirical, discovery, recursive or consumer owner was modified. AT13's required non-scalar grain (RANKED_RESPONSE component vectors) was expressible in existing owners, so neither `EXISTING_OWNER_CHANGE_REQUIRED` nor `AUTHORITY_GAP` applies.
+
+### Wider regression state
+
+Three-tree node-ID attribution across the correction head, the C1-02 return, and the accepted C1-01 baseline yields identical failing sets. Verdict: `NO_WIDER_REGRESSIONS_DETECTED_AT_ACCEPTED_C1_01_BASELINE_GRAIN`. The 45 failed, 7 errored and 9 non-collecting entries in `rawlsing_next/tests` are pre-existing at the accepted baseline and were left untouched. No frozen expectation was edited.
+
+### Documentary correction
+
+The version-1 C1-02 acceptance matrix and oracle freeze are withdrawn. They asserted six AT passes using test names that did not exist, and listed frozen oracles for courts that were never implemented. The withdrawal is recorded in place so the supersession chain remains auditable.

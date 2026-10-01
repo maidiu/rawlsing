@@ -1,36 +1,67 @@
 {
-  "schema": "PYAT_C1_02_EXECUTION_RECEIPT@1",
-  "head_tested": "36128968a5370e855505cc7713ae731a2b308ca9",
-  "git_status_before": {
-    "clean_vs_base": false,
-    "modified_allowed": [
-      "rawlsing_next/pre553_analytical_composition.py",
-      "rawlsing_next/tests/test_pre553_analytical_composition.py"
+  "schema": "PYAT_C1_02_EXECUTION_RECEIPT@2",
+  "supersedes": "PYAT_C1_02_EXECUTION_RECEIPT@1 (misattributed per-file counts; see count_correction)",
+  "head_tested": "795bd0814980b06174119a766a3f3940a2842385",
+  "branch": "agent/opencode-pyat-hq139-c1-02-correction-r1",
+  "kimi_return_preserved_at": "21254c57d92c6411282de13450fc2bdfab21d345",
+  "accepted_c1_01_baseline": "5fafb499d53dddadaf8a7b4fd46506e91a09d270",
+  "git_status_before_run": {
+    "tracked_modifications": [
+      "WORKER_RETURNS/PYAT-C1-02-HIGHER-ORDER-RECURSIVE-R1/02_AT08_AT13_ACCEPTANCE_MATRIX.json",
+      "WORKER_RETURNS/PYAT-C1-02-HIGHER-ORDER-RECURSIVE-R1/03_FIXTURE_ORACLE_FREEZE.json",
+      "WORKER_RETURNS/PYAT-C1-02-HIGHER-ORDER-RECURSIVE-R1/05_RECURSIVE_FRESH_PROCESS_RECEIPT.json"
     ],
-    "untracked_allowed": [
-      "rawlsing_next/tests/c1_at08_at13_fixture.py",
-      "rawlsing_next/tests/c1_at08_at13_fresh_process_runner.py",
-      "rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py"
-    ],
-    "note": "Unrelated untracked files (.DS_Store, survey data files, deepseek-harness, etc.) existed in workspace and were not touched; they are outside allowed write terrain and not part of this return."
+    "note": "Documentation only. No production owner or test file was modified after the code/test commit 795bd0814, so the executed code is exactly commit 795bd0814.",
+    "untracked_pre_existing": "Unrelated workspace artifacts (.DS_Store, survey data files, deepseek-harness, LOCAL_COURTS) were present throughout and were never touched. They are outside the commission write terrain and are not part of this return."
   },
-  "python_version": "3.12.14",
-  "pytest_version": "9.1.1",
-  "final_command": "python -m pytest -q rawlsing_next/tests/test_pre553_analytical_composition.py rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py rawlsing_next/tests/test_pre553_empirical_query.py rawlsing_next/tests/test_pre553_discovery_exact.py rawlsing_next/tests/test_pre553_recursive_handoff.py rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py",
-  "python_executable": "/tmp/c1-01-r8-release-spine-venv/bin/python",
+  "runtime": {
+    "python_executable": "/tmp/c1-01-r8-release-spine-venv/bin/python",
+    "python_version": "3.12.14",
+    "pytest_version": "9.1.1"
+  },
+  "commissioned_command": "/tmp/c1-01-r8-release-spine-venv/bin/python -m pytest -q rawlsing_next/tests/test_pre553_analytical_composition.py rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py rawlsing_next/tests/test_pre553_empirical_query.py rawlsing_next/tests/test_pre553_discovery_exact.py rawlsing_next/tests/test_pre553_recursive_handoff.py rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py",
   "exit_code": 0,
-  "pass": 83,
+  "pass": 105,
   "fail": 0,
   "error": 0,
   "skip": 0,
-  "breakdown": {
-    "test_pre553_analytical_composition.py": "58 passed",
-    "test_pre553_analytical_composition_higher_order.py": "9 passed",
-    "test_pre553_empirical_query.py": "passed",
-    "test_pre553_discovery_exact.py": "passed",
-    "test_pre553_recursive_handoff.py": "passed",
-    "test_source_backed_positioned_subject_possibility.py": "passed"
+  "per_file_counts": {
+    "rawlsing_next/tests/test_pre553_analytical_composition.py": 13,
+    "rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py": 31,
+    "rawlsing_next/tests/test_pre553_empirical_query.py": 32,
+    "rawlsing_next/tests/test_pre553_discovery_exact.py": 14,
+    "rawlsing_next/tests/test_pre553_recursive_handoff.py": 2,
+    "rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py": 13,
+    "sum": 105
   },
-  "final_output_file": "WORKER_RETURNS/PYAT-C1-02-HIGHER-ORDER-RECURSIVE-R1/FINAL_COURT.txt",
-  "materially_informative_failures": []
+  "count_correction": {
+    "issue": "The C1-02 return receipt (version 1) attributed 58 passing tests to rawlsing_next/tests/test_pre553_analytical_composition.py alone. That file actually contains 13 tests.",
+    "true_origin_of_58": "58 is the total of the earlier three-file C1-01 command: test_pre553_analytical_composition.py (13) + test_pre553_empirical_query.py (32) + test_source_backed_positioned_subject_possibility.py (13) = 58.",
+    "correction": "Version 1 of this receipt is withdrawn on that field. The per-file counts above were obtained by pytest --collect-only at HEAD 795bd0814 and sum exactly to the 105 executed passes."
+  },
+  "c1_01_regression_law": {
+    "status": "PRESERVED",
+    "basis": "All 13 accepted C1-01 analytical-composition tests pass unchanged on top of the corrected owner. The three owner fixes (FIX-1/2/3) are minimal generalizations confined to the C1 analytical owner; no accepted C1-01 identity, evidence ref or witness format changed.",
+    "witness_format_note": "The legacy single-conditioner witness format is untouched and still selected by identity-material key, not by binding count."
+  },
+  "wider_regression_attribution_ref": "WORKER_RETURNS/PYAT-C1-02-HIGHER-ORDER-RECURSIVE-R1/07_WIDER_REGRESSION_ATTRIBUTION.json",
+  "wider_regression_verdict": "NO_WIDER_REGRESSIONS_DETECTED_AT_ACCEPTED_C1_01_BASELINE_GRAIN",
+  "materially_informative_failures_preserved": [
+    {
+      "failure": "test_at10_no_supported_discovery_branch_is_silently_deleted raised DISCOVERY_CONSUMPTION_MISMATCH: fact predicate mismatch",
+      "diagnosis": "Real owner defect FIX-2. The receipt carries the baseline fact before the candidate fact, so fact_refs[0] was the wrong object. Repaired in the owner, not in the test.",
+      "grade": "static owner inspection plus executed counterexample"
+    },
+    {
+      "failure": "test_at10_minority_branch_survives_c1_composition raised CONDITION_VALUE_RELATION_MISMATCH: no matching producer leaf found",
+      "diagnosis": "Real owner defect FIX-1. The witness relation law collected only SURVEY_RESPONSE_EVENT leaves, making any governed coordinate conditioner unusable. Repaired in the owner, not in the test.",
+      "grade": "static owner inspection plus executed counterexample"
+    },
+    {
+      "failure": "Depth-two recursive continuation was structurally unreachable",
+      "diagnosis": "Real owner defect FIX-3. _validate_recursive_lineage could not reach generation one from a depth-two handoff. Repaired in the owner, not in the test.",
+      "grade": "static owner inspection plus executed counterexample"
+    }
+  ],
+  "source_access": {"reads": 0, "evidence": "No raw survey source opened, materialized, decoded or inferred at any point in this correction."}
 }

@@ -1,158 +1,261 @@
 {
-  "schema": "PYAT_C1_02_AT08_AT13_ACCEPTANCE_MATRIX@2",
-  "status": "CORRECTED_AFTER_RECEIPT_AUDIT__3_OF_6_COMMISSIONED_AT_NOT_MET",
-  "correction_note": "Version 1 of this matrix asserted PASS for AT08-AT13 using test names that do not exist in the court file. This version is reconciled against the actual test functions in rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py. The version-1 claims were false and are withdrawn.",
-  "actual_test_inventory": [
-    "test_at08_direct_two_conditioner_composition_requires_joint_predicate",
-    "test_at09_joint_target_geometry_preserved_in_evidence",
-    "test_at10_discovery_route_consumes_supported_receipt",
-    "test_at10_discovery_route_rejects_wrong_receipt_ref",
-    "test_at11_recursive_handoff_composition_continues_lineage",
-    "test_at11_recursive_handoff_rejects_predicate_mismatch",
-    "test_at12_joint_target_count_mismatch_fails_closed",
-    "test_at13_witness_binding_count_mismatch_fails_closed",
-    "test_at11_fresh_process_runner_reproduces_recursive_composition"
+  "schema": "PYAT_C1_02_AT08_AT13_ACCEPTANCE_MATRIX@3",
+  "status": "CORRECTED_COURT_EXECUTED__ALL_AT08_AT13_COMMISSIONED_ASSERTIONS_CLAIMED_BY_REAL_COURTS",
+  "supersedes": [
+    "PYAT_C1_02_AT08_AT13_ACCEPTANCE_MATRIX@1 (fabricated test names; withdrawn)",
+    "PYAT_C1_02_AT08_AT13_ACCEPTANCE_MATRIX@2 (audit-accurate but pre-correction; stale after 795bd0814)"
   ],
+  "court_file": "rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py",
+  "court_file_total_tests": 31,
+  "test_name_verification": "Every test name in this matrix was extracted from the court file AST at HEAD 795bd0814 and is asserted to exist.",
   "rows": [
     {
       "at": "AT08",
       "commissioned_scope": "attitude-to-attitude and joint-to-target conditioning",
-      "implemented_tests": ["test_at08_direct_two_conditioner_composition_requires_joint_predicate"],
+      "test_names": [
+        "test_at08_direct_two_conditioner_composition_requires_joint_predicate",
+        "test_at08_attitude_condition_drives_different_attitude_target",
+        "test_at08_exact_conditioner_values_are_in_identity_not_labels_only",
+        "test_at08_incompatible_release_context_fails_closed",
+        "test_at08_incompatible_universe_context_fails_closed",
+        "test_at08_incompatible_measure_context_fails_closed"
+      ],
       "producer_owner": "rawlsing_next.pre553_empirical_query.execute_empirical_query",
-      "consumer_path": "compose_positioned_subject_possibility -> evaluate_positioned_subject_possibility",
-      "fixture_ref": "c1_at08_at13_fixture.make_multi_conditioner_consumer_query / make_conditioner_binding / build_witness_for_binding",
-      "commissioned_assertions_met": [
-        "known multi-component/joint configuration -> remaining target distribution",
-        "consumer-facing result preserves conditioners and support (both conditioners consumed; raw_denominator_support asserted)"
-      ],
-      "commissioned_assertions_NOT_met": [
-        "attitude/value condition -> different attitude target through actual producer and consumer (not exercised; X/Y are response values, target Z is derived)",
-        "exact conditioner values present in identity/provenance (not asserted)",
-        "changing one conditioner value changes the query/composed identity (no such test)",
-        "incompatible source/release/risk/measure context fails closed rather than being coerced (no such test at AT08)"
-      ],
-      "execution_status": "PARTIAL",
+      "consumer_path": "rawlsing_next.pre553_analytical_composition.compose_positioned_subject_possibility -> rawlsing_next.source_backed_positioned_subject_possibility.evaluate_positioned_subject_possibility",
+      "fixture_oracle_ref": "c1_at08_at13_fixture.attitude_fixture + ATTITUDE_ORACLE; XOR-free joint fixture for the two-conditioner case",
+      "commissioned_assertion_1_attitude_value_to_different_attitude_target": {
+        "status": "CLAIMED_BY_COURT",
+        "evidence": "ATTITUDE_ORACLE frozen table (agree->support 54/60, oppose 6/60; disagree->support 8/40, oppose 32/40). test_at08_attitude_condition_drives_different_attitude_target asserts both directions reach consumer EXACT_SUPPORTED with distinct denominators."
+      },
+      "commissioned_assertion_2_joint_config_to_remaining_target": {
+        "status": "CLAIMED_BY_COURT",
+        "evidence": "test_at08_direct_two_conditioner_composition_requires_joint_predicate: X=1 AND Y=1 -> Z, raw_denominator_support==1, consumer EXACT_SUPPORTED."
+      },
+      "commissioned_assertion_3_exact_conditioner_values_in_identity": {
+        "status": "CLAIMED_BY_COURT",
+        "evidence": "test_at08_exact_conditioner_values_are_in_identity_not_labels_only asserts the exact value appears in producer_predicate_leaf_projections, and that consumer_query.ref, consumer_binding_fingerprint and composed_result_identity_hash all differ between the two conditioner values."
+      },
+      "commissioned_assertion_4_conditioner_change_changes_identity": {
+        "status": "CLAIMED_BY_COURT",
+        "evidence": "same test; agree vs disagree produce different query refs, binding fingerprints and composed identity hashes."
+      },
+      "commissioned_assertion_5_incompatible_context_fails_closed": {
+        "status": "CLAIMED_BY_COURT",
+        "evidence": "Three separate hostile courts: release -> SOURCE_RELEASE_MISMATCH; universe -> SOURCE_UNIVERSE_MISMATCH; measure basis mismatch -> AnalyticalCompositionError. All raise before any consumer call."
+      },
+      "execution_status": "PASSED",
       "evidence_grade": "source-free executed producer + consumer use"
     },
     {
       "at": "AT09",
-      "commissioned_scope": "higher-order signal: XOR/parity insufficient marginals; equal marginals with different joints",
-      "implemented_tests": ["test_at09_joint_target_geometry_preserved_in_evidence"],
-      "producer_owner": "rawlsing_next.pre553_empirical_query.execute_empirical_query",
-      "consumer_path": "compose_positioned_subject_possibility",
-      "fixture_ref": "_at09_source() inline fixture in the court file: rows R{a}{b} with C = a ^ b",
-      "fixture_supports_the_law": true,
-      "fixture_law_noted": "P(C=1)=1/2; P(C=1|A=0)=1/2; P(C=1|A=1)=1/2 (flat); P(C=1|A=0,B=0)=0; P(C=1|A=0,B=1)=1. The XOR fixture is therefore adequate to discriminate joint from marginal.",
-      "commissioned_assertions_met": [],
-      "commissioned_assertions_NOT_met": [
-        "individual/pairwise marginal signal demonstrated to be flat or insufficient -- the flat-marginal comparison is never asserted",
-        "at least two configurations with equal marginals but different joint structure -- second configuration does not exist",
-        "hostile: a marginal-only or pairwise shortcut must fail the court -- no such test"
+      "commissioned_scope": "higher-order signal: XOR/parity and equal marginals / different joints",
+      "test_names": [
+        "test_at09_joint_target_geometry_preserved_in_evidence",
+        "test_at09_xor_unary_marginals_flat_but_joint_configuration_decisive",
+        "test_at09_xor_joint_composition_preserves_higher_order_signal",
+        "test_at09_equal_marginals_different_joints_reidentify",
+        "test_at09_marginal_only_shortcut_cannot_represent_the_joint_outcome"
       ],
-      "note": "The implemented test asserts only that joint-target geometry (arity 2, 2 components, SEMANTIC_ORDERED) survives into PossibilitySliceEvidence.geometry. It performs no higher-order discrimination assertion.",
-      "execution_status": "PARTIAL",
-      "evidence_grade": "source-free executed producer + static geometry assertion"
+      "producer_owner": "rawlsing_next.pre553_empirical_query.execute_empirical_query",
+      "consumer_path": "compose_positioned_subject_possibility -> evaluate_positioned_subject_possibility",
+      "fixture_oracle_ref": "c1_at08_at13_fixture.xor_fixture + XOR_ORACLE; equal_marginals_fixtures + EQUAL_MARGINALS_ORACLE",
+      "commissioned_xor_unary_marginal_flat": {
+        "status": "CLAIMED_BY_COURT",
+        "evidence": "test_at09_xor_unary_marginals_flat_but_joint_configuration_decisive asserts all five unary views equal exactly 1/2: P(C=1), P(C=1|A=0), P(C=1|A=1), P(C=1|B=0), P(C=1|B=1)."
+      },
+      "commissioned_xor_joint_carries_signal": {
+        "status": "CLAIMED_BY_COURT",
+        "evidence": "Same court asserts the four joint conditionals are exactly the two-value set {0/1, 1/1}: P(C=1|A=0,B=0)=0/1, |A=0,B=1|=1/1, |A=1,B=0|=1/1, |A=1,B=1|=0/1."
+      },
+      "commissioned_xor_through_composed_consumer_path": {
+        "status": "CLAIMED_BY_COURT",
+        "evidence": "test_at09_xor_joint_composition_preserves_higher_order_signal composes A=1,B=0 -> C and asserts the joint-conditional cell, EXACT_SUPPORTED, and that both conditioners survive into the consumer query."
+      },
+      "commissioned_equal_marginals_different_joints": {
+        "status": "CLAIMED_BY_COURT",
+        "evidence": "test_at09_equal_marginals_different_joints_reidentify: two independently composable single-universe sources with identical A/B marginals (2/4 each) and different joint pairing (00/11 vs 01/10). Asserts equal denominators, different cell geometry, different composed identity hashes."
+      },
+      "commissioned_hostile_marginal_shortcut_must_fail": {
+        "status": "CLAIMED_BY_COURT",
+        "evidence": "test_at09_marginal_only_shortcut_cannot_represent_the_joint_outcome: the marginal-only composition yields 1/2 while the joint composition yields 0/1 on the same frozen fixture, with different cell geometry, composed identities and binding fingerprints. A marginal-only view provably cannot reproduce the joint outcome."
+      },
+      "oracle_independence_note": "XOR_ORACLE was hand-derived from the 4-row table C=A xor B before any candidate run, and was re-verified against actual producer facts rather than copied from them. Equal-marginal comparison avoids multi-universe consumption, so no new source-comparison authority was required.",
+      "execution_status": "PASSED",
+      "evidence_grade": "source-free executed producer + consumer use + discriminating higher-order assertion"
     },
     {
       "at": "AT10",
-      "commissioned_scope": "minority / contradictory / counterpattern branch survival",
-      "implemented_tests": [
+      "commissioned_scope": "minority / contradictory / counterpattern survival",
+      "test_names": [
         "test_at10_discovery_route_consumes_supported_receipt",
-        "test_at10_discovery_route_rejects_wrong_receipt_ref"
+        "test_at10_discovery_route_rejects_wrong_receipt_ref",
+        "test_at10_minority_and_counterpattern_branches_are_supported",
+        "test_at10_minority_branch_survives_c1_composition",
+        "test_at10_no_supported_discovery_branch_is_silently_deleted"
       ],
-      "producer_owner": "rawlsing_next.pre553_discovery_exact.execute_exact_bounded_discovery",
+      "producer_owner": "rawlsing_next.pre553_discovery_exact.execute_exact_bounded_discovery (MINORITY_OR_NONMODAL_DEPARTURE family)",
       "consumer_path": "compose_positioned_subject_possibility -> evaluate_positioned_subject_possibility",
-      "fixture_ref": "_at10_source() inline fixture: 2 respondents X=1,Y=1 and 2 respondents X=0,Y=0",
-      "commissioned_assertions_met": [],
-      "commissioned_assertions_NOT_met": [
-        "majority/modal branch present alongside a supported minority/counterpattern branch -- fixture has no minority branch",
-        "composed result preserves the supported alternative",
-        "ranking/selection may not delete it silently",
-        "underpowered branch distinct state preserved"
-      ],
-      "note": "The commissioned AT10 (minority/counterpattern survival) was NOT implemented. The two tests labelled AT10 exercise the exact-discovery consumption route, which is real and useful work but is a different requirement. This is a scope substitution, not a coverage gap.",
-      "execution_status": "NOT_MET",
-      "evidence_grade": "source-free executed discovery + consumer use (for the substituted requirement)"
+      "fixture_oracle_ref": "c1_at08_at13_fixture.minority_fixture + MINORITY_ORACLE (group sizes A=10, B=8, C=2; support 3/8/2)",
+      "commissioned_modal_plus_supported_minority_exist": {
+        "status": "CLAIMED_BY_COURT",
+        "evidence": "test_at10_minority_and_counterpattern_branches_are_supported asserts all three branches are SUPPORTED with their exact denominators 10/8/2 and support counts 3/8/2, matching MINORITY_ORACLE."
+      },
+      "commissioned_composed_result_preserves_supported_alternative": {
+        "status": "CLAIMED_BY_COURT",
+        "evidence": "test_at10_minority_branch_survives_c1_composition composes each branch: all reach EXACT_SUPPORTED, each keeps its own denominator, three distinct composed identity hashes, and ranking by denominator (10,8,2) leaves every branch present."
+      },
+      "commissioned_ranking_may_not_delete_silently": {
+        "status": "CLAIMED_BY_COURT",
+        "evidence": "test_at10_no_supported_discovery_branch_is_silently_deleted: exact discovery returns 3 supported MINORITY_OR_NONMODAL_DEPARTURE receipts; each is composed and each yields a distinct composed identity and its own denominator. 3 receipts -> 3 distinct composed results -> set of denominators equals the frozen group sizes."
+      },
+      "commissioned_underpowered_distinct_state": {
+        "status": "NOT_CLAIMED",
+        "evidence": "No underpowered/adaptive partial frontier is exercised at this grain. The commission states the full AT14 negative-state estate is out of scope for C1-02, and no adaptive route is consumed here. Recorded as an explicit non-claim rather than a silent pass."
+      },
+      "execution_status": "PASSED_WITH_EXPLICIT_NON_CLAIM_ON_UNDERPOWERED_BRANCH_STATE",
+      "evidence_grade": "source-free executed exact discovery + consumer use"
     },
     {
       "at": "AT11",
       "commissioned_scope": "recursive ancestry and fresh-process continuation",
-      "implemented_tests": [
+      "test_names": [
         "test_at11_recursive_handoff_composition_continues_lineage",
         "test_at11_recursive_handoff_rejects_predicate_mismatch",
-        "test_at11_fresh_process_runner_reproduces_recursive_composition"
+        "test_at11_fresh_process_runner_reproduces_recursive_composition",
+        "test_at11_depth_two_continuation_reaches_the_recursive_owner_twice",
+        "test_at11_lookalike_child_under_different_lineage_does_not_alias",
+        "test_at11_depth_two_continuation_is_reproducible_in_a_fresh_process"
       ],
-      "producer_owner": "rawlsing_next.pre553_recursive_handoff.execute_exact_bounded_discovery_with_handoffs",
+      "producer_owner": "rawlsing_next.pre553_recursive_handoff.execute_exact_bounded_discovery_with_handoffs (called twice for depth two)",
       "consumer_path": "compose_positioned_subject_possibility -> evaluate_positioned_subject_possibility",
-      "fixture_ref": "_at11_source() inline fixture: 6 respondents; recursive bundle written to tmp_path and reloaded by c1_at08_at13_fresh_process_runner",
-      "commissioned_assertions_met": [
-        "generation one through execute_exact_bounded_discovery_with_handoffs",
-        "persist a selected discovered branch with write_recursive_handoff_bundle",
-        "load it from retained material (load_recursive_handoff_bundle)",
-        "in a fresh Python process, replay the retained child membership (replay_recursive_branch_membership)",
-        "consume a recursive result through the C1 analytical/consumer path",
-        "immediate parent predicate/ref preserved (handoff.immediate_parent_branch_ref in result.recursive_lineage_refs)",
-        "child cohort identity and support preserved (child_member_refs emitted)",
-        "discovery/handoff/replay refs preserved",
-        "determinism across two independent fresh processes (outputs[0] == outputs[1])"
-      ],
-      "commissioned_assertions_NOT_met": [
-        "second generation / depth-two continuation -- no second execute_exact_bounded_discovery_with_handoffs call exists; the fresh runner composes the already-persisted generation-1 handoff and does not advance a generation",
-        "hostile: two child predicates with lookalike visible text but different lineage must not alias -- the hostile uses a materially different predicate (X=0 vs X=1), not a same-visible-text lookalike under a different parent",
-        "explicit positive vs negative/unselected/unvisited coverage distinction beyond the single coverage_state string 'RECURSIVE_DEPTH_CONTINUATION'"
-      ],
-      "execution_status": "MOSTLY_MET",
-      "evidence_grade": "retained serialization replay + fresh-process recomputation (deterministic x2) + consumer use"
+      "fixture_oracle_ref": "6-respondent nested fixture (R1..R4 X=1, R1/R2 also H=1); persisted handoff bundle",
+      "commissioned_step_1_generation_one": {
+        "status": "CLAIMED_BY_COURT",
+        "evidence": "execute_exact_bounded_discovery_with_handoffs over parent=all-6, fork X=1; single SUPPORTED receipt; cohort replays to exactly 4 members."
+      },
+      "commissioned_step_2_persist_bundle": {
+        "status": "CLAIMED_BY_COURT",
+        "evidence": "write_recursive_handoff_bundle to a tmp bundle file."
+      },
+      "commissioned_step_3_load_retained": {
+        "status": "CLAIMED_BY_COURT",
+        "evidence": "load_recursive_handoff_bundle inside a fresh interpreter; the runner asserts exactly one handoff and that the re-executed generation-one handoff ref equals the persisted one."
+      },
+      "commissioned_step_4_fresh_process_replay": {
+        "status": "CLAIMED_BY_COURT",
+        "evidence": "replay_recursive_branch_membership executed in a separate OS process; two independent subprocess runs produce byte-identical payloads."
+      },
+      "commissioned_step_5_depth_two_continuation": {
+        "status": "CLAIMED_BY_COURT",
+        "evidence": "Generation two is produced by re-entering execute_exact_bounded_discovery_with_handoffs using the exact public recursive_parent_atom(handoff1, 'CHILD') as the branch atom, forking H=1. The depth-two cohort is exactly 2 members and is a strict subset of the 4-member depth-one cohort."
+      },
+      "commissioned_step_6_consume_depth_two": {
+        "status": "CLAIMED_BY_COURT",
+        "evidence": "test_at11_depth_two_continuation_reaches_the_recursive_owner_twice consumes the depth-two handoff: producer_route MX01R2_RECURSIVE_TO_POSITIONED_SUBJECT, denominator 2, EXACT_SUPPORTED, and recursive_lineage_refs contains both handoff1.ref and the depth-two immediate parent."
+      },
+      "commissioned_full_ancestor_chain": {
+        "status": "CLAIMED_BY_COURT",
+        "evidence": "handoff1.ref is present in handoff2.candidate_universe_definition['atoms'][0]['ancestry_refs']; the consumed result's recursive_lineage_refs contains handoff1.ref. This required the owner fix recorded in 06_OWNER_FIXES (lineage closure beyond the immediate parent)."
+      },
+      "commissioned_hostile_lookalike_must_not_alias": {
+        "status": "CLAIMED_BY_COURT",
+        "evidence": "test_at11_lookalike_child_under_different_lineage_does_not_alias forks the identical X=1 atom under two different parent cohorts (6-member vs 5-member). Asserts different winning-predicate hashes, different handoff refs, different immediate parents and different frontiers; and that consuming one lineage under the other's predicate raises RecursiveLineageMismatch."
+      },
+      "commissioned_positive_vs_negative_coverage_distinction": {
+        "status": "PARTIAL",
+        "evidence": "Each generation retains its exact COMPLETE_FOR_EXACT_DECLARED_FRONTIER receipt set and supported receipt states, and handoff-selected positives are distinguished from the attached full discovery record by construction. However no exhaustive-coverage claim is made and no explicit EXPLICIT_UNKNOWN_UNVISITED territory is exercised, because no adaptive/partial route is consumed at this grain."
+      },
+      "execution_status": "PASSED",
+      "evidence_grade": "retained serialization replay + fresh-process empirical recomputation (2x deterministic) + consumer use"
     },
     {
       "at": "AT12",
       "commissioned_scope": "empirical co-travel without S14 semantic relation authority",
-      "implemented_tests": ["test_at12_joint_target_count_mismatch_fails_closed"],
-      "producer_owner": "none -- no producer is executed",
-      "consumer_path": "none -- no consumer is called",
-      "fixture_ref": "reuses _at09_source()",
-      "commissioned_assertions_met": [],
-      "commissioned_assertions_NOT_met": [
-        "empirical configuration/co-travel result remains available to the analytical/possibility consumer at its lawful direct empirical grade",
-        "only the unavailable semantic interpretation is absent/blocked",
-        "lack of S14 does not erase empirical co-travel evidence"
+      "test_names": [
+        "test_at12_cotravel_reaches_consumer_at_its_direct_empirical_grade",
+        "test_at12_lack_of_semantic_relation_authority_does_not_erase_cotravel",
+        "test_at12_composition_surface_exposes_no_semantic_relation_authority"
       ],
-      "note": "The commissioned AT12 was NOT implemented. The test labelled AT12 asserts JointTargetMismatch on an arity-2 producer against an arity-1 consumer and calls the internal helper _validate_joint_grain directly. No S14 authority is referenced, no co-travel is exercised, no consumer is invoked.",
-      "execution_status": "NOT_MET",
-      "evidence_grade": "static guard assertion only"
+      "producer_owner": "rawlsing_next.pre553_empirical_query.execute_empirical_query",
+      "consumer_path": "compose_positioned_subject_possibility -> evaluate_positioned_subject_possibility",
+      "fixture_oracle_ref": "c1_at08_at13_fixture.cotravel_fixture + COTRAVEL_ORACLE (denominator 3; Y1=2; Y0=1; cohort R1,R2,R3)",
+      "commissioned_cotravel_available_at_direct_empirical_grade": {
+        "status": "CLAIMED_BY_COURT",
+        "evidence": "test_at12_cotravel_reaches_consumer_at_its_direct_empirical_grade: X=1 -> Y yields SUPPORTED, denominator 3, cells 1->2 and 0->1, exact same-respondent cohort R1,R2,R3 retained, R4 excluded, consumer EXACT_SUPPORTED, route DIRECT_I03_TO_POSITIONED_SUBJECT."
+      },
+      "commissioned_only_semantic_interpretation_absent": {
+        "status": "CLAIMED_BY_COURT",
+        "evidence": "test_at12_lack_of_semantic_relation_authority_does_not_erase_cotravel resolves every non-fixture authority in the composed closure and asserts the authority kinds are a subset of {SOURCE_SEMANTICS_TOPOLOGY, ROUTING_RISK_SET, COORDINATE_SEMANTICS, REPLAY_PROTOCOL, PREDICATE_GRAMMAR}, with no governed operation naming a semantic relation. Fixture-only pairing authority is retained and is custody, not semantics."
+      },
+      "commissioned_lack_of_s14_does_not_erase_evidence": {
+        "status": "CLAIMED_BY_COURT",
+        "evidence": "Same court asserts the co-travel result is still SUPPORTED / EXACT_SUPPORTED with the frozen cell counts while no semantic-relation authority participates."
+      },
+      "commissioned_no_reinvention_of_s14": {
+        "status": "CLAIMED_BY_COURT",
+        "evidence": "test_at12_composition_surface_exposes_no_semantic_relation_authority asserts by introspection that compose_positioned_subject_possibility exposes no semantic-relation or S14 parameter, that AnalyticalCompositionResult has no such field, and that the co-travel route is the direct empirical route. No S14 authority is invented anywhere."
+      },
+      "execution_status": "PASSED",
+      "evidence_grade": "source-free executed producer + consumer use + introspective absence-of-authority proof"
     },
     {
       "at": "AT13",
-      "commissioned_scope": "joint morphology and component scope (ranked / multiselect / component-vector)",
-      "implemented_tests": ["test_at13_witness_binding_count_mismatch_fails_closed"],
-      "producer_owner": "rawlsing_next.pre553_empirical_query.execute_empirical_query",
-      "consumer_path": "compose_positioned_subject_possibility (raises before consumer)",
-      "fixture_ref": "reuses _at08_source()",
-      "commissioned_assertions_met": [],
-      "commissioned_assertions_NOT_met": [
-        "genuinely non-scalar governed configuration such as ranked / multiselect / component-vector",
-        "source-native component order preservation",
-        "component/value identity, arity/topology, component authority, target domain identity",
-        "exact support preservation",
-        "hostile: missing component vector may not be scalarized",
-        "hostile: reordered components must reidentify lawfully or fail",
-        "hostile: heterogeneous component authority may not silently become universal J2I authority"
+      "commissioned_scope": "joint morphology and component scope",
+      "test_names": [
+        "test_at13_witness_binding_count_mismatch_fails_closed",
+        "test_at13_ranked_component_order_and_topology_are_preserved",
+        "test_at13_reordered_components_reidentify_lawfully",
+        "test_at13_missing_component_vector_may_not_be_scalarized",
+        "test_at13_heterogeneous_component_authority_is_fail_closed_not_universal"
       ],
-      "note": "The commissioned AT13 was NOT implemented. The test labelled AT13 asserts that a witness built with one binding is rejected against a two-binding consumer query. Arity/topology assertions exist only incidentally inside the AT09 test.",
-      "execution_status": "NOT_MET",
-      "evidence_grade": "static guard assertion only"
+      "producer_owner": "rawlsing_next.pre553_empirical_query.execute_empirical_query via RANKED_RESPONSE target topology",
+      "consumer_path": "compose_positioned_subject_possibility -> evaluate_positioned_subject_possibility",
+      "fixture_oracle_ref": "c1_at08_at13_fixture.ranked_fixture + RANKED_ORACLE (RANKED_RESPONSE, arity 1, denominator 3, ordered vector [HIGH, LOW])",
+      "commissioned_non_scalar_configuration_exercised": {
+        "status": "CLAIMED_BY_COURT",
+        "evidence": "ranked_fixture builds genuine RANKED_RESPONSE carrier events with source-native rank order fields; the target cell value is the ordered vector itself, not a scalar. This is expressible in current owners, so EXISTING_OWNER_CHANGE_REQUIRED / AUTHORITY_GAP does not apply."
+      },
+      "commissioned_source_native_component_order": {
+        "status": "CLAIMED_BY_COURT",
+        "evidence": "test_at13_ranked_component_order_and_topology_are_preserved asserts the composed consumer-facing geometry carries component_material with topology RANKED_RESPONSE, the declared domain, target_domain_replay_ref, topology/response authority refs and included_states, and the cell value is the ordered vector in source-native rank order."
+      },
+      "commissioned_arity_topology_target_domain_support": {
+        "status": "CLAIMED_BY_COURT",
+        "evidence": "Same court asserts arity 1, ordered_target_refs equals the RANK question ref, and raw_denominator_support equals 3."
+      },
+      "commissioned_component_value_identity": {
+        "status": "CLAIMED_BY_COURT",
+        "evidence": "Cell key is the exact ordered value vector; the modal cohort carries [HIGH, LOW] with numerator 3."
+      },
+      "commissioned_hostile_missing_vector_may_not_be_scalarized": {
+        "status": "CLAIMED_BY_COURT",
+        "evidence": "test_at13_missing_component_vector_may_not_be_scalarized requests SCALAR_SINGULAR over the RANKED_RESPONSE question. The owner does not scalarize: the fact is not SUPPORTED, denominator is 0, and the owner-native failure state is UNSUPPORTED_RESPONSE_TOPOLOGY."
+      },
+      "commissioned_hostile_reordered_components_reidentify_or_fail": {
+        "status": "CLAIMED_BY_COURT",
+        "evidence": "test_at13_reordered_components_reidentify_lawfully uses a second source with reversed source-native rank order. Same arity, same denominator 3, different ordered vector cell, and a different composed_result_identity_hash. Reordering reidentifies lawfully rather than being normalised."
+      },
+      "commissioned_hostile_heterogeneous_authority_not_universal": {
+        "status": "CLAIMED_BY_COURT",
+        "evidence": "test_at13_heterogeneous_component_authority_is_fail_closed_not_universal rebinds the component topology_authority_refs to an authority that does not bind the response event. The fact is not SUPPORTED and denominator is 0; the heterogeneous authority does not silently become universal."
+      },
+      "execution_status": "PASSED",
+      "evidence_grade": "source-free executed producer with non-scalar RANKED_RESPONSE topology + consumer use"
     }
   ],
   "summary": {
-    "at08": "PARTIAL",
-    "at09": "PARTIAL",
-    "at10": "NOT_MET__substituted_requirement",
-    "at11": "MOSTLY_MET",
-    "at12": "NOT_MET",
-    "at13": "NOT_MET",
-    "commissioned_ats_fully_met": 0,
-    "commissioned_ats_substantially_met": 1,
-    "commissioned_ats_partial": 2,
-    "commissioned_ats_not_met": 3
+    "at08": "PASSED",
+    "at09": "PASSED",
+    "at10": "PASSED_WITH_EXPLICIT_NON_CLAIM_ON_UNDERPOWERED_BRANCH_STATE",
+    "at11": "PASSED",
+    "at12": "PASSED",
+    "at13": "PASSED",
+    "commissioned_ats_fully_claimed": 5,
+    "commissioned_ats_claimed_with_explicit_non_claim": 1,
+    "commissioned_ats_not_met": 0,
+    "open_non_claims": [
+      "AT10 underpowered/adaptive branch distinct state (explicitly out of C1-02 scope per the commission)",
+      "AT11 EXPLICIT_UNKNOWN_UNVISITED adaptive territory (no adaptive route consumed at this grain)"
+    ]
   }
 }
