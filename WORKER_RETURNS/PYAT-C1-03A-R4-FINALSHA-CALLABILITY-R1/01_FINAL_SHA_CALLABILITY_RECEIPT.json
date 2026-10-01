@@ -1,0 +1,93 @@
+{
+  "schema": "PYAT_C1_03A_R4_FINALSHA_CALLABILITY_RECEIPT@1",
+  "reported_defect": {
+    "claim": "OwnerStateProjection.from_empirical_integrity_refusal is decorated with two consecutive @classmethod decorators, so calling it raises TypeError: 'classmethod' object is not callable, contradicting the returned 208-pass claim.",
+    "duplicate_decorator_present_at_returned_sha": true,
+    "verified_by": "reading the blob at 3bd481163ac1b2b1e30817b2704e89341099a960, lines 853-855",
+    "returned_sha_r4_court": {
+      "passed": 208,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "predicted_callability_failure": {
+    "predicted_error": "TypeError: 'classmethod' object is not callable",
+    "reproduced": false,
+    "interpreter_of_commission": "CPython 3.12.14",
+    "cross_checked_on": [
+      "CPython 3.12.14",
+      "CPython 3.9.6"
+    ],
+    "measurements": [
+      {
+        "fact": "a classmethod object is not callable when called directly",
+        "3.9.6": "TypeError",
+        "3.12.14": "TypeError",
+        "note": "HQ's error message is correct for a DIRECT call to the descriptor object"
+      },
+      {
+        "fact": "class attribute access resolves the nested chain to a bound method",
+        "3.9.6": "method, call succeeds",
+        "3.12.14": "method, call succeeds",
+        "note": "Class.attr returns a bound method on both versions, so the normal call path works"
+      },
+      {
+        "fact": "classmethod.__func__ type at the returned SHA",
+        "value": "classmethod (nested)"
+      },
+      {
+        "fact": "classmethod has __wrapped__",
+        "3.9.6": false,
+        "3.12.14": true
+      }
+    ],
+    "direct_call_on_returned_sha_3bd48116": {
+      "from_empirical_integrity_refusal": "INTEGRITY_FAILURE",
+      "from_blocked_authority_refusal": "BLOCKED_REQUIRED_AUTHORITY",
+      "witnesses": "genuine witnesses produced by fx.capture_integrity_refusal / fx.capture_blocked_authority_refusal"
+    }
+  },
+  "conclusion": "The duplicate decorator is a genuine defect and is corrected, but the predicted live callability failure does not reproduce on either the commissioned interpreter or an older one. The returned R4 208-pass claim was accurate and the integrity-refusal path was genuinely exercised by that court. The defect is narrower than reported: incorrect and needlessly fragile code, and a latent portability hazard, rather than a live failure.",
+  "correction": {
+    "lines_deleted": 1,
+    "change": "removed the second consecutive @classmethod from OwnerStateProjection.from_empirical_integrity_refusal",
+    "nothing_else_changed": true,
+    "semantics_changed": false,
+    "witness_semantics_changed": false,
+    "provenance_changed": false,
+    "route_law_changed": false,
+    "at15_reopened": false,
+    "at16_reopened": false,
+    "g5_reopened": false,
+    "owner_modules_modified": [],
+    "fixture_modified": false
+  },
+  "final_sha_callability_courts": [
+    {
+      "court": "test_finalsha_empirical_integrity_refusal_is_directly_callable",
+      "proves": "direct call returns INTEGRITY_FAILURE; exactly one classmethod decorator; no nested classmethod in __func__; signature is (cls, witness)"
+    },
+    {
+      "court": "test_finalsha_blocked_authority_refusal_is_directly_callable",
+      "proves": "direct call returns BLOCKED_REQUIRED_AUTHORITY; same structural guarantees on the sibling"
+    },
+    {
+      "court": "test_finalsha_no_refusal_factory_wraps_a_classmethod",
+      "proves": "no factory on OwnerStateProjection nests a classmethod inside a classmethod"
+    },
+    {
+      "court": "test_finalsha_both_refusal_states_remain_distinct_on_final_sha",
+      "proves": "INTEGRITY_FAILURE and BLOCKED_REQUIRED_AUTHORITY remain distinct after the correction"
+    }
+  ],
+  "preserved_after_correction": {
+    "integrity_state": "INTEGRITY_FAILURE",
+    "blocked_state": "BLOCKED_REQUIRED_AUTHORITY",
+    "states_distinct": true,
+    "owner_label_fixed": true,
+    "provenance_from_genuine_owner_object": true,
+    "eight_negative_states_distinct": true,
+    "r4_court_regression": "none - 208 -> 212 with 4 new courts only"
+  }
+}

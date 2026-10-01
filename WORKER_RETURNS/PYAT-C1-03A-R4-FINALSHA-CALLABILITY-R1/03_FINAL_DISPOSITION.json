@@ -1,0 +1,41 @@
+{
+  "schema": "PYAT_C1_03A_R4_FINALSHA_FINAL_DISPOSITION@1",
+  "disposition": "PASS_C1_03A_R4_FINALSHA_CALLABILITY_CORRECTED__INDEPENDENT_REREVIEW_REQUIRED",
+  "terminal": "C1_03A_R4_FINALSHA_CALLABILITY_RETURNED__HQ_ADJUDICATION_REQUIRED",
+  "branch": "agent/opencode-pyat-hq156-c1-03a-r4-finalsha-callability-r1",
+  "base": "3bd481163ac1b2b1e30817b2704e89341099a960",
+  "code_fix_commit": "72ef80aef4ea4148b0814c9b89f3e5b6eb61a96d",
+  "reported_defect": {
+    "duplicate_classmethod_decorator": "PRESENT at the returned R4 SHA and CORRECTED",
+    "predicted_typeerror": "NOT REPRODUCIBLE on CPython 3.12.14 or 3.9.6",
+    "r4_208_pass_claim": "ACCURATE - the integrity-refusal path was genuinely exercised",
+    "premise_corrected": true
+  },
+  "basis": [
+    "The duplicate @classmethod decorator is real: it is present at the returned R4 SHA 3bd48116 and is now removed. Exactly one line deleted.",
+    "The predicted TypeError does not reproduce. A classmethod object is genuinely not callable directly on both 3.9.6 and 3.12.14, so HQ's error text is right for a direct descriptor call.",
+    "However class attribute access resolves the nested chain to a bound method on both versions, so the ordinary call path succeeds.",
+    "Measured on the returned SHA with genuine witnesses: from_empirical_integrity_refusal returns INTEGRITY_FAILURE and from_blocked_authority_refusal returns BLOCKED_REQUIRED_AUTHORITY.",
+    "The returned R4 208-pass claim was therefore accurate and is not contradicted.",
+    "Four explicit final-SHA callability courts now call both factories directly, assert the single decorator structurally, sweep every factory for a nested classmethod, and prove the two refusal states stay distinct.",
+    "212 passed, 0 failed, 0 errors, 0 skipped on the clean committed SHA, exit 0.",
+    "Refusal semantics, witness semantics, provenance, route law, AT15, AT16 and G5 are unchanged; no owner module and no fixture was modified."
+  ],
+  "tests": {"r4_returned": 208, "new_courts": 4, "total": 212, "failed": 0, "errors": 0,
+            "skipped": 0, "runtime_seconds": 12.54, "exit_status": 0},
+  "unforeseen_broader_defect": false,
+  "refusal_semantics_reopened": false,
+  "witness_semantics_reopened": false,
+  "provenance_changed": false,
+  "route_law_changed": false,
+  "g5_reopened": false,
+  "at15_reopened": false,
+  "at16_reopened": false,
+  "owner_modules_modified": [],
+  "fixture_modified": false,
+  "c1_02_touched": false,
+  "raw_source_access": false,
+  "merge_or_adoption_performed": false,
+  "self_adopted": false,
+  "next_required_action": "Independent rereview of the final-SHA callability correction, then the Browser/Sol rereview."
+}

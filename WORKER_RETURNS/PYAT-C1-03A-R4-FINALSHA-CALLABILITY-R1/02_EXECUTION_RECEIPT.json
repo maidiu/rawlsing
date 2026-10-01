@@ -1,0 +1,41 @@
+{
+  "schema": "PYAT_C1_03A_R4_FINALSHA_EXECUTION_RECEIPT@1",
+  "branch": "agent/opencode-pyat-hq156-c1-03a-r4-finalsha-callability-r1",
+  "commission_tip": "b2b62c14f4b9a1ec7c97094a2d1ac4101f63314d",
+  "base_and_returned_r4": "3bd481163ac1b2b1e30817b2704e89341099a960",
+  "code_fix_commit": "72ef80aef4ea4148b0814c9b89f3e5b6eb61a96d",
+  "interpreter": "/tmp/c1-01-r8-release-spine-venv/bin/python",
+  "python": "3.12.14",
+  "pytest": "9.1.1",
+  "platform": "darwin",
+  "exact_command": "/tmp/c1-01-r8-release-spine-venv/bin/python -m pytest -q rawlsing_next/tests/test_pre553_analytical_state_and_route.py rawlsing_next/tests/test_pre553_analytical_composition.py rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py rawlsing_next/tests/test_pre553_empirical_query.py rawlsing_next/tests/test_pre553_discovery_exact.py rawlsing_next/tests/test_pre553_discovery_adaptive.py rawlsing_next/tests/test_pre553_discovery_adaptive_admission.py rawlsing_next/tests/test_pre553_recursive_handoff.py rawlsing_next/tests/test_pre553_structural_admission.py",
+  "run_on_clean_committed_sha": true,
+  "working_tree_state_at_run": "clean, identical to commit 72ef80aef4ea4148b0814c9b89f3e5b6eb61a96d",
+  "commit_under_test": "72ef80aef4ea4148b0814c9b89f3e5b6eb61a96d",
+  "per_file": [
+    {"file": "rawlsing_next/tests/test_pre553_analytical_state_and_route.py", "tests": 75},
+    {"file": "rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py", "tests": 35},
+    {"file": "rawlsing_next/tests/test_pre553_empirical_query.py", "tests": 32},
+    {"file": "rawlsing_next/tests/test_pre553_structural_admission.py", "tests": 17},
+    {"file": "rawlsing_next/tests/test_pre553_discovery_exact.py", "tests": 14},
+    {"file": "rawlsing_next/tests/test_pre553_analytical_composition.py", "tests": 13},
+    {"file": "rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py", "tests": 13},
+    {"file": "rawlsing_next/tests/test_pre553_discovery_adaptive.py", "tests": 8},
+    {"file": "rawlsing_next/tests/test_pre553_discovery_adaptive_admission.py", "tests": 3},
+    {"file": "rawlsing_next/tests/test_pre553_recursive_handoff.py", "tests": 2}
+  ],
+  "counts": {"passed": 212, "failed": 0, "errors": 0, "skipped": 0, "xfailed": 0, "deselected": 0},
+  "per_file_sum": 212,
+  "runtime_seconds": 12.54,
+  "exit_status": 0,
+  "r4_returned_court": {"passed": 208, "failed": 0, "errors": 0, "skipped": 0},
+  "delta": {"new_courts": 4, "removed_courts": 0, "note": "212 = 208 accepted + 4 final-SHA callability courts; no R4 court was removed or weakened"},
+  "final_commit_reverification": {
+    "required_by_commission": "rerun the exact ten-file court on the final commit after all return-packet edits",
+    "performed": true,
+    "method": "after committing the return packet, the working tree was clean and identical to the final branch head; the same ten-file command was re-run and re-reported in 03_FINAL_DISPOSITION.json",
+    "recorded_in": "03_FINAL_DISPOSITION.json"
+  },
+  "wider_regression_sweep_claimed": false,
+  "wider_regression_sweep_note": "Only the ten commissioned files were executed."
+}
