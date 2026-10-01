@@ -1,0 +1,128 @@
+{
+  "schema": "PYAT_C1_03R_ASTRA_A_INDEPENDENT_REVIEW_REQUIREMENT_MATRIX@1",
+  "implementation_return": "eb02332c93c6c3927303eefde9dd9ed768bb3480",
+  "commission_tip": "8bac6d97ee61b552fd36dcb29b8d03f8f8306aee",
+  "disposition": "CHANGES_REQUIRED",
+  "requirements": [
+    {
+      "id": "R1_GENERIC_NONCURRENT_SINGLE_MEANING",
+      "status": "PASS",
+      "evidence": "NoncurrentDependentOutcome permits only NO_CURRENT_NO_LAWFUL_REPLACEMENT; grounds nonempty; no split classes."
+    },
+    {
+      "id": "R2_ERROR_NOT_NONCURRENT",
+      "status": "PASS",
+      "evidence": "Normal transition path preserves missing callback/callback exception/unchanged-ref as errors."
+    },
+    {
+      "id": "R3_R_N_DISJOINT_COVER_A",
+      "status": "FAIL",
+      "blocker": "C1-03R-A-RVW-001",
+      "evidence": "Duplicate positive recompilation rows sharing old_ref are dict-collapsed rather than rejected."
+    },
+    {
+      "id": "R4_A_U_COVER_K_NORMAL_OWNER_PATH",
+      "status": "PASS",
+      "evidence": "_recompile computes affected from graph and unaffected as graph-known complement."
+    },
+    {
+      "id": "R5_A_U_COVER_K_CHECKPOINT_REPLAY",
+      "status": "FAIL",
+      "blocker": "C1-03R-A-RVW-004",
+      "evidence": "from_checkpoint recomputes expected_affected but never expected_unaffected, so U coverage is trusted from serialization."
+    },
+    {
+      "id": "R6_ATOMIC_PROMOTION_ROLLBACK",
+      "status": "PASS",
+      "evidence": "_recompile completes before release/current/event mutation; promotion and rollback call same outcome law."
+    },
+    {
+      "id": "R7_POSITIVE_ONLY_HISTORICAL_IDENTITY",
+      "status": "PASS",
+      "evidence": "Positive-only semantic_projection preserves exact pre-extension field set; old/new class comparison supports compatibility claim."
+    },
+    {
+      "id": "R8_NEGATIVE_SERIALIZATION_CANONICAL_FAIL_CLOSED",
+      "status": "FAIL",
+      "blocker": "C1-03R-A-RVW-002",
+      "evidence": "NoncurrentDependentOutcome.from_dict ignores replacement_ref; AuthorityInvalidationReceipt.from_dict ignores receipt_schema."
+    },
+    {
+      "id": "R9_CHECKPOINT_ROUND_TRIP_HONEST_INPUT",
+      "status": "PASS_WITH_BLOCKER",
+      "evidence": "Honest export/import reconstructs negative rows/current selection, but malformed canonical-boundary checks are incomplete."
+    },
+    {
+      "id": "R10_CURRENT_REPLACEMENT_VISIBILITY",
+      "status": "PASS",
+      "evidence": "Owner-known replaced old_ref resolves CURRENT with exact current_replacement_ref."
+    },
+    {
+      "id": "R11_EXPLICIT_NONCURRENT_VISIBILITY",
+      "status": "PASS",
+      "evidence": "Owner-known explicit noncurrent raises ExplicitNoncurrentDependent in analytical resolver."
+    },
+    {
+      "id": "R12_UNAFFECTED_VISIBILITY",
+      "status": "PASS",
+      "evidence": "Owner-known unaffected sibling remains current without replacement ref."
+    },
+    {
+      "id": "R13_UNKNOWN_DEPENDENT_FAIL_CLOSED",
+      "status": "FAIL",
+      "blocker": "C1-03R-A-RVW-003",
+      "evidence": "dependent_lifecycle_status returns CURRENT when no release mentions an arbitrary unregistered ref; no known_dependent membership check."
+    },
+    {
+      "id": "R14_SEALED_SUCCESSOR_EXACTNESS",
+      "status": "PASS",
+      "evidence": "Adapter resolves exact consumed prior and unique other same-authority changed ref; transition changed set is owner-produced from sealed selection."
+    },
+    {
+      "id": "R15_DECOY_DISTINCT",
+      "status": "PASS",
+      "evidence": "Fixture names unsealed_decoy_model_ref separately; decoy content hash equals consumed prior and differs from sealed successor."
+    },
+    {
+      "id": "R16_MODEL_RULE_BINDS_SUCCESSOR",
+      "status": "PASS",
+      "evidence": "PositionedSubjectPossibilityModelRule material binds complete sealed successor ref and rule_hash hashes material."
+    },
+    {
+      "id": "R17_AUTHORITY_CANDIDATE_IDENTITY_UNCHANGED",
+      "status": "PASS",
+      "evidence": "AuthorityCandidate class section is text-identical before/after patch."
+    },
+    {
+      "id": "R18_MIXED_AT19_ONE_RELEASE",
+      "status": "PASS",
+      "evidence": "One release has replacement + two explicit noncurrent + unaffected sibling; transitive downstream noncurrent included."
+    },
+    {
+      "id": "R19_MISSING_EDGE_HOSTILE",
+      "status": "PASS",
+      "evidence": "Independent registered-product recomposition witness detects omitted cross-owner edge."
+    },
+    {
+      "id": "R20_AT18_GRADE_SEPARATION",
+      "status": "PASS",
+      "evidence": "Four grades and mechanism ceilings unchanged; fresh owner checkpoint replay claimed only as SERIALIZATION_REPLAY."
+    },
+    {
+      "id": "R21_SCOPE_DIFF",
+      "status": "PASS",
+      "evidence": "Implementation is one commit over HQ151 commission and only allowed owner/adapter/tests/return terrain changed."
+    },
+    {
+      "id": "R22_EXECUTION_RECEIPT",
+      "status": "WORKER_EVIDENCE_ONLY",
+      "evidence": "Worker records 144/0/0/0 over exact four suites; no associated GitHub Actions run and browser reviewer did not rerun local court."
+    }
+  ],
+  "blocking_ids": [
+    "C1-03R-A-RVW-001",
+    "C1-03R-A-RVW-002",
+    "C1-03R-A-RVW-003",
+    "C1-03R-A-RVW-004"
+  ]
+}
