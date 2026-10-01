@@ -1,7 +1,7 @@
 {
   "schema": "PYAT_OMEGA_ACTIVE_TASK_BOARD@1",
-  "revision": 24,
-  "status": "C1_02_NARROW_WITNESS_REPAIR_BOUND__N10E_REVIEW_ACTIVE__C2_PREP_COMPLETE__C3_ADOPTED",
+  "revision": 25,
+  "status": "C1_02_PAIRING_REREVIEW_BOUND__N10E_PROOF_CORRECTION_BOUND__C2_PREP_COMPLETE__C3_ADOPTED",
   "control_branch": "integration/pre-main-reconciliation-r1",
   "adopted_preparation": [
     {
@@ -102,30 +102,48 @@
       "head": "c9ed2fe49d032b9313c3d24227a08fd9ca3aff89",
       "disposition": "CHANGES_REQUIRED",
       "adjudication": "ADOPT_SOLE_BLOCKER__C1_02_REVIEW_BLOCK_WITNESS_PAIR_001"
+    },
+    {
+      "id": "C1-02-WITNESS-PAIRING-REPAIR",
+      "head": "bc661188b51e995d9f5d74e55c4e37d2ba358a17",
+      "disposition": "PASS_BLOCKER_REPAIRED__NARROW_INDEPENDENT_REREVIEW_REQUIRED",
+      "counts": {
+        "passed": 109,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "adjudication": "PATCH_READY_ONLY__NARROW_REREVIEW_REQUIRED"
+    },
+    {
+      "id": "N10E-R1-REVIEW",
+      "head": "b89268d1824409d20a91a37a0a3ff7751a7ae75a",
+      "disposition": "CHANGES_REQUIRED",
+      "adjudication": "ADOPT_NARROW_PROOF_PROVENANCE_CORRECTION__PROVIDER_IMPLEMENTATION_NOT_REOPENED"
     }
   ],
   "active_tasks": [
     {
-      "id": "N10E-R1-REVIEW",
-      "branch": "agent/reviewer-pyat-hq141-n10e-r1",
-      "commission_tip": "610f949a7646cbdedea770816e245fa58cb6d7e4",
-      "base": "58ba4320635162e8103ed38681ea5ae3e3bac014",
+      "id": "C1-02-WITNESS-PAIRING-REREVIEW",
+      "branch": "agent/reviewer-pyat-hq144-c1-02-witness-pairing-rereview-r1",
+      "commission_tip": "a7b6978ec4e7e856de0745d83d7fa36ba682f7eb",
+      "base": "bc661188b51e995d9f5d74e55c4e37d2ba358a17",
       "state": "BOUND_AWAITING_USER_MEDIATED_LAUNCH",
       "launch_surface": "BROWSER",
       "model": "GPT-5.6_SOL_HIGH",
-      "scope": "INDEPENDENT_ACCEPTANCE_REVIEW__N10E_PROVIDER_CORE__AT07_AT17",
-      "parallelism": "DISJOINT_FROM_C1_02_CORRECTION"
+      "scope": "SOLE_REVIEW_BLOCKER_C1_02_REVIEW_BLOCK_WITNESS_PAIR_001"
     },
     {
-      "id": "C1-02-WITNESS-PAIRING-REPAIR",
-      "branch": "agent/opencode-pyat-hq143-c1-02-witness-pairing-repair-r1",
-      "commission_tip": "5a83a659759e8a076d33adfa984ebba02255c40f",
-      "base": "6e0f7b438089a542c9949b604cd55cbb3eaf8b2b",
+      "id": "N10E-PROOF-PROVENANCE-CORRECTION",
+      "branch": "agent/deepseek-pyat-hq144-n10e-proof-provenance-correction-r1",
+      "commission_tip": "a7f7eecdeaee58e4d8021b7c571b4956e6301464",
+      "base": "58ba4320635162e8103ed38681ea5ae3e3bac014",
       "state": "BOUND_AWAITING_USER_MEDIATED_LAUNCH",
-      "launch_surface": "OPENCODE",
-      "model": "SPACE_BUNNY_FREE",
-      "scope": "SOLE_BLOCKER_C1_02_REVIEW_BLOCK_WITNESS_PAIR_001",
-      "postcondition": "NARROW_INDEPENDENT_REREVIEW"
+      "launch_surface": "DEEPSEEK_HARNESS",
+      "model": "DEEPSEEK_V4_1_FLASH",
+      "mode": "STANDARD",
+      "scope": "REV_N10E_001_002_003_ONLY",
+      "provider_code_change_authorized": false
     }
   ],
   "held": [
@@ -144,7 +162,7 @@
     "NO_PREV3_TO_V3_ACTOR_IMPLEMENTATION"
   ],
   "prior_git_blob_sha1": "66b666991d9a8c614710687c7640277cb75fc8c6",
-  "next_action": "RUN_C1_02_WITNESS_PAIRING_REPAIR_IN_OPENCODE_SPACE_BUNNY__N10E_REVIEW_CONTINUES_IN_PARALLEL",
+  "next_action": "RUN_C1_02_NARROW_REREVIEW_AND_N10E_PROOF_PROVENANCE_CORRECTION_IN_PARALLEL__HQ_ADJUDICATES_RETURNS",
   "operating_requirements": "PYAT_CONTROL_ROOM/BROWSER_ECONOMY_MODE_R1.md",
   "grounding": {
     "live_control_head": "731519c6de341bbd6c95672f70329f3cf996d686",
