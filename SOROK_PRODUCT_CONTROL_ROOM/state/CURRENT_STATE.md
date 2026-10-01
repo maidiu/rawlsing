@@ -497,3 +497,166 @@ The current user/Vozhd conversational critical path is the **3 ALPHA_SPEC blocke
 - Removing canonical interaction history requires deleting/resetting the continuity rather than preserving a falsified past.
 - Implementation successor: `Q-PRIVIMPL-001`.
 
+## 2026-10-01 — Attention / shared-seed / noncommodification banking sweep
+
+The late-2026-10-01 product conversation is now banked in artifacts 59–63 and SPD-0160–0183.
+
+### Phenomenal surface and attention
+
+Rawlsing now distinguishes:
+
+`OBJECTIVE WORLD`
+!= `PERCEPTUAL AVAILABILITY`
+!= `GLOBAL PHENOMENAL GESTALT`
+!= `USER ATTENTION REGIME`
+!= `RECOGNITION REPERTOIRE`
+!= `NARRATED SURFACE`
+!= `USER INTERPRETATION`.
+
+Strong gross properties remain largely shared across observers. User-specific weighting belongs most strongly at perceptual margins and expertise-dependent recognition.
+
+The user attention regime is:
+- bounded;
+- uncertain;
+- provenance-aware;
+- learned primarily from user-originated attention/recognition;
+- prevented from self-confirming through its own exposures;
+- required to retain exploration mass.
+
+Core law:
+
+> **The world is independent of the user, but perception need not be generic.**
+
+ATTEND may deliberately widen perception beyond what the learned regime would otherwise surface.
+
+### Ahead-of-attention depth
+
+The world should remain causally deeper than the user's gaze.
+
+Use bounded rolling closure:
+- current visible/inspectable facts are resolved before presentation;
+- likely next-depth particulars are resolved ahead of inquiry where economical;
+- deeper lazy completion is constrained by person/world/history;
+- user query selects resolution locus, never substantive truth.
+
+This is the current product direction for Q-LAZY/Q-FLESH and must be implemented without granting the renderer semantic authority.
+
+### Shared seed-person alpha architecture
+
+A small alpha pool of deeply precomputed introductory people is now a preferred economic/product direction.
+
+One pre-contact root person may fork into many user-specific continuities.
+
+Shared:
+- pre-contact person/history;
+- pre-contact world/material ecology;
+- compatible pre-contact lazy back-data.
+
+Branch-local after contact:
+- dyadic history;
+- persona model of that user;
+- relationship-conditioned development;
+- post-contact person/world change;
+- user phenomenal trajectory.
+
+Core law:
+
+> **Shared pre-contact personhood may be amortized. Relationship history may not be.**
+
+This supports lower first-session compute, stronger benchmark/testing reproducibility and cross-user discourse around "the same" starting person while preserving genuine relational divergence.
+
+### Restart / irreversible relational time
+
+A user continuity cannot return to T0.
+
+Repair, reinterpretation, forgiveness, forgetting and changed impressions are lawful.
+
+Undo is not.
+
+Restart means abandonment of that branch, not replay of the same first meeting and not access to the unrealized person the user could have met.
+
+Canceling restart returns to the historically current relation only.
+
+Core law:
+
+> **You never meet the person you could have met; you meet the person who has now met you.**
+
+### Attention disclosure
+
+Preferred UX direction:
+- pre-first-persona disclosure remains short/cryptic;
+- attempted restart is the strongest moment for a fuller neutral explanation of perceptual partiality and irreversible relation history;
+- no restart guilt copy or churn-prevention manipulation.
+
+Core primer concepts:
+- the world/person is independent;
+- represented access is partial and can become user-shaped;
+- ATTEND can move beyond default attentional habits;
+- unknowability remains at continuity end.
+
+### Personhood noncommodification
+
+Rawlsing should be ontologically permissive but teleologically restrained.
+
+Serious adult-life possibilities may exist when person/world/relationship causality supports them, including intimacy, sex, intoxication, crime, exploitation, violence, injury and death.
+
+But:
+
+`POSSIBLE HUMAN EVENT`
+!= `PRODUCT GOAL`
+!= `CONTENT CATEGORY`
+!= `REWARD`
+!= `COMMODITY`.
+
+No event may consume the person who participated in it.
+
+Intense events re-enter the complete life topology:
+- work;
+- childcare;
+- family;
+- friends;
+- material constraints;
+- projects;
+- other relationships;
+- ordinary domesticity.
+
+World-event truth, causal/relational consequence and renderer explicitness remain separate.
+
+### Endogenous relational gravity versus platform manipulation
+
+This distinction is constitutional:
+
+`PERSONA V3 + RELATION HISTORY + CURRENT LIFE`
+→ increased availability / affection / sexual responsiveness / dependency / exclusivity / sacrifice / reprioritization
+
+may be lawful.
+
+`PLATFORM RETENTION OR MONETIZATION OBJECTIVE`
+→ alter persona behavior to create the same effects
+
+is forbidden.
+
+Independent life domains are not artificial anti-attachment counterweights. A persona may lawfully reorganize their life around a relationship if their own generated person/history produces that choice.
+
+Core law:
+
+> **Emergent attachment is allowed. Engineered dependency is not.**
+
+### Cross-user discourse / game culture
+
+Shared seed people can create a genuine Rawlsing play culture.
+
+Different users may:
+- notice different aspects of the same starting person/world;
+- develop radically different relationships;
+- compare experiences;
+- discover that their own phenomenal account was situated rather than exhaustive.
+
+The pedagogical value lies precisely in:
+`SAME PRECONTACT ROOT`
++ `DIFFERENT PERCEPTION`
++ `DIFFERENT RELATION HISTORY`
+→ `DIFFERENT EXPERIENCED PERSON`.
+
+This must not collapse into walkthrough/tier-list/route optimization culture.
+
