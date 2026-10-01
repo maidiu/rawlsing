@@ -1,7 +1,7 @@
 {
   "schema": "PYAT_OMEGA_ACTIVE_TASK_BOARD@1",
-  "revision": 22,
-  "status": "C1_02_CORRECTION_ACTIVE__N10E_PATCH_READY_REVIEW_BOUND__C2_PREP_COMPLETE__C3_ADOPTED",
+  "revision": 23,
+  "status": "C1_02_CORRECTION_PATCH_READY_REVIEW_BOUND__N10E_REVIEW_BOUND__C2_PREP_COMPLETE__C3_ADOPTED",
   "control_branch": "integration/pre-main-reconciliation-r1",
   "adopted_preparation": [
     {
@@ -83,19 +83,22 @@
         "errors": 0,
         "skipped": 0
       }
+    },
+    {
+      "id": "C1-02-CORRECTION",
+      "head": "6e0f7b438089a542c9949b604cd55cbb3eaf8b2b",
+      "disposition": "PASS_SOURCE_FREE_PATCH_READY__INDEPENDENT_REVIEW_REQUIRED",
+      "counts": {
+        "passed": 105,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "adjudication": "PATCH_READY_ONLY__INDEPENDENT_ACCEPTANCE_REVIEW_REQUIRED",
+      "wider_regression": "NO_WIDER_REGRESSIONS_DETECTED_AT_ACCEPTED_C1_01_BASELINE_GRAIN"
     }
   ],
   "active_tasks": [
-    {
-      "id": "C1-02-CORRECTION",
-      "state": "REMOTE_BRANCH_BOUND__LOCAL_CORRECTION_IN_PROGRESS",
-      "source_return": "21254c57d92c6411282de13450fc2bdfab21d345",
-      "worker": "SPACE_BUNNY_FREE",
-      "requirement": "PUSH_TO_SEPARATE_CORRECTION_BRANCH_BEFORE_HQ_ADJUDICATION",
-      "branch": "agent/opencode-pyat-hq139-c1-02-correction-r1",
-      "remote_base": "21254c57d92c6411282de13450fc2bdfab21d345",
-      "required_before_return": "COMPARE_WIDER_FAILURE_NODE_SET_AGAINST_ACCEPTED_C1_01_BASE_5FAFB499__THEN_SYNCHRONIZE_RETURN_PACKET"
-    },
     {
       "id": "N10E-R1-REVIEW",
       "branch": "agent/reviewer-pyat-hq141-n10e-r1",
@@ -106,6 +109,17 @@
       "model": "GPT-5.6_SOL_HIGH",
       "scope": "INDEPENDENT_ACCEPTANCE_REVIEW__N10E_PROVIDER_CORE__AT07_AT17",
       "parallelism": "DISJOINT_FROM_C1_02_CORRECTION"
+    },
+    {
+      "id": "C1-02-CORRECTION-REVIEW",
+      "branch": "agent/reviewer-pyat-hq142-c1-02-correction-r1",
+      "commission_tip": "b33488a79103704aea8a6fa1163a764045bcf4c9",
+      "base": "6e0f7b438089a542c9949b604cd55cbb3eaf8b2b",
+      "state": "BOUND_AWAITING_USER_MEDIATED_LAUNCH",
+      "launch_surface": "BROWSER",
+      "model": "GPT-5.6_SOL_HIGH",
+      "scope": "INDEPENDENT_ACCEPTANCE_REVIEW__AT08_AT13__OWNER_FIXES__REGRESSION_ATTRIBUTION",
+      "special_adjudication": "AT10_UNDERPOWERED_AND_AT11_ADAPTIVE_UNVISITED_NONCLAIMS"
     }
   ],
   "held": [
@@ -124,7 +138,7 @@
     "NO_PREV3_TO_V3_ACTOR_IMPLEMENTATION"
   ],
   "prior_git_blob_sha1": "66b666991d9a8c614710687c7640277cb75fc8c6",
-  "next_action": "SPACE_BUNNY_COMPARE_C1_02_WIDER_FAILURES_AGAINST_ACCEPTED_C1_01_BASE_THEN_FINALIZE_AND_PUSH__N10E_REVIEW_RUNS_IN_PARALLEL",
+  "next_action": "RUN_C1_02_CORRECTION_INDEPENDENT_REVIEW_AND_N10E_INDEPENDENT_REVIEW_IN_PARALLEL__HQ_ADJUDICATES_RETURNS",
   "operating_requirements": "PYAT_CONTROL_ROOM/BROWSER_ECONOMY_MODE_R1.md",
   "grounding": {
     "live_control_head": "731519c6de341bbd6c95672f70329f3cf996d686",
@@ -146,5 +160,9 @@
     "task": "C1_01_R8_INDEPENDENT_REVIEW",
     "return_head": "98825f710e5238e794c78bf0acbb43faaea355e4",
     "telemetry_defect": "NEMOTRON-Q1-SELF-HEAD-001__NONBLOCKING"
+  },
+  "process_telemetry": {
+    "kimi_k2_7": "FAILED_EVIDENCE_INTEGRITY__AUTONOMOUS_ACCEPTANCE_TRUST_REVOKED_PENDING_REQUALIFICATION",
+    "space_bunny": "CORRECTION_RETURN_STRONG_AT_INTAKE__INDEPENDENT_ACCEPTANCE_PENDING"
   }
 }
