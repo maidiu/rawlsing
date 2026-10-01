@@ -134,13 +134,30 @@ def _actual_leaf(predicate: EmpiricalPredicate) -> Mapping[str, Any]:
     return ast
 
 
+def _leaf_semantic_ref(node: Mapping[str, Any]) -> Any:
+    """Exact semantic ref of a value-bearing leaf, keyed by its leaf type."""
+    if node.get("leaf_type") == "EMPIRICAL_POSITION_COORDINATE":
+        return node.get("coordinate_semantic_ref")
+    return node.get("question_semantic_ref")
+
+
+VALUE_BEARING_LEAF_TYPES = frozenset(
+    {"SURVEY_RESPONSE_EVENT", "EMPIRICAL_POSITION_COORDINATE"}
+)
+
+
 def _actual_leaves(predicate: EmpiricalPredicate) -> list[Mapping[str, Any]]:
-    """Extract all value-bearing leaves from a compound predicate."""
+    """Extract all value-bearing leaves from a compound predicate.
+
+    Governed empirical-position coordinates are value-bearing conditioners in
+    their own right (the discovery owner exposes RESPONSE_X_COORDINATE
+    families), so they participate in the same relation law as response leaves.
+    """
     ast = canonicalize(predicate.predicate_ast)
-    leaves = []
+    leaves: list[Mapping[str, Any]] = []
 
     def collect(node: Mapping[str, Any]) -> None:
-        if node.get("op") == "LEAF" and node.get("leaf_type") == "SURVEY_RESPONSE_EVENT":
+        if node.get("op") == "LEAF" and node.get("leaf_type") in VALUE_BEARING_LEAF_TYPES:
             if node.get("operator") == "EQ" and "exact_value" in node:
                 leaves.append(node)
         elif node.get("op") in {"AND", "OR", "NOT"}:
@@ -620,14 +637,21 @@ def _verify_witness(
 
         for i, binding in enumerate(bindings):
             frozen_leaf = canonicalize(witness.producer_predicate_leaf_projections[i])
+            frozen_ref = frozen_leaf.get("coordinate_semantic_ref") if (
+                frozen_leaf.get("leaf_type") == "EMPIRICAL_POSITION_COORDINATE"
+            ) else frozen_leaf.get("question_semantic_ref")
             match_found = False
             for actual_leaf in actual_leaves:
-                if (frozen_leaf.get("question_semantic_ref") == actual_leaf.get("question_semantic_ref") and
+                if (frozen_ref == _leaf_semantic_ref(actual_leaf) and
                     frozen_leaf.get("exact_value") == actual_leaf.get("exact_value")):
                     match_found = True
-                    for key in ("leaf_type", "question_semantic_ref", "operator", "exact_value"):
+                    for key in ("leaf_type", "operator", "exact_value"):
                         if frozen_leaf.get(key) != actual_leaf.get(key):
                             raise ConditionValueRelationMismatch(f"conditioner {i}: actual producer leaf mismatch: {key}")
+                    if _leaf_semantic_ref(frozen_leaf) != _leaf_semantic_ref(actual_leaf):
+                        raise ConditionValueRelationMismatch(
+                            f"conditioner {i}: actual producer leaf semantic ref mismatch"
+                        )
                     break
             if not match_found:
                 raise ConditionValueRelationMismatch(f"conditioner {i}: no matching producer leaf found")
@@ -701,10 +725,18 @@ def _validate_discovery_consumption(
 
     if not receipt.empirical_fact_refs:
         raise DiscoveryConsumptionMismatch("receipt has no empirical facts")
-    fact = fact_by_ref.get(exact_ref(receipt.empirical_fact_refs[0]))
+    # A receipt carries the baseline fact alongside the candidate fact, so the
+    # consumed fact must be the one conditioned by the winning predicate rather
+    # than whichever fact happens to be first in the receipt's list.
+    fact = None
+    for fact_ref in receipt.empirical_fact_refs:
+        candidate = fact_by_ref.get(exact_ref(fact_ref))
+        if candidate is None:
+            continue
+        if _exact(candidate.condition_predicate_ref, "condition_predicate_ref") == predicate.ref:
+            fact = candidate
+            break
     if fact is None:
-        raise DiscoveryConsumptionMismatch("fact not found in discovery result")
-    if _exact(fact.condition_predicate_ref, "condition_predicate_ref") != predicate.ref:
         raise DiscoveryConsumptionMismatch("fact predicate mismatch")
 
     query_ref = _exact(fact.empirical_query_spec_ref, "empirical_query_spec_ref")
@@ -720,13 +752,36 @@ def _validate_recursive_lineage(
     handoff: RecursiveBranchHandoff,
     consumer_query: PositionedSubjectPossibilityQuery,
 ) -> tuple[ExactRef, ...]:
-    """Validate recursive lineage and return ancestry refs."""
-    lineage = [handoff.ref, handoff.immediate_parent_branch_ref]
-    # Add any additional ancestry from the handoff's scope context
+    """Validate recursive lineage and return the full owner-native ancestry.
+
+    A depth-two continuation reaches its generation through the persisted branch,
+    so the ancestry is not only the immediate parent: the discovered grammar atom
+    carries the exact ancestor refs of every earlier generation. Those refs are
+    part of the retained custody material and are closed here.
+    """
+    lineage: list[ExactRef] = [handoff.ref, handoff.immediate_parent_branch_ref]
+    seen = {ref.key for ref in lineage}
+
+    def absorb(values: Any) -> None:
+        if not isinstance(values, (list, tuple)):
+            return
+        for value in values:
+            try:
+                ref = exact_ref(value)
+            except AnalyticalCompositionError:
+                continue
+            if ref.key not in seen:
+                seen.add(ref.key)
+                lineage.append(ref)
+
     scope = handoff.scope_context
-    if isinstance(scope.get("parent_branch_refs"), list):
-        for ref_dict in scope["parent_branch_refs"]:
-            lineage.append(exact_ref(ref_dict))
+    if isinstance(scope, Mapping):
+        absorb(scope.get("parent_branch_refs"))
+    definition = handoff.candidate_universe_definition
+    if isinstance(definition, Mapping):
+        for atom in definition.get("atoms", ()):
+            if isinstance(atom, Mapping):
+                absorb(atom.get("ancestry_refs"))
     return tuple(lineage)
 
 

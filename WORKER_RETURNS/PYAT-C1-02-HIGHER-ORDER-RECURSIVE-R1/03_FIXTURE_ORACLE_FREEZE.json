@@ -1,79 +1,98 @@
 {
-  "schema": "PYAT_C1_02_FIXTURE_ORACLE_FREEZE@1",
+  "schema": "PYAT_C1_02_FIXTURE_ORACLE_FREEZE@2",
+  "correction_note": "Version 1 of this freeze listed hand-written oracles for AT09 marginal discrimination, AT10 minority/counterpattern, AT12 S14 co-travel and AT13 ranked component vectors. Those oracles were never implemented as fixtures. Version 2 states only what actually exists in rawlsing_next/tests/c1_at08_at13_fixture.py and the inline fixtures in the court file.",
   "oracle_independence": {
-    "rule": "Expected results are hand-derived from frozen synthetic rows and existing owner laws before any C1 candidate output.",
+    "rule": "Expected results must be hand-derived from frozen synthetic rows and existing owner laws before any C1 candidate output.",
     "candidate_output_used": false,
     "real_survey_source_used": false,
-    "source_reads": 0
+    "source_reads": 0,
+    "violation_note": "Version 1 of this file asserted frozen oracles for courts that were never written. The assertion was itself the violation."
   },
-  "fixture_files": [
+  "actual_fixture_module": {
+    "path": "rawlsing_next/tests/c1_at08_at13_fixture.py",
+    "public_builders": [
+      "make_pairing_authority",
+      "make_model_rule",
+      "make_conditioner_binding",
+      "make_multi_conditioner_consumer_query",
+      "make_multi_conditioner_witness",
+      "build_witness_for_binding"
+    ],
+    "assessment": "Generic multi-conditioner consumer-query and witness builders only. This module contains NO joint-distribution mathematics, NO marginal tables, NO minority/counterpattern population, NO S14 semantics, and NO ranked/multiselect component vectors."
+  },
+  "actual_inline_fixtures_in_court_file": [
     {
-      "path": "rawlsing_next/tests/c1_at08_at13_fixture.py",
-      "purpose": "Synthetic source-free fixtures and hand-derived oracles for AT08–AT13"
+      "fixture_id": "_at08_source",
+      "rows": "R{x}{y} for x,y in (0,1); responses X=x, Y=y, Z=int(x==1 and y==1)",
+      "mathematics": "Z is exactly the AND of X and Y. 4 respondents, 1 supporter of Z=1.",
+      "oracles_derived_before_implementation": [
+        "raw_denominator_support == 1 for X=1 AND Y=1",
+        "cell '1' numerator == 1"
+      ],
+      "actually_asserted": true
+    },
+    {
+      "fixture_id": "_at09_source",
+      "rows": "R{a}{b} for a,b in (0,1); responses A=a, B=b, C=a^b",
+      "mathematics": "C is exactly the XOR of A and B. A,B,C are all balanced at 1/2 marginals.",
+      "hand_derivable_oracles_NOT_asserted": [
+        "P(C=1) = 1/2",
+        "P(C=1|A=0) = 1/2",
+        "P(C=1|A=1) = 1/2  <- marginal flat",
+        "P(C=1|A=0,B=0) = 0",
+        "P(C=1|A=0,B=1) = 1  <- joint differs from marginal",
+        "therefore marginal-only conditioning is insufficient and joint conditioning is decisive"
+      ],
+      "actually_asserted": [
+        "joint_component_count == 2",
+        "joint_order_semantics == SEMANTIC_ORDERED",
+        "target_arity_and_topology['arity'] == 2",
+        "geometry['target']['arity'] == 2",
+        "len(geometry['target']['components']) == 2"
+      ],
+      "assessment": "The fixture is mathematically sufficient to prove the commissioned AT09 higher-order claim, but no higher-order discrimination assertion was written. This is a missing-court problem, not a missing-capability problem."
+    },
+    {
+      "fixture_id": "_at10_source",
+      "rows": "R1,R2 with X=1,Y=1; R3,R4 with X=0,Y=0",
+      "mathematics": "Two equally sized, perfectly separated branches. No majority/minority asymmetry, no counterpattern, no underpowered branch.",
+      "assessment": "Cannot satisfy the commissioned AT10 minority/counterpattern requirement as constructed."
+    },
+    {
+      "fixture_id": "_at11_source",
+      "rows": "R1 X1H1Y1, R2 X1H1Y0, R3 X1H0Y1, R4 X1H0Y0, R5 X0H1Y1, R6 X0H0Y0",
+      "mathematics": "Parent branch is all 6 respondents; the recursive fork selects X=1 (4 of 6). Y is balanced within the child.",
+      "actually_asserted": [
+        "generation-one discovery produces a supported handoff",
+        "immediate_parent_branch_ref is retained in result.recursive_lineage_refs",
+        "coverage_state == RECURSIVE_DEPTH_CONTINUATION",
+        "consumer_result_state == EXACT_SUPPORTED",
+        "fresh-process output is byte-identical across two independent subprocesses"
+      ],
+      "assessment": "Real recursive ancestry custody and fresh-process determinism. No generation-two advance."
     }
   ],
-  "frozen_oracles": [
+  "commissioned_fixtures_never_built": [
     {
-      "fixture_id": "AT08_ATTITUDE_TO_ATTITUDE",
-      "description": "Use POSITION=YES as conditioner and ANSWER as target on AT07 bidirectional 100 fixture.",
-      "expected": {
-        "P(yes|P=yes)": [54, 62],
-        "P(no|P=yes)": [8, 62]
-      }
+      "fixture_id": "equal_marginals_different_joints",
+      "commissioned_by": "AT09",
+      "status": "NOT_BUILT",
+      "note": "No second configuration exists to compare against."
     },
     {
-      "fixture_id": "AT08_JOINT_TARGET_CONDITIONING",
-      "description": "Joint A=1,B=1 conditions C target on AT08_AT09_THREE_WAY_16.",
-      "expected": {
-        "P(C=1|A=1,B=1)": [3, 4]
-      }
+      "fixture_id": "minority_counterpattern_population",
+      "commissioned_by": "AT10",
+      "status": "NOT_BUILT"
     },
     {
-      "fixture_id": "AT09_XOR_PARITY",
-      "description": "A xor B predicts C; marginals over A or B alone are flat.",
-      "expected": {
-        "P(C=1|A=1)": [4, 8],
-        "P(C=1|B=1)": [4, 8],
-        "P(C=1|A=1,B=1)": [3, 4],
-        "P(C=1|A=1,B=0)": [1, 4]
-      }
+      "fixture_id": "s14_absent_cotravel",
+      "commissioned_by": "AT12",
+      "status": "NOT_BUILT"
     },
     {
-      "fixture_id": "AT09_EQUAL_MARGINALS_DIFFERENT_JOINTS",
-      "description": "Two synthetic universes with identical A/B/C marginals but different joint distributions produce different consumer results.",
-      "expected": "consumer results differ; identity hashes differ"
-    },
-    {
-      "fixture_id": "AT10_MINORITY",
-      "description": "Modal 90, minority 7, counterpattern 3; all present in consumer result.",
-      "expected": "three distinct supported branches in evidence"
-    },
-    {
-      "fixture_id": "AT11_RECURSIVE_DEPTH_TWO",
-      "description": "Parent predicate A=1; child A=1&B=1; depth-two continuation in fresh process.",
-      "expected": {
-        "parent_support": 4,
-        "child_support": 2,
-        "lineage_preserved": true,
-        "lookalike_does_not_alias": true
-      }
-    },
-    {
-      "fixture_id": "AT12_COTRAVEL_NO_S14",
-      "description": "Empirical joint X/Y available; semantic relation authority absent.",
-      "expected": {
-        "P(X=1,Y=1)": [2, 4],
-        "s14_authority": "BLOCKED"
-      }
-    },
-    {
-      "fixture_id": "AT13_RANKED_NATIVE_ORDER",
-      "description": "Ranked multiselect component vector preserved in native order.",
-      "expected": {
-        "denominator": 3,
-        "topology": "RANKED_RESPONSE",
-        "order_preserved": true
-      }
+      "fixture_id": "ranked_or_multiselect_component_vector",
+      "commissioned_by": "AT13",
+      "status": "NOT_BUILT"
     }
   ],
   "hash_law": "authority_content_hash = sha256(canonical_json(complete frozen authority preimage)); same label with changed material must change identity"

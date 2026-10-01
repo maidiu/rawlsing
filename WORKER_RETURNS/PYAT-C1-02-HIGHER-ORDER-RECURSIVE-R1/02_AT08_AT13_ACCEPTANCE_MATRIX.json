@@ -1,147 +1,158 @@
 {
-  "schema": "PYAT_C1_02_AT08_AT13_ACCEPTANCE_MATRIX@1",
-  "status": "ALL_AT08_AT13_PASSED",
+  "schema": "PYAT_C1_02_AT08_AT13_ACCEPTANCE_MATRIX@2",
+  "status": "CORRECTED_AFTER_RECEIPT_AUDIT__3_OF_6_COMMISSIONED_AT_NOT_MET",
+  "correction_note": "Version 1 of this matrix asserted PASS for AT08-AT13 using test names that do not exist in the court file. This version is reconciled against the actual test functions in rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py. The version-1 claims were false and are withdrawn.",
+  "actual_test_inventory": [
+    "test_at08_direct_two_conditioner_composition_requires_joint_predicate",
+    "test_at09_joint_target_geometry_preserved_in_evidence",
+    "test_at10_discovery_route_consumes_supported_receipt",
+    "test_at10_discovery_route_rejects_wrong_receipt_ref",
+    "test_at11_recursive_handoff_composition_continues_lineage",
+    "test_at11_recursive_handoff_rejects_predicate_mismatch",
+    "test_at12_joint_target_count_mismatch_fails_closed",
+    "test_at13_witness_binding_count_mismatch_fails_closed",
+    "test_at11_fresh_process_runner_reproduces_recursive_composition"
+  ],
   "rows": [
     {
       "at": "AT08",
-      "summary": "Attitude-to-attitude and joint-to-target conditioning",
-      "positive_assertions": [
-        "Attitude/value condition can drive a different attitude target through actual public producer and actual consumer",
-        "Known multi-component/joint configuration can drive remaining target distribution",
-        "Conditioner values are present in identity/provenance",
-        "Changing one conditioner value changes the query/composed identity",
-        "Consumer-facing result preserves all conditioners and support, not collapsed to a display label"
-      ],
-      "hostile_assertions": [
-        "Incompatible source/release/risk/measure context fails closed rather than being coerced"
-      ],
-      "test_names": [
-        "test_at08_attitude_to_attitude_conditioning",
-        "test_at08_joint_target_conditioning",
-        "test_at08_condition_change_changes_identity",
-        "test_at08_context_mismatch_fails_closed"
-      ],
+      "commissioned_scope": "attitude-to-attitude and joint-to-target conditioning",
+      "implemented_tests": ["test_at08_direct_two_conditioner_composition_requires_joint_predicate"],
       "producer_owner": "rawlsing_next.pre553_empirical_query.execute_empirical_query",
-      "consumer_path": "rawlsing_next.pre553_analytical_composition.compose_positioned_subject_possibility -> rawlsing_next.source_backed_positioned_subject_possibility.evaluate_positioned_subject_possibility",
-      "fixture_refs": [
-        "AT07_BIDIRECTIONAL_100",
-        "AT08_AT09_THREE_WAY_16"
+      "consumer_path": "compose_positioned_subject_possibility -> evaluate_positioned_subject_possibility",
+      "fixture_ref": "c1_at08_at13_fixture.make_multi_conditioner_consumer_query / make_conditioner_binding / build_witness_for_binding",
+      "commissioned_assertions_met": [
+        "known multi-component/joint configuration -> remaining target distribution",
+        "consumer-facing result preserves conditioners and support (both conditioners consumed; raw_denominator_support asserted)"
       ],
-      "execution_status": "PASSED",
+      "commissioned_assertions_NOT_met": [
+        "attitude/value condition -> different attitude target through actual producer and consumer (not exercised; X/Y are response values, target Z is derived)",
+        "exact conditioner values present in identity/provenance (not asserted)",
+        "changing one conditioner value changes the query/composed identity (no such test)",
+        "incompatible source/release/risk/measure context fails closed rather than being coerced (no such test at AT08)"
+      ],
+      "execution_status": "PARTIAL",
       "evidence_grade": "source-free executed producer + consumer use"
     },
     {
       "at": "AT09",
-      "summary": "Higher-order signal: XOR/parity and equal marginals/different joints",
-      "positive_assertions": [
-        "XOR/parity configuration carries supported target signal not visible in individual/pairwise marginals",
-        "Two configurations with equal relevant marginals but different joint structure produce distinct outcomes",
-        "Composed analytical/consumer path preserves the distinction"
+      "commissioned_scope": "higher-order signal: XOR/parity insufficient marginals; equal marginals with different joints",
+      "implemented_tests": ["test_at09_joint_target_geometry_preserved_in_evidence"],
+      "producer_owner": "rawlsing_next.pre553_empirical_query.execute_empirical_query",
+      "consumer_path": "compose_positioned_subject_possibility",
+      "fixture_ref": "_at09_source() inline fixture in the court file: rows R{a}{b} with C = a ^ b",
+      "fixture_supports_the_law": true,
+      "fixture_law_noted": "P(C=1)=1/2; P(C=1|A=0)=1/2; P(C=1|A=1)=1/2 (flat); P(C=1|A=0,B=0)=0; P(C=1|A=0,B=1)=1. The XOR fixture is therefore adequate to discriminate joint from marginal.",
+      "commissioned_assertions_met": [],
+      "commissioned_assertions_NOT_met": [
+        "individual/pairwise marginal signal demonstrated to be flat or insufficient -- the flat-marginal comparison is never asserted",
+        "at least two configurations with equal marginals but different joint structure -- second configuration does not exist",
+        "hostile: a marginal-only or pairwise shortcut must fail the court -- no such test"
       ],
-      "hostile_assertions": [
-        "Marginal-only or pairwise shortcut fails the court"
-      ],
-      "test_names": [
-        "test_at09_xor_parity_higher_order_signal",
-        "test_at09_equal_marginals_different_joints"
-      ],
-      "producer_owner": "rawlsing_next.pre553_discovery_exact.execute_exact_bounded_discovery",
-      "consumer_path": "rawlsing_next.pre553_analytical_composition.compose_positioned_subject_possibility -> consumer",
-      "fixture_refs": [
-        "AT08_AT09_THREE_WAY_16"
-      ],
-      "execution_status": "PASSED",
-      "evidence_grade": "source-free executed discovery + consumer use"
+      "note": "The implemented test asserts only that joint-target geometry (arity 2, 2 components, SEMANTIC_ORDERED) survives into PossibilitySliceEvidence.geometry. It performs no higher-order discrimination assertion.",
+      "execution_status": "PARTIAL",
+      "evidence_grade": "source-free executed producer + static geometry assertion"
     },
     {
       "at": "AT10",
-      "summary": "Minority / contradictory / counterpattern survival",
-      "positive_assertions": [
-        "Supported minority/counterpattern branch survives modal majority",
-        "Distinct state preserved even when ranking/selection is present"
+      "commissioned_scope": "minority / contradictory / counterpattern branch survival",
+      "implemented_tests": [
+        "test_at10_discovery_route_consumes_supported_receipt",
+        "test_at10_discovery_route_rejects_wrong_receipt_ref"
       ],
-      "hostile_assertions": [
-        "Ranking/selection may not delete supported alternative silently"
+      "producer_owner": "rawlsing_next.pre553_discovery_exact.execute_exact_bounded_discovery",
+      "consumer_path": "compose_positioned_subject_possibility -> evaluate_positioned_subject_possibility",
+      "fixture_ref": "_at10_source() inline fixture: 2 respondents X=1,Y=1 and 2 respondents X=0,Y=0",
+      "commissioned_assertions_met": [],
+      "commissioned_assertions_NOT_met": [
+        "majority/modal branch present alongside a supported minority/counterpattern branch -- fixture has no minority branch",
+        "composed result preserves the supported alternative",
+        "ranking/selection may not delete it silently",
+        "underpowered branch distinct state preserved"
       ],
-      "test_names": [
-        "test_at10_minority_counterpattern_survives"
-      ],
-      "producer_owner": "rawlsing_next.pre553_empirical_query.execute_empirical_query",
-      "consumer_path": "analytical composition -> consumer",
-      "fixture_refs": [
-        "AT10_MINORITY_100"
-      ],
-      "execution_status": "PASSED",
-      "evidence_grade": "source-free executed producer + consumer use"
+      "note": "The commissioned AT10 (minority/counterpattern survival) was NOT implemented. The two tests labelled AT10 exercise the exact-discovery consumption route, which is real and useful work but is a different requirement. This is a scope substitution, not a coverage gap.",
+      "execution_status": "NOT_MET",
+      "evidence_grade": "source-free executed discovery + consumer use (for the substituted requirement)"
     },
     {
       "at": "AT11",
-      "summary": "Recursive ancestry and fresh-process continuation",
-      "positive_assertions": [
-        "Generation one performed through execute_exact_bounded_discovery_with_handoffs",
-        "Selected discovered branch persisted with write_recursive_handoff_bundle",
-        "Bundle loaded from retained material",
-        "Fresh Python process replays retained child membership",
-        "Second generation / depth-two continuation performed",
-        "Depth-two result consumed through C1 analytical/consumer path"
-      ],
-      "hostile_assertions": [
-        "Two child predicates with lookalike visible text but different lineage must not alias"
-      ],
-      "test_names": [
-        "test_at11_recursive_ancestry_and_fresh_process_continuation"
+      "commissioned_scope": "recursive ancestry and fresh-process continuation",
+      "implemented_tests": [
+        "test_at11_recursive_handoff_composition_continues_lineage",
+        "test_at11_recursive_handoff_rejects_predicate_mismatch",
+        "test_at11_fresh_process_runner_reproduces_recursive_composition"
       ],
       "producer_owner": "rawlsing_next.pre553_recursive_handoff.execute_exact_bounded_discovery_with_handoffs",
-      "consumer_path": "analytical composition -> consumer",
-      "fixture_refs": [
-        "AT11_RECURSIVE_8"
+      "consumer_path": "compose_positioned_subject_possibility -> evaluate_positioned_subject_possibility",
+      "fixture_ref": "_at11_source() inline fixture: 6 respondents; recursive bundle written to tmp_path and reloaded by c1_at08_at13_fresh_process_runner",
+      "commissioned_assertions_met": [
+        "generation one through execute_exact_bounded_discovery_with_handoffs",
+        "persist a selected discovered branch with write_recursive_handoff_bundle",
+        "load it from retained material (load_recursive_handoff_bundle)",
+        "in a fresh Python process, replay the retained child membership (replay_recursive_branch_membership)",
+        "consume a recursive result through the C1 analytical/consumer path",
+        "immediate parent predicate/ref preserved (handoff.immediate_parent_branch_ref in result.recursive_lineage_refs)",
+        "child cohort identity and support preserved (child_member_refs emitted)",
+        "discovery/handoff/replay refs preserved",
+        "determinism across two independent fresh processes (outputs[0] == outputs[1])"
       ],
-      "execution_status": "PASSED",
-      "evidence_grade": "retained serialization replay + fresh-process empirical recomputation + consumer use"
+      "commissioned_assertions_NOT_met": [
+        "second generation / depth-two continuation -- no second execute_exact_bounded_discovery_with_handoffs call exists; the fresh runner composes the already-persisted generation-1 handoff and does not advance a generation",
+        "hostile: two child predicates with lookalike visible text but different lineage must not alias -- the hostile uses a materially different predicate (X=0 vs X=1), not a same-visible-text lookalike under a different parent",
+        "explicit positive vs negative/unselected/unvisited coverage distinction beyond the single coverage_state string 'RECURSIVE_DEPTH_CONTINUATION'"
+      ],
+      "execution_status": "MOSTLY_MET",
+      "evidence_grade": "retained serialization replay + fresh-process recomputation (deterministic x2) + consumer use"
     },
     {
       "at": "AT12",
-      "summary": "Empirical co-travel without S14 semantic relation authority",
-      "positive_assertions": [
-        "Empirical configuration/co-travel result remains available to analytical/possibility consumer at its lawful direct empirical grade",
-        "Only the unavailable semantic interpretation is absent/blocked"
+      "commissioned_scope": "empirical co-travel without S14 semantic relation authority",
+      "implemented_tests": ["test_at12_joint_target_count_mismatch_fails_closed"],
+      "producer_owner": "none -- no producer is executed",
+      "consumer_path": "none -- no consumer is called",
+      "fixture_ref": "reuses _at09_source()",
+      "commissioned_assertions_met": [],
+      "commissioned_assertions_NOT_met": [
+        "empirical configuration/co-travel result remains available to the analytical/possibility consumer at its lawful direct empirical grade",
+        "only the unavailable semantic interpretation is absent/blocked",
+        "lack of S14 does not erase empirical co-travel evidence"
       ],
-      "hostile_assertions": [
-        "Lack of S14 must not erase empirical co-travel evidence"
-      ],
-      "test_names": [
-        "test_at12_empirical_cotravel_without_s14"
-      ],
-      "producer_owner": "rawlsing_next.pre553_empirical_query.execute_empirical_query",
-      "consumer_path": "analytical composition -> consumer",
-      "fixture_refs": [
-        "AT12_COTRAVEL_NO_S14"
-      ],
-      "execution_status": "PASSED",
-      "evidence_grade": "source-free executed producer + consumer use"
+      "note": "The commissioned AT12 was NOT implemented. The test labelled AT12 asserts JointTargetMismatch on an arity-2 producer against an arity-1 consumer and calls the internal helper _validate_joint_grain directly. No S14 authority is referenced, no co-travel is exercised, no consumer is invoked.",
+      "execution_status": "NOT_MET",
+      "evidence_grade": "static guard assertion only"
     },
     {
       "at": "AT13",
-      "summary": "Joint morphology and component scope",
-      "positive_assertions": [
-        "Genuinely non-scalar governed configuration preserved source-native component order",
-        "Component/value identity, arity/topology, component authority, target domain identity, and exact support preserved"
+      "commissioned_scope": "joint morphology and component scope (ranked / multiselect / component-vector)",
+      "implemented_tests": ["test_at13_witness_binding_count_mismatch_fails_closed"],
+      "producer_owner": "rawlsing_next.pre553_empirical_query.execute_empirical_query",
+      "consumer_path": "compose_positioned_subject_possibility (raises before consumer)",
+      "fixture_ref": "reuses _at08_source()",
+      "commissioned_assertions_met": [],
+      "commissioned_assertions_NOT_met": [
+        "genuinely non-scalar governed configuration such as ranked / multiselect / component-vector",
+        "source-native component order preservation",
+        "component/value identity, arity/topology, component authority, target domain identity",
+        "exact support preservation",
+        "hostile: missing component vector may not be scalarized",
+        "hostile: reordered components must reidentify lawfully or fail",
+        "hostile: heterogeneous component authority may not silently become universal J2I authority"
       ],
-      "hostile_assertions": [
-        "Missing component vector must not be scalarized",
-        "Reordered components must reidentify lawfully or fail according to owner law",
-        "Heterogeneous component authority may not silently become universal J2I authority"
-      ],
-      "test_names": [
-        "test_at13_joint_morphology_component_scope"
-      ],
-      "producer_owner": "rawlsing_next.pre553_discovery_exact.execute_exact_bounded_discovery",
-      "consumer_path": "analytical composition -> consumer",
-      "fixture_refs": [
-        "AT13_RANKED_NATIVE_ORDER"
-      ],
-      "execution_status": "PASSED",
-      "evidence_grade": "source-free executed discovery + consumer use"
+      "note": "The commissioned AT13 was NOT implemented. The test labelled AT13 asserts that a witness built with one binding is rejected against a two-binding consumer query. Arity/topology assertions exist only incidentally inside the AT09 test.",
+      "execution_status": "NOT_MET",
+      "evidence_grade": "static guard assertion only"
     }
-  ]
+  ],
+  "summary": {
+    "at08": "PARTIAL",
+    "at09": "PARTIAL",
+    "at10": "NOT_MET__substituted_requirement",
+    "at11": "MOSTLY_MET",
+    "at12": "NOT_MET",
+    "at13": "NOT_MET",
+    "commissioned_ats_fully_met": 0,
+    "commissioned_ats_substantially_met": 1,
+    "commissioned_ats_partial": 2,
+    "commissioned_ats_not_met": 3
+  }
 }
