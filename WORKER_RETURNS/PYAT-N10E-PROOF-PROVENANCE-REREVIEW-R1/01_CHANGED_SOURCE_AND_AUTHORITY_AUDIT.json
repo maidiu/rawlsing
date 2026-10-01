@@ -1,0 +1,94 @@
+{
+  "schema": "PYAT_N10E_PROOF_PROVENANCE_REREVIEW_CHANGED_SOURCE_AUTHORITY_AUDIT@1",
+  "disposition": "APPROVE_AT_DECLARED_GRAIN",
+  "findings": [
+    "REV-N10E-001"
+  ],
+  "correction_return": "52e41a41e8bc3b77390016a049095b5aea1721d0",
+  "provider_blob": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+  "provider_unchanged": true,
+  "changed_source_proof": {
+    "canonical_rows": 100,
+    "changed_rows": 110,
+    "added_rows": 10,
+    "added_row_semantics": {
+      "POSITION": "P1",
+      "ANSWER": "no"
+    },
+    "canonical_forward": {
+      "denominator": 60,
+      "cells": {
+        "yes": 54,
+        "no": 6
+      }
+    },
+    "changed_forward": {
+      "denominator": 70,
+      "cells": {
+        "yes": 54,
+        "no": 16
+      },
+      "exact_fractions": {
+        "yes": [
+          27,
+          35
+        ],
+        "no": [
+          8,
+          35
+        ]
+      }
+    },
+    "arithmetic_verified": true,
+    "real_changed_input_reaches_public_provider": true,
+    "evidence_is_composition_generated_object": true,
+    "consumer_is_composition_generated_consumer_result": true,
+    "evidence_support_equals_changed_producer_fact_denominator": true,
+    "producer_fact_reidentifies": true,
+    "evidence_ref_reidentifies": true,
+    "provider_receipt_reidentifies": true,
+    "provider_result_identity_preimage_reidentifies": true,
+    "handwritten_provider_geometry": false
+  },
+  "reverse_control": {
+    "conditioning_law": "ANSWER=yes",
+    "added_rows_affect_reverse_cohort": false,
+    "canonical_denominator": 62,
+    "changed_denominator": 62,
+    "canonical_cells": {
+      "P1": 54,
+      "P2": 8
+    },
+    "changed_cells": {
+      "P1": 54,
+      "P2": 8
+    },
+    "numeric_geometry_unchanged": true,
+    "evidence_identity_still_reidentifies_with_source_identity": true,
+    "meaningful_control": true
+  },
+  "changed_source_authority": {
+    "canonical_authority_scope_is_exact_single_universe": true,
+    "changed_authority_factory": "rawlsing_next/tests/n10e_empirical_slice_fixture.py::frozen_changed_source_query_authority",
+    "fixture_local": true,
+    "changed_scope_exactly_one_changed_universe": true,
+    "canonical_authority_mutated": false,
+    "provider_or_owner_coercion_added": false,
+    "latest_default_fuzzy_fallback": false,
+    "authority_semantics_preserved_except_explicit_universe_scope_and_fixture_identity": true,
+    "authority_content_hash_rebound": true,
+    "canonical_scope_mismatch_exception": "Pre553AuthorityError: exact authority scope does not include source_universe_refs",
+    "typed_mapping": {
+      "p01_state": "UNAVAILABLE",
+      "p02_failure_state": "MISSING_REQUIRED_AUTHORITY"
+    },
+    "independent_owner_corroboration": "Final court passes test_astra002_shared_i03_rejects_allow_authority_excluding_actual_universe, which asserts MISSING_REQUIRED_AUTHORITY.",
+    "correction_packet_records_changed_source_refusal_before_fixture_authority": true
+  },
+  "nonblocking_documentary_note": {
+    "id": "N10E-REREVIEW-DOC-001",
+    "issue": "Two fixture comments/docstrings incorrectly state that the P1 cohort remains 60 after ten P1/no respondents are appended.",
+    "actual": "The P1 cohort becomes 70; executable rows, frozen oracle, test assertions and provider evidence all use 70.",
+    "acceptance_effect": "NONE"
+  }
+}
