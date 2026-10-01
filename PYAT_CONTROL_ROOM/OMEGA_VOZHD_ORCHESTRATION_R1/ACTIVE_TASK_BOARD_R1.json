@@ -1,7 +1,7 @@
 {
   "schema": "PYAT_OMEGA_ACTIVE_TASK_BOARD@1",
-  "revision": 28,
-  "status": "C1_02_ADOPTED__N10E_AT17_ADOPTED__C1_03A_C1_03R_ACTIVE__C1_03_JOIN_WAITS_TWO_REVIEWS",
+  "revision": 29,
+  "status": "C1_03A_C1_03R_ACTIVE__N10E_AT17_ADOPTED__C5_C7E_READINESS_BOUND",
   "control_branch": "integration/pre-main-reconciliation-r1",
   "adopted_preparation": [
     {
@@ -185,6 +185,16 @@
       "model": "DEEPSEEK_V4_1_FLASH",
       "mode": "STANDARD",
       "scope": "AT18_AT19"
+    },
+    {
+      "id": "C5-C7E-NEXT-SCOPE-READINESS",
+      "branch": "agent/reviewer-pyat-hq148-c5-c7e-next-scope-readiness-r1",
+      "commission_tip": "b05d1dae3b62b196f2cdfb2a9765b78a86d486c1",
+      "base": "09148c3962da899ec4881fbcda3d626555750d89",
+      "state": "BOUND_AWAITING_USER_MEDIATED_LAUNCH",
+      "launch_surface": "BROWSER",
+      "model": "GPT-5.6_SOL_HIGH",
+      "scope": "BIND_EXACT_READY_C5_N5_AND_OR_C7_N8E_NEXT_SCOPE"
     }
   ],
   "held": [
@@ -202,7 +212,7 @@
     "NO_PREV3_TO_V3_ACTOR_IMPLEMENTATION"
   ],
   "prior_git_blob_sha1": "66b666991d9a8c614710687c7640277cb75fc8c6",
-  "next_action": "CONTINUE_C1_03A_SPACE_BUNNY_AND_C1_03R_DEEPSEEK__REVIEW_EACH_RETURN__THEN_BIND_C1_03_JOIN_WITH_ACCEPTED_AT17",
+  "next_action": "RUN_C1_03A_AND_C1_03R_PLUS_C5_C7E_READINESS_BINDER_IN_PARALLEL",
   "operating_requirements": "PYAT_CONTROL_ROOM/BROWSER_ECONOMY_MODE_R1.md",
   "grounding": {
     "live_control_head": "731519c6de341bbd6c95672f70329f3cf996d686",
