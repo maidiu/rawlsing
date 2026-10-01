@@ -1,0 +1,61 @@
+PYAT C1-03A -- NEGATIVE-STATE / ROUTE-LEGITIMACY / FINAL-CONSUMER -- R1
+Final Test Obligations
+=======================
+
+Branch: agent/opencode-pyat-hq146-c1-03a-negative-route-consumer-r1
+Base:   bc661188b51e995d9f5d74e55c4e37d2ba358a17
+Commission tip: da29402473ad671625feb49fad5142a1d689978b
+
+Runtime: Python 3.12.14 (/tmp/c1-01-r8-release-spine-venv/bin/python), pytest 9.1.1
+
+  ### C1-03A NEW COURTS
+  $ python -m pytest -q rawlsing_next/tests/test_pre553_analytical_state_and_route.py
+  20 passed in 1.00s
+  exit=0
+  
+  ### ACCEPTED C1-02 SIX-FILE COURT
+  $ python -m pytest -q rawlsing_next/tests/test_pre553_analytical_composition.py rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py rawlsing_next/tests/test_pre553_empirical_query.py rawlsing_next/tests/test_pre553_discovery_exact.py rawlsing_next/tests/test_pre553_recursive_handoff.py rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py
+  109 passed in 9.20s
+  exit=0
+  
+  ### ADAPTIVE DISCOVERY RELIED ON FOR UNVISITED
+  $ python -m pytest -q rawlsing_next/tests/test_pre553_discovery_adaptive.py rawlsing_next/tests/test_pre553_discovery_adaptive_admission.py
+  11 passed in 0.19s
+  exit=0
+  
+  ### STRUCTURAL ADMISSION RELIED ON FOR ROUTE LEGITIMACY
+  $ python -m pytest -q rawlsing_next/tests/test_pre553_structural_admission.py
+  17 passed in 0.19s
+  exit=0
+  
+  TOTAL_PASSED=157
+
+Per-court inventory (C1-03A, 20):
+  AT14 negative-state conservation
+    test_at14_observed_zero_is_retained_and_is_not_valid_empty
+    test_at14_zero_support_is_distinct_from_observed_zero_and_valid_empty
+    test_at14_valid_empty_is_retained_from_its_own_owner
+    test_at14_underpowered_is_retained_and_distinct_from_unresolved
+    test_at14_unresolved_is_retained_from_the_empirical_owner
+    test_at14_unvisited_comes_from_the_real_adaptive_owner
+    test_at14_noncomparable_is_not_coerced_to_unresolved
+    test_at14_blocked_by_absent_or_denying_authority_is_its_own_state
+    test_at14_integrity_failure_cannot_become_valid_empty
+    test_at14_all_eight_mandatory_states_are_distinctly_retained
+    test_at14_positive_recursive_handoff_is_not_the_coverage_record
+  AT15 direct-route legitimacy
+    test_at15_competent_direct_empirical_route_stays_direct
+    test_at15_structural_use_requires_learned_adjudication_on_this_base
+    test_at15_failed_learned_claim_cannot_be_route_laundered_as_direct
+    test_at15_denying_authority_cannot_be_relabelled_direct
+    test_at15_route_label_alone_creates_no_authority
+  AT16 final-consumer witness
+    test_at16_direct_empirical_positive_path_reaches_the_named_consumer
+    test_at16_negative_path_preserves_non_invocation_explicitly
+    test_at16_handmade_slice_cannot_satisfy_final_consumer_proof
+    test_at16_negative_states_are_not_coerced_into_a_consumer_state
+
+Adopted C1-02 owner rawlsing_next/pre553_analytical_composition.py: NOT MODIFIED
+Adopted C1-02 six-file court: 109 passed (unchanged)
+
+Terminal: C1_03A_NEGATIVE_ROUTE_CONSUMER_RETURNED__HQ_ADJUDICATION_REQUIRED

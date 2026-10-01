@@ -1,0 +1,88 @@
+{
+  "schema": "PYAT_C1_03A_EXECUTION_RECEIPT@1",
+  "tranche": "C1-03A",
+  "branch": "agent/opencode-pyat-hq146-c1-03a-negative-route-consumer-r1",
+  "commission_tip": "da29402473ad671625feb49fad5142a1d689978b",
+  "adopted_base": "bc661188b51e995d9f5d74e55c4e37d2ba358a17",
+  "runtime": {
+    "python_executable": "/tmp/c1-01-r8-release-spine-venv/bin/python",
+    "python_version": "3.12.14",
+    "pytest_version": "9.1.1"
+  },
+  "final_test_obligations": [
+    {
+      "obligation": "all new C1-03A tests",
+      "command": "python -m pytest -q rawlsing_next/tests/test_pre553_analytical_state_and_route.py",
+      "exit_code": 0,
+      "passed": 20,
+      "failed": 0
+    },
+    {
+      "obligation": "the complete accepted C1-02 six-file court",
+      "command": "python -m pytest -q rawlsing_next/tests/test_pre553_analytical_composition.py rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py rawlsing_next/tests/test_pre553_empirical_query.py rawlsing_next/tests/test_pre553_discovery_exact.py rawlsing_next/tests/test_pre553_recursive_handoff.py rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py",
+      "exit_code": 0,
+      "passed": 109,
+      "failed": 0,
+      "note": "The adopted C1-02 court is unchanged at 109. The commission permitted touching the C1-02 owner only if an AT14-AT16 gap forced it; no such gap was found, so pre553_analytical_composition.py was NOT modified."
+    },
+    {
+      "obligation": "adaptive-discovery tests materially relied on for UNVISITED",
+      "command": "python -m pytest -q rawlsing_next/tests/test_pre553_discovery_adaptive.py rawlsing_next/tests/test_pre553_discovery_adaptive_admission.py",
+      "exit_code": 0,
+      "passed": 11,
+      "failed": 0,
+      "relied_on_for": "EXPLICIT_UNKNOWN_UNVISITED machinery, PARTIAL_BUDGET_EXHAUSTED, unvisited_unit_refs, global_negative_claim prohibition"
+    },
+    {
+      "obligation": "structural/admission tests materially relied on for route legitimacy",
+      "command": "python -m pytest -q rawlsing_next/tests/test_pre553_structural_admission.py",
+      "exit_code": 0,
+      "passed": 17,
+      "failed": 0,
+      "relied_on_for": "StructuralAdmissionRule / AuthoritySnapshot / evaluate_structural_empirical_admission as the competent LEARNED_OR_ADJUDICATED_REQUIRED owner"
+    }
+  ],
+  "totals": {"passed": 157, "failed": 0, "errors": 0, "skipped": 0},
+  "changed_files": [
+    "rawlsing_next/pre553_analytical_state_and_route.py",
+    "rawlsing_next/tests/test_pre553_analytical_state_and_route.py",
+    "rawlsing_next/tests/c1_at14_at16_fixture.py",
+    "WORKER_RETURNS/PYAT-C1-03A-NEGATIVE-ROUTE-CONSUMER-R1/**"
+  ],
+  "adopted_c1_02_owner_modified": false,
+  "adopted_c1_02_court_preserved": "109 passed",
+  "files_not_touched": [
+    "rawlsing_next/pre553_analytical_composition.py",
+    "rawlsing_next/pre553_analytical_composition_higher_order court tests",
+    "rawlsing_next/pre553_authority_maintenance.py (reserved for the AT18-AT19 worker)",
+    "rawlsing_next/pre553_replay_audit.py (reserved for the AT18-AT19 worker)",
+    "all upstream empirical / discovery / recursive / consumer owners",
+    "WORKER_RETURNS/PYAT-C1-02-HIGHER-ORDER-RECURSIVE-R1/**",
+    "WORKER_RETURNS/PYAT-C1-02-WITNESS-PAIRING-REPAIR-R1/**",
+    "WORKER_RETURNS/PYAT-C1-02-CORRECTION-INDEPENDENT-REVIEW-R1/**",
+    "WORKER_RETURNS/PYAT-C1-GENERIC-ANALYTICAL-COMPOSITION-R1/**",
+    "HQ / control files"
+  ],
+  "source_access": {
+    "reads": 0,
+    "evidence": "No raw survey source opened, materialized, decoded or inferred at any point."
+  },
+  "prohibitions_respected": {
+    "raw_survey_files": true,
+    "candidate_a_b_c": true,
+    "measured_p2x": true,
+    "real_source_c11": true,
+    "c4": true,
+    "at17_or_n10e_implementation": true,
+    "at18_at19_implementation": true,
+    "c1_r": true,
+    "v3_actor_person_implementation": true,
+    "new_real_source_semantic_comparability_or_model_authority": true,
+    "merge": true,
+    "self_adoption": true
+  },
+  "wider_regression_sweep": {
+    "run": false,
+    "reason": "This tranche adds one new owner plus its tests and fixtures and modifies no adopted owner. It therefore cannot invalidate the retained C1-02 three-tree attribution (NO_WIDER_REGRESSIONS_DETECTED_AT_ACCEPTED_C1_01_BASELINE_GRAIN). The commission did not require a new broad sweep for this scope."
+  }
+}

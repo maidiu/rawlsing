@@ -1,0 +1,167 @@
+{
+  "schema": "PYAT_C1_03A_STATE_CONSERVATION_MATRIX@1",
+  "tranche": "C1-03A",
+  "scope": "AT14 + AT15 + AT16",
+  "base": "bc661188b51e995d9f5d74e55c4e37d2ba358a17",
+  "commission_tip": "da29402473ad671625feb49fad5142a1d689978b",
+  "envelope_owner": "rawlsing_next/pre553_analytical_state_and_route.py",
+  "court": "rawlsing_next/tests/test_pre553_analytical_state_and_route.py",
+  "principle": "Every retained state below is a projection of a state a competent current owner actually produced. No state label is manufactured inside a wrapper. Where the final consumer cannot losslessly represent a state, the consumer is explicitly NOT invoked and the reason is recorded.",
+  "states": [
+    {
+      "mandatory_state": "OBSERVED_ZERO",
+      "retained_name": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+      "competent_producer_owner": "rawlsing_next.pre553_empirical_query.execute_empirical_query",
+      "producer_native_state": "fact typed_state=SUPPORTED with cell_state=OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+      "owner_witness": "rawlsing_next/_pre553_query_eval.py _cell_projection / _evaluation",
+      "fixture": "c1_at14_at16_fixture.observed_zero_fixture (reuses pre553_query_frontier_fixtures.observed_zero_zero_support_fixture)",
+      "tests": [
+        "test_at14_observed_zero_is_retained_and_is_not_valid_empty",
+        "test_at14_zero_support_is_distinct_from_observed_zero_and_valid_empty",
+        "test_at14_all_eight_mandatory_states_are_distinctly_retained"
+      ],
+      "raw_denominator_support": 2,
+      "analytical_retained_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+      "final_consumer_state_or_non_invocation": "EXPLICIT_NON_INVOCATION with reason that the state is lawfully consumer-invocable but no consumer invocation was supplied to the AT14 envelope; the real invocation is proven in the AT16 positive-path court",
+      "distinct_from": ["VALID_EMPTY", "UNDERPOWERED", "UNVISITED"],
+      "proof_grade": "source-free executed producer + owner cell projection inspection + bounded envelope identity",
+      "important_note": "Observed zero is a CELL property, not a fact state. Classifying it from the fact state alone would silently collapse it into a plain positive, so classify_empirical_cells reads the producer's own complete cell projection."
+    },
+    {
+      "mandatory_state": "VALID_EMPTY",
+      "retained_name": "VALID_EMPTY",
+      "competent_producer_owner": "rawlsing_next.pre553_empirical_query.execute_empirical_query",
+      "producer_native_state": "VALID_EMPTY",
+      "owner_witness": "rawlsing_next/_pre553_query_eval.py: 'query-declared exact target domain is empty'",
+      "fixture": "c1_at14_at16_fixture.valid_empty_fixture (empty declared target domain over a positive denominator)",
+      "tests": [
+        "test_at14_valid_empty_is_retained_from_its_own_owner",
+        "test_at14_zero_support_is_distinct_from_observed_zero_and_valid_empty"
+      ],
+      "raw_denominator_support": 2,
+      "analytical_retained_state": "VALID_EMPTY",
+      "final_consumer_state_or_non_invocation": "EXPLICIT_NON_INVOCATION (CONSUMER_NOT_INVOKED__STATE_NOT_LOSSLESSLY_REPRESENTABLE)",
+      "distinct_from": ["OBSERVED_ZERO", "ZERO_SUPPORT", "UNRESOLVED"],
+      "proof_grade": "source-free executed producer + bounded envelope identity"
+    },
+    {
+      "mandatory_state": "UNDERPOWERED",
+      "retained_name": "UNDERPOWERED",
+      "competent_producer_owner": "rawlsing_next.pre553_discovery_exact.execute_exact_bounded_discovery",
+      "producer_native_state": "receipt typed_state=INSUFFICIENT_SUPPORT with coverage_state=EVALUATED_UNDERPOWERED",
+      "owner_witness": "exact bounded discovery minimum_raw_denominator rule",
+      "fixture": "c1_at14_at16_fixture.underpowered_fixture (2-member branch under minimum_raw_denominator=5)",
+      "tests": [
+        "test_at14_underpowered_is_retained_and_distinct_from_unresolved",
+        "test_at14_all_eight_mandatory_states_are_distinctly_retained"
+      ],
+      "raw_denominator_support": "2 candidate vs minimum 5",
+      "analytical_retained_state": "UNDERPOWERED",
+      "final_consumer_state_or_non_invocation": "EXPLICIT_NON_INVOCATION",
+      "distinct_from": ["UNKNOWN_OR_UNRESOLVED", "VALID_EMPTY", "OBSERVED_ZERO", "UNVISITED"],
+      "proof_grade": "source-free executed exact discovery + receipt/coverage cross-check + bounded envelope identity",
+      "important_note": "The receipt state and the coverage state must agree on the retained estate; classify_discovery_receipt_state raises if they disagree, so a coverage-state read can never silently contradict a receipt-state read."
+    },
+    {
+      "mandatory_state": "UNKNOWN_OR_UNRESOLVED",
+      "retained_name": "UNKNOWN_OR_UNRESOLVED",
+      "competent_producer_owner": "rawlsing_next.pre553_empirical_query.execute_empirical_query",
+      "producer_native_state": "UNRESOLVED",
+      "owner_witness": "rawlsing_next/_pre553_query_eval.py: 'positive denominator exists but exact target configuration is unresolved'",
+      "fixture": "c1_at14_at16_fixture.unresolved_fixture (one denominator member has no resolved target configuration)",
+      "tests": [
+        "test_at14_unresolved_is_retained_from_the_empirical_owner",
+        "test_at14_underpowered_is_retained_and_distinct_from_unresolved",
+        "test_at16_negative_states_are_not_coerced_into_a_consumer_state"
+      ],
+      "analytical_retained_state": "UNKNOWN_OR_UNRESOLVED",
+      "final_consumer_state_or_non_invocation": "EXPLICIT_NON_INVOCATION",
+      "distinct_from": ["UNDERPOWERED", "VALID_EMPTY", "NONCOMPARABLE"],
+      "proof_grade": "source-free executed producer + bounded envelope identity"
+    },
+    {
+      "mandatory_state": "UNVISITED",
+      "retained_name": "UNVISITED",
+      "competent_producer_owner": "rawlsing_next.pre553_discovery_adaptive.execute_adaptive_exploration",
+      "producer_native_state": "completeness_state=PARTIAL_BUDGET_EXHAUSTED with exact unvisited_unit_refs",
+      "owner_witness": "rawlsing_next/pre553_discovery_adaptive.py ADAPTIVE_SEARCH_COMPLETENESS_CONTRACT['unvisited_state']='EXPLICIT_UNKNOWN_UNVISITED'; AdaptiveSearchCheckpoint forbids global_negative_claim",
+      "fixture": "c1_at14_at16_fixture.unvisited_adaptive_fixture (real budget=1 truncation over 3 root units via the owner-native test builders)",
+      "tests": [
+        "test_at14_unvisited_comes_from_the_real_adaptive_owner",
+        "test_at14_all_eight_mandatory_states_are_distinctly_retained"
+      ],
+      "visited_refs": 1,
+      "unvisited_refs": 2,
+      "analytical_retained_state": "UNVISITED",
+      "coverage_state": "PARTIAL_BUDGET_EXHAUSTED (owner-native verbatim)",
+      "final_consumer_state_or_non_invocation": "EXPLICIT_NON_INVOCATION",
+      "global_negative_claim": false,
+      "proof_grade": "source-free executed adaptive owner (budget truncation) + checkpoint custody + bounded envelope identity",
+      "important_note": "The adaptive owner really executed. The unvisited territory is the owner's own refs, not a synthesized token. build_state_route_result refuses an UNVISITED envelope with no unvisited refs, and refuses any negative_claim_authorized on UNVISITED."
+    },
+    {
+      "mandatory_state": "NONCOMPARABLE",
+      "retained_name": "NONCOMPARABLE",
+      "competent_producer_owner": "rawlsing_next.pre553_empirical_query.execute_empirical_query",
+      "producer_native_state": "NONCOMPARABLE",
+      "owner_witness": "multi-universe composition without pooling authority",
+      "fixture": "c1_at14_at16_fixture.noncomparable_fixture (reuses pre553_query_frontier_fixtures.multi_universe_noncomparable_fixture)",
+      "tests": [
+        "test_at14_noncomparable_is_not_coerced_to_unresolved",
+        "test_at16_negative_states_are_not_coerced_into_a_consumer_state"
+      ],
+      "analytical_retained_state": "NONCOMPARABLE",
+      "final_consumer_state_or_non_invocation": "EXPLICIT_NON_INVOCATION",
+      "distinct_from": ["UNKNOWN_OR_UNRESOLVED", "VALID_EMPTY", "OBSERVED_ZERO"],
+      "proof_grade": "source-free executed producer + bounded envelope identity"
+    },
+    {
+      "mandatory_state": "BLOCKED_REQUIRED_AUTHORITY",
+      "retained_name": "BLOCKED_REQUIRED_AUTHORITY",
+      "competent_producer_owner": "rawlsing_next.pre553_discovery_exact.execute_exact_bounded_discovery",
+      "producer_native_state": "owner refuses with Pre553AuthorityError (exact snapshot state is DENY)",
+      "owner_witness": "rawlsing_next/pre553_empirical_authority.require_positive_authority",
+      "fixture": "c1_at14_at16_fixture.blocked_required_authority_fixture (DENY snapshot with no governed operations)",
+      "tests": [
+        "test_at14_blocked_by_absent_or_denying_authority_is_its_own_state",
+        "test_at14_all_eight_mandatory_states_are_distinctly_retained"
+      ],
+      "analytical_retained_state": "BLOCKED_REQUIRED_AUTHORITY",
+      "final_consumer_state_or_non_invocation": "EXPLICIT_NON_INVOCATION",
+      "distinct_from": ["OBSERVED_ZERO", "VALID_EMPTY", "UNKNOWN_OR_UNRESOLVED", "UNVISITED"],
+      "proof_grade": "source-free executed owner refusal (the owner itself raises) + bounded envelope identity",
+      "important_note": "Blocked is proven by the owner actually refusing to execute, not by a wrapper label."
+    },
+    {
+      "mandatory_state": "INTEGRITY_FAILURE",
+      "retained_name": "INTEGRITY_FAILURE",
+      "competent_producer_owner": "rawlsing_next.pre553_empirical_objects.CanonicalSemanticObject constructor",
+      "producer_native_state": "Pre553IntegrityError: 'object_id does not match deterministic semantic identity'",
+      "owner_witness": "canonical constructor rejects a changed body retaining a stale sealed identity",
+      "fixture": "c1_at14_at16_fixture.integrity_failure_fixture (RespondentEvent body tampered, sealed object_id/content_hash retained)",
+      "tests": [
+        "test_at14_integrity_failure_cannot_become_valid_empty",
+        "test_at16_negative_states_are_not_coerced_into_a_consumer_state"
+      ],
+      "analytical_retained_state": "INTEGRITY_FAILURE",
+      "final_consumer_state_or_non_invocation": "EXPLICIT_NON_INVOCATION",
+      "distinct_from": ["VALID_EMPTY", "OBSERVED_ZERO"],
+      "proof_grade": "source-free executed owner refusal + bounded envelope identity",
+      "important_note": "Integrity failure is retained and never laundered into VALID_EMPTY or any absence state."
+    }
+  ],
+  "estate_coverage": {
+    "mandatory_states_required": 8,
+    "mandatory_states_reached": 8,
+    "aliasing_detected": false,
+    "estate_test": "test_at14_all_eight_mandatory_states_are_distinctly_retained"
+  },
+  "anti_coercion_summary": {
+    "zero_vs_valid_empty": "distinct retained states; zero-support also separate (test_at14_zero_support_is_distinct_from_observed_zero_and_valid_empty)",
+    "underpowered_vs_unresolved": "distinct retained states from two different competent owners (test_at14_underpowered_is_retained_and_distinct_from_unresolved)",
+    "unvisited_from_adaptive_owner": "produced by execute_adaptive_exploration with real unvisited refs (test_at14_unvisited_comes_from_the_real_adaptive_owner)",
+    "noncomparable_not_unresolved": "distinct retained states (test_at14_noncomparable_is_not_coerced_to_unresolved)",
+    "integrity_failure_not_valid_empty": "distinct retained states (test_at14_integrity_failure_cannot_become_valid_empty)"
+  },
+  "architecture_note": "No single final consumer can lawfully represent all eight states. Rather than coercing them, the bounded envelope preserves producer-native state, coverage state, reason, exact producer refs, and either the consumer state or an explicit non-invocation reason. This is exactly the extension the commission permits."
+}

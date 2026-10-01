@@ -1,0 +1,155 @@
+{
+  "schema": "PYAT_C1_03A_HOSTILE_CASE_RECEIPTS@1",
+  "tranche": "C1-03A",
+  "commission_required_hostile_themes": [
+    "zero vs valid-empty noncollapse",
+    "underpowered vs unresolved noncollapse",
+    "unvisited preserved from adaptive owner",
+    "noncomparable not coerced to unresolved",
+    "integrity failure cannot become valid-empty",
+    "failed learned claim cannot be route-laundered as direct",
+    "handmade final slice cannot satisfy final-consumer proof",
+    "positive recursive handoff cannot masquerade as full coverage"
+  ],
+  "receipts": [
+    {
+      "theme": "zero vs valid-empty noncollapse",
+      "test": "test_at14_zero_support_is_distinct_from_observed_zero_and_valid_empty",
+      "construction": "Three competent-owner states side by side: observed zero inside a SUPPORTED fact, ZERO_SUPPORT with denominator 0, and VALID_EMPTY with a positive denominator.",
+      "asserted": [
+        "the three retained states are pairwise distinct (set size 3)",
+        "observed zero requires raw_denominator_support == 2",
+        "zero support has raw_denominator_support == 0"
+      ],
+      "result": "PASS"
+    },
+    {
+      "theme": "underpowered vs unresolved noncollapse",
+      "test": "test_at14_underpowered_is_retained_and_distinct_from_unresolved",
+      "construction": "A 2-member discovery branch under minimum_raw_denominator=5 (INSUFFICIENT_SUPPORT / EVALUATED_UNDERPOWERED) compared against an empirical UNRESOLVED fact.",
+      "asserted": [
+        "underpowered retained as UNDERPOWERED from exact discovery",
+        "unresolved retained as UNKNOWN_OR_UNRESOLVED from the empirical owner",
+        "the two retained states differ",
+        "neither becomes VALID_EMPTY, OBSERVED_ZERO or UNVISITED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "theme": "unvisited preserved from adaptive owner",
+      "test": "test_at14_unvisited_comes_from_the_real_adaptive_owner",
+      "construction": "execute_adaptive_exploration with budget=1 over three root units.",
+      "asserted": [
+        "completeness_state == PARTIAL_BUDGET_EXHAUSTED",
+        "exactly 1 visited unit and 2 unvisited unit refs, taken from the owner",
+        "global_negative_claim is False and semantic_truth_effect is False",
+        "the envelope's unvisited_refs are the owner's own refs",
+        "negative_claim_authorized is False"
+      ],
+      "result": "PASS",
+      "note": "The unvisited token is not synthesized: build_state_route_result refuses an UNVISITED envelope with no unvisited refs."
+    },
+    {
+      "theme": "noncomparable not coerced to unresolved",
+      "test": "test_at14_noncomparable_is_not_coerced_to_unresolved",
+      "construction": "Multi-universe composition without pooling authority.",
+      "asserted": [
+        "producer state NONCOMPARABLE",
+        "retained state NONCOMPARABLE",
+        "retained state differs from UNKNOWN_OR_UNRESOLVED and VALID_EMPTY"
+      ],
+      "result": "PASS"
+    },
+    {
+      "theme": "integrity failure cannot become valid-empty",
+      "test": "test_at14_integrity_failure_cannot_become_valid_empty",
+      "construction": "A RespondentEvent body is tampered while retaining its stale sealed object_id/content_hash; the canonical constructor refuses.",
+      "asserted": [
+        "the owner raises Pre053AuthorityError/Pre553IntegrityError of its own accord",
+        "retained state is INTEGRITY_FAILURE",
+        "retained state differs from VALID_EMPTY and OBSERVED_ZERO",
+        "consumer not invoked"
+      ],
+      "result": "PASS"
+    },
+    {
+      "theme": "failed learned claim cannot be route-laundered as direct",
+      "test": "test_at15_failed_learned_claim_cannot_be_route_laundered_as_direct",
+      "construction": "An UNRESOLVED fact is submitted to structural admission with a real named rule and ALLOW authority; the claim fails; the route is then relabelled DIRECT_EMPIRICAL.",
+      "asserted": [
+        "the admission owner genuinely returns a non-ADMITTED decision",
+        "assert_route_not_laundered raises RouteLegitimacyError containing ROUTE_LAUNDERING_REJECTED"
+      ],
+      "result": "PASS"
+    },
+    {
+      "theme": "denied authority cannot be route-laundered as direct",
+      "test": "test_at15_denying_authority_cannot_be_relabelled_direct",
+      "construction": "A SUPPORTED fact with a named rule under a DENY admission authority.",
+      "asserted": [
+        "the admission owner returns a non-ADMITTED decision",
+        "assert_route_not_laundered raises RouteLegitimacyError"
+      ],
+      "result": "PASS"
+    },
+    {
+      "theme": "route label alone creates no authority",
+      "test": "test_at15_route_label_alone_creates_no_authority",
+      "construction": "Two envelopes over the same producer fact differing only in route class.",
+      "asserted": [
+        "different envelope identities",
+        "neither carries authority refs",
+        "retained analytical state unchanged",
+        "no negative claim authorized"
+      ],
+      "result": "PASS"
+    },
+    {
+      "theme": "handmade final slice cannot satisfy final-consumer proof",
+      "test": "test_at16_handmade_slice_cannot_satisfy_final_consumer_proof",
+      "construction": "The actual consumer is invoked directly with composition evidence, bypassing the envelope.",
+      "asserted": [
+        "the primitive call does return EXACT_SUPPORTED, proving the primitive alone is insufficient",
+        "the primitive result has no producer_fact_ref and no composed_result_identity_hash",
+        "only the real composed path supplies producer ref, composed identity and coverage state"
+      ],
+      "result": "PASS"
+    },
+    {
+      "theme": "positive recursive handoff cannot masquerade as full coverage",
+      "test": "test_at14_positive_recursive_handoff_is_not_the_coverage_record",
+      "construction": "A generation-one recursive handoff is produced, then two laundering attempts are made: (a) relabel the positive handoff as UNVISITED coverage with no unvisited territory; (b) attach unvisited territory to a positive OBSERVED_ZERO state.",
+      "asserted": [
+        "the handoff exists and is linked to the discovery frontier ref",
+        "the full discovery receipt record exists behind the handoff",
+        "attempt (a) raises C103AStateRouteError 'must carry exact unvisited refs'",
+        "attempt (b) raises C103AStateRouteError 'only be retained on the UNVISITED state'"
+      ],
+      "result": "PASS"
+    },
+    {
+      "theme": "negative states not coerced into a consumer verdict",
+      "test": "test_at16_negative_states_are_not_coerced_into_a_consumer_state",
+      "construction": "UNRESOLVED, NONCOMPARABLE and INTEGRITY_FAILURE envelopes.",
+      "asserted": [
+        "each retained state preserved",
+        "consumer not invoked for each",
+        "consumer_result_state is None for each",
+        "negative_claim_authorized is False for each"
+      ],
+      "result": "PASS"
+    },
+    {
+      "theme": "coverage-state/receipt-state disagreement fails closed",
+      "test": "exercised inside test_at14_all_eight_mandatory_states_are_distinctly_retained and the classify_discovery_receipt_state guard",
+      "construction": "A receipt state INSUFFICIENT_SUPPORT paired with an inconsistent coverage state EVALUATED_VALID_EMPTY.",
+      "asserted": [
+        "classify_discovery_receipt_state raises rather than preferring one signal"
+      ],
+      "result": "PASS"
+    }
+  ],
+  "themes_covered": 8,
+  "themes_required": 8,
+  "themes_missing": []
+}

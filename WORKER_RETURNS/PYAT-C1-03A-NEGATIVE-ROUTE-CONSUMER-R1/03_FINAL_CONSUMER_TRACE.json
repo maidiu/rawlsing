@@ -1,0 +1,100 @@
+{
+  "schema": "PYAT_C1_03A_FINAL_CONSUMER_TRACE@1",
+  "tranche": "C1-03A",
+  "at": "AT16",
+  "named_current_consumer": "rawlsing_next.source_backed_positioned_subject_possibility.evaluate_positioned_subject_possibility",
+  "public_path": "rawlsing_next.pre553_empirical_query.execute_empirical_query -> rawlsing_next.pre553_analytical_composition.compose_positioned_subject_possibility -> rawlsing_next.source_backed_positioned_subject_possibility.evaluate_positioned_subject_possibility",
+  "paths": [
+    {
+      "path_name": "DIRECT_EMPIRICAL_POSITIVE",
+      "test": "test_at16_direct_empirical_positive_path_reaches_the_named_consumer",
+      "executed": true,
+      "producer": {
+        "owner": "rawlsing_next.pre553_empirical_query.execute_empirical_query",
+        "producer_ref_field": "producer_fact_ref",
+        "producer_ref_kind": "EmpiricalFact@1.0.0"
+      },
+      "composition": {
+        "owner": "rawlsing_next.pre553_analytical_composition.compose_positioned_subject_possibility",
+        "producer_route": "DIRECT_I03_TO_POSITIONED_SUBJECT",
+        "composed_result_identity_hash": "recorded in the envelope as upstream_composed_result_hash",
+        "composed_result_hash_field": "composed_result_identity_hash"
+      },
+      "consumer": {
+        "owner": "rawlsing_next.source_backed_positioned_subject_possibility.evaluate_positioned_subject_possibility",
+        "consumer_query_ref": "recorded in ConsumerDisposition.consumer_query_ref",
+        "consumer_rule_identity": "recorded in ConsumerDisposition.consumer_rule_hash (consumer_model_rule_hash from the composition)",
+        "consumer_result_state": "EXACT_SUPPORTED",
+        "consumer_result_hash": "recorded in ConsumerDisposition.consumer_result_hash (PositionedSubjectPossibilityResult.result_hash)"
+      },
+      "evidence": {
+        "generated_evidence_ref": "recorded in ConsumerDisposition.evidence_ref (PossibilitySliceEvidence.evidence_ref)",
+        "evidence_source_fact_ref": "equal to the composition's producer_fact_ref, so the evidence provably descends from the producer",
+        "handmade_slice_used": false
+      },
+      "proof_grade": "SOURCE_FREE_EXECUTED_PRODUCER + C1_COMPOSITION + ACTUAL_CURRENT_CONSUMER",
+      "custody_chain_asserted": [
+        "evidence.geometry['source_fact_ref'] == composition.producer_fact_ref.as_dict()",
+        "consumer_result.exact_evidence_ref == evidence.evidence_ref",
+        "composed identity is strictly more than a bare consumer primitive result_hash"
+      ]
+    },
+    {
+      "path_name": "NEGATIVE_PATH_EXPLICIT_NON_INVOCATION",
+      "test": "test_at16_negative_path_preserves_non_invocation_explicitly",
+      "executed": true,
+      "producer": {
+        "owner": "rawlsing_next.pre553_empirical_query.execute_empirical_query",
+        "producer_state": "VALID_EMPTY"
+      },
+      "composition": {
+        "owner": "rawlsing_next.pre553_analytical_state_and_route.build_state_route_result",
+        "retained_analytical_state": "VALID_EMPTY"
+      },
+      "consumer": {
+        "consumer_result_state": null,
+        "disposition": "CONSUMER_NOT_INVOKED__STATE_NOT_LOSSLESSLY_REPRESENTABLE",
+        "non_invocation_reason": "records the retained state and explains that invocation would fabricate SUPPORTED/VALID_EMPTY/UNKNOWN semantics"
+      },
+      "proof_grade": "SOURCE_FREE_EXECUTED_PRODUCER + EXPLICIT_LAWFUL_NON_INVOCATION",
+      "note": "The non-invocation is inside the envelope identity preimage, so it cannot be silently dropped: a different reason yields a different envelope identity."
+    }
+  ],
+  "hostiles": [
+    {
+      "hostile": "HANDMADE_FINAL_SLICE_CANNOT_SATISFY_FINAL_CONSUMER_PROOF",
+      "test": "test_at16_handmade_slice_cannot_satisfy_final_consumer_proof",
+      "construction": "The actual consumer is called directly with the composition's evidence, bypassing the composition envelope entirely.",
+      "asserted": [
+        "the direct consumer call does return EXACT_SUPPORTED, so the primitive alone is not the issue",
+        "the direct result carries no producer_fact_ref and no composed_result_identity_hash",
+        "only the real composed path supplies producer ref, composed identity and coverage state"
+      ],
+      "result": "PASS"
+    },
+    {
+      "hostile": "NEGATIVE_STATES_NOT_COERCED_INTO_A_CONSUMER_VERDICT",
+      "test": "test_at16_negative_states_are_not_coerced_into_a_consumer_state",
+      "construction": "UNRESOLVED, NONCOMPARABLE and INTEGRITY_FAILURE envelopes are each built.",
+      "asserted": [
+        "retained analytical state preserved for each",
+        "consumer not invoked for each",
+        "consumer_result_state is None for each",
+        "no negative claim authorized for any"
+      ],
+      "result": "PASS"
+    }
+  ],
+  "required_at16_recordings_present": {
+    "producer_ref": true,
+    "analytical_composed_result_hash": true,
+    "consumer_query_rule_identity": true,
+    "generated_evidence_ref": true,
+    "consumer_result_state": true,
+    "exact_proof_grade": true
+  },
+  "no_handmade_final_slice": {
+    "statement": "No handmade PossibilitySliceEvidence, handwritten distribution or schema-only object was used to satisfy AT16. Every consumer invocation in this tranche came from the real composition path over a real producer fact.",
+    "verified_by": "test_at16_handmade_slice_cannot_satisfy_final_consumer_proof"
+  }
+}

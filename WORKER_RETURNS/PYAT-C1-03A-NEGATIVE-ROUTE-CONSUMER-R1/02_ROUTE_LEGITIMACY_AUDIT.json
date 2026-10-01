@@ -1,0 +1,84 @@
+{
+  "schema": "PYAT_C1_03A_ROUTE_LEGITIMACY_AUDIT@1",
+  "tranche": "C1-03A",
+  "at": "AT15",
+  "route_classes": ["DIRECT_EMPIRICAL", "LEARNED_OR_ADJUDICATED_REQUIRED"],
+  "owner": "rawlsing_next/pre553_analytical_state_and_route.py",
+  "route_creation_rule": "The route label never creates authority. A route decision is only ever recorded on an envelope that already carries exact producer refs, producer-native state and reason. No learned rule, model or comparability authority is created anywhere in this module.",
+  "cases": [
+    {
+      "case": "COMPETENT_DIRECT_EMPIRICAL_STAYS_DIRECT",
+      "route_class": "DIRECT_EMPIRICAL",
+      "competent_owner": "rawlsing_next.pre553_empirical_query.execute_empirical_query",
+      "why_direct_is_legitimate": "The exact direct empirical producer contract is already sufficient for the analytical/consumer path; the accepted C1-02 composition consumes it without any learned or adjudicating wrapper.",
+      "authority_demanded": "none beyond the producer's own exact source/release/risk/measure authority",
+      "authority_created": "none",
+      "test": "test_at15_competent_direct_empirical_route_stays_direct",
+      "result": "route stays DIRECT_EMPIRICAL with authority_refs == ()"
+    },
+    {
+      "case": "STRUCTURAL_USE_REQUIRES_LEARNED_ADJUDICATION",
+      "route_class": "LEARNED_OR_ADJUDICATED_REQUIRED",
+      "competent_owner": "rawlsing_next.pre553_structural_admission.evaluate_structural_empirical_admission",
+      "why_learned_is_genuinely_required": "A structural-mediation use of an empirical fact requires a named, hash-bound StructuralAdmissionRule plus matching STRUCTURAL_ADMISSION authority. Without the rule the owner cannot return ADMITTED, which is exactly the learned/adjudicated-required situation on this base.",
+      "evidence": "With rule=None the owner returns a non-ADMITTED decision for a SUPPORTED fact; the same fact is nonetheless lawfully consumable on the direct route. So the requirement is use-specific, not universal, and M1/M2 is not imposed on the competent direct route.",
+      "no_learned_rule_invented": "The structural admission rule and authority come from the owner's own test builders and public owner; nothing was fabricated.",
+      "test": "test_at15_structural_use_requires_learned_adjudication_on_this_base",
+      "result": "direct route proven legitimate for the same fact; structural route proven gated"
+    }
+  ],
+  "hostiles": [
+    {
+      "hostile": "FAILED_LEARNED_CLAIM_ROUTE_LAUNDERED_AS_DIRECT",
+      "construction": "A fact in state UNRESOLVED is submitted to the structural admission owner with a real named rule and ALLOW authority. The claim genuinely fails (decision_state != ADMITTED, reason_code recorded). The caller then attempts to relabel the route as DIRECT_EMPIRICAL to reach the consumer.",
+      "gate": "rawlsing_next.pre553_analytical_state_and_route.assert_route_not_laundered",
+      "expected": "RouteLegitimacyError containing ROUTE_LAUNDERING_REJECTED",
+      "test": "test_at15_failed_learned_claim_cannot_be_route_laundered_as_direct",
+      "result": "PASS"
+    },
+    {
+      "hostile": "DENIED_AUTHORITY_ROUTE_LAUNDERED_AS_DIRECT",
+      "construction": "A SUPPORTED fact is submitted with a named rule under a DENY admission authority snapshot. The claim fails. The route is then relabelled DIRECT_EMPIRICAL.",
+      "gate": "assert_route_not_laundered",
+      "expected": "RouteLegitimacyError",
+      "test": "test_at15_denying_authority_cannot_be_relabelled_direct",
+      "result": "PASS"
+    },
+    {
+      "hostile": "ROUTE_LABEL_ALONE_CREATES_NO_AUTHORITY",
+      "construction": "Two envelopes over the same producer fact and reason are built, differing only in route class.",
+      "asserted": [
+        "the two envelopes have different identities, so the route is part of the bound identity",
+        "neither envelope carries any authority ref",
+        "labelling a route does not change the retained analytical state",
+        "neither envelope authorizes a negative claim"
+      ],
+      "test": "test_at15_route_label_alone_creates_no_authority",
+      "result": "PASS"
+    }
+  ],
+  "identity_binding": {
+    "statement": "The route decision binds exact producer/result/authority identities because the route_class is inside the envelope identity preimage, alongside the exact producer refs, producer-native states and reasons.",
+    "consequence": "Changing the route changes the envelope identity; a route cannot be edited after the fact without reidentifying the result."
+  },
+  "authority_ceiling": {
+    "new_semantic_authority": false,
+    "new_comparability_authority": false,
+    "new_model_authority": false,
+    "new_pooling_authority": false,
+    "m1_m2_imposed_on_competent_direct_route": false
+  },
+  "prohibited_leakage_checks": {
+    "at17_n10e_duplication": false,
+    "at18_at19_implementation": false,
+    "c1_r_implementation": false,
+    "v3_actor_person_implementation": false
+  },
+  "summary": {
+    "direct_empirical_routes_proven": 1,
+    "learned_or_adjudicated_required_routes_proven": 1,
+    "laundering_hostiles_blocked": 2,
+    "route_label_authority_leak": false,
+    "learned_rule_invented": false
+  }
+}
