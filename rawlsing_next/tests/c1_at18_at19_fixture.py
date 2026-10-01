@@ -689,7 +689,16 @@ def build_model_authority_transition(direction: str):
         "product_ref": product_ref,
         "executor": executor,
         "old_model": old_model,
-        "revised_model": revised_model,
+        # The DECOY. ``revised_model_authority_snapshot`` reuses the base snapshot's
+        # authority_content_hash and only changes version/fingerprint/parentage, so
+        # this ref carries the SAME content hash as the consumed v1 authority. It is
+        # NOT the successor and must never be used as one.
+        "unsealed_decoy_model_ref": revised_model,
+        # The candidate-derived ref that was actually adjudicated, sealed and is
+        # eligible for release. This is the only lawful successor.
+        "sealed_successor_ref": revision.proposed_authority_ref,
+        # Kept for compatibility with earlier courts, but equal to the sealed
+        # successor, not to the decoy.
         "revised_model_snapshot_ref": revision.proposed_authority_ref,
         "seal_ref": seal.ref,
         "product_ref_key": product_ref.key,
@@ -697,6 +706,50 @@ def build_model_authority_transition(direction: str):
         "sibling_authority": sibling_authority,
         "sibling_direction": sibling_direction,
     }
+
+
+def sealed_successor_of(transition: dict[str, Any]) -> Any:
+    """The exact sealed authority ref a governed transition may recompose under.
+
+    This resolves the successor through the OWNER (the sealed snapshot the candidate
+    produced), never through the separately synthesized decoy snapshot and never by
+    version label. The decoy shares the consumed prior's content hash, so choosing it
+    would silently recompute the product under the authority it already consumed.
+    """
+    successor = transition["sealed_successor_ref"]
+    decoy = transition["unsealed_decoy_model_ref"]
+    consumed = transition["old_model"]
+    if successor.authority_content_hash == consumed.authority_content_hash:
+        raise AssertionError("sealed successor must differ from the consumed prior")
+    if decoy.authority_content_hash == consumed.authority_content_hash:
+        # Documented hazard, not an error: this is exactly why the decoy is unusable.
+        pass
+    return successor
+
+
+def build_model_rule_from_sealed_successor(
+    case: dict[str, Any], transition: dict[str, Any]
+) -> Any:
+    """Build the consumer model rule bound to the exact governed successor.
+
+    ``PositionedSubjectPossibilityModelRule.material`` binds the complete model
+    authority ref, so ``rule_hash`` cryptographically commits the rule to this exact
+    successor. A court can therefore prove the rule binds the successor rather than
+    the decoy.
+    """
+    from rawlsing_next.source_backed_positioned_subject_possibility import (
+        PositionedSubjectPossibilityModelRule,
+    )
+
+    successor = sealed_successor_of(transition)
+    base = case["model_rule"]
+    return PositionedSubjectPossibilityModelRule(
+        successor,
+        base.walkback_authority_ref,
+        base.source_universe_refs,
+        base.walkback_steps,
+        base.positive_proxy_authority_refs,
+    )
 
 
 def recompose_product_under_model_authority(direction: str):
@@ -813,3 +866,133 @@ __all__ = [
     "drive_owner_contract_without_recompiler",
     "drive_owner_contract_with_identity_recompiler",
 ]
+
+
+# --------------------------------------------------------------------------
+# AT19 mixed-outcome release (Astra option-A)
+# --------------------------------------------------------------------------
+def build_mixed_outcome_transition(
+    direction: str = "forward", *, include_downstream_edge: bool = True
+):
+    """ONE governed source-free release with all three dependent outcomes.
+
+    Registered dependents of the single changed model authority:
+
+    * ``replaced_product``   -- affected, has a real recomposition path;
+    * ``noncurrent_product`` -- affected, the domain explicitly declares that no
+      lawful replacement exists, with grounds;
+    * ``downstream_product`` -- affected transitively through ``noncurrent_product``.
+      It must NOT receive a replacement built from a noncurrent required input, so
+      the domain declares its absence with the upstream noncurrent row as ground.
+    * ``sibling_ref``        -- bound to a different, unchanged authority, so it is
+      unaffected and must stay identity-stable and current.
+    """
+    from rawlsing_next.pre553_authority_maintenance import (
+        AuthorityEvidenceReceipt,
+        AuthorityMaintenanceExecutor,
+        NoncurrentDependentOutcome,
+        NONCURRENT_DISPOSITION_NO_LAWFUL_REPLACEMENT,
+    )
+
+    case = build_case(direction)
+    composition = compose(case)
+    old_model = case["model_rule"].model_authority_ref
+    sibling_direction = "reverse" if direction == "forward" else "forward"
+    sibling_authority = direction_model_authority(sibling_direction)
+
+    def _product(kind_tag: str):
+        return ExactRef(
+            "C1_ANALYTICAL_COMPOSED_PRODUCT@1",
+            f"urn:test:c1-03r:composed:{direction}:{kind_tag}",
+            semantic_hash({"mixed": kind_tag, "direction": direction}),
+        )
+
+    replaced_product = _product("replaced")
+    noncurrent_product = _product("noncurrent")
+    downstream_product = _product("downstream")
+    sibling_ref = ExactRef(
+        "C1_ANALYTICAL_COMPOSED_PRODUCT@1",
+        f"urn:test:c1-03r:composed:{sibling_direction}",
+        compose(build_case(sibling_direction)).composed_result_identity_hash,
+    )
+
+    graph = SemanticDeterminantGraph(
+        authority_edges=(
+            (old_model, replaced_product),
+            (old_model, noncurrent_product),
+            (sibling_authority, sibling_ref),
+        ),
+        dependency_edges=(
+            ((noncurrent_product, downstream_product),)
+            if include_downstream_edge else ()
+        ),
+        known_dependent_refs=(
+            replaced_product, noncurrent_product, downstream_product, sibling_ref,
+        ),
+    )
+    executor = AuthorityMaintenanceExecutor(
+        initial_snapshots=(model_authority_snapshot(direction),),
+        initial_current_selection={old_model.authority_id: old_model},
+        determinant_graph=graph,
+    )
+    evidence = AuthorityEvidenceReceipt(
+        evidence_role="SEMANTIC_AUTHORITY_EVIDENCE",
+        evidence_refs=(_ref_for("EVIDENCE", f"{direction}-mixed"),),
+        provenance_refs=(_ref_for("PROVENANCE", f"{direction}-mixed"),),
+        source_release_refs=(),
+    )
+    executor.intake_evidence(evidence)
+    revision = _model_candidate(
+        revised_model_authority(direction),
+        version="2.0.0",
+        evidence_ref=evidence.ref,
+        parent=(old_model,),
+        supersession=(old_model,),
+        semantics=f"{direction}-mixed-v2",
+    )
+    executor.intake_candidate(revision)
+    adjudication = executor.adjudicate_candidate(
+        revision.ref,
+        decision="APPROVED",
+        adjudicator_ref=_ref_for("ADJUDICATOR", f"{direction}-mixed"),
+        adjudication_authority_ref=_ref_for("GOVERNING_AUTHORITY", "HQ151"),
+        findings_ref=_ref_for("FINDINGS", f"{direction}-mixed"),
+    )
+    seal = executor.seal_revision(
+        revision.ref,
+        adjudication.ref,
+        seal_attestation_ref=_ref_for("SEAL_ATTESTATION", f"{direction}-mixed"),
+    )
+
+    policy_ref = _ref_for("REPLACEMENT_POLICY", f"{direction}-no-source")
+    no_source_row = NoncurrentDependentOutcome(
+        old_ref=noncurrent_product,
+        disposition=NONCURRENT_DISPOSITION_NO_LAWFUL_REPLACEMENT,
+        reason_code="NO_LAWFUL_REPLACEMENT_SOURCE",
+        supporting_refs=(policy_ref,),
+    )
+    downstream_row = NoncurrentDependentOutcome(
+        old_ref=downstream_product,
+        disposition=NONCURRENT_DISPOSITION_NO_LAWFUL_REPLACEMENT,
+        reason_code="REQUIRED_INPUT_NONCURRENT",
+        supporting_refs=(policy_ref, noncurrent_product),
+    )
+    return {
+        "direction": direction,
+        "case": case,
+        "executor": executor,
+        "seal_ref": seal.ref,
+        "old_model": old_model,
+        "sealed_successor_ref": revision.proposed_authority_ref,
+        "replaced_product": replaced_product,
+        "noncurrent_product": noncurrent_product,
+        "downstream_product": downstream_product,
+        "sibling_ref": sibling_ref,
+        "sibling_authority": sibling_authority,
+        "noncurrent_declarations": {
+            noncurrent_product.key: no_source_row,
+            downstream_product.key: downstream_row,
+        },
+        "no_replacement_policy_ref": policy_ref,
+        "graph": graph,
+    }

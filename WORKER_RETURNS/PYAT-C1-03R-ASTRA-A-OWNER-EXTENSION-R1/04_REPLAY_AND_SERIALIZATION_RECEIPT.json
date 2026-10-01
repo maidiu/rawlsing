@@ -1,0 +1,44 @@
+{
+  "schema": "PYAT_C1_03R_ASTRA_A_REPLAY_SERIALIZATION_RECEIPT@1",
+  "canonical_serialization_binds": [
+    "changed_authority_refs",
+    "affected_dependent_refs",
+    "unaffected_dependent_refs",
+    "recompilation_pairs",
+    "noncurrent_dependents with exact grounds",
+    "reason_code",
+    "receipt_schema"
+  ],
+  "from_dict_round_trip_reproduces_negative_rows": true,
+  "checkpoint_export_import_reproduces_negative_rows": true,
+  "checkpoint_reproduces_current_selection_and_availability": true,
+  "fresh_process_owner_replay_reproduces_both_outcome_classes": true,
+  "fresh_process_method": "separate OS process reading the exported checkpoint and rebuilding AuthorityMaintenanceExecutor.from_checkpoint",
+  "promotion_and_rollback_share_one_outcome_law": true,
+  "atomicity": {
+    "invalid_or_missing_outcome_data_commits_no_release": true,
+    "no_current_authority_change": true,
+    "no_partial_dependent_state_change": true,
+    "verified_for": [
+      "promotion",
+      "rollback"
+    ]
+  },
+  "later_restoration": {
+    "requires_a_later_lawful_transition_and_receipt": true,
+    "cache_presence_restores_currentness": false,
+    "deleting_historical_noncurrent_evidence_restores_currentness": false
+  },
+  "at18_replay_grades_preserved": {
+    "grades_intact": [
+      "HISTORICAL_EXPLANATION_ONLY",
+      "SERIALIZATION_REPLAY",
+      "FRESH_PROCESS_PRODUCT_REPLAY",
+      "FRESH_EMPIRICAL_RECOMPUTATION"
+    ],
+    "collapsed": false,
+    "runner_input_oracle_separation_preserved": true,
+    "grade_honesty_note": "The fresh-process owner replay here proves SERIALIZATION REPLAY of lifecycle state. It is explicitly NOT fresh analytical recomputation, and the court asserts those grades differ.",
+    "fresh_owner_checkpoint_replay_is_not_fresh_analytical_recomputation": true
+  }
+}

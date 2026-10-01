@@ -35,6 +35,7 @@ from typing import Any, Callable, Iterable, Mapping
 from rawlsing_next.pre553_authority_maintenance import (
     AuthorityInvalidationReceipt,
     AuthorityMaintenanceError,
+    DEPENDENT_LIFECYCLE_EXPLICIT_NONCURRENT,
     Recompiler,
     SemanticDeterminantGraph,
 )
@@ -130,6 +131,16 @@ class MissingCrossOwnerEdge(AnalyticalReplayDependencyError):
 
 
 class NoLawfulReplacementRepresentable(AnalyticalReplayDependencyError):
+    """No recomposition path is registered and no explicit absence was declared."""
+
+
+class ExplicitNoncurrentDependent(AnalyticalReplayDependencyError):
+    """The lifecycle owner recorded this dependent as noncurrent.
+
+    The historical exact artifact remains addressable; it simply may not be served
+    as current under the governing release. Cache or object presence does not
+    restore currentness.
+    """
     """Owner gap: the current lifecycle owner cannot lawfully represent this case."""
 
     code = "NO_LAWFUL_REPLACEMENT_REPRESENTABLE"
@@ -457,8 +468,40 @@ class OwnerDependencyInvalidationOutcome:
                 {"old_ref": old.as_dict(), "new_ref": new.as_dict()}
                 for old, new in self.recomposed_products
             ],
+            "noncurrent_dependents": [
+                row.as_dict() for row in self.invalidation_receipt.noncurrent_dependents
+            ],
             "lifecycle_performed_by": "AuthorityMaintenanceExecutor.promote_current",
         }
+
+
+def resolve_current_analytical_product(
+    *,
+    executor: Any,
+    dependent_ref: ExactRef,
+) -> Mapping[str, Any]:
+    """Resolve one registered dependent through the OWNER's lifecycle state.
+
+    This is the analytical current-product path. It never infers currentness from
+    object or cache presence: it asks the accepted lifecycle owner, which is the only
+    party that computes lifecycle outcomes.
+
+    Returns a mapping with ``lifecycle_state`` and, for a replaced dependent, the
+    exact ``current_replacement_ref``. Raises :class:`ExplicitNoncurrentDependent`
+    when the owner recorded an explicit noncurrent outcome, so a stale historical
+    product can never be served as current.
+    """
+    status = dict(executor.dependent_lifecycle_status(dependent_ref))
+    if status["lifecycle_state"] == DEPENDENT_LIFECYCLE_EXPLICIT_NONCURRENT:
+        raise ExplicitNoncurrentDependent(
+            "the lifecycle owner recorded an explicit noncurrent outcome for "
+            f"{dependent_ref.key} (disposition={status['disposition']!r}, "
+            f"reason_code={status['reason_code']!r}, "
+            f"governing_release={status['governing_release_ref']}); the historical exact "
+            "artifact remains addressable but may not be served as current, and cached "
+            "bytes do not restore currentness"
+        )
+    return status
 
 
 def build_owner_recompiler(
@@ -497,27 +540,61 @@ def build_owner_recompiler(
                 "for an affected product with no lawful replacement, and this adapter "
                 "will not fabricate one."
             )
-        # Which consumed determinant identity did the owner actually change?
-        # The owner reports the *successor* revision, so match on authority identity
-        # (id + version), never on the prior content hash and never on tuple position.
-        consumed_identities = {
-            (ref.authority_id, ref.authority_version)
-            for ref in registration.determinant_authority_refs
-        }
-        replaced = [
+        # Which EXACT consumed prior authority ref did the owner actually change?
+        #
+        # Astra's defect was selecting by the consumed ``(authority_id,
+        # authority_version)`` tuple. In a v1 -> v2 promotion the owner reports
+        # ``changed = (prior_v1, selected_v2)``, so that filter matched the PRIOR
+        # ref and handed it to recomposition as though it were the successor.
+        #
+        # The correct resolution is by exact identity, in two steps:
+        #   1. find the consumed ref that is itself present in the owner's changed
+        #      set -- that is the exact prior determinant that moved;
+        #   2. resolve the one OTHER changed ref sharing that authority identity --
+        #      that is the governed successor the same transition selected.
+        # Never by tuple position, never by version label alone.
+        changed_keys = {ref.key for ref in changed}
+        consumed_prior = [
             ref
-            for ref in changed
-            if (ref.authority_id, ref.authority_version) in consumed_identities
+            for ref in registration.determinant_authority_refs
+            if ref.key in changed_keys
         ]
-        if len(replaced) != 1:
+        if len(consumed_prior) != 1:
             raise AuthorityMaintenanceError(
                 "an affected analytical product must have exactly one of its consumed "
-                "determinant identities replaced, found "
-                f"{len(replaced)} for {affected_ref.key}"
+                "determinant refs present in the owner's changed set, found "
+                f"{len(consumed_prior)} for {affected_ref.key}"
             )
-        # The recomposition path owns the new exact identity; it is handed both the
-        # affected product ref and the lawful successor authority ref.
-        new_ref = recomposer(affected_ref, replaced[0])
+        prior = consumed_prior[0]
+        successors = [
+            ref
+            for ref in changed
+            if ref.authority_id == prior.authority_id and ref.key != prior.key
+        ]
+        if len(successors) != 1:
+            raise AuthorityMaintenanceError(
+                "the governed transition must resolve exactly one successor authority "
+                f"ref for identity {prior.authority_id!r} besides the consumed prior ref, "
+                f"found {len(successors)} for {affected_ref.key}"
+            )
+        successor = successors[0]
+        if successor == prior:
+            raise AuthorityMaintenanceError(
+                "the recomposition successor must differ from the consumed prior ref")
+        # The successor must be an authority the owner actually knows, i.e. sealed and
+        # registered. This is what forbids handing a recomposition a merely
+        # well-formed or future authority ref.
+        if not getattr(executor, "_known_authority_ref", None) or not executor._known_authority_ref(
+            successor
+        ):
+            raise AuthorityMaintenanceError(
+                "the resolved successor authority ref is not a registered owner "
+                f"authority; future or unknown authority pre-binding is forbidden "
+                f"({successor.key})"
+            )
+        # The recomposition path owns the new exact identity; it is handed the
+        # affected product ref and the exact sealed/released successor authority ref.
+        new_ref = recomposer(affected_ref, successor)
         if new_ref == affected_ref:
             raise AuthorityMaintenanceError(
                 "affected dependent recompilation must produce a new exact ref"
@@ -535,13 +612,23 @@ def transition_analytical_dependencies(
     selection_rule_ref: ExactRef,
     selection_attestation_ref: ExactRef,
     recompose: Mapping[str, Callable[[ExactRef, AuthorityRef], ExactRef]],
+    noncurrent_dependents: Mapping[str, Any] | None = None,
 ) -> OwnerDependencyInvalidationOutcome:
     """Let the accepted lifecycle owner perform the analytical dependency transition.
 
-    The owner computes affected/unaffected, invokes the recompiler, and constructs the
-    ``AuthorityInvalidationReceipt``. This adapter supplies only the analytical
-    recomposition functions; it does not reproduce
-    ``AuthorityMaintenanceExecutor._recompile`` semantics.
+    The owner computes affected/unaffected, invokes the recompiler, validates the
+    outcome set, and constructs the ``AuthorityInvalidationReceipt``. This adapter
+    supplies only the analytical recomposition functions plus any *explicitly
+    grounded* absence declaration; it does not reproduce
+    ``AuthorityMaintenanceExecutor._recompile`` semantics, does not compute the
+    affected or unaffected set, and never builds the receipt.
+
+    ``noncurrent_dependents`` maps a registered product ref key to a grounded
+    ``NoncurrentDependentOutcome`` for a product the domain genuinely cannot rebuild.
+    It is a declaration, not an inference: a product with neither a recomposition path
+    nor an explicit grounded row still raises
+    :class:`NoLawfulReplacementRepresentable`. A missing callback, a callback
+    exception, and an unchanged-ref return all remain errors.
     """
 
     from rawlsing_next.pre553_empirical_objects import exact_ref
@@ -551,11 +638,16 @@ def transition_analytical_dependencies(
         registry=registry,
         recompose=recompose,
     )
+    declared = {
+        (value if isinstance(value, str) else exact_ref(value).key): row
+        for value, row in dict(noncurrent_dependents or {}).items()
+    }
     release = executor.promote_current(
         seal_ref,
         selection_rule_ref=selection_rule_ref,
         selection_attestation_ref=selection_attestation_ref,
         recompiler=executor_recompiler,
+        noncurrent_outcomes=declared,
     )
     receipt = executor.invalidation_receipt_for_release(release.ref)
     return OwnerDependencyInvalidationOutcome(

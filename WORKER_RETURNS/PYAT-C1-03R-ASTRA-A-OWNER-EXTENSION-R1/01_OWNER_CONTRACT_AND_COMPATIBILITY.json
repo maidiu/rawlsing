@@ -1,0 +1,74 @@
+{
+  "schema": "PYAT_C1_03R_ASTRA_A_OWNER_CONTRACT@1",
+  "selected_decision": "A__MINIMAL_GENERIC_LIFECYCLE_OWNER_EXTENSION",
+  "owner_modified": "rawlsing_next/pre553_authority_maintenance.py",
+  "adapter_modified": "rawlsing_next/pre553_analytical_replay_dependency.py",
+  "owner_owns_lifecycle": true,
+  "adapter_owns_lifecycle": false,
+  "noncurrent_contract": {
+    "type": "NoncurrentDependentOutcome",
+    "exactly_one_disposition": "NO_CURRENT_NO_LAWFUL_REPLACEMENT",
+    "fields": [
+      "old_ref",
+      "disposition",
+      "reason_code",
+      "supporting_refs",
+      "replacement_ref"
+    ],
+    "replacement_ref_is_always": null,
+    "c1_specific_product_vocabulary": false,
+    "split_classes_created": [],
+    "split_classes_authorized_by_astra": false,
+    "meaning": {
+      "historical_artifact_remains_addressable": true,
+      "not_current_under_new_release": true,
+      "governing_authority_withdrawn": false
+    }
+  },
+  "coverage_invariants_enforced_in_owner": {
+    "A_and_U_disjoint": true,
+    "A_and_U_cover_K": true,
+    "R_and_N_disjoint": true,
+    "R_union_N_equals_A": true,
+    "each_affected_ref_exactly_one_outcome": true,
+    "duplicate_rejected": true,
+    "overlap_rejected": true,
+    "unknown_source_rejected": true,
+    "missing_rejected": true,
+    "noncurrent_row_cannot_carry_replacement": true,
+    "replacement_must_differ_from_old_ref": true,
+    "validated_before_any_release_or_selection_mutation": true
+  },
+  "error_law_preserved": {
+    "missing_callback": "ERROR (AuthorityMaintenanceError), never noncurrent",
+    "callback_exception": "ERROR, propagates",
+    "unchanged_ref_callback_result": "ERROR, never noncurrent",
+    "absent_cache_or_object_bytes": "not a noncurrent outcome and not currentness",
+    "arbitrary_adapter_refusal": "ERROR",
+    "note": "Only an explicitly supplied, grounded NoncurrentDependentOutcome records absence. The owner never converts an error into noncurrent."
+  },
+  "compatibility": {
+    "positive_only_receipt_identity_preserved": true,
+    "mechanism": "A receipt with no noncurrent rows projects the ORIGINAL field set byte for byte, so every historical positive-only receipt hash is reproduced exactly. This was verified by loading the pre-change module and comparing ref and as_dict.",
+    "negative_row_receipt_schema": "PRE553_AUTH40_SEMANTIC_AUTHORITY_INVALIDATION_NONCURRENT@1.0.0",
+    "explicit_migration_required": false,
+    "historical_hashes_silently_reinterpreted": false,
+    "measured_pre_change_ref": "26facb7634719e66049c39547cf7f85ed04869e80d5da120affb6cd17d31fa82",
+    "measured_post_change_ref": "26facb7634719e66049c39547cf7f85ed04869e80d5da120affb6cd17d31fa82",
+    "as_dict_byte_identical": true
+  },
+  "current_vs_historical_visibility": {
+    "mechanism": "AuthorityMaintenanceExecutor.dependent_lifecycle_status()",
+    "adapter_entry_point": "resolve_current_analytical_product()",
+    "states": [
+      "CURRENT",
+      "EXPLICIT_NONCURRENT"
+    ],
+    "stale_historical_use_as_current": "REFUSED (ExplicitNoncurrentDependent)",
+    "historical_exact_lookup": "remains available via owner resolve_historical_exact",
+    "new_artifact_repository_built": false,
+    "currentness_derived_from_object_presence": false
+  },
+  "authority_candidate_identity_contract_changed": false,
+  "existing_owner_binding_obstruction_found": false
+}

@@ -22,6 +22,13 @@ import sys
 
 import pytest
 
+from rawlsing_next.pre553_authority_maintenance import (
+    DEPENDENT_LIFECYCLE_CURRENT,
+    DEPENDENT_LIFECYCLE_EXPLICIT_NONCURRENT,
+    NONCURRENT_DISPOSITION_NO_LAWFUL_REPLACEMENT,
+    NoncurrentDependentOutcome,
+    SemanticDeterminantGraph,
+)
 from rawlsing_next.pre553_analytical_replay_dependency import (
     MECHANISM_FRESH_PROCESS_ACCEPTED_PRODUCER,
     MECHANISM_HISTORICAL_NARRATION,
@@ -35,6 +42,10 @@ from rawlsing_next.pre553_analytical_replay_dependency import (
     AnalyticalDependencyRegistry,
     AnalyticalProductRegistration,
     AnalyticalReplayClaim,
+    ExplicitNoncurrentDependent,
+    MissingCrossOwnerEdge,
+    assert_closure_covers_registered_products,
+    resolve_current_analytical_product,
     AnalyticalReplayDependencyError,
     MissingExactDeterminant,
     NoLawfulReplacementRepresentable,
@@ -50,6 +61,7 @@ from rawlsing_next.pre553_authority_maintenance import (
 )
 from rawlsing_next.pre553_empirical_objects import ExactRef, ReplayReceipt, exact_ref
 
+from rawlsing_next.pre553_empirical_objects import AuthorityRef, semantic_hash
 from rawlsing_next.tests import c1_at18_at19_fixture as fx
 
 PRODUCER_PATH = (
@@ -306,7 +318,7 @@ def test_at19_lawful_graph_contains_only_consumed_determinants():
         transition["sibling_authority"].key,
     }
     # The future revised authority is NOT pre-registered on the pre-existing product.
-    assert transition["revised_model"].key not in edge_authorities, (
+    assert transition["sealed_successor_ref"].key not in edge_authorities, (
         "the future revised authority must not be pre-registered on the old product"
     )
     forward_edges = {
@@ -329,7 +341,7 @@ def test_at19_adapter_delegates_the_transition_to_the_owner():
 
     transition = fx.build_model_authority_transition("forward")
     graph = transition["executor"].determinant_graph
-    changed = (transition["old_model"], transition["revised_model"])
+    changed = (transition["old_model"], transition["sealed_successor_ref"])
 
     # The owner's own closure decision reaches exactly the registered dependent.
     assert graph.affected(changed) == (transition["product_ref"],)
@@ -374,7 +386,7 @@ def test_at19_owner_requires_a_genuinely_new_identity_for_an_affected_product():
 def test_at19_unaffected_sibling_is_reached_by_neither_revision():
     transition = fx.build_model_authority_transition("forward")
     graph = transition["executor"].determinant_graph
-    changed = (transition["old_model"], transition["revised_model"])
+    changed = (transition["old_model"], transition["sealed_successor_ref"])
 
     affected = graph.affected(changed)
     unaffected = graph.unaffected(affected)
@@ -473,7 +485,7 @@ def test_at19_missing_cross_owner_edge_fails_despite_object_presence():
     )
     # The product ref is present, yet nothing reaches it.
     assert product_ref.key in {ref.key for ref in incomplete.known_dependent_refs}
-    assert incomplete.affected((transition["old_model"], transition["revised_model"])) == ()
+    assert incomplete.affected((transition["old_model"], transition["sealed_successor_ref"])) == ()
 
     # The adapter's closure check must reject that claim.
     from rawlsing_next.pre553_analytical_replay_dependency import (
@@ -520,7 +532,7 @@ def test_at19_missing_cross_owner_edge_fails_despite_object_presence():
             outcome=outcome,
             registry=registry,
             recompose=recompute_map(),
-            successor_authority=transition["revised_model"],
+            successor_authority=transition["sealed_successor_ref"],
         )
 
 
@@ -560,8 +572,380 @@ def test_at19_closure_passes_when_the_lawful_edges_are_present():
     for registration in registry.registrations:
         for authority in registration.determinant_authority_refs:
             assert authority.key in edge_authorities
-    changed = (transition["old_model"], transition["revised_model"])
+    changed = (transition["old_model"], transition["sealed_successor_ref"])
     affected = graph.affected(changed)
     unaffected = graph.unaffected(affected)
     assert affected == (transition["product_ref"],)
     assert unaffected == (transition["sibling_ref"],)
+
+
+# ==========================================================================
+# AT19 Astra option-A: generic noncurrent lifecycle outcome (mixed release)
+# ==========================================================================
+def _mixed_registry(t):
+    registry = AnalyticalDependencyRegistry()
+    for product in (
+        t["replaced_product"], t["noncurrent_product"],
+        t["downstream_product"], t["sibling_ref"],
+    ):
+        determinants = (
+            (t["old_model"],)
+            if product.key != t["sibling_ref"].key
+            else (t["sibling_authority"],)
+        )
+        registry.register(
+            AnalyticalProductRegistration(
+                product_ref=product,
+                product_identity_hash=product.content_hash,
+                determinant_authority_refs=determinants,
+            )
+        )
+    return registry
+
+
+def _run_mixed(t, *, noncurrent=None):
+    return transition_analytical_dependencies(
+        executor=t["executor"],
+        registry=_mixed_registry(t),
+        seal_ref=t["seal_ref"],
+        selection_rule_ref=fx._ref_for("SELECTION_RULE", "mixed-v2"),
+        selection_attestation_ref=fx._ref_for("SELECTION_ATTESTATION", "mixed-v2"),
+        recompose={
+            t["replaced_product"].key: fx.recompose_product_under_model_authority(
+                t["direction"]
+            )
+        },
+        noncurrent_dependents=(
+            t["noncurrent_declarations"] if noncurrent is None else noncurrent
+        ),
+    )
+
+
+def test_at19_astra_a_one_release_carries_replacement_noncurrent_and_unaffected():
+    """F: in ONE governed release all three dependent outcomes coexist."""
+    t = fx.build_mixed_outcome_transition("forward")
+    outcome = _run_mixed(t)
+    receipt = outcome.invalidation_receipt
+    ex = t["executor"]
+
+    assert len(receipt.recompilation_pairs) == 1
+    assert len(receipt.noncurrent_dependents) == 2
+    assert len(receipt.unaffected_dependent_refs) == 1
+    # R and N are disjoint and cover A exactly: every affected ref has ONE outcome.
+    replacement_keys = {r.key for r in receipt.replacement_old_refs}
+    noncurrent_keys = {r.key for r in receipt.noncurrent_old_refs}
+    affected_keys = {r.key for r in receipt.affected_dependent_refs}
+    assert replacement_keys.isdisjoint(noncurrent_keys)
+    assert replacement_keys | noncurrent_keys == affected_keys
+    assert receipt.unaffected_dependent_refs[0].key == t["sibling_ref"].key
+
+    # A real lawful replacement exists for the replaced product.
+    (old, new), = receipt.recompilation_pairs
+    assert old.key == t["replaced_product"].key
+    assert new != old
+    status = resolve_current_analytical_product(
+        executor=ex, dependent_ref=t["replaced_product"])
+    assert status["lifecycle_state"] == DEPENDENT_LIFECYCLE_CURRENT
+    assert status["current_replacement_ref"].key == new.key
+
+    # The unaffected sibling stays current and identity-stable.
+    sibling = resolve_current_analytical_product(
+        executor=ex, dependent_ref=t["sibling_ref"])
+    assert sibling["lifecycle_state"] == DEPENDENT_LIFECYCLE_CURRENT
+    assert "current_replacement_ref" not in sibling
+    assert sibling["dependent_ref"] == t["sibling_ref"]
+
+    # The noncurrent dependent is explicitly noncurrent, with exact grounds.
+    for row in receipt.noncurrent_dependents:
+        assert row.replacement_ref is None
+        assert row.disposition == NONCURRENT_DISPOSITION_NO_LAWFUL_REPLACEMENT
+        assert row.reason_code
+        assert row.supporting_refs
+    with pytest.raises(ExplicitNoncurrentDependent, match="may not be served as current"):
+        resolve_current_analytical_product(
+            executor=ex, dependent_ref=t["noncurrent_product"])
+    with pytest.raises(ExplicitNoncurrentDependent):
+        resolve_current_analytical_product(
+            executor=ex, dependent_ref=t["downstream_product"])
+
+
+def test_at19_astra_a_noncurrent_does_not_withdraw_the_governing_authority():
+    """Noncurrent means no current product, not loss of the historical artifact
+    and not withdrawal of the governing authority."""
+    t = fx.build_mixed_outcome_transition("forward")
+    _run_mixed(t)
+    ex = t["executor"]
+    # The historical exact authority is still resolvable.
+    historical = ex.resolve_historical_exact(t["sealed_successor_ref"])
+    assert historical.authority_ref.key == t["sealed_successor_ref"].key
+    # The authority is still current under the release.
+    release_ref = ex.current_selection_receipt_ref(t["old_model"].authority_id)
+    assert ex.resolve_current_exact(
+        t["old_model"].authority_id, selection_receipt_ref=release_ref
+    ).authority_ref.key == t["sealed_successor_ref"].key
+
+
+def test_at19_astra_a_downstream_gets_no_replacement_from_a_noncurrent_input():
+    """A registered dependent downstream of a noncurrent required input must not
+    receive a replacement built from that input."""
+    t = fx.build_mixed_outcome_transition("forward")
+    receipt = _run_mixed(t).invalidation_receipt
+    rows = {r.old_ref.key: r for r in receipt.noncurrent_dependents}
+    downstream = rows[t["downstream_product"].key]
+    assert downstream.reason_code == "REQUIRED_INPUT_NONCURRENT"
+    assert t["noncurrent_product"] in downstream.supporting_refs
+    # No replacement pair anywhere points at the downstream product.
+    assert all(old.key != t["downstream_product"].key
+               for old, _ in receipt.recompilation_pairs)
+    # And it did not receive a replacement under the successor authority.
+    with pytest.raises(ExplicitNoncurrentDependent):
+        resolve_current_analytical_product(
+            executor=t["executor"], dependent_ref=t["downstream_product"])
+
+
+def test_at19_astra_a_missing_cross_owner_edge_fails_closure_even_with_cached_objects():
+    """F: a missing graph edge is not repaired by object/cache presence."""
+    # The transition is driven against a graph that omits the downstream dependency
+    # edge, so the owner genuinely believes downstream is unaffected.
+    t = fx.build_mixed_outcome_transition(
+        "forward", include_downstream_edge=False)
+    # Only the genuinely affected dependent may be declared noncurrent. The domain
+    # cannot smuggle a noncurrent row in for something the owner calls unaffected.
+    declared = {
+        t["noncurrent_product"].key: t["noncurrent_declarations"][
+            t["noncurrent_product"].key
+        ]
+    }
+    outcome = _run_mixed(t, noncurrent=declared)
+    receipt = outcome.invalidation_receipt
+    downstream_key = t["downstream_product"].key
+    # The owner really does record downstream as unaffected...
+    assert downstream_key in {r.key for r in receipt.unaffected_dependent_refs}
+    # ...while every other dependent still got exactly one outcome.
+    assert len(receipt.recompilation_pairs) == 1
+    assert len(receipt.noncurrent_dependents) == 1
+
+    # The independent closure witness over the REGISTERED products rejects the
+    # incomplete graph: a cached/present downstream object does not restore the
+    # missing cross-owner edge.
+    registry = _mixed_registry(t)
+    with pytest.raises(MissingCrossOwnerEdge):
+        assert_closure_covers_registered_products(
+            outcome=outcome,
+            registry=registry,
+            recompose={
+                t["downstream_product"].key: fx.recompose_product_under_model_authority(
+                    t["direction"]
+                )
+            },
+            successor_authority=t["sealed_successor_ref"],
+        )
+
+
+def test_at19_astra_a_cache_presence_does_not_restore_currentness():
+    """Cached historical bytes never restore currentness."""
+    t = fx.build_mixed_outcome_transition("forward")
+    _run_mixed(t)
+    # The historical artifact is fully present and retrievable...
+    assert t["executor"].resolve_historical_exact(t["sealed_successor_ref"])
+    # ...and the dependent is still refused as current.
+    for _attempt in range(2):
+        with pytest.raises(ExplicitNoncurrentDependent):
+            resolve_current_analytical_product(
+                executor=t["executor"], dependent_ref=t["noncurrent_product"])
+    # Only a later lawful transition/receipt could restore it; re-reading the same
+    # release changes nothing.
+    status = t["executor"].dependent_lifecycle_status(t["noncurrent_product"])
+    assert status["lifecycle_state"] == DEPENDENT_LIFECYCLE_EXPLICIT_NONCURRENT
+
+
+# ==========================================================================
+# AT19 E: successor binding and identity proof (Astra item 4)
+# ==========================================================================
+def test_at19_e_sealed_successor_is_not_the_separately_synthesized_decoy():
+    """The decoy snapshot shares the CONSUMED prior's content hash.
+
+    ``revised_model_authority_snapshot`` copies ``authority_content_hash`` from the
+    base and only changes version/fingerprint/parentage. So the "revised model" ref is
+    a v2-labelled ref whose content hash equals the v1 the product already consumed.
+    Choosing it would recompute the product under the authority it already used.
+    """
+    t = fx.build_model_authority_transition("forward")
+    consumed, decoy, sealed = t["old_model"], t["unsealed_decoy_model_ref"], fx.sealed_successor_of(t)
+    assert decoy.authority_content_hash == consumed.authority_content_hash
+    assert sealed.authority_content_hash != consumed.authority_content_hash
+    assert decoy.authority_content_hash != sealed.authority_content_hash
+    # All three are distinct refs; only the sealed one is lawful.
+    assert len({consumed.key, decoy.key, sealed.key}) == 3
+
+
+def test_at19_e_consumer_model_rule_hash_binds_the_sealed_successor():
+    """E: the model-rule hash cryptographically commits to the exact successor."""
+    t = fx.build_model_authority_transition("forward")
+    case = t["case"]
+    rule = fx.build_model_rule_from_sealed_successor(case, t)
+    sealed = fx.sealed_successor_of(t)
+    # material binds the complete model authority ref, so rule_hash commits to it.
+    assert rule.material()["model_authority_ref"] == sealed.as_dict()
+    assert rule.rule_hash == semantic_hash(rule.material())
+    # A rule built from the decoy produces a DIFFERENT hash: the binding is real.
+    from rawlsing_next.source_backed_positioned_subject_possibility import (
+        PositionedSubjectPossibilityModelRule as _R,
+    )
+    base = case["model_rule"]
+    decoy_rule = _R(
+        t["unsealed_decoy_model_ref"], base.walkback_authority_ref,
+        base.source_universe_refs, base.walkback_steps,
+        base.positive_proxy_authority_refs,
+    )
+    assert decoy_rule.rule_hash != rule.rule_hash
+
+
+def test_at19_e_callback_receives_the_exact_sealed_successor_and_identity_moves():
+    """E: the recomposition callback receives the sealed successor, and the product
+    identity changes even though numerical geometry is unchanged."""
+    t = fx.build_model_authority_transition("forward")
+    registry, recompose = _registered_products(t)
+    seen = {}
+    base = fx.recompose_product_under_model_authority("forward")
+
+    def spy(affected_ref, authority):
+        seen["authority"] = authority
+        return base(affected_ref, authority)
+
+    outcome = transition_analytical_dependencies(
+        executor=t["executor"],
+        registry=registry,
+        seal_ref=t["seal_ref"],
+        selection_rule_ref=fx._ref_for("SELECTION_RULE", "identity-v2"),
+        selection_attestation_ref=fx._ref_for("SELECTION_ATTESTATION", "identity-v2"),
+        recompose={t["product_ref"].key: spy},
+    )
+    sealed = fx.sealed_successor_of(t)
+    assert seen["authority"].key == sealed.key
+    assert seen["authority"].key != t["old_model"].key
+    # The successor was resolved from the same transition, not by version label:
+    # the decoy (also version 2.0.0) was NOT what the callback received.
+    assert seen["authority"].key != t["unsealed_decoy_model_ref"].key
+
+    (old, new), = outcome.invalidation_receipt.recompilation_pairs
+    assert new != old
+    # Geometry is unchanged; identity moved because the governing authority moved.
+    assert t["composition"].raw_denominator_support == (
+        fx.compose({**t["case"], "model_rule": fx.build_model_rule_from_sealed_successor(
+            t["case"], t)}).raw_denominator_support)
+
+
+def test_at19_e_expected_output_oracle_stays_separately_frozen():
+    """E: expected-output oracle material is derived independently of the candidate.
+
+    The oracle is computed from the plain case, never from the transition receipt or
+    the recomposed product, and carries its own schema.
+    """
+    case = fx.build_case("forward")
+    oracle = fx.oracle_expected_output(case)
+    assert oracle["schema"] == "C1_03R_AT18_EXPECTED_OUTPUT_ORACLE@1"
+    t = fx.build_model_authority_transition("forward")
+    receipt_fields = {"recompilation_pairs", "noncurrent_dependents", "ref"}
+    assert receipt_fields.isdisjoint(set(oracle))
+    # Recomputing the oracle is stable and independent of any transition.
+    assert fx.oracle_expected_output(case) == oracle
+
+
+# ==========================================================================
+# AT19 G: adapter-level hostiles
+# ==========================================================================
+def test_g_callback_omission_is_an_error_not_a_noncurrent_outcome():
+    """Error law: a missing recomposition path stays an error."""
+    t = fx.build_mixed_outcome_transition("forward")
+    with pytest.raises(NoLawfulReplacementRepresentable):
+        _run_mixed(t, noncurrent={})  # downstream declaration dropped -> no path
+
+
+def test_g_callback_exception_is_an_error_not_a_noncurrent_outcome():
+    def boom(affected_ref, authority):
+        raise RuntimeError("recomposition exploded")
+
+    t = fx.build_model_authority_transition("forward")
+    registry, _ = _registered_products(t)
+    with pytest.raises(RuntimeError, match="recomposition exploded"):
+        transition_analytical_dependencies(
+            executor=t["executor"],
+            registry=registry,
+            seal_ref=t["seal_ref"],
+            selection_rule_ref=fx._ref_for("SELECTION_RULE", "boom"),
+            selection_attestation_ref=fx._ref_for("SELECTION_ATTESTATION", "boom"),
+            recompose={t["product_ref"].key: boom},
+        )
+
+
+def test_g_unchanged_callback_output_is_an_error_not_a_noncurrent_outcome():
+    """An unchanged-ref return never silently becomes noncurrent."""
+    t = fx.build_model_authority_transition("forward")
+    registry, _ = _registered_products(t)
+
+    def identity(affected_ref, authority):
+        return affected_ref
+
+    with pytest.raises(AuthorityMaintenanceError, match="must produce a new exact ref"):
+        transition_analytical_dependencies(
+            executor=t["executor"],
+            registry=registry,
+            seal_ref=t["seal_ref"],
+            selection_rule_ref=fx._ref_for("SELECTION_RULE", "same"),
+            selection_attestation_ref=fx._ref_for("SELECTION_ATTESTATION", "same"),
+            recompose={t["product_ref"].key: identity},
+        )
+
+
+def test_g_future_authority_pre_binding_remains_forbidden():
+    """A well-formed but unregistered successor authority is refused.
+
+    The successor resolution requires the ref to be an authority the owner actually
+    knows. A ref that merely looks like a successor -- same authority id, plausible
+    version label, real-looking content hash -- is refused, so a future authority can
+    never be pre-bound into a recomposition.
+    """
+    from rawlsing_next.pre553_analytical_replay_dependency import build_owner_recompiler
+
+    t = fx.build_model_authority_transition("forward")
+    registry, _ = _registered_products(t)
+    rc = build_owner_recompiler(
+        executor=t["executor"],
+        registry=registry,
+        recompose={
+            t["product_ref"].key: fx.recompose_product_under_model_authority("forward")
+        },
+    )
+    future = AuthorityRef(
+        t["old_model"].authority_id, "3.0.0", semantic_hash({"future": "3.0.0"})
+    )
+    assert future.key != t["old_model"].key
+    with pytest.raises(
+        AuthorityMaintenanceError, match="not a registered owner authority"
+    ):
+        rc(t["product_ref"], (t["old_model"], future))
+    # The decoy is registered nowhere either, so it is refused the same way.
+    with pytest.raises(AuthorityMaintenanceError):
+        rc(t["product_ref"], (t["old_model"], t["unsealed_decoy_model_ref"]))
+
+
+def test_g_adapter_does_not_own_the_lifecycle_or_the_receipt():
+    """G: the adapter delegates. It never computes affected/unaffected and never
+    constructs the invalidation receipt."""
+    import inspect as _inspect
+
+    import rawlsing_next.pre553_analytical_replay_dependency as adapter
+    src = _inspect.getsource(adapter)
+    # No reimplementation of the owner's affected/unaffected computation.
+    assert ".affected(" not in src
+    assert ".unaffected(" not in src
+    # No direct construction of the owner receipt.
+    assert "AuthorityInvalidationReceipt(" not in src
+    # The outcome really is the OWNER's own receipt object.
+    t = fx.build_mixed_outcome_transition("forward")
+    outcome = _run_mixed(t)
+    owners_receipt = t["executor"].invalidation_receipt_for_release(outcome.release_ref)
+    assert outcome.invalidation_receipt is owners_receipt
+    assert outcome.material()["lifecycle_performed_by"] == (
+        "AuthorityMaintenanceExecutor.promote_current")
