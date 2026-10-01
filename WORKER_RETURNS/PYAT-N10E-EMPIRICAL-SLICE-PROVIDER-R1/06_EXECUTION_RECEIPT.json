@@ -53,7 +53,10 @@
       "consumer_result_hash": "47b51a3b6df4ec051b5b9fb04a92760c791f4ac761f20a157966cbe1b481a4be",
       "consumer_result_state": "EXACT_SUPPORTED",
       "raw_denominator_support": 60,
-      "cell_numerators": {"yes": 54, "no": 6}
+      "cell_numerators": {
+        "yes": 54,
+        "no": 6
+      }
     },
     "reverse": {
       "provider_state": "EXACT_SUPPORTED_SLICE_PRODUCED",
@@ -63,7 +66,10 @@
       "consumer_result_hash": "dcb47a70f056b841c5a4d24eca4fab7e0ce2b46995138ccaef98a5085f5f28c0",
       "consumer_result_state": "EXACT_SUPPORTED",
       "raw_denominator_support": 62,
-      "cell_numerators": {"P1": 54, "P2": 8}
+      "cell_numerators": {
+        "P1": 54,
+        "P2": 8
+      }
     }
   },
   "material_failures_encountered_and_resolved": [
@@ -83,5 +89,22 @@
       "grade": "TEST_TERRAIN_CORRECTION_NOT_IMPLEMENTATION_CHANGE"
     }
   ],
-  "determinism_cross_check": "The forward evidence ref and composed result identity produced through the new provider equal the committed R8 identity spine values, independently confirming that the provider wraps the accepted path rather than recomputing it."
+  "determinism_cross_check": "The forward evidence ref and composed result identity produced through the new provider equal the committed R8 identity spine values, independently confirming that the provider wraps the accepted path rather than recomputing it.",
+  "implementation_commit_sha": "5288a0b1d8ec634445ce0cb45db832b57fa91631",
+  "implementation_commit_author": "Maidiu <matthewdavidsmith86@gmail.com>",
+  "git_completion": {
+    "diff_from_base_confined_to_write_allowlist": true,
+    "committed": true,
+    "pushed": false,
+    "push_blocker": {
+      "remote": "https://github.com/maidiu/rawlsing.git",
+      "https_error": "fatal: could not read Username for 'https://github.com': terminal prompts disabled",
+      "credential_helper": "osxkeychain (configured, but no stored credential for github.com)",
+      "token_env_present": false,
+      "ssh_alternative": "~/.ssh/id_ed25519.pub exists but GitHub returns 'Permission denied (publickey)' (key not registered with the account)",
+      "classification": "AUTHORIZATION_GAP_NOT_IMPLEMENTATION_FAILURE",
+      "material_effect_on_proof": "NONE: all evidence, receipts and test counts were produced from the committed tree; the commit exists locally and is ready to push unchanged."
+    },
+    "nothing_partially_pushed": true
+  }
 }
