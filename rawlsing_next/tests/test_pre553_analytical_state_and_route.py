@@ -2077,3 +2077,79 @@ def test_r4_stale_completeness_state_reference_is_gone_without_changing_handoff_
         _hq_real_handoff("r4-handoff-intact"))
     assert handoff_projection.retained_state == SUPPORTED_BASELINE
     assert custody.coverage_record_ref is not None
+
+
+# ===========================================================================
+# R4 final-SHA callability correction
+#
+# The returned R4 SHA declared two consecutive @classmethod decorators on
+# from_empirical_integrity_refusal. These courts call both refusal factories
+# DIRECTLY on the final committed SHA and prove they return the correct states, so
+# the duplicate-decorator defect cannot silently return.
+# ===========================================================================
+def test_finalsha_empirical_integrity_refusal_is_directly_callable():
+    """Final-SHA court: one decorator, and a direct call returns INTEGRITY_FAILURE."""
+    import inspect as _inspect
+
+    witness, data = fx.capture_integrity_refusal("integrity_failure_fixture")
+
+    # Structural check: exactly one classmethod decorator, not a nested chain.
+    raw = OwnerStateProjection.__dict__["from_empirical_integrity_refusal"]
+    assert type(raw).__name__ == "classmethod"
+    assert not isinstance(getattr(raw, "__func__", None), classmethod), (
+        "from_empirical_integrity_refusal must not wrap a classmethod in a classmethod"
+    )
+    assert list(_inspect.signature(raw.__func__).parameters) == ["cls", "witness"]
+
+    # DIRECT call on a genuine witness, exactly as HQ intake would make it.
+    projection = OwnerStateProjection.from_empirical_integrity_refusal(witness=witness)
+    assert projection.retained_state == INTEGRITY_FAILURE
+    evidence = projection.as_evidence()
+    assert evidence.retained_state == INTEGRITY_FAILURE
+    # The provenance still comes from the real owner object.
+    assert evidence.producer_ref == data["original_object"].ref
+    assert evidence.owner == (
+        "rawlsing_next.pre553_empirical_query.execute_empirical_query")
+
+
+def test_finalsha_blocked_authority_refusal_is_directly_callable():
+    """Final-SHA court: the blocked-authority sibling is directly callable too."""
+    import inspect as _inspect
+
+    witness, data = fx.capture_blocked_authority_refusal("blocked_required_authority_fixture")
+
+    raw = OwnerStateProjection.__dict__["from_blocked_authority_refusal"]
+    assert type(raw).__name__ == "classmethod"
+    assert not isinstance(getattr(raw, "__func__", None), classmethod)
+    assert list(_inspect.signature(raw.__func__).parameters) == ["cls", "witness"]
+
+    projection = OwnerStateProjection.from_blocked_authority_refusal(witness=witness)
+    assert projection.retained_state == BLOCKED_REQUIRED_AUTHORITY
+    assert projection.as_evidence().retained_state == BLOCKED_REQUIRED_AUTHORITY
+    from rawlsing_next.pre553_empirical_objects import exact_ref
+
+    assert projection.producer_ref == exact_ref(
+        data["authority"].candidate_grammar_ref)
+
+
+def test_finalsha_no_refusal_factory_wraps_a_classmethod():
+    """Sweep every factory: none may nest a classmethod inside a classmethod."""
+    offenders = [
+        name for name, raw in vars(OwnerStateProjection).items()
+        if isinstance(raw, classmethod)
+        and isinstance(getattr(raw, "__func__", None), classmethod)
+    ]
+    assert offenders == []
+
+
+def test_finalsha_both_refusal_states_remain_distinct_on_final_sha():
+    """The two mandatory refusal states stay distinct after the correction."""
+    integrity = OwnerStateProjection.from_empirical_integrity_refusal(
+        witness=fx.capture_integrity_refusal("integrity_failure_fixture")[0]
+    )
+    blocked = OwnerStateProjection.from_blocked_authority_refusal(
+        witness=fx.capture_blocked_authority_refusal("blocked_required_authority_fixture")[0]
+    )
+    assert integrity.retained_state == INTEGRITY_FAILURE
+    assert blocked.retained_state == BLOCKED_REQUIRED_AUTHORITY
+    assert integrity.retained_state != blocked.retained_state

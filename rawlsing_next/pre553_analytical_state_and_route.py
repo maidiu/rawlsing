@@ -851,7 +851,6 @@ class OwnerStateProjection:
         )
 
     @classmethod
-    @classmethod
     def from_empirical_integrity_refusal(
         cls,
         *,
