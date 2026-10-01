@@ -1,7 +1,7 @@
 {
   "schema": "PYAT_OMEGA_ACTIVE_TASK_BOARD@1",
-  "revision": 25,
-  "status": "C1_02_PAIRING_REREVIEW_BOUND__N10E_PROOF_CORRECTION_BOUND__C2_PREP_COMPLETE__C3_ADOPTED",
+  "revision": 26,
+  "status": "C1_02_ADOPTED__N10E_CORRECTION_REREVIEW_BOUND__C1_03_READY_EXCEPT_AT17__C2_PREP_COMPLETE__C3_ADOPTED",
   "control_branch": "integration/pre-main-reconciliation-r1",
   "adopted_preparation": [
     {
@@ -20,6 +20,14 @@
       "integration_branch": "integration/pyat-hq139-c1-01-source-free-accepted-r1",
       "integration_head": "5fafb499d53dddadaf8a7b4fd46506e91a09d270",
       "review_head": "98825f710e5238e794c78bf0acbb43faaea355e4"
+    },
+    {
+      "id": "C1-02",
+      "state": "ADOPTED_AT_DECLARED_SOURCE_FREE_GRAIN",
+      "integration_branch": "integration/pyat-hq145-c1-02-source-free-accepted-r1",
+      "integration_head": "bc661188b51e995d9f5d74e55c4e37d2ba358a17",
+      "review_head": "59d69ba31b8de2d028bd44048e8d7b75f2d82538",
+      "grain": "AT08_AT13"
     }
   ],
   "observed_returns": [
@@ -120,34 +128,41 @@
       "head": "b89268d1824409d20a91a37a0a3ff7751a7ae75a",
       "disposition": "CHANGES_REQUIRED",
       "adjudication": "ADOPT_NARROW_PROOF_PROVENANCE_CORRECTION__PROVIDER_IMPLEMENTATION_NOT_REOPENED"
+    },
+    {
+      "id": "C1-02-WITNESS-PAIRING-REREVIEW",
+      "head": "59d69ba31b8de2d028bd44048e8d7b75f2d82538",
+      "disposition": "APPROVE_AT_DECLARED_GRAIN",
+      "adjudication": "ADOPTED_AT_DECLARED_SOURCE_FREE_GRAIN"
+    },
+    {
+      "id": "N10E-PROOF-PROVENANCE-CORRECTION",
+      "head": "52e41a41e8bc3b77390016a049095b5aea1721d0",
+      "disposition": "PASS_PROOF_AND_PROVENANCE_CORRECTED__NARROW_INDEPENDENT_REREVIEW_REQUIRED",
+      "adjudication": "PATCH_READY_ONLY__NARROW_REREVIEW_REQUIRED",
+      "counts": {
+        "passed": 88,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "duration_seconds": 15.14
     }
   ],
   "active_tasks": [
     {
-      "id": "C1-02-WITNESS-PAIRING-REREVIEW",
-      "branch": "agent/reviewer-pyat-hq144-c1-02-witness-pairing-rereview-r1",
-      "commission_tip": "a7b6978ec4e7e856de0745d83d7fa36ba682f7eb",
-      "base": "bc661188b51e995d9f5d74e55c4e37d2ba358a17",
+      "id": "N10E-PROOF-PROVENANCE-REREVIEW",
+      "branch": "agent/reviewer-pyat-hq145-n10e-proof-provenance-rereview-r1",
+      "commission_tip": "80eb275f40ffb2d096433c218fecb009063a0bd1",
+      "base": "52e41a41e8bc3b77390016a049095b5aea1721d0",
       "state": "BOUND_AWAITING_USER_MEDIATED_LAUNCH",
       "launch_surface": "BROWSER",
       "model": "GPT-5.6_SOL_HIGH",
-      "scope": "SOLE_REVIEW_BLOCKER_C1_02_REVIEW_BLOCK_WITNESS_PAIR_001"
-    },
-    {
-      "id": "N10E-PROOF-PROVENANCE-CORRECTION",
-      "branch": "agent/deepseek-pyat-hq144-n10e-proof-provenance-correction-r1",
-      "commission_tip": "a7f7eecdeaee58e4d8021b7c571b4956e6301464",
-      "base": "58ba4320635162e8103ed38681ea5ae3e3bac014",
-      "state": "BOUND_AWAITING_USER_MEDIATED_LAUNCH",
-      "launch_surface": "DEEPSEEK_HARNESS",
-      "model": "DEEPSEEK_V4_1_FLASH",
-      "mode": "STANDARD",
-      "scope": "REV_N10E_001_002_003_ONLY",
-      "provider_code_change_authorized": false
+      "scope": "REV_N10E_001_002_003_NARROW_REREVIEW"
     }
   ],
   "held": [
-    "C1-03 until C1-02 independently accepted",
+    "C1-03: C1-02 dependency satisfied; hold dispatch only until N10E AT17 provider core is independently accepted, to avoid duplicate AT17 implementation",
     "C1-R until C1-03",
     "N10W full progressive-world proof until competent higher-order/world inputs",
     "C5/C6/C7 until exact scoped inputs/authority are bound",
@@ -162,7 +177,7 @@
     "NO_PREV3_TO_V3_ACTOR_IMPLEMENTATION"
   ],
   "prior_git_blob_sha1": "66b666991d9a8c614710687c7640277cb75fc8c6",
-  "next_action": "RUN_C1_02_NARROW_REREVIEW_AND_N10E_PROOF_PROVENANCE_CORRECTION_IN_PARALLEL__HQ_ADJUDICATES_RETURNS",
+  "next_action": "RUN_N10E_NARROW_REREVIEW__THEN_BIND_C1_03_USING_ACCEPTED_C1_02_AND_N10E_AT17",
   "operating_requirements": "PYAT_CONTROL_ROOM/BROWSER_ECONOMY_MODE_R1.md",
   "grounding": {
     "live_control_head": "731519c6de341bbd6c95672f70329f3cf996d686",
