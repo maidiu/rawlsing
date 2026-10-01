@@ -322,17 +322,17 @@ Social and monetization work remain registered but should not dictate the core s
 Raw question count is a frontier census, not a remaining-work counter.
 
 Current exact accounting:
-- 114 surfaced questions;
+- 115 surfaced questions;
 - 8 CLOSED_FOR_ALPHA;
 - 24 PROVISIONALLY_ANSWERED;
 - 24 NEEDS_PROTOTYPE;
-- 45 NEEDS_ARCHITECTURE_ADJUDICATION;
+- 46 NEEDS_ARCHITECTURE_ADJUDICATION;
 - 7 OPEN_DISCOVERY;
 - 6 DEFERRED_POST_ALPHA.
 
 Blocking-stage view:
 - 3 ALPHA_SPEC;
-- 40 ALPHA_IMPLEMENTATION;
+- 41 ALPHA_IMPLEMENTATION;
 - 25 ALPHA_VALIDATION;
 - 18 POST_ALPHA;
 - 28 NONE.
@@ -447,4 +447,13 @@ The current user/Vozhd conversational critical path is the **3 ALPHA_SPEC blocke
 - access through Nadia never owns third-party consent, liking, disclosure or future relationship;
 - access topology should be learned through concrete world facts—keys, invitations, routines, refusals, introductions, channels, expired opportunities—not a dashboard/unlock tree;
 - Q-ACCESS-001 is now PROVISIONALLY_ANSWERED / NONE. Exact owner/storage/derivation work continues as Q-ACCESSIMPL-001 under ALPHA_IMPLEMENTATION.
+
+## Differential relational meaning generation
+
+- `53_DIFFERENTIAL_RELATIONAL_MEANING_GENERATION_R1.md` establishes that concrete relational acts require counterpart-specific meaning generation beneath the access surface.
+- Person-level relational grammar is generated from developmental/relational genealogy, not demographic or personality lookup.
+- Runtime meaning is composed from relational grammar + counterpart/role + model of particular other + dyadic history/conventions + network context + concrete act + current situation.
+- Output is an actor-local, uncertainty-preserving relational meaning packet, not objective relationship truth.
+- Relation-class priors are starting priors; particular dyads may develop local grammars that override them.
+- New implementation frontier: `Q-RELSIGN-001`.
 
