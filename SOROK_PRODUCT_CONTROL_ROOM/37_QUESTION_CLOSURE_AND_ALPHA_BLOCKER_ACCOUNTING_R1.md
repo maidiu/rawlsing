@@ -1,6 +1,6 @@
 # Sorok — Question Closure and Alpha-Blocker Accounting R1
 
-Status: `ACTIVE_PROGRESS_ACCOUNTING__CURRENT_THROUGH_Q_INVITEGRAPH_001_CLOSURE`
+Status: `ACTIVE_PROGRESS_ACCOUNTING__CURRENT_THROUGH_Q_PRIV_001_CLOSURE`
 
 Date: 2026-10-01
 
@@ -37,33 +37,30 @@ One decision may constrain many questions and one question may require many deci
 
 ## 3. Exact current counts
 
-Total surfaced questions: **116**.
+Total surfaced questions: **117**.
 
 By closure state:
 - `CLOSED_FOR_ALPHA`: **8**
-- `PROVISIONALLY_ANSWERED`: **25**
+- `PROVISIONALLY_ANSWERED`: **26**
 - `NEEDS_PROTOTYPE`: **24**
-- `NEEDS_ARCHITECTURE_ADJUDICATION`: **47**
-- `OPEN_DISCOVERY`: **6**
+- `NEEDS_ARCHITECTURE_ADJUDICATION`: **48**
+- `OPEN_DISCOVERY`: **5**
 - `DEFERRED_POST_ALPHA`: **6**
 
 By blocking stage:
-- `ALPHA_SPEC`: **2**
-- `ALPHA_IMPLEMENTATION`: **42**
+- `ALPHA_SPEC`: **1**
+- `ALPHA_IMPLEMENTATION`: **43**
 - `ALPHA_VALIDATION`: **25**
 - `POST_ALPHA`: **18**
-- `NONE`: **29**
+- `NONE`: **30**
 
 Broad alpha blockers remain **44**, split into:
-- **2 product/spec blockers**;
-- **42 implementation/architecture blockers**.
+- **1 product/spec blocker**;
+- **43 implementation/architecture blockers**.
 
-The conversational critical path is the two product/spec blockers, not the raw frontier count.
+The conversational critical path is now the single remaining product/spec blocker, not the raw frontier count.
 
-## 4. Current two ALPHA_SPEC blockers
-
-### Q-PRIV-001
-What user data is required for longitudinal relational modeling, what should never be collected, and what deletion/export boundaries are required?
+## 4. Current ALPHA_SPEC blocker
 
 ### Q-ALPHA-001
 What evidence would falsify or support the proximal alpha theorem that a persistent, independently living generated person can become intrinsically worth knowing through accumulated relation rather than scores, scripted drama or novelty?
@@ -137,6 +134,29 @@ Validation remains:
 
 This is no longer an `ALPHA_SPEC` blocker.
 
+### Q-PRIV-001
+`PROVISIONALLY_ANSWERED / NONE`.
+
+Controlling artifact:
+- `58_Q_PRIV_001_USER_DATA_PRAXIS_DELETION_EXPORT_CONSTITUTION_R1.md`.
+
+Core holding:
+- preserve relationship history while minimizing the external-human dossier;
+- zero-profile default;
+- purpose-bound optional user facts;
+- external human / participant state / supplied facts / event history / actor-local models / system praxis hypotheses remain distinct;
+- sensitive traits are not silently inferred as truth;
+- actor-local models remain actor-scoped and do not become global reputation;
+- praxis/relationship data does not feed advertising, growth targeting, pricing or public reputation;
+- reflection/user-model data can be deleted/disabled separately from causal relationship memory;
+- canonical history deletion deletes/resets the continuity rather than silently retconning it;
+- inspect/export user-governed facts and system-user-model data while preserving actor-private opacity.
+
+Implementation successor:
+- `Q-PRIVIMPL-001`.
+
+This is no longer an `ALPHA_SPEC` blocker.
+
 ## 6. Other moved-out product blockers
 
 - `Q-RETRY-001`: closed for alpha — no save branches; restart abandons continuity.
@@ -160,13 +180,12 @@ Examples include:
 
 ## 8. Current critical path
 
-1. `Q-PRIV-001` — minimum data/deletion/export constitution;
-2. `Q-ALPHA-001` — final proximal alpha falsification/evidence constitution.
+1. `Q-ALPHA-001` — final proximal alpha falsification/evidence constitution.
 
 Alpha evidence remains last because it should test the product actually specified, not an earlier abstraction.
 
 ## 9. Current interpretation
 
-> **116 frontiers have been surfaced and preserved. Two still require product-level adjudication before the current alpha can be fully specified. Forty-two require architecture work before governed implementation. Twenty-five should be learned through prototype evidence rather than armchair design.**
+> **117 frontiers have been surfaced and preserved. One still requires product-level adjudication before the current alpha can be fully specified. Forty-three require architecture work before governed implementation. Twenty-five should be learned through prototype evidence rather than armchair design.**
 
 That is the current progress signal.
