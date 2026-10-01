@@ -1,6 +1,6 @@
 # Sorok Current State
 
-Updated: 2026-09-30
+Updated: 2026-10-01
 
 Status: `INTERACTION_IDEATION_R5_CHAT_HARVESTED__PFF_INHERITANCE_RESTORED__RELATIONALIZATION_DELTA_EXPLICIT__ONTOLOGY_PROVISIONAL__ALPHA_NOT_YET_IMPLEMENTATION_SPECIFIED`
 
@@ -322,17 +322,17 @@ Social and monetization work remain registered but should not dictate the core s
 Raw question count is a frontier census, not a remaining-work counter.
 
 Current exact accounting:
-- 115 surfaced questions;
+- 116 surfaced questions;
 - 8 CLOSED_FOR_ALPHA;
-- 24 PROVISIONALLY_ANSWERED;
+- 25 PROVISIONALLY_ANSWERED;
 - 24 NEEDS_PROTOTYPE;
-- 46 NEEDS_ARCHITECTURE_ADJUDICATION;
-- 7 OPEN_DISCOVERY;
+- 47 NEEDS_ARCHITECTURE_ADJUDICATION;
+- 6 OPEN_DISCOVERY;
 - 6 DEFERRED_POST_ALPHA.
 
 Blocking-stage view:
-- 3 ALPHA_SPEC;
-- 41 ALPHA_IMPLEMENTATION;
+- 2 ALPHA_SPEC;
+- 42 ALPHA_IMPLEMENTATION;
 - 25 ALPHA_VALIDATION;
 - 18 POST_ALPHA;
 - 28 NONE.
@@ -465,4 +465,19 @@ The current user/Vozhd conversational critical path is the **3 ALPHA_SPEC blocke
 - Sharing/withholding/entrusting/selling/damaging/replacing the same object can mean different things with different others because the transfer composes object-value history with relation grammar and dyadic history.
 - Commodity/fetish/alienation behavior is domain- and history-specific, not a global persona score.
 - Q-RELSIGN-001 now explicitly includes actor-object value relations as a proving domain.
+
+## One-for-one human invitation constitution
+
+- `57_Q_INVITEGRAPH_001_ONE_FOR_ONE_HUMAN_INVITATION_CONSTITUTION_R1.md` closes `Q-INVITEGRAPH-001` at alpha product-spec grain.
+- The scarce unit is one deliberate human designation, not one successful signup.
+- Deliberate credential commitment spends the invitation before recipient acceptance; decline, ignoring, abandonment or existing access do not refund.
+- System-caused technical failure may repair/replace the credential only inside the same invitation identity.
+- Revocation protects safety without creating a fresh recipient-cycling opportunity.
+- Early delivery remains a human-carried, single-use credential through an existing communication channel.
+- No built-in personal note is required for alpha; personal explanation remains in the human channel.
+- No invitee open/decline/signup/session/persona/retention telemetry is surfaced to the inviter.
+- Human invite provenance is distribution metadata, never synthetic-world social authority.
+- Seed access is truthful and non-prestigious; later public admission, if added, is a separate truthful route.
+- Implementation successor: `Q-INVITEIMPL-001`.
+- Validation remains under `Q-INVITEDELIVERY-001` and `Q-HUMANINVITE-001`.
 
