@@ -1,0 +1,109 @@
+{
+  "schema": "PYAT_C1_03R_FINAL_DISPOSITION@1",
+  "status": "FINAL",
+  "disposition": "PASS_C1_03R_SOURCE_FREE_PATCH_READY__INDEPENDENT_REVIEW_REQUIRED",
+  "disposition_is_allowed_value": true,
+  "terminal_token": "C1_03R_REPLAY_INVALIDATION_RETURNED__HQ_ADJUDICATION_REQUIRED",
+  "branch": "agent/deepseek-pyat-hq146-c1-03r-replay-invalidation-r1",
+  "commission_tip": "8ce2a1aaa457fb1b08da9fca917dbb342bb98d41",
+  "adopted_base": "bc661188b51e995d9f5d74e55c4e37d2ba358a17",
+  "adoption": {
+    "branch_local_pass_is_adoption": false,
+    "merged": false,
+    "self_adopted": false,
+    "requires": "independent review then HQ adjudication"
+  },
+  "acceptance_coverage": {
+    "AT18": {
+      "status": "EXECUTED_PASS",
+      "summary": "Explicit replay-grade contract with four distinguished grades; a genuine fresh-process recomputation from retained determinants through the claimed accepted producer/composition path reproduces the analytical product identity exactly; stored explanation/serialization cannot claim a fresh grade; missing determinant/authority fails closed without silent downgrade."
+    },
+    "AT19": {
+      "status": "EXECUTED_PASS",
+      "summary": "Real analytical products registered with real determinants into the existing SemanticDeterminantGraph; one exact determinant mutation invalidates exactly the affected product, recompiles it to a new exact identity through the accepted composition owner, preserves a genuine unaffected sibling, and distinguishes affected from unaffected refs in the owner's AuthorityInvalidationReceipt; lawful non-replacement yields an explicit noncurrent state."
+    },
+    "AT19_missing_cross_owner_edge_hostile": {
+      "status": "EXECUTED_PASS_MANDATORY",
+      "summary": "An incomplete cross-owner graph fails its closure claim; object/cache presence cannot restore authority; the lane does not infer the missing dependency."
+    }
+  },
+  "owner_change_status": {
+    "existing_lifecycle_owner_change_required": false,
+    "owners_modified": [],
+    "owners_verified_unchanged": [
+      "rawlsing_next/pre553_authority_maintenance.py",
+      "rawlsing_next/pre553_replay_audit.py",
+      "rawlsing_next/pre553_analytical_composition.py"
+    ],
+    "no_second_maintenance_system_built": true
+  },
+  "final_test_counts": {
+    "command": "python -m pytest rawlsing_next/tests/test_pre553_analytical_replay_dependency.py rawlsing_next/tests/test_pre553_authority_maintenance.py rawlsing_next/tests/test_pre553_replay_audit.py rawlsing_next/tests/test_pre553_analytical_composition.py -v",
+    "passed": 109,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "duration_seconds": 20.45,
+    "by_file": {
+      "rawlsing_next/tests/test_pre553_analytical_replay_dependency.py": 21,
+      "rawlsing_next/tests/test_pre553_authority_maintenance.py": 21,
+      "rawlsing_next/tests/test_pre553_replay_audit.py": 54,
+      "rawlsing_next/tests/test_pre553_analytical_composition.py": 13
+    }
+  },
+  "changed_files": [
+    "rawlsing_next/pre553_analytical_replay_dependency.py",
+    "rawlsing_next/tests/test_pre553_analytical_replay_dependency.py",
+    "rawlsing_next/tests/c1_at18_at19_fixture.py",
+    "rawlsing_next/tests/c1_at18_at19_fresh_process_runner.py",
+    "WORKER_RETURNS/PYAT-C1-03R-REPLAY-INVALIDATION-R1/00_RETURN.md",
+    "WORKER_RETURNS/PYAT-C1-03R-REPLAY-INVALIDATION-R1/01_REPLAY_GRADE_CONTRACT.json",
+    "WORKER_RETURNS/PYAT-C1-03R-REPLAY-INVALIDATION-R1/02_FRESH_PROCESS_REPLAY_RECEIPT.json",
+    "WORKER_RETURNS/PYAT-C1-03R-REPLAY-INVALIDATION-R1/03_DEPENDENCY_GRAPH_AND_INVALIDATION_RECEIPT.json",
+    "WORKER_RETURNS/PYAT-C1-03R-REPLAY-INVALIDATION-R1/04_MISSING_EDGE_HOSTILE.json",
+    "WORKER_RETURNS/PYAT-C1-03R-REPLAY-INVALIDATION-R1/05_EXECUTION_RECEIPT.json",
+    "WORKER_RETURNS/PYAT-C1-03R-REPLAY-INVALIDATION-R1/06_FINAL_DISPOSITION.json",
+    "WORKER_RETURNS/PYAT-C1-03R-REPLAY-INVALIDATION-R1/07_FINAL_PYTEST_OUTPUT.txt"
+  ],
+  "allowlist_conformance": {
+    "diff_confined_to_this_commission": true,
+    "at14_at16_terrain_untouched": true,
+    "n10e_terrain_untouched": true,
+    "c1_r_untouched": true,
+    "preferred_terrain_used": true
+  },
+  "authority_ceiling": {
+    "new_semantic_authority": false,
+    "new_comparability_authority": false,
+    "new_model_authority": false,
+    "latest_or_default_authority_selection": false,
+    "inferred_semantic_lifecycle_meaning": false,
+    "similarity_inferred_dependencies": false,
+    "structural_world_or_at31_at32_completion_claimed": false,
+    "v3_actor_person_implemented": false,
+    "at33_claimed": false,
+    "real_source_qualification_claimed": false
+  },
+  "prohibitions_observed": {
+    "raw_survey_files": false,
+    "candidate_abc": false,
+    "measured_p2x": false,
+    "real_source_c11": false,
+    "c4": false,
+    "at14_at17_implementation": false,
+    "n10e_duplication": false,
+    "c1_r": false,
+    "merge_or_self_adoption": false
+  },
+  "limitations": [
+    "Source-free synthetic fixture: a source-free fixture result cannot establish live occupancy.",
+    "The fresh-process replay runs on the same host interpreter; it is not a cross-machine or cross-version replay proof.",
+    "AT14-AT17, AT31/AT32 and AT33 are outside this scope and are not claimed.",
+    "The two registered products are accepted-composition products at the AT07 grain; multi-conditioner or joint dependency closure is not claimed.",
+    "The adapter consumes the existing owner's graph and receipt contracts without exercising the owner's promotion/rollback ceremony.",
+    "A branch-local PASS is not adoption."
+  ],
+  "blocker": null,
+  "next": "Independent review of this source-free C1-03R tranche, then HQ adjudication.",
+  "commission_document_note": "00_COMMISSION.md is part of the issued commission tip and was preserved unchanged; it is not a change made by this lane."
+}

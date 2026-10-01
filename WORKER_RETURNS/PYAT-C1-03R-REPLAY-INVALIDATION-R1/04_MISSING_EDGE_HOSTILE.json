@@ -1,0 +1,53 @@
+{
+  "schema": "PYAT_C1_03R_MISSING_EDGE_HOSTILE@1",
+  "status": "EXECUTED_SOURCE_FREE",
+  "acceptance_case": "AT19",
+  "mandatory": true,
+  "hostile_class": "MISSING_CROSS_OWNER_DEPENDENCY_EDGE",
+  "threat": "A deliberately incomplete cross-owner dependency graph claims closure even though a registered product's identity genuinely depends on the changed determinant.",
+  "construction": {
+    "lawful_graph": "Both the prior and the governed revised forward model authority have registered edges to the forward product, as the owner's own promotion fixture does.",
+    "incomplete_graph": "The same registrations with the cross-owner edges omitted, so no registered edge reaches the forward product from the changed determinant.",
+    "deliberately_omitted_edges": [
+      "C1-AT07-MODEL-FORWARD -> C1_ANALYTICAL_COMPOSED_PRODUCT@1 urn:test:c1-03r:composed:forward",
+      "C1-AT07-MODEL-FORWARD-REVISED -> C1_ANALYTICAL_COMPOSED_PRODUCT@1 urn:test:c1-03r:composed:forward"
+    ]
+  },
+  "required_behaviour_and_result": [
+    {
+      "requirement": "closure claim fails",
+      "observed": "assert_closure_against_actual_identity_change raises MissingCrossOwnerEdge (MISSING_CROSS_OWNER_EDGE)",
+      "result": "PASS",
+      "test": "test_at19_missing_cross_owner_edge_is_a_failed_closure_witness"
+    },
+    {
+      "requirement": "cache/object presence cannot restore authority",
+      "observed": "the forward product ref is present in the graph's known_dependent_refs, yet the closure witness still fails",
+      "result": "PASS",
+      "test": "test_at19_presence_of_bytes_cannot_restore_current_authority"
+    },
+    {
+      "requirement": "a product cannot be treated current merely because its bytes remain present",
+      "observed": "presence in known_dependent_refs did not make the product affected or current; the omitted edge stayed absent",
+      "result": "PASS",
+      "test": "test_at19_presence_of_bytes_cannot_restore_current_authority"
+    },
+    {
+      "requirement": "the lane does not infer the missing dependency",
+      "observed": "the omitted edge is simply absent from the graph; nothing fabricates it by similarity or inference",
+      "result": "PASS",
+      "test": "test_at19_lane_does_not_infer_the_missing_dependency"
+    }
+  ],
+  "why_the_witness_is_honest": {
+    "incomplete_graph_claims": "With the edges omitted, graph.affected(changed) returns the empty tuple, i.e. the incomplete graph claims nothing depends on the changed determinant.",
+    "independent_disproof": "The adapter recomposes each registered product that is not claimed affected. The forward product's identity genuinely moves under the revised determinant, so the empty affected set is provably false.",
+    "result": "The closure claim is rejected instead of being accepted on the basis of object presence.",
+    "no_authority_restoration": "The hostile does not and cannot repair the graph; cache/object presence is explicitly inert as authority."
+  },
+  "executed_grade": "source-free executed adapter closure check over the accepted owner graph contract",
+  "limitations": [
+    "The hostile exercises the adapter's closure verification over the existing owner's graph contract; it does not claim a defect in the existing maintenance owner.",
+    "Source-free synthetic fixture; not live occupancy."
+  ]
+}

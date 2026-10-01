@@ -1,0 +1,155 @@
+{
+  "schema": "PYAT_C1_03R_DEPENDENCY_GRAPH_AND_INVALIDATION_RECEIPT@1",
+  "status": "EXECUTED_SOURCE_FREE",
+  "acceptance_case": "AT19",
+  "adapter_owner": "rawlsing_next/pre553_analytical_replay_dependency.py",
+  "delegated_owners": {
+    "determinant_graph": "rawlsing_next.pre553_authority_maintenance.SemanticDeterminantGraph",
+    "invalidation_receipt": "rawlsing_next.pre553_authority_maintenance.AuthorityInvalidationReceipt",
+    "not_built": "No second authority-maintenance system was built. Closure and the receipt are the existing owner's objects; the adapter only registers real analytical products and supplies a real recompiler."
+  },
+  "registered_products": [
+    {
+      "role": "affected analytical product",
+      "direction": "forward",
+      "product_ref": {
+        "kind": "C1_ANALYTICAL_COMPOSED_PRODUCT@1",
+        "object_id": "urn:test:c1-03r:composed:forward",
+        "content_hash": "71e56bf9330f7e0b5259aecfc40ce5a8ab2853421949a9b0446080b047608b96"
+      },
+      "real_determinants": {
+        "composition_authority_refs": [
+          "C1-AT07-COMPARABILITY",
+          "C1-AT07-QUERY",
+          "C1-AT07-ROUTING",
+          "C1-AT07-SOURCE"
+        ],
+        "consumer_lane_model_authority": "C1-AT07-MODEL-FORWARD",
+        "exact_determinant_refs": [
+          "EmpiricalQuerySpec@1.0.0 ebef7e841e4b6bcbde599118a9c993fa9a96a3b4c84bd743c862c1790548f371"
+        ],
+        "dependency_law": "The model authority is a genuine determinant: the composed result identity and consumer result hash change when it changes, while the evidence geometry does not. This was measured, not assumed."
+      },
+      "recompiler": "re-runs the accepted compose_positioned_subject_possibility owner under the supplied determinant"
+    },
+    {
+      "role": "unaffected sibling product",
+      "direction": "reverse",
+      "product_ref": {
+        "kind": "C1_ANALYTICAL_COMPOSED_PRODUCT@1",
+        "object_id": "urn:test:c1-03r:composed:reverse",
+        "content_hash": "696f5d61cf08f0659905ebd0f3fa3892f2dc75fd7e092d04f7fc578d0c597f78"
+      },
+      "real_determinants": {
+        "consumer_lane_model_authority": "C1-AT07-MODEL-REVERSE (direction-scoped, distinct from the mutated determinant)",
+        "raw_denominator_support": 62
+      }
+    }
+  ],
+  "domain_separation": {
+    "law": "The consumer model authority is direction-scoped in the fixture, so mutating the forward model authority reaches exactly the forward product and leaves the reverse product a genuine unaffected sibling.",
+    "forward_model_authority": {
+      "authority_id": "C1-AT07-MODEL-FORWARD",
+      "authority_content_hash": "2bb81c607558b7fe32bc2684f0ebd3ed02e7bc5bc439771113c52328a19769ec"
+    },
+    "reverse_model_authority": {
+      "authority_id": "C1-AT07-MODEL-REVERSE"
+    },
+    "distinct": true
+  },
+  "single_exact_determinant_mutation": {
+    "mutated_determinant": {
+      "authority_id": "C1-AT07-MODEL-FORWARD-REVISED",
+      "authority_version": "1.0.0",
+      "authority_content_hash": "007d95d9b0e9930008b2d5bd717c50ab11fc0bed8abd7f1ce12357fbd1c7a4e2"
+    },
+    "mutations_applied": 1,
+    "other_determinants_untouched": true
+  },
+  "invalidation_receipt": {
+    "owner_object": "AuthorityInvalidationReceipt",
+    "receipt_ref": {
+      "kind": "Maintenance:INVALIDATION",
+      "object_id": "urn:rawlsing:pre553:maintenance:invalidation:sha256:af4a2430b9d993fec7ec89379d19c6f2c9f21d9397eebacf61966d3c65a6c015",
+      "content_hash": "af4a2430b9d993fec7ec89379d19c6f2c9f21d9397eebacf61966d3c65a6c015"
+    },
+    "changed_authority_refs": [
+      {
+        "authority_id": "C1-AT07-MODEL-FORWARD-REVISED",
+        "authority_version": "1.0.0",
+        "authority_content_hash": "007d95d9b0e9930008b2d5bd717c50ab11fc0bed8abd7f1ce12357fbd1c7a4e2"
+      }
+    ],
+    "affected_dependent_refs": [
+      {
+        "kind": "C1_ANALYTICAL_COMPOSED_PRODUCT@1",
+        "object_id": "urn:test:c1-03r:composed:forward",
+        "content_hash": "71e56bf9330f7e0b5259aecfc40ce5a8ab2853421949a9b0446080b047608b96"
+      }
+    ],
+    "unaffected_dependent_refs": [
+      {
+        "kind": "C1_ANALYTICAL_COMPOSED_PRODUCT@1",
+        "object_id": "urn:test:c1-03r:composed:reverse",
+        "content_hash": "696f5d61cf08f0659905ebd0f3fa3892f2dc75fd7e092d04f7fc578d0c597f78"
+      }
+    ],
+    "recompilation_pairs": [
+      {
+        "old_ref_hash": "71e56bf9330f7e0b5259aecfc40ce5a8ab2853421949a9b0446080b047608b96",
+        "new_ref_hash": "9a3bc23c01f04a9363293eb98643caa642236ba45f77859167735468f2585ccf"
+      }
+    ],
+    "affected_and_unaffected_disjoint": true,
+    "recompilation_pairs_cover_exactly_the_affected_set": true
+  },
+  "proof_obligations_and_how_each_is_met": [
+    {
+      "obligation": "all registered affected descendants are invalidated/reidentified/recompiled as governed",
+      "met_by": "the forward product is the sole affected ref and recompiles to a new exact identity via the real composition owner",
+      "test": "test_at19_single_determinant_mutation_invalidates_only_affected_product"
+    },
+    {
+      "obligation": "unaffected sibling remains usable and identity-stable",
+      "met_by": "the reverse product is untouched and recomposes from its own determinants to the same identity with consumer state EXACT_SUPPORTED",
+      "test": "test_at19_unaffected_sibling_remains_usable_and_identity_stable"
+    },
+    {
+      "obligation": "the invalidation receipt distinguishes affected from unaffected refs",
+      "met_by": "the owner receipt carries disjoint affected/unaffected tuples",
+      "test": "test_at19_invalidation_receipt_distinguishes_affected_from_unaffected"
+    },
+    {
+      "obligation": "replacement identity is exact where recompilation succeeds",
+      "met_by": "the new pair identity equals the recomposed composition identity computed independently in the court",
+      "test": "test_at19_single_determinant_mutation_invalidates_only_affected_product"
+    },
+    {
+      "obligation": "NO_CURRENT or equivalent noncurrent state is preserved where lawful replacement is unavailable",
+      "met_by": "an involved product without a recompiler is recorded in noncurrent_product_refs with an explicit C1_03R_NONCURRENT_PRODUCT sentinel instead of a fabricated replacement identity",
+      "test": "test_at19_lawful_replacement_unavailable_yields_explicit_noncurrent"
+    },
+    {
+      "obligation": "the graph is built from real registrations, not object similarity",
+      "met_by": "every authority edge corresponds to a declared exact determinant of a registered product",
+      "test": "test_at19_graph_is_built_from_real_registrations_not_similarity"
+    }
+  ],
+  "not_a_second_maintenance_owner": {
+    "static_test": "test_at19_adapter_does_not_become_a_second_maintenance_owner",
+    "forbidden_symbols_absent": [
+      "promote_current",
+      "rollback_current",
+      "adjudicate_candidate",
+      "seal_revision",
+      "intake_candidate"
+    ],
+    "adapter_never_chooses_latest_or_default_authority": true,
+    "adapter_never_infers_semantic_lifecycle_meaning": true
+  },
+  "limitations": [
+    "Source-free synthetic fixture; this does not establish live occupancy.",
+    "The two registered products are accepted-composition products at the AT07 grain; multi-conditioner/joint dependency closure is not claimed here.",
+    "The adapter does not implement the owner's promotion/rollback ceremony; it consumes the owner's graph and receipt contracts."
+  ]
+}

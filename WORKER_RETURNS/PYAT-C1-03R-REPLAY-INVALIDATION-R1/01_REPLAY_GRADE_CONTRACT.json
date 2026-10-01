@@ -1,0 +1,98 @@
+{
+  "schema": "PYAT_C1_03R_REPLAY_GRADE_CONTRACT@1",
+  "status": "EXECUTED_SOURCE_FREE",
+  "acceptance_case": "AT18",
+  "contract_id": "C1_03R_ANALYTICAL_REPLAY_GRADE@1",
+  "adapter_owner": "rawlsing_next/pre553_analytical_replay_dependency.py",
+  "no_new_object_family": "Replay claims are emitted as the existing public ReplayReceipt@1.0.0 family; grade and mechanism travel as explicit extra semantic material inside that accepted family. No duplicate vocabulary was invented.",
+  "grades": [
+    {
+      "grade": "HISTORICAL_EXPLANATION_ONLY",
+      "strength": 0,
+      "meaning": "A narrated or stored explanation of what a product was. Demonstrates nothing about recomputation.",
+      "maximum_supporting_mechanisms": ["HISTORICAL_NARRATION"]
+    },
+    {
+      "grade": "SERIALIZATION_REPLAY",
+      "strength": 1,
+      "meaning": "A stored receipt or product deserialized and re-verified for internal integrity. Demonstrates serialization fidelity only.",
+      "maximum_supporting_mechanisms": ["STORED_RECEIPT_DESERIALIZATION", "STORED_PRODUCT_DESERIALIZATION"]
+    },
+    {
+      "grade": "FRESH_PROCESS_PRODUCT_REPLAY",
+      "strength": 2,
+      "meaning": "A fresh process reconstructs the product through the accepted path. Asserting this grade requires a fresh-process accepted-producer mechanism.",
+      "maximum_supporting_mechanisms": ["FRESH_PROCESS_ACCEPTED_PRODUCER"]
+    },
+    {
+      "grade": "FRESH_EMPIRICAL_RECOMPUTATION",
+      "strength": 3,
+      "meaning": "A fresh process re-executes the claimed producer/composition path from exact retained determinants and the product identity reproduces exactly.",
+      "maximum_supporting_mechanisms": ["FRESH_PROCESS_ACCEPTED_PRODUCER"]
+    }
+  ],
+  "mechanisms": [
+    {"mechanism": "HISTORICAL_NARRATION", "max_grade": "HISTORICAL_EXPLANATION_ONLY"},
+    {"mechanism": "STORED_RECEIPT_DESERIALIZATION", "max_grade": "SERIALIZATION_REPLAY"},
+    {"mechanism": "STORED_PRODUCT_DESERIALIZATION", "max_grade": "SERIALIZATION_REPLAY"},
+    {"mechanism": "FRESH_PROCESS_ACCEPTED_PRODUCER", "max_grade": "FRESH_EMPIRICAL_RECOMPUTATION"}
+  ],
+  "every_claim_binds": [
+    "exact retained determinants (retained_determinant_refs)",
+    "exact producer path (producer_path + producer_route)",
+    "exact authority refs (authority_refs)",
+    "expected output identity (expected_output_identity_hash)",
+    "actual replay mechanism (actual_replay_mechanism)",
+    "replay grade (replay_grade)",
+    "limitations (limitations)"
+  ],
+  "fail_closed_law": {
+    "grade_may_not_exceed_mechanism": "A claim whose declared grade is stronger than its mechanism can support raises ReplayGradeOverclaim (REPLAY_GRADE_OVERCLAIM).",
+    "fresh_grades_require_fresh_process_mechanism": "FRESH_PROCESS_PRODUCT_REPLAY and FRESH_EMPIRICAL_RECOMPUTATION require FRESH_PROCESS_ACCEPTED_PRODUCER.",
+    "missing_determinant_or_authority": "An empty retained_determinant_refs or authority_refs raises MissingExactDeterminant (MISSING_EXACT_DETERMINANT) rather than silently downgrading the grade.",
+    "identity_mismatch_does_not_downgrade": "A claim whose observed identity differs from the expected identity fails closed; it is never silently re-labelled at a weaker grade while still claiming the stronger one."
+  },
+  "hostiles_executed": [
+    {
+      "hostile": "stored JSON/receipt explanation must not qualify as fresh recomputation",
+      "test": "test_at18_hostile_stored_explanation_cannot_claim_fresh_grade",
+      "result": "PASS",
+      "grade": "static inspection + source-free executed contract"
+    },
+    {
+      "hostile": "serialization/deserialization alone must not qualify as fresh empirical recomputation",
+      "test": "test_at18_hostile_stored_explanation_cannot_claim_fresh_grade",
+      "result": "PASS",
+      "grade": "static inspection + source-free executed contract"
+    },
+    {
+      "hostile": "missing exact determinant or authority must fail closed rather than silently downgrade",
+      "test": "test_at18_missing_exact_determinant_or_authority_fails_closed",
+      "result": "PASS",
+      "grade": "source-free executed contract"
+    },
+    {
+      "hostile": "a stronger claim whose identity does not reproduce must fail, not downgrade",
+      "test": "test_at18_claimed_grade_does_not_silently_downgrade_on_identity_mismatch",
+      "result": "PASS",
+      "grade": "source-free executed contract"
+    },
+    {
+      "hostile": "the fresh runner must recompute rather than read a stored expected output",
+      "test": "test_at18_runner_does_not_read_stored_expected_output",
+      "result": "PASS",
+      "grade": "static inspection"
+    }
+  ],
+  "positive_witness": {
+    "test": "test_at18_fresh_process_recomputes_from_retained_determinants",
+    "result": "PASS",
+    "grade": "fresh-process empirical recomputation",
+    "detail": "see 02_FRESH_PROCESS_REPLAY_RECEIPT.json"
+  },
+  "limitations": [
+    "The retained substrate is a synthetic source-free fixture; a source-free fixture result cannot establish live occupancy.",
+    "The fresh-process replay runs on the same host interpreter; it is not a cross-machine or cross-version replay proof.",
+    "No new semantic, comparability or model authority is created by the grade contract."
+  ]
+}
