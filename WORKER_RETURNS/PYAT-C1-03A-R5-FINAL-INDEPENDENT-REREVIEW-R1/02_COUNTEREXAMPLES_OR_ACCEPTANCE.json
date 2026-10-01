@@ -1,0 +1,43 @@
+{
+  "schema": "PYAT_C1_03A_R5_FINAL_COUNTEREXAMPLES_OR_ACCEPTANCE@1",
+  "disposition": "CHANGES_REQUIRED",
+  "blocking_counterexample": {
+    "id": "C1-03A-R5-FINAL-REVIEW-BLOCK-REFUSAL-CLASS-001",
+    "title": "Canonical Pre553SemanticCollapseError can be laundered through the Pre553IntegrityError family catch into AT14 INTEGRITY_FAILURE",
+    "source_surface": "rawlsing_next/pre553_analytical_state_and_route.py::capture_empirical_integrity_refusal",
+    "catch": "except Pre553IntegrityError as exc",
+    "insufficient_exclusion": "type(exc).__name__ == 'Pre553AuthorityError'",
+    "canonical_subclass": "rawlsing_next.pre553_empirical_objects.Pre553SemanticCollapseError",
+    "construction": [
+      "Use the genuine governed C11Repository, exact declared C11LogicalRelease ref, and exact governed RespondentEvent ref from the accepted fixture.",
+      "Supply tampered_semantic_fields with raw_response_value set to a caller-defined Mapping value whose first two __iter__ calls behave normally and whose third __iter__ call raises the canonical Pre553SemanticCollapseError.",
+      "semantic_hash(kwargs), which is outside the constructor try, canonicalizes the nested Mapping first and consumes the first two iterations successfully.",
+      "RespondentEvent(**kwargs) canonicalizes the same Mapping again inside the caught region; its third iteration raises Pre553SemanticCollapseError.",
+      "Pre553SemanticCollapseError is a subclass of Pre553IntegrityError, so the family catch catches it.",
+      "The exact-name guard rejects only Pre553AuthorityError, so the semantic-collapse subclass is not refused.",
+      "OwnerRefusalWitness is minted with refusal_type=Pre553SemanticCollapseError and refusal_kind=EMPIRICAL_INTEGRITY_REFUSAL.",
+      "OwnerStateProjection.from_empirical_integrity_refusal projects that witness to retained INTEGRITY_FAILURE."
+    ],
+    "source_facts": {
+      "canonicalize_mapping_behavior": "Mapping values are iterated for key validation and again for sorted(value), then indexed recursively.",
+      "first_binding_before_try": true,
+      "constructor_second_canonicalization_inside_try": true,
+      "Pre553SemanticCollapseError_is_subclass_of_Pre553IntegrityError": true,
+      "normal_stale_identity_fixture_raises_exact_base": true
+    },
+    "impact": "A distinct canonical integrity subclass meaning can be certified as the AT14 empirical integrity refusal despite the final commission requiring exact refusal-class semantics.",
+    "minimal_correction": "Fail closed unless type(exc) is exactly Pre553IntegrityError, or prove an equivalent finite ordered subclass refusal before witness construction. Add an official-subclass hostile reached during the actual RespondentEvent constructor call.",
+    "implementation_change_required": true
+  },
+  "accepted_findings": [
+    "R5 closes the prior arbitrary canonical-family and caller-supplied governed-object defect.",
+    "R5 truthfully attributes the refusal to canonical RespondentEvent integrity construction rather than execute_empirical_query.",
+    "Exact release membership, exact object type/family, and witness provenance bindings are present.",
+    "Owner acceptance produces no witness.",
+    "Bare exceptions cannot mint.",
+    "Discovery refusal authenticity remains sound and source-identical.",
+    "G5, AT15, AT16, final-SHA callability cleanup, and C1-02 preservation show no concrete R5 regression."
+  ],
+  "architecture_warrant": false,
+  "repair_grain": "NARROW_EXACT_REFUSAL_CLASS_BOUNDARY"
+}
