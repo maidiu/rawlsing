@@ -1,0 +1,54 @@
+{
+  "schema": "PYAT_N10E_PROOF_PROVENANCE_REREVIEW_CLAIM_AUTHORITY_AUDIT@1",
+  "disposition": "APPROVE_AT_DECLARED_GRAIN",
+  "provider_reopened": false,
+  "concrete_provider_counterexample_found": false,
+  "owner_blobs": {
+    "rawlsing_next/pre553_empirical_possibility_provider.py": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+    "rawlsing_next/pre553_analytical_composition.py": "26f3380cb83cbbcedc87c74aaf603b0492c8ce8f",
+    "rawlsing_next/source_backed_positioned_subject_possibility.py": "62e5eced47b64512f47b004e3e13a6ef3fe21de7"
+  },
+  "owner_blobs_unchanged_from_original_return": true,
+  "prior_review_artifacts_modified": false,
+  "accepted_findings_contradicted": false,
+  "accepted_findings_preserved": [
+    "provider seam, not duplicate calculator",
+    "no handwritten-evidence provider bypass",
+    "owner blob preservation",
+    "P1/P2",
+    "P3 determinant closure",
+    "receipt identity well-foundedness",
+    "P5 fail-closed",
+    "P7 replay",
+    "authority ceiling"
+  ],
+  "correction_scope": {
+    "executable_test_changes": [
+      "rawlsing_next/tests/n10e_empirical_slice_fixture.py",
+      "rawlsing_next/tests/test_pre553_empirical_possibility_provider.py"
+    ],
+    "production_provider_changed": false,
+    "analytical_owner_changed": false,
+    "possibility_owner_changed": false,
+    "prior_review_return_changed": false,
+    "inside_correction_allowlist": true
+  },
+  "provider_test_inventory": {
+    "before": 30,
+    "after": 30,
+    "missing_names": [],
+    "added_names": [],
+    "materially_corrected_test": "test_p6_geometry_is_recomputed_not_fixed_when_the_empirical_slice_changes",
+    "helper_signature_cleanup": "_cell_numerators drops unused case argument; P1/P2 call sites updated without changing assertions"
+  },
+  "authority_ceiling": {
+    "at33_claimed": false,
+    "real_source_qualification_claimed": false,
+    "structural_world_admission": false,
+    "actor_person_v3_state": false,
+    "smoothing_proxy_authority_added": false,
+    "provider_broadened": false
+  },
+  "raw_survey_access_by_reviewer": false,
+  "merge_or_self_adoption": false
+}
