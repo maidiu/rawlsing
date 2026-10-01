@@ -1,0 +1,55 @@
+{
+  "schema": "PYAT_C1_02_CORRECTION_INDEPENDENT_REVIEW_SCOPE_EVIDENCE_AUDIT@1",
+  "review_branch": "agent/reviewer-pyat-hq142-c1-02-correction-r1",
+  "commission_tip": "b33488a79103704aea8a6fa1163a764045bcf4c9",
+  "corrected_return": "6e0f7b438089a542c9949b604cd55cbb3eaf8b2b",
+  "code_under_test": "795bd0814980b06174119a766a3f3940a2842385",
+  "kimi_return": "21254c57d92c6411282de13450fc2bdfab21d345",
+  "accepted_c1_01_baseline": "5fafb499d53dddadaf8a7b4fd46506e91a09d270",
+  "ancestry": {
+    "kimi_to_corrected_code": "AHEAD_BY_1__KIMI_IS_EXACT_ANCESTOR",
+    "corrected_code_to_final_return": "AHEAD_BY_1__DOCUMENTARY_ONLY",
+    "review_branch_at_start": "EXACT_COMMISSION_TIP"
+  },
+  "post_test_executable_state": {
+    "verdict": "BYTE_IDENTICAL",
+    "compared_blobs": {
+      "rawlsing_next/pre553_analytical_composition.py": "cb4fa05f0543060107ac9386bbe46132e26b1293",
+      "rawlsing_next/tests/test_pre553_analytical_composition.py": "2210fc1b4cb99552aafc8797c12d780a78e7983b",
+      "rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py": "e3aa3597fb03a06025281d2ad7c8a97ca6f63775",
+      "rawlsing_next/tests/c1_at08_at13_fixture.py": "966b0dc7787a5fd1a42b4056444c4708a811deab",
+      "rawlsing_next/tests/c1_at08_at13_fresh_process_runner.py": "39ddca69e171143e2a539d5494bc2c94de6f9762"
+    }
+  },
+  "write_terrain": {
+    "correction_changed_files_within_original_c1_02_terrain": true,
+    "upstream_empirical_discovery_recursive_consumer_owners_modified": false,
+    "reviewer_modified_implementation_tests_or_fixtures": false
+  },
+  "evidence_integrity": {
+    "corrected_matrix_test_name_count": 31,
+    "cited_names_verified_present": true,
+    "corrected_tests_materially_exercise_claimed_positive_shapes": true,
+    "fixture_oracles_materially_instantiated": true,
+    "oracle_source": "hand-derived source-free synthetic tables and exact identity preimages",
+    "candidate_output_used_as_expected_truth": false,
+    "prior_kimi_overclaim_withdrawn": true,
+    "residual_issue": "Positive matrix omits a hostile hash-consistent false pairing-ground-truth witness; static owner inspection exposes the missing enforcement."
+  },
+  "blocker": {
+    "id": "C1-02-REVIEW-BLOCK-WITNESS-PAIR-001",
+    "kind": "RELATION_INTEGRITY_GAP",
+    "path": "rawlsing_next/pre553_analytical_composition.py",
+    "function": "_verify_witness",
+    "branch": "multi-conditioner/non-legacy",
+    "finding": "Pairing-ground-truth consistency checks are unreachable because they are indented after an unconditional raise inside `if not match_found`.",
+    "consequence": "A recomputed, internally hash-consistent witness can carry false pairing relation material and still pass relation verification.",
+    "proof_grade": "exact static code inspection",
+    "local_runtime_executed_by_reviewer": false
+  },
+  "source_access": {
+    "raw_survey_files_accessed": false,
+    "source_free_only": true
+  },
+  "disposition": "CHANGES_REQUIRED"
+}
