@@ -1,0 +1,27 @@
+{
+  "schema": "PYAT_C1_03R_R2_INDEPENDENT_COUNTEREXAMPLES_OR_ACCEPTANCE@1",
+  "disposition": "CHANGES_REQUIRED",
+  "accepted_repairs": [
+    "RVW-001 duplicate positive rows reject before canonicalization",
+    "RVW-002 missing/non-null negative replacement_ref rejects",
+    "RVW-002 missing/forged negative receipt_schema rejects",
+    "RVW-002 positive-only historical identity remains exact",
+    "RVW-003 owner-unknown is typed NOT_GOVERNED and cache-independent",
+    "RVW-004 replay recomputes exact A and U from graph"
+  ],
+  "accepted_readings": [
+    "Known registered baseline dependent with no lifecycle transition remains CURRENT",
+    "New noncurrent schema with zero noncurrent rows is refused"
+  ],
+  "blocking_counterexample": {
+    "id": "C1-03R-R2-RVW-005",
+    "title": "Three-state rollback witness reintroduces future-determinant pre-binding",
+    "surface": "rawlsing_next/tests/c1_at18_at19_fixture.py::build_mixed_outcome_rollback_transition",
+    "construction": "Before the first promotion, construct SemanticDeterminantGraph authority edges from old_model, v2_ref and v3_ref to the same replaced/noncurrent/downstream product refs.",
+    "violation": "Products are thereby declared dependent on future revisions they have not consumed. Accepted C1-03R registration law permits only actually consumed determinant authorities and introduces revisions through governed transitions.",
+    "why_load_bearing": "With the lawful old_model-only graph used by the accepted promotion fixture, the later v2->v3 transition cannot reach the original product refs; the static owner graph does not dynamically register the replacement products under v2. Future pre-binding is what makes the second A non-empty.",
+    "required_behavior": "Produce a genuinely mixed rollback with time-lawful consumed-determinant registrations, or return the bounded owner/registration gap if the current static graph cannot express it."
+  },
+  "architecture_warrant": false,
+  "broad_rewrite_required": false
+}

@@ -1,0 +1,30 @@
+{
+  "schema": "PYAT_C1_03R_R2_INDEPENDENT_REREVIEW_FINAL_DISPOSITION@1",
+  "status": "FINAL",
+  "disposition": "CHANGES_REQUIRED",
+  "terminal": "C1_03R_R2_INDEPENDENT_REREVIEW_RETURNED__HQ_ADJUDICATION_REQUIRED",
+  "prior_blockers_closed": [
+    "RVW-001",
+    "RVW-002",
+    "RVW-003",
+    "RVW-004"
+  ],
+  "flagged_readings": {
+    "known_but_never_transitioned_CURRENT": "APPROVED_AT_REGISTERED_BASELINE_GRAIN",
+    "new_schema_zero_rows_refusal": "APPROVED"
+  },
+  "blocking_finding": {
+    "id": "C1-03R-R2-RVW-005",
+    "summary": "The new mixed rollback witness gets reachability by pre-binding products to future v2/v3 authority revisions before those determinants are consumed, violating the accepted consumed-determinant registration law."
+  },
+  "implementation_repairs_rejected": false,
+  "rollback_acceptance_witness_rejected": true,
+  "required_next_action": [
+    "Preserve all four R2 fail-closed repairs unchanged.",
+    "Replace the rollback fixture/court with a genuinely mixed three-state witness using only determinants actually consumed at each stage.",
+    "If the static lifecycle graph cannot lawfully register/rebind replacement products for the next transition, return that bounded owner/registration gap to HQ rather than pre-registering future authority edges.",
+    "Rerun the exact four-file court and independently rereview only the corrected rollback/registration proof plus regression preservation."
+  ],
+  "architecture_warrant": false,
+  "merge_or_self_adoption": false
+}

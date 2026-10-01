@@ -1,0 +1,49 @@
+{
+  "schema": "PYAT_C1_03R_R2_INDEPENDENT_REREVIEW_EXECUTION_RECEIPT@1",
+  "status": "STATIC_BROWSER_REREVIEW_PLUS_RECONCILED_WORKER_EXECUTION",
+  "review_branch": "agent/reviewer-pyat-hq156-c1-03r-r2-rereview-r1",
+  "review_issue_tip": "f6e2b059883bee29b2dadfc1cc59df7a5a4c7735",
+  "reviewed_return": "7f64493758f6b3b77d7e9ce1486c1324ff709edc",
+  "ancestry": {
+    "base": "88d94930179528ce37daac854a7f6a78f7f0f308",
+    "ahead_by": 1,
+    "behind_by": 0,
+    "status": "PASS"
+  },
+  "diff_allowlist": {
+    "status": "PASS",
+    "implementation_and_test_files": [
+      "rawlsing_next/pre553_authority_maintenance.py",
+      "rawlsing_next/pre553_analytical_replay_dependency.py",
+      "rawlsing_next/tests/test_pre553_authority_maintenance.py",
+      "rawlsing_next/tests/test_pre553_analytical_replay_dependency.py",
+      "rawlsing_next/tests/c1_at18_at19_fixture.py"
+    ],
+    "return_packet": "WORKER_RETURNS/PYAT-C1-03R-OWNER-FAILCLOSED-R2/**",
+    "replay_audit_modified": false,
+    "analytical_composition_modified": false
+  },
+  "recorded_court": {
+    "total_passed": 160,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "wall_time_seconds": 55.64,
+    "counts": {
+      "analytical_replay_dependency": 42,
+      "authority_maintenance": 51,
+      "replay_audit": 54,
+      "analytical_composition": 13
+    }
+  },
+  "static_reconciliation": {
+    "analytical_replay_dependency": "39 test functions + one 4-case parametrized court = 42",
+    "authority_maintenance": "48 test functions + one 4-case parametrized court = 51",
+    "replay_audit": "unchanged accepted 54-case court",
+    "analytical_composition": "12 test functions + one 2-case parametrized court = 13",
+    "sum": 160
+  },
+  "fresh_runtime_executed_by_reviewer": false,
+  "proof_grade": "EXACT_COMMITTED_SOURCE_REVIEW_WITH_WORKER_EXECUTION_EVIDENCE",
+  "blocker_proof": "Source-complete comparison of accepted consumed-only promotion graph against new rollback graph; runtime is not required to establish future pre-binding."
+}

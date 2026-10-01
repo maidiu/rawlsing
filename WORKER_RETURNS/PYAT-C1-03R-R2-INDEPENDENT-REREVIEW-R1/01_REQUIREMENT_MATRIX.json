@@ -1,0 +1,45 @@
+{
+  "schema": "PYAT_C1_03R_R2_INDEPENDENT_REREVIEW_REQUIREMENT_MATRIX@1",
+  "reviewed_return": "7f64493758f6b3b77d7e9ce1486c1324ff709edc",
+  "r2_commission_tip": "88d94930179528ce37daac854a7f6a78f7f0f308",
+  "prior_review": "380a79cde63d9ee239e5812f89283e997e16da96",
+  "disposition": "CHANGES_REQUIRED",
+  "prior_blockers": {
+    "RVW-001_duplicate_positive_rows": "PASS",
+    "RVW-002_negative_serialization_schema": "PASS",
+    "RVW-003_owner_unknown_currentness": "PASS",
+    "RVW-004_checkpoint_unaffected_replay": "PASS"
+  },
+  "flagged_readings": {
+    "known_but_never_transitioned": {
+      "ruling": "CURRENT_IS_CORRECT_AT_REGISTERED_BASELINE_GRAIN",
+      "reason": "Known refs arise from exact analytical product registration with actually consumed determinant authority; initial current selection supplies the accepted baseline. No transition means no lifecycle invalidation of that registered baseline.",
+      "owner_unknown_distinct": true,
+      "cache_presence_irrelevant": true
+    },
+    "new_schema_zero_noncurrent_rows": {
+      "ruling": "REFUSAL_IS_CORRECT",
+      "reason": "Positive-only historical compatibility is the exact old field set; the owner emits the new schema only when noncurrent rows exist. New schema plus zero rows is an owner-never-emitted third representation and must fail closed."
+    }
+  },
+  "shared_owner_law": {
+    "promotion_mixed": "PASS",
+    "rollback_mixed": "FAIL",
+    "blocker": "C1-03R-R2-RVW-005",
+    "failure": "The rollback fixture pre-registers each product against old_model, v2_ref and v3_ref before future revisions are consumed/current, reintroducing forbidden future-determinant pre-binding."
+  },
+  "preserved_architecture": {
+    "generic_noncurrent_single_meaning": true,
+    "error_to_noncurrent_prohibited": true,
+    "historical_positive_only_identity": true,
+    "sealed_successor_exact_binding": true,
+    "decoy_distinction": true,
+    "authority_candidate_identity_unchanged": true,
+    "original_mixed_at19_promotion": true,
+    "omitted_edge_hostile": true,
+    "at18_grade_separation": true,
+    "replay_audit_owner_unchanged": true,
+    "analytical_composition_owner_unchanged": true,
+    "future_determinant_prebinding_preserved": false
+  }
+}
