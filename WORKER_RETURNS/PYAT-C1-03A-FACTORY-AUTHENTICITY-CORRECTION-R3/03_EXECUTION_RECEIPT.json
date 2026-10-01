@@ -1,0 +1,81 @@
+{
+  "schema": "PYAT_C1_03A_FACTORY_AUTHENTICITY_EXECUTION_RECEIPT@1",
+  "interpreter": "/tmp/c1-01-r8-release-spine-venv/bin/python",
+  "python": "3.12.14",
+  "pytest": "9.1.1",
+  "command": "pytest -q <the ten commissioned files>   (run with PYTHONPATH=<worktree root>)",
+  "files": [
+    "rawlsing_next/tests/test_pre553_analytical_state_and_route.py",
+    "rawlsing_next/tests/test_pre553_analytical_composition.py",
+    "rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py",
+    "rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py",
+    "rawlsing_next/tests/test_pre553_empirical_query.py",
+    "rawlsing_next/tests/test_pre553_discovery_exact.py",
+    "rawlsing_next/tests/test_pre553_discovery_adaptive.py",
+    "rawlsing_next/tests/test_pre553_discovery_adaptive_admission.py",
+    "rawlsing_next/tests/test_pre553_recursive_handoff.py",
+    "rawlsing_next/tests/test_pre553_structural_admission.py"
+  ],
+  "counts": {
+    "c1_03a_state_and_route": 62,
+    "analytical_composition": 13,
+    "composition_higher_order": 35,
+    "positioned_subject_possibility": 13,
+    "empirical_query": 32,
+    "discovery_exact": 14,
+    "discovery_adaptive": 8,
+    "discovery_adaptive_admission": 3,
+    "recursive_handoff": 2,
+    "structural_admission": 17,
+    "total_passed": 199,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "wall_time_seconds": 19.43,
+    "per_file_sum": 199
+  },
+  "per_file_counts_method": "Each file was additionally run through `pytest -q --collect-only` individually; the ten counts above sum exactly to the 199 passed in the single ten-file run.",
+  "delta_from_prior_r2": {
+    "prior_total": 185,
+    "now": 199,
+    "new_courts": 14,
+    "replaced_courts": 0,
+    "c1_03a_file": {"prior": 48, "now": 62, "new": 14},
+    "note": "14 new factory-authenticity hostiles: 5 for blocker E, 3 for blocker F, 6 for blocker G."
+  },
+  "baseline_reproduction_before_repair": {
+    "total_before_repair": 185,
+    "failed": 0,
+    "note": "The ten-file court was run unmodified at the commissioned tip BEFORE any edit and passed 185/185. All twelve HQ counterexamples were reproduced by a separate standalone reproduction harness against that unmodified owner."
+  },
+  "preservation_rerun_by_keyword": {
+    "selection": "hq_a_direct_projection_construction or public_derive_helper_is_gone or hq_b_real_refusals_stay or learned_route_without_an_obligation or hq_d_custody_records_no_completeness or hq_c_forged_route_obligation or hq_d_forged_custody or hq_d_handoff_projection_requires or hq_c_relabelling_direct_to_learned",
+    "passed": 9,
+    "deselected": 53,
+    "failed": 0
+  },
+  "historical_evidence_preserved": {
+    "c4e37038_total": 175,
+    "ad67be387_total": 185,
+    "still_passing": true
+  },
+  "files_modified": [
+    "rawlsing_next/pre553_analytical_state_and_route.py",
+    "rawlsing_next/tests/test_pre553_analytical_state_and_route.py",
+    "rawlsing_next/tests/c1_at14_at16_fixture.py",
+    "WORKER_RETURNS/PYAT-C1-03A-FACTORY-AUTHENTICITY-CORRECTION-R3/**"
+  ],
+  "diff_stat": {
+    "rawlsing_next/pre553_analytical_state_and_route.py": 285,
+    "rawlsing_next/tests/c1_at14_at16_fixture.py": 9,
+    "rawlsing_next/tests/test_pre553_analytical_state_and_route.py": 567,
+    "files_changed": 3,
+    "insertions": 764,
+    "deletions": 97
+  },
+  "existing_owners_modified": [],
+  "wider_regression_sweep_claimed": false,
+  "wider_regression_sweep_note": "Only the ten commissioned files were executed, plus the 14 new hostiles which live inside the first of them. No broader sweep is claimed.",
+  "lint_or_typecheck_command_claimed": false,
+  "lint_or_typecheck_note": "No Makefile, pyproject.toml, setup.cfg, tox.ini, .flake8 or AGENTS.md exists at the repository root, so no configured lint or typecheck command was available to run. The claim here is pytest evidence only."
+}

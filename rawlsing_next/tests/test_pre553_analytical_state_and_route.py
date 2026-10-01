@@ -35,6 +35,9 @@ from rawlsing_next.pre553_analytical_state_and_route import (
     RecursiveCoverageCustody,
     OwnerProjectionError,
     OWNER_EMPIRICAL_PROJECTION_LABEL,
+    OWNER_ADAPTIVE_PROJECTION_LABEL,
+    OWNER_DISCOVERY_PROJECTION_LABEL,
+    OWNER_ADMISSION_PROJECTION_LABEL,
     OWNER_RECURSIVE_HANDOFF_LABEL,
     ProducerStateEvidence,
     SUPPORTED_BASELINE,
@@ -317,10 +320,7 @@ def test_at14_positive_recursive_handoff_is_not_the_coverage_record():
 
     # With the owner-derived custody bound, the same positive is lawful and the
     # coverage record is carried into the envelope identity.
-    custody = fx.recursive_handoff_custody(
-        handoff,
-        supporting=(gen1.discovery_result.evaluated_frontier_ref,),
-    )
+    custody = fx.recursive_handoff_custody(handoff)
     result = build_state_route_result(
         route_class=ROUTE_DIRECT_EMPIRICAL,
         producer_evidence=[handoff_projection.as_evidence()],
@@ -332,22 +332,24 @@ def test_at14_positive_recursive_handoff_is_not_the_coverage_record():
     assert result.coverage_record_ref == gen1.discovery_result.evaluated_frontier_ref
     assert result.coverage_custody_hash == custody.custody_hash
     # Custody content is inside the envelope identity, so it cannot be dropped
-    # silently: a custody record over different retained supporting refs changes it.
-    wider = fx.recursive_handoff_custody(
-        handoff,
-        supporting=(gen1.discovery_result.evaluated_frontier_ref, receipts[0].ref),
-    )
-    assert wider.custody_hash != custody.custody_hash
-    other = build_state_route_result(
+    # silently. It is now a pure function of the handoff: there is no caller
+    # channel left to widen it, so a second derivation over the same handoff is
+    # identical, while a different handoff is not (proved below via gen2).
+    again = fx.recursive_handoff_custody(handoff)
+    assert again.custody_hash == custody.custody_hash
+    assert build_state_route_result(
         route_class=ROUTE_DIRECT_EMPIRICAL,
         producer_evidence=[handoff_projection.as_evidence()],
         producer_refs=[handoff.ref],
         consumer_disposition=fx.consumer_disposition_for(SUPPORTED_BASELINE),
-        reason="positive handoff with wider retained coverage custody",
-        coverage_custody=wider,
-    )
-    assert other.coverage_custody_hash != result.coverage_custody_hash
-    assert other.envelope_identity_hash != result.envelope_identity_hash
+        reason="positive handoff with retained coverage custody",
+        coverage_custody=again,
+    ).envelope_identity_hash == result.envelope_identity_hash
+    # A caller can no longer widen the custody identity with supporting evidence.
+    with pytest.raises(TypeError):
+        fx.recursive_handoff_custody(
+            handoff, supporting=(gen1.discovery_result.evaluated_frontier_ref, receipts[0].ref)
+        )
 
     # A custody record naming a different handoff is refused outright. The
     # foreign custody is itself owner-derived, so this proves the producer-ref
@@ -831,15 +833,27 @@ def test_repair_blocker1_observed_zero_requires_the_real_cell_projection():
     Without the producer's own cells an observed zero could not be derived, so
     the projection fails closed rather than defaulting to SUPPORTED.
     """
-    from rawlsing_next.pre553_empirical_objects import ExactRef
+    from rawlsing_next.pre553_empirical_objects import EmpiricalFact
 
-    class _NoCells:
-        typed_state = "SUPPORTED"
-        target_topology = {"arity": 1}
-        ref = ExactRef("EmpiricalFact@1.0.0", "urn:test:c1-03a:no-cells", "c" * 64)
+    # Built from a real owner-produced SUPPORTED fact, with only the cell
+    # projection stripped. This is a genuine EmpiricalFact, so the type gate is
+    # satisfied and the cell-projection law is what must refuse it.
+    _, data = fx.project_empirical("observed_zero_fixture")
+    source = data["fact"]
+    no_cells = EmpiricalFact(
+        typed_state=source.typed_state,
+        authority_snapshot_refs=source.authority_snapshot_refs,
+        dependency_refs=source.dependency_refs,
+        producer_replay_locator_or_reference_root=(
+            source.producer_replay_locator_or_reference_root
+        ),
+        **{**dict(source.semantic_fields), "target_topology": {"arity": 1}},
+    )
+    assert no_cells.typed_state == "SUPPORTED"
+    assert "complete_cell_semantic_projection" not in no_cells.target_topology
 
     with pytest.raises(OwnerProjectionError, match="complete_cell_semantic_projection"):
-        OwnerStateProjection.from_empirical_fact(_NoCells())
+        OwnerStateProjection.from_empirical_fact(no_cells)
 
 
 def test_repair_blocker1_observed_zero_cell_on_non_supported_fact_is_refused():
@@ -1024,7 +1038,7 @@ def test_repair_blocker3_custody_is_bound_into_the_envelope_identity():
     )
     handoff = gen1.handoffs[0]
     frontier = gen1.discovery_result.evaluated_frontier_ref
-    custody = fx.recursive_handoff_custody(handoff, supporting=(frontier,))
+    custody = fx.recursive_handoff_custody(handoff)
     projection, custody = fx.project_recursive_handoff(handoff)
     result = build_state_route_result(
         route_class=ROUTE_DIRECT_EMPIRICAL,
@@ -1064,9 +1078,7 @@ def test_repair_blocker3_mismatched_coverage_ref_is_refused():
         x1, "RESPONSE", query, tag="repmismatch", operation="I03-OP-repmismatch",
     )
     handoff = gen1.handoffs[0]
-    custody = fx.recursive_handoff_custody(
-        handoff, supporting=(gen1.discovery_result.evaluated_frontier_ref,)
-    )
+    custody = fx.recursive_handoff_custody(handoff)
     projection, custody = fx.project_recursive_handoff(handoff)
     from rawlsing_next.pre553_empirical_objects import ExactRef
 
@@ -1364,3 +1376,504 @@ def _hq_real_handoff(tag: str):
         x1, "RESPONSE", query, tag=gen_tag, operation=f"I03-OP-{gen_tag}",
     )
     return gen1.handoffs[0]
+
+
+# ===========================================================================
+# HQ153 factory-authenticity correction (R3) hostiles
+#
+# E: each typed factory requires the EXACT competent current owner object, so a
+#    caller-shaped forgery with plausible fields and exact-looking refs cannot
+#    ask a trusted factory to mint governed material.
+# F: the owner label is fixed by the factory, and neither the producer
+#    determinant ref nor the custody's supporting evidence is caller-writable.
+# G: the canonical StructuralEmpiricalAdmission receipt, not the hand-
+#    constructible AdmissionEvaluation envelope around it, is the authority.
+# ===========================================================================
+
+
+def _plausible_ref(namespace: str):
+    """An exact-looking but entirely caller-minted ref."""
+    from rawlsing_next.pre553_empirical_objects import ExactRef, semantic_hash
+
+    digest = semantic_hash({"caller": namespace})
+    return ExactRef(
+        "EmpiricalFact@1.0.0",
+        f"urn:rawlsing:caller-forged:{namespace}:sha256:{digest}",
+        digest,
+    )
+
+
+def _real_positive_evaluation(tag: str = "hq153-positive"):
+    return fx.structural_admission_evaluation(
+        admission_state="ALLOW", fact_state="SUPPORTED", tag=tag
+    )
+
+
+def _real_negative_evaluation(tag: str = "hq153-negative"):
+    return fx.structural_admission_evaluation(
+        admission_state="ALLOW", fact_state="UNRESOLVED", tag=tag
+    )
+
+
+def _no_rule_evaluation(tag: str = "hq153-no-rule"):
+    """A real evaluation whose receipt cannot even resolve a target use."""
+    from rawlsing_next.pre553_structural_admission import (
+        evaluate_structural_empirical_admission,
+    )
+    from rawlsing_next.tests.test_pre553_structural_admission import (
+        environment,
+        query_fact,
+        request,
+    )
+
+    query, fact = query_fact(state="SUPPORTED", tag=tag)
+    rule, registry, snapshot, _parity = environment(admission_state="ALLOW")
+    return evaluate_structural_empirical_admission(
+        query=query,
+        fact=fact,
+        requested_admission_authority_ref=snapshot.authority_ref,
+        rule=None,
+        request=request(),
+        authority_registry=registry,
+        producer_replay_locator_or_reference_root=(
+            fact.producer_replay_locator_or_reference_root
+        ),
+    )
+
+
+# ---------------------------------------------------------------------------
+# HQ-E -- exact competent owner object families only
+# ---------------------------------------------------------------------------
+
+
+def test_repair_hq_e_duck_typed_empirical_fact_cannot_mint_projection():
+    """HQ-E hostile: a plausible fake EmpiricalFact cannot mint a projection."""
+    _, data = fx.project_empirical("observed_zero_fixture")
+    real = data["fact"]
+
+    class _FakeEmpiricalFact:
+        """Everything the projection reads, all of it caller-shaped."""
+
+        typed_state = "SUPPORTED"
+        target_topology = {"complete_cell_semantic_projection": []}
+        replay_ref = None
+        ref = _plausible_ref("fake-empirical-fact")
+
+    fake = _FakeEmpiricalFact()
+    # Sanity: the forgery really does carry the exact-looking ref and the exact
+    # field names the factory reads, so only the type gate can refuse it.
+    assert isinstance(fake.ref, type(real.ref))
+    assert fake.typed_state == real.typed_state
+
+    with pytest.raises(OwnerProjectionError, match="requires the exact current owner object"):
+        OwnerStateProjection.from_empirical_fact(fake)
+
+    # A genuine owner fact is still accepted and still projects truthfully.
+    good = OwnerStateProjection.from_empirical_fact(real)
+    assert good.retained_state == OBSERVED_ZERO
+    assert good.producer_ref == real.ref
+    assert good.owner == OWNER_EMPIRICAL_PROJECTION_LABEL
+
+
+def test_repair_hq_e_duck_typed_discovery_receipt_cannot_mint_projection():
+    """HQ-E hostile: a plausible fake DiscoveryResultReceipt is refused."""
+    _, rdata = fx.project_receipt("underpowered_fixture")
+    real = rdata["receipt"]
+
+    class _FakeReceipt:
+        typed_state = "OBSERVED_ZERO"
+        coverage_state = "EVALUATED_OBSERVED_ZERO"
+        ref = _plausible_ref("fake-discovery-receipt")
+
+    with pytest.raises(OwnerProjectionError, match="requires the exact current owner object"):
+        OwnerStateProjection.from_discovery_receipt(_FakeReceipt())
+
+    good = OwnerStateProjection.from_discovery_receipt(real)
+    assert good.owner == OWNER_DISCOVERY_PROJECTION_LABEL
+    assert good.producer_ref == real.ref
+
+
+def test_repair_hq_e_duck_typed_adaptive_result_cannot_mint_projection():
+    """HQ-E hostile: a plausible fake AdaptiveSearchResult is refused."""
+    _, adata = fx.project_adaptive()
+    real = adata["adaptive_result"]
+
+    class _FakeAdaptive:
+        completeness_state = "PARTIAL_BUDGET_EXHAUSTED"
+        unvisited_unit_refs = (_plausible_ref("fake-unvisited"),)
+        visited_unit_refs = (_plausible_ref("fake-visited"),)
+        global_negative_claim = False
+        determinant_state_ref = _plausible_ref("fake-determinant")
+        checkpoint = None
+
+    with pytest.raises(OwnerProjectionError, match="requires the exact current owner object"):
+        OwnerStateProjection.from_adaptive_result(_FakeAdaptive())
+
+    good = OwnerStateProjection.from_adaptive_result(real)
+    assert good.retained_state == UNVISITED
+    assert good.producer_ref == real.determinant_state_ref
+    assert good.unvisited_refs == real.unvisited_unit_refs
+
+
+def test_repair_hq_e_duck_typed_admission_evaluation_cannot_mint_route_material():
+    """HQ-E hostile: a fake evaluation around a REAL receipt is still refused.
+
+    This is the sharpest form of the forgery: the receipt is genuine, so only the
+    envelope type is wrong. Exact type identity must refuse it anyway, because a
+    caller-shaped envelope is not the competent admission owner.
+    """
+    positive = _real_positive_evaluation("hq153-fake-envelope")
+    assert positive.decision_state == "ADMITTED"
+
+    class _FakeEvaluation:
+        decision_state = "ADMITTED"
+        reason_code = "CALLER_ASSERTED_ALL_GATES_PASS"
+        receipt = positive.receipt
+        blocking_refs = ()
+
+    with pytest.raises(OwnerProjectionError, match="requires the exact current owner object"):
+        RouteObligation.from_structural_admission(
+            _FakeEvaluation(), requested_use="STRUCTURAL_MEDIATION_INPUT"
+        )
+
+    # A bare object with no receipt at all is refused too.
+    with pytest.raises(OwnerProjectionError, match="requires the exact current owner object"):
+        RouteObligation.from_structural_admission(object(), requested_use="X")
+
+
+def test_repair_hq_e_owner_family_subclasses_are_refused_too():
+    """HQ-E: the check is exact type identity, not isinstance.
+
+    An ``isinstance`` gate would accept a caller-defined subclass that inherits
+    every plausible field from the real owner type. Exact identity refuses it.
+    """
+    from rawlsing_next.pre553_empirical_objects import (
+        DiscoveryResultReceipt,
+        EmpiricalFact,
+    )
+    from rawlsing_next.pre553_discovery_adaptive import AdaptiveSearchResult
+    from rawlsing_next.pre553_structural_admission import AdmissionEvaluation
+
+    _, data = fx.project_empirical("observed_zero_fixture")
+
+    class _FactSubclass(EmpiricalFact):
+        pass
+
+    class _ReceiptSubclass(DiscoveryResultReceipt):
+        pass
+
+    assert issubclass(_FactSubclass, EmpiricalFact)
+    # Instances are made without the canonical constructor: the point is the TYPE,
+    # and the gate must refuse before it reads any attribute at all.
+    subclassed_fact = object.__new__(_FactSubclass)
+    subclassed_receipt = object.__new__(_ReceiptSubclass)
+    with pytest.raises(OwnerProjectionError, match="requires the exact current owner object"):
+        OwnerStateProjection.from_empirical_fact(subclassed_fact)
+    with pytest.raises(OwnerProjectionError, match="requires the exact current owner object"):
+        OwnerStateProjection.from_discovery_receipt(subclassed_receipt)
+    with pytest.raises(OwnerProjectionError, match="requires the exact current owner object"):
+        OwnerStateProjection.from_adaptive_result(subclassed_fact)
+    with pytest.raises(OwnerProjectionError, match="requires the exact current owner object"):
+        RouteObligation.from_structural_admission(
+            subclassed_receipt, requested_use="STRUCTURAL_MEDIATION_INPUT"
+        )
+
+    # The exact real families are all still the accepted ones.
+    _, adata = fx.project_adaptive()
+    assert type(data["fact"]) is EmpiricalFact
+    assert type(adata["adaptive_result"]) is AdaptiveSearchResult
+    assert type(_real_positive_evaluation("hq153-e-exact-family")) is AdmissionEvaluation
+
+
+# ---------------------------------------------------------------------------
+# HQ-F -- the owner label and provenance refs are factory-fixed
+# ---------------------------------------------------------------------------
+
+
+def test_repair_hq_f_no_factory_still_accepts_a_caller_owner_label():
+    """HQ-F: every typed factory's owner label is fixed by the factory itself."""
+    from rawlsing_next.pre553_empirical_authority import Pre553AuthorityError
+    from rawlsing_next.pre553_empirical_objects import ExactRef, Pre553IntegrityError
+
+    _, data = fx.project_empirical("observed_zero_fixture")
+    _, rdata = fx.project_receipt("underpowered_fixture")
+    _, adata = fx.project_adaptive()
+    handoff = _hq_real_handoff("hq153-f-owner-label")
+    custody = fx.recursive_handoff_custody(handoff)
+    positive = _real_positive_evaluation("hq153-f-owner-label")
+    ref = ExactRef("EmpiricalFact@1.0.0", "urn:test:hq153:owner-label", "f" * 64)
+
+    # No minting factory signature exposes an owner label any more. (The dataclass
+    # __init__ still lists the field, but it is token-guarded and covered by the
+    # R2 direct-construction hostiles; only the factories are scanned here.)
+    for owner in (OwnerStateProjection, RouteObligation, RecursiveCoverageCustody):
+        for name, member in vars(owner).items():
+            if inspect.isfunction(member) and name.startswith("from_"):
+                params = inspect.signature(member).parameters
+                assert "owner" not in params, f"{owner.__name__}.{name} still accepts owner"
+
+    with pytest.raises(TypeError):
+        OwnerStateProjection.from_empirical_fact(
+            data["fact"], owner="rawlsing_next.not_a_real_owner"
+        )
+    with pytest.raises(TypeError):
+        OwnerStateProjection.from_discovery_receipt(
+            rdata["receipt"], owner="rawlsing_next.not_a_real_owner"
+        )
+    with pytest.raises(TypeError):
+        OwnerStateProjection.from_adaptive_result(
+            adata["adaptive_result"], owner="rawlsing_next.not_a_real_owner"
+        )
+    with pytest.raises(TypeError):
+        OwnerStateProjection.from_recursive_handoff(
+            handoff, custody, owner="rawlsing_next.not_a_real_owner"
+        )
+    with pytest.raises(TypeError):
+        RouteObligation.from_structural_admission(
+            positive, requested_use="STRUCTURAL_MEDIATION_INPUT",
+            owner="rawlsing_next.not_a_real_owner",
+        )
+    with pytest.raises(TypeError):
+        OwnerStateProjection.from_empirical_integrity_refusal(
+            exception=Pre553IntegrityError("x"), reason="r", producer_ref=ref,
+            owner="rawlsing_next.not_a_real_owner",
+        )
+    with pytest.raises(TypeError):
+        OwnerStateProjection.from_blocked_authority_refusal(
+            exception=Pre553AuthorityError("x"), reason="r", producer_ref=ref,
+            owner="rawlsing_next.not_a_real_owner",
+        )
+
+    # Each genuine projection carries the owner its own factory names.
+    assert OwnerStateProjection.from_empirical_fact(data["fact"]).owner == (
+        OWNER_EMPIRICAL_PROJECTION_LABEL
+    )
+    assert OwnerStateProjection.from_discovery_receipt(rdata["receipt"]).owner == (
+        OWNER_DISCOVERY_PROJECTION_LABEL
+    )
+    assert OwnerStateProjection.from_adaptive_result(adata["adaptive_result"]).owner == (
+        OWNER_ADAPTIVE_PROJECTION_LABEL
+    )
+    assert OwnerStateProjection.from_recursive_handoff(handoff, custody).owner == (
+        OWNER_RECURSIVE_HANDOFF_LABEL
+    )
+    assert RouteObligation.from_structural_admission(
+        positive, requested_use="STRUCTURAL_MEDIATION_INPUT"
+    ).owner == OWNER_ADMISSION_PROJECTION_LABEL
+
+
+def test_repair_hq_f_adaptive_producer_ref_cannot_be_replaced_by_the_caller():
+    """HQ-F: the adaptive producer ref is the owner's own determinant ref."""
+    from rawlsing_next.pre553_empirical_objects import ExactRef
+
+    _, adata = fx.project_adaptive()
+    real = adata["adaptive_result"]
+
+    # No adaptive minting signature accepts a producer_ref override. The two refusal
+    # factories legitimately take a producer_ref naming the refused object.
+    for name, member in vars(OwnerStateProjection).items():
+        if inspect.isfunction(member) and name.startswith("from_"):
+            if "producer_ref" in inspect.signature(member).parameters:
+                assert name in {
+                    "from_empirical_integrity_refusal",
+                    "from_blocked_authority_refusal",
+                }, f"{name} still accepts a caller-chosen producer_ref"
+
+    with pytest.raises(TypeError):
+        OwnerStateProjection.from_adaptive_result(
+            real, producer_ref=_plausible_ref("caller-substituted-determinant")
+        )
+
+    projection = OwnerStateProjection.from_adaptive_result(real)
+    # The exact owner determinant ref, never a caller substitute.
+    assert projection.producer_ref == real.determinant_state_ref
+    assert isinstance(projection.producer_ref, ExactRef)
+    # The owner checkpoint, visited and unvisited refs are preserved exactly.
+    assert projection.coverage_state == real.completeness_state
+    assert projection.unvisited_refs == real.unvisited_unit_refs
+    assert projection.visited_refs == real.visited_unit_refs
+    assert real.checkpoint.ref in projection.supporting_refs
+    assert projection.producer_ref in projection.supporting_refs
+
+
+def test_repair_hq_f_custody_admits_no_caller_supporting_refs():
+    """HQ-F: custody identity is a pure function of the real handoff."""
+    handoff = _hq_real_handoff("hq153-f-supporting")
+    custody = fx.recursive_handoff_custody(handoff)
+
+    for name, member in vars(RecursiveCoverageCustody).items():
+        if inspect.isfunction(member):
+            assert "required_supporting_refs" not in inspect.signature(member).parameters, (
+                f"{name} still accepts required_supporting_refs"
+            )
+
+    with pytest.raises(TypeError):
+        RecursiveCoverageCustody.from_handoff(
+            handoff, required_supporting_refs=[_plausible_ref("caller-evidence")]
+        )
+    with pytest.raises(TypeError):
+        fx.recursive_handoff_custody(
+            handoff, supporting=(_plausible_ref("caller-evidence"),)
+        )
+
+    # The custody binds only owner-derived material: the exact handoff ref, the
+    # exact evaluated frontier, and the handoff's own retained scope identity.
+    assert custody.handoff_ref == handoff.ref
+    assert custody.coverage_record_ref == handoff.evaluated_frontier_ref
+    assert custody.supporting_refs == ()
+    assert "completeness_state" not in custody.identity_material()
+    # Deriving it twice over the same handoff cannot differ.
+    assert fx.recursive_handoff_custody(handoff).custody_hash == custody.custody_hash
+
+
+# ---------------------------------------------------------------------------
+# HQ-G -- the canonical receipt dominates the constructible envelope
+# ---------------------------------------------------------------------------
+
+
+def test_repair_hq_g_forged_evaluation_decision_cannot_override_the_receipt():
+    """HQ-G hostile: a hand-built decision_state fails closed, both directions."""
+    from dataclasses import replace as _replace
+
+    positive = _real_positive_evaluation("hq153-g-decision")
+    assert positive.receipt.admission_decision_state == "ADMITTED"
+
+    # Real positive receipt + forged evaluation decision.
+    forged_soft = _replace(positive, decision_state="INTEGRITY_FAILURE")
+    with pytest.raises(OwnerProjectionError, match="disagrees with the canonical receipt decision"):
+        RouteObligation.from_structural_admission(
+            forged_soft, requested_use="STRUCTURAL_MEDIATION_INPUT"
+        )
+
+    # Real negative receipt + forged ADMITTED: the most dangerous direction,
+    # because it would manufacture a positive route out of a refusal.
+    negative = _real_negative_evaluation("hq153-g-decision-negative")
+    assert negative.receipt.admission_decision_state != "ADMITTED"
+    forged_positive = _replace(negative, decision_state="ADMITTED")
+    with pytest.raises(OwnerProjectionError, match="disagrees with the canonical receipt decision"):
+        RouteObligation.from_structural_admission(
+            forged_positive, requested_use="STRUCTURAL_MEDIATION_INPUT"
+        )
+
+
+def test_repair_hq_g_forged_evaluation_reason_cannot_override_the_receipt():
+    """HQ-G hostile: a caller-chosen reason is refused, not stored."""
+    from dataclasses import replace as _replace
+
+    positive = _real_positive_evaluation("hq153-g-reason")
+    forged = _replace(positive, reason_code="CALLER_CHOSEN_REASON")
+    with pytest.raises(OwnerProjectionError, match="disagrees with the canonical receipt reason"):
+        RouteObligation.from_structural_admission(
+            forged, requested_use="STRUCTURAL_MEDIATION_INPUT"
+        )
+
+    negative = _real_negative_evaluation("hq153-g-reason-negative")
+    forged_denial = _replace(negative, reason_code="BENCHMARK_OK")
+    with pytest.raises(OwnerProjectionError, match="disagrees with the canonical receipt reason"):
+        RouteObligation.from_structural_admission(
+            forged_denial, requested_use="STRUCTURAL_MEDIATION_INPUT"
+        )
+
+
+def test_repair_hq_g_forged_blocking_refs_inconsistent_with_receipt_fail():
+    """HQ-G hostile: caller evidence cannot be injected into the blocker set."""
+    from dataclasses import replace as _replace
+
+    negative = _real_negative_evaluation("hq153-g-blockers")
+    from rawlsing_next.pre553_empirical_objects import exact_ref
+
+    receipt_blocking = tuple(
+        exact_ref(value)
+        for value in negative.receipt.applicable_negative_denial_noncomparability_refs
+    )
+    assert receipt_blocking, "the negative receipt must carry its own applicable blockers"
+
+    honest = RouteObligation.from_structural_admission(
+        negative, requested_use="STRUCTURAL_MEDIATION_INPUT"
+    )
+    assert {ref.key for ref in honest.blocking_refs} == {
+        ref.key for ref in receipt_blocking
+    }
+
+    injected = _plausible_ref("caller-injected-blocker")
+    for forged_refs in (
+        honest.blocking_refs + (injected,),
+        (),
+        (_plausible_ref("caller-only-blocker"),),
+    ):
+        forged = _replace(negative, blocking_refs=tuple(forged_refs))
+        with pytest.raises(OwnerProjectionError, match="blocking_refs disagree with the receipt"):
+            RouteObligation.from_structural_admission(
+                forged, requested_use="STRUCTURAL_MEDIATION_INPUT"
+            )
+
+
+def test_repair_hq_g_contradictory_requested_use_is_rejected():
+    """HQ-G hostile: an ADMITTED receipt refuses a contradictory requested use."""
+    positive = _real_positive_evaluation("hq153-g-requested-use")
+    assert positive.receipt.admission_decision_state == "ADMITTED"
+    receipt_target = positive.receipt.target_use
+
+    for contradictory in (
+        "COMPLETELY_UNRELATED_USE",
+        f"{receipt_target}_PLUS_EVERYTHING_ELSE",
+        "",
+    ):
+        with pytest.raises(OwnerProjectionError, match="contradicts the ADMITTED receipt target use"):
+            RouteObligation.from_structural_admission(
+                positive, requested_use=contradictory
+            )
+
+
+def test_repair_hq_g_real_positive_evaluation_with_matching_requested_use_passes():
+    """HQ-G: the honest positive path is not regressed by receipt dominance."""
+    positive = _real_positive_evaluation("hq153-g-honest-positive")
+    assert positive.decision_state == "ADMITTED"
+
+    obligation = RouteObligation.from_structural_admission(
+        positive, requested_use=positive.receipt.target_use
+    )
+    # Every authoritative field came from the canonical receipt.
+    assert obligation.decision_state == positive.receipt.admission_decision_state == "ADMITTED"
+    assert obligation.reason_code == positive.receipt.decision_reason_code
+    assert obligation.target_use == positive.receipt.target_use
+    assert obligation.is_positive_admission is True
+    assert obligation.required_route_class == ROUTE_LEARNED_OR_ADJUDICATED_REQUIRED
+    assert obligation.admission_receipt_ref["content_hash"] == positive.receipt.ref.content_hash
+    assert obligation.admission_rule_ref["admission_rule_hash"] == (
+        positive.receipt.semantic_fields["structural_interpretation_payload"][
+            "admission_rule_hash"
+        ]
+    )
+    assert obligation.relation_ref["content_hash"] == (
+        positive.receipt.semantic_fields["empirical_fact_ref"]["content_hash"]
+    )
+    assert obligation.admission_authority_ref == dict(
+        positive.receipt.semantic_fields["admission_authority_ref"]
+    )
+    require_positive_route(obligation)
+
+
+def test_repair_hq_g_negative_unresolved_receipt_preserves_target_and_grants_nothing():
+    """HQ-G: a nonpositive unresolved receipt keeps its target and gains no authority."""
+    evaluation = _no_rule_evaluation("hq153-g-unresolved")
+    assert evaluation.receipt.admission_decision_state != "ADMITTED"
+    assert evaluation.receipt.target_use == "UNRESOLVED_STRUCTURAL_USE"
+
+    obligation = RouteObligation.from_structural_admission(
+        evaluation, requested_use="STRUCTURAL_MEDIATION_INPUT"
+    )
+    # The receipt's exact unresolved target is preserved.
+    assert obligation.target_use == "UNRESOLVED_STRUCTURAL_USE"
+    # The attempted requested use may be recorded, but it is not granted authority.
+    assert obligation.requested_use == "STRUCTURAL_MEDIATION_INPUT"
+    assert obligation.target_use != obligation.requested_use
+    assert obligation.is_positive_admission is False
+    assert obligation.admission_rule_ref["admission_rule_hash"] == ""
+    with pytest.raises(RouteLegitimacyError, match="route may not proceed"):
+        require_positive_route(obligation)
+    # And it cannot be laundered into a direct empirical route.
+    with pytest.raises(RouteLegitimacyError, match="ROUTE_LAUNDERING_REJECTED"):
+        assert_route_not_laundered(
+            route_class=ROUTE_DIRECT_EMPIRICAL, obligation=obligation
+        )

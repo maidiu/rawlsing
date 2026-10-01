@@ -1,0 +1,123 @@
+{
+  "schema": "PYAT_C1_03A_FACTORY_AUTHENTICITY_RECEIPT@1",
+  "purpose": "Machine-checkable record of the exact factory-boundary law after the R3 correction, so independent rereview can inspect the invariants without re-deriving them.",
+  "boundary_invariant": {
+    "statement": "Every minting factory requires the exact competent current owner object type, and every owner label is fixed by the factory.",
+    "gate": "_require_exact_owner_object(value, expected, boundary) in rawlsing_next/pre553_analytical_state_and_route.py",
+    "gate_semantics": "type(value) is expected; raises OwnerProjectionError naming both the required owner family and the offending type",
+    "isinstance_used": false,
+    "duck_typing_used": false,
+    "subclasses_accepted": false,
+    "gate_fires_before_attribute_access": true
+  },
+  "factory_boundaries": [
+    {
+      "factory": "OwnerStateProjection.from_empirical_fact",
+      "required_exact_type": "rawlsing_next.pre553_empirical_objects.EmpiricalFact",
+      "caller_owner_label": false,
+      "caller_producer_ref": false,
+      "reads": ["typed_state", "ref", "target_topology.complete_cell_semantic_projection", "replay_ref"],
+      "fixed_owner_label": "OWNER_EMPIRICAL_PROJECTION_LABEL"
+    },
+    {
+      "factory": "OwnerStateProjection.from_discovery_receipt",
+      "required_exact_type": "rawlsing_next.pre553_empirical_objects.DiscoveryResultReceipt",
+      "caller_owner_label": false,
+      "caller_producer_ref": false,
+      "reads": ["typed_state", "coverage_state", "ref"],
+      "fixed_owner_label": "OWNER_DISCOVERY_PROJECTION_LABEL"
+    },
+    {
+      "factory": "OwnerStateProjection.from_adaptive_result",
+      "required_exact_type": "rawlsing_next.pre553_discovery_adaptive.AdaptiveSearchResult",
+      "caller_owner_label": false,
+      "caller_producer_ref": false,
+      "producer_ref_source": "AdaptiveSearchResult.determinant_state_ref (only)",
+      "preserved_owner_refs": ["checkpoint.ref", "determinant_state_ref", "visited_unit_refs", "unvisited_unit_refs"],
+      "fixed_owner_label": "OWNER_ADAPTIVE_PROJECTION_LABEL"
+    },
+    {
+      "factory": "OwnerStateProjection.from_recursive_handoff",
+      "required_exact_type": "rawlsing_next.pre553_recursive_handoff.RecursiveBranchHandoff",
+      "required_custody_exact_type": "rawlsing_next.pre553_analytical_state_and_route.RecursiveCoverageCustody",
+      "caller_owner_label": false,
+      "caller_producer_ref": false,
+      "fixed_owner_label": "OWNER_RECURSIVE_HANDOFF_LABEL"
+    },
+    {
+      "factory": "OwnerStateProjection.from_empirical_integrity_refusal",
+      "required_exact_type": "rawlsing_next.pre553_empirical_objects.Pre553IntegrityError",
+      "caller_owner_label": false,
+      "fixed_owner_label": "OWNER_EMPIRICAL_PROJECTION_LABEL",
+      "note": "producer_ref is still a parameter here, naming the refused owner object. That is owner evidence, not a retained-state choice, and it is out of HQ blocker F's enumerated list."
+    },
+    {
+      "factory": "OwnerStateProjection.from_blocked_authority_refusal",
+      "required_exact_type": "rawlsing_next.pre553_empirical_authority.Pre553AuthorityError",
+      "caller_owner_label": false,
+      "fixed_owner_label": "OWNER_DISCOVERY_PROJECTION_LABEL",
+      "note": "producer_ref still names the refused owner object; same reasoning as above."
+    },
+    {
+      "factory": "RouteObligation.from_structural_admission",
+      "required_exact_type": "rawlsing_next.pre553_structural_admission.AdmissionEvaluation",
+      "required_exact_receipt_type": "rawlsing_next.pre553_empirical_objects.StructuralEmpiricalAdmission",
+      "caller_owner_label": false,
+      "caller_producer_ref": false,
+      "fixed_owner_label": "OWNER_ADMISSION_PROJECTION_LABEL"
+    },
+    {
+      "factory": "RecursiveCoverageCustody.from_handoff",
+      "required_exact_type": "rawlsing_next.pre553_recursive_handoff.RecursiveBranchHandoff",
+      "caller_supporting_refs": false,
+      "supporting_refs_always_empty": true,
+      "binds": ["handoff.ref", "evaluated_frontier_ref", "scope_identity(candidate_universe_definition, winning_predicate, discovery_authority_ref, branch_replay_binding)"],
+      "completeness_grade_recorded": false
+    }
+  ],
+  "receipt_dominance_law": {
+    "authority": "the canonical StructuralEmpiricalAdmission receipt",
+    "envelope_role": "AdmissionEvaluation is an execution envelope only; its duplicate fields must agree with the receipt exactly",
+    "field_map": {
+      "decision_state": "receipt.admission_decision_state",
+      "reason_code": "receipt.decision_reason_code",
+      "target_use": "receipt.target_use",
+      "relation_ref": "receipt.semantic_fields.empirical_fact_ref",
+      "admission_authority_ref": "receipt.semantic_fields.admission_authority_ref",
+      "admission_receipt_ref": "receipt.ref",
+      "admission_rule_ref.admission_rule_hash": "receipt.semantic_fields.structural_interpretation_payload.admission_rule_hash (positive payload only)",
+      "blocking_refs": "receipt.semantic_fields.applicable_negative_denial_noncomparability_refs"
+    },
+    "envelope_agreement_checked": ["decision_state", "reason_code", "blocking_refs"],
+    "blocking_refs_comparison": "exact ref-key set equality, so canonical set re-ordering is not a false discrepancy while an injected or dropped ref is",
+    "on_disagreement": "fail closed (OwnerProjectionError); never stored",
+    "requested_use_law": {
+      "ADMITTED": "caller requested_use must equal the receipt-declared target use exactly, else rejected",
+      "nonpositive": "requested_use may record the attempted use, but target_use carries the receipt value and no positive route authority is granted"
+    },
+    "blocker_ids": [
+      "C1-03A-FACTORY-BLOCK-DUCK-TYPED-OWNER-001",
+      "C1-03A-FACTORY-BLOCK-RECEIPT-NOT-DOMINATED-001",
+      "C1-03A-FACTORY-BLOCK-REQUESTED-USE-CONTRADICTION-001",
+      "C1-03A-FACTORY-BLOCK-CALLER-SUPPORTING-REFS-001"
+    ]
+  },
+  "closed_counterexamples": [
+    "duck-typed EmpiricalFact -> governed projection",
+    "duck-typed DiscoveryResultReceipt -> governed projection",
+    "duck-typed AdaptiveSearchResult -> governed UNVISITED projection",
+    "duck-typed AdmissionEvaluation around a REAL receipt -> governed route obligation",
+    "owner= override on any projection/obligation/refusal factory",
+    "producer_ref= override on the adaptive projection",
+    "required_supporting_refs= injection into custody identity",
+    "real positive receipt + forged evaluation decision",
+    "real positive receipt + forged evaluation reason",
+    "forged blocking refs inconsistent with the receipt",
+    "ADMITTED receipt + contradictory requested_use",
+    "real NEGATIVE receipt + forged ADMITTED evaluation decision"
+  ],
+  "residual_known_limitations": [
+    "AdmissionEvaluation remains a plain constructible dataclass in its owning module. C1-03A cannot make that type unforgeable; it makes the receipt dominant over it and requires exact agreement, so a hand-built envelope can add no authority it did not already receive from a genuine receipt.",
+    "The two exact refusal factories still accept a caller-supplied producer_ref. It names the refused owner object rather than choosing a retained state, and HQ blocker F did not enumerate it. Flagged for rereview rather than changed unilaterally."
+  ]
+}

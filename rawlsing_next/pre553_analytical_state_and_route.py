@@ -33,7 +33,10 @@ from typing import Any, Mapping, Sequence
 
 from rawlsing_next.pre553_empirical_objects import (
     AuthorityRef,
+    DiscoveryResultReceipt,
+    EmpiricalFact,
     ExactRef,
+    StructuralEmpiricalAdmission,
     exact_ref,
     semantic_hash,
 )
@@ -172,6 +175,33 @@ OWNER_RECURSIVE_HANDOFF_LABEL = (
 )
 
 
+def _require_exact_owner_object(value: Any, expected: type, boundary: str) -> Any:
+    """Accept only the exact competent current owner object at a typed boundary.
+
+    ``isinstance`` is deliberately *not* used here. A caller can trivially build
+    an arbitrary object exposing exactly the attributes the projection reads --
+    plausible ``typed_state``, ``ref``, ``target_topology``, ``completeness_state``
+    -- and ask a trusted factory to mint governed projection or route material for
+    it. Duck typing would make the trusted factory an oracle that certifies
+    caller-shaped input, which is precisely the authority this module must never
+    create.
+
+    Exact type identity is the narrowest fail-closed check consistent with current
+    owner law. It also keeps two distinct mandatory owners from collapsing into
+    one another the way an ``isinstance`` check would.
+    """
+    if type(value) is not expected:
+        actual = type(value)
+        raise OwnerProjectionError(
+            f"{boundary} requires the exact current owner object "
+            f"{expected.__module__}.{expected.__name__}; got "
+            f"{actual.__module__}.{actual.__name__}. A caller-shaped or "
+            "duck-typed object is never a competent owner, however plausible its "
+            "fields or its refs (C1-03A-FACTORY-BLOCK-DUCK-TYPED-OWNER-001)"
+        )
+    return value
+
+
 def _exact_cell_projection(fact: Any) -> tuple[Mapping[str, Any], ...]:
     """Read the producer's own complete cell projection from an empirical fact.
 
@@ -205,11 +235,18 @@ def _exact_cell_projection(fact: Any) -> tuple[Mapping[str, Any], ...]:
 class RouteObligation:
     """The route obligation derived from an exact current owner/use contract.
 
-    The obligation is *derived* from a real owner-produced admission evaluation.
-    A caller cannot weaken it by choosing a different label, and it cannot be
+    The obligation is *derived* from a real owner-produced admission receipt. A
+    caller cannot weaken it by choosing a different label, and it cannot be
     forged at all: direct construction requires the module-private trust token,
     so only :meth:`from_structural_admission` -- which reads a real
-    ``AdmissionEvaluation`` -- can produce a lawful one.
+    ``AdmissionEvaluation`` around a real ``StructuralEmpiricalAdmission``
+    receipt -- can produce a lawful one.
+
+    The receipt, not the surrounding evaluation, is the authority. The
+    ``AdmissionEvaluation`` is a plain dataclass and can be constructed by hand,
+    so its duplicate ``decision_state``/``reason_code``/``blocking_refs`` fields
+    are treated strictly as an execution envelope that must *agree* with the
+    receipt. Every authoritative field below is read from the receipt.
     """
 
     owner: str
@@ -246,42 +283,52 @@ class RouteObligation:
         evaluation: Any,
         *,
         requested_use: str,
-        owner: str = OWNER_ADMISSION_PROJECTION_LABEL,
     ) -> "RouteObligation":
-        """Derive the route obligation from one real AdmissionEvaluation."""
-        decision = str(getattr(evaluation, "decision_state", ""))
-        if not decision:
-            raise OwnerProjectionError("admission evaluation carries no decision_state")
+        """Derive the route obligation from one real AdmissionEvaluation.
+
+        The canonical ``StructuralEmpiricalAdmission`` receipt is the sole
+        authority for every route fact. The surrounding evaluation is accepted
+        only as an execution envelope whose duplicate fields agree with that
+        receipt exactly; a hand-constructed evaluation that disagrees fails
+        closed (C1-03A-FACTORY-BLOCK-RECEIPT-NOT-DOMINATED-001).
+        """
+        from rawlsing_next.pre553_structural_admission import AdmissionEvaluation
+
+        _require_exact_owner_object(
+            evaluation, AdmissionEvaluation, "from_structural_admission"
+        )
         receipt = getattr(evaluation, "receipt", None)
-        if receipt is None:
-            raise OwnerProjectionError("admission evaluation carries no receipt")
+        _require_exact_owner_object(
+            receipt,
+            StructuralEmpiricalAdmission,
+            "from_structural_admission receipt",
+        )
         receipt_ref = getattr(receipt, "ref", None)
         if not isinstance(receipt_ref, ExactRef):
             raise OwnerProjectionError("admission receipt carries no exact ref")
         semantic = getattr(receipt, "semantic_fields", None)
         if not isinstance(semantic, Mapping):
             raise OwnerProjectionError("admission receipt carries no semantic fields")
-        target_use = str(semantic.get("target_use", "") or "")
+
+        # ------------------------------------------------------------------
+        # RECEIPT TRUTH. Every authoritative route fact is read from the
+        # canonical receipt alone. The evaluation's parallel fields are never a
+        # semantic authority here, because AdmissionEvaluation is a plain
+        # dataclass a caller can build by hand around a real receipt.
+        # ------------------------------------------------------------------
+        decision = str(getattr(receipt, "admission_decision_state", "") or "")
+        if not decision:
+            raise OwnerProjectionError(
+                "admission receipt carries no admission_decision_state"
+            )
+        reason = str(getattr(receipt, "decision_reason_code", "") or "")
+        if not reason:
+            raise OwnerProjectionError(
+                "admission receipt carries no decision_reason_code"
+            )
+        target_use = str(getattr(receipt, "target_use", "") or "")
         if not target_use:
             raise OwnerProjectionError("admission receipt does not bind a target use")
-        blocking = tuple(
-            exact_ref(value) for value in (getattr(evaluation, "blocking_refs", ()) or ())
-        )
-        payload = semantic.get("structural_interpretation_payload")
-        rule_hash = ""
-        if isinstance(payload, Mapping):
-            rule_hash = str(payload.get("admission_rule_hash", "") or "")
-        elif decision == "ADMITTED":
-            # A positive admission must bind its exact rule identity. A negative
-            # evaluation legitimately has no rule payload, because no rule passed.
-            raise OwnerProjectionError(
-                "ADMITTED receipt carries no structural_interpretation_payload; "
-                "the admission rule identity cannot be bound"
-            )
-        if decision == "ADMITTED" and not rule_hash:
-            raise OwnerProjectionError(
-                "ADMITTED receipt does not bind an exact admission rule hash"
-            )
         authority_ref = semantic.get("admission_authority_ref")
         if not isinstance(authority_ref, Mapping) or not authority_ref.get("authority_content_hash"):
             raise OwnerProjectionError(
@@ -289,24 +336,100 @@ class RouteObligation:
             )
         fact_ref = semantic.get("empirical_fact_ref")
         if not isinstance(fact_ref, Mapping) or not fact_ref.get("content_hash"):
-            raise OwnerProjectionError("admission receipt does not bind the exact empirical fact")
+            raise OwnerProjectionError(
+                "admission receipt does not bind the exact empirical fact"
+            )
+        receipt_blocking = tuple(
+            exact_ref(value)
+            for value in (semantic.get("applicable_negative_denial_noncomparability_refs") or ())
+        )
+        payload = semantic.get("structural_interpretation_payload")
+        rule_hash = ""
+        if decision == "ADMITTED":
+            # A positive admission must bind its exact rule identity. A negative
+            # receipt legitimately has no rule payload, because no rule passed.
+            if not isinstance(payload, Mapping):
+                raise OwnerProjectionError(
+                    "ADMITTED receipt carries no structural_interpretation_payload; "
+                    "the admission rule identity cannot be bound"
+                )
+            rule_hash = str(payload.get("admission_rule_hash", "") or "")
+            if not rule_hash:
+                raise OwnerProjectionError(
+                    "ADMITTED receipt does not bind an exact admission rule hash"
+                )
+
+        # ------------------------------------------------------------------
+        # ENVELOPE AGREEMENT. The evaluation is usable as an execution envelope
+        # only where every duplicate field matches the receipt exactly. A
+        # hand-constructed evaluation around a real receipt must not be able to
+        # restate, soften or inflate what the owner actually decided.
+        # ------------------------------------------------------------------
+        envelope_decision = str(getattr(evaluation, "decision_state", "") or "")
+        if envelope_decision != decision:
+            raise OwnerProjectionError(
+                f"admission evaluation decision_state {envelope_decision!r} disagrees "
+                f"with the canonical receipt decision {decision!r} (receipt "
+                f"{receipt_ref.content_hash}); the receipt is the sole authority and a "
+                "forged evaluation decision is refused, not stored "
+                "(C1-03A-FACTORY-BLOCK-RECEIPT-NOT-DOMINATED-001)"
+            )
+        envelope_reason = str(getattr(evaluation, "reason_code", "") or "")
+        if envelope_reason != reason:
+            raise OwnerProjectionError(
+                f"admission evaluation reason_code {envelope_reason!r} disagrees with "
+                f"the canonical receipt reason {reason!r} (receipt "
+                f"{receipt_ref.content_hash}); a forged evaluation reason is refused, "
+                "not stored (C1-03A-FACTORY-BLOCK-RECEIPT-NOT-DOMINATED-001)"
+            )
+        envelope_blocking = tuple(
+            exact_ref(value) for value in (getattr(evaluation, "blocking_refs", ()) or ())
+        )
+        if {ref.key for ref in envelope_blocking} != {ref.key for ref in receipt_blocking}:
+            raise OwnerProjectionError(
+                "admission evaluation blocking_refs disagree with the receipt's exact "
+                "applicable negative/denial/noncomparability refs (envelope "
+                f"{sorted(ref.key for ref in envelope_blocking)} vs receipt "
+                f"{sorted(ref.key for ref in receipt_blocking)}); forged blocking refs "
+                "inconsistent with the receipt are refused "
+                "(C1-03A-FACTORY-BLOCK-RECEIPT-NOT-DOMINATED-001)"
+            )
+
+        # ------------------------------------------------------------------
+        # REQUESTED-USE LAW. For a positive receipt the caller's claimed use must
+        # be the very use the receipt granted; contradictory requested-use
+        # metadata is rejected outright rather than stored beside the receipt
+        # truth. For a nonpositive receipt the attempted requested use may be
+        # recorded, but it is never granted authority: ``target_use`` carries the
+        # receipt's own value (including UNRESOLVED_STRUCTURAL_USE) and the
+        # obligation is not a positive route.
+        # ------------------------------------------------------------------
+        if decision == "ADMITTED" and requested_use != target_use:
+            raise OwnerProjectionError(
+                f"caller requested_use {requested_use!r} contradicts the ADMITTED "
+                f"receipt target use {target_use!r} (receipt "
+                f"{receipt_ref.content_hash}); contradictory requested-use metadata is "
+                "rejected, not stored alongside the receipt truth "
+                "(C1-03A-FACTORY-BLOCK-REQUESTED-USE-CONTRADICTION-001)"
+            )
+
         # Derivation law: a structural-mediation use always routes through the
         # learned/adjudicated owner. Whether the claim succeeded only decides if
         # the envelope may proceed at all -- it never downgrades the route.
         required = ROUTE_LEARNED_OR_ADJUDICATED_REQUIRED
         return cls(
             _TRUST_TOKEN=_TRUST_TOKEN,
-            owner=owner,
+            owner=OWNER_ADMISSION_PROJECTION_LABEL,
             requested_use=requested_use,
             target_use=target_use,
             decision_state=decision,
-            reason_code=str(getattr(evaluation, "reason_code", "") or ""),
+            reason_code=reason,
             required_route_class=required,
             relation_ref=dict(fact_ref),
             admission_receipt_ref=receipt_ref.as_dict(),
             admission_authority_ref=dict(authority_ref),
             admission_rule_ref={"admission_rule_hash": rule_hash},
-            blocking_refs=blocking,
+            blocking_refs=receipt_blocking,
         )
 
     @property
@@ -344,7 +467,10 @@ class RecursiveCoverageCustody:
     The custody is factory-only: direct construction requires the module-private
     trust token, and :meth:`from_handoff` reads ``handoff.evaluated_frontier_ref``
     itself. A caller can therefore neither forge the custody nor substitute a
-    different coverage record.
+    different coverage record. ``supporting_refs`` is retained in the identity
+    shape but is always empty: the custody admits no caller-supplied supporting
+    evidence, because the exact frontier and the handoff's own retained scope
+    identity are already owner-derived.
 
     There is deliberately no ``completeness_state`` field. ``RecursiveBranchHandoff``
     does not own a completeness grade, so recording one here would let a caller
@@ -369,16 +495,20 @@ class RecursiveCoverageCustody:
             raise OwnerProjectionError("custody refs must be exact refs")
 
     @classmethod
-    def from_handoff(
-        cls,
-        handoff: Any,
-        *,
-        required_supporting_refs: Sequence[ExactRef] = (),
-    ) -> "RecursiveCoverageCustody":
+    def from_handoff(cls, handoff: Any) -> "RecursiveCoverageCustody":
         """Derive custody from a real RecursiveBranchHandoff.
 
         ``completeness_state`` is intentionally not a parameter: the handoff does
         not own a completeness grade, so no caller may supply one.
+
+        ``required_supporting_refs`` is gone for the same reason. The custody
+        already binds the exact handoff ref, the exact evaluated frontier, and the
+        handoff's own internally retained scope/frontier identity. Every one of
+        those is owner-derived, so admitting further refs would only ever add
+        caller evidence the owner never produced, and would let a caller change
+        the custody identity (and therefore the envelope identity) by adding a
+        ref
+        (C1-03A-FACTORY-BLOCK-CALLER-SUPPORTING-REFS-001).
         """
         from rawlsing_next.pre553_recursive_handoff import RecursiveBranchHandoff
 
@@ -420,17 +550,11 @@ class RecursiveCoverageCustody:
                     getattr(handoff, "branch_replay_binding", None), "branch_replay_binding"
                 ),
             }
-        supporting = []
-        for value in required_supporting_refs:
-            if not isinstance(value, ExactRef):
-                raise OwnerProjectionError("supporting coverage refs must be exact refs")
-            supporting.append(value)
         return cls(
             _TRUST_TOKEN=_TRUST_TOKEN,
             handoff_ref=handoff_ref,
             coverage_record_ref=coverage_ref,
             handoff_scope_identity=scope_identity,
-            supporting_refs=tuple(supporting),
         )
 
     def identity_material(self) -> Mapping[str, Any]:
@@ -477,6 +601,11 @@ class OwnerStateProjection:
     arbitrary retained state or arbitrary projection logic. Each factory below
     calls its own fixed classification function directly.
 
+    Each factory also requires the *exact* current owner object type, and each
+    factory fixes its own ``owner`` label. A caller-shaped object is never a
+    competent owner, and a caller cannot rewrite the provenance of the state it
+    projects.
+
     The retained state is therefore always a function of a real owner object.
     """
 
@@ -512,10 +641,15 @@ class OwnerStateProjection:
         cls,
         fact: Any,
         *,
-        owner: str = OWNER_EMPIRICAL_PROJECTION_LABEL,
         reason: str = "",
     ) -> "OwnerStateProjection":
-        """Project a real empirical fact, reading its own cell projection."""
+        """Project a real empirical fact, reading its own cell projection.
+
+        The exact current owner type is required and the owner label is fixed by
+        this factory, so neither the fact nor the provenance of the projection can
+        be shaped by a caller.
+        """
+        _require_exact_owner_object(fact, EmpiricalFact, "from_empirical_fact")
         state = str(getattr(fact, "typed_state", ""))
         if not state:
             raise OwnerProjectionError("empirical fact carries no typed_state")
@@ -528,7 +662,7 @@ class OwnerStateProjection:
         except Exception as exc:  # noqa: BLE001 - a projection must fail closed
             raise OwnerProjectionError(
                 "classify_empirical_cells could not project the owner fact for "
-                f"{owner}: {exc}"
+                f"{OWNER_EMPIRICAL_PROJECTION_LABEL}: {exc}"
             ) from exc
         replay = getattr(fact, "replay_ref", None)
         supporting = ()
@@ -536,7 +670,7 @@ class OwnerStateProjection:
             supporting = (exact_ref(replay),)
         return cls(
             _TRUST_TOKEN=_TRUST_TOKEN,
-            owner=owner,
+            owner=OWNER_EMPIRICAL_PROJECTION_LABEL,
             producer_state=state,
             retained_state=retained,
             projection_law="classify_empirical_cells(fact.typed_state, complete_cell_semantic_projection)",
@@ -550,10 +684,16 @@ class OwnerStateProjection:
         cls,
         receipt: Any,
         *,
-        owner: str = OWNER_DISCOVERY_PROJECTION_LABEL,
         reason: str = "",
     ) -> "OwnerStateProjection":
-        """Project a real exact-discovery receipt, cross-checking its coverage."""
+        """Project a real exact-discovery receipt, cross-checking its coverage.
+
+        The exact current owner type is required and the owner label is fixed by
+        this factory.
+        """
+        _require_exact_owner_object(
+            receipt, DiscoveryResultReceipt, "from_discovery_receipt"
+        )
         state = str(getattr(receipt, "typed_state", ""))
         coverage = str(getattr(receipt, "coverage_state", "") or "NOT_APPLICABLE")
         ref = getattr(receipt, "ref", None)
@@ -564,11 +704,11 @@ class OwnerStateProjection:
         except Exception as exc:  # noqa: BLE001 - a projection must fail closed
             raise OwnerProjectionError(
                 "classify_discovery_receipt_state could not project the owner receipt "
-                f"for {owner}: {exc}"
+                f"for {OWNER_DISCOVERY_PROJECTION_LABEL}: {exc}"
             ) from exc
         return cls(
             _TRUST_TOKEN=_TRUST_TOKEN,
-            owner=owner,
+            owner=OWNER_DISCOVERY_PROJECTION_LABEL,
             producer_state=state,
             retained_state=retained,
             projection_law="classify_discovery_receipt_state(typed_state, coverage_state)",
@@ -582,15 +722,21 @@ class OwnerStateProjection:
         cls,
         adaptive_result: Any,
         *,
-        owner: str = OWNER_ADAPTIVE_PROJECTION_LABEL,
         reason: str = "",
-        producer_ref: ExactRef | None = None,
     ) -> "OwnerStateProjection":
         """Project a real adaptive result, carrying its own unvisited territory.
 
         The projection carries the owner's own visited/unvisited/determinant refs.
-        No caller can substitute them, and no separate reconstruction is needed.
+        The producer ref is derived only from
+        ``adaptive_result.determinant_state_ref``; there is no ``producer_ref``
+        parameter, so no caller can substitute a different determinant identity.
+        The owner label is likewise fixed by this factory.
         """
+        from rawlsing_next.pre553_discovery_adaptive import AdaptiveSearchResult
+
+        _require_exact_owner_object(
+            adaptive_result, AdaptiveSearchResult, "from_adaptive_result"
+        )
         completeness = str(getattr(adaptive_result, "completeness_state", ""))
         if not completeness:
             raise OwnerProjectionError("adaptive result carries no completeness_state")
@@ -612,10 +758,7 @@ class OwnerStateProjection:
             raise OwnerProjectionError(
                 "adaptive result claims a global negative; refused by owner contract"
             )
-        ref = producer_ref
-        if ref is None:
-            candidate = getattr(adaptive_result, "determinant_state_ref", None)
-            ref = candidate if isinstance(candidate, ExactRef) else None
+        ref = getattr(adaptive_result, "determinant_state_ref", None)
         if not isinstance(ref, ExactRef):
             raise OwnerProjectionError("adaptive result carries no exact determinant ref")
         checkpoint = getattr(adaptive_result, "checkpoint", None)
@@ -625,7 +768,7 @@ class OwnerStateProjection:
         except Exception as exc:  # noqa: BLE001 - a projection must fail closed
             raise OwnerProjectionError(
                 f"classify_adaptive_coverage could not project the owner result for "
-                f"{owner}: {exc}"
+                f"{OWNER_ADAPTIVE_PROJECTION_LABEL}: {exc}"
             ) from exc
         # supporting_refs = (checkpoint?, determinant, *visited)
         supporting: list[ExactRef] = []
@@ -635,7 +778,7 @@ class OwnerStateProjection:
         supporting.extend(visited)
         return cls(
             _TRUST_TOKEN=_TRUST_TOKEN,
-            owner=owner,
+            owner=OWNER_ADAPTIVE_PROJECTION_LABEL,
             producer_state=completeness,
             retained_state=retained,
             projection_law="classify_adaptive_coverage(completeness_state) with owner unvisited refs",
@@ -653,7 +796,6 @@ class OwnerStateProjection:
         handoff: Any,
         custody: RecursiveCoverageCustody,
         *,
-        owner: str = OWNER_RECURSIVE_HANDOFF_LABEL,
         reason: str = "",
     ) -> "OwnerStateProjection":
         """Project a selected positive recursive handoff.
@@ -661,7 +803,8 @@ class OwnerStateProjection:
         A handoff is a positive *selection*, so the derived retained state is
         SUPPORTED. That claim is only lawful when the handoff is real and the
         owner-derived custody is supplied for it, which is why custody is a
-        required argument rather than an optional extra.
+        required argument rather than an optional extra. The owner label is fixed
+        by this factory.
         """
         from rawlsing_next.pre553_recursive_handoff import RecursiveBranchHandoff
 
@@ -688,7 +831,7 @@ class OwnerStateProjection:
             )
         return cls(
             _TRUST_TOKEN=_TRUST_TOKEN,
-            owner=owner,
+            owner=OWNER_RECURSIVE_HANDOFF_LABEL,
             producer_state="RECURSIVE_BRANCH_HANDOFF_SELECTED",
             retained_state=SUPPORTED,
             projection_law=(
@@ -707,7 +850,6 @@ class OwnerStateProjection:
         exception: BaseException,
         reason: str,
         producer_ref: ExactRef,
-        owner: str = OWNER_EMPIRICAL_PROJECTION_LABEL,
         supporting_refs: Sequence[ExactRef] = (),
     ) -> "OwnerStateProjection":
         """Project INTEGRITY_FAILURE from the exact empirical integrity refusal.
@@ -717,6 +859,10 @@ class OwnerStateProjection:
         check is exact-type identity rather than ``isinstance``: an isinstance
         check would silently collapse BLOCKED_REQUIRED_AUTHORITY into
         INTEGRITY_FAILURE.
+
+        The owner label is fixed by this factory. There is no ``owner=``
+        parameter, so the provenance of the projected state cannot be relabelled
+        to point at a different owner.
         """
         from rawlsing_next.pre553_empirical_objects import Pre553IntegrityError
         from rawlsing_next.pre553_empirical_authority import Pre553AuthorityError
@@ -735,7 +881,7 @@ class OwnerStateProjection:
             )
         return cls(
             _TRUST_TOKEN=_TRUST_TOKEN,
-            owner=owner,
+            owner=OWNER_EMPIRICAL_PROJECTION_LABEL,
             producer_state=f"OWNER_REFUSED:{type(exception).__name__}",
             retained_state=INTEGRITY_FAILURE,
             projection_law=(
@@ -753,10 +899,13 @@ class OwnerStateProjection:
         exception: BaseException,
         reason: str,
         producer_ref: ExactRef,
-        owner: str = OWNER_DISCOVERY_PROJECTION_LABEL,
         supporting_refs: Sequence[ExactRef] = (),
     ) -> "OwnerStateProjection":
-        """Project BLOCKED_REQUIRED_AUTHORITY from the exact authority refusal."""
+        """Project BLOCKED_REQUIRED_AUTHORITY from the exact authority refusal.
+
+        The owner label is fixed by this factory; there is no ``owner=``
+        parameter.
+        """
         from rawlsing_next.pre553_empirical_authority import Pre553AuthorityError
 
         if type(exception) is not Pre553AuthorityError:
@@ -768,7 +917,7 @@ class OwnerStateProjection:
             )
         return cls(
             _TRUST_TOKEN=_TRUST_TOKEN,
-            owner=owner,
+            owner=OWNER_DISCOVERY_PROJECTION_LABEL,
             producer_state=f"OWNER_REFUSED:{type(exception).__name__}",
             retained_state=BLOCKED_REQUIRED_AUTHORITY,
             projection_law=(

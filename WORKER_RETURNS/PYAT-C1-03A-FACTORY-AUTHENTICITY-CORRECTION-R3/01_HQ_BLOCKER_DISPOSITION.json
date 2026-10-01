@@ -1,0 +1,107 @@
+{
+  "schema": "PYAT_C1_03A_FACTORY_AUTHENTICITY_DISPOSITION@1",
+  "disposition": "PASS_C1_03A_FACTORY_AUTHENTICITY_CORRECTED__INDEPENDENT_REREVIEW_REQUIRED",
+  "base": "ad67be387fd9da350f07858b41729309e1c2e67f",
+  "commissioned_tip": "b885227b1b3f0ccaa8c892357dfc40251ab1d1cc",
+  "method": "Every HQ counterexample was reproduced against this branch's owner BEFORE repair. All twelve reproduced exactly, and reproduction found one counterexample strictly worse than the ones HQ listed (see G5 below).",
+  "blockers": {
+    "E_typed_factories_accept_duck_typed_caller_objects": {
+      "verdict": "CORRECTED",
+      "reproduced": {
+        "from_empirical_fact(fake)": "MINTED retained=SUPPORTED",
+        "from_discovery_receipt(fake)": "MINTED retained=OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+        "from_adaptive_result(fake)": "MINTED retained=UNVISITED with a caller-minted determinant ref",
+        "from_structural_admission(fake)": "MINTED decision=ADMITTED positive=True reason=CALLER_ASSERTED_ALL_GATES_PASS"
+      },
+      "correction": [
+        "Added _require_exact_owner_object(value, expected, boundary): exact type identity, never isinstance, never duck typing.",
+        "from_empirical_fact now requires exactly rawlsing_next.pre553_empirical_objects.EmpiricalFact.",
+        "from_discovery_receipt now requires exactly rawlsing_next.pre553_empirical_objects.DiscoveryResultReceipt.",
+        "from_adaptive_result now requires exactly rawlsing_next.pre553_discovery_adaptive.AdaptiveSearchResult.",
+        "from_structural_admission now requires exactly rawlsing_next.pre553_structural_admission.AdmissionEvaluation, AND exactly rawlsing_next.pre553_empirical_objects.StructuralEmpiricalAdmission for its receipt.",
+        "Exact type identity also refuses a caller-defined SUBCLASS of an owner family, so the gate is not bypassable by inheritance.",
+        "The gate fires before any attribute is read, so a forgery cannot even influence the failure path."
+      ],
+      "hostiles_added": [
+        "test_repair_hq_e_duck_typed_empirical_fact_cannot_mint_projection",
+        "test_repair_hq_e_duck_typed_discovery_receipt_cannot_mint_projection",
+        "test_repair_hq_e_duck_typed_adaptive_result_cannot_mint_projection",
+        "test_repair_hq_e_duck_typed_admission_evaluation_cannot_mint_route_material",
+        "test_repair_hq_e_owner_family_subclasses_are_refused_too"
+      ]
+    },
+    "F_caller_can_rewrite_owner_or_provenance_identity": {
+      "verdict": "CORRECTED",
+      "reproduced": {
+        "from_empirical_fact(owner=...)": "MINTED forged_owner=rawlsing_next.not_a_real_owner.fabricate",
+        "from_discovery_receipt(owner=...)": "MINTED forged_owner differs from baseline",
+        "from_adaptive_result(owner=...)": "MINTED forged_owner differs from baseline",
+        "from_adaptive_result(producer_ref=...)": "MINTED projected determinant=urn:rawlsing:fake:caller-substituted-determinant identity_changed=True, replacing the owner's own determinant ref",
+        "from_handoff(required_supporting_refs=...)": "MINTED baseline_supporting=0 forged_supporting=1 custody_hash_changed=True"
+      },
+      "correction": [
+        "The caller owner-label parameter is REMOVED from all six projection/obligation factories: from_empirical_fact, from_discovery_receipt, from_adaptive_result, from_recursive_handoff, from_structural_admission, and both exact refusal factories (from_empirical_integrity_refusal, from_blocked_authority_refusal). Each now hardcodes its own OWNER_*_PROJECTION_LABEL.",
+        "from_adaptive_result(producer_ref=...) is REMOVED. The producer/determinant ref is derived only from AdaptiveSearchResult.determinant_state_ref.",
+        "The adaptive projection still preserves the exact owner checkpoint ref, visited refs and unvisited refs.",
+        "RecursiveCoverageCustody.from_handoff(required_supporting_refs=...) is REMOVED. The custody already binds the exact handoff ref, the exact evaluated frontier and the handoff's own internally retained scope/frontier identity; there is no caller channel left to add evidence or to vary the custody/envelope identity.",
+        "supporting_refs is retained in the custody identity shape but is always empty, so custody hashes stay comparable with R2.",
+        "The fixture helper recursive_handoff_custody lost its supporting= parameter rather than silently accepting and dropping it."
+      ],
+      "hostiles_added": [
+        "test_repair_hq_f_no_factory_still_accepts_a_caller_owner_label",
+        "test_repair_hq_f_adaptive_producer_ref_cannot_be_replaced_by_the_caller",
+        "test_repair_hq_f_custody_admits_no_caller_supporting_refs"
+      ]
+    },
+    "G_admission_evaluation_is_constructible_receipt_must_dominate": {
+      "verdict": "CORRECTED",
+      "reproduced": {
+        "G1_real_positive_receipt_plus_forged_decision": "MINTED receipt_says=ADMITTED obligation_says=INTEGRITY_FAILURE",
+        "G2_real_positive_receipt_plus_forged_reason": "MINTED obligation_reason=CALLER_CHOSEN_REASON",
+        "G3_forged_blocking_refs": "MINTED receipt_blockers=1 forged=2 forged_has_injection=True",
+        "G4_positive_receipt_plus_contradictory_requested_use": "MINTED receipt_target=STRUCTURAL_MEDIATION_INPUT requested=COMPLETELY_UNRELATED_USE positive=True",
+        "G5_NEGATIVE_receipt_plus_forged_ADMITTED": "MINTED decision=ADMITTED positive=True -- NOT IN THE HQ LIST. Reproduction found that a genuine NEGATIVE receipt wrapped in a hand-built AdmissionEvaluation asserting ADMITTED minted a POSITIVE route obligation. This is the worst direction of the laundering and is now closed."
+      },
+      "correction": [
+        "Every authoritative route fact is now read from the canonical StructuralEmpiricalAdmission receipt: decision from admission_decision_state, reason from decision_reason_code, target use from target_use, empirical fact ref from the receipt's empirical_fact_ref, admission authority from the receipt's admission_authority_ref, rule hash from the receipt's positive structural_interpretation_payload, and blocking refs from the receipt's exact applicable_negative_denial_noncomparability_refs.",
+        "The AdmissionEvaluation is accepted only as an execution envelope whose duplicate fields (decision_state, reason_code, blocking_refs) agree with the receipt EXACTLY. Any disagreement fails closed rather than being stored.",
+        "Blocking refs are compared as exact ref sets, so canonical re-ordering by the receipt's set-like canonicalization is not mistaken for a discrepancy, while an injected or dropped ref is.",
+        "For ADMITTED, the caller's requested_use must equal the receipt-declared target use exactly. Contradictory requested-use metadata is rejected outright, not stored alongside the receipt truth.",
+        "For a nonpositive receipt, target_use carries the receipt's own value. A nonpositive receipt whose target is UNRESOLVED_STRUCTURAL_USE preserves that target exactly; requested_use records the attempted use but is never granted authority, the obligation is not positive, require_positive_route refuses it, and it cannot be laundered to DIRECT_EMPIRICAL."
+      ],
+      "hostiles_added": [
+        "test_repair_hq_g_forged_evaluation_decision_cannot_override_the_receipt",
+        "test_repair_hq_g_forged_evaluation_reason_cannot_override_the_receipt",
+        "test_repair_hq_g_forged_blocking_refs_inconsistent_with_receipt_fail",
+        "test_repair_hq_g_contradictory_requested_use_is_rejected",
+        "test_repair_hq_g_real_positive_evaluation_with_matching_requested_use_passes",
+        "test_repair_hq_g_negative_unresolved_receipt_preserves_target_and_grants_nothing"
+      ]
+    }
+  },
+  "prior_work_preserved": {
+    "R2_direct_construction_guards": "PRESERVED (9 R2 trust-boundary courts re-run by keyword: 9 passed)",
+    "no_generic_derive_or_derive_fn": "PRESERVED (derive/derive_fn still deleted outright)",
+    "exact_refusal_type_distinction_Pre553AuthorityError_subclass_trap": "PRESERVED",
+    "learned_route_requires_owner_derived_obligation": "PRESERVED",
+    "recursive_custody_has_no_invented_completeness_grade": "PRESERVED",
+    "AT16_54_of_6_is_SUPPORTED": "PRESERVED",
+    "all_eight_negative_states_remain_distinct": "PRESERVED",
+    "real_adaptive_UNVISITED": "PRESERVED",
+    "genuine_ADMITTED_positive_route": "PRESERVED and additionally pinned by a new hostile",
+    "DENY_and_failed_no_laundering": "PRESERVED",
+    "real_positive_handoff_exact_custody": "PRESERVED",
+    "producer_to_C1_composition_to_named_consumer": "PRESERVED",
+    "C1_02_untouched": "CONFIRMED -- no C1-02 module exists in this tree and none was written"
+  },
+  "court_delta": {
+    "prior_total": 185,
+    "c1_03a_courts_prior": 48,
+    "c1_03a_courts_now": 62,
+    "new_courts": 14,
+    "replaced_courts": 0,
+    "total_now": 199,
+    "prior_185_still_passing": true,
+    "note": "No R1 or R2 court was deleted. Two existing courts were REWRITTEN in place because their original code depended on removed caller channels, and each rewrite is strictly stronger; see 00_RETURN.md 'Court rewrites'."
+  }
+}

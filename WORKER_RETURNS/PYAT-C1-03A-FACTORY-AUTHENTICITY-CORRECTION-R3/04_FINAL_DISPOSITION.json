@@ -1,0 +1,52 @@
+{
+  "schema": "PYAT_C1_03A_FACTORY_AUTHENTICITY_FINAL_DISPOSITION@1",
+  "disposition": "PASS_C1_03A_FACTORY_AUTHENTICITY_CORRECTED__INDEPENDENT_REREVIEW_REQUIRED",
+  "terminal": "C1_03A_FACTORY_AUTHENTICITY_CORRECTION_RETURNED__HQ_ADJUDICATION_REQUIRED",
+  "branch": "agent/opencode-pyat-hq153-c1-03a-factory-authenticity-correction-r3",
+  "base": "ad67be387fd9da350f07858b41729309e1c2e67f",
+  "commissioned_tip": "b885227b1b3f0ccaa8c892357dfc40251ab1d1cc",
+  "hq_blockers": {
+    "E_typed_factories_still_accept_duck_typed_caller_objects": "CORRECTED",
+    "F_caller_can_still_rewrite_owner_or_provenance_identity": "CORRECTED",
+    "G_AdmissionEvaluation_is_itself_constructible_receipt_truth_must_dominate": "CORRECTED"
+  },
+  "basis": [
+    "All twelve HQ counterexamples were reproduced against this branch's owner BEFORE repair; all twelve reproduced exactly.",
+    "Reproduction found one counterexample worse than those HQ listed: a genuine NEGATIVE receipt wrapped in a hand-built AdmissionEvaluation asserting ADMITTED minted a POSITIVE route obligation. That laundering is now closed.",
+    "Each typed factory now requires the EXACT competent current owner object family by type identity, never by isinstance and never by duck typing. A caller-shaped object with plausible fields and exact-looking refs cannot mint governed projection or route material.",
+    "Exact type identity also refuses a caller-defined subclass, so the gate cannot be bypassed by inheritance.",
+    "The owner label is now fixed by the factory in all six projection/obligation factories plus both exact refusal factories; no owner= parameter survives anywhere.",
+    "from_adaptive_result no longer accepts producer_ref; the determinant ref comes only from AdaptiveSearchResult.determinant_state_ref, and the exact owner checkpoint, visited and unvisited refs are still preserved.",
+    "RecursiveCoverageCustody.from_handoff no longer accepts required_supporting_refs; the custody is a pure function of the real handoff and admits no caller evidence.",
+    "The canonical StructuralEmpiricalAdmission receipt is now the sole authority for every route fact. The AdmissionEvaluation is accepted only as an execution envelope whose duplicate fields agree exactly; any disagreement fails closed.",
+    "For ADMITTED, contradictory requested-use metadata is rejected outright rather than stored beside the receipt truth.",
+    "For a nonpositive unresolved receipt the exact UNRESOLVED_STRUCTURAL_USE target is preserved and the obligation gains no positive route authority.",
+    "No semantic design was reopened and no R1/R2 valid work was regressed. No R1 or R2 court was deleted; two were rewritten in place because their original code depended on a removed caller channel, and each rewrite is strictly stronger.",
+    "The prior 185 remains valid and passing; 14 hostiles added for 199 passed, 0 failed, 0 errors, 0 skipped."
+  ],
+  "tests": {
+    "prior": 185,
+    "new_courts": 14,
+    "replaced_courts": 0,
+    "courts_rewritten_in_place": 2,
+    "total": 199,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "preserved_from_prior": true,
+  "existing_owners_modified": [],
+  "c1_02_touched": false,
+  "at17_touched": false,
+  "c1_03r_touched": false,
+  "c5_c7_touched": false,
+  "raw_sources_touched": false,
+  "v3_touched": false,
+  "architecture_warrant": false,
+  "authority_or_owner_gap": false,
+  "new_semantic_or_model_authority_invented": false,
+  "wider_regression_sweep_claimed": false,
+  "merge_or_adoption_performed": false,
+  "self_adopted": false,
+  "next_required_action": "Narrow independent rereview of the three C1-03A factory-authenticity blockers (E, F, G), with particular attention to whether receipt-truth dominance plus envelope agreement fully closes positive laundering from a hand-built AdmissionEvaluation."
+}

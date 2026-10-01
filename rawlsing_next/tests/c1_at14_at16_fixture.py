@@ -599,15 +599,20 @@ def structural_admission_evaluation(*, admission_state="ALLOW", fact_state="SUPP
     return evaluation
 
 
-def recursive_handoff_custody(handoff, *, supporting=()):
+def recursive_handoff_custody(handoff):
     """Derive RecursiveCoverageCustody from a real RecursiveBranchHandoff.
 
     There is no ``completeness_state`` parameter: the handoff does not own a
     completeness grade, so no caller may assert one.
+
+    There is also no ``supporting`` parameter. The custody admits no
+    caller-supplied supporting evidence, because the exact handoff ref, the exact
+    evaluated frontier and the handoff's own retained scope identity are already
+    owner-derived.
     """
     from rawlsing_next.pre553_analytical_state_and_route import RecursiveCoverageCustody
 
-    return RecursiveCoverageCustody.from_handoff(handoff, required_supporting_refs=supporting)
+    return RecursiveCoverageCustody.from_handoff(handoff)
 
 
 def project_recursive_handoff(handoff):
