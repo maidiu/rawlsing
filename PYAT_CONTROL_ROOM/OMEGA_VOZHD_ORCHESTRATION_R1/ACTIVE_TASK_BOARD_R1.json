@@ -1,7 +1,7 @@
 {
   "schema": "PYAT_OMEGA_ACTIVE_TASK_BOARD@1",
-  "revision": 26,
-  "status": "C1_02_ADOPTED__N10E_CORRECTION_REREVIEW_BOUND__C1_03_READY_EXCEPT_AT17__C2_PREP_COMPLETE__C3_ADOPTED",
+  "revision": 27,
+  "status": "C1_02_ADOPTED__C1_03A_AND_C1_03R_BOUND__N10E_REREVIEW_ACTIVE__C1_03_JOIN_PENDING_AT17",
   "control_branch": "integration/pre-main-reconciliation-r1",
   "adopted_preparation": [
     {
@@ -159,10 +159,31 @@
       "launch_surface": "BROWSER",
       "model": "GPT-5.6_SOL_HIGH",
       "scope": "REV_N10E_001_002_003_NARROW_REREVIEW"
+    },
+    {
+      "id": "C1-03A",
+      "branch": "agent/opencode-pyat-hq146-c1-03a-negative-route-consumer-r1",
+      "commission_tip": "da29402473ad671625feb49fad5142a1d689978b",
+      "base": "bc661188b51e995d9f5d74e55c4e37d2ba358a17",
+      "state": "BOUND_AWAITING_USER_MEDIATED_LAUNCH",
+      "launch_surface": "OPENCODE",
+      "model": "SPACE_BUNNY_FREE",
+      "scope": "AT14_AT15_AT16"
+    },
+    {
+      "id": "C1-03R",
+      "branch": "agent/deepseek-pyat-hq146-c1-03r-replay-invalidation-r1",
+      "commission_tip": "8ce2a1aaa457fb1b08da9fca917dbb342bb98d41",
+      "base": "bc661188b51e995d9f5d74e55c4e37d2ba358a17",
+      "state": "BOUND_AWAITING_USER_MEDIATED_LAUNCH",
+      "launch_surface": "DEEPSEEK_HARNESS",
+      "model": "DEEPSEEK_V4_1_FLASH",
+      "mode": "STANDARD",
+      "scope": "AT18_AT19"
     }
   ],
   "held": [
-    "C1-03: C1-02 dependency satisfied; hold dispatch only until N10E AT17 provider core is independently accepted, to avoid duplicate AT17 implementation",
+    "C1-03 JOIN: wait for independently accepted C1-03A + C1-03R + N10E AT17; AT17 must not be duplicated",
     "C1-R until C1-03",
     "N10W full progressive-world proof until competent higher-order/world inputs",
     "C5/C6/C7 until exact scoped inputs/authority are bound",
@@ -177,7 +198,7 @@
     "NO_PREV3_TO_V3_ACTOR_IMPLEMENTATION"
   ],
   "prior_git_blob_sha1": "66b666991d9a8c614710687c7640277cb75fc8c6",
-  "next_action": "RUN_N10E_NARROW_REREVIEW__THEN_BIND_C1_03_USING_ACCEPTED_C1_02_AND_N10E_AT17",
+  "next_action": "RUN_C1_03A_SPACE_BUNNY_AND_C1_03R_DEEPSEEK_IN_PARALLEL__N10E_REREVIEW_CONTINUES",
   "operating_requirements": "PYAT_CONTROL_ROOM/BROWSER_ECONOMY_MODE_R1.md",
   "grounding": {
     "live_control_head": "731519c6de341bbd6c95672f70329f3cf996d686",
