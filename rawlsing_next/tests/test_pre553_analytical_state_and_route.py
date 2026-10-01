@@ -27,6 +27,14 @@ from rawlsing_next.pre553_analytical_state_and_route import (
     RouteLegitimacyError,
     assert_route_not_laundered,
     build_state_route_result,
+    require_positive_route,
+    OwnerStateProjection,
+    RouteObligation,
+    RecursiveCoverageCustody,
+    OwnerProjectionError,
+    ProducerStateEvidence,
+    OWNER_RECURSIVE_HANDOFF_LABEL,
+    SUPPORTED_BASELINE,
     classify_adaptive_coverage,
     classify_discovery_receipt_state,
     classify_empirical_cells,
@@ -36,29 +44,25 @@ from rawlsing_next.pre553_analytical_state_and_route import (
 from rawlsing_next.tests import c1_at14_at16_fixture as fx
 
 
-def _envelope(retained, *, route=ROUTE_DIRECT_EMPIRICAL, fixture_refs=(), **kwargs):
-    """Build a bounded envelope from one competent producer state."""
+def _envelope(projection, *, route=ROUTE_DIRECT_EMPIRICAL, fixture_refs=(), **kwargs):
+    """Build a bounded envelope from an OWNER-DERIVED state projection.
+
+    The retained analytical state is never passed in by the caller. It comes from
+    the projection, which was derived from a real competent owner object.
+    """
+    retained = projection.retained_state
     disposition = kwargs.pop("disposition", None) or fx.consumer_disposition_for(retained)
-    owner = kwargs.pop("owner", fx.OWNER_EMPIRICAL)
-    producer_state = kwargs.pop("producer_state", retained)
-    reason = kwargs.pop("reason", "owner-native state")
-    coverage_state = kwargs.pop("coverage_state", "NOT_APPLICABLE")
-    evidence = fx.producer_evidence_for(
-        owner=owner,
-        producer_state=producer_state,
-        retained_state=retained,
-        reason=reason,
-        producer_ref=fixture_refs[0],
-        supporting_refs=fixture_refs,
-        coverage_state=coverage_state,
-    )
+    refs = tuple(fixture_refs) or (projection.producer_ref,) + tuple(projection.supporting_refs)
+    coverage_state = kwargs.pop("coverage_state", projection.coverage_state)
+    unvisited = kwargs.pop("unvisited_refs", ())
     return build_state_route_result(
         route_class=route,
-        producer_evidence=[evidence],
-        producer_refs=list(fixture_refs),
+        producer_evidence=[projection.as_evidence()],
+        producer_refs=list(refs),
         consumer_disposition=disposition,
-        reason=reason,
+        reason=kwargs.pop("reason", projection.reason),
         coverage_state=coverage_state,
+        unvisited_refs=unvisited,
         **kwargs,
     )
 
@@ -70,30 +74,23 @@ def _envelope(retained, *, route=ROUTE_DIRECT_EMPIRICAL, fixture_refs=(), **kwar
 
 def test_at14_observed_zero_is_retained_and_is_not_valid_empty():
     """AT14(1): observed zero in a nonzero denominator stays its own state."""
-    data = fx.observed_zero_fixture()
+    projection, data = fx.project_empirical("observed_zero_fixture")
     fact = data["fact"]
     assert fact.raw_denominator_support == 2, "observed zero requires positive support"
-    zero_cells = data["observed_zero_cells"]
-    assert zero_cells, "fixture must expose a supported observed-zero cell"
+    assert data["observed_zero_cells"], "fixture must expose a supported observed-zero cell"
 
-    retained = classify_empirical_cells(
-        fact.typed_state, fact.target_topology["complete_cell_semantic_projection"]
-    )
+    retained = projection.retained_state
     assert fact.typed_state == "SUPPORTED"
     assert retained == OBSERVED_ZERO
-    assert tuple(zero_cells) == observed_zero_cells(
+    assert tuple(data["observed_zero_cells"]) == observed_zero_cells(
         fact.target_topology["complete_cell_semantic_projection"]
     )
+    assert "complete_cell_semantic_projection" in projection.projection_law
     # Observed zero is NOT valid-empty and NOT zero support.
     assert retained != VALID_EMPTY
     assert retained != UNDERPOWERED
 
-    result = _envelope(
-        retained,
-        producer_state=fact.typed_state,
-        reason="positive denominator with an exact zero numerator cell",
-        fixture_refs=(fact.ref,),
-    )
+    result = _envelope(projection, fixture_refs=(fact.ref,))
     assert result.retained_analytical_state == OBSERVED_ZERO
     # Observed zero is lawfully consumer-invocable, but this AT14 court asserts
     # only the state conservation. The real invocation is proven in the AT16
@@ -104,12 +101,13 @@ def test_at14_observed_zero_is_retained_and_is_not_valid_empty():
 
 def test_at14_zero_support_is_distinct_from_observed_zero_and_valid_empty():
     """AT14(1)+(2): zero support is neither observed zero nor valid-empty."""
-    zero_support = fx.zero_support_fixture()
-    observed = fx.observed_zero_fixture()
+    zero_proj, zero_support = fx.project_empirical("zero_support_fixture")
+    observed_proj, observed = fx.project_empirical("observed_zero_fixture")
+    valid_proj, _ = fx.project_empirical("valid_empty_fixture")
 
-    zero_retained = classify_empirical_fact_state(zero_support["producer_state"])
-    observed_retained = classify_empirical_fact_state(observed["producer_state"])
-    valid_empty_retained = classify_empirical_fact_state(fx.valid_empty_fixture()["producer_state"])
+    zero_retained = zero_proj.retained_state
+    observed_retained = observed_proj.retained_state
+    valid_empty_retained = valid_proj.retained_state
 
     assert zero_support["producer_state"] == "ZERO_SUPPORT"
     assert zero_support["raw_denominator_support"] == 0
@@ -120,13 +118,12 @@ def test_at14_zero_support_is_distinct_from_observed_zero_and_valid_empty():
 
 def test_at14_valid_empty_is_retained_from_its_own_owner():
     """AT14(2): VALID_EMPTY comes from the declared-empty target domain."""
-    data = fx.valid_empty_fixture()
+    projection, data = fx.project_empirical("valid_empty_fixture")
     assert data["producer_state"] == "VALID_EMPTY"
     assert data["raw_denominator_support"] > 0, "valid-empty has a positive denominator"
-    retained = classify_empirical_fact_state(data["producer_state"])
+    retained = projection.retained_state
     assert retained == VALID_EMPTY
-    result = _envelope(retained, producer_state=data["producer_state"],
-                       reason=data["reason"], fixture_refs=(data["fact"].ref,))
+    result = _envelope(projection, fixture_refs=(data["fact"].ref,))
     assert result.retained_analytical_state == VALID_EMPTY
     assert not result.consumer_disposition.consumer_invoked
     assert result.consumer_disposition.non_invocation_reason
@@ -134,13 +131,11 @@ def test_at14_valid_empty_is_retained_from_its_own_owner():
 
 def test_at14_underpowered_is_retained_and_distinct_from_unresolved():
     """AT14(3)+(4): underpowered never collapses into unknown/unresolved."""
-    underpowered = fx.underpowered_fixture()
-    unresolved = fx.unresolved_fixture()
+    under_proj, underpowered = fx.project_receipt("underpowered_fixture")
+    unresolved_proj, unresolved = fx.project_empirical("unresolved_fixture")
 
-    under_retained = classify_discovery_receipt_state(
-        underpowered["producer_state"], underpowered["coverage_state"]
-    )
-    unresolved_retained = classify_empirical_fact_state(unresolved["producer_state"])
+    under_retained = under_proj.retained_state
+    unresolved_retained = unresolved_proj.retained_state
 
     assert underpowered["producer_state"] == "INSUFFICIENT_SUPPORT"
     assert underpowered["coverage_state"] == "EVALUATED_UNDERPOWERED"
@@ -153,12 +148,11 @@ def test_at14_underpowered_is_retained_and_distinct_from_unresolved():
 
 def test_at14_unresolved_is_retained_from_the_empirical_owner():
     """AT14(4): UNKNOWN/UNRESOLVED is retained with its own reason."""
-    data = fx.unresolved_fixture()
+    projection, data = fx.project_empirical("unresolved_fixture")
     assert data["producer_state"] == "UNRESOLVED"
-    retained = classify_empirical_fact_state(data["producer_state"])
+    retained = projection.retained_state
     assert retained == UNKNOWN_UNRESOLVED
-    result = _envelope(retained, producer_state=data["producer_state"],
-                       reason=data["reason"], fixture_refs=(data["fact"].ref,))
+    result = _envelope(projection, fixture_refs=(data["fact"].ref,))
     assert result.retained_analytical_state == UNKNOWN_UNRESOLVED
     # Never coerced into valid-empty, observed zero, or a supported result.
     assert result.retained_analytical_state not in (VALID_EMPTY, OBSERVED_ZERO)
@@ -167,7 +161,7 @@ def test_at14_unresolved_is_retained_from_the_empirical_owner():
 
 def test_at14_unvisited_comes_from_the_real_adaptive_owner():
     """AT14(5): UNVISITED is produced by the adaptive owner, not invented."""
-    data = fx.unvisited_adaptive_fixture()
+    projection, data = fx.project_adaptive()
     adaptive = data["adaptive_result"]
 
     # The adaptive owner really ran and really left territory unvisited.
@@ -177,16 +171,12 @@ def test_at14_unvisited_comes_from_the_real_adaptive_owner():
     assert adaptive.global_negative_claim is False
     assert adaptive.semantic_truth_effect is False
 
-    retained = classify_adaptive_coverage(adaptive.completeness_state)
+    retained = projection.retained_state
     assert retained == UNVISITED
 
     result = _envelope(
-        retained,
-        owner=fx.OWNER_ADAPTIVE,
-        producer_state=adaptive.completeness_state,
-        reason=data["reason"],
+        projection,
         fixture_refs=(data["determinant_state_ref"],),
-        coverage_state=adaptive.completeness_state,
         unvisited_refs=adaptive.unvisited_unit_refs,
         visited_refs=adaptive.visited_unit_refs,
         coverage_record_ref=adaptive.checkpoint.ref,
@@ -200,14 +190,13 @@ def test_at14_unvisited_comes_from_the_real_adaptive_owner():
 
 def test_at14_noncomparable_is_not_coerced_to_unresolved():
     """AT14(6): NONCOMPARABLE stays NONCOMPARABLE."""
-    data = fx.noncomparable_fixture()
+    projection, data = fx.project_empirical("noncomparable_fixture")
     assert data["producer_state"] == "NONCOMPARABLE"
-    retained = classify_empirical_fact_state(data["producer_state"])
+    retained = projection.retained_state
     assert retained == NONCOMPARABLE
     assert retained != UNKNOWN_UNRESOLVED
     assert retained != VALID_EMPTY
-    result = _envelope(retained, producer_state=data["producer_state"],
-                       reason=data["reason"], fixture_refs=(data["fact"].ref,))
+    result = _envelope(projection, fixture_refs=(data["fact"].ref,))
     assert result.retained_analytical_state == NONCOMPARABLE
 
 
@@ -216,6 +205,15 @@ def test_at14_blocked_by_absent_or_denying_authority_is_its_own_state():
     from rawlsing_next.pre553_discovery_exact import execute_exact_bounded_discovery
 
     data = fx.blocked_required_authority_fixture()
+    projection, data = fx.project_owner_refusal(
+        "blocked_required_authority_fixture",
+        producer_ref=data["authority"].candidate_grammar_ref,
+    )
+    retained = projection.retained_state
+    assert retained == BLOCKED_REQUIRED_AUTHORITY
+    # Blocked is not absence, not valid-empty, not observed zero, not unresolved.
+    assert retained not in (OBSERVED_ZERO, VALID_EMPTY, UNKNOWN_UNRESOLVED, UNVISITED)
+
     with pytest.raises(Exception) as excinfo:
         execute_exact_bounded_discovery(
             repository=data["source"]["repo"],
@@ -226,23 +224,20 @@ def test_at14_blocked_by_absent_or_denying_authority_is_its_own_state():
             query_template_catalog=data["queries"],
         )
     assert "DENY" in str(excinfo.value)
-
-    retained = classify_discovery_receipt_state(data["producer_state"])
-    assert retained == BLOCKED_REQUIRED_AUTHORITY
-    # Blocked is not absence, not valid-empty, not observed zero, not unresolved.
-    assert retained not in (OBSERVED_ZERO, VALID_EMPTY, UNKNOWN_UNRESOLVED, UNVISITED)
+    # The retained state was derived from that very refusal.
+    assert projection.producer_state.endswith(type(excinfo.value).__name__)
+    assert "owner refusal" in projection.projection_law
 
 
 def test_at14_integrity_failure_cannot_become_valid_empty():
     """AT14(8): INTEGRITY_FAILURE stays integrity failure."""
-    data = fx.integrity_failure_fixture()
+    projection, data = fx.project_owner_refusal("integrity_failure_fixture")
     assert data["exception_type"] == "Pre553IntegrityError"
-    retained = classify_empirical_fact_state(data["producer_state"])
+    retained = projection.retained_state
     assert retained == INTEGRITY_FAILURE
     assert retained != VALID_EMPTY
     assert retained != OBSERVED_ZERO
-    result = _envelope(retained, producer_state=data["producer_state"],
-                       reason=data["reason"], fixture_refs=(data["corrupted_object_ref"],))
+    result = _envelope(projection, fixture_refs=(data["corrupted_object_ref"],))
     assert result.retained_analytical_state == INTEGRITY_FAILURE
     assert not result.consumer_disposition.consumer_invoked
 
@@ -302,64 +297,118 @@ def test_at14_positive_recursive_handoff_is_not_the_coverage_record():
     evaluated_states = {receipt.typed_state for receipt in receipts}
     assert "DISCOVERED_RESULT_SUPPORTED" in evaluated_states
 
-    # Claiming UNVISITED while handing over only the positive handoff, with no
-    # unvisited territory from the adaptive owner, must fail closed.
-    with pytest.raises(C103AStateRouteError, match="must carry exact unvisited refs"):
-        _envelope(
-            UNVISITED,
-            owner=fx.OWNER_ADAPTIVE,
-            producer_state="PARTIAL_BUDGET_EXHAUSTED",
-            reason="positive handoff relabelled as unvisited coverage",
-            fixture_refs=(handoff.ref,),
-            coverage_state="PARTIAL_BUDGET_EXHAUSTED",
-            coverage_record_ref=gen1.discovery_result.evaluated_frontier_ref,
-            unvisited_refs=(),
+    # A positive handoff, correctly labelled, requires retained custody of the
+    # exact coverage record it was selected from.
+    handoff_projection = OwnerStateProjection(
+        owner=OWNER_RECURSIVE_HANDOFF_LABEL,
+        producer_state="DISCOVERED_RESULT_SUPPORTED",
+        retained_state=SUPPORTED_BASELINE,
+        projection_law="positive recursive handoff selection (custody required)",
+        reason="positive recursive handoff",
+        producer_ref=handoff.ref,
+    )
+    with pytest.raises(OwnerProjectionError, match="requires retained custody"):
+        build_state_route_result(
+            route_class=ROUTE_DIRECT_EMPIRICAL,
+            producer_evidence=[handoff_projection.as_evidence()],
+            producer_refs=[handoff.ref],
+            consumer_disposition=fx.consumer_disposition_for(SUPPORTED_BASELINE),
+            reason="positive handoff without its coverage record",
         )
 
-    # And a retained positive may not smuggle in unvisited territory either.
+    # With the owner-derived custody bound, the same positive is lawful and the
+    # coverage record is carried into the envelope identity.
+    custody = fx.recursive_handoff_custody(
+        handoff,
+        completeness_state="COMPLETE_FOR_EXACT_DECLARED_FRONTIER",
+        supporting=(gen1.discovery_result.evaluated_frontier_ref,),
+    )
+    result = build_state_route_result(
+        route_class=ROUTE_DIRECT_EMPIRICAL,
+        producer_evidence=[handoff_projection.as_evidence()],
+        producer_refs=[handoff.ref],
+        consumer_disposition=fx.consumer_disposition_for(SUPPORTED_BASELINE),
+        reason="positive handoff with retained coverage custody",
+        coverage_custody=custody,
+    )
+    assert result.coverage_record_ref == gen1.discovery_result.evaluated_frontier_ref
+    assert result.coverage_custody_hash == custody.custody_hash
+    # Dropping custody changes the envelope identity, so it cannot be discarded.
+    without = build_state_route_result(
+        route_class=ROUTE_DIRECT_EMPIRICAL,
+        producer_evidence=[
+            handoff_projection.as_evidence().__class__(
+                **{
+                    **{
+                        f: getattr(handoff_projection.as_evidence(), f)
+                        for f in handoff_projection.as_evidence().__dataclass_fields__
+                        if f != "_token"
+                    },
+                    "_token": handoff_projection.as_evidence()._token,
+                }
+            )
+        ],
+        producer_refs=[handoff.ref],
+        consumer_disposition=fx.consumer_disposition_for(SUPPORTED_BASELINE),
+        reason="positive handoff with retained coverage custody",
+        coverage_custody=RecursiveCoverageCustody(
+            handoff_ref=handoff.ref,
+            coverage_record_ref=handoff.evaluated_frontier_ref,
+            completeness_state="DIFFERENT_COMPLETENESS",
+        ),
+    )
+    assert without.coverage_custody_hash != result.coverage_custody_hash
+
+    # A custody record naming a different handoff is refused outright.
+    with pytest.raises(OwnerProjectionError, match="not among the producer refs"):
+        build_state_route_result(
+            route_class=ROUTE_DIRECT_EMPIRICAL,
+            producer_evidence=[handoff_projection.as_evidence()],
+            producer_refs=[handoff.ref],
+            consumer_disposition=fx.consumer_disposition_for(SUPPORTED_BASELINE),
+            reason="custody names a foreign handoff",
+            coverage_custody=RecursiveCoverageCustody(
+                handoff_ref=handoff.evaluated_frontier_ref,
+                coverage_record_ref=handoff.evaluated_frontier_ref,
+                completeness_state="COMPLETE_FOR_EXACT_DECLARED_FRONTIER",
+            ),
+        )
+
+    # A retained positive may not smuggle in unvisited territory either.
+    observed_projection, _ = fx.project_empirical("observed_zero_fixture")
     with pytest.raises(C103AStateRouteError, match="only be retained on the UNVISITED state"):
-        _envelope(
-            OBSERVED_ZERO,
-            producer_state="OBSERVED_ZERO",
+        build_state_route_result(
+            route_class=ROUTE_DIRECT_EMPIRICAL,
+            producer_evidence=[observed_projection.as_evidence()],
+            producer_refs=[observed_projection.producer_ref],
+            consumer_disposition=fx.consumer_disposition_for(OBSERVED_ZERO),
             reason="positive relabelled with unvisited territory",
-            fixture_refs=(handoff.ref,),
             unvisited_refs=(handoff.ref,),
         )
 
 
-# ===========================================================================
-# AT15 - direct-route legitimacy
-# ===========================================================================
-
-
 def test_at15_competent_direct_empirical_route_stays_direct():
     """AT15(1): a competent direct empirical route is consumed without a learned wrapper."""
-    data = fx.observed_zero_fixture()
-    fact = data["fact"]
-    retained = classify_empirical_fact_state(fact.typed_state)
+    projection, data = fx.project_empirical("observed_zero_fixture")
 
     result = _envelope(
-        retained,
+        projection,
         route=ROUTE_DIRECT_EMPIRICAL,
-        producer_state=fact.typed_state,
-        reason="exact direct empirical contract is already sufficient",
-        fixture_refs=(fact.ref,),
+        fixture_refs=(data["fact"].ref,),
     )
     # No learned/adjudicated authority was demanded or invented.
     assert result.route_class == ROUTE_DIRECT_EMPIRICAL
     assert result.authority_refs == ()
+    assert result.route_obligation_hash is None
 
 
 def test_at15_structural_use_requires_learned_adjudication_on_this_base():
-    """AT15(2): structural use of a fact requires a named rule and authority.
+    """AT15(2): structural use derives a LEARNED_OR_ADJUDICATED_REQUIRED obligation.
 
-    The competent current owner is structural admission (I04). Without a named
-    rule and matching authority it cannot return ADMITTED, which is exactly the
-    LEARNED_OR_ADJUDICATED_REQUIRED case.
+    The obligation is derived from the real admission evaluation, not asserted by
+    the caller. Without a named rule the owner cannot return ADMITTED.
     """
-    from rawlsing_next.pre553_structural_admission import (
-        evaluate_structural_empirical_admission,
-    )
+    from rawlsing_next.pre553_structural_admission import evaluate_structural_empirical_admission
     from rawlsing_next.tests.test_pre553_structural_admission import (
         environment,
         query_fact,
@@ -367,128 +416,192 @@ def test_at15_structural_use_requires_learned_adjudication_on_this_base():
     )
 
     query, fact = query_fact(state="SUPPORTED", tag="c1-03a-admission")
-    rule, registry, admitted_snapshot, _parity = environment(admission_state="ALLOW")
-    authority_ref = admitted_snapshot.authority_ref
+    rule, registry, snapshot, _parity = environment(admission_state="ALLOW")
 
-    denied = evaluate_structural_empirical_admission(
+    no_rule = evaluate_structural_empirical_admission(
         query=query,
         fact=fact,
-        requested_admission_authority_ref=authority_ref,
+        requested_admission_authority_ref=snapshot.authority_ref,
         rule=None,
         request=request(),
         authority_registry=registry,
         producer_replay_locator_or_reference_root=fact.producer_replay_locator_or_reference_root,
     )
-    assert denied.decision_state != "ADMITTED", denied.reason_code
+    assert no_rule.decision_state != "ADMITTED"
+    # Even a nonpositive evaluation derives the learned/adjudicated obligation.
+    obligation = RouteObligation.from_structural_admission(
+        no_rule, requested_use="STRUCTURAL_MEDIATION_INPUT"
+    )
+    assert obligation.required_route_class == ROUTE_LEARNED_OR_ADJUDICATED_REQUIRED
+    # Without a passing rule the owner cannot even resolve the target use, so the
+    # obligation records that honestly rather than assuming the requested use.
+    assert obligation.decision_state == "MISSING_STRUCTURAL_ADMISSION_AUTHORITY"
+    assert obligation.target_use == "UNRESOLVED_STRUCTURAL_USE"
+    assert obligation.is_positive_admission is False
+    assert obligation.admission_rule_ref["admission_rule_hash"] == ""
 
-    # A competent direct route exists for the same fact without any admission rule.
-    direct = _envelope(
-        classify_empirical_fact_state(fact.typed_state),
-        route=ROUTE_DIRECT_EMPIRICAL,
-        producer_state=fact.typed_state,
-        reason="direct empirical use needs no learned rule",
-        fixture_refs=(fact.ref,),
+    # A genuine positive route does bind the target use and the rule identity.
+    positive = fx.structural_admission_evaluation(
+        admission_state="ALLOW", fact_state="SUPPORTED", tag="c1-03a-admission"
     )
+    positive_obligation = RouteObligation.from_structural_admission(
+        positive, requested_use="STRUCTURAL_MEDIATION_INPUT"
+    )
+    assert positive_obligation.target_use == "STRUCTURAL_MEDIATION_INPUT"
+    assert positive_obligation.admission_rule_ref["admission_rule_hash"]
+    require_positive_route(positive_obligation)
+
+    # A competent direct route still exists for the same fact, unwrapped.
+    projection, _ = fx.project_empirical("observed_zero_fixture")
+    direct = _envelope(projection, route=ROUTE_DIRECT_EMPIRICAL)
     assert direct.route_class == ROUTE_DIRECT_EMPIRICAL
-    # ...while the structural use of the same fact is legitimately gated.
-    assert_route_not_laundered(
-        route_class=ROUTE_LEARNED_OR_ADJUDICATED_REQUIRED,
-        required_route_class=ROUTE_LEARNED_OR_ADJUDICATED_REQUIRED,
-        producer_state=fact.typed_state,
-        reason="structural mediation input requires a named admission rule",
+    # M1/M2 is not imposed on that competent direct route.
+    assert direct.authority_refs == ()
+
+
+def test_at15_positive_learned_route_is_proven_from_a_real_admission():
+    """AT15(2): one genuine positive ADMITTED learned/adjudicated route is proven.
+
+    The positive route is established by the real current admission owner, and
+    its receipt/rule/authority/use identity is bound into the envelope.
+    """
+    evaluation = fx.structural_admission_evaluation(
+        admission_state="ALLOW", fact_state="SUPPORTED", tag="c1-03a-positive-route"
     )
+    assert evaluation.decision_state == "ADMITTED"
+    assert evaluation.reason_code == "EXACT_NAMED_RULE_ALL_GATES_PASS"
+
+    obligation = RouteObligation.from_structural_admission(
+        evaluation, requested_use="STRUCTURAL_MEDIATION_INPUT"
+    )
+    assert obligation.is_positive_admission is True
+    assert obligation.required_route_class == ROUTE_LEARNED_OR_ADJUDICATED_REQUIRED
+    # The obligation binds exact owner-produced identities, not a caller's label.
+    assert obligation.admission_receipt_ref["content_hash"]
+    assert obligation.admission_authority_ref["authority_content_hash"]
+    assert obligation.admission_rule_ref["admission_rule_hash"]
+    assert obligation.relation_ref["content_hash"]
+    assert obligation.target_use == "STRUCTURAL_MEDIATION_INPUT"
+    require_positive_route(obligation)
+
+    # The route and the admission receipt are bound into the envelope identity.
+    projection, data = fx.project_empirical("observed_zero_fixture")
+    result = _envelope(
+        projection,
+        route=ROUTE_LEARNED_OR_ADJUDICATED_REQUIRED,
+        route_obligation=obligation,
+        fixture_refs=(data["fact"].ref,),
+    )
+    assert result.route_class == ROUTE_LEARNED_OR_ADJUDICATED_REQUIRED
+    assert result.route_obligation_hash == obligation.obligation_hash
 
 
 def test_at15_failed_learned_claim_cannot_be_route_laundered_as_direct():
-    """AT15 hostile: a failed learned/adjudicated claim cannot be relabelled DIRECT."""
-    from rawlsing_next.pre553_structural_admission import (
-        evaluate_structural_empirical_admission,
+    """AT15 hostile: a failed learned claim cannot be relabelled DIRECT.
+
+    The same underlying failed structural-use evidence is used; only the claimed
+    route label changes.
+    """
+    evaluation = fx.structural_admission_evaluation(
+        admission_state="ALLOW", fact_state="UNRESOLVED", tag="c1-03a-launder"
     )
-    from rawlsing_next.tests.test_pre553_structural_admission import (
-        environment,
-        query_fact,
-        request,
+    assert evaluation.decision_state != "ADMITTED"
+    obligation = RouteObligation.from_structural_admission(
+        evaluation, requested_use="STRUCTURAL_MEDIATION_INPUT"
     )
 
-    query, fact = query_fact(state="UNRESOLVED", tag="c1-03a-launder")
-    rule, registry, admitted_snapshot, _parity = environment(admission_state="ALLOW")
-    authority_ref = admitted_snapshot.authority_ref
-
-    # The claim genuinely fails: an unresolved fact cannot be admitted.
-    failed = evaluate_structural_empirical_admission(
-        query=query,
-        fact=fact,
-        requested_admission_authority_ref=authority_ref,
-        rule=rule,
-        request=request(),
-        authority_registry=registry,
-        producer_replay_locator_or_reference_root=fact.producer_replay_locator_or_reference_root,
-    )
-    assert failed.decision_state != "ADMITTED", f"the learned claim must not succeed here: {failed.reason_code}"
-
-    # Relabelling it as a direct empirical route is rejected.
+    # Relabelling the same evidence as DIRECT is rejected against derived law.
     with pytest.raises(RouteLegitimacyError) as excinfo:
         assert_route_not_laundered(
-            route_class=ROUTE_DIRECT_EMPIRICAL,
-            required_route_class=ROUTE_LEARNED_OR_ADJUDICATED_REQUIRED,
-            producer_state=fact.typed_state,
-            reason="learned claim relabelled direct to reach the consumer",
+            route_class=ROUTE_DIRECT_EMPIRICAL, obligation=obligation,
         )
     assert "ROUTE_LAUNDERING_REJECTED" in str(excinfo.value)
+    assert obligation.admission_receipt_ref["content_hash"] in str(excinfo.value)
+
+    # A nonpositive learned route may not proceed at all.
+    with pytest.raises(RouteLegitimacyError, match="route may not proceed"):
+        require_positive_route(obligation)
+
+    # The envelope refuses the laundered route too.
+    projection, data = fx.project_empirical("unresolved_fixture")
+    with pytest.raises(RouteLegitimacyError):
+        _envelope(
+            projection,
+            route=ROUTE_DIRECT_EMPIRICAL,
+            route_obligation=obligation,
+            fixture_refs=(data["fact"].ref,),
+        )
 
 
 def test_at15_denying_authority_cannot_be_relabelled_direct():
     """AT15 hostile: a denied admission authority cannot be relabelled direct."""
-    from rawlsing_next.pre553_structural_admission import (
-        evaluate_structural_empirical_admission,
+    evaluation = fx.structural_admission_evaluation(
+        admission_state="DENY", fact_state="SUPPORTED", tag="c1-03a-deny-launder"
     )
-    from rawlsing_next.tests.test_pre553_structural_admission import (
-        environment,
-        query_fact,
-        request,
+    assert evaluation.decision_state != "ADMITTED"
+    obligation = RouteObligation.from_structural_admission(
+        evaluation, requested_use="STRUCTURAL_MEDIATION_INPUT"
     )
-
-    query, fact = query_fact(state="SUPPORTED", tag="c1-03a-deny-launder")
-    rule, registry, denied_snapshot, _parity = environment(admission_state="DENY")
-    authority_ref = denied_snapshot.authority_ref
-    denied = evaluate_structural_empirical_admission(
-        query=query,
-        fact=fact,
-        requested_admission_authority_ref=authority_ref,
-        rule=rule,
-        request=request(),
-        authority_registry=registry,
-        producer_replay_locator_or_reference_root=fact.producer_replay_locator_or_reference_root,
-    )
-    assert denied.decision_state != "ADMITTED", denied.reason_code
-
+    assert obligation.reason_code == "ADMISSION_AUTHORITY_STATE_DENY"
     with pytest.raises(RouteLegitimacyError):
+        assert_route_not_laundered(route_class=ROUTE_DIRECT_EMPIRICAL, obligation=obligation)
+    with pytest.raises(RouteLegitimacyError):
+        require_positive_route(obligation)
+
+
+def test_at15_same_evidence_cannot_be_direct_merely_by_changing_the_label():
+    """AT15 hostile: identical underlying evidence, different claimed route.
+
+    The owner-derived obligation is unchanged; only the caller's label differs.
+    The admitted route is accepted and the direct label is refused for the very
+    same receipt.
+    """
+    evaluation = fx.structural_admission_evaluation(
+        admission_state="ALLOW", fact_state="SUPPORTED", tag="c1-03a-same-evidence"
+    )
+    obligation = RouteObligation.from_structural_admission(
+        evaluation, requested_use="STRUCTURAL_MEDIATION_INPUT"
+    )
+    assert_route_not_laundered(
+        route_class=ROUTE_LEARNED_OR_ADJUDICATED_REQUIRED, obligation=obligation,
+    )
+    with pytest.raises(RouteLegitimacyError):
+        assert_route_not_laundered(route_class=ROUTE_DIRECT_EMPIRICAL, obligation=obligation)
+    # The obligation itself is a pure function of the owner receipt.
+    again = RouteObligation.from_structural_admission(
+        fx.structural_admission_evaluation(
+            admission_state="ALLOW", fact_state="SUPPORTED", tag="c1-03a-same-evidence"
+        ),
+        requested_use="STRUCTURAL_MEDIATION_INPUT",
+    )
+    assert again.obligation_hash == obligation.obligation_hash
+
+
+def test_at15_route_obligation_must_be_owner_derived():
+    """AT15: a caller cannot supply the route obligation itself."""
+    with pytest.raises(RouteLegitimacyError, match="owner-derived RouteObligation"):
         assert_route_not_laundered(
             route_class=ROUTE_DIRECT_EMPIRICAL,
-            required_route_class=ROUTE_LEARNED_OR_ADJUDICATED_REQUIRED,
-            producer_state=fact.typed_state,
-            reason="denied authority relabelled direct",
+            obligation=ROUTE_LEARNED_OR_ADJUDICATED_REQUIRED,
         )
 
 
 def test_at15_route_label_alone_creates_no_authority():
     """AT15: the route label must not itself confer authority or support."""
-    data = fx.observed_zero_fixture()
-    fact = data["fact"]
+    projection, data = fx.project_empirical("observed_zero_fixture")
 
-    # Two envelopes differing only in route class are distinct identities, and
-    # neither carries authority it did not receive from an owner.
-    direct = _envelope(OBSERVED_ZERO, route=ROUTE_DIRECT_EMPIRICAL,
-                       producer_state=fact.typed_state, reason="r",
-                       fixture_refs=(fact.ref,))
-    learned = _envelope(OBSERVED_ZERO, route=ROUTE_LEARNED_OR_ADJUDICATED_REQUIRED,
-                        producer_state=fact.typed_state, reason="r",
-                        fixture_refs=(fact.ref,))
+    direct = _envelope(projection, route=ROUTE_DIRECT_EMPIRICAL,
+                       fixture_refs=(data["fact"].ref,))
+    learned = _envelope(projection, route=ROUTE_LEARNED_OR_ADJUDICATED_REQUIRED,
+                        fixture_refs=(data["fact"].ref,))
     assert direct.envelope_identity_hash != learned.envelope_identity_hash
     assert direct.authority_refs == () and learned.authority_refs == ()
     # Labelling a route never turns a negative state into a positive one.
-    assert direct.retained_analytical_state == learned.retained_analytical_state == OBSERVED_ZERO
+    assert direct.retained_analytical_state == learned.retained_analytical_state
     assert direct.negative_claim_authorized is False
+    # Neither envelope claims an obligation it did not derive from an owner.
+    assert direct.route_obligation_hash is None
+    assert learned.route_obligation_hash is None
 
 
 # ===========================================================================
@@ -497,7 +610,13 @@ def test_at15_route_label_alone_creates_no_authority():
 
 
 def test_at16_direct_empirical_positive_path_reaches_the_named_consumer():
-    """AT16(1): real producer output -> composition -> actual consumer."""
+    """AT16(1): real producer output -> composition -> actual consumer.
+
+    Corrected witness: the ATT1=agree -> ATT2 fixture is 54 support / 6 oppose,
+    so the real composition is SUPPORTED with no zero cell. The earlier version
+    of this court labelled the envelope OBSERVED_ZERO, which the reviewer found
+    to be false. The retained state is now owner-derived.
+    """
     from rawlsing_next.pre553_analytical_composition import compose_positioned_subject_possibility
     from rawlsing_next.source_backed_positioned_subject_possibility import (
         evaluate_positioned_subject_possibility,
@@ -518,34 +637,39 @@ def test_at16_direct_empirical_positive_path_reaches_the_named_consumer():
     )
     assert composed.analytical_state == "SUPPORTED"
 
+    # The real producer cells are 54 support / 6 oppose: neither is zero, so the
+    # owner-derived retained state is a plain SUPPORTED positive.
+    cells = {
+        cell["cell"]: cell["raw_numerator_support"]
+        for cell in composed.complete_cell_geometry
+    }
+    assert cells == {"support": 54, "oppose": 6}
+    assert composed.raw_denominator_support == 60
+
+    projection = OwnerStateProjection.from_empirical_fact(composed.producer_result.facts[0])
+    assert projection.retained_state == SUPPORTED_BASELINE
+    assert projection.retained_state != OBSERVED_ZERO
+
     consumer_result = composed.consumer_result_or_null
     assert consumer_result is not None
     assert consumer_result.result_state == "EXACT_SUPPORTED"
 
-    # The consumer really is the current public consumer, reached by the public
-    # path, and its evidence came from the producer fact.
     evidence = composed.possibility_slice_evidence_or_null
     assert evidence is not None
     assert evidence.evidence_ref == consumer_result.exact_evidence_ref
     geometry_ref = evidence.geometry["source_fact_ref"]
     assert geometry_ref == composed.producer_fact_ref.as_dict()
 
-    # A hand-built consumer call with a fabricated slice is NOT this witness: the
-    # real path is required to produce the composed identity.
     handmade = evaluate_positioned_subject_possibility(
         query=consumer_query,
         rule=c1.make_model_rule(source["universe"].ref, "at16positive"),
         evidence=(evidence,),
     )
     assert handmade.result_hash == consumer_result.result_hash
-    assert composed.composed_result_identity_hash not in (
-        handmade.result_hash,
-    ), "the composed identity is strictly more than a consumer primitive result"
+    assert composed.composed_result_identity_hash not in (handmade.result_hash,)
 
     result = _envelope(
-        OBSERVED_ZERO,
-        producer_state=composed.analytical_state,
-        reason="direct empirical positive reaches the named current consumer",
+        projection,
         fixture_refs=(composed.producer_fact_ref, evidence.evidence_ref),
         upstream_composed_result_hash=composed.composed_result_identity_hash,
         disposition=ConsumerDisposition(
@@ -558,7 +682,7 @@ def test_at16_direct_empirical_positive_path_reaches_the_named_consumer():
             non_invocation_reason=None,
         ),
     )
-    # Every identity AT16 requires is recorded and bound.
+    assert result.retained_analytical_state == SUPPORTED_BASELINE
     assert result.consumer_disposition.consumer_query_ref == consumer_query.ref
     assert result.consumer_disposition.consumer_result_state == "EXACT_SUPPORTED"
     assert result.consumer_disposition.evidence_ref == evidence.evidence_ref
@@ -568,10 +692,8 @@ def test_at16_direct_empirical_positive_path_reaches_the_named_consumer():
 
 def test_at16_negative_path_preserves_non_invocation_explicitly():
     """AT16(2): a negative path records consumer behavior or explicit non-invocation."""
-    data = fx.valid_empty_fixture()
-    retained = classify_empirical_fact_state(data["producer_state"])
-    result = _envelope(retained, producer_state=data["producer_state"],
-                       reason=data["reason"], fixture_refs=(data["fact"].ref,))
+    projection, data = fx.project_empirical("valid_empty_fixture")
+    result = _envelope(projection, fixture_refs=(data["fact"].ref,))
     assert result.retained_analytical_state == VALID_EMPTY
     assert result.consumer_disposition.disposition == (
         CONSUMER_NOT_INVOKED_STATE_NOT_LOSSLESSLY_REPRESENTABLE
@@ -579,9 +701,10 @@ def test_at16_negative_path_preserves_non_invocation_explicitly():
     assert result.consumer_disposition.consumer_result_state is None
     assert "VALID_EMPTY" in result.consumer_disposition.non_invocation_reason
     # The non-invocation is part of the envelope identity, so it cannot be dropped.
-    other = _envelope(VALID_EMPTY, producer_state="VALID_EMPTY",
-                      reason="different reason", fixture_refs=(data["fact"].ref,))
-    assert other.envelope_identity_hash != result.envelope_identity_hash
+    other, other_data = fx.project_empirical("valid_empty_fixture")
+    changed = _envelope(other, fixture_refs=(other_data["fact"].ref,),
+                        reason="different reason")
+    assert changed.envelope_identity_hash != result.envelope_identity_hash
 
 
 def test_at16_handmade_slice_cannot_satisfy_final_consumer_proof():
@@ -622,19 +745,379 @@ def test_at16_handmade_slice_cannot_satisfy_final_consumer_proof():
 
 def test_at16_negative_states_are_not_coerced_into_a_consumer_state():
     """AT16 hostile: negative states must not become a fabricated consumer verdict."""
-    for fixture, retained in (
-        (fx.unresolved_fixture, UNKNOWN_UNRESOLVED),
-        (fx.noncomparable_fixture, NONCOMPARABLE),
-        (fx.integrity_failure_fixture, INTEGRITY_FAILURE),
+    for project, expected in (
+        ("unresolved_fixture", UNKNOWN_UNRESOLVED),
+        ("noncomparable_fixture", NONCOMPARABLE),
     ):
-        data = fixture()
-        result = _envelope(
-            retained,
-            producer_state=data["producer_state"],
-            reason=data["reason"],
-            fixture_refs=(data.get("fact").ref if "fact" in data else data["corrupted_object_ref"],),
-        )
-        assert result.retained_analytical_state == retained
+        projection, data = fx.project_empirical(project)
+        result = _envelope(projection, fixture_refs=(data["fact"].ref,))
+        assert result.retained_analytical_state == expected
         assert not result.consumer_disposition.consumer_invoked
         assert result.consumer_disposition.consumer_result_state is None
         assert result.negative_claim_authorized is False
+
+    integrity_projection, integrity_data = fx.project_owner_refusal(
+        "integrity_failure_fixture"
+    )
+    assert integrity_projection.retained_state == INTEGRITY_FAILURE
+    result = _envelope(
+        integrity_projection, fixture_refs=(integrity_data["corrupted_object_ref"],)
+    )
+    assert result.retained_analytical_state == INTEGRITY_FAILURE
+    assert not result.consumer_disposition.consumer_invoked
+    assert result.consumer_disposition.consumer_result_state is None
+    assert result.negative_claim_authorized is False
+
+
+# ===========================================================================
+# C1-03A independent-review blocker repairs
+# ===========================================================================
+
+
+def test_repair_blocker1_caller_label_cannot_establish_analytical_state():
+    """C1-03A-REVIEW-BLOCK-STATE-PROJECTION-001: a bare label is not authority.
+
+    This is the reviewer's own static reproducer: a real producer ref with
+    producer_state='SUPPORTED' and a different caller-chosen retained label.
+    """
+    from rawlsing_next.pre553_empirical_objects import ExactRef
+
+    real_ref = ExactRef("EmpiricalFact@1.0.0", "urn:test:c1-03a:real-fact", "b" * 64)
+    with pytest.raises(OwnerProjectionError) as excinfo:
+        ProducerStateEvidence(
+            owner="rawlsing_next.pre553_empirical_query.execute_empirical_query",
+            producer_state="SUPPORTED",
+            retained_state=VALID_EMPTY,
+            reason="caller chosen label",
+            producer_ref=real_ref,
+        )
+    assert "STATE-PROJECTION-001" in str(excinfo.value)
+
+
+def test_repair_blocker1_deprecated_label_helper_now_refuses():
+    """The old caller-label helper is retained only to prove it now refuses."""
+    with pytest.raises(OwnerProjectionError):
+        fx.producer_evidence_for(
+            owner="o", producer_state="SUPPORTED", retained_state=OBSERVED_ZERO,
+            reason="r", producer_ref=None,
+        )
+
+
+def test_repair_blocker1_retained_state_is_derived_from_the_real_owner_object():
+    """Each retained state is projected from its own competent owner object."""
+    expected = {
+        "observed_zero_fixture": OBSERVED_ZERO,
+        "valid_empty_fixture": VALID_EMPTY,
+        "unresolved_fixture": UNKNOWN_UNRESOLVED,
+        "noncomparable_fixture": NONCOMPARABLE,
+    }
+    for name, want in expected.items():
+        projection, _ = fx.project_empirical(name)
+        assert projection.retained_state == want, name
+        assert projection.projection_law, name
+    receipt, _ = fx.project_receipt("underpowered_fixture")
+    assert receipt.retained_state == UNDERPOWERED
+    adaptive, _ = fx.project_adaptive()
+    assert adaptive.retained_state == UNVISITED
+    refusal, _ = fx.project_owner_refusal("integrity_failure_fixture")
+    assert refusal.retained_state == INTEGRITY_FAILURE
+
+
+def test_repair_blocker1_observed_zero_requires_the_real_cell_projection():
+    """A SUPPORTED fact without its cell projection cannot claim a plain positive.
+
+    Without the producer's own cells an observed zero could not be derived, so
+    the projection fails closed rather than defaulting to SUPPORTED.
+    """
+    from rawlsing_next.pre553_empirical_objects import ExactRef
+
+    class _NoCells:
+        typed_state = "SUPPORTED"
+        target_topology = {"arity": 1}
+        ref = ExactRef("EmpiricalFact@1.0.0", "urn:test:c1-03a:no-cells", "c" * 64)
+
+    with pytest.raises(OwnerProjectionError, match="complete_cell_semantic_projection"):
+        OwnerStateProjection.from_empirical_fact(_NoCells())
+
+
+def test_repair_blocker1_observed_zero_cell_on_non_supported_fact_is_refused():
+    """An observed-zero cell cannot be attached to a non-supported fact."""
+    with pytest.raises(C103AStateRouteError, match="positive supported denominator"):
+        classify_empirical_cells(
+            "UNRESOLVED",
+            ({"cell": "1", "cell_state": "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+              "raw_numerator_support": 0},),
+        )
+
+
+def test_repair_blocker1_distinct_negative_states_remain_distinct():
+    """The repair did not collapse any mandatory state."""
+    reached = {
+        fx.project_empirical("observed_zero_fixture")[0].retained_state,
+        fx.project_empirical("valid_empty_fixture")[0].retained_state,
+        fx.project_receipt("underpowered_fixture")[0].retained_state,
+        fx.project_empirical("unresolved_fixture")[0].retained_state,
+        fx.project_adaptive()[0].retained_state,
+        fx.project_empirical("noncomparable_fixture")[0].retained_state,
+        fx.blocked_required_authority_fixture() and fx.project_owner_refusal(
+            "blocked_required_authority_fixture"
+        )[0].retained_state,
+        fx.project_owner_refusal("integrity_failure_fixture")[0].retained_state,
+    }
+    assert reached == set(MANDATORY_AT14_STATES)
+    assert len(reached) == 8
+
+
+def test_repair_blocker2_obligation_is_owner_derived_not_caller_supplied():
+    """C1-03A-REVIEW-BLOCK-ROUTE-DERIVATION-001: no caller-chosen obligation."""
+    # The previous signature accepted required_route_class; it no longer exists.
+    with pytest.raises(TypeError):
+        assert_route_not_laundered(
+            route_class=ROUTE_DIRECT_EMPIRICAL,
+            required_route_class=ROUTE_DIRECT_EMPIRICAL,
+            producer_state="UNRESOLVED",
+            reason="caller asserts no learned requirement",
+        )
+    with pytest.raises(RouteLegitimacyError, match="owner-derived RouteObligation"):
+        assert_route_not_laundered(
+            route_class=ROUTE_DIRECT_EMPIRICAL,
+            obligation=ROUTE_LEARNED_OR_ADJUDICATED_REQUIRED,
+        )
+
+
+def test_repair_blocker2_same_evidence_is_refused_for_direct_under_derived_law():
+    """The same underlying evidence cannot become direct by relabelling alone."""
+    evaluation = fx.structural_admission_evaluation(
+        admission_state="ALLOW", fact_state="SUPPORTED", tag="c1-03a-rep-same"
+    )
+    obligation = RouteObligation.from_structural_admission(
+        evaluation, requested_use="STRUCTURAL_MEDIATION_INPUT"
+    )
+    with pytest.raises(RouteLegitimacyError, match="ROUTE_LAUNDERING_REJECTED"):
+        assert_route_not_laundered(route_class=ROUTE_DIRECT_EMPIRICAL, obligation=obligation)
+    # The receipt identity is quoted in the refusal, so it is owner-derived.
+    assert obligation.admission_receipt_ref["content_hash"]
+
+
+def test_repair_blocker2_obligation_binds_exact_owner_identities():
+    """The obligation binds receipt, rule, authority, use and decision."""
+    evaluation = fx.structural_admission_evaluation(
+        admission_state="ALLOW", fact_state="SUPPORTED", tag="c1-03a-rep-bind"
+    )
+    obligation = RouteObligation.from_structural_admission(
+        evaluation, requested_use="STRUCTURAL_MEDIATION_INPUT"
+    )
+    assert obligation.owner == (
+        "rawlsing_next.pre553_structural_admission.evaluate_structural_empirical_admission"
+    )
+    assert obligation.admission_receipt_ref == evaluation.receipt.ref.as_dict()
+    assert obligation.admission_authority_ref["authority_content_hash"]
+    assert obligation.admission_rule_ref["admission_rule_hash"]
+    assert obligation.target_use == "STRUCTURAL_MEDIATION_INPUT"
+    assert obligation.decision_state == "ADMITTED"
+    # The obligation hash is a pure function of those owner identities.
+    assert obligation.obligation_hash == RouteObligation.from_structural_admission(
+        fx.structural_admission_evaluation(
+            admission_state="ALLOW", fact_state="SUPPORTED", tag="c1-03a-rep-bind"
+        ),
+        requested_use="STRUCTURAL_MEDIATION_INPUT",
+    ).obligation_hash
+
+
+def test_repair_blocker2_failed_and_denied_routes_cannot_proceed():
+    """Failed and DENY routes may not proceed, and never become direct."""
+    for admission_state, fact_state, tag in (
+        ("ALLOW", "UNRESOLVED", "c1-03a-rep-failed"),
+        ("DENY", "SUPPORTED", "c1-03a-rep-deny"),
+    ):
+        evaluation = fx.structural_admission_evaluation(
+            admission_state=admission_state, fact_state=fact_state, tag=tag
+        )
+        obligation = RouteObligation.from_structural_admission(
+            evaluation, requested_use="STRUCTURAL_MEDIATION_INPUT"
+        )
+        assert not obligation.is_positive_admission
+        with pytest.raises(RouteLegitimacyError, match="route may not proceed"):
+            require_positive_route(obligation)
+        with pytest.raises(RouteLegitimacyError, match="ROUTE_LAUNDERING_REJECTED"):
+            assert_route_not_laundered(
+                route_class=ROUTE_DIRECT_EMPIRICAL, obligation=obligation
+            )
+
+
+def test_repair_blocker2_competent_direct_route_is_not_given_a_learned_wrapper():
+    """A genuinely competent direct empirical product stays direct."""
+    projection, data = fx.project_empirical("observed_zero_fixture")
+    result = _envelope(projection, route=ROUTE_DIRECT_EMPIRICAL,
+                       fixture_refs=(data["fact"].ref,))
+    assert result.route_class == ROUTE_DIRECT_EMPIRICAL
+    assert result.authority_refs == ()
+    assert result.route_obligation_hash is None
+
+
+def test_repair_blocker3_positive_handoff_without_coverage_custody_fails():
+    """C1-03A-REVIEW-BLOCK-HANDOFF-COVERAGE-001: the exact hostile.
+
+    A positive recursive handoff with a positive retained state and a missing
+    coverage record must fail.
+    """
+    from rawlsing_next.tests.test_pre553_analytical_composition_higher_order import (
+        _depth2_source,
+        _recursive_generation,
+    )
+    from rawlsing_next.tests.test_pre553_discovery_exact import _atom
+    from rawlsing_next.tests.test_pre553_empirical_query import (
+        _branch_predicate,
+        _predicate,
+        _query,
+        _query_authority,
+        _response_leaf,
+    )
+
+    source = _depth2_source("c1-03a-rep-custody")
+    qauth = _query_authority("c1-03a-rep-custody")
+    parent = _branch_predicate(source, qauth, tag="rep-custody-parent")
+    x1 = _predicate(source, qauth, _response_leaf(source, qauth, "X", 1), tag="rep-custody-x1")
+    query = _query(source, qauth, parent, ("X",), tag="rep-custody-xq")
+    gen1, _ = _recursive_generation(
+        source, qauth, _atom("PARENT", parent, "BRANCH"), parent,
+        x1, "RESPONSE", query, tag="repcustody", operation="I03-OP-repcustody",
+    )
+    handoff = gen1.handoffs[0]
+
+    projection = OwnerStateProjection(
+        owner=OWNER_RECURSIVE_HANDOFF_LABEL,
+        producer_state="DISCOVERED_RESULT_SUPPORTED",
+        retained_state=SUPPORTED_BASELINE,
+        projection_law="positive recursive handoff selection (custody required)",
+        reason="positive recursive handoff",
+        producer_ref=handoff.ref,
+    )
+    with pytest.raises(OwnerProjectionError, match="requires retained custody"):
+        build_state_route_result(
+            route_class=ROUTE_DIRECT_EMPIRICAL,
+            producer_evidence=[projection.as_evidence()],
+            producer_refs=[handoff.ref],
+            consumer_disposition=fx.consumer_disposition_for(SUPPORTED_BASELINE),
+            reason="positive handoff, missing coverage record",
+        )
+
+
+def test_repair_blocker3_custody_is_bound_into_the_envelope_identity():
+    """With owner-derived custody the positive is lawful and custody is bound."""
+    from rawlsing_next.tests.test_pre553_analytical_composition_higher_order import (
+        _depth2_source,
+        _recursive_generation,
+    )
+    from rawlsing_next.tests.test_pre553_discovery_exact import _atom
+    from rawlsing_next.tests.test_pre553_empirical_query import (
+        _branch_predicate,
+        _predicate,
+        _query,
+        _query_authority,
+        _response_leaf,
+    )
+
+    source = _depth2_source("c1-03a-rep-custody2")
+    qauth = _query_authority("c1-03a-rep-custody2")
+    parent = _branch_predicate(source, qauth, tag="rep-custody2-parent")
+    x1 = _predicate(source, qauth, _response_leaf(source, qauth, "X", 1), tag="rep-custody2-x1")
+    query = _query(source, qauth, parent, ("X",), tag="rep-custody2-xq")
+    gen1, _ = _recursive_generation(
+        source, qauth, _atom("PARENT", parent, "BRANCH"), parent,
+        x1, "RESPONSE", query, tag="repcustody2", operation="I03-OP-repcustody2",
+    )
+    handoff = gen1.handoffs[0]
+    frontier = gen1.discovery_result.evaluated_frontier_ref
+    custody = fx.recursive_handoff_custody(handoff, supporting=(frontier,))
+    projection = OwnerStateProjection(
+        owner=OWNER_RECURSIVE_HANDOFF_LABEL,
+        producer_state="DISCOVERED_RESULT_SUPPORTED",
+        retained_state=SUPPORTED_BASELINE,
+        projection_law="positive recursive handoff selection with custody",
+        reason="positive recursive handoff",
+        producer_ref=handoff.ref,
+    )
+    result = build_state_route_result(
+        route_class=ROUTE_DIRECT_EMPIRICAL,
+        producer_evidence=[projection.as_evidence()],
+        producer_refs=[handoff.ref],
+        consumer_disposition=fx.consumer_disposition_for(SUPPORTED_BASELINE),
+        reason="positive handoff with custody",
+        coverage_custody=custody,
+    )
+    assert result.coverage_record_ref == frontier
+    assert result.coverage_custody_hash == custody.custody_hash
+    assert custody.custody_hash in str(result.identity_material)
+
+
+def test_repair_blocker3_mismatched_coverage_ref_is_refused():
+    """A declared coverage_record_ref that disagrees with custody is refused."""
+    from rawlsing_next.tests.test_pre553_analytical_composition_higher_order import (
+        _depth2_source,
+        _recursive_generation,
+    )
+    from rawlsing_next.tests.test_pre553_discovery_exact import _atom
+    from rawlsing_next.tests.test_pre553_empirical_query import (
+        _branch_predicate,
+        _predicate,
+        _query,
+        _query_authority,
+        _response_leaf,
+    )
+
+    source = _depth2_source("c1-03a-rep-mismatch")
+    qauth = _query_authority("c1-03a-rep-mismatch")
+    parent = _branch_predicate(source, qauth, tag="rep-mismatch-parent")
+    x1 = _predicate(source, qauth, _response_leaf(source, qauth, "X", 1), tag="rep-mismatch-x1")
+    query = _query(source, qauth, parent, ("X",), tag="rep-mismatch-xq")
+    gen1, _ = _recursive_generation(
+        source, qauth, _atom("PARENT", parent, "BRANCH"), parent,
+        x1, "RESPONSE", query, tag="repmismatch", operation="I03-OP-repmismatch",
+    )
+    handoff = gen1.handoffs[0]
+    custody = fx.recursive_handoff_custody(
+        handoff, supporting=(gen1.discovery_result.evaluated_frontier_ref,)
+    )
+    projection = OwnerStateProjection(
+        owner=OWNER_RECURSIVE_HANDOFF_LABEL,
+        producer_state="DISCOVERED_RESULT_SUPPORTED",
+        retained_state=SUPPORTED_BASELINE,
+        projection_law="positive recursive handoff selection with custody",
+        reason="positive recursive handoff",
+        producer_ref=handoff.ref,
+    )
+    from rawlsing_next.pre553_empirical_objects import ExactRef
+
+    with pytest.raises(OwnerProjectionError, match="disagrees with the owner-derived"):
+        build_state_route_result(
+            route_class=ROUTE_DIRECT_EMPIRICAL,
+            producer_evidence=[projection.as_evidence()],
+            producer_refs=[handoff.ref],
+            consumer_disposition=fx.consumer_disposition_for(SUPPORTED_BASELINE),
+            reason="mismatched coverage ref",
+            coverage_custody=custody,
+            coverage_record_ref=ExactRef(
+                "C11Internal:EvaluatedFrontier", "urn:test:c1-03a:foreign-frontier", "d" * 64
+            ),
+        )
+
+
+def test_repair_unvisited_adaptive_witness_is_preserved():
+    """The valid real adaptive UNVISITED witness survives the repair."""
+    projection, data = fx.project_adaptive()
+    adaptive = data["adaptive_result"]
+    assert adaptive.completeness_state == "PARTIAL_BUDGET_EXHAUSTED"
+    assert adaptive.unvisited_unit_refs
+    assert adaptive.global_negative_claim is False
+    result = _envelope(
+        projection,
+        fixture_refs=(data["determinant_state_ref"],),
+        unvisited_refs=adaptive.unvisited_unit_refs,
+        visited_refs=adaptive.visited_unit_refs,
+        coverage_record_ref=adaptive.checkpoint.ref,
+    )
+    assert result.retained_analytical_state == UNVISITED
+    assert result.coverage_state == "PARTIAL_BUDGET_EXHAUSTED"
+    assert result.unvisited_refs == adaptive.unvisited_unit_refs
+    assert result.negative_claim_authorized is False

@@ -487,14 +487,125 @@ def producer_evidence_for(
     *, owner: str, producer_state: str, retained_state: str, reason: str,
     producer_ref: ExactRef, supporting_refs=(), coverage_state: str = "NOT_APPLICABLE",
 ) -> ProducerStateEvidence:
-    return ProducerStateEvidence(
-        owner=owner,
-        producer_state=producer_state,
-        retained_state=retained_state,
-        reason=reason,
-        producer_ref=producer_ref,
-        supporting_refs=tuple(supporting_refs),
-        coverage_state=coverage_state,
+    """Deprecated caller-label path, retained only to prove it is now refused.
+
+    ``ProducerStateEvidence`` may no longer be built from a caller-supplied
+    retained-state label. This helper therefore always raises, and the courts use
+    the owner-derived projection factories instead.
+    """
+    from rawlsing_next.pre553_analytical_state_and_route import OwnerProjectionError
+
+    raise OwnerProjectionError(
+        "producer_evidence_for() may no longer mint analytical state from a caller "
+        "label; use OwnerStateProjection.from_empirical_fact / "
+        ".from_discovery_receipt / .from_adaptive_result / .from_owner_refusal"
+    )
+
+
+# ---------------------------------------------------------------------------
+# Owner-derived projections (C1-03A-REVIEW-BLOCK-STATE-PROJECTION-001)
+# ---------------------------------------------------------------------------
+
+
+def project_empirical(fixture_name: str, *, reason: str = ""):
+    """Derive an OwnerStateProjection from a real empirical-owner fixture."""
+    from rawlsing_next.pre553_analytical_state_and_route import OwnerStateProjection
+
+    data = globals()[fixture_name]()
+    return OwnerStateProjection.from_empirical_fact(data["fact"], reason=reason), data
+
+
+def project_receipt(fixture_name: str, *, reason: str = ""):
+    """Derive an OwnerStateProjection from a real exact-discovery receipt."""
+    from rawlsing_next.pre553_analytical_state_and_route import OwnerStateProjection
+
+    data = globals()[fixture_name]()
+    return OwnerStateProjection.from_discovery_receipt(data["receipt"], reason=reason), data
+
+
+def project_adaptive(fixture_name: str = "unvisited_adaptive_fixture", *, reason: str = ""):
+    """Derive an OwnerStateProjection from a real adaptive-owner result."""
+    from rawlsing_next.pre553_analytical_state_and_route import OwnerStateProjection
+
+    data = globals()[fixture_name]()
+    projection = OwnerStateProjection.from_adaptive_result(data["adaptive_result"], reason=reason)
+    projection = projection.__class__(**{
+        **{
+            field: getattr(projection, field)
+            for field in (
+                "owner", "producer_state", "retained_state", "projection_law",
+                "reason", "producer_ref", "coverage_state",
+            )
+        },
+        "supporting_refs": tuple(data["unvisited_refs"]) + (data["determinant_state_ref"],),
+    })
+    return projection, data
+
+
+def project_owner_refusal(fixture_name: str, *, producer_ref=None, reason: str = ""):
+    """Derive an OwnerStateProjection from a real owner refusal."""
+    from rawlsing_next.pre553_analytical_state_and_route import OwnerStateProjection
+
+    data = globals()[fixture_name]()
+    if "exception" in data:
+        exception = data["exception"]
+        default_ref = data["corrupted_object_ref"]
+    else:
+        # Owner-refusal-by-execution fixtures raise when the owner is invoked.
+        from rawlsing_next.pre553_discovery_exact import execute_exact_bounded_discovery
+
+        exception = None
+        try:
+            execute_exact_bounded_discovery(
+                repository=data["source"]["repo"],
+                discovery_authority=data["authority"],
+                authority_registry=data["registry"],
+                release_refs=(data["source"]["release_ref"],),
+                predicate_catalog=data["predicates"],
+                query_template_catalog=data["queries"],
+            )
+        except Exception as raised:  # noqa: BLE001 - the refusal is the evidence
+            exception = raised
+        if exception is None:
+            raise AssertionError("owner did not refuse; no blocked state exists")
+        default_ref = data["authority"].candidate_grammar_ref
+    return OwnerStateProjection.from_owner_refusal(
+        owner=data["owner"],
+        exception=exception,
+        reason=reason or data["reason"],
+        producer_ref=producer_ref or default_ref,
+    ), data
+
+
+def structural_admission_evaluation(*, admission_state="ALLOW", fact_state="SUPPORTED", tag="c1-03a-admission"):
+    """Run the real current structural-admission owner once."""
+    from rawlsing_next.pre553_structural_admission import evaluate_structural_empirical_admission
+    from rawlsing_next.tests.test_pre553_structural_admission import (
+        environment,
+        query_fact,
+        request,
+    )
+
+    query, fact = query_fact(state=fact_state, tag=tag)
+    rule, registry, snapshot, _parity = environment(admission_state=admission_state)
+    evaluation = evaluate_structural_empirical_admission(
+        query=query,
+        fact=fact,
+        requested_admission_authority_ref=snapshot.authority_ref,
+        rule=rule,
+        request=request(),
+        authority_registry=registry,
+        producer_replay_locator_or_reference_root=fact.producer_replay_locator_or_reference_root,
+    )
+    return evaluation
+
+
+def recursive_handoff_custody(handoff, *, completeness_state="COMPLETE_FOR_EXACT_DECLARED_FRONTIER", supporting=()):
+    """Derive RecursiveCoverageCustody from a real RecursiveBranchHandoff."""
+    from rawlsing_next.pre553_analytical_state_and_route import RecursiveCoverageCustody
+
+    return RecursiveCoverageCustody.from_handoff(
+        handoff, completeness_state=completeness_state, required_supporting_refs=supporting
     )
 
 
@@ -515,4 +626,10 @@ __all__ = [
     "unvisited_adaptive_fixture",
     "consumer_disposition_for",
     "producer_evidence_for",
+    "project_empirical",
+    "project_receipt",
+    "project_adaptive",
+    "project_owner_refusal",
+    "structural_admission_evaluation",
+    "recursive_handoff_custody",
 ]

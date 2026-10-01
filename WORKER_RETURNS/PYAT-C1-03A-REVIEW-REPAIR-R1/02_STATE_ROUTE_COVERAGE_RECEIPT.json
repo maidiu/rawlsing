@@ -1,0 +1,109 @@
+{
+  "schema": "PYAT_C1_03A_REPAIR_STATE_ROUTE_COVERAGE_RECEIPT@1",
+  "tranche": "C1-03A independent-review repair",
+  "owner": "rawlsing_next/pre553_analytical_state_and_route.py",
+  "court": "rawlsing_next/tests/test_pre553_analytical_state_and_route.py",
+  "new_owner_types": [
+    {
+      "name": "OwnerStateProjection",
+      "purpose": "Bind one competent owner's native state to its DERIVED retained projection.",
+      "retained_state_source": "always computed by derive() from a real owner object; never accepted from a caller",
+      "projection_law_recorded": true,
+      "carried_into_envelope_identity": "projection_laws"
+    },
+    {
+      "name": "RouteObligation",
+      "purpose": "Carry the route obligation derived from a real current owner/use contract.",
+      "derivation": "RouteObligation.from_structural_admission(real AdmissionEvaluation)",
+      "binds": [
+        "owner module",
+        "requested use",
+        "receipt-declared target use",
+        "decision state",
+        "reason code",
+        "exact empirical-fact ref",
+        "admission receipt ref",
+        "admission authority ref (authority_content_hash)",
+        "admission rule hash",
+        "blocking refs"
+      ],
+      "obligation_hash": "semantic_hash over the identity material; a pure function of the owner receipt",
+      "carried_into_envelope_identity": "route_obligation_hash"
+    },
+    {
+      "name": "RecursiveCoverageCustody",
+      "purpose": "Bind a selected positive recursive handoff to the exact coverage record it was selected from.",
+      "derivation": "RecursiveCoverageCustody.from_handoff(real RecursiveBranchHandoff)",
+      "requires": [
+        "exact handoff ref",
+        "exact evaluated_frontier_ref present on the handoff",
+        "frontier ref agrees with the handoff's own retained scope context"
+      ],
+      "carried_into_envelope_identity": "coverage_custody_hash"
+    },
+    {
+      "name": "OwnerProjectionError",
+      "purpose": "Fail closed when a retained state cannot be derived from an owner object."
+    }
+  ],
+  "changed_enforcement_points": [
+    {
+      "point": "ProducerStateEvidence.__post_init__",
+      "before": "accepted any caller-supplied retained_state that was in RETAINABLE_STATES",
+      "after": "requires the module-private _PROJECTION_TOKEN; a caller label raises OwnerProjectionError citing C1-03A-REVIEW-BLOCK-STATE-PROJECTION-001"
+    },
+    {
+      "point": "assert_route_not_laundered",
+      "before": "(route_class, required_route_class, producer_state, reason) -- required_route_class was caller-supplied",
+      "after": "(route_class, obligation) -- obligation must be an owner-derived RouteObligation; a caller string raises RouteLegitimacyError"
+    },
+    {
+      "point": "build_state_route_result",
+      "before": "no route-obligation check and no handoff-coverage invariant",
+      "after": "route must match the derived obligation; recursive-handoff evidence requires coverage custody; custody must name a known handoff; a declared coverage_record_ref must agree with custody"
+    },
+    {
+      "point": "AnalyticalStateRouteResult.identity_preimage",
+      "before": "route/coverage/projection material absent",
+      "after": "route_obligation_hash, coverage_custody_hash and projection_laws are inside the identity preimage"
+    }
+  ],
+  "state_derivation_laws": {
+    "empirical_fact": "classify_empirical_cells(fact.typed_state, complete_cell_semantic_projection)",
+    "cell_projection_required_when": "fact.typed_state == 'SUPPORTED'",
+    "cell_projection_optional_when": "owner-native nonpositive failure state (no cell can be observed zero)",
+    "discovery_receipt": "classify_discovery_receipt_state(typed_state, coverage_state) with a receipt/coverage disagreement guard",
+    "adaptive_result": "classify_adaptive_coverage(completeness_state) plus the owner's own unvisited refs and global_negative_claim fact",
+    "owner_refusal": "the competent owner declined to proceed; the exception type is recorded"
+  },
+  "coverage_custody_law": {
+    "trigger": "producer evidence names the recursive-handoff owner, or a custody is supplied",
+    "requirement": "an owner-derived RecursiveCoverageCustody whose handoff_ref is among the producer refs",
+    "refusals": [
+      "no custody for a selected positive handoff",
+      "custody naming a handoff absent from the producer refs",
+      "declared coverage_record_ref disagreeing with the owner-derived custody record",
+      "custody used to represent UNVISITED territory"
+    ]
+  },
+  "route_law": {
+    "derivation": "structural-mediation use always routes through the learned/adjudicated owner",
+    "success_only_decides_proceed": true,
+    "rule_identity_required_when": "decision_state == 'ADMITTED'",
+    "rule_identity_optional_when": "a negative receipt legitimately has no rule payload; the obligation records target_use as the owner declared it",
+    "owner_honesty_observed": "with rule=None the owner reports target_use 'UNRESOLVED_STRUCTURAL_USE'"
+  },
+  "preserved_accepted_witnesses": {
+    "eight_distinct_negative_states": true,
+    "real_adaptive_unvisited_with_owner_refs": true,
+    "real_structural_admission_calls": true,
+    "producer_to_composition_to_named_consumer_path": true,
+    "handmade_direct_consumer_hostile": true,
+    "original_20_courts_retained": "all 20 were rewritten to derive state from owners; none was deleted"
+  },
+  "court_count_before": 20,
+  "court_count_after": 38,
+  "new_courts_added": 18,
+  "existing_owners_modified": [],
+  "c1_02_files_modified": []
+}

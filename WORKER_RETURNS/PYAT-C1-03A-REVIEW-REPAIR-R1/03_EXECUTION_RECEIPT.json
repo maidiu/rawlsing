@@ -1,0 +1,128 @@
+{
+  "schema": "PYAT_C1_03A_REPAIR_EXECUTION_RECEIPT@1",
+  "tranche": "C1-03A independent-review repair",
+  "branch": "agent/opencode-pyat-hq150-c1-03a-review-repair-r1",
+  "commission_tip": "2906f6a408f89c6af609e541304e90091fcf2eb5",
+  "implementation_base": "a3c07426b0ad547287cc729b23cd8428c9fc0018",
+  "independent_review": "6bc1cb8ecd5568d6e78e83916763f125e8b888c8",
+  "head_at_execution": "2906f6a408f89c6af609e541304e90091fcf2eb5 with the repair staged in the working tree",
+  "runtime": {
+    "python_executable": "/tmp/c1-01-r8-release-spine-venv/bin/python",
+    "python_version": "3.12.14",
+    "pytest_version": "9.1.1"
+  },
+  "authoritative_final_run": {
+    "command": "python -m pytest -q rawlsing_next/tests/test_pre553_analytical_state_and_route.py rawlsing_next/tests/test_pre553_analytical_composition.py rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py rawlsing_next/tests/test_pre553_empirical_query.py rawlsing_next/tests/test_pre553_discovery_exact.py rawlsing_next/tests/test_pre553_recursive_handoff.py rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py rawlsing_next/tests/test_pre553_discovery_adaptive.py rawlsing_next/tests/test_pre553_discovery_adaptive_admission.py rawlsing_next/tests/test_pre553_structural_admission.py",
+    "exit_code": 0,
+    "passed": 175,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "wall_clock_seconds": 10.17,
+    "final_output": "........................................................................ [ 41%]\n........................................................................ [ 82%]\n...............................                                          [100%]\n175 passed in 10.17s"
+  },
+  "per_file_counts": {
+    "test_pre553_analytical_state_and_route.py": 38,
+    "test_pre553_analytical_composition.py": 13,
+    "test_pre553_analytical_composition_higher_order.py": 35,
+    "test_pre553_empirical_query.py": 32,
+    "test_pre553_discovery_exact.py": 14,
+    "test_pre553_recursive_handoff.py": 2,
+    "test_source_backed_positioned_subject_possibility.py": 13,
+    "test_pre553_discovery_adaptive.py": 8,
+    "test_pre553_discovery_adaptive_admission.py": 3,
+    "test_pre553_structural_admission.py": 17,
+    "sum": 175
+  },
+  "count_reconciliation": {
+    "accepted_c1_03a_before_repair": 20,
+    "accepted_c1_02_six_file": 109,
+    "adaptive_relied_on": 11,
+    "structural_admission_relied_on": 17,
+    "accepted_total_before_repair": 157,
+    "c1_03a_after_repair": 38,
+    "new_courts_added": 18,
+    "total_after_repair": 175,
+    "arithmetic_check": "157 accepted + 18 new blocker courts = 175, matching the executed total",
+    "note": "The previously accepted 157 is fully preserved: all 20 original C1-03A courts remain present, rewritten to derive state from real owner objects rather than caller labels."
+  },
+  "required_court_coverage": {
+    "corrected_c1_03a_court": "test_pre553_analytical_state_and_route.py (38)",
+    "accepted_c1_02_six_file_materially_relied_upon": "13 + 35 + 32 + 14 + 2 + 13 = 109",
+    "adaptive_discovery_courts_materially_relied_upon": "8 + 3 = 11",
+    "structural_admission_courts_materially_relied_upon": "17"
+  },
+  "sweep_claim": {
+    "scope_claimed": "Only the ten files listed in per_file_counts were executed. No broader regression sweep was run and none is claimed.",
+    "files_outside_this_list_touched": false
+  },
+  "changed_files": [
+    "rawlsing_next/pre553_analytical_state_and_route.py",
+    "rawlsing_next/tests/test_pre553_analytical_state_and_route.py",
+    "rawlsing_next/tests/c1_at14_at16_fixture.py",
+    "WORKER_RETURNS/PYAT-C1-03A-REVIEW-REPAIR-R1/**"
+  ],
+  "write_terrain_compliance": "All changes are inside the commission write terrain. The accepted C1-02 production and test files, AT17/N10E, C1-03R, lifecycle/replay owners, structural-world owners and V3 terrain are unmodified.",
+  "c1_02_touched": false,
+  "source_access": {
+    "reads": 0,
+    "evidence": "No raw source opened, materialized, decoded or inferred."
+  },
+  "prohibitions_respected": {
+    "raw_source_access": true,
+    "c4": true,
+    "c1_03_join": true,
+    "c1_r": true,
+    "v3_actor_person_work": true,
+    "merge": true,
+    "self_adoption": true
+  },
+  "c1_03a_court_inventory": {
+    "count": 38,
+    "accepted_c1_03a_courts_retained": [
+      "test_at14_observed_zero_is_retained_and_is_not_valid_empty",
+      "test_at14_zero_support_is_distinct_from_observed_zero_and_valid_empty",
+      "test_at14_valid_empty_is_retained_from_its_own_owner",
+      "test_at14_underpowered_is_retained_and_distinct_from_unresolved",
+      "test_at14_unresolved_is_retained_from_the_empirical_owner",
+      "test_at14_unvisited_comes_from_the_real_adaptive_owner",
+      "test_at14_noncomparable_is_not_coerced_to_unresolved",
+      "test_at14_blocked_by_absent_or_denying_authority_is_its_own_state",
+      "test_at14_integrity_failure_cannot_become_valid_empty",
+      "test_at14_all_eight_mandatory_states_are_distinctly_retained",
+      "test_at14_positive_recursive_handoff_is_not_the_coverage_record",
+      "test_at15_competent_direct_empirical_route_stays_direct",
+      "test_at15_structural_use_requires_learned_adjudication_on_this_base",
+      "test_at15_failed_learned_claim_cannot_be_route_laundered_as_direct",
+      "test_at15_denying_authority_cannot_be_relabelled_direct",
+      "test_at15_route_label_alone_creates_no_authority",
+      "test_at16_direct_empirical_positive_path_reaches_the_named_consumer",
+      "test_at16_negative_path_preserves_non_invocation_explicitly",
+      "test_at16_handmade_slice_cannot_satisfy_final_consumer_proof",
+      "test_at16_negative_states_are_not_coerced_into_a_consumer_state"
+    ],
+    "accepted_c1_03a_count": 20,
+    "new_courts_added": [
+      "test_at15_positive_learned_route_is_proven_from_a_real_admission",
+      "test_at15_same_evidence_cannot_be_direct_merely_by_changing_the_label",
+      "test_at15_route_obligation_must_be_owner_derived",
+      "test_repair_blocker1_caller_label_cannot_establish_analytical_state",
+      "test_repair_blocker1_deprecated_label_helper_now_refuses",
+      "test_repair_blocker1_retained_state_is_derived_from_the_real_owner_object",
+      "test_repair_blocker1_observed_zero_requires_the_real_cell_projection",
+      "test_repair_blocker1_observed_zero_cell_on_non_supported_fact_is_refused",
+      "test_repair_blocker1_distinct_negative_states_remain_distinct",
+      "test_repair_blocker2_obligation_is_owner_derived_not_caller_supplied",
+      "test_repair_blocker2_same_evidence_is_refused_for_direct_under_derived_law",
+      "test_repair_blocker2_obligation_binds_exact_owner_identities",
+      "test_repair_blocker2_failed_and_denied_routes_cannot_proceed",
+      "test_repair_blocker2_competent_direct_route_is_not_given_a_learned_wrapper",
+      "test_repair_blocker3_positive_handoff_without_coverage_custody_fails",
+      "test_repair_blocker3_custody_is_bound_into_the_envelope_identity",
+      "test_repair_blocker3_mismatched_coverage_ref_is_refused",
+      "test_repair_unvisited_adaptive_witness_is_preserved"
+    ],
+    "new_count": 18,
+    "note": "All 20 accepted C1-03A courts are retained. They were rewritten to derive retained state from real owner objects instead of caller labels; none was deleted."
+  }
+}

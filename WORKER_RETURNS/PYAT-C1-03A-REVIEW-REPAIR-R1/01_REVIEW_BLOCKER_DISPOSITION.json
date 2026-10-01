@@ -1,0 +1,145 @@
+{
+  "schema": "PYAT_C1_03A_REVIEW_BLOCKER_DISPOSITION@1",
+  "tranche": "C1-03A independent-review repair",
+  "base": "a3c07426b0ad547287cc729b23cd8428c9fc0018",
+  "commission_tip": "2906f6a408f89c6af609e541304e90091fcf2eb5",
+  "independent_review": "agent/reviewer-pyat-hq149-c1-03a-r1 @ 6bc1cb8ecd5568d6e78e83916763f125e8b888c8",
+  "review_disposition": "CHANGES_REQUIRED",
+  "reviewer_counterexamples_reproduced_locally_first": {
+    "note": "Each reviewer static reproducer was independently re-run against this branch's owner before repair. All three reproduced exactly.",
+    "blocker_1": "ProducerStateEvidence accepted producer_state='SUPPORTED' with a caller-chosen retained_state='VALID_EMPTY'. Reproduced.",
+    "blocker_2": "assert_route_not_laundered accepted a caller-supplied required_route_class='DIRECT_EMPIRICAL' for the same failed structural-use situation and did not raise. Reproduced.",
+    "blocker_3": "build_state_route_result accepted a positive recursive-handoff producer ref with coverage_record_ref=None and unvisited_refs=(). Reproduced."
+  },
+  "blockers": [
+    {
+      "id": "C1-03A-REVIEW-BLOCK-STATE-PROJECTION-001",
+      "status": "REPAIRED",
+      "repair_law_applied": "Retained state must be derived from, or fail-closed validated against, the actual competent owner object/receipt; a caller-provided retained-state label alone must never establish analytical state.",
+      "implementation": [
+        "Added OwnerStateProjection, whose retained_state is always computed by derive() from a real owner object and never accepted from a caller.",
+        "Projection factories: from_empirical_fact (reads the producer's own complete cell projection), from_discovery_receipt (reads typed_state and cross-checks coverage_state), from_adaptive_result (requires the owner's own unvisited refs and its global_negative_claim fact), from_owner_refusal (for INTEGRITY_FAILURE / BLOCKED_REQUIRED_AUTHORITY proven by the owner declining).",
+        "ProducerStateEvidence now requires the module-private _PROJECTION_TOKEN, so direct construction from a caller label raises OwnerProjectionError citing the blocker id.",
+        "The projection law used is recorded on every projection and carried into the envelope identity via projection_laws.",
+        "Added OwnerProjectionError and _exact_cell_projection, which requires the cell projection for a SUPPORTED fact and permits its absence only for owner-native nonpositive failure states."
+      ],
+      "at16_witness_corrected": {
+        "commission_instruction": "correct the AT16 54/6 positive witness: the real composition is SUPPORTED, not OBSERVED_ZERO",
+        "reviewer_finding": "The ATT1=agree -> ATT2 fixture is 54 support / 6 oppose, so neither target cell is zero; the previous court labelled the envelope OBSERVED_ZERO, making the final AT16 receipt internally false.",
+        "correction": "test_at16_direct_empirical_positive_path_reaches_the_named_consumer now asserts the real producer cells {support: 54, oppose: 6} and denominator 60, derives the projection from the actual producer fact, and asserts the retained state is SUPPORTED and explicitly not OBSERVED_ZERO."
+      },
+      "negative_states_preserved": {
+        "distinct_count": 8,
+        "court": "test_repair_blocker1_distinct_negative_states_remain_distinct",
+        "reached": [
+          "OBSERVED_ZERO_IN_SUPPORTED_RISK_SET",
+          "VALID_EMPTY",
+          "UNDERPOWERED",
+          "UNKNOWN_OR_UNRESOLVED",
+          "UNVISITED",
+          "NONCOMPARABLE",
+          "BLOCKED_REQUIRED_AUTHORITY",
+          "INTEGRITY_FAILURE"
+        ]
+      },
+      "new_courts": [
+        "test_repair_blocker1_caller_label_cannot_establish_analytical_state",
+        "test_repair_blocker1_deprecated_label_helper_now_refuses",
+        "test_repair_blocker1_retained_state_is_derived_from_the_real_owner_object",
+        "test_repair_blocker1_observed_zero_requires_the_real_cell_projection",
+        "test_repair_blocker1_observed_zero_cell_on_non_supported_fact_is_refused",
+        "test_repair_blocker1_distinct_negative_states_remain_distinct"
+      ],
+      "preserved_accepted_subfinding": "Observed-zero detection still uses the actual empirical cell projection; the repair makes that the only admissible path rather than a caller option."
+    },
+    {
+      "id": "C1-03A-REVIEW-BLOCK-ROUTE-DERIVATION-001",
+      "status": "REPAIRED",
+      "repair_law_applied": "Derive the route obligation from an exact current owner/use contract; bind the owner-produced admission evaluation/receipt, rule identity, requested admission authority, target-use/use-contract identity and decision; prove one genuine positive ADMITTED route; prove failed/DENY hostiles against the same route law.",
+      "implementation": [
+        "Added RouteObligation, derived only via RouteObligation.from_structural_admission from a real AdmissionEvaluation.",
+        "assert_route_not_laundered now takes (route_class, obligation) only; the caller-supplied required_route_class parameter no longer exists.",
+        "The obligation binds owner, requested use, receipt-declared target use, decision state, reason code, exact empirical-fact ref, admission receipt ref, admission authority ref (authority_content_hash) and admission rule hash, plus blocking refs; its obligation_hash is a pure function of those owner identities.",
+        "Added require_positive_route, which refuses to proceed unless the derived route is learned/adjudicated AND the owner decision is ADMITTED.",
+        "build_state_route_result now refuses a route_class that does not match the derived obligation, and binds route_obligation_hash into the envelope identity.",
+        "A rule identity is required for an ADMITTED receipt; a negative receipt may legitimately carry no rule payload, and the obligation records that honestly."
+      ],
+      "genuine_positive_route_proven": {
+        "court": "test_at15_positive_learned_route_is_proven_from_a_real_admission",
+        "owner_decision": "ADMITTED",
+        "owner_reason_code": "EXACT_NAMED_RULE_ALL_GATES_PASS",
+        "target_use": "STRUCTURAL_MEDIATION_INPUT",
+        "rule_identity_bound": true,
+        "receipt_bound_into_envelope": true
+      },
+      "hostiles_proven_against_the_same_route_law": [
+        "test_at15_failed_learned_claim_cannot_be_route_laundered_as_direct",
+        "test_at15_denying_authority_cannot_be_relabelled_direct",
+        "test_at15_same_evidence_cannot_be_direct_merely_by_changing_the_label",
+        "test_repair_blocker2_same_evidence_is_refused_for_direct_under_derived_law",
+        "test_repair_blocker2_failed_and_denied_routes_cannot_proceed"
+      ],
+      "same_evidence_different_label": {
+        "court": "test_at15_same_evidence_cannot_be_direct_merely_by_changing_the_label",
+        "method": "One admission receipt is evaluated once; the derived obligation is unchanged and the LEARNED route is accepted while the DIRECT label is refused for that same receipt."
+      },
+      "no_learned_wrapper_on_competent_direct": {
+        "court": "test_repair_blocker2_competent_direct_route_is_not_given_a_learned_wrapper",
+        "evidence": "A competent direct empirical product routes DIRECT_EMPIRICAL with authority_refs == () and route_obligation_hash is None."
+      },
+      "owner_honesty_finding": {
+        "observation": "With rule=None the admission owner reports target_use 'UNRESOLVED_STRUCTURAL_USE', not the requested STRUCTURAL_MEDIATION_INPUT, because no rule passed.",
+        "handling": "The obligation records the receipt-declared target use verbatim rather than assuming the requested one, and test_at15_structural_use_requires_learned_adjudication_on_this_base asserts both the unresolved negative case and the resolved positive case."
+      },
+      "new_courts": [
+        "test_repair_blocker2_obligation_is_owner_derived_not_caller_supplied",
+        "test_repair_blocker2_same_evidence_is_refused_for_direct_under_derived_law",
+        "test_repair_blocker2_obligation_binds_exact_owner_identities",
+        "test_repair_blocker2_failed_and_denied_routes_cannot_proceed",
+        "test_repair_blocker2_competent_direct_route_is_not_given_a_learned_wrapper"
+      ],
+      "new_semantic_or_model_authority_invented": false
+    },
+    {
+      "id": "C1-03A-REVIEW-BLOCK-HANDOFF-COVERAGE-001",
+      "status": "REPAIRED",
+      "repair_law_applied": "Bind the positive handoff to the exact coverage/frontier record from which it was selected; reject absent or mismatched coverage custody; add the actual hostile; preserve the valid UNVISITED adaptive-budget witness.",
+      "implementation": [
+        "Added RecursiveCoverageCustody, derived from a real RecursiveBranchHandoff via from_handoff, which requires an exact evaluated_frontier_ref and cross-checks it against the handoff's own retained scope context.",
+        "build_state_route_result now refuses any envelope whose producer evidence names the recursive-handoff owner without a coverage_custody, and refuses custody that names a handoff absent from the producer refs.",
+        "A declared coverage_record_ref that disagrees with the owner-derived custody record is refused.",
+        "The custody hash is bound into the envelope identity via coverage_custody_hash, so custody cannot be silently dropped.",
+        "A recursive custody record may not be used to represent UNVISITED territory, which remains exclusively the adaptive owner's projection."
+      ],
+      "exact_hostile_added": {
+        "court": "test_repair_blocker3_positive_handoff_without_coverage_custody_fails",
+        "construction": "positive recursive handoff ref + positive retained state + missing coverage record",
+        "expected": "OwnerProjectionError requiring retained custody"
+      },
+      "custody_binding_proven": "test_repair_blocker3_custody_is_bound_into_the_envelope_identity",
+      "mismatch_proven": "test_repair_blocker3_mismatched_coverage_ref_is_refused",
+      "unvisited_preserved": {
+        "court": "test_repair_unvisited_adaptive_witness_is_preserved",
+        "evidence": "The real adaptive budget truncation still yields PARTIAL_BUDGET_EXHAUSTED, the owner's own unvisited_unit_refs, global_negative_claim False, and negative_claim_authorized False."
+      },
+      "new_courts": [
+        "test_repair_blocker3_positive_handoff_without_coverage_custody_fails",
+        "test_repair_blocker3_custody_is_bound_into_the_envelope_identity",
+        "test_repair_blocker3_mismatched_coverage_ref_is_refused",
+        "test_repair_unvisited_adaptive_witness_is_preserved"
+      ]
+    }
+  ],
+  "accepted_review_findings_preserved_and_not_weakened": [
+    "owner-produced negative-state witnesses (all eight still derived from real owner objects)",
+    "real adaptive UNVISITED with exact unvisited refs",
+    "actual structural-admission owner calls",
+    "the producer -> accepted C1 composition -> named possibility consumer path",
+    "the handmade/direct-consumer hostile",
+    "the 157-test arithmetic/provenance baseline (all 20 original courts rewritten to derive state from owners, none deleted)"
+  ],
+  "existing_owners_modified": [],
+  "c1_02_touched": false,
+  "architecture_warrant_raised": false,
+  "authority_or_owner_gap": false
+}

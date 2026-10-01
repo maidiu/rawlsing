@@ -1,0 +1,46 @@
+{
+  "schema": "PYAT_C1_03A_REPAIR_FINAL_DISPOSITION@1",
+  "tranche": "C1-03A independent-review repair",
+  "disposition": "PASS_C1_03A_REVIEW_REPAIR__INDEPENDENT_REREVIEW_REQUIRED",
+  "terminal": "C1_03A_REVIEW_REPAIR_RETURNED__HQ_ADJUDICATION_REQUIRED",
+  "branch": "agent/opencode-pyat-hq150-c1-03a-review-repair-r1",
+  "base": "a3c07426b0ad547287cc729b23cd8428c9fc0018",
+  "commission_tip": "2906f6a408f89c6af609e541304e90091fcf2eb5",
+  "independent_review": "6bc1cb8ecd5568d6e78e83916763f125e8b888c8",
+  "basis": [
+    "All three reviewer counterexamples were reproduced against this branch's owner BEFORE repair, then closed.",
+    "Retained state can no longer be established by a caller label: it is always derived from a real owner object or the owner's own refusal.",
+    "The route obligation is derived from a real admission evaluation and binds the receipt, rule, authority, use and decision; the caller-supplied required_route_class no longer exists.",
+    "One genuine positive ADMITTED learned route is proven from the real owner (ADMITTED / EXACT_NAMED_RULE_ALL_GATES_PASS) with its receipt bound into the envelope.",
+    "A selected positive recursive handoff now requires owner-derived coverage custody, and the missing-coverage hostile is added and proven.",
+    "The AT16 54/6 witness is corrected: the real composition is SUPPORTED, not OBSERVED_ZERO.",
+    "All eight mandatory negative states remain distinct and owner-derived.",
+    "The valid UNVISITED adaptive witness and all other accepted subfindings are preserved, not weakened.",
+    "The accepted 157 is fully preserved; 18 new blocker courts were added, giving 175 passed, 0 failed."
+  ],
+  "tests": {
+    "accepted_before_repair": 157,
+    "new_blocker_courts": 18,
+    "total": 175,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "blockers_repaired": {
+    "C1-03A-REVIEW-BLOCK-STATE-PROJECTION-001": "REPAIRED",
+    "C1-03A-REVIEW-BLOCK-ROUTE-DERIVATION-001": "REPAIRED",
+    "C1-03A-REVIEW-BLOCK-HANDOFF-COVERAGE-001": "REPAIRED"
+  },
+  "at16_witness_correction_applied": true,
+  "accepted_subfindings_weakened": false,
+  "existing_owners_modified": [],
+  "c1_02_touched": false,
+  "architecture_warrant": false,
+  "authority_or_owner_gap": false,
+  "new_semantic_or_model_authority_invented": false,
+  "wider_regression_sweep_claimed": false,
+  "wider_regression_sweep_note": "Only the ten files actually executed are claimed. No broader sweep was run.",
+  "merge_or_adoption_performed": false,
+  "self_adopted": false,
+  "next_required_action": "Narrow independent rereview of the three C1-03A blockers."
+}
