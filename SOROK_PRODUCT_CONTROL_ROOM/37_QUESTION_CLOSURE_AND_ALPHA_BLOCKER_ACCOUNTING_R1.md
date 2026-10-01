@@ -37,26 +37,26 @@ One decision may constrain many questions and one question may require many deci
 
 ## 3. Exact current counts
 
-Total surfaced questions: **114**.
+Total surfaced questions: **115**.
 
 By closure state:
 - `CLOSED_FOR_ALPHA`: **8**
 - `PROVISIONALLY_ANSWERED`: **24**
 - `NEEDS_PROTOTYPE`: **24**
-- `NEEDS_ARCHITECTURE_ADJUDICATION`: **45**
+- `NEEDS_ARCHITECTURE_ADJUDICATION`: **46**
 - `OPEN_DISCOVERY`: **7**
 - `DEFERRED_POST_ALPHA`: **6**
 
 By blocking stage:
 - `ALPHA_SPEC`: **3**
-- `ALPHA_IMPLEMENTATION`: **40**
+- `ALPHA_IMPLEMENTATION`: **41**
 - `ALPHA_VALIDATION`: **25**
 - `POST_ALPHA`: **18**
 - `NONE`: **28**
 
-Broad alpha blockers remain **43**, split into:
+Broad alpha blockers are now **44**, split into:
 - **3 product/spec blockers**;
-- **40 implementation/architecture blockers**.
+- **41 implementation/architecture blockers**.
 
 The conversational critical path is the three product/spec blockers, not the raw frontier count.
 
@@ -103,6 +103,16 @@ Implementation successor:
 
 These successors are `ALPHA_IMPLEMENTATION`, not reopened product blockers.
 
+### Q-RELSIGN-001
+New implementation frontier created by the access-semantic refinement.
+
+It asks how counterpart-specific relational meaning packets are generated from developmental relational grammar, role/relation-class priors, models of particular others, dyadic history/conventions, network context and concrete surface acts, while preserving competing interpretations and governed durable promotion.
+
+Controlling artifact:
+- `53_DIFFERENTIAL_RELATIONAL_MEANING_GENERATION_R1.md`.
+
+This is `ALPHA_IMPLEMENTATION`, not a reopened ALPHA_SPEC blocker.
+
 ## 6. Other moved-out product blockers
 
 - `Q-RETRY-001`: closed for alpha — no save branches; restart abandons continuity.
@@ -134,6 +144,6 @@ Alpha evidence remains last because it should test the product actually specifie
 
 ## 9. Current interpretation
 
-> **114 frontiers have been surfaced and preserved. Three still require product-level adjudication before the current alpha can be fully specified. Forty require architecture work before governed implementation. Twenty-five should be learned through prototype evidence rather than armchair design.**
+> **115 frontiers have been surfaced and preserved. Three still require product-level adjudication before the current alpha can be fully specified. Forty-one require architecture work before governed implementation. Twenty-five should be learned through prototype evidence rather than armchair design.**
 
 That is the current progress signal.
