@@ -103,6 +103,9 @@ missing edge.
 
 ## 4. Exact final run
 
+Implementation commit: `7e558194b8aa1ff2a8c2a335c68daa7305b63dc3`
+
+
 ```
 python -m pytest \
   rawlsing_next/tests/test_pre553_analytical_replay_dependency.py \
@@ -110,7 +113,7 @@ python -m pytest \
   rawlsing_next/tests/test_pre553_replay_audit.py \
   rawlsing_next/tests/test_pre553_analytical_composition.py -v
 
-109 passed in 20.45s
+109 passed in 16.58s
 ```
 
 | Court | Tests |

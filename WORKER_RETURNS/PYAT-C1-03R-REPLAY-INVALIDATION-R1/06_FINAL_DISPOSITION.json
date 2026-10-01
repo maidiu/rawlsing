@@ -43,7 +43,7 @@
     "failed": 0,
     "errors": 0,
     "skipped": 0,
-    "duration_seconds": 20.45,
+    "duration_seconds": 16.58,
     "by_file": {
       "rawlsing_next/tests/test_pre553_analytical_replay_dependency.py": 21,
       "rawlsing_next/tests/test_pre553_authority_maintenance.py": 21,
@@ -105,5 +105,7 @@
   ],
   "blocker": null,
   "next": "Independent review of this source-free C1-03R tranche, then HQ adjudication.",
-  "commission_document_note": "00_COMMISSION.md is part of the issued commission tip and was preserved unchanged; it is not a change made by this lane."
+  "commission_document_note": "00_COMMISSION.md is part of the issued commission tip and was preserved unchanged; it is not a change made by this lane.",
+  "implementation_commit_sha": "7e558194b8aa1ff2a8c2a335c68daa7305b63dc3",
+  "self_referential_sha_policy": "The implementation commit SHA is recorded; the pushed HEAD SHA is deliberately not recorded inside these files because a commit cannot contain its own hash (repo convention 21254c57d). The authoritative pushed HEAD is the remote ref."
 }
