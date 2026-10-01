@@ -1,7 +1,7 @@
 {
   "schema": "PYAT_OMEGA_ACTIVE_TASK_BOARD@1",
-  "revision": 27,
-  "status": "C1_02_ADOPTED__C1_03A_AND_C1_03R_BOUND__N10E_REREVIEW_ACTIVE__C1_03_JOIN_PENDING_AT17",
+  "revision": 28,
+  "status": "C1_02_ADOPTED__N10E_AT17_ADOPTED__C1_03A_C1_03R_ACTIVE__C1_03_JOIN_WAITS_TWO_REVIEWS",
   "control_branch": "integration/pre-main-reconciliation-r1",
   "adopted_preparation": [
     {
@@ -28,6 +28,15 @@
       "integration_head": "bc661188b51e995d9f5d74e55c4e37d2ba358a17",
       "review_head": "59d69ba31b8de2d028bd44048e8d7b75f2d82538",
       "grain": "AT08_AT13"
+    },
+    {
+      "id": "N10E",
+      "state": "ADOPTED_AT_DECLARED_SOURCE_FREE_GRAIN",
+      "grain": "AT17_PROVIDER_CORE",
+      "integration_branch": "integration/pyat-hq147-n10e-at17-source-free-accepted-r1",
+      "integration_head": "52e41a41e8bc3b77390016a049095b5aea1721d0",
+      "review_head": "43cdc1a8d1077be78a879ef06232a454736084d9",
+      "provider_blob": "23167aa25291fb148b1e3cf210ac33fe7769b783"
     }
   ],
   "observed_returns": [
@@ -147,19 +156,15 @@
         "skipped": 0
       },
       "duration_seconds": 15.14
+    },
+    {
+      "id": "N10E-PROOF-PROVENANCE-REREVIEW",
+      "head": "43cdc1a8d1077be78a879ef06232a454736084d9",
+      "disposition": "APPROVE_AT_DECLARED_GRAIN",
+      "adjudication": "ADOPTED_AT_DECLARED_SOURCE_FREE_AT17_PROVIDER_CORE"
     }
   ],
   "active_tasks": [
-    {
-      "id": "N10E-PROOF-PROVENANCE-REREVIEW",
-      "branch": "agent/reviewer-pyat-hq145-n10e-proof-provenance-rereview-r1",
-      "commission_tip": "80eb275f40ffb2d096433c218fecb009063a0bd1",
-      "base": "52e41a41e8bc3b77390016a049095b5aea1721d0",
-      "state": "BOUND_AWAITING_USER_MEDIATED_LAUNCH",
-      "launch_surface": "BROWSER",
-      "model": "GPT-5.6_SOL_HIGH",
-      "scope": "REV_N10E_001_002_003_NARROW_REREVIEW"
-    },
     {
       "id": "C1-03A",
       "branch": "agent/opencode-pyat-hq146-c1-03a-negative-route-consumer-r1",
@@ -183,7 +188,6 @@
     }
   ],
   "held": [
-    "C1-03 JOIN: wait for independently accepted C1-03A + C1-03R + N10E AT17; AT17 must not be duplicated",
     "C1-R until C1-03",
     "N10W full progressive-world proof until competent higher-order/world inputs",
     "C5/C6/C7 until exact scoped inputs/authority are bound",
@@ -198,7 +202,7 @@
     "NO_PREV3_TO_V3_ACTOR_IMPLEMENTATION"
   ],
   "prior_git_blob_sha1": "66b666991d9a8c614710687c7640277cb75fc8c6",
-  "next_action": "RUN_C1_03A_SPACE_BUNNY_AND_C1_03R_DEEPSEEK_IN_PARALLEL__N10E_REREVIEW_CONTINUES",
+  "next_action": "CONTINUE_C1_03A_SPACE_BUNNY_AND_C1_03R_DEEPSEEK__REVIEW_EACH_RETURN__THEN_BIND_C1_03_JOIN_WITH_ACCEPTED_AT17",
   "operating_requirements": "PYAT_CONTROL_ROOM/BROWSER_ECONOMY_MODE_R1.md",
   "grounding": {
     "live_control_head": "731519c6de341bbd6c95672f70329f3cf996d686",
