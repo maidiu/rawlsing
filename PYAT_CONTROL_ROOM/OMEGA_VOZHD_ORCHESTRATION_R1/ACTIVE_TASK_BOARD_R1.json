@@ -1,7 +1,7 @@
 {
   "schema": "PYAT_OMEGA_ACTIVE_TASK_BOARD@1",
-  "revision": 23,
-  "status": "C1_02_CORRECTION_PATCH_READY_REVIEW_BOUND__N10E_REVIEW_BOUND__C2_PREP_COMPLETE__C3_ADOPTED",
+  "revision": 24,
+  "status": "C1_02_NARROW_WITNESS_REPAIR_BOUND__N10E_REVIEW_ACTIVE__C2_PREP_COMPLETE__C3_ADOPTED",
   "control_branch": "integration/pre-main-reconciliation-r1",
   "adopted_preparation": [
     {
@@ -96,6 +96,12 @@
       },
       "adjudication": "PATCH_READY_ONLY__INDEPENDENT_ACCEPTANCE_REVIEW_REQUIRED",
       "wider_regression": "NO_WIDER_REGRESSIONS_DETECTED_AT_ACCEPTED_C1_01_BASELINE_GRAIN"
+    },
+    {
+      "id": "C1-02-CORRECTION-REVIEW",
+      "head": "c9ed2fe49d032b9313c3d24227a08fd9ca3aff89",
+      "disposition": "CHANGES_REQUIRED",
+      "adjudication": "ADOPT_SOLE_BLOCKER__C1_02_REVIEW_BLOCK_WITNESS_PAIR_001"
     }
   ],
   "active_tasks": [
@@ -111,15 +117,15 @@
       "parallelism": "DISJOINT_FROM_C1_02_CORRECTION"
     },
     {
-      "id": "C1-02-CORRECTION-REVIEW",
-      "branch": "agent/reviewer-pyat-hq142-c1-02-correction-r1",
-      "commission_tip": "b33488a79103704aea8a6fa1163a764045bcf4c9",
+      "id": "C1-02-WITNESS-PAIRING-REPAIR",
+      "branch": "agent/opencode-pyat-hq143-c1-02-witness-pairing-repair-r1",
+      "commission_tip": "5a83a659759e8a076d33adfa984ebba02255c40f",
       "base": "6e0f7b438089a542c9949b604cd55cbb3eaf8b2b",
       "state": "BOUND_AWAITING_USER_MEDIATED_LAUNCH",
-      "launch_surface": "BROWSER",
-      "model": "GPT-5.6_SOL_HIGH",
-      "scope": "INDEPENDENT_ACCEPTANCE_REVIEW__AT08_AT13__OWNER_FIXES__REGRESSION_ATTRIBUTION",
-      "special_adjudication": "AT10_UNDERPOWERED_AND_AT11_ADAPTIVE_UNVISITED_NONCLAIMS"
+      "launch_surface": "OPENCODE",
+      "model": "SPACE_BUNNY_FREE",
+      "scope": "SOLE_BLOCKER_C1_02_REVIEW_BLOCK_WITNESS_PAIR_001",
+      "postcondition": "NARROW_INDEPENDENT_REREVIEW"
     }
   ],
   "held": [
@@ -138,7 +144,7 @@
     "NO_PREV3_TO_V3_ACTOR_IMPLEMENTATION"
   ],
   "prior_git_blob_sha1": "66b666991d9a8c614710687c7640277cb75fc8c6",
-  "next_action": "RUN_C1_02_CORRECTION_INDEPENDENT_REVIEW_AND_N10E_INDEPENDENT_REVIEW_IN_PARALLEL__HQ_ADJUDICATES_RETURNS",
+  "next_action": "RUN_C1_02_WITNESS_PAIRING_REPAIR_IN_OPENCODE_SPACE_BUNNY__N10E_REVIEW_CONTINUES_IN_PARALLEL",
   "operating_requirements": "PYAT_CONTROL_ROOM/BROWSER_ECONOMY_MODE_R1.md",
   "grounding": {
     "live_control_head": "731519c6de341bbd6c95672f70329f3cf996d686",
