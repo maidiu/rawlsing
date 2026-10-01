@@ -1,0 +1,72 @@
+{
+  "schema": "PYAT_C5_N5_INDEPENDENT_REVIEW_EXECUTION_RECEIPT@1",
+  "status": "STATIC_CONTRACT_REVIEW_PLUS_RECORDED_WORKER_EXECUTION",
+  "review_branch": "agent/reviewer-pyat-hq150-c5-n5-r1",
+  "review_issue_tip": "47793858e27a528ff7f089918f3736fe6b794f52",
+  "reviewed_return": "151d39260a803635f622323b14e42d96c7976d25",
+  "ancestry": {
+    "worker_return_is_fast_forward_of_commission_tip": true,
+    "worker_return_ahead_by": 1,
+    "worker_return_behind_by": 0
+  },
+  "diff": {
+    "implementation_files_added": [
+      "rawlsing_next/current_gt2_structural_context.py",
+      "rawlsing_next/tests/test_current_gt2_structural_context.py"
+    ],
+    "return_packet_added": true,
+    "existing_owner_files_modified": []
+  },
+  "recorded_final_court": {
+    "command_file_set": [
+      "rawlsing_next/tests/test_current_gt2_structural_context.py",
+      "rawlsing_next/tests/test_field_forge_conditional_support.py",
+      "rawlsing_next/tests/test_wave1_ff_prev3_relation_admission.py",
+      "rawlsing_next/tests/test_m1_admitted_field_forge_relation_v554_ingress.py",
+      "rawlsing_next/tests/test_gt12_e2b_actual_object_consumer_harness.py",
+      "rawlsing_next/tests/test_pre553_repo_native_current_rehydration.py"
+    ],
+    "recorded_passed": 120,
+    "recorded_failed": 0,
+    "recorded_errors": 0,
+    "recorded_skipped": 0,
+    "recorded_duration_seconds": 137.64
+  },
+  "static_test_inventory_reconciliation": {
+    "current_c5": 30,
+    "field_forge": 11,
+    "relation_admission": 35,
+    "m1_relation_ingress": 14,
+    "e2b_consumer_harness": 14,
+    "repo_native_rehydration": 16,
+    "total": 120,
+    "status": "CONSISTENT"
+  },
+  "independent_runtime": {
+    "fresh_execution_available": false,
+    "proof_grade": "EXACT_COMMITTED_SOURCE_AND_OWNER_CONTRACT_REVIEW",
+    "note": "No fresh runtime execution was available in the Browser/GitHub lane. Decision-critical semantics are directly encoded in current owner contracts and the recorded worker execution is internally reconciled."
+  },
+  "live_control_recheck": {
+    "observed_head": "df07af5665871c40112d40b5e348ef558ac06ced",
+    "materially_used_owner_blobs_match_worker_return": true,
+    "matched_owners": {
+      "rawlsing_next/pre553_repo_native_seal.py": "fd3745efb8559e2db53fce49943feea96f76d3cd",
+      "rawlsing_next/field_forge_conditional_support.py": "a70decb20747d84cbcbe27d1280babc6de88ef33",
+      "rawlsing_next/gt12_c_to_d_relation_bridge.py": "ea04ec079e8d60e6e5c7236ec5b54898876be4b3",
+      "rawlsing_next/gt12_d_to_m4_typed_bridge.py": "ca3d6b8d832d7ca8d959bd19e19a23b08cabde76",
+      "rawlsing_next/gt12_e2b_publication_governance_binding.py": "5c0e730972ca7f31c3be92564c299822c431ccc5",
+      "rawlsing_next/m4_v557_v558_publication_repository.py": "8ec5c8e1c1a3cb7e998bb6cf0972ac87f396e360",
+      "rawlsing_next/gt12_permission_translation_authority.py": "2eb1441e0ee5be3eef2567f8ffb57819fc47f0d6"
+    },
+    "c5_service_adoption_inferred": false
+  },
+  "prohibited_actions": {
+    "raw_source_access": false,
+    "c4_work": false,
+    "c7_work": false,
+    "v3_actor_person_work": false,
+    "implementation_modified_by_reviewer": false,
+    "merge_or_self_adoption": false
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "schema": "PYAT_C5_N5_INDEPENDENT_COUNTEREXAMPLES_OR_ACCEPTANCE@1",
+  "status": "NO_ACCEPTANCE_COUNTEREXAMPLE_FOUND",
+  "decisive_hostile": {
+    "question": "Does RESOLUTION_COMPLETE + resolved_structural_context=None mean the C5 terminal is actually empty/refused?",
+    "answer": "NO",
+    "contract_evidence": [
+      "ResolutionResult.resolved_structural_context is statically typed None and resolve_v558 explicitly resolves candidates without fabricating a ResolvedStructuralContext.",
+      "Resolver refusal/absence states are separately typed: RESOLUTION_MISSING_REQUIRED_AUTHORITY, RESOLUTION_DENIED_OR_NOT_APPLICABLE, RESOLUTION_PARTIAL_TYPED_DEFERRED, RESOLUTION_INTEGRITY_FAILED.",
+      "Empty query returns RESOLUTION_COMPLETE_VALID_EMPTY, not RESOLUTION_COMPLETE.",
+      "The typed relation bridge raises unless result_state == RESOLUTION_COMPLETE, all V554 publication roots resolve, and all resolved producer families equal V554.",
+      "The current terminal has SELECTED selection, ELIGIBLE typed state, exact V554 producer, CONTEXT resolver use, and no unresolved key."
+    ],
+    "conclusion": "The null field is the no-fabricated-RSC ceiling. The successful context product is the exact resolved V554 entry and resolution receipt."
+  },
+  "attempted_or_reviewed_counterexample_classes": [
+    "caller-controlled frozen-GT2 escape",
+    "shadow relation producer via hard-coded floor",
+    "relation family/owner substitution",
+    "risk/source/order/state/denominator drift",
+    "target-use mismatch",
+    "permission widening",
+    "negative/denial/noncomparability laundering",
+    "V553/V555/V556 substitute basis",
+    "REVIEW or ACTIVE_CAUSAL widening",
+    "V558 empty/refusal masquerading as complete",
+    "actor/V3 positive promotion"
+  ],
+  "counterexample_found": false,
+  "nonblocking_observations": [
+    {
+      "id": "C5-N5-OBS-001",
+      "observation": "CurrentGT2StructuralContext.resolved_uses is projected from SelectionRecord.producer_allowed_uses rather than resolver_allowed_uses.",
+      "impact": "NONE_AT_FROZEN_GRAIN",
+      "reason": "Both are independently frozen by the typed bridge to the same exact singleton ('CONTEXT',), and the complete terminal object remains available for audit."
+    },
+    {
+      "id": "C5-N5-OBS-002",
+      "observation": "The new AT23 court labels wrong relation family/owner as covered without a direct local mutation test.",
+      "impact": "NONE",
+      "reason": "The production permission-translation owner independently rejects relation-family and relation-owner mismatch, and the service admits only the frozen relation identity produced by the FIELD FORGE owner."
+    }
+  ]
+}
