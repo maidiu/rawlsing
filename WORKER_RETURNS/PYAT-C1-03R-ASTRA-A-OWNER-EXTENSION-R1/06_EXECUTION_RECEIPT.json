@@ -1,0 +1,71 @@
+{
+  "schema": "PYAT_C1_03R_ASTRA_A_EXECUTION_RECEIPT@1",
+  "branch": "agent/opencode-pyat-hq151-c1-03r-astra-a-owner-extension-r1",
+  "commission_tip": "9705742b3466e764d310f73b9bc3115073991e9f",
+  "branch_base": "b346bd9f7f18b582173a47ca337d468816270c84",
+  "corrected_implementation_underneath": "1f270880f7e3353003ef6199d76d7ff28303301d",
+  "interpreter": "/tmp/c1-01-r8-release-spine-venv/bin/python",
+  "python": "3.12.14",
+  "pytest": "9.1.1",
+  "platform": "darwin",
+  "exact_command": "/tmp/c1-01-r8-release-spine-venv/bin/python -m pytest -q rawlsing_next/tests/test_pre553_analytical_replay_dependency.py rawlsing_next/tests/test_pre553_authority_maintenance.py rawlsing_next/tests/test_pre553_replay_audit.py rawlsing_next/tests/test_pre553_analytical_composition.py",
+  "suites": [
+    {
+      "file": "rawlsing_next/tests/test_pre553_analytical_replay_dependency.py",
+      "tests": 35
+    },
+    {
+      "file": "rawlsing_next/tests/test_pre553_authority_maintenance.py",
+      "tests": 42
+    },
+    {
+      "file": "rawlsing_next/tests/test_pre553_replay_audit.py",
+      "tests": 54
+    },
+    {
+      "file": "rawlsing_next/tests/test_pre553_analytical_composition.py",
+      "tests": 13
+    }
+  ],
+  "counts": {
+    "passed": 144,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "deselected": 0
+  },
+  "per_file_sum": 144,
+  "runtime_seconds": 37.88,
+  "wall_time_real": "0m38.223s",
+  "exit_status": 0,
+  "prior_baseline_same_command": {
+    "passed": 109,
+    "note": "historical worker evidence, not the acceptance court for this extension"
+  },
+  "new_courts_added": 35,
+  "independent_oracle_identity": {
+    "schema": "C1_03R_AT18_EXPECTED_OUTPUT_ORACLE@1",
+    "producer": "rawlsing_next/tests/c1_at18_at19_fixture.py::oracle_expected_output",
+    "frozen_separately_from_candidate_output": true,
+    "never_handed_to_fresh_runner": true,
+    "runner_forbidden_input_fields_enforced": true
+  },
+  "proof_claims": {
+    "input_refs": "exact retained empirical_query, predicate, condition_binding_witness, consumer_query, source_universe refs",
+    "implementation_path": "accepted pre553_analytical_composition.compose_positioned_subject_possibility via the accepted lifecycle owner AuthorityMaintenanceExecutor",
+    "public_path": "pre553_authority_maintenance.promote_current / rollback_current / dependent_lifecycle_status and pre553_analytical_replay_dependency.transition_analytical_dependencies / resolve_current_analytical_product",
+    "actual_output": "new exact composed product identity under the sealed successor; explicit noncurrent rows with grounds; unaffected sibling unchanged",
+    "consumer_refs": "candidate -> adjudication -> seal -> release receipt chain, all exact and owner-validated"
+  },
+  "claimed_proof_grades": {
+    "lifecycle_serialization_replay": "PROVEN (checkpoint export/import and fresh-process owner replay)",
+    "fresh_analytical_recomputation": "PROVEN only by the pre-existing AT18 fresh-process runner, unchanged here",
+    "fresh_owner_checkpoint_replay_is_fresh_analytical_recomputation": false,
+    "source_free": true,
+    "at07_single_conditioner": true,
+    "bounded_to_registered_closure": true
+  },
+  "wider_regression_sweep_claimed": false,
+  "wider_regression_sweep_note": "Only the four commissioned suites were executed."
+}

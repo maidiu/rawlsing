@@ -1,0 +1,157 @@
+{
+  "schema": "PYAT_C1_03R_OWNER_FAILCLOSED_REVIEW_BLOCKER_DISPOSITION@1",
+  "disposition": "PASS_C1_03R_OWNER_FAILCLOSED_CORRECTED__INDEPENDENT_REREVIEW_REQUIRED",
+  "base": "eb02332c93c6c3927303eefde9dd9ed768bb3480",
+  "commissioned_tip": "88d94930179528ce37daac854a7f6a78f7f0f308",
+  "independent_review": "agent/reviewer-pyat-hq154-c1-03r-astra-a-r1 @ 380a79cde63d9ee239e5812f89283e997e16da96",
+  "prior_disposition": "CHANGES_REQUIRED",
+  "method": "Every review finding was reproduced against this branch's owner BEFORE repair, using a standalone reproduction harness. All eleven counterexamples reproduced exactly. The RVW-004 attack required building a FULLY SELF-CONSISTENTLY REHASHED checkpoint (receipt, citing releases, event chain, release pointers, checkpoint hash), because a naive byte edit is caught by the embedded record_ref check that HQ noted is necessary but not sufficient.",
+  "blockers": {
+    "RVW-001_duplicate_positive_replacement_rows": {
+      "verdict": "CORRECTED",
+      "reproduced": {
+        "same_target": "ACCEPTED rows_in=2 rows_kept=1 silently_collapsed=True",
+        "different_targets": "ACCEPTED rows_in=2 rows_kept=1, and the FORGED successor won: dict last-write-wins kept urn:test:c1-03r:forged:successor and silently discarded the owner's own replacement target"
+      },
+      "correction": [
+        "AuthorityInvalidationReceipt.__post_init__ now refuses a repeated source old_ref row BEFORE the pairs dict assignment can overwrite one.",
+        "Refusal is unconditional on target agreement: identical targets are refused too, because accepting them would let a canonicalizing dict collapse a duplicated claim.",
+        "The distinct-target case is the material one: without the refusal a caller could substitute the owner's replacement successor and have the substitution enter the receipt identity.",
+        "Blocker id: C1-03R-OWNER-BLOCK-DUPLICATE-REPLACEMENT-001"
+      ],
+      "hostiles": [
+        "test_hq155_rvw_001_duplicate_positive_rows_same_target_are_refused",
+        "test_hq155_rvw_001_duplicate_positive_rows_different_targets_are_refused"
+      ]
+    },
+    "RVW-002_serialized_negative_fields_and_schema_ignored": {
+      "verdict": "CORRECTED",
+      "reproduced": {
+        "missing_replacement_ref": "ACCEPTED rows=2 synthesized_null=True -- the owner synthesized the null from an absent field",
+        "forged_non_null_replacement_ref": "ACCEPTED serialized_non_null=True stored_null=True -- a forged replacement target was silently discarded",
+        "missing_receipt_schema": "ACCEPTED rows=2 schema_ignored=True",
+        "forged_receipt_schema": "ACCEPTED forged=PRE553_AUTH40_TOTALLY_MADE_UP_SCHEMA@9.9.9 rows=2",
+        "new_schema_on_positive_only_legacy": "ACCEPTED silently_reinterpreted"
+      },
+      "correction": [
+        "NoncurrentDependentOutcome.from_dict now REQUIRES the replacement_ref key to be present. The null is load-bearing negative evidence ('no lawful replacement exists for this dependent'), so it must be stated; a missing field is never treated as a stated null.",
+        "NoncurrentDependentOutcome.from_dict now REJECTS a non-null serialized replacement_ref instead of quietly overwriting it with null.",
+        "AuthorityInvalidationReceipt.from_dict now enforces a compatibility boundary: the two shapes are mutually exclusive. Any declaration of the new schema (the receipt_schema key OR the noncurrent_dependents key) must be COMPLETE and EXACT -- the exact schema id AND at least one row. Anything else is historical positive-only material, which still deserializes under its exact original field set and reproduces its historical identity byte for byte.",
+        "So: noncurrent rows without the exact schema reject; missing schema rejects; forged schema rejects; and new-schema fields or schema presence on positive-only legacy material fails closed rather than being silently reinterpreted.",
+        "A consistency check ties the reconstructed rows to the serialized declaration, and the pre-existing embedded record_ref validation is retained (necessary but not sufficient, as HQ noted).",
+        "Blocker ids: C1-03R-OWNER-BLOCK-NEGATIVE-FIELD-001, C1-03R-OWNER-BLOCK-SCHEMA-COMPAT-001"
+      ],
+      "hostiles": [
+        "test_hq155_rvw_002_negative_row_missing_replacement_ref_is_refused",
+        "test_hq155_rvw_002_negative_row_forged_non_null_replacement_ref_is_refused",
+        "test_hq155_rvw_002_negative_receipt_missing_schema_is_refused",
+        "test_hq155_rvw_002_negative_receipt_forged_schema_is_refused",
+        "test_hq155_rvw_002_positive_only_legacy_receipt_is_hash_compatible",
+        "test_hq155_rvw_002_new_schema_on_positive_only_legacy_fails_closed"
+      ]
+    },
+    "RVW-003_owner_unknown_dependent_reported_current": {
+      "verdict": "CORRECTED",
+      "reproduced": {
+        "owner_unknown_lookup": "ACCEPTED lifecycle_state=CURRENT reason='no governed transition has affected this dependent'",
+        "cache_presence": "ACCEPTED before=CURRENT after=CURRENT changed=False -- presence had no effect, because the result was already unconditionally CURRENT"
+      },
+      "correction": [
+        "New typed lifecycle state DEPENDENT_LIFECYCLE_NOT_GOVERNED ('NOT_GOVERNED'), which is deliberately NOT CURRENT.",
+        "dependent_lifecycle_status now gates on the owner's OWN declared knowledge -- the determinant graph's known_dependent_refs. A ref absent from that set returns NOT_GOVERNED with reason_code OWNER_UNKNOWN_DEPENDENT instead of CURRENT.",
+        "Absence of a recorded transition is absence of authority, not evidence of currentness. Previously it was read as evidence of currentness, which turned every unknown ref into a positive claim.",
+        "Currentness is never inferred from cache or object presence; the gate reads only the graph's own dependent set.",
+        "New typed adapter failure OwnerUnknownDependent (code OWNER_UNKNOWN_DEPENDENT); resolve_current_analytical_product raises it, so the current-product path can never serve an unknown ref as current.",
+        "Approval law implemented as commissioned: known unaffected/current -> CURRENT; known replacement -> CURRENT naming the exact replacement; known explicit noncurrent -> typed noncurrent refusal; owner-unknown -> typed NOT GOVERNED, never CURRENT.",
+        "A ref the owner knows but no transition has touched still resolves CURRENT, which is correct: the owner knows it and nothing governed it. The unreachable-but-existing conflict branch is unchanged."
+      ],
+      "hostiles": [
+        "test_hq155_rvw_003_owner_unknown_dependent_is_never_current",
+        "test_hq155_rvw_003_cache_presence_does_not_change_owner_unknown"
+      ]
+    },
+    "RVW-004_checkpoint_replay_trusted_serialized_u": {
+      "verdict": "CORRECTED",
+      "reproduced": {
+        "shrunk_U": "ACCEPTED -- U shrunk 1->0 in a fully self-consistently rehashed checkpoint; replay accepted it",
+        "U_replaced_with_unknown": "ACCEPTED -- U replaced with a ref the graph never knew; replay accepted it"
+      },
+      "correction": [
+        "AuthorityMaintenanceExecutor.from_checkpoint now independently recomputes BOTH A = graph.affected(changed) and U = graph.unaffected(A) and requires exact equality with the serialized affected_dependent_refs and unaffected_dependent_refs.",
+        "Recomputing only A made A and U disjoint and jointly exhaustive over K at INITIAL PRODUCTION only. A checkpoint whose serialized U had been shrunk or altered still replayed, because nothing re-derived U from the graph.",
+        "Recomputing both at replay is what makes the partition hold at replay as well, so a self-consistently rehashed checkpoint with a shrunk or altered U is rejected.",
+        "The embedded record_ref validation is retained and is not treated as sufficient on its own.",
+        "Blocker id: C1-03R-OWNER-BLOCK-CHECKPOINT-TRUSTED-U-001"
+      ],
+      "note_on_interdependence": "RVW-003 and RVW-004 are load-bearing on each other and were closed together deliberately. Shrinking a serialized U converts an owner-KNOWN dependent into an owner-UNKNOWN one, and RVW-003 is what stops that from silently yielding CURRENT. Fixing only RVW-004 would leave U tamperable; fixing only RVW-003 would leave the trust in serialized U intact.",
+      "hostiles": [
+        "test_hq155_rvw_004_tampered_checkpoint_u_omitting_sibling_is_rejected",
+        "test_hq155_rvw_004_tampered_checkpoint_u_with_unknown_sibling_is_rejected"
+      ]
+    }
+  },
+  "required_hostile_coverage": {
+    "1_duplicate_positive_rows_same_target": "test_hq155_rvw_001_duplicate_positive_rows_same_target_are_refused",
+    "2_duplicate_positive_rows_different_targets": "test_hq155_rvw_001_duplicate_positive_rows_different_targets_are_refused",
+    "3_negative_row_missing_replacement_ref": "test_hq155_rvw_002_negative_row_missing_replacement_ref_is_refused",
+    "4_negative_row_forged_non_null_replacement_ref": "test_hq155_rvw_002_negative_row_forged_non_null_replacement_ref_is_refused",
+    "5_negative_receipt_missing_receipt_schema": "test_hq155_rvw_002_negative_receipt_missing_schema_is_refused",
+    "6_negative_receipt_forged_receipt_schema": "test_hq155_rvw_002_negative_receipt_forged_schema_is_refused",
+    "7_positive_only_legacy_hash_compatible": "test_hq155_rvw_002_positive_only_legacy_receipt_is_hash_compatible",
+    "8_incompatible_schema_on_positive_only_legacy_fails": "test_hq155_rvw_002_new_schema_on_positive_only_legacy_fails_closed",
+    "9_owner_unknown_dependent_not_current": "test_hq155_rvw_003_owner_unknown_dependent_is_never_current",
+    "10_cache_presence_does_not_change_result": "test_hq155_rvw_003_cache_presence_does_not_change_owner_unknown",
+    "11_tampered_U_omits_sibling_self_consistently_rehashed": "test_hq155_rvw_004_tampered_checkpoint_u_omitting_sibling_is_rejected",
+    "12_tampered_U_adds_unknown_sibling": "test_hq155_rvw_004_tampered_checkpoint_u_with_unknown_sibling_is_rejected",
+    "13_promotion_normal_mixed_outcome_passes": "test_hq155_promotion_normal_mixed_outcome_still_passes",
+    "14_rollback_normal_mixed_outcome_passes": "test_hq155_rollback_normal_mixed_outcome_passes_and_laws_are_shared",
+    "15_sealed_successor_decoy_courts_green": "test_hq155_sealed_successor_is_not_the_decoy_and_binds_exactly",
+    "16_at18_grade_courts_green": "test_hq155_at18_grade_courts_remain_green",
+    "all_sixteen_present": true
+  },
+  "preserve_verification": {
+    "exactly_one_generic_noncurrent_disposition": "PRESERVED and asserted",
+    "non_empty_exact_grounds": "PRESERVED and asserted on every negative row",
+    "no_deferred_unavailable_deleted_split": "PRESERVED -- no new disposition added",
+    "errors_never_auto_convert_to_noncurrent": "PRESERVED -- unchanged-ref, missing-callback and callback-exception paths untouched",
+    "positive_only_historical_receipt_identity_strategy": "PRESERVED -- legacy receipt reproduces its historical ref byte for byte, asserted",
+    "promotion_rollback_shared_owner_law": "PRESERVED and asserted across a three-state v1->v2->v3->rollback(v2) sequence",
+    "current_vs_historical_exact_distinction": "PRESERVED",
+    "sealed_successor_exact_binding": "PRESERVED and asserted",
+    "decoy_is_not_successor": "PRESERVED and asserted",
+    "AuthorityCandidate_untouched": "CONFIRMED -- no change to AuthorityCandidate or its identity law",
+    "mixed_AT19_witness": "PRESERVED",
+    "omitted_edge_hostile": "PRESERVED",
+    "AT18_replay_grade_separation": "PRESERVED and asserted (all four grades and their mechanism ceilings)",
+    "pre553_replay_audit_py_unchanged": "CONFIRMED -- not in the diff",
+    "pre553_analytical_composition_py_unchanged": "CONFIRMED -- not in the diff",
+    "Astra_Option_A_not_reopened": "CONFIRMED",
+    "sealed_successor_repair_not_reopened": "CONFIRMED",
+    "AuthorityCandidate_identity_not_reopened": "CONFIRMED",
+    "mixed_witness_topology_not_reopened": "CONFIRMED -- the rollback fixture adds a NEW three-state sequence and changes no existing fixture",
+    "AT18_grade_law_not_reopened": "CONFIRMED",
+    "replay_audit_not_reopened": "CONFIRMED",
+    "analytical_composition_not_reopened": "CONFIRMED"
+  },
+  "courts_rewritten_or_removed": {
+    "removed": [],
+    "rewritten": [],
+    "note": "No existing court was deleted or rewritten. One fixture helper was ADDED (build_mixed_outcome_rollback_transition) because no existing fixture could reach a rollback whose transitions are genuinely mixed."
+  },
+  "court_delta": {
+    "prior_total": 144,
+    "prior_per_file": {
+      "test_pre553_analytical_replay_dependency": 35,
+      "test_pre553_authority_maintenance": 42,
+      "test_pre553_replay_audit": 54,
+      "test_pre553_analytical_composition": 13
+    },
+    "new_courts": 16,
+    "new_courts_per_file": {
+      "test_pre553_analytical_replay_dependency": 7,
+      "test_pre553_authority_maintenance": 9
+    },
+    "total_now": 160,
+    "prior_144_still_passing": true
+  }
+}

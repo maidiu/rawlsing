@@ -1,0 +1,103 @@
+{
+  "schema": "PYAT_C1_03R_EXECUTION_RECEIPT@1",
+  "status": "EXECUTED_SOURCE_FREE",
+  "branch": "agent/deepseek-pyat-hq146-c1-03r-replay-invalidation-r1",
+  "commission_tip": "8ce2a1aaa457fb1b08da9fca917dbb342bb98d41",
+  "adopted_base": "bc661188b51e995d9f5d74e55c4e37d2ba358a17",
+  "adopted_base_is_ancestor_of_commission_tip": true,
+  "toolchain": {
+    "interpreter": "/Users/matthewsmith/Desktop/rawlsing_v550_builder_bundle/.venv/bin/python",
+    "python_version": "3.11.15",
+    "pytest_version": "9.0.3",
+    "environment_note": "The system /usr/local/bin/python3 resolves to a zero-byte framework binary; an existing working Python 3.11 venv was used read-only. No dependency was installed."
+  },
+  "court_executed": {
+    "command": "python -m pytest rawlsing_next/tests/test_pre553_analytical_replay_dependency.py rawlsing_next/tests/test_pre553_authority_maintenance.py rawlsing_next/tests/test_pre553_replay_audit.py rawlsing_next/tests/test_pre553_analytical_composition.py -v",
+    "final_result": "109 passed",
+    "duration_seconds_final": 16.58,
+    "runs_recorded_as_final": 1,
+    "output_file": "07_FINAL_PYTEST_OUTPUT.txt",
+    "court_rationale": [
+      "new AT18/AT19 court (required)",
+      "existing authority-maintenance tests materially relied upon (SemanticDeterminantGraph + AuthorityInvalidationReceipt)",
+      "replay-audit tests materially relied upon (exact authority/replay closure law)",
+      "smallest accepted C1 analytical/composition court required to prove real producer/composed identities"
+    ]
+  },
+  "test_counts": {
+    "passed": 109,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "by_file": {
+      "rawlsing_next/tests/test_pre553_analytical_replay_dependency.py": 21,
+      "rawlsing_next/tests/test_pre553_authority_maintenance.py": 21,
+      "rawlsing_next/tests/test_pre553_replay_audit.py": 54,
+      "rawlsing_next/tests/test_pre553_analytical_composition.py": 13
+    },
+    "count_verification": "per-file counts derived by counting PASSED lines per file in 07_FINAL_PYTEST_OUTPUT.txt; 21+21+54+13 = 109, matching the summary line '109 passed in 20.45s'"
+  },
+  "owners_reused_unchanged": {
+    "rawlsing_next/pre553_authority_maintenance.py": {
+      "state": "UNCHANGED",
+      "verified_by": "git hash-object == git rev-parse HEAD:<path>"
+    },
+    "rawlsing_next/pre553_replay_audit.py": {
+      "state": "UNCHANGED",
+      "verified_by": "git hash-object == git rev-parse HEAD:<path>"
+    },
+    "rawlsing_next/pre553_analytical_composition.py": {
+      "state": "UNCHANGED",
+      "verified_by": "git hash-object == git rev-parse HEAD:<path>"
+    },
+    "no_counterexample_established": true,
+    "existing_lifecycle_owner_change_required": false
+  },
+  "fresh_process_execution": {
+    "runner": "rawlsing_next/tests/c1_at18_at19_fresh_process_runner.py",
+    "invoked_as": "python -m rawlsing_next.tests.c1_at18_at19_fresh_process_runner <retained_determinants.json>",
+    "separate_process": true,
+    "recomputes_through_accepted_owner": true,
+    "identity_reproduced": true
+  },
+  "write_allowlist_conformance": {
+    "created_or_modified": [
+      "rawlsing_next/pre553_analytical_replay_dependency.py",
+      "rawlsing_next/tests/test_pre553_analytical_replay_dependency.py",
+      "rawlsing_next/tests/c1_at18_at19_fixture.py",
+      "rawlsing_next/tests/c1_at18_at19_fresh_process_runner.py",
+      "WORKER_RETURNS/PYAT-C1-03R-REPLAY-INVALIDATION-R1/**"
+    ],
+    "forbidden_terrain_untouched": [
+      "rawlsing_next/pre553_analytical_composition.py",
+      "rawlsing_next/pre553_authority_maintenance.py",
+      "rawlsing_next/pre553_replay_audit.py",
+      "AT14-AT16 (Bunny) terrain",
+      "N10E provider implementation and tests",
+      "C1-R terrain"
+    ],
+    "preferred_terrain_followed": "The commission's preferred bounded new owner rawlsing_next/pre553_analytical_replay_dependency.py and preferred test rawlsing_next/tests/test_pre553_analytical_replay_dependency.py were used."
+  },
+  "prohibitions_observed": {
+    "raw_survey_files": false,
+    "candidate_abc": false,
+    "measured_p2x": false,
+    "real_source_c11": false,
+    "c4": false,
+    "at14_at17_implementation": false,
+    "n10e_duplication": false,
+    "c1_r": false,
+    "structural_world_or_at31_at32_completion_claim": false,
+    "v3_actor_person_implementation": false,
+    "new_semantic_comparability_or_model_authority": false,
+    "merge_or_self_adoption": false
+  },
+  "not_claimed": [
+    "AT33 progressive multi-conditioner world conditioning",
+    "real-source qualification or live occupancy",
+    "structural-world or AT31/AT32 completion",
+    "V3 actor/person state",
+    "multi-conditioner or joint dependency closure"
+  ],
+  "implementation_commit_sha": "7e558194b8aa1ff2a8c2a335c68daa7305b63dc3"
+}

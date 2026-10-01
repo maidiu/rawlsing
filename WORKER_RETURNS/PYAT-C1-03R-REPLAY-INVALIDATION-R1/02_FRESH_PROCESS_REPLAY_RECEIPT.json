@@ -1,0 +1,122 @@
+{
+  "schema": "PYAT_C1_03R_FRESH_PROCESS_REPLAY_RECEIPT@1",
+  "status": "EXECUTED_SOURCE_FREE",
+  "acceptance_case": "AT18",
+  "replay_grade": "FRESH_EMPIRICAL_RECOMPUTATION",
+  "actual_replay_mechanism": "FRESH_PROCESS_ACCEPTED_PRODUCER",
+  "runner": "rawlsing_next/tests/c1_at18_at19_fresh_process_runner.py",
+  "court": "rawlsing_next/tests/test_pre553_analytical_replay_dependency.py",
+  "positive_test": "test_at18_fresh_process_recomputes_from_retained_determinants",
+  "binding_test": "test_at18_fresh_process_identity_binds_claim_at_fresh_grade",
+  "producer_path": "rawlsing_next.pre553_analytical_composition.compose_positioned_subject_possibility",
+  "producer_route": "DIRECT_I03_TO_POSITIONED_SUBJECT",
+  "retained_determinants": {
+    "empirical_query_ref": {
+      "kind": "EmpiricalQuerySpec@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalQuerySpec:sha256:ebef7e841e4b6bcbde599118a9c993fa9a96a3b4c84bd743c862c1790548f371",
+      "content_hash": "ebef7e841e4b6bcbde599118a9c993fa9a96a3b4c84bd743c862c1790548f371"
+    },
+    "predicate_ref": {
+      "kind": "EmpiricalPredicate@1.0.0",
+      "object_id": "urn:rawlsing:pre553:EmpiricalPredicate:sha256:8fe1a7e827ee09d8ab8121fe76fc1b219c1518b74e743098adba1a754dd7a3ac",
+      "content_hash": "8fe1a7e827ee09d8ab8121fe76fc1b219c1518b74e743098adba1a754dd7a3ac"
+    },
+    "predicate_hash": "fc7ee1774226e94491688b14a395acfbf9c5ccfc9184744963e01af1ee52dc55",
+    "consumer_query_ref": {
+      "kind": "POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_QUERY@1",
+      "content_hash": "0e966cca9805e4fedce532812cfd6587cd7f7cf6cd858ac982c531abd6f61330"
+    },
+    "condition_binding_witness_ref": {
+      "kind": "C1_CONDITION_VALUE_BINDING_WITNESS@2",
+      "object_id": "urn:test:c1:at07:condition-value-witness:r6-forward-p1",
+      "content_hash": "fb3a3b566e2a65a522344ddf5145ec5754d02959237c75a0287fc57bd6c84db5"
+    },
+    "model_rule_hash": "e691300cb8782b7546aacc1fef30ee2b9e025a2d3f7f1334d8e4b5d4c1cea2f6",
+    "source_universe_ref_hash": "ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2",
+    "release_ref_hash": "dfd6ca5e08d1abe0f1494b4dc0e38869925739cceb306c62a3540922b12ff5b3",
+    "replay_protocol_ref": {
+      "kind": "REPLAY_ROOT",
+      "object_id": "urn:test:i03:replay_root:query-c1-at07-forward-position-p1-to-answer",
+      "content_hash": "ea47e359dbfde801288b4bfedeb1415f8d4b18bbe87f503ccf838625bd875eb9"
+    },
+    "deterministic_order_or_tie_rule_ref": {
+      "kind": "REPLAY_ROOT",
+      "object_id": "urn:test:i03:replay_root:predicate-c1-at07-forward-position-p1",
+      "content_hash": "ab10b359f9fafd60301b51e39c34f06eb0133d8fadf1eee0bede5289b40a2c89"
+    }
+  },
+  "exact_authority_refs": [
+    {
+      "authority_id": "C1-AT07-COMPARABILITY",
+      "authority_version": "1.0.0",
+      "authority_content_hash": "69cb883e7ccc115da614091635f36f7eca92cc1f517732e57a37fe77afb2676f"
+    },
+    {
+      "authority_id": "C1-AT07-QUERY",
+      "authority_version": "1.0.0",
+      "authority_content_hash": "b59ef578314515268fa7b280a8480b4c95c80c9cfd831c39c2bfc4214b6fd767"
+    },
+    {
+      "authority_id": "C1-AT07-ROUTING",
+      "authority_version": "1.0.0",
+      "authority_content_hash": "a71a90ab7106f6300ced46204769fae1beba237d9a16aa3dba6f03a93c35ecc0"
+    },
+    {
+      "authority_id": "C1-AT07-SOURCE",
+      "authority_version": "1.0.0",
+      "authority_content_hash": "4d565f1b40adb2bd3c9c3c2965226a4f9be9222338323ed6b649b8a68a973dab"
+    }
+  ],
+  "expected_output_identity": {
+    "composed_result_identity_hash": "71e56bf9330f7e0b5259aecfc40ce5a8ab2853421949a9b0446080b047608b96",
+    "producer_fact_ref_hash": "20f35003c7d11a38c1c7d3cea9f334de4ba5b89d1f26fccbff1254c05904bdd1",
+    "evidence_ref_hash": "b2407eeb3d22cc0d71e5d13308b0149338761efc4ef40921ab363c3cd9c78307",
+    "consumer_result_hash": "c30cb9f597e724f69d38ad7acbdccf14be8860dea41fb7f29956143db9882056",
+    "raw_denominator_support": 60
+  },
+  "observed_output_identity": {
+    "composed_result_identity_hash": "71e56bf9330f7e0b5259aecfc40ce5a8ab2853421949a9b0446080b047608b96",
+    "producer_fact_ref_hash": "20f35003c7d11a38c1c7d3cea9f334de4ba5b89d1f26fccbff1254c05904bdd1",
+    "evidence_ref_hash": "b2407eeb3d22cc0d71e5d13308b0149338761efc4ef40921ab363c3cd9c78307",
+    "consumer_result_hash": "c30cb9f597e724f69d38ad7acbdccf14be8860dea41fb7f29956143db9882056",
+    "consumer_result_state": "EXACT_SUPPORTED",
+    "raw_denominator_support": 60,
+    "cell_numerators": {"yes": 54, "no": 6}
+  },
+  "identity_reproduced_exactly": true,
+  "fresh_process_proof_basis": [
+    "The runner executes in a separate Python process invoked with sys.executable -m.",
+    "It reads only the retained-determinant artifact, which carries exact refs and the expected output identity and contains no stored geometry, cells or analytical output.",
+    "It rebuilds the accepted source and determinant objects and asserts each rebuilt exact ref equals the retained ref (empirical query, predicate, predicate hash, witness, consumer query, source universe, release refs, authority snapshot refs, model rule hash).",
+    "It then re-executes the accepted composition owner and reports the identity it computed in that fresh process.",
+    "The parent court compares the fresh-process identity against the in-process composition identity and the retained expected identity."
+  ],
+  "anti_masquerade_checks": {
+    "retained_artifact_contains_no_stored_output": true,
+    "checks": [
+      "'complete_cell_geometry' absent from the retained artifact",
+      "'geometry' absent from the retained artifact",
+      "'exact_fraction' absent from the retained artifact"
+    ],
+    "runner_does_not_read_expected_output": true,
+    "static_test": "test_at18_runner_does_not_read_stored_expected_output"
+  },
+  "executed_versus_unexecuted": {
+    "executed": [
+      "source-free accepted producer/composition",
+      "fresh-process recomputation from retained determinants",
+      "replay-grade contract enforcement",
+      "existing-owner invalidation and closure"
+    ],
+    "unexecuted": [
+      "live occupancy / real-source qualification",
+      "cross-machine or cross-version replay",
+      "AT33 progressive multi-conditioner world conditioning"
+    ]
+  },
+  "limitations": [
+    "Source-free synthetic fixture: this result cannot establish live occupancy.",
+    "Same host interpreter for the fresh process; not a cross-machine replay proof.",
+    "The expected output identity is bound to this frozen synthetic law and these exact authority snapshots."
+  ]
+}

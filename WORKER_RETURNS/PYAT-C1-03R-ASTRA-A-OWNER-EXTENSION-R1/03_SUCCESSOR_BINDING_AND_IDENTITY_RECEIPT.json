@@ -1,0 +1,45 @@
+{
+  "schema": "PYAT_C1_03R_ASTRA_A_SUCCESSOR_BINDING_RECEIPT@1",
+  "defect_reproduced_before_repair": true,
+  "defect": "build_owner_recompiler filtered the owner's changed refs by the consumed (authority_id, authority_version) tuple. In a v1->v2 promotion the owner reports changed = (prior_v1, selected_v2), so the filter selected the PRIOR consumed ref and passed it to recomposition as the alleged successor.",
+  "repair": [
+    "Resolve the exact consumed prior ref by identity membership in the owner's changed set, not by id+version tuple.",
+    "Resolve the unique OTHER changed ref sharing that authority identity as the governed successor.",
+    "Never by tuple position and never by version label.",
+    "Require the successor to be an authority the owner actually knows (registered snapshot), which forbids future or unknown authority pre-binding."
+  ],
+  "measured_evidence": {
+    "consumed_prior_v1_hash_prefix": "4d565f1b40adb2bd",
+    "sealed_successor_hash_prefix": "0a5ebefa7023e816",
+    "callback_received_after_repair": "0a5ebefa7023e816",
+    "callback_received_is_sealed_successor": true,
+    "callback_did_not_receive_old_v1": true,
+    "old_buggy_filter_would_have_passed": "4d565f1b40adb2bd (the prior)"
+  },
+  "fixture_identity_defect": {
+    "description": "build_model_authority_transition exposed both a separately synthesized revised-model ref and the candidate-derived revision.proposed_authority_ref, and courts used them interchangeably.",
+    "severity": "the separately synthesized decoy ref shares the CONSUMED prior's authority_content_hash (4d565f1b), differing only in version label and fingerprint, because revised_model_authority_snapshot copies the base content hash",
+    "consequence": "choosing the decoy recomputes the product under the authority it already consumed, so no identity change would be observable",
+    "correction": [
+      "the fixture now exposes unsealed_decoy_model_ref and sealed_successor_ref as distinct, explicitly named values",
+      "sealed_successor_of() resolves the successor through the owner and asserts it differs from the consumed prior",
+      "six existing court references that passed the decoy as the successor were corrected to the sealed successor",
+      "build_model_rule_from_sealed_successor() builds the consumer model rule bound to the exact governed successor"
+    ]
+  },
+  "identity_proof": {
+    "consumer_model_rule_material_binds_complete_authority_ref": true,
+    "rule_hash_commits_to_sealed_successor": true,
+    "decoy_rule_hash_differs": true,
+    "recomputed_through_accepted_composition_path": true,
+    "new_exact_product_identity": "feec9fc720bf69e2...",
+    "product_identity_moved": true,
+    "numerical_geometry_unchanged": true,
+    "identity_moved_because_governing_authority_moved": true,
+    "owner_promotion_parent_supersession_validation_preserved": true,
+    "owner_rollback_target_release_validation_preserved": true
+  },
+  "authority_candidate_hashing_or_identity_changed": false,
+  "analytical_model_law_widened": false,
+  "new_analytical_law": false
+}

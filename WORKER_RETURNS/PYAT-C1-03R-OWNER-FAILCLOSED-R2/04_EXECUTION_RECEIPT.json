@@ -1,0 +1,92 @@
+{
+  "schema": "PYAT_C1_03R_OWNER_FAILCLOSED_EXECUTION_RECEIPT@1",
+  "interpreter": "/tmp/c1-01-r8-release-spine-venv/bin/python",
+  "python": "3.12.14",
+  "pytest": "9.1.1",
+  "command": "pytest -q <the four commissioned files>   (run with PYTHONPATH=<worktree root>)",
+  "files": [
+    "rawlsing_next/tests/test_pre553_analytical_replay_dependency.py",
+    "rawlsing_next/tests/test_pre553_authority_maintenance.py",
+    "rawlsing_next/tests/test_pre553_replay_audit.py",
+    "rawlsing_next/tests/test_pre553_analytical_composition.py"
+  ],
+  "counts": {
+    "analytical_replay_dependency": 42,
+    "authority_maintenance": 51,
+    "replay_audit": 54,
+    "analytical_composition": 13,
+    "total_passed": 160,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "wall_time_seconds": 55.64,
+    "per_file_sum": 160
+  },
+  "per_file_counts_method": "Each file was additionally run through `pytest -q --collect-only` individually; the four counts above sum exactly to the 160 passed in the single four-file run.",
+  "historical_r1": {
+    "total": 144,
+    "per_file": {
+      "analytical_replay_dependency": 35,
+      "authority_maintenance": 42,
+      "replay_audit": 54,
+      "analytical_composition": 13
+    },
+    "still_passing": true,
+    "verified_before_repair": "The four-file court was run unmodified at the commissioned tip BEFORE any edit and passed 144/144 in 102.56s."
+  },
+  "delta": {
+    "prior_total": 144,
+    "now": 160,
+    "new_courts": 16,
+    "replaced_courts": 0,
+    "removed_courts": 0,
+    "new_courts_per_file": {
+      "analytical_replay_dependency": 7,
+      "authority_maintenance": 9
+    },
+    "untouched_files_court_counts": {
+      "replay_audit": 54,
+      "analytical_composition": 13
+    }
+  },
+  "reproduction_harness": {
+    "ran_before_repair": true,
+    "counterexamples_reproduced": 11,
+    "counterexamples_refused_after_repair": 11,
+    "rvw_004_note": "The RVW-004 attack required a fully self-consistently resealed checkpoint: the tampered invalidation receipt, every release citing it, the whole event chain including subject refs and parent linkage, the current-release pointers, and the checkpoint hash. A naive byte edit was already caught by the embedded record_ref validation, which is why that check alone could not demonstrate the finding."
+  },
+  "files_modified": [
+    "rawlsing_next/pre553_authority_maintenance.py",
+    "rawlsing_next/pre553_analytical_replay_dependency.py",
+    "rawlsing_next/tests/test_pre553_authority_maintenance.py",
+    "rawlsing_next/tests/test_pre553_analytical_replay_dependency.py",
+    "rawlsing_next/tests/c1_at18_at19_fixture.py",
+    "WORKER_RETURNS/PYAT-C1-03R-OWNER-FAILCLOSED-R2/**"
+  ],
+  "diff_stat": {
+    "rawlsing_next/pre553_authority_maintenance.py": 137,
+    "rawlsing_next/pre553_analytical_replay_dependency.py": 25,
+    "rawlsing_next/tests/c1_at18_at19_fixture.py": 148,
+    "rawlsing_next/tests/test_pre553_analytical_replay_dependency.py": 323,
+    "rawlsing_next/tests/test_pre553_authority_maintenance.py": 404,
+    "files_changed": 5,
+    "insertions": 1034,
+    "deletions": 3
+  },
+  "write_terrain_verified": {
+    "rawlsing_next/pre553_replay_audit.py": "UNCHANGED, not in the diff",
+    "rawlsing_next/pre553_analytical_composition.py": "UNCHANGED, not in the diff",
+    "rawlsing_next/pre553_analytical_state_and_route.py": "UNCHANGED, not in the diff (C1-03A untouched)",
+    "AuthorityCandidate": "UNCHANGED -- neither the class nor its identity law was modified",
+    "AT17": "untouched",
+    "C5_C7": "untouched",
+    "raw_sources": "untouched",
+    "V3": "untouched"
+  },
+  "existing_owners_modified": [],
+  "wider_regression_sweep_claimed": false,
+  "wider_regression_sweep_note": "Only the four commissioned files were executed. No broader sweep is claimed.",
+  "lint_or_typecheck_command_claimed": false,
+  "lint_or_typecheck_note": "No Makefile, pyproject.toml, setup.cfg, tox.ini, .flake8 or AGENTS.md exists at the repository root, so no configured lint or typecheck command was available. The claim here is pytest evidence only."
+}

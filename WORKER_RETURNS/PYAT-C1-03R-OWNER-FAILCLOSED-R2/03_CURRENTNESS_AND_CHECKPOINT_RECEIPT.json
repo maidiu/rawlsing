@@ -1,0 +1,65 @@
+{
+  "schema": "PYAT_C1_03R_CURRENTNESS_AND_CHECKPOINT_RECEIPT@1",
+  "scope": "RVW-003 and RVW-004: lifecycle currentness, and independent re-derivation of A and U at checkpoint replay.",
+  "blocker_ids": {
+    "owner_unknown_never_current": "DEPENDENT_LIFECYCLE_NOT_GOVERNED / OwnerUnknownDependent(OWNER_UNKNOWN_DEPENDENT)",
+    "checkpoint_trusted_U": "C1-03R-OWNER-BLOCK-CHECKPOINT-TRUSTED-U-001"
+  },
+  "currentness_approval_law": {
+    "precedence": [
+      {"case": "known dependent, explicit noncurrent outcome", "result": "typed noncurrent refusal (ExplicitNoncurrentDependent)"},
+      {"case": "known dependent, replacement row", "result": "CURRENT, naming the exact current_replacement_ref"},
+      {"case": "known dependent, in unaffected set", "result": "CURRENT, identity stable, no replacement"},
+      {"case": "known dependent, never transitioned", "result": "CURRENT -- the owner knows it and nothing governed it"},
+      {"case": "OWNER-UNKNOWN dependent", "result": "NOT GOVERNED (typed); resolve_current_analytical_product raises OwnerUnknownDependent. NEVER CURRENT."}
+    ],
+    "currentness_source": "the determinant graph's own known_dependent_refs, plus the recorded owner outcome",
+    "currentness_never_inferred_from": ["cache presence", "object or snapshot residency", "absence of a recorded transition", "version labels", "tuple position"]
+  },
+  "new_typed_surface": {
+    "DEPENDENT_LIFECYCLE_NOT_GOVERNED": {
+      "value": "NOT_GOVERNED",
+      "kind": "lifecycle_state on dependent_lifecycle_status",
+      "reason_code": "OWNER_UNKNOWN_DEPENDENT",
+      "distinguishes": "the owner has no recorded outcome AND does not know the ref; it is NOT an explicit noncurrent outcome, which would imply the owner did record one"
+    },
+    "OwnerUnknownDependent": {
+      "module": "rawlsing_next.pre553_analytical_replay_dependency",
+      "kind": "typed exception raised by resolve_current_analytical_product",
+      "base": "AnalyticalReplayDependencyError -> Pre553IntegrityError",
+      "code": "OWNER_UNKNOWN_DEPENDENT",
+      "distinguishes": "ExplicitNoncurrentDependent (owner recorded a negative outcome) from owner-unknown (owner never spoke about this ref at all)"
+    }
+  },
+  "checkpoint_replay_law": {
+    "recomputed_at_replay": ["A = graph.affected(changed_authority_refs)", "U = graph.unaffected(A)"],
+    "required_exact_equality_with_serialized": ["affected_dependent_refs", "unaffected_dependent_refs"],
+    "consequence": "A and U are disjoint and jointly cover every known dependent K AT REPLAY, not merely at initial production",
+    "defect_closed": "Recomputing only A left U trusted from the serialized receipt, so a self-consistently rehashed checkpoint with a shrunk or altered U replayed successfully",
+    "embedded_record_ref_validation": "RETAINED but not sufficient on its own, as HQ stated"
+  },
+  "counterexamples_closed": [
+    "owner-unknown dependent reported CURRENT with reason 'no governed transition has affected this dependent'",
+    "owner-unknown dependent reported CURRENT identically whether or not it was cached/resident",
+    "checkpoint with U shrunk to omit a known sibling, fully self-consistently rehashed, accepted by replay",
+    "checkpoint with U replaced by a ref the graph never knew, fully self-consistently rehashed, accepted by replay"
+  ],
+  "interdependence_note": "RVW-003 and RVW-004 are load-bearing on each other and were closed together on purpose. Shrinking a serialized U converts an owner-KNOWN dependent into an owner-UNKNOWN one, so RVW-004's fix is what stops U being tampered with, and RVW-003's fix is what stops the consequence from reading as CURRENT. Closing either alone leaves a live path.",
+  "shared_owner_law_verification": {
+    "sequence_exercised": "promotion v1->v2, promotion v2->v3, rollback v3->v2, each a genuine mixed outcome",
+    "fixture_added": "c1_at18_at19_fixture.build_mixed_outcome_rollback_transition",
+    "why_a_new_fixture": "no existing fixture could reach a rollback whose transitions are genuinely mixed; the existing mixed graph binds products only to the v1 authority, so a second transition would have produced an empty affected set and proved nothing",
+    "asserted_per_transition": [
+      "R and N disjoint and together exactly A",
+      "A and U disjoint and together exactly K",
+      "no duplicate source row survived",
+      "every negative row has the single generic disposition, a nonempty reason_code, nonempty supporting_refs, and replacement_ref is None",
+      "the receipt claims the noncurrent schema only because it really carries rows"
+    ],
+    "registry_rebinding_note": "Each transition re-registers the recomposed product against the determinant it now consumes. A stale registry is itself refused by the owner's recompiler law (exactly one consumed determinant must be in the changed set), which is why the three-state sequence needs three registries."
+  },
+  "residual_limitations": [
+    "NOT_GOVERNED and OwnerUnknownDependent are new public names in the maintenance and adapter modules respectively. They are additive lifecycle vocabulary for a case the owner previously mislabelled CURRENT; they are not a new noncurrent disposition and do not split the single generic disposition.",
+    "A known-but-never-transitioned dependent still resolves CURRENT. That is deliberate and is what preserves the pre-R2 behaviour for a dependent the owner genuinely knows. Rereview may want to confirm this reading, since the alternative (treat 'known but untouched' as NOT GOVERNED too) would be stricter but would change behaviour for known dependents in executors that have recorded no release yet."
+  ]
+}

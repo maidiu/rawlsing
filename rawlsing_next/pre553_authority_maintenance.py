@@ -62,6 +62,35 @@ _FORBIDDEN_SELECTOR_TOKENS = frozenset({
 
 Recompiler = Callable[[ExactRef, tuple[AuthorityRef, ...]], ExactRef]
 
+# --------------------------------------------------------------------------
+# Generic negative lifecycle disposition.
+#
+# Exactly ONE noncurrent disposition exists. It is deliberately generic: it names
+# no C1, survey, model, comparability or product vocabulary, and it does not split
+# into separate deferred/unavailable/deleted classes, because the lifecycle owner
+# has no authority that would distinguish them.
+# --------------------------------------------------------------------------
+NONCURRENT_DISPOSITION_NO_LAWFUL_REPLACEMENT = "NO_CURRENT_NO_LAWFUL_REPLACEMENT"
+NONCURRENT_DISPOSITIONS = frozenset({NONCURRENT_DISPOSITION_NO_LAWFUL_REPLACEMENT})
+
+# Dependency lifecycle visibility for a registered dependent under the current
+# release. This is lifecycle state, never object/cache presence.
+DEPENDENT_LIFECYCLE_CURRENT = "CURRENT"
+DEPENDENT_LIFECYCLE_EXPLICIT_NONCURRENT = "EXPLICIT_NONCURRENT"
+#: The owner does not know this dependent at all, so no governed transition has ever
+#: spoken about it. This is deliberately NOT ``CURRENT``: absence of a governed
+#: outcome is absence of authority, not evidence of currentness. A ref the owner has
+#: never registered must fail closed rather than inherit a positive claim from the
+#: mere absence of a recorded transition.
+DEPENDENT_LIFECYCLE_NOT_GOVERNED = "NOT_GOVERNED"
+
+# The negative-row receipt schema. A receipt carrying noncurrent rows uses this
+# explicit, separately identified schema; a positive-only receipt keeps the
+# original projection byte for byte.
+INVALIDATION_RECEIPT_NONCURRENT_SCHEMA = (
+    "PRE553_AUTH40_SEMANTIC_AUTHORITY_INVALIDATION_NONCURRENT@1.0.0"
+)
+
 
 class AuthorityMaintenanceError(ValueError):
     """The governed maintenance lifecycle cannot lawfully perform the operation."""
@@ -597,11 +626,106 @@ class SemanticDeterminantGraph:
 
 
 @dataclass(frozen=True)
+class NoncurrentDependentOutcome:
+    """One affected dependent that has no lawful replacement under a new release.
+
+    This is the single generic negative lifecycle disposition. It carries no C1,
+    survey, model or product vocabulary, and it never mints a product.
+
+    Meaning, precisely:
+
+    * the historical artifact remains historically addressable;
+    * it is **not current** under the new governed authority release;
+    * the governing authority is *not* withdrawn merely because this dependent is
+      noncurrent.
+
+    ``replacement_ref`` is always ``None``. A noncurrent row may never carry a
+    replacement ref; a lawful replacement is a different outcome, not an extra
+    field on this one.
+    """
+
+    old_ref: ExactRef
+    disposition: str
+    reason_code: str
+    supporting_refs: tuple[ExactRef, ...] = ()
+    replacement_ref: None = None
+
+    def __post_init__(self) -> None:
+        old = exact_ref(self.old_ref)
+        object.__setattr__(self, "old_ref", old)
+        if self.disposition != NONCURRENT_DISPOSITION_NO_LAWFUL_REPLACEMENT:
+            raise AuthorityMaintenanceError(
+                "the owner supports exactly one generic noncurrent disposition, "
+                f"{NONCURRENT_DISPOSITION_NO_LAWFUL_REPLACEMENT!r}; got "
+                f"{self.disposition!r}. Separate deferred/unavailable/deleted "
+                "semantic classes are not owner vocabulary."
+            )
+        _reject_selector(_text(self.reason_code, "reason_code"), "reason_code")
+        grounds = _exact_refs(self.supporting_refs)
+        if not grounds:
+            raise AuthorityMaintenanceError(
+                "a noncurrent dependent row requires exact supporting evidence or "
+                "policy refs as its ground; an ungrounded noncurrent claim is refused"
+            )
+        object.__setattr__(self, "supporting_refs", grounds)
+        if self.replacement_ref is not None:
+            raise AuthorityMaintenanceError(
+                "a noncurrent dependent row may not carry a replacement ref; the "
+                "historical artifact is retained and no new product is current"
+            )
+
+    def semantic_projection(self) -> dict[str, Any]:
+        return {
+            "old_ref": self.old_ref.as_dict(),
+            "disposition": self.disposition,
+            "reason_code": self.reason_code,
+            "supporting_refs": [ref.as_dict() for ref in self.supporting_refs],
+            "replacement_ref": None,
+        }
+
+    def as_dict(self) -> dict[str, Any]:
+        return dict(self.semantic_projection())
+
+    @classmethod
+    def from_dict(cls, data: Mapping[str, Any]) -> "NoncurrentDependentOutcome":
+        # The serialized ``replacement_ref`` is load-bearing negative evidence: its
+        # exact null is what asserts "no lawful replacement exists for this
+        # dependent". So it must be *stated*, and it must be null. A missing field is
+        # never treated as a stated null, and a non-null value is never quietly
+        # overwritten with one, because either move would let a serialized row
+        # assert something the owner never emitted.
+        if "replacement_ref" not in data:
+            raise AuthorityMaintenanceError(
+                "a serialized noncurrent dependent row must state replacement_ref "
+                "explicitly; the owner does not synthesize null for a missing field, "
+                "because that null is the row's own evidence that no lawful "
+                "replacement exists (C1-03R-OWNER-BLOCK-NEGATIVE-FIELD-001)"
+            )
+        serialized_replacement = data["replacement_ref"]
+        if serialized_replacement is not None:
+            raise AuthorityMaintenanceError(
+                "a serialized noncurrent dependent row may not carry a replacement "
+                f"ref; got {serialized_replacement!r}. A lawful replacement is a "
+                "different outcome, not an extra field on this one, so the owner "
+                "refuses the row rather than discarding the value "
+                "(C1-03R-OWNER-BLOCK-NEGATIVE-FIELD-001)"
+            )
+        return cls(
+            old_ref=exact_ref(data["old_ref"]),
+            disposition=_text(data["disposition"], "disposition"),
+            reason_code=_text(data["reason_code"], "reason_code"),
+            supporting_refs=tuple(exact_ref(x) for x in data.get("supporting_refs", ())),
+            replacement_ref=None,
+        )
+
+
+@dataclass(frozen=True)
 class AuthorityInvalidationReceipt:
     changed_authority_refs: tuple[AuthorityRef, ...]
     affected_dependent_refs: tuple[ExactRef, ...]
     unaffected_dependent_refs: tuple[ExactRef, ...]
     recompilation_pairs: tuple[tuple[ExactRef, ExactRef], ...]
+    noncurrent_dependents: tuple[NoncurrentDependentOutcome, ...] = ()
 
     def __post_init__(self) -> None:
         object.__setattr__(
@@ -613,18 +737,72 @@ class AuthorityInvalidationReceipt:
         pairs: dict[str, tuple[ExactRef, ExactRef]] = {}
         for raw_old, raw_new in self.recompilation_pairs:
             old, new = exact_ref(raw_old), exact_ref(raw_new)
+            if old == new:
+                raise AuthorityMaintenanceError(
+                    "an affected dependent replacement must be a new exact ref, not "
+                    "the old ref")
+            # Reject a repeated source row BEFORE the dict assignment below can
+            # silently overwrite one. Two rows for one old ref are refused whether
+            # their targets agree or differ: with differing targets, last-write-wins
+            # would let a caller substitute the owner's replacement successor.
+            if old.key in pairs:
+                raise AuthorityMaintenanceError(
+                    "an affected dependent may carry at most one positive "
+                    f"replacement row; duplicate replacement rows for source {old.key} "
+                    f"(targets {pairs[old.key][1].key} and {new.key}) are refused "
+                    "rather than silently collapsed "
+                    "(C1-03R-OWNER-BLOCK-DUPLICATE-REPLACEMENT-001)"
+                )
             pairs[old.key] = (old, new)
-        affected_keys = {ref.key for ref in self.affected_dependent_refs}
-        if set(pairs) != affected_keys:
+        rows: dict[str, NoncurrentDependentOutcome] = {}
+        for raw in self.noncurrent_dependents:
+            row = raw if isinstance(raw, NoncurrentDependentOutcome) else (
+                NoncurrentDependentOutcome(**dict(raw)))
+            rows[row.old_ref.key] = row
+        if len(rows) != len(tuple(self.noncurrent_dependents)):
             raise AuthorityMaintenanceError(
-                "recompilation pairs must cover exactly the affected dependent set")
+                "a dependent may carry at most one noncurrent outcome")
+        affected_keys = {ref.key for ref in self.affected_dependent_refs}
+        noncurrent_keys = set(rows)
+        # R and N must be disjoint and must together cover A exactly: every affected
+        # old ref has exactly one outcome, and no unknown or duplicate source.
+        overlap = set(pairs) & noncurrent_keys
+        if overlap:
+            raise AuthorityMaintenanceError(
+                "an affected dependent may not receive both a replacement and a "
+                f"noncurrent outcome: {sorted(overlap)}"
+            )
+        covered = set(pairs) | noncurrent_keys
+        missing = affected_keys - covered
+        if missing:
+            raise AuthorityMaintenanceError(
+                "every affected dependent requires exactly one outcome "
+                f"(replacement or explicit noncurrent); missing {sorted(missing)}"
+            )
+        unknown = covered - affected_keys
+        if unknown:
+            raise AuthorityMaintenanceError(
+                f"outcome set names dependents outside the affected set: {sorted(unknown)}"
+            )
         if affected_keys & {ref.key for ref in self.unaffected_dependent_refs}:
             raise AuthorityMaintenanceError("affected and unaffected dependent sets overlap")
         object.__setattr__(
             self, "recompilation_pairs", tuple(pairs[key] for key in sorted(pairs)))
+        object.__setattr__(
+            self, "noncurrent_dependents", tuple(rows[key] for key in sorted(rows)))
+
+    @property
+    def preserves_legacy_identity(self) -> bool:
+        """True when this receipt keeps the pre-extension positive-only identity.
+
+        A receipt with no noncurrent rows projects exactly the original field set, so
+        every historical positive-only receipt hash is reproduced byte for byte. No
+        historical hash is ever silently reinterpreted.
+        """
+        return not self.noncurrent_dependents
 
     def semantic_projection(self) -> dict[str, Any]:
-        return {
+        projection = {
             "contract_id": MAINTENANCE_CONTRACT_ID,
             "record_type": "AuthorityInvalidationReceipt",
             "changed_authority_refs": [ref.as_dict() for ref in self.changed_authority_refs],
@@ -635,16 +813,68 @@ class AuthorityInvalidationReceipt:
                 for old, new in self.recompilation_pairs
             ],
         }
+        if self.preserves_legacy_identity:
+            # Byte-identical to the pre-extension projection. Do not add fields here.
+            return projection
+        return {
+            **projection,
+            "receipt_schema": INVALIDATION_RECEIPT_NONCURRENT_SCHEMA,
+            "noncurrent_dependents": [
+                row.semantic_projection() for row in self.noncurrent_dependents
+            ],
+        }
 
     @property
     def ref(self) -> ExactRef:
         return _record_ref("INVALIDATION", self.semantic_projection())
+
+    @property
+    def noncurrent_old_refs(self) -> tuple[ExactRef, ...]:
+        return tuple(row.old_ref for row in self.noncurrent_dependents)
+
+    @property
+    def replacement_old_refs(self) -> tuple[ExactRef, ...]:
+        return tuple(old for old, _ in self.recompilation_pairs)
 
     def as_dict(self) -> dict[str, Any]:
         return {**self.semantic_projection(), "record_ref": self.ref.as_dict()}
 
     @classmethod
     def from_dict(cls, data: Mapping[str, Any]) -> "AuthorityInvalidationReceipt":
+        # Compatibility boundary. The owner emits the noncurrent schema only when at
+        # least one dependent is noncurrent, and emits nothing at all beyond the
+        # historical field set otherwise. So the two shapes are mutually exclusive and
+        # a serialized receipt that mixes them is an incompatible reinterpretation,
+        # never something to silently accept:
+        #
+        #   * any declaration of the new schema (the receipt_schema key or the
+        #     noncurrent_dependents key) must be complete and exact -- the exact
+        #     schema id AND at least one row;
+        #   * anything else must be historical positive-only material, which
+        #     continues to deserialize under its exact original field set and
+        #     therefore reproduces its historical identity byte for byte.
+        schema_declared = "receipt_schema" in data
+        rows_declared = "noncurrent_dependents" in data
+        schema = data.get("receipt_schema")
+        rows = data.get("noncurrent_dependents") or ()
+        if schema_declared or rows_declared:
+            if schema != INVALIDATION_RECEIPT_NONCURRENT_SCHEMA:
+                raise AuthorityMaintenanceError(
+                    "a serialized invalidation receipt declares noncurrent material "
+                    f"but does not carry the exact "
+                    f"{INVALIDATION_RECEIPT_NONCURRENT_SCHEMA!r} schema id; got "
+                    f"{schema!r}. A missing or forged schema is refused rather than "
+                    "inferred (C1-03R-OWNER-BLOCK-SCHEMA-COMPAT-001)"
+                )
+            if not rows:
+                raise AuthorityMaintenanceError(
+                    "a serialized invalidation receipt declares the noncurrent schema "
+                    "but carries no noncurrent rows; the owner emits "
+                    "noncurrent_dependents only when at least one dependent is "
+                    "noncurrent, so this is an incompatible reinterpretation of "
+                    "positive-only legacy material "
+                    "(C1-03R-OWNER-BLOCK-SCHEMA-COMPAT-001)"
+                )
         obj = cls(
             changed_authority_refs=tuple(
                 authority_ref(x) for x in data["changed_authority_refs"]),
@@ -656,7 +886,19 @@ class AuthorityInvalidationReceipt:
                 (exact_ref(row["old_ref"]), exact_ref(row["new_ref"]))
                 for row in data["recompilation_pairs"]
             ),
+            noncurrent_dependents=tuple(
+                NoncurrentDependentOutcome.from_dict(row)
+                for row in rows
+            ),
         )
+        # Belt and braces: the reconstructed rows and the serialized declaration must
+        # agree about whether this receipt is a noncurrent-schema receipt at all.
+        if bool(obj.noncurrent_dependents) != bool(rows):
+            raise AuthorityMaintenanceError(
+                "serialized invalidation receipt schema does not match its "
+                "reconstructed noncurrent rows "
+                "(C1-03R-OWNER-BLOCK-SCHEMA-COMPAT-001)"
+            )
         _validate_embedded_record_ref(data, obj.ref)
         return obj
 
@@ -1386,26 +1628,193 @@ class AuthorityMaintenanceExecutor:
         *,
         changed_authority_refs: tuple[AuthorityRef, ...],
         recompiler: Recompiler | None,
+        noncurrent_outcomes: Mapping[Any, Any] | None = None,
     ) -> AuthorityInvalidationReceipt:
+        """Compute every affected dependent's single outcome.
+
+        The owner alone computes the affected set and validates the outcome set. The
+        domain adapter supplies either a recompiler or an explicit, grounded
+        noncurrent outcome per affected dependent -- it never computes affected or
+        unaffected, and never builds this receipt.
+
+        Errors are NOT converted into noncurrent outcomes. A missing recompiler, a
+        recompiler exception, an unchanged-ref return, or a noncurrent row for a
+        dependent the owner did not mark affected all remain errors. Only an
+        explicitly supplied, grounded noncurrent row may record absence.
+        """
         affected = self._graph.affected(changed_authority_refs)
         unaffected = self._graph.unaffected(affected)
-        if affected and recompiler is None:
+        affected_keys = {ref.key for ref in affected}
+        supplied: dict[str, NoncurrentDependentOutcome] = {}
+        for raw_key, raw_row in dict(noncurrent_outcomes or {}).items():
+            key = raw_key if isinstance(raw_key, str) else exact_ref(raw_key).key
+            row = raw_row if isinstance(raw_row, NoncurrentDependentOutcome) else (
+                NoncurrentDependentOutcome(**dict(raw_row)))
+            if row.old_ref.key != key:
+                raise AuthorityMaintenanceError(
+                    "a supplied noncurrent outcome must name the dependent it is keyed by")
+            if key not in affected_keys:
+                raise AuthorityMaintenanceError(
+                    "a noncurrent outcome may only be recorded for a dependent the "
+                    f"owner computed as affected; {key} is not affected"
+                )
+            if key in supplied:
+                raise AuthorityMaintenanceError(
+                    f"duplicate noncurrent outcome for {key}")
+            supplied[key] = row
+
+        if affected and recompiler is None and len(supplied) != len(affected):
             raise AuthorityMaintenanceError(
-                "affected dependents require an explicit deterministic recompiler")
+                "affected dependents require an explicit deterministic recompiler or an "
+                "explicit grounded noncurrent outcome; a missing callback is an error, "
+                "not proof that no lawful replacement exists")
         pairs: list[tuple[ExactRef, ExactRef]] = []
+        recomposed: set[str] = set()
         if recompiler is not None:
             for old_ref in affected:
+                if old_ref.key in supplied:
+                    # The adapter already recorded an explicit absence for this
+                    # dependent; do not also invoke a recomposition for it.
+                    continue
                 new_ref = exact_ref(recompiler(old_ref, changed_authority_refs))
                 if new_ref == old_ref:
+                    # An unchanged-ref return is an ERROR, never a silent noncurrent.
                     raise AuthorityMaintenanceError(
-                        "affected dependent recompilation must produce a new exact ref")
+                        "affected dependent recompilation must produce a new exact ref; "
+                        "an unchanged ref does not prove absence of a lawful replacement")
                 pairs.append((old_ref, new_ref))
-        return AuthorityInvalidationReceipt(
+                recomposed.add(old_ref.key)
+        overlap = recomposed & set(supplied)
+        if overlap:
+            raise AuthorityMaintenanceError(
+                f"dependents may not receive both a replacement and noncurrent: {sorted(overlap)}")
+        receipt = AuthorityInvalidationReceipt(
             changed_authority_refs=changed_authority_refs,
             affected_dependent_refs=affected,
             unaffected_dependent_refs=unaffected,
             recompilation_pairs=tuple(pairs),
+            noncurrent_dependents=tuple(supplied[key] for key in sorted(supplied)),
         )
+        if {ref.key for ref in receipt.affected_dependent_refs} != (
+            recomposed | set(supplied)
+        ):
+            raise AuthorityMaintenanceError(
+                "every affected dependent requires exactly one outcome")
+        return receipt
+
+    def dependent_lifecycle_status(
+        self, dependent_ref: ExactRef | Mapping[str, Any]
+    ) -> Mapping[str, Any]:
+        """Owner-owned lifecycle visibility for one dependent under the newest release.
+
+        Lifecycle currentness comes from the owner's recorded outcome, never from
+        object or cache presence. The historical exact artifact stays addressable
+        through :meth:`resolve_historical_exact`.
+
+        Approval law, in order:
+
+        * known explicit noncurrent -> typed noncurrent refusal;
+        * known replacement          -> CURRENT, naming the exact replacement;
+        * known unaffected           -> CURRENT, identity stable;
+        * known, no governing release-> ``NOT_GOVERNED`` (fail closed);
+        * **owner-unknown**          -> ``NOT_GOVERNED``, never ``CURRENT``.
+
+        Both fail-closed cases matter. CURRENT requires a governing release/outcome:
+        it may never be inferred from membership in ``known_dependent_refs``, from
+        cache/object/evidence residency, or from the mere absence of a transition.
+
+        After any real release the owner computes ``A`` and ``U`` over the same graph
+        grain, so ``A`` and ``U`` cover every known dependent. A known dependent with
+        no covering release is therefore reachable only in the zero-release state --
+        exactly where no release has established currentness -- so it is
+        ``NOT_GOVERNED`` rather than CURRENT.
+        """
+        ref = exact_ref(dependent_ref)
+        # Releases are recorded in transition order, so the last governing release that
+        # mentions this dependent is the one whose outcome law applies.
+        latest: AuthorityInvalidationReceipt | None = None
+        latest_release: AuthorityReleaseReceipt | None = None
+        for release in self._releases.values():
+            receipt = self._invalidations.get(release.invalidation_receipt_ref.key)
+            if receipt is None:
+                raise AuthorityMaintenanceConflict(
+                    "release invalidation receipt is unavailable")
+            touches = ref.key in {r.key for r in receipt.affected_dependent_refs} or (
+                ref.key in {r.key for r in receipt.unaffected_dependent_refs})
+            if touches:
+                latest, latest_release = receipt, release
+        if latest is None:
+            # Owner knowledge is the determinant graph's own declared dependent set,
+            # never cache or object presence.
+            if ref.key not in {r.key for r in self._graph.known_dependent_refs}:
+                return {
+                    "dependent_ref": ref,
+                    "lifecycle_state": DEPENDENT_LIFECYCLE_NOT_GOVERNED,
+                    "reason": (
+                        "this ref is absent from the owner's known dependent set, so "
+                        "no governed transition has ever spoken about it; the owner "
+                        "has no currentness to report and will not infer one from "
+                        "the absence of a recorded outcome"
+                    ),
+                    "disposition": None,
+                    "reason_code": "OWNER_UNKNOWN_DEPENDENT",
+                    "supporting_refs": (),
+                    "governing_release_ref": None,
+                }
+            return {
+                "dependent_ref": ref,
+                "lifecycle_state": DEPENDENT_LIFECYCLE_NOT_GOVERNED,
+                "reason": (
+                    "this dependent is registered with the owner, but no governing "
+                    "release has established currentness for it. CURRENT requires a "
+                    "governing release and recorded outcome; it is never inferred from "
+                    "membership in known_dependent_refs, from cache/object/evidence "
+                    "residency, or from the absence of a transition"
+                ),
+                "disposition": None,
+                "reason_code": "NO_GOVERNING_RELEASE",
+                "supporting_refs": (),
+                "governing_release_ref": None,
+            }
+        assert latest_release is not None
+        row = next(
+            (r for r in latest.noncurrent_dependents if r.old_ref.key == ref.key), None)
+        if row is not None:
+            return {
+                "dependent_ref": ref,
+                "lifecycle_state": DEPENDENT_LIFECYCLE_EXPLICIT_NONCURRENT,
+                "reason": (
+                    "the lifecycle owner recorded an explicit noncurrent outcome under "
+                    "the governing release; no product is current for this dependent"),
+                "disposition": row.disposition,
+                "reason_code": row.reason_code,
+                "supporting_refs": row.supporting_refs,
+                "governing_release_ref": latest_release.ref,
+            }
+        pair = next((p for p in latest.recompilation_pairs if p[0].key == ref.key), None)
+        if pair is not None:
+            return {
+                "dependent_ref": ref,
+                "lifecycle_state": DEPENDENT_LIFECYCLE_CURRENT,
+                "reason": "a lawful replacement is current for this dependent",
+                "disposition": None,
+                "reason_code": None,
+                "supporting_refs": (),
+                "governing_release_ref": latest_release.ref,
+                "current_replacement_ref": pair[1],
+            }
+        if ref.key in {r.key for r in latest.unaffected_dependent_refs}:
+            return {
+                "dependent_ref": ref,
+                "lifecycle_state": DEPENDENT_LIFECYCLE_CURRENT,
+                "reason": "unaffected by the governing transition; identity is stable",
+                "disposition": None,
+                "reason_code": None,
+                "supporting_refs": (),
+                "governing_release_ref": latest_release.ref,
+            }
+        raise AuthorityMaintenanceConflict(
+            "dependent has no recorded outcome in the governing invalidation receipt")
 
     def promote_current(
         self,
@@ -1414,6 +1823,7 @@ class AuthorityMaintenanceExecutor:
         selection_rule_ref: ExactRef,
         selection_attestation_ref: ExactRef,
         recompiler: Recompiler | None = None,
+        noncurrent_outcomes: Mapping[Any, Any] | None = None,
     ) -> AuthorityReleaseReceipt:
         seal = self._seal(seal_ref)
         snapshot = self._snapshot_for_seal(seal)
@@ -1433,7 +1843,8 @@ class AuthorityMaintenanceExecutor:
         changed = _authority_refs(
             (() if previous is None else (previous,)) + (snapshot.authority_ref,))
         invalidation = self._recompile(
-            changed_authority_refs=changed, recompiler=recompiler)
+            changed_authority_refs=changed, recompiler=recompiler,
+            noncurrent_outcomes=noncurrent_outcomes)
         release = AuthorityReleaseReceipt(
             release_kind="PROMOTION",
             selected_authority_ref=snapshot.authority_ref,
@@ -1466,6 +1877,7 @@ class AuthorityMaintenanceExecutor:
         rollback_rule_ref: ExactRef,
         rollback_attestation_ref: ExactRef,
         recompiler: Recompiler | None = None,
+        noncurrent_outcomes: Mapping[Any, Any] | None = None,
     ) -> AuthorityReleaseReceipt:
         authority_id = _reject_selector(authority_id, "authority_id")
         current = self._current.get(authority_id)
@@ -1484,7 +1896,8 @@ class AuthorityMaintenanceExecutor:
             raise AuthorityMaintenanceConflict("prior release does not bind its exact seal")
         changed = _authority_refs((current, target))
         invalidation = self._recompile(
-            changed_authority_refs=changed, recompiler=recompiler)
+            changed_authority_refs=changed, recompiler=recompiler,
+            noncurrent_outcomes=noncurrent_outcomes)
         release = AuthorityReleaseReceipt(
             release_kind="ROLLBACK",
             selected_authority_ref=target,
@@ -1723,6 +2136,21 @@ class AuthorityMaintenanceExecutor:
                 if expected_affected != invalidation.affected_dependent_refs:
                     raise AuthorityMaintenanceConflict(
                         "replayed invalidation differs from determinant graph")
+                # Independently recompute U as the graph's own complement of A.
+                # Recomputing only A would make A and U disjoint and jointly
+                # exhaustive over K at *initial production* only: a checkpoint whose
+                # serialized U had been shrunk or altered would still replay, because
+                # nothing re-derived U from the graph. Recomputing both here is what
+                # makes the partition hold at replay as well.
+                expected_unaffected = executor._graph.unaffected(expected_affected)
+                if expected_unaffected != invalidation.unaffected_dependent_refs:
+                    raise AuthorityMaintenanceConflict(
+                        "replayed invalidation unaffected set differs from the "
+                        "determinant graph's own complement of the affected set; A and "
+                        "U must be disjoint and cover every known dependent at replay, "
+                        "not merely at initial production "
+                        "(C1-03R-OWNER-BLOCK-CHECKPOINT-TRUSTED-U-001)"
+                    )
                 if event.dependent_refs != invalidation.affected_dependent_refs:
                     raise AuthorityMaintenanceConflict(
                         "release event affected-dependent receipt mismatch")

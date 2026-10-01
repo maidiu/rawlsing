@@ -1,0 +1,34 @@
+{
+  "schema": "PYAT_C1_03R_ASTRA_A_MIXED_OUTCOME_RECEIPT@1",
+  "witness": "ONE governed source-free release carries all three dependent outcomes",
+  "registered_dependents": 4,
+  "affected": 3,
+  "unaffected": 1,
+  "outcomes": {
+    "replacement": 1,
+    "explicit_noncurrent": 2,
+    "unaffected_current": 1
+  },
+  "invariants_asserted": [
+    "R and N disjoint",
+    "R union N equals A exactly",
+    "every affected ref has exactly one outcome",
+    "replacement ref differs from old ref",
+    "unaffected sibling is CURRENT with no replacement ref (identity-stable)",
+    "each noncurrent row has a bounded reason code and non-empty exact supporting refs",
+    "each noncurrent row carries replacement_ref = null",
+    "downstream dependent receives no replacement built from a noncurrent required input"
+  ],
+  "additional_witnesses": {
+    "missing_cross_owner_edge_fails_closure_even_with_cached_objects": true,
+    "stale_noncurrent_historical_cannot_be_served_as_current": true,
+    "historical_exact_evidence_remains_retrievable": true,
+    "noncurrent_does_not_withdraw_governing_authority": true,
+    "cache_presence_does_not_restore_currentness": true
+  },
+  "source_free": true,
+  "live_occupancy_claim": false,
+  "real_source_claim": false,
+  "at33_or_multi_conditioner_closure_claim": false,
+  "oracle_material": "separately frozen C1_03R_AT18_EXPECTED_OUTPUT_ORACLE@1, derived from the plain case and never from the candidate receipt or recomposed product"
+}

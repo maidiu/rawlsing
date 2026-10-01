@@ -1,0 +1,84 @@
+{
+  "schema": "PYAT_C1_03R_OWNER_CLOSURE_EXECUTION_RECEIPT@1",
+  "status": "EXECUTED_SOURCE_FREE",
+  "branch": "agent/deepseek-pyat-hq149-c1-03r-owner-closure-correction-r1",
+  "commission_tip": "f3a4e8e8a85967a9a0571f48c9aaf61fa3bbb391",
+  "defective_return_base": "1c2c0e4ba7f0f9a273b0387a887ed74871e981e9",
+  "original_commission_tip": "8ce2a1aaa457fb1b08da9fca917dbb342bb98d41",
+  "original_implementation_commit": "7e558194b8aa1ff2a8c2a335c68daa7305b63dc3",
+  "toolchain": {
+    "interpreter": "/Users/matthewsmith/Desktop/rawlsing_v550_builder_bundle/.venv/bin/python",
+    "python_version": "3.11.15",
+    "pytest_version": "9.0.3"
+  },
+  "court_executed": {
+    "command": "python -m pytest rawlsing_next/tests/test_pre553_analytical_replay_dependency.py rawlsing_next/tests/test_pre553_authority_maintenance.py rawlsing_next/tests/test_pre553_replay_audit.py rawlsing_next/tests/test_pre553_analytical_composition.py -v",
+    "final_result": "109 passed",
+    "duration_seconds_final": 17.18,
+    "runs_recorded_as_final": 1,
+    "output_file": "07_FINAL_PYTEST_OUTPUT.txt"
+  },
+  "test_counts": {
+    "passed": 109,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "by_file": {
+      "rawlsing_next/tests/test_pre553_analytical_replay_dependency.py": 21,
+      "rawlsing_next/tests/test_pre553_authority_maintenance.py": 21,
+      "rawlsing_next/tests/test_pre553_replay_audit.py": 54,
+      "rawlsing_next/tests/test_pre553_analytical_composition.py": 13
+    },
+    "count_verification": "per-file counts derived by counting PASSED lines per file in 07_FINAL_PYTEST_OUTPUT.txt; 21+21+54+13 = 109, matching the summary line '109 passed in 17.18s'"
+  },
+  "owners_reused_unchanged": {
+    "rawlsing_next/pre553_authority_maintenance.py": "UNCHANGED",
+    "rawlsing_next/pre553_replay_audit.py": "UNCHANGED",
+    "rawlsing_next/pre553_analytical_composition.py": "UNCHANGED",
+    "verified_by": "git hash-object == git rev-parse HEAD:<path>",
+    "owner_modified_by_this_lane": false
+  },
+  "write_terrain_conformance": {
+    "modified_or_created": [
+      "rawlsing_next/pre553_analytical_replay_dependency.py",
+      "rawlsing_next/tests/test_pre553_analytical_replay_dependency.py",
+      "rawlsing_next/tests/c1_at18_at19_fixture.py",
+      "rawlsing_next/tests/c1_at18_at19_fresh_process_runner.py",
+      "WORKER_RETURNS/PYAT-C1-03R-OWNER-CLOSURE-CORRECTION-R1/**"
+    ],
+    "forbidden_terrain_untouched": [
+      "rawlsing_next/pre553_authority_maintenance.py",
+      "rawlsing_next/pre553_replay_audit.py",
+      "rawlsing_next/pre553_analytical_composition.py",
+      "C1-03A terrain",
+      "N10E terrain",
+      "the original C1-03R return packet (preserved unchanged as forensic evidence)"
+    ]
+  },
+  "prohibitions_observed": {
+    "raw_survey_files": false,
+    "c4": false,
+    "at14_at17": false,
+    "structural_world": false,
+    "v3_actor_person": false,
+    "merge_or_self_adoption": false,
+    "second_lifecycle_invented": false
+  },
+  "documentary_correction": {
+    "finding": "C1-03R-HQ-DOC-COUNT-005",
+    "original_defect": "the original packet recorded '109 passed in 20.45s' while its authoritative final run was 16.58s",
+    "correction_packet_consistency": "00_RETURN.md, 05_EXECUTION_RECEIPT.json and 07_FINAL_PYTEST_OUTPUT.txt in THIS packet all state 109 passed in 17.18s with the identical command"
+  },
+  "residual": {
+    "typed_owner_gap": "EXISTING_LIFECYCLE_OWNER_CHANGE_REQUIRED",
+    "gap_summary": "the accepted lifecycle owner cannot lawfully represent an affected dependent whose replacement is unavailable, without fabricating a replacement exact ref",
+    "counterexample_executed": true
+  },
+  "not_claimed": [
+    "no AT33 progressive multi-conditioner world conditioning",
+    "no real-source qualification or live occupancy",
+    "no structural-world or AT31/AT32 completion",
+    "no V3 actor/person state",
+    "no multi-conditioner or joint dependency closure"
+  ]
+}

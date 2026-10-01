@@ -1,0 +1,60 @@
+{
+  "schema": "PYAT_C1_03R_MISSING_EDGE_HOSTILE_CORRECTION@1",
+  "status": "EXECUTED_SOURCE_FREE",
+  "acceptance_case": "AT19",
+  "mandatory": true,
+  "hostile_class": "MISSING_CROSS_OWNER_DEPENDENCY_EDGE",
+  "salvage_condition_from_the_commission": "The missing-edge hostile is salvageable only if the lawful graph first contains only real determinant edges. That condition is met: every authority edge in the lawful graph corresponds to a determinant a registered product actually consumed, and no future authority is pre-bound.",
+  "lawful_graph_first": {
+    "edges_are_consumed_determinants_only": true,
+    "future_authority_edges": 0,
+    "verified_by": "test_at19_lawful_graph_contains_only_consumed_determinants"
+  },
+  "incomplete_graph_construction": {
+    "method": "SemanticDeterminantGraph with the consumed determinant edge omitted",
+    "product_ref_present_in_known_dependent_refs": true,
+    "edges_reaching_the_product": 0
+  },
+  "required_behaviour_and_result": [
+    {
+      "requirement": "closure claim fails",
+      "observed": "assert_closure_covers_registered_products raises MissingCrossOwnerEdge (MISSING_CROSS_OWNER_EDGE)",
+      "result": "PASS",
+      "test": "test_at19_missing_cross_owner_edge_fails_despite_object_presence"
+    },
+    {
+      "requirement": "cache/object presence cannot restore authority",
+      "observed": "the product ref IS present in the graph's known_dependent_refs, yet the closure witness still fails",
+      "result": "PASS",
+      "test": "test_at19_missing_cross_owner_edge_fails_despite_object_presence"
+    },
+    {
+      "requirement": "a product cannot be treated current merely because its bytes remain present",
+      "observed": "presence in known_dependent_refs did not make the product affected or current",
+      "result": "PASS",
+      "test": "test_at19_missing_cross_owner_edge_fails_despite_object_presence"
+    },
+    {
+      "requirement": "the lane does not infer the missing dependency",
+      "observed": "the omitted edge stays absent; nothing fabricates it by similarity or inference",
+      "result": "PASS",
+      "test": "test_at19_lawful_graph_contains_only_consumed_determinants"
+    }
+  ],
+  "control": {
+    "requirement": "with the lawful edges present, closure holds",
+    "observed": "the owner's closure decision reaches exactly the affected product and reports the sibling unaffected",
+    "result": "PASS",
+    "test": "test_at19_closure_passes_when_the_lawful_edges_are_present"
+  },
+  "why_the_witness_is_honest": {
+    "incomplete_graph_claims": "with the edge omitted, affected() returns the empty tuple, i.e. the incomplete graph claims nothing depends on the changed determinant",
+    "independent_disproof": "the product's identity genuinely depends on the omitted determinant (the accepted composition reidentifies when that determinant changes)",
+    "result": "the closure claim is rejected instead of being accepted on the basis of object presence"
+  },
+  "executed_grade": "source-free executed adapter closure check over the accepted owner graph contract",
+  "limitations": [
+    "The hostile exercises the adapter's closure verification over the existing owner's graph contract; it does not claim a defect in the maintenance owner.",
+    "Source-free synthetic fixture; not live occupancy."
+  ]
+}

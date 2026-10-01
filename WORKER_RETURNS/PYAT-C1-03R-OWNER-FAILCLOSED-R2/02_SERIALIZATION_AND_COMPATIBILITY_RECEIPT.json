@@ -1,0 +1,78 @@
+{
+  "schema": "PYAT_C1_03R_SERIALIZATION_AND_COMPATIBILITY_RECEIPT@1",
+  "scope": "RVW-001 and RVW-002: the invalidation receipt's in-process row law and its serialized boundary.",
+  "blocker_ids": {
+    "duplicate_positive_rows": "C1-03R-OWNER-BLOCK-DUPLICATE-REPLACEMENT-001",
+    "negative_row_fields": "C1-03R-OWNER-BLOCK-NEGATIVE-FIELD-001",
+    "schema_compatibility": "C1-03R-OWNER-BLOCK-SCHEMA-COMPAT-001"
+  },
+  "two_serializable_shapes": {
+    "legacy_positive_only": {
+      "receipt_schema": "ABSENT",
+      "noncurrent_dependents": "ABSENT",
+      "field_set": [
+        "contract_id", "record_type", "changed_authority_refs",
+        "affected_dependent_refs", "unaffected_dependent_refs", "recompilation_pairs"
+      ],
+      "identity": "the pre-extension projection, byte for byte; every historical hash is reproduced",
+      "still_accepted": true,
+      "verified_by": "test_hq155_rvw_002_positive_only_legacy_receipt_is_hash_compatible"
+    },
+    "noncurrent": {
+      "receipt_schema": "PRE553_AUTH40_SEMANTIC_AUTHORITY_INVALIDATION_NONCURRENT@1.0.0",
+      "noncurrent_dependents": "present and NON-EMPTY",
+      "identity": "the extended projection including both new fields",
+      "still_accepted": true,
+      "verified_by": "test_hq155_promotion_normal_mixed_outcome_still_passes"
+    },
+    "shapes_are_mutually_exclusive": true,
+    "rationale": "The owner emits the noncurrent schema only when at least one dependent is noncurrent, and emits nothing beyond the historical field set otherwise. So a serialized receipt that mixes the two shapes is an incompatible reinterpretation, never something to accept quietly."
+  },
+  "from_dict_compatibility_boundary": {
+    "rule": "Any declaration of the new schema (the receipt_schema key OR the noncurrent_dependents key) must be COMPLETE and EXACT: the exact schema id AND at least one row. Anything else is legacy positive-only material.",
+    "outcomes": [
+      {"input": "noncurrent rows + exact schema id", "result": "ACCEPTED"},
+      {"input": "noncurrent rows + missing schema", "result": "REJECTED", "error": "does not carry the exact ... schema id"},
+      {"input": "noncurrent rows + forged schema", "result": "REJECTED", "error": "does not carry the exact ... schema id"},
+      {"input": "exact schema id + empty rows list", "result": "REJECTED", "error": "carries no noncurrent rows"},
+      {"input": "rows key present, schema absent", "result": "REJECTED", "error": "does not carry the exact ... schema id"},
+      {"input": "no schema key, no rows key (clean legacy)", "result": "ACCEPTED, historical identity preserved"},
+      {"input": "exact schema id only, no rows key", "result": "REJECTED", "error": "carries no noncurrent rows"}
+    ],
+    "additional_check": "the reconstructed rows must agree with the serialized declaration about whether this is a noncurrent-schema receipt at all",
+    "embedded_record_ref_validation": "RETAINED, and explicitly not treated as sufficient on its own"
+  },
+  "noncurrent_row_serialized_field_law": {
+    "replacement_ref": {
+      "required_to_be_present": true,
+      "required_value": null,
+      "missing_is_rejected": true,
+      "non_null_is_rejected": true,
+      "null_is_ever_synthesized_for_missing_input": false,
+      "non_null_is_ever_silently_overwritten": false,
+      "why": "That null IS the row's evidence that no lawful replacement exists for this dependent. Inferring it from an absent field would let a serialized row assert something the owner never emitted; dropping a non-null value would silently discard a forged replacement target.",
+      "in_process_law_unchanged": "NoncurrentDependentOutcome.__post_init__ already refused a non-null replacement_ref; R2 keeps that and adds the serialized-layer checks around it"
+    }
+  },
+  "in_process_positive_row_law": {
+    "one_source_ref_maps_to": "exactly one replacement row OR exactly one noncurrent row",
+    "duplicate_source_rows_rejected": true,
+    "rejection_is_independent_of_target_agreement": true,
+    "rejection_precedes_canonicalization": true,
+    "why": "The dict assignment previously performed last-write-wins. With differing targets that let a caller substitute the owner's replacement successor, and the substitution entered the receipt identity and every downstream hash.",
+    "R_and_N_still_disjoint_and_covering_A": true
+  },
+  "counterexamples_closed": [
+    "two positive rows, identical target, silently collapsed to one",
+    "two positive rows, differing target, forged successor substituted",
+    "serialized negative row with replacement_ref absent, null synthesized",
+    "serialized negative row with forged non-null replacement_ref, value discarded",
+    "negative receipt with receipt_schema absent, accepted",
+    "negative receipt with forged receipt_schema, accepted",
+    "positive-only legacy material carrying new-schema fields, silently reinterpreted"
+  ],
+  "residual_limitations": [
+    "AuthorityInvalidationReceipt.from_dict trusts the declared schema only as a compatibility boundary; it does not and cannot re-derive whether the R/N/U partition is semantically correct from the receipt alone. That is the owner's transition law, unchanged by R2.",
+    "The schema-compatibility rule is deliberately strict: a receipt declaring the new schema with zero rows is refused rather than normalized. That is a fail-closed reading of HQ's 'incompatible new-schema fields/schema presence on positive-only legacy material must fail closed', and it is recorded here so rereview can disagree if it reads the requirement differently."
+  ]
+}

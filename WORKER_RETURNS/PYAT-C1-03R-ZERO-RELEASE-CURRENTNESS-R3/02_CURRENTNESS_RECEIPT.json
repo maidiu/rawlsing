@@ -1,0 +1,65 @@
+{
+  "schema": "PYAT_C1_03R_R3_CURRENTNESS_RECEIPT@1",
+  "governing_law": "CURRENT requires a governing release AND a recorded owner outcome. It is never inferred from known_dependent_refs membership, cache/object/evidence residency, or the absence of a transition.",
+  "owner_surface": "AuthorityMaintenanceExecutor.dependent_lifecycle_status",
+  "adapter_surface": "resolve_current_analytical_product",
+  "lifecycle_states": {
+    "CURRENT": {
+      "requires": "a governing release exists AND the receipt records a replacement or unaffected outcome for this dependent",
+      "carries": "governing_release_ref, and current_replacement_ref for a replacement"
+    },
+    "EXPLICIT_NONCURRENT": {
+      "requires": "the governing receipt carries a grounded noncurrent row for this dependent",
+      "resolver": "raises ExplicitNoncurrentDependent"
+    },
+    "NOT_GOVERNED": {
+      "requires": "no governing release establishes currentness",
+      "reason_codes": {
+        "OWNER_UNKNOWN_DEPENDENT": "ref absent from the owner's known dependent set",
+        "NO_GOVERNING_RELEASE": "ref IS owner-known, but no release has established currentness"
+      },
+      "resolver": "raises the typed OwnerUnknownDependent not-governed failure"
+    }
+  },
+  "zero_release_state": {
+    "known_dependent": "NOT_GOVERNED / NO_GOVERNING_RELEASE",
+    "unknown_ref": "NOT_GOVERNED / OWNER_UNKNOWN_DEPENDENT",
+    "resolver_behaviour": "raises; never returns CURRENT",
+    "before_correction": "known_dependent was CURRENT and was served as a current analytical product"
+  },
+  "residency_cannot_confer_currentness": {
+    "snapshot_cache": "NOT_GOVERNED (proven with a genuinely sealed snapshot resident)",
+    "evidence_cache": "NOT_GOVERNED (proven with a genuinely recorded evidence receipt resident)"
+  },
+  "preserved_accepted_law": {
+    "astra_option_a_noncurrent": "unchanged",
+    "single_generic_noncurrent_disposition": "unchanged",
+    "deferred_unavailable_deleted_refused": "unchanged",
+    "error_to_noncurrent_prohibited": "unchanged",
+    "duplicate_replacement_row_rejected": "unchanged",
+    "negative_row_schema_fail_closed": "unchanged",
+    "positive_only_historical_receipt_identity": "unchanged",
+    "owner_unknown_typed_not_governed": "unchanged",
+    "checkpoint_affected_unaffected_rederivation": "unchanged",
+    "strict_refusal_new_schema_zero_noncurrent": "unchanged",
+    "sealed_successor_repair": "unchanged",
+    "decoy_correction": "unchanged",
+    "mixed_at19_topology": "unchanged",
+    "omitted_edge_hostile": "unchanged",
+    "shared_promotion_rollback_law": "unchanged",
+    "authority_candidate_identity": "unchanged",
+    "at18_replay_grades": "unchanged",
+    "replay_audit_and_composition_modules": "unchanged, byte-identical"
+  },
+  "known_wording_residual": {
+    "location": "resolve_current_analytical_product NOT_GOVERNED message",
+    "issue": "the message text says the ref 'is absent from the owner's known dependent set', which is inaccurate for the zero-release case where the owner DOES know the ref",
+    "why_not_fixed": "pre553_analytical_replay_dependency.py is outside this commission's write terrain; the commission permits that file for a direct resolver COURT only",
+    "actual_impact": "the typed failure class is correct and the status mapping carries the accurate reason_code NO_GOVERNING_RELEASE; only the prose is imprecise",
+    "recommendation": "HQ may wish to authorise a one-line message correction in a later tranche"
+  },
+  "f2_recorded_as_nonblocking_residual": {
+    "finding": "F-2 - unknown extra top-level field dropped/unhashed",
+    "action": "recorded only; no schema-version redesign attempted, per commission"
+  }
+}

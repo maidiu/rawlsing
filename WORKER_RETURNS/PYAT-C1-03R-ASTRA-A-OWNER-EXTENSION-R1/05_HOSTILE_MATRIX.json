@@ -1,0 +1,145 @@
+{
+  "schema": "PYAT_C1_03R_ASTRA_A_HOSTILE_MATRIX@1",
+  "hostiles": [
+    {
+      "id": "H01",
+      "requirement": "forged or missing noncurrent grounds",
+      "status": "PROVEN",
+      "court": "test_a_forged_or_missing_grounds_are_refused"
+    },
+    {
+      "id": "H02",
+      "requirement": "noncurrent row carrying a replacement ref",
+      "status": "PROVEN",
+      "court": "test_a_noncurrent_row_may_not_carry_a_replacement_ref"
+    },
+    {
+      "id": "H03",
+      "requirement": "fabricated/stale replacement ref",
+      "status": "PROVEN",
+      "court": "test_g_future_authority_pre_binding_remains_forbidden (unregistered successor refused)"
+    },
+    {
+      "id": "H04",
+      "requirement": "replacement equal to old ref",
+      "status": "PROVEN",
+      "court": "test_g_replacement_equal_to_old_ref_is_refused"
+    },
+    {
+      "id": "H05",
+      "requirement": "duplicate affected outcome",
+      "status": "PROVEN",
+      "court": "test_g_duplicate_affected_outcome_is_refused"
+    },
+    {
+      "id": "H06",
+      "requirement": "affected outcome missing",
+      "status": "PROVEN",
+      "court": "test_g_affected_outcome_missing_is_refused"
+    },
+    {
+      "id": "H07",
+      "requirement": "replacement/noncurrent overlap",
+      "status": "PROVEN",
+      "court": "test_g_replacement_noncurrent_overlap_is_refused"
+    },
+    {
+      "id": "H08",
+      "requirement": "unknown source ref",
+      "status": "PROVEN",
+      "court": "test_g_unknown_source_ref_is_refused"
+    },
+    {
+      "id": "H09",
+      "requirement": "tampered graph/receipt/release binding",
+      "status": "PROVEN",
+      "court": "test_g_tampered_receipt_binding_is_refused; test_g_tampered_graph_binding_is_refused; test_b_checkpoint_export_import_reproduces_negative_rows_and_currentness"
+    },
+    {
+      "id": "H10",
+      "requirement": "callback omission",
+      "status": "PROVEN",
+      "court": "test_g_callback_omission_is_an_error_not_a_noncurrent_outcome"
+    },
+    {
+      "id": "H11",
+      "requirement": "callback exception",
+      "status": "PROVEN",
+      "court": "test_g_callback_exception_is_an_error_not_a_noncurrent_outcome"
+    },
+    {
+      "id": "H12",
+      "requirement": "unchanged callback output",
+      "status": "PROVEN",
+      "court": "test_g_unchanged_callback_output_is_an_error_not_a_noncurrent_outcome"
+    },
+    {
+      "id": "H13",
+      "requirement": "partial transition failure proves atomic no-commit",
+      "status": "PROVEN",
+      "court": "test_g_partial_transition_failure_commits_no_release; test_g_rollback_shares_the_same_outcome_law (rollback half)"
+    },
+    {
+      "id": "H14",
+      "requirement": "cache presence does not restore currentness",
+      "status": "PROVEN",
+      "court": "test_at19_astra_a_cache_presence_does_not_restore_currentness; test_b_later_restoration_requires_a_new_lawful_transition_not_cache_presence"
+    },
+    {
+      "id": "H15",
+      "requirement": "future authority pre-binding remains forbidden",
+      "status": "PROVEN",
+      "court": "test_g_future_authority_pre_binding_remains_forbidden"
+    },
+    {
+      "id": "H16",
+      "requirement": "adapter does not compute affected/unaffected or construct the lifecycle receipt itself",
+      "status": "PROVEN",
+      "court": "test_g_adapter_does_not_own_the_lifecycle_or_the_receipt"
+    },
+    {
+      "id": "H17",
+      "requirement": "single fixed typed disposition; no split semantic classes",
+      "status": "PROVEN",
+      "court": "test_a_no_c1_specific_or_split_semantic_classes"
+    },
+    {
+      "id": "H18",
+      "requirement": "affected/unaffected overlap refused",
+      "status": "PROVEN",
+      "court": "test_g_affected_and_unaffected_overlap_is_refused"
+    },
+    {
+      "id": "H19",
+      "requirement": "missing cross-owner edge fails closure even if bytes remain cached",
+      "status": "PROVEN",
+      "court": "test_at19_astra_a_missing_cross_owner_edge_fails_closure_even_with_cached_objects"
+    },
+    {
+      "id": "H20",
+      "requirement": "stale noncurrent historical product cannot be served as current",
+      "status": "PROVEN",
+      "court": "test_at19_astra_a_one_release_carries_replacement_noncurrent_and_unaffected"
+    },
+    {
+      "id": "H21",
+      "requirement": "historical exact evidence remains retrievable",
+      "status": "PROVEN",
+      "court": "test_at19_astra_a_noncurrent_does_not_withdraw_the_governing_authority"
+    },
+    {
+      "id": "H22",
+      "requirement": "downstream dependents receive no replacement from a noncurrent input",
+      "status": "PROVEN",
+      "court": "test_at19_astra_a_downstream_gets_no_replacement_from_a_noncurrent_input"
+    },
+    {
+      "id": "H23",
+      "requirement": "decoy authority ref is not usable as a successor",
+      "status": "PROVEN",
+      "court": "test_at19_e_sealed_successor_is_not_the_separately_synthesized_decoy; test_g_future_authority_pre_binding_remains_forbidden"
+    }
+  ],
+  "promotion_exercised": true,
+  "rollback_exercised": true
+}
