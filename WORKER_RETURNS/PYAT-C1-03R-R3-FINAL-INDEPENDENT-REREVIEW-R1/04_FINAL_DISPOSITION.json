@@ -1,0 +1,25 @@
+{
+  "schema": "PYAT_C1_03R_R3_FINAL_INDEPENDENT_REREVIEW_FINAL_DISPOSITION@1",
+  "status": "FINAL",
+  "disposition": "APPROVE_AT_DECLARED_GRAIN",
+  "terminal": "C1_03R_R3_FINAL_INDEPENDENT_REREVIEW_RETURNED__HQ_ADJUDICATION_REQUIRED",
+  "F1": "APPROVED",
+  "post_release_law": "APPROVED",
+  "approved_R2_Astra_boundaries_preserved": true,
+  "blocking_findings": [],
+  "nonblocking_residuals": [
+    {
+      "id": "R3-NB-EXCEPTION-WORDING-001",
+      "summary": "resolve_current_analytical_product uses the legacy OwnerUnknownDependent exception/message/code for both NOT_GOVERNED reasons, so its prose/code is inaccurate for owner-known NO_GOVERNING_RELEASE. The lifecycle owner state/reason are correct and the adapter fails closed; no currentness or authority is laundered."
+    },
+    {
+      "id": "F-2",
+      "summary": "Unknown extra top-level receipt fields are dropped/unhashed; unchanged from prior review and no authority-laundering path found. Remains an owner/versioning residual."
+    }
+  ],
+  "implementation_change_required": false,
+  "architecture_warrant": false,
+  "typed_residual_required": false,
+  "c1_03_join_authorized": false,
+  "next_action": "HQ may adjudicate/adopt C1-03R at the declared R3 grain. Any cleanup of the coarse OwnerUnknownDependent message/class surface should be treated as nonblocking maintenance, not as reopening F-1."
+}

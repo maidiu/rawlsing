@@ -1,0 +1,33 @@
+{
+  "schema": "PYAT_C1_03R_R3_FINAL_COUNTEREXAMPLES_OR_ACCEPTANCE@1",
+  "status": "NO_BLOCKING_COUNTEREXAMPLE_FOUND",
+  "primary_attack": {
+    "construction": "known_dependent_refs contains exact ref; executor has zero releases and no governing release outcome",
+    "observed_by_source": {
+      "lifecycle_state": "NOT_GOVERNED",
+      "reason_code": "NO_GOVERNING_RELEASE",
+      "governing_release_ref": null
+    },
+    "current_product_result": "typed not-governed exception; no current product returned",
+    "verdict": "PASS"
+  },
+  "residency_attack": {
+    "snapshot_or_evidence_residency_can_change_currentness": false,
+    "source_reason": "dependent_lifecycle_status reads releases/invalidations and determinant graph only; snapshot/evidence caches are absent from its decision path",
+    "verdict": "PASS"
+  },
+  "post_release_attack": {
+    "all_known_covered": true,
+    "basis": "unaffected() is complement of affected over known_dependent_refs; _recompile writes both A and U to every invalidation receipt",
+    "replacement_current": true,
+    "unaffected_current": true,
+    "noncurrent_refused": true,
+    "verdict": "PASS"
+  },
+  "exception_surface": {
+    "blocking_counterexample": false,
+    "residual": "OwnerUnknownDependent message/docstring/class code describe only the owner-unknown case even when used for NO_GOVERNING_RELEASE",
+    "why_nonblocking": "The authoritative owner status already carries the correct reason and the adapter raises rather than serving currentness. No governed identity/receipt is derived from exception prose."
+  },
+  "architecture_warrant": false
+}

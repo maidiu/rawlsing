@@ -1,0 +1,61 @@
+{
+  "schema": "PYAT_C1_03R_R3_FINAL_INDEPENDENT_REREVIEW_REQUIREMENT_MATRIX@1",
+  "reviewed_return": "c690bb0b1e6f071c9a640a6825769b96f30dd79a",
+  "r3_base": "b77937f7f2c79e9007ff7d8cd19061d1758f7f15",
+  "prior_rereview": "08b53e8b62ce4dbd04bd47dc2798229ea7dbe0c4",
+  "disposition": "APPROVE_AT_DECLARED_GRAIN",
+  "F1": {
+    "disposition": "PASS",
+    "known_zero_release_state": "NOT_GOVERNED",
+    "known_zero_release_reason_code": "NO_GOVERNING_RELEASE",
+    "known_zero_release_governing_release_ref": null,
+    "unknown_state": "NOT_GOVERNED",
+    "unknown_reason_code": "OWNER_UNKNOWN_DEPENDENT",
+    "current_inferred_from_graph_membership": false,
+    "current_inferred_from_cache_residency": false,
+    "resolver_serves_zero_release_known_as_current": false
+  },
+  "post_release": {
+    "disposition": "PASS",
+    "invariant": "A union U covers K at declared graph grain",
+    "replacement": "CURRENT with exact current_replacement_ref",
+    "unaffected": "CURRENT identity stable",
+    "explicit_noncurrent": "typed EXPLICIT_NONCURRENT refusal",
+    "missing_recorded_outcome": "owner conflict"
+  },
+  "preserved_R2_Astra": {
+    "duplicate_positive_replacement_rejection": true,
+    "cross_table_duplicate_rejection": true,
+    "negative_replacement_ref_exact_null": true,
+    "exact_negative_receipt_schema": true,
+    "historical_positive_only_compatibility": true,
+    "new_schema_zero_rows_refused": true,
+    "owner_unknown_not_governed": true,
+    "checkpoint_A_U_rederivation": true,
+    "mixed_promotion": true,
+    "mixed_rollback": true,
+    "one_generic_noncurrent_disposition": true,
+    "error_to_noncurrent_prohibited": true,
+    "sealed_successor_binding": true,
+    "decoy_distinction": true,
+    "omitted_edge_hostile": true,
+    "authority_candidate_identity": true,
+    "AT18_replay_grade_separation": true
+  },
+  "wording_residual": {
+    "disposition": "NONBLOCKING",
+    "owner_status_correct": true,
+    "owner_reason_code_correct": true,
+    "adapter_fails_closed": true,
+    "inaccurate_exception_message": true,
+    "coarse_exception_class_name": "OwnerUnknownDependent",
+    "coarse_exception_code": "OWNER_UNKNOWN_DEPENDENT",
+    "semantic_authority_effect": false,
+    "recommendation": "Correct message/class surface later if desired; not required for F-1 acceptance."
+  },
+  "F2": {
+    "disposition": "NONBLOCKING",
+    "changed_by_R3": false,
+    "authority_laundering_path_found": false
+  }
+}

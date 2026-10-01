@@ -1,0 +1,65 @@
+{
+  "schema": "PYAT_C1_03R_R3_FINAL_INDEPENDENT_REREVIEW_EXECUTION_RECEIPT@1",
+  "status": "STATIC_BROWSER_REREVIEW_PLUS_RECONCILED_WORKER_EXECUTION",
+  "review_branch": "agent/reviewer-pyat-hq158-c1-03r-r3-final-rereview-r1",
+  "review_issue_tip": "1dc84acb924b08420b94dde39fa1ac67daa9efeb",
+  "reviewed_return": "c690bb0b1e6f071c9a640a6825769b96f30dd79a",
+  "ancestry": {
+    "base": "b77937f7f2c79e9007ff7d8cd19061d1758f7f15",
+    "ahead_by": 1,
+    "behind_by": 0,
+    "status": "PASS"
+  },
+  "diff": {
+    "production_modified": [
+      "rawlsing_next/pre553_authority_maintenance.py"
+    ],
+    "tests_modified": [
+      "rawlsing_next/tests/test_pre553_authority_maintenance.py",
+      "rawlsing_next/tests/test_pre553_analytical_replay_dependency.py"
+    ],
+    "return_packet_added": "WORKER_RETURNS/PYAT-C1-03R-ZERO-RELEASE-CURRENTNESS-R3/**",
+    "prior_tests_deleted": false
+  },
+  "unchanged_blobs": {
+    "rawlsing_next/pre553_analytical_replay_dependency.py": "47e65aad5e0a8df7af6fda72fc8807a002e556ce",
+    "rawlsing_next/pre553_replay_audit.py": "86e0b9c518633735f2527b89fb72fca1a40dc2cc",
+    "rawlsing_next/pre553_analytical_composition.py": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+    "rawlsing_next/tests/c1_at18_at19_fixture.py": "cc0015ce9c7e05224ec499f66e893a7ffda1bbe3"
+  },
+  "absent_both_base_and_return": [
+    "rawlsing_next/pre553_analytical_state_and_route.py"
+  ],
+  "recorded_court": {
+    "passed": 167,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "runtime_seconds": 52.5,
+    "per_file": {
+      "test_pre553_analytical_replay_dependency.py": 43,
+      "test_pre553_authority_maintenance.py": 57,
+      "test_pre553_replay_audit.py": 54,
+      "test_pre553_analytical_composition.py": 13
+    },
+    "sum": 167
+  },
+  "static_reconciliation": {
+    "analytical_replay_dependency": "40 test functions + one 4-case parametrized court = 43",
+    "authority_maintenance": "54 test functions + one 4-case parametrized court = 57",
+    "replay_audit": "23 test functions + selector/provenance/nonpositive parameter expansion = 54",
+    "analytical_composition": "12 test functions + one 2-case parametrized court = 13",
+    "total": 167
+  },
+  "reviewer_runtime": {
+    "fresh_execution_available": false,
+    "proof_grade": "EXACT_COMMITTED_SOURCE_REVIEW_WITH_RECONCILED_WORKER_EXECUTION"
+  },
+  "prohibited_actions": {
+    "implementation_modified": false,
+    "merge": false,
+    "self_adoption": false,
+    "c1_03_join": false,
+    "raw_source_access": false
+  }
+}
