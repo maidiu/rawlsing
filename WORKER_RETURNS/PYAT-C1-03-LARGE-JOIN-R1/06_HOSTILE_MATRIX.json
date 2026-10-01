@@ -1,0 +1,141 @@
+{
+  "schema": "PYAT_C1_03_LARGE_JOIN_HOSTILE_MATRIX@1",
+  "join_court": "rawlsing_next/tests/test_pre553_c1_03_join.py",
+  "join_fixture": "rawlsing_next/tests/c1_03_join_fixture.py",
+  "courts": [
+    {
+      "id": "J01",
+      "phase": 3,
+      "court": "test_phase3_at17_provider_drives_query_to_composition_to_consumer",
+      "assertion": "AT17 reaches the real consumer with EXACT_SUPPORTED"
+    },
+    {
+      "id": "J02",
+      "phase": 3,
+      "court": "test_phase3_at17_still_rejects_handwritten_slice_geometry",
+      "assertion": "no geometry input exists on the provider or request type"
+    },
+    {
+      "id": "J03",
+      "phase": 3,
+      "court": "test_phase3_a_at16_positive_path_still_reaches_named_consumer",
+      "assertion": "A AT16 still reaches the named consumer"
+    },
+    {
+      "id": "J04",
+      "phase": 3,
+      "court": "test_phase3_shared_54_6_grain_determinants_are_coherent",
+      "assertion": "shared 54/6 determinants agree without requiring owner hashes to match"
+    },
+    {
+      "id": "J05",
+      "phase": 4,
+      "court": "test_phase4_eight_mandatory_negative_states_remain_distinct",
+      "assertion": "all eight A negatives remain distinct after the join"
+    },
+    {
+      "id": "J06",
+      "phase": 4,
+      "court": "test_phase4_lifecycle_states_are_not_synonyms_for_a_negative_states",
+      "assertion": "lifecycle and analytical vocabularies are string-disjoint"
+    },
+    {
+      "id": "J07",
+      "phase": 4,
+      "court": "test_phase4_at17_refusal_produces_no_geometry_and_no_supported_route",
+      "assertion": "an AT17 refusal yields no geometry and no supported route"
+    },
+    {
+      "id": "J08",
+      "phase": 4,
+      "court": "test_phase4_a_negative_consumer_non_invocation_remains_explicit",
+      "assertion": "A negative consumer non-invocation stays explicit"
+    },
+    {
+      "id": "J09",
+      "phase": 5,
+      "court": "test_phase5_real_accepted_refs_classify_under_the_r_owner",
+      "assertion": "real AT17/A refs get replacement / explicit noncurrent / unaffected CURRENT"
+    },
+    {
+      "id": "J10",
+      "phase": 5,
+      "court": "test_phase5_replacement_uses_a_real_sealed_successor_not_an_old_ref",
+      "assertion": "the selection moves to a real sealed successor"
+    },
+    {
+      "id": "J11",
+      "phase": 5,
+      "court": "test_phase5_zero_release_and_unknown_dependents_remain_not_governed",
+      "assertion": "both fail-closed lifecycle cases keep exact reason codes"
+    },
+    {
+      "id": "J12",
+      "phase": 6,
+      "court": "test_phase6_invalid_rollback_commits_nothing",
+      "assertion": "invalid rollback outcome data is atomic no-commit"
+    },
+    {
+      "id": "J13",
+      "phase": 6,
+      "court": "test_phase6_only_graph_declared_dependents_are_affected",
+      "assertion": "A and U partition the registered dependents exactly"
+    },
+    {
+      "id": "J14",
+      "phase": 7,
+      "court": "test_phase7_r_checkpoint_round_trip_preserves_join_outcomes",
+      "assertion": "R checkpoint round-trip reproduces join outcomes exactly"
+    },
+    {
+      "id": "J15",
+      "phase": 7,
+      "court": "test_phase7_accepted_at17_fresh_process_runner_still_present",
+      "assertion": "AT17 accepted fresh-process runner intact in the merged tree"
+    },
+    {
+      "id": "J16",
+      "phase": 7,
+      "court": "test_phase7_replay_grades_remain_distinct_in_the_joined_tree",
+      "assertion": "four replay grades stay distinct"
+    },
+    {
+      "id": "J17",
+      "phase": 7,
+      "court": "test_phase7_join_fresh_process_owner_replay",
+      "assertion": "a separate OS process reproduces the explicit noncurrent outcome from checkpoint only"
+    },
+    {
+      "id": "J18",
+      "phase": 9,
+      "court": "test_hostile_join_does_not_fabricate_currentness",
+      "assertion": "residency never manufactures currentness"
+    },
+    {
+      "id": "J19",
+      "phase": 9,
+      "court": "test_hostile_join_requires_no_production_glue",
+      "assertion": "no join production module was introduced"
+    },
+    {
+      "id": "J20",
+      "phase": 9,
+      "court": "test_hostile_join_cannot_coerce_across_owner_vocabularies",
+      "assertion": "no lifecycle string equals any analytical negative string"
+    },
+    {
+      "id": "J21",
+      "phase": 9,
+      "court": "test_hostile_join_dependents_are_real_accepted_refs",
+      "assertion": "dependents verified against the real AT17-generated evidence ref"
+    },
+    {
+      "id": "J22",
+      "phase": 9,
+      "court": "test_hostile_join_a_foreign_model_authority_cannot_masquerade",
+      "assertion": "the rule hash binds the authority, so a foreign authority yields a different identity"
+    }
+  ],
+  "total_join_courts": 22,
+  "all_passing": true
+}

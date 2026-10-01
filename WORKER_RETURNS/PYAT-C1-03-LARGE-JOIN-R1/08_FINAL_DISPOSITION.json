@@ -1,0 +1,80 @@
+{
+  "schema": "PYAT_C1_03_LARGE_JOIN_FINAL_DISPOSITION@1",
+  "disposition": "ACCEPTED_OWNER_INTEGRATION_CONFLICT__HQ_ADJUDICATION_REQUIRED",
+  "terminal": "C1_03_LARGE_JOIN_RETURNED__HQ_ADJUDICATION_REQUIRED",
+  "branch": "agent/opencode-pyat-hq162-c1-03-large-join-r1",
+  "final_sha": "f6456951b68df9d9a2711d8c65ceb3fccbd07612",
+  "not_pass_because": "One accepted artifact cannot hold simultaneously with an adopted accepted owner in the joined tree. This is a conflict between two accepted items, not a join defect.",
+  "the_conflict": {
+    "id": "ACCEPTED_OWNER_INTEGRATION_CONFLICT_C1_03A",
+    "accepted_artifact_A": {
+      "what": "the AT17 frozen-spine court test_p7_frozen_spine_bindings_still_hold_for_the_fixture_law",
+      "asserts": "composed_result_identity_hash == 03610f9d91b23cfb6f862dc91b5de92c7f4e4b8e44a53b9efdacb1cf73af6b9e",
+      "origin": "the spine artifact WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R8/04_CURRENT_AT07_IDENTITY_SPINE.json, schema PYAT_C1_00_R8_CURRENT_AT07_IDENTITY_SPINE@1, status EXECUTED_SOURCE_FREE_CURRENT_IDENTITY",
+      "independently_produced_by": "commit 9e2655818 'Close C1-01 R8 source-free release identity and predicate custody' - an INDEPENDENT commission, not the AT17 implementation"
+    },
+    "accepted_owner_B": {
+      "what": "rawlsing_next/pre553_analytical_composition.py blob 604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+      "adopted_by": [
+        "C1-03A",
+        "C1-03R"
+      ],
+      "computes": "composed_result_identity_hash == 01c381d3f3c386cfc22fd2f57b8e2c244771ddf1529d4f8ab8c7b1cf41bd50dd",
+      "why_it_differs": "the C1-02 advancement added ten identity-preimage fields that the AT17-era version did not bind: discovery_receipt_refs, discovery_frontier_ref, recursive_handoff_refs, recursive_lineage_refs, joint_component_count, consumer_binding_materials, producer_predicate_leaf_projections, pairing_ground_truth_materials, pairing_authority_refs, effective_time_or_intervals"
+    },
+    "why_the_owner_cannot_be_reverted": {
+      "proved_empirically": true,
+      "method": "a scratch worktree with AT17's older composition blob 26f3380cb83cbbcedc87c74aaf603b0492c8ce8f",
+      "result": "C1-03A's own test_pre553_analytical_composition_higher_order.py fails at IMPORT: cannot import name 'DiscoveryConsumptionMismatch'",
+      "conclusion": "the adopted 604c8d59 owner is mandatory for C1-03A and C1-03R"
+    },
+    "why_the_spine_cannot_be_refreshed_here": {
+      "it_is_an_independently_frozen_oracle": true,
+      "refreshing_from_implementation_output_would": "make the assertion tautological, destroying the oracle independence this project enforces in every commission",
+      "self_authorised_re_freeze_permitted": false
+    },
+    "smallest_required_owner_question": "Does the adopted C1-02 analytical-composition identity advancement (the ten added identity-preimage fields) supersede the R8 frozen AT07 identity spine's composed_result_identity_hash? If yes, HQ commissions an explicitly re-frozen spine produced by an INDEPENDENT oracle run, not by copying implementation output. If no, the C1-03 composition owner must be rolled back, which would break C1-03A and C1-03R and is therefore not available."
+  },
+  "phases_completed": {
+    "phase0_lineage_lock": "COMPLETE - all tips, implementation SHAs, merge bases and four critical blobs verified exactly as HQ stated",
+    "phase1_integration_tree": "COMPLETE - two ancestry-preserving merges, zero conflicts, all four critical blobs byte-identical",
+    "phase2_crosswalk": "COMPLETE - recorded in 02, with lawful bridge points distinguished from merely adjacent surfaces and no invented bridge",
+    "phase3_positive_coexistence": "COMPLETE - 4 join courts",
+    "phase4_negative_coexistence": "COMPLETE - 4 join courts",
+    "phase5_lifecycle_integration": "COMPLETE - 3 join courts using real accepted refs",
+    "phase6_mutation_reidentity_rollback": "COMPLETE - 2 join courts",
+    "phase7_replay_fresh_process": "COMPLETE with one typed finding - no lawful single fresh-process bridge exists; recorded rather than fabricated",
+    "phase8_union_and_join_court": "COMPLETE - collection reconciles to exactly 413 accepted; 434 passed, 1 failed",
+    "phase9_no_semantic_smuggling": "COMPLETE - no production glue needed, so none introduced"
+  },
+  "union_court": {
+    "accepted_sum": 413,
+    "collection_reconciles": true,
+    "join_tests": 22,
+    "total_collected": 435,
+    "passed": 434,
+    "failed": 1,
+    "errors": 0,
+    "skipped": 0,
+    "exit_status": 1
+  },
+  "accepted_owner_module_edited": false,
+  "accepted_owner_blobs_conserved": 4,
+  "accepted_owner_blobs_conserved_detail": {
+    "pre553_analytical_state_and_route.py": "3a5e3db8a0897900d0b2606813bda7c3f586d46e",
+    "pre553_empirical_possibility_provider.py": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+    "pre553_authority_maintenance.py": "547e6bf20354f38179a0e2600de64c7cb2260ea0",
+    "pre553_analytical_replay_dependency.py": "47e65aad5e0a8df7af6fda72fc8807a002e556ce"
+  },
+  "documentary_merge_conflicts": 0,
+  "semantic_merge_conflicts": 0,
+  "c1_accepted_court_regressions": 0,
+  "self_adopted": false,
+  "merged_to_control": false,
+  "c1_r_started": false,
+  "raw_source_access": false,
+  "c4_c7_work": false,
+  "v3_actor_person_work": false,
+  "semantic_pre_main_main_changed": false,
+  "next_required_action": "HQ adjudicates ACCEPTED_OWNER_INTEGRATION_CONFLICT_C1_03A and commissions the independently re-frozen spine or the owner decision. Independent review follows adjudication."
+}

@@ -1,0 +1,62 @@
+{
+  "schema": "PYAT_C1_03_LARGE_JOIN_EXECUTION_RECEIPT@1",
+  "branch": "agent/opencode-pyat-hq162-c1-03-large-join-r1",
+  "commission_tip": "9f2f4ee271dac3d2f7673d1d495228db93fe60a5",
+  "final_sha_tested": "f6456951b68df9d9a2711d8c65ceb3fccbd07612",
+  "clean_tree_at_test": true,
+  "interpreter": "/tmp/c1-01-r8-release-spine-venv/bin/python",
+  "python": "3.12.14",
+  "pytest": "9.1.1",
+  "platform": "darwin",
+  "file_list_method": "generated from disk with an existence assertion, so no filename can be mistyped",
+  "exact_command": "/tmp/c1-01-r8-release-spine-venv/bin/python -m pytest -q rawlsing_next/tests/test_pre553_analytical_state_and_route.py rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py rawlsing_next/tests/test_pre553_empirical_query.py rawlsing_next/tests/test_pre553_structural_admission.py rawlsing_next/tests/test_pre553_discovery_exact.py rawlsing_next/tests/test_pre553_analytical_composition.py rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py rawlsing_next/tests/test_pre553_discovery_adaptive.py rawlsing_next/tests/test_pre553_discovery_adaptive_admission.py rawlsing_next/tests/test_pre553_recursive_handoff.py rawlsing_next/tests/test_pre553_analytical_replay_dependency.py rawlsing_next/tests/test_pre553_authority_maintenance.py rawlsing_next/tests/test_pre553_replay_audit.py rawlsing_next/tests/test_pre553_empirical_possibility_provider.py rawlsing_next/tests/test_pre553_c1_03_join.py",
+  "accepted_suites_14": {
+    "test_pre553_analytical_state_and_route": 92,
+    "test_pre553_analytical_composition_higher_order": 35,
+    "test_pre553_empirical_query": 32,
+    "test_pre553_structural_admission": 17,
+    "test_pre553_discovery_exact": 14,
+    "test_pre553_analytical_composition": 13,
+    "test_source_backed_positioned_subject_possibility": 13,
+    "test_pre553_discovery_adaptive": 8,
+    "test_pre553_discovery_adaptive_admission": 3,
+    "test_pre553_recursive_handoff": 2,
+    "test_pre553_analytical_replay_dependency": 43,
+    "test_pre553_authority_maintenance": 57,
+    "test_pre553_replay_audit": 54,
+    "test_pre553_empirical_possibility_provider": 30
+  },
+  "accepted_union_sum": 413,
+  "accepted_union_expected": 413,
+  "accepted_collection_reconciles_exactly": true,
+  "collection_delta_explanation": "No delta. All fourteen accepted suites collect exactly the commissioned counts and sum to 413.",
+  "join_specific_tests": 22,
+  "total_collected": 435,
+  "counts": {
+    "passed": 434,
+    "failed": 1,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0
+  },
+  "runtime_seconds": 87.67,
+  "wall_time_real": "0m01:28",
+  "exit_status": 1,
+  "failing_court": {
+    "file": "rawlsing_next/tests/test_pre553_empirical_possibility_provider.py",
+    "court": "test_p7_frozen_spine_bindings_still_hold_for_the_fixture_law",
+    "expected_hash": "03610f9d91b23cfb6f862dc91b5de92c7f4e4b8e44a53b9efdacb1cf73af6b9e",
+    "actual_hash": "01c381d3f3c386cfc22fd2f57b8e2c244771ddf1529d4f8ab8c7b1cf41bd50dd",
+    "cause": "ACCEPTED_OWNER_INTEGRATION_CONFLICT_C1_03A"
+  },
+  "fresh_process_commands": [
+    {
+      "what": "join fresh-process owner replay (subprocess, in-court)",
+      "command": "sys.executable <tmp join_replay.py>",
+      "exit_status": 0,
+      "note": "asserted inside test_phase7_join_fresh_process_owner_replay"
+    }
+  ],
+  "wider_regression_sweep_claimed": false,
+  "wider_regression_sweep_note": "Only the fourteen accepted suites plus the join court and its fresh-process runner were executed."
+}

@@ -1,0 +1,113 @@
+{
+  "schema": "PYAT_C1_03_LARGE_JOIN_LINEAGE@1",
+  "phase0_lineage_lock": {
+    "A_tip": {
+      "sha": "26976201b3cf14f4cf89a45a909c780591f54bcb",
+      "resolves": true,
+      "branch": "integration/pyat-hq162-c1-03a-source-free-accepted-r1"
+    },
+    "AT17_tip": {
+      "sha": "52e41a41e8bc3b77390016a049095b5aea1721d0",
+      "resolves": true,
+      "branch": "integration/pyat-hq147-n10e-at17-source-free-accepted-r1"
+    },
+    "R_tip": {
+      "sha": "9ec7eaff2646c1effd5192002967407a5c66bbef",
+      "resolves": true,
+      "branch": "integration/pyat-hq159-c1-03r-source-free-accepted-r1"
+    },
+    "A_impl": {
+      "sha": "4f5555459e5ffdb240fc9e6e94178ec5e4b3eff1",
+      "reachable_from_A_tip": true
+    },
+    "R_impl": {
+      "sha": "c690bb0b1e6f071c9a640a6825769b96f30dd79a",
+      "reachable_from_R_tip": true
+    },
+    "merge_base_A_R": "bc661188b51e995d9f5d74e55c4e37d2ba358a17",
+    "merge_base_AT17_C1_01": "5fafb499d53dddadaf8a7b4fd46506e91a09d270",
+    "hq_stated_facts_all_confirmed": true,
+    "provenance_drift": false
+  },
+  "critical_blob_verification": {
+    "pre553_analytical_state_and_route.py": {
+      "expected": "3a5e3db8a0897900d0b2606813bda7c3f586d46e",
+      "observed_at_accepted_tip": "3a5e3db8a0897900d0b2606813bda7c3f586d46e",
+      "match": true
+    },
+    "pre553_empirical_possibility_provider.py": {
+      "expected": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+      "observed_at_accepted_tip": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+      "match": true
+    },
+    "pre553_authority_maintenance.py": {
+      "expected": "547e6bf20354f38179a0e2600de64c7cb2260ea0",
+      "observed_at_accepted_tip": "547e6bf20354f38179a0e2600de64c7cb2260ea0",
+      "match": true
+    },
+    "pre553_analytical_replay_dependency.py": {
+      "expected": "47e65aad5e0a8df7af6fda72fc8807a002e556ce",
+      "observed_at_accepted_tip": "47e65aad5e0a8df7af6fda72fc8807a002e556ce",
+      "match": true
+    }
+  },
+  "multi_trunk_modification_record": {
+    "semantic_production_overlap_among_the_three_owners": false,
+    "shared_production_file_modified_on_more_than_one_trunk": [
+      {
+        "file": "rawlsing_next/pre553_analytical_composition.py",
+        "A_blob": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+        "R_blob": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+        "AT17_blob": "26f3380cb83cbbcedc87c74aaf603b0492c8ce8f",
+        "nature": "stale divergence, NOT a semantic conflict",
+        "evidence": "AT17's blob is the version from commit e782aba90 (C1-01 R8). The A and R trunks received three further C1-02 commits (36128968a, 795bd0814, bc661188b) that advanced this owner. AT17 forked before that advancement.",
+        "resolved_to": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+        "resolution_is_ancestry_preserving": true,
+        "note": "This file is NOT one of the four critical blobs, but it IS an accepted owner consumed by all three trunks. Its resolution is the direct cause of ACCEPTED_OWNER_INTEGRATION_CONFLICT_C1_03A below."
+      }
+    ]
+  },
+  "merges": [
+    {
+      "sequence": 1,
+      "merged": "52e41a41e8bc3b77390016a049095b5aea1721d0",
+      "strategy": "ancestry-preserving --no-ff merge of the exact accepted tip",
+      "conflicts": 0
+    },
+    {
+      "sequence": 2,
+      "merged": "9ec7eaff2646c1effd5192002967407a5c66bbef",
+      "strategy": "ancestry-preserving --no-ff merge of the exact accepted tip",
+      "conflicts": 0
+    }
+  ],
+  "post_integration_critical_blob_conservation": {
+    "pre553_analytical_state_and_route.py": {
+      "expected": "3a5e3db8a0897900d0b2606813bda7c3f586d46e",
+      "in_joined_tree": "3a5e3db8a0897900d0b2606813bda7c3f586d46e",
+      "byte_identical": true
+    },
+    "pre553_empirical_possibility_provider.py": {
+      "expected": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+      "in_joined_tree": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+      "byte_identical": true
+    },
+    "pre553_authority_maintenance.py": {
+      "expected": "547e6bf20354f38179a0e2600de64c7cb2260ea0",
+      "in_joined_tree": "547e6bf20354f38179a0e2600de64c7cb2260ea0",
+      "byte_identical": true
+    },
+    "pre553_analytical_replay_dependency.py": {
+      "expected": "47e65aad5e0a8df7af6fda72fc8807a002e556ce",
+      "in_joined_tree": "47e65aad5e0a8df7af6fda72fc8807a002e556ce",
+      "byte_identical": true
+    },
+    "all_four_conserved": true,
+    "accepted_owner_module_edited_by_this_join": false
+  },
+  "joined_tree": {
+    "commit": "f6456951b68df9d9a2711d8c65ceb3fccbd07612",
+    "accepted_owner_edits": 0,
+    "new_production_modules": 0
+  }
+}

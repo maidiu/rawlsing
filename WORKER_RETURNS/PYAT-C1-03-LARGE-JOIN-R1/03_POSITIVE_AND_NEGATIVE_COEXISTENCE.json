@@ -1,0 +1,79 @@
+{
+  "schema": "PYAT_C1_03_LARGE_JOIN_COEXISTENCE@1",
+  "phase3_positive": {
+    "at17_query_to_composition_to_generated_evidence_to_consumer": true,
+    "at17_consumer_result_state": "EXACT_SUPPORTED",
+    "at17_denominator_support": 60,
+    "at17_rejects_handwritten_geometry": {
+      "proven_by": "signature inspection",
+      "provider_params": [
+        "repository",
+        "empirical_query",
+        "predicate",
+        "authority_registry",
+        "release_refs",
+        "consumer_query",
+        "model_rule",
+        "condition_binding_witness"
+      ],
+      "geometry_field_present": false,
+      "note": "the request type declares no geometry field either; this is stronger than raising on one"
+    },
+    "a_at16_positive_reaches_named_consumer": true,
+    "a_consumer_result_state": "EXACT_SUPPORTED",
+    "shared_54_6_grain": {
+      "denominator_support_agrees": true,
+      "consumer_binding_exact": true,
+      "both_exact_supported": true,
+      "owner_specific_identity_required_equal": false,
+      "owner_specific_identity_required_equal_reason": "A and AT17 wrap the same governed event in different owner identities; the commission explicitly forbids requiring wrapper/receipt hash equality merely because they wrap the same event"
+    }
+  },
+  "phase4_negative": {
+    "eight_mandatory_states_distinct": true,
+    "observed_states": [
+      "OBSERVED_ZERO",
+      "VALID_EMPTY",
+      "UNDERPOWERED",
+      "UNKNOWN_OR_UNRESOLVED",
+      "UNVISITED",
+      "NONCOMPARABLE",
+      "BLOCKED_REQUIRED_AUTHORITY",
+      "INTEGRITY_FAILURE"
+    ],
+    "a_state_collapsed_into_r_lifecycle_state": false,
+    "explicit_noncurrent_is_lifecycle_not_analytical": true,
+    "not_governed_is_not_unresolved_valid_empty_or_integrity": true,
+    "lifecycle_and_analytical_vocabularies_string_disjoint": true,
+    "at17_typed_refusal_produces_no_geometry": true,
+    "at17_refusal_not_mapped_to_supported_a_route": true,
+    "a_negative_consumer_non_invocation_explicit": true,
+    "accidental_string_coercion_hostiles": true
+  },
+  "hostiles": [
+    {
+      "id": "J-H1",
+      "assertion": "no lifecycle string equals any analytical negative string"
+    },
+    {
+      "id": "J-H2",
+      "assertion": "residency of an exact ref never manufactures currentness"
+    },
+    {
+      "id": "J-H3",
+      "assertion": "no join production glue module exists"
+    },
+    {
+      "id": "J-H4",
+      "assertion": "join dependents are REAL accepted refs, verified against the AT17-generated evidence ref"
+    },
+    {
+      "id": "J-H5",
+      "assertion": "a foreign model authority cannot masquerade as the governed product because the rule hash binds it"
+    },
+    {
+      "id": "J-H6",
+      "assertion": "AT17 exposes no geometry input at all"
+    }
+  ]
+}

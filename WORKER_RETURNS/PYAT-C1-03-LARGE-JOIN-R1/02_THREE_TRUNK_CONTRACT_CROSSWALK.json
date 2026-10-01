@@ -1,0 +1,134 @@
+{
+  "schema": "PYAT_C1_03_LARGE_JOIN_CROSSWALK@1",
+  "principle": "Shared determinants are recorded separately from owner-specific identity. No bridge is invented; a surface is called a bridge point only when an accepted contract already exposes the matching exact ref.",
+  "trunks": {
+    "A_C1_03A": {
+      "owner_module": "rawlsing_next.pre553_analytical_state_and_route",
+      "accepted_blob": "3a5e3db8a0897900d0b2606813bda7c3f586d46e",
+      "surfaces": [
+        {
+          "entry_point": "capture_empirical_integrity_refusal",
+          "input_identity": "governed repository + C11LogicalRelease ref + RespondentEvent ref + tampered body",
+          "output_identity": "OwnerRefusalWitness{owner_label, refused_ref, governing_release_ref, object_family, invocation_binding, supporting_refs}",
+          "authority_owner": "canonical RespondentEvent integrity construction (pre553_empirical_objects)",
+          "determinant_refs": "the resolved object's authority_snapshot_refs / dependency_refs / replay root",
+          "negative_states": "INTEGRITY_FAILURE only, and only on exact Pre553IntegrityError",
+          "lifecycle_behaviour": "none; A owns analytical state, not lifecycle status"
+        },
+        {
+          "entry_point": "OwnerStateProjection",
+          "input_identity": "one of the typed owner factories",
+          "output_identity": "ProducerStateEvidence via as_evidence()",
+          "negative_states": "eight mandatory states, kept distinct",
+          "consumer_behaviour": "explicit NOT_INVOKED when the state is not losslessly representable"
+        },
+        {
+          "entry_point": "build_state_route_result",
+          "input_identity": "route_class + owner-derived evidence + owner-derived obligation",
+          "output_identity": "AnalyticalStateRouteResult with envelope_identity_hash",
+          "negative_states": "carries the owner-derived retained state verbatim"
+        },
+        {
+          "entry_point": "AT15 learned/adjudicated route",
+          "input_identity": "real AdmissionEvaluation",
+          "output_identity": "RouteObligation binding receipt/authority/fact/rule hash",
+          "consumer_behaviour": "a LEARNED route without an owner-derived obligation is refused"
+        },
+        {
+          "entry_point": "AT16 direct positive consumer route",
+          "input_identity": "empirical query -> analytical composition",
+          "output_identity": "composed result + EXACT_SUPPORTED consumer result",
+          "negative_states": "54/6 is SUPPORTED, never OBSERVED_ZERO"
+        }
+      ]
+    },
+    "AT17_N10E": {
+      "owner_module": "rawlsing_next.pre553_empirical_possibility_provider",
+      "accepted_blob": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+      "surfaces": [
+        {
+          "entry_point": "provide_empirical_possibility_slice",
+          "input_identity": "repository, empirical_query, predicate, authority_registry, release_refs, consumer_query, model_rule, condition_binding_witness",
+          "output_identity": "ProviderResult{composition_result, generated_evidence_or_null}",
+          "authority_owner": "delegates to the accepted analytical composition owner",
+          "determinant_refs": "the supplied query/predicate/witness refs, bound into the composition identity",
+          "negative_states": "typed EmpiricalPossibilityProviderError; owner-law errors propagate unbridged",
+          "consumer_behaviour": "returns the real consumer result; never synthesizes geometry"
+        },
+        {
+          "entry_point": "EmpiricalPossibilityProviderRequest",
+          "input_identity": "declares NO geometry/probability field by design",
+          "output_identity": "n/a",
+          "note": "the absence of a geometry field is the strongest anti-fabrication property"
+        },
+        {
+          "entry_point": "generated PossibilitySliceEvidence",
+          "input_identity": "descends from the composed producer fact",
+          "output_identity": "C1_POSITIONED_SUBJECT_SLICE_EVIDENCE@1 exact ref",
+          "bridge_point": true,
+          "bridge_note": "this is a REAL exact ref an accepted AT17 contract exposes, and it is therefore usable as an R lifecycle dependent"
+        },
+        {
+          "entry_point": "positioned-subject consumer result",
+          "input_identity": "consumer query + model rule",
+          "output_identity": "result_state EXACT_SUPPORTED"
+        }
+      ]
+    },
+    "R_C1_03R": {
+      "owner_modules": [
+        "rawlsing_next.pre553_authority_maintenance",
+        "rawlsing_next.pre553_analytical_replay_dependency"
+      ],
+      "accepted_blobs": [
+        "547e6bf20354f38179a0e2600de64c7cb2260ea0",
+        "47e65aad5e0a8df7af6fda72fc8807a002e556ce"
+      ],
+      "surfaces": [
+        {
+          "entry_point": "SemanticDeterminantGraph",
+          "input_identity": "declared authority_edges / dependency_edges / known_dependent_refs",
+          "output_identity": "graph at a declared grain",
+          "bridge_point": true,
+          "bridge_note": "accepts ANY ExactRef as a dependent; it does not require the dependent to originate in A or AT17, so accepted foreign refs participate lawfully"
+        },
+        {
+          "entry_point": "AuthorityMaintenanceExecutor",
+          "input_identity": "initial snapshots, current selection, determinant graph",
+          "output_identity": "release + invalidation receipt with exact identities"
+        },
+        {
+          "entry_point": "AuthorityInvalidationReceipt",
+          "input_identity": "changed authorities + affected/unaffected + pairs + noncurrent rows",
+          "output_identity": "receipt ref; positive-only receipts keep the historical byte-identical projection"
+        },
+        {
+          "entry_point": "dependent_lifecycle_status",
+          "output_identity": "CURRENT | EXPLICIT_NONCURRENT | NOT_GOVERNED with exact reason_code",
+          "note": "lifecycle status is NOT an analytical negative state"
+        },
+        {
+          "entry_point": "resolve_current_analytical_product",
+          "output_identity": "current status mapping, or typed refusal"
+        },
+        {
+          "entry_point": "replay / checkpoint path",
+          "output_identity": "checkpoint hash reproducing both outcome classes",
+          "note": "serialization replay, NOT fresh analytical recomputation"
+        }
+      ]
+    }
+  },
+  "lawful_bridge_points": [
+    "AT17 generated PossibilitySliceEvidence.evidence_ref -> R dependent",
+    "AT17/A composition identity hash -> R dependent ExactRef (anchored on an exact accepted identity)",
+    "R SemanticDeterminantGraph accepts any ExactRef, so foreign accepted refs participate without translation"
+  ],
+  "merely_adjacent_not_bridged": [
+    "A analytical_state strings and R lifecycle_state strings: same conceptual area, DIFFERENT vocabularies, no translation exists or is lawful",
+    "AT17 provider request shape and A's analytical request shape: separate owners, no shared identity",
+    "A's refusal witness owner label and R's release/invalidation receipts: unrelated identities"
+  ],
+  "invented_bridges": [],
+  "cross_owner_vocabulary_translation_performed": false
+}

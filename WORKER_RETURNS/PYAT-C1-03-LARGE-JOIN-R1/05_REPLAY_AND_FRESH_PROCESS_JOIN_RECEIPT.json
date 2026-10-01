@@ -1,0 +1,31 @@
+{
+  "schema": "PYAT_C1_03_LARGE_JOIN_REPLAY_RECEIPT@1",
+  "replay_grade_distinctions_preserved": {
+    "grades": [
+      "HISTORICAL_EXPLANATION_ONLY",
+      "SERIALIZATION_REPLAY",
+      "FRESH_PROCESS_PRODUCT_REPLAY",
+      "FRESH_EMPIRICAL_RECOMPUTATION"
+    ],
+    "collapsed": false
+  },
+  "accepted_r_replay_courts_run_in_merged_tree": true,
+  "accepted_at17_fresh_process_provider_replay_present": true,
+  "join_specific_fresh_process_court": {
+    "name": "test_phase7_join_fresh_process_owner_replay",
+    "starts_from": "exported R checkpoint only",
+    "demonstrates": "a separate OS process rebuilds the join lifecycle and reproduces the EXPLICIT_NONCURRENT outcome with its exact disposition and reason_code",
+    "not_claimed": "this is serialization replay of lifecycle state, NOT fresh analytical recomputation"
+  },
+  "single_fresh_process_bridge_joining_provider_recompute_to_consumer": {
+    "exists": false,
+    "reason": "no accepted contract exposes a lawful single fresh-process bridge from retained determinants through the AT17 provider recompute to the named consumer while also carrying R lifecycle state. Fabricating one is forbidden by PHASE 7.",
+    "action": "recorded as a typed integration finding; both accepted fresh-process paths are executed in the same merged tree instead"
+  },
+  "at17_foreign_authority_observation": {
+    "finding": "provide_empirical_possibility_slice does not itself refuse a model rule bound to an ungoverned authority",
+    "accepted_owner_behaviour_preserved": true,
+    "why_not_a_blocker": "the composition identity binds the model rule hash, so a foreign authority produces a different governed identity and cannot masquerade as the real product; that is the property actually provable",
+    "recorded_not_acted_on": true
+  }
+}
