@@ -1,8 +1,8 @@
 # Sorok — Question Closure and Alpha-Blocker Accounting R1
 
-Status: `ACTIVE_PROGRESS_ACCOUNTING__CURRENT_THROUGH_Q_ACCESS_001_CLOSURE`
+Status: `ACTIVE_PROGRESS_ACCOUNTING__CURRENT_THROUGH_Q_INVITEGRAPH_001_CLOSURE`
 
-Date: 2026-09-30
+Date: 2026-10-01
 
 ## 0. Governing accounting law
 
@@ -37,33 +37,30 @@ One decision may constrain many questions and one question may require many deci
 
 ## 3. Exact current counts
 
-Total surfaced questions: **115**.
+Total surfaced questions: **116**.
 
 By closure state:
 - `CLOSED_FOR_ALPHA`: **8**
-- `PROVISIONALLY_ANSWERED`: **24**
+- `PROVISIONALLY_ANSWERED`: **25**
 - `NEEDS_PROTOTYPE`: **24**
-- `NEEDS_ARCHITECTURE_ADJUDICATION`: **46**
-- `OPEN_DISCOVERY`: **7**
+- `NEEDS_ARCHITECTURE_ADJUDICATION`: **47**
+- `OPEN_DISCOVERY`: **6**
 - `DEFERRED_POST_ALPHA`: **6**
 
 By blocking stage:
-- `ALPHA_SPEC`: **3**
-- `ALPHA_IMPLEMENTATION`: **41**
+- `ALPHA_SPEC`: **2**
+- `ALPHA_IMPLEMENTATION`: **42**
 - `ALPHA_VALIDATION`: **25**
 - `POST_ALPHA`: **18**
-- `NONE`: **28**
+- `NONE`: **29**
 
-Broad alpha blockers are now **44**, split into:
-- **3 product/spec blockers**;
-- **41 implementation/architecture blockers**.
+Broad alpha blockers remain **44**, split into:
+- **2 product/spec blockers**;
+- **42 implementation/architecture blockers**.
 
-The conversational critical path is the three product/spec blockers, not the raw frontier count.
+The conversational critical path is the two product/spec blockers, not the raw frontier count.
 
-## 4. Current three ALPHA_SPEC blockers
-
-### Q-INVITEGRAPH-001
-What exact residual invite-economy rules remain after the one-for-one warrant-coupled law: invite consumption on send/accept, decline/expiry/failure restoration, inviter visibility, abuse controls, seed-cohort/public-demand transition?
+## 4. Current two ALPHA_SPEC blockers
 
 ### Q-PRIV-001
 What user data is required for longitudinal relational modeling, what should never be collected, and what deletion/export boundaries are required?
@@ -113,6 +110,33 @@ Controlling artifact:
 
 This is `ALPHA_IMPLEMENTATION`, not a reopened ALPHA_SPEC blocker.
 
+### Q-INVITEGRAPH-001
+`PROVISIONALLY_ANSWERED / NONE`.
+
+Controlling artifact:
+- `57_Q_INVITEGRAPH_001_ONE_FOR_ONE_HUMAN_INVITATION_CONSTITUTION_R1.md`.
+
+Core holding:
+- one invitation is one deliberate human designation, not one successful conversion;
+- deliberate credential commitment spends the invitation before recipient acceptance;
+- decline, ignoring, abandonment and existing access do not refund;
+- system technical failure may repair credentials only inside the same invitation identity;
+- revocation does not create a new recipient-cycling entitlement;
+- human-carried single-use credential remains the alpha delivery default;
+- no built-in personal note is required for alpha;
+- inviter receives no invitee conversion/activity surveillance;
+- human invite provenance does not connect synthetic worlds;
+- seed/public admission routes remain truthful and non-prestigious.
+
+Implementation successor:
+- `Q-INVITEIMPL-001`.
+
+Validation remains:
+- `Q-INVITEDELIVERY-001`;
+- `Q-HUMANINVITE-001`.
+
+This is no longer an `ALPHA_SPEC` blocker.
+
 ## 6. Other moved-out product blockers
 
 - `Q-RETRY-001`: closed for alpha — no save branches; restart abandons continuity.
@@ -136,14 +160,13 @@ Examples include:
 
 ## 8. Current critical path
 
-1. `Q-INVITEGRAPH-001` — residual one-for-one invitation constitution;
-2. `Q-PRIV-001` — minimum data/deletion/export constitution;
-3. `Q-ALPHA-001` — final proximal alpha falsification/evidence constitution.
+1. `Q-PRIV-001` — minimum data/deletion/export constitution;
+2. `Q-ALPHA-001` — final proximal alpha falsification/evidence constitution.
 
 Alpha evidence remains last because it should test the product actually specified, not an earlier abstraction.
 
 ## 9. Current interpretation
 
-> **115 frontiers have been surfaced and preserved. Three still require product-level adjudication before the current alpha can be fully specified. Forty-one require architecture work before governed implementation. Twenty-five should be learned through prototype evidence rather than armchair design.**
+> **116 frontiers have been surfaced and preserved. Two still require product-level adjudication before the current alpha can be fully specified. Forty-two require architecture work before governed implementation. Twenty-five should be learned through prototype evidence rather than armchair design.**
 
 That is the current progress signal.
