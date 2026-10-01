@@ -1,0 +1,73 @@
+{
+  "schema": "PYAT_C1_03A_INDEPENDENT_REQUIREMENT_MATRIX@1",
+  "reviewed_return": "a3c07426b0ad547287cc729b23cd8428c9fc0018",
+  "governing_commission": "da29402473ad671625feb49fad5142a1d689978b",
+  "adopted_c1_02_base": "bc661188b51e995d9f5d74e55c4e37d2ba358a17",
+  "disposition": "CHANGES_REQUIRED",
+  "AT14": {
+    "disposition": "CHANGES_REQUIRED",
+    "owner_execution_findings": {
+      "observed_zero": "SUPPORTED fact + owner cell projection OBSERVED_ZERO_IN_SUPPORTED_RISK_SET is genuinely exercised",
+      "valid_empty": "owner-produced VALID_EMPTY is genuinely exercised",
+      "underpowered": "exact discovery INSUFFICIENT_SUPPORT/EVALUATED_UNDERPOWERED is genuinely exercised",
+      "unresolved": "empirical UNRESOLVED is genuinely exercised",
+      "unvisited": "adaptive PARTIAL_BUDGET_EXHAUSTED with exact unvisited refs is genuinely exercised",
+      "noncomparable": "empirical NONCOMPARABLE is genuinely exercised",
+      "blocked": "exact-discovery authority DENY refusal is genuinely exercised",
+      "integrity_failure": "canonical semantic object integrity refusal is genuinely exercised"
+    },
+    "blocking_gaps": [
+      "ProducerStateEvidence does not validate producer_state -> retained_state projection.",
+      "build_state_route_result trusts caller-supplied retained labels.",
+      "BLOCKED and INTEGRITY_FAILURE retained labels are caller-projected after exceptions rather than derived by a typed owner-bound constructor.",
+      "Positive recursive handoff can be wrapped without coverage_record_ref; the actual positive-handoff/full-coverage custody requirement is unenforced."
+    ],
+    "zero_vs_valid_empty": "PASS at fixture/owner level",
+    "underpowered_vs_unresolved": "PASS at fixture/owner level",
+    "unvisited_real_adaptive_owner": "PASS",
+    "noncomparable_not_unresolved": "PASS at fixture/owner level",
+    "integrity_failure_not_valid_empty": "PASS as an executed refusal, but envelope projection remains forgeable",
+    "positive_handoff_full_coverage": "FAIL"
+  },
+  "AT15": {
+    "disposition": "CHANGES_REQUIRED",
+    "direct_empirical_owner_exists": true,
+    "structural_admission_owner_exists": true,
+    "route_obligation_owner_derived": false,
+    "route_guard_inputs": [
+      "route_class (caller supplied)",
+      "required_route_class (caller supplied)",
+      "producer_state (caller supplied)",
+      "reason (caller supplied)"
+    ],
+    "exact_admission_receipt_bound_to_route_decision": false,
+    "exact_rule_identity_bound_to_route_decision": false,
+    "exact_admission_authority_bound_to_route_decision": false,
+    "exact_target_use_or_use_contract_bound_to_route_decision": false,
+    "positive_admitted_learned_route_proven": false,
+    "failed_learned_hostile_executes_real_owner": true,
+    "deny_authority_hostile_executes_real_owner": true,
+    "laundering_guard_independently_derives_requirement": false,
+    "summary": "The owner calls are real, but route legitimacy is not derived from them. The guard only compares caller labels."
+  },
+  "AT16": {
+    "disposition": "PARTIAL_PASS__CHANGES_REQUIRED_FOR_FINAL_ENVELOPE",
+    "producer_to_composition_to_consumer_public_path": "PASS",
+    "producer_fact_ref_recorded": true,
+    "composed_identity_recorded": true,
+    "generated_evidence_ref_recorded": true,
+    "consumer_query_rule_recorded": true,
+    "consumer_result_state_hash_recorded": true,
+    "evidence_custody_asserted": true,
+    "lawful_negative_non_invocation_path": "PASS",
+    "blocking_gap": "The positive final envelope asserts retained OBSERVED_ZERO while its actual 54/6 composition is SUPPORTED with no zero target cell.",
+    "handmade_primitive_hostile": "PASS"
+  },
+  "provenance": {
+    "worker_fast_forward_from_commission": true,
+    "worker_commits_ahead": 1,
+    "adopted_c1_02_owner_modified": false,
+    "source_free_only": true,
+    "raw_survey_access_in_review": false
+  }
+}

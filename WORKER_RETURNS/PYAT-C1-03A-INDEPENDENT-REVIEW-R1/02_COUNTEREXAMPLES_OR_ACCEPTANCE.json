@@ -1,0 +1,53 @@
+{
+  "schema": "PYAT_C1_03A_INDEPENDENT_COUNTEREXAMPLES_OR_ACCEPTANCE@1",
+  "status": "COUNTEREXAMPLES_ESTABLISHED",
+  "counterexamples": [
+    {
+      "id": "C1-03A-REVIEW-BLOCK-STATE-PROJECTION-001",
+      "area": "AT14/AT16",
+      "static_reproducer": [
+        "Construct ProducerStateEvidence with a real producer ref and producer_state='SUPPORTED'.",
+        "Choose any different RETAINABLE_STATES value, e.g. retained_state='VALID_EMPTY' or 'OBSERVED_ZERO'.",
+        "build_state_route_result accepts the retained label because it never invokes classify_empirical_fact_state/classify_empirical_cells/classify_discovery_receipt_state against ProducerStateEvidence."
+      ],
+      "committed_witness": "test_at16_direct_empirical_positive_path_reaches_the_named_consumer passes producer_state=composed.analytical_state ('SUPPORTED') while _envelope is called with retained=OBSERVED_ZERO.",
+      "fixture_truth": "The ATT1=agree -> ATT2 fixture is 54 support / 6 oppose, so neither target cell is zero.",
+      "consequence": "The claimed state-conservation owner can manufacture a retained state and the final AT16 receipt is internally false."
+    },
+    {
+      "id": "C1-03A-REVIEW-BLOCK-ROUTE-DERIVATION-001",
+      "area": "AT15",
+      "static_reproducer": [
+        "assert_route_not_laundered has no owner receipt/use-contract input.",
+        "Passing required_route_class='LEARNED_OR_ADJUDICATED_REQUIRED' makes DIRECT raise.",
+        "Passing required_route_class='DIRECT_EMPIRICAL' for the same underlying failed structural-use situation does not raise.",
+        "build_state_route_result independently accepts either route label."
+      ],
+      "consequence": "The route label/required-route label are authority assertions by the caller, not a derived current-owner fact.",
+      "positive_case_gap": "The structural test proves rule=None is non-ADMITTED but never proves a successful ADMITTED learned/adjudicated route and never binds that receipt into the envelope."
+    },
+    {
+      "id": "C1-03A-REVIEW-BLOCK-HANDOFF-COVERAGE-001",
+      "area": "AT14 coverage hostile",
+      "static_reproducer": [
+        "Use a positive recursive handoff ref as producer_ref.",
+        "Choose a positive retained state.",
+        "Leave coverage_record_ref=None and unvisited_refs=().",
+        "build_state_route_result has no invariant that rejects this."
+      ],
+      "consequence": "A selected positive handoff can still be represented without retained access to the full discovery coverage record.",
+      "why_existing_test_is_insufficient": "Existing court only rejects relabelling the handoff as UNVISITED or attaching unvisited refs to a positive state; it does not test missing positive-handoff coverage custody."
+    }
+  ],
+  "accepted_subfindings": [
+    "Observed-zero cell detection uses the actual empirical cell projection.",
+    "Adaptive UNVISITED is owner-produced by real budget truncation with exact unvisited refs.",
+    "The structural-admission hostiles call the real current owner.",
+    "The AT16 public producer -> composition -> consumer path is real.",
+    "Handmade/direct consumer invocation alone is correctly shown to be weaker than the composed witness.",
+    "Adopted C1-02 production/test files are not changed by the worker diff.",
+    "Recorded 157-test arithmetic is consistent with real test inventories."
+  ],
+  "architecture_warrant": false,
+  "smallest_owner": "rawlsing_next/pre553_analytical_state_and_route.py"
+}

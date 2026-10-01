@@ -1,0 +1,85 @@
+{
+  "schema": "PYAT_C1_03A_INDEPENDENT_REVIEW_EXECUTION_RECEIPT@1",
+  "status": "STATIC_INDEPENDENT_REVIEW__NO_FRESH_RUNTIME_REQUIRED",
+  "review_branch": "agent/reviewer-pyat-hq149-c1-03a-r1",
+  "review_issue_tip": "0b3c8ae01b1a33cc71ddb759cca65949a9e25a3f",
+  "reviewed_return": "a3c07426b0ad547287cc729b23cd8428c9fc0018",
+  "worker_commission_tip": "da29402473ad671625feb49fad5142a1d689978b",
+  "ancestry": {
+    "status": "PASS",
+    "worker_return_ahead_by": 1,
+    "worker_return_behind_by": 0
+  },
+  "worker_diff": {
+    "implementation_files_added": [
+      "rawlsing_next/pre553_analytical_state_and_route.py",
+      "rawlsing_next/tests/test_pre553_analytical_state_and_route.py",
+      "rawlsing_next/tests/c1_at14_at16_fixture.py"
+    ],
+    "pre_existing_adopted_c1_02_files_modified": [],
+    "return_files_added": 8
+  },
+  "recorded_courts_verified": {
+    "c1_03a": {
+      "recorded": 20,
+      "source_test_functions": 20,
+      "parametrize_expansion": 0,
+      "status": "CONSISTENT"
+    },
+    "c1_02_six_file": {
+      "recorded": 109,
+      "prior_accepted_inventory": {
+        "analytical_composition": 13,
+        "analytical_composition_higher_order": 35,
+        "empirical_query": 32,
+        "discovery_exact": 14,
+        "recursive_handoff": 2,
+        "positioned_subject_possibility": 13
+      },
+      "sum": 109,
+      "status": "CONSISTENT_WITH_PRIOR_ACCEPTED_C1_02_EXECUTION_RECEIPT"
+    },
+    "adaptive_discovery": {
+      "recorded": 11,
+      "test_pre553_discovery_adaptive_defs": 8,
+      "test_pre553_discovery_adaptive_admission_defs": 3,
+      "sum": 11,
+      "status": "CONSISTENT"
+    },
+    "structural_admission": {
+      "recorded": 17,
+      "test_functions": 13,
+      "parametrized_test": "test_typed_empirical_states_preserved",
+      "parametrized_cases": 5,
+      "effective_cases": 17,
+      "status": "CONSISTENT"
+    },
+    "total_recorded": 157,
+    "arithmetic": "20 + 109 + 11 + 17 = 157",
+    "final_court_file_present": true
+  },
+  "reviewer_runtime": {
+    "fresh_tests_executed": false,
+    "reason": "The blocking counterexamples are directly established by committed signatures/invariants and by a contradictory committed AT16 test construction. Fresh execution cannot cure the missing semantic guards."
+  },
+  "governing_spec_provenance": {
+    "commission_referenced_path": "PYAT_CONTROL_ROOM/OMEGA_VOZHD_ORCHESTRATION_R1/05_C1_EXECUTION_SPEC.md",
+    "present_in_reviewed_return_tree": false,
+    "exact_blob_read_from_live_control": "f6f0e6624f87c631e3c65b9242cc2c2e7203a61b",
+    "live_control_head_observed": "26933640b75f833aae42eec71f650ec11e908a0a",
+    "note": "The reviewer commission itself independently restates the decisive AT14-AT16 burdens, so this documentary ancestry mismatch is not outcome-determinative."
+  },
+  "live_adoption_check": {
+    "c1_03a_implementation_present_on_live_control": false,
+    "adoption_inferred": false
+  },
+  "prohibited_actions": {
+    "raw_survey_access": false,
+    "c4_execution": false,
+    "at17_work": false,
+    "at18_at19_work": false,
+    "c1_r_work": false,
+    "v3_actor_person_work": false,
+    "implementation_modified_by_reviewer": false
+  }
+}
