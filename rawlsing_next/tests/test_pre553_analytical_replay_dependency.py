@@ -1272,3 +1272,36 @@ def test_hq155_at18_grade_courts_remain_green():
     for mechanism in (MECHANISM_STORED_RECEIPT_DESERIALIZATION,
                       MECHANISM_STORED_PRODUCT_DESERIALIZATION):
         assert MECHANISM_MAX_GRADE[mechanism] == REPLAY_GRADE_SERIALIZATION_REPLAY
+
+
+def test_f1_zero_release_known_dependent_is_never_served_as_current():
+    """F-1 hostile 2: the current-product resolver refuses the zero-release case.
+
+    An owner-KNOWN dependent with zero governing releases must raise the typed
+    not-governed failure, not resolve to CURRENT. This closes the resolver half of
+    F-1: the status was fail-open and the resolver faithfully served it.
+    """
+    from rawlsing_next.pre553_analytical_replay_dependency import OwnerUnknownDependent
+    from rawlsing_next.pre553_authority_maintenance import (
+        DEPENDENT_LIFECYCLE_NOT_GOVERNED,
+        SemanticDeterminantGraph,
+    )
+    from rawlsing_next.pre553_empirical_objects import exact_ref
+
+    known = exact_ref({"kind": "DERIVED@1", "object_id": "urn:t:f1-known",
+                       "content_hash": "a" * 64})
+    # Build a genuine zero-release executor over a graph that KNOWS this ref.
+    from rawlsing_next.pre553_authority_maintenance import AuthorityMaintenanceExecutor
+
+    executor = AuthorityMaintenanceExecutor(
+        determinant_graph=SemanticDeterminantGraph(
+            authority_edges=(), dependency_edges=(), known_dependent_refs=(known,))
+    )
+    assert not executor._releases
+    status = executor.dependent_lifecycle_status(known)
+    assert status["lifecycle_state"] == DEPENDENT_LIFECYCLE_NOT_GOVERNED
+    assert status["reason_code"] == "NO_GOVERNING_RELEASE"
+
+    with pytest.raises(OwnerUnknownDependent):
+        resolve_current_analytical_product(executor=executor, dependent_ref=known)
+

@@ -1360,3 +1360,146 @@ def test_hq155_rollback_normal_mixed_outcome_passes_and_laws_are_shared():
         executor=executor, dependent_ref=t["sibling_ref"])
     assert sibling["lifecycle_state"] == DEPENDENT_LIFECYCLE_CURRENT
     assert "current_replacement_ref" not in sibling
+
+
+# ==========================================================================
+# R3 F-1: zero-release currentness
+#
+# CURRENT requires a governing release and a recorded outcome. It may never be
+# inferred from known_dependent_refs membership, cache/object/evidence residency, or
+# the mere absence of a transition.
+# ==========================================================================
+def _zero_release_executor(known_refs=(("known-only", "a" * 64),)):
+    graph = SemanticDeterminantGraph(
+        authority_edges=(), dependency_edges=(),
+        known_dependent_refs=tuple(
+            ExactRef("DERIVED@1", f"urn:test:am:{tag}", digest)
+            for tag, digest in known_refs
+        ),
+    )
+    return AuthorityMaintenanceExecutor(determinant_graph=graph), graph
+
+
+def test_f1_known_dependent_with_zero_releases_is_not_governed():
+    """F-1 hostile 1: owner-known + zero releases -> NOT_GOVERNED, never CURRENT."""
+    from rawlsing_next.pre553_authority_maintenance import (
+        DEPENDENT_LIFECYCLE_CURRENT,
+        DEPENDENT_LIFECYCLE_NOT_GOVERNED,
+    )
+
+    ex, _graph = _zero_release_executor()
+    known = ExactRef("DERIVED@1", "urn:test:am:known-only", "a" * 64)
+    assert not ex._releases, "the zero-release state is the whole point"
+    status = ex.dependent_lifecycle_status(known)
+    assert status["lifecycle_state"] == DEPENDENT_LIFECYCLE_NOT_GOVERNED
+    assert status["lifecycle_state"] != DEPENDENT_LIFECYCLE_CURRENT
+    assert status["governing_release_ref"] is None
+    assert status["reason_code"] == "NO_GOVERNING_RELEASE"
+    # The ref genuinely IS in the owner's known set, so this is not the unknown case.
+    assert known.key in {r.key for r in _graph.known_dependent_refs}
+
+
+def test_f1_zero_release_status_is_distinct_from_the_owner_unknown_case():
+    """Both fail closed, but for different, auditable reasons."""
+    ex, _graph = _zero_release_executor()
+    known = ex.dependent_lifecycle_status(
+        ExactRef("DERIVED@1", "urn:test:am:known-only", "a" * 64))
+    unknown = ex.dependent_lifecycle_status(
+        ExactRef("DERIVED@1", "urn:test:am:never-registered", "f" * 64))
+    assert known["reason_code"] == "NO_GOVERNING_RELEASE"
+    assert unknown["reason_code"] == "OWNER_UNKNOWN_DEPENDENT"
+    assert known["reason_code"] != unknown["reason_code"]
+
+
+def test_f1_snapshot_cache_residency_does_not_confer_currentness():
+    """F-1 hostile 3: a known ref resident in the snapshot cache stays NOT_GOVERNED."""
+    from rawlsing_next.pre553_authority_maintenance import (
+        DEPENDENT_LIFECYCLE_NOT_GOVERNED,
+    )
+
+    ex, _graph = _zero_release_executor()
+    known = ExactRef("DERIVED@1", "urn:test:am:known-only", "a" * 64)
+    # Genuinely register an authority snapshot in the owner's own snapshot cache.
+    evidence = _evidence("cache")
+    ex.intake_evidence(evidence)
+    candidate = _candidate(evidence.ref, version="1.0.0", semantics="cache")
+    ex.intake_candidate(candidate)
+    _, _seal = _approve_and_seal(ex, candidate, "cache")
+    assert candidate.proposed_authority_ref.key in ex._snapshots
+    # The dependent is resident in a real cache and still not current.
+    status = ex.dependent_lifecycle_status(known)
+    assert status["lifecycle_state"] == DEPENDENT_LIFECYCLE_NOT_GOVERNED
+    assert status["governing_release_ref"] is None
+
+
+def test_f1_evidence_cache_residency_does_not_confer_currentness():
+    """F-1 hostile 4: a known ref resident in the evidence cache stays NOT_GOVERNED."""
+    from rawlsing_next.pre553_authority_maintenance import (
+        DEPENDENT_LIFECYCLE_NOT_GOVERNED,
+    )
+
+    ex, _graph = _zero_release_executor()
+    known = ExactRef("DERIVED@1", "urn:test:am:known-only", "a" * 64)
+    evidence = _evidence("resident")
+    ex.intake_evidence(evidence)
+    assert evidence.ref.key in ex._evidence
+    assert ex.dependent_lifecycle_status(known)[
+        "lifecycle_state"] == DEPENDENT_LIFECYCLE_NOT_GOVERNED
+
+
+def test_f1_unknown_ref_remains_not_governed():
+    """F-1 hostile 5: the accepted owner-unknown NOT_GOVERNED law is preserved."""
+    from rawlsing_next.pre553_authority_maintenance import (
+        DEPENDENT_LIFECYCLE_NOT_GOVERNED,
+    )
+
+    ex, _graph = _zero_release_executor()
+    status = ex.dependent_lifecycle_status(
+        ExactRef("DERIVED@1", "urn:test:am:never-registered", "f" * 64))
+    assert status["lifecycle_state"] == DEPENDENT_LIFECYCLE_NOT_GOVERNED
+    assert status["reason_code"] == "OWNER_UNKNOWN_DEPENDENT"
+
+
+def test_f1_after_a_real_release_the_accepted_law_is_preserved():
+    """F-1 hostiles 6, 7, 8: once a release exists, the accepted branches return."""
+    from rawlsing_next.pre553_authority_maintenance import (
+        DEPENDENT_LIFECYCLE_CURRENT,
+        DEPENDENT_LIFECYCLE_EXPLICIT_NONCURRENT,
+    )
+
+    (
+        executor, v1, _v2, _seal1, seal2, _release1,
+        affected, descendant, unaffected, *_,
+    ) = _two_revision_fixture()
+    executor.promote_current(
+        seal2.ref,
+        selection_rule_ref=_ref("SELECTION_RULE", "f1-promote-v2"),
+        selection_attestation_ref=_ref("SELECTION_ATTESTATION", "f1-promote-v2"),
+        recompiler=_recompiler([]),
+    )
+
+    # 6: known unaffected sibling stays CURRENT and identity stable.
+    sibling = executor.dependent_lifecycle_status(unaffected)
+    assert sibling["lifecycle_state"] == DEPENDENT_LIFECYCLE_CURRENT
+    assert "current_replacement_ref" not in sibling
+
+    # 7: lawful replacement is CURRENT naming the exact replacement ref.
+    replaced = executor.dependent_lifecycle_status(affected)
+    assert replaced["lifecycle_state"] == DEPENDENT_LIFECYCLE_CURRENT
+    receipt = executor.invalidation_receipt_for_release(
+        executor.current_selection_receipt_ref(v1.authority_id))
+    expected = {old.key: new for old, new in receipt.recompilation_pairs}
+    assert replaced["current_replacement_ref"] == expected[affected.key]
+
+    # 8: explicit noncurrent remains the typed noncurrent outcome.
+    executor.rollback_current(
+        v1.authority_id,
+        target_prior_release_ref=_release1.ref,
+        rollback_rule_ref=_ref("ROLLBACK_RULE", "f1-to-v1"),
+        rollback_attestation_ref=_ref("ROLLBACK_ATTESTATION", "f1-to-v1"),
+        recompiler=_recompiler([]),
+        noncurrent_outcomes={descendant.key: _noncurrent(descendant)},
+    )
+    noncurrent = executor.dependent_lifecycle_status(descendant)
+    assert noncurrent["lifecycle_state"] == DEPENDENT_LIFECYCLE_EXPLICIT_NONCURRENT
+    assert noncurrent["governing_release_ref"] is not None

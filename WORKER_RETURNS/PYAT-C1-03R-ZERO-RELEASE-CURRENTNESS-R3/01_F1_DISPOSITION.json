@@ -1,0 +1,41 @@
+{
+  "schema": "PYAT_C1_03R_R3_F1_DISPOSITION@1",
+  "finding": "F-1",
+  "rereview": "agent/reviewer-pyat-hq156-c1-03r-r2-rereview-r1 @ 08b53e8b62ce4dbd04bd47dc2798229ea7dbe0c4 (CHANGES_REQUIRED)",
+  "other_r2_blockers": "all independently APPROVED; not reopened",
+  "verdict": "CORRECTED",
+  "reproduced_before_repair": {
+    "known_dependent_zero_releases": {
+      "lifecycle_state": "CURRENT",
+      "governing_release_ref": null,
+      "reason": "this dependent is registered with the owner and no governed transition has affected it"
+    },
+    "current_product_resolver": "served the same ref as a CURRENT analytical product",
+    "unaffected_control": "an owner-UNKNOWN ref correctly returned NOT_GOVERNED"
+  },
+  "reviewer_structural_fact_confirmed": {
+    "claim": "after any real release A union U = K, so every owner-known dependent is covered by the release and takes an affected/replacement/noncurrent/unaffected branch",
+    "consequence": "the known + latest-is-None -> CURRENT branch is reachable only in the zero-release state, exactly where no governing release has established currentness",
+    "independently_verified": true,
+    "verification_note": "dependent_lifecycle_status selects the latest release whose receipt mentions the ref; the owner computes affected and unaffected over the same declared graph grain, so a known ref is always covered once any release exists."
+  },
+  "correction": [
+    "The known + no-governing-release branch now returns the typed NOT_GOVERNED state instead of CURRENT.",
+    "reason_code is NO_GOVERNING_RELEASE, distinct from the preserved OWNER_UNKNOWN_DEPENDENT code, so the two fail-closed cases stay auditable.",
+    "The governing_release_ref stays None; nothing is fabricated.",
+    "The approval-law docstring was corrected: the old text explicitly listed 'known but never transitioned -> CURRENT', which was the defect stated as law."
+  ],
+  "currentness_is_not_inferred_from": [
+    "membership in known_dependent_refs",
+    "cache/object/evidence residency",
+    "absence of a transition"
+  ],
+  "accepted_law_after_a_release_preserved": {
+    "explicit_noncurrent": "typed noncurrent refusal",
+    "replacement": "CURRENT naming the exact replacement ref",
+    "unaffected": "CURRENT identity stable",
+    "owner_unknown": "typed NOT_GOVERNED (OWNER_UNKNOWN_DEPENDENT)"
+  },
+  "boundered_gap": false,
+  "architecture_warrant": false
+}

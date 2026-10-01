@@ -1716,16 +1716,18 @@ class AuthorityMaintenanceExecutor:
         * known explicit noncurrent -> typed noncurrent refusal;
         * known replacement          -> CURRENT, naming the exact replacement;
         * known unaffected           -> CURRENT, identity stable;
-        * known but never transitioned -> CURRENT (the owner knows it and nothing
-          governed it);
+        * known, no governing release-> ``NOT_GOVERNED`` (fail closed);
         * **owner-unknown**          -> ``NOT_GOVERNED``, never ``CURRENT``.
 
-        The owner-unknown case is the fail-closed one. A ref absent from the
-        determinant graph's ``known_dependent_refs`` is not a dependent this owner
-        governs, so it cannot be reported as current on the strength of there being
-        no recorded transition. That inference was the defect: it turned every
-        unknown ref into a positive claim, and it did so regardless of whether the
-        ref was cached, resident, or wholly unknown.
+        Both fail-closed cases matter. CURRENT requires a governing release/outcome:
+        it may never be inferred from membership in ``known_dependent_refs``, from
+        cache/object/evidence residency, or from the mere absence of a transition.
+
+        After any real release the owner computes ``A`` and ``U`` over the same graph
+        grain, so ``A`` and ``U`` cover every known dependent. A known dependent with
+        no covering release is therefore reachable only in the zero-release state --
+        exactly where no release has established currentness -- so it is
+        ``NOT_GOVERNED`` rather than CURRENT.
         """
         ref = exact_ref(dependent_ref)
         # Releases are recorded in transition order, so the last governing release that
@@ -1761,13 +1763,16 @@ class AuthorityMaintenanceExecutor:
                 }
             return {
                 "dependent_ref": ref,
-                "lifecycle_state": DEPENDENT_LIFECYCLE_CURRENT,
+                "lifecycle_state": DEPENDENT_LIFECYCLE_NOT_GOVERNED,
                 "reason": (
-                    "this dependent is registered with the owner and no governed "
-                    "transition has affected it"
+                    "this dependent is registered with the owner, but no governing "
+                    "release has established currentness for it. CURRENT requires a "
+                    "governing release and recorded outcome; it is never inferred from "
+                    "membership in known_dependent_refs, from cache/object/evidence "
+                    "residency, or from the absence of a transition"
                 ),
                 "disposition": None,
-                "reason_code": None,
+                "reason_code": "NO_GOVERNING_RELEASE",
                 "supporting_refs": (),
                 "governing_release_ref": None,
             }
