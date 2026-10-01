@@ -1,0 +1,85 @@
+{
+  "schema": "PYAT_C1_03R_ASTRA_A_COUNTEREXAMPLES_OR_ACCEPTANCE@1",
+  "disposition": "CHANGES_REQUIRED",
+  "counterexamples": [
+    {
+      "id": "C1-03R-A-RVW-001",
+      "severity": "BLOCKING",
+      "area": "owner outcome law",
+      "title": "Duplicate positive replacement rows silently collapse",
+      "code_surface": "AuthorityInvalidationReceipt.__post_init__",
+      "construction": {
+        "affected": [
+          "A"
+        ],
+        "recompilation_pairs": [
+          [
+            "A",
+            "NEW_1"
+          ],
+          [
+            "A",
+            "NEW_2"
+          ]
+        ],
+        "noncurrent": []
+      },
+      "observed_by_source": "pairs[old.key] = (old,new) overwrites prior pair and no duplicate-pair length check exists",
+      "required_behavior": "Reject duplicate affected outcomes before canonicalization",
+      "existing_test_gap": "test_g_duplicate_affected_outcome_is_refused tests duplicate noncurrent rows only"
+    },
+    {
+      "id": "C1-03R-A-RVW-002",
+      "severity": "BLOCKING",
+      "area": "serialization/checkpoint integrity",
+      "title": "Forbidden noncurrent replacement_ref and receipt schema are ignored on deserialize",
+      "code_surfaces": [
+        "NoncurrentDependentOutcome.from_dict",
+        "AuthorityInvalidationReceipt.from_dict",
+        "_validate_embedded_record_ref"
+      ],
+      "constructions": [
+        "Serialize a valid NoncurrentDependentOutcome, replace replacement_ref:null with an arbitrary exact ref, retain canonical record_ref; from_dict discards forged value and reconstructs null.",
+        "Delete replacement_ref entirely; from_dict synthesizes null.",
+        "For a negative AuthorityInvalidationReceipt, delete or forge receipt_schema; from_dict never inspects it."
+      ],
+      "why_record_ref_check_does_not_save_it": "The ignored fields are discarded before deterministic ref reconstruction, so the reconstructed canonical ref can still equal the supplied record_ref.",
+      "required_behavior": "Require explicit null replacement_ref and exact negative schema; reject malformed legacy/new-schema mixing."
+    },
+    {
+      "id": "C1-03R-A-RVW-003",
+      "severity": "BLOCKING",
+      "area": "currentness visibility",
+      "title": "Owner-unknown dependent ref is reported CURRENT",
+      "code_surface": "AuthorityMaintenanceExecutor.dependent_lifecycle_status",
+      "construction": "Call dependent_lifecycle_status() or resolve_current_analytical_product() with an exact ref absent from determinant_graph.known_dependent_refs.",
+      "observed_by_source": "If no release touches the ref, the method unconditionally returns lifecycle_state=CURRENT without a known-dependent membership check.",
+      "required_behavior": "Return/refuse a typed owner-unknown state; never grant CURRENT to an unregistered dependent."
+    },
+    {
+      "id": "C1-03R-A-RVW-004",
+      "severity": "BLOCKING",
+      "area": "checkpoint graph replay",
+      "title": "Restore path re-proves A but trusts serialized U",
+      "code_surface": "AuthorityMaintenanceExecutor.from_checkpoint",
+      "construction": "Provide a self-consistently rehashed checkpoint whose invalidation affected set matches graph.affected(changed) but whose unaffected set omits a graph-known sibling; update dependent receipt/release/event identities consistently.",
+      "observed_by_source": "Replay compares expected_affected only. No graph.unaffected(expected_affected) equality check exists.",
+      "required_behavior": "Recompute and require exact unaffected set equality so A and U are disjoint and cover K during restore."
+    }
+  ],
+  "accepted_findings": [
+    "Single generic noncurrent disposition and non-empty grounds on direct construction",
+    "No automatic error-to-noncurrent conversion on normal owner transition path",
+    "Positive-only receipt semantic projection retains historical field set",
+    "AuthorityCandidate identity implementation unchanged",
+    "Promotion/rollback share _recompile and normal-path state mutation occurs after validation",
+    "Sealed-successor defect repaired at declared single-authority transition grain",
+    "Decoy and sealed successor materially distinct; model-rule hash binds sealed successor",
+    "Mixed AT19 witness has replacement + explicit noncurrent + unaffected sibling in one release",
+    "Omitted cross-owner edge is detected by an independent recomposition witness",
+    "AT18 replay grades remain distinct; owner checkpoint replay not mislabeled as fresh analytical recomputation",
+    "Replay-audit and analytical-composition production owners unchanged"
+  ],
+  "architecture_warrant": false,
+  "repair_grain": "NARROW_GENERIC_OWNER_FAIL_CLOSED_REPAIR"
+}
