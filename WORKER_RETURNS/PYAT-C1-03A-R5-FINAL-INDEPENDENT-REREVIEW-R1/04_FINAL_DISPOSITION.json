@@ -1,0 +1,39 @@
+{
+  "schema": "PYAT_C1_03A_R5_FINAL_INDEPENDENT_REREVIEW_FINAL_DISPOSITION@1",
+  "status": "FINAL",
+  "disposition": "CHANGES_REQUIRED",
+  "terminal": "C1_03A_R5_FINAL_INDEPENDENT_REREVIEW_RETURNED__HQ_ADJUDICATION_REQUIRED",
+  "blocker": {
+    "id": "C1-03A-R5-FINAL-REVIEW-BLOCK-REFUSAL-CLASS-001",
+    "summary": "capture_empirical_integrity_refusal catches the Pre553IntegrityError family rather than exact Pre553IntegrityError. A caller-controlled stateful nested Mapping can behave normally during the pre-try invocation-binding canonicalization, then raise the canonical Pre553SemanticCollapseError during RespondentEvent construction; the family catch mints an EMPIRICAL_INTEGRITY_REFUSAL witness and projects it to INTEGRITY_FAILURE."
+  },
+  "accepted_and_not_reopened": {
+    "exact_governed_RespondentEvent_provenance": true,
+    "truthful_RespondentEvent_owner_attribution": true,
+    "arbitrary_canonical_family_substitution_closed": true,
+    "governed_object_subclass_substitution_closed": true,
+    "bare_exception_minting_closed": true,
+    "owner_acceptance_no_witness": true,
+    "discovery_refusal_authenticity": true,
+    "G5": true,
+    "AT15": true,
+    "AT16": true,
+    "exact_owner_gates_elsewhere": true,
+    "adaptive_provenance": true,
+    "recursive_custody": true,
+    "eight_state_distinction": true,
+    "adaptive_unvisited": true,
+    "final_sha_factory_callability": true,
+    "C1_02_untouched": true
+  },
+  "required_next_action": [
+    "Preserve the R5 exact repository/release/object/family binding and truthful RespondentEvent owner label.",
+    "At the capture boundary, refuse every Pre553IntegrityError subclass; witness only an exception whose exact type is Pre553IntegrityError, or implement an equivalent finite exact-class boundary.",
+    "Add a hostile in which an official subclass such as Pre553SemanticCollapseError is reached during the actual RespondentEvent constructor invocation and prove it cannot mint INTEGRITY_FAILURE.",
+    "Rerun the same ten-file C1-03A court and rereview only the refusal-class correction plus preservation."
+  ],
+  "implementation_change_required": true,
+  "architecture_warrant": false,
+  "typed_residual": false,
+  "c1_03_join_authorized": false
+}
