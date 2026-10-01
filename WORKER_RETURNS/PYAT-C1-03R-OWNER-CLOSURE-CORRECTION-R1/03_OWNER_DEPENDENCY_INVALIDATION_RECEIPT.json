@@ -1,0 +1,80 @@
+{
+  "schema": "PYAT_C1_03R_OWNER_DEPENDENCY_INVALIDATION_RECEIPT@1",
+  "status": "PARTIAL__OWNER_GAP_ON_NO_LAWFUL_REPLACEMENT",
+  "acceptance_case": "AT19",
+  "adapter_owner": "rawlsing_next/pre553_analytical_replay_dependency.py",
+  "lifecycle_owner": "rawlsing_next/pre553_authority_maintenance.py",
+  "lifecycle_performed_by": "AuthorityMaintenanceExecutor.promote_current",
+  "adapter_no_longer_owns_the_lifecycle": {
+    "computes_affected_sets": false,
+    "invokes_recompilers_on_its_own_initiative": false,
+    "constructs_AuthorityInvalidationReceipt": false,
+    "reproduces__recompile_semantics": false,
+    "delegates_to": [
+      "AuthorityMaintenanceExecutor.promote_current",
+      "AuthorityMaintenanceExecutor.invalidation_receipt_for_release"
+    ]
+  },
+  "lawful_dependency_graph": {
+    "registration_law": "A product binds only determinants it actually consumed. A future/revised authority is never pre-registered.",
+    "edges": [
+      {
+        "authority": {"authority_id": "C1-AT07-MODEL-FORWARD", "authority_version": "1.0.0", "authority_content_hash_prefix": "4d565f1b40adb2bd"},
+        "dependent": "C1_ANALYTICAL_COMPOSED_PRODUCT@1 urn:test:c1-03r:composed:forward"
+      },
+      {
+        "authority": {"authority_id": "C1-AT07-MODEL-REVERSE", "authority_version": "1.0.0", "authority_content_hash_prefix": "4d565f1b40adb2bd"},
+        "dependent": "C1_ANALYTICAL_COMPOSED_PRODUCT@1 urn:test:c1-03r:composed:reverse"
+      }
+    ],
+    "future_revised_authority_pre_bound": false,
+    "successor_resolution": "by authority identity (authority_id + authority_version) matched against the affected product's own consumed determinants; never by tuple position"
+  },
+  "owner_closure_decision_on_the_lawful_graph": {
+    "changed_authority_refs": [
+      {"authority_id": "C1-AT07-MODEL-FORWARD", "authority_version": "1.0.0"},
+      {"authority_id": "C1-AT07-MODEL-FORWARD", "authority_version": "2.0.0"}
+    ],
+    "affected_dependent_refs": ["urn:test:c1-03r:composed:forward"],
+    "unaffected_dependent_refs": ["urn:test:c1-03r:composed:reverse"],
+    "affected_and_unaffected_disjoint": true,
+    "reachability_from_consumed_determinant_only": true
+  },
+  "unaffected_sibling": {
+    "product_ref_hash": "9772dfcf77dec1b60d2915b0e2ef9aadb86b975297ac66487edacaaf855d984d",
+    "identity_stable": true,
+    "consumer_result_state": "EXACT_SUPPORTED",
+    "reached_by_the_forward_revision": false
+  },
+  "owner_gap": {
+    "id": "C1-03R-HQ-BLOCK-NONCURRENT-INVENTION-003",
+    "classification": "EXISTING_LIFECYCLE_OWNER_CHANGE_REQUIRED",
+    "statement": "AuthorityInvalidationReceipt requires recompilation_pairs to cover exactly the affected dependent set, and AuthorityMaintenanceExecutor._recompile requires every affected dependent to move to a NEW exact ref. An affected product with no lawful replacement has no lawful representation.",
+    "invented_vocabulary_removed": ["C1_03R_NONCURRENT_PRODUCT", "NO_CURRENT sentinel"],
+    "adapter_behaviour": "raises NoLawfulReplacementRepresentable (NO_LAWFUL_REPLACEMENT_REPRESENTABLE) and fabricates nothing",
+    "counterexample_executed": true,
+    "counterexample_tests": [
+      "test_at19_no_lawful_replacement_raises_typed_owner_gap_and_invents_nothing",
+      "test_at19_owner_contract_cannot_represent_no_replacement"
+    ],
+    "counterexample_paths": [
+      "promote_current(recompiler=None) -> 'affected dependents require an explicit deterministic recompiler'",
+      "promote_current(recompiler=identity) -> 'affected dependent recompilation must produce a new exact ref'"
+    ]
+  },
+  "documents_what_would_close_the_gap": [
+    "A lawful representation for an affected dependent whose replacement is unavailable (for example an explicit typed noncurrent/deferred state in the owner receipt vocabulary), OR",
+    "an owner transition that can lawfully express 'affected but not replaceable' without requiring a fabricated replacement exact ref."
+  ],
+  "not_claimed": [
+    "no second lifecycle owner was built",
+    "no noncurrent vocabulary was invented",
+    "no multi-conditioner or joint dependency closure",
+    "no authority broadening"
+  ],
+  "limitations": [
+    "The transition is exercised at the AT07 single-conditioner analytical grain.",
+    "The owner's promotion ceremony is driven through its public API with a synthetic governed authority snapshot derived from the frozen C1-00 synthetic authority freeze.",
+    "Source-free synthetic fixture; not live occupancy."
+  ]
+}

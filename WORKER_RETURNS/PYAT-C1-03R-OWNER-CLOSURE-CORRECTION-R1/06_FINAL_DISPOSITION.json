@@ -1,0 +1,88 @@
+{
+  "schema": "PYAT_C1_03R_OWNER_CLOSURE_FINAL_DISPOSITION@1",
+  "status": "FINAL",
+  "disposition": "EXISTING_LIFECYCLE_OWNER_CHANGE_REQUIRED",
+  "disposition_is_allowed_value": true,
+  "terminal_token": "C1_03R_OWNER_CLOSURE_CORRECTION_RETURNED__HQ_ADJUDICATION_REQUIRED",
+  "branch": "agent/deepseek-pyat-hq149-c1-03r-owner-closure-correction-r1",
+  "commission_tip": "f3a4e8e8a85967a9a0571f48c9aaf61fa3bbb391",
+  "defective_return_base": "1c2c0e4ba7f0f9a273b0387a887ed74871e981e9",
+  "adoption": {
+    "branch_local_pass_is_adoption": false,
+    "merged": false,
+    "self_adopted": false
+  },
+  "why_this_disposition": {
+    "question": "Can the present lifecycle owner lawfully express AT19 without inventing authority or changing accepted owner semantics?",
+    "answer": "NOT_FULLY",
+    "lawful_part": "The main analytical dependency transition IS lawfully expressible. Registering only consumed determinants, the owner's promote_current changed-authority set already contains the prior and the successor revision, so the real dependency is reached from the consumed-determinant edge with NO future pre-binding. That is a substantive correction to the prior understanding: pre-binding the future authority was never necessary.",
+    "gap_part": "An affected dependent with NO lawful replacement is NOT lawfully expressible. AuthorityInvalidationReceipt requires recompilation_pairs to cover exactly the affected dependent set, and _recompile requires every affected dependent to move to a NEW exact ref. The honest answer has no representation: the owner either refuses, or demands a fabricated ref.",
+    "therefore": "Per the correction commission, the exact owner gap is returned rather than patched around, and no noncurrent vocabulary was invented."
+  },
+  "blocker_summary": {
+    "C1-03R-HQ-BLOCK-LIFECYCLE-OWNER-001": "CORRECTED — the adapter delegates to AuthorityMaintenanceExecutor.promote_current and no longer performs its own lifecycle",
+    "C1-03R-HQ-BLOCK-FUTURE-DETERMINANT-EDGE-002": "CORRECTED — only consumed determinants are registered; the revision enters solely through the governed transition; no tuple-position guessing",
+    "C1-03R-HQ-BLOCK-NONCURRENT-INVENTION-003": "OWNER_GAP_CONFIRMED — invented noncurrent vocabulary removed; typed gap returned with an executable counterexample",
+    "C1-03R-HQ-BLOCK-RETAINED-ANSWER-004": "CORRECTED — runner input carries only retained determinants; the oracle is separate and court-side",
+    "C1-03R-HQ-DOC-COUNT-005": "CORRECTED — this packet records one internally consistent final run"
+  },
+  "owner_change_required": {
+    "owner": "rawlsing_next/pre553_authority_maintenance.py",
+    "owner_modified_by_this_lane": false,
+    "smallest_counterexample": [
+      "AuthorityMaintenanceExecutor.promote_current(seal, ..., recompiler=None) with an affected dependent -> AuthorityMaintenanceError('affected dependents require an explicit deterministic recompiler')",
+      "AuthorityMaintenanceExecutor.promote_current(seal, ..., recompiler=<identity>) with an affected dependent -> AuthorityMaintenanceError('affected dependent recompilation must produce a new exact ref')"
+    ],
+    "what_is_needed": "A lawful owner-level representation for an affected dependent whose replacement is unavailable (for example an explicit typed noncurrent/deferred state in AuthorityInvalidationReceipt), so that an honest 'no replacement' answer does not require a fabricated replacement exact ref.",
+    "scope_statement": "This is a narrow receipt/transition representation gap. It does NOT affect the owner's ability to reach real dependencies from consumed determinant edges."
+  },
+  "final_test_counts": {
+    "command": "python -m pytest rawlsing_next/tests/test_pre553_analytical_replay_dependency.py rawlsing_next/tests/test_pre553_authority_maintenance.py rawlsing_next/tests/test_pre553_replay_audit.py rawlsing_next/tests/test_pre553_analytical_composition.py -v",
+    "passed": 109,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "duration_seconds": 17.18,
+    "by_file": {
+      "rawlsing_next/tests/test_pre553_analytical_replay_dependency.py": 21,
+      "rawlsing_next/tests/test_pre553_authority_maintenance.py": 21,
+      "rawlsing_next/tests/test_pre553_replay_audit.py": 54,
+      "rawlsing_next/tests/test_pre553_analytical_composition.py": 13
+    }
+  },
+  "changed_files": [
+    "rawlsing_next/pre553_analytical_replay_dependency.py",
+    "rawlsing_next/tests/test_pre553_analytical_replay_dependency.py",
+    "rawlsing_next/tests/c1_at18_at19_fixture.py",
+    "rawlsing_next/tests/c1_at18_at19_fresh_process_runner.py",
+    "WORKER_RETURNS/PYAT-C1-03R-OWNER-CLOSURE-CORRECTION-R1/00_RETURN.md",
+    "WORKER_RETURNS/PYAT-C1-03R-OWNER-CLOSURE-CORRECTION-R1/01_HQ_BLOCKER_DISPOSITION.json",
+    "WORKER_RETURNS/PYAT-C1-03R-OWNER-CLOSURE-CORRECTION-R1/02_REPLAY_GRADE_AND_FRESH_PROCESS_RECEIPT.json",
+    "WORKER_RETURNS/PYAT-C1-03R-OWNER-CLOSURE-CORRECTION-R1/03_OWNER_DEPENDENCY_INVALIDATION_RECEIPT.json",
+    "WORKER_RETURNS/PYAT-C1-03R-OWNER-CLOSURE-CORRECTION-R1/04_MISSING_EDGE_HOSTILE.json",
+    "WORKER_RETURNS/PYAT-C1-03R-OWNER-CLOSURE-CORRECTION-R1/05_EXECUTION_RECEIPT.json",
+    "WORKER_RETURNS/PYAT-C1-03R-OWNER-CLOSURE-CORRECTION-R1/06_FINAL_DISPOSITION.json",
+    "WORKER_RETURNS/PYAT-C1-03R-OWNER-CLOSURE-CORRECTION-R1/07_FINAL_PYTEST_OUTPUT.txt"
+  ],
+  "authority_ceiling": {
+    "second_lifecycle_owner_built": false,
+    "noncurrent_vocabulary_invented": false,
+    "new_semantic_or_model_authority": false,
+    "latest_or_default_authority_selection": false,
+    "similarity_inferred_dependencies": false,
+    "owners_modified": false,
+    "at33_claimed": false,
+    "real_source_qualification_claimed": false,
+    "structural_world_claimed": false,
+    "v3_actor_person_implemented": false
+  },
+  "limitations": [
+    "Source-free synthetic fixture: a source-free fixture result cannot establish live occupancy.",
+    "The fresh-process replay runs on the same host interpreter; not a cross-machine or cross-version replay proof.",
+    "The transition is exercised at the AT07 single-conditioner analytical grain; multi-conditioner or joint dependency closure is not claimed.",
+    "The AT19 transition proof is at the owner-graph level: the owner's closure decision is asserted over the lawful consumed-determinant graph, because the accepted AuthorityCandidate mints its own authority content hash from candidate material rather than from the analytical model law, so a sealed synthetic revision does not carry a distinct analytical law identity in this fixture. This fixture limitation is itself an instance of the returned owner gap and is disclosed rather than papered over.",
+    "A branch-local result is not adoption."
+  ],
+  "blocker": "EXISTING_LIFECYCLE_OWNER_CHANGE_REQUIRED: the accepted lifecycle owner cannot lawfully represent an affected analytical dependent whose replacement is unavailable without fabricating a replacement exact ref.",
+  "next": "HQ adjudication of the returned owner gap, and a decision on whether to extend AuthorityInvalidationReceipt with a lawful noncurrent/deferred representation for unreplaceable affected dependents."
+}

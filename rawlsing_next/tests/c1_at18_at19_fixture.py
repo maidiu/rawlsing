@@ -17,6 +17,7 @@ from contextlib import contextmanager
 from pathlib import Path
 from typing import Any
 
+from rawlsing_next.pre553_authority_maintenance import SemanticDeterminantGraph
 from rawlsing_next.pre553_empirical_authority import AuthorityRegistry
 from rawlsing_next.pre553_empirical_objects import (
     AuthoritySnapshot,
@@ -47,6 +48,10 @@ R3_AUTHORITY = R3 / "02_OWNER_NATIVE_AUTHORITY_SCOPE_FREEZE.json"
 R8_SPINE = R8 / "04_CURRENT_AT07_IDENTITY_SPINE.json"
 
 #: Independently derived expected truth for the canonical forward grain.
+#: An authority kind the accepted maintenance owner recognizes. The analytical model
+#: authority is carried under it; the adapter invents no new authority kind.
+MODEL_AUTHORITY_KIND = "SOURCE_SEMANTICS_TOPOLOGY"
+
 FROZEN_AT07_FORWARD = {
     "denominator": 60,
     "cells": {"yes": 54, "no": 6},
@@ -357,23 +362,63 @@ def build_witness(
     )
 
 
-def direction_model_authority(direction: str) -> Any:
-    """A distinct exact model authority per analytical direction.
+def model_authority_snapshot(direction: str) -> AuthoritySnapshot:
+    """The direction-scoped consumer model authority as a proper governed snapshot.
 
-    Direction-scoping the model authority means a single determinant mutation reaches
-    exactly one registered product and leaves a genuine unaffected sibling.
+    The model authority is a first-class authority in its own right, so it is defined as
+    an exact AuthoritySnapshot rather than an opaque ref. Its ``authority_ref`` is then a
+    genuinely governed identity the accepted lifecycle owner can lawfully bind.
     """
 
-    from rawlsing_next.pre553_empirical_objects import AuthorityRef
-
-    entry = _authority_entry("FIXTURE_ONLY_POSITIONED_SUBJECT_MODEL")
-    base = dict(entry["expected_authority_ref"])
-    material = {"fixture_only": True, "direction": direction, "base_authority": base}
-    return AuthorityRef(
-        authority_id=f"{base['authority_id']}-{direction.upper()}",
-        authority_version=base["authority_version"],
-        authority_content_hash=semantic_hash(material),
+    base = _snapshot("PRE553_AUTHORITY_SNAPSHOT::SOURCE_SEMANTICS_TOPOLOGY")
+    material = dict(base.semantic_fields)
+    material["authority_content_hash"] = base.authority_content_hash
+    material["typed_state"] = "ALLOW"
+    material["decision_state"] = "ALLOW"
+    material["authority_id"] = f"C1-AT07-MODEL-{direction.upper()}"
+    material["authority_version"] = "1.0.0"
+    material["authority_kind"] = MODEL_AUTHORITY_KIND
+    material["governed_operations"] = ("MODEL_LAW",)
+    material["governed_object_families"] = ("ReplayReceipt@1.0.0",)
+    material["parent_authority_refs"] = ()
+    material["supersession_refs"] = ()
+    material["producer_replay_locator_or_reference_root"] = (
+        base.producer_replay_locator_or_reference_root
     )
+    material["authority_snapshot_refs"] = tuple(base.authority_snapshot_refs)
+    material["dependency_refs"] = tuple(base.dependency_refs)
+    return AuthoritySnapshot(**material)
+
+
+def direction_model_authority(direction: str) -> Any:
+    """The exact governed model authority ref for a direction."""
+
+    return model_authority_snapshot(direction).authority_ref
+
+
+def revised_model_authority_snapshot(direction: str) -> AuthoritySnapshot:
+    """A distinct governed revision of the direction's model authority."""
+
+    base = model_authority_snapshot(direction)
+    material = dict(base.semantic_fields)
+    material["authority_content_hash"] = base.authority_content_hash
+    material["typed_state"] = base.typed_state
+    material["producer_replay_locator_or_reference_root"] = (
+        base.producer_replay_locator_or_reference_root
+    )
+    material["authority_snapshot_refs"] = tuple(base.authority_snapshot_refs)
+    material["dependency_refs"] = tuple(base.dependency_refs)
+    material["authority_version"] = "2.0.0"
+    material["parent_authority_refs"] = (base.authority_ref,)
+    material["supersession_refs"] = (base.authority_ref,)
+    material["interpretation_semantics_fingerprint"] = semantic_hash(
+        {"revised": direction, "generation": 2}
+    )
+    return AuthoritySnapshot(**material)
+
+
+def revised_model_authority(direction: str) -> Any:
+    return revised_model_authority_snapshot(direction).authority_ref
 
 
 def build_model_rule(
@@ -453,18 +498,17 @@ def deterministic_order_ref(case: dict[str, Any]) -> ExactRef:
 
 
 def retained_determinants(case: dict[str, Any]) -> dict[str, Any]:
-    """Exact retained determinants a fresh process needs to recompute the product.
+    """HQ-BLOCK-RETAINED-ANSWER-004: runner *input* carries only retained determinants.
 
-    This is deliberately an *exact-ref* descriptor, not a stored output: it names the
-    inputs and the expected authority/output identities, and carries no precomputed
-    evidence or geometry.
+    This describes exactly the inputs needed to reconstruct and re-execute the accepted
+    producer/composition path. It deliberately contains **no** expected output, no
+    result/evidence/fact ref, no denominator support and no geometry, so a fresh process
+    reading it cannot obtain the answer.
     """
 
-    composition = compose(case)
     return {
-        "schema": "C1_03R_RETAINED_ANALYTICAL_DETERMINANTS@1",
+        "schema": "C1_03R_RETAINED_DETERMINANTS_INPUT@2",
         "direction": case["direction"],
-        "producer_route": composition.producer_route,
         "empirical_query_ref": case["empirical_query"].ref.as_dict(),
         "predicate_ref": case["predicate"].ref.as_dict(),
         "predicate_hash": case["predicate"].predicate_hash,
@@ -480,6 +524,19 @@ def retained_determinants(case: dict[str, Any]) -> dict[str, Any]:
             x.empirical_coordinate_ref.as_dict()
             for x in case["consumer_query"].conditioner_bindings
         ],
+    }
+
+
+def oracle_expected_output(case: dict[str, Any]) -> dict[str, Any]:
+    """The *oracle* side: expected output identity and support.
+
+    This is asserted by the parent court and is never handed to the fresh runner.
+    """
+
+    composition = compose(case)
+    return {
+        "schema": "C1_03R_AT18_EXPECTED_OUTPUT_ORACLE@1",
+        "direction": case["direction"],
         "expected_output_identity": {
             "composed_result_identity_hash": composition.composed_result_identity_hash,
             "producer_fact_ref": composition.producer_fact_ref.as_dict(),
@@ -494,8 +551,230 @@ def retained_determinants(case: dict[str, Any]) -> dict[str, Any]:
                 else composition.consumer_result_or_null.result_hash
             ),
             "raw_denominator_support": composition.raw_denominator_support,
+            "cell_numerators": {
+                cell["cell"]: cell["raw_numerator_support"]
+                for cell in composition.complete_cell_geometry
+            },
         },
     }
+
+
+# --------------------------------------------------------------------------
+# AT19 owner-ceremony helpers (accepted lifecycle owner drives the transition)
+# --------------------------------------------------------------------------
+def _model_candidate(
+    model_authority: Any,
+    *,
+    version: str,
+    evidence_ref: ExactRef,
+    parent: Any = None,
+    supersession: Any = None,
+    semantics: str,
+) -> Any:
+    from rawlsing_next.pre553_authority_maintenance import AuthorityCandidate
+
+    return AuthorityCandidate(
+        candidate_id=f"CAND-{model_authority.authority_id}-{version}-{semantics}",
+        candidate_revision=1,
+        authority_id=model_authority.authority_id,
+        authority_version=version,
+        authority_kind=MODEL_AUTHORITY_KIND,
+        proposed_decision_state="ALLOW",
+        governed_operations=("MODEL_LAW",),
+        governed_object_families=("ReplayReceipt@1.0.0",),
+        scope_envelope={
+            "source_universe_refs": (),
+            "target_use_refs": ("ANALYTICAL_PRODUCT",),
+        },
+        effective_time_or_interval="ALL_TIME",
+        evidence_receipt_refs=(evidence_ref,),
+        proposed_parent_authority_refs=parent or (),
+        proposed_negative_limit_refs=(),
+        proposed_supersession_refs=supersession or (),
+        interpretation_semantics={"model_law": semantics},
+        replay_protocol_ref=_ref_for("REPLAY_PROTOCOL", f"model-{semantics}"),
+        correction_kind="NONE",
+        correction_target_refs=(),
+        correction_scope_ref=None,
+        source_onboarding_refs=(),
+    )
+
+
+def _ref_for(kind: str, tag: str) -> ExactRef:
+    return ExactRef(kind, f"urn:test:hq149:{kind.lower()}:{tag}", semantic_hash(f"hq149:{kind}:{tag}"))
+
+
+def build_model_authority_transition(direction: str):
+    """Drive a governed revision of a direction's model authority through the owner.
+
+    The accepted owner's exact semantics are used:
+
+    * the *baseline* selection is supplied as ``initial_current_selection`` (it is an
+      already-accepted current authority, so no promotion ceremony is needed for it);
+    * one governed *revision* is then produced through candidate -> APPROVED
+      adjudication -> seal -> ``promote_current``, which is the owner's own transition.
+
+    The determinant graph contains ONLY the authority the analytical product actually
+    consumed. The revision enters solely through the promotion transition.
+    """
+
+    from rawlsing_next.pre553_authority_maintenance import (
+        AuthorityEvidenceReceipt,
+        AuthorityMaintenanceExecutor,
+    )
+
+    case = build_case(direction)
+    composition = compose(case)
+    old_model = case["model_rule"].model_authority_ref
+    product_ref = ExactRef(
+        "C1_ANALYTICAL_COMPOSED_PRODUCT@1",
+        f"urn:test:c1-03r:composed:{direction}",
+        composition.composed_result_identity_hash,
+    )
+
+    # The graph contains exactly the determinants the products actually consumed.
+    # The sibling product is bound to its own (different) model authority identity.
+    sibling_case = build_case("reverse") if direction == "forward" else build_case("forward")
+    sibling_direction = "reverse" if direction == "forward" else "forward"
+    sibling_ref = ExactRef(
+        "C1_ANALYTICAL_COMPOSED_PRODUCT@1",
+        f"urn:test:c1-03r:composed:{sibling_direction}",
+        compose(sibling_case).composed_result_identity_hash,
+    )
+    sibling_authority = direction_model_authority(sibling_direction)
+    graph = SemanticDeterminantGraph(
+        authority_edges=((old_model, product_ref), (sibling_authority, sibling_ref)),
+        dependency_edges=(),
+        known_dependent_refs=(product_ref, sibling_ref),
+    )
+    executor = AuthorityMaintenanceExecutor(
+        initial_snapshots=(model_authority_snapshot(direction),),
+        initial_current_selection={old_model.authority_id: old_model},
+        determinant_graph=graph,
+    )
+    evidence = AuthorityEvidenceReceipt(
+        evidence_role="SEMANTIC_AUTHORITY_EVIDENCE",
+        evidence_refs=(_ref_for("EVIDENCE", f"{direction}-model"),),
+        provenance_refs=(_ref_for("PROVENANCE", f"{direction}-model"),),
+        source_release_refs=(),
+    )
+    executor.intake_evidence(evidence)
+
+    revised_model = revised_model_authority(direction)
+    revision = _model_candidate(
+        revised_model,
+        version="2.0.0",
+        evidence_ref=evidence.ref,
+        parent=(old_model,),
+        supersession=(old_model,),
+        semantics=f"{direction}-v2",
+    )
+    executor.intake_candidate(revision)
+    adjudication = executor.adjudicate_candidate(
+        revision.ref,
+        decision="APPROVED",
+        adjudicator_ref=_ref_for("ADJUDICATOR", f"{direction}-v2"),
+        adjudication_authority_ref=_ref_for("GOVERNING_AUTHORITY", "HQ149"),
+        findings_ref=_ref_for("FINDINGS", f"{direction}-v2"),
+    )
+    seal = executor.seal_revision(
+        revision.ref,
+        adjudication.ref,
+        seal_attestation_ref=_ref_for("SEAL_ATTESTATION", f"{direction}-v2"),
+    )
+    return {
+        "direction": direction,
+        "case": case,
+        "composition": composition,
+        "product_ref": product_ref,
+        "executor": executor,
+        "old_model": old_model,
+        "revised_model": revised_model,
+        "revised_model_snapshot_ref": revision.proposed_authority_ref,
+        "seal_ref": seal.ref,
+        "product_ref_key": product_ref.key,
+        "sibling_ref": sibling_ref,
+        "sibling_authority": sibling_authority,
+        "sibling_direction": sibling_direction,
+    }
+
+
+def recompose_product_under_model_authority(direction: str):
+    """A real recomposition path: re-runs the accepted composition owner.
+
+    Returns ``(affected_product_ref, successor_authority_ref) -> new_exact_ref``. The new
+    identity preserves the affected product's object id and carries the composition
+    identity the accepted owner actually recomputes under the successor authority.
+    """
+
+    from rawlsing_next.source_backed_positioned_subject_possibility import (
+        PositionedSubjectPossibilityModelRule,
+    )
+
+    case = build_case(direction)
+    rule = case["model_rule"]
+
+    def recompose(affected_ref: ExactRef, authority: Any) -> ExactRef:
+        mutated_rule = PositionedSubjectPossibilityModelRule(
+            authority,
+            rule.walkback_authority_ref,
+            rule.source_universe_refs,
+            rule.walkback_steps,
+            rule.positive_proxy_authority_refs,
+        )
+        composition = compose_positioned_subject_possibility(
+            repository=case["source"]["repo"],
+            empirical_query=case["empirical_query"],
+            predicate=case["predicate"],
+            authority_registry=case["registry"],
+            release_refs=case["release_refs"],
+            consumer_query=case["consumer_query"],
+            model_rule=mutated_rule,
+            condition_binding_witness=case["condition_binding_witness"],
+        )
+        # The product keeps its stable exact identity (kind + object id); only the
+        # semantic content identity changes, and it is exactly the accepted composition
+        # identity recomputed under the supplied successor authority.
+        return ExactRef(
+            affected_ref.kind,
+            affected_ref.object_id,
+            composition.composed_result_identity_hash,
+        )
+
+    return recompose
+
+
+def drive_owner_contract_without_recompiler():
+    """Counterexample path A: an affected dependent with no recompiler declared.
+
+    Requires that the owner has an affected dependent, then asks it to promote with
+    ``recompiler=None``. The owner refuses (it cannot represent "no replacement").
+    """
+
+    transition = build_model_authority_transition("forward")
+    return transition["executor"].promote_current(
+        transition["seal_ref"],
+        selection_rule_ref=_ref_for("SELECTION_RULE", "counterexample-a"),
+        selection_attestation_ref=_ref_for("SELECTION_ATTESTATION", "counterexample-a"),
+        recompiler=None,
+    )
+
+
+def drive_owner_contract_with_identity_recompiler():
+    """Counterexample path B: the honest "nothing changed" recompiler.
+
+    If the affected product genuinely has no lawful replacement, the only truthful
+    recompilation is identity, which the owner rejects because the receipt demands a
+    *new* exact ref for every affected dependent.
+    """
+
+    transition = build_model_authority_transition("forward")
+    return transition["executor"].promote_current(
+        transition["seal_ref"],
+        selection_rule_ref=_ref_for("SELECTION_RULE", "counterexample-b"),
+        selection_attestation_ref=_ref_for("SELECTION_ATTESTATION", "counterexample-b"),
+        recompiler=lambda old_ref, changed: old_ref,
+    )
 
 
 __all__ = [
@@ -523,4 +802,14 @@ __all__ = [
     "replay_protocol_ref",
     "deterministic_order_ref",
     "retained_determinants",
+    "oracle_expected_output",
+    "MODEL_AUTHORITY_KIND",
+    "model_authority_snapshot",
+    "revised_model_authority_snapshot",
+    "revised_model_authority",
+    "model_authority_snapshot",
+    "build_model_authority_transition",
+    "recompose_product_under_model_authority",
+    "drive_owner_contract_without_recompiler",
+    "drive_owner_contract_with_identity_recompiler",
 ]

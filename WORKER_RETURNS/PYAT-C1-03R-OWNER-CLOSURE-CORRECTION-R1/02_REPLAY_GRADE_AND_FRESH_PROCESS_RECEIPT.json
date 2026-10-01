@@ -1,0 +1,110 @@
+{
+  "schema": "PYAT_C1_03R_REPLAY_GRADE_AND_FRESH_PROCESS_RECEIPT@1",
+  "status": "EXECUTED_SOURCE_FREE",
+  "acceptance_case": "AT18",
+  "replay_grade": "FRESH_EMPIRICAL_RECOMPUTATION",
+  "actual_replay_mechanism": "FRESH_PROCESS_ACCEPTED_PRODUCER",
+  "runner": "rawlsing_next/tests/c1_at18_at19_fresh_process_runner.py",
+  "court": "rawlsing_next/tests/test_pre553_analytical_replay_dependency.py",
+  "producer_path": "rawlsing_next.pre553_analytical_composition.compose_positioned_subject_possibility",
+  "producer_route": "DIRECT_I03_TO_POSITIONED_SUBJECT",
+  "grades_preserved": [
+    "HISTORICAL_EXPLANATION_ONLY",
+    "SERIALIZATION_REPLAY",
+    "FRESH_PROCESS_PRODUCT_REPLAY",
+    "FRESH_EMPIRICAL_RECOMPUTATION"
+  ],
+  "grade_vocabulary_justification": "The AT18 acceptance case requires explicit replay grades and no equivalent governed grade vocabulary was found in the current replay owner, so the grade vocabulary is retained. Replay claims are still emitted through the existing public ReplayReceipt@1.0.0 family; no new object family was created.",
+  "runner_input_is_determinants_only": {
+    "schema": "C1_03R_RETAINED_DETERMINANTS_INPUT@2",
+    "keys": [
+      "schema",
+      "direction",
+      "empirical_query_ref",
+      "predicate_ref",
+      "predicate_hash",
+      "condition_binding_witness_ref",
+      "consumer_query_ref",
+      "model_rule_hash",
+      "release_refs",
+      "source_universe_ref",
+      "authority_snapshot_refs",
+      "conditioner_binding_refs"
+    ],
+    "contains_expected_answer": false,
+    "forbidden_fields_absent": [
+      "expected_output_identity",
+      "composed_result_identity_hash",
+      "producer_fact_ref",
+      "evidence_ref",
+      "consumer_result_hash",
+      "raw_denominator_support",
+      "geometry",
+      "exact_fraction",
+      "cell_numerators"
+    ],
+    "enforced_by": "assert_runner_input_carries_no_answer (RUNNER_INPUT_CARRIES_ANSWER)"
+  },
+  "oracle_is_separate": {
+    "schema": "C1_03R_AT18_EXPECTED_OUTPUT_ORACLE@1",
+    "produced_by": "rawlsing_next.tests.c1_at18_at19_fixture.oracle_expected_output",
+    "consumed_by": "the parent court only",
+    "handed_to_runner": false
+  },
+  "observed_output_identity": {
+    "composed_result_identity_hash": "7c92484d33d85caa993b767f9f2f31ee23e09d552c5a79449248bc1f3e662287",
+    "raw_denominator_support": 60,
+    "cell_numerators": {"yes": 54, "no": 6},
+    "consumer_result_state": "EXACT_SUPPORTED"
+  },
+  "identity_reproduced_exactly": true,
+  "fresh_process_proof_basis": [
+    "The runner executes in a separate Python process (sys.executable -m).",
+    "It reads only the retained-determinant input artifact and immediately enforces that no expected answer is present.",
+    "It rebuilds the accepted source and determinants and asserts each rebuilt exact ref equals the retained ref.",
+    "It then re-executes the accepted composition owner and reports the identity it computed.",
+    "The parent court holds the oracle and performs the comparison."
+  ],
+  "hostiles_executed": [
+    {
+      "hostile": "a stored JSON/receipt explanation must not qualify as fresh recomputation",
+      "test": "test_at18_hostile_stored_explanation_cannot_claim_fresh_grade",
+      "result": "PASS"
+    },
+    {
+      "hostile": "serialization/deserialization alone must not qualify as fresh empirical recomputation",
+      "test": "test_at18_hostile_stored_explanation_cannot_claim_fresh_grade",
+      "result": "PASS"
+    },
+    {
+      "hostile": "missing exact determinant or authority must fail closed rather than silently downgrade",
+      "test": "test_at18_missing_exact_determinant_or_authority_fails_closed",
+      "result": "PASS"
+    },
+    {
+      "hostile": "a stronger claim whose identity does not reproduce must fail, not downgrade",
+      "test": "test_at18_claimed_grade_does_not_silently_downgrade_on_identity_mismatch",
+      "result": "PASS"
+    },
+    {
+      "hostile": "runner input carrying an expected answer is rejected",
+      "test": "test_at18_hostile_answer_bearing_input_is_rejected",
+      "result": "PASS"
+    },
+    {
+      "hostile": "runner input contains no expected output/result/denominator answer fields",
+      "test": "test_at18_runner_input_carries_no_expected_answer_fields",
+      "result": "PASS"
+    },
+    {
+      "hostile": "the runner does not read a stored expected output",
+      "test": "test_at18_runner_does_not_read_expected_output",
+      "result": "PASS"
+    }
+  ],
+  "limitations": [
+    "Source-free synthetic fixture: a source-free fixture result cannot establish live occupancy.",
+    "The fresh process runs on the same host interpreter; this is not a cross-machine or cross-version replay proof.",
+    "The strict FRESH_PROCESS_PRODUCT_REPLAY grade is defined and enforced by the same mechanism as FRESH_EMPIRICAL_RECOMPUTATION; this lane only exercises the stronger grade."
+  ]
+}

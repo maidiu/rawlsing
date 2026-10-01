@@ -1,23 +1,31 @@
 """C1-03R analytical replay-grade and dependency-closure adapter (AT18/AT19).
 
-This module is a *bounded adapter* over already-accepted owners. It is explicitly
-**not** a second authority-maintenance owner:
+Owner-closure corrected (HQ149). This module is a *bounded adapter* over
+already-accepted owners. It is explicitly **not** a lifecycle owner:
 
-* invalidation/dependency closure is delegated to
-  ``rawlsing_next.pre553_authority_maintenance.SemanticDeterminantGraph`` and
-  ``AuthorityInvalidationReceipt``;
-* replay-grade claims are emitted as the existing public ``ReplayReceipt@1.0.0``
-  family and audited against ``pre553_replay_audit`` closure law;
-* the analytical product identity itself always comes from the accepted
-  ``compose_positioned_subject_possibility`` owner, never from this module.
+* the analytical dependency transition (affected/unaffected computation, recompiler
+  invocation, and receipt construction) is performed by the accepted
+  ``AuthorityMaintenanceExecutor.promote_current`` / ``rollback_current``;
+* this adapter never computes affected/unaffected sets, never calls a recompiler on its
+  own initiative, and never constructs an ``AuthorityInvalidationReceipt``;
+* replay claims are emitted as the existing public ``ReplayReceipt@1.0.0`` family.
 
-What this module owns is narrow: naming the replay *grade* of an analytical replay
-claim, and registering exact analytical product dependencies so that a single exact
-determinant mutation invalidates exactly the registered affected products.
+What it owns is narrow: naming the replay *grade* of an analytical replay claim, and
+registering exact analytical products with the determinants they **actually consumed**
+so the owner's graph can lawfully reach them.
 
-It never chooses latest/default authority, never infers semantic lifecycle meaning,
-never invents dependencies from object similarity, and never mutates current selection
-outside the existing owner.
+Registration binds only consumed determinants. A revised/new authority is never
+pre-registered as a determinant of a product produced before it; the revision enters
+only through the owner's governed promotion transition (whose changed-authority set
+already contains both the prior and the successor revision).
+
+Known owner gap (see the correction return for the executable counterexample):
+``AuthorityInvalidationReceipt`` requires ``recompilation_pairs`` to cover exactly the
+affected dependent set, and the owner's recompilation law requires every affected
+dependent to move to a *new* exact ref. A genuinely affected product with no lawful
+replacement therefore has no lawful representation in the current owner contract. This
+adapter refuses to fabricate one and raises
+``NoLawfulReplacementRepresentable`` instead.
 """
 from __future__ import annotations
 
@@ -26,6 +34,8 @@ from typing import Any, Callable, Iterable, Mapping
 
 from rawlsing_next.pre553_authority_maintenance import (
     AuthorityInvalidationReceipt,
+    AuthorityMaintenanceError,
+    Recompiler,
     SemanticDeterminantGraph,
 )
 from rawlsing_next.pre553_empirical_objects import (
@@ -33,15 +43,12 @@ from rawlsing_next.pre553_empirical_objects import (
     ExactRef,
     Pre553IntegrityError,
     ReplayReceipt,
-    canonicalize,
     semantic_hash,
 )
 
 REPLAY_GRADE_CONTRACT_ID = "C1_03R_ANALYTICAL_REPLAY_GRADE@1"
 DEPENDENCY_CONTRACT_ID = "C1_03R_ANALYTICAL_DEPENDENCY_CLOSURE@1"
 
-#: Replay grades, weakest first. A claim may only ever assert the grade its actual
-#: mechanism genuinely demonstrates; upgrading requires a stronger mechanism.
 REPLAY_GRADE_HISTORICAL_EXPLANATION_ONLY = "HISTORICAL_EXPLANATION_ONLY"
 REPLAY_GRADE_SERIALIZATION_REPLAY = "SERIALIZATION_REPLAY"
 REPLAY_GRADE_FRESH_PROCESS_PRODUCT_REPLAY = "FRESH_PROCESS_PRODUCT_REPLAY"
@@ -56,8 +63,6 @@ REPLAY_GRADES = (
 
 GRADE_STRENGTH = {grade: index for index, grade in enumerate(REPLAY_GRADES)}
 
-#: Actual replay mechanisms. Only a fresh-process mechanism may support a
-#: fresh-process grade.
 MECHANISM_HISTORICAL_NARRATION = "HISTORICAL_NARRATION"
 MECHANISM_STORED_RECEIPT_DESERIALIZATION = "STORED_RECEIPT_DESERIALIZATION"
 MECHANISM_STORED_PRODUCT_DESERIALIZATION = "STORED_PRODUCT_DESERIALIZATION"
@@ -70,7 +75,6 @@ REPLAY_MECHANISMS = (
     MECHANISM_FRESH_PROCESS_ACCEPTED_PRODUCER,
 )
 
-#: The strongest grade each mechanism can honestly support.
 MECHANISM_MAX_GRADE = {
     MECHANISM_HISTORICAL_NARRATION: REPLAY_GRADE_HISTORICAL_EXPLANATION_ONLY,
     MECHANISM_STORED_RECEIPT_DESERIALIZATION: REPLAY_GRADE_SERIALIZATION_REPLAY,
@@ -80,9 +84,28 @@ MECHANISM_MAX_GRADE = {
 
 FRESH_PROCESS_MECHANISMS = frozenset({MECHANISM_FRESH_PROCESS_ACCEPTED_PRODUCER})
 
-#: Grades that assert fresh empirical recomputation happened.
 FRESH_GRADES = frozenset(
     {REPLAY_GRADE_FRESH_PROCESS_PRODUCT_REPLAY, REPLAY_GRADE_FRESH_EMPIRICAL_RECOMPUTATION}
+)
+
+#: Fields that must never appear in a fresh-runner *input* artifact: they are answers.
+FORBIDDEN_RUNNER_INPUT_FIELDS = frozenset(
+    {
+        "expected_output_identity",
+        "expected_composed_result_identity_hash",
+        "composed_result_identity_hash",
+        "producer_fact_ref",
+        "evidence_ref",
+        "evidence_ref_or_null",
+        "consumer_result_hash",
+        "consumer_result_hash_or_null",
+        "raw_denominator_support",
+        "complete_cell_geometry",
+        "geometry",
+        "exact_fraction",
+        "cell_numerators",
+        "oracle",
+    }
 )
 
 
@@ -98,12 +121,18 @@ class MissingExactDeterminant(AnalyticalReplayDependencyError):
     code = "MISSING_EXACT_DETERMINANT"
 
 
-class DependencyClosureFailure(AnalyticalReplayDependencyError):
-    code = "DEPENDENCY_CLOSURE_FAILURE"
+class RunnerInputCarriesAnswer(AnalyticalReplayDependencyError):
+    code = "RUNNER_INPUT_CARRIES_ANSWER"
 
 
-class MissingCrossOwnerEdge(DependencyClosureFailure):
+class MissingCrossOwnerEdge(AnalyticalReplayDependencyError):
     code = "MISSING_CROSS_OWNER_EDGE"
+
+
+class NoLawfulReplacementRepresentable(AnalyticalReplayDependencyError):
+    """Owner gap: the current lifecycle owner cannot lawfully represent this case."""
+
+    code = "NO_LAWFUL_REPLACEMENT_REPRESENTABLE"
 
 
 def _text(value: Any, name: str) -> str:
@@ -126,14 +155,12 @@ def _auths(values: Iterable[AuthorityRef | Mapping[str, Any]]) -> tuple[Authorit
     )
 
 
+# --------------------------------------------------------------------------
+# AT18 - replay grade
+# --------------------------------------------------------------------------
 @dataclass(frozen=True)
 class AnalyticalReplayClaim:
-    """One exact analytical replay claim at an explicitly declared grade.
-
-    The claim binds exact retained determinants, the exact producer path, exact
-    authority refs, the expected output identity, the actual replay mechanism and the
-    limitations of the grade being asserted.
-    """
+    """One exact analytical replay claim at an explicitly declared grade."""
 
     claim_id: str
     replayed_product_ref: ExactRef
@@ -156,9 +183,7 @@ class AnalyticalReplayClaim:
         if not isinstance(self.replayed_product_ref, ExactRef):
             raise AnalyticalReplayDependencyError("replayed_product_ref must be ExactRef")
         object.__setattr__(
-            self,
-            "retained_determinant_refs",
-            _refs(self.retained_determinant_refs),
+            self, "retained_determinant_refs", _refs(self.retained_determinant_refs)
         )
         if not self.retained_determinant_refs:
             raise MissingExactDeterminant(
@@ -178,9 +203,7 @@ class AnalyticalReplayClaim:
                 f"unknown replay mechanism {self.actual_replay_mechanism!r}"
             )
         if self.replay_grade not in REPLAY_GRADES:
-            raise AnalyticalReplayDependencyError(
-                f"unknown replay grade {self.replay_grade!r}"
-            )
+            raise AnalyticalReplayDependencyError(f"unknown replay grade {self.replay_grade!r}")
         if not isinstance(self.replay_protocol_ref, ExactRef):
             raise AnalyticalReplayDependencyError("replay_protocol_ref must be ExactRef")
         object.__setattr__(
@@ -192,8 +215,6 @@ class AnalyticalReplayClaim:
         self.assert_grade_is_honest()
 
     def assert_grade_is_honest(self) -> None:
-        """Fail closed if the claimed grade exceeds what the mechanism demonstrates."""
-
         max_grade = MECHANISM_MAX_GRADE[self.actual_replay_mechanism]
         if GRADE_STRENGTH[self.replay_grade] > GRADE_STRENGTH[max_grade]:
             raise ReplayGradeOverclaim(
@@ -235,12 +256,6 @@ class AnalyticalReplayClaim:
         return semantic_hash(self.material())
 
     def to_replay_receipt(self) -> ReplayReceipt:
-        """Emit the claim as the existing public ReplayReceipt family.
-
-        No new object family is invented: the grade and mechanism travel as explicit
-        extra semantic material inside the accepted receipt family.
-        """
-
         return ReplayReceipt(
             typed_state=self.replay_state,
             authority_snapshot_refs=self.authority_refs,
@@ -265,8 +280,6 @@ class AnalyticalReplayClaim:
 
 @dataclass(frozen=True)
 class ReplayGradeAssertion:
-    """Result of checking an observed replay identity against a declared claim."""
-
     claim_hash: str
     replay_grade: str
     actual_replay_mechanism: str
@@ -291,20 +304,22 @@ class ReplayGradeAssertion:
 
 
 def assert_replay_claim(
-    claim: AnalyticalReplayClaim,
-    *,
-    observed_output_identity_hash: str,
+    claim: AnalyticalReplayClaim, *, observed_output_identity_hash: str
 ) -> ReplayGradeAssertion:
-    """Fail closed if a claim is dishonest or its identity does not reproduce."""
+    """Fail closed if a claim is dishonest or its identity does not reproduce.
+
+    The *expected* identity lives on the oracle side (here), never in the fresh
+    runner's input artifact.
+    """
 
     claim.assert_grade_is_honest()
     if len(observed_output_identity_hash) != 64:
         raise AnalyticalReplayDependencyError("observed output identity must be sha256")
-    reproduced = observed_output_identity_hash == claim.expected_output_identity_hash
-    if not reproduced:
+    if observed_output_identity_hash != claim.expected_output_identity_hash:
         raise AnalyticalReplayDependencyError(
             "replay identity did not reproduce at the declared grade: "
-            f"expected {claim.expected_output_identity_hash}, observed {observed_output_identity_hash}"
+            f"expected {claim.expected_output_identity_hash}, "
+            f"observed {observed_output_identity_hash}"
         )
     return ReplayGradeAssertion(
         claim_hash=claim.claim_hash,
@@ -318,23 +333,42 @@ def assert_replay_claim(
     )
 
 
+def assert_runner_input_carries_no_answer(determinants: Mapping[str, Any]) -> None:
+    """Fail closed if a fresh-runner input artifact carries any expected answer."""
+
+    def walk(node: Any, path: str) -> None:
+        if isinstance(node, Mapping):
+            for key, value in node.items():
+                if str(key) in FORBIDDEN_RUNNER_INPUT_FIELDS:
+                    raise RunnerInputCarriesAnswer(
+                        "RUNNER_INPUT_CARRIES_ANSWER: runner input must contain only "
+                        f"retained determinants, but carries {path}{key!r}"
+                    )
+                walk(value, f"{path}{key}.")
+        elif isinstance(node, (list, tuple)):
+            for index, value in enumerate(node):
+                walk(value, f"{path}{index}.")
+
+    walk(determinants, "")
+
+
+# --------------------------------------------------------------------------
+# AT19 - analytical dependency registration (consumed determinants only)
+# --------------------------------------------------------------------------
 @dataclass(frozen=True)
 class AnalyticalProductRegistration:
-    """One exact analytical product registered with its real determinants.
+    """One exact analytical product registered with the determinants it consumed.
 
-    ``determinant_authority_refs`` are authority refs the product genuinely consumes:
-    they must actually appear in the product's own composition authority refs, or be
-    demonstrated to change the product's identity. Registration never infers a
-    dependency from object similarity.
+    ``determinant_authority_refs`` must be authorities the product genuinely consumed at
+    production time. A future/revised authority must never appear here; it enters only
+    through the owner's governed promotion transition.
     """
 
     product_ref: ExactRef
     product_identity_hash: str
     determinant_authority_refs: tuple[AuthorityRef, ...]
-    determinant_exact_refs: tuple[ExactRef, ...]
-    consumer_lane_authority_refs: tuple[AuthorityRef, ...] = ()
+    determinant_exact_refs: tuple[ExactRef, ...] = ()
     dependency_edges_from: tuple[ExactRef, ...] = ()
-    recompose: Callable[[tuple[AuthorityRef, ...]], ExactRef] | None = None
 
     def __post_init__(self) -> None:
         if not isinstance(self.product_ref, ExactRef):
@@ -342,32 +376,15 @@ class AnalyticalProductRegistration:
         if len(self.product_identity_hash) != 64:
             raise AnalyticalReplayDependencyError("product_identity_hash must be sha256")
         object.__setattr__(
-            self,
-            "determinant_authority_refs",
-            _auths(self.determinant_authority_refs),
+            self, "determinant_authority_refs", _auths(self.determinant_authority_refs)
         )
-        object.__setattr__(
-            self,
-            "consumer_lane_authority_refs",
-            _auths(self.consumer_lane_authority_refs),
-        )
-        object.__setattr__(
-            self, "determinant_exact_refs", _refs(self.determinant_exact_refs)
-        )
-        object.__setattr__(
-            self, "dependency_edges_from", _refs(self.dependency_edges_from)
-        )
-        if not self.determinant_authority_refs and not self.consumer_lane_authority_refs:
+        object.__setattr__(self, "determinant_exact_refs", _refs(self.determinant_exact_refs))
+        object.__setattr__(self, "dependency_edges_from", _refs(self.dependency_edges_from))
+        if not self.determinant_authority_refs:
             raise MissingExactDeterminant(
                 "MISSING_EXACT_DETERMINANT: a registration requires at least one exact "
-                "determinant authority ref"
+                "consumed determinant authority ref"
             )
-
-    @property
-    def all_determinant_authority_refs(self) -> tuple[AuthorityRef, ...]:
-        return _auths(
-            (*self.determinant_authority_refs, *self.consumer_lane_authority_refs)
-        )
 
 
 class AnalyticalDependencyRegistry:
@@ -378,9 +395,7 @@ class AnalyticalDependencyRegistry:
 
     @property
     def registrations(self) -> tuple[AnalyticalProductRegistration, ...]:
-        return tuple(
-            self._registrations[key] for key in sorted(self._registrations)
-        )
+        return tuple(self._registrations[key] for key in sorted(self._registrations))
 
     def register(self, registration: AnalyticalProductRegistration) -> None:
         key = registration.product_ref.key
@@ -391,24 +406,26 @@ class AnalyticalDependencyRegistry:
         self._registrations[key] = registration
 
     def build_graph(
-        self, *, omit_authority_edges: Iterable[tuple[AuthorityRef, ExactRef]] = ()
+        self, *, omit_authority_edges: Iterable[tuple[Any, Any]] = ()
     ) -> SemanticDeterminantGraph:
-        """Build the existing owner's graph from real registrations.
+        """Build the owner's graph from consumed determinants only.
 
-        ``omit_authority_edges`` exists only to construct a deliberately incomplete
-        cross-owner graph for the mandatory AT19 missing-edge hostile. It is never used
-        on a lawful closure path.
+        ``omit_authority_edges`` exists solely to construct the deliberately incomplete
+        cross-owner graph for the mandatory missing-edge hostile.
         """
 
+        from rawlsing_next.pre553_empirical_objects import authority_ref, exact_ref
+
         omitted = {
-            (_auth_key(a), _ref_key(d)) for a, d in omit_authority_edges
+            (authority_ref(a, "authority_ref").key, exact_ref(d, "ref").key)
+            for a, d in omit_authority_edges
         }
         authority_edges: list[tuple[AuthorityRef, ExactRef]] = []
         dependency_edges: list[tuple[ExactRef, ExactRef]] = []
         known: list[ExactRef] = []
         for registration in self.registrations:
             known.append(registration.product_ref)
-            for authority in registration.all_determinant_authority_refs:
+            for authority in registration.determinant_authority_refs:
                 if (authority.key, registration.product_ref.key) in omitted:
                     continue
                 authority_edges.append((authority, registration.product_ref))
@@ -421,159 +438,169 @@ class AnalyticalDependencyRegistry:
         )
 
 
-def _auth_key(value: Any) -> str:
-    from rawlsing_next.pre553_empirical_objects import authority_ref
-
-    return authority_ref(value, "authority_ref").key
-
-
-def _ref_key(value: Any) -> str:
-    from rawlsing_next.pre553_empirical_objects import exact_ref
-
-    return exact_ref(value, "ref").key
-
-
 @dataclass(frozen=True)
-class AnalyticalInvalidationOutcome:
-    """Selective invalidation outcome over real analytical products."""
+class OwnerDependencyInvalidationOutcome:
+    """Outcome of an owner-driven analytical dependency transition."""
 
-    changed_determinant_refs: tuple[AuthorityRef, ...]
+    release_ref: ExactRef
     invalidation_receipt: AuthorityInvalidationReceipt
-    recompiled_identity_hashes: Mapping[str, str]
-    noncurrent_product_refs: tuple[ExactRef, ...]
-    closure_verified: bool
+    changed_authority_refs: tuple[AuthorityRef, ...]
+    recomposed_products: tuple[tuple[ExactRef, ExactRef], ...]
 
     def material(self) -> Mapping[str, Any]:
         return {
             "contract_id": DEPENDENCY_CONTRACT_ID,
-            "changed_determinant_refs": [x.as_dict() for x in self.changed_determinant_refs],
+            "release_ref": self.release_ref.as_dict(),
             "invalidation_receipt": self.invalidation_receipt.as_dict(),
-            "recompiled_identity_hashes": dict(sorted(self.recompiled_identity_hashes.items())),
-            "noncurrent_product_refs": [x.as_dict() for x in self.noncurrent_product_refs],
-            "closure_verified": self.closure_verified,
+            "changed_authority_refs": [x.as_dict() for x in self.changed_authority_refs],
+            "recomposed_products": [
+                {"old_ref": old.as_dict(), "new_ref": new.as_dict()}
+                for old, new in self.recomposed_products
+            ],
+            "lifecycle_performed_by": "AuthorityMaintenanceExecutor.promote_current",
         }
 
 
-def invalidate_for_changed_determinants(
+def build_owner_recompiler(
     *,
+    executor: Any,
     registry: AnalyticalDependencyRegistry,
-    changed_determinant_refs: Iterable[AuthorityRef | Mapping[str, Any]],
-    graph: SemanticDeterminantGraph | None = None,
-) -> AnalyticalInvalidationOutcome:
-    """Mutate one exact determinant and invalidate exactly the registered affected set.
+    recompose: Mapping[str, Callable[[ExactRef, AuthorityRef], ExactRef]],
+) -> Recompiler:
+    """Build the ``Recompiler`` the accepted lifecycle owner invokes.
 
-    Closure law (delegated to ``SemanticDeterminantGraph``):
-
-    * affected  = products reached from the changed determinant over registered edges;
-    * unaffected = registered products not reached;
-    * every affected product must recompile through its own accepted composition
-      entry point and produce a *new* exact identity;
-    * an affected product with no lawful replacement is recorded noncurrent instead of
-      being silently treated as current.
+    The owner calls ``recompiler(affected_product_ref, changed_authority_refs)``. For
+    each affected *product*, the adapter resolves the lawful successor of exactly the
+    determinants that product consumed and that the owner reports as changed. It never
+    guesses a successor from tuple position, and it never treats an unaffected authority
+    as if it had been replaced.
     """
-
-    changed = _auths(changed_determinant_refs)
-    if not changed:
-        raise AnalyticalReplayDependencyError("at least one changed determinant is required")
-    active_graph = graph if graph is not None else registry.build_graph()
-    affected = active_graph.affected(changed)
-    unaffected = active_graph.unaffected(affected)
-    affected_keys = {ref.key for ref in affected}
 
     registrations = {r.product_ref.key: r for r in registry.registrations}
-    pairs: list[tuple[ExactRef, ExactRef]] = []
-    recomposed: dict[str, str] = {}
-    noncurrent: list[ExactRef] = []
-    for ref in affected:
-        registration = registrations.get(ref.key)
-        if registration is None or registration.recompose is None:
-            # No lawful replacement is available: record the explicit noncurrent state
-            # rather than claiming a fabricated replacement identity.
-            noncurrent.append(ref)
-            continue
-        new_ref = registration.recompose(changed)
-        if not isinstance(new_ref, ExactRef):
-            raise AnalyticalReplayDependencyError(
-                "recompiler must return an exact ref for the recompiled product"
+
+    def recompiler(
+        affected_ref: ExactRef, changed: tuple[AuthorityRef, ...]
+    ) -> ExactRef:
+        registration = registrations.get(affected_ref.key)
+        if registration is None:
+            raise AuthorityMaintenanceError(
+                "the owner reports an affected dependent that is not a registered "
+                f"analytical product: {affected_ref.key}"
             )
-        if new_ref == ref:
-            raise DependencyClosureFailure(
-                "DEPENDENCY_CLOSURE_FAILURE: an affected product recompiled to the same "
-                "identity; the determinant mutation did not reach the product"
+        recomposer = recompose.get(affected_ref.key)
+        if recomposer is None:
+            raise NoLawfulReplacementRepresentable(
+                "NO_LAWFUL_REPLACEMENT_REPRESENTABLE: the accepted lifecycle owner's "
+                "receipt requires a replacement for every affected dependent, but no "
+                "analytical recomposition path is registered for affected product "
+                f"{affected_ref.key}. The current owner contract has no representation "
+                "for an affected product with no lawful replacement, and this adapter "
+                "will not fabricate one."
             )
-        pairs.append((ref, new_ref))
-        recomposed[new_ref.key] = semantic_hash(
-            {
-                "product_ref": new_ref.as_dict(),
-                "changed_determinant_refs": [x.as_dict() for x in changed],
-            }
-        )
-
-    if noncurrent:
-        # An explicit noncurrent state is lawful; a *fabricated* pair is not. Build the
-        # receipt over the pairs we genuinely have by covering remaining affected
-        # products with their explicit noncurrent sentinel identity.
-        for ref in noncurrent:
-            sentinel = ExactRef(
-                "C1_03R_NONCURRENT_PRODUCT",
-                f"urn:rawlsing:c1_03r:noncurrent:sha256:{semantic_hash({'product_ref': ref.as_dict(), 'state': 'NO_CURRENT'})}",
-                semantic_hash({"product_ref": ref.as_dict(), "state": "NO_CURRENT"}),
+        # Which consumed determinant identity did the owner actually change?
+        # The owner reports the *successor* revision, so match on authority identity
+        # (id + version), never on the prior content hash and never on tuple position.
+        consumed_identities = {
+            (ref.authority_id, ref.authority_version)
+            for ref in registration.determinant_authority_refs
+        }
+        replaced = [
+            ref
+            for ref in changed
+            if (ref.authority_id, ref.authority_version) in consumed_identities
+        ]
+        if len(replaced) != 1:
+            raise AuthorityMaintenanceError(
+                "an affected analytical product must have exactly one of its consumed "
+                "determinant identities replaced, found "
+                f"{len(replaced)} for {affected_ref.key}"
             )
-            pairs.append((ref, sentinel))
+        # The recomposition path owns the new exact identity; it is handed both the
+        # affected product ref and the lawful successor authority ref.
+        new_ref = recomposer(affected_ref, replaced[0])
+        if new_ref == affected_ref:
+            raise AuthorityMaintenanceError(
+                "affected dependent recompilation must produce a new exact ref"
+            )
+        return new_ref
 
-    receipt = AuthorityInvalidationReceipt(
-        changed_authority_refs=changed,
-        affected_dependent_refs=affected,
-        unaffected_dependent_refs=unaffected,
-        recompilation_pairs=tuple(pairs),
-    )
-    return AnalyticalInvalidationOutcome(
-        changed_determinant_refs=changed,
-        invalidation_receipt=receipt,
-        recompiled_identity_hashes=recomposed,
-        noncurrent_product_refs=tuple(noncurrent),
-        closure_verified=True,
-    )
+    return recompiler
 
 
-def assert_closure_against_actual_identity_change(
+def transition_analytical_dependencies(
     *,
+    executor: Any,
     registry: AnalyticalDependencyRegistry,
-    changed_determinant_refs: Iterable[AuthorityRef | Mapping[str, Any]],
-    graph: SemanticDeterminantGraph | None = None,
-) -> None:
-    """Hostile closure check: every product whose identity actually changes must be
-    registered as affected.
+    seal_ref: ExactRef,
+    selection_rule_ref: ExactRef,
+    selection_attestation_ref: ExactRef,
+    recompose: Mapping[str, Callable[[ExactRef, AuthorityRef], ExactRef]],
+) -> OwnerDependencyInvalidationOutcome:
+    """Let the accepted lifecycle owner perform the analytical dependency transition.
 
-    This is the missing-cross-owner-edge detector. A product whose bytes remain present
-    but whose *identity genuinely depends* on the changed determinant, while no
-    registered edge connects them, is a failed closure witness: cache/object presence
-    cannot restore its authority.
+    The owner computes affected/unaffected, invokes the recompiler, and constructs the
+    ``AuthorityInvalidationReceipt``. This adapter supplies only the analytical
+    recomposition functions; it does not reproduce
+    ``AuthorityMaintenanceExecutor._recompile`` semantics.
     """
 
-    changed = _auths(changed_determinant_refs)
-    active_graph = graph if graph is not None else registry.build_graph()
-    affected_keys = {ref.key for ref in active_graph.affected(changed)}
+    from rawlsing_next.pre553_empirical_objects import exact_ref
+
+    executor_recompiler = build_owner_recompiler(
+        executor=executor,
+        registry=registry,
+        recompose=recompose,
+    )
+    release = executor.promote_current(
+        seal_ref,
+        selection_rule_ref=selection_rule_ref,
+        selection_attestation_ref=selection_attestation_ref,
+        recompiler=executor_recompiler,
+    )
+    receipt = executor.invalidation_receipt_for_release(release.ref)
+    return OwnerDependencyInvalidationOutcome(
+        release_ref=exact_ref(release.ref, "release_ref"),
+        invalidation_receipt=receipt,
+        changed_authority_refs=_auths(receipt.changed_authority_refs),
+        recomposed_products=tuple(receipt.recompilation_pairs),
+    )
+
+
+def assert_closure_covers_registered_products(
+    *,
+    outcome: OwnerDependencyInvalidationOutcome,
+    registry: AnalyticalDependencyRegistry,
+    recompose: Mapping[str, Callable[[ExactRef, AuthorityRef], ExactRef]],
+    successor_authority: AuthorityRef,
+) -> None:
+    """Hostile closure check over the owner's own affected set.
+
+    For every registered product the owner did *not* claim affected, recompose it under
+    the successor authority. If its identity genuinely moves, the owner's affected set
+    did not reach a real dependency: the closure witness is incomplete and object/cache
+    presence cannot restore it.
+
+    Callers must pass the lawful successor authority obtained from the owner.
+    """
+
+    affected = {ref.key for ref in outcome.invalidation_receipt.affected_dependent_refs}
     missing: list[str] = []
     for registration in registry.registrations:
-        if registration.product_ref.key in affected_keys:
+        key = registration.product_ref.key
+        if key in affected:
             continue
-        if registration.recompose is None:
+        recomposer = recompose.get(key)
+        if recomposer is None:
             continue
-        try:
-            new_ref = registration.recompose(changed)
-        except Exception as exc:  # an unavailable recomputation is not an edge proof
-            raise MissingCrossOwnerEdge(
-                "MISSING_CROSS_OWNER_EDGE: a registered product could not be recomputed "
-                f"to test closure: {exc}"
-            ) from exc
-        if new_ref != registration.product_ref:
-            missing.append(registration.product_ref.key)
+        if recomposer(registration.product_ref, successor_authority) != (
+            registration.product_ref
+        ):
+            missing.append(key)
     if missing:
         raise MissingCrossOwnerEdge(
             "MISSING_CROSS_OWNER_EDGE: closure claim failed; these registered products "
-            "genuinely reidentify under the changed determinant but no registered "
-            f"cross-owner edge reaches them: {sorted(missing)!r}"
+            "genuinely reidentify under the successor authority but the owner's affected "
+            f"set does not reach them: {sorted(missing)!r}"
         )
 
 
@@ -586,6 +613,7 @@ __all__ = [
     "MECHANISM_MAX_GRADE",
     "FRESH_PROCESS_MECHANISMS",
     "FRESH_GRADES",
+    "FORBIDDEN_RUNNER_INPUT_FIELDS",
     "REPLAY_GRADE_HISTORICAL_EXPLANATION_ONLY",
     "REPLAY_GRADE_SERIALIZATION_REPLAY",
     "REPLAY_GRADE_FRESH_PROCESS_PRODUCT_REPLAY",
@@ -597,14 +625,17 @@ __all__ = [
     "AnalyticalReplayDependencyError",
     "ReplayGradeOverclaim",
     "MissingExactDeterminant",
-    "DependencyClosureFailure",
+    "RunnerInputCarriesAnswer",
     "MissingCrossOwnerEdge",
+    "NoLawfulReplacementRepresentable",
     "AnalyticalReplayClaim",
     "ReplayGradeAssertion",
     "assert_replay_claim",
+    "assert_runner_input_carries_no_answer",
     "AnalyticalProductRegistration",
     "AnalyticalDependencyRegistry",
-    "AnalyticalInvalidationOutcome",
-    "invalidate_for_changed_determinants",
-    "assert_closure_against_actual_identity_change",
+    "OwnerDependencyInvalidationOutcome",
+    "build_owner_recompiler",
+    "transition_analytical_dependencies",
+    "assert_closure_covers_registered_products",
 ]

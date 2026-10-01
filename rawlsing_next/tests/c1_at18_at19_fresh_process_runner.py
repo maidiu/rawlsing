@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """Fresh-process half of the C1-03R AT18 analytical replay-grade proof.
 
-This runner is a *fresh Python process*. It reads the retained-determinant artifact
-(an exact-ref descriptor with **no** stored analytical output), rebuilds the accepted
-empirical source and determinant objects, and then genuinely re-executes the accepted
-producer/composition path from those determinants.
+This runner is a *fresh Python process*. It reads a retained-determinant **input**
+artifact that contains only the exact refs needed to reconstruct and re-execute the
+accepted producer/composition path. It contains no expected output, no result/evidence
+ref, no denominator support and no geometry.
 
-It deliberately does NOT read any stored composed result, evidence geometry or consumer
-result as its answer: the recomputed identity is produced here and compared by the
-parent court. A stored-output deserialization could not satisfy this runner.
+The runner does not read any stored answer: it recomputes the identity here and prints
+it. The parent court holds the oracle and performs the comparison. A stored-output
+deserialization could not satisfy this runner.
 """
 from __future__ import annotations
 
@@ -20,6 +20,9 @@ from rawlsing_next.pre553_analytical_composition import (
     compose_positioned_subject_possibility,
 )
 from rawlsing_next.pre553_empirical_objects import authority_ref, exact_ref
+from rawlsing_next.pre553_analytical_replay_dependency import (
+    assert_runner_input_carries_no_answer,
+)
 from rawlsing_next.tests import c1_at18_at19_fixture as fx
 
 
@@ -70,6 +73,8 @@ def main(argv: list[str]) -> int:
         print("usage: runner <retained_determinants.json>", file=sys.stderr)
         return 2
     determinants = json.loads(Path(argv[1]).read_text(encoding="utf-8"))
+    # Fail closed if the input artifact ever carries an expected answer.
+    assert_runner_input_carries_no_answer(determinants)
 
     # Fresh empirical recomputation: rebuild determinants from the synthetic law and
     # re-execute the accepted composition owner in this process.
