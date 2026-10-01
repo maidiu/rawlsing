@@ -7,6 +7,9 @@ satisfy AT16.
 from __future__ import annotations
 
 import inspect
+from collections.abc import Mapping
+
+from rawlsing_next.pre553_empirical_objects import Pre553SemanticCollapseError
 
 import pytest
 
@@ -34,6 +37,7 @@ from rawlsing_next.pre553_analytical_state_and_route import (
     RouteObligation,
     RecursiveCoverageCustody,
     OwnerProjectionError,
+    OWNER_EMPIRICAL_INTEGRITY_LABEL,
     OWNER_EMPIRICAL_PROJECTION_LABEL,
     OWNER_ADAPTIVE_PROJECTION_LABEL,
     OWNER_DISCOVERY_PROJECTION_LABEL,
@@ -2429,3 +2433,170 @@ def test_r5_no_broad_canonical_object_gate_remains():
     # It gates on exact type identity for both the repository and the object.
     assert "type(resolved) is not RespondentEvent" in src
     assert "type(repository) is not C11Repository" in src
+
+
+# ===========================================================================
+# R6 C1-03A-R5-FINAL-REVIEW-BLOCK-REFUSAL-CLASS-001
+#
+# The AT14 empirical-integrity witness may be minted ONLY from an exception whose
+# exact runtime type is Pre553IntegrityError. Pre553SemanticCollapseError is a
+# canonical subclass carrying a DIFFERENT owner meaning.
+# ===========================================================================
+class _R6StatefulMapping(Mapping):
+    """Benign across the pre-try binding hash; hostile inside the real constructor.
+
+    The reviewer's pattern: this behaves normally while the capture canonicalizes the
+    attempted body to compute ``invocation_binding``, and raises
+    ``Pre553SemanticCollapseError`` only during the actual ``RespondentEvent(**body)``
+    call. So the subclass is genuinely reached through the constructor path, not
+    supplied by hand.
+    """
+
+    def __init__(self, benign, fail_from: int = 3):
+        self._benign = dict(benign)
+        self._fail_from = fail_from
+        self.accesses = 0
+
+    def __getitem__(self, key):
+        self.accesses += 1
+        if self.accesses >= self._fail_from:
+            raise Pre553SemanticCollapseError(
+                "collapsed cross-ontology substitution during canonicalization")
+        return self._benign[key]
+
+    def __iter__(self):
+        return iter(self._benign)
+
+    def __len__(self):
+        return len(self._benign)
+
+
+def _r6_collapse_attempt(seen=None):
+    """Drive the capture so the real constructor raises the subclass.
+
+    ``seen`` optionally receives the stateful mapping, so a court can prove the
+    subclass arose inside the constructor call rather than being supplied by hand.
+    """
+    from rawlsing_next.pre553_analytical_state_and_route import (
+        capture_empirical_integrity_refusal,
+    )
+
+    data = fx.integrity_failure_fixture()
+    hostile = _R6StatefulMapping({"object_id": "urn:test:r6", "content_hash": "a" * 64})
+    tampered = dict(data["tampered_semantic_fields"])
+    tampered["native_question_ref"] = hostile
+    if seen is not None:
+        seen.append(hostile)
+    return capture_empirical_integrity_refusal(
+        repository=data["repository"],
+        release_ref=data["release_ref"],
+        respondent_event_ref=data["respondent_event_ref"],
+        tampered_semantic_fields=tampered,
+    )
+
+
+def test_r6_official_subclass_hostile_mints_no_witness():
+    """R6 mandatory hostile: a subclass reached through the constructor is refused."""
+    from rawlsing_next.pre553_empirical_objects import (
+        Pre553IntegrityError,
+        Pre553SemanticCollapseError,
+    )
+
+    # The subclass really is a canonical subclass, which is why the broad except was
+    # too permissive.
+    assert issubclass(Pre553SemanticCollapseError, Pre553IntegrityError)
+    assert Pre553SemanticCollapseError is not Pre553IntegrityError
+
+    with pytest.raises(OwnerProjectionError) as excinfo:
+        _r6_collapse_attempt()
+    message = str(excinfo.value)
+    assert "Pre553IntegrityError" in message
+    assert "Pre553SemanticCollapseError" in message
+    assert "C1-03A-R5-FINAL-REVIEW-BLOCK-REFUSAL-CLASS-001" in message
+    # Typed fail-closed, with the subclass preserved as the cause.
+    assert isinstance(excinfo.value.__cause__, Pre553SemanticCollapseError)
+
+
+def test_r6_subclass_hostile_really_traverses_the_constructor_path():
+    """The subclass must arise inside the real RespondentEvent call, not by hand.
+
+    The pre-try binding hash canonicalizes the attempted body first and consumes the
+    first accesses; the hostile only raises afterwards. That ordering is only possible
+    if the refusal happened during the constructor invocation inside the try block.
+    """
+    seen = []
+    with pytest.raises(OwnerProjectionError):
+        _r6_collapse_attempt(seen=seen)
+    hostile = seen[0]
+    assert isinstance(hostile, _R6StatefulMapping)
+    # At least one access succeeded before the hostile began raising, proving the
+    # binding hash genuinely ran over the same object first.
+    assert hostile.accesses >= 3
+
+
+def test_r6_no_integrity_failure_projection_can_result_from_a_subclass():
+    """R6: neither a witness nor an INTEGRITY_FAILURE projection can be produced."""
+    from rawlsing_next.pre553_analytical_state_and_route import OwnerRefusalWitness
+    from rawlsing_next.pre553_empirical_objects import Pre553SemanticCollapseError
+
+    with pytest.raises(OwnerProjectionError):
+        _r6_collapse_attempt()
+
+    # Even a hand-forged witness claiming the subclass meaning cannot be built: the
+    # witness type itself only carries what a capture produced.
+    data = fx.integrity_failure_fixture()
+    with pytest.raises(OwnerProjectionError):
+        OwnerRefusalWitness(
+            owner_label=OWNER_EMPIRICAL_INTEGRITY_LABEL,
+            refusal_kind="EMPIRICAL_INTEGRITY_REFUSAL",
+            refused_ref=data["respondent_event_ref"],
+            supporting_refs=(data["release_ref"],),
+            invocation_binding="r6",
+            refusal_type=Pre553SemanticCollapseError.__name__,
+            refusal_message="collapsed",
+        )
+
+
+def test_r6_base_class_stale_identity_still_mints_the_lawful_witness():
+    """R6 item 1: the exact base class still yields the lawful refusal."""
+    from rawlsing_next.pre553_empirical_objects import Pre553IntegrityError
+
+    witness, data = fx.capture_integrity_refusal("integrity_failure_fixture")
+    assert type(witness.__dict__["refusal_type"]) is str
+    assert witness.refusal_type == "Pre553IntegrityError"
+    assert witness.refusal_type == Pre553IntegrityError.__name__
+    projection = OwnerStateProjection.from_empirical_integrity_refusal(witness=witness)
+    assert projection.retained_state == INTEGRITY_FAILURE
+    assert witness.refused_ref == data["original_object"].ref
+
+
+def test_r6_owner_label_provenance_and_family_gates_unchanged():
+    """R6 items 2 and 3: label, release/object/family provenance all unchanged."""
+    from rawlsing_next.pre553_empirical_objects import exact_ref
+
+    witness, data = fx.capture_integrity_refusal("integrity_failure_fixture")
+    assert witness.owner_label == (
+        "rawlsing_next.pre553_empirical_objects.RespondentEvent "
+        "(canonical integrity construction)")
+    assert witness.owner_label != (
+        "rawlsing_next.pre553_empirical_query.execute_empirical_query")
+    assert witness.object_family == "RespondentEvent@1.0.0"
+    assert witness.governing_release_ref == exact_ref(data["release_ref"])
+    assert witness.refused_ref == data["original_object"].ref
+    assert witness.supporting_refs
+
+
+def test_r6_discovery_refusal_remains_authentic_and_unchanged():
+    """R6 item 5: the discovery refusal path is untouched by this correction."""
+    from rawlsing_next.pre553_empirical_objects import exact_ref
+
+    witness, data = fx.capture_blocked_authority_refusal(
+        "blocked_required_authority_fixture")
+    assert witness.owner_label == (
+        "rawlsing_next.pre553_discovery_exact.execute_exact_bounded_discovery")
+    assert witness.refusal_kind == "REQUIRED_AUTHORITY_REFUSAL"
+    assert witness.refused_ref == exact_ref(data["authority"].candidate_grammar_ref)
+    assert OwnerStateProjection.from_blocked_authority_refusal(
+        witness=witness).retained_state == BLOCKED_REQUIRED_AUTHORITY
+    # The exact-class rule is applied at the empirical boundary only.
+    assert witness.refusal_type == "Pre553AuthorityError"

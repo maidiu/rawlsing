@@ -1090,9 +1090,17 @@ def capture_empirical_integrity_refusal(
     try:
         RespondentEvent(**kwargs)
     except Pre553IntegrityError as exc:
-        if type(exc).__name__ == "Pre553AuthorityError":
+        # EXACT refusal class only. ``Pre553SemanticCollapseError`` (and any other
+        # subclass) carries a DIFFERENT owner meaning than a plain integrity refusal,
+        # so it must never be certified here as EMPIRICAL_INTEGRITY_REFUSAL. The
+        # captured set is exactly one class, deliberately.
+        if type(exc) is not Pre553IntegrityError:
             raise OwnerProjectionError(
-                "authority refusals are not empirical integrity refusals"
+                "the AT14 empirical integrity refusal must be exactly "
+                f"Pre553IntegrityError; the canonical path raised "
+                f"{type(exc).__name__}, which is a distinct refusal meaning that this "
+                "witness may not certify as INTEGRITY_FAILURE "
+                "(C1-03A-R5-FINAL-REVIEW-BLOCK-REFUSAL-CLASS-001)"
             ) from exc
         supporting: list[ExactRef] = []
         for item in getattr(resolved, "authority_snapshot_refs", ()) or ():

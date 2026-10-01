@@ -1,0 +1,41 @@
+{
+  "schema": "PYAT_C1_03A_R6_BLOCKER_DISPOSITION@1",
+  "blocker": "C1-03A-R5-FINAL-REVIEW-BLOCK-REFUSAL-CLASS-001",
+  "rereview": "agent/reviewer-pyat-hq159-c1-03a-r5-final-rereview-r1 @ bd16efae659fe3c44f700d756a2016f1dd6b246c (CHANGES_REQUIRED)",
+  "verdict": "CORRECTED",
+  "defect": "capture_empirical_integrity_refusal caught `except Pre553IntegrityError as exc` and witnessed the refusal unless the exception was Pre553AuthorityError. Pre553SemanticCollapseError is a canonical subclass of Pre553IntegrityError, so a distinct subclass meaning was certified as EMPIRICAL_INTEGRITY_REFUSAL -> INTEGRITY_FAILURE.",
+  "reproduced_before_repair": {
+    "method": "the reviewer's stateful nested-Mapping pattern, driven against the governed AT14 fixture",
+    "pattern": "a Mapping that behaves normally across the pre-try invocation-binding hash and raises Pre553SemanticCollapseError only during the real RespondentEvent(**body) call",
+    "measured_binding_accesses_before_constructor": 2,
+    "measured_constructor_accesses": 2,
+    "observed_witness_refusal_type": "Pre553SemanticCollapseError",
+    "observed_witness_refusal_kind": "EMPIRICAL_INTEGRITY_REFUSAL",
+    "observed_projected_state": "INTEGRITY_FAILURE",
+    "conclusion": "R5 wrongly certified a distinct subclass meaning as INTEGRITY_FAILURE"
+  },
+  "correction": [
+    "Replaced the Pre553AuthorityError name check with an exact runtime-type check: only an exception whose type IS Pre553IntegrityError may mint this witness.",
+    "Any subclass, including Pre553SemanticCollapseError, is converted to a typed fail-closed OwnerProjectionError citing C1-03A-R5-FINAL-REVIEW-BLOCK-REFUSAL-CLASS-001, with the subclass preserved as __cause__.",
+    "The captured set is exactly one class; the meaning was not widened and no new semantic state was created.",
+    "Pre553AuthorityError is still refused at this boundary, now by the exact-type rule rather than by class-name comparison, which is strictly stronger."
+  ],
+  "diff_size": {
+    "file": "rawlsing_next/pre553_analytical_state_and_route.py",
+    "insertions": 10,
+    "deletions": 2
+  },
+  "untouched": {
+    "truthful_respondent_event_owner_label": true,
+    "release_object_family_provenance": true,
+    "discovery_refusal_handling": true,
+    "g5": true,
+    "at15": true,
+    "at16": true,
+    "at14_fixture": true,
+    "all_owner_modules": true
+  },
+  "owner_modules_modified": [],
+  "unexpected_broader_defect": false,
+  "architecture_warrant": false
+}

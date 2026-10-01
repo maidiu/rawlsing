@@ -1,0 +1,44 @@
+{
+  "schema": "PYAT_C1_03A_R6_EXACT_REFUSAL_CLASS_RECEIPT@1",
+  "law": "At this exact AT14 boundary the empirical-integrity refusal witness may be minted only from an exception whose exact runtime type is Pre553IntegrityError. No subclass may mint it.",
+  "captured_set": {
+    "exact_type": "Pre553IntegrityError",
+    "cardinality": 1,
+    "widened": false,
+    "new_semantic_state_created": false
+  },
+  "refused_subclasses": [
+    {
+      "type": "Pre553SemanticCollapseError",
+      "reason": "a forbidden cross-ontology substitution is a different owner meaning from a stale sealed identity"
+    },
+    {
+      "type": "Pre553AuthorityError",
+      "reason": "a required-authority refusal, refused by exact-type rule at this boundary"
+    }
+  ],
+  "enforcement_point": "except Pre553IntegrityError as exc: -> if type(exc) is not Pre553IntegrityError: raise OwnerProjectionError(...) from exc",
+  "exception_cause_preserved": true,
+  "official_subclass_hostile": {
+    "construction": "_R6StatefulMapping: benign for the first accesses so the pre-try invocation-binding canonicalization completes, then raises Pre553SemanticCollapseError during the real RespondentEvent(**body) call",
+    "not_a_hand_supplied_exception": true,
+    "proves_no_witness_minted": true,
+    "proves_no_integrity_failure_projection": true,
+    "proves_typed_fail_closed": true,
+    "proves_constructor_path_traversal": "the binding hash consumed successful accesses before the hostile began raising, so the refusal necessarily occurred inside the try block"
+  },
+  "retained_proofs": {
+    "1_base_class_stale_identity_still_mints_lawful_witness": true,
+    "2_truthful_owner_label_unchanged": "rawlsing_next.pre553_empirical_objects.RespondentEvent (canonical integrity construction)",
+    "3_release_object_family_gates_unchanged": true,
+    "4_bare_exception_minting_closed": true,
+    "5_discovery_refusal_authentic_and_unchanged": true,
+    "6_g5_closed": true,
+    "7_at15_green": true,
+    "8_at16_54_6_supported": true,
+    "9_producer_composition_consumer_green": true,
+    "10_c1_02_untouched": true
+  },
+  "owner_modules_modified": [],
+  "fixture_modified": false
+}
