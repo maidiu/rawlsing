@@ -1,0 +1,83 @@
+{
+  "schema": "PYAT_C1_03A_TRUST_BOUNDARY_RECEIPT@1",
+  "summary": "The three derived types are now factory-only and fail closed. There is no caller-supplied retained state, no projection-logic injection point, no exception-name heuristic, and no way to reach a learned route without an owner-derived obligation.",
+  "enforcement_points": [
+    {
+      "type": "OwnerStateProjection",
+      "guard": "__post_init__ exact _TRUST_TOKEN identity",
+      "refused": "direct construction with any caller-chosen retained_state",
+      "exception": "OwnerProjectionError citing C1-03A-REVIEW-BLOCK-STATE-PROJECTION-001"
+    },
+    {
+      "type": "OwnerStateProjection",
+      "guard": "derive/derive_fn removed from the class",
+      "refused": "any caller-supplied projection logic",
+      "exception": "AttributeError / no such parameter"
+    },
+    {
+      "type": "RouteObligation",
+      "guard": "__post_init__ exact _TRUST_TOKEN identity",
+      "refused": "direct construction",
+      "exception": "OwnerProjectionError citing C1-03A-REVIEW-BLOCK-ROUTE-DERIVATION-001"
+    },
+    {
+      "type": "RecursiveCoverageCustody",
+      "guard": "__post_init__ exact _TRUST_TOKEN identity",
+      "refused": "direct construction",
+      "exception": "OwnerProjectionError citing C1-03A-REVIEW-BLOCK-HANDOFF-COVERAGE-001"
+    },
+    {
+      "type": "RecursiveCoverageCustody.from_handoff",
+      "guard": "exact type is RecursiveBranchHandoff",
+      "refused": "duck-typed or fabricated handoff object",
+      "exception": "OwnerProjectionError"
+    },
+    {
+      "type": "build_state_route_result",
+      "guard": "LEARNED route requires a non-None obligation",
+      "refused": "LEARNED_OR_ADJUDICATED_REQUIRED with route_obligation=None",
+      "exception": "RouteLegitimacyError citing C1-03A-REVIEW-BLOCK-ROUTE-DERIVATION-001"
+    },
+    {
+      "type": "assert_route_not_laundered",
+      "guard": "isinstance over a token-guarded type",
+      "refused": "forged obligation",
+      "exception": "cannot be constructed in the first place"
+    }
+  ],
+  "typed_owner_factories": {
+    "from_empirical_fact": "classify_empirical_cells(fact.typed_state, fact.complete_cell_semantic_projection)",
+    "from_discovery_receipt": "classify_discovery_receipt_state(typed_state, coverage_state) with receipt/coverage cross-check",
+    "from_adaptive_result": "classify_adaptive_coverage(completeness_state); carries the owner's own unvisited/visited/determinant refs",
+    "from_recursive_handoff": "a real handoff plus its owner-derived coverage custody -> SUPPORTED",
+    "from_empirical_integrity_refusal": "exact type Pre553IntegrityError -> INTEGRITY_FAILURE",
+    "from_blocked_authority_refusal": "exact type Pre553AuthorityError -> BLOCKED_REQUIRED_AUTHORITY"
+  },
+  "refusal_typing": {
+    "law": "exact type identity only",
+    "integrity_refusal_type": "rawlsing_next.pre553_empirical_objects.Pre553IntegrityError",
+    "blocked_refusal_type": "rawlsing_next.pre553_empirical_authority.Pre553AuthorityError",
+    "subclass_hazard": "Pre553AuthorityError subclasses Pre553IntegrityError, so an isinstance check would collapse BLOCKED_REQUIRED_AUTHORITY into INTEGRITY_FAILURE. Exact-type identity is required, and the integrity factory refuses a Pre553AuthorityError outright.",
+    "removed": "from_owner_refusal and all class-name substring classification",
+    "arbitrary_exception_default_to_blocked": false
+  },
+  "custody_identity": {
+    "handoff_ref": "owner handoff.ref",
+    "coverage_record_ref": "exactly handoff.evaluated_frontier_ref; caller cannot substitute",
+    "handoff_scope_identity": "deterministic content hashes of candidate_universe_definition, winning_predicate, discovery_authority_ref, branch_replay_binding",
+    "completeness_state": "REMOVED - RecursiveBranchHandoff does not own a completeness grade"
+  },
+  "preserved_from_c4e37038": {
+    "at16_54_6_is_SUPPORTED_never_OBSERVED_ZERO": true,
+    "eight_negative_states_distinct": true,
+    "real_adaptive_unvisited_owner_derived": true,
+    "genuine_admitted_learned_route_binds_rule_receipt_authority": true,
+    "failed_or_denied_structural_routes_do_not_launder_to_direct": true,
+    "positive_recursive_handoff_requires_exact_coverage_custody": true,
+    "producer_to_c1_composition_to_named_consumer_path_real": true,
+    "c1_02_untouched": true
+  },
+  "existing_owners_modified": [],
+  "new_semantic_or_model_authority_invented": false,
+  "architecture_warrant": false
+}

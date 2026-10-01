@@ -1,0 +1,50 @@
+{
+  "schema": "PYAT_C1_03A_TRUST_BOUNDARY_EXECUTION_RECEIPT@1",
+  "interpreter": "/tmp/c1-01-r8-release-spine-venv/bin/python",
+  "python": "3.12.14",
+  "pytest": "9.1.1",
+  "command": "pytest -q <the ten commissioned files>",
+  "files": [
+    "rawlsing_next/tests/test_pre553_analytical_state_and_route.py",
+    "rawlsing_next/tests/test_pre553_analytical_composition.py",
+    "rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py",
+    "rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py",
+    "rawlsing_next/tests/test_pre553_empirical_query.py",
+    "rawlsing_next/tests/test_pre553_discovery_exact.py",
+    "rawlsing_next/tests/test_pre553_discovery_adaptive.py",
+    "rawlsing_next/tests/test_pre553_discovery_adaptive_admission.py",
+    "rawlsing_next/tests/test_pre553_recursive_handoff.py",
+    "rawlsing_next/tests/test_pre553_structural_admission.py"
+  ],
+  "counts": {
+    "c1_03a_state_and_route": 48,
+    "analytical_composition": 13,
+    "composition_higher_order": 35,
+    "positioned_subject_possibility": 13,
+    "empirical_query": 32,
+    "discovery_exact": 14,
+    "discovery_adaptive": 8,
+    "discovery_adaptive_admission": 3,
+    "recursive_handoff": 2,
+    "structural_admission": 17,
+    "total_passed": 185,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "wall_time_seconds": 10.58,
+    "per_file_sum": 185
+  },
+  "delta_from_prior_repair": {
+    "prior_total": 175,
+    "now": 185,
+    "new_courts": 11,
+    "replaced_courts": 1,
+    "note": "11 new trust-boundary hostiles added; the 1 replaced court was the learned-label acceptance court HQ required to become a refusal hostile."
+  },
+  "historical_evidence_preserved": {
+    "c4e37038_total": 175,
+    "still_passing": true
+  },
+  "wider_regression_sweep_claimed": false,
+  "wider_regression_sweep_note": "Only the ten commissioned files were executed. No broader sweep is claimed."
+}

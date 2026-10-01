@@ -1,0 +1,79 @@
+{
+  "schema": "PYAT_C1_03A_TRUST_BOUNDARY_DISPOSITION@1",
+  "disposition": "PASS_C1_03A_TRUST_BOUNDARY_CORRECTED__INDEPENDENT_REREVIEW_REQUIRED",
+  "base": "c4e37038add8fce1119db62b523f1529182547a9",
+  "method": "Every HQ counterexample was reproduced against this branch's owner BEFORE repair; all four reproduced exactly.",
+  "blockers": {
+    "A_projection_trust_moved_outward": {
+      "verdict": "CORRECTED",
+      "reproduced": "OwnerStateProjection(owner=..., producer_state='SUPPORTED', retained_state='VALID_EMPTY', ...) .as_evidence() minted trusted ProducerStateEvidence. OwnerStateProjection.derive(derive_fn=<caller fn>) returned a caller-chosen retained state.",
+      "correction": [
+        "OwnerStateProjection is token-guarded: direct construction raises OwnerProjectionError.",
+        "The generic derive/derive_fn injection point was DELETED. No public, private or keyword route accepts arbitrary projection logic; each typed factory calls its own fixed classification function directly.",
+        "Typed factories only: from_empirical_fact, from_discovery_receipt, from_adaptive_result, from_recursive_handoff, from_empirical_integrity_refusal, from_blocked_authority_refusal.",
+        "The fixture no longer reconstructs a projection to substitute supporting_refs. from_adaptive_result now carries the owner's own unvisited, visited and determinant refs as explicit fields."
+      ]
+    },
+    "B_owner_refusal_projection_overbroad": {
+      "verdict": "CORRECTED",
+      "reproduced": "An arbitrary ValueError minted BLOCKED_REQUIRED_AUTHORITY, and an exception whose name merely contained 'Integrity' was classified as INTEGRITY_FAILURE by class-name substring.",
+      "correction": [
+        "Refusals are classified by EXACT type identity, never by class-name substring and never by default.",
+        "from_empirical_integrity_refusal requires exactly Pre553IntegrityError.",
+        "from_blocked_authority_refusal requires exactly Pre553AuthorityError.",
+        "from_owner_refusal (the heuristic) was removed entirely.",
+        "IMPORTANT: Pre553AuthorityError SUBCLASSES Pre553IntegrityError. An isinstance-based check would silently collapse BLOCKED_REQUIRED_AUTHORITY into INTEGRITY_FAILURE, so exact-type identity is mandatory. The integrity factory actively refuses a Pre553AuthorityError and directs the caller to the blocked factory; a court asserts the subclass relation and the refusal."
+      ]
+    },
+    "C_route_obligation_forgeable_or_omittable": {
+      "verdict": "CORRECTED",
+      "reproduced": "A directly constructed RouteObligation passed assert_route_not_laundered's isinstance gate, and build_state_route_result accepted route_class=LEARNED_OR_ADJUDICATED_REQUIRED with route_obligation=None.",
+      "correction": [
+        "RouteObligation is token-guarded; only from_structural_admission may mint one.",
+        "A LEARNED_OR_ADJUDICATED_REQUIRED envelope with no obligation now raises RouteLegitimacyError.",
+        "A competent DIRECT_EMPIRICAL route still requires no obligation and carries no authority.",
+        "The positive factory still binds receipt, authority, exact empirical fact, exact rule hash when ADMITTED, receipt-declared target use, decision/reason and blocking refs.",
+        "For ADMITTED, a requested-use claim is not accepted as granted authority: target_use is taken from the receipt.",
+        "For a negative evaluation whose receipt truthfully says UNRESOLVED_STRUCTURAL_USE, that exact value is preserved; the requested use is never invented as granted authority.",
+        "The old acceptance court test_at15_route_label_alone_creates_no_authority was REPLACED by the hostile test_repair_hq_a_learned_route_without_an_obligation_is_refused."
+      ]
+    },
+    "D_coverage_custody_forgeable": {
+      "verdict": "CORRECTED",
+      "reproduced": "A directly constructed RecursiveCoverageCustody with a real handoff_ref but an arbitrary coverage_record_ref and arbitrary completeness_state was accepted and authorized the envelope.",
+      "correction": [
+        "RecursiveCoverageCustody is token-guarded; only from_handoff may mint one.",
+        "from_handoff requires the exact RecursiveBranchHandoff type (not duck typing).",
+        "The coverage record is always handoff.evaluated_frontier_ref; a caller cannot substitute another ref.",
+        "The custody binds the handoff's internally retained scope identity (candidate universe definition, winning predicate, discovery authority, branch replay binding) as deterministic content hashes.",
+        "completeness_state was REMOVED from the custody entirely. RecursiveBranchHandoff does not own a completeness grade, so recording one let a caller assert coverage completeness the owner never produced. from_handoff no longer accepts such a parameter.",
+        "Added OwnerStateProjection.from_recursive_handoff(handoff, custody) so positive handoff state is never built by direct projection construction; custody is a required argument."
+      ]
+    }
+  },
+  "court_delta": {
+    "prior_total": 175,
+    "c1_03a_courts_prior": 38,
+    "c1_03a_courts_now": 48,
+    "accepted_retained": 37,
+    "new_courts": 11,
+    "new_court_names": [
+      "test_repair_hq_a_learned_route_without_an_obligation_is_refused",
+      "test_repair_hq_a_direct_projection_construction_cannot_mint_evidence",
+      "test_repair_hq_a_public_derive_helper_is_gone",
+      "test_repair_hq_b_arbitrary_exceptions_cannot_mint_governed_refusals",
+      "test_repair_hq_b_real_refusals_stay_two_distinct_states",
+      "test_repair_hq_c_forged_route_obligation_cannot_establish_legitimacy",
+      "test_repair_hq_c_relabelling_direct_to_learned_never_produces_a_lawful_route",
+      "test_repair_hq_d_forged_custody_cannot_authorize_a_handoff",
+      "test_repair_hq_d_custody_records_no_completeness_grade",
+      "test_repair_hq_d_same_handoff_with_wrong_coverage_ref_fails",
+      "test_repair_hq_d_handoff_projection_requires_real_custody"
+    ],
+    "replaced_courts": [
+      "test_at15_route_label_alone_creates_no_authority"
+    ],
+    "replacement_reason": "HQ blocker C required the learned-label acceptance court be replaced by a refusal hostile.",
+    "total_now": 185
+  }
+}

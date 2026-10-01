@@ -6,6 +6,8 @@ satisfy AT16.
 """
 from __future__ import annotations
 
+import inspect
+
 import pytest
 
 from rawlsing_next.pre553_analytical_state_and_route import (
@@ -32,8 +34,9 @@ from rawlsing_next.pre553_analytical_state_and_route import (
     RouteObligation,
     RecursiveCoverageCustody,
     OwnerProjectionError,
-    ProducerStateEvidence,
+    OWNER_EMPIRICAL_PROJECTION_LABEL,
     OWNER_RECURSIVE_HANDOFF_LABEL,
+    ProducerStateEvidence,
     SUPPORTED_BASELINE,
     classify_adaptive_coverage,
     classify_discovery_receipt_state,
@@ -205,7 +208,7 @@ def test_at14_blocked_by_absent_or_denying_authority_is_its_own_state():
     from rawlsing_next.pre553_discovery_exact import execute_exact_bounded_discovery
 
     data = fx.blocked_required_authority_fixture()
-    projection, data = fx.project_owner_refusal(
+    projection, data = fx.project_blocked_authority_refusal(
         "blocked_required_authority_fixture",
         producer_ref=data["authority"].candidate_grammar_ref,
     )
@@ -231,7 +234,7 @@ def test_at14_blocked_by_absent_or_denying_authority_is_its_own_state():
 
 def test_at14_integrity_failure_cannot_become_valid_empty():
     """AT14(8): INTEGRITY_FAILURE stays integrity failure."""
-    projection, data = fx.project_owner_refusal("integrity_failure_fixture")
+    projection, data = fx.project_empirical_integrity_refusal("integrity_failure_fixture")
     assert data["exception_type"] == "Pre553IntegrityError"
     retained = projection.retained_state
     assert retained == INTEGRITY_FAILURE
@@ -299,14 +302,10 @@ def test_at14_positive_recursive_handoff_is_not_the_coverage_record():
 
     # A positive handoff, correctly labelled, requires retained custody of the
     # exact coverage record it was selected from.
-    handoff_projection = OwnerStateProjection(
-        owner=OWNER_RECURSIVE_HANDOFF_LABEL,
-        producer_state="DISCOVERED_RESULT_SUPPORTED",
-        retained_state=SUPPORTED_BASELINE,
-        projection_law="positive recursive handoff selection (custody required)",
-        reason="positive recursive handoff",
-        producer_ref=handoff.ref,
-    )
+    # Positive handoff state is never built by direct OwnerStateProjection(...).
+    handoff_projection, handoff_custody = fx.project_recursive_handoff(handoff)
+    assert handoff_projection.owner == OWNER_RECURSIVE_HANDOFF_LABEL
+    assert handoff_projection.retained_state == SUPPORTED_BASELINE
     with pytest.raises(OwnerProjectionError, match="requires retained custody"):
         build_state_route_result(
             route_class=ROUTE_DIRECT_EMPIRICAL,
@@ -320,7 +319,6 @@ def test_at14_positive_recursive_handoff_is_not_the_coverage_record():
     # coverage record is carried into the envelope identity.
     custody = fx.recursive_handoff_custody(
         handoff,
-        completeness_state="COMPLETE_FOR_EXACT_DECLARED_FRONTIER",
         supporting=(gen1.discovery_result.evaluated_frontier_ref,),
     )
     result = build_state_route_result(
@@ -333,33 +331,33 @@ def test_at14_positive_recursive_handoff_is_not_the_coverage_record():
     )
     assert result.coverage_record_ref == gen1.discovery_result.evaluated_frontier_ref
     assert result.coverage_custody_hash == custody.custody_hash
-    # Dropping custody changes the envelope identity, so it cannot be discarded.
-    without = build_state_route_result(
+    # Custody content is inside the envelope identity, so it cannot be dropped
+    # silently: a custody record over different retained supporting refs changes it.
+    wider = fx.recursive_handoff_custody(
+        handoff,
+        supporting=(gen1.discovery_result.evaluated_frontier_ref, receipts[0].ref),
+    )
+    assert wider.custody_hash != custody.custody_hash
+    other = build_state_route_result(
         route_class=ROUTE_DIRECT_EMPIRICAL,
-        producer_evidence=[
-            handoff_projection.as_evidence().__class__(
-                **{
-                    **{
-                        f: getattr(handoff_projection.as_evidence(), f)
-                        for f in handoff_projection.as_evidence().__dataclass_fields__
-                        if f != "_token"
-                    },
-                    "_token": handoff_projection.as_evidence()._token,
-                }
-            )
-        ],
+        producer_evidence=[handoff_projection.as_evidence()],
         producer_refs=[handoff.ref],
         consumer_disposition=fx.consumer_disposition_for(SUPPORTED_BASELINE),
-        reason="positive handoff with retained coverage custody",
-        coverage_custody=RecursiveCoverageCustody(
-            handoff_ref=handoff.ref,
-            coverage_record_ref=handoff.evaluated_frontier_ref,
-            completeness_state="DIFFERENT_COMPLETENESS",
-        ),
+        reason="positive handoff with wider retained coverage custody",
+        coverage_custody=wider,
     )
-    assert without.coverage_custody_hash != result.coverage_custody_hash
+    assert other.coverage_custody_hash != result.coverage_custody_hash
+    assert other.envelope_identity_hash != result.envelope_identity_hash
 
-    # A custody record naming a different handoff is refused outright.
+    # A custody record naming a different handoff is refused outright. The
+    # foreign custody is itself owner-derived, so this proves the producer-ref
+    # cross-check rather than a forgery refusal.
+    gen2, _r2 = _recursive_generation(
+        source, qauth, _atom("PARENT2", parent, "BRANCH2"), parent,
+        x1, "RESPONSE2", query, tag="c1-03a-handoff-foreign",
+        operation="I03-OP-c1-03a-handoff-foreign",
+    )
+    foreign_custody = fx.recursive_handoff_custody(gen2.handoffs[0])
     with pytest.raises(OwnerProjectionError, match="not among the producer refs"):
         build_state_route_result(
             route_class=ROUTE_DIRECT_EMPIRICAL,
@@ -367,11 +365,7 @@ def test_at14_positive_recursive_handoff_is_not_the_coverage_record():
             producer_refs=[handoff.ref],
             consumer_disposition=fx.consumer_disposition_for(SUPPORTED_BASELINE),
             reason="custody names a foreign handoff",
-            coverage_custody=RecursiveCoverageCustody(
-                handoff_ref=handoff.evaluated_frontier_ref,
-                coverage_record_ref=handoff.evaluated_frontier_ref,
-                completeness_state="COMPLETE_FOR_EXACT_DECLARED_FRONTIER",
-            ),
+            coverage_custody=foreign_custody,
         )
 
     # A retained positive may not smuggle in unvisited territory either.
@@ -586,22 +580,30 @@ def test_at15_route_obligation_must_be_owner_derived():
         )
 
 
-def test_at15_route_label_alone_creates_no_authority():
-    """AT15: the route label must not itself confer authority or support."""
+def test_repair_hq_a_learned_route_without_an_obligation_is_refused():
+    """AT15 hostile: a learned route label alone is not legitimacy.
+
+    Replaces the earlier court that merely documented the label. HQ blocker C
+    requires the stronger law: a LEARNED_OR_ADJUDICATED_REQUIRED envelope must
+    *carry* an owner-derived obligation, or it is refused outright.
+    """
     projection, data = fx.project_empirical("observed_zero_fixture")
 
+    with pytest.raises(RouteLegitimacyError, match="must carry a valid owner-derived"):
+        build_state_route_result(
+            route_class=ROUTE_LEARNED_OR_ADJUDICATED_REQUIRED,
+            producer_evidence=[projection.as_evidence()],
+            producer_refs=[data["fact"].ref],
+            consumer_disposition=fx.consumer_disposition_for(OBSERVED_ZERO),
+            reason="learned label with no owner-derived obligation",
+        )
+
+    # A competent direct empirical product still needs no obligation at all.
     direct = _envelope(projection, route=ROUTE_DIRECT_EMPIRICAL,
                        fixture_refs=(data["fact"].ref,))
-    learned = _envelope(projection, route=ROUTE_LEARNED_OR_ADJUDICATED_REQUIRED,
-                        fixture_refs=(data["fact"].ref,))
-    assert direct.envelope_identity_hash != learned.envelope_identity_hash
-    assert direct.authority_refs == () and learned.authority_refs == ()
-    # Labelling a route never turns a negative state into a positive one.
-    assert direct.retained_analytical_state == learned.retained_analytical_state
-    assert direct.negative_claim_authorized is False
-    # Neither envelope claims an obligation it did not derive from an owner.
     assert direct.route_obligation_hash is None
-    assert learned.route_obligation_hash is None
+    assert direct.authority_refs == ()
+    assert direct.negative_claim_authorized is False
 
 
 # ===========================================================================
@@ -756,7 +758,7 @@ def test_at16_negative_states_are_not_coerced_into_a_consumer_state():
         assert result.consumer_disposition.consumer_result_state is None
         assert result.negative_claim_authorized is False
 
-    integrity_projection, integrity_data = fx.project_owner_refusal(
+    integrity_projection, integrity_data = fx.project_empirical_integrity_refusal(
         "integrity_failure_fixture"
     )
     assert integrity_projection.retained_state == INTEGRITY_FAILURE
@@ -819,7 +821,7 @@ def test_repair_blocker1_retained_state_is_derived_from_the_real_owner_object():
     assert receipt.retained_state == UNDERPOWERED
     adaptive, _ = fx.project_adaptive()
     assert adaptive.retained_state == UNVISITED
-    refusal, _ = fx.project_owner_refusal("integrity_failure_fixture")
+    refusal, _ = fx.project_empirical_integrity_refusal("integrity_failure_fixture")
     assert refusal.retained_state == INTEGRITY_FAILURE
 
 
@@ -859,10 +861,10 @@ def test_repair_blocker1_distinct_negative_states_remain_distinct():
         fx.project_empirical("unresolved_fixture")[0].retained_state,
         fx.project_adaptive()[0].retained_state,
         fx.project_empirical("noncomparable_fixture")[0].retained_state,
-        fx.blocked_required_authority_fixture() and fx.project_owner_refusal(
+        fx.blocked_required_authority_fixture() and fx.project_blocked_authority_refusal(
             "blocked_required_authority_fixture"
         )[0].retained_state,
-        fx.project_owner_refusal("integrity_failure_fixture")[0].retained_state,
+        fx.project_empirical_integrity_refusal("integrity_failure_fixture")[0].retained_state,
     }
     assert reached == set(MANDATORY_AT14_STATES)
     assert len(reached) == 8
@@ -985,14 +987,7 @@ def test_repair_blocker3_positive_handoff_without_coverage_custody_fails():
     )
     handoff = gen1.handoffs[0]
 
-    projection = OwnerStateProjection(
-        owner=OWNER_RECURSIVE_HANDOFF_LABEL,
-        producer_state="DISCOVERED_RESULT_SUPPORTED",
-        retained_state=SUPPORTED_BASELINE,
-        projection_law="positive recursive handoff selection (custody required)",
-        reason="positive recursive handoff",
-        producer_ref=handoff.ref,
-    )
+    projection, custody = fx.project_recursive_handoff(handoff)
     with pytest.raises(OwnerProjectionError, match="requires retained custody"):
         build_state_route_result(
             route_class=ROUTE_DIRECT_EMPIRICAL,
@@ -1030,14 +1025,7 @@ def test_repair_blocker3_custody_is_bound_into_the_envelope_identity():
     handoff = gen1.handoffs[0]
     frontier = gen1.discovery_result.evaluated_frontier_ref
     custody = fx.recursive_handoff_custody(handoff, supporting=(frontier,))
-    projection = OwnerStateProjection(
-        owner=OWNER_RECURSIVE_HANDOFF_LABEL,
-        producer_state="DISCOVERED_RESULT_SUPPORTED",
-        retained_state=SUPPORTED_BASELINE,
-        projection_law="positive recursive handoff selection with custody",
-        reason="positive recursive handoff",
-        producer_ref=handoff.ref,
-    )
+    projection, custody = fx.project_recursive_handoff(handoff)
     result = build_state_route_result(
         route_class=ROUTE_DIRECT_EMPIRICAL,
         producer_evidence=[projection.as_evidence()],
@@ -1079,14 +1067,7 @@ def test_repair_blocker3_mismatched_coverage_ref_is_refused():
     custody = fx.recursive_handoff_custody(
         handoff, supporting=(gen1.discovery_result.evaluated_frontier_ref,)
     )
-    projection = OwnerStateProjection(
-        owner=OWNER_RECURSIVE_HANDOFF_LABEL,
-        producer_state="DISCOVERED_RESULT_SUPPORTED",
-        retained_state=SUPPORTED_BASELINE,
-        projection_law="positive recursive handoff selection with custody",
-        reason="positive recursive handoff",
-        producer_ref=handoff.ref,
-    )
+    projection, custody = fx.project_recursive_handoff(handoff)
     from rawlsing_next.pre553_empirical_objects import ExactRef
 
     with pytest.raises(OwnerProjectionError, match="disagrees with the owner-derived"):
@@ -1121,3 +1102,265 @@ def test_repair_unvisited_adaptive_witness_is_preserved():
     assert result.coverage_state == "PARTIAL_BUDGET_EXHAUSTED"
     assert result.unvisited_refs == adaptive.unvisited_unit_refs
     assert result.negative_claim_authorized is False
+
+
+# ===========================================================================
+# HQ152 trust-boundary correction (R2) hostiles
+#
+# The trust boundary moved outward: the three derived types are now factory-only
+# and fail closed, refusals are exact typed owner contracts, and a learned route
+# requires an owner-derived obligation.
+# ===========================================================================
+
+
+def test_repair_hq_a_direct_projection_construction_cannot_mint_evidence():
+    """HQ-A hostile: the exact caller-forged projection cannot mint evidence."""
+    projection, data = fx.project_empirical("observed_zero_fixture")
+    ref = data["fact"].ref
+
+    for forged_state in (VALID_EMPTY, SUPPORTED_BASELINE, OBSERVED_ZERO):
+        with pytest.raises(OwnerProjectionError, match="may only be built by one of its typed owner"):
+            OwnerStateProjection(
+                owner=OWNER_EMPIRICAL_PROJECTION_LABEL,
+                producer_state="SUPPORTED",
+                retained_state=forged_state,
+                projection_law="caller-chosen law",
+                reason="caller label",
+                producer_ref=ref,
+            ).as_evidence()
+
+    # The typed factory still works, and the genuine projection is trustworthy.
+    assert projection.retained_state == OBSERVED_ZERO
+    assert projection.as_evidence().retained_state == OBSERVED_ZERO
+
+
+def test_repair_hq_a_public_derive_helper_is_gone():
+    """HQ-A: no public derive/derive_fn injection point survives."""
+    assert not hasattr(OwnerStateProjection, "derive")
+    for name, member in vars(OwnerStateProjection).items():
+        if inspect.isfunction(member):
+            params = inspect.signature(member).parameters
+            assert "derive_fn" not in params, f"{name} still accepts derive_fn"
+            assert "owner_object" not in params, f"{name} still accepts owner_object"
+
+
+def test_repair_hq_b_arbitrary_exceptions_cannot_mint_governed_refusals():
+    """HQ-B hostile: no exception-name heuristics, no BLOCKED default."""
+    _, integrity = fx.project_empirical_integrity_refusal("integrity_failure_fixture")
+    ref = integrity["corrupted_object_ref"]
+
+    # An arbitrary ValueError cannot mint BLOCKED.
+    with pytest.raises(OwnerProjectionError, match="requires the exact current authority"):
+        OwnerStateProjection.from_blocked_authority_refusal(
+            exception=ValueError("nope"), reason="caller", producer_ref=ref
+        )
+    # An arbitrary RuntimeError cannot mint BLOCKED either.
+    with pytest.raises(OwnerProjectionError, match="never defaulted to a governed BLOCKED"):
+        OwnerStateProjection.from_blocked_authority_refusal(
+            exception=RuntimeError("nope"), reason="caller", producer_ref=ref
+        )
+    # An exception whose NAME contains "Integrity" cannot mint INTEGRITY_FAILURE,
+    # because refusals are never classified by class-name substring.
+    with pytest.raises(OwnerProjectionError, match="never classified by exception class-name"):
+        OwnerStateProjection.from_empirical_integrity_refusal(
+            exception=ValueError("Integrity problem"), reason="caller", producer_ref=ref
+        )
+
+    class IntegrityFakeError(Exception):
+        pass
+
+    with pytest.raises(OwnerProjectionError, match="requires the exact empirical owner"):
+        OwnerStateProjection.from_empirical_integrity_refusal(
+            exception=IntegrityFakeError("looks serious"), reason="caller", producer_ref=ref
+        )
+
+
+def test_repair_hq_b_real_refusals_stay_two_distinct_states():
+    """HQ-B: the two competent refusal paths remain exact and distinct."""
+    from rawlsing_next.pre553_empirical_authority import Pre553AuthorityError
+    from rawlsing_next.pre553_empirical_objects import Pre553IntegrityError
+
+    integrity, _ = fx.project_empirical_integrity_refusal("integrity_failure_fixture")
+    blocked, _ = fx.project_blocked_authority_refusal("blocked_required_authority_fixture")
+    assert integrity.retained_state == INTEGRITY_FAILURE
+    assert blocked.retained_state == BLOCKED_REQUIRED_AUTHORITY
+    assert integrity.retained_state != blocked.retained_state
+    # Each names the exact owner type it was derived from.
+    assert "Pre553IntegrityError" in integrity.projection_law
+    assert "Pre553AuthorityError" in blocked.projection_law
+
+    # Pre553AuthorityError SUBCLASSES Pre553IntegrityError, so an isinstance-based
+    # check would collapse these two states. Exact-type identity must keep them
+    # apart, and the integrity factory must refuse the authority refusal outright.
+    assert issubclass(Pre553AuthorityError, Pre553IntegrityError)
+    from rawlsing_next.pre553_empirical_objects import ExactRef as _Ref
+
+    ref = _Ref("EmpiricalFact@1.0.0", "urn:t:authority-refused", "c" * 64)
+    with pytest.raises(OwnerProjectionError, match="not an integrity refusal"):
+        OwnerStateProjection.from_empirical_integrity_refusal(
+            exception=Pre553AuthorityError("denied"), reason="caller", producer_ref=ref
+        )
+
+
+def test_repair_hq_c_forged_route_obligation_cannot_establish_legitimacy():
+    """HQ-C hostile: RouteObligation is factory-only."""
+    evaluation = fx.structural_admission_evaluation(
+        admission_state="ALLOW", fact_state="SUPPORTED", tag="hq-c-forged"
+    )
+    real = RouteObligation.from_structural_admission(
+        evaluation, requested_use="STRUCTURAL_MEDIATION_INPUT"
+    )
+    assert real.is_positive_admission
+    # Relabelling the same forged shape cannot reach the gate.
+    with pytest.raises(OwnerProjectionError, match="may only be built by RouteObligation"):
+        RouteObligation(
+            owner="caller",
+            requested_use="STRUCTURAL_MEDIATION_INPUT",
+            target_use="STRUCTURAL_MEDIATION_INPUT",
+            decision_state="ADMITTED",
+            reason_code="caller-asserted",
+            required_route_class=ROUTE_DIRECT_EMPIRICAL,
+            relation_ref=dict(real.relation_ref),
+            admission_receipt_ref=dict(real.admission_receipt_ref),
+            admission_authority_ref=dict(real.admission_authority_ref),
+            admission_rule_ref=dict(real.admission_rule_ref),
+            blocking_refs=(),
+        )
+    assert_route_not_laundered(route_class=ROUTE_LEARNED_OR_ADJUDICATED_REQUIRED, obligation=real)
+
+
+def test_repair_hq_c_relabelling_direct_to_learned_never_produces_a_lawful_route():
+    """HQ-C: a competent direct empirical product cannot be relabelled learned."""
+    projection, data = fx.project_empirical("observed_zero_fixture")
+    # Direct is lawful with no authority and no obligation.
+    direct = _envelope(projection, route=ROUTE_DIRECT_EMPIRICAL,
+                       fixture_refs=(data["fact"].ref,))
+    assert direct.authority_refs == ()
+    assert direct.route_obligation_hash is None
+    # Learned for the same competent product is refused: no owner-derived
+    # obligation exists for it, so the label alone cannot create legitimacy.
+    with pytest.raises(RouteLegitimacyError, match="must carry a valid owner-derived"):
+        build_state_route_result(
+            route_class=ROUTE_LEARNED_OR_ADJUDICATED_REQUIRED,
+            producer_evidence=[projection.as_evidence()],
+            producer_refs=[data["fact"].ref],
+            consumer_disposition=fx.consumer_disposition_for(SUPPORTED_BASELINE),
+            reason="direct product relabelled learned",
+        )
+
+
+def test_repair_hq_d_forged_custody_cannot_authorize_a_handoff():
+    """HQ-D hostile: RecursiveCoverageCustody is factory-only."""
+    handoff = _hq_real_handoff("hq-d-forged")
+    custody = fx.recursive_handoff_custody(handoff)
+
+    with pytest.raises(OwnerProjectionError, match="may only be built by RecursiveCoverageCustody"):
+        RecursiveCoverageCustody(
+            handoff_ref=handoff.ref,
+            coverage_record_ref=handoff.evaluated_frontier_ref,
+            handoff_scope_identity={},
+        )
+    # A non-handoff object is refused: custody requires a real handoff.
+    with pytest.raises(OwnerProjectionError, match="requires a real RecursiveBranchHandoff"):
+        RecursiveCoverageCustody.from_handoff(object())
+    # The genuine owner-derived custody still authorizes it.
+    projection, _ = fx.project_recursive_handoff(handoff)
+    result = build_state_route_result(
+        route_class=ROUTE_DIRECT_EMPIRICAL,
+        producer_evidence=[projection.as_evidence()],
+        producer_refs=[handoff.ref],
+        consumer_disposition=fx.consumer_disposition_for(SUPPORTED_BASELINE),
+        reason="real handoff with owner-derived custody",
+        coverage_custody=custody,
+    )
+    assert result.coverage_record_ref == handoff.evaluated_frontier_ref
+
+
+def test_repair_hq_d_custody_records_no_completeness_grade():
+    """HQ-D: custody must not carry a caller-supplied completeness grade.
+
+    The handoff does not own a completeness grade, so the custody has no such
+    field at all; the field must not reappear.
+    """
+    assert "completeness_state" not in {f for f in vars(RecursiveCoverageCustody)}
+    handoff = _hq_real_handoff("hq-d-no-grade")
+    custody = fx.recursive_handoff_custody(handoff)
+    assert "completeness_state" not in custody.identity_material()
+    # And the helper itself refuses to accept one.
+    with pytest.raises(TypeError):
+        fx.recursive_handoff_custody(handoff, completeness_state="COMPLETE")
+
+
+def test_repair_hq_d_same_handoff_with_wrong_coverage_ref_fails():
+    """HQ-D: a caller cannot substitute a different coverage record."""
+    handoff = _hq_real_handoff("hq-d-wrong-ref")
+    custody = fx.recursive_handoff_custody(handoff)
+    assert custody.coverage_record_ref == handoff.evaluated_frontier_ref
+
+    # A custody record built over a foreign frontier is refused by the envelope,
+    # and the handoff projection refuses a custody that names a different handoff.
+    foreign = _hq_real_handoff("hq-d-wrong-ref-foreign")
+    foreign_custody = fx.recursive_handoff_custody(foreign)
+    assert foreign_custody.coverage_record_ref != custody.coverage_record_ref
+    with pytest.raises(OwnerProjectionError, match="names a different handoff"):
+        OwnerStateProjection.from_recursive_handoff(handoff, foreign_custody)
+    projection, _ = fx.project_recursive_handoff(handoff)
+    with pytest.raises(OwnerProjectionError, match="disagrees with the owner-derived custody record"):
+        build_state_route_result(
+            route_class=ROUTE_DIRECT_EMPIRICAL,
+            producer_evidence=[projection.as_evidence()],
+            producer_refs=[handoff.ref],
+            consumer_disposition=fx.consumer_disposition_for(SUPPORTED_BASELINE),
+            reason="declared coverage ref contradicts the custody",
+            coverage_record_ref=foreign.evaluated_frontier_ref,
+            coverage_custody=custody,
+        )
+
+
+def test_repair_hq_d_handoff_projection_requires_real_custody():
+    """HQ-D: positive handoff state comes from the typed factory, never directly."""
+    handoff = _hq_real_handoff("hq-d-typed-projection")
+    with pytest.raises(OwnerProjectionError, match="may only be built by one of its typed owner"):
+        OwnerStateProjection(
+            owner=OWNER_RECURSIVE_HANDOFF_LABEL,
+            producer_state="RECURSIVE_BRANCH_HANDOFF_SELECTED",
+            retained_state=SUPPORTED_BASELINE,
+            projection_law="caller",
+            reason="caller",
+            producer_ref=handoff.ref,
+        )
+    projection, custody = fx.project_recursive_handoff(handoff)
+    assert projection.retained_state == SUPPORTED_BASELINE
+    assert projection.producer_ref == handoff.ref
+    assert custody.handoff_ref == handoff.ref
+
+
+def _hq_real_handoff(tag: str):
+    """Build a real recursive handoff through the actual owner path."""
+    from rawlsing_next.tests.test_pre553_analytical_composition_higher_order import (
+        _depth2_source,
+        _recursive_generation,
+    )
+    from rawlsing_next.tests.test_pre553_discovery_exact import _atom
+    from rawlsing_next.tests.test_pre553_empirical_query import (
+        _branch_predicate,
+        _predicate,
+        _query,
+        _query_authority,
+        _response_leaf,
+    )
+
+    # _recursive_generation builds its own DISCOVERY_FRONTIER authority from the
+    # tag it is given, so it must differ from the query authority tag or the two
+    # snapshots collide on one authority id with different content.
+    source = _depth2_source(tag)
+    qauth = _query_authority(tag)
+    gen_tag = f"{tag}-gen"
+    parent = _branch_predicate(source, qauth, tag=f"{tag}-parent")
+    x1 = _predicate(source, qauth, _response_leaf(source, qauth, "X", 1), tag=f"{tag}-x1")
+    query = _query(source, qauth, parent, ("X",), tag=f"{tag}-xq")
+    gen1, _registry = _recursive_generation(
+        source, qauth, _atom("PARENT", parent, "BRANCH"), parent,
+        x1, "RESPONSE", query, tag=gen_tag, operation=f"I03-OP-{gen_tag}",
+    )
+    return gen1.handoffs[0]

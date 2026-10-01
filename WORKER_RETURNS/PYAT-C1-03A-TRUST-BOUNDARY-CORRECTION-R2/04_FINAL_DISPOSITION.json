@@ -1,0 +1,45 @@
+{
+  "schema": "PYAT_C1_03A_TRUST_BOUNDARY_FINAL_DISPOSITION@1",
+  "disposition": "PASS_C1_03A_TRUST_BOUNDARY_CORRECTED__INDEPENDENT_REREVIEW_REQUIRED",
+  "terminal": "C1_03A_TRUST_BOUNDARY_CORRECTION_RETURNED__HQ_ADJUDICATION_REQUIRED",
+  "branch": "agent/opencode-pyat-hq152-c1-03a-trust-boundary-correction-r2",
+  "base": "c4e37038add8fce1119db62b523f1529182547a9",
+  "hq_blockers": {
+    "A_projection_trust_moved_outward": "CORRECTED",
+    "B_owner_refusal_projection_overbroad": "CORRECTED",
+    "C_route_obligation_forgeable_or_omittable": "CORRECTED",
+    "D_coverage_custody_forgeable": "CORRECTED"
+  },
+  "basis": [
+    "All four HQ blockers were reproduced against this branch's owner before repair; all four reproduced exactly.",
+    "The prior claim 'retained state is always owner-derived' was false at the minting layer: the token guarded the leaf but not the projection that mints it.",
+    "OwnerStateProjection, RouteObligation and RecursiveCoverageCustody are all factory-only and fail closed on direct construction.",
+    "The derive/derive_fn injection point is deleted outright, so no caller can supply arbitrary projection logic.",
+    "Refusals use exact type identity. Pre553AuthorityError subclasses Pre553IntegrityError, so an isinstance check would have collapsed two mandatory states; the integrity factory refuses it outright and a court asserts the relation.",
+    "A learned route now requires an owner-derived obligation; a competent direct route still does not.",
+    "Custody no longer carries a completeness_state, because RecursiveBranchHandoff does not own a completeness grade.",
+    "Positive recursive handoff state comes from OwnerStateProjection.from_recursive_handoff with required custody.",
+    "The fixture no longer reconstructs a projection to substitute supporting_refs; the adaptive factory carries the owner's own refs.",
+    "The learned-label acceptance court was replaced by a refusal hostile, as HQ required.",
+    "The prior 175 remains valid and passing; 11 hostiles added for 185 passed, 0 failed."
+  ],
+  "tests": {
+    "prior": 175,
+    "new_courts": 11,
+    "replaced_courts": 1,
+    "total": 185,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "preserved_from_prior": true,
+  "existing_owners_modified": [],
+  "c1_02_touched": false,
+  "architecture_warrant": false,
+  "authority_or_owner_gap": false,
+  "new_semantic_or_model_authority_invented": false,
+  "wider_regression_sweep_claimed": false,
+  "merge_or_adoption_performed": false,
+  "self_adopted": false,
+  "next_required_action": "Narrow independent rereview of the four C1-03A trust-boundary blockers."
+}

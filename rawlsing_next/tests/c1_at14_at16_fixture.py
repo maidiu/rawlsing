@@ -524,56 +524,55 @@ def project_receipt(fixture_name: str, *, reason: str = ""):
 
 
 def project_adaptive(fixture_name: str = "unvisited_adaptive_fixture", *, reason: str = ""):
-    """Derive an OwnerStateProjection from a real adaptive-owner result."""
+    """Derive an OwnerStateProjection from a real adaptive-owner result.
+
+    The projection now carries the owner's own visited/unvisited/determinant refs
+    itself, so no reconstruction or ``supporting_refs`` substitution happens here.
+    """
     from rawlsing_next.pre553_analytical_state_and_route import OwnerStateProjection
 
     data = globals()[fixture_name]()
     projection = OwnerStateProjection.from_adaptive_result(data["adaptive_result"], reason=reason)
-    projection = projection.__class__(**{
-        **{
-            field: getattr(projection, field)
-            for field in (
-                "owner", "producer_state", "retained_state", "projection_law",
-                "reason", "producer_ref", "coverage_state",
-            )
-        },
-        "supporting_refs": tuple(data["unvisited_refs"]) + (data["determinant_state_ref"],),
-    })
     return projection, data
 
 
-def project_owner_refusal(fixture_name: str, *, producer_ref=None, reason: str = ""):
-    """Derive an OwnerStateProjection from a real owner refusal."""
+def project_empirical_integrity_refusal(fixture_name: str, *, producer_ref=None, reason: str = ""):
+    """Derive INTEGRITY_FAILURE from the real empirical integrity refusal."""
     from rawlsing_next.pre553_analytical_state_and_route import OwnerStateProjection
 
     data = globals()[fixture_name]()
-    if "exception" in data:
-        exception = data["exception"]
-        default_ref = data["corrupted_object_ref"]
-    else:
-        # Owner-refusal-by-execution fixtures raise when the owner is invoked.
-        from rawlsing_next.pre553_discovery_exact import execute_exact_bounded_discovery
+    return OwnerStateProjection.from_empirical_integrity_refusal(
+        exception=data["exception"],
+        reason=reason or data["reason"],
+        producer_ref=producer_ref or data["corrupted_object_ref"],
+    ), data
 
-        exception = None
-        try:
-            execute_exact_bounded_discovery(
-                repository=data["source"]["repo"],
-                discovery_authority=data["authority"],
-                authority_registry=data["registry"],
-                release_refs=(data["source"]["release_ref"],),
-                predicate_catalog=data["predicates"],
-                query_template_catalog=data["queries"],
-            )
-        except Exception as raised:  # noqa: BLE001 - the refusal is the evidence
-            exception = raised
-        if exception is None:
-            raise AssertionError("owner did not refuse; no blocked state exists")
-        default_ref = data["authority"].candidate_grammar_ref
-    return OwnerStateProjection.from_owner_refusal(
-        owner=data["owner"],
+
+def project_blocked_authority_refusal(fixture_name: str, *, producer_ref=None, reason: str = ""):
+    """Derive BLOCKED_REQUIRED_AUTHORITY from the real discovery/authority refusal."""
+    from rawlsing_next.pre553_analytical_state_and_route import OwnerStateProjection
+
+    data = globals()[fixture_name]()
+    from rawlsing_next.pre553_discovery_exact import execute_exact_bounded_discovery
+
+    exception = None
+    try:
+        execute_exact_bounded_discovery(
+            repository=data["source"]["repo"],
+            discovery_authority=data["authority"],
+            authority_registry=data["registry"],
+            release_refs=(data["source"]["release_ref"],),
+            predicate_catalog=data["predicates"],
+            query_template_catalog=data["queries"],
+        )
+    except Exception as raised:  # noqa: BLE001 - the refusal is the evidence
+        exception = raised
+    if exception is None:
+        raise AssertionError("owner did not refuse; no blocked state exists")
+    return OwnerStateProjection.from_blocked_authority_refusal(
         exception=exception,
         reason=reason or data["reason"],
-        producer_ref=producer_ref or default_ref,
+        producer_ref=producer_ref or data["authority"].candidate_grammar_ref,
     ), data
 
 
@@ -600,13 +599,28 @@ def structural_admission_evaluation(*, admission_state="ALLOW", fact_state="SUPP
     return evaluation
 
 
-def recursive_handoff_custody(handoff, *, completeness_state="COMPLETE_FOR_EXACT_DECLARED_FRONTIER", supporting=()):
-    """Derive RecursiveCoverageCustody from a real RecursiveBranchHandoff."""
+def recursive_handoff_custody(handoff, *, supporting=()):
+    """Derive RecursiveCoverageCustody from a real RecursiveBranchHandoff.
+
+    There is no ``completeness_state`` parameter: the handoff does not own a
+    completeness grade, so no caller may assert one.
+    """
     from rawlsing_next.pre553_analytical_state_and_route import RecursiveCoverageCustody
 
-    return RecursiveCoverageCustody.from_handoff(
-        handoff, completeness_state=completeness_state, required_supporting_refs=supporting
-    )
+    return RecursiveCoverageCustody.from_handoff(handoff, required_supporting_refs=supporting)
+
+
+def project_recursive_handoff(handoff):
+    """Derive a positive handoff projection through the typed factory.
+
+    Positive handoff state is never built by direct ``OwnerStateProjection(...)``
+    construction; it always goes through ``from_recursive_handoff`` with
+    owner-derived custody.
+    """
+    from rawlsing_next.pre553_analytical_state_and_route import OwnerStateProjection
+
+    custody = recursive_handoff_custody(handoff)
+    return OwnerStateProjection.from_recursive_handoff(handoff, custody), custody
 
 
 __all__ = [
@@ -629,7 +643,9 @@ __all__ = [
     "project_empirical",
     "project_receipt",
     "project_adaptive",
-    "project_owner_refusal",
+    "project_empirical_integrity_refusal",
+    "project_blocked_authority_refusal",
     "structural_admission_evaluation",
     "recursive_handoff_custody",
+    "project_recursive_handoff",
 ]

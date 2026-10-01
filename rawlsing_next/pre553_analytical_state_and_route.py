@@ -150,6 +150,11 @@ class OwnerProjectionError(C103AStateRouteError):
 # supplied ``retained_state`` string can never establish one on its own.
 _PROJECTION_TOKEN = object()
 
+# Only the typed factories below may mint a projection, a route obligation, or a
+# coverage custody record. The generic derive/derive_fn injection point is gone, so
+# no external caller can supply arbitrary retained state or projection logic.
+_TRUST_TOKEN = object()
+
 OWNER_EMPIRICAL_PROJECTION_LABEL = (
     "rawlsing_next.pre553_empirical_query.execute_empirical_query"
 )
@@ -195,12 +200,16 @@ def _exact_cell_projection(fact: Any) -> tuple[Mapping[str, Any], ...]:
     return tuple(rows)
 
 
+
 @dataclass(frozen=True)
 class RouteObligation:
     """The route obligation derived from an exact current owner/use contract.
 
     The obligation is *derived* from a real owner-produced admission evaluation.
-    A caller cannot weaken it by choosing a different label.
+    A caller cannot weaken it by choosing a different label, and it cannot be
+    forged at all: direct construction requires the module-private trust token,
+    so only :meth:`from_structural_admission` -- which reads a real
+    ``AdmissionEvaluation`` -- can produce a lawful one.
     """
 
     owner: str
@@ -214,9 +223,26 @@ class RouteObligation:
     admission_authority_ref: Mapping[str, Any]
     admission_rule_ref: Mapping[str, Any]
     blocking_refs: tuple[ExactRef, ...]
+    _TRUST_TOKEN: Any = None
 
-    @staticmethod
+    def __post_init__(self) -> None:
+        if self._TRUST_TOKEN is not _TRUST_TOKEN:
+            raise OwnerProjectionError(
+                "RouteObligation may only be built by "
+                "RouteObligation.from_structural_admission() from a real "
+                "AdmissionEvaluation; a directly constructed obligation is not "
+                "route legitimacy (C1-03A-REVIEW-BLOCK-ROUTE-DERIVATION-001)"
+            )
+        if self.required_route_class not in ROUTE_CLASSES:
+            raise C103AStateRouteError(
+                f"required_route_class {self.required_route_class!r} is not a route class"
+            )
+        if not self.admission_receipt_ref.get("content_hash"):
+            raise OwnerProjectionError("obligation does not bind an exact admission receipt")
+
+    @classmethod
     def from_structural_admission(
+        cls,
         evaluation: Any,
         *,
         requested_use: str,
@@ -268,7 +294,8 @@ class RouteObligation:
         # learned/adjudicated owner. Whether the claim succeeded only decides if
         # the envelope may proceed at all -- it never downgrades the route.
         required = ROUTE_LEARNED_OR_ADJUDICATED_REQUIRED
-        return RouteObligation(
+        return cls(
+            _TRUST_TOKEN=_TRUST_TOKEN,
             owner=owner,
             requested_use=requested_use,
             target_use=target_use,
@@ -313,21 +340,53 @@ class RecursiveCoverageCustody:
     A recursive handoff is a *positive selection*. Without retained custody of
     the exact discovery/adaptive coverage record it was selected from, the handoff
     is not a coverage statement.
+
+    The custody is factory-only: direct construction requires the module-private
+    trust token, and :meth:`from_handoff` reads ``handoff.evaluated_frontier_ref``
+    itself. A caller can therefore neither forge the custody nor substitute a
+    different coverage record.
+
+    There is deliberately no ``completeness_state`` field. ``RecursiveBranchHandoff``
+    does not own a completeness grade, so recording one here would let a caller
+    assert a coverage completeness the owner never produced.
     """
 
     handoff_ref: ExactRef
     coverage_record_ref: ExactRef
-    completeness_state: str
+    handoff_scope_identity: Mapping[str, Any]
     supporting_refs: tuple[ExactRef, ...] = ()
+    _TRUST_TOKEN: Any = None
 
-    @staticmethod
+    def __post_init__(self) -> None:
+        if self._TRUST_TOKEN is not _TRUST_TOKEN:
+            raise OwnerProjectionError(
+                "RecursiveCoverageCustody may only be built by "
+                "RecursiveCoverageCustody.from_handoff() from a real "
+                "RecursiveBranchHandoff; a directly constructed custody record is "
+                "not coverage custody (C1-03A-REVIEW-BLOCK-HANDOFF-COVERAGE-001)"
+            )
+        if not isinstance(self.handoff_ref, ExactRef) or not isinstance(self.coverage_record_ref, ExactRef):
+            raise OwnerProjectionError("custody refs must be exact refs")
+
+    @classmethod
     def from_handoff(
+        cls,
         handoff: Any,
         *,
-        completeness_state: str = "COMPLETE_FOR_EXACT_DECLARED_FRONTIER",
         required_supporting_refs: Sequence[ExactRef] = (),
     ) -> "RecursiveCoverageCustody":
-        """Derive custody from a real RecursiveBranchHandoff."""
+        """Derive custody from a real RecursiveBranchHandoff.
+
+        ``completeness_state`` is intentionally not a parameter: the handoff does
+        not own a completeness grade, so no caller may supply one.
+        """
+        from rawlsing_next.pre553_recursive_handoff import RecursiveBranchHandoff
+
+        if type(handoff) is not RecursiveBranchHandoff:
+            raise OwnerProjectionError(
+                "coverage custody requires a real RecursiveBranchHandoff; got "
+                f"{type(handoff).__name__}"
+            )
         handoff_ref = getattr(handoff, "ref", None)
         if not isinstance(handoff_ref, ExactRef):
             raise OwnerProjectionError("handoff carries no exact ref")
@@ -338,22 +397,39 @@ class RecursiveCoverageCustody:
                 "handoff cannot stand in for its coverage record"
             )
         scoped = getattr(handoff, "scope_context", None)
+        scope_identity: dict[str, Any] = {}
         if isinstance(scoped, Mapping):
             scoped_frontier = scoped.get("evaluated_frontier_ref")
-            if scoped_frontier is not None:
-                if exact_ref(scoped_frontier) != coverage_ref:
-                    raise OwnerProjectionError(
-                        "handoff frontier ref disagrees with its own retained scope context"
-                    )
+            if scoped_frontier is not None and exact_ref(scoped_frontier) != coverage_ref:
+                raise OwnerProjectionError(
+                    "handoff frontier ref disagrees with its own retained scope context"
+                )
+            # Bind the handoff's own internally retained scope/frontier identity so
+            # custody cannot be separated from the scope it was selected under.
+            scope_identity = {
+                "candidate_universe_definition": _exact_identity(
+                    getattr(handoff, "candidate_universe_definition", None), "candidate_universe_definition"
+                ),
+                "winning_predicate": _exact_identity(
+                    getattr(handoff, "winning_predicate", None), "winning_predicate"
+                ),
+                "discovery_authority_ref": _exact_identity(
+                    getattr(handoff, "discovery_authority_ref", None), "discovery_authority_ref"
+                ),
+                "branch_replay_binding": _exact_identity(
+                    getattr(handoff, "branch_replay_binding", None), "branch_replay_binding"
+                ),
+            }
         supporting = []
         for value in required_supporting_refs:
             if not isinstance(value, ExactRef):
                 raise OwnerProjectionError("supporting coverage refs must be exact refs")
             supporting.append(value)
-        return RecursiveCoverageCustody(
+        return cls(
+            _TRUST_TOKEN=_TRUST_TOKEN,
             handoff_ref=handoff_ref,
             coverage_record_ref=coverage_ref,
-            completeness_state=completeness_state,
+            handoff_scope_identity=scope_identity,
             supporting_refs=tuple(supporting),
         )
 
@@ -361,7 +437,7 @@ class RecursiveCoverageCustody:
         return {
             "handoff_ref": self.handoff_ref.as_dict(),
             "coverage_record_ref": self.coverage_record_ref.as_dict(),
-            "completeness_state": self.completeness_state,
+            "handoff_scope_identity": dict(self.handoff_scope_identity),
             "supporting_refs": [ref.as_dict() for ref in self.supporting_refs],
         }
 
@@ -370,13 +446,38 @@ class RecursiveCoverageCustody:
         return semantic_hash(self.identity_material())
 
 
+def _exact_identity(value: Any, label: str) -> Mapping[str, Any]:
+    """Reduce an owner identity to its exact deterministic content hash.
+
+    These handoff fields are nested structures (a full candidate-universe
+    definition, a branch replay binding), so there is no single ref to bind. A
+    deterministic content hash over the owner-produced structure is the exact
+    identity, and it is what the custody record carries.
+    """
+    if isinstance(value, ExactRef):
+        return value.as_dict()
+    if isinstance(value, str) and value:
+        return {"content_hash": value}
+    inner = getattr(value, "ref", None)
+    if isinstance(inner, ExactRef):
+        # Owner's own identity-bearing object (e.g. DiscoveryBranchReplayBinding).
+        return {"content_hash": str(inner.content_hash), "object_id": str(inner.object_id)}
+    if value is None:
+        raise OwnerProjectionError(f"handoff carries no {label} to bind")
+    return {"content_hash": semantic_hash(value)}
+
+
 @dataclass(frozen=True)
 class OwnerStateProjection:
     """One competent owner's native state and its *derived* retained projection.
 
-    ``retained_state`` is always computed by :meth:`derive` from the real owner
-    object; it is never accepted from a caller. The projection law used is
-    recorded so a reviewer can re-derive it.
+    This type is **factory-only and fail-closed**. Direct construction requires
+    the module-private trust token, and the generic ``derive``/``derive_fn``
+    injection point has been deleted outright, so no external caller can supply
+    arbitrary retained state or arbitrary projection logic. Each factory below
+    calls its own fixed classification function directly.
+
+    The retained state is therefore always a function of a real owner object.
     """
 
     owner: str
@@ -387,39 +488,24 @@ class OwnerStateProjection:
     producer_ref: ExactRef
     supporting_refs: tuple[ExactRef, ...] = ()
     coverage_state: str = "NOT_APPLICABLE"
+    unvisited_refs: tuple[ExactRef, ...] = ()
+    visited_refs: tuple[ExactRef, ...] = ()
+    _TRUST_TOKEN: Any = None
 
-    @staticmethod
-    def derive(
-        *,
-        owner: str,
-        owner_object: Any,
-        projection_law: str,
-        derive_fn,
-        reason: str,
-        producer_ref: ExactRef,
-        producer_state: Any,
-        supporting_refs: Sequence[ExactRef] = (),
-        coverage_state: str = "NOT_APPLICABLE",
-    ) -> "OwnerStateProjection":
-        """Derive the retained state from a real owner object."""
-        try:
-            retained = derive_fn(owner_object)
-        except C103AStateRouteError:
-            raise
-        except Exception as exc:  # noqa: BLE001 - a projection must fail closed
+    def __post_init__(self) -> None:
+        if self._TRUST_TOKEN is not _TRUST_TOKEN:
             raise OwnerProjectionError(
-                f"{projection_law} could not project the owner object for {owner}: {exc}"
-            ) from exc
-        return OwnerStateProjection(
-            owner=owner,
-            producer_state=str(producer_state),
-            retained_state=str(retained),
-            projection_law=projection_law,
-            reason=reason,
-            producer_ref=producer_ref,
-            supporting_refs=tuple(supporting_refs),
-            coverage_state=coverage_state,
-        )
+                "OwnerStateProjection may only be built by one of its typed owner "
+                "factories (from_empirical_fact, from_discovery_receipt, "
+                "from_adaptive_result, from_empirical_integrity_refusal, "
+                "from_blocked_authority_refusal, from_recursive_handoff); a "
+                "directly constructed projection is not owner-derived state "
+                "(C1-03A-REVIEW-BLOCK-STATE-PROJECTION-001)"
+            )
+        if self.retained_state not in RETAINABLE_STATES:
+            raise C103AStateRouteError(
+                f"retained_state {self.retained_state!r} is not a retainable analytical state"
+            )
 
     @classmethod
     def from_empirical_fact(
@@ -436,21 +522,26 @@ class OwnerStateProjection:
         ref = getattr(fact, "ref", None)
         if not isinstance(ref, ExactRef):
             raise OwnerProjectionError("empirical fact carries no exact ref")
-        projection = _exact_cell_projection(fact)
-        supporting = ()
+        cells = _exact_cell_projection(fact)
+        try:
+            retained = classify_empirical_cells(state, cells)
+        except Exception as exc:  # noqa: BLE001 - a projection must fail closed
+            raise OwnerProjectionError(
+                "classify_empirical_cells could not project the owner fact for "
+                f"{owner}: {exc}"
+            ) from exc
         replay = getattr(fact, "replay_ref", None)
+        supporting = ()
         if isinstance(replay, Mapping):
-            from rawlsing_next.pre553_empirical_objects import exact_ref
-
             supporting = (exact_ref(replay),)
-        return cls.derive(
+        return cls(
+            _TRUST_TOKEN=_TRUST_TOKEN,
             owner=owner,
-            owner_object=projection,
+            producer_state=state,
+            retained_state=retained,
             projection_law="classify_empirical_cells(fact.typed_state, complete_cell_semantic_projection)",
-            derive_fn=lambda cells: classify_empirical_cells(state, cells),
             reason=reason or "empirical fact state and exact cell projection",
             producer_ref=ref,
-            producer_state=state,
             supporting_refs=supporting,
         )
 
@@ -468,14 +559,21 @@ class OwnerStateProjection:
         ref = getattr(receipt, "ref", None)
         if not isinstance(ref, ExactRef):
             raise OwnerProjectionError("discovery receipt carries no exact ref")
-        return cls.derive(
+        try:
+            retained = classify_discovery_receipt_state(state, coverage or None)
+        except Exception as exc:  # noqa: BLE001 - a projection must fail closed
+            raise OwnerProjectionError(
+                "classify_discovery_receipt_state could not project the owner receipt "
+                f"for {owner}: {exc}"
+            ) from exc
+        return cls(
+            _TRUST_TOKEN=_TRUST_TOKEN,
             owner=owner,
-            owner_object=state,
+            producer_state=state,
+            retained_state=retained,
             projection_law="classify_discovery_receipt_state(typed_state, coverage_state)",
-            derive_fn=lambda s: classify_discovery_receipt_state(s, coverage or None),
             reason=reason or "exact discovery receipt state with coverage cross-check",
             producer_ref=ref,
-            producer_state=state,
             coverage_state=coverage,
         )
 
@@ -488,15 +586,24 @@ class OwnerStateProjection:
         reason: str = "",
         producer_ref: ExactRef | None = None,
     ) -> "OwnerStateProjection":
-        """Project a real adaptive search result, requiring its unvisited refs."""
+        """Project a real adaptive result, carrying its own unvisited territory.
+
+        The projection carries the owner's own visited/unvisited/determinant refs.
+        No caller can substitute them, and no separate reconstruction is needed.
+        """
         completeness = str(getattr(adaptive_result, "completeness_state", ""))
-        unvisited = tuple(getattr(adaptive_result, "unvisited_unit_refs", ()))
-        visited = tuple(getattr(adaptive_result, "visited_unit_refs", ()))
+        if not completeness:
+            raise OwnerProjectionError("adaptive result carries no completeness_state")
+        unvisited = tuple(getattr(adaptive_result, "unvisited_unit_refs", ()) or ())
+        visited = tuple(getattr(adaptive_result, "visited_unit_refs", ()) or ())
         if not unvisited:
             raise OwnerProjectionError(
                 "an adaptive projection requires the owner's own unvisited refs"
             )
-        checkpoint = getattr(adaptive_result, "checkpoint", None)
+        for group, label in ((unvisited, "unvisited"), (visited, "visited")):
+            for item in group:
+                if not isinstance(item, ExactRef):
+                    raise OwnerProjectionError(f"adaptive {label} refs must be exact refs")
         if not isinstance(getattr(adaptive_result, "global_negative_claim", None), bool):
             raise OwnerProjectionError(
                 "adaptive result does not carry the owner's global_negative_claim fact"
@@ -511,59 +618,167 @@ class OwnerStateProjection:
             ref = candidate if isinstance(candidate, ExactRef) else None
         if not isinstance(ref, ExactRef):
             raise OwnerProjectionError("adaptive result carries no exact determinant ref")
-        supporting = ref
+        checkpoint = getattr(adaptive_result, "checkpoint", None)
         checkpoint_ref = getattr(checkpoint, "ref", None)
+        try:
+            retained = classify_adaptive_coverage(completeness)
+        except Exception as exc:  # noqa: BLE001 - a projection must fail closed
+            raise OwnerProjectionError(
+                f"classify_adaptive_coverage could not project the owner result for "
+                f"{owner}: {exc}"
+            ) from exc
+        # supporting_refs = (checkpoint?, determinant, *visited)
+        supporting: list[ExactRef] = []
         if isinstance(checkpoint_ref, ExactRef):
-            supporting = (checkpoint_ref, ref)
-        return cls.derive(
+            supporting.append(checkpoint_ref)
+        supporting.append(ref)
+        supporting.extend(visited)
+        return cls(
+            _TRUST_TOKEN=_TRUST_TOKEN,
             owner=owner,
-            owner_object=completeness,
+            producer_state=completeness,
+            retained_state=retained,
             projection_law="classify_adaptive_coverage(completeness_state) with owner unvisited refs",
-            derive_fn=lambda s: classify_adaptive_coverage(s),
             reason=reason or "adaptive nonexhaustive coverage with explicit unvisited territory",
             producer_ref=ref,
-            producer_state=completeness,
-            supporting_refs=supporting,
+            supporting_refs=tuple(supporting),
             coverage_state=completeness,
+            unvisited_refs=unvisited,
+            visited_refs=visited,
         )
 
     @classmethod
-    def from_owner_refusal(
+    def from_recursive_handoff(
+        cls,
+        handoff: Any,
+        custody: RecursiveCoverageCustody,
+        *,
+        owner: str = OWNER_RECURSIVE_HANDOFF_LABEL,
+        reason: str = "",
+    ) -> "OwnerStateProjection":
+        """Project a selected positive recursive handoff.
+
+        A handoff is a positive *selection*, so the derived retained state is
+        SUPPORTED. That claim is only lawful when the handoff is real and the
+        owner-derived custody is supplied for it, which is why custody is a
+        required argument rather than an optional extra.
+        """
+        from rawlsing_next.pre553_recursive_handoff import RecursiveBranchHandoff
+
+        if type(handoff) is not RecursiveBranchHandoff:
+            raise OwnerProjectionError(
+                "a recursive-handoff projection requires a real RecursiveBranchHandoff; "
+                f"got {type(handoff).__name__}"
+            )
+        if type(custody) is not RecursiveCoverageCustody:
+            raise OwnerProjectionError(
+                "a positive recursive handoff requires owner-derived RecursiveCoverageCustody"
+            )
+        handoff_ref = getattr(handoff, "ref", None)
+        if not isinstance(handoff_ref, ExactRef):
+            raise OwnerProjectionError("handoff carries no exact ref")
+        if custody.handoff_ref != handoff_ref:
+            raise OwnerProjectionError(
+                "coverage custody names a different handoff than the projection"
+            )
+        frontier = getattr(handoff, "evaluated_frontier_ref", None)
+        if not isinstance(frontier, ExactRef) or frontier != custody.coverage_record_ref:
+            raise OwnerProjectionError(
+                "handoff frontier ref does not match the custody coverage record"
+            )
+        return cls(
+            _TRUST_TOKEN=_TRUST_TOKEN,
+            owner=owner,
+            producer_state="RECURSIVE_BRANCH_HANDOFF_SELECTED",
+            retained_state=SUPPORTED,
+            projection_law=(
+                "a RecursiveBranchHandoff is a positive selection bound to its exact "
+                "evaluated frontier; SUPPORTED with owner-derived coverage custody"
+            ),
+            reason=reason or "selected recursive branch handoff with exact coverage custody",
+            producer_ref=handoff_ref,
+            supporting_refs=(frontier,),
+        )
+
+    @classmethod
+    def from_empirical_integrity_refusal(
         cls,
         *,
-        owner: str,
         exception: BaseException,
         reason: str,
         producer_ref: ExactRef,
+        owner: str = OWNER_EMPIRICAL_PROJECTION_LABEL,
         supporting_refs: Sequence[ExactRef] = (),
     ) -> "OwnerStateProjection":
-        """Project a state proven by the owner *refusing* to proceed.
+        """Project INTEGRITY_FAILURE from the exact empirical integrity refusal.
 
-        Used for INTEGRITY_FAILURE and BLOCKED_REQUIRED_AUTHORITY, where the
-        competent owner's own refusal is the evidence. The exception type is
-        recorded so the refusal is auditable rather than asserted.
+        Only the exact owner type is accepted. Note that
+        ``Pre553AuthorityError`` *subclasses* ``Pre553IntegrityError``, so this
+        check is exact-type identity rather than ``isinstance``: an isinstance
+        check would silently collapse BLOCKED_REQUIRED_AUTHORITY into
+        INTEGRITY_FAILURE.
         """
-        if not isinstance(exception, BaseException):
-            raise OwnerProjectionError("an owner-refusal projection requires the real exception")
-        return OwnerStateProjection(
+        from rawlsing_next.pre553_empirical_objects import Pre553IntegrityError
+        from rawlsing_next.pre553_empirical_authority import Pre553AuthorityError
+
+        if type(exception) is Pre553AuthorityError:
+            raise OwnerProjectionError(
+                "Pre553AuthorityError is a blocked-required-authority refusal, not an "
+                "integrity refusal; use from_blocked_authority_refusal() so the two "
+                "mandatory states stay distinct"
+            )
+        if type(exception) is not Pre553IntegrityError:
+            raise OwnerProjectionError(
+                "an integrity-refusal projection requires the exact empirical owner "
+                f"refusal Pre553IntegrityError; got {type(exception).__name__}. "
+                "Refusals are never classified by exception class-name substring"
+            )
+        return cls(
+            _TRUST_TOKEN=_TRUST_TOKEN,
             owner=owner,
             producer_state=f"OWNER_REFUSED:{type(exception).__name__}",
-            retained_state=INTEGRITY_FAILURE if "Integrity" in type(exception).__name__ else (
-                BLOCKED_REQUIRED_AUTHORITY
+            retained_state=INTEGRITY_FAILURE,
+            projection_law=(
+                "exact empirical owner refusal Pre553IntegrityError -> INTEGRITY_FAILURE"
             ),
-            projection_law="owner refusal (the competent owner declined to proceed)",
             reason=reason,
             producer_ref=producer_ref,
             supporting_refs=tuple(supporting_refs),
-            coverage_state="NOT_APPLICABLE",
         )
 
-    @property
-    def unvisited_refs(self) -> tuple[ExactRef, ...]:
-        return tuple(self.supporting_refs[1:]) if self.coverage_state != "NOT_APPLICABLE" else ()
+    @classmethod
+    def from_blocked_authority_refusal(
+        cls,
+        *,
+        exception: BaseException,
+        reason: str,
+        producer_ref: ExactRef,
+        owner: str = OWNER_DISCOVERY_PROJECTION_LABEL,
+        supporting_refs: Sequence[ExactRef] = (),
+    ) -> "OwnerStateProjection":
+        """Project BLOCKED_REQUIRED_AUTHORITY from the exact authority refusal."""
+        from rawlsing_next.pre553_empirical_authority import Pre553AuthorityError
 
-    def visited_refs(self) -> tuple[ExactRef, ...]:
-        return ()
+        if type(exception) is not Pre553AuthorityError:
+            raise OwnerProjectionError(
+                "a blocked-authority projection requires the exact current "
+                f"authority/discovery refusal Pre553AuthorityError; got "
+                f"{type(exception).__name__}. An arbitrary exception is never "
+                "defaulted to a governed BLOCKED state"
+            )
+        return cls(
+            _TRUST_TOKEN=_TRUST_TOKEN,
+            owner=owner,
+            producer_state=f"OWNER_REFUSED:{type(exception).__name__}",
+            retained_state=BLOCKED_REQUIRED_AUTHORITY,
+            projection_law=(
+                "exact authority/discovery owner refusal Pre553AuthorityError -> "
+                "BLOCKED_REQUIRED_AUTHORITY"
+            ),
+            reason=reason,
+            producer_ref=producer_ref,
+            supporting_refs=tuple(supporting_refs),
+        )
 
     def as_evidence(self) -> "ProducerStateEvidence":
         return ProducerStateEvidence(
@@ -595,7 +810,6 @@ def _refs(values: Any, label: str) -> tuple[ExactRef, ...]:
     from rawlsing_next.pre553_analytical_composition import _exact, _refs as _c1_refs
 
     return _c1_refs(values, label)
-
 
 @dataclass(frozen=True)
 class ProducerStateEvidence:
@@ -938,6 +1152,17 @@ def build_state_route_result(
     require_route_class(route_class)
     _text(reason, "reason")
     _text(coverage_state, "coverage_state")
+
+    if route_class == ROUTE_LEARNED_OR_ADJUDICATED_REQUIRED and route_obligation is None:
+        # A learned/adjudicated route is legitimate only when it carries an
+        # owner/use-derived obligation. A bare label is not legitimacy
+        # (C1-03A-REVIEW-BLOCK-ROUTE-DERIVATION-001).
+        raise RouteLegitimacyError(
+            "a LEARNED_OR_ADJUDICATED_REQUIRED envelope must carry a valid "
+            "owner-derived RouteObligation; changing the route label alone can never "
+            "create a lawful learned route "
+            "(C1-03A-REVIEW-BLOCK-ROUTE-DERIVATION-001)"
+        )
 
     if route_obligation is not None:
         # The claimed route must match the owner-derived obligation exactly.
