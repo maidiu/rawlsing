@@ -1,0 +1,128 @@
+{
+  "schema": "PYAT_C5_N5_READINESS@1",
+  "status": "READY_TO_COMMISSION_NOW",
+  "selected_scope": "CURRENT_GT12_GT2_AFROBAROMETER_R5_Q86B_TO_Q86A_STRUCTURAL_CONTEXT",
+  "live_control": "09148c3962da899ec4881fbcda3d626555750d89",
+  "retained_input": {
+    "grade": "HQ_ADOPTED_CURRENT_REAL_SOURCE_BACKED__REPO_NATIVE_NO_SOURCE_REREAD",
+    "predicate_hash": "bd91b40575035a9ff9ad2e7c507adc2610bfebdcc7fa38ce1cd697b37559cea3",
+    "query_hash": "e4ec3998664975c6a5f9e020b7815cfe6d39a212e264963d8037e6f0db87d0d0",
+    "fact_hash": "540236d533e9123f6d7b4d1edd4cf0951277154e72c7667deb09fb6550f11f46",
+    "replay_hash": "c0c23ca2bb439364756503722b60d047139d42a6128411cc19bfbd87d33c884f",
+    "fact_state": "SUPPORTED",
+    "raw_denominator_support": 19210,
+    "semantic_order": [
+      "Q86B",
+      "Q86A"
+    ],
+    "risk_set": {
+      "object_id": "FIRST_GENUINE_CANARY_COMMON_COEXPOSURE_RISK_SET@1",
+      "content_hash": "0484fa5c0440c34e9b1f28b385f3ef6c3302eaeb11c3c5b663441553ea11313b"
+    },
+    "hq_adoption_terminal": "ADOPTED__GT12_GT1_GT2_REAL_SOURCE_BACKED_STRUCTURAL_CONTEXT_CANARY__V3_ZERO_EFFECT",
+    "inheritance_status": "CLOSED_ACCEPTED_CURRENT"
+  },
+  "retained_loader": {
+    "primary_api": "rawlsing_next.pre553_repo_native_seal.load_current_gt2_query_fact",
+    "primary_blob": "fd3745efb8559e2db53fce49943feea96f76d3cd",
+    "underlying_api": "rawlsing_next.pre553_repo_native_current_payload.load_current_gt2_query_fact_from_committed_transport",
+    "underlying_blob": "b850e7794f387000afe4a6dfd49ca5092426f895",
+    "library_required": false,
+    "raw_source_required": false,
+    "empirical_reexecution_required": false,
+    "caller_identity_selector": false,
+    "caller_authority_selector": false
+  },
+  "field_forge": {
+    "owner": "rawlsing_next.field_forge_conditional_support",
+    "owner_blob": "a70decb20747d84cbcbe27d1280babc6de88ef33",
+    "producer_api": "produce_exact_conditional_support_profile",
+    "relation_family": "EXACT_CONDITIONAL_SUPPORT_PROFILE_WITHIN_SCOPE@1.0.0",
+    "accepted_current_relation_hash": "1ffdfe536adc01d35709521145b9c8057f589c20983f507d5ed6197c4ad27d19",
+    "conditioner": "Q86B",
+    "target": "Q86A",
+    "semantic_ceiling": [
+      "ACTOR_INDEPENDENT_COUNT_SUPPORT_ONLY",
+      "CONDITIONER_NOT_CAUSE",
+      "TARGET_NOT_EFFECT",
+      "NO_PRESSURE_MECHANISM",
+      "NO_POPULATION_TO_ACTOR_PROMOTION"
+    ]
+  },
+  "structural_authority": {
+    "owner": "rawlsing_next.wave1_ff_prev3_relation_admission",
+    "owner_blob": "c5fb675fd6f95cb7dc9e0ad505224803839cc645",
+    "binding_api": "frozen_gt2_admission_authority_binding",
+    "authority_id": "GT2_FF_PREV3_RELATION_ADMISSION_AUTHORITY",
+    "authority_version": "R1",
+    "decision_state": "ALLOW",
+    "current_selection_state": "CURRENT_FOR_FROZEN_GT2_CANARY_ONLY",
+    "operation": "ADMIT_EXACT_GT2_FIELD_FORGE_RELATION_FOR_STRUCTURAL_MEDIATION_INPUT",
+    "target_use": "STRUCTURAL_MEDIATION_INPUT",
+    "rule_api": "make_gt2_relation_admission_rule",
+    "evaluator_api": "evaluate_gt2_relation_admission",
+    "bridge_owner": "rawlsing_next.gt12_c_to_d_relation_bridge",
+    "bridge_blob": "ea04ec079e8d60e6e5c7236ec5b54898876be4b3",
+    "bridge_rule_api": "frozen_gt12_c_relation_rule_ref",
+    "bridge_admit_api": "admit_gt12_c_relation",
+    "accepted_admission_hash": "a445e43da99405e0f8181f7ab6c428d9b0dd14fefc7fc5091f21f2d21f00b08d",
+    "accepted_decision": "ADMITTED",
+    "output_permission_subset": [
+      "STRUCTURAL_MEDIATION_INPUT"
+    ]
+  },
+  "objective_consumer": {
+    "bridge_owner": "rawlsing_next.gt12_d_to_m4_typed_bridge",
+    "bridge_blob": "ca3d6b8d832d7ca8d959bd19e19a23b08cabde76",
+    "v554_api": "evaluate_typed_d_to_e_at_v554",
+    "m1_contract": "M1_ADMITTED_FIELD_FORGE_RELATION_V554_INGRESS@1.0.0",
+    "basis_kind": "ADMITTED_FIELD_FORGE_RELATION",
+    "signature": "V554-SIG-004-NONTEMPORAL-ADMITTED-RELATION-EXACT",
+    "publication_api": "publish_and_resolve_relation_v554_at_current_m4",
+    "binding_owner": "rawlsing_next.gt12_e2b_publication_governance_binding",
+    "binding_blob": "5c0e730972ca7f31c3be92564c299822c431ccc5",
+    "binding_loader": "load_current_gt12_e2b_publication_governance_binding",
+    "binding_hash": "f7d4d2313bcc70faf104cff205b0eb7aaa7d88556c895c8ea123a3725105cf14",
+    "v557_state": "ALLOW_CONTEXT_ONLY",
+    "v557_uses": [
+      "CONTEXT"
+    ],
+    "v558_requested_uses": [
+      "CONTEXT"
+    ],
+    "review_authority": false,
+    "active_causal_authority": false,
+    "actor_authority": false
+  },
+  "dependency_adjudication": {
+    "c4_required": false,
+    "c4_reason": "Exact current GT2 query/fact already retained, adopted and repo-native rehydratable.",
+    "n13_d2_required": false,
+    "n13_d2_reason": "Selected scope is Afrobarometer R5 Q86B->Q86A, not a LiTS relation-preimage lane."
+  },
+  "implementation_write_terrain": [
+    "rawlsing_next/current_gt2_structural_context.py",
+    "rawlsing_next/tests/test_current_gt2_structural_context.py",
+    "WORKER_RETURNS/PYAT-C5-N5-STRUCTURAL-ADMISSION-R1/**"
+  ],
+  "acceptance": {
+    "AT22": [
+      "fixed no-argument current loader resolves exact current query/fact identities",
+      "relation preserves exact producer fact/query/risk/replay/support/topology closure",
+      "repeat execution reidentifies deterministically"
+    ],
+    "AT23": [
+      "positive admission is bound to exact GT2 canary authority/rule and target use only",
+      "wrong source/risk/roles/order/permission/nonpositive state/negative refs fail or refuse typed",
+      "no empirical-success-to-structure inference",
+      "no pressure/mechanism/actor claim"
+    ],
+    "AT24": [
+      "admitted relation is actually consumed by current V554 evaluator",
+      "V557 remains ALLOW_CONTEXT_ONLY",
+      "V558 exact CONTEXT resolution completes",
+      "no V553/V555/V556 substitute and no REVIEW/ACTIVE_CAUSAL/V3 actor wake"
+    ]
+  },
+  "blocker": null
+}
