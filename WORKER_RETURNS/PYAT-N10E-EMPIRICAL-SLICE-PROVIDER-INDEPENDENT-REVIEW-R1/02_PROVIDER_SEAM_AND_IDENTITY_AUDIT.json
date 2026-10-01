@@ -1,0 +1,63 @@
+{
+  "schema": "PYAT_N10E_INDEPENDENT_PROVIDER_SEAM_AND_IDENTITY_AUDIT@1",
+  "status": "COMPLETE",
+  "provider_module_blob": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+  "provider_seam": {
+    "disposition": "PASS",
+    "calls_accepted_compose_positioned_subject_possibility": true,
+    "generated_evidence_taken_from_composition_result": true,
+    "consumer_result_taken_from_composition_result": true,
+    "local_probability_geometry_recomputation_found": false,
+    "smoothing_or_independent_trait_authority_found": false,
+    "actor_person_world_authority_found": false
+  },
+  "handwritten_slice_boundary": {
+    "disposition": "PASS",
+    "provider_accepts_prebuilt_evidence": false,
+    "provider_accepts_precomputed_geometry": false,
+    "evaluate_generated_slice_directly_exported": true,
+    "helper_returns_provider_result_or_receipt": false,
+    "adjudication": "LAWFUL_LOW_LEVEL_CONSUMER_PASSTHROUGH__DOES_NOT_SATISFY_OR_BYPASS_N10E_PROVIDER_CONTRACT"
+  },
+  "p1_forward": {
+    "disposition": "PASS",
+    "denominator": 60,
+    "numerators": {
+      "yes": 54,
+      "no": 6
+    },
+    "exact_fraction_yes": [
+      9,
+      10
+    ],
+    "generated_object_is_composition_object": true
+  },
+  "p2_reverse": {
+    "disposition": "PASS",
+    "denominator": 62,
+    "numerators": {
+      "P1": 54,
+      "P2": 8
+    },
+    "exact_fraction_P1": [
+      27,
+      31
+    ],
+    "target_topology_preserved": true
+  },
+  "p3_identity_dependency_closure": {
+    "disposition": "PASS",
+    "legitimate_conditioner_time_mutation_reidentifies": true,
+    "model_rule_mutation_reidentifies": true,
+    "unconsumed_irrelevant_authority_does_not_reidentify": true
+  },
+  "receipt_identity": {
+    "disposition": "PASS",
+    "self_ref_in_identity_preimage": false,
+    "circular_hash_dependency": false,
+    "consumed_composition_identity_bound": true,
+    "evidence_identity_bound": true,
+    "consumer_identity_bound": true,
+    "model_rule_identity_bound": true
+  }
+}

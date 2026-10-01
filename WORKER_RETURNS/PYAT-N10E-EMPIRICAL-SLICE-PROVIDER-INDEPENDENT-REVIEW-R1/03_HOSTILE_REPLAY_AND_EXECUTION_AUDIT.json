@@ -1,0 +1,62 @@
+{
+  "schema": "PYAT_N10E_INDEPENDENT_HOSTILE_REPLAY_AND_EXECUTION_AUDIT@1",
+  "status": "COMPLETE",
+  "p5_fail_closed": {
+    "disposition": "PASS",
+    "source_universe_mismatch": "owner typed failure",
+    "release_mismatch": "owner typed failure",
+    "target_topology_mismatch": "owner typed failure",
+    "model_source_universe_out_of_scope": "consumer FAIL_CLOSED",
+    "implicit_bridge_or_coercion_found": false
+  },
+  "p6": {
+    "disposition": "CHANGES_REQUIRED_FOR_EVIDENCE_CLAIM",
+    "implementation_no_smoothing_proxy_laundering": "PASS",
+    "exact_supported_remains_exact_unweighted": "PASS",
+    "real_zero_support_predicate_attempt": "CONDITION_VALUE_RELATION_MISMATCH before evidence",
+    "substituted_non_supported_composition_branch": "provider returns typed refusal with no evidence/consumer geometry",
+    "defect": {
+      "id": "REV-N10E-001",
+      "test": "test_p6_geometry_is_recomputed_not_fixed_when_the_empirical_slice_changes",
+      "finding": "Vacuous changed-source proof: narrowed_rows is never passed into or used to rebuild the provider case; _provide(case) reruns the unchanged canonical case.",
+      "why_it_passes": "canonical forward denominator is 60 and len(narrowed_rows) is also 60",
+      "overclaimed_packet_location": "05_HOSTILE_AND_REPLAY_AUDIT.json H13",
+      "implementation_counterexample_established": false
+    }
+  },
+  "p7_replay": {
+    "disposition": "PASS",
+    "same_process": true,
+    "fresh_process": true,
+    "runner_reconstructs_fixture_and_invokes_provider": true,
+    "runner_reads_only_expected_result_blob": false
+  },
+  "test_integrity": {
+    "provider_tests_recorded": 30,
+    "full_court_recorded": 88,
+    "expected_breakdown": {
+      "analytical": 13,
+      "empirical_query": 32,
+      "possibility_consumer": 13,
+      "provider": 30
+    },
+    "final_pytest_summary": "88 passed in 19.09s",
+    "execution_receipt_summary": "88 passed; duration_seconds_final=20.01",
+    "duration_match": false,
+    "defect_id": "REV-N10E-002"
+  },
+  "execution_provenance": {
+    "implementation_commit": "e3bcbbb4faf7ce700828d15899a3a07f7038bc71",
+    "final_return": "58ba4320635162e8103ed38681ea5ae3e3bac014",
+    "commits_after_implementation": 3,
+    "executable_provider_test_fixture_runner_files_changed_after_implementation": false,
+    "post_implementation_changes": [
+      "00_RETURN.md",
+      "06_EXECUTION_RECEIPT.json",
+      "07_FINAL_DISPOSITION.json",
+      "08_FINAL_PYTEST_OUTPUT.txt"
+    ],
+    "transfer_disposition": "EXECUTABLE_STATE_TRANSFERS_CLEANLY_TO_FINAL_RETURN",
+    "helper_operation_required_to_settle_current_executable_ancestry": null
+  }
+}

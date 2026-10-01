@@ -1,0 +1,34 @@
+{
+  "schema": "PYAT_N10E_INDEPENDENT_FINAL_DISPOSITION@1",
+  "status": "FINAL",
+  "disposition": "CHANGES_REQUIRED",
+  "terminal_token": "N10E_EMPIRICAL_SLICE_PROVIDER_INDEPENDENT_REVIEW_COMPLETE__HQ_ADJUDICATION_REQUIRED",
+  "provider_implementation_at_declared_grain": "STATIC_AND_RECORDED_EXECUTION_EVIDENCE_SUPPORTS_ACCEPTANCE_ONCE_PACKET_DEFECTS_ARE_CORRECTED",
+  "blocking_findings": [
+    {
+      "id": "REV-N10E-001",
+      "class": "TEST_EVIDENCE_OVERCLAIM",
+      "summary": "P6 changed-source test never changes the provider's empirical input, yet the return cites it as executed proof that geometry changes with source law."
+    },
+    {
+      "id": "REV-N10E-002",
+      "class": "FINAL_EXECUTION_PACKET_INCONSISTENCY",
+      "summary": "06/00 record 88 passed in 20.01s while committed 08 final output records 88 passed in 19.09s."
+    }
+  ],
+  "nonblocking_documentary_correction": {
+    "id": "REV-N10E-003",
+    "summary": "07 final limitations retain pre-rebase credential/commission-tip language as if still current; rewrite as historical context."
+  },
+  "exact_correction_required": [
+    "Make the P6 changed-source test actually consume changed empirical input, or remove/rename the unsupported H13 changed-source proof claim.",
+    "Reconcile 00_RETURN.md, 06_EXECUTION_RECEIPT.json, and 08_FINAL_PYTEST_OUTPUT.txt to one final run record.",
+    "Recast the stale b631e1c credential/availability limitation as historical pre-rebase context."
+  ],
+  "reexecution_law": {
+    "if_provider_test_file_changes": "Run the exact commissioned four-file pytest court once and replace final output/receipt consistently.",
+    "if_only_documentation_changes": "No ceremonial re-execution required; executable state after e3bcbbb4 is unchanged through 58ba4320."
+  },
+  "provider_code_change_required_by_this_review": false,
+  "independent_acceptance_after_correction": "ELIGIBLE_FOR_APPROVE_AT_DECLARED_GRAIN_WITHOUT_AT33_OR_REAL_SOURCE_UPGRADE"
+}
