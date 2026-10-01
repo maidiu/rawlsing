@@ -1,49 +1,92 @@
 {
-  "schema": "PYAT_C1_03R_R2_INDEPENDENT_REREVIEW_EXECUTION_RECEIPT@1",
-  "status": "STATIC_BROWSER_REREVIEW_PLUS_RECONCILED_WORKER_EXECUTION",
-  "review_branch": "agent/reviewer-pyat-hq156-c1-03r-r2-rereview-r1",
-  "review_issue_tip": "f6e2b059883bee29b2dadfc1cc59df7a5a4c7735",
-  "reviewed_return": "7f64493758f6b3b77d7e9ce1486c1324ff709edc",
-  "ancestry": {
-    "base": "88d94930179528ce37daac854a7f6a78f7f0f308",
-    "ahead_by": 1,
-    "behind_by": 0,
-    "status": "PASS"
-  },
-  "diff_allowlist": {
-    "status": "PASS",
-    "implementation_and_test_files": [
-      "rawlsing_next/pre553_authority_maintenance.py",
-      "rawlsing_next/pre553_analytical_replay_dependency.py",
-      "rawlsing_next/tests/test_pre553_authority_maintenance.py",
-      "rawlsing_next/tests/test_pre553_analytical_replay_dependency.py",
-      "rawlsing_next/tests/c1_at18_at19_fixture.py"
-    ],
-    "return_packet": "WORKER_RETURNS/PYAT-C1-03R-OWNER-FAILCLOSED-R2/**",
-    "replay_audit_modified": false,
-    "analytical_composition_modified": false
-  },
-  "recorded_court": {
+  "schema": "PYAT_C1_03R_R2_REREVIEW_EXECUTION_RECEIPT@1",
+  "interpreter": "/tmp/c1-01-r8-release-spine-venv/bin/python",
+  "python": "3.12.14",
+  "pytest": "9.1.1",
+  "court_command": "pytest -q rawlsing_next/tests/test_pre553_analytical_replay_dependency.py rawlsing_next/tests/test_pre553_authority_maintenance.py rawlsing_next/tests/test_pre553_replay_audit.py rawlsing_next/tests/test_pre553_analytical_composition.py   (PYTHONPATH=<worktree root>)",
+  "files": [
+    "rawlsing_next/tests/test_pre553_analytical_replay_dependency.py",
+    "rawlsing_next/tests/test_pre553_authority_maintenance.py",
+    "rawlsing_next/tests/test_pre553_replay_audit.py",
+    "rawlsing_next/tests/test_pre553_analytical_composition.py"
+  ],
+  "counts": {
+    "analytical_replay_dependency": 42,
+    "authority_maintenance": 51,
+    "replay_audit": 54,
+    "analytical_composition": 13,
     "total_passed": 160,
     "failed": 0,
     "errors": 0,
     "skipped": 0,
-    "wall_time_seconds": 55.64,
-    "counts": {
-      "analytical_replay_dependency": 42,
-      "authority_maintenance": 51,
-      "replay_audit": 54,
-      "analytical_composition": 13
+    "xfailed": 0,
+    "wall_time_seconds": 71.92,
+    "per_file_sum": 160
+  },
+  "reconciliation": {
+    "worker_claimed": "160 passed, 0 failed, 0 errors, 0 skipped",
+    "reviewer_observed": "160 passed, 0 failed, 0 errors, 0 skipped, 0 xfailed",
+    "agrees": true,
+    "per_file_claim_verified": true,
+    "per_file_method": "each file also run through pytest -q --collect-only individually; the four counts sum exactly to the 160 passed in the single four-file run",
+    "worker's_new_court_count_verified": {
+      "claimed": {"analytical_replay_dependency": 7, "authority_maintenance": 9, "total": 16},
+      "observed_by_grep": {"test_pre553_authority_maintenance.py": 9, "test_pre553_analytical_replay_dependency.py": 7, "total": 16},
+      "agrees": true
     }
   },
-  "static_reconciliation": {
-    "analytical_replay_dependency": "39 test functions + one 4-case parametrized court = 42",
-    "authority_maintenance": "48 test functions + one 4-case parametrized court = 51",
-    "replay_audit": "unchanged accepted 54-case court",
-    "analytical_composition": "12 test functions + one 2-case parametrized court = 13",
-    "sum": 160
+  "provenance_and_terrain": {
+    "commissioned_tip": "f6e2b059883bee29b2dadfc1cc59df7a5a4c7735",
+    "reviewed_implementation_return": "7f64493758f6b3b77d7e9ce1486c1324ff709edc",
+    "implementation_base": "88d94930179528ce37daac854a7f6a78f7f0f308",
+    "reviewed_branch_head": "eb9e0938dc12436ef4b1677cc7e416555777e6dc",
+    "reviewed_head_is_bind_commit_over_implementation_return": true,
+    "bind_history": [
+      "eb9e0938d Rereview C1-03R R2 owner fail-closed repair",
+      "f6e2b0598 HQ156 bind C1-03R R2 independent rereview (commissioned tip)",
+      "7f6449375 C1-03R generic owner fail-closed (implementation return)"
+    ],
+    "diff_88d94930_to_7f644937_files": [
+      "WORKER_RETURNS/PYAT-C1-03R-OWNER-FAILCLOSED-R2/00_RETURN.md",
+      "WORKER_RETURNS/PYAT-C1-03R-OWNER-FAILCLOSED-R2/01_REVIEW_BLOCKER_DISPOSITION.json",
+      "WORKER_RETURNS/PYAT-C1-03R-OWNER-FAILCLOSED-R2/02_SERIALIZATION_AND_COMPATIBILITY_RECEIPT.json",
+      "WORKER_RETURNS/PYAT-C1-03R-OWNER-FAILCLOSED-R2/03_CURRENTNESS_AND_CHECKPOINT_RECEIPT.json",
+      "WORKER_RETURNS/PYAT-C1-03R-OWNER-FAILCLOSED-R2/04_EXECUTION_RECEIPT.json",
+      "WORKER_RETURNS/PYAT-C1-03R-OWNER-FAILCLOSED-R2/05_FINAL_DISPOSITION.json",
+      "rawlsing_next/pre553_analytical_replay_dependency.py",
+      "rawlsing_next/pre553_authority_maintenance.py",
+      "rawlsing_next/tests/c1_at18_at19_fixture.py",
+      "rawlsing_next/tests/test_pre553_analytical_replay_dependency.py",
+      "rawlsing_next/tests/test_pre553_authority_maintenance.py"
+    ],
+    "terrain_confined_to_commissioned_files": true,
+    "forbidden_owners_absent_from_diff": [
+      "rawlsing_next/pre553_replay_audit.py",
+      "rawlsing_next/pre553_analytical_composition.py",
+      "rawlsing_next/pre553_analytical_state_and_route.py",
+      "AuthorityCandidate owner terrain"
+    ],
+    "authority_candidate_class_untouched": true,
+    "worktree_note": "An external controller removed this review worktree mid-task and it had to be recreated; the recreated worktree was verified at eb9e0938dc12436ef4b1677cc7e416555777e6dc before any probe or court ran. The shared working tree is NOT the provenance for this review.",
+    "interpreter_note": "pytest resolves importlib through a codex-primary-runtime dependency path; this is a pre-existing environment characteristic of the shared venv and affects module resolution only, not test outcomes. All counts are consistent across repeated runs."
   },
-  "fresh_runtime_executed_by_reviewer": false,
-  "proof_grade": "EXACT_COMMITTED_SOURCE_REVIEW_WITH_WORKER_EXECUTION_EVIDENCE",
-  "blocker_proof": "Source-complete comparison of accepted consumed-only promotion graph against new rollback graph; runtime is not required to establish future pre-binding."
+  "independent_probe_run": {
+    "probe_harness": "reviewer-local, outside the repository; no implementation mutation",
+    "total_probes": 54,
+    "probe_inventory": {
+      "RVW-001": 8,
+      "RVW-002": 19,
+      "RVW-003": 6,
+      "RVW-004": 7,
+      "SHARED-LAW": 9,
+      "PRESERVE": 5
+    },
+    "result": "one BLOCKING finding (F-1), one non-blocking residual (F-2), one self-correction (F-3)",
+    "not_reused_from_worker": "The RVW-004 resealer was rewritten independently rather than imported from the worker's test module, and the positive-only legacy receipt was constructed independently of the worker's helper."
+  },
+  "implementation_mutated_by_reviewer": false,
+  "merge_or_adoption_performed": false,
+  "self_adopted": false,
+  "wider_regression_sweep_claimed": false,
+  "wider_regression_sweep_note": "Only the four commissioned court files were executed, plus the reviewer-local probe harness. No broader sweep is claimed."
 }

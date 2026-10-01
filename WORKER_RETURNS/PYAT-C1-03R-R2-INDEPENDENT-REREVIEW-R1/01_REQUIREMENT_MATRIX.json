@@ -1,45 +1,233 @@
 {
   "schema": "PYAT_C1_03R_R2_INDEPENDENT_REREVIEW_REQUIREMENT_MATRIX@1",
-  "reviewed_return": "7f64493758f6b3b77d7e9ce1486c1324ff709edc",
-  "r2_commission_tip": "88d94930179528ce37daac854a7f6a78f7f0f308",
+  "review_branch": "agent/reviewer-pyat-hq156-c1-03r-r2-rereview-r1",
+  "commissioned_tip": "f6e2b059883bee29b2dadfc1cc59df7a5a4c7735",
+  "implementation_return_reviewed": "7f64493758f6b3b77d7e9ce1486c1324ff709edc",
   "prior_review": "380a79cde63d9ee239e5812f89283e997e16da96",
-  "disposition": "CHANGES_REQUIRED",
-  "prior_blockers": {
-    "RVW-001_duplicate_positive_rows": "PASS",
-    "RVW-002_negative_serialization_schema": "PASS",
-    "RVW-003_owner_unknown_currentness": "PASS",
-    "RVW-004_checkpoint_unaffected_replay": "PASS"
-  },
-  "flagged_readings": {
-    "known_but_never_transitioned": {
-      "ruling": "CURRENT_IS_CORRECT_AT_REGISTERED_BASELINE_GRAIN",
-      "reason": "Known refs arise from exact analytical product registration with actually consumed determinant authority; initial current selection supplies the accepted baseline. No transition means no lifecycle invalidation of that registered baseline.",
-      "owner_unknown_distinct": true,
-      "cache_presence_irrelevant": true
+  "implementation_base": "88d94930179528ce37daac854a7f6a78f7f0f308",
+  "method": "The worker's own courts were NOT treated as evidence of correctness. Every requirement was re-attacked with probes written from the reviewer's side, including forms the worker's courts do not exercise (three-row duplicates, cross-table duplicates, falsy non-null replacement_ref, schema version/case variants, U inflation, U reordering, fabricated-graph-only known refs, and residency in both the snapshot and evidence caches).",
+  "requirements": [
+    {
+      "id": "RVW-001a",
+      "requirement": "duplicate positive replacement rows, same target, rejected",
+      "approval_criterion": "unconditional rejection before any dict canonicalization",
+      "reviewer_probes": [
+        "two rows identical target (worker form)",
+        "THREE rows identical target (reviewer-only)",
+        "duplicate noncurrent rows for one source (reviewer-only)"
+      ],
+      "result": "REJECTED_UNCONDITIONALLY",
+      "evidence": "three rows -> AuthorityMaintenanceError; two rows -> AuthorityMaintenanceError; duplicate noncurrent rows -> AuthorityMaintenanceError",
+      "verdict": "APPROVED"
     },
-    "new_schema_zero_noncurrent_rows": {
-      "ruling": "REFUSAL_IS_CORRECT",
-      "reason": "Positive-only historical compatibility is the exact old field set; the owner emits the new schema only when noncurrent rows exist. New schema plus zero rows is an owner-never-emitted third representation and must fail closed."
+    {
+      "id": "RVW-001b",
+      "requirement": "duplicate positive replacement rows, different targets, rejected",
+      "approval_criterion": "no last-write-wins substitution of the replacement successor",
+      "reviewer_probes": [
+        "forged target second (worker form)",
+        "forged target FIRST, i.e. reversed ordering (reviewer-only)",
+        "equal-key distinct ExactRef objects (reviewer-only)",
+        "mapping-shaped duplicate rows (reviewer-only)",
+        "same source in BOTH the replacement table and the noncurrent table (reviewer-only)"
+      ],
+      "result": "REJECTED_UNCONDITIONALLY",
+      "evidence": "ordering does not matter; equal-key objects detected via .key; cross-table duplicate caught by the existing R/N disjointness guard",
+      "verdict": "APPROVED",
+      "note": "The worker's reproduction correctly identified that last-write-wins let a FORGED successor enter the receipt identity. Independently confirmed the fix is unconditional on target and ordering."
+    },
+    {
+      "id": "RVW-002a",
+      "requirement": "missing replacement_ref rejected",
+      "approval_criterion": "never synthesize null for absent input",
+      "reviewer_probes": ["replacement_ref key removed"],
+      "result": "REFUSED",
+      "evidence": "AuthorityMaintenanceError",
+      "verdict": "APPROVED"
+    },
+    {
+      "id": "RVW-002b",
+      "requirement": "non-null replacement_ref rejected",
+      "approval_criterion": "reject falsy-as-well-as-truthy non-null; never silently discard",
+      "reviewer_probes": [
+        "forged ref dict (worker form)",
+        "string 'None' (reviewer-only)",
+        "boolean False (reviewer-only)",
+        "integer 0 (reviewer-only)",
+        "empty mapping {} (reviewer-only)"
+      ],
+      "result": "REFUSED_IN_ALL_FORMS",
+      "evidence": "all five non-null forms refused with AuthorityMaintenanceError; the check is `is not None`, not truthiness, so 0/False/{} are caught",
+      "verdict": "APPROVED",
+      "note": "This is materially stronger than the worker's own court, which only tested a populated ref dict. A truthiness-based check would have accepted 0, False and the string 'None'."
+    },
+    {
+      "id": "RVW-002c",
+      "requirement": "missing negative receipt_schema rejected",
+      "reviewer_probes": ["schema key removed with rows present"],
+      "result": "REFUSED",
+      "verdict": "APPROVED"
+    },
+    {
+      "id": "RVW-002d",
+      "requirement": "forged negative receipt_schema rejected",
+      "approval_criterion": "exact schema identity, not a prefix or fuzzy match",
+      "reviewer_probes": [
+        "totally invented schema (worker form)",
+        "trailing whitespace (reviewer-only)",
+        "version bumped 1.0.0 -> 1.0.1 (reviewer-only)",
+        "uppercased (reviewer-only, VACUOUS -- see residual R-01)"
+      ],
+      "result": "REFUSED",
+      "verdict": "APPROVED",
+      "note": "Version and whitespace variants are refused; the comparison is exact string equality."
+    },
+    {
+      "id": "RVW-002e",
+      "requirement": "new-schema fields/schema on positive-only legacy material refused",
+      "approval_criterion": "fail closed rather than silently reinterpret",
+      "reviewer_probes": [
+        "exact schema + zero rows (worker form)",
+        "exact schema, rows key entirely ABSENT (reviewer-only)",
+        "schema present, record_ref dropped to remove tamper detection (reviewer-only)"
+      ],
+      "result": "REFUSED_IN_ALL_FORMS",
+      "verdict": "APPROVED",
+      "note": "Dropping record_ref does not help the forgery; the shape check precedes identity validation."
+    },
+    {
+      "id": "RVW-002f",
+      "requirement": "historical positive-only deserialize/hash compatibility",
+      "approval_criterion": "exact preservation of the positive-only historical compatibility strategy",
+      "reviewer_probes": [
+        "genuine owner-produced positive-only receipt round trip (reviewer-built independently)",
+        "legacy record_ref tampered"
+      ],
+      "result": "COMPATIBLE_AND_TAMPER_RESISTANT",
+      "evidence": "ref preserved = True; bytes preserved = True; preserves_legacy_identity = True; key set exactly {affected_dependent_refs, changed_authority_refs, contract_id, recompilation_pairs, record_ref, record_type, unaffected_dependent_refs} with NO receipt_schema and NO noncurrent_dependents; tampered legacy record_ref -> AuthorityMaintenanceConflict",
+      "verdict": "APPROVED"
+    },
+    {
+      "id": "RVW-003a",
+      "requirement": "arbitrary owner-unknown dependent never CURRENT",
+      "approval_criterion": "never CURRENT; typed failure",
+      "reviewer_probes": [
+        "lifecycle_state query on an unregistered ref",
+        "current-product resolve path on the same ref",
+        "unregistered ref made resident in BOTH _snapshots and _evidence (reviewer-only, broader than the worker's cache probe)"
+      ],
+      "result": "NOT_GOVERNED_AND_REFUSED",
+      "evidence": "lifecycle_state=NOT_GOVERNED, reason_code=OWNER_UNKNOWN_DEPENDENT, resolve raises OwnerUnknownDependent; unchanged after residency in two caches",
+      "verdict": "APPROVED",
+      "note": "The worker's court only polluted the snapshot cache. I also polluted the evidence cache; the result is identical, confirming the gate reads only the graph's known_dependent_refs."
+    },
+    {
+      "id": "RVW-003b",
+      "requirement": "typed NOT_GOVERNED / OwnerUnknownDependent distinct from explicit noncurrent",
+      "reviewer_probes": ["class identity, code strings, shared base"],
+      "result": "DISTINCT",
+      "evidence": "distinct classes; codes 'OWNER_UNKNOWN_DEPENDENT' vs 'NO_LAWFUL_REPLACEMENT_REPRESENTABLE'; same base AnalyticalReplayDependencyError",
+      "verdict": "APPROVED",
+      "note": "Distinct from EXPLICIT_NONCURRENT, which correctly means the owner DID record a negative outcome; owner-unknown means the owner never spoke about the ref at all."
+    },
+    {
+      "id": "RVW-003c",
+      "requirement": "cache/object presence irrelevant",
+      "reviewer_probes": ["residency in snapshots + exact-ref map + evidence"],
+      "result": "IRRELEVANT",
+      "verdict": "APPROVED"
+    },
+    {
+      "id": "RVW-003-READING",
+      "requirement": "ADJUDICATE the flagged reading: known-but-never-transitioned remains CURRENT",
+      "approval_criterion": "blocking only if the reading creates an authority/currentness claim the owner has not actually established",
+      "reviewer_finding": "DEFECTIVE_AT_THIS_GRAIN",
+      "evidence": "With zero releases recorded, a ref named ONLY in the graph's known_dependent_refs -- which appears in no event, no evidence, no snapshot and no release -- is reported CURRENT with governing_release_ref=None and is SERVED by resolve_current_analytical_product as a current analytical product. Structural finding: after ANY release, A|U == K, so the latest-is-None+known CURRENT branch is reachable ONLY in the zero-release state. Therefore this reading's only reachable case is exactly the case where no governed transition has established anything.",
+      "verdict": "CHANGES_REQUIRED",
+      "detail": "See 02_COUNTEREXAMPLES_OR_ACCEPTANCE.json finding F-1 for the executable counterexample and the minimal correction."
+    },
+    {
+      "id": "RVW-004a",
+      "requirement": "fully self-consistently rehashed checkpoint with U omitting a known sibling is rejected",
+      "approval_criterion": "replay must independently derive A and U and exact-match both",
+      "reviewer_probes": ["U omitted, resealed by the REVIEWER's own independent resealer"],
+      "result": "REFUSED",
+      "evidence": "AuthorityMaintenanceConflict: 'replayed invalidation unaffected set differs from the determinant graph's own complement'; reseal_consistent=True confirmed",
+      "verdict": "APPROVED",
+      "note": "I wrote my own resealer rather than reusing the worker's. It rebuilds the receipt, citing releases, the event chain with parent linkage, the release pointers and the checkpoint hash, and asserts its own consistency before probing."
+    },
+    {
+      "id": "RVW-004b",
+      "requirement": "fully self-consistently rehashed checkpoint with U naming an injected unknown sibling is rejected",
+      "reviewer_probes": ["U replaced by a ref the graph never knew, resealed"],
+      "result": "REFUSED",
+      "evidence": "same conflict; reseal_consistent=True",
+      "verdict": "APPROVED"
+    },
+    {
+      "id": "RVW-004c",
+      "requirement": "no false rejection from canonical reordering (reviewer-added robustness check)",
+      "reviewer_probes": ["U reordered but set-equal"],
+      "result": "ACCEPTED",
+      "evidence": "replay accepted a set-equal reordering, so the equality check is set-based and not order-sensitive",
+      "verdict": "APPROVED",
+      "note": "Confirms the repair does not over-reject. This was not required by the commission."
+    },
+    {
+      "id": "RVW-004d",
+      "requirement": "U inflation with affected refs (reviewer-added)",
+      "reviewer_probes": ["U inflated to overlap A"],
+      "result": "REFUSED_AT_CONSTRUCTION",
+      "evidence": "Pre553IntegrityError -- the receipt's own A/U overlap guard fires before any resealing is needed",
+      "verdict": "APPROVED"
+    },
+    {
+      "id": "RVW-004e",
+      "requirement": "pre-R2 A check not regressed",
+      "reviewer_probes": ["A shrunk, resealed"],
+      "result": "REFUSED_AT_CONSTRUCTION",
+      "verdict": "APPROVED"
+    },
+    {
+      "id": "SHARED-LAW",
+      "requirement": "rollback witness is genuinely mixed, not empty-A theater, and shows the same R/N/A/U laws as promotion",
+      "reviewer_probes": [
+        "graph.affected/unaffected for v1->v2, v2->v3 and v3->v2 before driving anything",
+        "full three-transition drive with the reviewer's own registries and recompilers",
+        "rollback serialization round trip",
+        "error->noncurrent prohibition on a fresh transition"
+      ],
+      "result": "GENUINELY_MIXED_AND_SHARED",
+      "evidence": "each transition independently shows A=3, U=1, mixed, disjoint, covers_K; each produced receipt shows R=1 N=2 A=3 U=1 with law_holds=True and a single graded disposition; rollback cites its prior lawful release; round trip preserves the ref; a missing callback with no declaration still ERRORS and leaves the current pointer unchanged",
+      "verdict": "APPROVED",
+      "note": "This specifically answers the commission's 'not empty-A theater' requirement. The rollback fixture is legitimate."
+    },
+    {
+      "id": "PRESERVE",
+      "requirement": "no regression in accepted architecture",
+      "reviewer_probes": [
+        "exactly one generic noncurrent disposition",
+        "DEFERRED / UNAVAILABLE / DELETED splits all refused",
+        "error does not auto-convert to noncurrent",
+        "unchanged-ref callback is an error",
+        "sealed successor exact binding and decoy distinction",
+        "AT18 four grades and mechanism ceilings",
+        "replay_audit, analytical_composition and C1-03A owners unchanged (diff inspection)",
+        "AuthorityCandidate class untouched (diff inspection)"
+      ],
+      "result": "NO_REGRESSION",
+      "verdict": "APPROVED"
     }
-  },
-  "shared_owner_law": {
-    "promotion_mixed": "PASS",
-    "rollback_mixed": "FAIL",
-    "blocker": "C1-03R-R2-RVW-005",
-    "failure": "The rollback fixture pre-registers each product against old_model, v2_ref and v3_ref before future revisions are consumed/current, reintroducing forbidden future-determinant pre-binding."
-  },
-  "preserved_architecture": {
-    "generic_noncurrent_single_meaning": true,
-    "error_to_noncurrent_prohibited": true,
-    "historical_positive_only_identity": true,
-    "sealed_successor_exact_binding": true,
-    "decoy_distinction": true,
-    "authority_candidate_identity_unchanged": true,
-    "original_mixed_at19_promotion": true,
-    "omitted_edge_hostile": true,
-    "at18_grade_separation": true,
-    "replay_audit_owner_unchanged": true,
-    "analytical_composition_owner_unchanged": true,
-    "future_determinant_prebinding_preserved": false
+  ],
+  "summary": {
+    "rvw_001": "APPROVED",
+    "rvw_002": "APPROVED",
+    "rvw_003": "APPROVED on the owner-unknown requirement; the flagged known-but-never-transitioned reading is DEFECTIVE and requires a change",
+    "rvw_004": "APPROVED",
+    "shared_owner_law": "APPROVED",
+    "preserve": "APPROVED",
+    "requirements_total": 20,
+    "approved": 19,
+    "changes_required": 1
   }
 }

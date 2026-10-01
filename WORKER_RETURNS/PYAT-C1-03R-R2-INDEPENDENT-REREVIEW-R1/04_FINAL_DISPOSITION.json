@@ -1,30 +1,95 @@
 {
-  "schema": "PYAT_C1_03R_R2_INDEPENDENT_REREVIEW_FINAL_DISPOSITION@1",
-  "status": "FINAL",
+  "schema": "PYAT_C1_03R_R2_REREVIEW_FINAL_DISPOSITION@1",
   "disposition": "CHANGES_REQUIRED",
   "terminal": "C1_03R_R2_INDEPENDENT_REREVIEW_RETURNED__HQ_ADJUDICATION_REQUIRED",
-  "prior_blockers_closed": [
-    "RVW-001",
-    "RVW-002",
-    "RVW-003",
-    "RVW-004"
-  ],
-  "flagged_readings": {
-    "known_but_never_transitioned_CURRENT": "APPROVED_AT_REGISTERED_BASELINE_GRAIN",
-    "new_schema_zero_rows_refusal": "APPROVED"
+  "review_branch": "agent/reviewer-pyat-hq156-c1-03r-r2-rereview-r1",
+  "commissioned_tip": "f6e2b059883bee29b2dadfc1cc59df7a5a4c7735",
+  "implementation_return_reviewed": "7f64493758f6b3b77d7e9ce1486c1324ff709edc",
+  "implementation_base": "88d94930179528ce37daac854a7f6a78f7f0f308",
+  "prior_review_disposition": "CHANGES_REQUIRED (380a79cde63d9ee239e5812f89283e997e16da96)",
+  "verdict_by_blocker": {
+    "RVW-001_duplicate_replacement_rows": "APPROVED",
+    "RVW-002_negative_serialization_and_schema": "APPROVED",
+    "RVW-003_owner_unknown_currentness": "APPROVED_ON_THE_OWNER_UNKNOWN_REQUIREMENT; the worker's flagged known-but-never-transitioned reading is DEFECTIVE",
+    "RVW-004_checkpoint_U_replay": "APPROVED",
+    "shared_owner_law_and_rollback": "APPROVED",
+    "preserve_accepted_architecture": "APPROVED"
   },
-  "blocking_finding": {
-    "id": "C1-03R-R2-RVW-005",
-    "summary": "The new mixed rollback witness gets reachability by pre-binding products to future v2/v3 authority revisions before those determinants are consumed, violating the accepted consumed-determinant registration law."
-  },
-  "implementation_repairs_rejected": false,
-  "rollback_acceptance_witness_rejected": true,
-  "required_next_action": [
-    "Preserve all four R2 fail-closed repairs unchanged.",
-    "Replace the rollback fixture/court with a genuinely mixed three-state witness using only determinants actually consumed at each stage.",
-    "If the static lifecycle graph cannot lawfully register/rebind replacement products for the next transition, return that bounded owner/registration gap to HQ rather than pre-registering future authority edges.",
-    "Rerun the exact four-file court and independently rereview only the corrected rollback/registration proof plus regression preservation."
+  "blocking_findings": [
+    {
+      "id": "F-1",
+      "one_line": "Known-but-never-transitioned refs are reported CURRENT and served as current products even when no release exists, which is an authority claim the owner has not established.",
+      "minimal_correction": "In AuthorityMaintenanceExecutor.dependent_lifecycle_status, require that a governing release actually exists to attribute currentness to before returning CURRENT in the no-release-mentions-this-ref case. Given the verified invariant A|U == K after any release, the narrowest correct fix is to return the typed NOT_GOVERNED state (raising OwnerUnknownDependent on the current-product path) whenever no release governs the ref, rather than treating 'no transition has spoken about this dependent' as evidence of currentness.",
+      "terrain_affected": ["rawlsing_next/pre553_authority_maintenance.py"],
+      "terrain_unaffected": ["Astra Option A", "sealed-successor repair", "mixed AT19 topology", "AuthorityCandidate identity", "AT18 replay grades", "pre553_replay_audit.py", "pre553_analytical_composition.py"],
+      "is_a_regression_from_R2": false,
+      "regression_note": "This behaviour predates the R2 repair, which is why the worker disclosed rather than concealed it and correctly flagged it for adjudication. It is adjudicated here as blocking under the commission's own criterion."
+    }
   ],
-  "architecture_warrant": false,
-  "merge_or_self_adoption": false
+  "flagged_reading_adjudications": {
+    "known_but_never_transitioned_remains_current": {
+      "verdict": "DEFECTIVE_BLOCKING",
+      "one_line": "Its only reachable case is the zero-release state, in which nothing has established currentness; a ref known solely to the caller-supplied graph is then served as a current analytical product with governing_release_ref=None.",
+      "structural_basis": "Verified A|U == K on a real release, so after any release every known dependent takes the row/pair/unaffected branch. The latest-is-None+known CURRENT branch is therefore reachable only when no release exists."
+    },
+    "new_schema_with_zero_noncurrent_rows_refused_not_normalized": {
+      "verdict": "CORRECT_AT_THIS_GRAIN",
+      "one_line": "The two shapes are mutually exclusive by construction, so declaring the new schema with zero rows is an owner-impossible shape; accepting it would silently reinterpret positive-only legacy material, which is exactly what the commission required to fail closed.",
+      "scoping_note": "The refusal fires only on a declared-new-schema receipt; clean legacy positive-only material is untouched and reproduces its historical ref and bytes exactly, independently verified."
+    }
+  },
+  "non_blocking_residuals": [
+    {
+      "id": "F-2",
+      "summary": "AuthorityInvalidationReceipt.from_dict tolerates an unknown extra top-level field. It is dropped, is not hashed into identity, and does not survive re-emission, so it is not a laundering route. Strict schema closure is an owner-versioning decision, not a fail-closed repair, because tightening it without knowing the full historical corpus risks rejecting legitimate stored material."
+    },
+    {
+      "id": "F-3",
+      "summary": "Self-correction: one of my own probes (uppercasing the schema id) was vacuous because the schema contains no lowercase characters. The meaningful schema variants -- trailing whitespace and a 1.0.0 to 1.0.1 version bump -- are both correctly refused. Disclosed because a clean sweep should report defective probes too."
+    }
+  ],
+  "court": {
+    "worker_claimed": "160 passed, 0 failed, 0 errors, 0 skipped",
+    "reviewer_observed": "160 passed, 0 failed, 0 errors, 0 skipped, 0 xfailed",
+    "agrees_with_worker": true,
+    "per_file": {
+      "analytical_replay_dependency": 42,
+      "authority_maintenance": 51,
+      "replay_audit": 54,
+      "analytical_composition": 13
+    },
+    "wall_time_seconds": 71.92
+  },
+  "provenance": {
+    "diff_confined_to_commissioned_terrain": true,
+    "forbidden_owners_absent_from_diff": true,
+    "authority_candidate_untouched": true,
+    "worker's_16_new_courts_verified_present": true,
+    "provenance_caveat": "This rereview was executed in an isolated git worktree after an external controller removed it mid-task. The recreated worktree was verified at eb9e0938dc12436ef4b1677cc7e416555777e6dc before any probe or court ran. The shared working tree is not the provenance for this review."
+  },
+  "method_integrity": {
+    "worker_courts_treated_as_evidence": false,
+    "probes_written_independently": true,
+    "rvw_004_resealer_rewritten_independently": true,
+    "legacy_compatibility_receipt_constructed_independently": true,
+    "additional_forms_behind_the_workers_courts": [
+      "three-row duplicate (beyond the worker's two)",
+      "cross-table duplicate: same source in both the replacement and noncurrent tables",
+      "falsy non-null replacement_ref values: False, 0, 'None', {} -- all refused, proving an is-not-None rather than truthiness check",
+      "schema version bump and trailing-whitespace variants",
+      "U inflation with affected refs",
+      "U set-equal reordering, confirming no false rejection",
+      "unregistered ref made resident in the evidence cache as well as the snapshot cache",
+      "fabricated ref known only to the caller-supplied graph -- this produced the blocking finding"
+    ]
+  },
+  "implementation_mutated_by_reviewer": false,
+  "merge_or_adoption_performed": false,
+  "self_adopted": false,
+  "astra_option_a_reopened": false,
+  "sealed_successor_repair_reopened": false,
+  "authority_candidate_identity_reopened": false,
+  "mixed_at19_topology_reopened": false,
+  "at18_replay_grades_reopened": false,
+  "next_required_action": "One bounded correction to AuthorityMaintenanceExecutor.dependent_lifecycle_status: stop reporting CURRENT for a known dependent when no governing release exists to attribute the claim to, returning the typed NOT_GOVERNED state instead. Then narrow rereview of that single boundary."
 }

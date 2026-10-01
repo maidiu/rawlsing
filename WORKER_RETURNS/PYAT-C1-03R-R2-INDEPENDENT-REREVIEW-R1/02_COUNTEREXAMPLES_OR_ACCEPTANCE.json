@@ -1,27 +1,154 @@
 {
-  "schema": "PYAT_C1_03R_R2_INDEPENDENT_COUNTEREXAMPLES_OR_ACCEPTANCE@1",
-  "disposition": "CHANGES_REQUIRED",
-  "accepted_repairs": [
-    "RVW-001 duplicate positive rows reject before canonicalization",
-    "RVW-002 missing/non-null negative replacement_ref rejects",
-    "RVW-002 missing/forged negative receipt_schema rejects",
-    "RVW-002 positive-only historical identity remains exact",
-    "RVW-003 owner-unknown is typed NOT_GOVERNED and cache-independent",
-    "RVW-004 replay recomputes exact A and U from graph"
-  ],
-  "accepted_readings": [
-    "Known registered baseline dependent with no lifecycle transition remains CURRENT",
-    "New noncurrent schema with zero noncurrent rows is refused"
-  ],
-  "blocking_counterexample": {
-    "id": "C1-03R-R2-RVW-005",
-    "title": "Three-state rollback witness reintroduces future-determinant pre-binding",
-    "surface": "rawlsing_next/tests/c1_at18_at19_fixture.py::build_mixed_outcome_rollback_transition",
-    "construction": "Before the first promotion, construct SemanticDeterminantGraph authority edges from old_model, v2_ref and v3_ref to the same replaced/noncurrent/downstream product refs.",
-    "violation": "Products are thereby declared dependent on future revisions they have not consumed. Accepted C1-03R registration law permits only actually consumed determinant authorities and introduces revisions through governed transitions.",
-    "why_load_bearing": "With the lawful old_model-only graph used by the accepted promotion fixture, the later v2->v3 transition cannot reach the original product refs; the static owner graph does not dynamically register the replacement products under v2. Future pre-binding is what makes the second A non-empty.",
-    "required_behavior": "Produce a genuinely mixed rollback with time-lawful consumed-determinant registrations, or return the bounded owner/registration gap if the current static graph cannot express it."
+  "schema": "PYAT_C1_03R_R2_INDEPENDENT_REREVIEW_COUNTEREXAMPLES@1",
+  "provenance": {
+    "probes_written_by": "reviewer, independently, not copied from the worker's courts",
+    "harness": "/var/folders/.../T/opencode/review_probes.py (reviewer-local, outside the repo, no implementation mutation)",
+    "total_probes": 54,
+    "probe_areas": ["RVW-001", "RVW-002", "RVW-003", "RVW-004", "SHARED-LAW", "PRESERVE"]
   },
-  "architecture_warrant": false,
-  "broad_rewrite_required": false
+  "findings": [
+    {
+      "id": "F-1",
+      "area": "RVW-003",
+      "severity": "BLOCKING",
+      "title": "A ref named only in known_dependent_refs, with zero releases recorded, is reported CURRENT and served as a current analytical product",
+      "counterexample": {
+        "preconditions": "AuthorityMaintenanceExecutor constructed with initial_current_selection naming the v1 model authority, and a SemanticDeterminantGraph whose known_dependent_refs contains a ref that appears in NO event, NO evidence receipt, NO snapshot and NO release.",
+        "ref": "ExactRef('C1_ANALYTICAL_COMPOSED_PRODUCT@1', 'urn:review:never-existed', semantic_hash('review-never-existed')) -- a ref that was never produced by any producer, never transitioned, and never registered anywhere else.",
+        "observed": {
+          "releases_recorded": 0,
+          "ref_present_in_any_owner_record": false,
+          "lifecycle_state": "CURRENT",
+          "governing_release_ref": null,
+          "reason": "this dependent is registered with the owner and no governed transition has affected it",
+          "resolve_current_analytical_product": "SERVED AS A CURRENT ANALYTICAL PRODUCT (no exception)"
+        },
+        "expected": "The owner has established no currentness for this ref. No release has occurred, so there is no governing release to attribute the claim to, and the ref appears in no owner record other than the caller-supplied graph.",
+        "significance": "This is an authority/currentness claim the owner has NOT established, which is precisely the blocking criterion the commission set for this reading."
+      },
+      "why_the_worker_reading_is_defective": {
+        "structural_finding": "In this owner, after ANY release the affected and unaffected sets satisfy A|U == K (the graph's known_dependent_refs), so every known dependent is covered by the governing release and takes the row / pair / unaffected branch. I verified A|U == K on the real mixed release.",
+        "consequence": "The latest-is-None + known-ref CURRENT branch is therefore reachable ONLY in the zero-release state -- i.e. precisely the state where no governed transition has established anything.",
+        "so": "The flagged reading's only reachable case is the case where the claim is unsupported. In every reachable post-release case the outcome is correct and release-attributable.",
+        "counterfactual_check": "An UNKNOWN ref in the same zero-release executor correctly returns NOT_GOVERNED. So the owner is currently inconsistent between 'unknown and ungoverned' (refused) and 'known and ungoverned' (CURRENT), and the second of those is the unsupported one."
+      },
+      "is_this_a_regression": "No. This behaviour predates the R2 repair; the pre-R2 code returned CURRENT unconditionally in the latest-is-None branch. The R2 repair correctly narrowed the unknown case and left the known-untouched case untouched, as the worker disclosed. It is an inherited defect that this rereview is asked to adjudicate explicitly, not one introduced by R2.",
+      "minimal_correction": "In dependent_lifecycle_status, when no governing release mentions the ref, require that the owner has actually established currentness rather than merely that the graph knows the ref. The narrowest fix consistent with the current owner contract: report NOT_GOVERNED whenever no governing release exists to attribute the claim to, i.e. treat 'no transition has spoken about this dependent' as absence of authority rather than as evidence of currentness. Concretely, gate the CURRENT branch on the owner having at least one release whose receipt governs this ref, which -- given A|U == K -- reduces to requiring that a release exists at all.",
+      "scope_note": "This correction is confined to pre553_authority_maintenance.dependent_lifecycle_status. It does not reopen Astra Option A, the sealed-successor repair, mixed AT19 topology, AuthorityCandidate identity, or AT18 grades. It would make the known-untouched pre-first-release case fail closed, which is the same posture the owner already takes for the unknown case."
+    },
+    {
+      "id": "F-2",
+      "area": "RVW-002",
+      "severity": "RESIDUAL_NON_BLOCKING",
+      "title": "from_dict tolerates an unknown extra top-level field on a negative receipt",
+      "observation": "Adding an arbitrary extra key to a serialized negative receipt is accepted. The extra field is dropped, is not present in the re-emitted as_dict, and the receipt ref is byte-identical to the honest receipt.",
+      "assessment": "NOT a laundering route. The unknown field carries no authority, is not hashed into identity, and does not survive re-emission, so two byte-different artifacts share one identity without any field of the artifact being believed. Strict schema-closure was not required by the commission and no committed historical material is known to carry extra fields.",
+      "recommendation": "Record as a residual. If HQ later wants strict closure it should be an owner-versioning decision, not folded into a fail-closed repair, because tightening it without knowing the full historical corpus risks rejecting legitimate stored material."
+    },
+    {
+      "id": "F-3",
+      "area": "reviewer-method",
+      "severity": "SELF_CORRECTION",
+      "title": "One of my own probes was vacuous and initially looked like a defect",
+      "observation": "My 'schema uppercased' probe returned ACCEPTED, which on first read looked like a defeated repair.",
+      "assessment": "The probe was wrong, not the code. INVALIDATION_RECEIPT_NONCURRENT_SCHEMA is 'PRE553_AUTH40_SEMANTIC_AUTHORITY_INVALIDATION_NONCURRENT@1.0.0', which contains no lowercase characters, so .upper() is the identity function and the probe mutated nothing. Verified directly. The genuinely meaningful schema variants -- trailing whitespace and a 1.0.0 -> 1.0.1 version bump -- are both correctly refused.",
+      "note": "Recorded because a reviewer reporting a clean sweep should disclose the probes that turned out to be defective, not only the ones that found something."
+    }
+  ],
+  "accepted_without_counterexample": [
+    {
+      "area": "RVW-001",
+      "requirement": "unconditional rejection of duplicate replacement rows before any dict canonicalization",
+      "probes_refused": [
+        "two rows identical target",
+        "THREE rows identical target",
+        "two rows differing targets, honest target first",
+        "two rows differing targets, FORGED target first (ordering attack)",
+        "equal-key distinct ExactRef objects",
+        "mapping-shaped duplicate rows",
+        "duplicate noncurrent rows for one source",
+        "same source in BOTH the replacement table and the noncurrent table",
+        "self-replacement old == new (pre-R2 law intact)"
+      ],
+      "conclusion": "No collapse, no last-write-wins substitution, no ordering dependence. APPROVED."
+    },
+    {
+      "area": "RVW-002",
+      "requirement": "fail-closed malformed negative serialization plus exact positive-only legacy compatibility",
+      "probes_refused": [
+        "replacement_ref absent",
+        "replacement_ref = string 'None'",
+        "replacement_ref = False",
+        "replacement_ref = 0",
+        "replacement_ref = {}",
+        "replacement_ref = forged ref dict",
+        "schema absent with rows present",
+        "schema trailing whitespace",
+        "schema version 1.0.0 -> 1.0.1",
+        "exact schema with zero rows",
+        "exact schema with rows key absent",
+        "rows containing a non-mapping"
+      ],
+      "controls_accepted": [
+        "genuine historical positive-only receipt: ref preserved, bytes preserved, no new keys, tamper-detecting record_ref still live"
+      ],
+      "conclusion": "The null check is `is not None`, not truthiness, so falsy forgeries are caught. Legacy identity is preserved exactly. APPROVED."
+    },
+    {
+      "area": "RVW-003",
+      "requirement": "owner-unknown is never CURRENT; typed failure distinct from explicit noncurrent; cache presence irrelevant",
+      "probes": [
+        "unregistered ref: NOT_GOVERNED with reason_code OWNER_UNKNOWN_DEPENDENT",
+        "current-product path raises OwnerUnknownDependent",
+        "unregistered ref made resident in _snapshots, _snapshot_exact_refs AND _evidence: still OwnerUnknownDependent",
+        "distinct classes and distinct codes on a shared base"
+      ],
+      "conclusion": "APPROVED on the owner-unknown requirement itself."
+    },
+    {
+      "area": "RVW-004",
+      "requirement": "replay independently derives A and U and exact-matches both, against a self-consistently rehashed checkpoint",
+      "probes_refused": [
+        "U omitted, resealed by the reviewer's independent resealer",
+        "U replaced by an injected unknown ref, resealed"
+      ],
+      "probes_refused_at_construction": [
+        "U inflated to overlap A",
+        "A shrunk"
+      ],
+      "controls_accepted": [
+        "untouched checkpoint replays",
+        "audit_replay round trip yields REPLAY_VERIFIED",
+        "U reordered but set-equal is ACCEPTED (no false rejection)"
+      ],
+      "conclusion": "APPROVED. The set-based comparison is correct and order-insensitive."
+    },
+    {
+      "area": "SHARED-LAW",
+      "requirement": "rollback witness genuinely mixed and sharing the promotion law",
+      "evidence": "All three transitions independently show A=3, U=1, disjoint, covering K. All three receipts show R=1 N=2 A=3 U=1 with the R/N and A/U laws holding and a single graded noncurrent disposition. Rollback cites its prior lawful release; the receipt round-trips; a missing callback with no declaration still errors and leaves the current pointer unchanged.",
+      "conclusion": "APPROVED. The commission's 'not empty-A theater' concern is answered affirmatively."
+    },
+    {
+      "area": "PRESERVE",
+      "requirement": "no regression in accepted architecture",
+      "evidence": "Exactly one generic noncurrent disposition in use. DEFERRED, UNAVAILABLE and DELETED splits all refused. Missing callback errors rather than auto-converting to noncurrent. An unchanged-ref callback return errors. Sealed successor, decoy and consumed refs are three distinct refs with the decoy sharing the consumed content hash and the sealed successor differing. AT18 has four grades in the correct order with stored material ceiling at SERIALIZATION_REPLAY. replay_audit, analytical_composition and C1-03A are absent from the R2 diff. The AuthorityCandidate class is untouched.",
+      "conclusion": "APPROVED."
+    }
+  ],
+  "flagged_reading_adjudications": {
+    "reading_1_known_but_never_transitioned_remains_current": {
+      "verdict": "DEFECTIVE",
+      "reason": "Its only reachable case is the zero-release state, in which no governed transition has established currentness for anything. A ref known solely to the caller-supplied graph is then reported CURRENT with governing_release_ref=None and served as a current analytical product. That is an authority claim the owner has not established, which is the commission's stated blocking criterion. The correct posture is the one the owner already takes for an unknown ref: absence of a governing outcome is absence of authority.",
+      "blocking": true,
+      "finding_ref": "F-1"
+    },
+    "reading_2_new_schema_with_zero_noncurrent_rows_is_refused_not_normalized": {
+      "verdict": "CORRECT_COMPATIBILITY_LAW_AT_THIS_GRAIN",
+      "reason": "The two serializable shapes are mutually exclusive by construction: the owner emits receipt_schema and noncurrent_dependents only when at least one dependent is noncurrent, and otherwise emits exactly the historical field set. A serialized receipt that declares the new schema while carrying zero rows is therefore a shape the owner cannot produce, and accepting it would silently reinterpret positive-only legacy material as a noncurrent-schema artifact. Refusing it is the correct fail-closed compatibility law at this grain. The refusal is also narrowly scoped: it fires only on a declared-new-schema receipt, so clean legacy material is untouched, and the historical positive-only ref and bytes are preserved exactly (independently verified).",
+      "supporting_evidence": "The commission required that 'incompatible new-schema fields/schema presence on positive-only legacy material must fail closed rather than silently reinterpret'. Declaring a schema the owner would never emit while asserting no rows is exactly an incompatible new-schema field set, so refusal is the reading the commission's own requirement points to.",
+      "blocking": false,
+      "note": "One could argue a normalizing read is defensible, but it would require accepting an owner-impossible shape and would weaken the mutual-exclusivity invariant that makes the historical identity strategy sound. Refusal is both stricter and simpler to reason about."
+    }
+  }
 }
