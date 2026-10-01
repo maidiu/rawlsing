@@ -656,15 +656,22 @@ def _verify_witness(
             if not match_found:
                 raise ConditionValueRelationMismatch(f"conditioner {i}: no matching producer leaf found")
 
-                pair = canonicalize(witness.pairing_ground_truth_materials[i])
-                if pair.get("subject_preimage_ref") != witness.subject_condition_preimage_refs[i].as_dict():
-                    raise ConditionValueRelationMismatch(f"conditioner {i}: pairing subject ref mismatch")
-                if pair.get("predicate_leaf_preimage_ref") != witness.producer_predicate_leaf_refs[i].as_dict():
-                    raise ConditionValueRelationMismatch(f"conditioner {i}: pairing predicate leaf ref mismatch")
-                if pair.get("required_semantic_ref") != subject.get("empirical_semantic_ref"):
-                    raise ConditionValueRelationMismatch(f"conditioner {i}: pairing semantic ref mismatch")
-                if pair.get("required_exact_value") != subject.get("exact_value"):
-                    raise ConditionValueRelationMismatch(f"conditioner {i}: pairing exact value mismatch")
+            # Pairing-ground-truth semantics must be checked on the SUCCESSFUL
+            # path. These four comparisons were previously indented under the
+            # raise above, which made them unreachable and let a hash-consistent
+            # but semantically false pairing relation pass verification.
+            # `subject` is re-bound here deliberately: the earlier loop variable
+            # would otherwise leak the last conditioner's subject material.
+            subject = canonicalize(witness.subject_condition_preimage_materials[i])
+            pair = canonicalize(witness.pairing_ground_truth_materials[i])
+            if pair.get("subject_preimage_ref") != witness.subject_condition_preimage_refs[i].as_dict():
+                raise ConditionValueRelationMismatch(f"conditioner {i}: pairing subject ref mismatch")
+            if pair.get("predicate_leaf_preimage_ref") != witness.producer_predicate_leaf_refs[i].as_dict():
+                raise ConditionValueRelationMismatch(f"conditioner {i}: pairing predicate leaf ref mismatch")
+            if pair.get("required_semantic_ref") != subject.get("empirical_semantic_ref"):
+                raise ConditionValueRelationMismatch(f"conditioner {i}: pairing semantic ref mismatch")
+            if pair.get("required_exact_value") != subject.get("exact_value"):
+                raise ConditionValueRelationMismatch(f"conditioner {i}: pairing exact value mismatch")
     return fingerprint
 
 

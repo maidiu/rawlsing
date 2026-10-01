@@ -282,6 +282,80 @@ def build_witness_for_binding(
     )
 
 
+def readdress_witness_with_false_pairing(
+    witness,
+    *,
+    conditioner_index: int = 0,
+    false_semantic_ref=None,
+    false_exact_value=None,
+    witness_object_id: str | None = None,
+):
+    """Return a fully self-consistent witness whose pairing relation is a LIE.
+
+    This is the hostile constructor for the witness pairing-ground-truth law. It
+    deliberately does NOT corrupt any hash or ref. Instead it mutates only the
+    *semantics* of one pairing-ground-truth relation -- naming a different
+    required semantic ref and/or a different required exact value than the real
+    relation -- and then re-content-addresses everything that depends on that
+    mutation:
+
+      * the mutated pairing material's own ref is recomputed as
+        sha256(canonical_json(mutated_material));
+      * the witness identity material is rebuilt with the new pairing ref and
+        material;
+      * the witness ref is recomputed as sha256(canonical_json(new_identity)).
+
+    The result therefore satisfies every structural, count and hash-integrity
+    check the owner performs, while still contradicting the unchanged consumer
+    binding, subject preimage and producer-leaf truth. Only a genuine semantic
+    comparison can reject it.
+    """
+    if (false_semantic_ref is None) == (false_exact_value is None):
+        raise ValueError("supply exactly one of false_semantic_ref / false_exact_value")
+
+    pairing_materials = [dict(m) for m in witness.pairing_ground_truth_materials]
+    pairing_refs = list(witness.pairing_ground_truth_refs)
+
+    mutated = dict(pairing_materials[conditioner_index])
+    if false_semantic_ref is not None:
+        mutated["required_semantic_ref"] = (
+            false_semantic_ref.as_dict()
+            if isinstance(false_semantic_ref, ExactRef)
+            else false_semantic_ref
+        )
+    if false_exact_value is not None:
+        mutated["required_exact_value"] = str(false_exact_value)
+    pairing_materials[conditioner_index] = mutated
+
+    # Re-content-address the mutated pairing preimage.
+    pairing_refs[conditioner_index] = ExactRef(
+        pairing_refs[conditioner_index].kind,
+        pairing_refs[conditioner_index].object_id,
+        semantic_hash(mutated),
+    )
+
+    identity_material = dict(witness.identity_material)
+    identity_material["pairing_ground_truth_refs"] = [ref.as_dict() for ref in pairing_refs]
+    identity_material["pairing_ground_truth_materials"] = pairing_materials
+
+    witness_ref = ExactRef(
+        witness.witness_ref.kind,
+        witness_object_id or witness.witness_ref.object_id,
+        semantic_hash(identity_material),
+    )
+    return ConditionValueBindingWitness(
+        witness_ref=witness_ref,
+        identity_material=identity_material,
+        subject_condition_preimage_refs=witness.subject_condition_preimage_refs,
+        subject_condition_preimage_materials=witness.subject_condition_preimage_materials,
+        producer_predicate_leaf_refs=witness.producer_predicate_leaf_refs,
+        producer_predicate_leaf_projections=witness.producer_predicate_leaf_projections,
+        pairing_ground_truth_refs=tuple(pairing_refs),
+        pairing_ground_truth_materials=tuple(pairing_materials),
+        pairing_authority_refs=witness.pairing_authority_refs,
+    )
+
+
 __all__ = [
     "make_pairing_authority",
     "make_model_rule",
@@ -303,6 +377,7 @@ __all__ = [
     "ranked_fixture",
     "RANKED_ORACLE",
     "with_target_domains",
+    "readdress_witness_with_false_pairing",
     "direct_condition_composition",
     "WITNESS_KIND",
     "BINDING_MODE",

@@ -1,0 +1,38 @@
+{
+  "schema": "PYAT_C1_02_WITNESS_PAIRING_REPAIR_FINAL_DISPOSITION@1",
+  "disposition": "PASS_BLOCKER_REPAIRED__NARROW_INDEPENDENT_REREVIEW_REQUIRED",
+  "terminal": "C1_02_WITNESS_PAIRING_REPAIR_RETURNED__HQ_ADJUDICATION_REQUIRED",
+  "blocking_finding_addressed": "C1-02-REVIEW-BLOCK-WITNESS-PAIR-001",
+  "branch": "agent/opencode-pyat-hq143-c1-02-witness-pairing-repair-r1",
+  "base": "6e0f7b438089a542c9949b604cd55cbb3eaf8b2b",
+  "independent_review_return": "c9ed2fe49d032b9313c3d24227a08fd9ca3aff89",
+  "basis": [
+    "The blocking finding was reproduced exactly as adjudicated, before repair, with preserved output.",
+    "The four per-conditioner pairing-ground-truth comparisons are now reachable on the successful multi-conditioner verification path.",
+    "A latent second defect was repaired at the same time: the dead block compared every conditioner's pairing against the last conditioner's subject material via a leaked loop variable.",
+    "Two independent semantic lies (false required_semantic_ref and false required_exact_value) are rejected with ConditionValueRelationMismatch, both behind fully recomputed pairing and witness identities.",
+    "Ordering is proven by sentinel substitution rather than inferred: possibility evidence construction and consumer invocation are both proven not to occur.",
+    "109 passed in the complete commissioned six-file court; 105 accepted plus 4 new."
+  ],
+  "tests": {"passed": 109, "failed": 0, "errors": 0, "skipped": 0},
+  "count_reconciliation": "105 previously accepted + 4 new (1 control + 2 semantic hostiles + 1 ordering proof) = 109.",
+  "accepted_review_findings_preserved": [
+    "AT08-AT13 substantive corrected courts (all 31 pre-existing higher-order tests green)",
+    "AT10 underpowered-state non-trigger at this grain",
+    "AT11 exact-frontier coverage distinction without adaptive unvisited requirement",
+    "all three earlier owner fixes (coordinate leaves, candidate fact selection, ancestor chain closure)",
+    "C1-01 regression preservation (13 legacy tests green; legacy witness path untouched)",
+    "wider-regression attribution (retained, not contradicted)",
+    "execution provenance",
+    "authority ceiling"
+  ],
+  "counterexample_to_prior_accepted_findings": false,
+  "wider_regression_sweep": "NOT_REQUIRED_AND_NOT_RUN__repair confined to the exact verifier and C1-02-owned test/fixture terrain per the commission",
+  "frozen_expectations_edited": false,
+  "upstream_owner_changes": [],
+  "blocker_summary": "None. This is a narrow acceptance-blocker repair ready for narrow independent rereview.",
+  "scope_note": "C1-02 was not redesigned. No AT court, fixture oracle, hostile or documentary artifact from the prior corrected return was reopened. The prior corrected return directory and the independent review directory are byte-unchanged.",
+  "merge_or_adoption_performed": false,
+  "self_adopted": false,
+  "next_required_action": "Narrow independent rereview of C1-02-REVIEW-BLOCK-WITNESS-PAIR-001 only."
+}

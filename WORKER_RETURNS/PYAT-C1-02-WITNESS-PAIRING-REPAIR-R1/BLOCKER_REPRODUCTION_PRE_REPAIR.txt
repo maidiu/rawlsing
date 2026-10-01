@@ -1,0 +1,125 @@
+.FFF                                                                     [100%]
+=================================== FAILURES ===================================
+_________ test_pairing_hostile_false_required_semantic_ref_is_rejected _________
+
+    def test_pairing_hostile_false_required_semantic_ref_is_rejected():
+        """C1-02-REVIEW-BLOCK-WITNESS-PAIR-001: false required_semantic_ref.
+    
+        The hostile keeps the consumer binding, subject preimage and producer leaf
+        untouched. It lies only about which semantic ref the pairing relation
+        requires, and re-content-addresses the pairing ref and the enclosing witness
+        ref so every hash-integrity check still holds.
+        """
+        material = _pairing_hostile_material("at08-pairing-false-ref")
+        honest = material["witness"]
+    
+        # A real, structurally valid coordinate ref that is simply the WRONG one.
+        false_semantic_ref = ExactRef(
+            "QUESTION_NATIVE",
+            "urn:test:c1-02:at08-pairing-false-ref:not-the-real-condition",
+            semantic_hash({"deliberately": "wrong semantic ref"}),
+        )
+        hostile = fx.readdress_witness_with_false_pairing(
+            honest, conditioner_index=0, false_semantic_ref=false_semantic_ref
+        )
+    
+        # The hostile is internally hash-consistent: no hash or ref was corrupted.
+        hostile.verify_identity()
+        assert hostile.witness_ref.content_hash != honest.witness_ref.content_hash
+        assert hostile.pairing_ground_truth_refs[0].content_hash != honest.pairing_ground_truth_refs[0].content_hash
+        # The binding / subject / producer-leaf truth is provably unchanged.
+        assert hostile.subject_condition_preimage_refs == honest.subject_condition_preimage_refs
+        assert hostile.producer_predicate_leaf_refs == honest.producer_predicate_leaf_refs
+        assert hostile.pairing_authority_refs == honest.pairing_authority_refs
+        assert hostile.producer_predicate_leaf_projections == honest.producer_predicate_leaf_projections
+        # And the lie is real: the pairing no longer names the subject's own ref.
+        assert hostile.pairing_ground_truth_materials[0]["required_semantic_ref"] != (
+            honest.pairing_ground_truth_materials[0]["required_semantic_ref"]
+        )
+    
+>       with pytest.raises(ConditionValueRelationMismatch) as excinfo:
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ConditionValueRelationMismatch
+
+rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py:2189: Failed
+_________ test_pairing_hostile_false_required_exact_value_is_rejected __________
+
+    def test_pairing_hostile_false_required_exact_value_is_rejected():
+        """C1-02-REVIEW-BLOCK-WITNESS-PAIR-001: false required_exact_value.
+    
+        Same construction, mutating the required exact value instead of the semantic
+        ref: the pairing claims the relation holds for a different value than the one
+        the unchanged subject preimage carries.
+        """
+        material = _pairing_hostile_material("at08-pairing-false-value")
+        honest = material["witness"]
+    
+        hostile = fx.readdress_witness_with_false_pairing(
+            honest, conditioner_index=1, false_exact_value="0"
+        )
+        hostile.verify_identity()
+        assert hostile.pairing_ground_truth_materials[1]["required_exact_value"] == "0"
+>       assert hostile.pairing_ground_truth_materials[1]["required_exact_value"] != (
+            honest.pairing_ground_truth_materials[1]["required_exact_value"]
+        )
+E       AssertionError: assert '0' != '0'
+
+rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py:2214: AssertionError
+________ test_pairing_hostile_rejection_precedes_evidence_and_consumer _________
+
+    def test_pairing_hostile_rejection_precedes_evidence_and_consumer():
+        """Explicit ordering proof: the hostile never reaches evidence or consumer.
+    
+        The consumer and the evidence builder are both replaced with sentinels that
+        raise if touched. Because the composition raises first, neither sentinel can
+        fire, which demonstrates fail-closed ordering rather than merely an error.
+        """
+        import rawlsing_next.pre553_analytical_composition as composition_module
+    
+        material = _pairing_hostile_material("at08-pairing-ordering")
+        hostile = fx.readdress_witness_with_false_pairing(
+            material["witness"],
+            conditioner_index=0,
+            false_exact_value="definitely-not-the-bound-value",
+        )
+    
+        touched = []
+    
+        def forbidden_evidence(*args, **kwargs):
+            touched.append("evidence")
+            raise AssertionError("possibility evidence must not be constructed")
+    
+        def forbidden_consumer(*args, **kwargs):
+            touched.append("consumer")
+            raise AssertionError("the consumer must not be invoked")
+    
+        original_builder = composition_module._build_evidence
+        original_consumer = composition_module.evaluate_positioned_subject_possibility
+        composition_module._build_evidence = forbidden_evidence
+        composition_module.evaluate_positioned_subject_possibility = forbidden_consumer
+        try:
+            with pytest.raises(ConditionValueRelationMismatch):
+>               _compose_with(material, hostile)
+
+rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py:2257: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py:2132: in _compose_with
+    return compose_positioned_subject_possibility(
+rawlsing_next/pre553_analytical_composition.py:1113: in compose_positioned_subject_possibility
+    evidence = _build_evidence(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = ()
+kwargs = {'fact': EmpiricalFact(object_id='urn:rawlsing:pre553:EmpiricalFact:sha256:09aae33029b372d72012f60504a6d81d0aeb16484a7... requested_projection={'kind': 'C1_AT08-PAIRING-ORDERING_PAIRING_HOSTILE'}, purpose='EMPIRICAL_POSSIBILITY_ONLY'), ...}
+
+    def forbidden_evidence(*args, **kwargs):
+        touched.append("evidence")
+>       raise AssertionError("possibility evidence must not be constructed")
+E       AssertionError: possibility evidence must not be constructed
+
+rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py:2245: AssertionError
+=========================== short test summary info ============================
+FAILED rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py::test_pairing_hostile_false_required_semantic_ref_is_rejected
+FAILED rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py::test_pairing_hostile_false_required_exact_value_is_rejected
+FAILED rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py::test_pairing_hostile_rejection_precedes_evidence_and_consumer
+3 failed, 1 passed, 31 deselected in 0.52s

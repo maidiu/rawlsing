@@ -1,0 +1,77 @@
+{
+  "schema": "PYAT_C1_02_WITNESS_PAIRING_REPAIR_BLOCKER_REPRODUCTION@1",
+  "blocking_finding": "C1-02-REVIEW-BLOCK-WITNESS-PAIR-001",
+  "independent_review_return": "c9ed2fe49d032b9313c3d24227a08fd9ca3aff89",
+  "branch_base": "6e0f7b438089a542c9949b604cd55cbb3eaf8b2b",
+  "code_reproduced_against": "6e0f7b438089a542c9949b604cd55cbb3eaf8b2b (pre-repair owner blob for this finding)",
+  "defect_class": "UNREACHABLE_CONTROL_FLOW__ACCEPTANCE_BLOCKING",
+  "defect_location": {
+    "file": "rawlsing_next/pre553_analytical_composition.py",
+    "function": "_verify_witness (multi-conditioner branch)",
+    "lines_pre_repair": "656-667",
+    "exact_logic_pre_repair": [
+      "if not match_found:",
+      "    raise ConditionValueRelationMismatch(f\"conditioner {i}: no matching producer leaf found\")",
+      "",
+      "    pair = canonicalize(witness.pairing_ground_truth_materials[i])",
+      "    if pair.get(\"subject_preimage_ref\") != witness.subject_condition_preimage_refs[i].as_dict():",
+      "        raise ConditionValueRelationMismatch(f\"conditioner {i}: pairing subject ref mismatch\")",
+      "    if pair.get(\"predicate_leaf_preimage_ref\") != witness.producer_predicate_leaf_refs[i].as_dict():",
+      "        raise ConditionValueRelationMismatch(f\"conditioner {i}: pairing predicate leaf ref mismatch\")",
+      "    if pair.get(\"required_semantic_ref\") != subject.get(\"empirical_semantic_ref\"):",
+      "        raise ConditionValueRelationMismatch(f\"conditioner {i}: pairing semantic ref mismatch\")",
+      "    if pair.get(\"required_exact_value\") != subject.get(\"exact_value\"):",
+      "        raise ConditionValueRelationMismatch(f\"conditioner {i}: pairing exact value mismatch\")"
+    ],
+    "why_unreachable": "The four pairing-ground-truth comparisons were indented one level deeper than the unconditional raise inside the 'if not match_found:' branch. Any execution reaching that block raises on the first statement, so the four comparisons can never execute on any path.",
+    "second_order_defect_found_during_repair": "The dead block also read 'subject' from the earlier per-binding loop (bound at the loop above). Because the block was unreachable this never mattered, but simply de-indenting it would have compared every conditioner's pairing against the LAST conditioner's subject material. The repair re-binds 'subject' from witness.subject_condition_preimage_materials[i].",
+    "legacy_path_contrast": "The legacy single-conditioner witness path already performed the same four comparisons at owner lines 558-566 and was always reachable. That is why the C1-01 legacy court stayed green while the generalized multi-conditioner path carried the gap."
+  },
+  "counterexample_construction": {
+    "goal": "A pairing-ground-truth relation that is structurally valid, hash-consistent, freshly re-content-addressed, and enclosed in a freshly re-content-addressed witness, yet semantically false, while the consumer binding, subject preimage and producer leaf remain unchanged.",
+    "helper_added": "rawlsing_next/tests/c1_at08_at13_fixture.py :: readdress_witness_with_false_pairing",
+    "explicitly_not_done": "No hash was corrupted and no ref was left stale. The hostile would have been rejected by hash integrity if any had been touched, so no such shortcut is relied upon.",
+    "identities_recomputed_to_remain_structurally_valid": [
+      "the mutated pairing-ground-truth material's own ref (kind and object_id preserved, content_hash = semantic_hash(mutated material))",
+      "witness.identity_material['pairing_ground_truth_refs']",
+      "witness.identity_material['pairing_ground_truth_materials']",
+      "witness.witness_ref.content_hash = semantic_hash(rebuilt identity_material)"
+    ],
+    "identities_deliberately_left_unchanged": [
+      "consumer ConditionerBinding objects and their comparability authorities",
+      "witness.subject_condition_preimage_refs and _materials",
+      "witness.producer_predicate_leaf_refs and _projections",
+      "witness.pairing_authority_refs",
+      "the producer predicate, producer query and consumer query"
+    ],
+    "which_semantic_relation_was_false": [
+      "hostile A: pairing_ground_truth_materials[0]['required_semantic_ref'] replaced with a structurally valid QUESTION_NATIVE ref that is not the conditioned coordinate; truth stays A=1",
+      "hostile B: pairing_ground_truth_materials[1]['required_exact_value'] changed from the truthful '0' to '1'; the subject preimage still carries '0'",
+      "hostile C: pairing_ground_truth_materials[0]['required_exact_value'] set to 'definitely-not-the-bound-value'"
+    ]
+  },
+  "pre_repair_execution_evidence": {
+    "artifact": "WORKER_RETURNS/PYAT-C1-02-WITNESS-PAIRING-REPAIR-R1/BLOCKER_REPRODUCTION_PRE_REPAIR.txt",
+    "command": "python -m pytest -q rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py -k pairing_hostile",
+    "result": "3 failed, 1 passed",
+    "control_court": "test_pairing_hostile_baseline_witness_is_accepted PASSED, proving the fixture and witness construction are sound and the failures isolate the pairing semantics rather than unrelated breakage.",
+    "observed_failures": [
+      {
+        "court": "test_pairing_hostile_false_required_semantic_ref_is_rejected",
+        "observed": "Failed: DID NOT RAISE ConditionValueRelationMismatch",
+        "meaning": "A hash-consistent pairing relation naming the wrong required semantic ref was ACCEPTED by _verify_witness and the composition proceeded."
+      },
+      {
+        "court": "test_pairing_hostile_false_required_exact_value_is_rejected",
+        "observed": "Failed: DID NOT RAISE ConditionValueRelationMismatch",
+        "meaning": "A hash-consistent pairing relation claiming the wrong required exact value was ACCEPTED."
+      },
+      {
+        "court": "test_pairing_hostile_rejection_precedes_evidence_and_consumer",
+        "observed": "AssertionError: possibility evidence must not be constructed",
+        "meaning": "Decisive ordering proof. With _build_evidence replaced by a sentinel that raises if touched, the sentinel FIRED. The false pairing relation therefore carried the composition all the way into possibility-evidence construction, exactly as the independent review predicted. The consumer sentinel did not fire only because evidence construction failed first on the injected AssertionError, not because the owner stopped."
+      }
+    ],
+    "conclusion": "The blocking finding is reproduced exactly as adjudicated. No invented scenario was required."
+  }
+}

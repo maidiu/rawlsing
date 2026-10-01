@@ -1,0 +1,91 @@
+{
+  "schema": "PYAT_C1_02_WITNESS_PAIRING_REPAIR_REPAIR_AND_HOSTILE_AUDIT@1",
+  "blocking_finding": "C1-02-REVIEW-BLOCK-WITNESS-PAIR-001",
+  "repair_scope": "NARROW__ONE_BLOCK_ONLY",
+  "owner_file": "rawlsing_next/pre553_analytical_composition.py",
+  "repaired_logic": {
+    "function": "_verify_witness (multi-conditioner branch)",
+    "lines_post_repair": "656-674",
+    "change_summary": "De-indented the four per-conditioner pairing-ground-truth comparisons out of the 'if not match_found:' block onto the successful verification path, and re-bound 'subject' from witness.subject_condition_preimage_materials[i].",
+    "net_diff": "7 lines moved plus 1 added rebind and a 4-line explanatory comment. No other logic in the file changed.",
+    "the_four_now_reachable_comparisons": [
+      "pair.subject_preimage_ref == witness.subject_condition_preimage_refs[i]",
+      "pair.predicate_leaf_preimage_ref == witness.producer_predicate_leaf_refs[i]",
+      "pair.required_semantic_ref == subject.empirical_semantic_ref",
+      "pair.required_exact_value == subject.exact_value"
+    ],
+    "additional_latent_defect_repaired": "The previously dead block compared against the loop-leaked 'subject' variable, which would have been the last conditioner's subject material for every index. Re-binding per index is required for the checks to be correct, not merely reachable. Had this been de-indented naively, a two-conditioner witness would have compared conditioner 0's pairing against conditioner 1's subject truth."
+  },
+  "hostile_audit": {
+    "fixture_helper": "rawlsing_next/tests/c1_at08_at13_fixture.py :: readdress_witness_with_false_pairing",
+    "helper_behaviour": "Mutates only pairing semantics, then re-content-addresses the pairing ref, the witness identity material's pairing refs/materials, and the witness ref. Raises if both or neither of false_semantic_ref / false_exact_value is supplied, so the caller cannot accidentally build a non-hostile witness.",
+    "courts": [
+      {
+        "name": "test_pairing_hostile_baseline_witness_is_accepted",
+        "role": "CONTROL",
+        "asserts": "The unmutated two-conditioner witness composes to SUPPORTED / EXACT_SUPPORTED and the result carries the witness's own pairing refs. Establishes that the hostile failures isolate pairing semantics and are not caused by an unrelated defect in the fixture.",
+        "post_repair_result": "PASSED"
+      },
+      {
+        "name": "test_pairing_hostile_false_required_semantic_ref_is_rejected",
+        "role": "PRIMARY_HOSTILE_FALSE_SEMANTIC_REF",
+        "mutated_relation": "pairing_ground_truth_materials[0]['required_semantic_ref']",
+        "false_value": "a structurally valid ExactRef(kind='QUESTION_NATIVE', object_id='urn:test:c1-02:at08-pairing-false-ref:not-the-real-condition', content_hash=semantic_hash({...})) that is not the conditioned coordinate",
+        "truth_unchanged": "consumer binding, subject preimage (A=1) and producer leaf all untouched; asserted explicitly in the court",
+        "structural_validity_asserted_in_court": [
+          "hostile.verify_identity() succeeds, so the witness identity hash and every per-item preimage hash agree",
+          "hostile.witness_ref.content_hash != honest.witness_ref.content_hash (the witness really was re-addressed)",
+          "hostile.pairing_ground_truth_refs[0].content_hash != honest... (the pairing ref really was re-addressed)",
+          "subject preimage refs, producer leaf refs, pairing authority refs and leaf projections are all equal to the honest witness"
+        ],
+        "expected": "ConditionValueRelationMismatch",
+        "post_repair_result": "PASSED",
+        "rejection_message": "conditioner 0: pairing semantic ref mismatch"
+      },
+      {
+        "name": "test_pairing_hostile_false_required_exact_value_is_rejected",
+        "role": "SECONDARY_HOSTILE_FALSE_EXACT_VALUE",
+        "mutated_relation": "pairing_ground_truth_materials[1]['required_exact_value']",
+        "false_value": "'1', while the truthful value for conditioner 1 (B=0) is '0'",
+        "truth_unchanged": "subject preimage materials asserted equal to the honest witness",
+        "structural_validity_asserted_in_court": [
+          "hostile.verify_identity() succeeds",
+          "honest required_exact_value == '0' and hostile == '1', so the relation is provably false"
+        ],
+        "expected": "ConditionValueRelationMismatch",
+        "post_repair_result": "PASSED",
+        "rejection_message": "conditioner 1: pairing exact value mismatch"
+      },
+      {
+        "name": "test_pairing_hostile_rejection_precedes_evidence_and_consumer",
+        "role": "ORDERING_PROOF",
+        "construction": "Both rawlsing_next.pre553_analytical_composition._build_evidence and .evaluate_positioned_subject_possibility are temporarily replaced by sentinels that record the call and raise AssertionError if touched.",
+        "mutated_relation": "pairing_ground_truth_materials[0]['required_exact_value'] set to 'definitely-not-the-bound-value'",
+        "expected": "ConditionValueRelationMismatch, with touched == []",
+        "pre_repair_result": "FAILED with 'AssertionError: possibility evidence must not be constructed' (the evidence sentinel fired)",
+        "post_repair_result": "PASSED with touched == []",
+        "evidence_not_constructed": "touched list is empty, so _build_evidence was never entered.",
+        "consumer_not_invoked": "touched list is empty, so evaluate_positioned_subject_possibility was never entered.",
+        "note": "This court is the one that proves the ordering claim rather than inferring it from an error type."
+      }
+    ]
+  },
+  "verification_that_the_hostile_is_not_a_hash_trick": {
+    "concern": "A hostile that merely corrupts a hash would be rejected by the pre-existing verify_identity checks and would prove nothing about the semantic law.",
+    "answer": "Every hostile calls hostile.verify_identity() and asserts it succeeds before the composition is attempted. verify_identity is exactly the hash/preimage-integrity gate (witness identity hash, subject preimage hashes, leaf projection hashes, pairing material hashes). Because it passes, the rejection observed afterwards can only come from the newly reachable semantic comparisons. The first hostile additionally asserts that both the pairing ref and the witness ref actually CHANGED, so the identities were genuinely recomputed rather than left stale."
+  },
+  "preserved_accepted_findings": {
+    "statement": "No accepted independent-review finding was reopened or rewritten. The repair touches only the multi-conditioner pairing-semantics block in the C1 analytical owner plus C1-02-owned test/fixture files.",
+    "at08_at13_courts": "All 31 pre-existing higher-order tests remain present and green.",
+    "at10_underpowered_non_trigger": "Untouched; no such branch is exercised at this grain.",
+    "at11_exact_frontier_coverage": "Untouched; lineage closure from the earlier FIX-3 is unchanged.",
+    "three_prior_owner_fixes": "FIX-1 (coordinate leaves), FIX-2 (candidate fact selection), FIX-3 (ancestor chain) all unchanged and still exercised.",
+    "c1_01_legacy_court": "Green; 13 tests. The legacy single-conditioner witness path was already checking pairing semantics at owner lines 558-566 and was not modified, so its behaviour is bit-for-bit unchanged.",
+    "wider_regression_attribution": "Retained. The repair changes only the exact verifier and C1-02 test/fixture terrain, which the commission states does not require a new broad sweep. The earlier exact three-tree attribution (NO_WIDER_REGRESSIONS_DETECTED_AT_ACCEPTED_C1_01_BASELINE_GRAIN) is therefore not contradicted.",
+    "authority_ceiling": "No new semantic, comparability or model authority was introduced. The repaired checks only compare the frozen pairing-ground-truth material against the frozen subject material that the same witness already carries."
+  },
+  "counterexample_to_prior_accepted_findings_found": false,
+  "upstream_owner_changes": [],
+  "existing_owner_change_required_raised": false,
+  "authority_gap_raised": false
+}

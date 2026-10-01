@@ -2041,3 +2041,224 @@ def test_at11_depth_two_continuation_is_reproducible_in_a_fresh_process(tmp_path
     # The consumed lineage carries generation one as well as generation two.
     lineage = {ref["content_hash"] for ref in replay["recursive_lineage_refs"]}
     assert gen1.handoffs[0].ref.content_hash in lineage
+
+
+# ===========================================================================
+# C1-02-REVIEW-BLOCK-WITNESS-PAIR-001 -- witness pairing-ground-truth repair
+#
+# The four per-conditioner pairing-ground-truth semantic comparisons were
+# unreachable behind an unconditional raise. These courts construct a pairing
+# relation that is structurally valid, hash-consistent and freshly
+# re-content-addressed, yet semantically false, and require fail-closed
+# rejection BEFORE evidence construction and BEFORE consumer invocation.
+# ===========================================================================
+
+
+def _pairing_hostile_material(tag="at08-pairing-hostile"):
+    """Valid two-conditioner composition material, returned without composing."""
+    from rawlsing_next.pre553_analytical_composition import compose_positioned_subject_possibility
+    from rawlsing_next.tests.test_pre553_empirical_query import (
+        _coordinate_leaf,
+        _predicate,
+        _query,
+    )
+
+    source = fx.xor_fixture(f"c1-{tag}")
+    qauth = _query_authority(f"c1-{tag}")
+    registry = _registry(source, qauth)
+
+    a1 = _response_leaf(source, qauth, "A", 1)
+    b0 = _response_leaf(source, qauth, "B", 0)
+    joint_predicate = _predicate(
+        source, qauth, {"op": "AND", "children": [a1, b0]}, tag=f"{tag}-predicate"
+    )
+    producer_query = _query(source, qauth, joint_predicate, ("C",), tag=f"{tag}-query")
+
+    pairing = fx.make_pairing_authority(tag)
+    bindings = []
+    pairs = []
+    for binding_id, question, value in (("a", "A", 1), ("b", "B", 0)):
+        bindings.append(
+            fx.make_conditioner_binding(
+                binding_id=binding_id,
+                subject_fact_ref=ExactRef(**fx.subject_fact_ref(source, question, value)),
+                empirical_coordinate_ref=source["qrefs"][question],
+                comparability_authority_ref=pairing,
+                source_universe_ref=source["universe"].ref,
+                release_ref=source["release_ref"],
+            )
+        )
+        pairs.append((source["qrefs"][question], value))
+
+    consumer_query = fx.make_multi_conditioner_consumer_query(
+        query_id=f"{tag}-consumer",
+        subject_ref=ExactRef(
+            "C1_SYNTHETIC_POSITIONED_SUBJECT@1",
+            f"urn:test:c1-02:{tag}:subject",
+            semantic_hash({"fixture_id": tag}),
+        ),
+        target_ref=source["qrefs"]["C"],
+        source_universe_ref=source["universe"].ref,
+        release_ref=source["release_ref"],
+        bindings=bindings,
+        projection_kind=f"C1_{tag.upper()}_PAIRING_HOSTILE",
+    )
+    witness = fx.build_witness_for_binding(
+        witness_object_id=f"urn:test:c1-02:{tag}:witness",
+        consumer_query=consumer_query,
+        producer_query=producer_query,
+        producer_predicate=joint_predicate,
+        bindings=bindings,
+        coordinate_value_pairs=pairs,
+        pairing_authority=pairing,
+        source_universe_ref=source["universe"].ref,
+        release_ref=source["release_ref"],
+    )
+    return {
+        "source": source,
+        "registry": registry,
+        "predicate": joint_predicate,
+        "producer_query": producer_query,
+        "consumer_query": consumer_query,
+        "witness": witness,
+        "pairing": pairing,
+    }
+
+
+def _compose_with(material, witness):
+    from rawlsing_next.pre553_analytical_composition import compose_positioned_subject_possibility
+
+    source = material["source"]
+    return compose_positioned_subject_possibility(
+        repository=source["repo"],
+        empirical_query=material["producer_query"],
+        predicate=material["predicate"],
+        authority_registry=material["registry"],
+        release_refs=(source["release_ref"],),
+        consumer_query=material["consumer_query"],
+        model_rule=fx.make_model_rule(source["universe"].ref, "pairing-hostile"),
+        condition_binding_witness=witness,
+    )
+
+
+def test_pairing_hostile_baseline_witness_is_accepted():
+    """Control: the unmutated witness composes, so the hostiles below isolate
+    the pairing semantics rather than an unrelated breakage."""
+    material = _pairing_hostile_material("at08-pairing-control")
+    result = _compose_with(material, material["witness"])
+    assert result.analytical_state == "SUPPORTED"
+    assert result.consumer_result_or_null.result_state == "EXACT_SUPPORTED"
+    assert result.pairing_ground_truth_refs == material["witness"].pairing_ground_truth_refs
+
+
+def test_pairing_hostile_false_required_semantic_ref_is_rejected():
+    """C1-02-REVIEW-BLOCK-WITNESS-PAIR-001: false required_semantic_ref.
+
+    The hostile keeps the consumer binding, subject preimage and producer leaf
+    untouched. It lies only about which semantic ref the pairing relation
+    requires, and re-content-addresses the pairing ref and the enclosing witness
+    ref so every hash-integrity check still holds.
+    """
+    material = _pairing_hostile_material("at08-pairing-false-ref")
+    honest = material["witness"]
+
+    # A real, structurally valid coordinate ref that is simply the WRONG one.
+    false_semantic_ref = ExactRef(
+        "QUESTION_NATIVE",
+        "urn:test:c1-02:at08-pairing-false-ref:not-the-real-condition",
+        semantic_hash({"deliberately": "wrong semantic ref"}),
+    )
+    hostile = fx.readdress_witness_with_false_pairing(
+        honest, conditioner_index=0, false_semantic_ref=false_semantic_ref
+    )
+
+    # The hostile is internally hash-consistent: no hash or ref was corrupted.
+    hostile.verify_identity()
+    assert hostile.witness_ref.content_hash != honest.witness_ref.content_hash
+    assert hostile.pairing_ground_truth_refs[0].content_hash != honest.pairing_ground_truth_refs[0].content_hash
+    # The binding / subject / producer-leaf truth is provably unchanged.
+    assert hostile.subject_condition_preimage_refs == honest.subject_condition_preimage_refs
+    assert hostile.producer_predicate_leaf_refs == honest.producer_predicate_leaf_refs
+    assert hostile.pairing_authority_refs == honest.pairing_authority_refs
+    assert hostile.producer_predicate_leaf_projections == honest.producer_predicate_leaf_projections
+    # And the lie is real: the pairing no longer names the subject's own ref.
+    assert hostile.pairing_ground_truth_materials[0]["required_semantic_ref"] != (
+        honest.pairing_ground_truth_materials[0]["required_semantic_ref"]
+    )
+
+    with pytest.raises(ConditionValueRelationMismatch) as excinfo:
+        _compose_with(material, hostile)
+
+    message = str(excinfo.value)
+    assert "pairing" in message
+    # Rejected before evidence construction and before the consumer is invoked.
+    assert "evidence" not in message
+    assert excinfo.value.__cause__ is None
+
+
+def test_pairing_hostile_false_required_exact_value_is_rejected():
+    """C1-02-REVIEW-BLOCK-WITNESS-PAIR-001: false required_exact_value.
+
+    Same construction, mutating the required exact value instead of the semantic
+    ref: the pairing claims the relation holds for a different value than the one
+    the unchanged subject preimage carries.
+    """
+    material = _pairing_hostile_material("at08-pairing-false-value")
+    honest = material["witness"]
+
+    # Conditioner 1 is B=0, so the truthful required value is "0"; claim "1".
+    hostile = fx.readdress_witness_with_false_pairing(
+        honest, conditioner_index=1, false_exact_value="1"
+    )
+    hostile.verify_identity()
+    assert honest.pairing_ground_truth_materials[1]["required_exact_value"] == "0"
+    assert hostile.pairing_ground_truth_materials[1]["required_exact_value"] == "1"
+    assert hostile.pairing_ground_truth_materials[1]["required_exact_value"] != (
+        honest.pairing_ground_truth_materials[1]["required_exact_value"]
+    )
+    assert hostile.subject_condition_preimage_materials == honest.subject_condition_preimage_materials
+
+    with pytest.raises(ConditionValueRelationMismatch) as excinfo:
+        _compose_with(material, hostile)
+
+    assert "pairing" in str(excinfo.value)
+
+
+def test_pairing_hostile_rejection_precedes_evidence_and_consumer():
+    """Explicit ordering proof: the hostile never reaches evidence or consumer.
+
+    The consumer and the evidence builder are both replaced with sentinels that
+    raise if touched. Because the composition raises first, neither sentinel can
+    fire, which demonstrates fail-closed ordering rather than merely an error.
+    """
+    import rawlsing_next.pre553_analytical_composition as composition_module
+
+    material = _pairing_hostile_material("at08-pairing-ordering")
+    hostile = fx.readdress_witness_with_false_pairing(
+        material["witness"],
+        conditioner_index=0,
+        false_exact_value="definitely-not-the-bound-value",
+    )
+
+    touched = []
+
+    def forbidden_evidence(*args, **kwargs):
+        touched.append("evidence")
+        raise AssertionError("possibility evidence must not be constructed")
+
+    def forbidden_consumer(*args, **kwargs):
+        touched.append("consumer")
+        raise AssertionError("the consumer must not be invoked")
+
+    original_builder = composition_module._build_evidence
+    original_consumer = composition_module.evaluate_positioned_subject_possibility
+    composition_module._build_evidence = forbidden_evidence
+    composition_module.evaluate_positioned_subject_possibility = forbidden_consumer
+    try:
+        with pytest.raises(ConditionValueRelationMismatch):
+            _compose_with(material, hostile)
+    finally:
+        composition_module._build_evidence = original_builder
+        composition_module.evaluate_positioned_subject_possibility = original_consumer
+
+    assert touched == [], f"composition reached {touched} before rejecting"

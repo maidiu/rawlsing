@@ -1,0 +1,55 @@
+PYAT C1-02 -- WITNESS PAIRING-GROUND-TRUTH REACHABILITY REPAIR -- R1
+Final Commissioned Six-File Court
+===================================
+
+Branch:  agent/opencode-pyat-hq143-c1-02-witness-pairing-repair-r1
+Base:    6e0f7b438089a542c9949b604cd55cbb3eaf8b2b
+Repair:  C1-02-REVIEW-BLOCK-WITNESS-PAIR-001
+Review:  c9ed2fe49d032b9313c3d24227a08fd9ca3aff89
+
+Runtime: Python 3.12.14 (/tmp/c1-01-r8-release-spine-venv/bin/python), pytest 9.1.1
+
+Command:
+  python -m pytest -q \
+    rawlsing_next/tests/test_pre553_analytical_composition.py \
+    rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py \
+    rawlsing_next/tests/test_pre553_empirical_query.py \
+    rawlsing_next/tests/test_pre553_discovery_exact.py \
+    rawlsing_next/tests/test_pre553_recursive_handoff.py \
+    rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py
+
+Output:
+  ........................................................................ [ 66%]
+  .....................................                                    [100%]
+  109 passed in 9.59s
+
+Exit code: 0
+Result:   109 passed, 0 failed, 0 errors, 0 skipped
+
+Count reconciliation: 105 previously accepted + 4 new = 109
+Per file:
+  test_pre553_analytical_composition.py .................  13   (C1-01 legacy, green)
+  test_pre553_analytical_composition_higher_order.py ...  35   (31 original + 4 new)
+  test_pre553_empirical_query.py .......................  32
+  test_pre553_discovery_exact.py .......................  14
+  test_pre553_recursive_handoff.py .....................   2
+  test_source_backed_positioned_subject_possibility.py .  13
+                                                        ----
+                                                         109
+
+New courts (all pass post-repair):
+  test_pairing_hostile_baseline_witness_is_accepted            (CONTROL)
+  test_pairing_hostile_false_required_semantic_ref_is_rejected (false required_semantic_ref)
+  test_pairing_hostile_false_required_exact_value_is_rejected (false required_exact_value)
+  test_pairing_hostile_rejection_precedes_evidence_and_consumer (ordering proof)
+
+Pre-repair reproduction (preserved at BLOCKER_REPRODUCTION_PRE_REPAIR.txt):
+  -k pairing_hostile  ->  3 failed, 1 passed
+  observed: "Failed: DID NOT RAISE ConditionValueRelationMismatch" (x2)
+            "AssertionError: possibility evidence must not be constructed" (ordering)
+
+Wider regression sweep: NOT REQUIRED AND NOT RUN (repair confined to the exact
+verifier and C1-02-owned test/fixture terrain). Prior three-tree attribution
+NO_WIDER_REGRESSIONS_DETECTED_AT_ACCEPTED_C1_01_BASELINE_GRAIN retained.
+
+Terminal: C1_02_WITNESS_PAIRING_REPAIR_RETURNED__HQ_ADJUDICATION_REQUIRED

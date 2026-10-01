@@ -1,0 +1,106 @@
+{
+  "schema": "PYAT_C1_02_WITNESS_PAIRING_REPAIR_EXECUTION_RECEIPT@1",
+  "branch": "agent/opencode-pyat-hq143-c1-02-witness-pairing-repair-r1",
+  "commission_tip": "5a83a659759e8a076d33adfa984ebba02255c40f",
+  "exact_base": "6e0f7b438089a542c9949b604cd55cbb3eaf8b2b",
+  "accepted_c1_01_baseline": "5fafb499d53dddadaf8a7b4fd46506e91a09d270",
+  "corrected_c1_02_code_previously_reviewed": "795bd0814980b06174119a766a3f3940a2842385",
+  "independent_review_return": "c9ed2fe49d032b9313c3d24227a08fd9ca3aff89",
+  "head_at_execution": "5a83a659759e8a076d33adfa984ebba02255c40f with the repair staged in the working tree",
+  "runtime": {
+    "python_executable": "/tmp/c1-01-r8-release-spine-venv/bin/python",
+    "python_version": "3.12.14",
+    "pytest_version": "9.1.1"
+  },
+  "development_sequence": [
+    {
+      "step": 1,
+      "action": "Add readdress_witness_with_false_pairing to c1_at08_at13_fixture.py and the four pairing-hostile courts.",
+      "command": "python -m pytest -q rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py -k pairing_hostile",
+      "result": "3 failed, 1 passed",
+      "meaning": "Blocker reproduced against the unrepaired owner. Output preserved at BLOCKER_REPRODUCTION_PRE_REPAIR.txt."
+    },
+    {
+      "step": 2,
+      "action": "Repair _verify_witness: de-indent the four pairing-ground-truth comparisons onto the successful path and re-bind subject per conditioner index.",
+      "command": "python -m pytest -q rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py -k pairing_hostile",
+      "result": "4 passed",
+      "meaning": "All four hostile/control courts green immediately after the repair."
+    },
+    {
+      "step": 3,
+      "action": "Authoritative full commissioned six-file court.",
+      "result": "109 passed, 0 failed, 0 errors, 0 skipped"
+    }
+  ],
+  "commissioned_command": "/tmp/c1-01-r8-release-spine-venv/bin/python -m pytest -q rawlsing_next/tests/test_pre553_analytical_composition.py rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py rawlsing_next/tests/test_pre553_empirical_query.py rawlsing_next/tests/test_pre553_discovery_exact.py rawlsing_next/tests/test_pre553_recursive_handoff.py rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py",
+  "exit_code": 0,
+  "pass": 109,
+  "fail": 0,
+  "error": 0,
+  "skip": 0,
+  "count_reconciliation": {
+    "previously_accepted_total": 105,
+    "new_tests_added": 4,
+    "new_total": 109,
+    "arithmetic_check": "105 + 4 = 109, matches the executed total",
+    "why_the_count_must_increase": "The commission requires the total to increase by the new hostile(s). Three hostile/ordering courts plus one control court were added; all four execute in the six-file court.",
+    "note_on_two_hostiles": "The commission permits one decisive hostile and asks for both false-semantic-ref and false-exact-value relations 'if naturally cheap'. Both were cheap because a single fixture helper parameterizes the mutation, so two independent semantic lies are exercised rather than one."
+  },
+  "per_file_counts": {
+    "rawlsing_next/tests/test_pre553_analytical_composition.py": 13,
+    "rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py": 35,
+    "rawlsing_next/tests/test_pre553_empirical_query.py": 32,
+    "rawlsing_next/tests/test_pre553_discovery_exact.py": 14,
+    "rawlsing_next/tests/test_pre553_recursive_handoff.py": 2,
+    "rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py": 13,
+    "sum": 109
+  },
+  "commission_verification_checks": {
+    "no_regression_from_accepted_105": {
+      "status": "CONFIRMED",
+      "evidence": "109 = 105 + 4; every previously passing test still passes."
+    },
+    "all_original_31_higher_order_tests_present": {
+      "status": "CONFIRMED",
+      "evidence": "AST extraction from the court file returns 35 tests, of which the original 31 are unchanged in name and body."
+    },
+    "all_test_names_cited_by_the_corrected_matrix_still_exist": {
+      "status": "CONFIRMED",
+      "evidence": "The 30 distinct test names cited by WORKER_RETURNS/PYAT-C1-02-HIGHER-ORDER-RECURSIVE-R1/02_AT08_AT13_ACCEPTANCE_MATRIX.json were resolved against the court-file AST; zero missing.",
+      "prior_correction_artifacts_modified": false
+    },
+    "c1_01_legacy_analytical_court_green": {
+      "status": "CONFIRMED",
+      "evidence": "All 13 tests in rawlsing_next/tests/test_pre553_analytical_composition.py pass. The legacy single-conditioner witness path already performed the same four pairing comparisons at owner lines 558-566 and was not modified by this repair."
+    },
+    "wider_regression_sweep": {
+      "status": "NOT_REQUIRED_AND_NOT_RUN",
+      "justification": "The commission states a new broad sweep is not required unless the repair changes more than the exact verifier/test terrain or produces evidence of wider breakage. The repair changes only _verify_witness in rawlsing_next/pre553_analytical_composition.py plus C1-02-owned test and fixture files. The prior exact three-tree attribution is retained and not contradicted."
+    }
+  },
+  "changed_files": [
+    "rawlsing_next/pre553_analytical_composition.py",
+    "rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py",
+    "rawlsing_next/tests/c1_at08_at13_fixture.py",
+    "WORKER_RETURNS/PYAT-C1-02-WITNESS-PAIRING-REPAIR-R1/**"
+  ],
+  "write_allowlist_compliance": "All changed paths are inside the commission allowlist. The prior corrected C1-02 return directory, the independent review return directory, the generic C1 packet and every upstream owner are unmodified.",
+  "source_access": {
+    "reads": 0,
+    "evidence": "No raw survey source opened, materialized, decoded or inferred."
+  },
+  "prohibitions_respected": {
+    "raw_survey_files": true,
+    "candidate_a_b_c": true,
+    "measured_p2x": true,
+    "real_source_c11": true,
+    "c1_03_implementation": true,
+    "c4": true,
+    "new_semantic_comparability_or_model_authority": true,
+    "v3_actor_person_implementation": true,
+    "modification_of_kimi_branch": true,
+    "modification_of_prior_corrected_or_review_artifacts": true,
+    "self_adoption": true
+  }
+}
