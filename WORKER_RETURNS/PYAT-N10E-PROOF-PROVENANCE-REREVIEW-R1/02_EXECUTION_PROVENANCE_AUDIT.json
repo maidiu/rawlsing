@@ -1,0 +1,65 @@
+{
+  "schema": "PYAT_N10E_PROOF_PROVENANCE_REREVIEW_EXECUTION_PROVENANCE_AUDIT@1",
+  "disposition": "APPROVE_AT_DECLARED_GRAIN",
+  "findings": [
+    "REV-N10E-002",
+    "REV-N10E-003"
+  ],
+  "ancestry": {
+    "original_return": "58ba4320635162e8103ed38681ea5ae3e3bac014",
+    "correction_commission": "a7f7eecdeaee58e4d8021b7c571b4956e6301464",
+    "correction_return": "52e41a41e8bc3b77390016a049095b5aea1721d0",
+    "correction_descends_from_original": true,
+    "correction_return_one_commit_above_correction_commission": true,
+    "rereview_commission": "80eb275f40ffb2d096433c218fecb009063a0bd1",
+    "rereview_commission_one_commit_above_correction_return": true,
+    "delta_correction_to_rereview_commission": [
+      "WORKER_RETURNS/PYAT-N10E-PROOF-PROVENANCE-REREVIEW-R1/00_COMMISSION.md"
+    ]
+  },
+  "authoritative_final_court": {
+    "command": "python -m pytest rawlsing_next/tests/test_pre553_analytical_composition.py rawlsing_next/tests/test_pre553_empirical_query.py rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py rawlsing_next/tests/test_pre553_empirical_possibility_provider.py -v",
+    "recorded_final_runs": 1,
+    "passed": 88,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "duration_seconds": 15.14,
+    "verbose_output_collected_items": 88,
+    "verbose_output_passed_lines": 88,
+    "by_file": {
+      "test_pre553_analytical_composition.py": 13,
+      "test_pre553_empirical_query.py": 32,
+      "test_source_backed_positioned_subject_possibility.py": 13,
+      "test_pre553_empirical_possibility_provider.py": 30
+    },
+    "exact_total_check": "13+32+13+30=88",
+    "final_summary_line": "88 passed in 15.14s",
+    "old_durations_explicitly_superseded": [
+      20.01,
+      19.09,
+      22.84,
+      16.44
+    ],
+    "browser_rereview_reran_pytest": false,
+    "contradictory_final_record_found": false
+  },
+  "packet_consistency": {
+    "00_RETURN.md": "88 passed in 15.14s; exact four-file command stated",
+    "06_EXECUTION_RECEIPT.json": "88 passed; duration_seconds_final=15.14; exact four-file command stated; complete_court_runs=1",
+    "08_FINAL_PYTEST_OUTPUT.txt": "collected 88 items; exact nodes from the four commissioned files; 88 PASSED lines; summary 88 passed in 15.14s",
+    "substantive_consistency": true,
+    "nonblocking_wording_issue": "02_EXECUTION_PROVENANCE_RECONCILIATION.json claims literal command strings are identical across all three, but raw pytest output does not print the shell invocation."
+  },
+  "provenance_wording": {
+    "stale_commission_tip_unavailable_present_as_current_limitation": false,
+    "final_limitations_exclude_early_unavailability": true,
+    "historical_provenance_note_present": true,
+    "early_unavailability_preserved_as_history": true,
+    "credentials_later_available": true,
+    "issued_tip_later_fetched_and_confirmed": true,
+    "rebased_onto_governed_tip": true,
+    "final_ancestry_described_as_lawful_and_resolved": true,
+    "standing_ancestry_blocker": false
+  }
+}
