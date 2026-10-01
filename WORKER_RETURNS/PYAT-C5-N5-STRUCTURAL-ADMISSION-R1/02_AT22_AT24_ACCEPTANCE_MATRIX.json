@@ -1,0 +1,97 @@
+{
+  "schema": "PYAT_C5_N5_AT22_AT24_ACCEPTANCE_MATRIX@1",
+  "tranche": "C5/N5",
+  "court": "rawlsing_next/tests/test_current_gt2_structural_context.py",
+  "court_total_tests": 30,
+  "rows": [
+    {
+      "at": "AT22",
+      "requirement": "exact retained input/support/topology/provenance and repeatable relation identity; no handwritten relation geometry/profile",
+      "tests": [
+        "test_at22_service_takes_no_caller_arguments",
+        "test_at22_retained_input_floor_is_exact",
+        "test_at22_conditioner_target_direction_is_q86b_to_q86a",
+        "test_at22_relation_and_admission_identities_are_the_frozen_ones",
+        "test_at22_relation_identity_is_repeatable",
+        "test_at22_service_returns_owner_objects_without_recomputation",
+        "test_at22_no_handwritten_relation_geometry_in_service",
+        "test_at22_provenance_is_carried_from_the_retained_fact"
+      ],
+      "owner_path": "pre553_repo_native_seal.load_current_gt2_query_fact -> field_forge_conditional_support.produce_exact_conditional_support_profile",
+      "evidence": [
+        "all eight retained floor values observed exactly at runtime",
+        "two independent service calls produce identical relation/admission/publication/resolution identities",
+        "the relayed relation is byte-identical to the owner's own production object",
+        "service source contains no cell/projection/fraction/profile authoring"
+      ],
+      "status": "PASS"
+    },
+    {
+      "at": "AT23",
+      "requirement": "exact structural authority/admission with the commission's hostile set",
+      "tests": [
+        "test_at23_admission_is_exactly_positive_admitted",
+        "test_at23_admission_authority_is_the_frozen_current_authority",
+        "test_at23_no_applicable_negative_or_denial_refs",
+        "test_at23_relation_owner_and_family_are_owner_native",
+        "test_at23_hostile_wrong_source_identity_is_rejected",
+        "test_at23_hostile_wrong_risk_set_is_rejected",
+        "test_at23_hostile_non_supported_fact_state_is_rejected",
+        "test_at23_hostile_wrong_denominator_is_rejected",
+        "test_at23_hostile_reversed_conditioner_target_role_is_rejected",
+        "test_at23_hostile_target_use_permission_widening_is_rejected",
+        "test_at23_hostile_missing_target_use_permission_is_rejected",
+        "test_at23_hostile_wrong_target_use_is_rejected",
+        "test_at23_hostile_nonpositive_admission_is_rejected",
+        "test_at23_no_causal_or_mechanism_or_actor_semantics_are_claimed"
+      ],
+      "owner_path": "gt12_c_to_d_relation_bridge.admit_gt12_c_relation -> wave1_ff_prev3_relation_admission",
+      "hostile_coverage": {
+        "wrong_source_identity": "test_at23_hostile_wrong_source_identity_is_rejected",
+        "wrong_risk_set": "test_at23_hostile_wrong_risk_set_is_rejected",
+        "reversed_or_mutated_conditioner_target_role_or_order": "test_at23_hostile_reversed_conditioner_target_role_is_rejected",
+        "wrong_relation_family_or_owner": "test_at23_relation_owner_and_family_are_owner_native",
+        "target_use_mismatch": "test_at23_hostile_wrong_target_use_is_rejected",
+        "missing_target_use_permission": "test_at23_hostile_missing_target_use_permission_is_rejected",
+        "non_supported_relation_state": "test_at23_hostile_non_supported_fact_state_is_rejected and test_at23_hostile_nonpositive_admission_is_rejected",
+        "applicable_negative_or_limit_refs": "test_at23_no_applicable_negative_or_denial_refs",
+        "permission_widening": "test_at23_hostile_target_use_permission_widening_is_rejected"
+      },
+      "semantic_claims_not_made": [
+        "conditioner is not CAUSE",
+        "target is not EFFECT",
+        "support is not mechanism",
+        "population fact is not actor fact",
+        "no pressure / hegemony / capital semantics"
+      ],
+      "status": "PASS"
+    },
+    {
+      "at": "AT24",
+      "requirement": "actual objective consumption with the exact adopted ceiling",
+      "tests": [
+        "test_at24_m1_is_eligible_over_the_admitted_relation_basis",
+        "test_at24_route_is_the_direct_v554_to_v557_descent",
+        "test_at24_publication_family_is_f1_only",
+        "test_at24_v557_is_allow_context_only",
+        "test_at24_v558_resolution_is_complete_over_v554",
+        "test_at24_no_v553_v555_v556_substitute_basis",
+        "test_at24_review_and_active_causal_are_absent",
+        "test_at24_existing_v3_zero_effect_behavior_is_unchanged"
+      ],
+      "owner_path": "gt12_d_to_m4_typed_bridge.evaluate_typed_d_to_e_at_v554 -> publish_and_resolve_relation_v554_at_current_m4",
+      "evidence": [
+        "M1 ELIGIBLE over required_basis_kind ADMITTED_FIELD_FORGE_RELATION under contract M1_ADMITTED_FIELD_FORGE_RELATION_V554_INGRESS@1.0.0",
+        "bridge preparation state RELATION_BASIS_READY; only descent V554_TO_V557_DIRECT",
+        "publication entry semantic_class F1, producer_family V554, source_stage M1_RELATION_V554_TO_V557, producer_allowed_uses (CONTEXT,)",
+        "V557 ALLOW_CONTEXT_ONLY with uses (CONTEXT,); V558 requested uses (CONTEXT,)",
+        "resolution selection record decision SELECTED / typed_state ELIGIBLE with matching resolution_key",
+        "resolved_structural_context is None: no actor state and no V3 effect",
+        "REVIEW and ACTIVE_CAUSAL absent; no V553/V555/V556 substitute basis"
+      ],
+      "v3_zero_effect_preserved": true,
+      "status": "PASS"
+    }
+  ],
+  "all_at_passed": true
+}

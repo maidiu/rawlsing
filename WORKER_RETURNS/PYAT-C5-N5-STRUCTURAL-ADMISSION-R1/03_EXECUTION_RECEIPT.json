@@ -1,0 +1,66 @@
+{
+  "schema": "PYAT_C5_N5_EXECUTION_RECEIPT@1",
+  "tranche": "C5/N5",
+  "branch": "agent/opencode-pyat-hq149-c5-n5-current-structural-context-r1",
+  "commission_tip": "71cd049bed3fe921e639af9c3e5921d6e0ebcb51",
+  "base": "f69ad91f594219cb3ab0fadc9694af86dee188f7",
+  "base_verification": "f69ad91f594219cb3ab0fadc9694af86dee188f7 is the direct parent of the commission commit 71cd049 and an ancestor of the working HEAD",
+  "head_at_execution": "71cd049bed3fe921e639af9c3e5921d6e0ebcb51 with the new owner, court and return staged in the working tree",
+  "runtime": {
+    "python_executable": "/tmp/c1-01-r8-release-spine-venv/bin/python",
+    "python_version": "3.12.14",
+    "pytest_version": "9.1.1"
+  },
+  "authoritative_final_run": {
+    "command": "python -m pytest -q rawlsing_next/tests/test_current_gt2_structural_context.py rawlsing_next/tests/test_field_forge_conditional_support.py rawlsing_next/tests/test_wave1_ff_prev3_relation_admission.py rawlsing_next/tests/test_m1_admitted_field_forge_relation_v554_ingress.py rawlsing_next/tests/test_gt12_e2b_actual_object_consumer_harness.py rawlsing_next/tests/test_pre553_repo_native_current_rehydration.py",
+    "exit_code": 0,
+    "passed": 120,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "wall_clock_seconds": 137.64,
+    "final_output": "........................................................................ [ 60%]\n................................................                         [100%]\n120 passed in 137.64s (0:02:17)"
+  },
+  "per_file_baseline_before_new_court": {
+    "test_field_forge_conditional_support.py": 11,
+    "test_wave1_ff_prev3_relation_admission.py": 35,
+    "test_m1_admitted_field_forge_relation_v554_ingress.py": 14,
+    "test_gt12_e2b_actual_object_consumer_harness.py": 14,
+    "test_pre553_repo_native_current_rehydration.py": 16,
+    "sum_of_required_owner_courts": 90
+  },
+  "new_c5_court": {
+    "path": "rawlsing_next/tests/test_current_gt2_structural_context.py",
+    "tests": 30,
+    "passed": 30,
+    "failed": 0,
+    "wall_clock_seconds": 127.94,
+    "note": "The suite calls the real service repeatedly; the rehydration-heavy path dominates runtime."
+  },
+  "count_reconciliation": "90 required owner-court tests + 30 new C5 tests = 120, matching the authoritative final run.",
+  "owner_courts_unregressed": true,
+  "existing_owners_modified": [],
+  "changed_files": [
+    "rawlsing_next/current_gt2_structural_context.py",
+    "rawlsing_next/tests/test_current_gt2_structural_context.py",
+    "WORKER_RETURNS/PYAT-C5-N5-STRUCTURAL-ADMISSION-R1/**"
+  ],
+  "write_allowlist_compliance": "All new paths are inside the commission allowlist. No underlying empirical, FIELD FORGE, admission, M1, publication, V557/V558/V3, C1-03 or authority owner was modified. No HQ/control file was modified.",
+  "source_access": {
+    "reads": 0,
+    "evidence": "No raw survey source opened, materialized, decoded or inferred. The current GT2 canary is loaded only through the sealed repo-native owner."
+  },
+  "prohibitions_respected": {
+    "raw_survey_access": true,
+    "c4": true,
+    "c7": true,
+    "merge": true,
+    "self_adoption": true
+  },
+  "dependency_law_observed": {
+    "c4_not_required_and_not_performed": true,
+    "lits_d2_n13_not_required_and_not_performed": true
+  },
+  "blocked_early": false,
+  "typed_blocker_raised": null
+}
