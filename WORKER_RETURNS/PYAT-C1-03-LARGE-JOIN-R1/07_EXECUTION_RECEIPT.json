@@ -2,7 +2,7 @@
   "schema": "PYAT_C1_03_LARGE_JOIN_EXECUTION_RECEIPT@1",
   "branch": "agent/opencode-pyat-hq162-c1-03-large-join-r1",
   "commission_tip": "9f2f4ee271dac3d2f7673d1d495228db93fe60a5",
-  "final_sha_tested": "f6456951b68df9d9a2711d8c65ceb3fccbd07612",
+  "final_sha_tested": "39046d22db18eb69cb9cdd3ce1865e7bc8dec1f0",
   "clean_tree_at_test": true,
   "interpreter": "/tmp/c1-01-r8-release-spine-venv/bin/python",
   "python": "3.12.14",
@@ -58,5 +58,25 @@
     }
   ],
   "wider_regression_sweep_claimed": false,
-  "wider_regression_sweep_note": "Only the fourteen accepted suites plus the join court and its fresh-process runner were executed."
+  "wider_regression_sweep_note": "Only the fourteen accepted suites plus the join court and its fresh-process runner were executed.",
+  "final_commit_reverification": {
+    "performed": true,
+    "tree_clean": true,
+    "identical_to_final_tip": true,
+    "result": {
+      "passed": 434,
+      "failed": 1,
+      "errors": 0,
+      "skipped": 0,
+      "exit_status": 1
+    },
+    "runtime_seconds": 84.46,
+    "failing_court_unchanged": "test_p7_frozen_spine_bindings_still_hold_for_the_fixture_law",
+    "critical_blobs_reverified_at_final_commit": {
+      "pre553_analytical_state_and_route.py": "3a5e3db8a0897900d0b2606813bda7c3f586d46e",
+      "pre553_empirical_possibility_provider.py": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+      "pre553_authority_maintenance.py": "547e6bf20354f38179a0e2600de64c7cb2260ea0",
+      "pre553_analytical_replay_dependency.py": "47e65aad5e0a8df7af6fda72fc8807a002e556ce"
+    }
+  }
 }

@@ -4,7 +4,7 @@ Status: `ACCEPTED_OWNER_INTEGRATION_CONFLICT__HQ_ADJUDICATION_REQUIRED`
 
 Branch: `agent/opencode-pyat-hq162-c1-03-large-join-r1`
 Commission tip: `9f2f4ee271dac3d2f7673d1d495228db93fe60a5`
-Final SHA: `f6456951b68df9d9a2711d8c65ceb3fccbd07612`
+Final SHA: `39046d22db18eb69cb9cdd3ce1865e7bc8dec1f0`
 
 **This is not a PASS.** The join itself is sound; one accepted artifact cannot hold
 simultaneously with an adopted accepted owner, and that conflict is HQ's to adjudicate.
