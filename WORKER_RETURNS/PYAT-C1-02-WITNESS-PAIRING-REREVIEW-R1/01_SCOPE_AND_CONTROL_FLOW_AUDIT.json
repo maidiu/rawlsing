@@ -1,0 +1,58 @@
+{
+  "schema": "PYAT_C1_02_WITNESS_PAIRING_REREVIEW_SCOPE_CONTROL_FLOW_AUDIT@1",
+  "disposition": "APPROVE_AT_DECLARED_GRAIN",
+  "blocking_finding": "C1-02-REVIEW-BLOCK-WITNESS-PAIR-001",
+  "commission_tip": "a7b6978ec4e7e856de0745d83d7fa36ba682f7eb",
+  "repair_return": "bc661188b51e995d9f5d74e55c4e37d2ba358a17",
+  "prior_review": "c9ed2fe49d032b9313c3d24227a08fd9ca3aff89",
+  "ancestry": {
+    "corrected_c1_02_base": "6e0f7b438089a542c9949b604cd55cbb3eaf8b2b",
+    "repair_commission": "5a83a659759e8a076d33adfa984ebba02255c40f",
+    "repair_return_descends_from_corrected_base": true,
+    "repair_return_ahead_of_repair_commission_by": 1,
+    "rereview_commission_descends_from_repair_return": true,
+    "rereview_commission_delta_from_repair_return": [
+      "WORKER_RETURNS/PYAT-C1-02-WITNESS-PAIRING-REREVIEW-R1/00_COMMISSION.md"
+    ]
+  },
+  "repair_allowlist": {
+    "compliant": true,
+    "changed_executable_test_paths": [
+      "rawlsing_next/pre553_analytical_composition.py",
+      "rawlsing_next/tests/c1_at08_at13_fixture.py",
+      "rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py"
+    ],
+    "changed_return_paths": [
+      "WORKER_RETURNS/PYAT-C1-02-WITNESS-PAIRING-REPAIR-R1/**"
+    ],
+    "upstream_empirical_owner_changed": false,
+    "upstream_discovery_owner_changed": false,
+    "upstream_recursive_owner_changed": false,
+    "possibility_consumer_owner_changed": false,
+    "corrected_c1_02_return_directory_changed": false,
+    "prior_review_note": "The prior independent review is an immutable sibling return rooted at the same corrected C1-02 base, not an ancestor of the repair branch. The repair diff contains no prior-review path and cannot mutate that sibling return."
+  },
+  "control_flow": {
+    "four_pairing_checks_reachable_on_success_path": true,
+    "matching_leaf_required_before_pairing_checks": true,
+    "per_index_subject_rebind_present": true,
+    "per_index_subject_expression": "canonicalize(witness.subject_condition_preimage_materials[i])",
+    "leaked_previous_loop_subject_reused": false,
+    "comparisons": [
+      "pair.subject_preimage_ref == witness.subject_condition_preimage_refs[i]",
+      "pair.predicate_leaf_preimage_ref == witness.producer_predicate_leaf_refs[i]",
+      "pair.required_semantic_ref == subject.empirical_semantic_ref",
+      "pair.required_exact_value == subject.exact_value"
+    ],
+    "naive_deindent_without_rebind_would_be_wrong": true,
+    "reason": "The earlier binding loop leaves `subject` bound to the final conditioner. Rebinding inside the leaf/pair loop is required to evaluate each conditioner against its own subject material."
+  },
+  "legacy_path": {
+    "unchanged": true,
+    "verification": "The complete `if is_legacy:` segment is byte-identical between 6e0f7b43 and bc661188.",
+    "c1_01_test_file_unchanged": true,
+    "c1_01_test_blob": "2210fc1b4cb99552aafc8797c12d780a78e7983b"
+  },
+  "authority_ceiling_breach_found": false,
+  "raw_survey_accessed_by_reviewer": false
+}
