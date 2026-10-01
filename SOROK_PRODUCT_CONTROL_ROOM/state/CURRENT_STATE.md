@@ -660,3 +660,18 @@ The pedagogical value lies precisely in:
 
 This must not collapse into walkthrough/tier-list/route optimization culture.
 
+## 2026-10-01 — Post-banking omission audit correction
+
+Second-pass chat-to-repo audit found four under-promoted/missing decision-layer items and corrected them:
+
+1. `SPD-0184` — abandoning a seed-person continuity makes that same root ineligible for fresh T0 reassignment to the same user in ordinary mode.
+2. `SPD-0185` — preferred alpha hot path serves a compiled pre-contact person/world package plus V3/V2/LLM/persona-user relation runtime; PRE-V3/source provenance remains governed build-side authority unless live access is proven necessary.
+3. `SPD-0186` — LLM concrete flesh/detail generation must be strongly constrained by durable V3 specificity plus admitted life/world/material history, not free aesthetic theming.
+4. `SPD-0187` — semantic-personalization firewall is clarified: praxis/psychographic/engagement curation is forbidden, while a separate bounded perceptual-attention regime may weight already-perceptible particulars under provenance/uncertainty/exploration law.
+
+Full coverage audit:
+`SOROK_PRODUCT_CONTROL_ROOM/65_POST_BANKING_OMISSION_AUDIT_R1.md`
+
+Audit terminal:
+`PASS_WITH_CORRECTIONS__NO_OTHER_MATERIAL_CHAT_ONLY_PRODUCT_CONCLUSION_FOUND`
+
