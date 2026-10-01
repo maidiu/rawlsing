@@ -1,0 +1,37 @@
+{
+  "schema": "PYAT_C1_03A_R3_INDEPENDENT_REREVIEW_FINAL_DISPOSITION@1",
+  "status": "FINAL",
+  "disposition": "CHANGES_REQUIRED",
+  "terminal": "C1_03A_R3_INDEPENDENT_REREVIEW_RETURNED__HQ_ADJUDICATION_REQUIRED",
+  "G5": "PASS",
+  "blocker": {
+    "id": "C1-03A-R3-REVIEW-BLOCK-REFUSAL-AUTHENTICITY-001",
+    "summary": "The exact refusal factories still mint trusted INTEGRITY_FAILURE/BLOCKED_REQUIRED_AUTHORITY projections from publicly constructible exception instances plus caller-selected producer/supporting refs, so no competent owner execution is required and refusal state/custody can be fabricated."
+  },
+  "preserved_acceptance": {
+    "factory_exact_type_boundaries_E": true,
+    "owner_and_provenance_override_repairs_F": true,
+    "receipt_dominance_G": true,
+    "AT15_route_legitimacy": true,
+    "AT16_positive_consumer_witness": true,
+    "eight_state_distinction": true,
+    "adaptive_unvisited": true,
+    "recursive_handoff_custody": true,
+    "c1_02_untouched": true
+  },
+  "not_accepted": {
+    "AT14_refusal_authenticity": false,
+    "full_C1_03A_AT14_AT16_grain": false
+  },
+  "smallest_correction": [
+    "Do not accept a bare caller-instantiated Pre553IntegrityError or Pre553AuthorityError as sufficient owner evidence.",
+    "Do not accept caller-selected producer_ref/supporting_refs as the provenance of a trusted refusal projection.",
+    "Derive the refusal and its exact object/context identity inside the competent owner execution path, or consume an existing canonical owner-produced refusal witness/receipt that binds both.",
+    "Preserve exact refusal-type distinction and all R3 G5/E/F repairs.",
+    "Add hostiles showing manually constructed exact exception instances cannot mint refusal state and a genuine refusal cannot be rebound to an unrelated exact ref."
+  ],
+  "implementation_change_required": true,
+  "architecture_warrant": false,
+  "typed_residual": false,
+  "next_action": "Bounded refusal-authenticity correction followed by narrow independent rereview."
+}

@@ -1,0 +1,74 @@
+{
+  "schema": "PYAT_C1_03A_R3_INDEPENDENT_REREVIEW_REQUIREMENT_MATRIX@1",
+  "reviewed_return": "767bb9139b80e774093af8e765e57ee57a19e005",
+  "r3_commission_tip": "b885227b1b3f0ccaa8c892357dfc40251ab1d1cc",
+  "prior_independent_review": "6bc1cb8ecd5568d6e78e83916763f125e8b888c8",
+  "disposition": "CHANGES_REQUIRED",
+  "G5_first": {
+    "disposition": "PASS",
+    "hostile": "genuine negative StructuralEmpiricalAdmission + exact-type hand-built AdmissionEvaluation claiming ADMITTED",
+    "receipt_truth_dominates": true,
+    "envelope_decision_must_equal_receipt": true,
+    "envelope_reason_must_equal_receipt": true,
+    "envelope_blockers_must_equal_receipt": true,
+    "positive_requested_use_must_equal_receipt_target_use": true,
+    "forged_positive_from_negative_possible": false,
+    "negative_matching_envelope_require_positive_route": "REJECTED",
+    "negative_matching_envelope_direct_route": "REJECTED"
+  },
+  "factory_authenticity": {
+    "duck_typed_empirical_fact": "REJECTED",
+    "duck_typed_discovery_receipt": "REJECTED",
+    "duck_typed_adaptive_result": "REJECTED",
+    "duck_typed_admission_evaluation": "REJECTED",
+    "subclasses": "REJECTED_BY_EXACT_TYPE_IDENTITY",
+    "owner_label_override": "REMOVED",
+    "adaptive_producer_ref_override": "REMOVED",
+    "recursive_custody_supporting_ref_override": "REMOVED",
+    "legitimate_exact_owner_objects": "PRESERVED"
+  },
+  "admission_evaluation_residual": {
+    "constructible": true,
+    "blocking": false,
+    "reason": "RouteObligation reads authoritative route facts only from the canonical receipt and requires duplicate evaluation fields to agree; remaining constructible evaluation fields are ignored by the route factory."
+  },
+  "refusal_residual": {
+    "disposition": "BLOCKING",
+    "integrity_factory": "from_empirical_integrity_refusal",
+    "blocked_factory": "from_blocked_authority_refusal",
+    "caller_constructible_exception_is_sufficient": true,
+    "caller_producer_ref": true,
+    "caller_supporting_refs": true,
+    "can_mint_retained_state_without_owner_execution": true,
+    "can_bind_genuine_or_caller_exception_to_unrelated_ref": true,
+    "final_identity_carries_false_ref": true,
+    "affected_acceptance": [
+      "AT14"
+    ],
+    "blocker": "C1-03A-R3-REVIEW-BLOCK-REFUSAL-AUTHENTICITY-001"
+  },
+  "AT14": {
+    "disposition": "CHANGES_REQUIRED",
+    "eight_states_distinct": true,
+    "real_adaptive_unvisited": true,
+    "positive_handoff_exact_custody": true,
+    "invented_completeness_grade": false,
+    "blocker": "Two refusal states can still be minted and/or bound to unrelated exact refs without competent owner execution."
+  },
+  "AT15": {
+    "disposition": "PASS",
+    "learned_route_owner_derived": true,
+    "genuine_admitted_route": true,
+    "failed_or_deny_cannot_launder_direct": true,
+    "G5_closed": true
+  },
+  "AT16": {
+    "disposition": "PASS_AT_POSITIVE_AND_EXISTING_NEGATIVE_WITNESS_GRAIN",
+    "positive_54_6_state": "SUPPORTED",
+    "observed_zero_mislabel": false,
+    "producer_composition_consumer_path_real": true,
+    "named_consumer_real": true,
+    "negative_noninvocation_witnesses_preserved": true
+  },
+  "c1_02_untouched": true
+}

@@ -1,0 +1,48 @@
+{
+  "schema": "PYAT_C1_03A_R3_INDEPENDENT_COUNTEREXAMPLES_OR_ACCEPTANCE@1",
+  "status": "BLOCKING_COUNTEREXAMPLE_FOUND",
+  "blocking_counterexample": {
+    "id": "C1-03A-R3-REVIEW-BLOCK-REFUSAL-AUTHENTICITY-001",
+    "class": "CALLER_MINTABLE_REFUSAL_STATE_AND_CUSTODY",
+    "integrity_path": {
+      "callable_shape": "OwnerStateProjection.from_empirical_integrity_refusal(exception=Pre553IntegrityError('caller'), reason='caller', producer_ref=<arbitrary ExactRef>, supporting_refs=<arbitrary refs>)",
+      "why_accepted": "Factory requires only exact exception class identity; Pre553IntegrityError is publicly constructible and carries no owner-execution authenticity or producer ref.",
+      "minted_state": "INTEGRITY_FAILURE",
+      "trusted_owner_label": "rawlsing_next.pre553_empirical_query.execute_empirical_query"
+    },
+    "authority_path": {
+      "callable_shape": "OwnerStateProjection.from_blocked_authority_refusal(exception=Pre553AuthorityError('caller'), reason='caller', producer_ref=<arbitrary ExactRef>, supporting_refs=<arbitrary refs>)",
+      "why_accepted": "Factory requires only exact exception class identity; Pre553AuthorityError is publicly constructible and carries no owner-execution authenticity or producer ref.",
+      "minted_state": "BLOCKED_REQUIRED_AUTHORITY",
+      "trusted_owner_label": "rawlsing_next.pre553_discovery_exact.execute_exact_bounded_discovery"
+    },
+    "owner_execution_required": false,
+    "arbitrary_object_binding_possible": true,
+    "arbitrary_supporting_ref_injection_possible": true,
+    "propagation": [
+      "OwnerStateProjection",
+      "ProducerStateEvidence",
+      "AnalyticalStateRouteResult.identity_preimage"
+    ],
+    "acceptance_effect": "AT14 exact-input / actual-output provenance is not authenticity-closed."
+  },
+  "G5_counterexample": {
+    "attempted": true,
+    "result": "CLOSED",
+    "reason": "Evaluation decision/reason/blockers must equal receipt truth before RouteObligation construction, and negative receipt truth cannot pass require_positive_route."
+  },
+  "nonblocking_observations": [
+    {
+      "id": "C1-03A-R3-OBS-SUBCLASS-COURT-001",
+      "finding": "The committed subclass court does not instantiate actual AdaptiveSearchResult and AdmissionEvaluation subclasses in two assertions; it supplies other wrong-family subclass objects.",
+      "impact": "NONBLOCKING",
+      "reason": "The implementation gate uses literal `type(value) is expected`, which source-proves rejection of every subclass independent of that test weakness."
+    },
+    {
+      "id": "C1-03A-R3-OBS-CUSTODY-STALE-ATTRIBUTE-001",
+      "finding": "build_state_route_result still contains a short-circuited reference to coverage_custody.completeness_state although RecursiveCoverageCustody intentionally has no such field.",
+      "impact": "NONBLOCKING_AT_LAWFUL_HANDOFF_GRAIN",
+      "reason": "A lawful recursive-handoff projection is always SUPPORTED, so the `retained != SUPPORTED_BASELINE` branch does not evaluate the missing attribute. It should be cleaned when the bounded correction is made, but it is not the acceptance blocker."
+    }
+  ]
+}
