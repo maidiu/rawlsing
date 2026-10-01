@@ -1,0 +1,58 @@
+{
+  "schema": "PYAT_C1_02_CORRECTION_INDEPENDENT_REVIEW_OWNER_REGRESSION_AUDIT@1",
+  "owner_fixes": {
+    "FIX_1_coordinate_value_bearing_leaves": {
+      "verdict": "ACCEPT",
+      "necessary": true,
+      "minimal_local": true,
+      "authority_expansion": false,
+      "basis": "Governed EMPIRICAL_POSITION_COORDINATE leaves already exist in the discovery owner. C1 previously excluded them from the value-bearing witness relation. The correction adds the existing leaf kind and retains exact leaf type/operator/value plus owner-native semantic-ref matching."
+    },
+    "FIX_2_discovery_fact_by_winning_predicate": {
+      "verdict": "ACCEPT",
+      "necessary": true,
+      "minimal_local": true,
+      "authority_expansion": false,
+      "basis": "Discovery receipts can carry baseline and candidate facts. Positional `fact_refs[0]` is not a semantic selector; exact equality of fact.condition_predicate_ref with the receipt winning predicate is."
+    },
+    "FIX_3_recursive_lineage_ancestry_refs": {
+      "verdict": "ACCEPT",
+      "necessary": true,
+      "minimal_local": true,
+      "authority_expansion": false,
+      "basis": "The public recursive_parent_atom writes the prior handoff ref into owner-native atom ancestry_refs. Closing over those retained refs is required for a real depth-two lineage and does not invent ancestry."
+    }
+  },
+  "distinct_blocker": {
+    "id": "C1-02-REVIEW-BLOCK-WITNESS-PAIR-001",
+    "introduced_by_correction_commit": false,
+    "present_in_kimi_generalized_multi_conditioner_path": true,
+    "repaired_by_three_owner_fixes": false,
+    "effect": "Prevents approval of the generalized C1-02 exact witness/relation law."
+  },
+  "c1_01_preservation": {
+    "accepted_at_exercised_legacy_grain": true,
+    "recorded_current_analytical_tests_passed": 13,
+    "full_commissioned_court_passed": 105,
+    "legacy_witness_pairing_checks_reachable": true,
+    "at07_forward_reverse_identity_assertions_present": true,
+    "no_preconstructed_final_slice_guard_present": true,
+    "binding_guards_present": true,
+    "test_file_byte_identical_to_baseline": false,
+    "bounded_test_change": "Signature whitelist expanded to include discovery_result, discovery_receipt_ref, recursive_handoff; this is compatible with C1-02 extension and does not weaken the no-preconstructed-evidence guard."
+  },
+  "wider_regression": {
+    "verdict": "NO_WIDER_REGRESSIONS_DETECTED_AT_ACCEPTED_C1_01_BASELINE_GRAIN",
+    "accepted": true,
+    "comparison_method": "exact failing/erroring node-ID probe across corrected head, Kimi return, accepted C1-01 baseline",
+    "failed_nodes": 45,
+    "error_nodes": 7,
+    "non_collecting_files": 9,
+    "stray_artifact_lines": 1,
+    "reported_result_lines_each_tree": 53,
+    "exact_sets_reported_identical": true,
+    "nodes_failing_now_but_passing_at_baseline": [],
+    "frozen_expectations_edited": false,
+    "analytical_owner_in_reported_byte_frozen_lists": false
+  }
+}
