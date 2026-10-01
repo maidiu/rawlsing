@@ -1,0 +1,203 @@
+{
+  "schema": "PYAT_N10E_HOSTILE_AND_REPLAY_AUDIT@1",
+  "status": "EXECUTED_SOURCE_FREE",
+  "hostile_courts": [
+    {
+      "id": "H1",
+      "threat": "caller supplies an arbitrary PossibilitySliceEvidence to satisfy the provider",
+      "law_under_test": "provider public API exposes no precomputed-slice channel",
+      "test": "test_p4_public_api_exposes_no_precomputed_slice_channel",
+      "result": "PASS",
+      "evidence": "public signature has exactly 8 exact-determinant parameters; an unexpected 'evidence=' keyword raises TypeError",
+      "grade": "static_inspection"
+    },
+    {
+      "id": "H2",
+      "threat": "handwritten slice with 999/60 geometry is laundered into a consumer result",
+      "law_under_test": "provider recomputes; the low-level consumer helper grants no authority",
+      "test": "test_p4_provider_recomputes_and_ignores_attacker_evidence_in_scope",
+      "result": "PASS",
+      "evidence": "provider output remains 54/60; the laundered helper result carries a different evidence ref and a different result hash, proving it is not the provider path",
+      "grade": "consumer_execution"
+    },
+    {
+      "id": "H3",
+      "threat": "a provider result claims a fabricated evidence object it did not generate",
+      "law_under_test": "result constructor requires the composition's own generated evidence object (identity, not equality)",
+      "test": "test_p4_provider_result_cannot_claim_evidence_it_did_not_generate",
+      "result": "PASS",
+      "evidence": "EmpiricalPossibilityProviderError was raised",
+      "grade": "static_inspection"
+    },
+    {
+      "id": "H4",
+      "threat": "source release mismatch",
+      "law_under_test": "fail closed on release mismatch",
+      "test": "test_p5_source_release_mismatch_fails_closed_with_owner_typed_error",
+      "result": "PASS",
+      "evidence": "AnalyticalCompositionError SOURCE_RELEASE_MISMATCH",
+      "grade": "source_free_executed_producer"
+    },
+    {
+      "id": "H5",
+      "threat": "consumer target topology mismatch (reverse target against forward producer)",
+      "law_under_test": "fail closed on target topology/domain mismatch",
+      "test": "test_p5_target_topology_mismatch_fails_closed_with_owner_typed_error",
+      "result": "PASS",
+      "evidence": "AnalyticalCompositionError TARGET_TOPOLOGY_OR_DOMAIN_MISMATCH",
+      "grade": "source_free_executed_producer"
+    },
+    {
+      "id": "H6",
+      "threat": "conditioner implicitly bridges to a foreign source universe",
+      "law_under_test": "no implicit cross-universe bridge at owner construction",
+      "test": "test_p5_consumer_query_rejects_implicit_universe_bridge_at_construction",
+      "result": "PASS",
+      "evidence": "positioned-subject owner raised 'conditioner source/release mismatch; no implicit bridge'",
+      "grade": "static_inspection"
+    },
+    {
+      "id": "H7",
+      "threat": "coherent but foreign-universe consumer query against the AT07 producer",
+      "law_under_test": "fail closed on source universe mismatch",
+      "test": "test_p5_foreign_universe_consumer_query_fails_closed_against_producer",
+      "result": "PASS",
+      "evidence": "AnalyticalCompositionError SOURCE_UNIVERSE_MISMATCH",
+      "grade": "static_inspection"
+    },
+    {
+      "id": "H8",
+      "threat": "producer empirical universe differs from the consumer source universe",
+      "law_under_test": "fail closed on source universe mismatch",
+      "test": "test_p5_foreign_universe_producer_fails_closed_when_consumer_matches_source",
+      "result": "PASS",
+      "evidence": "AnalyticalCompositionError SOURCE_UNIVERSE_MISMATCH",
+      "grade": "static_inspection"
+    },
+    {
+      "id": "H9",
+      "threat": "model rule scoped to a universe other than the requested source",
+      "law_under_test": "existing governed consumer FAIL_CLOSED law, not provider coercion",
+      "test": "test_p5_model_source_universe_out_of_scope_returns_fail_closed_result",
+      "result": "PASS",
+      "evidence": "consumer result_state FAIL_CLOSED with exact_reason MODEL_SOURCE_UNIVERSE_OUT_OF_SCOPE",
+      "grade": "consumer_execution"
+    },
+    {
+      "id": "H10",
+      "threat": "unsupported producer fact silently becomes invented probability geometry",
+      "law_under_test": "typed refusal with no geometry (no smoothing, no proxy laundering)",
+      "test": "test_p6_non_supported_slice_returns_typed_refusal_without_invented_geometry",
+      "result": "PASS",
+      "evidence": "TYPED_REFUSAL / SLICE_NOT_SUPPORTED_UNDER_EXACT_MODEL_LAW with null evidence, null consumer result and empty geometry",
+      "grade": "source_free_executed_provider_branch_with_substituted_producer_fact_state"
+    },
+    {
+      "id": "H11",
+      "threat": "refusal-shaped result carrying evidence",
+      "law_under_test": "result-constructor shape law",
+      "test": "test_p6_exact_result_shape_guards_reject_refusal_and_substituted_evidence",
+      "result": "PASS",
+      "evidence": "EmpiricalPossibilityProviderError raised on receipt/result state mismatch",
+      "grade": "static_inspection"
+    },
+    {
+      "id": "H12",
+      "threat": "empirical producer re-pointed to a ZERO_SUPPORT predicate without matching custody",
+      "law_under_test": "custody witness law precedes evidence construction",
+      "test": "test_p6_zero_support_predicate_mutation_is_caught_by_custody_witness",
+      "result": "PASS",
+      "evidence": "CONDITION_VALUE_RELATION_MISMATCH raised",
+      "grade": "source_free_executed_producer"
+    },
+    {
+      "id": "H13",
+      "threat": "geometry is a hardcoded constant rather than honestly derived from the empirical product",
+      "law_under_test": "denominator and numerators track the producer fact",
+      "test": "test_p6_geometry_is_recomputed_not_fixed_when_the_empirical_slice_changes",
+      "result": "PASS",
+      "evidence": "provider raw_support equals the producer fact's raw_denominator_support and the frozen arithmetic on the source law",
+      "grade": "source_free_executed_producer"
+    },
+    {
+      "id": "H14",
+      "threat": "float / approximate geometry enters provider output",
+      "law_under_test": "exact fractions only",
+      "test": "test_p6_no_float_or_approximate_geometry_anywhere_in_provider_output",
+      "result": "PASS",
+      "evidence": "recursive scan of result material and canonicalized geometry found no float",
+      "grade": "static_inspection"
+    },
+    {
+      "id": "H15",
+      "threat": "provider invents proxy or actor/person authority",
+      "law_under_test": "no new proxy authority, no actor inference",
+      "test": "test_p6_provider_declares_no_new_proxy_or_actor_authority",
+      "result": "PASS",
+      "evidence": "provider source contains no walkback/proxy construction and no stereotype/persona/belief tokens",
+      "grade": "static_inspection"
+    },
+    {
+      "id": "H16",
+      "threat": "unconsumed irrelevant material silently becomes an identity determinant",
+      "law_under_test": "identity/dependency closure over consumed determinants only",
+      "test": "test_p3_unconsumed_irrelevant_material_is_not_a_determinant",
+      "result": "PASS",
+      "evidence": "adding an unconsumed authority snapshot left the receipt ref, result identity and evidence ref unchanged",
+      "grade": "source_free_executed_producer"
+    },
+    {
+      "id": "H17",
+      "threat": "identity-bearing determinant mutation fails to reidentify provider output",
+      "law_under_test": "determinant closure",
+      "tests": [
+        "test_p3_identity_bearing_conditioner_determinant_reidentifies_provider_output",
+        "test_p3_model_rule_determinant_reidentifies_receipt_and_result"
+      ],
+      "result": "PASS",
+      "evidence": "conditioner-time mutation and model-rule mutation each reidentified the receipt ref and the result identity",
+      "grade": "source_free_executed_producer"
+    },
+    {
+      "id": "H18",
+      "threat": "replay is not deterministic / replay accepts a different result",
+      "law_under_test": "deterministic replay identity",
+      "tests": [
+        "test_p7_receipt_and_result_identity_replay_deterministically",
+        "test_p7_replay_detects_a_different_result_identity",
+        "test_p7_fresh_process_replay_reproduces_provider_receipt"
+      ],
+      "result": "PASS",
+      "evidence": "same-process and fresh-process replay reproduced the receipt ref b1073689... and result identity 9c7c5c39...; a different result identity was detected and raised",
+      "grade": "deterministic_replay"
+    },
+    {
+      "id": "H19",
+      "threat": "the fixture silently drifts away from the accepted AT07 law",
+      "law_under_test": "the frozen R8 identity spine still binds the fixture",
+      "test": "test_p7_frozen_spine_bindings_still_hold_for_the_fixture_law",
+      "result": "PASS",
+      "evidence": "universe, release, query authority, predicate, predicate hash, producer query, consumer query, witness, evidence ref, composed identity and raw support all equal the frozen spine",
+      "grade": "source_free_executed_producer"
+    }
+  ],
+  "replay_audit": {
+    "same_process_replay": "PASS",
+    "fresh_process_replay": "PASS",
+    "fresh_process_runner": "rawlsing_next/tests/n10e_empirical_slice_fresh_process_runner.py",
+    "replay_identity_reproduced": {
+      "forward_receipt_ref_hash": "b10736893e58c668c17ac63698c5483fd13bd64162637b33ad896855f5023489",
+      "forward_result_identity_hash": "9c7c5c39796e39afc374859b41cef2fba9b6eea901238a214929f7eb0f2fd2d4",
+      "reverse_receipt_ref_hash": "fbc76a9ff48254d370a0fe2ea9c131ef8b61ec802f0657629a1c6cb0e43f3921",
+      "reverse_result_identity_hash": "451c25bf645a775f0210e257abf8f23a3c2e33f1fb0793d834f898461fbf3145"
+    },
+    "receipt_identity_well_founded": "receipt identity preimage excludes the receipt's own ref/hash; verified by construction after a real recursion defect was found and fixed during development"
+  },
+  "no_repo_write_outside_allowlist": true,
+  "prohibited_execution_check": {
+    "raw_survey_files_read": false,
+    "c4_executed": false,
+    "c1_02_c1_03_implemented": false,
+    "c1_02_test_or_fixture_imported": false
+  }
+}

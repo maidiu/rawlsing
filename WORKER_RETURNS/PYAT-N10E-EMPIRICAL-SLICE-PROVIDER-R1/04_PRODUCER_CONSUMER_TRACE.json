@@ -1,0 +1,97 @@
+{
+  "schema": "PYAT_N10E_PRODUCER_CONSUMER_TRACE@1",
+  "status": "EXECUTED_SOURCE_FREE",
+  "trace_chain": "empirical query -> accepted C1 analytical composition -> generated slice evidence -> public possibility consumer -> provider receipt",
+  "grade_legend": {
+    "static_inspection": "source/signature inspection only",
+    "source_free_executed_producer": "the accepted empirical producer actually ran",
+    "generated_evidence": "evidence object identity produced by the accepted composition",
+    "consumer_execution": "the public consumer actually ran on the generated evidence",
+    "deterministic_replay": "identity reproduced from the same frozen inputs"
+  },
+  "forward": {
+    "direction": "POSITION_P1_TO_ANSWER",
+    "producer_predicate_ref_hash": "8fe1a7e827ee09d8ab8121fe76fc1b219c1518b74e743098adba1a754dd7a3ac",
+    "producer_predicate_hash": "fc7ee1774226e94491688b14a395acfbf9c5ccfc9184744963e01af1ee52dc55",
+    "producer_query_ref_hash": "ebef7e841e4b6bcbde599118a9c993fa9a96a3b4c84bd743c862c1790548f371",
+    "producer_fact_ref_hash": "20f35003c7d11a38c1c7d3cea9f334de4ba5b89d1f26fccbff1254c05904bdd1",
+    "producer_fact_state": "SUPPORTED",
+    "raw_denominator_support": 60,
+    "source_universe_ref_hash": "ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2",
+    "release_ref_hash": "dfd6ca5e08d1abe0f1494b4dc0e38869925739cceb306c62a3540922b12ff5b3",
+    "consumer_query_ref_hash": "0e966cca9805e4fedce532812cfd6587cd7f7cf6cd858ac982c531abd6f61330",
+    "witness_ref_hash": "fb3a3b566e2a65a522344ddf5145ec5754d02959237c75a0287fc57bd6c84db5",
+    "generated_evidence_ref_hash": "b2407eeb3d22cc0d71e5d13308b0149338761efc4ef40921ab363c3cd9c78307",
+    "evidence_identity_is_producer_derived": true,
+    "composed_result_identity_hash": "03610f9d91b23cfb6f862dc91b5de92c7f4e4b8e44a53b9efdacb1cf73af6b9e",
+    "consumer_result_state": "EXACT_SUPPORTED",
+    "consumer_result_hash": "47b51a3b6df4ec051b5b9fb04a92760c791f4ac761f20a157966cbe1b481a4be",
+    "provider_receipt_ref_hash": "b10736893e58c668c17ac63698c5483fd13bd64162637b33ad896855f5023489",
+    "provider_result_identity_hash": "9c7c5c39796e39afc374859b41cef2fba9b6eea901238a214929f7eb0f2fd2d4",
+    "cell_numerators": {"yes": 54, "no": 6},
+    "cell_fractions": {"yes": {"$exact_fraction": [9, 10]}, "no": {"$exact_fraction": [1, 10]}},
+    "denominator_member_refs_count": 60,
+    "grades": ["source_free_executed_producer", "generated_evidence", "consumer_execution", "deterministic_replay"],
+    "matches_frozen_r8_spine": {
+      "evidence_ref": true,
+      "composed_result_identity_hash": true,
+      "producer_query_ref": true,
+      "producer_predicate_ref": true,
+      "consumer_query_ref": true,
+      "witness_ref": true,
+      "raw_denominator_support": true
+    }
+  },
+  "reverse": {
+    "direction": "ANSWER_YES_TO_POSITION",
+    "producer_fact_ref_hash": "68ad841bd8e5ab8df10318c7660e91ab4809cf2d3ad76459581d940379668289",
+    "producer_fact_state": "SUPPORTED",
+    "raw_denominator_support": 62,
+    "generated_evidence_ref_hash": "e40c31eaf25c8e4f163ff340f968f0dc5ee650fc8383a586ea251a43ee8851d6",
+    "evidence_identity_is_producer_derived": true,
+    "composed_result_identity_hash": "1202822cf98d802c04440328496dc64ee02e6d6030a3da6c9bf10ef1a6490a3c",
+    "consumer_result_state": "EXACT_SUPPORTED",
+    "consumer_result_hash": "dcb47a70f056b841c5a4d24eca4fab7e0ce2b46995138ccaef98a5085f5f28c0",
+    "provider_receipt_ref_hash": "fbc76a9ff48254d370a0fe2ea9c131ef8b61ec802f0657629a1c6cb0e43f3921",
+    "provider_result_identity_hash": "451c25bf645a775f0210e257abf8f23a3c2e33f1fb0793d834f898461fbf3145",
+    "cell_numerators": {"P1": 54, "P2": 8},
+    "cell_fraction_P1": {"$exact_fraction": [27, 31]},
+    "grades": ["source_free_executed_producer", "generated_evidence", "consumer_execution", "deterministic_replay"]
+  },
+  "direction_separation": {
+    "receipt_refs_distinct": true,
+    "result_identity_hashes_distinct": true,
+    "evidence_refs_distinct": true,
+    "producer_predicate_refs_distinct": true
+  },
+  "refusal_trace": {
+    "case": "producer fact typed_state != SUPPORTED (ZERO_SUPPORT substitution through the real provider entry point)",
+    "provider_state": "TYPED_REFUSAL",
+    "refusal_state": "SLICE_NOT_SUPPORTED_UNDER_EXACT_MODEL_LAW",
+    "evidence_emitted": null,
+    "consumer_result_emitted": null,
+    "geometry_emitted": false,
+    "grade": "source_free_executed_provider_branch_with_substituted_producer_fact_state"
+  },
+  "custody_trace": {
+    "case": "ZERO_SUPPORT predicate substituted without a matching AT07 custody witness",
+    "observed": "CONDITION_VALUE_RELATION_MISMATCH raised before any evidence was produced",
+    "grades": ["source_free_executed_producer"]
+  },
+  "replay_trace": {
+    "same_process": "receipt ref, result identity, evidence ref and consumer hash reproduced",
+    "fresh_process": {
+      "runner": "rawlsing_next/tests/n10e_empirical_slice_fresh_process_runner.py",
+      "receipt_ref_hash": "b10736893e58c668c17ac63698c5483fd13bd64162637b33ad896855f5023489",
+      "result_identity_hash": "9c7c5c39796e39afc374859b41cef2fba9b6eea901238a214929f7eb0f2fd2d4",
+      "matches_in_process": true
+    },
+    "grade": "deterministic_replay__same_and_fresh_process"
+  },
+  "what_this_does_not_claim": [
+    "no structural-world claim",
+    "no actor/person/V3 state",
+    "no AT33 progressive multi-conditioner/world-conditioned completion",
+    "no adoption: a branch-local PASS is not adoption"
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "schema": "PYAT_N10E_SCOPE_AND_GROUNDING@1",
+  "status": "EXECUTED_SOURCE_FREE",
+  "work_item": "PYAT N10E EMPIRICAL_POSSIBILITY_SLICE_PROVIDER_CORE R1",
+  "commission": "WORKER_RETURNS/PYAT-N10E-EMPIRICAL-SLICE-PROVIDER-R1/00_COMMISSION.md",
+  "commission_sha256": "83334164a8228ceddb330bdb0ae58265b786961d045327aa72b1804b9a5c5365",
+  "repository": "maidiu/rawlsing",
+  "assigned_branch": "agent/deepseek-pyat-hq140-n10e-empirical-slice-provider-r1",
+  "declared_branch_base": "5fafb499d53dddadaf8a7b4fd46506e91a09d270",
+  "commission_tip": "b631e1c40fc9078cf6473004c28532a99308c5db",
+  "commission_tip_availability": {
+    "object_present_in_local_clone": false,
+    "origin_fetch_available": false,
+    "origin_fetch_error": "fatal: could not read Username for 'https://github.com' (no credential/askpass available)",
+    "resolution": "The commission tip b631e1c is base 5fafb499 plus the exact write-allowlist terrain only. Worked from the declared accepted base 5fafb499, which the commission names as the exact accepted base and the branch point. No existing owner or C1-02 artifact was taken from any other commit.",
+    "material_effect_on_proof": "NONE: the accepted base is byte-identical for every file this lane reads or wraps (verified below)."
+  },
+  "authority_anchors": {
+    "astra_node": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/nodes/N10E.md",
+    "astra_node_commission_context": "PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/commissions/C8.md",
+    "operational_authority": "the issued 00_COMMISSION.md in this return directory",
+    "acceptance_cases_used_at_declared_grain": ["AT07", "AT17"],
+    "at33_progressive_world_claim": "NOT_CLAIMED"
+  },
+  "accepted_owners_reused_unchanged": {
+    "analytical_producer": {
+      "module": "rawlsing_next.pre553_analytical_composition",
+      "public_symbol": "compose_positioned_subject_possibility",
+      "declared_owner_blob_at_base": "26f3380cb83cbbcedc87c74aaf603b0492c8ce8f",
+      "observed_blob_at_base": "26f3380cb83cbbcedc87c74aaf603b0492c8ce8f",
+      "match": true,
+      "modified_by_this_lane": false
+    },
+    "possibility_consumer": {
+      "module": "rawlsing_next.source_backed_positioned_subject_possibility",
+      "public_symbol": "evaluate_positioned_subject_possibility",
+      "declared_owner_blob_at_base": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+      "observed_blob_at_base": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+      "match": true,
+      "modified_by_this_lane": false
+    }
+  },
+  "write_allowlist_observed": [
+    "rawlsing_next/pre553_empirical_possibility_provider.py (new)",
+    "rawlsing_next/tests/test_pre553_empirical_possibility_provider.py (new)",
+    "rawlsing_next/tests/n10e_empirical_slice_fixture.py (new, optional terrain 3)",
+    "rawlsing_next/tests/n10e_empirical_slice_fresh_process_runner.py (new, optional terrain 4)",
+    "WORKER_RETURNS/PYAT-N10E-EMPIRICAL-SLICE-PROVIDER-R1/** (new)"
+  ],
+  "out_of_scope_terrain_untouched": [
+    "rawlsing_next/pre553_analytical_composition.py",
+    "rawlsing_next/source_backed_positioned_subject_possibility.py",
+    "rawlsing_next/tests/test_pre553_analytical_composition.py",
+    "rawlsing_next/tests/test_pre553_empirical_query.py",
+    "rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py",
+    "WORKER_RETURNS/PYAT-C1-02-HIGHER-ORDER-RECURSIVE-R1/**",
+    "all C1-02 tests/fixtures/return files",
+    "all HQ/control files"
+  ],
+  "prohibitions_observed": {
+    "raw_survey_files_accessed": false,
+    "candidate_abc": false,
+    "measured_p2x": false,
+    "real_source_c11_execution": false,
+    "c4_execution": false,
+    "c1_02_or_c1_03_implementation": false,
+    "structural_world_claim": false,
+    "actor_person_v3_implementation": false,
+    "at33_full_progressive_world_claim": false
+  },
+  "proof_grades_used": [
+    "static inspection",
+    "source-free executed producer",
+    "generated evidence",
+    "consumer execution",
+    "deterministic replay (same-process and fresh-process)"
+  ],
+  "source_free_basis": "Exact synthetic AT07 response law (100 synthetic respondents) plus frozen synthetic C1-00 authority snapshots and the committed R8 identity spine. No raw survey file, no real-source ingest.",
+  "test_toolchain": {
+    "interpreter": "/Users/matthewsmith/Desktop/rawlsing_v550_builder_bundle/.venv/bin/python",
+    "python_version": "3.11.15",
+    "pytest_version": "9.0.3",
+    "note": "/usr/local/bin/python3 resolves to a zero-byte framework binary and /usr/bin/python3 3.9.6 has no pytest; an existing working Python 3.11 venv was used. No dependency was installed and no repo file was changed for this."
+  }
+}
