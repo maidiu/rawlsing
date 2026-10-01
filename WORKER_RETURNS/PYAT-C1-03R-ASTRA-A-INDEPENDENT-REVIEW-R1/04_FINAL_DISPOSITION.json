@@ -1,0 +1,50 @@
+{
+  "schema": "PYAT_C1_03R_ASTRA_A_INDEPENDENT_REVIEW_FINAL_DISPOSITION@1",
+  "disposition": "CHANGES_REQUIRED",
+  "terminal": "C1_03R_ASTRA_A_INDEPENDENT_REVIEW_RETURNED__HQ_ADJUDICATION_REQUIRED",
+  "implementation_return": "eb02332c93c6c3927303eefde9dd9ed768bb3480",
+  "blockers": [
+    {
+      "id": "C1-03R-A-RVW-001",
+      "summary": "Duplicate positive replacement outcomes are silently collapsed instead of rejected."
+    },
+    {
+      "id": "C1-03R-A-RVW-002",
+      "summary": "Negative-row deserialization ignores forged/missing replacement_ref and negative receipt schema."
+    },
+    {
+      "id": "C1-03R-A-RVW-003",
+      "summary": "Public lifecycle lookup grants CURRENT to owner-unknown/unregistered dependent refs."
+    },
+    {
+      "id": "C1-03R-A-RVW-004",
+      "summary": "Checkpoint replay recomputes affected but does not recompute/verify unaffected, so A∪U=K is not re-proven."
+    }
+  ],
+  "accepted_without_reopening": [
+    "Astra Option-A one-generic-negative semantic choice",
+    "normal-path error law",
+    "positive-only receipt historical identity strategy",
+    "sealed-successor repair",
+    "decoy correction and model-rule successor binding",
+    "AuthorityCandidate identity unchanged",
+    "mixed AT19 witness topology and omitted-edge hostile",
+    "AT18 replay-grade separation",
+    "implementation scope confinement"
+  ],
+  "required_repair": [
+    "Reject duplicate positive replacement source rows before dict canonicalization.",
+    "Require explicit serialized replacement_ref:null and validate exact receipt_schema for negative receipts.",
+    "Fail typed for lifecycle lookup of owner-unknown dependent refs.",
+    "Recompute and require exact unaffected set from the determinant graph during checkpoint replay.",
+    "Add focused hostiles for these boundaries and rerun the exact four commissioned suites."
+  ],
+  "architecture_warrant": false,
+  "broad_rewrite_required": false,
+  "replay_audit_owner_change_required": false,
+  "analytical_composition_owner_change_required": false,
+  "authority_candidate_change_required": false,
+  "raw_source_required": false,
+  "c4_c7_v3_required": false,
+  "independent_review_complete": true
+}
