@@ -1,0 +1,64 @@
+{
+  "schema": "PYAT_C1_03A_R5_EXECUTION_RECEIPT@1",
+  "branch": "agent/opencode-pyat-hq158-c1-03a-empirical-owner-binding-r5",
+  "commission_tip": "25c76a6829217919462d8581c8ed19300bbb24db",
+  "base": "b46fcf2b951d3ecbc7d17be45a36b37ff7c2f494",
+  "interpreter": "/tmp/c1-01-r8-release-spine-venv/bin/python",
+  "python": "3.12.14",
+  "pytest": "9.1.1",
+  "platform": "darwin",
+  "exact_command": "/tmp/c1-01-r8-release-spine-venv/bin/python -m pytest -q rawlsing_next/tests/test_pre553_analytical_state_and_route.py rawlsing_next/tests/test_pre553_analytical_composition.py rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py rawlsing_next/tests/test_pre553_empirical_query.py rawlsing_next/tests/test_pre553_discovery_exact.py rawlsing_next/tests/test_pre553_discovery_adaptive.py rawlsing_next/tests/test_pre553_discovery_adaptive_admission.py rawlsing_next/tests/test_pre553_recursive_handoff.py rawlsing_next/tests/test_pre553_structural_admission.py",
+  "per_file": [
+    {"file": "rawlsing_next/tests/test_pre553_analytical_state_and_route.py", "tests": 86},
+    {"file": "rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py", "tests": 35},
+    {"file": "rawlsing_next/tests/test_pre553_empirical_query.py", "tests": 32},
+    {"file": "rawlsing_next/tests/test_pre553_structural_admission.py", "tests": 17},
+    {"file": "rawlsing_next/tests/test_pre553_discovery_exact.py", "tests": 14},
+    {"file": "rawlsing_next/tests/test_pre553_analytical_composition.py", "tests": 13},
+    {"file": "rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py", "tests": 13},
+    {"file": "rawlsing_next/tests/test_pre553_discovery_adaptive.py", "tests": 8},
+    {"file": "rawlsing_next/tests/test_pre553_discovery_adaptive_admission.py", "tests": 3},
+    {"file": "rawlsing_next/tests/test_pre553_recursive_handoff.py", "tests": 2}
+  ],
+  "counts": {"passed": 223, "failed": 0, "errors": 0, "skipped": 0, "xfailed": 0, "deselected": 0},
+  "per_file_sum": 223,
+  "runtime_seconds": 18.26,
+  "wall_time_real": "0m18.775s",
+  "exit_status": 0,
+  "prior_final_baseline": {"passed": 212, "failed": 0, "errors": 0, "skipped": 0},
+  "delta": {"new_courts": 11, "removed_courts": 0, "corrected_courts": 3,
+            "note": "223 = 212 baseline + 11 new R5 courts; 3 R4 courts were corrected because they asserted the false empirical-query label"},
+  "r5_courts": [
+    "test_r5_governed_respondent_event_with_tampered_identity_is_witnessed",
+    "test_r5_witness_owner_label_names_the_actual_refusing_operation",
+    "test_r5_other_canonical_family_is_rejected_before_capture",
+    "test_r5_caller_defined_canonical_subclass_is_rejected",
+    "test_r5_respondent_event_absent_from_the_declared_release_is_rejected",
+    "test_r5_caller_cannot_substitute_release_or_object_ref",
+    "test_r5_bare_exception_and_injected_fields_still_cannot_mint",
+    "test_r5_owner_acceptance_produces_no_witness",
+    "test_r5_discovery_refusal_path_is_unchanged_and_sound",
+    "test_r5_refusal_states_remain_distinct_with_truthful_labels",
+    "test_r5_no_broad_canonical_object_gate_remains"
+  ],
+  "terrain": {
+    "modified": [
+      "rawlsing_next/pre553_analytical_state_and_route.py",
+      "rawlsing_next/tests/c1_at14_at16_fixture.py",
+      "rawlsing_next/tests/test_pre553_analytical_state_and_route.py",
+      "WORKER_RETURNS/PYAT-C1-03A-EMPIRICAL-OWNER-BINDING-R5/**"
+    ],
+    "verified_unchanged": [
+      "rawlsing_next/pre553_c11_repository.py",
+      "rawlsing_next/pre553_c11_integrity.py",
+      "rawlsing_next/pre553_empirical_objects.py",
+      "rawlsing_next/pre553_empirical_query.py",
+      "rawlsing_next/pre553_discovery_exact.py",
+      "rawlsing_next/pre553_analytical_composition.py",
+      "rawlsing_next/source_backed_positioned_subject_possibility.py"
+    ],
+    "no_out_of_terrain_files_changed": true
+  },
+  "wider_regression_sweep_claimed": false,
+  "wider_regression_sweep_note": "Only the ten commissioned files were executed."
+}

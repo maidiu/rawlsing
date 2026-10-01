@@ -161,6 +161,16 @@ _TRUST_TOKEN = object()
 OWNER_EMPIRICAL_PROJECTION_LABEL = (
     "rawlsing_next.pre553_empirical_query.execute_empirical_query"
 )
+# The INTEGRITY_FAILURE refusal for the AT14 empirical grain does NOT occur on
+# ``execute_empirical_query``. It occurs on the canonical ``RespondentEvent``
+# construction/integrity path, which rejects an exact event body that still carries a
+# stale sealed identity. The witness owner label must name the operation that actually
+# refused, so it is a distinct, truthful label rather than a relabelled query refusal.
+OWNER_EMPIRICAL_INTEGRITY_LABEL = (
+    "rawlsing_next.pre553_empirical_objects.RespondentEvent "
+    "(canonical integrity construction)"
+)
+AT14_INTEGRITY_OBJECT_FAMILY = "RespondentEvent@1.0.0"
 OWNER_DISCOVERY_PROJECTION_LABEL = (
     "rawlsing_next.pre553_discovery_exact.execute_exact_bounded_discovery"
 )
@@ -872,8 +882,8 @@ class OwnerStateProjection:
             expected_kind=REFUSAL_KIND_EMPIRICAL_INTEGRITY,
             retained=INTEGRITY_FAILURE,
             law=(
-                "actual empirical canonical-object owner execution refused the exact "
-                "bound body -> INTEGRITY_FAILURE"
+                "actual canonical RespondentEvent integrity construction refused the "
+                "exact governed release body -> INTEGRITY_FAILURE"
             ),
         )
 
@@ -950,6 +960,8 @@ class OwnerRefusalWitness:
     invocation_binding: str
     refusal_type: str
     refusal_message: str
+    governing_release_ref: ExactRef | None = None
+    object_family: str | None = None
     _TRUST_TOKEN: Any = None
 
     def __post_init__(self) -> None:
@@ -975,50 +987,115 @@ class OwnerRefusalWitness:
             "supporting_refs": [ref.as_dict() for ref in self.supporting_refs],
             "invocation_binding": self.invocation_binding,
             "refusal_type": self.refusal_type,
+            "governing_release_ref": (
+                None if self.governing_release_ref is None
+                else self.governing_release_ref.as_dict()
+            ),
+            "object_family": self.object_family,
         }
 
 
 def capture_empirical_integrity_refusal(
     *,
-    original_object: Any,
-    semantic_fields_override: Mapping[str, Any],
+    repository: Any,
+    release_ref: ExactRef,
+    respondent_event_ref: ExactRef,
+    tampered_semantic_fields: Mapping[str, Any],
 ) -> OwnerRefusalWitness:
-    """Invoke the REAL canonical-object owner and capture a genuine integrity refusal.
+    """Capture a genuine INTEGRITY_FAILURE from the competent AT14 owner path.
 
-    The owner operation is not caller-supplied: the class invoked is
-    ``type(original_object)``, so it comes from a genuine owner-produced object rather
-    than from the caller. The refused ref is that object's own sealed ``ref``, and the
-    supporting refs are that object's own authority/replay bindings. The caller supplies
-    only the tampered body; every provenance field is read from the real object.
+    The competent path for this state is the canonical ``RespondentEvent``
+    construction/integrity check, **not** ``execute_empirical_query``. This function
+    therefore binds governed identity rather than trusting a caller-supplied instance:
+
+    1. the exact ``C11LogicalRelease`` is resolved through the repository;
+    2. the exact public object is resolved from *that* release by exact ref;
+    3. the resolved object must be *exactly* ``RespondentEvent`` at this declared AT14
+       source-free grain -- any other canonical family, and any caller-defined
+       subclass of either ``RespondentEvent`` or ``CanonicalSemanticObject``, is
+       refused;
+    4. a ref absent from the declared release is refused;
+    5. the real canonical construction is invoked on the tampered body.
+
+    The caller supplies only governed identity and the tampered body. The owner label,
+    family, release ref, refused ref, closure and invocation binding are all derived
+    from the resolved owner objects. If the constructor ACCEPTS the body there is no
+    refusal and no witness.
     """
+    from rawlsing_next.pre553_c11_repository import C11LogicalRelease, C11Repository
     from rawlsing_next.pre553_empirical_objects import (
-        CanonicalSemanticObject,
         Pre553IntegrityError,
+        RespondentEvent,
         exact_ref as _exact,
     )
 
-    if not isinstance(original_object, CanonicalSemanticObject):
+    if type(repository) is not C11Repository:
         raise OwnerProjectionError(
-            "empirical integrity capture requires a genuine CanonicalSemanticObject; got "
-            f"{type(original_object).__name__}"
+            "empirical integrity capture requires a genuine C11Repository so the "
+            f"governed release can be resolved; got {type(repository).__name__}"
         )
-    payload = dict(original_object.as_dict())
+    supplied_release = _exact(release_ref)
+    supplied_object = _exact(respondent_event_ref)
+    try:
+        resolved_release = repository.resolve_release_exact(supplied_release)
+    except Exception as exc:  # noqa: BLE001 - an unresolvable release is fail-closed
+        raise OwnerProjectionError(
+            "the supplied release ref does not resolve through the governed repository "
+            f"({type(exc).__name__}); caller identity cannot substitute for a governed "
+            "release"
+        ) from exc
+    if type(resolved_release) is not C11LogicalRelease:
+        raise OwnerProjectionError(
+            "empirical integrity capture requires a genuine C11LogicalRelease; got "
+            f"{type(resolved_release).__name__}"
+        )
+    candidates = [
+        obj for obj in resolved_release.public_objects
+        if getattr(obj, "ref", None) == supplied_object
+    ]
+    if not candidates:
+        raise OwnerProjectionError(
+            "the respondent event ref is not a public object of the declared release, "
+            "so the owner has no governed object to refuse; caller identity cannot "
+            "substitute for governed release membership"
+        )
+    if len(candidates) != 1:
+        raise OwnerProjectionError(
+            "the declared release must contain exactly one public object at the "
+            f"supplied ref; found {len(candidates)}"
+        )
+    resolved = candidates[0]
+    # Exact type identity, deliberately NOT isinstance: that would admit any other
+    # canonical family and any caller-defined subclass.
+    if type(resolved) is not RespondentEvent:
+        raise OwnerProjectionError(
+            "the AT14 empirical integrity grain is exactly RespondentEvent; the "
+            f"resolved object is {type(resolved).__name__}, which is refused rather "
+            "than captured under an empirical integrity label"
+        )
+    declared_family = getattr(RespondentEvent, "FAMILY", None)
+    if resolved.FAMILY != declared_family or declared_family != (
+        AT14_INTEGRITY_OBJECT_FAMILY
+    ):
+        raise OwnerProjectionError(
+            "the resolved RespondentEvent family does not match the declared AT14 "
+            f"grain {AT14_INTEGRITY_OBJECT_FAMILY!r}"
+        )
+
+    payload = dict(resolved.as_dict())
     semantic = dict(payload.pop("semantic_fields", {}) or {})
-    semantic.update(dict(semantic_fields_override or {}))
+    semantic.update(dict(tampered_semantic_fields or {}))
     kwargs = {**payload, **semantic}
-    # The invocation binding commits to the exact body the owner was asked to accept.
     binding = semantic_hash(kwargs)
     try:
-        type(original_object)(**kwargs)
+        RespondentEvent(**kwargs)
     except Pre553IntegrityError as exc:
         if type(exc).__name__ == "Pre553AuthorityError":
             raise OwnerProjectionError(
                 "authority refusals are not empirical integrity refusals"
             ) from exc
         supporting: list[ExactRef] = []
-        for item in getattr(original_object, "authority_snapshot_refs", ()) or ():
-            # Authority refs are not exact refs; bind them as their own exact anchors so
-            # the witness records the object's real closure material.
+        for item in getattr(resolved, "authority_snapshot_refs", ()) or ():
             if isinstance(item, AuthorityRef):
                 supporting.append(
                     ExactRef(
@@ -1029,32 +1106,32 @@ def capture_empirical_integrity_refusal(
                 )
             else:
                 supporting.append(_exact(item))
-        for item in getattr(original_object, "dependency_refs", ()) or ():
+        for item in getattr(resolved, "dependency_refs", ()) or ():
             if item is not None:
                 supporting.append(_exact(item))
         replay_root = getattr(
-            original_object, "producer_replay_locator_or_reference_root", None)
+            resolved, "producer_replay_locator_or_reference_root", None)
         if replay_root is not None:
             supporting.append(
                 replay_root if isinstance(replay_root, ExactRef)
                 else ExactRef(
-                    "ReplayProtocol@1.0.0", str(replay_root),
-                    binding,
-                )
+                    "ReplayProtocol@1.0.0", str(replay_root), binding)
             )
         return OwnerRefusalWitness(
             _TRUST_TOKEN=_TRUST_TOKEN,
-            owner_label=OWNER_EMPIRICAL_PROJECTION_LABEL,
+            owner_label=OWNER_EMPIRICAL_INTEGRITY_LABEL,
             refusal_kind=REFUSAL_KIND_EMPIRICAL_INTEGRITY,
-            refused_ref=original_object.ref,
+            refused_ref=resolved.ref,
             supporting_refs=tuple(dict.fromkeys(supporting)),
             invocation_binding=binding,
             refusal_type=type(exc).__name__,
             refusal_message=str(exc),
+            governing_release_ref=resolved_release.release_ref,
+            object_family=resolved.FAMILY,
         )
     raise OwnerProjectionError(
-        "the empirical owner ACCEPTED the supplied body; there is no integrity refusal "
-        "to witness"
+        "the canonical RespondentEvent path ACCEPTED the supplied body; there is no "
+        "integrity refusal to witness"
     )
 
 

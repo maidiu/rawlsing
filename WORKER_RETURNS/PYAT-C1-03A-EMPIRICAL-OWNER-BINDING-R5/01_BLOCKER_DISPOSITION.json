@@ -1,0 +1,34 @@
+{
+  "schema": "PYAT_C1_03A_R5_BLOCKER_DISPOSITION@1",
+  "blocker": "C1-03A-R4-FINAL-REVIEW-BLOCK-EMPIRICAL-CAPTURE-OWNER-FAMILY-001",
+  "rereview": "agent/reviewer-pyat-hq157-c1-03a-r4-final-rereview-r1 @ 599833bb77d29abd21cf08ab0500491bef7ea49c (CHANGES_REQUIRED)",
+  "verdict": "CORRECTED",
+  "defect": "R4's witness labelled the INTEGRITY_FAILURE owner as rawlsing_next.pre553_empirical_query.execute_empirical_query, but that function never ran. The refusal came from the canonical RespondentEvent construction/integrity path. The label was a false owner attribution.",
+  "governing_law_applied": "The accepted C1 spec says a mandatory negative state need not occur on the empirical-query path; where it cannot occur there, the competent path where it genuinely occurs must be identified and exercised. For this fixture that path is the canonical integrity rejection of an exact RespondentEvent body with stale sealed identity.",
+  "r4_shape_defects": [
+    "broad isinstance(original_object, CanonicalSemanticObject) gate - forbidden",
+    "accepted an arbitrary caller-supplied object instance rather than governed identity",
+    "carried a false owner label"
+  ],
+  "corrections": [
+    "capture_empirical_integrity_refusal now takes governed identity: repository, release_ref, respondent_event_ref, tampered_semantic_fields. No caller object instance is accepted; the parameter no longer exists.",
+    "The exact C11LogicalRelease is resolved through the governed repository, and an unresolvable release fails closed with a typed OwnerProjectionError rather than leaking a raw KeyError.",
+    "The exact public object is resolved from that release by exact ref; a ref absent from the declared release is refused, so caller identity cannot substitute for governed release membership.",
+    "The resolved object must be EXACTLY RespondentEvent at this declared AT14 source-free grain. Exact type identity replaces isinstance, so any other canonical family AND any caller-defined subclass of either RespondentEvent or CanonicalSemanticObject is refused.",
+    "The witness owner label is now rawlsing_next.pre553_empirical_objects.RespondentEvent (canonical integrity construction) - the operation that actually refused.",
+    "The witness binds the exact release ref, the exact resolved RespondentEvent.ref, the exact object family, the attempted-body invocation binding, and the object's real authority/dependency/replay closure.",
+    "If the canonical constructor ACCEPTS the body, no witness exists.",
+    "The AT14 fixture now states the competent owner truthfully and supplies governed identity instead of an object instance.",
+    "Three R4 courts that asserted the false label were corrected to the truthful label."
+  ],
+  "generic_any_canonical_integrity_authority_created": false,
+  "bounded_to_declared_at14_respondent_event_path": true,
+  "no_semantic_or_model_authority_added": false,
+  "owner_modules_modified": [],
+  "g5_reopened": false,
+  "at15_reopened": false,
+  "at16_reopened": false,
+  "discovery_refusal_authenticity_reopened": false,
+  "callability_reopened": false,
+  "c1_02_touched": false
+}

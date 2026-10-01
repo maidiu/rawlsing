@@ -1,0 +1,75 @@
+{
+  "schema": "PYAT_C1_03A_R5_OWNER_BINDING_RECEIPT@1",
+  "competent_path": {
+    "state": "INTEGRITY_FAILURE",
+    "declared_at14_grain": "an exact RespondentEvent body retaining a stale sealed identity",
+    "actual_refusing_operation": "rawlsing_next.pre553_empirical_objects.RespondentEvent (canonical integrity construction)",
+    "not_empirical_query": true,
+    "proof_that_query_did_not_refuse": "execute_empirical_query is never invoked by this capture; the witness label is fixed by the capture and the only executable owner path invoked is the canonical RespondentEvent construction"
+  },
+  "capture_signature": {
+    "parameters": [
+      "repository",
+      "release_ref",
+      "respondent_event_ref",
+      "tampered_semantic_fields"
+    ],
+    "caller_object_instance_accepted": false,
+    "caller_may_not_choose": [
+      "retained refusal state",
+      "producer/input ref",
+      "supporting refs",
+      "owner label",
+      "object family"
+    ]
+  },
+  "gates_in_order": [
+    "type(repository) is C11Repository",
+    "repository.resolve_release_exact(release_ref), unresolvable -> typed fail-closed",
+    "type(resolved_release) is C11LogicalRelease",
+    "exactly one public object at respondent_event_ref within that release",
+    "type(resolved) is RespondentEvent (exact type identity, NOT isinstance)",
+    "resolved.FAMILY == RespondentEvent@1.0.0 == declared AT14 grain",
+    "real canonical RespondentEvent(**attempted_body) invoked",
+    "catches exactly Pre553IntegrityError; Pre553AuthorityError refused",
+    "constructor acceptance -> no witness"
+  ],
+  "witness_bindings": {
+    "owner_label": "rawlsing_next.pre553_empirical_objects.RespondentEvent (canonical integrity construction)",
+    "object_family": "RespondentEvent@1.0.0",
+    "governing_release_ref": "exact C11LogicalRelease.release_ref of the declared release",
+    "refused_ref": "the exact resolved RespondentEvent.ref",
+    "invocation_binding": "semantic_hash of the exact attempted body",
+    "supporting_refs": "the resolved object's real authority_snapshot_refs, dependency_refs and producer_replay_locator_or_reference_root"
+  },
+  "forbidden_constructs_absent": {
+    "broad_canonical_semantic_object_isinstance_gate": true,
+    "relabelled_empirical_query_attribution": true,
+    "caller_supplied_object_instance": true,
+    "generic_any_canonical_integrity_authority": true
+  },
+  "discovery_path_unchanged": {
+    "capture": "capture_required_authority_refusal",
+    "owner_label": "rawlsing_next.pre553_discovery_exact.execute_exact_bounded_discovery",
+    "refusal_kind": "REQUIRED_AUTHORITY_REFUSAL",
+    "sound": true
+  },
+  "refusal_states_distinct": {
+    "INTEGRITY_FAILURE": "canonical RespondentEvent integrity construction",
+    "BLOCKED_REQUIRED_AUTHORITY": "exact-discovery required-authority refusal",
+    "labels_differ": true,
+    "kinds_differ": true
+  },
+  "preserved": {
+    "receipt_dominance": true,
+    "exact_owner_gates_elsewhere": true,
+    "adaptive_determinant_provenance": true,
+    "recursive_custody": true,
+    "no_invented_completeness": true,
+    "eight_state_distinction": true,
+    "adaptive_unvisited": true,
+    "final_sha_classmethod_cleanup": true,
+    "discovery_refusal_authenticity": true,
+    "c1_02_untouched": true
+  }
+}

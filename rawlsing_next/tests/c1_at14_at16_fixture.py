@@ -357,16 +357,27 @@ def integrity_failure_fixture():
         record for record in release.public_objects if isinstance(record, RespondentEvent)
     )
 
-    # The genuine owner-produced object, and the tampered body that keeps its sealed
-    # identity. The refusal is NOT captured here: the C1-03A capture wrapper invokes
-    # the real owner itself, so the provenance cannot be supplied by this fixture.
+    # Governed identity plus the tampered body that keeps its sealed identity. The
+    # fixture supplies only the repository, the declared release ref and the exact
+    # RespondentEvent ref; the capture wrapper resolves the object from that release
+    # and invokes the real canonical owner itself. The refusal is NOT captured here.
     corrupted_fields = dict(event.as_dict()["semantic_fields"])
     corrupted_fields["raw_response_value"] = "CHANGED"
 
     return {
-        "owner": "rawlsing_next.pre553_empirical_objects.CanonicalSemanticObject constructor",
+        # The competent owner truthfully named: this state does NOT occur on
+        # execute_empirical_query. It occurs on the canonical RespondentEvent
+        # construction/integrity path.
+        "owner": (
+            "rawlsing_next.pre553_empirical_objects.RespondentEvent "
+            "(canonical integrity construction)"
+        ),
+        "repository": source["repo"],
+        "release_ref": source["release_ref"],
+        "respondent_event_ref": event.ref,
         "original_object": event,
         "object_class": RespondentEvent,
+        "object_family": event.FAMILY,
         "tampered_semantic_fields": corrupted_fields,
         "producer_state": INTEGRITY_FAILURE,
         "corrupted_object_ref": event.ref,
@@ -530,10 +541,11 @@ def capture_integrity_refusal(fixture_name: str):
     )
 
     data = globals()[fixture_name]()
-    original = data["original_object"]
     return capture_empirical_integrity_refusal(
-        original_object=original,
-        semantic_fields_override=data["tampered_semantic_fields"],
+        repository=data["repository"],
+        release_ref=data["release_ref"],
+        respondent_event_ref=data["respondent_event_ref"],
+        tampered_semantic_fields=data["tampered_semantic_fields"],
     ), data
 
 

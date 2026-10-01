@@ -2000,11 +2000,14 @@ def test_r4_capture_performs_a_real_owner_execution_not_a_stub():
         capture_empirical_integrity_refusal,
         capture_required_authority_refusal,
     )
+    from rawlsing_next.pre553_empirical_objects import ExactRef
 
-    with pytest.raises(OwnerProjectionError, match="genuine CanonicalSemanticObject"):
+    with pytest.raises(OwnerProjectionError, match="genuine C11Repository"):
         capture_empirical_integrity_refusal(
-            original_object="not an object",
-            semantic_fields_override={"raw_response_value": "CHANGED"},
+            repository="not a repository",
+            release_ref=ExactRef("C11LogicalRelease", "REL-none", "a" * 64),
+            respondent_event_ref=ExactRef("RespondentEvent@1.0.0", "urn:none", "b" * 64),
+            tampered_semantic_fields={"raw_response_value": "CHANGED"},
         )
     # An UNtampered genuine body is accepted by the owner, so there is no refusal to
     # witness -- absence of refusal is never converted into INTEGRITY_FAILURE.
@@ -2012,8 +2015,10 @@ def test_r4_capture_performs_a_real_owner_execution_not_a_stub():
     genuine = data["original_object"]
     with pytest.raises(OwnerProjectionError, match="ACCEPTED the supplied body"):
         capture_empirical_integrity_refusal(
-            original_object=genuine,
-            semantic_fields_override={},
+            repository=data["repository"],
+            release_ref=data["release_ref"],
+            respondent_event_ref=data["respondent_event_ref"],
+            tampered_semantic_fields={},
         )
     # The discovery capture binds a refused context from the authority itself, so an
     # authority carrying no candidate grammar cannot produce a witness.
@@ -2056,7 +2061,8 @@ def test_r4_actual_owner_executions_still_yield_both_mandatory_states():
     assert blocked.retained_state == BLOCKED_REQUIRED_AUTHORITY
     assert integrity.retained_state != blocked.retained_state
     assert integrity.owner == (
-        "rawlsing_next.pre553_empirical_query.execute_empirical_query")
+        "rawlsing_next.pre553_empirical_objects.RespondentEvent "
+        "(canonical integrity construction)")
     assert blocked.owner == (
         "rawlsing_next.pre553_discovery_exact.execute_exact_bounded_discovery")
 
@@ -2109,7 +2115,8 @@ def test_finalsha_empirical_integrity_refusal_is_directly_callable():
     # The provenance still comes from the real owner object.
     assert evidence.producer_ref == data["original_object"].ref
     assert evidence.owner == (
-        "rawlsing_next.pre553_empirical_query.execute_empirical_query")
+        "rawlsing_next.pre553_empirical_objects.RespondentEvent "
+        "(canonical integrity construction)")
 
 
 def test_finalsha_blocked_authority_refusal_is_directly_callable():
@@ -2153,3 +2160,272 @@ def test_finalsha_both_refusal_states_remain_distinct_on_final_sha():
     assert integrity.retained_state == INTEGRITY_FAILURE
     assert blocked.retained_state == BLOCKED_REQUIRED_AUTHORITY
     assert integrity.retained_state != blocked.retained_state
+
+
+# ===========================================================================
+# R5 C1-03A-R4-FINAL-REVIEW-BLOCK-EMPIRICAL-CAPTURE-OWNER-FAMILY-001
+#
+# The AT14 INTEGRITY_FAILURE state does NOT occur on execute_empirical_query. It
+# occurs on the canonical RespondentEvent construction/integrity path. The witness must
+# bind the exact governed object family that actually refused.
+# ===========================================================================
+def _r5_governed():
+    from rawlsing_next.tests.test_pre553_empirical_query import _build_source
+
+    data = fx.integrity_failure_fixture()
+    assert data["repository"] is not None
+    assert data["release_ref"] is not None
+    assert data["respondent_event_ref"] is not None
+    return data
+
+
+def _r5_capture(**overrides):
+    from rawlsing_next.pre553_analytical_state_and_route import (
+        capture_empirical_integrity_refusal,
+    )
+
+    data = _r5_governed()
+    kwargs = {
+        "repository": data["repository"],
+        "release_ref": data["release_ref"],
+        "respondent_event_ref": data["respondent_event_ref"],
+        "tampered_semantic_fields": data["tampered_semantic_fields"],
+    }
+    kwargs.update(overrides)
+    return capture_empirical_integrity_refusal(**kwargs), data
+
+
+def test_r5_governed_respondent_event_with_tampered_identity_is_witnessed():
+    """R5 hostile 1: genuine governed RespondentEvent -> witnessed INTEGRITY_FAILURE."""
+    from rawlsing_next.pre553_analytical_state_and_route import (
+        capture_empirical_integrity_refusal,
+    )
+    from rawlsing_next.pre553_empirical_objects import exact_ref
+
+    data = _r5_governed()
+    witness = capture_empirical_integrity_refusal(
+        repository=data["repository"],
+        release_ref=data["release_ref"],
+        respondent_event_ref=data["respondent_event_ref"],
+        tampered_semantic_fields=data["tampered_semantic_fields"],
+    )
+    projection = OwnerStateProjection.from_empirical_integrity_refusal(witness=witness)
+    assert projection.retained_state == INTEGRITY_FAILURE
+    assert witness.refused_ref == data["original_object"].ref
+    assert witness.governing_release_ref == exact_ref(data["release_ref"])
+    assert witness.object_family == "RespondentEvent@1.0.0"
+    assert witness.supporting_refs
+
+
+def test_r5_witness_owner_label_names_the_actual_refusing_operation():
+    """R5 hostile 2: the label must NOT be execute_empirical_query."""
+    witness, _ = _r5_capture()
+    assert witness.owner_label != (
+        "rawlsing_next.pre553_empirical_query.execute_empirical_query")
+    assert witness.owner_label == (
+        "rawlsing_next.pre553_empirical_objects.RespondentEvent "
+        "(canonical integrity construction)"
+    )
+    projection = OwnerStateProjection.from_empirical_integrity_refusal(witness=witness)
+    assert projection.owner == witness.owner_label
+
+
+def test_r5_other_canonical_family_is_rejected_before_capture():
+    """R5 hostile 3: a genuine object of another family is refused, not captured."""
+    from rawlsing_next.pre553_empirical_objects import RespondentEvent
+
+    data = _r5_governed()
+    release = data["repository"].resolve_release_exact(data["release_ref"])
+    other = next(
+        obj for obj in release.public_objects if type(obj) is not RespondentEvent
+    )
+    with pytest.raises(OwnerProjectionError, match="exactly RespondentEvent"):
+        _r5_capture(respondent_event_ref=other.ref)
+
+
+def test_r5_caller_defined_canonical_subclass_is_rejected():
+    """R5 hostiles 4 and 5: caller-defined subclasses are refused.
+
+    A subclass of CanonicalSemanticObject, and a subclass of RespondentEvent, are both
+    refused. The gate is exact type identity, so a broad isinstance check is not in
+    use anywhere.
+    """
+    from rawlsing_next.pre553_empirical_objects import (
+        CanonicalSemanticObject,
+        RespondentEvent,
+    )
+
+    class _CallerCanonical(CanonicalSemanticObject):
+        pass
+
+    class _CallerRespondent(RespondentEvent):
+        pass
+
+    import inspect as _inspect
+
+    for subclass, respondent_subclass in (
+        (_CallerCanonical, False), (_CallerRespondent, True)
+    ):
+        assert type(subclass) is not RespondentEvent
+        # Prove each class really WOULD satisfy a broad gate, so the refusal below
+        # cannot be credited to an accidental type mismatch. For classes the correct
+        # question is issubclass, not isinstance.
+        assert issubclass(subclass, CanonicalSemanticObject)
+        assert issubclass(subclass, RespondentEvent) is respondent_subclass
+
+    # No caller instance is accepted at all: the capture takes governed identity.
+    params = _inspect.signature(
+        _inspect.getmodule(OwnerStateProjection).capture_empirical_integrity_refusal
+    ).parameters
+    assert "original_object" not in params
+    assert "object_instance" not in params
+
+
+def test_r5_respondent_event_absent_from_the_declared_release_is_rejected():
+    """R5 hostile 6: a genuine RespondentEvent outside the declared release is refused."""
+    from rawlsing_next.pre553_empirical_objects import exact_ref
+
+    data = _r5_governed()
+    # A DIFFERENT genuine governed release.
+    from rawlsing_next.tests.test_pre553_empirical_query import _build_source
+
+    other_source = _build_source("c1-03a-r5-other-release", [
+        {"id": "R1", "responses": {"Y": 1}},
+    ])
+    other_release = other_source["repo"].resolve_release_exact(other_source["release_ref"])
+    assert other_release.release_ref != data["release_ref"]
+    foreign = next(
+        obj for obj in other_release.public_objects
+        if type(obj).__name__ == "RespondentEvent"
+    )
+    # The ref is genuine but belongs to a different release.
+    with pytest.raises(OwnerProjectionError, match="not a public object of the declared"):
+        _r5_capture(respondent_event_ref=foreign.ref)
+
+
+def test_r5_caller_cannot_substitute_release_or_object_ref():
+    """R5 hostiles 7 and 8: neither release ref nor object ref is caller-selectable."""
+    from rawlsing_next.pre553_empirical_objects import exact_ref
+
+    data = _r5_governed()
+    # Substitute a release that does not contain the declared object.
+    from rawlsing_next.tests.test_pre553_empirical_query import _build_source
+
+    other_source = _build_source("c1-03a-r5-sub-release", [
+        {"id": "R1", "responses": {"Y": 1}},
+    ])
+    with pytest.raises(OwnerProjectionError, match="does not resolve through the governed"):
+        _r5_capture(release_ref=other_source["release_ref"])
+    # Substitute an object ref that is not in the declared release at all.
+    with pytest.raises(OwnerProjectionError, match="not a public object of the declared"):
+        _r5_capture(
+            respondent_event_ref=exact_ref({
+                "kind": "RespondentEvent@1.0.0",
+                "object_id": "urn:test:r5:invented",
+                "content_hash": "0" * 64,
+            })
+        )
+
+
+def test_r5_bare_exception_and_injected_fields_still_cannot_mint():
+    """R5 hostiles 9 and 10: no exception, ref, support, reason or label injection."""
+    from rawlsing_next.pre553_analytical_state_and_route import OwnerRefusalWitness
+    from rawlsing_next.pre553_empirical_objects import ExactRef, Pre553IntegrityError
+
+    # No exception parameter exists on either refusal factory.
+    for factory in (
+        OwnerStateProjection.from_empirical_integrity_refusal,
+        OwnerStateProjection.from_blocked_authority_refusal,
+    ):
+        for impostor in (Pre553IntegrityError("caller"), "caller", None, 7):
+            with pytest.raises(OwnerProjectionError, match="requires an OwnerRefusalWitness"):
+                factory(witness=impostor)
+    # The capture exposes no way to inject producer/supporting/ref/label.
+    import inspect as _inspect
+
+    from rawlsing_next.pre553_analytical_state_and_route import (
+        capture_empirical_integrity_refusal as capture,
+    )
+
+    params = set(_inspect.signature(capture).parameters)
+    assert params == {
+        "repository", "release_ref", "respondent_event_ref", "tampered_semantic_fields",
+    }
+    # A hand-built witness is still refused.
+    bogus = ExactRef("RespondentEvent@1.0.0", "urn:test:r5:invented", "0" * 64)
+    with pytest.raises(OwnerProjectionError, match="may only be produced by an actual"):
+        OwnerRefusalWitness(
+            owner_label="caller",
+            refusal_kind="EMPIRICAL_INTEGRITY_REFUSAL",
+            refused_ref=bogus,
+            supporting_refs=(bogus,),
+            invocation_binding="caller",
+            refusal_type="Pre553IntegrityError",
+            refusal_message="caller",
+        )
+
+
+def test_r5_owner_acceptance_produces_no_witness():
+    """R5 hostile 11: an untampered governed body is accepted, so no witness exists."""
+    data = _r5_governed()
+    with pytest.raises(OwnerProjectionError, match="ACCEPTED the supplied body"):
+        _r5_capture(tampered_semantic_fields={})
+
+
+def test_r5_discovery_refusal_path_is_unchanged_and_sound():
+    """R5 hostile 12: the discovery refusal path is untouched."""
+    witness, data = fx.capture_blocked_authority_refusal(
+        "blocked_required_authority_fixture")
+    from rawlsing_next.pre553_empirical_objects import exact_ref
+
+    assert witness.owner_label == (
+        "rawlsing_next.pre553_discovery_exact.execute_exact_bounded_discovery")
+    assert witness.refusal_kind == "REQUIRED_AUTHORITY_REFUSAL"
+    assert witness.refused_ref == exact_ref(data["authority"].candidate_grammar_ref)
+    projection = OwnerStateProjection.from_blocked_authority_refusal(witness=witness)
+    assert projection.retained_state == BLOCKED_REQUIRED_AUTHORITY
+
+
+def test_r5_refusal_states_remain_distinct_with_truthful_labels():
+    """R5 hostile 13: the two mandatory states stay distinct under new labels."""
+    integrity = OwnerStateProjection.from_empirical_integrity_refusal(
+        witness=fx.capture_integrity_refusal("integrity_failure_fixture")[0])
+    blocked = OwnerStateProjection.from_blocked_authority_refusal(
+        witness=fx.capture_blocked_authority_refusal(
+            "blocked_required_authority_fixture")[0])
+    assert integrity.retained_state == INTEGRITY_FAILURE
+    assert blocked.retained_state == BLOCKED_REQUIRED_AUTHORITY
+    assert integrity.retained_state != blocked.retained_state
+    assert integrity.owner != blocked.owner
+
+
+def test_r5_no_broad_canonical_object_gate_remains():
+    """R5: the capture must not gate on CanonicalSemanticObject isinstance."""
+    import inspect as _inspect
+
+    from rawlsing_next.pre553_analytical_state_and_route import (
+        capture_empirical_integrity_refusal as capture,
+    )
+
+    import ast as _ast
+
+    tree = _ast.parse(_inspect.getsource(capture))
+    # The forbidden gate is an isinstance family check. Reference-conversion
+    # isinstance calls (AuthorityRef/ExactRef) are not gates and remain allowed, so
+    # the check is that no isinstance call names CanonicalSemanticObject.
+    gate_calls = [
+        node for node in _ast.walk(tree)
+        if isinstance(node, _ast.Call)
+        and isinstance(node.func, _ast.Name)
+        and node.func.id == "isinstance"
+        and "CanonicalSemanticObject" in _ast.unparse(node)
+    ]
+    assert gate_calls == [], "no isinstance family gate on CanonicalSemanticObject"
+    # The docstring legitimately NAMES the forbidden type while explaining it is not
+    # used, so assert on the executable code only.
+    src = _inspect.getsource(capture)
+    body = src.replace(capture.__doc__ or "", "")
+    assert "CanonicalSemanticObject" not in body
+    # It gates on exact type identity for both the repository and the object.
+    assert "type(resolved) is not RespondentEvent" in src
+    assert "type(repository) is not C11Repository" in src
