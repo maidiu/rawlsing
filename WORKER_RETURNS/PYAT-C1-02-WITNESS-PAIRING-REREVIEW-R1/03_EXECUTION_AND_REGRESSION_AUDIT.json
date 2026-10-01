@@ -1,0 +1,69 @@
+{
+  "schema": "PYAT_C1_02_WITNESS_PAIRING_REREVIEW_EXECUTION_REGRESSION_AUDIT@1",
+  "execution": {
+    "browser_rereview_reran_pytest": false,
+    "worker_recorded_full_court": {
+      "passed": 109,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "count_reconciliation": "105 accepted + 4 new = 109",
+    "per_file": {
+      "rawlsing_next/tests/test_pre553_analytical_composition.py": 13,
+      "rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py": 35,
+      "rawlsing_next/tests/test_pre553_empirical_query.py": 32,
+      "rawlsing_next/tests/test_pre553_discovery_exact.py": 14,
+      "rawlsing_next/tests/test_pre553_recursive_handoff.py": 2,
+      "rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py": 13
+    },
+    "execution_provenance_note": "The worker records execution with the repair staged over repair-commission tip 5a83a659. The single subsequent repair-return commit contains the staged repair/tests plus return artifacts. The rereview commission commit changes only its commission document, so the executable state under rereview exactly matches repair return.",
+    "contradictory_executable_delta_found": false
+  },
+  "higher_order_inventory": {
+    "original_test_count": 31,
+    "current_test_count": 35,
+    "original_names_missing": [],
+    "repair_file_diff_deletions": 0,
+    "new_tests": [
+      "test_pairing_hostile_baseline_witness_is_accepted",
+      "test_pairing_hostile_false_required_semantic_ref_is_rejected",
+      "test_pairing_hostile_false_required_exact_value_is_rejected",
+      "test_pairing_hostile_rejection_precedes_evidence_and_consumer"
+    ]
+  },
+  "corrected_matrix": {
+    "distinct_cited_test_names": 30,
+    "missing_at_repair_return": []
+  },
+  "c1_01": {
+    "analytical_test_blob_before_repair": "2210fc1b4cb99552aafc8797c12d780a78e7983b",
+    "analytical_test_blob_after_repair": "2210fc1b4cb99552aafc8797c12d780a78e7983b",
+    "byte_identical": true,
+    "worker_recorded_result": "13 passed",
+    "legacy_witness_code_segment_byte_identical": true
+  },
+  "prior_accepted_findings": {
+    "contradicted": false,
+    "at08_at13_reopened": false,
+    "at10_grain_ruling_changed": false,
+    "at11_grain_ruling_changed": false,
+    "three_prior_owner_fixes_changed": false,
+    "wider_regression_attribution_contradicted": false,
+    "authority_ceiling_contradicted": false
+  },
+  "wider_regression_sweep": {
+    "rerun_required_by_commission": false,
+    "evidence_triggering_new_broad_sweep_found": false,
+    "prior_verdict_retained": "NO_WIDER_REGRESSIONS_DETECTED_AT_ACCEPTED_C1_01_BASELINE_GRAIN"
+  },
+  "authority_ceiling": {
+    "new_semantic_authority": false,
+    "new_comparability_authority": false,
+    "new_model_authority": false,
+    "raw_source_execution": false,
+    "c1_03": false,
+    "c4": false,
+    "v3_actor_person": false
+  }
+}
