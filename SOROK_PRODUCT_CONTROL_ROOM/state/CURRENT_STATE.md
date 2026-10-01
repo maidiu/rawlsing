@@ -322,17 +322,17 @@ Social and monetization work remain registered but should not dictate the core s
 Raw question count is a frontier census, not a remaining-work counter.
 
 Current exact accounting:
-- 116 surfaced questions;
+- 117 surfaced questions;
 - 8 CLOSED_FOR_ALPHA;
-- 25 PROVISIONALLY_ANSWERED;
+- 26 PROVISIONALLY_ANSWERED;
 - 24 NEEDS_PROTOTYPE;
-- 47 NEEDS_ARCHITECTURE_ADJUDICATION;
-- 6 OPEN_DISCOVERY;
+- 48 NEEDS_ARCHITECTURE_ADJUDICATION;
+- 5 OPEN_DISCOVERY;
 - 6 DEFERRED_POST_ALPHA.
 
 Blocking-stage view:
-- 2 ALPHA_SPEC;
-- 42 ALPHA_IMPLEMENTATION;
+- 1 ALPHA_SPEC;
+- 43 ALPHA_IMPLEMENTATION;
 - 25 ALPHA_VALIDATION;
 - 18 POST_ALPHA;
 - 28 NONE.
@@ -480,4 +480,20 @@ The current user/Vozhd conversational critical path is the **3 ALPHA_SPEC blocke
 - Seed access is truthful and non-prestigious; later public admission, if added, is a separate truthful route.
 - Implementation successor: `Q-INVITEIMPL-001`.
 - Validation remains under `Q-INVITEDELIVERY-001` and `Q-HUMANINVITE-001`.
+
+## User data / praxis privacy constitution
+
+- `58_Q_PRIV_001_USER_DATA_PRAXIS_DELETION_EXPORT_CONSTITUTION_R1.md` closes `Q-PRIV-001` at alpha product-spec grain.
+- Core theorem: preserve the relationship's history; minimize the dossier about the external human.
+- Zero-profile remains main-mode default.
+- User-supplied external facts are optional, purpose-bound, inspectable and removable for future use.
+- External human, player-participant state, supplied facts, canonical player event history, actor-local models of user and system praxis hypotheses remain distinct.
+- Actor-local user models remain fallible and actor-scoped; they do not pool into global reputation.
+- System praxis hypotheses remain evidence-linked, contextual and non-diagnostic.
+- Sensitive external-human traits are not silently inferred as truth from gameplay.
+- Relationship/praxis data is firewalled from advertising, growth targeting, pricing and public/cross-user reputation.
+- Reflection/system-user-model data can be deleted/disabled separately from the relationship memory required for causal continuity.
+- Removing profile facts does not silently retcon already-admitted history.
+- Removing canonical interaction history requires deleting/resetting the continuity rather than preserving a falsified past.
+- Implementation successor: `Q-PRIVIMPL-001`.
 
