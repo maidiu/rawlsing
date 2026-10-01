@@ -457,3 +457,12 @@ The current user/Vozhd conversational critical path is the **3 ALPHA_SPEC blocke
 - Relation-class priors are starting priors; particular dyads may develop local grammars that override them.
 - New implementation frontier: `Q-RELSIGN-001`.
 
+## Object-mediated relational value
+
+- `54_HUMAN_VALUE_PROJECTION_AND_OBJECT_RELATIONAL_SEMIOTICS_R1.md` adds a material-relational generator beneath object sharing.
+- Object identity, actor-object value relation, and counterpart-specific relational signification are noncollapsed.
+- Actor-object value may sediment use, labor/care, provenance, memory, projects, scarcity, exchange, status/recognition, obligation, ritual/taboo, loss and dependence.
+- Sharing/withholding/entrusting/selling/damaging/replacing the same object can mean different things with different others because the transfer composes object-value history with relation grammar and dyadic history.
+- Commodity/fetish/alienation behavior is domain- and history-specific, not a global persona score.
+- Q-RELSIGN-001 now explicitly includes actor-object value relations as a proving domain.
+
