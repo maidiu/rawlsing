@@ -1,0 +1,82 @@
+{
+  "schema": "PYAT_C1_03A_R4_EXECUTION_RECEIPT@1",
+  "branch": "agent/opencode-pyat-hq155-c1-03a-refusal-authenticity-r4",
+  "commission_tip": "0b03f1d44d25a4476779f3afa7dd0412cfc4debc",
+  "base": "767bb9139b80e774093af8e765e57ee57a19e005",
+  "interpreter": "/tmp/c1-01-r8-release-spine-venv/bin/python",
+  "python": "3.12.14",
+  "pytest": "9.1.1",
+  "platform": "darwin",
+  "exact_command": "/tmp/c1-01-r8-release-spine-venv/bin/python -m pytest -q rawlsing_next/tests/test_pre553_analytical_state_and_route.py rawlsing_next/tests/test_pre553_analytical_composition.py rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py rawlsing_next/tests/test_pre553_empirical_query.py rawlsing_next/tests/test_pre553_discovery_exact.py rawlsing_next/tests/test_pre553_discovery_adaptive.py rawlsing_next/tests/test_pre553_discovery_adaptive_admission.py rawlsing_next/tests/test_pre553_recursive_handoff.py rawlsing_next/tests/test_pre553_structural_admission.py",
+  "per_file": [
+    {
+      "file": "rawlsing_next/tests/test_pre553_analytical_state_and_route.py",
+      "tests": 71
+    },
+    {
+      "file": "rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py",
+      "tests": 35
+    },
+    {
+      "file": "rawlsing_next/tests/test_pre553_empirical_query.py",
+      "tests": 32
+    },
+    {
+      "file": "rawlsing_next/tests/test_pre553_structural_admission.py",
+      "tests": 17
+    },
+    {
+      "file": "rawlsing_next/tests/test_pre553_discovery_exact.py",
+      "tests": 14
+    },
+    {
+      "file": "rawlsing_next/tests/test_pre553_analytical_composition.py",
+      "tests": 13
+    },
+    {
+      "file": "rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py",
+      "tests": 13
+    },
+    {
+      "file": "rawlsing_next/tests/test_pre553_discovery_adaptive.py",
+      "tests": 8
+    },
+    {
+      "file": "rawlsing_next/tests/test_pre553_discovery_adaptive_admission.py",
+      "tests": 3
+    },
+    {
+      "file": "rawlsing_next/tests/test_pre553_recursive_handoff.py",
+      "tests": 2
+    }
+  ],
+  "counts": {
+    "passed": 208,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "deselected": 0
+  },
+  "per_file_sum": 208,
+  "runtime_seconds": 21.58,
+  "wall_time_real": "0m21.996s",
+  "exit_status": 0,
+  "historical_r3_court": {
+    "passed": 199,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "note": "historical evidence supplied by the commission, retained as evidence only"
+  },
+  "delta": {
+    "new_courts": 9,
+    "note": "9 new refusal-authenticity hostiles; two prior exception-heuristic courts were rewritten as authenticity hostiles, so the net new count is 9"
+  },
+  "c1_03a_court_count": {
+    "historical_r3": 62,
+    "now": 71
+  },
+  "wider_regression_sweep_claimed": false,
+  "wider_regression_sweep_note": "Only the ten commissioned files were executed."
+}

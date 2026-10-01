@@ -1,0 +1,53 @@
+{
+  "schema": "PYAT_C1_03A_R4_REVIEW_BLOCKER_DISPOSITION@1",
+  "blocker": "C1-03A-R3-REVIEW-BLOCK-REFUSAL-AUTHENTICITY-001",
+  "disposition": "PASS_C1_03A_REFUSAL_AUTHENTICITY_CORRECTED__INDEPENDENT_REREVIEW_REQUIRED",
+  "base": "767bb9139b80e774093af8e765e57ee57a19e005",
+  "rereview": "agent/reviewer-pyat-hq154-c1-03a-r3-rereview-r1 @ 3ebde6d268abcb005a48e42eb6d0b52ec4a3c025 (CHANGES_REQUIRED)",
+  "reproduced_before_repair": {
+    "method": "each counterexample was run against the owner before any change",
+    "fabricated_integrity": "Pre553IntegrityError('caller') + caller ExactRef + caller supporting refs minted INTEGRITY_FAILURE with producer_ref urn:t:totally-made-up",
+    "fabricated_authority": "Pre553AuthorityError('caller') + caller ExactRef + caller supporting refs minted BLOCKED_REQUIRED_AUTHORITY with producer_ref urn:t:totally-made-up",
+    "aggravating_fact": "the fabricated projection carried the REAL owner label 'rawlsing_next.pre553_empirical_query.execute_empirical_query' even though no owner execution had occurred",
+    "owner_receipt_search": "no canonical owner-produced refusal witness/receipt/rejection record type exists in any owner module, so commission option (1) was unavailable",
+    "exception_shape": "Pre553IntegrityError and Pre553AuthorityError are bare ValueError subclasses with no fields, hence zero binding to any execution"
+  },
+  "chosen_mechanism": {
+    "option_taken": "2 - bounded wrapper in the C1-03A module that invokes the ACTUAL competent owner itself",
+    "reason": "no canonical owner refusal witness exists, and neither refusal type carries provenance",
+    "owner_module_modified": false,
+    "fabricated_receipt": false
+  },
+  "corrections": [
+    "Added OwnerRefusalWitness, a token-guarded record that only the capture functions can produce.",
+    "capture_empirical_integrity_refusal() invokes type(original_object) itself - the class comes from a genuine owner-produced object, never from the caller - then derives refused_ref from that object's own sealed .ref and supporting_refs from its own authority/dependency/replay bindings.",
+    "capture_required_authority_refusal() imports and calls the real execute_exact_bounded_discovery itself; the owner function is never caller-supplied.",
+    "Both captures catch ONLY the exact expected refusal type and bind invocation_binding = semantic_hash(exact owner-call inputs).",
+    "from_empirical_integrity_refusal(witness=...) and from_blocked_authority_refusal(witness=...) now accept a witness ONLY. The exception, producer_ref, supporting_refs and reason parameters were REMOVED, so a caller cannot independently choose the retained state, the producer/input ref, the supporting refs, or the owner label.",
+    "If the owner ACCEPTS the input there is no refusal: absence of refusal is never converted into a governed state.",
+    "Removed the reviewer's stale short-circuited coverage_custody.completeness_state branch, which referenced a field removed in R2 and would have raised AttributeError. Handoff semantics are unchanged."
+  ],
+  "state_distinction_preserved": {
+    "subclass_trap": "Pre553AuthorityError subclasses Pre553IntegrityError",
+    "mechanism": "each capture fixes its refusal_kind, and each projection factory gates on that kind, so neither witness can be replayed as the other state",
+    "isinstance_classification_used": false,
+    "integrity_state": "INTEGRITY_FAILURE",
+    "blocked_state": "BLOCKED_REQUIRED_AUTHORITY",
+    "distinct": true
+  },
+  "hostiles_required": {
+    "1_manually_constructed_integrity_error": "PROVEN",
+    "2_manually_constructed_authority_error": "PROVEN",
+    "3_integrity_refusal_cannot_be_rebound": "PROVEN",
+    "4_authority_refusal_cannot_be_rebound": "PROVEN",
+    "5_arbitrary_supporting_refs_cannot_be_injected": "PROVEN",
+    "6_actual_empirical_execution_yields_integrity_failure": "PROVEN",
+    "7_actual_authority_execution_yields_blocked": "PROVEN",
+    "8_two_states_remain_distinct": "PROVEN",
+    "9_g5_remains_closed": "PROVEN - all four R3 gates (DUCK-TYPED-OWNER-001, CALLER-SUPPORTING-REFS-001, RECEIPT-NOT-DOMINATED-001, REQUESTED-USE-CONTRADICTION-001) still enforced in the owner and their courts pass",
+    "10_at15_genuine_admitted_route": "PROVEN - ADMITTED with exact rule hash bound",
+    "11_at16_54_6_supported": "PROVEN",
+    "12_stale_completeness_state_reference_removed": "PROVEN"
+  },
+  "regressions_introduced": false
+}

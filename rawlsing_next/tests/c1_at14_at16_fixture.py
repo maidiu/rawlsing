@@ -346,7 +346,6 @@ def integrity_failure_fixture():
     owner's own.
     """
     from rawlsing_next.pre553_c11_integrity import RespondentIdentity, RespondentEvent
-    from rawlsing_next.pre553_empirical_objects import Pre553IntegrityError
     from rawlsing_next.tests.test_pre553_empirical_query import _build_source
 
     source = _build_source("c1-03a-integrity", [
@@ -358,34 +357,17 @@ def integrity_failure_fixture():
         record for record in release.public_objects if isinstance(record, RespondentEvent)
     )
 
-    corrupted = event.as_dict()
-    corrupted_fields = corrupted["semantic_fields"]
+    # The genuine owner-produced object, and the tampered body that keeps its sealed
+    # identity. The refusal is NOT captured here: the C1-03A capture wrapper invokes
+    # the real owner itself, so the provenance cannot be supplied by this fixture.
+    corrupted_fields = dict(event.as_dict()["semantic_fields"])
     corrupted_fields["raw_response_value"] = "CHANGED"
 
-    raised: Exception | None = None
-    try:
-        RespondentEvent(
-            typed_state=corrupted["typed_state"],
-            authority_snapshot_refs=corrupted["authority_snapshot_refs"],
-            dependency_refs=corrupted["dependency_refs"],
-            producer_replay_locator_or_reference_root=corrupted[
-                "producer_replay_locator_or_reference_root"
-            ],
-            object_id=corrupted["object_id"],
-            content_hash=corrupted["content_hash"],
-            schema_id=corrupted["schema_id"],
-            schema_version=corrupted["schema_version"],
-            **corrupted_fields,
-        )
-    except Exception as exc:  # noqa: BLE001 - recorded as the owner's own refusal
-        raised = exc
-
-    assert raised is not None, "tampered body with stale sealed identity must be refused"
-    assert isinstance(raised, Pre553IntegrityError), type(raised).__name__
     return {
         "owner": "rawlsing_next.pre553_empirical_objects.CanonicalSemanticObject constructor",
-        "exception": raised,
-        "exception_type": type(raised).__name__,
+        "original_object": event,
+        "object_class": RespondentEvent,
+        "tampered_semantic_fields": corrupted_fields,
         "producer_state": INTEGRITY_FAILURE,
         "corrupted_object_ref": event.ref,
         "reason": "tampered object body retained a stale sealed identity; owner refused",
@@ -536,44 +518,56 @@ def project_adaptive(fixture_name: str = "unvisited_adaptive_fixture", *, reason
     return projection, data
 
 
-def project_empirical_integrity_refusal(fixture_name: str, *, producer_ref=None, reason: str = ""):
-    """Derive INTEGRITY_FAILURE from the real empirical integrity refusal."""
-    from rawlsing_next.pre553_analytical_state_and_route import OwnerStateProjection
+def capture_integrity_refusal(fixture_name: str):
+    """Capture a genuine empirical integrity refusal by invoking the real owner.
+
+    The C1-03A capture wrapper performs the owner execution itself and derives the
+    refused ref and supporting refs from the genuine owner object. No exception is
+    handed to the projection layer.
+    """
+    from rawlsing_next.pre553_analytical_state_and_route import (
+        capture_empirical_integrity_refusal,
+    )
 
     data = globals()[fixture_name]()
-    return OwnerStateProjection.from_empirical_integrity_refusal(
-        exception=data["exception"],
-        reason=reason or data["reason"],
-        producer_ref=producer_ref or data["corrupted_object_ref"],
+    original = data["original_object"]
+    return capture_empirical_integrity_refusal(
+        original_object=original,
+        semantic_fields_override=data["tampered_semantic_fields"],
     ), data
 
 
-def project_blocked_authority_refusal(fixture_name: str, *, producer_ref=None, reason: str = ""):
-    """Derive BLOCKED_REQUIRED_AUTHORITY from the real discovery/authority refusal."""
-    from rawlsing_next.pre553_analytical_state_and_route import OwnerStateProjection
+def capture_blocked_authority_refusal(fixture_name: str):
+    """Capture a genuine required-authority refusal by invoking the real owner."""
+    from rawlsing_next.pre553_analytical_state_and_route import (
+        capture_required_authority_refusal,
+    )
 
     data = globals()[fixture_name]()
-    from rawlsing_next.pre553_discovery_exact import execute_exact_bounded_discovery
-
-    exception = None
-    try:
-        execute_exact_bounded_discovery(
-            repository=data["source"]["repo"],
-            discovery_authority=data["authority"],
-            authority_registry=data["registry"],
-            release_refs=(data["source"]["release_ref"],),
-            predicate_catalog=data["predicates"],
-            query_template_catalog=data["queries"],
-        )
-    except Exception as raised:  # noqa: BLE001 - the refusal is the evidence
-        exception = raised
-    if exception is None:
-        raise AssertionError("owner did not refuse; no blocked state exists")
-    return OwnerStateProjection.from_blocked_authority_refusal(
-        exception=exception,
-        reason=reason or data["reason"],
-        producer_ref=producer_ref or data["authority"].candidate_grammar_ref,
+    return capture_required_authority_refusal(
+        repository=data["source"]["repo"],
+        discovery_authority=data["authority"],
+        authority_registry=data["registry"],
+        release_refs=(data["source"]["release_ref"],),
+        predicate_catalog=data["predicates"],
+        query_template_catalog=data["queries"],
     ), data
+
+
+def project_empirical_integrity_refusal(fixture_name: str):
+    """Derive INTEGRITY_FAILURE from a witnessed real owner refusal."""
+    from rawlsing_next.pre553_analytical_state_and_route import OwnerStateProjection
+
+    witness, data = capture_integrity_refusal(fixture_name)
+    return OwnerStateProjection.from_empirical_integrity_refusal(witness=witness), data
+
+
+def project_blocked_authority_refusal(fixture_name: str):
+    """Derive BLOCKED_REQUIRED_AUTHORITY from a witnessed real owner refusal."""
+    from rawlsing_next.pre553_analytical_state_and_route import OwnerStateProjection
+
+    witness, data = capture_blocked_authority_refusal(fixture_name)
+    return OwnerStateProjection.from_blocked_authority_refusal(witness=witness), data
 
 
 def structural_admission_evaluation(*, admission_state="ALLOW", fact_state="SUPPORTED", tag="c1-03a-admission"):
@@ -648,6 +642,8 @@ __all__ = [
     "project_empirical",
     "project_receipt",
     "project_adaptive",
+    "capture_integrity_refusal",
+    "capture_blocked_authority_refusal",
     "project_empirical_integrity_refusal",
     "project_blocked_authority_refusal",
     "structural_admission_evaluation",

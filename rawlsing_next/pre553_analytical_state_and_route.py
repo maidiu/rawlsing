@@ -170,6 +170,13 @@ OWNER_ADAPTIVE_PROJECTION_LABEL = (
 OWNER_ADMISSION_PROJECTION_LABEL = (
     "rawlsing_next.pre553_structural_admission.evaluate_structural_empirical_admission"
 )
+REFUSAL_KIND_EMPIRICAL_INTEGRITY = "EMPIRICAL_INTEGRITY_REFUSAL"
+REFUSAL_KIND_REQUIRED_AUTHORITY = "REQUIRED_AUTHORITY_REFUSAL"
+REFUSAL_KINDS = frozenset({
+    REFUSAL_KIND_EMPIRICAL_INTEGRITY,
+    REFUSAL_KIND_REQUIRED_AUTHORITY,
+})
+
 OWNER_RECURSIVE_HANDOFF_LABEL = (
     "rawlsing_next.pre553_recursive_handoff.execute_exact_bounded_discovery_with_handoffs"
 )
@@ -844,89 +851,53 @@ class OwnerStateProjection:
         )
 
     @classmethod
+    @classmethod
     def from_empirical_integrity_refusal(
         cls,
         *,
-        exception: BaseException,
-        reason: str,
-        producer_ref: ExactRef,
-        supporting_refs: Sequence[ExactRef] = (),
+        witness: "OwnerRefusalWitness",
     ) -> "OwnerStateProjection":
-        """Project INTEGRITY_FAILURE from the exact empirical integrity refusal.
+        """Project INTEGRITY_FAILURE from a witnessed empirical owner refusal.
 
-        Only the exact owner type is accepted. Note that
-        ``Pre553AuthorityError`` *subclasses* ``Pre553IntegrityError``, so this
-        check is exact-type identity rather than ``isinstance``: an isinstance
-        check would silently collapse BLOCKED_REQUIRED_AUTHORITY into
-        INTEGRITY_FAILURE.
+        The only accepted input is an :class:`OwnerRefusalWitness` produced by
+        :func:`capture_empirical_integrity_refusal`, which invokes the real canonical
+        owner itself. A caller-supplied exception is NOT accepted: exact exception type
+        is not provenance, because both refusal types are publicly constructible bare
+        ``ValueError`` subclasses.
 
-        The owner label is fixed by this factory. There is no ``owner=``
-        parameter, so the provenance of the projected state cannot be relabelled
-        to point at a different owner.
+        The owner label, refused ref, supporting refs and reason are all read from the
+        witness, so none of them can be chosen independently by a caller.
         """
-        from rawlsing_next.pre553_empirical_objects import Pre553IntegrityError
-        from rawlsing_next.pre553_empirical_authority import Pre553AuthorityError
-
-        if type(exception) is Pre553AuthorityError:
-            raise OwnerProjectionError(
-                "Pre553AuthorityError is a blocked-required-authority refusal, not an "
-                "integrity refusal; use from_blocked_authority_refusal() so the two "
-                "mandatory states stay distinct"
-            )
-        if type(exception) is not Pre553IntegrityError:
-            raise OwnerProjectionError(
-                "an integrity-refusal projection requires the exact empirical owner "
-                f"refusal Pre553IntegrityError; got {type(exception).__name__}. "
-                "Refusals are never classified by exception class-name substring"
-            )
-        return cls(
-            _TRUST_TOKEN=_TRUST_TOKEN,
-            owner=OWNER_EMPIRICAL_PROJECTION_LABEL,
-            producer_state=f"OWNER_REFUSED:{type(exception).__name__}",
-            retained_state=INTEGRITY_FAILURE,
-            projection_law=(
-                "exact empirical owner refusal Pre553IntegrityError -> INTEGRITY_FAILURE"
+        return _refusal_projection_from_witness(
+            witness,
+            expected_kind=REFUSAL_KIND_EMPIRICAL_INTEGRITY,
+            retained=INTEGRITY_FAILURE,
+            law=(
+                "actual empirical canonical-object owner execution refused the exact "
+                "bound body -> INTEGRITY_FAILURE"
             ),
-            reason=reason,
-            producer_ref=producer_ref,
-            supporting_refs=tuple(supporting_refs),
         )
 
     @classmethod
     def from_blocked_authority_refusal(
         cls,
         *,
-        exception: BaseException,
-        reason: str,
-        producer_ref: ExactRef,
-        supporting_refs: Sequence[ExactRef] = (),
+        witness: "OwnerRefusalWitness",
     ) -> "OwnerStateProjection":
-        """Project BLOCKED_REQUIRED_AUTHORITY from the exact authority refusal.
+        """Project BLOCKED_REQUIRED_AUTHORITY from a witnessed discovery refusal.
 
-        The owner label is fixed by this factory; there is no ``owner=``
-        parameter.
+        The only accepted input is an :class:`OwnerRefusalWitness` produced by
+        :func:`capture_required_authority_refusal`, which invokes the real
+        exact-discovery owner itself. A caller-supplied exception is NOT accepted.
         """
-        from rawlsing_next.pre553_empirical_authority import Pre553AuthorityError
-
-        if type(exception) is not Pre553AuthorityError:
-            raise OwnerProjectionError(
-                "a blocked-authority projection requires the exact current "
-                f"authority/discovery refusal Pre553AuthorityError; got "
-                f"{type(exception).__name__}. An arbitrary exception is never "
-                "defaulted to a governed BLOCKED state"
-            )
-        return cls(
-            _TRUST_TOKEN=_TRUST_TOKEN,
-            owner=OWNER_DISCOVERY_PROJECTION_LABEL,
-            producer_state=f"OWNER_REFUSED:{type(exception).__name__}",
-            retained_state=BLOCKED_REQUIRED_AUTHORITY,
-            projection_law=(
-                "exact authority/discovery owner refusal Pre553AuthorityError -> "
-                "BLOCKED_REQUIRED_AUTHORITY"
+        return _refusal_projection_from_witness(
+            witness,
+            expected_kind=REFUSAL_KIND_REQUIRED_AUTHORITY,
+            retained=BLOCKED_REQUIRED_AUTHORITY,
+            law=(
+                "actual exact-discovery owner execution refused the exact required "
+                "authority -> BLOCKED_REQUIRED_AUTHORITY"
             ),
-            reason=reason,
-            producer_ref=producer_ref,
-            supporting_refs=tuple(supporting_refs),
         )
 
     def as_evidence(self) -> "ProducerStateEvidence":
@@ -959,6 +930,226 @@ def _refs(values: Any, label: str) -> tuple[ExactRef, ...]:
     from rawlsing_next.pre553_analytical_composition import _exact, _refs as _c1_refs
 
     return _c1_refs(values, label)
+
+@dataclass(frozen=True)
+class OwnerRefusalWitness:
+    """Proof that a real competent owner actually refused, with bound provenance.
+
+    ``Pre553IntegrityError`` and ``Pre553AuthorityError`` are bare ``ValueError``
+    subclasses. They carry no binding whatsoever to an actual owner execution, so the
+    exception *type* is never provenance on its own. A witness can only be produced by
+    the capture functions below, each of which invokes the real owner operation itself
+    and derives every field from the inputs that owner actually consumed.
+
+    It is token-guarded: a directly constructed witness is not evidence.
+    """
+
+    owner_label: str
+    refusal_kind: str
+    refused_ref: ExactRef
+    supporting_refs: tuple[ExactRef, ...]
+    invocation_binding: str
+    refusal_type: str
+    refusal_message: str
+    _TRUST_TOKEN: Any = None
+
+    def __post_init__(self) -> None:
+        if self._TRUST_TOKEN is not _TRUST_TOKEN:
+            raise OwnerProjectionError(
+                "OwnerRefusalWitness may only be produced by an actual competent owner "
+                "execution through capture_empirical_integrity_refusal() or "
+                "capture_required_authority_refusal(); a hand-built witness is not proof "
+                "of a refusal (C1-03A-R3-REVIEW-BLOCK-REFUSAL-AUTHENTICITY-001)"
+            )
+        if self.refusal_kind not in REFUSAL_KINDS:
+            raise OwnerProjectionError(f"unknown refusal kind {self.refusal_kind!r}")
+        if not isinstance(self.refused_ref, ExactRef):
+            raise OwnerProjectionError("a refusal witness must bind an exact refused ref")
+        if not self.invocation_binding:
+            raise OwnerProjectionError("a refusal witness must bind its owner invocation")
+
+    def identity_material(self) -> Mapping[str, Any]:
+        return {
+            "owner_label": self.owner_label,
+            "refusal_kind": self.refusal_kind,
+            "refused_ref": self.refused_ref.as_dict(),
+            "supporting_refs": [ref.as_dict() for ref in self.supporting_refs],
+            "invocation_binding": self.invocation_binding,
+            "refusal_type": self.refusal_type,
+        }
+
+
+def capture_empirical_integrity_refusal(
+    *,
+    original_object: Any,
+    semantic_fields_override: Mapping[str, Any],
+) -> OwnerRefusalWitness:
+    """Invoke the REAL canonical-object owner and capture a genuine integrity refusal.
+
+    The owner operation is not caller-supplied: the class invoked is
+    ``type(original_object)``, so it comes from a genuine owner-produced object rather
+    than from the caller. The refused ref is that object's own sealed ``ref``, and the
+    supporting refs are that object's own authority/replay bindings. The caller supplies
+    only the tampered body; every provenance field is read from the real object.
+    """
+    from rawlsing_next.pre553_empirical_objects import (
+        CanonicalSemanticObject,
+        Pre553IntegrityError,
+        exact_ref as _exact,
+    )
+
+    if not isinstance(original_object, CanonicalSemanticObject):
+        raise OwnerProjectionError(
+            "empirical integrity capture requires a genuine CanonicalSemanticObject; got "
+            f"{type(original_object).__name__}"
+        )
+    payload = dict(original_object.as_dict())
+    semantic = dict(payload.pop("semantic_fields", {}) or {})
+    semantic.update(dict(semantic_fields_override or {}))
+    kwargs = {**payload, **semantic}
+    # The invocation binding commits to the exact body the owner was asked to accept.
+    binding = semantic_hash(kwargs)
+    try:
+        type(original_object)(**kwargs)
+    except Pre553IntegrityError as exc:
+        if type(exc).__name__ == "Pre553AuthorityError":
+            raise OwnerProjectionError(
+                "authority refusals are not empirical integrity refusals"
+            ) from exc
+        supporting: list[ExactRef] = []
+        for item in getattr(original_object, "authority_snapshot_refs", ()) or ():
+            # Authority refs are not exact refs; bind them as their own exact anchors so
+            # the witness records the object's real closure material.
+            if isinstance(item, AuthorityRef):
+                supporting.append(
+                    ExactRef(
+                        "REFUSED_AUTHORITY@1.0.0",
+                        item.authority_id,
+                        semantic_hash(item.as_dict()),
+                    )
+                )
+            else:
+                supporting.append(_exact(item))
+        for item in getattr(original_object, "dependency_refs", ()) or ():
+            if item is not None:
+                supporting.append(_exact(item))
+        replay_root = getattr(
+            original_object, "producer_replay_locator_or_reference_root", None)
+        if replay_root is not None:
+            supporting.append(
+                replay_root if isinstance(replay_root, ExactRef)
+                else ExactRef(
+                    "ReplayProtocol@1.0.0", str(replay_root),
+                    binding,
+                )
+            )
+        return OwnerRefusalWitness(
+            _TRUST_TOKEN=_TRUST_TOKEN,
+            owner_label=OWNER_EMPIRICAL_PROJECTION_LABEL,
+            refusal_kind=REFUSAL_KIND_EMPIRICAL_INTEGRITY,
+            refused_ref=original_object.ref,
+            supporting_refs=tuple(dict.fromkeys(supporting)),
+            invocation_binding=binding,
+            refusal_type=type(exc).__name__,
+            refusal_message=str(exc),
+        )
+    raise OwnerProjectionError(
+        "the empirical owner ACCEPTED the supplied body; there is no integrity refusal "
+        "to witness"
+    )
+
+
+def capture_required_authority_refusal(
+    *,
+    repository: Any,
+    discovery_authority: Any,
+    authority_registry: Any,
+    release_refs: Sequence[Any],
+    predicate_catalog: Sequence[Any],
+    query_template_catalog: Sequence[Any],
+) -> OwnerRefusalWitness:
+    """Invoke the REAL exact-discovery owner and capture a genuine authority refusal.
+
+    The owner function is imported and called by this module; it is never supplied by
+    the caller. The refused context is the discovery authority the owner itself was
+    asked to establish, and the invocation binding commits to the exact call inputs.
+    """
+    from rawlsing_next.pre553_discovery_exact import execute_exact_bounded_discovery
+    from rawlsing_next.pre553_empirical_authority import Pre553AuthorityError
+    from rawlsing_next.pre553_empirical_objects import exact_ref as _exact
+
+    grammar = getattr(discovery_authority, "candidate_grammar_ref", None)
+    if grammar is None:
+        raise OwnerProjectionError(
+            "discovery authority carries no candidate_grammar_ref to bind as the "
+            "refused context")
+    binding = semantic_hash({
+        "grammar": _exact(grammar).as_dict(),
+        "release_refs": [_exact(r).as_dict() for r in release_refs],
+    })
+    try:
+        execute_exact_bounded_discovery(
+            repository=repository,
+            discovery_authority=discovery_authority,
+            authority_registry=authority_registry,
+            release_refs=tuple(release_refs),
+            predicate_catalog=tuple(predicate_catalog),
+            query_template_catalog=tuple(query_template_catalog),
+        )
+    except Pre553AuthorityError as exc:
+        supporting = [_exact(r) for r in release_refs]
+        authority_ref = getattr(discovery_authority, "authority_ref", None)
+        if authority_ref is not None:
+            supporting.append(_exact(authority_ref))
+        return OwnerRefusalWitness(
+            _TRUST_TOKEN=_TRUST_TOKEN,
+            owner_label=OWNER_DISCOVERY_PROJECTION_LABEL,
+            refusal_kind=REFUSAL_KIND_REQUIRED_AUTHORITY,
+            refused_ref=_exact(grammar),
+            supporting_refs=tuple(dict.fromkeys(supporting)),
+            invocation_binding=binding,
+            refusal_type=type(exc).__name__,
+            refusal_message=str(exc),
+        )
+    raise OwnerProjectionError(
+        "the exact-discovery owner ACCEPTED the supplied authority; there is no "
+        "required-authority refusal to witness"
+    )
+
+
+def _refusal_projection_from_witness(
+    witness: OwnerRefusalWitness,
+    *,
+    expected_kind: str,
+    retained: str,
+    law: str,
+) -> "OwnerStateProjection":
+    if type(witness) is not OwnerRefusalWitness:
+        raise OwnerProjectionError(
+            "a trusted refusal projection requires an OwnerRefusalWitness produced by an "
+            "actual competent owner execution, not an exception instance "
+            "(C1-03A-R3-REVIEW-BLOCK-REFUSAL-AUTHENTICITY-001)"
+        )
+    if witness.refusal_kind != expected_kind:
+        raise OwnerProjectionError(
+            f"refusal witness kind {witness.refusal_kind!r} does not project onto "
+            f"{expected_kind!r}"
+        )
+    return OwnerStateProjection(
+        _TRUST_TOKEN=_TRUST_TOKEN,
+        owner=witness.owner_label,
+        producer_state=f"OWNER_REFUSED:{witness.refusal_type}",
+        retained_state=retained,
+        projection_law=law,
+        reason=(
+            f"{witness.owner_label} refused the exact bound input "
+            f"{witness.refused_ref.object_id} with {witness.refusal_type}; "
+            f"invocation {witness.invocation_binding[:16]}"
+        ),
+        producer_ref=witness.refused_ref,
+        supporting_refs=witness.supporting_refs,
+    )
+
 
 @dataclass(frozen=True)
 class ProducerStateEvidence:
@@ -1383,10 +1574,6 @@ def build_state_route_result(
             raise OwnerProjectionError(
                 "declared coverage_record_ref disagrees with the owner-derived custody record"
             )
-        if retained != SUPPORTED_BASELINE and coverage_custody.completeness_state.startswith(
-            "COMPLETE_FOR_EXACT_DECLARED_FRONTIER"
-        ) and retained not in RETAINABLE_STATES:
-            raise C103AStateRouteError("unreachable custody/state combination")
         # Bind the custody into the envelope identity.
         coverage_record_ref = coverage_custody.coverage_record_ref
         reason = f"{reason}; handoff custody {coverage_custody.custody_hash[:16]}"

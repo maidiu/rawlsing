@@ -1,0 +1,69 @@
+{
+  "schema": "PYAT_C1_03A_R4_REFUSAL_AUTHENTICITY_RECEIPT@1",
+  "law": "A trusted refusal projection MUST be derived from an actual competent owner execution, or from a canonical owner-produced refusal witness that binds the refused object/context. A bare exception instance is never sufficient proof.",
+  "types": {
+    "OwnerRefusalWitness": {
+      "fields": [
+        "owner_label",
+        "refusal_kind",
+        "refused_ref",
+        "supporting_refs",
+        "invocation_binding",
+        "refusal_type",
+        "refusal_message"
+      ],
+      "token_guarded": true,
+      "hand_constructible": false
+    },
+    "from_empirical_integrity_refusal": {
+      "parameters": [
+        "witness"
+      ],
+      "retained_state": "INTEGRITY_FAILURE"
+    },
+    "from_blocked_authority_refusal": {
+      "parameters": [
+        "witness"
+      ],
+      "retained_state": "BLOCKED_REQUIRED_AUTHORITY"
+    }
+  },
+  "caller_may_not_independently_choose": {
+    "retained_refusal_state": false,
+    "producer_or_input_ref": false,
+    "supporting_refs": false,
+    "owner_label": false,
+    "reason": false
+  },
+  "capture_mechanisms": {
+    "capture_empirical_integrity_refusal": {
+      "owner_operation_invoked": "type(original_object) - the canonical PRE553 object class, taken from a genuine owner-produced object rather than supplied by the caller",
+      "catches": "exactly Pre553IntegrityError",
+      "refused_ref_derived_from": "original_object.ref (the object's own sealed identity that was violated)",
+      "supporting_refs_derived_from": "the object's own authority_snapshot_refs, dependency_refs and producer_replay_locator_or_reference_root",
+      "invocation_binding": "semantic_hash of the exact body the owner was asked to accept"
+    },
+    "capture_required_authority_refusal": {
+      "owner_operation_invoked": "the real execute_exact_bounded_discovery, imported and called by the C1-03A module; never caller-supplied",
+      "catches": "exactly Pre553AuthorityError",
+      "refused_ref_derived_from": "discovery_authority.candidate_grammar_ref",
+      "supporting_refs_derived_from": "the supplied release refs and the discovery authority ref",
+      "invocation_binding": "semantic_hash of the grammar ref plus the release refs"
+    }
+  },
+  "fail_closed_conditions": [
+    "the supplied object is not a genuine CanonicalSemanticObject",
+    "the owner ACCEPTS the supplied body (no refusal exists)",
+    "the owner ACCEPTS the supplied authority (no refusal exists)",
+    "the discovery authority carries no bindable refused context",
+    "a witness of the wrong refusal kind is submitted to a factory",
+    "any non-witness object is submitted where a witness is required"
+  ],
+  "subclass_trap_controlling": true,
+  "isinstance_used_for_classification": false,
+  "owner_modules_modified": [],
+  "fabricated_receipt": false,
+  "existing_owner_or_authority_gap": false,
+  "c1_specific_vocabulary_added": false,
+  "raw_source_access": false
+}

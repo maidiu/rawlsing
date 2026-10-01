@@ -212,8 +212,7 @@ def test_at14_blocked_by_absent_or_denying_authority_is_its_own_state():
 
     data = fx.blocked_required_authority_fixture()
     projection, data = fx.project_blocked_authority_refusal(
-        "blocked_required_authority_fixture",
-        producer_ref=data["authority"].candidate_grammar_ref,
+        "blocked_required_authority_fixture"
     )
     retained = projection.retained_state
     assert retained == BLOCKED_REQUIRED_AUTHORITY
@@ -232,13 +231,13 @@ def test_at14_blocked_by_absent_or_denying_authority_is_its_own_state():
     assert "DENY" in str(excinfo.value)
     # The retained state was derived from that very refusal.
     assert projection.producer_state.endswith(type(excinfo.value).__name__)
-    assert "owner refusal" in projection.projection_law
+    assert "actual exact-discovery owner execution" in projection.projection_law
 
 
 def test_at14_integrity_failure_cannot_become_valid_empty():
     """AT14(8): INTEGRITY_FAILURE stays integrity failure."""
     projection, data = fx.project_empirical_integrity_refusal("integrity_failure_fixture")
-    assert data["exception_type"] == "Pre553IntegrityError"
+    assert data["corrupted_object_ref"] == data["original_object"].ref
     retained = projection.retained_state
     assert retained == INTEGRITY_FAILURE
     assert retained != VALID_EMPTY
@@ -1156,39 +1155,49 @@ def test_repair_hq_a_public_derive_helper_is_gone():
             assert "owner_object" not in params, f"{name} still accepts owner_object"
 
 
-def test_repair_hq_b_arbitrary_exceptions_cannot_mint_governed_refusals():
-    """HQ-B hostile: no exception-name heuristics, no BLOCKED default."""
-    _, integrity = fx.project_empirical_integrity_refusal("integrity_failure_fixture")
-    ref = integrity["corrupted_object_ref"]
+def test_repair_hq_b_fabricated_exact_refusals_cannot_mint_governed_refusals():
+    """HQ-B/R4: an exact refusal TYPE is not provenance.
 
-    # An arbitrary ValueError cannot mint BLOCKED.
-    with pytest.raises(OwnerProjectionError, match="requires the exact current authority"):
-        OwnerStateProjection.from_blocked_authority_refusal(
-            exception=ValueError("nope"), reason="caller", producer_ref=ref
-        )
-    # An arbitrary RuntimeError cannot mint BLOCKED either.
-    with pytest.raises(OwnerProjectionError, match="never defaulted to a governed BLOCKED"):
-        OwnerStateProjection.from_blocked_authority_refusal(
-            exception=RuntimeError("nope"), reason="caller", producer_ref=ref
-        )
-    # An exception whose NAME contains "Integrity" cannot mint INTEGRITY_FAILURE,
-    # because refusals are never classified by class-name substring.
-    with pytest.raises(OwnerProjectionError, match="never classified by exception class-name"):
+    Both refusal types are publicly constructible bare ``ValueError`` subclasses. A
+    manually constructed one, even of the exact accepted type, must not mint trusted
+    governed state.
+    """
+    from rawlsing_next.pre553_analytical_state_and_route import (
+        OwnerRefusalWitness,
+        REFUSAL_KIND_EMPIRICAL_INTEGRITY,
+    )
+    from rawlsing_next.pre553_empirical_objects import ExactRef, Pre553IntegrityError
+
+    ref = ExactRef("EmpiricalFact@1.0.0", "urn:t:caller-invented", "c" * 64)
+    for exc in (ValueError("nope"), RuntimeError("nope")):
+        with pytest.raises(TypeError):
+            OwnerStateProjection.from_blocked_authority_refusal(exception=exc, reason="r")
+        with pytest.raises(TypeError):
+            OwnerStateProjection.from_empirical_integrity_refusal(exception=exc, reason="r")
+    # The factories accept a witness only; there is no exception parameter at all.
+    with pytest.raises(TypeError):
         OwnerStateProjection.from_empirical_integrity_refusal(
-            exception=ValueError("Integrity problem"), reason="caller", producer_ref=ref
+            Pre553IntegrityError("caller"), reason="caller", producer_ref=ref
         )
-
-    class IntegrityFakeError(Exception):
-        pass
-
-    with pytest.raises(OwnerProjectionError, match="requires the exact empirical owner"):
-        OwnerStateProjection.from_empirical_integrity_refusal(
-            exception=IntegrityFakeError("looks serious"), reason="caller", producer_ref=ref
+    # A hand-built witness is refused even with the right kind.
+    with pytest.raises(OwnerProjectionError, match="may only be produced by an actual"):
+        OwnerRefusalWitness(
+            owner_label="caller",
+            refusal_kind=REFUSAL_KIND_EMPIRICAL_INTEGRITY,
+            refused_ref=ref,
+            supporting_refs=(ref,),
+            invocation_binding="caller-invented",
+            refusal_type="Pre553IntegrityError",
+            refusal_message="caller",
         )
+    # And a genuine witness still projects lawfully.
+    witness, _ = fx.capture_integrity_refusal("integrity_failure_fixture")
+    assert OwnerStateProjection.from_empirical_integrity_refusal(
+        witness=witness).retained_state == INTEGRITY_FAILURE
 
 
 def test_repair_hq_b_real_refusals_stay_two_distinct_states():
-    """HQ-B: the two competent refusal paths remain exact and distinct."""
+    """HQ-B/R4: the two witnessed refusal paths remain exact and distinct."""
     from rawlsing_next.pre553_empirical_authority import Pre553AuthorityError
     from rawlsing_next.pre553_empirical_objects import Pre553IntegrityError
 
@@ -1197,21 +1206,19 @@ def test_repair_hq_b_real_refusals_stay_two_distinct_states():
     assert integrity.retained_state == INTEGRITY_FAILURE
     assert blocked.retained_state == BLOCKED_REQUIRED_AUTHORITY
     assert integrity.retained_state != blocked.retained_state
-    # Each names the exact owner type it was derived from.
-    assert "Pre553IntegrityError" in integrity.projection_law
-    assert "Pre553AuthorityError" in blocked.projection_law
 
     # Pre553AuthorityError SUBCLASSES Pre553IntegrityError, so an isinstance-based
-    # check would collapse these two states. Exact-type identity must keep them
-    # apart, and the integrity factory must refuse the authority refusal outright.
+    # classification would collapse these two mandatory states.
     assert issubclass(Pre553AuthorityError, Pre553IntegrityError)
-    from rawlsing_next.pre553_empirical_objects import ExactRef as _Ref
-
-    ref = _Ref("EmpiricalFact@1.0.0", "urn:t:authority-refused", "c" * 64)
-    with pytest.raises(OwnerProjectionError, match="not an integrity refusal"):
-        OwnerStateProjection.from_empirical_integrity_refusal(
-            exception=Pre553AuthorityError("denied"), reason="caller", producer_ref=ref
-        )
+    # The witness kind gates the mapping, so neither witness can be replayed as the
+    # other state.
+    integrity_witness, _ = fx.capture_integrity_refusal("integrity_failure_fixture")
+    blocked_witness, _ = fx.capture_blocked_authority_refusal(
+        "blocked_required_authority_fixture")
+    with pytest.raises(OwnerProjectionError, match="does not project onto"):
+        OwnerStateProjection.from_blocked_authority_refusal(witness=integrity_witness)
+    with pytest.raises(OwnerProjectionError, match="does not project onto"):
+        OwnerStateProjection.from_empirical_integrity_refusal(witness=blocked_witness)
 
 
 def test_repair_hq_c_forged_route_obligation_cannot_establish_legitimacy():
@@ -1877,3 +1884,196 @@ def test_repair_hq_g_negative_unresolved_receipt_preserves_target_and_grants_not
         assert_route_not_laundered(
             route_class=ROUTE_DIRECT_EMPIRICAL, obligation=obligation
         )
+
+
+# ===========================================================================
+# R4 C1-03A-REVIEW-BLOCK-REFUSAL-AUTHENTICITY-001
+#
+# Exact refusal TYPE is not provenance. Both types are publicly constructible
+# bare ValueError subclasses, so a trusted refusal state must be derived from an
+# ACTUAL competent owner execution, never from a caller-supplied exception.
+# ===========================================================================
+def test_r4_fabricated_exact_integrity_error_cannot_mint_trusted_state():
+    """R4 hostile 1: a manually constructed exact Pre553IntegrityError is refused."""
+    from rawlsing_next.pre553_empirical_objects import Pre553IntegrityError
+
+    bogus = _plausible_ref("r4-integrity")
+    # There is no exception parameter left to pass.
+    with pytest.raises(TypeError):
+        OwnerStateProjection.from_empirical_integrity_refusal(
+            exception=Pre553IntegrityError("caller"), reason="r", producer_ref=bogus
+        )
+    # Passing the exception positionally is equally impossible.
+    with pytest.raises(TypeError):
+        OwnerStateProjection.from_empirical_integrity_refusal(
+            Pre553IntegrityError("caller")
+        )
+    # And no arbitrary object can stand in for a witness.
+    for impostor in (Pre553IntegrityError("caller"), bogus, "caller", None, 7):
+        with pytest.raises(OwnerProjectionError, match="requires an OwnerRefusalWitness"):
+            OwnerStateProjection.from_empirical_integrity_refusal(witness=impostor)
+
+
+def test_r4_fabricated_exact_authority_error_cannot_mint_trusted_state():
+    """R4 hostile 2: a manually constructed exact Pre553AuthorityError is refused."""
+    from rawlsing_next.pre553_empirical_authority import Pre553AuthorityError
+
+    bogus = _plausible_ref("r4-authority")
+    with pytest.raises(TypeError):
+        OwnerStateProjection.from_blocked_authority_refusal(
+            exception=Pre553AuthorityError("caller"), reason="r", producer_ref=bogus
+        )
+    for impostor in (Pre553AuthorityError("caller"), bogus, "caller", None):
+        with pytest.raises(OwnerProjectionError, match="requires an OwnerRefusalWitness"):
+            OwnerStateProjection.from_blocked_authority_refusal(witness=impostor)
+
+
+def test_r4_hand_built_witness_is_refused():
+    """R4: a caller-minted witness is not proof of a refusal."""
+    from rawlsing_next.pre553_analytical_state_and_route import (
+        OwnerRefusalWitness,
+        REFUSAL_KIND_EMPIRICAL_INTEGRITY,
+        REFUSAL_KIND_REQUIRED_AUTHORITY,
+    )
+
+    bogus = _plausible_ref("r4-witness")
+    for kind in (REFUSAL_KIND_EMPIRICAL_INTEGRITY, REFUSAL_KIND_REQUIRED_AUTHORITY):
+        with pytest.raises(OwnerProjectionError, match="may only be produced by an actual"):
+            OwnerRefusalWitness(
+                owner_label="rawlsing_next.pre553_empirical_query.execute_empirical_query",
+                refusal_kind=kind,
+                refused_ref=bogus,
+                supporting_refs=(bogus,),
+                invocation_binding="caller-invented-binding",
+                refusal_type="Pre553IntegrityError",
+                refusal_message="caller",
+            )
+
+
+def test_r4_witness_binds_the_genuine_owner_object_and_cannot_be_rebound():
+    """R4 hostiles 3 and 5: provenance comes from the real owner object, so a genuine
+    refusal cannot be rebound to another object ref or given arbitrary support."""
+    from dataclasses import replace as _replace
+
+    witness, data = fx.capture_integrity_refusal("integrity_failure_fixture")
+    genuine = data["original_object"]
+    assert witness.refused_ref == genuine.ref
+    # The supporting refs are the object's own authority/replay bindings, all present.
+    assert witness.supporting_refs
+    assert genuine.producer_replay_locator_or_reference_root in witness.supporting_refs
+
+    # Rebinding the witness onto another object is refused by the token guard.
+    other = _plausible_ref("r4-other-object")
+    with pytest.raises(OwnerProjectionError):
+        _replace(witness, refused_ref=other, _TRUST_TOKEN=object())
+    # Injecting arbitrary supporting refs is likewise refused.
+    with pytest.raises(OwnerProjectionError):
+        _replace(witness, supporting_refs=(other,), _TRUST_TOKEN=object())
+    # Mutating a frozen witness at all is refused.
+    with pytest.raises(Exception):
+        witness.refused_ref = other
+
+
+def test_r4_authority_witness_cannot_be_rebound_to_another_object_ref():
+    """R4 hostile 4: a genuine authority refusal cannot be rebound."""
+    from dataclasses import replace as _replace
+
+    witness, data = fx.capture_blocked_authority_refusal("blocked_required_authority_fixture")
+    from rawlsing_next.pre553_empirical_objects import exact_ref
+
+    assert witness.refused_ref == exact_ref(data["authority"].candidate_grammar_ref)
+    assert witness.supporting_refs
+    other = _plausible_ref("r4-authority-other")
+    with pytest.raises(OwnerProjectionError):
+        _replace(witness, refused_ref=other, _TRUST_TOKEN=object())
+    with pytest.raises(OwnerProjectionError):
+        _replace(witness, supporting_refs=(other,), _TRUST_TOKEN=object())
+
+
+def test_r4_capture_performs_a_real_owner_execution_not_a_stub():
+    """The capture wrapper invokes the real owner; it cannot be faked by a stub.
+
+    Passing a non-owner object, or asking for a capture that would not actually
+    refuse, is refused. The owner accepting the body means there is no refusal.
+    """
+    from rawlsing_next.pre553_analytical_state_and_route import (
+        capture_empirical_integrity_refusal,
+        capture_required_authority_refusal,
+    )
+
+    with pytest.raises(OwnerProjectionError, match="genuine CanonicalSemanticObject"):
+        capture_empirical_integrity_refusal(
+            original_object="not an object",
+            semantic_fields_override={"raw_response_value": "CHANGED"},
+        )
+    # An UNtampered genuine body is accepted by the owner, so there is no refusal to
+    # witness -- absence of refusal is never converted into INTEGRITY_FAILURE.
+    data = fx.integrity_failure_fixture()
+    genuine = data["original_object"]
+    with pytest.raises(OwnerProjectionError, match="ACCEPTED the supplied body"):
+        capture_empirical_integrity_refusal(
+            original_object=genuine,
+            semantic_fields_override={},
+        )
+    # The discovery capture binds a refused context from the authority itself, so an
+    # authority carrying no candidate grammar cannot produce a witness.
+    blocked = fx.blocked_required_authority_fixture()
+
+    class _NoGrammar:
+        pass
+
+    with pytest.raises(OwnerProjectionError, match="no candidate_grammar_ref"):
+        capture_required_authority_refusal(
+            repository=blocked["source"]["repo"],
+            discovery_authority=_NoGrammar(),
+            authority_registry=blocked["registry"],
+            release_refs=(blocked["source"]["release_ref"],),
+            predicate_catalog=blocked["predicates"],
+            query_template_catalog=blocked["queries"],
+        )
+
+
+def test_r4_witness_invocation_binding_commits_to_the_exact_owner_inputs():
+    """The witness binds the exact body the owner was asked to accept."""
+    witness, data = fx.capture_integrity_refusal("integrity_failure_fixture")
+    from rawlsing_next.pre553_empirical_objects import semantic_hash
+
+    payload = dict(data["original_object"].as_dict())
+    semantic = dict(payload.pop("semantic_fields", {}))
+    semantic.update(data["tampered_semantic_fields"])
+    assert witness.invocation_binding == semantic_hash({**payload, **semantic})
+    # A different tampered body yields a different binding.
+    other, _ = fx.capture_integrity_refusal("integrity_failure_fixture")
+    assert other.invocation_binding == witness.invocation_binding
+    assert witness.refusal_type == "Pre553IntegrityError"
+
+
+def test_r4_actual_owner_executions_still_yield_both_mandatory_states():
+    """R4 hostiles 6, 7 and 8: real executions still produce two distinct states."""
+    integrity, _ = fx.project_empirical_integrity_refusal("integrity_failure_fixture")
+    blocked, _ = fx.project_blocked_authority_refusal("blocked_required_authority_fixture")
+    assert integrity.retained_state == INTEGRITY_FAILURE
+    assert blocked.retained_state == BLOCKED_REQUIRED_AUTHORITY
+    assert integrity.retained_state != blocked.retained_state
+    assert integrity.owner == (
+        "rawlsing_next.pre553_empirical_query.execute_empirical_query")
+    assert blocked.owner == (
+        "rawlsing_next.pre553_discovery_exact.execute_exact_bounded_discovery")
+
+
+def test_r4_stale_completeness_state_reference_is_gone_without_changing_handoff_law():
+    """R4 hostile 12: the reviewer's stale short-circuited custody reference is removed."""
+    import inspect as _inspect
+
+    import rawlsing_next.pre553_analytical_state_and_route as mod
+
+    src = _inspect.getsource(mod)
+    assert "coverage_custody.completeness_state" not in src
+    assert "unreachable custody/state combination" not in src
+    # Handoff semantics are unchanged: custody still binds the exact frontier.
+    assert "completeness_state" not in {f for f in mod.RecursiveCoverageCustody.__dataclass_fields__}
+    assert hasattr(mod.RecursiveCoverageCustody, "from_handoff")
+    handoff_projection, custody = fx.project_recursive_handoff(
+        _hq_real_handoff("r4-handoff-intact"))
+    assert handoff_projection.retained_state == SUPPORTED_BASELINE
+    assert custody.coverage_record_ref is not None
