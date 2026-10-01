@@ -828,9 +828,157 @@ def drive_owner_contract_with_identity_recompiler():
         selection_attestation_ref=_ref_for("SELECTION_ATTESTATION", "counterexample-b"),
         recompiler=lambda old_ref, changed: old_ref,
     )
+def build_mixed_outcome_rollback_transition(direction: str = "forward"):
+    """A THREE-state sequence whose final step is a genuine mixed-outcome ROLLBACK.
+
+    Sequence, all driven through the owner's own ``promote_current`` /
+    ``rollback_current``:
+
+    1. promotion  v1 -> v2   (mixed R/N/U);
+    2. promotion  v2 -> v3   (mixed R/N/U);
+    3. rollback   v3 -> v2   (mixed R/N/U, citing the step-1 release).
+
+    The determinant graph binds each analytical product to the exact model-authority
+    revisions that own it, so every one of those three governed transitions genuinely
+    reaches the products rather than silently producing an empty affected set. The
+    sibling stays bound to the other direction's model authority and is unaffected
+    throughout.
+
+    Purpose: prove the promotion and rollback paths share ONE owner law, so the
+    HQ155 fail-closed repairs (duplicate-row rejection, serialized negative-field and
+    schema enforcement, owner-unknown currentness, checkpoint U re-derivation) apply
+    identically on both paths and neither path invents an outcome.
+
+    The caller drives the three transitions and supplies the recomposition callback;
+    this fixture only stages the governed revisions, seals and declarations.
+    """
+    from rawlsing_next.pre553_authority_maintenance import (
+        AuthorityEvidenceReceipt,
+        AuthorityMaintenanceExecutor,
+        NoncurrentDependentOutcome,
+        NONCURRENT_DISPOSITION_NO_LAWFUL_REPLACEMENT,
+    )
+
+    case = build_case(direction)
+    compose(case)
+    old_model = case["model_rule"].model_authority_ref
+    v2_base_ref = revised_model_authority(direction)
+    sibling_direction = "reverse" if direction == "forward" else "forward"
+    sibling_authority = direction_model_authority(sibling_direction)
+    sibling_ref = ExactRef(
+        "C1_ANALYTICAL_COMPOSED_PRODUCT@1",
+        f"urn:test:c1-03r:composed:{sibling_direction}",
+        compose(build_case(sibling_direction)).composed_result_identity_hash,
+    )
+
+    def _product(kind_tag: str) -> ExactRef:
+        return ExactRef(
+            "C1_ANALYTICAL_COMPOSED_PRODUCT@1",
+            f"urn:test:c1-03r:rb:{direction}:{kind_tag}",
+            semantic_hash({"rb": kind_tag, "direction": direction}),
+        )
+
+    replaced_product = _product("replaced")
+    noncurrent_product = _product("noncurrent")
+    downstream_product = _product("downstream")
+
+    # Evidence first, then the candidates that cite it. Both revisions are minted here
+    # so their exact proposed authority refs can be named in the determinant graph; the
+    # executor then seals these very candidates, and derives the sealed snapshot itself.
+    evidence_v2 = AuthorityEvidenceReceipt(
+        evidence_role="SEMANTIC_AUTHORITY_EVIDENCE",
+        evidence_refs=(_ref_for("EVIDENCE", f"{direction}-rb-v2"),),
+        provenance_refs=(_ref_for("PROVENANCE", f"{direction}-rb-v2"),),
+        source_release_refs=(),
+    )
+    evidence_v3 = AuthorityEvidenceReceipt(
+        evidence_role="SEMANTIC_AUTHORITY_EVIDENCE",
+        evidence_refs=(_ref_for("EVIDENCE", f"{direction}-rb-v3"),),
+        provenance_refs=(_ref_for("PROVENANCE", f"{direction}-rb-v3"),),
+        source_release_refs=(),
+    )
+    v2_candidate = _model_candidate(
+        v2_base_ref, version="2.0.0", evidence_ref=evidence_v2.ref,
+        parent=(old_model,), supersession=(old_model,), semantics=f"{direction}-rb-v2",
+    )
+    v2_ref = v2_candidate.proposed_authority_ref
+    v3_candidate = _model_candidate(
+        v2_base_ref, version="3.0.0", evidence_ref=evidence_v3.ref,
+        parent=(v2_ref,), supersession=(v2_ref,), semantics=f"{direction}-rb-v3",
+    )
+    v3_ref = v3_candidate.proposed_authority_ref
+
+    model_revisions = (old_model, v2_ref, v3_ref)
+    graph = SemanticDeterminantGraph(
+        authority_edges=tuple(
+            (revision, product)
+            for revision in model_revisions
+            for product in (replaced_product, noncurrent_product, downstream_product)
+        ) + ((sibling_authority, sibling_ref),),
+        dependency_edges=((noncurrent_product, downstream_product),),
+        known_dependent_refs=(
+            replaced_product, noncurrent_product, downstream_product, sibling_ref,
+        ),
+    )
+    executor = AuthorityMaintenanceExecutor(
+        initial_snapshots=(model_authority_snapshot(direction),),
+        initial_current_selection={old_model.authority_id: old_model},
+        determinant_graph=graph,
+    )
+
+    def _stage(evidence, candidate, *, tag):
+        executor.intake_evidence(evidence)
+        executor.intake_candidate(candidate)
+        adjudication = executor.adjudicate_candidate(
+            candidate.ref, decision="APPROVED",
+            adjudicator_ref=_ref_for("ADJUDICATOR", f"{direction}-rb-{tag}"),
+            adjudication_authority_ref=_ref_for("GOVERNING_AUTHORITY", "HQ155"),
+            findings_ref=_ref_for("FINDINGS", f"{direction}-rb-{tag}"),
+        )
+        return executor.seal_revision(
+            candidate.ref, adjudication.ref,
+            seal_attestation_ref=_ref_for("SEAL_ATTESTATION", f"{direction}-rb-{tag}"),
+        )
+
+    seal_v2 = _stage(evidence_v2, v2_candidate, tag="v2")
+    seal_v3 = _stage(evidence_v3, v3_candidate, tag="v3")
+
+    policy_ref = _ref_for("REPLACEMENT_POLICY", f"{direction}-rollback-no-source")
+    noncurrent_declarations = {
+        noncurrent_product.key: NoncurrentDependentOutcome(
+            old_ref=noncurrent_product,
+            disposition=NONCURRENT_DISPOSITION_NO_LAWFUL_REPLACEMENT,
+            reason_code="NO_LAWFUL_REPLACEMENT_SOURCE",
+            supporting_refs=(policy_ref,),
+        ),
+        downstream_product.key: NoncurrentDependentOutcome(
+            old_ref=downstream_product,
+            disposition=NONCURRENT_DISPOSITION_NO_LAWFUL_REPLACEMENT,
+            reason_code="REQUIRED_INPUT_NONCURRENT",
+            supporting_refs=(policy_ref, noncurrent_product),
+        ),
+    }
+    return {
+        "direction": direction,
+        "executor": executor,
+        "seal_v2_ref": seal_v2.ref,
+        "seal_v3_ref": seal_v3.ref,
+        "v2_ref": v2_ref,
+        "v3_ref": v3_ref,
+        "old_model": old_model,
+        "sibling_authority": sibling_authority,
+        "replaced_product": replaced_product,
+        "noncurrent_product": noncurrent_product,
+        "downstream_product": downstream_product,
+        "sibling_ref": sibling_ref,
+        "noncurrent_declarations": noncurrent_declarations,
+        "no_replacement_policy_ref": policy_ref,
+        "graph": graph,
+    }
 
 
 __all__ = [
+
     "ROOT",
     "R2",
     "R3",

@@ -44,6 +44,7 @@ from rawlsing_next.pre553_analytical_replay_dependency import (
     AnalyticalReplayClaim,
     ExplicitNoncurrentDependent,
     MissingCrossOwnerEdge,
+    OwnerUnknownDependent,
     assert_closure_covers_registered_products,
     resolve_current_analytical_product,
     AnalyticalReplayDependencyError,
@@ -58,6 +59,7 @@ from rawlsing_next.pre553_analytical_replay_dependency import (
 from rawlsing_next.pre553_authority_maintenance import (
     AuthorityInvalidationReceipt,
     AuthorityMaintenanceError,
+    INVALIDATION_RECEIPT_NONCURRENT_SCHEMA,
 )
 from rawlsing_next.pre553_empirical_objects import ExactRef, ReplayReceipt, exact_ref
 
@@ -949,3 +951,324 @@ def test_g_adapter_does_not_own_the_lifecycle_or_the_receipt():
     assert outcome.invalidation_receipt is owners_receipt
     assert outcome.material()["lifecycle_performed_by"] == (
         "AuthorityMaintenanceExecutor.promote_current")
+
+
+# ==========================================================================
+# HQ155 owner fail-closed correction (R2): RVW-003, RVW-004, promotion law
+# ==========================================================================
+
+
+def _resealed_checkpoint(t, mutate):
+    """Fully self-consistently reseal a checkpoint after mutating an invalidation's U.
+
+    A naive byte edit is caught by the embedded record_ref check, which is necessary
+    but not sufficient. This helper rebuilds the tampered invalidation receipt, then
+    every release that cites it, then the whole event chain (subject refs, parent
+    chain, record refs), then the current-release pointers, and finally the checkpoint
+    hash. The result is a checkpoint that is internally consistent in every hash it
+    carries, so only an independent re-derivation of A and U can reject it.
+    """
+    import copy as _copy
+
+    from rawlsing_next.pre553_authority_maintenance import (
+        AuthorityInvalidationReceipt,
+        AuthorityReleaseReceipt,
+        MaintenanceEvent,
+    )
+    from rawlsing_next.pre553_empirical_objects import semantic_hash
+
+    checkpoint = _copy.deepcopy(t["executor"].export_checkpoint())
+    payload = checkpoint["checkpoint_payload"]
+
+    original = AuthorityInvalidationReceipt.from_dict(payload["invalidations"][0])
+    tampered = mutate(original)
+    payload["invalidations"][0] = tampered.as_dict()
+
+    releases = payload["releases"]
+    remapped: dict[str, Any] = {}
+    for index, row in enumerate(releases):
+        release = AuthorityReleaseReceipt.from_dict(row)
+        if release.invalidation_receipt_ref.key != original.ref.key:
+            continue
+        rebuilt = AuthorityReleaseReceipt(
+            release_kind=release.release_kind,
+            selected_authority_ref=release.selected_authority_ref,
+            seal_ref=release.seal_ref,
+            selection_rule_ref=release.selection_rule_ref,
+            selection_attestation_ref=release.selection_attestation_ref,
+            invalidation_receipt_ref=tampered.ref,
+            previous_current_authority_ref=release.previous_current_authority_ref,
+            prior_lawful_release_ref=release.prior_lawful_release_ref,
+            release_state=release.release_state,
+        )
+        remapped[row["record_ref"]["content_hash"]] = rebuilt.ref
+        releases[index] = rebuilt.as_dict()
+
+    for index, row in enumerate(payload.get("current_release_refs", [])):
+        content = row["release_ref"]["content_hash"]
+        if content in remapped:
+            payload["current_release_refs"][index] = {
+                **row, "release_ref": remapped[content].as_dict(),
+            }
+
+    rebuilt_events = []
+    parent = None
+    for row in payload["events"]:
+        fields = dict(row)
+        fields.pop("record_ref", None)
+        subject = fields["subject_ref"]
+        if subject["content_hash"] in remapped:
+            subject = remapped[subject["content_hash"]].as_dict()
+        event = MaintenanceEvent(
+            sequence_number=fields["sequence_number"],
+            event_kind=fields["event_kind"],
+            subject_ref=subject,
+            parent_event_ref=parent,
+            evidence_refs=tuple(fields.get("evidence_refs", ())),
+            adjudication_ref=fields.get("adjudication_ref"),
+            authority_refs=tuple(fields.get("authority_refs", ())),
+            dependent_refs=tuple(fields.get("dependent_refs", ())),
+            event_state=fields.get("event_state", "COMMITTED"),
+        )
+        rebuilt_events.append(event)
+        parent = event.ref
+    payload["events"] = [event.as_dict() for event in rebuilt_events]
+
+    return {
+        "checkpoint_payload": payload,
+        "checkpoint_hash": semantic_hash(payload),
+    }
+
+
+# --- RVW-003: owner-unknown dependent is never CURRENT ---------------------
+
+
+def test_hq155_rvw_003_owner_unknown_dependent_is_never_current():
+    """RVW-003: an unregistered ref has no owner currentness to report."""
+    from rawlsing_next.pre553_authority_maintenance import (
+        DEPENDENT_LIFECYCLE_NOT_GOVERNED,
+    )
+    from rawlsing_next.pre553_empirical_objects import semantic_hash
+
+    t = fx.build_mixed_outcome_transition("forward")
+    _run_mixed(t)
+    executor = t["executor"]
+
+    unknown = ExactRef(
+        "C1_ANALYTICAL_COMPOSED_PRODUCT@1",
+        "urn:test:c1-03r:never-registered:product",
+        semantic_hash({"never": "registered"}),
+    )
+    assert unknown.key not in {r.key for r in executor.determinant_graph.known_dependent_refs}
+
+    status = executor.dependent_lifecycle_status(unknown)
+    assert status["lifecycle_state"] == DEPENDENT_LIFECYCLE_NOT_GOVERNED
+    assert status["lifecycle_state"] != DEPENDENT_LIFECYCLE_CURRENT
+    assert status["reason_code"] == "OWNER_UNKNOWN_DEPENDENT"
+
+    with pytest.raises(OwnerUnknownDependent, match="does not know this dependent"):
+        resolve_current_analytical_product(executor=executor, dependent_ref=unknown)
+
+    # A ref the owner DOES know, with a real outcome, is unaffected by the repair.
+    replaced = resolve_current_analytical_product(
+        executor=executor, dependent_ref=t["replaced_product"])
+    assert replaced["lifecycle_state"] == DEPENDENT_LIFECYCLE_CURRENT
+    with pytest.raises(ExplicitNoncurrentDependent):
+        resolve_current_analytical_product(
+            executor=executor, dependent_ref=t["noncurrent_product"])
+
+
+def test_hq155_rvw_003_cache_presence_does_not_change_owner_unknown():
+    """RVW-003: cache and object presence cannot manufacture a current ref."""
+    from rawlsing_next.pre553_authority_maintenance import (
+        DEPENDENT_LIFECYCLE_NOT_GOVERNED,
+    )
+    from rawlsing_next.pre553_empirical_objects import semantic_hash
+
+    t = fx.build_mixed_outcome_transition("forward")
+    _run_mixed(t)
+    executor = t["executor"]
+
+    unknown = ExactRef(
+        "C1_ANALYTICAL_COMPOSED_PRODUCT@1",
+        "urn:test:c1-03r:cached-unknown:product",
+        semantic_hash({"cached": "unknown"}),
+    )
+    before = executor.dependent_lifecycle_status(unknown)
+    assert before["lifecycle_state"] == DEPENDENT_LIFECYCLE_NOT_GOVERNED
+
+    # Smuggle the ref into the executor's snapshot and evidence caches, so that it is
+    # resident and addressable in every way except the owner's own knowledge.
+    victim = next(iter(executor._snapshots.values()))
+    executor._snapshots[unknown.key] = victim
+    executor._snapshot_exact_refs[unknown.key] = victim
+
+    after = executor.dependent_lifecycle_status(unknown)
+    assert after["lifecycle_state"] == DEPENDENT_LIFECYCLE_NOT_GOVERNED
+    assert after == before
+    with pytest.raises(OwnerUnknownDependent):
+        resolve_current_analytical_product(executor=executor, dependent_ref=unknown)
+
+
+# --- RVW-004: checkpoint replay must re-derive U ----------------------------
+
+
+def test_hq155_rvw_004_tampered_checkpoint_u_omitting_sibling_is_rejected():
+    """RVW-004: a shrunk U is rejected even after self-consistent rehashing."""
+    from rawlsing_next.pre553_authority_maintenance import (
+        AuthorityInvalidationReceipt,
+        AuthorityMaintenanceConflict,
+        AuthorityMaintenanceExecutor,
+    )
+
+    t = fx.build_mixed_outcome_transition("forward")
+    _run_mixed(t)
+    executor = t["executor"]
+    original = executor.export_checkpoint()
+    affected_u = original["checkpoint_payload"]["invalidations"][0][
+        "unaffected_dependent_refs"]
+    assert affected_u, "the mixed release must record a non-empty unaffected set"
+
+    def shrink(receipt):
+        return AuthorityInvalidationReceipt(
+            changed_authority_refs=receipt.changed_authority_refs,
+            affected_dependent_refs=receipt.affected_dependent_refs,
+            unaffected_dependent_refs=(),
+            recompilation_pairs=receipt.recompilation_pairs,
+            noncurrent_dependents=receipt.noncurrent_dependents,
+        )
+
+    tampered = _resealed_checkpoint(t, shrink)
+    # The reseal really is self-consistent: its own hash matches its own payload.
+    from rawlsing_next.pre553_empirical_objects import semantic_hash
+    assert tampered["checkpoint_hash"] == semantic_hash(tampered["checkpoint_payload"])
+
+    with pytest.raises(AuthorityMaintenanceConflict, match="unaffected set differs"):
+        AuthorityMaintenanceExecutor.from_checkpoint(tampered)
+
+    # The untampered checkpoint still replays exactly.
+    AuthorityMaintenanceExecutor.from_checkpoint(original)
+
+
+def test_hq155_rvw_004_tampered_checkpoint_u_with_unknown_sibling_is_rejected():
+    """RVW-004: U must be the graph's own complement of A, not an arbitrary set."""
+    from rawlsing_next.pre553_authority_maintenance import (
+        AuthorityInvalidationReceipt,
+        AuthorityMaintenanceConflict,
+        AuthorityMaintenanceExecutor,
+    )
+
+    t = fx.build_mixed_outcome_transition("forward")
+    _run_mixed(t)
+    executor = t["executor"]
+    unknown = fx._ref_for("C11Internal:Unknown", "injected-sibling")
+
+    def swap(receipt):
+        return AuthorityInvalidationReceipt(
+            changed_authority_refs=receipt.changed_authority_refs,
+            affected_dependent_refs=receipt.affected_dependent_refs,
+            unaffected_dependent_refs=(unknown,),
+            recompilation_pairs=receipt.recompilation_pairs,
+            noncurrent_dependents=receipt.noncurrent_dependents,
+        )
+
+    tampered = _resealed_checkpoint(t, swap)
+    with pytest.raises(AuthorityMaintenanceConflict, match="unaffected set differs"):
+        AuthorityMaintenanceExecutor.from_checkpoint(tampered)
+
+    # A and U jointly cover K at replay, which is what the recomputation establishes.
+    graph = executor.determinant_graph
+    recomputed_affected = graph.affected((t["old_model"], t["sealed_successor_ref"]))
+    recomputed_unaffected = graph.unaffected(recomputed_affected)
+    known = {ref.key for ref in graph.known_dependent_refs}
+    affected = {ref.key for ref in recomputed_affected}
+    assert affected.isdisjoint({ref.key for ref in recomputed_unaffected})
+    assert affected | {ref.key for ref in recomputed_unaffected} == known
+    assert unknown.key not in known
+
+
+# --- Promotion law still shared and intact ---------------------------------
+
+
+def test_hq155_promotion_normal_mixed_outcome_still_passes():
+    """The promotion path's mixed outcome is unchanged by the four repairs."""
+    t = fx.build_mixed_outcome_transition("forward")
+    outcome = _run_mixed(t)
+    receipt = outcome.invalidation_receipt
+    executor = t["executor"]
+    known = {ref.key for ref in executor.determinant_graph.known_dependent_refs}
+    affected = {ref.key for ref in receipt.affected_dependent_refs}
+    unaffected = {ref.key for ref in receipt.unaffected_dependent_refs}
+    replacement = {old.key for old, _ in receipt.recompilation_pairs}
+    noncurrent = {row.old_ref.key for row in receipt.noncurrent_dependents}
+
+    assert replacement.isdisjoint(noncurrent)
+    assert replacement | noncurrent == affected
+    assert affected.isdisjoint(unaffected)
+    assert affected | unaffected == known
+    # Exactly one generic disposition, with non-empty exact grounds, never split.
+    for row in receipt.noncurrent_dependents:
+        assert row.disposition == NONCURRENT_DISPOSITION_NO_LAWFUL_REPLACEMENT
+        assert row.reason_code and row.supporting_refs
+        assert row.replacement_ref is None
+    # The negative receipt declares the exact noncurrent schema and round-trips.
+    assert receipt.semantic_projection()["receipt_schema"] == (
+        INVALIDATION_RECEIPT_NONCURRENT_SCHEMA
+    )
+    assert AuthorityInvalidationReceipt.from_dict(receipt.as_dict()).ref == receipt.ref
+    # Lifecycle law: one current replacement, two explicit refusals, sibling current.
+    current = resolve_current_analytical_product(
+        executor=executor, dependent_ref=t["replaced_product"])
+    assert current["lifecycle_state"] == DEPENDENT_LIFECYCLE_CURRENT
+    for ref in (t["noncurrent_product"], t["downstream_product"]):
+        with pytest.raises(ExplicitNoncurrentDependent):
+            resolve_current_analytical_product(executor=executor, dependent_ref=ref)
+    sibling = resolve_current_analytical_product(
+        executor=executor, dependent_ref=t["sibling_ref"])
+    assert sibling["lifecycle_state"] == DEPENDENT_LIFECYCLE_CURRENT
+    assert "current_replacement_ref" not in sibling
+
+
+# --- Sealed successor / decoy and AT18 grade courts remain green -----------
+
+
+def test_hq155_sealed_successor_is_not_the_decoy_and_binds_exactly():
+    """The sealed-successor exact binding and the decoy distinction are intact."""
+    t = fx.build_model_authority_transition("forward")
+    consumed = t["old_model"]
+    decoy = t["unsealed_decoy_model_ref"]
+    sealed = fx.sealed_successor_of(t)
+    # Three distinct refs; only the sealed one is lawful.
+    assert decoy.authority_content_hash == consumed.authority_content_hash
+    assert sealed.authority_content_hash != consumed.authority_content_hash
+    assert decoy.authority_content_hash != sealed.authority_content_hash
+    assert len({consumed.key, decoy.key, sealed.key}) == 3
+    # The sealed successor is exactly what the owner's transition produced, and the
+    # consumer model rule commits to it.
+    assert sealed.key == t["sealed_successor_ref"].key
+    rule = fx.build_model_rule_from_sealed_successor(t["case"], t)
+    assert rule.material()["model_authority_ref"] == sealed.as_dict()
+    assert rule.rule_hash == semantic_hash(rule.material())
+
+
+def test_hq155_at18_grade_courts_remain_green():
+    """The four AT18 replay grades and their mechanism ceilings are unchanged."""
+    from rawlsing_next.pre553_analytical_replay_dependency import (
+        GRADE_STRENGTH,
+        MECHANISM_MAX_GRADE,
+        MECHANISM_STORED_PRODUCT_DESERIALIZATION,
+        MECHANISM_STORED_RECEIPT_DESERIALIZATION,
+    )
+
+    assert len(REPLAY_GRADES) == 4
+    assert GRADE_STRENGTH[REPLAY_GRADE_HISTORICAL_EXPLANATION_ONLY] == 0
+    assert GRADE_STRENGTH[REPLAY_GRADE_SERIALIZATION_REPLAY] == 1
+    assert GRADE_STRENGTH[REPLAY_GRADE_FRESH_PROCESS_PRODUCT_REPLAY] == 2
+    assert GRADE_STRENGTH[REPLAY_GRADE_FRESH_EMPIRICAL_RECOMPUTATION] == 3
+    # Stored material can never reach a fresh grade.
+    assert MECHANISM_MAX_GRADE[MECHANISM_HISTORICAL_NARRATION] == (
+        REPLAY_GRADE_HISTORICAL_EXPLANATION_ONLY
+    )
+    for mechanism in (MECHANISM_STORED_RECEIPT_DESERIALIZATION,
+                      MECHANISM_STORED_PRODUCT_DESERIALIZATION):
+        assert MECHANISM_MAX_GRADE[mechanism] == REPLAY_GRADE_SERIALIZATION_REPLAY

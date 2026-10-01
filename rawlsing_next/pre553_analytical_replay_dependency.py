@@ -36,6 +36,7 @@ from rawlsing_next.pre553_authority_maintenance import (
     AuthorityInvalidationReceipt,
     AuthorityMaintenanceError,
     DEPENDENT_LIFECYCLE_EXPLICIT_NONCURRENT,
+    DEPENDENT_LIFECYCLE_NOT_GOVERNED,
     Recompiler,
     SemanticDeterminantGraph,
 )
@@ -144,6 +145,18 @@ class ExplicitNoncurrentDependent(AnalyticalReplayDependencyError):
     """Owner gap: the current lifecycle owner cannot lawfully represent this case."""
 
     code = "NO_LAWFUL_REPLACEMENT_REPRESENTABLE"
+
+
+class OwnerUnknownDependent(AnalyticalReplayDependencyError):
+    """The lifecycle owner does not know this dependent at all.
+
+    This is the narrowest fail-closed answer to an unknown ref: it is not a
+    noncurrent outcome, because the owner never recorded one, and it is certainly
+    not CURRENT. The owner simply has no currentness to report for a ref absent
+    from its own known dependent set. Cache or object presence cannot supply one.
+    """
+
+    code = "OWNER_UNKNOWN_DEPENDENT"
 
 
 def _text(value: Any, name: str) -> str:
@@ -489,7 +502,9 @@ def resolve_current_analytical_product(
     Returns a mapping with ``lifecycle_state`` and, for a replaced dependent, the
     exact ``current_replacement_ref``. Raises :class:`ExplicitNoncurrentDependent`
     when the owner recorded an explicit noncurrent outcome, so a stale historical
-    product can never be served as current.
+    product can never be served as current. Raises :class:`OwnerUnknownDependent`
+    when the owner does not know the ref at all, so absence of a recorded transition
+    can never be laundered into currentness.
     """
     status = dict(executor.dependent_lifecycle_status(dependent_ref))
     if status["lifecycle_state"] == DEPENDENT_LIFECYCLE_EXPLICIT_NONCURRENT:
@@ -500,6 +515,14 @@ def resolve_current_analytical_product(
             f"governing_release={status['governing_release_ref']}); the historical exact "
             "artifact remains addressable but may not be served as current, and cached "
             "bytes do not restore currentness"
+        )
+    if status["lifecycle_state"] == DEPENDENT_LIFECYCLE_NOT_GOVERNED:
+        raise OwnerUnknownDependent(
+            "the lifecycle owner does not know this dependent: "
+            f"{dependent_ref.key} is absent from the owner's known dependent set, so no "
+            "governed transition has ever spoken about it. The owner has no currentness "
+            "to report and will not infer one from the absence of a recorded outcome; "
+            "cached or resident bytes do not make it current either"
         )
     return status
 

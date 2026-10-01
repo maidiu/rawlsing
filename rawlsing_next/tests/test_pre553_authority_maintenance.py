@@ -956,3 +956,407 @@ def test_b_fresh_process_owner_replay_reproduces_both_outcome_classes(tmp_path):
         REPLAY_GRADE_FRESH_EMPIRICAL_RECOMPUTATION,
     )
     assert REPLAY_GRADE_SERIALIZATION_REPLAY != REPLAY_GRADE_FRESH_EMPIRICAL_RECOMPUTATION
+
+
+# ==========================================================================
+# HQ155 owner fail-closed correction (R2): RVW-001, RVW-002 and rollback law
+# ==========================================================================
+
+
+def _mixed_receipt():
+    """A real owner-produced receipt carrying both positive and negative rows."""
+    from rawlsing_next.pre553_analytical_replay_dependency import (
+        AnalyticalDependencyRegistry,
+        AnalyticalProductRegistration,
+        transition_analytical_dependencies,
+    )
+    from rawlsing_next.tests import c1_at18_at19_fixture as fx
+
+    t = fx.build_mixed_outcome_transition("forward")
+    registry = AnalyticalDependencyRegistry()
+    for product in (
+        t["replaced_product"], t["noncurrent_product"],
+        t["downstream_product"], t["sibling_ref"],
+    ):
+        registry.register(
+            AnalyticalProductRegistration(
+                product_ref=product,
+                product_identity_hash=product.content_hash,
+                determinant_authority_refs=(
+                    (t["sibling_authority"],)
+                    if product.key == t["sibling_ref"].key else (t["old_model"],)
+                ),
+            )
+        )
+    outcome = transition_analytical_dependencies(
+        executor=t["executor"],
+        registry=registry,
+        seal_ref=t["seal_ref"],
+        selection_rule_ref=_ref("SELECTION_RULE", "hq155-mixed"),
+        selection_attestation_ref=_ref("SELECTION_ATTESTATION", "hq155-mixed"),
+        recompose={
+            t["replaced_product"].key: fx.recompose_product_under_model_authority(
+                t["direction"]
+            )
+        },
+        noncurrent_dependents=t["noncurrent_declarations"],
+    )
+    return outcome.invalidation_receipt
+
+
+# --- RVW-001: duplicate positive replacement rows -------------------------
+
+
+def test_hq155_rvw_001_duplicate_positive_rows_same_target_are_refused():
+    """RVW-001: one source dependent may carry exactly one replacement row."""
+    receipt = _mixed_receipt()
+    (old, new), = receipt.recompilation_pairs
+
+    with pytest.raises(AuthorityMaintenanceError, match="at most one positive replacement row"):
+        AuthorityInvalidationReceipt(
+            changed_authority_refs=receipt.changed_authority_refs,
+            affected_dependent_refs=receipt.affected_dependent_refs,
+            unaffected_dependent_refs=receipt.unaffected_dependent_refs,
+            # Two rows, IDENTICAL target: must still be refused, because accepting
+            # them would let a canonicalizing dict collapse a duplicated claim.
+            recompilation_pairs=((old, new), (old, new)),
+            noncurrent_dependents=receipt.noncurrent_dependents,
+        )
+
+    # The honest single row is still accepted.
+    honest = AuthorityInvalidationReceipt(
+        changed_authority_refs=receipt.changed_authority_refs,
+        affected_dependent_refs=receipt.affected_dependent_refs,
+        unaffected_dependent_refs=receipt.unaffected_dependent_refs,
+        recompilation_pairs=((old, new),),
+        noncurrent_dependents=receipt.noncurrent_dependents,
+    )
+    assert len(honest.recompilation_pairs) == 1
+
+
+def test_hq155_rvw_001_duplicate_positive_rows_different_targets_are_refused():
+    """RVW-001: a duplicate row must not let a caller substitute the successor."""
+    receipt = _mixed_receipt()
+    (old, new), = receipt.recompilation_pairs
+    forged = _ref("C1_ANALYTICAL_COMPOSED_PRODUCT@1", "forged-successor")
+
+    with pytest.raises(AuthorityMaintenanceError, match="at most one positive replacement row"):
+        AuthorityInvalidationReceipt(
+            changed_authority_refs=receipt.changed_authority_refs,
+            affected_dependent_refs=receipt.affected_dependent_refs,
+            unaffected_dependent_refs=receipt.unaffected_dependent_refs,
+            # Without this refusal the dict's last-write-wins would keep `forged`
+            # and silently discard the owner's own replacement target.
+            recompilation_pairs=((old, new), (old, forged)),
+            noncurrent_dependents=receipt.noncurrent_dependents,
+        )
+
+    # Ordering is irrelevant: the forged row first is refused too.
+    with pytest.raises(AuthorityMaintenanceError, match="at most one positive replacement row"):
+        AuthorityInvalidationReceipt(
+            changed_authority_refs=receipt.changed_authority_refs,
+            affected_dependent_refs=receipt.affected_dependent_refs,
+            unaffected_dependent_refs=receipt.unaffected_dependent_refs,
+            recompilation_pairs=((old, forged), (old, new)),
+            noncurrent_dependents=receipt.noncurrent_dependents,
+        )
+
+
+# --- RVW-002: serialized negative fields and schema ------------------------
+
+
+def test_hq155_rvw_002_negative_row_missing_replacement_ref_is_refused():
+    """RVW-002: the stated null is load-bearing evidence and may not be inferred."""
+    import copy
+
+    data = _mixed_receipt().as_dict()
+    assert data["receipt_schema"] == INVALIDATION_RECEIPT_NONCURRENT_SCHEMA
+    assert data["noncurrent_dependents"]
+    for row in data["noncurrent_dependents"]:
+        assert row["replacement_ref"] is None
+        row.pop("replacement_ref")
+
+    with pytest.raises(AuthorityMaintenanceError, match="must state replacement_ref explicitly"):
+        AuthorityInvalidationReceipt.from_dict(data)
+
+    # Control: with the field present and null, the same receipt round-trips exactly.
+    good = _mixed_receipt().as_dict()
+    back = AuthorityInvalidationReceipt.from_dict(copy.deepcopy(good))
+    assert len(back.noncurrent_dependents) == len(data["noncurrent_dependents"])
+    assert back.ref == _mixed_receipt().ref
+
+
+def test_hq155_rvw_002_negative_row_forged_non_null_replacement_ref_is_refused():
+    """RVW-002: a serialized replacement on a negative row is refused, not dropped."""
+    import copy
+
+    data = _mixed_receipt().as_dict()
+    forged = _ref("C1_ANALYTICAL_COMPOSED_PRODUCT@1", "smuggled").as_dict()
+    for row in data["noncurrent_dependents"]:
+        row["replacement_ref"] = forged
+
+    with pytest.raises(AuthorityMaintenanceError, match="may not carry a replacement ref"):
+        AuthorityInvalidationReceipt.from_dict(data)
+
+    # A negative row may also never be built with a replacement in-process.
+    row = _mixed_receipt().noncurrent_dependents[0]
+    with pytest.raises(AuthorityMaintenanceError, match="may not carry a replacement ref"):
+        NoncurrentDependentOutcome(
+            old_ref=row.old_ref,
+            disposition=row.disposition,
+            reason_code=row.reason_code,
+            supporting_refs=row.supporting_refs,
+            replacement_ref=_ref("C1_ANALYTICAL_COMPOSED_PRODUCT@1", "in-process"),
+        )
+
+
+def test_hq155_rvw_002_negative_receipt_missing_schema_is_refused():
+    """RVW-002: noncurrent material without the exact schema id is refused."""
+    import copy
+
+    data = copy.deepcopy(_mixed_receipt().as_dict())
+    data.pop("receipt_schema")
+    data.pop("record_ref", None)
+
+    with pytest.raises(AuthorityMaintenanceError, match="does not carry the exact"):
+        AuthorityInvalidationReceipt.from_dict(data)
+
+
+def test_hq155_rvw_002_negative_receipt_forged_schema_is_refused():
+    """RVW-002: a forged schema id is refused, never inferred from row presence."""
+    import copy
+
+    data = copy.deepcopy(_mixed_receipt().as_dict())
+    data["receipt_schema"] = "PRE553_AUTH40_SEMANTIC_AUTHORITY_INVALIDATION_NONCURRENT@9.9.9"
+    data.pop("record_ref", None)
+
+    with pytest.raises(AuthorityMaintenanceError, match="does not carry the exact"):
+        AuthorityInvalidationReceipt.from_dict(data)
+
+
+def _positive_only_legacy_receipt():
+    """A genuine positive-only receipt: every affected dependent is replaced."""
+    from rawlsing_next.tests import c1_at18_at19_fixture as fx
+
+    t = fx.build_mixed_outcome_transition("forward")
+    executor = t["executor"]
+    changed = (t["old_model"], t["sealed_successor_ref"])
+    graph = executor.determinant_graph
+    affected = graph.affected(changed)
+    unaffected = graph.unaffected(affected)
+    replacement = ExactRef(
+        "C1_ANALYTICAL_COMPOSED_PRODUCT@1",
+        "urn:test:c1-03r:legacy:replacement",
+        _h("legacy-replacement"),
+    )
+    return AuthorityInvalidationReceipt(
+        changed_authority_refs=changed,
+        affected_dependent_refs=affected,
+        unaffected_dependent_refs=unaffected,
+        recompilation_pairs=tuple((ref, replacement) for ref in affected),
+        noncurrent_dependents=(),
+    )
+
+
+def test_hq155_rvw_002_positive_only_legacy_receipt_is_hash_compatible():
+    """RVW-002: historical positive-only material keeps its exact identity."""
+    import copy
+
+    receipt = _positive_only_legacy_receipt()
+    assert receipt.preserves_legacy_identity
+    data = receipt.as_dict()
+    # The historical field set, exactly: no schema and no noncurrent rows.
+    assert "receipt_schema" not in data
+    assert "noncurrent_dependents" not in data
+
+    back = AuthorityInvalidationReceipt.from_dict(copy.deepcopy(data))
+    assert back.ref == receipt.ref
+    assert back.preserves_legacy_identity
+    assert back.as_dict() == data
+    # The projection itself is unchanged by the R2 repair.
+    assert set(receipt.semantic_projection()) == {
+        "contract_id", "record_type", "changed_authority_refs",
+        "affected_dependent_refs", "unaffected_dependent_refs", "recompilation_pairs",
+    }
+
+
+def test_hq155_rvw_002_new_schema_on_positive_only_legacy_fails_closed():
+    """RVW-002: the two shapes are mutually exclusive, so mixing them is refused."""
+    import copy
+
+    data = copy.deepcopy(_positive_only_legacy_receipt().as_dict())
+
+    # New-schema fields present on positive-only legacy material.
+    poisoned = copy.deepcopy(data)
+    poisoned["receipt_schema"] = INVALIDATION_RECEIPT_NONCURRENT_SCHEMA
+    poisoned["noncurrent_dependents"] = []
+    with pytest.raises(AuthorityMaintenanceError, match="carries no noncurrent rows"):
+        AuthorityInvalidationReceipt.from_dict(poisoned)
+
+    # Schema id present without the rows field at all.
+    schema_only = copy.deepcopy(data)
+    schema_only["receipt_schema"] = INVALIDATION_RECEIPT_NONCURRENT_SCHEMA
+    with pytest.raises(AuthorityMaintenanceError, match="carries no noncurrent rows"):
+        AuthorityInvalidationReceipt.from_dict(schema_only)
+
+    # Rows field present without the schema id.
+    rows_only = copy.deepcopy(data)
+    rows_only["noncurrent_dependents"] = []
+    with pytest.raises(AuthorityMaintenanceError, match="does not carry the exact"):
+        AuthorityInvalidationReceipt.from_dict(rows_only)
+
+
+# --- Promotion/rollback share one owner law --------------------------------
+
+
+def test_hq155_rollback_normal_mixed_outcome_passes_and_laws_are_shared():
+    """The rollback path produces the same lawful mixed R/N/U outcome as promotion."""
+    from rawlsing_next.pre553_analytical_replay_dependency import (
+        AnalyticalDependencyRegistry,
+        AnalyticalProductRegistration,
+        ExplicitNoncurrentDependent,
+        build_owner_recompiler,
+        resolve_current_analytical_product,
+    )
+    from rawlsing_next.pre553_authority_maintenance import (
+        DEPENDENT_LIFECYCLE_CURRENT,
+        DEPENDENT_LIFECYCLE_EXPLICIT_NONCURRENT,
+    )
+    from rawlsing_next.tests import c1_at18_at19_fixture as fx
+
+    t = fx.build_mixed_outcome_rollback_transition("forward")
+    executor = t["executor"]
+
+    registry = AnalyticalDependencyRegistry()
+    for product in (
+        t["replaced_product"], t["noncurrent_product"], t["downstream_product"],
+    ):
+        registry.register(
+            AnalyticalProductRegistration(
+                product_ref=product,
+                product_identity_hash=product.content_hash,
+                determinant_authority_refs=(t["old_model"],),
+            )
+        )
+    registry.register(
+        AnalyticalProductRegistration(
+            product_ref=t["sibling_ref"],
+            product_identity_hash=t["sibling_ref"].content_hash,
+            determinant_authority_refs=(t["sibling_authority"],),
+        )
+    )
+
+    def _registry_for(consumed):
+        """Registry in which the replaced product consumed exactly ``consumed``.
+
+        Each governed transition rebinds the recomposed product to the determinant it
+        now consumes, which is why a stale registry is itself refused: the owner's
+        recompiler law requires exactly one consumed determinant in the changed set.
+        """
+        fresh = AnalyticalDependencyRegistry()
+        for product in (
+            t["replaced_product"], t["noncurrent_product"], t["downstream_product"],
+        ):
+            fresh.register(
+                AnalyticalProductRegistration(
+                    product_ref=product,
+                    product_identity_hash=product.content_hash,
+                    determinant_authority_refs=(consumed,),
+                )
+            )
+        fresh.register(
+            AnalyticalProductRegistration(
+                product_ref=t["sibling_ref"],
+                product_identity_hash=t["sibling_ref"].content_hash,
+                determinant_authority_refs=(t["sibling_authority"],),
+            )
+        )
+        return fresh
+
+    def _recompiler(consumed, tag):
+        def recompose(affected_ref, changed):
+            return ExactRef(
+                "C1_ANALYTICAL_COMPOSED_PRODUCT@1",
+                f"urn:test:c1-03r:rb-recomposed:{tag}",
+                _h(f"{tag}:{affected_ref.content_hash}"),
+            )
+
+        return build_owner_recompiler(
+            executor=executor, registry=_registry_for(consumed),
+            recompose={t["replaced_product"].key: recompose},
+        )
+
+    def _assert_lawful_mixed(receipt, label):
+        replacement = {old.key for old, _ in receipt.recompilation_pairs}
+        noncurrent = {row.old_ref.key for row in receipt.noncurrent_dependents}
+        affected = {ref.key for ref in receipt.affected_dependent_refs}
+        unaffected = {ref.key for ref in receipt.unaffected_dependent_refs}
+        # R and N disjoint, together exactly A: the shared owner law.
+        assert replacement.isdisjoint(noncurrent), label
+        assert replacement | noncurrent == affected, label
+        # A and U disjoint and jointly covering every known dependent K.
+        assert affected.isdisjoint(unaffected), label
+        assert affected | unaffected == {
+            ref.key for ref in executor.determinant_graph.known_dependent_refs
+        }, label
+        # No duplicate source row survived, and every negative row is grounded.
+        assert len(receipt.recompilation_pairs) == len(
+            {old.key for old, _ in receipt.recompilation_pairs}
+        ), label
+        for row in receipt.noncurrent_dependents:
+            assert row.disposition == NONCURRENT_DISPOSITION_NO_LAWFUL_REPLACEMENT, label
+            assert row.reason_code and row.supporting_refs, label
+            assert row.replacement_ref is None, label
+        # The receipt claims a schema only because it really carries rows.
+        assert receipt.preserves_legacy_identity is False, label
+
+    promote1 = executor.promote_current(
+        t["seal_v2_ref"],
+        selection_rule_ref=_ref("SELECTION_RULE", "rb-v2"),
+        selection_attestation_ref=_ref("SELECTION_ATTESTATION", "rb-v2"),
+        recompiler=_recompiler(t["old_model"], "v2"),
+        noncurrent_outcomes=t["noncurrent_declarations"],
+    )
+    _assert_lawful_mixed(
+        executor.invalidation_receipt_for_release(promote1.ref), "promotion v1->v2")
+
+    promote2 = executor.promote_current(
+        t["seal_v3_ref"],
+        selection_rule_ref=_ref("SELECTION_RULE", "rb-v3"),
+        selection_attestation_ref=_ref("SELECTION_ATTESTATION", "rb-v3"),
+        recompiler=_recompiler(t["v2_ref"], "v3"),
+        noncurrent_outcomes=t["noncurrent_declarations"],
+    )
+    _assert_lawful_mixed(
+        executor.invalidation_receipt_for_release(promote2.ref), "promotion v2->v3")
+
+    rollback = executor.rollback_current(
+        t["old_model"].authority_id,
+        target_prior_release_ref=promote1.ref,
+        rollback_rule_ref=_ref("ROLLBACK_RULE", "rb-to-v2"),
+        rollback_attestation_ref=_ref("ROLLBACK_ATTESTATION", "rb-to-v2"),
+        recompiler=_recompiler(t["v3_ref"], "rb"),
+        noncurrent_outcomes=t["noncurrent_declarations"],
+    )
+    assert rollback.release_kind == "ROLLBACK"
+    assert rollback.prior_lawful_release_ref == promote1.ref
+    rollback_receipt = executor.invalidation_receipt_for_release(rollback.ref)
+    _assert_lawful_mixed(rollback_receipt, "rollback v3->v2")
+
+    # The rollback receipt itself survives a serialization round trip.
+    back = AuthorityInvalidationReceipt.from_dict(rollback_receipt.as_dict())
+    assert back.ref == rollback_receipt.ref
+
+    # Lifecycle law is unchanged: the replaced product is current, the declared
+    # noncurrents are refused, the sibling is current and identity-stable.
+    replaced = resolve_current_analytical_product(
+        executor=executor, dependent_ref=t["replaced_product"])
+    assert replaced["lifecycle_state"] == DEPENDENT_LIFECYCLE_CURRENT
+    assert "current_replacement_ref" in replaced
+    for ref in (t["noncurrent_product"], t["downstream_product"]):
+        with pytest.raises(ExplicitNoncurrentDependent):
+            resolve_current_analytical_product(executor=executor, dependent_ref=ref)
+    sibling = resolve_current_analytical_product(
+        executor=executor, dependent_ref=t["sibling_ref"])
+    assert sibling["lifecycle_state"] == DEPENDENT_LIFECYCLE_CURRENT
+    assert "current_replacement_ref" not in sibling
