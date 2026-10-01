@@ -1,0 +1,43 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.0.0",
+  "checkpoint_id": "20261001-PYAT-HQ156-A-FINALSHA-FIX-R-REREVIEW-R1",
+  "status": "C1_03A_R4_FINALSHA_DEFECT_CORRECTION_BOUND__C1_03R_R2_REREVIEW_BOUND__C1_03_JOIN_BLOCKED",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "902640dfddce431d0c5ba151d3eb851d6b84d7a3",
+  "predecessor_checkpoint": "20261001-PYAT-HQ155-DUAL-C1-03-NARROW-CORRECTIONS-R1",
+  "predecessor_handoff_commit": "e157782e4aa063cf74368fd3c3ec93851a7f5fe5",
+  "governing_decision": "HQD-2026-10-01-156",
+  "c1_03a": {
+    "return_head": "3bd481163ac1b2b1e30817b2704e89341099a960",
+    "hq_intake": "BLOCKED_BEFORE_REREVIEW__FINAL_SHA_CALLABILITY_DEFECT",
+    "defect": "DOUBLE_CLASSMETHOD_DECORATOR_ON_FROM_EMPIRICAL_INTEGRITY_REFUSAL",
+    "correction_branch": "agent/opencode-pyat-hq156-c1-03a-r4-finalsha-callability-r1",
+    "correction_commission_tip": "b2b62c14f4b9a1ec7c97094a2d1ac4101f63314d",
+    "launch_surface": "OPENCODE__SPACE_BUNNY_FREE"
+  },
+  "c1_03r": {
+    "return_head": "7f64493758f6b3b77d7e9ce1486c1324ff709edc",
+    "hq_intake": "READY_FOR_NARROW_INDEPENDENT_REREVIEW",
+    "reviewer_branch": "agent/reviewer-pyat-hq156-c1-03r-r2-rereview-r1",
+    "reviewer_commission_tip": "f6e2b059883bee29b2dadfc1cc59df7a5a4c7735",
+    "launch_surface": "BROWSER__GPT_5_6_SOL_HIGH"
+  },
+  "c1_03_join": {
+    "status": "BLOCKED",
+    "prerequisites": [
+      "HQ_ADOPTED_C1_03A",
+      "HQ_ADOPTED_C1_03R",
+      "AT17_ALREADY_ADOPTED"
+    ]
+  },
+  "next_action": "USER_LAUNCH_C1_03A_FINALSHA_CALLABILITY_CORRECTION_AND_C1_03R_R2_BROWSER_REREVIEW_IN_PARALLEL__HQ_RECONCILES_RETURNS",
+  "prohibitions": [
+    "NO_C1_03A_REREVIEW_UNTIL_FINALSHA_CALLABILITY_CORRECTED",
+    "NO_C1_03_JOIN",
+    "NO_C1_R",
+    "NO_RAW_SOURCE_EXECUTION",
+    "NO_C4_WITHOUT_EXACT_LATER_WARRANT",
+    "NO_C7_IMPLEMENTATION",
+    "NO_PREV3_TO_V3_ACTOR_IMPLEMENTATION"
+  ]
+}
