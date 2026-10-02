@@ -357,3 +357,46 @@ Strength: `FALSIFIED DIRECTION`.
 The current kernel candidate gives no reason to posit one authoritative hidden meaning of an object/event.
 Meaning should remain actor-/relation-/time-indexed while objective causal provenance remains separate.
 
+# 9. Current V3/PFF evidence correction — mediation is explicit
+
+Authority basis correction:
+the pre-programming `Rawlsing Personality Generator Framework v3.4` has zero current architecture authority.
+
+The relevant current/recent chain is the PFF/SDTF-era reconciliation culminating in HQ-adopted CAN-008 R2 shared person×event coupling.
+
+The adopted technical form is:
+
+`EXACT GENERATED/ADMITTED EVENT`
++
+`READ-ONLY CONDITIONING PERSON STATE`
++
+optional modality evidence
+→ `ACTOR RECEIVABILITY / UPTAKE-APPRAISAL / SITUATED RECRUITMENT`
+→ `MULTI-STREAM IMMEDIATE RESPONSE`
+→ bounded current consequence and/or separately owned durable effect.
+
+This is strong technical evidence for the D007 mediation candidate because current architecture explicitly preserves:
+
+`EVENT TRUTH != ACTOR UPTAKE`
+
+`WHOLE PERSON STATE != CURRENT RECRUITMENT`
+
+`RECRUITMENT != ACTOR ACCESS`
+
+`ACTOR ACCESS != FOCALITY / SELF-EXPLANATION`
+
+`CURRENT RESPONSE != AUTOMATIC DURABLE PERSON CHANGE`.
+
+Yet each mediation is causally operative.
+
+Current derivation clue:
+
+> **A mediating relation may be causally constitutive without becoming an exhaustive representation or ownership transfer of either side.**
+
+This is stronger than bare non-exhaustion because it explains how partial relations can genuinely transform history.
+
+Important restraint:
+- CAN-008 R2 is project-current technical authority at its exact grain;
+- the generalized metaphysical "mediation kernel" remains a Sorok hypothesis;
+- Absolute-Horizon formalization remains U3/speculative in the latest PFF reconciliation and must not be smuggled into current V3 authority.
+
