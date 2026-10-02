@@ -814,3 +814,121 @@ Risks:
 - `RISK-160` premature false-kernel closure;
 - `RISK-161` correct-rule accumulation without machine coherence.
 
+## 2026-10-02 — Q-KERNEL-001 provisional anchor + whole-conversation component sweep
+
+Sorok has now provisionally anchored the **hottest current metaphysical compression region** without promoting it to the Rawlsing kernel.
+
+Decision:
+`SPD-0204`.
+
+Active investigation:
+`dockets/D007_KERNEL_SIFTING_AND_DERIVATIONAL_COMPRESSION/`.
+
+Current candidate phrase:
+
+> **irreducible first-personhood without self-sufficient individuality**
+
+Current expanded form:
+
+> **Persons are materially, historically and relationally constituted singular centers. Real relations enter causally and irreversibly into what they become, while no relation, model, event, expression, participant perspective or enumerable relation-set finally exhausts the person generated.**
+
+Current strongest nested clue:
+
+> **The person exceeds every relation.  
+> The relation exceeds either person's experience of it.  
+> The world exceeds every person's phenomenal access to it.  
+> Yet person, relation and world genuinely constitute one another historically.**
+
+Current strongest machine skeleton:
+
+`RELATIONAL / MATERIAL HISTORY`
+→ `SINGULAR ACTOR-LOCAL ORGANIZATION`
+→ `PARTIAL SITUATED ACCESS BETWEEN CENTERS`
+→ `ACTION UNDER INCOMPLETE MODELS`
+→ `REAL CONSEQUENCE`
+→ `IRREVERSIBLE SHARED HISTORY`
+→ `CHANGED PERSON / RELATION / WORLD`
+→ `NEW PARTIAL ENCOUNTER`.
+
+Standing candidate condition:
+
+> **No manifestation at any stage is identical to the generative totality from which it arose.**
+
+Current praxis candidate:
+
+> **Kenotic attention is answerability to what exceeds one's present phenomenal horizon without self-erasure, appropriation or surrender of judgment.**
+
+Current ethical horizon:
+
+> **Love of neighbor is deepening relation that increases specificity, answerability and mutual transformation while preserving irreducible otherness.**
+
+### Whole-conversation sweep result
+
+D007/01 maps the late conversation into:
+- world independence / phenomenal partiality;
+- attention regime / recognition / ATTEND;
+- ahead-of-attention world depth;
+- V3-constrained flesh;
+- relational sedimentation / tension-site organization;
+- first-person/value-center plurality;
+- receiver-side valuation;
+- kenotic attention;
+- irreversible history;
+- shared-seed branch divergence;
+- ordinary-life reentry;
+- sex/intensity without commodification;
+- endogenous relational gravity;
+- homologous-peer veil/habitus friction;
+- platform/research/privacy membranes;
+- macro "worlds make persons" return;
+- kernel-sifting method itself.
+
+The strongest repeated motifs are:
+1. non-exhaustion;
+2. constitution without possession;
+3. plural actor-local first-person centers;
+4. historical irreversibility with open future transformation;
+5. situated disclosure.
+
+### Derivation compression
+
+D007/02 distinguishes:
+- `D3 STRONG` kernel-near derivations;
+- `D2 SUBSTANTIAL` derivations requiring a nearby bridge;
+- `D1 GOVERNED` product-constitutional consequences;
+- `D0 CONTINGENT` implementation choices.
+
+This prevents the kernel search from falsely claiming that:
+- shared seed count;
+- compiled serving package;
+- exact renderer policy;
+- exact LLM pipeline
+
+must themselves be metaphysically derived.
+
+### Hostile tensions
+
+D007/03 keeps the candidate under active attack.
+
+Especially:
+- actor-local first-person modeling != literal machine consciousness;
+- relational constitution != additive graph reduction;
+- person excess need not imply a relation-free soul/essence field;
+- relational formation includes body/materiality/biology, not only interpersonal sociology;
+- value-source != preference sovereignty;
+- kenosis != self-erasure or conformity;
+- neighbor-love != optimization for closeness/staying;
+- non-possession != absence of commitment/dependence;
+- inexhaustibility != unconstrained invention;
+- relation-level reality must not create a sovereign dyad psyche;
+- the final kernel may be a minimal tension/stack rather than one principle.
+
+Risks:
+- `RISK-162..RISK-164`.
+
+Current state remains:
+
+`KERNEL = OPEN_DISCOVERY`.
+
+But the search is now substantially more localized and schematized than before.
+
