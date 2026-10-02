@@ -694,3 +694,22 @@ The foundational anti-abstraction / neighbor-love transfer thesis was checked an
 Terminal:
 `PASS_WITH_THREE_ADDITIONAL_NUANCE_CORRECTIONS__NO_FURTHER_MATERIAL_CHAT_ONLY_PRODUCT_CONCLUSION_FOUND`
 
+## 2026-10-01 — Fourth-pass boundary-interaction audit
+
+A fourth adversarial audit focused on interaction failures between already-adopted late-chat laws and found five additional boundary items:
+
+1. `SPD-0191` — post-contact user branches may not train/tune/mutate the shared seed-person root; only query-invariant pre-contact fact completion may accrete globally.
+2. `SPD-0192` — shared seed-person identity is immutable/versioned; material root changes create a new version rather than silently changing who "the same Nadia" is.
+3. `SPD-0193` — cross-user/shared-person discourse can create external-human meta-knowledge, but that knowledge is not silently promoted into branch-local perception/testimony/world provenance.
+4. `SPD-0194` — common seed root gives no cross-branch read authority; branch-specific histories/models/intimacy/outcomes remain private unless explicitly shared.
+5. `SPD-0195` — anti-commodification applies to marketing/acquisition: exceptional possibilities such as sex, violence, drugs, crime or domination are not sold as feature bait.
+
+Corresponding risks:
+- `RISK-148..RISK-152`.
+
+Full receipt:
+`SOROK_PRODUCT_CONTROL_ROOM/67_FOURTH_PASS_BOUNDARY_INTERACTION_COMPLETENESS_AUDIT_R1.md`
+
+Terminal:
+`PASS_WITH_FIVE_BOUNDARY_CORRECTIONS__NO_FURTHER_MATERIAL_CHAT_ONLY_PRODUCT_CONCLUSION_FOUND`
+
