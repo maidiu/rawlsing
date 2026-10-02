@@ -1,0 +1,117 @@
+{
+  "schema": "PYAT_D2P_PACKET_INTEGRITY_REVIEW@1.0.0",
+  "lane": "PYAT-R2-LITS-D2P-PORTABLE-IMPORTED-R1",
+  "phase": "PHASE 1 — independent packet integrity verification",
+  "reviewer_estate": "StarriyMac (macOS 13.7.8 22H730, Darwin 22.6.0, x86_64)",
+  "source_estate_of_packet": "NoviyMac (recorded by NoviyMac; not independently re-observed here)",
+  "VERDICT": "PASS__PACKET_INTERNALLY_CONSISTENT__NO_STALE_HASH",
+  "ingress": {
+    "commission_preferred_path": "/Users/matthewsmith/Desktop/PYAT_D2P_PORTABLE_EXPORT_20261002",
+    "actual_source_local_path": "/Users/matthewsmith/Desktop/Rawlsing/PYAT_D2P_PORTABLE_EXPORT_20261002",
+    "path_deviation": "Recorded as the commission directs (line 56). The commission's preferred Desktop-root path does not exist on StarriyMac; only the Rawlsing-relative path is present. Location cannot alter content.",
+    "destination_repo_path": "WORKER_RETURNS/PYAT-R2-LITS-D2P-PORTABLE-IMPORTED-R1/NOVIYMAC_PACKET/",
+    "copy_method": "cp -p of packet contents only; no transformation, rewrite or normalisation",
+    "files": 10,
+    "bytes": 3836107,
+    "source_files": 10,
+    "source_bytes": 3836107,
+    "byte_counts_agree": true,
+    "imported_files_modified": 0
+  },
+  "independent_recompute": {
+    "note": "SHA-256 and byte size recomputed by this reviewer from the imported bytes. SHA256SUMS.txt is treated as the packet's own claim and checked, not trusted.",
+    "files": [
+      {
+        "path": "00_RETURN.md",
+        "sha256": "9a4c7dc141e5da66057cb1356918f4d113b29d418cc0804f38ce4e2f8d17fec1",
+        "bytes": 10090,
+        "matches_SHA256SUMS": true
+      },
+      {
+        "path": "01_CHECKPOINT_IDENTITY.json",
+        "sha256": "d11c905c4af358142517d9bf4953b97f669fee72f23c04163301076099c765f6",
+        "bytes": 2070,
+        "matches_SHA256SUMS": true
+      },
+      {
+        "path": "02_CANDIDATE_RECEIPT_BINDINGS.jsonl",
+        "sha256": "db7fddffd89662cf7df34472a5de48eae76c2c14fe8a8574abdfd2753edf62ee",
+        "bytes": 789815,
+        "matches_SHA256SUMS": true
+      },
+      {
+        "path": "03_AUTHORITY_SNAPSHOT_CLOSURE.jsonl",
+        "sha256": "31a6eed307c3a2619b52cf1186f48dc883e6f4844a0d7d2c03121ee8308e93c4",
+        "bytes": 65748,
+        "matches_SHA256SUMS": true
+      },
+      {
+        "path": "04_PER_OBJECT_AUTHORITY_BINDINGS.jsonl",
+        "sha256": "33205c20c7b98cc97b11fb010c8f95e3c1fa5d0e5ab9d3f12991f561b1d1cd3a",
+        "bytes": 2688913,
+        "matches_SHA256SUMS": true
+      },
+      {
+        "path": "05_P2_LOGICAL_BINDINGS.jsonl",
+        "sha256": "270c165dd639ae52be139132072da10bb82d3396349a4a140bb312a412fdf0f0",
+        "bytes": 249175,
+        "matches_SHA256SUMS": true
+      },
+      {
+        "path": "06_B001_B002_B003_CLOSURE.json",
+        "sha256": "ccbdb2f733b004938c7cb010034bc668bdbc07f4d2ec8e12c8f4251415e8a621",
+        "bytes": 2448,
+        "matches_SHA256SUMS": true
+      },
+      {
+        "path": "07_EXTRACTION_SCRIPT.py",
+        "sha256": "5464ccd4b714aa67fcdbc411d11959d3fb0a39b979f768fde104a167af6ed74e",
+        "bytes": 25038,
+        "matches_SHA256SUMS": true
+      },
+      {
+        "path": "08_PACKET_MANIFEST.json",
+        "sha256": "46b38c21f2b331575b12f2eadd09348299ab9c6736983f9f281fd48644ff8106",
+        "bytes": 1956,
+        "matches_SHA256SUMS": true
+      }
+    ],
+    "files_checked": 9,
+    "files_matching": 9,
+    "stale_or_inconsistent": 0,
+    "files_present_but_absent_from_SHA256SUMS": [],
+    "SHA256SUMS_entries_without_a_file": [],
+    "SHA256SUMS_covers_itself": false,
+    "SHA256SUMS_self_coverage_note": "Expected and unavoidable: a file cannot contain its own hash. SHA256SUMS.txt is therefore the packet's root of trust, anchored externally by the commission-supplied manifest digest recorded below."
+  },
+  "manifest_verification": {
+    "commission_target_sha256": "46b38c21f2b331575b12f2eadd09348299ab9c6736983f9f281fd48644ff8106",
+    "independently_computed_manifest_sha256": "46b38c21f2b331575b12f2eadd09348299ab9c6736983f9f281fd48644ff8106",
+    "matches": true,
+    "manifest_files_listed": 7,
+    "manifest_stale_entries": [],
+    "manifest_omits": [
+      "00_RETURN.md",
+      "08_PACKET_MANIFEST.json"
+    ]
+  },
+  "circularity_deviation_ruling": {
+    "noviymac_claim": "00_RETURN.md is omitted from manifest.files[] because it records the manifest's own SHA-256; including it would create a hash circularity with no fixed point. SHA256SUMS.txt covers both.",
+    "commission_view": "not automatically blocking (lines 129-139)",
+    "reviewer_analysis": [
+      "The claim is factually correct. A hash-binding file cannot contain its own digest, and 00_RETURN.md quotes the manifest digest, so listing 00_RETURN.md inside the manifest is unsatisfiable.",
+      "A complete non-circular chain does exist. SHA256SUMS.txt binds all 9 final files including 00_RETURN.md and 08_PACKET_MANIFEST.json. 00_RETURN.md records the manifest digest. The manifest binds the 7 extraction outputs and the prohibition counters. Every edge was independently verified exact by this reviewer.",
+      "The chain has one unanchored root: SHA256SUMS.txt is not bound by anything inside the packet. That is normal for a checksum file, and here it is anchored EXTERNALLY because the commission supplied the manifest digest out of band and this reviewer reproduced it exactly.",
+      "No hash in the packet is stale. No file needed repair and none was rewritten."
+    ],
+    "ruling": "NOT_BLOCKING__ACCEPTED",
+    "external_anchor": "commission-supplied manifest digest 46b38c21f2b331575b12f2eadd09348299ab9c6736983f9f281fd48644ff8106, independently reproduced"
+  },
+  "checkpoint_body_absent_on_starriymac": {
+    "checkpoint_governed_relative_path": "LOCAL_CUSTODY/PREMAIN-FIABC-LITS-FINAL-SUCCESS-DURABLE-CUSTODY-R1/payload/PREMAIN-FIABC-LITS-FINAL-CANONICAL-CLOSURE-SOURCE-RETRY-R1/court/oracle_producers/LITS_I/current_i05_materialization_checkpoint_v3.json",
+    "present_on_starriymac": false,
+    "LOCAL_CUSTODY_present": false,
+    "consequence": "The 3404445161-byte checkpoint document is NOT available on StarriyMac, so this reviewer could NOT independently recompute its SHA-256 or byte length. Only the packet's consistent REPORTING of those values could be reviewed.",
+    "consistent_with_commission": "Yes. Commission lines 48-50 direct that the portable packet directory ONLY is copied and the 3.4 GB checkpoint must NOT be copied. The packet is exactly the 10-file directory."
+  }
+}

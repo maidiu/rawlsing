@@ -1,0 +1,264 @@
+{
+  "schema": "PYAT_D2P_B001_B002_B003_INDEPENDENT_REVIEW@1.0.0",
+  "lane": "PYAT-R2-LITS-D2P-PORTABLE-IMPORTED-R1",
+  "phases": "PHASE 3 (extraction script), PHASE 4 (B001), PHASE 5 (B002), PHASE 6 (B003)",
+  "method": "Every count, distinctness, resolution and digest below was RECOMPUTED by this reviewer from the imported packet bytes. No NoviyMac prose claim was accepted as evidence. No retained checkpoint was read (absent on StarriyMac).",
+  "verification_harness_sha256": "95e26b4732a4f2f8ecc4da7cb52cc496727ea1282552944ea0695504d186b88d",
+  "PHASE_3_EXTRACTION_SCRIPT_REVIEW": {
+    "script": "NOVIYMAC_PACKET/07_EXTRACTION_SCRIPT.py",
+    "script_sha256": "5464ccd4b714aa67fcdbc411d11959d3fb0a39b979f768fde104a167af6ed74e",
+    "matches_packet_claim": true,
+    "lines": 592,
+    "AST_audit": {
+      "imports": [
+        "argparse",
+        "hashlib",
+        "ijson",
+        "json",
+        "os",
+        "platform",
+        "socket",
+        "subprocess",
+        "sys"
+      ],
+      "rawlsing_production_module_imported": false,
+      "third_party_imports": [
+        "ijson"
+      ],
+      "eval_exec_compile___import__": 0,
+      "subprocess_calls": {
+        "subprocess.run": [
+          "sw_vers only, line 157"
+        ]
+      },
+      "os_system_popen": 0,
+      "os_pathlib_any_write_to_checkpoint": 0
+    },
+    "deterministic_checkpoint_only_extraction": "CONFIRMED — the only file path constant is CHECKPOINT_RELPATH under LOCAL_CUSTODY (lines 53-59). Every other input is that one document.",
+    "exact_hash_gate_before_semantic_dereference": "CONFIRMED — phase0_identity() runs at line 451 and performs isfile, getsize==3404445161, then a full streamed sha256_file() == REQUIRED_CHECKPOINT_SHA256, raising FailClosed on any mismatch. extract() (line 455) is not reached until the gate passes. No JSON is parsed before the gate.",
+    "bounded_memory": "CONFIRMED WITH A CHARACTERISATION CORRECTION — streaming uses ijson.items with buf_size=4 MiB and yields one preimage at a time (lines 175-179). However extract() ACCUMULATES output rows in memory (b001_rows 50 with full receipt preimages, b002_objects 208 with export preimages, b002_snapshots 24). So NoviyMac 00_RETURN.md line 52 'One pass, one retained object preimage resident at a time' understates retention. Memory is nonetheless bounded for the right reason: the giant EmpiricalFact members are the only thing that would have been unbounded, and they are the members deferred. Flagged as a wording inaccuracy, not a defect.",
+    "no_raw_survey_locator": "CONFIRMED — 0 occurrences of .dta, .sav, read_sav, read_dta, pyreadstat, or any rawlsing module path anywhere in the script.",
+    "no_decoder_invocation": "CONFIRMED — no pyreadstat/duckdb/rawlsing import; the only parser is ijson.",
+    "no_I03_I05_execution": "CONFIRMED — 'i05' appears only as (a) the checkpoint filename current_i05_materialization_checkpoint_v3.json at line 57 and (b) the retained field name pre553_i05_candidate_hash at line 554. Neither executes I05. The script READS an I05 checkpoint; it does not RUN one.",
+    "no_candidate_abc": "CONFIRMED — 'candidate_b' at line 548 is a substring of cross_schema_logical_candidate_bindings, the key being documented as ABSENT. No Candidate A/B/C execution.",
+    "no_P2X": "CONFIRMED — 0 occurrences.",
+    "no_semantic_inference_from_values_counts_frequencies": "CONFIRMED — every emitted field is copied verbatim from retained material. P2 membership derives solely from the retained lane label and retained block membership (lines 361-378), never from a value, count or frequency.",
+    "exact_retained_field_extraction": "CONFIRMED — item fields, authority_snapshot_refs, dependency_refs, replay_ref, source_release_refs and winning_predicate_ref are copied verbatim; no renaming or normalisation.",
+    "canonical_json_hashing_as_commissioned": "CONFIRMED and STRENGTHENED — canon_bytes() implements exactly UTF-8 + sort_keys=True + separators(',',':') + ensure_ascii=False. This reviewer compared it byte-for-byte against the repository's own rawlsing_next.pre553_empirical_objects.canonical_json and they are IDENTICAL for non-float content. One divergence exists: canon_bytes permits floats and (allow_nan default True) would emit bare NaN/Infinity, whereas the repository canonicalize() raises Pre553IntegrityError on any float. This reviewer then scanned all four JSONL outputs and found 0 floats and 0 NaN anywhere in the packet, so the divergence is INERT here and could not have altered any digest. Disclosed rather than assumed harmless.",
+    "count_and_uniqueness_checks_fail_closed": "CONFIRMED — validate() (lines 418-438) returns gaps and main() exits 1 when gaps is non-empty (line 584). Specific FailClosed raises exist for absent retained fields, absent candidate_hash, absent AuthorityRef, absent logical key, and lane/P2-block disagreement.",
+    "B001_pairing_explicit_not_ordering": "CONFIRMED — the candidate->receipt association is read from each receipt's own retained semantic_fields.candidate_identity.candidate_hash (lines 303-311) and FailClosed is raised if it is absent. No ordering, index or positional pairing exists anywhere.",
+    "B002_refs_from_each_retained_object": "CONFIRMED — item['authority_snapshot_refs'] copied verbatim per object (line 295).",
+    "B003_join_uses_explicit_retained_keys": "CONFIRMED — join on retained logical_candidate_key; FailClosed on missing counterpart (359) and on lane disagreement (368).",
+    "ambiguous_reconstruction_step_found": false,
+    "SCRIPT_FINDINGS_NON_BLOCKING": [
+      {
+        "id": "F1",
+        "site": "lines 226-233",
+        "finding": "build_export_preimage contains a dead branch. For a dotted member_path it builds a detached shallow copy via parent=dict(parent[p]) and mutates parent[parts[-1]], then discards it; the real mutation is performed by the following cur walk. Output is correct, but the dead branch is a misleading pattern.",
+        "severity": "COSMETIC"
+      },
+      {
+        "id": "F2",
+        "site": "line 195 vs 249-250",
+        "finding": "export = dict(item) is a SHALLOW copy, so export shares nested dicts with the retained item and the deferred marker is written back into item['semantic_fields']. This is harmless ONLY because full_sha = canon_sha256(item) is computed BEFORE build_export_preimage mutates it. If those two lines were ever reordered, every preimage_sha256 would silently become the export digest instead of the complete retained digest, and no check would catch it. Latent fragility, not a present defect; preimage_sha256 semantics were verified from the data.",
+        "severity": "FRAGILITY__WORTH_A_FOLLOWUP_COMMENT"
+      },
+      {
+        "id": "F3",
+        "site": "validate() lines 418-438",
+        "finding": "validate() checks B001 candidate_hash distinctness but does NOT check discovery-result-receipt-ref distinctness, snapshot-ref distinctness, or duplicate logical_candidate_key collapse. The three by-key comprehensions at lines 346-351 would silently overwrite a duplicate key. This reviewer closed all three gaps independently from the packet data: 50 distinct receipt refs, 24 distinct snapshot refs, and 50 distinct logical_candidate_key on both join sides.",
+        "severity": "GAP_CLOSED_INDEPENDENTLY__SCRIPT_NOT_MODIFIED"
+      },
+      {
+        "id": "F4",
+        "site": "line 374 / 411 / 560",
+        "finding": "The returned `contract` variable holds only the LAST iterated row's retained contract, yet the B003 closure reason interpolates it as if it were packet-wide. Harmless here because all 50 rows carry the identical contract FIABC_LITS_CROSS_SCHEMA_LOGICAL_CANDIDATE@1.0.0, which this reviewer confirmed. If ncp_by_key were empty the name would be unbound.",
+        "severity": "COSMETIC"
+      },
+      {
+        "id": "F5",
+        "site": "DEFERRED_MEMBERS line 85",
+        "finding": "Only two member paths are deferred, and both are declared: dependency_refs and semantic_fields.source_empirical_provenance_refs. The script FailClosed if either is absent from a retained EmpiricalFact (lines 206-210), so a silently missing deferral is not possible.",
+        "severity": "NONE__CONFIRMED_GOOD"
+      }
+    ],
+    "verdict": "ACCEPTED__NO_AMBIGUOUS_RECONSTRUCTION__NO_CHANGES_REQUIRED"
+  },
+  "B001": {
+    "records": 50,
+    "required": 50,
+    "distinct_candidate_hashes": 50,
+    "distinct_receipt_refs": 50,
+    "association_grounded_in_explicit_retained_candidate_hash": 50,
+    "association_basis_strings": [
+      "explicit retained semantic_fields.candidate_identity.candida"
+    ],
+    "receipt_preimage_sha256_recomputes": 50,
+    "receipt_preimage_sha256_all_hex64": true,
+    "rows_with_authority_snapshot_refs": 50,
+    "rows_with_dependency_refs": 50,
+    "winning_predicate_ref_present": 50,
+    "winning_predicate_ref_exact_null": 0,
+    "rows_with_source_release_refs": 50,
+    "rows_with_replay_ref": 50,
+    "ordering_pairing_used": false,
+    "verdict": "CLOSED_ACCEPTED",
+    "commission_requirements_met": [
+      "exactly 50 records — 50",
+      "50 distinct candidate hashes — 50",
+      "50 distinct receipt refs — 50",
+      "association grounded in explicit retained candidate_identity.candidate_hash — 50/50 recomputed against the included receipt_preimage",
+      "receipt preimage sha256 recomputes from the included retained body — 50/50",
+      "exact authority_snapshot_refs — 50/50 non-empty and all resolving",
+      "exact dependency_refs — 50/50 present",
+      "exact winning_predicate_ref — 50 present, 0 null",
+      "exact source_release_refs — 50/50",
+      "exact replay_ref — 50/50",
+      "no ordering-based pairing — confirmed at script lines 303-311 and by recomputation"
+    ],
+    "reviewer_note": "winning_predicate_ref is non-null on all 50, so the commission's 'legitimate exact null' allowance was not needed. receipt_preimage_sha256 recomputation is the strongest available evidence that each row is faithful retained content rather than a projection."
+  },
+  "B002": {
+    "snapshot_records": 24,
+    "required_snapshots": 24,
+    "distinct_snapshot_refs": 24,
+    "distinct_snapshot_content_hashes": 24,
+    "authority_ref_triples_total": 24,
+    "triples_per_snapshot_min": 1,
+    "triples_per_snapshot_max": 1,
+    "triples_are_exact_authorityref_shape": true,
+    "snapshot_preimage_sha256_recomputes": 24,
+    "per_object_rows": 208,
+    "required_rows": 208,
+    "family_counts": {
+      "DiscoveryResultReceipt": 50,
+      "EmpiricalFact": 60,
+      "EmpiricalPredicate": 35,
+      "EmpiricalQuerySpec": 63
+    },
+    "family_counts_required": {
+      "EmpiricalFact": 60,
+      "EmpiricalQuerySpec": 63,
+      "EmpiricalPredicate": 35,
+      "DiscoveryResultReceipt": 50
+    },
+    "distinct_object_refs": 208,
+    "object_refs_wellformed": 208,
+    "rows_with_nonempty_authority_snapshot_refs": 208,
+    "rows_with_EMPTY_authority_snapshot_refs": 0,
+    "per_object_authority_refs_total": 2033,
+    "per_object_authority_refs_resolved_into_24_row_closure": 2033,
+    "per_object_authority_refs_unresolved": 0,
+    "per_object_ref_authority_id_agrees_with_snapshot": 2033,
+    "per_object_ref_authority_version_agrees_with_snapshot": 2033,
+    "distinct_authority_documents_behind_24_snapshots": 18,
+    "authorities_materialized_more_than_once": {
+      "47142de560f66e72": 2,
+      "703f629c5d2b66e1": 2,
+      "5f671f2cf9342820": 2,
+      "6c6d2f5fb5f4165e": 2,
+      "bc6d433ff58e67e3": 2,
+      "52e741a07b75c475": 2
+    },
+    "multi_materialization_explanation": "each such authority is materialized once per retained governed_operations scope; verified by distinct governed_operations values, not duplication",
+    "resolution_key_used": "semantic_fields.authority_content_hash (NOT the snapshot's own content_hash/object_id, which are a disjoint namespace)",
+    "rows_with_deferred_markers": 60,
+    "rows_with_complete_deferred_markers": 60,
+    "deferred_marker_defects": [],
+    "deferred_bytes_total": 3276820474,
+    "closure_file_deferred_bytes": 3276820474,
+    "deferred_bytes_agree": true,
+    "deferred_item_count_present_for": 120,
+    "family_ok": true,
+    "verdict": "CLOSED_ACCEPTED",
+    "resolution_correction_recorded": "This reviewer's FIRST resolution attempt matched per-object refs against authority_snapshot_ref.content_hash and reported 14 unresolved. That was WRONG. The two are a DISJOINT namespace: an AuthoritySnapshot materialises a governance authority and carries semantic_fields.authority_content_hash / authority_id / authority_version, which is the same identity shape as the per-object refs, while its own content_hash/object_id are the snapshot's identity. Re-run against semantic_fields.authority_content_hash, all 2033 per-object refs and all 576 B001 refs resolve. Recorded because a reviewer who stopped at the first result would have raised a false blocker.",
+    "commission_requirements_met": [
+      "exactly 24 AuthoritySnapshot records — 24",
+      "24 distinct exact snapshot refs — 24 distinct content_hash AND 24 distinct object_id",
+      "exact retained AuthorityRef triple/structure per snapshot — 24 triples, one per snapshot, each {content_hash,kind,object_id} with a well-formed hash and a real object_id, at retained field replay_protocol_ref",
+      "exactly 208 per-object binding rows — 208",
+      "exact family counts — 60 EmpiricalFact / 63 EmpiricalQuerySpec / 35 EmpiricalPredicate / 50 DiscoveryResultReceipt",
+      "every per-object row has exact object ref + authority_snapshot_refs — 208/208, all well-formed, 0 empty",
+      "every referenced snapshot resolves into the 24-row closure — 2033/2033 per-object refs and 576/576 B001 refs, with authority_id AND authority_version agreeing on all 2033",
+      "no per-family inferred substitution — refs copied verbatim",
+      "no fabricated null authority refs — 0 rows with empty authority_snapshot_refs"
+    ],
+    "giant_fact_preimage_deviation_ruling": {
+      "ruling": "ACCEPTED_AT_B002_GRAIN per commission lines 73-78 and 237-247",
+      "rows_with_markers": 60,
+      "rows_with_complete_markers": 60,
+      "marker_contents_verified": [
+        "retained_canonical_sha256 (well-formed 64-hex)",
+        "retained_canonical_bytes (positive int)",
+        "retained_item_count (present for all 120 markers)",
+        "retained_checkpoint_sha256 == 2704fd3f...",
+        "member_path from the declared two-member allowlist",
+        "omitted_from_portable_packet == true"
+      ],
+      "marker_also_present_inside_exported_preimage": true,
+      "deferred_bytes_total": 3276820474,
+      "agrees_with_closure_file": true,
+      "sample": "dependency_refs = 53,905 items / 13,181,487 canonical bytes; semantic_fields.source_empirical_provenance_refs = 53,902 items / 13,180,761 canonical bytes. Both are enumerated REFERENCE lists, not respondent response rows, consistent with the declared reason.",
+      "reviewer_limit": "The withheld member digests could NOT be recomputed on StarriyMac because the withheld bodies are absent by design and the checkpoint is absent from this estate. Presence and well-formedness were verified; the digests themselves are unverified here and remain verifiable only against the checkpoint on NoviyMac.",
+      "no_re_expansion_required": "Confirmed. The authority grain B002 was missing is fully closed; the withheld bytes are provenance mass, not authority binding."
+    },
+    "structure_note": "The 24 snapshots materialise 18 distinct authority documents. Six authorities appear twice, each pair distinguished by a different retained governed_operations value (for example AS2B_LITS1_I03_QUERY versus EXACT_REPOSITORY_BOUND_CLOSURE, and survey_response_EQ versus EXACT_REPOSITORY_BOUND_CLOSURE). This is one authority materialised once per operation scope, not duplication and not fabrication. All 24 decision_state values are ALLOW. The governed family space is wider than the 208 objects, including RoutingEligibilityFact, ReplayReceipt, EmpiricalUniverse and RespondentEvent."
+  },
+  "B003": {
+    "rows": 50,
+    "required_rows": 50,
+    "distinct_logical_candidate_keys": 50,
+    "export_modes": {
+      "RETAINED_CROSS_SCHEMA_LOGICAL_BINDING": 50
+    },
+    "retained_contract_values": {
+      "FIABC_LITS_CROSS_SCHEMA_LOGICAL_CANDIDATE@1.0.0": 50
+    },
+    "binding_sha256_recomputes_from_included_body": 50,
+    "rows_with_memberwise_roles": 50,
+    "p2_rows": 18,
+    "required_p2": 18,
+    "distinct_p2_keys": 18,
+    "p2_lane_agreement_both_sides": 18,
+    "p2_keys_present_in_retained_p2_lane_block": 18,
+    "non_p2_rows_with_null_p2_block_item": 32,
+    "p2_rule_ids": {
+      "D02_P2_HIGHER_ORDER_K3": 18
+    },
+    "distinct_current_refs_across_p2": 38,
+    "total_current_refs_across_p2": 72,
+    "p2_identified_by": "retained lane=='P2' on both retained rows AND membership in the retained P2 lane block",
+    "p2_identified_by_empirical_values": false,
+    "verdict": "CLOSED_ACCEPTED",
+    "distinct_current_candidate_hashes": 18,
+    "distinct_current_candidate_hash_source": "retained binding.pre553_i05_candidate_hash, all 18 present and well-formed",
+    "commission_requirements_met": [
+      "exactly 50 cross-schema logical candidate rows — 50",
+      "exact 1:1 retained join key — 50 distinct keys on native_candidate_provenance AND 50 on logical_candidate_identity, key sets identical",
+      "no duplicate logical key on either side — 50/50 distinct both sides (closes the script gap F3)",
+      "all 18 P2 member mappings identifiable from explicit retained fields — 18 rows",
+      "P2 identification does not rely on empirical values/counts/frequencies — lane label plus retained block membership only",
+      "18/18 P2 keys match retained P2 lane block membership — 18",
+      "lane P2 agreement on both retained joined row sources — 18/18",
+      "rule id D02_P2_HIGHER_ORDER_K3 for the 18 mappings — 18/18",
+      "18 distinct current candidate hashes — 18",
+      "all binding JSON hashes recompute from included exact retained binding body — 50/50"
+    ],
+    "export_mode_accepted": "RETAINED_CROSS_SCHEMA_LOGICAL_BINDING. The literal key cross_schema_logical_candidate_bindings is absent and a retained contract-equivalent is exported instead, which commission lines 83 and 276 permit. Retained contract FIABC_LITS_CROSS_SCHEMA_LOGICAL_CANDIDATE@1.0.0, uniform across all 50 rows.",
+    "reviewer_limit": "The packet's assertion that the literal key has 0 raw occurrences in the checkpoint could NOT be independently re-verified here, because the checkpoint is absent from StarriyMac. What IS independently verified is that the packet's 50 retained rows are exact, digest-recomputable, uniformly contracted, and yield 18/18 P2 memberwise mappings on explicit retained identity. That satisfies the substantive requirement; the negative search is NoviyMac's evidenced claim, carried forward as such.",
+    "memberwise_shape": "Each of the 18 P2 rows carries 2 memberwise_roles, each with role, logical_condition_atom_ids, logical_query_template_id, current_predicate_ref and current_query_ref. Distinct current_predicate_ref 19, distinct current_query_ref 19, union 38. Lane distribution across the 50 rows: P0=5, P1=1, P2=18, P3=1, P4=25.",
+    "non_p2_rows_have_null_p2_block_item": 32
+  },
+  "closure_file_vs_recomputed_data": {
+    "B001_rows_agree": true,
+    "B002_snaps_agree": true,
+    "B002_objects_agree": true,
+    "B002_families_agree": true,
+    "B003_rows_agree": true,
+    "B003_p2_agree": true,
+    "closure_validation_gaps_empty": true,
+    "closure_zero_reconstructed": true
+  },
+  "all_closure_numbers_agree_with_independent_recomputation": true,
+  "raw_survey_access_by_this_reviewer": 0
+}

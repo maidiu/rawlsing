@@ -1,0 +1,58 @@
+{
+  "schema": "PYAT_C4B_WVS_ORACLE_CUSTODY@1.0.0",
+  "status": "PASS__RETAINED_COMPARATOR_CUSTODY_FROZEN__NO_FRESH_RAW_READ",
+  "source": {
+    "source_key": "SRC35",
+    "source_file": "WVS Wave 7.sav",
+    "sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+    "format": "SAV",
+    "rows": 97220,
+    "variables": 613
+  },
+  "B02_binding": {
+    "owner": "B02_WVS7_Q291_BOUNDED_OWNER",
+    "variable_family": "Q291",
+    "operation": "Q291 SAV physical representation bridge",
+    "fresh_raw_read": false
+  },
+  "retained_R1M": {
+    "branch": "agent/rabochii-premain-fiabc-lm2-r1m-lock2-successor-r16-oracle-r1",
+    "oracle_path": "WORKER_RETURNS/FIABC-LM2-R1M-LOCK2-SUCCESSOR-R16-ORACLE/07_FRESH_WVS_ORACLE.json",
+    "oracle_git_blob": "9eecf801afa2c9f3d9140b4e5fb79fb14fc1fe20",
+    "oracle_document_sha256": "9d11a480c1c1341a2a92e0def77f5d15563ed83a44efeb9f89eff5b6cbb1527d",
+    "oracle_identity": "3694b8bd0b5468433a1a83bd469337c7e36e552c3a9a5fef65fff88df8fce800",
+    "truth_payload_identity": "eb2f9224219385dbf21af70d317e0978383012ff057ce2ac857b59c130472405",
+    "logical_release": "e6881e9a08a48f8871790e781c28bddbc44ee35db894d6ad7b1105a6a8fd262f",
+    "replay": "996ba218fc5da5e0ad1ddf0cdc7f91ce8fb8a7363ce62076dc3f4073b85c383f",
+    "evaluated_frontier": "b2c3c50b68bcadb94ff2bf898d11c2b72694ced9fee4154e535db2694e26a4f3",
+    "candidate_count": 46,
+    "truth_payload_preimage_inventory": {
+      "exact_ref_manifest": 121,
+      "constituent_i03_fact_manifest": 50,
+      "expected_fact_manifest": 46,
+      "semantic_authority_closure": 6
+    },
+    "oracle_independence": {
+      "path": "WORKER_RETURNS/FIABC-LM2-R1M-LOCK2-SUCCESSOR-R16-ORACLE/08_ORACLE_INDEPENDENCE_PROOF.json",
+      "blob": "986b7e0e126d70cf825900e2df510d008623a272",
+      "second_replay_equal": true,
+      "receipt_stream_equal": true,
+      "fact_stream_equal": true,
+      "raw_source_reread": false,
+      "first_successful_candidate_as_golden": false,
+      "pairwise_candidate_vote": false
+    }
+  },
+  "later_T3_standardization": {
+    "accepted_r1m_oracle_identity": "3694b8bd0b5468433a1a83bd469337c7e36e552c3a9a5fef65fff88df8fce800",
+    "standard_oracle_document_sha256": "869e72112978949e349140b74ab1b4d4966923c9ccedef518e3db9b3f54f3194",
+    "standard_oracle_identity": "e546c15533ba138be9995095059ea3b70b64a6d7b5765e3789935cff7342ef00",
+    "T3_freeze_sha256": "7dfb62362b983b92dee2774d862a46c0c0ce3ca2c3bb48850e0f400346936908"
+  },
+  "proof_grade_compare_law": [
+    "Compare exact source SHA, R1M release, replay, oracle identity and truth-payload identity.",
+    "Compare candidate frontier exact order/count and exact ref/fact/receipt manifests, not labels or aggregate counts alone.",
+    "Retained WVS7 is a retained comparator; it must never be described as a fresh current raw-source pass.",
+    "Any mismatch fails closed and does not authorize rereading the SAV unless HQ separately issues a new warrant."
+  ]
+}

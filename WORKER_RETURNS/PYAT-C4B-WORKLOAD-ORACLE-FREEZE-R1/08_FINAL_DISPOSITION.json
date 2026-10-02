@@ -1,0 +1,35 @@
+{
+  "schema": "PYAT_C4B_FINAL_DISPOSITION@1.0.0",
+  "disposition": "C4_ORACLE_CUSTODY_BLOCKER__HQ_ADJUDICATION_REQUIRED",
+  "terminal": "C4B_WORKLOAD_ORACLE_FREEZE_RETURNED__HQ_FANIN_REQUIRED",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/browser-pyat-hq170-c4b-workload-oracle-freeze-r1",
+  "commission_tip": "90e9cd96c824b21f29ad956a566336a6868cfbc4",
+  "completed_freezes": {
+    "eight_source_workload": true,
+    "authority_api_consumer_bindings": true,
+    "WVS_retained_oracle_custody": true,
+    "D02_binding": true,
+    "D01_scope_resolution": true,
+    "all35_280_cell_claim_ledger": true,
+    "unsigned_seven_source_warrant_template": true
+  },
+  "blocking_freeze": {
+    "LiTS_retained_public_object_preimage_custody": false,
+    "blocker_id": "C4B-LITS-ORACLE-PREIMAGE-CUSTODY-001",
+    "reason": "The exact 3.4GB checkpoint is content-addressed but not Git-banked; FF02-C proved the Git-visible oracle lacks required per-object pairings/preimages, FF02-D failed at exact checkpoint custody, and the commissioned FF02-D2 branch has no returned PASS packet. C4B cannot reconstruct those expected values from a future C4 run."
+  },
+  "D02_blocker_closed": true,
+  "C3_execution_ancestry_or_blob_equivalence_required": true,
+  "raw_survey_access": {
+    "opened": 0,
+    "materialized": 0,
+    "decoded": 0,
+    "inferred_from_raw": 0
+  },
+  "candidate_A_B_C_run": false,
+  "measured_P2X_run": false,
+  "production_code_modified": false,
+  "self_adopted": false,
+  "next_HQ_action": "Close the LiTS checkpoint-only preimage export on an authorized checkpoint-capable surface, independently accept it, fan in the accepted C3 execution owner surface, then authorize source access with a signed warrant. Do not reopen the eight-source selection."
+}

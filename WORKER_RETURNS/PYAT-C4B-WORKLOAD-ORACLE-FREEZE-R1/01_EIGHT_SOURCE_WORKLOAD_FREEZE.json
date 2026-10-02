@@ -1,0 +1,342 @@
+{
+  "schema": "PYAT_C4B_EIGHT_SOURCE_WORKLOAD_FREEZE@1.0.0",
+  "status": "FROZEN_DOCUMENTARY_ONLY__EXECUTION_NOT_AUTHORIZED",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/browser-pyat-hq170-c4b-workload-oracle-freeze-r1",
+  "commission_tip": "90e9cd96c824b21f29ad956a566336a6868cfbc4",
+  "governing_base": "149c3d2636160d8de9b5a8be0c8b87195158077d",
+  "omega1_decision": "01762d7379be4e423dad3e21bcdcee47c536902d",
+  "exact_sources": [
+    "SRC02",
+    "SRC06",
+    "SRC08",
+    "SRC12",
+    "SRC14",
+    "SRC26",
+    "SRC27",
+    "SRC35"
+  ],
+  "set_size": 8,
+  "family_wave_constraint": {
+    "same_family_pair": [
+      "SRC12",
+      "SRC14"
+    ],
+    "family": "EVS",
+    "waves": [
+      "1990",
+      "2008"
+    ]
+  },
+  "read_economy": {
+    "fresh_full_route": [
+      "SRC27"
+    ],
+    "bounded_fresh_physical": [
+      "SRC02",
+      "SRC06",
+      "SRC08",
+      "SRC12",
+      "SRC14",
+      "SRC26"
+    ],
+    "retained_comparator": [
+      "SRC35"
+    ],
+    "excluded_fresh_reads": 0,
+    "substitutions_forbidden": true
+  },
+  "d01_resolution": "SRC08_AND_SRC12_METADATA_DECODER_ADMISSION_ONLY__NO_SELECTED_COLUMN__ROW_DATA_READS_ZERO",
+  "d02_locator_status": "CLOSED_AT_DECLARED_GRAIN",
+  "sources": [
+    {
+      "source_key": "SRC02",
+      "source_id": "02",
+      "family": "Afrobarometer",
+      "wave": "Round 5",
+      "source_file": "Afro Barometer Round 5.sav",
+      "canonical_sha256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+      "format": "SAV",
+      "selection_role": "G01_USER_MISSING_REPRESENTATION",
+      "exact_governed_operations": [
+        {
+          "owner": "accepted C3 G01 representation authority",
+          "variable_name": "Q10B",
+          "ordinal": 58,
+          "native_codes": [
+            997
+          ],
+          "expected_successor_type": "float64",
+          "expected_missing_state": "FORMAT_USER_MISSING_VALUE",
+          "expected_source_declaration": {
+            "kind": "discrete",
+            "value": 997
+          }
+        }
+      ],
+      "proposed_C4_source_activity": "BOUNDED_FRESH_PHYSICAL_READ_ONLY_IF_C3_INTEGRATED_OWNER_IS_IN_EXECUTION_ANCESTRY",
+      "semantic_route_status": "NOT_SELECTED_AS_SEMANTIC_ROUTE_ANCHOR",
+      "frozen_C4_source_activity": "BOUNDED_FRESH_PHYSICAL_SELECTED_VARIABLE_READ_ONLY"
+    },
+    {
+      "source_key": "SRC06",
+      "source_id": "06",
+      "family": "Arab Barometer",
+      "wave": "Wave 5",
+      "source_file": "Arab Barometer Wave 5.sav",
+      "canonical_sha256": "6a5cbad637ce1546833a1d4812ba6d1e8d75f85b5b199b0cf3ec5cf456068dbc",
+      "format": "SAV",
+      "selection_role": "G01_OBSERVED_REPRESENTATION",
+      "exact_governed_operations": [
+        {
+          "owner": "accepted C3 G01 representation authority",
+          "variable_name": "Q101",
+          "ordinal": 20,
+          "native_codes": [
+            98,
+            99
+          ],
+          "expected_successor_type": "float64",
+          "expected_missing_state": "OBSERVED_STORAGE_VALUE"
+        },
+        {
+          "owner": "accepted C3 G01 representation authority",
+          "variable_name": "Q2061B",
+          "ordinal": 19,
+          "native_codes": [
+            97
+          ],
+          "expected_successor_type": "float64",
+          "expected_missing_state": "OBSERVED_STORAGE_VALUE"
+        }
+      ],
+      "proposed_C4_source_activity": "BOUNDED_FRESH_PHYSICAL_READ_ONLY_IF_C3_INTEGRATED_OWNER_IS_IN_EXECUTION_ANCESTRY",
+      "semantic_route_status": "NOT_SELECTED_AS_SEMANTIC_ROUTE_ANCHOR",
+      "frozen_C4_source_activity": "BOUNDED_FRESH_PHYSICAL_SELECTED_VARIABLE_READ_ONLY"
+    },
+    {
+      "source_key": "SRC08",
+      "source_id": "08",
+      "family": "Asian Barometer",
+      "wave": "Wave 1",
+      "source_file": "Asian Barometer Wave 1.sav",
+      "canonical_sha256": "ac0b8bc1ddb2fa6b952417e35b6379ce6a2cf8596776a43282ba44f48e0ae1a2",
+      "format": "SAV",
+      "selection_role": "D01_DECLARED_ENCODING_BIG5",
+      "exact_governed_operations": [
+        {
+          "owner": "accepted C3 D01 decoder admission",
+          "operation": "EXACT_SHA_DECLARED_ENCODING_ADMISSION",
+          "declared_encoding": "BIG5",
+          "scope": "source-wide decoder configuration; not survey semantics"
+        }
+      ],
+      "proposed_C4_source_activity": "BOUNDED_METADATA_OR_REQUIRED_COLUMN_READ_AFTER_EXACT_SHA_GATE",
+      "semantic_route_status": "NOT_SELECTED_AS_SEMANTIC_ROUTE_ANCHOR",
+      "frozen_C4_source_activity": "FRESH_METADATA_ONLY_DECODER_ADMISSION_VALIDATION__ROW_DATA_READS_0__NO_SELECTED_COLUMN",
+      "frozen_decoder_admission_scope": {
+        "exact_sha_gate": true,
+        "declared_encoding": "BIG5",
+        "admitted_operation": "EXACT_SHA_DECLARED_ENCODING_ADMISSION_PLUS_METADATA_ONLY_READER_PROBE",
+        "row_data_reads": 0,
+        "selected_columns": [],
+        "full_source_decode": false,
+        "reason": "Accepted C3 D01 remains decoder admission only; no selected-column semantic target is frozen. C4B therefore does not widen D01 into a row-data or source-wide PASS."
+      }
+    },
+    {
+      "source_key": "SRC12",
+      "source_id": "12",
+      "family": "EVS",
+      "wave": "1990",
+      "source_file": "EVS 1990.sav",
+      "canonical_sha256": "66252a92c59bf6759b79a6b35b2be658b98a433373212a70c8ec94755d3e02ec",
+      "format": "SAV",
+      "selection_role": "D01_DECLARED_ENCODING_WINDOWS_1252__EVS_MULTI_WAVE_MEMBER_1",
+      "exact_governed_operations": [
+        {
+          "owner": "accepted C3 D01 decoder admission",
+          "operation": "EXACT_SHA_DECLARED_ENCODING_ADMISSION",
+          "declared_encoding": "WINDOWS-1252",
+          "scope": "source-wide decoder configuration; not survey semantics"
+        }
+      ],
+      "proposed_C4_source_activity": "BOUNDED_METADATA_OR_REQUIRED_COLUMN_READ_AFTER_EXACT_SHA_GATE",
+      "semantic_route_status": "NOT_SELECTED_AS_SEMANTIC_ROUTE_ANCHOR",
+      "multi_wave_pair_with": "SRC14",
+      "frozen_C4_source_activity": "FRESH_METADATA_ONLY_DECODER_ADMISSION_VALIDATION__ROW_DATA_READS_0__NO_SELECTED_COLUMN",
+      "frozen_decoder_admission_scope": {
+        "exact_sha_gate": true,
+        "declared_encoding": "WINDOWS-1252",
+        "admitted_operation": "EXACT_SHA_DECLARED_ENCODING_ADMISSION_PLUS_METADATA_ONLY_READER_PROBE",
+        "row_data_reads": 0,
+        "selected_columns": [],
+        "full_source_decode": false,
+        "reason": "Accepted C3 D01 remains decoder admission only; no selected-column semantic target is frozen. C4B therefore does not widen D01 into a row-data or source-wide PASS."
+      }
+    },
+    {
+      "source_key": "SRC14",
+      "source_id": "14",
+      "family": "EVS",
+      "wave": "2008",
+      "source_file": "EVS 2008.sav",
+      "canonical_sha256": "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379",
+      "format": "SAV",
+      "selection_role": "D02_OPAQUE_DATETIME__EVS_MULTI_WAVE_MEMBER_2",
+      "exact_governed_operations": [
+        {
+          "owner": "accepted C3 D02 codec/decoder law",
+          "operation": "OPAQUE_DECODER_NATIVE_DATE_TIME_CARRIER",
+          "source_sha256": "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379",
+          "variable_name": "v372",
+          "ordinal": 466,
+          "retained_fixture_id": "EVS08_DATE_MISSING_V372",
+          "retained_fixture_kind": "VARIABLE_MISSING_DECLARATION",
+          "retained_native_class": "TYPED_DATE_USER_MISSING_SENTINEL",
+          "retained_rendering": "1582-10-13",
+          "retained_counts": {
+            "format_user_missing_value": 1917,
+            "ordinary_present": 64363,
+            "system_missing": 0,
+            "total_rows": 66280
+          },
+          "accepted_carrier_domain": {
+            "exact built-in naive datetime.datetime": "python.datetime.datetime@1",
+            "exact built-in datetime.date": "python.datetime.date@1",
+            "exact built-in naive datetime.time": "python.datetime.time@1",
+            "timezone-aware datetime/time": "FAIL_CLOSED"
+          },
+          "current_subclass_observation": null,
+          "subclass_inference_forbidden": true,
+          "ceiling": "PHYSICAL_REPRESENTATION_ONLY__NO_DATE_TIME_SEMANTICS"
+        }
+      ],
+      "proposed_C4_source_activity": "NO_FRESH_REAL_SOURCE_D02_PROBE_UNTIL_EXACT_PHYSICAL_LOCATOR_OR_EQUIVALENT_PREDECLARED_TRAVERSAL_ORACLE_IS_FROZEN",
+      "semantic_route_status": "NOT_SELECTED_AS_SEMANTIC_ROUTE_ANCHOR",
+      "multi_wave_pair_with": "SRC12",
+      "frozen_C4_source_activity": "BOUNDED_FRESH_PHYSICAL_READ__EXACT_V372_ORDINAL_466_WITNESS_ONLY"
+    },
+    {
+      "source_key": "SRC26",
+      "source_id": "26",
+      "family": "Latinobarometro",
+      "wave": "2024",
+      "source_file": "Latinobarometro 2024.sav",
+      "canonical_sha256": "ff5cef18c87969026e7f993d09f10c38a547bf81d5d398784fb59b960b7b0a40",
+      "format": "SAV",
+      "selection_role": "R05_RAW_HEADER_DICTIONARY_STREAM_DIVERGENCE",
+      "exact_governed_operations": [
+        {
+          "owner": "CLOSED35 R05 frozen physical law",
+          "operation": "PRESERVE_RAW_HEADER_AND_READER_NORMALIZED_GEOMETRY_SEPARATELY",
+          "expected_raw_nominal_case_size": 174,
+          "expected_decoded_dictionary_data_width": 332,
+          "equality_required": false
+        }
+      ],
+      "proposed_C4_source_activity": "BOUNDED_HEADER_PREFIX_PLUS_READER_METADATA_READ_AFTER_EXACT_SHA_GATE",
+      "semantic_route_status": "NOT_SELECTED_AS_SEMANTIC_ROUTE_ANCHOR",
+      "frozen_C4_source_activity": "BOUNDED_HEADER_PREFIX_PLUS_READER_METADATA_ONLY"
+    },
+    {
+      "source_key": "SRC27",
+      "source_id": "27",
+      "family": "LiTS",
+      "wave": "I / 2006",
+      "source_file": "LiTS_I.dta",
+      "canonical_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+      "format": "DTA",
+      "selection_role": "FULL_ROUTE_FRESH_CURRENT_ANCHOR__B01_DTA_BOUNDED_BRIDGE",
+      "exact_governed_operations": [
+        {
+          "owner": "B01_LITS_I_Q301_BOUNDED_SUCCESSOR",
+          "operation": "Q301 DTA physical representation bridge",
+          "exact_source_specific_projection_authority": "urn:rawlsing:pre553:as2a:lits1-projection-authority:sha256:9dd1e6b7350ebb795e028db86279131f8d319e939a044b74c3c5605ecacf5b06",
+          "exact_respondent_event_slots": [
+            "q301_2",
+            "q301_7"
+          ],
+          "exact_coordinate_fact_slots": [
+            "country",
+            "city",
+            "region",
+            "tablec",
+            "tabled"
+          ],
+          "default_weight_measure_fact": false,
+          "semantic_ceiling": "Consume accepted binding only; spelling does not authorize inference beyond the accepted projection."
+        },
+        {
+          "owner": "retained LiTS canonical closure",
+          "operation": "fresh current Route-B producer replay over the exact frozen 50-candidate/77-role workload after C1-01 acceptance",
+          "retained_closure_identity": "f264dd8f83a0794716583d1ea8445947cc9470b99475e5d51fc2383e7196f415",
+          "retained_checkpoint_sha256": "2704fd3fadc9c898a512183aaf5eebf0ca48d78c47e75a19d47e17281eaa5726",
+          "retained_oracle_identity": "e5d66db4b6f8339672b0f4828b72a8df68b5525bf71ecfda899d0531d618a98a",
+          "retained_object_counts": {
+            "AuthoritySnapshot": 24,
+            "DiscoveryAuthority": 1,
+            "DiscoveryResultReceipt": 50,
+            "EmpiricalFact": 60,
+            "EmpiricalPredicate": 35,
+            "EmpiricalQuerySpec": 63,
+            "EmpiricalUniverse": 1
+          }
+        }
+      ],
+      "proposed_C4_source_activity": "EXACTLY_ONE_GOVERNED_FRESH_SOURCE_BACKED_PASS__NO_CANDIDATE_A_B_C__NO_MEASURED_P2X",
+      "semantic_route_status": "COMPETENT_RETAINED_SOURCE_SPECIFIC_AUTHORITY_EXISTS__FRESH_CURRENT_RUN_REQUIRES_CURRENT_C1_01_AND_CURRENT_EXECUTION_STACK",
+      "frozen_C4_source_activity": "EXACTLY_ONE_GOVERNED_FRESH_FULL_ROUTE_PASS__50_CANDIDATES__77_ROLES__NO_CANDIDATE_A_B_C__NO_MEASURED_P2X"
+    },
+    {
+      "source_key": "SRC35",
+      "source_id": "35",
+      "family": "WVS",
+      "wave": "Wave 7",
+      "source_file": "WVS Wave 7.sav",
+      "canonical_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+      "format": "SAV",
+      "selection_role": "RETAINED_FULL_ROUTE_COMPARATOR__B02_Q291_BOUNDED_BRIDGE",
+      "exact_governed_operations": [
+        {
+          "owner": "B02_WVS7_Q291_BOUNDED_OWNER",
+          "operation": "Q291 SAV physical representation bridge"
+        },
+        {
+          "owner": "FIABC-LM2-R1M",
+          "operation": "retained admitted release + exact replay/oracle",
+          "logical_release_identity": "e6881e9a08a48f8871790e781c28bddbc44ee35db894d6ad7b1105a6a8fd262f",
+          "replay_identity": "996ba218fc5da5e0ad1ddf0cdc7f91ce8fb8a7363ce62076dc3f4073b85c383f",
+          "oracle_identity": "3694b8bd0b5468433a1a83bd469337c7e36e552c3a9a5fef65fff88df8fce800",
+          "candidate_count": 46
+        }
+      ],
+      "proposed_C4_source_activity": "NO_FRESH_RAW_READ_REQUIRED_FOR_AT21_RETAINED_COMPARATOR__EXACT_REPLAY_ONLY_UNLESS_HQ_SEPARATELY_ORDERS_A_NEW_SOURCE_PASS",
+      "semantic_route_status": "COMPETENT_RETAINED_SOURCE_SPECIFIC_RELEASE_REPLAY_ORACLE",
+      "frozen_C4_source_activity": "RETAINED_COMPARATOR_ONLY__ZERO_FRESH_RAW_READS"
+    }
+  ],
+  "execution_preconditions": {
+    "accepted_C3_integration_head": "30686b185d4ceb2c94f61815ef70d8c8e76255d6",
+    "governed_C4B_base_contains_accepted_C3_blobs": false,
+    "governed_base_observed": {
+      "g01_owner": "ABSENT",
+      "physical_decoder_blob": "d2a074a41fb556a1cd5928a5fe1421ef3672a4e5",
+      "r5_codec_blob": "72f8f3c03ed065e86fea4e76bb17f8e06c2bf540",
+      "c11_facade_blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284"
+    },
+    "required_before_any_C4_source_read": {
+      "g01_owner_blob": "31a9afd7d91ed4cb2fb1c1aab3ef86a5fdda1f85",
+      "physical_decoder_blob": "d3d828c171ea9fdd0e90563aff6ef705f5aae2cf",
+      "r5_codec_blob": "6000a1704d713f65e07610d81e9b3fd8bdd515ca",
+      "proof_law": "Execution head must descend from accepted C3 integration or independently prove exact blob equivalence for the accepted C3 owner surface."
+    }
+  },
+  "stop_law": [
+    "Exact source SHA/config must be verified before any governed decode/read.",
+    "No fresh source read is authorized by this documentary freeze or by the unsigned warrant template.",
+    "No physical witness may create survey semantics, pooling, comparability, or epistemic-origin authority.",
+    "No substitution of another source, wave, column, oracle, checkpoint, or reconstructed preimage.",
+    "Any identity, authority, oracle, determinant, geometry, negative-state, or replay mismatch fails closed."
+  ]
+}

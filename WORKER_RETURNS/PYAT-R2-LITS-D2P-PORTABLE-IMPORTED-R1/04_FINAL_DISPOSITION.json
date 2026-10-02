@@ -1,0 +1,107 @@
+{
+  "schema": "PYAT_D2P_FINAL_DISPOSITION@1.0.0",
+  "lane": "PYAT-R2-LITS-D2P-PORTABLE-IMPORTED-R1",
+  "role": "D2P — portable packet Git import + independent acceptance — R1",
+  "repository": "maidiu/rawlsing",
+  "commissioned_tip": "7e8123cb26e8ba03885bb1c8264302e02b83f2b3",
+  "commissioned_base": "7e84783b2bb268ecbb3c75263f2922af6fa978b1",
+  "branch": "agent/opencode-pyat-hq178-d2p-starriymac-import-review-r1",
+
+  "disposition": "APPROVE_D2P_PORTABLE_EXPORT_AT_DECLARED_GRAIN__B001_B002_B003_CLOSED",
+  "terminal": "D2P_STARRIYMAC_IMPORT_AND_INDEPENDENT_REVIEW_RETURNED__HQ_FANIN_READY",
+
+  "allowed_dispositions_considered": {
+    "APPROVE_D2P_PORTABLE_EXPORT_AT_DECLARED_GRAIN__B001_B002_B003_CLOSED": {
+      "selected": true,
+      "why": "Packet integrity is exact and un-stale across all 10 files with the commission-supplied manifest digest independently reproduced. The extraction script contains no ambiguous reconstruction step and no prohibited surface, and its canonical hashing law is byte-identical to the repository's own canonical_json. B001 closes 50/50 on explicit retained candidate_hash with all 50 receipt preimage digests recomputing. B002 closes 24/24 snapshots with exact AuthorityRef triples and 208/208 per-object rows in exact family grain, and all 2033 per-object plus 576 B001 authority refs resolve into the 24-row closure with authority_id and authority_version agreeing throughout. B003 closes 50/50 rows on a verified 1:1 retained join with 18/18 P2 memberwise mappings identified purely from explicit retained identity. The two NoviyMac non-verified identities are carried forward as non-verified and were not converted into passes."
+    },
+    "CHANGES_REQUIRED_D2P_PORTABLE_PACKET": {
+      "selected": false,
+      "why_not": "Nothing in the packet needs changing. The five script findings are F1 cosmetic dead code, F2 a latent ordering fragility whose current output this reviewer verified correct from the data, F3 a validation gap this reviewer closed independently from the packet rather than by editing the script, F4 cosmetic, and F5 a confirmed-good fail-closed path. Commission line 141 forbids rewriting imported files to fix them, and no fix was made or needed. Commission line 188's CHANGES_REQUIRED trigger — an ambiguous reconstruction step — was specifically checked for and not found."
+    },
+    "D2P_PACKET_INTEGRITY_FAILURE": {
+      "selected": false,
+      "why_not": "9 of 9 hashable files match SHA256SUMS.txt exactly. All 7 manifest files[] entries are consistent. The manifest digest reproduces the commission-supplied value exactly. Zero stale hashes. The manifest circularity omission is factually necessary, not a defect, and the resulting chain is complete and externally anchored."
+    },
+    "D2P_B001_B002_B003_REVIEW_BLOCKER": {
+      "selected": false,
+      "why_not": "B001, B002 and B003 each closed on recomputed evidence. One apparent B002 blocker was raised and then WITHDRAWN by this reviewer after establishing that it was the reviewer's own key-selection error, not a packet defect; it is recorded in full in 02_B001_B002_B003_INDEPENDENT_REVIEW.json rather than hidden. The residual estate-absence limitations are disclosed, are outside this lane's reach by commission direction, and do not defeat any blocker at the declared grain."
+    }
+  },
+
+  "blocker_dispositions": {
+    "B001": {"status": "CLOSED_ACCEPTED", "evidence": "50/50 records, 50 distinct candidate hashes, 50 distinct receipt refs, 50/50 association grounded in explicit retained semantic_fields.candidate_identity.candidate_hash, 50/50 receipt preimage digests recomputed, 50/50 with authority_snapshot_refs / dependency_refs / source_release_refs / replay_ref, 50 with non-null winning_predicate_ref, no ordering-based pairing"},
+    "B002": {"status": "CLOSED_ACCEPTED", "evidence": "24/24 AuthoritySnapshot records with 24 distinct content_hash and 24 distinct object_id, each carrying exactly one well-formed AuthorityRef triple at retained field replay_protocol_ref, 24/24 preimage digests recomputed; 208/208 per-object rows with exact family grain 60 EmpiricalFact / 63 EmpiricalQuerySpec / 35 EmpiricalPredicate / 50 DiscoveryResultReceipt, 208 distinct object refs, 0 empty authority_snapshot_refs, and 2033/2033 per-object plus 576/576 B001 authority refs resolving into the 24-row closure with authority_id and authority_version agreeing on all 2033"},
+    "B003": {"status": "CLOSED_ACCEPTED", "evidence": "50/50 rows on retained contract FIABC_LITS_CROSS_SCHEMA_LOGICAL_CANDIDATE@1.0.0, 50 distinct logical_candidate_key on both join sides with identical key sets, 50/50 binding_sha256 recomputed from the included retained binding body, 18/18 P2 rows identified by explicit retained lane=='P2' on BOTH retained rows plus retained P2 lane block membership with zero disagreement, 18/18 rule_id D02_P2_HIGHER_ORDER_K3, 18 distinct pre553_i05_candidate_hash, 2 memberwise_roles per P2 row"}
+  },
+
+  "giant_fact_preimage_deviation": {
+    "ruling": "ACCEPTED_AT_B002_GRAIN",
+    "basis": "Commission lines 73-78 and 237-247. B002's missing evidence was per-object authority binding plus full snapshot enumeration, not portable storage of all response provenance.",
+    "evidence": "60 of 60 EmpiricalFact rows carry a complete $deferred_retained_member marker for each of the two declared members, with well-formed retained_canonical_sha256, positive retained_canonical_bytes, retained_item_count on all 120 markers, and retained_checkpoint_sha256 equal to 2704fd3f.... The same marker is present inside the exported preimage at the declared path. Withheld bytes total 3,276,820,474 and agree exactly with 06_B001_B002_B003_CLOSURE.json.",
+    "content_classification": "Both withheld members are enumerated REFERENCE lists — dependency_refs at 53,905 items and source_empirical_provenance_refs at 53,902 items — not respondent response rows.",
+    "not_required": "Re-expansion of the packet to carry the multi-GB bodies was not performed and is not requested.",
+    "limitation": "The withheld digests could not be recomputed on StarriyMac; the bodies are absent by design and the checkpoint is absent from this estate. Presence and well-formedness were verified; the digest values themselves remain verifiable only against the checkpoint on NoviyMac."
+  },
+
+  "what_this_review_VERIFIED": [
+    "all 10 packet files present, 3,836,107 bytes, byte-identical between source path and repo import",
+    "9 of 9 hashable files match SHA256SUMS.txt exactly; zero stale",
+    "08_PACKET_MANIFEST.json SHA-256 independently reproduces the commission-supplied 46b38c21f2b331575b12f2eadd09348299ab9c6736983f9f281fd48644ff8106",
+    "all 7 manifest files[] entries consistent; only the 2 structurally impossible entries omitted",
+    "the manifest/return circularity deviation is necessary and the resulting hash chain is complete and externally anchored",
+    "extraction script: checkpoint-only, hash-gated before any parse, bounded-memory for the right reason, no raw source locator, no decoder, no I03/I05/Candidate ABC/P2X, no semantic inference from values or counts, canonical law byte-identical to the repository's canonical_json",
+    "the whole packet contains zero floats and zero NaN, making the one canonical-law divergence (allow_nan / float tolerance) provably inert",
+    "B001, B002 and B003 each closed on recomputed digests and counts",
+    "every prohibition counter corroborated by independent scan rather than accepted on assertion"
+  ],
+
+  "what_this_review_DID_NOT_VERIFY": [
+    "the actual 3404445161-byte checkpoint document's SHA-256 — the document is absent from StarriyMac by commission direction",
+    "byte-reproducibility of the extraction, because the script could not be re-executed without the checkpoint",
+    "the 120 withheld EmpiricalFact member digests",
+    "the packet's 0-occurrence claim for the literal cross_schema_logical_candidate_bindings key",
+    "NoviyMac's zero-Git-operations claim, which cannot be confirmed from a different estate",
+    "checkpoint_identity 3fab15f3... and canonical_closure_identity f264dd8f... — carried forward EXACTLY as NoviyMac disclosed them, as recorded-but-unverified"
+  ],
+
+  "a_false_blocker_raised_and_withdrawn": {
+    "what_happened": "This reviewer's first B002 resolution attempt matched each per-object authority_snapshot_ref against an AuthoritySnapshot's content_hash and reported 14 unresolved refs.",
+    "why_it_was_wrong": "The two are a DISJOINT namespace. An AuthoritySnapshot materialises a governance authority and carries semantic_fields.authority_content_hash / authority_id / authority_version — the same identity shape as the per-object refs — while its own content_hash and object_id are the snapshot's own identity.",
+    "resolution": "Re-run against semantic_fields.authority_content_hash: 2033 of 2033 per-object refs and 576 of 576 B001 refs resolve, with authority_id and authority_version agreeing on all 2033.",
+    "disclosure_rationale": "Recorded rather than quietly corrected, because a reviewer who stopped at the first result would have raised a false blocker against an honest packet."
+  },
+
+  "scope_of_the_PASS": {
+    "closes": "C4B-LITS-ORACLE-PREIMAGE-CUSTODY-001 at the retained preimage/custody grain",
+    "does_NOT_authorise": ["raw-source C4 execution", "fresh LiTS decode", "a source warrant", "C7", "PRE-V3 to V3"],
+    "does_NOT_establish": ["any physical or empirical claim about the LiTS source", "C4 runtime qualification", "the unverified checkpoint and canonical-closure identities"],
+    "reviewer_discipline": "No raw survey file was opened, hashed or decoded by this lane. C4 was not executed. No production code was mutated. No imported NoviyMac file was modified. No self-adoption."
+  },
+
+  "requirements_on_HQ_at_fanin": [
+    "Bind the two recorded-but-unverified identities as OPEN items: checkpoint_identity 3fab15f3... and canonical_closure_identity f264dd8f.... Do not read them as verified.",
+    "Note that checkpoint-body verification and byte-reproducibility of the extraction were structurally impossible on StarriyMac, and remain open against NoviyMac custody.",
+    "Note the 24 AuthoritySnapshots materialise 18 distinct authority documents, six of them materialised once per governed_operations scope. Read '24' as 24 snapshot objects over 18 authorities, not 24 distinct authority documents.",
+    "Optionally request the script fixes F2 (ordering fragility between full_sha and build_export_preimage) and F3 (missing distinctness and duplicate-key checks) as a follow-up. Neither affects this packet, which was verified correct from the data.",
+    "The exported NoviyMac packet is now retained byte-for-byte in-repo at WORKER_RETURNS/PYAT-R2-LITS-D2P-PORTABLE-IMPORTED-R1/NOVIYMAC_PACKET/ and hash-bound by SHA256SUMS.txt."
+  ],
+
+  "verification": {
+    "commission_read_in_full_and_executed_exactly": true,
+    "head_parent_equals_commission_base": true,
+    "remote_is_maidiu_rawlsing": true,
+    "packet_files_imported": 10,
+    "packet_bytes_imported": 3836107,
+    "imported_files_modified": 0,
+    "stale_hashes": 0,
+    "raw_survey_access": 0,
+    "c4_executed": false,
+    "production_code_mutated": false,
+    "self_adopted": false,
+    "fabricated_metrics": 0,
+    "prose_claims_accepted_without_recomputation": 0
+  },
+
+  "terminal": "D2P_STARRIYMAC_IMPORT_AND_INDEPENDENT_REVIEW_RETURNED__HQ_FANIN_REQUIRED"
+}
