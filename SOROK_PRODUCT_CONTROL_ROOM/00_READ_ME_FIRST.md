@@ -315,6 +315,11 @@ Current status:
 
 `KERNEL = OPEN_DISCOVERY`.
 
+For kernel work, read immediately after `03_REAL_ALPHA_SPINE.md`:
+`dockets/D007_KERNEL_SIFTING_AND_DERIVATIONAL_COMPRESSION/00_DOCKET.md`.
+
+D007 contains the current conversation-component harvest, derivation/compression map, and hostile tensions. `03` remains the compact canonical organism map; D007 is the bounded deep investigation.
+
 The control room is deliberately sifting among candidate generative centers by asking which can derive the widest range of:
 - person/world causality;
 - relation;
