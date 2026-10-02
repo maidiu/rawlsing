@@ -296,3 +296,33 @@ Especially:
 - Is the deepest form actually not "person" at all, but a more general ontology of **relationally constituted, causally irreducible centers under partial access**?
 
 These questions belong to hostile testing, not rhetorical resolution.
+
+# 7. New derivation probes from artifact 69
+
+### Agency without sovereignty
+Source: P1 + P3 + P5.
+Strength: `D3 STRONG`.
+
+If plural centers are real and no user's model exhausts another center, then the player may possess action authority without possessing truth authority over the other.
+
+### Persona introduction / same-root comparative branches
+Source: P2 + P3 + P4 + P5.
+Strength: `D2 SUBSTANTIAL`.
+
+The kernel strongly predicts the value of comparing:
+- common origin;
+- different situated access;
+- different relation history;
+- different becoming.
+
+The private introduction feature itself remains a product/social implementation choice.
+
+### Shared pre-contact expansion vs branch-local constitution
+Source: P2 + P4 + P5.
+Strength: `D3 STRONG`.
+
+Newly resolved pre-contact facts can be common because they belong to common prior history.
+Post-contact effects cannot become common because they belong to relation-specific histories that did not occur in the other branch.
+
+This is one of the cleanest current derivations of the root/branch membrane.
+
