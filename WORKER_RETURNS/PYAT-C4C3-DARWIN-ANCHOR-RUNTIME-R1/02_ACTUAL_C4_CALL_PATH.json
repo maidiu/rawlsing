@@ -1,0 +1,132 @@
+{
+  "schema": "PYAT_C4C3_ACTUAL_C4_CALL_PATH@1.0.0",
+  "lane": "PYAT-C4C3-DARWIN-ANCHOR-RUNTIME-R1",
+  "phase": "PHASE 2 — actual C4 path confirmation",
+  "status": "COMPLETE",
+  "c4c2_holding_reused": "P2X_DARWIN_GATES_NOT_ON_C4_PATH",
+  "independently_confirmed": true,
+  "method": "Static transitive-import closure over rawlsing_next/ via AST walk of every statement (including function and class bodies) for all five named C4 layers, plus an independent textual extraction of every literal 'rawlsing_next*' token inside the closure to catch string-valued references the AST walk could miss, plus an exhaustive grep for dynamic-loading primitives. No measured P2X was run. No raw survey file was opened, stat'ed, hashed or decoded.",
+
+  "the_two_gates_under_test": {
+    "gate_1": {
+      "name": "EXPECTED_RUNTIME / verify_runtime_gate",
+      "file": "rawlsing_next/ee_p2x_darwin_court_driver.py",
+      "constant_lines": "46-49",
+      "gate_lines": "528-532",
+      "required_values": {"implementation": "CPython", "python": "3.11.3", "pyreadstat": "1.3.6", "pyarrow": "25.0.1", "system": "Darwin", "machine": "x86_64"},
+      "comparison": "exact string equality via dict-drift comprehension at :530; no version range, prefix or tolerance",
+      "sole_call_site": "ee_p2x_darwin_court_driver.py:1015 DarwinCourtDriver.verify_static_gates, reached only from preflight():1062 and run():1096",
+      "ru_maxrss_law": {"constant_line": "66", "value": "DARWIN_RU_MAXRSS_ALREADY_BYTES", "enforced_at": "532"}
+    },
+    "gate_2": {
+      "name": "FROZEN_PYREADSTAT_VERSION",
+      "file": "rawlsing_next/ee_p2x_darwin_stage_backend.py",
+      "constant_line": "61",
+      "gate_lines": "896-901",
+      "enclosing_function": "_wvs_projection (defined :877)",
+      "comparison": "exact string equality on importlib.metadata.version('pyreadstat'), raising SourceAuthorityStop on drift",
+      "sole_call_site": "_compose_wvs:1690 -> _bind:1760 -> stage handlers -> run_stage:2772",
+      "receipt_only_references": [":842 in _wvs_reader_config()", ":1127 in _lits_a_parentage_material()"]
+    }
+  },
+
+  "c4_layers": [
+    {"layer": 1, "name": "decode_sav / decode_dta", "module": "rawlsing_next/pre553_physical_decoder.py", "entry_lines": "decode_sav:555, decode_dta:569"},
+    {"layer": 2, "name": "source-backed C11 facade", "module": "rawlsing_next/pre553_source_backed_c11_facade.py"},
+    {"layer": 3, "name": "empirical provider", "module": "rawlsing_next/pre553_empirical_possibility_provider.py"},
+    {"layer": 4, "name": "analytical composition", "module": "rawlsing_next/pre553_analytical_composition.py"},
+    {"layer": 5, "name": "named positioned-subject consumer", "module": "rawlsing_next/source_backed_positioned_subject_possibility.py",
+     "entry_line": "evaluate_positioned_subject_possibility:417",
+     "identity_proof": "named verbatim in the provider's own docstring at pre553_empirical_possibility_provider.py:14 as 'accepted public possibility consumer rawlsing_next.source_backed_positioned_subject_possibility.evaluate_positioned_subject_possibility'; the corresponding producer is pre553_analytical_composition.compose_positioned_subject_possibility:1008"}
+  ],
+
+  "transitive_import_closure": {
+    "module_count": 21,
+    "modules": [
+      "rawlsing_next/pre553_physical_decoder.py",
+      "rawlsing_next/pre553_source_backed_c11_facade.py",
+      "rawlsing_next/pre553_empirical_possibility_provider.py",
+      "rawlsing_next/pre553_analytical_composition.py",
+      "rawlsing_next/source_backed_positioned_subject_possibility.py",
+      "rawlsing_next/pre553_r5_codec.py",
+      "rawlsing_next/pre553_c11_ingest.py",
+      "rawlsing_next/pre553_c11_integrity.py",
+      "rawlsing_next/pre553_c11_repository.py",
+      "rawlsing_next/pre553_empirical_authority.py",
+      "rawlsing_next/pre553_empirical_objects.py",
+      "rawlsing_next/_pre553_query_common.py",
+      "rawlsing_next/pre553_empirical_query.py",
+      "rawlsing_next/pre553_physical_c11_bridge.py",
+      "rawlsing_next/pre553_discovery_exact.py",
+      "rawlsing_next/pre553_recursive_handoff.py",
+      "rawlsing_next/pre553_runtime_context.py",
+      "rawlsing_next/_pre553_query_eval.py",
+      "rawlsing_next/_pre553_query_predicate.py",
+      "rawlsing_next/pre553_runtime_composition.py",
+      "rawlsing_next/pre553_runtime_authority.py"
+    ],
+    "completeness_cross_check": "An independent extraction of every literal 'rawlsing_next*' token inside all 21 files yields exactly these 21 module names plus the two declared producer/consumer references already listed. No further module string exists in the closure.",
+    "relative_imports_in_closure": 0,
+    "namespace_package_note": "rawlsing_next/__init__.py does not exist; rawlsing_next is a namespace package and contributes zero code."
+  },
+
+  "dynamic_loading_audit": {
+    "importlib": "NOT FOUND in the closure",
+    "exec_module": "NOT FOUND",
+    "spec_from_file_location": "NOT FOUND",
+    "module_from_spec": "NOT FOUND",
+    "sys.modules": "NOT FOUND",
+    "subprocess": "NOT FOUND",
+    "os.system": "NOT FOUND",
+    "os.popen": "NOT FOUND",
+    "exec(": "NOT FOUND",
+    "eval(": "NOT FOUND",
+    "os.environ / os.getenv": "NOT FOUND",
+    "duckdb": "NOT FOUND",
+    "benign_hits_only": [
+      "pre553_empirical_objects.py:19 re.compile(r'^[0-9a-f]{64}$')",
+      "pre553_discovery_exact.py:919 __import__('json').loads(...) — literal 'json', stdlib only"
+    ]
+  },
+
+  "lits_builder_exec_module_not_reached": {
+    "concern": "rawlsing_next/ee_p2x_darwin_stage_backend.py:118-123 defines LITS_BUILDER and :240-253 _load() performs importlib.util.spec_from_file_location + spec.loader.exec_module at :249, which would load a banked LiTS builder importing duckdb.",
+    "verdict": "NOT_REACHABLE_FROM_C4",
+    "reasoning": "_load() has exactly three call sites, all inside ee_p2x_darwin_stage_backend.py (:748 in _lits_projection, :776 in _support_module, :820 in _wvs_materializer). Every route originates in that module, which is not in the C4 closure. Nothing reachable from C4 layers 1-5 reaches _load().",
+    "file_not_opened": "The LITS_BUILDER target under data/ was NOT opened, stat'ed or hashed by this lane."
+  },
+
+  "per_layer_verdict": [
+    {"layer": 1, "gate_1_reachable": false, "gate_2_reachable": false},
+    {"layer": 2, "gate_1_reachable": false, "gate_2_reachable": false},
+    {"layer": 3, "gate_1_reachable": false, "gate_2_reachable": false},
+    {"layer": 4, "gate_1_reachable": false, "gate_2_reachable": false},
+    {"layer": 5, "gate_1_reachable": false, "gate_2_reachable": false}
+  ],
+  "direction_of_dependency": "The edge runs the OTHER way. The EE-P2X lane imports C4 layer 1 (ee_p2x_darwin_stage_backend.py:713 from rawlsing_next.pre553_physical_decoder import decode_dta, decode_sav; fiabc_final_oracle_freeze_producers.py:1247; pre553_carrier_execution.py:58 imports C4 layer 2). The C4 layers have ZERO outgoing edge to any ee_p2x_* or fiabc_* module.",
+
+  "ee_p2x_process_isolated_backend": {
+    "verdict": "NOT_REACHABLE_FROM_C4",
+    "reasoning": "rawlsing_next/ee_p2x_process_isolated_backend.py has ZERO static importers anywhere in the repository. Its INNER_BACKEND_DEFAULT string at :18 is resolved only by importlib.import_module inside ee_p2x_darwin_court_driver.py:863, which is reached only from the driver CLI at :1263 when invoked with --backend-module. It then reaches ee_p2x_darwin_stage_backend only by subprocess.Popen into a sealed child process (ee_p2x_candidate_process_envelope.py:717-736 -> :437 -> :386). That is the EE-P2X measured lane."
+  },
+
+  "blast_radius_of_both_gates": {
+    "EXPECTED_RUNTIME": {"files": 1, "production": 1, "tests": 0, "worker_returns": 0},
+    "verify_runtime_gate": {"files": "1 py + 2 sh + 1 md", "production": 1, "tests": 0, "worker_returns": 3},
+    "FROZEN_PYREADSTAT_VERSION": {"files": 1, "production": 1, "tests": 0, "worker_returns": 0},
+    "SourceAuthorityStop": {"files": 2, "production": 1, "tests": 1, "worker_returns": 0},
+    "total_production_files": 2,
+    "statement": "Both gates live in exactly two files, neither of which is in the C4 closure. Neither gate is referenced by any test, and neither is referenced from WORKER_RETURNS except the two preflight shell scripts that invoke verify_runtime_gate directly."
+  },
+
+  "VERDICT": "P2X_DARWIN_GATES_NOT_ON_C4_PATH__CONFIRMED_BY_INDEPENDENT_TRACE",
+  "consequence": "No EE-P2X Darwin gate patch or waiver is required for the C4 path, exactly as HQ's adjudication stated. C4C3 qualified the actual C4 path on the Darwin/x86_64 anchor without touching either gate.",
+
+  "adjacent_finding_not_a_gate": {
+    "site": "rawlsing_next/pre553_physical_decoder.py:534",
+    "statement": "This line RECORDS pyreadstat.__version__ into the reader_configuration of every PhysicalSourceIncidence. It performs no comparison and is not a gate.",
+    "why_it_still_matters": "closed35_g01_sav_numeric_representation_authority.py and tests/test_r35_i01_physical_metadata.py treat reader_config['reader_version'] as identity-bearing, and DTA-3 in 04_SYNTHETIC_READER_PROBES.json measures that the physical-metadata digest CHANGES with the reader lane. So the installed pyreadstat version and the reader lane are evidence-bearing even though they are not gates. PHASE 3 and PHASE 6 freeze both."
+  },
+  "measured_P2X_run": false,
+  "raw_survey_access": 0
+}

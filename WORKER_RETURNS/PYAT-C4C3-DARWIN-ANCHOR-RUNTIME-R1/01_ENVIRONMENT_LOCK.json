@@ -1,0 +1,146 @@
+{
+  "schema": "PYAT_C4C3_ENVIRONMENT_LOCK@1.0.0",
+  "lane": "PYAT-C4C3-DARWIN-ANCHOR-RUNTIME-R1",
+  "phase": "PHASE 1 — isolated exact dependency environment",
+  "status": "COMPLETE",
+
+  "environment_location": {
+    "class": "ISOLATED_VIRTUALENV_OUTSIDE_THE_REPOSITORY",
+    "path": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/c4c3-env",
+    "inside_repository": false,
+    "durable": false,
+    "durable_note": "The venv lives in a per-session temporary directory. It is NOT durable and NOT reproducible from this path alone. It is recorded so HQ can see exactly what executed. The reproducible content is the freeze below, not the path.",
+    "created_by": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/bin/python3.11 -m venv",
+    "base_interpreter": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/bin/python3.11",
+    "base_interpreter_build_tag": "cpython-3.11.3-macos-x86_64-none",
+    "base_interpreter_sha256_prefix32": "11d6f541a870a141249ce98d45834a67",
+    "include_system_site_packages": false
+  },
+
+  "executable": {
+    "path": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/c4c3-env/bin/python",
+    "resolves_to": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/bin/python3.11",
+    "version_string": "3.11.3 (main, May  7 2023, 19:01:25) [Clang 16.0.3 ]",
+    "implementation": "CPython",
+    "version": "3.11.3"
+  },
+
+  "host": {
+    "system": "Darwin",
+    "release": "22.6.0",
+    "machine": "x86_64",
+    "macos_product_version": "13.7.8",
+    "macos_build": "22H730",
+    "platform_string": "macOS-13.7.8-x86_64-i386-64bit"
+  },
+
+  "pip_freeze": {
+    "command": "python -m pip freeze --disable-pip-version-check",
+    "sorted_output": [
+      "Pygments==2.21.0",
+      "iniconfig==2.3.0",
+      "narwhals==2.26.0",
+      "numpy==2.4.6",
+      "packaging==26.3",
+      "pandas==2.3.3",
+      "pluggy==1.6.0",
+      "pyarrow==25.0.1",
+      "pyreadstat==1.3.6",
+      "pytest==9.1.1",
+      "python-dateutil==2.9.0.post0",
+      "pytz==2026.4",
+      "six==1.17.0",
+      "tzdata==2026.4"
+    ],
+    "pip_present_but_excluded_from_freeze_by_default": {"pip": "22.3.1", "setuptools": "65.5.0"}
+  },
+
+  "HISTORICAL_C3_FREEZE_REPRODUCTION": {
+    "target_sha256_from_commission": "9cde8e5ab9abba46a9e98826100ed084a0943a77fee7bc232a3c7643334da2eb",
+    "target_source": "commission lines 68-70; corroborated by PYAT-C3-SOURCE-FREE-INTEGRATION-REVIEW-R1/03_INTEGRATION_EXECUTION_RECEIPT.json admitted_prior_qualification_evidence.environment.pip_freeze_sha256",
+    "normalisation_convention_discovered": "sha256 of the 13-line LF-terminated, alphabetically sorted 'Name==Version' freeze INCLUDING pip and setuptools",
+    "reconstructed_historical_seed": [
+      "Pygments==2.21.0", "iniconfig==2.3.0", "numpy==2.4.6", "packaging==26.3",
+      "pandas==2.3.3", "pip==22.3.1", "pluggy==1.6.0", "pytest==9.1.1",
+      "python-dateutil==2.9.0.post0", "pytz==2026.4", "setuptools==65.5.0",
+      "six==1.17.0", "tzdata==2026.4"
+    ],
+    "sha256_of_reconstructed_seed": "9cde8e5ab9abba46a9e98826100ed084a0943a77fee7bc232a3c7643334da2eb",
+    "MATCH": true,
+    "sha256_of_current_environment_13_package_subset": "9cde8e5ab9abba46a9e98826100ed084a0943a77fee7bc232a3c7643334da2eb",
+    "diff_current_subset_vs_historical_seed": "IDENTICAL — 0 differences across all 13 packages",
+    "significance": "The accepted historical C3 environment seed is REPRODUCED BYTE-FOR-BYTE on this surface. This is a positive control: it proves the freeze normalisation convention is correct and that the current resolution did not silently drift on any of the 13 historical packages. It also pins the exact normalisation so future runs can reproduce the hash."
+  },
+
+  "transitive_version_differences_from_historical_freeze": {
+    "count": 0,
+    "differences": [],
+    "additions_required_for_C4": [
+      {"name": "pyreadstat", "version": "1.3.6", "why": "required by commission; the SAV/DTA reader for every C4 source read", "in_historical_seed": false},
+      {"name": "pyarrow", "version": "25.0.1", "why": "required by commission and by the retained physical anchor", "in_historical_seed": false},
+      {"name": "narwhals", "version": "2.26.0", "why": "pulled transitively by pyarrow 25.0.1 at current resolution; NOT in the historical seed", "in_historical_seed": false}
+    ],
+    "commission_clause_satisfied": "Commission line 127 required that any transitive-version differences be recorded explicitly and proven not to alter tested C3/C4 behaviour. NO DIFFERENCE EXISTS on any of the 13 historical packages, so no behavioural proof is owed for them. The three additions are reported and analysed below.",
+    "narwhals_behavioural_analysis": "narwhals 2.26.0 enters the process only as a pyarrow dependency. It is not imported by any module on the C4 import closure (verified in 02_ACTUAL_C4_CALL_PATH.json), is not imported by any of the six authoritative court files, and appears in no probe result. It cannot alter the tested C3 or C4 behaviour on this surface.",
+    "duckdb_deliberately_absent": {
+      "installed": false,
+      "required_by_commission": false,
+      "commission_basis": "line 77: 'No duckdb unless exact call-path evidence shows it is needed. C4C2 says it is not on the actual path.'",
+      "independently_confirmed": true,
+      "confirmation": "No module on the C4 import closure imports duckdb; the only two production imports are function-local in pre553_duckdb_direct.py:30 and pre553_r4_compaction.py:318, and neither module has any production importer.",
+      "consequence_observed": "2 tests outside the authoritative court fail with ModuleNotFoundError: No module named 'duckdb'. See 05_AUTHORITATIVE_C3_COURT.json supplementary sweep."
+    }
+  },
+
+  "distribution_hashes": {
+    "note": "sha256 prefixes of the installed dist-info METADATA and WHEEL files, plus compiled-extension hashes for the two decoder-relevant wheels.",
+    "distributions": {
+      "pyreadstat-1.3.6": {"metadata_prefix16": "e53ad082fbc40e48", "wheel_prefix16": "26638731245702a5"},
+      "pyarrow-25.0.1": {"metadata_prefix16": "12ed8d0988a6f715", "wheel_prefix16": "b63fce05f22a6f5d"},
+      "pandas-2.3.3": {"metadata_prefix16": "40ee953dc7ca1558", "wheel_prefix16": "e56b47578e45e542"},
+      "numpy-2.4.6": {"metadata_prefix16": "b082c52ccbe3b880", "wheel_prefix16": "e56b47578e45e542"},
+      "pytest-9.1.1": {"metadata_prefix16": "c5d032518012789c", "wheel_prefix16": "69e6228a0d359581"},
+      "narwhals-2.26.0": {"metadata_prefix16": "7e09d821259f98ca", "wheel_prefix16": "2a8b7e14e5f0cf69"},
+      "python_dateutil-2.9.0.post0": {"metadata_prefix16": "a9d436da322be808", "wheel_prefix16": "f86fedd281ae13b5"},
+      "pytz-2026.4": {"metadata_prefix16": "45216c70eee4d558", "wheel_prefix16": "f86fedd281ae13b5"},
+      "tzdata-2026.4": {"metadata_prefix16": "b022fde14c390c66", "wheel_prefix16": "e1805f098347e309"},
+      "six-1.17.0": {"metadata_prefix16": "562042078c275254", "wheel_prefix16": "a7178d5f925db427"},
+      "pluggy-1.6.0": {"metadata_prefix16": "7438c35ee25a095e", "wheel_prefix16": "370dfa0e3ba1ff95"},
+      "iniconfig-2.3.0": {"metadata_prefix16": "40d773f84e4e112f", "wheel_prefix16": "ff309ddcdd65ebd0"},
+      "packaging-26.3": {"metadata_prefix16": "70fdb89fc4d4a9a0", "wheel_prefix16": "1b68144734c4b667"},
+      "Pygments-2.21.0": {"metadata_prefix16": "1dde075570136774", "wheel_prefix16": "ccec20e2307acd7d"},
+      "setuptools-65.5.0": {"metadata_prefix16": "80c7a3b78ea0dff1", "wheel_prefix16": "1b5e87e00dc87a84"},
+      "pip-22.3.1": {"metadata_prefix16": "6bd08e61ce6ace49", "wheel_prefix16": "1b5e87e00dc87a84"}
+    },
+    "compiled_extensions": {
+      "_readstat_parser.cpython-311-darwin.so": "7700fb3e17fee0f714a6ceced4c325b8",
+      "_readstat_writer.cpython-311-darwin.so": "a5cd73f3f2026e4b34de849072f0cf7e",
+      "_parquet.cpython-311-darwin.so": "62a37af81318fca64d640a318880b898",
+      "_dataset_parquet.cpython-311-darwin.so": "2a99f7b5b5bb71c1191cb8c62649c6be",
+      "_parquet_encryption.cpython-311-darwin.so": "1f9de8f321b667780a5062657e2fe960"
+    },
+    "CROSS_ENVIRONMENT_REPRODUCIBILITY_DATUM": "The freshly installed _readstat_parser (.so sha256 prefix 7700fb3e17fee0f714a6ceced4c325b8), _readstat_writer (a5cd73f3f2026e4b34de849072f0cf7e) and _parquet (62a37af81318fca64d640a318880b898) extensions are BYTE-IDENTICAL to those in the separate pre-existing local environment LOCAL_COURTS/python/fiabc-wvs7-3.11.3. Two independently provisioned environments therefore carry identical pyreadstat 1.3.6 and pyarrow 25.0.1 Darwin binaries. This is positive evidence that the decoder-relevant wheel content is reproducible on this anchor, not merely version-equal."
+  },
+
+  "no_install_on_import": {
+    "verified": true,
+    "how": "Installed once, up front, explicitly, by name and exact version, into a fresh venv. No production or test module performs a pip install at import time. Verified absent from rawlsing_next/, tests/ and .rabochii/.",
+    "packages_installed_by_import": 0
+  },
+  "no_silent_dependency_upgrade": {
+    "verified": true,
+    "how": "Every one of the 13 historical packages was requested with an explicit == pin, plus pyreadstat==1.3.6 and pyarrow==25.0.1 explicitly. The only unpinned arrival was narwhals, pulled transitively by pyarrow, and it is disclosed above.",
+    "packages_upgraded_silently": 0
+  },
+  "no_repo_mutation": {
+    "tracked_files_modified": 0,
+    "rawlsing_next_tree_after": "b0c1ab472cde033e21f1c2f63fbcbea2f0cccef0",
+    "rawlsing_next_tree_before": "b0c1ab472cde033e21f1c2f63fbcbea2f0cccef0",
+    "identical": true,
+    "pytest_cache_created": false,
+    "note": "pytest was invoked with -p no:cacheprovider specifically to avoid writing .pytest_cache into the repository."
+  },
+
+  "reproduce_command": "python3.11 -m venv <fresh-dir> && <fresh-dir>/bin/python -m pip install 'pytest==9.1.1' 'pandas==2.3.3' 'numpy==2.4.6' 'pyreadstat==1.3.6' 'pyarrow==25.0.1' 'Pygments==2.21.0' 'iniconfig==2.3.0' 'packaging==26.3' 'pluggy==1.6.0' 'python-dateutil==2.9.0.post0' 'pytz==2026.4' 'six==1.17.0' 'tzdata==2026.4'",
+  "reproducibility_caveat": "This resolve was performed against live package indexes on 2026-10-02. narwhals arrived at 2.26.0. A future re-resolve could select a different narwhals. Since narwhals is off the C4 path and absent from the authoritative court, that would not affect the qualification result — but it would change the freeze hash. The 13-package historical subset is index-independent because every one of those is exactly pinned."
+}

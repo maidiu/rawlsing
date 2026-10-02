@@ -1,0 +1,97 @@
+{
+  "schema": "PYAT_C4C3_FINAL_DISPOSITION@1.0.0",
+  "lane": "PYAT-C4C3-DARWIN-ANCHOR-RUNTIME-R1",
+  "gate_addressed": "O1-C05",
+  "tree_qualified": "8f7efe690a161902e79358eb31650c238a4c0be8",
+
+  "disposition": "PASS_C4C3_DARWIN_ANCHOR_RUNTIME_QUALIFIED__C3_55_OF_55__FANIN_READY",
+
+  "disposition_allowed_values_considered": {
+    "PASS_C4C3_DARWIN_ANCHOR_RUNTIME_QUALIFIED__C3_55_OF_55__FANIN_READY": {
+      "selected": true,
+      "why": "Every phase completed on the commission's own terms. PHASE 0: 12/12 pinned blobs exact and Darwin/x86_64/CPython 3.11.3 all met. PHASE 1: the historical C3 seed reproduced byte-for-byte (freeze hash 9cde8e5a...) with ZERO transitive-version differences. PHASE 2: P2X_DARWIN_GATES_NOT_ON_C4_PATH independently confirmed. PHASE 3: every C4-relevant reader option and inherited default frozen. PHASE 4: 21 synthetic source-free probes, 0 errors, 0 failures, every commission-required item covered. PHASE 5: the authoritative six-file court returned exactly 55 passed / 0 failed / 0 errors / 0 skipped, twice. PHASE 6: identity, reader-version, byte-order, ru_maxrss and repeat-stability laws frozen, and an execution-surface identifier issued. PHASE 7: 5/5 C1 owner blobs exact, no runtime incompatibility, zero tracked production changes."
+    },
+    "C4C3_DARWIN_ANCHOR_MISMATCH__HQ_ADJUDICATION_REQUIRED": {
+      "selected": false,
+      "why_not": "No mismatch. system==Darwin, machine==x86_64, CPython==3.11.3, pyreadstat==1.3.6, pyarrow==25.0.1 were all verified by direct observation."
+    },
+    "C4C3_DEPENDENCY_ENVIRONMENT_BLOCKER__HQ_ADJUDICATION_REQUIRED": {
+      "selected": false,
+      "why_not": "No blocker. A fresh isolated venv was created outside the repository, every historical package resolved at its exact pin, and the resulting 13-package subset is byte-identical to the accepted historical C3 seed. There were no transitive-version differences to prove away, so the commission's conditional clause at line 127 was satisfied trivially. duckdb's deliberate absence is confirmed irrelevant by PHASE 2, exactly as the commission directed."
+    },
+    "C4C3_SYNTHETIC_READER_BEHAVIOR_BLOCKER__HQ_ADJUDICATION_REQUIRED": {
+      "selected": false,
+      "why_not": "No blocker. All 21 probes completed with zero errors and zero failures. Two entries are recorded as OBSERVED rather than PASS — the DTA extended-missing writer round-trip and the actual date arrival typing — because they are honest measurements, not clean passes. Neither is a blocker: the first is a pyreadstat writer limitation the repository already acknowledges with its own skip, and the second is exactly the O1-C04 evidence the commission asked for. Both are stated as residuals rather than dressed up."
+    },
+    "C4C3_AUTHORITATIVE_C3_COURT_FAILURE__HQ_ADJUDICATION_REQUIRED": {
+      "selected": false,
+      "why_not": "No failure. 55 passed / 0 failed / 0 errors / 0 skipped, reproduced across two independent invocations, with the denominator asserted before the run."
+    }
+  },
+
+  "O1_C05_conditions_status": [
+    {"requirement": "Freeze interpreter", "status": "SATISFIED", "evidence": "CPython 3.11.3, executable recorded, base interpreter sha256 recorded"},
+    {"requirement": "Freeze platform/architecture", "status": "SATISFIED", "evidence": "Darwin 22.6.0 / x86_64 / macOS 13.7.8"},
+    {"requirement": "Freeze decoder/library versions", "status": "SATISFIED", "evidence": "pyreadstat 1.3.6, pyarrow 25.0.1, pandas 2.3.3, numpy 2.4.6, pytest 9.1.1 with dist-info and compiled-extension hashes"},
+    {"requirement": "Freeze exact reader options", "status": "SATISFIED", "evidence": "5 options explicitly passed; 11 inherited options each frozen with its observed pyreadstat 1.3.6 default; ordered-category behaviour frozen at unordered"},
+    {"requirement": "Freeze dependency inventory", "status": "SATISFIED", "evidence": "full pip freeze plus the historical C3 seed reproduced byte-for-byte"},
+    {"requirement": "Runtime qualification on the combined execution tree", "status": "SATISFIED", "evidence": "21 synthetic probes plus the 55/55 authoritative court, on rawlsing_next tree b0c1ab47"},
+    {"requirement": "Distinguish retained physical anchor from C3 source-free anchor", "status": "SATISFIED", "evidence": "both recorded separately with different content and grades; neither used to bridge to the other"},
+    {"requirement": "No install-on-import", "status": "VERIFIED_CLEAN", "evidence": "installed once up front by exact pin; no module installs on import"},
+    {"requirement": "No silent dependency upgrade", "status": "VERIFIED_CLEAN", "evidence": "every historical package explicitly == pinned; the one transitive arrival (narwhals) disclosed and shown to be off the C4 path"}
+  ],
+
+  "what_this_qualification_does_and_does_not_establish": {
+    "establishes": [
+      "The exact combined C1+C3 tree is competent on the Darwin/x86_64 physical anchor with the retained anchor interpreter and decoder versions.",
+      "The accepted C3 source-free court result of 55/55 is REPRODUCED on this tree at this runtime, as a fresh execution rather than an inheritance.",
+      "The accepted C3 historical environment seed is reproduced byte-for-byte on this surface, so the freeze is reproducible and its normalisation convention is now known.",
+      "The D01 declared-encoding admission law, the G01 exact float-token law, the D02 opaque naive date/time carrier and the DTA compatibility read lane all behave correctly on the anchor.",
+      "The physical-metadata digest is READER-LANE BOUND. This is a new, decision-relevant fact for O1-C06."
+    ],
+    "does_not_establish": [
+      "ANY claim about a real survey source. Zero survey files were opened, stat'ed, hashed or decoded. This is a SOURCE-FREE runtime qualification.",
+      "That a physical decode of any of the eight C4 sources will reproduce a retained oracle. That is O1-C03/O1-C07 work under a separate warrant.",
+      "Any upgrade of the accepted C1 fresh-process bridge limitation, the accepted C2 epistemic-origin residual, or the C5/C7 holds.",
+      "That the 11 supplementary failures are acceptable. They are NOT relabelled here and remain HQ's to triage; this lane only established that none is caused by the anchor runtime.",
+      "Equivalence to any non-Darwin or non-x86_64 environment. No such environment was involved and none is claimed."
+    ]
+  },
+
+  "requirements_on_HQ_at_fanin": [
+    "Bind the issued execution-surface identifier C4C3-DARWIN-X86_64-ANCHOR/CPYTHON-3.11.3/PYREADSTAT-1.3.6/PYARROW-25.0.1/PANDAS-2.3.3/NUMPY-2.4.6/PYTEST-9.1.1 into the O1-C06 source warrant, together with the exact reader lane per source, because the physical-metadata digest is lane-bound.",
+    "Retire C4A's pandas collection-blocker exclusion for test_pre553_source_backed_c11_facade.py: it is one of the six authoritative court files and passes 10/10 here.",
+    "Triage the 11 supplementary failures. Eight are a banked content-hash mismatch, one is a banked projection identity/ordinal mismatch, two are the deliberate absence of duckdb. None is an anchor-runtime incompatibility.",
+    "Note residual RES-1: the Stata extended-missing dual-shape branch in the accepted DTA decoder is unprobed by synthetic round-trip and is exercisable only against the real LiTS source under warrant.",
+    "Note that no dependency lock exists in the repository. 01_ENVIRONMENT_LOCK.json supplies the freeze for this surface, but a durable repository lock is still absent."
+  ],
+
+  "verdict": {
+    "authoritative_court": "55 passed / 0 failed / 0 errors / 0 skipped",
+    "synthetic_probes": "21/21 completed, 18 PASS, 2 OBSERVED, 0 errors, 0 failures",
+    "pinned_blobs": "12/12 EXACT",
+    "anchor_requirements": "5/5 MET",
+    "transitive_version_differences": 0,
+    "historical_seed_reproduction": "EXACT",
+    "anchor_runtime_incompatibilities_found": 0,
+    "tracked_production_changes": 0,
+    "raw_survey_reads": 0
+  },
+
+  "verification": {
+    "commission_read_in_full_and_executed_exactly": true,
+    "writes_confined_to_return_directory": true,
+    "implementation_unchanged": true,
+    "raw_survey_access": 0,
+    "C4_live_production": 0,
+    "measured_P2X": 0,
+    "duckdb_installed": false,
+    "self_adopted": false,
+    "combined_tree_owned_by_this_lane": false,
+    "C3_merged_by_this_lane": false,
+    "fabricated_metrics": 0,
+    "provenance_drift": false
+  },
+
+  "terminal": "C4C3_DARWIN_ANCHOR_RUNTIME_RETURNED__HQ_FANIN_REQUIRED"
+}

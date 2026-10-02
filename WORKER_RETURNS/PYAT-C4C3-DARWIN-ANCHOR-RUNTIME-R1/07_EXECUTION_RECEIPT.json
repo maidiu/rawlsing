@@ -1,0 +1,159 @@
+{
+  "schema": "PYAT_C4C3_EXECUTION_RECEIPT@1.0.0",
+  "lane": "PYAT-C4C3-DARWIN-ANCHOR-RUNTIME-R1",
+  "role": "C4C3 — Darwin/x86_64 anchor runtime qualification + C3 55/55",
+  "repository": "maidiu/rawlsing",
+
+  "provenance": {
+    "commissioned_tip": "eba2f4249fb7cd315851ff687269bc43ade19ce8",
+    "commissioned_tip_subject": "HQ174 bind Darwin-anchor C4 runtime qualification",
+    "branch": "agent/opencode-pyat-hq174-c4c3-darwin-anchor-runtime-r1",
+    "tree_under_qualification": "8f7efe690a161902e79358eb31650c238a4c0be8",
+    "head_parent_equals_qualified_tree": true,
+    "rawlsing_next_tree_hash_at_8f7efe690": "b0c1ab472cde033e21f1c2f63fbcbea2f0cccef0",
+    "rawlsing_next_tree_hash_at_head": "b0c1ab472cde033e21f1c2f63fbcbea2f0cccef0",
+    "trees_identical": true,
+    "only_difference_between_qualified_tree_and_head": "WORKER_RETURNS/PYAT-C4C3-DARWIN-ANCHOR-RUNTIME-R1/00_COMMISSION.md (the commission itself)",
+    "merge_9a5752a8ce4a119efd24cbbeedd8cbcda8abbadb_is_ancestor": true,
+    "governing_evidence_read": {
+      "omega_1": "01762d7379be4e423dad3e21bcdcee47c536902d",
+      "c4a": "8f7efe690a161902e79358eb31650c238a4c0be8",
+      "accepted_historical_c3_source_free_execution": "257c2ebfd38d106f1669afbfd701a33e600cf4c5",
+      "accepted_c3_review": "462e6bf1ed514056f9316dad761054e690a7755d"
+    },
+    "provenance_drift": false
+  },
+
+  "PHASE_0_tree_and_host": {
+    "status": "PASS",
+    "disposition_if_failed_would_have_been": "C4C3_DARWIN_ANCHOR_MISMATCH__HQ_ADJUDICATION_REQUIRED",
+    "blob_verification": {"checked": 12, "exact": 12, "drift": 0,
+      "c1_owner_blobs": 5, "accepted_c3_blobs": 6, "facade_blob": 1,
+      "facade": {"path": "rawlsing_next/pre553_source_backed_c11_facade.py", "expected": "8a761119e4a8d68eb291fc4edfadb52e027f8284", "actual": "8a761119e4a8d68eb291fc4edfadb52e027f8284", "status": "EXACT"}},
+    "host": {"macos": "13.7.8 (build 22H730)", "darwin_kernel": "22.6.0", "machine": "x86_64", "python": "CPython 3.11.3", "python_executable": "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11-intel64 (verified 3.11.3) and the uv-managed LOCAL_COURTS cpython-3.11.3-macos-x86_64-none"},
+    "requirements": {"Darwin": "MET", "x86_64": "MET", "CPython 3.11.3": "MET"}
+  },
+
+  "PHASE_1_environment": {
+    "status": "COMPLETE",
+    "isolated_venv_created_outside_repository": true,
+    "venv_path": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/c4c3-env",
+    "historical_c3_freeze_sha_reproduced": "9cde8e5ab9abba46a9e98826100ed084a0943a77fee7bc232a3c7643334da2eb",
+    "historical_seed_reproduced_byte_for_byte": true,
+    "transitive_version_differences_from_historical_freeze": 0,
+    "additions": ["pyreadstat==1.3.6", "pyarrow==25.0.1", "narwhals==2.26.0 (pyarrow transitive)"],
+    "duckdb_installed": false,
+    "duckdb_basis": "commission line 77 plus independent PHASE 2 confirmation that duckdb is off the C4 path",
+    "install_on_import": 0,
+    "silent_upgrades": 0,
+    "repo_mutation": 0
+  },
+
+  "PHASE_2_call_path": {
+    "status": "CONFIRMED",
+    "holding": "P2X_DARWIN_GATES_NOT_ON_C4_PATH",
+    "independently_confirmed": true,
+    "c4_import_closure_modules": 21,
+    "ee_p2x_darwin_court_driver_reachable_from_c4": false,
+    "ee_p2x_darwin_stage_backend_reachable_from_c4": false,
+    "lits_builder_exec_module_reachable_from_c4": false,
+    "duckdb_required_on_c4_path": false,
+    "measured_P2X_run": false
+  },
+
+  "PHASE_3_reader_option_freeze": {
+    "status": "COMPLETE",
+    "pyreadstat_version": "1.3.6",
+    "options_explicitly_passed": ["metadataonly", "apply_value_formats", "user_missing", "encoding", "chunksize"],
+    "options_inherited_and_now_frozen": ["formats_as_category=True", "formats_as_ordered_category=False", "dates_as_pandas_datetime=False", "disable_datetime_conversion=False", "row_limit=0", "row_offset=0", "output_format=None", "usecols=None", "extra_date_formats=None", "extra_datetime_formats=None", "extra_time_formats=None"],
+    "no_unidentified_default_governs_C4": true,
+    "material_finding": "The physical-metadata digest is READER-LANE BOUND, not source-only. encoding and authority_status sit inside the digest payload."
+  },
+
+  "PHASE_4_synthetic_probes": {
+    "status": "COMPLETE",
+    "probes": 21, "pass": 18, "observed": 2, "probe_errors": 0, "failures": 0,
+    "every_commission_required_item_covered": true,
+    "residuals_recorded_not_claimed_as_passes": [
+      "RES-1: pyreadstat 1.3.6 DTA writer does not round-trip missing_user_values, so the Stata extended-token dual-shape branch is unprobed by synthetic round-trip. Independently corroborated by the repository's own skip at tests/test_pre553_sr06_decoder_carrier.py:268.",
+      "RES-2: pandas.Timestamp is a datetime subclass and is therefore MISSED by the D02 exact-type carrier, collapsing to str. A property of the accepted decoder; recorded, not repaired.",
+      "RES-3: numpy datetime64 unit changes D02 arrival typing; bounded by the numpy 2.4.6 pin."
+    ]
+  },
+
+  "PHASE_5_authoritative_court": {
+    "status": "PASS",
+    "required": "55 passed / 0 failed / 0 errors / 0 skipped",
+    "observed": "55 passed / 0 failed / 0 errors / 0 skipped",
+    "denominator_asserted_before_run": 55,
+    "collected_per_file": [9, 8, 13, 9, 6, 10],
+    "repeat_run": "55 passed again — deterministic",
+    "supplementary_sweep_outside_court": {"passed": 48, "failed": 11, "skipped": 1, "c4a_pandas_collection_blocker": "RESOLVED — all 5 previously excluded files now collect", "anchor_runtime_incompatibilities_found": 0}
+  },
+
+  "PHASE_6_resource_identity": {
+    "status": "COMPLETE",
+    "execution_surface_identifier": "C4C3-DARWIN-X86_64-ANCHOR/CPYTHON-3.11.3/PYREADSTAT-1.3.6/PYARROW-25.0.1/PANDAS-2.3.3/NUMPY-2.4.6/PYTEST-9.1.1",
+    "ru_maxrss_unit": "bytes (Darwin)",
+    "r5_big_endian_confirmed": true,
+    "repeat_decode_stable": true
+  },
+
+  "PHASE_7_C1_preservation": {
+    "status": "COMPLETE",
+    "five_c1_owner_blobs": "5/5 EXACT",
+    "c4a_454_receipt_belongs_to_this_lineage": true,
+    "c4a_c1_suite_result": "454 passed / 0 failed / 0 errors / 0 skipped (C4A's own result, at merge 9a5752a8c which is an ancestor of the qualified tree)",
+    "rerun_454_performed": false,
+    "rerun_454_justification": "Commission line 242 — not required unless a runtime incompatibility appears. NO runtime incompatibility appeared. The 11 supplementary failures are banked-fixture/projection identity mismatches and deliberate duckdb absence, none of which is anchor-runtime caused.",
+    "tracked_production_changes_introduced": 0,
+    "working_tree_tracked_modifications": 0
+  },
+
+  "commands_executed_summary": [
+    "git fetch --all --prune; git cat-file -t eba2f4249...",
+    "git checkout -b agent/opencode-pyat-hq174-c4c3-darwin-anchor-runtime-r1 eba2f4249...",
+    "git rev-parse HEAD / HEAD^; git diff --name-only 8f7efe690 HEAD; git rev-parse <rev>:rawlsing_next at both",
+    "git merge-base --is-ancestor 9a5752a8ce4a119efd24cbbeedd8cbcda8abbadb HEAD",
+    "git rev-parse HEAD:<path> for all 12 pinned blobs; compared to expected",
+    "git ls-tree -r --name-only HEAD | grep for the six court paths",
+    "sw_vers; uname -r; uname -m; sysctl -n hw.machine",
+    "python3.11 -m venv <fresh dir outside repo>",
+    "pip install with all 13 historical pins plus pyreadstat==1.3.6 pyarrow==25.0.1",
+    "pip freeze | sort | shasum -a 256  -> compared to 9cde8e5a...",
+    "reconstruction test: sha256 over 4 normalisation variants to discover the freeze convention",
+    "python -m pytest --collect-only -q per court file",
+    "python -m pytest -q -p no:cacheprovider <six court paths>  [RUN 1 and RUN 2]",
+    "python -m pytest -q -p no:cacheprovider <C4A's 5 excluded files>  [supplementary]",
+    "inspect.signature over read_sav / read_dta / read_file_in_chunks",
+    "python <phase4 probe script>",
+    "python <phase6 identity script>",
+    "shasum -a 256 over dist-info METADATA/WHEEL and key .so extensions",
+    "git status --porcelain; git rev-parse HEAD:rawlsing_next"
+  ],
+
+  "constraints_observed": {
+    "no_raw_survey_access": {"observed": true, "opened": 0, "hashed": 0, "stat_ed": 0, "decoded": 0, "files_under_data_opened": 0},
+    "no_C4_live_production": {"observed": true, "governed_source_operations_run": 0},
+    "no_measured_P2X": {"observed": true, "runs": 0},
+    "no_production_code_modification": {"observed": true, "tracked_files_changed": 0},
+    "no_self_adoption": {"observed": true},
+    "no_install_on_import": {"observed": true},
+    "no_silent_dependency_upgrade": {"observed": true},
+    "writes_confined_to_return_directory": {"observed": true}
+  },
+
+  "tests_executed": {
+    "authoritative_court": {"passed": 55, "failed": 0, "errors": 0, "skipped": 0, "runs": 2},
+    "supplementary_outside_court": {"passed": 48, "failed": 11, "errors": 0, "skipped": 1, "runs": 1},
+    "c1_454_suite": {"rerun": false, "reason": "commission line 242; no runtime incompatibility appeared"},
+    "fabricated_counts": 0
+  },
+
+  "environment_defect_reported_not_repaired": {
+    "defect": "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11 is a ZERO-BYTE file that exits 0 emitting nothing; only the python3.11-intel64 alternate (70544 bytes) runs.",
+    "impact_on_this_lane": "NONE. The qualification ran on the uv-managed CPython 3.11.3 standalone build, not the broken launcher.",
+    "reported_because": "It means a future surface identity check must verify an actually-executing interpreter rather than a PATH entry.",
+    "repaired": false
+  }
+}

@@ -1,0 +1,149 @@
+{
+  "schema": "PYAT_C4C3_RESOURCE_IDENTITY_LAW@1.0.0",
+  "lane": "PYAT-C4C3-DARWIN-ANCHOR-RUNTIME-R1",
+  "phase": "PHASE 6 — resource/identity law",
+  "status": "COMPLETE",
+  "execution_surface_identifier": {
+    "value": "C4C3-DARWIN-X86_64-ANCHOR/CPYTHON-3.11.3/PYREADSTAT-1.3.6/PYARROW-25.0.1/PANDAS-2.3.3/NUMPY-2.4.6/PYTEST-9.1.1",
+    "status": "ISSUED",
+    "purpose": "The identifier to be quoted later in the exact source warrant under O1-C06. It names the interpreter, the platform/architecture, and every library whose version is evidence-bearing on the C4 read path.",
+    "valid_only_for": "the exact combined tree rawlsing_next tree hash b0c1ab472cde033e21f1c2f63fbcbea2f0cccef0 AND the reader option freeze in 03_READER_OPTION_FREEZE.json AND the reader lane bound to each source",
+    "not_valid_for": "any other OS, architecture, interpreter, pyreadstat version, pandas version or reader lane"
+  },
+  "environment_identity": {
+    "implementation": "CPython",
+    "python": "3.11.3",
+    "version_full": "3.11.3 (main, May  7 2023, 19:01:25) [Clang 16.0.3 ]",
+    "executable": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/c4c3-env/bin/python",
+    "prefix": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/c4c3-env",
+    "system": "Darwin",
+    "release": "22.6.0",
+    "machine": "x86_64",
+    "platform_string": "macOS-13.7.8-x86_64-i386-64bit",
+    "processor": "i386",
+    "byteorder": "little",
+    "maxsize": 9223372036854775807,
+    "pointer_bits": 64,
+    "in_virtualenv": true,
+    "base_prefix": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none"
+  },
+  "library_versions": {
+    "pyreadstat": "1.3.6",
+    "pyarrow": "25.0.1",
+    "pandas": "2.3.3",
+    "numpy": "2.4.6",
+    "pytest": "9.1.1",
+    "python-dateutil": "2.9.0.post0",
+    "pytz": "2026.4",
+    "tzdata": "2026.4",
+    "six": "1.17.0",
+    "pluggy": "1.6.0",
+    "iniconfig": "2.3.0",
+    "packaging": "26.3",
+    "Pygments": "2.21.0",
+    "setuptools": "65.5.0",
+    "pip": "22.3.1",
+    "narwhals": "2.26.0"
+  },
+  "anchor_requirements_all_met": {
+    "required": {
+      "system": "Darwin",
+      "machine": "x86_64",
+      "cpython": "3.11.3",
+      "pyreadstat": "1.3.6",
+      "pyarrow": "25.0.1"
+    },
+    "observed": {
+      "system": "Darwin",
+      "machine": "x86_64",
+      "cpython": "3.11.3",
+      "pyreadstat": "1.3.6",
+      "pyarrow": "25.0.1"
+    },
+    "all_exact": true
+  },
+  "pyreadstat_reader_version_in_physical_metadata_identity": {
+    "recorded_via": "rawlsing_next/pre553_physical_decoder.py reader_configuration['reader_version'] = getattr(pyreadstat,'__version__',None)",
+    "installed": "1.3.6",
+    "matches_required_1_3_6": true,
+    "why_it_matters": "reader_version is RECORDED into reader_configuration at pre553_physical_decoder.py:534, and closed35_g01_sav_numeric_representation_authority.py and tests/test_r35_i01_physical_metadata.py treat it as identity-bearing. It performs no comparison, so it is not a gate — but it IS evidence-bearing, and it is frozen here.",
+    "gate_status": "NOT_A_GATE__RECORDED_ONLY",
+    "consequence": "A pyreadstat version change would alter the physical-metadata digest and invalidate frozen digests, with no gate firing to warn. Frozen at 1.3.6."
+  },
+  "pyarrow": {
+    "version": "25.0.1",
+    "matches_required_25_0_1": true,
+    "role": "Pinned by the retained physical anchor and by the accepted G01 QUALIFIED_RUNTIME. On this combined tree pyarrow has NO Arrow API read boundary on the governed SAV/DTA -> PhysicalCell -> C11 path; its relevance is the anchor pin plus transitive importability. It must be held at exactly 25.0.1 because the retained anchor names it."
+  },
+  "host_byte_order_and_R5_big_endian_behaviour": {
+    "host_byteorder": "little",
+    "r5_float64_bits_via_struct_gt_d": "3ff0000000000000",
+    "explicit_big_endian_proof": {
+      "struct_pack_gt_d_1.0": "3ff0000000000000",
+      "struct_pack_little_d_1.0": "000000000000f03f",
+      "host_is_little_endian": true,
+      "r5_uses_big_endian_explicitly": true,
+      "consequence": "R5 float64 bit tokens are host-byte-order independent by construction"
+    },
+    "roundtrip_9_authorised_codes": {
+      "1": "3ff0000000000000",
+      "2": "4000000000000000",
+      "3": "4008000000000000",
+      "4": "4010000000000000",
+      "5": "4014000000000000",
+      "-1": "bff0000000000000",
+      "-2": "c000000000000000",
+      "-4": "c010000000000000",
+      "-5": "c014000000000000"
+    },
+    "measured_verdict": "R5 float64 bit tokens are HOST-BYTE-ORDER INDEPENDENT by construction: the codec uses struct '>d' (explicit big-endian), which is why on this LITTLE-ENDIAN host 1.0 encodes as 3ff0000000000000 rather than the little-endian 000000000000f03f. All nine G01-authorised codes round-tripped."
+  },
+  "ru_maxrss_unit_law": {
+    "system": "Darwin",
+    "machine": "x86_64",
+    "ru_maxrss_raw": 97570816,
+    "unit": "bytes",
+    "declared_r8b_law": "DARWIN_RU_MAXRSS_ALREADY_BYTES",
+    "matches_declared_law": true,
+    "if_interpreted_as_kibibytes_would_be": 99912515584,
+    "note": "ru_maxrss is BYTES on Darwin and kibibytes on Linux; bound for THIS surface only."
+  },
+  "repeat_synthetic_decode_stability": {
+    "see": "04_SYNTHETIC_READER_PROBES.json probe DTA-3",
+    "repeat_runs": 2,
+    "digests_identical": true,
+    "row_counts_identical": true,
+    "digest_encoding_lane": "5f58388491b1e41424b177f966c5d61032f5f88f344f0403cfad203ca19f315a",
+    "digest_metadata_only_lane": "f9148f36ba2b58a8a6386c4a7f8fff796dfb6a0a4a4fc7418043ae8849f727e6",
+    "READER_LANE_BOUND": true,
+    "statement": "Decode is repeatable within a lane. Across lanes the digest differs because reader_configuration — carrying encoding and authority_status — is inside the digest payload. file_metadata itself was identical across lanes (0 differing keys), so the source-derived portion IS stable; only the reader-lane overlay changes the digest.",
+    "LAW": "For any frozen physical-metadata digest D of source S on reader lane L, D is valid only for (S, L). A source warrant must bind both."
+  },
+  "two_distinct_anchors_preserved": {
+    "retained_physical_anchor": {
+      "platform": "Darwin",
+      "machine": "x86_64",
+      "cpython": "3.11.3",
+      "pyreadstat": "1.3.6",
+      "pyarrow": "25.0.1",
+      "grade": "PHYSICAL",
+      "source": "HQ_HANDOFF/checkpoints/20260925T0219-0400/CURRENT.json and the accepted G01 QUALIFIED_RUNTIME",
+      "status": "HONOURED_EXACTLY_ON_THIS_SURFACE"
+    },
+    "accepted_c3_source_free_anchor": {
+      "python": "CPython 3.11.3",
+      "pytest": "9.1.1",
+      "pandas": "2.3.3",
+      "numpy": "2.4.6",
+      "pip_freeze_sha256": "9cde8e5ab9abba46a9e98826100ed084a0943a77fee7bc232a3c7643334da2eb",
+      "records_os_or_architecture": false,
+      "records_pyreadstat_or_pyarrow": false,
+      "grade": "SOURCE_FREE",
+      "status": "REPRODUCED_BYTE_FOR_BYTE_ON_THIS_SURFACE"
+    },
+    "distinction_preserved": true,
+    "statement": "The physical anchor is honoured because this IS the Darwin/x86_64 anchor surface, so no equivalence argument is owed. The C3 source-free anchor was reproduced byte-for-byte by freeze hash and then extended with pyreadstat/pyarrow/narwhals for the C4 reader lane. The C3 anchor still records no OS, architecture or reader-library version, and it was NOT used to bridge to the physical anchor."
+  },
+  "no_provenance_drift": true,
+  "raw_survey_access": 0
+}
