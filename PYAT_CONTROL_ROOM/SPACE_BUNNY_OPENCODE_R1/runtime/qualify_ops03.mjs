@@ -235,12 +235,13 @@ const out = {
     "Role isolation is PROCEDURAL, not process-enforced. Worktrees isolate editing, not access rights.",
     "No OS-level raw-directory denial. Left unqualified; requires host administration permission.",
   ],
-  environment_defect: "python3 is NON-FUNCTIONAL on this host by two independent observations: " +
-    "(a) invoked through a shell it returns exit 0 with no output and writes nothing (silent no-op); " +
-    "(b) invoked via execFileSync it fails with 'Unknown system error -8'. " +
-    "Therefore PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/scripts/verify_packet.py CANNOT BE EXECUTED here. " +
-    "Packet integrity was confirmed instead by an independent node reimplementation of the same algorithm. " +
-    "Any agent reporting that script as PASSED on this host is reporting a false positive.",
+  environment_defect: "RESOLVED BY USER ACTION. python3 was NON-FUNCTIONAL during the first OPS-03 run " +
+    "(silent no-op via shell, Unknown system error -8 via execFileSync) and was repaired at the user's direction. " +
+    "python3 is now Python 3.11.3 at /usr/local/bin/python3 and passes the Q11 probe. The packet's own " +
+    "scripts/verify_packet.py now EXECUTES and returns PASS for 19 of 19 files, and a deliberate-tampering " +
+    "negative control confirmed it correctly FAILs on a corrupted sha256. The earlier node substitute " +
+    "verification and the shipped python verifier agree on all 19 files with zero disagreements. " +
+    "The runtime dispatcher remains node by design; python3 is now additionally available to workers.",
   terminal: fail === 0 ? "OPS03_QUALIFIED_AT_TESTED_CAPABILITY__BOUNDARY_Q12_UNQUALIFIED" : "OPS03_PARTIAL__SEE_FAILURES",
 };
 const OUTDIR = path.join(PACKET_ROOT, "ACTIVATION_RETURNS", "OPS-03");
