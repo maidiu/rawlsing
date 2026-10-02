@@ -687,4 +687,57 @@ A healthy system should include:
 
 If nearly all ten become major explanatory bridges, the generator is narratively saturated.
 
+# 24. More coherent vs more reality-responsive
+
+## Tension
+
+A powerful self-retcon may increase internal coherence while decreasing accommodation of contradictory reality.
+
+Therefore:
+`COHERENCE ↑`
+does not imply:
+`REALITY CONTACT ↑`.
+
+Hostile test:
+generate a framework that elegantly explains every counterexample as confirmation.
+If the architecture rates that as high integration merely because contradiction disappears from actor awareness, it fails.
+
+---
+
+# 25. Generous self-revision vs final integration
+
+## Tension
+
+A later framework can be:
+- kinder;
+- more plural;
+- more evidence-tolerant;
+- more capable of holding prior selves;
+
+while still omitting relevant material.
+
+Hostile test:
+can age-35 Nadia become substantially more capacious than age-29 Nadia without the engine treating C as the final synthesis/truth?
+
+---
+
+# 26. Powerful liberation vs new enclosure
+
+## Tension
+
+A strong interpretive framework can be necessary to escape one domination while creating new exclusions.
+
+Hostile test:
+can the same framework:
+- correctly expose abuse/oppression;
+- increase agency;
+- preserve life;
+and simultaneously:
+- flatten ambiguity;
+- brutalize memories;
+- externalize some contradiction;
+- colonize Horizon?
+
+If the engine forces one moral sign, it fails.
+
 
