@@ -1,0 +1,111 @@
+{
+  "schema": "PYAT_D2P_PROHIBITION_AND_PROVENANCE_REVIEW@1.0.0",
+  "lane": "PYAT-R2-LITS-D2P-PORTABLE-IMPORTED-R1",
+  "phases": "PHASE 2 (checkpoint identity evidence) and PHASE 7 (prohibition audit)",
+  "reviewer_estate": "StarriyMac (macOS 13.7.8 22H730, Darwin 22.6.0, x86_64)",
+  "VERDICT": "PASS_ON_PROHIBITIONS__CHECKPOINT_BODY_NOT_INDEPENDENTLY_VERIFIABLE_ON_THIS_ESTATE",
+
+  "PHASE_2_CHECKPOINT_IDENTITY_EVIDENCE": {
+    "commission_requirement": "Verify the packet CONSISTENTLY reports estate NoviyMac, observed bytes 3404445161, observed SHA-256 2704fd3f..., identity gate PASS, no raw LiTS source locator in the extraction script, and checkpoint as the only authorized large input.",
+
+    "consistency_across_packet": {
+      "files_examined": ["01_CHECKPOINT_IDENTITY.json", "00_RETURN.md", "07_EXTRACTION_SCRIPT.py", "08_PACKET_MANIFEST.json", "06_B001_B002_B003_CLOSURE.json"],
+      "estate_reported": {"01": "NoviyMac", "00": "NoviyMac", "script:155-168": "NoviyMac", "08": "NoviyMac"},
+      "estate_consistent": true,
+      "observed_bytes": {"value": 3404445161, "in_01": true, "in_00": true, "in_script_constant": true, "consistent": true},
+      "observed_sha256": {"value": "2704fd3fadc9c898a512183aaf5eebf0ca48d78c47e75a19d47e17281eaa5726", "in_01": true, "in_00": true, "in_script_constant": true, "in_manifest": true, "consistent": true},
+      "identity_gate": {"in_01": "PASS", "in_00": "PASS", "basis_in_01": "observed_bytes and freshly streamed sha256 both exact"},
+      "deferred_markers_carry_the_same_checkpoint_sha256": "Yes — all 120 markers in 04 record retained_checkpoint_sha256 == 2704fd3f...",
+      "cross_lane_consistency_datum": "One AuthoritySnapshot preimage embeds a retained reader_config of {reader: pyreadstat, reader_version: 1.3.6, python: 3.11.3, encoding: latin1, apply_value_formats: false, user_missing: true, format: DTA} and a retained qualified_runtime string 'CPython 3.11.3 / pyreadstat 1.3.6'. That is independent internal corroboration that the retained LiTS reader configuration agrees with the Darwin/x86_64 anchor runtime frozen by lane C4C3."
+    },
+
+    "no_raw_lits_source_locator_in_extraction_script": {
+      "VERIFIED": true,
+      "method": "AST import extraction plus literal scan of all 592 lines.",
+      "results": {"'.dta'": 0, "'.sav'": 0, "read_sav": 0, "read_dta": 0, "pyreadstat": 0, "duckdb": 0, "rawlsing_next": 0},
+      "only_path_constants": ["RAWLSING_ROOT", "CHECKPOINT_RELPATH (under LOCAL_CUSTODY/...)", "DEFAULT_CHECKPOINT derived from the two above"],
+      "checkpoint_is_the_only_authorized_large_input": "CONFIRMED — the single document read is the governed checkpoint; everything else is its retained material."
+    },
+
+    "IDENTITIES_RECORDED_BUT_NOT_VERIFIED__NOT_CONVERTED_TO_PASS": {
+      "checkpoint_identity": {
+        "value": "3fab15f37db629f0ee24189620c65eff944d8a36c4b4509abb6b8bb2ea69c33f",
+        "noviymac_disclosure": "NOT_VERIFIED_HERE -- recorded as commissioned; no field carrying this identity was located in the permitted retained material scanned.",
+        "reviewer_position": "ACCEPTED AS AN EXPLICIT NON-VERIFICATION. This reviewer did NOT verify it and does NOT upgrade it. It is carried forward as recorded-but-unverified.",
+        "commission_compliance": "Commission line 162 — 'Do not convert that disclosure into a false PASS' — honoured."
+      },
+      "canonical_closure_identity": {
+        "value": "f264dd8f83a0794716583d1ea8445947cc9470b99475e5d51fc2383e7196f415",
+        "noviymac_disclosure": "NOT_VERIFIED_HERE -- recorded as commissioned; no field carrying this identity was located in the permitted retained material scanned.",
+        "reviewer_position": "ACCEPTED AS AN EXPLICIT NON-VERIFICATION. Not verified, not upgraded, carried forward as recorded."
+      },
+      "commission_sufficiency_ruling": {
+        "question": "Is the document hash plus exact retained canonical closure content sufficient for this export acceptance grain?",
+        "ruling": "SUFFICIENT_AT_THIS_GRAIN",
+        "reasoning": "Commission line 164 states the FF02 blockers bind to the exact checkpoint DOCUMENT SHA, and do not require inventing a second field the checkpoint body does not self-carry. The document SHA is fixed and pinned in four independent places inside the packet (script constant, identity record, manifest, and all 120 deferred markers), and is internally consistent everywhere. Requiring `checkpoint_identity` or `canonical_closure_identity` to be found inside the retained material would require the checkpoint to carry fields NoviyMac's permitted scan did not find. Treating their absence as a blocker would demand invention, which the commission forbids.",
+        "explicit_limitation": "This ruling accepts the grain, not the unverified values. The two identities remain unverified."
+      }
+    },
+
+    "REVIEWER_VERIFICATION_LIMIT_ON_THE_CHECKPOINT": {
+      "checkpoint_present_on_starriymac": false,
+      "LOCAL_CUSTODY_present_on_starriymac": false,
+      "what_this_reviewer_VERIFIED": [
+        "that the packet reports the commissioned bytes, SHA-256, estate and identity gate CONSISTENTLY across five files",
+        "that the checkpoint document SHA is pinned identically in the script constant, the identity record, the manifest, and all 120 deferred-body markers",
+        "that the extraction script's hash gate compares observed bytes and a freshly streamed SHA-256 against exactly those constants BEFORE any JSON is parsed"
+      ],
+      "what_this_reviewer_DID_NOT_verify": [
+        "the actual 3404445161-byte document's SHA-256 — the document is absent from this estate by commission direction",
+        "that the extraction is byte-reproducible from the checkpoint — the script could not be re-executed here",
+        "that the 120 withheld member digests are correct — the withheld bodies are absent by design",
+        "that the literal key cross_schema_logical_candidate_bindings has 0 raw occurrences in the checkpoint",
+        "the 18 retained P2 lane block contents as they exist in the checkpoint"
+      ],
+      "classification": "ESTATE-ABSENCE_LIMIT__NOT_A_PACKET_DEFECT",
+      "why_not_blocking": "The commission directs that the checkpoint NOT be copied. Independent checkpoint verification is therefore outside this lane's reach by design. Everything the packet itself asserts is internally consistent and was checked; the unverifiable residue is confined to facts that require the absent document."
+    }
+  },
+
+  "PHASE_7_PROHIBITION_AUDIT": {
+    "method": "Whole-packet literal and case-insensitive scan for each prohibited surface, plus AST import analysis of the extraction script, plus characterisation of every residual hit.",
+    "accepted_claims_and_this_reviewers_finding": {
+      "raw_lits_source_reads": {"noviymac": 0, "reviewer_scan": "0 occurrences of .dta / .sav / any survey locator; only 3 absolute paths in the whole packet, all of them the Rawlsing root, the packet directory, and the governed checkpoint path", "agrees": true},
+      "raw_source_hashes_and_stats": {"noviymac": 0, "reviewer_scan": "no source file referenced anywhere", "agrees": true},
+      "source_decoder_calls": {"noviymac": 0, "reviewer_scan": "extraction script imports only stdlib plus ijson; pyreadstat occurs once in the whole packet, and only as a retained reader_config STRING VALUE inside an AuthoritySnapshot preimage, never as an invocation", "agrees": true},
+      "i03_runs": {"noviymac": 0, "reviewer_scan": "i03 occurs only inside a retained authority_id string 'urn:rawlsing:pre553:as2b:lits1:authority:i03_query' and inside retained governed_operations values such as AS2B_LITS1_I03_QUERY. These are retained identifiers, not an I03 execution.", "agrees": true},
+      "i05_runs": {"noviymac": 0, "reviewer_scan": "i05 occurs only as the checkpoint filename current_i05_materialization_checkpoint_v3.json and the retained field name pre553_i05_candidate_hash. The script READS an I05 checkpoint; it does not RUN one.", "agrees": true},
+      "candidate_abc_runs": {"noviymac": 0, "reviewer_scan": "'Candidate A/B/C' and candidate_abc_runs occur ONLY inside the zero-counter rows of 00_RETURN.md and 08_PACKET_MANIFEST.json, i.e. the claim itself. No Candidate A/B/C content or execution.", "agrees": true},
+      "p2x_runs": {"noviymac": 0, "reviewer_scan": "'P2X' and p2x_runs occur ONLY inside the zero-counter rows. No P2X content or execution.", "agrees": true},
+      "production_mutations": {"noviymac": 0, "reviewer_scan": "rawlsing_next tree hash at the commission tip b0c1ab472cde033e21f1c2f63fbcbea2f0cccef0 is unchanged by this lane; no tracked file outside the return directory was modified", "agrees": true},
+      "git_operations_on_noviymac": {"noviymac": 0, "reviewer_scan": "Cannot verify NoviyMac's git history. The packet is a plain directory with no .git, and its own recorded counters are internally consistent. Carried as NoviyMac's evidenced claim, not independently confirmed.", "agrees": "CARRIED_AS_CLAIM"},
+      "semantic_rows_reconstructed": {"noviymac": 0, "reviewer_scan": "zero_reconstructed_semantic_rows: true in 06, and consistent with recomputation — every exported digest recomputed from its own included retained body (50/50 B001 receipt preimages, 24/24 snapshot preimages, 50/50 B003 bindings)", "agrees": true},
+      "retained_checkpoint_modified": {"noviymac": 0, "reviewer_scan": "The script opens the checkpoint 'rb' only (lines 118, 178, 339) and has no write path to it. Accepted as claimed.", "agrees": true}
+    },
+    "retained_checkpoint_read_hash_is_allowed": "Acknowledged per commission line 297. The checkpoint read/hash is not raw survey access and is not counted as such.",
+    "contradictions_found": 0,
+    "claim_exceeding_packet_evidence": "None identified. Every NoviyMac counter is a zero-count, and each was independently corroborated by scan rather than accepted on assertion.",
+    "this_reviewers_own_prohibitions": {
+      "raw_survey_files_opened": 0,
+      "raw_survey_files_hashed": 0,
+      "raw_survey_files_decoded": 0,
+      "c4_executed": false,
+      "production_code_mutated": false,
+      "imported_noviymac_files_modified": 0,
+      "self_adopted": false
+    }
+  },
+
+  "CROSS_LANE_CONSISTENCY_DATUM": {
+    "finding": "A retained AuthoritySnapshot preimage inside the packet embeds reader_config {reader: pyreadstat, reader_version: 1.3.6, python: 3.11.3, encoding: latin1, apply_value_formats: false, user_missing: true, format: DTA} and qualified_runtime 'CPython 3.11.3 / pyreadstat 1.3.6'.",
+    "significance": "This is independent, packet-internal corroboration that the retained LiTS reader configuration is consistent with the Darwin/x86_64 anchor runtime frozen by lane C4C3 (CPython 3.11.3 / pyreadstat 1.3.6 / pyarrow 25.0.1 / encoding latin1). Recorded as a consistency observation for HQ fan-in, NOT as a runtime qualification performed by this lane."
+  },
+
+  "UNRESOLVED_CARRIED_FORWARD": [
+    "checkpoint_identity 3fab15f3... remains recorded-but-unverified",
+    "canonical_closure_identity f264dd8f... remains recorded-but-unverified",
+    "the 120 withheld EmpiricalFact member digests remain unverified on this estate",
+    "the packet's 0-occurrence claim for the literal cross_schema_logical_candidate_bindings key remains NoviyMac's evidenced claim",
+    "NoviyMac's 0-git-operations claim cannot be independently confirmed from StarriyMac"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "B001": {
+    "candidate_receipt_rows": 50,
+    "reason": "50 retained DiscoveryResultReceipt preimages each carry an explicit retained semantic_fields.candidate_identity.candidate_hash, so the candidate->receipt association is explicit in retained material. authority_snapshot_refs, dependency_refs, winning_predicate_ref, source_release_refs and replay_ref exported verbatim per receipt. No ordering-based pairing.",
+    "required": 50,
+    "status": "CLOSED"
+  },
+  "B002": {
+    "authority_snapshots": 24,
+    "family_counts": {
+      "DiscoveryResultReceipt": 50,
+      "EmpiricalFact": 60,
+      "EmpiricalPredicate": 35,
+      "EmpiricalQuerySpec": 63
+    },
+    "per_object_rows": 208,
+    "reason": "24 retained AuthoritySnapshot preimages exported with their exact retained AuthorityRef triples; 208 per-object rows exported with exact retained per-object authority_snapshot_refs (no family-level substitution). EmpiricalFact retained preimage payload deferred by exact canonical digest for NoviyMac disk capacity; authority bindings themselves are complete and exact.",
+    "required_authority_snapshots": 24,
+    "required_per_object_rows": 208,
+    "status": "CLOSED"
+  },
+  "B003": {
+    "cross_schema_rows": 50,
+    "export_mode": "RETAINED_CROSS_SCHEMA_LOGICAL_BINDING",
+    "p2_memberwise_mappings_verified": 18,
+    "reason": "The literal key cross_schema_logical_candidate_bindings is absent from the checkpoint (0 raw occurrences). The same retained material IS present under retained contract FIABC_LITS_CROSS_SCHEMA_LOGICAL_CANDIDATE@1.0.0: 50 native_candidate_provenance rows joined 1:1 to 50 logical_candidate_identity rows on explicit retained logical_candidate_key, each row carrying memberwise role_bindings from historical logical member (logical_condition_atom_ids, logical_query_template_id) to current pre553_i05_candidate_hash with current_predicate_ref and current_query_ref. 18 rows are verified as the already-qualified P2 memberwise mappings from explicit retained identity (lane=='P2' on both retained rows AND logical_candidate_key present in the retained 18-key P2 lane block; rule_id D02_P2_HIGHER_ORDER_K3). No P2 classifier inferred.",
+    "required_p2_memberwise_mappings": 18,
+    "status": "CLOSED"
+  },
+  "deferred_payload_bytes_withheld": 3276820474,
+  "deferred_payload_objects": 60,
+  "schema": "PYAT_D2P_BLOCKER_CLOSURE@1",
+  "validation_gaps": [],
+  "zero_reconstructed_semantic_rows": true
+}
