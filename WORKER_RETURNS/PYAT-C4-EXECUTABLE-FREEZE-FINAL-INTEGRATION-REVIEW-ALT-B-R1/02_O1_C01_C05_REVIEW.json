@@ -1,0 +1,237 @@
+{
+  "schema": "PYAT_C4_FINAL_INTEGRATION_REVIEW_ALT_B__O1_C01_C05_REVIEW@1.0.0",
+  "lane": "PYAT-C4-EXECUTABLE-FREEZE-FINAL-INTEGRATION-REVIEW-ALT-B-R1",
+  "governing_omega1": "01762d7379be4e423dad3e21bcdcee47c536902d",
+  "combined_execution_tree": "8f7efe690a161902e79358eb31650c238a4c0be8",
+  "rawlsing_next_tree_hash": "b0c1ab472cde033e21f1c2f63fbcbea2f0cccef0",
+
+  "O1_C01_combined_tree": {
+    "fanin_claim": "CLOSED_BOUND",
+    "my_verdict": "CONFIRMED",
+    "combined_tree_binds": {
+      "current_successor_AT07_identities": {
+        "forward": "01c381d3f3c386cfc22fd2f57b8e2c244771ddf1529d4f8ab8c7b1cf41bd50dd",
+        "reverse": "a3bd7e85ae14babb5ac5a12b0bcc57a8cdf3eccf8f43394895903dc43aca40ca",
+        "agreement": "4-WAY IDENTICAL across Omega-1 identity_rules, C4B 02_AUTHORITY_API_CONSUMER_FREEZE, fan-in 01 and fan-in 03",
+        "status": "CONFIRMED"
+      },
+      "source_backed_C11_facade": {"path": "rawlsing_next/pre553_source_backed_c11_facade.py", "blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284", "blob_exact": true, "public_apis_bound": ["project_c11_candidate_from_physical_cells", "build_validated_source_backed_c11_release", "build_validated_source_backed_c11_release_from_stream", "build_source_backed_c11_repository", "execute_source_backed_empirical_query"], "status": "CONFIRMED", "note": "This facade test file is one of the six AUTHORITATIVE C3 court files (10 tests) per C4C3. C4A had excluded it purely for missing pandas; C4C3 retired that exclusion. The facade is therefore inside, not outside, the authoritative denominator."},
+      "route_B_execution_owner": {"see": "route_B_producer_adjudication"},
+      "analytical_composition": {"path": "rawlsing_next/pre553_analytical_composition.py", "blob": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b", "public_api": "compose_positioned_subject_possibility", "blob_exact": true, "status": "CONFIRMED"},
+      "empirical_possibility_provider": {"path": "rawlsing_next/pre553_empirical_possibility_provider.py", "blob": "23167aa25291fb148b1e3cf210ac33fe7769b783", "public_api": "provide_empirical_possibility_slice", "replay_api": "replay_empirical_possibility_slice", "direct_evaluation_api": "evaluate_generated_slice_directly", "handwritten_slice_exclusion": "assert_provider_public_api_excludes_handwritten_slice", "blob_exact": true, "status": "CONFIRMED"},
+      "named_positioned_subject_consumer": {"path": "rawlsing_next/source_backed_positioned_subject_possibility.py", "blob": "62e5eced47b64512f47b004e3e13a6ef3fe21de7", "public_api": "evaluate_positioned_subject_possibility", "blob_exact": true, "identity_proof": "named verbatim in the provider's own docstring at pre553_empirical_possibility_provider.py:14 as the accepted public possibility consumer, per C4C3 02_ACTUAL_C4_CALL_PATH.json", "status": "CONFIRMED"},
+      "lifecycle_currentness_owner": {"path": "rawlsing_next/pre553_authority_maintenance.py", "blob": "547e6bf20354f38179a0e2600de64c7cb2260ea0", "owner": "AuthorityMaintenanceExecutor", "blob_exact": true, "status": "CONFIRMED"},
+      "replay_dependency_owner": {"path": "rawlsing_next/pre553_analytical_replay_dependency.py", "blob": "47e65aad5e0a8df7af6fda72fc8807a002e556ce", "public_apis": ["AnalyticalDependencyRegistry", "resolve_current_analytical_product", "build_owner_recompiler", "transition_analytical_dependencies", "assert_closure_covers_registered_products", "assert_replay_claim"], "blob_exact": true, "status": "CONFIRMED"}
+    },
+    "c4b_preconditions_now_satisfied": {
+      "c4b_required_g01_owner": "31a9afd7d91ed4cb2fb1c1aab3ef86a5fdda1f85",
+      "c4b_required_physical_decoder": "d3d828c171ea9fdd0e90563aff6ef705f5aae2cf",
+      "c4b_required_r5_codec": "6000a1704d713f65e07610d81e9b3fd8bdd515ca",
+      "all_present_and_exact_at_head": true,
+      "c4b_observed_on_its_own_c1_only_base": {"g01_owner": "ABSENT", "physical_decoder": "d2a074a41fb556a1cd5928a5fe1421ef3672a4e5", "r5_codec": "72f8f3c03ed065e86fea4e76bb17f8e06c2bf540"},
+      "my_adjudication": "NOT_DRIFT__SUPERSEDED_STALE_BASE_OBSERVATION",
+      "reasoning": "C4B's precondition is an execution-head obligation, not a claim that those blobs existed on C4B's base. I resolved all three at head and they are exact. C4B's own execution_preconditions record states the requirement as 'Execution head must descend from accepted C3 integration or independently prove exact blob equivalence'. The obligation is met. The fan-in's characterisation as a stale-base observation rather than a cross-owner conflict is correct."
+    }
+  },
+
+  "route_B_producer_adjudication": {
+    "path": "rawlsing_next/pre553_route_b_production.py",
+    "blob": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+    "declared_contract": "PYAT_M01_ROUTE_B_PRODUCTION_COMPOSITOR@1.0.0",
+    "fanin_disclosure": "FAN_IN_OBSERVED__NOT_NAMED_BY_C4B",
+    "fanin_disclosure_is_factually_correct": true,
+    "c4b_names_a_route_b_producer": false,
+    "c4b_components_named": ["analytical_composition", "empirical_possibility_provider", "positioned_subject_consumer", "lifecycle_currentness_owner", "replay_dependency_owner", "source_backed_c11_facade", "c3_physical_owners_g01_d01_d02"],
+
+    "my_independent_determination": {
+      "method": "Searched all 330 files of rawlsing_next at head for any declaration of PYAT_M01_ROUTE_B_PRODUCTION_COMPOSITOR or any definition of execute_route_b_production; then read the module's docstring and full import list from the git blob.",
+      "modules_declaring_the_contract": ["rawlsing_next/pre553_route_b_production.py"],
+      "modules_defining_the_entry_point": ["rawlsing_next/pre553_route_b_production.py"],
+      "uniqueness": "UNIQUE",
+      "module_role_evidence": "Docstring: 'PYAT M01 selected Route-B execution compositor. This module packages already-governed PRE553 owners. It does not infer source meaning, create authority, adjudicate learned relations, publish/current-select learned products, perform structural admission, or affect actor/V3 state.' It composes the source-backed C11 facade, C11 repository, discovery-exact, empirical authority/objects and carrier execution, and emits a deterministic replay receipt.",
+      "fit_to_planned_C4_full_LiTS_route": "EXACT",
+      "verdict": "CORRECT_AND_UNIQUE_CURRENT_OWNER__NOT_INCIDENTAL"
+    },
+
+    "provenance_correction": {
+      "commission_language": "the fan-in-added Route-B producer binding",
+      "accurate_reading": "The fan-in added the BINDING, not the module.",
+      "evidence": "Blob 2385cd32 was introduced by commit 903c262e4 'Fix M01 authority preimage canonical verification', superseding 6560d7a9 from 3424140e6 'Implement HQ117 M01 Route-B execution compositor'. It is present and unchanged at 9a5752a8, 8f7efe690 and 8ff40d37. Zero production blobs were created or changed by the fan-in.",
+      "classification": "TERMINOLOGY_PRECISION__NO_SUBSTANTIVE_DEFECT"
+    },
+
+    "downstream_importers_observed": ["rawlsing_next/pre553_learned_world_composition.py", "rawlsing_next/tests/test_pre553_j_role_certification.py", "rawlsing_next/tests/test_pre553_learned_empirical_adjudication.py", "rawlsing_next/tests/test_pre553_learned_world_composition.py", "rawlsing_next/tests/test_pre553_route_b_production.py"],
+    "downstream_note": "The production importer is the M01 learned-world-composition module, an adjacent M01 lane module, not part of the C4 LiTS execution path. The Route-B compositor is thus the M01 Route-B execution owner, consistent with the binding."
+  },
+
+  "O1_C01_challenge_tests": {
+    "did_the_combined_tree_really_bind_everything_O1_C01_names": true,
+    "did_I_accept_the_route_b_binding_only_because_the_fanin_named_it": false,
+    "evidence_used_instead": "independent uniqueness search over the whole rawlsing_next tree, module docstring and import graph, plus an independent re-derivation of the static import closure"
+  },
+
+  "O1_C02_workload": {
+    "fanin_claim": "CLOSED_BOUND",
+    "my_verdict": "CONFIRMED",
+    "source_sha256_agreement": {
+      "compared": ["OMEGA1_01762d73", "C4B_c2af4f61", "FANIN_02_matrix", "WARRANT_CANDIDATE_04"],
+      "SRC02": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+      "SRC06": "6a5cbad637ce1546833a1d4812ba6d1e8d75f85b5b199b0cf3ec5cf456068dbc",
+      "SRC08": "ac0b8bc1ddb2fa6b952417e35b6379ce6a2cf8596776a43282ba44f48e0ae1a2",
+      "SRC12": "66252a92c59bf6759b79a6b35b2be658b98a433373212a70c8ec94755d3e02ec",
+      "SRC14": "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379",
+      "SRC26": "ff5cef18c87969026e7f993d09f10c38a547bf81d5d398784fb59b960b7b0a40",
+      "SRC27": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+      "SRC35": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+      "all_eight_agree_four_way": true,
+      "SRC35_in_warrant_caveat": "SRC35 is correctly absent from the warrant's authorized_sources.keys. Its SHA-256 appears only under bound_globals.oracle_bindings.SRC35 and there matches C4B exactly."
+    },
+    "unchanged_set": ["SRC02", "SRC06", "SRC08", "SRC12", "SRC14", "SRC26", "SRC27", "SRC35"],
+    "read_economy_three_way_agreement": {
+      "fresh_full_route": {"omega1": ["SRC27"], "c4b": ["SRC27"], "fanin": ["SRC27"], "agree": true},
+      "bounded_fresh_physical_only": {"omega1": ["SRC02", "SRC06", "SRC08", "SRC12", "SRC14", "SRC26"], "c4b": ["SRC02", "SRC06", "SRC08", "SRC12", "SRC14", "SRC26"], "fanin": ["SRC02", "SRC06", "SRC08", "SRC12", "SRC14", "SRC26"], "agree": true},
+      "retained_comparator": {"omega1": ["SRC35"], "c4b": ["SRC35"], "fanin": ["SRC35"], "agree": true},
+      "excluded_fresh_reads": {"omega1": 0, "c4b": 0, "fanin": 0, "agree": true}
+    },
+    "exact_variables_and_ordinals": [
+      {"source": "SRC02", "omega1": [["Q10B", 58]], "c4b": [["Q10B", 58]], "fanin": [["Q10B", 58]], "warrant": [["Q10B", 58]], "agree": true},
+      {"source": "SRC06", "omega1": [["Q101", 20], ["Q2061B", 19]], "c4b": [["Q101", 20], ["Q2061B", 19]], "fanin": [["Q101", 20], ["Q2061B", 19]], "warrant": [["Q101", 20], ["Q2061B", 19]], "agree": true},
+      {"source": "SRC14", "omega1_via_d02_witness": [["v372", 466]], "c4b": [["v372", 466]], "fanin": [["v372", 466]], "warrant": [["v372", 466]], "agree": true, "note": "Omega-1 carries the variable/ordinal in its d02_witness block rather than in read_economy.operations; the value is identical."},
+      {"source": "SRC08", "variables": "none", "note": "D01 metadata-only admission, zero selected columns by design."},
+      {"source": "SRC12", "variables": "none", "note": "D01 metadata-only admission, zero selected columns by design."},
+      {"source": "SRC26", "variables": "none", "note": "Header prefix plus reader metadata only."},
+      {"source": "SRC27", "omega1": "q301/Q301 as frozen by the accepted source-specific authority package", "resolved_from_C4B_B01": true, "agree": true, "note": "Omega-1 explicitly warned 'Do not infer semantic role from spelling; consume the accepted exact binding.' The fan-in consumed C4B's B01 accepted binding rather than inferring from spelling. Correct resolution."},
+      {"source": "SRC35", "variables": "none", "note": "Retained comparator, zero fresh reads."}
+    ],
+    "D01_metadata_only_scope": {
+      "SRC08": {"declared_encoding": "BIG5", "row_data_reads": 0, "selected_columns": [], "full_source_decode": false, "exact_sha_gate": true},
+      "SRC12": {"declared_encoding": "WINDOWS-1252", "row_data_reads": 0, "selected_columns": [], "full_source_decode": false, "exact_sha_gate": true},
+      "semantic_widening_of_the_physical_only_six": "NONE",
+      "blanket_full_source_read_on_the_six": false,
+      "my_verdict": "CONFIRMED__METADATA_ONLY_RESOLUTION_MATCHES_C4B_AND_OMEGA1"
+    },
+    "LiTS_exact_workload_and_role_bindings": {
+      "projection_authority": "urn:rawlsing:pre553:as2a:lits1-projection-authority:sha256:9dd1e6b7350ebb795e028db86279131f8d319e939a044b74c3c5605ecacf5b06",
+      "projection_authority_agrees_with_C4B": true,
+      "respondent_event_slots": ["q301_2", "q301_7"],
+      "coordinate_fact_slots": ["country", "city", "region", "tablec", "tabled"],
+      "default_weight_measure_fact": false,
+      "all_four_agree_with_C4B_exactly": true,
+      "candidates": 50,
+      "query_roles": 77,
+      "retained_object_counts_agree_with_C4B_exactly": {"AuthoritySnapshot": 24, "DiscoveryAuthority": 1, "DiscoveryResultReceipt": 50, "EmpiricalFact": 60, "EmpiricalPredicate": 35, "EmpiricalQuerySpec": 63, "EmpiricalUniverse": 1},
+      "reader_lane": "DTA_ENCODING_LATIN1_COMPATIBILITY"
+    },
+    "substitutions_performed": 0,
+    "substitutions_by_worker_discretion": 0,
+    "consumer_contract": "Bound under O1-C01 via the facade public APIs and the named consumer evaluate_positioned_subject_possibility.",
+    "write_terrain": "NONE AUTHORISED. The freeze states C4 is source-read-and-compare only and that no write terrain is authorised."
+  },
+
+  "O1_C05_runtime_and_reader_lane": {
+    "fanin_claim": "CLOSED_BOUND",
+    "my_verdict": "CONFIRMED__WITH_ELEVATED_RESIDUALS_SEE_R7_R8",
+    "execution_surface_identifier": "C4C3-DARWIN-X86_64-ANCHOR/CPYTHON-3.11.3/PYREADSTAT-1.3.6/PYARROW-25.0.1/PANDAS-2.3.3/NUMPY-2.4.6/PYTEST-9.1.1",
+    "surface_matches_C4C3_environment_lock": true,
+    "environment": {"os": "macOS 13.7.8 (22H730)", "kernel": "Darwin 22.6.0", "machine": "x86_64", "cpython": "3.11.3", "pyreadstat": "1.3.6", "pyarrow": "25.0.1", "pandas": "2.3.3", "numpy": "2.4.6", "pytest": "9.1.1"},
+
+    "actual_executing_interpreter_not_a_zero_byte_launcher": {
+      "requirement": "the commission required verification of an actually-executing interpreter rather than a zero-byte PATH entry",
+      "executed_path": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/c4c3-env/bin/python",
+      "resolves_to": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/bin/python3.11",
+      "version_string": "3.11.3 (main, May  7 2023, 19:01:25) [Clang 16.0.3 ]",
+      "implementation": "CPython",
+      "base_interpreter_sha256_prefix32": "11d6f541a870a141249ce98d45834a67",
+      "environment_defect_disclosed": "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11 is a zero-byte launcher; only python3.11-intel64 runs",
+      "my_verdict": "CONFIRMED__A_REAL_EXECUTING_INTERPRETER_WAS_VERIFIED",
+      "durability_caveat": "The qualified venv lives in a per-session temporary directory. C4C3 itself records it as NOT durable and NOT reproducible from that path alone, and I confirmed the base interpreter directory is NOT committed to the repository. See R7."
+    },
+
+    "historical_C3_freeze_hash": {
+      "value": "9cde8e5ab9abba46a9e98826100ed084a0943a77fee7bc232a3c7643334da2eb",
+      "agrees_with_OMEGA1_C3_source_free_qualification_anchor": true,
+      "reproduced_byte_for_byte_on_anchor": true,
+      "transitive_version_differences_from_historical_freeze": 0,
+      "normalisation_convention": "LF-terminated alphabetically sorted Name==Version including pip and setuptools, 13 packages",
+      "my_verdict": "CONFIRMED"
+    },
+
+    "reader_options": {
+      "explicit_count": 5,
+      "explicit": ["metadataonly", "apply_value_formats", "user_missing", "encoding", "chunksize"],
+      "inherited_count": 11,
+      "inherited_independently_compared_key_by_key_against_C4C3": true,
+      "inherited_agreeing_with_C4C3": 11,
+      "inherited_drift": 0,
+      "decisive_D02_control_present": "dates_as_pandas_datetime = False (present and False in both C4C3 and the fan-in freeze)",
+      "ordered_category_behaviour": "UNORDERED under the frozen configuration",
+      "no_unidentified_default_governs_C4": true,
+      "valid_only_for": "pyreadstat 1.3.6 + pandas 2.3.3 + Darwin 22.6.0 x86_64 + CPython 3.11.3"
+    },
+
+    "install_on_import": 0,
+    "silent_dependency_upgrade": 0,
+    "duckdb": "NOT REQUIRED and NOT INSTALLED; confirmed off the C4 import closure",
+
+    "P2X_Darwin_gates_not_on_C4_path": {
+      "fanin_reported_closure_module_count": 21,
+      "my_independently_derived_closure_module_count_from_the_five_declared_C4_layers": 21,
+      "my_closure_reproduces_C4C3_list_exactly_module_for_module": true,
+      "method": "Static transitive-import closure over rawlsing_next at head, seeded from C4C3's five declared C4 layers (decode_sav/decode_dta, facade, provider, composition, consumer). Source read from git blobs only; no module was executed.",
+      "dynamic_loading_audit_in_my_closure": {"importlib": "ABSENT", "exec_module": "ABSENT", "spec_from_file_location": "ABSENT", "subprocess": "ABSENT", "duckdb": "ABSENT", "sys.modules": "ABSENT", "only_hit": "__import__('json') in pre553_discovery_exact.py, a stdlib literal already classified benign by C4C3"},
+      "my_verdict": "CONFIRMED__P2X_EXCLUSION_SURVIVES"
+    },
+
+    "physical_metadata_digest_is_reader_lane_bound": {
+      "law": "A physical-metadata digest is frozen only as (source identity, exact reader configuration/lane). It is NOT source-only.",
+      "measured_evidence_reproduced": {"encoding_latin1_lane": "5f58388491b1e41424b177f966c5d61032f5f88f344f0403cfad203ca19f315a", "encoding_none_lane": "f9148f36ba2b58a8a6386c4a7f8fff796dfb6a0a4a4fc7418043ae8849f727e6", "file_metadata_differing_keys": 0},
+      "cause": "reader_configuration carrying encoding and authority_status sits inside the digest payload",
+      "per_source_lane_bound_in_freeze": true,
+      "digest_publication_requirement": "Every recorded physical-metadata digest MUST be published together with its reader lane",
+      "my_verdict": "CONFIRMED"
+    },
+
+    "two_anchors_kept_distinct": {
+      "retained_physical_anchor": {"grade": "PHYSICAL", "platform": "Darwin", "machine": "x86_64", "cpython": "3.11.3", "pyreadstat": "1.3.6", "pyarrow": "25.0.1", "status": "HONOURED_EXACTLY__THIS_IS_THE_ANCHOR_SURFACE"},
+      "accepted_C3_source_free_anchor": {"grade": "SOURCE_FREE", "records_os_or_architecture": false, "records_pyreadstat_or_pyarrow": false, "pip_freeze_sha256": "9cde8e5ab9abba46a9e98826100ed084a0943a77fee7bc232a3c7643334da2eb", "status": "REPRODUCED_AND_EXTENDED"},
+      "no_name_only_inheritance": "The two are separate evidence grades and are not bridged by name. Omega-1's law requires exactly this: no inherited runtime-specific proof by name alone.",
+      "my_verdict": "CONFIRMED"
+    },
+
+    "residual_platform_limitations": {
+      "RES_1": {
+        "statement": "The Stata extended-missing dual-shape branch (pre553_physical_decoder.py:315-320, accepting both bare 'a' and dotted '.a') is NOT source-free round-trip testable in pyreadstat 1.3.6.",
+        "C4C3_measured_basis": "probe DTA-2: write_dta(missing_user_values={'x':['a']}) does not surface on read; reader reports both missing_user_values AND missing_ranges empty",
+        "C4C3_classification": "OBSERVED__EXTENDED_TOKEN_BRANCH_NOT_EXERCISED_BY_WRITER_ROUNDTRIP / residual, NOT a pass; UNPROBED by that lane",
+        "C4C3_severity": "LOW for the authoritative court, because no court file exercises it; but a real gap in C4 physical-layer coverage",
+        "independent_repository_corroboration": "rawlsing_next/tests/test_pre553_sr06_decoder_carrier.py:268 skips with 'installed pyreadstat writer/readback does not expose missing_user_values in metadata'",
+        "fanin_treatment": "Carried; deferred to explicit real-LiTS observation under the later warrant; explicitly NOT a source-free pass; STOP law if the observed token shape falls outside accepted dual-shape handling",
+        "correctly_nonblocking_for_freeze": true,
+        "correctly_constrained_for_live_execution": true,
+        "my_verdict": "CONFIRMED_CORRECT"
+      },
+      "RES_2": {
+        "statement": "pandas.Timestamp subclasses datetime.datetime, so the accepted D02 exact-type check misses it and _jsonable collapses it to str; naive and tz-aware renderings differ.",
+        "C4C3_measured_basis": "probe D02-3: Timestamp_naive -> '2008-04-05 06:07:08'; Timestamp_aware -> '2008-04-05 06:07:08+00:00'; timestamp_naive_aware_repr_differ = true",
+        "C4C3_severity": "INFORMATIONAL for this anchor; Timestamp did not arise in the C4 SAV date lane",
+        "fanin_treatment": "Carried; carrier must NOT be widened during C4; a Timestamp arrival is a fail-closed STOP",
+        "correctly_nonblocking_for_freeze": true,
+        "correctly_constrained_for_live_execution": true,
+        "my_verdict": "CONFIRMED_CORRECT"
+      },
+      "RES_3": {
+        "statement": "numpy datetime64 unit selection changes D02 arrival typing.",
+        "C4C3_measured_basis": "probe D02-4: unit 'D' -> datetime.date; unit 's' and 'us' -> datetime.datetime; unit 'ns' -> plain int (1207375628000000000), i.e. not a date at all",
+        "fanin_treatment": "Carried; bounded by numpy 2.4.6; a different numpy voids the O1-C04 arrival-typing binding",
+        "correctly_nonblocking_for_freeze": true,
+        "correctly_constrained_for_live_execution": true,
+        "my_verdict": "CONFIRMED_CORRECT__WITH_RESTATEMENT_INCOMPLETENESS_SEE_R6",
+        "incompleteness": "The fan-in's RES-3 restatement mentions only unit 'D' versus 's'. C4C3 additionally measured that unit 'ns' yields a plain int arrival, which is a stronger constraint than a rendering difference. The law (bound by numpy 2.4.6) is unaffected, so this is a description gap rather than a bound gap."
+      }
+    }
+  },
+
+  "my_new_findings_in_this_section": ["R1_route_B_public_api_incomplete", "R2_import_closure_tension_closed_by_me", "R3_route_B_test_outside_authoritative_court", "R5_d2p_18_authorities_disclosure_dropped", "R6_res3_restatement_incomplete", "R7_environment_non_durability_elevated", "R8_narwhals_absent_from_invalidation_list", "R10_truncated_digest_in_identity_field"],
+
+  "terminal": "C4_EXECUTABLE_FREEZE_FINAL_INTEGRATION_REVIEW_ALT_B_RETURNED__HQ_ADJUDICATION_REQUIRED"
+}

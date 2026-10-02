@@ -1,0 +1,229 @@
+{
+  "schema": "PYAT_C4_FINAL_INTEGRATION_REVIEW_ALT_B__ACCOUNTING_RETENTION_CLAIM_REVIEW@1.0.0",
+  "lane": "PYAT-C4-EXECUTABLE-FREEZE-FINAL-INTEGRATION-REVIEW-ALT-B-R1",
+  "governing_omega1": "01762d7379be4e423dad3e21bcdcee47c536902d",
+
+  "section_9_O1_C07_O1_C08_accounting_and_failure_law": {
+    "fanin_claim": "frozen before warrant; O1-C07/C08 satisfied",
+    "my_verdict": "CONFIRMED__WITH_ONE_ISSUANCE_STAGE_REPAIR_R9",
+
+    "workload_pass_is_not_OS_level_open": {
+      "requirement": "Omega-1 O1-C07: a full Route-B pass is not a claim of one OS-level file open",
+      "freeze_states_this_explicitly": true,
+      "hardened_SRC27_note_present": true,
+      "hardened_note_content": "The frozen 'exactly one governed fresh full Route-B pass' is a WORKLOAD constraint, not an access constraint. The run will require at minimum one existence/access check, one full SHA-256 hash pass, one metadata read, and one full compatibility read. Each is a separate account under O1-C07. Reading this as one open would be an accounting failure and is expressly forbidden by Omega-1.",
+      "my_verdict": "CONFIRMED__THIS_IS_THE_EXACT_ACCOUNTING_ERROR_OMEGA1_FORBIDS_AND_THE_FREEZE_NAMES_IT"
+    },
+
+    "existence_hash_metadata_decode_full_read_accounting_are_distinct": {
+      "mandatory_separate_accounts_count": 10,
+      "accounts": ["source-path existence/access checks", "file hash passes (full SHA-256 over the file)", "path-level opens", "metadata reads", "header-prefix reads", "decoder invocations", "selected-column reads", "full reads", "byte counts where measurable", "retries"],
+      "accounting_basis_rule": "Each account must state its measurement BASIS, not only a count. A count without a stated basis is not an account.",
+      "required_basis_fields": ["what was measured", "at which layer", "by what mechanism", "at what point in the run"],
+      "explicit_warning_present": "A count of 'opens' is meaningless without stating whether it means OS-level path opens, reader invocations, or decoder calls. These are different quantities and C4B froze them as separate accounts.",
+      "my_verdict": "CONFIRMED"
+    },
+
+    "hard_zero_budgets": {
+      "WVS_SRC35_fresh_source_opens": {"expected": 0, "present_in_warrant": 0, "present_in_accounting_law": 0, "agree": true},
+      "excluded_source_fresh_opens": {"expected": 0, "present_in_warrant": 0, "present_in_accounting_law": 0, "agree": true},
+      "candidate_A_B_C_runs": {"expected": 0, "present_in_warrant": 0, "present_in_accounting_law": 0, "agree": true},
+      "measured_P2X_runs": {"expected": 0, "present_in_warrant": 0, "present_in_accounting_law": 0, "agree": true},
+      "raw_respondent_pooling": {"expected": 0, "present_in_warrant": 0, "present_in_accounting_law": 0, "agree": true},
+      "new_cross_source_respondent_joins": {"expected": 0, "present_in_warrant": 0, "present_in_accounting_law": 0, "agree": true},
+      "SRC08_row_data_reads": {"expected": 0, "present_in_warrant": 0, "present_in_accounting_law": 0, "agree": true},
+      "SRC12_row_data_reads": {"expected": 0, "present_in_warrant": 0, "present_in_accounting_law": 0, "agree": true},
+      "SRC08_selected_columns": {"expected": 0, "present_in_accounting_law": 0},
+      "SRC12_selected_columns": {"expected": 0, "present_in_accounting_law": 0},
+      "production_code_mutations": {"expected": 0, "present_in_warrant": 0},
+      "oracle_authoring_by_the_run": {"expected": 0, "present_in_warrant": 0},
+      "substitutions": {"expected": 0, "present_in_warrant": 0},
+      "zero_budget_discipline": "These are hard zeros. A single non-zero count in any of them is a STOP condition, not a reportable variance.",
+      "my_verdict": "ALL_REQUIRED_ZEROS_PRESENT_AND_MUTUALLY_CONSISTENT"
+    },
+
+    "per_source_operation_classes": {
+      "SRC02": {"class": "BOUNDED_FRESH_PHYSICAL_SELECTED_VARIABLE_READ", "expected_full_reads": 0, "expected_selected_reads": 1, "ordinals": [58], "lane": "SAV_ENCODING_NULL"},
+      "SRC06": {"class": "BOUNDED_FRESH_PHYSICAL_SELECTED_VARIABLE_READ", "expected_full_reads": 0, "expected_selected_reads": 1, "ordinals": [20, 19], "lane": "SAV_ENCODING_NULL"},
+      "SRC08": {"class": "FRESH_METADATA_ONLY_DECODER_ADMISSION", "expected_full_reads": 0, "expected_selected_reads": 0, "expected_metadata_reads": 1, "lane": "SAV_ENCODING_BIG5_DECLARED"},
+      "SRC12": {"class": "FRESH_METADATA_ONLY_DECODER_ADMISSION", "expected_full_reads": 0, "expected_selected_reads": 0, "expected_metadata_reads": 1, "lane": "SAV_ENCODING_WINDOWS1252_DECLARED"},
+      "SRC14": {"class": "BOUNDED_FRESH_PHYSICAL_READ_EXACT_VARIABLE", "expected_full_reads": 0, "expected_selected_reads": 1, "ordinals": [466], "lane": "SAV_ENCODING_NULL"},
+      "SRC26": {"class": "BOUNDED_HEADER_PREFIX_PLUS_READER_METADATA", "expected_full_reads": 0, "expected_selected_reads": 0, "expected_header_prefix_bytes": 176, "lane": "SAV_ENCODING_NULL", "law": "Geometry divergence between raw header 174 and decoded dictionary width 332 is expected and NOT equality-required"},
+      "SRC27": {"class": "EXACTLY_ONE_GOVERNED_FRESH_FULL_ROUTE_PASS", "expected_full_route_passes": 1, "max_full_route_passes": 1, "candidates": 50, "query_roles": 77, "lane": "DTA_ENCODING_LATIN1_COMPATIBILITY"},
+      "SRC35": {"class": "RETAINED_COMPARATOR_REPLAY_AND_COMPARE", "fresh_reads": 0, "lane": "NONE__RETAINED_ONLY"}
+    },
+
+    "zero_retry_decision_challenged": {
+      "fanin_decision": "max_retry_budget = 0 for all eight sources, preserved-from-C4B list retained verbatim",
+      "challenge": "Does zero retry accidentally conflict with a previously frozen required retry law?",
+      "my_verdict": "NO_CONFLICT",
+      "reasoning": [
+        "C4B's frozen retry/stop law contains five clauses. Four are prohibitions (no automatic fallback/guessing/substitution; immediate stop on hash/config/authority/oracle mismatch; Candidate A/B/C and measured P2X outside the warrant; no excluded source opened). None of these is violated by a zero budget; a zero budget makes them unreachable rather than lax.",
+        "The fifth clause, 'Retries must be separately counted and reason-coded; a retry may not change source, encoding, variables, operations, or authority', is a GOVERNANCE clause conditioned on a retry occurring. It is not an authorisation of any retry. A budget of zero is compatible: the count is 0 and requires no reason code.",
+        "C4B set NO numeric retry budget anywhere in its template. There is therefore no frozen numeric value for the fan-in to contradict.",
+        "Omega-1 O1-C08 states that 'A corrected execution uses separately bound authority/commit/runtime and the issued new-run/retry law.' This confirms that the retry budget is per-issued-law and that any retry requires a new law. The freeze implements exactly this: 'A corrected rerun requires new HQ-bound execution authority and a newly issued warrant.'",
+        "Omega-1 O1-C07 requires expected budgets to be frozen before launch. Zero is a frozen budget.",
+        "The direction of the change is strictly tighter than C4B, which is the fail-closed direction. C4B froze immediate-stop-on-mismatch, so no permitted variation remains that a retry could legitimately explore."
+      ],
+      "fanin_disclosure_was_honest": true,
+      "fanin_disclosure_quote": "Every per-source max_retry_budget is 0 because C4B froze immediate-stop-on-mismatch and no permitted variation remains that a retry could legitimately explore. A retry is authorised only by a NEW HQ-bound warrant, never by this one.",
+      "no_more_permissive_budget_was_invented": true,
+      "advisory_operational_note": "With zero retry and a maximum of one full Route-B pass, a transient environment or I/O failure has no lawful recovery path and would force a full re-warrant cycle. This is correct by design and I record it only so HQ is not surprised by the operational cost.",
+      "classification": "ADVISORY_NONBLOCKING"
+    },
+
+    "mismatch_stop_law": {
+      "stop_triggers_count": 10,
+      "triggers": ["source identity", "path/locator", "authority", "required columns/ordinals", "runtime", "reader lane", "oracle/preimage custody", "required physical witness", "named consumer", "dependency/currentness/replay determinant"],
+      "scope_of_a_stop": "The affected governed SCOPE only. Independent unaffected work may continue only where the issued failure law permits it.",
+      "matches_OMEGA1_O1_C08_requirement": true,
+      "my_verdict": "CONFIRMED"
+    },
+
+    "absolutely_prohibited_on_mismatch": {
+      "count": 6,
+      "items": ["opportunistic production repair", "semantic repair", "automatic widening", "hidden retry", "source substitution", "relabelling a failure as zero, empty, or PASS"],
+      "my_verdict": "CONFIRMED__NO_OPPORTUNISTIC_REPAIR_LAW_WEAKENED"
+    },
+
+    "null_with_typed_reason_reporting": {
+      "law": "Unreached stages and metrics are reported as null WITH A TYPED REASON.",
+      "never": "A fabricated zero or a fabricated PASS.",
+      "worked_example_present": {"metric": "SRC06 metadata reads", "value": null, "reason": "STOPPED_AT_SRC02_SOURCE_IDENTITY_MISMATCH__SRC06_NOT_REACHED"},
+      "my_verdict": "CONFIRMED__CONCRETE_EXAMPLE_GIVEN_NOT_JUST_A_PROMISE"
+    },
+
+    "corrected_rerun_requires_new_authority": {
+      "freeze_states": "A corrected rerun requires new HQ-bound execution authority and a newly issued warrant as applicable. It may never be performed under the present candidate.",
+      "my_verdict": "CONFIRMED"
+    }
+  },
+
+  "section_10_O1_C09_O1_C10_retention_and_all35_ledger": {
+    "fanin_claim": "preserved; 280 cells verified",
+    "my_verdict": "CONFIRMED__ARITHMETIC_INDEPENDENTLY_RECOMPUTED",
+
+    "all35_arithmetic_recomputed_from_C4B_ledger": {
+      "ledger_source": "WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/06_ALL35_CLAIM_LEDGER.json at c2af4f61d68e9803af83f8e26f633acfe31062fa",
+      "sources_list_length": 35,
+      "declared_source_count": 35,
+      "source_ids_complete_01_to_35": true,
+      "source_ids_equal_set_1_to_35": true,
+      "cells_list_length": 280,
+      "declared_cell_count": 280,
+      "thirty_five_times_eight": 280,
+      "thirty_five_times_eight_equals_declared": true,
+      "gate_distribution": {"F1": 35, "F2": 35, "F3": 35, "F4": 35, "F5": 35, "F6": 35, "F7": 35, "F8": 35},
+      "distinct_sources_in_cells": 35,
+      "uniform_cells_per_source": true,
+      "cells_per_source_uniform_value": 8,
+      "selected": 8,
+      "excluded": 27,
+      "selected_plus_excluded_equals_source_count": true,
+      "selected_cells": 64,
+      "excluded_cells": 216,
+      "selected_sources": ["SRC02", "SRC06", "SRC08", "SRC12", "SRC14", "SRC26", "SRC27", "SRC35"],
+      "my_verdict": "ALL_ARITHMETIC_CONFIRMED"
+    },
+
+    "structural_impossibility_of_a_selected_set_becoming_ALL35_PASS": {
+      "cells_with_PASS_or_PROVED_state": 0,
+      "cells_with_any_pass_like_state_among_excluded": 0,
+      "selected_cell_states": {"NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY": 8, "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN": 56},
+      "excluded_cell_states": {"NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY": 27, "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN": 189},
+      "update_law_present_on_every_cell": true,
+      "update_law_text": "No cell changes state without an exact C4 receipt at that cell's proved grain.",
+      "excluded_sources_retain_explicit_dispositions": true,
+      "excluded_sources_disappear_from_accounting": false,
+      "my_verdict": "CONFIRMED__SELECTED_SET_SUCCESS_STRUCTURALLY_CANNOT_BECOME_ALL35_PASS_OR_UNRESTRICTED_COMPARABILITY",
+      "reasoning": "Every one of the 280 cells is pre-C4 NOT_ASSESSED and every one carries an explicit update law requiring an exact C4 receipt at that cell's own proved grain. There is no aggregate or global green available to promote, so no eight-source success has anywhere to propagate."
+    },
+
+    "nine_claim_ceilings": {
+      "count": 9,
+      "identical_in_content_and_order_across": ["OMEGA1_01762d73", "C4B_c2af4f61", "FANIN_08"],
+      "ceilings": [
+        "NO_ALL35_PASS",
+        "NO_EIGHT_SOURCE_FULL_SEMANTIC_ROUTE_CLAIM",
+        "NO_UNRESTRICTED_F6_F7_COMPARABILITY",
+        "NO_CLASS_SENSITIVE_EPISTEMIC_ORIGIN_CLOSURE",
+        "NO_PHYSICAL_SUCCESS_AS_SURVEY_SEMANTICS",
+        "NO_RETAINED_WVS_AS_FRESH_CURRENT_SOURCE_EXECUTION",
+        "NO_STRUCTURAL_OR_CAUSAL_AUTHORITY_FROM_C4",
+        "NO_ACTOR_PERSON_IMPLEMENTATION",
+        "NO_NEW_RAW_POOLING_OR_CROSS_SOURCE_RESPONDENT_JOIN"
+      ],
+      "all_nine_present": true,
+      "any_ceiling_dropped": false,
+      "any_ceiling_weakened": false,
+      "my_verdict": "CONFIRMED__ALL_NINE_PRESERVED_BYTE_IDENTICAL_AND_IN_ORDER"
+    },
+
+    "carried_residuals_preserved": [
+      {"id": "C2-EPCLASS-PAYLOAD-001", "omega1_state": "UNRESOLVED__NOT_MISSING_PROVED", "c4b_state": "UNRESOLVED__NOT_MISSING_PROVED", "fanin_state": "UNRESOLVED__NOT_MISSING_PROVED", "preserved": true, "my_note": "Correctly preserved. The freeze additionally records that C4 establishes neither the presence nor the absence of the missing class evidence, which is the precise epistemic form Omega-1 requires."},
+      {"id": "NO_SINGLE_FRESH_PROCESS_OWNER_CONTRACT_PROVIDER_TO_CONSUMER_TO_LIFECYCLE_RESTORE", "omega1_state": "OPEN__NONBLOCKING_AT_DECLARED_GRAIN", "c4b_state": "OPEN__NONBLOCKING", "fanin_state": "OPEN__NONBLOCKING", "preserved": true, "label_variance_note": "Omega-1 uses the longer label OPEN__NONBLOCKING_AT_DECLARED_GRAIN while C4B and the fan-in use OPEN__NONBLOCKING. Same semantic state, normalising a label, not a substantive change."},
+      {"id": "C7-BLOCK-CURRENT-COMPARABLE-WAVE-PAIR-001", "omega1_state": "HELD", "c4b_state": "HELD", "fanin_state": "HELD", "preserved": true, "my_note": "Correctly held. The freeze records explicitly that C4 completion alone does not unlock C7, because the EVS specimens are physical-only and WVS is retained. That is exactly Omega-1's premise."}
+    ],
+
+    "C1_fresh_process_bridge_limitation_preserved": {
+      "carried_residual_present": true,
+      "forbidden_bridge_recorded_as_forbidden_rather_than_glued": true,
+      "forbidden_bridge_text": "Do NOT fabricate a single provider->consumer->lifecycle fresh-process bridge. If a concrete required claim needs all three inside one fresh-process owner contract, that claim must be HELD rather than glued.",
+      "my_verdict": "CONFIRMED__THE_LIMITATION_WAS_RECORDED_RATHER THAN_WORKED_AROUND"
+    },
+
+    "C7_comparability_gate_preserved": {
+      "state": "HELD",
+      "no_comparability_authority_created": true,
+      "no_six_physical_witnesses_upgraded_to_semantic_routes": true,
+      "EVS_pair_claim_ceiling": "physical multi-wave coverage only at this scope",
+      "my_verdict": "CONFIRMED"
+    },
+
+    "O1_C09_retention_requirements": {
+      "count": 11,
+      "includes_executable_manifest": true,
+      "includes_source_identity_receipts_bound_to_reader_lane": true,
+      "includes_oracle_packet_identities": true,
+      "includes_complete_public_object_preimages": true,
+      "includes_denominators_and_search_coverage": true,
+      "includes_evidence_and_result_identities": true,
+      "includes_ACTUAL_named_consumer_trace": true,
+      "includes_dependency_and_currentness_closure": true,
+      "includes_replay_determinants": true,
+      "includes_full_access_accounting_with_bases_and_retry_reasons": true,
+      "includes_per_source_digest_published_with_its_lane": true,
+      "my_verdict": "CONFIRMED"
+    },
+
+    "six_evidence_grades_kept_separately": {
+      "count": 6,
+      "grades": ["current LiTS production", "retained WVS proof", "six physical-only observations", "provider fresh-process replay", "lifecycle checkpoint replay", "join fresh-process lifecycle reconstruction"],
+      "retained_WVS_ceiling": "remains RETAINED PROOF even if its public consumer is exercised under current accepted code",
+      "physical_only_six_ceiling": "physical observation only; no semantic Route-B status",
+      "my_verdict": "CONFIRMED__NO_GRADE_MERGED"
+    },
+
+    "raw_bytes_custody_prohibition": {
+      "permitted": ["documentary hashes", "exact identities", "deterministic receipts", "comparison diffs", "permitted public-object preimages"],
+      "prohibited": ["committing raw respondent-level source bytes to Git", "using raw bytes as an oracle-custody shortcut", "creating cross-source respondent pools", "creating cross-source respondent joins"],
+      "basis": "Preserved from C4B retention_privacy verbatim in substance",
+      "my_verdict": "CONFIRMED"
+    },
+
+    "acceptance_case_ceilings_unchanged": {
+      "cases": ["AT01", "AT02", "AT20", "AT21", "AT27"],
+      "any_acceptance_obligation_waived": false,
+      "my_note": "Omega-1 requires AT27 to conserve 35 identities and 280 source-by-gate cells with only exact demonstrated claims updated. The recomputed ledger satisfies this exactly.",
+      "my_verdict": "CONFIRMED"
+    },
+
+    "explicitly_not_established_by_the_freeze": {
+      "count": 9,
+      "items": ["ALL35_PASS", "eight full semantic routes", "unrestricted F6/F7 comparability", "current WVS raw-source proof", "class-sensitive epistemic-origin closure", "structural or causal authority", "actor/person readiness or implementation", "any empirical fact about the LiTS source", "any physical decode result for any of the eight sources"],
+      "my_verdict": "CONFIRMED__CORRECTLY_DISCLAIMED"
+    }
+  },
+
+  "terminal": "C4_EXECUTABLE_FREEZE_FINAL_INTEGRATION_REVIEW_ALT_B_RETURNED__HQ_ADJUDICATION_REQUIRED"
+}

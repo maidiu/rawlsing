@@ -1,0 +1,145 @@
+{
+  "schema": "PYAT_C4_FINAL_INTEGRATION_REVIEW_ALT_B__COMMIT_GRAPH_AND_BLOB_REVIEW@1.0.0",
+  "lane": "PYAT-C4-EXECUTABLE-FREEZE-FINAL-INTEGRATION-REVIEW-ALT-B-R1",
+  "role": "Independent terminal integration review of the source-free C4 executable freeze",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/reviewer-pyat-hq181-c4-executable-freeze-final-integration-review-alt-b-r1",
+  "commission_tip": "2836f6259c932c2308b9c15351d4051d18ba7e60",
+  "review_base_and_fanin_final": "8ff40d37de69db2d8a6053a7c2242f481677f1a4",
+  "fanin_commissioned_tip": "012569770c551aca60c16eb20482c3435399c5d1",
+  "governing_omega1": "01762d7379be4e423dad3e21bcdcee47c536902d",
+
+  "section": "1_COMMIT_GRAPH_AND_INTEGRATION_LAW",
+  "verdict": "CONFIRMED__COUNT_DISCREPANCY_IS_A_COUNTING_BASIS_DIFFERENCE_ONLY",
+
+  "exact_commit_graph": {
+    "shape": "linear with one true merge",
+    "edges": [
+      {"child": "8ff40d37de69db2d8a6053a7c2242f481677f1a4", "parents": ["f8c8e2e4ebc407bc419d2908a78f06addb21031c"], "subject": "C4 executable freeze fan-in: O1-C01..C1-C05 closed, warrant candidate unissued"},
+      {"child": "f8c8e2e4ebc407bc419d2908a78f06addb21031c", "parents": ["39015a90aec3596b87c0e9b0a664c025e919c137"], "subject": "C4 fan-in: import C4B workload/oracle freeze and D2P accepted packet by exact blob"},
+      {"child": "39015a90aec3596b87c0e9b0a664c025e919c137", "parents": ["012569770c551aca60c16eb20482c3435399c5d1", "1df64cc596b5602c952518c87b1c71cc1fcfb35f"], "subject": "C4 fan-in: merge C4C3 Darwin/x86_64 anchor runtime qualification", "is_merge": true},
+      {"child": "012569770c551aca60c16eb20482c3435399c5d1", "parents": ["8f7efe690a161902e79358eb31650c238a4c0be8"], "subject": "HQ179 bind C4 executable freeze fan-in"},
+      {"child": "1df64cc596b5602c952518c87b1c71cc1fcfb35f", "parents": ["eba2f4249fb7cd315851ff687269bc43ade19ce8"], "subject": "C4C3 return: Darwin/x86_64 anchor runtime qualified, C3 court 55/55"},
+      {"child": "8f7efe690a161902e79358eb31650c238a4c0be8", "parents": ["9a5752a8ce4a119efd24cbbeedd8cbcda8abbadb"], "subject": "C4A return: combined C1+C3 tree qualified, 11/11 pinned blobs exact, 454/454 C1 court"},
+      {"child": "9a5752a8ce4a119efd24cbbeedd8cbcda8abbadb", "parents": ["603795eb6033a35516cea73add76a1b8a9ac6687", "30686b185d4ceb2c94f61815ef70d8c8e76255d6"], "subject": "C4A: ancestry-preserving merge of accepted C3 source-free tree into accepted C1-03", "is_merge": true}
+    ]
+  },
+
+  "count_discrepancy_adjudication": {
+    "question": "worker summary says 3 commits on commissioned tip; reachable comparison reports 5 commits ahead",
+    "measured_first_parent_01256977_to_8ff40d37": 3,
+    "measured_total_reachable_01256977_to_8ff40d37": 5,
+    "measured_first_parent_8f7efe690_to_8ff40d37": 4,
+    "measured_total_reachable_8f7efe690_to_8ff40d37": 6,
+    "the_five_reachable_commits": [
+      {"sha": "8ff40d37de69db2d8a6053a7c2242f481677f1a4", "on_first_parent": true, "declared_input": "fan-in own work"},
+      {"sha": "f8c8e2e4ebc407bc419d2908a78f06addb21031c", "on_first_parent": true, "declared_input": "fan-in own work"},
+      {"sha": "39015a90aec3596b87c0e9b0a664c025e919c137", "on_first_parent": true, "declared_input": "fan-in own work (C4C3 merge commit)"},
+      {"sha": "1df64cc596b5602c952518c87b1c71cc1fcfb35f", "on_first_parent": false, "declared_input": "C4C3 return (declared merge side)"},
+      {"sha": "eba2f4249fb7cd315851ff687269bc43ade19ce8", "on_first_parent": false, "declared_input": "HQ174 bind (declared merge side)"}
+    ],
+    "conclusion": "PURE_COUNTING_BASIS_DIFFERENCE",
+    "hides_unreviewed_work": false,
+    "reasoning": "The two additional reachable commits are exactly the C4C3 return and its HQ bind, which the fan-in declared as its merge side and which are present at head. First-parent counting reports only the fan-in's own commits; total-reachable counting additionally reports the merged side. No commit is reachable that is not either fan-in work or a declared input. The 3 and the 5 are both correct on their own basis.",
+    "classification": "NOT_A_FINDING"
+  },
+
+  "ancestry_requirements": [
+    {"requirement": "C4A exact tree ancestor", "commit": "8f7efe690a161902e79358eb31650c238a4c0be8", "is_ancestor_of_head": true, "status": "SATISFIED"},
+    {"requirement": "C4A merge ancestor", "commit": "9a5752a8ce4a119efd24cbbeedd8cbcda8abbadb", "is_ancestor_of_head": true, "status": "SATISFIED"},
+    {"requirement": "C4C3 merge lawful", "commit": "1df64cc596b5602c952518c87b1c71cc1fcfb35f", "merge_base_with_c4a": "8f7efe690a161902e79358eb31650c238a4c0be8", "c4a_is_ancestor_of_c4c3": true, "unrelated_ancestry_introduced": false, "status": "SATISFIED", "note": "merge-base is exactly the C4A combined tree, so the merge is a clean fast-forward-equivalent in content terms plus the C4C3 return directory."},
+    {"requirement": "C4B exact path/blob import", "commit": "c2af4f61d68e9803af83f8e26f633acfe31062fa", "is_ancestor_of_head": false, "merge_base_with_c4a": "149c3d2636160d8de9b5a8be0c8b87195158077d", "method_2_import_correct": true, "status": "SATISFIED"},
+    {"requirement": "D2P exact path/blob import", "commit": "41bd7a7c056de9d45b905efc0f926b4ab6a097ad", "is_ancestor_of_head": false, "merge_base_with_c4a": "bc207de1db6c1e48b81c7b27b2633ad1177077ff", "method_2_import_correct": true, "status": "SATISFIED"},
+    {"requirement": "commissioned fan-in tip is ancestor", "commit": "012569770c551aca60c16eb20482c3435399c5d1", "is_ancestor_of_head": true, "status": "SATISFIED"}
+  ],
+
+  "fanin_writeside_audit": {
+    "range": "012569770c551aca60c16eb20482c3435399c5d1..8ff40d37de69db2d8a6053a7c2242f481677f1a4",
+    "files_added": 47,
+    "files_modified": 0,
+    "files_deleted": 0,
+    "all_changes_confined_to": [
+      "WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1",
+      "WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1",
+      "WORKER_RETURNS/PYAT-C4C3-DARWIN-ANCHOR-RUNTIME-R1",
+      "WORKER_RETURNS/PYAT-R2-LITS-D2P-PORTABLE-IMPORTED-R1"
+    ],
+    "arithmetic": "36 imported evidence files + 11 fan-in-authored files = 47. The 12th fan-in-directory file (00_COMMISSION.md) was added by 01256977 and is therefore outside this range.",
+    "paths_touched_outside_WORKER_RETURNS": 0,
+    "sensitive_trees_untouched": ["data/", "LOCAL_CUSTODY/", "LOCAL_COURTS/", ".rabochii/", "PYAT_CONTROL_ROOM/", "HQ_HANDOFF/", "rawlsing_next/"],
+    "unrelated_ancestry_imported": false,
+    "status": "SATISFIED"
+  },
+
+  "rawlsing_next_tree_identity": {
+    "expected": "b0c1ab472cde033e21f1c2f63fbcbea2f0cccef0",
+    "observed": {
+      "9a5752a8ce4a119efd24cbbeedd8cbcda8abbadb": "b0c1ab472cde033e21f1c2f63fbcbea2f0cccef0",
+      "8f7efe690a161902e79358eb31650c238a4c0be8": "b0c1ab472cde033e21f1c2f63fbcbea2f0cccef0",
+      "012569770c551aca60c16eb20482c3435399c5d1": "b0c1ab472cde033e21f1c2f63fbcbea2f0cccef0",
+      "39015a90aec3596b87c0e9b0a664c025e919c137": "b0c1ab472cde033e21f1c2f63fbcbea2f0cccef0",
+      "f8c8e2e4ebc407bc419d2908a78f06addb21031c": "b0c1ab472cde033e21f1c2f63fbcbea2f0cccef0",
+      "8ff40d37de69db2d8a6053a7c2242f481677f1a4": "b0c1ab472cde033e21f1c2f63fbcbea2f0cccef0",
+      "2836f6259c932c2308b9c15351d4051d18ba7e60": "b0c1ab472cde033e21f1c2f63fbcbea2f0cccef0"
+    },
+    "unchanged_from_c4a_to_final": true,
+    "rawlsing_next_changes_by_fanin": 0,
+    "note": "Tree identity is a superset guarantee: it covers every production and test file in rawlsing_next, not only the pinned ones. This is a stronger conservation statement than per-blob checking alone.",
+    "status": "SATISFIED"
+  },
+
+  "section": "2_EXACT_PRODUCTION_AND_TEST_BLOB_CONSERVATION",
+  "verdict": "CONFIRMED__14_OF_14_EXACT",
+  "method": "For each pinned path I resolved the git blob at 8ff40d37 (head), at 8f7efe690 (C4A) and at 1df64cc59 (C4C3), and compared all three against the declared expected value.",
+
+  "pinned_blobs": [
+    {"side": "C1", "path": "rawlsing_next/pre553_analytical_state_and_route.py", "expected": "3a5e3db8a0897900d0b2606813bda7c3f586d46e", "at_head": "3a5e3db8a0897900d0b2606813bda7c3f586d46e", "at_c4a": "3a5e3db8a0897900d0b2606813bda7c3f586d46e", "at_c4c3": "3a5e3db8a0897900d0b2606813bda7c3f586d46e", "status": "EXACT"},
+    {"side": "C1", "path": "rawlsing_next/pre553_empirical_possibility_provider.py", "expected": "23167aa25291fb148b1e3cf210ac33fe7769b783", "at_head": "23167aa25291fb148b1e3cf210ac33fe7769b783", "at_c4a": "23167aa25291fb148b1e3cf210ac33fe7769b783", "at_c4c3": "23167aa25291fb148b1e3cf210ac33fe7769b783", "status": "EXACT"},
+    {"side": "C1", "path": "rawlsing_next/pre553_authority_maintenance.py", "expected": "547e6bf20354f38179a0e2600de64c7cb2260ea0", "at_head": "547e6bf20354f38179a0e2600de64c7cb2260ea0", "at_c4a": "547e6bf20354f38179a0e2600de64c7cb2260ea0", "at_c4c3": "547e6bf20354f38179a0e2600de64c7cb2260ea0", "status": "EXACT"},
+    {"side": "C1", "path": "rawlsing_next/pre553_analytical_replay_dependency.py", "expected": "47e65aad5e0a8df7af6fda72fc8807a002e556ce", "at_head": "47e65aad5e0a8df7af6fda72fc8807a002e556ce", "at_c4a": "47e65aad5e0a8df7af6fda72fc8807a002e556ce", "at_c4c3": "47e65aad5e0a8df7af6fda72fc8807a002e556ce", "status": "EXACT"},
+    {"side": "C1", "path": "rawlsing_next/pre553_analytical_composition.py", "expected": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b", "at_head": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b", "at_c4a": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b", "at_c4c3": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b", "status": "EXACT"},
+    {"side": "C3", "path": "rawlsing_next/closed35_g01_sav_numeric_representation_authority.py", "expected": "31a9afd7d91ed4cb2fb1c1aab3ef86a5fdda1f85", "at_head": "31a9afd7d91ed4cb2fb1c1aab3ef86a5fdda1f85", "at_c4a": "31a9afd7d91ed4cb2fb1c1aab3ef86a5fdda1f85", "at_c4c3": "31a9afd7d91ed4cb2fb1c1aab3ef86a5fdda1f85", "status": "EXACT"},
+    {"side": "C3", "path": "rawlsing_next/pre553_physical_decoder.py", "expected": "d3d828c171ea9fdd0e90563aff6ef705f5aae2cf", "at_head": "d3d828c171ea9fdd0e90563aff6ef705f5aae2cf", "at_c4a": "d3d828c171ea9fdd0e90563aff6ef705f5aae2cf", "at_c4c3": "d3d828c171ea9fdd0e90563aff6ef705f5aae2cf", "status": "EXACT"},
+    {"side": "C3", "path": "rawlsing_next/pre553_r5_codec.py", "expected": "6000a1704d713f65e07610d81e9b3fd8bdd515ca", "at_head": "6000a1704d713f65e07610d81e9b3fd8bdd515ca", "at_c4a": "6000a1704d713f65e07610d81e9b3fd8bdd515ca", "at_c4c3": "6000a1704d713f65e07610d81e9b3fd8bdd515ca", "status": "EXACT"},
+    {"side": "C3", "path": "rawlsing_next/tests/test_closed35_g01_sav_numeric_representation_authority.py", "expected": "fb7b090809a609a3b0157f1ed8fcdcd8e8784525", "at_head": "fb7b090809a609a3b0157f1ed8fcdcd8e8784525", "at_c4a": "fb7b090809a609a3b0157f1ed8fcdcd8e8784525", "at_c4c3": "fb7b090809a609a3b0157f1ed8fcdcd8e8784525", "status": "EXACT"},
+    {"side": "C3", "path": "rawlsing_next/tests/test_closed35_d01_declared_encoding_admission.py", "expected": "8fc05965386055a208e5b3988112e67a2e6333e2", "at_head": "8fc05965386055a208e5b3988112e67a2e6333e2", "at_c4a": "8fc05965386055a208e5b3988112e67a2e6333e2", "at_c4c3": "8fc05965386055a208e5b3988112e67a2e6333e2", "status": "EXACT"},
+    {"side": "C3", "path": "rawlsing_next/tests/test_closed35_d02_opaque_datetime_carrier.py", "expected": "3901f10a487856f5f232ae6700fff407ac99725e", "at_head": "3901f10a487856f5f232ae6700fff407ac99725e", "at_c4a": "3901f10a487856f5f232ae6700fff407ac99725e", "at_c4c3": "3901f10a487856f5f232ae6700fff407ac99725e", "status": "EXACT"},
+    {"side": "FACADE", "path": "rawlsing_next/pre553_source_backed_c11_facade.py", "expected": "8a761119e4a8d68eb291fc4edfadb52e027f8284", "at_head": "8a761119e4a8d68eb291fc4edfadb52e027f8284", "at_c4a": "8a761119e4a8d68eb291fc4edfadb52e027f8284", "at_c4c3": "8a761119e4a8d68eb291fc4edfadb52e027f8284", "status": "EXACT"},
+    {"side": "FACADE", "path": "rawlsing_next/source_backed_positioned_subject_possibility.py", "expected": "62e5eced47b64512f47b004e3e13a6ef3fe21de7", "at_head": "62e5eced47b64512f47b004e3e13a6ef3fe21de7", "at_c4a": "62e5eced47b64512f47b004e3e13a6ef3fe21de7", "at_c4c3": "62e5eced47b64512f47b004e3e13a6ef3fe21de7", "status": "EXACT"},
+    {"side": "ROUTE_B_PRODUCER", "path": "rawlsing_next/pre553_route_b_production.py", "expected": "2385cd327dced3c5b887b59085aa0d21b04d78c3", "at_head": "2385cd327dced3c5b887b59085aa0d21b04d78c3", "at_c4a": "2385cd327dced3c5b887b59085aa0d21b04d78c3", "at_c4c3": "2385cd327dced3c5b887b59085aa0d21b04d78c3", "status": "EXACT"}
+  ],
+  "totals": {"checked": 14, "exact": 14, "drift": 0, "note": "13 is the fan-in's declared count. The Route-B producer is the fourteenth and is additionally pinned in artifact 03 but omitted from the artifact-01 detail list. All 14 are exact."},
+
+  "imported_evidence_blob_conservation": {
+    "declared_in_artifact_01": 36,
+    "detail_entries_in_artifact_01": 36,
+    "independently_recomputed": 36,
+    "exact": 36,
+    "drift": 0,
+    "breakdown_by_source_commit": {"c2af4f61d68e9803af83f8e26f633acfe31062fa": 10, "41bd7a7c056de9d45b905efc0f926b4ab6a097ad": 16, "1df64cc596b5602c952518c87b1c71cc1fcfb35f": 10},
+    "method": "For every path in the artifact-01 detail list I compared three things: the declared source_blob, the declared head_blob, and the blob I independently resolved at 8ff40d37 and at the pinned source commit.",
+    "files_present_at_head": {"PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1": 10, "PYAT-R2-LITS-D2P-PORTABLE-IMPORTED-R1": 16, "PYAT-C4C3-DARWIN-ANCHOR-RUNTIME-R1": 10, "total": 36},
+    "status": "CONFIRMED"
+  },
+
+  "authoritative_input_fetches": {
+    "note": "Three governing inputs were not reachable from the review base. Fetched as objects only and read with git show <ref>:<path>. None was merged into this branch.",
+    "fetched": [
+      {"ref": "origin/agent/astra-pyat-hq168-omega1-production-readiness-r1", "resolved_commit": "01762d7379be4e423dad3e21bcdcee47c536902d", "subject": "Return Omega-1 conditional GO for exact eight-source C4 scope", "reachable_after_fetch": true},
+      {"ref": "origin/agent/browser-pyat-hq170-c4b-workload-oracle-freeze-r1", "resolved_commit": "c2af4f61d68e9803af83f8e26f633acfe31062fa", "subject": "PYAT C4B: pin FF02-D custody verification blob", "reachable_after_fetch": true},
+      {"ref": "origin/agent/opencode-pyat-hq178-d2p-starriymac-import-review-r1", "resolved_commit": "41bd7a7c056de9d45b905efc0f926b4ab6a097ad", "subject": "D2P return: NoviyMac packet imported byte-exact, B001/B002/B003 independently closed", "reachable_after_fetch": true}
+    ],
+    "merged_into_review_branch": false
+  },
+
+  "parallel_lane_independence": {
+    "parallel_review_branch": "agent/reviewer-pyat-hq180-c4-executable-freeze-final-integration-review-r1",
+    "read": false,
+    "commission_read": false,
+    "return_packet_read": false,
+    "speculation_recorded_about_its_findings": false,
+    "statement": "No content from the A lane was consulted at any point. This judgement is formed independently and does not require agreement with the other reviewer."
+  },
+
+  "terminal": "C4_EXECUTABLE_FREEZE_FINAL_INTEGRATION_REVIEW_ALT_B_RETURNED__HQ_ADJUDICATION_REQUIRED"
+}

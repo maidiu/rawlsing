@@ -1,0 +1,182 @@
+{
+  "schema": "PYAT_C4_FINAL_INTEGRATION_REVIEW_ALT_B__FINAL_DISPOSITION@1.0.0",
+  "lane": "PYAT-C4-EXECUTABLE-FREEZE-FINAL-INTEGRATION-REVIEW-ALT-B-R1",
+  "role": "PYAT C4 — executable freeze final independent integration review — R1 (ALT-B LANE)",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/reviewer-pyat-hq181-c4-executable-freeze-final-integration-review-alt-b-r1",
+  "commission_tip": "2836f6259c932c2308b9c15351d4051d18ba7e60",
+  "review_base": "8ff40d37de69db2d8a6053a7c2242f481677f1a4",
+  "artifact_under_review": "8ff40d37de69db2d8a6053a7c2242f481677f1a4",
+  "artifact_under_review_disposition": "PASS_C4_EXECUTABLE_FREEZE_FANIN__READY_FOR_INDEPENDENT_REVIEW",
+  "governing_omega1": "01762d7379be4e423dad3e21bcdcee47c536902d",
+  "governing_omega1_selection": "A_GO_WITH_EXACT_C4_CONDITIONS",
+
+  "disposition": "APPROVE_AT_DECLARED_GRAIN",
+  "terminal": "C4_EXECUTABLE_FREEZE_FINAL_INTEGRATION_REVIEW_ALT_B_RETURNED__HQ_ADJUDICATION_REQUIRED",
+
+  "meaning_of_this_disposition": {
+    "established": "The source-free C4 executable freeze at 8ff40d37 is accepted at its declared grain: one exact combined execution tree, an unchanged eight-source workload, independent oracle and preimage custody, an exact D02 binding, a frozen runtime and reader-lane law, accounting and failure law frozen before any warrant, the retention plan and all-35 claim ledger preserved, and a complete but unissued warrant candidate.",
+    "permits_hq_to": [
+      "resolve and fill the seven source access locators",
+      "restore the per-source read-limit accounting slots in the warrant instrument (R9)",
+      "issue or obtain the exact O1-C06 warrant, with HQ approval and the required user/resource-owner approval recorded"
+    ],
+    "does_not_authorise": [
+      "raw-source C4 execution",
+      "opening, stat-ing, hashing, metadata-reading, decoding or materialising any raw survey file",
+      "any fresh LiTS decode",
+      "any retry, second full Route-B pass, or Candidate A/B/C or measured P2X run",
+      "C7 or any comparable-wave downstream unlock",
+      "actor or person work",
+      "PRE-V3 to V3",
+      "self-adoption of this freeze by me",
+      "treating this approval as a substitute for the independent review HQ requires under O1-C11 for the eventual C4 result"
+    ],
+    "explicit_statement": "An approval here is not a licence to execute. HQ may proceed to warrant issuance; it must not treat this document as authorising raw-source execution."
+  },
+
+  "allowed_dispositions_considered": {
+    "APPROVE_AT_DECLARED_GRAIN": {
+      "selected": true,
+      "why": "Every O1-C01 through O1-C05 closure survived independent challenge, and I re-derived each substantive claim rather than accepting it. The commit graph is lawful with zero unrelated ancestry and zero production changes. All 14 pinned production/test blobs are exact at head, C4A and C4C3, and the rawlsing_next tree hash is identical across the whole lineage. All 36 imported evidence blobs are exact. All eight source SHA-256s agree four ways and all fourteen Omega-1 oracle identity rules match. The 280-cell ledger arithmetic recomputes exactly with zero PASS cells and all nine claim ceilings byte-identical and in order. The warrant candidate's digest recomputes to the declared value exactly, all seven locators are explicitly unfilled, SRC35 is correctly excluded, and I found no path or locator anywhere in the packet. The Route-B producer binding, which C4B did not name, is independently confirmed correct and unique. No finding invalidates any closure. The two substantive items I found are a repair at issuance and a precondition at live execution, and one apparent gap I closed affirmatively with my own computation. The bookkeeping errors all understate coverage."
+    },
+    "CHANGES_REQUIRED": {
+      "selected": false,
+      "why_not": "Nothing found requires rework of the freeze itself. R1, R4, R5, R6, R10 and R11 are documentary repairs of varying weight and none invalidates an O1-C01..C05 closure. R9 is a repair to the warrant instrument, which does not yet exist as an issued document and is out of scope for the freeze. R7 is a live-execution precondition already covered by the freeze's own invalidation law. Rework of a source-free freeze that verifies this cleanly would be disproportionate."
+    },
+    "TYPED_RESIDUAL": {
+      "selected": false,
+      "why_not": "I do carry eleven typed residuals and they are enumerated in full in 06_OPEN_ITEMS_AND_RESIDUALS.json, but none of them contradicts or qualifies a closure. The commission's own framing makes APPROVE_AT_DECLARED_GRAIN the disposition that carries the residual schedule, since an approval at declared grain is by definition approval together with a record of what remains typed and open. Choosing TYPED_RESIDUAL instead would suggest the freeze stands only as a residual rather than as a sound freeze, which is not what I found. The residuals are attached to this approval rather than substituted for it."
+    },
+    "ESCALATE_WITH_COUNTEREXAMPLE": {
+      "selected": false,
+      "why_not": "I found no counterexample to any closure, no law weakened, no provenance drift, no cross-owner conflict, no oracle binding gap and no runtime binding gap. Specifically: the fan-in's own concern about binding a module C4B did not name is not a counterexample, because I independently proved the binding correct. The fan-in's own accounting figures are not a counterexample, because they understate rather than overstate. C4B's stale-base observation of the C3 blobs is not a counterexample, because C4B framed it as an execution-head precondition and that precondition is satisfied. Nothing here warrants Astra escalation."
+    }
+  },
+
+  "condition_by_condition": {
+    "O1_C01": {"fanin": "CLOSED_BOUND", "mine": "CONFIRMED", "basis": "14/14 pinned blobs exact at head/C4A/C4C3; AT07 identities agree 4-way; facade, composition, provider, named consumer, lifecycle owner and replay owner all bound with exact blobs; Route-B producer independently determined correct and unique; combined tree 8f7efe690 with rawlsing_next b0c1ab47 unchanged", "residuals": ["R1", "R2", "R3"]},
+    "O1_C02": {"fanin": "CLOSED_BOUND", "mine": "CONFIRMED", "basis": "8/8 source SHA-256 agree across Omega-1, C4B, fan-in and warrant; ordinals agree; read economy agrees 3-way; D01 metadata-only carried without widening; physical-only six remain physical-only; LiTS B01 slot bindings exact against C4B; zero substitutions; zero excluded fresh reads", "residuals": []},
+    "O1_C03": {"fanin": "CLOSED_BOUND", "mine": "CONFIRMED_AT_DECLARED_GRAIN", "basis": "All 14 Omega-1 oracle identity rules match; B001/B002/B003 counts independently reproduced from the in-repo packet; 9/9 packet SHA256SUMS recomputed and matched; packet manifest digest verified against bytes; WVS oracle document digest verified against bytes; fresh output may not author expected truth; seven difference classes with fail-closed on unclassified; two identity labels preserved as labels and expressly not upgraded", "residuals": ["R4", "R5"]},
+    "O1_C04": {"fanin": "CLOSED_BOUND", "mine": "CONFIRMED", "basis": "v372/ordinal 466 exact; PREP71 fixture blob resolves at named tip 3bc063aa at the exact declared path; counts 1917/64363/0/66280 arithmetically consistent; nonsemantic missingness class preserved; C4C3 probe D02-5 payload 06 2e 0a 0e matches the freeze character for character; dates_as_pandas_datetime=False frozen in both artifacts; historical rendering structurally could not have selected the carrier because the codec normalises by exact runtime type with distinct payload widths", "residuals": ["R6"]},
+    "O1_C05": {"fanin": "CLOSED_BOUND", "mine": "CONFIRMED_WITH_ELEVATED_RESIDUALS", "basis": "Execution surface matches C4C3's environment lock; actually-executing interpreter verified rather than a zero-byte PATH entry; historical C3 freeze hash reproduced byte-for-byte with 0 differences across 13 packages; 5 explicit plus 11 inherited reader options with 11/11 agreeing against C4C3; no install-on-import; no silent upgrade; P2X gates off the C4 path, independently re-derived by me at 21 modules reproducing C4C3 exactly, and preserved at 23 with the Route-B producer; RES-1/2/3 each correctly nonblocking and correctly fail-closed constrained", "residuals": ["R7", "R8"]},
+    "O1_C06": {"fanin": "CANDIDATE_ONLY__NOT_ISSUED", "mine": "CONFIRMED_NOT_ISSUED__REPAIR_REQUIRED_BEFORE_ISSUANCE", "basis": "Status string exact; signed/authorizes_access/issued/execution_authorized all false; issued_by and issue_date null; exactly 7 fresh-read sources; SRC35 absent from authorized_sources.keys with explicit exclusion reason; all seven access_locator values the explicit unfilled placeholder; source SHA, operation, reader lane, runtime, authority, failure, retry and retention bound; no raw-storage search, corroborated by zero absolute paths in the packet; digest recomputed to d57420f8016bf49cc0353f39dcd2271e6f370c3bd9b7e81f08466c0a1f574e0a exactly; locator fill correctly an issuance-only blocker", "residuals": ["R9"]},
+    "O1_C07": {"fanin": "FROZEN_BEFORE_WARRANT", "mine": "CONFIRMED", "basis": "Workload pass explicitly distinguished from OS-level open with the four required separate accounts named; ten mandatory accounts each requiring a measurement basis; all required zeros present and mutually consistent between the warrant and the accounting law; hard-zero discipline stated; per-source operation classes complete", "residuals": []},
+    "O1_C08": {"fanin": "FROZEN", "mine": "CONFIRMED", "basis": "Ten stop triggers matching Omega-1's failure classes; six absolute prohibitions; null-with-typed-reason reporting with a worked example; corrected rerun requires new HQ-bound authority and a newly issued warrant", "residuals": []},
+    "O1_C09": {"fanin": "PRESERVED", "mine": "CONFIRMED", "basis": "Eleven retention requirements including an ACTUAL named-consumer trace and lane-bound digests; six evidence grades kept separate with explicit must-not-merge rules; the forbidden provider-to-consumer-to-lifecycle bridge recorded as forbidden rather than glued; raw-bytes custody prohibition preserved", "residuals": []},
+    "O1_C10": {"fanin": "PRESERVED", "mine": "CONFIRMED", "basis": "35 sources with ids exactly {01..35}; 280 cells as F1..F8 times 35, uniform 8 per source; 8 selected and 27 excluded with arithmetic; 64 selected and 216 excluded cells; zero PASS or PROVED cells anywhere; update law on every cell; all nine claim ceilings identical in content and order across Omega-1, C4B and the fan-in; all three carried residuals preserved with correct states; C7 held", "residuals": []}
+  },
+
+  "commit_graph_verdict": {
+    "count_discrepancy": "RESOLVED__PURE_COUNTING_BASIS_DIFFERENCE",
+    "detail": "3 is the first-parent count of 01256977..8ff40d37 and 5 is the total-reachable count. The two extra reachable commits are exactly the C4C3 return 1df64cc59 and its HQ bind eba2f4249, both the declared merge side. Nothing unreviewed is reachable.",
+    "C4A_ancestor": true,
+    "C4A_merge_ancestor": true,
+    "C4C3_merge_lawful": true,
+    "C4B_method_2_import": true,
+    "D2P_method_2_import": true,
+    "unrelated_ancestry_imported": false,
+    "fanin_writes": {"files_added": 47, "files_modified": 0, "files_deleted": 0, "all_confined_to_WORKER_RETURNS": true},
+    "rawlsing_next_changes": 0,
+    "rawlsing_next_tree_identical_c4a_to_final": true
+  },
+
+  "fanin_claims_i_did_not_accept_on_faith": {
+    "statement": "Every numeric claim below was recomputed by me from git objects or from the upstream authority packets. None was taken from the fan-in's own assertion.",
+    "recomputed": [
+      {"claim": "13/13 pinned production/test blobs exact", "recomputed": "14/14 including the Route-B producer, which artifact 03 pins but artifact 01 omits", "result": "CONFIRMED_AND_STRONGER"},
+      {"claim": "34/34 imported evidence blobs exact", "recomputed": "36/36 at head; the actual imported set is 36 files and all are blob-exact", "result": "CONFIRMED__DENOMINATOR_MIS_STATED_CONSERVATIVELY"},
+      {"claim": "16/16 source-free checks pass", "recomputed": "each substantive check re-derived independently", "result": "SUBSTANTIVELY_CONFIRMED__V07_ARTEFACT_COUNT_UNDERSTATED"},
+      {"claim": "rawlsing_next tree b0c1ab47 unchanged", "recomputed": "identical at 9a5752a8, 8f7efe690, 01256977, 39015a90, f8c8e2e4, 8ff40d37 and 2836f625", "result": "CONFIRMED"},
+      {"claim": "9 of 9 D2P SHA256SUMS recomputed and matched", "recomputed": "9/9 by me", "result": "CONFIRMED"},
+      {"claim": "warrant candidate SHA d57420f80...", "recomputed": "d57420f8016bf49cc0353f39dcd2271e6f370c3bd9b7e81f08466c0a1f574e0a", "result": "CONFIRMED_EXACT"},
+      {"claim": "all 8 lane_internal_references hashes", "recomputed": "8/8 agree", "result": "CONFIRMED"},
+      {"claim": "280 cells, 35 sources, 8 selected, 27 excluded", "recomputed": "all exact, uniform 8 per source, F1..F8 times 35", "result": "CONFIRMED"},
+      {"claim": "C3 authoritative court 6 files / 55 tests twice", "recomputed": "per-file [9,8,13,9,6,10] sums to 55; identical across both runs", "result": "CONFIRMED"},
+      {"claim": "C1 court 454/454", "recomputed": "the 15 declared per-file counts sum to exactly 454", "result": "CONFIRMED"},
+      {"claim": "P2X gates not on the C4 path, 21-module closure", "recomputed": "my own closure from C4C3's five declared layers is exactly 21 modules and reproduces C4C3's list module for module; 23 with the Route-B producer", "result": "CONFIRMED_AND_INDEPENDENTLY_EXTENDED"},
+      {"claim": "11/11 inherited reader defaults agree with C4C3", "recomputed": "compared key by key; 11/11", "result": "CONFIRMED"},
+      {"claim": "Route-B producer is the right owner", "recomputed": "unique declaration and unique entry point across all 330 rawlsing_next files; role confirmed from docstring and imports", "result": "CONFIRMED__NOT_ACCEPTED_ON_THE_FANIN'S_WORD"},
+      {"claim": "no raw-storage search performed", "recomputed": "zero absolute paths of any form anywhere in the 12-file packet; every survey filename is a bare name", "result": "STRUCTURALLY_CORROBORATED"},
+      {"claim": "checkpoint_identity and canonical_closure_identity preserved as labels", "recomputed": "D2P's own packet marks both NOT_VERIFIED_HERE and instructs HQ in writing not to read them as verified", "result": "CONFIRMED__NOT_UPGRADED_BY_ME"}
+    ]
+  },
+
+  "independent_contributions_beyond_the_fanin": [
+    "Reproduced C4C3's 21-module import closure from scratch, module for module, which independently validates its O1-C05 and P2X analysis.",
+    "Established that binding the Route-B producer expands the closure to exactly 23 modules, that the two added modules are clean, and that P2X_DARWIN_GATES_NOT_ON_C4_PATH therefore survives the binding. This closed a tension the fan-in left unreconciled.",
+    "Established by uniqueness search that the Route-B producer binding is correct rather than accepting the fan-in's naming of it.",
+    "Verified the WVS oracle document digest against git blob bytes, an independent upgrade the fan-in did not claim.",
+    "Reproduced D2P's B001/B002/B003 object counts directly from the in-repo packet rows, including the 24-snapshots-over-18-authorities distinction the fan-in dropped.",
+    "Confirmed the count-discrepancy is a pure counting-basis difference by measuring both bases and enumerating all five reachable commits.",
+    "Established the zero-absolute-path structural corroboration for the no-search assertion.",
+    "Found the per-source read-limit slot loss in the warrant candidate (R9), which is a concrete issuance blocker.",
+    "Established that the qualified execution surface is not durable and not repository-reconstructible, on four independently verified grounds (R7), which is materially more than the fan-in's one-line note.",
+    "Found a truncated digest sitting in a machine-readable identity field (R10) by sweeping the whole packet for abbreviated forms and distinguishing prose from identity fields."
+  ],
+
+  "residual_register_summary": {
+    "blocking_executable_freeze_acceptance": 0,
+    "blocking_warrant_issuance": 1,
+    "blocking_live_execution": 1,
+    "advisory_nonblocking": 9,
+    "counterexamples_requiring_escalation": 0,
+    "full_detail": "06_OPEN_ITEMS_AND_RESIDUALS.json"
+  },
+
+  "authority_effect": {
+    "scope_freeze_accepted_at_source_free_grain": true,
+    "hq_may_resolve_and_fill_source_locators": true,
+    "hq_may_issue_or_obtain_the_exact_O1_C06_warrant_after_repairs": true,
+    "raw_source_execution_authorized": false,
+    "source_locators_discovered_or_filled_by_this_review": false,
+    "c4_executed": false,
+    "warrant_issued": false,
+    "implementation_change_performed": false,
+    "actor_person_work_authorized": false,
+    "new_semantic_authority_created": false,
+    "self_adopted": false,
+    "parallel_A_lane_branch_read": false,
+    "authority_inputs_merged_into_this_branch": false
+  },
+
+  "verification": {
+    "method": "Read-only git object inspection and exact blob/tree/commit comparison, plus static analysis of repository Python sources read from git blobs. No production or survey execution.",
+    "inputs_read": ["8ff40d37 (fan-in packet, 12 files)", "01762d737 (Omega-1 decision and siblings)", "c2af4f61 (C4B packet, 10 files)", "41bd7a7c (D2P packet, 16 files)", "1df64cc5 (C4C3 packet, 10 files)", "8f7efe690 (C4A packet)", "3bc063aa (D02 PREP71 fixture at its named tip)"],
+    "fanin_artifacts_json_parsed": 10,
+    "fanin_artifacts_json_failed_to_parse": 0,
+    "pinned_blobs_recomputed": 14,
+    "imported_evidence_blobs_recomputed": 36,
+    "d2p_sha256sums_recomputed": 9,
+    "cross_artifact_hashes_recomputed": 8,
+    "warrant_digest_recomputed": true,
+    "all35_cells_recomputed": 280,
+    "import_closures_derived_independently": 2,
+    "production_code_mutated": 0,
+    "files_written_by_this_review": ["WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FINAL-INTEGRATION-REVIEW-ALT-B-R1/00_REVIEW.md", "WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FINAL-INTEGRATION-REVIEW-ALT-B-R1/01_COMMIT_GRAPH_AND_BLOB_REVIEW.json", "WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FINAL-INTEGRATION-REVIEW-ALT-B-R1/02_O1_C01_C05_REVIEW.json", "WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FINAL-INTEGRATION-REVIEW-ALT-B-R1/03_ORACLE_D02_RUNTIME_REVIEW.json", "WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FINAL-INTEGRATION-REVIEW-ALT-B-R1/04_ACCOUNTING_RETENTION_CLAIM_REVIEW.json", "WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FINAL-INTEGRATION-REVIEW-ALT-B-R1/05_WARRANT_CANDIDATE_REVIEW.json", "WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FINAL-INTEGRATION-REVIEW-ALT-B-R1/06_OPEN_ITEMS_AND_RESIDUALS.json", "WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FINAL-INTEGRATION-REVIEW-ALT-B-R1/07_FINAL_DISPOSITION.json"],
+    "raw_source_access_this_review": 0,
+    "raw_source_storage_searched": false,
+    "live_readers_invoked": false,
+    "c4_executed": false,
+    "warrant_issued": false,
+    "source_locators_filled": 0,
+    "fabricated_metrics": 0
+  },
+
+  "handoff_to_hq": {
+    "recommended_next_steps_in_order": [
+      "Record this disposition and the eleven typed residuals in 06_OPEN_ITEMS_AND_RESIDUALS.json.",
+      "Restore the per-source source_access_accounting slots for all seven sources in the warrant instrument before issuance (R9).",
+      "Carry forward D2P's 24-snapshots-over-18-authorities caution (R5) and re-type the LiTS oracle_document_sha256 cb1c6ae6... as recorded-not-resolved or resolve it (R4).",
+      "Restore the full T3_freeze_sha256 digest in artifact 05 (R10).",
+      "Normalise the three bookkeeping denominators (R11).",
+      "Record the Route-B producer's two entry points (R1) and update the C4 import-closure figure to 23 with the two-module delta named (R2).",
+      "Resolve and fill the seven source access locators on the authorised execution surface, binding each to the source SHA-256 it resolves to.",
+      "Obtain HQ approval and the required user/resource-owner approval, sign and issue the warrant.",
+      "Before the governed run, either preserve the qualified environment durably with a full interpreter digest or re-create and re-qualify it (R7). Confirm an actually-executing interpreter, not a PATH entry."
+    ],
+    "what_must_not_be_done_on_the_strength_of_this_approval": "No raw survey file may be opened, stat-ed, hashed, metadata-read, decoded or materialised. This approval authorises no execution."
+  },
+
+  "terminal": "C4_EXECUTABLE_FREEZE_FINAL_INTEGRATION_REVIEW_ALT_B_RETURNED__HQ_ADJUDICATION_REQUIRED"
+}

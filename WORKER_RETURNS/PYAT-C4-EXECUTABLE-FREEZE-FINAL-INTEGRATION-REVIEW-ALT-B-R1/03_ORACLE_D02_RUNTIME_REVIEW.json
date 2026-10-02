@@ -1,0 +1,256 @@
+{
+  "schema": "PYAT_C4_FINAL_INTEGRATION_REVIEW_ALT_B__ORACLE_D02_RUNTIME_REVIEW@1.0.0",
+  "lane": "PYAT-C4-EXECUTABLE-FREEZE-FINAL-INTEGRATION-REVIEW-ALT-B-R1",
+  "governing_omega1": "01762d7379be4e423dad3e21bcdcee47c536902d",
+
+  "section_4_source_free_court_continuity": {
+    "C1_454_of_454": {
+      "fanin_claim": "belongs to this exact combined lineage",
+      "my_verdict": "CONFIRMED",
+      "receipt_source": "WORKER_RETURNS/PYAT-C4A-C1-C3-INTEGRATION-R1/03_COMBINED_SOURCE_FREE_COURT.json at 8f7efe690a161902e79358eb31650c238a4c0be8",
+      "files": 15,
+      "per_file_counts": [92, 43, 57, 43, 13, 35, 13, 54, 28, 32, 17, 14, 8, 3, 2],
+      "my_recomputed_sum": 454,
+      "collected": 454,
+      "passed": 454,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "reproduces_accepted_c1_court_exactly": true,
+      "lineage_proof": "C4A merge commit 9a5752a8ce4a119efd24cbbeedd8cbcda8abbadb is a verified ancestor of the execution head, and rawlsing_next tree identity b0c1ab47 is unchanged from the C4A merge through head, so every one of the 15 court files is byte-identical at head",
+      "stronger_than_claimed": "Tree identity is a superset guarantee, so C1 court file content conservation is implied by the tree hash, not merely asserted per-file."
+    },
+    "authoritative_C3_court": {
+      "fanin_claim": "exactly six files / 55 tests; 55/55 twice",
+      "my_verdict": "CONFIRMED",
+      "receipt_source": "WORKER_RETURNS/PYAT-C4C3-DARWIN-ANCHOR-RUNTIME-R1/05_AUTHORITATIVE_C3_COURT.json at 1df64cc596b5602c952518c87b1c71cc1fcfb35f",
+      "files": 6,
+      "per_file": [
+        {"file": "test_closed35_g01_sav_numeric_representation_authority.py", "expected": 9, "passed": 9},
+        {"file": "test_closed35_d01_declared_encoding_admission.py", "expected": 8, "passed": 8},
+        {"file": "test_closed35_d02_opaque_datetime_carrier.py", "expected": 13, "passed": 13},
+        {"file": "test_fiabc_lm2_r1j_sav_representation_authority.py", "expected": 9, "passed": 9},
+        {"file": "test_r35_i01_physical_metadata.py", "expected": 6, "passed": 6},
+        {"file": "test_pre553_source_backed_c11_facade.py", "expected": 10, "passed": 10}
+      ],
+      "my_recomputed_sum": 55,
+      "required_result": "55 passed / 0 failed / 0 errors / 0 skipped",
+      "observed_result": "55 passed / 0 failed / 0 errors / 0 skipped",
+      "meets_requirement": true,
+      "runs": 2,
+      "identical_across_runs": true,
+      "run_durations_seconds": [77.79, 44.25],
+      "denominator_asserted_before_run": true,
+      "denominator_basis": "--collect-only run before the timed run; 9+8+13+9+6+10 = 55; the run then reported exactly 55 passed with no collection error",
+      "tree_qualified": "8f7efe690a161902e79358eb31650c238a4c0be8",
+      "tree_is_ancestor_of_execution_head": true,
+      "rawlsing_next_tree_identical_at_qualified_tree_and_C4C3_head": true,
+      "execution_environment_determinism": {"PYTHONHASHSEED": "0", "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1", "rationale": "matches the governed bounded-court discipline in .rabochii/court_spec.json:16, which I confirmed is present in the repository at head"},
+      "exit_code": 0,
+      "grade_statement": "A FRESH EXECUTION on the combined C1+C3 tree on the Darwin/x86_64 anchor, not an inheritance of the accepted result. C4C3 correctly declines to extend the C3 grade to physical/survey-contact evidence."
+    },
+    "supplementary_failures_neither_promoted_nor_removed": {
+      "my_verdict": "CONFIRMED__NO_SILENT_PROMOTION__NO_SILENT_REMOVAL",
+      "C4A_wider_sweep": {"files": 25, "collected": 533, "passed": 530, "failed": 3, "in_authoritative_denominator": false, "retained_as": "wider historical residual evidence"},
+      "C4A_three_failures_triage": "Each was executed against BOTH accepted parents in separate detached worktrees. All three are INHERITED, present identically at c3_accepted_tip 30686b18 and c1_accepted_base 149c3d26. The merge introduced zero new failures and resolved none.",
+      "C4C3_supplementary_sweep": {"files": 5, "passed": 48, "failed": 11, "skipped": 1, "collection_errors": 0, "in_authoritative_denominator": false, "collection_blocker_resolved": true},
+      "C4C3_eleven_failure_root_causes": [
+        {"count": 8, "file": "test_fiabc_lm2_r1e_bounded_mapping_recovery.py", "classification": "INHERITED_FIXTURE_IDENTITY_MISMATCH, environment-independent"},
+        {"count": 1, "file": "test_fiabc_run3_postmeasurement_repair_stack.py", "classification": "BANKED_PROJECTION_IDENTITY, environment-independent"},
+        {"count": 2, "file": "test_pre553_sr06_decoder_carrier.py", "classification": "DEPENDENCY_ABSENT_BY_COMMISSION_DIRECTION (duckdb deliberately not installed, and independently proven off the C4 path)"}
+      ],
+      "anchor_runtime_incompatibilities": 0,
+      "denominator_stayed_at": 55,
+      "one_inclusion_not_a_promotion": "C4C3 retired C4A's exclusion of test_pre553_source_backed_c11_facade.py (10 tests) INTO the authoritative court, because C4A's exclusion was purely a missing-pandas artefact. This is a disclosed inclusion with a stated cause, not a silent promotion of a failure."
+    }
+  },
+
+  "section_6_O1_C03_oracle_and_preimage_custody": {
+    "fanin_claim": "CLOSED_BOUND",
+    "my_verdict": "CONFIRMED_AT_DECLARED_GRAIN__2_TYPED_RESIDUALS",
+    "ordering_law_held": "source identity -> authority/workload freeze -> independent oracle custody -> oracle identity freeze -> production output. All four pre-production stages are bound and none is deferred to the run.",
+
+    "OMEGA1_identity_rules_full_route_oracles_cross_check": [
+      {"field": "LiTS_I.source_sha256", "omega1": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09", "freeze": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09", "match": true},
+      {"field": "LiTS_I.canonical_empirical_closure_identity", "omega1": "f264dd8f83a0794716583d1ea8445947cc9470b99475e5d51fc2383e7196f415", "freeze": "f264dd8f83a0794716583d1ea8445947cc9470b99475e5d51fc2383e7196f415", "match": true},
+      {"field": "LiTS_I.checkpoint_sha256", "omega1": "2704fd3fadc9c898a512183aaf5eebf0ca48d78c47e75a19d47e17281eaa5726", "freeze": "2704fd3fadc9c898a512183aaf5eebf0ca48d78c47e75a19d47e17281eaa5726", "match": true},
+      {"field": "LiTS_I.oracle_identity", "omega1": "e5d66db4b6f8339672b0f4828b72a8df68b5525bf71ecfda899d0531d618a98a", "freeze": "e5d66db4b6f8339672b0f4828b72a8df68b5525bf71ecfda899d0531d618a98a", "match": true},
+      {"field": "LiTS_I.retained_counts.candidates", "omega1": 50, "freeze": 50, "match": true},
+      {"field": "LiTS_I.retained_counts.query_roles", "omega1": 77, "freeze": 77, "match": true},
+      {"field": "LiTS_I.retained_counts.empirical_facts", "omega1": 60, "freeze": 60, "match": true},
+      {"field": "LiTS_I.retained_counts.discovery_receipts", "omega1": 50, "freeze": 50, "match": true},
+      {"field": "WVS7.source_sha256", "omega1": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d", "freeze": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d", "match": true},
+      {"field": "WVS7.logical_release_identity", "omega1": "e6881e9a08a48f8871790e781c28bddbc44ee35db894d6ad7b1105a6a8fd262f", "freeze": "e6881e9a08a48f8871790e781c28bddbc44ee35db894d6ad7b1105a6a8fd262f", "match": true},
+      {"field": "WVS7.replay_identity", "omega1": "996ba218fc5da5e0ad1ddf0cdc7f91ce8fb8a7363ce62076dc3f4073b85c383f", "freeze": "996ba218fc5da5e0ad1ddf0cdc7f91ce8fb8a7363ce62076dc3f4073b85c383f", "match": true},
+      {"field": "WVS7.oracle_identity", "omega1": "3694b8bd0b5468433a1a83bd469337c7e36e552c3a9a5fef65fff88df8fce800", "freeze": "3694b8bd0b5468433a1a83bd469337c7e36e552c3a9a5fef65fff88df8fce800", "match": true},
+      {"field": "WVS7.evaluated_frontier_identity", "omega1": "b2c3c50b68bcadb94ff2bf898d11c2b72694ced9fee4154e535db2694e26a4f3", "freeze": "b2c3c50b68bcadb94ff2bf898d11c2b72694ced9fee4154e535db2694e26a4f3", "match": true},
+      {"field": "WVS7.candidate_count", "omega1": 46, "freeze": 46, "match": true}
+    ],
+    "all_fourteen_match": true,
+
+    "WVS_retained_oracle_replay_release_binding": {
+      "my_verdict": "CONFIRMED",
+      "oracle_identity": "3694b8bd0b5468433a1a83bd469337c7e36e552c3a9a5fef65fff88df8fce800",
+      "oracle_git_blob": "9eecf801afa2c9f3d9140b4e5fb79fb14fc1fe20",
+      "oracle_git_blob_resolves_at_head": true,
+      "oracle_git_blob_path_at_head": "WORKER_RETURNS/FIABC-LM2-R1M-LOCK2-SUCCESSOR-R16-ORACLE/07_FRESH_WVS_ORACLE.json",
+      "oracle_document_sha256_declared": "9d11a480c1c1341a2a92e0def77f5d15563ed83a44efeb9f89eff5b6cbb1527d",
+      "oracle_document_sha256_independently_recomputed_by_me": "9d11a480c1c1341a2a92e0def77f5d15563ed83a44efeb9f89eff5b6cbb1527d",
+      "oracle_document_sha256_match": true,
+      "independently_upgraded_by_this_review": true,
+      "upgrade_note": "The fan-in only carried the WVS oracle document SHA-256. I recomputed it from the git blob bytes at head and it matches exactly. This is a genuine independent verification and is recorded as such. It is NOT one of the two identities the commission forbade upgrading.",
+      "truth_payload_identity": "eb2f9224219385dbf21af70d317e0978383012ff057ce2ac857b59c130472405",
+      "oracle_independence_evidence_carried": {"second_replay_equal": true, "receipt_stream_equal": true, "fact_stream_equal": true, "raw_source_reread": false, "first_successful_candidate_as_golden": false, "pairwise_candidate_vote": false},
+      "fresh_raw_read": false,
+      "candidate_count": 46
+    },
+
+    "LiTS_D02P_accepted_references": {
+      "my_verdict": "CONFIRMED__COUNTS_INDEPENDENTLY_REPRODUCED",
+      "d2p_disposition": "APPROVE_D2P_PORTABLE_EXPORT_AT_DECLARED_GRAIN__B001_B002_B003_CLOSED",
+      "packet_path": "WORKER_RETURNS/PYAT-R2-LITS-D2P-PORTABLE-IMPORTED-R1/NOVIYMAC_PACKET/",
+      "packet_manifest_declared_sha256": "46b38c21f2b331575b12f2eadd09348299ab9c6736983f9f281fd48644ff8106",
+      "packet_manifest_sha256_independently_recomputed_by_me": "46b38c21f2b331575b12f2eadd09348299ab9c6736983f9f281fd48644ff8106",
+      "packet_manifest_match": true,
+      "SHA256SUMS_entries": 9,
+      "SHA256SUMS_recomputed_and_matched_by_me": 9,
+      "SHA256SUMS_mismatched": 0,
+      "B001": {"required": 50, "closed": 50, "my_independent_count_of_packet_rows": 50, "distinct_candidate_hash": 50, "distinct_receipt_refs": 50, "pairing_basis": "explicit retained semantic_fields.candidate_identity.candidate_hash, never ordering-based", "status": "CONFIRMED"},
+      "B002": {"required_authority_snapshots": 24, "closed_authority_snapshots": 24, "my_independent_count_of_snapshot_rows": 24, "my_independent_count_of_distinct_authority_id_values": 18, "required_per_object_rows": 208, "closed_per_object_rows": 208, "my_independent_family_breakdown": {"DiscoveryResultReceipt": 50, "EmpiricalFact": 60, "EmpiricalPredicate": 35, "EmpiricalQuerySpec": 63}, "my_recomputed_total": 208, "status": "CONFIRMED", "see": "R5 for the 24-over-18 disclosure"},
+      "B003": {"required_cross_schema_rows": 50, "closed": 50, "my_independent_count_of_packet_rows": 50, "required_p2_memberwise_mappings": 18, "closed_p2_memberwise_mappings": 18, "my_independent_count_of_is_p2_memberwise_mapping_true": 18, "my_independent_distinct_pre553_i05_candidate_hash": 50, "p2_classifier_inferred": false, "status": "CONFIRMED"},
+      "structural_admission_object_count": 0,
+      "zero_reconstructed_semantic_rows": true,
+      "no_ambiguous_reconstruction_step": true,
+      "blocker_state_transition_handling": {
+        "c4b_recorded_status": "BLOCKED__EXACT_PUBLIC_OBJECT_PREIMAGE_CUSTODY_NOT_AVAILABLE_ON_GIT_BROWSER_SURFACE",
+        "c4b_sole_blocker_id": "C4B-LITS-ORACLE-PREIMAGE-CUSTODY-001",
+        "current_state": "CLOSED_AT_RETAINED_PREIMAGE_CUSTODY_GRAIN",
+        "c4b_original_blocked_record_imported_verbatim_and_not_overwritten": true,
+        "closure_recorded_as_a_separate_transition": true,
+        "my_verdict": "CORRECT__NO_DESTRUCTIVE_OVERWRITE"
+      }
+    },
+
+    "required_counts_50_77_60_50": {"candidates": 50, "roles": 77, "facts": 60, "receipts": 50, "all_confirmed": true},
+
+    "fresh_output_cannot_author_expected_truth": {
+      "status": "BOUND_AND_MANDATORY",
+      "independent_basis": "D2P's packet records zero_reconstructed_semantic_rows true and its B003 closure was derived from retained cross-schema material under retained contract FIABC_LITS_CROSS_SCHEMA_LOGICAL_CANDIDATE@1.0.0, with no P2 classifier inferred. The oracle therefore predates and is independent of any fresh run.",
+      "comparison_discipline": "Any difference must be classified into one of source/authority/determinant/witness/geometry/negative_state/replay with its exact failed determinant before the run continues. An unclassified difference is itself a STOP. Unexpected differences fail closed."
+    },
+
+    "exact_comparison_dimensions_predeclared": {
+      "count": 9,
+      "dimensions": ["source identity", "authority", "determinant/query/predicate/universe/release", "witness/receipt/fact", "geometry/count/order", "typed negative state", "replay", "consumer trace", "dependency/currentness closure"],
+      "all_predeclared_before_production_output": true,
+      "consumer_trace_ceiling": "An ACTUAL trace through evaluate_positioned_subject_possibility is required; a sidecar synthetic success does not prove LiTS production consumption."
+    },
+
+    "recorded_but_not_independently_verified_labels": {
+      "checkpoint_identity": "3fab15f37db629f0ee24189620c65eff944d8a36c4b4509abb6b8bb2ea69c33f",
+      "canonical_closure_identity": "f264dd8f83a0794716583d1ea8445947cc9470b99475e5d51fc2383e7196f415",
+      "fanin_preserved_them_as_labels": true,
+      "my_disposition": "PRESERVED_AS_LABELS__NOT_UPGRADED__EXPLICITLY_REFUSE_UPGRADE",
+      "commission_instruction_honoured": true,
+      "upstream_corroboration_that_they_are_unverified": "D2P's own 01_CHECKPOINT_IDENTITY.json records checkpoint_identity_verification and canonical_closure_identity_verification both as NOT_VERIFIED_HERE with the note that no field carrying the identity was located in the permitted retained material scanned. D2P's requirements_on_HQ_at_fanin additionally instructs: bind the two as OPEN items, do not read them as verified.",
+      "actual_executable_custody_binding_used_instead": "checkpoint DOCUMENT SHA-256 2704fd3f... plus the accepted byte-verified retained preimage packet"
+    },
+
+    "sufficiency_adjudication_at_this_grain": {
+      "question": "Is the document SHA-256 plus the accepted D2P packet sufficient executable custody binding at this grain?",
+      "answer": "SUFFICIENT_FOR_A_SOURCE_FREE_FREEZE",
+      "reasoning": [
+        "The checkpoint document SHA-256 was independently observed on NoviyMac by D2P with identity_gate PASS, observed_bytes 3404445161 and observed_sha256 equal to required_sha256, on a freshly streamed hash of the exact bytes.",
+        "The accepted packet is byte-retained in-repository and hash-bound; I recomputed 9 of 9 SHA256SUMS entries and all matched.",
+        "The packet manifest digest I recomputed matches the value carried throughout the freeze.",
+        "Nothing in the packet was inferred, summarised or reconstructed, and 24 snapshots, 208 per-object authority rows, 50 candidate-receipt rows and 18 P2 mappings are all present and countable at the declared grain.",
+        "C4B's sole blocker is closed at the retained preimage/custody grain, which is exactly the grain O1-C03 demands."
+      ],
+      "what_this_does_NOT_establish": "It does not establish anything about the LiTS source itself, does not upgrade either recorded identity label, and does not close checkpoint-body verification against NoviyMac custody or byte-reproducibility of the extraction. Those remain open exactly as recorded."
+    }
+  },
+
+  "section_7_O1_C04_D02": {
+    "fanin_claim": "CLOSED_BOUND",
+    "my_verdict": "CONFIRMED",
+    "exact_SRC14_binding": {
+      "source_key": "SRC14",
+      "file": "EVS 2008.sav",
+      "sha256": "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379",
+      "variable": "v372",
+      "ordinal": 466,
+      "fixture_id": "EVS08_DATE_MISSING_V372",
+      "fixture_kind": "VARIABLE_MISSING_DECLARATION",
+      "fixture_blob": "12f6adb77ef5692511055c8f0520e42c454f3867",
+      "fixture_blob_type": "blob",
+      "fixture_blob_resolves_at_named_tip": true,
+      "named_tip": "3bc063aa7bf461caf5baf581ff32a434ba9e09a3",
+      "fixture_path_at_named_tip": "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/SOURCE_CERT_PREP71/RETURNS/R04/HOSTILE_FIXTURES.csv",
+      "fixture_blob_at_named_tip": "12f6adb77ef5692511055c8f0520e42c454f3867",
+      "fixture_blob_matches": true,
+      "rendered_witness": "1582-10-13",
+      "native_class": "TYPED_DATE_USER_MISSING_SENTINEL",
+      "counts": {"user_missing": 1917, "ordinary_present": 64363, "system_missing": 0, "total_rows": 66280},
+      "my_arithmetic_check": "1917 + 64363 + 0 = 66280",
+      "counts_arithmetically_consistent": true,
+      "authority": "SOURCE_PHYSICAL_OR_READER_METADATA_AUTHORITY__NON_SEMANTIC",
+      "assertion_scope": "PHYSICAL_MISSINGNESS_ONLY",
+      "semantic_reason": "UNKNOWN_PENDING_DOCUMENTARY_AUTHORITY",
+      "nonsemantic_missingness_class_preserved": true
+    },
+
+    "C4C3_synthetic_source_free_observation": {
+      "probe_id": "D02-5",
+      "probe_title": "actual reader arrival typing for a synthetic SAV DATE variable on this anchor",
+      "probe_verdict": "OBSERVED",
+      "built_in_datetime_date_arrived": true,
+      "observed_current_subclass": "built-in datetime.date",
+      "observed_carrier": "python.datetime.date@1",
+      "pandas_dtype_observed": "object",
+      "pandas_dtype_is_not_datetime64": true,
+      "observed_payload_hex_declared_by_fanin": "06 2e 0a 0e  (struct >HBB big-endian year=1582 month=10 day=14)",
+      "observed_payload_from_C4C3_probe": "b'\\x06.\\n\\x0e'",
+      "payload_strings_match_character_for_character": true,
+      "decisive_frozen_control": "dates_as_pandas_datetime=False",
+      "decisive_control_never_passed_by_the_repository": true,
+      "harness_injection_disclosure": "The probe extended the IN-MEMORY dec.COMPATIBILITY_ALLOWLIST dict for synthetic SHAs, then deleted the entries. Unmodified fail-closed behaviour was measured and reported separately before any injection. No production file on disk was modified. The repository itself acknowledges this in the packet.",
+      "evidential_limit_stated_by_C4C3": "Observed on a SYNTHETIC SAV date variable read on the qualified anchor. It establishes the arrival typing the anchor produces. It does NOT establish what the real SRC14 v372 column produces.",
+      "real_SRC14_subclass_remains_a_warrant_time_observation": true
+    },
+
+    "historical_rendering_was_not_used_to_infer_the_subclass": {
+      "freeze_asserts_this": true,
+      "I_verified_it_is_structurally_impossible_to_have_been_used": true,
+      "structural_evidence": "C4C3 probe D02-1 shows the accepted codec's opaque_decoder_value normalises date, datetime and time by exact runtime type, producing distinct payload widths: date -> '07d80405' (4 bytes), datetime -> '07d804050607080000000000' (12 bytes), time -> '060708000dc07201' (8 bytes). The carrier identity is therefore selected by the reader's arrival type, not by any rendered string. A rendered value of '1582-10-13' could not have selected between date and datetime.",
+      "my_verdict": "CONFIRMED__THE_PROHIBITION_IS_HONOURED_AND_MECHANICALLY_GROUNDED"
+    },
+
+    "fail_closed_conditions_present": [
+      "an unsupported carrier type outside the three accepted builtins",
+      "any timezone-aware datetime or time",
+      "changed locator, source SHA, variable, ordinal, fixture, counts or witness",
+      "any attempt to reopen whole-source traversal archaeology or substitute another oracle during C4"
+    ],
+    "timezone_aware_rejection_independently_evidenced": "C4C3 probe D02-2 measured REJECTED for both timezone-aware datetime and timezone-aware time at the opaque carrier.",
+    "accepted_C3_carrier_domain_unchanged": ["python.datetime.datetime@1 (exact builtin naive datetime)", "python.datetime.date@1 (exact builtin date)", "python.datetime.time@1 (exact builtin naive time)"],
+    "proof_ceiling": "PHYSICAL_REPRESENTATION_ONLY__NO_CALENDAR_DISPLAY_TIMEZONE_OR_SURVEY_SEMANTICS",
+    "proof_ceiling_preserved": true
+  },
+
+  "section_8_runtime_verification_summary": {
+    "execution_surface_matches_commission_specification": true,
+    "actual_executing_interpreter_verified": true,
+    "historical_C3_freeze_hash_reproduced": true,
+    "reader_options_5_explicit_plus_11_inherited": true,
+    "inherited_defaults_agree_with_C4C3": "11/11",
+    "no_install_on_import": true,
+    "no_silent_upgrade": true,
+    "P2X_gates_off_C4_path": "CONFIRMED_AND_INDEPENDENTLY_REDERIVED_BY_ME",
+    "physical_metadata_digest_reader_lane_bound": true,
+    "RES_1_nonblocking_and_constrained": true,
+    "RES_2_nonblocking_and_constrained": true,
+    "RES_3_nonblocking_and_constrained": true
+  },
+
+  "terminal": "C4_EXECUTABLE_FREEZE_FINAL_INTEGRATION_REVIEW_ALT_B_RETURNED__HQ_ADJUDICATION_REQUIRED"
+}

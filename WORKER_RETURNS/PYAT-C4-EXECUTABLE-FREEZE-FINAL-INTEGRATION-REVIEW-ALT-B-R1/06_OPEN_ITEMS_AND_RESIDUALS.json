@@ -1,0 +1,257 @@
+{
+  "schema": "PYAT_C4_FINAL_INTEGRATION_REVIEW_ALT_B__OPEN_ITEMS_AND_RESIDUALS@1.0.0",
+  "lane": "PYAT-C4-EXECUTABLE-FREEZE-FINAL-INTEGRATION-REVIEW-ALT-B-R1",
+  "governing_omega1": "01762d7379be4e423dad3e21bcdcee47c536902d",
+  "review_base": "8ff40d37de69db2d8a6053a7c2242f481677f1a4",
+
+  "classification_scheme": {
+    "BLOCKS_EXECUTABLE_FREEZE_ACCEPTANCE": "prevents accepting the source-free C4 executable freeze at its declared grain",
+    "BLOCKS_WARRANT_ISSUANCE_ONLY": "does not affect the freeze; must be closed before HQ issues or obtains the warrant",
+    "BLOCKS_LIVE_EXECUTION_ONLY": "does not affect the freeze or the warrant instrument; must be closed before or at the governed run",
+    "ADVISORY_NONBLOCKING": "record and proceed",
+    "CONCRETE_COUNTEREXAMPLE_REQUIRING_REPAIR": "a specific defect with a specific fix, classified by the stage it blocks"
+  },
+
+  "fanin_declared_open_items": [
+    {
+      "n": 1,
+      "item": "SOURCE_LOCATOR_FILL_REQUIRED_BEFORE_WARRANT_ISSUANCE",
+      "fanin_severity": "BLOCKS_WARRANT_ISSUANCE_ONLY",
+      "my_classification": "BLOCKS_WARRANT_ISSUANCE_ONLY",
+      "agrees": true,
+      "my_reasoning": "All seven slots carry the explicit unfilled placeholder and the typed status is present. Omega-1 O1-C06's acceptance operates under the warrant, and the source-free freeze is upstream of issuance. No O1-C01..C05 closure depends on a locator. I found no path or locator anywhere in the packet.",
+      "blocks_freeze_acceptance": false
+    },
+    {
+      "n": 2,
+      "item": "ROUTE_B_PRODUCER_BINDING_IS_FAN_IN_OBSERVED",
+      "fanin_severity": "ADVISORY",
+      "my_classification": "ADVISORY_NONBLOCKING",
+      "agrees": true,
+      "my_reasoning": "I independently determined the binding is CORRECT and UNIQUE. pre553_route_b_production.py is the only module in the whole 330-file rawlsing_next tree declaring PYAT_M01_ROUTE_B_PRODUCTION_COMPOSITOR@1.0.0 and the only module defining execute_route_b_production, and it composes exactly the governed PRE553 owners the planned full LiTS route needs. What remains for HQ is confirmation, not repair. The fan-in's own labelling as fan-in-observed rather than C4B-frozen was the conservative and correct disclosure.",
+      "blocks_freeze_acceptance": false
+    },
+    {
+      "n": 3,
+      "item": "NO_REPOSITORY_DEPENDENCY_LOCK",
+      "fanin_severity": "ADVISORY",
+      "my_classification": "BLOCKS_LIVE_EXECUTION_ONLY (elevated from the fan-in's ADVISORY; see R7)",
+      "agrees": false,
+      "my_reasoning": "I independently confirmed zero lock files of any kind in the repository. That part of the fan-in's disclosure is accurate. But I found three further non-durability facts the fan-in did not disclose, which together mean the O1-C05 execution surface is not reconstructible from the repository. Elevating this from a one-line ADVISORY to a live-execution precondition is warranted. It does not block the freeze, because the freeze's own invalidation law already requires STOP and re-qualification on any runtime change.",
+      "blocks_freeze_acceptance": false
+    },
+    {
+      "n": 4,
+      "item": "FRAMEWORK_PYTHON_ZERO_BYTE_LAUNCHER",
+      "fanin_severity": "ADVISORY",
+      "my_classification": "ADVISORY_NONBLOCKING",
+      "agrees": true,
+      "my_reasoning": "Verified against C4C3's environment lock. The interpreter that actually executed was /…/c4c3-env/bin/python resolving to the cpython-3.11.3-macos-x86_64-none standalone with version string '3.11.3 (main, May 7 2023, 19:01:25) [Clang 16.0.3]' and a recorded base-interpreter SHA-256 prefix. So the commission's requirement to verify an actually-executing interpreter rather than a zero-byte PATH entry is genuinely met. Note the same durability caveat as R7 attaches to that binary.",
+      "blocks_freeze_acceptance": false
+    },
+    {
+      "n": 5,
+      "item": "CHECKPOINT_NOT_PRESENT_ON_STARRYMAC",
+      "fanin_severity": "open item",
+      "my_classification": "ADVISORY_NONBLOCKING",
+      "agrees": true,
+      "my_reasoning": "Correctly scoped by the fan-in, and slightly under-stated in its favour. The 3,404,445,161-byte checkpoint document WAS verified on NoviyMac by D2P with identity_gate PASS, observed_sha256 equal to required_sha256 on a freshly streamed hash of the exact bytes. It is open only against StarriyMac custody, where it is structurally impossible by commission direction.",
+      "blocks_freeze_acceptance": false
+    },
+    {
+      "n": 6,
+      "item": "120_GIANT_EMPIRICALFACT_DEFERRED_MEMBER_DIGESTS_CHECKPOINT_SIDE",
+      "fanin_severity": "open item",
+      "my_classification": "ADVISORY_NONBLOCKING",
+      "agrees": true,
+      "my_reasoning": "The arithmetic checks out and I reproduced the structure from the in-repo packet: 60 EmpiricalFact rows each carry deferred-retained-member markers for two members (dependency_refs and source_empirical_provenance_refs), so 60 x 2 = 120. D2P accepted this at B002 grain by an explicit ruling, on the basis that B002's missing evidence was per-object authority binding plus full snapshot enumeration, not portable storage of all response provenance. Each withheld member carries an exact retained canonical SHA-256, byte length and item count so the bytes are reconstructible from the verified checkpoint.",
+      "blocks_freeze_acceptance": false
+    },
+    {
+      "n": 7,
+      "item": "D02P_EXTRACTION_NOT_BYTE_REPLAYED_ON_STARRYMAC",
+      "fanin_severity": "open item",
+      "my_classification": "ADVISORY_NONBLOCKING",
+      "agrees": true,
+      "my_reasoning": "Structurally impossible on StarriyMac because the checkpoint document is absent there; D2P states the script could not be re-executed without the checkpoint. Open against NoviyMac custody. D2P did independently review the extraction script for ambiguous reconstruction steps and prohibited surfaces and found none.",
+      "blocks_freeze_acceptance": false
+    },
+    {
+      "n": 8,
+      "item": "TWO_RECORDED_BUT_UNVERIFIED_IDENTITY_LABELS",
+      "fanin_severity": "open item",
+      "my_classification": "ADVISORY_NONBLOCKING__AND_MUST_NOT_BE_UPGRADED",
+      "agrees": true,
+      "my_reasoning": "D2P's own 01_CHECKPOINT_IDENTITY.json records both checkpoint_identity and canonical_closure_identity as NOT_VERIFIED_HERE, with the note that no field carrying either identity was located in the permitted retained material scanned. D2P's requirements_on_HQ_at_fanin instructs in writing: bind the two as OPEN items, do not read them as verified. The fan-in preserved them as labels. I have preserved them as labels and expressly decline to upgrade either. The actual executable custody binding is the checkpoint DOCUMENT SHA-256 plus the byte-verified accepted packet.",
+      "blocks_freeze_acceptance": false,
+      "explicitly_not_upgraded_by_this_review": ["3fab15f37db629f0ee24189620c65eff944d8a36c4b4509abb6b8bb2ea69c33f", "f264dd8f83a0794716583d1ea8445947cc9470b99475e5d51fc2383e7196f415"]
+    }
+  ],
+
+  "additional_findings_identified_by_this_review": [
+    {
+      "id": "R1",
+      "title": "Route-B producer public API recorded incompletely",
+      "severity": "ADVISORY_NONBLOCKING",
+      "blocks_freeze_acceptance": false,
+      "finding": "The freeze records the Route-B producer's key types as RouteBProductionError, I03ExecutionRequest, RouteBEmpiricalObjectGraph and RouteBProductionResult. All four are genuinely in the module's __all__. However the two actual entry points, execute_route_b_production and verify_route_b_replay_receipt, are omitted. O1-C01 requires recording the Route-B producer and the public APIs.",
+      "repair": "Record execute_route_b_production and verify_route_b_replay_receipt as the Route-B producer's public API surface.",
+      "classification": "CONCRETE_REPAIR_BUT_NONBLOCKING_DOCUMENTARY"
+    },
+    {
+      "id": "R2",
+      "title": "Fan-in bound the Route-B producer while simultaneously asserting a 21-module C4 import closure that excludes it",
+      "severity": "ADVISORY_NONBLOCKING__CLOSED_AFFIRMATIVELY_BY_ME",
+      "blocks_freeze_acceptance": false,
+      "finding": "Artifact 02 binds rawlsing_next/pre553_route_b_production.py as the Route-B execution owner and, in the same artifact, reports c4_import_closure_modules = 21 citing C4C3. That 21-module closure does not contain the Route-B producer. The fan-in never reconciled these two statements, so its P2X-exclusion holding was asserted for a surface that excludes a component it had just bound.",
+      "my_independent_resolution": "I recomputed the static transitive-import closure over rawlsing_next at head. Seeded from C4C3's five declared C4 layers my closure is exactly 21 modules and reproduces C4C3's list module for module, which independently validates C4C3's O1-C05 and P2X analysis. Adding the Route-B producer expands the closure to 23 modules, a delta of exactly two: rawlsing_next/pre553_route_b_production.py and rawlsing_next/pre553_carrier_execution.py. The second is clean: all seven of its imports are already inside C4C3's 21, and it contains no importlib, exec_module, spec_from_file_location, sys.modules, subprocess, os.system, os.popen, exec, eval, os.environ or duckdb. The only __import__ hit in the expanded closure is the stdlib literal __import__('json') in pre553_discovery_exact.py, which C4C3 already classified benign. Neither new module has any edge to an ee_p2x_* or fiabc_* module.",
+      "conclusion": "P2X_DARWIN_GATES_NOT_ON_C4_PATH survives the Route-B binding. The holding extends from C4C3's 21 modules to my independently derived 23. No repair is needed; the record should be updated to state 23.",
+      "classification": "REASONING_GAP_IN_THE_FAN_IN__SUBSTANTIVELY_HARMLESS__NOW_CLOSED"
+    },
+    {
+      "id": "R3",
+      "title": "The Route-B producer's own test file lies outside the authoritative 55-test court",
+      "severity": "ADVISORY_NONBLOCKING",
+      "blocks_freeze_acceptance": false,
+      "finding": "rawlsing_next/tests/test_pre553_route_b_production.py carries 11 tests. C4A listed it in the C3 compatibility group, not the C3 surface group. It is therefore inside C4A's 25-file wider sweep (530 passed / 3 failed) but OUTSIDE C4C3's authoritative six-file / 55-test court. The fan-in excluded that wider sweep from the authoritative denominator, which was correct, but did not notice that the module it newly bound as the Route-B owner has no authoritative-denominator coverage.",
+      "mitigation": "The 11 tests did pass at C4A on this exact combined tree: the C3 subset was 76 passed / 3 failed over 10 files, and the 3 failures were in two other files (test_fiabc_lits_i_representation_authority.py once and test_fiabc_lm2_r1i_physical_native_hostile.py twice). So the Route-B producer is exercised and green at the combined tree, just not at the authoritative grain.",
+      "classification": "COVERAGE_OBSERVATION__NOT_A_DEFECT__DISCLOSE_FOR_HQ"
+    },
+    {
+      "id": "R4",
+      "title": "LiTS oracle_document_sha256 carries no verification-status label and does not resolve in-repository",
+      "severity": "ADVISORY_NONBLOCKING",
+      "blocks_freeze_acceptance": false,
+      "finding": "The freeze carries LiTS oracle_document_sha256 = cb1c6ae6f9ddef15d41897451ac9f60208d4615ea60ddbeaef8874ba1000e3f4 in artifacts 02, 03, 04 and 05. I tested it and it is not a git object in this repository, so it cannot be resolved here. Unlike checkpoint_identity and canonical_closure_identity, it carries NO verification-status label, so it reads with the same apparent authority as the WVS oracle document digest, which I did resolve and verify.",
+      "asymmetry_note": "This is an inconsistency of labelling discipline inside a single freeze: one unresolvable digest is explicitly typed as a label, another unresolvable digest is not. I verified the WVS digest 9d11a480... against blob 9eecf801... and it matches exactly; the LiTS digest cb1c6ae6... has no such resolution available here.",
+      "repair": "Either resolve cb1c6ae6... against its actual oracle document and record the resolution, or type it explicitly as RECORDED_NOT_RESOLVED at this grain.",
+      "classification": "CONCRETE_REPAIR_BUT_NONBLOCKING_DOCUMENTARY"
+    },
+    {
+      "id": "R5",
+      "title": "D2P's explicit 24-over-18 authority disclosure to HQ was not carried forward",
+      "severity": "ADVISORY_NONBLOCKING",
+      "blocks_freeze_acceptance": false,
+      "finding": "D2P's requirements_on_HQ_at_fanin instructed in writing: note that the 24 AuthoritySnapshots materialise 18 distinct authority documents, six of them materialised once per governed_operations scope, and read '24' as 24 snapshot objects over 18 authorities, not 24 distinct authority documents. The fan-in repeated '24/24 AuthoritySnapshot objects' without carrying this interpretive caution forward.",
+      "my_independent_confirmation": "Counting 03_AUTHORITY_SNAPSHOT_CLOSURE.jsonl gives 24 rows and exactly 18 distinct authority_id values, confirming D2P's disclosure precisely.",
+      "impact_assessment": "The fan-in's 24/24 count is CORRECT at the object grain, so no number is wrong. What was lost is the caution against reading 24 snapshots as 24 distinct authorities, which would overstate governance-authority diversity.",
+      "repair": "Carry the 24-over-18 caveat forward into the final freeze record.",
+      "classification": "DROPPED_UPSTREAM_DISCLOSURE__NONBLOCKING"
+    },
+    {
+      "id": "R6",
+      "title": "RES-3 restatement omits the numpy 'ns' integer-arrival case",
+      "severity": "ADVISORY_NONBLOCKING",
+      "blocks_freeze_acceptance": false,
+      "finding": "The freeze's RES-3 states that numpy datetime64 unit selection changes D02 arrival typing, citing unit 'D' versus 's'. C4C3 probe D02-4 additionally measured that unit 'us' yields datetime.datetime and unit 'ns' yields a plain int (1207375628000000000), i.e. not a date at all.",
+      "impact_assessment": "RES-3's law is 'bounded by the frozen numpy 2.4.6; a different numpy voids the O1-C04 arrival-typing binding', which already covers the ns case. So this is a description gap, not a bound gap. No behaviour changes.",
+      "repair": "Extend the RES-3 statement to note that unit 'ns' produces a non-date integer arrival, which is a fail-closed outcome rather than a supported carrier.",
+      "classification": "INCOMPLETE_RESTATEMENT__BOUND_UNAFFECTED"
+    },
+    {
+      "id": "R7",
+      "title": "The qualified O1-C05 execution surface is not durable and not repository-reconstructible",
+      "severity": "BLOCKS_LIVE_EXECUTION_ONLY",
+      "blocks_freeze_acceptance": false,
+      "blocks_warrant_issuance": false,
+      "blocks_live_execution": true,
+      "finding": "Four facts combine. (a) I confirmed there is no repository dependency lock of any kind: no requirements*.txt, constraints*.txt, uv.lock, poetry.lock, Pipfile, pyproject.toml, setup.py, setup.cfg, pytest.ini, tox.ini or conftest.py. (b) C4C3's own environment lock records the venv as living in a per-session temporary directory and states in terms that it is NOT durable and NOT reproducible from that path alone. (c) I checked the qualified base interpreter at LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/ and it is NOT committed to the repository; that path has zero tracked files. Only a 32-hex-character (16-byte) prefix of its SHA-256 is recorded. (d) C4C3 discloses that the resolve was performed against live package indexes on 2026-10-02 and that a future re-resolve could select a different narwhals, which would change the freeze hash.",
+      "net_assessment": "The execution-surface identifier is a label whose concrete backing artifacts are partly non-durable. The freeze is still a valid specification of the surface; it is not a guarantee that the surface can be reconstructed from the repository alone.",
+      "why_this_does_not_block_the_freeze": "O1-C05's stage is BEFORE_FIRST_GOVERNED_SOURCE_EXECUTION, and artifact 06's validity_and_invalidation already requires STOP and a new qualification on any pyreadstat/pandas/numpy/CPython/OS/architecture/option/lane change. That invalidation law is the correct control and it is present.",
+      "required_before_live_execution": "Either preserve the exact qualified venv durably and record a full (not 16-byte-prefix) interpreter digest, or re-create the environment from the recorded reproduce_command and re-qualify at the claimed grade before the governed run. Do not rely on a label.",
+      "fanin_disclosure_comparison": "The fan-in recorded only (a) as a one-line ADVISORY and disclosed none of (b), (c) or (d). This is the one place where the fan-in's disclosure was materially thinner than the underlying situation.",
+      "classification": "CONCRETE_REPAIR_REQUIRED_AT_LIVE_EXECUTION"
+    },
+    {
+      "id": "R8",
+      "title": "narwhals appears in the freeze's own pip_freeze but not in its invalidating-conditions list",
+      "severity": "ADVISORY_NONBLOCKING",
+      "blocks_freeze_acceptance": false,
+      "finding": "narwhals 2.26.0 is present in the frozen pip_freeze list and is the one unpinned transitive arrival, pulled by pyarrow 25.0.1. Artifact 06's validity_and_invalidation.invalidating_conditions lists pyreadstat, pandas, numpy, CPython, OS/architecture, reader options and lane assignment, but not narwhals. C4C3 states that a re-resolve selecting a different narwhals would change the freeze hash.",
+      "impact_assessment": "C4C3 resolves the substance correctly: narwhals is off the C4 import closure, absent from the authoritative court, and cannot alter the qualification result. I independently confirmed no module in the 23-module closure imports it. So the qualification result is robust and only the hash moves.",
+      "repair": "Add a note that a narwhals re-resolution changes the freeze hash but not the qualification result, so it is a hash change rather than a re-qualification trigger.",
+      "classification": "INTERPRETIVE_GAP_IN_THE_INVALIDATION_LIST__SUBSTANCE_RESOLVED_UPSTREAM"
+    },
+    {
+      "id": "R9",
+      "title": "Per-source read-limit slots from C4B's warrant template are absent from the warrant candidate",
+      "severity": "BLOCKS_WARRANT_ISSUANCE_ONLY",
+      "blocks_freeze_acceptance": false,
+      "blocks_warrant_issuance": true,
+      "blocks_live_execution": true,
+      "finding": "C4B's template carries, for each of the seven fresh-read sources, a source_access_accounting block with seven placeholders: full_file_sha256_passes = REQUIRED_EXACT_COUNT; path_opens = REQUIRED_EXACT_COUNT_AND_BASIS; decoder_invocations = REQUIRED_EXACT_COUNT; metadata_header_reads = REQUIRED_EXACT_COUNT; selected_reads = REQUIRED_EXACT_COUNT_AND_CONFIG; full_reads = REQUIRED_EXACT_COUNT_AND_CONFIG; retries = REQUIRED_EXACT_COUNT_AND_REASON. Four of the seven carry an extra qualifier: path_opens requires a stated basis, selected_reads and full_reads a stated config, retries a stated reason. The fan-in's warrant candidate replaced this with one global access_accounting_instrumentation_bound account list. The per-source slots are gone from the warrant instrument.",
+      "why_it_matters": "O1-C06 requires the warrant to bind operations/columns/read limits per source. Read limits are per-source quantities. The substantive law survives in artifact 07, but an executor holding only the warrant has no per-source read-limit field to comply with.",
+      "required_repair": "At issuance, restore the per-source source_access_accounting block for all seven sources with the seven exact-count slots and their basis/config requirements, populated or bound to the frozen expectations in artifact 07.",
+      "classification": "CONCRETE_REPAIR_REQUIRED_AT_ISSUANCE"
+    },
+    {
+      "id": "R10",
+      "title": "A truncated digest sits in a machine-readable identity field",
+      "severity": "ADVISORY_NONBLOCKING",
+      "blocks_freeze_acceptance": false,
+      "finding": "Artifact 05 records later_standardization.T3_freeze_sha256 = \"7dfb6...\", an abbreviated prefix rather than a digest. The neighbouring fields in the same object, standard_oracle_identity and standard_oracle_document_sha256, are full 64-hex values, so the truncation is an internal inconsistency within one identity object. Omega-1 carries the full value 7dfb62362b983b92dee2774d862a46c0c0ce3ca2c3bb48850e0f400346936908, which itself does not resolve to any object in this repository.",
+      "scope_note": "I swept the whole fan-in packet for truncated forms. The only other occurrences are in prose fields: 00_COMMISSION.md, 00_RETURN-style narrative, and the law/note strings in artifacts 02 and 05, where an abbreviation is plainly rhetorical. This one is the only instance in a machine-readable identity field.",
+      "impact_assessment": "The field belongs to a WVS later-standardization record, not to the operative SRC35 oracle identity, so nothing load-bearing is affected. An abbreviated digest is not a valid identity and cannot be compared or verified.",
+      "repair": "Restore the full 64-hex digest and type it as recorded-not-resolved at this grain.",
+      "classification": "CONCRETE_REPAIR_BUT_NONBLOCKING_DOCUMENTARY"
+    },
+    {
+      "id": "R11",
+      "title": "Three denominators are mis-stated, always in the conservative direction",
+      "severity": "ADVISORY_NONBLOCKING",
+      "blocks_freeze_acceptance": false,
+      "finding": "Three bookkeeping inconsistencies. (a) Artifacts 00, 03 and 10 state 34 imported evidence files (9 C4B + 9 C4C3 + 16 D2P); the actual count at head is 36 (10 + 10 + 16), and artifact 01's own detail list correctly has 36 entries and artifact 09's V06 correctly says 36. (b) Artifact 09's V07 says artifacts_validated = 7; the packet contains 10 JSON artifacts and I parsed all 10 successfully. (c) Artifact 09's V01 says checked = 11 while citing artifact 01's pinned list, which has 13 entries.",
+      "impact_assessment": "Every discrepancy understates coverage and none overstates it. Nothing is missing: the actual imported set is 36 files and all 36 are present and blob-exact. There is no inflated claim anywhere in the packet.",
+      "repair": "Normalise 34 to 36, 7 to 10, and reconcile V01's count with the evidence it cites.",
+      "classification": "BOOKKEEPING_DEFECT__NO_SUBSTANTIVE_IMPACT"
+    }
+  ],
+
+  "digest_resolution_inventory": {
+    "note": "Every distinct 64-hex digest carried anywhere in the fan-in packet, classified by whether I could resolve it against bytes available in this repository. SHA-256 digests of external artifacts (survey files, checkpoints, other-repository documents) are not git object ids and are expected not to resolve here; what matters is that each one's verification status is correctly typed in the packet.",
+    "total_distinct_64_hex_digests_carried": 35,
+    "independently_verified_against_bytes_by_me": [
+      {"digest": "9d11a480c1c1341a2a92e0def77f5d15563ed83a44efeb9f89eff5b6cbb1527d", "what": "WVS oracle document 07_FRESH_WVS_ORACLE.json", "resolved_via": "git blob 9eecf801afa2c9f3d9140b4e5fb79fb14fc1fe20 at head", "match": true, "note": "The fan-in only carried this value. I verified it. This is NOT one of the two identities the commission forbade upgrading."},
+      {"digest": "46b38c21f2b331575b12f2eadd09348299ab9c6736983f9f281fd48644ff8106", "what": "D2P NOVIYMAC_PACKET/08_PACKET_MANIFEST.json", "resolved_via": "recomputed from the git blob at head", "match": true},
+      {"digest": "d57420f8016bf49cc0353f39dcd2271e6f370c3bd9b7e81f08466c0a1f574e0a", "what": "04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json", "resolved_via": "recomputed from the git blob at head", "match": true},
+      {"digest": "83b14b4bb0ab38732e2987118f0a4f27f5d4fcdc26b539de14ae96e8ba079f35", "what": "01_FANIN_INPUT_LINEAGE_AND_BLOBS.json", "match": true},
+      {"digest": "ed900ea543e70f6c3c5a4c42678b9afb785b4046a254e1e8ae94e8cbe2b06626", "what": "02_O1_C01_C05_CLOSURE_MATRIX.json", "match": true},
+      {"digest": "461cbbadd082973ff462f947c91525c38b4c43d323302a638f6415d328f3e235", "what": "05_ORACLE_AND_COMPARISON_LAW.json", "match": true},
+      {"digest": "426b7656981e80591425c606a6c0f1e87fcd3e73a567b044d737a60822c92061", "what": "06_RUNTIME_READER_LANES_AND_RESOURCE_LAW.json", "match": true},
+      {"digest": "60d22331377e6dff55c10b1dab815473b1be0d151d7486abc8e5c4948c8157f9", "what": "07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json", "match": true},
+      {"digest": "151a9505c4125f044a8f9a2855211bea345eeba9cfabf096f7ca090731706a8c", "what": "08_RETENTION_AND_ALL35_CLAIM_LEDGER.json", "match": true}
+    ],
+    "correctly_typed_as_recorded_but_not_independently_verified": ["3fab15f37db629f0ee24189620c65eff944d8a36c4b4509abb6b8bb2ea69c33f", "f264dd8f83a0794716583d1ea8445947cc9470b99475e5d51fc2383e7196f415"],
+    "carried_and_correctly_not_claimed_verified": [
+      {"digest": "cb1c6ae6f9ddef15d41897451ac9f60208d4615ea60ddbeaef8874ba1000e3f4", "what": "LiTS oracle document SHA-256", "issue": "not labelled with a verification status, see R4"},
+      {"digest": "eb2f9224219385dbf21af70d317e0978383012ff057ce2ac857b59c130472405", "what": "WVS truth payload identity", "issue": "none material"},
+      {"digest": "e546c15533ba138be9995095059ea3b70b64a6d7b5765e3789935cff7342ef00", "what": "WVS later standard oracle identity", "issue": "none material"},
+      {"digest": "869e72112978949e349140b74ab1b4d4966923c9ccedef518e3db9b3f54f3194", "what": "WVS later standard oracle document SHA-256", "issue": "none material"}
+    ],
+    "external_identities_expected_not_to_resolve_here": "the eight source SHA-256s, checkpoint SHA 2704fd3f..., LiTS oracle identity e5d66db4..., the three WVS identities, the two AT07 successor identities, the pip-freeze seed 9cde8e5a..., the LiTS projection authority URN, the two synthetic reader-lane probe digests 5f583884... and f9148f36..., and the PREP71 fixture blob 12f6adb7... which is a git blob I did resolve at its named tip 3bc063aa."
+  },
+
+  "residual_severity_summary": {
+    "BLOCKS_EXECUTABLE_FREEZE_ACCEPTANCE": 0,
+    "BLOCKS_WARRANT_ISSUANCE_ONLY": ["R9"],
+    "BLOCKS_LIVE_EXECUTION_ONLY": ["R7"],
+    "ADVISORY_NONBLOCKING": ["R1", "R2", "R3", "R4", "R5", "R6", "R8", "R10", "R11"],
+    "concrete_repairs_required_total": 6,
+    "concrete_repairs_required_at_warrant_issuance": 1,
+    "concrete_repairs_required_at_live_execution": 1,
+    "concrete_repairs_nonblocking_documentary": 4,
+    "counterexamples_requiring_escalation": 0
+  },
+
+  "claim_ceiling_review": {
+    "my_position": "No selected-set success may become ALL35_PASS or unrestricted comparability.",
+    "independent_structural_basis": "All 280 source-by-F1-F8 cells are pre-C4 NOT_ASSESSED, every cell carries an explicit update law requiring an exact C4 receipt at that cell's own proved grain, and no cell carries a PASS or PROVED state. There is no aggregate green available for an eight-source result to propagate into.",
+    "all_nine_ceilings_preserved_identically": true,
+    "C2_epistemic_origin_residual_preserved": true,
+    "C1_fresh_process_bridge_limitation_preserved": true,
+    "C7_comparability_gate_preserved": true,
+    "my_verdict": "CONFIRMED"
+  },
+
+  "terminal": "C4_EXECUTABLE_FREEZE_FINAL_INTEGRATION_REVIEW_ALT_B_RETURNED__HQ_ADJUDICATION_REQUIRED"
+}
