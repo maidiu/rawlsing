@@ -1,0 +1,74 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.0.0",
+  "checkpoint_id": "20261002-PYAT-HQ184-PYTHON-REPAIRED-R1",
+  "governing_decision": "HQD-2026-10-02-184",
+  "status": "ENVIRONMENT_DEFECT_RESOLVED__PACKET_VERIFIER_EXECUTED_AND_PASS__OPS03_REQUALIFIED__HQ182_HOLD_UNLIFTED__RAW_SOURCE_EXECUTION_HELD",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "base": "54d0dec2a56f680250c066194c4a77d9f0116160",
+  "supersedes": "HQ183_OPS01_04_ENVIRONMENT_DEFECT_FIELD_ONLY",
+  "hq183_bytes_modified": false,
+  "environment": {
+    "python3_status": "FUNCTIONAL",
+    "version": "3.11.3",
+    "path": "/usr/local/bin/python3",
+    "previous_state": "NON_FUNCTIONAL__silent_noop_via_shell__error_-8_via_execFileSync",
+    "repaired_by": "USER_DIRECTION"
+  },
+  "packet_verification": {
+    "shipped_script": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/scripts/verify_packet.py",
+    "executed": true,
+    "exit_status": 0,
+    "result": "PASS: 19 delivery files verified; activation and runtime qualification remain separate",
+    "negative_control": {
+      "performed": true,
+      "corruption": "README.md sha256 set to 64 zeros",
+      "observed": "FAIL: integrity mismatch: README.md",
+      "exit_status": 1,
+      "restored": true
+    },
+    "cross_implementation_agreement": {
+      "implementations": [
+        "python_shipped",
+        "node_substitute"
+      ],
+      "files": 19,
+      "disagreements": 0,
+      "verdict": "EXACT"
+    }
+  },
+  "ops03": {
+    "state": "REQUALIFIED",
+    "passed": 23,
+    "failed": 0,
+    "skipped": 1,
+    "capability_level": "PASS_WITH_DECLARED_SKIP",
+    "q11": "python3 FUNCTIONAL (wrote file; exit-0)",
+    "unqualified_boundary": "Q12_OS_LEVEL_RAW_DIRECTORY_DENIAL__ROLE_ISOLATION_PROCEDURAL_ONLY"
+  },
+  "dispatcher_runtime": "node_BY_DESIGN__python3_NOW_ADDITIONALLY_AVAILABLE_TO_WORKERS",
+  "c4_reconciliation": {
+    "state": "UNCHANGED__CONSOLIDATED_PENDING_ASTRA",
+    "blocking_freeze": 0,
+    "blocking_issuance": 1,
+    "blocking_live_execution": 1,
+    "counterexamples": 0
+  },
+  "adoption_status": "NOT_ADOPTED_INTO_BUILD__HQ182_HOLD_UNLIFTED",
+  "rawlsing_next_changes_this_decision": 0,
+  "production_mutation": 0,
+  "source_access": 0,
+  "source_locators_discovered": 0,
+  "warrant_issued": false,
+  "c4_executed": false,
+  "held": [
+    "ADOPTION_OF_C4_FREEZE_INTO_BUILD",
+    "HQ182_HOLD",
+    "SOURCE_LOCATOR_DISCOVERY_AND_FILL",
+    "WARRANT_ISSUANCE",
+    "RAW_SOURCE_ACCESS",
+    "LIVE_C4_EXECUTION",
+    "C7_IMPLEMENTATION",
+    "PREV3_TO_V3_ACTOR_IMPLEMENTATION"
+  ],
+  "next_action": "AWAIT_EXTERNAL_ASTRA_ADJUDICATION_AND_DISPUTED_CLAIMS_RECHECK_RETURN__HQ182_HOLD_UNLIFTED"
+}
