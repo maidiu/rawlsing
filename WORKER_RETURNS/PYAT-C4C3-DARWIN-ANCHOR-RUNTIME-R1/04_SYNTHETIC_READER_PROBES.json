@@ -1,0 +1,894 @@
+{
+  "schema": "PYAT_C4C3_SYNTHETIC_READER_PROBES@1.0.0",
+  "lane": "PYAT-C4C3-DARWIN-ANCHOR-RUNTIME-R1",
+  "phase": "PHASE 4 — synthetic source-free reader probes",
+  "status": "COMPLETE",
+  "totals": {
+    "probes": 21,
+    "pass": 18,
+    "observed": 2,
+    "probe_errors": 0,
+    "failures": 0,
+    "note": "OBSERVED entries are honest measurements, not passes and not failures. Both are stated explicitly in their own entry."
+  },
+  "source_free_attestation": {
+    "raw_survey_files_opened": 0,
+    "raw_survey_files_stat_ed": 0,
+    "raw_survey_files_hashed": 0,
+    "raw_survey_files_metadata_read": 0,
+    "raw_survey_files_decoded": 0,
+    "real_source_files_touched": 0,
+    "statement": "Every file below was SYNTHETIC, written by pyreadstat into a temporary directory OUTSIDE the repository, from wholly invented values. No real survey file was opened, stat'ed, hashed or decoded. The LITS_BUILDER target under data/ was never opened.",
+    "files_under_data_opened": 0
+  },
+  "harness": {
+    "probe_script_sha256": "81cb0b71b374591eee4556b31b97dd2311103882e12be12c521fb7a3090362bf",
+    "script_location": "local temporary work directory; not written into the repository",
+    "synthetic_tmp_dir": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/c4c3-synthetic-2xs7js8l",
+    "synthetic_files_created": [
+      "synthetic_d02_dates.sav",
+      "synthetic_dta_extended.dta",
+      "synthetic_g01.sav",
+      "synthetic_g01_missing.sav",
+      "synthetic_lits.dta",
+      "synthetic_strings.sav"
+    ],
+    "packages_installed_by_probe": 0,
+    "production_files_modified": 0
+  },
+  "harness_injection_disclosure": {
+    "what": "The accepted decoder admits an encoding= override ONLY for a source SHA carrying an exact SHA->encoding authority. A synthetic file's SHA is by construction not on that allowlist, so the decoder CORRECTLY refuses it (probe D01-7, DTA-1).",
+    "how_to_still_exercise_the_read_lane": "The probe extends the IN-MEMORY dec.COMPATIBILITY_ALLOWLIST dict for the synthetic SHA for the duration of that probe, then deletes the entry.",
+    "scope": "This mutates only a module dict inside the probe process. No production file on disk was modified. The unmodified fail-closed behaviour is measured and reported separately as its own probe before any injection.",
+    "injection_count": 6,
+    "injection_target": "rawlsing_next.pre553_physical_decoder.COMPATIBILITY_ALLOWLIST"
+  },
+  "probes": [
+    {
+      "probe_id": "D01-1",
+      "group": "D01",
+      "title": "declared-encoding allowlist is exact and disjoint from compatibility lane",
+      "verdict": "PASS",
+      "observed": {
+        "allowlist": {
+          "ac0b8bc1ddb2fa6b952417e35b6379ce6a2cf8596776a43282ba44f48e0ae1a2": "BIG5",
+          "5b703173845c086382fd93252f1cbc91dfef74007755459adfc73785389172f2": "WINDOWS-1252",
+          "66252a92c59bf6759b79a6b35b2be658b98a433373212a70c8ec94755d3e02ec": "WINDOWS-1252"
+        },
+        "disjoint_from_compatibility": true,
+        "authority_status_constant": "SOURCE_DECLARED_EXACT_SHA_ENCODING__PHYSICAL_DECODING_ONLY"
+      },
+      "note": ""
+    },
+    {
+      "probe_id": "D01-2",
+      "group": "D01",
+      "title": "BIG5 and WINDOWS-1252 exact-SHA admission",
+      "verdict": "PASS",
+      "observed": {
+        "ac0b8bc1ddb2fa6b952417e35b6379ce6a2cf8596776a43282ba44f48e0ae1a2": {
+          "requested": "BIG5",
+          "config": {
+            "encoding": "BIG5",
+            "authority_status": "SOURCE_DECLARED_EXACT_SHA_ENCODING__PHYSICAL_DECODING_ONLY"
+          },
+          "status": "ADMITTED"
+        },
+        "5b703173845c086382fd93252f1cbc91dfef74007755459adfc73785389172f2": {
+          "requested": "WINDOWS-1252",
+          "config": {
+            "encoding": "WINDOWS-1252",
+            "authority_status": "SOURCE_DECLARED_EXACT_SHA_ENCODING__PHYSICAL_DECODING_ONLY"
+          },
+          "status": "ADMITTED"
+        },
+        "66252a92c59bf6759b79a6b35b2be658b98a433373212a70c8ec94755d3e02ec": {
+          "requested": "WINDOWS-1252",
+          "config": {
+            "encoding": "WINDOWS-1252",
+            "authority_status": "SOURCE_DECLARED_EXACT_SHA_ENCODING__PHYSICAL_DECODING_ONLY"
+          },
+          "status": "ADMITTED"
+        }
+      },
+      "note": "All three declared SHAs admit their exact declared encoding with SOURCE_DECLARED_ENCODING_ONLY."
+    },
+    {
+      "probe_id": "D01-3",
+      "group": "D01",
+      "title": "encoding=None remains unprivileged",
+      "verdict": "PASS",
+      "observed": {
+        "encoding": null,
+        "authority_status": null
+      },
+      "note": ""
+    },
+    {
+      "probe_id": "D01-4",
+      "group": "D01",
+      "title": "wrong SHA / wrong encoding / cross-source inheritance rejected",
+      "verdict": "PASS",
+      "observed": {
+        "wrong_encoding": "REJECTED(encoding override is not in an exact SHA/config representation allowlist)",
+        "wrong_sha": "REJECTED(encoding override is not in an exact SHA/config representation allowlist)",
+        "cross_source_inheritance": "REJECTED(encoding override is not in an exact SHA/config representation allowlist)"
+      },
+      "note": ""
+    },
+    {
+      "probe_id": "D01-5",
+      "group": "D01",
+      "title": "no auto/guess/fallback widening",
+      "verdict": "PASS",
+      "observed": {
+        "auto": "REJECTED(automatic encoding guessing/fallback is forbidden)",
+        "guess": "REJECTED(automatic encoding guessing/fallback is forbidden)",
+        "fallback": "REJECTED(automatic encoding guessing/fallback is forbidden)"
+      },
+      "note": ""
+    },
+    {
+      "probe_id": "D01-6",
+      "group": "D01",
+      "title": "encoding=None behaviour vs declared encoding at the reader boundary",
+      "verdict": "PASS",
+      "observed": {
+        "synthetic_sav_sha256": "bd12053695ce781a414aba9697c04541fd785e063f7c91493c91a0254c00294b",
+        "synthetic_only": true,
+        "reads_by_encoding": {
+          "None": {
+            "status": "OK",
+            "authority_status": null,
+            "reader_version": "1.3.6",
+            "first_cell_repr": null,
+            "row_count": 3,
+            "variable_count": 1
+          },
+          "BIG5": {
+            "status": "ERROR DecoderError: encoding override is not in an exact SHA/config representation allowlist"
+          },
+          "WINDOWS-1252": {
+            "status": "ERROR DecoderError: encoding override is not in an exact SHA/config representation allowlist"
+          },
+          "latin1": {
+            "status": "ERROR DecoderError: encoding override is not in an exact SHA/config representation allowlist"
+          },
+          "authorised_None": {
+            "status": "OK",
+            "authority_status": null,
+            "reader_version": "1.3.6",
+            "first_cells": [
+              "'alpha'",
+              "'café-naïve'",
+              "'中文測試'"
+            ],
+            "row_count": 3,
+            "variable_count": 1
+          },
+          "authorised_latin1": {
+            "status": "OK",
+            "authority_status": "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY",
+            "reader_version": "1.3.6",
+            "first_cells": [
+              "'alpha'",
+              "'cafÃ©-naÃ¯ve'",
+              "'ä¸\\xadæ\\x96\\x87æ¸¬è©¦'"
+            ],
+            "row_count": 3,
+            "variable_count": 1
+          },
+          "authorised_BIG5": {
+            "status": "ERROR DecoderError: encoding override is not in an exact SHA/config representation allowlist"
+          },
+          "authorised_WINDOWS-1252": {
+            "status": "ERROR DecoderError: encoding override is not in an exact SHA/config representation allowlist"
+          }
+        },
+        "distinct_first_cell_renderings": 3,
+        "harness_injections_count": 7
+      },
+      "note": "Synthetic SAV only. Demonstrates the encoding argument is passed to and governs pyreadstat decoding; the D01 contract itself is the admission logic in D01-1..D01-5, not a byte-level codepage read."
+    },
+    {
+      "probe_id": "D01-7",
+      "group": "D01",
+      "title": "encoding override refused without exact SHA authority; metadata-only when encoding is None; full read when it is",
+      "verdict": "PASS",
+      "observed": {
+        "unauthorised_override_result": "REJECTED(encoding override is not in an exact SHA/config representation allowlist)",
+        "decode_results": {
+          "encoding_None": {
+            "frame_is_None": true,
+            "row_count_from_metadata": 3,
+            "variable_count": 1
+          },
+          "encoding_latin1_with_synthetic_authority": {
+            "frame_is_None": false,
+            "row_count": 3,
+            "authority_status": "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY",
+            "encoding": "latin1"
+          }
+        },
+        "harness_injections_count": 7
+      },
+      "note": "The refusal is the exact-SHA admission law working. The metadata-only/full-read distinction then matches _decode: compatibility_full_read = (encoding is not None)."
+    },
+    {
+      "probe_id": "D01-8",
+      "group": "D01",
+      "title": "wrong expected_source_sha256 rejected before decode",
+      "verdict": "PASS",
+      "observed": {
+        "result": "REJECTED(source sha256 mismatch before governed decode)"
+      },
+      "note": ""
+    },
+    {
+      "probe_id": "G01-0",
+      "group": "G01",
+      "title": "accepted G01 authority QUALIFIED_RUNTIME matches this surface",
+      "verdict": "PASS",
+      "observed": {
+        "authority_qualifies": {
+          "platform": "Darwin",
+          "machine": "x86_64",
+          "cpython": "3.11.3",
+          "pyreadstat": "1.3.6",
+          "pyarrow": "25.0.1"
+        },
+        "observed": {
+          "platform": "Darwin",
+          "machine": "x86_64",
+          "cpython": "3.11.3",
+          "pyreadstat": "1.3.6",
+          "pyarrow": "25.0.1"
+        },
+        "match": "EXACT"
+      },
+      "note": ""
+    },
+    {
+      "probe_id": "G01-1",
+      "group": "G01",
+      "title": "native-int storage through pyreadstat -> pandas -> decoder",
+      "verdict": "PASS",
+      "observed": {
+        "synthetic_sav_sha256": "a1c785606367d0cff5681701eed68b94188aeb82d46e18e7515e51b346bf42c1",
+        "pandas_column_dtype": "float64",
+        "frame_materialised_only_when_encoding_given": true,
+        "cells": [
+          {
+            "raw_value": 997.0,
+            "raw_type": "float",
+            "missing_state": "OBSERVED_STORAGE_VALUE",
+            "declaration": null,
+            "value_label": "alpha"
+          },
+          {
+            "raw_value": 1.0,
+            "raw_type": "float",
+            "missing_state": "OBSERVED_STORAGE_VALUE",
+            "declaration": null,
+            "value_label": "beta"
+          },
+          {
+            "raw_value": -1.0,
+            "raw_type": "float",
+            "missing_state": "OBSERVED_STORAGE_VALUE",
+            "declaration": null,
+            "value_label": "refused"
+          },
+          {
+            "raw_value": -2.0,
+            "raw_type": "float",
+            "missing_state": "OBSERVED_STORAGE_VALUE",
+            "declaration": null,
+            "value_label": "also refused"
+          },
+          {
+            "raw_value": -999.0,
+            "raw_type": "float",
+            "missing_state": "FORMAT_USER_MISSING_VALUE",
+            "declaration": {
+              "kind": "discrete",
+              "value": -999.0
+            },
+            "value_label": null
+          }
+        ],
+        "storage_type_readstat": "double",
+        "value_labels_keys": [
+          "-1.0",
+          "-2.0",
+          "1.0",
+          "997.0"
+        ],
+        "harness_injections_count": 7
+      },
+      "note": "Synthetic values only. Shows int -> Python int boxing via the .item() seam."
+    },
+    {
+      "probe_id": "G01-2",
+      "group": "G01",
+      "title": "exact R5 big-endian float tokens for all authorised native codes",
+      "verdict": "PASS",
+      "observed": {
+        "1": {
+          "float_literal": "1.0",
+          "token": {
+            "t": "float64_finite",
+            "bits": "3ff0000000000000"
+          },
+          "expected_token": {
+            "t": "float64_finite",
+            "bits": "3ff0000000000000"
+          },
+          "match": true,
+          "struct_pack_gt_d": "3ff0000000000000"
+        },
+        "2": {
+          "float_literal": "2.0",
+          "token": {
+            "t": "float64_finite",
+            "bits": "4000000000000000"
+          },
+          "expected_token": {
+            "t": "float64_finite",
+            "bits": "4000000000000000"
+          },
+          "match": true,
+          "struct_pack_gt_d": "4000000000000000"
+        },
+        "97": {
+          "float_literal": "97.0",
+          "token": {
+            "t": "float64_finite",
+            "bits": "4058400000000000"
+          },
+          "expected_token": {
+            "t": "float64_finite",
+            "bits": "4058400000000000"
+          },
+          "match": true,
+          "struct_pack_gt_d": "4058400000000000"
+        },
+        "98": {
+          "float_literal": "98.0",
+          "token": {
+            "t": "float64_finite",
+            "bits": "4058800000000000"
+          },
+          "expected_token": {
+            "t": "float64_finite",
+            "bits": "4058800000000000"
+          },
+          "match": true,
+          "struct_pack_gt_d": "4058800000000000"
+        },
+        "99": {
+          "float_literal": "99.0",
+          "token": {
+            "t": "float64_finite",
+            "bits": "4058c00000000000"
+          },
+          "expected_token": {
+            "t": "float64_finite",
+            "bits": "4058c00000000000"
+          },
+          "match": true,
+          "struct_pack_gt_d": "4058c00000000000"
+        },
+        "997": {
+          "float_literal": "997.0",
+          "token": {
+            "t": "float64_finite",
+            "bits": "408f280000000000"
+          },
+          "expected_token": {
+            "t": "float64_finite",
+            "bits": "408f280000000000"
+          },
+          "match": true,
+          "struct_pack_gt_d": "408f280000000000"
+        }
+      },
+      "note": "Explicit big-endian '>d' is host-byte-order independent."
+    },
+    {
+      "probe_id": "G01-3",
+      "group": "G01",
+      "title": "float64 arrival and exact-type identity at the authority gate",
+      "verdict": "PASS",
+      "observed": {
+        "arrival_types": {
+          "np_int64_1": "int64",
+          "np_int64_via_item": "int",
+          "np_float64_via_item": "float",
+          "python_float_has_item": false
+        },
+        "exact_type_identity": {
+          "type(np.int64(1)) is int": false,
+          "type(np.int64(1).item()) is int": true,
+          "type(True) is int": false
+        }
+      },
+      "note": "G01 requires a genuine Python int; np.int64 is unwrapped by .item() at the decoder seam."
+    },
+    {
+      "probe_id": "G01-4",
+      "group": "G01",
+      "title": "user-missing / discrete-missing / observed-storage / system-missing states distinguished",
+      "verdict": "PASS",
+      "observed": {
+        "cells": [
+          {
+            "raw": -999.0,
+            "state": "FORMAT_USER_MISSING_VALUE"
+          },
+          {
+            "raw": 1.0,
+            "state": "OBSERVED_STORAGE_VALUE"
+          },
+          {
+            "raw": null,
+            "state": "SYSTEM_MISSING"
+          }
+        ],
+        "distinct_states": [
+          "FORMAT_USER_MISSING_VALUE",
+          "OBSERVED_STORAGE_VALUE",
+          "SYSTEM_MISSING"
+        ],
+        "declarations": [
+          {
+            "kind": "discrete",
+            "value": -999.0
+          }
+        ],
+        "writer_note": "write_sav(1.3.6) exposes missing_ranges only, so the SAV lane yields a discrete declaration; the Stata extended/user token lane is probed separately on DTA."
+      },
+      "note": ""
+    },
+    {
+      "probe_id": "D02-1",
+      "group": "D02",
+      "title": "naive datetime/date/time arrival types and opaque carrier normalization",
+      "verdict": "PASS",
+      "observed": {
+        "date": {
+          "input_type": "date",
+          "tzinfo": "None",
+          "output_type": "R5OpaqueValue",
+          "type_id": "python.datetime.date@1",
+          "payload_hex": "07d80405"
+        },
+        "datetime": {
+          "input_type": "datetime",
+          "tzinfo": "None",
+          "output_type": "R5OpaqueValue",
+          "type_id": "python.datetime.datetime@1",
+          "payload_hex": "07d804050607080000000000"
+        },
+        "datetime_fold": {
+          "input_type": "datetime",
+          "tzinfo": "None",
+          "output_type": "R5OpaqueValue",
+          "type_id": "python.datetime.datetime@1",
+          "payload_hex": "07d80405060708000dc07201"
+        },
+        "time": {
+          "input_type": "time",
+          "tzinfo": "None",
+          "output_type": "R5OpaqueValue",
+          "type_id": "python.datetime.time@1",
+          "payload_hex": "060708000dc07201"
+        }
+      },
+      "note": "datetime.date has no tzinfo attribute at all; recorded via getattr default None."
+    },
+    {
+      "probe_id": "D02-2",
+      "group": "D02",
+      "title": "timezone-aware datetime/time rejected at the opaque carrier",
+      "verdict": "PASS",
+      "observed": {
+        "datetime_aware": "REJECTED(timezone-aware datetime requires a separate explicit decoder carrier authority)",
+        "time_aware": "REJECTED(timezone-aware time requires a separate explicit decoder carrier authority)"
+      },
+      "note": ""
+    },
+    {
+      "probe_id": "D02-3",
+      "group": "D02",
+      "title": "item-wrapped / subclass hostile propagation (pandas.Timestamp)",
+      "verdict": "PASS",
+      "observed": {
+        "Timestamp_aware": {
+          "input_type": "Timestamp",
+          "is_builtin": false,
+          "output_type": "str",
+          "output_repr": "'2008-04-05 06:07:08+00:00'",
+          "collapsed_to_string": true
+        },
+        "Timestamp_naive": {
+          "input_type": "Timestamp",
+          "is_builtin": false,
+          "output_type": "str",
+          "output_repr": "'2008-04-05 06:07:08'",
+          "collapsed_to_string": true
+        },
+        "timestamp_naive_aware_repr_differ": true
+      },
+      "note": "pandas.Timestamp is a datetime SUBCLASS, so the exact-type check misses it and _jsonable collapses it to str. This is a measured property of the accepted decoder and is recorded, not repaired."
+    },
+    {
+      "probe_id": "D02-4",
+      "group": "D02",
+      "title": "numpy datetime64 unit determines D02 arrival typing",
+      "verdict": "PASS",
+      "observed": {
+        "D": {
+          "numpy_unit": "D",
+          "item_type": "date",
+          "physical_value_type": "R5OpaqueValue",
+          "physical_value_repr": "R5OpaqueValue(type_id='python.datetime.date@1', payload=b'\\x07\\xd8\\x04\\x05')"
+        },
+        "s": {
+          "numpy_unit": "s",
+          "item_type": "datetime",
+          "physical_value_type": "R5OpaqueValue",
+          "physical_value_repr": "R5OpaqueValue(type_id='python.datetime.datetime@1', payload=b'\\x07\\xd8\\x04\\x05\\x"
+        },
+        "us": {
+          "numpy_unit": "us",
+          "item_type": "datetime",
+          "physical_value_type": "R5OpaqueValue",
+          "physical_value_repr": "R5OpaqueValue(type_id='python.datetime.datetime@1', payload=b'\\x07\\xd8\\x04\\x05\\x"
+        },
+        "ns": {
+          "numpy_unit": "ns",
+          "item_type": "int",
+          "physical_value_type": "int",
+          "physical_value_repr": "1207375628000000000"
+        }
+      },
+      "note": "Unit 'D' vs 's' changes the rendered value; numpy is pinned at 2.4.6 for this qualification."
+    },
+    {
+      "probe_id": "D02-5",
+      "group": "D02",
+      "title": "actual reader arrival typing for a synthetic SAV DATE variable on this anchor",
+      "verdict": "OBSERVED",
+      "observed": {
+        "synthetic_sav_sha256": "944582b40059c8f593614995c24d9fda9d84ff5ee830167e483e21106a2b226c",
+        "frame_materialised_only_with_encoding": true,
+        "direct_frame_arrival": [
+          {
+            "index": 0,
+            "pandas_dtype": "object",
+            "element_pytype": "date",
+            "element_repr": "datetime.date(1582, 10, 14)",
+            "physical_value_type": "R5OpaqueValue",
+            "physical_value_repr": "R5OpaqueValue(type_id='python.datetime.date@1', payload=b'\\x06.\\n\\x0e')"
+          },
+          {
+            "index": 1,
+            "pandas_dtype": "object",
+            "element_pytype": "date",
+            "element_repr": "datetime.date(1582, 10, 14)",
+            "physical_value_type": "R5OpaqueValue",
+            "physical_value_repr": "R5OpaqueValue(type_id='python.datetime.date@1', payload=b'\\x06.\\n\\x0e')"
+          },
+          {
+            "index": 2,
+            "pandas_dtype": "object",
+            "element_pytype": "date",
+            "element_repr": "datetime.date(1582, 10, 15)",
+            "physical_value_type": "R5OpaqueValue",
+            "physical_value_repr": "R5OpaqueValue(type_id='python.datetime.date@1', payload=b'\\x06.\\n\\x0f')"
+          }
+        ],
+        "cells_via_iter_cells_metadata_only_lane": [
+          {
+            "raw_value": "R5OpaqueValue(type_id='python.datetime.date@1', payload=b'\\x",
+            "raw_type": "R5OpaqueValue",
+            "missing_state": "OBSERVED_STORAGE_VALUE"
+          },
+          {
+            "raw_value": "R5OpaqueValue(type_id='python.datetime.date@1', payload=b'\\x",
+            "raw_type": "R5OpaqueValue",
+            "missing_state": "OBSERVED_STORAGE_VALUE"
+          },
+          {
+            "raw_value": "R5OpaqueValue(type_id='python.datetime.date@1', payload=b'\\x",
+            "raw_type": "R5OpaqueValue",
+            "missing_state": "OBSERVED_STORAGE_VALUE"
+          }
+        ],
+        "reader_version_recorded": "1.3.6",
+        "harness_injections_count": 7
+      },
+      "note": "Synthetic file only. Establishes the ACTUAL current arrival/subclass on this anchor surface, as Omega-1 O1-C04 requires, WITHOUT inferring it from any historical rendering."
+    },
+    {
+      "probe_id": "DTA-1",
+      "group": "DTA/LiTS",
+      "title": "synthetic DTA through decode_dta(..., encoding='latin1')",
+      "verdict": "PASS",
+      "observed": {
+        "synthetic_dta_sha256": "72a7492cc08f39cfa6e26e194921f10400b61b6f949666b259fb29fea7d3363c",
+        "row_count": 5,
+        "encoding_override_without_exact_sha_authority": {
+          "result": "REJECTED(encoding override is not in an exact SHA/config representation allowlist)"
+        },
+        "reader_configuration": {
+          "reader": "pyreadstat",
+          "reader_version": "1.3.6",
+          "decoder_implementation": "rawlsing_next/pre553_physical_decoder.py",
+          "physical_metadata_contract": "PRE553_PHYSICAL_METADATA@1.0.0",
+          "user_missing": true,
+          "apply_value_formats": false,
+          "encoding": "latin1",
+          "authority_status": "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY"
+        },
+        "stratum_cells": [
+          {
+            "var": "stratum",
+            "raw": 1.0,
+            "type": "float",
+            "state": "OBSERVED_STORAGE_VALUE"
+          },
+          {
+            "var": "stratum",
+            "raw": 2.0,
+            "type": "float",
+            "state": "OBSERVED_STORAGE_VALUE"
+          },
+          {
+            "var": "stratum",
+            "raw": null,
+            "type": "NoneType",
+            "state": "SYSTEM_MISSING"
+          },
+          {
+            "var": "stratum",
+            "raw": 4.0,
+            "type": "float",
+            "state": "OBSERVED_STORAGE_VALUE"
+          },
+          {
+            "var": "stratum",
+            "raw": 5.0,
+            "type": "float",
+            "state": "OBSERVED_STORAGE_VALUE"
+          }
+        ],
+        "harness_injections_count": 7
+      },
+      "note": "Synthetic file only. The production LiTS SHA already carries a latin1 authority in COMPATIBILITY_ALLOWLIST; a synthetic SHA does not, so the probe grants one in-memory to exercise the compatibility read lane."
+    },
+    {
+      "probe_id": "DTA-2",
+      "group": "DTA/LiTS",
+      "title": "user / extended missing carrier behaviour (Stata extended token shape)",
+      "verdict": "OBSERVED__EXTENDED_TOKEN_BRANCH_NOT_EXERCISED_BY_WRITER_ROUNDTRIP",
+      "observed": {
+        "synthetic_dta_sha256": "2a1d3d769ec4ded4405e784d1d4a9e42ff3f0280d827cca279af97a4df340ea9",
+        "declarations": [],
+        "cells": [
+          {
+            "raw": "1.0",
+            "type": "float",
+            "state": "OBSERVED_STORAGE_VALUE"
+          },
+          {
+            "raw": "2.0",
+            "type": "float",
+            "state": "OBSERVED_STORAGE_VALUE"
+          },
+          {
+            "raw": "3.0",
+            "type": "float",
+            "state": "OBSERVED_STORAGE_VALUE"
+          }
+        ],
+        "reader_configuration": {
+          "reader": "pyreadstat",
+          "reader_version": "1.3.6",
+          "decoder_implementation": "rawlsing_next/pre553_physical_decoder.py",
+          "physical_metadata_contract": "PRE553_PHYSICAL_METADATA@1.0.0",
+          "user_missing": true,
+          "apply_value_formats": false,
+          "encoding": "latin1",
+          "authority_status": "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY"
+        },
+        "write_dta_missing_user_values_round_trip": "DOES_NOT_ROUND_TRIP",
+        "reader_reported_missing_user_values": {},
+        "reader_reported_missing_ranges": {},
+        "note": "RESIDUAL, NOT A PASS. pyreadstat 1.3.6 write_dta(missing_user_values={'x':['a']}) does not surface on read: the reader reports empty missing_user_values AND empty missing_ranges. The accepted decoder's Stata extended-token dual-shape branch (pre553_physical_decoder.py:315-320, accepting both bare 'a' and dotted '.a') is therefore NOT exercisable by a synthetic write->read round-trip in this build, and remains UNPROBED by this lane. It is exercised only against the real LiTS source, which this lane is not authorised to open.",
+        "harness_injections_count": 7
+      },
+      "note": ""
+    },
+    {
+      "probe_id": "DTA-3",
+      "group": "DTA/LiTS",
+      "title": "repeat-decode stability (PASS) and cross-reader-lane digest dependence (MEASURED FACT)",
+      "verdict": "PASS_REPEAT_STABLE__DIGEST_IS_READER_LANE_BOUND",
+      "observed": {
+        "digest_run_1": "3ea77868bbda53d3c324b813540936427112265232831545535088afa8725481",
+        "digest_run_2": "3ea77868bbda53d3c324b813540936427112265232831545535088afa8725481",
+        "repeat_stable": true,
+        "repeat_runs": 2,
+        "row_count_run_1": 5,
+        "row_count_run_2": 5,
+        "row_counts_equal": true,
+        "reader_version_run_1": "1.3.6",
+        "digest_encoding_lane": "3ea77868bbda53d3c324b813540936427112265232831545535088afa8725481",
+        "digest_metadata_only_lane": "965a75819f71d9489ca3c971818d90ddc85bef7f9f937d70cdb6d34332769a49",
+        "digest_encoding_lane_equals_metadata_only_lane": false,
+        "file_metadata_keys_differing_between_lanes": [],
+        "reader_configuration_encoding_lane": {
+          "reader": "pyreadstat",
+          "reader_version": "1.3.6",
+          "decoder_implementation": "rawlsing_next/pre553_physical_decoder.py",
+          "physical_metadata_contract": "PRE553_PHYSICAL_METADATA@1.0.0",
+          "user_missing": true,
+          "apply_value_formats": false,
+          "encoding": "latin1",
+          "authority_status": "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY"
+        },
+        "reader_configuration_metadata_only_lane": {
+          "reader": "pyreadstat",
+          "reader_version": "1.3.6",
+          "decoder_implementation": "rawlsing_next/pre553_physical_decoder.py",
+          "physical_metadata_contract": "PRE553_PHYSICAL_METADATA@1.0.0",
+          "user_missing": true,
+          "apply_value_formats": false,
+          "encoding": null,
+          "authority_status": null
+        },
+        "harness_injections_count": 7
+      },
+      "note": "MATERIAL FINDING, not a stability failure. Repeat decode is bit-identical. But the physical-metadata digest is ALSO reader-lane dependent: the encoding and authority_status fields of reader_configuration are inside the digest payload. A frozen digest is therefore valid only for its exact reader lane. O1-C05/O1-C06 must bind the reader lane together with the source identity."
+    }
+  ],
+  "coverage_against_commission_requirements": {
+    "D01_BIG5_exact_SHA_admission": {
+      "required": true,
+      "probe": "D01-2",
+      "result": "PASS"
+    },
+    "D01_WINDOWS_1252_exact_SHA_admission": {
+      "required": true,
+      "probe": "D01-2",
+      "result": "PASS"
+    },
+    "D01_encoding_None_behaviour": {
+      "required": true,
+      "probes": [
+        "D01-3",
+        "D01-6",
+        "D01-7"
+      ],
+      "result": "PASS"
+    },
+    "D01_metadata_only_path": {
+      "required": true,
+      "probe": "D01-7",
+      "result": "PASS — frame materialises only when encoding is not None"
+    },
+    "D01_wrong_SHA_encoding_rejection": {
+      "required": true,
+      "probes": [
+        "D01-4",
+        "D01-8"
+      ],
+      "result": "PASS"
+    },
+    "D01_no_auto_guess_fallback_widening": {
+      "required": true,
+      "probe": "D01-5",
+      "result": "PASS"
+    },
+    "G01_native_int_storage_through_pyreadstat_pandas": {
+      "required": true,
+      "probes": [
+        "G01-0",
+        "G01-1"
+      ],
+      "result": "PASS"
+    },
+    "G01_float64_arrival": {
+      "required": true,
+      "probes": [
+        "G01-1",
+        "G01-3"
+      ],
+      "result": "PASS"
+    },
+    "G01_user_missing_vs_observed_storage_states": {
+      "required": true,
+      "probe": "G01-4",
+      "result": "PASS"
+    },
+    "G01_exact_R5_big_endian_float_tokens": {
+      "required": true,
+      "probes": [
+        "G01-2"
+      ],
+      "result": "PASS — all authorised tokens matched"
+    },
+    "D02_naive_datetime_date_time_arrival_types": {
+      "required": true,
+      "probes": [
+        "D02-1",
+        "D02-5"
+      ],
+      "result": "PASS + OBSERVED"
+    },
+    "D02_opaque_carrier_normalization": {
+      "required": true,
+      "probes": [
+        "D02-1",
+        "D02-5"
+      ],
+      "result": "PASS — python.datetime.date@1 confirmed on the real reader path"
+    },
+    "D02_timezone_aware_rejection": {
+      "required": true,
+      "probe": "D02-2",
+      "result": "PASS"
+    },
+    "D02_item_wrapped_tz_aware_hostile_propagation": {
+      "required": true,
+      "probe": "D02-3",
+      "result": "PASS — pandas.Timestamp is a datetime subclass and therefore MISSED by the exact-type check; it collapses to str via _jsonable. Recorded as measured behaviour of the accepted decoder, NOT repaired."
+    },
+    "DTA_LiTS_synthetic_through_decode_dta_latin1": {
+      "required": true,
+      "probe": "DTA-1",
+      "result": "PASS"
+    },
+    "DTA_user_extended_missing_carrier_behaviour": {
+      "required": true,
+      "probe": "DTA-2",
+      "result": "OBSERVED__EXTENDED_TOKEN_BRANCH_NOT_EXERCISED — see residuals"
+    },
+    "DTA_repeat_decode_stability": {
+      "required": true,
+      "probe": "DTA-3",
+      "result": "PASS — two decodes bit-identical"
+    },
+    "every_required_item_covered": true
+  },
+  "residuals_explicitly_not_claimed_as_passes": [
+    {
+      "residual_id": "RES-1",
+      "probe": "DTA-2",
+      "subject": "Stata extended-missing dual-shape branch",
+      "statement": "pyreadstat 1.3.6 write_dta(missing_user_values={'x':['a']}) does NOT surface on read: the reader reports empty missing_user_values AND empty missing_ranges. The accepted decoder's branch at pre553_physical_decoder.py:315-320, which accepts both the bare 'a' and the dotted '.a' reader-token shape, is therefore NOT exercisable by a synthetic write->read round-trip in this build.",
+      "independent_corroboration": "The repository itself acknowledges this: rawlsing_next/tests/test_pre553_sr06_decoder_carrier.py:268 skips with 'installed pyreadstat writer/readback does not expose missing_user_values in metadata'.",
+      "consequence": "That branch remains UNPROBED by this lane. It is exercised only against the real LiTS source, which this lane is not authorised to open.",
+      "severity": "LOW for the authoritative court — it is not exercised by any of the six court files — but it IS a real gap in C4 physical-layer coverage that HQ should note for the DTA/LiTS operation."
+    },
+    {
+      "residual_id": "RES-2",
+      "probe": "D02-3",
+      "subject": "pandas.Timestamp is outside the D02 opaque carrier",
+      "statement": "The accepted D02 contract uses EXACT type identity (type(value) in {datetime,date,time}). pandas.Timestamp subclasses datetime.datetime, so a Timestamp is NOT captured and falls through _physical_value to _jsonable, which collapses it to a string.",
+      "measured": "Naive Timestamp -> '2008-04-05 06:07:08'; tz-aware Timestamp -> a DIFFERENT string. Probe D02-3 confirms the two renderings differ, so tz-awareness changes identity on that lane.",
+      "consequence": "This is a property of the ACCEPTED decoder as merged. It is not a defect introduced by this qualification and is NOT repaired here. It is recorded because it bounds exactly what the D02 date@1 carrier does and does not cover.",
+      "severity": "INFORMATIONAL for this anchor — the real reader path delivered builtin datetime.date (probe D02-5), so Timestamp did not arise in the C4 SAV date lane on this surface."
+    },
+    {
+      "residual_id": "RES-3",
+      "probe": "D02-4",
+      "subject": "numpy datetime64 unit changes D02 arrival typing",
+      "statement": "datetime64 with unit 'D' and unit 's' yield different _physical_value renderings. numpy is pinned at 2.4.6 for this qualification, so the surface is deterministic; but the rendering is a function of the numpy unit choice, not a fixed constant.",
+      "severity": "INFORMATIONAL — bounded by the numpy pin recorded in 01_ENVIRONMENT_LOCK.json."
+    }
+  ],
+  "conclusion": "21 of 21 probes completed with zero probe errors and zero failures. Every commission PHASE 4 requirement is covered. The accepted D01 admission law, the G01 exact float-token law, the D02 opaque carrier and the DTA compatibility read lane all behave correctly on the Darwin/x86_64 anchor. Two residuals (RES-1, RES-2) and one bounded observation (RES-3) are recorded rather than presented as passes."
+}

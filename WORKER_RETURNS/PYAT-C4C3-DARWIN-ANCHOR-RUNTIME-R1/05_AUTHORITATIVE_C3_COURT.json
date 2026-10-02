@@ -1,0 +1,95 @@
+{
+  "schema": "PYAT_C4C3_AUTHORITATIVE_C3_COURT@1.0.0",
+  "lane": "PYAT-C4C3-DARWIN-ANCHOR-RUNTIME-R1",
+  "phase": "PHASE 5 — authoritative C3 six-file court",
+  "status": "COMPLETE",
+  "REQUIRED_RESULT": "55 passed / 0 failed / 0 errors / 0 skipped",
+  "OBSERVED_RESULT": "55 passed / 0 failed / 0 errors / 0 skipped",
+  "MEETS_REQUIREMENT": true,
+
+  "execution": {
+    "tree": "8f7efe690a161902e79358eb31650c238a4c0be8 (HEAD eba2f4249 adds only this commission file; rawlsing_next tree hash identical at both)",
+    "interpreter": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/c4c3-env/bin/python",
+    "python": "CPython 3.11.3",
+    "platform": "macOS-13.7.8-x86_64-i386-64bit (Darwin 22.6.0)",
+    "command": "python -m pytest -q -p no:cacheprovider <six paths>",
+    "cwd": "/Users/matthewsmith/Desktop/Rawlsing",
+    "PYTHONPATH": "/Users/matthewsmith/Desktop/Rawlsing (rawlsing_next is a namespace package; no __init__.py)",
+    "env": {"PYTHONHASHSEED": "0", "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1"},
+    "determinism_env_rationale": "Matches the governed bounded-court discipline in .rabochii/court_spec.json:16 — PYTHONHASHSEED=0 removes hash-order nondeterminism and PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 removes third-party plugin influence, so the only uncontrolled variable is the pytest version itself, which is pinned at 9.1.1.",
+    "exit_code": 0
+  },
+
+  "path_assertion_before_execution": {
+    "asserted": true,
+    "missing": 0,
+    "paths": [
+      {"path": "rawlsing_next/tests/test_closed35_g01_sav_numeric_representation_authority.py", "blob": "fb7b090809a609a3b0157f1ed8fcdcd8e8784525", "collected": 9, "exists": true},
+      {"path": "rawlsing_next/tests/test_closed35_d01_declared_encoding_admission.py", "blob": "8fc05965386055a208e5b3988112e67a2e6333e2", "collected": 8, "exists": true},
+      {"path": "rawlsing_next/tests/test_closed35_d02_opaque_datetime_carrier.py", "blob": "3901f10a487856f5f232ae6700fff407ac99725e", "collected": 13, "exists": true},
+      {"path": "rawlsing_next/tests/test_fiabc_lm2_r1j_sav_representation_authority.py", "blob": "unchanged court dependency (accepted)", "collected": 9, "exists": true},
+      {"path": "rawlsing_next/tests/test_r35_i01_physical_metadata.py", "blob": "unchanged court dependency (accepted)", "collected": 6, "exists": true},
+      {"path": "rawlsing_next/tests/test_pre553_source_backed_c11_facade.py", "blob": "unchanged court dependency (accepted)", "collected": 10, "exists": true}
+    ],
+    "collected_total": 55,
+    "collected_total_matches_required_total": true
+  },
+
+  "per_file_results": [
+    {"file": "test_closed35_g01_sav_numeric_representation_authority.py", "expected_by_acceptance": 9, "passed": 9},
+    {"file": "test_closed35_d01_declared_encoding_admission.py", "expected_by_acceptance": 8, "passed": 8},
+    {"file": "test_closed35_d02_opaque_datetime_carrier.py", "expected_by_acceptance": 13, "passed": 13},
+    {"file": "test_fiabc_lm2_r1j_sav_representation_authority.py", "expected_by_acceptance": 9, "passed": 9},
+    {"file": "test_r35_i01_physical_metadata.py", "expected_by_acceptance": 6, "passed": 6},
+    {"file": "test_pre553_source_backed_c11_facade.py", "expected_by_acceptance": 10, "passed": 10}
+  ],
+
+  "counts": {"passed": 55, "failed": 0, "errors": 0, "skipped": 0, "xfailed": 0, "xpassed": 0, "total": 55},
+  "denominator": 55,
+  "denominator_basis": "Asserted by --collect-only BEFORE the timed run; 9+8+13+9+6+10 = 55. The run then reported exactly 55 passed with no collection error.",
+
+  "repeat_run_determinism": {
+    "run_1": {"passed": 55, "failed": 0, "errors": 0, "skipped": 0, "duration_seconds": 77.79},
+    "run_2": {"passed": 55, "failed": 0, "errors": 0, "skipped": 0, "duration_seconds": 44.25},
+    "identical": true,
+    "significance": "The authoritative court is deterministic on this anchor across two independent invocations."
+  },
+
+  "raw_survey_access": {
+    "raw_survey_files_opened": 0,
+    "raw_survey_files_hashed": 0,
+    "raw_survey_files_decoded": 0,
+    "statement": "The six court files are source-free and use synthetic fixtures and monkeypatched readers. No real survey file was touched. This is consistent with the accepted C3 source-free grade recorded in PYAT-C3-SOURCE-FREE-INTEGRATION-REVIEW-R1/03_INTEGRATION_EXECUTION_RECEIPT.json (raw_survey_reads_materializations_decodes: 0)."
+  },
+
+  "relation_to_accepted_C3_evidence": {
+    "accepted_court_result": {"passed": 55, "failed": 0, "errors": 0, "skipped": 0},
+    "accepted_execution_commit": "283c... (admitted_prior_qualification_evidence.accepted_execution_commit 283c2c5d2b187c4e62ae1aecb236a0b51ddeffb1 per the accepted C3 receipt); commission records the accepted historical C3 source-free execution at 257c2ebfd38d106f1669afbfd701a33e600cf4c5",
+    "result_reproduced": true,
+    "grade_statement": "This is a FRESH EXECUTION on the combined C1+C3 tree on the Darwin/x86_64 anchor, not an inheritance of the accepted result. It therefore upgrades the accepted C3 source-free evidence from 'admitted prior evidence, not an independent rerun by the reviewer' to an independently reproduced execution at this exact tree, runtime and interpreter.",
+    "deliberately_not_claimed": "This does not extend the C3 grade to physical/survey-contact evidence. All 55 tests remain source-free. The accepted C1 fresh-process bridge limitation and the accepted C2 epistemic-origin residual are untouched."
+  },
+
+  "supplementary_sweep_outside_the_authoritative_court": {
+    "purpose": "C4A reported that five declared C3 compatibility files were EXCLUDED because they failed at collection with ModuleNotFoundError: pandas. This lane installed pandas 2.3.3 per the commission, so those exclusions are now testable. Recording the outcome is material to HQ and does NOT alter the authoritative denominator.",
+    "files_previously_excluded_by_C4A": [
+      {"path": "rawlsing_next/tests/test_fiabc_lm1_r1e_n1_physical_boundary.py", "c4a_reason": "ModuleNotFoundError: pandas at collection"},
+      {"path": "rawlsing_next/tests/test_fiabc_lm2_r1e_bounded_mapping_recovery.py", "c4a_reason": "ModuleNotFoundError: pandas at collection"},
+      {"path": "rawlsing_next/tests/test_fiabc_run3_postmeasurement_repair_stack.py", "c4a_reason": "ModuleNotFoundError: pandas at collection"},
+      {"path": "rawlsing_next/tests/test_pre553_source_backed_c11_facade.py", "c4a_reason": "ModuleNotFoundError: pandas at collection; also drives the C11 raw-ingest surface"},
+      {"path": "rawlsing_next/tests/test_pre553_sr06_decoder_carrier.py", "c4a_reason": "ModuleNotFoundError: pandas at collection; also drives the raw toolchain"}
+    ],
+    "outcome_now": {"passed": 48, "failed": 11, "skipped": 1, "collection_errors": 0},
+    "COLLECTION_BLOCKER_RESOLVED": true,
+    "notable": "test_pre553_source_backed_c11_facade.py — which C4A had EXCLUDED entirely — is one of the six AUTHORITATIVE court files, and it collects and passes all 10 of its tests in this environment. Its C4A exclusion was purely a missing-pandas artefact and is now retired.",
+    "failure_root_causes": [
+      {"count": 8, "file": "test_fiabc_lm2_r1e_bounded_mapping_recovery.py", "error": "AssertionError at :183 — banked content hash '8e5842eb0110...' vs recomputed '5e2a53f0e5f3...'", "classification": "INHERITED_FIXTURE_IDENTITY_MISMATCH — not an anchor-runtime incompatibility", "same_class_as": "the same class as C4A's disclosed inherited failures"},
+      {"count": 1, "file": "test_fiabc_run3_postmeasurement_repair_stack.py", "error": "ValueError: representation authority variable identity/ordinal mismatch at fiabc_lm2_r1j_wvs7_representation_authority.py:176", "classification": "BANKED_PROJECTION_IDENTITY — not an anchor-runtime incompatibility"},
+      {"count": 2, "file": "test_pre553_sr06_decoder_carrier.py", "error": "ModuleNotFoundError: No module named 'duckdb'", "classification": "DEPENDENCY_ABSENT_BY_COMMISSION_DIRECTION — duckdb is deliberately not installed, and PHASE 2 independently confirmed duckdb is not on the C4 path", "duckdb_installed": false}
+    ],
+    "skip": {"count": 1, "file": "test_pre553_sr06_decoder_carrier.py:268", "reason": "installed pyreadstat writer/readback does not expose missing_user_values in metadata", "significance": "This is the REPOSITORY ITSELF acknowledging the same pyreadstat 1.3.6 writer/readback limitation independently measured as RES-1 in 04_SYNTHETIC_READER_PROBES.json."},
+    "INTERPRETATION_FOR_HQ": "None of these 11 failures is caused by the Darwin/x86_64 anchor runtime. Eight and one are banked-fixture and banked-projection identity mismatches that are environment-independent; two are the deliberate absence of duckdb, which PHASE 2 proved is off the C4 path. This supports commission line 242: no runtime incompatibility appeared, so the 454-test C1 court was not required to be re-run. These failures are NOT relabelled by this lane and remain HQ's to triage — they are simply no longer hidden behind a collection error."
+  },
+
+  "does_not_contaminate": "The authoritative denominator is 55 and is unaffected by this supplementary sweep. The commission states at line 223 that C4A's three wider-sweep failures are outside this acceptance court; this lane extends the same boundary to all 11 supplementary failures."
+}
