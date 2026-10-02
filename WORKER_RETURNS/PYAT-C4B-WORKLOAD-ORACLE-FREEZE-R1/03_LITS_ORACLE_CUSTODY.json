@@ -1,0 +1,91 @@
+{
+  "schema": "PYAT_C4B_LITS_ORACLE_CUSTODY@1.0.0",
+  "status": "BLOCKED__EXACT_PUBLIC_OBJECT_PREIMAGE_CUSTODY_NOT_AVAILABLE_ON_GIT_BROWSER_SURFACE",
+  "source": {
+    "source_key": "SRC27",
+    "source_file": "LiTS_I.dta",
+    "sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "format": "DTA"
+  },
+  "B01_binding": {
+    "owner": "B01_LITS_I_Q301_BOUNDED_SUCCESSOR",
+    "projection_authority": "urn:rawlsing:pre553:as2a:lits1-projection-authority:sha256:9dd1e6b7350ebb795e028db86279131f8d319e939a044b74c3c5605ecacf5b06",
+    "respondent_event_slots": [
+      "q301_2",
+      "q301_7"
+    ],
+    "coordinate_fact_slots": [
+      "country",
+      "city",
+      "region",
+      "tablec",
+      "tabled"
+    ],
+    "default_weight_measure_fact": false
+  },
+  "retained_closure": {
+    "canonical_empirical_closure": "f264dd8f83a0794716583d1ea8445947cc9470b99475e5d51fc2383e7196f415",
+    "checkpoint_identity": "3fab15f37db629f0ee24189620c65eff944d8a36c4b4509abb6b8bb2ea69c33f",
+    "checkpoint_document_sha256": "2704fd3fadc9c898a512183aaf5eebf0ca48d78c47e75a19d47e17281eaa5726",
+    "checkpoint_bytes": 3404445161,
+    "oracle_identity": "e5d66db4b6f8339672b0f4828b72a8df68b5525bf71ecfda899d0531d618a98a",
+    "oracle_document_sha256": "cb1c6ae6f9ddef15d41897451ac9f60208d4615ea60ddbeaef8874ba1000e3f4",
+    "candidate_count": 50,
+    "query_role_count": 77,
+    "supported_candidates": 49,
+    "valid_empty_candidates": 1,
+    "object_counts": {
+      "EmpiricalUniverse": 1,
+      "AuthoritySnapshot": 24,
+      "EmpiricalPredicate": 35,
+      "EmpiricalQuerySpec": 63,
+      "EmpiricalFact": 60,
+      "DiscoveryAuthority": 1,
+      "DiscoveryResultReceipt": 50
+    },
+    "discovery_receipts": 50,
+    "empirical_facts": 60,
+    "structural_admission_object_count": 0
+  },
+  "custody_evidence": {
+    "durable_custody_path": "WORKER_RETURNS/PREMAIN-FIABC-LITS-FINAL-SUCCESS-DURABLE-CUSTODY-R1/custody_manifest.json",
+    "durable_custody_blob": "4ff9b288fa317a9a313c767acf1fd2dfa8f1ce40",
+    "heavyweight_checkpoint_git_banked": false,
+    "heavyweight_checkpoint_location_class": "PERSISTENT_LOCAL_HEAVYWEIGHT_PAYLOAD",
+    "browser_mac_access_forbidden": true,
+    "final_preimage_crosswalk_path": "WORKER_RETURNS/PYAT-R2-LITS-FF02-C-R1/00_RETURN.md",
+    "final_preimage_crosswalk_blob": "afbad9a5057f9d4c636fd67f5a5e46f7acbad558",
+    "checkpoint_export_return_path": "WORKER_RETURNS/PYAT-R2-LITS-FF02-D-R1/00_RETURN.md",
+    "checkpoint_export_return_commit": "0d0c234efaa9e8985d82139cba2127d14e10baaa",
+    "checkpoint_export_verification_blob": "05_CHECKPOINT_EXPORT_VERIFICATION.json@blob:unknown_in_this_freeze",
+    "accepted_blocker": "EXACT_CHECKPOINT_CUSTODY_LOCATION_FAILURE",
+    "D2_branch": "agent/rabochii-pyat-r2-lits-ff02-d2-checkpoint-preimage-export-r1",
+    "D2_observed_state": "COMMISSION_PRESENT__NO_RETURN_ARTIFACT_OBSERVED"
+  },
+  "exact_missing_preimage_exports": [
+    "50 candidate_hash -> DiscoveryResultReceipt.ref bindings",
+    "complete receipt authority/dependency/winning-predicate/source-release/replay refs",
+    "all 24 AuthoritySnapshot exact refs + AuthorityRef triples",
+    "per-object authority_snapshot_refs for 60 facts / 63 queries / 35 predicates / 50 receipts",
+    "50 cross-schema logical bindings or exact retained predicate preimages sufficient for the already-qualified P2 mapping"
+  ],
+  "typed_blocker": {
+    "id": "C4B-LITS-ORACLE-PREIMAGE-CUSTODY-001",
+    "class": "ORACLE_CUSTODY",
+    "state": "OPEN__HQ_ADJUDICATION_REQUIRED",
+    "predecessor_blocker": "D-CUSTODY-001",
+    "reason": "Accepted retained checkpoint is content-addressed and known to exist, but the complete public-object preimages required for noncircular C4 comparison are not Git-banked and the exact checkpoint body is unavailable to this Browser/GitHub-only lane. The commissioned D2 checkpoint-only export has no returned PASS packet.",
+    "wake_condition": "Bank a D2 PASS export from the exact checkpoint SHA-256 2704fd3f... without source reopen, containing every required retained public-object preimage/pairing; then independently accept it before C4 source execution."
+  },
+  "predeclared_comparison_law": {
+    "source_identity": "exact source SHA/config equality",
+    "authority": "exact authority refs and complete retained preimages equality/resolution",
+    "determinant": "exact query/predicate/universe/release/determinant refs and preimages",
+    "witness": "exact fact/discovery-receipt/ref pairing; no candidate output may author expected truth",
+    "geometry": "exact candidate count/order, 50 candidates / 77 roles, expected set/denominator/measure geometry",
+    "negative_states": "typed negatives remain typed; VALID_EMPTY distinct from unavailable/unresolved/failure",
+    "replay": "exact replay/release/oracle identities and replay closure",
+    "mismatch": "FAIL_CLOSED__NO_RECONSTRUCTION_FROM_FRESH_C4_OUTPUT"
+  },
+  "fresh_run_law": "SRC27 remains the sole fresh full Route-B anchor, exactly one governed pass, but that pass may not begin while C4B-LITS-ORACLE-PREIMAGE-CUSTODY-001 is open."
+}

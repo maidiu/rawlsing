@@ -1,0 +1,41 @@
+{
+  "schema": "PYAT_C4B_D02_BINDING@1.0.0",
+  "status": "FROZEN__BLOCKER_C2_02_D02_LOCATOR_001_CLOSED_AT_DECLARED_GRAIN",
+  "source_key": "SRC14",
+  "source_file": "EVS 2008.sav",
+  "source_sha256": "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379",
+  "variable_name": "v372",
+  "ordinal": 466,
+  "retained_fixture": {
+    "branch": "agent/vozhd-trii-srcprep71-r04-evs",
+    "tip": "3bc063aa7bf461caf5baf581ff32a434ba9e09a3",
+    "path": "data/ddm_build_copy/vozhd_trii/20260820_pre553_empirical_compiler_activation/SUBSTRATE_RECONSTRUCTION/SOURCE_CERT_PREP71/RETURNS/R04/HOSTILE_FIXTURES.csv",
+    "blob": "12f6adb77ef5692511055c8f0520e42c454f3867",
+    "fixture_id": "EVS08_DATE_MISSING_V372",
+    "fixture_kind": "VARIABLE_MISSING_DECLARATION",
+    "native_class": "TYPED_DATE_USER_MISSING_SENTINEL",
+    "rendered_value": "1582-10-13",
+    "authority": "SOURCE_PHYSICAL_OR_READER_METADATA_AUTHORITY__NON_SEMANTIC",
+    "assertion": "PHYSICAL_MISSINGNESS_ONLY",
+    "counts": {
+      "user_missing": 1917,
+      "ordinary_present": 64363,
+      "system_missing": 0,
+      "total_rows": 66280
+    }
+  },
+  "accepted_C3_carrier_domain": {
+    "integration_head": "30686b185d4ceb2c94f61815ef70d8c8e76255d6",
+    "codec_blob": "6000a1704d713f65e07610d81e9b3fd8bdd515ca",
+    "exact_builtin_naive_datetime": "python.datetime.datetime@1",
+    "exact_builtin_date": "python.datetime.date@1",
+    "exact_builtin_naive_time": "python.datetime.time@1",
+    "timezone_aware_datetime_or_time": "FAIL_CLOSED"
+  },
+  "current_execution_observation": {
+    "observed_native_subclass": null,
+    "must_remain_null_until_C4_execution": true,
+    "rendering_may_not_be_used_to_infer_date_vs_datetime": true
+  },
+  "proof_ceiling": "PHYSICAL_REPRESENTATION_ONLY__NO_CALENDAR_DISPLAY_TIMEZONE_OR_SURVEY_SEMANTICS"
+}

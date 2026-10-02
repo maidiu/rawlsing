@@ -1,0 +1,244 @@
+{
+  "schema": "PYAT_C4B_UNSIGNED_FUTURE_SOURCE_WARRANT_TEMPLATE@1.0.0",
+  "status": "NOT_AUTHORIZED_UNTIL_HQ_AND_REQUIRED_USER_RESOURCE_OWNER_APPROVAL",
+  "signed": false,
+  "authorizes_access": false,
+  "scope": "Seven future fresh-read sources only; SRC35 is excluded because it is a retained comparator.",
+  "sources": [
+    {
+      "source_key": "SRC02",
+      "source_file": "Afro Barometer Round 5.sav",
+      "canonical_sha256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+      "format": "SAV",
+      "access_locator": "<TO_BE_SUPPLIED_ON_AUTHORIZED_EXECUTION_SURFACE>",
+      "allowed_operations": {
+        "kind": "SELECTED_VARIABLE_PHYSICAL",
+        "variables": [
+          {
+            "name": "Q10B",
+            "ordinal": 58,
+            "native_codes": [
+              997
+            ]
+          }
+        ]
+      },
+      "execution_surface": "<HQ_TO_BIND_EXACT_RUNTIME_AND_C3_EQUIVALENT_HEAD>",
+      "raw_bytes_retention": "DO_NOT_COMMIT_OR_COPY_RAW_RESPONDENT_BYTES_TO_GIT",
+      "source_access_accounting": {
+        "full_file_sha256_passes": "REQUIRED_EXACT_COUNT",
+        "path_opens": "REQUIRED_EXACT_COUNT_AND_BASIS",
+        "decoder_invocations": "REQUIRED_EXACT_COUNT",
+        "metadata_header_reads": "REQUIRED_EXACT_COUNT",
+        "selected_reads": "REQUIRED_EXACT_COUNT_AND_CONFIG",
+        "full_reads": "REQUIRED_EXACT_COUNT_AND_CONFIG",
+        "retries": "REQUIRED_EXACT_COUNT_AND_REASON"
+      }
+    },
+    {
+      "source_key": "SRC06",
+      "source_file": "Arab Barometer Wave 5.sav",
+      "canonical_sha256": "6a5cbad637ce1546833a1d4812ba6d1e8d75f85b5b199b0cf3ec5cf456068dbc",
+      "format": "SAV",
+      "access_locator": "<TO_BE_SUPPLIED_ON_AUTHORIZED_EXECUTION_SURFACE>",
+      "allowed_operations": {
+        "kind": "SELECTED_VARIABLE_PHYSICAL",
+        "variables": [
+          {
+            "name": "Q101",
+            "ordinal": 20,
+            "native_codes": [
+              98,
+              99
+            ]
+          },
+          {
+            "name": "Q2061B",
+            "ordinal": 19,
+            "native_codes": [
+              97
+            ]
+          }
+        ]
+      },
+      "execution_surface": "<HQ_TO_BIND_EXACT_RUNTIME_AND_C3_EQUIVALENT_HEAD>",
+      "raw_bytes_retention": "DO_NOT_COMMIT_OR_COPY_RAW_RESPONDENT_BYTES_TO_GIT",
+      "source_access_accounting": {
+        "full_file_sha256_passes": "REQUIRED_EXACT_COUNT",
+        "path_opens": "REQUIRED_EXACT_COUNT_AND_BASIS",
+        "decoder_invocations": "REQUIRED_EXACT_COUNT",
+        "metadata_header_reads": "REQUIRED_EXACT_COUNT",
+        "selected_reads": "REQUIRED_EXACT_COUNT_AND_CONFIG",
+        "full_reads": "REQUIRED_EXACT_COUNT_AND_CONFIG",
+        "retries": "REQUIRED_EXACT_COUNT_AND_REASON"
+      }
+    },
+    {
+      "source_key": "SRC08",
+      "source_file": "Asian Barometer Wave 1.sav",
+      "canonical_sha256": "ac0b8bc1ddb2fa6b952417e35b6379ce6a2cf8596776a43282ba44f48e0ae1a2",
+      "format": "SAV",
+      "access_locator": "<TO_BE_SUPPLIED_ON_AUTHORIZED_EXECUTION_SURFACE>",
+      "allowed_operations": {
+        "kind": "METADATA_ONLY_DECODER_ADMISSION",
+        "declared_encoding": "BIG5",
+        "row_data_reads": 0,
+        "selected_columns": []
+      },
+      "execution_surface": "<HQ_TO_BIND_EXACT_RUNTIME_AND_C3_EQUIVALENT_HEAD>",
+      "raw_bytes_retention": "DO_NOT_COMMIT_OR_COPY_RAW_RESPONDENT_BYTES_TO_GIT",
+      "source_access_accounting": {
+        "full_file_sha256_passes": "REQUIRED_EXACT_COUNT",
+        "path_opens": "REQUIRED_EXACT_COUNT_AND_BASIS",
+        "decoder_invocations": "REQUIRED_EXACT_COUNT",
+        "metadata_header_reads": "REQUIRED_EXACT_COUNT",
+        "selected_reads": "REQUIRED_EXACT_COUNT_AND_CONFIG",
+        "full_reads": "REQUIRED_EXACT_COUNT_AND_CONFIG",
+        "retries": "REQUIRED_EXACT_COUNT_AND_REASON"
+      }
+    },
+    {
+      "source_key": "SRC12",
+      "source_file": "EVS 1990.sav",
+      "canonical_sha256": "66252a92c59bf6759b79a6b35b2be658b98a433373212a70c8ec94755d3e02ec",
+      "format": "SAV",
+      "access_locator": "<TO_BE_SUPPLIED_ON_AUTHORIZED_EXECUTION_SURFACE>",
+      "allowed_operations": {
+        "kind": "METADATA_ONLY_DECODER_ADMISSION",
+        "declared_encoding": "WINDOWS-1252",
+        "row_data_reads": 0,
+        "selected_columns": []
+      },
+      "execution_surface": "<HQ_TO_BIND_EXACT_RUNTIME_AND_C3_EQUIVALENT_HEAD>",
+      "raw_bytes_retention": "DO_NOT_COMMIT_OR_COPY_RAW_RESPONDENT_BYTES_TO_GIT",
+      "source_access_accounting": {
+        "full_file_sha256_passes": "REQUIRED_EXACT_COUNT",
+        "path_opens": "REQUIRED_EXACT_COUNT_AND_BASIS",
+        "decoder_invocations": "REQUIRED_EXACT_COUNT",
+        "metadata_header_reads": "REQUIRED_EXACT_COUNT",
+        "selected_reads": "REQUIRED_EXACT_COUNT_AND_CONFIG",
+        "full_reads": "REQUIRED_EXACT_COUNT_AND_CONFIG",
+        "retries": "REQUIRED_EXACT_COUNT_AND_REASON"
+      }
+    },
+    {
+      "source_key": "SRC14",
+      "source_file": "EVS 2008.sav",
+      "canonical_sha256": "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379",
+      "format": "SAV",
+      "access_locator": "<TO_BE_SUPPLIED_ON_AUTHORIZED_EXECUTION_SURFACE>",
+      "allowed_operations": {
+        "kind": "SELECTED_VARIABLE_PHYSICAL",
+        "variables": [
+          {
+            "name": "v372",
+            "ordinal": 466
+          }
+        ],
+        "expected_fixture": "EVS08_DATE_MISSING_V372"
+      },
+      "execution_surface": "<HQ_TO_BIND_EXACT_RUNTIME_AND_C3_EQUIVALENT_HEAD>",
+      "raw_bytes_retention": "DO_NOT_COMMIT_OR_COPY_RAW_RESPONDENT_BYTES_TO_GIT",
+      "source_access_accounting": {
+        "full_file_sha256_passes": "REQUIRED_EXACT_COUNT",
+        "path_opens": "REQUIRED_EXACT_COUNT_AND_BASIS",
+        "decoder_invocations": "REQUIRED_EXACT_COUNT",
+        "metadata_header_reads": "REQUIRED_EXACT_COUNT",
+        "selected_reads": "REQUIRED_EXACT_COUNT_AND_CONFIG",
+        "full_reads": "REQUIRED_EXACT_COUNT_AND_CONFIG",
+        "retries": "REQUIRED_EXACT_COUNT_AND_REASON"
+      }
+    },
+    {
+      "source_key": "SRC26",
+      "source_file": "Latinobarometro 2024.sav",
+      "canonical_sha256": "ff5cef18c87969026e7f993d09f10c38a547bf81d5d398784fb59b960b7b0a40",
+      "format": "SAV",
+      "access_locator": "<TO_BE_SUPPLIED_ON_AUTHORIZED_EXECUTION_SURFACE>",
+      "allowed_operations": {
+        "kind": "HEADER_PREFIX_PLUS_READER_METADATA",
+        "expected_raw_nominal_case_size": 174,
+        "expected_decoded_dictionary_data_width": 332
+      },
+      "execution_surface": "<HQ_TO_BIND_EXACT_RUNTIME_AND_C3_EQUIVALENT_HEAD>",
+      "raw_bytes_retention": "DO_NOT_COMMIT_OR_COPY_RAW_RESPONDENT_BYTES_TO_GIT",
+      "source_access_accounting": {
+        "full_file_sha256_passes": "REQUIRED_EXACT_COUNT",
+        "path_opens": "REQUIRED_EXACT_COUNT_AND_BASIS",
+        "decoder_invocations": "REQUIRED_EXACT_COUNT",
+        "metadata_header_reads": "REQUIRED_EXACT_COUNT",
+        "selected_reads": "REQUIRED_EXACT_COUNT_AND_CONFIG",
+        "full_reads": "REQUIRED_EXACT_COUNT_AND_CONFIG",
+        "retries": "REQUIRED_EXACT_COUNT_AND_REASON"
+      }
+    },
+    {
+      "source_key": "SRC27",
+      "source_file": "LiTS_I.dta",
+      "canonical_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+      "format": "DTA",
+      "access_locator": "<TO_BE_SUPPLIED_ON_AUTHORIZED_EXECUTION_SURFACE>",
+      "allowed_operations": {
+        "kind": "EXACTLY_ONE_FULL_ROUTE_SOURCE_BACKED_PASS",
+        "candidate_count": 50,
+        "query_role_count": 77,
+        "B01_slots": [
+          "q301_2",
+          "q301_7"
+        ]
+      },
+      "execution_surface": "<HQ_TO_BIND_EXACT_RUNTIME_AND_C3_EQUIVALENT_HEAD>",
+      "raw_bytes_retention": "DO_NOT_COMMIT_OR_COPY_RAW_RESPONDENT_BYTES_TO_GIT",
+      "source_access_accounting": {
+        "full_file_sha256_passes": "REQUIRED_EXACT_COUNT",
+        "path_opens": "REQUIRED_EXACT_COUNT_AND_BASIS",
+        "decoder_invocations": "REQUIRED_EXACT_COUNT",
+        "metadata_header_reads": "REQUIRED_EXACT_COUNT",
+        "selected_reads": "REQUIRED_EXACT_COUNT_AND_CONFIG",
+        "full_reads": "REQUIRED_EXACT_COUNT_AND_CONFIG",
+        "retries": "REQUIRED_EXACT_COUNT_AND_REASON"
+      }
+    }
+  ],
+  "preconditions": [
+    "HQ binds exact execution commit/runtime and accepted C3 owner blobs or exact equivalence.",
+    "C4B-LITS-ORACLE-PREIMAGE-CUSTODY-001 is closed before SRC27 fresh full-route execution.",
+    "Required user/resource-owner approval is recorded for source access.",
+    "Exact source locator resolves to bytes whose full-file SHA-256 equals the frozen identity before decode."
+  ],
+  "retry_stop_law": [
+    "No automatic fallback/guessing/substitution.",
+    "A hash/config/authority/oracle mismatch stops that source immediately.",
+    "Retries must be separately counted and reason-coded; retry may not change source, encoding, variables, operations, or authority.",
+    "Candidate A/B/C and measured P2X are outside this warrant.",
+    "No excluded source may be opened under this warrant."
+  ],
+  "retention_privacy": [
+    "Retain documentary hashes, exact identities, deterministic receipts, comparison diffs and permitted public-object preimages.",
+    "Do not Git-bank raw respondent-level source bytes or use raw bytes as an oracle-custody shortcut.",
+    "Do not create cross-source respondent pools or joins."
+  ],
+  "semantic_ceilings": [
+    "NO_ALL35_PASS",
+    "NO_EIGHT_SOURCE_FULL_SEMANTIC_ROUTE_CLAIM",
+    "NO_UNRESTRICTED_F6_F7_COMPARABILITY",
+    "NO_CLASS_SENSITIVE_EPISTEMIC_ORIGIN_CLOSURE",
+    "NO_PHYSICAL_SUCCESS_AS_SURVEY_SEMANTICS",
+    "NO_RETAINED_WVS_AS_FRESH_CURRENT_SOURCE_EXECUTION",
+    "NO_STRUCTURAL_OR_CAUSAL_AUTHORITY_FROM_C4",
+    "NO_ACTOR_PERSON_IMPLEMENTATION",
+    "NO_NEW_RAW_POOLING_OR_CROSS_SOURCE_RESPONDENT_JOIN"
+  ],
+  "approvals": {
+    "HQ": {
+      "name": null,
+      "decision": null,
+      "signature_or_commit": null
+    },
+    "required_user_resource_owner": {
+      "name": null,
+      "decision": null,
+      "signature_or_record": null
+    }
+  }
+}

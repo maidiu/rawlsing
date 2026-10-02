@@ -1,0 +1,2602 @@
+{
+  "schema": "PYAT_C4B_ALL35_CLAIM_LEDGER@1.0.0",
+  "status": "FROZEN__35_SOURCES__280_SOURCE_FUNCTION_CELLS__NO_HORIZONTAL_PROMOTION",
+  "source_registry_basis": {
+    "C2_01_path": "WORKER_RETURNS/PYAT-C2-AUTHORITY-SUCCESSION-COVERAGE-R1/estate_function_coverage.json",
+    "C2_01_blob": "b3e28e5b0eb9d9450b4094db8fd739329d251212",
+    "exact_source_count": 35,
+    "format_counts": {
+      "SAV": 31,
+      "DTA": 4
+    }
+  },
+  "source_count": 35,
+  "selected_count": 8,
+  "excluded_count": 27,
+  "selected_source_keys": [
+    "SRC02",
+    "SRC06",
+    "SRC08",
+    "SRC12",
+    "SRC14",
+    "SRC26",
+    "SRC27",
+    "SRC35"
+  ],
+  "sources": [
+    {
+      "source_id": "01",
+      "source_file": "Afro Barometer Round 1.sav",
+      "canonical_sha256": "6c9869a7cc7321cc74efb708835e21c8b65286a25c76deac45aba84d75697ee2",
+      "format": "SAV",
+      "family": "Afrobarometer",
+      "wave": "Round 1",
+      "historical_representation_status": "BLOCKED",
+      "historical_terminal_classification": "REPRESENTATION_AUTHORITY_STILL_BLOCKED",
+      "selected": false,
+      "C4_accounting": "EXCLUDED__NO_UNIQUE_CLOSED_EDGE__AUTHORITY_BLOCKED_SURFACES_RETAINED",
+      "F1_full_gate_state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "F2_F8_state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "post_C4_law": "Update only with exact C4 receipt at the exact proved grain; absence from proving set cannot become PASS/FAIL/NOT_APPLICABLE.",
+      "source_key": "SRC01"
+    },
+    {
+      "source_id": "02",
+      "source_file": "Afro Barometer Round 5.sav",
+      "canonical_sha256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+      "format": "SAV",
+      "family": "Afrobarometer",
+      "wave": "Round 5",
+      "historical_representation_status": "BLOCKED",
+      "historical_terminal_classification": "REPRESENTATION_AUTHORITY_STILL_BLOCKED",
+      "selected": true,
+      "C4_accounting": "SELECTED__G01_USER_MISSING_PHYSICAL_EDGE__BOUNDED_FRESH_PHYSICAL",
+      "F1_full_gate_state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "F2_F8_state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "post_C4_law": "Update only with exact C4 receipt at the exact proved grain; absence from proving set cannot become PASS/FAIL/NOT_APPLICABLE.",
+      "source_key": "SRC02"
+    },
+    {
+      "source_id": "03",
+      "source_file": "Afro Barometer Round 9.sav",
+      "canonical_sha256": "3afcecd08d2f4b531a926d455a943084d9f71c1276b4f3a58e77a9162e6879d8",
+      "format": "SAV",
+      "family": "Afrobarometer",
+      "wave": "Round 9",
+      "historical_representation_status": "BLOCKED",
+      "historical_terminal_classification": "SOURCE_BOUNDED_EXCEPTION_REQUIRED",
+      "selected": false,
+      "C4_accounting": "EXCLUDED__X01_SOURCE_SPECIFIC_LOCATOR_EXCEPTION_RETAINED",
+      "F1_full_gate_state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "F2_F8_state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "post_C4_law": "Update only with exact C4 receipt at the exact proved grain; absence from proving set cannot become PASS/FAIL/NOT_APPLICABLE.",
+      "source_key": "SRC03"
+    },
+    {
+      "source_id": "04",
+      "source_file": "Arab Barometer Wave 1.sav",
+      "canonical_sha256": "2a48ba4b2f23d022a2dfe4b8a0cc685febbd82579b5434f9ecd96ed4c1243d18",
+      "format": "SAV",
+      "family": "Arab Barometer",
+      "wave": "Wave 1",
+      "historical_representation_status": "BLOCKED",
+      "historical_terminal_classification": "REPRESENTATION_AUTHORITY_STILL_BLOCKED",
+      "selected": false,
+      "C4_accounting": "EXCLUDED__NO_UNIQUE_CLOSED_EDGE__AUTHORITY_BLOCKED_SURFACES_RETAINED",
+      "F1_full_gate_state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "F2_F8_state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "post_C4_law": "Update only with exact C4 receipt at the exact proved grain; absence from proving set cannot become PASS/FAIL/NOT_APPLICABLE.",
+      "source_key": "SRC04"
+    },
+    {
+      "source_id": "05",
+      "source_file": "Arab Barometer Wave 2.sav",
+      "canonical_sha256": "6529841b97bd56463490d810ad24ceaa4866066d12e4651a7081682d413606a1",
+      "format": "SAV",
+      "family": "Arab Barometer",
+      "wave": "Wave 2",
+      "historical_representation_status": "BLOCKED",
+      "historical_terminal_classification": "SOURCE_BOUNDED_EXCEPTION_REQUIRED",
+      "selected": false,
+      "C4_accounting": "EXCLUDED__X02_SOURCE_SPECIFIC_LOCATOR_EXCEPTION_RETAINED",
+      "F1_full_gate_state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "F2_F8_state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "post_C4_law": "Update only with exact C4 receipt at the exact proved grain; absence from proving set cannot become PASS/FAIL/NOT_APPLICABLE.",
+      "source_key": "SRC05"
+    },
+    {
+      "source_id": "06",
+      "source_file": "Arab Barometer Wave 5.sav",
+      "canonical_sha256": "6a5cbad637ce1546833a1d4812ba6d1e8d75f85b5b199b0cf3ec5cf456068dbc",
+      "format": "SAV",
+      "family": "Arab Barometer",
+      "wave": "Wave 5",
+      "historical_representation_status": "BLOCKED",
+      "historical_terminal_classification": "REPRESENTATION_AUTHORITY_STILL_BLOCKED",
+      "selected": true,
+      "C4_accounting": "SELECTED__G01_OBSERVED_PHYSICAL_EDGE__BOUNDED_FRESH_PHYSICAL",
+      "F1_full_gate_state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "F2_F8_state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "post_C4_law": "Update only with exact C4 receipt at the exact proved grain; absence from proving set cannot become PASS/FAIL/NOT_APPLICABLE.",
+      "source_key": "SRC06"
+    },
+    {
+      "source_id": "07",
+      "source_file": "Arab Barometer Wave 8.sav",
+      "canonical_sha256": "a5e83a953f03dd890e076a51da473051f1cfd1ca2e8ab93c2172eeb2517af998",
+      "format": "SAV",
+      "family": "Arab Barometer",
+      "wave": "Wave 8",
+      "historical_representation_status": "PASS",
+      "historical_terminal_classification": "GENERIC_REGIME_FULLY_CLOSED",
+      "selected": false,
+      "C4_accounting": "EXCLUDED__GENERIC_SAV_EDGE_DOMINATED_FOR_PROVING_SET",
+      "F1_full_gate_state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "F2_F8_state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "post_C4_law": "Update only with exact C4 receipt at the exact proved grain; absence from proving set cannot become PASS/FAIL/NOT_APPLICABLE.",
+      "source_key": "SRC07"
+    },
+    {
+      "source_id": "08",
+      "source_file": "Asian Barometer Wave 1.sav",
+      "canonical_sha256": "ac0b8bc1ddb2fa6b952417e35b6379ce6a2cf8596776a43282ba44f48e0ae1a2",
+      "format": "SAV",
+      "family": "Asian Barometer",
+      "wave": "Wave 1",
+      "historical_representation_status": "BLOCKED",
+      "historical_terminal_classification": "REPRESENTATION_AUTHORITY_STILL_BLOCKED",
+      "selected": true,
+      "C4_accounting": "SELECTED__D01_BIG5__BOUNDED_FRESH_PHYSICAL",
+      "F1_full_gate_state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "F2_F8_state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "post_C4_law": "Update only with exact C4 receipt at the exact proved grain; absence from proving set cannot become PASS/FAIL/NOT_APPLICABLE.",
+      "source_key": "SRC08"
+    },
+    {
+      "source_id": "09",
+      "source_file": "Asian Barometer Wave 4.sav",
+      "canonical_sha256": "4d914817509d0e5f3adde49707df148f696992055937f085080a016002a39200",
+      "format": "SAV",
+      "family": "Asian Barometer",
+      "wave": "Wave 4",
+      "historical_representation_status": "PASS",
+      "historical_terminal_classification": "GENERIC_REGIME_FULLY_CLOSED",
+      "selected": false,
+      "C4_accounting": "EXCLUDED__GENERIC_SAV_EDGE_DOMINATED_BY_SRC08",
+      "F1_full_gate_state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "F2_F8_state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "post_C4_law": "Update only with exact C4 receipt at the exact proved grain; absence from proving set cannot become PASS/FAIL/NOT_APPLICABLE.",
+      "source_key": "SRC09"
+    },
+    {
+      "source_id": "10",
+      "source_file": "Asian Barometer Wave 5.sav",
+      "canonical_sha256": "2576e428ff8de3c8d93a418c9120a1c2955ab7b1f35961d8c18fa562bc4b5e63",
+      "format": "SAV",
+      "family": "Asian Barometer",
+      "wave": "Wave 5",
+      "historical_representation_status": "PASS",
+      "historical_terminal_classification": "GENERIC_REGIME_FULLY_CLOSED",
+      "selected": false,
+      "C4_accounting": "EXCLUDED__GENERIC_SAV_EDGE_DOMINATED_BY_SRC08",
+      "F1_full_gate_state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "F2_F8_state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "post_C4_law": "Update only with exact C4 receipt at the exact proved grain; absence from proving set cannot become PASS/FAIL/NOT_APPLICABLE.",
+      "source_key": "SRC10"
+    },
+    {
+      "source_id": "11",
+      "source_file": "EVS 1981.sav",
+      "canonical_sha256": "5b703173845c086382fd93252f1cbc91dfef74007755459adfc73785389172f2",
+      "format": "SAV",
+      "family": "EVS",
+      "wave": "1981",
+      "historical_representation_status": "BLOCKED",
+      "historical_terminal_classification": "REPRESENTATION_AUTHORITY_STILL_BLOCKED",
+      "selected": false,
+      "C4_accounting": "EXCLUDED__D01_WINDOWS1252_DOMINATED_BY_CLEANER_SRC12__BLOCKED_SURFACES_RETAINED",
+      "F1_full_gate_state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "F2_F8_state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "post_C4_law": "Update only with exact C4 receipt at the exact proved grain; absence from proving set cannot become PASS/FAIL/NOT_APPLICABLE.",
+      "source_key": "SRC11"
+    },
+    {
+      "source_id": "12",
+      "source_file": "EVS 1990.sav",
+      "canonical_sha256": "66252a92c59bf6759b79a6b35b2be658b98a433373212a70c8ec94755d3e02ec",
+      "format": "SAV",
+      "family": "EVS",
+      "wave": "1990",
+      "historical_representation_status": "BLOCKED",
+      "historical_terminal_classification": "GENERIC_REGIME_WITH_NONSEMANTIC_IMPLEMENTATION_DEBT",
+      "selected": true,
+      "C4_accounting": "SELECTED__D01_WINDOWS1252__EVS_MULTI_WAVE_1__BOUNDED_FRESH_PHYSICAL",
+      "F1_full_gate_state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "F2_F8_state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "post_C4_law": "Update only with exact C4 receipt at the exact proved grain; absence from proving set cannot become PASS/FAIL/NOT_APPLICABLE.",
+      "source_key": "SRC12"
+    },
+    {
+      "source_id": "13",
+      "source_file": "EVS 1999.sav",
+      "canonical_sha256": "6058644a9308aad574b95fa0afd1b026fedea289c6c95aca043aefb41ae0ab8a",
+      "format": "SAV",
+      "family": "EVS",
+      "wave": "1999",
+      "historical_representation_status": "PASS",
+      "historical_terminal_classification": "GENERIC_REGIME_FULLY_CLOSED",
+      "selected": false,
+      "C4_accounting": "EXCLUDED__R04_COMPATIBILITY_SAV_DOMINATED_BY_SRC14",
+      "F1_full_gate_state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "F2_F8_state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "post_C4_law": "Update only with exact C4 receipt at the exact proved grain; absence from proving set cannot become PASS/FAIL/NOT_APPLICABLE.",
+      "source_key": "SRC13"
+    },
+    {
+      "source_id": "14",
+      "source_file": "EVS 2008.sav",
+      "canonical_sha256": "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379",
+      "format": "SAV",
+      "family": "EVS",
+      "wave": "2008",
+      "historical_representation_status": "BLOCKED",
+      "historical_terminal_classification": "GENERIC_REGIME_WITH_NONSEMANTIC_IMPLEMENTATION_DEBT",
+      "selected": true,
+      "C4_accounting": "SELECTED__D02_OPAQUE_DATETIME__EVS_MULTI_WAVE_2__READ_BLOCKED_UNTIL_LOCATOR",
+      "F1_full_gate_state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "F2_F8_state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "post_C4_law": "Update only with exact C4 receipt at the exact proved grain; absence from proving set cannot become PASS/FAIL/NOT_APPLICABLE.",
+      "source_key": "SRC14"
+    },
+    {
+      "source_id": "15",
+      "source_file": "EVS 2017.sav",
+      "canonical_sha256": "95096c2474b81ef12004726e4ed5b0919b1ea7bb672baff676ae40fb1b629bd2",
+      "format": "SAV",
+      "family": "EVS",
+      "wave": "2017",
+      "historical_representation_status": "PASS",
+      "historical_terminal_classification": "GENERIC_REGIME_FULLY_CLOSED",
+      "selected": false,
+      "C4_accounting": "EXCLUDED__GENERIC_SAV__EVS_MULTI_WAVE_ALREADY_COVERED_BY_SRC12_SRC14",
+      "F1_full_gate_state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "F2_F8_state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "post_C4_law": "Update only with exact C4 receipt at the exact proved grain; absence from proving set cannot become PASS/FAIL/NOT_APPLICABLE.",
+      "source_key": "SRC15"
+    },
+    {
+      "source_id": "16",
+      "source_file": "GSS1972.sav",
+      "canonical_sha256": "e368fc0f1d141b201900185c919c48ab1de1c4c7815bccf83a6e4fb224293204",
+      "format": "SAV",
+      "family": "GSS",
+      "wave": "1972",
+      "historical_representation_status": "PASS",
+      "historical_terminal_classification": "GENERIC_REGIME_FULLY_CLOSED",
+      "selected": false,
+      "C4_accounting": "EXCLUDED__GENERIC_SAV_NO_UNIQUE_EDGE",
+      "F1_full_gate_state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "F2_F8_state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "post_C4_law": "Update only with exact C4 receipt at the exact proved grain; absence from proving set cannot become PASS/FAIL/NOT_APPLICABLE.",
+      "source_key": "SRC16"
+    },
+    {
+      "source_id": "17",
+      "source_file": "GSS1973.sav",
+      "canonical_sha256": "59e65801dc26818bbcf15f9ed985cf8f1faafa65a3eb59e2d3180a7b13a5c1c2",
+      "format": "SAV",
+      "family": "GSS",
+      "wave": "1973",
+      "historical_representation_status": "PASS",
+      "historical_terminal_classification": "GENERIC_REGIME_FULLY_CLOSED",
+      "selected": false,
+      "C4_accounting": "EXCLUDED__GENERIC_SAV_NO_UNIQUE_EDGE",
+      "F1_full_gate_state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "F2_F8_state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "post_C4_law": "Update only with exact C4 receipt at the exact proved grain; absence from proving set cannot become PASS/FAIL/NOT_APPLICABLE.",
+      "source_key": "SRC17"
+    },
+    {
+      "source_id": "18",
+      "source_file": "GSS1984.sav",
+      "canonical_sha256": "1da2df0c0e0692817081a46856deeaa6c78891101e53cf0139a971de16f7ac18",
+      "format": "SAV",
+      "family": "GSS",
+      "wave": "1984",
+      "historical_representation_status": "PASS",
+      "historical_terminal_classification": "GENERIC_REGIME_FULLY_CLOSED",
+      "selected": false,
+      "C4_accounting": "EXCLUDED__GENERIC_SAV_NO_UNIQUE_EDGE",
+      "F1_full_gate_state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "F2_F8_state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "post_C4_law": "Update only with exact C4 receipt at the exact proved grain; absence from proving set cannot become PASS/FAIL/NOT_APPLICABLE.",
+      "source_key": "SRC18"
+    },
+    {
+      "source_id": "19",
+      "source_file": "GSS1993.sav",
+      "canonical_sha256": "7fc409cc07172f9a556bf88c5df8d2ea5e539b2a6ff37348711eeb21b4355ae8",
+      "format": "SAV",
+      "family": "GSS",
+      "wave": "1993",
+      "historical_representation_status": "PASS",
+      "historical_terminal_classification": "GENERIC_REGIME_FULLY_CLOSED",
+      "selected": false,
+      "C4_accounting": "EXCLUDED__GENERIC_SAV_NO_UNIQUE_EDGE",
+      "F1_full_gate_state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "F2_F8_state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "post_C4_law": "Update only with exact C4 receipt at the exact proved grain; absence from proving set cannot become PASS/FAIL/NOT_APPLICABLE.",
+      "source_key": "SRC19"
+    },
+    {
+      "source_id": "20",
+      "source_file": "GSS2002.sav",
+      "canonical_sha256": "8ece381105237a1800051eec3617dad9dd05bf137e34fa833653464a58222be1",
+      "format": "SAV",
+      "family": "GSS",
+      "wave": "2002",
+      "historical_representation_status": "PASS",
+      "historical_terminal_classification": "GENERIC_REGIME_FULLY_CLOSED",
+      "selected": false,
+      "C4_accounting": "EXCLUDED__GENERIC_SAV_NO_UNIQUE_EDGE",
+      "F1_full_gate_state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "F2_F8_state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "post_C4_law": "Update only with exact C4 receipt at the exact proved grain; absence from proving set cannot become PASS/FAIL/NOT_APPLICABLE.",
+      "source_key": "SRC20"
+    },
+    {
+      "source_id": "21",
+      "source_file": "GSS2010.sav",
+      "canonical_sha256": "c229aff7430c12f246678f385e0776b089681ae9830bac88423e0964ac34ee05",
+      "format": "SAV",
+      "family": "GSS",
+      "wave": "2010",
+      "historical_representation_status": "BLOCKED",
+      "historical_terminal_classification": "REPRESENTATION_AUTHORITY_STILL_BLOCKED",
+      "selected": false,
+      "C4_accounting": "EXCLUDED__G01_OBSERVED_EDGE_DOMINATED_BY_SRC06_FOR_PROVING_SET_ONLY__EXACT_SCOPE_RETAINED",
+      "F1_full_gate_state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "F2_F8_state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "post_C4_law": "Update only with exact C4 receipt at the exact proved grain; absence from proving set cannot become PASS/FAIL/NOT_APPLICABLE.",
+      "source_key": "SRC21"
+    },
+    {
+      "source_id": "22",
+      "source_file": "GSS2016.sav",
+      "canonical_sha256": "a053bdc5661eb2c1dd9a2d3a5d054601c66955a178fb266be9cef1023aea9b07",
+      "format": "SAV",
+      "family": "GSS",
+      "wave": "2016",
+      "historical_representation_status": "PASS",
+      "historical_terminal_classification": "GENERIC_REGIME_FULLY_CLOSED",
+      "selected": false,
+      "C4_accounting": "EXCLUDED__GENERIC_SAV_NO_UNIQUE_EDGE",
+      "F1_full_gate_state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "F2_F8_state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "post_C4_law": "Update only with exact C4 receipt at the exact proved grain; absence from proving set cannot become PASS/FAIL/NOT_APPLICABLE.",
+      "source_key": "SRC22"
+    },
+    {
+      "source_id": "23",
+      "source_file": "GSS2024.sav",
+      "canonical_sha256": "27166a481ba6e240aca68293464a2b1fd9a9171a3ddba89a038038a32b8d1eef",
+      "format": "SAV",
+      "family": "GSS",
+      "wave": "2024",
+      "historical_representation_status": "PASS",
+      "historical_terminal_classification": "GENERIC_REGIME_FULLY_CLOSED",
+      "selected": false,
+      "C4_accounting": "EXCLUDED__GENERIC_SAV_NO_UNIQUE_EDGE",
+      "F1_full_gate_state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "F2_F8_state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "post_C4_law": "Update only with exact C4 receipt at the exact proved grain; absence from proving set cannot become PASS/FAIL/NOT_APPLICABLE.",
+      "source_key": "SRC23"
+    },
+    {
+      "source_id": "24",
+      "source_file": "Latinobarometro 1995.sav",
+      "canonical_sha256": "4b7fc6da17dfddafd6a835717e8dc06981208eb4120fa33bdd16e12ae95926f7",
+      "format": "SAV",
+      "family": "Latinobarometro",
+      "wave": "1995",
+      "historical_representation_status": "BLOCKED",
+      "historical_terminal_classification": "REPRESENTATION_AUTHORITY_STILL_BLOCKED",
+      "selected": false,
+      "C4_accounting": "EXCLUDED__BLOCKED_SURFACES__SRC26_STRONGER_LATINOBAROMETRO_EDGE",
+      "F1_full_gate_state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "F2_F8_state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "post_C4_law": "Update only with exact C4 receipt at the exact proved grain; absence from proving set cannot become PASS/FAIL/NOT_APPLICABLE.",
+      "source_key": "SRC24"
+    },
+    {
+      "source_id": "25",
+      "source_file": "Latinobarometro 2011.sav",
+      "canonical_sha256": "a44e89e08e564e4e175199eeeabfa6163f32f4ba0a19a6c3f5b4752de6cca22e",
+      "format": "SAV",
+      "family": "Latinobarometro",
+      "wave": "2011",
+      "historical_representation_status": "PASS",
+      "historical_terminal_classification": "GENERIC_REGIME_FULLY_CLOSED",
+      "selected": false,
+      "C4_accounting": "EXCLUDED__GENERIC_SAV_DOMINATED_BY_UNIQUE_R05_SRC26",
+      "F1_full_gate_state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "F2_F8_state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "post_C4_law": "Update only with exact C4 receipt at the exact proved grain; absence from proving set cannot become PASS/FAIL/NOT_APPLICABLE.",
+      "source_key": "SRC25"
+    },
+    {
+      "source_id": "26",
+      "source_file": "Latinobarometro 2024.sav",
+      "canonical_sha256": "ff5cef18c87969026e7f993d09f10c38a547bf81d5d398784fb59b960b7b0a40",
+      "format": "SAV",
+      "family": "Latinobarometro",
+      "wave": "2024",
+      "historical_representation_status": "PASS",
+      "historical_terminal_classification": "GENERIC_REGIME_FULLY_CLOSED",
+      "selected": true,
+      "C4_accounting": "SELECTED__R05_HEADER_DICTIONARY_DIVERGENCE__BOUNDED_FRESH_PHYSICAL",
+      "F1_full_gate_state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "F2_F8_state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "post_C4_law": "Update only with exact C4 receipt at the exact proved grain; absence from proving set cannot become PASS/FAIL/NOT_APPLICABLE.",
+      "source_key": "SRC26"
+    },
+    {
+      "source_id": "27",
+      "source_file": "LiTS_I.dta",
+      "canonical_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+      "format": "DTA",
+      "family": "LiTS",
+      "wave": "I / 2006",
+      "historical_representation_status": "BLOCKED",
+      "historical_terminal_classification": "REPRESENTATION_AUTHORITY_STILL_BLOCKED",
+      "selected": true,
+      "C4_accounting": "SELECTED__LITS_FULL_ROUTE_FRESH_CURRENT_ANCHOR__EXACTLY_ONE_FRESH_PASS_AFTER_PREREQS",
+      "F1_full_gate_state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "F2_F8_state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "post_C4_law": "Update only with exact C4 receipt at the exact proved grain; absence from proving set cannot become PASS/FAIL/NOT_APPLICABLE.",
+      "source_key": "SRC27"
+    },
+    {
+      "source_id": "28",
+      "source_file": "LiTS_II.dta",
+      "canonical_sha256": "c43d0e1821c51398817d7dfdfad2c0a4a5bb0d492f6a58096670e623bb6130e9",
+      "format": "DTA",
+      "family": "LiTS",
+      "wave": "II",
+      "historical_representation_status": "PASS",
+      "historical_terminal_classification": "GENERIC_REGIME_FULLY_CLOSED",
+      "selected": false,
+      "C4_accounting": "EXCLUDED__DTA_R03_R04_DOMINATED_BY_SRC27_B01_FULL_ROUTE",
+      "F1_full_gate_state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "F2_F8_state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "post_C4_law": "Update only with exact C4 receipt at the exact proved grain; absence from proving set cannot become PASS/FAIL/NOT_APPLICABLE.",
+      "source_key": "SRC28"
+    },
+    {
+      "source_id": "29",
+      "source_file": "LiTS_III.dta",
+      "canonical_sha256": "368ae5d07a44975a2f0a9ce3b1e564988a966b2632e28075c56a24d60065bcc8",
+      "format": "DTA",
+      "family": "LiTS",
+      "wave": "III",
+      "historical_representation_status": "PASS",
+      "historical_terminal_classification": "GENERIC_REGIME_FULLY_CLOSED",
+      "selected": false,
+      "C4_accounting": "EXCLUDED__DTA_R03_R04_DOMINATED_BY_SRC27_B01_FULL_ROUTE",
+      "F1_full_gate_state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "F2_F8_state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "post_C4_law": "Update only with exact C4 receipt at the exact proved grain; absence from proving set cannot become PASS/FAIL/NOT_APPLICABLE.",
+      "source_key": "SRC29"
+    },
+    {
+      "source_id": "30",
+      "source_file": "LiTS_IV.dta",
+      "canonical_sha256": "14e1032755c4f42d8d3dc61647097ccd7605ba281551e53953c76d22a223cd1c",
+      "format": "DTA",
+      "family": "LiTS",
+      "wave": "IV",
+      "historical_representation_status": "PASS",
+      "historical_terminal_classification": "GENERIC_REGIME_FULLY_CLOSED",
+      "selected": false,
+      "C4_accounting": "EXCLUDED__DTA_R03_R04_DOMINATED_BY_SRC27_B01_FULL_ROUTE",
+      "F1_full_gate_state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "F2_F8_state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "post_C4_law": "Update only with exact C4 receipt at the exact proved grain; absence from proving set cannot become PASS/FAIL/NOT_APPLICABLE.",
+      "source_key": "SRC30"
+    },
+    {
+      "source_id": "31",
+      "source_file": "South Asia Wave 1.sav",
+      "canonical_sha256": "de7b51f9abf455b072555a84c5592e3ac46bb32c4f9f61bc055160f7d871e571",
+      "format": "SAV",
+      "family": "South Asia",
+      "wave": "Wave 1",
+      "historical_representation_status": "BLOCKED",
+      "historical_terminal_classification": "REPRESENTATION_AUTHORITY_STILL_BLOCKED",
+      "selected": false,
+      "C4_accounting": "EXCLUDED__AUTHORITY_BLOCKED_SURFACES_RETAINED",
+      "F1_full_gate_state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "F2_F8_state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "post_C4_law": "Update only with exact C4 receipt at the exact proved grain; absence from proving set cannot become PASS/FAIL/NOT_APPLICABLE.",
+      "source_key": "SRC31"
+    },
+    {
+      "source_id": "32",
+      "source_file": "South Asia Wave 2.sav",
+      "canonical_sha256": "6a5329ea16f4546188167edd691e0e6adbeae0737a015470aa26df0e01206f22",
+      "format": "SAV",
+      "family": "South Asia",
+      "wave": "Wave 2",
+      "historical_representation_status": "PASS",
+      "historical_terminal_classification": "GENERIC_REGIME_FULLY_CLOSED",
+      "selected": false,
+      "C4_accounting": "EXCLUDED__GENERIC_SAV_NO_UNIQUE_EDGE",
+      "F1_full_gate_state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "F2_F8_state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "post_C4_law": "Update only with exact C4 receipt at the exact proved grain; absence from proving set cannot become PASS/FAIL/NOT_APPLICABLE.",
+      "source_key": "SRC32"
+    },
+    {
+      "source_id": "33",
+      "source_file": "WVS Wave 1.sav",
+      "canonical_sha256": "051bf450568f44181559a5b2bfbe58b4f05b58bc806643d0c63353c937ff0824",
+      "format": "SAV",
+      "family": "WVS",
+      "wave": "Wave 1",
+      "historical_representation_status": "BLOCKED",
+      "historical_terminal_classification": "REPRESENTATION_AUTHORITY_STILL_BLOCKED",
+      "selected": false,
+      "C4_accounting": "EXCLUDED__WVS1_BLOCKED_SURFACES__NO_FALSE_F7_PROMOTION",
+      "F1_full_gate_state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "F2_F8_state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "post_C4_law": "Update only with exact C4 receipt at the exact proved grain; absence from proving set cannot become PASS/FAIL/NOT_APPLICABLE.",
+      "source_key": "SRC33"
+    },
+    {
+      "source_id": "34",
+      "source_file": "WVS Wave 4.sav",
+      "canonical_sha256": "c6757ed187655c8b9af88ae4c23c00f066696a641af2f316b4343272ea1d4a0a",
+      "format": "SAV",
+      "family": "WVS",
+      "wave": "Wave 4",
+      "historical_representation_status": "PASS",
+      "historical_terminal_classification": "GENERIC_REGIME_FULLY_CLOSED",
+      "selected": false,
+      "C4_accounting": "EXCLUDED__GENERIC_WVS_SAV__WVS7_STRONGER_RETAINED_ANCHOR__NO_FALSE_F7_PROMOTION",
+      "F1_full_gate_state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "F2_F8_state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "post_C4_law": "Update only with exact C4 receipt at the exact proved grain; absence from proving set cannot become PASS/FAIL/NOT_APPLICABLE.",
+      "source_key": "SRC34"
+    },
+    {
+      "source_id": "35",
+      "source_file": "WVS Wave 7.sav",
+      "canonical_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+      "format": "SAV",
+      "family": "WVS",
+      "wave": "Wave 7",
+      "historical_representation_status": "PASS",
+      "historical_terminal_classification": "GENERIC_REGIME_WITH_BOUNDED_BRIDGE",
+      "selected": true,
+      "C4_accounting": "SELECTED__WVS7_RETAINED_FULL_ROUTE_COMPARATOR__NO_FRESH_RAW_READ",
+      "F1_full_gate_state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "F2_F8_state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "post_C4_law": "Update only with exact C4 receipt at the exact proved grain; absence from proving set cannot become PASS/FAIL/NOT_APPLICABLE.",
+      "source_key": "SRC35"
+    }
+  ],
+  "cells": [
+    {
+      "source_key": "SRC01",
+      "function": "F1",
+      "state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC01",
+      "function": "F2",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC01",
+      "function": "F3",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC01",
+      "function": "F4",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC01",
+      "function": "F5",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC01",
+      "function": "F6",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC01",
+      "function": "F7",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC01",
+      "function": "F8",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC02",
+      "function": "F1",
+      "state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC02",
+      "function": "F2",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC02",
+      "function": "F3",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC02",
+      "function": "F4",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC02",
+      "function": "F5",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC02",
+      "function": "F6",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC02",
+      "function": "F7",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC02",
+      "function": "F8",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC03",
+      "function": "F1",
+      "state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC03",
+      "function": "F2",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC03",
+      "function": "F3",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC03",
+      "function": "F4",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC03",
+      "function": "F5",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC03",
+      "function": "F6",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC03",
+      "function": "F7",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC03",
+      "function": "F8",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC04",
+      "function": "F1",
+      "state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC04",
+      "function": "F2",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC04",
+      "function": "F3",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC04",
+      "function": "F4",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC04",
+      "function": "F5",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC04",
+      "function": "F6",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC04",
+      "function": "F7",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC04",
+      "function": "F8",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC05",
+      "function": "F1",
+      "state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC05",
+      "function": "F2",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC05",
+      "function": "F3",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC05",
+      "function": "F4",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC05",
+      "function": "F5",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC05",
+      "function": "F6",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC05",
+      "function": "F7",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC05",
+      "function": "F8",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC06",
+      "function": "F1",
+      "state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC06",
+      "function": "F2",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC06",
+      "function": "F3",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC06",
+      "function": "F4",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC06",
+      "function": "F5",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC06",
+      "function": "F6",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC06",
+      "function": "F7",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC06",
+      "function": "F8",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC07",
+      "function": "F1",
+      "state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC07",
+      "function": "F2",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC07",
+      "function": "F3",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC07",
+      "function": "F4",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC07",
+      "function": "F5",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC07",
+      "function": "F6",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC07",
+      "function": "F7",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC07",
+      "function": "F8",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC08",
+      "function": "F1",
+      "state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC08",
+      "function": "F2",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC08",
+      "function": "F3",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC08",
+      "function": "F4",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC08",
+      "function": "F5",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC08",
+      "function": "F6",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC08",
+      "function": "F7",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC08",
+      "function": "F8",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC09",
+      "function": "F1",
+      "state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC09",
+      "function": "F2",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC09",
+      "function": "F3",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC09",
+      "function": "F4",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC09",
+      "function": "F5",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC09",
+      "function": "F6",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC09",
+      "function": "F7",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC09",
+      "function": "F8",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC10",
+      "function": "F1",
+      "state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC10",
+      "function": "F2",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC10",
+      "function": "F3",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC10",
+      "function": "F4",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC10",
+      "function": "F5",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC10",
+      "function": "F6",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC10",
+      "function": "F7",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC10",
+      "function": "F8",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC11",
+      "function": "F1",
+      "state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC11",
+      "function": "F2",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC11",
+      "function": "F3",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC11",
+      "function": "F4",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC11",
+      "function": "F5",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC11",
+      "function": "F6",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC11",
+      "function": "F7",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC11",
+      "function": "F8",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC12",
+      "function": "F1",
+      "state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC12",
+      "function": "F2",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC12",
+      "function": "F3",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC12",
+      "function": "F4",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC12",
+      "function": "F5",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC12",
+      "function": "F6",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC12",
+      "function": "F7",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC12",
+      "function": "F8",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC13",
+      "function": "F1",
+      "state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC13",
+      "function": "F2",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC13",
+      "function": "F3",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC13",
+      "function": "F4",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC13",
+      "function": "F5",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC13",
+      "function": "F6",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC13",
+      "function": "F7",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC13",
+      "function": "F8",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC14",
+      "function": "F1",
+      "state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC14",
+      "function": "F2",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC14",
+      "function": "F3",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC14",
+      "function": "F4",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC14",
+      "function": "F5",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC14",
+      "function": "F6",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC14",
+      "function": "F7",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC14",
+      "function": "F8",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC15",
+      "function": "F1",
+      "state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC15",
+      "function": "F2",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC15",
+      "function": "F3",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC15",
+      "function": "F4",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC15",
+      "function": "F5",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC15",
+      "function": "F6",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC15",
+      "function": "F7",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC15",
+      "function": "F8",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC16",
+      "function": "F1",
+      "state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC16",
+      "function": "F2",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC16",
+      "function": "F3",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC16",
+      "function": "F4",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC16",
+      "function": "F5",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC16",
+      "function": "F6",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC16",
+      "function": "F7",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC16",
+      "function": "F8",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC17",
+      "function": "F1",
+      "state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC17",
+      "function": "F2",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC17",
+      "function": "F3",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC17",
+      "function": "F4",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC17",
+      "function": "F5",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC17",
+      "function": "F6",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC17",
+      "function": "F7",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC17",
+      "function": "F8",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC18",
+      "function": "F1",
+      "state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC18",
+      "function": "F2",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC18",
+      "function": "F3",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC18",
+      "function": "F4",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC18",
+      "function": "F5",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC18",
+      "function": "F6",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC18",
+      "function": "F7",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC18",
+      "function": "F8",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC19",
+      "function": "F1",
+      "state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC19",
+      "function": "F2",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC19",
+      "function": "F3",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC19",
+      "function": "F4",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC19",
+      "function": "F5",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC19",
+      "function": "F6",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC19",
+      "function": "F7",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC19",
+      "function": "F8",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC20",
+      "function": "F1",
+      "state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC20",
+      "function": "F2",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC20",
+      "function": "F3",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC20",
+      "function": "F4",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC20",
+      "function": "F5",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC20",
+      "function": "F6",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC20",
+      "function": "F7",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC20",
+      "function": "F8",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC21",
+      "function": "F1",
+      "state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC21",
+      "function": "F2",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC21",
+      "function": "F3",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC21",
+      "function": "F4",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC21",
+      "function": "F5",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC21",
+      "function": "F6",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC21",
+      "function": "F7",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC21",
+      "function": "F8",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC22",
+      "function": "F1",
+      "state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC22",
+      "function": "F2",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC22",
+      "function": "F3",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC22",
+      "function": "F4",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC22",
+      "function": "F5",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC22",
+      "function": "F6",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC22",
+      "function": "F7",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC22",
+      "function": "F8",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC23",
+      "function": "F1",
+      "state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC23",
+      "function": "F2",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC23",
+      "function": "F3",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC23",
+      "function": "F4",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC23",
+      "function": "F5",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC23",
+      "function": "F6",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC23",
+      "function": "F7",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC23",
+      "function": "F8",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC24",
+      "function": "F1",
+      "state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC24",
+      "function": "F2",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC24",
+      "function": "F3",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC24",
+      "function": "F4",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC24",
+      "function": "F5",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC24",
+      "function": "F6",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC24",
+      "function": "F7",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC24",
+      "function": "F8",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC25",
+      "function": "F1",
+      "state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC25",
+      "function": "F2",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC25",
+      "function": "F3",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC25",
+      "function": "F4",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC25",
+      "function": "F5",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC25",
+      "function": "F6",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC25",
+      "function": "F7",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC25",
+      "function": "F8",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC26",
+      "function": "F1",
+      "state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC26",
+      "function": "F2",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC26",
+      "function": "F3",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC26",
+      "function": "F4",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC26",
+      "function": "F5",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC26",
+      "function": "F6",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC26",
+      "function": "F7",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC26",
+      "function": "F8",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC27",
+      "function": "F1",
+      "state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC27",
+      "function": "F2",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC27",
+      "function": "F3",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC27",
+      "function": "F4",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC27",
+      "function": "F5",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC27",
+      "function": "F6",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC27",
+      "function": "F7",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC27",
+      "function": "F8",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC28",
+      "function": "F1",
+      "state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC28",
+      "function": "F2",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC28",
+      "function": "F3",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC28",
+      "function": "F4",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC28",
+      "function": "F5",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC28",
+      "function": "F6",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC28",
+      "function": "F7",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC28",
+      "function": "F8",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC29",
+      "function": "F1",
+      "state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC29",
+      "function": "F2",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC29",
+      "function": "F3",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC29",
+      "function": "F4",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC29",
+      "function": "F5",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC29",
+      "function": "F6",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC29",
+      "function": "F7",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC29",
+      "function": "F8",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC30",
+      "function": "F1",
+      "state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC30",
+      "function": "F2",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC30",
+      "function": "F3",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC30",
+      "function": "F4",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC30",
+      "function": "F5",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC30",
+      "function": "F6",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC30",
+      "function": "F7",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC30",
+      "function": "F8",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC31",
+      "function": "F1",
+      "state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC31",
+      "function": "F2",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC31",
+      "function": "F3",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC31",
+      "function": "F4",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC31",
+      "function": "F5",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC31",
+      "function": "F6",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC31",
+      "function": "F7",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC31",
+      "function": "F8",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC32",
+      "function": "F1",
+      "state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC32",
+      "function": "F2",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC32",
+      "function": "F3",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC32",
+      "function": "F4",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC32",
+      "function": "F5",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC32",
+      "function": "F6",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC32",
+      "function": "F7",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC32",
+      "function": "F8",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC33",
+      "function": "F1",
+      "state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC33",
+      "function": "F2",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC33",
+      "function": "F3",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC33",
+      "function": "F4",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC33",
+      "function": "F5",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC33",
+      "function": "F6",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC33",
+      "function": "F7",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC33",
+      "function": "F8",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC34",
+      "function": "F1",
+      "state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC34",
+      "function": "F2",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC34",
+      "function": "F3",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC34",
+      "function": "F4",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC34",
+      "function": "F5",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC34",
+      "function": "F6",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC34",
+      "function": "F7",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC34",
+      "function": "F8",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": false,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC35",
+      "function": "F1",
+      "state": "NOT_ASSESSED_AT_FULL_GATE_GRAIN__HISTORICAL_REPRESENTATION_ONLY",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC35",
+      "function": "F2",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC35",
+      "function": "F3",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC35",
+      "function": "F4",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC35",
+      "function": "F5",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC35",
+      "function": "F6",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC35",
+      "function": "F7",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    },
+    {
+      "source_key": "SRC35",
+      "function": "F8",
+      "state": "NOT_ASSESSED_AT_SOURCE_GATE_GRAIN",
+      "selected_for_C4": true,
+      "update_law": "No cell changes state without an exact C4 receipt at that cell's proved grain."
+    }
+  ],
+  "cell_count": 280,
+  "post_C4_read_economy": {
+    "fresh_full_route": [
+      "SRC27"
+    ],
+    "bounded_fresh_physical": [
+      "SRC02",
+      "SRC06",
+      "SRC08",
+      "SRC12",
+      "SRC14",
+      "SRC26"
+    ],
+    "retained_comparator": [
+      "SRC35"
+    ],
+    "excluded_fresh_reads": 0
+  },
+  "claim_ceilings": [
+    "NO_ALL35_PASS",
+    "NO_EIGHT_SOURCE_FULL_SEMANTIC_ROUTE_CLAIM",
+    "NO_UNRESTRICTED_F6_F7_COMPARABILITY",
+    "NO_CLASS_SENSITIVE_EPISTEMIC_ORIGIN_CLOSURE",
+    "NO_PHYSICAL_SUCCESS_AS_SURVEY_SEMANTICS",
+    "NO_RETAINED_WVS_AS_FRESH_CURRENT_SOURCE_EXECUTION",
+    "NO_STRUCTURAL_OR_CAUSAL_AUTHORITY_FROM_C4",
+    "NO_ACTOR_PERSON_IMPLEMENTATION",
+    "NO_NEW_RAW_POOLING_OR_CROSS_SOURCE_RESPONDENT_JOIN"
+  ],
+  "carried_residuals": [
+    {
+      "id": "C2-EPCLASS-PAYLOAD-001",
+      "state": "UNRESOLVED__NOT_MISSING_PROVED"
+    },
+    {
+      "id": "NO_SINGLE_FRESH_PROCESS_OWNER_CONTRACT_PROVIDER_TO_CONSUMER_TO_LIFECYCLE_RESTORE",
+      "state": "OPEN__NONBLOCKING"
+    },
+    {
+      "id": "C7-BLOCK-CURRENT-COMPARABLE-WAVE-PAIR-001",
+      "state": "HELD"
+    }
+  ],
+  "invariants": [
+    "Pre-C4 and post-C4 source-id set equality must be exactly {01..35}.",
+    "Every canonical source SHA must remain byte-for-byte identical to the C2-01 ledger.",
+    "Every excluded source receives an explicit NONEXECUTED/UNPROVED disposition; none disappears from accounting.",
+    "Historical representation PASS/BLOCKED is preserved as history and never promoted into full F1 or F2-F8 proof.",
+    "C4 proving-set success may update only exact source×operation obligations actually executed or replayed.",
+    "All 280 source×F1-F8 cells remain individually accountable; C4 cannot replace them with an eight-source global green.",
+    "X01/X02, authority-blocked surfaces, D01/D02/G01/R05 source scopes, B01/B02, and C2-EPCLASS-PAYLOAD-001 remain separately named."
+  ]
+}

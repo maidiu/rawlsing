@@ -1,0 +1,132 @@
+{
+  "schema": "PYAT_C4B_AUTHORITY_API_CONSUMER_FREEZE@1.0.0",
+  "status": "FROZEN_DOCUMENTARY_ONLY__NO_IMPLEMENTATION_OR_ADOPTION",
+  "c1_accepted_join": {
+    "accepted_result_commit": "063ee8b77fc4e05c37456ff0168e946247f919ef",
+    "hq_adoption_commit": "149c3d2636160d8de9b5a8be0c8b87195158077d",
+    "analytical_composition": {
+      "path": "rawlsing_next/pre553_analytical_composition.py",
+      "blob": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+      "public_api": "compose_positioned_subject_possibility"
+    },
+    "empirical_possibility_provider": {
+      "path": "rawlsing_next/pre553_empirical_possibility_provider.py",
+      "blob": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+      "public_api": "provide_empirical_possibility_slice",
+      "replay_api": "replay_empirical_possibility_slice",
+      "direct_evaluation_api": "evaluate_generated_slice_directly",
+      "handwritten_slice_exclusion": "assert_provider_public_api_excludes_handwritten_slice"
+    },
+    "positioned_subject_consumer": {
+      "path": "rawlsing_next/source_backed_positioned_subject_possibility.py",
+      "blob": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+      "public_api": "evaluate_positioned_subject_possibility"
+    },
+    "lifecycle_currentness_owner": {
+      "path": "rawlsing_next/pre553_authority_maintenance.py",
+      "blob": "547e6bf20354f38179a0e2600de64c7cb2260ea0",
+      "owner": "AuthorityMaintenanceExecutor"
+    },
+    "replay_dependency_owner": {
+      "path": "rawlsing_next/pre553_analytical_replay_dependency.py",
+      "blob": "47e65aad5e0a8df7af6fda72fc8807a002e556ce",
+      "public_apis": [
+        "AnalyticalDependencyRegistry",
+        "resolve_current_analytical_product",
+        "build_owner_recompiler",
+        "transition_analytical_dependencies",
+        "assert_closure_covers_registered_products",
+        "assert_replay_claim"
+      ]
+    },
+    "source_backed_c11_facade": {
+      "path": "rawlsing_next/pre553_source_backed_c11_facade.py",
+      "blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+      "unchanged": true,
+      "relevant_apis": [
+        "project_c11_candidate_from_physical_cells",
+        "build_validated_source_backed_c11_release",
+        "build_validated_source_backed_c11_release_from_stream",
+        "build_source_backed_c11_repository",
+        "execute_source_backed_empirical_query"
+      ]
+    },
+    "at07_current_mapping_ids": {
+      "forward": "01c381d3f3c386cfc22fd2f57b8e2c244771ddf1529d4f8ab8c7b1cf41bd50dd",
+      "reverse": "a3bd7e85ae14babb5ac5a12b0bcc57a8cdf3eccf8f43394895903dc43aca40ca"
+    },
+    "carried_limitation": {
+      "id": "NO_SINGLE_FRESH_PROCESS_OWNER_CONTRACT_PROVIDER_TO_CONSUMER_TO_LIFECYCLE_RESTORE",
+      "state": "OPEN__NONBLOCKING"
+    }
+  },
+  "c3_accepted_physical_owners": {
+    "accepted_integration_head": "30686b185d4ceb2c94f61815ef70d8c8e76255d6",
+    "independent_review": "462e6bf1ed514056f9316dad761054e690a7755d",
+    "g01": {
+      "path": "rawlsing_next/closed35_g01_sav_numeric_representation_authority.py",
+      "blob": "31a9afd7d91ed4cb2fb1c1aab3ef86a5fdda1f85",
+      "test_blob": "fb7b090809a609a3b0157f1ed8fcdcd8e8784525",
+      "apis": [
+        "authorized_sav_numeric_physical_material",
+        "authorized_sav_numeric_physical_binding_key",
+        "representation_authority_snapshot"
+      ],
+      "ceiling": "PHYSICAL_REPRESENTATION_ONLY"
+    },
+    "d01": {
+      "path": "rawlsing_next/pre553_physical_decoder.py",
+      "blob": "d3d828c171ea9fdd0e90563aff6ef705f5aae2cf",
+      "test_blob": "8fc05965386055a208e5b3988112e67a2e6333e2",
+      "admission_guard": "_compatibility_config",
+      "public_decoders": [
+        "decode_sav",
+        "decode_dta"
+      ],
+      "authority_constant": "SOURCE_DECLARED_EXACT_SHA_ENCODING__PHYSICAL_DECODING_ONLY",
+      "exact_bindings": {
+        "SRC08": {
+          "sha256": "ac0b8bc1ddb2fa6b952417e35b6379ce6a2cf8596776a43282ba44f48e0ae1a2",
+          "encoding": "BIG5"
+        },
+        "SRC12": {
+          "sha256": "66252a92c59bf6759b79a6b35b2be658b98a433373212a70c8ec94755d3e02ec",
+          "encoding": "WINDOWS-1252"
+        }
+      },
+      "C4B_operation_ceiling": "Exact admission guard + metadata-only probe; row-data decode/full-read path is outside the frozen SRC08/SRC12 witness."
+    },
+    "d02": {
+      "decoder_path": "rawlsing_next/pre553_physical_decoder.py",
+      "decoder_blob": "d3d828c171ea9fdd0e90563aff6ef705f5aae2cf",
+      "codec_path": "rawlsing_next/pre553_r5_codec.py",
+      "codec_blob": "6000a1704d713f65e07610d81e9b3fd8bdd515ca",
+      "test_blob": "3901f10a487856f5f232ae6700fff407ac99725e",
+      "apis": [
+        "opaque_decoder_value",
+        "normalize_decoder_physical_value",
+        "R5TypedValueCodec"
+      ],
+      "ceiling": "OPAQUE_PHYSICAL_REPRESENTATION_ONLY"
+    }
+  },
+  "source_specific_authority_refs": {
+    "LITS_I": {
+      "projection_authority": "urn:rawlsing:pre553:as2a:lits1-projection-authority:sha256:9dd1e6b7350ebb795e028db86279131f8d319e939a044b74c3c5605ecacf5b06",
+      "T3_active_binding": "a5f36a81843fe2ebab0b5cccb369ce76035f842b93e602613b8b9f3a81103308",
+      "T3_representation_authority": "9fce3b606413c2a5d3e9a05eda967067d191fbb31ff869d445d962bdf321393d",
+      "T3_runtime_catalog_identity": "5983d7d5c579b916ad46c1acf9e41c1c89b516a4e561a99b1d2b477bf5ad2d02",
+      "T3_runtime_release": "192926fabd9c9c3d40e43b1d7705ca2bcfe7f8d06e286be26d4b886d436df43f"
+    },
+    "WVS7": {
+      "candidate_grammar": "a94bd2ed3b64b2c51f6d329560feef6b97f69da3527081d8ca6168ae63e5f7f6",
+      "empirical_universe": "f9b1cdffc5783ace87d258ebe2ae1c75040ce786c373e255f53da4be4259d95e",
+      "measure_basis": "6ed5d61b77c8d77affeb4b49b55c2cc23a4c25dbd65d02719c6ab7a3069a3c79",
+      "risk_set": "0bf6a655a35617bec3e54f4d547e89282920e7835e406dcb43b3456774ab87d7",
+      "r1e_mapping_authority": "76e63b2af0bf0b9a53319a74d2ded099c9ac175de99935d0741ac52f68086670",
+      "r1j_representation_authority": "63543411892d8d30fb5670a39714a3dc115145e3f054a7017a325dab1c6cf053",
+      "successor_discovery_authority": "3aee36014e4c3b39dd36bfef46006d8e9058a93aa5eb53bd81aef627883c8873"
+    }
+  },
+  "execution_binding_law": "C4 execution must combine these exact accepted owner/API identities without minting new semantic authority. Current C4B base lacks the adopted C3 implementation blobs, so ancestry or exact blob-equivalence is a mandatory pre-source execution condition."
+}
