@@ -622,3 +622,69 @@ Praxis candidate:
 > **Kenotic attention is answerability to what exceeds one's own phenomenal horizon without self-erasure or appropriation.**
 
 These remain under attack.
+
+# 22. Contradiction vs machine coherence
+
+## Tension
+
+A computational system naturally seeks consistency.
+
+A humanly plausible person often contains:
+- domain-local inconsistency;
+- unresolved contradiction;
+- temporally layered commitments;
+- weakly integrated preferences;
+- inaccurate self-explanations.
+
+If the architecture treats all mismatch as corruption, it may produce synthetic people who are internally cleaner than humans.
+
+## Required distinction
+
+`HARD OBJECTIVE / CAUSAL CONTRADICTION`
+must be rejected or repaired.
+
+`LAWFUL HUMAN CONTRADICTION`
+must often be preserved.
+
+## Hostile test
+
+Given the same V3 spine and present facts, can the historical bridge admit:
+- an object with no deep symbolic role;
+- an old taste retained after ideological change;
+- a practice whose causal importance Nadia herself disputes;
+- mixed motives with no unique answer;
+
+without forcing one unifying explanation?
+
+If not, the machine is overfitting personhood into narrative coherence.
+
+---
+
+# 23. Causal richness vs explanatory saturation
+
+## Tension
+
+A rich causal model can accidentally reward the model for connecting everything.
+
+This creates novelistic overdetermination:
+- every object foreshadows;
+- every trip explains identity;
+- every contradiction hides a resolution;
+- every user theory lands.
+
+## Hostile test
+
+Generate ten late materializations.
+
+A healthy system should include:
+- causal contributors;
+- weak associations;
+- inert details;
+- dead ends;
+- coincidences;
+- contradictory residues;
+- ordinary preference.
+
+If nearly all ten become major explanatory bridges, the generator is narratively saturated.
+
+
