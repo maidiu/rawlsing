@@ -482,3 +482,105 @@ def test_hostile_join_a_foreign_model_authority_cannot_masquerade():
     )
     assert out.composition_result.composed_result_identity_hash != (
         governed.composition_result.composed_result_identity_hash)
+
+
+# ==========================================================================
+# PHASE 6 -- joined tree uses successor-qualified AT17 identities
+# ==========================================================================
+def test_phase6_join_at17_dependent_carries_the_successor_identity():
+    """The real AT17 composition dependent carries the CURRENT successor identity."""
+    from n10e_at17_successor_requal import ADOPTED_SUCCESSOR, HISTORICAL_R8
+
+    deps = jf.real_accepted_dependents()
+    assert deps["noncurrent"].content_hash == ADOPTED_SUCCESSOR["forward"]
+    assert deps["noncurrent"].content_hash != HISTORICAL_R8["forward"]
+    # The generated-evidence dependent is a real AT17 artifact, not a stand-in.
+    _, at17 = jf.at17_provider_product("forward")
+    assert deps["replaced"].key == jf.at17_generated_evidence_ref(at17).key
+
+
+def test_phase6_historical_r8_ref_never_becomes_current_by_retention():
+    """Retained historical evidence must not become CURRENT merely by existing."""
+    from n10e_at17_successor_requal import HISTORICAL_R8
+    from rawlsing_next.pre553_empirical_objects import exact_ref
+
+    historical = exact_ref({
+        "kind": "C1_ANALYTICAL_COMPOSED_RESULT@1",
+        "object_id": "urn:c1-03-join:historical-r8",
+        "content_hash": HISTORICAL_R8["forward"],
+    })
+    deps = jf.real_accepted_dependents()
+    ctx = jf.join_transition(deps)
+    # It is not a registered dependent, so the owner reports NOT_GOVERNED.
+    status = ctx["executor"].dependent_lifecycle_status(historical)
+    assert status["lifecycle_state"] == DEPENDENT_LIFECYCLE_NOT_GOVERNED
+    assert status["reason_code"] == "OWNER_UNKNOWN_DEPENDENT"
+    with pytest.raises(OwnerUnknownDependent):
+        resolve_current_analytical_product(
+            executor=ctx["executor"], dependent_ref=historical)
+
+
+def test_phase6_successor_mixed_outcomes_unchanged():
+    """Replacement / explicit noncurrent / unaffected CURRENT survive requalification."""
+    deps = jf.real_accepted_dependents()
+    ctx, release = _promote(deps, tag="p6succ")
+    executor = ctx["executor"]
+    receipt = executor.invalidation_receipt_for_release(release.ref)
+    assert len(receipt.recompilation_pairs) == 1
+    assert len(receipt.noncurrent_dependents) == 1
+    assert len(receipt.unaffected_dependent_refs) == 1
+    replaced = resolve_current_analytical_product(
+        executor=executor, dependent_ref=deps["replaced"])
+    assert replaced["lifecycle_state"] == DEPENDENT_LIFECYCLE_CURRENT
+    with pytest.raises(ExplicitNoncurrentDependent):
+        resolve_current_analytical_product(
+            executor=executor, dependent_ref=deps["noncurrent"])
+    sibling = resolve_current_analytical_product(
+        executor=executor, dependent_ref=deps["sibling"])
+    assert sibling["lifecycle_state"] == DEPENDENT_LIFECYCLE_CURRENT
+    assert "current_replacement_ref" not in sibling
+
+
+def test_phase6_lifecycle_and_analytical_vocabularies_stay_disjoint():
+    """Requalification did not let A analytical negatives leak into R lifecycle."""
+    analytical = {OBSERVED_ZERO, VALID_EMPTY, UNDERPOWERED, UNKNOWN_UNRESOLVED,
+                  UNVISITED, NONCOMPARABLE, BLOCKED_REQUIRED_AUTHORITY, INTEGRITY_FAILURE}
+    lifecycle = {DEPENDENT_LIFECYCLE_CURRENT, DEPENDENT_LIFECYCLE_EXPLICIT_NONCURRENT,
+                 DEPENDENT_LIFECYCLE_NOT_GOVERNED}
+    assert lifecycle.isdisjoint(analytical)
+
+
+def test_phase6_mutation_rollback_replay_green_on_successor_at17():
+    """Mutation, atomic rollback and checkpoint replay stay green post-requalification."""
+    from rawlsing_next.pre553_authority_maintenance import (
+        AuthorityMaintenanceExecutor as Executor,
+    )
+
+    deps = jf.real_accepted_dependents()
+    ctx, release = _promote(deps, tag="p6mut")
+    receipt = ctx["executor"].invalidation_receipt_for_release(release.ref)
+    affected = {r.key for r in receipt.affected_dependent_refs}
+    unaffected = {r.key for r in receipt.unaffected_dependent_refs}
+    assert affected.isdisjoint(unaffected)
+    assert affected | unaffected == {d.key for d in deps.values()}
+
+    rebuilt = Executor.from_checkpoint(ctx["executor"].export_checkpoint())
+    selection = rebuilt.current_selection_receipt_ref(ctx["old_auth"].authority_id)
+    assert rebuilt.invalidation_receipt_for_release(selection).ref == receipt.ref
+    assert rebuilt.dependent_lifecycle_status(deps["noncurrent"])[
+        "lifecycle_state"] == DEPENDENT_LIFECYCLE_EXPLICIT_NONCURRENT
+
+
+def test_phase6_zero_release_and_unknown_stay_not_governed_post_requal():
+    """Both fail-closed lifecycle cases keep their exact reason codes."""
+    known = ExactRef("C1_ANALYTICAL_COMPOSED_RESULT@1", "urn:c1-03-join:z2", "a" * 64)
+    unknown = ExactRef("C1_ANALYTICAL_COMPOSED_RESULT@1", "urn:c1-03-join:u2", "b" * 64)
+    executor = AuthorityMaintenanceExecutor(
+        determinant_graph=SemanticDeterminantGraph(
+            authority_edges=(), dependency_edges=(), known_dependent_refs=(known,))
+    )
+    assert not executor._releases
+    assert executor.dependent_lifecycle_status(known)["reason_code"] == (
+        "NO_GOVERNING_RELEASE")
+    assert executor.dependent_lifecycle_status(unknown)["reason_code"] == (
+        "OWNER_UNKNOWN_DEPENDENT")

@@ -42,6 +42,16 @@ from rawlsing_next.source_backed_positioned_subject_possibility import (
     PossibilitySliceEvidence,
 )
 
+from n10e_at17_successor_requal import (
+    ADOPTED_SUCCESSOR,
+    CONSERVED_HISTORICAL_FIELDS,
+    HISTORICAL_R8,
+    SUCCESSOR_SIX,
+    digest,
+    historical_canonical,
+    historical_digest,
+    successor_canonical,
+)
 from rawlsing_next.tests import n10e_empirical_slice_fixture as fx
 import rawlsing_next.tests.test_pre553_empirical_query as i03
 
@@ -965,9 +975,14 @@ def test_p7_fresh_process_replay_reproduces_provider_receipt():
     assert fresh["cell_numerators"] == {"yes": 54, "no": 6}
 
 
-def test_p7_frozen_spine_bindings_still_hold_for_the_fixture_law():
-    """The fixture law must still be the accepted AT07 law, not a drifting copy."""
+def test_p7_historical_fixture_law_bindings_still_hold():
+    """AT07 fixture law is still the accepted law, not a drifting copy.
 
+    Every binding the R8 spine recorded about the FIXTURE LAW is unchanged under the
+    adopted C1-02 owner: universe, release scope, query authority, predicate and
+    predicate hash, producer and consumer queries, the 16-field witness, the generated
+    evidence ref, and the raw denominator support.
+    """
     spine = fx.frozen_spine()
     case = fx.build_provider_case("forward")
     assert case["source"]["universe"].ref.as_dict() == spine["universe_ref"]
@@ -988,9 +1003,186 @@ def test_p7_frozen_spine_bindings_still_hold_for_the_fixture_law():
     assert result.generated_evidence_or_null.evidence_ref.as_dict() == (
         spine["forward"]["evidence_ref"]
     )
-    assert result.composition_result.composed_result_identity_hash == (
-        spine["forward"]["composed_result_identity_hash"]
-    )
     assert result.composition_result.raw_denominator_support == (
         spine["forward"]["raw_denominator_support"]
     )
+
+
+def test_p7_historical_r8_composed_identity_is_preserved_as_historical_only():
+    """The R8 composed identity remains historical C1-01 truth, never current.
+
+    Astra requires the old assertion to survive as historical evidence. It is
+    asserted STRONGER than before: the historical digest is re-derived from the pinned
+    38-field historical preimage, and the current C1-02 composed identity is proved to
+    be a DIFFERENT value in both directions.
+    """
+    spine = fx.frozen_spine()
+    for direction in ("forward", "reverse"):
+        recorded = spine[direction]["composed_result_identity_hash"]
+        # (a) the historical value still reproduces from the pinned historical preimage
+        assert historical_digest(direction) == recorded
+        # (b) it is NOT the current C1-02 composed identity
+        current = _provide(fx.build_provider_case(direction))
+        assert current.composition_result.composed_result_identity_hash != recorded, (
+            f"{direction}: the historical R8 identity must never be presented as the "
+            "current C1-02 identity"
+        )
+    assert len(historical_canonical("forward")) == CONSERVED_HISTORICAL_FIELDS
+    assert len(historical_canonical("reverse")) == CONSERVED_HISTORICAL_FIELDS
+
+
+
+
+# ==========================================================================
+# Successor requalification (AT17/N10E) -- PHASE 5
+#
+# Expected truth comes ONLY from the HQ-adopted successor oracle. Production is
+# compared against it; it never defines it.
+# ==========================================================================
+def _canonical_production(direction):
+    from rawlsing_next.pre553_empirical_objects import canonicalize
+
+    case = fx.build_provider_case(direction)
+    return case, _provide(case), canonicalize(
+        _provide(case).composition_result.identity_material()
+    )
+
+
+def test_s1_historical_r8_forward_identity_preserved_as_historical():
+    """1: historical R8 forward identity remains historical truth."""
+    assert historical_digest("forward") == HISTORICAL_R8["forward"]
+    assert len(historical_canonical("forward")) == CONSERVED_HISTORICAL_FIELDS
+    assert historical_digest("forward") != ADOPTED_SUCCESSOR["forward"]
+
+
+def test_s2_historical_r8_reverse_identity_preserved_as_historical():
+    """2: historical R8 reverse identity remains historical truth."""
+    assert historical_digest("reverse") == HISTORICAL_R8["reverse"]
+    assert len(historical_canonical("reverse")) == CONSERVED_HISTORICAL_FIELDS
+    assert historical_digest("reverse") != ADOPTED_SUCCESSOR["reverse"]
+
+
+def test_s3_current_forward_complete_preimage_equals_adopted_successor():
+    """3: the whole 44-field production preimage equals the adopted successor."""
+    _, _, prod = _canonical_production("forward")
+    expected = successor_canonical("forward")
+    assert set(prod) == set(expected)
+    assert len(prod) == 44
+    mismatched = [k for k in prod if prod[k] != expected[k]]
+    assert mismatched == [], f"forward preimage drift: {mismatched}"
+
+
+def test_s4_current_reverse_complete_preimage_equals_adopted_successor():
+    """4: the whole 44-field reverse production preimage equals the successor."""
+    _, _, prod = _canonical_production("reverse")
+    expected = successor_canonical("reverse")
+    assert set(prod) == set(expected)
+    assert len(prod) == 44
+    mismatched = [k for k in prod if prod[k] != expected[k]]
+    assert mismatched == [], f"reverse preimage drift: {mismatched}"
+
+
+def test_s5_current_forward_digest_equals_adopted_successor():
+    """5: forward composed identity equals the adopted successor identity."""
+    _, result, _ = _canonical_production("forward")
+    assert result.composition_result.composed_result_identity_hash == (
+        ADOPTED_SUCCESSOR["forward"]
+    )
+
+
+def test_s6_current_reverse_digest_equals_adopted_successor():
+    """6: reverse composed identity equals the adopted successor identity."""
+    _, result, _ = _canonical_production("reverse")
+    assert result.composition_result.composed_result_identity_hash == (
+        ADOPTED_SUCCESSOR["reverse"]
+    )
+
+
+def test_s7_wrong_successor_direction_fails():
+    """7: neither direction may satisfy the other's successor identity."""
+    _, fwd, _ = _canonical_production("forward")
+    _, rev, _ = _canonical_production("reverse")
+    assert fwd.composition_result.composed_result_identity_hash != (
+        ADOPTED_SUCCESSOR["reverse"]
+    )
+    assert rev.composition_result.composed_result_identity_hash != (
+        ADOPTED_SUCCESSOR["forward"]
+    )
+    assert ADOPTED_SUCCESSOR["forward"] != ADOPTED_SUCCESSOR["reverse"]
+
+
+def test_s8_one_six_field_omission_fails():
+    """8: omitting any single successor field breaks the digest."""
+    base = successor_canonical("forward")
+    good = digest(base)
+    for field in SUCCESSOR_SIX:
+        mutated = {k: v for k, v in base.items() if k != field}
+        assert digest(mutated) != good, f"omitting {field} must change the identity"
+    assert good == ADOPTED_SUCCESSOR["forward"]
+
+
+def test_s9_one_six_field_wrong_value_fails():
+    """9: any single wrong successor value breaks the digest."""
+    base = successor_canonical("forward")
+    good = digest(base)
+    wrong = {
+        "discovery_receipt_refs": [{"kind": "X", "object_id": "y", "content_hash": "z" * 64}],
+        "discovery_frontier_ref": {"kind": "X", "object_id": "y", "content_hash": "z" * 64},
+        "recursive_handoff_refs": [{"kind": "X", "object_id": "y", "content_hash": "z" * 64}],
+        "recursive_lineage_refs": [{"kind": "X", "object_id": "y", "content_hash": "z" * 64}],
+        "joint_component_count": 2,
+        "joint_order_semantics": "INPUT_ORDERED",
+    }
+    for field, value in wrong.items():
+        mutated = dict(base)
+        mutated[field] = value
+        assert digest(mutated) != good, f"wrong {field} must change the identity"
+
+
+def test_s10_old_r8_digest_cannot_masquerade_as_current_c1_02_digest():
+    """10: the historical R8 digest is not accepted as the current identity."""
+    for direction in ("forward", "reverse"):
+        assert HISTORICAL_R8[direction] != ADOPTED_SUCCESSOR[direction]
+        _, result, _ = _canonical_production(direction)
+        assert result.composition_result.composed_result_identity_hash != (
+            HISTORICAL_R8[direction]
+        )
+    # Both historical values still reproduce exactly as historical.
+    assert historical_digest("forward") == HISTORICAL_R8["forward"]
+    assert historical_digest("reverse") == HISTORICAL_R8["reverse"]
+
+
+def test_s11_production_six_successor_values_are_the_direct_path_law():
+    """The six current direct-path values are exactly the adopted direct-path law."""
+    for direction in ("forward", "reverse"):
+        _, _, prod = _canonical_production(direction)
+        for field, value in SUCCESSOR_SIX.items():
+            assert prod[field] == value, f"{direction}.{field}"
+        # And no discovery/recursive/joint material leaked into the direct path.
+        assert prod["discovery_receipt_refs"] == []
+        assert prod["recursive_handoff_refs"] == []
+        assert prod["joint_component_count"] == 1
+
+
+def test_s12_both_directions_reach_the_named_consumer_and_refuse_geometry():
+    """Phase 4 chain + anti-handwritten geometry law survive requalification."""
+    import inspect
+
+    from rawlsing_next.pre553_empirical_possibility_provider import (
+        provide_empirical_possibility_slice,
+    )
+
+    for direction, denominator, cells in (
+        ("forward", 60, {"yes": 54, "no": 6}),
+        ("reverse", 62, {"P1": 54, "P2": 8}),
+    ):
+        _, result, _ = _canonical_production(direction)
+        assert result.generated_evidence_or_null is not None
+        consumer = result.composition_result.consumer_result_or_null
+        assert consumer is not None
+        assert consumer.result_state == "EXACT_SUPPORTED"
+        assert result.composition_result.raw_denominator_support == denominator
+        params = set(inspect.signature(provide_empirical_possibility_slice).parameters)
+        for forbidden in ("geometry", "slice_geometry", "precomputed_geometry",
+                          "probability_geometry"):
+            assert forbidden not in params
