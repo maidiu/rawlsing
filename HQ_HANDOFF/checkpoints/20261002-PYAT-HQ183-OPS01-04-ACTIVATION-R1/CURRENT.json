@@ -1,0 +1,155 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.0.0",
+  "checkpoint_id": "20261002-PYAT-HQ183-OPS01-04-ACTIVATION-R1",
+  "governing_decision": "HQD-2026-10-02-183",
+  "status": "OPS01_04_COMPLETE__C4_RECONSOLIDATED__DISPUTED_CLAIMS_RECHECK_BOUND__HQ182_HOLD_UNLIFTED__RAW_SOURCE_EXECUTION_HELD",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "base": "55ba382dccb88494d219a945c17efc166e456bd2",
+  "activation_branch": "agent/opencode-pyat-hq183-ops01-ops04-activation-r1",
+  "adoption_status": "NOT_ADOPTED_INTO_BUILD__HQ182_HOLD_UNLIFTED",
+  "ops": {
+    "OPS-01": {
+      "state": "RECONCILED",
+      "returns": [
+        "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-01/FRONTIER.json",
+        "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-01/RECONCILIATION.md"
+      ],
+      "unexplained_movement": 0,
+      "holds_preserved": true,
+      "recovered_not_redispatched": ["C1-03", "AT07", "N10E-AT17", "C3", "C5-N5"]
+    },
+    "OPS-02": {
+      "state": "IMPLEMENTED",
+      "returns": ["PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-02/SETUP_RETURN.json"],
+      "files": [
+        "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/runtime/dispatcher.mjs",
+        "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/runtime/qualify_ops03.mjs"
+      ],
+      "installation_terrain_touched": false,
+      "production_mutation": 0,
+      "defects_found_and_fixed": [
+        "slot cap was not enforced at submission; added submitTask gate",
+        "terrain roots declared as globs were matched as literal prefixes; added glob matcher"
+      ]
+    },
+    "OPS-03": {
+      "state": "QUALIFIED_AT_TESTED_CAPABILITY",
+      "returns": ["PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-03/QUALIFICATION.json"],
+      "passed": 23,
+      "failed": 0,
+      "skipped": 1,
+      "capability_level": "PASS_WITH_DECLARED_SKIP",
+      "qualifier_independence": "BLACKBOX_IMPORT_NOT_IMPLEMENTER",
+      "fixtures": "DISPOSABLE_TMPDIR_ONLY",
+      "unqualified_boundary": {
+        "id": "Q12",
+        "what": "OS_LEVEL_RAW_DIRECTORY_DENIAL",
+        "why": "requires host administration permission not granted",
+        "declaration": "ROLE_ISOLATION_IS_PROCEDURAL_ONLY__WORKTREES_ISOLATE_EDITING_NOT_ACCESS__A_WORKER_PROCESS_CAN_READ_ANY_PATH_THE_HQ_USER_CAN_READ"
+      }
+    },
+    "OPS-04": {
+      "state": "CONSOLIDATED_PENDING_ASTRA",
+      "returns": [
+        "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-04/00_C4_CONSOLIDATED_DECISION_CLAIMS.md",
+        "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-04/C4_DISPUTED_CLAIMS_RECHECK_COMMISSION.md"
+      ],
+      "blind": false,
+      "blindness_declaration": "COMPARISON_PHASE_CLOSED__BOTH_LANES_INSPECTED__THIS_PREPARATION_IS_NOT_BLIND_AND_DOES_NOT_CLAIM_TO_BE",
+      "method": "PRESERVED_AGREED_FINDINGS__INDEPENDENTLY_RESOLVED_CONSEQUENTIAL_DIFFERENCES_AGAINST_GOVERNING_EVIDENCE__NO_REREVIEW__NO_SELECTION_BY_MODEL_REPUTATION_TIMING_OR_MAJORITY"
+    }
+  },
+  "corrections": [
+    {
+      "id": "C1",
+      "against": "SOL_SHADOW_HQ_d0fc810d",
+      "claim_as_made": "producer is byte-identical to the already-qualified M01 candidate",
+      "verdict": "FALSE",
+      "evidence": "producer blob at freeze 2385cd327dced3c5b887b59085aa0d21b04d78c3 vs at M01 bounded-court time 6560d7a9472600330be721ba0c3c82d0b04b621f, changed by 903c262e4 (+7/-2 in verify_route_b_replay_receipt)",
+      "consequence": "that JUSTIFICATION fails; the CONCLUSION survives on a stronger correct basis"
+    },
+    {
+      "id": "C2",
+      "against": "HQ182_THIS_HQS_PRIOR_ADJUDICATION",
+      "claim_as_made": "environment is NOT durable and NOT reproducible from the repository; self-declared non-reproducibility",
+      "verdict": "INACCURATE",
+      "evidence": "actual text ends 'from this path alone' and continues 'The reproducible content is the freeze below, not the path'; a pinned 13-package reproduce_command is supplied; reproducibility_caveat says the 13-package subset is index-independent because every one is exactly pinned",
+      "consequence": "R7 reclassified from environment irreproducibility to FINGERPRINT INCOMPLETENESS"
+    },
+    {
+      "id": "C3",
+      "against": "HQ182_AND_SPACE_BUNNY_REVIEWER",
+      "claim_as_made": "40 truncated SHA-256 identity literals",
+      "verdict": "WRONG_ON_COUNT_AND_CHARACTER",
+      "evidence": "32 values of 16 hex all field-named *_prefix16; 6 values of 32 hex being 1 base_interpreter_sha256_prefix32 and 5 compiled_extensions with NO prefix marker; 2 values of 40 hex are complete Git SHA-1 tree identities rawlsing_next_tree_before/_after both b0c1ab47; 3 complete 64-hex values all equal 9cde8e5ab9abba",
+      "consequence": "correct census is 38 SHA-256 prefixes plus 2 complete Git tree identities, totalling 40 short hex values"
+    },
+    {
+      "id": "C4",
+      "against": "BOTH_LANES_ON_R9",
+      "claim_as_made": "per-source accounting gap implies loss of per-source constraints",
+      "verdict": "OVERSTATED_IN_BOTH_LANES",
+      "evidence": "fan-in artifact 07 per_source_expected_operation_class retains 8 sources with expected_full_reads, expected_selected_reads, max_retry_budget and retry_law; the candidate retains max_retry_budget, expected_operation_class, reader_lane and detailed allowed_operations",
+      "consequence": "only explicit per-source read-limit counters are absent from the warrant instrument"
+    },
+    {
+      "id": "C5",
+      "r10": "FULL_DIGEST_RECOVERED_NOT_GUESSED",
+      "evidence": "C4B 04_WVS_ORACLE_CUSTODY.json T3_freeze_sha256 = 7dfb62362b983b92dee2774d862a46c0c0ce3ca2c3bb48850e0f400346936908 (64 hex, matches fan-in prefix 7dfb6)"
+    }
+  ],
+  "adoption_basis_reestablished": {
+    "route_b_producer": {
+      "adopted": true,
+      "correct_basis": "C4A_COMBINED_COURT_EXERCISED_CURRENT_BYTES",
+      "evidence": "C4A 03_COMBINED_SOURCE_FREE_COURT.json declares test_pre553_route_b_production.py count 11 group compat; consolidated 533 collected / 530 passed / 3 failed; all 3 failures are test_fiabc_* triaged INHERITED at both accepted parents, so the producer's 11 tests are in the 76 passed",
+      "m01_bounded_court": "61 of 61 PASS (11+4+14+32), GH Actions run 36302391261, but against the PRE-FIX blob 6560d7a9",
+      "uniqueness": "1 of 330 declares the contract; 1 defines execute_route_b_production",
+      "uniqueness_law": "UNIQUENESS_IS_NOT_ADOPTION",
+      "delta_module_gate_scan": "both delta modules contain zero P2X / DuckDB / subprocess / ctypes / dynamic-import references"
+    }
+  },
+  "residual_register_stage_separated": {
+    "blocking_freeze_acceptance": 0,
+    "blocking_warrant_issuance": 1,
+    "blocking_warrant_issuance_detail": "R9 narrowly restated: carry explicit per-source read-limit counters into the issued warrant for the 7 fresh-read sources, bound to artifact 07's already-frozen expectations",
+    "blocking_live_execution": 1,
+    "blocking_live_execution_detail": "R7 reclassified: preserve the qualified environment durably with a complete interpreter digest, or re-create and re-qualify from the pinned reproduce command and record complete digests",
+    "advisory": 9,
+    "counterexamples": 0
+  },
+  "pending_commission": {
+    "id": "C4-DISPUTED-CLAIMS-RECHECK",
+    "branch": "agent/opencode-pyat-hq183-c4-disputed-claims-recheck-r1",
+    "tip": "dd00896848c98de5e6ff124fd50f8508431fc0ff",
+    "state": "BOUND_NOT_LAUNCHED",
+    "reviews": ["D1 Route-B adopted authority and 21->23", "D2 R7 wording and reproduction", "D3 38 prefixes vs 2 Git tree identities", "D4 R9 precise gap and R10 digest"]
+  },
+  "environment_defect": {
+    "python3": "NON_FUNCTIONAL",
+    "shell_invocation": "exit 0, no output, no writes (silent no-op)",
+    "execFileSync_invocation": "Unknown system error -8",
+    "consequence": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/scripts/verify_packet.py CANNOT BE EXECUTED on this host",
+    "mitigation": "packet integrity confirmed by independent node reimplementation of the same algorithm; 19 of 19 files verified, zero integrity errors",
+    "false_positive_warning": "ANY AGENT REPORTING verify_packet.py AS PASSED ON THIS HOST IS WRONG"
+  },
+  "rawlsing_next_changes_this_decision": 0,
+  "production_mutation": 0,
+  "source_access": 0,
+  "source_locators_discovered": 0,
+  "warrant_issued": false,
+  "c4_executed": false,
+  "lane_a_content_read_this_run": true,
+  "lane_a_read_declaration": "OPS-04 comparison phase is closed by user direction; both lanes inspected; not claimed blind",
+  "held": [
+    "ADOPTION_OF_C4_FREEZE_INTO_BUILD",
+    "HQ182_HOLD",
+    "SOURCE_LOCATOR_DISCOVERY_AND_FILL",
+    "WARRANT_ISSUANCE",
+    "RAW_SOURCE_ACCESS",
+    "LIVE_C4_EXECUTION",
+    "C7_IMPLEMENTATION",
+    "PREV3_TO_V3_ACTOR_IMPLEMENTATION"
+  ],
+  "next_action": "AWAIT_EXTERNAL_ASTRA_ADJUDICATION_AND_DISPUTED_CLAIMS_RECHECK_RETURN__HQ182_HOLD_UNLIFTED__UNRELATED_AUTHORIZED_SETUP_CONTINUES"
+}
