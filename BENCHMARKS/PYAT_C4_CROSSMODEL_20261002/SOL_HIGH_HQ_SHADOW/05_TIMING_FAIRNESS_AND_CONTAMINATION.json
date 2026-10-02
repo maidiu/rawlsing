@@ -1,0 +1,38 @@
+{
+  "schema": "PYAT_C4_SOL_HIGH_HQ_BENCHMARK_TIMING@1.0.0",
+  "primary_role_under_test": "GPT-5.6 Sol High HQ pre-adoption adjudication",
+  "adjudication_elapsed": {
+    "seconds": 353,
+    "display": "5m 53s",
+    "provenance": "ChatGPT session execution timer returned by safe prior-reasoning summary",
+    "includes": "live Git reconciliation, Sol return reading, independent evidence checks, digest recomputation, runtime-closure adjudication, final shadow disposition",
+    "excludes": "creation/packaging of this benchmark GitHub branch after the user subsequently requested it"
+  },
+  "turn_start_clock_context": {
+    "local_zone": "America/New_York",
+    "approximate_local_time": "2026-10-02 15:41",
+    "note": "Turn-arrival context supplied minute-level time; do not fabricate second-level start timestamp."
+  },
+  "branch_packaging_started_at": "2026-10-02T15:51:25-04:00",
+  "benchmark_fairness": {
+    "reviewer_lane_asymmetry": {
+      "exists": true,
+      "detail": "The original Sol reviewer commission named Omega-1/C4B/D2P exact refs but those three inputs were not ancestral to the review branch. The later Space Bunny ALT-B commission added explicit origin fetch instructions for those same exact inputs.",
+      "scoring_instruction": "Treat explicit fetch instructions as an orchestration advantage given to Space Bunny, not as a model-discovered capability."
+    },
+    "hq_input_condition": {
+      "sol_hq_received": "completed Sol reviewer return plus live repository state",
+      "intended_space_bunny_hq_condition": "completed Space Bunny reviewer return plus equivalent live repository state",
+      "agreement_required": false
+    }
+  },
+  "contamination_record": {
+    "substantive_sol_hq_disposition_fixed_before_alt_b_return_seen": true,
+    "event": "A final branch-status check performed after adjudication exposed the ALT-B branch's commit-message summary because the branch had returned by then.",
+    "alt_b_packet_fetched": false,
+    "alt_b_review_files_read": false,
+    "alt_b_novel_findings_used_in_sol_disposition": false,
+    "instruction_to_astra": "Score the Sol HQ adjudication from the evidence and disposition recorded before this status check. Do not treat the later visibility of the ALT-B commit message as contributing evidence."
+  },
+  "timing_caution": "Compare role-local elapsed times, not branch packaging/commit overhead. Repository/API latency is part of interactive task latency but may vary across surfaces."
+}
