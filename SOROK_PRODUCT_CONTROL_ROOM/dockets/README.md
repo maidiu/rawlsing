@@ -23,3 +23,7 @@ A docket should end in a return that either:
 - or explicitly defers it.
 
 A docket must never silently become governing product law. Its accepted conclusion is serialized into the decision ledger.
+
+Cross-cutting discovery docket:
+- `D007_KERNEL_SIFTING_AND_DERIVATIONAL_COMPRESSION/` — active home for `Q-KERNEL-001`; maps conversation/product laws into candidate generative forms, derivation strength, tensions and hostile falsifiers. D007 must never silently promote a candidate formulation to the Rawlsing kernel.
+
