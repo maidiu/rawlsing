@@ -948,3 +948,45 @@ Artifact:
 Question:
 `Q-HISTBRIDGE-001`.
 
+## 17. Recurrent resonance and meaning strata
+
+Current strongest law:
+
+> **Generate the conditions for resonance; do not pre-author the interpretation of resonance.**
+
+A historically formed person may express homologous tensions across time/domains:
+
+`COMMON / EVOLVED PERSON ORGANIZATION`
+→ `EXPRESSION A`
+and
+→ `EXPRESSION B`.
+
+Therefore A and B may genuinely rhyme without:
+`A CAUSED B`.
+
+Compact:
+
+> **RECURRENCE WITHOUT TELEOLOGY.**
+
+Preserve:
+
+`OCCURRENCE != OBJECTIVE CAUSAL CONTRIBUTION != STRUCTURAL RESONANCE != ACTOR ASSOCIATION != SELF-INTERPRETATION != SELF-MYTHOLOGIZATION != COUNTERPART INTERPRETATION != NEGOTIATED MEANING != LATER CAUSAL EFFECT`.
+
+No secret universal `OBJECT.MEANING` field.
+
+Some persons recursively interpret themselves; some rarely do; some do so only in particular domains or periods.
+
+> **Self-interpretation is a person-specific practice, not a universal narrator function.**
+
+A later story about the past may be illuminating, partly true, false, unfalsifiable, defensive or creatively coherence-building. If adopted, it may still alter future personhood.
+
+> **NARRATIVE TRUTH VALUE != NARRATIVE CAUSAL POWER.**
+
+> **PERSON != BEST AVAILABLE THEORY OF PERSON.**
+
+Artifact:
+`71_RECURRENT_RESONANCE_MEANING_STRATA_AND_VARIABLE_SELF_MYTHOLOGIZATION_R1.md`.
+
+Question:
+`Q-MEANINGSTRATA-001`.
+
