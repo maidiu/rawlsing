@@ -1,6 +1,6 @@
 # VOZHD PYAT — READ ME FIRST
 
-Status: `ACTIVE_CONTROL_ROOM__HQD125_CURRENT__OMEGA_BROWSER_ORCHESTRATION_DELIVERED`
+Status: `ACTIVE_CONTROL_ROOM__SPACE_BUNNY_OPENCODE_DELIVERED__ACTIVATION_PENDING`
 
 Current architecture/program decision: `HQD-2026-09-26-112`
 
@@ -12,7 +12,13 @@ Selected physical policy: `B__SOURCE_BACKED_VIRTUAL_C11`
 
 Control branch: `integration/pre-main-reconciliation-r1`
 
-## Active mode: Browser Economy
+## Current user-selected workflow: Space Bunny in OpenCode
+
+Start with [Space Bunny HQ — start here](SPACE_BUNNY_OPENCODE_R1/HQ_START_HERE.md) and the [complete activation packet](SPACE_BUNNY_OPENCODE_R1/README.md). This delivery supersedes Browser Economy as default routing for the user-selected OpenCode activation. Instructions, role prompts and templates are delivered; the dispatcher is not installed or qualified. HQ first reconciles the live immutable checkpoint and frontier, then performs bounded source-free setup and independent qualification.
+
+This routing change does not adopt C4, issue a source warrant, reopen held execution, or authorize actor work. The prior C4 holds remain. The older startup and browser instructions below are historical context where superseded by this entry point; retain their unsuperseded authority and scope laws.
+
+## Prior mode: Browser Economy (routing superseded)
 
 [Browser Economy requirements](BROWSER_ECONOMY_MODE_R1.md) govern current routing. Browser Sol High owns ordinary work; Codex is only a necessary bounded exception, never a convenience default. The speed-oriented EFFICIENCY_FIRST mode is inactive and requires explicit user selection. HQ137's whole-job Codex R8 launch instruction is superseded; amend the existing job to browser ownership without restarting it.
 
@@ -20,7 +26,7 @@ Control branch: `integration/pre-main-reconciliation-r1`
 
 Read [HQ operating requirements](HQ_OPERATING_REQUIREMENTS_EFFECTIVENESS_R1.md) before the older bootstrap. The default is one coherent outcome, one implementer with an executable repair loop, and one independent acceptance review. Reuse the same job for routine corrections; minimize user-mediated handoffs. HQ137 has jointly adjudicated R7; the current R8 outcome remains, with browser ownership under the active mode. This refinement changes operating mechanics, not source/semantic/actor permissions.
 
-## Current operating instruction: browser HQ, occasional Astra
+## Prior operating instruction: browser HQ, occasional Astra
 
 The [Omega-Vozhd operating packet](OMEGA_VOZHD_ORCHESTRATION_R1/README.md) now supplies the dependency-ordered program through PRE-V3, detailed first source-free tranche, role prompts, task board and escalation rules. Start with the [ready-to-paste browser HQ instruction](OMEGA_VOZHD_ORCHESTRATION_R1/HQ_BOOTSTRAP.md) and [delivery/authorization reconciliation](28_OMEGA_VOZHD_BROWSER_HQ_ORCHESTRATION.md). Browser GPT-5.6 Sol High is the operating default; Codex 5.6/6.0 is a bounded fallback; Astra handles defined decision gates.
 

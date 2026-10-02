@@ -1,3 +1,9 @@
+# Routing supersession — Space Bunny/OpenCode activation
+
+The user has selected [Space Bunny HQ in OpenCode](SPACE_BUNNY_OPENCODE_R1/HQ_START_HERE.md). Follow that packet for activation and current routing. This document is preserved as the prior Browser Economy mode; its browser-default restrictions do not override the later user selection. Source, semantic and actor authority remain unchanged. Dispatcher installation and qualification are pending.
+
+---
+
 # Pyat operating mode — Browser Economy
 Mode: BROWSER_ECONOMY
 Status: ACTIVE_BY_USER_DIRECTION
