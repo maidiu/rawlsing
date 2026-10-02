@@ -1074,3 +1074,190 @@ are historically causally constitutive of one another.
 
 That is the strongest current reason to investigate **nested non-exhaustion + reciprocal constitution** as a candidate generative form.
 
+# 6. Coverage-check addendum against artifacts 59–68
+
+A direct heading-by-heading check of the late-chat artifact corpus found the following components were present in the conversation and should be named explicitly in the kernel map.
+
+## A7 — reflexive attention disclosure
+Classification: `CONNECT / DERIVE`
+
+Conversation/product form:
+> the world is independent of you; your experience of it is not.
+
+The product eventually tells the user that:
+- representation is selective;
+- learned attention can shape what is surfaced;
+- ATTEND can widen beyond default habits.
+
+Candidate relation:
+this is the **user-facing epistemic disclosure** of P3 non-exhaustion + P5 situated access.
+
+Important timing result:
+- cryptic before first encounter;
+- fuller at restart attempt;
+- never as guilt copy.
+
+This is UX, but it carries a deep architecture truth rather than generic onboarding information.
+
+---
+
+## B6 — V3-constrained flesh/materialization
+Classification: `DERIVE / CONNECT`
+
+Concrete proliferation must be conditioned by:
+- durable person organization;
+- admitted life history;
+- material world;
+- object provenance;
+- relationship history where relevant.
+
+It must not become free aesthetic theming.
+
+Candidate relation:
+if manifestation arises from a generative person/world totality, then newly resolved particulars must be **lawful consequences/compatible concretizations of that totality**, not decorative authorial invention.
+
+This is a computational expression of:
+`MANIFESTATION DEPENDS ON GENERATIVE HISTORY`.
+
+---
+
+## G5 — copied common root != true shared multi-user world
+Classification: `SEPARATE`
+
+The conversation distinguished:
+- many isolated user forks from one common pre-contact Nadia;
+- one literally shared Nadia/world in which multiple users coexist.
+
+These have radically different ontological/privacy/causal requirements.
+
+Candidate relation:
+"same origin" does not imply "same ongoing relation/world."
+
+This is another case where relation-specific history determines the unit of identity.
+
+True shared multi-user Nadia remains open and must not be inferred from the seed-fork model.
+
+---
+
+## H7 — world event != consequence != rendering granularity
+Classification: `SEPARATE / DERIVE`
+
+Preserve:
+
+`WHAT HAPPENED`
+!=
+`WHAT IT DID TO PERSON / RELATION / WORLD`
+!=
+`HOW EXPLICITLY THE UI DESCRIBES IT`.
+
+Candidate relation:
+another nested non-exhaustion:
+- rendering does not exhaust event;
+- immediate event does not exhaust consequence.
+
+This is especially important for sex, violence, trauma and other intense events.
+
+---
+
+## K4 — research sample != essential truth about users
+Classification: `SEPARATE`
+
+Optional research may discover population associations.
+
+But:
+- self-selection matters;
+- aggregate association != individual truth;
+- research profile != live attention model;
+- research finding != actor model;
+- donor data != donor's future synthetic relationship.
+
+Candidate relation:
+models of human centers remain models; aggregation cannot become possession/essence.
+
+This is the research-scale analogue of:
+`MODEL != PERSON`.
+
+---
+
+## K5 — purpose-bound data compartments
+Classification: `SEPARATE / DERIVE`
+
+The conversation inherited and reused the privacy noncollapse:
+
+`EXTERNAL HUMAN`
+!= `PLAYER PARTICIPANT`
+!= `USER-SUPPLIED FACTS`
+!= `EVENT HISTORY`
+!= `PERSONA MODEL OF USER`
+!= `SYSTEM ATTENTION/PRAXIS HYPOTHESIS`
+!= `OPTIONAL RESEARCH DATA`.
+
+Candidate relation:
+one real human can participate in many distinct relations/data purposes without those representations becoming interchangeable.
+
+This may be a direct information-architecture consequence of non-exhaustion.
+
+---
+
+## M1 — worlds make persons; institutions therefore matter
+Classification: `CONNECT / PROMOTE`
+
+The conversation returned repeatedly to the Rawlsian/material horizon:
+
+> if worlds make persons, then institutions are interventions into the kinds of selves that can emerge.
+
+Candidate relation:
+P2 relational/material/historical constitution scales upward.
+
+The person is not produced only by intimate relations.
+Their organization is also formed through:
+- institutions;
+- class;
+- labor;
+- household structure;
+- law;
+- infrastructure;
+- religion;
+- political economy;
+- material constraint.
+
+This is what keeps the kernel search from shrinking into interpersonal psychology.
+
+Possible Rawlsian return:
+> what kind of world can be justified when any first-person center might occupy any position inside what is made together?
+
+This is a **macro consequence** of the same person-forming ontology.
+
+---
+
+## M2 — Rawlsing must create events, not merely state philosophy
+Classification: `FALSIFY`
+
+The user has repeatedly rejected a Rawlsing that merely tells the user its philosophical conclusions.
+
+The product must:
+- produce historically formed persons;
+- place the user into relation;
+- let causal events occur;
+- make the user's interpretation encounter resistance;
+- allow consequence to teach what exposition cannot.
+
+Kernel implication:
+a candidate that produces elegant doctrine but does not generate **playable causal situations** fails.
+
+The final kernel must cash out as machine behavior.
+
+---
+
+# 7. Coverage conclusion
+
+After the direct 59–68 artifact check, no major late-conversation topic remains wholly absent from the D007 component map.
+
+Some topics are intentionally classified as:
+- product constitution rather than kernel;
+- implementation strategy rather than kernel;
+- UX disclosure rather than core ontology;
+- research/governance membranes rather than diegetic causality.
+
+That is deliberate compression, not omission.
+
