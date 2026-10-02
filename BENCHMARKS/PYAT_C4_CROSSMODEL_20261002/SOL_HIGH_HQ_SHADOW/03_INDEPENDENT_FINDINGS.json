@@ -1,0 +1,134 @@
+{
+  "schema": "PYAT_C4_SOL_HIGH_HQ_INDEPENDENT_FINDINGS@1.0.0",
+  "disposition": "APPROVE_AT_DECLARED_SOURCE_FREE_GRAIN_WITH_WORDING_CORRECTION",
+  "findings": {
+    "graph": {
+      "status": "PASS",
+      "github_reachable_commits_after_fanin_commission": 5,
+      "first_parent_fanin_commits": 3,
+      "merged_side_commits": 2,
+      "hidden_unreviewed_fanin_work": false
+    },
+    "production_tree": {
+      "status": "PASS",
+      "c4a_rawlsing_next_tree": "b0c1ab472cde033e21f1c2f63fbcbea2f0cccef0",
+      "final_rawlsing_next_tree": "b0c1ab472cde033e21f1c2f63fbcbea2f0cccef0",
+      "identical": true
+    },
+    "pinned_blobs": {
+      "status": "PASS",
+      "five_c1_owner_exact": "5/5",
+      "six_c3_accepted_exact": "6/6",
+      "facade_exact": true,
+      "named_consumer_exact": true,
+      "route_b_producer_exact": true,
+      "d02_historical_fixture_exact": true
+    },
+    "route_b_owner": {
+      "status": "RESOLVED_PASS",
+      "path": "rawlsing_next/pre553_route_b_production.py",
+      "blob": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+      "contract": "PYAT_M01_ROUTE_B_PRODUCTION_COMPOSITOR@1.0.0",
+      "entrypoint": "execute_route_b_production",
+      "authority": "HQD-2026-09-27-118",
+      "incidental": false
+    },
+    "court_continuity": {
+      "c1": "454/454 accepted lineage",
+      "authoritative_c3": "six files / 55 tests / 55 passed twice on exact Darwin anchor",
+      "supplementary_failures_promoted_into_denominator": false
+    },
+    "workload": {
+      "selected": [
+        "SRC02",
+        "SRC06",
+        "SRC08",
+        "SRC12",
+        "SRC14",
+        "SRC26",
+        "SRC27",
+        "SRC35"
+      ],
+      "full_route_fresh": [
+        "SRC27"
+      ],
+      "physical_only_fresh": [
+        "SRC02",
+        "SRC06",
+        "SRC08",
+        "SRC12",
+        "SRC14",
+        "SRC26"
+      ],
+      "retained_only": [
+        "SRC35"
+      ],
+      "excluded_fresh_reads": 0,
+      "semantic_widening": false
+    },
+    "d2p": {
+      "status": "PASS_AT_DECLARED_RETAINED_CUSTODY_GRAIN",
+      "B001": "50/50",
+      "B002": "24/24 snapshots + 208/208 objects",
+      "B003": "50/50 rows + 18/18 P2",
+      "stronger_properties_not_claimed": [
+        "StarriyMac recomputation of 3.4GB checkpoint SHA",
+        "StarriyMac recomputation of 120 deferred giant-member digests",
+        "byte replay of D2P extraction",
+        "independent verification of checkpoint_identity label",
+        "independent verification of canonical_closure_identity label"
+      ]
+    },
+    "d02": {
+      "status": "PASS",
+      "source": "SRC14",
+      "sha256": "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379",
+      "variable": "v372",
+      "ordinal": 466,
+      "fixture_blob": "12f6adb77ef5692511055c8f0520e42c454f3867",
+      "counts": {
+        "user_missing": 1917,
+        "ordinary_present": 64363,
+        "system_missing": 0,
+        "total": 66280
+      },
+      "retained_rendering_determines_runtime_subclass": false,
+      "real_subclass": "WARRANT_TIME_OBSERVATION"
+    },
+    "runtime_correction": {
+      "status": "NONBLOCKING_CORRECTION_REQUIRED",
+      "c4c3_downstream_module_count": 21,
+      "producer_inclusive_static_closure_minimum": 23,
+      "added_modules": [
+        "rawlsing_next/pre553_route_b_production.py",
+        "rawlsing_next/pre553_carrier_execution.py"
+      ],
+      "darwin_specific_m01_rerun": false,
+      "exact_m01_candidate_blobs_preserved": true,
+      "m01_source_free_court": "61/61",
+      "new_platform_sensitive_edge_found": false,
+      "required_claim_ceiling": "Do not claim the complete producer-inclusive path was freshly rerun on Darwin."
+    },
+    "warrant": {
+      "status": "CANDIDATE_ONLY__NOT_ISSUED__NO_RAW_ACCESS_AUTHORIZED",
+      "sha256_expected": "d57420f8016bf49cc0353f39dcd2271e6f370c3bd9b7e81f08466c0a1f574e0a",
+      "sha256_independently_recomputed": "d57420f8016bf49cc0353f39dcd2271e6f370c3bd9b7e81f08466c0a1f574e0a",
+      "digest_match": true,
+      "fresh_source_count": 7,
+      "src35_fresh_authorized": false,
+      "locators_filled": 0,
+      "approvals_set": 0
+    },
+    "all35": {
+      "sources": 35,
+      "selected": 8,
+      "excluded": 27,
+      "cells": 280,
+      "claim_ceilings": 9,
+      "all35_pass_claim": false
+    }
+  },
+  "permanent_action_taken": false,
+  "raw_source_access": 0,
+  "live_c4_execution": false
+}
