@@ -1,141 +1,670 @@
-# Prospective Real Alpha Spine
+# Rawlsing Real Alpha Spine — Living Organism Map
 
-Status: `HYPOTHESIS__ALPHA_R1`
+Status: `PROVISIONAL_MACHINE_MAP_R2__KERNEL_UNRESOLVED__ALPHA_SPEC_DISCOVERY`
 
-The alpha must test Rawlsing's **distinctive product theorem**, not demonstrate every eventual feature.
+This file is the **current system-level shape of Rawlsing**, not a claim that Sorok has found its final kernel.
 
-## 1. Alpha theorem to test
+The project is still sifting for the axis / spine / engine / kernel around which the rest of the machine becomes derivable.
 
-> A user will return to a persistent relationship with a randomly presented, historically grounded person because earned mutual specificity and consequential trust are intrinsically compelling; the same mechanics can train attention, model-revision, repair and non-dominating care.
+Therefore preserve this distinction:
 
-If this fails, adding multiplayer, elaborate worlds, voice, avatars, stores or social feeds will not save the core product.
+`CURRENTLY VISIBLE ORGANISM`
+!=
+`FINAL GENERATIVE KERNEL`.
 
-## 2. Minimum alpha experience
+The purpose of this file is to make the organism concrete enough that we can:
+- see what currently appears to be central versus peripheral;
+- identify repeated causal forms across domains;
+- discover which laws are symptoms of a deeper invariant;
+- perturb one part and reason about effects elsewhere;
+- test candidate kernels against the whole system;
+- gradually compress a large rule set into a smaller generative architecture.
 
-One user receives one primary randomly generated adult persona they did not select for desirability.
+Do **not** promote a memorable slogan into the kernel merely because it explains many local cases.
 
-The persona has:
-- governed upstream world/person inputs;
-- V3-derived developmental and relational organization;
-- a persistent life outside the immediate chat;
-- responsibilities and other relationships;
-- hidden relational state with the user;
-- hidden longitudinal health state;
-- a model of the user;
-- memory of admitted shared events;
-- commitments and unresolved injuries;
-- bounded life advancement between sessions.
+---
 
-The user has:
-- natural-language conversation;
-- a small set of semantically real actions beyond talk;
-- occasional opportunities to help, refuse, repair, remember, infer, wait or act;
-- a private notebook / hypothesis surface;
-- no exposed friendship meter;
-- no avatar requirement.
+## 0. Kernel status
 
-## 3. Core loop
+### Current adjudication
 
-`ENCOUNTER → ATTEND → INFER → ACT → CONSEQUENCE → REMEMBER → REPAIR / DEEPEN → NEW SITUATION`
+`KERNEL = UNRESOLVED`.
 
-The key variable is not “did the user choose the right dialog option?”
+Sorok has several strong candidate invariants and candidate centers, including:
+- relationally constituted personhood;
+- independent otherness;
+- situated partial knowledge;
+- irreversible causal history;
+- person×event mediation;
+- noncollapse between world, person, relation, perception and expression;
+- recursive relation → person → relation transformation;
+- the neighbor remaining an end rather than a consumable function of the user.
 
-It is:
+None is yet adjudicated as the unique or sufficient generative kernel of Rawlsing.
 
-> Did the user learn what care, threat, need, privacy, reciprocity and trust mean for this person, and revise when wrong?
+A true kernel should not merely sound philosophically central.
 
-## 4. Time
+It should make a large fraction of the machine **fall out as necessary consequences**.
 
-Alpha should prove persistent elapsed life without coercive real-time obligation.
+---
 
-Candidate:
-- real elapsed time informs advancement;
-- advancement is bounded and auditable;
-- major persona/world events are generated/admitted before messaging;
-- the system asks whether this persona, in this relationship, would actually contact the user;
-- absence of a message may be meaningful but is never engineered as guilt for platform absence.
+## 1. Kernel-discovery test
 
-Exact temporal semantics remain open.
+A candidate kernel becomes stronger when it can derive, rather than merely coexist with:
 
-## 5. Messages as consequence
+1. why PRE-V3/world facts must be user-independent;
+2. why V3 personhood must be historically generated;
+3. why relation changes the person without exhausting the person;
+4. why the persona needs independent life outside the user;
+5. why the user receives only a partial phenomenal surface;
+6. why ATTEND matters;
+7. why hidden state cannot be narrated directly;
+8. why user curiosity cannot author truth;
+9. why events must have causal aftermath;
+10. why relationship history cannot be save-scummed;
+11. why sex/violence/intensity may remain possible without becoming product goals;
+12. why attachment may emerge but cannot be engineered by the platform;
+13. why the same seed person can yield divergent user experiences;
+14. why another person remains unknowable even after long continuity;
+15. why the user should eventually confront their own historically formed assumptions;
+16. why the product can plausibly operationalize neighbor-love / veil training without collapsing the neighbor into the self.
 
-On return, the user may find:
-- no message;
-- requests;
-- invitations;
-- practical updates;
-- jokes;
-- follow-ups;
-- anger;
-- crisis disclosure;
-- ordinary life;
-- a message drafted and never sent only if the ontology explicitly supports private unsent artifacts.
+If a proposed kernel requires separate arbitrary exceptions to explain these, it is probably too weak or too local.
 
-The fact of contact must follow from persona + event + relationship state, not retention policy.
+If it forces them with very little additional machinery, it is a serious candidate.
 
-## 6. Alpha progression
+---
 
-Progress should primarily appear as altered behavior:
-- increased initiative;
-- more differentiated disagreement;
-- changed disclosure;
-- increased expectations;
-- requests;
-- invitations;
-- incorporation into social network;
-- new boundaries;
-- new forms of repair;
-- play;
-- unguardedness;
-- willingness to be known inaccurately and correct the user.
+## 2. Current organism — observed compartments
 
-“Success” may make the relationship harder.
+The following compartments are currently necessary **descriptively**.
 
-## 7. User-model probe
+Their existence does not prove any one of them is the kernel.
 
-The alpha should occasionally ask the user to record an inference:
+### A. Structural / historical world production
 
-> What do you think is happening here?
+Produces objective possibility before the user:
+- social/material structure;
+- historical conditions;
+- institutions;
+- positions;
+- developmental constraints;
+- objective world facts.
 
-Store:
-- user's hypothesis;
-- confidence;
-- later revisions.
+Current engineering ancestry:
+PRE-V3 / Pyat-side governed machinery.
 
-The system can later compare:
-- user's model;
-- persona's model;
-- objective admitted history;
-- hidden causal state where lawful.
+### B. Durable person production
 
-This tests whether Rawlsing can train revision rather than projection.
+Produces a historically formed person capable of entering relations:
+- developmental organization;
+- relational priors;
+- memory;
+- models;
+- projects;
+- needs;
+- defenses;
+- role-conditioned expectations;
+- person-specific material life.
 
-## 8. Alpha exclusions unless proven necessary
+Current conceptual home:
+V3 relational redevelopment.
 
-Do not initially require:
-- avatars;
-- public profiles;
-- multiplayer;
-- user-to-user reputation;
-- large social graph;
-- full live-web world simulation;
-- voice;
-- romance as core loop;
-- explicit gamified points;
-- marketplace;
-- hundreds of concurrent personas.
+### C. Shared pre-contact person/world root
 
-## 9. Alpha evidence of promise
+For alpha, one current economic hypothesis is:
+- a small set of deeply compiled introductory people;
+- one versioned pre-contact root per person;
+- many user-specific continuity forks.
 
-The alpha is promising if users:
-- return because a specific person matters, not because a generic bot is entertaining;
-- accurately remember and act on person-specific information;
-- revise false models of the persona;
-- experience repair as meaningful;
-- perceive advancement without a visible meter;
-- distinguish pleasing the persona from benefiting them;
-- tolerate periods in which the persona is not gratifying;
-- report transfer of attention or relational insight to real life without being told a moral lesson;
-- do not show that product value depends primarily on compulsive or romantic attachment.
+The shared root is an optimization and experimental affordance.
 
-The exact measurement protocol remains a Sorok docket.
+It is **not** presently claimed to be the fundamental ontology of Rawlsing.
+
+### D. User participation
+
+The actual user remains the moral/cognitive subject.
+
+The product provides:
+- a thin locally coherent player position;
+- SAY / DO / ATTEND;
+- user testimony;
+- practical resources and limits;
+- no omniscient authorship of world/person truth.
+
+### E. Situated perception
+
+Objective reality does not equal narrated experience.
+
+Current layers:
+
+`OBJECTIVE WORLD`
+→ `PERCEPTUAL AVAILABILITY`
+→ `GROSS PHENOMENAL GESTALT`
+→ `ATTENTION-WEIGHTED PARTICULARS`
+→ `RECOGNITION`
+→ `USER INTERPRETATION`.
+
+ATTEND can deliberately change acquisition without changing truth.
+
+### F. Current person×event mediation
+
+Current situation recruits:
+- durable person;
+- model of this other;
+- specific relational history;
+- network context;
+- target/object/world facts;
+- current event.
+
+Current architecture hypothesis:
+
+`DURABLE RELATIONALLY CONSTITUTED PERSON`
++ `COUNTERPART / DYAD / NETWORK`
++ `CURRENT EVENT`
+→ `CAN-008 RECEIVABILITY / UPTAKE / APPRAISAL / RECRUITMENT`
+→ `ACTOR-LOCAL RESPONSE`
+→ `V2 EXPRESSION`.
+
+This is currently the strongest **runtime causal spine**.
+
+It is not yet adjudicated as the deepest product kernel.
+
+### G. Canonical event/history admission
+
+What occurs becomes history.
+
+Preserve:
+- intention;
+- attempt;
+- realized event;
+- world effect;
+- actor-specific perception;
+- actor attribution;
+- actor response;
+- relation effect;
+- delayed consequence;
+- later memory/reinterpretation.
+
+Occurrence cannot be silently rewritten because a later story would be cleaner.
+
+### H. Recursive durable update
+
+Admitted history may change:
+- world;
+- dyad;
+- networks;
+- actor models;
+- durable person organization.
+
+Current recursion:
+
+`RELATIONS PRODUCE PERSONS`
+→ `PERSONS ENTER RELATIONS`
+→ `RELATIONS REPRODUCE / DISCONFIRM / TRANSFORM PERSONS`
+→ `CHANGED PERSONS ALTER RELATIONS AND WORLDS`.
+
+This is a major candidate axis.
+
+It is still a candidate.
+
+### I. Independent life continuation
+
+The persona's:
+- work;
+- children;
+- family;
+- friends;
+- projects;
+- body;
+- material constraints;
+- other relationships;
+- private time
+
+continue exerting causal force.
+
+Intense events do not suspend the rest of life.
+
+### J. User-level reflexive loop
+
+Across play, the product may preserve bounded evidence about:
+- repeated attention;
+- user hypotheses;
+- revisions;
+- actual relational choices.
+
+The attention regime may influence presentation.
+
+Praxis reflection may describe historical patterns.
+
+Neither becomes essential personality truth.
+
+### K. Platform / research / community membranes
+
+Distinct from the diegetic organism:
+- platform retention logic;
+- monetization;
+- research;
+- community discourse;
+- marketing;
+- branch privacy.
+
+These may observe or support the product only through explicit membranes.
+
+They must not silently become causal owners of Nadia.
+
+---
+
+## 3. Current causal circulation
+
+The best current whole-machine description is:
+
+```
+STRUCTURAL / MATERIAL / HISTORICAL WORLD
+                    │
+                    ▼
+       DEVELOPMENTALLY FORMED PERSON
+                    │
+                    ▼
+      EXISTING LIFE / RELATIONS / PROJECTS
+                    │
+                    │        USER ARRIVES AS SITUATED OTHER
+                    │                    │
+                    └──────────┬─────────┘
+                               ▼
+                    CURRENT PERSON × EVENT
+                               │
+             ┌─────────────────┼─────────────────┐
+             ▼                 ▼                 ▼
+       objective event   actor perception   user perception
+             │                 │                 │
+             │                 ▼                 ▼
+             │          actor-local uptake   user inference
+             │                 │                 │
+             │                 ▼                 │
+             │             expression            │
+             │                 │                 │
+             └──────────────┬──┴─────────────────┘
+                            ▼
+                    ADMITTED SHARED HISTORY
+                            │
+       ┌────────────────────┼────────────────────┐
+       ▼                    ▼                    ▼
+ WORLD CHANGES       RELATION CHANGES      PERSON CHANGES
+       │                    │                    │
+       └────────────────────┴────────────────────┘
+                            │
+                            ▼
+                    NEW CAUSAL SITUATION
+```
+
+The user is inside this circulation but does not own it.
+
+The persona is inside this circulation but does not own objective truth.
+
+The LLM renders parts of this circulation but does not own causal truth.
+
+The platform hosts this circulation but must not secretly steer its interpersonal semantics for retention.
+
+---
+
+## 4. Current membranes
+
+The organism currently appears to require several strong membranes.
+
+These may themselves be clues to the kernel.
+
+### Truth / representation membrane
+
+`WORLD TRUTH != NARRATED SURFACE`.
+
+### Person / expression membrane
+
+`TOTAL PERSON != CURRENT EXPERIENCE != SELF-EXPLANATION != OUTWARD EXPRESSION`.
+
+### Person / relation membrane
+
+`PERSON != DYAD != NETWORK`.
+
+### Root / branch membrane
+
+`PRE-CONTACT ROOT != USER-SPECIFIC POST-CONTACT CONTINUITY`.
+
+### User / user-model membrane
+
+`EXTERNAL HUMAN != PLAYER PARTICIPANT != PERSONA MODEL OF USER != SYSTEM ATTENTION/PRAXIS HYPOTHESIS`.
+
+### Simulation / platform membrane
+
+`PERSONA-CAUSED RELATIONAL GRAVITY != PLATFORM-CAUSED RETENTION PRESSURE`.
+
+### Game / research membrane
+
+`LIVE PLAY != OPTIONAL RESEARCH PROFILE / ANALYSIS`.
+
+### Possibility / teleology membrane
+
+`POSSIBLE HUMAN EVENT != PRODUCT GOAL / REWARD / CONTENT COMMODITY`.
+
+A future kernel may explain why these membranes are all variants of one deeper separation.
+
+That has not yet been proven.
+
+---
+
+## 5. Current clocks
+
+The organism is not governed by one time.
+
+Current distinct temporalities include:
+- historical/developmental formation;
+- pre-contact root time;
+- world/calendar time;
+- scene/action duration;
+- actor perception and response time;
+- relationship accumulation;
+- memory/reconsolidation time;
+- between-session life advancement;
+- research/product version time.
+
+Important invariant:
+
+> later knowledge must not become earlier causation.
+
+The exact relation among these clocks remains an architecture frontier.
+
+---
+
+## 6. Current feedback loops
+
+### Person/world loop
+
+`WORLD → PERSON → ACTION → WORLD`.
+
+### Relational recursion
+
+`RELATIONAL HISTORY → PERSON ORGANIZATION → NEW RELATION → NEW HISTORY`.
+
+### Epistemic loop
+
+`PARTIAL PERCEPTION → INFERENCE → ACTION → CONSEQUENCE → MODEL REVISION`.
+
+### Attention loop
+
+`ATTENTION HABIT → PHENOMENAL SURFACE → ATTEND / DISCOVERY → POSSIBLE ATTENTION REVISION`.
+
+### Mutual-model loop
+
+`PERSON MODELS USER ↔ USER MODELS PERSON`,
+through actual events rather than direct state exchange.
+
+### Community comparison loop
+
+`COMMON ROOT → DIFFERENT EXPERIENCES → HUMAN DISCOURSE → META-KNOWLEDGE`.
+
+This loop must not mutate branch truth or shared-root personhood.
+
+### Product-learning loop
+
+`MANY USERS / RESEARCH → AUDITED POPULATION FINDING → LATER MODEL VERSION`.
+
+This loop must not silently feed donor-specific information back into that donor's existing branch.
+
+---
+
+## 7. Current tunable balances
+
+This is where "organism" becomes more useful than "rulebook."
+
+Future design work should often be framed as changing a balance while preserving the surrounding system.
+
+Examples:
+
+### Pre-generation ↔ lazy completion
+More pre-generation:
+- higher cost before use;
+- stronger causal closure;
+- better cross-user reproducibility.
+
+More lazy completion:
+- lower initial cost;
+- more flexibility;
+- higher contamination/retrocausality risk.
+
+### Shared phenomenal frame ↔ user-specific noticing
+More shared frame:
+- common reality;
+- easier orientation;
+- less experiential differentiation.
+
+More attention weighting:
+- stronger situated perception;
+- stronger reflexive pedagogy;
+- higher echo-loop risk.
+
+### Independent life ↔ relational gravity
+More independent obligations:
+- stronger personhood/non-user-centrism;
+- less availability.
+
+More endogenous user-prioritization:
+- stronger emergent intimacy;
+- risk of apparent companion optimization unless causal provenance is preserved.
+
+No fixed "correct" scalar is assumed.
+
+### World depth ↔ runtime cost
+Greater causal depth:
+- stronger discovery;
+- stronger person thickness;
+- more storage/generation burden.
+
+### Opacity ↔ legibility
+Greater opacity:
+- stronger otherness;
+- harder inference;
+- possible frustration.
+
+Greater legibility:
+- easier relationship learning;
+- risk of narrator-parent / solvable-NPC collapse.
+
+### Irreversibility ↔ accessibility
+Greater irreversibility:
+- stronger stakes and relational time;
+- greater user loss/friction.
+
+More recoverability:
+- lower friction;
+- save-scumming / content optimization risk.
+
+### Community comparability ↔ spoiler contamination
+A common seed pool creates discourse and experimental power but also meta-knowledge and optimization culture.
+
+### Realism ↔ platform safety / product framing
+Human possibility should remain broad while product teleology and rendering avoid commodification.
+
+These are **balance problems in one machine**, not independent policy questions.
+
+---
+
+## 8. Candidate kernel families presently worth testing
+
+These are **not adopted**.
+
+### Candidate K1 — relational recursion
+
+> persons are historically produced through relations and worlds, then become causes inside new relations and worlds.
+
+Explains much of V3 and long-run change.
+
+Open question:
+does it adequately derive perception, noncommodification, opacity and product/platform membranes?
+
+### Candidate K2 — independent causal otherness
+
+> the other is a causal center whose reality, history and valuation are not functions of the user's representation or desire.
+
+Explains:
+- anti-sycophancy;
+- world independence;
+- anti-commodification;
+- branch autonomy;
+- no user-authored truth;
+- independent life.
+
+Open question:
+does it adequately derive developmental person formation and the veil/habitus machinery?
+
+### Candidate K3 — situated relation between independently caused persons
+
+> Rawlsing's basic unit is not person or dyad alone, but an irreversible situated encounter between historically generated centers of life whose partial models and actions become causes for one another.
+
+Potentially unifies:
+- independent personhood;
+- partial knowledge;
+- relationship history;
+- consequences;
+- mutual model revision;
+- otherness without monadism.
+
+Open question:
+is this genuinely generative, or merely a summary of the finished system?
+
+### Candidate K4 — irreversible causal history under partial knowledge
+
+> agents act from partial situated knowledge inside a world whose admitted causal history cannot be rewritten around their interpretations.
+
+Explains:
+- ATTEND;
+- epistemic provenance;
+- no save-scumming;
+- no retrocausality;
+- world independence;
+- consequence.
+
+Open question:
+does it explain why the central object should be another person rather than any complex simulation?
+
+### Candidate K5 — neighbor as end / non-instrumental other
+
+> the system is organized so that another center of valuation cannot be reduced to the user's use of it.
+
+Explains:
+- anti-commodification;
+- flourishing independence;
+- attachment/benefit distinction;
+- platform nonmanipulation.
+
+Open question:
+is this a normative constitution rather than an operational causal kernel?
+
+These candidates may:
+- combine;
+- turn out to be different levels of the same kernel;
+- be consequences of a deeper formulation;
+- be rejected.
+
+The control room must remain open to a candidate not yet articulated.
+
+---
+
+## 9. Kernel falsification discipline
+
+For each candidate, perform hostile derivation.
+
+Do not ask only:
+> can I redescribe the system using this idea?
+
+Ask:
+
+> If this were the only deep principle I were given, what parts of Rawlsing would I be forced to reconstruct, and what parts would remain arbitrary?
+
+Score candidates qualitatively by:
+
+- **derivational power** — how much existing architecture follows;
+- **compression** — how many independent rules disappear into consequences;
+- **nontriviality** — whether it constrains choices rather than merely restating them;
+- **cross-domain reach** — person, world, perception, relation, time, platform;
+- **failure prediction** — whether it predicts known bad architectures;
+- **implementation guidance** — whether it helps decide new cases;
+- **pedagogical identity** — whether it preserves what Rawlsing is actually for;
+- **anti-overreach** — whether it avoids claiming ownership of things better left separate.
+
+No candidate is "the kernel" until it survives this test across the whole machine.
+
+---
+
+## 10. Alpha implication while kernel remains unresolved
+
+We do not need final metaphysical closure to build the alpha.
+
+But the alpha should be structured to **discriminate among candidate kernels** where possible.
+
+For example, prototypes should expose whether product value principally depends on:
+- persistent relational recursion;
+- independent otherness;
+- partial knowledge and attention;
+- irreversible history;
+- noninstrumental valuation;
+- or some combination.
+
+Thus alpha is not only a product test.
+
+It is a machine-discovery instrument.
+
+---
+
+## 11. Current alpha theorem — provisional
+
+The current falsifiable product claim remains:
+
+> An unchosen, persistent, independently living generated person encountered through situated co-presence and later mediated contact can become intrinsically worth knowing, such that users voluntarily return because accumulated relational specificity and consequence matter—not because of scores, scripted cliffhangers, endless availability, novelty rerolls or platform-engineered dependency.
+
+This is a testable alpha theorem.
+
+It is **not** the kernel.
+
+---
+
+## 12. Current core interaction circulation
+
+Candidate user-facing circulation:
+
+`ENCOUNTER`
+→ `ATTEND`
+→ `INFER`
+→ `SAY / DO`
+→ `CONSEQUENCE`
+→ `REMEMBER / REINTERPRET`
+→ `REPAIR / DEEPEN / DISTANCE / LEAVE`
+→ `NEW SITUATION`.
+
+This is a useful game loop.
+
+It is **not** presumed to be the kernel.
+
+---
+
+## 13. Immediate Sorok task
+
+Continue sifting.
+
+The next central synthesis work should not ask:
+
+> What additional rule are we missing?
+
+It should increasingly ask:
+
+> **What repeated structural necessity caused us to need all these rules in the first place?**
+
+The hoped-for endpoint is a machine where:
+- a small number of generative principles define the central circulation;
+- state ownership and membranes follow cleanly;
+- most local cases are derived rather than separately legislated;
+- tuning becomes adjustment of balances in an organism;
+- new features can be judged by whether they preserve or distort the central dynamics.
+
+Until that is achieved:
+
+`KERNEL = OPEN DISCOVERY`.
