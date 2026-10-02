@@ -1,0 +1,94 @@
+{
+  "schema": "PYAT_C4A_FINAL_DISPOSITION@1",
+  "disposition": "PASS_C4A_COMBINED_TREE_QUALIFIED__FANIN_READY",
+  "terminal": "C4A_COMBINED_TREE_RETURNED__HQ_FANIN_REQUIRED",
+  "lane": "C4A — C1+C3 combined tree integration + source-free qualification (R1)",
+  "branch": "agent/opencode-pyat-hq170-c4a-c1-c3-integration-r1",
+  "commissioned_tip": "603795eb6033a35516cea73add76a1b8a9ac6687",
+  "governing_omega_1": "01762d7379be4e423dad3e21bcdcee47c536902d",
+  "omega_1_item_closed": "O1-C01 combined-tree portion",
+  "merge": {
+    "commit": "9a5752a8ce4a119efd24cbbeedd8cbcda8abdadb",
+    "parents": [
+      "603795eb6033a35516cea73add76a1b8a9ac6687",
+      "30686b185d4ceb2c94f61815ef70d8c8e76255d6"
+    ],
+    "ancestry_preserving": true,
+    "rebase_or_squash": false,
+    "conflicts": 0
+  },
+  "blob_matrix": {
+    "pinned_total": 11,
+    "c1_blobs_exact": 5,
+    "c3_blobs_exact": 6,
+    "drift": 0,
+    "verified_in": ["pre-commit merge index", "committed merge tree"],
+    "accepted_contract_changed": false
+  },
+  "court": {
+    "consolidated_files": 25,
+    "collected": 533,
+    "passed": 530,
+    "failed": 3,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "wall_time_seconds": 1226.41,
+    "c1_suite_15_files": "454 passed / 0 failed — reproduces the accepted C1 court exactly",
+    "c3_subset_10_files": "76 passed / 3 failed — reproduces the accepted C3 result exactly",
+    "zero_failure_claimed": false,
+    "zero_failure_note": "This lane does not claim a clean court. It claims the combined tree reproduces BOTH accepted courts exactly and introduces no new failure."
+  },
+  "inherited_failed_evidence": {
+    "count": 3,
+    "triaged_against_both_accepted_parents": true,
+    "identical_at_c3_accepted_tip": true,
+    "identical_at_c1_accepted_base": true,
+    "merge_induced": false,
+    "cases": [
+      "test_fiabc_lits_i_representation_authority.py::test_actual_banked_projection_converts_to_exact_accepted_legacy_owner",
+      "test_fiabc_lm2_r1i_physical_native_hostile.py::test_native_to_canonical_mapping_authority_does_not_bridge_physical_representation",
+      "test_fiabc_lm2_r1i_physical_native_hostile.py::test_special_states_remain_noncanonical_and_mapping_authority_does_not_leak"
+    ],
+    "disposition": "Retained as historical failed evidence, not relabelled and not silently dropped. HQ should decide whether C4 fan-in carries them forward as-is or addresses them separately."
+  },
+  "declared_exclusions": {
+    "count": 5,
+    "reason_class": "collection-time ModuleNotFoundError for pandas, absent from every available interpreter; two of the five additionally import the raw C11 ingest surface and pyreadstat",
+    "installed_pandas_deliberately": false,
+    "why_not": "Installing pandas was deliberately not attempted. Two of the five are raw-facing and therefore outside lane A by the no-raw-access rule regardless of availability, so provisioning the dependency would not make them in-scope work.",
+    "files": [
+      "test_fiabc_lm1_r1e_n1_physical_boundary.py",
+      "test_fiabc_lm2_r1e_bounded_mapping_recovery.py",
+      "test_fiabc_run3_postmeasurement_repair_stack.py",
+      "test_pre553_source_backed_c11_facade.py",
+      "test_pre553_sr06_decoder_carrier.py"
+    ],
+    "consequence_for_the_claim": "The qualified combined tree covers 25 of the 30 declared files. The five exclusions are an environment and lane-scope limit, disclosed rather than absorbed into the pass."
+  },
+  "raw_survey_access": false,
+  "lane_b_workload_oracle_freeze": false,
+  "lane_c_runtime_qualification": false,
+  "c4_raw_execution": false,
+  "self_adopted": false,
+  "merged_or_adopted_by_this_lane": false,
+  "wider_sweep_claimed": false,
+  "basis": [
+    "All 5 C1 owner blobs verified EXACT at the accepted C1 base before merge and EXACT again in the merged tree.",
+    "All 6 C3 blobs verified EXACT at the accepted C3 tip and EXACT again in the merged tree. 11/11, zero drift.",
+    "Zero merge conflicts: the C1 side had not modified any of the six C3-owned files relative to the merge base, so no accepted contract was put in competition and no conflict-resolution judgement was exercised.",
+    "Merge is ancestry-preserving with two parents and no rebase or squash, so both accepted ancestries remain reachable.",
+    "The accepted C1 court reproduces EXACTLY on the combined tree: 454 passed, 0 failed. Zero C1 regressions from introducing C3.",
+    "The C3 subset reproduces the accepted C3 result EXACTLY: 76 passed, 3 failed on the same 10 files at the accepted C3 tip.",
+    "The 3 failures were triaged by executing both accepted parents; they fail identically there, proving they are inherited and not merge-induced.",
+    "The 15-file C1 suite was reconstructed under a hard constraint — identical per-file multiset and identical 454 sum — which identifies it uniquely.",
+    "No raw survey file was read, hashed, or probed at any point.",
+    "Lane boundaries held: no workload/oracle freeze work, no runtime qualification beyond recording the runtime, no C4 raw execution."
+  ],
+  "next_required_action": "HQ fan-in of lanes A, B and C. Two items need an explicit HQ decision rather than a silent default: (1) whether the 3 inherited failed-evidence cases are carried forward as-is at C4; (2) whether the 5 pandas/raw-toolchain files are in scope for any C4 runtime, given that two of them sit on the raw C11 ingest surface and are therefore outside this lane's authority.",
+  "known_limitations": [
+    "The qualified surface is 25 of the 30 declared files. The gap is disclosed, not closed.",
+    "The C3 court file set was derived mechanically from module imports, not from a named list in an accepted C3 packet, because no C3 return packet enumerating its court was present at the accepted tip. The derivation is recorded so HQ can substitute a narrower or wider authoritative list.",
+    "The C1 15-file suite is a reconstruction constrained by the accepted per-file profile. It is uniquely determined at this grain, but it is not a verbatim filename list carried in an accepted packet."
+  ]
+}

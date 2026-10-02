@@ -1,0 +1,151 @@
+{
+  "schema": "PYAT_C4A_COMBINED_SOURCE_FREE_COURT@1",
+  "lane": "C4A",
+  "tree": "combined C1-03 join + accepted C3 source-free repair",
+  "merge_commit": "9a5752a8ce4a119efd24cbbeedd8cbcda8abbadb",
+  "court_design": {
+    "c1_suite_derivation": "The accepted C1 return records only the per-file profile 92/35/32/17/14/13/13/8/3/2/43/57/54/43/28 = 454, not the filenames. The 15 filenames were reconstructed from the filesystem and then CONSTRAINED by that profile. The reconstruction is unique: it matches the accepted multiset exactly and sums to exactly 454.",
+    "c3_surface_derivation": "The three pinned C3 court files are the complete G01/D01/D02 source-free surface named in the commission.",
+    "c3_compat_derivation": "Computed mechanically, not by judgement: every test file importing any of the three C3-owned modules (closed35_g01_sav_numeric_representation_authority, pre553_physical_decoder, pre553_r5_codec). These are the unchanged compatibility dependencies required by C3's accepted court.",
+    "path_assertion_before_execution": "Every listed path was asserted to exist as a file before any execution. missing=0.",
+    "overlap_and_dedup": {
+      "c1_files": 15,
+      "c3_surface_files": 3,
+      "c3_compat_declared": 12,
+      "combined_declared": 30,
+      "distinct_after_dedup": 30,
+      "c1_c3_overlap": 0
+    }
+  },
+  "c1_suite_15_files": [
+    {"count": 92,  "path": "rawlsing_next/tests/test_pre553_analytical_state_and_route.py"},
+    {"count": 43,  "path": "rawlsing_next/tests/test_pre553_empirical_possibility_provider.py"},
+    {"count": 57,  "path": "rawlsing_next/tests/test_pre553_authority_maintenance.py"},
+    {"count": 43,  "path": "rawlsing_next/tests/test_pre553_analytical_replay_dependency.py"},
+    {"count": 13,  "path": "rawlsing_next/tests/test_pre553_analytical_composition.py"},
+    {"count": 35,  "path": "rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py"},
+    {"count": 13,  "path": "rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py"},
+    {"count": 54,  "path": "rawlsing_next/tests/test_pre553_replay_audit.py"},
+    {"count": 28,  "path": "rawlsing_next/tests/test_gt34_w2_adp010_successor_compatibility.py"},
+    {"count": 32,  "path": "rawlsing_next/tests/test_pre553_empirical_query.py"},
+    {"count": 17,  "path": "rawlsing_next/tests/test_pre553_structural_admission.py"},
+    {"count": 14,  "path": "rawlsing_next/tests/test_pre553_discovery_exact.py"},
+    {"count": 8,   "path": "rawlsing_next/tests/test_pre553_discovery_adaptive.py"},
+    {"count": 3,   "path": "rawlsing_next/tests/test_pre553_discovery_adaptive_admission.py"},
+    {"count": 2,   "path": "rawlsing_next/tests/test_pre553_recursive_handoff.py"}
+  ],
+  "c1_suite_result": {
+    "files": 15,
+    "collected": 454,
+    "passed": 454,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "wall_time_seconds": 71.51,
+    "accepted_c1_court": "454 passed / 0 failed / 0 errors / 0 skipped",
+    "reproduces_accepted_c1_court_exactly": true
+  },
+  "c3_surface_and_compat_declared": [
+    {"count": 9,  "path": "rawlsing_next/tests/test_closed35_g01_sav_numeric_representation_authority.py", "group": "surface"},
+    {"count": 8,  "path": "rawlsing_next/tests/test_closed35_d01_declared_encoding_admission.py", "group": "surface"},
+    {"count": 13, "path": "rawlsing_next/tests/test_closed35_d02_opaque_datetime_carrier.py", "group": "surface"},
+    {"count": 10, "path": "rawlsing_next/tests/test_fiabc_lits_i_representation_authority.py", "group": "compat"},
+    {"count": 8,  "path": "rawlsing_next/tests/test_fiabc_lm2_r1i_physical_native_hostile.py", "group": "compat"},
+    {"count": 1,  "path": "rawlsing_next/tests/test_fiabc_lm2_r1i_physical_native_inventory.py", "group": "compat"},
+    {"count": 9,  "path": "rawlsing_next/tests/test_fiabc_lm2_r1j_sav_representation_authority.py", "group": "compat"},
+    {"count": 11, "path": "rawlsing_next/tests/test_pre553_route_b_production.py", "group": "compat"},
+    {"count": 4,  "path": "rawlsing_next/tests/test_pre553_source_backed_c11_facade_multi_owner_r1.py", "group": "compat"},
+    {"count": 6,  "path": "rawlsing_next/tests/test_r35_i01_physical_metadata.py", "group": "compat"}
+  ],
+  "c3_compat_excluded_from_source_free_court": [
+    {
+      "path": "rawlsing_next/tests/test_fiabc_lm1_r1e_n1_physical_boundary.py",
+      "reason": "ModuleNotFoundError: pandas at collection. pandas is absent from /tmp/c1-01-r8-release-spine-venv, /tmp/c1-01-r7-execution-venv and system python3.",
+      "also_imports_raw_toolchain": false
+    },
+    {
+      "path": "rawlsing_next/tests/test_fiabc_lm2_r1e_bounded_mapping_recovery.py",
+      "reason": "ModuleNotFoundError: pandas at collection.",
+      "also_imports_raw_toolchain": false
+    },
+    {
+      "path": "rawlsing_next/tests/test_fiabc_run3_postmeasurement_repair_stack.py",
+      "reason": "ModuleNotFoundError: pandas at collection.",
+      "also_imports_raw_toolchain": false
+    },
+    {
+      "path": "rawlsing_next/tests/test_pre553_source_backed_c11_facade.py",
+      "reason": "ModuleNotFoundError: pandas at collection. Imports pandas AND drives pre553_c11_ingest / pre553_c11_repository, i.e. the C11 raw-ingest surface.",
+      "also_imports_raw_toolchain": true
+    },
+    {
+      "path": "rawlsing_next/tests/test_pre553_sr06_decoder_carrier.py",
+      "reason": "ModuleNotFoundError: pandas at collection. Imports pandas AND pyreadstat, which is the raw statistical-file reader.",
+      "also_imports_raw_toolchain": true
+    }
+  ],
+  "exclusion_justification": "All five fail at COLLECTION on a missing third-party dependency, so none can execute in the declared source-free runtime. Two of them additionally sit on the raw C11 ingest / pyreadstat surface, which is outside lane A by the no-raw-access rule even if pandas were present. The commission asks for the complete APPLICABLE source-free surface; these five are not applicable at this grain. They are reported here rather than silently dropped, and installing pandas was deliberately not attempted because two of them are raw-facing and therefore outside this lane regardless.",
+  "c3_result_on_combined_tree": {
+    "files": 10,
+    "collected": 79,
+    "passed": 76,
+    "failed": 3,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "wall_time_seconds": 1154.90,
+    "note": "Runtime is the consolidated run's contribution; the isolated C3-parent comparison run is recorded in 04_EXECUTION_RECEIPT.json."
+  },
+  "consolidated_result": {
+    "files": 25,
+    "collected": 533,
+    "passed": 530,
+    "failed": 3,
+    "errors": 0,
+    "skipped": 0,
+    "xfailed": 0,
+    "wall_time_seconds": 1226.41,
+    "arithmetic_check": "530 passed + 3 failed = 533 collected; 454 (C1) + 79 (C3) = 533; 454 (C1) + 76 (C3 passed) = 530"
+  },
+  "failures_and_triage": {
+    "count": 3,
+    "triage_method": "Each failing file was executed against BOTH accepted parents in separate detached worktrees. A merge-induced regression would appear only on the combined tree; an inherited failure appears on the parents too.",
+    "cases": [
+      {
+        "test": "rawlsing_next/tests/test_fiabc_lits_i_representation_authority.py::test_actual_banked_projection_converts_to_exact_accepted_legacy_owner",
+        "combined_tree": "FAILED",
+        "c3_accepted_tip_30686b18": "FAILED",
+        "c1_accepted_base_149c3d26": "FAILED",
+        "verdict": "INHERITED — identical failure present at both accepted parents and on the combined tree. Not merge-induced."
+      },
+      {
+        "test": "rawlsing_next/tests/test_fiabc_lm2_r1i_physical_native_hostile.py::test_native_to_canonical_mapping_authority_does_not_bridge_physical_representation",
+        "combined_tree": "FAILED",
+        "c3_accepted_tip_30686b18": "FAILED",
+        "c1_accepted_base_149c3d26": "FAILED",
+        "verdict": "INHERITED — identical failure present at both accepted parents and on the combined tree. Not merge-induced."
+      },
+      {
+        "test": "rawlsing_next/tests/test_fiabc_lm2_r1i_physical_native_hostile.py::test_special_states_remain_noncanonical_and_mapping_authority_does_not_leak",
+        "combined_tree": "FAILED",
+        "c3_accepted_tip_30686b18": "FAILED",
+        "c1_accepted_base_149c3d26": "FAILED",
+        "verdict": "INHERITED — identical failure present at both accepted parents and on the combined tree. Not merge-induced."
+      }
+    ],
+    "parent_comparison_counts": {
+      "combined_tree_c3_subset": "3 failed, 76 passed",
+      "c3_accepted_tip_same_10_files": "3 failed, 76 passed",
+      "c1_accepted_base_same_2_failing_files": "3 failed, 15 passed"
+    },
+    "conclusion": "The C3 subset reproduces the accepted C3 result EXACTLY (76 passed / 3 failed), and the 3 failures are identical at both accepted parents. The merge introduced zero new failures and resolved none. These 3 are pre-existing failed evidence in the repository, consistent with the accepted C1 record's own retained item 'Historical failed evidence: 434 passed / 1 failed remains historical failed evidence and is not relabelled.'",
+    "scope_honesty": "This lane does not claim a zero-failure court. It claims that the combined tree reproduces both accepted courts exactly and adds no new failure."
+  },
+  "source_free_attestation": {
+    "raw_survey_access": false,
+    "data_directory_touched": false,
+    "files_under_data_read_or_hashed": 0,
+    "note": "No hashing or metadata probe against any survey file was performed. The five excluded files were excluded on a module-import observation (pandas / pyreadstat), not by inspecting survey material."
+  }
+}

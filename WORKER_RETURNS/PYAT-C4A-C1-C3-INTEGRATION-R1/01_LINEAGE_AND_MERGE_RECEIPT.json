@@ -1,0 +1,73 @@
+{
+  "schema": "PYAT_C4A_LINEAGE_AND_MERGE_RECEIPT@1",
+  "lane": "C4A — C1+C3 combined tree integration + source-free qualification (R1)",
+  "governing_omega_1": "01762d7379be4e423dad3e21bcdcee47c536902d",
+  "omega_1_item": "O1-C01 (combined-tree portion only)",
+  "commissioned_tip": "603795eb6033a35516cea73add76a1b8a9ac6687",
+  "accepted_c1_tip": "149c3d2636160d8de9b5a8be0c8b87195158077d",
+  "accepted_c1_branch": "integration/pyat-hq168-c1-03-successor-join-accepted-r1",
+  "accepted_c3_tip": "30686b185d4ceb2c94f61815ef70d8c8e76255d6",
+  "accepted_c3_branch": "integration/pyat-hq130-c3-source-free-accepted-r1",
+  "merge_result": {
+    "strategy": "--no-ff ancestry-preserving merge of the exact accepted C3 tip",
+    "conflicts": 0,
+    "conflict_resolution_performed": false,
+    "resolution_law_applied": "not required; the pinned C1 and C3 blob sets proved disjoint on the C1 side, so no accepted contract was put in competition",
+    "why_zero_conflicts": "The merge base is b3b2fa13049513078c301a1f6574b661fcf390c5. The six C3-owned files were verified NOT modified by any C1-side commit relative to that merge base. Two of them (pre553_physical_decoder.py, pre553_r5_codec.py) already existed on the C1 side at their merge-base blobs and were advanced to the accepted C3 blobs; the other four were added.",
+    "divergence": {"c1_only_commits": 425, "c3_only_commits": 6},
+    "merge_base": "b3b2fa13049513078c301a1f6574b661fcf390c5",
+    "c3_side_commits": [
+      "30686b185 Integrate accepted C3 source-free repair: pre553_r5_codec.py",
+      "1f9990fec Integrate accepted C3 source-free repair: pre553_physical_decoder.py",
+      "5fbf9cc56 Integrate accepted C3 source-free repair: test_closed35_d02_opaque_datetime_carrier.py",
+      "105246b33 Integrate accepted C3 source-free repair: test_closed35_d01_declared_encoding_admission.py",
+      "fe9ec0361 Integrate accepted C3 source-free repair: test_closed35_g01_sav_numeric_representation_authority.py",
+      "5d3168df2 Integrate accepted C3 source-free repair: closed35_g01_sav_numeric_representation_authority.py"
+    ]
+  },
+  "lineage_verification": {
+    "commissioned_tip_checked_out_exactly": true,
+    "c1_accepted_base_is_ancestor_of_commissioned_tip": true,
+    "c3_accepted_tip_was_not_already_merged": true,
+    "merge_committed_on_lane_branch": true,
+    "note": "The commissioned tip 603795eb is itself an HQ bind commit whose parent chain reaches the C1 accepted base 149c3d26 (log: 603795eb6 -> 149c3d263 'HQ168 adopt successor-qualified C1-03 join')."
+  },
+  "final_merge_parentage": {
+    "merge_commit": "9a5752a8ce4a119efd24cbbeedd8cbcda8abbadb",
+    "parent_1": "603795eb6033a35516cea73add76a1b8a9ac6687",
+    "parent_1_role": "C1 lane tip (carries the accepted C1-03 join base 149c3d26)",
+    "parent_2": "30686b185d4ceb2c94f61815ef70d8c8e76255d6",
+    "parent_2_role": "exact accepted C3 tip, merged without rebase or squash",
+    "parent_count": 2,
+    "ancestry_preserved": true,
+    "rebase_or_squash_used": false
+  },
+  "pinned_blob_verification": {
+    "performed": "twice — once in the pre-commit merge index and again in the committed merge tree",
+    "result": "11 of 11 MATCH, 0 drift",
+    "c1_blobs_reproduced_exactly": 5,
+    "c3_blobs_became_exactly": 6
+  },
+  "c1_side_pre_merge_state_of_c3_files": {
+    "rawlsing_next/closed35_g01_sav_numeric_representation_authority.py": "ABSENT",
+    "rawlsing_next/pre553_physical_decoder.py": "d2a074a41fb556a1cd5928a5fe1421ef3672a4e5 (merge-base blob)",
+    "rawlsing_next/pre553_r5_codec.py": "72f8f3c03ed065e86fea4e76bb17f8e06c2bf540 (merge-base blob)",
+    "rawlsing_next/tests/test_closed35_g01_sav_numeric_representation_authority.py": "ABSENT",
+    "rawlsing_next/tests/test_closed35_d01_declared_encoding_admission.py": "ABSENT",
+    "rawlsing_next/tests/test_closed35_d02_opaque_datetime_carrier.py": "ABSENT"
+  },
+  "accepted_contract_changed": false,
+  "raw_survey_access": {
+    "performed": false,
+    "evidence": "No file under data/ was read, listed for content, hashed, or probed. The working tree is clean for data/ after all court execution. No hashing or metadata probe against any survey file was run."
+  },
+  "lane_boundaries_respected": {
+    "workload_oracle_freeze_lane_B": "not performed; only the exact accepted input identities were identified",
+    "execution_runtime_qualification_lane_C": "not performed beyond recording the interpreter, Python version, pytest version and wall-clock runtimes in 04_EXECUTION_RECEIPT.json",
+    "c4_raw_execution": "not performed"
+  },
+  "worktree_provenance": {
+    "note": "This shared working tree is subject to an external controller that moves HEAD between commissions, so lane A was executed in an isolated git worktree at rawlsing-pyat-hq170-c4a-c1-c3-integration-r1, consistent with the repository's existing per-agent convention. Two additional detached probe worktrees were created under /tmp to execute the two accepted parents for failure triage, and both were removed afterwards.",
+    "isolated_worktree_path": "rawlsing-pyat-hq170-c4a-c1-c3-integration-r1"
+  }
+}

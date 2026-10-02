@@ -1,0 +1,123 @@
+{
+  "schema": "PYAT_C4A_EXECUTION_RECEIPT@1",
+  "lane": "C4A",
+  "runtime_recorded_per_commission": true,
+  "interpreter": "/tmp/c1-01-r8-release-spine-venv/bin/python",
+  "python": "3.12.14",
+  "pytest": "9.1.1",
+  "command_form": "PYTHONPATH=<worktree root> pytest -q <file list>",
+  "runs": [
+    {
+      "label": "C1 accepted 15-file suite on the combined tree",
+      "files": 15,
+      "collected": 454,
+      "passed": 454,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "xfailed": 0,
+      "wall_time_seconds": 71.51
+    },
+    {
+      "label": "consolidated source-free court on the combined tree",
+      "files": 25,
+      "collected": 533,
+      "passed": 530,
+      "failed": 3,
+      "errors": 0,
+      "skipped": 0,
+      "xfailed": 0,
+      "wall_time_seconds": 1226.41
+    },
+    {
+      "label": "C3-parent comparison: same 10 C3 files at accepted C3 tip 30686b18",
+      "files": 10,
+      "collected": 79,
+      "passed": 76,
+      "failed": 3,
+      "errors": 0,
+      "skipped": 0,
+      "xfailed": 0,
+      "wall_time_seconds": 435.80,
+      "purpose": "failure triage only, not a qualification claim"
+    },
+    {
+      "label": "C1-parent comparison: the 2 failing C3 files at accepted C1 base 149c3d26",
+      "files": 2,
+      "collected": 18,
+      "passed": 15,
+      "failed": 3,
+      "errors": 0,
+      "skipped": 0,
+      "xfailed": 0,
+      "wall_time_seconds": 397.40,
+      "purpose": "failure triage only, not a qualification claim"
+    },
+    {
+      "label": "collection-error run with the 5 pandas-dependent files included",
+      "files": 30,
+      "collected": 0,
+      "failed": 0,
+      "errors": 5,
+      "skipped": 0,
+      "xfailed": 0,
+      "wall_time_seconds": 3.98,
+      "purpose": "This is the run that surfaced the pandas collection errors and produced the documented exclusion. The 5 errors are ModuleNotFoundError: pandas."
+    }
+  ],
+  "per_file_counts_combined_tree": {
+    "rawlsing_next/tests/test_pre553_analytical_state_and_route.py": 92,
+    "rawlsing_next/tests/test_pre553_empirical_possibility_provider.py": 43,
+    "rawlsing_next/tests/test_pre553_authority_maintenance.py": 57,
+    "rawlsing_next/tests/test_pre553_analytical_replay_dependency.py": 43,
+    "rawlsing_next/tests/test_pre553_analytical_composition.py": 13,
+    "rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py": 35,
+    "rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py": 13,
+    "rawlsing_next/tests/test_pre553_replay_audit.py": 54,
+    "rawlsing_next/tests/test_gt34_w2_adp010_successor_compatibility.py": 28,
+    "rawlsing_next/tests/test_pre553_empirical_query.py": 32,
+    "rawlsing_next/tests/test_pre553_structural_admission.py": 17,
+    "rawlsing_next/tests/test_pre553_discovery_exact.py": 14,
+    "rawlsing_next/tests/test_pre553_discovery_adaptive.py": 8,
+    "rawlsing_next/tests/test_pre553_discovery_adaptive_admission.py": 3,
+    "rawlsing_next/tests/test_pre553_recursive_handoff.py": 2,
+    "rawlsing_next/tests/test_closed35_g01_sav_numeric_representation_authority.py": 9,
+    "rawlsing_next/tests/test_closed35_d01_declared_encoding_admission.py": 8,
+    "rawlsing_next/tests/test_closed35_d02_opaque_datetime_carrier.py": 13,
+    "rawlsing_next/tests/test_fiabc_lits_i_representation_authority.py": 10,
+    "rawlsing_next/tests/test_fiabc_lm2_r1i_physical_native_hostile.py": 8,
+    "rawlsing_next/tests/test_fiabc_lm2_r1i_physical_native_inventory.py": 1,
+    "rawlsing_next/tests/test_fiabc_lm2_r1j_sav_representation_authority.py": 9,
+    "rawlsing_next/tests/test_pre553_route_b_production.py": 11,
+    "rawlsing_next/tests/test_pre553_source_backed_c11_facade_multi_owner_r1.py": 4,
+    "rawlsing_next/tests/test_r35_i01_physical_metadata.py": 6
+  },
+  "per_file_count_method": "Each executed file was additionally run through pytest -q --collect-only individually. The 25 individual counts sum exactly to the 533 collected in the consolidated run.",
+  "c1_profile_reconciliation": {
+    "accepted_profile": [92, 35, 32, 17, 14, 13, 13, 8, 3, 2, 43, 57, 54, 43, 28],
+    "reconstructed_profile": [92, 43, 57, 43, 13, 35, 13, 54, 28, 32, 17, 14, 8, 3, 2],
+    "multisets_identical": true,
+    "accepted_sum": 454,
+    "reconstructed_sum": 454,
+    "uniqueness_note": "The commission supplied per-file counts but not filenames. The reconstruction satisfies both the exact multiset and the exact sum, which identifies the 15-file C1 suite uniquely at this grain."
+  },
+  "tree_state": {
+    "clean_after_execution": true,
+    "tracked_files_modified_beyond_the_merge": 0,
+    "untracked_artifacts": "__pycache__ and .DS_Store only, none committed",
+    "data_directory_modified": false
+  },
+  "raw_survey_access": {
+    "performed": false,
+    "files_under_data_read_listed_hashed_or_probed": 0,
+    "attestation": "No survey file was read, hashed, or metadata-probed. Exclusion of the five pandas/pyreadstat files was decided on import statements alone."
+  },
+  "lane_scope": {
+    "workload_oracle_freeze_lane_B": "not performed",
+    "execution_runtime_qualification_lane_C": "not performed; only the runtime is recorded here as the commission directs",
+    "c4_raw_execution": "not performed"
+  },
+  "wider_sweep_claimed": false,
+  "wider_sweep_note": "Only the 25 declared source-free files were executed, plus the two parent-tip triage runs and one collection-error run. No broader repository sweep is claimed.",
+  "lint_or_typecheck_claimed": false
+}
