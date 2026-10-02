@@ -734,3 +734,83 @@ Full receipt:
 Terminal:
 `PASS_WITH_SEVEN_ADDITIONAL_CORRECTIONS__NO_FURTHER_MATERIAL_CHAT_ONLY_PRODUCT_CONCLUSION_FOUND`
 
+## 2026-10-02 — Kernel-sifting / living-organism transition
+
+Sorok has now explicitly changed the level at which the late hostile-review work is interpreted.
+
+The project has **not** adjudicated Rawlsing's final axis/spine/engine/kernel.
+
+Current law:
+
+`KERNEL = OPEN_DISCOVERY`.
+
+The prior late-chat audits remain valuable as local correctness and boundary evidence, but their purpose is now subordinate to architecture compression.
+
+Canonical living machine map:
+`03_REAL_ALPHA_SPINE.md`.
+
+Cross-cutting discovery question:
+`Q-KERNEL-001`.
+
+Operating method now requires hostile-review waves to return:
+- local corrections;
+- affected organ/state/flow/membrane/clock;
+- repeated structural pattern;
+- tunable balance if applicable;
+- candidate-kernel implication;
+- possible rule compression.
+
+The current machine map describes:
+- structural/historical world production;
+- durable person production;
+- shared pre-contact root as an alpha optimization hypothesis;
+- user participation;
+- situated perception;
+- person×event mediation;
+- canonical event/history admission;
+- recursive durable update;
+- independent life;
+- user reflexive loop;
+- platform/research/community membranes;
+- distinct clocks;
+- feedback loops;
+- tunable balances.
+
+None of these is presumed to be the final kernel.
+
+Five current candidate kernel families are recorded only for hostile testing:
+1. relational recursion;
+2. independent causal otherness;
+3. situated relation between independently caused persons;
+4. irreversible causal history under partial knowledge;
+5. neighbor-as-end / noninstrumental other.
+
+The candidate list is nonexhaustive.
+
+The desired program trajectory is:
+
+`MANY LOCAL LAWS`
+→ `REPEATED STRUCTURAL NECESSITIES`
+→ `CONCRETE ORGANISM`
+→ `COMPETING KERNEL CANDIDATES`
+→ `HOSTILE DERIVATION / FALSIFICATION`
+→ eventual `GENERATIVE COMPRESSION`.
+
+This work does not block alpha prototyping. Alpha may itself discriminate among candidate kernels.
+
+Question accounting now includes one new open, nonblocking discovery frontier:
+- total questions: 118;
+- ALPHA_SPEC blockers: 1;
+- ALPHA_IMPLEMENTATION blockers: 43;
+- ALPHA_VALIDATION: 25;
+- POST_ALPHA: 18;
+- answered/closed NONE: 30;
+- open nonblocking kernel-discovery frontier: 1.
+
+Control-room decision:
+`SPD-0203`.
+
+Risks:
+- `RISK-160` premature false-kernel closure;
+- `RISK-161` correct-rule accumulation without machine coherence.
+
