@@ -1296,3 +1296,62 @@ Question accounting:
 - 30 nonblocking answered/closed;
 - 1 open nonblocking kernel-discovery frontier.
 
+## 2026-10-02 — Framework reality-metabolism / self-retcon synthesis
+
+Artifact:
+`73_FRAMEWORK_REALITY_METABOLISM_SELF_RETCON_AND_CONTRADICTION_VISIBILITY_R1.md`.
+
+Recovered V3 fit:
+- CAN-011 permits multiple overlapping contradictory middle-state mediators/tensions and no canonical dominant framework.
+- CAN-012 explicitly rejects universal beneficial progression; rupture/metabolization may remain raw, working, provisional, sealed, chronic, recurrent, partially reorganized, integrated-with-residue or unchanged.
+- ADP-016 preserves objective history separately from actor memory/accessibility and forbids analyst-history rehydration.
+- recovered pressure-flow continuity includes causal traces/grooves/conductance, providing a lawful precedent for historically intensified response routing without fixed personality typing.
+
+New core law:
+
+> **Overwrite routing, never overwrite history.**
+
+A self-retcon may dominate actor salience, memory accessibility, evidence weighting, self-description and action while predecessor frameworks, objective history, counterevidence and contradictory middle states remain canonical.
+
+Framework/reality response operators:
+- HOLD_UNRESOLVED;
+- ACCOMMODATE / INTEGRATE;
+- ASSIMILATE / APPROPRIATE;
+- PARTITION / SEAL;
+- DISCOUNT / IGNORE;
+- EXTERNALIZE;
+- DESTABILIZE / CRACK;
+- TRANSFORM / REFRAME.
+
+No operator has a universal moral sign.
+
+Core nonteleology:
+
+> **Reality is inescapable as causal pressure, not as correct interpretation.**
+
+> **More coherent can mean more integrated or more tyrannical.**
+
+A later self-reading may become more generous/capacious while remaining incomplete.
+
+A powerful framework may correctly expose one domination and simultaneously create new exclusions, memory brutality, partition or Horizon colonization.
+
+Contradiction may be canonical and externally observable without being actor-known.
+
+Decisions:
+- `SPD-0222..SPD-0226`.
+
+Risks:
+- `RISK-182..RISK-186`.
+
+Question:
+- `Q-FRAMEMETAB-001` — ALPHA_IMPLEMENTATION.
+
+Question accounting:
+- 123 total;
+- 1 ALPHA_SPEC;
+- 47 ALPHA_IMPLEMENTATION;
+- 25 ALPHA_VALIDATION;
+- 19 POST_ALPHA;
+- 30 nonblocking answered/closed;
+- 1 open nonblocking kernel-discovery frontier.
+
