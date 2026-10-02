@@ -852,3 +852,99 @@ while
 
 This is a strong experiential test of nested non-exhaustion + constitutive relation, but the feature itself remains a contingent social/product mechanism rather than part of the kernel.
 
+## 16. Historical bridge reconciliation and contradiction preservation
+
+Late-resolved pre-contact detail must not be handled as free backstory generation.
+
+Current candidate loop:
+
+`KNOWN PAST CONTEXT`
++
+`KNOWN PRESENT FACT`
++
+`KNOWN V3 CHECKPOINTS`
++
+`KNOWN INTERVENING CANON`
++
+`UNRESOLVED HISTORICAL SLOT`
+→ candidate historical insertion
+→ typed causal residues
+→ bounded forward propagation
+→ reconciliation against later checkpoints / present V3
+→ `ACCEPT / DOWNGRADE / MODIFY / REJECT / VERSION`.
+
+Strong law:
+
+> **Late historical materialization may explain, specify and locally enrich established developmental state; it may not casually manufacture a new major developmental cause whose absence would have made current V3 materially different.**
+
+### Causal slack
+
+V3 should be allowed to contain **abstractly known developmental change with partially unresolved causal allocation**.
+
+Example:
+- friendship rupture;
+- anxiety cost;
+- increased openness;
+- reduced control rigidity;
+- some concrete exposures/practices still unresolved.
+
+A later meditation episode may fill part of that open channel without inventing the transformation itself.
+
+### Contradiction preservation
+
+Do not confuse reconciliation with harmonization.
+
+Preserve:
+
+`HARD FACTUAL / CAUSAL INCONSISTENCY`
+→ reject/repair.
+
+`LAWFUL HUMAN CONTRADICTION`
+→ preserve.
+
+Examples:
+- old objects surviving ideological change;
+- beliefs conflicting with habits;
+- mixed motives;
+- self-narratives that are incomplete;
+- preferences with no articulated deep reason;
+- one relational domain remaining control-heavy while another loosens.
+
+Compact:
+
+> **PERSON != BEST AVAILABLE THEORY OF PERSON.**
+
+And:
+
+> **Contradiction is often generative person-state, not corruption.**
+
+### Anti-serendipity
+
+Do not maximize:
+- elegant causal connection;
+- symbolic meaningfulness;
+- foreshadowing;
+- explanatory compression.
+
+Preserve:
+- contingency;
+- dead ends;
+- ordinary liking;
+- weak associations;
+- coincidence;
+- unresolved significance.
+
+Compact:
+
+> **CAUSAL AVAILABILITY != NARRATIVE DESTINY.**
+
+and:
+
+> **Do not maximize meaningfulness. Preserve contingency.**
+
+Artifact:
+`70_HISTORICAL_BRIDGE_RECONCILIATION_CAUSAL_SLACK_AND_CONTRADICTION_PRESERVATION_R1.md`.
+
+Question:
+`Q-HISTBRIDGE-001`.
+
