@@ -932,3 +932,124 @@ Current state remains:
 
 But the search is now substantially more localized and schematized than before.
 
+## 2026-10-02 — Agency without sovereignty + persona introduction
+
+New product/kernel-aligned synthesis:
+
+> **The user remains the subject of play but not the sovereign center of the played world.**
+
+Compact:
+`AGENCY != SOVEREIGNTY`.
+
+The user may judge, resist, love, help, harm, pathologize, repair or leave.
+
+They do not gain authority to make those judgments canonical truth about the persona, erase what occurred, or force the other person's reality to collapse into the user's preferred interpretation.
+
+Current corrected kenotic-attention formulation:
+
+> **Kenotic attention is epistemic submission to the other's excess, not moral submission to the other's judgment.**
+
+Rawlsing should structurally make player-centered reduction inadequate through:
+- unchosen encounter;
+- independent persona/world causality;
+- user-independent truth;
+- model != person;
+- irreversible consequence;
+- no same-person reset;
+- partial disclosure / ATTEND.
+
+This is banked in:
+- `69_PERSONA_INTRODUCTION_COMPARATIVE_BRANCHES_AND_AGENCY_WITHOUT_SOVEREIGNTY_R1.md`;
+- `SPD-0205`;
+- D007 kernel harvest and derivation map.
+
+### Persona introduction
+
+New candidate social primitive:
+
+> **share the person lineage, never the branch.**
+
+Two distinct permissions now exist conceptually:
+
+1. **human access invitation** — grants Rawlsing access to a new human under the scarce one-for-one invitation constitution;
+2. **persona introduction** — directs an already eligible user toward a particular seed-person lineage.
+
+An existing-player persona introduction need not spend a scarce human access invite.
+
+A new-user human invite may optionally carry a persona introduction:
+the inviter may choose among lawful person lineages they have encountered and introduce the invitee to that person.
+
+From the invitee's perspective the persona remains unchosen by them.
+
+This is introduction, not:
+- compatibility matching;
+- character recommendation;
+- endorsement of persona goodness;
+- branch transfer.
+
+Hard boundary:
+
+`SHARE PERSON LINEAGE != SHARE PERSON BRANCH`.
+
+Common:
+- pre-contact seed lineage/root;
+- lawful pre-contact fact-base.
+
+Strictly branch-local:
+- user-specific relationship history;
+- actor model of that user;
+- intimacy/conflict/disclosure;
+- post-contact person development;
+- world changes caused by that branch.
+
+### Shared pre-contact fact-base growth
+
+ATTEND/inquiry may trigger lawful resolution of a previously unresolved pre-contact fact locus.
+
+Use the term:
+**retro-resolved pre-contact canon**.
+
+Preserve:
+
+`ATTEND SELECTS RESOLUTION LOCUS != ATTEND SELECTS RESOLUTION CONTENT`.
+
+The fact must be derived from root/history constraints and governed randomness, independent of the querying branch.
+
+Once admitted it may be shared across compatible/new forks.
+
+It may not become a retroactive antecedent cause inside a causally closed branch if it would have changed prior history.
+
+### Social value
+
+The intended social experience is:
+
+> "I met this really interesting person randomly. I wonder what Tom will make of her."
+
+Then two real humans may compare:
+- what they noticed;
+- what they learned;
+- which pre-contact formative facts each discovered;
+- how the same starting person became different through different relationship histories.
+
+That turns shared-person sociality into a lived demonstration of:
+
+`COMMON ROOT + DIFFERENT DISCLOSURE + DIFFERENT RELATION → DIFFERENT BECOMING`.
+
+New question:
+`Q-PERSONSHARE-001` — post-alpha, nonblocking.
+
+Decisions:
+- `SPD-0205..SPD-0208`.
+
+Risks:
+- `RISK-165..RISK-169`.
+
+Question accounting:
+- 119 total;
+- 1 ALPHA_SPEC blocker;
+- 43 ALPHA_IMPLEMENTATION;
+- 25 ALPHA_VALIDATION;
+- 19 POST_ALPHA;
+- 30 nonblocking answered/closed;
+- 1 open nonblocking kernel-discovery frontier.
+
