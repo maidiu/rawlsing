@@ -990,3 +990,52 @@ Artifact:
 Question:
 `Q-MEANINGSTRATA-001`.
 
+## 18. Recursive self-rereading, visibility and Horizon
+
+Self-narratives may become durable interpretive-routing frameworks.
+
+Preserve:
+
+`PAST EVENT`
+!= `PAST SELF-MYTH`
+!= `LATER CRITIQUE OF THAT MYTH`
+!= `OBJECTIVE CAUSAL TRUTH`.
+
+Candidate dynamic:
+
+`IDENTIFICATION → INTERNALIZATION → NATURALIZATION → INVISIBILITY`
+
+and:
+
+`ALIENATION → EXTERNALIZATION → VISIBILITY`
+
+with the hard qualification:
+
+> **Visibility is not truth, and invisibility is not absence of causal power.**
+
+A later framework may expose an earlier one without automatically judging it correctly.
+
+A new text/person/practice may function as an **articulation event**:
+it can name, bind and reorganize a lived shape it did not originally cause.
+
+Deep adoption may turn interpretation into later causal organization.
+
+Compact:
+
+> **The past is fixed; relation-to-the-past is historical and revisable.**
+
+> **The interpretation never exhausts the person, but it can really enter into what the person becomes.**
+
+Absolute Horizon remains distinct from identity/self-myth. Interpretive frameworks may:
+- remain finite;
+- carry Horizon claims;
+- colonize Horizon;
+- be judged by Horizon;
+- reorder what the actor treats as ultimately binding.
+
+Artifact:
+`72_RECURSIVE_SELF_INTERPRETATION_VISIBILITY_AND_HORIZON_R1.md`.
+
+Question:
+`Q-SELFREAD-001`.
+
