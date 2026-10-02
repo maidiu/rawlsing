@@ -1,0 +1,114 @@
+{
+  "DTA_reads": 0,
+  "SAV_reads": 0,
+  "combined_base": "8f7efe690a161902e79358eb31650c238a4c0be8",
+  "fixture_authority_boundary": "No synthetic SHA was added to either production encoding allowlist. Fresh fixture tests must distinguish testing immutable actual SHA admission with synthetic SHA strings from any temporary synthetic-fixture allowlist overlay; an overlay does not authorize a real source or certify its encoding.",
+  "fixtures_generated": 0,
+  "prior_C4C_probes_relabelled_as_current": false,
+  "probes": [
+    {
+      "family": "D01",
+      "required_checks": [
+        {
+          "check": "BIG5 exact admission",
+          "observed": null,
+          "status": "NOT_EXECUTED__NON_MAC_SURFACE_UNAVAILABLE"
+        },
+        {
+          "check": "WINDOWS-1252 exact admission",
+          "observed": null,
+          "status": "NOT_EXECUTED__NON_MAC_SURFACE_UNAVAILABLE"
+        },
+        {
+          "check": "encoding=None behavior",
+          "observed": null,
+          "status": "NOT_EXECUTED__NON_MAC_SURFACE_UNAVAILABLE"
+        },
+        {
+          "check": "metadata-only path",
+          "observed": null,
+          "status": "NOT_EXECUTED__NON_MAC_SURFACE_UNAVAILABLE"
+        },
+        {
+          "check": "wrong SHA/encoding rejection",
+          "observed": null,
+          "status": "NOT_EXECUTED__NON_MAC_SURFACE_UNAVAILABLE"
+        },
+        {
+          "check": "no auto/guess/fallback widening",
+          "observed": null,
+          "status": "NOT_EXECUTED__NON_MAC_SURFACE_UNAVAILABLE"
+        }
+      ]
+    },
+    {
+      "family": "G01",
+      "required_checks": [
+        {
+          "check": "native int storage to float64 arrival",
+          "observed": null,
+          "status": "NOT_EXECUTED__NON_MAC_SURFACE_UNAVAILABLE"
+        },
+        {
+          "check": "user-missing versus observed-storage distinction",
+          "observed": null,
+          "status": "NOT_EXECUTED__NON_MAC_SURFACE_UNAVAILABLE"
+        },
+        {
+          "check": "scalar boxing/unboxing",
+          "observed": null,
+          "status": "NOT_EXECUTED__NON_MAC_SURFACE_UNAVAILABLE"
+        },
+        {
+          "check": "exact R5 float bit tokens",
+          "observed": null,
+          "status": "NOT_EXECUTED__NON_MAC_SURFACE_UNAVAILABLE"
+        }
+      ]
+    },
+    {
+      "family": "D02",
+      "required_checks": [
+        {
+          "check": "naive date/datetime/time reader arrival classes",
+          "observed": null,
+          "status": "NOT_EXECUTED__NON_MAC_SURFACE_UNAVAILABLE"
+        },
+        {
+          "check": "accepted opaque normalization",
+          "observed": null,
+          "status": "NOT_EXECUTED__NON_MAC_SURFACE_UNAVAILABLE"
+        },
+        {
+          "check": "timezone-aware rejection",
+          "observed": null,
+          "status": "NOT_EXECUTED__NON_MAC_SURFACE_UNAVAILABLE"
+        },
+        {
+          "check": "item-wrapped hostile propagation",
+          "observed": null,
+          "status": "NOT_EXECUTED__NON_MAC_SURFACE_UNAVAILABLE"
+        }
+      ]
+    },
+    {
+      "family": "DTA_LiTS_physical_layer",
+      "required_checks": [
+        {
+          "check": "synthetic DTA through decode_dta(..., encoding=\"latin1\")",
+          "observed": null,
+          "status": "NOT_EXECUTED__NON_MAC_SURFACE_UNAVAILABLE"
+        },
+        {
+          "check": "user/extended missing carrier behavior in current physical bridge",
+          "observed": null,
+          "status": "NOT_EXECUTED__NON_MAC_SURFACE_UNAVAILABLE"
+        }
+      ]
+    }
+  ],
+  "qualified_environment": null,
+  "raw_survey_access": 0,
+  "schema": "PYAT_C4C2_SYNTHETIC_READER_PROBES@1",
+  "status": "NOT_EXECUTED__NON_MAC_SURFACE_UNAVAILABLE"
+}

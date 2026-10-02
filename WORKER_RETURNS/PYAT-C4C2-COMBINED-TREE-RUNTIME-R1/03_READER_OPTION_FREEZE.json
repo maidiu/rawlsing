@@ -1,0 +1,182 @@
+{
+  "chunk_helper": {
+    "batch_size_default": 10000,
+    "explicit_chunksize": "max(1, batch_size // max(1, variable_count))",
+    "explicit_kwargs": {
+      "apply_value_formats": false,
+      "encoding": "caller value",
+      "user_missing": true
+    },
+    "historically_reported_defaults": {
+      "limit": 0,
+      "multiprocess": false,
+      "num_processes": 4,
+      "num_rows": null,
+      "offset": 0
+    },
+    "target_signature_verified": false
+  },
+  "combined_base": "8f7efe690a161902e79358eb31650c238a4c0be8",
+  "explicit_call_sites": [
+    "rawlsing_next/pre553_physical_decoder.py:155",
+    "rawlsing_next/pre553_physical_decoder.py:496",
+    "rawlsing_next/pre553_physical_decoder.py:502"
+  ],
+  "future_requirement": "Verify exact read_sav/read_dta/read_file_in_chunks signatures and effective helper-injected arguments on the designated non-Mac host, bind all omitted defaults to exact pyreadstat artifact identity, and execute synthetic probes. A documentation-only candidate is not a completed reader-option freeze.",
+  "historical_default_source": {
+    "commit": "5efcae137cdcab2fbb0be0cbc54c0d83da799480",
+    "path": "WORKER_RETURNS/PYAT-C4C-RUNTIME-QUALIFICATION-R1/03_SOURCE_FREE_COMPATIBILITY_PROBES.json",
+    "probe": "P14",
+    "scope": "read_sav reported signatures; independently inspect both read_sav and read_dta in installed target 1.3.6 before freezing"
+  },
+  "options": [
+    {
+      "default_evidence_grade": "NOT_RECORDED_IN_C4C_P14__NOT_TARGET_VERIFIED",
+      "default_verified": false,
+      "explicit_by_stage": {
+        "encoded_full_read": "omitted; default False pending verification",
+        "metadata_read": true,
+        "unencoded_chunk_read": "omitted; default False pending verification"
+      },
+      "historically_reported_1_3_6_default": null,
+      "notes": "",
+      "option": "metadataonly"
+    },
+    {
+      "default_evidence_grade": "NOT_RECORDED_IN_C4C_P14__NOT_TARGET_VERIFIED",
+      "default_verified": false,
+      "explicit_by_stage": {
+        "all_stages": false
+      },
+      "historically_reported_1_3_6_default": null,
+      "notes": "Value-format application is explicitly disabled. formats_as_category=True alone does not establish categorical arrivals; the earlier C4C P14 inference is not adopted.",
+      "option": "apply_value_formats"
+    },
+    {
+      "default_evidence_grade": "NOT_RECORDED_IN_C4C_P14__NOT_TARGET_VERIFIED",
+      "default_verified": false,
+      "explicit_by_stage": {
+        "all_stages": true
+      },
+      "historically_reported_1_3_6_default": null,
+      "notes": "",
+      "option": "user_missing"
+    },
+    {
+      "default_evidence_grade": "NOT_RECORDED_IN_C4C_P14__NOT_TARGET_VERIFIED",
+      "default_verified": false,
+      "explicit_by_stage": {
+        "all_stages": "caller encoding, default None"
+      },
+      "historically_reported_1_3_6_default": null,
+      "notes": "Admission is exact SHA+encoding in _compatibility_config. auto/guess/fallback are refused before reader invocation. None is unprivileged, not an explicit decoder guess/fallback authority.",
+      "option": "encoding"
+    },
+    {
+      "default_evidence_grade": "C4C_P14_REPORTED_SIGNATURE__NOT_FRESH_TARGET_VERIFICATION",
+      "explicit_by_stage": {
+        "all_stages": "omitted"
+      },
+      "historically_reported_1_3_6_default": true,
+      "notes": "",
+      "option": "formats_as_category"
+    },
+    {
+      "default_evidence_grade": "C4C_P14_REPORTED_SIGNATURE__NOT_FRESH_TARGET_VERIFICATION",
+      "explicit_by_stage": {
+        "all_stages": "omitted"
+      },
+      "historically_reported_1_3_6_default": false,
+      "notes": "",
+      "option": "dates_as_pandas_datetime"
+    },
+    {
+      "default_evidence_grade": "C4C_P14_REPORTED_SIGNATURE__NOT_FRESH_TARGET_VERIFICATION",
+      "explicit_by_stage": {
+        "all_stages": "omitted"
+      },
+      "historically_reported_1_3_6_default": false,
+      "notes": "",
+      "option": "disable_datetime_conversion"
+    },
+    {
+      "default_evidence_grade": "C4C_P14_REPORTED_SIGNATURE__NOT_FRESH_TARGET_VERIFICATION",
+      "explicit_by_stage": {
+        "all_stages": "omitted; chunk helper controls pagination"
+      },
+      "historically_reported_1_3_6_default": 0,
+      "notes": "",
+      "option": "row_limit"
+    },
+    {
+      "default_evidence_grade": "C4C_P14_REPORTED_SIGNATURE__NOT_FRESH_TARGET_VERIFICATION",
+      "explicit_by_stage": {
+        "metadata_and_encoded_full_read": "omitted",
+        "unencoded_chunk_read": "chunk helper controls offsets"
+      },
+      "historically_reported_1_3_6_default": 0,
+      "notes": "",
+      "option": "row_offset"
+    },
+    {
+      "default_evidence_grade": "C4C_P14_REPORTED_SIGNATURE__NOT_FRESH_TARGET_VERIFICATION",
+      "explicit_by_stage": {
+        "all_stages": "omitted"
+      },
+      "historically_reported_1_3_6_default": null,
+      "notes": "Do not infer actual DataFrame dtypes or arrival classes from the signature.",
+      "option": "output_format"
+    },
+    {
+      "default_evidence_grade": "C4C_P14_REPORTED_SIGNATURE__NOT_FRESH_TARGET_VERIFICATION",
+      "explicit_by_stage": {
+        "all_stages": "omitted"
+      },
+      "historically_reported_1_3_6_default": null,
+      "notes": "",
+      "option": "extra_date_formats"
+    },
+    {
+      "default_evidence_grade": "C4C_P14_REPORTED_SIGNATURE__NOT_FRESH_TARGET_VERIFICATION",
+      "explicit_by_stage": {
+        "all_stages": "omitted"
+      },
+      "historically_reported_1_3_6_default": null,
+      "notes": "",
+      "option": "extra_datetime_formats"
+    },
+    {
+      "default_evidence_grade": "C4C_P14_REPORTED_SIGNATURE__NOT_FRESH_TARGET_VERIFICATION",
+      "explicit_by_stage": {
+        "all_stages": "omitted"
+      },
+      "historically_reported_1_3_6_default": null,
+      "notes": "",
+      "option": "extra_time_formats"
+    },
+    {
+      "default_evidence_grade": "C4C_P14_REPORTED_SIGNATURE__NOT_FRESH_TARGET_VERIFICATION",
+      "explicit_by_stage": {
+        "all_stages": "omitted"
+      },
+      "historically_reported_1_3_6_default": false,
+      "notes": "Ordered category conversion is not explicitly requested; value formats remain disabled.",
+      "option": "formats_as_ordered_category"
+    },
+    {
+      "default_value": null,
+      "default_verified": false,
+      "explicit_by_stage": {
+        "all_stages": "omitted"
+      },
+      "notes": "API parameter recorded in C4C P06; its exact target default still requires fresh signature/source inspection.",
+      "option": "usecols"
+    }
+  ],
+  "production_blob": "d3d828c171ea9fdd0e90563aff6ef705f5aae2cf",
+  "production_default_enforcement_added": false,
+  "qualified_freeze": false,
+  "reader_version_constraint": "1.3.6",
+  "schema": "PYAT_C4C2_READER_OPTION_FREEZE@1",
+  "status": "STATIC_EXPLICIT_ARGS_RECORDED__TARGET_DEFAULT_FREEZE_PENDING"
+}

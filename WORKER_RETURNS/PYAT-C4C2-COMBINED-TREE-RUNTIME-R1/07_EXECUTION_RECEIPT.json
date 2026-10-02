@@ -1,0 +1,86 @@
+{
+  "artifact_sha256": {
+    "00_RETURN.md": "999daabcc5aaddaec858cf7ac9b61c09819f85e4cc4fd249c05f2e439879bf82",
+    "01_ENVIRONMENT_LOCK.json": "25f6bf4d6fdb5c307ad93a62bad22c4bc50f6ba077b1b201d7e2ca071a54be22",
+    "02_ACTUAL_C4_CALL_PATH.json": "5492793dee87e194b97dab46e783ea092622e6f387e52c2230b907b105120935",
+    "03_READER_OPTION_FREEZE.json": "afbe277eabf4e5edee490be21731f82a319113e633b977e0b52c03ccbbee3dc6",
+    "04_SYNTHETIC_READER_PROBES.json": "3219290bdfe7be54a62d04e4463cb6c128a4abafec52b40b3416b1242dc779f6",
+    "05_AUTHORITATIVE_C3_SIX_FILE_COURT.json": "a916a549a34562fd00ec2060d3ed580b402e97d20936c59bc8cf96034979de85",
+    "06_PHYSICAL_IDENTITY_RESOURCE_LAW.json": "5998a7040a4831b57eb58299378f7ece2d3079dfdd6e7ba571053513a34ceb94",
+    "08_FINAL_DISPOSITION.json": "8f11fd7f183436bd8307618417a41f520339a54def27ad96ff43e6dba20a5049",
+    "09_STATIC_AUDIT.json": "2b5c1776a068e47f656b957a67f2fcc41ac3880689f7e5f26f0d9e44ff3f0559",
+    "09_STATIC_AUDIT.py": "54d885b13d8a575c0ffdbbc95b86317a3156d03131ae94dcba23b1383f6d332b"
+  },
+  "audited_HEAD": "8f7efe690a161902e79358eb31650c238a4c0be8",
+  "combined_base": "8f7efe690a161902e79358eb31650c238a4c0be8",
+  "commission_tip": "1d1676f4b0d8a1963acad5f2dbaa7ae8ffb91e6e",
+  "disposition": "C4C2_NON_MAC_SURFACE_UNAVAILABLE__HQ_ADJUDICATION_REQUIRED",
+  "environment": {
+    "byteorder": "little",
+    "executable": "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11-intel64",
+    "implementation": "CPython",
+    "machine": "x86_64",
+    "package_metadata_for_this_interpreter_only": {
+      "duckdb": null,
+      "numpy": null,
+      "pandas": null,
+      "pyarrow": null,
+      "pyreadstat": null,
+      "pytest": null
+    },
+    "platform": "macOS-13.7.8-x86_64-i386-64bit",
+    "python": "3.11.3",
+    "release": "22.6.0",
+    "system": "Darwin"
+  },
+  "execution_kind": "SOURCE_ONLY_STATIC_AUDIT_ON_MAC__NO_RUNTIME_QUALIFICATION",
+  "final_SHA_locator": "Final commit SHA is returned externally in the HQ handoff/final response; it cannot be embedded in its own commit without a self-reference.",
+  "local_interpreter_probe": "The working python3.11-intel64 is CPython 3.11.3. All six requested third-party distributions are absent from that interpreter; importing pyreadstat raised ModuleNotFoundError. This interpreter was used only for static auditing, not as a fallback qualification host. Other local interpreters were not exhaustively inventoried.",
+  "mutation_scope": {
+    "allowed_prefix": "WORKER_RETURNS/PYAT-C4C2-COMBINED-TREE-RUNTIME-R1/",
+    "dependency_installs_or_upgrades": 0,
+    "historical_gates_changed": false,
+    "self_adoption": false,
+    "tracked_production_changes": 0
+  },
+  "provenance_assertions": {
+    "C1_exact": 5,
+    "C3_exact": 6,
+    "court_blobs_equal_accepted_C3": 6,
+    "court_paths_exist": 6,
+    "facade_exact": true,
+    "merge_ancestor": "9a5752a8ce4a119efd24cbbeedd8cbcda8abbadb"
+  },
+  "qualification_execution_HEAD": null,
+  "runtime_execution": {
+    "C1_reruns": 0,
+    "C3_reruns": 0,
+    "Candidate_A_B_C_runs": 0,
+    "P2X_runs": 0,
+    "live_C4_runs": 0,
+    "non_Mac_provisioned": false,
+    "pytest_invocations": 0,
+    "reader_probes": 0,
+    "synthetic_files_created": 0,
+    "wider_sweeps": 0
+  },
+  "schema": "PYAT_C4C2_EXECUTION_RECEIPT@1",
+  "source_access": {
+    "note": "Git worktree checkout/materialization is not a decoder access. An initial broad filename search listed repository paths, including paths under data; no survey contents were opened. Subsequent inspections were restricted to named source/return/workflow paths.",
+    "raw_survey_content_reads": 0,
+    "raw_survey_decodes": 0,
+    "raw_survey_hashes": 0,
+    "raw_survey_metadata_probes": 0
+  },
+  "static_audit": {
+    "command": "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11-intel64 WORKER_RETURNS/PYAT-C4C2-COMBINED-TREE-RUNTIME-R1/09_STATIC_AUDIT.py",
+    "exit_code": 0,
+    "output": "09_STATIC_AUDIT.json",
+    "output_sha256": "2b5c1776a068e47f656b957a67f2fcc41ac3880689f7e5f26f0d9e44ff3f0559",
+    "production_imports": 0,
+    "script": "09_STATIC_AUDIT.py",
+    "script_sha256": "54d885b13d8a575c0ffdbbc95b86317a3156d03131ae94dcba23b1383f6d332b"
+  },
+  "terminal": "C4C2_COMBINED_TREE_RUNTIME_RETURNED__HQ_FANIN_REQUIRED",
+  "worker_branch": "agent/codex-pyat-hq173-c4c2-combined-tree-runtime-r1"
+}

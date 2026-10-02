@@ -1,0 +1,532 @@
+{
+  "call_edges": [
+    {
+      "callee": "_decode",
+      "caller": "decode_sav / decode_dta",
+      "evidence": "Wrappers select sav/dta; _decode imports pyreadstat at 478, selects read_sav/read_dta at 495 and invokes metadata/full reads at 496/502.",
+      "line": 555,
+      "path": "rawlsing_next/pre553_physical_decoder.py"
+    },
+    {
+      "callee": "pyreadstat.read_file_in_chunks -> selected read_sav/read_dta -> _physical_value",
+      "caller": "PhysicalSourceIncidence.iter_batches",
+      "evidence": "Unencoded incidence streams from the selected reader with apply_value_formats=False and user_missing=True. Encoded incidence emits its retained full-read frame.",
+      "line": 155,
+      "path": "rawlsing_next/pre553_physical_decoder.py"
+    },
+    {
+      "callee": "build_validated_source_backed_c11_release / build_validated_source_backed_c11_release_from_stream -> C11Repository",
+      "caller": "build_source_backed_c11_repository",
+      "evidence": "Incidence uses physical bridge; exact stream uses project/verify/validate. Cache may reuse the already validated release.",
+      "line": 642,
+      "path": "rawlsing_next/pre553_source_backed_c11_facade.py"
+    },
+    {
+      "callee": "build_source_backed_c11_repository -> execute_empirical_query",
+      "caller": "execute_source_backed_empirical_query",
+      "evidence": "Builds repository/release and calls the accepted empirical query owner.",
+      "line": 656,
+      "path": "rawlsing_next/pre553_source_backed_c11_facade.py"
+    },
+    {
+      "callee": "compose_positioned_subject_possibility",
+      "caller": "provide_empirical_possibility_slice",
+      "evidence": "Accepts repository, query, predicate and exact witness; it does not directly call execute_source_backed_empirical_query. The caller supplies the repository built by the facade.",
+      "line": 574,
+      "path": "rawlsing_next/pre553_empirical_possibility_provider.py"
+    },
+    {
+      "callee": "execute_empirical_query -> evaluate_positioned_subject_possibility",
+      "caller": "compose_positioned_subject_possibility",
+      "evidence": "The direct route calls the empirical owner; only SUPPORTED facts generate slice evidence and enter the named consumer at line 1131.",
+      "line": 1074,
+      "path": "rawlsing_next/pre553_analytical_composition.py"
+    },
+    {
+      "callee": "evaluate_positioned_subject_possibility",
+      "caller": "named positioned-subject consumer",
+      "evidence": "Consumes generated evidence and the model rule.",
+      "line": 417,
+      "path": "rawlsing_next/source_backed_positioned_subject_possibility.py"
+    }
+  ],
+  "combined_base": "8f7efe690a161902e79358eb31650c238a4c0be8",
+  "duckdb_required": false,
+  "dynamic_loader_review": [
+    {
+      "call": "__import__('json')",
+      "line": 919,
+      "module": "rawlsing_next.pre553_discovery_exact"
+    }
+  ],
+  "dynamic_loader_verdict": "The sole dynamic import is literal __import__('json') at pre553_discovery_exact.py:919. No import_module, exec_module, spec_from_file_location, exec, eval, run_module or run_path call occurs in the closure.",
+  "external_import_roots": [
+    "__future__",
+    "base64",
+    "contextlib",
+    "contextvars",
+    "dataclasses",
+    "datetime",
+    "decimal",
+    "enum",
+    "fractions",
+    "functools",
+    "hashlib",
+    "inspect",
+    "itertools",
+    "json",
+    "math",
+    "pathlib",
+    "pyreadstat",
+    "re",
+    "struct",
+    "types",
+    "typing",
+    "zlib"
+  ],
+  "gates": {
+    "ee_p2x_darwin_court_driver.EXPECTED_RUNTIME": "NOT_REFERENCED_OR_IMPORTED_IN_INSPECTED_CLOSURE",
+    "ee_p2x_darwin_stage_backend.FROZEN_PYREADSTAT_VERSION": "NOT_REFERENCED_OR_IMPORTED_IN_INSPECTED_CLOSURE"
+  },
+  "historical_C4C_correction": "The earlier return treated the measured-P2X driver and historical LiTS loader as the planned C4 path. That inference is not supported by this exact combined-tree import/call closure. Neither gate nor DuckDB is a current-path blocker.",
+  "historical_gates_patched_or_waived": false,
+  "namespace_package_without_initializer": true,
+  "roots": [
+    "rawlsing_next.pre553_physical_decoder",
+    "rawlsing_next.pre553_source_backed_c11_facade",
+    "rawlsing_next.pre553_empirical_possibility_provider",
+    "rawlsing_next.pre553_analytical_composition",
+    "rawlsing_next.source_backed_positioned_subject_possibility"
+  ],
+  "schema": "PYAT_C4C2_ACTUAL_C4_CALL_PATH@1",
+  "scope_limit": "Static evidence for these exact entry points and supplied native C11 repository. It does not qualify arbitrary caller-supplied repository implementations or unrelated EE-P2X/Route-B drivers.",
+  "status": "STATIC_PATH_ADJUDICATED",
+  "transitive_local_module_count": 21,
+  "transitive_local_modules": {
+    "rawlsing_next._pre553_query_common": {
+      "blob": "938a6b03a63dd34ef4f0f63655ed8f11f65c5d92",
+      "imports": [
+        {
+          "line": 21,
+          "module": "rawlsing_next.pre553_c11_integrity"
+        },
+        {
+          "line": 26,
+          "module": "rawlsing_next.pre553_c11_repository"
+        },
+        {
+          "line": 27,
+          "module": "rawlsing_next.pre553_empirical_authority"
+        },
+        {
+          "line": 32,
+          "module": "rawlsing_next.pre553_empirical_objects"
+        }
+      ],
+      "path": "rawlsing_next/_pre553_query_common.py"
+    },
+    "rawlsing_next._pre553_query_eval": {
+      "blob": "f808dfcd2008cc71e9203de3cadf1abe14223974",
+      "imports": [
+        {
+          "line": 2,
+          "module": "rawlsing_next._pre553_query_common"
+        },
+        {
+          "line": 3,
+          "module": "rawlsing_next._pre553_query_predicate"
+        },
+        {
+          "line": 346,
+          "module": "rawlsing_next.pre553_runtime_context"
+        },
+        {
+          "line": 578,
+          "module": "rawlsing_next.pre553_runtime_context"
+        }
+      ],
+      "path": "rawlsing_next/_pre553_query_eval.py"
+    },
+    "rawlsing_next._pre553_query_predicate": {
+      "blob": "8590bacf464b2c61f319f581820a3af76ed1e60c",
+      "imports": [
+        {
+          "line": 2,
+          "module": "rawlsing_next._pre553_query_common"
+        },
+        {
+          "line": 3,
+          "module": "rawlsing_next.pre553_runtime_authority"
+        },
+        {
+          "line": 82,
+          "module": "rawlsing_next.pre553_runtime_context"
+        },
+        {
+          "line": 181,
+          "module": "rawlsing_next.pre553_runtime_context"
+        }
+      ],
+      "path": "rawlsing_next/_pre553_query_predicate.py"
+    },
+    "rawlsing_next.pre553_analytical_composition": {
+      "blob": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+      "imports": [
+        {
+          "line": 13,
+          "module": "rawlsing_next.pre553_empirical_objects"
+        },
+        {
+          "line": 26,
+          "module": "rawlsing_next.pre553_empirical_query"
+        },
+        {
+          "line": 27,
+          "module": "rawlsing_next.pre553_discovery_exact"
+        },
+        {
+          "line": 28,
+          "module": "rawlsing_next.pre553_recursive_handoff"
+        },
+        {
+          "line": 29,
+          "module": "rawlsing_next.source_backed_positioned_subject_possibility"
+        }
+      ],
+      "path": "rawlsing_next/pre553_analytical_composition.py"
+    },
+    "rawlsing_next.pre553_c11_ingest": {
+      "blob": "37cd35fa2e3420a3eea272a2902e96ab9ba38aba",
+      "imports": [
+        {
+          "line": 15,
+          "module": "rawlsing_next.pre553_empirical_authority"
+        },
+        {
+          "line": 21,
+          "module": "rawlsing_next.pre553_empirical_objects"
+        },
+        {
+          "line": 39,
+          "module": "rawlsing_next.pre553_c11_integrity"
+        },
+        {
+          "line": 56,
+          "module": "rawlsing_next.pre553_c11_repository"
+        }
+      ],
+      "path": "rawlsing_next/pre553_c11_ingest.py"
+    },
+    "rawlsing_next.pre553_c11_integrity": {
+      "blob": "7c59aa13a2b7c8e3ab0dc90a1400df645b0b4bbd",
+      "imports": [
+        {
+          "line": 15,
+          "module": "rawlsing_next.pre553_empirical_authority"
+        },
+        {
+          "line": 21,
+          "module": "rawlsing_next.pre553_empirical_objects"
+        }
+      ],
+      "path": "rawlsing_next/pre553_c11_integrity.py"
+    },
+    "rawlsing_next.pre553_c11_repository": {
+      "blob": "67c6eb6494522cd11aab1b93d0e73f9cef6036f3",
+      "imports": [
+        {
+          "line": 12,
+          "module": "rawlsing_next.pre553_empirical_objects"
+        },
+        {
+          "line": 13,
+          "module": "rawlsing_next.pre553_c11_integrity"
+        }
+      ],
+      "path": "rawlsing_next/pre553_c11_repository.py"
+    },
+    "rawlsing_next.pre553_discovery_exact": {
+      "blob": "905f24d114419dbdd93879ad2bee5b59dd2f23af",
+      "imports": [
+        {
+          "line": 16,
+          "module": "rawlsing_next.pre553_empirical_authority"
+        },
+        {
+          "line": 21,
+          "module": "rawlsing_next.pre553_empirical_objects"
+        },
+        {
+          "line": 37,
+          "module": "rawlsing_next.pre553_empirical_query"
+        },
+        {
+          "line": 38,
+          "module": "rawlsing_next._pre553_query_common"
+        },
+        {
+          "line": 468,
+          "module": "rawlsing_next.pre553_runtime_composition"
+        },
+        {
+          "line": 461,
+          "module": "rawlsing_next.pre553_runtime_context"
+        }
+      ],
+      "path": "rawlsing_next/pre553_discovery_exact.py"
+    },
+    "rawlsing_next.pre553_empirical_authority": {
+      "blob": "ca65a7fd4d52f0c44447434559b1d09412e7aa39",
+      "imports": [
+        {
+          "line": 13,
+          "module": "rawlsing_next.pre553_empirical_objects"
+        },
+        {
+          "line": 239,
+          "module": "rawlsing_next.pre553_runtime_context"
+        }
+      ],
+      "path": "rawlsing_next/pre553_empirical_authority.py"
+    },
+    "rawlsing_next.pre553_empirical_objects": {
+      "blob": "a61365b994e5c3c50de0f598fcf40e90abf757b6",
+      "imports": [],
+      "path": "rawlsing_next/pre553_empirical_objects.py"
+    },
+    "rawlsing_next.pre553_empirical_possibility_provider": {
+      "blob": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+      "imports": [
+        {
+          "line": 29,
+          "module": "rawlsing_next.pre553_empirical_objects"
+        },
+        {
+          "line": 35,
+          "module": "rawlsing_next.pre553_analytical_composition"
+        },
+        {
+          "line": 39,
+          "module": "rawlsing_next.source_backed_positioned_subject_possibility"
+        }
+      ],
+      "path": "rawlsing_next/pre553_empirical_possibility_provider.py"
+    },
+    "rawlsing_next.pre553_empirical_query": {
+      "blob": "03facecf70890bfd13b80418620d274cbcd69d02",
+      "imports": [
+        {
+          "line": 10,
+          "module": "rawlsing_next._pre553_query_common"
+        },
+        {
+          "line": 35,
+          "module": "rawlsing_next.pre553_empirical_authority"
+        },
+        {
+          "line": 36,
+          "module": "rawlsing_next._pre553_query_eval"
+        },
+        {
+          "line": 41,
+          "module": "rawlsing_next._pre553_query_predicate"
+        },
+        {
+          "line": 252,
+          "module": "rawlsing_next.pre553_runtime_context"
+        }
+      ],
+      "path": "rawlsing_next/pre553_empirical_query.py"
+    },
+    "rawlsing_next.pre553_physical_c11_bridge": {
+      "blob": "3e3497a6eb730524be33bb3d453f6cc63565052c",
+      "imports": [
+        {
+          "line": 7,
+          "module": "rawlsing_next.pre553_c11_ingest"
+        },
+        {
+          "line": 8,
+          "module": "rawlsing_next.pre553_c11_repository"
+        },
+        {
+          "line": 9,
+          "module": "rawlsing_next.pre553_empirical_objects"
+        },
+        {
+          "line": 10,
+          "module": "rawlsing_next.pre553_physical_decoder"
+        }
+      ],
+      "path": "rawlsing_next/pre553_physical_c11_bridge.py"
+    },
+    "rawlsing_next.pre553_physical_decoder": {
+      "blob": "d3d828c171ea9fdd0e90563aff6ef705f5aae2cf",
+      "imports": [
+        {
+          "line": 21,
+          "module": "rawlsing_next.pre553_r5_codec"
+        }
+      ],
+      "path": "rawlsing_next/pre553_physical_decoder.py"
+    },
+    "rawlsing_next.pre553_r5_codec": {
+      "blob": "6000a1704d713f65e07610d81e9b3fd8bdd515ca",
+      "imports": [],
+      "path": "rawlsing_next/pre553_r5_codec.py"
+    },
+    "rawlsing_next.pre553_recursive_handoff": {
+      "blob": "868f43bf9869af5501fd67c3de7a2703ba4cb1b4",
+      "imports": [
+        {
+          "line": 22,
+          "module": "rawlsing_next._pre553_query_predicate"
+        },
+        {
+          "line": 23,
+          "module": "rawlsing_next.pre553_c11_integrity"
+        },
+        {
+          "line": 24,
+          "module": "rawlsing_next.pre553_c11_repository"
+        },
+        {
+          "line": 25,
+          "module": "rawlsing_next.pre553_discovery_exact"
+        },
+        {
+          "line": 30,
+          "module": "rawlsing_next.pre553_empirical_authority"
+        },
+        {
+          "line": 31,
+          "module": "rawlsing_next.pre553_empirical_objects"
+        }
+      ],
+      "path": "rawlsing_next/pre553_recursive_handoff.py"
+    },
+    "rawlsing_next.pre553_runtime_authority": {
+      "blob": "896c7094124a4aaea23eec550178e4bf8e73ac68",
+      "imports": [
+        {
+          "line": 17,
+          "module": "rawlsing_next.pre553_c11_repository"
+        },
+        {
+          "line": 18,
+          "module": "rawlsing_next.pre553_empirical_authority"
+        },
+        {
+          "line": 22,
+          "module": "rawlsing_next.pre553_empirical_objects"
+        }
+      ],
+      "path": "rawlsing_next/pre553_runtime_authority.py"
+    },
+    "rawlsing_next.pre553_runtime_composition": {
+      "blob": "3753c183ddb25b1b0eb0ce84db1868f39f50d3fa",
+      "imports": [
+        {
+          "line": 6,
+          "module": "rawlsing_next.pre553_empirical_objects"
+        },
+        {
+          "line": 12,
+          "module": "rawlsing_next.pre553_runtime_authority"
+        },
+        {
+          "line": 13,
+          "module": "rawlsing_next.pre553_discovery_exact"
+        }
+      ],
+      "path": "rawlsing_next/pre553_runtime_composition.py"
+    },
+    "rawlsing_next.pre553_runtime_context": {
+      "blob": "4fc50793871e176f164442c04ef2501eba9d5dfa",
+      "imports": [
+        {
+          "line": 14,
+          "module": "rawlsing_next.pre553_c11_repository"
+        },
+        {
+          "line": 15,
+          "module": "rawlsing_next.pre553_empirical_objects"
+        },
+        {
+          "line": 16,
+          "module": "rawlsing_next.pre553_runtime_authority"
+        },
+        {
+          "line": 79,
+          "module": "rawlsing_next.pre553_empirical_query"
+        },
+        {
+          "line": 111,
+          "module": "rawlsing_next.pre553_discovery_exact"
+        },
+        {
+          "line": 96,
+          "module": "rawlsing_next.pre553_empirical_query"
+        }
+      ],
+      "path": "rawlsing_next/pre553_runtime_context.py"
+    },
+    "rawlsing_next.pre553_source_backed_c11_facade": {
+      "blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+      "imports": [
+        {
+          "line": 15,
+          "module": "rawlsing_next.pre553_c11_ingest"
+        },
+        {
+          "line": 19,
+          "module": "rawlsing_next.pre553_c11_integrity"
+        },
+        {
+          "line": 22,
+          "module": "rawlsing_next.pre553_c11_repository"
+        },
+        {
+          "line": 23,
+          "module": "rawlsing_next.pre553_empirical_authority"
+        },
+        {
+          "line": 24,
+          "module": "rawlsing_next.pre553_empirical_objects"
+        },
+        {
+          "line": 30,
+          "module": "rawlsing_next._pre553_query_common"
+        },
+        {
+          "line": 31,
+          "module": "rawlsing_next.pre553_empirical_query"
+        },
+        {
+          "line": 32,
+          "module": "rawlsing_next.pre553_physical_c11_bridge"
+        },
+        {
+          "line": 35,
+          "module": "rawlsing_next.pre553_physical_decoder"
+        },
+        {
+          "line": 38,
+          "module": "rawlsing_next.pre553_r5_codec"
+        }
+      ],
+      "path": "rawlsing_next/pre553_source_backed_c11_facade.py"
+    },
+    "rawlsing_next.source_backed_positioned_subject_possibility": {
+      "blob": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+      "imports": [
+        {
+          "line": 15,
+          "module": "rawlsing_next.pre553_empirical_objects"
+        }
+      ],
+      "path": "rawlsing_next/source_backed_positioned_subject_possibility.py"
+    }
+  },
+  "verdict": "P2X_DARWIN_GATES_NOT_ON_C4_PATH"
+}

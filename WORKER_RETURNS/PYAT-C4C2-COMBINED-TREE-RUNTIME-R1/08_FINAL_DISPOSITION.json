@@ -1,0 +1,81 @@
+{
+  "C1_preservation": {
+    "C4A_454_result": {
+      "errors": 0,
+      "failed": 0,
+      "grade": "INHERITED_C4A_COMBINED_LINEAGE__NOT_REEXECUTED",
+      "passed": 454,
+      "path": "WORKER_RETURNS/PYAT-C4A-C1-C3-INTEGRATION-R1/03_COMBINED_SOURCE_FREE_COURT.json",
+      "skipped": 0,
+      "source_commit": "8f7efe690a161902e79358eb31650c238a4c0be8",
+      "source_merge": "9a5752a8ce4a119efd24cbbeedd8cbcda8abbadb"
+    },
+    "five_owner_blobs_exact": true,
+    "owner_blobs": [
+      {
+        "actual_blob": "3a5e3db8a0897900d0b2606813bda7c3f586d46e",
+        "expected_blob": "3a5e3db8a0897900d0b2606813bda7c3f586d46e",
+        "path": "rawlsing_next/pre553_analytical_state_and_route.py",
+        "side": "C1",
+        "status": "EXACT"
+      },
+      {
+        "actual_blob": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+        "expected_blob": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+        "path": "rawlsing_next/pre553_empirical_possibility_provider.py",
+        "side": "C1",
+        "status": "EXACT"
+      },
+      {
+        "actual_blob": "547e6bf20354f38179a0e2600de64c7cb2260ea0",
+        "expected_blob": "547e6bf20354f38179a0e2600de64c7cb2260ea0",
+        "path": "rawlsing_next/pre553_authority_maintenance.py",
+        "side": "C1",
+        "status": "EXACT"
+      },
+      {
+        "actual_blob": "47e65aad5e0a8df7af6fda72fc8807a002e556ce",
+        "expected_blob": "47e65aad5e0a8df7af6fda72fc8807a002e556ce",
+        "path": "rawlsing_next/pre553_analytical_replay_dependency.py",
+        "side": "C1",
+        "status": "EXACT"
+      },
+      {
+        "actual_blob": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+        "expected_blob": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+        "path": "rawlsing_next/pre553_analytical_composition.py",
+        "side": "C1",
+        "status": "EXACT"
+      }
+    ],
+    "production_changes": 0,
+    "public_path_runtime_import_compatibility": "NOT_EXECUTED__NO_QUALIFIED_HOST"
+  },
+  "HQ_gate_change_required": false,
+  "actual_C4_path_adjudication": "P2X_DARWIN_GATES_NOT_ON_C4_PATH",
+  "combined_base": "8f7efe690a161902e79358eb31650c238a4c0be8",
+  "disposition": "C4C2_NON_MAC_SURFACE_UNAVAILABLE__HQ_ADJUDICATION_REQUIRED",
+  "fan_in_ready": false,
+  "phase_status": {
+    "0_exact_base_and_provenance": "PASS_STATIC__NON_MAC_SURFACE_UNAVAILABLE",
+    "1_actual_call_path": "PASS_STATIC",
+    "2_exact_dependency_environment": "BLOCKED_SURFACE",
+    "3_reader_option_freeze": "EXPLICIT_ARGS_RECORDED__TARGET_DEFAULTS_UNVERIFIED",
+    "4_synthetic_reader_probes": "NOT_EXECUTED__NON_MAC_SURFACE_UNAVAILABLE",
+    "5_authoritative_C3_court": "NOT_EXECUTED__NON_MAC_SURFACE_UNAVAILABLE",
+    "6_C1_preservation": "PASS_STATIC_AND_INHERITED_EVIDENCE",
+    "7_physical_identity_resource_law": "STATIC_ONLY__TARGET_VERIFICATION_PENDING"
+  },
+  "remaining_work": [
+    "Provision isolated exact dependency environment and hash its artifacts; resolve numpy compatibility with the pandas 2.3.3 candidate without silent version choice.",
+    "Verify/freeze pyreadstat 1.3.6 defaults and chunk-helper injected options for SAV and DTA.",
+    "Generate only synthetic fixtures and run every requested D01/G01/D02/DTA probe, including repeated decode stability.",
+    "At HEAD exactly the combined base, rerun the exact six-file court and require 55/0/0/0.",
+    "Confirm target R5 host byteorder and ru_maxrss unit/budget law."
+  ],
+  "return_packet_is_completed_qualification": false,
+  "schema": "PYAT_C4C2_FINAL_DISPOSITION@1",
+  "self_adopted": false,
+  "terminal": "C4C2_COMBINED_TREE_RUNTIME_RETURNED__HQ_FANIN_REQUIRED",
+  "wake_condition": "HQ must designate or provision a reachable non-Mac shell/container/VM at an exact durable locator (OS/architecture/image identity). Alternatively, HQ must extend write authority to an exact qualification CI workflow plus specification; the fixed existing workflows do not supply this court/environment."
+}

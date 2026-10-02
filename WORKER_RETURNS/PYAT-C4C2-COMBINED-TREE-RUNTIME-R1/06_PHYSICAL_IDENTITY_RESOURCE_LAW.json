@@ -1,0 +1,43 @@
+{
+  "R5_endianness": {
+    "auditor_host_byteorder": "little",
+    "evidence_grade": "STATIC_FORMAT_PLUS_UNQUALIFIED_HOST_IDENTITY__NO_NON_MAC_PROBE",
+    "qualified_R5_token_result": null,
+    "qualified_non_Mac_host_byteorder": null,
+    "source": "rawlsing_next/pre553_r5_codec.py:89",
+    "static_format": "struct.pack(\">d\", value).hex()"
+  },
+  "combined_base": "8f7efe690a161902e79358eb31650c238a4c0be8",
+  "identity_evidence": {
+    "law": "reader_version is included in reader_configuration; build_physical_metadata_payload includes that configuration in the metadata digest. Version changes alter digest input; no gate in this path enforces version equality.",
+    "module": "rawlsing_next/pre553_physical_decoder.py",
+    "reader_config_line": 534
+  },
+  "physical_digest_or_budget_relabelled": false,
+  "pyreadstat_identity_version": "1.3.6",
+  "resource_law": {
+    "Darwin_unit_not_inherited": true,
+    "chosen_non_Mac_OS": null,
+    "future_budget_interpretation": "Record exact host OS and its documented ru_maxrss unit, multiply Linux KiB by 1024 to compare against byte budgets, and derive workload budgets from the designated surface. Non-Mac does not imply Linux: another OS needs its own law. No measured P2X or real C4 workload is authorized by this packet.",
+    "historical_Linux_candidate": {
+      "bytes_per_unit": 1024,
+      "evidence": "C4C P07 reported Linux unit law; reconfirm for designated host",
+      "unit": "KiB"
+    },
+    "measured_ru_maxrss": null,
+    "qualified_byte_conversion": null,
+    "qualified_unit": null
+  },
+  "schema": "PYAT_C4C2_PHYSICAL_IDENTITY_RESOURCE_LAW@1",
+  "status": "STATIC_IDENTITY_LAW_RECORDED__TARGET_MEASUREMENTS_PENDING",
+  "synthetic_fixture_repeat_run": {
+    "byte_hashes": [],
+    "cell_token_digests": [],
+    "reader_metadata_digests": [],
+    "rule": "Repeat reads of the same fixed synthetic bytes must compare metadata/cell tokens. Independently generated files may carry writer timestamp differences; byte stability and decode stability must be reported separately.",
+    "runs": 0,
+    "stable": null,
+    "status": "NOT_EXECUTED__NON_MAC_SURFACE_UNAVAILABLE"
+  },
+  "version_binding_enforced_by_qualification_environment": false
+}

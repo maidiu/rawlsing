@@ -1,0 +1,124 @@
+{
+  "C4A_wider_sweep": "Three failures from the mechanically widened court are outside all six authoritative files; excluded from this acceptance denominator. No wider sweep was executed here.",
+  "accepted_C3_production_blobs": [
+    {
+      "actual_blob": "31a9afd7d91ed4cb2fb1c1aab3ef86a5fdda1f85",
+      "expected_blob": "31a9afd7d91ed4cb2fb1c1aab3ef86a5fdda1f85",
+      "path": "rawlsing_next/closed35_g01_sav_numeric_representation_authority.py",
+      "side": "C3",
+      "status": "EXACT"
+    },
+    {
+      "actual_blob": "d3d828c171ea9fdd0e90563aff6ef705f5aae2cf",
+      "expected_blob": "d3d828c171ea9fdd0e90563aff6ef705f5aae2cf",
+      "path": "rawlsing_next/pre553_physical_decoder.py",
+      "side": "C3",
+      "status": "EXACT"
+    },
+    {
+      "actual_blob": "6000a1704d713f65e07610d81e9b3fd8bdd515ca",
+      "expected_blob": "6000a1704d713f65e07610d81e9b3fd8bdd515ca",
+      "path": "rawlsing_next/pre553_r5_codec.py",
+      "side": "C3",
+      "status": "EXACT"
+    }
+  ],
+  "accepted_C3_test_blob_drift": 0,
+  "actual_result": {
+    "collected": null,
+    "errors": null,
+    "failed": null,
+    "passed": null,
+    "skipped": null
+  },
+  "audited_base_head": "8f7efe690a161902e79358eb31650c238a4c0be8",
+  "combined_base": "8f7efe690a161902e79358eb31650c238a4c0be8",
+  "count_basis": "9/8/13/9/6/10 are expected counts from HQ commission, not fresh collection counts.",
+  "execution_environment": null,
+  "execution_head": null,
+  "files": [
+    {
+      "accepted_C3_blob": "fb7b090809a609a3b0157f1ed8fcdcd8e8784525",
+      "blob": "fb7b090809a609a3b0157f1ed8fcdcd8e8784525",
+      "exists": true,
+      "expected_count_from_commission": 9,
+      "path": "rawlsing_next/tests/test_closed35_g01_sav_numeric_representation_authority.py",
+      "status": "EXACT"
+    },
+    {
+      "accepted_C3_blob": "8fc05965386055a208e5b3988112e67a2e6333e2",
+      "blob": "8fc05965386055a208e5b3988112e67a2e6333e2",
+      "exists": true,
+      "expected_count_from_commission": 8,
+      "path": "rawlsing_next/tests/test_closed35_d01_declared_encoding_admission.py",
+      "status": "EXACT"
+    },
+    {
+      "accepted_C3_blob": "3901f10a487856f5f232ae6700fff407ac99725e",
+      "blob": "3901f10a487856f5f232ae6700fff407ac99725e",
+      "exists": true,
+      "expected_count_from_commission": 13,
+      "path": "rawlsing_next/tests/test_closed35_d02_opaque_datetime_carrier.py",
+      "status": "EXACT"
+    },
+    {
+      "accepted_C3_blob": "223d959755e688a93638857fd551f2244b87f5a8",
+      "blob": "223d959755e688a93638857fd551f2244b87f5a8",
+      "exists": true,
+      "expected_count_from_commission": 9,
+      "path": "rawlsing_next/tests/test_fiabc_lm2_r1j_sav_representation_authority.py",
+      "status": "EXACT"
+    },
+    {
+      "accepted_C3_blob": "11a78ccb67e9185325be79a19b489d505b489a16",
+      "blob": "11a78ccb67e9185325be79a19b489d505b489a16",
+      "exists": true,
+      "expected_count_from_commission": 6,
+      "path": "rawlsing_next/tests/test_r35_i01_physical_metadata.py",
+      "status": "EXACT"
+    },
+    {
+      "accepted_C3_blob": "daf9368a0c3ff277da0b46c4f27e4686c1de8b12",
+      "blob": "daf9368a0c3ff277da0b46c4f27e4686c1de8b12",
+      "exists": true,
+      "expected_count_from_commission": 10,
+      "path": "rawlsing_next/tests/test_pre553_source_backed_c11_facade.py",
+      "status": "EXACT"
+    }
+  ],
+  "future_command": [
+    "python",
+    "-m",
+    "pytest",
+    "-q",
+    "rawlsing_next/tests/test_closed35_g01_sav_numeric_representation_authority.py",
+    "rawlsing_next/tests/test_closed35_d01_declared_encoding_admission.py",
+    "rawlsing_next/tests/test_closed35_d02_opaque_datetime_carrier.py",
+    "rawlsing_next/tests/test_fiabc_lm2_r1j_sav_representation_authority.py",
+    "rawlsing_next/tests/test_r35_i01_physical_metadata.py",
+    "rawlsing_next/tests/test_pre553_source_backed_c11_facade.py"
+  ],
+  "missing_paths": 0,
+  "prior_accepted_review": {
+    "commit": "462e6bf1ed514056f9316dad761054e690a7755d",
+    "grade": "HISTORICAL_HQ_ADMITTED__NOT_FRESH_COMBINED_TREE_RUN",
+    "historical_execution_commit": "283d2c5d2b187c4e62ae1aecb236a0b51ddeffb1",
+    "historical_result": {
+      "errors": 0,
+      "failed": 0,
+      "passed": 55,
+      "skipped": 0
+    },
+    "path": "WORKER_RETURNS/PYAT-C3-SOURCE-FREE-INTEGRATION-REVIEW-R1/04_FINAL_DISPOSITION.json"
+  },
+  "required_result": {
+    "errors": 0,
+    "failed": 0,
+    "passed": 55,
+    "skipped": 0
+  },
+  "schema": "PYAT_C4C2_AUTHORITATIVE_C3_SIX_FILE_COURT@1",
+  "source_backed_C11_facade_blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+  "status": "NOT_EXECUTED__NON_MAC_SURFACE_UNAVAILABLE",
+  "test_commands_executed": 0
+}
