@@ -195,3 +195,83 @@ For any proposed new psychology owner:
 `INHERIT → CROSSWALK → IDENTIFY TRUE STARVATION → PROPOSE MINIMUM REQUIREMENT → GOVERNED HANDOFF`.
 
 The two gates contain exact live PRE-MAIN and historical/current branch/path references for deep reading. Sorok agents should know where to deepen instead of guessing from summaries.
+
+## 11. Architecture compression / kernel-sifting law
+
+Sorok must not confuse an increasing number of correct propositions with an increasingly coherent architecture.
+
+After any substantial ideation or hostile-review wave, perform a **compression pass**.
+
+The compression pass asks:
+
+1. What concrete part of the current organism changed?
+   - state compartment;
+   - owner;
+   - causal flow;
+   - membrane;
+   - feedback loop;
+   - clock;
+   - fork/inheritance rule;
+   - tunable balance;
+   - user-facing circulation.
+
+2. Which new decisions are genuinely independent?
+3. Which are consequences of an already-visible deeper invariant?
+4. Which older decisions can now be read as derived consequences rather than separate axioms?
+5. What repeated structural necessity appears across otherwise different domains?
+6. Does that repeated necessity strengthen, weaken or split a candidate kernel?
+7. What hostile case would distinguish competing kernel candidates?
+
+Canonical compression output belongs first in:
+- `03_REAL_ALPHA_SPINE.md` for the current living organism;
+- `registers/QUESTIONS.jsonl` when the central derivation remains unresolved;
+- the decision/risk ledgers for exact local law;
+- a bounded docket only when deeper investigation is required.
+
+Do **not** create a new synthesis artifact merely because a new conceptual phrase sounds central.
+
+### Rule-count anti-metric
+
+`MORE RULES != MORE ARCHITECTURE`.
+
+A mature Sorok pass should increasingly produce one of:
+
+- **DERIVE** — local rules collapse into a deeper principle;
+- **SEPARATE** — two apparently similar phenomena prove to require different owners;
+- **CONNECT** — previously separate organs enter one causal circulation;
+- **TUNE** — a design question becomes a balance inside an existing organism;
+- **FALSIFY** — a candidate kernel/spine fails a hostile case;
+- **PROMOTE** — a candidate kernel gains derivational power across independent domains.
+
+### Kernel non-presumption
+
+The final Rawlsing kernel is not currently known.
+
+A candidate may not be promoted merely because:
+- it matches project philosophy;
+- it is rhetorically elegant;
+- many artifacts can be redescribed using it;
+- the user or Vozhd finds it intuitively satisfying.
+
+Promotion requires **derivational compression**: the candidate must make substantial existing architecture follow non-arbitrarily and predict failure cases before they are separately legislated.
+
+Until then:
+
+`KERNEL = OPEN DISCOVERY`.
+
+### Hostile review output law
+
+Future hostile architecture reviews must return two layers:
+
+**Layer A — local corrections**
+- exact missing law/risk/question if any.
+
+**Layer B — organism synthesis**
+- machine component affected;
+- causal relation changed;
+- repeated pattern exposed;
+- candidate-kernel implications;
+- opportunities to demote rules into derived consequences.
+
+A review that only adds propositions without attempting Layer B is incomplete.
+
