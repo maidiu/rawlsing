@@ -1518,4 +1518,76 @@ This variation itself should arise through V3 formation.
 
 Therefore even "how much a person turns life into meaning" belongs to relational/material history rather than to a universal narrator.
 
+# 11. Recursive self-rereading, visibility and Horizon
+
+## Q1 — self-interpretation can become self-structure
+Classification: `PROMOTE / CONNECT`
+
+A self-story is not merely descriptive once internalized.
+
+It can route:
+- salience;
+- memory retrieval;
+- evidence weighting;
+- identity coherence;
+- action affordances.
+
+Therefore interpretation itself can become constitutive relation-to-self.
+
+---
+
+## Q2 — visibility does not equal truth
+Classification: `SEPARATE / FALSIFY`
+
+Identification/internalization/naturalization may make a framework invisible while highly causal.
+
+Alienation may make it visible without guaranteeing:
+- truth;
+- freedom;
+- health;
+- moral superiority.
+
+This is a direct bridge between structural-pressure dynamics and actor self-interpretation.
+
+---
+
+## Q3 — articulation event
+Classification: `PROMOTE / CONNECT`
+
+A later text/person/practice can name or bind an already-partly-organized lived shape.
+
+It may be deeply transformative without being the original cause.
+
+This gives a lawful account of recognition/conversion without retroactive destiny.
+
+---
+
+## Q4 — historical self-myth lineage
+Classification: `PROMOTE`
+
+Earlier self-myths remain causal even after rejection.
+
+A later self can:
+- critique;
+- soften;
+- integrate;
+- preserve residues;
+without overwriting the earlier framework's historical effects.
+
+This makes self-relation itself recursive history.
+
+---
+
+## Q5 — Horizon mediation
+Classification: `CONNECT`
+
+Interpretive frameworks can be:
+- finite identities;
+- carriers of ultimate claims;
+- Horizon-colonizing;
+- judged/relativized by Horizon;
+- reorganizers of what the actor treats as worth sacrifice.
+
+This connects self-myth, identification/alienation and Absolute Horizon without collapsing them.
+
 
