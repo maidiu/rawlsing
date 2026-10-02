@@ -113,6 +113,9 @@ Canonical machine map:
 Canonical question:
 `Q-KERNEL-001`.
 
+Active deep investigation:
+`dockets/D007_KERNEL_SIFTING_AND_DERIVATIONAL_COMPRESSION/`.
+
 All workstreams may supply evidence to K0.
 
 K0 must not preempt them by declaring a kernel early.
