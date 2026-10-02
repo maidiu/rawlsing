@@ -7,6 +7,8 @@
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
+const PACKET_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 import { execFileSync } from "node:child_process";
 import {
   Store, GateError, validateTask, terrainGate, slotGate, expectedParentGate, submitTask,
@@ -241,7 +243,8 @@ const out = {
     "Any agent reporting that script as PASSED on this host is reporting a false positive.",
   terminal: fail === 0 ? "OPS03_QUALIFIED_AT_TESTED_CAPABILITY__BOUNDARY_Q12_UNQUALIFIED" : "OPS03_PARTIAL__SEE_FAILURES",
 };
-fs.mkdirSync("PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-03", { recursive: true });
-fs.writeFileSync("PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-03/QUALIFICATION.json", JSON.stringify(out, null, 2));
+const OUTDIR = path.join(PACKET_ROOT, "ACTIVATION_RETURNS", "OPS-03");
+fs.mkdirSync(OUTDIR, { recursive: true });
+fs.writeFileSync(path.join(OUTDIR, "QUALIFICATION.json"), JSON.stringify(out, null, 2));
 for (const r of results) console.log(`${r.result.padEnd(4)} ${r.id}${r.detail ? " :: " + r.detail : ""}`);
 console.log(`\npassed=${pass} failed=${fail} skipped=${skip}  level=${out.capability_level}`);
