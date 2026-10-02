@@ -1095,3 +1095,61 @@ Artifact:
 Question:
 `Q-FRAMEMETAB-001`.
 
+## 20. V3/PFF authority correction — self-retcon is distributed composition
+
+Current source basis for person-event architecture is the PFF/SDTF-era reconciliation and HQ-adopted CAN-008 R2, **not** the pre-programming `Rawlsing Personality Generator Framework v3.4`.
+
+Artifact:
+`74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md`.
+
+Current adopted technical spine:
+
+`EXACT GENERATED / ADMITTED EVENT`
++
+`EXACT READ-ONLY CONDITIONING PERSON STATE`
++
+optional rule-bound modality evidence
+→ `CAN-008 R2 PERSON×EVENT COUPLING`
+  - actor receivability;
+  - actor uptake/appraisal;
+  - situated recruitment;
+→ `MULTI-STREAM IMMEDIATE RESPONSE / METABOLISM`
+→ bounded current consequence and/or separately authorized durable owner effect.
+
+Therefore:
+
+> **Do not build a monolithic self-retcon psyche.**
+
+Historical self-retcon is provisionally a distributed pattern across repeated person×event couplings plus exact owner-specific durable effects.
+
+The Sorok vocabulary:
+- integrative;
+- appropriative;
+- partitioned;
+- ignoring;
+- externalizing;
+- cracking;
+- transforming
+
+is **derived hostile-test vocabulary**, not an adopted V3 operator enum.
+
+Strong current law:
+
+> **Analyst-observed contradiction is not a causal occurrence.**
+
+Expectation, striving, mediator, tension, scar, need activation, attractor state or analyst interpretation may condition current uptake/recruitment, but committed response requires an exact generated/admitted precipitating event.
+
+Self-retcon shorthand survives only in distributed form:
+
+> **Overwrite current routing/access/narration effects; never overwrite causal history.**
+
+Durable changes must decompose into their competent owners.
+
+Current technical/kernal resonance:
+
+> **Event truth exceeds uptake; person state exceeds recruitment; recruitment exceeds access; access exceeds expression; immediate response does not automatically become durable person change—yet every lawful mediation can change what happens next.**
+
+This strengthens the D007 mediation hypothesis without adjudicating it as THE kernel.
+
+Absolute Horizon remains a Sorok/theological research hypothesis here; the latest PFF reconciliation classifies its formalization as U3 speculative/deferred rather than current architecture-critical V3 authority.
+
