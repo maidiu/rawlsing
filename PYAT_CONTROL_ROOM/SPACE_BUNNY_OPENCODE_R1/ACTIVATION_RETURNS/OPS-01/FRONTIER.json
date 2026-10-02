@@ -1,0 +1,92 @@
+{
+  "schema": "PYAT_OPENCODE_OPS01_FRONTIER@1.0.0",
+  "task": "OPS-01",
+  "state": "RECONCILED",
+  "adjudicator": "HQ_VOZHD__OPENCODE__SPACE_BUNNY_FREE",
+  "activation": {
+    "control_branch": "integration/pre-main-reconciliation-r1",
+    "control_head": "55ba382dccb88494d219a945c17efc166e456bd2",
+    "prior_control_head_at_HQ182_seal": "fe1b2729b0f9f1ff18044c2f655b74784e001217",
+    "pointer_checkpoint": "20261002-PYAT-SPACE-BUNNY-OPENCODE-DELIVERY-R1",
+    "pointer_handoff_commit": "52f0c00890c336abf6921c64d7c0d737d3a75215",
+    "governing_decision_pointer": "HQD-2026-10-02-182",
+    "movement_since_prior_seal": [
+      "52f0c0089 Deliver user-selected Space Bunny OpenCode control-room workflow and activation packet",
+      "55ba382dc Seal Space Bunny OpenCode workflow delivery checkpoint; preserve C4 holds"
+    ],
+    "rawlsing_next_changes_in_movement": 0,
+    "movement_classification": "AUTHORIZED_DOCUMENTARY_DELIVERY__PRESERVES_ALL_HOLDS"
+  },
+  "packet_verification": {
+    "packet_dir": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1",
+    "manifest_schema": "PYAT_DOCUMENTARY_PACKET_MANIFEST@1",
+    "files_declared": 19,
+    "files_verified": 19,
+    "sha256_and_git_blob_sha1_checked": true,
+    "json_parse_checked": true,
+    "required_files_present": true,
+    "task_dependency_order": "VALID",
+    "packet_integrity": "VERIFIED",
+    "verifier_used": "SUBSTITUTE_NODE_REIMPLEMENTATION",
+    "verifier_caveat": "The packet's own scripts/verify_packet.py COULD NOT BE EXECUTED because python3 in this environment is a silent no-op: it returns exit 0, writes nothing, and produces no output. Packet integrity was therefore confirmed by an independent node reimplementation of the same algorithm, not by the shipped script. This is a material OPS-02 finding, not a cosmetic note."
+  },
+  "adopted_dependencies": [
+    {"id": "C1-03-successor-join", "head": "149c3d2636160d8de9b5a8be0c8b87195158077f", "status": "ADOPTED", "use": "REUSE__DO_NOT_REDISPATCH"},
+    {"id": "AT07-successor-spine", "head": "069ac61b5c90486e5b7bb633135b4743dfbd55df", "status": "ADOPTED", "use": "REUSE__SUPPLIES_SUCCESSOR_AT07_IDENTITIES"},
+    {"id": "N10E-AT17", "head": "52e41a41e8c1ea8bba32106a996d76fa8ac7d8a", "status": "ADOPTED", "use": "REUSE__EMPIRICAL_SLICE_PROVIDER"},
+    {"id": "C3-source-free-repair", "head": "30686b185d4ceb2c94f61815ef70d8c8e76255d6", "status": "ADOPTED", "use": "REUSE__SIX_BLOB_AUTHORITATIVE_COURT"},
+    {"id": "C5-N5-source-free", "head": "151d39260a803635f622323b14e42d96c7976d25", "status": "ADOPTED", "use": "REUSE__STRUCTURAL_CONTEXT_CANARY_NOT_A_C4_SUBSTITUTE"},
+    {"id": "C4A-combined-tree", "head": "8f7efe690a161902e79358eb31650c238a4c0be8", "status": "ADOPTED_AS_REVIEWED_ARTIFACT", "use": "THE_ARTIFACT_UNDER_C4_REVIEW"},
+    {"id": "C4B-workload-oracle-freeze", "head": "c2af4f61d68e9803af83f8e26f633acfe31062fa", "status": "ADOPTED_UPSTREAM", "use": "GOVERNING_WORKLOAD_AND_WARRANT_TEMPLATE"},
+    {"id": "D2P-portable-import", "head": "41bd7a7c056de9d45b905efc0f926b4ab6a097ad", "status": "ADOPTED_UPSTREAM", "use": "RETAINED_CUSTODY_AT_DECLARED_GRAIN"},
+    {"id": "C4C3-darwin-anchor-runtime", "head": "1df64cc596b5602c952518c87b1c71cc1fcfb35f", "status": "ADOPTED_UPSTREAM", "use": "RUNTIME_AND_READER_LANE_LAW__ENVIRONMENT_RECORD_IS_DISPUTED_IN_OPS04"},
+    {"id": "OMEGA1-decision", "head": "01762d7379be4e423dad3e21bcdcee47c536902d", "status": "ADOPTED_GOVERNING", "use": "O1_C01_THROUGH_O1_C11"},
+    {"id": "C4-freeze-fanin", "head": "8ff40d37de69db2d8a6053a7c2242f481677f1a4", "status": "PASS_INTAKE_CLEAN", "use": "ARTIFACT_UNDER_FINAL_REVIEW"}
+  ],
+  "authorized_pending_returns": [
+    {"id": "OPS-04", "state": "IN_PROGRESS_THIS_RUN", "depends_on": ["OPS-01"], "source_access": false, "production_mutation": false},
+    {"id": "OPS-02", "state": "IN_PROGRESS_THIS_RUN", "depends_on": ["OPS-01"], "source_access": false, "production_mutation": false},
+    {"id": "OPS-03", "state": "IN_PROGRESS_THIS_RUN", "depends_on": ["OPS-02"], "source_access": false, "production_mutation": false},
+    {"id": "C4-DISPUTED-CLAIMS-REVIEW", "state": "COMMISSIONED_BY_THIS_DECISION", "depends_on": ["OPS-04"], "source_access": false, "production_mutation": false}
+  ],
+  "pending_returns_not_yet_present": [
+    {"id": "C4-ALT-B-LANE", "branch": "agent/reviewer-pyat-hq181-c4-executable-freeze-final-integration-review-alt-b-r1", "expected_head": "3a5b2cbc7f1978384268376f3ee493c7c095780b", "observed": "3a5b2cbc7f1978384268376f3ee493c7c095780b", "state": "RETURNED__ADJUDICATED_AT_HQ182"},
+    {"id": "C4-A-LANE", "branch": "agent/reviewer-pyat-hq180-c4-executable-freeze-final-integration-review-r1", "expected_head": "fe6103cd50c634b92233f49815cc6d4abe49964d", "observed": "fe6103cd50c634b92233f49815cc6d4abe49964d", "state": "RETURNED__ADJUDICATION_RESERVED_FOR_DISTINCT_HQ_ACT"}
+  ],
+  "proposed_work_not_yet_commissioned": [
+    {"id": "C5-next-slice", "state": "NOT_ISSUED", "blocker": "requires reconciled frontier plus explicit commission; must not be auto-issued from FORWARD_PROGRAM"},
+    {"id": "C6", "state": "NOT_ISSUED", "blocker": "requires exact inputs and authority that do not yet exist"},
+    {"id": "C7", "state": "HELD", "blocker": "C7-BLOCK-CURRENT-COMPARABLE-WAVE-PAIR-001; even post-C4 requires pair-specific positive comparability authority"},
+    {"id": "C8", "state": "NOT_ISSUED"},
+    {"id": "C9", "state": "NOT_ISSUED", "note": "accepts the declared estate"},
+    {"id": "C10", "state": "NOT_ISSUED", "note": "explicitly decides the PRE-V3 to V3 seam"},
+    {"id": "OMEGA2", "state": "SCHEDULED_AFTER_C9", "blocker": "not due; no routine Astra consultation"}
+  ],
+  "unexplained_movement": [],
+  "unexplained_movement_note": "None. The two commits since the HQ182 seal are an authorized documentary delivery whose own commit subject records preservation of the C4 holds; LATEST.json retains c4_freeze_adoption_status NOT_ADOPTED_INTO_BUILD and pyat_review_adjudication_decision HQD-2026-10-02-182.",
+  "source_and_actor_holds": {
+    "source_locator_discovery": "HELD",
+    "warrant_issuance": "HELD",
+    "raw_source_access": "HELD",
+    "live_c4_execution": "HELD",
+    "c4_freeze_adoption_into_build": "HELD_PENDING_EXTERNAL_ASTRA",
+    "actor_person_implementation": "HELD",
+    "prev3_to_v3": "DEFERRED",
+    "measured_execution_authorized": false
+  },
+  "f1_f8_destination": {
+    "current_position": "C1/C2/C3 done; C4 source-free freeze reviewed and held at the adoption gate; Omega-1 complete; Omega-2 after C9.",
+    "dag": "C1/C2/C3 -> scoped source-free join -> Omega-1 -> C4 -> C5 -> C6/C7 -> C8 -> C9 -> Omega-2/C10",
+    "critical_edge_now": "C4 adoption decision, which is NOT a build edge for this HQ: it is an external-Astra decision gate",
+    "independent_ready_work_now": "OPS-02/OPS-03 orchestration qualification and OPS-04 documentary reconciliation"
+  },
+  "hq_lease": {
+    "sole_active_integrating_hq": "OPENCODE_SPACE_BUNNY_FREE_THIS_INSTANCE",
+    "other_active_hq_detected": false,
+    "detection_method": "control branch inspected; no competing HQ publication or lease record observed after 55ba382dc",
+    "limitation": "another machine can still publish; sole-writer is enforced by expected-head checks at publication, not by a local lock alone",
+    "expected_parent_for_this_run": "55ba382dccb88494d219a945c17efc166e456bd2"
+  },
+  "acceptance_selfcheck": "A fresh HQ can identify exact ready work from this file plus RECONCILIATION.md without consulting any conversation and without redispatching C1, N10E, C3 or C5 work.",
+  "terminal": "OPS01_FRONTIER_RECONCILED__NO_UNEXPLAINED_MOVEMENT__ALL_HOLDS_PRESERVED"
+}
