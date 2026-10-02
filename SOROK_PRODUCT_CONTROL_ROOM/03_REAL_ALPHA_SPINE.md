@@ -1039,3 +1039,59 @@ Artifact:
 Question:
 `Q-SELFREAD-001`.
 
+## 19. Framework reality-metabolism and self-retcon
+
+Recovered V3 already permits:
+- multiple contradictory middle-state mediators/tensions with no canonical dominant framework;
+- nonbeneficial rupture/metabolization states including sealed, chronic, recurrent and integrated-with-residue;
+- causal traces/grooves that need not be consciously remembered.
+
+Current extension:
+
+> **Overwrite routing, never overwrite history.**
+
+A later self-retcon may dominate:
+- salience;
+- memory accessibility;
+- evidence weighting;
+- autobiographical speech;
+- action routing;
+
+without deleting:
+- objective past;
+- predecessor framework;
+- predecessor causal effects;
+- counterevidence;
+- contradictory tensions;
+- other actors' memories/models.
+
+When framework F meets admitted reality pressure, candidate nonteleological operations include:
+- HOLD_UNRESOLVED;
+- ACCOMMODATE / INTEGRATE;
+- ASSIMILATE / APPROPRIATE;
+- PARTITION / SEAL;
+- DISCOUNT / IGNORE;
+- EXTERNALIZE;
+- DESTABILIZE / CRACK;
+- TRANSFORM / REFRAME.
+
+Compact:
+
+> **Reality is inescapable as causal pressure, not as correct interpretation.**
+
+And:
+
+> **More coherent can mean more integrated or more tyrannical.**
+
+A more generous later self-reading may genuinely increase aperture, counterevidence access and compassion while remaining incomplete.
+
+A powerful frame may liberate an actor from one domination while creating new invisibilities or colonizing Horizon.
+
+Contradiction may remain canonical and externally observable without being actor-known.
+
+Artifact:
+`73_FRAMEWORK_REALITY_METABOLISM_SELF_RETCON_AND_CONTRADICTION_VISIBILITY_R1.md`.
+
+Question:
+`Q-FRAMEMETAB-001`.
+
