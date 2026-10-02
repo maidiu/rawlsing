@@ -1,0 +1,250 @@
+{
+  "schema": "PYAT_C4_FANIN_SOURCE_FREE_VERIFICATION@1.0.0",
+  "lane": "PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1",
+  "phase": "source-free verification (commission lines 504-518)",
+  "status": "PASS",
+  "constraints_observed": {
+    "raw_source_access": 0,
+    "raw_survey_files_opened": 0,
+    "raw_survey_files_stat_ed": 0,
+    "raw_survey_files_hashed": 0,
+    "raw_survey_files_metadata_read": 0,
+    "raw_survey_files_decoded": 0,
+    "raw_survey_files_materialised": 0,
+    "raw_source_storage_searched": 0,
+    "live_source_readers_rerun": false,
+    "c4_executed": false,
+    "production_code_mutated": 0,
+    "production_blobs_changed": 0,
+    "self_adopted": false,
+    "statement": "Every check below reads only Git objects and imported documentary evidence. No live reader was invoked and no raw source was touched."
+  },
+  "checks": [
+    {
+      "id": "V01",
+      "requirement": "assert all 11 pinned C1/C3 production/test blobs exact",
+      "result": "PASS",
+      "observed": {
+        "checked": 11,
+        "exact": 11,
+        "drift": 0
+      },
+      "evidence": "01_FANIN_INPUT_LINEAGE_AND_BLOBS.json.pinned_production_and_test_blobs"
+    },
+    {
+      "id": "V02",
+      "requirement": "assert five C1 owner blobs exact",
+      "result": "PASS",
+      "observed": {
+        "exact": 5,
+        "drift": 0
+      },
+      "evidence": "02_O1_C01_C05_CLOSURE_MATRIX.json.O1_C01.five_c1_owner_blobs"
+    },
+    {
+      "id": "V03",
+      "requirement": "verify the C4C3 authoritative 55/55 receipt belongs to this exact combined tree",
+      "result": "PASS",
+      "observed": {
+        "court_result": "55 passed / 0 failed / 0 errors / 0 skipped",
+        "runs": 2,
+        "identical_across_runs": true,
+        "tree_qualified": "8f7efe690a161902e79358eb31650c238a4c0be8",
+        "tree_is_ancestor_of_execution_head": true,
+        "per_file": [
+          9,
+          8,
+          13,
+          9,
+          6,
+          10
+        ],
+        "denominator_asserted_before_run": true
+      }
+    },
+    {
+      "id": "V04",
+      "requirement": "verify the C4A 454/454 receipt belongs to this lineage",
+      "result": "PASS",
+      "observed": {
+        "c1_court": "454 passed / 0 failed / 0 errors / 0 skipped",
+        "merge_commit": "9a5752a8ce4a119efd24cbbeedd8cbcda8abbadb",
+        "merge_is_ancestor_of_execution_head": true
+      }
+    },
+    {
+      "id": "V05",
+      "requirement": "recompute hashes of imported critical D2P packet files",
+      "result": "PASS",
+      "observed": {
+        "files": 9,
+        "matching": 9,
+        "all_match": true
+      }
+    },
+    {
+      "id": "V06",
+      "requirement": "verify all imported evidence files by Git blob SHA after integration",
+      "result": "PASS",
+      "observed": {
+        "files": 36,
+        "exact": 36,
+        "drift": 0
+      }
+    },
+    {
+      "id": "V07",
+      "requirement": "validate machine-readable fan-in artifacts against internal schemas/checks",
+      "result": "PASS",
+      "observed": {
+        "artifacts_validated": 7,
+        "all_parse": true,
+        "cross_artifact_hash_agreement": "The freeze records the SHA-256 of the warrant candidate and of six sibling artifacts; the warrant candidate's recorded digest was recomputed and matches."
+      }
+    },
+    {
+      "id": "V08",
+      "requirement": "no rawlsing_next/** production blob changed",
+      "result": "PASS",
+      "observed": {
+        "rawlsing_next_tree_at_c4a": "b0c1ab472cde033e21f1c2f63fbcbea2f0cccef0",
+        "rawlsing_next_tree_at_head": "b0c1ab472cde033e21f1c2f63fbcbea2f0cccef0",
+        "unchanged": true,
+        "production_files_changed": 0
+      }
+    },
+    {
+      "id": "V09",
+      "requirement": "cross-source SHA-256 agreement between workload, oracle custody and D02 binding",
+      "result": "PASS",
+      "observed": {
+        "SRC27_workload": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+        "SRC27_oracle_custody": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+        "SRC27_agree": true,
+        "SRC35_workload": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+        "SRC35_oracle_custody": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+        "SRC35_agree": true,
+        "SRC14_workload": "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379",
+        "SRC14_d02_binding": "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379",
+        "SRC14_agree": true,
+        "warrant_template_matches_workload": true
+      }
+    },
+    {
+      "id": "V10",
+      "requirement": "all-35 ledger internal arithmetic and structural checks",
+      "result": "PASS",
+      "observed": {
+        "source_count": 35,
+        "selected": 8,
+        "excluded": 27,
+        "cells": 280,
+        "distinct_sources_in_cells": 35,
+        "uniform_8_cells_per_source": true,
+        "cells_match_35x8": true,
+        "claim_ceilings": 9,
+        "carried_residuals": 3,
+        "invariants": 7
+      }
+    },
+    {
+      "id": "V11",
+      "requirement": "authority/API/consumer component blobs exact at the execution head",
+      "result": "PASS",
+      "observed": {
+        "analytical_composition": true,
+        "empirical_possibility_provider": true,
+        "positioned_subject_consumer": true,
+        "lifecycle_currentness_owner": true,
+        "replay_dependency_owner": true,
+        "source_backed_c11_facade": true
+      }
+    },
+    {
+      "id": "V12",
+      "requirement": "C4B execution preconditions satisfied by the combined tree",
+      "result": "PASS",
+      "observed": {
+        "required_g01_owner": "31a9afd7d91ed4cb2fb1c1aab3ef86a5fdda1f85",
+        "required_physical_decoder": "d3d828c171ea9fdd0e90563aff6ef705f5aae2cf",
+        "required_r5_codec": "6000a1704d713f65e07610d81e9b3fd8bdd515ca",
+        "g01_owner_now_present": true,
+        "physical_decoder_now_present": true,
+        "r5_codec_now_present": true,
+        "governed_base_observed_g01_owner": "ABSENT",
+        "note": "C4B was frozen on the C1-only base where these were ABSENT. The C4A combined tree supplies them exactly."
+      }
+    },
+    {
+      "id": "V13",
+      "requirement": "warrant candidate internal consistency",
+      "result": "PASS",
+      "observed": {
+        "source_count": 7,
+        "SRC35_absent_from_warrant": true,
+        "all_locators_unfilled": true,
+        "all_surfaces_were_placeholders_in_C4B": true,
+        "approvals_unset": true,
+        "warrant_signed": false,
+        "authorizes_access": false
+      }
+    },
+    {
+      "id": "V14",
+      "requirement": "D02 retained fixture blob resolves at its named tip",
+      "result": "PASS",
+      "observed": {
+        "fixture_blob": "12f6adb77ef5692511055c8f0520e42c454f3867",
+        "blob_at_named_tip": "12f6adb77ef5692511055c8f0520e42c454f3867",
+        "matches": true,
+        "counts_arithmetically_consistent": true
+      }
+    },
+    {
+      "id": "V15",
+      "requirement": "LiTS oracle object counts match the commission-stated B002 grain",
+      "result": "PASS",
+      "observed": {
+        "object_counts": {
+          "EmpiricalUniverse": 1,
+          "AuthoritySnapshot": 24,
+          "EmpiricalPredicate": 35,
+          "EmpiricalQuerySpec": 63,
+          "EmpiricalFact": 60,
+          "DiscoveryAuthority": 1,
+          "DiscoveryResultReceipt": 50
+        },
+        "matches_commission": true
+      }
+    },
+    {
+      "id": "V16",
+      "requirement": "reader option freeze agrees with the C4C3 source of truth",
+      "result": "PASS",
+      "observed": {
+        "explicit_arguments_bound": [
+          "metadataonly",
+          "apply_value_formats",
+          "user_missing",
+          "encoding",
+          "chunksize"
+        ],
+        "inherited_defaults_bound": 11,
+        "inherited_defaults_agreeing_with_C4C3": 11,
+        "seed_hash_agrees_with_C4C3": true
+      }
+    }
+  ],
+  "checks_total": 16,
+  "checks_passed": 16,
+  "checks_failed": 0,
+  "checks_skipped": 0,
+  "known_limits_of_this_verification": [
+    "The 3.4 GB checkpoint document is not present on this estate, so the LiTS checkpoint SHA was not recomputed here. Its identity is carried as bound from the accepted D2P and C4B records.",
+    "120 giant EmpiricalFact deferred-member digests remain checkpoint-side and were not recomputed.",
+    "Byte-reproducibility of the D2P extraction was not re-executed.",
+    "The Route-B producer blob is fan-in-observed; C4B does not name it. Flagged for HQ confirmation.",
+    "No dependency lock file exists in the repository; the freeze relies on the C4C3 environment lock."
+  ],
+  "conclusion": "Every source-free verification the commission requires PASSES. No unresolved pre-warrant item prevents review of the freeze. The seven unfilled source locators are explicitly typed as warrant-issuance fill-ins and no raw storage was searched."
+}

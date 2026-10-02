@@ -1,0 +1,234 @@
+{
+  "schema": "PYAT_C4_SOURCE_EXECUTION_WARRANT_CANDIDATE@1.0.0",
+  "lane": "PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1",
+  "governing_condition": "O1-C06",
+  "derived_from": "WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/07_UNSIGNED_SOURCE_WARRANT_TEMPLATE.json",
+
+  "warrant_status": "CANDIDATE_ONLY__NOT_ISSUED__NO_RAW_ACCESS_AUTHORIZED",
+  "signed": false,
+  "authorizes_access": false,
+  "issued": false,
+  "issued_by": null,
+  "issue_date": null,
+  "execution_authorized": false,
+
+  "critical_statements": [
+    "THIS DOCUMENT IS A CANDIDATE. IT IS NOT A WARRANT. IT AUTHORIZES NOTHING.",
+    "No raw survey file may be opened, stat-ed, hashed, metadata-read, decoded or materialised until HQ issues this warrant AND the required user/resource owner records approval.",
+    "Hashing, statting and metadata reads ARE source access. They are NOT pre-warrant exceptions.",
+    "This fan-in performed zero raw-source operations of any kind.",
+    "SOURCE_LOCATOR_FILL_REQUIRED_BEFORE_WARRANT_ISSUANCE — all seven access locator slots are unfilled. This fan-in did NOT search raw storage to fill them, as the commission expressly forbids."
+  ],
+
+  "unresolved_pre_issuance_items": {
+    "SOURCE_LOCATOR_FILL_REQUIRED_BEFORE_WARRANT_ISSUANCE": {
+      "status": "OPEN",
+      "affected_sources": ["SRC02", "SRC06", "SRC08", "SRC12", "SRC14", "SRC26", "SRC27"],
+      "reason": "Actual local access locators are not lawfully frozen in any accepted evidence. C4B's template carries the explicit placeholder <TO_BE_SUPPLIED_ON_AUTHORIZED_EXECUTION_SURFACE> for all seven.",
+      "why_not_filled_here": "Commission line 470 directs that if locators are not already lawfully frozen, they must be left as explicit required fill-in slots and SOURCE_LOCATOR_FILL_REQUIRED_BEFORE_WARRANT_ISSUANCE returned, RATHER THAN searching raw storage. No search was performed.",
+      "how_to_fill": "HQ or the accountable resource owner supplies the locator on the authorised execution surface at issuance. Locators must then be bound in the warrant together with the source SHA-256 they resolve to.",
+      "locators_already_bound": {"SRC35": "NOT_REQUIRED__RETAINED_COMPARATOR__NO_FRESH_ACCESS"}
+    },
+    "execution_surface_binding": {
+      "status": "PARTIALLY_BOUND",
+      "note": "C4B's template carries <HQ_TO_BIND_EXACT_RUNTIME_AND_C3_EQUIVALENT_HEAD> on all seven sources. This fan-in supplies the resolved value.",
+      "resolved_value": "C4C3-DARWIN-X86_64-ANCHOR/CPYTHON-3.11.3/PYREADSTAT-1.3.6/PYARROW-25.0.1/PANDAS-2.3.3/NUMPY-2.4.6/PYTEST-9.1.1",
+      "resolved_against_combined_tree": "8f7efe690a161902e79358eb31650c238a4c0be8",
+      "rawlsing_next_tree_hash": "b0c1ab472cde033e21f1c2f63fbcbea2f0cccef0"
+    },
+    "approvals": {
+      "HQ": {"name": null, "decision": null, "signature_or_commit": null, "status": "UNSET"},
+      "required_user_resource_owner": {"name": null, "decision": null, "signature_or_record": null, "status": "UNSET"},
+      "note": "Both are required before issuance. C4B froze the same requirement."
+    }
+  },
+
+  "bound_globals": {
+    "execution_surface_identifier": "C4C3-DARWIN-X86_64-ANCHOR/CPYTHON-3.11.3/PYREADSTAT-1.3.6/PYARROW-25.0.1/PANDAS-2.3.3/NUMPY-2.4.6/PYTEST-9.1.1",
+    "execution_combined_tree": "8f7efe690a161902e79358eb31650c238a4c0be8",
+    "rawlsing_next_tree_hash": "b0c1ab472cde033e21f1c2f63fbcbea2f0cccef0",
+    "runtime": {"os": "macOS 13.7.8 (22H730)", "kernel": "Darwin 22.6.0", "machine": "x86_64", "python": "CPython 3.11.3", "pyreadstat": "1.3.6", "pyarrow": "25.0.1", "pandas": "2.3.3", "numpy": "2.4.6", "pytest": "9.1.1", "historical_c3_pip_freeze_seed_sha256": "9cde8e5ab9abba46a9e98826100ed084a0943a77fee7bc232a3c7643334da2eb"},
+    "install_on_import": 0,
+    "silent_dependency_upgrade": 0,
+    "reader_lane_law": "A physical-metadata digest is valid only as (source identity, exact reader configuration/lane). Both must be bound per source below and reported together at run time.",
+    "oracle_bindings": {
+      "SRC27": {"source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09", "checkpoint_document_sha256": "2704fd3fadc9c898a512183aaf5eebf0ca48d78c47e75a19d47e17281eaa5726", "oracle_identity": "e5d66db4b6f8339672b0f4828b72a8df68b5525bf71ecfda899d0531d618a98a", "retained_preimage_packet": "WORKER_RETURNS/PYAT-R2-LITS-D2P-PORTABLE-IMPORTED-R1/NOVIYMAC_PACKET/", "packet_manifest_sha256": "46b38c21f2b331575b12f2eadd09348299ab9c6736983f9f281fd48644ff8106"},
+      "SRC35": {"source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d", "oracle_identity": "3694b8bd0b5468433a1a83bd469337c7e36e552c3a9a5fef65fff88df8fce800", "oracle_document_sha256": "9d11a480c1c1341a2a92e0def77f5d15563ed83a44efeb9f89eff5b6cbb1527d", "fresh_read": false}
+    }
+  },
+
+  "authorized_sources": {
+    "count": 7,
+    "keys": ["SRC02", "SRC06", "SRC08", "SRC12", "SRC14", "SRC26", "SRC27"],
+    "excluded_from_this_warrant": {"SRC35": "RETAINED_COMPARATOR__ZERO_FRESH_READ"},
+    "excluded_account": "The 27 non-selected sources are NOT authorised for any fresh open, hash, stat or decode under this warrant."
+  },
+
+  "per_source": [
+    {
+      "source_key": "SRC02", "source_file": "Afro Barometer Round 5.sav", "format": "SAV",
+      "canonical_sha256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+      "access_locator": "<REQUIRED_FILL_IN_SLOT__SOURCE_LOCATOR_FILL_REQUIRED_BEFORE_WARRANT_ISSUANCE>",
+      "reader_lane": {"lane_id": "SAV_ENCODING_NULL", "encoding": null, "authority_status": null},
+      "allowed_operations": {"kind": "SELECTED_VARIABLE_PHYSICAL", "variables": [{"name": "Q10B", "ordinal": 58, "native_codes": [997], "expected_successor_type": "float64", "expected_missing_state": "FORMAT_USER_MISSING_VALUE", "expected_source_declaration": {"kind": "discrete", "value": 997}}]},
+      "authority": "accepted C3 G01 representation authority",
+      "expected_operation_class": "BOUNDED_FRESH_PHYSICAL_SELECTED_VARIABLE_READ",
+      "max_retry_budget": 0,
+      "raw_bytes_retention": "DO_NOT_COMMIT_OR_COPY_RAW_RESPONDENT_BYTES_TO_GIT"
+    },
+    {
+      "source_key": "SRC06", "source_file": "Arab Barometer Wave 5.sav", "format": "SAV",
+      "canonical_sha256": "6a5cbad637ce1546833a1d4812ba6d1e8d75f85b5b199b0cf3ec5cf456068dbc",
+      "access_locator": "<REQUIRED_FILL_IN_SLOT__SOURCE_LOCATOR_FILL_REQUIRED_BEFORE_WARRANT_ISSUANCE>",
+      "reader_lane": {"lane_id": "SAV_ENCODING_NULL", "encoding": null, "authority_status": null},
+      "allowed_operations": {"kind": "SELECTED_VARIABLE_PHYSICAL", "variables": [{"name": "Q101", "ordinal": 20, "native_codes": [98, 99], "expected_successor_type": "float64", "expected_missing_state": "OBSERVED_STORAGE_VALUE"}, {"name": "Q2061B", "ordinal": 19, "native_codes": [97], "expected_successor_type": "float64", "expected_missing_state": "OBSERVED_STORAGE_VALUE"}]},
+      "authority": "accepted C3 G01 representation authority",
+      "expected_operation_class": "BOUNDED_FRESH_PHYSICAL_SELECTED_VARIABLE_READ",
+      "max_retry_budget": 0,
+      "raw_bytes_retention": "DO_NOT_COMMIT_OR_COPY_RAW_RESPONDENT_BYTES_TO_GIT"
+    },
+    {
+      "source_key": "SRC08", "source_file": "Asian Barometer Wave 1.sav", "format": "SAV",
+      "canonical_sha256": "ac0b8bc1ddb2fa6b952417e35b6379ce6a2cf8596776a43282ba44f48e0ae1a2",
+      "access_locator": "<REQUIRED_FILL_IN_SLOT__SOURCE_LOCATOR_FILL_REQUIRED_BEFORE_WARRANT_ISSUANCE>",
+      "reader_lane": {"lane_id": "SAV_ENCODING_BIG5_DECLARED", "encoding": "BIG5", "authority_status": "SOURCE_DECLARED_EXACT_SHA_ENCODING__PHYSICAL_DECODING_ONLY"},
+      "allowed_operations": {"kind": "EXACT_SHA_DECLARED_ENCODING_ADMISSION_PLUS_METADATA_ONLY_READER_PROBE", "row_data_reads": 0, "selected_columns": [], "full_source_decode": false},
+      "authority": "accepted C3 D01 decoder admission; DECLARED_ENCODING_ALLOWLIST exact-SHA entry",
+      "expected_operation_class": "FRESH_METADATA_ONLY_DECODER_ADMISSION",
+      "max_retry_budget": 0,
+      "raw_bytes_retention": "DO_NOT_COMMIT_OR_COPY_RAW_RESPONDENT_BYTES_TO_GIT"
+    },
+    {
+      "source_key": "SRC12", "source_file": "EVS 1990.sav", "format": "SAV",
+      "canonical_sha256": "66252a92c59bf6759b79a6b35b2be658b98a433373212a70c8ec94755d3e02ec",
+      "access_locator": "<REQUIRED_FILL_IN_SLOT__SOURCE_LOCATOR_FILL_REQUIRED_BEFORE_WARRANT_ISSUANCE>",
+      "reader_lane": {"lane_id": "SAV_ENCODING_WINDOWS1252_DECLARED", "encoding": "WINDOWS-1252", "authority_status": "SOURCE_DECLARED_EXACT_SHA_ENCODING__PHYSICAL_DECODING_ONLY"},
+      "allowed_operations": {"kind": "EXACT_SHA_DECLARED_ENCODING_ADMISSION_PLUS_METADATA_ONLY_READER_PROBE", "row_data_reads": 0, "selected_columns": [], "full_source_decode": false},
+      "authority": "accepted C3 D01 decoder admission; DECLARED_ENCODING_ALLOWLIST exact-SHA entry",
+      "expected_operation_class": "FRESH_METADATA_ONLY_DECODER_ADMISSION",
+      "max_retry_budget": 0,
+      "raw_bytes_retention": "DO_NOT_COMMIT_OR_COPY_RAW_RESPONDENT_BYTES_TO_GIT",
+      "multi_wave_pair_with": "SRC14"
+    },
+    {
+      "source_key": "SRC14", "source_file": "EVS 2008.sav", "format": "SAV",
+      "canonical_sha256": "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379",
+      "access_locator": "<REQUIRED_FILL_IN_SLOT__SOURCE_LOCATOR_FILL_REQUIRED_BEFORE_WARRANT_ISSUANCE>",
+      "reader_lane": {"lane_id": "SAV_ENCODING_NULL", "encoding": null, "authority_status": null},
+      "allowed_operations": {"kind": "BOUNDED_PHYSICAL_WITNESS_READ_EXACT_VARIABLE", "variables": [{"name": "v372", "ordinal": 466}]},
+      "D02_witness_binding": {
+        "fixture_id": "EVS08_DATE_MISSING_V372",
+        "fixture_blob": "12f6adb77ef5692511055c8f0520e42c454f3867",
+        "native_class": "TYPED_DATE_USER_MISSING_SENTINEL",
+        "rendered_value": "1582-10-13",
+        "expected_counts": {"user_missing": 1917, "ordinary_present": 64363, "system_missing": 0, "total_rows": 66280},
+        "accepted_carrier_domain": ["python.datetime.date@1", "python.datetime.datetime@1", "python.datetime.time@1"],
+        "timezone_aware": "FAIL_CLOSED",
+        "anchor_observed_subclass": "built-in datetime.date",
+        "decisive_frozen_control": "dates_as_pandas_datetime=False",
+        "prohibited_inference": "The retained rendering may not be used to infer date versus datetime; the actual subclass must be OBSERVED at run time.",
+        "RES_2": "pandas.Timestamp is outside the accepted exact-type carrier. Do NOT widen during C4; a Timestamp arrival is a fail-closed STOP.",
+        "RES_3": "numpy datetime64 unit affects arrival typing; bounded by numpy 2.4.6."
+      },
+      "authority": "accepted C3 D02 codec/decoder law; SOURCE_PHYSICAL_OR_READER_METADATA_AUTHORITY__NON_SEMANTIC",
+      "expected_operation_class": "BOUNDED_FRESH_PHYSICAL_READ_EXACT_VARIABLE",
+      "max_retry_budget": 0,
+      "raw_bytes_retention": "DO_NOT_COMMIT_OR_COPY_RAW_RESPONDENT_BYTES_TO_GIT",
+      "multi_wave_pair_with": "SRC12"
+    },
+    {
+      "source_key": "SRC26", "source_file": "Latinobarometro 2024.sav", "format": "SAV",
+      "canonical_sha256": "ff5cef18c87969026e7f993d09f10c38a547bf81d5d398784fb59b960b7b0a40",
+      "access_locator": "<REQUIRED_FILL_IN_SLOT__SOURCE_LOCATOR_FILL_REQUIRED_BEFORE_WARRANT_ISSUANCE>",
+      "reader_lane": {"lane_id": "SAV_ENCODING_NULL", "encoding": null, "authority_status": null},
+      "allowed_operations": {"kind": "BOUNDED_HEADER_PREFIX_PLUS_READER_METADATA", "expected_raw_nominal_case_size": 174, "expected_decoded_dictionary_data_width": 332, "equality_required": false, "law": "Raw nominal case size and decoded dictionary width must be preserved SEPARATELY. Divergence is expected, not a failure, and must never be collapsed."},
+      "authority": "CLOSED35 R05 frozen physical law",
+      "expected_operation_class": "BOUNDED_HEADER_PREFIX_PLUS_READER_METADATA",
+      "max_retry_budget": 0,
+      "raw_bytes_retention": "DO_NOT_COMMIT_OR_COPY_RAW_RESPONDENT_BYTES_TO_GIT"
+    },
+    {
+      "source_key": "SRC27", "source_file": "LiTS_I.dta", "format": "DTA",
+      "canonical_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+      "access_locator": "<REQUIRED_FILL_IN_SLOT__SOURCE_LOCATOR_FILL_REQUIRED_BEFORE_WARRANT_ISSUANCE>",
+      "reader_lane": {"lane_id": "DTA_ENCODING_LATIN1_COMPATIBILITY", "encoding": "latin1", "authority_status": "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY"},
+      "allowed_operations": {"kind": "EXACTLY_ONE_GOVERNED_FRESH_FULL_ROUTE_PASS", "candidates": 50, "query_roles": 77, "respondent_event_slots": ["q301_2", "q301_7"], "coordinate_fact_slots": ["country", "city", "region", "tablec", "tabled"], "default_weight_measure_fact": false},
+      "source_specific_authority": "urn:rawlsing:pre553:as2a:lits1-projection-authority:sha256:9dd1e6b7350ebb795e028db86279131f8d319e939a044b74c3c5605ecacf5b06",
+      "oracle_binding": {"checkpoint_document_sha256": "2704fd3fadc9c898a512183aaf5eebf0ca48d78c47e75a19d47e17281eaa5726", "oracle_identity": "e5d66db4b6f8339672b0f4828b72a8df68b5525bf71ecfda899d0531d618a98a"},
+      "RES_1": {"statement": "The Stata extended-missing dual-shape branch is NOT source-free round-trip testable in pyreadstat 1.3.6.", "run_requirement": "Record the exact reader_token and stata_token shapes the real decode produces, under the bound reader lane, as an explicit warrant-time observation. This is NOT a source-free PASS."},
+      "expected_operation_class": "EXACTLY_ONE_GOVERNED_FRESH_FULL_ROUTE_PASS",
+      "expected_full_route_passes": 1,
+      "max_full_route_passes": 1,
+      "max_retry_budget": 0,
+      "accounting_warning": "One governed Route-B pass is NOT one OS-level file open. Existence/access check, full hash pass, metadata read and full compatibility read are SEPARATE accounts.",
+      "raw_bytes_retention": "DO_NOT_COMMIT_OR_COPY_RAW_RESPONDENT_BYTES_TO_GIT"
+    }
+  ],
+
+  "zero_authorizations": {
+    "WVS_SRC35_fresh_source_reads": 0,
+    "excluded_source_fresh_reads": 0,
+    "candidate_A_B_C_runs": 0,
+    "measured_P2X_runs": 0,
+    "raw_respondent_pooling": 0,
+    "new_cross_source_respondent_joins": 0,
+    "SRC08_row_data_reads": 0,
+    "SRC12_row_data_reads": 0,
+    "production_code_mutations": 0,
+    "oracle_authoring_by_the_run": 0,
+    "substitutions": 0
+  },
+
+  "retry_stop_failure_law": {
+    "max_retry_budget_all_sources": 0,
+    "preserved_from_C4B": [
+      "No automatic fallback/guessing/substitution.",
+      "A hash/config/authority/oracle mismatch stops that source immediately.",
+      "Retries must be separately counted and reason-coded; a retry may not change source, encoding, variables, operations, or authority.",
+      "Candidate A/B/C and measured P2X are outside this warrant.",
+      "No excluded source may be opened under this warrant."
+    ],
+    "on_stop": [
+      "STOP the affected governed scope and preserve its failed root.",
+      "NO opportunistic production repair.",
+      "NO semantic repair.",
+      "NO automatic widening.",
+      "NO hidden retry.",
+      "NO source substitution.",
+      "NO relabelling failure as zero, empty, or PASS.",
+      "Report unreached stages and metrics as null WITH A TYPED REASON.",
+      "A corrected rerun requires new HQ-bound execution authority and a newly issued warrant."
+    ]
+  },
+
+  "retention_and_privacy_rules": {
+    "permitted": ["documentary hashes", "exact identities", "deterministic receipts", "comparison diffs", "permitted public-object preimages"],
+    "prohibited": ["committing raw respondent-level source bytes to Git", "using raw bytes as an oracle-custody shortcut", "creating cross-source respondent pools", "creating cross-source respondent joins"],
+    "raw_source_custody_prohibition": "Raw respondent source bytes may NOT be retained as a new custody artifact."
+  },
+
+  "semantic_comparability_model_causal_widening_prohibition": {
+    "NO_SEMANTIC_ROUTE_FROM_PHYSICAL_ONLY_SIX": true,
+    "NO_COMPARABILITY_AUTHORITY_FROM_C4": true,
+    "NO_MODEL_OR_CAUSAL_AUTHORITY_FROM_C4": true,
+    "NO_CLASS_SENSITIVE_EPISTEMIC_ORIGIN_CLOSURE": true,
+    "NO_ACTOR_PERSON_WORK": true,
+    "NO_C7": true,
+    "NO_PRE_V3_TO_V3": true,
+    "law": "Physical success is not survey semantics. Nothing in this warrant may be read as granting comparability, modelling, causal, or actor/person authority."
+  },
+
+  "access_accounting_instrumentation_bound": {
+    "accounts": ["source-path existence/access", "file hash passes", "path-level opens", "metadata reads", "header-prefix reads", "decoder invocations", "selected-column reads", "full reads", "byte counts where measurable", "retries"],
+    "basis_required_per_figure": true,
+    "digest_publication_requirement": "Every physical-metadata digest must be published with its reader lane."
+  },
+
+  "issuance_blockers_summary": [
+    "SOURCE_LOCATOR_FILL_REQUIRED_BEFORE_WARRANT_ISSUANCE (seven slots unfilled)",
+    "HQ approval UNSET",
+    "required user/resource owner approval UNSET",
+    "warrant unsigned",
+    "independent integration review of the freeze not yet completed"
+  ]
+}

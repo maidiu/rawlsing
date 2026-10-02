@@ -1,0 +1,125 @@
+{
+  "schema": "PYAT_C4_RUNTIME_READER_LANES_AND_RESOURCE_LAW@1.0.0",
+  "lane": "PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1",
+  "governing_condition": "O1-C05 (and the O1-C06 reader-lane binding it feeds)",
+  "status": "FROZEN__NOT_EXECUTED",
+
+  "execution_surface_identifier": "C4C3-DARWIN-X86_64-ANCHOR/CPYTHON-3.11.3/PYREADSTAT-1.3.6/PYARROW-25.0.1/PANDAS-2.3.3/NUMPY-2.4.6/PYTEST-9.1.1",
+  "surface_is_valid_only_for": {
+    "combined_execution_tree": "8f7efe690a161902e79358eb31650c238a4c0be8",
+    "rawlsing_next_tree_hash": "b0c1ab472cde033e21f1c2f63fbcbea2f0cccef0",
+    "reader_option_freeze": "the exact explicit + inherited option set below"
+  },
+
+  "environment_freeze": {
+    "os": "macOS 13.7.8 (build 22H730)",
+    "kernel": "Darwin 22.6.0",
+    "architecture": "x86_64",
+    "interpreter": "CPython 3.11.3",
+    "libraries": {"pyreadstat": "1.3.6", "pyarrow": "25.0.1", "pandas": "2.3.3", "numpy": "2.4.6", "pytest": "9.1.1"},
+    "historical_c3_pip_freeze_seed_sha256": "9cde8e5ab9abba46a9e98826100ed084a0943a77fee7bc232a3c7643334da2eb",
+    "historical_seed_status": "REPRODUCED_BYTE_FOR_BYTE on the anchor: the 13-package subset hashes to this value with zero differences across all 13 packages. Normalisation convention is LF-terminated, alphabetically sorted Name==Version, including pip and setuptools.",
+    "transitive_version_differences_from_historical_freeze": 0,
+    "additions_beyond_historical_seed": ["pyreadstat==1.3.6", "pyarrow==25.0.1", "narwhals==2.26.0"],
+    "duckdb_installed": false,
+    "duckdb_required": false,
+    "duckdb_basis": "Not on the C4 import closure; its historical requirement belonged to the EE-P2X measured lane.",
+    "install_on_import": 0,
+    "silent_dependency_upgrade": 0,
+    "repository_dependency_lock_exists": false,
+    "environment_defect": "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11 is a zero-byte launcher; only python3.11-intel64 runs. Any surface identity check must verify an actually-executing interpreter, not a PATH entry."
+  },
+
+  "two_anchors_preserved_distinct": {
+    "retained_physical_anchor": {"platform": "Darwin", "machine": "x86_64", "cpython": "3.11.3", "pyreadstat": "1.3.6", "pyarrow": "25.0.1", "grade": "PHYSICAL", "status": "HONOURED_EXACTLY__THIS_IS_THE_ANCHOR_SURFACE"},
+    "accepted_c3_source_free_anchor": {"python": "CPython 3.11.3", "pytest": "9.1.1", "pandas": "2.3.3", "numpy": "2.4.6", "grade": "SOURCE_FREE", "records_os_or_architecture": false, "records_pyreadstat_or_pyarrow": false, "status": "REPRODUCED_ON_THIS_SURFACE"},
+    "distinction_law": "The two are separate evidence grades. The source-free anchor is NOT reused as reader-side physical evidence, and neither is inherited by name alone."
+  },
+
+  "reader_option_freeze": {
+    "explicitly_passed_by_repository": {
+      "metadataonly": "True (metadata pass only)",
+      "apply_value_formats": "False",
+      "user_missing": "True",
+      "encoding": "<caller: None, or a SHA-authorised exact string>",
+      "chunksize": "<computed: max(1, batch_size // max(1, len(variables)))>"
+    },
+    "inherited_pyreadstat_1_3_6_defaults_frozen": {
+      "formats_as_category": "True",
+      "formats_as_ordered_category": "False",
+      "dates_as_pandas_datetime": "False",
+      "disable_datetime_conversion": "False",
+      "row_limit": "0",
+      "row_offset": "0",
+      "output_format": "None",
+      "usecols": "None",
+      "extra_date_formats": "None",
+      "extra_datetime_formats": "None",
+      "extra_time_formats": "None"
+    },
+    "ordered_category_behaviour": "UNORDERED. No ordered categorical arises under this configuration.",
+    "no_unidentified_default_governs_C4": true,
+    "voiding_conditions": "Any pyreadstat or pandas version change voids this freeze and requires re-qualification."
+  },
+
+  "PER_SOURCE_READER_LANES": {
+    "law": "A physical-metadata digest is frozen only as (source identity, exact reader configuration/lane). The warrant must bind both per source. A source identity alone is insufficient.",
+    "digest_coupling_evidence": "The same synthetic DTA produced digest 5f58388491b1e41424b177f966c5d61032f5f88f344f0403cfad203ca19f315a on the encoding=latin1 lane and f9148f36ba2b58a8a6386c4a7f8fff796dfb6a0a4a4fc7418043ae8849f727e6 on the encoding=None lane, while file_metadata was identical (0 differing keys). The difference is reader_configuration: encoding and authority_status are inside the digest payload.",
+    "lanes": {
+      "SRC02": {"lane_id": "SAV_ENCODING_NULL", "reader": "pyreadstat.read_sav", "encoding": null, "authority_status": null, "authority": "unprivileged", "read_path": "metadata pass only; selected-variable values via chunked read_file_in_chunks", "materialises_frame": false},
+      "SRC06": {"lane_id": "SAV_ENCODING_NULL", "reader": "pyreadstat.read_sav", "encoding": null, "authority_status": null, "authority": "unprivileged", "read_path": "metadata pass only; selected-variable values via chunked read_file_in_chunks", "materialises_frame": false},
+      "SRC08": {"lane_id": "SAV_ENCODING_BIG5_DECLARED", "reader": "pyreadstat.read_sav", "encoding": "BIG5", "authority_status": "SOURCE_DECLARED_EXACT_SHA_ENCODING__PHYSICAL_DECODING_ONLY", "authority": "DECLARED_ENCODING_ALLOWLIST[ac0b8bc1ddb2fa6b952417e35b6379ce6a2cf8596776a43282ba44f48e0ae1a2]", "read_path": "metadata-only reader probe; row_data_reads 0", "materialises_frame": false},
+      "SRC12": {"lane_id": "SAV_ENCODING_WINDOWS1252_DECLARED", "reader": "pyreadstat.read_sav", "encoding": "WINDOWS-1252", "authority_status": "SOURCE_DECLARED_EXACT_SHA_ENCODING__PHYSICAL_DECODING_ONLY", "authority": "DECLARED_ENCODING_ALLOWLIST[66252a92c59bf6759b79a6b35b2be658b98a433373212a70c8ec94755d3e02ec]", "read_path": "metadata-only reader probe; row_data_reads 0", "materialises_frame": false},
+      "SRC14": {"lane_id": "SAV_ENCODING_NULL", "reader": "pyreadstat.read_sav", "encoding": null, "authority_status": null, "authority": "unprivileged", "read_path": "metadata pass plus bounded physical read of v372/ordinal 466", "materialises_frame": false},
+      "SRC26": {"lane_id": "SAV_ENCODING_NULL", "reader": "pyreadstat.read_sav", "encoding": null, "authority_status": null, "authority": "unprivileged", "read_path": "header prefix (176 bytes) plus reader metadata only", "materialises_frame": false},
+      "SRC27": {"lane_id": "DTA_ENCODING_LATIN1_COMPATIBILITY", "reader": "pyreadstat.read_dta", "encoding": "latin1", "authority_status": "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY", "authority": "COMPATIBILITY_ALLOWLIST[7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09]", "read_path": "metadata pass plus FULL compatibility read (frame materialised)", "materialises_frame": true},
+      "SRC35": {"lane_id": "NONE__RETAINED_ONLY", "reader": null, "encoding": null, "authority": "NOT_APPLICABLE", "read_path": "NO FRESH LANE. Retained comparator; zero fresh raw reads.", "materialises_frame": false}
+    },
+    "lane_admission_rules_carried": [
+      "An encoding override is admitted ONLY for a source SHA carrying an exact SHA->encoding authority. All other SHA/encoding combinations are refused.",
+      "automatic encoding guessing or fallback (auto/guess/fallback) is forbidden",
+      "cross-source inheritance of an encoding is refused"
+    ]
+  },
+
+  "resource_accounting_law": {
+    "ru_maxrss_unit": "bytes",
+    "unit_law_constant": "DARWIN_RU_MAXRSS_ALREADY_BYTES",
+    "applies_to": "THIS SURFACE ONLY",
+    "portability_warning": "ru_maxrss is bytes on Darwin and kibibytes on Linux, a 1024x difference. A budget measured on one OS must never be relabelled across the OS boundary.",
+    "bound_surfaces": ["DETERMINANT", "QUERY", "PREDICATE", "UNIVERSE", "RELEASE", "WITNESS", "RECEIPT", "FACT", "GEOMETRY", "NEGATIVE_STATE", "REPLAY", "CONSUMER_TRACE", "DEPENDENCY_CLOSURE"],
+    "run_requirement": "Peak RSS and any other OS-defined resource measure must be published with the unit law attached."
+  },
+
+  "p2x_gate_exclusion": {
+    "holding": "P2X_DARWIN_GATES_NOT_ON_C4_PATH",
+    "independently_confirmed_by": "C4C3",
+    "c4_import_closure_modules": 21,
+    "reaches_ee_p2x_darwin_court_driver": false,
+    "reaches_ee_p2x_darwin_stage_backend": false,
+    "reaches_lits_builder_exec_module": false,
+    "dynamic_loading_primitives_in_closure": "NONE (no importlib, exec_module, spec_from_file_location, subprocess, exec, eval, os.environ)",
+    "consequence": "No EE-P2X Darwin gate patch or waiver is required for the C4 path."
+  },
+
+  "residual_platform_limitations": {
+    "RES-1": {"statement": "Stata extended-missing dual-shape branch not source-free round-trip testable in pyreadstat 1.3.6.", "future_treatment": "EXPLICIT_REAL_LiTS_OBSERVATION_UNDER_WARRANT__NOT_A_SOURCE_FREE_PASS"},
+    "RES-2": {"statement": "pandas.Timestamp is outside the accepted D02 exact-type carrier.", "law": "Do not widen the carrier during C4. A Timestamp arrival is a fail-closed STOP."},
+    "RES-3": {"statement": "numpy datetime64 unit affects D02 arrival typing.", "law": "Bounded by numpy 2.4.6; a different numpy voids the O1-C04 arrival-typing binding."}
+  },
+
+  "validity_and_invalidation": {
+    "valid_until": "the moment any of the following changes",
+    "invalidating_conditions": [
+      "any rawlsing_next/** production blob change",
+      "pyreadstat version other than 1.3.6",
+      "pandas version other than 2.3.3",
+      "numpy version other than 2.4.6",
+      "CPython version other than 3.11.3",
+      "OS other than Darwin, or architecture other than x86_64",
+      "any change to the frozen reader options",
+      "any change to the per-source reader lane assignment"
+    ],
+    "on_invalidation": "STOP. The freeze does not survive a runtime change; a new qualification is required."
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "schema": "PYAT_C4_ORACLE_AND_COMPARISON_LAW@1.0.0",
+  "lane": "PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1",
+  "governing_condition": "O1-C03 (and O1-C04 for the date carrier)",
+  "status": "FROZEN__NOT_EXECUTED",
+
+  "principle": "The fresh C4 run may NOT author its own expected truth. It is a comparison against identities that already exist and are frozen below. An oracle produced by the run under test is not an oracle.",
+
+  "oracle_bindings": {
+    "SRC27_LiTS_I": {
+      "role": "ONE_GOVERNED_FRESH_FULL_ROUTE_PASS__COMPARED_AGAINST_RETAINED_ORACLE",
+      "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+      "format": "DTA",
+      "reader_lane": "DTA__encoding_latin1__compatibility_lane",
+      "checkpoint_document_sha256": "2704fd3fadc9c898a512183aaf5eebf0ca48d78c47e75a19d47e17281eaa5726",
+      "checkpoint_bytes": 3404445161,
+      "oracle_identity": "e5d66db4b6f8339672b0f4828b72a8df68b5525bf71ecfda899d0531d618a98a",
+      "oracle_document_sha256": "cb1c6ae6f9ddef15d41897451ac9f60208d4615ea60ddbeaef8874ba1000e3f4",
+      "workload": {"candidates": 50, "query_roles": 77},
+      "expected_object_counts": {"EmpiricalUniverse": 1, "AuthoritySnapshot": 24, "EmpiricalPredicate": 35, "EmpiricalQuerySpec": 63, "EmpiricalFact": 60, "DiscoveryAuthority": 1, "DiscoveryResultReceipt": 50},
+      "structural_admission_object_count": 0,
+      "expected_facts": 60,
+      "expected_receipts": 50,
+      "retained_preimage_packet": "WORKER_RETURNS/PYAT-R2-LITS-D2P-PORTABLE-IMPORTED-R1/NOVIYMAC_PACKET/",
+      "packet_manifest_sha256": "46b38c21f2b331575b12f2eadd09348299ab9c6736983f9f281fd48644ff8106",
+      "c4b_blocker_now_closed": "C4B-LITS-ORACLE-PREIMAGE-CUSTODY-001"
+    },
+    "SRC35_WVS7": {
+      "role": "RETAINED_COMPARATOR__REPLAY_AND_COMPARE_ONLY__ZERO_FRESH_RAW_READ",
+      "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+      "format": "SAV",
+      "rows": 97220,
+      "variables": 613,
+      "oracle_identity": "3694b8bd0b5468433a1a83bd469337c7e36e552c3a9a5fef65fff88df8fce800",
+      "oracle_document_sha256": "9d11a480c1c1341a2a92e0def77f5d15563ed83a44efeb9f89eff5b6cbb1527d",
+      "oracle_git_blob": "9eecf801afa2c9f3d9140b4e5fb79fb14fc1fe20",
+      "truth_payload_identity": "eb2f9224219385dbf21af70d317e0978383012ff057ce2ac857b59c130472405",
+      "logical_release": "e6881e9a08a48f8871790e781c28bddbc44ee35db894d6ad7b1105a6a8fd262f",
+      "replay_identity": "996ba218fc5da5e0ad1ddf0cdc7f91ce8fb8a7363ce62076dc3f4073b85c383f",
+      "evaluated_frontier": "b2c3c50b68bcadb94ff2bf898d11c2b72694ced9fee4154e535db2694e26a4f3",
+      "candidate_count": 46,
+      "truth_payload_preimage_inventory": {"exact_ref_manifest": 121, "constituent_i03_fact_manifest": 50, "expected_fact_manifest": 46, "semantic_authority_closure": 6},
+      "oracle_independence": {"second_replay_equal": true, "receipt_stream_equal": true, "fact_stream_equal": true, "raw_source_reread": false, "first_successful_candidate_as_golden": false, "pairwise_candidate_vote": false},
+      "later_standardization": {"standard_oracle_identity": "e546c15533ba138be9995095059ea3b70b64a6d7b5765e3789935cff7342ef00", "standard_oracle_document_sha256": "869e72112978949e349140b74ab1b4d4966923c9ccedef518e3db9b3f54f3194", "T3_freeze_sha256": "7dfb6..."},
+      "fresh_raw_read": false,
+      "grade": "RETAINED_PROOF"
+    }
+  },
+
+  "physical_only_six_observations": {
+    "sources": ["SRC02", "SRC06", "SRC08", "SRC12", "SRC14", "SRC26"],
+    "grade": "PHYSICAL_ONLY",
+    "oracle_required": false,
+    "law": "These six gain NO semantic Route-B status. They establish physical observation only. A passing observation is not survey semantics, not comparability, and not epistemic-origin authority.",
+    "explicitly_not": "Physical success does not upgrade any of the six to a semantic route, and the EVS pair (SRC12/SRC14) establishes physical multi-wave coverage only."
+  },
+
+  "predeclared_comparison_dimensions": [
+    {"dimension": "source identity", "compare": "observed file SHA-256 against the bound per-source SHA-256", "mismatch_law": "STOP that governed scope"},
+    {"dimension": "authority", "compare": "authority refs and authority_id/authority_version triples against the frozen authority closure", "mismatch_law": "STOP"},
+    {"dimension": "determinant / query / predicate / universe / release", "compare": "retained logical_release, replay, evaluated_frontier and the 50 frozen candidate identities", "mismatch_law": "STOP"},
+    {"dimension": "witness / receipt / fact", "compare": "50 DiscoveryResultReceipt and 60 EmpiricalFact identities plus their retained preimage digests", "mismatch_law": "STOP"},
+    {"dimension": "geometry / count / order", "compare": "row counts, column counts, variable ordinals, and object counts", "mismatch_law": "STOP"},
+    {"dimension": "typed negative state", "compare": "user-missing versus system-missing versus observed-storage classification, and the SRC14 counts 1917/64363/0/66280", "mismatch_law": "STOP"},
+    {"dimension": "replay", "compare": "replay identity and replay determinism against the bound retained replay", "mismatch_law": "STOP"},
+    {"dimension": "consumer trace", "compare": "an ACTUAL trace through evaluate_positioned_subject_possibility", "mismatch_law": "STOP", "ceiling": "A sidecar synthetic success does not prove LiTS production consumption."},
+    {"dimension": "dependency / currentness closure", "compare": "authority maintenance and analytical dependency closure coverage", "mismatch_law": "STOP"}
+  ],
+
+  "difference_classification_required_before_comparison": {
+    "classes": ["source", "authority", "determinant", "witness", "geometry", "negative_state", "replay"],
+    "law": "Any difference must be classified into one of these classes with its exact failed determinant before the run continues. An unclassified difference is itself a STOP condition.",
+    "unexpected_differences_fail_closed": true
+  },
+
+  "identity_succession_law": {
+    "rule": "Any lawful identity succession must be independently derived and frozen BEFORE the run. Neither blind digest aliasing nor a live-output-authored oracle is permitted.",
+    "current_status": "No identity succession is proposed or required for this freeze. All identities above are the accepted historical ones, bound verbatim."
+  },
+
+  "recorded_but_unverified_identity_labels": {
+    "checkpoint_identity": {"value": "3fab15f37db629f0ee24189620c65eff944d8a36c4b4509abb6b8bb2ea69c33f", "status": "RECORDED_BUT_NOT_INDEPENDENTLY_VERIFIED"},
+    "canonical_closure_identity": {"value": "f264dd8f83a0794716583d1ea8445947cc9470b99475e5d51fc2383e7196f415", "status": "RECORDED_BUT_NOT_INDEPENDENTLY_VERIFIED"},
+    "preserved_as": "LABELS",
+    "must_not_be_cited_as": "independently verified facts",
+    "actual_executable_custody_binding": "checkpoint DOCUMENT SHA 2704fd3f... plus the accepted retained preimage packet",
+    "starriymac_side_limits": ["checkpoint SHA not recomputed on StarriyMac (document absent there by design)", "120 giant EmpiricalFact deferred-member digests remain checkpoint-side", "extraction byte-reproducibility not re-executed source-free"]
+  },
+
+  "RES_1_binding": {
+    "id": "RES-1",
+    "statement": "The Stata extended-missing dual-shape branch is not source-free round-trip testable in pyreadstat 1.3.6.",
+    "future_treatment": "EXPLICIT_REAL_LiTS_OBSERVATION_UNDER_WARRANT",
+    "not_a_source_free_pass": true,
+    "repository_corroboration": "rawlsing_next/tests/test_pre553_sr06_decoder_carrier.py:268 skips with 'installed pyreadstat writer/readback does not expose missing_user_values in metadata'.",
+    "what_the_run_must_record": "The exact reader_token and stata_token shapes the real LiTS decode produces for Stata extended-missing values, per SRC27 physical metadata, under the bound reader lane.",
+    "failure_law": "If the observed token shape is outside the accepted dual-shape handling, that is a STOP, not a code change."
+  },
+
+  "D02_carrier_comparison_law": {
+    "bound_carrier_domain": ["python.datetime.datetime@1", "python.datetime.date@1", "python.datetime.time@1"],
+    "anchor_observed_current_subclass": "built-in datetime.date",
+    "anchor_observed_carrier": "python.datetime.date@1",
+    "decisive_frozen_control": "dates_as_pandas_datetime=False",
+    "RES_2_law": "pandas.Timestamp is OUTSIDE the accepted exact-type carrier. Do NOT widen the carrier during C4. A Timestamp arrival is a fail-closed STOP.",
+    "RES_3_law": "numpy datetime64 unit affects arrival typing; bounded by numpy 2.4.6.",
+    "prohibited_inference": "The retained rendering 1582-10-13 may not be used to infer date versus datetime. The actual current subclass must be OBSERVED at run time and recorded.",
+    "count_binding": {"user_missing": 1917, "ordinary_present": 64363, "system_missing": 0, "total_rows": 66280},
+    "prohibited_from_C4": ["reopening whole-source traversal archaeology", "discovering a substitute oracle"]
+  },
+
+  "physical_metadata_digest_law": {
+    "statement": "A physical-metadata digest is valid only for the pair (source identity, exact reader lane).",
+    "measured_evidence": "Same synthetic DTA: encoding=latin1 lane 5f58388491b1e41424b177f966c5d61032f5f88f344f0403cfad203ca19f315a versus encoding=None lane f9148f36ba2b58a8a6386c4a7f8fff796dfb6a0a4a4fc7418043ae8849f727e6, with file_metadata identical.",
+    "cause": "reader_configuration carrying encoding and authority_status is inside the digest payload.",
+    "repeat_stability": "Decode is repeatable within a lane (two runs bit-identical).",
+    "run_requirement": "Every recorded physical-metadata digest MUST be published together with its reader lane. A digest without its lane is an incomplete record."
+  },
+
+  "oracle_independence_requirements": {
+    "for_SiTS_fresh_result": [
+      "compare against the retained independent material, not against a re-derivation of the same run",
+      "any identity succession independently derived and frozen before the run",
+      "no live-output-authored oracle",
+      "no digest aliasing between historical and current identities"
+    ],
+    "for_WVS_replay": ["second replay must equal", "receipt stream equal", "fact stream equal", "raw source reread false", "first successful candidate not used as golden", "no pairwise candidate vote"]
+  },
+
+  "claim_ceilings_applicable_to_this_freeze": [
+    "The retained WVS proof remains retained proof even if its public consumer is exercised under current accepted code.",
+    "The six physical witnesses gain no full semantic Route-B status.",
+    "The EVS pair proves physical multi-wave coverage only at this scope.",
+    "No structural, causal, or actor/person authority arises from C4."
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "schema": "PYAT_C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@1.0.0",
+  "lane": "PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1",
+  "governing_conditions": ["O1-C07", "O1-C08"],
+  "status": "FROZEN_BEFORE_WARRANT__NOT_EXECUTED",
+
+  "O1_C07_instrumentation": {
+    "principle": "A full Route-B pass is NOT one OS-level file open. Access must be separately accounted at every distinct layer.",
+    "mandatory_separate_accounts": [
+      "source-path existence/access checks",
+      "file hash passes (full SHA-256 over the file)",
+      "path-level opens",
+      "metadata reads",
+      "header-prefix reads",
+      "decoder invocations",
+      "selected-column reads",
+      "full reads",
+      "byte counts where measurable",
+      "retries"
+    ],
+    "accounting_basis_rule": "Each account must state its measurement BASIS, not only a count. A count without a stated basis is not an account.",
+    "frozen_zero_budgets": {
+      "WVS_SRC35_fresh_source_opens": 0,
+      "excluded_source_fresh_opens": 0,
+      "candidate_A_B_C_runs": 0,
+      "measured_P2X_runs": 0,
+      "raw_respondent_pooling": 0,
+      "new_cross_source_respondent_joins": 0,
+      "SRC08_row_data_reads": 0,
+      "SRC12_row_data_reads": 0,
+      "SRC08_selected_columns": 0,
+      "SRC12_selected_columns": 0
+    },
+    "zero_budget_discipline": "These are hard zeros. A single non-zero count in any of them is a STOP condition, not a reportable variance."
+  },
+
+  "per_source_expected_operation_class": {
+    "SRC02": {"operation_class": "BOUNDED_FRESH_PHYSICAL_SELECTED_VARIABLE_READ", "selected_variables": ["Q10B"], "ordinals": [58], "reader_lane": "SAV_ENCODING_NULL", "expected_full_reads": 0, "expected_selected_reads": 1, "max_retry_budget": 0, "retry_law": "No retry. A hash/config/authority mismatch stops this source immediately."},
+    "SRC06": {"operation_class": "BOUNDED_FRESH_PHYSICAL_SELECTED_VARIABLE_READ", "selected_variables": ["Q101", "Q2061B"], "ordinals": [20, 19], "reader_lane": "SAV_ENCODING_NULL", "expected_full_reads": 0, "expected_selected_reads": 1, "max_retry_budget": 0, "retry_law": "No retry. Same stop law."},
+    "SRC08": {"operation_class": "FRESH_METADATA_ONLY_DECODER_ADMISSION", "selected_variables": [], "ordinals": [], "reader_lane": "SAV_ENCODING_BIG5_DECLARED", "expected_full_reads": 0, "expected_selected_reads": 0, "expected_metadata_reads": 1, "max_retry_budget": 0, "retry_law": "No retry. Admitted operation is exact-SHA declared-encoding admission plus a metadata-only reader probe."},
+    "SRC12": {"operation_class": "FRESH_METADATA_ONLY_DECODER_ADMISSION", "selected_variables": [], "ordinals": [], "reader_lane": "SAV_ENCODING_WINDOWS1252_DECLARED", "expected_full_reads": 0, "expected_selected_reads": 0, "expected_metadata_reads": 1, "max_retry_budget": 0, "retry_law": "No retry. Same admission scope as SRC08."},
+    "SRC14": {"operation_class": "BOUNDED_FRESH_PHYSICAL_READ_EXACT_VARIABLE", "selected_variables": ["v372"], "ordinals": [466], "reader_lane": "SAV_ENCODING_NULL", "expected_full_reads": 0, "expected_selected_reads": 1, "max_retry_budget": 0, "retry_law": "No retry. Witness-only read."},
+    "SRC26": {"operation_class": "BOUNDED_HEADER_PREFIX_PLUS_READER_METADATA", "selected_variables": [], "ordinals": [], "reader_lane": "SAV_ENCODING_NULL", "expected_full_reads": 0, "expected_selected_reads": 0, "expected_header_prefix_bytes": 176, "max_retry_budget": 0, "retry_law": "No retry. Geometry divergence between raw header 174 and decoded dictionary width 332 is expected and NOT equality-required."},
+    "SRC27": {"operation_class": "EXACTLY_ONE_GOVERNED_FRESH_FULL_ROUTE_PASS", "workload": {"candidates": 50, "query_roles": 77}, "reader_lane": "DTA_ENCODING_LATIN1_COMPATIBILITY", "expected_full_route_passes": 1, "expected_full_route_passes_max": 1, "max_retry_budget": 0, "retry_law": "Exactly ONE governed fresh pass. A second pass is not a retry; it is a separate run requiring new HQ-bound authority.", "critical_note": "One governed full Route-B pass is NOT one OS-level file open. The pass will involve multiple path-level opens, a hash pass, a metadata pass and a full read. These must each be counted separately."},
+    "SRC35": {"operation_class": "RETAINED_COMPARATOR_REPLAY_AND_COMPARE", "fresh_reads": 0, "max_retry_budget": 0, "retry_law": "No fresh access at all. Replay uses retained material only."}
+  },
+
+  "retry_budget_law": {
+    "principle": "C4B's retry/stop law is preserved EXACTLY as frozen. This fan-in does NOT invent a more permissive budget.",
+    "preserved_from_C4B": [
+      "No automatic fallback/guessing/substitution.",
+      "A hash/config/authority/oracle mismatch stops that source immediately.",
+      "Retries must be separately counted and reason-coded; a retry may not change source, encoding, variables, operations, or authority.",
+      "Candidate A/B/C and measured P2X are outside this warrant.",
+      "No excluded source may be opened under this warrant."
+    ],
+    "frozen_maximum": "ZERO retries across all eight sources under this freeze.",
+    "rationale_disclosure": "Every per-source max_retry_budget is 0 because C4B froze immediate-stop-on-mismatch and no permitted variation remains that a retry could legitimately explore. A retry is authorised only by a NEW HQ-bound warrant, never by this one.",
+    "no_more_permissive_budget_invented": true
+  },
+
+  "O1_C08_failure_law": {
+    "principle": "Source, authority, runtime, oracle or required-path mismatch stops the affected governed scope and preserves its failed root.",
+    "STOP_triggers": [
+      {"trigger": "source identity", "test": "observed file SHA-256 != the bound per-source SHA-256"},
+      {"trigger": "path/locator", "test": "the filled-in access locator does not resolve to the bound source identity"},
+      {"trigger": "authority", "test": "authority refs, authority_id or authority_version do not agree with the frozen authority closure"},
+      {"trigger": "required columns/ordinals", "test": "a selected variable or ordinal is absent, or an unexpected selected column appears"},
+      {"trigger": "runtime", "test": "any component of the execution-surface identifier differs, or any invalidating condition in 06_RUNTIME_READER_LANES_AND_RESOURCE_LAW.json.validity_and_invalidation occurs"},
+      {"trigger": "reader lane", "test": "the executed reader configuration/lane differs from the per-source lane bound in 06, or a digest is published without its lane"},
+      {"trigger": "oracle/preimage custody", "test": "retained oracle identity, packet manifest digest or preimage digests do not resolve as bound"},
+      {"trigger": "required physical witness", "test": "SRC14 counts differ from 1917/64363/0/66280, or the fixture identity does not resolve"},
+      {"trigger": "named consumer", "test": "no ACTUAL trace through evaluate_positioned_subject_possibility is produced"},
+      {"trigger": "dependency/currentness/replay determinant", "test": "authority maintenance or analytical dependency closure does not cover the produced result"}
+    ],
+    "scope_of_a_stop": "The affected governed SCOPE only. Independent unaffected work may continue only where the issued failure law permits it.",
+    "absolutely_prohibited_on_mismatch": [
+      "opportunistic production repair",
+      "semantic repair",
+      "automatic widening",
+      "hidden retry",
+      "source substitution",
+      "relabelling a failure as zero, empty, or PASS"
+    ],
+    "unreached_stage_or_metric_reporting": {
+      "law": "Unreached stages and metrics are reported as null WITH A TYPED REASON.",
+      "never": "A fabricated zero or a fabricated PASS.",
+      "example_of_correct_reporting": {"metric": "SRC06 metadata reads", "value": null, "reason": "STOPPED_AT_SRC02_SOURCE_IDENTITY_MISMATCH__SRC06_NOT_REACHED"}
+    },
+    "corrected_rerun": "A corrected rerun requires new HQ-bound execution authority and a newly issued warrant as applicable. It may never be performed under the present candidate."
+  },
+
+  "difference_discipline": {
+    "classification_required": ["source", "authority", "determinant", "witness", "geometry", "negative_state", "replay"],
+    "rule": "Any difference must be classified with its exact failed determinant before the run proceeds. An unclassified difference is itself a STOP condition.",
+    "unexpected_differences_fail_closed": true
+  },
+
+  "measurement_basis_requirement": {
+    "rule": "Every accounting figure must be published with its measurement basis.",
+    "required_basis_fields": ["what was measured", "at which layer", "by what mechanism", "at what point in the run"],
+    "explicit_warning": "A count of 'opens' is meaningless without stating whether it means OS-level path opens, reader invocations, or decoder calls. These are different quantities and C4B froze them as separate accounts."
+  },
+
+  "hardened_note_on_the_SRC27_single_pass": {
+    "statement": "The frozen 'exactly one governed fresh full Route-B pass' is a WORKLOAD constraint, not an access constraint.",
+    "implication": "It does NOT license assuming one file open. The run will require at minimum: one existence/access check, one full SHA-256 hash pass, one metadata read, and one full compatibility read. Each is a separate account under O1-C07.",
+    "misreading_this_as_one_open": "Would be an accounting failure and is expressly forbidden by Omega-1."
+  }
+}

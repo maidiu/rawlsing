@@ -1,0 +1,224 @@
+{
+  "schema": "PYAT_C4_EXECUTABLE_FREEZE_CANDIDATE@1.0.0",
+  "lane": "PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1",
+  "status": "READY",
+  "disposition": "PASS_C4_EXECUTABLE_FREEZE_FANIN__READY_FOR_INDEPENDENT_REVIEW",
+  "terminal": "C4_EXECUTABLE_FREEZE_FANIN_RETURNED__INDEPENDENT_REVIEW_REQUIRED",
+  "governing_omega1": "01762d7379be4e23dad3e21bcdcee47c536902d",
+  "omega1_decision": "A_GO_WITH_EXACT_C4_CONDITIONS",
+  "cryptographic_bindings": {
+    "combined_execution_commit": "8f7efe690a161902e79358eb31650c238a4c0be8",
+    "combined_execution_merge": "9a5752a8ce4a119efd24cbbeedd8cbcda8abbadb",
+    "rawlsing_next_tree_hash": "b0c1ab472cde033e21f1c2f63fbcbea2f0cccef0",
+    "rawlsing_next_tree_unchanged_by_fanin": true,
+    "production_blobs_changed_by_fanin": 0
+  },
+  "imported_evidence_commit_identities": {
+    "C4A": {
+      "commit": "8f7efe690a161902e79358eb31650c238a4c0be8",
+      "merge": "9a5752a8ce4a119efd24cbbeedd8cbcda8abbadb",
+      "method": "BRANCH_BASE",
+      "files": 0
+    },
+    "C4B": {
+      "commit": "c2af4f61d68e9803af83f8e26f633acfe31062fa",
+      "method": "EXACT_PATH_BLOB_IMPORT",
+      "files": 9,
+      "blobs_exact": 9
+    },
+    "D2P": {
+      "commit": "41bd7a7c056de9d45b905efc0f926b4ab6a097ad",
+      "method": "EXACT_PATH_BLOB_IMPORT",
+      "files": 16,
+      "blobs_exact": 16
+    },
+    "C4C3": {
+      "commit": "1df64cc596b5602c952518c87b1c71cc1fcfb35f",
+      "method": "MERGE_CLEAN_DESCENDANT",
+      "files": 9,
+      "blobs_exact": 9
+    },
+    "total_evidence_files": 34,
+    "total_blobs_exact": 34,
+    "blob_drift": 0
+  },
+  "pinned_production_blob_identities": {
+    "five_C1_owner_blobs": [
+      "3a5e3db8a0897900d0b2606813bda7c3f586d46e",
+      "23167aa25291fb148b1e3cf210ac33fe7769b783",
+      "547e6bf20354f38179a0e2600de64c7cb2260ea0",
+      "47e65aad5e0a8df7af6fda72fc8807a002e556ce",
+      "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b"
+    ],
+    "six_accepted_C3_blobs": [
+      "31a9afd7d91ed4cb2fb1c1aab3ef86a5fdda1f85",
+      "d3d828c171ea9fdd0e90563aff6ef705f5aae2cf",
+      "6000a1704d713f65e07610d81e9b3fd8bdd515ca",
+      "fb7b090809a609a3b0157f1ed8fcdcd8e8784525",
+      "8fc05965386055a208e5b3988112e67a2e6333e2",
+      "3901f10a487856f5f232ae6700fff407ac99725e"
+    ],
+    "facade_blob": "8a761119e4a8d68eb291fc4edfadb52e027f8284",
+    "named_consumer_blob": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+    "route_B_producer_blob": "2385cd327dced3c5b887b59085aa0d21b04d78c3",
+    "verified_exact": "13/13",
+    "AT07_forward": "01c381d3f3c386cfc22fd2f57b8e2c244771ddf1529d4f8ab8c7b1cf41bd50dd",
+    "AT07_reverse": "a3bd7e85ae14babb5ac5a12b0bcc57a8cdf3eccf8f43394895903dc43aca40ca"
+  },
+  "eight_source_workload": {
+    "count": 8,
+    "sources": {
+      "SRC02": {
+        "sha256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+        "class": "BOUNDED_FRESH_PHYSICAL",
+        "vars": [
+          "Q10B@58"
+        ],
+        "reader_lane": "SAV_ENCODING_NULL"
+      },
+      "SRC06": {
+        "sha256": "6a5cbad637ce1546833a1d4812ba6d1e8d75f85b5b199b0cf3ec5cf456068dbc",
+        "class": "BOUNDED_FRESH_PHYSICAL",
+        "vars": [
+          "Q101@20",
+          "Q2061B@19"
+        ],
+        "reader_lane": "SAV_ENCODING_NULL"
+      },
+      "SRC08": {
+        "sha256": "ac0b8bc1ddb2fa6b952417e35b6379ce6a2cf8596776a43282ba44f48e0ae1a2",
+        "class": "FRESH_METADATA_ONLY",
+        "vars": [],
+        "reader_lane": "SAV_ENCODING_BIG5_DECLARED"
+      },
+      "SRC12": {
+        "sha256": "66252a92c59bf6759b79a6b35b2be658b98a433373212a70c8ec94755d3e02ec",
+        "class": "FRESH_METADATA_ONLY",
+        "vars": [],
+        "reader_lane": "SAV_ENCODING_WINDOWS1252_DECLARED"
+      },
+      "SRC14": {
+        "sha256": "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379",
+        "class": "BOUNDED_FRESH_PHYSICAL",
+        "vars": [
+          "v372@466"
+        ],
+        "reader_lane": "SAV_ENCODING_NULL"
+      },
+      "SRC26": {
+        "sha256": "ff5cef18c87969026e7f993d09f10c38a547bf81d5d398784fb59b960b7b0a40",
+        "class": "HEADER_PREFIX_PLUS_METADATA",
+        "vars": [],
+        "reader_lane": "SAV_ENCODING_NULL"
+      },
+      "SRC27": {
+        "sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+        "class": "ONE_GOVERNED_FRESH_FULL_ROUTE_PASS",
+        "candidates": 50,
+        "query_roles": 77,
+        "reader_lane": "DTA_ENCODING_LATIN1_COMPATIBILITY"
+      },
+      "SRC35": {
+        "sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+        "class": "RETAINED_COMPARATOR",
+        "fresh_reads": 0,
+        "reader_lane": "NONE"
+      }
+    },
+    "seven_fresh_reads": [
+      "SRC02",
+      "SRC06",
+      "SRC08",
+      "SRC12",
+      "SRC14",
+      "SRC26",
+      "SRC27"
+    ],
+    "one_retained_comparator": [
+      "SRC35"
+    ],
+    "excluded_source_fresh_reads": 0,
+    "substitutions": 0
+  },
+  "apis_owners_consumer": {
+    "facade": "rawlsing_next/pre553_source_backed_c11_facade.py@8a761119e4a8d68eb291fc4edfadb52e027f8284",
+    "route_B_producer": "rawlsing_next/pre553_route_b_production.py@2385cd327dced3c5b887b59085aa0d21b04d78c3",
+    "analytical_composition": "rawlsing_next/pre553_analytical_composition.py@604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+    "empirical_provider": "rawlsing_next/pre553_empirical_possibility_provider.py@23167aa25291fb148b1e3cf210ac33fe7769b783",
+    "named_consumer": "rawlsing_next/source_backed_positioned_subject_possibility.py@62e5eced47b64512f47b004e3e13a6ef3fe21de7::evaluate_positioned_subject_possibility",
+    "lifecycle_currentness_owner": "rawlsing_next/pre553_authority_maintenance.py@547e6bf20354f38179a0e2600de64c7cb2260ea0::AuthorityMaintenanceExecutor",
+    "replay_owner": "rawlsing_next/pre553_analytical_replay_dependency.py@47e65aad5e0a8df7af6fda72fc8807a002e556ce"
+  },
+  "oracle_preimage_custody": {
+    "LiTS": {
+      "checkpoint_document_sha256": "2704fd3fadc9c898a512183aaf5eebf0ca48d78c47e75a19d47e17281eaa5726",
+      "oracle_identity": "e5d66db4b6f8339672b0f4828b72a8df68b5525bf71ecfda899d0531d618a98a",
+      "packet_manifest_sha256": "46b38c21f2b331575b12f2eadd09348299ab9c6736983f9f281fd48644ff8106",
+      "B001": "50/50",
+      "B002": "24/24 + 208/208",
+      "B003": "50/50 + 18/18"
+    },
+    "WVS": {
+      "oracle_identity": "3694b8bd0b5468433a1a83bd469337c7e36e552c3a9a5fef65fff88df8fce800",
+      "fresh_read": false
+    },
+    "recorded_but_unverified_labels": [
+      "3fab15f37db629f0ee24189620c65eff944d8a36c4b4509abb6b8bb2ea69c33f",
+      "f264dd8f83a0794716583d1ea8445947cc9470b99475e5d51fc2383e7196f415"
+    ]
+  },
+  "D02_binding": {
+    "source": "SRC14",
+    "variable": "v372",
+    "ordinal": 466,
+    "fixture": "EVS08_DATE_MISSING_V372",
+    "counts": [
+      1917,
+      64363,
+      0,
+      66280
+    ],
+    "carrier": "python.datetime.date@1",
+    "anchor_observed": "built-in datetime.date"
+  },
+  "runtime_environment": {
+    "execution_surface_identifier": "C4C3-DARWIN-X86_64-ANCHOR/CPYTHON-3.11.3/PYREADSTAT-1.3.6/PYARROW-25.0.1/PANDAS-2.3.3/NUMPY-2.4.6/PYTEST-9.1.1",
+    "os": "macOS 13.7.8",
+    "kernel": "Darwin 22.6.0",
+    "machine": "x86_64",
+    "C3_pip_freeze_seed_sha256": "9cde8e5ab9abba46a9e98826100ed084a0943a77fee7bc232a3c7643334da2eb",
+    "ru_maxrss_unit": "bytes"
+  },
+  "reader_lanes_bound": true,
+  "instrumentation_budgets_frozen": true,
+  "max_retry_budget_all_sources": 0,
+  "failure_law_frozen": true,
+  "retention_plan_frozen": true,
+  "all35_ledger_bound": {
+    "sources": 35,
+    "selected": 8,
+    "excluded": 27,
+    "cells": 280,
+    "uniform_cells_per_source": 8
+  },
+  "claim_ceilings_count": 9,
+  "carried_residuals_count": 3,
+  "warrant_candidate": {
+    "path": "04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json",
+    "sha256": "d57420f8016bf49cc0353f39dcd2271e6f370c3bd9b7e81f08466c0a1f574e0a",
+    "status": "CANDIDATE_ONLY__NOT_ISSUED__NO_RAW_ACCESS_AUTHORIZED"
+  },
+  "lane_internal_references": {
+    "01_FANIN_INPUT_LINEAGE_AND_BLOBS.json": "83b14b4bb0ab38732e2987118f0a4f27f5d4fcdc26b539de14ae96e8ba079f35",
+    "02_O1_C01_C05_CLOSURE_MATRIX.json": "ed900ea543e70f6c3c5a4c42678b9afb785b4046a254e1e8ae94e8cbe2b06626",
+    "04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json": "d57420f8016bf49cc0353f39dcd2271e6f370c3bd9b7e81f08466c0a1f574e0a",
+    "05_ORACLE_AND_COMPARISON_LAW.json": "461cbbadd082973ff462f947c91525c38b4c43d323302a638f6415d328f3e235",
+    "06_RUNTIME_READER_LANES_AND_RESOURCE_LAW.json": "426b7656981e80591425c606a6c0f1e87fcd3e73a567b044d737a60822c92061",
+    "07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json": "60d22331377e6dff55c10b1dab815473b1be0d151d7486abc8e5c4948c8157f9",
+    "08_RETENTION_AND_ALL35_CLAIM_LEDGER.json": "151a9505c4125f044a8f9a2855211bea345eeba9cfabf096f7ca090731706a8c"
+  },
+  "raw_source_accessed": 0,
+  "c4_executed": false,
+  "production_blobs_changed": 0,
+  "self_adopted": false
+}

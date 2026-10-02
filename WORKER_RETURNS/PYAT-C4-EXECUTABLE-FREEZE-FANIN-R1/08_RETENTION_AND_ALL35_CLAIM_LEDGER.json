@@ -1,0 +1,98 @@
+{
+  "schema": "PYAT_C4_RETENTION_AND_ALL35_CLAIM_LEDGER@1.0.0",
+  "lane": "PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1",
+  "governing_conditions": ["O1-C09", "O1-C10"],
+  "status": "FROZEN__NOT_EXECUTED",
+
+  "O1_C09_retention_plan": {
+    "required_future_retention": [
+      {"artifact": "executable manifest", "requirement": "exact frozen manifest plus its own identity"},
+      {"artifact": "source identity receipts", "requirement": "per-source observed SHA-256, byte count and locator, each bound to its reader lane"},
+      {"artifact": "oracle packet identities", "requirement": "LiTS checkpoint document SHA, oracle identity and packet manifest digest; WVS oracle identity and document SHA"},
+      {"artifact": "public-object preimages", "requirement": "complete public-object preimages for produced and compared objects; retained LiTS preimage packet identity"},
+      {"artifact": "denominators and search coverage", "requirement": "effective-N denominators and declared search coverage per executed scope"},
+      {"artifact": "evidence/result identities", "requirement": "exact identities of every emitted evidence object and result"},
+      {"artifact": "named-consumer trace", "requirement": "an ACTUAL trace through the named positioned-subject consumer"},
+      {"artifact": "dependency/currentness closure", "requirement": "authority maintenance and analytical dependency closure covering the produced result"},
+      {"artifact": "replay determinants", "requirement": "exact replay identities and replay determinism evidence"},
+      {"artifact": "access accounting", "requirement": "the full O1-C07 account set with measurement bases and retry reasons"},
+      {"artifact": "per-source physical metadata / reader-lane digest", "requirement": "MUST be published as the pair (source identity, reader lane); a digest without its lane is an incomplete record"}
+    ],
+    "grades_kept_separately": [
+      {"grade": "current LiTS production", "what": "the one governed fresh SRC27 Route-B pass result", "must_not_merge_with": "retained WVS proof or the physical-only six"},
+      {"grade": "retained WVS proof", "what": "SRC35 retained comparator replay and comparison", "ceiling": "remains RETAINED PROOF even if its public consumer is exercised under current accepted code"},
+      {"grade": "six physical-only observations", "what": "SRC02, SRC06, SRC08, SRC12, SRC14, SRC26", "ceiling": "physical observation only; no semantic Route-B status"},
+      {"grade": "provider fresh-process replay", "what": "empirical possibility provider replay result"},
+      {"grade": "lifecycle checkpoint replay", "what": "lifecycle checkpoint replay result"},
+      {"grade": "join fresh-process lifecycle reconstruction", "what": "join reconstruction result"}
+    ],
+    "forbidden_bridge": {
+      "statement": "Do NOT fabricate a single provider->consumer->lifecycle fresh-process bridge.",
+      "why": "The C1 fresh-process bridge limitation is a carried residual. If a concrete required claim needs all three inside one fresh-process owner contract, that claim must be HELD rather than glued.",
+      "carried_residual_id": "NO_SINGLE_FRESH_PROCESS_OWNER_CONTRACT_PROVIDER_TO_CONSUMER_TO_LIFECYCLE_RESTORE",
+      "state": "OPEN__NONBLOCKING"
+    },
+    "raw_bytes_custody_prohibition": {
+      "statement": "Do NOT retain raw respondent source bytes as a new custody artifact.",
+      "authorized_custody_route": "Documentary hashes, exact identities, deterministic receipts, comparison diffs and permitted public-object preimages only.",
+      "explicitly_not_authorized": ["committing raw respondent-level bytes to Git", "using raw bytes as an oracle-custody shortcut", "creating cross-source respondent pools or joins"],
+      "basis": "Preserved exactly from C4B retention_privacy."
+    }
+  },
+
+  "O1_C10_all35_claim_ledger": {
+    "binding_source": "WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/06_ALL35_CLAIM_LEDGER.json",
+    "source_registry_basis": "C2_01_path/C2_01_blob as recorded by C4B",
+    "counts": {
+      "source_identities": 35,
+      "selected": 8,
+      "excluded": 27,
+      "source_by_F1_F8_cells": 280,
+      "cells_per_source": 8,
+      "cells_match_35x8": true,
+      "verified_actual_cells": 280,
+      "verified_distinct_sources_in_cells": 35,
+      "uniform_cells_per_source": true
+    },
+    "selected_source_keys": ["SRC02", "SRC06", "SRC08", "SRC12", "SRC14", "SRC26", "SRC27", "SRC35"],
+    "update_rule": "C4 may update ONLY the exact source x operation cells actually executed or replayed or lawfully inherited. No cell may be promoted by proximity to an executed source.",
+    "invariants_preserved": [
+      "Pre-C4 and post-C4 source-id set equality must be exactly {01..35}.",
+      "Every canonical source SHA must remain byte-for-byte identical to the C2-01 ledger.",
+      "Every excluded source receives an explicit NONEXECUTED/UNPROVED disposition; none disappears from accounting.",
+      "Historical representation PASS/BLOCKED is preserved as history and never promoted into full F1 or F2-F8 proof.",
+      "C4 proving-set success may update only exact source x operation obligations actually executed or replayed.",
+      "All 280 source x F1-F8 cells remain individually accountable; C4 cannot replace them with an eight-source global green.",
+      "X01/X02, authority-blocked surfaces, D01/D02/G01/R05 source scopes, B01/B02, and C2-EPCLASS-PAYLOAD-001 remain separately named."
+    ],
+    "claim_ceilings": [
+      "NO_ALL35_PASS",
+      "NO_EIGHT_SOURCE_FULL_SEMANTIC_ROUTE_CLAIM",
+      "NO_UNRESTRICTED_F6_F7_COMPARABILITY",
+      "NO_CLASS_SENSITIVE_EPISTEMIC_ORIGIN_CLOSURE",
+      "NO_PHYSICAL_SUCCESS_AS_SURVEY_SEMANTICS",
+      "NO_RETAINED_WVS_AS_FRESH_CURRENT_SOURCE_EXECUTION",
+      "NO_STRUCTURAL_OR_CAUSAL_AUTHORITY_FROM_C4",
+      "NO_ACTOR_PERSON_IMPLEMENTATION",
+      "NO_NEW_RAW_POOLING_OR_CROSS_SOURCE_RESPONDENT_JOIN"
+    ],
+    "carried_residuals": [
+      {"id": "C2-EPCLASS-PAYLOAD-001", "state": "UNRESOLVED__NOT_MISSING_PROVED", "note": "Blocks class-sensitive epistemic-origin claims. Does not block the physical/empirical proving scope. C4 establishes neither the presence nor the absence of the missing class evidence."},
+      {"id": "NO_SINGLE_FRESH_PROCESS_OWNER_CONTRACT_PROVIDER_TO_CONSUMER_TO_LIFECYCLE_RESTORE", "state": "OPEN__NONBLOCKING"},
+      {"id": "C7-BLOCK-CURRENT-COMPARABLE-WAVE-PAIR-001", "state": "HELD", "note": "Requires current competent comparable-wave products AND separate positive pair-specific comparison/comparability authority. C4 does not guarantee that pair; the EVS specimens are physical-only and WVS is retained. Completion of C4 alone does not unlock C7."}
+    ],
+    "acceptance_case_ceilings_unchanged": "AT01 identity closure, AT02 authority without inference, AT20 independent oracle/source accounting, AT21 historical versus current proof, and AT27 coverage conservation are all preserved. No acceptance obligation is waived by this freeze."
+  },
+
+  "explicitly_not_established_by_this_freeze": [
+    "ALL35_PASS",
+    "eight full semantic routes",
+    "unrestricted F6/F7 comparability",
+    "current WVS raw-source proof",
+    "class-sensitive epistemic-origin closure",
+    "structural or causal authority",
+    "actor/person readiness or implementation",
+    "any empirical fact about the LiTS source",
+    "any physical decode result for any of the eight sources"
+  ]
+}

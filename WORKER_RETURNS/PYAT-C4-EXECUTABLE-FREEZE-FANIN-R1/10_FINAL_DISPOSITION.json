@@ -1,0 +1,119 @@
+{
+  "schema": "PYAT_C4_FANIN_FINAL_DISPOSITION@1.0.0",
+  "lane": "PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1",
+  "role": "C4 — executable freeze fan-in — R1",
+  "repository": "maidiu/rawlsing",
+  "commissioned_tip": "012569770c551aca60c16eb20482c3435399c5d1",
+  "commissioned_base": "8f7efe690a161902e79358eb31650c238a4c0be8",
+  "branch": "agent/opencode-pyat-hq179-c4-executable-freeze-fanin-r1",
+
+  "disposition": "PASS_C4_EXECUTABLE_FREEZE_FANIN__READY_FOR_INDEPENDENT_REVIEW",
+  "terminal": "C4_EXECUTABLE_FREEZE_FANIN_RETURNED__INDEPENDENT_REVIEW_REQUIRED",
+
+  "allowed_dispositions_considered": {
+    "PASS_C4_EXECUTABLE_FREEZE_FANIN__READY_FOR_INDEPENDENT_REVIEW": {
+      "selected": true,
+      "why": "O1-C01 through O1-C05 are all CLOSED_BOUND with every pinned blob verified exact. O1-C07 and O1-C08 accounting, budgets, retry and failure law are frozen before any warrant. O1-C09 retention and O1-C10 all-35 ledger with all nine claim ceilings are preserved. The O1-C06 warrant candidate is emitted complete but NOT ISSUED. 16 of 16 source-free verification checks pass. No unresolved pre-warrant item prevents review of the freeze: the seven unfilled source locators are explicitly typed as warrant-issuance fill-ins, and no raw storage was searched, which is exactly what the commission permits."
+    },
+    "C4_FANIN_PROVENANCE_DRIFT__HQ_ADJUDICATION_REQUIRED": {
+      "selected": false,
+      "why_not": "No drift. All four pinned inputs resolve. C4A is the branch base. C4C3 is a clean descendant with merge-base exactly 8f7efe690 and merged under commission method 1. C4B and D2P are not descendants and were imported by exact path/blob under method 2. All 34 imported evidence blobs were verified equal to their pinned source blobs, with zero drift. The rawlsing_next tree hash is identical at C4A and at head."
+    },
+    "C4_FANIN_CROSS_OWNER_CONFLICT__HQ_ADJUDICATION_REQUIRED": {
+      "selected": false,
+      "why_not": "No cross-owner conflict surfaced. C4B's recorded observation that the accepted C3 blobs were ABSENT on its own C1-only base is not a conflict: it is a stale-base observation now superseded, and this fan-in verified the required C3 blobs are present and exact at the execution head. C4B's own precondition is satisfied."
+    },
+    "C4_FANIN_ORACLE_BINDING_GAP__HQ_ADJUDICATION_REQUIRED": {
+      "selected": false,
+      "why_not": "No oracle binding gap at the declared grain. C4B's sole blocker C4B-LITS-ORACLE-PREIMAGE-CUSTODY-001 was independently closed by D2P with B001 50/50, B002 24/24 plus 208/208, and B003 50/50 plus 18/18. The LiTS object counts match the commission-stated B002 grain exactly. The two recorded-but-unverified identity labels are preserved as labels and the document SHA plus the accepted packet are bound as the actual custody binding."
+    },
+    "C4_FANIN_RUNTIME_BINDING_GAP__HQ_ADJUDICATION_REQUIRED": {
+      "selected": false,
+      "why_not": "No runtime binding gap. The Darwin/x86_64 anchor is honoured exactly, the historical C3 freeze seed was reproduced byte-for-byte with zero transitive differences, all 11 inherited pyreadstat defaults are frozen and verified to agree with the C4C3 source of truth, and P2X gates are independently confirmed off the C4 path. The mandatory reader-lane law is bound per source."
+    },
+    "C4_FANIN_WARRANT_CANDIDATE_GAP__HQ_ADJUDICATION_REQUIRED": {
+      "selected": false,
+      "why_not": "The warrant candidate is complete as a candidate and its seven unfilled locators are explicitly typed as SOURCE_LOCATOR_FILL_REQUIRED_BEFORE_WARRANT_ISSUANCE. Commission line 502 states a missing raw source locator does NOT invalidate the source-free freeze when explicitly typed as a warrant-issuance fill-in and no source search occurred. Both conditions hold. A warrant-candidate gap is not asserted."
+    }
+  },
+
+  "omega1_conditions_closure": {
+    "O1_C01": "CLOSED_BOUND — combined tree 8f7efe690, rawlsing_next b0c1ab47, 5 C1 + 6 C3 + facade + named consumer all exact, AT07 forward/reverse bound, all APIs/owners bound, C1 454/454 and C3 55/55 twice at this lineage.",
+    "O1_C02": "CLOSED_BOUND — eight sources with exact SHA-256s, per-source operations, ordinals, D01 metadata-only resolution, LiTS B01 slot bindings, reader lanes, read economy with zero excluded fresh reads, no substitutions.",
+    "O1_C03": "CLOSED_BOUND — WVS retained oracle bound with independence evidence; LiTS bound from C4B plus accepted D2P with B001/B002/B003 references; nine predeclared comparison dimensions; fresh output may not author expected truth; unverified identity labels preserved as labels.",
+    "O1_C04": "CLOSED_BOUND — SRC14 v372/466, fixture blob resolved at its named tip, counts 1917/64363/0/66280 arithmetically consistent, nonsemantic class, accepted carrier domain, C4C3 observed actual subclass recorded WITHOUT inferring it from the retained rendering.",
+    "O1_C05": "CLOSED_BOUND — execution surface identifier, environment, historical seed hash reproduced byte-for-byte, reader options frozen, resource accounting law, no install-on-import, no silent upgrade, RES-1/2/3 retained, two anchors kept distinct.",
+    "O1_C06": "CANDIDATE EMITTED__NOT_ISSUED__SOURCE_LOCATOR_FILL_REQUIRED_BEFORE_WARRANT_ISSUANCE",
+    "O1_C07": "FROZEN BEFORE WARRANT — ten separate accounting layers, hard zero budgets, per-source operation classes, zero maximum retry budget, explicit warning that one Route-B pass is not one OS-level open.",
+    "O1_C08": "FROZEN — ten stop triggers, six absolute prohibitions, null-with-typed-reason reporting law, corrected rerun requires new HQ-bound authority.",
+    "O1_C09": "PRESERVED — eleven retention requirements, six grades kept separate, forbidden provider-to-consumer-to-lifecycle bridge, raw bytes custody prohibition.",
+    "O1_C10": "PRESERVED — 35 identities, 8 selected, 27 excluded, 280 cells verified as 35x8 uniform, nine claim ceilings, three carried residuals."
+  },
+
+  "integration_method_disclosure": {
+    "C4C3": "MERGE under commission method 1, permitted because C4C3 is a clean descendant of 8f7efe690 with merge-base exactly 8f7efe690. The merge introduced only WORKER_RETURNS/PYAT-C4C3-DARWIN-ANCHOR-RUNTIME-R1/**.",
+    "C4B": "EXACT PATH/BLOB IMPORT under commission method 2. C4B is not a descendant of the combined tree; it forks from 149c3d263. No unrelated ancestry imported.",
+    "D2P": "EXACT PATH/BLOB IMPORT under commission method 2. D2P is not a descendant; it forks from dc94857de. No unrelated ancestry imported.",
+    "every_imported_path_and_blob_recorded": true,
+    "production_blobs_changed": 0
+  },
+
+  "warrant_status": "CANDIDATE_ONLY__NOT_ISSUED__NO_RAW_ACCESS_AUTHORIZED",
+  "warrant_candidate_sha256": "d57420f8016bf49cc0353f39dcd2271e6f370c3bd9b7e81f08466c0a1f574e0a",
+
+  "what_this_fanin_VERIFIED": [
+    "13 of 13 pinned production/test blobs exact at the execution head, including the five C1 owner blobs and six accepted C3 blobs",
+    "all 34 imported evidence files byte-identical to their pinned source blobs, zero drift",
+    "rawlsing_next tree hash identical at C4A and at head, zero production blobs changed",
+    "C4C3's 55/55 receipt belongs to this exact combined lineage and was deterministic across two runs",
+    "C4A's 454/454 receipt belongs to this lineage via the verified ancestor merge",
+    "all 9 D2P packet SHA256SUMS entries recomputed and matched",
+    "source SHA-256 agreement between workload, oracle custody and D02 binding for SRC27, SRC35 and SRC14",
+    "all-35 ledger arithmetic: 35 sources, 8 selected, 27 excluded, 280 cells, uniform 8 cells per source",
+    "all six authority/API/consumer component blobs exact at the execution head",
+    "C4B's own execution precondition (accepted C3 blobs present) satisfied",
+    "all 11 inherited pyreadstat reader defaults agree with the C4C3 source of truth",
+    "the D02 retained fixture blob resolves exactly at its named tip"
+  ],
+
+  "what_this_fanin_DID_NOT_VERIFY": [
+    "the 3.4 GB LiTS checkpoint document SHA-256, which is not present on this estate",
+    "the 120 giant EmpiricalFact deferred-member digests, which remain checkpoint-side",
+    "byte-reproducibility of the D2P extraction",
+    "checkpoint_identity 3fab15f3... and canonical_closure_identity f264dd8f..., both preserved as recorded-but-unverified labels",
+    "any property of any real survey source"
+  ],
+
+  "open_items_for_HQ": [
+    {"item": "SOURCE_LOCATOR_FILL_REQUIRED_BEFORE_WARRANT_ISSUANCE", "severity": "BLOCKS_WARRANT_ISSUANCE_ONLY", "detail": "Seven access locator slots unfilled. Must be supplied on the authorised execution surface at issuance and bound to the source SHA-256 they resolve to.", "does_not_block": "the source-free freeze review"},
+    {"item": "ROUTE_B_PRODUCER_BINDING_IS_FAN_IN_OBSERVED", "severity": "ADVISORY", "detail": "C4B's authority freeze does not name a Route-B producer blob. This fan-in bound rawlsing_next/pre553_route_b_production.py@2385cd327dced3c5b887b59085aa0d21b04d78c3. HQ should confirm this is the intended owner."},
+    {"item": "NO_REPOSITORY_DEPENDENCY_LOCK", "severity": "ADVISORY", "detail": "No lock file of any kind exists in the repository. The freeze relies on the C4C3 environment lock for the qualified surface."},
+    {"item": "FRAMEWORK_PYTHON_ZERO_BYTE_LAUNCHER", "severity": "ADVISORY", "detail": "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11 is a zero-byte launcher; only python3.11-intel64 runs. Surface identity checks must verify an actually-executing interpreter."},
+    {"item": "CARRIED_RESIDUALS_UNCHANGED", "severity": "BY_DESIGN", "detail": "C2-EPCLASS-PAYLOAD-001 remains UNRESOLVED__NOT_MISSING_PROVED; the C1 single-fresh-process bridge limitation remains OPEN__NONBLOCKING; C7 remains HELD."}
+  ],
+
+  "scope_of_this_PASS": {
+    "establishes": "One exact executable C4 freeze candidate binding the combined tree, all four evidence lanes, the eight-source workload, oracle custody, the D02 binding, the runtime freeze with reader lanes, accounting and failure law, retention and the all-35 ledger, plus a complete but unissued warrant candidate.",
+    "does_NOT_authorise": ["raw-source C4 execution", "fresh LiTS decode", "warrant issuance", "C7", "PRE-V3 to V3", "actor/person work", "HQ adoption of this freeze"],
+    "next_required_step": "One consolidated independent integration review of this exact freeze, before any source warrant is sought."
+  },
+
+  "verification": {
+    "commission_read_in_full_and_executed_exactly": true,
+    "c4a_is_ancestor_of_head": true,
+    "c4a_merge_is_ancestor_of_head": true,
+    "pinned_blobs_exact": "13/13",
+    "imported_evidence_blobs_exact": "34/34",
+    "source_free_checks": "16/16",
+    "raw_source_access": 0,
+    "raw_source_storage_searched": false,
+    "c4_executed": false,
+    "live_readers_rerun": false,
+    "production_code_mutated": false,
+    "production_blobs_changed": 0,
+    "self_adopted": false,
+    "fabricated_metrics": 0
+  },
+
+  "terminal": "C4_EXECUTABLE_FREEZE_FANIN_RETURNED__INDEPENDENT_REVIEW_REQUIRED"
+}
