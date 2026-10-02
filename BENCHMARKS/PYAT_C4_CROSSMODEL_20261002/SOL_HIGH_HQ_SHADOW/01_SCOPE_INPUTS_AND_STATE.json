@@ -1,0 +1,45 @@
+{
+  "schema": "PYAT_C4_SOL_HIGH_HQ_SHADOW_SCOPE@1.0.0",
+  "benchmark_status": "DOCUMENTARY_ONLY_NON_AUTHORITATIVE",
+  "role": "GPT-5.6 Sol High operating HQ/Vozhd",
+  "repository": "maidiu/rawlsing",
+  "benchmark_branch": "agent/benchmark-pyat-hq181-sol-high-hq-shadow-r1",
+  "branch_base": "8fdfc1b05f187a6fa785b5987f0345debebfd803",
+  "control_state_at_adjudication": {
+    "branch": "integration/pre-main-reconciliation-r1",
+    "head": "8fdfc1b05f187a6fa785b5987f0345debebfd803",
+    "state": "HQ181_ALT_B_BOUND__SOL_RETURN_PRESENT_UNADJUDICATED__RAW_EXECUTION_HELD"
+  },
+  "sol_reviewer": {
+    "branch": "agent/reviewer-pyat-hq180-c4-executable-freeze-final-integration-review-r1",
+    "commission_tip": "42f54d6345ed31669f8c37d7dc23b8e042968986",
+    "return_head": "fe6103cd50c634b92233f49815cc6d4abe49964d",
+    "return_commit_distance": 1,
+    "return_files": 8,
+    "production_changes": 0,
+    "disposition": "APPROVE_AT_DECLARED_GRAIN"
+  },
+  "reviewed_freeze": {
+    "fanin_final": "8ff40d37de69db2d8a6053a7c2242f481677f1a4",
+    "fanin_commission": "012569770c551aca60c16eb20482c3435399c5d1",
+    "c4a": "8f7efe690a161902e79358eb31650c238a4c0be8",
+    "c4a_merge": "9a5752a8ce4a119efd24cbbeedd8cbcda8abbadb",
+    "c4b": "c2af4f61d68e9803af83f8e26f633acfe31062fa",
+    "d2p": "41bd7a7c056de9d45b905efc0f926b4ab6a097ad",
+    "c4c3": "1df64cc596b5602c952518c87b1c71cc1fcfb35f",
+    "omega1": "01762d7379be4e423dad3e21bcdcee47c536902d"
+  },
+  "forbidden_during_shadow": [
+    "control branch mutation",
+    "authoritative decision-ledger mutation",
+    "checkpoint/LATEST advance",
+    "source locator discovery",
+    "warrant issuance/signature",
+    "raw source access",
+    "live C4 execution",
+    "production code mutation",
+    "C7",
+    "PRE-V3 to V3 actor/person work"
+  ],
+  "result": "SHADOW_ADJUDICATION_COMPLETE__NOT_PERSISTED_AS_BUILD_AUTHORITY"
+}
