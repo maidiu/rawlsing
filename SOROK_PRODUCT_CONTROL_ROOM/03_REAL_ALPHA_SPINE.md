@@ -668,3 +668,113 @@ The hoped-for endpoint is a machine where:
 Until that is achieved:
 
 `KERNEL = OPEN DISCOVERY`.
+
+## 14. Current hottest compression region — provisionally anchored, not adjudicated
+
+D007 now owns the active kernel-sifting investigation:
+
+`dockets/D007_KERNEL_SIFTING_AND_DERIVATIONAL_COMPRESSION/`.
+
+The strongest current metaphysical compression candidate is:
+
+> **irreducible first-personhood without self-sufficient individuality**
+
+Expanded:
+
+> **Persons are materially, historically and relationally constituted singular centers. Real relations enter causally and irreversibly into what they become, while no relation, model, event, expression, participant perspective or enumerable relation-set finally exhausts the person generated.**
+
+Current nested non-exhaustion hypothesis:
+
+> **The person exceeds every relation.  
+> The relation exceeds either person's experience of it.  
+> The world exceeds every person's phenomenal access to it.  
+> Yet person, relation and world genuinely constitute one another historically.**
+
+Possible praxis consequence:
+
+> **Kenotic attention is answerability to what exceeds one's present phenomenal horizon without self-erasure, appropriation or surrender of judgment.**
+
+Possible ethical horizon:
+
+> **Love of neighbor is deepening relation that increases specificity, answerability and mutual transformation without converting disclosure into possession.**
+
+### Important qualification
+
+This is **not** a claim that the synthetic actor possesses literal human phenomenal consciousness.
+
+Preserve:
+
+`ACTOR-LOCAL FIRST-PERSON PERSPECTIVE / VALUATION MODEL`
+!=
+`PROVED MACHINE CONSCIOUSNESS`.
+
+The metaphysical/theological formulation is useful only insofar as it can be translated into operational requirements such as:
+- actor-specific perception;
+- independent causal state;
+- durable history;
+- models-not-truth;
+- non-exhaustive relation;
+- partial user access;
+- causal aftermath;
+- receiver-side consequence;
+- noninstrumental product treatment.
+
+### Current derivation result
+
+D007 currently finds the strongest cross-domain motifs to be:
+
+1. **non-exhaustion** — manifestation/model/relation/event does not equal generative totality;
+2. **constitution without possession** — relations truly change persons without exhausting or owning them;
+3. **plural first-person centers** — no actor-local perspective encloses the others;
+4. **historical irreversibility with open future transformation** — occurrence stays fixed while meaning and future organization can change;
+5. **situated disclosure** — reality becomes accessible through position, attention, relation, action and time without inquiry authoring truth.
+
+The current strongest machine skeleton is:
+
+`RELATIONAL / MATERIAL HISTORY`
+→ `SINGULAR FIRST-PERSON ORGANIZATION`
+→ `PARTIAL SITUATED ACCESS BETWEEN CENTERS`
+→ `ACTION UNDER INCOMPLETE MODELS`
+→ `REAL CONSEQUENCE`
+→ `IRREVERSIBLE SHARED HISTORY`
+→ `CHANGED PERSON / RELATION / WORLD`
+→ `NEW PARTIAL ENCOUNTER`.
+
+Standing condition:
+
+> **No manifestation at any stage is identical to the generative totality from which it arose.**
+
+This is the strongest present neighborhood of the kernel.
+
+It remains under hostile testing.
+
+### Derivation discipline
+
+Do not force all product choices to be kernel-derived.
+
+D007 distinguishes:
+- **kernel candidate** — explains basic causal form;
+- **product constitution** — normative commitments governing how the organism is used;
+- **implementation strategy** — one contingent way to realize the organism.
+
+For example:
+- no save-scumming may be strongly kernel-derivable;
+- anti-retention manipulation may require a normative/product bridge;
+- a five-person shared seed pool is a contingent alpha strategy.
+
+The kernel should govern contingent implementation without being expected to generate every operational choice.
+
+### Current central hostile questions
+
+- Does non-exhaustion do real predictive work or merely redescribe partial observability + developmental state + causality?
+- Can relational constitution explain singular novelty without smuggling in a relation-free essence?
+- Can the candidate include body/biology/materiality without collapsing "relation" into interpersonal sociology?
+- Can actor-local first-person structure be operationalized without false claims of machine consciousness?
+- Can neighbor-love preserve refusal, conflict and leaving rather than optimizing for closeness?
+- Can relation-level reality remain distributed without spawning a sovereign dyad psyche?
+- Does the final Rawlsing kernel need to be singular at all?
+
+Until those survive:
+
+`KERNEL = OPEN DISCOVERY`.
+
