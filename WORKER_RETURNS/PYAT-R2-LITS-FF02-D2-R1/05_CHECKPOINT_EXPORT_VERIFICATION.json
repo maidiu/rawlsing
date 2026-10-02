@@ -1,0 +1,74 @@
+{
+  "schema": "PYAT_R2_LITS_FF02_D2_CHECKPOINT_EXPORT_VERIFICATION@1.0.0",
+  "status": "BLOCKED__EXACT_RETAINED_CHECKPOINT_NOT_EXPOSED_ON_CURRENT_EXECUTION_SURFACE",
+  "terminal": "PYAT_R2_LITS_FF02_D2_BLOCKED__EXACT_RETAINED_CHECKPOINT_NOT_FOUND_OR_HASH_MISMATCH__NO_SUBSTITUTION",
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/rabochii-pyat-r2-lits-ff02-d2-checkpoint-preimage-export-r1",
+  "commission_commit": "59a6ed87fd7b91934164848a48a7a4ce86e95e4e",
+  "exact_parent_hq_join": "72aa6124c21bbedba586c738665284bddb3c8d25",
+  "governed": {
+    "checkpoint_filename": "current_i05_materialization_checkpoint_v3.json",
+    "checkpoint_identity_sha256": "3fab15f37db629f0ee24189620c65eff944d8a36c4b4509abb6b8bb2ea69c33f",
+    "checkpoint_document_sha256": "2704fd3fadc9c898a512183aaf5eebf0ca48d78c47e75a19d47e17281eaa5726",
+    "canonical_closure_identity": "f264dd8f83a0794716583d1ea8445947cc9470b99475e5d51fc2383e7196f415",
+    "required_checkpoint_slice": "/material/canonical_empirical_object_closure",
+    "required_components": [
+      "public_object_preimages",
+      "preimage_fragments"
+    ]
+  },
+  "custody_control_plane": {
+    "manifest_repository_ref": "bc207de1db6c1e48b81c7b27b2633ad1177077ff",
+    "manifest_path": "WORKER_RETURNS/PREMAIN-FIABC-LITS-FINAL-SUCCESS-DURABLE-CUSTODY-R1/custody_manifest.json",
+    "manifest_status": "PASS__LOCAL_PAYLOAD_COPIED_AND_SHA256_BOUND",
+    "recorded_checkpoint_path": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_CUSTODY/PREMAIN-FIABC-LITS-FINAL-SUCCESS-DURABLE-CUSTODY-R1/payload/PREMAIN-FIABC-LITS-FINAL-CANONICAL-CLOSURE-SOURCE-RETRY-R1/court/oracle_producers/LITS_I/current_i05_materialization_checkpoint_v3.json",
+    "recorded_checkpoint_bytes": 3404445161,
+    "recorded_checkpoint_sha256": "2704fd3fadc9c898a512183aaf5eebf0ca48d78c47e75a19d47e17281eaa5726",
+    "checkpoint_git_disposition": "PERSISTENT_LOCAL_HEAVYWEIGHT_PAYLOAD",
+    "checkpoint_git_path": null,
+    "use_in_this_return": "DOCUMENTARY_CUSTODY_LOCATION_ONLY__NOT_SEMANTIC_PREIMAGE_SUBSTITUTE"
+  },
+  "current_execution_surface": {
+    "checkpoint_file_located": false,
+    "conversation_or_project_checkpoint_file_located": false,
+    "library_checkpoint_file_located": false,
+    "container_checkpoint_file_located": false,
+    "observed_checkpoint_path": null,
+    "observed_checkpoint_bytes": null,
+    "observed_checkpoint_document_sha256": null,
+    "document_sha256_freshly_verified": false,
+    "blocker_kind": "EXACT_RETAINED_CHECKPOINT_NOT_AVAILABLE_ON_CURRENT_EXECUTION_SURFACE"
+  },
+  "extraction": {
+    "checkpoint_opened": false,
+    "canonical_closure_dereferenced": false,
+    "candidate_receipt_rows": 0,
+    "authority_snapshot_rows": 0,
+    "per_object_authority_rows": 0,
+    "p2_logical_binding_rows": 0,
+    "reconstructed_semantic_rows": 0
+  },
+  "blocker_closure": {
+    "B001": "OPEN__CHECKPOINT_PREIMAGES_UNAVAILABLE",
+    "B002": "OPEN__CHECKPOINT_PREIMAGES_UNAVAILABLE",
+    "B003": "OPEN__CHECKPOINT_PREIMAGES_UNAVAILABLE"
+  },
+  "prohibitions": {
+    "raw_lits_source_opened": false,
+    "raw_lits_source_materialized": false,
+    "raw_lits_source_read": false,
+    "decoder_invoked": false,
+    "i03_run": false,
+    "i05_run": false,
+    "candidate_abc_run": false,
+    "p2x_run": false,
+    "semantic_inference_from_values_labels_counts_or_frequencies": false,
+    "d04_ff01_substituted_as_current_truth": false,
+    "git_oracle_substituted_for_missing_checkpoint_preimages": false,
+    "production_code_mutated": false,
+    "field_forge_semantic_authority_minted": false,
+    "relation_objects_created_or_current_selected": false,
+    "prev3_admission_performed": false,
+    "prev3_to_v3_touched": false
+  }
+}
