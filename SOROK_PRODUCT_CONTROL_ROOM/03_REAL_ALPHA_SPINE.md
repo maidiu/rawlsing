@@ -778,3 +778,77 @@ Until those survive:
 
 `KERNEL = OPEN DISCOVERY`.
 
+## 15. Agency without sovereignty and same-person social comparison
+
+### Player position
+
+Current kernel-aligned game-design formulation:
+
+> **The user remains the subject of play without becoming the sovereign center of the played world.**
+
+The user has broad action authority.
+
+They do not have ontological veto over:
+- persona truth;
+- actor experience;
+- event history;
+- causal consequence;
+- another actor's valuation;
+- the meaning of prior events to other centers.
+
+Compact:
+
+`AGENCY != SOVEREIGNTY`.
+
+This is a current D3-strength consequence of plural centers + non-exhaustion + situated access.
+
+### Structural decentering
+
+Rawlsing should not merely instruct humility.
+
+It should make player-centered reduction practically inadequate through:
+- unchosen person encounter;
+- independent life;
+- user-independent world/person truth;
+- model != person;
+- irreversible relational consequence;
+- no same-person replay;
+- partial disclosure and ATTEND.
+
+Possible praxis response:
+
+> **kenotic attention is epistemic submission to the other's excess, not moral submission to the other's judgment.**
+
+### Persona introduction as social proving case
+
+Artifact:
+`69_PERSONA_INTRODUCTION_COMPARATIVE_BRANCHES_AND_AGENCY_WITHOUT_SOVEREIGNTY_R1.md`.
+
+Candidate social primitive:
+
+`USER A SHARES SEED-PERSON LINEAGE`
+→ `USER B RECEIVES INDEPENDENT FORK`
+→ `COMMON PRE-CONTACT ROOT`
++ `DIFFERENT PHENOMENAL ACCESS`
++ `DIFFERENT ACTION`
++ `DIFFERENT RELATIONAL HISTORY`
+→ `DIFFERENT POST-CONTACT BECOMING`.
+
+This gives real friends a natural reason to compare:
+- what they noticed;
+- what formative facts they discovered;
+- how differently the same starting person related to them;
+- how their own behavior changed the branch.
+
+Preserve:
+
+`SHARE PERSON LINEAGE != SHARE PERSON BRANCH`.
+
+And:
+
+`SHARED PRECONTACT CANON MAY EXPAND THROUGH QUERY-INVARIANT RESOLUTION`
+while
+`POSTCONTACT RELATIONAL CONSTITUTION REMAINS BRANCH-LOCAL`.
+
+This is a strong experiential test of nested non-exhaustion + constitutive relation, but the feature itself remains a contingent social/product mechanism rather than part of the kernel.
+
