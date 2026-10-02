@@ -1,0 +1,100 @@
+{
+  "schema": "PYAT_C4_FINAL_INTEGRATION_ACCOUNTING_RETENTION_CLAIM_REVIEW@1.0.0",
+  "disposition": "APPROVE_AT_DECLARED_GRAIN",
+  "retry": {
+    "c4b_law": "Immediate stop on hash/config/authority/oracle mismatch; any retry separately counted and reason-coded; no changed source/encoding/variables/operations/authority.",
+    "frozen_max_retry": 0,
+    "conflict_with_prior_required_retry": false,
+    "adjudication": "Zero is a lawful stricter predeclared budget. C4B required accounting of any retry but did not require a positive retry. Any corrected rerun needs new HQ-bound authority."
+  },
+  "accounting_layers": [
+    "source-path existence/access checks",
+    "file hash passes",
+    "path-level opens",
+    "metadata reads",
+    "header-prefix reads",
+    "decoder invocations",
+    "selected-column reads",
+    "full reads",
+    "byte counts where measurable",
+    "retries"
+  ],
+  "hard_zero_budgets": {
+    "WVS_SRC35_fresh_source_opens": 0,
+    "excluded_source_fresh_opens": 0,
+    "candidate_A_B_C_runs": 0,
+    "measured_P2X_runs": 0,
+    "raw_respondent_pooling": 0,
+    "new_cross_source_respondent_joins": 0,
+    "SRC08_row_data_reads": 0,
+    "SRC12_row_data_reads": 0
+  },
+  "failure_law": {
+    "mismatch_stops_affected_scope": true,
+    "hidden_retry": false,
+    "source_substitution": false,
+    "opportunistic_production_repair": false,
+    "semantic_repair": false,
+    "unreached_metrics": "null WITH typed reason"
+  },
+  "retention": {
+    "named_consumer_trace_required": true,
+    "dependency_currentness_closure_required": true,
+    "replay_determinants_required": true,
+    "raw_respondent_bytes_new_custody_artifact": false,
+    "provider_consumer_lifecycle_bridge_fabrication": false
+  },
+  "all35": {
+    "source_identities": 35,
+    "selected": 8,
+    "excluded": 27,
+    "cells": 280,
+    "functions": [
+      "F1",
+      "F2",
+      "F3",
+      "F4",
+      "F5",
+      "F6",
+      "F7",
+      "F8"
+    ],
+    "uniform_eight_per_source": true,
+    "selected_sources": [
+      "SRC02",
+      "SRC06",
+      "SRC08",
+      "SRC12",
+      "SRC14",
+      "SRC26",
+      "SRC27",
+      "SRC35"
+    ],
+    "claim_ceilings": [
+      "NO_ALL35_PASS",
+      "NO_EIGHT_SOURCE_FULL_SEMANTIC_ROUTE_CLAIM",
+      "NO_UNRESTRICTED_F6_F7_COMPARABILITY",
+      "NO_CLASS_SENSITIVE_EPISTEMIC_ORIGIN_CLOSURE",
+      "NO_PHYSICAL_SUCCESS_AS_SURVEY_SEMANTICS",
+      "NO_RETAINED_WVS_AS_FRESH_CURRENT_SOURCE_EXECUTION",
+      "NO_STRUCTURAL_OR_CAUSAL_AUTHORITY_FROM_C4",
+      "NO_ACTOR_PERSON_IMPLEMENTATION",
+      "NO_NEW_RAW_POOLING_OR_CROSS_SOURCE_RESPONDENT_JOIN"
+    ],
+    "residuals": [
+      {
+        "id": "C2-EPCLASS-PAYLOAD-001",
+        "state": "UNRESOLVED__NOT_MISSING_PROVED",
+        "blocks": "class-sensitive epistemic-origin claims only"
+      },
+      {
+        "id": "NO_SINGLE_FRESH_PROCESS_OWNER_CONTRACT_PROVIDER_TO_CONSUMER_TO_LIFECYCLE_RESTORE",
+        "state": "OPEN__NONBLOCKING"
+      },
+      {
+        "id": "C7-BLOCK-CURRENT-COMPARABLE-WAVE-PAIR-001",
+        "state": "HELD"
+      }
+    ]
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "schema": "PYAT_C4_FINAL_INTEGRATION_ORACLE_D02_RUNTIME_REVIEW@1.0.0",
+  "disposition": "APPROVE_AT_DECLARED_GRAIN",
+  "LiTS": {
+    "source_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+    "checkpoint_document_sha256": "2704fd3fadc9c898a512183aaf5eebf0ca48d78c47e75a19d47e17281eaa5726",
+    "oracle_identity": "e5d66db4b6f8339672b0f4828b72a8df68b5525bf71ecfda899d0531d618a98a",
+    "workload": {
+      "candidates": 50,
+      "roles": 77,
+      "facts": 60,
+      "receipts": 50
+    },
+    "D2P": {
+      "B001": "50/50 CLOSED_ACCEPTED",
+      "B002": "24/24 snapshots; 208/208 rows; 2033/2033 refs CLOSED_ACCEPTED",
+      "B003": "50/50 rows; 18/18 P2 mappings CLOSED_ACCEPTED",
+      "packet_manifest_sha256": "46b38c21f2b331575b12f2eadd09348299ab9c6736983f9f281fd48644ff8106"
+    },
+    "custody_sufficient_at_declared_grain": true,
+    "limits": {
+      "checkpoint_sha_recomputed_on_StarriyMac": false,
+      "deferred_member_digests_recomputed_on_StarriyMac": false,
+      "extraction_byte_replayed_on_StarriyMac": false,
+      "checkpoint_identity": {
+        "value": "3fab15f37db629f0ee24189620c65eff944d8a36c4b4509abb6b8bb2ea69c33f",
+        "status": "RECORDED_BUT_NOT_INDEPENDENTLY_VERIFIED"
+      },
+      "canonical_closure_identity": {
+        "value": "f264dd8f83a0794716583d1ea8445947cc9470b99475e5d51fc2383e7196f415",
+        "status": "RECORDED_BUT_NOT_INDEPENDENTLY_VERIFIED"
+      }
+    }
+  },
+  "WVS": {
+    "source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d",
+    "logical_release": "e6881e9a08a48f8871790e781c28bddbc44ee35db894d6ad7b1105a6a8fd262f",
+    "replay_identity": "996ba218fc5da5e0ad1ddf0cdc7f91ce8fb8a7363ce62076dc3f4073b85c383f",
+    "oracle_identity": "3694b8bd0b5468433a1a83bd469337c7e36e552c3a9a5fef65fff88df8fce800",
+    "fresh_raw_read": false,
+    "grade": "RETAINED_PROOF"
+  },
+  "D02": {
+    "source": "SRC14",
+    "source_sha256": "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379",
+    "variable": "v372",
+    "ordinal": 466,
+    "fixture_id": "EVS08_DATE_MISSING_V372",
+    "fixture_blob": "12f6adb77ef5692511055c8f0520e42c454f3867",
+    "fixture_blob_independently_resolved": true,
+    "rendered_witness": "1582-10-13",
+    "counts": {
+      "user_missing": 1917,
+      "ordinary_present": 64363,
+      "system_missing": 0,
+      "total": 66280
+    },
+    "authority_grade": "PHYSICAL_MISSINGNESS_ONLY__NONSEMANTIC",
+    "synthetic_anchor_observation": {
+      "subclass": "built-in datetime.date",
+      "carrier": "python.datetime.date@1",
+      "dates_as_pandas_datetime": false
+    },
+    "historical_rendering_used_to_infer_subclass": false,
+    "real_source_subclass_status": "MUST_BE_OBSERVED_AT_WARRANT_TIME"
+  },
+  "comparison_dimensions": [
+    "source identity",
+    "authority",
+    "determinant/query/predicate/universe/release",
+    "witness/receipt/fact",
+    "geometry/count/order",
+    "typed negative state",
+    "replay",
+    "consumer trace",
+    "dependency/currentness closure"
+  ],
+  "live_output_authors_expected_truth": false
+}

@@ -1,0 +1,54 @@
+{
+  "schema": "PYAT_C4_FINAL_INTEGRATION_WARRANT_CANDIDATE_REVIEW@1.0.0",
+  "disposition": "APPROVE_AT_DECLARED_GRAIN",
+  "candidate_path": "WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json",
+  "required_status": "CANDIDATE_ONLY__NOT_ISSUED__NO_RAW_ACCESS_AUTHORIZED",
+  "observed": {
+    "status": "CANDIDATE_ONLY__NOT_ISSUED__NO_RAW_ACCESS_AUTHORIZED",
+    "signed": false,
+    "authorizes_access": false,
+    "issued": false,
+    "execution_authorized": false
+  },
+  "fresh_read_sources": [
+    "SRC02",
+    "SRC06",
+    "SRC08",
+    "SRC12",
+    "SRC14",
+    "SRC26",
+    "SRC27"
+  ],
+  "fresh_read_source_count": 7,
+  "SRC35_fresh_authorized": false,
+  "all_seven_locators_unfilled": true,
+  "locator_state": "SOURCE_LOCATOR_FILL_REQUIRED_BEFORE_WARRANT_ISSUANCE",
+  "locator_fill_classification": "BLOCKS_WARRANT_ISSUANCE_ONLY__DOES_NOT_BLOCK_SOURCE_FREE_FREEZE",
+  "approvals": {
+    "HQ": "UNSET",
+    "required_user_resource_owner": "UNSET"
+  },
+  "raw_storage_searched_by_review": false,
+  "access_law": "Hashing, statting and metadata reads are source access and are not pre-warrant exceptions.",
+  "required_bindings_complete": {
+    "source_sha": true,
+    "operation": true,
+    "reader_lane": true,
+    "runtime": true,
+    "authority": true,
+    "instrumentation": true,
+    "failure": true,
+    "retention": true
+  },
+  "candidate_sha256_expected": "d57420f8016bf49cc0353f39dcd2271e6f370c3bd9b7e81f08466c0a1f574e0a",
+  "candidate_sha256_recomputed": "d57420f8016bf49cc0353f39dcd2271e6f370c3bd9b7e81f08466c0a1f574e0a",
+  "sha256_match": true,
+  "issuance_blockers": [
+    "seven source locators",
+    "HQ approval",
+    "required user/resource owner approval",
+    "signature/issuance",
+    "HQ adjudication after this independent review"
+  ],
+  "issued_by_this_review": false
+}

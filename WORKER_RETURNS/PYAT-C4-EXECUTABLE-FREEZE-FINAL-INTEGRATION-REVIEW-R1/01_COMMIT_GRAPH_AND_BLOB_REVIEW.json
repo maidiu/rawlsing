@@ -1,0 +1,68 @@
+{
+  "schema": "PYAT_C4_FINAL_INTEGRATION_COMMIT_GRAPH_AND_BLOB_REVIEW@1.0.0",
+  "disposition": "APPROVE_AT_DECLARED_GRAIN",
+  "reviewed_freeze": "8ff40d37de69db2d8a6053a7c2242f481677f1a4",
+  "commissioned_fanin_tip": "012569770c551aca60c16eb20482c3435399c5d1",
+  "graph": {
+    "first_parent_fanin_commits": [
+      {
+        "sha": "39015a90aec3596b87c0e9b0a664c025e919c137",
+        "role": "merge C4C3",
+        "parents": [
+          "012569770c551aca60c16eb20482c3435399c5d1",
+          "1df64cc596b5602c952518c87b1c71cc1fcfb35f"
+        ]
+      },
+      {
+        "sha": "f8c8e2e4ebc407bc419d2908a78f06addb21031c",
+        "role": "exact-path/blob import C4B + D2P",
+        "parent": "39015a90aec3596b87c0e9b0a664c025e919c137"
+      },
+      {
+        "sha": "8ff40d37de69db2d8a6053a7c2242f481677f1a4",
+        "role": "final freeze packet",
+        "parent": "f8c8e2e4ebc407bc419d2908a78f06addb21031c"
+      }
+    ],
+    "reachable_commit_count_from_commission_tip": 5,
+    "explanation": "Three first-parent fan-in commits plus the two C4C3 side commits reachable through the merge. No hidden fan-in work.",
+    "c4c3_side": {
+      "commission": "eba2f4249fb7cd315851ff687269bc43ade19ce8",
+      "return": "1df64cc596b5602c952518c87b1c71cc1fcfb35f",
+      "merge_base_with_c4a": "8f7efe690a161902e79358eb31650c238a4c0be8"
+    }
+  },
+  "rawlsing_next_tree": {
+    "c4a": "b0c1ab472cde033e21f1c2f63fbcbea2f0cccef0",
+    "final": "b0c1ab472cde033e21f1c2f63fbcbea2f0cccef0",
+    "unchanged": true
+  },
+  "pinned_blob_review": {
+    "c1_owner_exact": "5/5",
+    "c3_accepted_exact": "6/6",
+    "facade_exact": true,
+    "named_consumer_exact": true,
+    "route_b_producer_exact": true,
+    "route_b_producer_blob": "2385cd327dced3c5b887b59085aa0d21b04d78c3"
+  },
+  "imported_evidence": {
+    "c4b": {
+      "checked": 9,
+      "exact": 9,
+      "commission_file_excluded_from_34_count": true
+    },
+    "d2p": {
+      "checked": 16,
+      "exact": 16
+    },
+    "c4c3": {
+      "checked": 9,
+      "exact": 9,
+      "commission_file_excluded_from_34_count": true
+    },
+    "total_noncommission": 34,
+    "note": "The fan-in's separate 36-file count includes the C4B and C4C3 commission files. 34 and 36 are distinct disclosed counting conventions, not drift."
+  },
+  "production_files_changed_by_fanin": 0,
+  "verdict": "PASS"
+}

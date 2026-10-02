@@ -1,0 +1,91 @@
+{
+  "schema": "PYAT_C4_FINAL_INTEGRATION_OPEN_ITEMS_AND_RESIDUALS@1.0.0",
+  "disposition": "APPROVE_AT_DECLARED_GRAIN",
+  "items": [
+    {
+      "id": "SOURCE_LOCATOR_FILL_REQUIRED_BEFORE_WARRANT_ISSUANCE",
+      "classification": "BLOCKS_WARRANT_ISSUANCE_ONLY",
+      "freeze_blocker": false
+    },
+    {
+      "id": "ROUTE_B_PRODUCER_BINDING_IS_FAN_IN_OBSERVED",
+      "classification": "RESOLVED_BY_INDEPENDENT_REVIEW",
+      "freeze_blocker": false,
+      "resolution": "Correct current M01 Route-B production/compositor owner; HQD-118 adoption + exact final blob."
+    },
+    {
+      "id": "NO_REPOSITORY_DEPENDENCY_LOCK",
+      "classification": "ADVISORY_NONBLOCKING",
+      "freeze_blocker": false,
+      "note": "Exact C4C3 environment freeze is the qualified surface; no general repository lock exists."
+    },
+    {
+      "id": "FRAMEWORK_PYTHON_ZERO_BYTE_LAUNCHER",
+      "classification": "ADVISORY_NONBLOCKING",
+      "freeze_blocker": false,
+      "note": "Qualified execution used an actually executing uv-managed CPython 3.11.3; future surface check must verify executable identity."
+    },
+    {
+      "id": "CHECKPOINT_BODY_ABSENT_ON_STARRIYMAC",
+      "classification": "DECLARED_CUSTODY_LIMIT_NONBLOCKING_AT_THIS_GRAIN",
+      "freeze_blocker": false
+    },
+    {
+      "id": "D2P_120_DEFERRED_MEMBER_DIGESTS_NOT_RECOMPUTED_ON_STARRIYMAC",
+      "classification": "DECLARED_CUSTODY_LIMIT_NONBLOCKING_AT_THIS_GRAIN",
+      "freeze_blocker": false
+    },
+    {
+      "id": "D2P_EXTRACTION_NOT_BYTE_REPLAYED_ON_STARRIYMAC",
+      "classification": "DECLARED_REPRODUCIBILITY_LIMIT_NONBLOCKING_AT_THIS_GRAIN",
+      "freeze_blocker": false
+    },
+    {
+      "id": "CHECKPOINT_IDENTITY_LABEL",
+      "value": "3fab15f37db629f0ee24189620c65eff944d8a36c4b4509abb6b8bb2ea69c33f",
+      "classification": "RECORDED_BUT_NOT_INDEPENDENTLY_VERIFIED__LABEL_ONLY",
+      "freeze_blocker": false
+    },
+    {
+      "id": "CANONICAL_CLOSURE_IDENTITY_LABEL",
+      "value": "f264dd8f83a0794716583d1ea8445947cc9470b99475e5d51fc2383e7196f415",
+      "classification": "RECORDED_BUT_NOT_INDEPENDENTLY_VERIFIED__LABEL_ONLY",
+      "freeze_blocker": false
+    },
+    {
+      "id": "C4_REVIEW_CLOSURE_COUNT_001",
+      "classification": "REVIEWER_CORRECTION__ADVISORY_NONBLOCKING",
+      "freeze_blocker": false,
+      "detail": "C4C3's 21-module trace omits M01 and carrier because it starts below producer. Producer-inclusive static closure is at least 23. Added modules introduce no P2X/duckdb/dynamic-loading edge, so gate-exclusion conclusion survives."
+    },
+    {
+      "id": "M01_DARWIN_SPECIFIC_RERUN",
+      "classification": "NOT_PERFORMED__NONBLOCKING_AT_COMMISSIONED_FREEZE_GRAIN",
+      "freeze_blocker": false,
+      "detail": "M01 has governed 61/61 Python-3.11 court and 11/11 compositor tests on exact combined tree; no Darwin-specific M01 rerun is claimed."
+    },
+    {
+      "id": "C2-EPCLASS-PAYLOAD-001",
+      "classification": "CARRIED_RESIDUAL",
+      "state": "UNRESOLVED__NOT_MISSING_PROVED",
+      "blocks": "class-sensitive epistemic-origin closure"
+    },
+    {
+      "id": "NO_SINGLE_FRESH_PROCESS_OWNER_CONTRACT_PROVIDER_TO_CONSUMER_TO_LIFECYCLE_RESTORE",
+      "classification": "CARRIED_RESIDUAL",
+      "state": "OPEN__NONBLOCKING"
+    },
+    {
+      "id": "C7-BLOCK-CURRENT-COMPARABLE-WAVE-PAIR-001",
+      "classification": "CARRIED_GATE",
+      "state": "HELD"
+    }
+  ],
+  "freeze_acceptance_blockers": 0,
+  "warrant_or_live_execution_blockers": [
+    "source locator fill",
+    "HQ approval",
+    "required user/resource owner approval",
+    "actual warrant issuance/signature"
+  ]
+}
