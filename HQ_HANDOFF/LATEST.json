@@ -1,12 +1,12 @@
 {
   "schema": "RAWLSING_HQ_HANDOFF_POINTER@1.1.0",
-  "checkpoint_id": "20261002-PYAT-HQ183-OPS01-04-ACTIVATION-R1",
-  "handoff_commit": "8d3513b38d32138787055d36ffcf139eed9644e8",
+  "checkpoint_id": "20261002-PYAT-HQ184-PYTHON-REPAIRED-R1",
+  "handoff_commit": "3660f51097ba1b3564c8429f2ba770d7c153016a",
   "semantic_pre_main_tip": "902640dfddce431d0c5ba151d3eb851d6b84d7a3",
   "control_branch": "integration/pre-main-reconciliation-r1",
-  "current_md_path": "HQ_HANDOFF/checkpoints/20261002-PYAT-HQ183-OPS01-04-ACTIVATION-R1/CURRENT.md",
-  "current_json_path": "HQ_HANDOFF/checkpoints/20261002-PYAT-HQ183-OPS01-04-ACTIVATION-R1/CURRENT.json",
-  "manifest_path": "HQ_HANDOFF/checkpoints/20261002-PYAT-HQ183-OPS01-04-ACTIVATION-R1/MANIFEST.json",
+  "current_md_path": "HQ_HANDOFF/checkpoints/20261002-PYAT-HQ184-PYTHON-REPAIRED-R1/CURRENT.md",
+  "current_json_path": "HQ_HANDOFF/checkpoints/20261002-PYAT-HQ184-PYTHON-REPAIRED-R1/CURRENT.json",
+  "manifest_path": "HQ_HANDOFF/checkpoints/20261002-PYAT-HQ184-PYTHON-REPAIRED-R1/MANIFEST.json",
   "decision_ledger_path": "HQ_HANDOFF/DECISION_LEDGER.jsonl",
   "protocol_path": "HQ_HANDOFF/PROTOCOL.md",
   "start_here_path": "HQ_HANDOFF/START_HERE.md",
@@ -220,7 +220,7 @@
   "omega_c1_r3_commission_tip": "e50bc716cf0fd017081e351a5803d3da61a00a38",
   "omega_c3_03_branch": "agent/rabochii-pyat-hq126-c3-03-physical-repair-correction-r1",
   "omega_c3_03_commission_tip": "a68fb242e8a000a4b06037118e8eb804ee3365b5",
-  "pyat_review_adjudication_decision": "HQD-2026-10-02-183",
+  "pyat_review_adjudication_decision": "HQD-2026-10-02-184",
   "omega_c1_r3_return_head": "696210c2aca2c42b49eed1fe9f75dfca5bf2e93c",
   "omega_c1_r4_branch": "agent/rabochii-pyat-hq126-c1-00-contract-correction-r4",
   "omega_c1_r4_commission_tip": "4482f28e436a6ef48e66f9aefda40d354c3866f5",
@@ -605,5 +605,10 @@
   "c4_reconciliation_counterexamples": 0,
   "hq182_hold": "UNLIFTED",
   "hq183_corrections": "C1_SOL_SHADOW_BYTE_IDENTITY_FALSE__C2_HQ182_R7_WORDING_INACCURATE__C3_HASH_CENSUS_WRONG__C4_R9_OVERSTATED__C5_R10_DIGEST_RECOVERED",
-  "python3_status": "NON_FUNCTIONAL__verify_packet_py_UNRUNNABLE"
+  "python3_status": "FUNCTIONAL__3_11_3"
+,
+  "packet_verifier_native_pass": true,
+  "packet_verifier_negative_control": "CONFIRMED_FAILS_ON_TAMPERED_SHA256",
+  "packet_verifier_cross_implementation_disagreements": 0,
+  "ops03_requalified": true
 }
