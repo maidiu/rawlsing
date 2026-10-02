@@ -326,3 +326,34 @@ Post-contact effects cannot become common because they belong to relation-specif
 
 This is one of the cleanest current derivations of the root/branch membrane.
 
+# 8. Meaning / resonance derivation probe
+
+### Cross-temporal resonance
+Source: P2 historical constitution + P3 non-exhaustion + P4 historical becoming.
+Strength: `D3 STRONG`.
+
+If durable organization persists/evolves, homologous expressions across domains should emerge without authorial foreshadowing.
+
+### Actor self-interpretation
+Source: historically formed person + actor-local models/memory.
+Strength: `D2 SUBSTANTIAL`.
+
+The existence of self-interpretation follows readily; exact propensity/style/domain requires V3-specific representation.
+
+### Self-mythologization
+Strength: `D1 GOVERNED`.
+
+Possible and sometimes highly realistic, but not a universal consequence. Must be actor-specific.
+
+### Narrative becoming causal
+Source: P4 historical becoming.
+Strength: `D3 STRONG`.
+
+Once adopted, a self-story changes future person-state regardless of whether it perfectly describes prior causation.
+
+### Secret canonical meaning field
+Strength: `FALSIFIED DIRECTION`.
+
+The current kernel candidate gives no reason to posit one authoritative hidden meaning of an object/event.
+Meaning should remain actor-/relation-/time-indexed while objective causal provenance remains separate.
+
