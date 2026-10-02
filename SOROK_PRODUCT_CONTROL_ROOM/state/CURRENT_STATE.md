@@ -675,3 +675,22 @@ Full coverage audit:
 Audit terminal:
 `PASS_WITH_CORRECTIONS__NO_OTHER_MATERIAL_CHAT_ONLY_PRODUCT_CONCLUSION_FOUND`
 
+## 2026-10-01 — Third-pass completeness audit
+
+A third adversarial chat-to-repo audit found three additional nuance-level items and promoted them:
+
+1. `SPD-0188` — intimacy/high-intensity events follow ordinary human person/relationship/world friction; Rawlsing neither prudishly suppresses them nor frictionlessly vends them as content.
+2. `SPD-0189` — shared-person discourse may support situated comparison/pedagogy, but official surfaces do not turn sexual access, violence, domination, crime or intimacy depth into ranked/badged conquest capital.
+3. `SPD-0190` — baseline scene narration uses minimum sufficient specificity for orientation, gross gestalt, activity and actionability; finer recognition/provenance remains for regime-sensitive noticing and ATTEND.
+
+Corresponding risks:
+- `RISK-145..RISK-147`.
+
+Full receipt:
+`SOROK_PRODUCT_CONTROL_ROOM/66_THIRD_PASS_CHAT_TO_REPO_COMPLETENESS_AUDIT_R1.md`
+
+The foundational anti-abstraction / neighbor-love transfer thesis was checked and found already owned by Court 7 / Court 6, so no duplicate decision was added.
+
+Terminal:
+`PASS_WITH_THREE_ADDITIONAL_NUANCE_CORRECTIONS__NO_FURTHER_MATERIAL_CHAT_ONLY_PRODUCT_CONCLUSION_FOUND`
+
