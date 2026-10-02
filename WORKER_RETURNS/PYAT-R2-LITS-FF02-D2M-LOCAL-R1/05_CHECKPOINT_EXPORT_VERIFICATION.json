@@ -1,0 +1,110 @@
+{
+  "schema": "PYAT_R2_D2M_CHECKPOINT_EXPORT_VERIFICATION@1",
+  "lane": "PYAT R2 — LiTS FF02-D2M local retained-checkpoint export (R1)",
+  "disposition": "D2M_LOCAL_CHECKPOINT_NOT_FOUND_OR_HASH_MISMATCH__HQ_ADJUDICATION_REQUIRED",
+  "block_class": "exact retained checkpoint not present on the designated execution surface",
+  "governed_checkpoint": {
+    "path": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_CUSTODY/PREMAIN-FIABC-LITS-FINAL-SUCCESS-DURABLE-CUSTODY-R1/payload/PREMAIN-FIABC-LITS-FINAL-CANONICAL-CLOSURE-SOURCE-RETRY-R1/court/oracle_producers/LITS_I/current_i05_materialization_checkpoint_v3.json",
+    "required_byte_size": 3404445161,
+    "required_document_sha256": "2704fd3fadc9c898a512183aaf5eebf0ca48d78c47e75a19d47e17281eaa5726",
+    "required_checkpoint_identity": "3fab15f37db629f0ee24189620c65eff944d8a36c4b4509abb6b8bb2ea69c33f",
+    "required_canonical_closure": "f264dd8f83a0794716583d1ea8445947cc9470b99475e5d51fc2383e7196f415"
+  },
+  "commission_gate_results": [
+    {
+      "gate": 1,
+      "requirement": "verify the exact path exists",
+      "result": "FAIL",
+      "observed": "path does not exist",
+      "detail": "The governing prefix LOCAL_CUSTODY does not exist at /Users/matthewsmith/Desktop/Rawlsing/. Walking the path upward, the FIRST missing component is LOCAL_CUSTODY itself, so every deeper component is also absent."
+    },
+    {
+      "gate": 2,
+      "requirement": "record observed file size",
+      "result": "NOT AVAILABLE",
+      "observed": "no size could be observed because the file does not exist",
+      "governed_control_plane_size": 3404445161,
+      "note": "The control-plane value is recorded for reference only. It is a Git-banked record and the commission forbids using it in place of a fresh observation."
+    },
+    {
+      "gate": 3,
+      "requirement": "compute SHA-256 by streaming the file",
+      "result": "NOT AVAILABLE",
+      "observed": "no hash could be computed because the file does not exist",
+      "governed_control_plane_sha256": "2704fd3fadc9c898a512183aaf5eebf0ca48d78c47e75a19d47e17281eaa5726",
+      "note": "No substitute hash was computed from any other artifact. Hashing a control-plane manifest and presenting it as a document hash would be a falsification."
+    },
+    {
+      "gate": 4,
+      "requirement": "require exact equality to the governed SHA-256",
+      "result": "CANNOT BE EVALUATED",
+      "observed": "no observed value to compare",
+      "note": "This is an observed-absence block, NOT an observed hash mismatch. The distinction matters: nothing about the checkpoint's integrity is in question; the payload is simply not reachable from this surface."
+    }
+  ],
+  "location_search_executed": {
+    "purpose": "To distinguish 'not at the governed path' from 'not present anywhere reachable', before declaring a block.",
+    "methods": [
+      "exact-path existence test on the governed path",
+      "first-missing-component walk upward from the governed file path",
+      "filename search for current_i05_materialization_checkpoint_v3.json to depth 8 under /Users/matthewsmith",
+      "filename glob search for *i05_materialization* to depth 8 under /Users/matthewsmith",
+      "directory search for any LOCAL_CUSTODY to depth 6 under /Users/matthewsmith",
+      "directory search for any directory named *DURABLE_CUSTODY* or *PREMAIN-FIABC-LITS* to depth 7",
+      "enumeration of /Volumes for an external mount",
+      "search for git-annex and git-lfs payload stores to depth 5"
+    ],
+    "result": "The checkpoint file was not found at the governed path or anywhere else reachable. No LOCAL_CUSTODY directory exists at any depth. No external volume carried it. No annex or LFS payload store exists.",
+    "note": "All discovery was metadata/path-level. No file contents were opened in service of the search."
+  },
+  "control_plane_record": {
+    "source": "git:WORKER_RETURNS/PREMAIN-FIABC-LITS-FINAL-SUCCESS-DURABLE-CUSTODY-R1/custody_manifest.json at ffd85e5e92e07e32f14e013485c983e7a4c575e5",
+    "recorded_bytes": 3404445161,
+    "recorded_sha256": "2704fd3fadc9c898a512183aaf5eebf0ca48d78c47e75a19d47e17281eaa5726",
+    "recorded_persistent_path_matches_commission_path": true,
+    "self_description": "The manifest states that no checkpoint bytes are staged as an ordinary Git blob and that the payload resides at the persistent local path.",
+    "used_as_substitute_for_fresh_verification": false,
+    "why_not": "A control-plane record is an assertion about a payload, not an observation of it. The commission requires a freshly computed document SHA-256 before any semantic dereference. Adopting the manifest's hash as the observed value would defeat the entire gate."
+  },
+  "semantic_access": {
+    "checkpoint_semantic_body_opened": false,
+    "canonical_empirical_object_closure_dereferenced": false,
+    "public_object_preimages_read": false,
+    "preimage_fragments_read": false,
+    "reason": "The gate failed before semantic access was lawful. No semantic dereference was attempted."
+  },
+  "exported_rows": {
+    "candidate_receipt_bindings": {"required": 50, "exported": 0},
+    "authority_snapshot_closure": {"required": 24, "exported": 0},
+    "per_object_authority_bindings": {
+      "EmpiricalFact": {"required": 60, "exported": 0},
+      "EmpiricalQuerySpec": {"required": 63, "exported": 0},
+      "EmpiricalPredicate": {"required": 35, "exported": 0},
+      "DiscoveryResultReceipt": {"required": 50, "exported": 0}
+    },
+    "p2_logical_bindings": {"required": "50 cross_schema_logical_candidate_bindings including 18 P2 memberwise mappings", "exported": 0},
+    "reconstructed_or_inferred_rows": 0,
+    "header_only_tsvs": true
+  },
+  "prohibition_audit": {
+    "raw_lits_source_opened_read_hashed_or_decoded": false,
+    "source_decoder_invoked": false,
+    "i03_rerun": false,
+    "i05_rerun": false,
+    "candidate_a_b_c_run": false,
+    "p2x_run": false,
+    "semantics_inferred_from_values_labels_counts_or_frequencies": false,
+    "semantics_reconstructed_from_git_or_oracle_artifacts": false,
+    "d04_ff01_substituted_as_current_truth": false,
+    "production_code_mutated": false,
+    "pre_v3_admission_performed": false,
+    "pre_v3_to_v3_touched": false,
+    "self_adopted": false,
+    "disclosure": "During the location sweep I ran a broad 'find -size +1G' over Desktop/Documents/Downloads. That sweep performs a stat() on each file it visits and therefore made incidental metadata contact with unrelated large files on this machine, including a survey microdata backup under rawlsing_v550_builder_bundle/backups. No such file was opened, read, hashed, decoded or inspected, and none is raw LiTS source, but I am recording the incidental metadata contact rather than claiming an unqualified zero. The governed LiTS checkpoint and raw LiTS source data were never opened, read, hashed or decoded."
+  },
+  "export_verification_conclusions": [
+    "No exported row exists, therefore every row-level assertion is vacuously satisfied and no semantic row was fabricated.",
+    "The four data TSVs are header-only by design, matching the precedent set by the prior D2 block.",
+    "B001, B002 and B003 remain OPEN. None is closed by this return."
+  ]
+}

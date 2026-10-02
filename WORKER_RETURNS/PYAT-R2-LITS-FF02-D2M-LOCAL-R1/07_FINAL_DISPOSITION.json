@@ -1,0 +1,59 @@
+{
+  "schema": "PYAT_R2_D2M_FINAL_DISPOSITION@1",
+  "disposition": "D2M_LOCAL_CHECKPOINT_NOT_FOUND_OR_HASH_MISMATCH__HQ_ADJUDICATION_REQUIRED",
+  "terminal": "D2M_LOCAL_CHECKPOINT_EXPORT_RETURNED__HQ_ADJUDICATION_REQUIRED",
+  "lane": "PYAT R2 — LiTS FF02-D2M local retained-checkpoint export (R1)",
+  "branch": "agent/opencode-pyat-hq174-lits-d2m-local-checkpoint-export-r1",
+  "commissioned_tip": "ffd85e5e92e07e32f14e013485c983e7a4c575e5",
+  "block_class": "GOVERNED_RETAINED_CHECKPOINT_ABSENT_FROM_EXECUTION_SURFACE",
+  "pass_criteria_not_met": {
+    "exact_path_found": false,
+    "observed_size_exact": false,
+    "observed_sha256_exact": false,
+    "receipt_bindings_50_of_50": false,
+    "snapshot_closure_24_of_24": false,
+    "per_object_bindings_exact": false,
+    "p2_memberwise_bindings_exact_and_non_inferred": false,
+    "b001_b002_b003_closed": false,
+    "zero_raw_source_access": "true with disclosed incidental metadata contact; see 05_CHECKPOINT_EXPORT_VERIFICATION.json prohibition_audit.disclosure"
+  },
+  "blockers_status": {
+    "B001": {"closed": false, "reason": "checkpoint body unreachable; 0 of 50 candidate_hash to DiscoveryResultReceipt exact-ref bindings exported"},
+    "B002": {"closed": false, "reason": "checkpoint body unreachable; 0 of 24 AuthoritySnapshot exact closure and 0 of the 208 per-object authority bindings exported"},
+    "B003": {"closed": false, "reason": "checkpoint body unreachable; 0 P2 memberwise logical bindings and 0 retained predicate preimages exported"}
+  },
+  "required_export_disposition": [
+    {"export": "50 candidate_hash -> DiscoveryResultReceipt.ref rows with authority_snapshot_refs, dependency_refs, winning_predicate_ref, source_release_refs, replay ref", "disposition": "BLOCKED — emitted header-only, 0 rows"},
+    {"export": "24 AuthoritySnapshot exact refs with exact underlying AuthorityRef triples", "disposition": "BLOCKED — emitted header-only, 0 rows"},
+    {"export": "per-object authority_snapshot_refs for 60 EmpiricalFact / 63 EmpiricalQuerySpec / 35 EmpiricalPredicate / 50 DiscoveryResultReceipt", "disposition": "BLOCKED — emitted header-only, 0 rows"},
+    {"export": "P2 memberwise logical bindings (50 cross_schema_logical_candidate_bindings incl. 18 P2 mappings) or retained predicate preimages", "disposition": "BLOCKED — emitted header-only, 0 rows"},
+    {"export": "closure of B001/B002/B003 with exact retained evidence", "disposition": "BLOCKED — all three remain open; no closure evidence exists"}
+  ],
+  "why_not_the_other_dispositions": {
+    "not_D2M_RETAINED_PREIMAGE_CONTENT_GAP": "That disposition would apply if the checkpoint were reachable and verified but the required preimage rows were genuinely absent from it. The checkpoint was never reached, so the gap could not be characterised. Asserting a content gap would claim knowledge of the payload that this lane does not have.",
+    "not_PASS": "Every pass criterion requires a fresh, exact observation of the governed bytes. None was obtainable."
+  },
+  "prohibitions_respected": {
+    "raw_lits_source_access": false,
+    "source_decoder_invoked": false,
+    "i03_i05_rerun": false,
+    "candidate_abc_run": false,
+    "p2x_run": false,
+    "semantics_inferred_from_values_counts_labels_frequencies": false,
+    "semantics_reconstructed_from_git_or_oracle": false,
+    "control_plane_manifest_used_as_substitute_for_fresh_hash": false,
+    "production_code_mutated": false,
+    "pre_v3_admission": false,
+    "pre_v3_to_v3": false,
+    "self_adopted": false
+  },
+  "relationship_to_prior_d2_block": "This is the second consecutive block on the same payload, from a different cause surface. The prior D2 return at 6d23470ba406e1edc7efad1163a7cde87b9ef230 blocked because that worker's execution surface could not see the checkpoint bytes. HQ then designated this governed local custody path AS the execution surface specifically to remove that cause. On this surface the cause is not removed: the designated path's root directory LOCAL_CUSTODY does not exist at all. So the designation did not take effect, or the payload was not present at the moment of designation. HQ should treat this as a custody-presence question, not a repeat of the original surface question.",
+  "next_required_action": "HQ to confirm whether /Users/matthewsmith/Desktop/Rawlsing/LOCAL_CUSTODY should exist on this machine and, if it should, restore or re-point the retained checkpoint at the governed path. Then re-run this identical D2M commission unchanged. No LiTS source reopen, decoder, I03/I05 rerun, Candidate A/B/C, P2X or semantic reconstruction is required or authorized.",
+  "evidence_for_hq_triage": [
+    "First missing path component is LOCAL_CUSTODY itself, so the whole designated custody subtree is absent, not merely one file.",
+    "A filename search to depth 8 across /Users/matthewsmith found no current_i05_materialization_checkpoint_v3.json and no *i05_materialization* file.",
+    "No directory named LOCAL_CUSTODY exists at any depth up to 6.",
+    "A sibling directory LOCAL_COURTS does exist at the repository root, which shows the repository root is readable and the absence is specific to LOCAL_CUSTODY rather than a general filesystem visibility failure.",
+    "/Volumes contains no external payload volume and no git-annex or git-lfs store exists."
+  ]
+}
