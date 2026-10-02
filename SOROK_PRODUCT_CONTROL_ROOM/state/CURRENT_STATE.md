@@ -713,3 +713,24 @@ Full receipt:
 Terminal:
 `PASS_WITH_FIVE_BOUNDARY_CORRECTIONS__NO_FURTHER_MATERIAL_CHAT_ONLY_PRODUCT_CONCLUSION_FOUND`
 
+## 2026-10-02 — Fifth-pass temporal/research/completion/scope audit
+
+A fifth adversarial audit found seven additional interaction/scope corrections:
+
+1. `SPD-0196` — every user branch binds exact seed root/version + causal-closure snapshot at fork; later pre-contact facts cannot become retroactive antecedent causes.
+2. `SPD-0197` — same-seed comparison binds relevant root-resolution/closure state so user order cannot create materially different "same Nadia" starting persons.
+3. `SPD-0198` — prior community/spoiler/strategy/other-branch exposure is an explicit research-provenance variable for identical-root studies.
+4. `SPD-0199` — no canonical hidden-truth live-person dossier/wiki/completion surface; user recaps remain branch-local and limited to lawfully acquired knowledge.
+5. `SPD-0200` — anti-commodification is nonmoralizing by default: thickness and independent actor/world consequence do the work, not platform shame/purity gating.
+6. `SPD-0201` — abandonment/nonreentry follows semantic seed-person lineage across versions, closing the Nadia-v1 → Nadia-v2 fresh-start loophole.
+7. `SPD-0202` — learned user attention regime is user-level/contextual/revisable/cross-continuity capable, but resettable/deletable and never canonical personality truth.
+
+Corresponding risks:
+- `RISK-153..RISK-159`.
+
+Full receipt:
+`SOROK_PRODUCT_CONTROL_ROOM/68_FIFTH_PASS_TEMPORAL_RESEARCH_COMPLETION_SCOPE_AUDIT_R1.md`
+
+Terminal:
+`PASS_WITH_SEVEN_ADDITIONAL_CORRECTIONS__NO_FURTHER_MATERIAL_CHAT_ONLY_PRODUCT_CONCLUSION_FOUND`
+
