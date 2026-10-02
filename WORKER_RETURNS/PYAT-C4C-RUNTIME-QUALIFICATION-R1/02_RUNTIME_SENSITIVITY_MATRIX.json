@@ -1,0 +1,295 @@
+{
+  "schema": "PYAT_C4C_RUNTIME_SENSITIVITY_MATRIX@1.0.0",
+  "lane": "PYAT-C4C-RUNTIME-QUALIFICATION-R1",
+  "analysed_tree": "b2ff3b0d89d32c41430cf50c3c785d64d8fd5f55 (base 149c3d2636160d8de9b5a8be0c8b87195158077d)",
+  "analysis_mode": "SOURCE_FREE_STATIC_READ_PLUS_14_SOURCE_FREE_PROBES",
+  "raw_survey_files_accessed": 0,
+  "scope_warning": "This matrix is computed against the C4C commission tree. That tree does NOT contain the accepted D01/D02/G01 successor contracts. See scope_defect below. Every conclusion must be re-derived on the combined C1+C3 execution tree before it can support O1-C05.",
+
+  "scope_defect": {
+    "finding": "THE C4C TREE IS NOT THE C4 EXECUTION TREE",
+    "detail": "Omega-1 O1-C01 already established that the C1 commission/result head is not an execution-ready C1+C3 tree. This lane independently confirms it at the code-identity level and adds that the three runtime-sensitive successor contracts themselves are absent.",
+    "absent_from_this_tree": [
+      "rawlsing_next/closed35_g01_sav_numeric_representation_authority.py (ABSENT)",
+      "rawlsing_next/tests/test_closed35_d01_declared_encoding_admission.py (ABSENT)",
+      "rawlsing_next/tests/test_closed35_d02_opaque_datetime_carrier.py (ABSENT)",
+      "rawlsing_next/tests/test_closed35_g01_sav_numeric_representation_authority.py (ABSENT)",
+      "DECLARED_ENCODING_ALLOWLIST / SOURCE_DECLARED_ENCODING_ONLY (NOT FOUND)",
+      "normalize_decoder_physical_value / opaque_decoder_value (NOT FOUND)"
+    ],
+    "blobs_at_this_head": {
+      "rawlsing_next/pre553_physical_decoder.py": "d2a074a41fb556a1cd5928a5fe1421ef3672a4e5",
+      "rawlsing_next/pre553_r5_codec.py": "72f8f3c03ed065e86fea4e76bb17f8e06c2bf540"
+    },
+    "consequence_for_this_lane": "The D01 declared-encoding lane and the D02 opaque naive date/time carrier — the two most runtime-sensitive C4 operations — have NO contract in the tree this lane was asked to qualify. Runtime qualification against a pre-repair decoder cannot discharge O1-C05 for the governed C4 run.",
+    "not_asserted": "This lane does not assert WHERE those contracts live or whether they are correct. That is C4A's lane. This lane records only that they are absent from the tree under qualification."
+  },
+
+  "runtime_classes": {
+    "OS_ARCH_HARD_GATE": "Behaviour is refused by an explicit equality check against system/architecture. A different OS or architecture cannot complete the governed path.",
+    "LIBRARY_VERSION_COUPLING": "Behaviour is fixed by a specific library version or by an unpinned library default, with no repo-side check.",
+    "INTERPRETER_VERSION_COUPLING": "Behaviour varies across CPython minor/patch or across the bundled Unicode Character Database.",
+    "RESOURCE_MEASUREMENT_COUPLING": "A recorded quantity is OS-defined and not portable.",
+    "PURE_PYTHON_DETERMINISTIC": "Fixed by explicit IEEE-754/endianness/exact-type operations; no platform dependence found."
+  },
+
+  "operations": [
+    {
+      "operation_id": "OP-01",
+      "name": "SAV declared-encoding handling (D01)",
+      "runtime_class": "LIBRARY_VERSION_COUPLING",
+      "sensitivity": "HIGH",
+      "code_sites": [
+        "rawlsing_next/pre553_physical_decoder.py:464-465 (metadata pass: metadataonly=True, apply_value_formats=False, user_missing=True, encoding=<str|None>)",
+        "rawlsing_next/pre553_physical_decoder.py:470 (data pass: apply_value_formats=False, user_missing=True, encoding=<str|None>)",
+        "rawlsing_next/pre553_physical_decoder.py:142-145 (chunked: chunksize=, encoding=, apply_value_formats=False, user_missing=True)",
+        "rawlsing_next/pre553_physical_decoder.py:264-272 (_compatibility_config; forbids auto/guess/fallback; requires exact SHA->encoding match)",
+        "rawlsing_next/pre553_physical_decoder.py:25-32 (COMPATIBILITY_ALLOWLIST: six exact source SHAs -> \"latin1\")",
+        "rawlsing_next/pre553_physical_decoder.py:313 and :423 (\"file_encoding\": getattr(metadata, \"file_encoding\", None))",
+        "rawlsing_next/ee_p2x_darwin_stage_backend.py:724 (decode_dta(..., encoding=\"latin1\") for LiTS-I; decode_sav(path) with NO encoding for WVS7)",
+        "rawlsing_next/runtime/ee_p2x/05_WVS7_PROJECTION_MATERIALIZER.py:986-991 and :1015-1020 (read_sav with NO encoding kwarg at all)",
+        "rawlsing_next/fiabc_lm2_r1j_wvs7_representation_authority.py:61-70 (frozen contract records encoding: None as the authoritative value)"
+      ],
+      "findings": [
+        "THE DECLARED ENCODING IS NEVER READ FROM THE FILE BY REPOSITORY CODE. _sav_header_layout (pre553_physical_decoder.py:317-369, 372-376) parses the 176-byte SAV header for layout_code/compression/weight_index/declared_case_count/nominal_case_size and digests the prefix (header_prefix_sha256), but the SPSS file_label field at offset 109 is never extracted or compared to any authority.",
+        "WITH encoding=None — which is the actual configured value for the WVS7 SAV lane and for every G01/D01 surface — declared-encoding resolution is delegated ENTIRELY to the pyreadstat/ReadStat build at runtime. metadata.file_encoding is the only witness, and it is RECORDED into the canonical metadata digest but NEVER COMPARED to an authority.",
+        "data/ddm_build_copy/build_file_accounting_manifest.py:163-165 performs an EXCEPTION-DRIVEN encoding fallback (retry with encoding=\"latin1\" on any exception). That behaviour is by construction a pyreadstat-build-sensitive fork.",
+        "Encoding values are hardcoded per exact source SHA, so they are not platform-derived — but they are constants that become an EXCEPTION if the target build's codec cannot decode those bytes."
+      ],
+      "probe_evidence": ["P14", "P13"],
+      "reader_options_not_pinned_by_repo": ["formats_as_category (default True)", "dates_as_pandas_datetime (default False)", "disable_datetime_conversion (default False)", "row_limit", "row_offset", "output_format", "extra_date_formats", "extra_datetime_formats", "extra_time_formats", "formats_as_ordered_category"],
+      "explicit_not_found": ["file_label= as a pyreadstat kwarg in repo code", "file_encoding= as a pyreadstat kwarg in repo code", "reencode= as a pyreadstat kwarg in repo code"],
+      "non_mac_qualification_implication": "The encoding admission decision for encoding=None is made inside a compiled ReadStat extension whose declared-encoding resolution has not been probed on any non-Darwin build in this repository's history. Admitting a non-Mac surface at the physical grade requires a source-free probe of that resolution on the candidate build."
+    },
+    {
+      "operation_id": "OP-02",
+      "name": "G01 native-int to float64 representation path",
+      "runtime_class": "LIBRARY_VERSION_COUPLING",
+      "sensitivity": "HIGH",
+      "code_sites": [
+        "rawlsing_next/pre553_physical_decoder.py:122 (frame.itertuples(index=False, name=None) — the pandas boxing boundary)",
+        "rawlsing_next/pre553_physical_decoder.py:159-177 (_jsonable dtype normaliser: .item() unwrap at :168-172, NaN->None at :163, str() fallback at :177)",
+        "rawlsing_next/pre553_physical_decoder.py:486 (readstat_variable_types -> PhysicalVariable.storage_type)",
+        "rawlsing_next/pre553_r5_codec.py:46-57 (_float64_bits via struct.pack(\">d\"))",
+        "rawlsing_next/pre553_r5_codec.py:102-110 (float64_finite / nan / inf token construction)",
+        "rawlsing_next/pre553_r5_codec.py:177 (if type(native_code) is not int — EXACT type identity)",
+        "rawlsing_next/pre553_r5_codec.py:223-224 (roundtrip_equal; type(value) is type(decoded))",
+        "rawlsing_next/fiabc_lm2_r1j_wvs7_representation_authority.py:34-60 (frozen literal _AUTHORIZED_FLOATS; deliberately not float(native_code))",
+        "rawlsing_next/fiabc_lm2_r1j_wvs7_representation_authority.py:71-95 (pyreadstat 1.3.2 vs 1.3.6 equivalence claimed from upstream ReadStat C blob hashes)",
+        "rawlsing_next/pre553_physical_decoder.py:502 (reader_version = getattr(pyreadstat, \"__version__\", None), which ENTERS the physical-metadata SHA-256 digest)"
+      ],
+      "findings": [
+        "The int-to-float64 conversion is performed INSIDE the pyreadstat C extension (READSTAT_TYPE_DOUBLE -> np.float64). SavNumericReader and int2code are NOT identifiers in this repository; the C-level step has no repository-side implementation to test.",
+        "type(native_code) is not int at pre553_r5_codec.py:177 is an EXACT TYPE IDENTITY check. np.int64 fails it; bool fails it. The caller must supply a genuine Python int, whose provenance is the numpy-scalar .item() unwrap at pre553_physical_decoder.py:168-172 plus caller-side int(...). Any change to the scalar boxing type closes G01.",
+        "reader_version is part of the SHA-256 physical-metadata digest (pre553_physical_decoder.py:500-508 -> :229 -> :247-261). Therefore ANY pyreadstat version change invalidates every frozen physical-metadata digest, including all retained C3 and retained Route-B receipts. This is the widest blast radius of any runtime fact in the repository.",
+        "The pyreadstat 1.3.2-equivalent-to-1.3.6 claim is DOCUMENTARY ONLY — asserted from upstream ReadStat C source blob hashes (readstat_value.c and readstat_sav.c blob-identical; readstat_sav_read.c differing only in the multiple-response-set parser context). No probe in this repository re-proves it.",
+        "P03 observed: np.float64 is an isinstance(x, float) subclass, so _jsonable RETURNS IT UNCHANGED rather than unwrapping it; NaN maps to None."
+      ],
+      "probe_evidence": ["P01", "P03", "P04", "P06"],
+      "runtime_class": "PURE_PYTHON_DETERMINISTIC for the bit-token layer; LIBRARY_VERSION_COUPLING for the arrival-typing layer",
+      "non_mac_qualification_implication": "Two separable claims. The float64 BIT token layer is host-independent and already probe-proved on this surface (P01, all nine authorised tokens matched 3ff0000000000000-style big-endian forms, roundtrip OK). The ARRIVAL TYPING layer (whether the reader yields a Python int, an np.int64, or a Categorical) is unproved on any non-Darwin build and additionally depends on the UNPINNED formats_as_category default (P14: True)."
+    },
+    {
+      "operation_id": "OP-03",
+      "name": "D02 built-in naive date/time carrier behaviour",
+      "runtime_class": "LIBRARY_VERSION_COUPLING + INTERPRETER_VERSION_COUPLING",
+      "sensitivity": "HIGHEST",
+      "code_sites": [
+        "rawlsing_next/pre553_r5_codec.py:122-127 (isinstance guard rejecting date/time/time/datetime with R5CodecError)",
+        "rawlsing_next/pre553_physical_decoder.py:159-177 (_jsonable: datetime has NO .item(), so it falls to :177 return str(value))",
+        "rawlsing_next/pre553_source_backed_c11_facade.py:127 (variable.value_labels.get(str(raw)))",
+        "rawlsing_next/pre553_source_backed_c11_facade.py:93-114 (raw_physical_value_witness / physical_value_binding_key)",
+        "rawlsing_next/gt34_obl031_q69b_comparator_resolver_r2.py:92 and rawlsing_next/v3_adp010_oee_executor.py:162-172 (tz-awareness checks; bare fromisoformat Z-handling — OFF the C4 source path)"
+      ],
+      "findings": [
+        "IN THIS TREE THE D02 CONTRACT DOES NOT EXIST. There is no opaque date/time carrier. pre553_r5_codec.py:126 rejects date/time, but that guard is UNREACHABLE from the decoder route because pre553_physical_decoder.py:177 already collapsed the value to str().",
+        "P03 measured the exact D02 collapse on this surface: datetime.date(2008,4,5) -> '2008-04-05'; datetime.datetime(2008,4,5,6,7,8) -> '2008-04-05 06:07:08' (SPACE separator, not ISO 'T'); datetime.datetime(..., tzinfo=utc) -> '2008-04-05 06:07:08+00:00' — a DIFFERENT STRING, therefore a DIFFERENT semantic_hash, from the naive form; np.datetime64('2008-04-05','D') -> '2008-04-05' versus np.datetime64('2008-04-05T06:07:08','s') -> '2008-04-05 06:07:08'. So the NUMPY DATETIME64 UNIT SELECTION changes the D02 rendering, and the numpy version is not pinned by any gate.",
+        "P14: the two reader options that actually govern the date carrier — dates_as_pandas_datetime (default False) and disable_datetime_conversion (default False) — are NOT passed anywhere in the repository. Whether a SAV date variable arrives as datetime.date, datetime.datetime, or a pandas datetime64 column therefore follows the installed pyreadstat build's defaults, not any frozen contract.",
+        "Omega-1 O1-C04 explicitly forbids inferring datetime.date versus datetime.datetime from the historical rendered value 1582-10-13 and requires recording the actual current subclass. On a non-Mac surface the actual subclass is UNOBSERVED, so O1-C04 cannot be discharged there without a probe.",
+        "rawlsing_next/pre553_source_backed_c11_facade.py:127 couples value-label lookup to str(raw) — the same rendering that D02 is meant to replace."
+      ],
+      "probe_evidence": ["P03", "P04", "P14"],
+      "explicit_not_found": ["TYPED_DATE identifier — NOT FOUND anywhere in the repository, any file type"],
+      "non_mac_qualification_implication": "This is the operation that most directly cannot be inherited by name. The Omega-1 requirement is to record the ACTUAL current subclass on the actual execution surface. On a candidate non-Mac surface that subclass has never been observed, and the two governing reader defaults are unpinned. A source-free probe of date/datetime arrival typing on the candidate build is mandatory before the physical claim."
+    },
+    {
+      "operation_id": "OP-04",
+      "name": "DTA / LiTS-I read path",
+      "runtime_class": "LIBRARY_VERSION_COUPLING",
+      "sensitivity": "HIGH",
+      "code_sites": [
+        "rawlsing_next/pre553_physical_decoder.py:537-548 (decode_dta entry point)",
+        "rawlsing_next/pre553_physical_decoder.py:139-145 (read_file_in_chunks; reachable only on the encoding=None lane)",
+        "rawlsing_next/ee_p2x_darwin_stage_backend.py:118-122 and :240-251 and :748 (exec_module's the banked AS2B LiTS builder onto the live path)",
+        "rawlsing_next/fiabc_final_oracle_freeze_producers.py:1267-1271 (decode_dta(source_path, encoding=\"latin1\", expected_source_sha256=LITS_SOURCE_SHA256))",
+        "rawlsing_next/fiabc_lits_i_representation_authority.py:40-48 (frozen READER_CONFIG recording reader_version \"1.3.6\" and python \"3.11.3\" as identity material)"
+      ],
+      "findings": [
+        "read_file_in_chunks IS DEPENDENT ON THE KWARG NAME chunksize. P06 measured the installed signature: (read_function, file_path, chunksize=100000, offset=0, limit=0, multiprocess=False, num_processes=4, num_rows=None, kwargs). The repo passes chunksize=, encoding=, apply_value_formats=, user_missing=; the latter three travel through **kwargs.",
+        "apply_value_formats=False IS correct and required (else value labels become cell text), and is passed.",
+        "Stata extended-missing token normalisation at pre553_physical_decoder.py:286-289 handles BOTH the bare 'a' and the dotted '.a' shape. That dual-shape handling exists precisely because the token pyreadstat returns for Stata extended missing has differed across versions. The reader_token/stata_token strings ENTER the physical-metadata digest, so a build emitting 'a' where a frozen receipt expects '.a' silently changes the digest.",
+        "classify_physical_value at pre553_physical_decoder.py:296 uses isinstance(value, float) — true for np.float64, so NaN collapses to SYSTEM_MISSING. But a pandas nullable pd.NA would match NO branch and fall through to OBSERVED_STORAGE_VALUE at :305, silently changing a missing-state classification.",
+        "The banked LiTS AS2B builder imports duckdb, numpy, pandas, pyarrow and pyreadstat at MODULE SCOPE and is exec_module'd onto the live path. P12 measured duckdb ABSENT on the available surface. So pandas, pyarrow AND duckdb must all be importable on the LiTS path, and pandas/duckdb are absent here.",
+        "fiabc_lits_i_representation_authority.py:40-48 RECORDS reader_version and python as part of its authority identity, so changing either changes REPRESENTATION_AUTHORITY_HASH — but nothing in the DTA lane ENFORCES the installed version. Contrast the WVS7 lane, which does enforce it (see OP-06)."
+      ],
+      "probe_evidence": ["P06", "P12", "P13", "P14"],
+      "explicit_not_found_in_repo_code": ["formats_as_category", "row_limit"],
+      "non_mac_qualification_implication": "The DTA reader option surface is the same unpinned-default surface as OP-01/OP-03, plus the extended-missing token shape, which is an explicitly acknowledged pyreadstat-version fork. A non-Mac surface requires a source-free probe of the extended-missing token shape and of NaN/NA collapse before the physical claim."
+    },
+    {
+      "operation_id": "OP-05",
+      "name": "Arrow / reader boundary actually relied on",
+      "runtime_class": "PYARROW_VERSION_SENSITIVE__TEST_SUPPORT_ONLY",
+      "sensitivity": "MEDIUM",
+      "code_sites": [
+        "rawlsing_next/pre553_parquet_carrier.py:229-236, 244-245, 276-277",
+        "rawlsing_next/pre553_duckdb_direct.py:20-22, 30-35",
+        "rawlsing_next/pre553_r4_compaction.py:144-150, 153-157, 258-278, 321-325",
+        "rawlsing_next/ee_p2x_darwin_court_driver.py:523-525 (pyarrow version recorded for the hard gate)",
+        "rawlsing_next/ee_p2x_darwin_stage_backend.py:1822 and :1940 (pyarrow version recorded in receipts)"
+      ],
+      "findings": [
+        "IMPORT-GRAPH FINDING: zero PRODUCTION modules import pre553_parquet_carrier, pre553_duckdb_direct or pre553_r4_compaction. Their only importers are rawlsing_next/tests/test_pre553_r4_compaction.py:8 and rawlsing_next/tests/test_pre553_sr06_decoder_carrier.py:11-12. There is therefore NO Arrow/parquet READ boundary on the governed .sav/.dta -> PhysicalCell -> C11 read path.",
+        "pyarrow 25.0.1 is nevertheless pinned by EXPECTED_RUNTIME and recorded in receipts, and is REQUIRED FOR IMPORTABILITY on the LiTS Route-B module scope (OP-04).",
+        "Within the test-support surfaces, physical parquet layout is version-dependent: pre553_parquet_carrier.py:236 infers the schema via pa.Table.from_pylist when none is given, and the resulting bytes are hashed at :237 into manifest.json. rawlsing_next/pre553_r4_compaction.py:144-150 declares an explicit Arrow schema and rawlsing_next/tests/test_pre553_r4_compaction.py:57 asserts exact schema_arrow field-type identity.",
+        "P11 measured pyarrow 25.0.1 importable on this surface."
+      ],
+      "probe_evidence": ["P11", "P12"],
+      "conclusion_for_O1_C05": "The pyarrow 25.0.1 pin is required, but it is a TRANSITIVE IMPORTABILITY + GATE requirement, not an Arrow API reader-boundary requirement on the C4 source read path. A non-Mac surface may lawfully hold pyarrow at 25.0.1 without re-proving Arrow reader semantics; but it may NOT hold a different pyarrow version, because EXPECTED_RUNTIME:48 is an equality check."
+    },
+    {
+      "operation_id": "OP-06",
+      "name": "Repository's own hard runtime gates (cross-cutting)",
+      "runtime_class": "OS_ARCH_HARD_GATE",
+      "sensitivity": "DECISIVE",
+      "code_sites": [
+        "rawlsing_next/ee_p2x_darwin_court_driver.py:46-49 (EXPECTED_RUNTIME = {CPython, 3.11.3, pyreadstat 1.3.6, pyarrow 25.0.1, Darwin, x86_64})",
+        "rawlsing_next/ee_p2x_darwin_court_driver.py:521-532 (observe_host + verify_runtime_gate; exact major.minor.micro, exact platform.system(), exact platform.machine())",
+        "rawlsing_next/ee_p2x_darwin_stage_backend.py:61 (FROZEN_PYREADSTAT_VERSION = \"1.3.6\") and :896-901 (raises SourceAuthorityStop on drift, on the .sav read path)",
+        "rawlsing_next/pre553_physical_decoder.py:502 (reader_version inside the metadata digest)"
+      ],
+      "probe_evidence": ["P05"],
+      "measured_result": {
+        "synthetic_host_darwin_x86_64": "ACCEPTED",
+        "synthetic_host_linux_x86_64": "REJECTED(RuntimeGateError)",
+        "synthetic_host_darwin_arm64": "REJECTED(RuntimeGateError)",
+        "synthetic_host_linux_aarch64": "REJECTED(RuntimeGateError)",
+        "observed_host": {"implementation": "CPython", "python": "3.11.3", "system": "Darwin", "machine": "x86_64", "pyreadstat": "1.3.6", "pyarrow": "25.0.1", "ru_maxrss_unit_law": "DARWIN_RU_MAXRSS_ALREADY_BYTES"},
+        "interpretation": "The repository's OWN hard gate rejects EVERY non-Mac surface and every non-x86_64 surface. A non-Mac C4 run on the current tree cannot complete without an HQ-adjudicated contract change to EXPECTED_RUNTIME. This is not a C4C judgement; it is the tree's own fail-closed behaviour, measured."
+      },
+      "corroborating_tests_that_pin_the_gate": [
+        "rawlsing_next/tests/test_ee_p2x_darwin_court_driver.py:191-193 test_runtime_gate_rejects_non_darwin_before_execution (system=\"Linux\")",
+        "rawlsing_next/tests/test_ee_p2x_darwin_court_driver.py:196-198 test_runtime_gate_rejects_non_x86_64 (machine=\"arm64\")",
+        "rawlsing_next/tests/test_ee_p2x_darwin_court_driver.py:201-203 test_runtime_gate_rejects_wrong_python (\"3.11.9\")",
+        "rawlsing_next/tests/test_ee_p2x_darwin_court_driver.py:206-208 test_runtime_gate_rejects_dependency_drift (pyreadstat \"1.3.5\")",
+        "rawlsing_next/tests/test_ee_p2x_local_court_receipts.py:22-28 asserts the exact runtime dict including darwin_ru_maxrss_unit BYTES and same_physical_host_required True"
+      ]
+    },
+    {
+      "operation_id": "OP-07",
+      "name": "Resource measurement accounting (peak RSS)",
+      "runtime_class": "RESOURCE_MEASUREMENT_COUPLING",
+      "sensitivity": "MEDIUM",
+      "code_sites": [
+        "rawlsing_next/ee_p2x_darwin_court_driver.py:66 (R8B_RU_MAXRSS_LAW = \"DARWIN_RU_MAXRSS_ALREADY_BYTES\")",
+        "rawlsing_next/ee_p2x_darwin_court_driver.py:319-324 (\"ru_maxrss_unit\": \"bytes\" if platform.system()==\"Darwin\" else \"platform_native_uninterpreted\")",
+        "rawlsing_next/ee_p2x_candidate_process_envelope.py:265 (resource.getrusage(RUSAGE_SELF).ru_maxrss)",
+        "WORKER_RETURNS/.../run_as2b_lits1_mechanical_certification.py:680 (peak_rss = resource.getrusage(RUSAGE_SELF).ru_maxrss)"
+      ],
+      "probe_evidence": ["P07"],
+      "measured_result": {"system": "Darwin", "machine": "x86_64", "ru_maxrss": 37916672, "declared_law": "DARWIN_RU_MAXRSS_ALREADY_BYTES", "note": "ru_maxrss is BYTES on Darwin and KIBIBYTES on Linux. A value recorded on one OS is not comparable to the other and must never be relabelled across an OS boundary."},
+      "non_mac_qualification_implication": "Any C4 measurement budget expressed in ru_maxrss is NOT portable to a non-Mac surface. O1-C07 requires frozen expected budgets and retained measured counts; those budgets would have to be re-derived per surface, and the retained R8B Darwin unit law cannot be inherited by name."
+    }
+  ],
+
+  "additional_runtime_sensitivities_found": [
+    {
+      "id": "ADD-01",
+      "runtime_class": "LIBRARY_VERSION_COUPLING",
+      "sensitivity": "HIGH",
+      "site": "rawlsing_next/pre553_physical_decoder.py:122",
+      "finding": "pandas is an UNPINNED TRANSITIVE dependency of the governed read path. No production module imports pandas, yet the decoder calls DataFrame.itertuples(index=False, name=None) and does positional zip(variables, row) binding. Whether a cell arrives as int, np.int64, float, np.float64, str, np.datetime64 or pandas NA is decided by pandas dtype inference. The retained anchor records pandas 2.3.3 (C3 receipt) and 2.3.1 (accepted checkpoint) — conflicting — and the available surface has NO pandas at all."
+    },
+    {
+      "id": "ADD-02",
+      "runtime_class": "LIBRARY_VERSION_COUPLING",
+      "sensitivity": "HIGH",
+      "site": "rawlsing_next/pre553_physical_decoder.py:502",
+      "finding": "reader_version enters the physical-metadata SHA-256 digest. Widest blast radius: a pyreadstat version change invalidates every frozen physical-metadata digest in the repository, including accepted C3 holdings and retained Route-B receipts."
+    },
+    {
+      "id": "ADD-03",
+      "runtime_class": "PURE_PYTHON_DETERMINISTIC",
+      "sensitivity": "NONE",
+      "site": "rawlsing_next/pre553_r5_codec.py:46-57 and rawlsing_next/pre553_physical_decoder.py:317-369",
+      "finding": "struct.pack(\">d\") and explicit int.from_bytes(..., \"little\"/\"big\") make the float64 bit-token layer and the SAV header-layout layer HOST-ENDIANNESS INDEPENDENT. Confirmed by P01 (all nine authorised tokens matched and round-tripped). Also rawlsing_next/pre553_empirical_objects.py:181-221 semantic_hash is pure Python, forbids float, applies no unicodedata, and uses sort_keys with explicit separators."
+    },
+    {
+      "id": "ADD-04",
+      "runtime_class": "INTERPRETER_VERSION_COUPLING",
+      "sensitivity": "MEDIUM",
+      "site": "rawlsing_next/pre553_empirical_objects.py:173 (Decimal.normalize) and :171-178 (_decimal_text)",
+      "finding": "Decimal.normalize() rounds to the PROCESS-GLOBAL decimal context precision (P08 measured default prec=28). No repository code mutates getcontext().prec, so this is stable today, but it is a process-global coupling rather than an explicit one."
+    },
+    {
+      "id": "ADD-05",
+      "runtime_class": "INTERPRETER_VERSION_COUPLING",
+      "sensitivity": "LOW_ON_C4_PATH__HIGH_IF_ENTERED",
+      "site": "rawlsing_next/f07_second_canary_prev3_admission.py:127, rawlsing_next/m6_actor_safe_expression.py:135/161/167, rawlsing_next/render_bounded_expression.py:88, rawlsing_next/gt34_adp010_input_authority_acceptance.py:70 (unicodedata.normalize(\"NFC\", ...))",
+      "finding": "These hashes depend on the Unicode Character Database bundled with CPython. P10 measured unicodedata.unidata_version 14.0.0 on this surface (CPython 3.11.3). UCD differs across CPython minor versions. These modules are in the R6/GT34 layers, NOT on the current C4 semantic-hash path; flagged so HQ does not let them enter a C4-authority scope unproved."
+    },
+    {
+      "id": "ADD-06",
+      "runtime_class": "INTERPRETER_VERSION_COUPLING",
+      "sensitivity": "LOW_ON_C4_PATH",
+      "site": "rawlsing_next/v3_adp010_oee_executor.py:162-172, rawlsing_next/rabochii_return_beacon.py:308/337",
+      "finding": "Bare datetime.fromisoformat accepts a trailing 'Z' only from CPython 3.11+. P09 measured that 3.11.3 accepts '2008-04-05T06:07:08Z' and the repo carries an explicit Z->+00:00 workaround at v3_adp010_oee_executor.py:172 that documents the 3.10/3.11 boundary. Off the C4 source path."
+    },
+    {
+      "id": "ADD-07",
+      "runtime_class": "DEPENDENCY_AVAILABILITY",
+      "sensitivity": "DECISIVE_FOR_PROBE_CAPABILITY",
+      "site": "repository-wide",
+      "finding": "There is NO dependency lock of any kind in the repository (P13/01_AVAILABLE_ENVIRONMENT.json lock_search). Six tracked CI workflows install pytest and pandas UNPINNED on ubuntu-latest with python-version \"3.11\" (major.minor only). No workflow carries pytest==9.1.1 or pandas==2.3.3. O1-C05 requires a frozen dependency inventory; it CANNOT be derived from this repository and must be AUTHORED."
+    },
+    {
+      "id": "ADD-08",
+      "runtime_class": "PROCESS_INVARIANT__VERIFIED_CLEAN",
+      "sensitivity": "NONE_CURRENTLY",
+      "site": "repository-wide",
+      "finding": "Install-on-import is ABSENT from rawlsing_next/, tests/ and .rabochii/. The previously-recorded C3-02 defect (import-time pip install pandas in the D02 semantic test) is not present in this tree. No `pip install --upgrade` or `--target` occurs in tracked Python. The archived install-on-import occurrences live only in content-addressed archival objects under data/ddm_build_copy/recovery_reservoir/ which no production module imports. O1-C05's no-install-on-import and no-silent-upgrade clauses are satisfied by the current tree."
+    },
+    {
+      "id": "ADD-09",
+      "runtime_class": "PROCESS_INVARIANT__DETERMINISM_HYGIENE",
+      "sensitivity": "MEDIUM",
+      "site": ".rabochii/court_spec.json:16, rawlsing_next/rabochii_execution_protocol.py:59-60, rawlsing_next/rabochii_bounded_court.py:59",
+      "finding": "The governed bounded court enforces env {PYTHONHASHSEED: 0, PYTEST_DISABLE_PLUGIN_AUTOLOAD: 1}, which removes third-party pytest-plugin nondeterminism. But rabochii_execution_protocol.py:342-344 validates python_version only at the 3.N major.minor grain, so the patch level floats, and NO repository assertion anywhere pins the pytest version."
+    },
+    {
+      "id": "ADD-10",
+      "runtime_class": "ENVIRONMENT_DEFECT__REPORTED",
+      "sensitivity": "HIGH",
+      "site": "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11",
+      "finding": "The python.org framework 3.11.3 primary launcher is a ZERO-BYTE file and exits 0 emitting nothing; only the python3.11-intel64 alternate (70544 bytes) runs. This independently defeats the assumption that the anchor interpreter is simply present and usable on this host. It is a reported environment defect, not a qualification fact, and it is recorded so HQ does not treat 'CPython 3.11.3 is on PATH' as satisfied by observation."
+    },
+    {
+      "id": "ADD-11",
+      "runtime_class": "RECORDED_PRIOR_RESULT__CAUSE_NOT_ESTABLISHED",
+      "sensitivity": "HIGH_FOR_INTERPRETER_SUBSTITUTION",
+      "site": "WORKER_RETURNS/PYAT-C1-01-R7-EXECUTION-QUALIFICATION-R1/03_FINAL_DISPOSITION.json:5-8",
+      "finding": "That packet records disposition FAIL_SOURCE_FREE_QUALIFICATION with result \"48 passed; 10 fixture setup errors; 0 failed tests; exit code 1\" on CPython 3.12.14 / pytest 9.1.1, with failure_summary naming an at07 fixture content-hash mismatch. This is the closest existing precedent for interpreter substitution and it is a FAILURE. No repository code establishes whether that failure was interpreter-induced or fixture-induced, and this lane does NOT reinterpret it either way. It is cited as a reason to require an explicit pre-run qualification rather than to assert that 3.12 cannot work."
+    }
+  ],
+
+  "matrix_summary": {
+    "operations_mapped": 7,
+    "high_or_higher_sensitivity": 5,
+    "hard_os_arch_gates_found": 1,
+    "cross_cutting_hard_gates": 2,
+    "library_defaults_left_unpinned_that_govern_C4_behaviour": 10,
+    "operations_proved_platform_independent": 1,
+    "operations_that_are_ALSO_missing_a_contract_in_this_tree": 2,
+    "operations_that_cannot_be_inherited_by_name_to_a_non_mac_surface": 4
+  }
+}

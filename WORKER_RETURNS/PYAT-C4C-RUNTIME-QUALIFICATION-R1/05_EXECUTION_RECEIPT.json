@@ -1,0 +1,104 @@
+{
+  "schema": "PYAT_C4C_EXECUTION_RECEIPT@1.0.0",
+  "lane": "PYAT-C4C-RUNTIME-QUALIFICATION-R1",
+  "role": "C4C — non-Mac execution runtime qualification",
+  "repository": "maidiu/rawlsing",
+
+  "provenance": {
+    "commissioned_tip_verified": "b2ff3b0d89d32c41430cf50c3c785d64d8fd5f55",
+    "commissioned_tip_verification_method": "git rev-parse after git fetch --all --prune and checkout of the exact commissioned branch name; the commit subject is 'HQ170 bind C4C runtime qualification lane'",
+    "commissioned_base_declared_in_commission": "149c3d2636160d8de9b5a8be0c8b87195158077d",
+    "commissioned_base_is_ancestor_of_head": true,
+    "base_verified_by": "git merge-base --is-ancestor 149c3d26... HEAD",
+    "governing_omega_1": "01762d7379be4e423dad3e21bcdcee47c536902d",
+    "branch": "agent/opencode-pyat-hq170-c4c-runtime-qualification-r1",
+    "provenance_drift": false,
+    "working_tree_state_at_return": "clean with respect to tracked files; all untracked entries (LOCAL_COURTS/, .DS_Store, __pycache__) were PRE-EXISTING and were not created, staged or modified by this lane",
+    "rawlsing_next_diff_vs_base": "NONE — this lane changed no implementation file"
+  },
+
+  "writes": {
+    "confined_to": "WORKER_RETURNS/PYAT-C4C-RUNTIME-QUALIFICATION-R1/**",
+    "files_written": [
+      "00_RETURN.md (this lane's return narrative is 00_RETURN.md)",
+      "01_AVAILABLE_ENVIRONMENT.json",
+      "02_RUNTIME_SENSITIVITY_MATRIX.json",
+      "03_SOURCE_FREE_COMPATIBILITY_PROBES.json",
+      "04_QUALIFIED_EXECUTION_ENVIRONMENT.json",
+      "05_EXECUTION_RECEIPT.json",
+      "06_FINAL_DISPOSITION.json"
+    ],
+    "files_modified_outside_return_directory": 0,
+    "implementation_files_changed": 0,
+    "c3_merged": false,
+    "combined_tree_owned": false,
+    "self_adopted": false
+  },
+
+  "constraints_observed": {
+    "no_raw_survey_access": {
+      "observed": true,
+      "raw_survey_files_opened": 0,
+      "raw_survey_files_hashed": 0,
+      "raw_survey_files_metadata_read": 0,
+      "raw_survey_files_decoded": 0,
+      "raw_survey_bytes_materialized": 0,
+      "synthetic_sav_or_dta_written": 0,
+      "note": "Every probe used in-process synthetic values, synthetic host fingerprints, module-introspection signatures, or stdlib behaviour."
+    },
+    "no_install_on_import": {"observed": true, "dependencies_installed_by_this_lane": 0, "pip_invoked_by_this_lane": false},
+    "no_silent_dependency_upgrade": {"observed": true, "packages_upgraded_by_this_lane": 0, "absent_packages_treated_as_findings_not_defects_to_fix": ["pandas", "pytest", "duckdb"]},
+    "no_user_mac_fallback": {"observed": true, "mac_used_as_fallback": false, "note": "The only decoder-capable surface WAS the user's Mac; it was deliberately not used to qualify a non-Mac claim, and the lane returns the blocker instead."},
+    "no_c3_merge": {"observed": true},
+    "no_final_combined_tree_ownership": {"observed": true},
+    "no_self_adoption": {"observed": true},
+    "anchor_not_waived": {"observed": true}
+  },
+
+  "commands_executed": [
+    {"seq": 1, "purpose": "confirm commissioned tip resolves", "command": "git fetch --all --prune; git cat-file -t b2ff3b0d89d32c41430cf50c3c785d64d8fd5f55", "result": "commit"},
+    {"seq": 2, "purpose": "bind lane branch at exact tip", "command": "git checkout -b agent/opencode-pyat-hq170-c4c-runtime-qualification-r1 b2ff3b0d...", "result": "Switched to a new branch"},
+    {"seq": 3, "purpose": "read the governing Omega-1 O1-C05 gate", "command": "git show 01762d7379be4e423dad3e21bcdcee47c536902d:WORKER_RETURNS/PYAT-OMEGA1-PRODUCTION-READINESS-R1/00_DECISION.md", "result": "O1-C05 read in full"},
+    {"seq": 4, "purpose": "host/kernel/architecture identity", "command": "uname -a; uname -s -r -m -p; sysctl -n hw.machine hw.model hw.ncpu machdep.cpu.brand_string; sw_vers", "result": "macOS 13.7.8 (22H730), Darwin 22.6.0 RELEASE_X86_64, x86_64, MacBookPro15,1, i9-9880H, 16 cpu"},
+    {"seq": 5, "purpose": "probe for any non-Mac execution surface", "command": "for c in docker podman colima lima limactl nerdctl orb; do command -v $c; done; docker info; ls -d ~/.colima ~/.lima ~/Library/Containers/com.docker.docker", "result": "ALL ABSENT; docker daemon unreachable; no state directories; no Linux kernel reachable"},
+    {"seq": 6, "purpose": "enumerate interpreters", "command": "which -a python3 python3.11 python; /usr/local/bin/python3.11 -VV; /usr/bin/python3 -VV; /Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11 -VV; .../python3.11-intel64 -VV", "result": "/usr/bin/python3 = CPython 3.9.6 (no scientific stack); framework primary launcher python3.11 is ZERO BYTES and exits 0 silently; python3.11-intel64 = CPython 3.11.3 (v3.11.3:f3909b8bc8) — the anchor interpreter, reachable only via the -intel64 alternate"},
+    {"seq": 7, "purpose": "locate any environment carrying the C4 decoder stack", "command": "find /Users/matthewsmith -maxdepth 6 -name pyvenv.cfg; ls LOCAL_COURTS/python/fiabc-wvs7-3.11.3/lib/python3.11/site-packages", "result": "one venv, uv 0.12.19, python-build cpython-3.11.3-macos-x86_64-none, containing pyreadstat 1.3.6, pyarrow 25.0.1, numpy 2.4.6, narwhals 2.26.0 and NO pip"},
+    {"seq": 8, "purpose": "import availability of the C4 dependency set", "command": "venv python -c 'import pyreadstat,pyarrow,pandas,pytest,numpy,narwhals,polars ...'", "result": "pyreadstat 1.3.6 OK; pyarrow 25.0.1 OK; numpy 2.4.6 OK; narwhals 2.26.0 OK; pandas MISSING; pytest MISSING; polars MISSING; duckdb MISSING"},
+    {"seq": 9, "purpose": "read the accepted C3 source-free runtime anchor", "command": "git show 462e6bf1e:WORKER_RETURNS/PYAT-C3-SOURCE-FREE-INTEGRATION-REVIEW-R1/03_INTEGRATION_EXECUTION_RECEIPT.json", "result": "CPython 3.11.3, pytest 9.1.1, pandas 2.3.3, pip_freeze_sha256 9cde8e5ab9abba4..., raw_survey_reads 0; NO OS, NO architecture, NO reader-library version recorded"},
+    {"seq": 10, "purpose": "static runtime-sensitivity mapping of the governed read path", "command": "repository-wide source read/grep over rawlsing_next/ for pyreadstat, read_sav, read_dta, pyarrow, encoding, formats_as_category, itertuples, datetime, EXPECTED_RUNTIME, getrusage, pip install", "result": "02_RUNTIME_SENSITIVITY_MATRIX.json — 7 operations mapped, 12 additional sensitivities"},
+    {"seq": 11, "purpose": "independent confirmation of hard gates and gate-pinning tests", "command": "sed -n '44,52p;518,534p' rawlsing_next/ee_p2x_darwin_court_driver.py; grep -n FROZEN_PYREADSTAT rawlsing_next/ee_p2x_darwin_stage_backend.py", "result": "EXPECTED_RUNTIME equality gate and its enforcement body confirmed by direct read"},
+    {"seq": 12, "purpose": "confirm no dependency lock exists", "command": "git ls-files | grep -E 'requirements|constraints|\\.lock$|Pipfile|pyproject\\.toml|setup\\.py|setup\\.cfg|pytest\\.ini|tox\\.ini|conftest\\.py'", "result": "one match, data/ddm_build_copy/compile_v5_downstream_requirements_report.py — a legacy report generator, NOT a lock. No lock of any form exists."},
+    {"seq": 13, "purpose": "confirm CI pin discipline", "command": "grep -rn 'pip install|runs-on|python-version' .github/workflows/", "result": "6 workflows install pytest/pandas UNPINNED on ubuntu-latest with python-version \"3.11\"; none pins pytest==9.1.1 or pandas==2.3.3"},
+    {"seq": 14, "purpose": "confirm the D01/D02/G01 successor contracts are absent from this tree", "command": "git cat-file -e HEAD:<path> for the four successor files; git grep for DECLARED_ENCODING_ALLOWLIST / normalize_decoder_physical_value / opaque_decoder_value; git ls-tree HEAD rawlsing_next/pre553_physical_decoder.py rawlsing_next/pre553_r5_codec.py", "result": "all four successor files ABSENT; all three symbols NOT FOUND; blobs d2a074a41fb556a1cd5928a5fe1421ef3672a4e5 and 72f8f3c03ed065e86fea4e76bb17f8e06c2bf540"},
+    {"seq": 15, "purpose": "distribution metadata and compiled-extension hash inventory", "command": "shasum -a 256 <site-packages>/*.dist-info/{METADATA,WHEEL,RECORD} and find -name '*.so' | shasum -a 256; shasum -a 256 <interpreter binary>", "result": "recorded in 01_AVAILABLE_ENVIRONMENT.json"},
+    {"seq": 16, "purpose": "installed reader API surface and defaults", "command": "venv python -c 'import inspect, pyreadstat; print(inspect.signature(pyreadstat.read_sav)) ...'", "result": "P06/P14 — formats_as_category defaults True; dates_as_pandas_datetime and disable_datetime_conversion default False; read_file_in_chunks exposes chunksize"},
+    {"seq": 17, "purpose": "14 source-free compatibility probes", "command": "venv python <probe script> (sha256 473bd3c75d47bb8e6f4a9bde0381afd2d92dd8c3ac7e374118ea195ffc1f4e4b)", "result": "exit 0; 14/14 probes recorded; 0 errors", "probe_ids": ["P01","P02","P03","P04","P05","P06","P07","P08","P09","P10","P11","P12","P13","P14"]},
+    {"seq": 18, "purpose": "correct an erroneous P10 measurement rather than rely on it", "command": "venv python -c \"s=chr(0x65)+chr(0x301); unicodedata.normalize('NFC',s)\"", "result": "input [0x65,0x301] -> output [0xe9], changed=true; the first P10 reading used an already-normalised input and reported changed=false. The corrected reading is the one recorded; the superseded reading is not relied on."},
+    {"seq": 19, "purpose": "confirm the user's Mac was not used as a fallback", "command": "(none — no fallback attempt was made)", "result": "no governed execution was attempted on any surface"},
+    {"seq": 20, "purpose": "confirm writes confined to the return directory", "command": "git status --porcelain; git diff --stat 149c3d26... HEAD -- rawlsing_next/", "result": "no tracked modifications outside the return directory; zero rawlsing_next changes"}
+  ],
+
+  "tests_executed": {
+    "pytest_invocations": 0,
+    "governed_courts_run": 0,
+    "reason": "pytest is ABSENT on the only decoder-capable surface (P13/P12). Installing it would violate 00_COMMISSION.md:20-21. No test counts are claimed, and none are fabricated.",
+    "counts": {"passed": null, "failed": null, "errors": null, "skipped": null},
+    "counts_note": "null with reason, per Omega-1 O1-C08 — never a fabricated zero or PASS."
+  },
+
+  "runtime": {
+    "execution_surface": "AVAILABLE-SURFACE-01 — macOS 13.7.8 / Darwin 22.6.0 / x86_64 (the user's Mac; the retained physical anchor platform)",
+    "interpreter": "CPython 3.11.3 (uv cpython-3.11.3-macos-x86_64-none), abi cpython-311-darwin",
+    "dependencies_present": {"pyreadstat": "1.3.6", "pyarrow": "25.0.1", "numpy": "2.4.6", "narwhals": "2.26.0"},
+    "dependencies_absent": {"pandas": "ModuleNotFoundError", "pytest": "ModuleNotFoundError", "duckdb": "ModuleNotFoundError"},
+    "non_mac_surfaces_reachable": 0,
+    "qualification_grade_claimed": "NONE — no runtime qualification is claimed by this return"
+  },
+
+  "receipt_honesty": {
+    "metrics_fabricated": 0,
+    "pass_claims_made": 0,
+    "unreached_metrics_stated_as_null": true,
+    "note": "This lane produced no test pass counts, no execution budgets and no production metrics, because it ran no governed test and no governed source operation. Every quantity it does report was directly observed and is attributed to a numbered command above."
+  }
+}

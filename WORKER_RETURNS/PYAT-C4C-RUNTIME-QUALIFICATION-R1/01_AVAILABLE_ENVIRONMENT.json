@@ -1,0 +1,205 @@
+{
+  "schema": "PYAT_C4C_AVAILABLE_ENVIRONMENT@1.0.0",
+  "lane": "PYAT-C4C-RUNTIME-QUALIFICATION-R1",
+  "role": "C4C — non-Mac execution runtime qualification",
+  "recorded_at_commit": "b2ff3b0d89d32c41430cf50c3c785d64d8fd5f55",
+  "recorded_at_branch": "agent/opencode-pyat-hq170-c4c-runtime-qualification-r1",
+  "commissioned_base": "149c3d2636160d8de9b5a8be0c8b87195158077d",
+  "governing_omega_1": "01762d7379be4e423dad3e21bcdcee47c536902d",
+  "gates_addressed": ["O1-C05"],
+
+  "headline": "The only execution surface reachable by this lane is a macOS x86_64 host, which IS the retained physical reproducibility anchor and IS the user's Mac. NO non-Mac execution surface is reachable. No environment was provisioned, installed, or upgraded.",
+
+  "reachable_execution_surfaces": [
+    {
+      "surface_id": "AVAILABLE-SURFACE-01",
+      "kind": "LOCAL_MACOS_X86_64_HOST",
+      "usability_for_this_lane": "FORBIDDEN_AS_FALLBACK__AND_IS_THE_ANCHOR_ITSELF",
+      "commission_clause": "00_COMMISSION.md:63 'Do not attempt to use the user's Mac as a fallback.'; 00_COMMISSION.md:16 mission is to qualify the NON-Mac execution environment.",
+      "is_retained_physical_anchor_platform": true,
+      "host": {
+        "os_name": "macOS",
+        "os_product_version": "13.7.8",
+        "os_build": "22H730",
+        "kernel_release": "Darwin Kernel Version 22.6.0: Tue Jul 15 08:22:28 PDT 2025; root:xnu-8796.141.3.713.2~2/RELEASE_X86_64",
+        "system": "Darwin",
+        "machine": "x86_64",
+        "uname_p": "i386",
+        "hardware_model": "MacBookPro15,1",
+        "cpu_brand": "Intel(R) Core(TM) i9-9880H CPU @ 2.30GHz",
+        "cpu_count": 16,
+        "byte_order": "little",
+        "pointer_bits": 64,
+        "platform_string": "macOS-13.7.8-x86_64-i386-64bit"
+      },
+      "interpreters_present": [
+        {
+          "label": "uv-managed standalone CPython (the only interpreter carrying the C4 decoder stack)",
+          "prefix": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/python/fiabc-wvs7-3.11.3",
+          "python_build_tag": "cpython-3.11.3-macos-x86_64-none",
+          "provisioned_by": "uv 0.12.19 (pyvenv.cfg 'uv = 0.12.19')",
+          "executable": "LOCAL_COURTS/python/fiabc-wvs7-3.11.3/bin/python -> LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/bin/python3.11",
+          "implementation": "CPython",
+          "version_string": "3.11.3 (main, May  7 2023, 19:01:25) [Clang 16.0.3 ]",
+          "abi_tag": "cpython-311-darwin",
+          "binary_sha256_prefix32": "11d6f541a870a141249ce98d45834a67",
+          "matches_retained_anchor_interpreter": true,
+          "pip_present": false,
+          "note": "A virtual environment with NO pip. Dependency state is whatever was placed in site-packages; it cannot be reproduced or re-resolved here without violating the no-silent-upgrade clause."
+        },
+        {
+          "label": "macOS Command Line Tools system Python",
+          "executable": "/usr/bin/python3",
+          "implementation": "CPython",
+          "version_string": "3.9.6 (default, May  7 2023, 23:32:45) [Clang 14.0.3 (clang-1403.0.22.14.1)]",
+          "abi_tag": "cpython-39-darwin",
+          "packages": {"pip": "21.2.4", "setuptools": "58.0.4", "six": "1.15.0", "altgraph": "0.17.2", "future": "0.18.2", "macholib": "1.15.2", "wheel": "0.37.0"},
+          "matches_retained_anchor_interpreter": false,
+          "carries_c4_decoder_stack": false,
+          "note": "Does not match the retained anchor (3.9.6 != 3.11.3). Not competent for the governed read path."
+        },
+        {
+          "label": "python.org framework CPython 3.11 (BROKEN primary launcher)",
+          "declared_version": "CPython 3.11.3 (v3.11.3:f3909b8bc8, Apr  4 2023, 20:12:10) [Clang 13.0.0]",
+          "primary_launcher": "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11",
+          "primary_launcher_state": "ZERO_BYTES_TRUNCATED",
+          "primary_launcher_size_bytes": 0,
+          "primary_launcher_mtime": "May 26 03:53",
+          "observed_behaviour": "exits 0 with no output; emits nothing",
+          "working_alternate": "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11-intel64 (70544 bytes, verified CPython 3.11.3)",
+          "packages": {"pip": "23.1.2", "setuptools": "65.5.0"},
+          "carries_c4_decoder_stack": false,
+          "note": "This is a REPORTED ENVIRONMENT DEFECT, not a qualification fact. The default `python3`/`python3.11` on PATH is unusable; only the -intel64 alternate runs. It is recorded because it independently defeats the assumption that 'the anchor interpreter is simply present and usable'."
+        }
+      ],
+      "dependency_inventory": {
+        "pin_discipline": "NO LOCK FILE OF ANY KIND EXISTS IN THE REPOSITORY",
+        "lock_files_found": [],
+        "lock_files_searched": ["requirements*.txt", "constraints*.txt", "uv.lock", "poetry.lock", "Pipfile", "Pipfile.lock", "*.lock", "pyproject.toml", "setup.py", "setup.cfg", "pytest.ini", "tox.ini", "conftest.py"],
+        "lock_search_result": "ABSENT — the only tracked path matching /requirements/ is data/ddm_build_copy/compile_v5_downstream_requirements_report.py, which is a legacy report generator and not a lock.",
+        "ci_install_discipline": "UNPINNED — 6 tracked workflows run `python -m pip install --disable-pip-version-check pytest pandas` (or `pytest`) on `runs-on: ubuntu-latest` with `python-version: \"3.11\"` (major.minor only). No workflow carries pytest==9.1.1 / pandas==2.3.3.",
+        "installed_distributions": [
+          {
+            "name": "pyreadstat",
+            "version": "1.3.6",
+            "matches_retained_anchor": true,
+            "dist_info_metadata_sha256_prefix16": "e53ad082fbc40e48",
+            "dist_info_wheel_sha256_prefix16": "26638731245702a5",
+            "dist_info_record_sha256_prefix16": "32967e8a0df1d19e",
+            "compiled_extension": "_readstat_parser.cpython-311-darwin.so",
+            "extension_sha256_prefix32": "7700fb3e17fee0f714a6ceced4c325b8"
+          },
+          {
+            "name": "pyarrow",
+            "version": "25.0.1",
+            "matches_retained_anchor": true,
+            "dist_info_metadata_sha256_prefix16": "12ed8d0988a6f715",
+            "dist_info_wheel_sha256_prefix16": "b63fce05f22a6f5d",
+            "dist_info_record_sha256_prefix16": "50b7650b0c48b7b6",
+            "compiled_extension": "_parquet.cpython-311-darwin.so",
+            "extension_sha256_prefix32": "62a37af81318fca64d640a318880b898",
+            "abi_tag": "cpython-311-darwin"
+          },
+          {
+            "name": "numpy",
+            "version": "2.4.6",
+            "matches_retained_anchor": false,
+            "retained_anchor_numpy": "2.3.1 (per HQ_HANDOFF/checkpoints/20260925T0219-0400/CURRENT.json) / 2.3.2 (per same file, conflicting entries) / 2.3.2 (per C3 source-free receipt)",
+            "dist_info_metadata_sha256_prefix16": "b082c52ccbe3b880",
+            "dist_info_wheel_sha256_prefix16": "e56b47578e45e542",
+            "dist_info_record_sha256_prefix16": "6bfd17a5a69bf5ed",
+            "note": "The accepted checkpoint records BOTH 2.3.1 and 2.3.2 for numpy at the same anchor; the anchor's own numpy version is therefore internally ambiguous in accepted material. The available surface has 2.4.6 — neither. Not enforced by any repo gate."
+          },
+          {
+            "name": "narwhals",
+            "version": "2.26.0",
+            "matches_retained_anchor": "NOT_PART_OF_RETAINED_ANCHOR",
+            "dist_info_metadata_sha256_prefix16": "7e09d821259f98ca",
+            "dist_info_wheel_sha256_prefix16": "2a8b7e14e5f0cf69",
+            "dist_info_record_sha256_prefix16": "c99a978c7880d8cd"
+          }
+        ],
+        "absent_but_required_distributions": [
+          {"name": "pandas", "required_because": "pyreadstat.read_sav/read_dta RETURN a pandas.DataFrame, and rawlsing_next/pre553_physical_decoder.py:122 calls frame.itertuples(index=False, name=None) on it without importing pandas. It is also required to construct ANY synthetic SAV/DTA reader fixture (pyreadstat.write_sav/write_dta annotate `df: DataFrame`).", "observed": "ModuleNotFoundError", "retained_anchor_version": "2.3.3 (C3 source-free receipt)", "accepted_checkpoint_version": "2.3.1 (HQ_HANDOFF/checkpoints/20260925T0219-0400/CURRENT.json)"},
+          {"name": "pytest", "required_because": "the bounded six-file C3 court and the C1-03 court are pytest suites.", "observed": "ModuleNotFoundError", "retained_anchor_version": "9.1.1 (both the C3 source-free receipt and PYAT-C1-01-R7-EXECUTION-QUALIFICATION-R1/01_ENVIRONMENT.json)"},
+          {"name": "duckdb", "required_because": "run_as2b_lits1_mechanical_certification.py:28 imports duckdb at module scope, and rawlsing_next/ee_p2x_darwin_stage_backend.py:240-251,748 exec_module's that file onto the live LiTS Route-B path.", "observed": "ModuleNotFoundError", "retained_anchor_version": "NOT_RECORDED_IN_ANY_ACCEPTED_ANCHOR"}
+        ],
+        "stdlib_runtime_facts": {
+          "unicodedata_unidata_version": "14.0.0",
+          "codec_registry": {"latin1": "iso8859-1", "BIG5": "big5", "WINDOWS-1252": "cp1252", "cp1252": "cp1252", "utf-8": "utf-8"},
+          "codec_registry_note": "All three encoding values named by the frozen allowlists resolve on this build. This is necessary but NOT sufficient for D01/D02 admission, because the repo never validates the returned declared encoding against an authority."
+        }
+      }
+    },
+    {
+      "surface_id": "AVAILABLE-SURFACE-02",
+      "kind": "GITHUB_BROWSER_INSPECTION_ONLY",
+      "usability_for_this_lane": "NO_LAWFUL_GENERAL_PURPOSE_RUNTIME",
+      "precedent": "PYAT-C3-SOURCE-FREE-INTEGRATION-REVIEW-R1/03_INTEGRATION_EXECUTION_RECEIPT.json recorded `general_purpose_source_free_pytest_runtime_available: false` and `execution_re_run_status: NOT_RERUN__NO_LAWFUL_REVIEWER_RUNTIME_AVAILABLE`.",
+      "note": "Reusing this surface would import that packet's proof grade and no more. It cannot execute probes and cannot add runtime evidence."
+    }
+  ],
+
+  "non_mac_execution_surfaces_probed_and_absent": {
+    "probe_method": "PATH lookup of every known local container/VM runtime, plus inspection of the standard local-runtime state directories",
+    "runtimes_probed": {
+      "docker": "ABSENT",
+      "podman": "ABSENT",
+      "colima": "ABSENT",
+      "lima": "ABSENT",
+      "limactl": "ABSENT",
+      "nerdctl": "ABSENT",
+      "orb": "ABSENT"
+    },
+    "runtime_state_directories_probed": {
+      "~/.colima": "ABSENT",
+      "~/.lima": "ABSENT",
+      "~/Library/Containers/com.docker.docker": "ABSENT"
+    },
+    "docker_daemon_reachable": false,
+    "linux_kernel_reachable": false,
+    "non_mac_surface_count": 0,
+    "conclusion": "Zero non-Mac execution surfaces are reachable from this lane. A non-Mac qualification is not merely unattempted; it is impossible from here without an externally provisioned surface."
+  },
+
+  "relation_to_the_two_runtime_anchors": {
+    "retained_physical_reproducibility_anchor": {
+      "definition": "The historical physical/read anchor.",
+      "recorded": {"implementation": "CPython", "python": "3.11.3", "pyreadstat": "1.3.6", "pyarrow": "25.0.1", "system": "Darwin", "machine": "x86_64", "numpy": "2.3.1 and 2.3.2 (conflicting accepted entries)", "pandas": "2.3.1"},
+      "evidence": ["HQ_HANDOFF/checkpoints/20260925T0219-0400/CURRENT.json", "rawlsing_next/ee_p2x_darwin_court_driver.py:46-49", "WORKER_RETURNS/PYAT-C4C-RUNTIME-QUALIFICATION-R1/00_COMMISSION.md:26-29"],
+      "grade": "PHYSICAL__INHERITED_FROM_ACTUAL_SURVEY_DECODES",
+      "available_surface_matches_this_anchor": "INTERPRETER_MATCH__OS_ARCH_MATCH__pyreadstat_MATCH__pyarrow_MATCH__numpy_MISMATCH__pandas_ABSENT__pytest_ABSENT",
+      "interpretation": "The reachable Mac host already IS the retained physical anchor platform. Using it would re-observe the anchor, which is not a non-Mac qualification and is forbidden as a fallback. It would also be an unrepeatable, unowned local path (LOCAL_COURTS/ is untracked and machine-local), so it cannot serve as a frozen execution-surface identifier for a source warrant."
+    },
+    "accepted_c3_source_free_runtime_anchor": {
+      "definition": "The distinct source-free qualification grade for accepted C3.",
+      "recorded": {"python": "CPython 3.11.3", "pytest": "9.1.1", "pandas": "2.3.3", "pip_freeze_sha256": "9cde8e5ab9abba46a9e98826100ed084a0943a77fee7bc232a3c7643334da2eb", "raw_survey_reads_materializations_decodes": 0},
+      "evidence": ["WORKER_RETURNS/PYAT-C3-SOURCE-FREE-INTEGRATION-REVIEW-R1/03_INTEGRATION_EXECUTION_RECEIPT.json"],
+      "grade": "SOURCE_FREE__SEMANTIC_COURT_ONLY",
+      "records_os_or_architecture": false,
+      "records_pyreadstat_or_pyarrow": false,
+      "interpretation": "The accepted C3 runtime anchor deliberately records NO OS, NO architecture, and NO reader/decoder library version, because it never read a survey file. It therefore cannot be reused as evidence for any reader-side runtime claim, and cannot be inherited by name for a physical C4 run. The two anchors are correctly distinct and are preserved as distinct here."
+    },
+    "anchor_distinction_preserved": true
+  },
+
+  "no_install_on_import_no_silent_upgrade_attestation": {
+    "dependencies_installed_by_this_lane": 0,
+    "dependencies_upgraded_by_this_lane": 0,
+    "environments_provisioned_by_this_lane": 0,
+    "pip_invoked_by_this_lane": false,
+    "verification": "The lane's 14 source-free probes executed on the pre-existing uv environment as found. The probe harness treats ModuleNotFoundError for pandas, pytest and duckdb as RECORDED FINDINGS, not as something to remediate."
+  },
+
+  "raw_survey_access_attestation": {
+    "raw_survey_files_opened": 0,
+    "raw_survey_files_hashed": 0,
+    "raw_survey_files_metadata_read": 0,
+    "raw_survey_files_decoded": 0,
+    "raw_survey_bytes_materialized": 0,
+    "synthetic_files_written": 0,
+    "note": "No .sav, .dta or survey archive was opened, hashed, written or decoded. Every probe used in-process synthetic values or synthetic host fingerprints only."
+  },
+
+  "environment_identity_sha256_note": "No single frozen execution-surface identifier can be issued from this lane, because the only surface carrying the C4 decoder stack is a machine-local untracked path (LOCAL_COURTS/, untracked in git) on the forbidden fallback host, and it is missing pandas, pytest and duckdb. See 04_QUALIFIED_EXECUTION_ENVIRONMENT.json."
+}

@@ -1,0 +1,274 @@
+{
+  "schema": "PYAT_C4C_SOURCE_FREE_COMPATIBILITY_PROBES@1.0.0",
+  "lane": "PYAT-C4C-RUNTIME-QUALIFICATION-R1",
+  "executed_at_commit": "b2ff3b0d89d32c41430cf50c3c785d64d8fd5f55",
+  "execution_surface": "AVAILABLE-SURFACE-01 (macOS 13.7.8 / Darwin 22.6.0 / x86_64) — the user's Mac, the retained physical anchor platform",
+  "interpreter": "CPython 3.11.3 (uv cpython-3.11.3-macos-x86_64-none)",
+
+  "source_free_attestation": {
+    "raw_survey_files_opened": 0,
+    "raw_survey_files_written": 0,
+    "raw_survey_files_hashed": 0,
+    "raw_survey_files_metadata_read": 0,
+    "raw_survey_files_decoded": 0,
+    "synthetic_sav_or_dta_files_created": 0,
+    "inputs_used": "in-process synthetic Python/numpy values, synthetic host fingerprints, module introspection signatures, and stdlib behaviour only",
+    "dependencies_installed": 0,
+    "dependencies_upgraded": 0,
+    "pip_invoked": false
+  },
+
+  "harness": {
+    "probe_script_location": "local temporary work directory (not written into the repository)",
+    "probe_script_sha256": "473bd3c75d47bb8e6f4a9bde0381afd2d92dd8c3ac7e374118ea195ffc1f4e4b",
+    "harness_total_probes": 14,
+    "harness_probes_completed": 14,
+    "harness_probes_errored": 0,
+    "harness_exit_code": 0,
+    "correction_notice": "P10 was first measured with an input that had already been NFC-normalised, which made it report changed=false. The probe was RE-RUN with an explicitly decomposed input (U+0065 U+0301) and returned changed=true. The corrected measurement is recorded below; the superseded reading is not relied on."
+  },
+
+  "probes": [
+    {
+      "probe_id": "P01",
+      "title": "float64 IEEE-754 big-endian bit tokens (G01 authority surface)",
+      "runtime_class": "PURE_PYTHON_IEEE754",
+      "verdict": "EXPLICIT_BIG_ENDIAN_HOST_INDEPENDENT",
+      "observed": {
+        "bits": {"1.0": "3ff0000000000000", "2.0": "4000000000000000", "3.0": "4008000000000000", "4.0": "4010000000000000", "5.0": "4014000000000000", "-1.0": "bff0000000000000", "-2.0": "c000000000000000", "-4.0": "c010000000000000", "-5.0": "c014000000000000", "nan": "7ff8000000000000", "inf": "fff0000000000000"},
+        "all_nine_authorised_g01_tokens_matched": true,
+        "roundtrip_ok": true,
+        "host_byteorder": "little"
+      },
+      "establishes": "The G01 float64 BIT-TOKEN layer is host-endianness independent and host-architecture independent. All nine values in the frozen _AUTHORIZED_FLOATS authority reproduced their exact big-endian hex tokens, and each round-tripped.",
+      "does_not_establish": "Nothing about how a reader TYPES an arriving cell. That is OP-02's arrival-typing layer and remains library-coupled.",
+      "non_mac_portability": "HIGH — this layer may lawfully be inherited by a non-Mac surface."
+    },
+    {
+      "probe_id": "P02",
+      "title": "semantic_hash canonical identity stability",
+      "runtime_class": "PURE_PYTHON",
+      "verdict": "DETERMINISTIC",
+      "observed": {
+        "sha256_for_canonical_payload": "c9dad5b6d97afe79dcd8dba9af250e59d0ed910ef37bbde620e1ccd002f16244",
+        "stable_under_reserialize": true,
+        "float_rejected": true,
+        "float_error_type": "Pre553IntegrityError",
+        "unidata_version": "14.0.0"
+      },
+      "establishes": "rawlsing_next.pre553_empirical_objects.semantic_hash is stable under JSON reserialisation and structurally refuses binary float, so a numpy float64 cannot enter semantic identity directly.",
+      "non_mac_portability": "HIGH — pure Python, no unicodedata, no platform call on this path."
+    },
+    {
+      "probe_id": "P03",
+      "title": "_jsonable dtype boxing seam (G01/D02 arrival typing) — the decisive D02 measurement",
+      "runtime_class": "NUMPY_VERSION_SENSITIVE",
+      "verdict": "OBSERVED",
+      "observed": {
+        "numpy": "2.4.6",
+        "cases": {
+          "py_int_1": {"in_type": "int", "out": "1", "out_type": "int"},
+          "np_int64_1": {"in_type": "int64", "out": "1", "out_type": "int"},
+          "np_float64_1": {"in_type": "float64", "out": "np.float64(1.0)", "out_type": "float64", "note": "returned UNCHANGED because np.float64 passes isinstance(x, float)"},
+          "py_float_nan": {"in_type": "float", "out": "None", "out_type": "NoneType"},
+          "np_float64_nan": {"in_type": "float64", "out": "None", "out_type": "NoneType"},
+          "np_datetime64_D": {"in_type": "datetime64", "out": "'2008-04-05'", "out_type": "str"},
+          "np_datetime64_s": {"in_type": "datetime64", "out": "'2008-04-05 06:07:08'", "out_type": "str"},
+          "py_date": {"in_type": "date", "out": "'2008-04-05'", "out_type": "str"},
+          "py_datetime_naive": {"in_type": "datetime", "out": "'2008-04-05 06:07:08'", "out_type": "str"},
+          "py_datetime_aware": {"in_type": "datetime", "out": "'2008-04-05 06:07:08+00:00'", "out_type": "str"}
+        },
+        "np_datetime64_item_type_at_unit_s": "datetime"
+      },
+      "establishes": [
+        "In the C4C tree there is NO opaque D02 carrier. Every date/time value collapses to a STRING via pre553_physical_decoder.py:177 return str(value).",
+        "The numpy datetime64 UNIT changes the D02 rendering: unit 'D' renders '2008-04-05'; unit 's' renders '2008-04-05 06:07:08'. The numpy version is not pinned by any repository gate.",
+        "TIMEZONE-AWARE and NAIVE datetimes render to DIFFERENT STRINGS ('...08+00:00' versus '...08') and therefore to DIFFERENT semantic_hash values. A carrier that silently gains or loses tz-awareness changes identity.",
+        "The rendering uses a SPACE separator, not the ISO 'T' separator.",
+        "np.float64 is returned unchanged rather than unwrapped, while np.int64 is unwrapped to a Python int — an asymmetry in the boxing seam."
+      ],
+      "does_not_establish": "The arrival typing of a REAL SAV/DTA date variable, because no synthetic reader fixture could be constructed (see P13).",
+      "non_mac_portability": "NOT INHERITABLE. This measurement describes the pre-repair C4C decoder, and its content is a function of the numpy/pyreadstat/pandas versions actually installed. It must be re-derived on the combined tree and on whatever surface is finally bound."
+    },
+    {
+      "probe_id": "P04",
+      "title": "R5 codec exact-type identity (G01) and date/time guard (D02)",
+      "runtime_class": "PURE_PYTHON",
+      "verdict": "OBSERVED",
+      "observed": {
+        "type_is_int_int_1": true,
+        "type_is_int_bool_True": false,
+        "type_is_int_float_1": false,
+        "type_is_int_str_1": false,
+        "type_is_int_np_int64": false,
+        "reject_py_datetime": "R5CodecError",
+        "reject_py_date": "R5CodecError",
+        "reject_py_time": "R5CodecError"
+      },
+      "establishes": [
+        "The G01 authority gate `type(native_code) is not int` correctly REJECTS np.int64 and bool. G01 therefore requires the caller to deliver a genuine Python int.",
+        "The D02 guard at pre553_r5_codec.py:126 does reject date/time/datetime/time — but P03 shows the decoder route never reaches it, because _jsonable already stringified the value."
+      ],
+      "non_mac_portability": "HIGH for the type-identity semantics (pure Python); the DELIVERY of a genuine int remains library-coupled."
+    },
+    {
+      "probe_id": "P05",
+      "title": "EXPECTED_RUNTIME hard gate vs synthetic non-Mac hosts — THE DECISIVE PROBE",
+      "runtime_class": "OS_ARCH_VERSION_SENSITIVE",
+      "verdict": "NON_MAC_HOSTS_REJECTED_BY_REPO_GATE",
+      "observed": {
+        "expected_runtime_constant": {"implementation": "CPython", "python": "3.11.3", "pyreadstat": "1.3.6", "pyarrow": "25.0.1", "system": "Darwin", "machine": "x86_64"},
+        "synthetic_host_outcomes": {
+          "darwin_x86_64": "ACCEPTED",
+          "linux_x86_64": "REJECTED(RuntimeGateError)",
+          "darwin_arm64": "REJECTED(RuntimeGateError)",
+          "linux_aarch64": "REJECTED(RuntimeGateError)"
+        },
+        "observed_host": {"implementation": "CPython", "python": "3.11.3", "system": "Darwin", "machine": "x86_64", "dependency_versions": {"pyreadstat": "1.3.6", "pyarrow": "25.0.1"}, "ru_maxrss_value": 37916672, "ru_maxrss_unit_law": "DARWIN_RU_MAXRSS_ALREADY_BYTES"}
+      },
+      "establishes": [
+        "The repository's own fail-closed gate at rawlsing_next/ee_p2x_darwin_court_driver.py:46-49, :521-532 REJECTS every non-Darwin surface and every non-x86_64 surface, by exact equality on platform.system() and platform.machine().",
+        "The observed host MATCHES that gate exactly — i.e. the available surface is the anchor, not an alternative to it.",
+        "A non-Mac C4 run on the current tree therefore cannot complete WITHOUT an HQ-adjudicated change to EXPECTED_RUNTIME. This is the tree's own measured behaviour, not a C4C judgement."
+      ],
+      "non_mac_portability": "NEGATIVE BY CONSTRUCTION — this is the single blocking fact for the non-Mac mission."
+    },
+    {
+      "probe_id": "P06",
+      "title": "reader_version inside physical-metadata digest + installed reader API surface",
+      "runtime_class": "PYREADSTAT_VERSION_SENSITIVE",
+      "verdict": "OBSERVED",
+      "observed": {
+        "installed_pyreadstat": "1.3.6",
+        "declared_in_source": "getattr(pyreadstat, '__version__', None) at pre553_physical_decoder.py:502",
+        "reader_kinds_available": ["read_dta", "read_file_in_chunks", "read_sav", "write_dta", "write_sav"],
+        "read_sav_params": ["apply_value_formats", "dates_as_pandas_datetime", "disable_datetime_conversion", "encoding", "extra_date_formats", "extra_datetime_formats", "extra_time_formats", "filename_path", "formats_as_category", "formats_as_ordered_category", "metadataonly", "output_format", "row_limit", "row_offset", "usecols", "user_missing"],
+        "read_dta_params": ["apply_value_formats", "dates_as_pandas_datetime", "disable_datetime_conversion", "encoding", "extra_date_formats", "extra_datetime_formats", "extra_time_formats", "filename_path", "formats_as_category", "formats_as_ordered_category", "metadataonly", "output_format", "row_limit", "row_offset", "usecols", "user_missing"],
+        "read_file_in_chunks_params": ["read_function", "file_path", "chunksize", "offset", "limit", "multiprocess", "num_processes", "num_rows", "kwargs"]
+      },
+      "establishes": [
+        "reader_version ENTERS the SHA-256 physical-metadata digest. Any pyreadstat version change invalidates every frozen physical-metadata digest in the repository — the widest blast radius of any runtime fact here.",
+        "The repo's calls depend on the exact keyword names metadataonly, apply_value_formats, user_missing, encoding and chunksize.",
+        "The installed 1.3.6 API exposes dates_as_pandas_datetime, disable_datetime_conversion, formats_as_category, row_limit, row_offset and the extra_*_formats family — NONE of which the repository pins."
+      ],
+      "non_mac_portability": "CONDITIONAL — a non-Mac surface may hold 1.3.6, but must hold EXACTLY 1.3.6 (also enforced by ee_p2x_darwin_stage_backend.py:61, :896-901)."
+    },
+    {
+      "probe_id": "P07",
+      "title": "ru_maxrss unit law (OS-defined)",
+      "runtime_class": "OS_SENSITIVE",
+      "verdict": "DARWIN_UNIT_IS_BYTES",
+      "observed": {"system": "Darwin", "machine": "x86_64", "ru_maxrss": 37294080, "declared_law": "DARWIN_RU_MAXRSS_ALREADY_BYTES", "value_if_bytes": 37294080, "value_if_kibibytes": 38189137920, "ratio": 1024},
+      "establishes": "ru_maxrss is BYTES on Darwin and KIBIBYTES on Linux — a 1024x difference. Any O1-C07 resource budget measured on one OS is not comparable to, and must never be relabelled across, the other.",
+      "non_mac_portability": "NEGATIVE for resource budgets; they must be re-derived per surface."
+    },
+    {
+      "probe_id": "P08",
+      "title": "decimal context precision (float64 to Decimal bridge)",
+      "runtime_class": "PURE_PYTHON",
+      "verdict": "PROCESS_GLOBAL_PRECISION",
+      "observed": {"getcontext.prec": 28, "Emax": 999999, "Emin": -999999, "rounding": "ROUND_HALF_EVEN", "Decimal(str(1.0))": "1.0", "float_repr_1_0": "1.0", "float_repr_0_1": "0.1"},
+      "establishes": "Decimal.normalize() rounds to the PROCESS-GLOBAL context precision (28 by default). No repository code mutates getcontext().prec, so this is stable today but is a process-global coupling rather than an explicit one. CPython float.__repr__ is shortest-round-trip since 3.1, so Decimal(str(x)) is stable across 3.11/3.12/3.13 for these inputs."
+    },
+    {
+      "probe_id": "P09",
+      "title": "datetime.fromisoformat Z-suffix support",
+      "runtime_class": "PYTHON_VERSION_SENSITIVE",
+      "verdict": "OBSERVED",
+      "observed": {"python": "3.11.3", "results": {"2008-04-05T06:07:08+00:00": "2008-04-05T06:07:08+00:00", "2008-04-05T06:07:08Z": "2008-04-05T06:07:08+00:00", "2008-04-05": "2008-04-05T00:00:00"}},
+      "establishes": "3.11.3 accepts a trailing 'Z'. A CPython 3.10 surface would reject it, which the repo's own workaround at v3_adp010_oee_executor.py:172 documents. Off the C4 source path; recorded so HQ does not let it enter scope unproved."
+    },
+    {
+      "probe_id": "P10",
+      "title": "Unicode NFC normalization (UCD version surface) — CORRECTED MEASUREMENT",
+      "runtime_class": "PYTHON_VERSION_SENSITIVE",
+      "verdict": "UCD_VERSION_BOUND",
+      "observed": {"unidata_version": "14.0.0", "input_codepoints": ["0x65", "0x301"], "output_codepoints": ["0xe9"], "changed": true},
+      "supersedes": "the first P10 reading, taken with an already-normalised input, which reported changed=false",
+      "establishes": "NFC normalization is genuinely active and depends on the Unicode Character Database bundled with CPython. This surface reports UCD 14.0.0 (CPython 3.11.3). UCD differs across CPython minor versions.",
+      "scope": "The affected modules (f07_second_canary_prev3_admission.py:127, m6_actor_safe_expression.py:135/161/167, render_bounded_expression.py:88, gt34_adp010_input_authority_acceptance.py:70) are in the R6/GT34 layers and are NOT on the current C4 semantic-hash path."
+    },
+    {
+      "probe_id": "P11",
+      "title": "Arrow boundary actually relied on",
+      "runtime_class": "PYARROW_VERSION_SENSITIVE",
+      "verdict": "TEST_SUPPORT_BOUNDARY_ONLY",
+      "observed": {"pyarrow": "25.0.1", "importable": true},
+      "establishes": "pyarrow 25.0.1 imports on this surface. Import-graph analysis shows ZERO production modules import pre553_parquet_carrier, pre553_duckdb_direct or pre553_r4_compaction — their only importers are tests. There is therefore NO Arrow/parquet READ boundary on the governed .sav/.dta -> PhysicalCell -> C11 read path.",
+      "interpretation_for_O1_C05": "The pyarrow 25.0.1 pin is an equality-gate requirement and a transitive importability requirement (see P12), NOT an Arrow API reader-boundary requirement.",
+      "non_mac_portability": "CONDITIONAL — 25.0.1 must be held exactly (EXPECTED_RUNTIME:48), but Arrow reader semantics need not be re-proved."
+    },
+    {
+      "probe_id": "P12",
+      "title": "duckdb importability on the LiTS Route-B module scope",
+      "runtime_class": "DEPENDENCY_AVAILABILITY",
+      "verdict": "ABSENT",
+      "observed": {"error": "ModuleNotFoundError: No module named 'duckdb'"},
+      "establishes": "run_as2b_lits1_mechanical_certification.py:28 imports duckdb at module scope, and rawlsing_next/ee_p2x_darwin_stage_backend.py:240-251,:748 exec_module's that file onto the LIVE LiTS Route-B path. duckdb is therefore a hard importability requirement of the C4 LiTS operation, and it is ABSENT on the available surface. No accepted anchor records a duckdb version."
+    },
+    {
+      "probe_id": "P13",
+      "title": "source-free reader-fixture constructability — WHY THE READER-SENSITIVE PROBES ARE INCOMPLETE",
+      "runtime_class": "DEPENDENCY_AVAILABILITY",
+      "verdict": "PROBE_HARNESS_BLOCKED",
+      "observed": {
+        "pandas": "ABSENT (ModuleNotFoundError)",
+        "pytest": "ABSENT (ModuleNotFoundError)",
+        "pyreadstat": "1.3.6",
+        "write_sav_probe_result": "TypeError: Unsupported dataframe type, got: <class 'list'>",
+        "pyreadstat_write_sav_signature_df_annotation": "df: 'DataFrame'"
+      },
+      "establishes": [
+        "pyreadstat.write_sav and write_dta annotate their first parameter as a pandas DataFrame and reject anything else. With pandas ABSENT, NO synthetic SAV/DTA reader fixture can be constructed on this surface.",
+        "Consequently the reader-behaviour half of OP-01 (D01 declared-encoding resolution), OP-03 (D02 arrival typing from an actual reader) and OP-04 (DTA extended-missing token shape) COULD NOT BE PROBED, only characterised from code and from reader-API signatures.",
+        "pytest is also absent, so no governed court can be executed here at all."
+      ],
+      "why_not_remediated": "The commission forbids install-on-import and forbids silent dependency upgrade. Installing pandas/pytest/duckdb to enable probes would (a) mutate the execution substrate this lane is supposed to be observing, and (b) silently change the very runtime facts under qualification. The absence is therefore RECORDED AS A BLOCKER, not fixed.",
+      "materiality": "HIGH — this is why 14 probes produced signalled reader-API and arrival-typing evidence but NOT end-to-end reader evidence."
+    },
+    {
+      "probe_id": "P14",
+      "title": "pyreadstat reader defaults the repository does NOT pin — CRITICAL",
+      "runtime_class": "PYREADSTAT_VERSION_SENSITIVE",
+      "verdict": "OBSERVED_CRITICAL",
+      "observed": {
+        "pyreadstat": "1.3.6",
+        "repo_passes_only": ["metadataonly", "apply_value_formats", "user_missing", "encoding"],
+        "unpinned_defaults_in_effect_for_read_sav": {
+          "formats_as_category": "True",
+          "dates_as_pandas_datetime": "False",
+          "disable_datetime_conversion": "False",
+          "row_limit": "0",
+          "row_offset": "0",
+          "output_format": "None",
+          "extra_date_formats": "None",
+          "extra_datetime_formats": "None",
+          "extra_time_formats": "None",
+          "formats_as_ordered_category": "False"
+        },
+        "read_file_in_chunks_defaults": {"chunksize": "100000", "offset": "0", "limit": "0", "multiprocess": "False", "num_processes": "4", "num_rows": "None"}
+      },
+      "establishes": [
+        "formats_as_category DEFAULTS TO TRUE in pyreadstat 1.3.6 and the repository never passes it. Value-labelled variables therefore arrive as pandas Categorical, which changes cell typing and therefore the D01/G01 representation — following whatever the installed build defaults to.",
+        "dates_as_pandas_datetime DEFAULTS TO FALSE and disable_datetime_conversion DEFAULTS TO FALSE; neither is passed anywhere. Whether a SAV date arrives as datetime.date, datetime.datetime, or a pandas datetime64 column therefore follows the installed build's defaults rather than any frozen contract. This is the single largest unpinned control over the D02 carrier.",
+        "chunked reads default to chunksize=100000; the repo overrides chunksize but inherits every other chunked default."
+      ],
+      "interpretation": "Ten reader options that materially govern C4 read behaviour are UNPINNED. They are inherited from whatever pyreadstat build happens to be installed. This is the concrete content of O1-C05's 'exact reader options' requirement that the repository currently does not meet.",
+      "non_mac_portability": "REQUIRES EXPLICIT BINDING. A non-Mac surface must either hold pyreadstat 1.3.6 exactly, or have these ten defaults enumerated and frozen in the surface's own reader contract."
+    }
+  ],
+
+  "coverage_summary": {
+    "operations_with_positive_source_free_evidence": ["OP-02 bit-token layer (P01)", "OP-05 Arrow boundary classification (P11)", "OP-06 hard-gate behaviour (P05)", "OP-07 resource unit law (P07)"],
+    "operations_characterised_but_not_end_to_end_probed": ["OP-01 D01 declared encoding", "OP-03 D02 date/time carrier", "OP-04 DTA/LiTS read path"],
+    "reason_no_end_to_end_reader_probe": "P13 — pandas absent, so no synthetic SAV/DTA fixture can be built, and pytest absent so no court can run.",
+    "operations_proved_platform_independent": ["OP-02 bit-token layer (P01)", "semantic_hash (P02)", "R5 type-identity semantics (P04)"],
+    "operations_proved_inheritable_to_a_non_mac_surface": 0,
+    "operations_blocked_by_a_repository_hard_gate": ["OP-06 — every non-Mac surface is rejected by EXPECTED_RUNTIME"],
+    "probes_run": 14,
+    "probes_failed": 0,
+    "probe_layer_that_could_not_be_executed": "reader-behaviour (D01 encoding resolution, D02 arrival typing from a reader, DTA extended-missing token shape)"
+  },
+
+  "conclusion": "The probe layer establishes precisely two things that matter for the mission. First, a narrow set of primitives (float64 big-endian bit tokens, semantic_hash canonicalisation, R5 exact-type semantics) IS platform-portable and may lawfully be inherited by any competent surface. Second, and decisively, the repository's own hard runtime gate REJECTS every non-Mac and every non-x86_64 surface, and the available surface is already the retained Darwin/x86_64 anchor. Combined with the fact that the reader-behaviour half of the probe layer could not be executed at all, because pandas and pytest are absent and installing them is forbidden, NO non-Mac runtime qualification is obtainable from this lane."
+}

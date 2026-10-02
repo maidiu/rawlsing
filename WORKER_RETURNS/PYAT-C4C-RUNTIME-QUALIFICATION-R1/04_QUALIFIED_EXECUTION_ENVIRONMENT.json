@@ -1,0 +1,140 @@
+{
+  "schema": "PYAT_C4C_QUALIFIED_EXECUTION_ENVIRONMENT@1.0.0",
+  "lane": "PYAT-C4C-RUNTIME-QUALIFICATION-R1",
+  "gate": "O1-C05",
+  "gate_text_summary": "Freeze interpreter, platform/architecture, decoder/library versions, exact reader options, dependency inventory, and runtime qualification on the combined execution tree. Distinguish the retained physical runtime anchor from the C3 source-free runtime anchor. No install-on-import or silent dependency upgrade.",
+
+  "QUALIFICATION_RESULT": "NOT_QUALIFIED__NO_NON_MAC_EXECUTION_SURFACE_EXISTS",
+  "qualification_granted": false,
+  "qualified_execution_surface_identifier": null,
+  "execution_surface_identifier_issued": false,
+  "execution_surface_identifier_issuing_rule": "An execution-surface identifier may be issued ONLY for a surface that (a) is not the user's Mac, (b) is reachable and reproducible, (c) satisfies or has a HQ-adjudicated resolution for the two hard runtime gates, and (d) has a complete frozen dependency inventory including pandas, pytest and duckdb. No surface meets these conditions. Therefore no identifier is issued, and none may be inferred from this packet.",
+
+  "required_non_mac_surface_specification": {
+    "purpose": "This is the exact specification a non-Mac surface must satisfy. It is a REQUIREMENT, not a qualification. Nothing here is attested as existing.",
+    "must_be_provisioned_by": "HQ or the accountable resource owner — NOT by this lane, and NOT on the user's Mac",
+    "components": {
+      "interpreter": {"implementation": "CPython", "exact_version": "3.11.3", "rationale": "O1-C05 requires the retained anchor interpreter be honoured where that anchor is relied on. Any other version requires explicit pre-run qualification; the one recorded attempt at substitution (PYAT-C1-01-R7 on CPython 3.12.14) FAILED."},
+      "platform": {"must_be": "a NON-MAC operating system", "candidates": ["Linux (x86_64)", "Linux (aarch64/arm64)"], "must_be_exact": true},
+      "architecture": {"must_be_declared_exactly": true, "note": "64-bit is required by the declared pyarrow/numpy wheels, but the specific architecture must be named and frozen, not assumed."},
+      "decoder_libraries": {
+        "pyreadstat": {"exact_version": "1.3.6", "enforcement": "hard equality gate at ee_p2x_darwin_stage_backend.py:61,:896-901 and at ee_p2x_darwin_court_driver.py:46-49"},
+        "pyarrow": {"exact_version": "25.0.1", "enforcement": "hard equality gate at ee_p2x_darwin_court_driver.py:46-49"}
+      },
+      "transitive_and_support_libraries_must_be_pinned_but_are_currently_unpinned": {
+        "pandas": {"required": true, "why": "pyreadstat returns a pandas.DataFrame and rawlsing_next/pre553_physical_decoder.py:122 calls frame.itertuples(index=False, name=None) on it without importing pandas; it is also required to build any synthetic reader fixture. Conflicting accepted records exist: 2.3.3 (C3 source-free receipt) vs 2.3.1 (accepted checkpoint).", "must_be_resolved_by": "HQ — the two accepted records conflict and this lane cannot choose between them"},
+        "numpy": {"required": true, "why": "governs np.datetime64 unit selection, which P03 showed changes the D02 rendering, and .item() unwrapping in the G01 arrival-typing seam", "conflicting_accepted_records": ["2.3.1", "2.3.2"], "must_be_resolved_by": "HQ"},
+        "pytest": {"required": true, "exact_version_required": true, "accepted_record": "9.1.1 (both the C3 source-free receipt and PYAT-C1-01-R7-EXECUTION-QUALIFICATION-R1/01_ENVIRONMENT.json)", "note": "No repository assertion anywhere pins the pytest version, and all six CI workflows install it UNPINNED."},
+        "duckdb": {"required": true, "why": "run_as2b_lits1_mechanical_certification.py imports it at module scope and is exec_module'd onto the live LiTS Route-B path (ee_p2x_darwin_stage_backend.py:240-251,:748)", "accepted_record": "NONE — no accepted anchor records a duckdb version; HQ must fix one"}
+      },
+      "reader_options_contract": {
+        "pinned_by_repository": ["metadataonly", "apply_value_formats=False", "user_missing=True", "encoding", "chunksize"],
+        "must_be_explicitly_frozen_because_unpinned": ["formats_as_category (measured default True)", "dates_as_pandas_datetime (measured default False)", "disable_datetime_conversion (measured default False)", "row_limit", "row_offset", "output_format", "formats_as_ordered_category", "extra_date_formats", "extra_datetime_formats", "extra_time_formats"],
+        "why": "O1-C05 requires exact reader options. Ten options that materially govern C4 read behaviour are currently inherited from whatever pyreadstat build is installed."
+      },
+      "dependency_lock": {
+        "required": true,
+        "repository_status": "NO LOCK FILE OF ANY KIND EXISTS — requirements*.txt, constraints*.txt, uv.lock, poetry.lock, Pipfile(.lock), *.lock, pyproject.toml, setup.py, setup.cfg, pytest.ini, tox.ini and conftest.py are ALL ABSENT",
+        "must_be_authored": true,
+        "must_contain": "a full resolved inventory with per-distribution version, wheel hash, and compiled-extension hash for the platform it is frozen for"
+      },
+      "resource_accounting_contract": {
+        "required": true,
+        "why": "P07 measured that ru_maxrss is BYTES on Darwin and KIBIBYTES on Linux — a 1024x difference. The retained R8B law DARWIN_RU_MAXRSS_ALREADY_BYTES cannot be inherited by name onto a Linux surface.",
+        "must_define": "the surface-native ru_maxrss unit law and its own frozen measurement budget"
+      }
+    }
+  },
+
+  "blockers": [
+    {
+      "blocker_id": "BLK-01",
+      "class": "NO_NON_MAC_SURFACE_EXISTS",
+      "severity": "ABSOLUTE",
+      "statement": "Zero non-Mac execution surfaces are reachable from this lane. docker, podman, colima, lima, limactl, nerdctl and orb are all ABSENT; ~/.colima, ~/.lima and the Docker container state directory are all ABSENT; no Linux kernel is reachable; the GitHub/browser surface was already recorded as having no lawful general-purpose runtime.",
+      "consequence": "The mission — qualify the intended NON-MAC execution environment — is not merely unattempted. It is impossible from this lane without an externally provisioned surface.",
+      "waivable": false
+    },
+    {
+      "blocker_id": "BLK-02",
+      "class": "AVAILABLE_SURFACE_IS_THE_ANCHOR_AND_IS_FORBIDDEN",
+      "severity": "ABSOLUTE",
+      "statement": "The only surface carrying the C4 decoder stack is macOS 13.7.8 / Darwin 22.6.0 / x86_64 — exactly the retained physical reproducibility anchor platform — and it is the user's Mac, which 00_COMMISSION.md:63 forbids as a fallback. It is also a machine-local, git-UNTRACKED path (LOCAL_COURTS/), so it cannot serve as a reproducible frozen surface identifier.",
+      "consequence": "No substitute for a non-Mac surface exists, and re-observing the anchor is not a non-Mac qualification.",
+      "waivable": false,
+      "explicitly_not_done": "This lane did NOT use the user's Mac as a fallback, and did not attempt to."
+    },
+    {
+      "blocker_id": "BLK-03",
+      "class": "REPOSITORY_HARD_GATE_REFUSES_NON_MAC",
+      "severity": "ABSOLUTE",
+      "statement": "P05 MEASURED that rawlsing_next/ee_p2x_darwin_court_driver.py:46-49 EXPECTED_RUNTIME requires system=='Darwin' AND machine=='x86_64' by exact equality, and that synthetic Linux/x86_64, Darwin/arm64 and Linux/aarch64 hosts are all REJECTED with RuntimeGateError. Five repository tests explicitly pin this behaviour (test_ee_p2x_darwin_court_driver.py:191-208; test_ee_p2x_local_court_receipts.py:22-28). A second independent gate, FROZEN_PYREADSTAT_VERSION at ee_p2x_darwin_stage_backend.py:61,:896-901, sits on the WVS7 .sav read path.",
+      "consequence": "Even if a Linux surface were provisioned today, the current tree would REFUSE to complete a governed C4 run on it. O1-C05 therefore cannot be discharged on a non-Mac surface without a prior HQ adjudication of these gates.",
+      "waivable": false,
+      "who_can_waive": "HQ, by explicit adjudication of a contract change — NOT by any worker"
+    },
+    {
+      "blocker_id": "BLK-04",
+      "class": "PREREQUISITE_TREE_MISMATCH",
+      "severity": "HIGH",
+      "statement": "The tree under qualification is not the C4 execution tree. Omega-1 O1-C01 established this; this lane independently confirms the code-identity level. rawlsing_next/closed35_g01_sav_numeric_representation_authority.py and the three test_closed35_* D01/D02/G01 test files are ABSENT; DECLARED_ENCODING_ALLOWLIST, normalize_decoder_physical_value and opaque_decoder_value are NOT FOUND. The blobs at this head are pre553_physical_decoder.py d2a074a41fb556a1cd5928a5fe1421ef3672a4e5 and pre553_r5_codec.py 72f8f3c03ed065e86fea4e76bb17f8e06c2bf540 — the pre-successor values.",
+      "consequence": "The D01 declared-encoding lane and the D02 opaque naive date/time carrier — the two most runtime-sensitive C4 operations — have NO contract in the tree this lane was asked to qualify. Any runtime qualification performed now would be against a decoder that C4 will not execute.",
+      "waivable": false,
+      "note": "O1-C01 is lane C4A's obligation. This lane records the dependency only."
+    },
+    {
+      "blocker_id": "BLK-05",
+      "class": "READER_BEHAVIOUR_PROBE_LAYER_UNEXECUTABLE",
+      "severity": "HIGH",
+      "statement": "P13 measured that pandas is ABSENT and pyreadstat.write_sav/write_dta annotate their first parameter as a pandas DataFrame, rejecting anything else (TypeError: Unsupported dataframe type). No synthetic SAV/DTA reader fixture can therefore be constructed on the available surface. pytest is also ABSENT.",
+      "consequence": "The reader-behaviour evidence for D01 declared-encoding resolution, D02 arrival typing from a real reader, and the DTA extended-missing token shape could NOT be probed — only characterised from code and reader-API signatures. The strongest available evidence is signature-level, not behavioural.",
+      "why_not_remediated": "Installing pandas/pytest would mutate the substrate under qualification and silently change the very runtime facts being frozen, violating 00_COMMISSION.md:20-21. Recorded as a blocker, not fixed."
+    },
+    {
+      "blocker_id": "BLK-06",
+      "class": "NO_DEPENDENCY_LOCK_EXISTS",
+      "severity": "HIGH",
+      "statement": "No dependency lock of any kind exists in the repository, and all six tracked CI workflows install pytest and pandas UNPINNED on ubuntu-latest with python-version \"3.11\" (major.minor only).",
+      "consequence": "O1-C05's 'full pinned dependency inventory' cannot be derived from this repository at all. It must be AUTHORED and then frozen. Accepted material is additionally self-conflicting on numpy (2.3.1 vs 2.3.2) and pandas (2.3.1 vs 2.3.3).",
+      "waivable": false
+    },
+    {
+      "blocker_id": "BLK-07",
+      "class": "ACCEPTED_MATERIAL_SELF_CONFLICT",
+      "severity": "MEDIUM",
+      "statement": "The retained physical anchor at HQ_HANDOFF/checkpoints/20260925T0219-0400/CURRENT.json records numpy BOTH as 2.3.1 and 2.3.2; pandas as 2.3.1; while the accepted C3 source-free receipt records pandas 2.3.3 and numpy 2.3.2.",
+      "consequence": "The dependency inventory cannot be frozen without an HQ ruling on which accepted record governs. This lane does not choose.",
+      "waivable": false
+    },
+    {
+      "blocker_id": "BLK-08",
+      "class": "ENVIRONMENT_DEFECT_REPORTED_NOT_QUALIFYING",
+      "severity": "LOW",
+      "statement": "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11 is a ZERO-BYTE file that exits 0 emitting nothing; only the python3.11-intel64 alternate runs.",
+      "consequence": "Observing 'CPython 3.11.3 present on PATH' is not sufficient. Any future surface identity check must verify an actually-executing interpreter, not a PATH entry.",
+      "waivable": true,
+      "note": "Reported for HQ awareness. Not itself blocking, and not repaired by this lane."
+    }
+  ],
+
+  "compatibility_evidence_summary": {
+    "source_free_probes_executed": 14,
+    "probes_failed": 0,
+    "probe_layer_incomplete_because": "pandas and pytest absent (BLK-05)",
+    "proved_portable_to_any_competent_surface": ["float64 big-endian bit tokens (P01)", "semantic_hash canonicalisation (P02)", "R5 exact-type identity semantics (P04)", "codec registry resolution for latin1 / BIG5 / WINDOWS-1252 (01_AVAILABLE_ENVIRONMENT.json)"],
+    "proved_NOT_inheritable": ["D01 declared-encoding resolution under encoding=None (P14 — delegated to the ReadStat build)", "D02 date/time carrier arrival typing (P03 + P14 — depends on unpinned reader defaults and numpy unit)", "DTA extended-missing token shape (OP-04 — an acknowledged pyreadstat-version fork)", "reader_version's presence in the physical-metadata digest (P06 — invalidates all frozen digests on version change)", "ru_maxrss budgets (P07 — OS-defined unit)"]
+  },
+
+  "residual_platform_limitations": [
+    "No non-Mac surface was available to measure, so no equivalence or difference against the Darwin/x86_64 anchor could be established in either direction.",
+    "The reader-behaviour probe layer is signature-level only, not behavioural.",
+    "The pyreadstat 1.3.2-vs-1.3.6 equivalence claim (fiabc_lm2_r1j_wvs7_representation_authority.py:71-95) is documentary, asserted from upstream ReadStat C blob hashes, and is NOT re-proved by any probe in this repository. It was not re-proved here either.",
+    "Within the accepted C3 source-free anchor, NO OS, NO architecture and NO reader/decoder library version is recorded — by design, because that court never read a survey file. It therefore cannot be inherited as reader-side physical evidence, and this lane does not attempt to bridge that gap by name.",
+    "The available surface's interpreter, pyreadstat and pyarrow exactly match the anchor, but its numpy differs (2.4.6 vs an internally conflicting 2.3.1/2.3.2) and pandas and pytest are absent entirely. The surface is therefore NOT a clean instance of the anchor either."
+  ],
+
+  "no_waiver_assertion": "The physical reproducibility anchor was NOT waived. Commission item 5 requires that if exact physical reproducibility depends on Darwin/x86_64 behaviour that cannot be established on the available non-Mac environment, it must not be waived and the exact missing qualification must be returned instead. That is what is returned here. In addition, P05 shows the Darwin/x86_64 dependency is not merely historical: it is an ACTIVE EQUALITY GATE in the current tree.",
+  "no_self_adoption": true,
+  "mac_fallback_used": false,
+  "provenance_drift": false
+}
