@@ -1,0 +1,54 @@
+{
+  "schema": "PYAT_ASTRA_DECISION_REQUEST@1",
+  "trigger_id": "E01_WITH_E07",
+  "decision_question": "What is the lawful currentness/succession treatment of the AT07 composed-result identity after the adopted C1-02 analytical-composition identity-preimage expansion?",
+  "current_checkpoint_ref": "20261001-PYAT-HQ162-C1-03A-ADOPTED-LARGE-JOIN-BOUND-R1",
+  "affected_commits_blobs": [
+    "join tested: 39046d22db18eb69cb9cdd3ce1865e7bc8dec1f0",
+    "join return: 8b2c45d754a0ff3922a7b60c510c9e96df995bc5",
+    "R8 spine blob: 462bb282ddc2cc9667f1890f2d65f2fae9a3a72c",
+    "C1-02 owner blob: 604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+    "AT17 provider blob: 23167aa25291fb148b1e3cf210ac33fe7769b783"
+  ],
+  "options": [
+    {
+      "id": "A_VERSIONED_SUCCESSOR_SPINE",
+      "summary": "Preserve R8 spine as historical C1-01 identity; independently freeze a successor AT07 spine under the adopted C1-02 owner; narrowly requalify AT17 and rerun join."
+    },
+    {
+      "id": "B_PRESERVATION_WAS_NORMATIVE",
+      "summary": "Treat C1-02's claimed preservation of C1-01 identities as binding; reopen C1-02 owner identity law rather than refreshing the spine."
+    }
+  ],
+  "hq_recommendation": "A_VERSIONED_SUCCESSOR_SPINE",
+  "exact_authority": [
+    "OMEGA_VOZHD_ORCHESTRATION_R1/09_ASTRA_ESCALATION.md E01/E07",
+    "HQD-2026-10-01-145 C1-02 adoption",
+    "HQD-2026-10-01-147 AT17 adoption",
+    "HQD-2026-10-01-162 large join binding"
+  ],
+  "minimal_counterexample_or_proof": {
+    "old_expected_hash": "03610f9d91b23cfb6f862dc91b5de92c7f4e4b8e44a53b9efdacb1cf73af6b9e",
+    "current_owner_hash": "01c381d3f3c386cfc22fd2f57b8e2c244771ddf1529d4f8ab8c7b1cf41bd50dd",
+    "court": "test_p7_frozen_spine_bindings_still_hold_for_the_fixture_law",
+    "union_result": "434 passed / 1 failed / 435 collected"
+  },
+  "independent_review": "C1-02 and AT17 were independently reviewed and HQ-adopted; the conflict first appears when their accepted trunks coexist in the large C1-03 join.",
+  "attempts_and_outcomes": [
+    "Ancestry-preserving three-trunk join succeeded with zero merge conflicts and no accepted owner edits.",
+    "Older C1-01 composition owner was tested as a rollback candidate and breaks accepted C1-03A at import.",
+    "Worker refused to self-refresh independently frozen oracle from current implementation output."
+  ],
+  "downstream_impact": [
+    "C1-03 join cannot be accepted until succession is resolved.",
+    "C1-R and planned Omega-1 remain held.",
+    "C4/live production remains unauthorized."
+  ],
+  "required_user_or_semantic_authorization": [],
+  "unaffected_work_may_continue": [
+    "Banked C1-03A/C1-03R/C2/C3/C5 evidence remains valid within accepted grains.",
+    "No raw-source or actor work is authorized."
+  ],
+  "requested_decision": "Select the currentness law, scope of AT17 requalification, minimum independent re-freeze conditions if applicable, and next Astra trigger.",
+  "finite_usage_reason": "Two independently accepted artifacts now prescribe incompatible current identity behavior at the same AT07 grain; HQ cannot safely resolve the accepted-claim conflict from chronology alone because C1-02 explicitly asserted identity preservation."
+}
