@@ -95,3 +95,47 @@ In parallel:
 4. **D004 — persistent time, life advancement and asynchronous contact**
 5. **D005 — canonical memory / event / dyad persistence architecture**
 6. **D006 — player praxis model and reflective return**
+
+## Cross-cutting K0 — kernel sifting / architecture compression
+
+K0 is not another feature workstream.
+
+It asks:
+
+> What is the smallest generative Rawlsing axis from which the major organs, membranes, clocks and product invariants become derivable rather than separately legislated?
+
+Current status:
+`OPEN_DISCOVERY`.
+
+Canonical machine map:
+`03_REAL_ALPHA_SPINE.md`.
+
+Canonical question:
+`Q-KERNEL-001`.
+
+All workstreams may supply evidence to K0.
+
+K0 must not preempt them by declaring a kernel early.
+
+Expected outputs are:
+- repeated structural necessities;
+- candidate-kernel comparisons;
+- hostile derivations;
+- rule compression;
+- owner/membrane discovery;
+- tunable-balance identification;
+- falsification of overly broad or merely rhetorical centers.
+
+The desired trajectory is:
+
+`MANY CORRECT LOCAL LAWS`
+→ `VISIBLE REPEATED STRUCTURE`
+→ `CONCRETE ORGANISM`
+→ `COMPETING GENERATIVE KERNELS`
+→ `HOSTILE DERIVATION / FALSIFICATION`
+→ `EVENTUAL COMPRESSION`.
+
+Until proven otherwise:
+
+`KERNEL = UNRESOLVED`.
+
