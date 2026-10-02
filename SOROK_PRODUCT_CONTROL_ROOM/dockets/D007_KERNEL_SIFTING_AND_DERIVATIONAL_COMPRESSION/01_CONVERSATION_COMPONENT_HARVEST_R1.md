@@ -1439,4 +1439,83 @@ It does not become retroactive truth merely because it is elegant.
 This creates a powerful form of reciprocal relation:
 the user can genuinely contribute to Nadia's future self-understanding without owning Nadia's past.
 
+# 10. Recurrent resonance and meaning-making as kernel evidence
+
+## P1 — recurrence without teleology
+Classification: `PROMOTE / DERIVE`
+
+A historically formed person may express homologous tensions, preferences and sensitivities across different domains and times.
+
+Therefore:
+`COMMON / EVOLVED ORGANIZATION Z`
+→ `EXPRESSION A`
+and
+→ `EXPRESSION B`
+
+may generate real resonance without:
+`A → B`.
+
+This is the preferred source of "deep patterns lurking in the person."
+
+It lets childhood taste, adult politics, relationship behavior, aesthetic preference and later vocation rhyme because they are expressions of a related generative organization rather than because the early object was planted as foreshadowing.
+
+---
+
+## P2 — person exceeds explanation
+Classification: `PROMOTE`
+
+Current non-exhaustion extends to explanation:
+
+`PERSON != BEST AVAILABLE THEORY OF PERSON`.
+
+The engine may possess:
+- real causal history;
+- recurrent patterns;
+- actor associations;
+- self-narratives;
+
+without there being one privileged total interpretation that exhausts the person.
+
+---
+
+## P3 — interpretation is itself an event
+Classification: `CONNECT`
+
+A person noticing a pattern in their own life is not merely reading static truth.
+
+The act of interpretation may:
+- recruit memories;
+- change identity;
+- alter future attention;
+- become a commitment;
+- produce new action.
+
+Thus:
+`INTERPRETATION OF HISTORY`
+can become
+`NEW HISTORY`.
+
+This is a direct instance of constitutive relation/recursion at the level of self-relation.
+
+---
+
+## P4 — meaning-making propensity is historically formed
+Classification: `CONNECT / DERIVE`
+
+Some persons are:
+- highly autobiographical;
+- theological;
+- psychoanalytic;
+- symbolically recursive.
+
+Others:
+- concrete;
+- anti-interpretive;
+- domain-selective;
+- suspicious of why-questions.
+
+This variation itself should arise through V3 formation.
+
+Therefore even "how much a person turns life into meaning" belongs to relational/material history rather than to a universal narrator.
+
 
