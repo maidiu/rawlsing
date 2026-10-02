@@ -1,0 +1,96 @@
+{
+  "schema": "PYAT_ASTRA_DECISION_REQUEST@1",
+  "trigger_id": "E04_OMEGA_1_PRODUCTION_READINESS",
+  "decision_question": "Is the independently accepted T1/source-free join ready to transition to the exact reviewed eight-source C4 current-production/horizontal-proof workload, subject to a separate exact raw-source execution warrant; and if yes, what exact conditions and claim ceilings govern that C4 execution?",
+  "current_checkpoint_ref": "20261001-PYAT-HQ168-C1-03-ADOPTED-OMEGA1-BOUND-R1",
+  "affected_commits_blobs": [
+    "C1-03 accepted join result: 063ee8b77fc4e05c37456ff0168e946247f919ef",
+    "C1-03 code-bearing tested commit: 933a3d31aa961719c73e6ce7eebcfe40bc8cd45e",
+    "C1-03 final review: c8ce0ea81a2165f37d566f37de788fecedf85051",
+    "C1-03 HQ adoption branch/tip: integration/pyat-hq168-c1-03-successor-join-accepted-r1 @ 149c3d2636160d8de9b5a8be0c8b87195158077d",
+    "C2-02 worker return: 6f6ab9dfe5ad8f9359630dd05abf43c3fd11a1b5",
+    "C2-02 review: 105e68c4e7b0d991299ef0bf33616b7a6d67349a",
+    "C3 accepted integration: 30686b185d4ceb2c94f61815ef70d8c8e76255d6",
+    "C3 independent integration review: 462e6bf1ed514056f9316dad761054e690a7755d",
+    "C5 retained-input canary: 151d39260a803635f622323b14e42d96c7976d25"
+  ],
+  "options": [
+    {
+      "id": "A_GO_WITH_EXACT_C4_CONDITIONS",
+      "summary": "Freeze the reviewed eight-source C4 workload now; hold actual raw-source execution until a separate exact execution warrant; preserve typed residual/claim ceilings."
+    },
+    {
+      "id": "B_REVISE_C4_SCOPE_BEFORE_FREEZE",
+      "summary": "Production transition is ready in principle but the exact proving set/read/oracle/retention plan needs a bounded correction before C4 freeze."
+    },
+    {
+      "id": "C_HOLD_C4_FOR_MISSING_PREREQUISITE",
+      "summary": "A mandatory current owner/authority/physical/oracle premise is still absent; name the smallest exact wake condition."
+    }
+  ],
+  "hq_recommendation": "A_GO_WITH_EXACT_C4_CONDITIONS",
+  "exact_authority": [
+    "OMEGA_VOZHD_ORCHESTRATION_R1/09_ASTRA_ESCALATION.md Omega-1 + E04",
+    "ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/commissions/C4.md",
+    "HQD-2026-09-30-133 eight-source C4 preparation adoption",
+    "HQD-2026-09-30-135 D02 locator blocker closure",
+    "HQD-2026-09-30-131 C3 source-free integration acceptance",
+    "HQD-2026-10-01-168 successor-qualified C1-03 join adoption"
+  ],
+  "minimal_counterexample_or_proof": {
+    "accepted_c1_join": "454/454 independently re-executed after successor qualification",
+    "c2_selected_sources": [
+      "SRC02",
+      "SRC06",
+      "SRC08",
+      "SRC12",
+      "SRC14",
+      "SRC26",
+      "SRC27",
+      "SRC35"
+    ],
+    "d02_locator_closed": true,
+    "c3_physical_path_accepted": true,
+    "proposed_fresh_full_route": [
+      "SRC27"
+    ],
+    "proposed_fresh_physical_only": [
+      "SRC02",
+      "SRC06",
+      "SRC08",
+      "SRC12",
+      "SRC14",
+      "SRC26"
+    ],
+    "proposed_retained_comparator": [
+      "SRC35"
+    ],
+    "all35_accounting_preserved": true
+  },
+  "independent_review": "C1-03 whole join, C2-02 proving-set selection, D02 locator recovery, and C3 integration all have independent review/adoption at their declared grains.",
+  "attempts_and_outcomes": [
+    "C2 initially returned D02 locator custody blocker rather than self-discovering an oracle from raw data.",
+    "Corrected retained archaeology recovered a pre-C4 immutable EVS-2008 v372/ordinal-466 D02 witness; independent review closed the blocker.",
+    "C1-03 integration exposed an AT07 historical/current identity conflict; Astra E01/E07 selected a versioned successor spine, which was independently frozen/reviewed and successfully requalified through the full join.",
+    "Final successor-qualified join independently reran 454/454 green."
+  ],
+  "downstream_impact": [
+    "A GO wakes C4 freeze/preparation but not raw-source execution permission.",
+    "Competent C4 outputs can provide current empirical inputs to C5-C8.",
+    "C7 remains separately gated on pair-specific positive comparability authority after current comparable products exist.",
+    "C2-EPCLASS-PAYLOAD-001 remains typed and blocks class-sensitive epistemic-origin claims.",
+    "No actor/person implementation is implicated."
+  ],
+  "required_user_or_semantic_authorization": [
+    "Separate exact raw-source execution warrant before opening/decoding any survey source.",
+    "Any user/resource-owner permission required by that source access remains separate.",
+    "No new semantic/comparability/model/causal authority may be inferred from C4 observations."
+  ],
+  "unaffected_work_may_continue": [
+    "Banked C5/N5 retained-input canary remains accepted.",
+    "Source-free documentary/fixture preparation within existing authority may continue.",
+    "C7 implementation remains held; no need to consume Astra on its already-typed blocker now."
+  ],
+  "requested_decision": "Select GO/REVISE/HOLD for the exact C4 scope; if GO, freeze mandatory execution conditions and claim ceilings, affirm or revise the eight-source/read-economy plan, adjudicate named residuals, and state the next Astra trigger.",
+  "finite_usage_reason": "This is the planned Omega-1 decision point: independently accepted source-free composition is being proposed as readiness for the first governed live/current production workload, so errors would propagate into T2-T6."
+}
