@@ -1,0 +1,52 @@
+{
+  "schema": "PYAT_C1_03_SUCCESSOR_JOIN_FINAL_INTEGRATION_REVIEW_DISPOSITION@1",
+  "reviewer_lane": "agent/reviewer-pyat-hq167-c1-03-successor-join-final-integration-review-r1",
+  "review_base": "063ee8b77fc4e05c37456ff0168e946247f919ef",
+  "code_bearing_tested_commit": "933a3d31aa961719c73e6ce7eebcfe40bc8cd45e",
+  "governing_successor_spine": "069ac61b5c90486e5b7bb633135b4743dfbd55df",
+  "historical_failed_join_base": "8b2c45d754a0ff3922a7b60c510c9e96df995bc5",
+  "disposition": "APPROVE_AT_DECLARED_GRAIN",
+  "blocking_counterexample": null,
+  "sections": {
+    "1_lineage": "PASS",
+    "2_blob_conservation": "PASS",
+    "3_historical_r8_strengthened": "PASS",
+    "4_at17_both_directions": "PASS",
+    "5_regression_custody": "PASS",
+    "6_join_integration": "PASS",
+    "7_replay_limitation": "NONBLOCKING_ADJUDICATED",
+    "8_counts_false_green": "PASS",
+    "9_final_acceptance": "PASS"
+  },
+  "reviewer_execution_available": true,
+  "independent_rerun_result": "454 passed, 0 failed, 0 errors, 0 skipped (exit 0)",
+  "independent_verifications_performed": [
+    "full 15-file pytest court re-executed",
+    "historical R8 digests re-derived by reviewer",
+    "adopted successor digests re-derived by reviewer",
+    "complete 44-field production preimage compared against adopted oracle preimage, both directions",
+    "per-file collection counts recomputed",
+    "five production blobs re-hashed at reviewed head",
+    "AST diff of historical versus current provider courts",
+    "oracle package ancestry and byte-identity against accepted branch"
+  ],
+  "open_nonblocking_residuals": [
+    "no accepted single owner contract carries provider recomputation -> named consumer -> lifecycle restore in one fresh process; all three accepted obligations execute separately and no acceptance claim depends on that bridge",
+    "P7 split is a rename of a split parent, not a dropped historical obligation"
+  ],
+  "scope_discipline": {
+    "implementation_mutated": false,
+    "self_adopted": false,
+    "c1_r_started": false,
+    "omega1_action": false,
+    "live_or_raw_source_execution": false,
+    "extra_review_layer_created": false,
+    "writes_confined_to": "WORKER_RETURNS/PYAT-C1-03-SUCCESSOR-JOIN-FINAL-INTEGRATION-REVIEW-R1/**"
+  },
+  "hq_authorization_on_approval": [
+    "adopt the successor-qualified C1-03 join",
+    "mark AT17/N10E current C1-02 identity binding requalified",
+    "proceed to the planned Omega-1 Astra production-readiness consultation"
+  ],
+  "terminal": "C1_03_SUCCESSOR_JOIN_FINAL_INTEGRATION_REVIEW_RETURNED__HQ_ADJUDICATION_REQUIRED"
+}

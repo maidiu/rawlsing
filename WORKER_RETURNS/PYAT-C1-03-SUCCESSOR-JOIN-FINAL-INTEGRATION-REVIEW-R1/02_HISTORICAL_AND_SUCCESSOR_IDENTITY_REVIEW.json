@@ -1,0 +1,48 @@
+{
+  "schema": "PYAT_C1_03_SUCCESSOR_JOIN_IDENTITY_REVIEW@1",
+  "section3_historical_r8": {
+    "forward_digest": "03610f9d91b23cfb6f862dc91b5de92c7f4e4b8e44a53b9efdacb1cf73af6b9e",
+    "reverse_digest": "1202822cf98d802c04440328496dc64ee02e6d6030a3da6c9bf10ef1a6490a3c",
+    "actually_re_derived_not_asserted_literals": true,
+    "re_derivation_evidence": "I independently hashed the pinned 38-field historical canonical with my own canonicalizer; both digests reproduce AND equal the value recorded in the R8 summary spine. The helper computes digest(preimage), so the assertion cannot pass on a literal match.",
+    "my_independent_reproduction": {
+      "forward": true,
+      "reverse": true
+    },
+    "historical_preimage_field_count": 38,
+    "fixture_law_bindings_intact": [
+      "universe_ref",
+      "release_ref",
+      "query_authority_ref",
+      "producer_predicate_ref",
+      "producer_predicate_hash",
+      "producer_query_ref",
+      "consumer_query_ref",
+      "witness_ref",
+      "evidence_ref",
+      "raw_denominator_support"
+    ],
+    "tests_distinguish_historical_from_current": true,
+    "assertion_deleted_skipped_xfailed_weakened": false,
+    "p7_court_split": {
+      "old": "test_p7_frozen_spine_bindings_still_hold_for_the_fixture_law",
+      "split_into": [
+        "test_p7_historical_fixture_law_bindings_still_hold",
+        "test_p7_historical_r8_composed_identity_is_preserved_as_historical_only"
+      ],
+      "reduces_historical_obligation": false,
+      "note": "the split is STRONGER: the fixture-law half keeps every binding, and the identity half re-derives the historical digest from the pinned preimage and proves it distinct from current"
+    },
+    "old_courts_deleted": 0,
+    "old_courts_split": 1
+  },
+  "successor_identities": {
+    "forward": "01c381d3f3c386cfc22fd2f57b8e2c244771ddf1529d4f8ab8c7b1cf41bd50dd",
+    "reverse": "a3bd7e85ae14babb5ac5a12b0bcc57a8cdf3eccf8f43394895903dc43aca40ca",
+    "my_independent_reproduction": {
+      "forward": true,
+      "reverse": true
+    },
+    "conflated_with_historical": false
+  }
+}
