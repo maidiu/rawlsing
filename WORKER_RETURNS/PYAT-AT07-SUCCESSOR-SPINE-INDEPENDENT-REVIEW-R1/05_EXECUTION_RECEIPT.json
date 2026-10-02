@@ -1,0 +1,53 @@
+{
+  "schema": "PYAT_AT07_SUCCESSOR_SPINE_REVIEW_EXECUTION_RECEIPT@1",
+  "reviewer_environment": {
+    "interpreter": "/tmp/c1-01-r8-release-spine-venv/bin/python",
+    "python": "3.12.14",
+    "platform": "darwin",
+    "producer_environment_not_used_as_only_evidence": true,
+    "note": "The producer ran Python 3.11.3; this review ran 3.12.14 and reproduced the same artifacts byte-exactly."
+  },
+  "reviewer_commands": [
+    {
+      "command": "/tmp/c1-01-r8-release-spine-venv/bin/python 07_ORACLE_PROCEDURE.py generate",
+      "exit_status": 0,
+      "seconds": 0.249
+    },
+    {
+      "command": "/tmp/c1-01-r8-release-spine-venv/bin/python 07_ORACLE_PROCEDURE.py verify",
+      "exit_status": 0,
+      "seconds": 0.205
+    },
+    {
+      "command": "/tmp/c1-01-r8-release-spine-venv/bin/python 07_ORACLE_PROCEDURE.py hostiles",
+      "exit_status": 0,
+      "seconds": 0.467
+    }
+  ],
+  "run_location": "a scratch copy at /tmp/rev/pkg, so the committed oracle artifacts were never executed in place or mutated",
+  "artifacts_reproduced_byte_exactly": true,
+  "artifact_files_compared_identical": [
+    "05_SUCCESSOR_SPINE.json",
+    "03_FORWARD_SUCCESSOR_PREIMAGE.json",
+    "04_REVERSE_SUCCESSOR_PREIMAGE.json",
+    "08_ORACLE_PROCEDURE_HOSTILES.json",
+    "FORWARD_DERIVATION_PREIMAGES.json",
+    "REVERSE_DERIVATION_PREIMAGES.json",
+    "FORWARD_SUCCESSOR_CANONICAL.json",
+    "REVERSE_SUCCESSOR_CANONICAL.json"
+  ],
+  "all_package_artifacts_identical_count": 41,
+  "frozen_inputs_mutated": 0,
+  "producer_receipt_reconciled": {
+    "artifact_commit_tested": "79a3b7e5a0de42ee49db2bc533daf19a7d2f3b74",
+    "clean_tree_before_tests": true,
+    "clean_tree_after": true,
+    "python": "3.11.3",
+    "three_commands_exit_zero": true,
+    "hostiles": 44,
+    "false_accepts": 0,
+    "final_head_one_receipt_only_commit_later": true
+  },
+  "implementation_or_at17_or_join_modified": false,
+  "tests_run_count_claim": false
+}

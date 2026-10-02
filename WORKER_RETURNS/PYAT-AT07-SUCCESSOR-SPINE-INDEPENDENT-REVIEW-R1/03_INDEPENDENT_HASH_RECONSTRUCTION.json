@@ -1,0 +1,53 @@
+{
+  "schema": "PYAT_AT07_SUCCESSOR_SPINE_HASH_RECONSTRUCTION@1",
+  "method": "My own canonicalizer (stdlib json: sort_keys, separators (',',':'), ensure_ascii=False, allow_nan=False, sha256 over utf-8). I did not invoke the producer's generate mode to obtain these.",
+  "canonical_primitive_confirmed": "matches the pinned objects_law.py:181-222 canonicalize/canonical_json/semantic_hash law",
+  "step_1_historical_anchor": {
+    "why_needed": "The R8 summary spine carries only 10 keys, not the 38-field composed preimage, so I anchored the package's 38-field historical preimage against the independently frozen R8 digests instead.",
+    "forward": {
+      "mine": "03610f9d91b23cfb6f862dc91b5de92c7f4e4b8e44a53b9efdacb1cf73af6b9e",
+      "r8": "03610f9d91b23cfb6f862dc91b5de92c7f4e4b8e44a53b9efdacb1cf73af6b9e",
+      "match": true
+    },
+    "reverse": {
+      "mine": "1202822cf98d802c04440328496dc64ee02e6d6030a3da6c9bf10ef1a6490a3c",
+      "r8": "1202822cf98d802c04440328496dc64ee02e6d6030a3da6c9bf10ef1a6490a3c",
+      "match": true
+    },
+    "significance": "the 38-field base is anchored to a prior independent commission's frozen digests in BOTH directions"
+  },
+  "step_2_successor_derivation": {
+    "inputs": [
+      "the R8-anchored 38-field historical preimage",
+      "the six lawful values derived from the adopted owner's own dataclass defaults"
+    ],
+    "forward": {
+      "expected": "01c381d3f3c386cfc22fd2f57b8e2c244771ddf1529d4f8ab8c7b1cf41bd50dd",
+      "independently_derived": "01c381d3f3c386cfc22fd2f57b8e2c244771ddf1529d4f8ab8c7b1cf41bd50dd",
+      "match": true,
+      "distinct_from_historical": true
+    },
+    "reverse": {
+      "expected": "a3bd7e85ae14babb5ac5a12b0bcc57a8cdf3eccf8f43394895903dc43aca40ca",
+      "independently_derived": "a3bd7e85ae14babb5ac5a12b0bcc57a8cdf3eccf8f43394895903dc43aca40ca",
+      "match": true,
+      "distinct_from_historical": true
+    },
+    "both_successor_hashes_independently_reproduced": true
+  },
+  "content_level_verification": {
+    "forward_denominator_support": 60,
+    "reverse_denominator_support": 62,
+    "matches_at07_source_law": true,
+    "forward_analytical_state": "SUPPORTED",
+    "reverse_analytical_state": "SUPPORTED",
+    "uncertainty_state": "UNCERTAINTY_UNQUANTIFIED",
+    "coverage_state": "DIRECT_EXACT_SINGLE_QUERY",
+    "distinct_consumer_query_per_direction": true,
+    "witness_16_field_preimage_present_with_custody": true,
+    "nested_witness_ref_differs_by_direction": true
+  },
+  "independence_caveat_honoured": "Agreement with the disclosed forward digest is NOT treated as evidence. The forward derivation used only the R8-anchored historical preimage (a different, earlier-frozen digest) plus owner defaults. The reverse successor digest was never disclosed and was reproduced blind.",
+  "fully_determined_from_frozen_inputs_and_law": true,
+  "missing_or_ambiguous_fields": []
+}

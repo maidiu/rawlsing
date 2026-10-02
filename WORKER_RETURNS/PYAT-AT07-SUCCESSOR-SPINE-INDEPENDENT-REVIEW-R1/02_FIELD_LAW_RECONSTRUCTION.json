@@ -1,0 +1,32 @@
+{
+  "schema": "PYAT_AT07_SUCCESSOR_SPINE_FIELD_LAW_RECONSTRUCTION@1",
+  "method": "My own AST enumeration of each owner blob. The historical identity_material returns a dict literal; the adopted owner assigns material = {...} (44 keys) then returns it. I enumerated only the DIRECT top-level keys.",
+  "historical_blob": "26f3380cb83cbbcedc87c74aaf603b0492c8ce8f",
+  "adopted_blob": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+  "historical_direct_fields": 38,
+  "current_direct_fields": 44,
+  "removed": 0,
+  "added_count": 6,
+  "added": [
+    "discovery_receipt_refs",
+    "discovery_frontier_ref",
+    "recursive_handoff_refs",
+    "recursive_lineage_refs",
+    "joint_component_count",
+    "joint_order_semantics"
+  ],
+  "matches_commission_specification": true,
+  "note_on_first_pass": "A naive ast.walk over the function yields 41/47 because it descends into nested dicts; and a parent-based heuristic yields 47 current because the adopted owner binds the nested producer_result_envelope dict via an intermediate variable. I therefore enumerated the direct returned/assigned dict only, which is the correct notion of a DIRECT composed field.",
+  "nested_vs_top_level_not_conflated": true,
+  "nested_witness_evolution_preserved": "The 16-field condition-binding-witness preimage (binding_mode, consumer_binding_fingerprint, pairing_authority_ref, producer_predicate_leaf_projection, ...) evolves nested and feeds consumer_binding_fingerprint; it is NOT a new top-level composed field.",
+  "lawful_direct_at07_values": {
+    "discovery_receipt_refs": [],
+    "discovery_frontier_ref": null,
+    "recursive_handoff_refs": [],
+    "recursive_lineage_refs": [],
+    "joint_component_count": 1,
+    "joint_order_semantics": "SEMANTIC_ORDERED"
+  },
+  "value_derivation_source": "Adopted owner dataclass defaults at adopted blob lines 376-381, plus the AT07 law that a single direct composition involves no discovery receipt, no recursive handoff, no joint component.",
+  "oracle_values_agree": true
+}

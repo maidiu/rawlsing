@@ -1,0 +1,69 @@
+{
+  "schema": "PYAT_AT07_SUCCESSOR_SPINE_INDEPENDENT_REVIEW_PROVENANCE@1",
+  "reviewed_object": "AT07 successor-spine oracle package only",
+  "oracle_return_head": {
+    "required": "92ddee2241a78b46394665d325e5ebf0e75adf40",
+    "observed": "92ddee2241a78b46394665d325e5ebf0e75adf40",
+    "resolves": true,
+    "note": "HEAD on this review branch is d6cfce73f3cb (the HQ165 commission bind); the oracle return is its parent, so 92ddee is the oracle branch head as required"
+  },
+  "commission_base": {
+    "required": "f23a3ac",
+    "observed": "f23a3ac",
+    "confirmed": true
+  },
+  "return_movement_confined_to_package": true,
+  "rawlsing_next_files_changed": 0,
+  "r8_historical_artifacts_modified": false,
+  "r8_conservation_note": "The R8 package is absent from this lineage's working tree, so there was nothing to mutate. Conservation was instead verified positively: the pinned copy INPUTS/r8_spine.json is blob-identical to the R8 artifact at its origin commit 9e2655818 (blob 462bb282ddc2cc9667f1890f2d65f2fae9a3a72c).",
+  "artifact_commit": {
+    "required": "79a3b7e5a0de42ee49db2bc533daf19a7d2f3b74",
+    "confirmed": true
+  },
+  "final_commit_is_receipt_only": true,
+  "inputs_independently_verified": {
+    "count": 24,
+    "verified_against_stated_git_ref": 24,
+    "worker_sha256_table_relied_upon": false,
+    "method": "for each pinned entry, git rev-parse <ref>:<path> was compared to the stated blob, and sha256 recomputed independently of the worker table",
+    "mismatches": 0
+  },
+  "independence_contamination_matrix": [
+    {
+      "path": "imports/executes production analytical composition",
+      "present": false,
+      "evidence": "procedure imports only argparse, ast, copy, hashlib, json, fractions, pathlib"
+    },
+    {
+      "path": "calls AnalyticalCompositionResult.identity_material()",
+      "present": false,
+      "evidence": "the only occurrences are AST source parsing in static_keys(), which reads pinned owner source text to enumerate declared field names"
+    },
+    {
+      "path": "calls provider/consumer production path for expected hashes",
+      "present": false,
+      "evidence": "no occurrence of provide_empirical_possibility_slice, compose_positioned_subject_possibility, evaluate_positioned_subject_possibility"
+    },
+    {
+      "path": "copies the known forward candidate digest",
+      "present": false,
+      "evidence": "0 occurrences of 01c381d3... in the procedure"
+    },
+    {
+      "path": "reads a precomputed reverse successor digest",
+      "present": false,
+      "evidence": "0 occurrences of a3bd7e85... in the procedure"
+    },
+    {
+      "path": "hardcoded historical digests",
+      "present": false,
+      "evidence": "0 occurrences of 03610f9d... and 1202822c..."
+    },
+    {
+      "path": "silently derives expected truth from candidate output",
+      "present": false,
+      "evidence": "the successor preimage is built as historical(38) + six values taken from the ADOPTED OWNER'S OWN dataclass defaults; the reverse successor digest was never disclosed to this reviewer and was reproduced blind"
+    }
+  ],
+  "strongest_independence_evidence": "The commission disclosed only the forward candidate observation. The REVERSE successor digest a3bd7e85ae14babb5ac5a12b0bcc57a8cdf3eccf8f43394895903dc43aca40ca was not disclosed, and this reviewer derived it independently from the R8-anchored historical preimage plus owner defaults. Agreement on an unannounced value cannot be explained by fitting to candidate output."
+}

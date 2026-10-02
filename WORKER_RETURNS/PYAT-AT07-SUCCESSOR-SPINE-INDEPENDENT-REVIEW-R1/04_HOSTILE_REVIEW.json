@@ -1,0 +1,77 @@
+{
+  "schema": "PYAT_AT07_SUCCESSOR_SPINE_HOSTILE_REVIEW@1",
+  "not_accepted_on_count_alone": true,
+  "producer_claim": {
+    "count": 44,
+    "rejected": 44,
+    "false_accepts": 0
+  },
+  "my_independent_verification": {
+    "rerun_rejected": 44,
+    "false_accepts": 0,
+    "artifacts_byte_identical": true
+  },
+  "rejection_mechanism_review": {
+    "validator": "validate_preimage compares the full canonical preimage AND the persisted canonical bytes",
+    "digest_rederivation": "content hashes are re-derived from mutated material, so a mutation cannot pass via a stale checksum",
+    "false_accept_is_fatal": "the hostile wrapper raises HOSTILE_FALSE_ACCEPT if any mutation does NOT raise, so a silently-accepted mutation fails the run",
+    "assessment": "correct"
+  },
+  "substantive_coverage_verified": {
+    "omit_each_of_six_both_directions": {
+      "cases": 12,
+      "verified": true
+    },
+    "wrong_value_each_of_six_both_directions": {
+      "cases": 12,
+      "verified": true
+    },
+    "release_mutation": {
+      "cases": 2
+    },
+    "source_universe_mutation": {
+      "cases": 2
+    },
+    "witness_mutation": {
+      "cases": 2
+    },
+    "authority_mutation": {
+      "cases": 2
+    },
+    "serialization_mutation": {
+      "cases": 10
+    },
+    "key_ordering": {
+      "cases": 8
+    },
+    "array_ordering": {
+      "cases": 2
+    },
+    "old_owner_substitution": {
+      "cases": 1,
+      "id": "OLD_OWNER_AS_CURRENT"
+    },
+    "frozen_input_mutation": {
+      "cases": 5
+    }
+  },
+  "my_review_only_probes": [
+    {
+      "probe": "all six additions are load-bearing",
+      "result": "changing any one moves the successor digest in both directions",
+      "passed": true
+    },
+    {
+      "probe": "all six omissions detected",
+      "result": "omitting any one moves the digest; no silent default",
+      "passed": true
+    },
+    {
+      "probe": "stale-checksum trap",
+      "result": "tampering joint_component_count to 99 while leaving the expected sha unchanged re-hashes to c86cb726... != claimed, and the bytes differ, so a stale checksum cannot pass",
+      "passed": true
+    }
+  ],
+  "coverage_gap_found": false,
+  "notes": "Coverage was substantively verified by enumerating the case ids per category and per field, not by trusting the reported 44/44."
+}
