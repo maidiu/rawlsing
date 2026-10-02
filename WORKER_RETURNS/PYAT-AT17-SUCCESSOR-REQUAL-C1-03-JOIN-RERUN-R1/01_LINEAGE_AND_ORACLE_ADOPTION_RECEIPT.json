@@ -1,0 +1,44 @@
+{
+  "schema": "PYAT_AT17_SUCCESSOR_REQUAL_LINEAGE@1",
+  "phase0_ancestry_lock": {
+    "branch_base_required": "8b2c45d754a0ff3922a7b60c510c9e96df995bc5",
+    "branch_base_observed": "8b2c45d754a0ff3922a7b60c510c9e96df995bc5",
+    "match": true,
+    "historical_tested_join_commit": "39046d22db18eb69cb9cdd3ce1865e7bc8dec1f0",
+    "is_ancestor": true,
+    "five_frozen_production_blobs_verified": true
+  },
+  "phase0_historical_failed_run_reproduced": {
+    "accepted_baseline": 413,
+    "join_cases": 22,
+    "collected": 435,
+    "passed": 434,
+    "failed": 1,
+    "sole_failure": "test_p7_frozen_spine_bindings_still_hold_for_the_fixture_law (stale R8 current composed-result identity assertion)",
+    "reproduced_locally": true,
+    "relabelled": false,
+    "note": "This remains historical failed evidence. It is not rewritten; the successor requalification supersedes the CLAIM, and the historical claim is preserved separately in 04_HISTORICAL_R8_CONSERVATION.json."
+  },
+  "phase1_merge": {
+    "accepted_branch": "integration/pyat-hq166-at07-successor-spine-accepted-r1",
+    "merged_tip": "069ac61b5c90486e5b7bb633135b4743dfbd55df",
+    "strategy": "ancestry-preserving --no-ff",
+    "conflicts": 0,
+    "merge_base": "b3b2fa13049513078c301a1f6574b661fcf390c5",
+    "oracle_freeze_in_ancestry": "92ddee2241a78b46394665d325e5ebf0e75adf40",
+    "independent_review_in_ancestry": "2a454f4cd6359d149269dbbbe5497ea1c263f9c8",
+    "accepted_package_byte_identical_after_merge": true,
+    "production_files_changed_by_merge": 0,
+    "full_package_merged_not_just_digest_strings": true,
+    "r8_historical_artifacts_unchanged": true
+  },
+  "adopted_successor_identities": {
+    "forward": "01c381d3f3c386cfc22fd2f57b8e2c244771ddf1529d4f8ab8c7b1cf41bd50dd",
+    "reverse": "a3bd7e85ae14babb5ac5a12b0bcc57a8cdf3eccf8f43394895903dc43aca40ca"
+  },
+  "historical_r8_identities_historical_only": {
+    "forward": "03610f9d91b23cfb6f862dc91b5de92c7f4e4b8e44a53b9efdacb1cf73af6b9e",
+    "reverse": "1202822cf98d802c04440328496dc64ee02e6d6030a3da6c9bf10ef1a6490a3c"
+  },
+  "astra_decision": "a2e7767ecec9ecb6d241861628759f2e933920d5"
+}

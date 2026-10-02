@@ -1,0 +1,39 @@
+{
+  "schema": "PYAT_AT17_SUCCESSOR_REQUAL@1",
+  "direction": "forward",
+  "executed_through": "real public path: provider -> composition -> generated evidence -> named positioned-subject consumer",
+  "grain": "POSITION=P1 -> ANSWER",
+  "expected_from": "HQ-adopted successor oracle package only; production never defines expected truth",
+  "observed": {
+    "raw_denominator_support": 60,
+    "cells": {
+      "yes": 54,
+      "no": 6
+    },
+    "exact_fraction": "9/10",
+    "consumer_result_state": "EXACT_SUPPORTED",
+    "generated_evidence_present": true,
+    "composed_result_identity": "01c381d3f3c386cfc22fd2f57b8e2c244771ddf1529d4f8ab8c7b1cf41bd50dd"
+  },
+  "full_preimage_comparison": {
+    "method": "production composition_result.identity_material() canonicalized and compared field by field to the adopted successor canonical",
+    "fields_compared": 44,
+    "field_mismatches": 0,
+    "only_in_production": [],
+    "only_in_successor": [],
+    "complete_preimage_equal": true,
+    "digest_equal": true,
+    "note": "A digest match alone was not treated as sufficient; the complete 44-field preimage was compared."
+  },
+  "six_successor_additions_exact": {
+    "discovery_receipt_refs": [],
+    "discovery_frontier_ref": null,
+    "recursive_handoff_refs": [],
+    "recursive_lineage_refs": [],
+    "joint_component_count": 1,
+    "joint_order_semantics": "SEMANTIC_ORDERED"
+  },
+  "conserved_38_historical_fields_verified": true,
+  "unexplained_identity_drift": false,
+  "field_fitted_to_production_output": false
+}

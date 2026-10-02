@@ -1,0 +1,35 @@
+{
+  "schema": "PYAT_AT17_HISTORICAL_R8_CONSERVATION@1",
+  "r8_spine_blob": "462bb282ddc2cc9667f1890f2d65f2fae9a3a72c",
+  "historical_forward_digest": "03610f9d91b23cfb6f862dc91b5de92c7f4e4b8e44a53b9efdacb1cf73af6b9e",
+  "historical_reverse_digest": "1202822cf98d802c04440328496dc64ee02e6d6030a3da6c9bf10ef1a6490a3c",
+  "historical_preimage_field_count": 38,
+  "restructure_of_previous_failing_obligation": {
+    "old": "test_p7_frozen_spine_bindings_still_hold_for_the_fixture_law asserted the historical composed digest as CURRENT",
+    "now": [
+      "test_p7_historical_fixture_law_bindings_still_hold",
+      "test_p7_historical_r8_composed_identity_is_preserved_as_historical_only"
+    ],
+    "deleted": false,
+    "skipped": false,
+    "xfailed": false,
+    "weakened": false,
+    "historical_assertion_strength": "STRONGER - the historical digest is re-derived from the pinned 38-field historical preimage in both directions and proved distinct from the current C1-02 identity"
+  },
+  "historical_spine_still_binds_original_identities": {
+    "universe_ref": true,
+    "release_ref": true,
+    "query_authority_ref": true,
+    "producer_predicate_ref": true,
+    "producer_predicate_hash": true,
+    "producer_query_ref": true,
+    "consumer_query_ref": true,
+    "witness_ref": true,
+    "evidence_ref": true,
+    "raw_denominator_support": true,
+    "note": "all fixture-law bindings re-asserted in test_p7_historical_fixture_law_bindings_still_hold"
+  },
+  "historical_spine_treated_as_current_expected_digest": false,
+  "historical_vs_current_distinct": true,
+  "conflation_corrected": "historical C1-01 identity truth versus current C1-02 identity truth"
+}
