@@ -304,3 +304,28 @@ Important Court 9 architecture result:
 - reuse ADP-015 thin relationship entity;
 - no new generic dyad psyche/trust/intimacy store;
 - external human player participation is the real missing seam requiring further architecture court.
+
+## Current machine-spine / kernel-discovery note
+
+`03_REAL_ALPHA_SPINE.md` is now the canonical **living organism map**.
+
+It must not be read as claiming that Sorok has already discovered Rawlsing's final kernel.
+
+Current status:
+
+`KERNEL = OPEN_DISCOVERY`.
+
+The control room is deliberately sifting among candidate generative centers by asking which can derive the widest range of:
+- person/world causality;
+- relation;
+- perception/attention;
+- irreversible history;
+- otherness;
+- noncommodification;
+- platform membranes;
+- veil/neighbor pedagogy
+
+with the least independent legislation.
+
+Future audit waves should therefore be read as evidence for architecture compression, not as a goal of accumulating more product laws.
+
