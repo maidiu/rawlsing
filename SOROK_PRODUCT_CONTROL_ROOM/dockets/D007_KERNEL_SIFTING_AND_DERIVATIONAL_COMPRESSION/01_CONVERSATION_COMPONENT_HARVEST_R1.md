@@ -1261,3 +1261,110 @@ Some topics are intentionally classified as:
 
 That is deliberate compression, not omission.
 
+# 8. New kernel contributions — agency without sovereignty + persona introduction
+
+## N1 — user agency without ontological sovereignty
+Classification: `PROMOTE / CONNECT`
+
+Rawlsing can preserve extremely broad user action while refusing to let the fact of being the player settle:
+- who the persona is;
+- what happened;
+- what the event meant to another actor;
+- what prior history caused;
+- whether the user's pathologization is true;
+- what consequences remain after departure.
+
+Compact:
+
+> **The user remains the subject of play but not the sovereign center of the played world.**
+
+Candidate relation:
+this is a game-design realization of plural first-person centers + non-exhaustion.
+
+It prevents two opposite failures:
+- powerless moral lesson / railroad;
+- player-authored NPC reality.
+
+Strong kernel clue:
+`AGENCY != ONTOLOGICAL VETO`.
+
+---
+
+## N2 — structural decentering precedes kenotic attention
+Classification: `PROMOTE`
+
+The game should not merely instruct:
+> decenter yourself.
+
+It should structurally make self-centering inadequate through:
+- unchosen encounter;
+- independent persona causality;
+- user-independent truth;
+- irreversible event history;
+- no same-person reroll;
+- model != person;
+- partial access;
+- ongoing life beyond user.
+
+Then ATTEND/kenotic attention becomes a practical response to resistance rather than an imposed virtue lesson.
+
+Candidate relation:
+> **kenotic attention is epistemic submission to the other's excess, not moral submission to the other's judgment.**
+
+---
+
+## N3 — persona introduction as social non-exhaustion experiment
+Classification: `CONNECT / PROMOTE`
+
+A user may privately introduce a real friend to the same seed-person lineage.
+
+Each friend receives:
+- common pre-contact root lineage;
+- independent phenomenal access;
+- independent action history;
+- independent post-contact person/relation/world branch.
+
+The real humans can then compare:
+- what each noticed;
+- what each learned;
+- what each never saw;
+- how the relationship changed;
+- which pre-contact formative facts one discovered and the other did not.
+
+Candidate relation:
+this mechanism operationalizes:
+
+`SAME ROOT`
++
+`DIFFERENT SITUATED DISCLOSURE`
++
+`DIFFERENT RELATIONAL CAUSATION`
+→ `DIFFERENT BECOMING`.
+
+This is a direct experiential demonstration of:
+- person non-exhaustion;
+- perspective non-exhaustion;
+- relation-specific constitution.
+
+---
+
+## N4 — shared root expansion without federated personhood
+Classification: `SEPARATE / DERIVE`
+
+Users' ATTEND may enlarge the **resolved shared pre-contact canon** by causing new loci to be lawfully materialized.
+
+But users' relational histories may never aggregate into shared Nadia personhood.
+
+Preserve:
+
+`ROOT FACT DISCOVERY / RESOLUTION MAY BECOME SHARED`
+
+while:
+
+`USER RELATION EFFECTS MUST REMAIN BRANCH-LOCAL`.
+
+Candidate relation:
+this is an unusually precise computational expression of:
+> relation really constitutes the person **where the relation occurred**, without becoming possession or global overwrite of the person across unrelated relations.
+
+
