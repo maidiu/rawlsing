@@ -1053,3 +1053,131 @@ Question accounting:
 - 30 nonblocking answered/closed;
 - 1 open nonblocking kernel-discovery frontier.
 
+## 2026-10-02 — Historical bridge reconciliation + contradiction preservation
+
+New architecture direction:
+
+`LATE PRECONTACT DETAIL`
+must be resolved through:
+
+`BACKWARD CONSTRAINT`
++
+`SPARSE FORWARD CAUSAL RECONCILIATION`.
+
+Artifact:
+`70_HISTORICAL_BRIDGE_RECONCILIATION_CAUSAL_SLACK_AND_CONTRADICTION_PRESERVATION_R1.md`.
+
+Key law:
+
+> **Late historical materialization may explain, specify and locally enrich established developmental state; it may not casually manufacture a new major developmental cause whose absence would have made current V3 materially different.**
+
+### Causal slack
+
+V3 may establish:
+- that a developmental transition occurred;
+- approximate period;
+- affected domains;
+- known major causes;
+while leaving some concrete causal bearers/exposures unresolved.
+
+Late flesh may instantiate those open channels.
+
+Example:
+an already-established control/anxiety/friendship-rupture transition may later be concretized as having included some meditation exposure without making Buddhism the newly invented cause of present Nadia.
+
+### Contradiction preservation
+
+Strong distinction:
+
+`HARD OBJECTIVE / CAUSAL INCONSISTENCY`
+→ repair/reject.
+
+`LAWFUL HUMAN CONTRADICTION`
+→ preserve.
+
+Rawlsing must not harmonize:
+- beliefs;
+- habits;
+- tastes;
+- ideological phases;
+- objects;
+- relational modes;
+- self-narratives
+
+into one total psychological explanation merely because an LLM can.
+
+Current compact laws:
+
+> **HISTORICAL COMPATIBILITY != TOTAL PSYCHOLOGICAL HARMONIZATION.**
+
+> **CONTRADICTION IS OFTEN GENERATIVE PERSON-STATE, NOT DATA ERROR.**
+
+> **PERSON != BEST AVAILABLE THEORY OF PERSON.**
+
+### Anti-serendipity
+
+Historical completion must not systematically prefer:
+- elegant symbolism;
+- maximum explanatory reach;
+- foreshadowing;
+- user-confirming interpretations;
+- every object having a deep reason.
+
+Preserve:
+- contingency;
+- ordinary liking;
+- dead ends;
+- weak associations;
+- mixed motives;
+- unresolved significance.
+
+Compact:
+
+> **CAUSAL AVAILABILITY != NARRATIVE DESTINY.**
+
+> **DO NOT MAXIMIZE MEANINGFULNESS. PRESERVE CONTINGENCY.**
+
+### Historical impact classes
+
+Candidate:
+- H0 descriptive/inert;
+- H1 episodic/associative;
+- H2 contributory/symbolic;
+- H3 developmentally formative.
+
+Late H3 creation is presumptively forbidden unless:
+- the relevant V3 transformation already exists;
+- appropriate causal slack exists;
+- forward reconciliation preserves established pillars;
+- exact governance permits the fill.
+
+### User interpretation
+
+A user's interpretation of Nadia may become a new present relational cause.
+
+It may affect Nadia's later:
+- self-understanding;
+- memory accessibility;
+- interpretation;
+- development.
+
+It does not retroactively become objective truth about Nadia's past.
+
+Decisions:
+- `SPD-0209..SPD-0212`.
+
+Risks:
+- `RISK-170..RISK-173`.
+
+Question:
+- `Q-HISTBRIDGE-001` — ALPHA_IMPLEMENTATION blocker.
+
+Question accounting:
+- 120 total;
+- 1 ALPHA_SPEC;
+- 44 ALPHA_IMPLEMENTATION;
+- 25 ALPHA_VALIDATION;
+- 19 POST_ALPHA;
+- 30 nonblocking answered/closed;
+- 1 open nonblocking kernel-discovery frontier.
+
