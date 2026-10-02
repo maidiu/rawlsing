@@ -1230,3 +1230,69 @@ Question accounting:
 - 30 nonblocking answered/closed;
 - 1 open nonblocking kernel-discovery frontier.
 
+## 2026-10-02 — Recursive self-rereading / visibility / Horizon synthesis
+
+Artifact:
+`72_RECURSIVE_SELF_INTERPRETATION_VISIBILITY_AND_HORIZON_R1.md`.
+
+Core dynamic:
+
+`IDENTIFICATION → INTERNALIZATION → NATURALIZATION → INVISIBILITY → AGENT-OF`
+
+and:
+
+`ALIENATION → EXTERNALIZATION → OBJECTIFICATION → VISIBILITY → AGENCY-AGAINST`.
+
+Applied to self-interpretive frameworks:
+
+- a self-myth may begin as an explicit proposition;
+- repeated adoption may turn it into a routing structure for salience, memory, identity and action;
+- after naturalization it may become phenomenally invisible while remaining causally powerful;
+- contradiction/pressure/relation may alienate the actor from it and make the framework newly visible;
+- new visibility does not automatically mean truth, freedom or correct causal understanding.
+
+Temporal law:
+
+> **The past is fixed; relation-to-the-past is historical and revisable.**
+
+Example form:
+- age-23 elated self-myth A;
+- age-29 depressive/alienated counter-myth B;
+- age-35 softened synthesis C.
+
+Preserve A, B and C as historically causal layers. C may critique and integrate A/B without overwriting their prior effects.
+
+New type:
+**articulation event** — a later person/text/practice/concept can give language and organization to a shape already partly lived without being its original cause.
+
+This allows:
+- a meditation class to leave low-level traces;
+- later life to develop through many other causes;
+- a later Buddhadasa text to feel like "what I was looking for";
+- the later recognition to reorganize Nadia without retroactively making Buddhism the hidden cause of her life.
+
+Absolute Horizon remains distinct from identity/self-myth. Frameworks may:
+- remain finite and relativizable;
+- carry Horizon claims;
+- colonize Horizon;
+- be judged by Horizon;
+- reorganize what Nadia treats as worth sacrifice.
+
+Decisions:
+- `SPD-0217..SPD-0221`.
+
+Risks:
+- `RISK-178..RISK-181`.
+
+Question:
+- `Q-SELFREAD-001` — ALPHA_IMPLEMENTATION.
+
+Question accounting:
+- 122 total;
+- 1 ALPHA_SPEC;
+- 46 ALPHA_IMPLEMENTATION;
+- 25 ALPHA_VALIDATION;
+- 19 POST_ALPHA;
+- 30 nonblocking answered/closed;
+- 1 open nonblocking kernel-discovery frontier.
+
