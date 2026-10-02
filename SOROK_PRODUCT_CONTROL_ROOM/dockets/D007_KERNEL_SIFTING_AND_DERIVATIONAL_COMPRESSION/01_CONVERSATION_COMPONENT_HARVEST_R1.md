@@ -1590,4 +1590,75 @@ Interpretive frameworks can be:
 
 This connects self-myth, identification/alienation and Absolute Horizon without collapsing them.
 
+# 12. Framework reality-metabolism as kernel evidence
+
+## R1 — reality exceeds every frame, but enters through frames
+Classification: `PROMOTE / CONNECT`
+
+A person never encounters unmediated total reality.
+
+Interpretive frameworks route what becomes:
+- salient;
+- credible;
+- retrievable;
+- actionable.
+
+Yet external reality continues to produce consequences not exhausted by those routes.
+
+Kernel form:
+> **Reality exceeds interpretation; interpretation mediates how reality becomes causal inside the person.**
+
+---
+
+## R2 — overwrite can be phenomenological without being ontological
+Classification: `PROMOTE`
+
+A later self-retcon may dominate:
+- autobiographical access;
+- self-description;
+- affective coloring;
+- evidence selection.
+
+But causal history, prior mediators and contradiction remain.
+
+This is another instance of non-exhaustion:
+`CURRENT SELF-STORY != HISTORICAL PERSON`.
+
+---
+
+## R3 — integration and appropriation are different contradiction operations
+Classification: `PROMOTE / DERIVE`
+
+Integration:
+`REALITY PRESSURE → FRAME CHANGES`.
+
+Appropriation:
+`REALITY PRESSURE → MEANING OF PRESSURE CHANGES SO FRAME SURVIVES`.
+
+Partition:
+`PRESSURE IS ADMITTED BUT DOMAIN-SEPARATED`.
+
+Ignoring:
+`PRESSURE REMAINS CAUSAL WITHOUT ADEQUATE ACTOR UPTAKE`.
+
+These distinctions turn "maturity" into concrete processing operations rather than a moral scalar.
+
+---
+
+## R4 — reality collision is universal; correction is not
+Classification: `PROMOTE`
+
+Every actor continues to encounter body, world, other persons and consequences.
+
+But repeated contact does not guarantee increasingly accurate self-understanding.
+
+This preserves historical possibility for:
+- growth;
+- rigidity;
+- sectarian enclosure;
+- generosity;
+- confusion;
+- conversion;
+- chronic contradiction.
+
 
