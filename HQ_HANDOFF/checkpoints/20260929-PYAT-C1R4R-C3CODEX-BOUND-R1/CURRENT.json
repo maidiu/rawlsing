@@ -1,0 +1,51 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.0.0",
+  "checkpoint_id": "20260929-PYAT-C1R4R-C3CODEX-BOUND-R1",
+  "status": "C1_R4_RETURNED_REVIEW_READY__C1_R4_INDEPENDENT_REREVIEW_BOUND__C3_03_STATIC_PASS_EXECUTION_BLOCKED__CODEX_FALLBACK_BOUND",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "902640dfddce431d0c5ba151d3eb851d6b84d7a3",
+  "implementation_baseline": "b3b2fa13049513078c301a1f6574b661fcf390c5",
+  "governing_decisions": [
+    "HQD-2026-09-27-124",
+    "HQD-2026-09-28-125",
+    "HQD-2026-09-29-126",
+    "HQD-2026-09-29-127",
+    "HQD-2026-09-29-128"
+  ],
+  "predecessor_checkpoint": "20260929-PYAT-C1R4-C3R-BOUND-R1",
+  "c1": {
+    "r4_return": "233a91d7cb7789a8e338405abdfef15a5a8ee764",
+    "selection_key_correct": "53683ac6353055af69af9f2d5cb93d889ccc5338b6aa915990c6a541ad942cb6",
+    "selection_key_stale": "a0c54c568eee1351a67ecfee43c297e82aba509daf4bce6932b5ae7331ca03cd",
+    "reviewer_branch": "agent/reviewer-pyat-hq126-c1-00-r4-rereview-r1",
+    "reviewer_commission_tip": "bcaa43885dafaa9391a4466620eb41a0e570eebb",
+    "c1_01_authorized": false
+  },
+  "c3": {
+    "review_return": "1b92286cc1f8e40f73b8a3bcf61e11d36aabe2a0",
+    "static_disposition": "PASS_AT_DECLARED_GRAIN",
+    "execution_disposition": "BLOCKED_EXECUTION_CAPABILITY",
+    "semantic_candidate": "901e3e77f905847d3ef8d86b458280d8fe422dd0",
+    "execution_commit": "283d2c5d2b187c4e62ae1aecb236a0b51ddeffb1",
+    "github_failed_attempts": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "codex_branch": "agent/codex-pyat-hq126-c3-03-source-free-execution-r1",
+    "codex_commission_tip": "01d393e94b185f9cbb7f8aa85d25b7ee8f79a64a",
+    "adoption_authorized": false
+  },
+  "held_gates": {
+    "C1_01": "WAIT_FINAL_R4_INDEPENDENT_REREVIEW_AND_HQ_FREEZE",
+    "C2_02": "WAIT_ACCEPTED_C1_CONTRACT_AND_HQ_EXACT_WORKLOAD",
+    "C3_ADOPTION": "WAIT_CODEX_SOURCE_FREE_EXECUTION_PASS",
+    "JOIN_01": "WAIT_APPLICABLE_INDEPENDENTLY_REVIEWED_QUALIFIED_OUTPUTS",
+    "OMEGA_1": "WAIT_SCOPED_SOURCE_FREE_JOIN"
+  },
+  "source_execution_authorized": false,
+  "actor_implementation_authorized": false,
+  "astra_escalation_triggered": false,
+  "next_action": "USER_LAUNCH_C1_R4_INDEPENDENT_REREVIEW_AND_C3_CODEX_SOURCE_FREE_EXECUTION__HQ_ADJUDICATES_RETURNS"
+}

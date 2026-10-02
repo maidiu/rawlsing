@@ -1,0 +1,54 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_MANIFEST@1.1.0",
+  "checkpoint_id": "20260930-PYAT-BROWSER-ECONOMY-MODE-R1",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "semantic_pre_main_tip": "902640dfddce431d0c5ba151d3eb851d6b84d7a3",
+  "governing_decisions": [
+    "HQD-2026-09-27-124",
+    "HQD-2026-09-28-125",
+    "HQD-2026-09-30-136",
+    "HQD-2026-09-30-137"
+  ],
+  "operating_refinement_record": "USER_DIRECTED_PYAT_HQ_EFFECTIVENESS_20260930",
+  "current_md_path": "HQ_HANDOFF/checkpoints/20260930-PYAT-BROWSER-ECONOMY-MODE-R1/CURRENT.md",
+  "current_json_path": "HQ_HANDOFF/checkpoints/20260930-PYAT-BROWSER-ECONOMY-MODE-R1/CURRENT.json",
+  "blobs": {
+    "current_md": "8641d064b864979184f79e65f61c6e45e8307784",
+    "current_json": "342daba67644c7766598e9aff181c8a8debb0faa"
+  },
+  "operating_requirements": {
+    "path": "PYAT_CONTROL_ROOM/HQ_OPERATING_REQUIREMENTS_EFFECTIVENESS_R1.md",
+    "git_blob_sha1": "f5f7efdbf060741d45ac950395446b6ca7082dc8"
+  },
+  "c1_r8_commission": {
+    "branch": "agent/codex-pyat-hq137-c1-01-r8-release-spine-rebaseline-r1",
+    "tip": "fc61bf8417c39d8855987b6768fc739b1a4829d8",
+    "path": "WORKER_RETURNS/PYAT-C1-01-R8-RELEASE-SPINE-REBASELINE-R1/00_COMMISSION.md",
+    "routing_status": "SUBSTANTIVE_SCOPE_RETAINED__WHOLE_JOB_CODEX_ROUTING_SUPERSEDED_BY_USER_MODE"
+  },
+  "prior_checkpoint_id": "20260930-PYAT-HQ137-C1R8-COHERENT-REPAIR-R1",
+  "prior_handoff_commit": "92edcdb9c25a06dff8eeed4de10e305ab177e47e",
+  "packet_status": "IMMUTABLE_ONCE_POINTER_ADVANCES",
+  "operating_mode": {
+    "selected": "BROWSER_ECONOMY",
+    "requirements_path": "PYAT_CONTROL_ROOM/BROWSER_ECONOMY_MODE_R1.md",
+    "record_id": "USER_DIRECTED_PYAT_BROWSER_ECONOMY_20260930",
+    "default_owner": "BROWSER_GPT_5_6_SOL_HIGH",
+    "codex_exception": "NECESSARY_OPERATION_UNAVAILABLE_THROUGH_ACTUALLY_AVAILABLE_AUTHORIZED_BROWSER_OR_SERVICE_ROUTES",
+    "convenience_or_speed_sufficient": false,
+    "whole_job_codex_default": false,
+    "astra": "EXISTING_OMEGA_AND_SUBSTANTIVE_ESCALATION_GATES_ONLY",
+    "alternate_mode": "EFFICIENCY_FIRST",
+    "alternate_active": false,
+    "switch_requires": "EXPLICIT_USER_DIRECTION",
+    "usage_budget_tokens": null
+  },
+  "mode_requirements": {
+    "path": "PYAT_CONTROL_ROOM/BROWSER_ECONOMY_MODE_R1.md",
+    "git_blob_sha1": "b90d3d3aafb01950fc1b5eca1bf1de3fe88b9071"
+  },
+  "active_task_board": {
+    "path": "PYAT_CONTROL_ROOM/OMEGA_VOZHD_ORCHESTRATION_R1/ACTIVE_TASK_BOARD_R1.json",
+    "git_blob_sha1": "8dc9a5cfc30fed0b06904f8eb277eb8ffcfca3c0"
+  }
+}

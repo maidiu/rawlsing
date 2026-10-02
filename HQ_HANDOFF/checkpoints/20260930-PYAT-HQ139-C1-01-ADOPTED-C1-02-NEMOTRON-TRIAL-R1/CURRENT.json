@@ -1,0 +1,76 @@
+{
+  "schema": "RAWLSING_HQ_CHECKPOINT_CURRENT@1.0.0",
+  "checkpoint_id": "20260930-PYAT-HQ139-C1-01-ADOPTED-C1-02-NEMOTRON-TRIAL-R1",
+  "status": "C1_01_ADOPTED__C1_02_OPENCODE_NEMOTRON_LONG_TRIAL_BOUND__C2_PREP_COMPLETE__C3_ADOPTED",
+  "control_branch": "integration/pre-main-reconciliation-r1",
+  "predecessor_checkpoint": "20260930-PYAT-HQ138-C1R8-REVIEW-BOUND-R1",
+  "governing_decision": "HQD-2026-09-30-139",
+  "semantic_pre_main_tip": "902640dfddce431d0c5ba151d3eb851d6b84d7a3",
+  "c1_01": {
+    "worker_return": "3c09a2d5de6d5335874bb1d2b787cfe69ec2d9e5",
+    "review_return": "98825f710e5238e794c78bf0acbb43faaea355e4",
+    "review_disposition": "APPROVE_AT_DECLARED_GRAIN",
+    "integration_branch": "integration/pyat-hq139-c1-01-source-free-accepted-r1",
+    "integration_head": "5fafb499d53dddadaf8a7b4fd46506e91a09d270",
+    "disposition": "ADOPTED_AT_DECLARED_SOURCE_FREE_GRAIN",
+    "executed_counts": {
+      "passed": 58,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "nemotron_qualification": {
+    "platform": "OPENCODE",
+    "model": "NEMOTRON_3_ULTRA_FREE",
+    "status": "PROVISIONAL_PASS",
+    "qualification_return": "98825f710e5238e794c78bf0acbb43faaea355e4",
+    "strengths": [
+      "SCOPE_OBEDIENCE",
+      "EVIDENCE_GRADE_SEPARATION",
+      "SUBSTANTIVE_IDENTITY_FORENSICS",
+      "PREDICATE_RECOMPUTATION_REASONING",
+      "EXECUTION_PROVENANCE_ADJUDICATION"
+    ],
+    "telemetry_defect": {
+      "id": "NEMOTRON-Q1-SELF-HEAD-001",
+      "severity": "NONBLOCKING",
+      "description": "Review packet self-reported commission tip in review_head fields rather than actual pushed return head."
+    }
+  },
+  "c1_02": {
+    "branch": "agent/opencode-pyat-hq139-c1-02-higher-order-recursive-r1",
+    "base": "5fafb499d53dddadaf8a7b4fd46506e91a09d270",
+    "commission_tip": "88181e69852721f1e29c868ec5f5256095716a19",
+    "commission_path": "WORKER_RETURNS/PYAT-C1-02-HIGHER-ORDER-RECURSIVE-R1/00_COMMISSION.md",
+    "launch_surface": "OPENCODE",
+    "model": "NEMOTRON_3_ULTRA_FREE",
+    "scope": "AT08_AT13_HIGHER_ORDER_JOINT_RECURSIVE_ANALYTICAL_COMPOSITION",
+    "state": "BOUND_AWAITING_USER_MEDIATED_OPENCODE_LAUNCH",
+    "independent_review_required": true,
+    "task_specific_exception_to_browser_economy": true
+  },
+  "c2": {
+    "state": "COMPLETE_AT_DECLARED_C4_PREPARATION_GRAIN",
+    "d02_blocker": "CLOSED_AT_DECLARED_GRAIN",
+    "epistemic_residual": "C2-EPCLASS-PAYLOAD-001__UNRESOLVED_NOT_MISSING_PROVED__BLOCKS_CLASS_SENSITIVE_CLAIMS"
+  },
+  "c3": {
+    "state": "ADOPTED_AT_DECLARED_SOURCE_FREE_GRAIN",
+    "integration_head": "30686b185d4ceb2c94f61815ef70d8c8e76255d6"
+  },
+  "next_action": "USER_LAUNCH_C1_02_IN_OPENCODE_NEMOTRON_3_ULTRA__LET_LONG_RUNNING_OWNER_COMPLETE_AND_PUSH__HQ_ADJUDICATES_RETURN",
+  "held": [
+    "C1-03 until C1-02 independently accepted",
+    "C1-R until C1-03",
+    "JOIN-01 until C1-R with relevant C2/C3",
+    "OMEGA-1 until JOIN-01 and competent next workload proposal",
+    "C4 until accepted C1 plus relevant C2/C3 plus OMEGA-1 plus exact raw-source warrant"
+  ],
+  "prohibitions": [
+    "NO_RAW_SOURCE_EXECUTION",
+    "NO_C4_EXECUTION",
+    "NO_C1_03_IMPLEMENTATION_IN_C1_02",
+    "NO_PREV3_TO_V3_ACTOR_IMPLEMENTATION"
+  ]
+}
