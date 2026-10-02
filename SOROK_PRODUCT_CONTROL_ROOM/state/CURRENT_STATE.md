@@ -1355,3 +1355,99 @@ Question accounting:
 - 30 nonblocking answered/closed;
 - 1 open nonblocking kernel-discovery frontier.
 
+## 2026-10-02 — V3/PFF/SDTF authority correction and self-retcon rescope
+
+Correction artifact:
+`74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md`.
+
+### Source-authority correction
+
+The pre-programming `Rawlsing Personality Generator Framework v3.4` is historical seed material and has zero current architecture authority.
+
+Current grounding for this lane is the later PFF/SDTF-era chain, including:
+- unified V3/PFF reconciliation `f4a61361ae9da371a0319594c297fbf93f0326ad`;
+- U1 composition/hostile courts;
+- fresh CAN-008 R2 hostile review `79829a2fe5ae6579c92cf4be4aab4a71b05bdc62`;
+- HQ CAN-008 R2 adoption;
+- exact PFF/CAN-008 R2 interface binding `57b71970e95b0fa7060598bf9268358fca7e78da`;
+- SDTF evidence-calibration discipline `620545ebcc288c50b09f666aac0865850067277d`.
+
+Method law:
+`SOURCE SUPPORT != RULE OWNER AUTHORITY != CAUSAL-USE AUTHORITY != RULE CURRENTNESS`.
+
+### Current person-event spine
+
+HQ-adopted CAN-008 R2:
+
+`EXACT GENERATED / ADMITTED EVENT`
++
+`EXACT READ-ONLY CONDITIONING PERSON STATE`
++
+optional rule-bound modality evidence
+→ actor receivability
+→ actor uptake/appraisal
+→ situated recruitment
+→ multi-stream immediate response/metabolism
+→ bounded current consequence and/or separately authorized target-owner effect.
+
+No new durable uptake/self-model/PFF psyche owner is created.
+
+### Self-retcon correction
+
+Self-retcon is provisionally a **distributed longitudinal pattern** over:
+- repeated person×event couplings;
+- CAN-010 expectations/strivings;
+- CAN-011 mediators/tensions/practices;
+- ADP-015 relationship state;
+- ADP-016 memory/causal traces;
+- ADP-017 epistemic/access state;
+- exact other target-owner effects.
+
+Do not implement a monolithic self-retcon object or framework-metabolism subsystem until a hostile scenario proves a nonredundant semantic remainder.
+
+The artifact-73 pattern names:
+`INTEGRATIVE / APPROPRIATIVE / PARTITIONED / IGNORING / EXTERNALIZING / CRACKING / TRANSFORMING`
+are Sorok analysis/test labels, not current V3 operator enums.
+
+### Occurrence gate
+
+Analyst-detected contradiction is not occurrence.
+
+Expectation, striving, mediator, tension, scar, need activation, attractor state or analyst interpretation may condition uptake/recruitment but cannot substitute for exact generated/admitted precipitating event basis.
+
+### What survives
+
+> **Overwrite current routing/access/narration effects; never overwrite causal history.**
+
+This is shorthand for distributed owner-specific state/access effects, not one global mutation.
+
+> **More capacious != complete.**
+
+> **Coherence != truth.**
+
+> **Contradiction may remain causally real without being actor-known.**
+
+### Horizon correction
+
+Absolute-Horizon formalization remains useful Sorok theological/kernel research, but the latest unified PFF reconciliation classifies it as U3 speculative/deferred and not architecture-critical for that PFF cycle.
+
+Do not cite it as current V3 runtime authority absent later accepted/current authority.
+
+Decisions:
+- `SPD-0227..SPD-0231`.
+
+Risks:
+- `RISK-187..RISK-189`.
+
+`Q-FRAMEMETAB-001` is now a CAN-008 R2 composition/falsification question:
+first prove whether current adopted semantics can generate the required self-retcon phenomena; mint a new primitive only on an exact hostile failure.
+
+Question accounting re-derived from the register:
+- 123 total;
+- 1 ALPHA_SPEC;
+- 47 ALPHA_IMPLEMENTATION;
+- 25 ALPHA_VALIDATION;
+- 19 POST_ALPHA;
+- 30 nonblocking answered/closed;
+- 1 researching nonblocking kernel frontier.
+
