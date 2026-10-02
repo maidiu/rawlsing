@@ -1367,4 +1367,76 @@ Candidate relation:
 this is an unusually precise computational expression of:
 > relation really constitutes the person **where the relation occurred**, without becoming possession or global overwrite of the person across unrelated relations.
 
+# 9. Contradiction as kernel evidence
+
+## O1 — contradiction is not noise around the person
+Classification: `PROMOTE / FALSIFY`
+
+If a person is a singular tension-site produced by:
+- multiple relations;
+- different institutions;
+- different time periods;
+- embodied/material pressures;
+- changing self-interpretations;
+
+then contradiction is not surprising residue.
+
+It may be a structural consequence of relational constitution.
+
+Examples:
+- values conflict with habits;
+- current ideology conflicts with beloved objects from prior phases;
+- one relation evokes control while another evokes looseness;
+- self-narrative conflicts with objective causal history;
+- a present preference survives after the worldview that once accompanied it has changed.
+
+Kernel implication:
+a candidate that requires globally harmonized person-state may be too totalizing.
+
+---
+
+## O2 — explanatory non-exhaustion
+Classification: `PROMOTE`
+
+Non-exhaustion applies not only to:
+- world vs perception;
+- person vs relation;
+- person vs model;
+
+but also to:
+- person vs explanation.
+
+Compact:
+
+`PERSON != BEST AVAILABLE THEORY OF PERSON`.
+
+Even a causally strong account may remain:
+- partial;
+- domain-specific;
+- temporally local;
+- one of several compatible readings.
+
+This protects the person from becoming a solved psychological mechanism.
+
+---
+
+## O3 — user interpretation as gift without sovereignty
+Classification: `CONNECT`
+
+The user may offer Nadia a new interpretation of her own history.
+
+That interpretation may become:
+- rejected;
+- partially adopted;
+- transformative;
+- irritating;
+- later reconsidered.
+
+The interpretation becomes a **new present relation-event**.
+
+It does not become retroactive truth merely because it is elegant.
+
+This creates a powerful form of reciprocal relation:
+the user can genuinely contribute to Nadia's future self-understanding without owning Nadia's past.
+
 
