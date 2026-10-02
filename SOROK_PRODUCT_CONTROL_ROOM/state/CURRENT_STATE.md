@@ -1181,3 +1181,52 @@ Question accounting:
 - 30 nonblocking answered/closed;
 - 1 open nonblocking kernel-discovery frontier.
 
+## 2026-10-02 — Recurrent resonance / meaning-strata synthesis
+
+New architecture direction:
+
+> **Generate the conditions for resonance; do not pre-author the interpretation of resonance.**
+
+Artifact:
+`71_RECURRENT_RESONANCE_MEANING_STRATA_AND_VARIABLE_SELF_MYTHOLOGIZATION_R1.md`.
+
+Current compact law:
+`RECURRENCE WITHOUT TELEOLOGY`.
+
+A durable/evolving V3 organization may express homologous patterns across childhood preference, adult vocation, relationships, politics, aesthetics or spirituality without one early expression having caused the later one.
+
+Preserve:
+`OCCURRENCE != CAUSAL CONTRIBUTION != STRUCTURAL RESONANCE != ACTOR ASSOCIATION != SELF-NARRATIVE != SELF-MYTHOLOGIZATION != COUNTERPART INTERPRETATION != NEGOTIATED MEANING != LATER CAUSAL EFFECT`.
+
+No canonical hidden `OBJECT.MEANING` field.
+
+Self-interpretation is actor- and domain-specific. Some personas are highly autobiographical/symbolic; some are concrete, suspicious of why-questions, or selectively interpretive. V3 already contains precedent for contradiction, symbolic reinterpretation and a distinct high self-mythologizing mode; the architecture should generalize that variability rather than make it universal.
+
+A self-story may be false, weakly supported or unfalsifiable and still become a real later cause once adopted.
+
+Compact:
+> **NARRATIVE TRUTH VALUE != NARRATIVE CAUSAL POWER.**
+
+And:
+> **COHERENCE-BUILDING MUST NOT BECOME EVIDENCE-DELETION.**
+
+This permits a user to offer Nadia a potentially illuminating interpretation without granting the user truth authority over her past.
+
+Decisions:
+- `SPD-0213..SPD-0216`.
+
+Risks:
+- `RISK-174..RISK-177`.
+
+Question:
+- `Q-MEANINGSTRATA-001` — ALPHA_IMPLEMENTATION.
+
+Question accounting:
+- 121 total;
+- 1 ALPHA_SPEC;
+- 45 ALPHA_IMPLEMENTATION;
+- 25 ALPHA_VALIDATION;
+- 19 POST_ALPHA;
+- 30 nonblocking answered/closed;
+- 1 open nonblocking kernel-discovery frontier.
+
