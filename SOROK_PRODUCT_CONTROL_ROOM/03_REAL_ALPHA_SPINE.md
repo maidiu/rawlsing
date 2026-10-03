@@ -421,6 +421,12 @@ Divergent interpretations of the same shared practice may lawfully shape the nex
 
 `ATTENTION HABIT → PHENOMENAL SURFACE → ATTEND / DISCOVERY → POSSIBLE ATTENTION REVISION`.
 
+Recognition has a parallel provenance constraint:
+
+`SPONTANEOUS USER IDENTIFICATION != SYSTEM/ACTOR-SUPPLIED LABEL != LATER ACQUIRED RECOGNITION`.
+
+Rawlsing may learn that the user now knows a label it actually taught them; it may not back-infer that they already possessed the expertise. See SPD-0246.
+
 ### Mutual-model loop
 
 `PERSON MODELS USER ↔ USER MODELS PERSON`,
@@ -1034,6 +1040,12 @@ ATTEND is not the only reason hidden truth becomes concrete. Any lawful actor/wo
 > **THE WORLD DEEPENS WHERE CAUSALITY REQUIRES, NOT ONLY WHERE THE PLAYER LOOKS.**
 
 See SPD-0239 / RISK-196.
+
+Progressive ambient noticing remains nonexhaustive. Simulated time and spare attention may enrich the phenomenal sample, but passive waiting does not become a room-wide scan or 100-percent clue state.
+
+> **AMBIENT TIME MAY ENRICH THE PHENOMENAL FIELD; WAITING IS NOT AN EXHAUSTIVE SCAN.**
+
+See SPD-0247 / RISK-203.
 
 Artifact:
 `70_HISTORICAL_BRIDGE_RECONCILIATION_CAUSAL_SLACK_AND_CONTRADICTION_PRESERVATION_R1.md`.
