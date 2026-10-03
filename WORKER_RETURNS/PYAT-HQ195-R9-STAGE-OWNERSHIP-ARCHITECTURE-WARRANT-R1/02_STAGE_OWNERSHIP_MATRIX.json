@@ -1,0 +1,192 @@
+{
+  "schema": "HQ195_STAGE_OWNERSHIP_MATRIX@1.0.0",
+  "lane": "PYAT-HQ195-R9-STAGE-OWNERSHIP-ARCHITECTURE-WARRANT-R1",
+  "scope": "For every O1-C07 account, what must be KNOWN before launch, what must merely have a MEASUREMENT MECHANISM before launch, what is expected/budgeted versus measured, whether an exact count, maximum, floor or configuration is required, who owns the number or decision, and what happens if the value is unknowable before execution.",
+
+  "stage_definitions": [
+    { "stage": "S0_pre_warrant_pre_issuance", "definition": "Before any warrant exists. Governs what may lawfully be decided, filled or signed at all." },
+    { "stage": "S1_warrant_issuance", "definition": "The act of binding the exact instrument: locators, execution surface, per-source accounting values, approvals, signature." },
+    { "stage": "S2_pre_launch", "definition": "After issuance, before the governed process starts. Governs what must be FROZEN versus merely AVAILABLE." },
+    { "stage": "S3_during_execution", "definition": "The governed run itself. Governs what is MEASURED and what happens on breach." },
+    { "stage": "S4_return_accounting_publication", "definition": "Publication of measured counts, retained evidence and the return accounting." },
+    { "stage": "S5_post_run_review_adoption", "definition": "Independent review, adjudication and adoption or rejection." }
+  ],
+
+  "obligation_primitives_used_throughout": {
+    "KNOWN": "an exact value must exist and be fixed before the stage ends",
+    "MECHANISM": "the means to obtain the value later must itself be fixed and verified before the stage ends; the value need not exist yet",
+    "MEASURED": "the value is obtained during the governed run and retained",
+    "POLICY_CEILING": "an HQ-adopted maximum whose purpose is to STOP a run; not a claim about expected or historical behaviour"
+  },
+
+  "accounts": [
+    {
+      "account": "path-level opens AND measurement basis",
+      "requirement_kind": "exact count AND basis",
+      "frozen_expectation_available": false,
+      "S0_pre_warrant_pre_issuance": {
+        "KNOWN": "That the account is mandatory and separate. This is already fixed by frozen O1-C07 and Omega-1.",
+        "owner": "OMEGA / frozen law; no worker discretion",
+        "note": "No worker may defer, waive or reinterpret the existence of this account at this stage."
+      },
+      "S1_warrant_issuance": {
+        "KNOWN": "A per-source path_opens value AND its basis, if the C4B per-source slot is carried forward. C4B's token is REQUIRED_EXACT_COUNT_AND_BASIS, so both parts are issuance-time obligations.",
+        "MECHANISM": "The instrument that would produce the count must be identified and bound at issuance, otherwise the slot cannot be lawfully filled.",
+        "owner": "HQ (binding) with the C4 execution owner (supplying the basis)",
+        "BLOCKER": "HQ194 has accepted that the bound runtime can neither measure nor enforce this count. Therefore at issuance the value CANNOT be lawfully produced.",
+        "discontinuity": "DQ-01 — the adopted candidate carries no per-source slot, so under the adopted candidate's own shape there is no per-source slot into which this value must be entered."
+      },
+      "S2_pre_launch": {
+        "KNOWN": "Per Omega-1's acceptance, the EXPECTED BUDGET and the INSTRUMENTATION must be frozen here.",
+        "expected_budget_available": false,
+        "why": "No frozen artifact supplies an expected path-opens figure for any permitted source. O1-C07's SRC27 hardened note gives only an account-term FLOOR and warns that multiple path-level opens occur. Deriving a number would be inventing a count.",
+        "instrumentation_available": false,
+        "why_instrumentation": "No lawful unprivileged interposition mechanism exists on the bound surface (HQ192 Part A, accepted by HQ194).",
+        "owner": "HQ",
+        "consequence": "This stage CANNOT be completed lawfully for this account on the current runtime."
+      },
+      "S3_during_execution": {
+        "MEASURED": "The literal OS path-open count, with its basis.",
+        "available": false,
+        "why": "The count occurs inside pyreadstat's compiled extension and is not observable from Python; DYLD interposition fails on the bound surface. Zero observations are a MECHANISM FAILURE, established by a direct libc.open control that also produced zero, and are NOT evidence of zero opens.",
+        "owner": "C4 execution owner (would own the measurement if a mechanism existed)"
+      },
+      "S4_return_accounting_publication": {
+        "KNOWN": "Publication must state the account's value WITH its basis.",
+        "lawful_value_if_unmeasurable": null,
+        "required_reason_shape": "UNREACHABLE_OR_UNOBSERVABLE_ACCOUNT__PATH_LEVEL_OPENS_NOT_MEASURABLE_AT_ANY_AVAILABLE_LAYER",
+        "explicitly_forbidden": "A fabricated zero, and equally a fabricated count, a relabelled reader-invocation count, or a relabelled Python-level open count.",
+        "owner": "C4 execution owner publishes; HQ adjudicates"
+      },
+      "S5_post_run_review_adoption": {
+        "decision": "Whether an unpopulated mandatory account blocks adoption. This is an adjudication decision, not a worker decision.",
+        "owner": "HQ, and Astra/Omega if the O1-C07 grain itself is reinterpreted"
+      },
+      "overall_status": "UNSATISFIABLE_AT_S1_S2_AND_S3_ON_CURRENT_RUNTIME__THIS_IS_THE_R9_BLOCKER"
+    },
+    {
+      "account": "file hash passes (full SHA-256)",
+      "requirement_kind": "exact count",
+      "frozen_expectation_available": "partial — one hash pass is implied per governed fresh access by the O1-C07 SRC27 floor ('one full SHA-256 hash pass'), and SRC08/SRC12 admissions are exact-SHA declared-encoding admissions",
+      "S1_warrant_issuance": { "KNOWN": "per-source exact hash-pass count", "owner": "HQ" },
+      "S2_pre_launch": { "KNOWN": "expected budget + instrumentation", "available": true, "why": "HQ192 measured and governed a Python-level whole-file hash pass; this is an ordinary, observable, enforceable operation in the frozen reader closure." },
+      "S3_during_execution": { "MEASURED": "available and separately cappable", "owner": "C4 execution owner" },
+      "S4_return_accounting_publication": { "KNOWN": "value + basis", "available": true },
+      "overall_status": "SATISFIABLE"
+    },
+    {
+      "account": "source-path existence/access checks",
+      "requirement_kind": "exact count",
+      "frozen_expectation_available": "partial — one existence/access check is implied per governed fresh access by the O1-C07 SRC27 floor",
+      "S2_pre_launch": { "MECHANISM": "available", "note": "Distinguish this from path-level opens: an existence/access CHECK performed by the reader is not the same quantity as an OS path-level open, and conflating them is the specific error this account set exists to prevent." },
+      "S3_during_execution": { "MEASURED": "available at the reader/Python layer", "owner": "C4 execution owner" },
+      "overall_status": "SATISFIABLE_AT_READER_LAYER__NOT_THE_BLOCKER"
+    },
+    {
+      "account": "metadata reads",
+      "requirement_kind": "exact count",
+      "frozen_expectation_available": true,
+      "frozen_values": { "SRC08": 1, "SRC12": 1, "SRC02": 0, "SRC06": 0, "SRC14": 0, "SRC26": 0 },
+      "S2_pre_launch": { "KNOWN": "expected budget = 1 for SRC08 and SRC12, 0 elsewhere", "available": true },
+      "S3_during_execution": { "MEASURED": "available", "owner": "C4 execution owner" },
+      "S4_return_accounting_publication": { "known": "value + basis", "available": true },
+      "overall_status": "SATISFIABLE__FULLY_SPECIFIED_BY_FROZEN_LAW"
+    },
+    {
+      "account": "header-prefix reads",
+      "requirement_kind": "exact count AND bytes",
+      "frozen_expectation_available": true,
+      "frozen_values": { "SRC26": { "expected_header_prefix_bytes": 176, "note": "geometry divergence between raw header 174 and decoded dictionary width 332 is expected and NOT equality-required" } },
+      "S2_pre_launch": { "KNOWN": "expected byte bound 176 for SRC26", "available": true },
+      "S3_during_execution": {
+        "MEASURED": "available at the Python layer",
+        "owner": "rawlsing_next/pre553_physical_decoder.py::_raw_layout_declarations",
+        "enforcement": "excess read refused BEFORE execution; measured 1 operation per decode returning 176 bytes (SAV) or 512 (DTA)",
+        "accepted_by": "HQ194 finding Part C / HDR-03"
+      },
+      "overall_status": "SATISFIABLE__CLOSED_AT_PYTHON_LAYER__HQ194_NARROWED_NOT_OS_LEVEL"
+    },
+    {
+      "account": "decoder invocations",
+      "requirement_kind": "exact count",
+      "frozen_expectation_available": "partial — HQ191 measured one governed decode entry call issues one or two pyreadstat reader invocations",
+      "S2_pre_launch": { "MECHANISM": "available and separately cappable", "owner": "HQ for the ceiling" },
+      "S3_during_execution": { "MEASURED": "available", "note": "HQ191 used this as the measurement layer of record and demonstrated abort BEFORE the unauthorised operation." },
+      "caveat": "A decoder-invocation count is a DIFFERENT account from a path-open count and may not be reported as one.",
+      "overall_status": "SATISFIABLE"
+    },
+    {
+      "account": "selected-column reads",
+      "requirement_kind": "exact count AND config",
+      "frozen_expectation_available": true,
+      "frozen_values": { "SRC08_selected_columns": 0, "SRC12_selected_columns": 0, "SRC02": ["Q10B"], "SRC06": ["Q101", "Q2061B"], "SRC14": ["v372"] },
+      "S2_pre_launch": { "KNOWN": "the exact selected variable set and ordinals, all frozen", "available": true },
+      "S3_during_execution": {
+        "MEASURED": "SELECTED-VARIABLE EXACTNESS is real and enforced by higher-layer exactness assertions; a selected-read COUNT as a decoder-layer operation does NOT exist",
+        "finding": "SEL-02 — usecols occurs zero times across the whole 23-module closure; all three reader sites are whole-file or metadata-only",
+        "lawful_reporting": "report selected-variable exactness as a satisfied configuration/exactness account, and report any selected-read COUNT as null with a typed reason rather than fabricating a count for an operation the decoder never performs"
+      },
+      "overall_status": "CONFIGURATION_ACCOUNT_SATISFIABLE__COUNT_ACCOUNT_HAS_NO_EXECUTABLE_OWNER__SECOND_BLOCKER_NARROWER_THAN_THE_OS_ONE"
+    },
+    {
+      "account": "full reads",
+      "requirement_kind": "exact count AND config",
+      "frozen_expectation_available": true,
+      "frozen_values": { "SRC02": 0, "SRC06": 0, "SRC08": 0, "SRC12": 0, "SRC14": 0, "SRC26": 0, "SRC27": "one governed fresh full Route-B pass (workload-constrained, expected 1, max 1)" },
+      "S2_pre_launch": { "KNOWN": "available for all seven", "note": "SRC27's value is a WORKLOAD constraint; O1-C07 expressly forbids reading it as an access constraint of one open." },
+      "S3_during_execution": { "MEASURED": "available at the reader layer", "owner": "C4 execution owner" },
+      "overall_status": "SATISFIABLE"
+    },
+    {
+      "account": "byte counts where measurable",
+      "requirement_kind": "exact bytes where measurable",
+      "frozen_expectation_available": "not as a count; the qualifier 'where measurable' is load-bearing",
+      "S3_during_execution": {
+        "MEASURED": "PARTIAL — Python-level byte accounting is observable and exact (763 bytes SAV decode, 2629 bytes DTA decode); compiled-reader internal bytes are NOT observable (BYT-02, depends on the OSL-01 blocker)",
+        "lawful_reporting": "the 'where measurable' qualifier permits reporting the measurable Python-level bytes exactly while reporting the compiled-reader interior as null with a typed reason. It does NOT permit reporting a compiled-reader byte figure as zero."
+      },
+      "overall_status": "PARTIAL__BY_DESIGN_OF_THE_QUALIFIER__NOT_A_SECOND_BLOCKER"
+    },
+    {
+      "account": "retries",
+      "requirement_kind": "exact count AND reason",
+      "frozen_expectation_available": true,
+      "frozen_values": { "frozen_maximum": "ZERO retries across all eight sources", "per_source_max_retry_budget": 0 },
+      "S2_pre_launch": { "KNOWN": "zero, frozen, non-negotiable", "available": true },
+      "S3_during_execution": { "MEASURED": "available and enforceable", "note": "a retry may not change source, encoding, variables, operations or authority" },
+      "overall_status": "SATISFIABLE__FULLY_SPECIFIED"
+    },
+    {
+      "account": "WVS/SRC35 fresh source opens and excluded-source fresh opens",
+      "requirement_kind": "hard zero",
+      "frozen_expectation_available": true,
+      "frozen_values": { "WVS_SRC35_fresh_source_opens": 0, "excluded_source_fresh_opens": 0 },
+      "S3_during_execution": { "MEASURED": "enforceable as an absence-of-access assertion at any layer, because the required value is zero and SRC35 is a retained comparator replayed from retained material" },
+      "zero_budget_discipline": "a single non-zero count is a STOP condition, not a reportable variance",
+      "overall_status": "SATISFIABLE__AND_NOT_DEPENDENT_ON_THE_OS_OPEN_BLOCKER"
+    }
+  ],
+
+  "matrix_conclusions": [
+    {
+      "id": "M-01",
+      "conclusion": "Of the ten mandatory separate accounts, eight are satisfiable on the current runtime, one (header-prefix) is closed at the Python layer by HQ194, one (byte counts) is partial by the express design of its 'where measurable' qualifier, and exactly ONE — path-level opens with its basis — is unsatisfiable at any layer available without new authority."
+    },
+    {
+      "id": "M-02",
+      "conclusion": "The unsatisfiable account is unsatisfiable at THREE consecutive stages independently: its value cannot be KNOWN at issuance, its EXPECTED budget cannot be KNOWN pre-launch, and its MEASUREMENT MECHANISM cannot be MECHANISM-available pre-launch. This is not a single missing number; it is a missing capability that removes the number from every stage at once."
+    },
+    {
+      "id": "M-03",
+      "conclusion": "The selected-column COUNT account (SEL-02) is a genuine second gap but is materially narrower: its CONFIGURATION half is fully frozen and its exactness is enforced, so only a decoder-layer COUNT is missing, and the lawful reporting route is a typed null rather than a fabricated count. It does not drive the disposition and should not be bundled with the OS-open blocker as though equally severe."
+    },
+    {
+      "id": "M-04",
+      "conclusion": "Ownership of the DECISION about the unsatisfiable account never sits with the execution owner at any stage. The C4 execution owner owns measurement and publication; Omega-1 and HQ own the account's existence and any reinterpretation of its grain; Astra is implicated only if the grain itself is changed. No stage of this matrix permits the execution owner to settle the account by choosing a proxy."
+    },
+    {
+      "id": "M-05",
+      "conclusion": "If the count is unknowable before execution — which is the actual situation — the frozen law already dictates the reporting form: null WITH A TYPED REASON, never a fabricated zero and never a relabelled proxy. The obligation does not become discretionary; it becomes a typed absence."
+    }
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "schema": "HQ195_MINIMUM_LAWFUL_SUCCESSOR_OPTIONS@1.0.0",
+  "lane": "PYAT-HQ195-R9-STAGE-OWNERSHIP-ARCHITECTURE-WARRANT-R1",
+  "framing": "These are candidate paths for HQ to choose among. This lane selects none of them. Each is stated with what it satisfies, what it does NOT satisfy, its authority cost, and its requalification burden. Options are not ranked by preference; they are ranked only by how little they change, because 'minimum lawful' is a constraint, not a preference.",
+
+  "options": [
+    {
+      "id": "OPT-1",
+      "label": "Typed-null publication with a disclosed upper-bound proxy (interim, non-architectural)",
+      "maps_to_HQ194_option": "B (partially)",
+      "what_it_does": "Publish the path_opens account as null with a typed reason, and separately publish the enforceable reader-invocation ceiling and the measured Python-level open count (2 per decode) under their OWN names with their OWN bases, explicitly labelled as upper bounds and near-misses rather than as the required account.",
+      "satisfies": [
+        "The O1-C07 law that unreached or unmeasurable metrics are reported as null WITH A TYPED REASON, never a fabricated zero",
+        "The measurement_basis_requirement, because every published figure carries its layer and mechanism",
+        "AT20's requirement that declared counts remain exact, by declining to declare a count that was not taken"
+      ],
+      "does_NOT_satisfy": [
+        "It does NOT satisfy the mandatory separate path_opens account. The account remains unsatisfied and R9 remains open.",
+        "It must NOT be described as closing R9. HQ194 has already ruled that R9 is not closed by replacing path opens with reader invocations or Python-level opens."
+      ],
+      "authority_cost": "None beyond ordinary HQ adjudication of a return. No redefinition, no new authority, no runtime change.",
+      "requalification_burden": "None. No change to the freeze, the execution surface or the reader.",
+      "honest_evaluation": "This is the smallest lawful step and it is genuinely useful: it makes the gap explicit and typed rather than leaving it implicit. But it is a way of REPORTING the blocker accurately, not a way of removing it. If HQ treats it as a resolution, that would be the error.",
+      "status": "LAWFUL__AVAILABLE_NOW__DOES_NOT_CLOSE_R9"
+    },
+    {
+      "id": "OPT-2",
+      "label": "Restore per-source accounting slots in the instrument (documentary repair)",
+      "maps_to_HQ194_option": "none directly; addresses finding DQ-01",
+      "what_it_does": "Reinstate C4B's per-source source_access_accounting block — including path_opens: REQUIRED_EXACT_COUNT_AND_BASIS — on all seven sources of the warrant candidate, so that issuance cannot proceed without either a filled value or an explicit typed refusal per source.",
+      "satisfies": [
+        "The documentary obligation C4B froze, which the adopted candidate currently does not carry per-source",
+        "Makes the blocker VISIBLE AND UNSKIPPABLE at issuance instead of being satisfiable by a single global statement"
+      ],
+      "does_NOT_satisfy": [
+        "It does not produce a path_opens value. It makes the absence of one explicit and blocking, which is a different thing from filling it.",
+        "It could stall issuance indefinitely if the runtime cannot change, so it must be paired with a decision about whether a typed refusal is an acceptable issuance outcome."
+      ],
+      "authority_cost": "HQ decision on whether a global binding satisfies a per-source frozen requirement. If the reading of C4B's freeze intent is contested, Astra.",
+      "requalification_burden": "Re-review of the warrant candidate document; no tree or surface change.",
+      "honest_evaluation": "This is the option most likely to be overlooked, and it is arguably a precondition for honest issuance regardless of which technical option is chosen. It converts a silent gap into a loud one. It is documentary, not architectural, and is entirely within HQ's gift.",
+      "status": "LAWFUL__RECOMMENDED_AS_PAIRING_INDEPENDENTLY_OF_TECHNICAL_CHOICE"
+    },
+    {
+      "id": "OPT-3",
+      "label": "Narrowly instrumented reader exposing the missing account (runtime change)",
+      "maps_to_HQ194_option": "C",
+      "what_it_does": "Modify or rebuild the compiled reader boundary so every source-file open performed by the extension passes through a single countable, enforceable choke point, making the literal OS open count observable and cappable without altering which bytes, variables, encodings or semantics are read.",
+      "satisfies": [
+        "The required grain at the required layer: an exact literal OS path-open count with a stated basis, separately accounted from reader invocations and decoder calls",
+        "Both the measurement limb and the enforcement limb that HQ194 found absent",
+        "Makes the pre-launch expected budget and the during-run measurement mutually supporting rather than mutually absent"
+      ],
+      "does_NOT_satisfy": [
+        "It does not by itself close R9. AT20 holds that a source-free fixture result cannot establish live occupancy, so feasibility on synthetic carriers is necessary but not sufficient."
+      ],
+      "authority_cost": "HQ authorises a runtime change; Astra/Omega involvement if the change is judged to alter the frozen freeze's authority surface.",
+      "requalification_burden": [
+        "Invalidates the frozen execution_surface_identifier (currently C4C3-DARWIN-X86_64-ANCHOR/CPYTHON-3.11.3/PYREADSTAT-1.3.6/PYARROW-25.0.1/PANDAS-2.3.3/NUMPY-2.4.6/PYTEST-9.1.1).",
+        "Disturbs execution_combined_tree 8f7efe690… and rawlsing_next tree b0c1ab47… identities, requiring re-derivation and re-adjudication.",
+        "Requires independent hostile review before HQ removes R9."
+      ],
+      "in_flight": "A sibling commissioned lane, agent/rabochii-pyat-hq195-r9-instrumented-runtime-feasibility-r1, exists with a commission and NO return at the time of writing. This option's feasibility is therefore UNDETERMINED and this lane does not pre-judge it.",
+      "status": "CANDIDATE__FEASIBILITY_UNDETERMINED__IN_PARALLEL_LANE"
+    },
+    {
+      "id": "OPT-4",
+      "label": "Isolated execution layer that counts opens without interposition",
+      "maps_to_HQ194_option": "C (variant)",
+      "what_it_does": "Run the governed execution inside an OS isolation layer capable of attributing file opens — for example a seatbelt profile combined with a filesystem access monitor, or a lightweight VM with a paravirtualised filesystem shim — rather than attempting symbol interposition inside the process.",
+      "satisfies": [
+        "Potentially the required grain, IF the counting can be attributed to the reader's opens rather than to all opens in the process.",
+        "Avoids the dyld/SIP failure mode entirely, because it does not rely on interposing dyld shared-cache symbols."
+      ],
+      "does_NOT_satisfy": [
+        "Unproven on this host for read accounting. This lane performed NO tracing experiment and makes no claim either way.",
+        "An unattributed open count would be worse than none, because it would count opens the account does not cover and could be mistaken for the required figure."
+      ],
+      "authority_cost": "HQ authorises a changed execution surface; likely Omega involvement given the freeze binds the surface identifier.",
+      "requalification_burden": "Same surface and tree invalidation as OPT-3, plus a new claim must be substantiated that the monitor attributes opens to the reader.",
+      "related_observation": "Separate MR-4 work in this repository established that a macOS seatbelt profile on this host can enforce a WRITE boundary against a real spawned process, which makes a read/monitor extension technically plausible. That is a pointer, not a demonstration, and it comes from a different lane addressing a different question.",
+      "status": "CANDIDATE__UNPROVEN_ON_THIS_HOST_FOR_READ_ACCOUNTING"
+    },
+    {
+      "id": "OPT-5",
+      "label": "Privileged tracing authority for the governed run",
+      "maps_to_HQ194_option": "D",
+      "what_it_does": "Authorise root-class tracing (for example dtrace or ptrace-class instrumentation) for the duration of the governed execution so the literal open count can be observed and capped.",
+      "satisfies": ["The required grain at the required layer, without changing the reader."],
+      "does_NOT_satisfy": [
+        "It is an authority escalation, not a technical fix, and it does not by itself establish an enforcement mechanism at the literal layer — observation and capping are different capabilities and HQ194 found both absent."
+      ],
+      "authority_cost": "Highest. Directly conflicts with the standing no-sudo posture that has governed this repository's host operations, and would introduce host-level privilege into a lane built to avoid it.",
+      "requalification_burden": "Lowest technical burden of the technical options, but the privilege change is itself a governance event.",
+      "status": "CANDIDATE__AVAILABLE_BUT_GOVERNANCE_COSTLY"
+    },
+    {
+      "id": "OPT-6",
+      "label": "Reinterpret the O1-C07 grain so a higher layer satisfies it",
+      "maps_to_HQ194_option": "B (full)",
+      "what_it_does": "Determine that 'path-level opens' is henceforth satisfied by exact application-level source-access events with a separately disclosed unobservable compiled-reader interior.",
+      "satisfies": ["Nothing on its own. It changes what the account MEANS rather than producing the account."],
+      "does_NOT_satisfy": [
+        "It does not produce the required count; it retires the requirement for it.",
+        "AT20 requires declared read/decoder counts and stop laws to remain exact, and Omega-1's hardened note attributes the prohibition to Omega-1 itself."
+      ],
+      "authority_cost": "NOT AVAILABLE to this lane and NOT available to HQ acting alone. O1-C07 is frozen Omega-1 law; redefining its grain is an Omega/Astra act.",
+      "honest_evaluation": "Recorded for completeness because HQ194 raised it as option B. It is the only listed option that this lane must state is outside its own authority to recommend. Adopting it would be a change of law, not an interpretation of it.",
+      "status": "REQUIRES_ASTRA_OR_OMEGA__NOT_AN_HQ_DECISION"
+    }
+  ],
+
+  "combinations_that_are_lawful_together": [
+    {
+      "combination": "OPT-1 + OPT-2",
+      "effect": "Accurate typed reporting of the unsatisfied account, plus an instrument that makes the absence unskippable at issuance. Closes no technical gap but removes every possibility of the gap being passed over silently.",
+      "requires_no_new_authority_beyond_HQ": true,
+      "note": "This is the minimum defensible interim position and it is available immediately."
+    },
+    {
+      "combination": "OPT-2 + OPT-3 (or OPT-4)",
+      "effect": "An instrument that demands the value per source, plus a runtime that can produce it, plus requalification of the surface and trees. This is the path that could actually close R9.",
+      "note": "Conditional on the sibling feasibility lane's undetermined result."
+    }
+  ],
+
+  "combinations_that_are_NOT_lawful": [
+    "OPT-1 presented as closing R9 — forbidden by HQ194's explicit ruling.",
+    "OPT-3 or OPT-4 without requalification of the frozen execution_surface_identifier and tree identities — the freeze binds them, so an unrequalified instrument measures a surface that is not the governed one.",
+    "OPT-6 adopted by HQ without an Omega determination — that is authority laundering of the exact kind this commission forbids.",
+    "Any option combined with reporting a fabricated zero for the unmeasurable account — expressly forbidden by O1-C07."
+  ]
+}

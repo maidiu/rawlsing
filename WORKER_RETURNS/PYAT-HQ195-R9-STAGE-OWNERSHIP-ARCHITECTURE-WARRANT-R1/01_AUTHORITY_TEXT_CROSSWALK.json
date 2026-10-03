@@ -1,0 +1,295 @@
+{
+  "schema": "HQ195_AUTHORITY_TEXT_CROSSWALK@1.0.0",
+  "lane": "PYAT-HQ195-R9-STAGE-OWNERSHIP-ARCHITECTURE-WARRANT-R1",
+  "role": "RABOCHII / DOCUMENTARY AUTHORITY FORENSICS — SPACE BUNNY",
+  "method": "Every provision below was read by exact git object reference (git show <sha>:<path>). No historical tree was checked out. No provision is paraphrased from memory; each carries the exact text or an exact structural extract.",
+
+  "sources": [
+    {
+      "id": "S-OMEGA1",
+      "label": "Omega-1 production readiness decision",
+      "ref": "01762d7379be4e423dad3e21bcdcee47c536902d:WORKER_RETURNS/PYAT-OMEGA1-PRODUCTION-READINESS-R1/01_DECISION.json",
+      "authority_tier": "OMEGA",
+      "provisions": [
+        {
+          "field": "O1-C07.stage",
+          "exact_value": "DURING_EXECUTION_AND_RETURN",
+          "verbatim_requirement": "Execute exactly one governed fresh full-route LiTS pass, six bounded physical witnesses and retained WVS replay/comparison. Account separately for file hash passes, path-level opens and their measurement basis, metadata reads, header-prefix reads, decoder calls, selected-column/full reads, byte counts and retries. A full Route-B pass is not a claim of one OS-level file open.",
+          "verbatim_acceptance": "Freeze expected budgets and instrumentation before launch; retain measured counts. WVS and excluded-source fresh opens remain zero under this scope. No Candidate A/B/C, measured P2X, raw respondent pooling or new cross-source respondent join.",
+          "owner_field": "C4 execution owner",
+          "evidence_refs": ["E08", "E09", "E10", "E20"]
+        }
+      ],
+      "load_bearing_observations": [
+        "The requirement and the acceptance sentence are NOT the same obligation. The requirement names what must be ACCOUNTED and separates 'path-level opens AND their measurement basis' as its own account.",
+        "The acceptance sentence already performs the split this commission was asked to perform: 'Freeze expected budgets and instrumentation before launch' is a pre-launch obligation on the EXPECTED BUDGET and the INSTRUMENTATION, while 'retain measured counts' is a during/return obligation on the MEASURED COUNT.",
+        "Therefore 'stage: DURING_EXECUTION_AND_RETURN' and 'frozen before launch' are reconcilable without inventing anything, PROVIDED expected budget and measured count are kept distinct. Collapsing them is the error, and the commission expressly forbids that collapse."
+      ]
+    },
+    {
+      "id": "S-C4B-TEMPLATE",
+      "label": "C4B unsigned source warrant template",
+      "ref": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/07_UNSIGNED_SOURCE_WARRANT_TEMPLATE.json",
+      "authority_tier": "C4B_FROZEN_TEMPLATE",
+      "structural_extract": {
+        "status": "NOT_AUTHORIZED_UNTIL_HQ_AND_REQUIRED_USER_RESOURCE_OWNER_APPROVAL",
+        "signed": false,
+        "authorizes_access": false,
+        "scope": "Seven future fresh-read sources only; SRC35 is excluded because it is a retained comparator.",
+        "sources_count": 7,
+        "source_keys": ["SRC02", "SRC06", "SRC08", "SRC12", "SRC14", "SRC26", "SRC27"],
+        "source_access_accounting_fields": {
+          "full_file_sha256_passes": "REQUIRED_EXACT_COUNT",
+          "path_opens": "REQUIRED_EXACT_COUNT_AND_BASIS",
+          "decoder_invocations": "REQUIRED_EXACT_COUNT",
+          "metadata_header_reads": "REQUIRED_EXACT_COUNT",
+          "selected_reads": "REQUIRED_EXACT_COUNT_AND_CONFIG",
+          "full_reads": "REQUIRED_EXACT_COUNT_AND_CONFIG",
+          "retries": "REQUIRED_EXACT_COUNT_AND_REASON"
+        },
+        "access_locator_value_all_seven": "<TO_BE_SUPPLIED_ON_AUTHORIZED_EXECUTION_SURFACE>",
+        "execution_surface_value_all_seven": "<HQ_TO_BIND_EXACT_RUNTIME_AND_C3_EQUIVALENT_HEAD>"
+      },
+      "load_bearing_observations": [
+        "path_opens is the ONLY one of the seven accounting fields whose token also demands a BASIS ('REQUIRED_EXACT_COUNT_AND_BASIS'). The frozen template singles out exactly the account this commission is about.",
+        "The template is a REQUIREMENT SPECIFICATION, not a value carrier. All seven fields are unfilled tokens on all seven sources (49 token occurrences), which is deliberate and disclosed, not an omission.",
+        "execution_surface is an explicit HQ fill-in slot, which means the runtime was UNBOUND at template time and the per-source open counts were therefore not determinable at template time by construction."
+      ]
+    },
+    {
+      "id": "S-O1C07-LAW",
+      "label": "O1-C07 frozen execution accounting and failure law",
+      "ref": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+      "authority_tier": "FROZEN_BEFORE_WARRANT",
+      "status_field": "FROZEN_BEFORE_WARRANT__NOT_EXECUTED",
+      "provisions": {
+        "principle": "A full Route-B pass is NOT one OS-level file open. Access must be separately accounted at every distinct layer.",
+        "mandatory_separate_accounts": [
+          "source-path existence/access checks", "file hash passes (full SHA-256 over the file)",
+          "path-level opens", "metadata reads", "header-prefix reads", "decoder invocations",
+          "selected-column reads", "full reads", "byte counts where measurable", "retries"
+        ],
+        "accounting_basis_rule": "Each account must state its measurement BASIS, not only a count. A count without a stated basis is not an account.",
+        "measurement_basis_requirement_explicit_warning": "A count of 'opens' is meaningless without stating whether it means OS-level path opens, reader invocations, or decoder calls. These are different quantities and C4B froze them as separate accounts.",
+        "hardened_note_statement": "The frozen 'exactly one governed fresh full Route-B pass' is a WORKLOAD constraint, not an access constraint.",
+        "hardened_note_implication": "It does NOT license assuming one file open. The run will require at minimum: one existence/access check, one full SHA-256 hash pass, one metadata read, and one full compatibility read. Each is a separate account under O1-C07.",
+        "hardened_note_misreading_penalty": "Would be an accounting failure and is expressly forbidden by Omega-1.",
+        "zero_budget_discipline": "These are hard zeros. A single non-zero count in any of them is a STOP condition, not a reportable variance.",
+        "unreached_stage_or_metric_reporting_law": "Unreached stages and metrics are reported as null WITH A TYPED REASON.",
+        "unreached_never": "A fabricated zero or a fabricated PASS."
+      },
+      "frozen_zero_budgets": {
+        "WVS_SRC35_fresh_source_opens": 0,
+        "excluded_source_fresh_opens": 0,
+        "candidate_A_B_C_runs": 0,
+        "measured_P2X_runs": 0,
+        "raw_respondent_pooling": 0,
+        "new_cross_source_respondent_joins": 0,
+        "SRC08_row_data_reads": 0,
+        "SRC12_row_data_reads": 0,
+        "SRC08_selected_columns": 0,
+        "SRC12_selected_columns": 0
+      },
+      "load_bearing_observations": [
+        "CRITICAL: every frozen ZERO budget that touches opens applies to SRC35 (a retained comparator with no fresh access) or to EXCLUDED sources (not opened at all). There is NO frozen zero or non-zero expected budget for path-level opens on any of the seven PERMITTED sources (SRC02, SRC06, SRC08, SRC12, SRC14, SRC26, SRC27).",
+        "The per-source expected budgets that ARE frozen are workload-shaped: expected_full_reads, expected_selected_reads, expected_metadata_reads, expected_header_prefix_bytes (176 for SRC26), expected_full_route_passes and max_full_route_passes. None of them is an open count.",
+        "The hardened_note supplies only a FLOOR for SRC27, expressed in ACCOUNT terms ('at minimum: one existence/access check, one full SHA-256 hash pass, one metadata read, and one full compatibility read'), and simultaneously warns that the pass involves 'multiple path-level opens'. A floor in account terms is not an exact open count."
+      ]
+    },
+    {
+      "id": "S-WARRANT-CANDIDATE",
+      "label": "Adopted source execution warrant candidate (fan-in)",
+      "ref": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json",
+      "authority_tier": "ADOPTED_FREEZE_CANDIDATE",
+      "warrant_status": "CANDIDATE_ONLY__NOT_ISSUED__NO_RAW_ACCESS_AUTHORIZED",
+      "signed": false,
+      "authorizes_access": false,
+      "issued": false,
+      "execution_authorized": false,
+      "execution_surface_identifier": "C4C3-DARWIN-X86_64-ANCHOR/CPYTHON-3.11.3/PYREADSTAT-1.3.6/PYARROW-25.0.1/PANDAS-2.3.3/NUMPY-2.4.6/PYTEST-9.1.1",
+      "execution_combined_tree": "8f7efe690a161902e79358eb31650c238a4c0be8",
+      "rawlsing_next_tree_hash": "b0c1ab472cde033e21f1c2f63fbcbea2f0cccef0",
+      "runtime": {
+        "os": "macOS 13.7.8 (22H730)", "kernel": "Darwin 22.6.0", "machine": "x86_64",
+        "python": "CPython 3.11.3", "pyreadstat": "1.3.6", "pyarrow": "25.0.1",
+        "pandas": "2.3.3", "numpy": "2.4.6", "pytest": "9.1.1",
+        "install_on_import": 0, "silent_dependency_upgrade": 0
+      },
+      "unresolved_pre_issuance_items": [
+        "SOURCE_LOCATOR_FILL_REQUIRED_BEFORE_WARRANT_ISSUANCE (seven slots unfilled)",
+        "HQ approval UNSET",
+        "required user/resource owner approval UNSET",
+        "warrant unsigned",
+        "independent integration review of the freeze not yet completed"
+      ],
+      "SRC27_accounting_warning_verbatim": "One governed Route-B pass is NOT one OS-level file open. Existence/access check, full hash pass, metadata read and full compatibility read are SEPARATE accounts.",
+      "critical_statements_verbatim": [
+        "THIS DOCUMENT IS A CANDIDATE. IT IS NOT A WARRANT. IT AUTHORIZES NOTHING.",
+        "No raw survey file may be opened, stat-ed, hashed, metadata-read, decoded or materialised until HQ issues this warrant AND the required user/resource owner records approval.",
+        "Hashing, statting and metadata reads ARE source access. They are NOT pre-warrant exceptions.",
+        "This fan-in performed zero raw-source operations of any kind."
+      ],
+      "load_bearing_observations": [
+        "MATERIAL: the adopted candidate carries NO per-source source_access_accounting block on any of its seven sources. Verified field-by-field: SRC02, SRC06, SRC08, SRC12, SRC14, SRC26, SRC27 each expose source_key, source_file, format, canonical_sha256, access_locator, reader_lane, allowed_operations, expected_operation_class, max_retry_budget and raw_bytes_retention, and NONE carries source_access_accounting.",
+        "The candidate instead binds the account LIST and the basis requirement GLOBALLY under access_accounting_instrumentation_bound, with basis_required_per_figure: true. So the accounts survive, but the PER-SOURCE exact-count fill-in obligation that C4B froze is not carried per-source in the adopted candidate.",
+        "This is a documentary discontinuity between S-C4B-TEMPLATE and S-WARRANT-CANDIDATE. It is reported as finding DQ-01 and is NOT resolved by this lane, because resolving it would require deciding whether a global binding satisfies a per-source frozen requirement, which is an authority question.",
+        "The execution surface is now RESOLVED (status PARTIALLY_BOUND with a concrete stack), which removes the template's HQ_TO_BIND_EXACT_RUNTIME placeholder. This is materially new since C4B and it changes what is knowable pre-launch."
+      ]
+    },
+    {
+      "id": "S-C4-COMMISSION",
+      "label": "C4 commission (terminal set)",
+      "ref": "3551bfaf4b7c57f019a3d0beddcc13b2e8b5691b:PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/commissions/C4.md",
+      "authority_tier": "ASTRA_COMMISSION",
+      "status": "DRAFT__NOT_DISPATCHED__ISSUANCE_REQUIRES_EXACT_SCOPE",
+      "ARCHITECTURE_WARRANT_predicate_verbatim": "ARCHITECTURE_WARRANT: demonstrate a required grain that existing jurisdictions cannot represent or lawfully succeed.",
+      "terminal_set": [
+        "PASS_AT_DECLARED_GRAIN", "TYPED_AUTHORITY_RESIDUAL", "BOUNDED_IMPLEMENTATION_OR_COMPOSITION_GAP",
+        "INPUT_OR_CUSTODY_BLOCKER", "ARCHITECTURE_WARRANT"
+      ],
+      "no_terminal_automatically_grants_verbatim": "No terminal automatically grants source execution, adoption, full F1-F8 completion or actor wake.",
+      "load_bearing_observations": [
+        "The predicate has TWO prongs and they must be tested separately: 'cannot REPRESENT' and 'cannot LAWFULLY SUCCEED'. A finding that satisfies only one prong is not an architecture warrant.",
+        "The predicate is about a REQUIRED GRAIN. The required grain here is a literal OS path-level open count with a stated basis, as a separate account from reader invocations and decoder calls."
+      ]
+    },
+    {
+      "id": "S-AT20",
+      "label": "AT20 oracle and source accounting",
+      "ref": "3551bfaf4b7c57f019a3d0beddcc13b2e8b5691b:PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/acceptance/AT20.md",
+      "authority_tier": "ASTRA_ACCEPTANCE",
+      "status": "PROPOSED_ACCEPTANCE_CASE__NOT_EXECUTED",
+      "hostile_witness_verbatim": "Candidate output cannot define expected truth; declared read/decoder counts and stop laws remain exact.",
+      "required_receipt_verbatim": "Bind exact input, expected-output authority, implementation, public path, actual output and consumer identity. Record executed versus unexecuted status and exact proof grade. A source-free fixture result cannot establish live occupancy.",
+      "load_bearing_observations": [
+        "AT20 requires declared read/decoder counts to REMAIN EXACT. This is an independent reason the account may not be satisfied by a declared-approximate proxy.",
+        "'A source-free fixture result cannot establish live occupancy' constrains the sibling feasibility lane's conclusions: even a successful instrumented-runtime demonstration on synthetic carriers would not by itself establish live accounting."
+      ]
+    },
+    {
+      "id": "S-HQ190C",
+      "label": "HQ190-C R9 warrant/accounting binding diagnostic",
+      "ref": "c887b5a727eb0fe7806d6cd43a08b77dc8fb66dd",
+      "authority_tier": "DIAGNOSTIC_PRESERVED",
+      "note": "Contains WORKER_RETURNS/PYAT-C4-DISPUTED-CLAIMS-RECHECK-R1/04_C4_R9_GAP.json and PYAT-HQ190-C-R9-WARRANT-ACCOUNTING-BINDING-R1/00_RETURN.md. Carried forward as diagnostic only; not re-adjudicated by this lane."
+    },
+    {
+      "id": "S-HQ191",
+      "label": "HQ191 R9 budget enforcement court",
+      "ref": "1067828d75f3eab483e9b2a95e4b3ef703661118:WORKER_RETURNS/PYAT-HQ191-R9-BUDGET-ENFORCEMENT-COURT-R1/",
+      "authority_tier": "DIAGNOSTIC_PRESERVED",
+      "measurement_layer_of_record_declared": "python reader/decoder invocation layer",
+      "layer_below_status_verbatim": "NOT_ENFORCEABLE. Measured empirically: 0 Python-visible builtins.open calls during a reader call that demonstrably succeeded. No OS-open ceiling is proposed.",
+      "path_level_opens_no_maximum_reason_verbatim": "OS-level opens occur inside pyreadstat's compiled extension and are invisible to Python interception. Empirically measured: 0 visible opens during a successful reader call. Neither a count nor a basis is observable.",
+      "what_is_provided_instead_verbatim": "The reader-invocation ceiling. Each reader invocation necessarily opens the source at least once, so capping invocations bounds LOGICAL source accesses. This is an upper bound on accesses, NOT an account of opens, and is not relabelled as one.",
+      "does_the_enforceable_layer_satisfy_O1_C07_verdict": "PARTIAL__SUBSTITUTELY_BOUNDED_BUT_LITERALLY_INCOMPLETE",
+      "load_bearing_observations": [
+        "HQ191 already declined to propose a path-opens maximum, and gave the reason: no lawful ceiling can be constructed at any enforceable layer, so proposing one would be a fabrication.",
+        "HQ191 explicitly refuses to relabel the reader-invocation ceiling as an opens account. That refusal is the same refusal HQ194 and this commission are bound by."
+      ]
+    },
+    {
+      "id": "S-HQ192",
+      "label": "HQ192 R9 OS-accounting interposition result",
+      "ref": "81a006638b8a21a19150fa35c9caba544d272550:WORKER_RETURNS/PYAT-HQ192-R9-OS-ACCOUNTING-INTERPOSITION-R1/",
+      "authority_tier": "ADJUDICATED_BY_HQ194",
+      "accepted_disposition": "R9_PARTIAL__LOWER_LAYER_STILL_UNGOVERNABLE",
+      "part_A_outcome": "FAILED__BLOCKER_PRESERVED",
+      "mechanisms_attempted": [
+        "DYLD_INSERT_LIBRARIES plain symbol definition",
+        "DYLD_INSERT_LIBRARIES with __DATA,__interpose",
+        "privileged tracing (excluded by the no-sudo rule)"
+      ],
+      "part_A_result_verbatim": "library loaded but captured zero events (even for direct ctypes libc.open); then with __interpose CPython failed to start on both interpreters",
+      "OSL_01_verbatim": "path-level opens AND their measurement basis — MANDATORY_SEPARATE_ACCOUNT__NOT_SATISFIED_AT_ANY_LAYER_AVAILABLE_TO_THIS_LANE",
+      "zero_observed_law_verbatim": "Zero is a record of what this lane could OBSERVE, not a count of what the reader did. The read succeeds, so the reader certainly opens the file.",
+      "measured_python_level_opens": "2 per decode (whole-file hash pass + bounded header prefix)",
+      "HDR_03_caveat_verbatim": "a Python-layer operation. It does NOT substitute for the OS-level open account.",
+      "load_bearing_observations": [
+        "The negative control is decisive: zero events were captured even for a DIRECT ctypes libc.open call. That makes the zero a mechanism failure rather than evidence of zero opens, which is why no count may be inferred from it.",
+        "A Python-level open count of 2 per decode now EXISTS and is enforceable, and HQ192 nonetheless recorded that it does not substitute for the OS-level account. The existence of an enforceable near-miss is precisely the situation in which a redefinition would be tempting, and it is forbidden."
+      ]
+    },
+    {
+      "id": "S-HQ194",
+      "label": "HQ194 adjudication binding this lane",
+      "ref": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ194_R9_OS_ACCOUNTING_ADJUDICATION_R1.md",
+      "authority_tier": "HQ_ADJUDICATION",
+      "status": "R9_LOWER_LAYER_UNGOVERNABLE_ON_CURRENT_HOST_RUNTIME__BLOCKER_PRESERVED__ARCHITECTURE_WARRANT_FORK_BOUND",
+      "binding_statements_verbatim": [
+        "The current runtime can neither: 1. lawfully measure the literal compiled-reader OS-open count on this host; nor 2. enforce a frozen maximum at that literal layer.",
+        "Therefore R9 is not closed by replacing path opens with reader invocations or Python-level opens.",
+        "The next question is not another tracing experiment."
+      ],
+      "fork_offered_to_this_lane": {
+        "A": "literal exact OS-open budget + measurement under the current runtime",
+        "B": "exact application-level source-access events with a separately disclosed unobservable compiled-reader interior",
+        "C": "a runtime change that makes literal opens observable",
+        "D": "privileged tracing authority",
+        "E": "another exact architecture disposition"
+      },
+      "load_bearing_observations": [
+        "HQ194 has ALREADY decided that the current runtime can neither measure nor enforce the literal account. This lane is therefore not asked to re-test feasibility; it is asked to determine stage ownership and whether the ARCHITECTURE_WARRANT predicate is met.",
+        "HQ194 expressly framed this lane as lane 1 of two, with a source-free minimal runtime-instrumentation feasibility lane as lane 2. Option C is therefore being determined in parallel and is NOT resolved by this lane."
+      ]
+    }
+  ],
+
+  "crosswalk_findings": [
+    {
+      "id": "XF-01",
+      "severity": "decisive",
+      "finding": "The O1-C07 staging ambiguity is RESOLVABLE on the documentary record and is not a contradiction.",
+      "basis": "Omega-1 stages O1-C07 at DURING_EXECUTION_AND_RETURN, and its own acceptance sentence requires only that 'expected budgets and instrumentation' be frozen before launch while 'measured counts' are retained. Expected budget, instrumentation freeze, and measured count are three separable obligations with three different owners and three different stages.",
+      "consequence": "The apparent conflict dissolves without weakening O1-C07. No redefinition is required and none is proposed.",
+      "residual": "What remains genuinely open is not the staging but whether the EXPECTED path_opens budget can be lawfully determined at all. See XF-02."
+    },
+    {
+      "id": "XF-02",
+      "severity": "decisive",
+      "finding": "The path_opens number is unavailable on BOTH sides of the freeze, for two independent reasons.",
+      "reason_a_not_derivable_pre_launch": "No frozen artifact carries an expected path-opens figure for any of the seven permitted sources. The frozen per-source expectations are workload-shaped. O1-C07's SRC27 note gives only an account-term floor and simultaneously warns the pass involves multiple path-level opens.",
+      "reason_b_not_measurable_during_execution": "HQ192 and HQ194 establish that the literal OS open count cannot be lawfully observed on the bound macOS 13.7.8 / CPython 3.11.3 / pyreadstat 1.3.6 surface without privileged authority.",
+      "consequence": "This is why the obligation cannot be met by pairing a pre-launch budget with a during-run measurement. Both halves are missing, and they are missing for different reasons, so neither can be repaired by improving the other.",
+      "note": "This is the analytical core of the packet. An expected budget and a measured count failing for different reasons is a materially different situation from one of them merely being inconvenient."
+    },
+    {
+      "id": "XF-03",
+      "severity": "decisive",
+      "finding": "A higher-layer proxy is NOT semantically equivalent to the required account, and the frozen authorities forbid the substitution three separate times.",
+      "basis": [
+        "O1-C07 measurement_basis_requirement: a count of 'opens' is meaningless without stating whether it means OS-level path opens, reader invocations, or decoder calls, and 'C4B froze them as separate accounts'.",
+        "O1-C07 hardened_note: misreading the single SRC27 pass as one open 'Would be an accounting failure and is expressly forbidden by Omega-1'.",
+        "HQ191: the reader-invocation ceiling 'is an upper bound on accesses, NOT an account of opens, and is not relabelled as one'.",
+        "HQ194: 'R9 is not closed by replacing path opens with reader invocations or Python-level opens.'"
+      ],
+      "consequence": "HQ194's option B cannot be adopted as a settlement of O1-C07. It could only be adopted as an explicit, authorised redefinition of the account, which this lane has no authority to make.",
+      "note": "The reader-invocation ceiling remains lawful and valuable as an UPPER BOUND on logical accesses. It simply is not the account O1-C07 names."
+    },
+    {
+      "id": "XF-04",
+      "severity": "material",
+      "finding": "The required grain IS representable; it is SUCCESS that is unavailable.",
+      "basis": "path_opens is an explicit named account in O1-C07 mandatory_separate_accounts and an explicit fill-in slot with a basis requirement in C4B's frozen template. The warrant schema can express 'exact count and basis' perfectly well.",
+      "consequence": "The first prong of the ARCHITECTURE_WARRANT predicate ('cannot represent') is NOT satisfied. Only the second prong ('cannot lawfully succeed') is. A finding of architecture warrant resting on both prongs would overstate the case and must not be made.",
+      "self_correction": "Stating this precisely matters. The correct claim is that the instrument can express the account and the host cannot populate it — not that the account is unrepresentable."
+    },
+    {
+      "id": "DQ-01",
+      "severity": "material",
+      "finding": "Documentary discontinuity: the adopted warrant candidate dropped the per-source accounting slots that C4B froze.",
+      "detail": "C4B's template carries source_access_accounting with seven token fields on each of seven sources. The adopted candidate at the same freeze carries NO source_access_accounting on any source, and instead binds the account list and basis requirement globally under access_accounting_instrumentation_bound.",
+      "why_it_matters": "C4B's per-source fill-in obligation is the mechanism by which exact per-source counts were to be bound at issuance. If it is not carried per-source, then at issuance there is no per-source slot into which a path_opens value must be entered, and the account can be satisfied by a global statement.",
+      "NOT_resolved_by_this_lane": "Whether a global binding satisfies a per-source frozen requirement is an authority question, not a documentary one. This lane records the discontinuity and does not decide it.",
+      "recommended_owner": "HQ, with Astra if the reading of C4B's freeze intent is contested."
+    },
+    {
+      "id": "XF-05",
+      "severity": "material",
+      "finding": "The execution surface is now bound, which changes what is knowable but does not by itself supply the number.",
+      "basis": "C4B left <HQ_TO_BIND_EXACT_RUNTIME_AND_C3_EQUIVALENT_HEAD>. The adopted candidate resolves it to a concrete stack and tree identities.",
+      "why_it_does_not_solve_R9": "Binding the runtime fixes WHICH reader implementation performs the opens. It does not make the compiled reader's internal open count observable. Determinism of a value is not observability of it: a bound stack guarantees the count would be reproducible IF it could be observed, which is the precondition R9 still lacks.",
+      "consequence": "This forecloses a tempting but invalid argument that the gap is merely an unfilled placeholder. It is not."
+    }
+  ]
+}

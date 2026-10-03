@@ -1,0 +1,110 @@
+{
+  "schema": "HQ195_FINAL_DISPOSITION@1.0.0",
+  "commission": "PYAT-HQ195-R9-STAGE-OWNERSHIP-ARCHITECTURE-WARRANT-R1",
+  "role": "RABOCHII / DOCUMENTARY AUTHORITY FORENSICS — SPACE BUNNY",
+  "branch": "agent/rabochii-pyat-hq195-r9-stage-ownership-architecture-warrant-r1",
+  "commissioned_startup_sha": "501494b18afdd623fc3561951daf36714e5690c9",
+  "startup_verified_exactly": true,
+
+  "disposition": "R9_ARCHITECTURE_WARRANT_CANDIDATE__LITERAL_ACCOUNT_REQUIRES_RUNTIME_OR_AUTHORITY_CHANGE",
+
+  "one_paragraph_answer": "O1-C07's staging is not contradictory: Omega-1's own acceptance sentence separates an expected budget and instrumentation frozen before launch from measured counts retained during and after execution. The real obstacle is that the literal OS path-open count is unavailable at every stage for two independent reasons — no frozen authority ever states an expected figure for the seven permitted sources (a documentary gap), and no lawful mechanism can observe the compiled reader's opens on the bound macOS/pyreadstat surface without privileged authority (a capability gap). Because a budget and a measurement normally compensate for each other and here neither can, the obligation cannot be met. The C4 architecture-warrant predicate is satisfied on its second prong only: the grain is representable in the existing schema, but cannot be lawfully achieved under the current runtime.",
+
+  "the_missions_load_bearing_question_answered": {
+    "question": "Is the remaining literal path-open requirement satisfiable through exact pre-launch budget plus during-run measurement; an issuance-time binding; a runtime implementation gap; an ARCHITECTURE_WARRANT case; or an authority ambiguity requiring Astra?",
+    "answers": {
+      "satisfiable_through_pre_launch_budget_plus_during_run_measurement": {
+        "answer": false,
+        "why": "Both halves are missing and they fail for different reasons. No expected figure exists in any frozen artifact for the seven permitted sources, and no lawful mechanism exists to measure the count during the run. A budget cannot substitute for a measurement that cannot be taken, nor vice versa."
+      },
+      "issuance_time_binding": {
+        "answer": "PARTIALLY_ONLY__AND_NOT_CURATIVE",
+        "why": "The SLOT is an issuance-time binding — C4B's token REQUIRED_EXACT_COUNT_AND_BASIS obliges HQ to bind a value and a basis at issuance. But the VALUE cannot be lawfully produced at issuance, because the runtime cannot observe or enforce it. Binding a requirement is not satisfying it.",
+        "additional_discontinuity": "Under the adopted candidate's own shape there is no per-source slot to bind, because it carries no per-source source_access_accounting. See DQ-01."
+      },
+      "runtime_implementation_gap": {
+        "answer": true,
+        "why": "The count occurs inside pyreadstat's compiled extension and is invisible to Python-level interception; unprivileged DYLD interposition is defeated by the dyld shared cache and __interpose is fatal to CPython startup; SIP forecloses the remaining avenues. This is a genuine capability gap in the runtime surface, not a documentation defect."
+      },
+      "architecture_warrant_case": {
+        "answer": "true__AS_A_CANDIDATE",
+        "why": "The C4 predicate is 'cannot represent OR cannot lawfully succeed'. The representability prong FAILS — path_opens is an explicit named account with an explicit exact-count-and-basis slot. The lawfully-succeed prong is SATISFIED. A candidate finding is therefore proper, and it is the accurate one because the alternative dispositions each misdescribe the record."
+      },
+      "authority_ambiguity_requiring_Astra": {
+        "answer": "NOT_FOR_THE_CORE_FINDING__BUT_REQUIRED_FOR_ANY_SETTLEMENT",
+        "why": "The stage ambiguity is resolvable documentarily and needs no authority. But any REDEFINITION of the grain — declaring a higher layer sufficient — is an Omega/Astra act, because O1-C07 is frozen Omega-1 law and its hardened note attributes the prohibition to Omega-1. HQ cannot settle O1-C07 by itself."
+      }
+    }
+  },
+
+  "dispositions_not_taken": [
+    {
+      "value": "R9_CONTRACT_SATISFIABLE_WITHOUT_ARCHITECTURE_CHANGE__EXACT_BINDING_PATH_IDENTIFIED",
+      "why_not": "There is no exact binding path for the path_opens value under the current runtime. The other nine O1-C07 accounts ARE individually satisfiable and their binding paths are identified in 02_STAGE_OWNERSHIP_MATRIX.json, but the tenth cannot be bound without a runtime or authority change. Choosing this would require pretending the blocker is a matter of finding the right slot."
+    },
+    {
+      "value": "R9_CONTRACT_AMBIGUOUS__ASTRA_DECISION_REQUIRED",
+      "why_not": "The apparent staging contradiction is not a genuine ambiguity. Omega-1's acceptance sentence itself separates pre-launch expected budgets and instrumentation from retained measured counts, so no text needed reinterpreting and no authority was needed to resolve it. Reporting this as ambiguous would hand Astra a question that the documentary record already answers, and would obscure the real obstacle, which is capability rather than meaning."
+    },
+    {
+      "value": "R9_AUTHORITY_CONFLICT_FOUND",
+      "why_not": "No authority conflict was found. The one documentary discontinuity found (DQ-01, per-source accounting slots absent from the adopted candidate) is a granularity difference, not a contradiction: the account list and the basis requirement both survive globally. Calling it a conflict would overstate it. No frozen authority is contradicted by any other."
+    }
+  ],
+
+  "findings_summary": [
+    { "id": "XF-01", "severity": "decisive", "finding": "The O1-C07 staging conflict is not a contradiction; Omega-1's acceptance sentence already separates expected budget, instrumentation and measured count." },
+    { "id": "XF-02", "severity": "decisive", "finding": "The path_opens value is unavailable on both sides of the freeze for two independent reasons — not derivable pre-launch (documentary gap) and not measurable during execution (capability gap). Neither can compensate for the other." },
+    { "id": "XF-03", "severity": "decisive", "finding": "A higher-layer proxy is not semantically equivalent to the required account; the frozen authorities forbid the substitution four separate times." },
+    { "id": "XF-04", "severity": "decisive", "finding": "The grain IS representable; only lawful success fails. The architecture-warrant predicate is satisfied on one prong only, and the failing prong is recorded." },
+    { "id": "XF-05", "severity": "material", "finding": "The now-bound execution surface fixes which reader performs the opens but does not make them observable; determinism is not observability. This forecloses the 'just an unfilled placeholder' argument." },
+    { "id": "DQ-01", "severity": "material", "finding": "The adopted warrant candidate carries no per-source source_access_accounting, dropping the per-source fill-in obligation C4B froze. Recorded, not resolved — resolving it is an authority question." },
+    { "id": "M-03", "severity": "material", "finding": "SEL-02 (selected-column read COUNT has no executable owner) is a real but materially narrower second gap whose lawful route is a typed null; deliberately not bundled with the OS-open blocker." }
+  ],
+
+  "counts_and_numbers_invented": 0,
+  "fabricated_zeros": 0,
+  "relabelled_proxies": 0,
+
+  "r9_status": {
+    "r9_closed_by_this_lane": false,
+    "r9_remains": "OPEN",
+    "o1_c07_satisfied": "STILL PARTIAL — one mandatory named account unsatisfiable at any available layer, plus one narrower count account with no executable owner",
+    "blocker_preserved": true,
+    "hostile_independent_review_required_before_hq_removes_r9": true
+  },
+
+  "unchanged_by_this_lane": {
+    "R7": "CLOSED — not reopened",
+    "HQ182_C4_non_adoption_hold": "still pending reserved Astra decision",
+    "raw_source_access": "NOT AUTHORIZED",
+    "locator_discovery": "NOT AUTHORIZED",
+    "warrant_issuance": "NOT AUTHORIZED",
+    "live_C4": "NOT AUTHORIZED",
+    "freeze_blockers": "0",
+    "sibling_feasibility_lane": "commissioned, no return at time of writing; OPT-3 feasibility UNDETERMINED"
+  },
+
+  "recommended_next_actions_for_hq": [
+    "Adjudicate this packet and decide whether to adopt the architecture-warrant candidate route.",
+    "Decide OPT-2 (reinstate per-source accounting slots) independently of the technical choice — it is documentary, cheap, and makes the blocker unskippable at issuance.",
+    "Adopt OPT-1 (typed-null publication with a disclosed upper-bound proxy) as the interim reporting form, explicitly NOT as a closure of R9.",
+    "Await the sibling feasibility lane before deciding OPT-3 versus OPT-4.",
+    "Escalate to Omega/Astra only if a settlement would require redefining the O1-C07 grain. Nothing in this packet requires that."
+  ],
+
+  "self_qualification": "NONE. This is a candidate finding for independent adjudication. No architecture decision is adopted, no account is waived, no warrant is issued, and no authority is exercised.",
+
+  "return_files": [
+    "00_RETURN.md",
+    "01_AUTHORITY_TEXT_CROSSWALK.json",
+    "02_STAGE_OWNERSHIP_MATRIX.json",
+    "03_EXPECTED_VS_MEASURED_ACCOUNTING.md",
+    "04_ARCHITECTURE_WARRANT_TEST.json",
+    "05_MINIMUM_LAWFUL_SUCCESSOR_OPTIONS.json",
+    "06_AUTHORITY_BOUNDARY_AND_ESCALATION.json",
+    "07_FINAL_DISPOSITION.json"
+  ],
+
+  "terminal": "HQ195_R9_STAGE_OWNERSHIP_RETURNED__HQ_REVIEW_REQUIRED"
+}

@@ -1,0 +1,148 @@
+{
+  "schema": "HQ195_AUTHORITY_BOUNDARY_AND_ESCALATION@1.0.0",
+  "lane": "PYAT-HQ195-R9-STAGE-OWNERSHIP-ARCHITECTURE-WARRANT-R1",
+  "role": "RABOCHII / DOCUMENTARY AUTHORITY FORENSICS — SPACE BUNNY",
+
+  "commission_clause_honoured": {
+    "clause": "This worker may propose an exact interpretation/candidate packet but may not: waive O1-C07; redefine 'path-level opens' without authority; issue a warrant; authorize privileged tracing; authorize raw access; self-adopt an architecture decision.",
+    "compliance": {
+      "waived_O1_C07": false,
+      "redefined_path_level_opens": false,
+      "issued_warrant": false,
+      "authorized_privileged_tracing": false,
+      "authorized_raw_access": false,
+      "self_adopted_architecture_decision": false
+    }
+  },
+
+  "what_this_lane_did": [
+    "Read every governing text by exact git object reference, without checking out any historical tree.",
+    "Separated expected budget, instrumentation and measured count, showing the apparent staging conflict in Omega-1 is not a contradiction.",
+    "Tested both prongs of the ARCHITECTURE_WARRANT predicate separately and recorded the prong that FAILS.",
+    "Determined that the path_opens figure is unavailable at issuance, at pre-launch and during execution, for two independent reasons.",
+    "Recorded that the only frozen open-related zeros apply to SRC35 and excluded sources and therefore do not constrain the seven permitted sources.",
+    "Identified a documentary discontinuity (DQ-01) between C4B's frozen per-source template and the adopted warrant candidate, and declined to resolve it.",
+    "Proposed candidate options with their authority costs, selecting none."
+  ],
+
+  "what_this_lane_deliberately_did_NOT_do": [
+    {
+      "action_not_taken": "Declare the higher-layer proxy equivalent to the required account",
+      "reason": "Forbidden by O1-C07's measurement_basis_requirement and hardened note, by HQ191's explicit non-relabelling, and by HQ194's ruling. The proxy is lawful as a disclosed upper bound under its own name and nothing more."
+    },
+    {
+      "action_not_taken": "Accept the representability prong of the architecture-warrant predicate",
+      "reason": "It is false. The account is representable in the existing schema. Only the lawfully-succeed prong is satisfied, and the failing prong is recorded so the finding cannot be read as broader than it is."
+    },
+    {
+      "action_not_taken": "Infer a path_opens count from the zero events observed by interposition",
+      "reason": "A direct libc.open control that certainly opened a file also produced zero observations, so the zero is a mechanism failure. O1-C07 forbids a fabricated zero."
+    },
+    {
+      "action_not_taken": "Perform another OS tracing experiment",
+      "reason": "HQ194 stated the next question is not another tracing experiment, and the commission forbids it. The mechanism failure is already established and accepted."
+    },
+    {
+      "action_not_taken": "Derive an expected path_opens number from the O1-C07 SRC27 floor",
+      "reason": "That floor is expressed in account terms and the same paragraph warns the pass involves multiple path-level opens. Converting it to a number would be inventing a count."
+    },
+    {
+      "action_not_taken": "Resolve DQ-01 by deciding a global binding satisfies a per-source frozen requirement",
+      "reason": "That is an authority question about C4B's freeze intent, not a documentary one."
+    },
+    {
+      "action_not_taken": "Treat the sibling feasibility lane's expected result as settled",
+      "reason": "It has a commission and no return at the time of writing. OPT-3's feasibility is undetermined and is reported as such."
+    },
+    {
+      "action_not_taken": "Bundle SEL-02 with the OS-open blocker as one disposition driver",
+      "reason": "SEL-02 is materially narrower: its configuration half is frozen and its exactness is enforced, so its lawful route is a typed null. Merging a narrow gap into a hard blocker would misstate the severity and would obscure which gap actually requires a runtime or authority change."
+    }
+  ],
+
+  "escalation_map": {
+    "HQ_may_decide_without_escalation": [
+      "Whether to authorise and fund OPT-3 / OPT-4 runtime instrumentation work and its requalification.",
+      "Whether to grant, refuse or condition privileged tracing authority (OPT-5).",
+      "How to represent the unsatisfied account in the interim, including whether a typed null with a disclosed upper-bound proxy (OPT-1) is acceptable for a given run or whether the run is blocked.",
+      "Whether to reinstate per-source accounting slots (OPT-2 / DQ-01).",
+      "Whether to hold issuance until instrumentation exists.",
+      "The adjudication of this return and whether to commission the next lane."
+    ],
+    "requires_Astra_or_Omega": [
+      "Any redefinition of the O1-C07 grain, including a determination that a higher-layer account satisfies 'path-level opens'. O1-C07 is frozen Omega-1 law and its hardened note attributes the prohibition to Omega-1.",
+      "Any waiver, narrowing or satisfaction-finding for O1-C07.",
+      "Adjudication of a contested reading of C4B's freeze intent on the per-source accounting slots.",
+      "Any determination that alters the frozen freeze's authority surface, including accepting an unrequalified execution surface.",
+      "Any release of the standing HQ182 C4 non-adoption hold, which remains pending a reserved Astra decision."
+    ],
+    "no_one_in_this_chain_may_unilaterally": [
+      "Issue the warrant. Both HQ approval and required user/resource owner approval are UNSET in the adopted candidate, and the candidate is unsigned.",
+      "Authorize any raw-source operation. The candidate's own critical_statements forbid it until HQ issues the warrant and the resource owner records approval."
+    ]
+  },
+
+  "conflicts_and_preserved_ambiguities": [
+    {
+      "id": "DQ-01",
+      "type": "documentary discontinuity, not a contradiction of intent",
+      "detail": "C4B's frozen template carries source_access_accounting with seven token fields per source. The adopted warrant candidate carries no source_access_accounting on any of its seven sources, binding the account list and the basis requirement globally instead.",
+      "why_it_is_not_called_a_conflict": "Nothing in the adopted candidate contradicts the account list or the basis requirement; both survive. What is missing is the PER-SOURCE granularity of the fill-in obligation. Calling that a contradiction would overstate it.",
+      "escalate_to": "HQ, escalating to Astra only if the reading of C4B's freeze intent is contested."
+    },
+    {
+      "id": "AMB-01",
+      "type": "preserved ambiguity, resolved on the documentary record",
+      "detail": "O1-C07 is staged DURING_EXECUTION_AND_RETURN while its acceptance requires budgets and instrumentation frozen before launch.",
+      "resolution": "Not a contradiction. Omega-1's own acceptance sentence separates the expected budget and instrumentation (pre-launch) from retained measured counts (during/return).",
+      "escalate_to": "nothing — resolved documentarily, and no authority was needed to resolve it because no text had to be reinterpreted."
+    },
+    {
+      "id": "AMB-02",
+      "type": "genuinely open, authority-level",
+      "detail": "Whether an architecture warrant is the correct route at all, given that the grain is representable and only the host cannot populate it. C4's predicate covers 'cannot lawfully succeed', so the route is available, but choosing it over an alternative disposition is HQ's call.",
+      "escalate_to": "HQ for the choice; Omega/Astra only if the grain itself is later contested."
+    }
+  ],
+
+  "holds_observed": {
+    "raw_source_access": 0,
+    "source_directory_inspection": 0,
+    "locator_discovery": 0,
+    "locator_fills": 0,
+    "warrant_issued": false,
+    "live_c4_executed": false,
+    "c7_work": 0,
+    "actor_or_person_work": 0,
+    "historical_tree_checkouts": 0,
+    "sparse_checkout_disabled": false,
+    "full_checkout_created": false,
+    "historical_warrant_artifacts_edited": false,
+    "production_mutated": false,
+    "hq_handoff_edited": false,
+    "self_adopted": false,
+    "merged_into_control": false,
+    "counts_invented": 0,
+    "thresholds_or_numbers_invented": 0,
+    "note_on_numbers": "No count, budget, maximum or threshold was invented anywhere in this packet. Where a value was unavailable it is reported as unavailable with a reason."
+  },
+
+  "checkout_law_compliance": {
+    "mode": "SPARSE_REQUIRED",
+    "canonical_clone_used": "/Users/matthewsmith/Desktop/Rawlsing",
+    "repository_cloned": false,
+    "sparse_worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq195-r9-stage",
+    "manifest_applied_exactly": true,
+    "materialized_file_count_at_start": 4,
+    "full_repo_tracked_file_count_for_contrast": 6851,
+    "sparse_expansions_beyond_manifest": 0,
+    "historical_evidence_read_via": "git show <sha>:<path>, git cat-file, git ls-tree — no historical tree checked out",
+    "script_execution_disclosure": {
+      "what_happened": "The commission's command invokes prepare_sparse_worktree.sh at a filesystem path inside the canonical clone. That path was absent from the canonical clone's working tree, because the canonical clone is checked out at an older commit (8ff40d37) that predates the script, while the script IS tracked at the commissioned startup SHA 501494b1.",
+      "how_resolved": "The script was read by git object access at the commissioned SHA, verified as blob 22f3f62463250cbecea39bcbba0663672797e925 (sha256 93e3fc970b002d9e9054fd21d4757887f3ddff917610adab6574d26aefaecce6), reviewed for safety, and executed from a byte-identical temporary copy.",
+      "why_not_materialized_into_the_clone": "Writing the script into the canonical clone's working tree would have dirtied the user's primary checkout, which is outside this commission's write terrain.",
+      "safety_review_performed": "Confirmed before execution: it never clones, verifies origin/<branch> equals the expected SHA, refuses if the destination or local branch exists, creates the worktree with --no-checkout, applies only the supplied non-cone sparse patterns, verifies HEAD equals remote equals expected, and refuses a dirty result."
+    },
+    "worktree_dirty_state_disclosure": "After preparation the worktree reported exactly one untracked entry, a macOS .DS_Store file created by Finder. It was removed so the worktree is clean; it was OS metadata, not lane content."
+  }
+}

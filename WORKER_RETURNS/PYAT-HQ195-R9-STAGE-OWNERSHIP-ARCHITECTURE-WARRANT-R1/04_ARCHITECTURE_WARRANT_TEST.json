@@ -1,0 +1,116 @@
+{
+  "schema": "HQ195_ARCHITECTURE_WARRANT_TEST@1.0.0",
+  "lane": "PYAT-HQ195-R9-STAGE-OWNERSHIP-ARCHITECTURE-WARRANT-R1",
+  "predicate_source": "3551bfaf4b7c57f019a3d0beddcc13b2e8b5691b:PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/commissions/C4.md",
+  "predicate_verbatim": "ARCHITECTURE_WARRANT: demonstrate a required grain that existing jurisdictions cannot represent or lawfully succeed.",
+  "method_note": "The predicate has two prongs joined by 'or'. Each is tested separately and reported separately. A finding that quietly satisfied only one prong would overstate the case, so the prong that FAILS is recorded as explicitly as the prong that succeeds.",
+
+  "prong_1_CANNOT_REPRESENT": {
+    "result": "NOT_SATISFIED",
+    "reasoning": "The required grain is fully expressible in the existing instruments. O1-C07 lists 'path-level opens' as a named entry in mandatory_separate_accounts, and C4B's frozen template carries a per-source field path_opens with the token REQUIRED_EXACT_COUNT_AND_BASIS — a schema that demands both an exact value and a stated basis. The warrant format can state the account, require an exact count, and require its basis without difficulty.",
+    "consequence": "This prong FAILS. The account is representable. Any architecture-warrant argument resting on unrepresentability would be wrong and is not made.",
+    "honest_restatement": "The accurate claim is: the instrument can express the account and the host cannot populate it. That is a capability finding, not a schema finding."
+  },
+
+  "prong_2_CANNOT_LAWFULLY_SUCCEED": {
+    "result": "SATISFIED",
+    "reasoning": "Satisfying the account requires an exact literal OS path-level open count, measured during execution, at the OS layer, on the bound execution surface. Three independent authorities establish that this cannot be lawfully achieved on the current host/runtime:",
+    "authorities": [
+      {
+        "authority": "HQ191 (budget enforcement court)",
+        "finding": "OS-level opens occur inside pyreadstat's compiled extension and are invisible to Python interception. Empirically measured: 0 visible opens during a reader call that demonstrably succeeded.",
+        "consequence": "The measurement layer of record was declared to be the Python reader/decoder invocation layer because it is the lowest layer at which a lawful hard ceiling can be both measured and enforced from Python against the exact current code."
+      },
+      {
+        "authority": "HQ192 (OS-accounting interposition), accepted by HQ194",
+        "finding": "DYLD_INSERT_LIBRARIES plain symbol definition loaded but captured zero events even for a direct ctypes libc.open control; __DATA,__interpose made CPython fail at startup on both interpreters; SIP enabled; privileged tracing tools requiring root are outside the commissioned no-sudo authority.",
+        "finding_id": "OSL-01 — path-level opens AND their measurement basis: MANDATORY_SEPARATE_ACCOUNT__NOT_SATISFIED_AT_ANY_LAYER_AVAILABLE_TO_THIS_LANE",
+        "control_significance": "Because a direct libc.open control that certainly opened a file also yielded zero observations, the zero is a mechanism failure rather than evidence of zero opens. No count may be inferred from it."
+      },
+      {
+        "authority": "HQ194 adjudication (accepted, and binding on this lane)",
+        "finding_verbatim": "The current runtime can neither: 1. lawfully measure the literal compiled-reader OS-open count on this host; nor 2. enforce a frozen maximum at that literal layer.",
+        "finding_verbatim_2": "Therefore R9 is not closed by replacing path opens with reader invocations or Python-level opens."
+      }
+    ],
+    "second_independent_leg": "Even the EXPECTED budget leg fails on this prong's sibling condition. No frozen artifact states an expected path-opens figure for any of the seven permitted sources, so there is no number to freeze and no instrument with which to freeze it. The only frozen open-related zeros apply to SRC35 (retained comparator, zero fresh access by construction) and excluded sources (not opened at all), neither of which constrains the permitted set.",
+    "conclusion": "Satisfying the account would require either a runtime capable of exposing the count or an authority capable of compelling its observation. Neither exists within the current jurisdictions."
+  },
+
+  "predicate_disposition": {
+    "satisfies_predicate": true,
+    "on_which_prong": "prong 2 only (cannot lawfully succeed)",
+    "explicitly_not_claimed": "This lane does NOT claim the required grain is unrepresentable. It is representable.",
+    "terminal_proposed": "ARCHITECTURE_WARRANT",
+    "this_lane_is_a_CANDIDATE_not_an_adoption": true
+  },
+
+  "required_showing_for_an_architecture_warrant_finding": {
+    "exact_required_grain": {
+      "account": "path-level opens",
+      "layer": "OS path-open layer (open(2) inside the pyreadstat 1.3.6 compiled extension)",
+      "form": "an EXACT COUNT for each of the seven permitted sources, published WITH a stated measurement BASIS (what was measured, at which layer, by what mechanism, at what point in the run)",
+      "status": "mandatory separate account under O1-C07; distinct from reader invocations and decoder calls, which are separately mandated accounts",
+      "bound_surface": "C4C3-DARWIN-X86_64-ANCHOR / CPYTHON 3.11.3 / pyreadstat 1.3.6 / pyarrow 25.0.1 / pandas 2.3.3 / numpy 2.4.6 / macOS 13.7.8 (Darwin 22.6.0, x86_64, SIP enabled)"
+    },
+    "why_current_runtime_and_jurisdiction_cannot_satisfy_it": "The open happens inside a compiled C extension invisible to Python-level interception. On the bound Darwin surface, unprivileged DYLD interposition is defeated by the dyld shared cache (plain symbol definitions capture nothing, verified against a direct libc.open control) and __DATA,__interpose is fatal to CPython startup. SIP forecloses the remaining user-space avenues. Obtaining the count would require privileged tracing, which is outside the no-sudo authority, or a differently instrumented reader, which is a runtime change.",
+    "why_a_higher_level_proxy_is_or_is_not_equivalent": {
+      "verdict": "NOT SEMANTICALLY EQUIVALENT",
+      "available_proxies": [
+        { "proxy": "reader-invocation count", "measured": "available and enforceable at the Python layer (HQ191 measurement layer of record; abort demonstrated before the unauthorised operation)", "why_not_equivalent": "O1-C07 froze reader invocations as a SEPARATE account and warns that a count of 'opens' is meaningless without stating whether it means OS path opens, reader invocations or decoder calls. A reader invocation is a logical access, not an open." },
+        { "proxy": "python-level open count", "measured": "2 per decode (whole-file hash pass + bounded header prefix), HQ192", "why_not_equivalent": "It counts Python open() call sites in the frozen closure and is blind to every open performed inside the compiled extension — which is precisely where the required count originates. HQ192 recorded the caveat verbatim: 'a Python-layer operation. It does NOT substitute for the OS-level open account.'" }
+      ],
+      "governing_prohibitions": [
+        "O1-C07 measurement_basis_requirement explicit_warning",
+        "O1-C07 hardened_note misreading penalty, forbidden by Omega-1",
+        "HQ191: not relabelled as an account of opens",
+        "HQ194: R9 is not closed by replacing path opens with reader invocations or Python-level opens"
+      ],
+      "what_a_proxy_COULD_lawfully_be": "A disclosed upper bound on logical source accesses, published under its own name with its own basis, alongside a typed null for the unsatisfied OS-layer account. That is a partial settlement and must be labelled as one."
+    },
+    "smallest_lawful_architecture_or_runtime_change": {
+      "principle": "The minimum change is the one that makes the OPEN OBSERVABLE at a layer that already exists, rather than one that rewrites the reader or alters survey semantics.",
+      "candidate_changes_ranked_by_minimality": [
+        { "rank": 1, "change": "Instrument the reader boundary so that every source-file open performed by the compiled extension is funnelled through a single countable choke point (for example a build of the pyreadstat extension that routes file access through an injectable, counting shim at the C layer).", "why_minimal": "It changes observability only. It does not change which bytes are read, which variables are selected, which encodings are declared, or any semantic output.", "cost": "Requires rebuilding the bound extension, which invalidates the frozen execution_surface_identifier and therefore triggers requalification." },
+        { "rank": 2, "change": "Execute the governed run inside an OS-level isolation layer that can count opens without interposing symbols — for example a properly configured seatbelt profile with a filesystem access monitor, or a lightweight VM with a paravirtualised filesystem shim.", "why_weaker_than_rank_1": "It changes the execution surface as a whole and is harder to reconcile with the frozen surface identifier; it also does not by itself distinguish reader-invocation opens from other opens unless the counting is path- and call-attributed.", "note": "MR-4 work elsewhere in this repository established that a seatbelt profile on this host CAN enforce a write boundary, which makes a read/monitor extension technically plausible; that is a pointer, not a demonstration, and this lane performed no tracing experiment." },
+        { "rank": 3, "change": "Obtain privileged tracing authority (dtrace/ptrace class) for the duration of the governed run.", "why_weakest": "It is an authority escalation rather than a technical fix, it conflicts with the standing no-sudo posture, and it introduces host-level privilege into a lane whose entire discipline has been to avoid it." }
+      ],
+      "explicitly_not_minimal_and_rejected": [
+        "Redefining 'path-level opens' as 'reader invocations' or 'Python-level opens' — forbidden by O1-C07, HQ191 and HQ194, and it is a redefinition this lane has no authority to make.",
+        "Omitting the account from the instrument — would produce a partial instrument presented as complete, which HQ192 declined to do.",
+        "Reporting zero because zero events were observed — expressly forbidden; the zero is a mechanism failure."
+      ]
+    },
+    "requalification_and_review_consequences": [
+      "Any change to the compiled reader or the execution surface invalidates the frozen execution_surface_identifier (currently C4C3-DARWIN-X86_64-ANCHOR/CPYTHON-3.11.3/PYREADSTAT-1.3.6/…), which is bound in the adopted warrant candidate's bound_globals.",
+      "A rebuilt extension also disturbs the execution_combined_tree (8f7efe690…) and rawlsing_next tree (b0c1ab47…) identities that the candidate binds, so the freeze's tree identities would need re-derivation and re-adjudication.",
+      "AT20 independently constrains the conclusion available even after a successful change: 'A source-free fixture result cannot establish live occupancy.' A demonstration on synthetic carriers shows the instrument CAN count; it does not establish that the LIVE run's count is captured.",
+      "Consequently the sibling source-free runtime-instrumentation feasibility lane must report feasibility and requalification burden only. It cannot by itself close R9.",
+      "Any adopted change requires independent hostile review before HQ removes R9, consistent with HQ192's recorded requirement."
+    ],
+    "what_HQ_may_decide_versus_what_requires_Astra_or_Omega": {
+      "HQ_may_decide": [
+        "Whether to authorise a runtime change at all, and to fund the feasibility and requalification work.",
+        "Whether to grant or refuse privileged tracing authority for a governed run.",
+        "How to represent the unsatisfied account in the interim — specifically, whether a typed null with a disclosed upper-bound proxy is acceptable for a given run, or whether the run is blocked pending instrumentation.",
+        "Whether to reopen the C4B per-source accounting obligation (finding DQ-01) and require per-source slots be restored in the instrument."
+      ],
+      "requires_Astra_or_Omega": [
+        "Any redefinition of the O1-C07 grain itself — for example deciding that 'path-level opens' is henceforth satisfied by a higher-layer account. O1-C07 is frozen Omega-1 law and its hardened note attributes the prohibition to Omega-1, so this lane could not decide it and neither could HQ acting alone.",
+        "Any conclusion that O1-C07 is satisfied, waived or narrowed. The commission's no-authority-laundering clause forbids this lane from waiving O1-C07, and the same prohibition binds HQ absent a fresh Omega determination.",
+        "Resolving a contested reading of C4B's freeze intent on the per-source accounting slots (DQ-01) if the parties disagree.",
+        "Any adoption that would alter the frozen freeze's authority surface."
+      ],
+      "explicitly_reserved_to_Astra": "The standing HQ182 C4 non-adoption hold remains pending a reserved Astra decision, per HQ194's current-state block. Nothing in this packet disturbs it."
+    }
+  },
+
+  "verdict": {
+    "predicate_satisfied": true,
+    "on_prong": "cannot lawfully succeed (prong 2) only",
+    "candidate_disposition": "R9_ARCHITECTURE_WARRANT_CANDIDATE__LITERAL_ACCOUNT_REQUIRES_RUNTIME_OR_AUTHORITY_CHANGE",
+    "not_self_adopted": true,
+    "r9_status_unchanged": "R9 remains OPEN. This packet does not close it, and no count was fabricated.",
+    "secondary_gap_not_driving_disposition": "SEL-02 (selected-column read COUNT has no executable owner) is a real but materially narrower gap whose lawful reporting route is a typed null. It is recorded in 02_STAGE_OWNERSHIP_MATRIX.json finding M-03 and is deliberately not bundled with the OS-open blocker."
+  }
+}
