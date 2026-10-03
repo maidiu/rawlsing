@@ -421,7 +421,13 @@ Divergent interpretations of the same shared practice may lawfully shape the nex
 
 `ATTENTION HABIT → PHENOMENAL SURFACE → ATTEND / DISCOVERY → POSSIBLE ATTENTION REVISION`.
 
-Recognition has a parallel provenance constraint:
+Narration is recognition-gated before provenance is even considered:
+
+`CANONICAL OBJECT IDENTITY != USER-FACING LABEL`.
+
+Use the most specific lexical description justified by actual perceptual access and warranted user recognition. A canonical Vitamix 5200 may surface simply as "a blender"; readable branding appears only when actually perceptible; brand/model labels require recognition. See SPD-0248.
+
+Recognition then has a parallel provenance constraint:
 
 `SPONTANEOUS USER IDENTIFICATION != SYSTEM/ACTOR-SUPPLIED LABEL != LATER ACQUIRED RECOGNITION`.
 
