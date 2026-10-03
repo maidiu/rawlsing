@@ -1,0 +1,74 @@
+{
+  "schema": "HQ192_DISK_EVIDENCE_AND_THRESHOLD@1.0.0",
+  "question": "Can a numeric live-run free-space threshold be derived from governed repository evidence?",
+
+  "answer": "NO.",
+
+  "conclusion": "HOST_PREFLIGHT_POLICY_THRESHOLD_REQUIRED",
+
+  "why_no_number_is_offered": "The commission instructs: derive a candidate threshold only if supported by governed size evidence plus declared temporary/output behaviour, and do not invent a threshold. No governed artifact declares any source size, output size, peak disk footprint or execution write volume. A number produced from anything other than such evidence would be invention, so none is produced. The preflight helper instead treats the threshold as a REQUIRED POLICY INPUT supplied by HQ and fails closed when it is absent.",
+
+  "search_performed": {
+    "scope": "governed paths only: WORKER_RETURNS, HQ_HANDOFF, PYAT_CONTROL_ROOM, rawlsing_next",
+    "patterns_for_declared_sizes": {
+      "numeric_byte_magnitudes": "[0-9]{6,14} (bytes|B) -> 0 matches",
+      "MiB_GiB_TiB_MB_GB_magnitudes": "[0-9]+(\\.[0-9]+)? ?(MiB|GiB|TiB|MB|GB) -> 0 matches across all governed paths",
+      "peak_disk_usage_footprint": "0 governed files",
+      "disk_require": "0 governed files",
+      "minimum_free": "0 governed files",
+      "workdir_size": "0 governed files",
+      "output_size": "0 governed files"
+    },
+    "near_miss_hits_inspected_and_rejected": [
+      {
+        "pattern": "space_require",
+        "hits": 2,
+        "why_rejected": "one is a design document sentence about sharing a decoder requiring an integration owner; the other is an adjudication sentence about parallel workers. Neither declares a disk quantity."
+      },
+      {
+        "pattern": "bytes_required",
+        "hits": 1,
+        "why_rejected": "WORKER_RETURNS/FIABC-LM2-R1C/RETURN.json declares the boolean \"source_bytes_required\": false. That is a statement that bytes are NOT required, not a magnitude."
+      },
+      {
+        "pattern": "scratch_size|scratch_bytes",
+        "hits": 32,
+        "why_rejected": "grep for any numeric byte magnitude within those hits returned nothing; they reference scratch PATHS, never sizes."
+      },
+      {
+        "pattern": "free space|disk capacity|GiB free",
+        "hits": "1 file (HQ_HANDOFF/DECISION_LEDGER.jsonl)",
+        "why_rejected": "a lane-dispatch decision entry, not a size or capacity declaration."
+      }
+    ],
+    "negative_control": "The same method returns 350 governed files for 'sha256', 38 for 'worktree' and 23 for 'interpreter', confirming the search was capable of finding matches and that the zeros above are real absences rather than a broken query.",
+    "source_data_touched": "none — no source file was opened, stat-ed for content, hashed, decoded or materialised"
+  },
+
+  "what_the_evidence_does_support": {
+    "measured_free_space_KiB_range": "4418088 .. 5469336 (4.21 .. 5.22 GiB) over 20 samples at 4 s intervals",
+    "largest_single_interval_delta_KiB": 1048576,
+    "largest_single_interval_delta_GiB": 1.00,
+    "observation": "Free space on /System/Volumes/Data steps in approximately 1 GiB quanta within a single 4 s interval, repeatedly, with no action by this lane. The observed series oscillates between about 4.21 and 5.22 GiB. The 1048576 KiB figure is exactly 1 GiB, indicating APFS/container snapshot accounting rather than organic file growth.",
+    "implication_for_any_future_threshold": "A threshold must tolerate at least a 1 GiB instantaneous swing plus concurrent consumption by other active lanes. A margin materially below 1 GiB would produce false passes. This is a design constraint on the policy value, not the policy value itself, and it does not substitute for one.",
+    "blocker_status": "HOST-PREFLIGHT-F3-DISK-CAPACITY-VOLATILITY is REAL, MEASURED AND CHARACTERISED, but NOT RESOLVED. Cleanup raised the floor and removed this lane's own waste; it did not and cannot remove other lanes' consumption or APFS snapshot churn."
+  },
+
+  "what_hq_must_supply": {
+    "requirement": "An adopted numeric minimum free space, in GiB, for the volume that will host the live run.",
+    "delivery_mechanism": "export HQ_DISK_MIN_FREE_GIB=<gib> before invoking host_preflight.sh",
+    "constraints_the_value_must_satisfy": [
+      "must exceed the peak concurrent-write requirement of the live run, which is itself not currently declared by any governed artifact",
+      "must include a margin strictly greater than the measured 1.00 GiB single-interval volatility quantum",
+      "must remain satisfiable after the ~15.5 GiB of REQUIRES_USER_APPROVAL reclamation is decided, because until that decision is made the available headroom is only ~4-6 GiB"
+    ],
+    "explicitly_not_claimed_by_this_lane": "No specific GiB figure is recommended as 'the' threshold. Recommending one would be inventing it. The volatility quantum and the measured floor are supplied so HQ can derive a defensible value with full information."
+  },
+
+  "preflight_behaviour_proof": {
+    "no_threshold_supplied": "exit 3, BLOCKED, reports HOST_PREFLIGHT_POLICY_THRESHOLD_REQUIRED — see evidence/preflight_no_threshold.txt",
+    "threshold_met_4GiB": "exit 0, PASS — see evidence/preflight_threshold_met.txt",
+    "threshold_unmet_99GiB": "exit 2, BLOCKED on capacity — see evidence/preflight_threshold_unmet.txt",
+    "sampling_rule": "the capacity decision is made against the WORST of three samples, not the most favourable, so a transient dip cannot produce a false pass"
+  }
+}

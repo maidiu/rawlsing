@@ -1,0 +1,81 @@
+{
+  "schema": "HQ192_DISPOSITION@1.0.0",
+  "commission": "PYAT-HQ192-HOST-PREFLIGHT-REMEDIATION-R1",
+  "role": "RABOCHII / LOCAL-HOST OPERATIONS IMPLEMENTER — SPACE BUNNY",
+  "branch": "agent/rabochii-pyat-hq192-host-preflight-remediation-r1",
+  "commissioned_startup_sha": "f4db1192c5dd2962c93cf9b726c8835f922ad6e7",
+  "startup_verified": true,
+
+  "disposition": "HOST_PREFLIGHT_POLICY_THRESHOLD_REQUIRED",
+
+  "summary": "Both bounded host hazards are CLOSED and verified. The disk blocker is reduced and precisely characterised but NOT resolved, and no numeric threshold could be lawfully derived because governed repository evidence declares no source size, output size, peak footprint or execution write volume. The preflight helper is built, SHA-pinned and proven fail-closed; it refuses to run until HQ adopts and supplies a threshold.",
+
+  "item_status": {
+    "HOST-PREFLIGHT-F3-DISK-CAPACITY-VOLATILITY": "NOT_RESOLVED__MEASURED_AND_CHARACTERISED__REDUCED",
+    "LOCAL_COURTS_not_ignored": "CLOSED",
+    "dangling_interpreter_symlink": "CLOSED",
+    "sha_pinned_execution_preflight": "BUILT_AND_VERIFIED__BLOCKED_PENDING_POLICY_THRESHOLD",
+    "R7": "CLOSED__NOT_REOPENED"
+  },
+
+  "why_this_disposition": [
+    "HOST_PREFLIGHT_CLOSED__CANDIDATE_READY_FOR_HQ_REVIEW was not available because the disk blocker genuinely remains: free space still oscillates between about 4.21 and 5.22 GiB with 1.00 GiB single-interval swings, driven by APFS snapshot accounting and other active lanes that this lane must not clean.",
+    "HOST_PREFLIGHT_PARTIAL__DISK_BLOCKER_REMAINS understates the position. The two commissioned hazard closures are complete and verified, and the remaining requirement is not merely an unresolved blocker but a specific missing POLICY INPUT that only HQ can supply.",
+    "HOST_CAPABILITY_BLOCKED was not chosen because the host provided every capability the work needed; nothing failed for lack of host capability.",
+    "HOST_PREFLIGHT_POLICY_THRESHOLD_REQUIRED is exact: the cleanup was performed and quantified, free space was measured, and the single remaining requirement is precisely stated."
+  ],
+
+  "cleanup_performed": {
+    "SAFE_AUTOMATIC_items_deleted": 2,
+    "measured_deleted_MiB": 499,
+    "free_space_before_GiB": 3.68,
+    "free_space_after_GiB": 5.22,
+    "attribution_disclosure": "the volume moved 1.54 GiB but this lane deleted only 499 MiB; the residual ~1.07 GiB is concurrent host activity and is NOT claimed as this lane's saving",
+    "left_for_user_decision_approx_GiB": 15.5
+  },
+
+  "what_hq_must_decide": [
+    {
+      "decision": "Adopt a numeric minimum free space in GiB for the live-run volume and supply it as HQ_DISK_MIN_FREE_GIB.",
+      "why_it_cannot_be_done_here": "no governed artifact declares the live run's peak write requirement, so any number chosen by this lane would be invented rather than derived",
+      "constraint": "the value must include a margin strictly greater than the measured 1.00 GiB single-interval volatility quantum, or transient dips will produce false passes"
+    },
+    {
+      "decision": "Authorise or decline reclamation of the ~15.5 GiB classified REQUIRES_USER_APPROVAL, chiefly 23 other-lane worktrees (~11.1 GiB) and 1.38 GiB of git loose objects.",
+      "why_it_cannot_be_done_here": "the safety law forbids cleaning another active lane's work, and git prune on the shared .git could discard objects another lane has not yet pushed; 'stale' and 'active' are not mechanically determinable"
+    }
+  ],
+
+  "holds_observed": {
+    "raw_source_access": "zero — no source file opened, hashed, stat-ed for content, decoded or materialised",
+    "source_directory_inspection": "zero — LOCAL_COURTS measured by directory size only",
+    "locator_discovery": "zero",
+    "warrant_issuance": "zero",
+    "live_C4_execution": "zero",
+    "c7_or_actor_person_work": "zero",
+    "R7_reopened": "no",
+    "r7_qualification_environment_deleted": "no",
+    "interpreter_toolchain_deleted": "no",
+    "other_lane_work_cleaned": "no",
+    "sudo_used": false,
+    "system_security_changes": false,
+    "recursive_chmod_chown": false,
+    "user_documents_deleted": false
+  },
+
+  "write_terrain_respected": {
+    "repository": [
+      ".gitignore",
+      "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HOST-PREFLIGHT-R1/**",
+      "WORKER_RETURNS/PYAT-HQ192-HOST-PREFLIGHT-REMEDIATION-R1/**"
+    ],
+    "local": [
+      "the single commissioned symlink LOCAL_COURTS/tooling/python/cpython-3.11-macos-x86_64-none",
+      "SAFE_AUTOMATIC cleanup targets, recorded in 01_DISK_INVENTORY_AND_ACCOUNTING.json"
+    ]
+  },
+
+  "self_qualification": "NONE. R7 is not reopened, no live execution is authorised, and this return does not certify the host ready for any run.",
+
+  "terminal": "HQ192_HOST_PREFLIGHT_RETURNED__HQ_REVIEW_REQUIRED"
+}

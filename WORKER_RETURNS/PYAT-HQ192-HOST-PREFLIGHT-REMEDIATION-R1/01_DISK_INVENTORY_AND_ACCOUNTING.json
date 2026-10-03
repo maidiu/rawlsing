@@ -1,0 +1,141 @@
+{
+  "schema": "HQ192_DISK_INVENTORY_AND_ACCOUNTING@1.0.0",
+  "volume": "/System/Volumes/Data",
+  "measurement_method": "df -k sampled repeatedly; KiB precision; never a single reading",
+  "safety_law_observed": {
+    "sudo": false,
+    "recursive_chmod_chown": false,
+    "system_security_changes": false,
+    "user_documents_deleted": false,
+    "raw_sources_deleted_or_inspected": false,
+    "raw_source_contents_opened": false,
+    "r7_qualification_environment_deleted": false,
+    "interpreter_toolchain_deleted": false,
+    "other_lane_work_cleaned": false,
+    "broad_recursive_cleanup_over_shared_paths": false
+  },
+
+  "composition_at_start": {
+    "registered_worktrees_total": 25,
+    "satellite_worktrees_approx": "23 x ~494 MiB = ~11.1 GiB",
+    "main_checkout_Rawlsing": "17939 MiB (17.5 GiB)",
+    "LOCAL_COURTS": "7029 MiB (7.0 GiB)",
+    "deepseek_harness": "2536 MiB",
+    "git_directory": "2406 MiB (size-pack 895.66 MiB, loose objects 1.38 GiB across 10141 objects)",
+    "private_tmp_total": "561 MiB"
+  },
+
+  "classification": [
+    {
+      "item": "/private/tmp/hq191a2 (my own HQ191-A2 disposable fixture)",
+      "size_KiB": 5140,
+      "class": "SAFE_AUTOMATIC",
+      "basis": "lane-owned by this implementer; disposable test fixtures; the work it supported was committed, pushed and returned",
+      "action": "DELETED"
+    },
+    {
+      "item": "git worktree hq191a2 (my own completed HQ191-A2 lane worktree)",
+      "size_KiB": 505444,
+      "class": "SAFE_AUTOMATIC",
+      "basis": "owned by this implementer; 0 tracked modifications; 0 real untracked artifacts (only 3 macOS .DS_Store files, 24 KiB); HEAD 4b0b3310 is contained in origin/agent/rabochii-pyat-hq191-a2-dispatcher-unattended-hardening-r1 AND is already an ancestor of origin/agent/reviewer-pyat-hq192-a2-dispatcher-unattended-hostile-review-r1, so the work is durably returned and independently reviewed",
+      "action": "DELETED",
+      "method": "git worktree remove WITHOUT --force, after separately deleting only the 3 .DS_Store files",
+      "note": "A first attempt reported a false success because the shell pipeline masked git's exit status; git had in fact refused the dirty worktree. The removal was then redone honestly and its exit code checked explicitly. Recorded because a false success in a cleanup ledger is exactly the failure mode under review."
+    },
+    {
+      "item": "23 satellite git worktrees belonging to other lanes (~11.1 GiB)",
+      "size_KiB": 11400000,
+      "class": "REQUIRES_USER_APPROVAL",
+      "basis": "All have 0 tracked modifications and HEAD reachable from a remote branch, which satisfies 'clean and already remotely returned'. However 'stale' and 'not an active lane' are NOT mechanically determinable from git, and the safety law forbids cleaning another active lane's work. Ten of them still carry 2-4 real untracked entries each. Deleting these is the single largest available saving and is therefore precisely the decision that must belong to the user, not to this lane.",
+      "action": "NOT DELETED"
+    },
+    {
+      "item": "git loose objects reported unreachable (warning: 'too many unreachable loose objects')",
+      "size_KiB": 1413000,
+      "class": "REQUIRES_USER_APPROVAL",
+      "basis": "git prune/gc on the SHARED .git could discard objects that another active lane has not yet fetched or pushed. This is a shared-repository mutation, which the safety law forbids doing unilaterally.",
+      "action": "NOT DELETED (quantified only)"
+    },
+    {
+      "item": "deepseek-harness",
+      "size_KiB": 2595840,
+      "class": "REQUIRES_USER_APPROVAL",
+      "basis": "large but provenance and reproducibility not established; 'do not infer that something is disposable merely because it is large'",
+      "action": "NOT DELETED"
+    },
+    {
+      "item": "LOCAL_COURTS/qualification/r7-c4-source-free-venv",
+      "size_KiB": 339968,
+      "class": "PRESERVE",
+      "basis": "commission and safety law explicitly forbid deleting the accepted R7 qualification environment",
+      "action": "PRESERVED"
+    },
+    {
+      "item": "LOCAL_COURTS/python (196 MiB) and LOCAL_COURTS/tooling (64 MiB)",
+      "size_KiB": 266240,
+      "class": "PRESERVE",
+      "basis": "bound interpreter toolchain; LOCAL_COURTS/python/fiabc-wvs7-retry-r1-3.11.3/bin/python is cited by name as a live path in HQ_HANDOFF/FIABC_SOURCE_SPLIT_RUN5_DUAL_MACHINE_LAUNCH_AUTHORIZATION_R1.md",
+      "action": "PRESERVED"
+    },
+    {
+      "item": "LOCAL_COURTS/Rawlsing-retry-r1 (1239 MiB), LOCAL_COURTS/Rawlsing (2494 MiB), LOCAL_COURTS/Rawlsing-hq105-readiness-r1 (1727 MiB), LOCAL_COURTS/fiabc-control-local-override-r1 (486 MiB), LOCAL_COURTS/Rawlsing-wvs7-abc-fix-override-r1 (485 MiB)",
+      "size_KiB": 6928896,
+      "class": "PRESERVE",
+      "basis": "these are bound governed working roots, not scratch. HQ_HANDOFF cites LOCAL_COURTS/Rawlsing-retry-r1/protected-execution, LOCAL_COURTS/Rawlsing-retry-r1/source-split-control and the FIABC-P2X-* run roots by absolute path in launch authorizations and checkpoints. They are governed evidence environments.",
+      "action": "PRESERVED"
+    },
+    {
+      "item": "/private/tmp/wt-r2d2m (486 MiB)",
+      "size_KiB": 497664,
+      "class": "REQUIRES_USER_APPROVAL",
+      "basis": "a registered worktree belonging to another lane",
+      "action": "NOT DELETED"
+    },
+    {
+      "item": "/private/tmp/c1-01-r7-execution-venv (27 MiB)",
+      "size_KiB": 27648,
+      "class": "PRESERVE",
+      "basis": "R7 execution environment",
+      "action": "PRESERVED"
+    },
+    {
+      "item": "/private/tmp/c1-01-r8-release-spine-venv (27 MiB), /private/tmp/rev (3 MiB)",
+      "size_KiB": 30720,
+      "class": "REQUIRES_USER_APPROVAL",
+      "basis": "not lane-owned by this implementer and provenance not established",
+      "action": "NOT DELETED"
+    },
+    {
+      "item": "main checkout /Users/matthewsmith/Desktop/Rawlsing",
+      "size_KiB": 18369536,
+      "class": "PRESERVE",
+      "basis": "primary working checkout carrying 23 real untracked entries and the user's own working context",
+      "action": "PRESERVED"
+    }
+  ],
+
+  "accounting": {
+    "free_before_KiB": 3864480,
+    "free_before_GiB": 3.68,
+    "free_after_KiB": 5474760,
+    "free_after_GiB": 5.22,
+    "measured_deleted_KiB": 510584,
+    "measured_deleted_MiB": 499,
+    "observed_volume_delta_KiB": 1610280,
+    "observed_volume_delta_GiB": 1.54,
+    "attribution_disclosure": "The items this lane deleted totalled 510584 KiB (499 MiB), NOT the full 1.54 GiB the volume moved. The residual ~1.07 GiB is attributable to concurrent host activity outside this lane's control — a background git auto-packing run was observed during the lane, and other lanes are active in the same repository and the same shared volume. This lane does not claim the residual as its own saving. On a shared, volatile volume the volume delta and the sum of deleted bytes are different quantities and only the latter is this lane's work.",
+    "worktrees_before": 25,
+    "worktrees_after": 24
+  },
+
+  "quantified_opportunity_left_on_the_table": {
+    "REQUIRES_USER_APPROVAL_total_approx_GiB": 15.5,
+    "components": {
+      "other_lane_worktrees_GiB": 11.1,
+      "git_loose_objects_GiB": 1.38,
+      "deepseek_harness_GiB": 2.5,
+      "other_lane_tmp_GiB": 0.5
+    },
+    "note": "This is the number HQ needs in order to decide. It is stated so the decision is informed, not so this lane can act on it unilaterally."
+  }
+}

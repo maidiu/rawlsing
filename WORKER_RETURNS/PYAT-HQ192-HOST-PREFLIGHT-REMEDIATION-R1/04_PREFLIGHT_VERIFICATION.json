@@ -1,0 +1,59 @@
+{
+  "schema": "HQ192_SHA_PINNED_EXECUTION_PREFLIGHT@1.0.0",
+  "artifact": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HOST-PREFLIGHT-R1/host_preflight.sh",
+  "properties": {
+    "source_free": true,
+    "executes_live_C4": false,
+    "discovers_locators": false,
+    "issues_warrant": false,
+    "opens_source_data": false,
+    "fails_closed": true,
+    "authorises_nothing": "a PASS is a precondition check, not a warrant and not an execution authorisation"
+  },
+
+  "pinned_identities_verified": {
+    "executable_freeze_commit": {
+      "expected": "8ff40d37de69db2d8a6053a7c2242f481677f1a4",
+      "observed": "8ff40d37de69db2d8a6053a7c2242f481677f1a4",
+      "match": true,
+      "subject": "C4 executable freeze fan-in: O1-C01..C1-C05 closed, warrant candidate unissued"
+    },
+    "rawlsing_next_tree": {
+      "expected": "b0c1ab472cde033e21f1c2f63fbcbea2f0cccef0",
+      "observed": "b0c1ab472cde033e21f1c2f63fbcbea2f0cccef0",
+      "match": true
+    },
+    "r7_interpreter_sha256": {
+      "expected": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+      "observed": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+      "match": true
+    },
+    "r7_interpreter_runtime": "executes and reports CPython 3.11",
+    "short_name_symlink_resolves_to_identical_bytes": true
+  },
+
+  "disk_policy": {
+    "threshold_source": "REQUIRED POLICY INPUT from HQ via HQ_DISK_MIN_FREE_GIB",
+    "no_default_is_baked_in": true,
+    "why": "no governed artifact declares a source/output size or execution write volume, so no defensible number could be derived; a baked-in default would be invention and would silently manufacture a pass",
+    "sampling": "three samples, and the capacity verdict is taken against the WORST sample so a transient dip cannot produce a false pass",
+    "decision_points": {
+      "identity_mismatch_exit": 2,
+      "threshold_not_adopted_exit": 3,
+      "insufficient_space_exit": 2,
+      "all_passed_exit": 0
+    }
+  },
+
+  "demonstrated_behaviour": [
+    { "scenario": "no threshold supplied", "exit": 3, "result": "BLOCKED — HOST_PREFLIGHT_POLICY_THRESHOLD_REQUIRED", "evidence": "evidence/preflight_no_threshold.txt" },
+    { "scenario": "threshold 4 GiB supplied, ~4.2 GiB free", "exit": 0, "result": "PASS — identities verified and capacity satisfied", "evidence": "evidence/preflight_threshold_met.txt" },
+    { "scenario": "threshold 99 GiB supplied", "exit": 2, "result": "BLOCKED on capacity", "evidence": "evidence/preflight_threshold_unmet.txt" }
+  ],
+
+  "residual_gaps_acknowledged": [
+    "The preflight verifies identity and capacity. It does NOT verify locators, warrants, adjudication or terrain; those remain their own gates and are untouched by this commission.",
+    "It checks the interpreter binary digest only. It does not attest the R7 venv's package closure, which the governing review separately recorded as self-declared non-durable and not reproducible from the repository. That finding belongs to R7 and is not reopened here.",
+    "It reads /System/Volumes/Data by default; if a future live run targets a different volume the target must be passed explicitly, and a wrong volume would be measured rather than assumed."
+  ]
+}

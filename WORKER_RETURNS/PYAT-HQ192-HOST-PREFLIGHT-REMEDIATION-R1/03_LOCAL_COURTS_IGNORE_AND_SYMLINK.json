@@ -1,0 +1,68 @@
+{
+  "schema": "HQ192_LOCAL_COURTS_IGNORE_AND_SYMLINK@1.0.0",
+  "substantive_result_note": "both bounded hazards CLOSED and verified",
+
+  "hazard_1_local_courts_not_ignored": {
+    "status": "CLOSED",
+    "change": "added a new root .gitignore (none existed) containing exactly one ignore rule: /LOCAL_COURTS/",
+    "narrowness_mechanism": "root-anchored with a leading slash, so it matches ONLY the top-level LOCAL_COURTS/ and cannot mask a same-named directory nested elsewhere in the tree",
+    "conflicting_repository_law_check": {
+      "performed": true,
+      "result": "NO CONFLICT",
+      "evidence": [
+        "git ls-files -- LOCAL_COURTS returns 0 files, so the rule cannot untrack or orphan anything",
+        "HQ_HANDOFF/DECISION_LEDGER.jsonl already records that the qualified interpreter 'resolves under the untracked LOCAL_COURTS path so it is genuinely uncommitted' — the repository already treats this tree as untracked by design, so ignoring it codifies existing law rather than overriding it",
+        "the 17 tracked references to LOCAL_COURTS are references to filesystem PATHS inside it (governed working roots and interpreters), not to repository entries; git ignore rules do not affect filesystem path validity"
+      ]
+    },
+    "verification": {
+      "check_ignore_succeeds_on_target": true,
+      "paths_confirmed_ignored": [
+        "LOCAL_COURTS/",
+        "LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/bin/python3.11",
+        "LOCAL_COURTS/qualification"
+      ],
+      "governed_paths_confirmed_NOT_masked": [
+        "HQ_HANDOFF/DECISION_LEDGER.jsonl",
+        "WORKER_RETURNS",
+        "PYAT_CONTROL_ROOM",
+        "rawlsing_next",
+        "data",
+        ".gitignore",
+        "WORKER_COMMISSIONS"
+      ],
+      "narrowness_proof": "some/dir/LOCAL_COURTS/x is NOT ignored",
+      "tracked_files_affected": 0,
+      "total_tracked_files_unchanged": 6827
+    },
+    "scope_creep_avoided": "deepseek-harness (2536 MiB) is also large and untracked, but the commission authorised an ignore rule for LOCAL_COURTS/ only. No rule was added for it; it is instead reported as a REQUIRES_USER_APPROVAL cleanup candidate. An ignore rule is not a cleanup, and neither is a licence to ignore more than was commissioned."
+  },
+
+  "hazard_2_dangling_symlink": {
+    "status": "CLOSED",
+    "path": "LOCAL_COURTS/tooling/python/cpython-3.11-macos-x86_64-none",
+    "root_cause": "the symlink was ABSOLUTE and pointed at /Users/matthewsmith/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none, but the real tree lives at /Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/... . It had therefore never resolved on this host.",
+    "before": {
+      "target": "/Users/matthewsmith/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none",
+      "resolved": false
+    },
+    "after": {
+      "target": "cpython-3.11.3-macos-x86_64-none",
+      "resolved": true,
+      "form": "RELATIVE symlink",
+      "why_relative": "matches the commissioned target, which is stated as the repo-relative path LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none, and remains correct if the repository is ever moved or renamed. An absolute path is what broke in the first place."
+    },
+    "method": "ln -sfn onto the single commissioned symlink; no other path touched; no interpreter bytes modified",
+    "verification": {
+      "target_directory_exists": true,
+      "interpreter_sha256_via_short_name": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+      "interpreter_sha256_via_real_name": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+      "expected_sha256": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+      "bytes_unchanged": true,
+      "short_name_executes": "yes — CPython 3.11.3",
+      "verified_independently_by_preflight": "host_preflight.sh check [3] asserts the short-name path resolves to identical bytes, so a future regression to a dangling link fails the preflight closed"
+    }
+  },
+
+  "interaction_between_the_two_fixes": "The ignore rule and the symlink repair are independent, and both were necessary: ignoring LOCAL_COURTS stops git treating a 7 GiB local estate as untracked noise, while the symlink repair makes the bound interpreter reachable through the short name that governed artifacts reference. Ignoring the directory would NOT have hidden a dangling link from the preflight, because the preflight stats the filesystem directly rather than asking git."
+}
