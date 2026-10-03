@@ -1,3 +1,29 @@
+# HQ193 active frontier — 2026-10-03
+
+HQ has adjudicated the HQ192 A2 hostile review and host-preflight return.
+
+- **Dispatcher A2 is adopted** for unattended source-free orchestration on this exact host with bounded residual limitations. Adopted blob: `2db72c887b032622e09da6a5bd7723f7fb7055ee`.
+- Earlier L-1 reviewer-independence is now **SATISFIED** by the independent DeepSeek V4.1 Flash review at `99d6c2fb5fcee594b2f58a69934ccb92890dee13`.
+- Default scoped OpenCode permission profile is the accepted unattended profile. Caller-supplied permission-profile widening is not authorized without later HQ review.
+- R7 remains **CLOSED**.
+- Host-preflight still blocks live C4 only on disk policy/capacity. LOCAL_COURTS ignore and interpreter symlink hazards are closed.
+- HQ has authorized **salvage-then-remove stale registered worktrees**. Returned/reviewed worktrees are temporary execution state, not archival authority.
+- Preserve the canonical checkout, active R9 OS-accounting lane, any active same-user process checkout, unique local substantive deltas until salvaged, LOCAL_COURTS, data, deepseek-harness, shared Git objects and all raw/source estates.
+- Do not run Git object pruning yet.
+- Active implementation lane remains `agent/rabochii-pyat-hq192-r9-os-accounting-interposition-r1`.
+- HQ182's C4 non-adoption hold remains pending the reserved Astra decision.
+
+Next:
+1. run salvage-first worktree reclamation locally;
+2. continue R9 OS-accounting lane;
+3. remeasure post-GC free-space floor;
+4. then HQ adopts an explicit disk policy threshold before any live C4.
+
+See:
+`HQ_HANDOFF/checkpoints/20261003-PYAT-HQ193-A2-ADOPTED-GC-AUTHORIZED-R1/`
+
+---
+
 # HQ192 active frontier — 2026-10-03
 
 HQ has adjudicated the full HQ191 wave.
