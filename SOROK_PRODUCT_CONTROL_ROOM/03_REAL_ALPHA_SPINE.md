@@ -968,15 +968,30 @@ and:
 
 > **Do not maximize meaningfulness. Preserve contingency.**
 
-### ATTEND is not a lore dispenser
+### ATTEND, materialization and disclosure
 
-Focused ATTEND may deepen resolution while returning ordinary, low-significance, uncertain or valid-empty detail.
+Focused ATTEND should reliably deepen lawful perceptual specificity.
 
-> **ATTENTION MAY INCREASE RESOLUTION WITHOUT INCREASING NARRATIVE SIGNIFICANCE.**
+But the user-facing payoff and the engine's hidden materialization are distinct.
 
-If every inspection yields meaningful provenance/backstory, the product trains completionist clue search even with query-invariant world truth.
+`ATTEND`
+→ more inspectable detail becomes available
+→ Rawlsing may also resolve still-deeper hidden provenance/history/actor-epistemic state
+→ only evidence reachable through the current sensory/action/social route is disclosed.
 
-See SPD-0236 / RISK-193.
+Thus:
+
+> **ATTEND EARNS SPECIFICITY, NOT AUTOMATIC SIGNIFICANCE.**
+
+> **SPECIFICITY IS THE RAW MATERIAL FROM WHICH SIGNIFICANCE MAY EMERGE.**
+
+and:
+
+> **MATERIALIZATION DEPTH MAY ADVANCE BEYOND DISCLOSURE DEPTH.**
+
+A user inspecting old Birkenstocks may lawfully see wear, repair and brand while remaining ignorant of acquisition history. Asking Nadia does not query canonical truth: her reply is downstream of her own memory/belief/access/motive and may be partial, mistaken, evasive, playful or false.
+
+See artifact 80, SPD-0236/0237, RISK-193/194.
 
 Artifact:
 `70_HISTORICAL_BRIDGE_RECONCILIATION_CAUSAL_SLACK_AND_CONTRADICTION_PRESERVATION_R1.md`.
