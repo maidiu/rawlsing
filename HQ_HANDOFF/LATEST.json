@@ -1,12 +1,12 @@
 {
   "schema": "RAWLSING_HQ_HANDOFF_POINTER@1.1.0",
-  "checkpoint_id": "20261003-PYAT-HQ188-TWO-SLOT-RABOCHII-WAVE-R1",
-  "handoff_commit": "30f08c6ed1418d2b80fed856b8fe2cb1fd772fc6",
+  "checkpoint_id": "20261003-PYAT-HQ189-COMMISSION-GITHUB-IO-LAW-R1",
+  "handoff_commit": "75d3ea73197b61ae96d6d5b35f853a60d3e603e9",
   "semantic_pre_main_tip": "902640dfddce431d0c5ba151d3eb851d6b84d7a3",
   "control_branch": "integration/pre-main-reconciliation-r1",
-  "current_md_path": "HQ_HANDOFF/checkpoints/20261003-PYAT-HQ188-TWO-SLOT-RABOCHII-WAVE-R1/CURRENT.md",
-  "current_json_path": "HQ_HANDOFF/checkpoints/20261003-PYAT-HQ188-TWO-SLOT-RABOCHII-WAVE-R1/CURRENT.json",
-  "manifest_path": "HQ_HANDOFF/checkpoints/20261003-PYAT-HQ188-TWO-SLOT-RABOCHII-WAVE-R1/MANIFEST.json",
+  "current_md_path": "HQ_HANDOFF/checkpoints/20261003-PYAT-HQ189-COMMISSION-GITHUB-IO-LAW-R1/CURRENT.md",
+  "current_json_path": "HQ_HANDOFF/checkpoints/20261003-PYAT-HQ189-COMMISSION-GITHUB-IO-LAW-R1/CURRENT.json",
+  "manifest_path": "HQ_HANDOFF/checkpoints/20261003-PYAT-HQ189-COMMISSION-GITHUB-IO-LAW-R1/MANIFEST.json",
   "decision_ledger_path": "HQ_HANDOFF/DECISION_LEDGER.jsonl",
   "protocol_path": "HQ_HANDOFF/PROTOCOL.md",
   "start_here_path": "HQ_HANDOFF/START_HERE.md",
@@ -15,7 +15,7 @@
   "temporal_reconciliation_law": "SEALED_CHECKPOINT_AUTHORITY_NE_POST_CHECKPOINT_PENDING_RETURN_NE_UNAUTHORIZED_POST_CHECKPOINT_MOVEMENT",
   "maintenance_law": "AFTER_EVERY_MATERIAL_HQ_STATE_CHANGE__CREATE_NEW_IMMUTABLE_CHECKPOINT__ADVANCE_AND_VERIFY_LATEST_BEFORE_TRANSITION_IS_SEALED",
   "protected_execution_head": "16f5e7d5f691e908d85dc1dd26b8a59a29f668f4",
-  "next_action": "RUN_HQ188_A_AND_B_IN_PARALLEL__ON_FIRST_RETURN_HQ_ADJUDICATE_AND_REFILL_FREED_SLOT",
+  "next_action": "LAUNCH_HQ188_A_AND_B_FROM_EXACT_HARDENED_REMOTE_TIPS__ON_RETURN_REQUIRE_PUSHED_REMOTE_SHA",
   "source_split_control_head": "cee9e27d57dc72771d9c3ec5df26493321feeef5",
   "split_fanin_evidence_tip": "cee9e27d57dc72771d9c3ec5df26493321feeef5",
   "joined_successor_return_tip": "b4dd6d6016367110c06317abe2cef276123b4c69",
@@ -544,8 +544,8 @@
   "external_adjudication_retrieval_law": "ALL_COMPARISON_MATERIAL_FETCHABLE_FROM_ORIGIN",
   "measured_execution_authorized_via_warrant": false,
   "previous_handoff": {
-    "checkpoint_id": "20261003-PYAT-HQ-PUBLICATION-AUDIT-REPAIRS-R1",
-    "handoff_commit": "f68903fdd7792cb4a43f7f31bd73e8ad3265e7f2"
+    "checkpoint_id": "20261003-PYAT-HQ188-TWO-SLOT-RABOCHII-WAVE-R1",
+    "handoff_commit": "30f08c6ed1418d2b80fed856b8fe2cb1fd772fc6"
   },
   "previous_operating_mode": {
     "selected": "BROWSER_ECONOMY",
@@ -651,12 +651,21 @@
     "dispatch_record": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/DISPATCHES/HQ188_TWO_SLOT_RABOCHII_WAVE_R1/",
     "dispatch_base": "6820160533859cf8dd283d10c043947dfe1dd5d4",
     "lane_a_branch": "agent/rabochii-pyat-hq188-a-opencode-dispatcher-runtime-repair-r1",
-    "lane_a_commission_tip": "2817711c7a1c7129a5c2352fcf604f49bf467286",
+    "lane_a_commission_tip": "ff7a06694b0391471b8e1223b2f881b3288f529e",
     "lane_b_branch": "agent/rabochii-pyat-hq188-b-c4-current-consolidation-r1",
-    "lane_b_commission_tip": "83c0b9cd538d3e0d7e9dcb8fd183dcc9044be447",
+    "lane_b_commission_tip": "9001be646305036e493eea3dbce427f62f91c9ae",
     "active_implementers": 2,
     "max_implementers": 2,
     "review_slot": "FREE",
-    "refill_on_return": true
+    "refill_on_return": true,
+    "commission_io_law": "FETCH_VERIFY_REMOTE_STARTUP_SHA__ISOLATED_WORKTREE__PUSH_REFETCH_VERIFY_REMOTE_RETURN_SHA",
+    "local_only_return_valid": false
+  },
+  "commission_io_law": {
+    "status": "MANDATORY_FOR_ALL_WORKER_AND_REVIEWER_COMMISSIONS",
+    "template": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/templates/COMMISSION.md",
+    "startup": "FETCH_ORIGIN__VERIFY_EXACT_REMOTE_COMMISSION_SHA__ISOLATED_WORKTREE__NO_BLIND_PULL",
+    "return": "COMMIT__PUSH_BOUND_BRANCH__REFETCH__VERIFY_REMOTE_RETURN_SHA",
+    "missing_protocol": "MALFORMED__DO_NOT_LAUNCH"
   }
 }
