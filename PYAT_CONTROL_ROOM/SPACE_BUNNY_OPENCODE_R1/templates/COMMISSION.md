@@ -55,10 +55,10 @@ At completion the worker must:
 4. push the worker branch to `origin`;
 5. fetch/resolve `origin/<worker-branch>`;
 6. verify local HEAD == remote worker branch at one exact full 40-hex SHA;
-7. record that exact final remote SHA in the primary return and final disposition;
-8. report branch, exact final remote SHA, disposition and terminal token to HQ.
+7. record the stable substantive candidate/review-result commit SHA in the return artifacts;
+8. report branch, exact pushed remote branch-tip SHA, disposition and terminal token to HQ. HQ independently re-resolves that tip.
 
-A local-only candidate is **not returned**.
+A local-only candidate is **not returned**. Do not require a commit to embed its own enclosing branch-tip SHA: that is self-referential. The immutable return artifacts bind the substantive candidate/result commit; the pushed branch-tip SHA is reported out-of-band and independently verified by HQ.
 
 Do not merge/fast-forward/rebase into control, modify HQ state, or self-adopt. If a post-return correction is required, append a new commit and report the new exact SHA; do not rewrite/force-push returned history unless an explicit later HQ instruction says otherwise.
 
