@@ -485,44 +485,67 @@ Human life contains:
 - events whose consequences were small;
 - events whose real consequences differ from later stories about them.
 
-### ATTEND must not become "click for lore"
+### ATTEND should deepen truth without automatically disclosing lore
 
 This is a separate game-loop consequence of anti-totalization.
 
-If focused inspection reliably yields:
-- poignant provenance;
-- hidden formative causes;
-- secrets;
-- symbolically useful backstory;
-- relationship-relevant revelations;
+The danger is **not** that ATTEND causes Rawlsing to generate deeper reality.
 
-then users learn:
+It should.
 
-`ATTEND = LORE DISPENSER`.
+The danger is collapsing:
 
-The underlying world may remain query-invariant and still produce completionist play.
+`ATTEND TRIGGERS DEEPER MATERIALIZATION`
 
-Therefore focused ATTEND must also lawfully yield:
-- more perceptual specificity and nothing else;
-- ordinary provenance;
-- low-significance history;
-- weak or no association;
-- actor uncertainty;
-- actor refusal/annoyance;
-- no resolved deeper explanation.
+into:
+
+`ATTEND AUTOMATICALLY DISCLOSES DEEPER SIGNIFICANCE`.
+
+A healthy loop is:
+
+`ATTEND TARGET`
+→ deeper lawful physical resolution becomes user-accessible
+→ still-deeper objective/provenance/person history may be materialized behind the scenes
+→ only epistemically available evidence is disclosed
+→ later observation/testimony/inference may connect those pieces.
+
+Thus an inspected sandal can reveal:
+- brown Birkenstock;
+- old;
+- uneven heel wear;
+- darkened cork;
+- repaired strap;
+
+while the same ATTEND may cause Rawlsing to resolve, invisibly:
+- acquisition history;
+- repair history;
+- whether it appears in old photos;
+- what Nadia actually knows/remembers;
+- whether some deeper causal significance exists.
+
+The user does not receive those hidden facts merely because generation occurred.
 
 Compact:
 
-> **ATTENTION MAY INCREASE RESOLUTION WITHOUT INCREASING NARRATIVE SIGNIFICANCE.**
+> **ATTEND EARNS SPECIFICITY, NOT AUTOMATIC SIGNIFICANCE.**
 
-Examples:
-- "I bought that at Target."
-- "I've had it forever."
-- "I liked the pattern."
-- "My sister left it here."
-- "Why are you psychoanalyzing my sandals?"
+> **SPECIFICITY IS EVIDENCE FROM WHICH SIGNIFICANCE MAY LATER EMERGE.**
 
-See SPD-0236 / RISK-193.
+and:
+
+> **MATERIALIZATION DEPTH MAY ADVANCE BEYOND DISCLOSURE DEPTH.**
+
+The failure mode is therefore not "meaningful backstory exists."
+
+It is:
+- narrator hands it over because the user looked;
+- every inspected object immediately yields autobiographical payoff;
+- actor testimony functions as canonical truth lookup;
+- physical inspection somehow reveals propositions inaccessible to physical inspection.
+
+Ordinary or low-significance truth remains necessary too, because significance must not be inferable from the mere fact that the player chose to ATTEND.
+
+See SPD-0236 / SPD-0237 / RISK-193 / RISK-194.
 
 Therefore historical candidate scoring must preserve **contingency mass**.
 
