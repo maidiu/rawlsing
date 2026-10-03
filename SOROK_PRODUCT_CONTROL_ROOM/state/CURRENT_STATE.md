@@ -1768,4 +1768,70 @@ Risk:
 
 Q-PLAYER / Q-ATTEND-002 now reference this law.
 
+---
+
+## Full-transcript cross-plane leakage / emergent-teleology audit
+
+Artifact:
+`83_FULL_TRANSCRIPT_CROSS_PLANE_LEAKAGE_AND_EMERGENT_TELEOLOGY_AUDIT_R1.md`.
+
+Four interaction-level laws are now live.
+
+### Control-plane != diegetic event
+
+`SPD-0242`.
+
+Out-of-world app controls are not actor evidence merely because the platform observes them.
+
+`CONTROL-PLANE INTENT != DIEGETIC EVENT != ACTOR KNOWLEDGE`.
+
+A canceled restart, settings change, privacy/export action, research-consent action or similar control remains non-diegetic absent exact realization authority.
+
+Risk:
+`RISK-198`.
+
+### Real user contribution != missing-key teleology
+
+`SPD-0243`.
+
+The user may genuinely change Nadia through admitted interaction, interpretation, recommendation, conflict, care or other events.
+
+Rawlsing may not retrofit unresolved history/causal slack so that the user's contribution becomes the answer Nadia was secretly waiting for.
+
+Current contribution becomes causal through Nadia's actual uptake and later history, not player-centered destiny.
+
+Risk:
+`RISK-199`.
+
+### Behavioral research requires exposure provenance
+
+`SPD-0244`.
+
+Research/alpha claims about attention, nonresponse, inference or choice require enough provenance to distinguish:
+- objective condition;
+- perceptual availability;
+- narrated/surfaced evidence;
+- explicit acquisition/ATTEND;
+- relevant presentation/treatment state;
+- subsequent user behavior.
+
+`BEHAVIOR WITHOUT EXPOSURE PROVENANCE != INTERPRETABLE EVIDENCE`.
+
+Risk:
+`RISK-200`.
+
+### Self-selected sample boundary
+
+`SPD-0245`.
+
+Rawlsing users are a self-selected product sample absent a separate sampling design.
+
+The data may improve priors, reveal associations/heterogeneity/failures and generate hypotheses.
+
+It does not automatically establish population prevalence or universal cultural law.
+
+`RAWLSING USER SAMPLE != GENERAL POPULATION`.
+
+Risk:
+`RISK-201`.
 
