@@ -1,0 +1,39 @@
+{
+  "schema": "PYAT_HQ195_OUTPUT_EQUIVALENCE_AT_TEST_GRAIN@1.0.0",
+  "CATEGORY": "C2_OBSERVED_SYNTHETIC",
+  "category_law": "Equivalence below is demonstrated ONLY at the declared synthetic test grain. It is NOT survey-semantic equivalence. It qualifies no real source and must not be cited as if it did.",
+
+  "declared_test_grain": {
+    "carriers": "two synthetic files, one SPSS .sav and one Stata .dta, each 4 rows by 2 numeric variables",
+    "variables": ["v_small", "v_other"],
+    "values": "[1.0, 2.0, 3.0, null] and [10.0, 20.0, 30.0, 40.0]",
+    "writer": "pyreadstat's own writer",
+    "comparison": "uninstrumented path-string read versus brokered file-object read, same accepted environment, same process, same carrier",
+    "declared_before_measurement": true
+  },
+
+  "comparison_result": {
+    "columns_identical": true,
+    "shape_identical": true,
+    "values_identical": true,
+    "method": "pandas DataFrame .equals plus explicit column-list and shape comparison",
+    "verdict": "EQUIVALENT_AT_SYNTHETIC_TEST_GRAIN"
+  },
+
+  "what_equivalence_was_actually_established": [
+    "That routing a carrier through the broker produces the same decoded frame, column set and shape as passing the path string, on these two carriers.",
+    "That the broker route does not silently alter values on this grain."
+  ],
+
+  "what_was_NOT_established": [
+    "Survey-semantic equivalence. Not attempted and not claimed.",
+    "Equivalence on large carriers, on real-world malformed files, on files with unusual encodings, extended missing values, user-missing definitions, date/time formats, variable labels, value-label sets, or multi-byte string handling.",
+    "Equivalence on any real survey source. Zero real sources were opened.",
+    "Equivalence of metadata objects beyond column names. A full metadata-field diff was not performed and should be, before any adoption.",
+    "Equivalence under the application-driven chunked loop beyond the row totals recorded in 03 P9."
+  ],
+
+  "why_the_grain_is_small_and_that_matters": "A 4-row, 2-variable carrier exercises the header parse, the value parse and the terminator. It does NOT exercise value-label resolution, long-string continuation, segment boundaries, compression variants, or any of the failure modes that make real files hard. Equivalence at this grain is evidence that the handover is faithful, not evidence that it is faithful at scale.",
+
+  "requalification_note": "Equivalence beyond this grain requires re-running the comparison over the full 55/55 source-free qualification corpus and, separately, whatever real-source comparison is authorised at that time. See 06_R7_REQUALIFICATION_BURDEN.json."
+}

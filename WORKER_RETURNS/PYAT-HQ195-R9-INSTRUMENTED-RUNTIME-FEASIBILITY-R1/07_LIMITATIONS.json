@@ -1,0 +1,66 @@
+{
+  "schema": "PYAT_HQ195_LIMITATIONS@1.0.0",
+  "CATEGORY": "C2_OBSERVED_SYNTHETIC",
+  "category_law": "Limitations of what was demonstrated on synthetic carriers. Stated so a reviewer can discount the result correctly.",
+
+  "defects_and_constraints": [
+    {
+      "id": "D1",
+      "severity": "material",
+      "title": "Chunked DTA requires a FRESH broker per chunk",
+      "observed": "Reusing one broker across successive row_offset chunk parses of a DTA carrier fails with ReadstatError 'This version of the file format is not supported'. Opening a fresh broker per chunk succeeds and returns all rows.",
+      "root_cause": "ReadStat's DTA row_offset parse expects the underlying file at position 0. A reused broker has an advanced position.",
+      "consequence": "pyreadstat's read_file_in_chunks helper cannot be used as-is for DTA under brokering. The application must drive the chunk loop itself.",
+      "why_it_matters": "DTA is the format SRC27 uses, and the chunked path is the reader site earlier lanes flagged as unmeasured.",
+      "mitigation": "Application-owned loop with a fresh broker per chunk. Confirmed working in synthetic DTA: 4 rows, 2 opens, 114 reads, 3748 bytes.",
+      "risk_if_ignored": "Loud failure, not silent corruption. Negative case N5."
+    },
+    {
+      "id": "D2",
+      "severity": "material",
+      "title": "The seam is de facto, not a documented API",
+      "observed": "pyreadstat exposes no public named file-handler or I/O-callback registration surface, and no pyreadstat.FileLike attribute. The handler set is installed internally by duck-typing on .read and .seek.",
+      "consequence": "The mechanism is an implementation detail. A future pyreadstat release could remove or alter it without notice.",
+      "mitigation": "Pin the pyreadstat version and add an assertion that the seam still behaves, so a change is detected rather than silently disabling governance."
+    },
+    {
+      "id": "D3",
+      "severity": "minor",
+      "title": "Byte ceilings are pre-read gates, not byte-exact cuts",
+      "observed": "With a 16-byte ceiling, 23 bytes were delivered before the fourth read was refused.",
+      "consequence": "Delivered bytes may exceed the maximum by up to one in-flight read.",
+      "why_not_fixed": "Byte-exact truncation would corrupt the stream and change decode behaviour, which is out of scope and undesirable."
+    }
+  ],
+
+  "scope_limitations": [
+    "Tiny synthetic carriers only: 4 rows, 2 numeric variables. Not representative of real files.",
+    "Metadata comparison was limited to column names and row counts. A full metadata-field diff was NOT performed.",
+    "Two formats exercised: .sav and .dta. Not exercised: SAS7BDAT, XPORT, POR, SAS7BCAT.",
+    "Encoding, user-missing, extended-missing, date/time and value-label behaviour were not varied and are therefore untested.",
+    "No concurrency, multiprocessing, num_processes, or large-file behaviour was tested. The broker is not shown to be thread-safe.",
+    "The open-count ceiling was implemented but not exercised as a negative case."
+  ],
+
+  "coverage_limitations_that_undermine_any_broad_reading": [
+    "Any reader call site that still passes a raw path string is NOT governed by this mechanism. No inventory of such sites was produced. Coverage is opt-in per call site and is only as complete as that inventory, which does not yet exist.",
+    "Accounting is at the application-owned file object. It is NOT OS-level, kernel-level, or per-descriptor accounting. A reviewer requiring descriptor-level truth would still need privilege, which remains unavailable.",
+    "Reads performed outside pyreadstat by the application itself, such as a separate header inspection, are outside the broker's view unless deliberately routed through it.",
+    "The broker proves the compiled reader performs zero path opens. It does not prove anything about what the application would do if a future change re-introduced a path-based call."
+  ],
+
+  "authority_and_process_limitations": [
+    "Zero real-source operations, locator discovery, warrants, live C4, production mutation, C7 or actor/person work. All holds respected.",
+    "rawlsing_next was not modified. No production change is proposed.",
+    "The accepted R7 environment was not mutated. No disposable rebuild was needed, because no rebuild was required.",
+    "Hostile independent review has NOT occurred. This result is unreviewed.",
+    "The prior lanes' failures were not re-litigated: DYLD was not retried, and the four under-bounded account classes from HQ190-C were not reopened."
+  ],
+
+  "explicit_non_claims": [
+    "NOT a claim of survey-semantic equivalence.",
+    "NOT a claim that any real source is governable under this design.",
+    "NOT a claim that the change is production-ready or authorised.",
+    "NOT a claim that literal O1-C07 is satisfied at OS or kernel level. It is satisfied at the application-owned file object, which is where the reader's I/O actually occurs on this route."
+  ]
+}

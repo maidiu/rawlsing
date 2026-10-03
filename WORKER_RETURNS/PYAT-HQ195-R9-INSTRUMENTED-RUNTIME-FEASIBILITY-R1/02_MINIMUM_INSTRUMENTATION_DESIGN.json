@@ -1,0 +1,60 @@
+{
+  "schema": "PYAT_HQ195_MINIMUM_INSTRUMENTATION_DESIGN@1.0.0",
+  "CATEGORY": "C2_OBSERVED_SYNTHETIC",
+  "category_law": "Design validated on synthetic carriers only. No production adoption is proposed or authorized here.",
+
+  "headline": "The minimum instrumentation is a ~90-line APPLICATION-SIDE file broker plus a small change in the call that hands a file to the reader. The accepted pyreadstat/ReadStat BINARY is not modified, not rebuilt, and not re-validated as a different artifact.",
+
+  "routes_considered": [
+    {
+      "order": 1,
+      "route": "pyreadstat / bundled ReadStat SOURCE instrumentation (rebuild)",
+      "verdict": "SUPERSEDED_BY_ROUTE_3",
+      "reasoning": "A rebuild would add counters and guards around ReadStat's own open/read calls. It is feasible in principle but is strictly larger than necessary, because the accepted binary already exposes a broker seam that makes the reader perform no open of its own. Adopting a rebuild would change the binary identity and trigger the full requalification burden analysed in 06.",
+      "not_attempted_because": "Superseded. Not blocked."
+    },
+    {
+      "order": 2,
+      "route": "link/build-time wrapper or callback surface",
+      "verdict": "NO_LAWFUL_NAMED_SURFACE__EQUIVALENT_SEAM_EXISTS_UNDISCOVERED_BY_NAME",
+      "reasoning": "pyreadstat exposes NO public, named file-handler or I/O callback API. There is no documented registration point and no pyreadstat.FileLike attribute. However the Cython layer installs four handlers internally whenever a file object is supplied, so the EFFECT of route 2 is reachable without a build-time wrapper. The seam exists; it is simply not exposed under a name.",
+      "honest_limitation": "The seam is reached through duck-typing on .read/.seek rather than a documented callback contract. It is a de facto surface, not a supported API, and could change without notice in a future pyreadstat release."
+    },
+    {
+      "order": 3,
+      "route": "application-owned access broker",
+      "verdict": "SELECTED__FEASIBLE",
+      "reasoning": "The application opens the file itself under its own governance and hands the open object to the reader. The reader receives an empty path and an inert open handler, so all of its I/O crosses counted application-owned callbacks that can refuse before executing."
+    }
+  ],
+
+  "selected_design": {
+    "component": "GovernedFileBroker",
+    "shape": "Implements .read(n), .seek(offset, whence), .tell(), .close() and context-manager methods around an application-performed open.",
+    "counters": ["opens", "reads", "bytes", "seeks", "closes", "refusals", "read_log"],
+    "guard_placement": "The refusal check occurs BEFORE the underlying file's read() is called. When a ceiling is reached the broker raises, and pyreadstat's read handler converts that into a ReadStat read failure. The excess read therefore never executes.",
+    "reference_implementation": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-04/R9-INSTRUMENTED-RUNTIME-FEASIBILITY-R1/hq195_broker_proof.py",
+    "approximate_size": "about 90 lines including docstrings and counters",
+
+    "runtime_change_required": {
+      "site": "the call site that passes a path into pyreadstat.read_sav / pyreadstat.read_dta",
+      "nature": "Replace 'pass the path' with 'open under the broker, pass the broker, close after'.",
+      "semantic_decoding_change": "NONE. No change to decoding, parsing, value handling, missing-value handling, encoding or type logic. Only who opens the file and what they count.",
+      "production_adoption": "NOT PERFORMED. rawlsing_next/** was not edited. rawlsing_next was materialized read-only for analysis and tests, per commission."
+    },
+
+    "chunked_path_change": {
+      "site": "the batch/chunked loop (the iter_batches reader site raised by earlier lanes)",
+      "change": "The application must drive the per-chunk reads itself, opening a FRESH broker per chunk.",
+      "reason": "See 07_LIMITATIONS.json defect D1. ReadStat's DTA row_offset parse requires the underlying file at position 0, so a broker reused across successive chunk parses fails.",
+      "note": "pyreadstat's read_file_in_chunks helper reuses the object it is given and therefore does not satisfy this for DTA. The application-owned loop is semantically identical to what the helper does."
+    }
+  },
+
+  "what_this_does_not_do": [
+    "It does not govern a reader invocation that is not routed through the broker. Any code path that still passes a raw path string remains ungoverned.",
+    "It does not count reads made outside pyreadstat, such as the application's own separate header inspection.",
+    "It does not touch real sources and qualifies nothing about real sources.",
+    "It does not provide OS-level, kernel-level or per-descriptor accounting. It provides accounting at the application-owned file object."
+  ]
+}

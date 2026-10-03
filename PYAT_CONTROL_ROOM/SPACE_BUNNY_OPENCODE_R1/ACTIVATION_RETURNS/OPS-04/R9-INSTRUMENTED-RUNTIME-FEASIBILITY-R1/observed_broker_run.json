@@ -1,0 +1,1325 @@
+{
+  "CATEGORY": "C2_OBSERVED_SYNTHETIC",
+  "acceptance_note": "This uses pyreadstat's EXISTING documented file-object seam. No rebuild, no patch, no sitecustomize, no monkeypatch of the compiled extension.",
+  "carriers": {
+    "dta": {
+      "bytes": 1924,
+      "path": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/hq195-qx9pyaad/SYN_DTA.dta",
+      "sha256": "91a6aca2639d1da7a0af7dd5c80c15e372298297683dd0422d562dca98113abe",
+      "synthetic": true
+    },
+    "sav": {
+      "bytes": 519,
+      "path": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/hq195-qx9pyaad/SYN_SAV.sav",
+      "sha256": "c9e445e46630fb631e906215f2b54030c327ee458759f1e5f82cb282e24b6c9a",
+      "synthetic": true
+    }
+  },
+  "category_law": "All measurements are on synthetic carriers. Not survey-semantic equivalence. Not a prediction about any real survey file.",
+  "locator_discovery": 0,
+  "probes": {
+    "P1_path_based_baseline": {
+      "baseline_facts": "used later for equivalence comparison",
+      "cols": [
+        "v_small",
+        "v_other"
+      ],
+      "completed": true,
+      "mode": "path string (compiled reader opens the file itself)",
+      "rows": 4
+    },
+    "P2_brokered_metadata": {
+      "broker": {
+        "bytes": 635,
+        "closes": 0,
+        "opened_by": "application_broker",
+        "opens": 1,
+        "path": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/hq195-qx9pyaad/SYN_SAV.sav",
+        "read_log": [
+          {
+            "ordinal": 1,
+            "requested": 176,
+            "returned": 176
+          },
+          {
+            "ordinal": 2,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 3,
+            "requested": 28,
+            "returned": 28
+          },
+          {
+            "ordinal": 4,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 5,
+            "requested": 28,
+            "returned": 28
+          },
+          {
+            "ordinal": 6,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 7,
+            "requested": 12,
+            "returned": 12
+          },
+          {
+            "ordinal": 8,
+            "requested": 32,
+            "returned": 32
+          },
+          {
+            "ordinal": 9,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 10,
+            "requested": 12,
+            "returned": 12
+          },
+          {
+            "ordinal": 11,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 12,
+            "requested": 12,
+            "returned": 12
+          },
+          {
+            "ordinal": 13,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 14,
+            "requested": 12,
+            "returned": 12
+          },
+          {
+            "ordinal": 15,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 16,
+            "requested": 12,
+            "returned": 12
+          },
+          {
+            "ordinal": 17,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 18,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 19,
+            "requested": 28,
+            "returned": 28
+          },
+          {
+            "ordinal": 20,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 21,
+            "requested": 28,
+            "returned": 28
+          },
+          {
+            "ordinal": 22,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 23,
+            "requested": 12,
+            "returned": 12
+          },
+          {
+            "ordinal": 24,
+            "requested": 32,
+            "returned": 32
+          },
+          {
+            "ordinal": 25,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 26,
+            "requested": 12,
+            "returned": 12
+          },
+          {
+            "ordinal": 27,
+            "requested": 24,
+            "returned": 24
+          },
+          {
+            "ordinal": 28,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 29,
+            "requested": 12,
+            "returned": 12
+          },
+          {
+            "ordinal": 30,
+            "requested": 24,
+            "returned": 24
+          },
+          {
+            "ordinal": 31,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 32,
+            "requested": 12,
+            "returned": 12
+          },
+          {
+            "ordinal": 33,
+            "requested": 31,
+            "returned": 31
+          },
+          {
+            "ordinal": 34,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 35,
+            "requested": 12,
+            "returned": 12
+          },
+          {
+            "ordinal": 36,
+            "requested": 16,
+            "returned": 16
+          },
+          {
+            "ordinal": 37,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 38,
+            "requested": 4,
+            "returned": 4
+          }
+        ],
+        "reads": 38,
+        "refusals": [],
+        "seeks": 7
+      },
+      "cols": [
+        "v_small",
+        "v_other"
+      ],
+      "compiled_reader_own_opens": 0,
+      "completed": true,
+      "mode": "file object -> pyobject_* handlers",
+      "rows": 4,
+      "why": "pyobject_open_handler is a no-op returning 0 and the parser is given an EMPTY path, so there is nothing for the reader to open."
+    },
+    "P3_brokered_full_decode": {
+      "broker": {
+        "bytes": 1906,
+        "closes": 0,
+        "opened_by": "application_broker",
+        "opens": 1,
+        "path": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/hq195-qx9pyaad/SYN_DTA.dta",
+        "read_log": [
+          {
+            "ordinal": 1,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 2,
+            "requested": 11,
+            "returned": 11
+          },
+          {
+            "ordinal": 3,
+            "requested": 8,
+            "returned": 8
+          },
+          {
+            "ordinal": 4,
+            "requested": 9,
+            "returned": 9
+          },
+          {
+            "ordinal": 5,
+            "requested": 3,
+            "returned": 3
+          },
+          {
+            "ordinal": 6,
+            "requested": 10,
+            "returned": 10
+          },
+          {
+            "ordinal": 7,
+            "requested": 11,
+            "returned": 11
+          },
+          {
+            "ordinal": 8,
+            "requested": 3,
+            "returned": 3
+          },
+          {
+            "ordinal": 9,
+            "requested": 12,
+            "returned": 12
+          },
+          {
+            "ordinal": 10,
+            "requested": 3,
+            "returned": 3
+          },
+          {
+            "ordinal": 11,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 12,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 13,
+            "requested": 3,
+            "returned": 3
+          },
+          {
+            "ordinal": 14,
+            "requested": 8,
+            "returned": 8
+          },
+          {
+            "ordinal": 15,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 16,
+            "requested": 7,
+            "returned": 7
+          },
+          {
+            "ordinal": 17,
+            "requested": 2,
+            "returned": 2
+          },
+          {
+            "ordinal": 18,
+            "requested": 17,
+            "returned": 17
+          },
+          {
+            "ordinal": 19,
+            "requested": 8,
+            "returned": 8
+          },
+          {
+            "ordinal": 20,
+            "requested": 11,
+            "returned": 11
+          },
+          {
+            "ordinal": 21,
+            "requested": 1,
+            "returned": 1
+          },
+          {
+            "ordinal": 22,
+            "requested": 17,
+            "returned": 17
+          },
+          {
+            "ordinal": 23,
+            "requested": 12,
+            "returned": 12
+          },
+          {
+            "ordinal": 24,
+            "requested": 9,
+            "returned": 9
+          },
+          {
+            "ordinal": 25,
+            "requested": 5,
+            "returned": 5
+          },
+          {
+            "ordinal": 26,
+            "requested": 112,
+            "returned": 112
+          },
+          {
+            "ordinal": 27,
+            "requested": 6,
+            "returned": 6
+          },
+          {
+            "ordinal": 28,
+            "requested": 16,
+            "returned": 16
+          },
+          {
+            "ordinal": 29,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 30,
+            "requested": 17,
+            "returned": 17
+          },
+          {
+            "ordinal": 31,
+            "requested": 10,
+            "returned": 10
+          },
+          {
+            "ordinal": 32,
+            "requested": 258,
+            "returned": 258
+          },
+          {
+            "ordinal": 33,
+            "requested": 11,
+            "returned": 11
+          },
+          {
+            "ordinal": 34,
+            "requested": 10,
+            "returned": 10
+          },
+          {
+            "ordinal": 35,
+            "requested": 12,
+            "returned": 12
+          },
+          {
+            "ordinal": 36,
+            "requested": 11,
+            "returned": 11
+          },
+          {
+            "ordinal": 37,
+            "requested": 9,
+            "returned": 9
+          },
+          {
+            "ordinal": 38,
+            "requested": 114,
+            "returned": 114
+          },
+          {
+            "ordinal": 39,
+            "requested": 10,
+            "returned": 10
+          },
+          {
+            "ordinal": 40,
+            "requested": 19,
+            "returned": 19
+          },
+          {
+            "ordinal": 41,
+            "requested": 258,
+            "returned": 258
+          },
+          {
+            "ordinal": 42,
+            "requested": 20,
+            "returned": 20
+          },
+          {
+            "ordinal": 43,
+            "requested": 17,
+            "returned": 17
+          },
+          {
+            "ordinal": 44,
+            "requested": 642,
+            "returned": 642
+          },
+          {
+            "ordinal": 45,
+            "requested": 18,
+            "returned": 18
+          },
+          {
+            "ordinal": 46,
+            "requested": 17,
+            "returned": 17
+          },
+          {
+            "ordinal": 47,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 48,
+            "requested": 14,
+            "returned": 14
+          },
+          {
+            "ordinal": 49,
+            "requested": 7,
+            "returned": 7
+          },
+          {
+            "ordinal": 50,
+            "requested": 3,
+            "returned": 3
+          },
+          {
+            "ordinal": 51,
+            "requested": 5,
+            "returned": 5
+          },
+          {
+            "ordinal": 52,
+            "requested": 6,
+            "returned": 6
+          },
+          {
+            "ordinal": 53,
+            "requested": 16,
+            "returned": 16
+          },
+          {
+            "ordinal": 54,
+            "requested": 16,
+            "returned": 16
+          },
+          {
+            "ordinal": 55,
+            "requested": 16,
+            "returned": 16
+          },
+          {
+            "ordinal": 56,
+            "requested": 16,
+            "returned": 16
+          },
+          {
+            "ordinal": 57,
+            "requested": 7,
+            "returned": 7
+          },
+          {
+            "ordinal": 58,
+            "requested": 14,
+            "returned": 14
+          },
+          {
+            "ordinal": 59,
+            "requested": 5,
+            "returned": 5
+          }
+        ],
+        "reads": 59,
+        "refusals": [],
+        "seeks": 5
+      },
+      "cols": [
+        "v_small",
+        "v_other"
+      ],
+      "completed": true,
+      "mode": "file object -> pyobject_* handlers",
+      "rows": 4,
+      "shape": [
+        4,
+        2
+      ]
+    },
+    "P4_equivalence_at_test_grain": {
+      "brokered_shape": [
+        4,
+        2
+      ],
+      "columns_identical": true,
+      "explicit_limit": "This is equivalence on a 4-row, 2-variable synthetic carrier at the DECODE RESULT level. It is NOT survey-semantic equivalence and does not qualify any real source.",
+      "path_based_shape": [
+        4,
+        2
+      ],
+      "shape_identical": true,
+      "values_identical": true,
+      "verdict": "EQUIVALENT_AT_SYNTHETIC_TEST_GRAIN"
+    },
+    "P5_excess_read_refused": {
+      "broker": {
+        "bytes": 4,
+        "closes": 0,
+        "opened_by": "application_broker",
+        "opens": 1,
+        "path": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/hq195-qx9pyaad/SYN_DTA.dta",
+        "read_log": [
+          {
+            "ordinal": 1,
+            "requested": 4,
+            "returned": 4
+          }
+        ],
+        "reads": 1,
+        "refusals": [
+          {
+            "account": "read",
+            "already": 1,
+            "executed": false,
+            "max": 1,
+            "requested": 11
+          }
+        ],
+        "seeks": 2
+      },
+      "c3_demo_maxima": {
+        "max_reads": 1
+      },
+      "key_property": "broker.reads never exceeded the maximum; the refused read did not execute",
+      "reader_outcome": {
+        "error_type": "ReadstatError",
+        "message": "Unable to read from file"
+      },
+      "verdict": "REFUSED_BEFORE_EXECUTION"
+    },
+    "P6_excess_bytes_refused": {
+      "broker": {
+        "bytes": 23,
+        "closes": 0,
+        "opened_by": "application_broker",
+        "opens": 1,
+        "path": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/hq195-qx9pyaad/SYN_DTA.dta",
+        "read_log": [
+          {
+            "ordinal": 1,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 2,
+            "requested": 11,
+            "returned": 11
+          },
+          {
+            "ordinal": 3,
+            "requested": 8,
+            "returned": 8
+          }
+        ],
+        "reads": 3,
+        "refusals": [
+          {
+            "account": "bytes",
+            "already": 23,
+            "executed": false,
+            "max": 16,
+            "requested": 9
+          }
+        ],
+        "seeks": 2
+      },
+      "c3_demo_maxima": {
+        "max_bytes": 16
+      },
+      "reader_outcome": {
+        "error_type": "ReadstatError",
+        "message": "Unable to read from file"
+      },
+      "verdict": "REFUSED_BEFORE_EXECUTION"
+    },
+    "P7_chunked_helper_sav": {
+      "broker": {
+        "bytes": 1969,
+        "closes": 0,
+        "opened_by": "application_broker",
+        "opens": 1,
+        "path": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/hq195-qx9pyaad/SYN_SAV.sav",
+        "read_log": [
+          {
+            "ordinal": 1,
+            "requested": 176,
+            "returned": 176
+          },
+          {
+            "ordinal": 2,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 3,
+            "requested": 28,
+            "returned": 28
+          },
+          {
+            "ordinal": 4,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 5,
+            "requested": 28,
+            "returned": 28
+          },
+          {
+            "ordinal": 6,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 7,
+            "requested": 12,
+            "returned": 12
+          },
+          {
+            "ordinal": 8,
+            "requested": 32,
+            "returned": 32
+          },
+          {
+            "ordinal": 9,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 10,
+            "requested": 12,
+            "returned": 12
+          },
+          {
+            "ordinal": 11,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 12,
+            "requested": 12,
+            "returned": 12
+          },
+          {
+            "ordinal": 13,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 14,
+            "requested": 12,
+            "returned": 12
+          },
+          {
+            "ordinal": 15,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 16,
+            "requested": 12,
+            "returned": 12
+          },
+          {
+            "ordinal": 17,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 18,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 19,
+            "requested": 28,
+            "returned": 28
+          },
+          {
+            "ordinal": 20,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 21,
+            "requested": 28,
+            "returned": 28
+          },
+          {
+            "ordinal": 22,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 23,
+            "requested": 12,
+            "returned": 12
+          },
+          {
+            "ordinal": 24,
+            "requested": 32,
+            "returned": 32
+          },
+          {
+            "ordinal": 25,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 26,
+            "requested": 12,
+            "returned": 12
+          },
+          {
+            "ordinal": 27,
+            "requested": 24,
+            "returned": 24
+          },
+          {
+            "ordinal": 28,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 29,
+            "requested": 12,
+            "returned": 12
+          },
+          {
+            "ordinal": 30,
+            "requested": 24,
+            "returned": 24
+          },
+          {
+            "ordinal": 31,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 32,
+            "requested": 12,
+            "returned": 12
+          },
+          {
+            "ordinal": 33,
+            "requested": 31,
+            "returned": 31
+          },
+          {
+            "ordinal": 34,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 35,
+            "requested": 12,
+            "returned": 12
+          },
+          {
+            "ordinal": 36,
+            "requested": 16,
+            "returned": 16
+          },
+          {
+            "ordinal": 37,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 38,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 39,
+            "requested": 176,
+            "returned": 176
+          },
+          {
+            "ordinal": 40,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 41,
+            "requested": 28,
+            "returned": 28
+          },
+          {
+            "ordinal": 42,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 43,
+            "requested": 28,
+            "returned": 28
+          },
+          {
+            "ordinal": 44,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 45,
+            "requested": 12,
+            "returned": 12
+          },
+          {
+            "ordinal": 46,
+            "requested": 32,
+            "returned": 32
+          },
+          {
+            "ordinal": 47,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 48,
+            "requested": 12,
+            "returned": 12
+          },
+          {
+            "ordinal": 49,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 50,
+            "requested": 12,
+            "returned": 12
+          },
+          {
+            "ordinal": 51,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 52,
+            "requested": 12,
+            "returned": 12
+          },
+          {
+            "ordinal": 53,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 54,
+            "requested": 12,
+            "returned": 12
+          },
+          {
+            "ordinal": 55,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 56,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 57,
+            "requested": 28,
+            "returned": 28
+          },
+          {
+            "ordinal": 58,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 59,
+            "requested": 28,
+            "returned": 28
+          },
+          {
+            "ordinal": 60,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 61,
+            "requested": 12,
+            "returned": 12
+          },
+          {
+            "ordinal": 62,
+            "requested": 32,
+            "returned": 32
+          },
+          {
+            "ordinal": 63,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 64,
+            "requested": 12,
+            "returned": 12
+          },
+          {
+            "ordinal": 65,
+            "requested": 24,
+            "returned": 24
+          },
+          {
+            "ordinal": 66,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 67,
+            "requested": 12,
+            "returned": 12
+          },
+          {
+            "ordinal": 68,
+            "requested": 24,
+            "returned": 24
+          },
+          {
+            "ordinal": 69,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 70,
+            "requested": 12,
+            "returned": 12
+          },
+          {
+            "ordinal": 71,
+            "requested": 31,
+            "returned": 31
+          },
+          {
+            "ordinal": 72,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 73,
+            "requested": 12,
+            "returned": 12
+          },
+          {
+            "ordinal": 74,
+            "requested": 16,
+            "returned": 16
+          },
+          {
+            "ordinal": 75,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 76,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 77,
+            "requested": 16,
+            "returned": 16
+          },
+          {
+            "ordinal": 78,
+            "requested": 16,
+            "returned": 16
+          },
+          {
+            "ordinal": 79,
+            "requested": 176,
+            "returned": 176
+          },
+          {
+            "ordinal": 80,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 81,
+            "requested": 28,
+            "returned": 28
+          },
+          {
+            "ordinal": 82,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 83,
+            "requested": 28,
+            "returned": 28
+          },
+          {
+            "ordinal": 84,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 85,
+            "requested": 12,
+            "returned": 12
+          },
+          {
+            "ordinal": 86,
+            "requested": 32,
+            "returned": 32
+          },
+          {
+            "ordinal": 87,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 88,
+            "requested": 12,
+            "returned": 12
+          },
+          {
+            "ordinal": 89,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 90,
+            "requested": 12,
+            "returned": 12
+          },
+          {
+            "ordinal": 91,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 92,
+            "requested": 12,
+            "returned": 12
+          },
+          {
+            "ordinal": 93,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 94,
+            "requested": 12,
+            "returned": 12
+          },
+          {
+            "ordinal": 95,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 96,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 97,
+            "requested": 28,
+            "returned": 28
+          },
+          {
+            "ordinal": 98,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 99,
+            "requested": 28,
+            "returned": 28
+          },
+          {
+            "ordinal": 100,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 101,
+            "requested": 12,
+            "returned": 12
+          },
+          {
+            "ordinal": 102,
+            "requested": 32,
+            "returned": 32
+          },
+          {
+            "ordinal": 103,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 104,
+            "requested": 12,
+            "returned": 12
+          },
+          {
+            "ordinal": 105,
+            "requested": 24,
+            "returned": 24
+          },
+          {
+            "ordinal": 106,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 107,
+            "requested": 12,
+            "returned": 12
+          },
+          {
+            "ordinal": 108,
+            "requested": 24,
+            "returned": 24
+          },
+          {
+            "ordinal": 109,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 110,
+            "requested": 12,
+            "returned": 12
+          },
+          {
+            "ordinal": 111,
+            "requested": 31,
+            "returned": 31
+          },
+          {
+            "ordinal": 112,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 113,
+            "requested": 12,
+            "returned": 12
+          },
+          {
+            "ordinal": 114,
+            "requested": 16,
+            "returned": 16
+          },
+          {
+            "ordinal": 115,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 116,
+            "requested": 4,
+            "returned": 4
+          },
+          {
+            "ordinal": 117,
+            "requested": 16,
+            "returned": 16
+          },
+          {
+            "ordinal": 118,
+            "requested": 16,
+            "returned": 16
+          }
+        ],
+        "reads": 118,
+        "refusals": [],
+        "seeks": 22
+      },
+      "chunks": [
+        {
+          "cols": [
+            "v_small",
+            "v_other"
+          ],
+          "rows": 2
+        },
+        {
+          "cols": [
+            "v_small",
+            "v_other"
+          ],
+          "rows": 2
+        }
+      ],
+      "completed": true,
+      "verdict": "BROKERED_OK"
+    },
+    "P7b_chunked_helper_dta": {
+      "completed": false,
+      "error_type": "ReadstatError",
+      "message": "This version of the file format is not supported",
+      "verdict": "FAILED__ROOT_CAUSE_ISOLATED_IN_P9"
+    },
+    "P8_layer_separation": {
+      "accounts_distinguished": {
+        "application_open": "counted by the broker; the ONLY open in the system",
+        "broker_read": "counted per read() call crossing into the reader",
+        "bytes": "sum of bytes returned across broker reads",
+        "compiled_reader_own_open": 0,
+        "reader_invocation": "one pyreadstat read_sav/read_dta call",
+        "seek": "counted"
+      },
+      "measurement_basis": "Every figure is a count of events at the APPLICATION-OWNED file object that the compiled reader reads through. Because pyreadstat's pyobject_open_handler is a no-op and the parser receives an EMPTY path, the compiled reader performs no path-level open of its own; the application open IS the path-level open. Basis is exact and complete, not sampled.",
+      "note": "Counts differ by path and format; see P2/P3/P7/P9. They are C2 synthetic observations."
+    },
+    "P9_chunked_dta_root_cause": {
+      "consequence_for_SRC27": "SRC27 (LiTS_I.dta) full-route decode IS governable via the broker. The iter_batches chunked path (RDR-02) is governable ONLY through an application-driven loop with a fresh broker per chunk.",
+      "fresh_broker_per_chunk": {
+        "aggregate": {
+          "bytes": 3748,
+          "opens": 2,
+          "reads": 114,
+          "seeks": 12
+        },
+        "ok": true,
+        "rows": 4
+      },
+      "remedy": "The APPLICATION owns the chunk loop and opens a FRESH broker per chunk. That makes the chunked DTA path - the format SRC27 uses - governable. pyreadstat's read_file_in_chunks helper does not do this, so the application must issue the per-chunk reads itself.",
+      "reused_broker_across_chunks": {
+        "error": "ReadstatError: This version of the file format is not supported",
+        "ok": false
+      },
+      "root_cause": "ReadStat's DTA row_offset parse expects the underlying file at position 0. A broker reused across successive chunk parses has an advanced position, so the parse fails with 'This version of the file format is not supported'."
+    }
+  },
+  "pyreadstat_version": "1.3.6",
+  "real_source_operations": 0,
+  "runtime_mutated": false,
+  "schema": "PYAT_HQ195_BROKER_PROOF@1.0.0",
+  "source_free": true
+}

@@ -1,0 +1,136 @@
+{
+  "schema": "PYAT_HQ195_SYNTHETIC_PROOF@1.0.0",
+  "CATEGORY": "C2_OBSERVED_SYNTHETIC",
+  "category_law": "Every figure below was produced by executing pyreadstat 1.3.6 against synthetic carriers created inside a temporary directory. No real survey source was opened, located, named or characterised. Nothing here qualifies any real source.",
+
+  "source_free_declaration": {
+    "real_source_operations": 0,
+    "locator_discovery": 0,
+    "warrant_issued": 0,
+    "live_C4": 0,
+    "production_mutation": 0,
+    "rawlsing_next_mutated": false,
+    "accepted_R7_environment_mutated": false,
+    "package_source_or_build_outside_lane_temp": false
+  },
+
+  "carriers": {
+    "sav": {"bytes": 519, "sha256": "c9e445e46630fb631e906215f2b54030c327ee458759f1e5f82cb282e24b6c9a", "synthetic": true},
+    "dta": {"bytes": 1924, "sha256": "91a6aca2639d1da7a0af7dd5c80c15e372298297683dd0422d562dca98113abe", "synthetic": true},
+    "generation": "Written by pyreadstat's own writer from a 4-row, 2-variable in-memory frame, then discarded with the temporary directory.",
+    "real_source_prevalence": "none"
+  },
+
+  "explicit_measurement_basis": {
+    "basis": "Exact, complete counts at the application-owned file object that the compiled reader reads through.",
+    "why_complete": "On the broker route the parser is handed an EMPTY path and ReadStat's open handler is a no-op returning 0. The compiled reader has no path to open and cannot obtain any byte except by calling the broker's read(). There is no side channel.",
+    "not_a_sample": true,
+    "unit_of_account": "one read() crossing into the compiled reader"
+  },
+
+  "probes": {
+    "P1_path_based_baseline": {
+      "purpose": "Establish the uninstrumented path-string baseline against which brokered results are compared.",
+      "completed": true
+    },
+
+    "P2_brokered_metadata_SAV": {
+      "purpose": "Literal O1-C07 path-level open account, metadata route.",
+      "application_opens": 1,
+      "compiled_reader_own_opens": 0,
+      "broker_reads": 38,
+      "bytes": 635,
+      "seeks": 7,
+      "rows": 4,
+      "columns": ["v_small", "v_other"],
+      "first_read_requested_bytes": 176,
+      "significance_of_first_read": "The reader's very first read consumed exactly 176 bytes, matching the Part C header-prefix size HQ192 identified from the Python layer. Corroborated from the compiled reader's own read pattern."
+    },
+
+    "P3_brokered_full_decode_DTA": {
+      "purpose": "Literal O1-C07 path-level open account, full decode route.",
+      "application_opens": 1,
+      "compiled_reader_own_opens": 0,
+      "broker_reads": 59,
+      "bytes": 1906,
+      "seeks": 5,
+      "shape": [4, 2]
+    },
+
+    "P4_equivalence_at_test_grain": {
+      "purpose": "Ordinary synthetic decode results remain equivalent to the uninstrumented runtime.",
+      "columns_identical": true,
+      "shape_identical": true,
+      "values_identical": true,
+      "verdict": "EQUIVALENT_AT_SYNTHETIC_TEST_GRAIN"
+    },
+
+    "P5_excess_read_refused": {
+      "purpose": "Impose a maximum and refuse the excess operation before it occurs.",
+      "maximum": {"max_reads": 1},
+      "observed": {"reads": 1, "refusal_recorded": true, "executed": false, "requested_but_denied": 11},
+      "reader_outcome": {"error_type": "ReadstatError", "message": "Unable to read from file"},
+      "verdict": "REFUSED_BEFORE_EXECUTION"
+    },
+
+    "P6_excess_bytes_refused": {
+      "purpose": "Second ceiling type, on bytes rather than read count.",
+      "maximum": {"max_bytes": 16},
+      "observed": {"bytes": 23, "reads": 3, "refusal_recorded": true, "executed": false, "requested_but_denied": 9},
+      "note": "The ceiling is checked before each read, so the total can exceed the maximum by at most the size of the in-flight read. This is a stated granularity, not a defect.",
+      "reader_outcome": {"error_type": "ReadstatError", "message": "Unable to read from file"},
+      "verdict": "REFUSED_BEFORE_EXECUTION"
+    },
+
+    "P7_chunked_helper_SAV": {
+      "purpose": "Exercise the read_file_in_chunks / batch path where feasible.",
+      "verdict": "BROKERED_OK",
+      "chunks": [{"rows": 2, "cols": ["v_small", "v_other"]}, {"rows": 2, "cols": ["v_small", "v_other"]}],
+      "total_rows": 4,
+      "application_opens": 1,
+      "compiled_reader_own_opens": 0,
+      "broker_reads": 118,
+      "bytes": 1969,
+      "seeks": 22
+    },
+
+    "P7b_chunked_helper_DTA": {
+      "purpose": "Same helper on DTA, the format SRC27 uses.",
+      "verdict": "FAILED__ROOT_CAUSE_ISOLATED_IN_P9",
+      "error_type": "ReadstatError",
+      "message": "This version of the file format is not supported",
+      "honest_note": "Recorded as a failure, not worked around silently. Path-based chunked DTA succeeds, so this is an interaction between brokering and chunked DTA specifically."
+    },
+
+    "P8_layer_separation": {
+      "purpose": "Distinguish the four account classes the commission requires be kept separate.",
+      "accounts": {
+        "open_count": {"value": 1, "owner": "application broker", "note": "the only path-level open in the system"},
+        "reader_invocation": {"value": 1, "owner": "application call into read_sav/read_dta"},
+        "decoder_invocation": {"value": 1, "owner": "one decode of the carrier"},
+        "byte_count": {"value_observed_per_probe": "see P2/P3/P7", "owner": "sum over broker reads"}
+      },
+      "compiled_reader_own_open": 0,
+      "kept_distinct": true
+    },
+
+    "P9_chunked_dta_root_cause": {
+      "purpose": "Isolate the cause of P7b and establish whether the path is governable at all.",
+      "fresh_broker_per_chunk": {"ok": true, "rows": 4, "aggregate": {"opens": 2, "reads": 114, "bytes": 3748, "seeks": 12}},
+      "reused_broker_across_chunks": {"ok": false, "error": "ReadstatError: This version of the file format is not supported"},
+      "root_cause": "ReadStat's DTA row_offset parse expects the underlying file at position 0. A broker reused across successive chunk parses has an advanced position, so the parse fails.",
+      "remedy": "The application owns the chunk loop and opens a fresh broker per chunk. That makes the chunked DTA path governable.",
+      "consequence_for_SRC27": "SRC27's full-route decode IS governable via the broker. The chunked batch path (the reader site earlier lanes flagged) is governable ONLY via an application-driven loop with a fresh broker per chunk."
+    }
+  },
+
+  "requirement_coverage": {
+    "instrument_actual_compiled_reader_path_opens_at_the_owner": "MET. The owner is the application-owned file object, and it observes 1 open with the compiled reader contributing 0.",
+    "observe_counts_with_explicit_measurement_basis": "MET. Basis stated above; see P8.",
+    "impose_a_maximum_and_refuse_before_it_occurs": "MET. P5 and P6, both with executed=false on the denied operation.",
+    "distinguish_open_reader_decoder_and_byte_counts": "MET. P8.",
+    "ordinary_synthetic_decode_equivalent_at_test_grain": "MET. P4.",
+    "exercise_metadata_normal_and_chunked_where_feasible": "MET. Metadata P2, normal P3, chunked P7/P7b/P9.",
+    "do_not_claim_survey_semantic_equivalence": "OBSERVED. No such claim is made anywhere in this packet."
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "schema": "PYAT_HQ195_ENFORCEMENT_NEGATIVE_CASES@1.0.0",
+  "CATEGORY": "C2_OBSERVED_SYNTHETIC",
+  "category_law": "Negative cases executed against synthetic carriers only. A refusal here demonstrates the guard mechanism fires on synthetic input; it does not demonstrate governance of any real source.",
+
+  "principle_under_test": "A ceiling must be able to stop an operation BEFORE it occurs, not merely report it afterwards.",
+
+  "cases": [
+    {
+      "id": "N1",
+      "name": "read-count ceiling",
+      "setup": {"max_reads": 1, "carrier": "synthetic DTA"},
+      "operation_attempted": {"account": "read", "ordinal": 2, "requested_bytes": 11},
+      "outcome": {
+        "refusal_recorded": true,
+        "operation_executed": false,
+        "actual_reads_performed": 1,
+        "actual_bytes_delivered": 4,
+        "reader_error": {"type": "ReadstatError", "message": "Unable to read from file"}
+      },
+      "assertion": "actual_reads_performed <= max_reads",
+      "assertion_holds": true,
+      "strength": "The denied read never reached the underlying file. The compiled reader observed a short read and failed rather than continuing."
+    },
+    {
+      "id": "N2",
+      "name": "byte ceiling",
+      "setup": {"max_bytes": 16, "carrier": "synthetic DTA"},
+      "operation_attempted": {"account": "bytes", "ordinal": 4, "requested_bytes": 9},
+      "outcome": {
+        "refusal_recorded": true,
+        "operation_executed": false,
+        "actual_reads_performed": 3,
+        "actual_bytes_delivered": 23,
+        "reader_error": {"type": "ReadstatError", "message": "Unable to read from file"}
+      },
+      "assertion": "the read that would have crossed the byte ceiling did not execute",
+      "assertion_holds": true,
+      "stated_granularity": "Bytes delivered may exceed the byte maximum by at most the size of one in-flight read, because the ceiling is evaluated before each read rather than mid-read. Observed overshoot here was 7 bytes on a 16-byte ceiling.",
+      "honest_limitation": "This is a pre-read gate, not a hard byte-exact cut. A byte-exact ceiling would require the broker to truncate the returned buffer, which would corrupt the stream and is not proposed."
+    },
+    {
+      "id": "N3",
+      "name": "no refusal when under ceiling",
+      "setup": {"max_reads": null, "max_bytes": null, "carrier": "synthetic SAV"},
+      "outcome": {
+        "refusals_recorded": 0,
+        "decode_completed": true,
+        "rows": 4
+      },
+      "assertion": "the guard does not fire spuriously",
+      "assertion_holds": true,
+      "why_this_matters": "A guard that always fires would be useless. Confirmed inert when no ceiling is set."
+    },
+    {
+      "id": "N4",
+      "name": "refusal propagates to the caller rather than being swallowed",
+      "setup": {"max_reads": 1, "carrier": "synthetic DTA"},
+      "outcome": {
+        "exception_escaped_to_caller": true,
+        "type": "ReadstatError",
+        "silent_partial_result": false
+      },
+      "assertion": "a refused read cannot degrade into a silently truncated decode",
+      "assertion_holds": true
+    },
+    {
+      "id": "N5",
+      "name": "reused-broker chunked DTA is refused by the format, not silently mis-decoded",
+      "setup": {"carrier": "synthetic DTA", "condition": "one broker reused across successive row_offset chunk parses"},
+      "outcome": {
+        "decode_completed": false,
+        "error_type": "ReadstatError",
+        "silent_wrong_data": false
+      },
+      "assertion": "the chunked DTA failure mode is loud, not silent",
+      "assertion_holds": true,
+      "note": "This is a correctness finding as much as a negative case: the failure is detectable, which is why defect D1 in 07 is safe to detect in testing."
+    }
+  ],
+
+  "coverage_summary": {
+    "ceiling_types_exercised": ["read count", "byte count"],
+    "refused_before_execution": true,
+    "no_silent_partial_results": true,
+    "no_spurious_firing": true,
+    "not_exercised": [
+      "An open-count ceiling was implemented but not exercised as a negative case; it is listed as available in the design.",
+      "Any ceiling against a real source. Out of authority and not attempted."
+    ]
+  }
+}

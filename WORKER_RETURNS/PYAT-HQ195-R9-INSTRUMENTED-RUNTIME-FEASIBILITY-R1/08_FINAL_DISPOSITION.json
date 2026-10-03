@@ -1,0 +1,61 @@
+{
+  "schema": "PYAT_HQ195_FINAL_DISPOSITION@1.0.0",
+  "CATEGORY": "C2_OBSERVED_SYNTHETIC",
+
+  "disposition": "INSTRUMENTED_RUNTIME_FEASIBLE__SEMANTIC_EQUIVALENCE_NOT_YET_PROVED",
+
+  "allowed_dispositions_considered": [
+    {
+      "value": "INSTRUMENTED_RUNTIME_FEASIBLE__R7_REQUALIFICATION_REQUIRED",
+      "rejected_because": "This disposition is written for the case where a modified pyreadstat/ReadStat binary is required. It is not. The accepted binary is used unmodified and R7 runtime identity does not change. Selecting it would imply a rebuild that this lane proved unnecessary."
+    },
+    {
+      "value": "INSTRUMENTED_RUNTIME_FEASIBLE__SEMANTIC_EQUIVALENCE_NOT_YET_PROVED",
+      "selected": true,
+      "why": "Feasibility is demonstrated: literal O1-C07 path-level open accounting is observable and enforceable at the true owner on the accepted runtime, with no rebuild. The residual binding gap is equivalence, which was proven only at a declared tiny synthetic grain and explicitly not at survey-semantic grain."
+    },
+    {
+      "value": "CURRENT_RUNTIME_CANNOT_SATISFY_LITERAL_O1_C07_WITHOUT_PRIVILEGE_OR_ARCHITECTURE_CHANGE",
+      "rejected_because": "This was the working hypothesis inherited from HQ192, which found the literal internal path-open account unsatisfied via Python interception and DYLD. This lane falsified it. The current runtime CAN satisfy the account, because an already-present broker seam lets the application own the open outright. No privilege is required. No architecture change is required, only a roughly 90-line application-side broker and a change to the call that hands a file to the reader."
+    },
+    {
+      "value": "R9_RUNTIME_FEASIBILITY_BLOCKED",
+      "rejected_because": "Nothing blocked this lane. Sparse checkout was sufficient. The commission was fully readable. The accepted environment was usable as-is."
+    },
+    {
+      "value": "CHECKOUT_MODE_INSUFFICIENT__HQ_RECOMMISSION_REQUIRED",
+      "rejected_because": "Sparse mode was sufficient for the entire investigation. No full-tree materialisation was needed or performed."
+    }
+  ],
+
+  "finding": "Literal O1-C07 file-open and read accounting is achievable on the ACCEPTED runtime with no rebuild, no interposition, and no privilege. pyreadstat 1.3.6 already installs Python-bridging ReadStat handlers whenever the caller supplies an object with .read and .seek, and in that case hands the parser an EMPTY path with an inert open handler. The application therefore performs the only path-level open itself, sees every byte the compiled reader consumes, and can refuse an excess read or byte count before it executes.",
+
+  "what_is_demonstrated": [
+    "Application-owned opens counted: 1, with compiled reader own opens 0, on metadata, full-decode and chunked routes.",
+    "Reads and bytes counted exactly at the owner, with an explicit and complete measurement basis.",
+    "Ceilings enforced before execution: an excess read and an excess byte count were both refused with executed=false, and the caller received a loud ReadstatError rather than a truncated decode.",
+    "The four account classes are kept distinct: open count, reader invocation, decoder invocation, byte count.",
+    "Path-based and brokered decodes are identical in columns, shape and values on the declared synthetic grain.",
+    "Metadata, normal decode and chunked paths were exercised, including the batch path."
+  ],
+
+  "what_is_not_demonstrated": [
+    "Survey-semantic equivalence. Only a 4-row, 2-variable synthetic grain was compared.",
+    "Any governance of any real source. Zero real sources were opened.",
+    "Complete call-site coverage. Any reader invocation still passed a raw path string would remain ungoverned, and no inventory of such sites was produced.",
+    "OS-level or kernel-level accounting. This is accounting at the application-owned file object, which is where the reader's I/O actually occurs on this route."
+  ],
+
+  "material_caveats_for_review": [
+    "D1: chunked DTA requires a fresh broker per chunk; pyreadstat's read_file_in_chunks helper does not satisfy this. DTA is SRC27's format.",
+    "D2: the seam is a de facto duck-typed implementation detail with no public API and no version guarantee. Pin the pyreadstat version.",
+    "D3: byte ceilings are pre-read gates with up to one in-flight read of overshoot, not byte-exact cuts."
+  ],
+
+  "recommended_next_step_for_HQ": "Hostile independent review of three specific claims: that the compiled reader performs zero path opens on the broker route; that the fresh-broker-per-chunk constraint is correctly characterised for DTA; and that R7 runtime identity genuinely does not change. Then commission a full-corpus path-versus-broker comparison over the existing 55/55 corpus to close the equivalence gap, before any adoption question is opened.",
+
+  "no_adoption_proposed": true,
+  "production_mutation_performed": false,
+  "holds_respected": true,
+  "hostile_review_outstanding": true
+}

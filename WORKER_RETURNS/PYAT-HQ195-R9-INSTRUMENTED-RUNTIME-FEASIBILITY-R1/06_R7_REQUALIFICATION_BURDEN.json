@@ -1,0 +1,82 @@
+{
+  "schema": "PYAT_HQ195_R7_REQUALIFICATION_BURDEN@1.0.0",
+  "CATEGORY": "C2_OBSERVED_SYNTHETIC",
+  "category_law": "Burden analysis derived from observed synthetic behaviour. No requalification was performed in this lane and no court was rerun.",
+
+  "headline": "The accepted R7 runtime identity does NOT change. No modified pyreadstat/ReadStat binary is required. The burden is therefore much smaller than the commission's rebuild-conditional section anticipated.",
+
+  "commission_condition_applies": {
+    "condition": "If a modified pyreadstat/ReadStat binary is required...",
+    "does_it_apply": false,
+    "reason": "The broker route uses the accepted binary unmodified. There is no new build, no new artifact, and no divergence to reconcile."
+  },
+
+  "binary_and_source_difference": {
+    "pyreadstat_version": "1.3.6",
+    "modified": false,
+    "rebuilt": false,
+    "recompiled": false,
+    "patched": false,
+    "sitecustomize_or_monkeypatch_used": false,
+    "extension_interposed": false,
+    "difference_from_accepted_runtime": "none"
+  },
+
+  "does_R7_runtime_identity_change": {
+    "answer": false,
+    "reasoning": "R7 identity is a property of the interpreter and installed package set. Neither is touched. The accepted environment was not mutated in place; all work ran against it read-only."
+  },
+
+  "what_does_change": {
+    "component": "the application's own decode call site",
+    "nature": "It hands pyreadstat an open, governed file object instead of a path string.",
+    "blast_radius": "Confined to the decode and batch call sites that are deliberately routed through the broker."
+  },
+
+  "which_courts_must_rerun": [
+    {
+      "court": "R7 runtime identity court",
+      "must_rerun": false,
+      "reason": "Runtime identity is unchanged."
+    },
+    {
+      "court": "C3 synthetic / enforcement court",
+      "must_rerun": true,
+      "reason": "The enforcement surface changes. Guards now sit at the broker rather than at a Python-level interception point, and the chunked DTA path acquires the fresh-broker-per-chunk requirement (defect D1). Existing C3 evidence was gathered against a different mechanism."
+    },
+    {
+      "court": "C4C3 environment court",
+      "must_rerun": true,
+      "reason": "Same reason as C3. The environment is unchanged but the exercised code path through it is not."
+    }
+  ],
+
+  "can_previous_source_free_55_of_55_qualification_be_reused": {
+    "answer": "NOT_AS_IS",
+    "reasoning": "The 55/55 result characterised the runtime as it behaves when given path strings. The broker route changes the argument the reader receives. Reusing the prior result unchanged would be asserting equivalence across a change that has not been tested.",
+    "what_can_be_reused": [
+      "The corpus itself. The 55 carriers remain valid test inputs; they do not need to be regenerated or re-authorised.",
+      "The expected outputs, as a comparison baseline."
+    ],
+    "what_must_be_repeated": [
+      "The full decode comparison over all 55 carriers, path-based versus brokered, at whatever grain the 55/55 court originally declared.",
+      "The chunked/batch comparison, with the fresh-broker-per-chunk loop for DTA.",
+      "The negative/enforcement cases, re-executed against the broker guards."
+    ],
+    "estimated_shape_of_the_work": "A re-execution and comparison pass over an existing corpus with an existing baseline, plus a metadata-field diff that this lane did not perform. Not a rebuild, not a re-authorisation, not a new corpus."
+  },
+
+  "new_reviewer_acceptance_required_before_any_live_use": [
+    "Independent hostile review of the claim that the compiled reader performs zero opens on the broker route. This lane's basis is source reading plus synthetic behaviour; a reviewer should confirm there is no residual path-based open.",
+    "Acceptance that a de facto duck-typed seam, not a documented callback contract, is being relied upon, together with a pinning decision that fixes the pyreadstat version so the seam cannot change underneath.",
+    "Acceptance of defect D1 (fresh broker per chunk for DTA) as a permanent design constraint rather than a bug to be fixed later.",
+    "Acceptance that byte ceilings are pre-read gates with a one-read overshoot, not byte-exact cuts.",
+    "A decision on whether every reader call site is routed through the broker, since any site still passing a raw path string remains ungoverned. An inventory of such sites was NOT produced in this lane."
+  ],
+
+  "explicitly_not_established_here": [
+    "That the change is safe to adopt in production. It is not proposed.",
+    "That real-source governance works. Zero real sources were touched.",
+    "That all reader call sites in the application are covered."
+  ]
+}
