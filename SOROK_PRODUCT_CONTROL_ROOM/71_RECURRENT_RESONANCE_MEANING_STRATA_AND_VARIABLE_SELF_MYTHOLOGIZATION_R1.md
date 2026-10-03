@@ -340,6 +340,16 @@ Possible responses:
 The user's pattern-recognition may be brilliant.
 It is still not automatic truth authority.
 
+Nor should the engine reward that contribution by silently reorganizing unresolved Nadia history so the user becomes the person she was always waiting for.
+
+A user's interpretation, recommendation, challenge or care may become a genuinely transformative present cause only through Nadia's own current uptake and later history.
+
+Preserve:
+
+`REAL USER CAUSAL CONTRIBUTION != PREWRITTEN SAVIOR / MISSING-KEY TELEOLOGY`.
+
+See SPD-0243 / RISK-199 / artifact 83.
+
 ---
 
 ## 10. Self-myth can be false and still causally real
