@@ -1451,3 +1451,92 @@ Question accounting re-derived from the register:
 - 30 nonblocking answered/closed;
 - 1 researching nonblocking kernel frontier.
 
+---
+
+## R12 post-fifth-banking tail reharvest — lines 1752–3689
+
+Artifact:
+`76_POST_FIFTH_BANKING_TAIL_REHARVEST_AND_AUTHORITY_NORMALIZATION_R1.md`.
+
+Fresh Sorok-HQ reharvest of the entire transcript tail after the fifth banking/audit round found:
+
+- no missing headline architecture from the kernel/person-sharing/historical-bridge/meaning/self-rereading/self-retcon sequence;
+- one important **control-surface currentness debt** left by the artifact-74 correction;
+- one cross-cutting architecture law that had existed only piecemeal.
+
+### New cross-cutting law
+
+`SPD-0232`:
+
+> **DERIVE / COMPOSE / CLASSIFY FIRST. REIFY ONLY AFTER PROVED UNDERDETERMINATION.**
+
+An analytical noun does not create ontology.
+
+This applies especially to:
+- relational grammar;
+- object-value grammar;
+- resonance;
+- articulation event;
+- interpretive framework;
+- self-retcon;
+- framework-response pattern;
+- causal slack;
+- Horizon relation.
+
+Current procedure:
+1. identify the required phenomenon;
+2. locate exact current authoritative owners;
+3. attempt derived views / historical classification;
+4. realize event-time effects through exact admitted occurrences + CAN-008 R2;
+5. decompose lasting changes into competent owners;
+6. hostile-test underdetermination;
+7. only then propose new state/event/owner primitives.
+
+Compact:
+
+`MORE NAMES != MORE ONTOLOGY`.
+
+### Currentness normalization
+
+`SPD-0233`:
+
+SPDs 0217–0226 survive only at phenomenon/product-requirement grain where compatible with SPD-0227–0231.
+
+Do **not** read them as establishing:
+- a monolithic interpretive-framework/self-retcon store;
+- a new `ARTICULATION_EVENT` occurrence class;
+- an adopted framework-response operator enum;
+- analyst-observed "reality pressure" as an event source;
+- current alpha/V3 Absolute-Horizon runtime semantics.
+
+### Live-question repair
+
+The reharvest corrected:
+- `Q-HISTBRIDGE-001` — causal slack/open allocation may be represented or derived; no dedicated slot owner is presumed;
+- `Q-MEANINGSTRATA-001` — existing authoritative state/derived views first, minimal new durable representation only after hostile underdetermination;
+- `Q-SELFREAD-001` — current task is CAN-008 R2 + existing-owner composition/falsification, not schema design for a monolithic interpretive-framework/Horizon object.
+
+`Q-FRAMEMETAB-001` was already correctly phrased as a composition/falsification court.
+
+### New risks
+
+- `RISK-190` — analytical-category reification;
+- `RISK-191` — correction shadowing / stale-law resurrection.
+
+### Kernel consequence
+
+The tail continues to strengthen, without adjudicating, the D007 mediation clue:
+
+> **A mediating relation can be causally constitutive without exhausting, possessing or becoming identical to either side it relates.**
+
+Current technical resonance:
+- event truth != uptake;
+- whole person state != current recruitment;
+- recruitment != access;
+- access != expression;
+- current response != automatic durable change;
+- yet each lawful mediation can alter what happens next.
+
+`KERNEL = OPEN_DISCOVERY`.
+
+
