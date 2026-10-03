@@ -439,3 +439,10 @@ Preserve:
 
 These refine existing attention/recognition laws rather than adding new ontology.
 
+### Recognition-gated narration
+
+Read:
+`87_RECOGNITION_GATED_NARRATION_CORRECTION_R1.md`.
+
+Do not narrate from canonical object identity. Description specificity is epistemically gated: generic class/visible morphology first, readable markings only when actually perceptible, brand/model/domain labels only when user recognition warrants them. Apply SPD-0166/0246/0248.
+
