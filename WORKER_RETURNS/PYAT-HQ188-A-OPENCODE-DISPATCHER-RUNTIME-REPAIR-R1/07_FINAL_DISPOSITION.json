@@ -4,12 +4,12 @@
   "role": "RABOCHII / LOCAL-MACHINE IMPLEMENTER \u2014 SPACE BUNNY",
   "worker_branch": "agent/rabochii-pyat-hq188-a-opencode-dispatcher-runtime-repair-r1",
   "commissioned_startup_sha": "ff7a06694b0391471b8e1223b2f881b3288f529e",
-  "final_remote_sha": "5f9a93af1cc98d75d392794534484e41248efb5f",
+  "final_remote_sha": "57177cce2006c9e1a1783229c498d88aa0f687a9",
   "disposition": "CANDIDATE_READY_FOR_INDEPENDENT_ACCEPTANCE",
   "terminal": "HQ188_A_DISPATCHER_REPAIR_CANDIDATE_RETURNED__INDEPENDENT_ACCEPTANCE_REQUIRED",
   "return_verification_token": "HQ188-A_REMOTE_BRANCH_RETURN_VERIFIED",
   "startup_verification_token": "HQ188-A_GITHUB_STARTUP_VERIFIED",
-  "local_head_at_return": "5f9a93af1cc98d75d392794534484e41248efb5f",
+  "local_head_at_return": "57177cce2006c9e1a1783229c498d88aa0f687a9",
   "local_head_equals_remote": true,
   "return_verification": {
     "pushed_to": "origin/agent/rabochii-pyat-hq188-a-opencode-dispatcher-runtime-repair-r1",
@@ -19,7 +19,10 @@
     "equal": true,
     "method": "git push, then explicit fetch of all heads, then git for-each-ref on refs/remotes/origin",
     "force_push_used": false,
-    "merge_to_control": false
+    "merge_to_control": false,
+    "note": "final_remote_sha records the TIP that includes this artifact's own commit; 5f9a93af1 is the candidate commit, 57177cce2 is the return-verification commit",
+    "candidate_commit": "5f9a93af1cc98d75d392794534484e41248efb5f",
+    "final_tip": "57177cce2006c9e1a1783229c498d88aa0f687a9"
   },
   "candidate_identity": {
     "repaired_dispatcher_blob": "f3067208f7a8b8ffc159bdc41c25309e9a14b5cb",
