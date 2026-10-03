@@ -1,12 +1,12 @@
 {
   "schema": "RAWLSING_HQ_HANDOFF_POINTER@1.1.0",
-  "checkpoint_id": "20261003-PYAT-HQ189-COMMISSION-GITHUB-IO-LAW-R1",
-  "handoff_commit": "75d3ea73197b61ae96d6d5b35f853a60d3e603e9",
+  "checkpoint_id": "20261003-PYAT-HQ190-RETURNS-ADJUDICATED-NEXT-WAVE-BOUND-R1",
+  "handoff_commit": "ad7006857dda0907d78786d995d1fcf2b942c29c",
   "semantic_pre_main_tip": "902640dfddce431d0c5ba151d3eb851d6b84d7a3",
   "control_branch": "integration/pre-main-reconciliation-r1",
-  "current_md_path": "HQ_HANDOFF/checkpoints/20261003-PYAT-HQ189-COMMISSION-GITHUB-IO-LAW-R1/CURRENT.md",
-  "current_json_path": "HQ_HANDOFF/checkpoints/20261003-PYAT-HQ189-COMMISSION-GITHUB-IO-LAW-R1/CURRENT.json",
-  "manifest_path": "HQ_HANDOFF/checkpoints/20261003-PYAT-HQ189-COMMISSION-GITHUB-IO-LAW-R1/MANIFEST.json",
+  "current_md_path": "HQ_HANDOFF/checkpoints/20261003-PYAT-HQ190-RETURNS-ADJUDICATED-NEXT-WAVE-BOUND-R1/CURRENT.md",
+  "current_json_path": "HQ_HANDOFF/checkpoints/20261003-PYAT-HQ190-RETURNS-ADJUDICATED-NEXT-WAVE-BOUND-R1/CURRENT.json",
+  "manifest_path": "HQ_HANDOFF/checkpoints/20261003-PYAT-HQ190-RETURNS-ADJUDICATED-NEXT-WAVE-BOUND-R1/MANIFEST.json",
   "decision_ledger_path": "HQ_HANDOFF/DECISION_LEDGER.jsonl",
   "protocol_path": "HQ_HANDOFF/PROTOCOL.md",
   "start_here_path": "HQ_HANDOFF/START_HERE.md",
@@ -15,7 +15,7 @@
   "temporal_reconciliation_law": "SEALED_CHECKPOINT_AUTHORITY_NE_POST_CHECKPOINT_PENDING_RETURN_NE_UNAUTHORIZED_POST_CHECKPOINT_MOVEMENT",
   "maintenance_law": "AFTER_EVERY_MATERIAL_HQ_STATE_CHANGE__CREATE_NEW_IMMUTABLE_CHECKPOINT__ADVANCE_AND_VERIFY_LATEST_BEFORE_TRANSITION_IS_SEALED",
   "protected_execution_head": "16f5e7d5f691e908d85dc1dd26b8a59a29f668f4",
-  "next_action": "LAUNCH_HQ188_A_AND_B_FROM_EXACT_HARDENED_REMOTE_TIPS__ON_RETURN_REQUIRE_PUSHED_REMOTE_SHA",
+  "next_action": "LAUNCH_DEEPSEEK_HQ190_A_AND_SPACE_BUNNY_HQ190_B_C_IN_PARALLEL__HQ_ADJUDICATES_FIRST_RETURN_AND_REFILLS_READY_SLOT",
   "source_split_control_head": "cee9e27d57dc72771d9c3ec5df26493321feeef5",
   "split_fanin_evidence_tip": "cee9e27d57dc72771d9c3ec5df26493321feeef5",
   "joined_successor_return_tip": "b4dd6d6016367110c06317abe2cef276123b4c69",
@@ -62,7 +62,7 @@
   "pyat_current_handoff": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/CURRENT_HANDOFF.md",
   "pyat_current_grok_docket": "PYAT_CONTROL_ROOM/12_B_ROUTE_PRE_FIELD_FORGE_GROK_DOCKET.md",
   "pyat_fresh_hq_protocol": "PYAT_CONTROL_ROOM/13_FRESH_HQ_FULL_GROK_PROTOCOL.md",
-  "immediate_program_refinement": "HQ188_TWO_SLOT_SPACE_BUNNY_WAVE_ACTIVE__A_DISPATCHER_REPAIR__B_C4_CONSOLIDATION",
+  "immediate_program_refinement": "HQ190__A_HOSTILE_REVIEW__R7_ENVIRONMENT_CLOSURE__R9_WARRANT_ACCOUNTING_BINDING",
   "legacy_pyat_bootstrap_path": "HQ_HANDOFF/PYAT_HQ_BOOTSTRAP_R1.md",
   "pyat_documentary_hygiene": "HQD-2026-09-26-114",
   "pyat_forward_program_decision": "HQD-2026-09-28-125",
@@ -544,8 +544,8 @@
   "external_adjudication_retrieval_law": "ALL_COMPARISON_MATERIAL_FETCHABLE_FROM_ORIGIN",
   "measured_execution_authorized_via_warrant": false,
   "previous_handoff": {
-    "checkpoint_id": "20261003-PYAT-HQ188-TWO-SLOT-RABOCHII-WAVE-R1",
-    "handoff_commit": "30f08c6ed1418d2b80fed856b8fe2cb1fd772fc6"
+    "checkpoint_id": "20261003-PYAT-HQ189-COMMISSION-GITHUB-IO-LAW-R1",
+    "handoff_commit": "75d3ea73197b61ae96d6d5b35f853a60d3e603e9"
   },
   "previous_operating_mode": {
     "selected": "BROWSER_ECONOMY",
@@ -663,9 +663,35 @@
   },
   "commission_io_law": {
     "status": "MANDATORY_FOR_ALL_WORKER_AND_REVIEWER_COMMISSIONS",
-    "template": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/templates/COMMISSION.md",
     "startup": "FETCH_ORIGIN__VERIFY_EXACT_REMOTE_COMMISSION_SHA__ISOLATED_WORKTREE__NO_BLIND_PULL",
-    "return": "COMMIT__PUSH_BOUND_BRANCH__REFETCH__VERIFY_REMOTE_RETURN_SHA",
+    "return": "ARTIFACTS_BIND_STABLE_SUBSTANTIVE_RESULT_SHA__PUSH_BRANCH__VERIFY_REMOTE__REPORT_BRANCH_TIP_OUT_OF_BAND__HQ_RE_RESOLVES",
+    "self_referential_sha_chasing": "PROHIBITED",
     "missing_protocol": "MALFORMED__DO_NOT_LAUNCH"
+  },
+  "hq190": {
+    "hq188_a": {
+      "remote_tip": "f522af5a7a01432159830dfbf26325c0e320adaf",
+      "substantive_candidate": "5f9a93af1cc98d75d392794534484e41248efb5f",
+      "status": "NOT_ADOPTED__HOSTILE_REVIEW_BOUND"
+    },
+    "hq188_b": {
+      "remote_tip": "49c4d1735589005e22423b1800a8c5e2dab40981",
+      "status": "ACCEPTED_WITH_BOUNDED_ROUTING_CORRECTIONS"
+    },
+    "active_review": {
+      "branch": "agent/reviewer-pyat-hq190-a-dispatcher-hostile-acceptance-r1",
+      "commission_tip": "2185e1dcf8d87acb74fe854a5196e7f2cf79cb6b"
+    },
+    "active_r7": {
+      "branch": "agent/rabochii-pyat-hq190-b-r7-darwin-environment-closure-r1",
+      "commission_tip": "909c5175ec322c6e8d56093e62b0b14a030b6787"
+    },
+    "active_r9": {
+      "branch": "agent/rabochii-pyat-hq190-c-r9-warrant-accounting-binding-r1",
+      "commission_tip": "be64ec98e648e1e6f1a9cb1ad32d7be4b2a84d33"
+    },
+    "c4_external_packet_ready": true,
+    "c4_adopted": false,
+    "hq182_hold_lifted": false
   }
 }
