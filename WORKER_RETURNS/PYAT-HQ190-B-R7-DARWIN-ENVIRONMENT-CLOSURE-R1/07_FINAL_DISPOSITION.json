@@ -1,12 +1,12 @@
 {
   "schema": "PYAT_HQ190_B__07_FINAL_DISPOSITION@1.0.0",
   "lane": "PYAT-HQ190-B-R7-DARWIN-ENVIRONMENT-CLOSURE-R1",
-  "role": "RABOCHII / LOCAL-MACHINE RUNTIME IMPLEMENTER — SPACE BUNNY",
+  "role": "RABOCHII / LOCAL-MACHINE RUNTIME IMPLEMENTER \u2014 SPACE BUNNY",
   "branch": "agent/rabochii-pyat-hq190-b-r7-darwin-environment-closure-r1",
   "commissioned_startup_sha": "909c5175ec322c6e8d56093e62b0b14a030b6787",
   "commission_implementation_base": "02309f4e708dd01cb0d64666acbe43d5c23b35e7",
-  "substantive_result_sha": "SUBSTANTIVE_RESULT_SHA_PLACEHOLDER",
-  "substantive_result_sha_note": "This field is bound by the follow-up commit that records the substantive result commit. It deliberately does NOT embed the enclosing branch-tip SHA; HQ resolves the authoritative tip with: git rev-parse origin/agent/rabochii-pyat-hq190-b-r7-darwin-environment-closure-r1",
+  "substantive_result_sha": "11f68e122c728dd8be6a6fd45bd7e8ef959060b7",
+  "substantive_result_sha_note": "Stable substantive result commit: the R7 repair, evidence and this return packet. This artifact deliberately does NOT embed the enclosing branch-tip SHA. HQ resolves the authoritative tip with: git rev-parse origin/agent/rabochii-pyat-hq190-b-r7-darwin-environment-closure-r1",
   "disposition": "R7_CLOSED__CANDIDATE_READY_FOR_INDEPENDENT_ACCEPTANCE",
   "terminal": "HQ190_B_R7_DARWIN_ENVIRONMENT_RETURNED__HQ_REVIEW_REQUIRED",
   "r7_components": {
@@ -44,7 +44,8 @@
     "venv_committed": false,
     "merged_to_control": false,
     "self_adopted": false,
-    "limitations_recorded": 10
+    "limitations_recorded": 10,
+    "destructive_incident": "INC-1 disclosed and fully recovered: a blanket __pycache__ delete removed 4 tracked .pyc custody artifacts; restored and each verified byte-identical to its committed blob; no commit ever contained the deletion; tree identity re-verified b0c1ab47"
   },
   "material_findings_requiring_hq_action": [
     {
@@ -80,5 +81,14 @@
     "INTERPRETER_PORTABILITY_TO_OTHER_HOSTS"
   ],
   "independent_hostile_acceptance_required": true,
-  "hq_may_remove_live_execution_blocker_only_after": "independent hostile acceptance of this candidate"
+  "hq_may_remove_live_execution_blocker_only_after": "independent hostile acceptance of this candidate",
+  "return_verification": {
+    "pushed_to": "origin/agent/rabochii-pyat-hq190-b-r7-darwin-environment-closure-r1",
+    "re_resolved_after_push": true,
+    "local_head_equals_remote": true,
+    "method": "git push, then explicit fetch of all heads, then git rev-parse on the remote-tracking ref",
+    "force_push_used": false,
+    "merge_to_control": false,
+    "self_adopted": false
+  }
 }
