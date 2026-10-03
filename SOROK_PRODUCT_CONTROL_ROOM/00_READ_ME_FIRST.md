@@ -428,3 +428,14 @@ Preserve:
 
 These are membranes/cross-layer constraints, not new monolithic owners.
 
+### Perceptual-epistemics final residue
+
+Read:
+`85_PERCEPTUAL_EPISTEMICS_FINAL_RESIDUE_AUDIT_R1.md`.
+
+Preserve:
+- recognition evidence provenance: system/actor-supplied labels do not prove prior user expertise, though they may become later acquired knowledge (SPD-0246);
+- progressive ambient coverage is nonexhaustive: time/spare attention may enrich perception, but waiting never becomes a 100-percent scan (SPD-0247).
+
+These refine existing attention/recognition laws rather than adding new ontology.
+
