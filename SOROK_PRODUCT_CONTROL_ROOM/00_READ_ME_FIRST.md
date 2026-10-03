@@ -334,3 +334,42 @@ with the least independent legislation.
 
 Future audit waves should therefore be read as evidence for architecture compression, not as a goal of accumulating more product laws.
 
+## Post-fifth-banking tail reharvest / currentness normalization
+
+For the architecture sequence developed after the five late banking/audit rounds, read:
+
+`76_POST_FIFTH_BANKING_TAIL_REHARVEST_AND_AUTHORITY_NORMALIZATION_R1.md`.
+
+It covers exact transcript lines `1752–3689` and must be read with artifacts 69–74 and D007.
+
+Important current law:
+
+> **DERIVE / COMPOSE / CLASSIFY FIRST. REIFY ONLY AFTER PROVED UNDERDETERMINATION.**
+
+Compact:
+
+`MORE NAMES != MORE ONTOLOGY`.
+
+Do not turn analytical categories such as:
+- resonance;
+- articulation event;
+- interpretive framework;
+- self-retcon;
+- framework-response pattern;
+- causal slack;
+- Horizon relation
+
+into new durable owners, event classes or operator enums merely because they are useful names.
+
+SPDs 0217–0226 are current only at phenomenon/product-requirement grain where compatible with SPD-0227–0233.
+
+Especially preserve:
+- no monolithic interpretive-framework/self-retcon store presumed;
+- no new `ARTICULATION_EVENT` admission class presumed;
+- no adopted framework-response operator enum;
+- no analyst-observed contradiction/"reality pressure" as an occurrence source;
+- no current alpha/V3 Absolute-Horizon runtime contract absent later authority.
+
+Live questions `Q-HISTBRIDGE-001`, `Q-MEANINGSTRATA-001`, and `Q-SELFREAD-001` have been reframed accordingly.
+
+
