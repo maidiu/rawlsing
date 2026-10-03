@@ -1,0 +1,45 @@
+{
+  "schema": "PYAT_HQ195_ARCHITECTURE_WARRANT_TEST@1.0.0",
+  "question": "If the current runtime cannot measure the literal path-open account, what kind of problem is that?",
+  "candidates": [
+    {
+      "candidate": "warrant-document defect",
+      "test": "does the warrant template / law fail to state the requirement?",
+      "finding": "NO. The requirement is stated three times over: O1-C07 names 'path-level opens and their measurement basis'; artifact 07 lists it among ten mandatory separate accounts and supplies an explicit warning that OS opens, reader invocations and decoder calls are different quantities; the C4B template carries the slot with the strongest qualifier (_AND_BASIS).",
+      "verdict": "NOT_A_DOCUMENT_DEFECT",
+      "residual": "the warrant candidate (Q13) OMITTED the per-source source_access_accounting block entirely. That is a real documentary gap in the CANDIDATE, already found by HQ192/HQ190-C — but it is a completeness repair, not the cause of the R9 blocker. Restoring the block does not make ACC-03 measurable."
+    },
+    {
+      "candidate": "runtime implementation gap",
+      "test": "could the measurement be added within the current architecture and authority?",
+      "finding": "PARTIALLY. HQ191 proved 7 of 10 accounts governable and enforceable with hard maxima. Three are not governable at any enforceable layer (path opens + basis, selected-column reads, byte counts) and one is not performed by the exercised path (header-prefix reads). For ACC-03 specifically, HQ191 reports OS-level opens occur inside pyreadstat's compiled extension and are invisible to Python interception, with 0 visible opens during a successful reader call. HQ194 records that DYLD interposition and __DATA,__interpose both failed; SIP is enabled; and root-requiring tracing is outside the no-sudo authority.",
+      "verdict": "PART_B_IMPLEMENTATION_GAP__BUT_NOT_REPAIRABLE_WITHIN_CURRENT_AUTHORITY"
+    },
+    {
+      "candidate": "architecture-warrant case",
+      "test": "does a required grain exist that the existing jurisdictions cannot represent or lawfully succeed?",
+      "finding": "YES, INDICATED. C4's own terminal set defines ARCHITECTURE_WARRANT as 'demonstrate a required grain that existing jurisdictions cannot represent or lawfully succeed'. A mandatory named account that the qualified runtime cannot observe and the no-sudo authority cannot lawfully instrument satisfies that description at the measurement grain.",
+      "verdict": "ARCHITECTURE_WARRANT_INDICATED",
+      "scope_limit": "This is indicated, not self-certified. Declaring an architecture warrant is an authority act; this review is documentary and does not issue one."
+    },
+    {
+      "candidate": "authority ambiguity requiring Astra",
+      "test": "is the TEXT ambiguous about whether a proxy may replace the literal account?",
+      "finding": "NO. The text is explicit and pre-empts the substitution by name. An ambiguity requires two readings both defensible from the words; here only one reading is textually supported, and the other (proxy) is defeated by the enumerated basis rule, the explicit 'different quantities' warning, the SRC27 hardened note, and the unique _AND_BASIS qualifier.",
+      "verdict": "NOT_AUTHORITY_AMBIGUITY_ON_MEANING",
+      "what_is_genuinely_open": "The REMEDY is open, not the meaning. Whether to (i) build a narrowly instrumented reader surface so literal opens become observable, (ii) authorize privileged tracing under a new authority, or (iii) formally amend the frozen contract to retire or re-scope the account — is a governance choice, and (iii) would be a deliberate contract change rather than an interpretation."
+    }
+  ],
+  "composite_answer": {
+    "is_it_a_document_defect": false,
+    "is_it_a_runtime_implementation_gap": "partially yes, but not closable within the current unprivileged authority",
+    "is_it_an_architecture_warrant_case": "indicated at the measurement grain",
+    "is_it_authority_ambiguity": "no as to meaning; yes as to remedy choice",
+    "primary_characterisation": "the frozen contract requires a literal account that the qualified runtime cannot produce and the current authority cannot lawfully instrument"
+  },
+  "separately_typed_live_blockers_observed_but_not_folded_into_R9": [
+    {"id": "host-disk", "status": "carried from HQ191/HQ194: live-execution blocker 1 — host disk policy/capacity", "in_scope_here": false},
+    {"id": "warrant-candidate-accounting-block-omitted", "status": "documentary completeness gap in the C4 warrant candidate (Q13); restoring it is necessary but not sufficient", "in_scope_here": "tangential"},
+    {"id": "raw-source-access", "status": "NOT AUTHORIZED; warrant NOT issued", "in_scope_here": false}
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "schema": "PYAT_HQ195_FINAL_DISPOSITION@1.0.0",
+  "status": "FINAL",
+  "disposition": "CONTRACT_REQUIRES_LITERAL_PATH_OPEN_ACCOUNT__RUNTIME_OR_ARCHITECTURE_CHANGE_REQUIRED",
+  "disposition_is_allowed_value": true,
+  "terminal_token": "HQ195_R9_CONTRACT_INTERPRETATION_RETURNED__HQ_ADJUDICATION_REQUIRED",
+  "review_branch": "agent/reviewer-pyat-hq195-r9-contract-independent-interpretation-r1",
+  "commissioned_startup_sha": "a48acdc2f7e26557fca8e387b12c619bb94fe447",
+  "checkout_mode": "SPARSE_REQUIRED (honored; no clone; no full worktree; sparse checkout not widened)",
+  "reviewer_identity": {"harness": "DeepSeek Harness", "model": "DeepSeek V4.1 Flash"},
+  "answers_to_the_seven_required_questions": {
+    "1_what_must_be_frozen_before_launch": "The ten mandatory separate ACCOUNTS as a set; the instrumentation/measurement mechanism per account; the measurement BASIS fields; expected budgets where a budget exists; the hard-zero constraints; per-source operation-class expectations; the retry/stop law (frozen maximum zero retries). Frozen object = budgets + instrumentation + basis. Source: Q1 acceptance, Q3, Q4, Q7, Q8, artifact 07.",
+    "2_what_is_measured_during_execution": "The observed count for each account, retained and returned with its basis. Executed and returned, not pre-known. Source: Q1 acceptance 'retain measured counts'; Q4 basis rule.",
+    "3_what_REQUIRED_EXACT_COUNT_means": "CONTEXT-DEPENDENT in object, CONSTANT in force. The token forces the slot to carry an exact value. Whether that value is a pre-launch declaration or a post-execution measurement depends on the slot: frozen zeros and per-source expected_* are pre-launch declarations (exact by construction); observed accounts are exact measured counts reported with their basis. It never means 'approximately', and it never means 'the final measured number must have been known before launch'. The _AND_BASIS / _AND_CONFIG / _AND_REASON suffixes are the pre-launch invariants that must accompany the runtime count.",
+    "4_is_literal_OS_path_open_accounting_non_substitutable": "YES. Q5 names the exact substitution and declares the quantities different; Q4 makes a count without its own basis not an account at all; Q3 lists path-level opens and decoder invocations as separate accounts; Q8 gives path_opens the unique _AND_BASIS qualifier; Q6 forbids the analogous workload/access collapse as 'expressly forbidden by Omega-1'.",
+    "5_can_a_prelaunch_budget_coexist_with_a_runtime_measured_exact_count": "YES — and the contract requires exactly that structure: 'Freeze expected budgets and instrumentation before launch; retain measured counts.' The two objects are an authorization (frozen before launch) and evidence (measured during execution, returned). For ACC-03 the budget/instrumentation side is itself unsatisfiable on this host because neither a count nor a basis is obtainable (Q12).",
+    "6_nature_of_the_current_inability": "PRIMARILY a runtime/architecture capability limitation against an unambiguous requirement. NOT a warrant-document defect (the requirement is stated three times and carries the strongest qualifier). NOT authority ambiguity as to MEANING (the text pre-empts the proxy reading). PARTLY an implementation gap (7 of 10 accounts were made governable) but not one closable within the current unprivileged authority, since DYLD interposition and interpose tuples fail, SIP is enabled, and root tracing is out of authority. An ARCHITECTURE_WARRANT is INDICATED at the measurement grain, but declaring it is an authority act this review does not perform. The REMEDY is genuinely open; the meaning is not.",
+    "7_does_a_higher_level_proxy_preserve_the_non_collapse_principle": "NO, not as an ACCOUNT. A governed reader-invocation ceiling is a real and conservative upper bound on logical accesses and should be reported under its OWN account — which is precisely what HQ191 did when it refused to relabel it. Offering it as the path-open account collapses two accounts the law froze separately and violates the explicit warning. It therefore does not satisfy R9; it bounds a different quantity."
+  },
+  "primary_authority_relied_on": [
+    "Q1 Omega-1 O1-C07 requirement + acceptance (01762d73)",
+    "Q2/Q3/Q4/Q5/Q6/Q7 C4 execution accounting and failure law (8ff40d37)",
+    "Q8 C4B unsigned source warrant template (c2af4f61)",
+    "Q9 AT20 and Q10 C4 commission (3551bfaf)",
+    "Q11 HQ190-C access-layer limits (c887b5a7)",
+    "Q12 HQ191 budget enforcement court (1067828d)",
+    "Q13 HQ192 R9 gap (81a00663)",
+    "Q14 HQ194 in-terrain adjudication"
+  ],
+  "consistency_with_prior_returned_record": {
+    "HQ190C": "R9_EVIDENCE_INSUFFICIENT__WARRANT_BLOCKER_REMAINS — consistent; this review independently confirms ACC-03 unbound and the freeze acceptance unsatisfiable",
+    "HQ191": "R9_PARTIAL__SPECIFIC_ACCOUNTS_STILL_UNGOVERNABLE — consistent; 7 governable, 3 not, and the proxy explicitly not relabelled",
+    "HQ192": "R9_PARTIAL__LOWER_LAYER_STILL_UNGOVERNABLE — consistent",
+    "HQ194": "adjudication preserved the blocker and bound the architecture-warrant fork — consistent",
+    "this_review_adds": "the documentary resolution of the stage question (two-stage obligation, not ambiguity) and the explicit textual ground that makes the proxy non-substitutable"
+  },
+  "what_would_change_this_disposition": [
+    "a lawful instrumented reader surface that exposes literal path-level opens with a stated basis on the qualified host (would satisfy the account as written)",
+    "a separately authorized privileged-tracing run (would supply the account under new authority)",
+    "a deliberate, separately issued AMENDMENT to the frozen contract retiring or re-scoping the path-open account (a contract CHANGE, not an interpretation)",
+    "any text in the governing set permitting the three quantities to be collapsed for accounting purposes (none found)"
+  ],
+  "not_claimed": [
+    "no warrant issued, no raw source accessed, no locator discovered, no live C4 run, no production mutation, no C7/actor work",
+    "no architecture warrant declared by this review (indicated only)",
+    "no adoption or self-adoption",
+    "no claim that R9 is closable by any proxy"
+  ],
+  "holds_observed": {"raw_source_access": false, "locator_discovery": false, "warrant_issuance": false, "live_c4": false, "production_mutation": false, "c7_or_actor_work": false}
+}

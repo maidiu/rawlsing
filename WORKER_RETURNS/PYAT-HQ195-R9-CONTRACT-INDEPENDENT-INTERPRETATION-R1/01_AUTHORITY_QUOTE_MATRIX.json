@@ -1,0 +1,162 @@
+{
+  "schema": "PYAT_HQ195_AUTHORITY_QUOTE_MATRIX@1.0.0",
+  "role": "hostile independent documentary reviewer",
+  "read_law": "All historical authorities read by exact Git object (git show); the historical authority estate was NOT checked out; sparse checkout was not widened.",
+  "reviewer_identity": {"harness": "DeepSeek Harness", "model": "DeepSeek V4.1 Flash"},
+  "startup": {
+    "fetch": "git fetch origin (no blind pull)",
+    "review_branch": "agent/reviewer-pyat-hq195-r9-contract-independent-interpretation-r1",
+    "startup_sha_resolved": "a48acdc2f7e26557fca8e387b12c619bb94fe447",
+    "startup_sha_expected": "a48acdc2f7e26557fca8e387b12c619bb94fe447",
+    "match": true,
+    "sparse_worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq195-r9-review",
+    "sparse_helper": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/runtime/prepare_sparse_worktree.sh at the startup SHA",
+    "sparse_patterns": [
+      "/WORKER_COMMISSIONS/PYAT-HQ195-R9-CONTRACT-INDEPENDENT-INTERPRETATION-R1/",
+      "/WORKER_RETURNS/PYAT-HQ195-R9-CONTRACT-INDEPENDENT-INTERPRETATION-R1/",
+      "/PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ194_R9_OS_ACCOUNTING_ADJUDICATION_R1.md"
+    ],
+    "sparse_checkout_widened": false,
+    "full_worktree_materialized": false,
+    "independence_observed": "the parallel Space Bunny stage-ownership branch/return was NOT opened before this interpretation was formed"
+  },
+  "quotes": [
+    {
+      "id": "Q1-OMEGA1-O1C07",
+      "authority": "Omega-1 decision ledger",
+      "ref": "01762d7379be4e423dad3e21bcdcee47c536902d:WORKER_RETURNS/PYAT-OMEGA1-PRODUCTION-READINESS-R1/01_DECISION.json (and 00_DECISION.md)",
+      "field": "conditions[id=O1-C07]",
+      "stage": "DURING_EXECUTION_AND_RETURN",
+      "owner": "C4 execution owner",
+      "requirement_verbatim": "Execute exactly one governed fresh full-route LiTS pass, six bounded physical witnesses and retained WVS replay/comparison. Account separately for file hash passes, path-level opens and their measurement basis, metadata reads, header-prefix reads, decoder calls, selected-column/full reads, byte counts and retries. A full Route-B pass is not a claim of one OS-level file open.",
+      "acceptance_verbatim": "Freeze expected budgets and instrumentation before launch; retain measured counts. WVS and excluded-source fresh opens remain zero under this scope. No Candidate A/B/C, measured P2X, raw respondent pooling or new cross-source respondent join.",
+      "bearing": "PRIMARY. Names 'path-level opens and their measurement basis' as its own mandatory account, and states the stage as DURING_EXECUTION_AND_RETURN while requiring the budget/instrumentation freeze BEFORE launch."
+    },
+    {
+      "id": "Q2-C4-LAW07-INSTRUMENTATION",
+      "authority": "C4 executable freeze fan-in — execution accounting and failure law (carries O1-C07/O1-C08)",
+      "ref": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+      "field": "O1_C07_instrumentation.principle",
+      "quote": "A full Route-B pass is NOT one OS-level file open. Access must be separately accounted at every distinct layer.",
+      "bearing": "States the NON-COLLAPSE principle."
+    },
+    {
+      "id": "Q3-C4-LAW07-ACCOUNTS",
+      "authority": "same as Q2",
+      "field": "O1_C07_instrumentation.mandatory_separate_accounts",
+      "quote": [
+        "source-path existence/access checks",
+        "file hash passes (full SHA-256 over the file)",
+        "path-level opens",
+        "metadata reads",
+        "header-prefix reads",
+        "decoder invocations",
+        "selected-column reads",
+        "full reads",
+        "byte counts where measurable",
+        "retries"
+      ],
+      "bearing": "Ten separately mandated accounts. 'path-level opens' and 'decoder invocations' are DIFFERENT entries in the same list."
+    },
+    {
+      "id": "Q4-C4-LAW07-BASIS",
+      "authority": "same as Q2",
+      "field": "O1_C07_instrumentation.accounting_basis_rule",
+      "quote": "Each account must state its measurement BASIS, not only a count. A count without a stated basis is not an account.",
+      "bearing": "A bare number is not an account; the basis is constitutive."
+    },
+    {
+      "id": "Q5-C4-LAW07-WARNING",
+      "authority": "same as Q2",
+      "field": "measurement_basis_requirement.explicit_warning",
+      "quote": "A count of 'opens' is meaningless without stating whether it means OS-level path opens, reader invocations, or decoder calls. These are different quantities and C4B froze them as separate accounts.",
+      "bearing": "THE DECISIVE NON-SUBSTITUTION TEXT. It names exactly the substitution the commission asks about and forbids it, calling the three quantities DIFFERENT."
+    },
+    {
+      "id": "Q6-C4-LAW07-SRC27",
+      "authority": "same as Q2",
+      "field": "hardened_note_on_the_SRC27_single_pass",
+      "quote": "The frozen 'exactly one governed fresh full Route-B pass' is a WORKLOAD constraint, not an access constraint. ... It does NOT license assuming one file open. ... Each is a separate account under O1-C07. ... Would be an accounting failure and is expressly forbidden by Omega-1.",
+      "bearing": "Forbids reading a workload count as an access count; identifies the misreading as expressly forbidden by Omega-1."
+    },
+    {
+      "id": "Q7-C4-LAW07-FROZEN-ZEROS",
+      "authority": "same as Q2",
+      "field": "O1_C07_instrumentation.frozen_zero_budgets / zero_budget_discipline",
+      "quote": "These are hard zeros. A single non-zero count in any of them is a STOP condition, not a reportable variance.",
+      "bearing": "Example of a numeric value that IS frozen before launch (predeclared hard zeros)."
+    },
+    {
+      "id": "Q8-C4B-WARRANT-TEMPLATE",
+      "authority": "C4B unsigned future source warrant template",
+      "ref": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/07_UNSIGNED_SOURCE_WARRANT_TEMPLATE.json",
+      "field": "sources[].source_access_accounting",
+      "quote": {
+        "full_file_sha256_passes": "REQUIRED_EXACT_COUNT",
+        "path_opens": "REQUIRED_EXACT_COUNT_AND_BASIS",
+        "decoder_invocations": "REQUIRED_EXACT_COUNT",
+        "metadata_header_reads": "REQUIRED_EXACT_COUNT",
+        "selected_reads": "REQUIRED_EXACT_COUNT_AND_CONFIG",
+        "full_reads": "REQUIRED_EXACT_COUNT_AND_CONFIG",
+        "retries": "REQUIRED_EXACT_COUNT_AND_REASON"
+      },
+      "status": "NOT_AUTHORIZED_UNTIL_HQ_AND_REQUIRED_USER_RESOURCE_OWNER_APPROVAL; signed=false; authorizes_access=false",
+      "bearing": "Defines the per-slot requirement vocabulary. path_opens specifically requires count AND BASIS."
+    },
+    {
+      "id": "Q9-AT20",
+      "authority": "AT20 — Oracle and source accounting",
+      "ref": "3551bfaf4b7c57f019a3d0beddcc13b2e8b5691b:PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/acceptance/AT20.md",
+      "field": "Positive witness / Hostile witness",
+      "quote": {
+        "positive": "Freeze source/authority/workload before independent oracle materialization and freeze oracle identity before execution.",
+        "hostile": "Candidate output cannot define expected truth; declared read/decoder counts and stop laws remain exact."
+      },
+      "bearing": "Confirms the freeze-before-execution stage and that declared read/decoder counts must REMAIN EXACT."
+    },
+    {
+      "id": "Q10-C4-COMMISSION",
+      "authority": "C4 — Current production and horizontal proof (commission)",
+      "ref": "3551bfaf4b7c57f019a3d0beddcc13b2e8b5691b:PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/commissions/C4.md",
+      "status": "DRAFT__NOT_DISPATCHED__ISSUANCE_REQUIRES_EXACT_SCOPE",
+      "quote": "No opportunistic repair during governed execution; failures follow the issued failure law.",
+      "bearing": "Forbids repairing the measurement gap opportunistically mid-run."
+    },
+    {
+      "id": "Q11-HQ190C",
+      "authority": "HQ190-C R9 warrant accounting binding return",
+      "ref": "c887b5a727eb0fe7806d6cd43a08b77dc8fb66dd:WORKER_RETURNS/PYAT-HQ190-C-R9-WARRANT-ACCOUNTING-BINDING-R1/02_PER_SOURCE_ACCESS_LAYER_LIMITS.json",
+      "quote": {
+        "acceptance_currently_satisfiable": false,
+        "acceptance_shortfall": "Four mandatory accounts have no budget anywhere to freeze.",
+        "ACC-01 source-path existence/access checks": "bound=false",
+        "ACC-02 file hash passes": "bound=false",
+        "ACC-03 path-level opens": "bound=false",
+        "ACC-06 decoder invocations": "bound=false"
+      },
+      "bearing": "Independent prior finding that path-level opens (ACC-03) is UNBOUND, and that the freeze acceptance is currently unsatisfiable."
+    },
+    {
+      "id": "Q12-HQ191",
+      "authority": "HQ191 R9 budget enforcement court",
+      "ref": "1067828d75f3eab483e9b2a95e4b3ef703661118:PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-04/R9-BUDGET-ENFORCEMENT-COURT-R1/09_HARD_MAX_BUDGET_CANDIDATE.json",
+      "quote": "OS-level opens occur inside pyreadstat's compiled extension and are invisible to Python interception. Empirically measured: 0 visible opens during a successful reader call. Neither a count nor a basis is observable.",
+      "also": "The reader-invocation ceiling ... is an upper bound on accesses, NOT an account of opens, and is not relabelled as one.",
+      "bearing": "The runtime-side measurement reality. Critically, the worker DECLINED to relabel the proxy as an opens account."
+    },
+    {
+      "id": "Q13-HQ192",
+      "authority": "HQ192 R9 OS-accounting return",
+      "ref": "81a006638b8a21a19150fa35c9caba544d272550:WORKER_RETURNS/PYAT-C4-DISPUTED-CLAIMS-RECHECK-R1/04_C4_R9_GAP.json",
+      "quote": "per_source_source_access_accounting_present: false ... template_had_it_for_each_of_seven_sources: true",
+      "bearing": "The warrant candidate OMITTED the per-source accounting block that the template mandates."
+    },
+    {
+      "id": "Q14-HQ194",
+      "authority": "HQ194 R9 OS-accounting adjudication (in-terrain, sparse-materialized)",
+      "ref": "ACTIVATION_RETURNS/HQ194_R9_OS_ACCOUNTING_ADJUDICATION_R1.md",
+      "quote": "Therefore R9 is not closed by replacing path opens with reader invocations or Python-level opens. ... the current host/runtime cannot observe one mandatory named account.",
+      "bearing": "In-terrain adjudication already rejecting the substitution; this review independently reaches the same reading from the primary text."
+    }
+  ]
+}

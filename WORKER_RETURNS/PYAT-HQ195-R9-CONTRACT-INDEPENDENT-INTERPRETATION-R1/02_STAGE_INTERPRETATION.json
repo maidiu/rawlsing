@@ -1,0 +1,40 @@
+{
+  "schema": "PYAT_HQ195_STAGE_INTERPRETATION@1.0.0",
+  "governing_stage": "DURING_EXECUTION_AND_RETURN (O1-C07), with an explicit pre-launch sub-obligation",
+  "the_governing_sentence": "Freeze expected budgets and instrumentation before launch; retain measured counts.",
+  "reading": "One sentence, two conjuncts, two different objects: (a) budgets + instrumentation are FROZEN before launch; (b) COUNTS are MEASURED and RETAINED during execution and on return. The stage label DURING_EXECUTION_AND_RETURN names the obligation's home stage; the sentence itself places a strict sub-obligation before launch.",
+  "what_must_be_frozen_before_launch": [
+    {"item": "the identity of the ten mandatory separate accounts", "source": "Q3", "note": "the account SET is fixed, not discovered at runtime"},
+    {"item": "the instrumentation/measurement mechanism per account", "source": "Q1 acceptance 'and instrumentation'", "note": "the mechanism is chosen and frozen in advance"},
+    {"item": "the measurement BASIS fields per account", "source": "Q4/Q8", "note": "'what was measured, at which layer, by what mechanism, at what point in the run'"},
+    {"item": "expected budgets for the accounts where a budget exists", "source": "Q1 acceptance; Q7", "note": "e.g. hard zeros and per-source expected_* counts"},
+    {"item": "hard-zero constraints", "source": "Q7", "note": "WVS_SRC35 fresh_source_opens=0, excluded_source_fresh_opens=0, Candidate A/B/C=0, measured P2X=0, raw respondent pooling=0, new cross-source joins=0, SRC08/SRC12 row-data reads=0, SRC08/SRC12 selected_columns=0; a single non-zero is a STOP, not a variance"},
+    {"item": "per-source operation-class expectations", "source": "O1-C07 law artifact 07 per_source_expected_operation_class", "note": "e.g. SRC02 expected_selected_reads=1, SRC27 expected_full_route_passes=1"},
+    {"item": "retry law and stop law", "source": "Q7; artifact 07 retry_budget_law", "note": "frozen maximum ZERO retries across all eight sources"},
+    {"item": "runtime identity and qualification", "source": "O1-C05 (adjacent prerequisite)", "note": "interpreter/platform/decoder/library versions frozen before first governed source execution"}
+  ],
+  "what_is_measured_during_execution_and_retained_on_return": [
+    {"account": "ACC-01 source-path existence/access checks", "measured": true},
+    {"account": "ACC-02 file hash passes", "measured": true},
+    {"account": "ACC-03 path-level opens AND their measurement basis", "measured": "BLOCKED on this host", "evidence": "Q12"},
+    {"account": "ACC-04 metadata reads", "measured": true},
+    {"account": "ACC-05 header-prefix reads", "measured": "owner exists at the Python layer (pre553_physical_decoder._raw_layout_declarations); literal OS layer not observable"},
+    {"account": "ACC-06 decoder invocations", "measured": true},
+    {"account": "ACC-07 selected-column reads", "measured": "the exercised decoder path performs no usecols operation"},
+    {"account": "ACC-08 full reads", "measured": true},
+    {"account": "ACC-09 byte counts where measurable", "measured": "only at the Python-visible layer"},
+    {"account": "ACC-10 retries", "measured": true, "frozen_maximum": 0}
+  ],
+  "the_anticipated_objection_and_its_scope": {
+    "objection": "if the exact count is only known on return, how can 'REQUIRED_EXACT_COUNT' be required at issuance?",
+    "resolution": "the frozen object is the BUDGET and the INSTRUMENTATION, not the observed outcome. A budget is an authorization (a ceiling or a predeclared expected value); an observed count is evidence. The law demands both, in different stages, and the template's _AND_BASIS / _AND_CONFIG / _AND_REASON suffixes are precisely the pre-launch invariants carried ALONGSIDE the runtime count.",
+    "not_a_contradiction": true,
+    "contrary_reading_considered_and_rejected_because": "reading the sentence as requiring the raw observed count before launch would make 'retain measured counts' meaningless and would require the run to have already happened"
+  },
+  "stage_ownership_verdict": "NOT_AMBIGUOUS_ON_READING. The pre-launch/at-return split is stated explicitly in one sentence. What is genuinely unresolved is not the stage rule but the CAPABILITY to obtain ACC-03 at all.",
+  "accepted_prior_stage_characterisation": {
+    "source": "Q14 (HQ194)",
+    "prior_reading": "O1-C07 is staged DURING_EXECUTION_AND_RETURN while its acceptance requires expected budgets/instrumentation frozen before launch, and this combination was flagged as a consequential ambiguity",
+    "this_review": "the combination is not itself ambiguous; it is a deliberate two-stage obligation. The consequential problem is the missing account, not the stage split."
+  }
+}
