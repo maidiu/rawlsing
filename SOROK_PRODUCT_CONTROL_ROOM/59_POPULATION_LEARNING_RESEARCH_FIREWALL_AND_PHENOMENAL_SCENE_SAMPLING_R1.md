@@ -4,6 +4,8 @@ Status: `PROVISIONAL_PRODUCT_DIRECTION__Q_SALIENCE_Q_SCENE_RESEARCH_REFINEMENT`
 
 Date: 2026-10-01
 
+Currentness note (2026-10-03): sections 13–14 are now promoted into live control as SPD-0244/0245. Behavioral research requires exposure provenance; Rawlsing-user convenience sampling does not support population prevalence/universal-law claims without separate sampling authority.
+
 ## 0. Problem
 
 Text simulation cannot give the player a simultaneously scannable visual field.
