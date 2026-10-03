@@ -2,6 +2,8 @@
 
 Status: `PROVISIONAL_ARCHITECTURE_DIRECTION__V3_MEANING_KERNEL_RELEVANT`
 
+Currentness note (2026-10-03): preserve the recursive-rereading, visibility/nontruth, articulation and layered-self phenomena, but read owner/runtime claims through artifacts 74 and 76. No monolithic interpretive-framework store is presumed. `ARTICULATION EVENT` is an analytical function an exact admitted event may perform, not a new event class by default. Absolute-Horizon relations remain Sorok/theological research unless later project-current authority adopts runtime semantics.
+
 Date: 2026-10-02
 
 ## 0. Problem
