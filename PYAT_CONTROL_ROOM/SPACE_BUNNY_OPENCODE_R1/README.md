@@ -1,5 +1,10 @@
 # Space Bunny / OpenCode — Pyat HQ
 
+## Independent publication/runtime audit — current priority
+
+Read [the HQ181–HQ187 review](REVIEWS/HQ181_187_AUDIT_20261003/REVIEW.md) and its [bounded repair plan](REVIEWS/HQ181_187_AUDIT_20261003/REPAIR_PLAN.md). Project Git state is preserved, but the dispatcher has reproduced fail-open/recovery defects and its helper-test PASS is insufficient for unattended operation. Use supervised source-free work while HQ binds a focused runtime repair and separate acceptance. The review also resolves the static 30-versus-32 test-count concern and scopes SRC27's accounting gap. Do not treat the earlier recommendation to use the “qualified dispatcher” as current acceptance.
+
+
 Status: **REMOTE_MACHINE_HANDOFF_CURRENT__HQ187_CONTINUATION__C4_HOLD_PRESERVED**.
 
 This is the control-room home for Space Bunny HQ in OpenCode. Start with [HQ_START_HERE.md](HQ_START_HERE.md). It contains the complete launch instruction and ordered first actions. You do not need the conversation that produced this packet.

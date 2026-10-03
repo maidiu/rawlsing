@@ -1,5 +1,10 @@
 # C4 reconciliation docket — preparation only
 
+## Independent publication/runtime audit — current priority
+
+Read [the HQ181–HQ187 review](REVIEWS/HQ181_187_AUDIT_20261003/REVIEW.md) and its [bounded repair plan](REVIEWS/HQ181_187_AUDIT_20261003/REPAIR_PLAN.md). Project Git state is preserved, but the dispatcher has reproduced fail-open/recovery defects and its helper-test PASS is insufficient for unattended operation. Use supervised source-free work while HQ binds a focused runtime repair and separate acceptance. The review also resolves the static 30-versus-32 test-count concern and scopes SRC27's accounting gap. Do not treat the earlier recommendation to use the “qualified dispatcher” as current acceptance.
+
+
 Status: `DOCUMENTARY_COMPARISON_INPUT__NOT_A_C4_ADOPTION_DECISION`.
 
 Preserve the current adoption and source holds until a competent separately recorded decision changes them. This packet lets HQ prepare that decision without reconstructing the model-comparison chat. The comparison phase has ended for this preparation: both published lanes may be inspected. Do not retrospectively claim the preparation is blind.

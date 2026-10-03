@@ -4,6 +4,10 @@ Status: GITHUB_HANDOFF_COMPLETE__CONTINUE_EXISTING_HQ__C4_ADOPTION_HELD.
 
 This is the current operational entry for the user's Space Bunny/OpenCode HQ on another machine. Everything needed to understand these instructions is in this repository. No chat transcript, local Desktop file, or remembered assistant response is a required input.
 
+## Independent publication/runtime audit — current priority
+
+Read [the HQ181–HQ187 review](REVIEWS/HQ181_187_AUDIT_20261003/REVIEW.md) and its [bounded repair plan](REVIEWS/HQ181_187_AUDIT_20261003/REPAIR_PLAN.md). Project Git state is preserved, but the dispatcher has reproduced fail-open/recovery defects and its helper-test PASS is insufficient for unattended operation. Use supervised source-free work while HQ binds a focused runtime repair and separate acceptance. The review also resolves the static 30-versus-32 test-count concern and scopes SRC27's accounting gap. Do not treat the earlier recommendation to use the “qualified dispatcher” as current acceptance.
+
 ## Reconcile before acting
 
 Publication baseline: `ef160e9769f9c411c41dfe6afa7ef5fc37defb08`; sealed technical decision HQ187 at `5eb17ffaedb02402f645d8c34d270bc45e49183a`. Read live `HQ_HANDOFF/LATEST.json` and verify the immutable checkpoint it names. A later valid decision supersedes this baseline. Preserve the existing HQ, worktrees, runtime, returns and local changes. Do not rerun activation or re-launch the completed re-check merely because FIRST_TASKS.json or an older LATEST field says pending.
@@ -34,7 +38,7 @@ Then update the operating decision ledger and immutable checkpoint, advance LATE
 
 Use one integrating HQ, up to two independent worker slots and one fresh review slot. One task = one bounded commission, exact base, isolated checkout/branch, declared write terrain, acceptance inputs and return identity. Preserve the review branch's historical commission anchor; classify all intervening movement and explicitly bind any successor commission without force-pushing history. Do not synchronize unrelated worker branches merely to make their tips match.
 
-Use the existing qualified dispatcher and durable task/session/result records for routine messages and completion. GitHub holds commissions, returns, decisions and handoffs; sessions and local queues are operational aids. No shared writable checkout across workers. Only HQ publishes integration state, checking the expected remote parent immediately before a fast-forward update. If another writer advances, reconcile before publishing. A local lock cannot protect a second machine.
+Use the existing supervised HQ workflow until the dispatcher repairs and independent acceptance in the current review pass. Then use the qualified dispatcher and durable task/session/result records for routine messages and completion. GitHub holds commissions, returns, decisions and handoffs; sessions and local queues are operational aids. No shared writable checkout across workers. Only HQ publishes integration state, checking the expected remote parent immediately before a fast-forward update. If another writer advances, reconcile before publishing. A local lock cannot protect a second machine.
 
 See [operating design](OPERATING_DESIGN.md), [activation and qualification runbook](ACTIVATION_RUNBOOK.md), [role prompts](roles/hq.md), [commission template](templates/COMMISSION.md) and [forward trajectory](FORWARD_PROGRAM.md). These remain the complete supporting instructions.
 

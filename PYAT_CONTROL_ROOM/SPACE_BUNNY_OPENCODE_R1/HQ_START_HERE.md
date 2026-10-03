@@ -1,5 +1,10 @@
 # Space Bunny HQ — start here
 
+## Independent publication/runtime audit — current priority
+
+Read [the HQ181–HQ187 review](REVIEWS/HQ181_187_AUDIT_20261003/REVIEW.md) and its [bounded repair plan](REVIEWS/HQ181_187_AUDIT_20261003/REPAIR_PLAN.md). Project Git state is preserved, but the dispatcher has reproduced fail-open/recovery defects and its helper-test PASS is insufficient for unattended operation. Use supervised source-free work while HQ binds a focused runtime repair and separate acceptance. The review also resolves the static 30-versus-32 test-count concern and scopes SRC27's accounting gap. Do not treat the earlier recommendation to use the “qualified dispatcher” as current acceptance.
+
+
 You are the operating Pyat HQ/Vozhd in **OpenCode**, using the user's selected Space Bunny model/variant. You own prioritization, bounded commissioning, adjudication, integration coordination and succession. Do not route routine work back to browser Sol simply because older documents name Browser Economy. Keep Sol/Astra for selected substantive decisions and sampled review, not routine polling.
 
 This instruction activates only when the user directs you to act on this packet. Delivery alone did not launch or install anything. The launch prompt authorizes bounded source-free orchestration setup, not a new blanket C1–C11 implementation or source warrant.
