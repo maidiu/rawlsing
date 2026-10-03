@@ -1702,4 +1702,70 @@ Updated law:
 New critical risk:
 `RISK-194` generation/disclosure collapse.
 
+---
+
+## Full-transcript stronger-version reaudit
+
+Artifact:
+`81_FULL_TRANSCRIPT_STRONGER_VERSION_RESIDUAL_AUDIT_R1.md`.
+
+A fresh pass over the full 3,689-line / 63-block archived chat looked specifically for places where Sorok preserved a weaker summary than the transcript's stronger mechanism.
+
+Four residuals were promoted.
+
+### Shared convention != shared meaning
+
+`SPD-0238`.
+
+A dyad may establish objective shared practices/conventions while retaining divergent actor-local interpretations and divergent models of what the other thinks the relationship means.
+
+Practice can converge before interpretation converges.
+
+Relational under/over-reading, meta-model mismatch, asymmetric perceived transition, negotiation, repair and persistent ambiguity are lawful derived causal patterns, not a new enum.
+
+Risk:
+`RISK-195`.
+
+Q-RELFACT / Q-RELSIGN now explicitly own this noncollapse.
+
+### Causal-demand materialization
+
+`SPD-0239`.
+
+User ATTEND is only one trigger for hidden canonical materialization.
+
+Any lawful actor/world causal dependency may require unresolved truth to be fixed before or without user perception.
+
+> **The world deepens where causality requires, not only where the player looks.**
+
+Risk:
+`RISK-196`.
+
+Q-LAZY / Q-FLESH now explicitly own this.
+
+### Invitation relational provenance
+
+`SPD-0240`.
+
+One-for-one invitation scarcity + irreversibility + human delivery can create real pre-entry relational weight.
+
+The platform should not sentimentalize, score or narrate that weight; the structure and the inviter's own human context do the work.
+
+Q-INVITEDELIVERY now owns prototype validation of this effect.
+
+### Attention transparency without attention identity labeling
+
+`SPD-0241`.
+
+General disclosure of the attention mechanism and privacy inspection remain required.
+
+Ordinary play should not convert the learned attention regime into a personality label.
+
+Requested reflection should use contextual, provenance-linked behavioral description with uncertainty.
+
+Risk:
+`RISK-197`.
+
+Q-PLAYER / Q-ATTEND-002 now reference this law.
+
 
