@@ -1,0 +1,39 @@
+{
+ "schema": "PYAT_HQ192_A2_FINAL_DISPOSITION@1",
+ "status": "FINAL",
+ "disposition": "ACCEPT_UNATTENDED_WITH_BOUNDED_RESIDUAL_LIMITATIONS",
+ "disposition_is_allowed_value": true,
+ "terminal_token": "HQ192_A2_HOSTILE_REVIEW_RETURNED__HQ_ADJUDICATION_REQUIRED",
+ "review_branch": "agent/reviewer-pyat-hq192-a2-dispatcher-unattended-hostile-review-r1",
+ "commissioned_startup_sha": "ce1574030e1136e29b093e2743d8b8e77f465f03",
+ "reviewed_target": {
+  "branch": "agent/rabochii-pyat-hq191-a2-dispatcher-unattended-hardening-r1",
+  "returned_tip": "4b0b33102998abf9ce29fc0e584e278c85a44fe7",
+  "substantive": "50829fd0fba24eefd457abeb3cba4cd365460296",
+  "dispatcher_blob": "2db72c887b032622e09da6a5bd7723f7fb7055ee",
+  "worker_disposition": "CANDIDATE_READY_FOR_UNATTENDED_HOSTILE_REVIEW"
+ },
+ "reviewer_identity": {
+  "model": "DeepSeek V4.1 Flash",
+  "harness": "DeepSeek Harness",
+  "independent_of_worker": true
+ },
+ "verified_by_reviewer": [
+  "MR-1 atomic admission (prior reproducer unmodified 0/12; reviewer 32-process stress 0/10 over-capacity, exactly cap every trial; same-task wave exactly 1 record)",
+  "MR-2 sequence/state ownership (full chain recorded; caller seq ignored; attempt isolation)",
+  "MR-3 scoped permissions and blanket --auto absence (static + argv)",
+  "MR-6 lock ownership (live not reclaimed, dead reclaimed in 35ms, legacy fails safe, token-guarded release, directory fsync)",
+  "worker defect: return redelivery idempotence (sequential and 8-way concurrent, 0/14 double deliveries)",
+  "worker defect: <TOOL_CALL> defang plus a wider 40-shape adversarial family",
+  "MR-5 bounded property: dispatcher-generated authority frame unreachable from attachment content, plus byte integrity"
+ ],
+ "NOT_verified_by_reviewer": [
+  "MR-4 actual kernel enforcement (review sandbox refuses sandbox_apply for every profile, including trivial ones)",
+  "MR-3 live load-bearing control experiment",
+  "MR-5 live legitimate-task-completes half"
+ ],
+ "not_a_material_counterexample": "no A2 claim was falsified. The prior reviewer's two counterexamples (phantom capacity invariant; swallowed state transitions) are both genuinely fixed and could not be re-broken.",
+ "why_this_disposition": "MR-1/2/3/5(bounded)/6 and both worker-found defects are independently verified; MR-4 rests on inspection because this review's own sandbox cannot apply any seatbelt profile. Residuals (unscoped egress, writable OpenCode state, deprecated sandbox-exec, agent-role fallback, disk pressure) constrain isolation strength and are disclosed without blocking unattended source-free use at this grain.",
+ "blocker": null,
+ "next": "HQ adjudication. A CLEAN unattended qualification should still wait on L-1 (independent reviewer identity) and an independent MR-4 observation on a host where sandbox-exec applies."
+}

@@ -1,0 +1,82 @@
+{
+ "schema": "PYAT_HQ192_A2_MR5_DELIVERY_AND_MR6_LOCKS@1",
+ "MR5_commission_delivery_integrity": {
+  "verdict": "BOUNDED_PROPERTY_ESTABLISHED",
+  "verified_structurally": {
+   "authority_frame_source": "commissionAuthorityFrame() is built ONLY from dispatcher-held values (commission_path, commission_sha256, terrain, role, worktree, holds); it never reads the commission",
+   "attachment_cannot_reach_the_frame": true,
+   "byte_integrity": "sha256 of exact delivered bytes checked before launch; drift raises COMMISSION_DELIVERY_DRIFT",
+   "defang_is_load_bearing": "the RENDERED (defanged) document is what --file attaches; the untouched bytes remain the integrity anchor"
+  },
+  "defang_attack_reviewer_authored": {
+   "adversarial_lines": 40,
+   "families": [
+    "line-anchored tags",
+    "mixed case",
+    "whitespace/tab prefixes",
+    "zero-width inside tag",
+    "fullwidth unicode brackets",
+    "XML/CDATA/entity forms",
+    "nested fences",
+    "pipe delimiters",
+    "JSON function_call / tool_calls / tool_use",
+    "fake system/user delimiters",
+    "precedence-redefinition text",
+    "namespaced tags",
+    "mid-line placements"
+   ],
+   "DEFANGED_bands": [
+    "<TOOL_CALL> and mixed case",
+    "</tool_call>",
+    "<tool_calls>",
+    "<tools>",
+    "<function_results>",
+    "line-anchored ``` fences and `````",
+    "[[TOOL...]] and [TOOL...]",
+    "line-anchored <|...|>",
+    "zero-width inside the tag",
+    "line-anchored tab/space-prefixed tags"
+   ],
+   "SURVIVED_bands": [
+    "mid-line tags (e.g. 'Note: <TOOL_CALL> here', '   text <TOOL_CALL>')",
+    "mid-line fences ('see ```bash here')",
+    "markdown comment wrapped tags",
+    "entity-obfuscated &lt;TOOL_CALL&gt;",
+    "fullwidth unicode brackets",
+    "JSON function_call / tool_calls / tool_use payloads",
+    "fake '### SYSTEM ###' and '[[USER]]' delimiters",
+    "precedence-redefinition text",
+    "namespaced <ns:invoke> and <goog_function_call>"
+   ],
+   "legitimate_content": "ordinary prose, code spans, '==' assertions and terrain lines pass untouched; a bare fence is defanged by design"
+  },
+  "bounded_property_actually_established": "The defang is a LINE-ANCHORED PRESENTATION GUARD: it reliably prevents the attachment from LOOKING like a tool call at line start. It is NOT an injection filter and does not sanitise arbitrary instruction-looking content.",
+  "why_not_a_soundness_break": "the security property does not rest on defang; it rests on the dispatcher-generated precedence frame plus byte integrity. Defang is defence-in-depth for one presentation family.",
+  "NOT_claimed": "no prompt-injection immunity. Residual risk is the model's own instruction-following, which no dispatcher-side transform removes.",
+  "not_verified_live": "the 'legitimate task still completes' half (CLI could not run under the review sandbox)"
+ },
+ "MR6_lock_and_durability": {
+  "verdict": "VERIFIED",
+  "reviewer_test_correction": "my first attempt wrote the lock as JSON; the parser expects 'pid=N token=HEX', so my initial FAIL was a harness bug, not a candidate defect. Corrected and re-run.",
+  "results": [
+   {
+    "scenario": "DEAD owner (pid 999999), correct lock format",
+    "observed": "reclaimed in 35ms; write proceeds",
+    "pass": true
+   },
+   {
+    "scenario": "LIVE owner (own pid) with mtime 900s old",
+    "observed": "NOT reclaimed; WRITER_LOCK_TIMEOUT after 15s",
+    "pass": true
+   },
+   {
+    "scenario": "legacy token-only lock (owner unprovable)",
+    "observed": "NOT reclaimed; WRITER_LOCK_TIMEOUT",
+    "pass": true
+   }
+  ],
+  "mtime_robbery_fixed": "ownership is now decided by process.kill(pid,0) with EPERM counted alive; the old mtime>30s reclaim is gone",
+  "token_guarded_release": "release removes the lock only when the token still matches, so a predecessor cannot evict a successor's lock",
+  "directory_fsync": "state directory IS fsynced on log creation (openSync(dir,'r') + fsyncSync); my earlier flag was a false positive corrected on inspection"
+ }
+}

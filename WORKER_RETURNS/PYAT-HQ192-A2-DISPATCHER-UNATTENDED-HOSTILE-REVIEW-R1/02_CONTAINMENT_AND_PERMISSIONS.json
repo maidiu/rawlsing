@@ -1,0 +1,68 @@
+{
+ "schema": "PYAT_HQ192_A2_MR3_MR4@1",
+ "MR3_no_blanket_auto": {
+  "verdict": "VERIFIED_STATIC",
+  "auto_absent_from_all_launch_paths": true,
+  "auto_approve_true_result": "BLANKET_AUTO_REFUSED",
+  "normal_argv_contains_auto": false,
+  "scoped_profile": {
+   "$schema": "https://opencode.ai/config.json",
+   "permission": {
+    "edit": "allow",
+    "external_directory": "deny",
+    "webfetch": "deny",
+    "doom_loop": "allow",
+    "bash": {
+     "*": "deny",
+     "git status*": "allow",
+     "git diff*": "allow",
+     "git log*": "allow",
+     "git rev-parse*": "allow",
+     "git add*": "allow",
+     "git commit*": "allow",
+     "git cat-file*": "allow",
+     "git ls-tree*": "allow",
+     "git show*": "allow"
+    }
+   },
+   "tools": {
+    "webfetch": false
+   }
+  },
+  "opencconfig_deleted_from_child_env": true,
+  "opencconfig_content_injected_per_process": true,
+  "live_control_not_runnable_here": true,
+  "weakest_link_note": "launch() trusts a caller-supplied permission_profile in place of the scoped default and never checks that it is NARROWER; a careless or hostile caller could widen permissions with no dispatcher gate noticing",
+  "minimum_improvement": "reject caller-supplied profiles that allow external_directory or a wildcard bash rule"
+ },
+ "MR4_kernel_containment": {
+  "verdict": "NOT_INDEPENDENTLY_VERIFIED__REVIEW_ENVIRONMENT_BLOCKER",
+  "reviewer_blocker_evidence": {
+   "commands": [
+    "sandbox-exec -f trivial.sb /bin/echo",
+    "sandbox-exec -f deny.sb /bin/echo",
+    "sandbox-exec -p '(version 1)(allow default)' /bin/echo"
+   ],
+   "observed": "sandbox_apply: Operation not permitted in EVERY case, including (allow default) and (deny default)",
+   "interpretation": "a malformed profile yields a PARSE error, not sandbox_apply failure; therefore this is the review sandbox refusing profile application, not a candidate profile defect",
+   "consequence": "the worker's containment control experiment could not be reproduced by this reviewer"
+  },
+  "verified_by_inspection_only": [
+   "containment is on by default (cfg.containment !== false)",
+   "absence of sandbox-exec raises CONTAINMENT_UNAVAILABLE with no silent unsandboxed fallback",
+   "profile is written to a file and passed via sandbox-exec -f",
+   "writable set is exactly worktree + OpenCode state dirs + TMPDIR"
+  ],
+  "not_observed_at_all": [
+   "actual kernel enforcement of the denies",
+   "escape denial while OpenCode permissions are deliberately permissive"
+  ],
+  "MATERIAL_RESIDUAL_found": {
+   "issue": "the profile begins `(allow default)`, so NETWORK EGRESS IS COMPLETELY UNRESTRICTED -- not merely unscoped by destination",
+   "worker_framing": "L-2 says seatbelt does not scope network egress by destination",
+   "reviewer_correction": "egress is entirely unrestricted; filesystem write containment is the only enforced boundary",
+   "materiality": "a source-free orchestration agent must reach a model over the network regardless, so this constrains isolation strength rather than blocking the capability"
+  },
+  "coverage_credit": "MR-4 credited from source inspection only, NOT from live observation"
+ }
+}

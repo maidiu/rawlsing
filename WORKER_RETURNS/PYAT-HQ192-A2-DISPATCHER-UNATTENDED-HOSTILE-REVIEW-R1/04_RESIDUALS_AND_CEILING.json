@@ -1,0 +1,65 @@
+{
+ "schema": "PYAT_HQ192_A2_RESIDUALS_AND_CEILING@1",
+ "acceptance_questions": {
+  "1_MR1_through_MR6_independently_verified": {
+   "MR1": "YES",
+   "MR2": "YES",
+   "MR3": "YES (static; live control not runnable in this review sandbox)",
+   "MR4": "NO -- review-environment blocker; source inspection only",
+   "MR5": "YES for the BOUNDED property only",
+   "MR6": "YES"
+  },
+  "2_qualified_for_unattended_source_free_orchestration_on_this_host": "BOUNDED YES -- the state, identity, permission, lock and authority-frame layers held under reviewer attack; MR-4 enforcement rests on inspection rather than independent observation at this grain, and the worker's own L-1 (independent reviewer identity) remains unmet",
+  "3_residuals_that_constrain_without_blocking": [
+   {
+    "id": "network-egress-unscoped",
+    "detail": "profile is (allow default), so egress is COMPLETELY unrestricted, not merely unscoped by destination; unavoidable for an agent that must reach a model"
+   },
+   {
+    "id": "writable-opencode-state",
+    "detail": "~/.local/share/opencode, ~/.cache/opencode, ~/.config/opencode remain writable by design; containment is not hermeticity, and a compromised agent can persist config/session state there"
+   },
+   {
+    "id": "sandbox-exec-deprecated",
+    "detail": "Apple-deprecated; the launcher probes and REFUSES rather than degrading, which is the correct failure mode, but the mechanism is on borrowed time"
+   },
+   {
+    "id": "agent-role-fallback",
+    "detail": "--agent worker does not resolve (falls back to the default agent); role separation rests on the scoped profile + terrain gate, and no claim credits --agent"
+   },
+   {
+    "id": "host-disk-pressure",
+    "detail": "data volume at 99% capacity with 5.66 GiB free at review time; a live multi-gigabyte run precondition carried from HQ191"
+   }
+  ],
+  "4_any_residual_still_a_material_unattended_blocker": "No demonstrated material blocker INSIDE the dispatcher at this grain. The unresolved items are isolation-strength and environmental preconditions. A clean unattended qualification should still wait on L-1 (third-party reviewer identity) and an independent MR-4 observation on a host where sandbox-exec can actually be applied."
+ },
+ "capability_ceiling": {
+  "qualified_for": "unattended source-free orchestration on this host WITH BOUNDED RESIDUAL LIMITATIONS",
+  "enforced_boundary": "filesystem write containment + scoped OpenCode permissions + dispatcher-generated instruction precedence + byte-bound commission integrity",
+  "explicitly_NOT_claimed": [
+   "hermetic process isolation",
+   "network egress scoping",
+   "destination-filtered egress",
+   "role-level agent separation",
+   "prompt-injection immunity",
+   "kernel-containment independently observed by this reviewer"
+  ]
+ },
+ "minimum_improvements_recommended": [
+  "constrain caller-supplied permission_profile so it cannot be NARROWER-violating (reject external_directory allow / wildcard bash)",
+  "make deliverReturn's idempotence check atomic (allocate under the same lock) to close the check-then-act window",
+  "consider (deny network*) plus a model-endpoint allow-list if egress scoping is ever required",
+  "satisfy L-1 with a genuinely independent reviewer identity before a clean unattended qualification"
+ ],
+ "hard_holds_observed": {
+  "raw_source_access": false,
+  "locator_discovery": false,
+  "warrant_issuance": false,
+  "live_c4": false,
+  "c7_or_actor_work": false,
+  "sudo_used": false,
+  "system_or_global_security_modified": false,
+  "candidate_modified": false
+ }
+}

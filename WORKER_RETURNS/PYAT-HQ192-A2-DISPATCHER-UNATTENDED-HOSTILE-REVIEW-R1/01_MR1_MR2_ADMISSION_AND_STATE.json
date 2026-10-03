@@ -1,0 +1,90 @@
+{
+ "schema": "PYAT_HQ192_A2_MR1_MR2@1",
+ "reviewer_identity": {
+  "harness": "DeepSeek Harness",
+  "model": "DeepSeek V4.1 Flash",
+  "independent_of_worker": true,
+  "node": "v22.23.3",
+  "opencode_cli": "1.18.34",
+  "host": "macOS 13.7.8 (Darwin 22.6.0) x86_64",
+  "git": "2.39.1"
+ },
+ "startup_verification": {
+  "fetch": true,
+  "no_blind_pull": true,
+  "review_branch": "ce1574030e1136e29b093e2743d8b8e77f465f03",
+  "review_branch_match": true,
+  "target_tip": "4b0b33102998abf9ce29fc0e584e278c85a44fe7",
+  "target_tip_match": true,
+  "substantive": "50829fd0fba24eefd457abeb3cba4cd365460296",
+  "substantive_is_ancestor": true,
+  "dispatcher_blob": "2db72c887b032622e09da6a5bd7723f7fb7055ee",
+  "dispatcher_blob_match_at_substantive": true,
+  "dispatcher_blob_match_at_tip": true,
+  "isolated_worktree": "review-hq192a2",
+  "stopped_on_mismatch": false,
+  "candidate_untouched_by_reviewer": true
+ },
+ "MR1_atomic_admission": {
+  "verdict": "VERIFIED",
+  "prior_reviewer_reproducer_unmodified": {
+   "over_capacity_trials": "0/12",
+   "max_admitted": 2,
+   "cap": 2,
+   "previously_observed_on_old_blob": "7/12 (harness3), 3/12 (minimal reproducer)"
+  },
+  "reviewer_independent_stress": {
+   "harness": "evidence/mr1_stress.mjs",
+   "wave_A": {
+    "processes": 32,
+    "distinct_tasks": 32,
+    "cap": 2,
+    "trials": 10,
+    "over_capacity_trials": "0/10",
+    "trials_not_exactly_cap": "0/10",
+    "capacity_refusals_per_trial": 30
+   },
+   "wave_B": {
+    "processes": 32,
+    "same_task_id": true,
+    "trials": 10,
+    "trials_not_exactly_one_record": "0/10",
+    "dedup_acks_per_trial": 31
+   },
+   "hidden_liveness_defect_observed": false
+  },
+  "mechanism": "read -> dedup -> capacity -> append inside ONE _withLock/_appendLocked transaction"
+ },
+ "MR2_sequence_ownership": {
+  "verdict": "VERIFIED",
+  "chain": {
+   "sequence": "QUEUED -> RUNNING -> RETURNED",
+   "recorded": [
+    "1:QUEUED",
+    "2:RUNNING",
+    "3:RETURNED"
+   ],
+   "swallowed_or_duplicated": false
+  },
+  "caller_supplied_seq_ignored": true,
+  "attempt_isolation": true,
+  "legacy_append_reused_seq": "still deduped; no silent overwrite",
+  "worker_design_choice_correct": "store owns the sequence; key widening would have allowed two competing truths for one attempt",
+  "residual_note": "public append() remains a caller-supplied-seq path (allocateSeq defaults false); recordTaskEvent is the safe lifecycle constructor"
+ },
+ "worker_found_defect_return_redelivery": {
+  "verdict": "VERIFIED_WITH_BOUNDED_RESIDUAL",
+  "sequential": "1 RETURNED record; replay reports dedup:true idempotent:true",
+  "concurrent_attack": {
+   "processes": 8,
+   "trials": 14,
+   "double_deliveries": "0/14",
+   "max_returned_records": 1
+  },
+  "residual": "deliverReturn reads store.all() OUTSIDE the writer lock and then appends under it (check-then-act). Not reproduced in 14 concurrent trials, but not structurally atomic the way MR-1 now is."
+ },
+ "worker_found_defect_defang": {
+  "verdict": "VERIFIED",
+  "detail": "see 03_COMMISSION_DELIVERY.json"
+ }
+}
