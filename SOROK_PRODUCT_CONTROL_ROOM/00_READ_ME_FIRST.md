@@ -415,3 +415,16 @@ It corrects four places where earlier banking preserved the concept but not its 
 
 These refine prior artifacts; they do not create new monolithic owners.
 
+### Cross-plane leakage / emergent-teleology audit
+
+Read:
+`83_FULL_TRANSCRIPT_CROSS_PLANE_LEAKAGE_AND_EMERGENT_TELEOLOGY_AUDIT_R1.md`.
+
+Preserve:
+- `CONTROL-PLANE INTENT != DIEGETIC EVENT != ACTOR KNOWLEDGE` (SPD-0242);
+- `REAL USER CAUSAL CONTRIBUTION != SAVIOR / MISSING-KEY TELEOLOGY` (SPD-0243);
+- behavioral research requires exposure/treatment provenance (SPD-0244);
+- `RAWLSING USER SAMPLE != GENERAL POPULATION` absent separate sampling authority (SPD-0245).
+
+These are membranes/cross-layer constraints, not new monolithic owners.
+
