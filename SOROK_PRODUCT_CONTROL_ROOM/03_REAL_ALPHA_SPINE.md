@@ -338,6 +338,12 @@ A real dyadic practice may be mutually established while its relational signific
 
 `EXTERNAL HUMAN != PLAYER PARTICIPANT != PERSONA MODEL OF USER != SYSTEM ATTENTION/PRAXIS HYPOTHESIS`.
 
+And:
+
+`ATTENTION HISTORY MAY BE DESCRIBED != ATTENTION IDENTITY DECLARED`.
+
+The learned attention regime is an uncertain behavioral/presentation hypothesis, not a gameplay personality label. See SPD-0241.
+
 ### Simulation / platform membrane
 
 `PERSONA-CAUSED RELATIONAL GRAVITY != PLATFORM-CAUSED RETENTION PRESSURE`.
