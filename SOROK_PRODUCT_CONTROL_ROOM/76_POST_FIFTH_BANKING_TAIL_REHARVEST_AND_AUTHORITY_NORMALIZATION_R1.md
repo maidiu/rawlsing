@@ -353,6 +353,39 @@ The correct solution is to add an explicit currentness-normalization law:
 
 > SPDs 0217–0226 survive at phenomenon/product-requirement grain only where compatible with SPDs 0227–0231; any implication of a new event class, operator enum, monolithic framework/self-retcon owner, or current Horizon runtime contract is superseded.
 
+## M5 — the live person-sharing frontier had narrowed away one user-proposed case
+
+Artifact 69 correctly preserved two person-sharing classes:
+- precompiled/share-safe seed-person lineage;
+- the open possibility that a randomly encountered or succession persona might later become shareable.
+
+Its Q6 explicitly asks whether:
+> any randomly encountered/succession persona can be introduced, or only precompiled/share-safe seed lineages.
+
+But the live `Q-PERSONSHARE-001` wording had narrowed to:
+> an already-encountered seed-person lineage.
+
+That wording risks silently losing the user's stronger proposal:
+> "I randomly encountered this interesting person; I wonder how Tom would experience them."
+
+The frontier must therefore preserve the engineering problem:
+
+`RANDOM / SUCCESSION PERSON`
+→ can there be a lawful **share-safe pre-contact lineage extraction/freeze/promotion**
+→ exact root/version/closure/provenance
+→ without importing sender-branch causation
+→ so another user can receive an independent fork?
+
+This is not accepted as a feature for arbitrary personas.
+
+It remains an open social/architecture question because:
+- a non-precompiled person may have been generated lazily inside a sender continuity;
+- some supposedly "pre-contact" detail may already have been resolved under branch-local timing;
+- root closure/reproducibility may be insufficient for clean cross-user comparison;
+- compile/storage costs may differ materially from the five-ish prebuilt alpha roots.
+
+The live Q-PERSONSHARE frontier is widened accordingly.
+
 ---
 
 # 3. Cross-cutting architectural law newly promoted by this reharvest
@@ -570,12 +603,13 @@ This reharvest requires:
 1. reframe `Q-SELFREAD-001`;
 2. tighten `Q-MEANINGSTRATA-001`;
 3. tighten `Q-HISTBRIDGE-001` so "causal slack" does not presume a dedicated slot type;
-4. add the cross-cutting `DERIVE / COMPOSE / CLASSIFY BEFORE REIFY` decision;
-5. add a currentness-normalization decision over SPD-0217–0226 under SPD-0227–0231;
-6. add risks for:
+4. widen `Q-PERSONSHARE-001` to preserve the randomly-generated/succession-person shareability case and its share-safe root-promotion problem;
+5. add the cross-cutting `DERIVE / COMPOSE / CLASSIFY BEFORE REIFY` decision;
+6. add a currentness-normalization decision over SPD-0217–0226 under SPD-0227–0231;
+7. add risks for:
    - analytical-category reification;
    - correction shadowing / stale-law resurrection;
-7. make live status language say:
+8. make live status language say:
    - articulation = analytical function of an admitted event, not new event class;
    - self-rereading = distributed owner composition first;
    - Horizon = research hypothesis, not current alpha V3 contract.
