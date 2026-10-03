@@ -999,6 +999,12 @@ A user inspecting old Birkenstocks may lawfully see wear, repair and brand while
 
 See artifact 80, SPD-0236/0237, RISK-193/194.
 
+ATTEND is not the only reason hidden truth becomes concrete. Any lawful actor/world process that actually depends on an unresolved fact may trigger bounded canonical materialization without user disclosure.
+
+> **THE WORLD DEEPENS WHERE CAUSALITY REQUIRES, NOT ONLY WHERE THE PLAYER LOOKS.**
+
+See SPD-0239 / RISK-196.
+
 Artifact:
 `70_HISTORICAL_BRIDGE_RECONCILIATION_CAUSAL_SLACK_AND_CONTRADICTION_PRESERVATION_R1.md`.
 
