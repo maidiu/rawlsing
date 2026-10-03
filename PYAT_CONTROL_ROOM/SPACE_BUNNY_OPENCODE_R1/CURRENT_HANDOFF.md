@@ -1,3 +1,22 @@
+# HQ195 active frontier — sparse-by-default R9 fork — 2026-10-03
+
+**Sparse checkout is now mandatory by default.** Local workers/reviewers share the canonical Git object store and materialize only their commissioned path manifest. Full-tree materialization requires an explicit `FULL_REQUIRED` behavioral justification.
+
+Helper:
+`PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/runtime/prepare_sparse_worktree.sh`
+
+Active SPARSE_REQUIRED lanes:
+- Space Bunny stage-ownership / architecture-warrant: `agent/rabochii-pyat-hq195-r9-stage-ownership-architecture-warrant-r1 @ 501494b18afdd623fc3561951daf36714e5690c9`
+- Space Bunny instrumented-runtime feasibility: `agent/rabochii-pyat-hq195-r9-instrumented-runtime-feasibility-r1 @ f895b3dc2934a3d742722657ea43ba174d10043b`
+- DeepSeek independent contract interpretation: `agent/reviewer-pyat-hq195-r9-contract-independent-interpretation-r1 @ a48acdc2f7e26557fca8e387b12c619bb94fe447`
+
+R9 remains open. R7 is closed. Live C4 remains separately blocked by host disk policy/capacity. All source/warrant/live/C7/actor holds remain.
+
+See:
+`HQ_HANDOFF/checkpoints/20261003-PYAT-HQ195-SPARSE-BY-DEFAULT-R9-FORK-R1/`
+
+---
+
 # HQ193 active frontier — 2026-10-03
 
 HQ has adjudicated the HQ192 A2 hostile review and host-preflight return.
