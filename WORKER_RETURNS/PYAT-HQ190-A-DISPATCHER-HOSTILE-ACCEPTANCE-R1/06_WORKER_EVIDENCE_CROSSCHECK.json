@@ -1,0 +1,52 @@
+{
+ "schema": "PYAT_HQ190_A_WORKER_EVIDENCE_CROSSCHECK@1",
+ "status": "PARTIAL__TWO_WORKER_CLAIMS_INDEPENDENTLY_FALSIFIED",
+ "crosscheck": [
+  {
+   "worker_claim": "All eight audit defects were reproduced pre-repair against the exact audited blob",
+   "reviewer_check": "audited blob 23b1fcc3c9e52838b4738efa3d6266b61f60df7a is recorded in the worker return; the pre-repair dispatcher copy exists at ACTIVATION_RETURNS/OPS-02-03-REPAIR-R1/harness/dispatcher.PRE-REPAIR.mjs",
+   "verdict": "CONSISTENT_BY_ARTIFACT / NOT RE-EXECUTED -- the pre-repair probes reproduce against a separate pre-repair copy; this reviewer did not re-run all 8 pre-repair probes because the decisive question is post-repair behaviour"
+  },
+  {
+   "worker_claim": "16/16 post-repair cases pass, testing the intended gates",
+   "reviewer_check": "reviewer-authored cases independently confirm the intended gates reject for the intended reasons (no masked-gate failure found). However, the worker's 16/16 does NOT include a many-trial capacity race.",
+   "verdict": "PARTIALLY_CONFIRMED -- gate coverage is real, but the case set is not complete for the concurrency property it asserts"
+  },
+  {
+   "worker_claim": "four distinct processes racing a cap of 2 yielded exactly 2 queued and 3 clean SLOT_CAPACITY refusals",
+   "reviewer_check": "FALSIFIED AS AN INVARIANT. Reviewer harnesses admitted 3 in 5/8 trials, 3-4 in 7/12 trials (max 4), and the standalone minimal reproducer admitted 3 in 3/12 trials with 6 processes.",
+   "verdict": "VACUOUS_AS_EVIDENCE -- the worker's single run was a timing-dependent pass. This is exactly the failure family the worker itself warns about (catching vacuous probes).",
+   "significance": "the worker's concurrency evidence does not establish the property it claims; the property is false"
+  },
+  {
+   "worker_claim": "same task queued exactly once under two genuine OS processes (dedup)",
+   "reviewer_check": "CONFIRMED. 4 concurrent processes submitting one task produced exactly 1 QUEUED row and 3 idempotent acknowledgements.",
+   "verdict": "CONFIRMED_BY_REVIEWER"
+  },
+  {
+   "worker_claim": "race results have correct denominators",
+   "reviewer_check": "the denominator (cap=2, 4-6 processes) is stated, but a single trial is not a denominator that establishes an invariant. Reviewer trials are the corrected measurement.",
+   "verdict": "DENOMINATOR_INSUFFICIENT"
+  },
+  {
+   "worker_claim": "no out-of-terrain tracked artifact remains",
+   "reviewer_check": "CONFIRMED by inspection: the only post-candidate changed path is the final-disposition bookkeeping file; no stray tracked artifact outside the three declared terrain paths was found in the reviewed range.",
+   "verdict": "CONFIRMED_BY_REVIEWER"
+  },
+  {
+   "worker_claim": "rawlsing_next/** and HQ_HANDOFF/** untouched",
+   "reviewer_check": "CONFIRMED: git status against rawlsing_next and HQ_HANDOFF is clean in the review worktree; the candidate range touches neither.",
+   "verdict": "CONFIRMED_BY_REVIEWER"
+  },
+  {
+   "worker_claim": "the three post-candidate commits are return-bookkeeping only",
+   "reviewer_check": "CONFIRMED independently: exactly one path changed (07_FINAL_DISPOSITION.json) and the dispatcher blob is identical across the range.",
+   "verdict": "CONFIRMED_BY_REVIEWER"
+  }
+ ],
+ "worker_self_reported_defects": {
+  "count": 3,
+  "reviewer_note": "The worker disclosed three defects it introduced and caught (task_id sha-shape misapplication, --file array ordering, its own vacuous P07 probe). The reviewer confirms all three fixes are present: task_id uses requireNonPlaceholderText in validateAdjudication, buildLaunchArgv places the prompt before --file, and P07 is not relied upon by this review.",
+  "significance": "This disclosure culture is a positive signal, but it also means the worker's own harness had a demonstrated history of vacuous probes -- which is precisely how the capacity race passed its suite."
+ }
+}

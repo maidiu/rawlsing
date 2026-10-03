@@ -1,0 +1,42 @@
+{
+ "findings": [
+  {
+   "test": "submitTask takes the writer lock twice (dedup check, then append) and the capacity gate sits between them",
+   "detail": "distinct lock/append operations in submitTask = 2; slotGate call is outside any lock"
+  },
+  {
+   "test": "capacity invariant: 6 concurrent processes vs cap=2 -> admitted 3-4 in 7/12 trials (max 4)",
+   "detail": "[{\"trial\":0,\"admitted\":2,\"refusals\":4},{\"trial\":1,\"admitted\":4,\"refusals\":2},{\"trial\":2,\"admitted\":4,\"refusals\":2},{\"trial\":3,\"admitted\":3,\"refusals\":3},{\"trial\":4,\"admitted\":2,\"refusals\":4},{\"trial\":5,\"admitted\":3,\"refusals\":3},{\"trial\":6,\"admitted\":4,\"refusals\":2},{\"trial\":7,\"admitted\":2,\"refusals\":4},{\"trial\":8,\"admitted\":2,\"refusals\":4},{\"trial\":9,\"admitted\":2,\"refusals\":4},{\"trial\":10,\"admitted\":3,\"refusals\":3},{\"trial\":11,\"admitted\":3,\"refusals\":3}]"
+  },
+  {
+   "test": "a legitimate state advance carrying the SAME seq is silently dropped (eventKey excludes state)",
+   "detail": "appended=[true,false,false] recorded_states=[\"QUEUED\"]"
+  },
+  {
+   "test": "stale-lock reclaim is mtime-based, so a slow-but-live writer (>30s) cannot be distinguished from a dead one",
+   "detail": "reclaim test is `Date.now() - stat.mtimeMs > 30000`; no pid liveness check"
+  },
+  {
+   "test": "append fsyncs the log file but not the containing directory",
+   "detail": "fs.fsyncSync(fd) present; no directory fsync -> a crash can lose a rename/creation, not just bytes"
+  }
+ ],
+ "confirmations": [
+  {
+   "test": "a git path containing backslashes is outside 'out/**' and is rejected (no traversal credit)",
+   "detail": "passed=false code=OUT_OF_TERRAIN"
+  },
+  {
+   "test": "a HELD fresh lock blocks the writer until timeout (no silent concurrent write)",
+   "detail": "blocked=true code=WRITER_LOCK_TIMEOUT waited=10003ms"
+  },
+  {
+   "test": "a STALE lock (mtime > 30s) is reclaimed and the write proceeds",
+   "detail": "reclaimed=true err=null"
+  },
+  {
+   "test": "torn log => blocking recovery AND append refusal",
+   "detail": "blocking=true appendRefused=true"
+  }
+ ]
+}

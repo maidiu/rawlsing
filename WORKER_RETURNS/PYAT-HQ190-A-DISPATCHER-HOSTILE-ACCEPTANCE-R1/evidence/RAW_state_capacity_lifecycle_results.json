@@ -1,0 +1,128 @@
+[
+ {
+  "id": "F-state-swallow",
+  "claim": "same seq with a DIFFERENT state is silently deduped",
+  "outcome": "FINDING",
+  "detail": "appended=false dedup=true; events recorded=1; states=QUEUED"
+ },
+ {
+  "id": "F-state-consequence",
+  "claim": "state machine integrity depends on caller-chosen seq uniqueness",
+  "outcome": "FINDING",
+  "detail": "dedup key is task_id|attempt|seq only; 'state' is not part of identity"
+ },
+ {
+  "id": "F-cap-toctou",
+  "claim": "slotGate reflects concurrent fill",
+  "outcome": "REJECTED",
+  "detail": "SLOT_CAPACITY"
+ },
+ {
+  "id": "F-cap-structure",
+  "claim": "capacity check and append are separate lock acquisitions (no single atomic admission)",
+  "outcome": "FINDING",
+  "detail": "activeBefore=1; slotGate+append are distinct _withLock scopes"
+ },
+ {
+  "id": "F-race-dup",
+  "claim": "4 concurrent processes submitting the same task yield exactly one QUEUED row",
+  "outcome": "OK",
+  "detail": "queued=1 dupAcks=3 outcomes=[\"dup\",\"dup\",\"new\",\"dup\"]"
+ },
+ {
+  "id": "F-race-cap",
+  "claim": "6 processes racing a cap of 2 admit exactly 2",
+  "outcome": "FINDING",
+  "detail": "queued=3 capacityRefusals=3 (cap=2)"
+ },
+ {
+  "id": "G-restart-before",
+  "claim": "restart before launch reconstructs full binding",
+  "outcome": "OK",
+  "detail": "{\"task_id\":\"REC1\",\"attempt\":1,\"binding\":{\"task_id\":\"REC1\",\"role\":\"worker\",\"base_commit\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"worktree\":\"/tmp/hq190a/fixtures/h2/wt-0jhvo\",\"terrain\":[\"out/**\"],\"acceptance_inputs\":{\"x\":\"1\"},\"commission_path\":\"C.md\",\"commission_identity\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\",\"model\":\"deepseek/deepseek-v4.1-flash\",\"reasoning_variant\":\"high\"},\"binding_comple"
+ },
+ {
+  "id": "G-inbox",
+  "claim": "delivery visible in HQ inbox without chat copy",
+  "outcome": "OK",
+  "detail": "[\"REC1\"]"
+ },
+ {
+  "id": "G-undelivered",
+  "claim": "candidate-less RETURNED is not a return",
+  "outcome": "OK",
+  "detail": "{\"returns\":1,\"undelivered\":1}"
+ },
+ {
+  "id": "G-deliver-noreceipt",
+  "claim": "delivery without launch receipt refused",
+  "outcome": "REJECTED",
+  "detail": "NO_LAUNCH_RECEIPT"
+ },
+ {
+  "id": "G-deliver-badsha",
+  "claim": "delivery with placeholder candidate refused",
+  "outcome": "REJECTED",
+  "detail": "PLACEHOLDER_IDENTITY"
+ },
+ {
+  "id": "G-deliver-unfinished",
+  "claim": "delivery of unfinished launch refused",
+  "outcome": "REJECTED",
+  "detail": "LAUNCH_NOT_FINISHED"
+ },
+ {
+  "id": "H-pub-ok",
+  "claim": "in-terrain candidate publishes",
+  "outcome": "OK",
+  "detail": "[\"out/a.txt\"]"
+ },
+ {
+  "id": "H-terrain",
+  "claim": "out-of-terrain rejected from git diff",
+  "outcome": "OK",
+  "detail": "OUT_OF_TERRAIN"
+ },
+ {
+  "id": "H-review-bind",
+  "claim": "review bound to another candidate rejected",
+  "outcome": "OK",
+  "detail": "IDENTITY_MISMATCH"
+ },
+ {
+  "id": "H-review-reject",
+  "claim": "non-approving review blocks publication",
+  "outcome": "OK",
+  "detail": "REVIEW_NOT_APPROVING"
+ },
+ {
+  "id": "H-unrelated",
+  "claim": "unresolvable base fails closed",
+  "outcome": "OK",
+  "detail": "GIT_FAILED"
+ },
+ {
+  "id": "I-argv-order",
+  "claim": "prompt precedes --file (array option)",
+  "outcome": "OK",
+  "detail": "opencode run P --dir /tmp/w --agent worker --format json --model deepseek/deepseek-v4.1-flash --variant high --file /tmp/c.md"
+ },
+ {
+  "id": "I-argv-sep",
+  "claim": "model and variant are separate flags",
+  "outcome": "OK",
+  "detail": "opencode run P --dir /tmp/w --agent worker --format json --model deepseek/deepseek-v4.1-flash --variant high --file /tmp/c.md"
+ },
+ {
+  "id": "I-argv-bad",
+  "claim": "bad model/variant rejected",
+  "outcome": "OK",
+  "detail": "BAD_LAUNCH_BINDING"
+ },
+ {
+  "id": "I-argv-nofile",
+  "claim": "missing commission_file rejected",
+  "outcome": "OK",
+  "detail": "BAD_LAUNCH_BINDING"
+ }
+]

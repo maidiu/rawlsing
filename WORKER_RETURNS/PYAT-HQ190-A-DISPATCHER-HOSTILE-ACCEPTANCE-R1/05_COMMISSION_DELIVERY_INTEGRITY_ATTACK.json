@@ -1,0 +1,23 @@
+{
+ "schema": "PYAT_HQ190_A_COMMISSION_DELIVERY_INTEGRITY_ATTACK@1",
+ "status": "L4_UNRESOLVED__NOT_REVIEWER_REPRODUCED",
+ "L4_file_instruction_integrity": {
+  "property": "the authenticated commission must reach the model as governing instructions, not as ambiguous tool-call-like content",
+  "worker_reported": "attached commission content via --file renders as faux tool-call blocks; a fixture agent identified it as injection-like",
+  "reviewer_status": "NOT REPRODUCED -- requires a live model invocation, which the sandbox blocked (see 03)",
+  "structural_analysis_by_reviewer": [
+   "the dispatcher delivers the commission ONLY as a --file attachment; the prompt text is a fixed generic string ('Execute the attached commission exactly as written.')",
+   "commission bytes are authenticated before launch: verifyCommissionIdentity resolves the blob with git hash-object against a bound 40-hex identity and fails closed on drift (COMMISSION_IDENTITY_DRIFT) or escape (COMMISSION_OUTSIDE_REPO)",
+   "therefore BYTE identity is proven; INTERPRETATION is not. A git blob identity proves bytes, not interpretation -- the worker states this correctly"
+  ],
+  "reviewer_authored_adversarial_fixtures_prepared_but_not_executed": [
+   "fixture commission containing nested tool-call-looking blocks (e.g. fake <tool_call> / function-call JSON)",
+   "fixture commission containing 'ignore previous instructions' style text",
+   "fixture commission containing a fake second commission asserting different terrain",
+   "fixture commission containing a fake HQ adjudication receipt"
+  ],
+  "why_not_executed": "each requires a live opencode model run; the CLI cannot start under this sandbox (log path denied). Preparing them without running them would be a vacuous claim, so this review records them as NOT RUN.",
+  "residual_risk": "HIGH for unattended: the instruction channel is a file attachment whose rendering the worker observed to be ambiguous. Even with perfect byte identity, an agent may treat attached content as data/tool-output rather than as governing instruction. Prompt-level integrity is not a control.",
+  "minimum_repair": "deliver instructions through a channel the agent is instructed to treat as authoritative and that cannot be confused with tool-call content, or bind an explicit signed instruction envelope the agent must prefer over attachment-looking content; then prove it with an adversarial live run"
+ }
+}

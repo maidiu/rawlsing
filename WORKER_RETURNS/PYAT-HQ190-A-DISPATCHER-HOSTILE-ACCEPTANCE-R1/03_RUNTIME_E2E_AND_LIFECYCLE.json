@@ -1,0 +1,56 @@
+{
+ "schema": "PYAT_HQ190_A_RUNTIME_E2E_AND_LIFECYCLE@1",
+ "status": "PARTIAL__LIVE_CLI_E2E_NOT_REPRODUCIBLE_IN_REVIEW_SANDBOX",
+ "reviewer_cannot_reproduce": true,
+ "blocker_observed": {
+  "command": "/Users/matthewsmith/.opencode/bin/opencode models",
+  "stderr": "Error: Unexpected error / Unknown: FileSystem.open (/Users/matthewsmith/.local/share/opencode/log/opencode.log)",
+  "cause": "the review authority sandbox denies writes outside the session workspace; the OpenCode CLI must create/rotate its log file",
+  "probe": "touch /Users/matthewsmith/.local/share/opencode/log/probe.log -> 'Operation not permitted'",
+  "not_an_opencode_defect": true,
+  "consequence": "no live model invocation, no real spawn/exit/session-id observation, no --auto escalation test, no --file injection test by this reviewer"
+ },
+ "what_was_verified_without_a_live_run": {
+  "cli_version": "1.18.34 (opencode --version)",
+  "cli_help_stream": "opencode run --help writes 3053 bytes to STDERR and 0 bytes to STDOUT -- confirms the worker's reported fix",
+  "cli_flags": [
+   "--agent",
+   "--auto",
+   "--dir",
+   "--file",
+   "--format",
+   "--model",
+   "--session",
+   "--variant"
+  ],
+  "cli_semantics": {
+   "--model": "model to use in the format of provider/model [string]",
+   "--file": "file(s) to attach to message [array]  <- confirms the yargs array-option ordering hazard",
+   "--variant": "model variant (provider-specific reasoning effort, e.g., high, max, minimal)",
+   "--auto": "auto-approve permissions that are not explicitly denied (dangerous!)  <- CLI self-labels it dangerous"
+  },
+  "dispatcher_argv_construction": "reviewer-verified: prompt precedes --file; --model and --variant are separate; bad model/variant and missing commission_file rejected",
+  "lifecycle_gates_reviewer_verified_statically": [
+   "deliverReturn refuses without a LAUNCH_RECEIPT@1.0.0 (NO_LAUNCH_RECEIPT)",
+   "deliverReturn refuses an unfinished launch (LAUNCH_NOT_FINISHED)",
+   "deliverReturn refuses a placeholder candidate (PLACEHOLDER_IDENTITY)",
+   "process exit is recorded as COMPLETED_EXIT, never as RETURNED; RETURNED is written only by deliverReturn",
+   "hqInbox counts a candidate-less RETURNED as undelivered_returned_events, not as a return",
+   "recover() reconstructs the full task binding from the persisted QUEUED event"
+  ],
+  "reviewer_verified_via_store_api": [
+   "restart before launch: binding_complete=true with all 11 bound fields reconstructed",
+   "delivery visible through hqInbox with no chat copying",
+   "candidate-less RETURNED does not become a return"
+  ]
+ },
+ "worker_reported_but_unverified_by_reviewer": [
+  "real pids 34623/34736/34860 and exit codes for two fixture workers plus a reviewer",
+  "real commits a3d9e65f/eb1c82bf produced by fixture workers",
+  "real session id parsed from CLI output (ses_...)",
+  "the positive E2E succeeding only with --auto and failing with external_directory without it",
+  "the --file faux-tool-call rendering observed by a fixture agent",
+  "reviewer independence claim (same model+variant for worker and reviewer) -- worker itself flags this as NOT independent"
+ ],
+ "verdict": "The lifecycle and delivery DESIGN is fail-closed and matches the commissioned claims on inspection and via the store API. The live-process E2E evidence is worker-reported and could not be independently reproduced here; it must not be treated as reviewer-verified."
+}

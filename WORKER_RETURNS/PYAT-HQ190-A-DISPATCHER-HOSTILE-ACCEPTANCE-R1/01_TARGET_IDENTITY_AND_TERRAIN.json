@@ -1,0 +1,55 @@
+{
+ "schema": "PYAT_HQ190_A_TARGET_IDENTITY_AND_TERRAIN@1",
+ "reviewer_environment": {
+  "harness": "DeepSeek Harness",
+  "model_family": "DeepSeek V4.1 Flash",
+  "mode": "Standard mode",
+  "note": "Reviewer identity recorded from the launch directive. No worker model invocation was performed by this review, so the worker's own resolved model/variant remains unverified.",
+  "node": "v22.23.3",
+  "git": "2.39.1",
+  "os": "macOS 13.7.8 (Darwin 22.6.0)",
+  "opencode_cli": "1.18.34 at /Users/matthewsmith/.opencode/bin/opencode"
+ },
+ "startup_verification": {
+  "no_blind_pull": true,
+  "fetch_command": "git -c credential.helper= fetch origin (credential prompt disabled)",
+  "review_branch": "agent/reviewer-pyat-hq190-a-dispatcher-hostile-acceptance-r1",
+  "review_branch_resolved": "2185e1dcf8d87acb74fe854a5196e7f2cf79cb6b",
+  "review_branch_expected": "2185e1dcf8d87acb74fe854a5196e7f2cf79cb6b",
+  "review_branch_match": true,
+  "worker_branch": "agent/rabochii-pyat-hq188-a-opencode-dispatcher-runtime-repair-r1",
+  "worker_tip_resolved": "f522af5a7a01432159830dfbf26325c0e320adaf",
+  "worker_tip_expected": "f522af5a7a01432159830dfbf26325c0e320adaf",
+  "worker_tip_match": true,
+  "substantive_candidate": "5f9a93af1cc98d75d392794534484e41248efb5f",
+  "substantive_candidate_is_ancestor_of_tip": true,
+  "dispatcher_path": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/runtime/dispatcher.mjs",
+  "dispatcher_blob_expected": "f3067208f7a8b8ffc159bdc41c25309e9a14b5cb",
+  "dispatcher_blob_at_substantive_candidate": "f3067208f7a8b8ffc159bdc41c25309e9a14b5cb",
+  "dispatcher_blob_at_worker_tip": "f3067208f7a8b8ffc159bdc41c25309e9a14b5cb",
+  "dispatcher_blob_match_both": true,
+  "isolated_review_worktree": "review-hq190a",
+  "stopped_before_review_on_mismatch": false
+ },
+ "post_candidate_commit_lawfulness": {
+  "claim": "the three post-candidate commits are return-bookkeeping only",
+  "verified_independently": true,
+  "method": "git diff --name-status 5f9a93af1..f522af5a7",
+  "changed_paths": [
+   "WORKER_RETURNS/PYAT-HQ188-A-OPENCODE-DISPATCHER-RUNTIME-REPAIR-R1/07_FINAL_DISPOSITION.json"
+  ],
+  "dispatcher_identical_across_range": true,
+  "verdict": "HOLDS"
+ },
+ "terrain_integrity": {
+  "candidate_modified_by_reviewer": false,
+  "candidate_dispatcher_hash_after_review": "f3067208f7a8b8ffc159bdc41c25309e9a14b5cb",
+  "rawlsing_next_touched": false,
+  "hq_handoff_touched": false,
+  "historical_returns_modified": false,
+  "files_written_inside_repo": [
+   "WORKER_RETURNS/PYAT-HQ190-A-DISPATCHER-HOSTILE-ACCEPTANCE-R1/**"
+  ],
+  "fixtures_location": "/tmp/hq190a/** (disposable, outside repo)"
+ }
+}

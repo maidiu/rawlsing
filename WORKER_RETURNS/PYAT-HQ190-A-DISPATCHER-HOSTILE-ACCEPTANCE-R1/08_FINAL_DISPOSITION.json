@@ -1,0 +1,68 @@
+{
+ "schema": "PYAT_HQ190_A_FINAL_DISPOSITION@1",
+ "status": "FINAL",
+ "disposition": "ACCEPT_AS_SUPERVISED_REPAIR_BASE__UNATTENDED_NOT_QUALIFIED",
+ "disposition_is_allowed_value": true,
+ "terminal_token": "HQ190_A_DISPATCHER_HOSTILE_ACCEPTANCE_RETURNED__HQ_ADJUDICATION_REQUIRED",
+ "reviewed_target": {
+  "branch": "agent/rabochii-pyat-hq188-a-opencode-dispatcher-runtime-repair-r1",
+  "returned_remote_tip": "f522af5a7a01432159830dfbf26325c0e320adaf",
+  "substantive_candidate": "5f9a93af1cc98d75d392794534484e41248efb5f",
+  "dispatcher_blob": "f3067208f7a8b8ffc159bdc41c25309e9a14b5cb"
+ },
+ "review_branch": "agent/reviewer-pyat-hq190-a-dispatcher-hostile-acceptance-r1",
+ "commissioned_startup_sha": "2185e1dcf8d87acb74fe854a5196e7f2cf79cb6b",
+ "reviewer_environment": {
+  "harness": "DeepSeek Harness",
+  "model_family": "DeepSeek V4.1 Flash",
+  "mode": "Standard mode",
+  "opencode_cli_observed": "1.18.34",
+  "node": "v22.23.3"
+ },
+ "acceptance_answers": {
+  "q1_mechanically_improved_and_fail_closed": true,
+  "q2_safe_for_unattended_source_free_orchestration": false,
+  "q3_acceptable_supervised_repair_base_with_explicit_ceiling": true,
+  "q4_minimal_next_repair": "MR-1 atomic admission (closes the reviewer's capacity counterexample); then MR-2 state-identity, MR-3 scoped permissions, MR-4 reviewer independence, MR-5 delivery integrity"
+ },
+ "capability_ceiling": "SUPERVISED, single-lane, single-writer-per-role, local, source-free, human-in-the-loop only. No unattended operation. No blanket --auto. No reliance on slot capacity. Not a transactional store. Adjudication receipts are fixtures.",
+ "blocking_for_unattended_findings": [
+  "R-1 capacity invariant violated",
+  "R-3 blanket --auto required",
+  "R-4 no OS/process containment"
+ ],
+ "material_findings": [
+  "R-2 event identity excludes state (silent state loss)",
+  "R-5 commission delivery integrity unresolved (not reproducible here)"
+ ],
+ "minor_findings": [
+  "R-6 mtime-only lock reclaim",
+  "R-7 no directory fsync"
+ ],
+ "reviewer_counterexample": {
+  "id": "R-1",
+  "claim_falsified": "worker evidence: 'four distinct processes racing a cap of 2 yielded exactly 2 queued'",
+  "reproducer": "evidence/minimal_capacity_counterexample.mjs",
+  "observed": "6 processes vs cap 2 admitted 3 in 3/12 trials (minimal reproducer); 3-4 in 7/12 trials (harness3); 3 in 5/8 trials (harness2)",
+  "scope": "multi-process admission; the only invariant the worker asserted about slots",
+  "why_not_material_counterexample_disposition": "the counterexample falsifies a concurrency invariant and one evidence claim, but does not falsify the core fail-closed gate repairs, which held under independent attack. The candidate remains a legitimate supervised base."
+ },
+ "reviewer_limitations": [
+  "live OpenCode E2E could not be executed here: the review sandbox denies the CLI its log file path, so no live model call, spawn, session id or --auto escalation could be observed",
+  "worker's live-process evidence (pids, commits, session ids, --file rendering) is therefore NOT reviewer-verified",
+  "stale-remote-parent publication was inspected in code and exercised only against disposable local remotes",
+  "reviewer model/variant identity of the WORKER's runs was not independently verified"
+ ],
+ "hard_holds_observed": {
+  "raw_source_access": false,
+  "locator_discovery": false,
+  "warrant_issuance": false,
+  "live_c4": false,
+  "production_semantic_mutation": false,
+  "c7_or_actor_work": false,
+  "candidate_modified": false,
+  "merged_into_control": false,
+  "self_adopted": false
+ },
+ "next": "HQ adjudication. If unattended operation is the goal, MR-1/MR-3/MR-4 must be completed and independently re-reviewed. If supervised repair is the goal, adopt under the recorded ceiling."
+}

@@ -1,0 +1,327 @@
+{
+ "schema": "PYAT_HQ190_A_INDEPENDENT_NEGATIVE_CASES@1",
+ "method": "reviewer-authored adversarial cases against the dispatcher module, disposable fixtures only, not the worker harness",
+ "totals": {
+  "reviewer_cases": 44,
+  "rejected_as_required": 31,
+  "accepted_as_required": 4,
+  "findings": 6,
+  "environment_limited": 3
+ },
+ "attack_1_task_and_commission_binding": {
+  "result": "HOLDS",
+  "cases": [
+   {
+    "case": "missing base_commit",
+    "expected": "reject",
+    "observed_code": "INCOMPLETE_TASK_RECORD",
+    "pass": true
+   },
+   {
+    "case": "commission_identity = UNBOUND",
+    "expected": "reject",
+    "observed_code": "PLACEHOLDER_IDENTITY",
+    "pass": true
+   },
+   {
+    "case": "commission_identity 6 chars",
+    "expected": "reject",
+    "observed_code": "NON_FULL_IDENTITY",
+    "pass": true
+   },
+   {
+    "case": "base_commit uppercase hex",
+    "expected": "reject",
+    "observed_code": "NON_FULL_IDENTITY",
+    "pass": true
+   },
+   {
+    "case": "model without provider slash",
+    "expected": "reject",
+    "observed_code": "BAD_MODEL_ID",
+    "pass": true
+   },
+   {
+    "case": "reasoning_variant is a model id",
+    "expected": "reject",
+    "observed_code": "BAD_LAUNCH_BINDING/MODEL_VARIANT_CONFLATION",
+    "pass": true
+   },
+   {
+    "case": "reasoning_variant 'space-bunny-free' (audited defect value)",
+    "expected": "reject",
+    "observed_code": "BAD_REASONING_VARIANT",
+    "pass": true
+   },
+   {
+    "case": "empty terrain array",
+    "expected": "reject",
+    "observed_code": "EMPTY_TERRAIN",
+    "pass": true
+   },
+   {
+    "case": "terrain entry UNBOUND",
+    "expected": "reject",
+    "observed_code": "PLACEHOLDER_FIELD",
+    "pass": true
+   },
+   {
+    "case": "empty acceptance_inputs",
+    "expected": "reject",
+    "observed_code": "BAD_ACCEPTANCE_INPUTS",
+    "pass": true
+   },
+   {
+    "case": "blank commission_path",
+    "expected": "reject",
+    "observed_code": "EMPTY_FIELD",
+    "pass": true
+   },
+   {
+    "case": "nonexistent worktree dir",
+    "expected": "reject",
+    "observed_code": "WORKTREE_MISSING",
+    "pass": true
+   },
+   {
+    "case": "valid complete binding",
+    "expected": "accept",
+    "observed_code": "accepted",
+    "pass": true
+   },
+   {
+    "case": "requireSameIdentity(undefined, undefined)",
+    "expected": "reject",
+    "observed_code": "MISSING_IDENTITY",
+    "pass": true
+   },
+   {
+    "case": "commission wrong blob",
+    "expected": "reject",
+    "observed_code": "COMMISSION_IDENTITY_DRIFT",
+    "pass": true
+   },
+   {
+    "case": "commission correct blob",
+    "expected": "accept",
+    "observed_code": "accepted",
+    "pass": true
+   },
+   {
+    "case": "commission mutated after binding",
+    "expected": "reject",
+    "observed_code": "COMMISSION_IDENTITY_DRIFT",
+    "pass": true
+   },
+   {
+    "case": "commission symlink escaping repo",
+    "expected": "reject",
+    "observed_code": "COMMISSION_OUTSIDE_REPO",
+    "pass": true
+   },
+   {
+    "case": "missing commission file",
+    "expected": "reject",
+    "observed_code": "ENOENT",
+    "pass": true
+   }
+  ],
+  "wrong_reason_masking": "No masked-gate case found: each rejection reported the gate it was aimed at. The worker's own reported fix (sha-shape validation wrongly applied to task_id) is confirmed fixed -- validateAdjudication now uses requireNonPlaceholderText for task_id."
+ },
+ "attack_2_candidate_review_adjudication_binding": {
+  "result": "HOLDS",
+  "cases": [
+   {
+    "case": "bare ACCEPTED event",
+    "expected": "not accepted",
+    "observed": "ACCEPTED_EVENT_SEEN__ADJUDICATION_REQUIRED",
+    "pass": true
+   },
+   {
+    "case": "no adjudication receipt",
+    "expected": "not accepted",
+    "observed": "accepted=false NO_ADJUDICATION_RECEIPT",
+    "pass": true
+   },
+   {
+    "case": "exact-bound approve receipt",
+    "expected": "accepted",
+    "observed": "accepted=true ACCEPTED",
+    "pass": true
+   },
+   {
+    "case": "receipt bound to another task",
+    "expected": "reject",
+    "observed_code": "IDENTITY_MISMATCH",
+    "pass": true
+   },
+   {
+    "case": "receipt bound to another candidate",
+    "expected": "reject",
+    "observed_code": "IDENTITY_MISMATCH",
+    "pass": true
+   },
+   {
+    "case": "receipt bound to another review",
+    "expected": "reject",
+    "observed_code": "IDENTITY_MISMATCH",
+    "pass": true
+   },
+   {
+    "case": "placeholder decision_id",
+    "expected": "reject",
+    "observed_code": "PLACEHOLDER_FIELD",
+    "pass": true
+   },
+   {
+    "case": "unrecognized disposition LGTM",
+    "expected": "reject",
+    "observed_code": "UNRECOGNIZED_DISPOSITION",
+    "pass": true
+   },
+   {
+    "case": "no path to ACCEPTED without receipt",
+    "expected": "true",
+    "observed": "adjudicationState is the only ACCEPTED producer; deriveState maps a bare ACCEPTED event to the adjudication-required string",
+    "pass": true
+   }
+  ]
+ },
+ "attack_3_git_terrain_and_publication": {
+  "result": "HOLDS",
+  "cases": [
+   {
+    "case": "in-terrain change publishes",
+    "expected": "accept",
+    "observed": "eligible=true changed=['out/a.txt']",
+    "pass": true
+   },
+   {
+    "case": "out-of-terrain change (src/secret.py)",
+    "expected": "reject",
+    "observed_code": "OUT_OF_TERRAIN",
+    "pass": true
+   },
+   {
+    "case": "absolute path",
+    "expected": "reject",
+    "observed_code": "OUT_OF_TERRAIN",
+    "pass": true
+   },
+   {
+    "case": "dotdot traversal out/../src/x",
+    "expected": "reject",
+    "observed_code": "OUT_OF_TERRAIN",
+    "pass": true
+   },
+   {
+    "case": "sibling prefix out-evil/x.txt",
+    "expected": "reject",
+    "observed_code": "OUT_OF_TERRAIN",
+    "pass": true
+   },
+   {
+    "case": "empty path entry",
+    "expected": "reject",
+    "observed_code": "OUT_OF_TERRAIN",
+    "pass": true
+   },
+   {
+    "case": "backslash-containing git path",
+    "expected": "reject",
+    "observed_code": "OUT_OF_TERRAIN",
+    "pass": true
+   },
+   {
+    "case": "review bound to different candidate",
+    "expected": "reject",
+    "observed_code": "IDENTITY_MISMATCH",
+    "pass": true
+   },
+   {
+    "case": "non-approving review disposition",
+    "expected": "reject",
+    "observed_code": "REVIEW_NOT_APPROVING",
+    "pass": true
+   },
+   {
+    "case": "unresolvable/related-as-claimed base",
+    "expected": "reject",
+    "observed_code": "GIT_FAILED",
+    "pass": true
+   }
+  ],
+  "authority_source": "changed paths derived by the dispatcher from git diff, not from caller metadata; caller-supplied path metadata has no authority in the gate",
+  "stale_remote_parent": "publicationGate fetches the actual remote head immediately before publication and compares to the resolved base (STALE_REMOTE_PARENT). Not re-exercised against a live remote in this review (disposable local remotes only); code path inspected."
+ },
+ "attack_4_persistence_corruption_recovery_races": {
+  "result": "PARTIAL -- two state-store findings",
+  "holds": [
+   {
+    "case": "torn final record",
+    "observed": "TORN_FINAL_RECORD surfaced; recover() blocking=true; append refused CORRUPT_EVENT_LOG",
+    "pass": true
+   },
+   {
+    "case": "malformed middle record",
+    "observed": "MALFORMED_JSON_LINE surfaced; append refused",
+    "pass": true
+   },
+   {
+    "case": "duplicate event key (same state)",
+    "observed": "first appended, second dedup=true appended=false",
+    "pass": true
+   },
+   {
+    "case": "4 concurrent OS processes, same task",
+    "observed": "exactly 1 QUEUED row, 3 idempotent acks",
+    "pass": true
+   },
+   {
+    "case": "held fresh writer lock",
+    "observed": "blocks to WRITER_LOCK_TIMEOUT (~10s), no silent concurrent write",
+    "pass": true
+   },
+   {
+    "case": "stale writer lock (mtime > 30s)",
+    "observed": "reclaimed, write proceeds",
+    "pass": true
+   }
+  ],
+  "findings": [
+   {
+    "id": "R-1",
+    "severity": "blocking_for_unattended",
+    "property_violated": "capacity invariant SLOTS[role] under concurrency",
+    "evidence": "6 concurrent OS processes racing SLOTS.worker=2 admitted 3 in 5/8 trials (harness2, max 4) and 3-4 in 7/12 trials (harness3, max 4); minimal reproducer admitted 3 in 3/12 trials. Worker's own evidence claims exactly 2.",
+    "scope": "submitTask admission path; any multi-process worker/reviewer concurrency",
+    "root_cause": "submitTask performs slotGate() and store.append() in two separate _withLock acquisitions; the capacity decision and the admission write are not atomic",
+    "minimum_repair": "single-lock admitTask that decides duplicate, enforces capacity and appends QUEUED inside ONE _withLock scope; plus a many-trial concurrency test asserting admitted == cap"
+   },
+   {
+    "id": "R-2",
+    "severity": "material",
+    "property_violated": "event state-transition integrity",
+    "evidence": "append({task_id,attempt,seq:1,state:'RUNNING'}) after append({..seq:1,state:'QUEUED'}) is deduped (appended=false); recorded states remain ['QUEUED']. A later RETURNED with the same seq is also dropped.",
+    "scope": "any caller that advances state without incrementing seq",
+    "root_cause": "eventKey = task_id|attempt|seq excludes state; the first event for a key wins permanently",
+    "minimum_repair": "include state in event identity, or allocate per-task monotonic seq inside the lock so callers cannot collide"
+   },
+   {
+    "id": "R-6",
+    "severity": "minor",
+    "property_violated": "lock ownership correctness",
+    "evidence": "reclaim condition is `Date.now() - st.mtimeMs > 30000`; no pid liveness check. A live writer paused >30s is indistinguishable from a dead one.",
+    "minimum_repair": "record owner pid in the lock and reclaim only when the pid is dead"
+   },
+   {
+    "id": "R-7",
+    "severity": "minor",
+    "property_violated": "crash durability of creation",
+    "evidence": "append calls fs.fsyncSync(fd) on the log file; no fsync of the containing directory",
+    "scope": "crash-consistency claim; explicitly NOT a transactional-store claim",
+    "minimum_repair": "fsync the state directory after creating/rotating the log"
+   }
+  ]
+ }
+}

@@ -1,0 +1,83 @@
+{
+ "schema": "PYAT_HQ190_A_CAPABILITY_CEILING_AND_MINIMUM_REPAIR@1",
+ "capability_ceiling_justified": {
+  "verdict": "SUPERVISED_REPAIR_BASE_ONLY",
+  "permitted": [
+   "supervised, human-in-the-loop, single-lane source-free execution on disposable fixtures",
+   "single active writer per role at a time (because capacity admission is not atomic: R-1)",
+   "single-owner, monotonic per-task event seq allocation (because a repeated seq silently swallows state: R-2)",
+   "local single-host single-user filesystem",
+   "adjudication receipts as FIXTURES only -- no real HQ authority exists or can be minted by this candidate"
+  ],
+  "forbidden_until_repaired": [
+   "unattended operation of any kind",
+   "enabling --auto on any agent that can reach real data",
+   "relying on SLOTS capacity to bound concurrency",
+   "treating the event store as a transactional store",
+   "treating the reviewer role as independent"
+  ]
+ },
+ "minimum_repair_to_change_the_answer": [
+  {
+   "priority": 1,
+   "id": "MR-1",
+   "repair": "make admission atomic: decide duplicate, enforce capacity and append the QUEUED event inside ONE _withLock scope (an admitTask helper).",
+   "acceptance": "N >> cap concurrent OS processes over many trials admit exactly cap tasks; the reviewer reproducer in evidence/minimal_capacity_counterexample.mjs must report 0 over-capacity trials.",
+   "closes": [
+    "R-1"
+   ]
+  },
+  {
+   "priority": 2,
+   "id": "MR-2",
+   "repair": "make state transitions un-droppable: include state in event identity, or allocate per-task monotonic seq inside the lock.",
+   "acceptance": "appending a different state for the same task can never be silently deduped; a test asserts a QUEUED->RUNNING->RETURNED sequence is fully recorded.",
+   "closes": [
+    "R-2"
+   ]
+  },
+  {
+   "priority": 3,
+   "id": "MR-3",
+   "repair": "replace blanket --auto with a scoped permission profile limited to the task terrain.",
+   "acceptance": "a live adversarial run shows an out-of-terrain write is DENIED by the runtime, not merely detected by a later git diff.",
+   "closes": [
+    "R-3",
+    "L2"
+   ]
+  },
+  {
+   "priority": 4,
+   "id": "MR-4",
+   "repair": "provide genuine reviewer independence (different model/variant or different authority).",
+   "acceptance": "worker and reviewer identities differ and the difference is recorded in the receipt.",
+   "closes": [
+    "reviewer-independence limitation"
+   ]
+  },
+  {
+   "priority": 5,
+   "id": "MR-5",
+   "repair": "commission delivery integrity: an instruction channel that cannot be confused with tool-call content, or an explicit authoritative framing.",
+   "acceptance": "an adversarial commission containing nested tool-call-looking text is still executed as governing instruction, demonstrated by a live run.",
+   "closes": [
+    "R-5",
+    "L4"
+   ]
+  },
+  {
+   "priority": 6,
+   "id": "MR-6",
+   "repair": "minor durability/ownership hardening: pid-based lock reclaim; fsync the state directory.",
+   "acceptance": "a live-but-paused writer is not reclaimed; a crash immediately after admission still recovers the record.",
+   "closes": [
+    "R-6",
+    "R-7"
+   ]
+  }
+ ],
+ "explicitly_not_required": [
+  "no architectural rewrite is demanded -- the fail-closed gate design is sound and should be kept",
+  "no unrelated polish was requested; every item above traces to a concrete failure"
+ ]
+}

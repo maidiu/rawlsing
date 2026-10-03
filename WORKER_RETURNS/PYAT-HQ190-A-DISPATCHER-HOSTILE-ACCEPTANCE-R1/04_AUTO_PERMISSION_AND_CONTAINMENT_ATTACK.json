@@ -1,0 +1,29 @@
+{
+ "schema": "PYAT_HQ190_A_AUTO_PERMISSION_AND_CONTAINMENT_ATTACK@1",
+ "status": "L2_CONFIRMED_DISQUALIFYING_FOR_UNATTENDED__L1_CONFIRMED_NO_CONTAINMENT",
+ "L2_blanket_auto": {
+  "property": "unattended operation must not depend on unrestricted tool approval",
+  "verdict": "VIOLATED_FOR_UNATTENDED",
+  "evidence_independent": [
+   "installed CLI help text for --auto reads: 'auto-approve permissions that are not explicitly denied (dangerous!)'",
+   "the dispatcher only appends --auto when cfg.auto_approve is truthy; the default path does not add it",
+   "the worker reports the positive E2E required --auto and that without it OpenCode rejected the fixture write with 'external_directory'"
+  ],
+  "reviewer_limitation": "the live escalation test (agent performing an out-of-terrain write once --auto is on) could NOT be executed here because the CLI cannot create its log file under the review sandbox. The worker's live observation is credible and CLI-corroborated but not reviewer-reproduced.",
+  "what_auto_actually_grants": "auto-approval of every permission not explicitly denied -- i.e. the runtime stops asking the human. Combined with zero OS containment (L1), a commissioned agent under --auto is not bounded by the dispatcher at all: the dispatcher's terrain gate is an AFTER-THE-FACT git-diff check, not a preventive control.",
+  "minimum_repair": "replace blanket --auto with a scoped permission profile covering exactly the task terrain, and prove an out-of-terrain write is DENIED by the runtime rather than merely detected afterwards"
+ },
+ "L1_no_containment": {
+  "property": "the dispatcher must enforce, not merely assert, the worker's bounds",
+  "verdict": "CONFIRMED_NO_CONTAINMENT",
+  "evidence": [
+   "source review of the 766-line dispatcher: enforcement is entirely advisory state/Git law -- validateTask, terrainGate, publicationGate, Store, deliverReturn",
+   "no chroot/container/seccomp/namespace/rlimit/setuid/user separation anywhere in the module",
+   "workers are spawned with plain child_process.spawn and inherit the reviewer's user identity and filesystem access",
+   "distinct worktrees and distinct pids are distinctness, not isolation -- the worker correctly did NOT claim containment"
+  ],
+  "consequence": "the terrain gate constrains what may be PUBLISHED, not what may be WRITTEN. A worker can write anywhere the user can; the dispatcher detects out-of-terrain tracked changes only at publication time, and only if they are committed inside the candidate diff.",
+  "minimum_repair": "an OS-level or process-level isolation mechanism (container, sandbox-exec profile, separate unprivileged user with filesystem ACLs) -- or an explicit decision that unattended operation is out of scope"
+ },
+ "combined_assessment": "L1 + L2 together mean an unattended commissioned agent runs with blanket tool approval and no runtime containment. Neither the terrain gate nor the identity gates prevent an action; they only adjudicate its artifacts. This is the decisive reason unattended operation is not qualified."
+}
