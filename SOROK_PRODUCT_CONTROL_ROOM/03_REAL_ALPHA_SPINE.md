@@ -344,6 +344,12 @@ And:
 
 The learned attention regime is an uncertain behavioral/presentation hypothesis, not a gameplay personality label. See SPD-0241.
 
+### Control-plane / diegetic membrane
+
+`EXTERNAL USER CONTROL-PLANE ACTION != DIEGETIC PLAYER ACTION != ACTOR-PERCEIVED EVENT`.
+
+Opening/canceling restart UI, settings, privacy/export, research consent or other out-of-world controls do not become Nadia's memory or relational evidence unless an exact product law realizes a named effect into the diegesis. See SPD-0242.
+
 ### Simulation / platform membrane
 
 `PERSONA-CAUSED RELATIONAL GRAVITY != PLATFORM-CAUSED RETENTION PRESSURE`.
@@ -351,6 +357,16 @@ The learned attention regime is an uncertain behavioral/presentation hypothesis,
 ### Game / research membrane
 
 `LIVE PLAY != OPTIONAL RESEARCH PROFILE / ANALYSIS`.
+
+Research inference additionally requires:
+- exposure/treatment provenance for behavioral claims;
+- scope discipline for self-selected product samples.
+
+`BEHAVIOR WITHOUT EXPOSURE PROVENANCE != INTERPRETABLE RESEARCH EVIDENCE`.
+
+`RAWLSING USER SAMPLE != GENERAL POPULATION`.
+
+See SPD-0244/0245.
 
 ### Possibility / teleology membrane
 
@@ -418,9 +434,11 @@ This loop must not mutate branch truth or shared-root personhood.
 
 ### Product-learning loop
 
-`MANY USERS / RESEARCH → AUDITED POPULATION FINDING → LATER MODEL VERSION`.
+`MANY USERS / RESEARCH → AUDITED FINDING AT SUPPORTED SAMPLE SCOPE → LATER MODEL VERSION`.
 
 This loop must not silently feed donor-specific information back into that donor's existing branch.
+
+For behavioral evidence, preserve the exposure chain that made the behavior interpretable. Product convenience sampling does not automatically authorize population-prevalence claims.
 
 ---
 
@@ -951,6 +969,12 @@ Examples:
 Compact:
 
 > **PERSON != BEST AVAILABLE THEORY OF PERSON.**
+
+A user's interpretation, recommendation or intervention may become a real present cause in Nadia's later development. That does not authorize Rawlsing to retrofit unresolved past so the player becomes the person she was secretly waiting for.
+
+> **REAL USER CAUSAL CONTRIBUTION != SAVIOR / MISSING-KEY TELEOLOGY.**
+
+See SPD-0243 / RISK-199.
 
 And:
 
