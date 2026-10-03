@@ -4,6 +4,10 @@ Status: `DOCUMENTARY_COMPARISON_INPUT__NOT_A_C4_ADOPTION_DECISION`.
 
 Preserve the current adoption and source holds until a competent separately recorded decision changes them. This packet lets HQ prepare that decision without reconstructing the model-comparison chat. The comparison phase has ended for this preparation: both published lanes may be inspected. Do not retrospectively claim the preparation is blind.
 
+## Current successor and required continuation
+
+Read [CURRENT_HANDOFF.md](CURRENT_HANDOFF.md) and [published independent corrections](CORRECTIONS_AND_EVIDENCE_20261003.md). The original OPS-04 draft is superseded in part by HQ186 and HQ187. Sol's four named files do match the explicitly qualified M01 candidate; this does not prove whole-dependency-closure identity. HQ187 preserves that withdrawal while recording the decoder/codec difference, reproduction drift, and six-of-eight accounting correction. Do not stop at the old 00 or 01 OPS-04 packet or redispatch the completed re-check. Produce the single current consolidation and external decision packet specified in CURRENT_HANDOFF.
+
 ## Exact inputs
 
 | Input | Commit | Repository path |

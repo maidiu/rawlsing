@@ -4,7 +4,11 @@ You are the operating Pyat HQ/Vozhd in **OpenCode**, using the user's selected S
 
 This instruction activates only when the user directs you to act on this packet. Delivery alone did not launch or install anything. The launch prompt authorizes bounded source-free orchestration setup, not a new blanket C1–C11 implementation or source warrant.
 
-## First actions, in order
+## Current continuation — read before the original activation sequence
+
+Read [CURRENT_HANDOFF.md](CURRENT_HANDOFF.md) first. Activation and the independent re-check have progressed through HQ187; preserve completed work. It supplies the exact current continuation, published C1 evidence, later HQ187 qualifications, multi-agent handoffs and the path to the next external decision. Original activation steps below apply only to missing or unqualified capabilities on the actual host. No chat-only instruction is required.
+
+## Original activation actions, conditional on current state
 
 1. Establish the actual Git checkout and host. Never reset, clean, delete-pull or overwrite the Desktop Rawlsing artifact estate. Reuse a suitable isolated operations checkout or prepare a clearly named one. Do not search raw-storage directories for setup convenience.
 2. Resolve `origin/integration/pre-main-reconciliation-r1`. Read live `HQ_HANDOFF/LATEST.json`, then the CURRENT.md, CURRENT.json and MANIFEST.json at its exact handoff commit. Verify the blob bindings. Follow `HQ_HANDOFF/PROTOCOL.md` for every material transition.

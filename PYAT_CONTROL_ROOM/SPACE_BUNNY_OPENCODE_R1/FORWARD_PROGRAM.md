@@ -1,5 +1,7 @@
 # Forward program: accepted functions to a usable PRE-V3 world
 
+Current operating continuation: [CURRENT_HANDOFF.md](CURRENT_HANDOFF.md). Resume the reconciled frontier; do not infer dispatch permission from this trajectory.
+
 The governing destination remains HQD-125 and the existing integrated atlas, not completion of this orchestration package. Read the live adopted program, then use exact scope-dependent edges.
 
 | Stage | Next competent result | Scheduling law |

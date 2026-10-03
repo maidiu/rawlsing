@@ -1,6 +1,6 @@
 # VOZHD PYAT — READ ME FIRST
 
-Status: `ACTIVE_CONTROL_ROOM__SPACE_BUNNY_OPENCODE_DELIVERED__ACTIVATION_PENDING`
+Status: `ACTIVE_CONTROL_ROOM__SPACE_BUNNY_OPENCODE_REMOTE_HANDOFF_CURRENT`
 
 Current architecture/program decision: `HQD-2026-09-26-112`
 
@@ -14,7 +14,7 @@ Control branch: `integration/pre-main-reconciliation-r1`
 
 ## Current user-selected workflow: Space Bunny in OpenCode
 
-Start with [Space Bunny HQ — start here](SPACE_BUNNY_OPENCODE_R1/HQ_START_HERE.md) and the [complete activation packet](SPACE_BUNNY_OPENCODE_R1/README.md). This delivery supersedes Browser Economy as default routing for the user-selected OpenCode activation. Instructions, role prompts and templates are delivered; the dispatcher is not installed or qualified. HQ first reconciles the live immutable checkpoint and frontier, then performs bounded source-free setup and independent qualification.
+Start with [Space Bunny HQ — start here](SPACE_BUNNY_OPENCODE_R1/HQ_START_HERE.md) and the [complete activation packet](SPACE_BUNNY_OPENCODE_R1/README.md). This delivery supersedes Browser Economy as default routing for the user-selected OpenCode activation. Read [the current remote-machine handoff](SPACE_BUNNY_OPENCODE_R1/CURRENT_HANDOFF.md) before acting. Setup and review have progressed through HQ187; that handoff preserves completed work, records the remaining qualification limit and routes the published corrections into the next consolidated decision.
 
 This routing change does not adopt C4, issue a source warrant, reopen held execution, or authorize actor work. The prior C4 holds remain. The older startup and browser instructions below are historical context where superseded by this entry point; retain their unsuperseded authority and scope laws.
 

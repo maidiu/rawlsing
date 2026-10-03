@@ -1,12 +1,16 @@
 # Space Bunny / OpenCode — Pyat HQ
 
-Status: **USER_SELECTED_WORKFLOW_PACKET_DELIVERED__ACTIVATION_PENDING**.
+Status: **REMOTE_MACHINE_HANDOFF_CURRENT__HQ187_CONTINUATION__C4_HOLD_PRESERVED**.
 
 This is the control-room home for Space Bunny HQ in OpenCode. Start with [HQ_START_HERE.md](HQ_START_HERE.md). It contains the complete launch instruction and ordered first actions. You do not need the conversation that produced this packet.
 
-The user requested this subsection so Space Bunny can be directed here and know what to do. This selects the OpenCode workflow for the forthcoming activation. It supersedes Browser Economy's default routing for that activation; it does not adopt C4, issue a source warrant, authorize actor work, or expand any existing implementation commission.
+The user requested this subsection so Space Bunny can be directed here and know what to do. This selects the OpenCode workflow; activation has since progressed as recorded in CURRENT_HANDOFF. It supersedes Browser Economy's default routing for that activation; it does not adopt C4, issue a source warrant, authorize actor work, or expand any existing implementation commission.
 
-## Read in this order
+## Current continuation — read before the original activation sequence
+
+Read [CURRENT_HANDOFF.md](CURRENT_HANDOFF.md) first. Activation and the independent re-check have progressed through HQ187; preserve completed work. It supplies the exact current continuation, published C1 evidence, later HQ187 qualifications, multi-agent handoffs and the path to the next external decision. Original activation steps below apply only to missing or unqualified capabilities on the actual host. No chat-only instruction is required.
+
+## Supporting packet read order
 
 1. [HQ start instruction](HQ_START_HERE.md).
 2. Live `HQ_HANDOFF/LATEST.json` and its immutable checkpoint/manifest under `HQ_HANDOFF/PROTOCOL.md`.
@@ -17,7 +21,7 @@ The user requested this subsection so Space Bunny can be directed here and know 
 
 Roles: [HQ](roles/hq.md), [worker](roles/worker.md), [reviewer](roles/reviewer.md), [source runner](roles/source-runner.md). These are prompt sources, not installed agents. Templates: [commission](templates/COMMISSION.md), [task](templates/TASK.json), [event](templates/EVENT.json), [return](templates/RETURN.json), [decision claims](templates/DECISION_CLAIMS.md).
 
-## Delivered versus operational
+## Original delivery record — current operational state is in CURRENT_HANDOFF
 
 Delivered: instructions, role prompts, exact comparison references, staged activation tasks, templates, operating design, and a packet-integrity verifier. Not yet installed or qualified: OpenCode role configuration, dispatcher, permission isolation, integration service, live queue and background wake-up. No agent was launched by delivery.
 
@@ -27,7 +31,7 @@ Run `python3 scripts/verify_packet.py` from this directory to verify the deliver
 
 ## One prompt for the user
 
-> Act as Pyat HQ in OpenCode using Space Bunny. Read PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/HQ_START_HERE.md on integration/pre-main-reconciliation-r1 in maidiu/rawlsing. Follow its activation sequence, reconcile the live checkpoint and authorized pending returns, and carry out the bounded source-free orchestration setup. Preserve existing work and all C4/source/semantic/actor gates. Continue already-authorized work without making me relay routine agent messages. Report the first operational result and any exact decision that genuinely requires me.
+> Act as Pyat HQ in OpenCode using Space Bunny. Read PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/HQ_START_HERE.md on integration/pre-main-reconciliation-r1 in maidiu/rawlsing. Read CURRENT_HANDOFF.md first, reconcile the live checkpoint and resume the existing HQ workflow without repeating completed setup or review. Preserve existing work and all C4/source/semantic/actor gates. Continue already-authorized work without making me relay routine agent messages. Report the first operational result and any exact decision that genuinely requires me.
 
 ## Authority and state
 
