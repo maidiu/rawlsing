@@ -372,4 +372,17 @@ Especially preserve:
 
 Live questions `Q-HISTBRIDGE-001`, `Q-MEANINGSTRATA-001`, and `Q-SELFREAD-001` have been reframed accordingly.
 
+### Third-pass residual audit after artifact 76
+
+Also read:
+`78_POST_FIFTH_BANKING_TAIL_THIRD_PASS_RESIDUAL_AUDIT_R1.md`.
+
+It identifies five post-fifth details that were conceptually present but not sufficiently live-owned:
+
+- causal slack must be bounded/typed or derivably constrained; unknown causation is not unlimited late-invention authority (`SPD-0235`, `RISK-192`);
+- ATTEND may deepen resolution without paying out meaningful lore (`SPD-0236`, `RISK-193`);
+- D007's "knowledge increases complexity" clue is now an explicit alpha hypothesis: model fidelity/context differentiation may rise while essentializing totalization falls (`SPD-0234`);
+- `Q-MEANINGSTRATA-001` now owns provenance-bearing common-cause resonance retrieval rather than a hidden meaning graph;
+- `Q-LAZY-001` / `Q-PERSONSHARE-001` now own late shared-root fact propagation/version compatibility for already-running continuities.
+
 
