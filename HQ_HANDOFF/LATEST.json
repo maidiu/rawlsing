@@ -1,12 +1,12 @@
 {
   "schema": "RAWLSING_HQ_HANDOFF_POINTER@1.1.0",
-  "checkpoint_id": "20261003-PYAT-REMOTE-HANDOFF-COMPLETION-R1",
-  "handoff_commit": "93c1ada3cd0279dc51b9a43a951331a9df9bbe21",
+  "checkpoint_id": "20261003-PYAT-HQ-PUBLICATION-AUDIT-REPAIRS-R1",
+  "handoff_commit": "f68903fdd7792cb4a43f7f31bd73e8ad3265e7f2",
   "semantic_pre_main_tip": "902640dfddce431d0c5ba151d3eb851d6b84d7a3",
   "control_branch": "integration/pre-main-reconciliation-r1",
-  "current_md_path": "HQ_HANDOFF/checkpoints/20261003-PYAT-REMOTE-HANDOFF-COMPLETION-R1/CURRENT.md",
-  "current_json_path": "HQ_HANDOFF/checkpoints/20261003-PYAT-REMOTE-HANDOFF-COMPLETION-R1/CURRENT.json",
-  "manifest_path": "HQ_HANDOFF/checkpoints/20261003-PYAT-REMOTE-HANDOFF-COMPLETION-R1/MANIFEST.json",
+  "current_md_path": "HQ_HANDOFF/checkpoints/20261003-PYAT-HQ-PUBLICATION-AUDIT-REPAIRS-R1/CURRENT.md",
+  "current_json_path": "HQ_HANDOFF/checkpoints/20261003-PYAT-HQ-PUBLICATION-AUDIT-REPAIRS-R1/CURRENT.json",
+  "manifest_path": "HQ_HANDOFF/checkpoints/20261003-PYAT-HQ-PUBLICATION-AUDIT-REPAIRS-R1/MANIFEST.json",
   "decision_ledger_path": "HQ_HANDOFF/DECISION_LEDGER.jsonl",
   "protocol_path": "HQ_HANDOFF/PROTOCOL.md",
   "start_here_path": "HQ_HANDOFF/START_HERE.md",
@@ -15,7 +15,7 @@
   "temporal_reconciliation_law": "SEALED_CHECKPOINT_AUTHORITY_NE_POST_CHECKPOINT_PENDING_RETURN_NE_UNAUTHORIZED_POST_CHECKPOINT_MOVEMENT",
   "maintenance_law": "AFTER_EVERY_MATERIAL_HQ_STATE_CHANGE__CREATE_NEW_IMMUTABLE_CHECKPOINT__ADVANCE_AND_VERIFY_LATEST_BEFORE_TRANSITION_IS_SEALED",
   "protected_execution_head": "16f5e7d5f691e908d85dc1dd26b8a59a29f668f4",
-  "next_action": "RESUME_EXISTING_HQ__CONSOLIDATE_HQ186_AND_HQ187__PREPARE_BOUNDED_EXTERNAL_ASTRA_DECISION__PRESERVE_C4_HOLD",
+  "next_action": "BIND_BOUNDED_DISPATCH_REPAIR_AND_INDEPENDENT_ACCEPTANCE__CONSOLIDATE_C4_DOCUMENTARY_CLAIMS__KEEP_SOURCE_HOLDS",
   "source_split_control_head": "cee9e27d57dc72771d9c3ec5df26493321feeef5",
   "split_fanin_evidence_tip": "cee9e27d57dc72771d9c3ec5df26493321feeef5",
   "joined_successor_return_tip": "b4dd6d6016367110c06317abe2cef276123b4c69",
@@ -544,8 +544,8 @@
   "external_adjudication_retrieval_law": "ALL_COMPARISON_MATERIAL_FETCHABLE_FROM_ORIGIN",
   "measured_execution_authorized_via_warrant": false,
   "previous_handoff": {
-    "checkpoint_id": "20261002-PYAT-HQ187-R2-COUNTEREXAMPLE-ADJUDICATED-R1",
-    "handoff_commit": "5eb17ffaedb02402f645d8c34d270bc45e49183a"
+    "checkpoint_id": "20261003-PYAT-REMOTE-HANDOFF-COMPLETION-R1",
+    "handoff_commit": "93c1ada3cd0279dc51b9a43a951331a9df9bbe21"
   },
   "previous_operating_mode": {
     "selected": "BROWSER_ECONOMY",
@@ -589,7 +589,7 @@
   "opencode_hq_activation_branch": "agent/opencode-pyat-hq183-ops01-ops04-activation-r1",
   "ops01_state": "RECONCILED",
   "ops02_state": "IMPLEMENTED",
-  "ops03_capability_level": "PASS_WITH_DECLARED_SKIP",
+  "ops03_capability_level": "HELPER_TEST_PASS_INSUFFICIENT__GATE_AND_RECOVERY_DEFECTS_REPRODUCED",
   "ops03_passed": 23,
   "ops03_failed": 0,
   "ops03_skipped": 1,
@@ -608,7 +608,7 @@
   "packet_verifier_native_pass": true,
   "packet_verifier_negative_control": "CONFIRMED_FAILS_ON_TAMPERED_SHA256",
   "packet_verifier_cross_implementation_disagreements": 0,
-  "ops03_requalified": true,
+  "ops03_requalified": false,
   "external_adjudicator_retrieval_audited": true,
   "external_adjudicator_retrieval_targets_resolved": "24_OF_24",
   "external_adjudicator_retrieval_gap_repaired": "ACTIVATION_BRANCH_WAS_STALE_AT_54d0dec2a",
@@ -635,5 +635,15 @@
   },
   "hq183_corrections_historical": "C1_SOL_SHADOW_BYTE_IDENTITY_FALSE__C2_HQ182_R7_WORDING_INACCURATE__C3_HASH_CENSUS_WRONG__C4_R9_OVERSTATED__C5_R10_DIGEST_RECOVERED",
   "c4_disputed_claims_recheck_prior_state": "BOUND_NOT_LAUNCHED",
-  "c4_residual_register_source": "HQD-2026-10-02-187__INHERITED_NOT_READJUDICATED_BY_DELIVERY"
+  "c4_residual_register_source": "HQD-2026-10-02-187__INHERITED_NOT_READJUDICATED_BY_DELIVERY",
+  "hq_publication_audit": {
+    "status": "REPAIRS_REQUIRED_FOR_AUTONOMOUS_DISPATCH",
+    "review": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/REVIEWS/HQ181_187_AUDIT_20261003/REVIEW.md",
+    "production_tree_unchanged": true,
+    "source_hold_unchanged": true,
+    "full_C4_adjudication": false
+  },
+  "ops03_historical_capability_level": "PASS_WITH_DECLARED_SKIP",
+  "ops03_requalified_historical": true,
+  "ops03_current_acceptance": "FOCUSED_REPAIR_AND_INDEPENDENT_END_TO_END_QUALIFICATION_REQUIRED"
 }
