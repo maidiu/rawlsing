@@ -463,12 +463,38 @@ When interpretation is recruited:
 1. retrieve relevant facts/events;
 2. retrieve durable V3 organization;
 3. retrieve actor meaning-making regime;
-4. propose candidate patterns;
-5. score evidence + counter-evidence + actor plausibility;
-6. admit only actor-local interpretation, not objective meaning;
-7. if repeated/adopted, allow interpretation to alter later person-state.
+4. derive/query whether candidate facts share authoritative upstream causal/developmental antecedents;
+5. distinguish common-cause support from direct causation;
+6. preserve actor-access boundaries and counter-evidence;
+7. propose candidate patterns;
+8. score evidence + counter-evidence + actor plausibility;
+9. admit only actor-local interpretation, not objective meaning;
+10. if repeated/adopted, allow interpretation to alter later person-state.
+
+### Common-cause resonance retrieval
+
+The post-fifth transcript identifies this as a concrete engineering seam.
+
+Given candidate facts A and B:
+
+`QUERY CURRENT AUTHORITATIVE CAUSAL / DEVELOPMENTAL PROVENANCE`
+→ `SHARED UPSTREAM ANTECEDENT EVIDENCE / NONE / UNDERDETERMINED`.
+
+Preserve:
+
+`SHARED ANTECEDENT SUPPORT != A CAUSED B`.
+
+`SHARED ANTECEDENT SUPPORT != ACTOR INTERPRETATION IS TRUE`.
+
+`NO SHARED ANTECEDENT FOUND != ACTOR MAY NOT FORM THE INTERPRETATION`.
+
+The desired implementation is a provenance-bearing derived query/view over current owner state, not a precomputed `WORLD.MEANING` or global symbolic explanation graph.
+
+The user/person may form a creative or mistaken connection even when the engine finds no common-cause support. Conversely, real common ancestry can exist without the actor knowing it.
 
 This is computationally much cheaper and more human than maintaining a global symbolic explanation graph.
+
+See Q-MEANINGSTRATA-001 and artifact 78.
 
 ---
 
