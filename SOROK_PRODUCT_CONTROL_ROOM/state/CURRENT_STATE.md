@@ -1883,4 +1883,26 @@ Risk:
 
 Q-ATTEND-002, Q-SALIENCE-001 and Q-SCENE-001 now explicitly own these implementation constraints.
 
+---
+
+## Recognition-gated narration correction
+
+Artifact:
+`87_RECOGNITION_GATED_NARRATION_CORRECTION_R1.md`.
+
+Canonical object identity must not leak through narrator lexical choice.
+
+A canonical `VITAMIX 5200` may surface simply as:
+> a blender
+
+or, if perceptually grounded:
+> a large, powerful-looking blender.
+
+Only closer lawful inspection may expose visible lettering, and brand/model labels require demonstrated or lawfully acquired recognition.
+
+`CANONICAL OBJECT IDENTITY != USER-FACING LABEL`.
+
+`TEXT ON OBJECT != TEXT READ BY USER`.
+
+`SPD-0248` governs this; `RISK-204` covers canonical-identity lexical leakage.
 
