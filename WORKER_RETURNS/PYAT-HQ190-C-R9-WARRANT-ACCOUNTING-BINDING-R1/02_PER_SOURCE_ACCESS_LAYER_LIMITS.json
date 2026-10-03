@@ -1,0 +1,285 @@
+{
+  "schema": "PYAT_HQ190_C_PER_SOURCE_ACCESS_LAYER_LIMITS@1.0.0",
+  "lane": "PYAT-HQ190-C-R9-WARRANT-ACCOUNTING-BINDING-R1",
+  "purpose": "Per-source, per-access-layer record of exactly which limits the governing evidence establishes, which it does not, and the provenance of each established value. Nothing here is inferred, estimated or fabricated.",
+
+  "governing_requirement": {
+    "source": "Omega-1 01_DECISION.json mandatory_conditions[O1-C07]",
+    "commit": "01762d7379be4e423dad3e21bcdcee47c536902d",
+    "requirement_verbatim": "Execute exactly one governed fresh full-route LiTS pass, six bounded physical witnesses and retained WVS replay/comparison. Account separately for file hash passes, path-level opens and their measurement basis, metadata reads, header-prefix reads, decoder calls, selected-column/full reads, byte counts and retries. A full Route-B pass is not a claim of one OS-level file open.",
+    "acceptance_verbatim": "Freeze expected budgets and instrumentation before launch; retain measured counts. WVS and excluded-source fresh opens remain zero under this scope.",
+    "acceptance_currently_satisfiable": false,
+    "acceptance_shortfall": "Four mandatory accounts have no budget anywhere to freeze."
+  },
+
+  "mandatory_separate_accounts": [
+    {"id": "ACC-01", "account": "source-path existence/access checks", "bound": false},
+    {"id": "ACC-02", "account": "file hash passes (full SHA-256 over the file)", "bound": false},
+    {"id": "ACC-03", "account": "path-level opens", "bound": false},
+    {"id": "ACC-04", "account": "metadata reads", "bound": "partial"},
+    {"id": "ACC-05", "account": "header-prefix reads", "bound": "partial"},
+    {"id": "ACC-06", "account": "decoder invocations", "bound": false},
+    {"id": "ACC-07", "account": "selected-column reads", "bound": true},
+    {"id": "ACC-08", "account": "full reads", "bound": true},
+    {"id": "ACC-09", "account": "byte counts where measurable", "bound": "partial"},
+    {"id": "ACC-10", "account": "retries", "bound": true}
+  ],
+
+  "value_grade_legend": {
+    "E": "exact value established in governing evidence, with provenance",
+    "H0": "hard zero; a single non-zero count is a STOP condition, not a reportable variance",
+    "F1": "floor of 1 established, NO ceiling established",
+    "—": "no value exists anywhere in the governing evidence"
+  },
+
+  "per_source": {
+    "SRC02": {
+      "source_file": "Afro Barometer Round 5.sav",
+      "format": "SAV",
+      "canonical_sha256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+      "locator_state": "UNFILLED_PLACEHOLDER",
+      "expected_operation_class": "BOUNDED_FRESH_PHYSICAL_SELECTED_VARIABLE_READ",
+      "reader_lane": "SAV_ENCODING_NULL",
+      "layers": {
+        "ACC-01_existence_access": {"grade": "—"},
+        "ACC-02_hash_pass": {"grade": "—"},
+        "ACC-03_path_opens": {"grade": "—"},
+        "ACC-04_metadata_reads": {"grade": "—"},
+        "ACC-05_header_prefix": {"grade": "—"},
+        "ACC-06_decoder_invocations": {"grade": "—"},
+        "ACC-07_selected_reads": {"grade": "E", "value": 1, "provenance": "artifact 07 .SRC02.expected_selected_reads"},
+        "ACC-08_full_reads": {"grade": "E", "value": 0, "provenance": "artifact 07 .SRC02.expected_full_reads"},
+        "ACC-09_byte_counts": {"grade": "—"},
+        "ACC-10_retries": {"grade": "H0", "value": 0, "provenance": "artifact 07 .SRC02.max_retry_budget; global frozen maximum ZERO retries across all eight sources"}
+      },
+      "bound_count": 3,
+      "unbound_count": 7
+    },
+    "SRC06": {
+      "source_file": "Arab Barometer Wave 5.sav",
+      "format": "SAV",
+      "canonical_sha256": "6a5cbad637ce1546833a1d4812ba6d1e8d75f85b5b199b0cf3ec5cf456068dbc",
+      "locator_state": "UNFILLED_PLACEHOLDER",
+      "expected_operation_class": "BOUNDED_FRESH_PHYSICAL_SELECTED_VARIABLE_READ",
+      "reader_lane": "SAV_ENCODING_NULL",
+      "layers": {
+        "ACC-01_existence_access": {"grade": "—"},
+        "ACC-02_hash_pass": {"grade": "—"},
+        "ACC-03_path_opens": {"grade": "—"},
+        "ACC-04_metadata_reads": {"grade": "—"},
+        "ACC-05_header_prefix": {"grade": "—"},
+        "ACC-06_decoder_invocations": {"grade": "—"},
+        "ACC-07_selected_reads": {"grade": "E", "value": 1, "provenance": "artifact 07 .SRC06.expected_selected_reads"},
+        "ACC-08_full_reads": {"grade": "E", "value": 0, "provenance": "artifact 07 .SRC06.expected_full_reads"},
+        "ACC-09_byte_counts": {"grade": "—"},
+        "ACC-10_retries": {"grade": "H0", "value": 0, "provenance": "artifact 07 .SRC06.max_retry_budget"}
+      },
+      "bound_count": 3,
+      "unbound_count": 7
+    },
+    "SRC08": {
+      "source_file": "Asian Barometer Wave 1.sav",
+      "format": "SAV",
+      "canonical_sha256": "ac0b8bc1ddb2fa6b952417e35b6379ce6a2cf8596776a43282ba44f48e0ae1a2",
+      "locator_state": "UNFILLED_PLACEHOLDER",
+      "expected_operation_class": "FRESH_METADATA_ONLY_DECODER_ADMISSION",
+      "reader_lane": "SAV_ENCODING_BIG5_DECLARED",
+      "layers": {
+        "ACC-01_existence_access": {"grade": "—"},
+        "ACC-02_hash_pass": {"grade": "—"},
+        "ACC-03_path_opens": {"grade": "—"},
+        "ACC-04_metadata_reads": {"grade": "E", "value": 1, "provenance": "artifact 07 .SRC08.expected_metadata_reads"},
+        "ACC-05_header_prefix": {"grade": "—"},
+        "ACC-06_decoder_invocations": {"grade": "—"},
+        "ACC-07_selected_reads": {"grade": "H0", "value": 0, "provenance": "artifact 07 .SRC08.expected_selected_reads AND frozen_zero_budgets.SRC08_selected_columns"},
+        "ACC-08_full_reads": {"grade": "E", "value": 0, "provenance": "artifact 07 .SRC08.expected_full_reads; full_source_decode false"},
+        "ACC-09_byte_counts": {"grade": "—"},
+        "ACC-10_retries": {"grade": "H0", "value": 0, "provenance": "artifact 07 .SRC08.max_retry_budget"},
+        "row_data_reads": {"grade": "H0", "value": 0, "provenance": "artifact 07 frozen_zero_budgets.SRC08_row_data_reads AND candidate allowed_operations.row_data_reads"}
+      },
+      "bound_count": 5,
+      "unbound_count": 5
+    },
+    "SRC12": {
+      "source_file": "EVS 1990.sav",
+      "format": "SAV",
+      "canonical_sha256": "66252a92c59bf6759b79a6b35b2be658b98a433373212a70c8ec94755d3e02ec",
+      "locator_state": "UNFILLED_PLACEHOLDER",
+      "expected_operation_class": "FRESH_METADATA_ONLY_DECODER_ADMISSION",
+      "reader_lane": "SAV_ENCODING_WINDOWS1252_DECLARED",
+      "multi_wave_pair_with": "SRC14",
+      "layers": {
+        "ACC-01_existence_access": {"grade": "—"},
+        "ACC-02_hash_pass": {"grade": "—"},
+        "ACC-03_path_opens": {"grade": "—"},
+        "ACC-04_metadata_reads": {"grade": "E", "value": 1, "provenance": "artifact 07 .SRC12.expected_metadata_reads"},
+        "ACC-05_header_prefix": {"grade": "—"},
+        "ACC-06_decoder_invocations": {"grade": "—"},
+        "ACC-07_selected_reads": {"grade": "H0", "value": 0, "provenance": "artifact 07 .SRC12.expected_selected_reads AND frozen_zero_budgets.SRC12_selected_columns"},
+        "ACC-08_full_reads": {"grade": "E", "value": 0, "provenance": "artifact 07 .SRC12.expected_full_reads; full_source_decode false"},
+        "ACC-09_byte_counts": {"grade": "—"},
+        "ACC-10_retries": {"grade": "H0", "value": 0, "provenance": "artifact 07 .SRC12.max_retry_budget"},
+        "row_data_reads": {"grade": "H0", "value": 0, "provenance": "artifact 07 frozen_zero_budgets.SRC12_row_data_reads AND candidate allowed_operations.row_data_reads"}
+      },
+      "bound_count": 5,
+      "unbound_count": 5
+    },
+    "SRC14": {
+      "source_file": "EVS 2008.sav",
+      "format": "SAV",
+      "canonical_sha256": "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379",
+      "locator_state": "UNFILLED_PLACEHOLDER",
+      "expected_operation_class": "BOUNDED_FRESH_PHYSICAL_READ_EXACT_VARIABLE",
+      "reader_lane": "SAV_ENCODING_NULL",
+      "multi_wave_pair_with": "SRC12",
+      "layers": {
+        "ACC-01_existence_access": {"grade": "—"},
+        "ACC-02_hash_pass": {"grade": "—"},
+        "ACC-03_path_opens": {"grade": "—"},
+        "ACC-04_metadata_reads": {"grade": "—"},
+        "ACC-05_header_prefix": {"grade": "—"},
+        "ACC-06_decoder_invocations": {"grade": "—"},
+        "ACC-07_selected_reads": {"grade": "E", "value": 1, "provenance": "artifact 07 .SRC14.expected_selected_reads"},
+        "ACC-08_full_reads": {"grade": "E", "value": 0, "provenance": "artifact 07 .SRC14.expected_full_reads"},
+        "ACC-09_byte_counts": {"grade": "—"},
+        "ACC-10_retries": {"grade": "H0", "value": 0, "provenance": "artifact 07 .SRC14.max_retry_budget"}
+      },
+      "enforceable_non_count_stop_triggers": {
+        "witness_counts": {"user_missing": 1917, "ordinary_present": 64363, "system_missing": 0, "total_rows": 66280, "enforcement": "ENFORCEABLE_STOP", "provenance": "artifact 07 O1_C08_failure_law.STOP_triggers 'required physical witness'"},
+        "fixture_identity": {"fixture_id": "EVS08_DATE_MISSING_V372", "fixture_blob": "12f6adb77ef5692511055c8f0520e42c454f3867", "enforcement": "ENFORCEABLE_STOP"}
+      },
+      "bound_count": 3,
+      "unbound_count": 7
+    },
+    "SRC26": {
+      "source_file": "Latinobarometro 2024.sav",
+      "format": "SAV",
+      "canonical_sha256": "ff5cef18c87969026e7f993d09f10c38a547bf81d5d398784fb59b960b7b0a40",
+      "locator_state": "UNFILLED_PLACEHOLDER",
+      "expected_operation_class": "BOUNDED_HEADER_PREFIX_PLUS_READER_METADATA",
+      "reader_lane": "SAV_ENCODING_NULL",
+      "layers": {
+        "ACC-01_existence_access": {"grade": "—"},
+        "ACC-02_hash_pass": {"grade": "—"},
+        "ACC-03_path_opens": {"grade": "—"},
+        "ACC-04_metadata_reads": {"grade": "—", "note": "artifact 07 states NO expected_metadata_reads for SRC26. The operation class BOUNDED_HEADER_PREFIX_PLUS_READER_METADATA implies a reader-metadata read occurs, but no count is stated anywhere. This is recorded as no value, NOT as an established zero. See obligation R9-OBL-07."},
+        "ACC-05_header_prefix": {"grade": "E", "value": 176, "unit": "BYTES_NOT_READ_COUNT", "provenance": "artifact 07 .SRC26.expected_header_prefix_bytes", "caveat": "A bounded byte quantity. It does not bound the number of header-prefix reads. See obligation R9-OBL-06."},
+        "ACC-06_decoder_invocations": {"grade": "—"},
+        "ACC-07_selected_reads": {"grade": "E", "value": 0, "provenance": "artifact 07 .SRC26.expected_selected_reads"},
+        "ACC-08_full_reads": {"grade": "E", "value": 0, "provenance": "artifact 07 .SRC26.expected_full_reads"},
+        "ACC-09_byte_counts": {"grade": "E", "values": {"expected_header_prefix_bytes": 176, "expected_raw_nominal_case_size": 174, "expected_decoded_dictionary_data_width": 332}, "provenance": "artifact 07 .SRC26.expected_header_prefix_bytes and candidate allowed_operations", "equality_required": false, "law": "Geometry divergence between raw header 174 and decoded dictionary width 332 is expected, NOT equality-required, and must never be collapsed.", "distinction_preserved": "174 is the raw nominal case size; 176 is the bounded header-prefix byte quantity. They are DIFFERENT quantities and are not conflated."},
+        "ACC-10_retries": {"grade": "H0", "value": 0, "provenance": "artifact 07 .SRC26.max_retry_budget"}
+      },
+      "bound_count": 5,
+      "unbound_count": 5
+    },
+    "SRC27": {
+      "source_file": "LiTS_I.dta",
+      "format": "DTA",
+      "canonical_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+      "locator_state": "UNFILLED_PLACEHOLDER",
+      "expected_operation_class": "EXACTLY_ONE_GOVERNED_FRESH_FULL_ROUTE_PASS",
+      "reader_lane": "DTA_ENCODING_LATIN1_COMPATIBILITY",
+      "operation_level_law": {
+        "expected_full_route_passes": 1,
+        "expected_full_route_passes_max": 1,
+        "enforcement": "ENFORCEABLE_DECLARED_MIN_AND_MAX",
+        "retry_law_verbatim": "Exactly ONE governed fresh pass. A second pass is not a retry; it is a separate run requiring new HQ-bound authority."
+      },
+      "layers": {
+        "ACC-01_existence_access": {"grade": "F1", "floor": 1, "ceiling": null, "provenance": "artifact 07 hardened_note_on_the_SRC27_single_pass 'at minimum: one existence/access check'"},
+        "ACC-02_hash_pass": {"grade": "F1", "floor": 1, "ceiling": null, "provenance": "artifact 07 hardened_note 'at minimum: ... one full SHA-256 hash pass'"},
+        "ACC-03_path_opens": {"grade": "—"},
+        "ACC-04_metadata_reads": {"grade": "F1", "floor": 1, "ceiling": null, "provenance": "artifact 07 hardened_note 'at minimum: ... one metadata read'"},
+        "ACC-05_header_prefix": {"grade": "—"},
+        "ACC-06_decoder_invocations": {"grade": "—"},
+        "ACC-07_selected_reads": {"grade": "—", "note": "SRC27 has no expected_selected_reads. Its read is a full-route read. Mapping it into a selected-read slot would be a fabrication."},
+        "ACC-08_full_reads": {"grade": "F1", "floor": 1, "ceiling": null, "provenance": "artifact 07 hardened_note 'at minimum: ... one full compatibility read'", "note": "No expected_full_reads exists for SRC27. The hardened note establishes a FLOOR, not an exact count."},
+        "ACC-09_byte_counts": {"grade": "—"},
+        "ACC-10_retries": {"grade": "H0", "value": 0, "provenance": "artifact 07 .SRC27.max_retry_budget"}
+      },
+      "separate_accounts_law": {
+        "accounting_warning_verbatim": "One governed Route-B pass is NOT one OS-level file open. Existence/access check, full hash pass, metadata read and full compatibility read are SEPARATE accounts.",
+        "hardened_note_verbatim": "The frozen 'exactly one governed fresh full Route-B pass' is a WORKLOAD constraint, not an access constraint. It does NOT license assuming one file open. The run will require at minimum: one existence/access check, one full SHA-256 hash pass, one metadata read, and one full compatibility read. Each is a separate account under O1-C07.",
+        "misreading_law_verbatim": "Misreading this as one open would be an accounting failure and is expressly forbidden by Omega-1.",
+        "floor_is_not_a_ceiling": "The hardened note says 'at minimum'. A floor is not an enforceable ceiling. No governing artifact supplies a maximum for any of these four layers."
+      },
+      "workload_shape": {"candidates": 50, "query_roles": 77, "respondent_event_slots": ["q301_2", "q301_7"], "coordinate_fact_slots": ["country", "city", "region", "tablec", "tabled"], "default_weight_measure_fact": false},
+      "RES_1": {"statement": "The Stata extended-missing dual-shape branch is NOT source-free round-trip testable in pyreadstat 1.3.6.", "run_requirement": "Record the exact reader_token and stata_token shapes the real decode produces, under the bound reader lane, as an explicit warrant-time observation. This is NOT a source-free PASS.", "accounting_effect": "An additional warrant-time OBSERVATION obligation. It does not create an additional access-layer count."},
+      "bound_count": 1,
+      "floor_only_count": 4,
+      "unbound_count": 5
+    },
+    "SRC35": {
+      "fresh_source_warrant_target": false,
+      "exclusion_reason": "RETAINED_COMPARATOR__ZERO_FRESH_READ",
+      "c4b_scope_reason_verbatim": "Seven future fresh-read sources only; SRC35 is excluded because it is a retained comparator.",
+      "why_outside_the_target_set": "SRC35 is a retained comparator replayed from retained material only. It generates no fresh-source access-layer accounts. Including it in a per-access-layer fresh-access binding would misrepresent a retained comparator as an access target and would weaken the accounting.",
+      "operation_class": "RETAINED_COMPARATOR_REPLAY_AND_COMPARE",
+      "fresh_reads": 0,
+      "max_retry_budget": 0,
+      "retry_law_verbatim": "No fresh access at all. Replay uses retained material only.",
+      "reader_lane_id": "NONE__RETAINED_ONLY",
+      "read_path_verbatim": "NO FRESH LANE. Retained comparator; zero fresh raw reads.",
+      "materialises_frame": false,
+      "global_hard_zero": "WVS_SRC35_fresh_source_opens: 0",
+      "locator_state": "NOT_REQUIRED__RETAINED_COMPARATOR__NO_FRESH_ACCESS",
+      "explicitly_not_unconstrained": "SRC35 carries a zero-fresh-read law, a hard-zero global open budget, a retained-only reader lane and a zero retry budget. It is constrained, not unconstrained."
+    }
+  },
+
+  "c4b_seven_slot_bind_test": {
+    "repair_specification": "Restore a per-source source_access_accounting block for all seven sources with C4B's seven exact-count slots and their basis/config/reason qualifiers, populated or bound to the frozen expectations in artifact 07.",
+    "repair_specification_sources": ["ALT-B 3a5b2cbc 05_WARRANT_CANDIDATE_REVIEW.json residual_R9_before_issuance", "R2 afb1eb49 04_C4_R9_GAP.json what_is_absent_from_the_warrant.required_repair_at_issuance"],
+    "template_blob": "3e4bbe967fa69f16c42a3bb268699404136c3b9c",
+    "template_requirement_token_census": {"REQUIRED_EXACT_COUNT": 21, "REQUIRED_EXACT_COUNT_AND_BASIS": 7, "REQUIRED_EXACT_COUNT_AND_CONFIG": 14, "REQUIRED_EXACT_COUNT_AND_REASON": 7, "total": 49, "numeric_values_present": 0},
+    "slots": {
+      "full_file_sha256_passes": {"qualifier": "REQUIRED_EXACT_COUNT", "artifact_07_expectation": false, "bind_status": "NOT_BINDABLE", "obligation": "R9-OBL-02"},
+      "path_opens": {"qualifier": "REQUIRED_EXACT_COUNT_AND_BASIS", "artifact_07_expectation": false, "basis_supplied": false, "bind_status": "NOT_BINDABLE", "obligation": "R9-OBL-03"},
+      "decoder_invocations": {"qualifier": "REQUIRED_EXACT_COUNT", "artifact_07_expectation": false, "bind_status": "NOT_BINDABLE", "obligation": "R9-OBL-04"},
+      "metadata_header_reads": {"qualifier": "REQUIRED_EXACT_COUNT", "artifact_07_expectation": true, "bound_for": ["SRC08", "SRC12"], "bind_status": "PARTIALLY_BINDABLE_2_OF_7", "obligation": "R9-OBL-07"},
+      "selected_reads": {"qualifier": "REQUIRED_EXACT_COUNT_AND_CONFIG", "artifact_07_expectation": true, "bound_for": ["SRC02", "SRC06", "SRC08", "SRC12", "SRC14", "SRC26"], "config_source": "per-source allowed_operations block", "bind_status": "PARTIALLY_BINDABLE_6_OF_7"},
+      "full_reads": {"qualifier": "REQUIRED_EXACT_COUNT_AND_CONFIG", "artifact_07_expectation": true, "bound_for": ["SRC02", "SRC06", "SRC08", "SRC12", "SRC14", "SRC26"], "config_source": "per-source allowed_operations block", "bind_status": "PARTIALLY_BINDABLE_6_OF_7"},
+      "retries": {"qualifier": "REQUIRED_EXACT_COUNT_AND_REASON", "artifact_07_expectation": true, "bound_for_all_7": true, "value": 0, "reason_source": "per-source retry_law plus global frozen maximum ZERO retries across all eight sources", "bind_status": "FULLY_BINDABLE_7_OF_7"}
+    },
+    "additional_mandatory_account_with_no_slot": {"account": "source-path existence/access checks", "required_by": "O1-C07 and artifact 07 mandatory_separate_accounts", "is_one_of_C4B_seven_slots": false, "bind_status": "NO_SLOT_AND_NO_EXPECTATION"},
+    "summary": {"fully_bindable": 1, "partially_bindable": 3, "not_bindable": 3, "mandatory_accounts_with_no_slot": 1, "total_unbindable_mandatory_accounts": 4},
+    "conclusion": "The R9 repair as specified by both independent reviews CANNOT be completed as specified. Completing it would require inventing at least three counts."
+  },
+
+  "cross_check_against_R2_field_presence_matrix": {
+    "source": "R2 afb1eb49 04_C4_R9_GAP.json artifact_07_per_source_coverage.field_presence_matrix",
+    "independent_agreement": true,
+    "R2_reported": {
+      "expected_full_reads": {"present_in": 6, "absent_for": ["SRC27", "SRC35"]},
+      "expected_selected_reads": {"present_in": 6, "absent_for": ["SRC27", "SRC35"]},
+      "expected_metadata_reads": {"present_in": 2, "absent_for": ["SRC02", "SRC06", "SRC14", "SRC26", "SRC27", "SRC35"]},
+      "expected_header_prefix_bytes": {"present_in": 1, "absent_for": ["SRC02", "SRC06", "SRC08", "SRC12", "SRC14", "SRC27", "SRC35"], "value": 176},
+      "max_retry_budget": {"present_in": 8},
+      "retry_law": {"present_in": 8}
+    },
+    "my_independent_census": "identical presence and absence sets for all six fields",
+    "note": "R2 addressed the WARRANT's missing per-source block and assumed artifact 07 could supply the values. My finding is a further step: artifact 07 cannot supply them for three of the seven slots."
+  },
+
+  "stop_trigger_gap": {
+    "recorded": true,
+    "patched": false,
+    "statement": "None of artifact 07's ten O1-C08 stop triggers tests an access-layer COUNT against a bound. They govern identity, locator, authority, ordinals, runtime, reader lane, oracle custody, physical witness, named consumer and dependency/currentness.",
+    "why_not_patched": "Adding a count-exceedance stop would require a bound that does not exist for four accounts. Inventing thresholds to fill it would be a fabrication."
+  },
+
+  "enforcement_semantics": {
+    "hard_zeros_are_stop_conditions": true,
+    "hard_zeros_verbatim": "These are hard zeros. A single non-zero count in any of them is a STOP condition, not a reportable variance.",
+    "expected_counts_are_not_declared_ceilings": true,
+    "enforcement_caveat": "The governing artifacts label the six-source counters 'expected_*'. No governing artifact states that exceeding an expected_* figure is itself a STOP condition. The enforceable ceiling for those layers therefore rests on max_retry_budget = 0 plus the immediate-stop retry law, NOT on an explicit maximum.",
+    "measurement_basis_required_for_every_figure": true,
+    "measurement_basis_fields": ["what was measured", "at which layer", "by what mechanism", "at what point in the run"]
+  },
+
+  "no_values_fabricated": {
+    "statement": "Every value in this record was read from a governing artifact at a pinned commit. No count was inferred from an operation class, derived from a retry budget, promoted from a floor to a ceiling, or taken from a prior lane's estimate.",
+    "fabricated_value_count": 0
+  }
+}

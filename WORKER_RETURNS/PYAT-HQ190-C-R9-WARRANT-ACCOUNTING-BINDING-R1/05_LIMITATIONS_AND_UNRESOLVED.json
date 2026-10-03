@@ -1,0 +1,164 @@
+{
+  "schema": "PYAT_HQ190_C_LIMITATIONS_AND_UNRESOLVED@1.0.0",
+  "lane": "PYAT-HQ190-C-R9-WARRANT-ACCOUNTING-BINDING-R1",
+  "purpose": "Every limitation of this lane's work, every unresolved item, and every claim deliberately not made. Recorded so the disposition is not read as stronger than its evidence.",
+
+  "limitations_of_this_lane": [
+    {
+      "id": "LIM-01",
+      "limitation": "The subject freeze is not an ancestor of this worker's branch.",
+      "detail": "merge-base 87029d349c8a7385cb673060a8e5decd4eb528ff. The freeze, the historical warrant candidate and the C4B template were read by exact commit ref, never from this branch's tree.",
+      "effect": "None on findings. Every artifact was resolved by exact 40-hex commit and read by `git show`. The benefit is structural: the historical candidate could not be overwritten even accidentally.",
+      "residual": "A verifier working only from this branch's HEAD cannot reach the freeze by ancestry and must cite 8ff40d37de69db2d8a6053a7c2242f481677f1a4 explicitly."
+    },
+    {
+      "id": "LIM-02",
+      "limitation": "Absence findings rest on exhaustive token census, not on semantic search.",
+      "detail": "The three NOT_BINDABLE slots were established by counting occurrences of the seven C4B slot names and the O1-C07 account names across the C4B template, the C4B workload freeze, Omega-1, all seven freeze-packet artifacts and three C4C3 artifacts. The C4B template was additionally parsed and every slot value read.",
+      "effect": "A field carrying an exact per-source count under a different name would not have been found by token census. Mitigated by direct enumeration of the parsed C4B template and of artifact 07's per-source block, which is the authoritative surface for these values.",
+      "residual": "Low, but not zero. Recorded rather than dismissed."
+    },
+    {
+      "id": "LIM-03",
+      "limitation": "No independent review of this lane's successor candidate exists.",
+      "detail": "The candidate at sha256 dd9758ab018cde2a702a2671313333e987928904a29ae74e658b05e46f72078b has been reviewed by no one but this lane. The three prior reviews examined the HISTORICAL candidate, not this one.",
+      "effect": "The candidate must not be treated as accepted, endorsed or ready for issuance on the strength of this return.",
+      "residual": "Hostile independent review is mandatory before HQ relies on any part of it."
+    },
+    {
+      "id": "LIM-04",
+      "limitation": "This lane did not execute anything and observed no runtime behaviour.",
+      "detail": "No test suite run, no C4 execution, no reader invoked, no source touched. Every statement about access layers is a documentary reading of frozen artifacts.",
+      "effect": "This lane cannot state what the access pattern WOULD be at run time, only what the evidence bounds today.",
+      "residual": "An actual run on the authorized surface could reveal that additional access layers occur, which would make these floors-and-absences the starting point rather than the answer."
+    },
+    {
+      "id": "LIM-05",
+      "limitation": "The expected_* figures are expectations, not declared maxima.",
+      "detail": "No governing artifact states that exceeding an expected_* figure is itself a STOP condition. The enforceable ceiling for the six sources' read layers rests on max_retry_budget = 0 plus the immediate-stop retry law.",
+      "effect": "The successor candidate records this caveat per layer rather than presenting the expected_* values as hard ceilings.",
+      "residual": "If HQ intends expected_* to be ceilings, that intent is not currently written anywhere and would need to be recorded."
+    }
+  ],
+
+  "unresolved_items": [
+    {
+      "id": "UNR-01",
+      "item": "Four mandatory O1-C07 accounts have no exact lawful bound.",
+      "accounts": ["source-path existence/access checks", "file hash passes (full SHA-256 over the file)", "path-level opens", "decoder invocations"],
+      "status": "UNRESOLVED_BY_EVIDENCE",
+      "why_unresolvable_here": "No governing artifact supplies a value. C4B's template supplies only requirement tokens. Omega-1's O1-C07 acceptance requires budgets frozen before launch, and there is nothing to freeze.",
+      "who_can_resolve": "HQ, either by supplying governing evidence or by making an instrument-level determination on the authorized execution surface at issuance.",
+      "not_resolved_by_this_lane": true
+    },
+    {
+      "id": "UNR-02",
+      "item": "Three of C4B's seven source_access_accounting slots can be neither populated nor bound.",
+      "slots": ["full_file_sha256_passes", "path_opens", "decoder_invocations"],
+      "status": "UNRESOLVED",
+      "consequence": "The R9 repair as specified by ALT-B and the R2 re-check cannot be completed as specified. Completing it would require inventing at least three counts.",
+      "who_can_resolve": "HQ, by ruling whether the repair specification must be amended, or by supplying the missing evidence.",
+      "not_resolved_by_this_lane": true
+    },
+    {
+      "id": "UNR-03",
+      "item": "SRC27's four separate lower-layer accounts have floors but no ceilings.",
+      "layers": ["existence/access check", "full SHA-256 hash pass", "metadata read", "full compatibility read"],
+      "status": "UNRESOLVED",
+      "detail": "artifact 07's hardened note says 'at minimum', establishing a floor of 1 for each. No artifact supplies a maximum. The one-pass/max-one/zero-retry law governs the OPERATION, not these four access layers.",
+      "who_can_resolve": "HQ, by supplying ceilings, or at issuance on the authorized surface.",
+      "not_resolved_by_this_lane": true,
+      "explicit_refusal": "This lane declined to convert either the floor of 1 or the route-pass budget into a ceiling for any of the four layers."
+    },
+    {
+      "id": "UNR-04",
+      "item": "No O1-C08 stop trigger tests an access-layer count against a bound.",
+      "status": "UNRESOLVED",
+      "detail": "The ten stop triggers govern identity, locator, authority, ordinals, runtime, reader lane, oracle custody, physical witness, named consumer and dependency/currentness. None is a count test.",
+      "who_can_resolve": "HQ, once bounds exist. Adding a count-exceedance stop before bounds exist would require inventing thresholds.",
+      "not_resolved_by_this_lane": true
+    },
+    {
+      "id": "UNR-05",
+      "item": "Whether the historical 'independent integration review not yet completed' issuance blocker is discharged.",
+      "status": "HQ_ADJUDICATION_REQUIRED",
+      "evidence_gathered_in": "04_ISSUANCE_PREREQUISITE_INVENTORY.json PRQ-07",
+      "who_can_resolve": "HQ only.",
+      "not_resolved_by_this_lane": true,
+      "explicit_non_decision": "This lane offers no vote, no recommendation and no inference on this question."
+    },
+    {
+      "id": "UNR-06",
+      "item": "SRC27 RES-1 requires a warrant-time observation of the real decode's token shapes.",
+      "status": "DEFERRED_TO_ISSUANCE",
+      "detail": "The Stata extended-missing dual-shape branch is NOT source-free round-trip testable in pyreadstat 1.3.6. The run requirement is to record the exact reader_token and stata_token shapes the real decode produces, under the bound reader lane, as an explicit warrant-time observation. This is explicitly NOT a source-free PASS.",
+      "accounting_effect": "An additional warrant-time OBSERVATION obligation. It does not create an additional access-layer count and this lane did not treat it as one.",
+      "who_can_resolve": "the C4 execution owner at issuance, after a warrant exists.",
+      "not_resolved_by_this_lane": true
+    },
+    {
+      "id": "UNR-07",
+      "item": "SRC26 header-prefix read COUNT is unbound, distinct from its 176-byte quantity.",
+      "status": "UNRESOLVED",
+      "detail": "artifact 07 gives expected_header_prefix_bytes = 176, a bounded byte quantity. It does not bound the number of header-prefix reads. Separately, 176 must not be conflated with the 174 raw nominal case size or the 332 decoded dictionary width.",
+      "who_can_resolve": "HQ, by supplying a read count, or at issuance.",
+      "not_resolved_by_this_lane": true
+    },
+    {
+      "id": "UNR-08",
+      "item": "Metadata-read counts are unstated for five of the seven fresh-source targets.",
+      "sources": ["SRC02", "SRC06", "SRC14", "SRC26", "SRC27"],
+      "status": "UNRESOLVED",
+      "detail": "artifact 07 states expected_metadata_reads only for SRC08 and SRC12. For the other five, a metadata read may still occur incidentally. Absence of a stated count is NOT an established zero and was not recorded as one.",
+      "who_can_resolve": "HQ, by supplying counts, or at issuance.",
+      "not_resolved_by_this_lane": true
+    }
+  ],
+
+  "claims_deliberately_not_made": [
+    "That R9 is closed at candidate grain.",
+    "Any numeric value for existence/access checks, full-file SHA-256 hash passes, path-level opens or decoder invocations, for any source.",
+    "That C4B's requirement tokens constitute counts.",
+    "That SRC27's four lower-layer accounts are bounded at 1 - only floors of 1 are established.",
+    "That the route-pass budget of exactly one bounds any lower-layer access count.",
+    "That 'expected_*' figures are declared maxima enforceable as STOP conditions.",
+    "That 176 (header-prefix bytes), 174 (raw nominal case size) and 332 (decoded dictionary width) are the same quantity or may be collapsed.",
+    "That the absence of a stated metadata-read count is an established zero.",
+    "That SRC35 is unconstrained.",
+    "That SRC35 belongs inside the fresh-source access target set.",
+    "That creating the successor candidate authorizes hashing, statting, metadata reads, path opens or file opens.",
+    "That the historical warrant candidate was modified, superseded, replaced or withdrawn.",
+    "That the independent-integration-review issuance blocker is or is not discharged.",
+    "That this lane's candidate has been independently reviewed or accepted.",
+    "That the governing stage register changed."
+  ],
+
+  "explicitly_not_touched": {
+    "historical_warrant_candidate": "WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json - blob 9f6b113151f7c05f0a22432b034347b631e1a895, sha256 d57420f8016bf49cc0353f39dcd2271e6f370c3bd9b7e81f08466c0a1f574e0a, reverified unchanged",
+    "historical_c4_returns": "not edited",
+    "rawlsing_next": "not edited; 0 files changed",
+    "hq_handoff": "not edited",
+    "source_custody_records": "not edited",
+    "production": "not mutated",
+    "warrant": "none issued, none signed, none altered",
+    "locators": "0 discovered, 0 filled",
+    "raw_sources": "0 stat, 0 hash, 0 open, 0 metadata read, 0 decode, 0 materialization",
+    "live_c4": "not executed",
+    "c7": "not implemented",
+    "actor_person_work": "not implemented",
+    "astra": "not contacted, not invoked",
+    "self_adoption": "none",
+    "merge_into_control": "none"
+  },
+
+  "fabrication_guard": {
+    "values_fabricated": 0,
+    "values_inferred_from_operation_class": 0,
+    "floors_promoted_to_ceilings": 0,
+    "prior_lane_estimates_used_as_counts": 0,
+    "placeholders_filled_from_local_knowledge": 0,
+    "statement": "Every value recorded by this lane was read from a governing artifact at a pinned commit. Where the evidence was silent, this lane recorded silence rather than a number."
+  },
+
+  "final_disposition": "R9_EVIDENCE_INSUFFICIENT__WARRANT_BLOCKER_REMAINS"
+}

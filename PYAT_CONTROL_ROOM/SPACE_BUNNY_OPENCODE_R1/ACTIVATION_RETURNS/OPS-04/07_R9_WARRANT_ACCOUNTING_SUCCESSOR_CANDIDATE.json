@@ -1,0 +1,530 @@
+{
+  "schema": "PYAT_HQ190_C_R9_WARRANT_ACCOUNTING_SUCCESSOR_CANDIDATE@1.0.0",
+  "lane": "PYAT-HQ190-C-R9-WARRANT-ACCOUNTING-BINDING-R1",
+  "role": "RABOCHII / documentary-forensic implementer - Space Bunny",
+  "repository": "maidiu/rawlsing",
+  "worker_branch": "agent/rabochii-pyat-hq190-c-r9-warrant-accounting-binding-r1",
+  "commissioned_startup_sha": "be64ec98e648e1e6f1a9cb1ad32d7be4b2a84d33",
+
+  "document_class": "CANDIDATE_SUCCESSOR_TO_THE_HISTORICAL_CANDIDATE__NOT_A_WARRANT__AUTHORIZES_NOTHING",
+  "purpose": "Bind, at the actual access layer, every per-source accounting expectation and enforceable limit that the governing evidence DOES establish, and record as explicit unfilled issuance-time obligations every mandatory O1-C07 account for which the governing evidence establishes NO exact lawful bound. This candidate does not close R9. It precisely delimits R9.",
+
+  "preserves_historical_candidate": {
+    "historical_path": "WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json",
+    "historical_commit": "8ff40d37de69db2d8a6053a7c2242f481677f1a4",
+    "historical_blob": "9f6b113151f7c05f0a22432b034347b631e1a895",
+    "historical_sha256": "d57420f8016bf49cc0353f39dcd2271e6f370c3bd9b7e81f08466c0a1f574e0a",
+    "historical_bytes": 17073,
+    "overwritten": false,
+    "modified": false,
+    "deleted": false,
+    "note": "This successor is a NEW artifact at a NEW path. The historical candidate is neither edited nor replaced. The historical candidate is not present on this worker's ancestry (freeze 8ff40d37d is cross-lineage; merge-base 87029d349c8a7385cb673060a8e5decd4eb528ff), so overwriting was structurally impossible as well as forbidden."
+  },
+
+  "safety_invariants": {
+    "signed": false,
+    "issued": false,
+    "authorizes_access": false,
+    "execution_authorized": false,
+    "warrant_status": "SUCCESSOR_CANDIDATE_ONLY__NOT_ISSUED__NOT_SIGNED__NO_RAW_ACCESS_AUTHORIZED",
+    "issued_by": null,
+    "issue_date": null,
+    "signature_or_commit": null,
+    "locator_slots_unfilled": 7,
+    "locator_search_performed": false,
+    "raw_source_operations_performed": 0,
+    "raw_source_stat": 0,
+    "raw_source_hash": 0,
+    "raw_source_open": 0,
+    "raw_source_metadata_read": 0,
+    "raw_source_decode": 0,
+    "raw_source_materialization": 0,
+    "c4_executed": false,
+    "production_mutated": false,
+    "c7_implemented": false,
+    "actor_person_work_implemented": false,
+    "self_adopted": false,
+    "creates_no_authority_statement": "Creating, reading, hashing, diffing or storing this document is not source access and is not a pre-warrant exception. No field of this document authorizes hashing, statting, metadata reads, path-level opens or file opens."
+  },
+
+  "critical_statements": [
+    "THIS DOCUMENT IS A CANDIDATE SUCCESSOR. IT IS NOT A WARRANT. IT AUTHORIZES NOTHING.",
+    "It does NOT close R9. It binds what the evidence establishes and names, precisely, what the evidence does not establish.",
+    "No raw survey file may be opened, stat-ed, hashed, metadata-read, decoded or materialised until HQ issues a warrant AND the required user/resource owner records approval.",
+    "Hashing, statting and metadata reads ARE source access. They are NOT pre-warrant exceptions.",
+    "This lane performed zero raw-source operations of any kind and performed zero locator discovery.",
+    "Where the governing evidence supplies no exact lawful bound, this candidate records an UNFILLED ISSUANCE-TIME OBLIGATION and an explicit prohibition on inventing a value. No count in this document was inferred, estimated or fabricated."
+  ],
+
+  "governing_authority_basis": {
+    "omega1_O1_C07_requirement": "Execute exactly one governed fresh full-route LiTS pass, six bounded physical witnesses and retained WVS replay/comparison. Account separately for file hash passes, path-level opens and their measurement basis, metadata reads, header-prefix reads, decoder calls, selected-column/full reads, byte counts and retries. A full Route-B pass is not a claim of one OS-level file open.",
+    "omega1_O1_C07_acceptance": "Freeze expected budgets and instrumentation before launch; retain measured counts. WVS and excluded-source fresh opens remain zero under this scope.",
+    "artifact_07_O1_C07_instrumentation_principle": "A full Route-B pass is NOT one OS-level file open. Access must be separately accounted at every distinct layer.",
+    "artifact_07_accounting_basis_rule": "Each account must state its measurement BASIS, not only a count. A count without a stated basis is not an account.",
+    "c4b_scope": "Seven future fresh-read sources only; SRC35 is excluded because it is a retained comparator.",
+    "o1_c07_acceptance_currently_satisfiable": false,
+    "o1_c07_acceptance_shortfall": "O1-C07 acceptance requires expected budgets frozen before launch for the separately-accounted layers. Four mandatory layers have no exact budget anywhere in the governed evidence, so the acceptance criterion is not currently satisfiable. See r9_closure_status."
+  },
+
+  "mandatory_separate_accounts_O1_C07": [
+    "source-path existence/access checks",
+    "file hash passes (full SHA-256 over the file)",
+    "path-level opens",
+    "metadata reads",
+    "header-prefix reads",
+    "decoder invocations",
+    "selected-column reads",
+    "full reads",
+    "byte counts where measurable",
+    "retries"
+  ],
+
+  "measurement_basis_fields_required_for_every_figure": [
+    "what was measured",
+    "at which layer",
+    "by what mechanism",
+    "at what point in the run"
+  ],
+  "measurement_basis_law_verbatim": "Every accounting figure must be published with its measurement basis. A count of 'opens' is meaningless without stating whether it means OS-level path opens, reader invocations, or decoder calls. These are different quantities and C4B froze them as separate accounts.",
+
+  "layer_binding_status_summary": {
+    "total_mandatory_accounts": 10,
+    "accounts_with_any_established_per_source_value": 6,
+    "accounts_with_no_established_per_source_value_anywhere": 4,
+    "unbound_accounts": [
+      "source-path existence/access checks",
+      "file hash passes (full SHA-256 over the file)",
+      "path-level opens",
+      "decoder invocations"
+    ],
+    "partially_bound_accounts": [
+      {"account": "metadata reads", "bound_for": ["SRC08", "SRC12"], "not_bound_for": ["SRC02", "SRC06", "SRC14", "SRC26", "SRC27"]},
+      {"account": "header-prefix reads", "bound_for": ["SRC26"], "bound_as": "byte quantity 176, not a read count", "not_bound_for": ["SRC02", "SRC06", "SRC08", "SRC12", "SRC14", "SRC27"]},
+      {"account": "byte counts where measurable", "bound_for": ["SRC26"], "not_bound_for": ["SRC02", "SRC06", "SRC08", "SRC12", "SRC14", "SRC27"]}
+    ],
+    "fully_bound_accounts": [
+      "selected-column reads",
+      "full reads",
+      "retries"
+    ],
+    "enforcement_semantics_established": {
+      "hard_zero_budgets_are_stop_conditions": true,
+      "hard_zero_budgets_verbatim": "These are hard zeros. A single non-zero count in any of them is a STOP condition, not a reportable variance.",
+      "expected_counts_are_declared_expectations_not_declared_ceilings": true,
+      "expected_counts_enforcement_caveat": "The governing artifacts label the six-source counters 'expected_*'. No governing artifact states that exceeding an expected_* figure is itself a STOP condition. The enforceable ceiling for those layers therefore rests on max_retry_budget = 0 plus the immediate-stop retry law, NOT on an explicit maximum. This distinction is preserved rather than papered over."
+    }
+  },
+
+  "frozen_zero_budgets_global": {
+    "WVS_SRC35_fresh_source_opens": 0,
+    "excluded_source_fresh_opens": 0,
+    "candidate_A_B_C_runs": 0,
+    "measured_P2X_runs": 0,
+    "raw_respondent_pooling": 0,
+    "new_cross_source_respondent_joins": 0,
+    "SRC08_row_data_reads": 0,
+    "SRC12_row_data_reads": 0,
+    "SRC08_selected_columns": 0,
+    "SRC12_selected_columns": 0,
+    "discipline": "hard zeros; a single non-zero count in any of them is a STOP condition, not a reportable variance"
+  },
+
+  "retry_law_preserved": {
+    "frozen_maximum_verbatim": "ZERO retries across all eight sources under this freeze.",
+    "all_per_source_max_retry_budget_zero": true,
+    "preserved_from_C4B": [
+      "No automatic fallback/guessing/substitution.",
+      "A hash/config/authority/oracle mismatch stops that source immediately.",
+      "Retries must be separately counted and reason-coded; a retry may not change source, encoding, variables, operations, or authority.",
+      "Candidate A/B/C and measured P2X are outside this warrant.",
+      "No excluded source may be opened under this warrant."
+    ],
+    "authorization_of_retry": "A retry is authorised only by a NEW HQ-bound warrant, never by this one."
+  },
+
+  "per_source_accounting_binding": {
+    "SRC02": {
+      "source_file": "Afro Barometer Round 5.sav",
+      "format": "SAV",
+      "canonical_sha256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+      "access_locator": "<REQUIRED_FILL_IN_SLOT__SOURCE_LOCATOR_FILL_REQUIRED_BEFORE_WARRANT_ISSUANCE>",
+      "access_locator_state": "UNFILLED_PLACEHOLDER",
+      "expected_operation_class": "BOUNDED_FRESH_PHYSICAL_SELECTED_VARIABLE_READ",
+      "reader_lane": {"lane_id": "SAV_ENCODING_NULL", "encoding": null, "authority_status": null},
+      "max_retry_budget": 0,
+      "bound_layers": {
+        "selected_column_reads": {"value": 1, "provenance": "artifact 07 per_source_expected_operation_class.SRC02.expected_selected_reads", "enforcement": "declared expectation; ceiling rests on max_retry_budget 0 plus immediate-stop retry law"},
+        "full_reads": {"value": 0, "provenance": "artifact 07 .SRC02.expected_full_reads"},
+        "row_data_reads": {"value": 0, "provenance": "inferred from operation class BOUNDED_FRESH_PHYSICAL_SELECTED_VARIABLE_READ; NOT separately stated as a figure in artifact 07", "inference_flag": true}
+      },
+      "unbound_layers_issuance_time_obligation": ["source_path_existence_access_checks", "full_file_sha256_passes", "path_level_opens", "decoder_invocations"],
+      "allowed_operations": {"kind": "SELECTED_VARIABLE_PHYSICAL", "variables": [{"name": "Q10B", "ordinal": 58, "native_codes": [997], "expected_successor_type": "float64", "expected_missing_state": "FORMAT_USER_MISSING_VALUE", "expected_source_declaration": {"kind": "discrete", "value": 997}}]}
+    },
+    "SRC06": {
+      "source_file": "Arab Barometer Wave 5.sav",
+      "format": "SAV",
+      "canonical_sha256": "6a5cbad637ce1546833a1d4812ba6d1e8d75f85b5b199b0cf3ec5cf456068dbc",
+      "access_locator": "<REQUIRED_FILL_IN_SLOT__SOURCE_LOCATOR_FILL_REQUIRED_BEFORE_WARRANT_ISSUANCE>",
+      "access_locator_state": "UNFILLED_PLACEHOLDER",
+      "expected_operation_class": "BOUNDED_FRESH_PHYSICAL_SELECTED_VARIABLE_READ",
+      "reader_lane": {"lane_id": "SAV_ENCODING_NULL", "encoding": null, "authority_status": null},
+      "max_retry_budget": 0,
+      "bound_layers": {
+        "selected_column_reads": {"value": 1, "provenance": "artifact 07 .SRC06.expected_selected_reads"},
+        "full_reads": {"value": 0, "provenance": "artifact 07 .SRC06.expected_full_reads"}
+      },
+      "unbound_layers_issuance_time_obligation": ["source_path_existence_access_checks", "full_file_sha256_passes", "path_level_opens", "decoder_invocations", "byte_counts"],
+      "allowed_operations": {"kind": "SELECTED_VARIABLE_PHYSICAL", "variables": [{"name": "Q101", "ordinal": 20, "native_codes": [98, 99], "expected_successor_type": "float64", "expected_missing_state": "OBSERVED_STORAGE_VALUE"}, {"name": "Q2061B", "ordinal": 19, "native_codes": [97], "expected_successor_type": "float64", "expected_missing_state": "OBSERVED_STORAGE_VALUE"}]}
+    },
+    "SRC08": {
+      "source_file": "Asian Barometer Wave 1.sav",
+      "format": "SAV",
+      "canonical_sha256": "ac0b8bc1ddb2fa6b952417e35b6379ce6a2cf8596776a43282ba44f48e0ae1a2",
+      "access_locator": "<REQUIRED_FILL_IN_SLOT__SOURCE_LOCATOR_FILL_REQUIRED_BEFORE_WARRANT_ISSUANCE>",
+      "access_locator_state": "UNFILLED_PLACEHOLDER",
+      "expected_operation_class": "FRESH_METADATA_ONLY_DECODER_ADMISSION",
+      "reader_lane": {"lane_id": "SAV_ENCODING_BIG5_DECLARED", "encoding": "BIG5", "authority_status": "SOURCE_DECLARED_EXACT_SHA_ENCODING__PHYSICAL_DECODING_ONLY"},
+      "max_retry_budget": 0,
+      "bound_layers": {
+        "metadata_reads": {"value": 1, "provenance": "artifact 07 .SRC08.expected_metadata_reads"},
+        "selected_column_reads": {"value": 0, "provenance": "artifact 07 .SRC08.expected_selected_reads"},
+        "full_reads": {"value": 0, "provenance": "artifact 07 .SRC08.expected_full_reads"},
+        "row_data_reads": {"value": 0, "enforcement": "HARD_ZERO__STOP_CONDITION", "provenance": "artifact 07 O1_C07_instrumentation.frozen_zero_budgets.SRC08_row_data_reads AND candidate allowed_operations.row_data_reads"},
+        "selected_columns": {"value": 0, "enforcement": "HARD_ZERO__STOP_CONDITION", "provenance": "artifact 07 frozen_zero_budgets.SRC08_selected_columns"}
+      },
+      "unbound_layers_issuance_time_obligation": ["source_path_existence_access_checks", "full_file_sha256_passes", "path_level_opens", "decoder_invocations"],
+      "allowed_operations": {"kind": "EXACT_SHA_DECLARED_ENCODING_ADMISSION_PLUS_METADATA_ONLY_READER_PROBE", "row_data_reads": 0, "selected_columns": [], "full_source_decode": false}
+    },
+    "SRC12": {
+      "source_file": "EVS 1990.sav",
+      "format": "SAV",
+      "canonical_sha256": "66252a92c59bf6759b79a6b35b2be658b98a433373212a70c8ec94755d3e02ec",
+      "access_locator": "<REQUIRED_FILL_IN_SLOT__SOURCE_LOCATOR_FILL_REQUIRED_BEFORE_WARRANT_ISSUANCE>",
+      "access_locator_state": "UNFILLED_PLACEHOLDER",
+      "expected_operation_class": "FRESH_METADATA_ONLY_DECODER_ADMISSION",
+      "reader_lane": {"lane_id": "SAV_ENCODING_WINDOWS1252_DECLARED", "encoding": "WINDOWS-1252", "authority_status": "SOURCE_DECLARED_EXACT_SHA_ENCODING__PHYSICAL_DECODING_ONLY"},
+      "max_retry_budget": 0,
+      "multi_wave_pair_with": "SRC14",
+      "bound_layers": {
+        "metadata_reads": {"value": 1, "provenance": "artifact 07 .SRC12.expected_metadata_reads"},
+        "selected_column_reads": {"value": 0, "provenance": "artifact 07 .SRC12.expected_selected_reads"},
+        "full_reads": {"value": 0, "provenance": "artifact 07 .SRC12.expected_full_reads"},
+        "row_data_reads": {"value": 0, "enforcement": "HARD_ZERO__STOP_CONDITION", "provenance": "artifact 07 frozen_zero_budgets.SRC12_row_data_reads AND candidate allowed_operations.row_data_reads"},
+        "selected_columns": {"value": 0, "enforcement": "HARD_ZERO__STOP_CONDITION", "provenance": "artifact 07 frozen_zero_budgets.SRC12_selected_columns"}
+      },
+      "unbound_layers_issuance_time_obligation": ["source_path_existence_access_checks", "full_file_sha256_passes", "path_level_opens", "decoder_invocations"],
+      "allowed_operations": {"kind": "EXACT_SHA_DECLARED_ENCODING_ADMISSION_PLUS_METADATA_ONLY_READER_PROBE", "row_data_reads": 0, "selected_columns": [], "full_source_decode": false}
+    },
+    "SRC14": {
+      "source_file": "EVS 2008.sav",
+      "format": "SAV",
+      "canonical_sha256": "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379",
+      "access_locator": "<REQUIRED_FILL_IN_SLOT__SOURCE_LOCATOR_FILL_REQUIRED_BEFORE_WARRANT_ISSUANCE>",
+      "access_locator_state": "UNFILLED_PLACEHOLDER",
+      "expected_operation_class": "BOUNDED_FRESH_PHYSICAL_READ_EXACT_VARIABLE",
+      "reader_lane": {"lane_id": "SAV_ENCODING_NULL", "encoding": null, "authority_status": null},
+      "max_retry_budget": 0,
+      "multi_wave_pair_with": "SRC12",
+      "bound_layers": {
+        "selected_column_reads": {"value": 1, "provenance": "artifact 07 .SRC14.expected_selected_reads"},
+        "full_reads": {"value": 0, "provenance": "artifact 07 .SRC14.expected_full_reads"},
+        "witness_counts": {
+          "user_missing": 1917,
+          "ordinary_present": 64363,
+          "system_missing": 0,
+          "total_rows": 66280,
+          "enforcement": "ENFORCEABLE_STOP_TRIGGER",
+          "provenance": "artifact 07 O1_C08_failure_law.STOP_triggers 'required physical witness' - SRC14 counts differ from 1917/64363/0/66280"
+        },
+        "fixture_identity": {"fixture_id": "EVS08_DATE_MISSING_V372", "fixture_blob": "12f6adb77ef5692511055c8f0520e42c454f3867", "enforcement": "ENFORCEABLE_STOP_TRIGGER", "provenance": "artifact 07 STOP_triggers 'or the fixture identity does not resolve'"}
+      },
+      "unbound_layers_issuance_time_obligation": ["source_path_existence_access_checks", "full_file_sha256_passes", "path_level_opens", "decoder_invocations", "byte_counts"],
+      "D02_witness_binding": {
+        "native_class": "TYPED_DATE_USER_MISSING_SENTINEL",
+        "rendered_value": "1582-10-13",
+        "accepted_carrier_domain": ["python.datetime.date@1", "python.datetime.datetime@1", "python.datetime.time@1"],
+        "timezone_aware": "FAIL_CLOSED",
+        "decisive_frozen_control": "dates_as_pandas_datetime=False",
+        "prohibited_inference": "The retained rendering may not be used to infer date versus datetime; the actual subclass must be OBSERVED at run time.",
+        "RES_2": "pandas.Timestamp is outside the accepted exact-type carrier. Do NOT widen during C4; a Timestamp arrival is a fail-closed STOP.",
+        "RES_3": "numpy datetime64 unit affects arrival typing; bounded by numpy 2.4.6."
+      },
+      "allowed_operations": {"kind": "BOUNDED_PHYSICAL_WITNESS_READ_EXACT_VARIABLE", "variables": [{"name": "v372", "ordinal": 466}]}
+    },
+    "SRC26": {
+      "source_file": "Latinobarometro 2024.sav",
+      "format": "SAV",
+      "canonical_sha256": "ff5cef18c87969026e7f993d09f10c38a547bf81d5d398784fb59b960b7b0a40",
+      "access_locator": "<REQUIRED_FILL_IN_SLOT__SOURCE_LOCATOR_FILL_REQUIRED_BEFORE_WARRANT_ISSUANCE>",
+      "access_locator_state": "UNFILLED_PLACEHOLDER",
+      "expected_operation_class": "BOUNDED_HEADER_PREFIX_PLUS_READER_METADATA",
+      "reader_lane": {"lane_id": "SAV_ENCODING_NULL", "encoding": null, "authority_status": null},
+      "max_retry_budget": 0,
+      "bound_layers": {
+        "selected_column_reads": {"value": 0, "provenance": "artifact 07 .SRC26.expected_selected_reads"},
+        "full_reads": {"value": 0, "provenance": "artifact 07 .SRC26.expected_full_reads"},
+        "header_prefix_bytes": {
+          "value": 176,
+          "unit": "BYTES_NOT_READ_COUNT",
+          "provenance": "artifact 07 .SRC26.expected_header_prefix_bytes",
+          "enforcement_caveat": "This is a bounded byte quantity, not an access count. It does not by itself bound the number of header-prefix reads."
+        },
+        "raw_nominal_case_size": {"value": 174, "provenance": "historical candidate allowed_operations.expected_raw_nominal_case_size"},
+        "decoded_dictionary_data_width": {"value": 332, "provenance": "historical candidate allowed_operations.expected_decoded_dictionary_data_width"},
+        "geometry_equality": {"value": false, "law": "Raw nominal case size and decoded dictionary width must be preserved SEPARATELY. Divergence is expected, not a failure, and must never be collapsed.", "provenance": "historical candidate allowed_operations.law and artifact 07 .SRC26.retry_law"}
+      },
+      "unbound_layers_issuance_time_obligation": ["source_path_existence_access_checks", "full_file_sha256_passes", "path_level_opens", "decoder_invocations", "header_prefix_read_count"],
+      "allowed_operations": {"kind": "BOUNDED_HEADER_PREFIX_PLUS_READER_METADATA"}
+    },
+    "SRC27": {
+      "source_file": "LiTS_I.dta",
+      "format": "DTA",
+      "canonical_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+      "access_locator": "<REQUIRED_FILL_IN_SLOT__SOURCE_LOCATOR_FILL_REQUIRED_BEFORE_WARRANT_ISSUANCE>",
+      "access_locator_state": "UNFILLED_PLACEHOLDER",
+      "expected_operation_class": "EXACTLY_ONE_GOVERNED_FRESH_FULL_ROUTE_PASS",
+      "reader_lane": {"lane_id": "DTA_ENCODING_LATIN1_COMPATIBILITY", "encoding": "latin1", "authority_status": "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY"},
+      "max_retry_budget": 0,
+      "operation_level_law": {
+        "expected_full_route_passes": 1,
+        "max_full_route_passes": 1,
+        "enforcement": "ENFORCEABLE__DECLARED_MINIMUM_AND_MAXIMUM",
+        "retry_law_verbatim": "Exactly ONE governed fresh pass. A second pass is not a retry; it is a separate run requiring new HQ-bound authority.",
+        "provenance": "artifact 07 .SRC27.expected_full_route_passes and .expected_full_route_passes_max"
+      },
+      "workload_shape": {
+        "candidates": 50,
+        "query_roles": 77,
+        "respondent_event_slots": ["q301_2", "q301_7"],
+        "coordinate_fact_slots": ["country", "city", "region", "tablec", "tabled"],
+        "default_weight_measure_fact": false,
+        "provenance": "historical candidate allowed_operations and artifact 07 .SRC27.workload"
+      },
+      "separate_lower_layer_accounts": {
+        "critical": "These four accounts MUST be counted separately. Collapsing them into 'one file open' is an accounting failure expressly forbidden by Omega-1.",
+        "accounting_warning_verbatim": "One governed Route-B pass is NOT one OS-level file open. Existence/access check, full hash pass, metadata read and full compatibility read are SEPARATE accounts.",
+        "hardened_note_verbatim": "The frozen 'exactly one governed fresh full Route-B pass' is a WORKLOAD constraint, not an access constraint. It does NOT license assuming one file open. The run will require at minimum: one existence/access check, one full SHA-256 hash pass, one metadata read, and one full compatibility read. Each is a separate account under O1-C07.",
+        "layers": [
+          {"layer": "source_path_existence_access_check", "established_floor": 1, "established_ceiling": null, "ceiling_status": "NOT_ESTABLISHED_BY_GOVERNING_EVIDENCE", "evidence_grade": "FLOOR_ONLY"},
+          {"layer": "full_file_sha256_hash_pass", "established_floor": 1, "established_ceiling": null, "ceiling_status": "NOT_ESTABLISHED_BY_GOVERNING_EVIDENCE", "evidence_grade": "FLOOR_ONLY"},
+          {"layer": "metadata_read", "established_floor": 1, "established_ceiling": null, "ceiling_status": "NOT_ESTABLISHED_BY_GOVERNING_EVIDENCE", "evidence_grade": "FLOOR_ONLY"},
+          {"layer": "full_compatibility_read", "established_floor": 1, "established_ceiling": null, "ceiling_status": "NOT_ESTABLISHED_BY_GOVERNING_EVIDENCE", "evidence_grade": "FLOOR_ONLY"}
+        ],
+        "floor_not_ceiling_law": "The hardened note says 'at minimum'. A floor is not an enforceable ceiling. An enforceable per-layer limit requires a maximum, which no governing artifact supplies for these four layers.",
+        "explicitly_not": "This candidate does NOT convert 'one governed full Route-B pass' into 'one OS-level file open', and does NOT derive any of the four ceilings from the operation-level pass budget."
+      },
+      "unbound_layers_issuance_time_obligation": ["source_path_existence_access_check_CEILING", "full_file_sha256_hash_pass_CEILING", "metadata_read_CEILING", "full_compatibility_read_CEILING", "path_level_opens", "decoder_invocations", "byte_counts"],
+      "oracle_binding": {"checkpoint_document_sha256": "2704fd3fadc9c898a512183aaf5eebf0ca48d78c47e75a19d47e17281eaa5726", "oracle_identity": "e5d66db4b6f8339672b0f4828b72a8df68b5525bf71ecfda899d0531d618a98a"},
+      "source_specific_authority": "urn:rawlsing:pre553:as2a:lits1-projection-authority:sha256:9dd1e6b7350ebb795e028db86279131f8d319e939a044b74c3c5605ecacf5b06",
+      "RES_1": {
+        "statement": "The Stata extended-missing dual-shape branch is NOT source-free round-trip testable in pyreadstat 1.3.6.",
+        "run_requirement": "Record the exact reader_token and stata_token shapes the real decode produces, under the bound reader lane, as an explicit warrant-time observation. This is NOT a source-free PASS.",
+        "accounting_effect": "Creates an additional warrant-time OBSERVATION obligation. It does not create an additional access-layer count."
+      }
+    }
+  },
+
+  "c4b_slot_binding_matrix": {
+    "purpose": "The required R9 repair, stated by both independent reviews, is to restore a per-source source_access_accounting block for all seven sources with C4B's seven exact-count slots, 'populated or bound to the frozen expectations in artifact 07'. This matrix tests each slot against that instruction. Three of the seven slots can be neither populated nor bound, because artifact 07 carries no corresponding expectation.",
+    "repair_specification_sources": [
+      {"reviewer": "ALT-B Space Bunny", "commit": "3a5b2cbc7f1978384268376f3ee493c7c095780b", "path": "WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FINAL-INTEGRATION-REVIEW-ALT-B-R1/05_WARRANT_CANDIDATE_REVIEW.json", "required_repair_verbatim": "At issuance, restore the per-source source_access_accounting block for all seven sources with the seven exact-count slots and their basis/config requirements, populated or bound to the frozen expectations in artifact 07.", "per_source_instrumentation_bound_observed": "false for all 7 sources"},
+      {"reviewer": "R2 disputed-claims re-check", "commit": "afb1eb49bbd2ba49c1cb1c4f0501a35908d161d3", "path": "WORKER_RETURNS/PYAT-C4-DISPUTED-CLAIMS-RECHECK-R1/04_C4_R9_GAP.json", "required_repair_verbatim": "Restore a per-source source_access_accounting block for all seven sources with the seven slots above and their basis/config/reason qualifiers, populated or bound to the frozen expectations in artifact 07."}
+    ],
+    "slots": [
+      {
+        "slot": "full_file_sha256_passes",
+        "template_qualifier": "REQUIRED_EXACT_COUNT",
+        "artifact_07_expectation_exists": false,
+        "can_populate_from_governing_evidence": false,
+        "can_bind_to_artifact_07": false,
+        "bind_status": "NOT_BINDABLE",
+        "cross_reference_only": "C4B precondition requires the locator to resolve to bytes whose full-file SHA-256 equals the frozen identity before decode. That establishes a hash pass is REQUIRED. It supplies no count and no expectation to bind to.",
+        "obligation_id": "R9-OBL-02"
+      },
+      {
+        "slot": "path_opens",
+        "template_qualifier": "REQUIRED_EXACT_COUNT_AND_BASIS",
+        "artifact_07_expectation_exists": false,
+        "can_populate_from_governing_evidence": false,
+        "can_bind_to_artifact_07": false,
+        "bind_status": "NOT_BINDABLE",
+        "basis_status": "NO BASIS SUPPLIED_EITHER__artifact 07 requires a stated measurement basis for every figure and Omega-1 requires path-level opens to be accounted with their measurement basis. Neither a count nor a basis exists.",
+        "obligation_id": "R9-OBL-03"
+      },
+      {
+        "slot": "decoder_invocations",
+        "template_qualifier": "REQUIRED_EXACT_COUNT",
+        "artifact_07_expectation_exists": false,
+        "can_populate_from_governing_evidence": false,
+        "can_bind_to_artifact_07": false,
+        "bind_status": "NOT_BINDABLE",
+        "cross_reference_only": "None. Artifact 07's per-source operation classes name decoder ADMISSION for SRC08 and SRC12 but state no decoder invocation count for any source.",
+        "obligation_id": "R9-OBL-04"
+      },
+      {
+        "slot": "metadata_header_reads",
+        "template_qualifier": "REQUIRED_EXACT_COUNT",
+        "artifact_07_expectation_exists": true,
+        "bound_for": ["SRC08", "SRC12"],
+        "bound_value": 1,
+        "unbound_for": ["SRC02", "SRC06", "SRC14", "SRC26", "SRC27"],
+        "can_bind_to_artifact_07": "PARTIAL__2_OF_7",
+        "bind_status": "PARTIALLY_BINDABLE",
+        "obligation_id": "R9-OBL-07"
+      },
+      {
+        "slot": "selected_reads",
+        "template_qualifier": "REQUIRED_EXACT_COUNT_AND_CONFIG",
+        "artifact_07_expectation_exists": true,
+        "bound_for": ["SRC02", "SRC06", "SRC08", "SRC12", "SRC14", "SRC26"],
+        "bound_values": {"SRC02": 1, "SRC06": 1, "SRC08": 0, "SRC12": 0, "SRC14": 1, "SRC26": 0},
+        "unbound_for": ["SRC27"],
+        "config_qualifier_satisfied_by": "the per-source allowed_operations block in this candidate, which carries variable names, ordinals, native codes, expected successor types and expected missing states",
+        "can_bind_to_artifact_07": "PARTIAL__6_OF_7",
+        "bind_status": "PARTIALLY_BINDABLE",
+        "note_on_SRC27": "SRC27 has no expected_selected_reads in artifact 07. Its compatibility read is a full-route read governed by the route-pass law, not a selected read. Mapping the route pass into this slot would be a fabrication."
+      },
+      {
+        "slot": "full_reads",
+        "template_qualifier": "REQUIRED_EXACT_COUNT_AND_CONFIG",
+        "artifact_07_expectation_exists": true,
+        "bound_for": ["SRC02", "SRC06", "SRC08", "SRC12", "SRC14", "SRC26"],
+        "bound_values": {"SRC02": 0, "SRC06": 0, "SRC08": 0, "SRC12": 0, "SRC14": 0, "SRC26": 0},
+        "unbound_for": ["SRC27"],
+        "can_bind_to_artifact_07": "PARTIAL__6_OF_7",
+        "bind_status": "PARTIALLY_BINDABLE",
+        "note_on_SRC27": "Artifact 07 carries no expected_full_reads for SRC27. The hardened note establishes a FLOOR of one full compatibility read. Binding a floor into a slot that requires an exact count would convert a minimum into a limit, which this candidate refuses to do."
+      },
+      {
+        "slot": "retries",
+        "template_qualifier": "REQUIRED_EXACT_COUNT_AND_REASON",
+        "artifact_07_expectation_exists": true,
+        "bound_for": ["SRC02", "SRC06", "SRC08", "SRC12", "SRC14", "SRC26", "SRC27"],
+        "bound_value": 0,
+        "bound_for_all_eight_artifact_07_sources": true,
+        "reason_qualifier_satisfied_by": "the per-source retry_law and the global frozen maximum 'ZERO retries across all eight sources under this freeze'",
+        "can_bind_to_artifact_07": "FULL__7_OF_7",
+        "bind_status": "FULLY_BINDABLE"
+      }
+    ],
+    "slot_bind_status_summary": {
+      "fully_bindable": ["retries"],
+      "partially_bindable": ["metadata_header_reads", "selected_reads", "full_reads"],
+      "not_bindable": ["full_file_sha256_passes", "path_opens", "decoder_invocations"],
+      "not_bindable_count": 3,
+      "additional_mandatory_O1_C07_account_absent_from_the_C4B_slot_set": "source-path existence/access checks - required by O1-C07, named by artifact 07's mandatory_separate_accounts, but not one of C4B's seven slots. It therefore has neither a slot to populate nor an expectation to bind to.",
+      "conclusion": "The R9 repair as specified by both independent reviews CANNOT be completed as specified. Three of the seven C4B slots can be neither populated nor bound, and a fourth mandatory O1-C07 account has no slot at all. Completing the repair as specified would require inventing at least three counts, which this candidate refuses to do."
+    }
+  },
+
+  "SRC35_treatment": {
+    "source_key": "SRC35",
+    "fresh_source_warrant_target": false,
+    "exclusion_reason_verbatim": "RETAINED_COMPARATOR__ZERO_FRESH_READ",
+    "c4b_scope_reason_verbatim": "Seven future fresh-read sources only; SRC35 is excluded because it is a retained comparator.",
+    "why_outside_the_fresh_source_target_set": "SRC35 is a retained comparator, not an eventual fresh-source access target. It is replayed from retained material only, so it generates no fresh-source access-layer accounts at all. Including it in a per-access-layer fresh-access binding would misrepresent it as an access target and would weaken, not strengthen, the accounting.",
+    "governing_law": {
+      "operation_class": "RETAINED_COMPARATOR_REPLAY_AND_COMPARE",
+      "fresh_reads": 0,
+      "max_retry_budget": 0,
+      "retry_law_verbatim": "No fresh access at all. Replay uses retained material only.",
+      "reader_lane_id": "NONE__RETAINED_ONLY",
+      "read_path_verbatim": "NO FRESH LANE. Retained comparator; zero fresh raw reads.",
+      "materialises_frame": false,
+      "global_hard_zero": "WVS_SRC35_fresh_source_opens: 0",
+      "access_locator_state": "NOT_REQUIRED__RETAINED_COMPARATOR__NO_FRESH_ACCESS"
+    },
+    "explicitly_not": "SRC35 is NOT unconstrained. It carries a zero-fresh-read law, a hard-zero global open budget, a retained-only reader lane and a zero retry budget.",
+    "retained_identity": {"source_sha256": "2bd2a20fc565e7e7b4b2030fd8457db4d0d88160c5ee5186e9ea6c267209af7d", "oracle_identity": "3694b8bd0b5468433a1a83bd469337c7e36e552c3a9a5fef65fff88df8fce800", "oracle_document_sha256": "9d11a480c1c1341a2a92e0def77f5d15563ed83a44efeb9f89eff5b6cbb1527d", "fresh_read": false}
+  },
+
+  "unfilled_issuance_time_obligations": {
+    "law": "Every entry below is an obligation on whoever issues the warrant on the authorized execution surface. None may be filled from local knowledge, from a prior lane's estimate, or from an operation-level budget. Each requires either governing evidence that supplies the exact value, or an instrument-level determination made on the authorized surface and recorded with its measurement basis.",
+    "c4b_slot_semantics_verbatim": {
+      "full_file_sha256_passes": "REQUIRED_EXACT_COUNT",
+      "path_opens": "REQUIRED_EXACT_COUNT_AND_BASIS",
+      "decoder_invocations": "REQUIRED_EXACT_COUNT",
+      "metadata_header_reads": "REQUIRED_EXACT_COUNT",
+      "selected_reads": "REQUIRED_EXACT_COUNT_AND_CONFIG",
+      "full_reads": "REQUIRED_EXACT_COUNT_AND_CONFIG",
+      "retries": "REQUIRED_EXACT_COUNT_AND_REASON"
+    },
+    "c4b_slots_carry_values": false,
+    "c4b_slots_carry_requirement_tokens_only": true,
+    "obligations": [
+      {"obligation_id": "R9-OBL-01", "account": "source-path existence/access checks", "per_source": ["SRC02", "SRC06", "SRC08", "SRC12", "SRC14", "SRC26", "SRC27"], "exact_value_available_in_governing_evidence": false, "prohibition": "MUST NOT be inferred from the operation class, the retry budget, or any lane's estimate."},
+      {"obligation_id": "R9-OBL-02", "account": "file hash passes (full SHA-256 over the file)", "per_source": ["SRC02", "SRC06", "SRC08", "SRC12", "SRC14", "SRC26", "SRC27"], "exact_value_available_in_governing_evidence": false, "note": "C4B precondition requires the locator to resolve to bytes whose full-file SHA-256 equals the frozen identity before decode, which establishes that at least one hash pass is REQUIRED. It does not establish how many.", "prohibition": "MUST NOT be set to 1 by reading the precondition as a count."},
+      {"obligation_id": "R9-OBL-03", "account": "path-level opens", "per_source": ["SRC02", "SRC06", "SRC08", "SRC12", "SRC14", "SRC26", "SRC27"], "exact_value_available_in_governing_evidence": false, "note": "Omega-1 requires path-level opens to be accounted WITH their measurement basis. Neither a count nor a basis is supplied.", "prohibition": "MUST NOT be collapsed into a reader invocation or a decoder call. These are different quantities."},
+      {"obligation_id": "R9-OBL-04", "account": "decoder invocations", "per_source": ["SRC02", "SRC06", "SRC08", "SRC12", "SRC14", "SRC26", "SRC27"], "exact_value_available_in_governing_evidence": false, "prohibition": "MUST NOT be derived from the selected-read or full-read figures. A read is not a decoder invocation."},
+      {"obligation_id": "R9-OBL-05", "account": "SRC27 lower-layer ceilings (existence/access, hash pass, metadata read, full compatibility read)", "per_source": ["SRC27"], "exact_value_available_in_governing_evidence": false, "note": "Floors of 1 are established. Ceilings are not.", "prohibition": "MUST NOT be derived from max_full_route_passes = 1."},
+      {"obligation_id": "R9-OBL-06", "account": "header-prefix read COUNT for SRC26", "per_source": ["SRC26"], "exact_value_available_in_governing_evidence": false, "note": "176 is a byte quantity, not a read count.", "prohibition": "MUST NOT be reported as a read count."},
+      {"obligation_id": "R9-OBL-07", "account": "metadata read counts for the five sources lacking one", "per_source": ["SRC02", "SRC06", "SRC14", "SRC26", "SRC27"], "exact_value_available_in_governing_evidence": false, "prohibition": "MUST NOT be assumed zero merely because the operation class is a selected-variable or header-prefix read. Metadata reads may occur incidentally and must be counted if they occur."},
+      {"obligation_id": "R9-OBL-08", "account": "byte counts where measurable", "per_source": ["SRC02", "SRC06", "SRC08", "SRC12", "SRC14", "SRC27"], "exact_value_available_in_governing_evidence": false, "note": "Only SRC26 carries a bounded byte quantity.", "prohibition": "MUST NOT be fabricated."}
+    ],
+    "total_unfilled_obligations": 8,
+    "unfilled_obligations_covering_all_seven_sources": ["R9-OBL-01", "R9-OBL-02", "R9-OBL-03", "R9-OBL-04"]
+  },
+
+  "stop_triggers_preserved_O1_C08": [
+    {"trigger": "source identity", "test": "observed file SHA-256 != the bound per-source SHA-256"},
+    {"trigger": "path/locator", "test": "the filled-in access locator does not resolve to the bound source identity"},
+    {"trigger": "authority", "test": "authority refs, authority_id or authority_version do not agree with the frozen authority closure"},
+    {"trigger": "required columns/ordinals", "test": "a selected variable or ordinal is absent, or an unexpected selected column appears"},
+    {"trigger": "runtime", "test": "any component of the execution-surface identifier differs, or any invalidating condition in 06_RUNTIME_READER_LANES_AND_RESOURCE_LAW.json.validity_and_invalidation occurs"},
+    {"trigger": "reader lane", "test": "the executed reader configuration/lane differs from the per-source lane bound in 06, or a digest is published without its lane"},
+    {"trigger": "oracle/preimage custody", "test": "retained oracle identity, packet manifest digest or preimage digests do not resolve as bound"},
+    {"trigger": "required physical witness", "test": "SRC14 counts differ from 1917/64363/0/66280, or the fixture identity does not resolve"},
+    {"trigger": "named consumer", "test": "no ACTUAL trace through evaluate_positioned_subject_possibility is produced"},
+    {"trigger": "dependency/currentness/replay determinant", "test": "authority maintenance or analytical dependency closure does not cover the produced result"}
+  ],
+  "stop_trigger_gap_recorded": "No O1-C08 stop trigger tests an access-layer COUNT against a bound. The stop triggers govern identity, locator, authority, ordinals, runtime, lane, custody, witness and dependency. Adding a count-exceedance stop would require a bound that does not yet exist for four accounts.",
+
+  "difference_discipline_preserved": {
+    "classification_required": ["source", "authority", "determinant", "witness", "geometry", "negative_state", "replay"],
+    "rule": "Any difference must be classified with its exact failed determinant before the run proceeds. An unclassified difference is itself a STOP condition.",
+    "unexpected_differences_fail_closed": true
+  },
+
+  "bound_globals": {
+    "execution_surface_identifier": "C4C3-DARWIN-X86_64-ANCHOR/CPYTHON-3.11.3/PYREADSTAT-1.3.6/PYARROW-25.0.1/PANDAS-2.3.3/NUMPY-2.4.6/PYTEST-9.1.1",
+    "execution_combined_tree": "8f7efe690a161902e79358eb31650c238a4c0be8",
+    "rawlsing_next_tree_hash": "b0c1ab472cde033e21f1c2f63fbcbea2f0cccef0",
+    "accepted_C3_blobs_required_before_any_source_read": {
+      "g01_owner_blob": "31a9afd7d91ed4cb2fb1c1aab3ef86a5fdda1f85",
+      "physical_decoder_blob": "d3d828c171ea9fdd0e90563aff6ef705f5aae2cf",
+      "r5_codec_blob": "6000a1704d713f65e07610d81e9b3fd8bdd515ca",
+      "proof_law": "Execution head must descend from accepted C3 integration or independently prove exact blob equivalence for the accepted C3 owner surface."
+    },
+    "reader_lane_law": "A physical-metadata digest is valid only as (source identity, exact reader configuration/lane). Both must be bound per source and reported together at run time.",
+    "digest_publication_requirement": "Every physical-metadata digest must be published with its reader lane."
+  },
+
+  "excluded_account": {
+    "non_selected_sources": 27,
+    "law": "The 27 non-selected sources are NOT authorised for any fresh open, hash, stat or decode under this warrant.",
+    "global_hard_zero": "excluded_source_fresh_opens: 0",
+    "also_excluded": ["candidate_A_B_C_runs: 0", "measured_P2X_runs: 0", "raw_respondent_pooling: 0", "new_cross_source_respondent_joins: 0"]
+  },
+
+  "substitutions_forbidden": true,
+  "install_on_import": 0,
+  "silent_dependency_upgrade": 0,
+
+  "issuance_prerequisite_pointer": "See WORKER_RETURNS/PYAT-HQ190-C-R9-WARRANT-ACCOUNTING-BINDING-R1/04_ISSUANCE_PREREQUISITE_INVENTORY.json",
+
+  "r9_closure_status": {
+    "r9_closed_by_this_candidate": false,
+    "disposition": "R9_EVIDENCE_INSUFFICIENT__WARRANT_BLOCKER_REMAINS",
+    "reason": "Four of the ten mandatory O1-C07 separate accounts - source-path existence/access checks, file hash passes, path-level opens and decoder invocations - have no exact per-source lawful bound anywhere in the governed evidence. C4B's warrant template specifies these accounts but supplies only requirement tokens (REQUIRED_EXACT_COUNT / REQUIRED_EXACT_COUNT_AND_BASIS), deferring the numbers to issuance on the authorized execution surface. Omega-1's O1-C07 acceptance criterion requires expected budgets frozen before launch. That criterion is therefore not currently satisfiable.",
+    "what_this_candidate_achieves": "It binds every layer the evidence does establish, with provenance, at the correct access layer, and converts every unestablished layer into an explicit, individually-identified, unfilled issuance-time obligation with a named prohibition on fabrication.",
+    "what_would_close_r9": "Either (a) governing evidence that supplies exact per-source values for all four unbound accounts, or (b) an instrument-level determination of those four accounts made on the authorized execution surface and recorded with the four required measurement-basis fields - which is itself a warrant-issuance-time act requiring locator fill and the two approvals, neither of which exists.",
+    "explicitly_not_claimed": "This candidate does not claim R9 closed at candidate grain. Independent hostile review and HQ adjudication remain required.",
+    "bound_layers_now": 6,
+    "unbound_layers_now": 4,
+    "unfilled_obligations_now": 8
+  },
+
+  "successor_candidate_sha256": "RECORDED_IN_03_SUCCESSOR_CANDIDATE_VERIFICATION__A_FILE_CANNOT_CONTAIN_ITS_OWN_DIGEST",
+
+  "terminal": "HQ190_C_R9_WARRANT_ACCOUNTING_RETURNED__HQ_REVIEW_REQUIRED"
+}

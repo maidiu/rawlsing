@@ -1,0 +1,117 @@
+{
+  "schema": "PYAT_HQ190_C_SUCCESSOR_CANDIDATE_VERIFICATION@1.0.0",
+  "lane": "PYAT-HQ190-C-R9-WARRANT-ACCOUNTING-BINDING-R1",
+  "role": "RABOCHII / documentary-forensic implementer - Space Bunny",
+  "purpose": "Record the successor candidate's complete SHA-256 and prove every commission-mandated safety invariant, every governing-fact preservation requirement, and the preservation of the historical candidate.",
+
+  "successor_candidate_identity": {
+    "path": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-04/07_R9_WARRANT_ACCOUNTING_SUCCESSOR_CANDIDATE.json",
+    "sha256": "dd9758ab018cde2a702a2671313333e987928904a29ae74e658b05e46f72078b",
+    "git_blob": "907c28a2e5b28a46d70ffc7b0a45a36927465110",
+    "bytes": 42643,
+    "digest_method": "shasum -a 256 over the file bytes",
+    "recorded_outside_the_file_because": "A file cannot contain its own digest. The candidate's own successor_candidate_sha256 field states this and points here."
+  },
+
+  "crosswalk_identity": {
+    "path": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-04/08_R9_ACCOUNTING_BINDING_CROSSWALK.md",
+    "sha256": "1940c0b816ae364ea6530e79752db1775b8e1125200b2c1242bb5543b7ed96b8",
+    "bytes": 18679,
+    "candidate_digest_cited_inside_crosswalk": "dd9758ab018cde2a702a2671313333e987928904a29ae74e658b05e46f72078b",
+    "digest_citation_matches_actual": true
+  },
+
+  "historical_candidate_preservation": {
+    "path": "WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json",
+    "commit": "8ff40d37de69db2d8a6053a7c2242f481677f1a4",
+    "blob": "9f6b113151f7c05f0a22432b034347b631e1a895",
+    "sha256": "d57420f8016bf49cc0353f39dcd2271e6f370c3bd9b7e81f08466c0a1f574e0a",
+    "bytes": 17073,
+    "reverified_after_successor_writes": true,
+    "identical_to_pre_lane_state": true,
+    "overwritten": false,
+    "modified": false,
+    "deleted": false,
+    "structural_note": "The freeze is not an ancestor of this worker's branch (merge-base 87029d349c8a7385cb673060a8e5decd4eb528ff), so the historical candidate is not present in this branch's tree. Overwriting was structurally impossible as well as forbidden.",
+    "sha256_cross_reference": "This digest also matches the value independently recomputed and recorded by Lane A fe6103cd in 05_WARRANT_CANDIDATE_REVIEW.json candidate_sha256_recomputed, and the value recorded in HQ188-B's claim map."
+  },
+
+  "commission_safety_invariants": [
+    {"invariant": "signed", "required": false, "actual": false, "result": "PASS"},
+    {"invariant": "issued", "required": false, "actual": false, "result": "PASS"},
+    {"invariant": "authorizes_access", "required": false, "actual": false, "result": "PASS"},
+    {"invariant": "execution_authorized", "required": false, "actual": false, "result": "PASS"},
+    {"invariant": "warrant_status declares non-issuance", "required": true, "actual": "SUCCESSOR_CANDIDATE_ONLY__NOT_ISSUED__NOT_SIGNED__NO_RAW_ACCESS_AUTHORIZED", "result": "PASS"},
+    {"invariant": "issued_by is null", "required": null, "actual": null, "result": "PASS"},
+    {"invariant": "issue_date is null", "required": null, "actual": null, "result": "PASS"},
+    {"invariant": "signature_or_commit is null", "required": null, "actual": null, "result": "PASS"},
+    {"invariant": "no field authorizes hashing, statting, metadata reads or file opens", "required": true, "actual": "candidate states this explicitly in critical_statements and safety_invariants.creates_no_authority_statement", "result": "PASS"},
+    {"invariant": "r9_closed is not asserted", "required": false, "actual": false, "result": "PASS"}
+  ],
+
+  "governing_fact_preservation": [
+    {"required_fact": "six workload sources already have explicit read counters", "preserved": true, "evidence_in_successor": "SRC02, SRC06, SRC08, SRC12, SRC14, SRC26 each carry explicit selected/full read values with artifact-07 provenance; SRC08 and SRC12 additionally carry expected_metadata_reads; SRC26 additionally carries expected_header_prefix_bytes", "result": "PASS"},
+    {"required_fact": "SRC27 has exactly one governed full Route-B pass, maximum one, zero retries", "preserved": true, "evidence_in_successor": "per_source_accounting_binding.SRC27.operation_level_law = {expected_full_route_passes: 1, max_full_route_passes: 1, max_retry_budget: 0}", "result": "PASS"},
+    {"required_fact": "SRC27's existence/access, hash, metadata and full compatibility reads are separate accounts and must not be collapsed into one file open", "preserved": true, "evidence_in_successor": "SRC27.separate_lower_layer_accounts lists all four layers individually with the accounting_warning and hardened_note verbatim, each marked FLOOR_ONLY with established_ceiling null, plus explicit_not stating the candidate does not convert the route-pass budget into an open count", "result": "PASS"},
+    {"required_fact": "SRC35 has zero fresh reads and is retained-only", "preserved": true, "evidence_in_successor": "SRC35_treatment records fresh_source_warrant_target false, exclusion reason, fresh_reads 0, retry law, reader lane NONE__RETAINED_ONLY, read path, materialises_frame false, global hard zero, and explicitly_not that it is NOT unconstrained", "result": "PASS"},
+    {"required_fact": "all locator placeholders remain placeholders", "preserved": true, "evidence_in_successor": "all seven per-source access_locator values are the literal <REQUIRED_FILL_IN_SLOT__SOURCE_LOCATOR_FILL_REQUIRED_BEFORE_WARRANT_ISSUANCE>; locator_slots_unfilled = 7; locator_search_performed = false", "result": "PASS"},
+    {"required_fact": "all seven fresh-source candidate entries retain zero retry", "preserved": true, "evidence_in_successor": "max_retry_budget = 0 on SRC02, SRC06, SRC08, SRC12, SRC14, SRC26, SRC27", "result": "PASS"},
+    {"required_fact": "creating this successor candidate authorizes nothing", "preserved": true, "evidence_in_successor": "document_class, warrant_status, critical_statements and safety_invariants all state it", "result": "PASS"},
+    {"required_fact": "the historical warrant candidate contains zero per-source expected full/selected read counters", "preserved": true, "evidence_in_successor": "confirmed by direct field-presence test across all seven per_source entries of the historical candidate: expected_full_reads 0 of 7, expected_selected_reads 0 of 7", "result": "PASS"}
+  ],
+
+  "target_set_integrity": {
+    "fresh_source_targets": 7,
+    "keys": ["SRC02", "SRC06", "SRC08", "SRC12", "SRC14", "SRC26", "SRC27"],
+    "SRC35_included": false,
+    "SRC35_exclusion_reason": "RETAINED_COMPARATOR__ZERO_FRESH_READ",
+    "matches_C4B_scope_verbatim": "Seven future fresh-read sources only; SRC35 is excluded because it is a retained comparator.",
+    "result": "PASS"
+  },
+
+  "r9_repair_completion_test": {
+    "test": "For each of C4B's seven source_access_accounting slots, can it be POPULATED from governing evidence, or BOUND to a frozen expectation in artifact 07, as both independent reviews specified?",
+    "fully_bindable": ["retries"],
+    "partially_bindable": ["metadata_header_reads (2 of 7)", "selected_reads (6 of 7)", "full_reads (6 of 7)"],
+    "not_bindable": ["full_file_sha256_passes", "path_opens", "decoder_invocations"],
+    "mandatory_accounts_with_no_C4B_slot": ["source-path existence/access checks"],
+    "total_unbindable_mandatory_accounts": 4,
+    "template_numeric_values_available": 0,
+    "verdict": "REPAIR_NOT_COMPLETABLE_AS_SPECIFIED",
+    "reason": "Completing the repair as specified would require inventing at least three counts, plus a value for a fourth mandatory account that has no slot. This candidate refuses to do so.",
+    "r9_closed": false
+  },
+
+  "exhaustive_search_proving_absence": {
+    "principle": "Absence findings must rest on exhaustive search, not sampling, and never on null == null.",
+    "searches": [
+      {"artifact": "C4B 07_UNSIGNED_SOURCE_WARRANT_TEMPLATE.json", "blob": "3e4bbe967fa69f16c42a3bb268699404136c3b9c", "method": "token census for the seven slot names and numeric slot values", "requirement_tokens_found": 49, "numeric_values_found": 0},
+      {"artifact": "C4B 01_EIGHT_SOURCE_WORKLOAD_FREEZE.json", "method": "token census", "full_file_sha256_passes": 0, "path_opens": 0, "decoder_invocations": 0, "metadata_header_reads": 0, "existence": 0, "access_check": 0},
+      {"artifact": "Omega-1 01_DECISION.json", "method": "token census plus recursive field-path walk for C07/access/account/layer/open/hash_pass", "full_file_sha256_passes": 0, "path_opens": 0, "decoder_invocations": 0, "metadata_header_reads": 0, "selected_reads": 0, "full_reads": 0, "existence": 0, "access_check": 0, "o1_c07_condition_present": true},
+      {"artifact": "freeze packet, all 7 artifacts", "method": "per-artifact token census for the layer slot names", "any_layer_slot_name_found": 0},
+      {"artifact": "C4C3 artifacts 03, 04, 06", "method": "token census including open_count and hash_pass", "all_layer_tokens_found": 0}
+    ],
+    "conclusion": "No governing artifact supplies a numeric per-source value for existence/access checks, full-file SHA-256 hash passes, path-level opens or decoder invocations."
+  },
+
+  "tooling": {
+    "git": "rev-parse, ls-tree, show, cat-file, merge-base, is-ancestor, log, diff, hash-object",
+    "node": "v18.14.2",
+    "sha256": "shasum -a 256",
+    "python3_relied_upon": false,
+    "raw_source_operations": 0,
+    "locator_discoveries": 0,
+    "test_suite_executions": 0
+  },
+
+  "verification_result": {
+    "safety_invariants_checked": 10,
+    "safety_invariants_passed": 10,
+    "governing_facts_checked": 8,
+    "governing_facts_preserved": 8,
+    "failures": 0,
+    "fabricated_values": 0
+  },
+
+  "final_disposition": "R9_EVIDENCE_INSUFFICIENT__WARRANT_BLOCKER_REMAINS"
+}

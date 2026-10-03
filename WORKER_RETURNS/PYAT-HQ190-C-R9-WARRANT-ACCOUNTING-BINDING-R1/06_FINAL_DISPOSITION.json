@@ -1,0 +1,151 @@
+{
+  "schema": "PYAT_HQ190_C_FINAL_DISPOSITION@1.0.0",
+  "lane": "PYAT-HQ190-C-R9-WARRANT-ACCOUNTING-BINDING-R1",
+  "role": "RABOCHII / documentary-forensic implementer - Space Bunny",
+  "repository": "maidiu/rawlsing",
+  "worker_branch": "agent/rabochii-pyat-hq190-c-r9-warrant-accounting-binding-r1",
+  "commissioned_startup_sha": "be64ec98e648e1e6f1a9cb1ad32d7be4b2a84d33",
+  "declared_implementation_base": "02309f4e708dd01cb0d64666acbe43d5c23b35e7",
+  "verified_startup_parent_equals_declared_base": true,
+
+  "final_disposition": "R9_EVIDENCE_INSUFFICIENT__WARRANT_BLOCKER_REMAINS",
+  "disposition_meaning": "The specified R9 repair cannot be completed without inventing at least three counts. Three of C4B's seven source_access_accounting slots can be neither populated nor bound to a frozen expectation, and a fourth mandatory O1-C07 account has no slot at all. R9 remains the sole warrant-instrument technical blocker. This candidate precisely delimits R9 rather than closing it.",
+
+  "dispositions_not_taken": [
+    {
+      "value": "R9_ACCOUNTING_BINDING_CANDIDATE_READY_FOR_INDEPENDENT_REVIEW",
+      "why_not": "That disposition would assert the accounting binding is complete and ready. It is not. Four mandatory accounts remain unbound and three C4B slots are unbindable. Asserting readiness would misrepresent the candidate's completeness."
+    },
+    {
+      "value": "R9_MATERIAL_CONTRADICTION_FOUND",
+      "why_not": "The governing evidence is internally consistent. Artifact 07, the C4B template, Omega-1 and the freeze candidate agree with each other. The defect is silence on four accounts, not contradiction between two artifacts. No two governing artifacts make incompatible claims about any access-layer count."
+    }
+  ],
+
+  "substantive_result": {
+    "successor_candidate_path": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-04/07_R9_WARRANT_ACCOUNTING_SUCCESSOR_CANDIDATE.json",
+    "successor_candidate_sha256": "dd9758ab018cde2a702a2671313333e987928904a29ae74e658b05e46f72078b",
+    "successor_candidate_bytes": 42643,
+    "crosswalk_path": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-04/08_R9_ACCOUNTING_BINDING_CROSSWALK.md",
+    "crosswalk_sha256": "1940c0b816ae364ea6530e79752db1775b8e1125200b2c1242bb5543b7ed96b8",
+    "return_packet_dir": "WORKER_RETURNS/PYAT-HQ190-C-R9-WARRANT-ACCOUNTING-BINDING-R1/",
+    "return_packet_files": 7,
+    "ops04_artifacts_created": 2,
+    "total_files_added": 9,
+    "tracked_files_modified": 0,
+    "substantive_result_commit_sha": "RECORDED_AFTER_COMMIT_IN_THIS_FILE_BY_FOLLOWUP_NOTE__SEE_COMPLETION_MESSAGE",
+    "pushed_remote_branch_tip_sha": "REPORTED_IN_COMPLETION_MESSAGE_PER_HQ190_PROTOCOL__NOT_CHASED_INSIDE_THIS_FILE"
+  },
+
+  "r9_closure_status": {
+    "r9_closed_by_this_lane": false,
+    "r9_remains": "SOLE_WARRANT_INSTRUMENT_TECHNICAL_BLOCKER",
+    "mandatory_O1_C07_accounts": 10,
+    "accounts_with_established_per_source_value": 6,
+    "accounts_with_no_established_value_anywhere": 4,
+    "unbound_accounts": ["source-path existence/access checks", "file hash passes (full SHA-256 over the file)", "path-level opens", "decoder invocations"],
+    "c4b_slot_bind_test": {"fully_bindable": ["retries"], "partially_bindable": ["metadata_header_reads", "selected_reads", "full_reads"], "not_bindable": ["full_file_sha256_passes", "path_opens", "decoder_invocations"], "mandatory_accounts_with_no_c4b_slot": ["source-path existence/access checks"]},
+    "c4b_template_numeric_values_available": 0,
+    "c4b_template_requirement_tokens": 49,
+    "omega1_O1_C07_acceptance_currently_satisfiable": false,
+    "unfilled_issuance_time_obligations": 8,
+    "obligation_ids": ["R9-OBL-01", "R9-OBL-02", "R9-OBL-03", "R9-OBL-04", "R9-OBL-05", "R9-OBL-06", "R9-OBL-07", "R9-OBL-08"]
+  },
+
+  "what_this_lane_achieved": [
+    "Bound, at the actual access layer and with provenance, every per-source accounting value the governing evidence establishes.",
+    "Converted every unestablished layer into an individually-identified unfilled issuance-time obligation with a named prohibition against fabrication.",
+    "Tested the R9 repair as specified by both independent reviews against C4B's seven slots and showed three are unbindable and a fourth mandatory account has no slot.",
+    "Established that Omega-1's O1-C07 acceptance criterion is not currently satisfiable, because four mandatory budgets do not exist to be frozen.",
+    "Preserved SRC27's one-pass / max-one / zero-retry law while making its four separate lower-layer accounts explicit as floors without ceilings, and refusing to collapse them into one open.",
+    "Preserved all seven zero retry budgets, all seven unfilled locator placeholders, SRC35's retained-only exclusion, and the six sources' explicit counters.",
+    "Gathered the exact evidence on the independent-integration-review issuance prerequisite and marked the authority decision HQ_ADJUDICATION_REQUIRED without deciding it."
+  ],
+
+  "refusals_recorded": [
+    {"refusal": "Did not convert SRC27's hardened-note FLOOR of one full compatibility read into an exact ceiling for the full_reads slot", "reason": "A floor is not an enforceable limit; the slot demands an exact count"},
+    {"refusal": "Did not map SRC27's full-route read into the selected_reads slot", "reason": "SRC27 has no expected_selected_reads; doing so would be a fabrication"},
+    {"refusal": "Did not set full_file_sha256_passes to 1 by reading C4B's precondition as a count", "reason": "The precondition establishes that a hash verification is required, not how many"},
+    {"refusal": "Did not assume metadata-read counts are zero for the five sources lacking a stated figure", "reason": "Absence of a stated count is not an established zero; a metadata read may occur incidentally"},
+    {"refusal": "Did not report SRC26's 176 header-prefix bytes as a read count", "reason": "176 is a byte quantity; it does not bound the number of reads"},
+    {"refusal": "Did not conflate 176, 174 and 332", "reason": "Bounded header-prefix bytes, raw nominal case size and decoded dictionary width are three distinct quantities that artifact 07 requires be preserved separately"},
+    {"refusal": "Did not add a count-exceedance stop trigger", "reason": "No bound exists for four accounts; inventing thresholds would be a fabrication"},
+    {"refusal": "Did not decide whether the independent-integration-review issuance blocker is discharged", "reason": "That authority decision belongs to HQ; the commission forbids this lane from making it"},
+    {"refusal": "Did not assert R9 closed at candidate grain", "reason": "It is not, and independent hostile review would be required even if it were"}
+  ],
+
+  "stage_register_effect": {
+    "changed_by_this_lane": false,
+    "blocking_freeze_acceptance": 0,
+    "blocking_warrant_issuance": 1,
+    "blocking_live_execution": 1,
+    "advisory": 9,
+    "counterexamples": 1,
+    "note": "R9 remains at 1. This lane narrowed and documented the blocker without closing it. No stage count changed."
+  },
+
+  "issuance_prerequisites_closed": 0,
+  "hq_adjudication_required_items": ["PRQ-07 independent integration review prerequisite"],
+
+  "hard_hold_compliance_final": {
+    "locator_discovery": 0,
+    "locator_fills": 0,
+    "directory_inspection_for_sources": 0,
+    "raw_source_stat": 0,
+    "raw_source_hash": 0,
+    "raw_source_open": 0,
+    "raw_source_metadata_read": 0,
+    "raw_source_decode": 0,
+    "raw_source_materialization": 0,
+    "warrant_issued": false,
+    "warrant_signed": false,
+    "warrant_altered": false,
+    "live_c4_executed": false,
+    "production_mutated": false,
+    "rawlsing_next_files_changed": 0,
+    "c7_implemented": false,
+    "actor_person_work_implemented": false,
+    "hq_handoff_edited": false,
+    "historical_warrant_candidate_edited": false,
+    "historical_c4_returns_edited": false,
+    "source_custody_records_edited": false,
+    "astra_contacted_or_invoked": false,
+    "self_adopted": false,
+    "merged_into_control": false,
+    "test_suite_executed": false,
+    "placeholders_filled_from_local_knowledge": 0
+  },
+
+  "historical_candidate_preservation_final": {
+    "path": "WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json",
+    "commit": "8ff40d37de69db2d8a6053a7c2242f481677f1a4",
+    "blob": "9f6b113151f7c05f0a22432b034347b631e1a895",
+    "sha256": "d57420f8016bf49cc0353f39dcd2271e6f370c3bd9b7e81f08466c0a1f574e0a",
+    "bytes": 17073,
+    "unchanged": true,
+    "structural_note": "Not present on this worker's ancestry (merge-base 87029d349c8a7385cb673060a8e5decd4eb528ff), so overwriting was structurally impossible as well as forbidden."
+  },
+
+  "fabrication_guard": {
+    "values_fabricated": 0,
+    "values_inferred_from_operation_class": 0,
+    "floors_promoted_to_ceilings": 0,
+    "prior_lane_estimates_used_as_counts": 0,
+    "absence_treated_as_zero": 0
+  },
+
+  "verification_discipline": {
+    "tooling": ["git plumbing", "node v18.14.2", "shasum -a 256"],
+    "python3_relied_upon": false,
+    "non_equality_law": "No finding rests on null == null or absent-field equality. Every identity resolves to a nonempty exact 40-hex blob or complete 64-hex digest.",
+    "absence_findings_method": "Exhaustive token census across the C4B template, the C4B workload freeze, Omega-1, all seven freeze-packet artifacts and three C4C3 artifacts, plus direct enumeration of the parsed C4B template and artifact 07 per-source block.",
+    "independent_cross_check": "My per-source layer census agrees with R2's independently produced field_presence_matrix on all six fields."
+  },
+
+  "independent_review_status_of_this_candidate": {
+    "reviewed_by_anyone_other_than_this_lane": false,
+    "note": "The three prior independent reviews examined the HISTORICAL candidate, not this successor. Hostile independent review is mandatory before HQ relies on any part of this candidate."
+  },
+
+  "terminal": "HQ190_C_R9_WARRANT_ACCOUNTING_RETURNED__HQ_REVIEW_REQUIRED"
+}

@@ -1,0 +1,134 @@
+{
+  "schema": "PYAT_HQ190_C_INPUT_IDENTITY_MAP@1.0.0",
+  "lane": "PYAT-HQ190-C-R9-WARRANT-ACCOUNTING-BINDING-R1",
+  "role": "RABOCHII / documentary-forensic implementer - Space Bunny",
+  "repository": "maidiu/rawlsing",
+  "worker_branch": "agent/rabochii-pyat-hq190-c-r9-warrant-accounting-binding-r1",
+
+  "startup_compliance": {
+    "explicit_fetch_origin_run": true,
+    "blind_pull_used": false,
+    "remote_branch_resolved": "origin/agent/rabochii-pyat-hq190-c-r9-warrant-accounting-binding-r1",
+    "observed_remote_tip": "be64ec98e648e1e6f1a9cb1ad32d7be4b2a84d33",
+    "matches_commissioned_startup_sha": true,
+    "stop_before_editing_on_mismatch": "NOT_REQUIRED_NO_MISMATCH_OBSERVED",
+    "independent_server_confirmation": "git ls-remote origin refs/heads/agent/rabochii-pyat-hq190-c-r9-warrant-accounting-binding-r1 returned be64ec98e648e1e6f1a9cb1ad32d7be4b2a84d33",
+    "isolated_worktree_created": true,
+    "local_head_before_editing": "be64ec98e648e1e6f1a9cb1ad32d7be4b2a84d33",
+    "unrelated_uncommitted_changes_at_start": 0,
+    "startup_terminal": "HQ190-C_GITHUB_STARTUP_VERIFIED"
+  },
+
+  "commission_identity": {
+    "implementation_base_declared_in_commission": "02309f4e708dd01cb0d64666acbe43d5c23b35e7",
+    "commissioned_startup_sha_supplied_by_hq": "be64ec98e648e1e6f1a9cb1ad32d7be4b2a84d33",
+    "relationship": "The commissioned startup SHA is the direct child of the declared implementation base; be64ec98e's parent is the HQ190 commission commit whose parent is 02309f4e7.",
+    "verified_parent_of_startup": "02309f4e708dd01cb0d64666acbe43d5c23b35e7",
+    "consistent": true,
+    "note": "The commission states the exact startup SHA is supplied by HQ after the commission commit is published. That is what be64ec98e is."
+  },
+
+  "governing_inputs_read": [
+    {"role": "commission", "path": "WORKER_COMMISSIONS/PYAT-HQ190-C-R9-WARRANT-ACCOUNTING-BINDING-R1/00_COMMISSION.md", "blob": "aa2b26795a5052ecb2f10c1e64ed8bfb8671b947", "resolved": true},
+    {"role": "subject freeze", "commit": "8ff40d37de69db2d8a6053a7c2242f481677f1a4", "resolved": true, "how": "by exact ref - NOT an ancestor of this branch"},
+    {"role": "historical warrant candidate", "path": "WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json", "commit": "8ff40d37de69db2d8a6053a7c2242f481677f1a4", "blob": "9f6b113151f7c05f0a22432b034347b631e1a895", "sha256": "d57420f8016bf49cc0353f39dcd2271e6f370c3bd9b7e81f08466c0a1f574e0a", "bytes": 17073, "resolved": true},
+    {"role": "accounting and failure law (artifact 07)", "path": "WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json", "commit": "8ff40d37de69db2d8a6053a7c2242f481677f1a4", "blob": "6ae832e9c485", "resolved": true},
+    {"role": "runtime reader lanes and resource law (artifact 06)", "path": "WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/06_RUNTIME_READER_LANES_AND_RESOURCE_LAW.json", "commit": "8ff40d37de69db2d8a6053a7c2242f481677f1a4", "blob": "7a735173f789", "resolved": true},
+    {"role": "oracle and comparison law (artifact 05)", "path": "WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/05_ORACLE_AND_COMPARISON_LAW.json", "commit": "8ff40d37de69db2d8a6053a7c2242f481677f1a4", "blob": "0727f7c7cdba", "resolved": true},
+    {"role": "C4B unsigned warrant template", "path": "WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/07_UNSIGNED_SOURCE_WARRANT_TEMPLATE.json", "commit": "c2af4f61d68e9803af83f8e26f633acfe31062fa", "blob": "3e4bbe967fa69f16c42a3bb268699404136c3b9c", "resolved": true, "bytes": 10086, "source_access_accounting_blocks": 7, "slots_per_block": 7, "numeric_slot_values": 0, "requirement_token_census": {"REQUIRED_EXACT_COUNT": 21, "REQUIRED_EXACT_COUNT_AND_BASIS": 7, "REQUIRED_EXACT_COUNT_AND_CONFIG": 14, "REQUIRED_EXACT_COUNT_AND_REASON": 7, "total": 49, "arithmetic": "7 slots x 7 sources = 49"}, "finding": "Every slot value is a requirement token. Zero numeric values. This is the decisive evidence that three of seven slots cannot be populated or bound."},
+    {"role": "C4B eight-source workload freeze", "path": "WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/01_EIGHT_SOURCE_WORKLOAD_FREEZE.json", "commit": "c2af4f61d68e9803af83f8e26f633acfe31062fa", "resolved": true, "bytes": 14766},
+    {"role": "Omega-1 production readiness decision", "path": "WORKER_RETURNS/PYAT-OMEGA1-PRODUCTION-READINESS-R1/01_DECISION.json", "commit": "01762d7379be4e423dad3e21bcdcee47c536902d", "resolved": true, "bytes": 43714},
+    {"role": "C4C3 reader option freeze / synthetic probes / resource identity", "commit": "1df64cc596b5602c952518c87b1c71cc1fcfb35f", "resolved": true},
+    {"role": "Lane A - Sol final review", "commit": "fe6103cd50c634b92233f49815cc6d4abe49964d", "resolved": true, "artifacts": 8},
+    {"role": "ALT-B - Space Bunny review", "commit": "3a5b2cbc7f1978384268376f3ee493c7c095780b", "resolved": true, "artifacts": 8},
+    {"role": "R2 disputed-claims re-check", "commit": "afb1eb49bbd2ba49c1cb1c4f0501a35908d161d3", "resolved": true, "artifacts": 8},
+    {"role": "HQ190 review of HQ188-B consolidation", "path": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-04/06_HQ190_HQ188_B_REVIEW_AND_ROUTING.md", "resolved": true, "on_this_branch": true},
+    {"role": "current C4 consolidation", "path": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-04/02_CURRENT_CONSOLIDATED_DECISION_CLAIMS.md", "resolved": true, "on_this_branch": true},
+    {"role": "live pointer", "path": "HQ_HANDOFF/LATEST.json", "resolved": true, "on_this_branch": true}
+  ],
+
+  "cross_lineage_note": {
+    "freeze_is_ancestor_of_this_branch": false,
+    "merge_base": "87029d349c8a7385cb673060a8e5decd4eb528ff",
+    "consequence": "The subject freeze and the historical warrant candidate are NOT present on this worker's ancestry. They were read by exact commit ref, which the commission directs.",
+    "structural_safety_benefit": "It is therefore structurally impossible for this lane to have overwritten the historical warrant candidate, independently of the prohibition."
+  },
+
+  "current_state_at_start": {
+    "c4_residual_blocking_freeze_acceptance": 0,
+    "c4_residual_blocking_warrant_issuance": 1,
+    "c4_residual_blocking_live_execution": 1,
+    "c4_residual_advisory": 9,
+    "c4_residual_counterexamples": 1,
+    "c4_freeze_adoption_status": "NOT_ADOPTED_INTO_BUILD",
+    "hq182_hold": "UNLIFTED",
+    "measured_execution_authorized_via_warrant": false,
+    "r9_is_the_sole_warrant_issuance_blocker": true,
+    "source": "HQ_HANDOFF/LATEST.json at be64ec98e"
+  },
+
+  "produced_artifacts": [
+    {"path": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-04/07_R9_WARRANT_ACCOUNTING_SUCCESSOR_CANDIDATE.json", "role": "unissued, unsigned, non-authorizing successor candidate"},
+    {"path": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-04/08_R9_ACCOUNTING_BINDING_CROSSWALK.md", "role": "mandatory account -> per-source layer -> evidence crosswalk"}
+  ],
+
+  "historical_artifact_preservation": {
+    "historical_warrant_candidate_path": "WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json",
+    "blob_at_freeze_before": "9f6b113151f7c05f0a22432b034347b631e1a895",
+    "blob_at_freeze_after": "9f6b113151f7c05f0a22432b034347b631e1a895",
+    "sha256_before": "d57420f8016bf49cc0353f39dcd2271e6f370c3bd9b7e81f08466c0a1f574e0a",
+    "sha256_after": "d57420f8016bf49cc0353f39dcd2271e6f370c3bd9b7e81f08466c0a1f574e0a",
+    "overwritten": false,
+    "modified": false,
+    "deleted": false,
+    "reverified_after_writes": true
+  },
+
+  "write_terrain_compliance": {
+    "allowed_paths": [
+      "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-04/07_R9_WARRANT_ACCOUNTING_SUCCESSOR_CANDIDATE.json",
+      "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-04/08_R9_ACCOUNTING_BINDING_CROSSWALK.md",
+      "WORKER_RETURNS/PYAT-HQ190-C-R9-WARRANT-ACCOUNTING-BINDING-R1/**"
+    ],
+    "out_of_terrain_writes": 0,
+    "historical_warrant_candidate_edited": false,
+    "historical_c4_returns_edited": false,
+    "rawlsing_next_edited": false,
+    "rawlsing_next_files_changed": 0,
+    "hq_handoff_edited": false,
+    "source_custody_records_edited": false
+  },
+
+  "hard_hold_compliance": {
+    "locator_discovery": 0,
+    "locator_fills": 0,
+    "raw_source_stat": 0,
+    "raw_source_hash": 0,
+    "raw_source_open": 0,
+    "raw_source_metadata_read": 0,
+    "raw_source_decode": 0,
+    "raw_source_materialization": 0,
+    "directory_inspection_for_sources": 0,
+    "warrant_issued": false,
+    "live_c4_executed": false,
+    "production_mutated": false,
+    "c7_implemented": false,
+    "actor_person_work_implemented": false,
+    "astra_contacted_or_invoked": false,
+    "self_adopted": false,
+    "merged_into_control": false,
+    "test_suite_executed": false,
+    "placeholders_filled_from_local_knowledge": 0
+  },
+
+  "tooling": {
+    "git": "rev-parse, ls-tree, show, cat-file, merge-base, is-ancestor, log, diff, hash-object",
+    "node": "v18.14.2 for JSON parsing and invariant assertions",
+    "sha256": "shasum -a 256",
+    "python3_relied_upon": false,
+    "non_equality_law": "No finding rests on null == null, on an absent field, or on comparing two missing values. Every identity resolves to a nonempty exact 40-hex blob or a complete 64-hex digest. Field ABSENCE findings (the three NOT_BINDABLE slots) were established by exhaustive token census across four governing artifacts, not by sampling."
+  },
+
+  "substantive_result_sha": "RECORDED_AFTER_COMMIT__SEE_06_FINAL_DISPOSITION",
+  "final_disposition": "R9_EVIDENCE_INSUFFICIENT__WARRANT_BLOCKER_REMAINS"
+}

@@ -1,0 +1,232 @@
+{
+  "schema": "PYAT_HQ190_C_ISSUANCE_PREREQUISITE_INVENTORY@1.0.0",
+  "lane": "PYAT-HQ190-C-R9-WARRANT-ACCOUNTING-BINDING-R1",
+  "purpose": "Machine-readable inventory of every prerequisite standing between the current C4 position and an issued source-execution warrant, separated by kind. The independent-integration-review item is evidenced but NOT adjudicated by this lane.",
+
+  "as_recorded_by_the_freeze_fanin": {
+    "source": "WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json",
+    "commit": "8ff40d37de69db2d8a6053a7c2242f481677f1a4",
+    "field": "issuance_blockers_summary",
+    "items": [
+      "SOURCE_LOCATOR_FILL_REQUIRED_BEFORE_WARRANT_ISSUANCE (seven slots unfilled)",
+      "HQ approval UNSET",
+      "required user/resource owner approval UNSET",
+      "warrant unsigned",
+      "independent integration review of the freeze not yet completed"
+    ]
+  },
+
+  "inventory": [
+    {
+      "prerequisite_id": "PRQ-01",
+      "kind": "TECHNICAL_R9_CLOSURE",
+      "title": "Per-access-layer accounting bounds bound into the warrant instrument",
+      "status": "NOT_CLOSED",
+      "blocking_warrant_issuance": true,
+      "blocking_live_execution": true,
+      "blocking_source_free_freeze": false,
+      "current_state": "The successor candidate binds every layer the governing evidence establishes. Four mandatory O1-C07 accounts remain unbound: source-path existence/access checks, file hash passes, path-level opens, decoder invocations. Three of C4B's seven slots can be neither populated nor bound.",
+      "what_this_lane_produced": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-04/07_R9_WARRANT_ACCOUNTING_SUCCESSOR_CANDIDATE.json (sha256 dd9758ab018cde2a702a2671313333e987928904a29ae74e658b05e46f72078b) and 08_R9_ACCOUNTING_BINDING_CROSSWALK.md",
+      "disposition": "R9_EVIDENCE_INSUFFICIENT__WARRANT_BLOCKER_REMAINS",
+      "closes_if": "governing evidence supplies exact per-source values for the four unbound accounts with the four required measurement-basis fields, OR an instrument-level determination is made on the authorized execution surface at issuance time",
+      "decidable_by_this_lane": false
+    },
+    {
+      "prerequisite_id": "PRQ-02",
+      "kind": "LOCATOR_PREREQUISITE",
+      "title": "Seven source access locators filled and bound to their source SHA-256",
+      "status": "OPEN",
+      "blocking_warrant_issuance": true,
+      "blocking_live_execution": true,
+      "blocking_source_free_freeze": false,
+      "affected_sources": ["SRC02", "SRC06", "SRC08", "SRC12", "SRC14", "SRC26", "SRC27"],
+      "current_state": "All seven access_locator fields are the literal placeholder <REQUIRED_FILL_IN_SLOT__SOURCE_LOCATOR_FILL_REQUIRED_BEFORE_WARRANT_ISSUANCE> in both the historical candidate and the successor candidate.",
+      "who_must_supply": "HQ or the accountable resource owner, on the authorised execution surface, at issuance",
+      "binding_law": "Locators must be bound in the warrant together with the source SHA-256 they resolve to.",
+      "stop_trigger_if_wrong": "artifact 07 O1-C08 path/locator: the filled-in access locator does not resolve to the bound source identity",
+      "locator_search_performed_by_this_lane": 0,
+      "directory_inspection_for_sources_by_this_lane": 0,
+      "decidable_by_this_lane": false,
+      "explicit_note": "The commission forbids locator discovery and forbids filling any placeholder from local knowledge. This lane performed neither."
+    },
+    {
+      "prerequisite_id": "PRQ-03",
+      "kind": "USER_RESOURCE_OWNER_APPROVAL",
+      "title": "Required user / resource-owner approval for source access",
+      "status": "UNSET",
+      "blocking_warrant_issuance": true,
+      "blocking_live_execution": true,
+      "blocking_source_free_freeze": false,
+      "current_state": {"name": null, "decision": null, "signature_or_record": null, "status": "UNSET"},
+      "basis": "C4B froze the same requirement; independently confirmed UNSET by Lane A fe6103cd and ALT-B 3a5b2cbc",
+      "decidable_by_this_lane": false
+    },
+    {
+      "prerequisite_id": "PRQ-04",
+      "kind": "HQ_APPROVAL",
+      "title": "HQ approval of the warrant",
+      "status": "UNSET",
+      "blocking_warrant_issuance": true,
+      "blocking_live_execution": true,
+      "blocking_source_free_freeze": false,
+      "current_state": {"name": null, "decision": null, "signature_or_commit": null, "status": "UNSET"},
+      "decidable_by_this_lane": false
+    },
+    {
+      "prerequisite_id": "PRQ-05",
+      "kind": "SIGNATURE_AND_ISSUANCE_ACT",
+      "title": "Signature and issuance of the warrant instrument",
+      "status": "NOT_PERFORMED",
+      "blocking_warrant_issuance": true,
+      "blocking_live_execution": true,
+      "blocking_source_free_freeze": false,
+      "current_state": {"issued": false, "signed": false, "issued_by": null, "issue_date": null},
+      "depends_on": ["PRQ-01", "PRQ-02", "PRQ-03", "PRQ-04"],
+      "decidable_by_this_lane": false,
+      "explicit_note": "Creating the successor candidate is not an issuance act. It authorizes nothing."
+    },
+    {
+      "prerequisite_id": "PRQ-06",
+      "kind": "R7_LIVE_RUNTIME_PREREQUISITE",
+      "title": "R7 - qualified runtime environment durability or requalification",
+      "status": "OPEN",
+      "blocking_warrant_issuance": false,
+      "blocking_live_execution": true,
+      "blocking_source_free_freeze": false,
+      "residual_class": "BOTH fingerprint incompleteness AND weak environment reproducibility",
+      "current_state": {
+        "venv_durable": false,
+        "durable_note_verbatim": "The venv lives in a per-session temporary directory. It is NOT durable and NOT reproducible from this path alone. It is recorded so HQ can see exactly what executed. The reproducible content is the freeze below, not the path.",
+        "base_interpreter_recorded_as": "base_interpreter_sha256_prefix32 (32 hex only)",
+        "interpreter_provenance": "resolves under LOCAL_COURTS/, which is untracked in the repository",
+        "reproduce_command_pins": 13,
+        "resolved_environment_entries": 14,
+        "unpinned_gap": "narwhals present in the resolved freeze at 2.26.0, absent and unpinned from the recipe"
+      },
+      "remediation_options": [
+        "durable exact environment preservation with a complete 64-hex interpreter digest and recorded provenance for the untracked interpreter",
+        "competent requalification from the pinned recipe with narwhals additionally pinned and complete digests recorded for the interpreter and the five compiled extensions"
+      ],
+      "independence_note": "R7 is a LIVE-EXECUTION blocker, not a warrant-issuance blocker. It is separate from R9 and does not gate issuance.",
+      "authority_note": "HQ190 recorded that R7 is not necessarily documentary and requires durable preservation or competent runtime requalification. This lane makes no R7 finding and no R7 disposition.",
+      "decidable_by_this_lane": false
+    },
+    {
+      "prerequisite_id": "PRQ-07",
+      "kind": "INDEPENDENT_INTEGRATION_REVIEW_PREREQUISITE",
+      "title": "Historical issuance blocker: 'independent integration review of the freeze not yet completed'",
+      "status": "HQ_ADJUDICATION_REQUIRED",
+      "authority_decision": "HQ_ADJUDICATION_REQUIRED",
+      "decided_by_this_lane": false,
+      "blocking_warrant_issuance": "HQ_ADJUDICATION_REQUIRED",
+      "blocking_live_execution": "HQ_ADJUDICATION_REQUIRED",
+      "blocking_source_free_freeze": false,
+      "explicit_non_decision": "This lane gathers the exact current evidence and does NOT decide whether this issuance prerequisite is discharged. That authority decision belongs to HQ. No vote, no recommendation and no inference is offered here.",
+      "evidence_gathered": [
+        {
+          "review": "Lane A - Sol final independent integration review",
+          "commit": "fe6103cd50c634b92233f49815cc6d4abe49964d",
+          "branch": "agent/reviewer-pyat-hq180-c4-executable-freeze-final-integration-review-r1",
+          "artifacts": 8,
+          "worker_disposition": "APPROVE_AT_DECLARED_GRAIN",
+          "warrant_candidate_verdict": "APPROVE_AT_DECLARED_GRAIN",
+          "independently_recomputed_candidate_sha256": "d57420f8016bf49cc0353f39dcd2271e6f370c3bd9b7e81f08466c0a1f574e0a",
+          "sha256_match": true,
+          "all_seven_locators_unfilled_confirmed": true,
+          "SRC35_fresh_authorized": false,
+          "SRC35_meaning": "SRC35 is NOT authorised for fresh access - the exclusion is confirmed, not merely unrefuted",
+          "required_bindings_complete": {"source_sha": true, "operation": true, "reader_lane": true, "runtime": true, "authority": true, "instrumentation": true, "failure": true, "retention": true},
+          "its_own_issuance_blockers": ["seven source locators", "HQ approval", "required user/resource owner approval", "signature/issuance", "HQ adjudication after this independent review"],
+          "terminal": "C4_EXECUTABLE_FREEZE_FINAL_INTEGRATION_REVIEW_RETURNED__HQ_ADJUDICATION_REQUIRED"
+        },
+        {
+          "review": "ALT-B - Space Bunny independent integration review",
+          "commit": "3a5b2cbc7f1978384268376f3ee493c7c095780b",
+          "branch": "agent/reviewer-pyat-hq181-c4-executable-freeze-final-integration-review-alt-b-r1",
+          "artifacts": 8,
+          "worker_disposition": "APPROVE_AT_DECLARED_GRAIN",
+          "governing_condition_reviewed": "O1-C06",
+          "warrant_candidate_verdict": "CANDIDATE_STATUS_CONFIRMED__NOT_ISSUED__ONE_REPAIR_REQUIRED_BEFORE_ISSUANCE",
+          "per_source_instrumentation_bound_observed": "false for all 7 sources",
+          "identified_additional_blocker": "per-source read-limit slots absent from the warrant instrument (R9)",
+          "its_note_on_the_fifth_blocker": "This review discharges the fifth blocker at the source-free freeze grain only. It does not discharge the other four, and it does not by itself authorise execution.",
+          "scope_law": "Approval semantics are limited to acceptance of the source-free freeze at declared grain; it authorises nothing.",
+          "terminal": "C4_EXECUTABLE_FREEZE_FINAL_INTEGRATION_REVIEW_ALT_B_RETURNED__HQ_ADJUDICATION_REQUIRED"
+        },
+        {
+          "review": "R2 disputed-claims independent re-check",
+          "commit": "afb1eb49bbd2ba49c1cb1c4f0501a35908d161d3",
+          "branch": "agent/opencode-pyat-hq183-c4-disputed-claims-recheck-r1",
+          "artifacts": 8,
+          "worker_disposition": "MATERIAL_CORRECTION_REQUIRED",
+          "scope": "narrow re-check of four disputed claims only; explicitly NOT a rereview of the freeze; explicitly NOT O1-C01 through O1-C11 re-adjudication",
+          "R9_finding_C4": "UPHELD__SUBSTANCE_CORRECT__ONE_FIELD_NAME_PRECISION_CORRECTION",
+          "R9_required_repair": "Restore a per-source source_access_accounting block for all seven sources with the seven slots and their basis/config/reason qualifiers, populated or bound to the frozen expectations in artifact 07.",
+          "terminal": "C4_DISPUTED_CLAIMS_RECHECK_R2_RETURNED__HQ_ADJUDICATION_REQUIRED"
+        },
+        {
+          "review": "HQ187 adjudication of the R2 return",
+          "commit": "06e907cb3",
+          "decision": "HQD-2026-10-02-187",
+          "outcome": "R2 counterexample UPHELD; record corrected; authority basis corrected to the C3 six-file 55-test court plus C4C3 55/55 twice",
+          "stage_effect": "COUNTEREXAMPLES_0_TO_1__BLOCKERS_UNCHANGED",
+          "checkpoint_present_on_this_branch": "HQ_HANDOFF/checkpoints/20261002-PYAT-HQ187-R2-COUNTEREXAMPLE-ADJUDICATED-R1/"
+        },
+        {
+          "review": "HQ190 acceptance of the HQ188-B current C4 consolidation",
+          "commit": "02309f4e708dd01cb0d64666acbe43d5c23b35e7",
+          "outcome": "ACCEPT_CURRENT_C4_CONSOLIDATION_WITH_BOUNDED_ROUTING_CORRECTIONS__HQ182_HOLD_REMAINS__EXTERNAL_DECISION_PACKET_READY",
+          "note": "No new freeze-evidence blocker found. R9 and R7 confirmed as independent HQ work items that may be progressed source-free.",
+          "on_this_branch": true
+        }
+      ],
+      "observed_tensions_left_for_hq": [
+        "The freeze candidate's fifth blocker reads 'independent integration review of the freeze not yet completed'. Three independent reviews have since returned (fe6103cd, 3a5b2cbc, afb1eb49). Whether that discharges the blocker is an authority decision.",
+        "ALT-B expressly limited its own discharge to the source-free freeze grain and stated it does not by itself authorise execution.",
+        "Lane A's own blocker list words its fifth item differently: 'HQ adjudication after this independent review'. Whether HQ adjudication has since occurred in a form that satisfies the original blocker is an authority decision.",
+        "R2's disposition was MATERIAL_CORRECTION_REQUIRED and was adjudicated by HQ187, which corrected the record rather than the freeze evidence.",
+        "None of the three reviews is an independent review of THIS successor candidate. The HQ190-C candidate has had no independent review at all."
+      ]
+    }
+  ],
+
+  "summary": {
+    "prerequisites_total": 7,
+    "closed": 0,
+    "open": 5,
+    "undecided_by_design": 1,
+    "hq_adjudication_required": ["PRQ-07"],
+    "blocking_warrant_issuance": ["PRQ-01", "PRQ-02", "PRQ-03", "PRQ-04", "PRQ-05", "PRQ-07 (pending adjudication)"],
+    "blocking_live_execution_only": ["PRQ-06"],
+    "note": "No prerequisite is closed. PRQ-07 is deliberately left undecided by this lane."
+  },
+
+  "governing_stage_register_unchanged": {
+    "blocking_freeze_acceptance": 0,
+    "blocking_warrant_issuance": 1,
+    "blocking_live_execution": 1,
+    "advisory": 9,
+    "counterexamples": 1,
+    "changed_by_this_lane": false,
+    "source": "HQ_HANDOFF/LATEST.json at be64ec98e; HQ187 HQD-2026-10-02-187; confirmed unchanged by HQ190 at 02309f4e7"
+  },
+
+  "holds_unchanged": {
+    "c4_freeze_adoption": "NOT_ADOPTED_INTO_BUILD",
+    "hq182_hold": "UNLIFTED",
+    "source_locator_discovery_and_fill": "HELD",
+    "warrant_issuance": "HELD",
+    "raw_source_access": "HELD__0",
+    "live_c4_execution": "HELD",
+    "production_mutation": "HELD__0",
+    "c7_implementation": "HELD",
+    "prev3_to_v3_actor_person_implementation": "HELD",
+    "changed_by_this_lane": false
+  },
+
+  "self_adopted": false,
+  "merged_into_control": false,
+  "astra_contacted_or_invoked": false,
+
+  "final_disposition": "R9_EVIDENCE_INSUFFICIENT__WARRANT_BLOCKER_REMAINS"
+}
