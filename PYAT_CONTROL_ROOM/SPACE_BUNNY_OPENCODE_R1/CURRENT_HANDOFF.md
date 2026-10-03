@@ -1,3 +1,25 @@
+# HQ191 active frontier — 2026-10-03
+
+Current control state has adjudicated the HQ190 dispatcher/R7/R9 wave.
+
+- Dispatcher: repaired blob `f3067208f7a8b8ffc159bdc41c25309e9a14b5cb` is adopted **only as a supervised repair base**. Unattended operation remains unqualified.
+- R7: worker claims closed, but HQ has not removed the blocker; DeepSeek hostile review is bound at `agent/reviewer-pyat-hq191-r7-darwin-environment-hostile-acceptance-r1 @ 0e28823c7fa60e8b4869c3c6143b8b43b738f10a`.
+- R9: HQ accepts `R9_EVIDENCE_INSUFFICIENT__WARRANT_BLOCKER_REMAINS`; no missing counts are fabricated. Successor budget/enforcement court is bound at `agent/rabochii-pyat-hq191-r9-budget-enforcement-court-r1 @ 631e7586001a5f2736656c4a7d6c1bf055d8c0d1`.
+- Dispatcher A2 hardening is bound at `agent/rabochii-pyat-hq191-a2-dispatcher-unattended-hardening-r1 @ 0d65e325e73be0bb4b5e873308bed1a8f10b5cc4`.
+- PRQ-07 (independent integration review of the C4 freeze not completed) is **discharged** by the completed independent review chain. This changes no source/warrant authority.
+- HQ182's temporary C4 non-adoption hold remains. The corrected Astra packet is ready for the one reserved decision.
+
+Run the two Space Bunny implementer lanes and the DeepSeek R7 review in parallel. Route the corrected C4 packet to Astra independently.
+
+Return artifacts bind stable substantive-result SHAs. Completion messages report the pushed remote branch tip; HQ re-resolves it. Do not append commits merely to make a commit contain its own SHA.
+
+All locator/warrant/raw-source/live-C4/C7/actor holds remain.
+
+See:
+`HQ_HANDOFF/checkpoints/20261003-PYAT-HQ191-A-R7-R9-ADJUDICATED-SUCCESSORS-BOUND-R1/`
+
+---
+
 # HQ190 active frontier — 2026-10-03
 
 HQ188-A and HQ188-B are returned and adjudicated for next routing.
