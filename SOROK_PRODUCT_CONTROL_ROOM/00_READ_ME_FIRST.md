@@ -401,3 +401,17 @@ Current law:
 
 Preserve SPD-0236/0237 and RISK-194.
 
+### Full-transcript stronger-version reaudit
+
+Also read:
+`81_FULL_TRANSCRIPT_STRONGER_VERSION_RESIDUAL_AUDIT_R1.md`.
+
+It corrects four places where earlier banking preserved the concept but not its strongest live form:
+
+- `SHARED CONVENTION != SHARED MEANING` — objective dyadic practice and actor-relative relationship meaning remain distinct (SPD-0238);
+- lazy materialization is driven by any lawful actor/world causal dependency, not only by user gaze (SPD-0239);
+- one-for-one invitation structure may create real pre-entry relational provenance without platform-authored specialness (SPD-0240);
+- attention transparency must not become an ordinary-play attention/personality label; requested reflection stays behavioral and evidence-linked (SPD-0241).
+
+These refine prior artifacts; they do not create new monolithic owners.
+
