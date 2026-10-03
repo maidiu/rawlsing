@@ -290,6 +290,16 @@ If the user cancels restart and returns:
 - current Nadia remains;
 - the user can only act from now.
 
+A canceled restart/control interaction remains outside the diegesis unless a separate product law explicitly realizes something into the world.
+
+Nadia does not know that the external human opened a restart screen, hovered over a control, changed a setting or reconsidered an app action merely because Rawlsing observed it.
+
+Preserve:
+
+`CONTROL-PLANE ACTION != DIEGETIC EVENT != ACTOR KNOWLEDGE`.
+
+See SPD-0242 / RISK-198 / artifact 83.
+
 ## 15. Developmental force
 
 This creates a powerful relational law:
