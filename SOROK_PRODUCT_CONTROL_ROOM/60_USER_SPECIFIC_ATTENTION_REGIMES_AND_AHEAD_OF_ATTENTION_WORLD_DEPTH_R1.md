@@ -261,9 +261,11 @@ Instead use a rolling **ahead-of-attention closure frontier**.
 
 Before or when an object/space becomes likely to enter perception, resolve enough adjacent facts that deeper inspection reveals an already-constrained reality.
 
-## 12. Layered detail depth
+## 12. Layered truth/materialization depth — not a user-access ladder
 
-Candidate levels:
+The levels below describe **what Rawlsing may have resolved as canonical truth**, not a sequence the user can simply climb by ATTENDing harder.
+
+Candidate strata:
 
 ### L0 — space / structural facts
 - room geometry;
@@ -282,57 +284,167 @@ Candidate levels:
 - wear;
 - stains;
 - handwriting;
-- contents partially visible;
+- contents visible under lawful inspection;
 - repair marks;
-- object age cues.
+- object-age cues.
 
 ### L3 — objective provenance / history
 - acquisition;
 - giver;
-- ownership;
-- repair;
+- ownership history;
+- repair event;
 - travel;
 - prior uses;
 - who else interacted with it.
 
-### L4 — actor-specific memory / significance / accessibility
-- what Nadia remembers;
-- what associations recruit;
-- what she knows or misremembers;
-- current relation to object/history.
+### L4 — actor-specific epistemic relation
+- what Nadia actually knows;
+- what she remembers;
+- what she misremembers;
+- what she infers;
+- what is inaccessible to her;
+- current actor-local associations/significance.
 
-### L5 — present relational recruitment
-- what this object/event means now with this user under this relationship/context.
+### L5 — present relational recruitment / expression
+- what the object recruits now in this encounter;
+- whether Nadia notices the user's attention;
+- what she wants to reveal or conceal;
+- what she says, implies, jokes about, evades or lies about;
+- how the current relationship/context changes outward response.
 
-Not every object needs all levels materialized immediately.
+These strata are **ontic/causal depth classes**, not one disclosure staircase.
 
-## 13. Rolling closure rule
+A user may inspect deeply into L2 while receiving zero direct access to L3–L5.
 
-When the user's epistemic frontier approaches level `Ln`, Rawlsing should resolve a bounded neighborhood at `Ln+1` and, where causally necessary, deeper dependencies.
+Conversely, Nadia may voluntarily tell the user an L3 fact they could never infer from visual inspection.
 
-Example:
+A child/third party may know an L3 fact Nadia does not know, or may hold a false belief about it.
 
-Before the user is told:
-> a worn pair of Birkenstocks sits by the chair
+Preserve:
 
-the system may already have fixed:
-- exact visible wear pattern;
-- approximate age;
-- whether a newer pair exists;
-- whether these are actually Nadia's;
-- relevant objective acquisition history if already determined by Nadia's life.
+`CANONICAL TRUTH DEPTH != USER ACCESS DEPTH != ACTOR KNOWLEDGE DEPTH != ACTOR DISCLOSURE DEPTH`.
 
-It need not yet fully simulate every remembered adventure.
+## 13. Rolling dual-frontier closure rule
 
-If the user later jokes about the shoes, deeper autobiographical material may be resolved from:
-- already-fixed acquisition/history anchors;
-- Nadia's existing life history;
-- relational/person state;
-- governed causal completion.
+Rawlsing should maintain at least two conceptually distinct frontiers:
 
-The user's joke may trigger the need to resolve that history.
+### A. Materialization frontier
 
-It does not get to determine what the history becomes.
+How much canonical truth has been resolved behind the visible surface.
+
+This frontier should normally remain **ahead of the user's epistemic frontier** by a bounded amount.
+
+When a target becomes ambiently available or is deliberately ATTENDed, Rawlsing may resolve:
+- the next inspectable physical layer;
+- additional hidden physical structure;
+- objective provenance/history;
+- causally necessary dependencies;
+- relevant actor-memory/knowledge state derived from existing person/history;
+
+even when none of that deeper material is immediately disclosed.
+
+### B. User epistemic/disclosure frontier
+
+What this user can presently know through:
+- lawful perception;
+- physical interaction;
+- prior acquired knowledge;
+- another actor's testimony;
+- inference.
+
+ATTEND advances this frontier **only along channels actually available to inspection**.
+
+It does not convert hidden provenance, actor memory or objective history into narrator knowledge.
+
+Compact:
+
+> **ATTEND MAY ADVANCE MATERIALIZATION FARTHER THAN DISCLOSURE.**
+
+And:
+
+> **GENERATED TRUE != USER KNOWS TRUE.**
+
+### Birkenstock example
+
+At room-entry time the user may receive only:
+
+> sandals by the front door.
+
+Behind that surface, Rawlsing may already resolve:
+
+`brown Birkenstocks`
+→ `old`
+→ `heel worn unevenly`
+→ `cork darkened`
+→ `one strap repaired`.
+
+It may also resolve, without disclosure:
+- that they are Nadia's;
+- acquisition date/context;
+- who repaired the strap;
+- whether they appear in older canonical photos;
+- whether Nadia owns newer shoes;
+- what Nadia remembers or misremembers about them.
+
+When the user walks over and ATTENDs, lawful visual inspection may reveal:
+
+> old brown Birkenstocks, unevenly worn at the heel, cork darkened, one strap repaired.
+
+It does **not** narrate:
+
+> Nadia has owned them for years.
+
+unless the user possesses lawful evidence supporting that proposition.
+
+It does **not** narrate:
+
+> she reaches for them automatically despite owning newer shoes.
+
+unless the user has actually observed enough behavior/history to know that.
+
+It does **not** narrate their acquisition story merely because the story has now been generated.
+
+The act of ATTEND may nevertheless cause Rawlsing to materialize still deeper hidden truth behind the newly exposed surface, keeping the world ahead of the gaze.
+
+### Communication does not become truth lookup
+
+If the user asks Nadia about the shoes:
+
+`USER QUESTION`
+→ exact admitted interaction
+→ Nadia's actor-local access / memory / belief / motive
+→ CAN-008 R2 coupling
+→ response choice / expression.
+
+Not:
+
+`USER QUESTION`
+→ `WORLD.TRUTH[birkenstocks]`
+→ Nadia recites answer.
+
+Nadia may:
+- tell the truth;
+- tell only part of it;
+- misremember;
+- say she does not know;
+- evade because she does not want to talk about it;
+- joke;
+- invent something playfully;
+- lie deliberately;
+- confidently state something false.
+
+A child or other actor can independently do the same from **their** actor-local epistemic state.
+
+Thus:
+
+`OBJECTIVE PROVENANCE`
+!= `NADIA KNOWLEDGE`
+!= `NADIA TESTIMONY`
+!= `CHILD KNOWLEDGE`
+!= `CHILD TESTIMONY`
+!= `USER INFERENCE`.
+
+This is the practical meaning of actor opacity inside lazy world generation.
 
 ## 14. Curiosity invariance at depth
 
