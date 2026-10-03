@@ -5,7 +5,9 @@ Status: `DISPATCHED__TWO_IMPLEMENTER_SLOTS_SATURATED__SOURCE_HOLDS_PRESERVED`
 Dispatch base:
 `6820160533859cf8dd283d10c043947dfe1dd5d4`
 
-This wave uses the current operating ceiling of two simultaneous implementer slots. It does not authorize a third concurrent implementer. The independent review slot remains free.
+This wave uses the current operating ceiling of two simultaneous implementer slots.
+
+**Commission I/O law:** before work, each lane must fetch origin and verify its exact remote commissioned startup SHA in an isolated worktree. At return, it must push the completed worker branch to origin and verify local HEAD equals the exact remote return SHA. Local-only commits are not returned. It does not authorize a third concurrent implementer. The independent review slot remains free.
 
 ## Lane A — dispatcher/runtime fail-closed repair
 
@@ -13,7 +15,7 @@ Branch:
 `agent/rabochii-pyat-hq188-a-opencode-dispatcher-runtime-repair-r1`
 
 Commission tip:
-`2817711c7a1c7129a5c2352fcf604f49bf467286`
+`ff7a06694b0391471b8e1223b2f881b3288f529e`
 
 Commission:
 `WORKER_COMMISSIONS/PYAT-HQ188-A-OPENCODE-DISPATCHER-RUNTIME-REPAIR-R1/00_COMMISSION.md`
@@ -31,7 +33,7 @@ Branch:
 `agent/rabochii-pyat-hq188-b-c4-current-consolidation-r1`
 
 Commission tip:
-`83c0b9cd538d3e0d7e9dcb8fd183dcc9044be447`
+`9001be646305036e493eea3dbce427f62f91c9ae`
 
 Commission:
 `WORKER_COMMISSIONS/PYAT-HQ188-B-C4-CURRENT-CONSOLIDATION-R1/00_COMMISSION.md`
