@@ -1,3 +1,16 @@
+# HQ188 active two-slot wave — 2026-10-03
+
+Current dispatch supersedes the older "bind repair / consolidate C4" pending wording below as an action item: both jobs are now issued.
+
+- Lane A: `agent/rabochii-pyat-hq188-a-opencode-dispatcher-runtime-repair-r1 @ 2817711c7a1c7129a5c2352fcf604f49bf467286`
+- Lane B: `agent/rabochii-pyat-hq188-b-c4-current-consolidation-r1 @ 83c0b9cd538d3e0d7e9dcb8fd183dcc9044be447`
+
+Run both simultaneously. Do not launch a third implementer while both are active. On the first return, route it to HQ for adjudication and immediate slot refill. Lane A requires hostile independent end-to-end acceptance after candidate freeze. All source/warrant/live-execution holds below remain unchanged.
+
+See `PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/DISPATCHES/HQ188_TWO_SLOT_RABOCHII_WAVE_R1/`.
+
+---
+
 # Current remote-machine handoff — 2026-10-03
 
 Status: GITHUB_HANDOFF_COMPLETE__CONTINUE_EXISTING_HQ__C4_ADOPTION_HELD.
