@@ -992,7 +992,9 @@ Question:
 
 ## 18. Recursive self-rereading, visibility and Horizon
 
-Self-narratives may become durable interpretive-routing frameworks.
+**Currentness note:** read this section through §20 and SPD-0232/0233. The phenomena below are requirements/hypotheses, not proof of a monolithic interpretive-framework store. First attempt realization through current CAN-008 R2 coupling plus exact existing durable owners. `ARTICULATION EVENT` is an analytical function an exact admitted event may perform, not a new event/admission class by default. Absolute Horizon remains Sorok/theological research unless later project-current authority adopts runtime semantics.
+
+Self-narratives may become durable interpretive-routing effects.
 
 Preserve:
 
@@ -1026,12 +1028,7 @@ Compact:
 
 > **The interpretation never exhausts the person, but it can really enter into what the person becomes.**
 
-Absolute Horizon remains distinct from identity/self-myth. Interpretive frameworks may:
-- remain finite;
-- carry Horizon claims;
-- colonize Horizon;
-- be judged by Horizon;
-- reorder what the actor treats as ultimately binding.
+At Sorok/theological research grain, Absolute Horizon remains conceptually distinct from identity/self-myth. Candidate interpretations may describe a finite frame as carrying/colonizing/being judged by a Horizon claim or participating in a reordering of what the actor treats as ultimately binding. **These are kernel/research descriptions, not current alpha V3 runtime-owner commitments.**
 
 Artifact:
 `72_RECURSIVE_SELF_INTERPRETATION_VISIBILITY_AND_HORIZON_R1.md`.
@@ -1040,6 +1037,8 @@ Question:
 `Q-SELFREAD-001`.
 
 ## 19. Framework reality-metabolism and self-retcon
+
+**Currentness note:** §20 controls owner/runtime interpretation. `HOLD_UNRESOLVED / INTEGRATIVE / APPROPRIATIVE / PARTITIONED / IGNORING / EXTERNALIZING / CRACKING / TRANSFORMING` are derived hostile-test pattern labels, not adopted V3/CAN-008 operators. `Reality pressure` is descriptive friction between conditioning state and actual admitted events/outcomes; it is not an occurrence source.
 
 Recovered V3 already permits:
 - multiple contradictory middle-state mediators/tensions with no canonical dominant framework;
@@ -1065,7 +1064,7 @@ without deleting:
 - contradictory tensions;
 - other actors' memories/models.
 
-When framework F meets admitted reality pressure, candidate nonteleological operations include:
+When an exact admitted-event history is viewed analytically across time, candidate nonteleological response patterns include:
 - HOLD_UNRESOLVED;
 - ACCOMMODATE / INTEGRATE;
 - ASSIMILATE / APPROPRIATE;
