@@ -1,0 +1,56 @@
+{
+  "schema": "PYAT_HQ192_SRC26_HEADER_LAYER_BINDING@1.0.0",
+  "lane": "PYAT-HQ192-R9-OS-ACCOUNTING-INTERPOSITION-R1",
+  "part": "C",
+  "finding_id": "HDR-03",
+  "verdict": "EXECUTABLE SOURCE-FREE OWNER EXISTS AND IS ENFORCEABLE",
+  "owner": {
+    "module": "rawlsing_next/pre553_physical_decoder.py",
+    "function": "_raw_layout_declarations",
+    "lines": "372-389",
+    "mechanism": "source.open('rb') then handle.read(prefix_size)",
+    "prefix_size_sav": 176,
+    "prefix_size_dta": 512,
+    "called_from": "_file_metadata_contract, which _decode calls on every decode"
+  },
+  "python_level": true,
+  "interceptable_from_python": true,
+  "contrast_with_compiled_reader": "Unlike the pyreadstat reader, this read is pure Python and IS visible to builtins.open / Path.open interception. It is therefore governable.",
+  "measured_C2": {
+    "operation_count_per_decode": 1,
+    "bytes_per_operation_sav": 176,
+    "bytes_per_operation_dta": 512,
+    "total_python_level_read_bytes_sav_decode": 763,
+    "total_python_level_read_bytes_dta_decode": 2629,
+    "arithmetic": "763 = 587 whole-file hash read + 176 header prefix; 2629 = 2117 + 512",
+    "direct_probe": {
+      "c2_counts": {
+        "python_level_open": 1,
+        "python_level_read_bytes": 1
+      },
+      "read_176_bytes_succeeded": true
+    }
+  },
+  "operation_vs_byte_count": "OPERATION COUNT = number of prefix reads performed (1 per SAV decode). BYTE COUNT = bytes returned by each (176 for SAV, 512 for DTA). These are distinct and are reported separately.",
+  "enforcement_proof": {
+    "probe": "OBS3",
+    "verdict": "REFUSED_BEFORE_EXECUTION",
+    "refusals": [
+      {
+        "account": "header_prefix_read",
+        "already": 1,
+        "c3_max": 1,
+        "operation_executed": false
+      }
+    ],
+    "property": "an excess header-prefix read is refused BEFORE any open or read on the carrier",
+    "category": "C3_DEMO__demonstration ceiling, NOT an adopted policy maximum"
+  },
+  "emits": [
+    "header_prefix_length",
+    "header_prefix_sha256"
+  ],
+  "significant": "This is the one account HQ191 recorded as NOT PERFORMED by the exercised path. HQ192 located its owner, exercised it, and proved it enforceable. SRC26 HDR portion of R9 is therefore closable at the Python layer.",
+  "still_not_closed": "the operation is Python-level; it is NOT an OS-level open account, so it does not substitute for the Part A blocker",
+  "terminal": "HQ192_R9_OS_ACCOUNTING_RETURNED__HQ_REVIEW_REQUIRED"
+}

@@ -1,0 +1,30 @@
+{
+  "schema": "PYAT_HQ192_INTERPOSITION_MATRIX@1.0.0",
+  "purpose": "Reproducible record of every interposition attempt, so the negative result is auditable rather than asserted.",
+  "host": {"macos": "13.7.8 (22H730)", "sip": "enabled", "clang": "Apple clang 14.0.3, target x86_64-apple-darwin22.6.0"},
+  "interpreters_tested": [
+    {"name": "uv_c4c3", "path": "/var/folders/.../T/opencode/c4c3-env/bin/python3.11", "resolves_to": "LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/bin/python3.11", "has_pyreadstat": true},
+    {"name": "framework", "path": "/Library/Frameworks/Python.framework/Versions/3.11/bin/python3.11", "hardened_runtime": true, "codesign_flags": "0x10000(runtime)", "has_pyreadstat": false}
+  ],
+  "attempts": [
+    {"mechanism": "DYLD_INSERT_LIBRARIES + plain function definitions named open/openat/fopen/read/pread/close", "library_loaded": true, "constructor_ran": true, "events_captured_on_synthetic_carrier": 0, "events_captured_for_direct_ctypes_libc_open": 0, "verdict": "MECH-01_FAIL__plain_symbol_definition_does_not_interpose_dyld_shared_cache_libsystem_symbols"},
+    {"mechanism": "DYLD_INSERT_LIBRARIES + __DATA,__interpose tuples", "section_present": true, "section_size": 96, "result": "CPYTHON_FAILS_TO_START"},
+    {"mechanism": "__DATA,__interpose on getpid (cold symbol, no dlsym, returns constant)", "result": "SIGSEGV", "rc": 139},
+    {"mechanism": "__DATA,__interpose on stat", "result": "CPython prefix discovery failure: 'Could not find platform independent libraries <prefix>'", "rc": 1},
+    {"mechanism": "__DATA,__interpose on open", "result": "SIGSEGV", "rc": 139}
+  ],
+  "matrix": [
+    {"interposed": "none", "interpreter": "uv_c4c3", "rc": 0, "stdout": "OK"},
+    {"interposed": "getpid", "interpreter": "uv_c4c3", "rc": 139, "stdout": ""},
+    {"interposed": "stat", "interpreter": "uv_c4c3", "rc": 1, "stdout": ""},
+    {"interposed": "open", "interpreter": "uv_c4c3", "rc": 139, "stdout": ""},
+    {"interposed": "none", "interpreter": "framework", "rc": 0, "stdout": "OK"},
+    {"interposed": "getpid", "interpreter": "framework", "rc": 139, "stdout": ""},
+    {"interposed": "stat", "interpreter": "framework", "rc": 1, "stdout": ""},
+    {"interposed": "open", "interpreter": "framework", "rc": 139, "stdout": ""}
+  ],
+  "privileged_tracing_present_but_unusable": ["dtruss", "fs_usage", "opensnoop", "ktrace"],
+  "privileged_tracing_note": "Present as binaries. DTrace-class tracing requires root. The commission forbids sudo. Therefore not available to this lane.",
+  "conclusion": "LAWFUL_PROCESS_LOCAL_LIBC_INTERPOSITION_IS_NOT_AVAILABLE_ON_THIS_HOST__BLOCKER_PRESERVED",
+  "no_count_fabricated": true
+}

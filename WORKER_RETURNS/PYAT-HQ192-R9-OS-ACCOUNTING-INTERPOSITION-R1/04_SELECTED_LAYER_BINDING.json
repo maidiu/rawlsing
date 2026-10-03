@@ -1,0 +1,67 @@
+{
+  "schema": "PYAT_HQ192_SELECTED_LAYER_BINDING@1.0.0",
+  "lane": "PYAT-HQ192-R9-OS-ACCOUNTING-INTERPOSITION-R1",
+  "part": "B",
+  "question": "Trace the exact higher layer that consumes the physical incidence and enforces selected-variable/ordinal exactness for SRC02/SRC06/SRC14, and bind the selected-read account THERE.",
+  "finding_id": "SEL-02",
+  "verdict": "NO EXECUTABLE SELECTED-COLUMN READ OWNER EXISTS",
+  "static_evidence": {
+    "usecols_occurrences_in_decoder": 0,
+    "scope": "grep across the whole 23-module producer-inclusive closure",
+    "reader_invocation_sites": {
+      "_decode full compatibility read": "pre553_physical_decoder.py:467-469",
+      "_decode metadata read": "pre553_physical_decoder.py:463-465",
+      "iter_batches chunked full read": "pre553_physical_decoder.py:140-146"
+    },
+    "all_sites_are": "either a metadata-only read, a whole-file compatibility read, or a whole-file chunked read - none is column-subset"
+  },
+  "what_the_warrant_actually_declares": {
+    "SRC02": {
+      "kind": "SELECTED_VARIABLE_PHYSICAL",
+      "variables": [
+        {
+          "name": "Q10B",
+          "ordinal": 58
+        }
+      ]
+    },
+    "SRC06": {
+      "kind": "SELECTED_VARIABLE_PHYSICAL",
+      "variables": [
+        {
+          "name": "Q101",
+          "ordinal": 20
+        },
+        {
+          "name": "Q2061B",
+          "ordinal": 19
+        }
+      ]
+    },
+    "SRC14": {
+      "kind": "BOUNDED_PHYSICAL_WITNESS_READ_EXACT_VARIABLE",
+      "variables": [
+        {
+          "name": "v372",
+          "ordinal": 466
+        }
+      ]
+    }
+  },
+  "what_is_real_and_governed": {
+    "account": "selected-variable EXACTNESS",
+    "enforced_by": [
+      "the M01 bounded court assertions",
+      "artifact 07 O1-C08 stop trigger: a selected variable or ordinal is absent, or an UNEXPECTED selected column appears"
+    ],
+    "governable": true
+  },
+  "what_is_NOT_real": {
+    "account": "selected-read COUNT",
+    "governable": false,
+    "reason": "no bounded selected read operation exists to count. Creating a count here would guard an operation the decoder never performs, which the commission forbids."
+  },
+  "binding_decision": "The selected-read account is NOT bound as a read count. It is preserved as an EXACTNESS account, and that distinction is stated rather than relabelled.",
+  "blocker_preserved_for": "selected-read-as-a-count",
+  "terminal": "HQ192_R9_OS_ACCOUNTING_RETURNED__HQ_REVIEW_REQUIRED"
+}

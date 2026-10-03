@@ -1,0 +1,131 @@
+{
+  "schema": "PYAT_HQ192_SUCCESSOR_CANDIDATE_OR_BLOCKER@1.0.0",
+  "lane": "PYAT-HQ192-R9-OS-ACCOUNTING-INTERPOSITION-R1",
+  "successor_candidate_produced": false,
+  "why_no_candidate": "A complete non-authorizing successor cannot be produced, because the literal O1-C07 path-level-open account has no lawful enforceable mechanism on this host and the selected-read account has no executable owner. Producing a candidate that omits either would be a partial instrument presented as complete.",
+  "blocker_preserved": {
+    "finding_id": "OSL-01",
+    "account": "path-level opens AND their measurement basis",
+    "o1_c07_status": "MANDATORY_SEPARATE_ACCOUNT__NOT_SATISFIED",
+    "attempted": [
+      "DYLD_INSERT_LIBRARIES plain symbol definition",
+      "DYLD_INSERT_LIBRARIES with __DATA,__interpose",
+      "privileged tracing (excluded by the no-sudo rule)"
+    ],
+    "outcome": "all attempted user-space mechanisms either fail to interpose or crash CPython at startup on both available interpreters",
+    "count_fabricated": 0,
+    "commission_instruction_applied": "If SIP/hardened-runtime/library behavior prevents lawful interposition, record that as evidence and do not fake a count."
+  },
+  "accounts_CLOSED_or_NARROWED_by_this_lane": [
+    {
+      "account": "header-prefix read (SRC26 176 bytes)",
+      "prior_state": "NOT_PERFORMED by the exercised path - HDR-01",
+      "now": "EXECUTABLE OWNER LOCATED, EXERCISED AND ENFORCEABLE - HDR-03",
+      "owner": "pre553_physical_decoder.py::_raw_layout_declarations lines 372-389",
+      "evidence": "measured 1 operation per decode returning 176 bytes (SAV) or 512 (DTA); excess refused before execution",
+      "caveat": "a Python-layer operation. It does NOT substitute for the OS-level open account."
+    },
+    {
+      "account": "Python-level file opens",
+      "prior_state": "not separately counted by HQ191",
+      "now": "COUNTED AND GOVERNABLE - 2 per decode (whole-file hash pass + bounded header prefix)",
+      "evidence": "observed_bcd_run.json OBS1/OBS4"
+    },
+    {
+      "account": "Python-level byte volumes",
+      "prior_state": "not measured by HQ191",
+      "now": "MEASURED - 763 bytes (SAV decode), 2629 bytes (DTA decode)",
+      "evidence": "exact arithmetic against carrier sizes"
+    },
+    {
+      "account": "third reader-invocation site",
+      "prior_state": "unmeasured",
+      "now": "IDENTIFIED - RDR-02: iter_batches lines 140-146 issues pyreadstat.read_file_in_chunks, a further whole-file reader invocation that HQ191 did not exercise",
+      "evidence": "source inspection of pre553_physical_decoder.py:140-146"
+    }
+  ],
+  "accounts_STILL_UNGOVERNABLE": [
+    {
+      "account": "path-level opens AND measurement basis",
+      "finding_id": "OSL-01",
+      "status": "BLOCKER_PRESERVED"
+    },
+    {
+      "account": "selected-column reads as a COUNT",
+      "finding_id": "SEL-02",
+      "status": "NO EXECUTABLE OWNER",
+      "note": "selected-variable EXACTNESS is real and enforced; a selected-read COUNT is not created, because no bounded selected read operation exists to count."
+    },
+    {
+      "account": "compiled reader internal byte counts",
+      "finding_id": "BYT-02",
+      "status": "NOT_OBSERVABLE",
+      "depends_on": "OSL-01"
+    }
+  ],
+  "o1_c07_satisfied_now": "STILL PARTIAL__one mandatory named account (path-level opens with basis) remains unsatisfiable at any layer available to this lane",
+  "disposition": "R9_PARTIAL__LOWER_LAYER_STILL_UNGOVERNABLE",
+  "hostile_independent_review_required_before_hq_removes_r9": true,
+  "court_files": {
+    "build/": {
+      "note": "compiled interposer artifacts, reproducible via run_interposition_probe.sh"
+    },
+    "hq192_bcd_court.py": {
+      "sha256": "dbb92a41281b8d94c87cfba903e16bdf85bd9ed5999aae1e7860267fba0d85e4",
+      "bytes": 14223
+    },
+    "interposition_matrix.json": {
+      "sha256": "126434364ce69dd030a81a2fc884421a4311dd8823d76d4be23cd8ae0bab15fc",
+      "bytes": 2684
+    },
+    "interposition_probe_live.json": {
+      "sha256": "f6e9094b386a2e9b5e231de480ae780ff33f20dc8a680db5e66f86449651294d",
+      "bytes": 728
+    },
+    "observed_bcd_run.json": {
+      "sha256": "d67d249590b0131116cc3d53fa7da370b38c39efda5dbaccaaa87bf7a73e23fc",
+      "bytes": 6656
+    },
+    "r9_os_interpose.c": {
+      "sha256": "e4e94c7a5564de355bb4f538dea1c25a8ca9897299f29363ab0993227becba91",
+      "bytes": 11587
+    },
+    "run_interposition_probe.sh": {
+      "sha256": "3d6d9cfb511c840360fc93515df1672162ee70b18065b047489182e2a36c618c",
+      "bytes": 3183
+    },
+    "synthetic_carriers.py": {
+      "sha256": "0851d6771888caa2eed696a5de3f858125da9f621e2922f0a316dc80f722e1a6",
+      "bytes": 3944
+    },
+    "build/libgetpid.dylib": {
+      "sha256": "23891db1c9a47db08cc7e560e9f2199f2126005c0e71119a2f03ac05879aff36",
+      "bytes": 49432
+    },
+    "build/libopen.dylib": {
+      "sha256": "a1b5ee2537475de145ecf1e13663602d2d5b16ef6c533d9b2c4d49b1ed504db7",
+      "bytes": 49560
+    },
+    "build/libr9os.dylib": {
+      "sha256": "823dcb20a626a4fcd0365e906f3d16a795679ac1594f2cf45fde393adccf5cb8",
+      "bytes": 51368
+    },
+    "build/libstat.dylib": {
+      "sha256": "2e156d173301e6875070daa8a1d715dac00bd52e3b5a9b962598263c4e8df939",
+      "bytes": 49448
+    },
+    "build/v_getpid.c": {
+      "sha256": "b96aeb5d9716f4897bfbfb056cd5c0f8afb4757efbcb39486f87864511a1ba83",
+      "bytes": 416
+    },
+    "build/v_open.c": {
+      "sha256": "0125c11dc440b9ba472f54ec270a466c835ab1732ac78b52f644a692e582d53d",
+      "bytes": 552
+    },
+    "build/v_stat.c": {
+      "sha256": "87bee59aa94dcbbb063e6415fa920ebca96221a728fa9539e3dfbba631614537",
+      "bytes": 456
+    }
+  },
+  "terminal": "HQ192_R9_OS_ACCOUNTING_RETURNED__HQ_REVIEW_REQUIRED"
+}

@@ -1,0 +1,191 @@
+{
+  "schema": "PYAT_HQ192_FINAL_DISPOSITION@1.0.0",
+  "lane": "PYAT-HQ192-R9-OS-ACCOUNTING-INTERPOSITION-R1",
+  "role": "RABOCHII / source-free low-level accounting implementer - Space Bunny",
+  "repository": "maidiu/rawlsing",
+  "worker_branch": "agent/rabochii-pyat-hq192-r9-os-accounting-interposition-r1",
+  "commissioned_startup_sha": "fdaf71c4c08d3f21778eeab335b5b928cc78fb7b",
+  "declared_implementation_base": "491dac21b9f833c57bcb2ddb39f442c3dba0017c",
+  "verified_startup_parent_equals_declared_base": true,
+  "final_disposition": "R9_PARTIAL__LOWER_LAYER_STILL_UNGOVERNABLE",
+  "disposition_meaning": "The literal O1-C07 gap - path-level opens AND their measurement basis - could NOT be closed. Two lawful unprivileged interposition mechanisms were attempted; plain symbol definition does not interpose dyld shared-cache symbols, and __DATA,__interpose crashes CPython at startup on both available interpreters for open, stat and even a cold getpid. The blocker is PRESERVED and no count was fabricated. One account WAS closed: SRC26 header-prefix reads have an executable Python-level owner, were exercised, and an excess read was refused before execution. Selected-read has no executable owner. Byte accounting is partial.",
+  "dispositions_not_taken": [
+    {
+      "value": "R9_COMPLETE_CANDIDATE_READY_FOR_HOSTILE_REVIEW",
+      "why_not": "A complete candidate cannot be produced without omitting the path-level-open account or the selected-read account. No candidate was produced rather than a partial one presented as complete."
+    },
+    {
+      "value": "R9_PARTIAL__HIGHER_LAYER_OWNER_MISSING",
+      "why_not": "That is TRUE of Part B and is recorded as finding SEL-02, but only one disposition is permitted. The LITERAL O1-C07 gap named by the commission lives in Part A, which is the lower layer, so the lower-layer disposition is the accurate single answer. The Part B owner-missing finding is stated explicitly in 04_SELECTED_LAYER_BINDING.json and in 07_SUCCESSOR_CANDIDATE_OR_BLOCKER.json rather than being hidden by the choice of label."
+    },
+    {
+      "value": "R9_POLICY_AUTHORITY_REQUIRED",
+      "why_not": "Adopting maxima is an HQ decision, but this lane did not reach the point of proposing a complete set. The governing obstacle is technical unavailability, not pending policy."
+    },
+    {
+      "value": "R9_MATERIAL_CONTRADICTION_FOUND",
+      "why_not": "No contradiction. The host limitation, the missing owner and the partial byte observability are all consistent with the code and artifacts as they stand."
+    }
+  ],
+  "parts": [
+    {
+      "part": "A",
+      "topic": "OS-level interposition",
+      "outcome": "FAILED__BLOCKER_PRESERVED",
+      "mechanisms_attempted": [
+        "DYLD_INSERT_LIBRARIES plain symbol definition",
+        "DYLD_INSERT_LIBRARIES __DATA,__interpose",
+        "privileged tracing excluded by no-sudo rule"
+      ],
+      "result": "library loaded but captured zero events (even for direct ctypes libc.open); then with __interpose CPython failed to start on both interpreters",
+      "count_fabricated": 0,
+      "reproducible_via": "run_interposition_probe.sh"
+    },
+    {
+      "part": "B",
+      "topic": "selected-column layer",
+      "outcome": "NO EXECUTABLE OWNER__SEL-02",
+      "detail": "usecols occurs zero times across the whole 23-module closure; all three reader sites are whole-file or metadata-only. Selected-variable EXACTNESS is real and enforced; a selected-read COUNT was deliberately not created."
+    },
+    {
+      "part": "C",
+      "topic": "SRC26 header prefix",
+      "outcome": "CLOSED_AT_PYTHON_LAYER__HDR-03",
+      "owner": "rawlsing_next/pre553_physical_decoder.py::_raw_layout_declarations lines 372-389",
+      "mechanism": "source.open(\"rb\") then handle.read(prefix_size)",
+      "measured": "1 operation per decode; 176 bytes SAV, 512 bytes DTA",
+      "enforcement": "excess read REFUSED_BEFORE_EXECUTION (operation_executed false)",
+      "caveat": "a Python-layer operation; does NOT substitute for the OS-level account"
+    },
+    {
+      "part": "D",
+      "topic": "byte accounting",
+      "outcome": "PARTIAL__BYT-02",
+      "python_level": "observable and enforceable; 763 bytes SAV decode, 2629 bytes DTA decode, arithmetic exact",
+      "compiled_reader": "NOT observable; depends on Part A",
+      "byte_ceiling_for_compiled_reader_proposed": false
+    }
+  ],
+  "additionally_measured_beyond_HQ191": [
+    "python_level_open: 2 per decode (whole-file hash pass + bounded header prefix) - not counted by HQ191",
+    "python_level_read_bytes: 763 SAV / 2629 DTA - not measured by HQ191",
+    "RDR-02: iter_batches lines 140-146 issues pyreadstat.read_file_in_chunks, a third reader-invocation site performing a whole-file chunked read, identified but NOT exercised"
+  ],
+  "category_law_upheld": {
+    "C1": "read only from frozen artifacts; nothing emitted under a C1 label",
+    "C2": "all measurements on synthetic carriers",
+    "C3": "the refusal-demonstration ceiling is C3-DEMO, not adopted policy",
+    "c2_or_c3_relabelled_as_c1": 0
+  },
+  "blocker_preserved": {
+    "finding_id": "OSL-01",
+    "account": "path-level opens AND their measurement basis",
+    "o1_c07_status": "MANDATORY_SEPARATE_ACCOUNT__NOT_SATISFIED_AT_ANY_LAYER_AVAILABLE_TO_THIS_LANE",
+    "zero_observed_law": "Zero is a record of what this lane could OBSERVE, not a count of what the reader did. The read succeeds, so the reader certainly opens the file."
+  },
+  "successor_candidate_produced": false,
+  "r9_status": {
+    "r9_closed": false,
+    "blocker_preserved": true,
+    "o1_c07_satisfied": "STILL PARTIAL",
+    "hq190c_and_hq191_diagnostics_preserved": true,
+    "stage_count_changed_by_this_lane": false
+  },
+  "hostile_independent_review_required_before_hq_removes_r9": true,
+  "court_files": {
+    "hq192_bcd_court.py": {
+      "sha256": "dbb92a41281b8d94c87cfba903e16bdf85bd9ed5999aae1e7860267fba0d85e4",
+      "bytes": 14223
+    },
+    "interposition_matrix.json": {
+      "sha256": "126434364ce69dd030a81a2fc884421a4311dd8823d76d4be23cd8ae0bab15fc",
+      "bytes": 2684
+    },
+    "interposition_probe_live.json": {
+      "sha256": "f6e9094b386a2e9b5e231de480ae780ff33f20dc8a680db5e66f86449651294d",
+      "bytes": 728
+    },
+    "observed_bcd_run.json": {
+      "sha256": "d67d249590b0131116cc3d53fa7da370b38c39efda5dbaccaaa87bf7a73e23fc",
+      "bytes": 6656
+    },
+    "r9_os_interpose.c": {
+      "sha256": "e4e94c7a5564de355bb4f538dea1c25a8ca9897299f29363ab0993227becba91",
+      "bytes": 11587
+    },
+    "run_interposition_probe.sh": {
+      "sha256": "3d6d9cfb511c840360fc93515df1672162ee70b18065b047489182e2a36c618c",
+      "bytes": 3183
+    },
+    "synthetic_carriers.py": {
+      "sha256": "0851d6771888caa2eed696a5de3f858125da9f621e2922f0a316dc80f722e1a6",
+      "bytes": 3944
+    }
+  },
+  "return_files": {
+    "00_RETURN.md": {
+      "sha256": "751b34ccaa16843472d803563d89a16f46c0a4f24d04f841311f8e36f8f21018",
+      "bytes": 7271
+    },
+    "01_INTERPOSITION_METHOD_AND_HOST_LIMITS.json": {
+      "sha256": "be1cdfdc0c01bc6547ef3f764dad11861736021f148cabd36c78fb954c42e21e",
+      "bytes": 3902
+    },
+    "02_OS_OPEN_OBSERVATIONS.json": {
+      "sha256": "327bb135c39dc66d103846150ecf9adec3a5ded58b4da6e23abb97662a8db603",
+      "bytes": 5051
+    },
+    "03_OS_OPEN_ENFORCEMENT_NEGATIVE_CASES.json": {
+      "sha256": "07bbf749412b83cd9d0b6bd372b714183411978c2922387a1e44caad13122a1f",
+      "bytes": 1542
+    },
+    "04_SELECTED_LAYER_BINDING.json": {
+      "sha256": "ba506361b99cb300519c23eec7627c26f8420fffc1efc88ba2786df8c5494a0f",
+      "bytes": 2465
+    },
+    "05_SRC26_HEADER_LAYER_BINDING.json": {
+      "sha256": "f74a7060b271ef37e41bd6fbed3aaf04a3d59e95d15da29734495991a318de7a",
+      "bytes": 2482
+    },
+    "06_BYTE_ACCOUNTING.json": {
+      "sha256": "dacbdbdff31d80fc509c6b1543439abcfec2cb86b7d8f941ce21de9001783aeb",
+      "bytes": 1800
+    },
+    "07_SUCCESSOR_CANDIDATE_OR_BLOCKER.json": {
+      "sha256": "bf912f3420bbe78954641b9b4b3e48f64c2b33390a444a05ef1c8d004d38d115",
+      "bytes": 5737
+    },
+    "08_LIMITATIONS.json": {
+      "sha256": "280edbc6f4f9f441fa58e526dab600a198352f72699dfc35f787047c5c154746",
+      "bytes": 3709
+    },
+    "interposition_probe_live.json": {
+      "sha256": "f6e9094b386a2e9b5e231de480ae780ff33f20dc8a680db5e66f86449651294d",
+      "bytes": 728
+    }
+  },
+  "substantive_result_commit_sha": "REPORTED_IN_COMPLETION_MESSAGE_PER_RETURN_LAW",
+  "pushed_remote_branch_tip_sha": "REPORTED_SEPARATELY_PER_RETURN_LAW",
+  "holds_observed": {
+    "locator_discovery": 0,
+    "locator_fills": 0,
+    "source_directory_discovery": 0,
+    "real_source_operations": 0,
+    "warrant_issued": false,
+    "live_c4_executed": false,
+    "production_mutated": false,
+    "rawlsing_next_files_changed": 0,
+    "c7_implemented": false,
+    "actor_person_work_implemented": false,
+    "hq_handoff_edited": false,
+    "hq190c_diagnostic_edited": false,
+    "hq191_diagnostic_edited": false,
+    "historical_warrant_artifacts_edited": false,
+    "sudo_used": false,
+    "system_installation": false,
+    "astra_contacted": false,
+    "self_adopted": false,
+    "merged_into_control": false
+  },
+  "terminal": "HQ192_R9_OS_ACCOUNTING_RETURNED__HQ_REVIEW_REQUIRED"
+}

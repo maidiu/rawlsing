@@ -1,0 +1,73 @@
+{
+  "schema": "PYAT_HQ192_LIMITATIONS@1.0.0",
+  "lane": "PYAT-HQ192-R9-OS-ACCOUNTING-INTERPOSITION-R1",
+  "limitations": [
+    {
+      "id": "LIM-01",
+      "limitation": "Interposition was attempted only on this host and these two interpreters.",
+      "effect": "The negative result is host-specific. A different macOS build, a non-SIP configuration, or a signed interpreter with library-validation disabled might permit it. This lane did not and cannot test those, and does not claim interposition is impossible in general."
+    },
+    {
+      "id": "LIM-02",
+      "limitation": "The Part A negative result does not prove the compiled reader performs no OS opens.",
+      "effect": "It proves this lane could not OBSERVE them. The reader certainly opens the file; that is why the read succeeds. Zero observed is a statement about observability, not about behaviour. Stated explicitly in 02_OS_OPEN_OBSERVATIONS.json."
+    },
+    {
+      "id": "LIM-03",
+      "limitation": "All byte volumes are synthetic-carrier observations.",
+      "effect": "763 and 2629 bytes describe 587- and 2117-byte files. They are NOT predictions about any real survey file and no real-file byte ceiling is proposed."
+    },
+    {
+      "id": "LIM-04",
+      "limitation": "The header-prefix maximum used to demonstrate refusal is a C3-DEMO ceiling, not an adopted policy maximum.",
+      "effect": "It shows the gate refuses before execution. Adopting a real ceiling is HQ policy."
+    },
+    {
+      "id": "LIM-05",
+      "limitation": "iter_batches (RDR-02) was identified but not exercised.",
+      "effect": "Its chunked whole-file read is a third reader site whose budget implications are unmeasured. A complete R9 candidate would need it measured."
+    },
+    {
+      "id": "LIM-06",
+      "limitation": "The compatibility full-read path was not re-exercised in this lane.",
+      "effect": "HQ191 already measured it with a disclosed in-memory allowlist injection. HQ192 did not repeat it; it relied on that result rather than re-deriving it, and says so."
+    },
+    {
+      "id": "LIM-07",
+      "limitation": "No independent review of this lane exists.",
+      "effect": "Hostile independent review is mandatory before HQ relies on any part of this, including the Part C positive finding."
+    }
+  ],
+  "claims_deliberately_not_made": [
+    "That R9 is closed.",
+    "That any OS-level file-open count was measured, bounded or enforced.",
+    "That zero observed OS opens means zero actual OS opens.",
+    "That a selected-read count was bound, or that a bounded selected read exists.",
+    "That a byte ceiling can be expressed for the compiled reader.",
+    "That synthetic byte volumes predict real-source byte volumes.",
+    "That interposition is impossible in general - only that it is unavailable here.",
+    "That the header-prefix DEMONSTRATION ceiling is an adopted policy.",
+    "That the iter_batches site was measured.",
+    "That any historical expected value, the HQ190-C or HQ191 diagnostics, or any warrant artifact was modified."
+  ],
+  "fabrication_guard": {
+    "os_open_counts_fabricated": 0,
+    "c2_values_labelled_as_c1": 0,
+    "c3_demo_values_presented_as_policy": 0,
+    "byte_ceilings_fabricated": 0,
+    "real_sources_touched": 0,
+    "locators_discovered": 0
+  },
+  "verification_discipline": {
+    "tooling": [
+      "clang 14.0.3",
+      "python 3.11.3 (C4C3 env)",
+      "node v18.14.2",
+      "git plumbing"
+    ],
+    "non_equality_law": "No finding rests on null==null or absent-field equality.",
+    "every_negative_result_reproducible_via": "run_interposition_probe.sh",
+    "production_mutated": false
+  },
+  "final_disposition": "R9_PARTIAL__LOWER_LAYER_STILL_UNGOVERNABLE"
+}

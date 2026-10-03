@@ -1,0 +1,34 @@
+{
+  "schema": "PYAT_HQ192_OS_OPEN_ENFORCEMENT_NEGATIVE_CASES@1.0.0",
+  "lane": "PYAT-HQ192-R9-OS-ACCOUNTING-INTERPOSITION-R1",
+  "property_under_test": "A declared maximum must refuse an excess operation BEFORE it executes.",
+  "os_open_level_cases": {
+    "count": 0,
+    "reason": "NOT DEMONSTRABLE. Interposition is unavailable, so no OS-open refusal case can be constructed on this host.",
+    "law": "This is the PRESERVED BLOCKER, not an untested claim and not a silent pass."
+  },
+  "python_level_cases": [
+    {
+      "id": "PC1",
+      "case": "header-prefix read beyond a declared maximum of 1",
+      "verdict": "REFUSED_BEFORE_EXECUTION",
+      "c3_demo_maxima": {
+        "header_prefix_read": 1
+      },
+      "refusals": [
+        {
+          "account": "header_prefix_read",
+          "already": 1,
+          "c3_max": 1,
+          "operation_executed": false
+        }
+      ],
+      "first_read_consumed": true,
+      "key_property": "operation_executed=false - refused before any open or read on the carrier",
+      "category": "C3_DEMO__demonstration ceiling, NOT an adopted policy maximum"
+    }
+  ],
+  "other_python_level_refusals_note": "The same gate refuses existence checks, hash passes and reader invocations before execution. HQ191 demonstrated 8 such cases at those layers. HQ192 adds the header-prefix layer, which HQ191 did not reach.",
+  "blocker_preserved": "OS-level open refusal remains UNDEMONSTRATED and UNDEMONSTRABLE on this host.",
+  "terminal": "HQ192_R9_OS_ACCOUNTING_RETURNED__HQ_REVIEW_REQUIRED"
+}

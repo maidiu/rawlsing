@@ -1,0 +1,146 @@
+{
+  "schema": "PYAT_HQ192_OS_OPEN_OBSERVATIONS@1.0.0",
+  "lane": "PYAT-HQ192-R9-OS-ACCOUNTING-INTERPOSITION-R1",
+  "CATEGORY": "C2_OBSERVED_SYNTHETIC",
+  "category_law": "All numbers here were measured on synthetic carriers in this lane. None is a historical expectation. None predicts real-source behaviour.",
+  "os_level_open_account": {
+    "governable": false,
+    "observed_by_this_lane": 0,
+    "reason": "Part A: lawful process-local interposition is unavailable on this host.",
+    "law": "NO OS-LEVEL OPEN COUNT IS CLAIMED. Zero is a record of what this lane could observe, NOT a count of what the reader did."
+  },
+  "python_level_file_operations": {
+    "governable": true,
+    "note": "NEW ACCOUNT NOT MEASURED BY HQ191. Per decode there are TWO Python-level opens: the whole-file hash pass and the bounded header-prefix read. Both are visible to builtins.open / Path.open interception.",
+    "sav_decode": {
+      "completed": true,
+      "row_count": 4,
+      "c2_counts": {
+        "existence_access_check": 1,
+        "full_file_sha256_pass": 1,
+        "python_level_open": 2,
+        "python_level_read_bytes": 3,
+        "reader_invocation": 1,
+        "reader_metadata_read": 1
+      },
+      "c2_bytes": {
+        "existence_access_check": 0,
+        "full_file_sha256_pass": 0,
+        "python_level_open": 0,
+        "python_level_read_bytes": 763,
+        "reader_invocation": 0,
+        "reader_metadata_read": 0
+      },
+      "c2_order": [
+        {
+          "account": "existence_access_check",
+          "bytes": 0,
+          "ordinal": 1,
+          "path": "SYN_SAV_TINY.sav"
+        },
+        {
+          "account": "full_file_sha256_pass",
+          "bytes": 0,
+          "mechanism": "hashlib.sha256 whole file, 1MiB blocks",
+          "ordinal": 1,
+          "path": "SYN_SAV_TINY.sav"
+        },
+        {
+          "account": "python_level_open",
+          "bytes": 0,
+          "mode": "rb",
+          "ordinal": 1,
+          "path": "SYN_SAV_TINY.sav",
+          "via": "Path.open"
+        },
+        {
+          "account": "python_level_read_bytes",
+          "basis": "bytes returned by read() on a Python-level handle",
+          "bytes": 587,
+          "handle": "Path.open:SYN_SAV_TINY.sav",
+          "ordinal": 1,
+          "requested": 1048576
+        },
+        {
+          "account": "python_level_read_bytes",
+          "basis": "bytes returned by read() on a Python-level handle",
+          "bytes": 0,
+          "handle": "Path.open:SYN_SAV_TINY.sav",
+          "ordinal": 2,
+          "requested": 1048576
+        },
+        {
+          "account": "reader_metadata_read",
+          "bytes": 0,
+          "fmt": "sav",
+          "ordinal": 1,
+          "usecols": null
+        },
+        {
+          "account": "reader_invocation",
+          "bytes": 0,
+          "fmt": "sav",
+          "ordinal": 1
+        },
+        {
+          "account": "python_level_open",
+          "bytes": 0,
+          "mode": "rb",
+          "ordinal": 2,
+          "path": "SYN_SAV_TINY.sav",
+          "via": "Path.open"
+        },
+        {
+          "account": "python_level_read_bytes",
+          "basis": "bytes returned by read() on a Python-level handle",
+          "bytes": 176,
+          "handle": "Path.open:SYN_SAV_TINY.sav",
+          "ordinal": 3,
+          "requested": 176
+        }
+      ]
+    },
+    "dta_decode": {
+      "completed": true,
+      "c2_counts": {
+        "existence_access_check": 1,
+        "full_file_sha256_pass": 1,
+        "python_level_open": 2,
+        "python_level_read_bytes": 3,
+        "reader_invocation": 1,
+        "reader_metadata_read": 1
+      },
+      "c2_bytes": {
+        "existence_access_check": 0,
+        "full_file_sha256_pass": 0,
+        "python_level_open": 0,
+        "python_level_read_bytes": 2629,
+        "reader_invocation": 0,
+        "reader_metadata_read": 0
+      }
+    }
+  },
+  "reader_invocations": {
+    "governable_at_this_layer": true,
+    "sav_decode_reader_invocations": 1,
+    "dta_decode_reader_invocations": 1,
+    "sites_total_in_decoder": 3,
+    "third_site_not_exercised_by_HQ191": "pre553_physical_decoder.py:140-146 iter_batches -> pyreadstat.read_file_in_chunks performs a WHOLE-FILE chunked read and issues a further reader invocation. HQ191 exercised decode entry points only and did not measure this site. Finding RDR-02."
+  },
+  "newly_visible_versus_HQ191": [
+    "python_level_open: 2 per decode (hash pass + header prefix) - HQ191 did not count these",
+    "python_level_read_bytes: 3 reads totalling 763 bytes for SAV and 2629 for DTA - HQ191 did not measure byte volumes",
+    "the iter_batches chunked-read site as a third reader invocation"
+  ],
+  "byte_arithmetic_check": {
+    "sav": "587 whole-file hash read + 176 header prefix = 763",
+    "dta": "2117 whole-file hash read + 512 header prefix = 2629",
+    "exact": true
+  },
+  "holds": {
+    "real_source_operations": 0,
+    "locator_discovery": 0,
+    "directory_inspection_for_sources": 0
+  },
+  "terminal": "HQ192_R9_OS_ACCOUNTING_RETURNED__HQ_REVIEW_REQUIRED"
+}

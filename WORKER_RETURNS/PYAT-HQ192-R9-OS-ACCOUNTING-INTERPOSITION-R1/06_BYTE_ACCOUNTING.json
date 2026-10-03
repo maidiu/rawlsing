@@ -1,0 +1,29 @@
+{
+  "schema": "PYAT_HQ192_BYTE_ACCOUNTING@1.0.0",
+  "lane": "PYAT-HQ192-R9-OS-ACCOUNTING-INTERPOSITION-R1",
+  "part": "D",
+  "finding_id": "BYT-02",
+  "verdict": "PARTIALLY_GOVERNABLE__PYTHON_LEVEL_YES__COMPILED_READER_NO",
+  "python_level_reads_observable": true,
+  "python_level_accounts": [
+    "full_file_sha256_pass",
+    "header_prefix_read"
+  ],
+  "measured_byte_volumes": {
+    "sav_decode_total": 763,
+    "dta_decode_total": 2629,
+    "composition": "whole-file hash pass bytes plus bounded header-prefix bytes",
+    "basis": "bytes returned by read() on a Python-level file handle opened on a synthetic carrier"
+  },
+  "compiled_reader_byte_counts_observable": false,
+  "reason": "Part A established that process-local libc interposition is unavailable on this host: DYLD_INTERPOSE of open/stat/getpid makes CPython fail to start (SIGSEGV / prefix-discovery failure) on BOTH available interpreters. Without interposition the compiled reader's read/pread byte counts cannot be observed.",
+  "byte_ceilings_expressible": "Only for Python-level reads. A byte ceiling on the compiled reader's internal reads is NOT expressible from this lane.",
+  "explicit_law": "Synthetic byte totals observed here are NOT predictions about real survey-file byte totals. No C3 byte ceiling is proposed for the compiled reader.",
+  "category_law": {
+    "C1": "artifact 07 expected_header_prefix_bytes 176 for SRC26 - an established historical bound, unchanged and not relabelled",
+    "C2": "763 and 2629 bytes measured on synthetic carriers - NOT predictions about real survey-file byte totals",
+    "C3": "no C3 byte ceiling is proposed for the compiled reader by this lane"
+  },
+  "no_byte_ceiling_proposed_for_compiled_reader": true,
+  "terminal": "HQ192_R9_OS_ACCOUNTING_RETURNED__HQ_REVIEW_REQUIRED"
+}

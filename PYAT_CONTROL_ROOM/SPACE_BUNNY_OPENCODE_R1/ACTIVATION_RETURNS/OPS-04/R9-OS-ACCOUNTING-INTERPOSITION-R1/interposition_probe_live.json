@@ -1,0 +1,13 @@
+{
+  "probe": "HQ192 Part A interposition matrix",
+  "results": [
+    {"interposed": "none", "interpreter": "uv_c4c3", "rc": 0, "stdout": "OK"},
+    {"interposed": "libgetpid", "interpreter": "uv_c4c3", "rc": 139, "stdout": ""},
+    {"interposed": "libstat", "interpreter": "uv_c4c3", "rc": 1, "stdout": ""},
+    {"interposed": "libopen", "interpreter": "uv_c4c3", "rc": 139, "stdout": ""},
+    {"interposed": "none", "interpreter": "framework", "rc": 0, "stdout": "OK"},
+    {"interposed": "libgetpid", "interpreter": "framework", "rc": 139, "stdout": ""},
+    {"interposed": "libstat", "interpreter": "framework", "rc": 1, "stdout": ""},
+    {"interposed": "libopen", "interpreter": "framework", "rc": 139, "stdout": ""}
+  ]
+}

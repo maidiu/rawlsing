@@ -1,0 +1,179 @@
+{
+  "CATEGORY": "C2_OBSERVED_SYNTHETIC",
+  "locator_discovery": 0,
+  "part_B_selected_column": {
+    "conclusion": "SEL-02: there is NO executable selected-column read. usecols is never supplied at any reader site. The warrant's allowed_operations.SELECTED_VARIABLE_PHYSICAL entries for SRC02/SRC06/SRC14 are DECLARATIVE CONTRACTS whose exactness is enforced by court assertions and the O1-C08 stop trigger on an absent variable, an absent ordinal or an UNEXPECTED selected column - not by a bounded read operation. A selected-read COUNT would guard an operation that does not exist, so no such count is created.",
+    "reader_invocation_sites": {
+      "_decode full compatibility read": "pre553_physical_decoder.py:467-469",
+      "_decode metadata read": "pre553_physical_decoder.py:463-465",
+      "iter_batches chunked full read": "pre553_physical_decoder.py:140-146"
+    },
+    "usecols_occurrences_in_decoder": 0,
+    "what_is_real_and_governed": "Selected-variable EXACTNESS is enforced, not a selected-read COUNT. That is a different account and is labelled as such, not relabelled into a read count."
+  },
+  "part_C_header_prefix": {
+    "contrast_with_compiled_reader": "Unlike the pyreadstat reader, this read is pure Python and IS visible to builtins.open / Path.open interception. It is therefore governable.",
+    "direct_probe": {
+      "c2_counts": {
+        "python_level_open": 1,
+        "python_level_read_bytes": 1
+      },
+      "read_176_bytes_succeeded": true
+    },
+    "executable_owner": "rawlsing_next/pre553_physical_decoder.py::_raw_layout_declarations",
+    "interceptable_from_python": true,
+    "mechanism": "source.open('rb') then handle.read(prefix_size)",
+    "operation_vs_byte_count": "OPERATION COUNT = number of prefix reads performed (1 per SAV decode). BYTE COUNT = bytes returned by each (176 for SAV, 512 for DTA). These are distinct and are reported separately.",
+    "owner_lines": "372-389",
+    "prefix_size_dta": 512,
+    "prefix_size_sav": 176,
+    "python_level": true,
+    "records_emitted_by_owner": [
+      "header_prefix_length",
+      "header_prefix_sha256"
+    ]
+  },
+  "part_D_byte_accounting": {
+    "byte_ceilings_expressible": "Only for Python-level reads. A byte ceiling on the compiled reader's internal reads is NOT expressible from this lane.",
+    "compiled_reader_byte_counts_observable": false,
+    "explicit_law": "Synthetic byte totals observed here are NOT predictions about real survey-file byte totals. No C3 byte ceiling is proposed for the compiled reader.",
+    "python_level_accounts": [
+      "full_file_sha256_pass",
+      "header_prefix_read"
+    ],
+    "python_level_reads_observable": true,
+    "reason": "Part A established that process-local libc interposition is unavailable on this host: DYLD_INTERPOSE of open/stat/getpid makes CPython fail to start (SIGSEGV / prefix-discovery failure) on BOTH available interpreters. Without interposition the compiled reader's read/pread byte counts cannot be observed."
+  },
+  "probes": {
+    "OBS1_sav_decode_unbounded": {
+      "c2_bytes_by_account": {
+        "existence_access_check": 0,
+        "full_file_sha256_pass": 0,
+        "python_level_open": 0,
+        "python_level_read_bytes": 763,
+        "reader_invocation": 0,
+        "reader_metadata_read": 0
+      },
+      "c2_counts": {
+        "existence_access_check": 1,
+        "full_file_sha256_pass": 1,
+        "python_level_open": 2,
+        "python_level_read_bytes": 3,
+        "reader_invocation": 1,
+        "reader_metadata_read": 1
+      },
+      "c2_order": [
+        {
+          "account": "existence_access_check",
+          "bytes": 0,
+          "ordinal": 1,
+          "path": "SYN_SAV_TINY.sav"
+        },
+        {
+          "account": "full_file_sha256_pass",
+          "bytes": 0,
+          "mechanism": "hashlib.sha256 whole file, 1MiB blocks",
+          "ordinal": 1,
+          "path": "SYN_SAV_TINY.sav"
+        },
+        {
+          "account": "python_level_open",
+          "bytes": 0,
+          "mode": "rb",
+          "ordinal": 1,
+          "path": "SYN_SAV_TINY.sav",
+          "via": "Path.open"
+        },
+        {
+          "account": "python_level_read_bytes",
+          "basis": "bytes returned by read() on a Python-level handle",
+          "bytes": 587,
+          "handle": "Path.open:SYN_SAV_TINY.sav",
+          "ordinal": 1,
+          "requested": 1048576
+        },
+        {
+          "account": "python_level_read_bytes",
+          "basis": "bytes returned by read() on a Python-level handle",
+          "bytes": 0,
+          "handle": "Path.open:SYN_SAV_TINY.sav",
+          "ordinal": 2,
+          "requested": 1048576
+        },
+        {
+          "account": "reader_metadata_read",
+          "bytes": 0,
+          "fmt": "sav",
+          "ordinal": 1,
+          "usecols": null
+        },
+        {
+          "account": "reader_invocation",
+          "bytes": 0,
+          "fmt": "sav",
+          "ordinal": 1
+        },
+        {
+          "account": "python_level_open",
+          "bytes": 0,
+          "mode": "rb",
+          "ordinal": 2,
+          "path": "SYN_SAV_TINY.sav",
+          "via": "Path.open"
+        },
+        {
+          "account": "python_level_read_bytes",
+          "basis": "bytes returned by read() on a Python-level handle",
+          "bytes": 176,
+          "handle": "Path.open:SYN_SAV_TINY.sav",
+          "ordinal": 3,
+          "requested": 176
+        }
+      ],
+      "completed": true,
+      "refusals": [],
+      "row_count": 4
+    },
+    "OBS3_header_prefix_excess_refused": {
+      "c3_demo_maxima": {
+        "header_prefix_read": 1
+      },
+      "excess_attempt": {
+        "account": "header_prefix_read",
+        "refused_before_open": true
+      },
+      "first_read_consumed": true,
+      "refusals": [
+        {
+          "account": "header_prefix_read",
+          "already": 1,
+          "c3_max": 1,
+          "operation_executed": false
+        }
+      ],
+      "verdict": "REFUSED_BEFORE_EXECUTION"
+    },
+    "OBS4_dta_decode_unbounded": {
+      "c2_bytes_by_account": {
+        "existence_access_check": 0,
+        "full_file_sha256_pass": 0,
+        "python_level_open": 0,
+        "python_level_read_bytes": 2629,
+        "reader_invocation": 0,
+        "reader_metadata_read": 0
+      },
+      "c2_counts": {
+        "existence_access_check": 1,
+        "full_file_sha256_pass": 1,
+        "python_level_open": 2,
+        "python_level_read_bytes": 3,
+        "reader_invocation": 1,
+        "reader_metadata_read": 1
+      },
+      "completed": true
+    }
+  },
+  "real_source_operations": 0,
+  "schema": "PYAT_HQ192_BCD_OBSERVATIONS@1.0.0",
+  "source_free": true
+}

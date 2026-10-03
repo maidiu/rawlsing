@@ -1,0 +1,123 @@
+{
+  "schema": "PYAT_HQ192_INTERPOSITION_METHOD_AND_HOST_LIMITS@1.0.0",
+  "lane": "PYAT-HQ192-R9-OS-ACCOUNTING-INTERPOSITION-R1",
+  "question": "Can a process-local, user-space mechanism observe and enforce the compiled reader ACTUAL OS file operations without elevated privilege?",
+  "answer": "NO on this host. Two independent mechanisms attempted; both fail. Blocker preserved.",
+  "mechanisms_attempted": [
+    {
+      "id": "MECH-01",
+      "name": "DYLD_INSERT_LIBRARIES + plain symbol definitions",
+      "library_loaded": true,
+      "constructor_ran": true,
+      "section_present": false,
+      "events_on_synthetic_carrier": 0,
+      "events_for_direct_ctypes_libc_open": 0,
+      "failure": "plain function definitions do NOT interpose libsystem symbols that live in the dyld shared cache",
+      "diagnosis": "because even a DIRECT ctypes libc.open() produced zero events, this is a mechanism defect, not a pyreadstat bypass"
+    },
+    {
+      "id": "MECH-02",
+      "name": "DYLD_INSERT_LIBRARIES + __DATA,__interpose tuples",
+      "library_loaded": true,
+      "section_present": true,
+      "section_size": 96,
+      "failure": "CPython FAILS TO START",
+      "diagnosis": "interposing open or stat or even a cold symbol (getpid) breaks interpreter startup on BOTH available interpreters"
+    }
+  ],
+  "host": {
+    "macos": "13.7.8 (22H730)",
+    "sip": "enabled",
+    "clang": "Apple clang 14.0.3 x86_64-apple-darwin22.6.0",
+    "interpreters": [
+      {
+        "name": "uv_c4c3",
+        "has_pyreadstat": true,
+        "hardened": false
+      },
+      {
+        "name": "framework",
+        "has_pyreadstat": false,
+        "hardened": true,
+        "codesign_flags": "0x10000(runtime)"
+      }
+    ]
+  },
+  "reproducible_matrix": [
+    {
+      "interposed": "none",
+      "interpreter": "uv_c4c3",
+      "rc": 0,
+      "stdout": "OK"
+    },
+    {
+      "interposed": "libgetpid",
+      "interpreter": "uv_c4c3",
+      "rc": 139,
+      "stdout": ""
+    },
+    {
+      "interposed": "libstat",
+      "interpreter": "uv_c4c3",
+      "rc": 1,
+      "stdout": ""
+    },
+    {
+      "interposed": "libopen",
+      "interpreter": "uv_c4c3",
+      "rc": 139,
+      "stdout": ""
+    },
+    {
+      "interposed": "none",
+      "interpreter": "framework",
+      "rc": 0,
+      "stdout": "OK"
+    },
+    {
+      "interposed": "libgetpid",
+      "interpreter": "framework",
+      "rc": 139,
+      "stdout": ""
+    },
+    {
+      "interposed": "libstat",
+      "interpreter": "framework",
+      "rc": 1,
+      "stdout": ""
+    },
+    {
+      "interposed": "libopen",
+      "interpreter": "framework",
+      "rc": 139,
+      "stdout": ""
+    }
+  ],
+  "alternative_mechanisms_considered": [
+    {
+      "name": "dtruss / fs_usage / opensnoop / ktrace",
+      "present_as_binaries": true,
+      "requires_root": true,
+      "usable_under_no_sudo": false
+    },
+    {
+      "name": "FSEvents",
+      "usable_for_per_open_accounting": false,
+      "reason": "directory-change notifications, not per-open accounting; would also require opening a source directory, which is forbidden"
+    },
+    {
+      "name": "kernel tracing / audit",
+      "forbidden_by_commission": true
+    }
+  ],
+  "limits_of_the_attempted_method_even_if_it_had_worked": [
+    "would observe libc symbol entries in the calling process, NOT kernel audit records",
+    "could not see operations issued as raw syscalls bypassing interposed libc symbols",
+    "would be a measurement basis distinct from a kernel open(2) count and would be labelled as such"
+  ],
+  "conclusion": "LAWFUL_PROCESS_LOCAL_LIBC_INTERPOSITION_IS_NOT_AVAILABLE_ON_THIS_HOST",
+  "blocker_preserved": true,
+  "count_fabricated": 0,
+  "reproducible_via": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-04/R9-OS-ACCOUNTING-INTERPOSITION-R1/run_interposition_probe.sh",
+  "terminal": "HQ192_R9_OS_ACCOUNTING_RETURNED__HQ_REVIEW_REQUIRED"
+}
