@@ -10,24 +10,28 @@
       "id": "HQ188-A",
       "role": "SPACE_BUNNY_LOCAL_IMPLEMENTER",
       "branch": "agent/rabochii-pyat-hq188-a-opencode-dispatcher-runtime-repair-r1",
-      "commission_tip": "2817711c7a1c7129a5c2352fcf604f49bf467286",
+      "commission_tip": "ff7a06694b0391471b8e1223b2f881b3288f529e",
       "commission_path": "WORKER_COMMISSIONS/PYAT-HQ188-A-OPENCODE-DISPATCHER-RUNTIME-REPAIR-R1/00_COMMISSION.md",
       "state": "DISPATCHED",
       "mandatory_post_return_review": "HOSTILE_INDEPENDENT_END_TO_END_ACCEPTANCE",
       "preferred_review_surface": "DEEPSEEK_V4_1_FLASH_LOCAL_IF_AVAILABLE",
-      "self_adoption": false
+      "self_adoption": false,
+      "startup_protocol": "WORKER_COMMISSIONS/PYAT-HQ188-A-OPENCODE-DISPATCHER-RUNTIME-REPAIR-R1/02_STARTUP_GIT_PROTOCOL.md",
+      "return_protocol": "WORKER_COMMISSIONS/PYAT-HQ188-A-OPENCODE-DISPATCHER-RUNTIME-REPAIR-R1/01_RETURN_PROTOCOL.md"
     },
     {
       "id": "HQ188-B",
       "role": "SPACE_BUNNY_DOCUMENTARY_IMPLEMENTER",
       "branch": "agent/rabochii-pyat-hq188-b-c4-current-consolidation-r1",
-      "commission_tip": "83c0b9cd538d3e0d7e9dcb8fd183dcc9044be447",
+      "commission_tip": "9001be646305036e493eea3dbce427f62f91c9ae",
       "commission_path": "WORKER_COMMISSIONS/PYAT-HQ188-B-C4-CURRENT-CONSOLIDATION-R1/00_COMMISSION.md",
       "state": "DISPATCHED",
       "mandatory_post_return_review": "HQ_INTAKE_AND_CLAIM_CROSSCHECK",
       "hostile_review_trigger": "HQ_RISK_TRIGGERED",
       "external_reserved_decision": "ASTRA_C4_TEMPORARY_NON_ADOPTION_HOLD_ONLY",
-      "self_adoption": false
+      "self_adoption": false,
+      "startup_protocol": "WORKER_COMMISSIONS/PYAT-HQ188-B-C4-CURRENT-CONSOLIDATION-R1/02_STARTUP_GIT_PROTOCOL.md",
+      "return_protocol": "WORKER_COMMISSIONS/PYAT-HQ188-B-C4-CURRENT-CONSOLIDATION-R1/01_RETURN_PROTOCOL.md"
     }
   ],
   "refill_policy": "WHEN_A_SLOT_RETURNS__HQ_RESOLVES_RETURN__THEN_IMMEDIATELY_FILL_FREED_SLOT_WITH_NEXT_DEPENDENCY_READY_SOURCE_FREE_COMMISSION",
@@ -40,5 +44,6 @@
     "HELD_C7_IMPLEMENTATION",
     "PREV3_TO_V3_ACTOR_IMPLEMENTATION"
   ],
-  "hq_is_sole_integrator": true
+  "hq_is_sole_integrator": true,
+  "commission_io_law": "FETCH_AND_VERIFY_REMOTE_STARTUP_SHA__ISOLATED_WORKTREE__PUSH_RETURN_BRANCH__VERIFY_REMOTE_RETURN_SHA__LOCAL_ONLY_NOT_RETURNED"
 }
