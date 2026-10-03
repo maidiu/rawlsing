@@ -326,6 +326,10 @@ These may themselves be clues to the kernel.
 
 `PERSON != DYAD != NETWORK`.
 
+`SHARED CONVENTION != SHARED MEANING`.
+
+A real dyadic practice may be mutually established while its relational significance remains actor-relative. See SPD-0238.
+
 ### Root / branch membrane
 
 `PRE-CONTACT ROOT != USER-SPECIFIC POST-CONTACT CONTINUITY`.
@@ -384,6 +388,8 @@ The exact relation among these clocks remains an architecture frontier.
 ### Relational recursion
 
 `RELATIONAL HISTORY → PERSON ORGANIZATION → NEW RELATION → NEW HISTORY`.
+
+Divergent interpretations of the same shared practice may lawfully shape the next interaction and become new relationship history.
 
 ### Epistemic loop
 
