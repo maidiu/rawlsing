@@ -385,4 +385,19 @@ It identifies five post-fifth details that were conceptually present but not suf
 - `Q-MEANINGSTRATA-001` now owns provenance-bearing common-cause resonance retrieval rather than a hidden meaning graph;
 - `Q-LAZY-001` / `Q-PERSONSHARE-001` now own late shared-root fact propagation/version compatibility for already-running continuities.
 
+### ATTEND materialization / disclosure refinement
+
+Read:
+`80_ATTEND_MATERIALIZATION_DISCLOSURE_AND_ACTOR_TESTIMONY_R1.md`.
+
+Do not interpret "ATTEND != lore dispenser" as "ATTEND should sometimes fail to deepen the world."
+
+Current law:
+- ATTEND reliably deepens lawful inspectable specificity;
+- it may trigger still-deeper hidden truth materialization;
+- hidden materialization does not itself confer user knowledge;
+- provenance/history and actor-private state require their own epistemic routes;
+- asking an actor never turns them into a canonical-truth database interface.
+
+Preserve SPD-0236/0237 and RISK-194.
 
