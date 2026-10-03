@@ -890,6 +890,16 @@ Example:
 
 A later meditation episode may fill part of that open channel without inventing the transformation itself.
 
+But causal slack is not "anything not yet explained."
+
+> **UNSPECIFIED != AVAILABLE FOR RETCON.**
+
+Any unresolved causal allocation used by late materialization must be bounded or derivably constrained by the already-established transition/domain, temporal window, remaining contribution capacity and lawful contributor classes.
+
+This is an admission budget, not necessarily a new slot object.
+
+See SPD-0235 / RISK-192.
+
 ### Contradiction preservation
 
 Do not confuse reconciliation with harmonization.
@@ -942,6 +952,16 @@ and:
 
 > **Do not maximize meaningfulness. Preserve contingency.**
 
+### ATTEND is not a lore dispenser
+
+Focused ATTEND may deepen resolution while returning ordinary, low-significance, uncertain or valid-empty detail.
+
+> **ATTENTION MAY INCREASE RESOLUTION WITHOUT INCREASING NARRATIVE SIGNIFICANCE.**
+
+If every inspection yields meaningful provenance/backstory, the product trains completionist clue search even with query-invariant world truth.
+
+See SPD-0236 / RISK-193.
+
 Artifact:
 `70_HISTORICAL_BRIDGE_RECONCILIATION_CAUSAL_SLACK_AND_CONTRADICTION_PRESERVATION_R1.md`.
 
@@ -983,6 +1003,22 @@ A later story about the past may be illuminating, partly true, false, unfalsifia
 > **NARRATIVE TRUTH VALUE != NARRATIVE CAUSAL POWER.**
 
 > **PERSON != BEST AVAILABLE THEORY OF PERSON.**
+
+Engineering seam:
+
+`CANDIDATE RESONANT FACTS A + B`
+→ provenance-bearing derived query over current causal/developmental state
+→ `SHARED UPSTREAM ANTECEDENT SUPPORT / NONE / UNDERDETERMINED`.
+
+Preserve:
+
+`SHARED ANTECEDENT != A CAUSED B`.
+
+`SHARED ANTECEDENT != ACTOR INTERPRETATION TRUE`.
+
+`NO SHARED ANTECEDENT != INTERPRETATION FORBIDDEN`.
+
+Do not create a global hidden meaning graph merely to support resonance.
 
 Artifact:
 `71_RECURRENT_RESONANCE_MEANING_STRATA_AND_VARIABLE_SELF_MYTHOLOGIZATION_R1.md`.
