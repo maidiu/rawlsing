@@ -4,6 +4,8 @@ Status: `PROVISIONAL_ARCHITECTURE_DIRECTION__Q_LAZY_Q_FLESH_Q_V3_RELEVANT`
 
 Date: 2026-10-02
 
+Currentness note (2026-10-03, third pass): `causal slack` names bounded unresolved causal allocation, not a mandated new slot/owner. Apply SPD-0232 and SPD-0235: use current authoritative state first; unknown/unspecified causes do not create unlimited late-invention authority. Also preserve SPD-0236: ATTEND may deepen resolution without yielding meaningful lore.
+
 ## 0. Problem
 
 Late ATTEND/inquiry may force previously unresolved pre-contact detail to become concrete.
@@ -108,6 +110,41 @@ Instead it may resolve:
 > one of several experiences through which the already-established transition was lived happened to include meditation/Buddhist contact.
 
 This lets late flesh become real without making user-triggered detail a new author of present Nadia.
+
+### 2.1 Causal slack is a bounded budget, not a universal escape hatch
+
+The transcript's stronger engineering warning is:
+
+> **UNSPECIFIED != AVAILABLE FOR RETCON.**
+
+Where late materialization relies on unresolved causal allocation, the remaining allocation must be constrained enough to reject overpowered insertions.
+
+The constraint may be represented explicitly or derived from current authoritative state; do **not** infer a mandatory new slot object.
+
+Relevant bounds can include:
+- the already-established transition/change;
+- affected domains;
+- temporal window;
+- approximate remaining contribution capacity;
+- lawful contributor/source classes;
+- exclusions on major new causes.
+
+Illustrative shape:
+
+`TRANSITION: reduced control rigidity`
+- known contributors: friendship rupture, anxiety cost;
+- unresolved contribution capacity: `LOW–MODERATE`;
+- admissible late contributors: bounded practices/exposures/relationships;
+- inadmissible late contributor: unrepresented conversion-scale ideological transformation.
+
+Compact:
+
+`UNKNOWN CAUSE != UNLIMITED CAUSAL BUDGET`.
+
+See:
+- SPD-0235;
+- RISK-192;
+- Q-HISTBRIDGE-001.
 
 ---
 
@@ -447,6 +484,45 @@ Human life contains:
 - tastes without theories;
 - events whose consequences were small;
 - events whose real consequences differ from later stories about them.
+
+### ATTEND must not become "click for lore"
+
+This is a separate game-loop consequence of anti-totalization.
+
+If focused inspection reliably yields:
+- poignant provenance;
+- hidden formative causes;
+- secrets;
+- symbolically useful backstory;
+- relationship-relevant revelations;
+
+then users learn:
+
+`ATTEND = LORE DISPENSER`.
+
+The underlying world may remain query-invariant and still produce completionist play.
+
+Therefore focused ATTEND must also lawfully yield:
+- more perceptual specificity and nothing else;
+- ordinary provenance;
+- low-significance history;
+- weak or no association;
+- actor uncertainty;
+- actor refusal/annoyance;
+- no resolved deeper explanation.
+
+Compact:
+
+> **ATTENTION MAY INCREASE RESOLUTION WITHOUT INCREASING NARRATIVE SIGNIFICANCE.**
+
+Examples:
+- "I bought that at Target."
+- "I've had it forever."
+- "I liked the pattern."
+- "My sister left it here."
+- "Why are you psychoanalyzing my sandals?"
+
+See SPD-0236 / RISK-193.
 
 Therefore historical candidate scoring must preserve **contingency mass**.
 
