@@ -2,10 +2,12 @@
 
 Current dispatch supersedes the older "bind repair / consolidate C4" pending wording below as an action item: both jobs are now issued.
 
-- Lane A: `agent/rabochii-pyat-hq188-a-opencode-dispatcher-runtime-repair-r1 @ 2817711c7a1c7129a5c2352fcf604f49bf467286`
-- Lane B: `agent/rabochii-pyat-hq188-b-c4-current-consolidation-r1 @ 83c0b9cd538d3e0d7e9dcb8fd183dcc9044be447`
+- Lane A: `agent/rabochii-pyat-hq188-a-opencode-dispatcher-runtime-repair-r1 @ ff7a06694b0391471b8e1223b2f881b3288f529e`
+- Lane B: `agent/rabochii-pyat-hq188-b-c4-current-consolidation-r1 @ 9001be646305036e493eea3dbce427f62f91c9ae`
 
-Run both simultaneously. Do not launch a third implementer while both are active. On the first return, route it to HQ for adjudication and immediate slot refill. Lane A requires hostile independent end-to-end acceptance after candidate freeze. All source/warrant/live-execution holds below remain unchanged.
+Run both simultaneously. Before work, each worker must fetch origin and verify the exact remote commission tip from this handoff; a local branch is not presumed current. Do not use blind git pull. Each worker must use an isolated worktree at the exact fetched tip. At completion, the worker must commit, push its worker branch to origin, re-fetch/resolve it, and verify the exact remote return SHA; local-only completion is not a return.
+
+Do not launch a third implementer while both are active. On the first return, route it to HQ for adjudication and immediate slot refill. Lane A requires hostile independent end-to-end acceptance after candidate freeze. All source/warrant/live-execution holds below remain unchanged.
 
 See `PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/DISPATCHES/HQ188_TWO_SLOT_RABOCHII_WAVE_R1/`.
 
