@@ -1,12 +1,45 @@
 {
   "schema": "PYAT_HQ188_A__FINAL_DISPOSITION@1.0.0",
   "lane": "PYAT-HQ188-A-OPENCODE-DISPATCHER-RUNTIME-REPAIR-R1",
-  "role": "RABOCHII / LOCAL-MACHINE IMPLEMENTER — SPACE BUNNY",
+  "role": "RABOCHII / LOCAL-MACHINE IMPLEMENTER \u2014 SPACE BUNNY",
   "worker_branch": "agent/rabochii-pyat-hq188-a-opencode-dispatcher-runtime-repair-r1",
   "commissioned_startup_sha": "ff7a06694b0391471b8e1223b2f881b3288f529e",
-  "final_remote_sha": "PLACEHOLDER_SET_AFTER_PUSH_VERIFICATION",
+  "final_remote_sha": "5f9a93af1cc98d75d392794534484e41248efb5f",
   "disposition": "CANDIDATE_READY_FOR_INDEPENDENT_ACCEPTANCE",
   "terminal": "HQ188_A_DISPATCHER_REPAIR_CANDIDATE_RETURNED__INDEPENDENT_ACCEPTANCE_REQUIRED",
   "return_verification_token": "HQ188-A_REMOTE_BRANCH_RETURN_VERIFIED",
-  "startup_verification_token": "HQ188-A_GITHUB_STARTUP_VERIFIED"
+  "startup_verification_token": "HQ188-A_GITHUB_STARTUP_VERIFIED",
+  "local_head_at_return": "5f9a93af1cc98d75d392794534484e41248efb5f",
+  "local_head_equals_remote": true,
+  "return_verification": {
+    "pushed_to": "origin/agent/rabochii-pyat-hq188-a-opencode-dispatcher-runtime-repair-r1",
+    "re_resolved_after_push": true,
+    "local_head": "5f9a93af1cc98d75d392794534484e41248efb5f",
+    "remote_head": "5f9a93af1cc98d75d392794534484e41248efb5f",
+    "equal": true,
+    "method": "git push, then explicit fetch of all heads, then git for-each-ref on refs/remotes/origin",
+    "force_push_used": false,
+    "merge_to_control": false
+  },
+  "candidate_identity": {
+    "repaired_dispatcher_blob": "f3067208f7a8b8ffc159bdc41c25309e9a14b5cb",
+    "pre_repair_dispatcher_blob": "23b1fcc3c9e52838b4738efa3d6266b61f60df7a",
+    "audited_blob_cited_by_audit": "23b1fcc3c9e52838b4738efa3d6266b61f60df7a",
+    "no_drift_against_audit": true
+  },
+  "evidence_summary": {
+    "pre_repair_defects_reproduced": 8,
+    "post_repair_negative_cases": "16/16",
+    "positive_e2e_passed": true,
+    "real_processes_launched": 3,
+    "cross_process_race_demonstrated": true,
+    "material_limitations_recorded": 11
+  },
+  "not_claimed": [
+    "ADOPTED",
+    "QUALIFIED",
+    "PASS_FOR_AUTONOMOUS_PUBLICATION",
+    "OS_ISOLATION",
+    "INDEPENDENT_REVIEW"
+  ]
 }
