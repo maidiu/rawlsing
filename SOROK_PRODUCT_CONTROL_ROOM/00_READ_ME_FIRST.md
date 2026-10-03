@@ -446,3 +446,16 @@ Read:
 
 Do not narrate from canonical object identity. Description specificity is epistemically gated: generic class/visible morphology first, readable markings only when actually perceptible, brand/model/domain labels only when user recognition warrants them. Apply SPD-0166/0246/0248.
 
+### Game-loop architecture
+
+Read:
+- `88_GAME_LOOPS_WITHOUT_PERSON_OPTIMIZATION_R1.md`;
+- `89_PALPABLE_GAME_LOOPS_HISTORY_CARRIERS_CANDIDATE_R1.md`.
+
+Current law:
+- play should produce persistent causal history and changed possibility, not fungible relationship rewards;
+- causal grammar may be learnable while person-specific outcome mappings remain non-optimizable;
+- candidate palpability mechanism is history made tactile through traces, later re-entry and changed affordances rather than meters/unlocks.
+
+Preserve SPD-0249/0250 and RISK-205.
+
