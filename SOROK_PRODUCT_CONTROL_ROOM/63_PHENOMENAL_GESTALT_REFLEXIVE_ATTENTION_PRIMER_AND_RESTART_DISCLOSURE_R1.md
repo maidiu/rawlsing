@@ -206,3 +206,24 @@ The system must not score this as moral progress.
 > **ATTEND beyond what comes naturally.**
 
 > **A continuity ends with unknowability intact.**
+
+## Attention transparency without attention identity
+
+The product may explain that represented perception is selective and may adapt to demonstrated attention.
+
+It should not turn the learned attention regime into an ordinary-play identity label.
+
+Preserve:
+
+`ATTENTION MODEL TRANSPARENCY != USER ESSENCE CLAIM`.
+
+If a user explicitly requests reflection, prefer contextual evidence-linked description of repeated behavior, with uncertainty, rather than categorical identity language.
+
+Privacy inspection rights remain separate from gameplay presentation.
+
+Compact:
+
+> **ATTENTION HISTORY MAY BE DESCRIBED; ATTENTION IDENTITY MUST NOT BE DECLARED.**
+
+See SPD-0241 / RISK-197 / artifact 81.
+
