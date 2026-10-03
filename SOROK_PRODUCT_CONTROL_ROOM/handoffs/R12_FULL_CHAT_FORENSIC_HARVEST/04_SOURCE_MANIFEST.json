@@ -1,0 +1,34 @@
+{
+  "schema": "SOROK_R12_FULL_CHAT_FORENSIC_HARVEST_SOURCE_MANIFEST_R1",
+  "repository": "maidiu/rawlsing",
+  "parent_branch": "agent/sorok-product-ontology-control-room-r1",
+  "parent_fork_sha": "ae5cdfe2ef2302c86c1b5ed3becd4cc5d8601e1f",
+  "harvest_branch": "agent/sorok-r12-full-chat-forensic-handoff-r1",
+  "user_supplied_sources": [
+    {
+      "name": "sorok chat.md",
+      "file_id": "file_00000000ce9881f6be43a8ea59f818f4",
+      "bytes": 274178,
+      "sha256": "26978ff617eeb4004a2f88bc508d6b55609b11a1feb9b13c83702c00e5d770ad"
+    },
+    {
+      "name": "sorok chat.txt",
+      "file_id": "file_000000006a9c81f6a5d35173af338a66",
+      "bytes": 274178,
+      "sha256": "26978ff617eeb4004a2f88bc508d6b55609b11a1feb9b13c83702c00e5d770ad",
+      "note": "byte-for-byte identical to sorok chat.md"
+    }
+  ],
+  "repo_archive": {
+    "path": "SOROK_PRODUCT_CONTROL_ROOM/handoffs/R12_FULL_CHAT_FORENSIC_HARVEST/01_FULL_CHAT_TRANSCRIPT_SOURCE_NORMALIZED.txt",
+    "source": "project Files text extraction of sorok chat.md",
+    "normalized_text_lines": 3689,
+    "normalized_characters": 270139,
+    "normalization_note": "Project Files text extraction converts Unicode line separators used in the upload into ordinary line boundaries. The repo archive preserves the complete textual sequence but is not asserted byte-identical to the uploaded source."
+  },
+  "authority_correction": {
+    "obsolete_non_authority": "Rawlsing 3.4 Personality Generator Framework v3.4",
+    "current_entrypoint": "SOROK_PRODUCT_CONTROL_ROOM/74_V3_PFF_SDTF_AUTHORITY_CORRECTION_AND_SELF_RETCON_COMPOSITION_R1.md",
+    "current_family": "PFF/SDTF-era V3 recollection/reconciliation/adjudication"
+  }
+}
