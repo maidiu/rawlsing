@@ -1638,4 +1638,68 @@ Artifact 71 now explicitly banks the common-cause resonance retrieval seam.
 
 Question count remains unchanged.
 
+---
+
+## ATTEND materialization vs disclosure correction
+
+Artifact:
+`80_ATTEND_MATERIALIZATION_DISCLOSURE_AND_ACTOR_TESTIMONY_R1.md`.
+
+The earlier shorthand "ATTEND != lore dispenser" is now sharpened.
+
+ATTEND **should** reliably deepen the world.
+
+The governing split is:
+
+`ATTEND`
+→ deeper lawful perceptual specificity
+→ potentially deeper hidden canonical materialization
+→ epistemically gated disclosure only.
+
+Strong noncollapse:
+
+`CANONICAL TRUTH`
+!= `USER PERCEPTUAL ACCESS`
+!= `USER KNOWLEDGE`
+!= `ACTOR KNOWLEDGE / MEMORY / BELIEF`
+!= `ACTOR TESTIMONY / EXPRESSION`.
+
+The L0–L5 detail levels in artifact 60 are truth/materialization strata, not a staircase the user climbs by inspecting harder.
+
+A user may visually learn:
+- sandals;
+- old brown Birkenstocks;
+- worn heel;
+- darkened cork;
+- repaired strap;
+
+while remaining wholly ignorant of:
+- acquisition date;
+- provenance;
+- whether they recur in older photos;
+- what Nadia remembers;
+- what Nadia thinks they mean.
+
+The ATTEND itself may nevertheless trigger bounded resolution of those hidden facts so Rawlsing remains ahead of the user's gaze.
+
+If the user asks Nadia, the response is not a canonical-truth API call.
+
+`QUESTION EVENT`
++ `NADIA ACTOR-LOCAL ACCESS / MEMORY / BELIEF / MOTIVE`
+→ CAN-008 R2
+→ response/expression.
+
+She may tell the truth, part of it, misremember, evade, joke, make something up or lie.
+
+Third-party actors obey the same law under their own epistemic state.
+
+New law:
+`SPD-0237`.
+
+Updated law:
+`SPD-0236`.
+
+New critical risk:
+`RISK-194` generation/disclosure collapse.
+
 
