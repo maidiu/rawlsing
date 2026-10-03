@@ -1,0 +1,54 @@
+{
+ "schema": "PYAT_HQ191_INCIDENT_AND_RETRY_REVIEW@1",
+ "no_test_failure_retried_until_green": {
+  "verdict": "VERIFIED",
+  "evidence": [
+   "reviewer's own two runs both returned 55 passed with exit 0 on the first attempt each",
+   "the worker's two infrastructure failures are invocation/host issues, not court failures"
+  ],
+  "test_failures": 0,
+  "test_errors": 0,
+  "test_skips": 0
+ },
+ "infrastructure_failure_1_shell_word_splitting": {
+  "worker_claim": "a shell variable holding multiple pytest paths expanded as a single argument, so pytest received no test paths",
+  "reviewer_reproduction": "mechanism reproduced: P=\"a.py b.py\"; pytest $P passes ONE argv token",
+  "classification": "invocation error by the lane, not a code/environment/test failure",
+  "credible": true
+ },
+ "infrastructure_failure_2_path_python_hazard": {
+  "worker_claim": "/usr/local/bin/python3 is a zero-byte launcher on this host; /usr/bin/python3 is CPython 3.9.6",
+  "reviewer_observation_now": "/usr/local/bin/python3 EXECUTES and reports Python 3.11.3; the framework symlink python3.11 -> python3.11-intel64 was repointed on Oct 2 18:47, after the R7 run",
+  "significance": "the hazard was real when recorded; the host has since changed. The mitigation (bind an absolute interpreter path) remains correct and is if anything strengthened, because PATH resolution on this host is demonstrably not stable.",
+  "classification": "host PATH hazard, historically accurate, now repaired by a third party",
+  "credible": true
+ },
+ "destructive_pycache_incident_INC_1": {
+  "what": "a blanket recursive delete of __pycache__ directories in the freeze worktree removed 4 TRACKED .pyc custody artifacts",
+  "reviewer_verification": {
+   "restoration_byte_identical": true,
+   "method": "for each tracked .pyc: git hash-object <file> == git rev-parse HEAD:<path>",
+   "files_verified": [
+    "run_as2b_lits1_mechanical_certification.cpython-311.pyc",
+    "prev3_lits1_selector_closure.cpython-311.pyc",
+    "03_LOCAL_I02_SUCCESSOR_RELEASE_DRIVER.cpython-311.pyc",
+    "pre553_source_backed_c11_facade.cpython-311.pyc"
+   ],
+   "no_commit_contains_the_deletion_in_the_lane": true,
+   "lane_range_deletion_scan": "git log --diff-filter=D over the R7 lane range is empty",
+   "only_pyc_deletion_in_repo_history": {
+    "commit": "d58242fce",
+    "subject": "D06: remove transient Python cache artifacts",
+    "date": "2026-09-12",
+    "is_ancestor_of_substantive_commit": false,
+    "verdict": "unrelated earlier-lineage history, not the R7 incident"
+   },
+   "final_freeze_tree_clean": true
+  },
+  "worker_self_classification": "SERIOUS - self-inflicted, recovered, no commit ever contained it",
+  "reviewer_agrees_with_classification": true,
+  "affects_R7_conclusions": false,
+  "note": "the worker disclosed this unprompted and correctly; the reviewer confirms both the damage and the recovery"
+ },
+ "component_verdict": "D_FAILURE_AND_RETRY_HONESTY_VERIFIED"
+}

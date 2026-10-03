@@ -1,0 +1,73 @@
+{
+ "schema": "PYAT_HQ191_LINEAGE_AND_HOST_PREFLIGHT@1",
+ "F1_cross_lineage": {
+  "finding": "the worker lineage does not contain the accepted C3 code the freeze pins",
+  "reviewer_verified": {
+   "freeze_rawlsing_next_tree": "b0c1ab472cde033e21f1c2f63fbcbea2f0cccef0",
+   "worker_tip_rawlsing_next_tree": "2a1ac8e2e4a6769eb953170761453f4ba0c0b7b2",
+   "freeze_is_ancestor_of_worker_tip": false,
+   "file_count_freeze": 330,
+   "file_count_tip": 307,
+   "difference": 23
+  },
+  "classification": "EXPECTED_CROSS_LINEAGE__NOT_A_REGRESSION_AND_NOT_AN_EXECUTION_BLOCKER",
+  "reasoning": "the governed run is executed by exact SHA pin to 8ff40d37, the qualification was correctly performed in a detached worktree at that SHA, and the reviewer independently reproduced the court from that freeze. Differing branch HEAD is ordinary cross-lineage evidence, not a regression. It is a pre-execution AUTHORITY decision for HQ, not R7 unsoundness.",
+  "condition": "provided live execution stays pinned to the exact freeze SHA",
+  "worker_restraint_commended": "the worker explicitly declined to characterise the divergence as a programme regression"
+ },
+ "F2_LOCAL_COURTS_not_gitignored": {
+  "finding": "LOCAL_COURTS is untracked but covered by no ignore rule",
+  "reviewer_verified": {
+   "git_check_ignore": "fails (NOT IGNORED)",
+   "tracked_files_under_LOCAL_COURTS": 0,
+   "estate_size": "6.9 GiB",
+   "qualification_venv_size": "332 MiB"
+  },
+  "classification": "OPERATIONAL_HAZARD__not_part_of_R7_but_should_be_fixed",
+  "impact": "a routine `git add -A` in the shared clone would attempt to sweep in the multi-GiB estate",
+  "minimum_repair": "add a .gitignore rule for LOCAL_COURTS (one line)"
+ },
+ "F3_disk_capacity": {
+  "finding": "host disk near saturation",
+  "reviewer_measurements": {
+   "data_volume": "/dev/disk2s6 408Gi, capacity 99-100%",
+   "free_at_worker_time": "~6.3 GiB",
+   "free_at_review_start": "6.34 GiB",
+   "free_during_review_samples_GiB": [
+    1.99,
+    5.99,
+    2.99,
+    4.98
+   ],
+   "volatility": "free space moved by ~4 GiB within ~60 seconds while the volume repeatedly sat at 100% capacity",
+   "LOCAL_COURTS_estate": "6.9 GiB (Rawlsing 2.4G, -hq105-readiness-r1 1.7G, -retry-r1 1.2G, ...)",
+   "workspace": "17 GiB"
+  },
+  "classification": "NEW_SEPARATELY_TYPED_LIVE_RUN_PREFLIGHT_BLOCKER",
+  "folded_into_R7": false,
+  "would_a_multi_gigabyte_live_C4_run_be_safe_or_credible": false,
+  "reasoning": "headroom is not merely low, it is VOLATILE (2-6 GiB band, volume repeatedly at 100%). A governed multi-gigabyte run needs a stable minimum, not a lucky window. The failure mode is uncontrolled: an ENOSPC mid-run aborts after partial writes, producing partial evidence that the programme treats as un-credible, and it can occur at a different point on each attempt.",
+  "minimum_repair": "free a stable margin above the run's worst-case write set; prune or relocate the LOCAL_COURTS estate; enforce a checked minimum-free-space precondition in the live runner; re-measure immediately before launch",
+  "reviewer_side_disclosure": "the reviewer's own temporary freeze worktree consumed ~1.5 GiB and pushed the volume to 100%; it was removed. Same hazard class as F3."
+ },
+ "F4_dangling_interpreter_symlink": {
+  "finding": "dangling symlink in the interpreter toolchain directory",
+  "reviewer_verified": {
+   "symlink": "LOCAL_COURTS/tooling/python/cpython-3.11-macos-x86_64-none",
+   "target": "/Users/matthewsmith/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none",
+   "target_exists": false,
+   "broken": true,
+   "wrong_prefix": "the estate is under Desktop/Rawlsing/LOCAL_COURTS, not /Users/matthewsmith/LOCAL_COURTS",
+   "real_directory": "cpython-3.11.3-macos-x86_64-none (exists)"
+  },
+  "classification": "OPERATIONAL_HAZARD__not_part_of_R7_but_should_be_fixed",
+  "impact": "any recipe naming the short path FAILS",
+  "minimum_repair": "remove or repair the symlink"
+ },
+ "F5_unversioned_interpreter_and_external_index": {
+  "finding": "interpreter not version-controlled; package reconstruction depends on an external package index",
+  "classification": "LIMITATION_NOT_A_LIVE_BLOCKER_ON_THIS_HOST",
+  "impact": "the environment is durable on THIS host but not portable/reconstructible on another host from the repository alone"
+ },
+ "component_verdict": "F_LINEAGE_EXPECTED__ONE_NEW_SEPARATELY_TYPED_HOST_PREFLIGHT_BLOCKER"
+}

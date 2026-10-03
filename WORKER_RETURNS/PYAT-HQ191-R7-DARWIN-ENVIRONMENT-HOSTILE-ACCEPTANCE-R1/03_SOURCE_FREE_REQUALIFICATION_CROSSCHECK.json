@@ -1,0 +1,126 @@
+{
+ "schema": "PYAT_HQ191_SOURCE_FREE_REQUALIFICATION_CROSSCHECK@1",
+ "status": "INDEPENDENTLY_RE_EXECUTED_BY_REVIEWER",
+ "reviewer_execution": {
+  "worktree": "detached worktree created by the reviewer at the exact freeze, under /tmp; removed after use",
+  "interpreter": "LOCAL_COURTS/qualification/r7-c4-source-free-venv/bin/python",
+  "env": {
+   "PYTHONHASHSEED": "0",
+   "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+   "PYTHONPATH": "the reviewer's freeze worktree root",
+   "cache_provider": "-p no:cacheprovider"
+  }
+ },
+ "freeze_identity": {
+  "freeze_commit": "8ff40d37de69db2d8a6053a7c2242f481677f1a4",
+  "exists": true,
+  "rawlsing_next_tree_claimed": "b0c1ab472cde033e21f1c2f63fbcbea2f0cccef0",
+  "rawlsing_next_tree_measured": "b0c1ab472cde033e21f1c2f63fbcbea2f0cccef0",
+  "match": true
+ },
+ "six_file_court": {
+  "is_the_governing_qualified_surface": true,
+  "narrowed_substitute_used": false,
+  "reviewer_collect_only": {
+   "collected": 55,
+   "expected": 55,
+   "match": true,
+   "seconds": 5.45
+  },
+  "reviewer_per_file_collected": {
+   "test_closed35_g01_sav_numeric_representation_authority.py": 9,
+   "test_closed35_d01_declared_encoding_admission.py": 8,
+   "test_closed35_d02_opaque_datetime_carrier.py": 13,
+   "test_fiabc_lm2_r1j_sav_representation_authority.py": 9,
+   "test_r35_i01_physical_metadata.py": 6,
+   "test_pre553_source_backed_c11_facade.py": 10,
+   "sum": 55
+  },
+  "reviewer_runs": [
+   {
+    "run": 1,
+    "result": "55 passed",
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "duration_seconds": 209.99,
+    "exit": 0
+   },
+   {
+    "run": 2,
+    "result": "55 passed",
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "duration_seconds": 163.03,
+    "exit": 0
+   }
+  ],
+  "fifty_five_of_fifty_five_twice_reproduced": true,
+  "pinned_blob_verification": [
+   {
+    "file": "test_closed35_g01_sav_numeric_representation_authority.py",
+    "claimed": "fb7b090809a609a3b0157f1ed8fcdcd8e8784525",
+    "measured_at_freeze": "fb7b090809a609a3b0157f1ed8fcdcd8e8784525",
+    "match": true
+   },
+   {
+    "file": "test_closed35_d01_declared_encoding_admission.py",
+    "claimed": "8fc05965386055a208e5b3988112e67a2e6333e2",
+    "measured_at_freeze": "8fc05965386055a208e5b3988112e67a2e6333e2",
+    "match": true
+   },
+   {
+    "file": "test_closed35_d02_opaque_datetime_carrier.py",
+    "claimed": "3901f10a487856f5f232ae6700fff407ac99725e",
+    "measured_at_freeze": "3901f10a487856f5f232ae6700fff407ac99725e",
+    "match": true
+   }
+  ],
+  "all_six_files_present_at_freeze": true,
+  "worktree_clean_after_runs": true,
+  "pytest_cache_not_written_into_tree": true
+ },
+ "closure_and_edge_audit_reproduced": {
+  "method": "reviewer-authored AST static analysis over the freeze worktree; nothing imported, nothing executed",
+  "declared_union_size": 23,
+  "reviewer_measured_union_size": 20,
+  "fabricated_members_found": 0,
+  "declared_minus_measured": [
+   "pre553_carrier_execution",
+   "pre553_empirical_possibility_provider",
+   "pre553_route_b_production"
+  ],
+  "measured_minus_declared": [],
+  "explanation": "the three extras are genuine ROOT modules (nothing else in the union imports them), not phantoms and not evidence of hidden reachability; the counts are definition-dependent on root-set breadth while union MEMBERSHIP is fully substantiated",
+  "not_a_defect": true,
+  "edge_audit_at_declared_grain": {
+   "nonempty_pattern_classes": {
+    "__import__": [
+     "rawlsing_next/pre553_discovery_exact.py"
+    ]
+   },
+   "all_other_classes_empty": [
+    "importlib",
+    "exec_module",
+    "spec_from_file_location",
+    "module_from_spec",
+    "sys.modules",
+    "subprocess",
+    "os.system",
+    "os.popen",
+    "exec(",
+    "eval(",
+    "os.environ",
+    "os.getenv",
+    "duckdb",
+    "ee_p2x",
+    "fiabc_"
+   ],
+   "worker_claim_reproduced": true,
+   "note": "an initial reviewer scan over the whole rawlsing_next package found many hits; that was the wrong grain. Restricted to the declared closure modules, the worker's claim is exact."
+  }
+ },
+ "component_verdict": "C_SOURCE_FREE_REQUALIFICATION_INDEPENDENTLY_SUPPORTED",
+ "reviewer_limitation": "none for this component; the court was re-executed, not merely inspected"
+}

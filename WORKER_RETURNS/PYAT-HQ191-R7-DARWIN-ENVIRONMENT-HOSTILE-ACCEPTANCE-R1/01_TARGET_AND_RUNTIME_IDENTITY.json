@@ -1,0 +1,125 @@
+{
+ "schema": "PYAT_HQ191_TARGET_AND_RUNTIME_IDENTITY@1",
+ "reviewer": {
+  "harness": "DeepSeek Harness",
+  "model_family": "DeepSeek V4.1 Flash",
+  "os": "macOS 13.7.8 (Darwin 22.6.0) x86_64",
+  "git": "2.39.1",
+  "qualification_interpreter": "LOCAL_COURTS/qualification/r7-c4-source-free-venv/bin/python (CPython 3.11.3)"
+ },
+ "startup_verification": {
+  "no_blind_pull": true,
+  "fetched": true,
+  "review_branch": "agent/reviewer-pyat-hq191-r7-darwin-environment-hostile-acceptance-r1",
+  "review_branch_resolved": "0e28823c7fa60e8b4869c3c6143b8b43b738f10a",
+  "review_branch_expected": "0e28823c7fa60e8b4869c3c6143b8b43b738f10a",
+  "match": true,
+  "worker_branch": "agent/rabochii-pyat-hq190-b-r7-darwin-environment-closure-r1",
+  "worker_tip_resolved": "def6d369878cb273ca06f97e08c4fb0a2964611e",
+  "worker_tip_expected": "def6d369878cb273ca06f97e08c4fb0a2964611e",
+  "substantive_result": "11f68e122c728dd8be6a6fd45bd7e8ef959060b7",
+  "substantive_is_ancestor_of_tip": true,
+  "review_tip_is_single_file_commit_on_worker_tip": true,
+  "review_tip_parent_equals_worker_tip": true,
+  "isolated_review_worktree": "review-hq191",
+  "stopped_on_mismatch": false
+ },
+ "A_runtime_identity_reviewer_measured": {
+  "method": "shasum -a 256 over the actual local files; no JSON value was trusted",
+  "artifacts": [
+   {
+    "path": "LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/bin/python3.11",
+    "claimed": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+    "measured": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+    "match": true
+   },
+   {
+    "path": "\u2026/lib/libpython3.11.dylib",
+    "claimed": "83d9b1e40d5da51728d3780354e361bc0c72190119fd971307e80905b05efc0a",
+    "measured": "83d9b1e40d5da51728d3780354e361bc0c72190119fd971307e80905b05efc0a",
+    "match": true
+   },
+   {
+    "file": "_readstat_parser.cpython-311-darwin.so",
+    "claimed": "7700fb3e17fee0f714a6ceced4c325b8c8d33df96b1392d1bf846d0d746b5834",
+    "measured": "7700fb3e17fee0f714a6ceced4c325b8c8d33df96b1392d1bf846d0d746b5834",
+    "match": true
+   },
+   {
+    "file": "_readstat_writer.cpython-311-darwin.so",
+    "claimed": "a5cd73f3f2026e4b34de849072f0cf7e36e541ad1bd2087c6a0e747babcc25ed",
+    "measured": "a5cd73f3f2026e4b34de849072f0cf7e36e541ad1bd2087c6a0e747babcc25ed",
+    "match": true
+   },
+   {
+    "file": "_parquet.cpython-311-darwin.so",
+    "claimed": "62a37af81318fca64d640a318880b89836dd7209981168321392e0be5d93b38c",
+    "measured": "62a37af81318fca64d640a318880b89836dd7209981168321392e0be5d93b38c",
+    "match": true
+   },
+   {
+    "file": "_dataset_parquet.cpython-311-darwin.so",
+    "claimed": "2a99f7b5b5bb71c1191cb8c62649c6be6acb3de6fb572319deadc5c4bccd1678",
+    "measured": "2a99f7b5b5bb71c1191cb8c62649c6be6acb3de6fb572319deadc5c4bccd1678",
+    "match": true
+   },
+   {
+    "file": "_parquet_encryption.cpython-311-darwin.so",
+    "claimed": "1f9de8f321b667780a5062657e2fe9604c15b98119f055bb6e070da9f03c1ee9",
+    "measured": "1f9de8f321b667780a5062657e2fe9604c15b98119f055bb6e070da9f03c1ee9",
+    "match": true
+   }
+  ],
+  "all_seven_full_digests_exact": true,
+  "prefix_completion_verified": {
+   "claim": "each historical 32-hex value is a true prefix of the newly measured full digest",
+   "reviewer_method": "programmatic startswith() of each recorded 32-hex against the measured 64-hex",
+   "results": [
+    {
+     "name": "base_interpreter",
+     "recorded32": "11d6f541a870a141249ce98d45834a67",
+     "is_true_prefix": true
+    },
+    {
+     "name": "_readstat_parser",
+     "recorded32": "7700fb3e17fee0f714a6ceced4c325b8",
+     "is_true_prefix": true
+    },
+    {
+     "name": "_readstat_writer",
+     "recorded32": "a5cd73f3f2026e4b34de849072f0cf7e",
+     "is_true_prefix": true
+    },
+    {
+     "name": "_parquet",
+     "recorded32": "62a37af81318fca64d640a318880b898",
+     "is_true_prefix": true
+    },
+    {
+     "name": "_dataset_parquet",
+     "recorded32": "2a99f7b5b5bb71c1191cb8c62649c6be",
+     "is_true_prefix": true
+    },
+    {
+     "name": "_parquet_encryption",
+     "recorded32": "1f9de8f321b667780a5062657e2fe960",
+     "is_true_prefix": true
+    }
+   ],
+   "all_six_true_prefixes": true,
+   "all_digests_full_64hex": true,
+   "verdict": "the prior fingerprint was INCOMPLETE, NOT INCORRECT -- the worker's characterisation is exactly right"
+  },
+  "cross_environment_corroboration_reviewer_added": {
+   "claim": "three extensions are byte-identical to LOCAL_COURTS/python/fiabc-wvs7-3.11.3",
+   "reviewer_measured": true,
+   "files_matching": [
+    "_readstat_parser.cpython-311-darwin.so",
+    "_readstat_writer.cpython-311-darwin.so",
+    "_parquet.cpython-311-darwin.so"
+   ],
+   "verdict": "CONFIRMED -- a third provisioned environment yields identical decoder binaries, strengthening the C4C3 claim"
+  },
+  "component_verdict": "A_RUNTIME_IDENTITY_CLOSED"
+ }
+}

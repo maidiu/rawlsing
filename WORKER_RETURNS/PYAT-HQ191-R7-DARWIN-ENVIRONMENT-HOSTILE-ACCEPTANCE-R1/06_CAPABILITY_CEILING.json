@@ -1,0 +1,58 @@
+{
+ "schema": "PYAT_HQ191_CAPABILITY_CEILING@1",
+ "r7_removes_as_live_execution_blocker": true,
+ "r7_closes": [
+  "complete runtime fingerprinting (7 full digests, 6 prefix completions independently reproduced)",
+  "durable local source-free qualification environment (14/14 exact pins incl. narwhals==2.26.0, exact interpreter resolution, exact size)",
+  "exact source-free requalification of the freeze (55 collected and 55/55 twice, independently re-executed)"
+ ],
+ "r7_does_not_close": [
+  "live C4 execution readiness",
+  "host disk capacity/volatility (F3, separately typed)",
+  "authoritative-lineage decision (F1, an HQ authority question)",
+  "cross-host portability of the interpreter/environment (F5)",
+  "live occupancy: a source-free fixture qualification cannot establish live occupancy"
+ ],
+ "capability_ceiling_statement": "R7 verifies runtime identity and a durable local qualification environment. No live C4 is authorised by this acceptance. Live execution additionally requires a resolved host preflight.",
+ "minimum_action_before_live_C4_ordered": [
+  {
+   "n": 1,
+   "action": "resolve disk capacity (BLOCKING): free a stable margin above the run's worst-case write set; prune or relocate LOCAL_COURTS; enforce a minimum-free-space precondition in the live runner; re-measure immediately before launch",
+   "addresses": "F3"
+  },
+  {
+   "n": 2,
+   "action": "add a .gitignore rule for LOCAL_COURTS",
+   "addresses": "F2"
+  },
+  {
+   "n": 3,
+   "action": "remove or repair the dangling interpreter symlink",
+   "addresses": "F4"
+  },
+  {
+   "n": 4,
+   "action": "decide the authoritative lineage for the governed run, or explicitly re-confirm execution stays pinned to 8ff40d37",
+   "addresses": "F1"
+  },
+  {
+   "n": 5,
+   "action": "keep absolute interpreter binding; never resolve the interpreter through PATH in the live runner",
+   "addresses": "host PATH instability"
+  },
+  {
+   "n": 6,
+   "action": "version the interpreter or record its provenance/retrieval if cross-host reconstruction is ever required",
+   "addresses": "F5"
+  }
+ ],
+ "hard_holds_observed": {
+  "raw_source_access": false,
+  "locator_discovery": false,
+  "warrant_issuance": false,
+  "live_c4": false,
+  "production_mutation": false,
+  "c7_or_actor_work": false,
+  "candidate_modified": false
+ }
+}

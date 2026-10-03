@@ -1,0 +1,44 @@
+{
+ "schema": "PYAT_HQ191_FINAL_DISPOSITION@1",
+ "status": "FINAL",
+ "disposition": "ACCEPT_R7_CLOSED__SEPARATE_HOST_PREFLIGHT_BLOCKER_REMAINS",
+ "disposition_is_allowed_value": true,
+ "terminal_token": "HQ191_R7_HOSTILE_ACCEPTANCE_RETURNED__HQ_ADJUDICATION_REQUIRED",
+ "review_branch": "agent/reviewer-pyat-hq191-r7-darwin-environment-hostile-acceptance-r1",
+ "commissioned_startup_sha": "0e28823c7fa60e8b4869c3c6143b8b43b738f10a",
+ "reviewed_target": {
+  "branch": "agent/rabochii-pyat-hq190-b-r7-darwin-environment-closure-r1",
+  "returned_tip": "def6d369878cb273ca06f97e08c4fb0a2964611e",
+  "substantive_r7_result": "11f68e122c728dd8be6a6fd45bd7e8ef959060b7",
+  "worker_disposition": "R7_CLOSED__CANDIDATE_READY_FOR_INDEPENDENT_ACCEPTANCE"
+ },
+ "review_questions": {
+  "1_fingerprint_closed_on_this_host": true,
+  "2_environment_durable_enough_on_this_host": true,
+  "3_exact_source_free_requalification_independently_supported": true,
+  "4_r7_removable_as_live_execution_blocker": true,
+  "5_new_separately_typed_live_run_blocker": true,
+  "5_detail": "F3 host disk capacity and volatility, typed separately and NOT folded into R7",
+  "6_minimum_action_before_live_C4": "see 06_CAPABILITY_CEILING.json ordered list; item 1 (disk) is blocking"
+ },
+ "independently_reproduced_by_reviewer": [
+  "all seven runtime digests hashed from actual bytes",
+  "all six historical 32-hex prefixes proven true truncations",
+  "cross-environment extension equivalence confirmed against a third environment",
+  "venv existence, non-temp location, interpreter resolution, 14/14 pins, narwhals 2.26.0, exact byte size",
+  "freeze commit and rawlsing_next tree b0c1ab47",
+  "six-file court re-run twice: 55 collected, 55 passed, 55 passed",
+  "three pinned test blobs matched at the freeze",
+  "closure membership (no fabricated modules) and the edge-audit property at the declared grain",
+  "pyc restoration byte-identity and absence of any deletion commit in the lane",
+  "all four worker HQ-action findings, including that disk is now WORSE"
+ ],
+ "not_reproduced_by_reviewer": [
+  "live C4 execution (forbidden by the holds)",
+  "multi-gigabyte live write behaviour under the current disk conditions (cannot be safely attempted and is forbidden)"
+ ],
+ "why_not_R7_PARTIAL": "R7's two components are independently verified and sound. The remaining blocker is a HOST RESOURCE precondition that is conceptually separate from runtime identity and environment durability; the worker correctly declined to fold it into R7 and the reviewer preserves that distinction.",
+ "why_not_MATERIAL_COUNTEREXAMPLE": "no R7 claim was falsified. Every digest, the prefix-completion characterisation, the environment binding and the 55/55 requalification survived independent attack.",
+ "blocker": "SEPARATE_HOST_PREFLIGHT_BLOCKER: host disk headroom is in a 2-6 GiB volatile band with the data volume repeatedly at 100% capacity, which makes a governed multi-gigabyte live C4 run unsafe and non-credible until resolved.",
+ "next": "HQ adjudication. R7 may be treated as closed; live C4 remains gated on the host preflight items in 06."
+}
