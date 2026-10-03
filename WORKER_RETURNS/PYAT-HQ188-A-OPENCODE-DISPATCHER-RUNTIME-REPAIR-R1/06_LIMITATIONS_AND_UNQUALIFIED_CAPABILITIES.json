@@ -1,0 +1,136 @@
+{
+  "schema": "PYAT_HQ188_A__LIMITATIONS_AND_UNQUALIFIED_CAPABILITIES@1.0.0",
+  "lane": "PYAT-HQ188-A-OPENCODE-DISPATCHER-RUNTIME-REPAIR-R1",
+  "purpose": "Every capability this candidate does NOT establish. Recorded so no reader over-reads the positive evidence.",
+
+  "explicit_non_claims": [
+    "NOT independently qualified",
+    "NOT adopted",
+    "NOT cleared for autonomous or unattended publication",
+    "NOT OS-level or process isolated",
+    "NOT a C4 acceptance, source authorization, or production-semantic change"
+  ],
+
+  "material_limitations": [
+    {
+      "id": "L1",
+      "limitation": "No OS-level or process isolation was demonstrated.",
+      "detail": "Both fixture workers and the reviewer ran on one host under one user account. What was actually shown is distinct git worktrees and distinct OS pids. There is no container, VM, user, namespace or security boundary.",
+      "consequence": "A hostile or misbehaving worker is not contained. Do not describe this candidate as providing isolation.",
+      "qualification_needed": "An explicit isolation design plus a demonstrated denial test would be required before claiming any containment."
+    },
+    {
+      "id": "L2",
+      "limitation": "The positive end-to-end workflow required OpenCode's --auto (auto-approve permissions).",
+      "detail": "Without --auto the installed CLI auto-rejected the fixture write with 'permission requested: external_directory; auto-rejecting', and the worker produced no artifact.",
+      "consequence": "Unattended operation as currently implemented depends on blanket auto-approval of tool permissions. That is the CLI's own 'dangerous!' mode.",
+      "why_it_matters": "Auto-approval removes the human gate that would otherwise bound a runaway or hostile worker. Combined with L1 there is no containment behind it.",
+      "qualification_needed": "A scoped permission configuration (allow-list per role and terrain) instead of blanket --auto, plus a demonstrated denial case, before any unattended use."
+    },
+    {
+      "id": "L3",
+      "limitation": "The fixture reviewer is NOT independent.",
+      "detail": "The same model and reasoning variant (opencode-go/space-bunny-free, variant max) executed both the worker and the reviewer role. The reviewer ran in a separate worktree as a separate process, which is process separation, not reviewer independence.",
+      "consequence": "Nothing here demonstrates that an independent reviewer would reach the same verdict. Importing or invoking an implementation as a module does not establish independence either.",
+      "qualification_needed": "A genuinely distinct reviewer surface (separate model or separate authority) bound to the exact candidate."
+    },
+    {
+      "id": "L4",
+      "limitation": "Commission content delivered via --file is not a trustworthy instruction channel.",
+      "detail": "A fixture agent reported, unprompted, that the attached commission arrived rendered inside a faux tool-call block ('Called the Read tool...') rather than as plain text, and flagged it as a prompt-injection pattern.",
+      "consequence": "An attached file can carry injected instructions. Binding the commission to a git blob proves the bytes are unchanged, but does not prove the agent read them as instructions rather than as data to be obeyed.",
+      "qualification_needed": "An explicit integrity control on attachment content, and adversarial cases where a commission file contains embedded instructions."
+    },
+    {
+      "id": "L5",
+      "limitation": "The provider/model identity was not independently verified.",
+      "detail": "opencode-go/space-bunny-free was chosen from the installed CLI's own `opencode models` enumeration and validated by a successful real run. It was not confirmed against the provider's identity, entitlement or billing record.",
+      "consequence": "The candidate demonstrates that the CLI accepted the identifier and ran; it does not independently attest which model served the request.",
+      "qualification_needed": "Provider-side or account-side confirmation of the served model for the run receipts."
+    },
+    {
+      "id": "L6",
+      "limitation": "Single host, single user, local filesystem, no network.",
+      "detail": "The event store is a local JSONL file guarded by a lock file. fsync makes an individual write durable; it does not make a sequence of writes transactional, and there is no replication or failover.",
+      "consequence": "Durability and concurrency claims are local-runtime claims only. Multi-host coordination is out of scope and untested.",
+      "qualification_needed": "A transactional store or a documented single-writer deployment discipline for the intended topology."
+    },
+    {
+      "id": "L7",
+      "limitation": "All HQ adjudication receipts in the evidence are fixtures.",
+      "detail": "buildAdjudication is worker-side machinery that exists so acceptance state can REQUIRE a structurally valid receipt. Every receipt in the evidence is marked fixture_only.",
+      "consequence": "No real HQ authority was issued, and this candidate cannot issue any. The gate proves the machinery rejects absent/ill-formed authority; it does not prove a real adjudication would be correct.",
+      "qualification_needed": "A real HQ decision path, with the receipt shape agreed by HQ."
+    },
+    {
+      "id": "L8",
+      "limitation": "qualify_ops03.mjs was deliberately not repaired.",
+      "detail": "The audit's OPS-03 findings (Q08 case-mismatched result map, Q09 argv-only inspection, Q11 hardcoded success narrative even when Python is unusable) live in qualify_ops03.mjs, blob 831845ab79f84fcf211ca993aab670a41e401ab5. That file is outside the implementation scope this commission bound and under separate dispute.",
+      "consequence": "The historical 23-pass/1-skip helper record remains unqualified, and the OPS-03 qualifier still contains the defects the audit named. Nothing in this candidate changes that.",
+      "why_not_repaired":"Rewriting the very artifact whose credibility is under review, inside an implementation lane, would destroy the evidence an acceptance reviewer needs.",
+      "qualification_needed": "A separate commissioned repair of the qualifier, or acceptance that it stays historical."
+    },
+    {
+      "id": "L9",
+      "limitation": "Fixture scale is small and does not exercise the cap under sustained load.",
+      "detail": "Four concurrent processes raced a worker cap of 2, which is the first boundary past the cap. Larger concurrency, long-running tasks, slot release on terminal states, and lock behaviour under process kill were not load-tested.",
+      "consequence": "The enforced-writer discipline is demonstrated correct at small scale. Its behaviour under sustained or adversarial contention is unproven.",
+      "qualification_needed": "A contention soak with process kills mid-append."
+    },
+    {
+      "id": "L10",
+      "limitation": "Real source-access denial was never tested, by design.",
+      "detail": "Denial cases used a disposable fake source directory containing a file explicitly labelled as not a real survey source. No test ever touched, stat-ed or attempted real raw survey storage.",
+      "consequence": "The candidate makes no claim about behaviour against real source storage or real permission boundaries. That is the correct scope for this commission and is also an unproven area.",
+      "qualification_needed": "Out of scope here. Any such test needs separate source-access authority."
+    },
+    {
+      "id": "L11",
+      "limitation": "Publication was proven only against a disposable local bare remote.",
+      "detail": "Competing-publication and stale-remote-parent behaviour was exercised against a local bare repository over the filesystem, with git fetch and ls-remote actually moving the observed head.",
+      "consequence": "The race check is real, but the transport was local. Behaviour against a real hosting remote with concurrent pushes from other machines is not demonstrated.",
+      "qualification_needed": "Repetition against the actual publication target."
+    }
+  ],
+
+  "capability_ceiling": {
+    "demonstrated": [
+      "fail-closed identity and placeholder rejection",
+      "git-derived terrain and stale-remote-parent enforcement",
+      "adjudication required before acceptance",
+      "durable single-writer event store with blocking corruption states",
+      "cross-process deduplication before capacity accounting",
+      "restart reconstruction of exact task/session bindings",
+      "real process lifecycle with exit codes and extracted session ids",
+      "completion delivered to an HQ-visible queue",
+      "commission content delivered as an attached file bound to a git blob"
+    ],
+    "not_demonstrated": [
+      "OS-level or process isolation",
+      "independent review",
+      "safe unattended operation without blanket auto-approval",
+      "attachment content integrity against injection",
+      "provider-side model identity",
+      "real HQ adjudication authority",
+      "behaviour against real source storage",
+      "sustained-load concurrency behaviour"
+    ],
+    "recommended_next_gate": "Hostile independent end-to-end acceptance, prioritising L1 through L4, before any adoption decision or unattended enablement."
+  },
+
+  "hard_holds_observed": {
+    "raw_source_access": 0,
+    "source_locators_discovered": 0,
+    "warrants_issued_or_modified": 0,
+    "live_c4_executed": false,
+    "rawlsing_next_modified": false,
+    "production_semantic_authority_modified": false,
+    "c7_or_actor_work_implemented": false,
+    "HQ_HANDOFF_modified": false,
+    "control_branch_merged_or_published": false,
+    "self_adopted": false,
+    "independent_qualification_declared": false,
+    "writes_outside_declared_terrain": 0,
+    "out_of_terrain_artifacts_detected_and_removed": [".pyat-state/ (dispatcher CLI probe default state dir)"]
+  }
+}

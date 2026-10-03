@@ -1,0 +1,58 @@
+{
+  "race_A_same_task": {
+    "child_pids": [
+      35438,
+      35439
+    ],
+    "distinct_pids": true,
+    "results": [
+      {
+        "ok": true,
+        "task_id": "RACE-SAME",
+        "queued": true,
+        "dedup": false,
+        "idempotent": false,
+        "binding_persisted": true
+      },
+      {
+        "ok": true,
+        "task_id": "RACE-SAME",
+        "queued": true,
+        "dedup": true,
+        "idempotent": true,
+        "reason": "already queued; duplicate submission is idempotent"
+      }
+    ],
+    "queued_events_for_task": 1,
+    "exactly_once": true,
+    "idempotent_not_error": true
+  },
+  "race_B_distinct_tasks_for_capped_slots": {
+    "worker_slot_cap": 2,
+    "child_pids": [
+      35441,
+      35442,
+      35443,
+      35444
+    ],
+    "distinct_pids": true,
+    "queued_task_ids": [
+      "RACE-SAME",
+      "RACE-R2"
+    ],
+    "refusal_codes": [
+      "SLOT_CAPACITY",
+      "SLOT_CAPACITY",
+      "SLOT_CAPACITY"
+    ],
+    "queued_count": 2
+  },
+  "store_integrity": {
+    "all_records_parse": true,
+    "no_duplicate_event_keys": true,
+    "every_queued_task_has_complete_binding": true,
+    "same_task_queued_exactly_once": true,
+    "distinct_task_race_all_recorded_or_cleanly_refused": true
+  },
+  "corruption": []
+}

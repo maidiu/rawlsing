@@ -1,0 +1,206 @@
+{
+  "schema": "PYAT_HQ188_A__RECOVERY_CONCURRENCY_EVIDENCE@1.0.0",
+  "lane": "PYAT-HQ188-A-OPENCODE-DISPATCHER-RUNTIME-REPAIR-R1",
+  "restart_recovery": {
+    "before_launch": {
+      "id": "RESTART_BEFORE_LAUNCH",
+      "recovered": true,
+      "blocking": false,
+      "task_count": 2,
+      "bindings_complete": [
+        true,
+        true
+      ],
+      "models": [
+        "opencode-go/space-bunny-free",
+        "opencode-go/space-bunny-free"
+      ],
+      "variants": [
+        "max",
+        "max"
+      ],
+      "commission_identities": [
+        "fe0438a29772908b090ae403e75ecc5b59b3ba77",
+        "fe0438a29772908b090ae403e75ecc5b59b3ba77"
+      ]
+    },
+    "after_completion": {
+      "id": "RESTART_AFTER",
+      "recovered": true,
+      "blocking": false,
+      "tasks": [
+        {
+          "id": "FX-W1",
+          "state": "WAITING_FOR_HQ",
+          "binding_complete": true,
+          "has_launch_receipt": true,
+          "exit": {
+            "code": 0,
+            "signal": null
+          },
+          "model": "opencode-go/space-bunny-free"
+        },
+        {
+          "id": "FX-W2",
+          "state": "WAITING_FOR_HQ",
+          "binding_complete": true,
+          "has_launch_receipt": true,
+          "exit": {
+            "code": 0,
+            "signal": null
+          },
+          "model": "opencode-go/space-bunny-free"
+        },
+        {
+          "id": "FX-REV",
+          "state": "RUNNING",
+          "binding_complete": true,
+          "has_launch_receipt": true,
+          "exit": {
+            "code": 0,
+            "signal": null
+          },
+          "model": "opencode-go/space-bunny-free"
+        }
+      ]
+    },
+    "reconstructs_exact_bindings_not_a_label": true,
+    "commission_identity_recovered": [
+      "fe0438a29772908b090ae403e75ecc5b59b3ba77",
+      "fe0438a29772908b090ae403e75ecc5b59b3ba77"
+    ],
+    "model_and_variant_recovered": true
+  },
+  "corruption_and_torn_writes": {
+    "observed": {
+      "id": "CORRUPT_RECOVERY_BLOCKS",
+      "recovered": false,
+      "blocking": true,
+      "corruption": [
+        {
+          "kind": "TORN_FINAL_RECORD",
+          "detail": "log does not end with a newline; final record was not durably terminated",
+          "raw_tail": "{\"task_id\":\"X\",\"attempt\":1,\"seq\":1,\"state\":\"QUEUED\",\"role\":\"worker\",\"binding\":{\"task_id\":\"X\"},\"key\":\"X|1|1\",\"ts\":1791048391678}\n{\"task_id\":\"Y\",\"attempt\":1,\"seq\":1,\"state\":"
+        }
+      ],
+      "honest": "refusing to report clean state from a corrupt log"
+    },
+    "policy": "malformed or torn records are preserved and surfaced as a BLOCKING recovery state; the store refuses to append to a corrupt log; clean state is never reported from a corrupt log"
+  },
+  "deduplication": {
+    "in_process": {
+      "id": "DUPLICATE_IDEMPOTENT",
+      "task_id": "FX-W1",
+      "queued": true,
+      "dedup": true,
+      "idempotent": true,
+      "reason": "already queued; duplicate submission is idempotent"
+    },
+    "cross_process_same_task": {
+      "child_pids": [
+        35438,
+        35439
+      ],
+      "distinct_pids": true,
+      "results": [
+        {
+          "ok": true,
+          "task_id": "RACE-SAME",
+          "queued": true,
+          "dedup": false,
+          "idempotent": false,
+          "binding_persisted": true
+        },
+        {
+          "ok": true,
+          "task_id": "RACE-SAME",
+          "queued": true,
+          "dedup": true,
+          "idempotent": true,
+          "reason": "already queued; duplicate submission is idempotent"
+        }
+      ],
+      "queued_events_for_task": 1,
+      "exactly_once": true,
+      "idempotent_not_error": true
+    },
+    "policy": "duplicate decided inside the enforced writer lock, BEFORE capacity accounting"
+  },
+  "concurrency_two_genuine_os_processes": {
+    "race_A_same_task_id": {
+      "child_pids": [
+        35438,
+        35439
+      ],
+      "distinct_pids": true,
+      "results": [
+        {
+          "ok": true,
+          "task_id": "RACE-SAME",
+          "queued": true,
+          "dedup": false,
+          "idempotent": false,
+          "binding_persisted": true
+        },
+        {
+          "ok": true,
+          "task_id": "RACE-SAME",
+          "queued": true,
+          "dedup": true,
+          "idempotent": true,
+          "reason": "already queued; duplicate submission is idempotent"
+        }
+      ],
+      "queued_events_for_task": 1,
+      "exactly_once": true,
+      "idempotent_not_error": true
+    },
+    "race_B_distinct_tasks_for_capped_slots": {
+      "worker_slot_cap": 2,
+      "child_pids": [
+        35441,
+        35442,
+        35443,
+        35444
+      ],
+      "distinct_pids": true,
+      "queued_task_ids": [
+        "RACE-SAME",
+        "RACE-R2"
+      ],
+      "refusal_codes": [
+        "SLOT_CAPACITY",
+        "SLOT_CAPACITY",
+        "SLOT_CAPACITY"
+      ],
+      "queued_count": 2
+    },
+    "these_were_real_separate_processes": true,
+    "distinct_child_pids_observed": [
+      35438,
+      35439,
+      35441,
+      35442,
+      35443,
+      35444
+    ],
+    "writer_discipline": "append() is the only mutation path and holds an exclusive lock file, so the pre-repair read-then-append race cannot occur within or across processes"
+  },
+  "store_integrity_after_races": {
+    "all_records_parse": true,
+    "no_duplicate_event_keys": true,
+    "every_queued_task_has_complete_binding": true,
+    "same_task_queued_exactly_once": true,
+    "distinct_task_race_all_recorded_or_cleanly_refused": true
+  },
+  "corruption_after_races": [],
+  "single_writer_lock": {
+    "mechanism": "exclusive lock file created with O_EXCL, reclaimed if stale, released in finally",
+    "timeout_ms": 10000,
+    "stale_reclaim_ms": 30000
+  },
+  "interrupted_launch_reconciles_honestly": {
+    "tested_in": "02_PRE_POST_NEGATIVE_CASES.json case N06",
+    "behaviour": "an interrupted launch stays RUNNING with exit null; no completion or success is invented"
+  }
+}

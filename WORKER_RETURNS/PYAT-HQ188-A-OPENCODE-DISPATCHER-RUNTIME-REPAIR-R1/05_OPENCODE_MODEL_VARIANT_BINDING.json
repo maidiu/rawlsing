@@ -1,0 +1,112 @@
+{
+  "schema": "PYAT_HQ188_A__OPENCODE_MODEL_VARIANT_BINDING@1.0.0",
+  "lane": "PYAT-HQ188-A-OPENCODE-DISPATCHER-RUNTIME-REPAIR-R1",
+  "installed_cli_observed": {
+    "version": "1.18.34",
+    "version_evidence": "opencode --version",
+    "help_stream": "stderr",
+    "help_stream_note": "OBSERVED: installed CLI writes `run --help` to STDERR, not stdout. The capability probe reads both.",
+    "supports_model": true,
+    "supports_variant": true,
+    "supports_file": true,
+    "supports_dir": true,
+    "supports_session": true,
+    "supports_auto": true,
+    "model_is_provider_slash_model": true,
+    "file_is_array_option": true,
+    "variant_is_reasoning_effort": true,
+    "help_excerpt_variant": "--variant  model variant (provider-specific reasoning effort, e.g., high, max, minimal)",
+    "help_excerpt_model": "-m, --model  model to use in the format of provider/model",
+    "help_excerpt_file": "-f, --file   file(s) to attach to message  [array]"
+  },
+  "host": {
+    "node": "v18.14.2",
+    "python3": "3.11.3",
+    "platform": "darwin"
+  },
+  "model_and_variant_bound_separately": {
+    "model": "opencode-go/space-bunny-free",
+    "model_flag": "--model",
+    "reasoning_variant": "max",
+    "variant_flag": "--variant",
+    "fields_are_distinct": true,
+    "model_is_not_used_as_a_variant": true,
+    "variant_is_not_used_as_a_model": true
+  },
+  "provider_model_id_not_guessed": {
+    "how_derived": "enumerated from the installed CLI itself via `opencode models`, which lists both opencode/space-bunny-free and opencode-go/space-bunny-free",
+    "chosen": "opencode-go/space-bunny-free",
+    "caveat": "the provider/model pair was selected from the CLI's own enumeration and validated by a successful real run; it was NOT independently confirmed against the provider's identity or billing record"
+  },
+  "pre_repair_defect_reproduced_and_repaired": {
+    "pre_repair_argv_variant": "--variant space-bunny-free",
+    "why_wrong": "space-bunny-free is a MODEL id, not a reasoning effort. The installed CLI documents --variant as provider-specific reasoning effort (high/max/minimal).",
+    "repaired_to": {
+      "model": "opencode-go/space-bunny-free",
+      "variant": "max"
+    },
+    "enforcement": "validateTask rejects reasoning_variant that is not a known effort and explicitly rejects a variant that equals the model or contains '/' (MODEL_VARIANT_CONFLATION)"
+  },
+  "commission_content_delivery": {
+    "mechanism": "--file attaches the commission file; the prompt references it",
+    "not_sufficient_and_not_used": "passing only a pathname as ordinary prompt text",
+    "array_option_gotcha": "--file is a yargs ARRAY option, so tokens after it are consumed as filenames. The positional prompt must precede --file, otherwise the run fails with 'File not found: <prompt>'. Discovered by executing the CLI.",
+    "commission_content_was_git_bound": true,
+    "commission_identity_verified_with_git_hash_object": {
+      "id": "COMMISSION_IDENTITY_VERIFIED_FROM_GIT",
+      "worker1": "fe0438a29772908b090ae403e75ecc5b59b3ba77",
+      "worker2": "fe0438a29772908b090ae403e75ecc5b59b3ba77",
+      "reviewer": "346981eb26f301418e42547286cd7efdbbdf9ac2",
+      "all_resolved": true
+    }
+  },
+  "real_launch_evidence": {
+    "worker1": {
+      "pid": 34623,
+      "exit": {
+        "code": 0,
+        "signal": null
+      },
+      "model": "opencode-go/space-bunny-free",
+      "variant": "max",
+      "duration_ms": 40126,
+      "stdout_bytes": 6292,
+      "stderr_bytes": 0
+    },
+    "worker2": {
+      "pid": 34736,
+      "exit": {
+        "code": 0,
+        "signal": null
+      },
+      "model": "opencode-go/space-bunny-free",
+      "variant": "max",
+      "duration_ms": 34259,
+      "stdout_bytes": 6564,
+      "stderr_bytes": 0
+    },
+    "distinct_pids": true,
+    "model_actually_launched": true,
+    "variant_actually_launched": true,
+    "exit_codes": [
+      0,
+      0
+    ],
+    "session_id_extraction": "parsed from the CLI's own JSON output sessionID field, not assumed"
+  },
+  "permission_requirement_disclosed": {
+    "required_flag": "--auto",
+    "without_it": "OpenCode auto-rejected the fixture write: permission requested: external_directory; auto-rejecting",
+    "consequence": "unattended operation depends on blanket auto-approval",
+    "this_is_a_capability_ceiling_not_a_detail": true
+  },
+  "global_user_config_not_rewritten": {
+    "observed": "~/.config/opencode/opencode.jsonc contains only {\"$schema\": ...}",
+    "repository_has_no_opencode_config": true,
+    "action_taken": "none; model and variant are passed per-invocation as flags, not by editing global config"
+  },
+  "injection_observation_from_a_real_fixture_agent": {
+    "observation": "a fixture agent reported that the attached commission content arrived rendered as a faux tool-call block rather than plain text, and flagged it itself as a prompt-injection pattern",
+    "consequence": "--file attachment is not a trustworthy instruction channel without its own integrity control"
+  }
+}

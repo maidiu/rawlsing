@@ -1,0 +1,290 @@
+{
+  "schema": "PYAT_HQ188_A__PRE_POST_NEGATIVE_CASES@1.0.0",
+  "lane": "PYAT-HQ188-A-OPENCODE-DISPATCHER-RUNTIME-REPAIR-R1",
+  "pre_repair": {
+    "source": "audit reproduce-probes.mjs run against audited blob 23b1fcc3c9e52838b4738efa3d6266b61f60df7a on this host",
+    "harness": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-02-03-REPAIR-R1/harness/reproduce-probes.mjs",
+    "evidence": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-02-03-REPAIR-R1/harness/pre-repair-probes.json",
+    "defects_reproduced": 8,
+    "observations": [
+      {
+        "id": "P01_UNBOUND_COMMISSION_ACCEPTED",
+        "accepted": true
+      },
+      {
+        "id": "P02_MISSING_CANDIDATE_IDENTITIES_PASS_PUBLICATION",
+        "accepted": true
+      },
+      {
+        "id": "P03_DUPLICATE_AT_CAPACITY",
+        "duplicate_rejected_as": "SLOT_CAPACITY",
+        "expected": "idempotent acknowledgement"
+      },
+      {
+        "id": "P04_CORRUPT_EVENT_SILENTLY_IGNORED",
+        "events": [],
+        "state": "UNKNOWN"
+      },
+      {
+        "id": "P05_QUEUE_OMITS_RESUME_BINDINGS",
+        "stored_keys": [
+          "task_id",
+          "attempt",
+          "seq",
+          "state",
+          "role",
+          "base_commit",
+          "key",
+          "ts"
+        ],
+        "missing": [
+          "worktree",
+          "terrain",
+          "acceptance",
+          "commission_path",
+          "session_id"
+        ]
+      },
+      {
+        "id": "P06_ARBITRARY_ACCEPTANCE_EVENT",
+        "derived": "ACCEPTED"
+      },
+      {
+        "id": "P07_Q08_WRONG_STATES_CAN_PASS",
+        "incorrect_results_accepted": true
+      },
+      {
+        "id": "P08_LAUNCH_IS_ARGV_ONLY",
+        "argv": [
+          "opencode",
+          "run",
+          "--dir",
+          "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pyat-independent-probe-RY87z4",
+          "--agent",
+          "worker",
+          "--format",
+          "json",
+          "--variant",
+          "space-bunny-free",
+          "--",
+          "/commission.md"
+        ]
+      }
+    ]
+  },
+  "post_repair": {
+    "harness": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-02-03-REPAIR-R1/harness/post-repair-negative.mjs",
+    "evidence": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-02-03-REPAIR-R1/harness/post-repair-negative.json",
+    "cases_total": 16,
+    "cases_passed": 16,
+    "cases_failed": 0,
+    "cases": [
+      {
+        "id": "P01_UNBOUND_COMMISSION_ACCEPTED",
+        "expect": "REJECTED",
+        "got": "PLACEHOLDER_FIELD",
+        "pass": true,
+        "detail": "placeholder rejected fail-closed"
+      },
+      {
+        "id": "P02_MISSING_CANDIDATE_IDENTITIES_PASS_PUBLICATION",
+        "expect": "REJECTED",
+        "got": "GIT_FAILED",
+        "pass": true,
+        "detail": "absent identities must never compare equal"
+      },
+      {
+        "id": "P03_DUPLICATE_AT_CAPACITY",
+        "expect": "idempotent acknowledgement (dedup before capacity)",
+        "got": "IDEMPOTENT",
+        "pass": true,
+        "detail": "{\"task_id\":\"T-wfbrxb\",\"queued\":true,\"dedup\":true,\"idempotent\":true,\"reason\":\"already queued; duplicate submission is idempotent\"}"
+      },
+      {
+        "id": "P04_CORRUPT_EVENT_SILENTLY_IGNORED",
+        "expect": "corruption surfaced and blocking",
+        "got": "corruption=1 readOrThrow=true recover.blocking=true",
+        "pass": true,
+        "detail": "torn/malformed records preserved as blocking state"
+      },
+      {
+        "id": "P05_QUEUE_OMITS_RESUME_BINDINGS",
+        "expect": "full immutable binding persisted and reconstructible",
+        "got": "missing=0 binding_complete=true",
+        "pass": true,
+        "detail": "restart reconstructs exact commission bindings, not a label"
+      },
+      {
+        "id": "P06_ARBITRARY_ACCEPTANCE_EVENT",
+        "expect": "ACCEPTED not reachable without HQ adjudication",
+        "got": "deriveState=ACCEPTED_EVENT_SEEN__ADJUDICATION_REQUIRED accepted=false",
+        "pass": true,
+        "detail": "bare ACCEPTED event cannot manufacture accepted state"
+      },
+      {
+        "id": "P07_Q08_WRONG_STATES_CAN_PASS",
+        "expect": "every state name discriminates; unknown fails closed to UNKNOWN",
+        "got": "mismatches=0/7 unknown_state_got=UNKNOWN",
+        "pass": true,
+        "detail": "a case-mismatched or wrong result map now produces detectable mismatches instead of silent passes"
+      },
+      {
+        "id": "P08_LAUNCH_IS_ARGV_ONLY",
+        "expect": "argv carries separate model/variant and attaches commission file",
+        "got": "argv built",
+        "pass": true,
+        "detail": "model and reasoning variant are separate flags; commission content attached via --file"
+      },
+      {
+        "id": "N01_REVIEW_FOR_CANDIDATE_A_VS_B",
+        "expect": "REJECTED",
+        "got": "IDENTITY_MISMATCH",
+        "pass": true,
+        "detail": "exact candidate binding enforced"
+      },
+      {
+        "id": "N02_NON_FULL_OR_EMPTY_IDENTITY",
+        "expect": "all 7 rejected",
+        "got": "rejected=7/7",
+        "pass": true,
+        "detail": "includes wrong length, non-hex, placeholder, null/undefined"
+      },
+      {
+        "id": "N03_WRITE_OUTSIDE_DECLARED_TERRAIN",
+        "expect": "REJECTED",
+        "got": "OUT_OF_TERRAIN",
+        "pass": true,
+        "detail": "traversal, absolute and non-terrain paths all rejected"
+      },
+      {
+        "id": "N04_STALE_EXPECTED_REMOTE_PARENT",
+        "expect": "REJECTED on mismatch",
+        "got": "IDENTITY_MISMATCH",
+        "pass": true,
+        "detail": "identity comparison fails closed; remote check wired into publicationGate"
+      },
+      {
+        "id": "N05_TWO_PROCESSES_RACING_SUBMISSION",
+        "expect": "serialized by enforced writer; distinct tasks both recorded once",
+        "got": "queued=2",
+        "pass": true,
+        "detail": "append is the only mutation path and holds an exclusive lock"
+      },
+      {
+        "id": "N06_INTERRUPTED_LAUNCH_THEN_RESTART",
+        "expect": "reconciles honestly, does not invent success",
+        "got": "state=RUNNING exit=null",
+        "pass": true,
+        "detail": "interrupted launch stays RUNNING with null exit; no fabricated completion"
+      },
+      {
+        "id": "N07_COMPLETION_WITHOUT_DELIVERY",
+        "expect": "undelivered completion is visible as awaiting adjudication; delivery requires a finished receipt",
+        "got": "hq_returns_before=0 unfinished_delivery=LAUNCH_NOT_FINISHED",
+        "pass": true,
+        "detail": "refuses to deliver an unfinished launch"
+      },
+      {
+        "id": "N08_UNAVAILABLE_TOOL_REPORTED_TRUTHFULLY",
+        "expect": "capability probe reports real availability, no hardcoded PASS",
+        "got": "available=true version=1.18.34 reason=n/a",
+        "pass": true,
+        "detail": "probe reflects actual observed CLI state"
+      }
+    ]
+  },
+  "audit_probes_pre_vs_post": [
+    {
+      "id": "P01_UNBOUND_COMMISSION_ACCEPTED",
+      "pre": "{'id': 'P01_UNBOUND_COMMISSION_ACCEPTED', 'accepted': True}",
+      "post_expect": "REJECTED",
+      "post_got": "PLACEHOLDER_FIELD",
+      "pass": true
+    },
+    {
+      "id": "P02_MISSING_CANDIDATE_IDENTITIES_PASS_PUBLICATION",
+      "pre": "{'id': 'P02_MISSING_CANDIDATE_IDENTITIES_PASS_PUBLICATION', 'accepted': True}",
+      "post_expect": "REJECTED",
+      "post_got": "GIT_FAILED",
+      "pass": true
+    },
+    {
+      "id": "P03_DUPLICATE_AT_CAPACITY",
+      "pre": "{'id': 'P03_DUPLICATE_AT_CAPACITY', 'duplicate_rejected_as': 'SLOT_CAPACITY', 'expected': 'idempotent acknowledgement'}",
+      "post_expect": "idempotent acknowledgement (dedup before capacity)",
+      "post_got": "IDEMPOTENT",
+      "pass": true
+    },
+    {
+      "id": "P04_CORRUPT_EVENT_SILENTLY_IGNORED",
+      "pre": "{'id': 'P04_CORRUPT_EVENT_SILENTLY_IGNORED', 'events': [], 'state': 'UNKNOWN'}",
+      "post_expect": "corruption surfaced and blocking",
+      "post_got": "corruption=1 readOrThrow=true recover.blocking=true",
+      "pass": true
+    },
+    {
+      "id": "P05_QUEUE_OMITS_RESUME_BINDINGS",
+      "pre": "{'id': 'P05_QUEUE_OMITS_RESUME_BINDINGS', 'stored_keys': ['task_id', 'attempt', 'seq', 'state', 'role', 'base_commit', 'key', 'ts'], 'missing': ['worktree', 'terrain', 'acceptance', 'commission_path', 'session_id']}",
+      "post_expect": "full immutable binding persisted and reconstructible",
+      "post_got": "missing=0 binding_complete=true",
+      "pass": true
+    },
+    {
+      "id": "P06_ARBITRARY_ACCEPTANCE_EVENT",
+      "pre": "{'id': 'P06_ARBITRARY_ACCEPTANCE_EVENT', 'derived': 'ACCEPTED'}",
+      "post_expect": "ACCEPTED not reachable without HQ adjudication",
+      "post_got": "deriveState=ACCEPTED_EVENT_SEEN__ADJUDICATION_REQUIRED accepted=false",
+      "pass": true
+    },
+    {
+      "id": "P07_Q08_WRONG_STATES_CAN_PASS",
+      "pre": "{'id': 'P07_Q08_WRONG_STATES_CAN_PASS', 'incorrect_results_accepted': True}",
+      "post_expect": "every state name discriminates; unknown fails closed to UNKNOWN",
+      "post_got": "mismatches=0/7 unknown_state_got=UNKNOWN",
+      "pass": true
+    },
+    {
+      "id": "P08_LAUNCH_IS_ARGV_ONLY",
+      "pre": "{'id': 'P08_LAUNCH_IS_ARGV_ONLY', 'argv': ['opencode', 'run', '--dir', '/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/pyat-independent-probe-RY87z4', '--agent', 'worker', '--format', 'json', '--variant', 'space-bunny-free', '--', '/commission.md']}",
+      "post_expect": "argv carries separate model/variant and attaches commission file",
+      "post_got": "argv built",
+      "pass": true
+    }
+  ],
+  "additional_required_cases": [
+    "N01_REVIEW_FOR_CANDIDATE_A_VS_B",
+    "N02_NON_FULL_OR_EMPTY_IDENTITY",
+    "N03_WRITE_OUTSIDE_DECLARED_TERRAIN",
+    "N04_STALE_EXPECTED_REMOTE_PARENT",
+    "N05_TWO_PROCESSES_RACING_SUBMISSION",
+    "N06_INTERRUPTED_LAUNCH_THEN_RESTART",
+    "N07_COMPLETION_WITHOUT_DELIVERY",
+    "N08_UNAVAILABLE_TOOL_REPORTED_TRUTHFULLY"
+  ],
+  "self_reported_defects_caught_during_repair": [
+    {
+      "defect": "requireSameIdentity applied 40-hex sha validation to task_id, which is an identifier not an object id",
+      "impact": "two publication gates rejected for the WRONG reason, so the real stale-remote-parent gate was never reached; a naive pass would have hidden it",
+      "fixed": true
+    },
+    {
+      "defect": "--file is a yargs array option; a trailing prompt token is consumed as a second filename",
+      "impact": "every real launch failed with 'File not found: <prompt>'",
+      "discovered_by": "running the installed CLI, not reading help",
+      "fixed": true
+    },
+    {
+      "defect": "my own P07 probe reproduced the Q08 lowercase/uppercase mismatch bug",
+      "impact": "test harness was itself vacuous",
+      "fixed": true,
+      "note": "probe rewritten to exercise the real state machine"
+    },
+    {
+      "defect": "opencode run --help writes to stderr on this host, not stdout",
+      "impact": "first capability probe truthfully reported all-false",
+      "fixed": true
+    }
+  ],
+  "disposable_fixtures_only": true,
+  "real_source_storage_touched": false
+}

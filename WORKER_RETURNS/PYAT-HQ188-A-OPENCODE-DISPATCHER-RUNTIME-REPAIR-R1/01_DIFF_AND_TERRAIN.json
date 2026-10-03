@@ -1,0 +1,56 @@
+{
+  "schema": "PYAT_HQ188_A__DIFF_AND_TERRAIN@1.0.0",
+  "lane": "PYAT-HQ188-A-OPENCODE-DISPATCHER-RUNTIME-REPAIR-R1",
+  "commissioned_startup_sha": "ff7a06694b0391471b8e1223b2f881b3288f529e",
+  "commission_exact_base": "6820160533859cf8dd283d10c043947dfe1dd5d4",
+  "worker_branch": "agent/rabochii-pyat-hq188-a-opencode-dispatcher-runtime-repair-r1",
+  "implementation_changes": [
+    {
+      "path": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/runtime/dispatcher.mjs",
+      "pre_repair_blob": "23b1fcc3c9e52838b4738efa3d6266b61f60df7a",
+      "pre_repair_blob_matches_audit": "YES (audit cited 23b1fcc3c9e52838b4738efa3d6266b61f60df7a; no drift)",
+      "post_repair_blob": "f3067208f7a8b8ffc159bdc41c25309e9a14b5cb",
+      "pre_repair_bytes": 8174,
+      "post_repair_bytes": 37613,
+      "unmodified_by_repair": [
+        "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/runtime/qualify_ops03.mjs"
+      ],
+      "qualify_ops03_note": "left untouched deliberately: it is the OPS-03 qualifier under separate dispute. Its Q08/Q09/Q11 defects are reported as evidence in 06, not silently rewritten."
+    }
+  ],
+  "evidence_added": [
+    "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-02-03-REPAIR-R1/harness/cross-process-race.json",
+    "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-02-03-REPAIR-R1/harness/cross-process-race.mjs",
+    "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-02-03-REPAIR-R1/harness/dispatcher.PRE-REPAIR.mjs",
+    "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-02-03-REPAIR-R1/harness/e2e-fixture.json",
+    "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-02-03-REPAIR-R1/harness/e2e-fixture.mjs",
+    "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-02-03-REPAIR-R1/harness/post-repair-negative.json",
+    "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-02-03-REPAIR-R1/harness/post-repair-negative.mjs",
+    "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-02-03-REPAIR-R1/harness/pre-repair-probes.json",
+    "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-02-03-REPAIR-R1/harness/reproduce-probes.mjs"
+  ],
+  "declared_write_terrain": [
+    "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/runtime/**",
+    "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-02-03-REPAIR-R1/**",
+    "WORKER_RETURNS/PYAT-HQ188-A-OPENCODE-DISPATCHER-RUNTIME-REPAIR-R1/**"
+  ],
+  "terrain_compliance": {
+    "writes_confined_to_declared_terrain": true,
+    "paths_outside_terrain_written": 0,
+    "self_detected_and_removed": [
+      {
+        "path": ".pyat-state/",
+        "cause": "created by a dispatcher CLI probe using the default state dir",
+        "action": "deleted before commit"
+      }
+    ],
+    "rawlsing_next_touched": false,
+    "HQ_HANDOFF_touched": false,
+    "control_branch_merged": false
+  },
+  "raw_source_access": 0,
+  "source_locators_discovered": 0,
+  "warrants_issued": 0,
+  "live_c4_executed": 0,
+  "self_adopted": false
+}
