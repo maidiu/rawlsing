@@ -1514,7 +1514,8 @@ Do **not** read them as establishing:
 The reharvest corrected:
 - `Q-HISTBRIDGE-001` — causal slack/open allocation may be represented or derived; no dedicated slot owner is presumed;
 - `Q-MEANINGSTRATA-001` — existing authoritative state/derived views first, minimal new durable representation only after hostile underdetermination;
-- `Q-SELFREAD-001` — current task is CAN-008 R2 + existing-owner composition/falsification, not schema design for a monolithic interpretive-framework/Horizon object.
+- `Q-SELFREAD-001` — current task is CAN-008 R2 + existing-owner composition/falsification, not schema design for a monolithic interpretive-framework/Horizon object;
+- `Q-PERSONSHARE-001` — restores the user's stronger open case: a randomly generated/succession persona may eventually be shareable only if a clean reproducible pre-contact lineage can be frozen/promoted without laundering sender-branch state; exact eligibility, closure, provenance and compute remain open.
 
 `Q-FRAMEMETAB-001` was already correctly phrased as a composition/falsification court.
 
