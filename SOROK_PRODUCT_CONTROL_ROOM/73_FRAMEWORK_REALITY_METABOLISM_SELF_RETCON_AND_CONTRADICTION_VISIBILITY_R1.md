@@ -2,6 +2,8 @@
 
 Status: `PROVISIONAL_ARCHITECTURE_DIRECTION__V3_MIDDLE_STATE_ALIGNED__NO_ENLIGHTENMENT_GRADIENT`
 
+Currentness note (2026-10-03): this artifact remains a phenomenon/hostile-test bank. Artifact 74 controls current V3/PFF owner interpretation, and artifact 76 generalizes the anti-reification rule. Integrative/appropriative/partitioned/etc. are derived historical-pattern labels, not an adopted operator enum; `reality pressure` is descriptive friction from actual admitted events/outcomes, not an event source; no monolithic framework/self-retcon owner is presumed.
+
 Date: 2026-10-02
 
 ## 0. Why this exists
