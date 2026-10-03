@@ -1,12 +1,12 @@
 {
   "schema": "RAWLSING_HQ_HANDOFF_POINTER@1.1.0",
-  "checkpoint_id": "20261003-PYAT-HQ191-A-R7-R9-ADJUDICATED-SUCCESSORS-BOUND-R1",
-  "handoff_commit": "221027c736579cd3e089e2624c8f17dd3a97daef",
+  "checkpoint_id": "20261003-PYAT-HQ192-R7-CLOSED-HOST-PREFLIGHT-R9-A2-WAVE-R1",
+  "handoff_commit": "d2cbeb297a1c296e3c509c9c9fe1d53a591a562a",
   "semantic_pre_main_tip": "902640dfddce431d0c5ba151d3eb851d6b84d7a3",
   "control_branch": "integration/pre-main-reconciliation-r1",
-  "current_md_path": "HQ_HANDOFF/checkpoints/20261003-PYAT-HQ191-A-R7-R9-ADJUDICATED-SUCCESSORS-BOUND-R1/CURRENT.md",
-  "current_json_path": "HQ_HANDOFF/checkpoints/20261003-PYAT-HQ191-A-R7-R9-ADJUDICATED-SUCCESSORS-BOUND-R1/CURRENT.json",
-  "manifest_path": "HQ_HANDOFF/checkpoints/20261003-PYAT-HQ191-A-R7-R9-ADJUDICATED-SUCCESSORS-BOUND-R1/MANIFEST.json",
+  "current_md_path": "HQ_HANDOFF/checkpoints/20261003-PYAT-HQ192-R7-CLOSED-HOST-PREFLIGHT-R9-A2-WAVE-R1/CURRENT.md",
+  "current_json_path": "HQ_HANDOFF/checkpoints/20261003-PYAT-HQ192-R7-CLOSED-HOST-PREFLIGHT-R9-A2-WAVE-R1/CURRENT.json",
+  "manifest_path": "HQ_HANDOFF/checkpoints/20261003-PYAT-HQ192-R7-CLOSED-HOST-PREFLIGHT-R9-A2-WAVE-R1/MANIFEST.json",
   "decision_ledger_path": "HQ_HANDOFF/DECISION_LEDGER.jsonl",
   "protocol_path": "HQ_HANDOFF/PROTOCOL.md",
   "start_here_path": "HQ_HANDOFF/START_HERE.md",
@@ -15,7 +15,7 @@
   "temporal_reconciliation_law": "SEALED_CHECKPOINT_AUTHORITY_NE_POST_CHECKPOINT_PENDING_RETURN_NE_UNAUTHORIZED_POST_CHECKPOINT_MOVEMENT",
   "maintenance_law": "AFTER_EVERY_MATERIAL_HQ_STATE_CHANGE__CREATE_NEW_IMMUTABLE_CHECKPOINT__ADVANCE_AND_VERIFY_LATEST_BEFORE_TRANSITION_IS_SEALED",
   "protected_execution_head": "16f5e7d5f691e908d85dc1dd26b8a59a29f668f4",
-  "next_action": "LAUNCH_HQ191_R7_REVIEW_AND_HQ191_A2_R9_IN_PARALLEL__ROUTE_CORRECTED_C4_PACKET_TO_RESERVED_ASTRA_DECISION",
+  "next_action": "LAUNCH_HQ192_A2_REVIEW_HOST_PREFLIGHT_R9_OS_ACCOUNTING_IN_PARALLEL__ROUTE_C4_PACKET_TO_RESERVED_ASTRA",
   "source_split_control_head": "cee9e27d57dc72771d9c3ec5df26493321feeef5",
   "split_fanin_evidence_tip": "cee9e27d57dc72771d9c3ec5df26493321feeef5",
   "joined_successor_return_tip": "b4dd6d6016367110c06317abe2cef276123b4c69",
@@ -62,7 +62,7 @@
   "pyat_current_handoff": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/CURRENT_HANDOFF.md",
   "pyat_current_grok_docket": "PYAT_CONTROL_ROOM/12_B_ROUTE_PRE_FIELD_FORGE_GROK_DOCKET.md",
   "pyat_fresh_hq_protocol": "PYAT_CONTROL_ROOM/13_FRESH_HQ_FULL_GROK_PROTOCOL.md",
-  "immediate_program_refinement": "HQ191__DISPATCHER_SUPERVISED_BASE__R7_HOSTILE_REVIEW__R9_BUDGET_COURT__A2_HARDENING__ASTRA_C4_HOLD_DECISION_PENDING",
+  "immediate_program_refinement": "HQ192__R7_CLOSED__HOST_PREFLIGHT_BLOCKER__R9_OS_ACCOUNTING__A2_HOSTILE_REVIEW",
   "legacy_pyat_bootstrap_path": "HQ_HANDOFF/PYAT_HQ_BOOTSTRAP_R1.md",
   "pyat_documentary_hygiene": "HQD-2026-09-26-114",
   "pyat_forward_program_decision": "HQD-2026-09-28-125",
@@ -544,8 +544,8 @@
   "external_adjudication_retrieval_law": "ALL_COMPARISON_MATERIAL_FETCHABLE_FROM_ORIGIN",
   "measured_execution_authorized_via_warrant": false,
   "previous_handoff": {
-    "checkpoint_id": "20261003-PYAT-HQ190-RETURNS-ADJUDICATED-NEXT-WAVE-BOUND-R1",
-    "handoff_commit": "ad7006857dda0907d78786d995d1fcf2b942c29c"
+    "checkpoint_id": "20261003-PYAT-HQ191-A-R7-R9-ADJUDICATED-SUCCESSORS-BOUND-R1",
+    "handoff_commit": "221027c736579cd3e089e2624c8f17dd3a97daef"
   },
   "previous_operating_mode": {
     "selected": "BROWSER_ECONOMY",
@@ -715,6 +715,35 @@
       "next_commission_tip": "631e7586001a5f2736656c4a7d6c1bf055d8c0d1"
     },
     "prq07": "DISCHARGED_BY_COMPLETED_INDEPENDENT_C4_REVIEW_CHAIN",
+    "c4_external_packet_ready": true,
+    "c4_adopted": false,
+    "hq182_hold_lifted": false
+  },
+  "hq192": {
+    "r7": {
+      "status": "CLOSED",
+      "review_tip": "b0169b1ceb79e7e8b918e643d5164ec15f67dae5"
+    },
+    "live_execution": {
+      "blocker": "HOST-PREFLIGHT-F3-DISK-CAPACITY-VOLATILITY",
+      "count": 1,
+      "branch": "agent/rabochii-pyat-hq192-host-preflight-remediation-r1",
+      "commission_tip": "f4db1192c5dd2962c93cf9b726c8835f922ad6e7"
+    },
+    "r9": {
+      "blocker_remains": true,
+      "partial_tip": "1067828d75f3eab483e9b2a95e4b3ef703661118",
+      "branch": "agent/rabochii-pyat-hq192-r9-os-accounting-interposition-r1",
+      "commission_tip": "fdaf71c4c08d3f21778eeab335b5b928cc78fb7b"
+    },
+    "a2": {
+      "return_tip": "4b0b33102998abf9ce29fc0e584e278c85a44fe7",
+      "substantive_result": "50829fd0fba24eefd457abeb3cba4cd365460296",
+      "dispatcher_blob": "2db72c887b032622e09da6a5bd7723f7fb7055ee",
+      "adopted": false,
+      "review_branch": "agent/reviewer-pyat-hq192-a2-dispatcher-unattended-hostile-review-r1",
+      "commission_tip": "ce1574030e1136e29b093e2743d8b8e77f465f03"
+    },
     "c4_external_packet_ready": true,
     "c4_adopted": false,
     "hq182_hold_lifted": false
