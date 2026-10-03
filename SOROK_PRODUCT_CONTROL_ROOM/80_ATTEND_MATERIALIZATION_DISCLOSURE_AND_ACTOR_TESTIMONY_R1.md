@@ -486,3 +486,34 @@ Related risks:
 - RISK-032;
 - RISK-193;
 - RISK-194.
+
+## Causal-demand materialization beyond the user's gaze
+
+ATTEND is one lawful trigger for deeper canonical resolution.
+
+It is not the only trigger.
+
+If an actual actor/world process depends on an unresolved fact, Rawlsing may need to resolve the bounded necessary truth before the user can perceive it.
+
+Examples of causal demand:
+- an actor handles or reacts to an unresolved object property;
+- a hidden fact changes action feasibility;
+- an actor-local memory/association requires a concrete prior fact;
+- an event/object/photo consistency check becomes causally necessary;
+- a third party enters the relevant causal neighborhood.
+
+Therefore:
+
+`CAUSAL DEPENDENCY ON UNRESOLVED FACT`
+→ `BOUNDED CANONICAL MATERIALIZATION`
+
+even when the fact is never disclosed to the user.
+
+Compact:
+
+> **THE WORLD DEEPENS WHERE CAUSALITY REQUIRES, NOT ONLY WHERE THE PLAYER LOOKS.**
+
+This preserves a user-independent world while retaining lazy computation.
+
+See SPD-0239 / RISK-196 / artifact 81.
+
