@@ -1906,3 +1906,46 @@ Only closer lawful inspection may expose visible lettering, and brand/model labe
 
 `SPD-0248` governs this; `RISK-204` covers canonical-identity lexical leakage.
 
+---
+
+## Game-loop architecture
+
+Banked:
+- `88_GAME_LOOPS_WITHOUT_PERSON_OPTIMIZATION_R1.md`;
+- `89_PALPABLE_GAME_LOOPS_HISTORY_CARRIERS_CANDIDATE_R1.md`.
+
+Current adopted loop laws:
+- `SPD-0249` — play produces history/specificity/changed possibility rather than fungible relationship reward;
+- `SPD-0250` — reliable causal loops, unreliable person-outcome loops.
+
+Critical anti-optimization risk:
+- `RISK-205`.
+
+Core compression:
+
+`PARTIAL SITUATION`
+→ `NOTICE / ASK / ACT`
+→ `ACTOR / WORLD RESPONSE`
+→ `CONSEQUENCE`
+→ `MORE SPECIFIC KNOWLEDGE + CHANGED CONDITIONS`
+→ `NEW PARTIAL SITUATION`.
+
+Candidate palpability model remains non-adopted design space:
+
+`TRACE + RE-ENTRY + CHANGED AFFORDANCE`
+
+with examples including:
+- persistent material traces;
+- local relational conventions;
+- commitments;
+- persona-initiated contact arising from actor causality;
+- history-bearing scene openings;
+- routines and deviations;
+- finite simultaneous attention;
+- cross-context recurrence;
+- third-party memory/network consequence;
+- future description becoming richer because the user has lawfully learned something;
+- branch-local continuity aids limited to user-acquired history.
+
+No score, relationship level, unlock tree or guaranteed reward mapping is implied.
+
