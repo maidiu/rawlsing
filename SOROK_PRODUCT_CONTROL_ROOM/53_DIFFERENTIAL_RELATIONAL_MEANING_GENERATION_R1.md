@@ -103,3 +103,36 @@ It is a required generative transformation across already identified grains:
 - actor-limited expression.
 
 Exact owner placement remains an implementation question.
+
+## Shared convention and actor-relative meaning
+
+A dyad may establish an objective local convention while the participants continue to understand its relational significance differently.
+
+Preserve:
+
+`OBJECTIVE SHARED CONVENTION != ACTOR A MEANING != ACTOR B MEANING != EACH ACTOR'S MODEL OF THE OTHER'S MEANING`.
+
+Practice can converge before interpretation converges.
+
+A prior convention also changes the meaning of later acts because those acts occur against established history.
+
+Useful derived test patterns include:
+- under-reading;
+- over-reading;
+- semantic mismatch;
+- meta-model mismatch;
+- asymmetric perceived transition;
+- negotiation;
+- repair;
+- persistent ambiguity.
+
+These are test descriptions, not a required new enum or owner.
+
+Their interpretations become causal only through subsequent admitted interaction.
+
+Compact:
+
+> **SHARED CONVENTION != SHARED MEANING.**
+
+See SPD-0238 / RISK-195 / artifact 81.
+
