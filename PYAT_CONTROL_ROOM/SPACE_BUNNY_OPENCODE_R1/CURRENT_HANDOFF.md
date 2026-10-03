@@ -1,3 +1,25 @@
+# HQ190 active frontier — 2026-10-03
+
+HQ188-A and HQ188-B are returned and adjudicated for next routing.
+
+- HQ188-A: implementation candidate returned; **not adopted**; mandatory hostile independent acceptance now bound on `agent/reviewer-pyat-hq190-a-dispatcher-hostile-acceptance-r1 @ 2185e1dcf8d87acb74fe854a5196e7f2cf79cb6b`.
+- HQ188-B: current C4 consolidation accepted into control with bounded routing corrections only; corrected external packet is ready for the one reserved Astra C4 hold decision. HQ182 hold remains unlifted.
+- Space Bunny slot 1: R7 environment closure bound at `agent/rabochii-pyat-hq190-b-r7-darwin-environment-closure-r1 @ 909c5175ec322c6e8d56093e62b0b14a030b6787`.
+- Space Bunny slot 2: R9 warrant-accounting binding bound at `agent/rabochii-pyat-hq190-c-r9-warrant-accounting-binding-r1 @ be64ec98e648e1e6f1a9cb1ad32d7be4b2a84d33`.
+
+Launch all three in parallel: one independent review slot plus two implementer slots.
+
+Return-SHA law is corrected: artifacts bind the stable substantive candidate/result SHA; the exact pushed branch tip is reported out-of-band and independently re-resolved by HQ. Do not chase a commit containing its own SHA.
+
+Any R7/R9 claim of blocker closure requires independent hostile review before HQ removes that blocker.
+
+All source/locator/warrant/live-C4/C7/actor holds remain.
+
+See checkpoint:
+`HQ_HANDOFF/checkpoints/20261003-PYAT-HQ190-RETURNS-ADJUDICATED-NEXT-WAVE-BOUND-R1/`
+
+---
+
 # HQ188 active two-slot wave — 2026-10-03
 
 Current dispatch supersedes the older "bind repair / consolidate C4" pending wording below as an action item: both jobs are now issued.
