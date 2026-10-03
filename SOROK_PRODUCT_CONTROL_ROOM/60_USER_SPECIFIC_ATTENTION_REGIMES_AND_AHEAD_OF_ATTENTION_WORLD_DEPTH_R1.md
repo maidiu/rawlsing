@@ -4,6 +4,8 @@ Status: `PROVISIONAL_PRODUCT_DIRECTION__REFINES_59_SEMANTIC_PERSONALIZATION_FIRE
 
 Date: 2026-10-01
 
+Currentness note (2026-10-03): read the ahead-of-attention sections through artifacts 80–81 and SPD-0237/0239. Detail levels are truth/materialization strata, not a user-access ladder. User ATTEND is one materialization trigger; any lawful actor/world causal dependency may also require bounded hidden resolution.
+
 ## 0. Correction
 
 Artifact 59 was correct to forbid:
