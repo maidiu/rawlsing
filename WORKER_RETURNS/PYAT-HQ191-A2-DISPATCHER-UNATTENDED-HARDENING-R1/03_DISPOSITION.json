@@ -1,0 +1,69 @@
+{
+  "schema": "HQ191_A2_DISPOSITION@1.0.0",
+  "commission": "PYAT-HQ191-A2-DISPATCHER-UNATTENDED-HARDENING-R1",
+  "role": "RABOCHII / LOCAL-MACHINE IMPLEMENTER — SPACE BUNNY",
+  "branch": "agent/rabochii-pyat-hq191-a2-dispatcher-unattended-hardening-r1",
+  "commissioned_startup_sha": "0d65e325e73be0bb4b5e873308bed1a8f10b5cc4",
+  "startup_verified": true,
+  "substantive_result_sha": "50829fd0fba24eefd457abeb3cba4cd365460296",
+
+  "disposition": "CANDIDATE_READY_FOR_UNATTENDED_HOSTILE_REVIEW",
+
+  "disposition_meaning": "All six commissioned mandatory repairs are implemented and demonstrated, including the two the previous lane left open. The material hardening work is complete and is submitted for independent hostile adjudication. This is NOT a claim that unattended operation is safe; that judgement belongs to the reviewer.",
+
+  "why_not_the_alternatives": {
+    "SUPERVISED_MULTILANE_REPAIR_READY__UNATTENDED_STILL_BLOCKED": "Not chosen because no mandatory repair remains materially incomplete. Every MR has a passing harness, and the two defects my own regression found were fixed rather than deferred.",
+    "MATERIAL_HARDENING_INCOMPLETE": "Not chosen. The load-bearing concurrency, permission, containment, delivery and durability defects are all closed and demonstrated, and the complete regression is 44/44.",
+    "HOST_CAPABILITY_BLOCKED": "Not chosen. The host did provide every capability the repairs needed: a real scoped-permission surface in OpenCode 1.18.34, a working sandbox-exec seatbelt interface, and provider reachability for live end-to-end proof. Disk was tight but never prevented a commissioned phase."
+  },
+
+  "what_a_reviewer_should_attack_first": [
+    "MR-1: re-run the unmodified reviewer race harness and an independent N>>cap stress; the defect was timing-dependent, so a single lucky trial proves nothing.",
+    "MR-2: confirm that sequence ownership cannot be defeated by a caller that supplies its own seq, and that no legitimate transition can still be swallowed.",
+    "MR-3: verify the scoped profile cannot be widened by inherited environment, and that no code path still reaches --auto.",
+    "MR-4: verify the seatbelt profile is genuinely enforcing rather than merely compiling, and probe the allow-listed OpenCode session/cache directories as a residual write surface.",
+    "MR-5: try to make attachment content read as authority despite the precedence frame, including shapes beyond the 13 already defanged.",
+    "L-5: confirm that role separation is not being credited to a --agent argument that does not resolve."
+  ],
+
+  "self_qualification": "NONE. No claim is made beyond the supervised ceiling. The independent-reviewer-identity control identified by the governing review (L-1) remains unmet and is outside this lane's authority.",
+
+  "holds_observed": {
+    "raw_sources": "zero access",
+    "locator_discovery": "zero",
+    "warrant": "zero issuance",
+    "live_c4": "zero",
+    "production_semantic_mutation": "zero",
+    "c7_or_actor_person_work": "zero",
+    "hq_handoff_edits": "zero",
+    "historical_returns_modified": "zero",
+    "candidate_self_adoption": "none",
+    "merge_into_control": "none"
+  },
+
+  "write_terrain_respected": {
+    "allowed_and_touched": [
+      "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/runtime/**",
+      "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-02-03-HARDENING-R2/**",
+      "WORKER_RETURNS/PYAT-HQ191-A2-DISPATCHER-UNATTENDED-HARDENING-R1/**"
+    ],
+    "verified_by": "an explicit path allow-check over the staged change set before commit"
+  },
+
+  "host_safety_law_observed": {
+    "sudo_used": false,
+    "system_profiles_or_etc_modified": false,
+    "launch_agents_or_global_security_modified": false,
+    "ownership_or_machine_acls_changed": false,
+    "seatbelt_profiles": "disposable lane-owned fixtures applied only to the child process under test",
+    "global_opencode_config_modified": false,
+    "per_process_config": "OPENCODE_CONFIG_CONTENT only, lane-local, no persistent change; OPENCODE_CONFIG removed from the child environment",
+    "recursive_chmod_chown": "none",
+    "global_packages_installed": "none",
+    "system_python_or_toolchain_altered": "none",
+    "shared_local_courts_deleted": "none",
+    "cleanup_scope": "lane-created disposable fixtures under /private/tmp/hq191a2 only"
+  },
+
+  "terminal": "HQ191_A2_DISPATCHER_HARDENING_RETURNED__HQ_REVIEW_REQUIRED"
+}

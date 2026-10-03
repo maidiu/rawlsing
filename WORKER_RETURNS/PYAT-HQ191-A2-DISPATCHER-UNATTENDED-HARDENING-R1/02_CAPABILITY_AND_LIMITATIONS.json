@@ -1,0 +1,88 @@
+{
+  "schema": "HQ191_A2_CAPABILITY_AND_LIMITATIONS@1.0.0",
+  "substantive_result_sha": "50829fd0fba24eefd457abeb3cba4cd365460296",
+  "principle": "Nothing below is claimed to be closed unless a named harness demonstrates it. Residual risk is stated as residual risk, not folded into the ceiling.",
+
+  "closed_by_this_return": [
+    "MR-1 atomic admission under real multi-process concurrency",
+    "MR-2 un-droppable state transitions via sequence ownership",
+    "MR-3 blanket --auto eliminated; scoped permission profile enforced and proven load-bearing by control",
+    "MR-4 genuine kernel-enforced containment on this host, proven independent of application permissions",
+    "MR-5 commission delivery integrity: byte binding plus a dispatcher-generated authority frame",
+    "MR-6 lock reclaim by proven-dead owner; state directory fsync"
+  ],
+
+  "residual_limitations_disclosed": [
+    {
+      "id": "L-1",
+      "severity": "material, organizational",
+      "limitation": "Independent reviewer identity is NOT established.",
+      "detail": "The governing review's own minimal-repair list requires a different model/variant or a different authority to occupy the reviewer role before unattended operation. That is a control outside the dispatcher's write terrain and outside this lane's authority; it cannot be self-certified here.",
+      "consequence": "Unattended operation remains unqualified by this return regardless of the dispatcher repairs."
+    },
+    {
+      "id": "L-2",
+      "severity": "material, residual containment",
+      "limitation": "Seatbelt does not scope network egress by destination on this platform.",
+      "detail": "The profile grants (allow network-outbound) because the seatbelt interface available here does not accept a host-scoped remote filter in the form attempted. Filesystem WRITE containment is the enforced boundary; egress is not destination-restricted.",
+      "consequence": "A contained agent can still reach the network. Any claim of network containment would be false and is not made."
+    },
+    {
+      "id": "L-3",
+      "severity": "material, residual containment",
+      "limitation": "The child's own OpenCode session/cache directories remain writable inside the profile.",
+      "detail": "OpenCode cannot function unless it may write its session, cache and config directories, so those paths are allow-listed. A determined adversary inside the sandbox could write there.",
+      "consequence": "Containment is scoped to protecting the repository and the rest of the host, not to hermeticity against a hostile child."
+    },
+    {
+      "id": "L-4",
+      "severity": "material, durability of the mechanism",
+      "limitation": "sandbox-exec is deprecated by Apple.",
+      "detail": "It is present and functional on this host (macOS 13.7.8) and the profile compiles and enforces, but Apple has deprecated Seatbelt and it may be absent on future releases.",
+      "consequence": "The launcher probes for it and REFUSES to run rather than silently degrading to advisory-only. On a host without it, unattended operation is correctly blocked instead of being quietly downgraded."
+    },
+    {
+      "id": "L-5",
+      "severity": "minor, correctness of role scoping",
+      "limitation": "The launcher's --agent argument does not resolve to a configured agent.",
+      "detail": "A live run emitted 'agent \"worker\" not found. Falling back to default agent'. The dispatcher passes the role as --agent, but no agent by that name is configured, so agent-level role separation is not actually in effect. The permission profile is config-level and DOES apply, which is why out-of-terrain denial was enforced.",
+      "consequence": "Role separation must not be credited to --agent. It currently rests on the scoped permission profile and the terrain gate. Configuring real per-role agents was outside this commission's scope and is not claimed."
+    },
+    {
+      "id": "L-6",
+      "severity": "minor, environment dependence",
+      "limitation": "Live end-to-end proof depends on provider reachability.",
+      "detail": "The governing review recorded that live OpenCode E2E was not independently reproducible in its sandbox. On this host a real OpenCode process does run, so MR-3 and MR-5 acceptance were demonstrated against a genuine CLI process. That result is environment-dependent and is not a property of the code.",
+      "consequence": "A reviewer without provider access can still re-run every pure-JS gate and the seatbelt enforcement checks, which need no provider."
+    },
+    {
+      "id": "L-7",
+      "severity": "minor, scope of containment",
+      "limitation": "Containment wraps the spawned child only.",
+      "detail": "The dispatcher's own process is not sandboxed, and no OS user or ACL separation was introduced; the machine runs as a single user account.",
+      "consequence": "The boundary is between the task agent and the rest of the host, not between accounts. Introducing a dedicated OS user was judged a disproportionate machine change and was deliberately not attempted."
+    },
+    {
+      "id": "L-8",
+      "severity": "informational, host capacity",
+      "limitation": "The volume operated at 99% capacity with roughly 3.9-5.9 GiB free during this lane.",
+      "detail": "Heavyweight execution was budgeted against this: no additional worktrees were created beyond the commissioned isolated one, duplicate fixture environments were avoided, and only lane-created disposable fixtures were reclaimed. Shared LOCAL_COURTS content and other lanes' worktrees were left untouched.",
+      "consequence": "No phase was abandoned to ENOSPC, but the margin is thin and a reviewer should expect to budget for it."
+    }
+  ],
+
+  "explicitly_not_claimed": [
+    "That the dispatcher is qualified for unattended source-free orchestration. It is not, and this return does not self-qualify it.",
+    "That worktree separation constitutes containment. It does not; kernel-enforced seatbelt containment is what was implemented and tested.",
+    "That network egress is contained. It is not.",
+    "That the agent is hermetically sealed. It is not.",
+    "That any gate passes by inspection. Every claim above names the harness that demonstrates it."
+  ],
+
+  "verification_method_notes": [
+    "Concurrency claims are demonstrated with real OS processes, not simulated interleavings, because the original defect was timing-dependent.",
+    "The permission denial is demonstrated with a control experiment: the identical insisting prompt under external_directory:allow DID write the out-of-terrain file, so the denial under deny is attributable to the permission layer rather than to model reluctance.",
+    "Containment is demonstrated against a deliberately permissive OpenCode configuration so the kernel boundary is shown to be independent of application policy.",
+    "One early seatbelt result was a FALSE PASS caused by a profile that failed to compile; it was detected and corrected. It is recorded here because a containment claim that was never actually enforced is exactly the failure mode this lane exists to prevent."
+  ]
+}
