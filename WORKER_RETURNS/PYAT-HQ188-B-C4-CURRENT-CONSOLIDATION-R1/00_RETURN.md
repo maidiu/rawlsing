@@ -24,26 +24,59 @@ as HQ calls.
 |---|---|
 | Branch | `agent/rabochii-pyat-hq188-b-c4-current-consolidation-r1` |
 | Commissioned startup SHA | `9001be646305036e493eea3dbce427f62f91c9ae` |
-| **Sealed candidate commit (all commissioned work)** | **`e9bc84b2eed39e0023f856ae1351db3b24b535b6`** |
-| Final remote SHA (verified `local HEAD == origin/<branch>`) | `e9bc84b2eed39e0023f856ae1351db3b24b535b6` |
+| **Exact final remote SHA** (recorded per `01_RETURN_PROTOCOL.md` step 6) | **`f8d95b20661c621258af0f9854a0b6b3bcdc129f`** |
+| Substantive candidate commit (all 10 commissioned artifacts) | `e9bc84b2eed39e0023f856ae1351db3b24b535b6` |
 | Final disposition | `CONSOLIDATION_READY_FOR_HQ_REVIEW` |
 | Terminal | `HQ188_B_C4_CURRENT_CONSOLIDATION_RETURNED__HQ_REVIEW_REQUIRED` |
 | Terminal addition | `HQ188-B_REMOTE_BRANCH_RETURN_VERIFIED` |
 
-**Return verification performed:** the worker branch was pushed to `origin`,
-re-fetched, and `local HEAD` was confirmed equal to
-`origin/agent/rabochii-pyat-hq188-b-c4-current-consolidation-r1` at the single
-exact full 40-hex SHA `e9bc84b2eed39e0023f856ae1351db3b24b535b6`.
+### Return verification, step by step
 
-A commit cannot contain its own SHA. The seal commit — this document's
-successor, which is the branch tip — records the sealed candidate SHA above,
-which is the commit carrying all ten commissioned artifacts. Verify either at
-any time with:
+Under `01_RETURN_PROTOCOL.md` steps 1–6:
+
+| Step | Requirement | Result |
+|---|---|---|
+| 1 | Return packet written in the commissioned directory | done — 6 artifacts |
+| 2 | Commit **all and only** authorized changes | 10 files added, **0 tracked files modified** |
+| 3 | No uncommitted commissioned work remaining | working tree clean |
+| 4 | Push the worker branch to `origin` | pushed |
+| 5 | Re-fetch; `local HEAD` == `origin/<branch>` at one exact full 40-hex SHA | **verified equal** |
+| 6 | Record that exact final SHA in the primary return and final-disposition files | **this table and `05_FINAL_DISPOSITION.json`** |
+
+### SHA chain — every commit, unambiguous
 
 ```
+9001be646305036e493eea3dbce427f62f91c9ae  commissioned startup tip (pre-existing)
+  └─ e9bc84b2eed39e0023f856ae1351db3b24b535b6  SUBSTANTIVE CANDIDATE
+       all 10 commissioned artifacts added here (4 OPS-04 + 6 return packet)
+     └─ f8d95b20661c621258af0f9854a0b6b3bcdc129f  SEAL COMMIT
+          the "exact final remote SHA" recorded per return-protocol step 6;
+          records the substantive candidate SHA inside the artifacts
+       └─ <this commit>  SHA-RECORD COMPLETION
+            appends the step-6 remote SHA above into 00_RETURN.md and
+            05_FINAL_DISPOSITION.json; adds no new substantive content
+```
+
+**Why more than one commit.** A commit cannot contain its own SHA, so the
+SHA resolved at step 5 can only be recorded by a *later* commit. The three
+commits above are therefore: content, then SHA-record, then this explicit
+step-6 completion. No substantive analysis was added, changed or retracted by
+the second or third commit.
+
+Verify independently:
+
+```
+git ls-remote origin refs/heads/agent/rabochii-pyat-hq188-b-c4-current-consolidation-r1
 git rev-parse origin/agent/rabochii-pyat-hq188-b-c4-current-consolidation-r1
-git log --oneline -2 origin/agent/rabochii-pyat-hq188-b-c4-current-consolidation-r1
+git log --oneline 9001be646305036e493eea3dbce427f62f91c9ae..origin/agent/rabochii-pyat-hq188-b-c4-current-consolidation-r1
+git diff --name-status 9001be646305036e493eea3dbce427f62f91c9ae origin/agent/rabochii-pyat-hq188-b-c4-current-consolidation-r1
 ```
+
+**Terrain verified at the remote tip:** the diff against the commissioned
+startup SHA is **additions only** — 10 `A` entries, zero `M`, zero `D`.
+`OPS-04/00`, `OPS-04/01`, `CORRECTIONS_AND_EVIDENCE_20261003.md`,
+`HQ_HANDOFF/LATEST.json` and `HQ_HANDOFF/DECISION_LEDGER.jsonl` are all
+**blob-identical** to the commissioned tip.
 
 ---
 

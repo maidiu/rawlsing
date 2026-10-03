@@ -14,22 +14,51 @@
     "why_not": "Every tension examined across 18 crosschecks resolved against the inspected artifact. Two prior positions were refined rather than overturned, and neither refinement changes a stage count, an authority basis or a hold: HQ187's stated import edge (the codec enters the M01 closure via the facade, not via the changed decoder - conclusion strengthened) and Lane A's 'at least 23' (tightened to exactly 23). Four items remain open and are recorded as HQ calls, none of which is a contradiction."
   },
   "branch": "agent/rabochii-pyat-hq188-b-c4-current-consolidation-r1",
-  "sealed_candidate_commit_sha": "e9bc84b2eed39e0023f856ae1351db3b24b535b6",
-  "final_remote_sha": "e9bc84b2eed39e0023f856ae1351db3b24b535b6",
-  "final_remote_sha_meaning": "the exact full 40-hex SHA at which local HEAD and origin/agent/rabochii-pyat-hq188-b-c4-current-consolidation-r1 were verified equal, carrying all ten commissioned artifacts",
+  "final_remote_sha": "f8d95b20661c621258af0f9854a0b6b3bcdc129f",
+  "final_remote_sha_meaning": "the exact full 40-hex SHA at which local HEAD and origin/agent/rabochii-pyat-hq188-b-c4-current-consolidation-r1 were verified equal under 01_RETURN_PROTOCOL.md step 5, and which step 6 requires be recorded in the primary return file and this final-disposition file",
+  "substantive_candidate_commit_sha": "e9bc84b2eed39e0023f856ae1351db3b24b535b6",
+  "substantive_candidate_meaning": "the commit carrying all ten commissioned artifacts (4 OPS-04 outputs plus this 6-file return packet)",
+  "commissioned_startup_sha": "9001be646305036e493eea3dbce427f62f91c9ae",
+  "sha_chain": {
+    "commissioned_startup_tip": "9001be646305036e493eea3dbce427f62f91c9ae",
+    "substantive_candidate": "e9bc84b2eed39e0023f856ae1351db3b24b535b6",
+    "exact_final_remote_sha_recorded_per_step_6": "f8d95b20661c621258af0f9854a0b6b3bcdc129f",
+    "branch_tip": "the SHA-record completion commit that appends the step-6 remote SHA into 00_RETURN.md and 05_FINAL_DISPOSITION.json; its own SHA is reported in the lane completion message",
+    "why_multiple_commits": "a commit cannot contain its own SHA, so the SHA resolved at step 5 can only be recorded by a later commit. The second and third commits add no new substantive content, change no finding and retract nothing."
+  },
   "return_verification": {
     "pushed_to_origin": true,
     "remote_branch": "origin/agent/rabochii-pyat-hq188-b-c4-current-consolidation-r1",
     "remote_branch_refetched_after_push": true,
     "local_head_equals_remote": true,
-    "single_exact_40_hex_sha": "e9bc84b2eed39e0023f856ae1351db3b24b535b6",
+    "single_exact_40_hex_sha": "f8d95b20661c621258af0f9854a0b6b3bcdc129f",
+    "three_independent_resolutions_agree": ["local branch ref", "origin/<branch> tracking ref", "git ls-remote against the server"],
     "no_uncommitted_commissioned_work_remaining": true,
     "tracked_files_modified_by_this_lane": 0,
     "files_added_by_this_lane": 10,
+    "diff_vs_commissioned_tip": "additions only - 10 A entries, 0 M, 0 D",
+    "terrain_violations": 0,
+    "terrain_verified_unchanged_at_remote_tip": [
+      "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-04/00_C4_CONSOLIDATED_DECISION_CLAIMS.md",
+      "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-04/01_CORRECTED_DECISION_CLAIMS.md",
+      "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/CORRECTIONS_AND_EVIDENCE_20261003.md",
+      "HQ_HANDOFF/LATEST.json",
+      "HQ_HANDOFF/DECISION_LEDGER.jsonl"
+    ],
+    "all_ten_artifacts_present_at_remote_tip": true,
     "merged_into_control": false,
     "force_push_used": false,
     "history_rewritten_after_return": false,
-    "note": "A commit cannot contain its own SHA, so this seal commit records the exact remote SHA of its predecessor, which carries all commissioned work. This seal commit is the branch tip; its own SHA is reported in the lane completion message and is verifiable at any time with git rev-parse origin/agent/rabochii-pyat-hq188-b-c4-current-consolidation-r1."
+    "return_protocol_steps": {
+      "step_1_return_packet_written": true,
+      "step_2_commit_all_and_only_authorized_changes": true,
+      "step_3_no_uncommitted_commissioned_work": true,
+      "step_4_pushed_to_origin": true,
+      "step_5_local_head_equals_remote_at_one_sha": true,
+      "step_6_exact_final_sha_recorded_in_primary_return_and_final_disposition": true,
+      "step_7_reported_branch_sha_disposition_terminal": true
+    },
+    "note": "HQ observed this branch still at the commissioned startup SHA; that observation was stale. git ls-remote against the server, the origin/<branch> tracking ref and the local branch ref all resolved the same SHA at the time of this completion."
   },
   "deliverables": {
     "consolidated_claims": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-04/02_CURRENT_CONSOLIDATED_DECISION_CLAIMS.md",
