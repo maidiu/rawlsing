@@ -1835,3 +1835,52 @@ It does not automatically establish population prevalence or universal cultural 
 Risk:
 `RISK-201`.
 
+---
+
+## Perceptual-epistemics final-residue audit
+
+Artifact:
+`85_PERCEPTUAL_EPISTEMICS_FINAL_RESIDUE_AUDIT_R1.md`.
+
+Two small but real implementation laws were promoted.
+
+### Recognition evidence provenance
+
+`SPD-0246`.
+
+User recognition/expertise inference must preserve whether a label/identification was:
+- spontaneously user-originated;
+- narrator-supplied;
+- actor-supplied;
+- UI/help-supplied;
+- acquired through prior Rawlsing exposure.
+
+System-taught terminology may become lawful future user knowledge, but it cannot be recycled as proof that the user independently possessed the expertise before being taught.
+
+`PRIOR USER RECOGNITION != SYSTEM-TAUGHT IDENTIFICATION != LATER ACQUIRED RECOGNITION`.
+
+Risk:
+`RISK-202`.
+
+### Progressive ambient coverage remains nonexhaustive
+
+`SPD-0247`.
+
+Ordinary simulated time and spare attention may enrich the phenomenal field without explicit ATTEND.
+
+They do not eventually produce an exhaustive inventory.
+
+Ambient acquisition remains bounded by:
+- sightline/access;
+- current task/load;
+- salience;
+- non-curatorial sampling.
+
+`WAITING != PASSIVE OMNISCIENCE`.
+
+Risk:
+`RISK-203`.
+
+Q-ATTEND-002, Q-SALIENCE-001 and Q-SCENE-001 now explicitly own these implementation constraints.
+
+
