@@ -1,0 +1,115 @@
+{
+  "schema": "PYAT_HQ190_B__06_LIMITATIONS@1.0.0",
+  "lane": "PYAT-HQ190-B-R7-DARWIN-ENVIRONMENT-CLOSURE-R1",
+  "purpose": "Everything R7 closure does NOT establish. Read alongside 01 and 02; a green suite alone closes nothing.",
+
+  "explicit_non_claims": [
+    "NOT an adoption of the C4 freeze",
+    "NOT removal of the live-execution blocker by this lane; only HQ may do that, after independent hostile acceptance",
+    "NOT an execution of live C4",
+    "NOT a source-access authorization",
+    "NOT a qualification of any real survey source",
+    "NOT a portability guarantee to any host other than this one"
+  ],
+
+  "limitations": [
+    {
+      "id": "L1",
+      "limitation": "The base CPython interpreter is not version-controlled.",
+      "detail": "It lives at LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none, is untracked in Git, and is now fully digest-identified as 11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6. A second host cannot obtain this binary from the repository.",
+      "consequence": "R7's fingerprint component is closed on THIS host. Portability of the interpreter remains open.",
+      "to_close":"vendor or commit the interpreter build, or record a fetchable upstream artifact plus its expected digest."
+    },
+    {
+      "id": "L2",
+      "limitation": "The environment is bound to this exact host and volume.",
+      "detail": "Durability rests on the path /Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/qualification/r7-c4-source-free-venv existing on the persistent volume. It is not a managed, reproducible artifact.",
+      "consequence": "Deletion or reimage of the host destroys the environment. The recipe allows reconstruction on a host with the same interpreter available, but not without it.",
+      "to_close":"store the environment definition as a machine-readable lock in-repo and add a rebuild-and-verify path."
+    },
+    {
+      "id": "L3",
+      "limitation": "LOCAL_COURTS is untracked but NOT gitignored.",
+      "detail": "No .gitignore rule covers it in this repository. git status shows '?? LOCAL_COURTS/'. A routine `git add -A` in the shared clone would attempt to add a 332M virtual environment.",
+      "consequence": "an accidental large commit, or an accidental disclosure of local tooling paths.",
+      "to_close":"HQ should add an ignore rule. This lane did not edit .gitignore because it lies outside the declared write terrain."
+    },
+    {
+      "id": "L4",
+      "limitation": "Host disk reached 99% utilisation with roughly 6.3GiB free during this work, down from about 13GiB at the start.",
+      "detail": "The qualification venv is 332M; pip caches and the second reference environment also occupy space. Constrained disk has already forced payload withholding once on a sibling estate (NoviyMac, 800MiB free).",
+      "consequence": "A governed live run against multi-gigabyte sources could fail or silently degrade on this host for reasons unrelated to R7.",
+      "to_close":"free space and set a minimum-free-space precondition for the live runner."
+    },
+    {
+      "id": "L5",
+      "limitation": "A broken sibling symlink exists in the interpreter toolchain directory.",
+      "detail": "cpython-3.11-macos-x86_64-none is a dangling symlink to /Users/matthewsmith/LOCAL_COURTS/..., which does not exist. The live interpreter is the cpython-3.11.3-macos-x86_64-none directory.",
+      "consequence": "any recipe, script or operator following the shorter name fails.",
+      "to_close":"remove or repair the dangling symlink. Not done here: outside declared write terrain."
+    },
+    {
+      "id": "L6",
+      "limitation": "Reproduction still depends on external package indexes.",
+      "detail": "narwhals is now pinned at 2.26.0, which closes the specific unpinned-transitive defect. All 14 resolved packages are exactly pinned. But availability of those exact artifacts from an index is not a local guarantee.",
+      "consequence": "a rebuild months later may fail or require an internal mirror; the digests recorded here let any rebuild be verified rather than trusted.",
+      "to_close":"record full per-distribution artifact digests and vendor wheels, or adopt an internal mirror."
+    },
+    {
+      "id": "L7",
+      "limitation": "The requalification ran at the FREEZE tree, not at this branch's tree.",
+      "detail": "This branch's HEAD does not contain the accepted C3 code and lacks all six authoritative court files. The court was therefore run in a detached worktree at 8ff40d37.",
+      "consequence": "the 55/55 twice result is bound to the freeze bytes, which is what the commission required, and is explicitly NOT a statement about this branch's own rawlsing_next content.",
+      "to_close":"HQ must decide the authoritative lineage before the live run. See 05."
+    },
+    {
+      "id": "L8",
+      "limitation": "No source-access denial was exercised, by design.",
+      "detail": "This is a source-free lane. No survey path was resolved, stat-ed or hashed, so nothing here demonstrates behaviour against real source storage or real permission boundaries.",
+      "consequence": "the warrant-side and source-hold controls remain entirely unexercised by this work.",
+      "to_close":"out of scope; requires separate source-access authority."
+    },
+    {
+      "id": "L9",
+      "limitation": "Compiled-extension digests are bound to this host's wheel resolution.",
+      "detail": "All five extensions are byte-identical across two pre-existing environments on this host, which is strong evidence of local reproducibility. It is not evidence that a rebuild on another host or another wheel build yields identical binaries.",
+      "consequence":"cross-host binary identity remains unproven.",
+      "to_close":"compare full digests on any additional host before relying on it."
+    },
+    {
+      "id": "L10",
+      "limitation": "The static closure audit is a source-text audit, not a runtime trace.",
+      "detail": "Zero dynamic-loader, subprocess, duckdb and ee_p2x/fiabc edges was established by regex over module blobs in the 23-module closure. This reproduces the method C4C3 used and the property it relied on.",
+      "consequence":"a dynamically constructed edge that never appears literally in source would not be detected. The 55/55 court provides behavioural corroboration but not exhaustive edge proof.",
+      "to_close":"a runtime import-hook trace if HQ wants stronger assurance than the prior grain."
+    }
+  ],
+
+  "what_is_actually_established": [
+    "R7 fingerprint component: full 64-hex SHA-256 for the interpreter, libpython and all five compiled extensions, with every previously recorded 32-hex prefix shown to be a correct truncation rather than a wrong value.",
+    "R7 reproducibility component: a durable non-temporary environment, a complete 14-package exactly-pinned inventory including narwhals==2.26.0, a full recipe, and a byte-exact reproduction of the accepted historical 13-package seed as an independent positive control.",
+    "The exact freeze code requalified source-free in that environment: authoritative C3 six-file court, denominator asserted before the run, 55/55 twice, deterministic environment.",
+    "Call-path binding: the 21-module and 23-module closures independently recomputed and matched; all C4 layer modules imported from the freeze tree; zero unexpected dynamic-loader, subprocess or source edges."
+  ],
+
+  "what_remains_unqualified": [
+    "interpreter portability to any other host (L1)",
+    "durability beyond this host and volume (L2)",
+    "accidental-commit protection for the local estate (L3)",
+    "disk headroom for a governed live run (L4)",
+    "the broken toolchain symlink (L5)",
+    "index-independent future rebuild (L6)",
+    "which Git lineage is authoritative for the live run (L7)",
+    "any source-access or warrant behaviour (L8)",
+    "cross-host binary identity of the compiled extensions (L9)",
+    "runtime-level rather than source-level edge proof (L10)"
+  ],
+
+  "acceptance_answers": {
+    "1_is_the_original_R7_fingerprint_defect_closed": "YES on this host. Full 64-hex digests now exist for the interpreter, libpython and all five compiled extensions. The interpreter remains uncommitted, which is a portability caveat, not a fingerprint gap.",
+    "2_is_the_environment_durably_reusable": "YES on this host. Non-temporary location, complete pinned inventory including narwhals, full recipe, positive control reproducing the accepted historical seed. Not portable without the interpreter binary.",
+    "3_was_the_exact_freeze_code_requalified_source_free": "YES. At rawlsing_next tree b0c1ab47, the freeze's own tree, the authoritative C3 six-file court ran 55/55 twice in the durable environment, source-free, with the denominator asserted before the run.",
+    "4_what_environment_identity_must_the_live_runner_use": "Absolute interpreter /Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/qualification/r7-c4-source-free-venv/bin/python, base interpreter SHA-256 11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6, the 14 exactly-pinned packages including narwhals==2.26.0, and the five full extension digests in 01_RUNTIME_IDENTITY.json. The runner must also pin the exact rawlsing_next tree b0c1ab47, not a branch tip.",
+    "5_what_remains_unqualified": "See what_remains_unqualified above; the material ones are interpreter portability (L1), accidental-commit protection (L3), disk headroom (L4) and the authoritative-lineage decision (L7)."
+  }
+}

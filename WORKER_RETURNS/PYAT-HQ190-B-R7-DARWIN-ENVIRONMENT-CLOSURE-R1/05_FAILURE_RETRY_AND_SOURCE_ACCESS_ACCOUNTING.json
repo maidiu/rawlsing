@@ -1,0 +1,110 @@
+{
+  "schema": "PYAT_HQ190_B__05_FAILURE_RETRY_AND_SOURCE_ACCESS_ACCOUNTING@1.0.0",
+  "lane": "PYAT-HQ190-B-R7-DARWIN-ENVIRONMENT-CLOSURE-R1",
+  "source_access_accounting": {
+    "raw_survey_files_opened": 0,
+    "raw_survey_files_stat_ed": 0,
+    "raw_survey_files_hashed": 0,
+    "raw_survey_files_metadata_read": 0,
+    "raw_survey_files_decoded": 0,
+    "raw_survey_files_materialised": 0,
+    "raw_source_storage_enumerated": 0,
+    "source_locators_discovered": 0,
+    "real_source_locators_used": 0,
+    "synthetic_fixtures_required": 0,
+    "note": "no synthetic fixture was needed; the qualification is entirely version-controlled code and installed packages. No path resembling a survey source was resolved, stat-ed or hashed at any point.",
+    "warrants_issued_or_modified": 0,
+    "live_c4_executed": false
+  },
+  "failure_accounting": {
+    "test_failures": 0,
+    "test_errors": 0,
+    "test_skips": 0,
+    "flaky_or_retried_until_green": false,
+    "the_final_evidence_is_not_a_retry_masked_green": true,
+    "infrastructure_failures": [
+      {
+        "n": 1,
+        "what": "First attempt to run the six-file court reported 'no tests ran in 0.00s' twice.",
+        "root_cause": "shell variable holding multiple pytest paths was expanded as a single argument, so pytest received no test paths",
+        "classification": "invocation error by this lane, not a code, environment or test failure",
+        "action": "re-issued with explicit separate path arguments",
+        "retried_until_green_without_accounting": false,
+        "effect_on_evidence": "none; the successful runs are reported exactly as observed"
+      },
+      {
+        "n": 2,
+        "what": "A python3 availability check initially returned no output.",
+        "root_cause": "the PATH-resolved /usr/local/bin/python3 is a zero-byte launcher on this host; /usr/bin/python3 is CPython 3.9.6",
+        "classification": "host PATH hazard, the same class of defect C4C3 recorded",
+        "action": "bound the qualification environment by absolute path and never relied on PATH resolution",
+        "retried_until_green_without_accounting": false,
+        "effect_on_evidence": "none; arguably strengthens the case for binding an absolute interpreter path in the live runner"
+      }
+    ],
+    "attribution_note": "Both infrastructure failures are disclosed rather than smoothed over. Neither is a court failure, and the 55/55 twice result was not obtained by retrying a failing test."
+  },
+  "quality_control_observations": [
+    {
+      "observation": "A verification command's working directory failed with a corrupted path token, yet the shell was already in the intended directory, so the command produced output attributed to the wrong location.",
+      "handling": "the working directory, HEAD and rawlsing_next tree were re-verified explicitly before the result was relied upon",
+      "lesson": "a command's output must be attributed to a verified pwd/HEAD, not assumed"
+    },
+    {
+      "observation": "An early import check ran with cwd on the shared clone rather than the dedicated qualification worktree.",
+      "handling": "verified that the shared clone is itself at the same freeze commit 8ff40d37 with an identical rawlsing_next tree b0c1ab47 and no rawlsing_next modifications, so the evidence remained freeze-derived; the closure analysis was then re-run in the dedicated worktree",
+      "lesson": "two checkouts of the same tree are equivalent evidence only when the tree hash is verified equal, which it was"
+    }
+  ],
+  "significant_finding_requiring_hq_attention": {
+    "finding": "The HQ190-B branch lineage does NOT contain the accepted C3 code that the freeze pins.",
+    "detail": "At branch HEAD 909c5175 the rawlsing_next tree is 2a1ac8e2e4a6769eb953170761453f4ba0c0b7b2, whereas the freeze 8ff40d37 and C4A 8f7efe690 both carry b0c1ab472cde033e21f1c2f63fbcbea2f0cccef0. The freeze is not an ancestor of this branch; the lineages diverge at merge-base 87029d349c8a7385cb673060a8e5decd4eb528ff.",
+    "concrete_differences": [
+      {
+        "path": "rawlsing_next/pre553_physical_decoder.py",
+        "freeze": "d3d828c171ea9fdd0e90563aff6ef705f5aae2cf",
+        "this_branch_HEAD": "d2a074a41fb556a1cd5928a5fe1421ef3672a4e5",
+        "note": "the pre-C3 stale version"
+      },
+      {
+        "path": "rawlsing_next/pre553_r5_codec.py",
+        "freeze": "6000a1704d713f65e07610d81e9b3fd8bdd515ca",
+        "this_branch_HEAD": "72f8f3c03ed065e86fea4e76bb17f8e06c2bf540",
+        "note": "the pre-C3 stale version"
+      },
+      {
+        "path": "rawlsing_next/closed35_g01_sav_numeric_representation_authority.py",
+        "freeze": "present 31a9afd7d91ed4cb2fb1c1aab3ef86a5fdda1f85",
+        "this_branch_HEAD": "ABSENT"
+      },
+      {
+        "path": "rawlsing_next/tests/test_closed35_d02_opaque_datetime_carrier.py",
+        "freeze": "present 3901f10a487856f5f232ae6700fff407ac99755e",
+        "this_branch_HEAD": "ABSENT"
+      }
+    ],
+    "aggregate": "27 files changed, 13 insertions, 19445 deletions between the freeze and this branch HEAD under rawlsing_next",
+    "why_it_matters": "the six authoritative C3 court files do not exist on this branch at all, so the court could not have been run from the branch working tree. This is why the requalification was performed in a detached worktree at the exact freeze commit.",
+    "not_claimed": "This lane does not characterise the divergence as a regression of the programme. The lineages are separate and HQ owns their reconciliation. It is reported because it directly determines WHERE the requalification had to run.",
+    "action_required_by_hq": "Decide which lineage is authoritative for the live run before any governed execution. If this branch's lineage is to become authoritative, the C3 code must be re-integrated first."
+  },
+  "destructive_incident_disclosed": {
+    "id": "INC-1",
+    "severity": "SERIOUS \u2014 self-inflicted, recovered, no commit ever contained it",
+    "what_happened": "After the final court run I executed `find . -name '__pycache__' -type d -exec rm -rf {} +` inside the detached freeze worktree, intending to remove untracked bytecode caches that Python had just created.",
+    "actual_damage": "This repository tracks COMMITTED .pyc files as retained custody artifacts under WORKER_RETURNS/PREMAIN-FIABC-LITS-CANONICAL-EMPIRICAL-CLOSURE-SOURCEBACKED-R1/court/oracle_producers/LITS_I/. The blanket delete removed 4 TRACKED files from the working tree, including retained oracle-producer bytecode.",
+    "detection": "git status in that worktree immediately reported 4 ' D' (deleted, tracked) entries.",
+    "recovery": "`git checkout -- .` in the affected worktree.",
+    "verification_after_recovery": [
+      "all 4 files restored and each verified byte-identical to its committed blob via git hash-object versus git rev-parse",
+      "rawlsing_next tree still b0c1ab472cde033e21f1c2f63fbcbea2f0cccef0",
+      "worktree reported 0 modifications after restore",
+      "no commit was ever created containing the deletion, so no history was affected",
+      "the worker branch worktree was never touched by the delete"
+    ],
+    "root_cause": "A pattern-based recursive delete with no exclusion for tracked files and no prior `git ls-files` check. I targeted a directory NAME without establishing whether matching paths were tracked.",
+    "lesson": "On a repository that commits .pyc artifacts, no recursive delete may be run by name alone. The correct precondition is to enumerate candidate paths and intersect with `git ls-files` before deleting anything.",
+    "affects_R7_conclusions": "No. The court run, closure analysis and edge audit were all completed BEFORE this command, and the tree identity was re-verified afterwards. The requalification evidence is unaffected.",
+    "process_failure": "Yes \u2014 this was a careless command run outside the task's necessity, in a checkout I did not own for write purposes. It is recorded rather than omitted."
+  }
+}

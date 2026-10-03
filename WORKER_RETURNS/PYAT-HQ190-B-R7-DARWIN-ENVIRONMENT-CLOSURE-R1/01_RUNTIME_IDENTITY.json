@@ -1,0 +1,159 @@
+{
+  "schema": "PYAT_HQ190_B__01_RUNTIME_IDENTITY@1.0.0",
+  "environment_location": {
+    "path": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/qualification/r7-c4-source-free-venv",
+    "durable": true,
+    "per_session_temporary": false,
+    "why_durable": "under the established LOCAL_COURTS qualification estate on the operating host, outside per-session temp; verified not under /var/folders or /private/var/folders",
+    "size_bytes": 348213248,
+    "committed_to_git": false
+  },
+  "interpreter": {
+    "venv_executable": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/qualification/r7-c4-source-free-venv/bin/python",
+    "base_prefix": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none",
+    "base_interpreter_executable": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/bin/python3.11",
+    "base_interpreter_sha256_full_64hex": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+    "libpython_sha256_full_64hex": "83d9b1e40d5da51728d3780354e361bc0c72190119fd971307e80905b05efc0a",
+    "version": "3.11.3",
+    "implementation": "CPython",
+    "build": [
+      "main",
+      "May  7 2023 19:01:25"
+    ],
+    "compiler": "Clang 16.0.3 ",
+    "platform": "macOS-13.7.8-x86_64-i386-64bit",
+    "machine": "x86_64",
+    "system": "Darwin"
+  },
+  "complete_package_inventory": {
+    "count": 14,
+    "packages": [
+      "Pygments==2.21.0",
+      "iniconfig==2.3.0",
+      "narwhals==2.26.0",
+      "numpy==2.4.6",
+      "packaging==26.3",
+      "pandas==2.3.3",
+      "pluggy==1.6.0",
+      "pyarrow==25.0.1",
+      "pyreadstat==1.3.6",
+      "pytest==9.1.1",
+      "python-dateutil==2.9.0.post0",
+      "pytz==2026.4",
+      "six==1.17.0",
+      "tzdata==2026.4"
+    ],
+    "narwhals_present": true,
+    "all_pinned_exactly": true
+  },
+  "compiled_extensions_full_sha256": {
+    "pyreadstat._readstat_parser": {
+      "file": "_readstat_parser.cpython-311-darwin.so",
+      "bytes": 480520,
+      "sha256_full_64hex": "7700fb3e17fee0f714a6ceced4c325b8c8d33df96b1392d1bf846d0d746b5834"
+    },
+    "pyreadstat._readstat_writer": {
+      "file": "_readstat_writer.cpython-311-darwin.so",
+      "bytes": 532768,
+      "sha256_full_64hex": "a5cd73f3f2026e4b34de849072f0cf7e36e541ad1bd2087c6a0e747babcc25ed"
+    },
+    "pyarrow._parquet": {
+      "file": "_parquet.cpython-311-darwin.so",
+      "bytes": 563368,
+      "sha256_full_64hex": "62a37af81318fca64d640a318880b89836dd7209981168321392e0be5d93b38c"
+    },
+    "pyarrow._dataset_parquet": {
+      "file": "_dataset_parquet.cpython-311-darwin.so",
+      "bytes": 332656,
+      "sha256_full_64hex": "2a99f7b5b5bb71c1191cb8c62649c6be6acb3de6fb572319deadc5c4bccd1678"
+    },
+    "pyarrow._parquet_encryption": {
+      "file": "_parquet_encryption.cpython-311-darwin.so",
+      "bytes": 371144,
+      "sha256_full_64hex": "1f9de8f321b667780a5062657e2fe9604c15b98119f055bb6e070da9f03c1ee9"
+    }
+  },
+  "field_typing_note": "every digest in this artifact is a COMPLETE 64-hex SHA-256 of file bytes. No prefix or abbreviated digest appears anywhere in this artifact.",
+  "lane": "PYAT-HQ190-B-R7-DARWIN-ENVIRONMENT-CLOSURE-R1",
+  "commissioned_startup_sha": "909c5175ec322c6e8d56093e62b0b14a030b6787",
+  "c4_subject_commit": "8ff40d37de69db2d8a6053a7c2242f481677f1a4",
+  "r7_fingerprint_component": {
+    "defect": "C4C3 recorded only base_interpreter_sha256_prefix32 (32 hex) and five compiled_extensions digests with NO prefix marker in their field names",
+    "closed": true,
+    "evidence_the_recorded_prefix_was_correct_not_wrong": {
+      "recorded_prefix32": "11d6f541a870a141249ce98d45834a67",
+      "full_sha256_now_measured": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+      "full_hash_starts_with_recorded_prefix": true,
+      "conclusion": "the prior fingerprint was INCOMPLETE, not INCORRECT. Every one of the six recorded prefixes is a correct truncation of the full digest measured here."
+    },
+    "extensions_whose_prefixes_are_now_completed": {
+      "_readstat_parser.cpython-311-darwin.so": {
+        "recorded32": "7700fb3e17fee0f714a6ceced4c325b8",
+        "full64": "7700fb3e17fee0f714a6ceced4c325b8c8d33df96b1392d1bf846d0d746b5834",
+        "prefix_correct": true
+      },
+      "_readstat_writer.cpython-311-darwin.so": {
+        "recorded32": "a5cd73f3f2026e4b34de849072f0cf7e",
+        "full64": "a5cd73f3f2026e4b34de849072f0cf7e36e541ad1bd2087c6a0e747babcc25ed",
+        "prefix_correct": true
+      },
+      "_parquet.cpython-311-darwin.so": {
+        "recorded32": "62a37af81318fca64d640a318880b898",
+        "full64": "62a37af81318fca64d640a318880b89836dd7209981168321392e0be5d93b38c",
+        "prefix_correct": true
+      },
+      "_dataset_parquet.cpython-311-darwin.so": {
+        "recorded32": "2a99f7b5b5bb71c1191cb8c62649c6be",
+        "full64": "2a99f7b5b5bb71c1191cb8c62649c6be6acb3de6fb572319deadc5c4bccd1678",
+        "prefix_correct": true
+      },
+      "_parquet_encryption.cpython-311-darwin.so": {
+        "recorded32": "1f9de8f321b667780a5062657e2fe960",
+        "full64": "1f9de8f321b667780a5062657e2fe9604c15b98119f055bb6e070da9f03c1ee9",
+        "prefix_correct": true
+      }
+    },
+    "interpreter_provenance_still_uncommitted": {
+      "location": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none",
+      "committed_to_repository": false,
+      "consequence": "the interpreter binary is durably present on this host and now fully digest-identified, but it is NOT version-controlled. A different host cannot obtain it from Git.",
+      "note": "a dangling sibling symlink cpython-3.11-macos-x86_64-none -> /Users/matthewsmith/LOCAL_COURTS/... was found to be BROKEN; the real directory is the .3 one. Any recipe naming the broken symlink path would fail."
+    },
+    "cross_environment_reproducibility_claim_independently_confirmed": {
+      "c4c3_claim": "the _readstat_parser, _readstat_writer and _parquet extensions are BYTE-IDENTICAL to those in LOCAL_COURTS/python/fiabc-wvs7-3.11.3",
+      "independently_reverified": true,
+      "digests_match_in_all_three": true,
+      "significance": "a third independently provisioned environment now yields the same decoder binaries, strengthening rather than merely repeating C4C3's claim."
+    },
+    "static_closure_sizes_under_qualification": {
+      "five_layer_closure": 21,
+      "route_b_closure": 19,
+      "union_closure": 23,
+      "modules": [
+        "rawlsing_next/_pre553_query_common.py",
+        "rawlsing_next/_pre553_query_eval.py",
+        "rawlsing_next/_pre553_query_predicate.py",
+        "rawlsing_next/pre553_analytical_composition.py",
+        "rawlsing_next/pre553_c11_ingest.py",
+        "rawlsing_next/pre553_c11_integrity.py",
+        "rawlsing_next/pre553_c11_repository.py",
+        "rawlsing_next/pre553_carrier_execution.py",
+        "rawlsing_next/pre553_discovery_exact.py",
+        "rawlsing_next/pre553_empirical_authority.py",
+        "rawlsing_next/pre553_empirical_objects.py",
+        "rawlsing_next/pre553_empirical_possibility_provider.py",
+        "rawlsing_next/pre553_empirical_query.py",
+        "rawlsing_next/pre553_physical_c11_bridge.py",
+        "rawlsing_next/pre553_physical_decoder.py",
+        "rawlsing_next/pre553_r5_codec.py",
+        "rawlsing_next/pre553_recursive_handoff.py",
+        "rawlsing_next/pre553_route_b_production.py",
+        "rawlsing_next/pre553_runtime_authority.py",
+        "rawlsing_next/pre553_runtime_composition.py",
+        "rawlsing_next/pre553_runtime_context.py",
+        "rawlsing_next/pre553_source_backed_c11_facade.py",
+        "rawlsing_next/source_backed_positioned_subject_possibility.py"
+      ]
+    }
+  }
+}

@@ -1,0 +1,94 @@
+{
+  "schema": "PYAT_HQ190_B__03_SOURCE_FREE_REQUALIFICATION@1.0.0",
+  "lane": "PYAT-HQ190-B-R7-DARWIN-ENVIRONMENT-CLOSURE-R1",
+  "c4_subject_commit": "8ff40d37de69db2d8a6053a7c2242f481677f1a4",
+  "qualification_worktree": "detached worktree at the exact freeze commit",
+  "rawlsing_next_tree_under_qualification": "b0c1ab472cde033e21f1c2f63fbcbea2f0cccef0",
+  "environment": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/qualification/r7-c4-source-free-venv",
+  "source_free": true,
+  "raw_source_accessed": 0,
+  "source_locators_used": 0,
+  "authoritative_c3_six_file_court": {
+    "is_the_governing_qualified_surface": true,
+    "why": "this is the accepted C3 six-file court recorded by C4C3 and by the governing consolidation; no broader court was silently substituted",
+    "files": [
+      {
+        "file": "test_closed35_g01_sav_numeric_representation_authority.py",
+        "expected_count": 9,
+        "pinned_blob": "fb7b090809a609a3b0157f1ed8fcdcd8e8784525"
+      },
+      {
+        "file": "test_closed35_d01_declared_encoding_admission.py",
+        "expected_count": 8,
+        "pinned_blob": "8fc05965386055a208e5b3988112e67a2e6333e2"
+      },
+      {
+        "file": "test_closed35_d02_opaque_datetime_carrier.py",
+        "expected_count": 13,
+        "pinned_blob": "3901f10a487856f5f232ae6700fff407ac99725e"
+      },
+      {
+        "file": "test_fiabc_lm2_r1j_sav_representation_authority.py",
+        "expected_count": 9,
+        "pinned_blob": null
+      },
+      {
+        "file": "test_r35_i01_physical_metadata.py",
+        "expected_count": 6,
+        "pinned_blob": null
+      },
+      {
+        "file": "test_pre553_source_backed_c11_facade.py",
+        "expected_count": 10,
+        "pinned_blob": null
+      }
+    ],
+    "denominator_asserted_before_run": true,
+    "denominator_method": "pytest --collect-only run BEFORE the timed runs",
+    "denominator_collected": 55,
+    "denominator_expected": 55,
+    "denominator_matches": true,
+    "runs": [
+      {
+        "run": 1,
+        "result": "55 passed",
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "duration_seconds": 127.95
+      },
+      {
+        "run": 2,
+        "result": "55 passed",
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0,
+        "duration_seconds": 125.48
+      }
+    ],
+    "runs_identical": true,
+    "fifty_five_of_fifty_five_twice": true,
+    "determinism_environment": {
+      "PYTHONHASHSEED": "0",
+      "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+      "PYTHONPATH": "the qualification worktree root",
+      "cache_provider": "-p no:cacheprovider so no .pytest_cache is written into the tree"
+    },
+    "exit_codes": [
+      0,
+      0
+    ],
+    "written_into_repository": false
+  },
+  "governance_note": "The commission forbids conflating a passing suite with a durably bound environment. Both are reported separately: this section is the suite; 01 and 02 are the environment binding. R7 closure rests on 01 and 02, not on this section alone.",
+  "narrowing_check": {
+    "prior_qualification_surface_narrowed": false,
+    "prior_surface": "C3 six-file court at 55 tests, unchanged",
+    "broader_court_required": false,
+    "reason": "the commission states 55/55 twice is required 'if the exact court remains the governing qualified surface'. It does, so the same court was rerun in the new environment rather than replaced with a smaller or different one."
+  },
+  "failure_accounting_summary": {
+    "infrastructure_failures_encountered": 2,
+    "accounting": "see 05_FAILURE_RETRY_AND_SOURCE_ACCESS_ACCOUNTING.json; neither was a test failure and neither was retried silently"
+  }
+}

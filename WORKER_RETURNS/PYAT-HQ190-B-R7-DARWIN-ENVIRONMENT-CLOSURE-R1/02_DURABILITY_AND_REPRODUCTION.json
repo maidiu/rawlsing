@@ -1,0 +1,92 @@
+{
+  "schema": "PYAT_HQ190_B__02_DURABILITY_AND_REPRODUCTION@1.0.0",
+  "lane": "PYAT-HQ190-B-R7-DARWIN-ENVIRONMENT-CLOSURE-R1",
+  "r7_reproducibility_component": {
+    "defect": "C4C3's venv lived in a per-session temporary directory and its reproduce_command pinned only 13 packages, leaving the resolved narwhals unpinned",
+    "closed": true
+  },
+  "durable_environment": {
+    "path": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/qualification/r7-c4-source-free-venv",
+    "per_session_temporary": false,
+    "under_private_var_folders": false,
+    "under_var_folders": false,
+    "evidence": "path is under the LOCAL_COURTS qualification estate on the operating host; grep for /var/folders and /private/var/folders both return 0 matches",
+    "size_on_disk": "332M",
+    "created": "2026-10-03",
+    "invocation_from_unrelated_cwd_verified": true,
+    "committed_to_git": false,
+    "commit_note": "the commission forbids committing a venv and none was committed"
+  },
+  "why_this_is_not_per_session_temporary": "C4C3's venv was /var/folders/78/.../T/opencode/c4c3-env, which the OS may reap. This one is a named directory on the host's persistent volume with a stable absolute path.",
+  "complete_recipe": {
+    "interpreter_source": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none",
+    "interpreter_sha256": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+    "steps": [
+      "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/bin/python3.11",
+      "-m",
+      "venv",
+      "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/qualification/r7-c4-source-free-venv",
+      "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/qualification/r7-c4-source-free-venv/bin/python",
+      "-m",
+      "pip",
+      "install",
+      "Pygments==2.21.0",
+      "iniconfig==2.3.0",
+      "narwhals==2.26.0",
+      "numpy==2.4.6",
+      "packaging==26.3",
+      "pandas==2.3.3",
+      "pluggy==1.6.0",
+      "pyarrow==25.0.1",
+      "pyreadstat==1.3.6",
+      "pytest==9.1.1",
+      "python-dateutil==2.9.0.post0",
+      "pytz==2026.4",
+      "six==1.17.0",
+      "tzdata==2026.4",
+      "pip==22.3.1",
+      "setuptools==65.5.0"
+    ],
+    "package_count_pinned": 16,
+    "narwhals_pinned": "narwhals==2.26.0",
+    "resolved_inventory_count": 14,
+    "note": "pip and setuptools come from the venv itself and are pinned explicitly to keep the 13-package historical subset hash stable"
+  },
+  "historical_positive_control": {
+    "claim": "the accepted historical C3 environment seed must reproduce byte-for-byte",
+    "method": "take the 14-entry resolved freeze, remove the three C4 additions (pyreadstat, pyarrow, narwhals), add pip==22.3.1 and setuptools==65.5.0, sort, LF-terminate, SHA-256",
+    "recomputed": "9cde8e5ab9abba46a9e98826100ed084a0943a77fee7bc232a3c7643334da2eb",
+    "recorded_by_c4c3": "9cde8e5ab9abba46a9e98826100ed084a0943a77fee7bc232a3c7643334da2eb",
+    "match": true,
+    "significance": "a POSITIVE CONTROL, not a test-suite pass: the durable environment reproduces the accepted historical seed exactly, evidencing no drift on any of the 13 historical packages"
+  },
+  "caveats": [
+    {
+      "id": "D1",
+      "caveat": "The base interpreter is NOT version-controlled. It exists on this host only, now fully digest-identified. A different host cannot obtain it from Git.",
+      "severity": "material for portability"
+    },
+    {
+      "id": "D2",
+      "caveat": "A dangling symlink LOCAL_COURTS/tooling/python/cpython-3.11-macos-x86_64-none -> /Users/matthewsmith/LOCAL_COURTS/... was found broken. The live directory is cpython-3.11.3-macos-x86_64-none.",
+      "severity": "operational"
+    },
+    {
+      "id": "D3",
+      "caveat": "LOCAL_COURTS is untracked but NOT covered by any .gitignore rule in this repository. A future `git add -A` in the shared clone would attempt to commit a 332M venv.",
+      "severity": "material operational risk",
+      "mitigation": "HQ should add an ignore rule; this lane did not edit .gitignore because it is outside the declared write terrain"
+    },
+    {
+      "id": "D4",
+      "caveat": "Host disk reached 99% utilisation with ~6.3GiB free during this work, down from ~13GiB at start. Constrained disk previously caused a NoviyMac extraction to withhold payloads.",
+      "severity": "material operational risk for the later live run"
+    },
+    {
+      "id": "D5",
+      "caveat": "The recipe depends on package indexes still serving these exact versions. narwhals is now pinned, closing the specific unpinned-transitive gap, but index availability is not a local guarantee.",
+      "severity": "bounded"
+    }
+  ],
+  "durability_verdict": "Durably reusable on THIS host at the grain required for a governed live run. Not portable to another host without transferring the interpreter binary."
+}

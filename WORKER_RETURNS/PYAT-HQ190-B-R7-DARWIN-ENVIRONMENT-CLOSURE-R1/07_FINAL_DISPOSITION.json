@@ -1,0 +1,84 @@
+{
+  "schema": "PYAT_HQ190_B__07_FINAL_DISPOSITION@1.0.0",
+  "lane": "PYAT-HQ190-B-R7-DARWIN-ENVIRONMENT-CLOSURE-R1",
+  "role": "RABOCHII / LOCAL-MACHINE RUNTIME IMPLEMENTER — SPACE BUNNY",
+  "branch": "agent/rabochii-pyat-hq190-b-r7-darwin-environment-closure-r1",
+  "commissioned_startup_sha": "909c5175ec322c6e8d56093e62b0b14a030b6787",
+  "commission_implementation_base": "02309f4e708dd01cb0d64666acbe43d5c23b35e7",
+  "substantive_result_sha": "SUBSTANTIVE_RESULT_SHA_PLACEHOLDER",
+  "substantive_result_sha_note": "This field is bound by the follow-up commit that records the substantive result commit. It deliberately does NOT embed the enclosing branch-tip SHA; HQ resolves the authoritative tip with: git rev-parse origin/agent/rabochii-pyat-hq190-b-r7-darwin-environment-closure-r1",
+  "disposition": "R7_CLOSED__CANDIDATE_READY_FOR_INDEPENDENT_ACCEPTANCE",
+  "terminal": "HQ190_B_R7_DARWIN_ENVIRONMENT_RETURNED__HQ_REVIEW_REQUIRED",
+  "r7_components": {
+    "incomplete_runtime_fingerprinting": "CLOSED",
+    "weak_environment_reproducibility": "CLOSED"
+  },
+  "evidence_summary": {
+    "interpreter_sha256_full_64hex": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+    "recorded_prefix32_was_correct_not_wrong": true,
+    "compiled_extensions_with_full_64hex": 5,
+    "all_recorded_extension_prefixes_correct": true,
+    "durable_environment_non_temporary": true,
+    "resolved_package_count": 14,
+    "narwhals_pinned": "narwhals==2.26.0",
+    "historical_13_package_seed_reproduced_byte_for_byte": true,
+    "historical_seed_sha256": "9cde8e5ab9abba46a9e98826100ed084a0943a77fee7bc232a3c7643334da2eb",
+    "authoritative_c3_court_denominator_asserted_before_run": 55,
+    "authoritative_c3_court_result": "55 passed, twice, identical",
+    "rawlsing_next_tree_under_qualification": "b0c1ab472cde033e21f1c2f63fbcbea2f0cccef0",
+    "five_layer_closure_modules": 21,
+    "producer_inclusive_closure_modules": 23,
+    "closures_reproduce_c4c3": true,
+    "unexpected_dynamic_loader_subprocess_source_edges": 0,
+    "test_failures": 0,
+    "test_errors": 0,
+    "test_skips": 0,
+    "flaky_retry_until_green": false,
+    "infrastructure_failures_disclosed": 2,
+    "raw_source_access": 0,
+    "source_locators_discovered": 0,
+    "warrants_issued": 0,
+    "live_c4_executed": false,
+    "rawlsing_next_mutated": false,
+    "HQ_HANDOFF_edited": false,
+    "venv_committed": false,
+    "merged_to_control": false,
+    "self_adopted": false,
+    "limitations_recorded": 10
+  },
+  "material_findings_requiring_hq_action": [
+    {
+      "id": "F1",
+      "finding": "This branch's lineage does not contain the accepted C3 code the freeze pins.",
+      "detail": "rawlsing_next is 2a1ac8e2... at branch HEAD versus b0c1ab47... at the freeze and C4A. The freeze is not an ancestor; lineages diverge at merge-base 87029d349c8a7385cb673060a8e5decd4eb528ff. pre553_physical_decoder and pre553_r5_codec are the pre-C3 stale versions and all six authoritative court files are absent from this branch.",
+      "action_required": "HQ must decide which lineage is authoritative for the governed live run before any execution. If this branch's lineage is to win, the accepted C3 code must be re-integrated first."
+    },
+    {
+      "id": "F2",
+      "finding": "LOCAL_COURTS is untracked but not covered by any .gitignore rule.",
+      "detail": "A routine git add -A in the shared clone would attempt to commit the 332M qualification venv.",
+      "action_required": "HQ should add an ignore rule. Not done by this lane: outside declared write terrain."
+    },
+    {
+      "id": "F3",
+      "finding": "Host disk reached 99 percent utilisation with roughly 6.3GiB free.",
+      "detail": "Down from about 13GiB at the start of this work. Constrained disk previously forced payload withholding on a sibling estate.",
+      "action_required": "Free space and set a minimum-free-space precondition for the governed live runner."
+    },
+    {
+      "id": "F4",
+      "finding": "Dangling symlink in the interpreter toolchain directory.",
+      "detail": "cpython-3.11-macos-x86_64-none points at /Users/matthewsmith/LOCAL_COURTS/... which does not exist. The live interpreter is the cpython-3.11.3-macos-x86_64-none directory.",
+      "action_required": "Remove or repair. A recipe naming the short path fails."
+    }
+  ],
+  "not_claimed": [
+    "ADOPTION",
+    "REMOVAL_OF_THE_LIVE_EXECUTION_BLOCKER",
+    "LIVE_C4_EXECUTION",
+    "SOURCE_ACCESS_AUTHORIZATION",
+    "INTERPRETER_PORTABILITY_TO_OTHER_HOSTS"
+  ],
+  "independent_hostile_acceptance_required": true,
+  "hq_may_remove_live_execution_blocker_only_after": "independent hostile acceptance of this candidate"
+}
