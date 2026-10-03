@@ -778,6 +778,22 @@ Until those survive:
 
 `KERNEL = OPEN DISCOVERY`.
 
+### Candidate alpha/kernel-discrimination signature
+
+D007 preserves a testable hypothesis:
+
+`MODEL FIDELITY ↑`
+while
+`CLAIMED TOTALIZATION ↓`.
+
+Successful knowing may make the user:
+- more accurate about local/contextual Nadia;
+- more differentiated in what they expect;
+- more aware of uncertainty and unobserved excess;
+- less willing to collapse her into one essence/diagnosis/archetype.
+
+This is a research/evaluation hypothesis (SPD-0234), not a user-facing score or proof of moral improvement.
+
 ## 15. Agency without sovereignty and same-person social comparison
 
 ### Player position
