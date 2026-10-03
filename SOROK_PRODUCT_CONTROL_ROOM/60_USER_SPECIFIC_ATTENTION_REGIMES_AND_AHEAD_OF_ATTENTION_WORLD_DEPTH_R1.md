@@ -78,33 +78,47 @@ They are predictive observation parameters.
 
 Noticing an object and knowing what it is are different.
 
-Example layers:
+The narrator must not lexicalize directly from canonical object identity.
 
-1. `VISIBLE FORM`
-   - heavy blender on counter;
-2. `READABLE MARKING`
-   - VITAMIX visible on base;
-3. `OBJECT IDENTIFICATION`
-   - Vitamix 5200;
-4. `DOMAIN KNOWLEDGE`
-   - recognizes it as durable/high-end/prosumer equipment;
-5. `INTERPRETATION`
-   - infers something about Nadia.
+Example:
 
-Rawlsing should not leap from layer 1 to layer 4 merely because a hidden user model says the user likes cooking.
+Canonical truth:
+`VITAMIX 5200`.
 
-Where user expertise is established, recognition can lawfully be richer.
+Ordinary perception may warrant only:
+> a blender
 
-Where it is uncertain, narration can preserve recognizable evidence without solving it for them:
-> a heavy blender with VITAMIX printed on the base
+or:
+> a large, powerful-looking blender
 
-rather than:
-> an expensive high-end Vitamix 5200 that suggests serious cooking.
+if that characterization is grounded in visible form.
 
-Likewise:
-> three narrow knives on a magnetic strip, dark handles and Japanese markings
+Closer ATTEND may make lettering readable:
+> a blender with VITAMIX printed on the base.
 
-may preserve the chance for a knowledgeable user to identify them without pre-interpreting them.
+That still does not supply:
+- brand significance;
+- model number;
+- price/status;
+- domain interpretation.
+
+Only where the user's recognition repertoire is already warranted may narration lawfully say:
+> a Vitamix
+
+or, with sufficient evidence/expertise:
+> a Vitamix 5200.
+
+Preserve:
+
+`CANONICAL OBJECT IDENTITY != USER-FACING LABEL`.
+
+`TEXT EXISTS ON OBJECT != USER HAS READ TEXT`.
+
+`VISIBLE FORM != READABLE MARKING != OBJECT/BRAND/MODEL IDENTIFICATION != DOMAIN KNOWLEDGE != INTERPRETATION`.
+
+Description specificity is epistemically gated.
+
+See SPD-0166 / SPD-0246 / SPD-0248 / RISK-204 / artifact 87.
 
 ## 4. How the attention regime may be learned
 
