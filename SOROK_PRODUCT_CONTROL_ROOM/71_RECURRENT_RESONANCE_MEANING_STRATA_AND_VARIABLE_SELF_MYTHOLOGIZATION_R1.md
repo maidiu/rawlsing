@@ -2,6 +2,8 @@
 
 Status: `PROVISIONAL_ARCHITECTURE_DIRECTION__KERNEL_RELEVANT__MEANING_NOT_TRUTH_COLLAPSE`
 
+Currentness note (2026-10-03): the recurrence/meaning/self-interpretation phenomena in this artifact remain active Sorok requirements/hypotheses. Any section that treated the pre-programming personality-generator material as current V3 precedent is source-authority superseded by artifact 74. Do not infer a new meaning/self-myth owner from this artifact; apply artifact 76 / SPD-0232: derive or compose through project-current owners first, and add new durable state only after hostile underdetermination.
+
 Date: 2026-10-02
 
 ## 0. Problem
