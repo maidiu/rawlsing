@@ -1,3 +1,30 @@
+# HQ196 active frontier — R9 broker-selected wave — 2026-10-03
+
+HQ has adjudicated the HQ195 three-way R9 fork.
+
+- O1-C07 contract meaning is settled: pre-launch expected budgets/instrumentation/basis are distinct from runtime/return measured exact counts.
+- Literal path opens remain non-substitutable.
+- The HQ195 architecture-warrant candidate is **not adopted** because a sibling runtime-feasibility lane found a lower-cost existing pyreadstat file-like-object route that may let the application own the literal source-path open without rebuild or privilege.
+- That broker route is still a feasibility candidate pending hostile review, complete call-site coverage and full source-free equivalence.
+- New candidate implementation gap: frozen SRC02/SRC06/SRC14 require selected_reads=1/full_reads=0, while the exact freeze decoder has no usecols and its batch route is unselected. This is under independent review.
+- DQ-01: the warrant successor must restore per-source source_access_accounting with separate pre-launch budget/basis and runtime observed-count fields.
+
+Active SPARSE_REQUIRED lanes:
+- DeepSeek review: `agent/reviewer-pyat-hq196-r9-broker-selected-hostile-review-r1 @ 98899701e80e13e9f716416aaf6cd8d7a21753d9`
+- Space Bunny implementation on exact freeze lineage: `agent/rabochii-pyat-hq196-r9-broker-selected-implementation-freeze-r1 @ 55f75664949b4a92431b54351e7244ff1fa4a652`
+- Space Bunny warrant/accounting successor: `agent/rabochii-pyat-hq196-r9-warrant-accounting-successor-r1 @ 3e215413ead20bf62dd836f68eb22639ec873868`
+
+DO NOT LAUNCH:
+`agent/rabochii-pyat-hq196-r9-broker-selected-implementation-r1`
+This provisional branch was created from documentary control before HQ caught the cross-lineage implementation-base error; it is uncommissioned.
+
+R9 remains open. R7 remains closed. Host disk policy/capacity remains a separate live-run blocker. HQ182 C4 non-adoption hold remains pending Astra.
+
+See:
+`HQ_HANDOFF/checkpoints/20261003-PYAT-HQ196-R9-BROKER-SELECTED-WAVE-R1/`
+
+---
+
 # HQ195 active frontier — sparse-by-default R9 fork — 2026-10-03
 
 **Sparse checkout is now mandatory by default.** Local workers/reviewers share the canonical Git object store and materialize only their commissioned path manifest. Full-tree materialization requires an explicit `FULL_REQUIRED` behavioral justification.
