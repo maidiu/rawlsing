@@ -1,0 +1,202 @@
+{
+  "schema": "PYAT_HQ188_B_INPUT_AND_SUPERSESSION_MAP@1.0.0",
+  "lane": "PYAT-HQ188-B-C4-CURRENT-CONSOLIDATION-R1",
+  "role": "RABOCHII / documentary forensics - Space Bunny",
+  "repository": "maidiu/rawlsing",
+  "worker_branch": "agent/rabochii-pyat-hq188-b-c4-current-consolidation-r1",
+  "commissioned_startup_sha": "9001be646305036e493eea3dbce427f62f91c9ae",
+  "commission_base": "6820160533859cf8dd283d10c043947dfe1dd5d4",
+  "startup_protocol_compliance": {
+    "explicit_fetch_origin_run": true,
+    "blind_pull_used": false,
+    "remote_branch_resolved": "origin/agent/rabochii-pyat-hq188-b-c4-current-consolidation-r1",
+    "observed_remote_tip_at_fetch": "9001be646305036e493eea3dbce427f62f91c9ae",
+    "matches_commissioned_startup_sha": true,
+    "stopped_before_editing_on_mismatch": "NOT_REQUIRED_NO_MISMATCH_OBSERVED",
+    "isolated_worktree_created": true,
+    "worktree_path": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/hq188b",
+    "local_head_before_editing": "9001be646305036e493eea3dbce427f62f91c9ae",
+    "unrelated_uncommitted_changes_at_start": 0,
+    "commission_files_read_from_exact_tip": [
+      "WORKER_COMMISSIONS/PYAT-HQ188-B-C4-CURRENT-CONSOLIDATION-R1/00_COMMISSION.md",
+      "WORKER_COMMISSIONS/PYAT-HQ188-B-C4-CURRENT-CONSOLIDATION-R1/01_RETURN_PROTOCOL.md",
+      "WORKER_COMMISSIONS/PYAT-HQ188-B-C4-CURRENT-CONSOLIDATION-R1/02_STARTUP_GIT_PROTOCOL.md"
+    ],
+    "startup_terminal": "HQ188-B_GITHUB_STARTUP_VERIFIED"
+  },
+  "governing_inputs_read": [
+    {"role": "subject artifact - C4 executable freeze", "commit": "8ff40d37de69db2d8a6053a7c2242f481677f1a4", "resolved": true, "how": "by exact ref on this branch"},
+    {"role": "Lane A - Sol final reviewer", "commit": "fe6103cd50c634b92233f49815cc6d4abe49964d", "resolved": true, "how": "by exact ref"},
+    {"role": "ALT-B - Space Bunny reviewer", "commit": "3a5b2cbc7f1978384268376f3ee493c7c095780b", "resolved": true, "how": "by exact ref"},
+    {"role": "Sol shadow HQ", "commit": "d0fc810de3bee0e1ea68c82fa44c61c749372077", "resolved": true, "how": "by exact ref"},
+    {"role": "HQ182 checkpoint / HQD-2026-10-02-182", "commit": "fe1b2729b0f9f1ff18044c2f655b74784e001217", "resolved": true, "how": "checkpoint CURRENT.md on this branch"},
+    {"role": "HQ183 - C1 allegation plus C2-C5", "commit": "4c4da2fe8", "resolved": true, "how": "OPS-04 00 on this branch"},
+    {"role": "HQ186 - C1 withdrawal / HQD-2026-10-02-186", "commit": "3b9b14448", "resolved": true, "how": "OPS-04 01 and HQ186 checkpoint on this branch"},
+    {"role": "HQ187 - adjudication / HQD-2026-10-02-187", "commit": "06e907cb3", "resolved": true, "how": "HQ187 checkpoint CURRENT.md and CURRENT.json on this branch"},
+    {"role": "R2 disputed-claims re-check return", "commit": "afb1eb49bbd2ba49c1cb1c4f0501a35908d161d3", "resolved": true, "how": "by exact ref"},
+    {"role": "October 3 corrections and evidence publication", "commit": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/CORRECTIONS_AND_EVIDENCE_20261003.md", "resolved": true, "how": "on this branch"},
+    {"role": "October 3 publication and runtime audit", "commit": "f68903fdd7792cb4a43f7f31bd73e8ad3265e7f2", "resolved": true, "how": "REVIEWS/HQ181_187_AUDIT_20261003/** on this branch"},
+    {"role": "October 3 publication audit seal", "commit": "6820160533859cf8dd283d10c043947dfe1dd5d4", "resolved": true, "how": "on this branch"},
+    {"role": "live pointer - HQ_HANDOFF/LATEST.json", "commit": "on this branch", "resolved": true, "how": "read in full"},
+    {"role": "C4A combined court", "commit": "8f7efe690a161902e79358eb31650c238a4c0be8", "resolved": true, "how": "by exact ref"},
+    {"role": "C4B workload and oracle freeze", "commit": "c2af4f61d68e9803af83f8e26f633acfe31062fa", "resolved": true, "how": "by exact ref"},
+    {"role": "C4C3 Darwin anchor runtime qualification", "commit": "1df64cc596b5602c952518c87b1c71cc1fcfb35f", "resolved": true, "how": "by exact ref"},
+    {"role": "D2P portable import and independent review", "commit": "41bd7a7c056de9d45b905efc0f926b4ab6a097ad", "resolved": true, "how": "by exact ref"},
+    {"role": "Omega-1 production readiness", "commit": "01762d7379be4e423dad3e21bcdcee47c536902d", "resolved": true, "how": "by exact ref"},
+    {"role": "M01 qualified candidate", "commit": "46f3bec824c1c9da7037bacf94ec08923bc33506", "resolved": true, "how": "by exact ref"},
+    {"role": "M01 final court binding", "commit": "74a067742a370d4f6296c56140c28cc8acc53e63", "resolved": true, "how": "by exact ref"},
+    {"role": "accepted C3 integration", "commit": "30686b185d4ceb2c94f61815ef70d8c8e76255d6", "resolved": true, "how": "by exact ref"},
+    {"role": "M01 bounded court ledger", "commit": "at freeze 8ff40d37d", "path": "WORKER_RETURNS/PYAT-HQ117-M01-ROUTE-B-EXECUTION-COMPOSITOR-R2/04_OWNER_REGRESSION_LEDGER.tsv", "resolved": true}
+  ],
+  "produced_artifacts": [
+    {
+      "path": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-04/02_CURRENT_CONSOLIDATED_DECISION_CLAIMS.md",
+      "role": "single current consolidated C4 technical claims - supersedes OPS-04 00/01 as operational summary without modifying their bytes"
+    },
+    {
+      "path": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-04/03_CURRENT_CLAIM_EVIDENCE_MAP.json",
+      "role": "machine-readable claim/evidence map - 33 claims, each independently auditable"
+    },
+    {
+      "path": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-04/04_EXTERNAL_ASTRA_C4_DECISION_PACKET.md",
+      "role": "narrow external packet for the one reserved C4 decision"
+    },
+    {
+      "path": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-04/05_EXTERNAL_ASTRA_C4_DECISION_PACKET.json",
+      "role": "machine-readable form of the external packet"
+    }
+  ],
+  "supersession_map": {
+    "principle": "Supersession is as an OPERATIONAL SUMMARY only. Historical bytes are preserved unmodified. Nothing is deleted or rewritten in place.",
+    "rows": [
+      {
+        "superseded_artifact": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-04/00_C4_CONSOLIDATED_DECISION_CLAIMS.md",
+        "status": "PRESERVED_UNMODIFIED__HISTORICAL__SUPERSEDED_AS_OPERATIONAL_SUMMARY_BY_02",
+        "why_superseded": "Contains two positions later withdrawn or narrowed: counterexamples 0; R7 classified as fingerprint completeness only; R9 stated as 8-of-8 counters; a C4A combined-court substitute authority basis.",
+        "modified_by_this_lane": false
+      },
+      {
+        "superseded_artifact": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-04/01_CORRECTED_DECISION_CLAIMS.md",
+        "status": "PRESERVED_UNMODIFIED__HISTORICAL__SUPERSEDED_AS_OPERATIONAL_SUMMARY_BY_02",
+        "why_superseded": "Withdrew C1 correctly and upheld C2-C5, but stated 'No counterexample exists' and carried permanent wording implying the 61/61 binds the freeze's exact bytes. Both were corrected by HQ187.",
+        "modified_by_this_lane": false
+      },
+      {
+        "superseded_artifact": "HQ182 residual register - counterexamples 0",
+        "status": "SUPERSEDED_BY_HQ187__COUNTEREXAMPLES_NOW_1",
+        "why_superseded": "HQ187 upheld the R2 counterexample against the overbroad M01-closure justification.",
+        "modified_by_this_lane": false
+      },
+      {
+        "superseded_artifact": "HQ183 C1 - Sol shadow byte-identity is FALSE",
+        "status": "WITHDRAWN_IN_FULL_BY_HQ186",
+        "why_superseded": "HQ read the first M01 court binding instead of the final one. The four named files do match.",
+        "modified_by_this_lane": false
+      },
+      {
+        "superseded_artifact": "HQ182 R7 quotation - 'from the repository'",
+        "status": "QUOTATION_CORRECTED__THE_RECORD_SAYS_FROM_THIS_PATH_ALONE",
+        "why_superseded": "Verbatim field read of environment_location.durable_note.",
+        "modified_by_this_lane": false
+      },
+      {
+        "superseded_artifact": "HQ182 hash census - 40 truncated hex identity literals",
+        "status": "CORRECTED__38_PREFIXES_PLUS_2_COMPLETE_GIT_TREE_IDENTITIES",
+        "why_superseded": "The two 40-hex values are complete Git SHA-1 tree object IDs, verified against git rev-parse.",
+        "modified_by_this_lane": false
+      },
+      {
+        "superseded_artifact": "OPS-04 00/01 R7 residual class - fingerprint completeness only",
+        "status": "CORRECTED_BY_HQ187__CLASS_IS_BOTH",
+        "why_superseded": "narwhals is absent from the 13-package recipe and unpinned, so the resolved environment is not fully reconstructible.",
+        "modified_by_this_lane": false
+      },
+      {
+        "superseded_artifact": "OPS-04 00/01 R9 - artifact 07 retains 8 sources with read counters",
+        "status": "CORRECTED__COUNTERS_PRESENT_FOR_SIX_OF_EIGHT",
+        "why_superseded": "SRC27 and SRC35 carry neither expected_full_reads nor expected_selected_reads.",
+        "modified_by_this_lane": false
+      },
+      {
+        "superseded_artifact": "OPS-04 00 C4A combined court as primary authority basis",
+        "status": "WITHDRAWN_AS_REPLACEMENT_BASIS_BY_HQ187",
+        "why_superseded": "It does not bind the freeze's exact closure bytes either.",
+        "modified_by_this_lane": false
+      },
+      {
+        "superseded_artifact": "Lane A wording - producer-inclusive closure is AT LEAST 23 modules",
+        "status": "TIGHTENED_BY_HQ188_B__EXACTLY_23",
+        "why_superseded": "Three independent root-set closures at the freeze give union 23 with overlap 17.",
+        "modified_by_this_lane": false
+      },
+      {
+        "superseded_artifact": "HQ187 stated import edge - pre553_physical_decoder.py L21 imports pre553_r5_codec",
+        "status": "REFINED_BY_HQ188_B__EDGE_DESCRIBES_THE_FREEZE_NOT_THE_M01_TIME_CLOSURE",
+        "why_superseded": "The pre-C3 decoder contains zero r5_codec references. The codec entered the M01 closure via pre553_source_backed_c11_facade.py L38. Conclusion unchanged and strengthened.",
+        "modified_by_this_lane": false
+      },
+      {
+        "superseded_artifact": "HQ187 / R2 reviewer notation - M01 61/61 count UNVERIFIED",
+        "status": "RESOLVED_BY_HQ188_B__COUNT_RECONCILIATION_SOURCE_DERIVED__RUN_RESULT_CEILING_PRESERVED",
+        "why_superseded": "30 functions plus one three-way parametrized refusal-state test equals 32; 11+4+14+32 equals 61. The Actions log itself was still not retrieved.",
+        "modified_by_this_lane": false
+      }
+    ]
+  },
+  "write_terrain_compliance": {
+    "allowed_paths": [
+      "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-04/02_CURRENT_CONSOLIDATED_DECISION_CLAIMS.md",
+      "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-04/03_CURRENT_CLAIM_EVIDENCE_MAP.json",
+      "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-04/04_EXTERNAL_ASTRA_C4_DECISION_PACKET.md",
+      "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-04/05_EXTERNAL_ASTRA_C4_DECISION_PACKET.json",
+      "WORKER_RETURNS/PYAT-HQ188-B-C4-CURRENT-CONSOLIDATION-R1/"
+    ],
+    "paths_written": [
+      "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-04/02_CURRENT_CONSOLIDATED_DECISION_CLAIMS.md",
+      "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-04/03_CURRENT_CLAIM_EVIDENCE_MAP.json",
+      "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-04/04_EXTERNAL_ASTRA_C4_DECISION_PACKET.md",
+      "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-04/05_EXTERNAL_ASTRA_C4_DECISION_PACKET.json",
+      "WORKER_RETURNS/PYAT-HQ188-B-C4-CURRENT-CONSOLIDATION-R1/00_RETURN.md",
+      "WORKER_RETURNS/PYAT-HQ188-B-C4-CURRENT-CONSOLIDATION-R1/01_INPUT_AND_SUPERSESSION_MAP.json",
+      "WORKER_RETURNS/PYAT-HQ188-B-C4-CURRENT-CONSOLIDATION-R1/02_CLAIM_CROSSCHECK.json",
+      "WORKER_RETURNS/PYAT-HQ188-B-C4-CURRENT-CONSOLIDATION-R1/03_STAGE_REGISTER.json",
+      "WORKER_RETURNS/PYAT-HQ188-B-C4-CURRENT-CONSOLIDATION-R1/04_EXTERNAL_PACKET_SELF_AUDIT.json",
+      "WORKER_RETURNS/PYAT-HQ188-B-C4-CURRENT-CONSOLIDATION-R1/05_FINAL_DISPOSITION.json"
+    ],
+    "out_of_terrain_writes": 0,
+    "ops04_00_modified": false,
+    "ops04_01_modified": false,
+    "hq_handoff_modified": false,
+    "production_modified": false,
+    "historical_worker_returns_modified": 0,
+    "decision_ledger_modified": false,
+    "checkpoint_created_or_mutated": false
+  },
+  "hard_hold_compliance": {
+    "raw_source_access": 0,
+    "locators_discovered": 0,
+    "locators_filled": 0,
+    "warrant_issued_or_altered": false,
+    "live_c4_executed": false,
+    "production_mutated": false,
+    "c7_implemented": false,
+    "actor_person_work_implemented": false,
+    "c4_adopted": false,
+    "hq182_hold_lifted": false,
+    "astra_contacted_or_invoked": false,
+    "self_adopted": false,
+    "merged_into_control": false,
+    "test_suite_executed": false,
+    "dispatcher_invoked": false
+  },
+  "lineage_preservation": {
+    "control_branch_merged_into_worker": false,
+    "worker_rebased": false,
+    "worker_force_pushed": false,
+    "non_ancestor_evidence_fetched_by_exact_ref_only": true,
+    "commission_ancestry_preserved": true,
+    "note": "HQ188-B did not merge integration/pre-main-reconciliation-r1 into the worker branch. Evidence outside the worker ancestry was read by exact ref only, as permitted by 02_STARTUP_GIT_PROTOCOL.md line 30."
+  },
+  "final_remote_sha": "RECORDED_IN_SEAL_COMMIT",
+  "final_disposition": "PENDING_SEAL"
+}

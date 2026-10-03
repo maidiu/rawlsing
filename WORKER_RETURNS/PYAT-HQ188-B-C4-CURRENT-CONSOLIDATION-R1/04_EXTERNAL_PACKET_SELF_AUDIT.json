@@ -1,0 +1,185 @@
+{
+  "schema": "PYAT_HQ188_B_EXTERNAL_PACKET_SELF_AUDIT@1.0.0",
+  "lane": "PYAT-HQ188-B-C4-CURRENT-CONSOLIDATION-R1",
+  "audited_artifacts": [
+    "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-04/04_EXTERNAL_ASTRA_C4_DECISION_PACKET.md",
+    "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-04/05_EXTERNAL_ASTRA_C4_DECISION_PACKET.json"
+  ],
+  "purpose": "Verify the external packet is narrow, is for the one reserved C4 decision, states unmistakably what lifting the hold would not do, covers every possible disposition, and contains no benchmark or model-preference material in the technical proof.",
+  "self_audit": [
+    {
+      "check": "Packet is scoped to the ONE reserved C4 decision, not a general audit",
+      "result": "PASS",
+      "evidence": "04 section 0 states the packet is for one reserved C4 decision only and is not a general audit, not routine HQ status, and not a review of any other Pyat decision. 05 carries packet_scope.is_not listing those exclusions explicitly."
+    },
+    {
+      "check": "Packet explicitly forbids reading this as a general external-review precedent",
+      "result": "PASS",
+      "evidence": "04 section 0: 'Nothing in it should be read as a precedent that routine adoptions route externally.' Grounded in the October 3 audit's P2 finding that the temporary hold must not become a universal Astra gate."
+    },
+    {
+      "check": "Decision question is equivalent to the commissioned wording",
+      "result": "PASS",
+      "evidence": "04 section 1 and 05.decision_question both read: 'Given the corrected source-free evidence and authority basis, should the temporary HQ182 non-adoption hold on the exact C4 executable freeze be lifted at the source-free freeze grain only?' Both then isolate the three load-bearing terms - temporary, source-free-freeze-grain-only, the-exact-freeze."
+    },
+    {
+      "check": "Packet makes unmistakably clear that lifting the hold would NOT issue a warrant",
+      "result": "PASS",
+      "evidence": "04 section 2 row 1 and 05.lifting_the_hold_would_NOT entry NH-1, each giving current state (unissued, unsigned, authorizes_access false, 5 blockers) and what would actually be required instead."
+    },
+    {
+      "check": "Packet makes unmistakably clear that lifting the hold would NOT cure R9",
+      "result": "PASS",
+      "evidence": "04 section 2 row 2 and 05 entry NH-2: R9 is the sole warrant-issuance blocker and is untouched by the hold decision; the repair is independent documentary work."
+    },
+    {
+      "check": "Packet makes unmistakably clear that lifting the hold would NOT cure R7",
+      "result": "PASS",
+      "evidence": "04 section 2 row 3 and 05 entry NH-3: R7 is the sole live-execution blocker and is untouched; remediation is durable preservation with a complete interpreter digest, or competent requalification."
+    },
+    {
+      "check": "Packet makes unmistakably clear that lifting the hold would NOT authorize locator discovery",
+      "result": "PASS",
+      "evidence": "04 section 2 row 4 and 05 entry NH-4: 0 locators discovered, 7 slots deliberately left as placeholders; locators must be supplied by HQ or the accountable resource owner at issuance."
+    },
+    {
+      "check": "Packet makes unmistakably clear that lifting the hold would NOT authorize raw-source access",
+      "result": "PASS",
+      "evidence": "04 section 2 row 5 and 05 entry NH-5: 0 raw files opened, stat-ed, hashed, decoded or materialised; requires the issued warrant, which does not exist."
+    },
+    {
+      "check": "Packet makes unmistakably clear that lifting the hold would NOT authorize live C4",
+      "result": "PASS",
+      "evidence": "04 section 2 row 6 and 05 entry NH-6: C4 never executed; requires R7 cured AND the warrant issued, both prerequisites rather than consequences."
+    },
+    {
+      "check": "Packet makes unmistakably clear that lifting the hold would NOT authorize C7",
+      "result": "PASS",
+      "evidence": "04 section 2 row 7 and 05 entry NH-7: C7 held; requires a separate C7 commission; cites the recorded C7 blocker and D2P's separate non-authorization."
+    },
+    {
+      "check": "Packet makes unmistakably clear that lifting the hold would NOT authorize PRE-V3 to V3 actor/person work",
+      "result": "PASS",
+      "evidence": "04 section 2 row 8 and 05 entry NH-8: held; requires a separate decision; cites the deliberately-deferred seam status."
+    },
+    {
+      "check": "Packet states the NET effect of lifting unambiguously",
+      "result": "PASS",
+      "evidence": "04 section 2 closing statement and 05.net_effect_of_lifting: lifting the hold changes exactly ONE thing - the freeze is no longer withheld from the build; everything downstream remains exactly as held."
+    },
+    {
+      "check": "Packet states what is ACTUALLY held, so the question is not misread as 'is the freeze sound'",
+      "result": "PASS",
+      "evidence": "04 section 1 closing subsection and 05.what_is_actually_held: HQ182 already accepted the freeze at the source-free grain; what is withheld is build adoption. The question is whether the corrected evidence supports advancing the build."
+    },
+    {
+      "check": "Every possible external disposition states exactly what downstream work would and would not become available",
+      "result": "PASS",
+      "evidence": "Six options A through F. Each has an explicit becomes_available list and a remains_held list. A = lift; B = maintain; C = lift conditional on the two documentary repairs; D = lift conditional on a producer/carrier Darwin rerun; E = decline pending the cross-lane T3 attribution; F = split. Option E is recorded with an explicit non-recommendation so no option is presented as silently preferred."
+    },
+    {
+      "check": "Model benchmark timing and preferences are kept OUT of the technical proof",
+      "result": "PASS",
+      "evidence": "04 section 0 states the packet contains no model identity, benchmark timing, throughput, cost, latency or model-preference rationale, and that where two reviewers agreed the agreement carried no weight. 05.packet_scope.excluded_from_technical_proof enumerates all eight excluded categories including lane majority agreement and recency of prose. No model name appears anywhere in the technical body of either artifact."
+    },
+    {
+      "check": "Packet does NOT ask Astra to adopt, to lift the hold on HQ's behalf, or to extend the hold into a general rule",
+      "result": "PASS",
+      "evidence": "05.routing: 'This packet is prepared FOR an external decision. Routing it is HQ's act, not HQ188-B's.' The packet presents options without selecting one, and section 7 enumerates what HQ188-B has not done including contacting or invoking Astra."
+    },
+    {
+      "check": "Packet preserves the R2 counterexample honestly rather than presenting a clean bill of health",
+      "result": "PASS",
+      "evidence": "04 section 3.2 states centrally that the M01 61/61 does not qualify the freeze's exact 23-module closure, quantifies it as 21 of 23 byte-identical with 2 differing, and section 3.4 lists the two claims that must not be made. The corrected authority basis is presented as a different and correctly scoped authority, not as a repair that restores the original claim."
+    },
+    {
+      "check": "Packet preserves the named-file versus transitive-closure distinction explicitly",
+      "result": "PASS",
+      "evidence": "04 section 3.2 is built as two labelled halves - named_file_identity_REAL and transitive_closure_identity_NOT_established - and 05 mirrors them as named_file_identity_REAL and transitive_closure_identity_NOT_established under corrected_evidence_summary.the_deciding_distinction."
+    },
+    {
+      "check": "Packet carries the accepted C3 authority basis for the later decoder/codec bytes",
+      "result": "PASS",
+      "evidence": "04 section 3.3 and 05.corrected_authority_basis with four legs: the C3 six-file 55-test court; C4C3 55/55 twice on the freeze/combined-tree bytes; both modules two of the six pinned accepted C3 blobs with all eleven verified EXACT at the freeze; and the supporting b0c1ab47 tree-identity fact."
+    },
+    {
+      "check": "Packet carries the 21 to 23 correction without falsely claiming all 23 were freshly rerun on Darwin",
+      "result": "PASS",
+      "evidence": "04 section 3.4 and 05.closure_21_to_23 carry three root-set counts, the union arithmetic, the note that the two 23-sets differ, the tightening to exactly 23, an explicit claims_that_must_NOT_be_made list of two, and three_distinct_qualification_events with an explicit fresh_on_Darwin_anchor flag per event - false for M01's CI court, true for the C3/C4C3 events."
+    },
+    {
+      "check": "Packet carries the M01 pytest parameterization explanation with its evidence ceiling",
+      "result": "PASS",
+      "evidence": "04 section 3.5 and 05.m01_count_reconciled give the arithmetic 11+4+14+32=61, the mechanism of exactly one @pytest.mark.parametrize at line 1388 over three refusal states, and an explicit ceiling stating the count is source-derived while the run result is inherited and the Actions execution log was NOT independently retrieved."
+    },
+    {
+      "check": "Packet carries R7 as BOTH classes and states the exact role of unpinned narwhals",
+      "result": "PASS",
+      "evidence": "04 section 3.6 and 05.r7_both_not_one give the verbatim record wording, the HQ182 quotation error, the fingerprint incompleteness detail, the 13-versus-14 package arithmetic, narwhals at 2.26.0 absent and unpinned from the recipe, the record's own caveat, and two explicit negatives - the environment is not exactly reconstructible, and R7 is not fingerprint-only."
+    },
+    {
+      "check": "Packet carries R9's six explicit read-counter sources and does not say SRC27/SRC35 have no constraints",
+      "result": "PASS",
+      "evidence": "04 section 3.7 and 05.r9_accounting_surface_corrected list the six sources by name, mark eight_of_eight_claim as WRONG and not to be restored, give SRC27's four-separate-accounts obligation with the Omega-1 prohibition, give SRC35's zero-fresh-read law, report the candidate carrying zero of seven, and close with explicitly_not: SRC27 and SRC35 are heavily constrained, not unconstrained."
+    },
+    {
+      "check": "Packet carries the corrected hash census and does not call the 40-hex Git identities truncated SHA-256",
+      "result": "PASS",
+      "evidence": "04 section 3.8 and 05.corrected_hash_census give 32/29, 6, 2, 3 with the 40-hex pair classified as COMPLETE GIT SHA-1 TREE IDENTITIES, NOT truncated SHA-256, and record that HQ182's figure was wrong in kind. The 9 raw-text occurrences with 3 prose restatements and the three enumerated collisions are both carried."
+    },
+    {
+      "check": "Packet carries the complete R10/T3 digest and the cross-lane attribution at its actual severity",
+      "result": "PASS",
+      "evidence": "04 section 3.9 and 05.r10_and_open_cross_lane_question give the full 64-hex digest, the recovery method as an exact field read with no pattern completion, the 12-file sweep finding exactly one truncated identity value, and the cross-lane attribution with severity record-level, is_freeze_evidence_defect false, is_blocker false, affects_R10_recovery false, and resolved_by_hq188_b false with an explicit note that it is not resolved by preferring newer prose."
+    },
+    {
+      "check": "Packet carries the current stage-separated register",
+      "result": "PASS",
+      "evidence": "04 section 3.10 and 05.current_stage_register give 0 / 1 / 1 / 9 / 1 with two_sealed_pointers_agree true and the counterexample characterised as against the overbroad M01-closure justification and not against the existence of the freeze evidence base."
+    },
+    {
+      "check": "Packet carries a not-established section so the decision is not taken on an inflated record",
+      "result": "PASS",
+      "evidence": "04 section 4 and 05.not_established_and_not_asserted both enumerate eight items, including the inherited M01 run result, the absent producer/carrier Darwin rerun, the non-reconstructible environment, D2P's two unverified identities, the absent complete interpreter identity, the unadjudicated Lane A return, and the open question of whether warrant issuance blocker 5 is discharged."
+    },
+    {
+      "check": "Packet is retrievable by an external machine with ordinary Git",
+      "result": "PASS",
+      "evidence": "04 section 0 states one ordinary clone with no special refs. 04 section 6.3 and 05.evidence_index.retrieval_note record the verified fact that the freeze is NOT an ancestor of the R2 review branch, with merge-base 87029d349c8a7385cb673060a8e5decd4eb528ff, and instruct the reader to cite the freeze SHA explicitly."
+    },
+    {
+      "check": "Packet's verification law forbids null==null and absent-field equality",
+      "result": "PASS",
+      "evidence": "04 section 6.5 and 05.verification_law state the rule, how it is enforced, and preserve the two known vacuous-pass disclosures in evidence: the R2 reviewer's self-caught None == None manifest comparison and the audit's reproduced vacuous OPS-03 Q08 acceptance."
+    },
+    {
+      "check": "Packet does not claim HQ188-B lifted the hold, adopted C4, or contacted Astra",
+      "result": "PASS",
+      "evidence": "Status line of 04 and status field of 05 both read PREPARED_FOR_EXTERNAL_ADJUDICATION__NOT_AN_ADOPTION_DECISION__HQ188_B_HAS_NOT_LIFTED_THE_HOLD__HQ188_B_IS_NOT_ASTRA. Section 7 of 04 and what_hq188_b_has_NOT_done in 05 enumerate all fifteen prohibited acts as not done."
+    },
+    {
+      "check": "Packet stays narrow - it does not import unrelated audit findings as if they were C4 blockers",
+      "result": "PASS",
+      "evidence": "The dispatcher findings from the October 3 audit appear only as one of the nine advisory classes and are explicitly marked a separate bounded workstream. 04 section 13-equivalent content in 02 records that final technical C4 adoption 'remains a distinct bounded decision, not a consequence of dispatcher repair.' No dispatcher defect is presented as a C4 blocker."
+    }
+  ],
+  "self_audit_result": {
+    "checks_run": 29,
+    "passed": 29,
+    "failed": 0,
+    "packet_is_narrow": true,
+    "packet_is_single_decision": true,
+    "all_prohibited_effects_stated_unmistakably": true,
+    "all_possible_dispositions_covered_with_downstream_consequences": true,
+    "benchmark_or_model_preference_material_in_technical_proof": false,
+    "packet_selected_an_option_on_astras_behalf": false,
+    "packet_contacted_astra": false
+  },
+  "residual_self_audit_observations": [
+    "The packet presents six options without ranking them. That is intentional: selecting an option is HQ's act as the caller, and recommending one would blur the narrow scope. Option E carries an explicit non-recommendation only because declining over an upstream bookkeeping ambiguity would misweight it; the other five are left unranked.",
+    "The packet's authority section presents the corrected basis as differently scoped rather than as stronger than M01's. Presenting it as a repair that restores the original claim would misrepresent the record.",
+    "Two open items are surfaced to the external reader rather than resolved: the cross-lane T3 attribution and whether warrant issuance blocker 5 is discharged. Both are recorded as HQ calls."
+  ],
+  "final_remote_sha": "RECORDED_IN_SEAL_COMMIT",
+  "final_disposition": "PENDING_SEAL"
+}

@@ -1,0 +1,176 @@
+{
+  "schema": "PYAT_HQ188_B_STAGE_REGISTER@1.0.0",
+  "lane": "PYAT-HQ188-B-C4-CURRENT-CONSOLIDATION-R1",
+  "purpose": "Current stage-separated register of C4 blockers and advisories, carried from HQ187 and independently cross-checked. Exact evidence required no correction to the counts.",
+  "governing_decision": "HQD-2026-10-02-187",
+  "carried_from": [
+    {
+      "source": "HQ_HANDOFF/checkpoints/20261002-PYAT-HQ187-R2-COUNTEREXAMPLE-ADJUDICATED-R1/CURRENT.json",
+      "field": "residual_register_stage_separated"
+    },
+    {
+      "source": "HQ_HANDOFF/LATEST.json",
+      "fields": [
+        "c4_residual_blocking_freeze_acceptance",
+        "c4_residual_blocking_warrant_issuance",
+        "c4_residual_blocking_live_execution",
+        "c4_residual_advisory",
+        "c4_residual_counterexamples",
+        "c4_reconciliation_blocking_freeze",
+        "c4_reconciliation_blocking_issuance",
+        "c4_reconciliation_blocking_live_execution",
+        "c4_reconciliation_counterexamples"
+      ]
+    }
+  ],
+  "two_sealed_pointers_agree": true,
+  "correction_required_by_this_lane": false,
+  "register": {
+    "blocking_freeze_acceptance": {
+      "count": 0,
+      "items": [],
+      "basis": "No finding invalidates any O1-C01..C1-C05 closure. Both independent reviews returned APPROVE_AT_DECLARED_GRAIN. The 21-to-23 correction changed wording, not validity. The single counterexample targets an overbroad justification, not the freeze evidence base."
+    },
+    "blocking_warrant_issuance": {
+      "count": 1,
+      "items": [
+        {
+          "id": "R9",
+          "title": "explicit per-access-layer measurement and limits are not bound into the issued warrant",
+          "corrected_accounting_surface": "artifact 07 binds explicit expected_full_reads and expected_selected_reads for SIX of eight sources (SRC02, SRC06, SRC08, SRC12, SRC14, SRC26); the earlier eight-of-eight figure must not be restored",
+          "SRC27_governing_law": "exactly one governed fresh full Route-B pass, maximum one, zero retries, carrying NO expected read counters; with an express obligation to count existence/access check, full hash pass, metadata read and full compatibility read as FOUR separate accounts, and an express Omega-1 prohibition on reading one pass as one open",
+          "SRC35_governing_law": "fresh_reads 0; no fresh access at all; retained-material-only replay; excluded from the warrant as NOT_REQUIRED__RETAINED_COMPARATOR__NO_FRESH_ACCESS",
+          "precise_gap": "the warrant candidate carries ZERO of its seven authorized sources with expected_full_reads or expected_selected_reads; all seven retain max_retry_budget 0, expected_operation_class, reader_lane and detailed allowed_operations, plus a global 10-account taxonomy and a four-field basis requirement",
+          "repair": "bind explicit per-access-layer measurement bases and limits into the ISSUED warrant for all seven authorized sources, using artifact 07's frozen expectations, the candidate's 10-account taxonomy and its four-field basis requirement; carry SRC27's four access layers separately",
+          "repair_kind": "documentary completion of the instrument - NOT a re-derivation of the workload, and NOT a loss of per-source constraints",
+          "explicitly_not": "SRC27 and SRC35 are heavily constrained, not unconstrained"
+        }
+      ]
+    },
+    "blocking_live_execution": {
+      "count": 1,
+      "items": [
+        {
+          "id": "R7",
+          "title": "qualified environment is non-durable at its path and the recipe does not pin the resolved environment",
+          "corrected_residual_class": "BOTH fingerprint incompleteness AND weak environment reproducibility",
+          "verbatim_record_wording": "The venv lives in a per-session temporary directory. It is NOT durable and NOT reproducible from this path alone. It is recorded so HQ can see exactly what executed. The reproducible content is the freeze below, not the path.",
+          "hq182_quotation_error": "HQ182 asserted 'from the repository'; the record says 'from this path alone'",
+          "fingerprint_incompleteness": "base interpreter recorded only as prefix32 (11d6f541a870a141249ce98d45834a67); five compiled_extensions digests carry no prefix marker; the interpreter resolves under untracked LOCAL_COURTS/ and is genuinely uncommitted",
+          "weak_environment_reproducibility": "reproduce_command pins 13 packages; the resolved environment has 14 entries; narwhals is present at 2.26.0 in the freeze and absent and unpinned from the recipe",
+          "narwhals_boundedness": "off the C4 path and absent from the authoritative court, so it would not change the 55/55; but the record's own caveat concedes it WOULD change the freeze hash. Bounded and off-path, not absent.",
+          "remediation_options": [
+            "durable exact environment preservation with a complete 64-hex interpreter digest and recorded provenance for the untracked interpreter",
+            "competent requalification - re-create from the pinned 13-package recipe, additionally pin narwhals, and record complete digests for the interpreter and the five compiled extensions"
+          ],
+          "remediation_kind": "bounded documentary acts; neither re-derives the workload",
+          "explicitly_not": "the environment is NOT exactly reconstructible from the 13-package recipe, and R7 is NOT fingerprint-only"
+        }
+      ]
+    },
+    "advisory": {
+      "count": 9,
+      "identified_classes": [
+        {
+          "n": 1,
+          "class": "D2P two recorded-but-unverified identities",
+          "detail": "checkpoint_identity 3fab15f3... and canonical_closure_identity f264dd8f... carried forward exactly as NoviyMac disclosed them; D2P expressly declined to convert them into passes"
+        },
+        {
+          "n": 2,
+          "class": "D2P authority disclosure",
+          "detail": "24 AuthoritySnapshots materialise 18 distinct authority documents; read 24 as 24 snapshot objects over 18 authorities, not 24 distinct authority documents"
+        },
+        {
+          "n": 3,
+          "class": "cross-lane T3 attribution inconsistency",
+          "detail": "the identical digest 7dfb6236...36908 is attributed to LiTS_I by Omega-1 and to WVS later-standardization by C4B; record-level, zero effect on freeze evidence or on R10 recovery; open HQ reconciliation question, deliberately NOT escalated"
+        },
+        {
+          "n": 4,
+          "class": "cross-lineage reachability",
+          "detail": "freeze and C4A are not ancestors of the R2 review branch; merge-base 87029d34; any re-check must cite the freeze SHA explicitly; no effect on findings because comparison was by exact blob SHA"
+        },
+        {
+          "n": 5,
+          "class": "bookkeeping-denominator normalisation",
+          "detail": "carried forward from the OPS-04 00 reconciliation; conservative-direction"
+        },
+        {
+          "n": 6,
+          "class": "the entry-point record",
+          "detail": "carried forward from the OPS-04 00 reconciliation; conservative-direction"
+        },
+        {
+          "n": 7,
+          "class": "dispatcher capability ceiling",
+          "detail": "October 3 audit disposition REPAIRS_REQUIRED_FOR_AUTONOMOUS_DISPATCH; 23 helper-test passes are not an end-to-end qualification; separate bounded workstream from C4 adoption"
+        },
+        {
+          "n": 8,
+          "class": "C4C3 recorded residuals",
+          "detail": "RES-1 pyreadstat 1.3.6 DTA writer does not round-trip missing_user_values, independently corroborated by the repository's own skip; RES-2 pandas.Timestamp is a datetime subclass and is missed by the D02 exact-type carrier; RES-3 numpy datetime64 unit changes D02 arrival typing, bounded by the numpy pin. Recorded, not claimed as passes."
+        },
+        {
+          "n": 9,
+          "class": "hash fingerprint incompleteness",
+          "detail": "base interpreter at 32 hex and five compiled-extension digests without prefix markers; untracked interpreter provenance; supports the fingerprint half of R7 without being a separate blocker"
+        }
+      ],
+      "all_conservative_direction": true,
+      "blocks_any_stage": false
+    },
+    "counterexamples": {
+      "count": 1,
+      "items": [
+        {
+          "id": "M01_COURT_BINDS_PRE_C3_DECODER_AND_CODEC",
+          "upheld_by": "HQ187 (HQD-2026-10-02-187)",
+          "independently_reconfirmed_by_this_lane": true,
+          "quantified_by_this_lane": "M01 court closure is 23 modules at both 46f3bec82 and the freeze with identical membership; 21 of 23 byte-identical; 2 differ - pre553_physical_decoder.py d2a074a41fb5 -> d3d828c171ea and pre553_r5_codec.py 72f8f3c03ed0 -> 6000a170; the pre-C3 pair is present at 903c262e4, a1545aee, 46f3bec82 and the final rebind 74a06774; the C3 pair arrives with 30686b185",
+          "targets": "the overbroad M01-closure justification - the step from 'the four named files match' to 'the 61/61 qualifies the freeze's exact bytes' - and HQ183's C4A combined-court substitute offered in its place",
+          "does_not_target": "the existence or integrity of the freeze evidence base; it invalidates no O1-C01..C1-C05 closure",
+          "defect_location": "RECORD_NOT_EVIDENCE",
+          "corrected_authority_basis": "accepted C3 six-file 55-test court plus C4C3 55/55 twice, on a rawlsing_next tree byte-identical to the freeze's, with both modules two of the six pinned accepted C3 blobs and all eleven pinned blobs EXACT at the freeze"
+        }
+      ]
+    }
+  },
+  "stage_effect_summary": {
+    "freeze_acceptance": "0 blockers - unchanged from HQ182 and HQ187",
+    "warrant_issuance": "1 blocker (R9) - unchanged in count, strengthened in substance by the six-of-eight correction and the zero-of-seven candidate finding",
+    "live_execution": "1 blocker (R7) - unchanged in count, class corrected from fingerprint-only to both",
+    "change_from_HQ183": "COUNTEREXAMPLES_0_TO_1__BLOCKERS_UNCHANGED",
+    "change_made_by_this_lane": "NONE - no stage count altered; two refinements recorded (import-edge precision, and 23 tightened from at-least-23) neither of which is a blocker"
+  },
+  "holds": {
+    "c4_freeze_adoption_into_build": "NOT_ADOPTED_INTO_BUILD",
+    "hq182_temporary_non_adoption_hold": "UNLIFTED",
+    "source_locator_discovery_and_fill": "HELD__0 discovered__7 slots unfilled by design",
+    "warrant_issuance": "HELD__not issued__unsigned__5 blockers open",
+    "raw_source_access": "HELD__0",
+    "live_c4_execution": "HELD__not executed",
+    "production_mutation": "HELD__0",
+    "c7_implementation": "HELD",
+    "prev3_to_v3_actor_person_implementation": "HELD",
+    "hold_character": "HQ182's hold is expressly TEMPORARY and narrow - it withholds build adoption pending external cross-model adjudication on the reserved C4 decision. Per the October 3 audit it must NOT be expanded into a standing requirement that all HQ decisions route to Astra."
+  },
+  "external_decision_reserved": {
+    "question": "Given the corrected source-free evidence and authority basis, should the temporary HQ182 non-adoption hold on the exact C4 executable freeze be lifted at the source-free freeze grain only?",
+    "effect_if_lifted": "adoption into the build at the declared source-free grain, and the build may advance to the next gate",
+    "effect_if_lifted_does_NOT_include": [
+      "warrant issuance",
+      "curing R9",
+      "curing R7",
+      "locator discovery",
+      "raw-source access",
+      "live C4",
+      "C7",
+      "PRE-V3 to V3 actor/person work"
+    ],
+    "not_requesting": "conversion of a source-free acceptance into a source-backed one; acceptance of any physical or empirical claim; acceptance of D2P's two unverified identities",
+    "routing": "HQ's act, not HQ188-B's. HQ188-B has not contacted or invoked Astra."
+  },
+  "final_remote_sha": "RECORDED_IN_SEAL_COMMIT",
+  "final_disposition": "PENDING_SEAL"
+}

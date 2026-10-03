@@ -1,0 +1,222 @@
+{
+  "schema": "PYAT_HQ188_B_CLAIM_CROSSCHECK@1.0.0",
+  "lane": "PYAT-HQ188-B-C4-CURRENT-CONSOLIDATION-R1",
+  "purpose": "Independent cross-check of every consequential inherited C4 claim. Records the tension, the evidence actually inspected, the verdict, and the proof ceiling. No verdict rests on lane agreement, model reputation, benchmark timing, or recency of prose.",
+  "method_discipline": {
+    "identity_resolution": "git rev-parse <full-40-hex-sha>:<path> on both sides of every comparison; only nonempty exact 40-hex blob IDs and complete 64-hex digests accepted",
+    "non_equality_law": "null == null, absent-field equality, and comparing two missing values are NOT verification and were never used",
+    "tooling": ["git plumbing", "node v18.14.2"],
+    "python3": "3.11.3 present and functional on this host; not relied upon for any verification result",
+    "closure_method": "own AST-style traversal of every import and from-import statement over committed trees, resolving rawlsing_next.* module names to committed paths via git ls-tree -r",
+    "conflict_resolution_rule": "where a conclusion depended on it, the actual artifact was inspected; contradiction was NOT resolved by choosing the newest prose"
+  },
+  "crosschecks": [
+    {
+      "id": "X-01",
+      "topic": "M01 named-file identity",
+      "tension": "OPS-04 00 asserted Sol shadow's byte-identity ground was FALSE (producer 2385cd32 at freeze vs 6560d7a9 at M01 court time). HQ186 withdrew that in full, citing a final court binding at 74a06774 that names candidate 46f3bec82.",
+      "evidence_inspected": "git rev-parse on four paths at 46f3bec824c1c9da7037bacf94ec08923bc33506 and at 8ff40d37de69db2d8a6053a7c2242f481677f1a4; plus .rabochii/court_spec.json at 74a067742a370d4f6296c56140c28cc8acc53e63",
+      "observed": "producer 2385cd327dce MATCH; carrier e7cda773e6a2 MATCH; producer test d244eaaa48f8 MATCH; carrier test bc0db646a803 MATCH. court_spec.json semantic_candidate_sha = 46f3bec824c1c9da7037bacf94ec08923bc33506 with exactly the four suites in its tests array.",
+      "verdict": "HQ186 WITHDRAWAL UPHELD__NAMED_FILE_IDENTITY_IS_REAL",
+      "proof_ceiling": "EXACT_BLOB_IDENTITY_BOTH_SIDES_PLUS_COURT_SPEC_READ",
+      "consequence": "C1 stays withdrawn. But named-file identity is not closure identity - see X-02."
+    },
+    {
+      "id": "X-02",
+      "topic": "M01 transitive closure identity - the deciding distinction",
+      "tension": "Sol shadow and the HQ186 withdrawal wording risked being read as closure identity. HQ187 found a real defect in the substitute justification. OPS-04 01 said no counterexample exists.",
+      "evidence_inspected": "own closure traversal rooted at the two bounded-court test suites, at BOTH 46f3bec82 and the freeze, over all import and from-import statements; then per-member blob resolution across the full closure",
+      "observed": "23 modules at 46f3bec82; 23 modules at the freeze; path membership IDENTICAL at both states. 21 of 23 byte-identical. 2 differ: pre553_physical_decoder.py d2a074a41fb5 -> d3d828c171ea, pre553_r5_codec.py 72f8f3c03ed0 -> 6000a170. Separately verified the pre-C3 pair is present at 903c262e4, a1545aee, 46f3bec82 AND at the final rebind 74a06774; the C3 pair arrives with 30686b185.",
+      "verdict": "HQ187 COUNTEREXAMPLE UPHELD__M01_61_OF_61_DOES_NOT_QUALIFY_THE_FREEZE_23_MODULE_CLOSURE",
+      "proof_ceiling": "OWN_CLOSURE_TRAVERSAL_PLUS_EXACT_BLOB_RESOLUTION_AT_SIX_COMMITS",
+      "consequence": "The authority basis for the two changed modules must be the C3 court plus C4C3 - see X-04. This is the single most consequential correction in the current record."
+    },
+    {
+      "id": "X-03",
+      "topic": "Refinement to HQ187's stated import edge",
+      "tension": "HQ187 recorded the chain as 'pre553_physical_decoder.py L21 imports pre553_r5_codec'. That line number is correct at the freeze but is not the edge that placed the codec in the M01-time closure.",
+      "evidence_inspected": "grep for r5_codec inside pre553_physical_decoder.py at 46f3bec82 (ZERO references) and at the freeze (line 21 present); grep for r5_codec across the four court files at 46f3bec82 (ZERO); traversal found the actual edge; facade blob compared at both states",
+      "observed": "The pre-C3 decoder does not import the codec at all. The codec enters the M01 closure via test_pre553_route_b_production.py L30 -> pre553_source_backed_c11_facade.py L38 -> pre553_r5_codec. The facade blob 8a761119e4a8d68eb291fc4edfadb52e027f8284 is IDENTICAL at 46f3bec82 and the freeze. The decoder -> codec edge at L21 was ADDED by the accepted C3 repair.",
+      "verdict": "DOCUMENTARY_PRECISION_CORRECTION__CONCLUSION_UNCHANGED_AND_STRENGTHENED",
+      "proof_ceiling": "DIRECT_SOURCE_INSPECTION_AT_BOTH_STATES",
+      "consequence": "Both modules are inside the closure at BOTH states, but for different reasons, and the codec's membership never depended on the changed decoder. No stage effect. Not a counterexample, not an advisory blocker."
+    },
+    {
+      "id": "X-04",
+      "topic": "Corrected authority basis for the later decoder/codec bytes",
+      "tension": "With X-02 established, the M01 basis fails for two modules. OPS-04 00 offered C4A's combined court as the replacement; HQ187 withdrew that as a replacement basis and named C3 plus C4C3 instead.",
+      "evidence_inspected": "C4C3 05_AUTHORITATIVE_C3_COURT.json counts, denominator basis and repeat_run_determinism; C4A 02_FINAL_BLOB_MATRIX.json side=='C3' entries; git rev-parse of all 11 pinned blobs at the freeze; git rev-parse <commit>:rawlsing_next at C4A, C4C3 head and the freeze",
+      "observed": "55 passed / 0 failed / 0 errors / 0 skipped; denominator 9+8+13+9+6+10 = 55 asserted by --collect-only BEFORE the timed run; two runs identical (77.79s, 44.25s); explicitly a FRESH EXECUTION not an inheritance. Six C3-side pinned blobs enumerated; decoder d3d828c171ea and codec 6000a170 are two of them, so both sit inside the authoritative C3 denominator directly. All 11 pinned blobs EXACT at the freeze, 0 drift. rawlsing_next tree b0c1ab47 identical at C4A, C4C3 head and the freeze.",
+      "verdict": "CORRECTED_AUTHORITY_BASIS UPHELD__C3_SIX_FILE_55_TEST_COURT_PLUS_C4C3_55_55_TWICE__EXACT_ACCEPTED_C3_BLOBS_PRESENT_AT_THE_FREEZE",
+      "proof_ceiling": "GOVERNED_COURT_ARTIFACT_PLUS_INDEPENDENT_BLOB_RESOLUTION_AT_THE_FREEZE",
+      "consequence": "Freeze acceptance stays at 0 blockers. The defect was in the record, not the evidence. The basis is not weaker than M01's - it is a different, correctly scoped authority."
+    },
+    {
+      "id": "X-05",
+      "topic": "Closure counts - 21, 23, and the overreach risk",
+      "tension": "C4C3 declared 21. Lane A said 'at least 23'. The commission forbids claiming either that M01 qualified the 23-module closure or that all 23 were freshly rerun on Darwin.",
+      "evidence_inspected": "own closure traversal at the freeze from three separate root sets; rawlsing_next tree at six commits; source inspection of producer, carrier and the four added downstream modules for ee_p2x_*, duckdb, subprocess, importlib, exec_module, spec_from_file, os.system, os.popen; existence checks for the two C1-side modules at 46f3bec82",
+      "observed": "C4C3 five-layer rooted closure = exactly 21, reproducing C4C3. Producer+carrier rooted closure = 19. Union = 23 with overlap 17, so producer-inclusive is EXACTLY 23. M01 court test rooted closure = 23, a DIFFERENT set of 23 sharing 19 members with the union. Producer and carrier are ABSENT from the 21. The four modules in the 21 but not in the court closure: pre553_analytical_composition.py and pre553_empirical_possibility_provider.py DO NOT EXIST at 46f3bec82 (C1-side additions, blobs 604c8d591d4c and 23167aa25291 at the freeze); pre553_recursive_handoff.py 868f43bf9869 and source_backed_positioned_subject_possibility.py 62e5eced47b6 are identical at both. All four carry zero risky-edge references, as do producer and carrier.",
+      "verdict": "C4C3_21_UPHELD__PRODUCER_INCLUSIVE_TIGHTENED_TO_EXACTLY_23__BOTH_FORBIDDEN_OVERREACHES_CONFIRMED_FALSE",
+      "proof_ceiling": "THREE_INDEPENDENT_CLOSURES_AT_ONE_COMMIT_PLUS_SOURCE_EDGE_INSPECTION",
+      "consequence": "Sol shadow's ground that the added modules introduce no platform-sensitive edge is independently confirmed. Fresh Darwin evidence covers the 21-module downstream path including the two C3-accepted modules; it does NOT cover producer or carrier."
+    },
+    {
+      "id": "X-06",
+      "topic": "R7 wording and residual class",
+      "tension": "HQ182 said the record says 'NOT reproducible from the repository' and treated that as self-declared irreproducibility, upgrading R7 accordingly. OPS-04 00/01 corrected the quotation but then classified R7 as fingerprint completeness only. HQ187 corrected that to BOTH. The October 3 corrections publication warns against turning a correct quotation repair into a fingerprint-only finding.",
+      "evidence_inspected": "verbatim read of environment_location.durable_note; reproduce_command; pip_freeze.sorted_output; reproducibility_caveat; distribution_hashes",
+      "observed": "Exact text ends 'from this path alone' and continues 'The reproducible content is the freeze below, not the path.' reproduce_command pins exactly 13 packages. pip_freeze.sorted_output has exactly 14 entries. The difference is narwhals, present at 2.26.0 in the freeze and absent from the recipe. The record's own caveat concedes a re-resolve could change narwhals and 'it would change the freeze hash'. Separately: base_interpreter_sha256_prefix32 is only 32 hex, the five compiled_extensions digests carry no prefix marker, and the interpreter resolves under untracked LOCAL_COURTS/.",
+      "verdict": "QUOTATION_REPAIR_UPHELD__RESIDUAL_CLASS_IS_BOTH",
+      "proof_ceiling": "VERBATIM_FIELD_READ_PLUS_COUNT_COMPARISON",
+      "consequence": "Live-execution blocker stays at 1. The blocking status survives the corrected quotation; the fingerprint-only classification does not. narwhals is bounded and off-path but NOT absent - it would not change the 55/55, and it would change the freeze hash."
+    },
+    {
+      "id": "X-07",
+      "topic": "R9 accounting surface",
+      "tension": "HQ182 said per-source constraints were lost. OPS-04 00/01 said they survive and only explicit counters are absent, implying artifact 07 retains 8 sources with counters. HQ187 corrected the count to 6 of 8 and said this STRENGTHENS R9.",
+      "evidence_inspected": "07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json per_source_expected_operation_class field-by-field across all 8 sources; the SRC27 critical_note and hardened_note_on_the_SRC27_single_pass; measurement_basis_requirement; retry_budget_law; 06_RUNTIME_READER_LANES_AND_RESOURCE_LAW.json SRC35 lane; 04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json per_source entries, access_accounting_instrumentation_bound, zero_authorizations and unresolved_pre_issuance_items",
+      "observed": "8 sources total. Six carry explicit expected_full_reads and/or expected_selected_reads: SRC02, SRC06, SRC08, SRC12, SRC14, SRC26. SRC27 carries NEITHER; it carries expected_full_route_passes 1, expected_full_route_passes_max 1, max_retry_budget 0, and an express accounting_warning that one governed Route-B pass is NOT one OS-level file open, with four separate accounts. SRC35 carries NEITHER; it carries fresh_reads 0 and 'No fresh access at all'. The warrant candidate authorizes 7 sources and carries ZERO of the seven with expected_full_reads or expected_selected_reads; all seven retain max_retry_budget 0, expected_operation_class, reader_lane and detailed allowed_operations. The candidate does carry a global 10-account taxonomy with basis_required_per_figure true, and artifact 07 requires four basis fields per figure.",
+      "verdict": "HQ187_C4_CORRECTION UPHELD__COUNTERS_FOR_SIX_OF_EIGHT__EIGHT_OF_EIGHT_MUST_NOT_BE_RESTORED__WARRANT_CARRIES_NONE",
+      "proof_ceiling": "DIRECT_FIELD_PRESENCE_READ_ACROSS_ALL_EIGHT_SOURCES_AND_ALL_SEVEN_CANDIDATE_ENTRIES",
+      "consequence": "Warrant-issuance blocker stays at 1 and is strengthened. SRC27 and SRC35 are heavily constrained, not unconstrained. The repair is documentary completion of the instrument, not a re-derivation of the workload."
+    },
+    {
+      "id": "X-08",
+      "topic": "Hash and identity census",
+      "tension": "HQ182 said 40 truncated hex identity literals. OPS-04 00/01 corrected to 38 prefixes plus 2 complete 40-hex Git SHA-1 tree identities. HQ187 confirmed 32/6/2/3 with 29 distinct of 32 and 9 raw 32-hex of which 3 are prose.",
+      "evidence_inspected": "recursive field-path walk of the parsed environment lock collecting every whole-value hex string bucketed by length; a separate raw-text line scan for 32-hex substrings to separate structural values from prose; git rev-parse 8ff40d37d:rawlsing_next",
+      "observed": "len16: 32 occurrences, 29 distinct, all field-named *_prefix16. len32: 6 occurrences. len40: 2 occurrences, 1 distinct value b0c1ab472cde033e21f1c2f63fbcbea2f0cccef0, which equals git rev-parse 8ff40d37d:rawlsing_next exactly - a complete Git SHA-1 tree object ID. len64: 3 occurrences, 1 distinct value 9cde8e5ab9abba46a9e98826100ed084a0943a77fee7bc232a3c7643334da2eb. Raw text: exactly 9 32-hex occurrences, being the 6 structural values plus 3 prose restatements inside CROSS_ENVIRONMENT_REPRODUCIBILITY_DATUM at line 122. The 29-of-32 distinctness is explained by exactly three enumerated collisions: e56b47578e45e542, f86fedd281ae13b5, 1b5e87e00dc87a84.",
+      "verdict": "HQ187_C3_CENSUS CONFIRMED_IN_FULL",
+      "proof_ceiling": "EXHAUSTIVE_PROGRAMMATIC_CENSUS_BY_LENGTH_AND_FIELD_PATH_PLUS_TREE_IDENTITY_RESOLUTION",
+      "consequence": "Advisory. Supports the fingerprint half of R7. The two 40-hex values must not be called truncated SHA-256."
+    },
+    {
+      "id": "X-09",
+      "topic": "R10 digest recovery",
+      "tension": "The freeze packet carries \"7dfb6...\" in a machine-readable identity field. The risk was completing it by pattern.",
+      "evidence_inspected": "later_T3_standardization.T3_freeze_sha256 in C4B 04_WVS_ORACLE_CUSTODY.json at c2af4f61; the custody blob compared at c2af4f61 and at the freeze; a regex sweep of all 12 freeze packet files for abbreviated hex inside JSON string values",
+      "observed": "Recovered value 7dfb62362b983b92dee2774d862a46c0c0ce3ca2c3bb48850e0f400346936908 from a named field. Custody blob 42067aac69d78836d4ee8c28a7a58fe148a7146e identical at both commits. Prefix 7dfb6 matches the abbreviation. Packet sweep: exactly 1 occurrence of abbreviated hex in a JSON string value across 12 files - the R10 site.",
+      "verdict": "R10_UPHELD__DIGEST_RECOVERED_FROM_AUTHORITATIVE_SOURCE_NOT_GUESSED",
+      "proof_ceiling": "FULL_VALUE_READ_FROM_A_NAMED_FIELD__NO_PATTERN_COMPLETION",
+      "consequence": "Documentary repair, fully determined. It is the only truncated identity value in the packet."
+    },
+    {
+      "id": "X-10",
+      "topic": "Cross-lane T3 attribution inconsistency",
+      "tension": "The same literal digest is attributed to two different lanes upstream. The commission forbids converting this into a blocker without evidence.",
+      "evidence_inspected": "recursive T3 field-path search in Omega-1 01_DECISION.json; line-level grep for the digest; the C4B custody field",
+      "observed": "Omega-1 identity_rules.full_route_oracles.LiTS_I.T3_sha256 = 7dfb6236...36908 at line 358. C4B later_T3_standardization.T3_freeze_sha256 = the identical digest, inside the WVS custody file. Same literal, two lane attributions.",
+      "verdict": "INCONSISTENCY_PRESENT__RECORDED_AT_ACTUAL_SEVERITY__NOT_A_BLOCKER__NOT_A_COUNTEREXAMPLE",
+      "proof_ceiling": "BOTH_FIELD_PATHS_RESOLVED_TO_THE_SAME_LITERAL",
+      "consequence": "Zero effect on freeze evidence and zero effect on R10's recovery. The open reconciliation question - whether one shared freeze digest legitimately covers both lanes - is HQ's and is NOT resolved here by preferring the newer document."
+    },
+    {
+      "id": "X-11",
+      "topic": "Cross-lineage reachability",
+      "tension": "The freeze is cited by SHA from a control/activation branch that does not contain it.",
+      "evidence_inspected": "git merge-base --is-ancestor for the freeze and for C4A against the R2 return afb1eb49b; git merge-base",
+      "observed": "Freeze is NOT an ancestor of the R2 return. C4A is NOT an ancestor. merge-base = 87029d349c8a7385cb673060a8e5decd4eb528ff, matching HQ187 exactly.",
+      "verdict": "CONFIRMED__BY_DESIGN__ADVISORY_SEVERITY__NO_EFFECT_ON_FINDINGS",
+      "proof_ceiling": "GIT_MERGE_BASE_IS_ANCESTOR",
+      "consequence": "Comparison was by exact blob SHA, which is ancestry-independent. The recorded consequence: any re-check must cite the freeze SHA explicitly, because a verifier working only from that branch's HEAD cannot reach the freeze by ancestry."
+    },
+    {
+      "id": "X-12",
+      "topic": "M01 61/61 count reconciliation",
+      "tension": "Static function counts of 11/4/14/30 sum to 59, against a claimed 32 for the empirical-query suite and 61 total. HQ187 recorded the count as UNVERIFIED, noting static counts do not match.",
+      "evidence_inspected": "grep of test function definitions and @pytest.mark.parametrize at 46f3bec82 for all four suites; the parameterize site inspected in full; the freeze's 04_OWNER_REGRESSION_LEDGER.tsv",
+      "observed": "Static counts 11, 4, 14, 30. test_pre553_empirical_query.py contains exactly ONE @pytest.mark.parametrize, at line 1388, over authority_state with values (DENY, OUT_OF_SCOPE, SUPERSEDED_NOT_REPLAYABLE) - three refusal states. One function yields three cases: +2. 30+2 = 32. 11+4+14+32 = 61. The freeze ledger independently records '32 pytest cases from 30 functions' and BOUNDED_COURT_TOTAL '61 pytest cases ... GitHub Actions run 36302391261; 61 passed in 2.58s'.",
+      "verdict": "COUNT_RECONCILIATION_VERIFIED_FROM_SOURCE__RUN_RESULT_REMAINS_INHERITED",
+      "proof_ceiling": "COUNT_RECONCILIATION_SOURCE_DERIVED__GITHUB_ACTIONS_EXECUTION_LOG_NOT_RETRIEVED",
+      "consequence": "Not a false count. The October 3 audit reached the identical explanation independently. The recorded 61/61 stands with an explicit ceiling: the run result is inherited from the governed ledger, and this lane did not retrieve the Actions execution log."
+    },
+    {
+      "id": "X-13",
+      "topic": "Freeze graph, custody and warrant state",
+      "tension": "None outstanding; all lanes agreed. Cross-checked for independence rather than for dispute.",
+      "evidence_inspected": "git rev-list --first-parent --count and --count over 01256977..8ff40d37; git rev-parse <commit>:rawlsing_next at seven named points plus C4C3 head; SHA-256 of the committed warrant candidate blob; the candidate's state fields and issuance blockers",
+      "observed": "first-parent 3, total reachable 5; extras exactly 1df64cc59 and eba2f4249. rawlsing_next b0c1ab47 at all seven points and at C4C3 head. Warrant candidate SHA-256 = d57420f8016bf49cc0353f39dcd2271e6f370c3bd9b7e81f08466c0a1f574e0a, matching HQ182. Candidate declares issued false, signed false, authorizes_access false, execution_authorized false, issued_by null, issue_date null. All seven access_locator values are the literal fill-in placeholder. Both approvals UNSET. Five issuance blockers.",
+      "verdict": "ALL_UPHELD",
+      "proof_ceiling": "GIT_REV_LIST_COUNTS_PLUS_TREE_IDENTITY_AT_EIGHT_COMMITS_PLUS_SHA256_RECOMPUTED_FROM_THE_COMMITTED_BLOB",
+      "consequence": "Candidate is intact, unaltered and non-authorizing. Locator search was correctly not performed.",
+      "open_item_noted": "Blocker 5 states independent integration review is not yet completed. Two independent freeze reviews and one R2 re-check now exist. Whether that discharges blocker 5 is an HQ call and is NOT made here."
+    },
+    {
+      "id": "X-14",
+      "topic": "Stage register and the single counterexample",
+      "tension": "HQ182 recorded counterexamples 0. OPS-04 01 recorded 0. HQ187 recorded 1.",
+      "evidence_inspected": "HQ187 CURRENT.json residual_register_stage_separated; five matching fields in HQ_HANDOFF/LATEST.json; the correction/evidence publication; the D2P disposition",
+      "observed": "Both sealed pointers agree: freeze 0, issuance 1, live execution 1, advisories 9, counterexamples 1, with change recorded as COUNTEREXAMPLES_0_TO_1__BLOCKERS_UNCHANGED. HQ187 defect_location = RECORD_NOT_EVIDENCE. The counterexample targets the overbroad M01-closure justification and HQ183's C4A substitute, not the freeze evidence base.",
+      "verdict": "HQ187_REGISTER_UPHELD__NO_CORRECTION_REQUIRED",
+      "proof_ceiling": "TWO_INDEPENDENT_SEALED_POINTERS_AGREE_PLUS_OWN_CLOSURE_DIFF",
+      "consequence": "Carried unchanged. The counterexample is recorded as being against the justification, not the evidence."
+    },
+    {
+      "id": "X-15",
+      "topic": "Holds and the character of the HQ182 hold",
+      "tension": "The October 3 audit warns against expanding a temporary non-adoption hold into a standing requirement that all HQ decisions route to Astra.",
+      "evidence_inspected": "HQ182 CURRENT.md hold list; HQ187 CURRENT.json held array; LATEST.json adoption and hold fields; the audit's P2 section and REPAIR_PLAN item 6",
+      "observed": "All holds in force: NOT_ADOPTED_INTO_BUILD, hq182_hold UNLIFTED, 0 locators, no warrant, 0 raw source access, C4 not executed, 0 production mutation, C7 held, actor work held. The audit records the hold as temporary and narrow, and requires that it not become a universal Astra gate.",
+      "verdict": "ALL_HOLDS_PRESERVED__HOLD_IS_TEMPORARY_AND_NARROW",
+      "proof_ceiling": "SEALED_CHECKPOINTS_PLUS_LIVE_POINTER_PLUS_AUDIT",
+      "consequence": "The external packet is scoped to the single reserved C4 decision and says so explicitly, so this lane's packet cannot be read as creating a general external-review requirement."
+    },
+    {
+      "id": "X-16",
+      "topic": "Lane A adjudication status",
+      "tension": "HQ182 held 'lane A adjudication'. Lane A's return exists and was read during the OPS-04 00 reconciliation, but LATEST records c4_final_review_adjudicated false.",
+      "evidence_inspected": "Lane A 07_FINAL_DISPOSITION.json; LATEST.json adjudication fields; HQ182 CURRENT.md",
+      "observed": "Lane A disposition APPROVE_AT_DECLARED_GRAIN, including its own 21-to-23 correction, which this lane independently confirms and tightens to exactly 23. c4_final_review_adjudicated = false. ALT-B by contrast is RETURNED__ADJUDICATED at HQD-2026-10-02-182.",
+      "verdict": "LANE_A_FORMALLY_UNADJUDICATED__RECORDED_NOT_CLOSED",
+      "proof_ceiling": "READ_RETURN_DISPOSITION_AND_TWO_HQ_POINTERS",
+      "consequence": "Recorded as an open item. HQ188-B does not close Lane A adjudication; that is HQ's act."
+    },
+    {
+      "id": "X-17",
+      "topic": "D2P recorded-but-unverified identities",
+      "tension": "The OPS-04 00 packet asserted '2 unverified labels' and '24-over-18 authorities disclosure' without restating their content or status.",
+      "evidence_inspected": "D2P 04_FINAL_DISPOSITION.json in full, including what_this_review_DID_NOT_VERIFY, requirements_on_HQ_at_fanin, and scope_of_the_PASS",
+      "observed": "B001, B002, B003 all CLOSED_ACCEPTED. checkpoint_identity 3fab15f3... and canonical_closure_identity f264dd8f... are carried forward EXACTLY as NoviyMac disclosed them, recorded-but-unverified, and expressly NOT converted into passes. 24 AuthoritySnapshots materialise 18 distinct authority documents. The review authorises no raw-source C4 execution, no fresh LiTS decode, no source warrant, no C7, no PRE-V3 to V3.",
+      "verdict": "D2P_POSITION UPHELD__ADVISORY_ONLY",
+      "proof_ceiling": "READ_DISPOSITION_ARTIFACT",
+      "consequence": "Contributes to the 9 advisories. Does not unblock any stage and is not treated as verified."
+    },
+    {
+      "id": "X-18",
+      "topic": "Vacuous-pass hygiene",
+      "tension": "The R2 reviewer self-disclosed a None == None manifest comparison; the audit reproduced a vacuous OPS-03 Q08 acceptance. The commission forbids absent-field equality as verification.",
+      "evidence_inspected": "R2 06_POINTER_AND_LINEAGE_INTEGRITY.json self_caught_false_pass and note_on_method; the audit's Q08 finding",
+      "observed": "The R2 reviewer guessed the manifest field name, returned None for both entries, would have produced a vacuous pass, then dumped the record verbatim, found the field is blob_sha, and confirmed both blobs match. The audit reproduced Q08 creating lowercase result keys then checking uppercase state names, so every lookup is undefined and even all-wrong results pass.",
+      "verdict": "DISCLOSURES_PRESERVED__PRACTICE_ENFORCED_IN_THIS_LANE",
+      "proof_ceiling": "PRACTICE_STATEMENT_WITH_MECHANISM",
+      "consequence": "Every identity in this lane's claim map resolves to a nonempty exact 40-hex blob ID or a complete 64-hex digest. No verification rests on a missing value."
+    }
+  ],
+  "material_contradiction_check": {
+    "material_contradiction_found": false,
+    "criteria": "A material contradiction would be an unresolved conflict between governing evidence and the current record on a claim that changes a stage count, an authority basis, or a hold.",
+    "result": "No such conflict. Every tension examined (X-01 through X-18) resolved against the inspected artifact. Two prior positions were refined rather than overturned: HQ187's import edge (X-03, conclusion strengthened) and Lane A's 'at least 23' (X-05, tightened to exactly 23).",
+    "unresolved_items_carried": [
+      "Cross-lane T3 attribution - open record-hygiene question for HQ, advisory, explicitly not a blocker",
+      "Whether warrant issuance blocker 5 is discharged by the existing independent reviews - an HQ call, not made here",
+      "Lane A formal adjudication - open, not closed by this lane",
+      "D2P's two recorded-but-unverified identities - carried forward non-verified by D2P's own ruling"
+    ],
+    "none_of_these_changes_a_stage_count_or_a_hold": true
+  },
+  "claims_deliberately_not_made": [
+    "That the M01 61/61 qualified the freeze's complete 23-module transitive closure",
+    "That all 23 producer-inclusive modules were freshly rerun on Darwin",
+    "That the 40-hex environment-lock values are truncated SHA-256",
+    "That SRC27 or SRC35 carry no constraints",
+    "That artifact 07 binds explicit read counters for eight sources",
+    "That HQ182's phrase 'from the repository' appears in the environment record",
+    "That the environment is exactly reconstructible from the 13-package recipe",
+    "That R7 is fingerprint incompleteness only",
+    "That the GitHub Actions execution log for run 36302391261 was independently retrieved",
+    "That C4 is adopted, HQ182's hold is lifted, or that any warrant, locator, raw access, live C4, C7 or actor work is authorized"
+  ],
+  "final_remote_sha": "RECORDED_IN_SEAL_COMMIT",
+  "final_disposition": "PENDING_SEAL"
+}
