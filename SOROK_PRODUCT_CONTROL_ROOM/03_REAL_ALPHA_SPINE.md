@@ -454,6 +454,63 @@ For behavioral evidence, preserve the exposure chain that made the behavior inte
 
 ---
 
+## 6.5 Current game-loop compression
+
+Artifact:
+`88_GAME_LOOPS_WITHOUT_PERSON_OPTIMIZATION_R1.md`.
+
+Current loop candidate:
+
+`PARTIAL SITUATION`
+→ `NOTICE / ASK / ACT`
+→ `ACTOR + WORLD RESPONSE`
+→ `CONSEQUENCE`
+→ `MORE SPECIFIC KNOWLEDGE / CHANGED RELATION / CHANGED WORLD`
+→ `NEW PARTIAL SITUATION`.
+
+Compact:
+
+> **ACT -> MAKE HISTORY -> HISTORY CHANGES WHAT CAN HAPPEN AND WHAT THINGS MEAN -> ACT AGAIN.**
+
+Rawlsing should make causal grammar learnable without exposing a stable person-control policy.
+
+> **RELIABLE CAUSAL LOOPS; UNRELIABLE OUTCOME LOOPS.**
+
+Reliable:
+- ATTEND deepens lawful specificity;
+- action enters history;
+- commitments create stakes;
+- time changes conditions;
+- history conditions later interaction.
+
+Not reliably mapped:
+- kindness -> intimacy;
+- help -> affection;
+- personal question -> disclosure;
+- conflict -> repair;
+- repair -> forgiveness;
+- intimacy -> knowledge;
+- insight -> healing;
+- argument -> agreement;
+- return frequency -> relationship depth.
+
+Palpability candidate:
+`89_PALPABLE_GAME_LOOPS_HISTORY_CARRIERS_CANDIDATE_R1.md`.
+
+Candidate history-carrier triad:
+
+`TRACE`
++ `LATER RE-ENTRY`
++ `CHANGED AFFORDANCE`
+
+can make history tactile without score/reward abstraction.
+
+Not every event should receive all three; forced callback density would restore authored significance.
+
+See SPD-0249/0250 / RISK-205.
+
+---
+
 ## 7. Current tunable balances
 
 This is where "organism" becomes more useful than "rulebook."
