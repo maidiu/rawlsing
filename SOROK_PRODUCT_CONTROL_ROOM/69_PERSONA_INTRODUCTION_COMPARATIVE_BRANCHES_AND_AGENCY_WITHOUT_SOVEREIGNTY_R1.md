@@ -481,6 +481,21 @@ Can any randomly encountered/succession persona be introduced, or only precompil
 
 This has direct compute and reproducibility implications.
 
+### Q7 — late shared-root fact propagation into existing branches
+If User A resolves a previously unresolved pre-contact fact after User B already has an active continuity from the same root:
+
+- is the new fact automatically inherited by B only when causally inert relative to B's admitted history?
+- does B remain pinned to an earlier root version?
+- what if B already resolved a conflicting particular?
+- what exact provenance/version receipt proves the policy?
+- can a fact be shared for future forks while remaining unavailable to an incompatible already-running branch?
+
+Strong constraint:
+
+> **Shared pre-contact truth may expand; active continuity history may not be silently rewritten.**
+
+The exact propagation/versioning rule remains open under Q-LAZY-001 / Q-PERSONSHARE-001.
+
 ---
 
 ## 15. Compact laws
