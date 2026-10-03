@@ -24,18 +24,25 @@ as HQ calls.
 |---|---|
 | Branch | `agent/rabochii-pyat-hq188-b-c4-current-consolidation-r1` |
 | Commissioned startup SHA | `9001be646305036e493eea3dbce427f62f91c9ae` |
-| Final remote SHA | recorded in the seal commit; reported in the lane completion message |
+| **Sealed candidate commit (all commissioned work)** | **`e9bc84b2eed39e0023f856ae1351db3b24b535b6`** |
+| Final remote SHA (verified `local HEAD == origin/<branch>`) | `e9bc84b2eed39e0023f856ae1351db3b24b535b6` |
 | Final disposition | `CONSOLIDATION_READY_FOR_HQ_REVIEW` |
 | Terminal | `HQ188_B_C4_CURRENT_CONSOLIDATION_RETURNED__HQ_REVIEW_REQUIRED` |
 | Terminal addition | `HQ188-B_REMOTE_BRANCH_RETURN_VERIFIED` |
 
-A commit cannot contain its own SHA, so the seal commit names the exact
-remote SHA of the commit carrying all commissioned work, and the seal commit
-itself is the branch tip. Both SHAs are reported in the completion message and
-are verifiable at any time with:
+**Return verification performed:** the worker branch was pushed to `origin`,
+re-fetched, and `local HEAD` was confirmed equal to
+`origin/agent/rabochii-pyat-hq188-b-c4-current-consolidation-r1` at the single
+exact full 40-hex SHA `e9bc84b2eed39e0023f856ae1351db3b24b535b6`.
+
+A commit cannot contain its own SHA. The seal commit — this document's
+successor, which is the branch tip — records the sealed candidate SHA above,
+which is the commit carrying all ten commissioned artifacts. Verify either at
+any time with:
 
 ```
 git rev-parse origin/agent/rabochii-pyat-hq188-b-c4-current-consolidation-r1
+git log --oneline -2 origin/agent/rabochii-pyat-hq188-b-c4-current-consolidation-r1
 ```
 
 ---

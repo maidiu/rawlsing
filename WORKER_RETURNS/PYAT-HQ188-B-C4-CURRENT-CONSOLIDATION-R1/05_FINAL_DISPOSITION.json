@@ -14,17 +14,22 @@
     "why_not": "Every tension examined across 18 crosschecks resolved against the inspected artifact. Two prior positions were refined rather than overturned, and neither refinement changes a stage count, an authority basis or a hold: HQ187's stated import edge (the codec enters the M01 closure via the facade, not via the changed decoder - conclusion strengthened) and Lane A's 'at least 23' (tightened to exactly 23). Four items remain open and are recorded as HQ calls, none of which is a contradiction."
   },
   "branch": "agent/rabochii-pyat-hq188-b-c4-current-consolidation-r1",
-  "final_remote_sha": "RECORDED_IN_SEAL_COMMIT",
-  "sealed_candidate_commit_sha": "RECORDED_IN_SEAL_COMMIT",
+  "sealed_candidate_commit_sha": "e9bc84b2eed39e0023f856ae1351db3b24b535b6",
+  "final_remote_sha": "e9bc84b2eed39e0023f856ae1351db3b24b535b6",
+  "final_remote_sha_meaning": "the exact full 40-hex SHA at which local HEAD and origin/agent/rabochii-pyat-hq188-b-c4-current-consolidation-r1 were verified equal, carrying all ten commissioned artifacts",
   "return_verification": {
-    "pushed_to_origin": "PENDING_AT_TIME_OF_THIS_COMMIT",
+    "pushed_to_origin": true,
     "remote_branch": "origin/agent/rabochii-pyat-hq188-b-c4-current-consolidation-r1",
-    "local_head_equals_remote": "PENDING_AT_TIME_OF_THIS_COMMIT",
-    "single_exact_40_hex_sha": "PENDING_AT_TIME_OF_THIS_COMMIT",
+    "remote_branch_refetched_after_push": true,
+    "local_head_equals_remote": true,
+    "single_exact_40_hex_sha": "e9bc84b2eed39e0023f856ae1351db3b24b535b6",
     "no_uncommitted_commissioned_work_remaining": true,
+    "tracked_files_modified_by_this_lane": 0,
+    "files_added_by_this_lane": 10,
     "merged_into_control": false,
     "force_push_used": false,
-    "note": "The seal commit records the exact remote SHA of the commit carrying all commissioned work. A commit cannot contain its own SHA, so the seal commit names its predecessor and this branch's tip is the seal commit. Both SHAs are reported in the lane completion message and are verifiable at any time with git rev-parse origin/agent/rabochii-pyat-hq188-b-c4-current-consolidation-r1."
+    "history_rewritten_after_return": false,
+    "note": "A commit cannot contain its own SHA, so this seal commit records the exact remote SHA of its predecessor, which carries all commissioned work. This seal commit is the branch tip; its own SHA is reported in the lane completion message and is verifiable at any time with git rev-parse origin/agent/rabochii-pyat-hq188-b-c4-current-consolidation-r1."
   },
   "deliverables": {
     "consolidated_claims": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-04/02_CURRENT_CONSOLIDATED_DECISION_CLAIMS.md",
