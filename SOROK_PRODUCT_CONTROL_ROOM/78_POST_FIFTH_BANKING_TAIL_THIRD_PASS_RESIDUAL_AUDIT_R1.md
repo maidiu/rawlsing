@@ -324,3 +324,58 @@ This third pass requires:
 ## Terminal
 
 `PASS_WITH_ADDITIONAL_RESIDUALS__THIRD_POST_FIFTH_AUDIT_FOUND_CAUSAL_SLACK_BUDGET__ATTEND_LORE_REWARD__KNOWLEDGE_COMPLEXITY_EVAL__RESONANCE_RETRIEVAL__ACTIVE_FORK_PROPAGATION_SEAMS`
+
+---
+
+# 8. Live-control actions completed
+
+The required actions above have now been executed.
+
+Updated questions:
+- `Q-HISTBRIDGE-001` — bounded unresolved causal allocation / no unlimited retcon budget;
+- `Q-MEANINGSTRATA-001` — provenance-bearing shared-antecedent resonance retrieval;
+- `Q-LAZY-001` — active-continuity propagation/version policy for late shared-root facts;
+- `Q-PERSONSHARE-001` — same active-continuity/root propagation seam at the social lineage boundary;
+- `Q-ALPHA-001` — model-fidelity-up / totalization-down candidate evaluation evidence.
+
+New decisions:
+- `SPD-0234` — provisional alpha epistemic-learning hypothesis;
+- `SPD-0235` — bounded causal-slack admission law;
+- `SPD-0236` — ATTEND non-lore-vending law.
+
+New risks:
+- `RISK-192` — causal slack as universal retcon escape hatch;
+- `RISK-193` — ATTEND as lore-vending/completionist reward loop.
+
+Updated artifacts:
+- 69 — explicit Q7 for late shared-root fact propagation into already-running branches;
+- 70 — currentness note + bounded slack + ATTEND non-lore sections;
+- 71 — explicit common-cause resonance retrieval engineering seam;
+- 03 — organism-level integration of all three plus alpha/kernel-discrimination signature;
+- STATUS / CURRENT_STATE / 00_READ_ME_FIRST — future-HQ routing.
+
+Negative-control sweep:
+the post-fifth mechanism checklist now returns representation for all tested items, including:
+- organized relational resultant;
+- relation-level non-exhaustion;
+- player decentering;
+- person sharing;
+- external meta-knowledge provenance;
+- historical bridge;
+- sparse residue propagation;
+- bounded causal slack;
+- anti-serendipity;
+- ATTEND non-lore;
+- user interpretation as new cause;
+- recurrence without teleology;
+- common-cause retrieval;
+- counterevidence;
+- articulation currentness;
+- no integration scalar;
+- liberation/new enclosure;
+- domain-specific grooves;
+- exact-event gate;
+- distributed self-retcon;
+- knowledge-fidelity/totalization hypothesis.
+
+
