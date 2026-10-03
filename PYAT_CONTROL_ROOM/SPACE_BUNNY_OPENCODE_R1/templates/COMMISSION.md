@@ -64,6 +64,30 @@ Do not merge/fast-forward/rebase into control, modify HQ state, or self-adopt. I
 
 **Commission validity law:** an issued commission missing this equivalent remote-return protocol is malformed.
 
+
+## Local worktree lifecycle
+
+A commissioned worktree is temporary execution state, not archival authority.
+
+After the worker/reviewer has:
+1. committed and pushed the complete return;
+2. re-fetched and verified the remote tip;
+3. had HQ independently resolve and accept that remote return for further routing;
+
+the local worktree becomes eligible for audited removal once no active successor/reviewer/process still depends on that exact checkout.
+
+Before removal:
+- preserve any unique local tracked/untracked substantive delta by committing/pushing it if in-scope, or by an explicit salvage packet if not;
+- verify the returned HEAD is reachable from an origin ref;
+- verify no active same-user process is using the worktree;
+- preserve source/sensitive/unknown local material rather than deleting it;
+- remove through `git worktree remove`, not blind `rm -rf`;
+- never use worktree cleanup as authority to delete `LOCAL_COURTS`, raw-source estates, user documents, or shared toolchains.
+
+A returned/reviewed worktree must not remain indefinitely merely because it contains disposable caches such as `__pycache__`, `*.pyc`, `.pytest_cache`, or `.DS_Store`. Those are cleanup residue, not preservation authority.
+
+Future commissions should use a dedicated disposable worktree root rather than proliferating historical lane directories inside the canonical checkout.
+
 ## Return and stop
 
 Frozen candidate SHA, structured return, claims/limits, tests with exit codes, source operations, unresolved/unreached work, event to HQ. State failure preservation and retry law. A returned PASS is not adoption.
