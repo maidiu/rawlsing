@@ -1,3 +1,30 @@
+# HQ192 active frontier — 2026-10-03
+
+HQ has adjudicated the full HQ191 wave.
+
+- **R7 is CLOSED.**
+- Live execution is still blocked, but by a new separately typed host preflight blocker: `HOST-PREFLIGHT-F3-DISK-CAPACITY-VOLATILITY`.
+- **R9 remains** the sole warrant-instrument technical blocker.
+- Dispatcher A2 is **not adopted**; hostile unattended review is bound.
+
+Active lanes:
+- DeepSeek review: `agent/reviewer-pyat-hq192-a2-dispatcher-unattended-hostile-review-r1 @ ce1574030e1136e29b093e2743d8b8e77f465f03`
+- Space Bunny host preflight: `agent/rabochii-pyat-hq192-host-preflight-remediation-r1 @ f4db1192c5dd2962c93cf9b726c8835f922ad6e7`
+- Space Bunny R9 OS accounting: `agent/rabochii-pyat-hq192-r9-os-accounting-interposition-r1 @ fdaf71c4c08d3f21778eeab335b5b928cc78fb7b`
+
+Run all three in parallel.
+
+The R9 OS lane may compile only disposable process-local instrumentation with no sudo/system install and synthetic carriers only.
+
+Host-preflight cleanup may delete only items independently classified SAFE_AUTOMATIC under its commission. It must not delete R7 qualification evidence, interpreter tooling, raw sources, user documents or another active lane's work.
+
+HQ182's C4 non-adoption hold remains pending Astra.
+
+See:
+`HQ_HANDOFF/checkpoints/20261003-PYAT-HQ192-R7-CLOSED-HOST-PREFLIGHT-R9-A2-WAVE-R1/`
+
+---
+
 # HQ191 active frontier — 2026-10-03
 
 Current control state has adjudicated the HQ190 dispatcher/R7/R9 wave.
