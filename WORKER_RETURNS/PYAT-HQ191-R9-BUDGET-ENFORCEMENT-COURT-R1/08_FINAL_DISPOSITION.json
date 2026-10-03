@@ -1,0 +1,122 @@
+{
+  "schema": "PYAT_HQ191_R9_FINAL_DISPOSITION@1.0.0",
+  "lane": "PYAT-HQ191-R9-BUDGET-ENFORCEMENT-COURT-R1",
+  "role": "RABOCHII / source-free execution-accounting implementer - Space Bunny",
+  "repository": "maidiu/rawlsing",
+  "worker_branch": "agent/rabochii-pyat-hq191-r9-budget-enforcement-court-r1",
+  "commissioned_startup_sha": "631e7586001a5f2736656c4a7d6c1bf055d8c0d1",
+  "declared_implementation_base": "c782b455d492e47d39d54274f24829d36e8e0077",
+  "verified_startup_parent_equals_declared_base": true,
+  "final_disposition": "R9_PARTIAL__SPECIFIC_ACCOUNTS_STILL_UNGOVERNABLE",
+  "disposition_meaning": "Hard maximum authorization budgets ARE realizable, source-free qualified and enforceable for 7 of the 10 mandatory O1-C07 accounts at the python reader/decoder invocation layer, with abort BEFORE the unauthorized operation demonstrated in 8 guard cases plus 2 decoder-native fail-closed cases. They are NOT realizable for path-level opens (structurally unobservable), selected-column reads (never performed at this layer), header-prefix reads (not performed by the exercised path) or byte counts (not exposed). R9 is narrowed but PRESERVED.",
+  "dispositions_not_taken": [
+    {
+      "value": "R9_HARD_MAX_BUDGET_CANDIDATE_READY_FOR_INDEPENDENT_REVIEW",
+      "why_not": "That would assert the account set is complete and governable. It is not. Four accounts have no lawful ceiling, and O1-C07 names one of them - path-level opens with its measurement basis - as mandatory. Asserting readiness would overstate the result."
+    },
+    {
+      "value": "R9_POLICY_AUTHORITY_REQUIRED__NO_NUMBERS_INVENTED",
+      "why_not": "Numbers WERE lawfully constructed and are proposed - as C3 policy maxima at a declared, demonstrated-enforceable layer, explicitly not as historical expectations, with zero fabrication. This disposition would understate what was achieved. The policy-authority requirement is nonetheless recorded and is true."
+    },
+    {
+      "value": "R9_MATERIAL_CONTRADICTION_FOUND",
+      "why_not": "The governing evidence, the code and the frozen artifacts are mutually consistent. The result is a genuine partial, not a contradiction."
+    }
+  ],
+  "substantive_result": {
+    "court_directory": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-04/R9-BUDGET-ENFORCEMENT-COURT-R1",
+    "files": {
+      "09_HARD_MAX_BUDGET_CANDIDATE.json": {
+        "sha256": "24d598b94042be9f4e392fb429fb3802633b48cef9d15cf60586c1805f62b87a",
+        "bytes": 12970
+      },
+      "observed_court_run.json": {
+        "sha256": "b4050c7c89f9b3143b27d98deae4783c710a5abd1db96fe603428a3a5a6fe5b1",
+        "bytes": 21144
+      },
+      "observed_supplementary_run.json": {
+        "sha256": "c4b034fbca10374a53cbbb7f0c12a4e9e921a80795c32697aeae2b0438f4b49d",
+        "bytes": 4983
+      },
+      "r9_budget_enforcement.py": {
+        "sha256": "98c64b9e9dfb1f399f31740226b5f51cc20eb6a1f2b4f52585b8e82edb95514f",
+        "bytes": 12813
+      },
+      "run_court.py": {
+        "sha256": "5f0f5cf7ac8aed4d4f827247ff81e7d26bdf3fe4f17372db614063724101d531",
+        "bytes": 9900
+      },
+      "run_supplementary.py": {
+        "sha256": "0181120d2ef0f97e261f95be051a27beaf5903ce6f0f8ea05f576c96ebf7092b",
+        "bytes": 7299
+      },
+      "synthetic_carriers.py": {
+        "sha256": "0851d6771888caa2eed696a5de3f858125da9f621e2922f0a316dc80f722e1a6",
+        "bytes": 3944
+      }
+    },
+    "probes_run": 16,
+    "c3_guard_cases_demonstrating_abort_before_operation": 8,
+    "decoder_native_fail_closed_cases": 2,
+    "accounts_governable": 7,
+    "accounts_not_governable": 4,
+    "candidate_instrument": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-04/R9-BUDGET-ENFORCEMENT-COURT-R1/09_HARD_MAX_BUDGET_CANDIDATE.json",
+    "candidate_instrument_sha256": "24d598b94042be9f4e392fb429fb3802633b48cef9d15cf60586c1805f62b87a",
+    "enforcement_helper_sha256": "98c64b9e9dfb1f399f31740226b5f51cc20eb6a1f2b4f52585b8e82edb95514f",
+    "substantive_result_commit_sha": "REPORTED_IN_COMPLETION_MESSAGE_PER_RETURN_LAW",
+    "pushed_remote_branch_tip_sha": "REPORTED_SEPARATELY_PER_RETURN_LAW"
+  },
+  "r9_status": {
+    "r9_closed": false,
+    "blocker_preserved": true,
+    "stage_count_changed_by_this_lane": false,
+    "preserved_hq190c_refusal": true,
+    "note": "HQ190-C refused to fabricate four missing account classes. That refusal is preserved, not overturned. This court proposes C3 policy maxima at a declared layer for the governable ones and returns blocker preserved for the structurally unobservable one."
+  },
+  "prq_07": {
+    "hq_determination": "DISCHARGED_BY_COMPLETED_INDEPENDENT_C4_REVIEW_CHAIN",
+    "reopened": false,
+    "contradiction_found": false,
+    "authorizes_source_access": false,
+    "closes_r9": false
+  },
+  "category_law_upheld": {
+    "c1_historical": "read only from frozen artifacts; nothing emitted under a C1 label by this court",
+    "c2_observed": "all measurements on synthetic carriers; reported in 03_OBSERVED_FIXTURE_COUNTS.json",
+    "c3_policy": "all proposed ceilings; safety constraints, not claims about history",
+    "c2_or_c3_relabelled_as_c1": 0
+  },
+  "r7_observation_not_adjudication": {
+    "observation": "the C4C3-qualified environment that the environment lock declared NOT durable in a per-session temp dir still exists and still reproduces the frozen 13-package seed digest 9cde8e5ab9abba46a9e98826100ed084a0943a77fee7bc232a3c7643334da2eb exactly, with narwhals 2.26.0 present as recorded",
+    "bearing_on": "R7 remediation option (a) durable exact environment preservation",
+    "adjudicated_by_this_lane": false,
+    "r7_finding_made": false
+  },
+  "holds_observed": {
+    "locator_discovery": 0,
+    "locator_fills": 0,
+    "real_source_operations": 0,
+    "directory_inspection_for_sources": 0,
+    "warrant_issued": false,
+    "live_c4_executed": false,
+    "production_mutated": false,
+    "rawlsing_next_files_changed": 0,
+    "c7_implemented": false,
+    "actor_person_work_implemented": false,
+    "hq_handoff_edited": false,
+    "historical_warrant_artifacts_edited": false,
+    "hq190c_diagnostic_edited": false,
+    "astra_contacted": false,
+    "self_adopted": false,
+    "merged_into_control": false
+  },
+  "incident_disclosed": {
+    "what": "a blanket __pycache__ cleanup during this lane initially deleted 4 TRACKED .pyc files that were committed in the repository",
+    "detected_by": "git status porcelain before commit",
+    "remediation": "all 4 restored via git checkout; working tree verified clean of tracked changes before commit",
+    "residual": "none - no tracked file is modified by this lane",
+    "disclosure_law": "recorded rather than quietly fixed"
+  },
+  "hostile_independent_review_required_before_hq_removes_r9": true,
+  "terminal": "HQ191_R9_BUDGET_COURT_RETURNED__HQ_REVIEW_REQUIRED"
+}

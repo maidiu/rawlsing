@@ -1,0 +1,117 @@
+{
+  "schema": "PYAT_HQ191_R9_PROPOSED_HARD_MAXIMA@1.0.0",
+  "lane": "PYAT-HQ191-R9-BUDGET-ENFORCEMENT-COURT-R1",
+  "role": "RABOCHII / source-free execution-accounting implementer - Space Bunny",
+  "repository": "maidiu/rawlsing",
+  "worker_branch": "agent/rabochii-pyat-hq191-r9-budget-enforcement-court-r1",
+
+  "category_declaration": {
+    "C1_historical_expected_counts": "Read ONLY from governed frozen artifacts. Nothing in this file is C1. Where a governed artifact already establishes a figure it is cited under 'c1_already_established' and is NOT proposed here.",
+    "C2_observed_synthetic_fixture_counts": "Measured in this court on synthetic carriers. Not evidence about any real survey file. Reported in 03_OBSERVED_FIXTURE_COUNTS.json.",
+    "C3_policy_hard_maxima": "EVERYTHING in 'c3_proposed_maxima' below. These are proposed HQ authorization ceilings whose purpose is to STOP a run. They are safety/policy constraints, NOT claims about historical behaviour and NOT expectations derived from any measurement.",
+    "relabel_law": "No C2 or C3 value appears under a C1 label anywhere in this return. The enforceability evidence supporting a C3 value is cited as evidence FOR THE POLICY, never as a historical expectation."
+  },
+
+  "measurement_layer_of_record": {
+    "declared_layer": "python reader/decoder invocation layer",
+    "definition": "A single governed decode entry call (decode_sav / decode_dta) issues one or two pyreadstat reader invocations. Each invocation is a distinct, separately interceptable, separately cappable logical access to the source.",
+    "why_this_layer": "It is the lowest layer at which a lawful hard ceiling can be both MEASURED and ENFORCED from Python against the exact current code.",
+    "layer_below_it": "OS-level open(2) inside pyreadstat's compiled extension",
+    "layer_below_status": "NOT ENFORCEABLE. Measured empirically: 0 Python-visible builtins.open calls during a reader call that demonstrably succeeded. No OS-open ceiling is proposed."
+  },
+
+  "c1_already_established_NOT_proposed_here": {
+    "note": "Governed figures. Preserved verbatim. Not maxima, not re-derived, not re-labelled.",
+    "artifact_07_per_source": {
+      "SRC02": {"expected_full_reads": 0, "expected_selected_reads": 1, "max_retry_budget": 0},
+      "SRC06": {"expected_full_reads": 0, "expected_selected_reads": 1, "max_retry_budget": 0},
+      "SRC08": {"expected_full_reads": 0, "expected_selected_reads": 0, "expected_metadata_reads": 1, "max_retry_budget": 0},
+      "SRC12": {"expected_full_reads": 0, "expected_selected_reads": 0, "expected_metadata_reads": 1, "max_retry_budget": 0},
+      "SRC14": {"expected_full_reads": 0, "expected_selected_reads": 1, "max_retry_budget": 0},
+      "SRC26": {"expected_full_reads": 0, "expected_selected_reads": 0, "expected_header_prefix_bytes": 176, "max_retry_budget": 0},
+      "SRC27": {"expected_full_route_passes": 1, "expected_full_route_passes_max": 1, "max_retry_budget": 0},
+      "SRC35": {"fresh_reads": 0, "max_retry_budget": 0}
+    },
+    "src27_operation_level_law": "Exactly one governed fresh full Route-B pass, maximum one, zero retries. A second pass is not a retry; it is a separate run requiring new HQ-bound authority.",
+    "src27_hardened_note_floor": "The run will require AT MINIMUM one existence/access check, one full SHA-256 hash pass, one metadata read, and one full compatibility read. 'At minimum' is a FLOOR. This court does NOT promote it to a ceiling.",
+    "src35_law": "Retained comparator. fresh_reads 0. No fresh access at all. Not a fresh-source warrant target.",
+    "warrant_candidate_historical_c4b_slots_still_empty": {
+      "full_file_sha256_passes": "REQUIRED_EXACT_COUNT",
+      "path_opens": "REQUIRED_EXACT_COUNT_AND_BASIS",
+      "decoder_invocations": "REQUIRED_EXACT_COUNT",
+      "note": "The historical C4B slots remain empty of values. This court does not fill them with C1 labels. It proposes C3 policy maxima separately, at a declared layer."
+    }
+  },
+
+  "c3_proposed_maxima": {
+    "status": "PROPOSED_POLICY_NOT_ADOPTED__NOT_AUTHORIZED__REQUIRES_HQ_POLICY_DECISION",
+    "semantics": "A governed run that would exceed any of these MUST STOP. It may not silently widen authority. A maximum narrower than a future authorized run's real need is an acceptable outcome: the run stops and HQ issues a new authority.",
+    "global": {
+      "retry": 0,
+      "retry_basis": "Mirrors the already-governed zero-retry law. Demonstrated enforceable at probe P9a: with maximum 0 the FIRST retry authorization is refused before any second decode.",
+      "per_source_decode_entry_calls": 1,
+      "per_source_decode_entry_calls_basis": "One governed decode per authorised source under this warrant. A second decode of the same source aborts at the existence/access layer before executing (probe P6). Distinct sources each get their own budget."
+    },
+    "per_source_layer_maxima": {
+      "SRC02": {"existence_access": 1, "full_file_sha256_pass": 1, "reader_invocation_total": 1, "metadata_read": 1, "full_read": 0, "frame_materialization": 0, "decoder_invocation": 1, "retry": 0},
+      "SRC06": {"existence_access": 1, "full_file_sha256_pass": 1, "reader_invocation_total": 1, "metadata_read": 1, "full_read": 0, "frame_materialization": 0, "decoder_invocation": 1, "retry": 0},
+      "SRC08": {"existence_access": 1, "full_file_sha256_pass": 1, "reader_invocation_total": 1, "metadata_read": 1, "full_read": 0, "frame_materialization": 0, "decoder_invocation": 1, "retry": 0},
+      "SRC12": {"existence_access": 1, "full_file_sha256_pass": 1, "reader_invocation_total": 1, "metadata_read": 1, "full_read": 0, "frame_materialization": 0, "decoder_invocation": 1, "retry": 0},
+      "SRC14": {"existence_access": 1, "full_file_sha256_pass": 1, "reader_invocation_total": 1, "metadata_read": 1, "full_read": 0, "frame_materialization": 0, "decoder_invocation": 1, "retry": 0},
+      "SRC26": {"existence_access": 1, "full_file_sha256_pass": 1, "reader_invocation_total": 1, "metadata_read": 1, "full_read": 0, "frame_materialization": 0, "decoder_invocation": 1, "retry": 0},
+      "SRC27": {"existence_access": 1, "full_file_sha256_pass": 1, "reader_invocation_total": 2, "metadata_read": 1, "full_read": 1, "frame_materialization": 1, "decoder_invocation": 2, "retry": 0}
+    },
+    "src27_four_distinct_accounts_preserved": {
+      "existence_access_check": 1,
+      "full_file_sha256_hash_pass": 1,
+      "metadata_read": 1,
+      "full_compatibility_read": 1,
+      "independence_law": "These four are SEPARATE accounts with SEPARATE maxima. NONE is derived from the operation-level route-pass budget. Setting route passes to 1 does not license any of them, and exceeding any of them stops the run independently of the route-pass count.",
+      "measured_support": "Probe S1: a single SRC27-shaped decode on a synthetic carrier consumed exactly 1 existence, 1 hash, 1 metadata read, 1 full read, 1 frame materialization and 2 reader invocations."
+    },
+    "SRC35": {"fresh_reads": 0, "in_fresh_source_target_set": false, "policy": "Retained comparator. No fresh access account is created for SRC35 at all. Absence of an account is not absence of a constraint: the zero-fresh-read law and the global hard zero WVS_SRC35_fresh_source_opens=0 remain in force."}
+  },
+
+  "c3_maxima_with_no_proposed_value": {
+    "statement": "For these accounts this court proposes NO maximum, because no lawful ceiling can be constructed at any enforceable layer. Proposing one would be a fabrication.",
+    "accounts": [
+      {
+        "account": "path_level_opens_and_measurement_basis",
+        "reason": "OS-level opens occur inside pyreadstat's compiled extension and are invisible to Python interception. Empirically measured: 0 visible opens during a successful reader call. Neither a count nor a basis is observable.",
+        "consequence": "O1-C07's literal requirement - 'path-level opens AND their measurement basis' as a separate account - CANNOT be satisfied at the enforceable layer. Blocker preserved for this account.",
+        "what_is_provided_instead": "The reader-invocation ceiling. Each reader invocation necessarily opens the source at least once, so capping invocations bounds LOGICAL source accesses. This is an upper bound on accesses, NOT an account of opens, and is not relabelled as one."
+      },
+      {
+        "account": "selected_column_reads",
+        "reason": "SEL-01, measured: the exact decoder path never supplies usecols (observed [null, null, null] across the metadata and compatibility paths). A selected-column read is not a decoder-layer operation.",
+        "consequence": "Cannot be counted or capped at the decoder layer. It is a property of a higher layer that consumes PhysicalSourceIncidence. Already-governed selected-variable bounds (SRC02 Q10B, SRC06 Q101/Q2061B, SRC14 v372) are enforced by that higher layer's own exactness assertions, not here.",
+        "not_proposed_because": "Proposing a decoder-layer selected-read ceiling would guard an operation the decoder never performs."
+      },
+      {
+        "account": "header_prefix_reads",
+        "reason": "The exact reader/decoder path exercised here performs no bounded header-prefix read. The 176-byte quantity in artifact 07 is a SRC26-specific declared bound, not an operation observed at this layer.",
+        "consequence": "No ceiling proposed. A SRC26-specific header-prefix account would have to be enforced by whatever layer performs it, which this court did not exercise."
+      },
+      {
+        "account": "byte_counts_where_measurable",
+        "reason": "BYT-01, measured: neither the decoder nor the reader exposes a byte-count account. The quantity is not observable at this layer.",
+        "consequence": "No ceiling proposed. 'Where measurable' is not satisfied here because it is not measurable here."
+      }
+    ]
+  },
+
+  "does_the_enforceable_layer_satisfy_O1_C07": {
+    "verdict": "PARTIAL__SUBSTANTIVELY_BOUNDED_BUT_LITERALLY_INCOMPLETE",
+    "satisfied": "Access bounding is lawfully enforceable. Capping reader invocations caps the number of logical source accesses, because each invocation necessarily opens the source. Retries, existence checks, hash passes, metadata reads, full reads, frame materialization and decoder invocations are each separately counted and separately cappable, with abort demonstrated BEFORE the unauthorized operation.",
+    "not_satisfied": "O1-C07 names 'path-level opens AND their measurement basis' as a mandatory separate account. That account is not observable and not enforceable from Python. Omega-1's acceptance criterion - 'Freeze expected budgets and instrumentation before launch' - therefore cannot be fully met at this layer for that one account.",
+    "consequence": "Per the commission's own instruction - 'if O1-C07 genuinely requires a lower layer that cannot be enforced, return blocker preserved' - R9 is PRESERVED for the path-level-open account specifically.",
+    "not_claimed": "This court does not claim that the reader-invocation layer is equivalent to the path-level-open account. It is an upper bound on logical accesses and is labelled as such."
+  },
+
+  "policy_authority_required": {
+    "required": true,
+    "why": "These maxima are HQ policy, not derived facts. Adopting them is an authority decision.",
+    "who": "HQ",
+    "this_lane_decided_nothing": true
+  }
+}

@@ -1,0 +1,162 @@
+{
+  "schema": "PYAT_HQ191_R9_ENFORCEMENT_NEGATIVE_CASES@1.0.0",
+  "lane": "PYAT-HQ191-R9-BUDGET-ENFORCEMENT-COURT-R1",
+  "property_under_test": "A C3 hard maximum must abort BEFORE the unauthorized additional operation executes, not after it has happened and been reported.",
+  "cases": [
+    {
+      "id": "N1",
+      "name": "second existence/access check refused at maximum 1",
+      "probe": "P6_guard_existence_aborts_second_decode",
+      "c3_maxima": {
+        "source_path_existence_access_check": 1
+      },
+      "first": "COMPLETED",
+      "second": "ABORTED_BY_C3_GUARD",
+      "underlying_operation_executed": false,
+      "verdict": "ENFORCED_BEFORE_OPERATION"
+    },
+    {
+      "id": "N2",
+      "name": "second full-file hash pass refused at maximum 1",
+      "probe": "P7_guard_hash_aborts_second_decode",
+      "c3_maxima": {
+        "full_file_sha256_pass": 1
+      },
+      "first": "COMPLETED",
+      "second": "ABORTED_BY_C3_GUARD",
+      "underlying_operation_executed": false,
+      "verdict": "ENFORCED_BEFORE_OPERATION"
+    },
+    {
+      "id": "N3",
+      "name": "second metadata read refused at maximum 1",
+      "probe": "P8_guard_metadata_read_aborts_second_decode",
+      "c3_maxima": {
+        "reader_invocation_metadata_read": 1
+      },
+      "first": "COMPLETED",
+      "second": "ABORTED_BY_C3_GUARD",
+      "underlying_operation_executed": false,
+      "verdict": "ENFORCED_BEFORE_OPERATION"
+    },
+    {
+      "id": "N4",
+      "name": "first operation refused at maximum 0 (existence)",
+      "probe": "S2a_zero_max_existence",
+      "c3_maxima": {
+        "source_path_existence_access_check": 0
+      },
+      "attempt": "ABORTED_BY_C3_GUARD",
+      "underlying_operation_executed": false,
+      "verdict": "REFUSED_FIRST_OPERATION",
+      "significance": "proves the guard can refuse the FIRST operation, not only a repeat"
+    },
+    {
+      "id": "N5",
+      "name": "first operation refused at maximum 0 (hash)",
+      "probe": "S2b_zero_max_hash",
+      "c3_maxima": {
+        "full_file_sha256_pass": 0
+      },
+      "verdict": "REFUSED_FIRST_OPERATION",
+      "underlying_operation_executed": false
+    },
+    {
+      "id": "N6",
+      "name": "first operation refused at maximum 0 (reader)",
+      "probe": "S2c_zero_max_reader",
+      "c3_maxima": {
+        "reader_invocation_metadata_read": 0
+      },
+      "verdict": "REFUSED_FIRST_OPERATION",
+      "underlying_operation_executed": false
+    },
+    {
+      "id": "N7",
+      "name": "zero-retry law enforced before any second decode",
+      "probe": "P9a_zero_retry_enforced",
+      "c3_maxima": {
+        "retry": 0
+      },
+      "first_retry_authorization": "ABORTED_BY_C3_GUARD",
+      "underlying_operation_executed": false,
+      "aborts": [
+        {
+          "account": "retry",
+          "already_consumed": 0,
+          "c3_maximum": 0,
+          "operation_executed": false
+        }
+      ],
+      "significance": "the governing zero-retry law is mechanically enforceable, not merely documented"
+    },
+    {
+      "id": "N8",
+      "name": "SRC27-shaped four distinct accounts each independently capped",
+      "probe": "S1_src27_shaped_four_distinct_accounts",
+      "c3_maxima": {
+        "source_path_existence_access_check": 1,
+        "full_file_sha256_pass": 1,
+        "reader_invocation_metadata_read": 1,
+        "reader_invocation_full_read": 1,
+        "frame_materialization": 1,
+        "retry": 0
+      },
+      "first": "COMPLETED",
+      "second": "ABORTED_BY_C3_GUARD",
+      "underlying_operation_executed": false,
+      "c2_observed": {
+        "decoder_invocation": 2,
+        "frame_materialization": 1,
+        "full_file_sha256_pass": 1,
+        "reader_invocation_full_read": 1,
+        "reader_invocation_metadata_read": 1,
+        "source_path_existence_access_check": 1
+      },
+      "aborts": [
+        {
+          "account": "source_path_existence_access_check",
+          "already_consumed": 1,
+          "c3_maximum": 1,
+          "operation_executed": false
+        }
+      ],
+      "significance": "the four SRC27 lower-layer accounts are separately governable; the second decode aborted at the existence layer while the operation-level route-pass budget was untouched"
+    }
+  ],
+  "decoder_native_fail_closed_cases": [
+    {
+      "id": "D1",
+      "probe": "P3",
+      "case": "expected_source_sha256 mismatch",
+      "outcome": "REFUSED_FAIL_CLOSED",
+      "error": "source sha256 mismatch before governed decode",
+      "reader_invocations": 0,
+      "significance": "the decoder refuses at the hash comparison, before any read"
+    },
+    {
+      "id": "D2",
+      "probe": "P4",
+      "case": "encoding not in the frozen exact SHA allowlist",
+      "outcome": "REFUSED_FAIL_CLOSED",
+      "error": "encoding override is not in the frozen exact SHA/config allowlist",
+      "reader_invocations": 0,
+      "significance": "compatibility read is fail-closed on anything not the exact SHA"
+    }
+  ],
+  "summary": {
+    "c3_guard_cases": 8,
+    "all_demonstrated_abort_before_operation": true,
+    "decoder_native_fail_closed_cases": 2,
+    "guard_surfaces": [
+      "pathlib.Path.is_file",
+      "pre553_physical_decoder._sha",
+      "pyreadstat.read_sav",
+      "pyreadstat.read_dta"
+    ],
+    "production_mutated": false,
+    "patch_reverted": true,
+    "honesty_note": "builtins.open was patched as an OBSERVABILITY PROBE ONLY and was deliberately never used as a gate, because Python cannot see the reader internal opens."
+  },
+  "terminal": "HQ191_R9_BUDGET_COURT_RETURNED__HQ_REVIEW_REQUIRED"
+}

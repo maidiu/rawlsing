@@ -1,0 +1,154 @@
+{
+  "schema": "PYAT_HQ191_R9_SUCCESSOR_INSTRUMENT_OR_BLOCKER@1.0.0",
+  "lane": "PYAT-HQ191-R9-BUDGET-ENFORCEMENT-COURT-R1",
+  "role": "RABOCHII / source-free execution-accounting implementer - Space Bunny",
+
+  "answer_to_the_commissioned_question": {
+    "question": "Can lawful, conservative hard maximum authorization budgets be designed, source-free qualified, and actually enforced against the exact reader/code paths using synthetic carriers?",
+    "answer": "YES for 7 of the 10 mandatory O1-C07 accounts. NO for 3, plus one further account that the exercised code path never performs.",
+    "partial": true
+  },
+
+  "instrument_produced": {
+    "path": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-04/R9-BUDGET-ENFORCEMENT-COURT-R1/09_HARD_MAX_BUDGET_CANDIDATE.json",
+    "class": "NON_AUTHORIZING_CANDIDATE__NOT_A_WARRANT__AUTHORIZES_NOTHING",
+    "safety_invariants_verified": {
+      "signed": false,
+      "issued": false,
+      "authorizes_access": false,
+      "execution_authorized": false,
+      "issued_by": null,
+      "issue_date": null,
+      "signature_or_commit": null,
+      "locator_slots_unfilled": 7,
+      "locator_search_performed": 0,
+      "raw_source_operations": 0
+    },
+    "enforcement_helper": {
+      "path": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-04/R9-BUDGET-ENFORCEMENT-COURT-R1/r9_budget_enforcement.py",
+      "role": "typed ledger plus pre-operation C3 guard",
+      "production_mutated": false,
+      "reversible_patches_only": true
+    }
+  },
+
+  "governable_with_demonstrated_enforcement": [
+    {"account": "source-path existence/access checks", "c3_maximum_supported": 1, "enforcement_demonstrated_by": ["N1", "N4"], "measured_at": "python:pathlib.Path.is_file"},
+    {"account": "full-file SHA-256 passes", "c3_maximum_supported": 1, "enforcement_demonstrated_by": ["N2", "N5"], "measured_at": "python:pre553_physical_decoder._sha"},
+    {"account": "metadata reads", "c3_maximum_supported": 1, "enforcement_demonstrated_by": ["N3", "N6"], "measured_at": "python:pyreadstat reader binding, metadataonly=True"},
+    {"account": "full compatibility / full-route reads", "c3_maximum_supported": 1, "enforcement_demonstrated_by": ["N8"], "measured_at": "python:pyreadstat reader binding, metadataonly=False"},
+    {"account": "materialization / frame construction", "c3_maximum_supported": "0 or 1", "enforcement_demonstrated_by": ["N8"], "measured_at": "python:non-metadataonly reader return value"},
+    {"account": "decoder invocations", "c3_maximum_supported": "1 metadata-only, 2 compatibility", "enforcement_demonstrated_by": ["N1", "N2", "N3"], "measured_at": "python:pyreadstat reader binding, all invocations"},
+    {"account": "retries", "c3_maximum_supported": 0, "enforcement_demonstrated_by": ["N7"], "measured_at": "python:re-authorization of a decode for the same governed source key"}
+  ],
+
+  "still_ungovernable": [
+    {
+      "account": "path-level opens AND their measurement basis",
+      "finding_id": "OSL-01",
+      "why": "OS-level open(2) occurs inside pyreadstat's compiled Cython/C extension. Empirically measured: 0 Python-visible builtins.open calls during a reader call that demonstrably succeeded. Not observable, not countable, not cappable from Python.",
+      "what_this_court_refused_to_do": "Propose an OS-open ceiling anyway. No such number is proposed anywhere in this return.",
+      "what_is_provided_instead": "The reader-invocation ceiling. Each invocation necessarily opens the source at least once, so capping invocations bounds LOGICAL source accesses. This is an UPPER BOUND on accesses. It is explicitly NOT an account of opens and is not labelled as one.",
+      "o1_c07_consequence": "O1-C07 names this account as mandatory and separately required WITH its measurement basis. It cannot be satisfied at any enforceable layer. Per the commission's instruction, THE BLOCKER IS PRESERVED for this account."
+    },
+    {
+      "account": "selected-column reads",
+      "finding_id": "SEL-01",
+      "why": "Measured: the exact decoder path never supplies usecols. Observed [null, null, null] across the metadata and compatibility paths. A selected-column read is not a decoder-layer operation.",
+      "consequence": "Not countable or cappable at this layer. It is a property of a higher layer that consumes PhysicalSourceIncidence and asserts exactness against the frozen variable/ordinal sets.",
+      "already_governed_elsewhere": "SRC02 Q10B ordinal 58, SRC06 Q101 ordinal 20 and Q2061B ordinal 19, SRC14 v372 ordinal 466 are bound in the historical candidate's allowed_operations and are enforced by that higher layer's exactness law, plus the artifact 07 O1-C08 stop trigger on an absent variable, an absent ordinal or an UNEXPECTED selected column.",
+      "not_proposed_because": "A decoder-layer selected-read ceiling would guard an operation the decoder never performs."
+    },
+    {
+      "account": "byte counts where measurable",
+      "finding_id": "BYT-01",
+      "why": "Measured: neither the decoder nor the reader exposes a byte-count account. The quantity is not observable at this layer.",
+      "consequence": "'Where measurable' is not satisfied because it is not measurable here. No ceiling proposed."
+    },
+    {
+      "account": "header-prefix reads",
+      "finding_id": "HDR-01",
+      "why": "The exact reader/decoder path exercised here performs no bounded header-prefix read. The 176-byte quantity in artifact 07 is a SRC26-specific declared bound, not an operation observed at this layer.",
+      "consequence": "No ceiling proposed. A SRC26-specific header-prefix account would have to be enforced by whichever layer performs it, which this court did not exercise."
+    }
+  ],
+
+  "lowest_reliably_enforceable_layer": {
+    "layer": "python reader/decoder invocation layer",
+    "definition": "One governed decode entry call issues one or two pyreadstat reader invocations. Each is a distinct, separately interceptable, separately cappable logical source access.",
+    "why_not_lower": "The layer below is OS open(2) inside a compiled extension. OSL-01 shows it is invisible to Python interception.",
+    "evidence_of_reliability": "Eight C3 guard cases, all aborting BEFORE the unauthorized operation, plus two decoder-native fail-closed cases."
+  },
+
+  "does_the_enforceable_layer_satisfy_O1_C07": {
+    "verdict": "PARTIAL__SUBSTANTIVELY_BOUNDED_BUT_LITERALLY_INCOMPLETE",
+    "satisfied": "Access bounding is lawfully enforceable and demonstrated. Retries, existence checks, hash passes, metadata reads, full reads, frame materialization and decoder invocations are each separately counted and separately cappable, with abort before the unauthorized operation proven at each.",
+    "not_satisfied": "O1-C07 requires 'path-level opens and their measurement basis' as a separate mandatory account. That account is neither observable nor enforceable from Python.",
+    "acceptance_criterion": "Omega-1 O1-C07 acceptance requires expected budgets frozen before launch. Seven of ten accounts can now be frozen as C3 policy maxima with demonstrated enforcement. Three cannot. The acceptance criterion is therefore still not fully met.",
+    "commission_instruction_applied": "The commission directs: if O1-C07 genuinely requires a lower layer that cannot be enforced, return blocker preserved. That is what this lane returns."
+  },
+
+  "src27_preserved": {
+    "operation_level_law": "Exactly one governed fresh full Route-B pass, maximum one, zero retries. A second pass is not a retry; it is a separate run requiring new HQ-bound authority.",
+    "four_distinct_accounts": {
+      "existence_access_check": 1,
+      "full_file_sha256_hash_pass": 1,
+      "metadata_read": 1,
+      "full_compatibility_read": 1,
+      "independence": "SEPARATE maxima. NONE derived from the operation-level route-pass budget. Each is independently cappable and each independently stops the run."
+    },
+    "floor_not_promoted": "The hardened note's 'at minimum one ... of each' is recorded as a FLOOR. This court does NOT promote it to a ceiling. The C3 maxima above are new POLICY values supported by enforceability evidence, not historical expectations.",
+    "measured_support": "Probe S1: one SRC27-shaped decode on a synthetic carrier consumed exactly 1 existence, 1 hash, 1 metadata read, 1 full read, 1 frame materialization, 2 reader invocations."
+  },
+
+  "src35_preserved": {
+    "fresh_source_warrant_target": false,
+    "fresh_reads": 0,
+    "law": "No fresh access at all. Replay uses retained material only.",
+    "reader_lane_id": "NONE__RETAINED_ONLY",
+    "global_hard_zero": "WVS_SRC35_fresh_source_opens: 0",
+    "explicitly_not": "SRC35 is NOT unconstrained. No access account is created for it because it performs none, not because it is unconstrained."
+  },
+
+  "r9_status": {
+    "r9_closed": false,
+    "blocker_preserved": true,
+    "regression_check": "No prior C1 historical expectation was altered, re-derived, re-labelled or dropped by this court. All remain preserved verbatim under c1_already_established_NOT_proposed_here.",
+    "diagnostic_preserved": "The HQ190-C refusal to fabricate four missing account classes is preserved and NOT overturned. This court does not fill those four with C1 labels; it proposes C3 policy maxima at a declared layer for three of the four, and returns blocker preserved for the one that is structurally unobservable.",
+    "hostile_independent_review_required_before_hq_removes_r9": true
+  },
+
+  "prq_07": {
+    "hq_determination": "DISCHARGED_BY_COMPLETED_INDEPENDENT_C4_REVIEW_CHAIN",
+    "reopened_by_this_lane": false,
+    "concrete_contradiction_found": false,
+    "authorizes_source_access": false,
+    "closes_r9": false
+  },
+
+  "holds_observed": {
+    "locator_discovery": 0,
+    "locator_fills": 0,
+    "real_source_stat": 0,
+    "real_source_hash": 0,
+    "real_source_open": 0,
+    "real_source_decode": 0,
+    "real_source_materialization": 0,
+    "directory_inspection_for_sources": 0,
+    "warrant_issued": false,
+    "live_c4_executed": false,
+    "production_mutated": false,
+    "rawlsing_next_files_changed": 0,
+    "c7_implemented": false,
+    "actor_person_work_implemented": false,
+    "hq_handoff_edited": false,
+    "historical_warrant_artifacts_edited": false,
+    "hq190c_diagnostic_candidate_edited": false,
+    "astra_contacted_or_invoked": false,
+    "self_adopted": false,
+    "merged_into_control": false
+  },
+
+  "final_disposition": "R9_PARTIAL__SPECIFIC_ACCOUNTS_STILL_UNGOVERNABLE",
+  "terminal": "HQ191_R9_BUDGET_COURT_RETURNED__HQ_REVIEW_REQUIRED"
+}

@@ -1,0 +1,146 @@
+{
+  "schema": "PYAT_HQ191_R9_ACCOUNT_TAXONOMY@1.0.0",
+  "lane": "PYAT-HQ191-R9-BUDGET-ENFORCEMENT-COURT-R1",
+  "measurement_layer_of_record": "python reader/decoder invocation layer",
+  "accounts": [
+    {
+      "id": "ACC-01",
+      "account": "source-path existence/access checks",
+      "o1_c07": true,
+      "measured_at": "python:pathlib.Path.is_file",
+      "governable": true,
+      "c3_maxima_supported": 1,
+      "demonstrated_by": [
+        "P6",
+        "S2a"
+      ],
+      "c2_observed_per_decode": 1
+    },
+    {
+      "id": "ACC-02",
+      "account": "full-file SHA-256 passes",
+      "o1_c07": true,
+      "measured_at": "python:pre553_physical_decoder._sha (whole-file hashlib over the file)",
+      "governable": true,
+      "c3_maxima_supported": 1,
+      "demonstrated_by": [
+        "P7",
+        "S2b"
+      ],
+      "c2_observed_per_decode": 1
+    },
+    {
+      "id": "ACC-03",
+      "account": "path-level opens + measurement basis",
+      "o1_c07": true,
+      "measured_at": "OS open(2) inside pyreadstat compiled extension",
+      "governable": false,
+      "reason": "empirically 0 Python-visible opens during a successful reader call",
+      "c3_maxima_supported": null,
+      "demonstrated_by": [
+        "os_open_probe"
+      ],
+      "o1_c07_satisfied": false
+    },
+    {
+      "id": "ACC-04",
+      "account": "metadata/header reads",
+      "o1_c07": true,
+      "measured_at": "python:pyreadstat reader binding, metadataonly=True",
+      "governable": true,
+      "c3_maxima_supported": 1,
+      "demonstrated_by": [
+        "P8",
+        "S2c"
+      ],
+      "c2_observed_per_decode": 1
+    },
+    {
+      "id": "ACC-05",
+      "account": "selected/bounded reads",
+      "o1_c07": true,
+      "measured_at": "NOT REACHABLE at decoder layer",
+      "governable": false,
+      "reason": "SEL-01 measured: usecols never supplied (observed [null,null,null])",
+      "c3_maxima_supported": null,
+      "demonstrated_by": [
+        "S3"
+      ]
+    },
+    {
+      "id": "ACC-06",
+      "account": "full compatibility / full-route reads",
+      "o1_c07": true,
+      "measured_at": "python:pyreadstat reader binding, metadataonly=False",
+      "governable": true,
+      "c3_maxima_supported": 1,
+      "demonstrated_by": [
+        "P5",
+        "S1"
+      ],
+      "c2_observed_per_decode": 1
+    },
+    {
+      "id": "ACC-07",
+      "account": "decoder invocations",
+      "o1_c07": false,
+      "note": "not an O1-C07 account in its own right; counted as the sum of reader invocations",
+      "measured_at": "python:pyreadstat reader binding, all invocations",
+      "governable": true,
+      "c3_maxima_supported": "1 or 2 depending on source shape",
+      "demonstrated_by": [
+        "P1",
+        "P5",
+        "S1"
+      ],
+      "c2_observed_per_decode": "1 metadata-only, 2 compatibility"
+    },
+    {
+      "id": "ACC-08",
+      "account": "retries",
+      "o1_c07": true,
+      "measured_at": "python:re-authorization of a decode for the same governed source key",
+      "governable": true,
+      "c3_maxima_supported": 0,
+      "demonstrated_by": [
+        "P9a",
+        "P9b"
+      ],
+      "c2_observed_per_decode": 0
+    },
+    {
+      "id": "ACC-09",
+      "account": "materialization / frame construction",
+      "o1_c07": true,
+      "measured_at": "python:return value of a non-metadataonly reader invocation",
+      "governable": true,
+      "c3_maxima_supported": "0 or 1",
+      "demonstrated_by": [
+        "P5",
+        "S1"
+      ],
+      "c2_observed_per_decode": "0 metadata-only, 1 compatibility"
+    },
+    {
+      "id": "ACC-10",
+      "account": "byte counts where measurable",
+      "o1_c07": true,
+      "measured_at": "NOT EXPOSED by decoder or reader",
+      "governable": false,
+      "reason": "BYT-01 measured: quantity not observable at this layer",
+      "c3_maxima_supported": null,
+      "demonstrated_by": [
+        "S4"
+      ]
+    }
+  ],
+  "summary": {
+    "total": 10,
+    "governable_with_demonstrated_enforcement": 7,
+    "not_governable": 3,
+    "note": "ACC-03, ACC-05 and ACC-10 have no lawful ceiling at any enforceable layer. header-prefix reads (SRC26-specific, 176 bytes declared) is additionally not performed by the exercised code path."
+  },
+  "lowest_reliably_enforceable_layer": "python reader/decoder invocation layer",
+  "why_not_lower": "OS open(2) is inside a compiled Cython/C extension, invisible to Python interception, not separately countable, not cappable.",
+  "terminal": "HQ191_R9_BUDGET_COURT_RETURNED__HQ_REVIEW_REQUIRED"
+}

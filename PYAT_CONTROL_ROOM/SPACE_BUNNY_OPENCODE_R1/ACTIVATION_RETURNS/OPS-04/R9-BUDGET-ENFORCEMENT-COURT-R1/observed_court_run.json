@@ -1,0 +1,690 @@
+{
+  "allowlist_restored_after_injection": true,
+  "carriers": {
+    "SYN_DTA_TINY": {
+      "bytes": 2117,
+      "declared_shape": "two numeric variables, four rows, one user-missing value",
+      "decoder_entry": "decode_dta",
+      "derived_from_any_real_source": false,
+      "format": "dta",
+      "in_compatibility_allowlist": false,
+      "name": "SYN_DTA_TINY",
+      "path": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/r9court-ty7ymv49/SYN_DTA_TINY.dta",
+      "roundtrip_columns": [
+        "v_small",
+        "v_other"
+      ],
+      "roundtrip_proved": true,
+      "roundtrip_rows": 4,
+      "sha256": "1d1f5957630d802b09682a637efba1b8cb6e7497d8074a4e7fdd6d1034bd77d1",
+      "synthetic": true
+    },
+    "SYN_SAV_TINY": {
+      "bytes": 587,
+      "declared_shape": "two numeric variables, four rows, one user-missing value",
+      "decoder_entry": "decode_sav",
+      "derived_from_any_real_source": false,
+      "format": "sav",
+      "in_compatibility_allowlist": false,
+      "name": "SYN_SAV_TINY",
+      "path": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/r9court-ty7ymv49/SYN_SAV_TINY.sav",
+      "roundtrip_columns": [
+        "v_small",
+        "v_other"
+      ],
+      "roundtrip_proved": true,
+      "roundtrip_rows": 4,
+      "sha256": "a9df43ea7a4987251d93633531f9a8b89e4629e1dcbd3b8e8bb5b4b56b229edd",
+      "synthetic": true
+    },
+    "SYN_SAV_TINY_COMPAT": {
+      "bytes": 587,
+      "declared_shape": "identical content to SYN_SAV_TINY; distinct filename so its SHA differs is NOT relied upon",
+      "decoder_entry": "decode_sav",
+      "derived_from_any_real_source": false,
+      "format": "sav",
+      "in_compatibility_allowlist": false,
+      "name": "SYN_SAV_TINY_COMPAT",
+      "path": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/r9court-ty7ymv49/SYN_SAV_TINY_COMPAT.sav",
+      "roundtrip_columns": [
+        "v_small",
+        "v_other"
+      ],
+      "roundtrip_proved": true,
+      "roundtrip_rows": 4,
+      "sha256": "a9df43ea7a4987251d93633531f9a8b89e4629e1dcbd3b8e8bb5b4b56b229edd",
+      "synthetic": true
+    }
+  },
+  "category_law": {
+    "C1_historical": "read only from frozen artifacts; this court writes nothing here",
+    "C2_observed_synthetic": "measured below on synthetic carriers only; not evidence about any real survey file",
+    "C3_policy_maxima": "proposed authorization ceilings supplied to the guard; safety constraints, not claims about history"
+  },
+  "locator_discovery": 0,
+  "observability": {
+    "os_open_probe": {
+      "note": "A zero here while the read demonstrably succeeded proves the reader's own opens are not visible to Python-level open interception.",
+      "observed_paths": [],
+      "proc_fd_listing_available": false,
+      "python_builtins_open_calls_observed_during_reader_call": 0
+    }
+  },
+  "probes": {
+    "P1_sav_metadata_success_unbounded": {
+      "attempt": {
+        "detail": {
+          "row_count": 4,
+          "source_sha256": "a9df43ea7a4987251d93633531f9a8b89e4629e1dcbd3b8e8bb5b4b56b229edd",
+          "type": "PhysicalSourceIncidence",
+          "variable_count": 2
+        },
+        "outcome": "COMPLETED"
+      },
+      "ledger": {
+        "c2_observed_counts": {
+          "decoder_invocation": 1,
+          "full_file_sha256_pass": 1,
+          "reader_invocation_metadata_read": 1,
+          "source_path_existence_access_check": 1
+        },
+        "c2_operation_order": [
+          {
+            "account": "source_path_existence_access_check",
+            "ordinal": 1
+          },
+          {
+            "account": "full_file_sha256_pass",
+            "mechanism": "hashlib.sha256 over whole file",
+            "ordinal": 1
+          },
+          {
+            "account": "reader_invocation_metadata_read",
+            "format": "sav",
+            "metadataonly": true,
+            "ordinal": 1,
+            "row_limit": null,
+            "usecols": null
+          },
+          {
+            "account": "decoder_invocation",
+            "format": "sav",
+            "ordinal": 1
+          }
+        ],
+        "c3_aborts": [],
+        "c3_maxima": {},
+        "source_key": "SYN_SAV_TINY"
+      }
+    },
+    "P2_dta_metadata_success_unbounded": {
+      "attempt": {
+        "detail": {
+          "row_count": 4,
+          "source_sha256": "1d1f5957630d802b09682a637efba1b8cb6e7497d8074a4e7fdd6d1034bd77d1",
+          "type": "PhysicalSourceIncidence",
+          "variable_count": 2
+        },
+        "outcome": "COMPLETED"
+      },
+      "ledger": {
+        "c2_observed_counts": {
+          "decoder_invocation": 1,
+          "full_file_sha256_pass": 1,
+          "reader_invocation_metadata_read": 1,
+          "source_path_existence_access_check": 1
+        },
+        "c2_operation_order": [
+          {
+            "account": "source_path_existence_access_check",
+            "ordinal": 1
+          },
+          {
+            "account": "full_file_sha256_pass",
+            "mechanism": "hashlib.sha256 over whole file",
+            "ordinal": 1
+          },
+          {
+            "account": "reader_invocation_metadata_read",
+            "format": "dta",
+            "metadataonly": true,
+            "ordinal": 1,
+            "row_limit": null,
+            "usecols": null
+          },
+          {
+            "account": "decoder_invocation",
+            "format": "dta",
+            "ordinal": 1
+          }
+        ],
+        "c3_aborts": [],
+        "c3_maxima": {},
+        "source_key": "SYN_DTA_TINY"
+      }
+    },
+    "P3_sav_sha_mismatch_fail_closed": {
+      "attempt": {
+        "detail": {
+          "error_type": "DecoderError",
+          "message": "source sha256 mismatch before governed decode"
+        },
+        "outcome": "REFUSED_FAIL_CLOSED"
+      },
+      "expected": "DecoderError, and NO reader invocation should have occurred",
+      "ledger": {
+        "c2_observed_counts": {
+          "full_file_sha256_pass": 1,
+          "source_path_existence_access_check": 1
+        },
+        "c2_operation_order": [
+          {
+            "account": "source_path_existence_access_check",
+            "ordinal": 1
+          },
+          {
+            "account": "full_file_sha256_pass",
+            "mechanism": "hashlib.sha256 over whole file",
+            "ordinal": 1
+          }
+        ],
+        "c3_aborts": [],
+        "c3_maxima": {},
+        "source_key": "SYN_SAV_TINY"
+      }
+    },
+    "P4_sav_unlisted_encoding_refused": {
+      "attempt": {
+        "detail": {
+          "error_type": "DecoderError",
+          "message": "encoding override is not in the frozen exact SHA/config allowlist"
+        },
+        "outcome": "REFUSED_FAIL_CLOSED"
+      },
+      "expected": "DecoderError because synthetic SHA is not in COMPATIBILITY_ALLOWLIST",
+      "ledger": {
+        "c2_observed_counts": {
+          "full_file_sha256_pass": 1,
+          "source_path_existence_access_check": 1
+        },
+        "c2_operation_order": [
+          {
+            "account": "source_path_existence_access_check",
+            "ordinal": 1
+          },
+          {
+            "account": "full_file_sha256_pass",
+            "mechanism": "hashlib.sha256 over whole file",
+            "ordinal": 1
+          }
+        ],
+        "c3_aborts": [],
+        "c3_maxima": {},
+        "source_key": "SYN_SAV_TINY"
+      }
+    },
+    "P5_sav_compat_full_read_injected": {
+      "attempt": {
+        "detail": {
+          "row_count": 4,
+          "source_sha256": "a9df43ea7a4987251d93633531f9a8b89e4629e1dcbd3b8e8bb5b4b56b229edd",
+          "type": "PhysicalSourceIncidence",
+          "variable_count": 2
+        },
+        "outcome": "COMPLETED"
+      },
+      "expected": "BOTH a metadata read AND a full read AND a frame materialization",
+      "harness_injection": {
+        "disclosed": true,
+        "production_mutated": false,
+        "reverted_after_probe": true,
+        "what": "COMPATIBILITY_ALLOWLIST extended in memory with the synthetic carrier's own SHA",
+        "why": "the SRC27-shaped compatibility read is gated on an exact SHA that only a real source has"
+      },
+      "ledger": {
+        "c2_observed_counts": {
+          "decoder_invocation": 2,
+          "frame_materialization": 1,
+          "full_file_sha256_pass": 1,
+          "reader_invocation_full_read": 1,
+          "reader_invocation_metadata_read": 1,
+          "source_path_existence_access_check": 1
+        },
+        "c2_operation_order": [
+          {
+            "account": "source_path_existence_access_check",
+            "ordinal": 1
+          },
+          {
+            "account": "full_file_sha256_pass",
+            "mechanism": "hashlib.sha256 over whole file",
+            "ordinal": 1
+          },
+          {
+            "account": "reader_invocation_metadata_read",
+            "format": "sav",
+            "metadataonly": true,
+            "ordinal": 1,
+            "row_limit": null,
+            "usecols": null
+          },
+          {
+            "account": "decoder_invocation",
+            "format": "sav",
+            "ordinal": 1
+          },
+          {
+            "account": "reader_invocation_full_read",
+            "format": "sav",
+            "metadataonly": false,
+            "ordinal": 1,
+            "row_limit": null,
+            "usecols": null
+          },
+          {
+            "account": "decoder_invocation",
+            "format": "sav",
+            "ordinal": 2
+          },
+          {
+            "account": "frame_materialization",
+            "frame_is_none": false,
+            "ordinal": 1,
+            "rows": 4
+          }
+        ],
+        "c3_aborts": [],
+        "c3_maxima": {},
+        "source_key": "SYN_SAV_TINY_COMPAT_INJECTED"
+      }
+    },
+    "P6_guard_existence_aborts_second_decode": {
+      "c3_maxima_set": {
+        "source_path_existence_access_check": 1
+      },
+      "expected": {
+        "first_outcome": "COMPLETED",
+        "second_outcome": "ABORTED_BY_C3_GUARD",
+        "second_underlying_operation_executed": false
+      },
+      "first_decode": {
+        "detail": {
+          "row_count": 4,
+          "source_sha256": "a9df43ea7a4987251d93633531f9a8b89e4629e1dcbd3b8e8bb5b4b56b229edd",
+          "type": "PhysicalSourceIncidence",
+          "variable_count": 2
+        },
+        "outcome": "COMPLETED"
+      },
+      "guarded_account": "source_path_existence_access_check",
+      "ledger": {
+        "c2_observed_counts": {
+          "decoder_invocation": 1,
+          "full_file_sha256_pass": 1,
+          "reader_invocation_metadata_read": 1,
+          "source_path_existence_access_check": 1
+        },
+        "c2_operation_order": [
+          {
+            "account": "source_path_existence_access_check",
+            "ordinal": 1
+          },
+          {
+            "account": "full_file_sha256_pass",
+            "mechanism": "hashlib.sha256 over whole file",
+            "ordinal": 1
+          },
+          {
+            "account": "reader_invocation_metadata_read",
+            "format": "sav",
+            "metadataonly": true,
+            "ordinal": 1,
+            "row_limit": null,
+            "usecols": null
+          },
+          {
+            "account": "decoder_invocation",
+            "format": "sav",
+            "ordinal": 1
+          }
+        ],
+        "c3_aborts": [
+          {
+            "account": "source_path_existence_access_check",
+            "already_consumed": 1,
+            "c3_maximum": 1,
+            "operation_executed": false
+          }
+        ],
+        "c3_maxima": {
+          "source_path_existence_access_check": 1
+        },
+        "source_key": "SYN_SAV_TINY_GUARD"
+      },
+      "second_decode": {
+        "detail": {
+          "account": "source_path_existence_access_check",
+          "attempted": 2,
+          "c3_maximum": 1,
+          "underlying_operation_executed": false
+        },
+        "outcome": "ABORTED_BY_C3_GUARD"
+      },
+      "verdict": "ENFORCED_BEFORE_OPERATION"
+    },
+    "P7_guard_hash_aborts_second_decode": {
+      "c3_maxima_set": {
+        "full_file_sha256_pass": 1
+      },
+      "expected": {
+        "first_outcome": "COMPLETED",
+        "second_outcome": "ABORTED_BY_C3_GUARD",
+        "second_underlying_operation_executed": false
+      },
+      "first_decode": {
+        "detail": {
+          "row_count": 4,
+          "source_sha256": "a9df43ea7a4987251d93633531f9a8b89e4629e1dcbd3b8e8bb5b4b56b229edd",
+          "type": "PhysicalSourceIncidence",
+          "variable_count": 2
+        },
+        "outcome": "COMPLETED"
+      },
+      "guarded_account": "full_file_sha256_pass",
+      "ledger": {
+        "c2_observed_counts": {
+          "decoder_invocation": 1,
+          "full_file_sha256_pass": 1,
+          "reader_invocation_metadata_read": 1,
+          "source_path_existence_access_check": 2
+        },
+        "c2_operation_order": [
+          {
+            "account": "source_path_existence_access_check",
+            "ordinal": 1
+          },
+          {
+            "account": "full_file_sha256_pass",
+            "mechanism": "hashlib.sha256 over whole file",
+            "ordinal": 1
+          },
+          {
+            "account": "reader_invocation_metadata_read",
+            "format": "sav",
+            "metadataonly": true,
+            "ordinal": 1,
+            "row_limit": null,
+            "usecols": null
+          },
+          {
+            "account": "decoder_invocation",
+            "format": "sav",
+            "ordinal": 1
+          },
+          {
+            "account": "source_path_existence_access_check",
+            "ordinal": 2
+          }
+        ],
+        "c3_aborts": [
+          {
+            "account": "full_file_sha256_pass",
+            "already_consumed": 1,
+            "c3_maximum": 1,
+            "operation_executed": false
+          }
+        ],
+        "c3_maxima": {
+          "full_file_sha256_pass": 1
+        },
+        "source_key": "SYN_SAV_TINY_GUARD"
+      },
+      "second_decode": {
+        "detail": {
+          "account": "full_file_sha256_pass",
+          "attempted": 2,
+          "c3_maximum": 1,
+          "underlying_operation_executed": false
+        },
+        "outcome": "ABORTED_BY_C3_GUARD"
+      },
+      "verdict": "ENFORCED_BEFORE_OPERATION"
+    },
+    "P8_guard_metadata_read_aborts_second_decode": {
+      "c3_maxima_set": {
+        "reader_invocation_metadata_read": 1
+      },
+      "expected": {
+        "first_outcome": "COMPLETED",
+        "second_outcome": "ABORTED_BY_C3_GUARD",
+        "second_underlying_operation_executed": false
+      },
+      "first_decode": {
+        "detail": {
+          "row_count": 4,
+          "source_sha256": "a9df43ea7a4987251d93633531f9a8b89e4629e1dcbd3b8e8bb5b4b56b229edd",
+          "type": "PhysicalSourceIncidence",
+          "variable_count": 2
+        },
+        "outcome": "COMPLETED"
+      },
+      "guarded_account": "reader_invocation_metadata_read",
+      "ledger": {
+        "c2_observed_counts": {
+          "decoder_invocation": 1,
+          "full_file_sha256_pass": 2,
+          "reader_invocation_metadata_read": 1,
+          "source_path_existence_access_check": 2
+        },
+        "c2_operation_order": [
+          {
+            "account": "source_path_existence_access_check",
+            "ordinal": 1
+          },
+          {
+            "account": "full_file_sha256_pass",
+            "mechanism": "hashlib.sha256 over whole file",
+            "ordinal": 1
+          },
+          {
+            "account": "reader_invocation_metadata_read",
+            "format": "sav",
+            "metadataonly": true,
+            "ordinal": 1,
+            "row_limit": null,
+            "usecols": null
+          },
+          {
+            "account": "decoder_invocation",
+            "format": "sav",
+            "ordinal": 1
+          },
+          {
+            "account": "source_path_existence_access_check",
+            "ordinal": 2
+          },
+          {
+            "account": "full_file_sha256_pass",
+            "mechanism": "hashlib.sha256 over whole file",
+            "ordinal": 2
+          }
+        ],
+        "c3_aborts": [
+          {
+            "account": "reader_invocation_metadata_read",
+            "already_consumed": 1,
+            "c3_maximum": 1,
+            "operation_executed": false
+          }
+        ],
+        "c3_maxima": {
+          "reader_invocation_metadata_read": 1
+        },
+        "source_key": "SYN_SAV_TINY_GUARD"
+      },
+      "second_decode": {
+        "detail": {
+          "account": "reader_invocation_metadata_read",
+          "attempted": 2,
+          "c3_maximum": 1,
+          "underlying_operation_executed": false
+        },
+        "outcome": "ABORTED_BY_C3_GUARD"
+      },
+      "verdict": "ENFORCED_BEFORE_OPERATION"
+    },
+    "P9a_zero_retry_enforced": {
+      "first_invocation": {
+        "detail": {
+          "row_count": 4,
+          "source_sha256": "a9df43ea7a4987251d93633531f9a8b89e4629e1dcbd3b8e8bb5b4b56b229edd",
+          "type": "PhysicalSourceIncidence",
+          "variable_count": 2
+        },
+        "outcome": "COMPLETED"
+      },
+      "first_retry_authorization": {
+        "detail": {
+          "account": "retry",
+          "attempted": 1,
+          "c3_maximum": 0,
+          "underlying_operation_executed": false
+        },
+        "outcome": "ABORTED_BY_C3_GUARD"
+      },
+      "key_property": "with retries capped at 0 the retry is refused and no second decode is attempted",
+      "ledger": {
+        "c2_observed_counts": {
+          "decoder_invocation": 1,
+          "full_file_sha256_pass": 1,
+          "reader_invocation_metadata_read": 1,
+          "source_path_existence_access_check": 1
+        },
+        "c2_operation_order": [
+          {
+            "account": "source_path_existence_access_check",
+            "ordinal": 1
+          },
+          {
+            "account": "full_file_sha256_pass",
+            "mechanism": "hashlib.sha256 over whole file",
+            "ordinal": 1
+          },
+          {
+            "account": "reader_invocation_metadata_read",
+            "format": "sav",
+            "metadataonly": true,
+            "ordinal": 1,
+            "row_limit": null,
+            "usecols": null
+          },
+          {
+            "account": "decoder_invocation",
+            "format": "sav",
+            "ordinal": 1
+          }
+        ],
+        "c3_aborts": [
+          {
+            "account": "retry",
+            "already_consumed": 0,
+            "c3_maximum": 0,
+            "operation_executed": false
+          }
+        ],
+        "c3_maxima": {
+          "retry": 0
+        },
+        "source_key": "SYN_SAV_TINY_RETRY0"
+      }
+    },
+    "P9b_one_retry_consumes_further_budget": {
+      "first_invocation": {
+        "detail": {
+          "row_count": 4,
+          "source_sha256": "a9df43ea7a4987251d93633531f9a8b89e4629e1dcbd3b8e8bb5b4b56b229edd",
+          "type": "PhysicalSourceIncidence",
+          "variable_count": 2
+        },
+        "outcome": "COMPLETED"
+      },
+      "key_property": "the retry added a further existence check, hash pass and reader invocation",
+      "ledger": {
+        "c2_observed_counts": {
+          "decoder_invocation": 2,
+          "full_file_sha256_pass": 2,
+          "reader_invocation_metadata_read": 2,
+          "retry": 1,
+          "source_path_existence_access_check": 2
+        },
+        "c2_operation_order": [
+          {
+            "account": "source_path_existence_access_check",
+            "ordinal": 1
+          },
+          {
+            "account": "full_file_sha256_pass",
+            "mechanism": "hashlib.sha256 over whole file",
+            "ordinal": 1
+          },
+          {
+            "account": "reader_invocation_metadata_read",
+            "format": "sav",
+            "metadataonly": true,
+            "ordinal": 1,
+            "row_limit": null,
+            "usecols": null
+          },
+          {
+            "account": "decoder_invocation",
+            "format": "sav",
+            "ordinal": 1
+          },
+          {
+            "account": "retry",
+            "ordinal": 1
+          },
+          {
+            "account": "source_path_existence_access_check",
+            "ordinal": 2
+          },
+          {
+            "account": "full_file_sha256_pass",
+            "mechanism": "hashlib.sha256 over whole file",
+            "ordinal": 2
+          },
+          {
+            "account": "reader_invocation_metadata_read",
+            "format": "sav",
+            "metadataonly": true,
+            "ordinal": 2,
+            "row_limit": null,
+            "usecols": null
+          },
+          {
+            "account": "decoder_invocation",
+            "format": "sav",
+            "ordinal": 2
+          }
+        ],
+        "c3_aborts": [],
+        "c3_maxima": {
+          "retry": 1
+        },
+        "source_key": "SYN_SAV_TINY_RETRY1"
+      },
+      "second_invocation": {
+        "detail": {
+          "row_count": 4,
+          "source_sha256": "a9df43ea7a4987251d93633531f9a8b89e4629e1dcbd3b8e8bb5b4b56b229edd",
+          "type": "PhysicalSourceIncidence",
+          "variable_count": 2
+        },
+        "outcome": "COMPLETED"
+      }
+    }
+  },
+  "real_source_access": 0,
+  "schema": "PYAT_HQ191_R9_BUDGET_COURT_OBSERVATIONS@1.0.0",
+  "source_free": true
+}

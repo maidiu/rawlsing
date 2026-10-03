@@ -1,0 +1,80 @@
+{
+  "schema": "PYAT_HQ191_R9_SYNTHETIC_FIXTURE_MATRIX@1.0.0",
+  "lane": "PYAT-HQ191-R9-BUDGET-ENFORCEMENT-COURT-R1",
+  "source_free": true,
+  "real_source_access": 0,
+  "locator_discovery": 0,
+  "directory_inspection_for_sources": 0,
+  "generator": "synthetic_carriers.py",
+  "carriers": [
+    {
+      "name": "SYN_DTA_TINY",
+      "path_basename": "SYN_DTA_TINY.dta",
+      "format": "dta",
+      "decoder_entry": "decode_dta",
+      "bytes": 2117,
+      "sha256": "1d1f5957630d802b09682a637efba1b8cb6e7497d8074a4e7fdd6d1034bd77d1",
+      "roundtrip_proved": true,
+      "roundtrip_columns": [
+        "v_small",
+        "v_other"
+      ],
+      "roundtrip_rows": 4,
+      "in_compatibility_allowlist": false,
+      "synthetic": true,
+      "derived_from_any_real_source": false
+    },
+    {
+      "name": "SYN_SAV_TINY",
+      "path_basename": "SYN_SAV_TINY.sav",
+      "format": "sav",
+      "decoder_entry": "decode_sav",
+      "bytes": 587,
+      "sha256": "a9df43ea7a4987251d93633531f9a8b89e4629e1dcbd3b8e8bb5b4b56b229edd",
+      "roundtrip_proved": true,
+      "roundtrip_columns": [
+        "v_small",
+        "v_other"
+      ],
+      "roundtrip_rows": 4,
+      "in_compatibility_allowlist": false,
+      "synthetic": true,
+      "derived_from_any_real_source": false
+    },
+    {
+      "name": "SYN_SAV_TINY_COMPAT",
+      "path_basename": "SYN_SAV_TINY_COMPAT.sav",
+      "format": "sav",
+      "decoder_entry": "decode_sav",
+      "bytes": 587,
+      "sha256": "a9df43ea7a4987251d93633531f9a8b89e4629e1dcbd3b8e8bb5b4b56b229edd",
+      "roundtrip_proved": true,
+      "roundtrip_columns": [
+        "v_small",
+        "v_other"
+      ],
+      "roundtrip_rows": 4,
+      "in_compatibility_allowlist": false,
+      "synthetic": true,
+      "derived_from_any_real_source": false
+    }
+  ],
+  "carrier_law": {
+    "generated_by": "pyreadstat own writer (write_sav / write_dta)",
+    "deterministic_content": "two numeric variables, four rows, one user-missing value",
+    "legal": true,
+    "roundtrip_proved_before_use": true,
+    "allowlist_membership": "NONE of the synthetic SHAs is in pre553_physical_decoder.COMPATIBILITY_ALLOWLIST",
+    "allowlist_consequence": "the compatibility full-read branch is gated on an exact SHA only a real source can have, so the fail-closed refusal is measured FIRST as its own probe, and the branch is then exercised by a disclosed in-memory allowlist injection that is reverted"
+  },
+  "harness_injection": {
+    "disclosed": true,
+    "what": "COMPATIBILITY_ALLOWLIST extended IN MEMORY with a synthetic carrier SHA",
+    "why": "the SRC27-shaped compatibility read cannot otherwise be reached source-free",
+    "reverted_after_probe": true,
+    "production_mutated": false,
+    "allowlist_restored_verified": true,
+    "precedent": "C4C3 six disclosed harness injections, unmodified fail-closed behaviour measured first and kept as its own probe"
+  },
+  "terminal": "HQ191_R9_BUDGET_COURT_RETURNED__HQ_REVIEW_REQUIRED"
+}

@@ -1,0 +1,147 @@
+{
+  "allowlist_restored": true,
+  "probes": {
+    "S1_src27_shaped_four_distinct_accounts": {
+      "c2_observed_counts": {
+        "decoder_invocation": 2,
+        "frame_materialization": 1,
+        "full_file_sha256_pass": 1,
+        "reader_invocation_full_read": 1,
+        "reader_invocation_metadata_read": 1,
+        "source_path_existence_access_check": 1
+      },
+      "c3_aborts": [
+        {
+          "account": "source_path_existence_access_check",
+          "already_consumed": 1,
+          "c3_maximum": 1,
+          "operation_executed": false
+        }
+      ],
+      "distinct_layers_governed_independently": [
+        "frame_materialization",
+        "full_file_sha256_pass",
+        "reader_invocation_full_read",
+        "reader_invocation_metadata_read",
+        "retry",
+        "source_path_existence_access_check"
+      ],
+      "first_decode": {
+        "detail": "PhysicalSourceIncidence",
+        "outcome": "COMPLETED"
+      },
+      "harness_injection_disclosed": true,
+      "note": "SRC27's operation-level law (exactly one governed full Route-B pass, max one, zero retries) is preserved and is NOT used to derive any lower-layer ceiling. Each lower-layer maximum here is an independent C3 policy value.",
+      "second_decode_whole_call": {
+        "detail": {
+          "account": "source_path_existence_access_check",
+          "c3_maximum": 1,
+          "underlying_operation_executed": false
+        },
+        "outcome": "ABORTED_BY_C3_GUARD"
+      }
+    },
+    "S2a_zero_max_existence": {
+      "attempt": {
+        "detail": {
+          "account": "source_path_existence_access_check",
+          "c3_maximum": 0,
+          "underlying_operation_executed": false
+        },
+        "outcome": "ABORTED_BY_C3_GUARD"
+      },
+      "c2_observed_counts": {},
+      "c3_aborts": [
+        {
+          "account": "source_path_existence_access_check",
+          "already_consumed": 0,
+          "c3_maximum": 0,
+          "operation_executed": false
+        }
+      ],
+      "c3_maxima_set": {
+        "source_path_existence_access_check": 0
+      },
+      "guarded_account": "source_path_existence_access_check",
+      "verdict": "REFUSED_FIRST_OPERATION"
+    },
+    "S2b_zero_max_hash": {
+      "attempt": {
+        "detail": {
+          "account": "full_file_sha256_pass",
+          "c3_maximum": 0,
+          "underlying_operation_executed": false
+        },
+        "outcome": "ABORTED_BY_C3_GUARD"
+      },
+      "c2_observed_counts": {
+        "source_path_existence_access_check": 1
+      },
+      "c3_aborts": [
+        {
+          "account": "full_file_sha256_pass",
+          "already_consumed": 0,
+          "c3_maximum": 0,
+          "operation_executed": false
+        }
+      ],
+      "c3_maxima_set": {
+        "full_file_sha256_pass": 0
+      },
+      "guarded_account": "full_file_sha256_pass",
+      "verdict": "REFUSED_FIRST_OPERATION"
+    },
+    "S2c_zero_max_reader": {
+      "attempt": {
+        "detail": {
+          "account": "reader_invocation_metadata_read",
+          "c3_maximum": 0,
+          "underlying_operation_executed": false
+        },
+        "outcome": "ABORTED_BY_C3_GUARD"
+      },
+      "c2_observed_counts": {
+        "full_file_sha256_pass": 1,
+        "source_path_existence_access_check": 1
+      },
+      "c3_aborts": [
+        {
+          "account": "reader_invocation_metadata_read",
+          "already_consumed": 0,
+          "c3_maximum": 0,
+          "operation_executed": false
+        }
+      ],
+      "c3_maxima_set": {
+        "reader_invocation_metadata_read": 0
+      },
+      "guarded_account": "reader_invocation_metadata_read",
+      "verdict": "REFUSED_FIRST_OPERATION"
+    },
+    "S3_selected_column_read_reachability": {
+      "any_usecols_supplied": false,
+      "finding": "SEL-01: the exact decoder path never supplies usecols. A selected-column read is therefore NOT a decoder-layer operation and cannot be counted or capped at this layer. The selected-variable bound is a property of a higher layer that consumes PhysicalSourceIncidence, not of the reader.",
+      "usecols_values_observed_on_metadata_path": [
+        null,
+        null,
+        null
+      ]
+    },
+    "S4_byte_count_exposure": {
+      "byte_count_field_exposed_by_reader": false,
+      "finding": "BYT-01: neither the decoder nor the reader exposes a byte-count account. O1-C07's 'byte counts where measurable' cannot be satisfied at this layer because the quantity is not observable. Only SRC26's declared 176-byte header-prefix quantity exists, and that is a policy bound, not a measurement.",
+      "metadata_attributes_sampled": [
+        "column_names",
+        "number_rows",
+        "variable_storage_width",
+        "readstat_variable_types",
+        "missing_ranges",
+        "missing_user_values"
+      ],
+      "reader_returns": "tuple[DataFrame|None, metadata_container]"
+    }
+  },
+  "real_source_access": 0,
+  "schema": "PYAT_HQ191_R9_BUDGET_COURT_SUPPLEMENTARY@1.0.0",
+  "source_free": true
+}

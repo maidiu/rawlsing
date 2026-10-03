@@ -1,0 +1,265 @@
+{
+  "accounts_with_no_proposed_maximum": {
+    "accounts": [
+      {
+        "account": "path_level_opens_and_measurement_basis",
+        "consequence": "O1-C07's literal requirement - 'path-level opens AND their measurement basis' as a separate account - CANNOT be satisfied at the enforceable layer. Blocker preserved for this account.",
+        "reason": "OS-level opens occur inside pyreadstat's compiled extension and are invisible to Python interception. Empirically measured: 0 visible opens during a successful reader call. Neither a count nor a basis is observable.",
+        "what_is_provided_instead": "The reader-invocation ceiling. Each reader invocation necessarily opens the source at least once, so capping invocations bounds LOGICAL source accesses. This is an upper bound on accesses, NOT an account of opens, and is not relabelled as one."
+      },
+      {
+        "account": "selected_column_reads",
+        "consequence": "Cannot be counted or capped at the decoder layer. It is a property of a higher layer that consumes PhysicalSourceIncidence. Already-governed selected-variable bounds (SRC02 Q10B, SRC06 Q101/Q2061B, SRC14 v372) are enforced by that higher layer's own exactness assertions, not here.",
+        "not_proposed_because": "Proposing a decoder-layer selected-read ceiling would guard an operation the decoder never performs.",
+        "reason": "SEL-01, measured: the exact decoder path never supplies usecols (observed [null, null, null] across the metadata and compatibility paths). A selected-column read is not a decoder-layer operation."
+      },
+      {
+        "account": "header_prefix_reads",
+        "consequence": "No ceiling proposed. A SRC26-specific header-prefix account would have to be enforced by whatever layer performs it, which this court did not exercise.",
+        "reason": "The exact reader/decoder path exercised here performs no bounded header-prefix read. The 176-byte quantity in artifact 07 is a SRC26-specific declared bound, not an operation observed at this layer."
+      },
+      {
+        "account": "byte_counts_where_measurable",
+        "consequence": "No ceiling proposed. 'Where measurable' is not satisfied here because it is not measurable here.",
+        "reason": "BYT-01, measured: neither the decoder nor the reader exposes a byte-count account. The quantity is not observable at this layer."
+      }
+    ],
+    "statement": "For these accounts this court proposes NO maximum, because no lawful ceiling can be constructed at any enforceable layer. Proposing one would be a fabrication."
+  },
+  "c1_historical_preserved_not_relabelled": {
+    "artifact_07_per_source": {
+      "SRC02": {
+        "expected_full_reads": 0,
+        "expected_selected_reads": 1,
+        "max_retry_budget": 0
+      },
+      "SRC06": {
+        "expected_full_reads": 0,
+        "expected_selected_reads": 1,
+        "max_retry_budget": 0
+      },
+      "SRC08": {
+        "expected_full_reads": 0,
+        "expected_metadata_reads": 1,
+        "expected_selected_reads": 0,
+        "max_retry_budget": 0
+      },
+      "SRC12": {
+        "expected_full_reads": 0,
+        "expected_metadata_reads": 1,
+        "expected_selected_reads": 0,
+        "max_retry_budget": 0
+      },
+      "SRC14": {
+        "expected_full_reads": 0,
+        "expected_selected_reads": 1,
+        "max_retry_budget": 0
+      },
+      "SRC26": {
+        "expected_full_reads": 0,
+        "expected_header_prefix_bytes": 176,
+        "expected_selected_reads": 0,
+        "max_retry_budget": 0
+      },
+      "SRC27": {
+        "expected_full_route_passes": 1,
+        "expected_full_route_passes_max": 1,
+        "max_retry_budget": 0
+      },
+      "SRC35": {
+        "fresh_reads": 0,
+        "max_retry_budget": 0
+      }
+    },
+    "note": "Governed figures. Preserved verbatim. Not maxima, not re-derived, not re-labelled.",
+    "src27_hardened_note_floor": "The run will require AT MINIMUM one existence/access check, one full SHA-256 hash pass, one metadata read, and one full compatibility read. 'At minimum' is a FLOOR. This court does NOT promote it to a ceiling.",
+    "src27_operation_level_law": "Exactly one governed fresh full Route-B pass, maximum one, zero retries. A second pass is not a retry; it is a separate run requiring new HQ-bound authority.",
+    "src35_law": "Retained comparator. fresh_reads 0. No fresh access at all. Not a fresh-source warrant target.",
+    "warrant_candidate_historical_c4b_slots_still_empty": {
+      "decoder_invocations": "REQUIRED_EXACT_COUNT",
+      "full_file_sha256_passes": "REQUIRED_EXACT_COUNT",
+      "note": "The historical C4B slots remain empty of values. This court does not fill them with C1 labels. It proposes C3 policy maxima separately, at a declared layer.",
+      "path_opens": "REQUIRED_EXACT_COUNT_AND_BASIS"
+    }
+  },
+  "declared_measurement_layer": {
+    "definition": "One governed decode entry call issues one or two pyreadstat reader invocations. Each is a distinct, separately interceptable, separately cappable logical source access.",
+    "layer": "python reader/decoder invocation layer",
+    "os_open_layer": "NOT ENFORCEABLE - empirically 0 Python-visible opens during a successful reader call. No OS-open ceiling proposed."
+  },
+  "document_class": "NON_AUTHORIZING_CANDIDATE__NOT_A_WARRANT__AUTHORIZES_NOTHING",
+  "enforcement_evidence_summary": {
+    "decode_entry_to_reader_invocation_observed": {
+      "compatibility_decode": 2,
+      "metadata_only_decode": 1
+    },
+    "enforced_before_operation_verdicts": 6,
+    "probes_run": 16,
+    "raw_evidence": [
+      "observed_court_run.json",
+      "observed_supplementary_run.json"
+    ],
+    "src27_shaped_four_distinct_accounts_observed": {
+      "decoder_invocation": 2,
+      "frame_materialization": 1,
+      "full_file_sha256_pass": 1,
+      "reader_invocation_full_read": 1,
+      "reader_invocation_metadata_read": 1,
+      "source_path_existence_access_check": 1
+    },
+    "verdict_labels": [
+      "ENFORCED_BEFORE_OPERATION",
+      "REFUSED_FIRST_OPERATION"
+    ]
+  },
+  "enforcement_helper": {
+    "builtins_open_role": "OBSERVABILITY PROBE ONLY - deliberately NOT a gate",
+    "guard_property": "Every counter is checked BEFORE the guarded callable is invoked. On exhaustion the guard raises BudgetExceeded and the underlying operation never executes.",
+    "module": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-04/R9-BUDGET-ENFORCEMENT-COURT-R1/r9_budget_enforcement.py",
+    "module_sha256": "98c64b9e9dfb1f399f31740226b5f51cc20eb6a1f2b4f52585b8e82edb95514f",
+    "patch_reverted_on_exit": true,
+    "patched_surfaces": [
+      "pathlib.Path.is_file",
+      "rawlsing_next.pre553_physical_decoder._sha",
+      "pyreadstat.read_sav",
+      "pyreadstat.read_dta"
+    ],
+    "production_mutated": false
+  },
+  "hq_policy_authority_required": true,
+  "lane": "PYAT-HQ191-R9-BUDGET-ENFORCEMENT-COURT-R1",
+  "proposed_c3_policy_maxima": {
+    "SRC35": {
+      "fresh_reads": 0,
+      "in_fresh_source_target_set": false,
+      "policy": "Retained comparator. No fresh access account is created for SRC35 at all. Absence of an account is not absence of a constraint: the zero-fresh-read law and the global hard zero WVS_SRC35_fresh_source_opens=0 remain in force."
+    },
+    "global": {
+      "per_source_decode_entry_calls": 1,
+      "per_source_decode_entry_calls_basis": "One governed decode per authorised source under this warrant. A second decode of the same source aborts at the existence/access layer before executing (probe P6). Distinct sources each get their own budget.",
+      "retry": 0,
+      "retry_basis": "Mirrors the already-governed zero-retry law. Demonstrated enforceable at probe P9a: with maximum 0 the FIRST retry authorization is refused before any second decode."
+    },
+    "per_source_layer_maxima": {
+      "SRC02": {
+        "decoder_invocation": 1,
+        "existence_access": 1,
+        "frame_materialization": 0,
+        "full_file_sha256_pass": 1,
+        "full_read": 0,
+        "metadata_read": 1,
+        "reader_invocation_total": 1,
+        "retry": 0
+      },
+      "SRC06": {
+        "decoder_invocation": 1,
+        "existence_access": 1,
+        "frame_materialization": 0,
+        "full_file_sha256_pass": 1,
+        "full_read": 0,
+        "metadata_read": 1,
+        "reader_invocation_total": 1,
+        "retry": 0
+      },
+      "SRC08": {
+        "decoder_invocation": 1,
+        "existence_access": 1,
+        "frame_materialization": 0,
+        "full_file_sha256_pass": 1,
+        "full_read": 0,
+        "metadata_read": 1,
+        "reader_invocation_total": 1,
+        "retry": 0
+      },
+      "SRC12": {
+        "decoder_invocation": 1,
+        "existence_access": 1,
+        "frame_materialization": 0,
+        "full_file_sha256_pass": 1,
+        "full_read": 0,
+        "metadata_read": 1,
+        "reader_invocation_total": 1,
+        "retry": 0
+      },
+      "SRC14": {
+        "decoder_invocation": 1,
+        "existence_access": 1,
+        "frame_materialization": 0,
+        "full_file_sha256_pass": 1,
+        "full_read": 0,
+        "metadata_read": 1,
+        "reader_invocation_total": 1,
+        "retry": 0
+      },
+      "SRC26": {
+        "decoder_invocation": 1,
+        "existence_access": 1,
+        "frame_materialization": 0,
+        "full_file_sha256_pass": 1,
+        "full_read": 0,
+        "metadata_read": 1,
+        "reader_invocation_total": 1,
+        "retry": 0
+      },
+      "SRC27": {
+        "decoder_invocation": 2,
+        "existence_access": 1,
+        "frame_materialization": 1,
+        "full_file_sha256_pass": 1,
+        "full_read": 1,
+        "metadata_read": 1,
+        "reader_invocation_total": 2,
+        "retry": 0
+      }
+    },
+    "semantics": "A governed run that would exceed any of these MUST STOP. It may not silently widen authority. A maximum narrower than a future authorized run's real need is an acceptable outcome: the run stops and HQ issues a new authority.",
+    "src27_four_distinct_accounts_preserved": {
+      "existence_access_check": 1,
+      "full_compatibility_read": 1,
+      "full_file_sha256_hash_pass": 1,
+      "independence_law": "These four are SEPARATE accounts with SEPARATE maxima. NONE is derived from the operation-level route-pass budget. Setting route passes to 1 does not license any of them, and exceeding any of them stops the run independently of the route-pass count.",
+      "measured_support": "Probe S1: a single SRC27-shaped decode on a synthetic carrier consumed exactly 1 existence, 1 hash, 1 metadata read, 1 full read, 1 frame materialization and 2 reader invocations.",
+      "metadata_read": 1
+    },
+    "status": "PROPOSED_POLICY_NOT_ADOPTED__NOT_AUTHORIZED__REQUIRES_HQ_POLICY_DECISION"
+  },
+  "purpose": "Freeze PROPOSED C3 policy hard maxima at a declared, demonstrated-enforceable measurement layer, so that HQ can adjudicate whether to adopt them. This instrument authorizes no access and issues nothing.",
+  "r9_status": {
+    "accounts_now_governable_with_demonstrated_enforcement": 7,
+    "accounts_still_ungovernable": [
+      "path_level_opens_and_measurement_basis",
+      "selected_column_reads",
+      "header_prefix_reads",
+      "byte_counts_where_measurable"
+    ],
+    "blocker_preserved_reason": "O1-C07 mandates a separate path-level-opens account with its measurement basis. That account is not observable from Python and therefore cannot be governed. Per the commission's instruction, the blocker is preserved for it.",
+    "hostile_independent_review_required_before_hq_removes_r9": true,
+    "o1_c07_satisfied": "PARTIAL__SUBSTANTIVELY_BOUNDED_BUT_LITERALLY_INCOMPLETE",
+    "r9_closed": false
+  },
+  "safety_invariants": {
+    "authorizes_access": false,
+    "creates_no_authority_statement": "Reading, hashing, diffing or storing this instrument is not source access and is not a pre-warrant exception. No field authorizes hashing, statting, metadata reads, path-level opens or file opens.",
+    "execution_authorized": false,
+    "issue_date": null,
+    "issued": false,
+    "issued_by": null,
+    "locator_placeholder_literal": "<REQUIRED_FILL_IN_SLOT__SOURCE_LOCATOR_FILL_REQUIRED_BEFORE_WARRANT_ISSUANCE>",
+    "locator_search_performed": 0,
+    "locator_slots_unfilled": 7,
+    "raw_source_operations": 0,
+    "signature_or_commit": null,
+    "signed": false,
+    "warrant_status": "CANDIDATE_ONLY__NOT_ISSUED__NOT_SIGNED__NO_RAW_ACCESS_AUTHORIZED"
+  },
+  "schema": "PYAT_HQ191_R9_HARD_MAX_BUDGET_CANDIDATE@1.0.0",
+  "src35_law_preserved": {
+    "explicitly_not": "SRC35 is NOT unconstrained. Absence of an access account is not absence of a constraint.",
+    "fresh_reads": 0,
+    "fresh_source_warrant_target": false,
+    "global_hard_zero": "WVS_SRC35_fresh_source_opens: 0",
+    "law": "No fresh access at all. Replay uses retained material only.",
+    "reader_lane_id": "NONE__RETAINED_ONLY"
+  },
+  "terminal": "HQ191_R9_BUDGET_COURT_RETURNED__HQ_REVIEW_REQUIRED"
+}
