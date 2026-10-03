@@ -1540,4 +1540,102 @@ Current technical resonance:
 
 `KERNEL = OPEN_DISCOVERY`.
 
+---
+
+## R12 post-fifth tail third-pass residual audit
+
+Artifact:
+`78_POST_FIFTH_BANKING_TAIL_THIRD_PASS_RESIDUAL_AUDIT_R1.md`.
+
+A third independent pass over transcript lines `1752–3689` used a stricter test:
+not merely whether a concept exists in Sorok, but whether every distinct engineering/game-loop/evaluation consequence is live-owned.
+
+It found five additional residuals.
+
+### Bounded causal slack
+
+`SPD-0235`:
+
+> **UNSPECIFIED != AVAILABLE FOR RETCON.**
+
+Late materialization may use unresolved causal allocation only when the remaining causal budget is bounded or derivably constrained by established transition/domain/time/contribution capacity and lawful contributor classes.
+
+Unknown cause is not unlimited causal budget.
+
+This does not require a new causal-slack owner.
+
+Risk:
+`RISK-192`.
+
+### ATTEND non-lore-vending
+
+`SPD-0236`:
+
+> **ATTENTION MAY INCREASE RESOLUTION WITHOUT INCREASING NARRATIVE SIGNIFICANCE.**
+
+Focused ATTEND must lawfully return mundane, low-significance, uncertain, actor-unknown or valid-empty results.
+
+Otherwise the product trains:
+`ATTEND = CLICK FOR LORE`
+even if substantive truth remains query-invariant.
+
+Risk:
+`RISK-193`.
+
+### Knowledge / non-completion alpha hypothesis
+
+`SPD-0234`:
+
+Candidate alpha/kernel-discrimination signature:
+
+`MODEL FIDELITY ↑`
++
+`CONTEXTUAL DIFFERENTIATION ↑`
+while
+`CLAIMED TOTALIZATION / ESSENTIALIZING MASTERY ↓`.
+
+This is a research hypothesis, not a user-facing score or proof of moral/spiritual improvement.
+
+`Q-ALPHA-001` now owns the test.
+
+### Common-cause resonance retrieval
+
+`Q-MEANINGSTRATA-001` now explicitly owns the engineering seam:
+
+`FACT A + FACT B`
+→ provenance-bearing derived query over current authoritative causal/developmental state
+→ `SHARED UPSTREAM ANTECEDENT SUPPORT / NONE / UNDERDETERMINED`.
+
+Preserve:
+- shared antecedent != direct causation;
+- shared antecedent != actor interpretation true;
+- no shared antecedent found != actor interpretation forbidden.
+
+No global hidden symbolic-meaning graph.
+
+### Late shared-root fact propagation to active branches
+
+`Q-LAZY-001` and `Q-PERSONSHARE-001` now explicitly own:
+- root/version compatibility;
+- causally inert vs causally active late facts;
+- already-resolved conflicting particulars;
+- automatic inheritance vs version-bounded noninheritance;
+- replay/provenance receipts.
+
+Strong constraint:
+
+> **Shared pre-contact truth may expand; active continuity history may not be silently rewritten.**
+
+Artifact 69 now exposes this as Q7.
+
+### Artifact currentness
+
+Artifact 70 now explicitly states:
+- causal slack is a bounded admission concept, not a required new state object;
+- ATTEND must not become a lore dispenser.
+
+Artifact 71 now explicitly banks the common-cause resonance retrieval seam.
+
+Question count remains unchanged.
+
 
