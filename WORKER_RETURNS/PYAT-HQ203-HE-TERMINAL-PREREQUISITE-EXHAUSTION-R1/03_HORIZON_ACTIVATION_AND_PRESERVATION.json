@@ -1,0 +1,116 @@
+{
+  "schema": "PYAT_HQ203_HE_HORIZON_ACTIVATION_AND_PRESERVATION@1.0.0",
+  "worker": "PYAT HQ203 H-E",
+  "branch": "agent/rabochii-pyat-hq203-he-r1",
+  "commissioned_tip": "95c4eba0b556b397e1decb5fad07ea2ce7158bd8",
+  "audit_docket_row": "W13",
+  "terminal_citation": "TERMINAL_DEMAND_ENVELOPE.md §6 and §13 Q6",
+  "recorded_finding": "CONDITIONAL_NOT_CURRENTLY_ACTIVATED",
+  "law_quoted": {
+    "envelope_section_6": "Absolute Horizon is not stratum 10, not a synonym for religion, and not a demographic variable. It is the evolving relation to what is ultimately binding: the horizon within which finite strata can be absolutized, relativized, judged, mourned, refused, reconciled or transformed. WHERE GOVERNED UPSTREAM MATERIAL BEARS ON ABSOLUTE HORIZON, the downstream chain must preserve its distinct semantic status and its relations to finite strata without reducing it to biography, religiosity, ideology score, or static identity. V3/V2 later realize lived orientation/expression. V553-V558 must preserve the lawful structural/horizon prerequisites and constraints without manufacturing actor belief.",
+    "envelope_q6": "If Horizon-relevant governed material exists, is its distinct status preserved rather than flattened into finite-stratum or religiosity semantics?",
+    "td_r03_section_11": "Absolute Horizon remains separate from all nine finite strata. V556 preserves only explicit upstream AH authority; it never infers AH from religion, ideology, survey wording, route/channel type, contradiction or attractor topology.",
+    "ruling_section_7": "Absolute Horizon remains distinct from all nine finite strata and generic Horizon context. Preserve only explicit governed AH authority; never infer AH from religion, ideology, route/channel, contradiction or topology.",
+    "crosswalk_section_4": "Do not restore the nine fixed strata as mandatory current ontology. HISTORICAL_NINE_STRATA = DESIGN_REQUIREMENTS_ANCESTRY."
+  },
+  "exact_activation_condition": {
+    "condition": "Activation requires the existence of authorized/governed upstream material that bears on Absolute Horizon. The obligation is self-cancelling while no such material is admitted.",
+    "condition_is_not": [
+      "the existence of religion- or ideology-shaped survey wording",
+      "the presence of a stratum-10-like taxonomy slot",
+      "attractor topology or contradiction between routes",
+      "any V3/V2 lived orientation, expression or self-narration",
+      "repository presence of the word 'Horizon'"
+    ],
+    "who_activates": "An upstream structural claim owner admitting an authorized Horizon-relevant material instance. PRE-V3 does not activate this obligation by itself and must not invent a producer."
+  },
+  "activation_scan": {
+    "method": "bounded exact git-object scans at the commissioned tip; no checkout widening, no survey access",
+    "scans": [
+      {
+        "scope": "git ls-tree -r --name-only HEAD | grep -i horizon",
+        "result": "ONE match: PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/report/K_CLOSED35_HORIZONTAL_MATRIX.md",
+        "assessment": "NOT_HORIZON_RELATED — 'HORIZONTAL' (matrix orientation), not 'Absolute Horizon'. No Horizon-specific artifact, producer, claim, rule or instance exists in the current tree."
+      },
+      {
+        "scope": "grep -c -i horizon over materialized HQD-125 acceptance law (24_) and its crosswalk (25_)",
+        "result": "0 and 0",
+        "assessment": "DECISIVE — the current binding functional acceptance law and its crosswalk do not mention Absolute Horizon at all. The conditional obligation is not propagated into F1-F8 gates or the crosswalk rows. It survives only in the Dva terminal envelope and audit matrix row W13."
+      },
+      {
+        "scope": "grep -c -i horizon over TERMINAL_DEMAND_ENVELOPE.md",
+        "result": "6",
+        "assessment": "The obligation's only current textual authority is the terminal envelope itself (§6 and §13 Q6), which self-declares as a governing architecture lens and not a new ontology."
+      },
+      {
+        "scope": "grep -i 'horizon|attractor|feedback|recurren|reinforc|destabili' over D12 TERMINAL_CAPABILITY_CLASSIFICATION.csv (33 capability rows C01-C33, blob 816f7181af2bf66b794a49ce32746eae1b6e2966 at commit b2f225b44fd643d566375cb138d1681e5b808143)",
+        "result": "ZERO matching rows",
+        "assessment": "DECISIVE — the terminal capability ledger that enumerates required empirical capabilities contains no Horizon row and no feedback/attractor row. Both conditional objective obligations are absent from the terminal capability ledger entirely."
+      },
+      {
+        "scope": "F2 STRUCTURAL_ATTRACTOR_PREREQUISITE_TOPOLOGY required fields in TD-R03 §8",
+        "result": "Field 'native geography/scope, finite-stratum refs and explicit AH refs' is present in the required field list",
+        "assessment": "The carrier slot for AH refs EXISTS in accepted V556 F2 architecture, but F2 itself is valid-empty pending a rule registry, so no AH ref instance exists. Provision without activation."
+      }
+    ],
+    "conclusion": "No current authorized source, rule, claim or material instance activates the Horizon-relevant preservation obligation within the inspected current control chain."
+  },
+  "what_must_be_preserved_if_activated": {
+    "condition_of_preservation": "Only upon an authorized upstream Horizon-relevant material instance",
+    "requirements": [
+      "Preserve Absolute Horizon as a DISTINCT semantic class, separate from the nine finite strata, from religion, from ideology score, from biography and from static identity.",
+      "Preserve its relations to finite strata (absolutization, relativization, judgement, mourning, refusal, reconciliation, transformation) as governed relations, not as derived scores.",
+      "Preserve lossless objective identity, provenance, uncertainty, noncomparability and negative authority so the obligation is replayable.",
+      "Preserve the actor firewall: PRE-V3 preserves the structural/horizon prerequisite and constraint; it must NOT manufacture actor belief, lived orientation or self-understanding.",
+      "Preserve the prohibition on inference: never infer AH from religion, ideology, survey wording, route/channel type, contradiction, or attractor topology.",
+      "Preserve currentness/publication/lifecycle identity so the AH instance is selectable current vs historical with exact replay."
+    ],
+    "carrier_forms_available_if_activated": [
+      "V556 F2 explicit AH refs field (accepted architecture, currently unpopulated)",
+      "Generic scoped semantic/result forms in m3_v556_higher_order_structural.py (OBJECTIVE_STRUCTURAL_RESULT semantic class)",
+      "ObjectiveNonEventCurrentnessReceipt currentness chain (authority, structural currentness basis, decision effective time, selection record, producer object, world/release root)",
+      "B5 lifecycle orthogonal PUBLICATION/SELECTION/VALIDITY/REPLAY/REBUILD states with immutable exact refs",
+      "SDTF §12 epistemic-class separation so AH material cannot be read as rendered expression or generated runtime fact"
+    ],
+    "gap_if_activated": "No dedicated AH producer, no AH-specific result semantic class, and no demonstrated demand-to-schema mapping. A generic structural result could carry an AH ref, but the lossless AH-specific representation obligation would then require its own demonstrated mapping. This is why the audit recorded W13 authority_form as 'generic scoped semantic/result forms exist; exact demand-to-current-schema mapping not located'."
+  },
+  "what_remains_dormant_or_conditional": [
+    {
+      "item": "Absolute Horizon preservation obligation",
+      "state": "DORMANT_CONDITIONAL",
+      "activation_trigger": "Admission of an authorized upstream Horizon-relevant material instance",
+      "current_evidence_of_non_activation": "Zero Horizon mentions in HQD-125 and crosswalk; zero Horizon rows in D12 ledger; zero Horizon-specific artifacts in the tree"
+    },
+    {
+      "item": "F2 explicit AH refs field",
+      "state": "PROVISIONED_BUT_UNPOPULATED",
+      "activation_trigger": "First nonempty F2 tranche under an accepted attractor-prerequisite rule registry",
+      "current_evidence_of_non_activation": "V556 ruling first-tranche default VALID_EMPTY_NO_GOVERNED_RULE; V556 production blocked"
+    },
+    {
+      "item": "V3/V2 lived Horizon orientation and expression",
+      "state": "DOWNSTREAM_V3_V2_OWNED",
+      "activation_trigger": "Sociological world maturity crossing the deliberately deferred PRE-V3->V3 seam",
+      "current_evidence_of_non_activation": "PRE-V3->V3 seam deliberately deferred (HQD-125 §11, crosswalk §2); no PRE-V3->V3 actor/person implementation under hold"
+    }
+  ],
+  "no_invented_producer_declaration": {
+    "producer_invented": false,
+    "declaration": "No Horizon producer, no AH ontology, no AH taxonomy and no AH rule authority is proposed, drafted or implied by this return. The commission instructs that if nothing currently activates the obligation, the scope is recorded rather than a producer invented. That instruction is followed exactly.",
+    "what_would_be_required_to_close": "Either (a) an adopted finding that no Horizon-relevant material will ever be admitted, retiring the conditional obligation by decision; or (b) an authorized Horizon-relevant material instance plus an adopted demand-to-schema mapping establishing lossless AH representation. Neither exists in the inspected record."
+  },
+  "classification": "CONDITIONAL_NOT_CURRENTLY_ACTIVATED",
+  "blocks_prev3_completion": false,
+  "debt_class": "DORMANT_CONDITIONAL",
+  "confidence": {
+    "level": "HIGH",
+    "basis": "Four independent bounded exact scans at the commissioned tip, including two decisive negatives (zero Horizon mentions in the current binding functional acceptance law and its crosswalk; zero Horizon/attractor rows in the 33-row terminal capability ledger).",
+    "limit": "Scoped to the inspected current control chain and the artifact tree at 95c4eba0. Consistent with the audit's own inspection limits, this does not claim that no unpublished branch or worktree contains an authorized Horizon instance. The audit's W13 source_backed_live_occupancy field likewise records 'Unknown whether current authorized corpus activates this demand' — this return narrows that to 'not activated within the inspected current control chain' and does not upgrade it to a universal absence claim."
+  },
+  "audit_w13_disposition": {
+    "audit_classification": "UNKNOWN__FURTHER_FORENSICS_REQUIRED",
+    "this_return_classification": "CONDITIONAL_NOT_CURRENTLY_ACTIVATED",
+    "relationship": "NARROWING_NOT_CONTRADICTION",
+    "reasoning": "The audit recorded two separate unknowns for W13: (1) whether authorized material activates the demand, and (2) the exact lossless objective representation if activated. This return resolves (1) to NOT ACTIVATED within the inspected current control chain, on direct evidence, and leaves (2) explicitly open. The audit's single UNKNOWN classification is therefore split rather than overturned. Residual (2) survives into 07_COMPLETION_BLOCKER_CLASSIFICATION.json as a conditional blocker."
+  }
+}

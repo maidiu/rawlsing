@@ -1,0 +1,69 @@
+{
+  "schema": "PYAT_HQ203_HE_SERVING_REPLAY_COVERAGE@1.0.0",
+  "worker": "PYAT HQ203 H-E",
+  "branch": "agent/rabochii-pyat-hq203-he-r1",
+  "commissioned_tip": "95c4eba0b556b397e1decb5fad07ea2ce7158bd8",
+  "question": "For every retained objective prerequisite, can current PRE-V3 preserve identity, provenance, valid/effective time, current/historical selection, uncertainty/noncomparability, permissions/use, and replay/invalidation?",
+  "classification_law": "If semantics are fixed but serving is incomplete, classify as serving/integration debt rather than missing ontology.",
+  "dimensions": [
+    {
+      "dimension": "identity",
+      "current_lawful_representation": "Immutable exact refs throughout. m4_v557_v558_publication_repository.py AuthorityRef/ExactRef with semantic_hash; V555 route identity = one V554 F1 x one governed route rule/version x one mediation locus/channel x one receiving-position constraint; F2 attractor_prerequisite_topology_id plus attractor_rule_id + immutable version; ObjectiveNonEventCurrentnessReceipt carries receipt_id/receipt_hash plus eight exact refs.",
+      "sufficient_for_retained_objectives": true,
+      "debt": "Instance population, not form"
+    },
+    {
+      "dimension": "provenance",
+      "current_lawful_representation": "F2 requires immutable provenance/rule/predicate/reference-contract versions; SDTF §11 source->mechanism->rule traceability law mandates an auditable trace from SOURCE/CLAIM through NORMALIZED MECHANISM, P1-P5 CLASS, PERMITTED RULE SHAPE, REQUIRED OBJECTIVE INPUTS/BINDINGS, QUALIFICATION/REALIZATION PROOF CONTRACT, TEMPORAL/CURRENTNESS CONTRACT, PORTABILITY/BOUNDARY CONDITIONS, NEGATIVE CEILING, V3 STOP BOUNDARY, CAUSAL-USE AUTHORITY and CALIBRATION AUTHORITY IF NUMERIC. C1 adds accepted successor dependency/lifecycle composition.",
+      "sufficient_for_retained_objectives": true,
+      "debt": "Source->mechanism->rule traces are unpopulated in the inspected scope because no concrete rules exist"
+    },
+    {
+      "dimension": "valid_and_effective_time",
+      "current_lawful_representation": "V553 is the sole temporal evidence authority; F1/F2 reference exact V553 temporal key/observation/relation/limit IDs by exact ref with no interpolation, backfill, nearest-wave substitution or invented validity interval. SDTF TEMPORAL_VALIDITY_BLOCK; SDTF §6 K4 Path B requires a lawfully supportable validity interval overlapping the asserted/queried interval plus complete termination/supersession/invalidation coverage through query time. Non-event receipt carries decision_effective_time_ref.",
+      "sufficient_for_retained_objectives": true,
+      "debt": "Cross-wave comparability authority for directionality is residual H-A; validity-interval authority is present per-claim"
+    },
+    {
+      "dimension": "current_historical_selection",
+      "current_lawful_representation": "B5 orthogonal state axes: PUBLICATION_STATES {UNPUBLISHED, PUBLISHED}; SELECTION_STATES including NO_CURRENT, UNKNOWN_CURRENTNESS, CONFLICTING_CURRENT_SELECTION; VALIDITY_STATES {VALID, INVALIDATED_REBUILD_REQUIRED, WITHDRAWN}; REPLAY_STATES; REBUILD_STATES. M3 result contract requires result_semantic_owner_current_selection_ref with AUTHORIZED_CURRENT/DENIED/STALE/OUT_OF_SCOPE. SDTF §7 keeps CURRENT(D1' CONSTITUTION) != CURRENT(MECHANISM RULE) != CURRENT(RULE APPLICATION) != CURRENT(CONSEQUENCE FACT) != CURRENT(WITNESS/STATE SUPPORT).",
+      "sufficient_for_retained_objectives": true,
+      "debt": "Actual scopes and dependent states are not registered; no coherent cross-owner snapshot is proved. Mutable 'latest' must never serve as a semantic ref."
+    },
+    {
+      "dimension": "uncertainty_and_noncomparability",
+      "current_lawful_representation": "SDTF §6 binding non-equalities including FAILED_POSITIVE_PROOF != NEGATIVE_PROOF, NO_RECORD != NEGATIVE_FACT, STALE_POSITIVE != NEGATIVE_FACT, EXPIRED_POSITIVE != NEGATIVE_FACT, TERMINATION_OF_P != OPPOSITE(P), UNKNOWN_NOT_PROVEN != ACTOR_FACT. M3 frozen states NONCOMPARABLE, UNKNOWN_AUTHORITY, CONFLICTING_AUTHORITY, VALID_EMPTY. F2 requires uncertainty/noncomparability/missing-authority refs. V556 structural states NONCOMPARABLE is distinct from contradiction.",
+      "sufficient_for_retained_objectives": true,
+      "debt": "Typed absences must not renormalize into stronger positive answers end to end"
+    },
+    {
+      "dimension": "permissions_and_use",
+      "current_lawful_representation": "SDTF §10 authority ceiling with causal-use authority, identification strength, calibration authority, portability scope, historical/institutional validity and currentness/coverage preserved SEPARATELY, and the freeze SOURCE CITATION != CAUSAL-USE AUTHORITY. M3 producer_allowed_uses and result-contract authorization_state. V556: a valid structural object may be downstream-addressable while actor_realization_permission = FORBIDDEN. Positioned-subject model requires positive proxy authority refs and forbids cross-source proxy in V1.",
+      "sufficient_for_retained_objectives": true,
+      "debt": "Service source applicability (residual H-C) remains unknown at full terminal grain — which sources are permissible for a given service/target/time/geography/population versus merely validating a caller-supplied allowlist"
+    },
+    {
+      "dimension": "replay_and_invalidation",
+      "current_lawful_representation": "SDTF §8 exact direct determinant(s) -> exact RULE_APPLICATION_ID/RULE_VERSION -> derived consequence, with mandatory reverse dependency discoverability, scoped reevaluation, closure of unsupported outputs, propagation only through dependent derived facts, rerun only newly/currently applicable rules, and explicitly no global actor reset. B5 InvalidationReceipt with invalidation_event_refs and rebuild linkage; cache policy separates retained capital, recomputable payload and optional cache; B5 expressly disclaims source retirement. SDTF §13 and B5 keep non-event ingress OPEN rather than fabricating events.",
+      "sufficient_for_retained_objectives": true,
+      "debt": "Joined heterogeneous closure proof at promised grade is unproved; no universal closure receipt located; fresh recomputation differs from historical reconstructibility"
+    }
+  ],
+  "serving_verdict": {
+    "semantics_fixed": true,
+    "serving_complete": false,
+    "classification": "SERVING_AND_INTEGRATION_DEBT__NOT_MISSING_ONTOLOGY",
+    "reasoning": "Every retained objective prerequisite has a lawful, generic, immutable-ref-based serving carrier for all seven required dimensions. None of the seven dimensions requires a new semantic form for any objective prerequisite. What is unproved is population of those carriers at declared scope and the joined rebuild/replay proof across heterogeneous owners.",
+    "explicit_non_diagnosis": "The unresolved world->F8 semantic operation (residual H-D) is NOT classified here as serving debt. Its transport is implementable, but its meaning is not yet fixed, and per the audit's own law implementable transport does not make unresolved interpretation into serving debt."
+  },
+  "cache_and_retirement_notes": [
+    "Cache eviction must not become semantic erasure; cache must not restrict future lawful queryability.",
+    "PRE-V3 can retain raw roots; B5 disclaims source retirement, so no mandatory deletion or new retirement system is established.",
+    "Source-retirement equivalence remains a conditional form: if retirement is ever selected, a positive per-source injective-equivalence gate plus retained interpretation/replay obligations is required."
+  ],
+  "population_person_and_world_time_person_history_noncollapse_preserved": {
+    "population_noncollapse": "POPULATION_FACT != POSITIONED_SUBJECT_POSSIBILITY != INDIVIDUAL_PREDICTION != V3_REALIZED_ACTOR_STATE; DEMOGRAPHIC_PROBABILITY != PERSONHOOD; POSITION_CONDITIONING != PERSONALITY_ESSENCE — all preserved in the serving layer as separate reference and permission classes.",
+    "person_noncollapse": "M3 RESULT_JURISDICTION=PRE_V3_OBJECTIVE_WORLD with PERSON_STATE_SEMANTICS=FORBIDDEN and a nine-role _PERSON_STATE_ROLES exclusion set; actor indexing limited to NO_ACTOR_INDEX or OBJECTIVE_ACTOR_INDEXED. Objective actor identifiers are not person state.",
+    "world_time_person_history_noncollapse": "A historical object is not automatically a valid current fact. Source observation time, modeled valid time and current selection must be distinguished by a coherent cross-owner snapshot. F2 may state that later realization requires repeated exposure, sequence, persistence, reinforcement, destabilization or transition history — as requirement refs, never as claims the history occurred. That is the exact boundary preserving world-time from person-history."
+  }
+}

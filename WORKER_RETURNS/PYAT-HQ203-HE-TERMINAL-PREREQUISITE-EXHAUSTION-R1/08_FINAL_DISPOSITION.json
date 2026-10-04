@@ -1,0 +1,105 @@
+{
+  "schema": "PYAT_HQ203_HE_FINAL_DISPOSITION@1.0.0",
+  "worker": "PYAT HQ203 H-E",
+  "role": "documentary terminal-demand coverage worker — Space Bunny",
+  "branch": "agent/rabochii-pyat-hq203-he-r1",
+  "commissioned_tip": "95c4eba0b556b397e1decb5fad07ea2ce7158bd8",
+  "checkout_mode": "SPARSE_REQUIRED",
+  "primary_audit": {
+    "branch": "codex/prev3-terminal-backward-audit-r1",
+    "tip": "b3ea471a3771113bf408a4e434a4b480b26d5856",
+    "verdict_consumed": "COMPLETENESS_NOT_PROVABLE_FROM_CURRENT_FORENSICS",
+    "docket_rows_addressed": ["W12", "W13"],
+    "treatment": "AUDITED_NOT_ADOPTED — HQ203 recalibration records the audit as high-value documentary evidence, not an automatic adoption decision."
+  },
+  "disposition": "OBJECTIVE_TERMINAL_PREREQUISITES_PARTIAL__NAMED_COVERAGE_GAPS",
+  "allowed_dispositions_considered": [
+    {
+      "disposition": "OBJECTIVE_TERMINAL_PREREQUISITES_EXHAUSTIVELY_COVERED__INSTANCE_SERVING_DEBT_REMAINS",
+      "rejected_because": "It would overstate coverage. Three exact gaps are named and evidenced: (a) the objective feedback/attractor-prerequisite form is specified as accepted architecture but NOT implemented in the current V556 result schema and has zero positive material; (b) SDTF R4 §9's required 'explicit competent iteration/fixed-point authority' form does not exist anywhere in the current record; (c) the conditional Horizon obligation's lossless representation mapping is unproved. Declaring exhaustive coverage would convert these into 'instance serving debt', which is not what they are."
+    },
+    {
+      "disposition": "TERMINAL_OBJECTIVE_FUNCTION_LOST__CURRENT_SUCCESSOR_REQUIRED",
+      "rejected_because": "Directly falsified by the lost-capability test: zero exact terminally necessary functions were found unrepresentable or accidentally retired. All six same-grain retirements are reasoned and preserve their function."
+    },
+    {
+      "disposition": "TERMINAL_PREREQUISITE_ARCHITECTURE_REOPEN_REQUIRED",
+      "rejected_because": "The HQD-125 §15 reopen test fails at its first two conjuncts for every objective prerequisite: each has lawful current representation and a named owner. TD-R03 and its integration ruling independently accept V556 architecture (V556_ARCHITECTURE_TERMINAL_DEMAND_READY = PASS) and block only implementation on named authority preconditions — the definition of bounded implementation debt, not an architecture gap."
+    },
+    {
+      "disposition": "INSUFFICIENT_FORENSICS__EXACT_REMAINDER_NAMED",
+      "rejected_because": "Forensics were sufficient for the commissioned question. All seventeen objective prerequisites were traced to exact current owners, authority forms and positive-material status via exact git-object reads. H-A/H-B/H-C/H-D remain open but are other nodes' questions, explicitly flagged by the commission as possibly unresolved and to be handled with conditional contracts rather than guessed."
+    }
+  ],
+  "why_partial_not_worse": {
+    "no_ontology_gap": "Zero required meanings proved impossible to express within existing jurisdictions.",
+    "no_owner_gap": "All 17 objective prerequisites have named current owners.",
+    "no_jurisdiction_gap": "All constitutional/functional forms adopted or strongly represented.",
+    "the_partial_is_specific_and_bounded": "The gaps are: one conditional authority-form gap (iteration/fixed-point), one specified-but-unimplemented architecture grain with zero positive material (F2 attractor prerequisites), and one dormant-conditional obligation with unproved representation mapping (Horizon). All three are named, scoped and remediable without new broad theory."
+  },
+  "named_coverage_gaps": [
+    {
+      "gap_id": "GAP-01",
+      "name": "Objective feedback/attractor-prerequisite positives absent and F2 grain unimplemented",
+      "debt_class": "AUTHORITY_INSTANCE + IMPLEMENTATION",
+      "severity": "CONDITIONAL_AND_DOWNSTREAM_BLOCKED",
+      "exact": "No accepted V556 attractor-prerequisite rule registry, so F2 first tranche is VALID_EMPTY_NO_GOVERNED_RULE; and m3_v556_higher_order_structural.py implements no F2 grain (label-only semantic family; closed result schema of five objective classes with no attractor class and no recurrence/reinforcement/destabilizer/actor-history-requirement field).",
+      "remedy": "Adopt rule registry, then implement F2 in the V556 result schema.",
+      "blocks_prev3_completion": false
+    },
+    {
+      "gap_id": "GAP-02",
+      "name": "No competent iteration/fixed-point authority form for non-advancing iterative derivation",
+      "debt_class": "AUTHORITY_FORM",
+      "severity": "CONDITIONAL_ON_F2_ACTIVATION",
+      "exact": "SDTF R4 §9's alternative lawful path ('explicit competent iteration/fixed-point authority') has no corresponding form in the current record; zero fixed_point/iteration/self_ancestor occurrences across the three SDTF R4 implementations; no rule-bank or rule-instance artifact in the tree.",
+      "remedy": "Adopt an iteration/fixed-point authority form if a rule registry activates recurrence premises; otherwise require advancement by time/state/witness.",
+      "blocks_prev3_completion": false
+    },
+    {
+      "gap_id": "GAP-03",
+      "name": "Conditional Horizon preservation unactivated; lossless representation mapping unproved",
+      "debt_class": "DORMANT_CONDITIONAL + AUTHORITY_FORM",
+      "severity": "DORMANT",
+      "exact": "CONDITIONAL_NOT_CURRENTLY_ACTIVATED on four bounded scans. F2 provides an explicit AH refs slot, but no AH-specific result semantic class or demonstrated demand-to-schema mapping exists.",
+      "remedy": "None required now; adopt a demand-to-schema mapping before any completion claim that depends on an activated AH instance.",
+      "blocks_prev3_completion": false
+    }
+  ],
+  "required_additional_gaps_acknowledged_from_other_nodes": [
+    "H-A: F6/F7 current positive constitution — cross-wave temporal directionality (cross-wave temporal pressure realization, F7).",
+    "H-B: structural-pressure coverage mapping — required pressure/counterpressure/mediation uses to adopted neutral relation, V556 topology and SDTF P1-P5 forms.",
+    "H-C: service source applicability — whether current law selects permissible sources or only validates a caller-supplied allowlist.",
+    "H-D: mature-world F8/service operation contract — which world facts accompany, condition, select sources or change possibility geometry."
+  ],
+  "how_unresolved_H_A_to_H_D_were_handled": "CONDITIONAL_CONTRACTS_NOT_GUESSES. This return does not assume any answer for H-A through H-D. It records the objective prerequisite representation that is present regardless of how those nodes resolve, and marks the dependent products conditional. Per commission instruction, no H-A/H-B/H-C/H-D answer was invented.",
+  "what_this_return_does_not_claim": [
+    "It does not claim PRE-V3 conceptual completeness. PRE-V3 conceptual completeness remains UNPROVED per HQ203 holds.",
+    "It does not claim any H-D semantic operation is settled.",
+    "It does not claim live or 35-wave functional realization.",
+    "It does not claim V556 implementation exists.",
+    "It does not claim any Horizon producer is needed or authorized.",
+    "It does not upgrade the audit's W13 UNKNOWN to a universal absence claim; it narrows it to non-activation within the inspected current control chain.",
+    "It does not treat implementable world->F8 transport as evidence that the world->F8 meaning is settled."
+  ],
+  "explicit_boundary_preservation_confirmed": {
+    "population_person_noncollapse": "PRESERVED — POPULATION_FACT != POSITIONED_SUBJECT_POSSIBILITY != INDIVIDUAL_PREDICTION != V3_REALIZED_ACTOR_STATE; DEMOGRAPHIC_PROBABILITY != PERSONHOOD; POSITION_CONDITIONING != PERSONALITY_ESSENCE.",
+    "person_history_noncollapse": "PRESERVED — actor memory, belief, desire, orientation, vitality/need and developmental realization are excluded from PRE-V3 obligations; F2 actor-history entries are requirement refs, never claims the history occurred.",
+    "world_time_person_history_noncollapse": "PRESERVED — source observation time, modeled valid time and current selection must be distinguished; a historical object is not automatically a valid current fact; recurrence evidence is objective and never infers individual state.",
+    "survey_to_person_shortcut": "FORBIDDEN at both boundaries, unchanged."
+  },
+  "world_container_question": {
+    "commission_question": "Test whether a persistent world container is actually necessary.",
+    "answer": "NOT_NECESSARY_FOR_THE_OBJECTIVE_PREREQUISITE_BURDEN",
+    "basis": "Independent convergence of two authorities. HQ203 recalibration §6: 'A persistent universal multi-source temporal world container is not a proved terminal requirement. The terminal burden is coherent objective-world serving with exact use/selection/transformation/currentness/replay promises.' The audited report reaches the same conclusion: 'A universal persistent world container is not a proved requirement... A coherent service can be composed from exact products if its complete use/selection/transformation promises are specified and qualified.' Every objective prerequisite in this census is carried by immutable exact refs and generic serving carriers, none of which requires a persistent container. The container question therefore does not bear on any H-E prerequisite and is not a residual H-E gap; it remains governed by the H-A/H-D world-contract reconciliation.",
+    "qualification": "This answers only whether a container is required to PRESERVE the objective prerequisites. It does not decide the separate H-D question of the licensed world->F8 semantic operation."
+  },
+  "confidence": {
+    "level": "HIGH for the enumerated prerequisite census, owner coverage, serving classification, lost-capability negative finding and the Horizon non-activation finding.",
+    "moderate_for": "BLK-08 (iteration/fixed-point authority form)",
+    "moderate_for_blk08_basis": "The absence was established by bounded exact-object scans of the three SDTF R4 implementation modules plus a tree-level rule-artifact search, not by an exhaustive whole-repository negative.",
+    "limit": "Scoped to the inspected current control chain at 95c4eba0 and the audit base 1dcd7ff6, with targeted rather than line-by-line whole-module reads. Consistent with the audit's own inspection limits, 'not located' is not converted into universal absence. No test suites were rerun; no raw survey data was opened; no V3 terminal campaign was audited; no unpublished branch or worktree was searched.",
+    "no_numerical_probability_implied": true
+  },
+  "terminal": "HQ203_HE_TERMINAL_PREREQUISITE_EXHAUSTION_RETURNED__HQ_ADJUDICATION_REQUIRED"
+}
