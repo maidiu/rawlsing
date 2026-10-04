@@ -1,0 +1,56 @@
+{
+ "schema": "HQ198_INDEPENDENT_BROKER_EXERCISES@1.0.0",
+ "CATEGORY": "C2_OBSERVED_SYNTHETIC",
+ "category_law": "Synthetic carriers only. Not survey-semantic equivalence. Zero real sources opened.",
+ "candidate_under_test": "4b6335ca5fc485108b0ffb1d682a29a02e1eee51 (repair a483cb6619a84c4785296e923a8571447041ffa5)",
+ "bytes_required_reference": 703,
+ "exercises": [
+  {
+   "exercise": "reader_bytes exactly-enough completes",
+   "pass": true,
+   "detail": "cap=703 -> refused=False consumed=703 (needed 703)"
+  },
+  {
+   "exercise": "reader_bytes one-byte-short refuses",
+   "pass": true,
+   "detail": "cap=702 -> code=READER_BYTES_LIMIT_EXCEEDED consumed=702"
+  },
+  {
+   "exercise": "no bytes beyond ceiling (8-ceiling sweep)",
+   "pass": true,
+   "detail": "consumed<=cap in every case; breach=None; sweep=[{\"cap\": 1, \"consumed\": 1, \"within_cap\": true, \"refused\": true}, {\"cap\": 7, \"consumed\": 7, \"within_cap\": true, \"refused\": true}, {\"cap\": 64, \"consumed\": 64, \"within_cap\": true, \"refused\": true}, {\"cap\": 199, \"consumed\": 199, \"within_cap\": true, \"refused\": true}, {\"cap\": 702, \"consumed\": 702, \"within_cap\": true, \"refused\": true}, {\"cap\": 703, \"consumed\": 703, \"within_cap\": true, \"refused\": false}, {\"cap\": 704, \"consumed\": 703, \"within_cap\": true, \"refused\": false}, {\"cap\": 2109, \"consumed\": 703, \"within_cap\": true, \"refused\": false}]"
+  },
+  {
+   "exercise": "no callback exception as the limiting mechanism",
+   "pass": true,
+   "detail": "raised_inside_read=False bytes_served=24 (cap 24) chunk_sizes=[24, 0] truncated_or_exhausted=True"
+  },
+  {
+   "exercise": "DTA view/reset behaviour",
+   "pass": true,
+   "detail": "naive_single_view_reuse_failed=True reset_view_correct=True chunk0=[0.0, 1.0] chunk1=[2.0, 3.0] physical_opens=1 views=3"
+  },
+  {
+   "exercise": "chunk_rows honoured on a carrier larger than one chunk",
+   "pass": true,
+   "detail": "rows_covered=200 max_batch=30 chunk_reads=20 (expected>=20) path_opens=1 V00_values_exact=True"
+  },
+  {
+   "exercise": "selected/full counters separate",
+   "pass": true,
+   "detail": "selected_reads=1 full_reads=0 metadata_reads=1 reader_bytes=2846 bound_ordinals=[2]"
+  },
+  {
+   "exercise": "selected-mode non-suppression disclosure preserved",
+   "pass": true,
+   "detail": "disclosure=NOT_ENFORCED_BY_READER__pyreadstat_1_3_6_reads_full_stream_then_subsets__measured_identical_byte"
+  },
+  {
+   "exercise": "selected route does NOT claim byte suppression (physical bytes still full-stream)",
+   "pass": true,
+   "detail": "selected-route reader_bytes=2846 vs full-route reader_bytes=703 (comparable magnitude => no physical suppression is being claimed)"
+  }
+ ],
+ "passed": 9,
+ "total": 9
+}

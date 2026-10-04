@@ -1,0 +1,106 @@
+{
+  "schema": "HQ198_R7_EXACT_COURT@1.0.0",
+  "commission": "PYAT-HQ198-R9-FIXTURE-COMPLETE-R7-REQUAL-R1",
+  "CATEGORY": "C1 exact accepted court, executed unmodified against the repaired candidate",
+  "candidate_under_test": "4b6335ca5fc485108b0ffb1d682a29a02e1eee51",
+  "code_bearing_repair": "a483cb6619a84c4785296e923a8571447041ffa5",
+  "production_code_modified_in_this_lane": false,
+
+  "environment": {
+    "interpreter": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/qualification/r7-c4-source-free-venv/bin/python",
+    "PYTHONHASHSEED": "0",
+    "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+    "PYTHONPATH": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq198-r9-requal",
+    "pytest_flag": "-p no:cacheprovider",
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq198-r9-requal",
+    "startup_sha": "2eccd7a4cec0e85af78cb68f6c078de2b68d5d90",
+    "effective_sparse_patterns": [
+      "/WORKER_COMMISSIONS/PYAT-HQ198-R9-FIXTURE-COMPLETE-R7-REQUAL-R1/",
+      "/WORKER_RETURNS/PYAT-HQ198-R9-FIXTURE-COMPLETE-R7-REQUAL-R1/",
+      "/rawlsing_next/",
+      "/WORKER_RETURNS/FIABC-LM2-R1I-PHYSICAL-NATIVE-BINDING/",
+      "/WORKER_RETURNS/EE-P2R6S/",
+      "/WORKER_RETURNS/FIABC-LM2/"
+    ],
+    "materialized_files": 355,
+    "full_repo_tracked_files": 7097,
+    "repository_cloned": false,
+    "full_checkout_created": false
+  },
+
+  "files": [
+    "rawlsing_next/tests/test_closed35_g01_sav_numeric_representation_authority.py",
+    "rawlsing_next/tests/test_closed35_d01_declared_encoding_admission.py",
+    "rawlsing_next/tests/test_closed35_d02_opaque_datetime_carrier.py",
+    "rawlsing_next/tests/test_fiabc_lm2_r1j_sav_representation_authority.py",
+    "rawlsing_next/tests/test_r35_i01_physical_metadata.py",
+    "rawlsing_next/tests/test_pre553_source_backed_c11_facade.py"
+  ],
+
+  "step_1_collect_only": {
+    "command": "$PY -m pytest <six files> -p no:cacheprovider --collect-only -q",
+    "exit_code": 0,
+    "duration_s": 2.0,
+    "result": "55 tests collected in 1.98s",
+    "denominator_required": 55,
+    "denominator_observed": 55,
+    "match": true,
+    "per_file": {
+      "test_closed35_g01_sav_numeric_representation_authority.py": 9,
+      "test_closed35_d01_declared_encoding_admission.py": 8,
+      "test_closed35_d02_opaque_datetime_carrier.py": 13,
+      "test_fiabc_lm2_r1j_sav_representation_authority.py": 9,
+      "test_r35_i01_physical_metadata.py": 6,
+      "test_pre553_source_backed_c11_facade.py": 10,
+      "sum": 55
+    }
+  },
+
+  "step_2_run_1": {
+    "command": "$PY -m pytest <six files> -p no:cacheprovider -q --no-header",
+    "exit_code": 0,
+    "duration_s": 74.0,
+    "pytest_reported": "55 passed in 64.97s (0:01:04)",
+    "passed": 55,
+    "failed": 0,
+    "target_met": true
+  },
+
+  "step_3_run_2": {
+    "command": "$PY -m pytest <six files> -p no:cacheprovider -q --no-header",
+    "exit_code": 0,
+    "duration_s": 71.0,
+    "pytest_reported": "55 passed in 62.58s (0:01:02)",
+    "passed": 55,
+    "failed": 0,
+    "target_met": true
+  },
+
+  "result": "55_of_55_twice",
+
+  "retried_away_any_failure": false,
+  "failures_encountered": 0,
+  "no_retry_note": "There were no failures to retry. Both runs were executed once each and recorded as-is.",
+
+  "comparison_to_hq197": {
+    "hq197_result": "49 passed / 6 failed on both runs",
+    "hq197_cause": "FileNotFoundError for WORKER_RETURNS/FIABC-LM2-R1I-PHYSICAL-NATIVE-BINDING/01_PHYSICAL_KEY_INVENTORY.json and WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py, both outside the HQ197 sparse manifest",
+    "hq197_conclusion_at_the_time": "proved candidate-independent by reverting production files to pre-candidate state and reproducing the identical 6 failures",
+    "hq198_resolution": "the commissioned manifest now materializes both paths; both fixtures confirmed PRESENT on disk before the court was run",
+    "net_effect": "the exact 6 checkout-caused failures are gone and nothing else changed. No production code was edited between HQ197 and HQ198 to achieve this.",
+    "duration_observation": "run time rose from about 2.7s to about 65s. That is the expected signature of the previously-aborted file now actually executing its assertions rather than failing at file-open, and is corroborating evidence that the tests genuinely ran rather than being skipped."
+  },
+
+  "integrity_notes": [
+    "No production file was modified in this lane; the return directory is the only repository addition.",
+    "The court was run against the candidate exactly as committed at startup, with no patching of tests, no conftest injection, no plugin autoload, and no cache provider.",
+    "The two fixtures the HQ197 court needed were confirmed present on disk before collection, so the 55/55 is not a collection artefact."
+  ],
+
+  "out_of_scope_observation": {
+    "note": "rawlsing_next/tests/test_pre553_sr06_decoder_carrier.py was also run for completeness. It reports 2 failed, 14 passed, 1 skipped.",
+    "cause": "ModuleNotFoundError: No module named 'duckdb'",
+    "assessment": "duckdb is absent from the R7 qualified environment. This file is NOT one of the six commissioned court files, and the failure is an environment package absence identical to HQ196 and HQ197, not a candidate defect.",
+    "action_taken": "none; recorded, not retried and not worked around"
+  }
+}

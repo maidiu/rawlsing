@@ -1,0 +1,115 @@
+{
+  "schema": "HQ198_BROKER_COURT@1.0.0",
+  "commission": "PYAT-HQ198-R9-FIXTURE-COMPLETE-R7-REQUAL-R1",
+  "CATEGORY": "C2_OBSERVED_SYNTHETIC",
+  "category_law": "Synthetic carriers only. Not survey-semantic equivalence. Zero real survey sources opened.",
+  "candidate_under_test": "4b6335ca5fc485108b0ffb1d682a29a02e1eee51",
+
+  "candidate_court_run": {
+    "command": "$PY -m pytest rawlsing_next/tests/test_pre553_source_access_broker_court.py -p no:cacheprovider -q --no-header",
+    "exit_code": 0,
+    "duration_s": 2.0,
+    "pytest_reported": "20 passed in 1.69s",
+    "passed": 20,
+    "failed": 0
+  },
+
+  "independent_exercises": {
+    "why_separate": "These are deliberately NOT the candidate's own courts. Each commissioned property was exercised directly against the candidate, so a court that had drifted or softened would still be caught.",
+    "command": "$PY evidence/independent_broker_exercises_runner.py",
+    "exit_code": 0,
+    "passed": 9,
+    "total": 9,
+    "bytes_required_reference_carrier": 703,
+    "exercises": [
+      {
+        "property": "reader_bytes exactly-enough",
+        "pass": true,
+        "evidence": "cap = 703 (exactly the bytes the reader needs) -> refused = False, consumed = 703. An exactly-enough ceiling completes and is NOT treated as a breach."
+      },
+      {
+        "property": "reader_bytes one-byte-short",
+        "pass": true,
+        "evidence": "cap = 702 -> refused with READER_BYTES_LIMIT_EXCEEDED, consumed exactly 702. The refusal is precise at the boundary."
+      },
+      {
+        "property": "no bytes beyond ceiling",
+        "pass": true,
+        "evidence": "Eight-ceiling sweep: caps 1, 7, 64, 199, 702, 703, 704, 2109 against a 703-byte requirement. Consumed <= cap in every case; breach = none. At caps 704 and 2109 consumption stops at 703 because that is all the reader wanted.",
+        "sweep": [
+          { "cap": 1, "consumed": 1, "refused": true },
+          { "cap": 7, "consumed": 7, "refused": true },
+          { "cap": 64, "consumed": 64, "refused": true },
+          { "cap": 199, "consumed": 199, "refused": true },
+          { "cap": 702, "consumed": 702, "refused": true },
+          { "cap": 703, "consumed": 703, "refused": false },
+          { "cap": 704, "consumed": 703, "refused": false },
+          { "cap": 2109, "consumed": 703, "refused": false }
+        ]
+      },
+      {
+        "property": "no callback exception as the limiting mechanism",
+        "pass": true,
+        "evidence": "The governed view was driven directly under an armed allowance of 24. No exception propagated out of read() (raised_inside_read = False). The served chunk sequence was [24, 0] -- exactly the allowance, then a clean b'' end-of-stream -- with truncated_or_exhausted recorded on the governed open. The limit is therefore enforced by SHORTENING and EOF, never by an exception crossing the bridge.",
+        "chunk_sizes_observed": [24, 0],
+        "bytes_served": 24
+      },
+      {
+        "property": "DTA view/reset behaviour",
+        "pass": true,
+        "evidence": "Naive reuse of ONE view object across two row_offset parses FAILED (ReadstatError), confirming the constraint is real. Issuing a fresh position-zero view per parse over the SAME physical open then produced correct disjoint chunks: chunk0 = [0.0, 1.0], chunk1 = [2.0, 3.0] on a 60-row DTA. physical_opens = 1 with 3 views issued.",
+        "naive_single_view_reuse_failed": true,
+        "reset_view_chunks_correct": true,
+        "physical_opens": 1
+      },
+      {
+        "property": "chunk_rows honoured on a carrier larger than one chunk",
+        "pass": true,
+        "evidence": "A 200-row, 3-column SAV iterated at batch_size 30. rows_per_chunk = 30 // 3 = 10, so 20 chunk reads were required and 20 were issued. All 200 row ordinals were covered, no batch exceeded 30 cells, path_opens stayed at 1, and every V00 value matched float(i) exactly in order.",
+        "rows_covered": 200,
+        "max_batch_cells": 30,
+        "chunk_reads": 20,
+        "expected_chunk_reads_min": 20,
+        "path_opens": 1,
+        "values_exact": true
+      },
+      {
+        "property": "selected/full counters separate",
+        "pass": true,
+        "evidence": "selected route on a 3-column SAV selecting V01: selected_reads = 1, full_reads = 0, metadata_reads = 1, reader_bytes = 2846, bound_ordinals = [2]. Each quantity is its own account and none proxies for another.",
+        "selected_reads": 1,
+        "full_reads": 0,
+        "metadata_reads": 1,
+        "bound_ordinals": [2]
+      },
+      {
+        "property": "selected-mode non-suppression disclosure preserved",
+        "pass": true,
+        "evidence": "selected_route_physical_column_suppression still begins NOT_ENFORCED_BY_READER__pyreadstat_1_3_6_reads_full_stream_then_subsets__measured_identical_bytes_for_usecols_and_full_read."
+      },
+      {
+        "property": "selected route does not silently claim byte suppression",
+        "pass": true,
+        "evidence": "Selected-route reader_bytes = 2846 versus full-route reader_bytes = 703 on the same carrier -- the selected route moves MORE physical bytes, not fewer, because usecols subsets after a full stream read. This corroborates the disclosure rather than contradicting it, and shows no physical suppression is being claimed anywhere.",
+        "selected_route_reader_bytes": 2846,
+        "full_route_reader_bytes": 703
+      }
+    ]
+  },
+
+  "self_correction_recorded": {
+    "what_happened": "The first run of the independent exercises reported 8/9 with the DTA exercise marked FAIL.",
+    "diagnosis": "The candidate was correct and MY EXPECTATION was wrong. The exercise builds V00 as float(i) * (c + 1) with c == 0, so V00 holds 0,1,2,3...; I had asserted chunk0 == [0.0, 2.0] and chunk1 == [4.0, 6.0], wrongly applying a factor of 2.",
+    "observed_actual": "chunk0 = [0.0, 1.0], chunk1 = [2.0, 3.0] -- which is exactly correct.",
+    "action": "The expectation was corrected to float(i) semantics and the exercise re-run. The candidate was NOT modified.",
+    "why_recorded": "A FAIL line that is really a bad assertion is exactly the kind of thing that gets quietly suppressed. It is disclosed instead, and the correction is to the test, not to the code."
+  },
+
+  "holds": {
+    "real_survey_source_access": 0,
+    "locator_work": 0,
+    "warrant_issuance": false,
+    "live_c4": false,
+    "production_code_modified": false
+  }
+}

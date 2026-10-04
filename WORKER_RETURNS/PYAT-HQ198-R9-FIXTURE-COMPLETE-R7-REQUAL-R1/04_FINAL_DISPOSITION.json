@@ -1,0 +1,138 @@
+{
+  "schema": "HQ198_FINAL_DISPOSITION@1.0.0",
+  "commission": "PYAT-HQ198-R9-FIXTURE-COMPLETE-R7-REQUAL-R1",
+  "role": "SOURCE-FREE PROOF WORKER — SPACE BUNNY",
+  "branch": "agent/rabochii-pyat-hq198-r1",
+  "commissioned_startup_sha": "2eccd7a4cec0e85af78cb68f6c078de2b68d5d90",
+  "startup_verified_exactly": true,
+  "target_candidate": "4b6335ca5fc485108b0ffb1d682a29a02e1eee51",
+  "code_bearing_repair": "a483cb6619a84c4785296e923a8571447041ffa5",
+  "candidate_verified_ancestor_of_startup": true,
+
+  "disposition": "R7_REQUALIFIED_55_OF_55_TWICE__BROKER_COURTS_PASS",
+
+  "one_paragraph": "The fixture-complete manifest closed the HQ197 blocker exactly as predicted. The accepted six-file R7 court collects to exactly 55 and passes 55/55 on two consecutive runs with exit code 0, against the repaired candidate with no production edit in this lane. The candidate broker court passes 20/20, and nine independent exercises of the commissioned properties all pass, including that the byte limiter enforces its ceiling by shortening the request and returning end-of-stream rather than by raising through pyreadstat's callback. The C4 closure recomputes to 21 imported modules at the freeze and 22 at the candidate, a delta of exactly the broker, with zero raw source path strings reaching pyreadstat anywhere in the closure and exactly one governed physical open per scope confirmed empirically over 100 decode cycles.",
+
+  "why_this_disposition": [
+    {
+      "not": "R7_REQUALIFICATION_FAILURE",
+      "because": "The court reached 55/55 on both required runs with exit code 0. There were no failures, so nothing was retried."
+    },
+    {
+      "not": "BROKER_COURT_FAILURE",
+      "because": "The candidate broker court passed 20/20 with exit code 0, and all nine independent property exercises passed."
+    },
+    {
+      "not": "CHECKOUT_MODE_INSUFFICIENT__HQ_RECOMMISSION_REQUIRED",
+      "because": "The commissioned manifest materialized every fixture the court needed. Both previously-missing paths were confirmed PRESENT on disk before collection, so the 55/55 is a genuine execution result and not a collection artefact."
+    },
+    {
+      "chosen": "R7_REQUALIFIED_55_OF_55_TWICE__BROKER_COURTS_PASS",
+      "because": "Every commissioned proof obligation was met: exact denominator 55, two clean runs, broker courts passing, independent property exercises passing, and a closure proof that is recomputed rather than asserted and is falsifiable via a positive control."
+    }
+  ],
+
+  "r7_six_file_court": {
+    "collect_only": { "denominator": 55, "required": 55, "exit_code": 0, "match": true },
+    "run_1": { "passed": 55, "failed": 0, "exit_code": 0, "duration_s": 74.0 },
+    "run_2": { "passed": 55, "failed": 0, "exit_code": 0, "duration_s": 71.0 },
+    "result": "55_of_55_twice",
+    "retried_away_any_failure": false,
+    "corroborating_observation": "runtime rose from about 2.7s to about 65s because the previously-aborted test file now actually executes its assertions instead of failing at file-open"
+  },
+
+  "broker_courts": {
+    "candidate_court": { "passed": 20, "failed": 0, "exit_code": 0 },
+    "independent_exercises": { "passed": 9, "total": 9 },
+    "properties_independently_exercised": [
+      "reader_bytes exactly-enough completes at 703/703",
+      "reader_bytes one-byte-short refuses at exactly 702",
+      "no bytes beyond ceiling across an eight-ceiling sweep",
+      "no callback exception as the limiting mechanism (chunks served [24, 0], then clean EOF)",
+      "DTA view/reset: naive single-view reuse fails, fresh position-zero views succeed over one physical open",
+      "chunk_rows honoured on a 200-row carrier: 20 chunk reads, all 200 rows, max batch 30, values exact",
+      "selected and full counters separate: selected_reads 1, full_reads 0, bound ordinals [2]",
+      "selected-mode non-suppression disclosure preserved verbatim"
+    ]
+  },
+
+  "closure_proof": {
+    "freeze_derived_import_closure": 21,
+    "candidate_derived_import_closure": 22,
+    "delta": 1,
+    "delta_is_exactly_the_broker": true,
+    "commission_basis_freeze": 23,
+    "commission_basis_candidate": 24,
+    "both_bases_agree": "21 imports + 2 declared producer/consumer references = 23 at freeze; +1 broker = 24 at candidate. The imported-module basis gives 21 -> 22. Either way the delta is exactly the broker.",
+    "raw_path_reader_calls_in_candidate_closure": 0,
+    "reader_calls_in_candidate_closure": 1,
+    "governed_opens_per_scope": 1,
+    "governed_opens_empirically_confirmed": "100 decode-plus-iterate cycles produced exactly 100 physical source opens; the two dormant decoder fallbacks were never reached",
+    "resolves_the_hq197_21_vs_23_report": true
+  },
+
+  "self_corrections_disclosed": [
+    {
+      "where": "independent DTA exercise",
+      "what": "the first run reported 8/9 with the DTA exercise FAIL",
+      "diagnosis": "the candidate was correct and my expectation was wrong: the exercise builds V00 as float(i) so the correct chunks are [0,1] and [2,3], and I had asserted [0,2] and [4,6]",
+      "resolution": "the expectation was corrected and the exercise re-run; the candidate was NOT modified",
+      "lesson": "a FAIL that is really a bad assertion is exactly what gets quietly suppressed, so it is recorded"
+    },
+    {
+      "where": "closure auditor",
+      "what": "the derived freeze closure first came out as 22 against the declared 21",
+      "diagnosis": "the auditor expanded `from X import *` into phantom submodule names, fabricating rawlsing_next._pre553_query_common.*",
+      "resolution": "star-import expansion removed; the derived freeze closure became exactly 21, matching the accepted declaration",
+      "lesson": "an unexplained extra module is a bug in the measurement, not a finding about the code"
+    }
+  ],
+
+  "out_of_scope_observed": {
+    "item": "rawlsing_next/tests/test_pre553_sr06_decoder_carrier.py reports 2 failed, 14 passed, 1 skipped",
+    "cause": "ModuleNotFoundError: No module named 'duckdb' -- duckdb is absent from the R7 qualified environment",
+    "assessment": "not one of the six commissioned court files; an environment package absence identical to HQ196 and HQ197; not a candidate defect",
+    "action": "recorded only; not retried, not worked around"
+  },
+
+  "no_production_edits": {
+    "assertion": "This lane modified no production code.",
+    "verified_by": "git status over the lane showed only the return directory as an addition; pre553_source_access_broker.py, pre553_physical_decoder.py and all six court files are byte-identical to the startup commit",
+    "note": "All two corrections made in this lane were to measurement scripts in the return directory, never to the code under test."
+  },
+
+  "what_this_does_not_establish": [
+    "This is a source-free requalification. It qualifies no real survey source and is not survey-semantic equivalence.",
+    "The selected route still does not physically suppress unselected-column bytes; the disclosure is unchanged and pyreadstat 1.3.6 cannot enforce it. The selected route moves MORE physical bytes than a full read on the same carrier.",
+    "The R7 interpreter, pyreadstat, ReadStat, pandas, numpy and the qualified environment were not modified; runtime identity is unchanged.",
+    "R9 itself is not closed by this lane. The architecture-warrant candidate and the authority questions HQ195 recorded remain HQ and Astra decisions.",
+    "No adoption, self-adoption, warrant, locator work, live C4, C7 or actor work."
+  ],
+
+  "holds_observed": {
+    "real_survey_source_access": 0,
+    "locator_work": 0,
+    "warrant_issuance": false,
+    "live_c4": false,
+    "c7_or_actor_work": 0,
+    "production_code_modified": false,
+    "repository_cloned": false,
+    "full_checkout_created": false,
+    "sparse_patterns_beyond_manifest": 0,
+    "failures_retried_away": false,
+    "self_adopted": false
+  },
+
+  "checkout_law_compliance": {
+    "mode": "SPARSE_REQUIRED",
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq198-r9-requal",
+    "materialized_files": 355,
+    "full_repo_tracked_files": 7097,
+    "sparse_expansions_beyond_manifest": 0,
+    "sparse_checkout_disabled": false,
+    "helper_blob": "22f3f62463250cbecea39bcbba0663672797e925 (sha256 93e3fc970b002d9e9054fd21d4757887f3ddff917610adab6574d26aefaecce6), byte-identical to the copy safety-reviewed in HQ195",
+    "helper_note": "run from a temp copy because the canonical clone is checked out at the older freeze where the helper is absent; the helper creates the worktree AT the passed SHA and imports no lineage"
+  },
+
+  "terminal": "HQ198_R9_FIXTURE_COMPLETE_REQUAL_RETURNED__HQ_REVIEW_REQUIRED"
+}
