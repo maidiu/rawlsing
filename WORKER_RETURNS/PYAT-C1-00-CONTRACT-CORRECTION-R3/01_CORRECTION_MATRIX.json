@@ -1,0 +1,39 @@
+{
+  "schema": "PYAT_C1_00_R3_CORRECTION_MATRIX@1",
+  "status": "DOCUMENTARY_CORRECTION_COMPLETE_PENDING_INDEPENDENT_REREVIEW",
+  "base_r2_rereview": "959d5d8cd4e8f96732e6809030c946751ba5da67",
+  "commission_tip": "e50bc716cf0fd017081e351a5803d3da61a00a38",
+  "corrections": [
+    {
+      "defect": "B / OWNER_NATIVE_SYNTHETIC_AUTHORITY_SCOPE",
+      "status": "CORRECTED_PENDING_REREVIEW",
+      "evidence": "02_OWNER_NATIVE_AUTHORITY_SCOPE_FREEZE.json",
+      "summary": "Freeze exact AT07 universe first; add only owner-native source_universe_refs to C1-AT07-QUERY; recompute AuthorityRef and downstream identities; freeze current-I03 scope compatibility."
+    },
+    {
+      "defect": "C / REACHABLE_UNKNOWN_CURRENTNESS_FIXTURE",
+      "status": "CORRECTED_PENDING_REREVIEW",
+      "evidence": "03_UNKNOWN_CURRENTNESS_FIXTURE.json",
+      "summary": "Use LearnedProductLifecycleExecutor.selection_key followed by current_selection_receipt_ref on a registered but unselected key; expect LearnedProductLifecycleError('UNKNOWN_CURRENTNESS')."
+    },
+    {
+      "defect": "D / NONCIRCULAR_EVIDENCE_IDENTITY",
+      "status": "CORRECTED_PENDING_REREVIEW",
+      "evidence": "04_EVIDENCE_IDENTITY_PREIMAGE.json",
+      "summary": "Freeze evidence identity as hash of all identity-bearing evidence fields except evidence_ref itself; freeze forward/reverse refs and three mutation oracles."
+    },
+    {
+      "defect": "BOOKKEEPING",
+      "status": "CORRECTED_PENDING_REREVIEW",
+      "summary": "Superseding current worker-return changed_blobs will enumerate only files actually modified by R3 and will not list unchanged family_binding_manifest.json."
+    }
+  ],
+  "preserved": {
+    "A_VALUE_BEARING_CONDITION_RELATION": "PASS_UNCHANGED",
+    "E_DETERMINANT_REPLAY_INVALIDATION_CLOSURE": "PASS_AT_DOCUMENTARY_GRAIN_UNCHANGED",
+    "prior_holdings": "PRESERVED"
+  },
+  "execution_claim": "NONE__DOCUMENTARY_ONLY",
+  "raw_source_reads": 0,
+  "C1_01_started": false
+}

@@ -1,0 +1,152 @@
+{
+  "schema": "PYAT_N10E_FIXTURE_AND_ORACLE_FREEZE@1",
+  "status": "EXECUTED_SOURCE_FREE_FROZEN_BEFORE_CANDIDATE_OUTPUT_USED_AS_TRUTH",
+  "fixture_module": "rawlsing_next/tests/n10e_empirical_slice_fixture.py",
+  "fixture_id": "AT07_BIDIRECTIONAL_100",
+  "independence_argument": [
+    "The source law is an exact synthetic response table of 100 respondents defined in the fixture module, not read back from the provider.",
+    "Expected canonical results are exact arithmetic on that table: 54/60 = 9/10 (forward), 54/62 = 27/31 (reverse).",
+    "The frozen R8 identity spine binds universe/release/query-authority/predicate/query/consumer-query/witness/evidence/composed-refs that the accepted C1-00/C1-01 courts already fix.",
+    "Only READ-ONLY reuse of the existing test module's source-construction helpers occurs; no expected value is borrowed from candidate output."
+  ],
+  "frozen_source_law": {
+    "rows": 100,
+    "forward_grain": {
+      "conditioner": "POSITION=P1",
+      "target": "ANSWER",
+      "members": 60,
+      "cells": {
+        "yes": 54,
+        "no": 6
+      }
+    },
+    "reverse_grain": {
+      "conditioner": "ANSWER=yes",
+      "target": "POSITION",
+      "members": 62,
+      "cells": {
+        "P1": 54,
+        "P2": 8
+      }
+    }
+  },
+  "frozen_expected_truth": {
+    "forward": {
+      "denominator": 60,
+      "cells": {
+        "yes": 54,
+        "no": 6
+      },
+      "exact_fraction_yes": {
+        "$exact_fraction": [
+          9,
+          10
+        ]
+      },
+      "exact_fraction_no": {
+        "$exact_fraction": [
+          1,
+          10
+        ]
+      },
+      "consumer_state": "EXACT_SUPPORTED"
+    },
+    "reverse": {
+      "denominator": 62,
+      "cells": {
+        "P1": 54,
+        "P2": 8
+      },
+      "exact_fraction_P1": {
+        "$exact_fraction": [
+          27,
+          31
+        ]
+      },
+      "consumer_state": "EXACT_SUPPORTED"
+    }
+  },
+  "frozen_oracle_input_blobs": {
+    "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/02_VALUE_RELATION_ORACLE.json": "c6acafae820c065215fdbe7a703480a8b19fbc57",
+    "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/03_SYNTHETIC_AUTHORITY_FREEZE.json": "333989fa7b57c221d6aa5ebfc25d9d76e0acad32",
+    "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/02_OWNER_NATIVE_AUTHORITY_SCOPE_FREEZE.json": "5d1583dc31c837282ea40448285109a31bb1db41",
+    "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R8/04_CURRENT_AT07_IDENTITY_SPINE.json": "462bb282ddc2cc9667f1890f2d65f2fae9a3a72c"
+  },
+  "frozen_authority_classes_bound": [
+    "PRE553_AUTHORITY_SNAPSHOT::SOURCE_SEMANTICS_TOPOLOGY",
+    "PRE553_AUTHORITY_SNAPSHOT::ROUTING_RISK_SET",
+    "PRE553_AUTHORITY_SNAPSHOT::COORDINATE_SEMANTICS",
+    "PRE553_AUTHORITY_SNAPSHOT::REPLAY_PROTOCOL",
+    "repaired_query_authority (R3)",
+    "FIXTURE_ONLY_CONDITION_VALUE_PAIRING",
+    "FIXTURE_ONLY_POSITIONED_SUBJECT_MODEL",
+    "FIXTURE_ONLY_WALKBACK_POLICY"
+  ],
+  "regression_guard": {
+    "test": "rawlsing_next/tests/test_pre553_empirical_possibility_provider.py::test_p7_frozen_spine_bindings_still_hold_for_the_fixture_law",
+    "purpose": "The fixture law must still be the accepted AT07 law; a drifting copy fails."
+  },
+  "grade": "EXECUTED_SOURCE_FREE",
+  "not_claimed": "This freeze does not upgrade documentary fixture definitions into executed proof beyond the tests actually executed and recorded in 08_FINAL_PYTEST_OUTPUT.txt.",
+  "changed_source_law_fixture": {
+    "purpose": "REV-N10E-001 second source-free fixture used by the corrected P6 changed-source proof",
+    "variant_id": "CHANGED_SOURCE_LAW",
+    "fixture_id": "AT07_BIDIRECTIONAL_110_CHANGED_SOURCE_LAW",
+    "construction": "canonical AT07 law plus 10 additional POSITION=P1, ANSWER=no respondents (110 rows total)",
+    "procedure_held_constant": [
+      "same frozen C1-00 authority snapshots for source/routing/coordinate/replay semantics",
+      "same question and risk namespaces (identical question refs)",
+      "same consumer fixture subject semantics and conditioner grain (direction POSITION_P1 -> ANSWER)",
+      "same provider entry point and accepted C1-01 composition seam"
+    ],
+    "independent_frozen_expected_truth": {
+      "forward": {
+        "denominator": 70,
+        "cells": {
+          "yes": 54,
+          "no": 16
+        },
+        "exact_fraction_yes": {
+          "$exact_fraction": [
+            27,
+            35
+          ]
+        },
+        "exact_fraction_no": {
+          "$exact_fraction": [
+            8,
+            35
+          ]
+        },
+        "consumer_state": "EXACT_SUPPORTED"
+      },
+      "reverse_control": {
+        "denominator": 62,
+        "cells": {
+          "P1": 54,
+          "P2": 8
+        },
+        "note": "unchanged, because the 10 added respondents are all POSITION=P1 and therefore do not enter the ANSWER=yes cohort"
+      }
+    },
+    "arithmetic": "54/70 = 27/35 and 16/70 = 8/35 (exact fractions, independently derived from the row counts)",
+    "scope_authority_note": "The canonical AT07 query authority explicitly names only the canonical universe. The changed law lives in a different universe, so the fixture builds a changed-source query authority whose explicit scope names that universe (frozen_changed_source_query_authority). No implicit scope widening, no 'latest'/'default' fallback, and the canonical authority is unchanged.",
+    "observed_on_execution": {
+      "canonical": {
+        "denominator": 60,
+        "cells": {
+          "yes": 54,
+          "no": 6
+        }
+      },
+      "changed": {
+        "denominator": 70,
+        "cells": {
+          "yes": 54,
+          "no": 16
+        }
+      },
+      "matches_frozen_expected_truth": true
+    }
+  }
+}

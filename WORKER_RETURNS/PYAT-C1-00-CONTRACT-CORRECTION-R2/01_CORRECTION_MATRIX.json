@@ -1,0 +1,79 @@
+{
+  "schema": "PYAT_C1_00_R2_CORRECTION_MATRIX@1",
+  "status": "DOCUMENTARY_CORRECTION_COMPLETE_PENDING_INDEPENDENT_REREVIEW",
+  "base_return": "df6f2d36e274744d217dc4a380c73e2c7e18e83f",
+  "independent_review": "8baa2e1e3a6f4f96311fbd660b65933fb4aff6c4",
+  "implementation_baseline": "b3b2fa13049513078c301a1f6574b661fcf390c5",
+  "corrections": [
+    {
+      "defect": "A / R02_CONDITION_VALUE_IDENTITY",
+      "reviewer_failure": "Exact co-custody did not prove subject value ↔ producer predicate value.",
+      "correction": [
+        "Freeze exact value-bearing synthetic subject-condition preimages for POSITION=P1, POSITION=P2 and ANSWER=yes.",
+        "Freeze normalized exact predicate-leaf preimages for POSITION==P1, POSITION==P2 and ANSWER==yes.",
+        "Freeze exact fixture-only pairing ground-truth refs mapping each subject preimage to one exact predicate leaf.",
+        "Upgrade witness schema to include subject preimage, producer leaf, pairing ground truth, exact source/release/time and deterministic equality checks.",
+        "Mandatory P1 subject / P2 predicate mismatch fails CONDITION_VALUE_RELATION_MISMATCH before slice construction and consumer call."
+      ],
+      "evidence": "02_VALUE_RELATION_ORACLE.json",
+      "production_authority_created": false
+    },
+    {
+      "defect": "B / R11_SYNTHETIC_AUTHORITY_FREEZE",
+      "reviewer_failure": "Authority labels were frozen but authority semantics/scope/operations/hashes were not.",
+      "correction": [
+        "Freeze complete canonical preimage for five PRE553 synthetic authorities and three fixture-only consumer authorities.",
+        "Freeze version, class/purpose, operations, exact scope, effective time, replay/semantic material where applicable, and exact expected AuthorityRef content hash.",
+        "Authority content hash is sha256 of canonical full material; same label + changed material + old hash is an oracle failure."
+      ],
+      "evidence": "03_SYNTHETIC_AUTHORITY_FREEZE.json",
+      "production_authority_created": false
+    },
+    {
+      "defect": "C / R06_NEGATIVE_COVERAGE_STATE_CONSERVATION",
+      "reviewer_failure": "UNKNOWN was not frozen separately from UNVISITED and UNRESOLVED.",
+      "correction": [
+        "Add owner-native UNKNOWN_CURRENTNESS as distinct B5 lifecycle state.",
+        "Freeze distinctions from NO_CURRENT, CONFLICTING_CURRENT_SELECTION, UNRESOLVED, UNAVAILABLE and EXPLICIT_UNKNOWN_UNVISITED.",
+        "Retain adaptive unvisited as its own coverage state."
+      ],
+      "evidence": "05_STATE_AND_DETERMINANT_CLOSURE.json"
+    },
+    {
+      "defect": "D / R07_ACTUAL_PRODUCER_ADAPTER_CONSUMER_BINDING",
+      "reviewer_failure": "PossibilitySliceEvidence geometry/raw_support projection was underspecified.",
+      "correction": [
+        "Freeze one exact C1-01 geometry schema and exact keys.",
+        "Freeze mapping from EmpiricalFact + EmpiricalQuerySpec + condition witness into geometry.",
+        "Freeze raw_support = EmpiricalFact.raw_denominator_support.",
+        "Freeze exact raw and weighted numerator/denominator material and exact-fraction encoding.",
+        "Bind evidence identity to condition witness, denominator members, target topology/domain, measure, provenance and authorities."
+      ],
+      "evidence": "04_SLICE_PROJECTION.json"
+    },
+    {
+      "defect": "E / R10_DETERMINANT_DEPENDENCY_CLOSURE",
+      "reviewer_failure": "Condition-binding relation/witness was not a mandatory determinant.",
+      "correction": [
+        "Add witness ref/hash, subject preimage ref, producer predicate leaf ref and pairing ground-truth ref to direct determinant closure.",
+        "Add them to composed result identity and fresh-process recomputation inputs.",
+        "Freeze relation-only mutation selective invalidation/reidentification oracle."
+      ],
+      "evidence": "05_STATE_AND_DETERMINANT_CLOSURE.json"
+    }
+  ],
+  "preserved_prior_passes": [
+    "R01 exact source/release identity",
+    "R03 target topology/domain/component identity",
+    "R04 risk/eligibility/denominator/member identity",
+    "R05 RAW versus governed-weighted measure/design/estimand identity",
+    "R08 recursive immediate-parent and positive-handoff/full-coverage distinction",
+    "R09 replay-grade separation",
+    "R12 AT07 arithmetic 54/60 forward and 54/62 reverse",
+    "R13 narrow write terrain",
+    "R14 direct-versus-learned/adjudicated anti-bypass law"
+  ],
+  "execution_claim": "NONE__DOCUMENTARY_FREEZE_ONLY",
+  "raw_source_reads": 0,
+  "C1_01_started": false
+}

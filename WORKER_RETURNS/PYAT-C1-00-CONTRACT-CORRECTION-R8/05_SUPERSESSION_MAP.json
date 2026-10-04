@@ -1,0 +1,37 @@
+{
+  "schema": "PYAT_C1_00_R8_SUPERSESSION_MAP@1",
+  "rule": "Historical R3/R6/R7 values remain evidence. R8 supersedes them only as current executable AT07 identities.",
+  "shared": [
+    {"identity": "universe_ref", "historical": "ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2", "current": "ca5ee1320b1c0e0685eccb6585b35c1e74094516802545bde42fa11191ea43c2", "classification": "UNCHANGED"},
+    {"identity": "source_manifest_hash", "historical": "01ee5fa6db95efad3ce0acecd656f51beb6c2f2e21bc30e49bd358633f9ad6a1", "current": "01ee5fa6db95efad3ce0acecd656f51beb6c2f2e21bc30e49bd358633f9ad6a1", "classification": "UNCHANGED"},
+    {"identity": "candidate_projection_hash", "historical": "f0e42f9d04cac4a7f33abf2e3b5fd4392bc85ce3da4ab5489298b50c7ce2bf22", "current": "9b1065f8f82aaa4a66c8ac0668aa6c099302f090cd646c8c4b62e685a1cdfa95", "classification": "SUPERSEDED__EXECUTED_AUTHORITY_SNAPSHOT_OUTER_REFS"},
+    {"identity": "replay_manifest_ref", "historical": "e3791d5f5dfc70849789545e9d08e954c994feaef283953e84151c8f885fe76d", "current": "714ae71f47fbcb5a8c7e442dc407d19dafda87bcc3a9563764360cb8ed47c2e1", "classification": "SUPERSEDED_TRANSITIVELY"},
+    {"identity": "release_ref", "historical": "8afa807cc06a3a10e660d13bbd831f4f758ae829e835a454c62831bfd8f4d939", "current": "dfd6ca5e08d1abe0f1494b4dc0e38869925739cceb306c62a3540922b12ff5b3", "classification": "SUPERSEDED_TRANSITIVELY"},
+    {"identity": "query_authority_ref", "historical": "b59ef578314515268fa7b280a8480b4c95c80c9cfd831c39c2bfc4214b6fd767", "current": "b59ef578314515268fa7b280a8480b4c95c80c9cfd831c39c2bfc4214b6fd767", "classification": "UNCHANGED__EXECUTABLE_FIXTURE_NOW_USES_IT"}
+  ],
+  "directions": {
+    "forward": [
+      {"identity": "producer_predicate_hash", "historical": "fc7ee1774226e94491688b14a395acfbf9c5ccfc9184744963e01af1ee52dc55", "current": "fc7ee1774226e94491688b14a395acfbf9c5ccfc9184744963e01af1ee52dc55", "classification": "UNCHANGED"},
+      {"identity": "producer_predicate_ref", "historical": "13c14707d4d0544b2c1c1a43c07a308ff7fffbca196905c47c2d31f2ea8a2e6b", "current": "8fe1a7e827ee09d8ab8121fe76fc1b219c1518b74e743098adba1a754dd7a3ac", "classification": "SUPERSEDED__EXECUTED_COMPLETE_OUTER_PREIMAGE"},
+      {"identity": "producer_query_ref", "historical": "293db4ee7e1899c1a6df4f9178b4181a3f83496dc0b53790b80a7f951d3472ce", "current": "ebef7e841e4b6bcbde599118a9c993fa9a96a3b4c84bd743c862c1790548f371", "classification": "SUPERSEDED_TRANSITIVELY_FROM_PREDICATE_REF"},
+      {"identity": "producer_fact_ref", "historical": "96907345225b6badf88c8d22f3c047fc8f8cc227e1a11b3185fd95806326854f", "current": "20f35003c7d11a38c1c7d3cea9f334de4ba5b89d1f26fccbff1254c05904bdd1", "classification": "SUPERSEDED__QUERY_AND_RELEASE_PROVENANCE"},
+      {"identity": "producer_replay_ref", "historical": "be5c49cf3f111aef8a787ef008ec7e3f7147c56b3d32cc8a24243337e55f8dac", "current": "1700ec1a1256824fd2c4538466b372492793809adb2ad6bb2f75ab658e087a24", "classification": "SUPERSEDED__QUERY_AND_RELEASE_PROVENANCE"},
+      {"identity": "consumer_query_ref", "historical_r6_r7": "8f7444dbae4250cdda8a7a4c89bb331bd1f960072a97e8b11f05c4bd68c770d9", "current": "0e966cca9805e4fedce532812cfd6587cd7f7cf6cd858ac982c531abd6f61330", "classification": "SUPERSEDED__DIRECT_RELEASE_DETERMINANT"},
+      {"identity": "condition_value_witness_ref", "historical_r6_r7": "f4123258625589513da2afc0d4f10a2438b6238b0b4f0a5338acb03ef8932da5", "current": "fb3a3b566e2a65a522344ddf5145ec5754d02959237c75a0287fc57bd6c84db5", "classification": "SUPERSEDED__CONSUMER_QUERY_PRODUCER_REFS_AND_RELEASE"},
+      {"identity": "possibility_slice_evidence_ref", "historical_r6_r7": "c5e5930b6b368605c6828b70de02bf00ca77b9636c890706ac755b0074f61374", "current": "b2407eeb3d22cc0d71e5d13308b0149338761efc4ef40921ab363c3cd9c78307", "classification": "SUPERSEDED_TRANSITIVELY"},
+      {"identity": "composed_result_identity_hash", "historical": null, "current": "03610f9d91b23cfb6f862dc91b5de92c7f4e4b8e44a53b9efdacb1cf73af6b9e", "classification": "CURRENT_EXECUTED_FREEZE"}
+    ],
+    "reverse": [
+      {"identity": "producer_predicate_hash", "historical": "20d43386e508f7bb26b7219d06f858c0df42d736ce9a4de6e6f0f80ffd33d8e6", "current": "20d43386e508f7bb26b7219d06f858c0df42d736ce9a4de6e6f0f80ffd33d8e6", "classification": "UNCHANGED"},
+      {"identity": "producer_predicate_ref", "historical": "899f2539824e79c448169b9096fe28b557c503671c665a4db25c8e76e0eb077f", "current": "81080d5b877742bc883073604ac2f002908e248d50fd518a74e86135e6115201", "classification": "SUPERSEDED__EXECUTED_COMPLETE_OUTER_PREIMAGE"},
+      {"identity": "producer_query_ref", "historical": "547c66cdb5b4bf38c50e9c67c6f522ee0c502bf1e7c51fd2888732cc94a89da3", "current": "7463900ecc05d0924a49b0a056537d9984f6f97491709c788bd54b8fcce2121b", "classification": "SUPERSEDED_TRANSITIVELY_FROM_PREDICATE_REF"},
+      {"identity": "producer_fact_ref", "historical": "b82560d8ac1963a1f7a8763195367666d0ff013746b462d74e3e0f9c10f2a4f1", "current": "68ad841bd8e5ab8df10318c7660e91ab4809cf2d3ad76459581d940379668289", "classification": "SUPERSEDED__QUERY_AND_RELEASE_PROVENANCE"},
+      {"identity": "producer_replay_ref", "historical": "c0444f1c0af7e6aab2ba6c8afb205b26b5f586283be444699813588b43f85ba0", "current": "e4a8b3beb62f55a2de211c3342916fcfe796c18d038a7d57be3dc045b8ec539a", "classification": "SUPERSEDED__QUERY_AND_RELEASE_PROVENANCE"},
+      {"identity": "consumer_query_ref", "historical_r6_r7": "2909672ca01a2b5fcb5d07351f8691bb10bf82d3e794d92f73981d2e70fc4f0e", "current": "02b3eabf5887bf85615328830c1f5d97c42935cbb8463b4f3a69eca57715f323", "classification": "SUPERSEDED__DIRECT_RELEASE_DETERMINANT"},
+      {"identity": "condition_value_witness_ref", "historical_r6_r7": "a5410dd09f9a16ada260b6d18e902e5a101b7b41346a407f17283de8d726fdb0", "current": "0c75b6cad16aafcc1c6fdc9664f3c4cd5d09cc3c9b8b549dfc736b1a9a3bf2df", "classification": "SUPERSEDED__CONSUMER_QUERY_PRODUCER_REFS_AND_RELEASE"},
+      {"identity": "possibility_slice_evidence_ref", "historical_r6_r7": "0cd3b5b868852db956a079835c5052c206561b0fe2a7480931e6de0dc5d81844", "current": "e40c31eaf25c8e4f163ff340f968f0dc5ee650fc8383a586ea251a43ee8851d6", "classification": "SUPERSEDED_TRANSITIVELY"},
+      {"identity": "composed_result_identity_hash", "historical": null, "current": "1202822cf98d802c04440328496dc64ee02e6d6030a3da6c9bf10ef1a6490a3c", "classification": "CURRENT_EXECUTED_FREEZE"}
+    ]
+  },
+  "historical_artifacts_modified": false
+}
