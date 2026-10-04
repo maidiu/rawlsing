@@ -1,12 +1,12 @@
 {
   "schema": "RAWLSING_HQ_HANDOFF_POINTER@1.1.0",
-  "checkpoint_id": "20261003-PYAT-HQ201-R9-HARDENING-F6F7-ONTOLOGY-R1",
-  "handoff_commit": "c11ba92dd075efed77f39d6c761a2fc280e0f307",
+  "checkpoint_id": "20261004-PYAT-HQ202-R9-FINAL-F6F7-CONSTITUTION-R1",
+  "handoff_commit": "e4529a8c0afe0bc0eb267a94ff46296b3e2695e7",
   "semantic_pre_main_tip": "902640dfddce431d0c5ba151d3eb851d6b84d7a3",
   "control_branch": "integration/pre-main-reconciliation-r1",
-  "current_md_path": "HQ_HANDOFF/checkpoints/20261003-PYAT-HQ201-R9-HARDENING-F6F7-ONTOLOGY-R1/CURRENT.md",
-  "current_json_path": "HQ_HANDOFF/checkpoints/20261003-PYAT-HQ201-R9-HARDENING-F6F7-ONTOLOGY-R1/CURRENT.json",
-  "manifest_path": "HQ_HANDOFF/checkpoints/20261003-PYAT-HQ201-R9-HARDENING-F6F7-ONTOLOGY-R1/MANIFEST.json",
+  "current_md_path": "HQ_HANDOFF/checkpoints/20261004-PYAT-HQ202-R9-FINAL-F6F7-CONSTITUTION-R1/CURRENT.md",
+  "current_json_path": "HQ_HANDOFF/checkpoints/20261004-PYAT-HQ202-R9-FINAL-F6F7-CONSTITUTION-R1/CURRENT.json",
+  "manifest_path": "HQ_HANDOFF/checkpoints/20261004-PYAT-HQ202-R9-FINAL-F6F7-CONSTITUTION-R1/MANIFEST.json",
   "decision_ledger_path": "HQ_HANDOFF/DECISION_LEDGER.jsonl",
   "protocol_path": "HQ_HANDOFF/PROTOCOL.md",
   "start_here_path": "HQ_HANDOFF/START_HERE.md",
@@ -15,7 +15,7 @@
   "temporal_reconciliation_law": "SEALED_CHECKPOINT_AUTHORITY_NE_POST_CHECKPOINT_PENDING_RETURN_NE_UNAUTHORIZED_POST_CHECKPOINT_MOVEMENT",
   "maintenance_law": "AFTER_EVERY_MATERIAL_HQ_STATE_CHANGE__CREATE_NEW_IMMUTABLE_CHECKPOINT__ADVANCE_AND_VERIFY_LATEST_BEFORE_TRANSITION_IS_SEALED",
   "protected_execution_head": "16f5e7d5f691e908d85dc1dd26b8a59a29f668f4",
-  "next_action": "LAUNCH_ALL_THREE_HQ201_SPARSE_LANES_IN_PARALLEL",
+  "next_action": "LAUNCH_HQ202_FIVE_NODE_ORTHOGONAL_FRONTIER",
   "source_split_control_head": "cee9e27d57dc72771d9c3ec5df26493321feeef5",
   "split_fanin_evidence_tip": "cee9e27d57dc72771d9c3ec5df26493321feeef5",
   "joined_successor_return_tip": "b4dd6d6016367110c06317abe2cef276123b4c69",
@@ -62,7 +62,7 @@
   "pyat_current_handoff": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/CURRENT_HANDOFF.md",
   "pyat_current_grok_docket": "PYAT_CONTROL_ROOM/12_B_ROUTE_PRE_FIELD_FORGE_GROK_DOCKET.md",
   "pyat_fresh_hq_protocol": "PYAT_CONTROL_ROOM/13_FRESH_HQ_FULL_GROK_PROTOCOL.md",
-  "immediate_program_refinement": "HQ201__SESSION_ACCEPTED__EXECUTION_BINDING_HARDENING__F6F7_ONTOLOGY_CONSERVATION",
+  "immediate_program_refinement": "HQ202__R9_FINAL_REVIEW__F6F7_CONSTITUTION_REVIEW_AND_CONTRACTS__ASTRA_TIME_GRAIN",
   "legacy_pyat_bootstrap_path": "HQ_HANDOFF/PYAT_HQ_BOOTSTRAP_R1.md",
   "pyat_documentary_hygiene": "HQD-2026-09-26-114",
   "pyat_forward_program_decision": "HQD-2026-09-28-125",
@@ -544,8 +544,8 @@
   "external_adjudication_retrieval_law": "ALL_COMPARISON_MATERIAL_FETCHABLE_FROM_ORIGIN",
   "measured_execution_authorized_via_warrant": false,
   "previous_handoff": {
-    "checkpoint_id": "20261003-PYAT-HQ200-R9-WARRANT-BINDING-WAVE-R1",
-    "handoff_commit": "142287f5baea41e9fb53afc1f31317f2ed0f93f6"
+    "checkpoint_id": "20261003-PYAT-HQ201-R9-HARDENING-F6F7-ONTOLOGY-R1",
+    "handoff_commit": "c11ba92dd075efed77f39d6c761a2fc280e0f307"
   },
   "previous_operating_mode": {
     "selected": "BROWSER_ECONOMY",
@@ -1057,5 +1057,33 @@
     "host_disk_blocker_remains": true,
     "c4_adopted": false,
     "hq182_hold_lifted": false
+  },
+  "hq202": {
+    "r9": {
+      "candidate": "deea40541cda0627d129dcb7d30e06e0682e0fed",
+      "adopted": false,
+      "review": {
+        "branch": "agent/reviewer-pyat-hq202-r1",
+        "commission_tip": "217f96b5d9f7b767a7cfb11e5c2c3c7c75d77b4f"
+      }
+    },
+    "f6f7": {
+      "ontology_return": "d3f0619429a400552c2f3c397be57cdfbadb2f54",
+      "adopted": false,
+      "review": {
+        "branch": "agent/reviewer-pyat-hq202-r2",
+        "commission_tip": "f6725724d54d685f6c3dd8604a65f5f0b806a4ff"
+      },
+      "temporal_contract": {
+        "branch": "agent/rabochii-pyat-hq202-r1",
+        "commission_tip": "d452b66bc261e4139ca9c28a19b9d849676aff42"
+      },
+      "cross_source_contract": {
+        "branch": "agent/rabochii-pyat-hq202-r2",
+        "commission_tip": "501e7d5d4623d0ee92913a73d092da7918b981d5"
+      },
+      "astra_packet": "PYAT_CONTROL_ROOM/ASTRA_CONSULTS/HQ202_TIME_GRAIN_FORK_R1.md"
+    },
+    "concurrency": "FIVE_ORTHOGONAL_NODES__NO_OVERLAPPING_PRODUCTION_WRITERS"
   }
 }
