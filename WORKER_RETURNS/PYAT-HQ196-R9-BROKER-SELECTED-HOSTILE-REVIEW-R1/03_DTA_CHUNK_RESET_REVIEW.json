@@ -1,0 +1,50 @@
+{
+  "schema": "PYAT_HQ196_DTA_CHUNK_RESET_REVIEW@1.0.0",
+  "governing_question": "can fresh broker / reset semantics be made correct without silently falling back to a raw path string?",
+  "answer": "YES — but only with a freshly-constructed broker per reader invocation. A single reused broker object is provably unsafe.",
+  "chunk_mechanism": {
+    "source": "pyreadstat.read_file_in_chunks RE-INVOKES the read function once per chunk",
+    "loop_verbatim": "while len(df): df, meta = read_function(file_path, row_offset=offset, row_limit=chunksize, **kwargs); offset += chunksize",
+    "plus": "it also performs a `metadataonly=True` call on the same file_path before the loop",
+    "consequence": "the same file object is handed to ReadStat repeatedly; its position is NOT reset between invocations"
+  },
+  "measured_behaviour": {
+    "chunked_via_single_broker_object": {
+      "call": "read_file_in_chunks(read_dta, broker, chunksize=2)",
+      "result": "FAILED — ReadstatError: 'This version of the file format is not supported'",
+      "cause": "the first metadata read advanced the broker toward EOF; the next invocation began mid-stream"
+    },
+    "chunked_via_path_baseline": {
+      "call": "read_file_in_chunks(read_dta, path, chunksize=2)",
+      "result": "OK -> chunk sizes [2,2,2]"
+    },
+    "fresh_broker_per_call": {
+      "call": "for off in (0,200,400): read_dta(fresh_broker, row_offset=off, row_limit=200)",
+      "result": "OK -> [(0,200),(200,200),(400,100)] — correct chunks",
+      "aggregate_accounting": {"reads": 665, "bytes": 13475},
+      "significance": "a fresh broker per invocation yields correct chunk semantics AND complete per-invocation read/byte accounting at one app-owned seam"
+    },
+    "reuse_hazard": {
+      "call": "two consecutive read_dta calls on the SAME broker",
+      "observed_after_first_call": "tell() = 9821 of 9843 bytes (left at EOF)",
+      "second_call_result": "FAILED — ReadstatError: 'This version of the file format is not supported'"
+    }
+  },
+  "bservation_on_escapes": {
+    "current_code": "rawlsing_next/pre553_physical_decoder.py:156 passes `self._source_path` which is `str(source)` (set at line 549)",
+    "so_today": "every reader invocation is a RAW PATH STRING — the broker route is not in use at all yet",
+    "required_change": "replace str(source) with a freshly-constructed governed broker at EACH of the three reader invocations (metadata probe, compatibility full read, chunked route)"
+  },
+  "row_limit_effect": {
+    "finding": "row_limit DOES reduce observed bytes (500 rows -> 555 reads/9825 bytes; row_limit=10 -> 65 reads/1985 bytes)",
+    "contrast": "usecols does NOT reduce observed bytes (see 02/A5)",
+    "significance": "the seam gives real I/O observability for ROW bounding but NOT column bounding — reinforcing that usecols is a projection, not a physical read restriction"
+  },
+  "safe_design_law": [
+    "one app-owned open per reader invocation, wrapped in a broker that records read count and bytes and enforces the frozen budget",
+    "always construct a FRESH broker for each pyreadstat read call — never reuse an object across invocations",
+    "enforce ceilings by returning a premature EOF (b'') — NEVER by raising inside read() (raising hangs the reader; see 02)",
+    "keep the path string out of the reader call entirely so the compiled open handler stays a no-op"
+  ],
+  "residual": "this review established the reset law on synthetic carriers at the R7 grain. The claim that EVERY relevant reader call site can be brokered with no raw path-string escape remains an IMPLEMENTATION-lane proof (three call sites identified in the freeze decoder; all three are currently raw paths)."
+}

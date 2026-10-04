@@ -1,0 +1,47 @@
+{
+  "schema": "PYAT_HQ196_R7_IDENTITY_AND_REQUALIFICATION_EFFECT@1.0.0",
+  "question": "does the broker route change the accepted R7 interpreter/package identity, and what requalification burden follows?",
+  "r7_identity_reverified_by_this_review": {
+    "interpreter_sha256": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+    "interpreter_expected": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+    "match": true,
+    "python": "3.11.3",
+    "pyreadstat": "1.3.6",
+    "pandas": "2.3.3",
+    "numpy": "2.4.6",
+    "pyarrow": "25.0.1",
+    "pyreadstat_extension_sha256": "7700fb3e17fee0f714a6ceced4c325b8c8d33df96b1392d1bf846d0d746b5834",
+    "gate_status": "PYREADSTAT_BINARY_IDENTITY_UNCHANGED"
+  },
+  "does_the_broker_route_require_a_rebuild_or_new_privilege": {
+    "rebuild": false,
+    "privilege": false,
+    "new_dependency": false,
+    "finding": "the file-object route already exists in the accepted 1.3.6 build; it is reached by passing a file-like object instead of a path. No recompilation, no dyld interposition, no root, no SIP change.",
+    "contrast_with_the_previously_failed_approaches": "the HQ194/HQ191 attempts (DYLD_INSERT_LIBRARIES, __DATA,__interpose) failed; this route does not depend on either"
+  },
+  "does_the_broker_route_change_executed_runtime_behaviour": {
+    "semantic_change_to_reader_output": "NONE OBSERVED on synthetic carriers — the returned frame, columns and row counts were identical between the path route and the broker route",
+    "physical_change": "YES — the byte source changes from the compiled reader's internal I/O to the Python bridge, which is precisely what makes the literal account observable",
+    "assessment": "this is an I/O-path substitution that preserves decoded results on synthetic carriers, but it is NOT nothing: it moves the read boundary into Python and therefore changes the performance and failure surface"
+  },
+  "requalification_effect": {
+    "identity_spine": "UNCHANGED — the R7 interpreter and package versions are untouched; no re-provisioning is implicated",
+    "what_still_requires_requalification": [
+      "source-free equivalence at the prior court grain: path route vs broker route must be shown to produce identical decoded results across the full source-free corpus (the HQ196 adjudication lists this as outstanding proof item 6; this review verified it only on synthetic carriers)",
+      "the premature-EOF ceiling pattern must be re-validated per format, since it relies on ReadStat detecting a short read rather than on a documented guarantee",
+      "any pyreadstat version change invalidates the seam: the empty-path convention, the no-op open handler and the bare-except read handler are implementation details"
+    ],
+    "pinning_requirement": "pin pyreadstat to the exact 1.3.6 build (extension sha 7700fb3e...) and re-run the seam checks on any change. The seam is public in its TYPING but private in its BEHAVIOUR."
+  },
+  "seam_publicness": {
+    "verdict": "PUBLICLY TYPED AND DOCUMENTED in 1.3.6",
+    "evidence": "pyreadstat.py exports `class FileLike(Protocol)` with the docstring 'Should work with any file-like object that has read and seek methods'; the read functions' parameter docstring names 'path to the file or file-like object'",
+    "but_private_in_behaviour": [
+      "the empty-path b\"\" convention (pyx:1254)",
+      "pyobject_open_handler being a deliberate no-op",
+      "pyobject_read_handler's BARE except returning -1 (the hang hazard)"
+    ],
+    "conclusion": "not a de-facto private hook the way dyld interposition was, but also not a stability-guaranteed contract. Treat as version-pinned behaviour."
+  }
+}

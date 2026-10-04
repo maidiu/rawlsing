@@ -1,0 +1,61 @@
+{
+  "schema": "PYAT_HQ196_SELECTED_READ_CALL_PATH_REVIEW@1.0.0",
+  "frozen_law_requirement": {
+    "source": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+    "per_source": [
+      {"source": "SRC02", "expected_selected_reads": 1, "expected_full_reads": 0, "variables": ["Q10B"]},
+      {"source": "SRC06", "expected_selected_reads": 1, "expected_full_reads": 0, "variables": ["Q101","Q2061B"]},
+      {"source": "SRC14", "expected_selected_reads": 1, "expected_full_reads": 0, "variables": ["v372"]}
+    ],
+    "read_constraint": "selected-column reads are a MANDATORY SEPARATE ACCOUNT distinct from full reads"
+  },
+  "exact_freeze_decoder_call_sites": [
+    {"line": 153, "code": "reader = pyreadstat.read_sav if self._reader_kind == 'SAV' else pyreadstat.read_dta", "kind": "reader selection"},
+    {"line": 155, "code": "chunks = pyreadstat.read_file_in_chunks(reader, self._source_path, chunksize=rows_per_chunk, encoding=self._encoding, apply_value_formats=False, user_missing=True,)", "kind": "CHUNKED ROW-DATA READ", "usecols": "ABSENT", "note": "no selected-column configuration of any kind is passed"},
+    {"line": 495, "code": "reader = pyreadstat.read_sav if expected_format == 'sav' else pyreadstat.read_dta", "kind": "reader selection"},
+    {"line": 496, "code": "reader(str(source), metadataonly=True, apply_value_formats=False, user_missing=True, encoding=encoding)", "kind": "METADATA PROBE", "usecols": "ABSENT"},
+    {"line": 502, "code": "frame, metadata = reader(str(source), apply_value_formats=False, user_missing=True, encoding=encoding)", "kind": "COMPATIBILITY FULL READ (taken when encoding is not None)", "usecols": "ABSENT"}
+  ],
+  "grep_finding": {
+    "usecols_in_freeze_decoder": "ZERO occurrences in rawlsing_next/pre553_physical_decoder.py",
+    "usecols_elsewhere_in_freeze_tree": [
+      {"site": "rawlsing_next/runtime/ee_p2x/05_WVS7_PROJECTION_MATERIALIZER.py:1017", "usecols": "['B_COUNTRY']", "scope": "WVS7 retained-comparator projection route — NOT the fresh-read C4 route"},
+      {"site": "rawlsing_next/ee_p2x_darwin_stage_backend.py:846", "usecols": "['B_COUNTRY']", "scope": "retained P2X stage backend — NOT the fresh-read C4 route"}
+    ],
+    "conclusion": "no consumer layer on the frozen fresh-read route supplies an equivalent selected-column restriction"
+  },
+  "required_determinations": {
+    "1_does_any_other_call_or_consumer_layer_supply_an_equivalent_selected_column_restriction": {
+      "answer": "NO",
+      "basis": "the only fresh-read entry points are _decode (metadata probe + optional compatibility full read) and PhysicalSourceIncidence.iter_batches (chunked read). None passes usecols. Downstream consumers receive PhysicalCell objects that were already materialised from a full-column frame; a downstream filter cannot retroactively un-read columns the decoder already read.",
+      "important_distinction": "downstream SELECTED-VARIABLE EXACTNESS assertions (which do exist) constrain which variables are USED; they do not constrain which columns are physically READ. The account in question is a read account."
+    },
+    "2_does_pyreadstats_relevant_reader_chunk_route_support_a_usecols_style_restriction": {
+      "answer": "YES IT ACCEPTS ONE — but it is a PROJECTION, not a physical read restriction",
+      "evidence": [
+        "read_sav/read_dta expose a public `usecols: list[str] | None` parameter that IS forwarded through read_file_in_chunks via **kwargs (verified: chunked reads honour usecols and return only the named columns)",
+        "BUT measured physical I/O is IDENTICAL with and without usecols: SAV 4050 reads/160869 bytes in both cases; DTA 4055 reads/163751 bytes in both cases (4000-row synthetic carriers)",
+        "the compiled parser reads the full record stream and applies usecols when constructing the output frame"
+      ],
+      "consequence": "adding usecols would make the RETURNED frame selected-column, but would NOT produce a physically distinct selected read, and would not by itself create a defensible separate 'selected-column read' count distinct from the full read that actually occurred"
+    },
+    "3_is_selected_read_count_truly_owner_missing_or_is_the_operation_itself_missing": {
+      "answer": "THE OPERATION ITSELF IS MISSING — this is an implementation gap, not merely an accounting-counter gap",
+      "reasoning": "HQ's earlier finding was that the decoder performs no usecols operation. This review confirms that AND adds that the frozen expected operation class is 'BOUNDED_FRESH_PHYSICAL_SELECTED_VARIABLE_READ' with expected_selected_reads=1 / expected_full_reads=0. The executed route performs a full-column read and zero selected reads. So the divergence is between an authorized OPERATION and the executed OPERATION, not merely between an authorised counter and a missing counter.",
+      "sharpening": "a missing counter is repaired by instrumenting the existing operation. Here the existing operation is the WRONG operation relative to the frozen expectation, so instrumenting it would faithfully count a full read while the warrant authorises a selected read."
+    },
+    "4_is_this_a_material_pre_live_implementation_gap": {
+      "answer": "YES",
+      "why_material": [
+        "it changes what the run would physically do to the source (full-column vs selected-variable read) on SRC02/SRC06/SRC14",
+        "three of the eight C4 sources are affected",
+        "the frozen per-source constraint expected_full_reads=0 would be violated on those sources, and the contract treats a mismatch as a STOP, not a reportable variance",
+        "no opportunistic repair is permitted during governed execution (C4 commission: 'No opportunistic repair during governed execution')"
+      ]
+    }
+  },
+  "nuance_recorded_honestly": {
+    "usecols_would_not_shrink_io": "Even after adding usecols, the physical byte/read volume would be unchanged in pyreadstat 1.3.6. An implementation that adds usecols and then claims a physically distinct selected read would be over-claiming.",
+    "what_would_be_defensible": "An implementation must decide, with authority, whether the frozen 'selected read' account is satisfied by (a) a projection-filtered full decode that is HONESTLY accounted as a full read plus a selection step, or (b) a genuinely column-restricted physical read, which pyreadstat 1.3.6 does not appear to offer on this route. That is an authority question for HQ, not a defect this review may resolve."
+  }
+}

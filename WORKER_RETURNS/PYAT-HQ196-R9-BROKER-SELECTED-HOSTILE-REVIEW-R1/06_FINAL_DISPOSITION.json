@@ -1,0 +1,64 @@
+{
+  "schema": "PYAT_HQ196_FINAL_DISPOSITION@1.0.0",
+  "status": "FINAL",
+  "disposition": "BROKER_ROUTE_CONFIRMED__SELECTED_READ_IMPLEMENTATION_GAP_CONFIRMED",
+  "disposition_is_allowed_value": true,
+  "terminal_token": "HQ196_R9_BROKER_SELECTED_REVIEW_RETURNED__HQ_ADJUDICATION_REQUIRED",
+  "review_branch": "agent/reviewer-pyat-hq196-r9-broker-selected-hostile-review-r1",
+  "commissioned_startup_sha": "98899701e80e13e9f716416aaf6cd8d7a21753d9",
+  "checkout_mode": "SPARSE_REQUIRED (honored; no clone; no full worktree; sparse checkout not widened)",
+  "reviewer_identity": {"harness": "DeepSeek Harness", "model": "DeepSeek V4.1 Flash",
+    "independent_of_implementation_lane": true,
+    "parallel_hq196_implementation_branch_inspected": false},
+  "part_A_broker_verdict": {
+    "verdict": "ROUTE CONFIRMED",
+    "source_backed": true,
+    "confirmed_claims": [
+      "a caller-supplied object with .read/.seek causes pyreadstat/ReadStat to install the Python-bridge handlers (pyx:965) and use the file object as io_ctx",
+      "the compiled reader is handed an EMPTY path b\"\" and its open handler is a no-op, so it performs no separate source-path open on this route",
+      "io.BytesIO — no path, no file descriptor — parses successfully, which is control-flow proof that all bytes arrived via the Python bridge",
+      "the application-owned open is therefore the complete literal source-path open at this route",
+      "reads and bytes are observable at that single app-owned seam (measured for SAV and DTA)",
+      "no pyreadstat rebuild and no privilege is required",
+      "the R7 interpreter identity (11d6f541...) and pyreadstat 1.3.6 are unchanged"
+    ],
+    "new_findings_that_constrain_the_design": [
+      {"id": "BROKER-RAISE-HANGS", "severity": "MATERIAL", "detail": "pyobject_read_handler uses a BARE except returning -1. A broker that RAISES past a ceiling does not fail loudly — the process HANGS (reproduced; had to be killed at 12s). Ceilings must be enforced by returning a premature EOF (b''), which does produce a prompt ReadStatError on both SAV and DTA. Any implementation that enforces budgets by raising inside read() is unsafe."},
+      {"id": "BROKER-MUST-BE-A-REAL-SEEKABLE-STREAM", "severity": "MODERATE", "detail": "a naive object exposing read/seek with raw semantics fails with 'Unable to seek within file'; the seam requires correct tell() semantics."},
+      {"id": "REUSE-UNSAFE / FRESH-BROKER-PER-CALL", "severity": "MATERIAL", "detail": "read_file_in_chunks re-invokes the read function per chunk and does not reset position, so a single reused broker fails on the second invocation. A fresh broker per reader invocation yields correct chunk semantics and complete accounting."},
+      {"id": "USECOLS-IS-POST-READ", "severity": "MATERIAL (feeds Part B)", "detail": "usecols changes only the returned frame; physical reads and bytes are IDENTICAL with and without it on both SAV and DTA at 4000 rows."}
+    ],
+    "not_established_by_this_review": [
+      "that EVERY relevant reader call site can be brokered with no raw path-string escape (three call sites identified in the freeze decoder, all three currently raw str(source) paths) — implementation-lane proof",
+      "full source-free corpus equivalence between the path route and the broker route (verified here on synthetic carriers only)"
+    ]
+  },
+  "part_B_selected_read_verdict": {
+    "verdict": "IMPLEMENTATION GAP CONFIRMED",
+    "findings": {
+      "no_equivalent_restriction_elsewhere": "CONFIRMED — no consumer layer supplies a selected-column physical restriction; downstream selected-variable exactness constrains USE, not READ",
+      "pyreadstat_supports_a_usecols_style_restriction": "YES, and read_file_in_chunks forwards it — but it is a PROJECTION, not a physical read restriction (measured I/O identical)",
+      "owner_missing_or_operation_missing": "THE OPERATION ITSELF IS MISSING. The frozen expectation is a BOUNDED_FRESH_PHYSICAL_SELECTED_VARIABLE_READ with expected_selected_reads=1 and expected_full_reads=0; the executed route performs a full-column read and zero selected reads. Instrumenting the existing operation would faithfully count the wrong operation.",
+      "material_pre_live_gap": "YES — affects SRC02/SRC06/SRC14 (three of eight sources), would violate expected_full_reads=0, and the contract treats such a mismatch as a STOP rather than a reportable variance"
+    },
+    "honest_nuance": "Even with usecols added, pyreadstat 1.3.6 would not reduce physical I/O. An implementation that adds usecols and then claims a physically distinct selected read would be OVER-CLAIMING. Whether the frozen account is satisfied by a projection-filtered full decode (honestly accounted as a full read plus a selection step) or requires a genuinely column-restricted physical read is an AUTHORITY question for HQ; this review does not resolve it."
+  },
+  "contract_ceiling_respected": {
+    "reopened_contract_meaning": false,
+    "adopted_meaning": "expected budgets/instrumentation/basis frozen before launch; exact observed counts measured during execution and returned; literal path opens are not reader/decoder invocations and cannot be relabelled",
+    "concrete_contradiction_found_requiring_reopening": false
+  },
+  "hostile_method": {
+    "did_not_accept_by_summary": true,
+    "inspected_installed_implementation": "the wheel ships _readstat_parser.pyx/.pxd and the generated C — the seam was read as source, not inferred",
+    "reproduced_with_synthetic_carriers": true,
+    "formats_exercised": ["SAV", "DTA"],
+    "real_source_access": false
+  },
+  "not_claimed": [
+    "no warrant issued, no real source accessed, no locator discovered, no live C4, no production mutation, no C7/actor work",
+    "no claim that the broker route alone closes R9",
+    "no claim that usecols satisfies the selected-read account"
+  ],
+  "holds_observed": {"raw_source_access": false, "locator_discovery": false, "warrant_issuance": false, "live_c4": false, "production_mutation": false, "c7_or_actor_work": false}
+}

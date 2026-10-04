@@ -1,0 +1,60 @@
+{
+  "schema": "PYAT_HQ196_BROKER_SEAM_CONTROL_FLOW@1.0.0",
+  "role": "hostile independent source-free reviewer",
+  "reviewer_identity": {"harness": "DeepSeek Harness", "model": "DeepSeek V4.1 Flash"},
+  "startup": {
+    "review_branch": "agent/reviewer-pyat-hq196-r9-broker-selected-hostile-review-r1",
+    "startup_sha_expected": "98899701e80e13e9f716416aaf6cd8d7a21753d9",
+    "startup_sha_resolved": "98899701e80e13e9f716416aaf6cd8d7a21753d9",
+    "match": true,
+    "fetch": "git fetch origin (no blind pull)",
+    "sparse_worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq196-r9-review",
+    "sparse_patterns": [
+      "/WORKER_COMMISSIONS/PYAT-HQ196-R9-BROKER-SELECTED-HOSTILE-REVIEW-R1/",
+      "/WORKER_RETURNS/PYAT-HQ196-R9-BROKER-SELECTED-HOSTILE-REVIEW-R1/",
+      "/PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ196_R9_THREE_WAY_ADJUDICATION_R1.md"
+    ],
+    "sparse_widened": false,
+    "full_worktree_created": false,
+    "clone_created": false,
+    "parallel_hq196_implementation_branch_inspected": false
+  },
+  "artifact_under_review": {
+    "package": "pyreadstat",
+    "version": "1.3.6",
+    "installed_at": "LOCAL_COURTS/qualification/r7-c4-source-free-venv/lib/python3.11/site-packages/pyreadstat",
+    "note": "the wheel ships the Cython sources (.pyx/.pxd) AND the generated C, so the seam can be read as source rather than inferred"
+  },
+  "the_seam": {
+    "declaration": "pyreadstat.py:56 `class FileLike(Protocol)` — public, typed, documented: 'Should work with any file-like object that has read and seek methods, such as those returned by open() or io.BytesIO'",
+    "alias": "pyreadstat.py:65 `FilePathorBuffer: TypeAlias = FilePathLike | FileLike`",
+    "public_api_exposure": "read_sav/read_dta/... accept `filename_path` typed as FilePathorBuffer; the docstring for the parameter reads 'path to the file or file-like object'",
+    "detection": "_readstat_parser.pyx:1252 `if hasattr(filename_path, 'read') and hasattr(filename_path, 'seek'):` -> `file_obj = filename_path`; `_readstat_parser.pyx:1254 filename_bytes = b\"\"  # Empty path - will be ignored when file_obj is used`",
+    "handler_selection": "_readstat_parser.pyx:965 `if file_obj is not None:` installs ALL FOUR Python-bridge handlers and sets io_ctx to the file object:",
+    "handlers_installed": {
+      "open": "pyobject_open_handler — body is `\"\"\"File is already open - this is a no-op\"\"\"; return 0`  (pyx:867-869)",
+      "close": "pyobject_close_handler — `\"\"\"User manages file lifetime - this is a no-op\"\"\"; return 0` (pyx:871-873)",
+      "read": "pyobject_read_handler — `file_obj.read(nbyte)` then memcpy into the ReadStat buffer (pyx:875-887)",
+      "seek": "pyobject_seek_handler — `file_obj.seek(offset, py_whence)` then `return file_obj.tell()` (pyx:890-905)"
+    },
+    "parse_call": "_readstat_parser.pyx:997/1001 `readstat_parse_sav(parser, filename, ctx)` / `readstat_parse_dta(...)` where `filename` is the EMPTY b\"\" on the broker route and the parser carries io_ctx = the file object",
+    "source_backed_conclusion": "On the broker route the compiled reader is handed an EMPTY path, its open handler is a no-op, and every byte it consumes arrives through the Python read callback. There is no path string available for a compiled path-open to act on, so the compiled reader performs NO separate source-path open on this route.",
+    "evidence_grade": "SOURCE (Cython source shipped in the installed wheel) + CONTROL FLOW + SYNTHETIC REPRODUCTION. Not inferred from inability to observe."
+  },
+  "the_four_claims_under_attack": [
+    {"claim": "a caller-supplied object with .read/.seek causes pyreadstat/ReadStat to use the Python bridge",
+     "verdict": "CONFIRMED", "basis": "pyx:1252/965 source plus synthetic broker reproducing successfully; io.BytesIO (no fd, no path) also works"},
+    {"claim": "the compiled reader receives no usable source path and performs no separate source-path open on that route",
+     "verdict": "CONFIRMED", "basis": "empty filename b\"\" is passed; pyobject_open_handler is a documented no-op; io.BytesIO has no path or fd and still parses"},
+    {"claim": "the application-owned open is therefore the complete literal O1-C07 source-path open at that route",
+     "verdict": "CONFIRMED AS AN ACCOUNTING MECHANISM", "basis": "the app owns the only open; the bridge records every read/seek; no second open exists to account for on that route",
+     "caveat": "this makes the literal account OBTAINABLE on the broker route; it does not by itself change any frozen budget"},
+    {"claim": "reads/bytes become observable at the actual I/O owner",
+     "verdict": "CONFIRMED", "basis": "measured read-call and byte totals at the broker for SAV and DTA (see 02)"}
+  ],
+  "private_or_public": {
+    "finding": "PUBLICLY TYPED AND DOCUMENTED in 1.3.6 — FileLike is an exported Protocol and the parameter docstring names 'file-like object'. It is not a private/underscore seam.",
+    "but": "it is a thin, version-sensitive bridge. The handler bodies, the empty-path convention, and the exception-swallowing behaviour are implementation details that a future version could change without notice.",
+    "requirement": "pin the exact pyreadstat build (1.3.6) and the host interpreter identity; re-qualify on any change. This is consistent with the R7 identity spine."
+  }
+}
