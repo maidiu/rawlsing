@@ -1,0 +1,43 @@
+{
+  "schema": "PYAT_HQ203_F6_MODE_SEPARATION@1.0.0",
+  "correction": 1,
+  "verdict": "HQ201 MODE CONFLATION CONFIRMED AND CORRECTED",
+  "authority_read": [
+    "rawlsing_next/pre553_empirical_query.py @ 1dcd7ff64d7e1e06ee3d6e1791b79558aecdb5b3 (audit E33, blob 03facecf70890bfd13b80418620d274cbcd69d02), lines 460-510 and _authorized_composite_refs at lines 99-127",
+    "audit REPORT.md line 99 and EVIDENCE.md line 369"
+  ],
+  "SOURCE_INDEXED_MULTI_UNIVERSE": {
+    "exact_semantics_from_source": "iterates the supplied indices and evaluates EACH index separately: `for index in indices: _evaluate_index_group((index,), ...)` then `_build_fact((index,), ...)` -> ONE fact PER UNIVERSE appended to `facts`",
+    "yields": "source-local facts; one fact per universe",
+    "cross_source_coexistence_kind": "lawful CO-PRESENCE of separately-indexed universes in one result — the query is executed over multiple exact universes while retaining separate per-universe facts",
+    "pooling_authority_required": false,
+    "evidence_for_no_pooling": [
+      "the branch never calls _authorized_composite_refs and passes no extra authority refs",
+      "OBL063 CONSUMER_AUTHORITY_MATRIX.csv: SOURCE_INDEXED_MULTI_UNIVERSE -> required authority 'SOURCE_LOCAL_CERTIFIED', population-generalization required = NO, and explicitly 'Executor returns one fact per universe; it does not pool sources.'",
+      "OBL063 GATE_CORRECTION.md contrasts it against modes that 'explicitly require' composition authority"
+    ],
+    "shared_minimum": "both modes require at least two exact universes (line 460 guard)"
+  },
+  "AUTHORIZED_COMPOSITE": {
+    "exact_semantics_from_source": "calls `_authorized_composite_refs(query, authority_registry)` and then `_evaluate_index_group(indices, ...)` over ALL indices, emitting a SINGLE fact built with `extra_authority_refs=composite_refs`",
+    "what_it_authorizes": "pooling/combining multiple exact universes into ONE empirical fact",
+    "required_authority_bundle": {
+      "location": "query.requested_output_grain['authorized_composite_authority_refs']",
+      "roles_required": {
+        "pooling": ["SOURCE_COMPOSITION_POOLING"],
+        "nonduplication": ["SOURCE_UNIVERSE_RELATION"],
+        "estimand_composition": ["SOURCE_COMPOSITION_POOLING", "WEIGHT_DESIGN_ESTIMAND"]
+      },
+      "fail_closed": "missing bundle -> Pre553AuthorityError 'AUTHORIZED_COMPOSITE requires an exact operation-specific authority bundle'; incomplete role set -> 'must bind pooling, nonduplication and estimand composition'; each role entry must contain exactly {authority_ref, operation}",
+      "evidence": "OBL063 matrix: AUTHORIZED_COMPOSITE required authority 'SOURCE_COMPOSITION_POOLING + SOURCE_UNIVERSE_RELATION/nonduplication + estimand-composition authority; weights if weighted', population-generalization YES_FOR_ANY_POPULATION_GENERALIZATION, 'Blanket source-local pooling is not allowed.'"
+    },
+    "evaluates": "a combined index group as one fact"
+  },
+  "what_hq201_got_right": "H06 already states that SOURCE_INDEXED produces one fact per universe and that AUTHORIZED_COMPOSITE additionally binds pooling, nonduplication and estimand roles — the branch description is accurate.",
+  "what_must_be_corrected_in_hq201": [
+    {"hq201_text": "'CROSS_SOURCE_COEXISTENCE != RESPONDENT_POOLING is not an aspiration' (H06 line 8)", "assessment": "TRUE but incomplete", "correction": "the stronger and load-bearing fact is that SOURCE_INDEXED_MULTI_UNIVERSE itself already provides lawful cross-source coexistence with NO pooling authority. Non-pooled coexistence is not merely 'not forbidden'; it is a first-class implemented mode."},
+    {"hq201_text": "H02/H14 passages treating cross-source co-presence as additionally requiring AUTHORIZED_COMPOSITE", "assessment": "CONFLATION - CORRECTED", "correction": "co-presence does NOT require AUTHORIZED_COMPOSITE. Only POOLING INTO ONE FACT requires it. Source-indexed multi-universe is the correct mode for non-pooling structural/world co-presence."},
+    {"hq201_text": "'Pooling is not a default to be avoided; it is a power that must be [authorized]' (H06 line 29)", "assessment": "TRUE as to pooling, but must not be read as making pooling a precondition for coexistence", "correction": "pooling authority is required ONLY inside AUTHORIZED_COMPOSITE. No pooling requirement is inherited by source-indexed coexistence."}
+  ],
+  "binding_rule": "SOURCE_INDEXED_MULTI_UNIVERSE != AUTHORIZED_COMPOSITE. Lawful cross-source coexistence without row pooling does NOT inherit a pooling requirement merely because AUTHORIZED_COMPOSITE has one."
+}

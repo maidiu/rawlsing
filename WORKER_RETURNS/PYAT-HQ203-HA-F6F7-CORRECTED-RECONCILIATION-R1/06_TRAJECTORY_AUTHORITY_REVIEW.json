@@ -1,0 +1,27 @@
+{
+  "schema": "PYAT_HQ203_TRAJECTORY_AUTHORITY_REVIEW@1.0.0",
+  "correction": 5,
+  "claim_under_review": "HQ201 states 'a trajectory requires at least three anchored points' (H05 line 75 table row and line 92)",
+  "verdict": "UNSUPPORTED_STRENGTHENING",
+  "authority_search": {
+    "method": "git grep across the full audit tip b3ea471a3771113bf408a4e434a4b480b26d5856 for 'at least three anchor', 'three anchored', '>=3 anchor', '3 anchors', excluding HQ201 artifacts",
+    "hits_in_adopted_authority": 0,
+    "only_hits": [
+      "audit REPORT.md line 103 - which itself REFUTES the claim",
+      "HQ202 adjudication line 57 - which lists it as an open question for review, i.e. not settled law"
+    ]
+  },
+  "audit_position_verbatim": "REPORT.md line 103: 'A trajectory requires at least three anchors. | The return presents this as a strengthened constraint, without an identified adopted authority establishing that threshold. Do not import it as current law. The binding noncollapse is that two waves existing do not automatically confer directionality authority.'",
+  "classification": "UNSUPPORTED_STRENGTHENING (not NEW_PROPOSAL, because HQ201 presents it as a definitional requirement rather than proposing it for adoption; not HISTORICAL_CONVENTION, because no historical source establishing the threshold was located either)",
+  "what_survives_as_binding": {
+    "rule": "DIFFERENCE != TRAJECTORY",
+    "meaning": "two observations differing across time does not by itself constitute an ordered trajectory, and does not by itself confer directionality authority",
+    "authority": "audit REPORT.md line 103 states this as 'the binding noncollapse'",
+    "corroboration": "pre553_structural_admission.py carries `directionality_or_role_semantics` as a canonicalised mapping AND requires exact TARGET_USE_PERMISSION authority, so directionality is something a rule must positively bind rather than something a producer may infer from the existence of two time points"
+  },
+  "what_must_not_be_imported": [
+    "the >=3 numeric threshold as current law",
+    "any reading that a 2-anchor series can never support a lawful temporal relation (the audit refutes only the automatic-adequacy inference, not 2-anchor relations per se)"
+  ],
+  "recommended_disposition": "retain DIFFERENCE != TRAJECTORY as the binding noncollapse; record the >=3 threshold as UNSUPPORTED_STRENGTHENING in the residual docket; do NOT promote it without an adopted source"
+}

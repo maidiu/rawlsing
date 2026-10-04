@@ -1,0 +1,177 @@
+{
+ "schema": "PYAT_HQ203_F7_POSITIVE_MEANING_GAPS@1.0.0",
+ "correction": 3,
+ "governing_authority": {
+  "audit_E39": "rawlsing_next/m1_temporal_v554_admission_dedup.py @ 1dcd7ff64d7e1e06ee3d6e1791b79558aecdb5b3 - 'V554 ingress/dedup requiring V553 temporal meaning; NOT TEMPORAL PRODUCER'"
+ },
+ "what_m1_actually_is": {
+  "contract": "M1_TEMPORAL_V554_INGRESS_SEAM@1.0.0, target use STRUCTURAL_MEDIATION_INPUT",
+  "nature": "a pure fail-closed EQUALITY / DEDUP / INTEGRITY ingress seam over fingerprints",
+  "three_signatures": [
+   "V554-SIG-001-NONTEMPORAL-EXACT",
+   "V554-SIG-002-TEMPORAL-POINT-EXACT",
+   "V554-SIG-003-TEMPORAL-RELATIONAL-EXACT"
+  ],
+  "two_basis_kinds": [
+   "DIRECT_STRUCTURAL_EMPIRICAL_ADMISSION",
+   "V553_TEMPORAL_OBJECT"
+  ],
+  "equality_fields_include": [
+   "rule_relevant_effective_time_semantics_fingerprint",
+   "rule_relevant_source_relation_comparability_authority_fingerprint",
+   "native_scope_identity_fingerprint",
+   "structural/semantic identity fingerprints",
+   "source_universe_fingerprint",
+   "estimand_fingerprint"
+  ]
+ },
+ "what_m1_PROVES": [
+  "a lawful transport/admission home for temporal content exists",
+  "exact fingerprint-based equality and dedup can be decided fail-closed",
+  "a temporal signature must carry an exact temporal key plus observation (SIG-002) or key plus relation plus support/limit refs (SIG-003)",
+  "an unbound or non-complete temporal claim is marked INELIGIBLE_TEMPORAL_SIGNATURE rather than silently accepted"
+ ],
+ "what_m1_DOES_NOT_PROVE": {
+  "persisting_temporal_object_identity": {
+   "proved": false,
+   "evidence": "M1 branches on `BasisKind.V553 = V553_TEMPORAL_OBJECT` and REQUIRES that object as INPUT; TemporalCompleteness.REQUIRES_V553_OWNED_TEMPORAL_MEANING is the gate for any non-SIG-001 signature. M1 never constitutes the object."
+  },
+  "positive_temporal_relation_meaning": {
+   "proved": false,
+   "evidence": "SIG-003 requires the family set {TEMPORAL_KEY, TEMPORAL_RELATION} plus relation refs to be SUPPLIED; line 320 rejects the signature if they are absent. M1 validates their presence and equality, not their meaning."
+  },
+  "time_grain": {
+   "proved": false,
+   "evidence": "M1 carries `rule_relevant_effective_time_semantics_fingerprint` - a fingerprint OF a semantics that must already exist. No grain value is declared, produced or constrained by M1."
+  },
+  "directionality_authority": {
+   "proved": false,
+   "evidence": "no directionality field, enum or gate appears in the M1 contract; the module contains no ordering/asymmetry assertion"
+  },
+  "rupture_semantics": {
+   "proved": false,
+   "evidence": "no rupture/boundary concept appears in the M1 contract"
+  }
+ },
+ "v553_producer_absence": {
+  "finding": "NO V553 temporal producer module exists in current code",
+  "evidence": "the only rawlsing_next file matching v553/temporal is m1_temporal_v554_admission_dedup.py itself; no Temporal/Wave/Anchor/Interval class exists in rawlsing_next; sibling module m1_admitted_field_forge_relation_v554_ingress.py states it 'does not call V553, and does not create relation-admission authority'",
+  "consequence": "the temporal content that M1 declares it requires has no producer, so M1's temporal branch cannot currently be satisfied by a producer in this tree"
+ },
+ "classification_of_each_missing_owner": [
+  {
+   "item": "temporal observation object",
+   "M1_requirement": "SIG-002/003 require family TEMPORAL_OBSERVATION",
+   "classification": "UNKNOWN_PENDING_EXACT_EVIDENCE",
+   "reason": "M1 declares it REQUIRED for SIG-002/003 and no producer exists, but the audit expressly refuses the inference: 'A missing implementation producer is not necessarily an owner gap; a named jurisdiction is not proof of derived positive ontology.' The audit classes the producer gap UNKNOWN__FURTHER_FORENSICS_REQUIRED.",
+   "corrected": true
+  },
+  {
+   "item": "temporal identity / comparable temporal key",
+   "M1_requirement": "SIG-002/003 require family TEMPORAL_KEY",
+   "classification": "UNKNOWN_PENDING_EXACT_EVIDENCE",
+   "reason": "no Temporal/Wave/Anchor/Interval class exists; the audit classes persistent-object identity as unresolved and states 'the current law does not yet name the persisting object'. Whether that is an owner gap or missing code requires the missing semantic test.",
+   "corrected": true
+  },
+  {
+   "item": "temporal relation object",
+   "M1_requirement": "SIG-003 requires family TEMPORAL_RELATION plus support/limit refs",
+   "classification": "UNKNOWN_PENDING_EXACT_EVIDENCE",
+   "reason": "M1 validates presence and equality of relation refs; the audit states it 'is not the current producer of those meanings' and leaves the positive constitution unresolved.",
+   "corrected": true
+  },
+  {
+   "item": "temporal delta",
+   "classification": "UNKNOWN_PENDING_EXACT_EVIDENCE",
+   "reason": "the audit records delta/direction as 'current binding positive specification not fully reconciled' and refers it out; it cannot certify meaning settled or missing.",
+   "corrected": true
+  },
+  {
+   "item": "temporal directionality (established, not assumed)",
+   "classification": "POSITIVE_SEMANTIC_CONSTITUTION_STILL_NEEDED",
+   "reason": "This is the one temporal item where the audit supplies a CONCRETE SEMANTIC TEST rather than a mere gap: 'two waves existing do not automatically confer directionality authority' is the binding noncollapse, and the >=3-anchor threshold is explicitly not law. No adopted authority confers directionality, so the authority that ESTABLISHES direction is affirmatively absent, not merely unlocated.",
+   "corrected": true
+  },
+  {
+   "item": "temporal trajectory",
+   "classification": "UNKNOWN_PENDING_EXACT_EVIDENCE",
+   "reason": "the audit rejects the worker threshold as unadopted but explicitly does not decide the positive constitution of trajectory.",
+   "corrected": true
+  },
+  {
+   "item": "rupture candidate",
+   "classification": "UNKNOWN_PENDING_EXACT_EVIDENCE",
+   "reason": "the audit classes rupture-causal explanation as X07 TERMINAL_NECESSITY_UNPROVED and establishes only that no universal PRE-V3 interpolation/rupture-cause demand is proved.",
+   "corrected": true
+  },
+  {
+   "item": "gap / absence as first-class observation",
+   "classification": "UNKNOWN_PENDING_EXACT_EVIDENCE",
+   "reason": "H08 asserts 'ABSENCE != ZERO: Binding' but the audit's own W15 still lists gap semantics as an unresolved HQ201 dependency; the record is genuinely ambiguous.",
+   "corrected": true
+  },
+  {
+   "item": "typed noncomparability",
+   "classification": "AUTHORITY_INSTANCE_ONLY",
+   "reason": "OWNED AND IMPLEMENTED - pre553_structural_admission.py EMPIRICAL_FACT_NONCOMPARABLE plus typed negative states (TEMPORAL_NONCOMPARABLE, NONCOMPARABLE) already exist"
+  },
+  {
+   "item": "no implicit pooling / no synthetic respondent table",
+   "classification": "AUTHORITY_INSTANCE_ONLY",
+   "reason": "OWNED AND IMPLEMENTED - the AUTHORIZED_COMPOSITE gate already requires the exact pooling bundle"
+  },
+  {
+   "item": "cross-source coexistence in one objective world",
+   "classification": "AUTHORITY_INSTANCE_ONLY",
+   "reason": "OWNED AND IMPLEMENTED as SOURCE_INDEXED_MULTI_UNIVERSE per-universe facts"
+  },
+  {
+   "item": "operation-scoped comparability authority",
+   "classification": "AUTHORITY_INSTANCE_ONLY",
+   "reason": "the slot allowed_effective_time_or_interval_refs exists and M1 carries the comparability fingerprint; only a concrete bound instance is missing"
+  },
+  {
+   "item": "disagreement policy",
+   "classification": "IMPLEMENTATION_ONLY",
+   "reason": "the free-text slot exists but is not structurally typed or enforced; the meaning (conflict must not auto-average) is already settled by the query-layer refusal, so only typing/wiring is missing"
+  },
+  {
+   "item": "interpolation",
+   "classification": "UNKNOWN_PENDING_EXACT_EVIDENCE",
+   "reason": "HQ201 records it as CORRECTLY ABSENT because interpolation was never binding authority; nothing in this lane changes that, and no affirmative authority for it was located"
+  }
+ ],
+ "summary": {
+  "owned_and_implemented": 3,
+  "slot_or_typing_only": 3,
+  "positive_semantic_constitution_still_needed": 1,
+  "unknown_pending_exact_evidence": 7,
+  "headline": "after corrections, exactly ONE F7 meaning is affirmatively shown to be unconstituted (temporal directionality authority); seven temporal items are genuinely UNKNOWN pending the missing semantic test rather than proven owner gaps; three are owned and implemented and three need only typing or a concrete instance."
+ },
+ "epistemic_correction_applied": {
+  "what_i_initially_over_claimed": "I first classified seven temporal items as POSITIVE_SEMANTIC_CONSTITUTION_STILL_NEEDED on the strength of 'M1 requires it and no producer exists'.",
+  "why_that_was_wrong": "the audit explicitly forbids that inference: 'A missing implementation producer is not necessarily an owner gap; a named jurisdiction is not proof of derived positive ontology. Both stronger conclusions require the missing semantic test.' An ingress requirement plus an absent producer proves NEITHER that the meaning is unconstituted NOR that it is merely missing code.",
+  "correction": "reclassified to UNKNOWN_PENDING_EXACT_EVIDENCE except where the audit supplies a concrete semantic test. Exactly ONE item survives as POSITIVE_SEMANTIC_CONSTITUTION_STILL_NEEDED: temporal directionality, because the audit affirmatively establishes that no adopted authority confers it and that two waves do not confer it automatically.",
+  "method_note": "this is precisely the discipline the commission demanded: lawful-home evidence is not enough to call every remaining F7 decision nonconceptual, and it is also not enough to call every absence a semantic gap."
+ },
+ "audit_warning_quoted": [
+  "An ingress family/fingerprint contract constrains transport; it does not by itself derive persistent-object identity, positive relation meaning, temporal grain or authority for directionality.",
+  "This is evidence for lawful homes, not the stronger proof that every remaining decision is nonconceptual.",
+  "Bare refs and ingress slots do not close them.",
+  "A missing implementation producer is not necessarily an owner gap; a named jurisdiction is not proof of derived positive ontology.",
+  "M1 accepts families; does not derive their meaning."
+ ],
+ "tension_recorded_honestly": {
+  "issue": "the audit's CONTROL classification for the F6/F7 umbrella and for most temporal producer gaps is UNKNOWN__FURTHER_FORENSICS_REQUIRED (docket C15, C16, W14, W15, blocker yes), yet parts of the audit's own prose are STRONGER than UNKNOWN.",
+  "stronger_audit_prose": [
+   "'it does not by itself derive persistent-object identity' (the derivation is affirmatively NOT made by ingress)",
+   "'the current law does not yet name the persisting object'",
+   "'F6/F7 positive relation constitution ... remain unresolved'",
+   "'authority for directionality' is named as a missing thing",
+   "'Bare refs and ingress slots do not close them.'"
+  ],
+  "why_i_still_report_UNKNOWN_for_most_items": "the audit's own governing sentence is a refusal to over-read in EITHER direction, and its recorded control classification is UNKNOWN. 'The law does not name X' establishes that X is unnamed; it does not by itself establish that X is a positive-semantic gap rather than unwritten-but-derivable plumbing. I therefore follow the audit's own grade rather than its more rhetorical sentences.",
+  "where_the_record_would_support_a_stronger_grade": "a reader could reasonably grade persistent-object identity and positive relation meaning as POSITIVE_SEMANTIC_CONSTITUTION_STILL_NEEDED on the strength of the audit's 'does not by itself derive' language. I record that this is a defensible alternative reading, but I do not adopt it because the audit expressly declines it.",
+  "one_item_the_audit_does_affirmatively_settle": "temporal directionality: the audit states two waves 'do not automatically confer directionality authority' and that no adopted authority establishes the threshold, which IS a concrete semantic test and therefore supports a positive finding."
+ }
+}

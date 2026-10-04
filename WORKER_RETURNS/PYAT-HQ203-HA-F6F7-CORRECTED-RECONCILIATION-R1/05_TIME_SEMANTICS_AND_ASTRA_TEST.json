@@ -1,0 +1,50 @@
+{
+  "schema": "PYAT_HQ203_TIME_SEMANTICS_AND_ASTRA_TEST@1.0.0",
+  "correction": 4,
+  "hq201_framing_under_test": "'For multi-source comparison, does temporal identity key on a POINT YEAR or a FIELDWORK INTERVAL?' presented as a two-way universal fork with a TIME-GRAIN-FORK Astra packet",
+  "verdict": "FRAMING NOT ADOPTED. The binary is not universal, same-survey family membership does not prove point-year adequacy, and no adopted grain choice exists to fork between.",
+  "authority_that_rejects_the_framing": {
+    "ref": "HQ203 recalibration (in-terrain authority), lines 79-86",
+    "verbatim": [
+      "point-year adequacy merely because two observations belong to one survey family;",
+      "that one universal binary time-grain choice is required;",
+      "that the issue blocks only one cross-family case.",
+      "The old HQ202 Astra packet is withdrawn/superseded.",
+      "Astra should be re-consulted only if corrected H-A reconciliation leaves a genuinely high-consequence underdetermined fork after operation/source-specific time semantics are traced."
+    ],
+    "audit_ref": "REPORT.md @ b3ea471a: 'HQ201 must reconcile exact operation/source time semantics; this audit selects no grain' and 'Nor does it prove that one universal binary choice is required'"
+  },
+  "exact_time_semantics_found_in_current_authority": {
+    "pre_v3_structural_admission": {
+      "ref": "rawlsing_next/pre553_structural_admission.py @ 1dcd7ff6 (audit E35)",
+      "fields": ["allowed_effective_time_or_interval_refs: tuple[ExactRef, ...]", "effective_period: Mapping[str, Any]", "time_geography_applicability: Mapping[str, Any]"],
+      "grain_asserted": false,
+      "finding": "the field name is `time_OR_interval_refs` and its type is a tuple of ExactRef. It names EITHER a point OR an interval and constrains NEITHER: there is no grain enum, no grain validation, and no grain assertion anywhere in the module.",
+      "enforcement_present": "line 281: 'time-scoped rule must bind exact TEMPORAL_EVIDENCE authority' - a rule that binds ANY time reference must bind exact temporal authority. The law constrains AUTHORITY, not GRAIN."
+    },
+    "v3_executor_time_granularity": {
+      "ref": "rawlsing_next/v3_adp010_oee_executor.py @ b3ea471a",
+      "field": "time_granularity: str",
+      "observed_values_in_repo": ["INSTANT", "INTERVAL"],
+      "domain_enforcement": "validated only as a non-empty string via _s(time_granularity,'time_granularity'); NO closed-set validation was located",
+      "significance": "the ACTUAL grain affordance in code is INSTANT vs INTERVAL - an instant-versus-interval distinction - NOT point-year-versus-fieldwork-interval. Point-year and fieldwork-interval are both INTERVAL/point REPRESENTATIONS at a finer conceptual level, not the system's grain axis.",
+      "scope": "V3 executor layer (v3_adp010_oee_executor.py, v3_adp010_oee_executor_authenticated.py), i.e. the V3 actor/person executor family"
+    },
+    "m1_ingress": {
+      "ref": "rawlsing_next/m1_temporal_v554_admission_dedup.py @ 1dcd7ff6 (audit E39)",
+      "finding": "carries rule_relevant_effective_time_semantics_fingerprint and, for DIRECT, effective_time_or_interval_refs_required_by_target_use. Again polymorphic: no grain is declared or constrained."
+    }
+  },
+  "answers_to_the_commission_questions": {
+    "can_any_current_operation_lawfully_use_point_year": "no operation was found that BINDS point-year. HQ201 cited V553's point-year anchor as scoped to ONE family in ONE country; the audit records V553 as a semantic jurisdiction whose positive constitution remains unresolved. No adopted operation requires or licenses point-year.",
+    "does_any_require_an_interval": "no operation was found that REQUIRES an interval. The V3 executor exposes INTERVAL as one accepted granularity value alongside INSTANT, but does not require it.",
+    "is_the_grain_source_or_operation_specific": "the STRUCTURE is per-rule: the pre-V3 field is `allowed_effective_time_or_interval_refs` and `effective_time_or_interval_refs_required_by_target_use`, i.e. the grain is whatever exact refs the target-use rule binds, validated by exact TEMPORAL_EVIDENCE authority. The grain is therefore rule-bound, i.e. source/operation-specific by construction, NOT a universal choice.",
+    "is_there_a_genuinely_underdetermined_fork": "yes, but NARROWER and DIFFERENT from the HQ201 binary: no law names what makes two temporal references COMPARABLE across sources (the audit's own W14/W15 = UNKNOWN), and no adopted authority constitutes temporal identity at all. That is a gap in CONSTITUTION, not a forced choice between two named grains.",
+    "what_exact_question_deserves_astra": "NOT the HQ201 binary. If anything deserves Astra it is the narrower question: given that no current law constitutes temporal identity or cross-source comparability, and that DIFFERENCE != TRAJECTORY is binding, does the terminal objective require a positive cross-source temporal-comparability constitution at all, or may coexistence remain source-indexed with typed noncomparability as the terminal answer? That is an authority question about scope, not a grain vote."
+  },
+  "astra_referral_decision": {
+    "recommend_astra_now": false,
+    "basis": "the recalibration makes referral conditional on a genuinely high-consequence underdetermined fork REMAINING AFTER operation/source-specific semantics are traced. Tracing shows the grain is rule-bound and polymorphic, and the genuine residual is a scope/authority question that HQ can docket rather than an underdetermined fork requiring Astra.",
+    "gate_if_referred_later": "refer only the narrowed scope question above, and only if HQ determines that source-indexed coexistence with typed noncomparability cannot serve the terminal objective"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "schema": "PYAT_HQ203_HQ201_CLAIM_RECONCILIATION@1.0.0",
+  "hq201_return": "d3f0619429a400552c2f3c397be57cdfbadb2f54",
+  "hq201_status": "UNADOPTED WORKER RETURN - the audit registers H05/H06/H08/H10/H12/H14 as 'unadopted HQ201 worker return ... no HQ adoption located at control freeze'",
+  "reconciliation_basis": "primary audit b3ea471a3771113bf408a4e434a4b480b26d5856 + adopted Field Forge R2/OBL law + current code at 1dcd7ff6",
+  "claims": [
+    {"id": "C1", "claim": "SOURCE_INDEXED_MULTI_UNIVERSE gives lawful cross-source coexistence", "verdict": "SURVIVES", "correction": "none - confirmed directly in pre553_empirical_query.py lines 469-482"},
+    {"id": "C2", "claim": "AUTHORIZED_COMPOSITE requires pooling + nonduplication + estimand authority", "verdict": "SURVIVES", "correction": "none - confirmed in _authorized_composite_refs lines 99-127"},
+    {"id": "C3", "claim": "cross-source CO-PRESENCE additionally requires AUTHORIZED_COMPOSITE (H02/H14 passages)", "verdict": "REQUIRES CORRECTION", "correction": "CONFLATION. Only POOLING INTO ONE FACT requires it. Source-indexed mode is the correct non-pooling coexistence mode. Non-pooled coexistence must not inherit a pooling requirement.", "severity": "material"},
+    {"id": "C4", "claim": "'Pooling is not a default to be avoided; it is a power that must be authorized' (H06 line 29)", "verdict": "SURVIVES WITH LIMITING CONSTRUCTION", "correction": "true as to pooling, but must not be read as making pooling a precondition for coexistence"},
+    {"id": "C5", "claim": "Field Forge local forms are exploratory / W48 status is current", "verdict": "REQUIRES CORRECTION", "correction": "W48/E52 is EXPLORATORY_NONBINDING and is NOT current status truth. All five subjects are governed by later adopted R2/OBL law; STILL_EXPLORATORY = 0 for all five.", "severity": "material"},
+    {"id": "C6", "claim": "M1 ingress supplies the lawful home for temporal content", "verdict": "SURVIVES", "correction": "none"},
+    {"id": "C7", "claim": "'All missing temporal producers are not a design problem because M1 specifies the ingress' (H14 inference)", "verdict": "REQUIRES CORRECTION", "correction": "the audit expressly REJECTS this inference. M1 constrains transport; it does not derive persistent-object identity, positive relation meaning, temporal grain or directionality authority. 'A missing implementation producer is not necessarily an owner gap; a named jurisdiction is not proof of derived positive ontology.'", "severity": "material"},
+    {"id": "C8", "claim": "trajectory requires at least three anchored points", "verdict": "REQUIRES CORRECTION", "correction": "UNSUPPORTED_STRENGTHENING - no adopted authority establishes the threshold; do not import as law. Only DIFFERENCE != TRAJECTORY survives as binding.", "severity": "material"},
+    {"id": "C9", "claim": "point-year versus fieldwork-interval is the decisive universal time-grain binary", "verdict": "REQUIRES CORRECTION", "correction": "see 05 - the framing is not adopted, the binary is not universal, and same-survey family membership does not prove point-year adequacy", "severity": "material"},
+    {"id": "C10", "claim": "a typed cross-source relation object family is needed", "verdict": "REQUIRES CORRECTION", "correction": "see 07 - no new object family is necessary; the existing eight source-relation kinds plus per-universe facts already represent the four proposed descriptive kinds", "severity": "moderate"},
+    {"id": "C11", "claim": "source_disagreement_noncomparability_policy is a free-text slot that is not structurally enforced", "verdict": "SURVIVES", "correction": "confirmed exactly; an averaging policy string would pass validation"},
+    {"id": "C12", "claim": "a persistent MultiSourceTemporalWorld container is required", "verdict": "SURVIVES AS ALREADY-CORRECT (H09 itself says not required)", "correction": "H09 self-classifies as EXPLORATORY_NONBINDING_CAPITAL and states 'a persistent container is not required by any binding law'. The recalibration warns against constitutionalising it, not against H09's own text."},
+    {"id": "C13", "claim": "typed noncomparability is owned and implemented", "verdict": "SURVIVES", "correction": "none - EMPIRICAL_FACT_NONCOMPARABLE plus typed negative states exist"},
+    {"id": "C14", "claim": "operation-scoped comparability authority: slot exists, producer missing", "verdict": "SURVIVES", "correction": "none - matches the audit and M1's comparability fingerprint slot"}
+  ],
+  "tally": {"survive_unchanged": 5, "survive_with_limiting_construction": 2, "require_correction": 7},
+  "most_consequential_corrections": [
+    "C3 - the SOURCE_INDEXED / AUTHORIZED_COMPOSITE conflation (the commission's headline correction)",
+    "C5 - calling adopted Field Forge local forms exploratory on W48 authority",
+    "C7 - inferring positive ontology from ingress/transport evidence",
+    "C9 - the false universal point-year/fieldwork-interval binary"
+  ]
+}

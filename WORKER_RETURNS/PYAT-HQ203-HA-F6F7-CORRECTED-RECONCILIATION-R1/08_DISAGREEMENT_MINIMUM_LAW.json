@@ -1,0 +1,29 @@
+{
+  "schema": "PYAT_HQ203_DISAGREEMENT_MINIMUM_LAW@1.0.0",
+  "correction": 7,
+  "question": "is source_disagreement_noncomparability_policy free text, and could an averaging policy pass?",
+  "verdict": "IT IS FREE TEXT AND AN AVERAGING POLICY COULD PASS THE TYPE CHECK — but the query layer already refuses to average. The minimum structural requirement is narrow.",
+  "finding_1_free_text": {
+    "declaration": "rawlsing_next/pre553_structural_admission.py:222 `source_disagreement_noncomparability_policy: str`",
+    "validation_only": "lines 238-244: the field is checked ONLY for `isinstance(value, str)` and `value.strip()` non-empty; no enum, no closed set, no pattern",
+    "forbidden_marker_scan": "the field is NOT passed through _reject_forbidden_interpretation; FORBIDDEN_INTERPRETATION_MARKERS is a frozenset of nine AGENT/DIAGNOSTIC markers (GENERATED_ACTOR_POSITION, ACTOR_BELIEF, ACTOR_PERSONA, ACTOR_PSYCHE, ACTOR_MEMORY, ACTOR_KNOWLEDGE, ACTOR_RESPONSE, GENERATED_NINE_STRATUM_POSITION, DIAGNOSTIC_SCORE_AS_STRUCTURAL_FACT) and contains NO mention of AVERAGE, CONFLICT, DISAGREE or POOL",
+    "conclusion": "an arbitrary averaging policy string would pass validation. The field is documentary, not structurally enforced."
+  },
+  "finding_2_but_the_query_layer_already_refuses_to_average": {
+    "mechanism": "averaging across sources requires POOLING, and pooling in the empirical query engine is reachable ONLY through AUTHORIZED_COMPOSITE, which requires an exact operation-specific authority bundle binding pooling + nonduplication + estimand composition",
+    "evidence": "rawlsing_next/pre553_empirical_query.py @ 1dcd7ff6 lines 99-127 and 460-510; OBL063 matrix 'Blanket source-local pooling is not allowed.'",
+    "and": "the default source-relation state is DISTINCT_BY_DEFAULT and SAMPLE_POOLING carries positive_authority_kind SOURCE_COMPOSITION_POOLING, so an unbacked pooling claim cannot pass",
+    "therefore": "SOURCE_CONFLICT != AVERAGE_BY_DEFAULT already holds at the query layer; the gap is that the structural-admission policy field does not PARTICIPATE in that enforcement"
+  },
+  "smallest_structural_requirement": {
+    "rule": "SOURCE_CONFLICT != AVERAGE_BY_DEFAULT must be enforced structurally, not by prose",
+    "minimum": [
+      "type the policy: replace the free-text `str` with a typed binding to EXACT authority refs, i.e. a closed set of disposition states each carrying an ExactRef — for example PRESERVE_SOURCE_INDEXED, TYPED_NONCOMPARABLE, REFUSE, and (where lawful) AUTHORIZED_COMPOSITE",
+      "default fail-closed: a rule that does not bind a disposition must refuse on disagreement rather than fall through to any aggregation, mirroring the DISTINCT_BY_DEFAULT relation default",
+      "make averaging reachable only via the existing positive pooling authority (SOURCE_COMPOSITION_POOLING inside an AUTHORIZED_COMPOSITE bundle); do NOT create a separate averaging permission",
+      "keep the noncomparability state typed and separate (TEMPORAL_NONCOMPARABLE / NONCOMPARABLE already exist as typed negative states and are already FORBIDDEN_BACKFILL_TARGET_STATES)"
+    ],
+    "explicitly_not_required": "a broad relation vocabulary. The existing eight relation kinds plus the DEFAULT_RELATION_STATE already provide the refusal semantics; only the policy field needs to be typed and wired.",
+    "observed_convention_already_used_in_tree": "rawlsing_next/tests/test_pre553_structural_admission.py uses the value 'PRESERVE_SOURCE_INDEXED_OR_FAIL_CLOSED', which is exactly the narrow disposition shape recommended above"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema": "PYAT_HQ203_CROSS_SOURCE_RELATION_OWNER_REVIEW@1.0.0",
+  "correction": 6,
+  "question": "is a NEW typed cross-source relation object family actually necessary?",
+  "verdict": "NO NEW OBJECT FAMILY REQUIRED — representation/owner is already sufficient",
+  "existing_forms_inspected": {
+    "source_indexed_query_result": {
+      "ref": "rawlsing_next/pre553_empirical_query.py @ 1dcd7ff6 (audit E33)",
+      "capability": "one EmpiricalFact per universe for the same query; each fact carries its own universe ref and authority refs"
+    },
+    "source_relation_machinery": {
+      "ref": "rawlsing_next/pre553_source_relations.py @ 1dcd7ff6 (audit E34), contract PRE553_I07_SOURCE_PLURALITY_COMPOSITION@1.0.0",
+      "relation_kinds_and_authority": {
+        "SOURCE_SEMANTIC_EQUIVALENCE": "SOURCE_EQUIVALENCE",
+        "RESPONDENT_LINKAGE": "SOURCE_RESPONDENT_LINKAGE",
+        "OVERLAP_NON_DUPLICATION": "SOURCE_UNIVERSE_RELATION",
+        "SAMPLE_POOLING": "SOURCE_COMPOSITION_POOLING",
+        "ESTIMAND_COMPOSITION": "SOURCE_COMPOSITION_POOLING",
+        "BACKFILL": "SOURCE_BACKFILL",
+        "PROVENANCE_ORIGIN": null,
+        "HARMONIZATION_ALIAS": null
+      },
+      "per_kind_required_material": "each relation kind has an enforced RELATION_REQUIRED_MATERIAL_KEYS set validated before positive authority is accepted",
+      "noncollapse_enforced": "each kind carries an explicit `does_not_grant` tuple, and the default state is DISTINCT_BY_DEFAULT / UNKNOWN_OVERLAP; unknown kinds resolve to UNKNOWN_SOURCE_RELATION",
+      "typed negative states": "FORBIDDEN_BACKFILL_TARGET_STATES includes DECLARED_NONE, SOURCE_NOT_APPLICABLE, TEMPORAL_NONCOMPARABLE, OBSERVED_ZERO, ZERO_SUPPORT, NONCOMPARABLE, NOT_APPLICABLE"
+    },
+    "structural_admission_relation_capability": {
+      "ref": "rawlsing_next/pre553_structural_admission.py @ 1dcd7ff6 (audit E35)",
+      "capability": "`rule_relevant_source_relation_comparability_authority_fingerprint` is an M1 equality field; structural admission carries `source_disagreement_noncomparability_policy`, `allowed_effective_time_or_interval_refs`, and noncomparability negative states"
+    },
+    "v556_rule_result_forms": {
+      "ref": "audit E41",
+      "capability": "higher-order structural rule/result forms available for rule-bound relations"
+    }
+  },
+  "assessment_of_the_hq201_proposal": {
+    "proposed_shape": "{relation_kind: corroboration | contradiction | complementarity | mere_coexistence, proposition_ref, per_source_fact_refs, authority_ref, unresolvedness}",
+    "do_the_four_proposed_kinds_exceed_current_forms": {
+      "mere_coexistence": "ALREADY EXPRESSED — this is exactly SOURCE_INDEXED_MULTI_UNIVERSE: per-source facts, no relation claimed, and the relation default is DISTINCT_BY_DEFAULT",
+      "corroboration": "expressible as per-source facts plus a declared relation; SOURCE_SEMANTIC_EQUIVALENCE plus the two source-local facts already carries the corroboration evidence, and the default DISTINCT_BY_DEFAULT keeps an unbound corroboration claim from being assumed",
+      "contradiction": "expressible as per-source facts that differ, with a typed noncomparability/difference state; no new object is needed to record that two source-local facts disagree",
+      "complementarity": "expressible via the existing relation kinds (semantic equivalence / harmonization alias) with authority"
+    },
+    "conclusion": "the four kinds are DESCRIPTIONS of relations among already-representable source-local facts, not new semantic primitives. They can be carried as a rule-bound annotation (relation_kind + refs + authority_ref + unresolvedness) over existing forms."
+  },
+  "representation_owner_sufficiency": {
+    "owner_question": "who owns a cross-source claim?",
+    "answer": "the existing pair (EmpiricalFact per universe) + (SourceRelation with its own required material and positive authority kind) already assigns ownership. A relation claim requires an authority ref of the matching kind; an unbacked claim cannot pass.",
+    "new_object_family_necessary": false,
+    "residual": "if the four descriptive kinds must be FIRST-CLASS enumerable, the minimal change is a typed annotation enum bound to a relation authority ref — NOT a new object family with its own lifecycle, and NOT a broad relation vocabulary"
+  }
+}

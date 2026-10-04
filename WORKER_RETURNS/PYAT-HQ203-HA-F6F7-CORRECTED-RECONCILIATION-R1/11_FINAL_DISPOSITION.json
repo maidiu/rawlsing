@@ -1,0 +1,59 @@
+{
+  "schema": "PYAT_HQ203_FINAL_DISPOSITION@1.0.0",
+  "status": "FINAL",
+  "disposition": "F6_F7_CORRECTED_CONSTITUTION_PARTIAL__NAMED_POSITIVE_MEANINGS_REMAIN",
+  "disposition_is_allowed_value": true,
+  "terminal_token": "HQ203_HA_F6F7_CORRECTED_RECONCILIATION_RETURNED__HQ_ADJUDICATION_REQUIRED",
+  "review_branch": "agent/reviewer-pyat-hq203-ha-r1",
+  "commissioned_startup_sha": "5cca96aeaa3fe5f2744203eac5b9a9eb2fb9de3c",
+  "documentary_base": "15018a303078cbcd867b08d39ed6b66e14d325fb",
+  "primary_audit": "codex/prev3-terminal-backward-audit-r1 @ b3ea471a3771113bf408a4e434a4b480b26d5856",
+  "hq201_return_reconciled": "d3f0619429a400552c2f3c397be57cdfbadb2f54",
+  "checkout_mode": "SPARSE_REQUIRED (honored; no clone; no full worktree; sparse checkout not widened; no production mutation)",
+  "reviewer_identity": {"harness": "DeepSeek Harness", "model": "DeepSeek V4.1 Flash"},
+  "corrections_delivered": {
+    "1_SOURCE_INDEXED_vs_AUTHORIZED_COMPOSITE": "CORRECTED. SOURCE_INDEXED_MULTI_UNIVERSE evaluates each universe separately and emits one fact per universe, requires no pooling authority, and OBL063 states it 'does not pool sources'. AUTHORIZED_COMPOSITE pools into one fact and requires an exact bundle binding pooling + nonduplication + estimand composition. Non-pooled coexistence does NOT inherit a pooling requirement.",
+    "2_Field_Forge_adoption": "CORRECTED. W48/E52 is EXPLORATORY_NONBINDING and is not current status truth. All five subjects are governed by adopted R2/OBL law (E20-E27). STILL_EXPLORATORY = 0 for all five; all five carry audit MATRIX code AUTHORITY_FORM_CLOSED__POSITIVE_INSTANCE_OR_SCOPE_REMAINS. Adopted local forms must not be called exploratory.",
+    "3_M1_ingress_vs_producer_meaning": "CORRECTED. M1 is a fail-closed fingerprinted ingress/dedup seam that on any temporal signature requires REQUIRES_V553_OWNED_TEMPORAL_MEANING. It does not constitute persistent temporal identity, relation meaning, grain, directionality or rupture. I also corrected MY OWN initial over-claim: a missing producer is not proof of an owner gap.",
+    "4_time_semantics": "CORRECTED. Not a universal point-year/fieldwork-interval binary. Pre-V3 fields are polymorphic ExactRefs with no grain assertion; the V3 executor's actual grain affordance is INSTANT/INTERVAL; the grain is rule-bound. Same-survey family membership proves nothing about point-year adequacy. No Astra referral recommended.",
+    "5_trajectory_cardinality": "CORRECTED. '>=3 anchors' is UNSUPPORTED_STRENGTHENING with no adopted authority. Only DIFFERENCE != TRAJECTORY survives as binding.",
+    "6_cross_source_relation_object": "CORRECTED. No new object family is necessary; the existing eight relation kinds plus per-universe facts already represent the four proposed descriptive kinds.",
+    "7_disagreement": "CONFIRMED. source_disagreement_noncomparability_policy is free text with only non-empty validation; an averaging string would pass. Minimum requirement stated: type the disposition to exact authority refs, default fail-closed, make averaging reachable only through the existing SOURCE_COMPOSITION_POOLING authority.",
+    "8_world_container_and_F8": "CONFIRMED. MultiSourceTemporalWorld is not required; adopted law declines a universal carrier and H09 itself already says so. F8/service-operation belongs to node H-D and is not decided here."
+  },
+  "what_current_positive_F6_F7_meanings_remain_unbound": {
+    "affirmatively_unconstituted": [
+      {"meaning": "authority for temporal DIRECTIONALITY (established, not assumed)", "why": "the audit affirmatively establishes that two waves do not automatically confer directionality authority and that no adopted authority establishes a threshold. This is a concrete semantic test, so the absence is a positive finding rather than an unknown."}
+    ],
+    "unknown_pending_exact_evidence": [
+      "persistent temporal object identity / comparable temporal key",
+      "temporal observation object producer",
+      "positive temporal relation meaning",
+      "temporal delta / comparison",
+      "temporal trajectory constitution",
+      "rupture candidate semantics",
+      "gap / absence as a first-class observation",
+      "typed cross-source relation kinds beyond the existing relation machinery"
+    ],
+    "owned_and_implemented": ["cross-source coexistence", "no implicit pooling", "typed noncomparability", "source plurality relations"],
+    "slot_or_typing_only": ["operation-scoped comparability authority", "disagreement policy enforcement"],
+    "not_required": ["a persistent MultiSourceTemporalWorld container", "generic strong nouns (field/formation/hegemony/capital/strong conversion)"]
+  },
+  "why_this_disposition": {
+    "not_SUFFICIENT__ONLY_BOUNDED_OWNERS_OR_INSTANCES_REMAIN": "not everything reduces to bounded owners or instances: temporal directionality authority is affirmatively unconstituted, and eight temporal meanings remain UNKNOWN rather than proven bounded",
+    "not_SPECIFIC_HIGH_CONSEQUENCE_FORK_REMAINS__ASTRA_PACKET_NEEDED": "the HQ201/ HQ202 time-grain fork is withdrawn and my tracing shows the grain is rule-bound rather than a binary; the genuine residual is a SCOPE question HQ can docket, not a high-consequence underdetermined fork. The recalibration permits referral only after operation/source-specific semantics are traced, and they have been",
+    "not_ARCHITECTURE_REOPEN_REQUIRED": "the audit found no proved architecture gap and adopted law declines a universal carrier",
+    "not_MATERIAL_CONFLICT_IN_CURRENT_AUTHORITY": "no adopted authority was found contradicting another; the conflicts were between HQ201 (unadopted) and adopted law, and those are resolved in favour of adopted law"
+  },
+  "named_meanings_that_remain": "temporal directionality authority (affirmatively); plus persistent temporal identity, temporal observation, positive temporal relation meaning, temporal delta, trajectory, rupture and gap-as-observation (unknown pending the missing semantic test)",
+  "astra_referral_sent_by_this_lane": false,
+  "corrections_to_my_own_work_recorded": [
+    "I initially graded seven temporal items POSITIVE_SEMANTIC_CONSTITUTION_STILL_NEEDED on 'M1 requires it and no producer exists'. The audit expressly forbids that inference, so I reclassified to UNKNOWN_PENDING_EXACT_EVIDENCE and retained only temporal directionality as affirmatively unconstituted.",
+    "I initially recorded a 3/2 Field Forge split from prose; direct verification of MATRIX.md lines 46-49 showed a uniform AUTHORITY_FORM_CLOSED__POSITIVE_INSTANCE_OR_SCOPE_REMAINS code across W02-W05, and I corrected to the matrix."
+  ],
+  "holds_observed": {
+    "production_mutation": false, "survey_access": false, "live_c4": false,
+    "c7_or_actor_implementation": false, "locator_discovery": false, "warrant_issuance": false,
+    "astra_referral": false, "broad_architecture_reopen": false
+  }
+}
