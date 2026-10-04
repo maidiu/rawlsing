@@ -459,3 +459,10 @@ Current law:
 
 Preserve SPD-0249/0250 and RISK-205.
 
+### Game-loop teleology correction
+
+Read:
+`90_GAME_LOOP_TELEOLOGY_DISCIPLINE_CORRECTION_R1.md`.
+
+Do not treat becoming important/noninterchangeable, discovering a needed role, or filling a relational vacancy as Rawlsing's universal objective. Relationship form is an emergent consequence of person × world × history, not the score target. Apply SPD-0251 / RISK-206.
+
