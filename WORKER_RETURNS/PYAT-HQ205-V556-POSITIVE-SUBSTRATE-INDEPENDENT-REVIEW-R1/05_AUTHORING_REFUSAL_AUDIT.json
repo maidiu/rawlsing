@@ -1,0 +1,105 @@
+{
+  "schema": "PYAT_HQ205_V556_AUTHORING_REFUSAL_AUDIT@1.0.0",
+  "candidate_sha": "87268ffaa60ebd9119aa46dc3f664e12d632b4d5",
+  "attacked_surface": [
+    "author_closed_result_schema (lines 273-301) and _validate_authored_schema_node (195-270)",
+    "author_result_contract_binding (311-348)",
+    "author_governed_rule (364-450)",
+    "V556RuleMaterialRegistry.build (465-478)"
+  ],
+  "commission_requirement": "Refusal should happen before positive material becomes registrable. Attack author_closed_result_schema and all constructors: person-state role; actor indexing; open additional fields; unapproved primitive type; scalar numeric pressure/coupling; unsupported result role.",
+  "verdict": "FAILS: authoring-time refusal covers ONLY author_closed_result_schema. The binding/rule/registry constructors accept and register material that the adopted seam must then refuse at evaluation time (fail-closed, but after registrability).",
+  "enforced_at_authoring": [
+    {"check": "person-state semantic role (13 frozen roles)", "where": "_validate_authored_schema_node lines 210-212", "probe": "court test 13 proves refusal for author_closed_result_schema"},
+    {"check": "semantic_role not in ADMITTED_OBJECTIVE_ROLES", "where": "lines 213-215", "status": "enforced for nodes routed through author_closed_result_schema"},
+    {"check": "open object (additional_fields must be exactly False)", "where": "constructors lines 160-162 plus validator 219-221", "status": "enforced for nodes routed through author_closed_result_schema"},
+    {"check": "object/array/string/exact_ref field-name sets are exact", "where": "validator 216-270", "status": "enforced"},
+    {"check": "semantic_class in ADMITTED_OBJECTIVE_SCHEMA_CLASSES", "where": "author_closed_result_schema 280-282", "status": "enforced"},
+    {"check": "semantic_family in V556_SEMANTIC_FAMILIES", "where": "author_governed_rule 380-384", "status": "enforced (property A)"},
+    {"check": "participant_roles non-empty and duplicate-free", "where": "386-387", "status": "enforced"},
+    {"check": "minimum_cardinality >= 2; maximum >= minimum or UNBOUNDED", "where": "392-399", "status": "enforced; MAXIMUM TRUTHFULNESS NOT ENFORCED (see TOP-4)"},
+    {"check": "participant_order_policy in {ORDERED,UNORDERED}", "where": "388-389", "status": "enforced"},
+    {"check": "same_route_reuse_policy in {FORBIDDEN,PERMITTED}", "where": "390-391", "status": "enforced"},
+    {"check": "authorization_state and actor_indexing_mode membership", "where": "320-323", "status": "enforced (value membership only; not satisfiability)"}
+  ],
+  "NOT_enforced_at_authoring": [
+    {
+      "id": "AR-1",
+      "gap": "author_result_contract_binding does not validate the supplied schema at all",
+      "evidence": "lines 311-348 simply dict()-embed `schema` and `schema_ref`, then hash them; no call to _validate_authored_schema_node, no recomputation of schema_ref",
+      "probe_P1a": "author_result_contract_binding(binding_id='B', rule_id='R-SMUGGLE', schema=<object with additional_fields=True and field semantic_role='SUBJECTIVE_BELIEF_IDEOLOGY'>, schema_ref=<content_hash unrelated to schema>) -> ACCEPTED",
+      "severity": "critical"
+    },
+    {
+      "id": "AR-2",
+      "gap": "author_governed_rule does not validate the ResultContractBinding it embeds",
+      "evidence": "lines 364-450 accept `result_contract: ResultContractBinding` and only copy binding_ref into the rule body",
+      "probe_P1b": "the AR-1 contract was accepted by author_governed_rule and registered: registered_rule_count=1, state=GOVERNED_RULES_PRESENT",
+      "severity": "critical"
+    },
+    {
+      "id": "AR-3",
+      "gap": "V556RuleMaterialRegistry.build does not validate rule content, family membership or schema closure",
+      "evidence": "lines 465-478 check only duplicate rule key and duplicate family",
+      "probe_P1b": "open + person-state schema registered as GOVERNED_RULES_PRESENT",
+      "probe_P4": "hand-built GovernedRule with semantic_family='V556_INVENTED_FAMILY' registered; populated_families=['V556_INVENTED_FAMILY']",
+      "severity": "critical"
+    },
+    {
+      "id": "AR-4",
+      "gap": "participant_roles are unconstrained label text",
+      "evidence": "lines 385-387 apply _text() and duplicate checking only; no vocabulary exists for participant roles anywhere in the substrate or in M3 (M3 _participants line 418 only checks membership in rule['participant_roles'])",
+      "probe_P2a": "author_governed_rule(participant_roles=('ACTOR_DESIRE','ACTOR_BELIEF')) ACCEPTED and registered",
+      "probe_P2b": "evaluation -> M3DecisionState.SUPPORTED, positive object produced = True",
+      "probe_P2c": "positive object participant_bindings roles = ['ACTOR_DESIRE', 'ACTOR_BELIEF']",
+      "severity": "critical",
+      "contradicts": "module docstring line 18 ('no actor desire, belief, personality or history') and WORKER_RETURNS/PYAT-HQ204-V556-R1/01_OWNER_AUTHORITY_MATRIX.json explicitly_not_authored ('actor desire', 'actor belief')"
+    },
+    {
+      "id": "AR-5",
+      "gap": "string enum values, relation-kind vocabulary and primitive type choice are unconstrained; there is no strong-noun or scalar gate in the machinery",
+      "evidence": "validator lines 247-257 accept any non-empty duplicate-free enum of strings; lines 269-270 accept any integer/number/boolean leaf on an admitted role",
+      "probe_P19a": "author_closed_result_schema accepted enum ('DOMINATION','HEGEMONY','CAPITAL','PRESSURE_COUPLING')",
+      "probe_P19b": "rule + registry accepted; evaluation -> M3DecisionState.SUPPORTED, positive object produced = True",
+      "probe_P19c": "positive V556 object semantic_payload = {'relation_kind': 'DOMINATION'} (semantic_family = V556_INTERACTION_RELATION)",
+      "probe_P9": "author_closed_result_schema accepted a 'number' leaf named 'pressure_magnitude' under OBJECTIVE_MEASUREMENT",
+      "severity": "critical",
+      "contradicts": "court tests 12 and 14 (test_no_actor_state_leaks_into_canary_material, test_no_scalar_pressure_or_strong_noun_is_smuggled), which scan only the two canary instances and therefore prove a property of the instances, not of the machinery",
+      "note": "A generic schema builder may legitimately accept caller-chosen enum values; the finding is that the substrate's return, owner matrix and court present strong-noun/scalar exclusion as a property of the substrate ('by contract', 'no new noun, no scalar magnitude') when it is a property of the canary constants alone"
+    },
+    {
+      "id": "AR-6",
+      "gap": "author_indexing_mode='OBJECTIVE_ACTOR_INDEXED' is accepted but unsatisfiable",
+      "evidence": "line 322 admits the mode; ADMITTED_OBJECTIVE_ROLES (60-69) excludes OBJECTIVE_ACTOR_INDEX, so no authored schema can carry the required role; M3 then raises _SchemaIntegrity (m3:727-728)",
+      "probe_P3": "accepted at authoring; guaranteed INTEGRITY_FAILURE at evaluation",
+      "severity": "medium",
+      "classification": "DEAD_PARAMETER__FAILS_CLOSED"
+    },
+    {
+      "id": "AR-7",
+      "gap": "multiplicity_policy has no frozen vocabulary",
+      "evidence": "line 416 only _text()s it; M3 line 271 likewise",
+      "probe_P11": "multiplicity_policy='WHATEVER_I_LIKE' ACCEPTED",
+      "severity": "low"
+    },
+    {
+      "id": "AR-8",
+      "gap": "no unsupported-result-role gap found for schema nodes",
+      "evidence": "both the substrate validator and M3 check semantic_role membership and person-state exclusion; unsupported primitive types are refused by _SUPPORTED_NODE_TYPES (191-192) and by M3's fallthrough (m3:599)",
+      "severity": "none"
+    }
+  ],
+  "registrability_timeline": {
+    "unlawful_material_reaches_GOVERNED_RULES_PRESENT": true,
+    "refusal_point": "M3 evaluation (INTEGRITY_FAILURE / UNKNOWN_AUTHORITY)",
+    "probe_P13": "the AR-1/AR-2/AR-3 registered open person-state-schema rule evaluated -> M3DecisionState.INTEGRITY_FAILURE, object = False",
+    "commission_requirement_met": false,
+    "commission_requirement_quote": "Refusal should happen before positive material becomes registrable."
+  },
+  "court_claim_vs_reality": {
+    "candidate_claim": "WORKER_RETURNS/PYAT-HQ204-V556-R1/02_COURT_RESULTS.json defects_found_and_fixed_by_the_court[1]: 'author_closed_result_schema originally performed no structural validation, so a person-state role could be authored and only refused later at evaluation; fail-closed validation was added at authoring time'",
+    "reality": "the defect was fixed in exactly one of four construction functions; author_result_contract_binding, author_governed_rule and V556RuleMaterialRegistry.build remain unvalidated, and the court contains no test for them",
+    "severity": "high"
+  },
+  "part_E_verdict": "FAILS. Authoring-time refusal is real and correct where it exists (person-state role, admitted role, closed object, exact field sets, semantic class, frozen family), but it protects only the author_closed_result_schema route. Every constructor on the binding/rule/registry route accepts unlawful material and the registry publishes it. Person-state schema roles, actor-semantic participant labels, forbidden-premise/strong-noun relation kinds, numeric scalar leaves and an unsatisfiable actor-indexed mode are all authorable and registrable today."
+}

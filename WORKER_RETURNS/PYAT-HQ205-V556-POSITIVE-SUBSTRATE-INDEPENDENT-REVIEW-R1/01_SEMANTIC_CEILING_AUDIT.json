@@ -1,0 +1,94 @@
+{
+  "schema": "PYAT_HQ205_V556_SEMANTIC_CEILING_AUDIT@1.0.0",
+  "reviewer_role": "independent hostile source-free reviewer",
+  "branch": "agent/reviewer-pyat-hq205-v556-r1",
+  "startup_sha": "560f2394df3a65fed4dc115f64348b64415f2174",
+  "commission_base": "0e8d5bcd98e5aba63cd7312f778dedbfe8b6b646",
+  "candidate_sha": "87268ffaa60ebd9119aa46dc3f664e12d632b4d5",
+  "candidate_blobs": {
+    "rawlsing_next/pre553_v556_positive_substrate.py": "ff2219a73cf36ec11996db4434505f6172180cad",
+    "rawlsing_next/tests/test_pre553_v556_positive_substrate_court.py": "bfc1881cb8bd6415f39e0a5ab35c476be08f8be5",
+    "rawlsing_next/m3_v556_higher_order_structural.py": "9a4b26b214686364a43d108dabf0d57dac0ed3b2",
+    "rawlsing_next/m2_v555_atomic_route.py": "deef8a60613635a10faf7d89cd8cdf0c3b8a0710"
+  },
+  "adopted_seam_unchanged": {
+    "claim": "the candidate did not modify the adopted M3 semantics module",
+    "verified": true,
+    "evidence": "blob of rawlsing_next/m3_v556_higher_order_structural.py at 87268ffaa equals blob at control 06f306d8a80d94794ced8f222e71fa1ce467ad66: 9a4b26b214686364a43d108dabf0d57dac0ed3b2"
+  },
+  "property_A": {
+    "requirement": "author_governed_rule cannot introduce a semantic family outside the frozen V556 family set",
+    "verdict": "HOLDS_AT_REAL_GATES__NOT_AT_REGISTRY",
+    "gates_that_enforce": [
+      {
+        "gate": "rawlsing_next/pre553_v556_positive_substrate.py author_governed_rule",
+        "lines": "380-384",
+        "quote": "if family not in V556_SEMANTIC_FAMILIES: raise SubstrateAuthoringError(...)",
+        "probe": "court test 16 (test_attractor_family_stays_supported_but_unfilled) authors 'V556_SOME_NEW_FAMILY' and observes refusal"
+      },
+      {
+        "gate": "rawlsing_next/m3_v556_higher_order_structural.py _rule_key",
+        "lines": "279-280",
+        "quote": "if family not in V556_SEMANTIC_FAMILIES: raise _Authority(...)",
+        "note": "defence in depth: a hand-built rule that bypasses the substrate is still refused by the adopted seam"
+      }
+    ],
+    "alternate_construction_routes_attacked": [
+      {
+        "route": "hand-construct GovernedRule and register it",
+        "result": "REGISTRY_ACCEPTS__SEAM_REFUSES",
+        "probe": "P4",
+        "observation": "V556RuleMaterialRegistry.build([forged]) accepted semantic_family='V556_INVENTED_FAMILY'; populated_families=['V556_INVENTED_FAMILY']",
+        "gap": "V556RuleMaterialRegistry.build (lines 465-478) validates duplicate rule key and duplicate family only; it never checks semantic_family against V556_SEMANTIC_FAMILIES or SUPPORTED_FAMILIES",
+        "severity": "medium"
+      },
+      {
+        "route": "bootstrap on the frozen constant itself",
+        "result": "SOUND",
+        "observation": "SUPPORTED_FAMILIES = tuple(sorted(V556_SEMANTIC_FAMILIES)) (line 48) is derived, not duplicated; it cannot drift from the adopted module"
+      },
+      {
+        "route": "whitespace / case trickery in semantic_family",
+        "result": "SOUND",
+        "observation": "_text() strips and the membership test is exact-case against the frozenset"
+      }
+    ],
+    "family_set_observed": ["V556_ATTRACTOR_PREREQUISITE", "V556_INTERACTION_RELATION", "V556_TOPOLOGY"],
+    "family_set_source": "rawlsing_next/m3_v556_higher_order_structural.py:33-37",
+    "note": "V556_SEMANTIC_FAMILIES is the ONLY frozen ontology the ceiling is stated over. Content ontology (relation kinds, participant role labels, enum values, primitive types) is not a family and is not ceilinged; see 05_AUTHORING_REFUSAL_AUDIT.json"
+  },
+  "ceiling_findings_beyond_the_family_set": [
+    {
+      "id": "CEIL-1",
+      "finding": "ADMITTED_OBJECTIVE_ROLES is a strict subset of the adopted M3 objective role set",
+      "adopted_roles_missing": ["OBJECTIVE_ACTOR_INDEX", "OBJECTIVE_OPPORTUNITY", "OBJECTIVE_POSITION"],
+      "evidence": "candidate lines 60-69 vs m3_v556_higher_order_structural.py:84-96; probe P10b",
+      "consequence": "OBJECTIVE_ACTOR_INDEXED results, which the adopted contract supports and the existing 29-test court proves SUPPORTED (rawlsing_next/tests/test_m3_v556_higher_order_structural.py:475-490), are unreachable through this authoring path; author_result_contract_binding nevertheless accepts actor_indexing_mode='OBJECTIVE_ACTOR_INDEXED' (probe P3), a guaranteed INTEGRITY_FAILURE",
+      "classification": "UNDOCUMENTED_TRANCHE_LOCAL_NARROWING__FAILS_CLOSED",
+      "severity": "medium"
+    },
+    {
+      "id": "CEIL-2",
+      "finding": "ALLOWED_TYPED_OUTCOME_STATES is a strict subset of M3 _FROZEN_STATES",
+      "adopted_states_missing": ["INVALID_PARTICIPANT_SET", "UNKNOWN_AUTHORITY", "UNRESOLVABLE_PARTICIPANT"],
+      "evidence": "candidate lines 51-57 vs m3_v556_higher_order_structural.py:72-75; probe P10d",
+      "classification": "LAWFUL (rules need not name construction-failure states as positive outcomes)",
+      "severity": "informational"
+    },
+    {
+      "id": "CEIL-3",
+      "finding": "_FORBIDDEN_PERSON_STATE_ROLES exactly equals the adopted M3 _PERSON_STATE_ROLES set (13 roles)",
+      "evidence": "probe P10f returns True; candidate lines 175-189 vs m3:97-111",
+      "classification": "FAITHFUL_COPIES__DRIFT_RISK_ONLY (duplicated constant, not derived)",
+      "severity": "informational"
+    },
+    {
+      "id": "CEIL-4",
+      "finding": "ADMITTED_OBJECTIVE_SCHEMA_CLASSES exactly equals the adopted M3 _OBJECTIVE_SCHEMA_CLASSES set",
+      "evidence": "probe P10e returns []",
+      "classification": "FAITHFUL_COPY__DRIFT_RISK_ONLY",
+      "severity": "informational"
+    }
+  ],
+  "conclusion": "The frozen semantic-FAMILY ceiling (commission property A) is enforced at author_governed_rule and at the adopted M3 seam, and cannot be bypassed by alternate construction without failing closed. It is NOT enforced by the registry's own publication surface. Separately, the substrate silently narrows the adopted objective ROLE set and leaves an accepted-but-unfulfillable OBJECTIVE_ACTOR_INDEXED parameter. No new family can be introduced; new content ontology can (see 05)."
+}

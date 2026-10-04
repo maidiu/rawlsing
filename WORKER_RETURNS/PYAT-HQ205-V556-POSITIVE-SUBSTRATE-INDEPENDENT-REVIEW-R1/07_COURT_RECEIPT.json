@@ -1,0 +1,115 @@
+{
+  "schema": "PYAT_HQ205_V556_COURT_RECEIPT@1.0.0",
+  "reviewer": "independent hostile source-free reviewer",
+  "branch": "agent/reviewer-pyat-hq205-v556-r1",
+  "startup_sha": "560f2394df3a65fed4dc115f64348b64415f2174",
+  "candidate_sha": "87268ffaa60ebd9119aa46dc3f664e12d632b4d5",
+  "candidate_code_blobs_sha1": {
+    "rawlsing_next/pre553_v556_positive_substrate.py": "ff2219a73cf36ec11996db4434505f6172180cad",
+    "rawlsing_next/tests/test_pre553_v556_positive_substrate_court.py": "bfc1881cb8bd6415f39e0a5ab35c476be08f8be5"
+  },
+  "independent_court_run": {
+    "method": "git worktree add --detach <path> 87268ffaa60ebd9119aa46dc3f664e12d632b4d5; run the three suites with the candidate tree as cwd",
+    "interpreter": "/private/tmp/c1-01-r8-release-spine-venv/bin/python (CPython 3.12.14, pytest 9.1.1)",
+    "commands": [
+      "python -m pytest rawlsing_next/tests/test_pre553_v556_positive_substrate_court.py -q",
+      "python -m pytest rawlsing_next/tests/test_m3_v556_higher_order_structural.py -q",
+      "python -m pytest rawlsing_next/tests/test_m2_v555_atomic_route.py -q",
+      "python -m pytest rawlsing_next/tests/test_pre553_v556_positive_substrate_court.py rawlsing_next/tests/test_m3_v556_higher_order_structural.py rawlsing_next/tests/test_m2_v555_atomic_route.py -q   (twice)"
+    ],
+    "observed": [
+      {"suite": "new focused court", "tail": "17 passed in 0.39s"},
+      {"suite": "existing V556 court", "tail": "29 passed in 0.27s"},
+      {"suite": "V555 upstream court", "tail": "28 passed in 0.25s"},
+      {"suite": "combined run 1", "tail": "74 passed in 0.62s"},
+      {"suite": "combined run 2", "tail": "74 passed in 0.60s"}
+    ],
+    "reproduces_candidate_claim": true,
+    "candidate_claimed": {"new": 17, "existing_v556": 29, "upstream_v555": 28, "combined": 74, "runs": 2}
+  },
+  "test_inventory_and_quality": {
+    "total": 17,
+    "assertion_counts_per_test": {
+      "test_one_lawful_positive_v556_topology_rule": 5,
+      "test_topology_rule_commits_to_exact_result_contract_binding": 5,
+      "test_result_schemas_are_closed_and_use_only_admitted_objective_roles": 5,
+      "test_lawful_positive_topology_result_is_produced": 5,
+      "test_one_lawful_positive_v556_interaction_relation_rule": 4,
+      "test_interaction_result_carries_coexisting_relation_array_min_two": 5,
+      "test_exact_rule_and_content_hash_binding_is_enforced": 3,
+      "test_result_values_outside_closed_schema_vocabulary_are_refused": 3,
+      "test_missing_or_incomplete_authority_refuses_and_never_manufactures": 5,
+      "test_valid_empty_no_governed_rule_and_missing_authority_manufactures_nothing": 8,
+      "test_governed_valid_empty_state_still_emits_no_positive_object": 2,
+      "test_no_actor_state_leaks_into_canary_material": 3,
+      "test_schema_authoring_refuses_person_state_role": 0,
+      "test_no_scalar_pressure_or_strong_noun_is_smuggled": 2,
+      "test_replay_and_determinants_are_stable_for_exact_governed_inputs": 4,
+      "test_attractor_family_stays_supported_but_unfilled": 3,
+      "test_canary_material_carries_no_real_world_authority_claim": 3,
+      "note": "test_schema_authoring_refuses_person_state_role uses pytest.raises, so it has no bare assert; assertion counts are a rough proxy for behavioural depth, not a verdict"
+    },
+    "classification": [
+      {"test": 1, "name": "test_one_lawful_positive_v556_topology_rule", "kind": "ASSERTS_CONSTANT", "why": "reads family/policy/roles/min-cardinality off the canary the same tranche authored; no evaluator verdict, so 'lawful' is not proven here"},
+      {"test": 2, "name": "test_topology_rule_commits_to_exact_result_contract_binding", "kind": "ASSERTS_CONSTANT", "why": "committed == result_contract_ref is trivially true by construction; no tamper case"},
+      {"test": 3, "name": "test_result_schemas_are_closed_and_use_only_admitted_objective_roles", "kind": "PROVES_STRUCTURE_BUT_CIRCULAR", "why": "walks the canary schema against the same ADMITTED_OBJECTIVE_ROLES constant used to build it; would pass even if that constant were wrong"},
+      {"test": 4, "name": "test_lawful_positive_topology_result_is_produced", "kind": "PROVES (+1 TAUTOLOGY)", "why": "real SUPPORTED evaluation, but line 205 `x.v556_object['semantic_family'] if 'semantic_family' in x.v556_object else True` can never fail"},
+      {"test": 5, "name": "test_one_lawful_positive_v556_interaction_relation_rule", "kind": "ASSERTS_CONSTANT", "why": "same as test 1 for the interaction canary"},
+      {"test": 6, "name": "test_interaction_result_carries_coexisting_relation_array_min_two", "kind": "PROVES_BOUNDARY + ASSERTS_CONSTANT", "why": "the 1-relation refusal and the 3-relation SUPPORTED case are genuine; the min_items>=2 claim is read off the self-authored schema"},
+      {"test": 7, "name": "test_exact_rule_and_content_hash_binding_is_enforced", "kind": "PROVES", "why": "tampers rule_content_hash and observes non-SUPPORTED"},
+      {"test": 8, "name": "test_result_values_outside_closed_schema_vocabulary_are_refused", "kind": "PROVES", "why": "refuses an out-of-enum value and an undeclared extra field"},
+      {"test": 9, "name": "test_missing_or_incomplete_authority_refuses_and_never_manufactures", "kind": "PROVES", "why": "no active rule, single participant, wrong role labels"},
+      {"test": 10, "name": "test_valid_empty_no_governed_rule_and_missing_authority_manufactures_nothing", "kind": "PROVES + ASSERTS_CONSTANT", "why": "the negative evaluation is genuine; the registry-state assertions are self-referential"},
+      {"test": 11, "name": "test_governed_valid_empty_state_still_emits_no_positive_object", "kind": "PROVES", "why": "typed VALID_EMPTY path emits no object"},
+      {"test": 12, "name": "test_no_actor_state_leaks_into_canary_material", "kind": "PROVES_CANARY_ONLY", "why": "substring scan over the two canaries; probes P2/P19 show the MACHINERY does not enforce this, so property 11 is not proven of the substrate"},
+      {"test": 13, "name": "test_schema_authoring_refuses_person_state_role", "kind": "PROVES (narrow)", "why": "proves refusal for author_closed_result_schema only; the binding/rule/registry route is untested and accepts the same material (probe P1)"},
+      {"test": 14, "name": "test_no_scalar_pressure_or_strong_noun_is_smuggled", "kind": "PROVES_CANARY_ONLY", "why": "substring scan plus a walk of the two canary schemas; probes P9/P19 show the machinery accepts numeric leaves and strong-noun enums, so property 12 is not proven of the substrate"},
+      {"test": 15, "name": "test_replay_and_determinants_are_stable_for_exact_governed_inputs", "kind": "PROVES", "why": "x == y, equal replay_key_hash, object id prefix"},
+      {"test": 16, "name": "test_attractor_family_stays_supported_but_unfilled", "kind": "PROVES (family ceiling) + VACUOUS LINE", "why": "line 418 authoring 'V556_SOME_NEW_FAMILY' is refused, which proves the family ceiling; line 416 asserts a MISSPELLED family name ('V556_ATTRACTOR_PREREQUISATE') and is vacuously None"},
+      {"test": 17, "name": "test_canary_material_carries_no_real_world_authority_claim", "kind": "ASSERTS_CONSTANT + WRONG_BRANCH", "why": "snapshot constants; lines 440-441 register two IDENTICAL rules so the duplicate-KEY branch fires and the advertised one-rule-per-family property is never exercised (probe P5b)"}
+    ],
+    "thirteen_property_claim": {
+      "claimed_list_location": "WORKER_RETURNS/PYAT-HQ204-V556-R1/02_COURT_RESULTS.json thirteen_required_properties (13 entries)",
+      "claim": "WORKER_RETURNS/PYAT-HQ204-V556-R1/00_RETURN.md: 'All thirteen commissioned properties map to a named test.'",
+      "finding": "SELF_AUTHORED_DENOMINATOR",
+      "evidence": "no governing document enumerates 13 properties: WORKER_COMMISSIONS/PYAT-HQ204-V556-R1/00_COMMISSION.md is 3 lines; 01_SCOPE.md has no numbered list; the HQ204 adjudication ff4f0695, the HQ205 adjudication 0e8d5bcd, H-B d691f9ba and H-E 15e28d61 contain no 13-item property list. The only 13-item list is the candidate's own, mapped 1:1 onto 13 of its own 17 tests.",
+      "severity": "medium"
+    }
+  },
+  "adversarial_probe_receipt": {
+    "method": "read-only scripts outside the repository importing the candidate module with PYTHONPATH=<candidate worktree>; no candidate file was written",
+    "scripts": [
+      {"path": "/tmp/hq205v556_probe.py", "sha256": "27eb163184cd62aa04f4691f67c5faa262039d7523a418ecab1f839a322242a7", "output_log": "/tmp/probe_log_1.txt", "output_log_sha256": "8786705d43389c1bb0ce0c1b97a23f2a8b4e9c5195f6ec4752dca90bd63fb62b"},
+      {"path": "/tmp/hq205v556_probe2.py", "sha256": "75085583386ee373a436e97e13d9e9f87c3dfe04393f3ed2711bdcffc82b94b8", "output_log": "/tmp/probe_log_2.txt", "output_log_sha256": "7eaca4c391ba1abedd530562650401d2def312ea86336622336ec0d035d9dec8"},
+      {"path": "/tmp/hq205v556_probe3.py", "sha256": "2a4202a6ad80c93b808a497e04d6faad5c556d3ca4e2476fb13df7d8a186ce34", "output_log": "/tmp/probe_log_3.txt", "output_log_sha256": "01f91b8a3596c42dfd70472fe4b17ec5ccce7e646b3d2631f7220c36f480dcdd"},
+      {"path": "/tmp/hq205v556_probe4.py", "sha256": "e1edd1f1cf408e2ae46fc50928bb28ec466ce131ac6c98609b535e18fbd27e66", "output_note": "run inline; P19a-P19d recorded in 05_AUTHORING_REFUSAL_AUDIT.json"}
+    ],
+    "key_observations": [
+      {"probe": "P1a", "observation": "author_result_contract_binding ACCEPTED an open schema with a person-state role and a schema_ref that does not match the schema"},
+      {"probe": "P1b", "observation": "author_governed_rule + V556RuleMaterialRegistry.build ACCEPTED it; registered_rule_count=1, state=GOVERNED_RULES_PRESENT"},
+      {"probe": "P2a/P2b/P2c", "observation": "participant_roles=('ACTOR_DESIRE','ACTOR_BELIEF') accepted and registered; evaluation SUPPORTED; positive object participant_bindings roles = ['ACTOR_DESIRE','ACTOR_BELIEF']"},
+      {"probe": "P3", "observation": "OBJECTIVE_ACTOR_INDEXED accepted at authoring but unsatisfiable because OBJECTIVE_ACTOR_INDEX is not an admitted role"},
+      {"probe": "P4", "observation": "registry ACCEPTED semantic_family='V556_INVENTED_FAMILY'; populated_families=['V556_INVENTED_FAMILY']"},
+      {"probe": "P5", "observation": "second DISTINCT same-family rule refused by the FAMILY branch: 'at most one governed rule per semantic family in this tranche'"},
+      {"probe": "P5b", "observation": "two IDENTICAL rules refused by the DUPLICATE-KEY branch: 'duplicate governed rule key in registry' (this is what court test 17 actually exercises)"},
+      {"probe": "P6b", "observation": "3-participant topology request -> INVALID_PARTICIPANT_SET despite maximum_cardinality_or_unbounded_marker='UNBOUNDED'"},
+      {"probe": "P6c", "observation": "topology without shared_structural_channel_ref -> RESULT_SCHEMA_NONCONFORMING"},
+      {"probe": "P7b", "observation": "evaluation against an empty registry -> UNKNOWN_AUTHORITY, positive object = False"},
+      {"probe": "P7c", "observation": "higher_order_semantics_required=False -> decision_state None, behavior 'ZERO_V556_OBJECTS'"},
+      {"probe": "P8a", "observation": "author_governed_rule ACCEPTS V556_ATTRACTOR_PREREQUISITE and the registry registers it (explicit caller action, no default path)"},
+      {"probe": "P8b", "observation": "rule_for('V556_ATTRACTOR_PREREQUISITE') is None; rule_for('V556_ATTRACTOR_PREREQUISATE') is None (the court asserts only the typo'd name)"},
+      {"probe": "P9", "observation": "author_closed_result_schema ACCEPTS a numeric ('number') leaf named 'pressure_magnitude'"},
+      {"probe": "P10b", "observation": "M3 objective roles not admitted by the substrate: OBJECTIVE_ACTOR_INDEX, OBJECTIVE_OPPORTUNITY, OBJECTIVE_POSITION"},
+      {"probe": "P11", "observation": "multiplicity_policy='WHATEVER_I_LIKE' ACCEPTED"},
+      {"probe": "P12", "observation": "INTERACTION relation_kind enum = ['COEXISTING_STRUCTURAL_INCIDENCE','SHARED_UPSTREAM_STRUCTURAL_CHANNEL','PARALLEL_STRUCTURAL_OCCURRENCE']"},
+      {"probe": "P13", "observation": "the registered open/person-state-schema rule evaluated -> INTEGRITY_FAILURE (fails closed at the seam)"},
+      {"probe": "P14", "observation": "M3 with TWO distinct same-family rules both active -> SUPPORTED (one-rule-per-family is registry-only)"},
+      {"probe": "P15", "observation": "interaction SUPPORTED with payload relations that reference NO bound route"},
+      {"probe": "P16a/P16c/P16d", "observation": "deep mutation after authoring registered; evaluation INTEGRITY_FAILURE; registry still state=GOVERNED_RULES_PRESENT"},
+      {"probe": "P18", "observation": "shipped registry unfilled_families = ['V556_ATTRACTOR_PREREQUISITE']"},
+      {"probe": "P19a/P19b/P19c", "observation": "enum ('DOMINATION','HEGEMONY','CAPITAL','PRESSURE_COUPLING') authored, registered, evaluated SUPPORTED; positive payload {'relation_kind':'DOMINATION'} in semantic_family V556_INTERACTION_RELATION"}
+    ],
+    "reproduction": "git worktree add --detach /tmp/<path> 87268ffaa60ebd9119aa46dc3f664e12d632b4d5; PYTHONPATH=/tmp/<path> <python-with-pytest> /tmp/hq205v556_probe.py"
+  },
+  "part_H_verdict": "The court counts are correct and reproducible, and the court contains real behavioural proofs (tamper refusal, closed-vocabulary refusal, cardinality floor, negatives, VALID_EMPTY, replay). But at least six of seventeen tests assert constants of material authored by the same tranche, one assertion is a tautology, one is vacuous through a misspelling, one advertised property is exercised against the wrong branch, and two claimed properties (11 and 12) are demonstrated false of the machinery by probes P2 and P19. The 13-property denominator is self-authored."
+}

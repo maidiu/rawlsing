@@ -1,0 +1,72 @@
+{
+  "schema": "PYAT_HQ205_V556_RULE_CARDINALITY_AND_VALID_EMPTY@1.0.0",
+  "candidate_sha": "87268ffaa60ebd9119aa46dc3f664e12d632b4d5",
+  "part_D_one_rule_per_family": {
+    "requirement": "determine whether refusing a second rule per family is a lawful tranche-local safety restriction that may later be widened by separate authority, or an accidental semantic ceiling; if tranche-local, verify it is represented/documented as such and not exported as timeless law",
+    "verdict": "LAWFUL_TRANCHE_LOCAL_RESTRICTION__NOT_DOCUMENTED_IN_MATERIAL__NOT_PROVEN_BY_THE_COURT",
+    "mechanism": {
+      "location": "rawlsing_next/pre553_v556_positive_substrate.py V556RuleMaterialRegistry.build, lines 465-478",
+      "branch_a": "duplicate rule_key -> SubstrateAuthoringError('duplicate governed rule key in registry') (lines 470-471)",
+      "branch_b": "duplicate semantic_family -> SubstrateAuthoringError('at most one governed rule per semantic family in this tranche') (lines 472-474)"
+    },
+    "evidence": {
+      "P5": "V556RuleMaterialRegistry.build([topology_canary_rule(rule_id='TOP-A'), topology_canary_rule(rule_id='TOP-B')]) raised SubstrateAuthoringError('at most one governed rule per semantic family in this tranche') -- the FAMILY branch fires",
+      "P5b": "V556RuleMaterialRegistry.build([topology_canary_rule(), topology_canary_rule()]) raised SubstrateAuthoringError('duplicate governed rule key in registry') -- the KEY branch fires",
+      "P14": "M3 evaluated with TWO distinct same-family rules (TOP-A and TOP-B) both supplied in active_rule_keys and both result-contract refs active -> M3DecisionState.SUPPORTED. The restriction is registry-local; the adopted seam has no such ceiling."
+    },
+    "is_it_a_ceiling": false,
+    "why_not": "M3's authority snapshot is a set of exact six-tuple rule keys (m3:347-359) with no one-rule-per-family constraint; a caller can evaluate multiple same-family rules directly. The restriction is an authoring-registry policy only.",
+    "tranche_locality_documentation": {
+      "in_exception_message": true,
+      "quote": "at most one governed rule per semantic family in this tranche",
+      "in_module_docstring": false,
+      "in_named_constant": false,
+      "in_snapshot_output": false,
+      "in_return_documents": true,
+      "return_quote": "WORKER_RETURNS/PYAT-HQ204-V556-R1/01_OWNER_AUTHORITY_MATRIX.json registry_state_contract.max_one_rule_per_family_in_this_tranche = true"
+    },
+    "exported_as_timeless_law": false,
+    "court_proof_defect": {
+      "test": "test_canary_material_carries_no_real_world_authority_claim, court lines 439-441",
+      "comment_claims": "registry refuses a second rule for the same family (no unbounded population)",
+      "what_the_test_actually_does": "V556RuleMaterialRegistry.build([topology_canary_rule(), topology_canary_rule()]) -- two IDENTICAL rules, so the duplicate-KEY branch fires and the family branch is never reached",
+      "consequence": "the advertised truncation property has no test coverage at all",
+      "severity": "medium"
+    }
+  },
+  "part_D_objective_role_ceiling": {
+    "finding": "ADMITTED_OBJECTIVE_ROLES (lines 60-69) silently narrows the adopted objective role set by dropping OBJECTIVE_ACTOR_INDEX, OBJECTIVE_POSITION and OBJECTIVE_OPPORTUNITY",
+    "evidence": "probe P10a/P10b; rawlsing_next/m3_v556_higher_order_structural.py:84-96 includes them; the existing 29-test court proves OBJECTIVE_ACTOR_INDEXED SUPPORTED at tests lines 475-490",
+    "undocumented": true,
+    "consequence": "author_result_contract_binding accepts actor_indexing_mode='OBJECTIVE_ACTOR_INDEXED' (probe P3) but no schema this module can author satisfies the M3 requirement (m3:727-728) -> guaranteed INTEGRITY_FAILURE",
+    "classification": "TRANCHE_LOCAL_NARROWING__FAILS_CLOSED__NEEDS_DOCUMENTATION"
+  },
+  "part_F_valid_empty": {
+    "requirement": "verify a registry with no governed rule is lawful; emits no positive result; does not infer absence of real-world topology; preserves exact empty/ungoverned semantics",
+    "verdict": "HOLDS_AT_THE_SUBSTRATE__ADOPTED_DISTINCTION_LOST_AT_THE_SEAM",
+    "substrate_behaviour": {
+      "state_label": "VALID_EMPTY_NO_GOVERNED_RULE",
+      "state_label_is_adopted_terminology": true,
+      "adopted_source": "TD_R03_V556/RESULT.md section 12: 'Collection-level publication must distinguish VALID_EMPTY_NO_GOVERNED_RULE, VALID_EMPTY_NO_ELIGIBLE_AUTHORIZED_BASIS, valid nonempty publication, and integrity/build failure.'",
+      "lawful": true,
+      "emits_positive_result": false,
+      "probe_P7b": "evaluation with an empty registry -> M3DecisionState.UNKNOWN_AUTHORITY; positive object = False",
+      "probe_P7d": "empty.unfilled_families = ['V556_ATTRACTOR_PREREQUISITE', 'V556_INTERACTION_RELATION', 'V556_TOPOLOGY'] (registry-scoped statement about authored rules, not about the world)",
+      "infers_absence_of_real_world_topology": false,
+      "no_demand_path_probe_P7c": "higher_order_semantics_required=False -> decision_state=None, behavior='ZERO_V556_OBJECTS' (correct: no filler object)"
+    },
+    "seam_gap": {
+      "finding": "the 'no governed rule' case is reported by the adopted seam as UNKNOWN_AUTHORITY, the same state used for malformed or unavailable authority",
+      "evidence": "probe P7b; m3:825-826 raises _Authority('rule authority is not in exact active V556 authority snapshot') which the outer handler maps to UNKNOWN_AUTHORITY (m3:942-943)",
+      "consequence": "TD_R03 section 12's required distinction between 'empty because no rule authorizes' and 'integrity/build failure' is not carried through the only evaluation path; the substrate's own VALID_EMPTY_NO_GOVERNED_RULE label is not what a caller of M3 receives",
+      "classified_as": "PRE_EXISTING_ADOPTED_SEAM_BEHAVIOUR__NOT_INTRODUCED_BY_THIS_TRANCHE__RECORDED_FOR_HQ",
+      "severity": "medium"
+    },
+    "court_coverage": {
+      "test_10": "test_valid_empty_no_governed_rule_and_missing_authority_manufactures_nothing (lines 309-324) -- asserts the empty-registry constants and that evaluation is not SUPPORTED",
+      "test_11": "test_governed_valid_empty_state_still_emits_no_positive_object (lines 327-337) -- exercises the typed VALID_EMPTY outcome and asserts v556_object is None",
+      "verdict": "genuine behavioural coverage for no-manufacture; the constant assertions in test 10 are self-referential but the negative evaluation is real"
+    }
+  },
+  "part_D_verdict": "The one-rule-per-family restriction is a lawful, registry-local tranche policy that the adopted seam does not share and that no material exports as timeless law. Its documentation is a single exception string plus a return-document flag, and the court's supposed proof exercises the wrong branch. The separate objective-role narrowing is undocumented and leaves a dead OBJECTIVE_ACTOR_INDEXED parameter."
+}

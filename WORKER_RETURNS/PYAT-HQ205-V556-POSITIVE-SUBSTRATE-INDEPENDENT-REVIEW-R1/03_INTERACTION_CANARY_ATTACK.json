@@ -1,0 +1,82 @@
+{
+  "schema": "PYAT_HQ205_V556_INTERACTION_CANARY_ATTACK@1.0.0",
+  "candidate_sha": "87268ffaa60ebd9119aa46dc3f664e12d632b4d5",
+  "attacked_surface": "rawlsing_next/pre553_v556_positive_substrate.py _interaction_schema (538-556), interaction_relation_canary_rule (585-614), PERMITTED_RELATION_KINDS (73-77)",
+  "verdict": "NO_SCALAR_COUPLING__NO_WINNER__NO_DOMINANCE__NO_AGGREGATE_STRENGTH (CLEAN) BUT THE AUTHORED RELATION-KIND VOCABULARY INVERTS THE ADOPTED V556 NON-INFERENCE LAW",
+  "authored_material": {
+    "schema_id": "HQ204_CANARY_V556_INTERACTION_RELATION_RESULT",
+    "root_field": "coexisting_relations: array of object, min_items 2, max UNBOUNDED",
+    "item_fields": {
+      "relation_kind": "string / OBJECTIVE_STRUCTURAL_RELATION / enum PERMITTED_RELATION_KINDS",
+      "left_endpoint_ref": "exact_ref / OBJECTIVE_REFERENCE",
+      "right_endpoint_ref": "exact_ref / OBJECTIVE_REFERENCE"
+    },
+    "additional_fields": false,
+    "participant_roles": ["COEXISTING_RELATION_LEFT", "COEXISTING_RELATION_RIGHT"],
+    "participant_order_policy": "ORDERED",
+    "minimum_cardinality": 2,
+    "maximum_cardinality_or_unbounded_marker": "UNBOUNDED"
+  },
+  "attacks": [
+    {
+      "id": "INT-1",
+      "attack": "is >=2 coexisting relations supported by adopted interaction semantics?",
+      "result": "SHAPE_AUTHORIZED__PROOF_CIRCULAR",
+      "evidence": "H-B d691f9ba 03_POSITIVE_INSTANCE_AND_AUTHORITY_GAPS.json requires 'semantic_family V556_INTERACTION_RELATION and a coexisting-relation array of min_items >= 2', and 07_FINAL_DISPOSITION.json recommended_next_actions[1] repeats it. So the SHAPE is H-B-authorized. However court test 6 proves the property by reading min_items off the schema this same tranche authored and then feeding a payload the test itself constructs; it proves the schema is self-consistent, not that the adopted semantics require coexistence.",
+      "severity": "medium"
+    },
+    {
+      "id": "INT-2",
+      "attack": "scalar coupling / aggregate strength / winner / dominance",
+      "result": "CLEAN",
+      "evidence": "no number/integer leaf anywhere in the interaction schema (court test 14 walk); no weight, score, magnitude, coefficient or ranking field; PERMITTED_RELATION_KINDS contains no scalar; the array is an unordered set of relation descriptors with no reduction operator; M3 adds no aggregation (result identity hashes the payload verbatim). Probe P12 confirms the enum.",
+      "adopted_law_note": "TD_R03_V556/RESULT.md section 3 marks 'numeric flow/interaction weight' MISSING_AUTHORITY; the candidate correctly supplies none."
+    },
+    {
+      "id": "INT-3",
+      "attack": "does relation coexistence smuggle coupling / coupling strength / dominance?",
+      "result": "NO_SCALAR__YES_PREMISE_INVERSION",
+      "evidence": "PERMITTED_RELATION_KINDS = ('COEXISTING_STRUCTURAL_INCIDENCE', 'SHARED_UPSTREAM_STRUCTURAL_CHANNEL', 'PARALLEL_STRUCTURAL_OCCURRENCE') and the payload key is 'coexisting_relations'.",
+      "adopted_law_quote": "TD_R03_V556/RESULT.md section 5: 'No F1 may be created solely because routes coexist, have opposite signs/directions, share source/target/mediator/stratum, overlap in geography/time, derive from the same V554 affordance, have similar labels, or appear together in runtime context. These may be candidate premises a future rule examines; they are never the rule itself.'",
+      "gate_quote": "TD_R03_V556/RESULT.md section 21 G14: 'no F1 inferred from coexistence/sign/common source/target/stratum/geography/time'",
+      "mapping": {
+        "COEXISTING_STRUCTURAL_INCIDENCE": "coexistence",
+        "SHARED_UPSTREAM_STRUCTURAL_CHANNEL": "share source/target/mediator/stratum",
+        "PARALLEL_STRUCTURAL_OCCURRENCE": "appear together in runtime context"
+      },
+      "conclusion": "The three governed relation kinds are exactly the three premises adopted V556 law declares can never constitute the relation. Any caller who authors material from PERMITTED_RELATION_KINDS produces positive V556 objects asserting forbidden-premise relations. This is the substantive ontology finding of this review.",
+      "severity": "high"
+    },
+    {
+      "id": "INT-4",
+      "attack": "is relation coexistence treated as causal effect or actor state?",
+      "result": "NO",
+      "evidence": "no causal operator, no actor field, no person-state role, no OBJECTIVE_ACTOR_INDEX; binding carries NO_ACTOR_INDEX and person_state_semantics=FORBIDDEN; M3's jurisdiction is PRE_V3_OBJECTIVE_WORLD and its object carries person_state_absent=True (court test 4 assert)."
+    },
+    {
+      "id": "INT-5",
+      "attack": "is the payload tied to the governed participant routes?",
+      "result": "NO",
+      "evidence": "probe P15: an interaction payload whose two relation descriptors reference four endpoint refs that resolve to no bound route still evaluates M3DecisionState.SUPPORTED. left_endpoint_ref / right_endpoint_ref are free exact_refs; M3 never cross-checks them against the participant route identities. The rule's min-cardinality-2 participants and the payload's min-items-2 relations are independent facts.",
+      "severity": "medium"
+    },
+    {
+      "id": "INT-6",
+      "attack": "declared cardinality vs realized cardinality",
+      "result": "FALSE_METADATA (same defect class as TOP-4)",
+      "evidence": "ORDERED with a 2-role pattern while declaring maximum UNBOUNDED; n=2 is the only realizable participant cardinality"
+    }
+  ],
+  "vocabulary_provenance": {
+    "method": "git grep -l <token> at H-B d691f9ba, H-E 15e28d61, control 06f306d8 and adjudication ff4f0695",
+    "tokens_and_hits": {
+      "COEXISTING_STRUCTURAL_INCIDENCE": [],
+      "SHARED_UPSTREAM_STRUCTURAL_CHANNEL": [],
+      "PARALLEL_STRUCTURAL_OCCURRENCE": [],
+      "COEXISTING_RELATION_LEFT": [],
+      "coexisting_relations": []
+    },
+    "conclusion": "The array shape is H-B-authorized; the three relation-kind enum values and the participant role labels are minted by this tranche and appear in no adopted artifact."
+  },
+  "commission_property_C_verdict": "PARTIAL: >=2 coexisting relations is H-B-authorized in shape and is clean of scalar coupling, winner, dominance and aggregate strength, and coexistence is not treated as actor state. But the only governed relation-kind vocabulary consists of the three premises adopted V556 law forbids from constituting an interaction relation, and the payload is not bound to the governed participants."
+}

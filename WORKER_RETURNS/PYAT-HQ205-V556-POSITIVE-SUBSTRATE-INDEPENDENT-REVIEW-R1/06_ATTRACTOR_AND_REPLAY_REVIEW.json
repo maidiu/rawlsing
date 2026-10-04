@@ -1,0 +1,60 @@
+{
+  "schema": "PYAT_HQ205_V556_ATTRACTOR_AND_REPLAY_REVIEW@1.0.0",
+  "candidate_sha": "87268ffaa60ebd9119aa46dc3f664e12d632b4d5",
+  "part_G_attractor_restraint": {
+    "requirement": "verify V556_ATTRACTOR_PREREQUISITE remains supported but unfilled and no hidden default/synthetic path populates it",
+    "verdict": "HOLDS_FOR_THE_SHIPPED_REGISTRY__NO_DEFAULT_OR_SYNTHETIC_PATH__GENERIC_AUTHORING_SURFACE_IS_OPEN_BY_EXPLICIT_REQUEST",
+    "supported": true,
+    "supported_evidence": "V556_SEMANTIC_FAMILIES (m3:33-37) includes it; SUPPORTED_FAMILIES (candidate line 48) is derived from it; court test 16 asserts membership",
+    "unfilled_in_shipped_registry": true,
+    "probe_P18": "source_free_canary_registry().snapshot()['unfilled_families'] = ['V556_ATTRACTOR_PREREQUISITE']",
+    "probe_P8b": "reg.rule_for('V556_ATTRACTOR_PREREQUISITE') = None",
+    "default_or_synthetic_path": "NONE FOUND",
+    "default_path_evidence": "source_free_canary_registry (617-625) builds exactly [topology_canary_rule(), interaction_relation_canary_rule()]; no module-level registry instance is created; no fallback, default or auto-population exists anywhere in the module",
+    "explicit_open_path": {
+      "probe_P8a": "author_governed_rule(authority_id='A', ..., semantic_family='V556_ATTRACTOR_PREREQUISITE', ...) was ACCEPTED and registered by V556RuleMaterialRegistry.build",
+      "classification": "EXPLICIT_CALLER_ACTION__NOT_A_DEFAULT__NOT_A_FABRICATION_PERFORMED_BY_THIS_TRANCHE",
+      "note": "the module docstring line 19 says 'no positive V556_ATTRACTOR_PREREQUISITE rule', which is true of the shipped registry; the generic constructor is not family-restricted beyond the frozen set"
+    },
+    "court_defect": {
+      "test": "test_attractor_family_stays_supported_but_unfilled, court line 416",
+      "assertion": "assert reg.rule_for('V556_ATTRACTOR_PREREQUISATE') is None",
+      "defect": "the family name is misspelled (PREREQUISATE instead of PREREQUISITE); the lookup is vacuously None and proves nothing",
+      "materiality": "low, because the preceding line 415 asserts 'V556_ATTRACTOR_PREREQUISITE' in reg.unfilled_families, which does prove the family is unfilled",
+      "severity": "low"
+    },
+    "interaction_with_topology_ceiling": {
+      "finding": "under the V556 architecture of record (TD_R03_V556/RESULT.md), 'topology' and 'attractor prerequisite' are two facets of the same F2 family (STRUCTURAL_ATTRACTOR_PREREQUISITE_TOPOLOGY, sections 2 and 8), whose first tranche 'may also be valid-empty' because no governed rule authority was found. The candidate leaves V556_ATTRACTOR_PREREQUISITE unfilled but populates V556_TOPOLOGY with a self-authored shared-channel dyad. Literal compliance with property G is therefore achieved while the sibling facet of the same no-authority family is populated.",
+      "severity": "medium",
+      "counterweight": "H-B d691f9ba expressly recommends authoring a positive V556_TOPOLOGY object (07_FINAL_DISPOSITION.json recommended_next_actions[0]) and HQ204 adopted H-B's residual framing; H-B does not cite TD_R03"
+    }
+  },
+  "part_H_replay": {
+    "requirement": "re-run the new focused 17-test court, the existing V556 29, the V555 upstream 28, combined twice",
+    "environment": {
+      "interpreter": "CPython 3.12.14",
+      "pytest": "9.1.1",
+      "worktree": "detached worktree at 87268ffaa60ebd9119aa46dc3f664e12d632b4d5",
+      "note": "the candidate reported CPython 3.11.3 / pytest with PYTHONHASHSEED=0; this reviewer used 3.12.14 without PYTHONHASHSEED and obtained identical counts, which is additional evidence that determinism does not depend on hash seed for these suites"
+    },
+    "results": [
+      {"suite": "rawlsing_next/tests/test_pre553_v556_positive_substrate_court.py", "observed": "17 passed", "candidate_reported": "17 passed", "match": true},
+      {"suite": "rawlsing_next/tests/test_m3_v556_higher_order_structural.py", "observed": "29 passed", "candidate_reported": "29 passed", "match": true},
+      {"suite": "rawlsing_next/tests/test_m2_v555_atomic_route.py", "observed": "28 passed", "candidate_reported": "28 passed", "match": true},
+      {"suite": "combined, run 1", "observed": "74 passed", "candidate_reported": "74 passed", "match": true},
+      {"suite": "combined, run 2", "observed": "74 passed", "candidate_reported": "74 passed", "match": true}
+    ],
+    "arithmetic_check": "17 + 29 + 28 = 74",
+    "replay_stability_probe": {
+      "court_test_15": "test_replay_and_determinants_are_stable_for_exact_governed_inputs evaluates the same governed request twice per family and asserts x == y, equal replay_key_hash, and object_id prefix urn:rawlsing:v556:higher-order:sha256: -- a genuine behavioural replay proof",
+      "reviewer_note": "no divergence observed across the two combined runs"
+    },
+    "determinism_of_material": {
+      "finding": "material is a frozen dataclass holding LIVE dicts; MappingProxyType is imported (line 28) and never used",
+      "probe_P16a_P16c": "after authoring, a deep mutation of the returned schema registered successfully and was only caught by M3 at evaluation: M3DecisionState.INTEGRITY_FAILURE, while the registry still reported state='GOVERNED_RULES_PRESENT' (P16d)",
+      "classification": "FAILS_CLOSED_AT_SEAM__IMMUTABILITY_NOT_DELIVERED",
+      "severity": "low"
+    }
+  },
+  "part_G_H_verdict": "ATTRACTOR_PREREQUISITE is genuinely supported and unfilled in the shipped registry with no default or synthetic population path; the only population route is an explicit caller authoring a rule, which this tranche did not do. Court counts reproduce exactly and replay is stable. The court's attractor assertion contains a spelling error that makes one line vacuous, and the material is not actually frozen despite the unused MappingProxyType import."
+}

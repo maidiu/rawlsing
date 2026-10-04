@@ -1,0 +1,81 @@
+{
+  "schema": "PYAT_HQ205_V556_FINAL_DISPOSITION@1.0.0",
+  "lane": "PYAT-HQ205-V556-POSITIVE-SUBSTRATE-INDEPENDENT-REVIEW-R1",
+  "role": "independent hostile source-free reviewer",
+  "branch": "agent/reviewer-pyat-hq205-v556-r1",
+  "startup_sha": "560f2394df3a65fed4dc115f64348b64415f2174",
+  "commission_base": "0e8d5bcd98e5aba63cd7312f778dedbfe8b6b646",
+  "candidate_sha": "87268ffaa60ebd9119aa46dc3f664e12d632b4d5",
+  "authority_bases": {
+    "H_B": "d691f9bad35232ccff4692ee811a8f0a5514835c",
+    "H_E": "15e28d61ec929891559884609b59ede30ac2ee64",
+    "HQ204_adjudication": "ff4f06954824a3a5699bc5c1c9bd68cb3c5b4146",
+    "HQ205_adjudication": "0e8d5bcd98e5aba63cd7312f778dedbfe8b6b646",
+    "adopted_seam": "rawlsing_next/m3_v556_higher_order_structural.py @ 9a4b26b214686364a43d108dabf0d57dac0ed3b2 (unchanged by the candidate)",
+    "V556_architecture_of_record": "data/ddm_build_copy/vozhd_dva/20260817_downstream_completion/schematics/recalibration/TD_R03_V556/RESULT.md @ 8af3016963e24bd5d439b78948592c93c30167b0"
+  },
+  "disposition": "V556_SUBSTRATE_PARTIAL__ONTOLOGY_SMUGGLING_REPAIR_REQUIRED",
+  "terminal": "HQ205_V556_POSITIVE_SUBSTRATE_REVIEW_RETURNED__HQ_ADJUDICATION_REQUIRED",
+  "disposition_rationale": "The positive core is sound and reproduces exactly: two governed source-free canary rules commit to exact M3 result-contract bindings over closed objective-world schemas, both evaluate SUPPORTED through the UNMODIFIED adopted M3 seam, replay is stable, and every hostile construction fails closed somewhere. The frozen semantic-FAMILY ceiling holds at author_governed_rule and at M3. But the commission's property E fails and property B fails, and the substrate's exclusions of scalars, strong nouns and actor semantics are properties of the two canary INSTANCES rather than of the MACHINERY: the generic constructors author, register and positively evaluate material carrying person-state schema roles, actor-desire participant labels, DOMINATION/HEGEMONY/CAPITAL relation kinds, numeric scalar leaves, and an unsatisfiable OBJECTIVE_ACTOR_INDEXED mode. The authored interaction relation-kind vocabulary is exactly the set of premises that adopted V556 architecture (TD_R03 section 5 / gate G14) forbids from constituting an interaction relation. These are bounded, repairable defects on the authoring/ontology surface, not a failure of the adopted seam.",
+  "allowed_disposition_not_selected": {
+    "ACCEPT_V556_POSITIVE_SUBSTRATE__TOPOLOGY_AND_INTERACTION_ONLY": "rejected: property E and property B fail, and the interaction relation-kind vocabulary contradicts the non-inference law of the V556 architecture of record",
+    "V556_SUBSTRATE_PARTIAL__TRANCHE_CEILING_REPAIR_REQUIRED": "rejected as the primary label: the one-rule-per-family restriction is lawful and registry-local; the surviving ceiling findings (unadopted role subset, dead OBJECTIVE_ACTOR_INDEXED parameter, unenforced registry family check) are secondary documentation/robustness repairs",
+    "V556_SUBSTRATE_QUALIFICATION_FAILURE": "rejected as too strong: the adopted seam fails closed on every hostile construction; no unauthorised material can produce a positive object at evaluation, and no implementation file was changed",
+    "MATERIAL_AUTHORITY_CONFLICT": "rejected: the tension between H-B's recommended coexistence-array shape and TD_R03's non-inference law is resolvable within H-B's own shape by choosing governed relation kinds that are not forbidden premises; no blocking authority conflict"
+  },
+  "findings": [
+    {"id": "F1", "severity": "critical", "property": "E", "summary": "author_result_contract_binding, author_governed_rule and V556RuleMaterialRegistry.build perform no schema/contract validation, so an open schema with a person-state role is registrable as GOVERNED_RULES_PRESENT; refusal happens only at M3 evaluation (INTEGRITY_FAILURE). Probes P1a/P1b/P13."},
+    {"id": "F2", "severity": "critical", "property": "E", "summary": "participant role labels, enum values and primitive types are unconstrained: ACTOR_DESIRE/ACTOR_BELIEF role labels and a DOMINATION relation kind both produce SUPPORTED positive V556 objects; a numeric 'pressure_magnitude' leaf is authorable. Probes P2, P19, P9."},
+    {"id": "F3", "severity": "high", "property": "C", "summary": "PERMITTED_RELATION_KINDS maps 1:1 onto the coexistence / shared-channel / parallel-occurrence premises that TD_R03 section 5 and gate G14 declare can never constitute an F1 relation. The only governed interaction vocabulary inverts the adopted non-inference law."},
+    {"id": "F4", "severity": "high", "property": "B", "summary": "the topology canary mandates one shared-channel dyad (missing shared_structural_channel_ref -> RESULT_SCHEMA_NONCONFORMING), admits only n=2 while declaring maximum UNBOUNDED (3 participants -> INVALID_PARTICIPANT_SET), and does not materialize TD_R03's F2 grain."},
+    {"id": "F5", "severity": "medium", "property": "A", "summary": "V556RuleMaterialRegistry.build does not enforce the frozen family set; a hand-built rule with semantic_family='V556_INVENTED_FAMILY' is published in populated_families. Probe P4."},
+    {"id": "F6", "severity": "medium", "property": "D", "summary": "ADMITTED_OBJECTIVE_ROLES silently drops OBJECTIVE_ACTOR_INDEX/OBJECTIVE_POSITION/OBJECTIVE_OPPORTUNITY that adopted M3 supports and its 29-test court proves; OBJECTIVE_ACTOR_INDEXED is accepted but unsatisfiable. Probes P3, P10b."},
+    {"id": "F7", "severity": "medium", "property": "D/H", "summary": "one-rule-per-family is lawful and registry-local (P5/P14) but undocumented in material and its court proof exercises the duplicate-KEY branch instead of the family branch (P5b)."},
+    {"id": "F8", "severity": "medium", "property": "F", "summary": "VALID_EMPTY_NO_GOVERNED_RULE is adopted terminology and the empty registry manufactures nothing, but the adopted seam reports UNKNOWN_AUTHORITY for the no-governed-rule case, collapsing TD_R03 section 12's required distinction. Pre-existing seam behaviour."},
+    {"id": "F9", "severity": "low", "property": "H", "summary": "material is not frozen: MappingProxyType is imported and unused; deep mutation after authoring registers stale-hash material (P16)."},
+    {"id": "F10", "severity": "low", "property": "H", "summary": "multiplicity_policy has no frozen vocabulary (P11)."},
+    {"id": "F11", "severity": "medium", "property": "H", "summary": "the 13-property denominator is self-authored; six of seventeen tests assert constants of self-authored material; test 4 line 205 is a tautology; test 16 line 416 is vacuous via a misspelled family name; tests 12 and 14 prove the canaries, not the machinery."}
+  ],
+  "properties_verdict": {
+    "A_semantic_family_ceiling": "HOLDS_AT_REAL_GATES__NOT_AT_REGISTRY",
+    "B_topology_canary": "FAILS",
+    "C_interaction_canary": "PARTIAL__NO_SCALAR_OR_DOMINANCE__PREMISE_INVERSION",
+    "D_one_rule_per_family": "LAWFUL_TRANCHE_LOCAL__UNDOCUMENTED__UNPROVEN_BY_COURT",
+    "E_authoring_refusal": "FAILS",
+    "F_valid_empty": "HOLDS_AT_SUBSTRATE__SEAM_DISTINCTION_LOST",
+    "G_attractor_restraint": "HOLDS",
+    "H_replay_and_court_quality": "COUNTS_REPRODUCE__SEVERAL_PROPERTIES_ASSERTED_NOT_PROVEN"
+  },
+  "required_repairs": [
+    {"id": "R1", "target": "E/F1", "action": "validate schema and recompute schema_ref inside author_result_contract_binding; re-validate the embedded contract in author_governed_rule and V556RuleMaterialRegistry.build so unlawful material cannot reach GOVERNED_RULES_PRESENT"},
+    {"id": "R2", "target": "E/F2", "action": "constrain participant_roles at authoring against a declared vocabulary, or remove the actor-semantic promise from the module docstring and the owner matrix"},
+    {"id": "R3", "target": "C/F3", "action": "replace the relation-kind vocabulary so no governed kind is a TD_R03 section 5 / G14 forbidden premise; if H-B's coexistence array is retained, its elements must carry governed relation kinds plus cardinality/direction/symmetry"},
+    {"id": "R4", "target": "B/F4", "action": "make the topology canary's declared maximum truthful or generalise it; disclose any single illustrative topology as such; reconcile with TD_R03 section 8's F2 grain"},
+    {"id": "R5", "target": "A/D/F5/F6", "action": "enforce the frozen family set in the registry; document the ADMITTED_OBJECTIVE_ROLES narrowing as tranche-local; support or remove OBJECTIVE_ACTOR_INDEXED; record the one-rule-per-family restriction as named data"},
+    {"id": "R6", "target": "H/F7/F11", "action": "repair the court: exercise the family branch, fix the PREREQUISITE spelling, remove the tautology at test 4 line 205, and add machinery-level refusal tests for open schemas, person-state roles, actor-semantic role labels, strong-noun enums, numeric leaves and OBJECTIVE_ACTOR_INDEXED"},
+    {"id": "R7", "target": "F9/F10", "action": "use MappingProxyType or immutable copies (or drop the import); freeze multiplicity_policy to a named enum"}
+  ],
+  "what_this_review_does_not_claim": [
+    "No real-world structural claim of any kind is made or refuted; the canaries are machinery material.",
+    "No claim that the adopted M3 seam is defective; it fails closed on every hostile construction attempted and was not modified.",
+    "No claim that authoring a generic closed-schema builder must itself police enum vocabulary; the finding is that the substrate's DOCUMENTED and COURT-CLAIMED exclusions are instance-local, not machinery-level."
+  ],
+  "self_adopted": false,
+  "production_mutated": 0,
+  "raw_source_access": 0,
+  "survey_access": 0,
+  "actor_person_implementation": 0,
+  "attractor_population_performed": 0,
+  "artifacts": [
+    "00_REVIEW.md",
+    "01_SEMANTIC_CEILING_AUDIT.json",
+    "02_TOPOLOGY_CANARY_ATTACK.json",
+    "03_INTERACTION_CANARY_ATTACK.json",
+    "04_RULE_CARDINALITY_AND_VALID_EMPTY.json",
+    "05_AUTHORING_REFUSAL_AUDIT.json",
+    "06_ATTRACTOR_AND_REPLAY_REVIEW.json",
+    "07_COURT_RECEIPT.json",
+    "08_FINAL_DISPOSITION.json"
+  ],
+  "next_step_for_HQ": "Adjudicate the disposition. If repair is authorized, R1-R4 are the load-bearing repairs (authoring-time refusal, actor-label/ontology gating, relation-kind vocabulary against TD_R03 G14, truthful/generic topology canary); R5-R7 are bounded robustness and court-quality repairs. No attractor population is authorized by this review."
+}

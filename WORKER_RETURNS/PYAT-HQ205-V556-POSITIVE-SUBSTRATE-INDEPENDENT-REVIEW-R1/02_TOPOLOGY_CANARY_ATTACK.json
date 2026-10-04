@@ -1,0 +1,79 @@
+{
+  "schema": "PYAT_HQ205_V556_TOPOLOGY_CANARY_ATTACK@1.0.0",
+  "candidate_sha": "87268ffaa60ebd9119aa46dc3f664e12d632b4d5",
+  "attacked_surface": "rawlsing_next/pre553_v556_positive_substrate.py _topology_schema (521-535), topology_canary_rule (559-582)",
+  "verdict": "FAILS_GENERIC_MACHINERY_CANARY_TEST__PRIVILEGES_ONE_SHARED_CHANNEL_DYAD__DECLARES_FALSE_UNBOUNDED_MAXIMUM",
+  "authored_material": {
+    "schema_id": "HQ204_CANARY_V556_TOPOLOGY_RESULT",
+    "semantic_class": "OBJECTIVE_STRUCTURAL_RESULT",
+    "root_fields": {
+      "endpoint_a_ref": "exact_ref / OBJECTIVE_REFERENCE / kinds UNBOUNDED",
+      "endpoint_b_ref": "exact_ref / OBJECTIVE_REFERENCE / kinds UNBOUNDED",
+      "shared_structural_channel_ref": "exact_ref / OBJECTIVE_REFERENCE / kinds UNBOUNDED",
+      "incidence_kind": "string / OBJECTIVE_STRUCTURAL_RELATION / enum PERMITTED_INCIDENCE_KINDS"
+    },
+    "all_fields_required": true,
+    "additional_fields": false,
+    "participant_roles": ["STRUCTURAL_ENDPOINT", "SHARED_INCIDENCE_CHANNEL"],
+    "participant_order_policy": "ORDERED",
+    "minimum_cardinality": 2,
+    "maximum_cardinality_or_unbounded_marker": "UNBOUNDED",
+    "same_route_reuse_policy": "FORBIDDEN"
+  },
+  "attacks": [
+    {
+      "id": "TOP-1",
+      "attack": "does it smuggle pressure / field / hierarchy / actor semantics?",
+      "result": "NO",
+      "evidence": "schema roles are OBJECTIVE_REFERENCE and OBJECTIVE_STRUCTURAL_RELATION only; no number/integer leaf (court test 14 walk; probe P9 shows the MACHINERY would allow one, but the canary does not contain one); no person-state role; binding carries actor_indexing_mode=NO_ACTOR_INDEX and person_state_semantics=FORBIDDEN"
+    },
+    {
+      "id": "TOP-2",
+      "attack": "is the topology generic enough to be a machinery canary?",
+      "result": "NO",
+      "evidence": "probe P6c: deleting shared_structural_channel_ref from an otherwise conforming payload yields M3DecisionState.RESULT_SCHEMA_NONCONFORMING. A topology that has no single shared channel (chain, partition, overlapping incidences, multi-mediator) is not expressible through this rule at all.",
+      "severity": "high"
+    },
+    {
+      "id": "TOP-3",
+      "attack": "endpoint / shared-channel / incidence choice as accidental ontology expansion",
+      "result": "PRIVILEGED_FORM",
+      "evidence": "endpoint_a_ref + endpoint_b_ref + shared_structural_channel_ref + incidence_kind is one specific motif: a dyad joined by one shared upstream channel with a present/absent incidence marker. Neither PERMITTED_INCIDENCE_KINDS ('STRUCTURAL_INCIDENCE_PRESENT'/'STRUCTURAL_INCIDENCE_ABSENT') nor the role labels STRUCTURAL_ENDPOINT / SHARED_INCIDENCE_CHANNEL occur in any adopted artifact (see vocabulary_provenance)",
+      "authority_note": "H-B d691f9ba does prescribe the SHAPE ('endpoint, route-identity and incidence fields', WORKER_RETURNS/PYAT-HQ203-HB-STRUCTURAL-PRESSURE-COVERAGE-R1/07_FINAL_DISPOSITION.json recommended_next_actions[0]). The shape is authority-faithful; the privilege is therefore inherited from H-B's shape, but the canary does not disclose that it is one illustrative form rather than a generic topology instance"
+    },
+    {
+      "id": "TOP-4",
+      "attack": "declared cardinality vs realized cardinality",
+      "result": "FALSE_METADATA",
+      "evidence": "probe P6a/P6b: rule declares maximum_cardinality_or_unbounded_marker='UNBOUNDED' (line 579) with participant_order_policy='ORDERED' and a 2-role pattern (577). M3 (_participants, m3:441-449) requires len(role_pattern)==n and the exact role tuple, so n=2 is the only realizable cardinality; a 3-participant request returns M3DecisionState.INVALID_PARTICIPANT_SET.",
+      "severity": "high",
+      "adopted_law_note": "TD_R03_V556/RESULT.md section 6: 'Cardinality is semantic. A genuinely n-ary relation must remain n-ary unless authority separately licenses dyadic decomposition'; section 21 G13 requires every cardinality/role/order/direction to be rule-authorized. The authored rule has no participant_cardinality_kind (DYADIC/NARY), no direction/symmetry declaration, and an untruthful maximum."
+    },
+    {
+      "id": "TOP-5",
+      "attack": "does the canary materialize the adopted V556 topology grain?",
+      "result": "NO",
+      "evidence": "adopted F2 (TD_R03_V556/RESULT.md section 8) is 'STRUCTURAL_ATTRACTOR_PREREQUISITE_TOPOLOGY': one governed motif over 1..n exact role-qualified V555 route refs plus 0..n V556 F1 refs, with a governed topology_kind. The canary references no V555 route ref and no F1 ref, has no topology_kind, and its payload is not tied to the bound participant routes (probe P15 on the sibling interaction rule shows M3 accepts payload refs that resolve to no bound route; the same holds for topology).",
+      "severity": "high",
+      "counterweight": "H-B's adopted-form matrix names the operative V556 form as the M3 module with the three families, not TD-R03; TD-R03 is architecture of record at the candidate SHA (blob 8af3016963e24bd5d439b78948592c93c30167b0, identical to control) but is not cited by H-B or by the HQ204/HQ205 adjudications"
+    },
+    {
+      "id": "TOP-6",
+      "attack": "is the payload constrained to the governed participants?",
+      "result": "NO",
+      "evidence": "M3 validates semantic_payload against the closed schema only; it never checks that endpoint_a_ref / endpoint_b_ref / shared_structural_channel_ref correspond to the participant route identities. A SUPPORTED topology object can carry arbitrary endpoint refs unrelated to the two bound V555 routes."
+    }
+  ],
+  "vocabulary_provenance": {
+    "method": "git grep -l <token> at H-B d691f9ba, H-E 15e28d61, control 06f306d8 and adjudication ff4f0695",
+    "tokens_and_hits": {
+      "STRUCTURAL_ENDPOINT": [],
+      "SHARED_INCIDENCE_CHANNEL": [],
+      "STRUCTURAL_INCIDENCE_PRESENT": [],
+      "shared_structural_channel_ref": [],
+      "endpoint_a_ref": []
+    },
+    "conclusion": "None of the topology canary's role labels, incidence enum values or field names occurs in any adopted artifact reachable from the authority bases or from control. The only occurrences repo-wide are the candidate's own module, its court and its return."
+  },
+  "commission_property_B_verdict": "FAILS: the topology rule/schema uses only admitted objective roles and carries no pressure/field/hierarchy/actor semantics (that part PASSES), but it is not generic machinery: it mandates one shared-channel dyad, mislabels its maximum as UNBOUNDED, and does not materialize the adopted F2 topology grain."
+}
