@@ -1,0 +1,56 @@
+{
+  "schema": "HQ196_PHASE0_CENSUS@1.0.0",
+  "lane": "PYAT-HQ196-R9-BROKER-SELECTED-IMPLEMENTATION-R1",
+  "CATEGORY": "C1_historical_expected_counts read from the exact freeze",
+  "method": "Every source-file operation was enumerated by grep over rawlsing_next/ at the commissioned startup SHA 55f75664, BEFORE any edit. The commission expected the repository-wide pyreadstat census to be confined to pre553_physical_decoder.py and directed that this be VERIFIED rather than assumed. It is not confined.",
+
+  "expectation_tested": "the repository-wide pyreadstat census is confined to pre553_physical_decoder.py",
+  "expectation_result": "REFUTED",
+  "refutation_detail": "Production pyreadstat reader invocations exist in a second module: rawlsing_next/runtime/ee_p2x/05_WVS7_PROJECTION_MATERIALIZER.py lines 986 and 1015, both passing a raw path string via str(path). Line 1015 already uses usecols=[\"B_COUNTRY\"], i.e. a selected read exists there outside the decoder. Neither is inside the C4 governed decoder closure as far as this lane determined, and both are OUTSIDE this commission's write terrain, so they were NOT brokered and NOT modified.",
+
+  "pre_change_census": {
+    "file": "rawlsing_next/pre553_physical_decoder.py",
+    "sites": [
+      { "line": 481, "code": "if not source.is_file()", "operation": "existence/access check", "account_created": "existence check (a stat, not an open)", "owner": "application" },
+      { "line": 211, "code": "with path.open(\"rb\") as handle:", "operation": "whole-file SHA-256 pass", "account_created": "hash pass AND a separate physical path open", "owner": "application", "note": "opened the path independently of every other access" },
+      { "line": 407, "code": "with source.open(\"rb\") as handle: prefix = handle.read(prefix_size)", "operation": "raw header-prefix read (176 SAV / 512 DTA)", "account_created": "header-prefix read AND a THIRD separate physical path open", "owner": "application", "note": "opened the path independently again" },
+      { "line": 496, "code": "reader(str(source), metadataonly=True, ...)", "operation": "metadata read", "account_created": "metadata read + reader invocation + an OS path open INSIDE the compiled extension", "owner": "COMPILED READER — not application-owned", "note": "the account this lane exists to close" },
+      { "line": 499, "code": "reader(str(source), apply_value_formats=False, ...)", "operation": "compatibility/full read, taken only when encoding is not None", "account_created": "full read + reader invocation + another OS path open inside the compiled extension", "owner": "COMPILED READER" },
+      { "line": 155, "code": "pyreadstat.read_file_in_chunks(reader, self._source_path, chunksize=...)", "operation": "batch/chunk read", "account_created": "chunk reads + reader invocations + OS path opens inside the compiled extension", "owner": "COMPILED READER", "note": "raw path string" }
+    ],
+    "total_application_owned_physical_opens_per_scope": 3,
+    "total_compiled_reader_path_opens_per_scope": "1 metadata, plus 1 more if the compatibility full read is taken, plus 1 per chunk iteration",
+    "selected_read_sites": "NONE — usecols appeared zero times in the decoder",
+    "verdict": "The literal path-open account was BOTH incomplete (three separate application opens for one governed scope) and partly unobservable (the compiled reader's opens were outside application control)."
+  },
+
+  "post_change_census": {
+    "single_physical_open_site": "rawlsing_next/pre553_source_access_broker.py:320 — the only open(self.path, \"rb\") in the decode path",
+    "application_owned_physical_opens_per_scope": 1,
+    "compiled_reader_path_opens_per_scope": 0,
+    "raw_path_string_passed_to_reader": 0,
+    "verified_by": "court C7 captures the first positional argument of every reader invocation and asserts none is str/bytes/PathLike",
+    "residual_fallbacks_retained_but_unreachable_from_the_decode_path": [
+      { "line": 268, "symbol": "_sha", "note": "the legacy path-opening hash helper; _decode now calls _governed_source_sha instead. No caller remains in the decode path." },
+      { "line": 476, "symbol": "_raw_layout_declarations(prefix=None)", "note": "direct-open fallback used only when a caller supplies no prefix; the broker always supplies one." }
+    ],
+    "ungoverned_chunk_route": "iter_batches now RAISES RawSourcePathEscape when no broker is attached, rather than silently reverting to a raw path. Verified zero regressions, so no caller depended on the removed fallback."
+  },
+
+  "out_of_terrain_sites_left_unmodified": [
+    { "file": "rawlsing_next/runtime/ee_p2x/05_WVS7_PROJECTION_MATERIALIZER.py", "lines": [986, 1015], "operation": "pyreadstat.read_sav(str(path), ...)", "why_not_brokered": "outside this commission's allowed write terrain; not the C4 governed decoder closure", "risk": "these remain raw-path reads and are NOT covered by the broker's accounting" }
+  ],
+
+  "measured_seam_facts_on_the_bound_environment": {
+    "environment": "CPython 3.11.3 / pyreadstat 1.3.6 / pandas 2.3.3 / pyarrow 25.0.1 / numpy 2.4.6 / macOS 13.7.8, R7 qualified venv, interpreter sha256 11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+    "method": "each fact measured by direct probe before implementation, not assumed",
+    "facts": [
+      { "id": "F1", "fact": "read_sav/read_dta accept a file-like OBJECT; the first parameter is named filename_path" },
+      { "id": "F2", "fact": "DTA requires a real file descriptor because ReadStat maps its input: a pure BytesIO is accepted for SAV but REJECTED for DTA with 'This version of the file format is not supported'. The view must therefore expose fileno() over the application's own open." },
+      { "id": "F3", "fact": "Reusing one broker object across two row_offset parses FAILS for DTA (ReadStat requires position zero). Reusing one VIEW OBJECT fails identically. Calling view() again — which rewinds the same open — succeeds. This is why the governed loop issues a fresh view per chunk over ONE physical open." },
+      { "id": "F4", "fact": "read_file_in_chunks works over a file-like for SAV but NOT for DTA, so the governed chunk route is an explicit row_offset/row_limit loop." },
+      { "id": "F5", "fact": "row_offset semantics over a file-like are IDENTICAL to the path baseline: row_offset=2, row_limit=2 returned rows [3.0, 4.0] on both, and the returned index resets to [0,1] in both." },
+      { "id": "F6", "fact": "usecols reduces the RESULT columns but does NOT reduce physical reads. Measured on a 12-column / 200-row SAV of 20,159 bytes on disk: a full read and usecols=[\"c00\"] issued an IDENTICAL 278 read calls and 20,659 bytes. The selected route is a genuine LOGICAL selected-read account; the claim that unselected columns were never physically read is NOT enforceable by this library and is not made." }
+    ]
+  }
+}

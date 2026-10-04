@@ -1,0 +1,1976 @@
+{
+ "schema": "HQ196_DECLARED_GRAIN_COMPARISON@1.0.0",
+ "CATEGORY": "C2_OBSERVED_SYNTHETIC",
+ "category_law": "Equivalence is demonstrated ONLY at this declared synthetic grain. It is NOT survey-semantic equivalence, qualifies no real source, and must not be cited as if it did.",
+ "prior_court_status": {
+  "named_by_commission": "prior 55-carrier source-free court",
+  "runner_located": false,
+  "searched": [
+   "repository at commissioned freeze 55f75664",
+   "R7 qualification environment",
+   "reachable git history (--diff-filter=A over all refs)"
+  ],
+  "consequence": "This corpus is constructed here. It is NOT the prior corpus, is NOT a re-run of the prior court, and inherits NO pass from it. Matching the count of 55 makes the denominator comparable, not the corpus identical."
+ },
+ "declared_grain": {
+  "carriers": 55,
+  "formats": [
+   "sav",
+   "dta"
+  ],
+  "columns_per_carrier": [
+   1,
+   2,
+   3,
+   5,
+   8
+  ],
+  "rows_per_carrier": [
+   1,
+   2,
+   3,
+   7,
+   20
+  ],
+  "value_kinds": [
+   "numeric",
+   "string",
+   "mixed",
+   "missing",
+   "labels"
+  ],
+  "comparison": "path-string read (pre-candidate mechanism) versus brokered file-object read, same process, same carrier, same accepted environment",
+  "value_normalisation": "both sides pass through the decoder's canonical _physical_value; raw pyreadstat NaN and decoder None are the same physical missingness"
+ },
+ "comparison_A_full_route": {
+  "carriers": 55,
+  "equivalent": 55,
+  "all_equivalent": true
+ },
+ "comparison_B_selected_route": {
+  "carriers": 55,
+  "equivalent": 55,
+  "all_equivalent": true
+ },
+ "path_open_account": {
+  "distinct_values_observed": [
+   1
+  ],
+  "every_carrier_one_open": true,
+  "note": "One application-owned physical open per carrier scope, on both routes."
+ },
+ "environment": {
+  "python": "3.11.3",
+  "pyreadstat": "1.3.6",
+  "interpreter_sha256": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+  "anchor": "C4C3-DARWIN-X86_64-ANCHOR/CPYTHON-3.11.3/PYREADSTAT-1.3.6/PYARROW-25.0.1/PANDAS-2.3.3/NUMPY-2.4.6/PYTEST-9.1.1",
+  "dependency_modified": false
+ },
+ "results": [
+  {
+   "index": 0,
+   "fmt": "sav",
+   "ncols": 1,
+   "nrows": 1,
+   "kind": "numeric",
+   "columns": [
+    "V00"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 1,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 1,
+   "fmt": "sav",
+   "ncols": 1,
+   "nrows": 1,
+   "kind": "string",
+   "columns": [
+    "V00"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 1,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 2,
+   "fmt": "sav",
+   "ncols": 1,
+   "nrows": 1,
+   "kind": "mixed",
+   "columns": [
+    "V00"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 1,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 3,
+   "fmt": "sav",
+   "ncols": 1,
+   "nrows": 1,
+   "kind": "missing",
+   "columns": [
+    "V00"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 1,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 4,
+   "fmt": "sav",
+   "ncols": 1,
+   "nrows": 1,
+   "kind": "labels",
+   "columns": [
+    "V00"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 1,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 5,
+   "fmt": "sav",
+   "ncols": 1,
+   "nrows": 2,
+   "kind": "numeric",
+   "columns": [
+    "V00"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 2,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 6,
+   "fmt": "sav",
+   "ncols": 1,
+   "nrows": 2,
+   "kind": "string",
+   "columns": [
+    "V00"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 2,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 7,
+   "fmt": "sav",
+   "ncols": 1,
+   "nrows": 2,
+   "kind": "mixed",
+   "columns": [
+    "V00"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 2,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 8,
+   "fmt": "sav",
+   "ncols": 1,
+   "nrows": 2,
+   "kind": "missing",
+   "columns": [
+    "V00"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 2,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 9,
+   "fmt": "sav",
+   "ncols": 1,
+   "nrows": 2,
+   "kind": "labels",
+   "columns": [
+    "V00"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 2,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 10,
+   "fmt": "sav",
+   "ncols": 1,
+   "nrows": 3,
+   "kind": "numeric",
+   "columns": [
+    "V00"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 3,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 11,
+   "fmt": "sav",
+   "ncols": 1,
+   "nrows": 3,
+   "kind": "string",
+   "columns": [
+    "V00"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 3,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 12,
+   "fmt": "sav",
+   "ncols": 1,
+   "nrows": 3,
+   "kind": "mixed",
+   "columns": [
+    "V00"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 3,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 13,
+   "fmt": "sav",
+   "ncols": 1,
+   "nrows": 3,
+   "kind": "missing",
+   "columns": [
+    "V00"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 3,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 14,
+   "fmt": "sav",
+   "ncols": 1,
+   "nrows": 3,
+   "kind": "labels",
+   "columns": [
+    "V00"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 3,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 15,
+   "fmt": "sav",
+   "ncols": 1,
+   "nrows": 7,
+   "kind": "numeric",
+   "columns": [
+    "V00"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 7,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 16,
+   "fmt": "sav",
+   "ncols": 1,
+   "nrows": 7,
+   "kind": "string",
+   "columns": [
+    "V00"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 7,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 17,
+   "fmt": "sav",
+   "ncols": 1,
+   "nrows": 7,
+   "kind": "mixed",
+   "columns": [
+    "V00"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 7,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 18,
+   "fmt": "sav",
+   "ncols": 1,
+   "nrows": 7,
+   "kind": "missing",
+   "columns": [
+    "V00"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 7,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 19,
+   "fmt": "sav",
+   "ncols": 1,
+   "nrows": 7,
+   "kind": "labels",
+   "columns": [
+    "V00"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 7,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 20,
+   "fmt": "sav",
+   "ncols": 1,
+   "nrows": 20,
+   "kind": "numeric",
+   "columns": [
+    "V00"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 20,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 21,
+   "fmt": "sav",
+   "ncols": 1,
+   "nrows": 20,
+   "kind": "string",
+   "columns": [
+    "V00"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 20,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 22,
+   "fmt": "sav",
+   "ncols": 1,
+   "nrows": 20,
+   "kind": "mixed",
+   "columns": [
+    "V00"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 20,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 23,
+   "fmt": "sav",
+   "ncols": 1,
+   "nrows": 20,
+   "kind": "missing",
+   "columns": [
+    "V00"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 20,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 24,
+   "fmt": "sav",
+   "ncols": 1,
+   "nrows": 20,
+   "kind": "labels",
+   "columns": [
+    "V00"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 20,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 25,
+   "fmt": "sav",
+   "ncols": 2,
+   "nrows": 1,
+   "kind": "numeric",
+   "columns": [
+    "V00",
+    "V01"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 2,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 26,
+   "fmt": "sav",
+   "ncols": 2,
+   "nrows": 1,
+   "kind": "string",
+   "columns": [
+    "V00",
+    "V01"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 2,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 27,
+   "fmt": "sav",
+   "ncols": 2,
+   "nrows": 1,
+   "kind": "mixed",
+   "columns": [
+    "V00",
+    "V01"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 2,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 28,
+   "fmt": "sav",
+   "ncols": 2,
+   "nrows": 1,
+   "kind": "missing",
+   "columns": [
+    "V00",
+    "V01"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 2,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 29,
+   "fmt": "sav",
+   "ncols": 2,
+   "nrows": 1,
+   "kind": "labels",
+   "columns": [
+    "V00",
+    "V01"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 2,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 30,
+   "fmt": "sav",
+   "ncols": 2,
+   "nrows": 2,
+   "kind": "numeric",
+   "columns": [
+    "V00",
+    "V01"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 4,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 31,
+   "fmt": "sav",
+   "ncols": 2,
+   "nrows": 2,
+   "kind": "string",
+   "columns": [
+    "V00",
+    "V01"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 4,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 32,
+   "fmt": "sav",
+   "ncols": 2,
+   "nrows": 2,
+   "kind": "mixed",
+   "columns": [
+    "V00",
+    "V01"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 4,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 33,
+   "fmt": "sav",
+   "ncols": 2,
+   "nrows": 2,
+   "kind": "missing",
+   "columns": [
+    "V00",
+    "V01"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 4,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 34,
+   "fmt": "sav",
+   "ncols": 2,
+   "nrows": 2,
+   "kind": "labels",
+   "columns": [
+    "V00",
+    "V01"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 4,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 35,
+   "fmt": "sav",
+   "ncols": 2,
+   "nrows": 3,
+   "kind": "numeric",
+   "columns": [
+    "V00",
+    "V01"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 6,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 36,
+   "fmt": "sav",
+   "ncols": 2,
+   "nrows": 3,
+   "kind": "string",
+   "columns": [
+    "V00",
+    "V01"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 6,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 37,
+   "fmt": "sav",
+   "ncols": 2,
+   "nrows": 3,
+   "kind": "mixed",
+   "columns": [
+    "V00",
+    "V01"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 6,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 38,
+   "fmt": "sav",
+   "ncols": 2,
+   "nrows": 3,
+   "kind": "missing",
+   "columns": [
+    "V00",
+    "V01"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 6,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 39,
+   "fmt": "sav",
+   "ncols": 2,
+   "nrows": 3,
+   "kind": "labels",
+   "columns": [
+    "V00",
+    "V01"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 6,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 40,
+   "fmt": "sav",
+   "ncols": 2,
+   "nrows": 7,
+   "kind": "numeric",
+   "columns": [
+    "V00",
+    "V01"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 14,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 41,
+   "fmt": "sav",
+   "ncols": 2,
+   "nrows": 7,
+   "kind": "string",
+   "columns": [
+    "V00",
+    "V01"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 14,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 42,
+   "fmt": "sav",
+   "ncols": 2,
+   "nrows": 7,
+   "kind": "mixed",
+   "columns": [
+    "V00",
+    "V01"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 14,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 43,
+   "fmt": "sav",
+   "ncols": 2,
+   "nrows": 7,
+   "kind": "missing",
+   "columns": [
+    "V00",
+    "V01"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 14,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 44,
+   "fmt": "sav",
+   "ncols": 2,
+   "nrows": 7,
+   "kind": "labels",
+   "columns": [
+    "V00",
+    "V01"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 14,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 45,
+   "fmt": "sav",
+   "ncols": 2,
+   "nrows": 20,
+   "kind": "numeric",
+   "columns": [
+    "V00",
+    "V01"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 40,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 46,
+   "fmt": "sav",
+   "ncols": 2,
+   "nrows": 20,
+   "kind": "string",
+   "columns": [
+    "V00",
+    "V01"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 40,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 47,
+   "fmt": "sav",
+   "ncols": 2,
+   "nrows": 20,
+   "kind": "mixed",
+   "columns": [
+    "V00",
+    "V01"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 40,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 48,
+   "fmt": "sav",
+   "ncols": 2,
+   "nrows": 20,
+   "kind": "missing",
+   "columns": [
+    "V00",
+    "V01"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 40,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 49,
+   "fmt": "sav",
+   "ncols": 2,
+   "nrows": 20,
+   "kind": "labels",
+   "columns": [
+    "V00",
+    "V01"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 40,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 50,
+   "fmt": "sav",
+   "ncols": 3,
+   "nrows": 1,
+   "kind": "numeric",
+   "columns": [
+    "V00",
+    "V01",
+    "V02"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 3,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 51,
+   "fmt": "sav",
+   "ncols": 3,
+   "nrows": 1,
+   "kind": "string",
+   "columns": [
+    "V00",
+    "V01",
+    "V02"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 3,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 52,
+   "fmt": "sav",
+   "ncols": 3,
+   "nrows": 1,
+   "kind": "mixed",
+   "columns": [
+    "V00",
+    "V01",
+    "V02"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 3,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 53,
+   "fmt": "sav",
+   "ncols": 3,
+   "nrows": 1,
+   "kind": "missing",
+   "columns": [
+    "V00",
+    "V01",
+    "V02"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 3,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  },
+  {
+   "index": 54,
+   "fmt": "sav",
+   "ncols": 3,
+   "nrows": 1,
+   "kind": "labels",
+   "columns": [
+    "V00",
+    "V01",
+    "V02"
+   ],
+   "full_route": {
+    "equivalent": true,
+    "detail": "inventory and cell values identical",
+    "inventory_identical": true,
+    "cell_values_identical": true,
+    "cells_compared": 3,
+    "candidate_path_opens": 1,
+    "candidate_hash_passes": 1,
+    "candidate_header_prefix_reads": 1,
+    "candidate_chunk_reads": 0
+   },
+   "selected_route": {
+    "equivalent": true,
+    "detail": "identical",
+    "selected": [
+     "V00"
+    ],
+    "selected_reads": 1,
+    "full_reads": 0,
+    "path_opens": 1,
+    "bound_ordinals": [
+     1
+    ]
+   }
+  }
+ ]
+}

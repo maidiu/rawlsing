@@ -1,0 +1,88 @@
+{
+  "schema": "HQ196_FINAL_DISPOSITION@1.0.0",
+  "commission": "PYAT-HQ196-R9-BROKER-SELECTED-IMPLEMENTATION-R1",
+  "role": "RABOCHII / SOURCE-FREE IMPLEMENTER — SPACE BUNNY",
+  "branch": "agent/rabochii-pyat-hq196-r9-broker-selected-implementation-freeze-r1",
+  "commissioned_startup_sha": "55f75664949b4a92431b54351e7244ff1fa4a652",
+  "startup_verified_exactly": true,
+
+  "disposition": "BROKER_SELECTED_CANDIDATE_READY_FOR_HOSTILE_REVIEW",
+
+  "one_paragraph": "Both commissioned implementation seams are closed and demonstrated on synthetic carriers. Literal source-path access is now application-owned through pyreadstat's file-like bridge: one physical open per governed scope, down from three application opens plus unbounded unobservable compiled-reader opens, with zero raw path strings reaching the reader. The frozen selected-variable route for SRC02/SRC06/SRC14 is implemented on usecols with names and ordinals bound before any row-data read, yielding selected_reads=1 and full_reads=0 with missing or unexpected columns failing closed. The DTA chunk constraint is solved by a fresh position-zero view per chunk over the same single open, with the naive reuse failure proven still real so the reset is load-bearing. Zero regressions against a captured pristine baseline across 2872 collected tests, and 55/55 equivalence on both the full and selected routes at a declared grain.",
+
+  "why_this_disposition": [
+    {
+      "alternative": "BROKER_CANDIDATE_READY__SELECTED_ROUTE_BLOCKED",
+      "why_not": "The selected route is not blocked. It is implemented, bound, enforced and demonstrated: 55/55 equivalence on the selected route, selected_reads=1 with full_reads=0 on every carrier, bound ordinals recorded, and negative cases failing closed. The one thing the library cannot do — physically suppress reads of unselected columns — is disclosed as a limitation rather than treated as a blocker, because the commission's requirement was explicitly qualified 'where the underlying reader supports enforcing it'."
+    },
+    {
+      "alternative": "SELECTED_ROUTE_READY__BROKER_ACCOUNTING_BLOCKED",
+      "why_not": "The broker accounting is not blocked. It is measured against reality: account.path_opens equals the physical opens actually performed, and account.logical_views equals the views actually issued, on every carrier and in every court."
+    },
+    {
+      "alternative": "MATERIAL_IMPLEMENTATION_GAP_REMAINS",
+      "why_not": "The six implementation defects this lane introduced during development were all found and fixed rather than deferred, including one real correctness bug in which the selected route attributed cell values to the wrong variable names. Nothing material is known to remain open in the commissioned scope."
+    },
+    {
+      "alternative": "CHECKOUT_MODE_INSUFFICIENT__HQ_RECOMMISSION_REQUIRED",
+      "why_not": "The sparse manifest was sufficient for the commissioned scope. It materialised /rawlsing_next/ (331 files) and the working tree was never expanded. The 5 collection errors and 335 pre-existing failures are tests requiring paths OUTSIDE the manifest, and they were proven identical at the pristine freeze rather than assumed to be irrelevant. The one thing the manifest could not supply was the prior 55-carrier court, and that is reported as an explicit unlocated-prior limitation rather than worked around by expanding the checkout."
+    }
+  ],
+
+  "what_a_reviewer_should_attack_first": [
+    "Try to make the broker hand a raw path or a string to the reader. C7 inspects the first positional argument of every invocation; an attacker should look for a route that bypasses _reader_arg or constructs its own reader call.",
+    "Confirm the open count is not merely self-reported. Compare receipt path_opens and logical_views against the governed object's actual physical_opens and views_issued; this lane asserts they match, and a reviewer should verify independently.",
+    "Attack the selected route's ordinal binding. The pre-candidate defect where a selected value was attributed to the wrong variable name was real; check that variable_ordinals cannot desynchronise from the frame again.",
+    "Confirm the budget guards really fire BEFORE the operation. C6 asserts reader_bytes is unchanged and header_prefix_reads stays 0 after a refusal; a reviewer should confirm no partial operation precedes the refusal.",
+    "Re-check LIM-1. Verify that usecols genuinely does not reduce physical reads on this build, and that the receipt's NOT_ENFORCED_BY_READER disclosure is present rather than quietly dropped.",
+    "Assess whether the two modified tests genuinely preserved their intent, or whether rewriting them to the governed property weakened a real guarantee.",
+    "Decide whether the out-of-terrain WVS7 materializer sites are in the C4 governed closure. If they are, the path-open account remains incomplete for those routes and this candidate does not cover them."
+  ],
+
+  "residual_limitations": [
+    { "id": "LIM-1", "limitation": "pyreadstat 1.3.6 does not physically suppress reads of unselected columns; measured byte-identical to a full read on a 12-column/200-row carrier.", "disposition": "disclosed in the receipt and asserted by court C9c; not claimed as achieved", "affects": "the physical half of the O1-C07 selected-read account only; the logical account is exact" },
+    { "id": "LIM-2", "limitation": "The prior named 55-carrier court could not be located; the comparison corpus was constructed here.", "disposition": "reported as not-located; no PASS inherited; matching the count makes the denominator comparable, not the corpus identical", "affects": "the breadth of the equivalence evidence, not its correctness at the declared grain" },
+    { "id": "LIM-3", "limitation": "Equivalence is demonstrated only at a declared synthetic grain: up to 8 columns, 20 rows, numeric/string/mixed/missing/labels kinds, written by pyreadstat's own writer.", "disposition": "labelled C2 throughout; explicitly NOT survey-semantic equivalence", "affects": "no real source, unusual encoding, long-string continuation, segment boundary or compression variant was exercised" },
+    { "id": "LIM-4", "limitation": "335 tests and 58 errors fail in this worktree for want of fixture paths outside the commissioned sparse manifest.", "disposition": "proven identical at the pristine freeze; they are environment artefacts, not candidate defects", "affects": "the breadth of the regression sweep available under SPARSE_REQUIRED" },
+    { "id": "LIM-5", "limitation": "Two production pyreadstat sites outside the decoder remain raw-path reads.", "disposition": "outside the write terrain; reported in the Phase 0 census as an expectation refutation", "affects": "any scope that routes through runtime/ee_p2x/05_WVS7_PROJECTION_MATERIALIZER.py" },
+    { "id": "LIM-6", "limitation": "The governed open is retained on the incidence so the chunk route can share it.", "disposition": "released by close_source_access(), by garbage collection, and on every error path; the broker is closed in an except handler before re-raise", "affects": "a caller that never iterates and never closes holds one descriptor until collection" }
+  ],
+
+  "r9_status_unchanged_by_this_lane": {
+    "r9_closed": false,
+    "note": "This lane closes two IMPLEMENTATION seams. It does not by itself close R9: the architecture-warrant candidate and the authority questions HQ195 recorded remain HQ/Astra decisions, and no adoption is sought or made here.",
+    "r7": "CLOSED — unchanged",
+    "warrant_issued": false,
+    "live_c4": "not authorized and not executed",
+    "raw_source_access": "NOT AUTHORIZED — zero"
+  },
+
+  "self_qualification": "NONE. This is a candidate for independent hostile review. No adoption, no architecture decision, no warrant, no authority exercised.",
+
+  "checkout_law_compliance": {
+    "mode": "SPARSE_REQUIRED",
+    "repository_cloned": false,
+    "sparse_worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq196-r9-impl",
+    "materialized_files": 331,
+    "full_repo_tracked_files": 7078,
+    "sparse_patterns_applied_exactly": true,
+    "sparse_expansions_beyond_manifest": 0,
+    "sparse_checkout_disabled": false,
+    "full_checkout_created": false,
+    "script_disclosure": "The commissioned command invokes prepare_sparse_worktree.sh at a path absent from the canonical clone's working tree. That helper exists only on the documentary-control lineage (added in aad3fc2a8) because this branch is deliberately rooted on the executable freeze instead. It was read by git object access, verified as blob 22f3f62463250cbecea39bcbba0663672797e925 (sha256 93e3fc970b002d9e9054fd21d4757887f3ddff917610adab6574d26aefaecce6, byte-identical to the copy safety-reviewed in HQ195), reviewed for safety, and run from a temp copy. Using the helper as a tool does not import documentary-control lineage: the script creates the worktree AT the passed SHA, and the resulting branch is 1 commit over the freeze 8ff40d37."
+  },
+
+  "write_terrain_respected": {
+    "touched": [
+      "rawlsing_next/pre553_physical_decoder.py",
+      "rawlsing_next/pre553_source_access_broker.py",
+      "rawlsing_next/tests/test_pre553_sr06_decoder_carrier.py",
+      "rawlsing_next/tests/test_pre553_source_access_broker_court.py",
+      "WORKER_RETURNS/PYAT-HQ196-R9-BROKER-SELECTED-IMPLEMENTATION-R1/**"
+    ],
+    "new_module_justification": "pre553_source_access_broker.py matches the commissioned pattern pre553_*source_access*.py and is the narrowest home for the broker, its account type, its budget type and its seam pin. Keeping it out of pre553_physical_decoder.py leaves that file as the decoder rather than the access layer.",
+    "production_files_touched_outside_terrain": 0
+  },
+
+  "terminal": "HQ196_R9_BROKER_SELECTED_IMPLEMENTATION_RETURNED__HQ_REVIEW_REQUIRED"
+}

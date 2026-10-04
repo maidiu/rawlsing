@@ -76,11 +76,14 @@ def test_expected_source_identity_is_hashed_once_before_reader_decode(tmp_path: 
     path.write_bytes(b"not a stata file; identity must fail before reader access")
     hash_calls = []
     reader_calls = []
-    original_hash = decoder._sha
+    # The hash pass is now governed: it runs over the broker's single
+    # application-owned open, so the observable seam is _governed_source_sha
+    # rather than the path-opening _sha helper.
+    original_governed_sha = decoder._governed_source_sha
     monkeypatch.setattr(
         decoder,
-        "_sha",
-        lambda source: (hash_calls.append(Path(source)) or original_hash(source)),
+        "_governed_source_sha",
+        lambda broker: (hash_calls.append(Path(broker.path)) or original_governed_sha(broker)),
     )
     monkeypatch.setattr(
         pyreadstat,
@@ -239,24 +242,37 @@ def test_normal_decode_uses_chunk_path_and_compatibility_uses_full_read(tmp_path
     import rawlsing_next.pre553_physical_decoder as decoder
     path = tmp_path / "chunk.sav"
     pyreadstat.write_sav(pd.DataFrame({"a": [1, 2, 3]}), str(path))
-    original_chunks = pyreadstat.read_file_in_chunks
-    chunk_calls = []
-    monkeypatch.setattr(pyreadstat, "read_file_in_chunks", lambda *args, **kwargs: (chunk_calls.append(kwargs) or original_chunks(*args, **kwargs)))
     decoded = decode_sav(path)
-    list(decoded.iter_cells(2))
-    assert chunk_calls and chunk_calls[0]["chunksize"] == 2
+    cells = list(decoded.iter_cells(2))
+    # The governed chunk route is an explicit row_offset/row_limit loop rather
+    # than pyreadstat.read_file_in_chunks, because that helper reuses one object
+    # across parses and ReadStat rejects the reuse for DTA. The governed
+    # property is asserted instead of the removed helper: chunk reads really
+    # happened, over exactly ONE application-owned physical open, with correct cells.
+    accounts = decoded.source_access_receipt["accounts"]
+    assert accounts["chunk_reads"] >= 1, accounts
+    assert accounts["path_opens"] == 1, accounts
+    assert [(c.row_ordinal, c.variable_name, c.raw_value) for c in cells] == [
+        (1, "a", 1), (2, "a", 2), (3, "a", 3)
+    ]
+    decoded.close_source_access()
 
     source_sha = decoded.source_sha256
     monkeypatch.setitem(decoder.COMPATIBILITY_ALLOWLIST, source_sha, "latin1")
-    full_calls = []
+    reader_calls = []
     original_read = pyreadstat.read_sav
     def tracked_read(*args, **kwargs):
-        full_calls.append(kwargs.get("metadataonly", False))
+        reader_calls.append((bool(kwargs.get("metadataonly", False)), kwargs.get("usecols")))
         return original_read(*args, **kwargs)
     monkeypatch.setattr(pyreadstat, "read_sav", tracked_read)
     compat = decode_sav(path, encoding="latin1")
     list(compat.iter_cells(2))
-    assert full_calls[:2] == [True, False]
+    # compatibility still means metadata read then a full read, and no selection
+    assert reader_calls[:2] == [(True, None), (False, None)], reader_calls
+    compat_accounts = compat.source_access_receipt["accounts"]
+    assert compat_accounts["full_reads"] == 1, compat_accounts
+    assert compat_accounts["selected_reads"] == 0, compat_accounts
+    compat.close_source_access()
 
 
 def test_real_writer_dta_extended_missing_fixture_or_typed_dependency_limitation(tmp_path: Path):

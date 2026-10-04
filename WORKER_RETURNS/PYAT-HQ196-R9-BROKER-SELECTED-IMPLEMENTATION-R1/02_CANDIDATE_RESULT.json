@@ -1,0 +1,171 @@
+{
+  "schema": "HQ196_CANDIDATE_RESULT@1.0.0",
+  "lane": "PYAT-HQ196-R9-BROKER-SELECTED-IMPLEMENTATION-R1",
+  "CATEGORY": "C2_OBSERVED_SYNTHETIC / C3_proposed_enforcement",
+  "category_law": "All results below are source-free synthetic evidence. Nothing here is survey-semantic equivalence, nothing qualifies a real source, and no real survey file was opened, stat-ed for content, hashed, decoded or materialised.",
+
+  "identity": {
+    "commissioned_startup_sha": "55f75664949b4a92431b54351e7244ff1fa4a652",
+    "executable_freeze": "8ff40d37de69db2d8a6053a7c2242f481677f1a4",
+    "lineage_check": "startup SHA is exactly 1 commit over the executable freeze, so the implementation base is the freeze as commissioned",
+    "candidate_blobs": {
+      "rawlsing_next/pre553_physical_decoder.py": "8e7a6a997f3f0a765dd7bac506a0c06af82555a0",
+      "rawlsing_next/pre553_source_access_broker.py": "46ecd520a80fcb99e218054c7128a306df0f6395",
+      "rawlsing_next/tests/test_pre553_source_access_broker_court.py": "new",
+      "rawlsing_next/tests/test_pre553_sr06_decoder_carrier.py": "modified"
+    },
+    "freeze_decoder_blob": "d3d828c171ea9fdd0e90563aff6ef705f5aae2cf",
+    "environment": {
+      "interpreter_sha256": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+      "python": "3.11.3", "pyreadstat": "1.3.6", "pandas": "2.3.3",
+      "pyarrow": "25.0.1", "numpy": "2.4.6", "pytest": "9.1.1",
+      "anchor": "C4C3-DARWIN-X86_64-ANCHOR/CPYTHON-3.11.3/PYREADSTAT-1.3.6/PYARROW-25.0.1/PANDAS-2.3.3/NUMPY-2.4.6/PYTEST-9.1.1",
+      "dependency_modified": false,
+      "pyreadstat_mutated": false,
+      "r7_runtime_identity_changes": false,
+      "note": "no package, interpreter or extension was modified; only the application's call site changed, matching the HQ195 feasibility lane's burden finding"
+    }
+  },
+
+  "seam_one_closed": {
+    "name": "literal source-path access is application-owned, countable and enforceable",
+    "mechanism": "pyreadstat's existing file-like-object bridge. The application performs exactly ONE physical open and lends it to the compiled reader through a position-zero view exposing fileno().",
+    "before": { "application_owned_physical_opens": 3, "compiled_reader_path_opens": "unbounded and unobservable", "raw_path_strings_to_reader": "yes" },
+    "after": { "application_owned_physical_opens": 1, "compiled_reader_path_opens": 0, "raw_path_strings_to_reader": 0 },
+    "requirements_met": {
+      "owns_the_source_path_open_in_application_code": true,
+      "counts_every_source_path_open": true,
+      "records_read_calls_and_byte_counts": true,
+      "explicit_pre_operation_budgets_and_guards": true,
+      "passes_a_file_like_object_to_pyreadstat": true,
+      "prevents_silent_raw_path_fallback": "iter_batches raises RawSourcePathEscape when no broker is attached; verified zero regressions, so no caller relied on the removed fallback",
+      "keeps_accounts_separately_typed": "path_opens, logical_views, hash_passes, header_prefix_reads, metadata_reads, selected_reads, full_reads, chunk_reads, reader_invocations, reader_read_calls, reader_bytes are each distinct counters",
+      "pins_and_asserts_the_pyreadstat_seam": "version pinned to 1.3.6; usecols presence and the filename_path parameter name checked on the genuine entry points; a mismatch raises ReaderSeamViolation",
+      "sha_and_header_routed_through_the_same_governed_context": "the hash pass and the header-prefix read both run over the broker's single open, so the path-open account covers the whole scope rather than only the decoder"
+    },
+    "count_policy": "The count follows the implementation. One open is what the implementation needs to serve the whole governed scope; it was not forced toward a desired warrant value.",
+    "truthfulness_note": "logical_views is reported separately from path_opens precisely so that a rewind is never presented as a fresh open. Verified: account.logical_views == the number of views actually issued, and account.path_opens == the number of physical opens actually performed."
+  },
+
+  "seam_two_closed": {
+    "name": "selected-variable physical read for SRC02/SRC06/SRC14",
+    "mechanism": "pyreadstat usecols, bound to the selected variable set before any row data is read",
+    "frozen_law_satisfied": { "SRC02": { "selected_reads": 1, "full_reads": 0 }, "SRC06": { "selected_reads": 1, "full_reads": 0 }, "SRC14": { "selected_reads": 1, "full_reads": 0 } },
+    "requirements_met": {
+      "selected_names_and_ordinals_bound_before_row_data_read": "metadata is read first; the selection is checked against the real column inventory and the ordinals are bound and recorded before the selected read is issued",
+      "unexpected_or_missing_selected_columns_fail_closed": "a selection naming an absent column raises DecoderError before any row read; a reader returning an unselected column raises SourceAccessViolation UNEXPECTED_SELECTED_COLUMN; an omitted bound column raises MISSING_SELECTED_COLUMN",
+      "no_unselected_row_data_columns_read_where_supported": "NOT SUPPORTED BY THE LIBRARY — see honest_limitation below. Reported as not enforced rather than claimed.",
+      "selected_read_count_and_configuration_recorded_separately": "selected_reads is its own counter and selected_read_configuration records the mechanism, names, bound ordinals and the bound-before-read flag",
+      "full_read_count_remains_zero": "the selected route pins full_reads=0 by default and a full read on that route is refused before it executes",
+      "no_change_to_missingness_typed_values_authority_or_witness_truth": "the existing classify_physical_value path, _physical_value normalisation, missingness states, reader configuration and physical metadata digest inputs are unchanged; equivalence is demonstrated at the declared synthetic grain only"
+    },
+    "api_addition": {
+      "what": "an optional selected_variables parameter on _decode/decode_sav/decode_dta, plus source_access_budget",
+      "why_minimal": "the existing public API could not express a selected read at all, so this is the smallest explicit addition that can",
+      "backward_compatible": "both parameters default to None, so every existing call site is unchanged in behaviour",
+      "also_added": "PhysicalSourceIncidence.source_access_receipt, .selected_ordinals, .close_source_access(), and the _governed_source_sha observable seam"
+    }
+  },
+
+  "dta_chunk_constraint": {
+    "problem": "the feasibility lane found that reusing one broker object across row-offset parses fails because ReadStat expects the object at position zero",
+    "solution": "a fresh logical VIEW per logical parse, each a rewind of the SAME physical open",
+    "proof": {
+      "naive_reuse_still_fails": "court C5b asserts that reusing ONE view object across two row_offset parses raises, so the constraint is real and the reset is load-bearing rather than decorative",
+      "reset_design_succeeds": "the same single open yields correct chunks: rows [1,2] / [3,4] / [5,6] for DTA and the same for SAV, with physical_opens == 1",
+      "no_extra_physical_opens_for_convenience": "5 logical views over 1 physical open on a 10-row carrier; the open count did not rise to make chunking convenient",
+      "no_silent_path_fallback": "read_file_in_chunks is not used at all; it works over a file-like for SAV but fails for DTA"
+    },
+    "mechanism_used": "an explicit row_offset/row_limit loop issuing one view per chunk — the 'another exact mechanism' the commission permits"
+  },
+
+  "honest_limitation": {
+    "id": "LIM-1",
+    "statement": "pyreadstat 1.3.6 does NOT enforce that unselected columns go unread.",
+    "measurement": "12-column / 200-row SAV, 20,159 bytes on disk. Full read and usecols=[\"c00\"] each issued 278 read calls and 20,659 bytes — byte-identical.",
+    "consequence": "The selected route delivers a genuine LOGICAL selected-read account (selected_reads=1, full_reads=0, usecols bound and recorded). It does NOT deliver physical suppression of unselected column reads, and this candidate does not claim it.",
+    "how_it_is_reported": "the receipt field selected_route_physical_column_suppression carries NOT_ENFORCED_BY_READER with the measurement, and court C9c asserts that disclosure is present so it cannot be quietly dropped.",
+    "why_it_matters_to_R9": "O1-C07 requires the accounts to stay separate and explicitly warns against conflating layers. This is a case where a real physical property is unattainable at the current layer, and saying so is the correct output rather than substituting a proxy."
+  },
+
+  "courts": {
+    "mandatory_nine": {
+      "file": "rawlsing_next/tests/test_pre553_source_access_broker_court.py",
+      "C1_broker_metadata_route": "PASS",
+      "C2_brokered_ordinary_decode": "PASS",
+      "C3_brokered_SAV_selected_variable_read": "PASS",
+      "C4_brokered_DTA_route": "PASS",
+      "C5_batch_chunk_route_with_DTA_reset_constraint": "PASS",
+      "C6_budget_negative_cases_refuse_before_excess_operation": "PASS — asserts the refusal happens BEFORE the read by showing reader_bytes unchanged and header_prefix_reads still 0",
+      "C7_raw_path_escape_negative": "PASS — captures the first positional argument of every reader invocation and asserts none is str/bytes/PathLike",
+      "C8_selected_column_wrong_or_missing": "PASS — including a leaky reader that injects an extra column",
+      "C9_accounting_separation": "PASS — every account key must also have a stated measurement basis",
+      "result": "14 passed, 0 failed"
+    },
+    "run_twice": {
+      "run_1": "2 failed, 28 passed, 1 skipped",
+      "run_2": "2 failed, 28 passed, 1 skipped",
+      "deterministic": true,
+      "the_two_failures": "test_parquet_roundtrip_atomicity_corruption_and_direct_duckdb and test_direct_session_skips_full_reopen_and_supports_multiple_queries — both are ModuleNotFoundError for duckdb and both were verified failing at the PRISTINE freeze, so they are pre-existing and not caused by this candidate"
+    },
+    "declared_grain_comparison": {
+      "carriers": 55,
+      "A_full_route_equivalent": "55/55",
+      "B_selected_route_equivalent": "55/55",
+      "distinct_path_opens_observed": [1],
+      "prior_55_carrier_court": "NOT LOCATED. No runner, corpus or expected-result artifact exists at the commissioned freeze, in the R7 qualification environment, or in reachable history; the figure appears only as prose in the HQ195 feasibility return. This corpus is constructed here at a declared grain, is NOT a re-run of the prior court, and inherits no PASS from it. Matching the count of 55 makes the denominator comparable, not the corpus identical.",
+      "value_normalisation": "both sides pass through the decoder's canonical _physical_value. Raw pyreadstat yields NaN where the decoder contract yields None; an asymmetric comparison produced 8 spurious 'missingness' differences that were a harness artefact, confirmed by normalising both sides."
+    }
+  },
+
+  "full_regression": {
+    "collected": 2872,
+    "pristine_freeze_baseline": { "failed": 335, "passed": 2478, "skipped": 1, "errors": 58 },
+    "candidate": { "failed": 335, "passed": 2492, "skipped": 1, "errors": 58 },
+    "regressions_introduced": 0,
+    "net_change_in_passes": 14,
+    "method": "the candidate was set aside and the pristine freeze restored to capture a real baseline, because a single run without a baseline could not distinguish a regression from pre-existing sparse-checkout failures",
+    "pre_existing_failures_explained": "the 335 failures and 58 errors are sparse-checkout artefacts: those tests import fixtures under paths outside the commissioned sparse manifest (WORKER_RETURNS/EE-P2X/..., and two test files absent from the tree entirely). The identical 5 collection errors were reproduced at the pristine freeze, proving they are not caused by this candidate.",
+    "regressions_caught_and_fixed_during_development": [
+      "selected-route variable inventory stayed full-length while the frame held one column, so emit() zipped selected values onto the WRONG variable names — a real correctness bug that would have misattributed a selected cell to an unselected variable",
+      "_bump used dataclasses.replace, which SETS fields rather than adding, so zeroed delta entries wiped accumulated counters and the account reported last-operation values instead of totals",
+      "kwarg filtering against the reader signature silently dropped metadataonly and usecols when the reader was a (*args, **kwargs) test double, downgrading a metadata read into a full read",
+      "the source-access receipt was snapshotted during decode, so later chunk reads were invisible in the very account meant to record them",
+      "the default budget capped full_reads globally, wrongly forbidding the ordinary compatibility decode; the zero-full-read law belongs to the selected route only",
+      "the governed hash seam was unobservable, so the identity-gate-before-reader-access property could no longer be audited"
+    ]
+  },
+
+  "tests_changed_and_why": {
+    "rawlsing_next/tests/test_pre553_sr06_decoder_carrier.py": {
+      "test_expected_source_identity_is_hashed_once_before_reader_decode": "instruments decoder._governed_source_sha instead of decoder._sha, because the hash now runs over the broker's open rather than opening the path. Intent preserved exactly: hashed once, reader never called, DecoderError raised.",
+      "test_normal_decode_uses_chunk_path_and_compatibility_uses_full_read": "previously asserted pyreadstat.read_file_in_chunks was called with chunksize=2. That helper was deliberately replaced because it fails for DTA. The test now asserts the GOVERNED property instead: chunk reads occurred, exactly one physical open, correct cells with correct ordinals, and compatibility still performing metadata-then-full-read with no selection.",
+      "disclosure": "both edits follow a deliberate mechanism change the commission required. Neither weakens an assertion: each was rewritten to test the governed property rather than the removed helper, and the identity-gate test still fails if a reader is reached before the hash."
+    }
+  },
+
+  "not_done_and_declared": [
+    "The out-of-terrain production pyreadstat sites in runtime/ee_p2x/05_WVS7_PROJECTION_MATERIALIZER.py remain raw-path reads. They are outside this commission's write terrain and were neither brokered nor modified. Whether they are inside the C4 governed closure was not determined; that is an authority question.",
+    "The prior named 55-carrier court was not re-run because it could not be located. No pass is inherited from it.",
+    "Physical suppression of unselected column reads is not achieved and is not claimed.",
+    "No adoption, no self-adoption, no warrant, no locator work, no live C4."
+  ],
+
+  "holds_observed": {
+    "real_source_access": 0,
+    "locator_discovery": 0,
+    "warrant_issuance": false,
+    "live_c4": false,
+    "c7_work": 0,
+    "actor_or_person_work": 0,
+    "pyreadstat_or_ReadStat_mutated": false,
+    "r7_environment_mutated": false,
+    "global_package_installs": 0,
+    "production_files_touched_outside_terrain": 0,
+    "historical_returns_modified": 0,
+    "self_adopted": false,
+    "merged_into_control": false,
+    "counts_invented": 0,
+    "note": "every carrier in every court was synthetic, written by pyreadstat's own writer into a temporary directory, and deleted with it."
+  }
+}
