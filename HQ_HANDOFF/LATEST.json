@@ -1,12 +1,12 @@
 {
   "schema": "RAWLSING_HQ_HANDOFF_POINTER@1.1.0",
-  "checkpoint_id": "20261003-PYAT-HQ197-R9-CANDIDATE-PARTIAL-R1",
-  "handoff_commit": "2487f6367d8d71cdfb69a1e8fff52d7b1ee8c13a",
+  "checkpoint_id": "20261003-PYAT-HQ198-R9-FINAL-PROOF-R1",
+  "handoff_commit": "d1de001c6e933e974b33f33747c0f9b4e297541e",
   "semantic_pre_main_tip": "902640dfddce431d0c5ba151d3eb851d6b84d7a3",
   "control_branch": "integration/pre-main-reconciliation-r1",
-  "current_md_path": "HQ_HANDOFF/checkpoints/20261003-PYAT-HQ197-R9-CANDIDATE-PARTIAL-R1/CURRENT.md",
-  "current_json_path": "HQ_HANDOFF/checkpoints/20261003-PYAT-HQ197-R9-CANDIDATE-PARTIAL-R1/CURRENT.json",
-  "manifest_path": "HQ_HANDOFF/checkpoints/20261003-PYAT-HQ197-R9-CANDIDATE-PARTIAL-R1/MANIFEST.json",
+  "current_md_path": "HQ_HANDOFF/checkpoints/20261003-PYAT-HQ198-R9-FINAL-PROOF-R1/CURRENT.md",
+  "current_json_path": "HQ_HANDOFF/checkpoints/20261003-PYAT-HQ198-R9-FINAL-PROOF-R1/CURRENT.json",
+  "manifest_path": "HQ_HANDOFF/checkpoints/20261003-PYAT-HQ198-R9-FINAL-PROOF-R1/MANIFEST.json",
   "decision_ledger_path": "HQ_HANDOFF/DECISION_LEDGER.jsonl",
   "protocol_path": "HQ_HANDOFF/PROTOCOL.md",
   "start_here_path": "HQ_HANDOFF/START_HERE.md",
@@ -15,7 +15,7 @@
   "temporal_reconciliation_law": "SEALED_CHECKPOINT_AUTHORITY_NE_POST_CHECKPOINT_PENDING_RETURN_NE_UNAUTHORIZED_POST_CHECKPOINT_MOVEMENT",
   "maintenance_law": "AFTER_EVERY_MATERIAL_HQ_STATE_CHANGE__CREATE_NEW_IMMUTABLE_CHECKPOINT__ADVANCE_AND_VERIFY_LATEST_BEFORE_TRANSITION_IS_SEALED",
   "protected_execution_head": "16f5e7d5f691e908d85dc1dd26b8a59a29f668f4",
-  "next_action": "LAUNCH_ALL_THREE_HQ197_SPARSE_LANES_IN_PARALLEL",
+  "next_action": "LAUNCH_ALL_THREE_HQ198_SPARSE_LANES_IN_PARALLEL",
   "source_split_control_head": "cee9e27d57dc72771d9c3ec5df26493321feeef5",
   "split_fanin_evidence_tip": "cee9e27d57dc72771d9c3ec5df26493321feeef5",
   "joined_successor_return_tip": "b4dd6d6016367110c06317abe2cef276123b4c69",
@@ -62,7 +62,7 @@
   "pyat_current_handoff": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/CURRENT_HANDOFF.md",
   "pyat_current_grok_docket": "PYAT_CONTROL_ROOM/12_B_ROUTE_PRE_FIELD_FORGE_GROK_DOCKET.md",
   "pyat_fresh_hq_protocol": "PYAT_CONTROL_ROOM/13_FRESH_HQ_FULL_GROK_PROTOCOL.md",
-  "immediate_program_refinement": "HQ197__BROKER_CANDIDATE_PARTIAL__BYTE_LIMIT_REPAIR__R7_55_TEST_REQUAL__PHYSICAL_SELECTED_INTERPRETATION",
+  "immediate_program_refinement": "HQ198__R9_REPAIRED_CANDIDATE_FINAL_PROOF__PHYSICAL_SELECTED_INDEPENDENT_CONFIRMATION__TECHNICAL_VALUE_FREEZE",
   "legacy_pyat_bootstrap_path": "HQ_HANDOFF/PYAT_HQ_BOOTSTRAP_R1.md",
   "pyat_documentary_hygiene": "HQD-2026-09-26-114",
   "pyat_forward_program_decision": "HQD-2026-09-28-125",
@@ -544,8 +544,8 @@
   "external_adjudication_retrieval_law": "ALL_COMPARISON_MATERIAL_FETCHABLE_FROM_ORIGIN",
   "measured_execution_authorized_via_warrant": false,
   "previous_handoff": {
-    "checkpoint_id": "20261003-PYAT-HQ196-R9-BROKER-SELECTED-WAVE-R1",
-    "handoff_commit": "453a40089758b53780694084808f6010e63430f0"
+    "checkpoint_id": "20261003-PYAT-HQ197-R9-CANDIDATE-PARTIAL-R1",
+    "handoff_commit": "2487f6367d8d71cdfb69a1e8fff52d7b1ee8c13a"
   },
   "previous_operating_mode": {
     "selected": "BROWSER_ECONOMY",
@@ -897,6 +897,35 @@
     "r9_blocker_remains": true,
     "host_disk_blocker_remains": true,
     "r7_status": "CLOSED_AT_RUNTIME_ENVIRONMENT_IDENTITY_GRAIN",
+    "c4_adopted": false,
+    "hq182_hold_lifted": false
+  },
+  "hq198": {
+    "repaired_candidate": {
+      "clean_tip": "4b6335ca5fc485108b0ffb1d682a29a02e1eee51",
+      "code_commit": "a483cb6619a84c4785296e923a8571447041ffa5",
+      "adopted": false
+    },
+    "physical_selected": {
+      "return_tip": "d43c7f8647a28da13e05bdd264722d1d87b2cb29",
+      "status": "PENDING_INDEPENDENT_CONFIRMATION"
+    },
+    "active_lanes": {
+      "review": {
+        "branch": "agent/reviewer-pyat-hq198-r1",
+        "commission_tip": "69f9451501e348e739fbbf25872c285ca382e8cf"
+      },
+      "requal": {
+        "branch": "agent/rabochii-pyat-hq198-r1",
+        "commission_tip": "2eccd7a4cec0e85af78cb68f6c078de2b68d5d90"
+      },
+      "technical_values": {
+        "branch": "agent/rabochii-pyat-hq198-r2",
+        "commission_tip": "bf6dcf17a17f41285f2c1e2b1f10a79417c7c393"
+      }
+    },
+    "r9_blocker_remains": true,
+    "host_disk_blocker_remains": true,
     "c4_adopted": false,
     "hq182_hold_lifted": false
   }
