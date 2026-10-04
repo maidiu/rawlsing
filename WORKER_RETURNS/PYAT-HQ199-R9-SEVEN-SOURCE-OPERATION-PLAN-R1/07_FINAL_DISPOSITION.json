@@ -1,0 +1,138 @@
+{
+  "schema": "PYAT_HQ199_FINAL_DISPOSITION@1.0.0",
+  "lane": "PYAT-HQ199-R9-SEVEN-SOURCE-OPERATION-PLAN-R1",
+  "startup_sha": "fdf78c71b4523ab6a7c6d817ff4315ddf77db489",
+  "documentary_base": "dbf3287084b547226a401fd0bde2da46610f2b9b",
+  "disposition": "SEVEN_SOURCE_PLAN_DETERMINATE__ONE_OPEN_BROKER_COMPATIBLE",
+  "allowed_dispositions_considered": [
+    {
+      "value": "SEVEN_SOURCE_PLAN_DETERMINATE__ONE_OPEN_BROKER_COMPATIBLE",
+      "selected": true,
+      "why": "All six central questions are answered from the governing record, and the one-open broker conflicts with nothing frozen. SRC27 'multiple path-level opens' is DESCRIPTIVE, so there is no SRC27 one-open conflict. Every source's row_data_mode, admitted operations, zero requirements, header-prefix permission and retry ceiling are determinate."
+    },
+    {
+      "value": "SEVEN_SOURCE_PLAN_DETERMINATE__SRC27_ONE_OPEN_BROKER_CONFLICT",
+      "rejected_because": "Would require 'multiple path-level opens' to be a normative floor >=2. It is not. It is a C4-phase note-field prediction, absent from C4B and from the operative warrant candidate, and the dedicated grading lane HQ190-C assigned SRC27 path_opens NO value at all - not even a floor."
+    },
+    {
+      "value": "PLAN_PARTIAL__SPECIFIC_AUTHORITY_GAPS_REMAIN",
+      "rejected_because": "This is the closest alternative and it was weighed carefully. It would apply if some source's PLAN could not be determined. Every source's plan IS determined. What remains unbound are numeric counts for path opens, decoder invocations and bytes - accounts the governing record never valued at all, which the commission itself asked to be reported as UNBOUND. A determinate plan may contain typed-unknown budgets; that is not a partial plan."
+    },
+    {
+      "value": "MATERIAL_AUTHORITY_CONFLICT_FOUND",
+      "rejected_because": "No conflict exists between governing artifacts. The two serious findings are candidate-versus-authority defects, not authority-versus-authority conflicts: SRC08/SRC12 full row-data reads against a frozen hard zero, and unauthorized header-prefix reads on six sources."
+    },
+    {
+      "value": "ASTRA_DECISION_REQUIRED",
+      "rejected_because": "Nothing in the reconstruction requires a reserved Astra judgement. The SRC27 question - the only candidate for one - is resolvable from origin, field kind, verb, corroborating statements and the dedicated grading lane, and it resolves cleanly toward descriptive."
+    }
+  ],
+  "central_questions_answered": {
+    "1_admitted_operations_per_source": "Determinate for all seven. See 01_SEVEN_SOURCE_OPERATION_PLAN.json.",
+    "2_which_must_be_zero": "Determinate. SRC02/06/14 full_reads=0; SRC08/12 full_reads=0, selected_reads=0, row_data_reads=0, selected_columns=0, full_source_decode=false; SRC26 selected_reads=0; retries=0 for all seven.",
+    "3_src27_multiple_opens": "DESCRIPTIVE, NOT a normative floor. The one-open broker is compatible.",
+    "4_outer_pass_vs_lower_layers": "Mapped without collapsing. The Route-B pass is a WORKLOAD account (EXACT 1, max 1) and is not summed into or substituted for path_opens, hash_passes, metadata_reads, full_reads or chunk_reads.",
+    "5_decoder_invocations_MAX_1": "MAY be introduced as IMPLEMENTATION_POLICY_CANDIDATE. It requires no higher authority because frozen authority imposes no constraint, so any finite ceiling is strictly tighter and weakens nothing. It must occupy a MAXIMUM slot, never an EXPECTED slot, and needs a real counter to be enforced.",
+    "6_authority_classification": "Complete. See 06_AUTHORITY_VS_POLICY_VS_UNBOUND.json."
+  },
+  "src27_determination": {
+    "phrase": "The pass will involve multiple path-level opens, a hash pass, a metadata pass and a full read.",
+    "determination": "DESCRIPTIVE__NOT_A_NORMATIVE_FLOOR",
+    "grounds": [
+      "First introduced at the C4 executable freeze fan-in; zero occurrences in the C4B workload freeze and zero in the operative C4 warrant candidate.",
+      "It sits in a field named critical_note, uses the predictive verb 'will involve', and its binding clause is 'These must each be counted separately' - a SEPARATION requirement, not a count.",
+      "The same artifact's hardened_note is the only statement using 'at minimum' and it enumerates FOUR floors - existence, hash, metadata, full - pointedly omitting any path-open floor.",
+      "The operative warrant candidate's accounting_warning enumerates the same four accounts and does not mention multiple opens.",
+      "The pre-broker decoder genuinely performed multiple opens per source (hash open, metadata open, full-read open, per-chunk opens, prefix open), so the phrase accurately described that implementation.",
+      "HQ190-C, the dedicated per-access-layer grading lane, graded SRC27 ACC-03_path_opens as '-' with no floor and no ceiling, while grading the other four F1 with ceiling null."
+    ],
+    "one_open_broker_compatible": true,
+    "control": "path_opens for SRC27 remains typed UNBOUND. No numeric value is asserted in either direction, so this determination creates no conflict.",
+    "falsification_test": "Produce a governing artifact assigning SRC27 path_opens a numeric floor >=2 or a normative 'at least two opens'."
+  },
+  "one_pass_implications": {
+    "MAX_1_decoder_invocation_implied": false,
+    "exactly_one_full_reader_invocation_implied": false,
+    "correct_answer": "NEITHER is implied by frozen authority. Both may be introduced as conservative IMPLEMENTATION_POLICY_CANDIDATE ceilings.",
+    "chunked_substitution_for_the_full_read": "NOT_FROZEN_ADMITTED__REQUIRES_AUTHORITY_MAPPING (GOV-ROUTE-004). The hardened note's floor is on a full compatibility READ; a chunked route is a different account, so substituting it would change which account is satisfied rather than satisfy the same one."
+  },
+  "src08_src12_finding": {
+    "question": "Is a full row-data read forbidden for the metadata-only declared-encoding sources?",
+    "answer": "YES, unambiguously.",
+    "authority": [
+      "frozen zero SRC08_row_data_reads = 0 and SRC12_row_data_reads = 0",
+      "expected_full_reads = 0 for both",
+      "full_source_decode = false in the warrant candidate",
+      "C4B authority/API freeze D01 ceiling: 'Exact admission guard + metadata-only probe; row-data decode/full-read path is outside the frozen SRC08/SRC12 witness.'",
+      "zero-budget discipline: a single non-zero count is a STOP condition, not a reportable variance"
+    ],
+    "encoding_independence": "Reader configuration is INDEPENDENT of row-data mode. A declared encoding configures the reader; it does not admit a row-data read."
+  },
+  "src26_finding": {
+    "is_176_unique_to_SRC26": true,
+    "evidence": "'expected_header_prefix_bytes' occurs exactly ONCE across all eight per-source entries in the frozen accounting law, for SRC26, value 176. The string 512 occurs ZERO times.",
+    "consequence": "The 176-byte prefix operation is admitted for SRC26 ONLY. The candidate's DTA 512 constant is implementation behaviour with no authority basis and must not be inferred as authority.",
+    "byte_vs_read_count": "Authority freezes the BYTE count 176, not a header-prefix READ count."
+  },
+  "serious_findings_against_the_accepted_candidate": [
+    {
+      "id": "SRC08/SRC12-FROWDATA",
+      "severity": "FROZEN_HARD_ZERO_VIOLATION",
+      "finding": "The candidate performs a FULL ROW-DATA READ on SRC08 and SRC12.",
+      "mechanism": "_compatibility_config ADMITS the declared encoding via DECLARED_ENCODING_ALLOWLIST for the exact source SHA, so encoding is not None. decoder.py:633-634 then fires 'elif encoding is not None: broker.full_read(...)' because selected_variables is None on a metadata-only route.",
+      "root_cause": "The candidate's control flow CONFLATES reader configuration with row-data mode. It therefore cannot express 'declared encoding + no row data', which is exactly what SRC08 and SRC12 require.",
+      "required_fix": "Row-data mode must be selected by the operation plan, not inferred from whether an encoding is present."
+    },
+    {
+      "id": "HDRPREFIX-UNAUTHORIZED",
+      "severity": "UNAUTHORIZED_OPERATION",
+      "finding": "decoder.py:639 calls header_prefix unconditionally for every source. Only SRC26 admits it.",
+      "affected": [
+        "SRC02",
+        "SRC06",
+        "SRC08",
+        "SRC12",
+        "SRC14",
+        "SRC27"
+      ],
+      "src27_note": "the DTA 512 constant has no authority basis."
+    },
+    {
+      "id": "DEC-NO-OWNER",
+      "severity": "material",
+      "finding": "decoder_invocations has no counter and no owner for all seven sources. reader_invocations is not a substitute under the settled non-substitutability law."
+    },
+    {
+      "id": "ROUTE-NO-OWNER",
+      "severity": "material",
+      "finding": "The outer governed full Route-B pass for SRC27 has no explicit owner or account in the candidate receipt."
+    },
+    {
+      "id": "LATENT-CHUNK",
+      "severity": "material",
+      "finding": "For SRC08, SRC12 and SRC26 the candidate yields _frame=None with a retained broker. If a consumer calls iter_batches, it will emit broker.chunk_reads - a row-data read those plans do not admit."
+    }
+  ],
+  "src26_is_the_only_conforming_source": "The candidate's sequence for SRC26 (encoding None, no selection): existence, hash, metadata, header_prefix(176), with NO row-data read. That matches the reconstructed plan exactly.",
+  "status_unchanged": {
+    "signed": false,
+    "issued": false,
+    "authorizes_access": false,
+    "execution_authorized": false,
+    "warrant_issued": false,
+    "locators_filled": false,
+    "production_mutated": false,
+    "source_access": 0
+  },
+  "what_this_lane_did_not_do": [
+    "Did not write production code.",
+    "Did not invent any numeric budget.",
+    "Did not weaken any frozen operation class.",
+    "Did not convert descriptive prose into numeric authority.",
+    "Did not collapse the outer Route-B pass into any lower-layer account.",
+    "Did not invent a SRC27 selected-read count.",
+    "Did not infer DTA 512-byte prefix authority from implementation.",
+    "Did not perform source access or production mutation."
+  ],
+  "recommended_next_step_for_HQ": "Two candidate corrections must precede the session-owner implementation, because both are frozen-authority violations rather than missing features: decouple row-data mode from reader configuration so SRC08/SRC12 can carry a declared encoding with zero row-data reads, and gate header_prefix on the per-source operation plan so only SRC26 performs one. Then implement the per-source session owner (GOV-SCOPE-001) with a decoder-entry counter (GOV-DEC-003) and the MAX 1 policy ceiling, and resolve the Route-B-to-chunk mapping (GOV-ROUTE-004)."
+}

@@ -1,0 +1,200 @@
+{
+  "schema": "PYAT_HQ199_CURRENT_CANDIDATE_MISMATCHES@1.0.0",
+  "candidate_analysed": "4b6335ca5fc485108b0ffb1d682a29a02e1eee51",
+  "method": "The candidate's _decode control flow was read directly and traced per source, rather than assumed. The decisive branch is decoder.py:611-634 followed by the unconditional header_prefix at :639.",
+  "candidate_control_flow": [
+    "broker = SourceAccessBroker(...)                      # one broker per _decode call",
+    "broker.existence_check()                              # +existence_checks",
+    "broker.hash_pass()                                    # +hash_passes",
+    "metadata = broker.metadata_read(encoding=encoding)    # +metadata_reads",
+    "if selected_variables is not None:  broker.selected_read(...)   # +selected_reads",
+    "elif encoding is not None:          broker.full_read(...)       # +full_reads",
+    "raw_prefix = broker.header_prefix(176 if SAV else 512)           # ALWAYS +header_prefix_reads"
+  ],
+  "crosswalk": [
+    {
+      "source_key": "SRC02",
+      "plan_row_data_mode": "SELECTED",
+      "candidate_operation_sequence": [
+        "existence_check",
+        "hash_pass",
+        "metadata_read",
+        "selected_read",
+        "header_prefix(176)"
+      ],
+      "mismatches": [
+        {
+          "id": "SRC02-HDRPREFIX",
+          "severity": "UNAUTHORIZED_OPERATION",
+          "candidate_behaviour": "decoder.py:639 calls broker.header_prefix(...) unconditionally; SRC02 reads 176 bytes",
+          "required_by_authority": "header_prefix_admitted = false. Frozen authority admits the explicit header-prefix operation for SRC26 ONLY.",
+          "dta_note": null
+        }
+      ],
+      "verdict": "MISMATCH"
+    },
+    {
+      "source_key": "SRC06",
+      "plan_row_data_mode": "SELECTED",
+      "candidate_operation_sequence": [
+        "existence_check",
+        "hash_pass",
+        "metadata_read",
+        "selected_read",
+        "header_prefix(176)"
+      ],
+      "mismatches": [
+        {
+          "id": "SRC06-HDRPREFIX",
+          "severity": "UNAUTHORIZED_OPERATION",
+          "candidate_behaviour": "decoder.py:639 calls broker.header_prefix(...) unconditionally; SRC06 reads 176 bytes",
+          "required_by_authority": "header_prefix_admitted = false. Frozen authority admits the explicit header-prefix operation for SRC26 ONLY.",
+          "dta_note": null
+        }
+      ],
+      "verdict": "MISMATCH"
+    },
+    {
+      "source_key": "SRC08",
+      "plan_row_data_mode": "METADATA_ONLY",
+      "candidate_operation_sequence": [
+        "existence_check",
+        "hash_pass",
+        "metadata_read",
+        "full_read",
+        "header_prefix(176)"
+      ],
+      "mismatches": [
+        {
+          "id": "SRC08-ROWDATA",
+          "severity": "FROZEN_HARD_ZERO_VIOLATION",
+          "candidate_behaviour": "decoder.py:633-634 'elif encoding is not None: broker.full_read(...)' fires because SRC08 has a declared encoding and no selected_variables, so a FULL ROW-DATA READ is executed",
+          "required_by_authority": "row_data_mode = METADATA_ONLY; frozen zero SRC08_row_data_reads = 0; expected_full_reads = 0; full_source_decode = false; D01 ceiling: \"Exact admission guard + metadata-only probe; row-data decode/full-read path is outside the frozen SRC08/SRC12 witness.\"",
+          "why_it_matters": "These are hard zeros. A single non-zero count in any of them is a STOP condition, not a reportable variance."
+        },
+        {
+          "id": "SRC08-HDRPREFIX",
+          "severity": "UNAUTHORIZED_OPERATION",
+          "candidate_behaviour": "decoder.py:639 calls broker.header_prefix(...) unconditionally; SRC08 reads 176 bytes",
+          "required_by_authority": "header_prefix_admitted = false. Frozen authority admits the explicit header-prefix operation for SRC26 ONLY.",
+          "dta_note": null
+        }
+      ],
+      "verdict": "MISMATCH"
+    },
+    {
+      "source_key": "SRC12",
+      "plan_row_data_mode": "METADATA_ONLY",
+      "candidate_operation_sequence": [
+        "existence_check",
+        "hash_pass",
+        "metadata_read",
+        "full_read",
+        "header_prefix(176)"
+      ],
+      "mismatches": [
+        {
+          "id": "SRC12-ROWDATA",
+          "severity": "FROZEN_HARD_ZERO_VIOLATION",
+          "candidate_behaviour": "decoder.py:633-634 'elif encoding is not None: broker.full_read(...)' fires because SRC12 has a declared encoding and no selected_variables, so a FULL ROW-DATA READ is executed",
+          "required_by_authority": "row_data_mode = METADATA_ONLY; frozen zero SRC12_row_data_reads = 0; expected_full_reads = 0; full_source_decode = false; D01 ceiling: \"Exact admission guard + metadata-only probe; row-data decode/full-read path is outside the frozen SRC08/SRC12 witness.\"",
+          "why_it_matters": "These are hard zeros. A single non-zero count in any of them is a STOP condition, not a reportable variance."
+        },
+        {
+          "id": "SRC12-HDRPREFIX",
+          "severity": "UNAUTHORIZED_OPERATION",
+          "candidate_behaviour": "decoder.py:639 calls broker.header_prefix(...) unconditionally; SRC12 reads 176 bytes",
+          "required_by_authority": "header_prefix_admitted = false. Frozen authority admits the explicit header-prefix operation for SRC26 ONLY.",
+          "dta_note": null
+        }
+      ],
+      "verdict": "MISMATCH"
+    },
+    {
+      "source_key": "SRC14",
+      "plan_row_data_mode": "SELECTED",
+      "candidate_operation_sequence": [
+        "existence_check",
+        "hash_pass",
+        "metadata_read",
+        "selected_read",
+        "header_prefix(176)"
+      ],
+      "mismatches": [
+        {
+          "id": "SRC14-HDRPREFIX",
+          "severity": "UNAUTHORIZED_OPERATION",
+          "candidate_behaviour": "decoder.py:639 calls broker.header_prefix(...) unconditionally; SRC14 reads 176 bytes",
+          "required_by_authority": "header_prefix_admitted = false. Frozen authority admits the explicit header-prefix operation for SRC26 ONLY.",
+          "dta_note": null
+        }
+      ],
+      "verdict": "MISMATCH"
+    },
+    {
+      "source_key": "SRC26",
+      "plan_row_data_mode": "METADATA_ONLY_PLUS_HEADER_PREFIX",
+      "candidate_operation_sequence": [
+        "existence_check",
+        "hash_pass",
+        "metadata_read",
+        "header_prefix(176)"
+      ],
+      "mismatches": [],
+      "verdict": "NO_ROW_DATA_OR_HEADER_MISMATCH"
+    },
+    {
+      "source_key": "SRC27",
+      "plan_row_data_mode": "FULL",
+      "candidate_operation_sequence": [
+        "existence_check",
+        "hash_pass",
+        "metadata_read",
+        "full_read",
+        "header_prefix(512)"
+      ],
+      "mismatches": [
+        {
+          "id": "SRC27-HDRPREFIX",
+          "severity": "UNAUTHORIZED_OPERATION",
+          "candidate_behaviour": "decoder.py:639 calls broker.header_prefix(...) unconditionally; SRC27 reads 512 bytes",
+          "required_by_authority": "header_prefix_admitted = false. Frozen authority admits the explicit header-prefix operation for SRC26 ONLY.",
+          "dta_note": "the 512-byte DTA constant has NO authority basis: the string 512 occurs zero times in the frozen accounting law"
+        }
+      ],
+      "verdict": "MISMATCH"
+    }
+  ],
+  "candidate_wide_findings": [
+    {
+      "id": "MIS-DEC-001",
+      "severity": "material",
+      "finding": "decoder_invocations has no counter and no owner in the accepted candidate, for ALL SEVEN sources.",
+      "authority": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json mandatory_separate_accounts requires it as a separate account; be1af859a:WORKER_RETURNS/PYAT-HQ190-C-R9-WARRANT-ACCOUNTING-BINDING-R1/02_PER_SOURCE_ACCESS_LAYER_LIMITS.json graded it '-' for every source.",
+      "note": "This is a missing owner, not a wrong value."
+    },
+    {
+      "id": "MIS-ROUTE-002",
+      "severity": "material",
+      "finding": "The outer governed full Route-B pass for SRC27 has no explicit owner or account.",
+      "authority": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json freezes expected_full_route_passes = 1 / max 1.",
+      "note": "The candidate's receipt exposes no route-pass quantity. A route-pass account may not silently collapse the lower-layer accounts (GOV-ROUTE-004)."
+    },
+    {
+      "id": "MIS-SCOPE-003",
+      "severity": "decisive",
+      "finding": "The candidate's broker scope is one _decode call. No per-source session owner binds a warrant source entry to exactly one governed lifecycle.",
+      "note": "Already accepted as GOV-SCOPE-001 and unchanged by this lane."
+    }
+  ],
+  "latent_risk": {
+    "id": "MIS-LATENT-004",
+    "finding": "For SRC08, SRC12 and SRC26 the candidate produces an incidence with _frame = None and a retained broker. If a consumer calls iter_batches on such an incidence, the candidate will emit broker.chunk_reads \u2014 a row-data read that those sources' plans do not admit.",
+    "why_it_is_latent": "It does not fire unless a consumer iterates cells on a metadata-only source.",
+    "authority": "SRC08/SRC12 frozen zero row_data_reads = 0; SRC26 plan row_data_mode admits no row data.",
+    "required_control": "The governed session owner must refuse iter_batches/iter_cells for any source whose plan row_data_mode admits no row data."
+  },
+  "sources_with_no_mismatch": {
+    "SRC26": "The candidate's sequence for SRC26 (encoding None, no selection) is existence, hash, metadata, header_prefix(176) with NO row-data read, which matches the reconstructed plan exactly. Only its header_prefix READ COUNT remains numerically unbound; the 176 BYTE value is frozen and correctly applied."
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "schema": "PYAT_HQ199_SRC27_MULTIPLE_OPENS_ADJUDICATION@1.0.0",
+  "question": "Is 'the pass will involve multiple path-level opens' a normative frozen lower bound, or a description of the then-current implementation?",
+  "the_two_statements_distinguished": {
+    "per_source_critical_note": {
+      "location": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC27.critical_note",
+      "verbatim": "One governed full Route-B pass is NOT one OS-level file open. The pass will involve multiple path-level opens, a hash pass, a metadata pass and a full read. These must each be counted separately.",
+      "field_kind": "critical_note \u2014 a note field, not a budget field",
+      "verb": "'will involve' \u2014 predictive, not imperative",
+      "operative_clause": "'These must each be counted separately.' \u2014 the binding requirement is SEPARATION, not a count"
+    },
+    "hardened_note_implication": {
+      "location": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .hardened_note_on_the_SRC27_single_pass.implication",
+      "verbatim": "It does NOT license assuming one file open. The run will require at minimum: one existence/access check, one full SHA-256 hash pass, one metadata read, and one full compatibility read. Each is a separate account under O1-C07.",
+      "why_this_is_the_normative_minimum_statement": "It is the only statement using 'at minimum', and it enumerates the floors.",
+      "critical_omission": "It enumerates FOUR floors \u2014 existence/access, hash pass, metadata read, full compatibility read \u2014 and pointedly does NOT include a path-open floor."
+    }
+  },
+  "origin_evidence": {
+    "first_introduced_at": "8ff40d37de69db2d8a6053a7c2242f481677f1a4 (C4 executable freeze fan-in), via git log --reverse -S",
+    "occurrences_in_C4B_layer": 0,
+    "occurrences_in_operative_C4_warrant_candidate": 0,
+    "significance": "The phrase is a C4-phase artifact. It is absent from the C4B workload freeze and from the operative warrant candidate, so it was never carried into the instrument.",
+    "operative_candidate_accounting_warning_verbatim": "One governed Route-B pass is NOT one OS-level file open. Existence/access check, full hash pass, metadata read and full compatibility read are SEPARATE accounts.",
+    "candidate_warning_enumerates": "existence/access check, full hash pass, metadata read, full compatibility read \u2014 four accounts, and NO mention of multiple opens"
+  },
+  "was_the_pre_broker_implementation_actually_multiple": {
+    "answer": true,
+    "evidence_freeze_decoder_blob": "d3d828c171ea9fdd0e90563aff6ef705f5aae2cf",
+    "open_sites": [
+      "line 483 _sha(source) -> line 407 with source.open('rb')  [hash open]",
+      "line 496 reader(str(source), metadataonly=True)          [metadata open, inside pyreadstat]",
+      "line 502 reader(str(source), ...) compatibility full read [full-read open, inside pyreadstat]",
+      "line 155 read_file_in_chunks(reader, self._source_path)   [one open per chunk parse]",
+      "line 211 with path.open('rb')                             [raw prefix open]"
+    ],
+    "conclusion": "The pre-broker route genuinely performed MULTIPLE path opens per source. The phrase was an accurate description of that implementation, not a statement of required minimum."
+  },
+  "authority_grading_of_the_period": {
+    "source": "be1af859a:WORKER_RETURNS/PYAT-HQ190-C-R9-WARRANT-ACCOUNTING-BINDING-R1/02_PER_SOURCE_ACCESS_LAYER_LIMITS.json",
+    "SRC27_ACC-03_path_opens": {
+      "grade": "\u2014",
+      "floor": null,
+      "ceiling": null
+    },
+    "the_four_hardened_note_accounts_graded": "F1 (floor 1) with ceiling null",
+    "verbatim": "The hardened note says 'at minimum'. A floor is not an enforceable ceiling. No governing artifact supplies a maximum for any of these four layers.",
+    "significance": "The dedicated per-access-layer grading lane examined this exact question and assigned path_opens NO value whatsoever \u2014 not even a floor of 2."
+  },
+  "determination": "DESCRIPTIVE__NOT_A_NORMATIVE_FLOOR",
+  "may_the_one_open_broker_reduce_it": true,
+  "why_lawful": [
+    "No frozen artifact supplies any path-open value for SRC27, so reducing the observed count to 1 violates no floor and breaches no ceiling.",
+    "The frozen requirement is that each access layer be counted SEPARATELY, and the broker preserves that separation exactly: path_opens, hash_passes, metadata_reads and full_reads remain distinct typed counters in the governed receipt.",
+    "The hardened note's four floors (existence, hash, metadata, full) are all still satisfied by the one-open broker, which performs each of them over its single governed open.",
+    "The purpose of the warning was to forbid reading one pass as one open. The broker does not do that: it reports the pass, the opens, the hash pass, the metadata read and the full read as five separate quantities."
+  ],
+  "residual_risk_and_its_control": {
+    "risk": "If the phrase were later found to be normative, a one-open broker would conflict with it.",
+    "falsification_test": "Produce a governing artifact that assigns SRC27 path_opens a numeric floor >= 2 or a normative 'at least two opens'. HQ190-C, the lane that graded exactly this, assigned no value.",
+    "current_control": "path_opens for SRC27 remains typed UNBOUND in this plan. No numeric budget is asserted in either direction, so no conflict is created by this determination."
+  },
+  "related_question_one_pass_implications": {
+    "does_exactly_one_governed_pass_imply_MAX_1_decoder_invocation": false,
+    "why": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .hardened_note gives full_reads a FLOOR of 1 ('at minimum ... one full compatibility read') with no ceiling, and be1af859a:WORKER_RETURNS/PYAT-HQ190-C-R9-WARRANT-ACCOUNTING-BINDING-R1/02_PER_SOURCE_ACCESS_LAYER_LIMITS.json graded it F1 with ceiling null, noting explicitly 'No expected_full_reads exists for SRC27. The hardened note establishes a FLOOR, not an exact count.'",
+    "does_it_imply_exactly_one_full_reader_invocation": false,
+    "correct_answer": "NEITHER is implied by frozen authority. Both may be introduced as conservative IMPLEMENTATION_POLICY_CANDIDATE ceilings, which is strictly tighter than a frozen authority that imposes no constraint and therefore weakens nothing.",
+    "may_chunked_full_reading_substitute_for_the_single_full_read": {
+      "answer": "NOT_FROZEN_ADMITTED__REQUIRES_AUTHORITY_MAPPING",
+      "why": "The hardened note's floor is on a full compatibility READ. A chunked route is a different account (chunk_reads), so substituting it would change which account is satisfied rather than satisfy the same one. Frozen authority supplies no chunk count and no mapping between the two. This is exactly the open item GOV-ROUTE-004."
+    }
+  }
+}

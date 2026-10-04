@@ -1,0 +1,203 @@
+{
+  "schema": "PYAT_HQ199_IMPLEMENTATION_CONTRACT_FOR_SESSION_OWNER@1.0.0",
+  "purpose": "The contract the governed source-session owner must implement, derived from the reconstructed plans. This lane writes no production code; this is the documentary contract only.",
+  "session_owner_requirements": [
+    "Constructed exactly once per bound source entry.",
+    "Owns the source path, identity, format, operation plan and budget for that entry.",
+    "Owns exactly one broker lifecycle and closes deterministically, not by caller discipline.",
+    "Refuses a second decode or session for the same source.",
+    "Aggregates per-source accounting across every admitted operation."
+  ],
+  "per_source_plan_contract": {
+    "SRC02": {
+      "row_data_mode": "SELECTED",
+      "reader_encoding": null,
+      "selected_variables": [
+        {
+          "name": "Q10B",
+          "ordinal": 58
+        }
+      ],
+      "header_prefix_admitted": false,
+      "header_prefix_bytes_if_frozen": null,
+      "must_be_zero": [
+        "full_reads"
+      ],
+      "decode_entry_ceiling": {
+        "maximum": 1,
+        "authority_status": "IMPLEMENTATION_POLICY_CANDIDATE"
+      }
+    },
+    "SRC06": {
+      "row_data_mode": "SELECTED",
+      "reader_encoding": null,
+      "selected_variables": [
+        {
+          "name": "Q101",
+          "ordinal": 20
+        },
+        {
+          "name": "Q2061B",
+          "ordinal": 19
+        }
+      ],
+      "header_prefix_admitted": false,
+      "header_prefix_bytes_if_frozen": null,
+      "must_be_zero": [
+        "full_reads"
+      ],
+      "decode_entry_ceiling": {
+        "maximum": 1,
+        "authority_status": "IMPLEMENTATION_POLICY_CANDIDATE"
+      }
+    },
+    "SRC08": {
+      "row_data_mode": "METADATA_ONLY",
+      "reader_encoding": "BIG5",
+      "selected_variables": [],
+      "header_prefix_admitted": false,
+      "header_prefix_bytes_if_frozen": null,
+      "must_be_zero": [
+        "full_reads",
+        "selected_reads",
+        "row_data_reads",
+        "selected_columns",
+        "full_source_decode"
+      ],
+      "decode_entry_ceiling": {
+        "maximum": 1,
+        "authority_status": "IMPLEMENTATION_POLICY_CANDIDATE"
+      }
+    },
+    "SRC12": {
+      "row_data_mode": "METADATA_ONLY",
+      "reader_encoding": "WINDOWS-1252",
+      "selected_variables": [],
+      "header_prefix_admitted": false,
+      "header_prefix_bytes_if_frozen": null,
+      "must_be_zero": [
+        "full_reads",
+        "selected_reads",
+        "row_data_reads",
+        "selected_columns",
+        "full_source_decode"
+      ],
+      "decode_entry_ceiling": {
+        "maximum": 1,
+        "authority_status": "IMPLEMENTATION_POLICY_CANDIDATE"
+      }
+    },
+    "SRC14": {
+      "row_data_mode": "SELECTED",
+      "reader_encoding": null,
+      "selected_variables": [
+        {
+          "name": "v372",
+          "ordinal": 466
+        }
+      ],
+      "header_prefix_admitted": false,
+      "header_prefix_bytes_if_frozen": null,
+      "must_be_zero": [
+        "full_reads"
+      ],
+      "decode_entry_ceiling": {
+        "maximum": 1,
+        "authority_status": "IMPLEMENTATION_POLICY_CANDIDATE"
+      }
+    },
+    "SRC26": {
+      "row_data_mode": "METADATA_ONLY_PLUS_HEADER_PREFIX",
+      "reader_encoding": null,
+      "selected_variables": [],
+      "header_prefix_admitted": true,
+      "header_prefix_bytes_if_frozen": 176,
+      "must_be_zero": [
+        "full_reads",
+        "selected_reads",
+        "selected_reads"
+      ],
+      "decode_entry_ceiling": {
+        "maximum": 1,
+        "authority_status": "IMPLEMENTATION_POLICY_CANDIDATE"
+      }
+    },
+    "SRC27": {
+      "row_data_mode": "FULL",
+      "reader_encoding": "latin1",
+      "selected_variables": [],
+      "header_prefix_admitted": false,
+      "header_prefix_bytes_if_frozen": null,
+      "must_be_zero": [
+        "selected_reads"
+      ],
+      "decode_entry_ceiling": {
+        "maximum": 1,
+        "authority_status": "IMPLEMENTATION_POLICY_CANDIDATE"
+      }
+    }
+  },
+  "mandatory_refusals": [
+    {
+      "id": "REF-01",
+      "rule": "A row-data read for any source whose plan row_data_mode admits no row data must be refused BEFORE it executes.",
+      "sources_affected": [
+        "SRC08",
+        "SRC12",
+        "SRC26"
+      ]
+    },
+    {
+      "id": "REF-02",
+      "rule": "A header-prefix read for any source whose plan does not admit one must be refused BEFORE it executes.",
+      "sources_affected": [
+        "SRC02",
+        "SRC06",
+        "SRC08",
+        "SRC12",
+        "SRC14",
+        "SRC27"
+      ]
+    },
+    {
+      "id": "REF-03",
+      "rule": "For SRC08/SRC12 the declared encoding configures the reader but must never select a row-data mode.",
+      "why": "reader configuration is independent of row-data mode; this is the exact defect observed in the accepted candidate."
+    },
+    {
+      "id": "REF-04",
+      "rule": "A second decoder entry for the same source must be refused.",
+      "authority_status": "IMPLEMENTATION_POLICY_CANDIDATE",
+      "ceiling": "MAX 1 per source session"
+    },
+    {
+      "id": "REF-05",
+      "rule": "iter_batches / iter_cells must be refused for any source whose plan admits no row data.",
+      "sources_affected": [
+        "SRC08",
+        "SRC12",
+        "SRC26"
+      ],
+      "why": "closes latent risk MIS-LATENT-004"
+    },
+    {
+      "id": "REF-06",
+      "rule": "The outer Route-B pass quantity must be recorded as its own account and must never be summed into, or substituted for, any lower-layer account.",
+      "authority_status": "FROZEN_AUTHORITY",
+      "value": "exactly 1, max 1"
+    },
+    {
+      "id": "REF-07",
+      "rule": "No numeric byte ceiling may be asserted from a synthetic carrier total or from source size.",
+      "authority_status": "PROHIBITED unless a governing rule is supplied"
+    }
+  ],
+  "must_not": [
+    "Collapse the outer Route-B pass into full_reads, chunk_reads, reader_invocations or path_opens.",
+    "Relabel reader_invocations as decoder_invocations.",
+    "Present the SRC27 path-open count as frozen in either direction.",
+    "Invent a SRC27 selected-read count.",
+    "Infer DTA 512-byte prefix authority from implementation behaviour.",
+    "Treat a declared encoding as admitting a row-data read."
+  ]
+}

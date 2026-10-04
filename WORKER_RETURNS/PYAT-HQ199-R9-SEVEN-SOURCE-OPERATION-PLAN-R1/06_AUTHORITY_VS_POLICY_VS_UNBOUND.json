@@ -1,0 +1,220 @@
+{
+  "schema": "PYAT_HQ199_AUTHORITY_VS_POLICY_VS_UNBOUND@1.0.0",
+  "rule": "Descriptive prose is never converted into numeric authority without proving the prose is normative. Exactly one candidate phrase was tested and it FAILED that test.",
+  "frozen_authority_values": [
+    {
+      "value": "retries = 0",
+      "sources": [
+        "SRC02",
+        "SRC06",
+        "SRC08",
+        "SRC12",
+        "SRC14",
+        "SRC26",
+        "SRC27"
+      ],
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .max_retry_budget + retry_budget_law"
+    },
+    {
+      "value": "selected_reads = 1, full_reads = 0",
+      "sources": [
+        "SRC02",
+        "SRC06",
+        "SRC14"
+      ],
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class"
+    },
+    {
+      "value": "metadata_reads = 1, selected_reads = 0, full_reads = 0",
+      "sources": [
+        "SRC08",
+        "SRC12"
+      ],
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class"
+    },
+    {
+      "value": "row_data_reads = 0, selected_columns = 0",
+      "sources": [
+        "SRC08",
+        "SRC12"
+      ],
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .O1_C07_instrumentation.frozen_zero_budgets"
+    },
+    {
+      "value": "header_prefix_bytes = 176",
+      "sources": [
+        "SRC26"
+      ],
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC26.expected_header_prefix_bytes",
+      "uniqueness": "This is the ONLY header-prefix byte value in frozen authority. 'expected_header_prefix_bytes' occurs exactly once across all eight per-source entries, and the string 512 occurs zero times."
+    },
+    {
+      "value": "raw_nominal_case_size = 174, decoded_dictionary_data_width = 332",
+      "sources": [
+        "SRC26"
+      ],
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json .per_source[SRC26].allowed_operations",
+      "note": "geometry declarations, equality_required = false, preserved separately"
+    },
+    {
+      "value": "full_route_passes = 1, max 1",
+      "sources": [
+        "SRC27"
+      ],
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC27"
+    },
+    {
+      "value": "FLOOR 1 (no ceiling) on existence, hash, metadata, full",
+      "sources": [
+        "SRC27"
+      ],
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .hardened_note_on_the_SRC27_single_pass 'at minimum'; be1af859a:WORKER_RETURNS/PYAT-HQ190-C-R9-WARRANT-ACCOUNTING-BINDING-R1/02_PER_SOURCE_ACCESS_LAYER_LIMITS.json graded F1 with ceiling null"
+    },
+    {
+      "value": "FLOOR 1 derived from the C4B precondition",
+      "sources": [
+        "SRC02",
+        "SRC06",
+        "SRC08",
+        "SRC12",
+        "SRC14",
+        "SRC26",
+        "SRC27"
+      ],
+      "provenance": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/01_EIGHT_SOURCE_WORKLOAD_FREEZE.json .preconditions[3]",
+      "caveat": "derived from a precondition, not an exact count; reviewer_confirmation_required since HQ196"
+    },
+    {
+      "value": "fresh_reads = 0",
+      "sources": [
+        "SRC35 (excluded)"
+      ],
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC35"
+    }
+  ],
+  "implementation_policy_candidate_values": [
+    {
+      "value": "decoder_invocations MAX 1 per source session",
+      "authority_status": "IMPLEMENTATION_POLICY_CANDIDATE",
+      "provenance": "This lane's proposal; implements the accepted GOV-SCOPE-001 owner requirement",
+      "binding_force": "stricter than frozen authority, which supplies no constraint; weakens nothing",
+      "requires_higher_authority": false
+    },
+    {
+      "value": "path_opens MAX 1 per source session",
+      "authority_status": "IMPLEMENTATION_POLICY_CANDIDATE",
+      "provenance": "Already the accepted broker's default policy ceiling",
+      "binding_force": "stricter than frozen authority, which supplies no path-open value for any source",
+      "requires_higher_authority": false,
+      "note": "This is the value whose admissibility depends on the SRC27 multiple-opens adjudication. That adjudication found the phrase DESCRIPTIVE, so a MAX 1 ceiling does not conflict with frozen authority."
+    }
+  ],
+  "unbound_values": [
+    {
+      "value": "path_opens (exact expectation)",
+      "sources": [
+        "SRC02",
+        "SRC06",
+        "SRC08",
+        "SRC12",
+        "SRC14",
+        "SRC26",
+        "SRC27"
+      ],
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json supplies none; be1af859a:WORKER_RETURNS/PYAT-HQ190-C-R9-WARRANT-ACCOUNTING-BINDING-R1/02_PER_SOURCE_ACCESS_LAYER_LIMITS.json graded '-'",
+      "status": "UNBOUND"
+    },
+    {
+      "value": "decoder_invocations (expected count)",
+      "sources": [
+        "SRC02",
+        "SRC06",
+        "SRC08",
+        "SRC12",
+        "SRC14",
+        "SRC26",
+        "SRC27"
+      ],
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json supplies none; be1af859a:WORKER_RETURNS/PYAT-HQ190-C-R9-WARRANT-ACCOUNTING-BINDING-R1/02_PER_SOURCE_ACCESS_LAYER_LIMITS.json graded '-'",
+      "status": "UNBOUND"
+    },
+    {
+      "value": "reader_invocations",
+      "sources": [
+        "SRC02",
+        "SRC06",
+        "SRC08",
+        "SRC12",
+        "SRC14",
+        "SRC26",
+        "SRC27"
+      ],
+      "provenance": "not an O1-C07 account; no frozen count",
+      "status": "UNBOUND"
+    },
+    {
+      "value": "byte counts (reader_bytes, hash_bytes, header_prefix_bytes totals)",
+      "sources": [
+        "SRC02",
+        "SRC06",
+        "SRC08",
+        "SRC12",
+        "SRC14",
+        "SRC26",
+        "SRC27"
+      ],
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json qualifies the account 'where measurable'; be1af859a:WORKER_RETURNS/PYAT-HQ190-C-R9-WARRANT-ACCOUNTING-BINDING-R1/02_PER_SOURCE_ACCESS_LAYER_LIMITS.json graded '-'",
+      "status": "UNBOUND",
+      "reason": "source-size dependent; synthetic totals are not warrant budgets"
+    },
+    {
+      "value": "metadata_reads count for SRC02/SRC06/SRC14/SRC26/SRC27",
+      "sources": [
+        "SRC02",
+        "SRC06",
+        "SRC14",
+        "SRC26",
+        "SRC27"
+      ],
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json supplies expected_metadata_reads only for SRC08 and SRC12",
+      "status": "UNBOUND",
+      "note": "the metadata OPERATION is admitted for these sources; only the count is unbound"
+    },
+    {
+      "value": "header_prefix_reads count (as distinct from bytes)",
+      "sources": [
+        "SRC26"
+      ],
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json supplies the BYTE count 176, not a read count",
+      "status": "UNBOUND"
+    },
+    {
+      "value": "selected_reads",
+      "sources": [
+        "SRC27"
+      ],
+      "provenance": "be1af859a:WORKER_RETURNS/PYAT-HQ190-C-R9-WARRANT-ACCOUNTING-BINDING-R1/02_PER_SOURCE_ACCESS_LAYER_LIMITS.json: 'Mapping it into a selected-read slot would be a fabrication.'",
+      "status": "UNBOUND",
+      "note": "must not be invented"
+    },
+    {
+      "value": "chunk_reads count",
+      "sources": [
+        "SRC27"
+      ],
+      "provenance": "no frozen count; substitution for the full read unresolved",
+      "status": "UNBOUND",
+      "note": "GOV-ROUTE-004"
+    }
+  ],
+  "prose_tested_and_rejected_as_authority": [
+    {
+      "phrase": "The pass will involve multiple path-level opens",
+      "location": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC27.critical_note",
+      "test": "origin, field kind, verb, corroborating statements, and the dedicated grading lane",
+      "result": "DESCRIPTIVE \u2014 not a normative floor",
+      "authority_status": "UNBOUND",
+      "consequence": "no path-open value is asserted for SRC27 in either direction"
+    }
+  ]
+}

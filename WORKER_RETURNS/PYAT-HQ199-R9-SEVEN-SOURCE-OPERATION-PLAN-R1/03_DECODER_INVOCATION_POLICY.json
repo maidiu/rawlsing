@@ -1,0 +1,40 @@
+{
+  "schema": "PYAT_HQ199_DECODER_INVOCATION_POLICY@1.0.0",
+  "question": "May decoder_invocations = MAX 1 be introduced at the per-source session scope?",
+  "frozen_authority_position": {
+    "supplies_a_count": false,
+    "evidence": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json lists 'decoder invocations' in mandatory_separate_accounts but supplies no per-source count; be1af859a:WORKER_RETURNS/PYAT-HQ190-C-R9-WARRANT-ACCOUNTING-BINDING-R1/02_PER_SOURCE_ACCESS_LAYER_LIMITS.json graded ACC-06 decoder_invocations '-' for every source.",
+    "conclusion": "It CANNOT be recorded as FROZEN_AUTHORITY."
+  },
+  "candidate_position": {
+    "counter_exists": false,
+    "evidence": "'decoder_invocations' has zero occurrences in pre553_source_access_broker.py at 4b6335ca5fc485108b0ffb1d682a29a02e1eee51. SourceAccessAccount counts reader_invocations (compiled-reader calls of any kind) but has no decoder-entry counter, and receipt().measurement_basis lists none.",
+    "why_reader_invocations_is_not_a_substitute": "A reader invocation is a different quantity from a decoder entry. Under the settled O1-C07 non-substitutability law one may not be renamed the other."
+  },
+  "determination": {
+    "may_MAX_1_be_introduced": true,
+    "authority_status": "IMPLEMENTATION_POLICY_CANDIDATE",
+    "requires_higher_authority": false,
+    "why_no_higher_authority_is_required": [
+      "Frozen authority imposes NO constraint on this account, so any finite ceiling is strictly tighter than the frozen position and cannot weaken, contradict or waive anything.",
+      "A ceiling is a refusal rule, not an entitlement. It can only stop a run earlier, never authorise more than frozen authority allows.",
+      "It directly implements an already-accepted requirement: the governed session owner must 'prevent a second decode/session when the source budget permits only one' (dbf3287084b547226a401fd0bde2da46610f2b9b:HQ199_R9_SCOPE_OWNER_ADJUDICATION_R1.md, GOV-SCOPE-001)."
+    ],
+    "conditions": [
+      "It must be typed IMPLEMENTATION_POLICY_CANDIDATE, never FROZEN_AUTHORITY.",
+      "It must occupy a MAXIMUM slot, never an EXPECTED slot. Expected, maximum and observed remain three distinct quantities.",
+      "It must be recorded as policy in a field an issuer can see and override, so it is never mistaken for authority.",
+      "It must be paired with a real decoder-entry counter (GOV-DEC-003), otherwise it is unenforced."
+    ]
+  },
+  "expected_maximum_observed_law": {
+    "expected": "UNBOUND \u2014 frozen authority supplies none",
+    "maximum": "1 (IMPLEMENTATION_POLICY_CANDIDATE, per source session)",
+    "observed": "null until execution, with a typed reason",
+    "never_merged": true
+  },
+  "per_source_applicability": {
+    "note": "A MAX 1 decoder-entry ceiling applies uniformly to all seven sources, because each source's reconstructed plan (01_SEVEN_SOURCE_OPERATION_PLAN.json) requires exactly one decode entry: the selected route for SRC02/SRC06/SRC14, a metadata-only entry for SRC08/SRC12/SRC26, and one full read entry for SRC27. No source's plan requires two decoder entries.",
+    "SRC27_caveat": "This does NOT bound the outer Route-B pass, which is a workload constraint and a separate account. MAX 1 bounds decoder ENTRY, not passes, and the two must not be collapsed."
+  }
+}

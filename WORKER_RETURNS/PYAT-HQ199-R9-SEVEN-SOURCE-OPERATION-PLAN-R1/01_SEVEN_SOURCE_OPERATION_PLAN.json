@@ -1,0 +1,940 @@
+{
+  "schema": "PYAT_HQ199_SEVEN_SOURCE_OPERATION_PLAN@1.0.0",
+  "lane": "PYAT-HQ199-R9-SEVEN-SOURCE-OPERATION-PLAN-R1",
+  "documentary_base": "dbf3287084b547226a401fd0bde2da46610f2b9b",
+  "startup_sha": "fdf78c71b4523ab6a7c6d817ff4315ddf77db489",
+  "purpose": "The exact operation plan the governed source-session owner must eventually implement.",
+  "authority_status_vocabulary": {
+    "FROZEN_AUTHORITY": "supplied by a governing artifact, with exact provenance",
+    "IMPLEMENTATION_POLICY_CANDIDATE": "a conservative ceiling proposed by implementation policy; NOT authority and NOT an expected value",
+    "UNBOUND": "no governing artifact supplies a value; remains issuance-blocking"
+  },
+  "law_observed": "Descriptive prose was NOT converted into numeric authority. The one descriptive phrase in the frozen record ('multiple path-level opens') is adjudicated separately in 02_SRC27_MULTIPLE_OPENS_ADJUDICATION.json.",
+  "row_data_mode_vocabulary": {
+    "SELECTED": "row data read only for the bound selected variable set",
+    "METADATA_ONLY": "no row data at all",
+    "METADATA_ONLY_PLUS_HEADER_PREFIX": "no row data; the admitted bounded raw header-prefix read plus reader metadata",
+    "FULL": "whole-source row-data read"
+  },
+  "plan": [
+    {
+      "source_key": "SRC02",
+      "source_file": "Afro Barometer Round 5.sav",
+      "format": "SAV",
+      "operation_class": "BOUNDED_FRESH_PHYSICAL_SELECTED_VARIABLE_READ",
+      "reader_lane": "SAV_ENCODING_NULL",
+      "reader_encoding": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": null,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC02.reader_lane",
+        "note": "lane identity is frozen; the encoding value is the lane's declared configuration"
+      },
+      "reader_config_law": {
+        "apply_value_formats": {
+          "authority_status": "FROZEN_AUTHORITY",
+          "value": false,
+          "provenance": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/02_AUTHORITY_API_CONSUMER_FREEZE.json g01 READER_CONFIG / d3d828c171ea9fdd0e90563aff6ef705f5aae2cf"
+        },
+        "user_missing": {
+          "authority_status": "FROZEN_AUTHORITY",
+          "value": true,
+          "provenance": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/02_AUTHORITY_API_CONSUMER_FREEZE.json g01 READER_CONFIG / d3d828c171ea9fdd0e90563aff6ef705f5aae2cf"
+        },
+        "note": "reader configuration is INDEPENDENT of row-data mode. A declared encoding does not by itself admit a row-data read."
+      },
+      "selected_variables": [
+        {
+          "name": "Q10B",
+          "ordinal": 58
+        }
+      ],
+      "row_data_mode": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": "SELECTED",
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC02"
+      },
+      "metadata_reads": {
+        "authority_status": "UNBOUND",
+        "value": null,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json names metadata reads a mandatory separate account but supplies no count for SRC02",
+        "note": "the metadata-only OPERATION is admitted for this source; only the numeric count is unbound"
+      },
+      "selected_reads": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": 1,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC02.expected_selected_reads"
+      },
+      "full_reads": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": 0,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC02.expected_full_reads"
+      },
+      "full_route_passes": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": 0,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json: no full-route pass is admitted for SRC02",
+        "note": "zero passes; {key} is not a full-route source"
+      },
+      "header_prefix_admitted": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": false,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json: expected_header_prefix_bytes appears exactly ONCE in frozen authority, for SRC26",
+        "note": "the explicit header-prefix operation is admitted for SRC26 ONLY"
+      },
+      "header_prefix_bytes": {
+        "authority_status": "UNBOUND",
+        "value": null,
+        "provenance": "no frozen header-prefix byte value exists for this source",
+        "note": "the candidate's DTA 512 constant is implementation behaviour and has NO authority basis (the string 512 occurs zero times in the frozen accounting law)"
+      },
+      "hash_pass": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": 1,
+        "provenance": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/01_EIGHT_SOURCE_WORKLOAD_FREEZE.json .preconditions[3] full-file SHA-256 must equal the frozen identity BEFORE decode",
+        "note": "FLOOR 1 derived from the C4B precondition, not an exact count; HQ196 flagged it reviewer_confirmation_required"
+      },
+      "existence_access": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": 1,
+        "provenance": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/01_EIGHT_SOURCE_WORKLOAD_FREEZE.json .preconditions[3]; 8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json mandatory_separate_accounts[0]",
+        "note": "FLOOR 1; same derivation caveat as the hash pass"
+      },
+      "path_opens": {
+        "authority_status": "UNBOUND",
+        "value": null,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json supplies no path-open value for SRC02; be1af859a:WORKER_RETURNS/PYAT-HQ190-C-R9-WARRANT-ACCOUNTING-BINDING-R1/02_PER_SOURCE_ACCESS_LAYER_LIMITS.json graded it '-'",
+        "note": "measurable and enforceable under the accepted broker, but no numeric pre-launch budget exists. See 02_SRC27_MULTIPLE_OPENS_ADJUDICATION.json."
+      },
+      "decoder_invocations": {
+        "authority_status": "UNBOUND",
+        "value": null,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json names decoder calls a mandatory separate account but supplies no count",
+        "note": "no counter exists in the accepted candidate. See 03_DECODER_INVOCATION_POLICY.json."
+      },
+      "reader_invocations": {
+        "authority_status": "UNBOUND",
+        "value": null,
+        "provenance": "not an O1-C07 account; measurable under the accepted broker; no frozen count"
+      },
+      "retry_ceiling": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": 0,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC02.max_retry_budget",
+        "note": "No retry. A hash/config/authority mismatch stops this source immediately."
+      },
+      "byte_count": {
+        "authority_status": "UNBOUND",
+        "value": null,
+        "provenance": "be1af859a:WORKER_RETURNS/PYAT-HQ190-C-R9-WARRANT-ACCOUNTING-BINDING-R1/02_PER_SOURCE_ACCESS_LAYER_LIMITS.json graded byte counts '-' for SRC02: no value exists in governing evidence",
+        "note": "measurable and enforceable under the accepted broker, but source-size dependent. Synthetic carrier totals are NOT warrant budgets."
+      },
+      "must_be_zero": [
+        {
+          "account": "full_reads",
+          "value": 0,
+          "authority": "FROZEN_AUTHORITY",
+          "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC02.expected_full_reads"
+        }
+      ],
+      "provenance_summary": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json",
+        "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/01_EIGHT_SOURCE_WORKLOAD_FREEZE.json"
+      ]
+    },
+    {
+      "source_key": "SRC06",
+      "source_file": "Arab Barometer Wave 5.sav",
+      "format": "SAV",
+      "operation_class": "BOUNDED_FRESH_PHYSICAL_SELECTED_VARIABLE_READ",
+      "reader_lane": "SAV_ENCODING_NULL",
+      "reader_encoding": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": null,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC06.reader_lane",
+        "note": "lane identity is frozen; the encoding value is the lane's declared configuration"
+      },
+      "reader_config_law": {
+        "apply_value_formats": {
+          "authority_status": "FROZEN_AUTHORITY",
+          "value": false,
+          "provenance": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/02_AUTHORITY_API_CONSUMER_FREEZE.json g01 READER_CONFIG / d3d828c171ea9fdd0e90563aff6ef705f5aae2cf"
+        },
+        "user_missing": {
+          "authority_status": "FROZEN_AUTHORITY",
+          "value": true,
+          "provenance": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/02_AUTHORITY_API_CONSUMER_FREEZE.json g01 READER_CONFIG / d3d828c171ea9fdd0e90563aff6ef705f5aae2cf"
+        },
+        "note": "reader configuration is INDEPENDENT of row-data mode. A declared encoding does not by itself admit a row-data read."
+      },
+      "selected_variables": [
+        {
+          "name": "Q101",
+          "ordinal": 20
+        },
+        {
+          "name": "Q2061B",
+          "ordinal": 19
+        }
+      ],
+      "row_data_mode": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": "SELECTED",
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC06"
+      },
+      "metadata_reads": {
+        "authority_status": "UNBOUND",
+        "value": null,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json names metadata reads a mandatory separate account but supplies no count for SRC06",
+        "note": "the metadata-only OPERATION is admitted for this source; only the numeric count is unbound"
+      },
+      "selected_reads": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": 1,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC06.expected_selected_reads"
+      },
+      "full_reads": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": 0,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC06.expected_full_reads"
+      },
+      "full_route_passes": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": 0,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json: no full-route pass is admitted for SRC06",
+        "note": "zero passes; {key} is not a full-route source"
+      },
+      "header_prefix_admitted": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": false,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json: expected_header_prefix_bytes appears exactly ONCE in frozen authority, for SRC26",
+        "note": "the explicit header-prefix operation is admitted for SRC26 ONLY"
+      },
+      "header_prefix_bytes": {
+        "authority_status": "UNBOUND",
+        "value": null,
+        "provenance": "no frozen header-prefix byte value exists for this source",
+        "note": "the candidate's DTA 512 constant is implementation behaviour and has NO authority basis (the string 512 occurs zero times in the frozen accounting law)"
+      },
+      "hash_pass": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": 1,
+        "provenance": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/01_EIGHT_SOURCE_WORKLOAD_FREEZE.json .preconditions[3] full-file SHA-256 must equal the frozen identity BEFORE decode",
+        "note": "FLOOR 1 derived from the C4B precondition, not an exact count; HQ196 flagged it reviewer_confirmation_required"
+      },
+      "existence_access": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": 1,
+        "provenance": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/01_EIGHT_SOURCE_WORKLOAD_FREEZE.json .preconditions[3]; 8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json mandatory_separate_accounts[0]",
+        "note": "FLOOR 1; same derivation caveat as the hash pass"
+      },
+      "path_opens": {
+        "authority_status": "UNBOUND",
+        "value": null,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json supplies no path-open value for SRC06; be1af859a:WORKER_RETURNS/PYAT-HQ190-C-R9-WARRANT-ACCOUNTING-BINDING-R1/02_PER_SOURCE_ACCESS_LAYER_LIMITS.json graded it '-'",
+        "note": "measurable and enforceable under the accepted broker, but no numeric pre-launch budget exists. See 02_SRC27_MULTIPLE_OPENS_ADJUDICATION.json."
+      },
+      "decoder_invocations": {
+        "authority_status": "UNBOUND",
+        "value": null,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json names decoder calls a mandatory separate account but supplies no count",
+        "note": "no counter exists in the accepted candidate. See 03_DECODER_INVOCATION_POLICY.json."
+      },
+      "reader_invocations": {
+        "authority_status": "UNBOUND",
+        "value": null,
+        "provenance": "not an O1-C07 account; measurable under the accepted broker; no frozen count"
+      },
+      "retry_ceiling": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": 0,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC06.max_retry_budget",
+        "note": "No retry. Same stop law."
+      },
+      "byte_count": {
+        "authority_status": "UNBOUND",
+        "value": null,
+        "provenance": "be1af859a:WORKER_RETURNS/PYAT-HQ190-C-R9-WARRANT-ACCOUNTING-BINDING-R1/02_PER_SOURCE_ACCESS_LAYER_LIMITS.json graded byte counts '-' for SRC06: no value exists in governing evidence",
+        "note": "measurable and enforceable under the accepted broker, but source-size dependent. Synthetic carrier totals are NOT warrant budgets."
+      },
+      "must_be_zero": [
+        {
+          "account": "full_reads",
+          "value": 0,
+          "authority": "FROZEN_AUTHORITY",
+          "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC06.expected_full_reads"
+        }
+      ],
+      "provenance_summary": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json",
+        "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/01_EIGHT_SOURCE_WORKLOAD_FREEZE.json"
+      ]
+    },
+    {
+      "source_key": "SRC08",
+      "source_file": "Asian Barometer Wave 1.sav",
+      "format": "SAV",
+      "operation_class": "FRESH_METADATA_ONLY_DECODER_ADMISSION",
+      "reader_lane": "SAV_ENCODING_BIG5_DECLARED",
+      "reader_encoding": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": "BIG5",
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC08.reader_lane",
+        "note": "lane identity is frozen; the encoding value is the lane's declared configuration"
+      },
+      "reader_config_law": {
+        "apply_value_formats": {
+          "authority_status": "FROZEN_AUTHORITY",
+          "value": false,
+          "provenance": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/02_AUTHORITY_API_CONSUMER_FREEZE.json g01 READER_CONFIG / d3d828c171ea9fdd0e90563aff6ef705f5aae2cf"
+        },
+        "user_missing": {
+          "authority_status": "FROZEN_AUTHORITY",
+          "value": true,
+          "provenance": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/02_AUTHORITY_API_CONSUMER_FREEZE.json g01 READER_CONFIG / d3d828c171ea9fdd0e90563aff6ef705f5aae2cf"
+        },
+        "note": "reader configuration is INDEPENDENT of row-data mode. A declared encoding does not by itself admit a row-data read."
+      },
+      "selected_variables": [],
+      "row_data_mode": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": "METADATA_ONLY",
+        "provenance": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/01_EIGHT_SOURCE_WORKLOAD_FREEZE.json frozen_C4_source_activity + c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/02_AUTHORITY_API_CONSUMER_FREEZE.json d01.C4B_operation_ceiling"
+      },
+      "metadata_reads": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": 1,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC08.expected_metadata_reads"
+      },
+      "selected_reads": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": 0,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC08.expected_selected_reads"
+      },
+      "full_reads": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": 0,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC08.expected_full_reads"
+      },
+      "full_route_passes": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": 0,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json: no full-route pass is admitted for SRC08",
+        "note": "zero passes; {key} is not a full-route source"
+      },
+      "header_prefix_admitted": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": false,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json: expected_header_prefix_bytes appears exactly ONCE in frozen authority, for SRC26",
+        "note": "the explicit header-prefix operation is admitted for SRC26 ONLY"
+      },
+      "header_prefix_bytes": {
+        "authority_status": "UNBOUND",
+        "value": null,
+        "provenance": "no frozen header-prefix byte value exists for this source",
+        "note": "the candidate's DTA 512 constant is implementation behaviour and has NO authority basis (the string 512 occurs zero times in the frozen accounting law)"
+      },
+      "hash_pass": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": 1,
+        "provenance": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/01_EIGHT_SOURCE_WORKLOAD_FREEZE.json .preconditions[3] full-file SHA-256 must equal the frozen identity BEFORE decode",
+        "note": "FLOOR 1 derived from the C4B precondition, not an exact count; HQ196 flagged it reviewer_confirmation_required"
+      },
+      "existence_access": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": 1,
+        "provenance": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/01_EIGHT_SOURCE_WORKLOAD_FREEZE.json .preconditions[3]; 8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json mandatory_separate_accounts[0]",
+        "note": "FLOOR 1; same derivation caveat as the hash pass"
+      },
+      "path_opens": {
+        "authority_status": "UNBOUND",
+        "value": null,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json supplies no path-open value for SRC08; be1af859a:WORKER_RETURNS/PYAT-HQ190-C-R9-WARRANT-ACCOUNTING-BINDING-R1/02_PER_SOURCE_ACCESS_LAYER_LIMITS.json graded it '-'",
+        "note": "measurable and enforceable under the accepted broker, but no numeric pre-launch budget exists. See 02_SRC27_MULTIPLE_OPENS_ADJUDICATION.json."
+      },
+      "decoder_invocations": {
+        "authority_status": "UNBOUND",
+        "value": null,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json names decoder calls a mandatory separate account but supplies no count",
+        "note": "no counter exists in the accepted candidate. See 03_DECODER_INVOCATION_POLICY.json."
+      },
+      "reader_invocations": {
+        "authority_status": "UNBOUND",
+        "value": null,
+        "provenance": "not an O1-C07 account; measurable under the accepted broker; no frozen count"
+      },
+      "retry_ceiling": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": 0,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC08.max_retry_budget",
+        "note": "No retry. Admitted operation is exact-SHA declared-encoding admission plus a metadata-only reader probe."
+      },
+      "byte_count": {
+        "authority_status": "UNBOUND",
+        "value": null,
+        "provenance": "be1af859a:WORKER_RETURNS/PYAT-HQ190-C-R9-WARRANT-ACCOUNTING-BINDING-R1/02_PER_SOURCE_ACCESS_LAYER_LIMITS.json graded byte counts '-' for SRC08: no value exists in governing evidence",
+        "note": "measurable and enforceable under the accepted broker, but source-size dependent. Synthetic carrier totals are NOT warrant budgets."
+      },
+      "must_be_zero": [
+        {
+          "account": "full_reads",
+          "value": 0,
+          "authority": "FROZEN_AUTHORITY",
+          "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC08.expected_full_reads"
+        },
+        {
+          "account": "selected_reads",
+          "value": 0,
+          "authority": "FROZEN_AUTHORITY",
+          "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC08.expected_selected_reads"
+        },
+        {
+          "account": "row_data_reads",
+          "value": 0,
+          "authority": "FROZEN_AUTHORITY",
+          "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .O1_C07_instrumentation.frozen_zero_budgets.SRC08_row_data_reads",
+          "enforcement_law": "These are hard zeros. A single non-zero count in any of them is a STOP condition, not a reportable variance."
+        },
+        {
+          "account": "selected_columns",
+          "value": 0,
+          "authority": "FROZEN_AUTHORITY",
+          "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .O1_C07_instrumentation.frozen_zero_budgets.SRC08_selected_columns"
+        },
+        {
+          "account": "full_source_decode",
+          "value": false,
+          "authority": "FROZEN_AUTHORITY",
+          "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json .per_source[SRC08].allowed_operations.full_source_decode"
+        }
+      ],
+      "provenance_summary": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json",
+        "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/01_EIGHT_SOURCE_WORKLOAD_FREEZE.json"
+      ]
+    },
+    {
+      "source_key": "SRC12",
+      "source_file": "EVS 1990.sav",
+      "format": "SAV",
+      "operation_class": "FRESH_METADATA_ONLY_DECODER_ADMISSION",
+      "reader_lane": "SAV_ENCODING_WINDOWS1252_DECLARED",
+      "reader_encoding": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": "WINDOWS-1252",
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC12.reader_lane",
+        "note": "lane identity is frozen; the encoding value is the lane's declared configuration"
+      },
+      "reader_config_law": {
+        "apply_value_formats": {
+          "authority_status": "FROZEN_AUTHORITY",
+          "value": false,
+          "provenance": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/02_AUTHORITY_API_CONSUMER_FREEZE.json g01 READER_CONFIG / d3d828c171ea9fdd0e90563aff6ef705f5aae2cf"
+        },
+        "user_missing": {
+          "authority_status": "FROZEN_AUTHORITY",
+          "value": true,
+          "provenance": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/02_AUTHORITY_API_CONSUMER_FREEZE.json g01 READER_CONFIG / d3d828c171ea9fdd0e90563aff6ef705f5aae2cf"
+        },
+        "note": "reader configuration is INDEPENDENT of row-data mode. A declared encoding does not by itself admit a row-data read."
+      },
+      "selected_variables": [],
+      "row_data_mode": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": "METADATA_ONLY",
+        "provenance": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/01_EIGHT_SOURCE_WORKLOAD_FREEZE.json frozen_C4_source_activity + c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/02_AUTHORITY_API_CONSUMER_FREEZE.json d01.C4B_operation_ceiling"
+      },
+      "metadata_reads": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": 1,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC12.expected_metadata_reads"
+      },
+      "selected_reads": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": 0,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC12.expected_selected_reads"
+      },
+      "full_reads": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": 0,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC12.expected_full_reads"
+      },
+      "full_route_passes": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": 0,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json: no full-route pass is admitted for SRC12",
+        "note": "zero passes; {key} is not a full-route source"
+      },
+      "header_prefix_admitted": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": false,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json: expected_header_prefix_bytes appears exactly ONCE in frozen authority, for SRC26",
+        "note": "the explicit header-prefix operation is admitted for SRC26 ONLY"
+      },
+      "header_prefix_bytes": {
+        "authority_status": "UNBOUND",
+        "value": null,
+        "provenance": "no frozen header-prefix byte value exists for this source",
+        "note": "the candidate's DTA 512 constant is implementation behaviour and has NO authority basis (the string 512 occurs zero times in the frozen accounting law)"
+      },
+      "hash_pass": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": 1,
+        "provenance": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/01_EIGHT_SOURCE_WORKLOAD_FREEZE.json .preconditions[3] full-file SHA-256 must equal the frozen identity BEFORE decode",
+        "note": "FLOOR 1 derived from the C4B precondition, not an exact count; HQ196 flagged it reviewer_confirmation_required"
+      },
+      "existence_access": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": 1,
+        "provenance": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/01_EIGHT_SOURCE_WORKLOAD_FREEZE.json .preconditions[3]; 8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json mandatory_separate_accounts[0]",
+        "note": "FLOOR 1; same derivation caveat as the hash pass"
+      },
+      "path_opens": {
+        "authority_status": "UNBOUND",
+        "value": null,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json supplies no path-open value for SRC12; be1af859a:WORKER_RETURNS/PYAT-HQ190-C-R9-WARRANT-ACCOUNTING-BINDING-R1/02_PER_SOURCE_ACCESS_LAYER_LIMITS.json graded it '-'",
+        "note": "measurable and enforceable under the accepted broker, but no numeric pre-launch budget exists. See 02_SRC27_MULTIPLE_OPENS_ADJUDICATION.json."
+      },
+      "decoder_invocations": {
+        "authority_status": "UNBOUND",
+        "value": null,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json names decoder calls a mandatory separate account but supplies no count",
+        "note": "no counter exists in the accepted candidate. See 03_DECODER_INVOCATION_POLICY.json."
+      },
+      "reader_invocations": {
+        "authority_status": "UNBOUND",
+        "value": null,
+        "provenance": "not an O1-C07 account; measurable under the accepted broker; no frozen count"
+      },
+      "retry_ceiling": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": 0,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC12.max_retry_budget",
+        "note": "No retry. Same admission scope as SRC08."
+      },
+      "byte_count": {
+        "authority_status": "UNBOUND",
+        "value": null,
+        "provenance": "be1af859a:WORKER_RETURNS/PYAT-HQ190-C-R9-WARRANT-ACCOUNTING-BINDING-R1/02_PER_SOURCE_ACCESS_LAYER_LIMITS.json graded byte counts '-' for SRC12: no value exists in governing evidence",
+        "note": "measurable and enforceable under the accepted broker, but source-size dependent. Synthetic carrier totals are NOT warrant budgets."
+      },
+      "must_be_zero": [
+        {
+          "account": "full_reads",
+          "value": 0,
+          "authority": "FROZEN_AUTHORITY",
+          "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC12.expected_full_reads"
+        },
+        {
+          "account": "selected_reads",
+          "value": 0,
+          "authority": "FROZEN_AUTHORITY",
+          "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC12.expected_selected_reads"
+        },
+        {
+          "account": "row_data_reads",
+          "value": 0,
+          "authority": "FROZEN_AUTHORITY",
+          "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .O1_C07_instrumentation.frozen_zero_budgets.SRC12_row_data_reads",
+          "enforcement_law": "These are hard zeros. A single non-zero count in any of them is a STOP condition, not a reportable variance."
+        },
+        {
+          "account": "selected_columns",
+          "value": 0,
+          "authority": "FROZEN_AUTHORITY",
+          "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .O1_C07_instrumentation.frozen_zero_budgets.SRC12_selected_columns"
+        },
+        {
+          "account": "full_source_decode",
+          "value": false,
+          "authority": "FROZEN_AUTHORITY",
+          "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json .per_source[SRC12].allowed_operations.full_source_decode"
+        }
+      ],
+      "provenance_summary": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json",
+        "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/01_EIGHT_SOURCE_WORKLOAD_FREEZE.json"
+      ]
+    },
+    {
+      "source_key": "SRC14",
+      "source_file": "EVS 2008.sav",
+      "format": "SAV",
+      "operation_class": "BOUNDED_FRESH_PHYSICAL_READ_EXACT_VARIABLE",
+      "reader_lane": "SAV_ENCODING_NULL",
+      "reader_encoding": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": null,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC14.reader_lane",
+        "note": "lane identity is frozen; the encoding value is the lane's declared configuration"
+      },
+      "reader_config_law": {
+        "apply_value_formats": {
+          "authority_status": "FROZEN_AUTHORITY",
+          "value": false,
+          "provenance": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/02_AUTHORITY_API_CONSUMER_FREEZE.json g01 READER_CONFIG / d3d828c171ea9fdd0e90563aff6ef705f5aae2cf"
+        },
+        "user_missing": {
+          "authority_status": "FROZEN_AUTHORITY",
+          "value": true,
+          "provenance": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/02_AUTHORITY_API_CONSUMER_FREEZE.json g01 READER_CONFIG / d3d828c171ea9fdd0e90563aff6ef705f5aae2cf"
+        },
+        "note": "reader configuration is INDEPENDENT of row-data mode. A declared encoding does not by itself admit a row-data read."
+      },
+      "selected_variables": [
+        {
+          "name": "v372",
+          "ordinal": 466
+        }
+      ],
+      "row_data_mode": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": "SELECTED",
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC14"
+      },
+      "metadata_reads": {
+        "authority_status": "UNBOUND",
+        "value": null,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json names metadata reads a mandatory separate account but supplies no count for SRC14",
+        "note": "the metadata-only OPERATION is admitted for this source; only the numeric count is unbound"
+      },
+      "selected_reads": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": 1,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC14.expected_selected_reads"
+      },
+      "full_reads": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": 0,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC14.expected_full_reads"
+      },
+      "full_route_passes": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": 0,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json: no full-route pass is admitted for SRC14",
+        "note": "zero passes; {key} is not a full-route source"
+      },
+      "header_prefix_admitted": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": false,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json: expected_header_prefix_bytes appears exactly ONCE in frozen authority, for SRC26",
+        "note": "the explicit header-prefix operation is admitted for SRC26 ONLY"
+      },
+      "header_prefix_bytes": {
+        "authority_status": "UNBOUND",
+        "value": null,
+        "provenance": "no frozen header-prefix byte value exists for this source",
+        "note": "the candidate's DTA 512 constant is implementation behaviour and has NO authority basis (the string 512 occurs zero times in the frozen accounting law)"
+      },
+      "hash_pass": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": 1,
+        "provenance": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/01_EIGHT_SOURCE_WORKLOAD_FREEZE.json .preconditions[3] full-file SHA-256 must equal the frozen identity BEFORE decode",
+        "note": "FLOOR 1 derived from the C4B precondition, not an exact count; HQ196 flagged it reviewer_confirmation_required"
+      },
+      "existence_access": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": 1,
+        "provenance": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/01_EIGHT_SOURCE_WORKLOAD_FREEZE.json .preconditions[3]; 8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json mandatory_separate_accounts[0]",
+        "note": "FLOOR 1; same derivation caveat as the hash pass"
+      },
+      "path_opens": {
+        "authority_status": "UNBOUND",
+        "value": null,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json supplies no path-open value for SRC14; be1af859a:WORKER_RETURNS/PYAT-HQ190-C-R9-WARRANT-ACCOUNTING-BINDING-R1/02_PER_SOURCE_ACCESS_LAYER_LIMITS.json graded it '-'",
+        "note": "measurable and enforceable under the accepted broker, but no numeric pre-launch budget exists. See 02_SRC27_MULTIPLE_OPENS_ADJUDICATION.json."
+      },
+      "decoder_invocations": {
+        "authority_status": "UNBOUND",
+        "value": null,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json names decoder calls a mandatory separate account but supplies no count",
+        "note": "no counter exists in the accepted candidate. See 03_DECODER_INVOCATION_POLICY.json."
+      },
+      "reader_invocations": {
+        "authority_status": "UNBOUND",
+        "value": null,
+        "provenance": "not an O1-C07 account; measurable under the accepted broker; no frozen count"
+      },
+      "retry_ceiling": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": 0,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC14.max_retry_budget",
+        "note": "No retry. Witness-only read."
+      },
+      "byte_count": {
+        "authority_status": "UNBOUND",
+        "value": null,
+        "provenance": "be1af859a:WORKER_RETURNS/PYAT-HQ190-C-R9-WARRANT-ACCOUNTING-BINDING-R1/02_PER_SOURCE_ACCESS_LAYER_LIMITS.json graded byte counts '-' for SRC14: no value exists in governing evidence",
+        "note": "measurable and enforceable under the accepted broker, but source-size dependent. Synthetic carrier totals are NOT warrant budgets."
+      },
+      "must_be_zero": [
+        {
+          "account": "full_reads",
+          "value": 0,
+          "authority": "FROZEN_AUTHORITY",
+          "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC14.expected_full_reads"
+        }
+      ],
+      "provenance_summary": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json",
+        "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/01_EIGHT_SOURCE_WORKLOAD_FREEZE.json"
+      ]
+    },
+    {
+      "source_key": "SRC26",
+      "source_file": "Latinobarometro 2024.sav",
+      "format": "SAV",
+      "operation_class": "BOUNDED_HEADER_PREFIX_PLUS_READER_METADATA",
+      "reader_lane": "SAV_ENCODING_NULL",
+      "reader_encoding": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": null,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC26.reader_lane",
+        "note": "lane identity is frozen; the encoding value is the lane's declared configuration"
+      },
+      "reader_config_law": {
+        "apply_value_formats": {
+          "authority_status": "FROZEN_AUTHORITY",
+          "value": false,
+          "provenance": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/02_AUTHORITY_API_CONSUMER_FREEZE.json g01 READER_CONFIG / d3d828c171ea9fdd0e90563aff6ef705f5aae2cf"
+        },
+        "user_missing": {
+          "authority_status": "FROZEN_AUTHORITY",
+          "value": true,
+          "provenance": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/02_AUTHORITY_API_CONSUMER_FREEZE.json g01 READER_CONFIG / d3d828c171ea9fdd0e90563aff6ef705f5aae2cf"
+        },
+        "note": "reader configuration is INDEPENDENT of row-data mode. A declared encoding does not by itself admit a row-data read."
+      },
+      "selected_variables": [],
+      "row_data_mode": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": "METADATA_ONLY_PLUS_HEADER_PREFIX",
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC26"
+      },
+      "metadata_reads": {
+        "authority_status": "UNBOUND",
+        "value": null,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json names metadata reads a mandatory separate account but supplies no count for SRC26",
+        "note": "the metadata-only OPERATION is admitted for this source; only the numeric count is unbound"
+      },
+      "selected_reads": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": 0,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC26.expected_selected_reads"
+      },
+      "full_reads": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": 0,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC26.expected_full_reads"
+      },
+      "full_route_passes": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": 0,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json: no full-route pass is admitted for SRC26",
+        "note": "zero passes; {key} is not a full-route source"
+      },
+      "header_prefix_admitted": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": true,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC26.expected_header_prefix_bytes"
+      },
+      "header_prefix_bytes": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": 176,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC26.expected_header_prefix_bytes"
+      },
+      "hash_pass": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": 1,
+        "provenance": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/01_EIGHT_SOURCE_WORKLOAD_FREEZE.json .preconditions[3] full-file SHA-256 must equal the frozen identity BEFORE decode",
+        "note": "FLOOR 1 derived from the C4B precondition, not an exact count; HQ196 flagged it reviewer_confirmation_required"
+      },
+      "existence_access": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": 1,
+        "provenance": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/01_EIGHT_SOURCE_WORKLOAD_FREEZE.json .preconditions[3]; 8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json mandatory_separate_accounts[0]",
+        "note": "FLOOR 1; same derivation caveat as the hash pass"
+      },
+      "path_opens": {
+        "authority_status": "UNBOUND",
+        "value": null,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json supplies no path-open value for SRC26; be1af859a:WORKER_RETURNS/PYAT-HQ190-C-R9-WARRANT-ACCOUNTING-BINDING-R1/02_PER_SOURCE_ACCESS_LAYER_LIMITS.json graded it '-'",
+        "note": "measurable and enforceable under the accepted broker, but no numeric pre-launch budget exists. See 02_SRC27_MULTIPLE_OPENS_ADJUDICATION.json."
+      },
+      "decoder_invocations": {
+        "authority_status": "UNBOUND",
+        "value": null,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json names decoder calls a mandatory separate account but supplies no count",
+        "note": "no counter exists in the accepted candidate. See 03_DECODER_INVOCATION_POLICY.json."
+      },
+      "reader_invocations": {
+        "authority_status": "UNBOUND",
+        "value": null,
+        "provenance": "not an O1-C07 account; measurable under the accepted broker; no frozen count"
+      },
+      "retry_ceiling": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": 0,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC26.max_retry_budget",
+        "note": "No retry. Geometry divergence between raw header 174 and decoded dictionary width 332 is expected and NOT equality-required."
+      },
+      "byte_count": {
+        "authority_status": "UNBOUND",
+        "value": null,
+        "provenance": "be1af859a:WORKER_RETURNS/PYAT-HQ190-C-R9-WARRANT-ACCOUNTING-BINDING-R1/02_PER_SOURCE_ACCESS_LAYER_LIMITS.json graded byte counts '-' for SRC26: no value exists in governing evidence",
+        "note": "measurable and enforceable under the accepted broker, but source-size dependent. Synthetic carrier totals are NOT warrant budgets."
+      },
+      "must_be_zero": [
+        {
+          "account": "full_reads",
+          "value": 0,
+          "authority": "FROZEN_AUTHORITY",
+          "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC26.expected_full_reads"
+        },
+        {
+          "account": "selected_reads",
+          "value": 0,
+          "authority": "FROZEN_AUTHORITY",
+          "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC26.expected_selected_reads"
+        },
+        {
+          "account": "selected_reads",
+          "value": 0,
+          "authority": "FROZEN_AUTHORITY",
+          "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC26.expected_selected_reads"
+        }
+      ],
+      "provenance_summary": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json",
+        "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/01_EIGHT_SOURCE_WORKLOAD_FREEZE.json"
+      ]
+    },
+    {
+      "source_key": "SRC27",
+      "source_file": "LiTS_I.dta",
+      "format": "DTA",
+      "operation_class": "EXACTLY_ONE_GOVERNED_FRESH_FULL_ROUTE_PASS",
+      "reader_lane": "DTA_ENCODING_LATIN1_COMPATIBILITY",
+      "reader_encoding": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": "latin1",
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC27.reader_lane",
+        "note": "lane identity is frozen; the encoding value is the lane's declared configuration"
+      },
+      "reader_config_law": {
+        "apply_value_formats": {
+          "authority_status": "FROZEN_AUTHORITY",
+          "value": false,
+          "provenance": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/02_AUTHORITY_API_CONSUMER_FREEZE.json g01 READER_CONFIG / d3d828c171ea9fdd0e90563aff6ef705f5aae2cf"
+        },
+        "user_missing": {
+          "authority_status": "FROZEN_AUTHORITY",
+          "value": true,
+          "provenance": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/02_AUTHORITY_API_CONSUMER_FREEZE.json g01 READER_CONFIG / d3d828c171ea9fdd0e90563aff6ef705f5aae2cf"
+        },
+        "note": "reader configuration is INDEPENDENT of row-data mode. A declared encoding does not by itself admit a row-data read."
+      },
+      "selected_variables": [],
+      "row_data_mode": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": "FULL",
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .hardened_note_on_the_SRC27_single_pass"
+      },
+      "metadata_reads": {
+        "authority_status": "UNBOUND",
+        "value": null,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json names metadata reads a mandatory separate account but supplies no count for SRC27",
+        "note": "the metadata-only OPERATION is admitted for this source; only the numeric count is unbound"
+      },
+      "selected_reads": {
+        "authority_status": "UNBOUND",
+        "value": null,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC27 supplies no expected_selected_reads; be1af859a:WORKER_RETURNS/PYAT-HQ190-C-R9-WARRANT-ACCOUNTING-BINDING-R1/02_PER_SOURCE_ACCESS_LAYER_LIMITS.json ACC-07 for this source: 'Mapping it into a selected-read slot would be a fabrication.'",
+        "note": "no selected-read count exists for this source and none may be invented"
+      },
+      "full_reads": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": 1,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .hardened_note_on_the_SRC27_single_pass 'at minimum: ... one full compatibility read'",
+        "note": "FLOOR 1, NOT an exact count. No expected_full_reads exists for this source and no governing artifact supplies a ceiling. Graded F1 with ceiling null by HQ190-C."
+      },
+      "full_route_passes": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": 1,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC27"
+      },
+      "header_prefix_admitted": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": false,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json: expected_header_prefix_bytes appears exactly ONCE in frozen authority, for SRC26",
+        "note": "the explicit header-prefix operation is admitted for SRC26 ONLY"
+      },
+      "header_prefix_bytes": {
+        "authority_status": "UNBOUND",
+        "value": null,
+        "provenance": "no frozen header-prefix byte value exists for this source",
+        "note": "the candidate's DTA 512 constant is implementation behaviour and has NO authority basis (the string 512 occurs zero times in the frozen accounting law)"
+      },
+      "hash_pass": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": 1,
+        "provenance": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/01_EIGHT_SOURCE_WORKLOAD_FREEZE.json .preconditions[3] full-file SHA-256 must equal the frozen identity BEFORE decode",
+        "note": "FLOOR 1 derived from the C4B precondition, not an exact count; HQ196 flagged it reviewer_confirmation_required"
+      },
+      "existence_access": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": 1,
+        "provenance": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/01_EIGHT_SOURCE_WORKLOAD_FREEZE.json .preconditions[3]; 8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json mandatory_separate_accounts[0]",
+        "note": "FLOOR 1; same derivation caveat as the hash pass"
+      },
+      "path_opens": {
+        "authority_status": "UNBOUND",
+        "value": null,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json supplies no path-open value for SRC27; be1af859a:WORKER_RETURNS/PYAT-HQ190-C-R9-WARRANT-ACCOUNTING-BINDING-R1/02_PER_SOURCE_ACCESS_LAYER_LIMITS.json graded it '-'",
+        "note": "measurable and enforceable under the accepted broker, but no numeric pre-launch budget exists. See 02_SRC27_MULTIPLE_OPENS_ADJUDICATION.json."
+      },
+      "decoder_invocations": {
+        "authority_status": "UNBOUND",
+        "value": null,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json names decoder calls a mandatory separate account but supplies no count",
+        "note": "no counter exists in the accepted candidate. See 03_DECODER_INVOCATION_POLICY.json."
+      },
+      "reader_invocations": {
+        "authority_status": "UNBOUND",
+        "value": null,
+        "provenance": "not an O1-C07 account; measurable under the accepted broker; no frozen count"
+      },
+      "retry_ceiling": {
+        "authority_status": "FROZEN_AUTHORITY",
+        "value": 0,
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC27.max_retry_budget",
+        "note": "Exactly ONE governed fresh pass. A second pass is not a retry; it is a separate run requiring new HQ-bound authority."
+      },
+      "byte_count": {
+        "authority_status": "UNBOUND",
+        "value": null,
+        "provenance": "be1af859a:WORKER_RETURNS/PYAT-HQ190-C-R9-WARRANT-ACCOUNTING-BINDING-R1/02_PER_SOURCE_ACCESS_LAYER_LIMITS.json graded byte counts '-' for SRC27: no value exists in governing evidence",
+        "note": "measurable and enforceable under the accepted broker, but source-size dependent. Synthetic carrier totals are NOT warrant budgets."
+      },
+      "must_be_zero": [
+        {
+          "account": "selected_reads",
+          "value": null,
+          "authority": "UNBOUND",
+          "provenance": "be1af859a:WORKER_RETURNS/PYAT-HQ190-C-R9-WARRANT-ACCOUNTING-BINDING-R1/02_PER_SOURCE_ACCESS_LAYER_LIMITS.json .per_source.SRC27.layers.ACC-07_selected_reads",
+          "note": "no expected_selected_reads exists for SRC27 and none may be invented"
+        }
+      ],
+      "provenance_summary": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json",
+        "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/01_EIGHT_SOURCE_WORKLOAD_FREEZE.json"
+      ]
+    }
+  ]
+}
