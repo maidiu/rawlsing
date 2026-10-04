@@ -1,0 +1,25 @@
+HQ199 — exact accepted R7 six-file court
+python  : /Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/qualification/r7-c4-source-free-venv/bin/python
+env     : PYTHONHASHSEED=0 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONPATH=<hq199 sparse worktree root>
+pytest  : -p no:cacheprovider
+files   : the six commissioned files, unmodified
+
+collect-only : 55 tests collected in 0.98s   EXIT=0  DURATION=1.0s
+run 1        : 55 passed in 42.13s             EXIT=0  DURATION=50.0s
+run 2        : 55 passed in 42.08s             EXIT=0  DURATION=49.0s
+
+denominator required 55, observed 55. Target 55/55 twice MET.
+No failures occurred, so none were retried.
+
+Broker + session courts (same interpreter/env):
+  test_pre553_source_access_broker_court.py : 20 passed
+  test_pre553_source_session_court.py      : 15 passed
+  combined                                  : 35 passed
+  test_pre553_sr06_decoder_carrier.py       : 2 failed, 14 passed, 1 skipped
+      cause: ModuleNotFoundError for duckdb, absent from the R7 venv.
+      Pre-existing and identical to HQ196/HQ197/HQ198; not a candidate defect.
+
+Full suite: 325 failed / 2523 passed / 1 skipped / 58 errors, duration 394s.
+Zero NEW failures against the previous comparison baseline.
+(The 10 fewer failures than the HQ197-era baseline are fixture-dependent tests
+that now run, because this manifest materialises the FIABC/EE-P2R6S fixtures.)

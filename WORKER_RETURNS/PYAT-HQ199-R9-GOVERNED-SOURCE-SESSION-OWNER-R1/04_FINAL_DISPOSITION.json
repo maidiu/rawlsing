@@ -1,0 +1,74 @@
+{
+  "schema": "HQ199_FINAL_DISPOSITION@1.0.0",
+  "commission": "PYAT-HQ199-R9-GOVERNED-SOURCE-SESSION-OWNER-R1",
+  "role": "SOURCE-FREE IMPLEMENTATION WORKER — SPACE BUNNY",
+  "branch": "agent/rabochii-pyat-hq199-r1",
+  "commissioned_startup_sha": "f26b2ea632725596a9e94957ef1d6053c96c735c",
+  "startup_verified_exactly": true,
+  "implementation_base": "4b6335ca5fc485108b0ffb1d682a29a02e1eee51",
+  "base_verified_ancestor_of_startup": true,
+
+  "disposition": "GOVERNED_SOURCE_SESSION_CANDIDATE_READY_FOR_INDEPENDENT_REVIEW",
+
+  "one_paragraph": "The generic per-source execution owner is implemented above one _decode() call and all three named gaps are closed. A GovernedSourceSession owns one broker, one physical open, one aggregate receipt, the decoder-invocation account and a deterministic close, and is reused across every admitted operation in a scope; a typed plan distinguishes METADATA_ONLY, SELECTED, FULL and CHUNKED_FULL as independent operations with encoding now independent of row-data mode, so the previous defect in which a non-null encoding alone forced a full read is fixed and measured. Header-prefix access occurs only when a plan explicitly admits a size. decoder_invocations is a real account and budget counted once at the entry boundary, distinct from reader_invocations, and a second entry is refused with no account movement. The fixture-complete R7 court collects exactly 55 and passes 55/55 twice with exit code 0, the 15 new session courts and the 20 existing broker courts all pass, and the full suite shows zero new failures.",
+
+  "why_this_disposition": [
+    { "not": "SESSION_OWNER_MECHANISM_PARTIAL", "because": "every element the commission enumerated is present and demonstrated: entry key, path, expected SHA-256, format, reader config, one broker lifecycle, one plan, an aggregate receipt, the decoder-invocations account, and deterministic close on both normal and exceptional paths. All four modes are independently accounted, and the encoding-correction and header-prefix rules are measured rather than asserted." },
+    { "not": "R7_REQUALIFICATION_FAILURE", "because": "collect-only is exactly 55 and both required runs passed 55/55 with exit code 0." },
+    { "not": "MATERIAL_NEW_COUNTEREXAMPLE", "because": "zero new failures across the full suite; the existing 20-court broker suite and the SR06 carrier suite are unchanged in behaviour apart from the two pre-existing duckdb absences." },
+    { "not": "CHECKOUT_MODE_INSUFFICIENT__HQ_RECOMMISSION_REQUIRED", "because": "every fixture the commissioned court needed was materialised by this manifest and confirmed present." },
+    { "chosen": "GOVERNED_SOURCE_SESSION_CANDIDATE_READY_FOR_INDEPENDENT_REVIEW", "because": "the mechanism work is complete and independently requalified; what remains is not a mechanism gap but the authority decisions this lane is explicitly forbidden to make." }
+  ],
+
+  "requirements_met": {
+    "one_bound_source_entry_lifecycle": "GovernedSourceSession owns it; three plans in one session gave decoder_invocations=3 with path_opens=1",
+    "typed_operation_plan_distinguishing_four_modes": "METADATA_ONLY, SELECTED, FULL, CHUNKED_FULL, each driving exactly one reader account",
+    "encoding_independent_of_row_data_mode": "METADATA_ONLY + encoding='latin1' gives metadata 1, selected 0, full 0, chunk 0",
+    "metadata_only_does_not_trigger_full_read": "MEASURED and courted (c4)",
+    "header_prefix_only_when_plan_admits": "None -> zero prefix reads across three modes; 176 -> exactly one operation of 176 bytes",
+    "decoder_invocations_not_reader_invocations": "measured 1 vs 5 on a chunked decode; reader_invocations was not renamed",
+    "max_decoder_invocations_1_rejects_second_entry_pre_operation": "SOURCE_ACCESS_BUDGET_EXCEEDED with all nine tracked accounts unmoved",
+    "selected_full_chunked_remain_distinct": "each mode asserted to drive its own account and to leave the others at zero",
+    "no_SRCxx_policy_hardcoded": "court x3 AST-scans code for SRCxx tokens, excluding docstrings; zero found",
+    "SRC27_path_open_normativity_not_decided": "not decided, as commissioned",
+    "no_hidden_raw_path_fallback": "decode_in_session never constructs a broker or passes a path string; iter_batches still raises rather than falling back",
+    "session_is_the_account_owner_on_the_governed_path": "the receipt comes from session.aggregate_receipt()",
+    "receipt_live_and_complete": "built live from the session or broker, so later chunk reads are included",
+    "close_source_access_closes_session_safely": "closes the session when owned, idempotent, plus context-manager support"
+  },
+
+  "verification": {
+    "r7_six_file_collect_only": { "collected": 55, "required": 55, "exit_code": 0 },
+    "r7_six_file_run_1": { "passed": 55, "failed": 0, "exit_code": 0, "duration_s": 50 },
+    "r7_six_file_run_2": { "passed": 55, "failed": 0, "exit_code": 0, "duration_s": 49 },
+    "session_courts": "15 passed",
+    "broker_courts": "20 passed",
+    "full_suite": { "failed": 325, "passed": 2523, "skipped": 1, "errors": 58, "new_failures": 0, "duration_s": 394 },
+    "closure": { "freeze": 21, "candidate": 23, "delta": 2, "raw_path_reader_calls": 0, "positive_control_raw_calls": 2 },
+    "failures_retried_away": 0
+  },
+
+  "self_corrections_disclosed": [
+    { "court": "c11", "symptom": "AttributeError on .value", "diagnosis": "manual try/except binds the exception, not a pytest ExceptionInfo", "fix": "court corrected to exc.code; no product code changed" },
+    { "court": "x3", "symptom": "reported SRC02 hardcoded", "diagnosis": "substring scan flagged the module's own disclaimer prose", "fix": "replaced with an AST scan of non-docstring literals and identifiers so the check tests code" }
+  ],
+
+  "what_this_does_not_establish": [
+    "Source-free only. Qualifies no real survey source and is not survey-semantic equivalence.",
+    "No plan is bound to any source. Which plan a given source should carry, and with what header_prefix_bytes, remains for the documentary lanes.",
+    "SRC27's historical 'multiple path-level opens' phrase is NOT adjudicated here. This lane supplies only the mechanism by which an admitted prefix size either is or is not read.",
+    "The selected route still does not physically suppress unselected-column bytes; the existing disclosure is unchanged.",
+    "R9 is not closed by this lane. The architecture-warrant candidate and the authority questions HQ195 recorded remain HQ and Astra decisions.",
+    "No adoption, self-adoption, warrant, locator work, live C4, C7 or actor work."
+  ],
+
+  "next_reviewer_attention": [
+    "Attack the pre-operation refusal: confirm a second decoder entry with the cap at 1 cannot move ANY account, including reader_invocations and reader_bytes.",
+    "Confirm METADATA_ONLY cannot be made to perform a row-data read by any encoding value.",
+    "Confirm no SRCxx constant can enter the plan through a caller-provided string that the module would then interpret.",
+    "Check whether the session should also own the header-prefix decision, or whether that must stay with the documentary plan.",
+    "Re-derive the closure: the delta is now +2 mechanism modules; confirm neither is source policy."
+  ],
+
+  "terminal": "HQ199_R9_GOVERNED_SOURCE_SESSION_RETURNED__HQ_REVIEW_REQUIRED"
+}

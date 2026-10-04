@@ -1,0 +1,41 @@
+{
+  "schema": "HQ199_CLOSURE_AND_HOLDS@1.0.0",
+  "closure": {
+    "method": "AST transitive-import closure from the five declared C4 layer roots, recomputed independently at the freeze and at the HQ199 candidate commit 90ccbd54c549f67358d0c02ad18ff90b843cf3ee",
+    "freeze_derived_import_modules": 21,
+    "candidate_derived_import_modules": 23,
+    "delta": 2,
+    "modules_added": ["rawlsing_next.pre553_source_access_broker", "rawlsing_next.pre553_source_session"],
+    "delta_explanation": "the two new generic mechanism modules this line of work introduced. Both are access/plan mechanism, not source policy.",
+    "commission_basis": "21 imports + 2 declared producer/consumer references = 23 at freeze; candidate 23 + 2 mechanism modules = 25. On either basis the delta is exactly the mechanism modules.",
+    "raw_path_reader_calls_in_closure": 0,
+    "reader_calls_in_closure": 1,
+    "verdict": "NO_RAW_PATH_READER_CALLS_IN_CANDIDATE_C4_CLOSURE",
+    "auditor_falsifiability": {
+      "positive_control": "rawlsing_next/runtime/ee_p2x/05_WVS7_PROJECTION_MATERIALIZER.py (outside the closure)",
+      "positive_control_raw_path_calls_detected": 2,
+      "conclusion": "the same auditor finds raw-path reader calls where they genuinely exist, so the zero inside the C4 closure is a real negative",
+      "note": "the auditor defect found in HQ198 (expanding 'from X import *' into a phantom module) remains fixed in this lane's runner"
+    },
+    "wvs7_materializer": "outside the C4 closure, not edited, not treated as a C4 defect"
+  },
+  "holds": {
+    "real_survey_source_access": 0,
+    "locator_discovery": 0,
+    "warrant_issuance": false,
+    "live_c4": false,
+    "c7_or_actor_person_work": 0,
+    "pyreadstat_or_r7_environment_mutated": false,
+    "self_adopted": false,
+    "source_specific_plans_hardcoded": false,
+    "SRC27_path_open_normativity_decided": false
+  },
+  "checkout_law": {
+    "mode": "SPARSE_REQUIRED",
+    "repository_cloned": false,
+    "full_checkout_created": false,
+    "sparse_expansions_beyond_manifest": 0,
+    "materialized_files": 355,
+    "full_repo_tracked_files": 7097
+  }
+}

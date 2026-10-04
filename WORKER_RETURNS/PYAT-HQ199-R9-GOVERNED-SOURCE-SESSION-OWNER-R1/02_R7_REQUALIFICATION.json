@@ -1,0 +1,45 @@
+{
+  "schema": "HQ199_R7_REQUALIFICATION@1.0.0",
+  "commission": "PYAT-HQ199-R9-GOVERNED-SOURCE-SESSION-OWNER-R1",
+  "reason_rerun": "production blobs changed in this lane, so the freeze's own validity_and_invalidation condition 'any rawlsing_next/** production blob change' is triggered and a new qualification is required",
+  "environment": {
+    "interpreter": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/qualification/r7-c4-source-free-venv/bin/python",
+    "PYTHONHASHSEED": "0",
+    "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+    "PYTHONPATH": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq199-r9-session",
+    "pytest_flag": "-p no:cacheprovider",
+    "worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq199-r9-session",
+    "manifest_unchanged_from_HQ198": true
+  },
+  "files": [
+    "rawlsing_next/tests/test_closed35_g01_sav_numeric_representation_authority.py",
+    "rawlsing_next/tests/test_closed35_d01_declared_encoding_admission.py",
+    "rawlsing_next/tests/test_closed35_d02_opaque_datetime_carrier.py",
+    "rawlsing_next/tests/test_fiabc_lm2_r1j_sav_representation_authority.py",
+    "rawlsing_next/tests/test_r35_i01_physical_metadata.py",
+    "rawlsing_next/tests/test_pre553_source_backed_c11_facade.py"
+  ],
+  "collect_only": { "collected": 55, "required": 55, "match": true, "exit_code": 0, "duration_s": 1.0, "pytest_reported": "55 tests collected in 0.98s" },
+  "run_1": { "passed": 55, "failed": 0, "exit_code": 0, "duration_s": 50.0, "pytest_reported": "55 passed in 42.13s" },
+  "run_2": { "passed": 55, "failed": 0, "exit_code": 0, "duration_s": 49.0, "pytest_reported": "55 passed in 42.08s" },
+  "result": "55_of_55_twice",
+  "retried_away_any_failure": false,
+  "failures_encountered": 0,
+  "candidate_and_session_courts": {
+    "test_pre553_source_session_court.py": "15 passed",
+    "test_pre553_source_access_broker_court.py": "20 passed",
+    "combined": "35 passed"
+  },
+  "full_suite": {
+    "result": "325 failed, 2523 passed, 1 skipped, 58 errors",
+    "duration_s": 394,
+    "new_failures_vs_comparison_baseline": 0,
+    "note_on_the_ten_fewer_failures": "the previous comparison baseline predated the fixture-complete manifest; the 10 recovered tests are fixture-dependent tests that now actually run because FIABC/EE-P2R6S paths are materialised. They are not attributable to this lane's code change."
+  },
+  "out_of_scope_observed": {
+    "item": "test_pre553_sr06_decoder_carrier.py reports 2 failed, 14 passed, 1 skipped",
+    "cause": "ModuleNotFoundError: No module named 'duckdb'",
+    "assessment": "not one of the six commissioned files; duckdb is absent from the R7 venv; identical to HQ196/HQ197/HQ198; not a candidate defect",
+    "action": "recorded only; not retried, not worked around"
+  }
+}

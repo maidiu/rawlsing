@@ -1,0 +1,135 @@
+{
+  "schema": "HQ199_SESSION_OWNER@1.0.0",
+  "commission": "PYAT-HQ199-R9-GOVERNED-SOURCE-SESSION-OWNER-R1",
+  "CATEGORY": "C3 enforcement surface / generic mechanism",
+  "gaps_closed": {
+    "GOV-SCOPE-001": "CLOSED — GovernedSourceSession is an explicit per-source execution owner created once per caller-bound source entry and reused for every admitted operation in that scope.",
+    "GOV-DEC-003": "CLOSED — decoder_invocations is a real account and budget, counted once at the decoder/session entry boundary, separate from reader_invocations.",
+    "GOV-HDR-002": "MECHANISM_SUPPLIED — header-prefix access occurs only when the plan explicitly admits a header_prefix_bytes size. The plan decision itself is left to the documentary lanes."
+  },
+
+  "owner_surface": {
+    "module": "rawlsing_next/pre553_source_session.py",
+    "owns": [
+      "source_entry_key supplied by the caller",
+      "path",
+      "expected SHA-256",
+      "source format",
+      "reader encoding / config",
+      "one SourceAccessBroker lifecycle",
+      "one operation plan per admitted operation",
+      "aggregate source-access receipt",
+      "decoder_invocations account",
+      "deterministic close lifecycle"
+    ],
+    "reuse": "created once per source entry; three plans run in one session produced decoder_invocations=3 and path_opens=1"
+  },
+
+  "generic_operation_plan": {
+    "source_specific_constants_embedded": 0,
+    "how_that_is_proven": "court x3 AST-scans the module for SRCxx tokens in non-docstring string literals and in identifiers. The scan deliberately excludes docstrings, because this module's prose names those sources precisely to record that it does NOT encode their plans; a naive substring scan would flag that disclaimer as a violation.",
+    "modes": {
+      "METADATA_ONLY": { "reader_account": "metadata_reads", "admits_row_data": false },
+      "SELECTED": { "reader_account": "selected_reads", "admits_row_data": true, "requires": "non-empty selected_variables" },
+      "FULL": { "reader_account": "full_reads", "admits_row_data": true },
+      "CHUNKED_FULL": { "reader_account": "chunk_reads", "admits_row_data": true, "requires": "chunk_rows >= 1" }
+    },
+    "plan_fields": ["mode", "selected_variables", "header_prefix_bytes", "encoding", "chunk_rows", "max_retries", "outer_account_token"],
+    "validation": "incoherent plans are refused by SourceOperationPlan.__post_init__ BEFORE any access: SELECTED without variables, repeating names, selected_variables on a non-SELECTED mode, CHUNKED_FULL without chunk_rows, chunk_rows on a non-chunked mode, negative prefix, negative retries"
+  },
+
+  "key_correction": {
+    "before": "a non-null encoding alone forced a full row-data read (`elif encoding is not None: full_read(...)`)",
+    "after": "encoding is a reader configuration value; the row-data mode is decided solely by the plan",
+    "measured": "METADATA_ONLY with encoding='latin1' -> metadata_reads=1, selected_reads=0, full_reads=0, chunk_reads=0",
+    "court": "c4"
+  },
+
+  "header_prefix_discipline": {
+    "rule": "a prefix read happens only when the plan admits header_prefix_bytes",
+    "none_means": "header_prefix_bytes=None admits no prefix access at all",
+    "measured_none": "header_prefix_reads=0, header_prefix_bytes=0 across METADATA_ONLY, SELECTED and FULL",
+    "measured_explicit": "header_prefix_bytes=176 -> header_prefix_reads=1, header_prefix_bytes=176",
+    "note": "the plan VALUE for any particular source is not decided here"
+  },
+
+  "decoder_invocations": {
+    "added_to": ["SourceAccessAccount", "SourceAccessBudget", "receipt measurement_basis", "pre-operation budget checks"],
+    "counted": "once at the decoder/session entry boundary via admit_decoder_entry(), never once per reader call",
+    "distinct_from_reader_invocations": "measured on a chunked decode: decoder_invocations=1 while reader_invocations = metadata_reads + chunk_reads = 5",
+    "reader_invocations_renamed": false,
+    "max_one_rejection": {
+      "cap": 1,
+      "second_entry_result": "SOURCE_ACCESS_BUDGET_EXCEEDED",
+      "accounts_moved_by_the_refused_entry": 0,
+      "fields_verified_unchanged": ["decoder_invocations", "metadata_reads", "selected_reads", "full_reads", "chunk_reads", "hash_passes", "header_prefix_reads", "path_opens", "reader_invocations"],
+      "pre_operation": true,
+      "court": "c3"
+    },
+    "legacy_path": "decode_sav/decode_dta also call admit_decoder_entry() at their entry boundary, so the account is meaningful on both paths"
+  },
+
+  "decoder_integration": {
+    "governed_path": "decode_in_session(session, plan) uses the session-owned broker and never constructs a broker nor passes a path string to pyreadstat",
+    "legacy_apis": "decode_sav / decode_dta remain for source-free compatibility and now count their decoder entry; iter_batches still raises RawSourcePathEscape rather than falling back to a raw path",
+    "hidden_raw_path_fallback": "none",
+    "account_owner_on_governed_path": "the session",
+    "receipt_live_and_complete": "PhysicalSourceIncidence.source_access_receipt returns session.aggregate_receipt() when a session is attached, and the broker receipt otherwise; both are built live so later chunk reads are included",
+    "close_source_access": "closes the session when the incidence owns one, else the broker; idempotent",
+    "context_manager": "GovernedSourceSession and PhysicalSourceIncidence both support with/enter and deterministic cleanup on success and exception paths"
+  },
+
+  "byte_limiter_intact": {
+    "verified_under_the_session": true,
+    "exactly_enough": "cap == required bytes -> completes",
+    "one_byte_short": "cap == required - 1 -> READER_BYTES_LIMIT_EXCEEDED having consumed exactly cap",
+    "never_beyond": "reader_bytes <= cap at caps of required, required-1 and 16",
+    "court": "c11"
+  },
+
+  "courts": {
+    "file": "rawlsing_next/tests/test_pre553_source_session_court.py",
+    "result": "15 passed, 0 failed",
+    "commissioned_twelve": {
+      "1_one_session_one_physical_open": "PASS",
+      "2_decoder_invocations_one_after_one_decode": "PASS",
+      "3_max_one_rejects_second_decode_pre_operation": "PASS",
+      "4_metadata_only_plus_encoding_no_row_data": "PASS",
+      "5_selected_one_selected_zero_full": "PASS",
+      "6_full_distinct_from_chunking": "PASS",
+      "7_chunked_full_separately_accounted": "PASS",
+      "8_no_admitted_prefix_zero_prefix_reads": "PASS",
+      "9_explicit_prefix_176_one_operation": "PASS",
+      "10_deterministic_close_normal_and_exceptional": "PASS",
+      "11_reader_bytes_limiter_intact": "PASS",
+      "12_no_raw_path_reaches_pyreadstat": "PASS"
+    },
+    "extras": {
+      "x1_plan_validation_before_access": "PASS",
+      "x2_decoder_vs_reader_invocations_distinct": "PASS",
+      "x3_no_source_specific_constants_in_code": "PASS"
+    },
+    "existing_broker_court": "20 passed, 0 failed (unchanged)"
+  },
+
+  "self_corrections_disclosed": [
+    {
+      "court": "c11",
+      "symptom": "AttributeError: 'SourceAccessViolation' object has no attribute 'value'",
+      "diagnosis": "the court used a manual try/except, so the bound name is the exception itself rather than a pytest ExceptionInfo",
+      "fix": "corrected the court to exc.code; no production or session code was changed"
+    },
+    {
+      "court": "x3",
+      "symptom": "reported SRC02 hardcoded in the plan module",
+      "diagnosis": "a naive substring scan flagged the module's own docstring, which names those sources precisely to record that it does NOT encode their plans",
+      "fix": "replaced with an AST scan of non-docstring string literals and identifiers, so the check tests code rather than prose"
+    }
+  ],
+
+  "explicitly_not_decided": {
+    "SRC27_multiple_path_opens_normativity": "NOT DECIDED in this lane, as commissioned. This lane supplies only the mechanism by which an explicitly planned prefix size either is or is not admitted.",
+    "source_specific_plans_or_budgets": "none hardcoded; the plan value for any particular source remains for the documentary lanes",
+    "warrant_or_authority": "none issued, none exercised"
+  }
+}

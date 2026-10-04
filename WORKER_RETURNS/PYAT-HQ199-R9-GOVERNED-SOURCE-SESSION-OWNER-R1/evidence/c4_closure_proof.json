@@ -1,0 +1,241 @@
+{
+ "schema": "HQ198_C4_CLOSURE_PROOF@1.0.0",
+ "CATEGORY": "C1 declared roots + C2 recomputed closure over the import graph",
+ "method": "AST transitive-import closure from the five C4 layer roots declared by the accepted C4C3 return, recomputed independently at the freeze and at the candidate. No declared count is taken on trust.",
+ "c4_layer_roots": [
+  "rawlsing_next/pre553_physical_decoder.py",
+  "rawlsing_next/pre553_source_backed_c11_facade.py",
+  "rawlsing_next/pre553_empirical_possibility_provider.py",
+  "rawlsing_next/pre553_analytical_composition.py",
+  "rawlsing_next/source_backed_positioned_subject_possibility.py"
+ ],
+ "freeze_revision": "8ff40d37de69db2d8a6053a7c2242f481677f1a4",
+ "candidate_revision": "90ccbd54c549f67358d0c02ad18ff90b843cf3ee",
+ "derived_closure_sizes": {
+  "freeze_transitive_import_modules": 21,
+  "candidate_transitive_import_modules": 23,
+  "delta": 2,
+  "modules_added_by_candidate": [
+   "rawlsing_next.pre553_source_access_broker",
+   "rawlsing_next.pre553_source_session"
+  ],
+  "modules_removed": []
+ },
+ "declared_count_reconciliation": {
+  "commission_freeze_closure": 23,
+  "commission_candidate_closure": 24,
+  "accepted_C4C3_declares": "transitive_import_closure.module_count = 21",
+  "freeze_lanes_law_declares": "c4_import_closure_modules = 21",
+  "reconciliation": "The accepted C4C3 artifact's own completeness note reads: 'An independent extraction of every literal rawlsing_next* token inside all 21 files yields exactly these 21 module names PLUS THE TWO DECLARED PRODUCER/CONSUMER REFERENCES already listed.' The commission's 23 is therefore 21 imported modules + 2 declared producer/consumer references. On that same basis the candidate is 23 + 1 broker = 24.",
+  "delta_is_exactly_the_broker": true,
+  "delta_evidence": "recomputed delta = 2; added = ['rawlsing_next.pre553_source_access_broker', 'rawlsing_next.pre553_source_session']",
+  "honesty_note": "This resolves the 21-vs-23 discrepancy flagged in HQ197. It does NOT change the security conclusion: in both figures the closure contains exactly one module that opens a source path, and it is the broker."
+ },
+ "raw_path_audit": {
+  "question": "does any pyreadstat call inside the candidate C4 closure receive a source path string?",
+  "modules_in_candidate_closure": 23,
+  "total_reader_calls_in_closure": 1,
+  "raw_path_reader_calls_in_closure": 0,
+  "modules_with_raw_path_reader_calls": [],
+  "source_path_open_sites_in_closure": 3,
+  "verdict": "NO_RAW_PATH_READER_CALLS_IN_CANDIDATE_C4_CLOSURE"
+ },
+ "auditor_falsifiability": {
+  "positive_control_target": "rawlsing_next/runtime/ee_p2x/05_WVS7_PROJECTION_MATERIALIZER.py",
+  "positive_control_in_c4_closure": false,
+  "positive_control_reader_calls": 2,
+  "positive_control_raw_path_calls": 2,
+  "conclusion": "The same auditor finds raw-path reader calls in the out-of-closure WVS7 file, so the zero inside the C4 closure is a real negative rather than a broken query."
+ },
+ "wvs7_projection_materializer": {
+  "in_c4_closure": false,
+  "treated_as_a_c4_defect": false,
+  "note": "explicitly outside the C4 closure per the commission; audited only as a positive control and NOT counted as a C4 defect"
+ },
+ "per_module": {
+  "rawlsing_next._pre553_query_common": {
+   "present": true,
+   "reader_calls": [],
+   "raw_path_reader_calls": [],
+   "source_path_opens": [],
+   "reader_aliases": {}
+  },
+  "rawlsing_next._pre553_query_eval": {
+   "present": true,
+   "reader_calls": [],
+   "raw_path_reader_calls": [],
+   "source_path_opens": [],
+   "reader_aliases": {}
+  },
+  "rawlsing_next._pre553_query_predicate": {
+   "present": true,
+   "reader_calls": [],
+   "raw_path_reader_calls": [],
+   "source_path_opens": [],
+   "reader_aliases": {}
+  },
+  "rawlsing_next.pre553_analytical_composition": {
+   "present": true,
+   "reader_calls": [],
+   "raw_path_reader_calls": [],
+   "source_path_opens": [],
+   "reader_aliases": {}
+  },
+  "rawlsing_next.pre553_c11_ingest": {
+   "present": true,
+   "reader_calls": [],
+   "raw_path_reader_calls": [],
+   "source_path_opens": [],
+   "reader_aliases": {}
+  },
+  "rawlsing_next.pre553_c11_integrity": {
+   "present": true,
+   "reader_calls": [],
+   "raw_path_reader_calls": [],
+   "source_path_opens": [],
+   "reader_aliases": {}
+  },
+  "rawlsing_next.pre553_c11_repository": {
+   "present": true,
+   "reader_calls": [],
+   "raw_path_reader_calls": [],
+   "source_path_opens": [],
+   "reader_aliases": {}
+  },
+  "rawlsing_next.pre553_discovery_exact": {
+   "present": true,
+   "reader_calls": [],
+   "raw_path_reader_calls": [],
+   "source_path_opens": [],
+   "reader_aliases": {}
+  },
+  "rawlsing_next.pre553_empirical_authority": {
+   "present": true,
+   "reader_calls": [],
+   "raw_path_reader_calls": [],
+   "source_path_opens": [],
+   "reader_aliases": {}
+  },
+  "rawlsing_next.pre553_empirical_objects": {
+   "present": true,
+   "reader_calls": [],
+   "raw_path_reader_calls": [],
+   "source_path_opens": [],
+   "reader_aliases": {}
+  },
+  "rawlsing_next.pre553_empirical_possibility_provider": {
+   "present": true,
+   "reader_calls": [],
+   "raw_path_reader_calls": [],
+   "source_path_opens": [],
+   "reader_aliases": {}
+  },
+  "rawlsing_next.pre553_empirical_query": {
+   "present": true,
+   "reader_calls": [],
+   "raw_path_reader_calls": [],
+   "source_path_opens": [],
+   "reader_aliases": {}
+  },
+  "rawlsing_next.pre553_physical_c11_bridge": {
+   "present": true,
+   "reader_calls": [],
+   "raw_path_reader_calls": [],
+   "source_path_opens": [],
+   "reader_aliases": {}
+  },
+  "rawlsing_next.pre553_physical_decoder": {
+   "present": true,
+   "reader_calls": [],
+   "raw_path_reader_calls": [],
+   "source_path_opens": [
+    {
+     "line": 283,
+     "arg": "'rb'"
+    },
+    {
+     "line": 491,
+     "arg": "'rb'"
+    }
+   ],
+   "reader_aliases": {}
+  },
+  "rawlsing_next.pre553_r5_codec": {
+   "present": true,
+   "reader_calls": [],
+   "raw_path_reader_calls": [],
+   "source_path_opens": [],
+   "reader_aliases": {}
+  },
+  "rawlsing_next.pre553_recursive_handoff": {
+   "present": true,
+   "reader_calls": [],
+   "raw_path_reader_calls": [],
+   "source_path_opens": [],
+   "reader_aliases": {}
+  },
+  "rawlsing_next.pre553_runtime_authority": {
+   "present": true,
+   "reader_calls": [],
+   "raw_path_reader_calls": [],
+   "source_path_opens": [],
+   "reader_aliases": {}
+  },
+  "rawlsing_next.pre553_runtime_composition": {
+   "present": true,
+   "reader_calls": [],
+   "raw_path_reader_calls": [],
+   "source_path_opens": [],
+   "reader_aliases": {}
+  },
+  "rawlsing_next.pre553_runtime_context": {
+   "present": true,
+   "reader_calls": [],
+   "raw_path_reader_calls": [],
+   "source_path_opens": [],
+   "reader_aliases": {}
+  },
+  "rawlsing_next.pre553_source_access_broker": {
+   "present": true,
+   "reader_calls": [
+    {
+     "line": 613,
+     "reader": "read_sav",
+     "first_arg": "arg",
+     "first_arg_is_path_expression": false
+    }
+   ],
+   "raw_path_reader_calls": [],
+   "source_path_opens": [
+    {
+     "line": 334,
+     "arg": "self.path"
+    }
+   ],
+   "reader_aliases": {
+    "reader": "read_sav"
+   }
+  },
+  "rawlsing_next.pre553_source_backed_c11_facade": {
+   "present": true,
+   "reader_calls": [],
+   "raw_path_reader_calls": [],
+   "source_path_opens": [],
+   "reader_aliases": {}
+  },
+  "rawlsing_next.pre553_source_session": {
+   "present": true,
+   "reader_calls": [],
+   "raw_path_reader_calls": [],
+   "source_path_opens": [],
+   "reader_aliases": {}
+  },
+  "rawlsing_next.source_backed_positioned_subject_possibility": {
+   "present": true,
+   "reader_calls": [],
+   "raw_path_reader_calls": [],
+   "source_path_opens": [],
+   "reader_aliases": {}
+  }
+ }
+}
