@@ -1949,3 +1949,31 @@ with examples including:
 
 No score, relationship level, unlock tree or guaranteed reward mapping is implied.
 
+---
+
+## Game-loop teleology correction
+
+Artifact:
+`90_GAME_LOOP_TELEOLOGY_DISCIPLINE_CORRECTION_R1.md`.
+
+A prior exploratory formulation drifted by treating becoming "noninterchangeable" or discovering one's place in the persona's life as a possible universal game objective.
+
+Correct law:
+
+`OPEN RELATIONAL POSSIBILITY != PREASSIGNED SLOT`.
+
+`EMERGENT RELATIONAL SPECIFICITY != WIN CONDITION`.
+
+Rawlsing does not presume every persona has:
+- a missing relational role;
+- a player-shaped vacancy;
+- a need the user is meant to fill.
+
+Particular mutual relevance may emerge from causal history, including peripheral, narrow, negative, estranged or non-deepening forms.
+
+It remains consequence, not product score.
+
+Live:
+- `SPD-0251`;
+- `RISK-206`.
+
