@@ -506,6 +506,21 @@ class SourceAccessBroker:
             name: getattr(self._account, name) + amount for name, amount in deltas.items()
         })
 
+    def record_retry(self) -> int:
+        """Record ONE retry against the retries account, BEFORE any source work.
+
+        The retries account is the single lower-layer owner of the retry count,
+        and ``SourceAccessBudget.retries`` is its ceiling. The ceiling is checked
+        first, so a refused retry leaves EVERY account unmoved, including the
+        retries account itself.
+
+        Returns the resulting retries count. Raises SourceAccessViolation when
+        the ceiling would be exceeded.
+        """
+        self.budget.check(self._account, retries=1)
+        self._bump(retries=1)
+        return self._account.retries
+
     def _sync_reader_totals(self) -> None:
         """Reader read/byte totals are ABSOLUTE snapshots of the governed open.
 

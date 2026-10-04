@@ -1,0 +1,150 @@
+{
+  "lane": "PYAT-HQ201-R9-EXECUTION-BINDING-HARDENING-R1",
+  "role": "SOURCE-FREE IMPLEMENTATION WORKER — SPACE BUNNY",
+  "branch": "agent/rabochii-pyat-hq201-r1",
+  "startup_sha": "19f2588d860450eae9bf3fb41444d4d0b58a0c52",
+  "implementation_base": "35ffa48204672e6c7180cd010a7c1adde9f18cd7",
+  "code_bearing_candidate": "b8b4c99633c4aa849fd79614c5bffbd1321209b8",
+  "accepted_session_mechanism": "90ccbd54c549f67358d0c02ad18ff90b843cf3ee",
+  "authorities_read": {
+    "hq201_adjudication": "2dcc9a2ed7cf9e11ae91e01e9d8030c6ca4b85eb",
+    "unsigned_warrant_successor": "89054b882c04cf0541b6f9f4abdb555c808ad94d"
+  },
+  "commissioned_shas_all_ancestors_of_startup": true,
+  "disposition": "EXECUTION_BINDING_HARDENED__READY_FOR_FINAL_INDEPENDENT_ACCEPTANCE",
+  "terminal": "HQ201_R9_EXECUTION_BINDING_HARDENING_RETURNED__HQ_REVIEW_REQUIRED",
+  "self_adopted": false,
+  "real_source_access": false,
+  "locator_discovery": false,
+  "warrant_issued": false,
+  "live_c4": false,
+  "c7_or_actor_work": false,
+  "parallel_reviewer_return_inspected_before_repair": false,
+  "terrain": {
+    "files_changed": 3,
+    "within_commissioned_write_terrain": true,
+    "changed": [
+      {"path": "rawlsing_next/pre553_execution_binding.py", "sha256": "8d6a3a7acd2072eedd00f393bb5d5867136be35acfec1d812c5809a9890ea6c0"},
+      {"path": "rawlsing_next/pre553_source_access_broker.py", "sha256": "20aca0399642f827ab906004042067685719b5e34c2e2dba9ab07150105a1e62", "change": "purely additive: one public record_retry() method, zero lines removed"},
+      {"path": "rawlsing_next/tests/test_pre553_execution_binding_court.py", "sha256": "52f181ce65023d6692aed70e1108384b3cc3c3bf0cefbc3052f32bb19dc3ba45"}
+    ],
+    "session_module_changed": false,
+    "session_module_note": "pre553_source_session.py unchanged; the retry law was established in the binding layer plus one additive broker method"
+  },
+  "repair_1_route_pass_applicability": {
+    "mechanism": "typed RoutePassApplicability enum, explicitly and immutably caller-bound",
+    "default": "NOT_APPLICABLE",
+    "inferred_from_source_key": false,
+    "inferred_from_plan_mode": false,
+    "non_route": {
+      "underlying_plan_executes_normally": true,
+      "full_route_passes_observed": 0,
+      "full_route_passes_completed_successfully": false,
+      "route_pass_status": "NOT_APPLICABLE",
+      "maximum_zero_means": "not a route pass; it never means no source operation"
+    },
+    "route": {
+      "outer_account_active": true,
+      "expected_and_maximum_enforced_separately_from_lower_layers": true
+    },
+    "coherence_fails_closed_at_bind_time": "a NOT_APPLICABLE spec may carry EXACT 0 or none; EXACT 1 raises BindingError before any access",
+    "court_proof_not_derived_from_mode": "a FULL plan bound NOT_APPLICABLE performed full_reads=1 yet reported outer observed 0"
+  },
+  "repair_2_attempts_retries_completions": {
+    "counters_kept_separate": {
+      "route_pass_attempts": "every admitted wrapper attempt",
+      "retries": "the lower-layer SourceAccessAccount.retries account",
+      "completed_route_passes": "attempts satisfying every postcondition"
+    },
+    "refused_pre_operation_is_not_an_attempt": true,
+    "retry_ceiling_0_refuses_second_execute_pre_operation": true,
+    "all_lower_accounts_unchanged_on_refused_retry": true,
+    "retry_ceiling_2_measured_progression": [[1, 0], [2, 1], [3, 2]],
+    "retry_account_increments_before_source_work": true,
+    "single_binding_law": {
+      "count_owner": "SourceAccessAccount.retries",
+      "ceiling_owner": "SourceAccessBudget.retries",
+      "plan_knob": "SourceOperationPlan.max_retries",
+      "rule": "plan knob must equal the ceiling exactly; an unbounded (None) ceiling is refused",
+      "prior_defect": "max_retries was stored and reported but never enforced, and budget.retries was never read at all",
+      "mismatch_behaviour": "BindingError(RETRY_BINDING_MISMATCH) at bind time",
+      "divergence_unrepresentable": true,
+      "default_path_still_coherent": "0 == 0, so no existing caller breaks"
+    }
+  },
+  "repair_3_completion_ordering": {
+    "order": [
+      "outer applicability ceiling (pre-operation)",
+      "retry ceiling and retries-account increment (pre-operation)",
+      "source operation",
+      "caller-supplied lower-layer exact/floor postconditions",
+      "outer expected rule, evaluated prospectively",
+      "completion increment"
+    ],
+    "prospective_count_not_mutated_before_validation": true,
+    "postcondition_failure_leaves_completed_at_zero": true,
+    "postcondition_failure_still_records_the_attempt": true,
+    "retry_law_governs_after_a_postcondition_failure": true
+  },
+  "repair_4_pyreadstat_module": {
+    "resolution": "stored on the execution and passed through to GovernedSourceSession",
+    "none_means": "the session resolves the real pyreadstat",
+    "proof_reaches_the_broker": "session.broker.pyreadstat is pyreadstat -> True",
+    "proof_actually_consulted": "a stub with __version__='0.0.0' raises ReaderSeamViolation: READER_SEAM_VERSION_MISMATCH at the seam",
+    "silently_ignored_argument": false
+  },
+  "courts": [
+    {"name": "test_pre553_execution_binding_court.py", "collected": 34, "passed": 34, "deterministic_repeats": 3, "grew_from": 21},
+    {"name": "test_pre553_source_session_court.py", "passed": 15},
+    {"name": "test_pre553_source_access_broker_court.py", "passed": 20},
+    {"name": "R7 exact six-file court", "collected": 55, "run_1": "55 passed in 58.73s", "run_2": "55 passed in 57.11s", "exit": 0}
+  ],
+  "adjudication_criticism_addressed": {
+    "finding": "the former test_failed_first_attempt_is_not_reported_as_a_completed_pass called the inner session and never exercised the wrapper",
+    "replacement": "test_failed_first_wrapper_attempt_with_retries0_blocks_second_preop drives execute() and asserts refusal at the wrapper boundary"
+  },
+  "seven_plan_shapes": {
+    "non_route_shapes": 6,
+    "non_route_all_succeed": true,
+    "non_route_outer_observed": 0,
+    "non_route_exact_zero_satisfied": true,
+    "non_route_underlying_work_observed": "selected_reads=1 or metadata_reads=1; the prefix shape records header_prefix_reads=1 and header_prefix_bytes=176",
+    "route_shape": {
+      "outer_observed_expected_max": 1,
+      "full_reads_floor_1_met": true,
+      "decoder_max_1_policy_honoured": true,
+      "retries": 0,
+      "header_prefix_reads": 0,
+      "second_attempt_refused_pre_operation": true,
+      "accounts_unchanged_on_refusal": true
+    },
+    "production_source_agnostic": true
+  },
+  "source_agnostic_proof": {
+    "modules_ast_scanned": ["pre553_execution_binding.py", "pre553_source_access_broker.py", "pre553_source_session.py"],
+    "tokens_checked": ["SRC02", "SRC06", "SRC08", "SRC12", "SRC14", "SRC26", "SRC27", "SRC35", "Q10B", "Q101", "Q2061B", "v372"],
+    "no_mode_to_applicability_derivation": true
+  },
+  "full_suite_regression": {
+    "hq200": {"failed": 333, "passed": 2550, "skipped": 1, "errors": 62},
+    "hq201": {"failed": 333, "passed": 2565, "skipped": 1, "errors": 62, "duration_s": 477.85},
+    "failures_and_errors_identical": true,
+    "passed_delta_explained": "HQ200's 2550 was measured at a 19-test court; +2 receipt-field tests and +13 HQ201 court tests = 2565",
+    "new_regressions": 0
+  },
+  "r7_environment": {
+    "interpreter": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/qualification/r7-c4-source-free-venv/bin/python",
+    "PYTHONHASHSEED": "0",
+    "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+    "PYTHONPATH": "<sparse worktree root>",
+    "pytest_flags": ["-p no:cacheprovider"]
+  },
+  "holds": {
+    "accepted_seven_source_authority_changed": false,
+    "source_specific_production_constants_introduced": false,
+    "second_pass_stop_law_respected": "a second pass is not a retry; refusal is pre-operation once the outer ceiling is reached",
+    "src27_multiple_path_opens_normativity_decided_here": false,
+    "one_open_ceiling_typed_as_implementation_policy": true
+  },
+  "disk_free_at_return": "7.8Gi"
+}
