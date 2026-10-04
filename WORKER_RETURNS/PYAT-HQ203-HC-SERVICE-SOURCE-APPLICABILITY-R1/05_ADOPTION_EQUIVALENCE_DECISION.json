@@ -1,0 +1,39 @@
+{
+  "schema": "PYAT_HQ203_ADOPTION_EQUIVALENCE_DECISION@1.0.0",
+  "lane": "PYAT-HC-SERVICE-SOURCE-APPLICABILITY-R1",
+  "test": "Determine whether SERVICE_SOURCE_APPLICABILITY_AUTHORITY has (a) an exact adopted successor, (b) a lawful same-grain split across multiple current authorities, (c) only partial current coverage, or (d) no successor.",
+  "findings": {
+    "a_exact_adopted_successor": {
+      "holds": false,
+      "basis": "No current module and no adopted Field Forge/OBL authority contains the concept. Whole-tree census of source_applicability/service_source returns zero in rawlsing_next and zero in adopted authority."
+    },
+    "b_lawful_same_grain_split": {
+      "holds": false,
+      "basis": "A split requires the pieces to exist at the same grain. The RELATION half exists (pre553_source_relations.py). The APPLICABILITY half does not exist at all, so there is nothing to split FROM. Splitting one existing half is not a split successor.",
+      "why_not_mere_partial_coverage": "Partial coverage would require the applicability decision to be made somewhere with only the derivation missing. It is not made anywhere: no component consumes (service, target use, time/geography/population) and emits an admitted-source determination."
+    },
+    "c_partial_current_coverage": {
+      "holds": false,
+      "basis": "The only overlap is a STATE vocabulary (SOURCE_NOT_APPLICABLE / NOT_APPLICABLE / NONCOMPARABLE). A caller may DECLARE a supplied source inapplicable and backfill is forbidden from overwriting that. But declaring a state is not D15's function, which was to DERIVE the admitted set from the request. A shared word is not shared function.",
+      "explicitly": "This is why PARTIAL was rejected as the lane disposition."
+    },
+    "d_no_successor": {
+      "holds": true
+    }
+  },
+  "decision": "NO_SUCCESSOR__FORM_MISSING",
+  "proof_that_the_form_itself_is_absent": [
+    "No applicability OBJECT exists (nothing carries (service, target use, scope) -> admitted universes).",
+    "No applicability RELATION kind exists alongside LINKAGE/OVERLAP/POOLING/BACKFILL in pre553_source_relations.py.",
+    "No service-scoped RESOLVER exists; AuthorityRegistry is exact-key only and explicitly refuses default/derived lookup.",
+    "No SELECTION-REASON record exists, because no selection occurs.",
+    "No input surface carries a service parameter: EmpiricalQuerySpec has no service field and requires a caller-supplied empirical_universe_refs.",
+    "Historical implementation_dependency 'Per-service source applicability registry/resolver' has NO counterpart anywhere in the current tree."
+  ],
+  "is_a_bounded_contract_sufficient": {
+    "answer": "YES, for the FORM; but it must be authored, not merely implemented",
+    "required_new_contract": "A per-service source applicability contract with: (i) an applicability decision object binding (service, target use, time/geography/population scope) to (admitted source-indexed universes) or a typed nonapplicability; (ii) an independent decision PER source per service, per D12G; (iii) an authority grain that composes with, and cannot be satisfied by, the RELATION powers; (iv) a selection-reason receipt; (v) the D15 prohibitions carried verbatim.",
+    "why_bounded": "Nothing in the finding requires new architecture. It requires a new authority form at a grain the current DAG already has an exact-key pattern for, plus a resolver that performs the derived lookup AuthorityRegistry deliberately refuses."
+  },
+  "conservation_of_the_sibling_power": "SOURCE_UNIVERSE_RELATION_AUTHORITY IS conserved (pre553_source_relations.py). The D15 ledger's separation of the two authorities is respected by current law: relation powers did not absorb the applicability power, and the applicability power was not silently dropped into validation."
+}

@@ -1,0 +1,86 @@
+{
+  "schema": "PYAT_HQ203_CURRENT_SUCCESSOR_CENSUS@1.0.0",
+  "lane": "PYAT-HQ203-HC-SERVICE-SOURCE-APPLICABILITY-R1",
+  "startup_sha": "9967f939a44628ddea624818f5dda31a82662dee",
+  "method": "Whole-tree term census first, then per-module inspection of the modules the commission named. Counts are exact; zero is reported as zero.",
+  "tree_wide_term_census": {
+    "note": "searched the whole current tree at the startup SHA",
+    "source_applicability_files": 30,
+    "service_source_files": 11,
+    "allowed_sources": 0,
+    "source_allowlist": 0,
+    "source_eligibility": 0,
+    "population_source": 0,
+    "geography_source": 0,
+    "locationality_breakdown": {
+      "rawlsing_next": 0,
+      "adopted_Field_Forge_or_OBL_authority": 0,
+      "PYAT_CONTROL_ROOM_documentary": 8,
+      "HQ_HANDOFF_checkpoints": 7,
+      "historical_data_ddm": 2,
+      "this_commission": 1,
+      "total_files": 18
+    },
+    "VERDICT": "The concept appears NOWHERE in current code and NOWHERE in any adopted Field Forge / OBL authority. Every tree-wide occurrence is a historical DDM artifact, an old checkpoint, a documentary index, or this commission."
+  },
+  "modules_inspected": [
+    {
+      "module": "rawlsing_next/pre553_source_local_universe_admission.py",
+      "role": "closest current analogue to source admission",
+      "self_declared_scope_verbatim": "The contract does not infer source authority. It validates a caller-supplied positive exact AuthoritySnapshot and materializes only at that authority's source-local ceiling.",
+      "also_verbatim": "Population, weighted-estimand, pooling, backfill and harmonization authority remain separately governed.",
+      "successor_for_SERVICE_SOURCE_APPLICABILITY": false,
+      "reason": "explicitly disclaims inferring source authority; validates rather than selects"
+    },
+    {
+      "module": "rawlsing_next/pre553_empirical_query.py",
+      "key_fact": "EmpiricalQuerySpec.REQUIRED_FIELDS includes empirical_universe_refs; the spec raises 'EmpiricalQuerySpec requires exact source universe scope' when empty",
+      "service_field_present": false,
+      "successor_for_SERVICE_SOURCE_APPLICABILITY": false,
+      "reason": "the universe set is a CALLER-SUPPLIED REQUIRED FIELD, and there is no service/population/geography/effective-time driver field from which admissibility could be derived"
+    },
+    {
+      "module": "rawlsing_next/pre553_source_relations.py",
+      "key_fact": "implements the accepted P07 source-plurality law with typed relation kinds and an I07 composite guard",
+      "successor_for_SERVICE_SOURCE_APPLICABILITY": false,
+      "successor_for_SOURCE_UNIVERSE_RELATION_AUTHORITY": true,
+      "reason": "owns the RELATION power between admitted universes, not which universes are admissible"
+    },
+    {
+      "module": "rawlsing_next/pre553_structural_admission.py",
+      "role": "maps an admitted empirical fact to one bounded structural interpretation",
+      "successor_for_SERVICE_SOURCE_APPLICABILITY": false,
+      "reason": "consumes an already-admitted fact; applicability is upstream of it"
+    },
+    {
+      "module": "rawlsing_next/source_backed_positioned_subject_possibility.py",
+      "role": "the consumer for 'give the positioned-subject possibility distribution'",
+      "successor_for_SERVICE_SOURCE_APPLICABILITY": false,
+      "reason": "consumes source-local products; does not choose which sources to use"
+    },
+    {
+      "module": "rawlsing_next/pre553_empirical_authority.py (AuthorityRegistry)",
+      "key_fact_verbatim": "Immutable exact-key authority registry; no latest/default lookup exists.",
+      "successor_for_SERVICE_SOURCE_APPLICABILITY": false,
+      "reason": "an exact-key lookup CANNOT answer 'which source applies to this (service, target, time, geography, population)?'. A per-service resolver needs precisely the derived/default lookup this registry refuses to perform."
+    },
+    {
+      "module": "rawlsing_next/gt34_obl031_q69b_comparator_resolver_r4.py",
+      "role": "adopted comparator lineage (OBL031)",
+      "key_fact": "closes an exact-type/grammar-binding seam for a single named comparator; states include ACTOR_FACT_MISSING_OR_UNAUTHORIZED, CURRENT_ACCEPTED, NONCURRENT_SYNTHETIC_TEST_ONLY",
+      "successor_for_SERVICE_SOURCE_APPLICABILITY": false,
+      "note": "the commission's 'E30' identifier did not resolve anywhere in rawlsing_next or PYAT_CONTROL_ROOM; this OB L031 comparator lineage is what the current tree actually carries. Recorded as a scope note, not a claim that E30 was located."
+    }
+  ],
+  "censUS_summary": {
+    "successor_for_SERVICE_SOURCE_APPLICABILITY_AUTHORITY": 0,
+    "successor_for_SOURCE_UNIVERSE_RELATION_AUTHORITY": 1,
+    "typed_nonapplicability_states_present": true,
+    "typed_nonapplicability_state_detail": "SOURCE_NOT_APPLICABLE and NOT_APPLICABLE exist in pre553_source_relations.py; NONCOMPARABLE, NOT_APPLICABLE, UNAVAILABLE, UNCERTAINTY_UNQUANTIFIED exist in pre553_empirical_objects.py; FORBIDDEN_BACKFILL_TARGET_STATES includes DECLARED_NONE, SOURCE_NOT_APPLICABLE, TEMPORAL_NONCOMPARABLE, OBSERVED_ZERO, ZERO_SUPPORT, NONCOMPARABLE, NOT_APPLICABLE",
+    "critical_distinction": "These are states a CALLER may DECLARE on a supplied source. They are not an output of any component that DETERMINES that no source applies."
+  },
+  "superseded_hq201_claims_not_imported": [
+    "HQ203 supersedes the HQ201 mode-conflation of SOURCE_INDEXED_MULTI_UNIVERSE with AUTHORIZED_COMPOSITE. This audit treats them as SEPARATE branches per PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ203_TERMINAL_BACKWARD_RESIDUAL_RECALIBRATION_R1.md",
+    "This H-C audit makes no F6/F7 ontology claim and imports none."
+  ]
+}

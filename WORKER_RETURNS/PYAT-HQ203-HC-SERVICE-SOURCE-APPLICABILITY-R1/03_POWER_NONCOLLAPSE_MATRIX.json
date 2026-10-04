@@ -1,0 +1,126 @@
+{
+  "schema": "PYAT_HQ203_POWER_NONCOLLAPSE_MATRIX@1.0.0",
+  "lane": "PYAT-HC-SERVICE-SOURCE-APPLICABILITY-R1",
+  "rule": "None of the eleven powers substitutes for another. The D15 ledger itself separates SERVICE_SOURCE_APPLICABILITY_AUTHORITY from SOURCE_UNIVERSE_RELATION_AUTHORITY, and pre553_source_relations.py states 'No relation kind implies another.'",
+  "matrix": [
+    {
+      "n": 1,
+      "power": "SOURCE IDENTITY",
+      "meaning": "EmpiricalUniverse identity / source identity",
+      "current_owner": "pre553_empirical_objects.py EmpiricalUniverse",
+      "status": "PROVED",
+      "note": "identity only; says nothing about use"
+    },
+    {
+      "n": 2,
+      "power": "SOURCE SEMANTIC EQUIVALENCE",
+      "meaning": "whether two sources measure the same construct",
+      "current_owner": "pre553_source_relations.py \u2014 harmonization/alias are NONAUTHORIZING and 'descriptive only'",
+      "status": "PROVED (as a PROHIBITION)",
+      "note": "no equivalence is ever granted by a label"
+    },
+    {
+      "n": 3,
+      "power": "SOURCE LINKAGE",
+      "meaning": "person-level linkage across universes",
+      "current_owner": "pre553_source_relations.py RESPONDENT_LINKAGE -> SOURCE_RESPONDENT_LINKAGE",
+      "status": "PROVED",
+      "note": "exact receipt + exact authority required"
+    },
+    {
+      "n": 4,
+      "power": "SOURCE OVERLAP",
+      "meaning": "overlap / non-duplication",
+      "current_owner": "pre553_source_relations.py OVERLAP_NON_DUPLICATION -> SOURCE_UNIVERSE_RELATION",
+      "status": "PROVED",
+      "note": ""
+    },
+    {
+      "n": 5,
+      "power": "POOLING PERMISSION",
+      "meaning": "permission to pool",
+      "current_owner": "pre553_source_relations.py SAMPLE_POOLING -> SOURCE_COMPOSITION_POOLING",
+      "status": "PROVED",
+      "note": ""
+    },
+    {
+      "n": 6,
+      "power": "ESTIMAND COMPOSITION",
+      "meaning": "permission to compose estimands across sources",
+      "current_owner": "pre553_source_relations.py ESTIMAND_COMPOSITION -> SOURCE_COMPOSITION_POOLING",
+      "status": "PROVED",
+      "note": ""
+    },
+    {
+      "n": 7,
+      "power": "BACKFILL",
+      "meaning": "permission to backfill missingness",
+      "current_owner": "pre553_source_relations.py BACKFILL -> SOURCE_BACKFILL + FORBIDDEN_BACKFILL_TARGET_STATES",
+      "status": "PROVED",
+      "note": "D15's 'may not silently backfill broader sources' is honoured"
+    },
+    {
+      "n": 8,
+      "power": "SERVICE APPLICABILITY",
+      "meaning": "whether a source is ADMISSIBLE for a given service/target/time/geography/population",
+      "current_owner": "NO CURRENT OWNER",
+      "status": "MISSING",
+      "note": "D15 SERVICE_SOURCE_APPLICABILITY_AUTHORITY has no successor"
+    },
+    {
+      "n": 9,
+      "power": "SOURCE SELECTION / RANKING",
+      "meaning": "choosing among admissible sources, or ranking them",
+      "current_owner": "NO CURRENT OWNER",
+      "status": "MISSING",
+      "note": "no selector, ranker, or preference order exists"
+    },
+    {
+      "n": 10,
+      "power": "SOURCE CURRENTNESS / AVAILABILITY",
+      "meaning": "whether a source is current/available",
+      "current_owner": "PARTIAL \u2014 currentness states exist (CURRENT_ACCEPTED, NONCURRENT_SYNTHETIC_TEST_ONLY, EXPIRED_OR_STALE)",
+      "status": "PARTIAL",
+      "note": "currentness is not applicability: a current source may still be inapplicable"
+    },
+    {
+      "n": 11,
+      "power": "CONSUMER USE PERMISSION",
+      "meaning": "whether a consumer may use a source's product",
+      "current_owner": "PARTIAL \u2014 query permission + actor firewall",
+      "status": "PARTIAL",
+      "note": "use permission is downstream of applicability and does not substitute for it"
+    }
+  ],
+  "verified_non_collapses": [
+    {
+      "law": "LINKAGE / POOLING / BACKFILL are not granted by provenance or harmonization labels",
+      "evidence": "pre553_source_relations.py: NONAUTHORIZING_RELATION_KINDS = {PROVENANCE_ORIGIN, HARMONIZATION_ALIAS}; 'Provenance and harmonization/alias material are descriptive only and never grant equivalence, linkage, nonduplication, pooling, estimand composition or backfill.'",
+      "status": "ENFORCED"
+    },
+    {
+      "law": "SELECTION is not VALIDATION",
+      "evidence": "pre553_source_local_universe_admission.py: 'The contract does not infer source authority. It validates a caller-supplied positive exact AuthoritySnapshot.'",
+      "status": "ENFORCED (and this is the audit's central finding)"
+    },
+    {
+      "law": "APPLICABILITY is not CURRENTNESS",
+      "evidence": "currentness states (CURRENT_ACCEPTED / EXPIRED_OR_STALE) are evaluated against a supplied source and never derive admissibility",
+      "status": "ENFORCED"
+    },
+    {
+      "law": "USE PERMISSION is not APPLICABILITY",
+      "evidence": "query permission and the actor firewall govern consumption of an already-chosen source",
+      "status": "ENFORCED"
+    },
+    {
+      "law": "NONAPPLICABILITY is not BACKFILLABLE",
+      "evidence": "FORBIDDEN_BACKFILL_TARGET_STATES includes SOURCE_NOT_APPLICABLE, NOT_APPLICABLE, NONCOMPARABLE, OBSERVED_ZERO, ZERO_SUPPORT",
+      "status": "ENFORCED \u2014 D15's 'may not silently backfill broader sources' survives"
+    }
+  ],
+  "the_hole": {
+    "power": "SERVICE APPLICABILITY + SOURCE SELECTION/RANKING",
+    "consequence": "Nine of eleven powers are proved or partial. The two that would let a service request DERIVE and CHOOSE its sources are absent, and nothing collapses into them \u2014 which is correct behaviour, but it means the chain has no first link."
+  }
+}

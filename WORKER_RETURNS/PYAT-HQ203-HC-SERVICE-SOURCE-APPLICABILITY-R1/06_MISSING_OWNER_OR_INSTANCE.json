@@ -1,0 +1,50 @@
+{
+  "schema": "PYAT_HQ203_MISSING_OWNER_OR_INSTANCE@1.0.0",
+  "lane": "PYAT-HC-SERVICE-SOURCE-APPLICABILITY-R1",
+  "missing_authority_instance": {
+    "name": "SERVICE_SOURCE_APPLICABILITY_AUTHORITY",
+    "status": "HISTORICAL FUNCTION, NO CURRENT SUCCESSOR",
+    "owner": "none",
+    "module": "none",
+    "registry_or_resolver": "none \u2014 the D15 implementation_dependency names a 'Per-service source applicability registry/resolver' and no counterpart exists in the current tree"
+  },
+  "the_upstream_authority_that_is_missing": {
+    "statement": "The missing thing is not an implementation of selection. It is an APPLICABILITY AUTHORITY that must be consulted BEFORE a service assembles a source set, at a grain where the service and the target use are already known.",
+    "why_upstream": "D15 lists upstream_inputs as 'EmpiricalUniverse identity; service; target question/coordinate/structural use; time/geography/population scope'. Every current consumer of a source set is DOWNSTREAM of a decision nobody makes.",
+    "precise_gap": "The chain currently begins at 'here is a set of sources' and validates it. It never begins at 'here is a service request; which sources apply?'"
+  },
+  "instance_level_consequences": [
+    {
+      "id": "MISS-01",
+      "consequence": "A service cannot DERIVE its admissible sources from (target, population, geography, effective time).",
+      "who_must_decide": "an applicability authority owner, not the query layer"
+    },
+    {
+      "id": "MISS-02",
+      "consequence": "A service cannot be REFUSED an inapplicable source, because inapplicability is never determined \u2014 only declared by whoever supplied the source.",
+      "who_must_decide": "same"
+    },
+    {
+      "id": "MISS-03",
+      "consequence": "A service cannot CHOOSE among multiple admissible sources or record a preference order.",
+      "who_must_decide": "same"
+    },
+    {
+      "id": "MISS-04",
+      "consequence": "No record exists of WHY a source was selected. Execution receipts record what was run, not why it was admitted.",
+      "who_must_decide": "same"
+    },
+    {
+      "id": "MISS-05",
+      "consequence": "'No applicable source' and 'an applicable source with missing internal evidence' are distinguishable only by caller assertion, because nothing computes the former.",
+      "who_must_decide": "same"
+    }
+  ],
+  "what_would_NOT_close_the_gap": [
+    "Adding a service field to EmpiricalQuerySpec. It would make the caller MORE explicit while still leaving the caller to supply the answer.",
+    "Relying on AUTHORIZED_COMPOSITE or SOURCE_UNIVERSE_RELATION. Those govern relations BETWEEN admitted universes; using them to decide ADMISSION would collapse power 8 into powers 3-7, which both current law and the D15 ledger forbid.",
+    "Treating the SOURCE_NOT_APPLICABLE state vocabulary as the applicability function. A declared state is not a determination.",
+    "Using currentness (power 10) as a proxy for applicability. Currentness is evaluated on a supplied source."
+  ],
+  "safest_available_capability_today": "A caller may assemble a source set, bind AUTHORIZED_COMPOSITE and relation authorities for whatever composition it wants, and receive fail-closed validation plus per-source receipts. That is genuine capability \u2014 it is simply validation, not authorisation of selection."
+}

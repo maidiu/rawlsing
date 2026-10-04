@@ -1,0 +1,50 @@
+{
+  "schema": "PYAT_HQ203_HISTORICAL_SERVICE_SOURCE_AUTHORITY@1.0.0",
+  "lane": "PYAT-HQ203-HC-SERVICE-SOURCE-APPLICABILITY-R1",
+  "startup_sha": "9967f939a44628ddea624818f5dda31a82662dee",
+  "primary_artifact": "data/ddm_build_copy/vozhd_trii/20260818_prechange_discovery_control/courts/D15/AUTHORITY_ADDITION_AND_REPAIR_LEDGER.csv @ 09ea040ac",
+  "authority_row_verbatim": {
+    "authority": "SERVICE_SOURCE_APPLICABILITY_AUTHORITY",
+    "jurisdiction": "Separately admits respondent universes for forward discovery, reverse possibility inference, and structural empirical admission",
+    "why_required": "D12G establishes that source relevance/admissibility can differ by terminal service and locality alone does not choose a source",
+    "upstream_inputs": "EmpiricalUniverse identity;service;target question/coordinate/structural use;time/geography/population scope",
+    "downstream_outputs": "admitted source-indexed universe list or typed nonapplicability/noncomparability",
+    "prohibited_inferences": "May not silently backfill broader sources;may not average admitted universes;may not imply respondent linkage or pooling",
+    "existing_precedent": "D12G distinct-universe law",
+    "implementation_dependency": "Per-service source applicability registry/resolver"
+  },
+  "recovered_function": {
+    "what_it_did": "DERIVED which respondent universes are ADMISSIBLE for a specific service and target use, from the joint input of (EmpiricalUniverse identity, service, target use, time/geography/population scope).",
+    "what_it_was_not": "It was not a validator of a caller-supplied set. The service parameter is a REQUIRED upstream input, so the authority cannot be exercised unless a service and a target use are supplied.",
+    "output_shape": "an admitted source-indexed universe list, OR a typed nonapplicability / noncomparability",
+    "authority_grain": "PER SERVICE, and INDEPENDENTLY per source/universe",
+    "resolver_shape": "a REGISTRY/RESOLVER, per implementation_dependency"
+  },
+  "d12g_corroboration": {
+    "artifact": "data/ddm_build_copy/vozhd_trii/20260818_prechange_discovery_control/16_D09_D12D_D12G_RETURN_ADJUDICATION.md @ 931b3086d",
+    "status_verbatim": "ACCEPTED__DISTINCT_UNIVERSES_BY_DEFAULT__SOURCE_INDEXED_COMPOSITION__EXACT_AUTHORITY_REQUIRED_FOR_JOIN_POOLING_BACKFILL",
+    "distinct_universes_verbatim": [
+      "different waves are distinct universes",
+      "different countries are distinct universes",
+      "different instruments are distinct universes"
+    ],
+    "service_specificity_verbatim": "each source/universe requires independent service-specific applicability authority",
+    "locality_rule_verbatim": "locality or country identity alone does not assign a priority weight",
+    "terminal_service_verbatim": "What later meaning/use that fact has depends on the separately governed terminal service: forward discovery, reverse positioned-subject possibility inference, structural-field production, or no promoted use.",
+    "significance": "Two independent historical artifacts agree. D15 is the ledger entry; D12G is the adjudication that established the rule it implements."
+  },
+  "topology_not_inherited": {
+    "obsolete_topology": [
+      "a single per-service registry/resolver as a distinct component",
+      "the DDM run/manifest topology",
+      "stage-era naming (D12/D15 courts)"
+    ],
+    "note": "The FUNCTION is recovered; the component shape is not assumed. This audit determines whether any current component performs the function, not whether a component with the same name exists."
+  },
+  "prohibitions_to_conserve": [
+    "May not silently backfill broader sources.",
+    "May not average admitted universes.",
+    "May not imply respondent linkage or pooling.",
+    "Locality or country identity alone may not choose or prioritise a source."
+  ]
+}
