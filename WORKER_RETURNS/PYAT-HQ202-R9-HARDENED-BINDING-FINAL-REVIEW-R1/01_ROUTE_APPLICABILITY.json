@@ -1,0 +1,120 @@
+{
+  "repository": "maidiu/rawlsing",
+  "review_branch": "agent/reviewer-pyat-hq202-r1",
+  "commissioned_startup_sha": "217f96b5d9f7b767a7cfb11e5c2c3c7c75d77b4f",
+  "review_target": "deea40541cda0627d129dcb7d30e06e0682e0fed",
+  "checkout_mode": "SPARSE_REQUIRED (honoured: existing sparse worktree, manifest exactly as commissioned, not widened)",
+  "schema": "HQ202_ROUTE_APPLICABILITY@1.0.0",
+  "mission_item": "A \u2014 route-pass applicability",
+  "reviewer_authored": true,
+  "reuses_candidate_court": false,
+  "execution_surface": "public BoundSourceExecution.execute() only",
+  "question": "Is explicit caller-bound applicability real, or is it still inferred from a source key or from the row-data mode?",
+  "verdict": "CALLER_BOUND_AND_EXPLICIT \u2014 no inference from source key or plan mode",
+  "claims_total": 8,
+  "claims_passed": 8,
+  "claims": [
+    {
+      "id": "A1",
+      "title": "metadata-only non-route runs with outer EXACT 0 and observes 0",
+      "evidence": {
+        "full_route_passes_observed": 0,
+        "applicable": false,
+        "completed_pass": false,
+        "metadata_reads": 1,
+        "full_reads": 0
+      },
+      "ok": true
+    },
+    {
+      "id": "A2",
+      "title": "selected non-route runs with outer EXACT 0 and observes 0",
+      "evidence": {
+        "full_route_passes_observed": 0,
+        "selected_reads": 1,
+        "full_reads": 0,
+        "selected_ordinals": [
+          1
+        ]
+      },
+      "ok": true
+    },
+    {
+      "id": "A3",
+      "title": "FULL plan can be NOT_APPLICABLE and observe outer 0",
+      "evidence": {
+        "full_route_passes_observed": 0,
+        "applicable": false,
+        "full_reads": 1,
+        "plan_mode": "FULL"
+      },
+      "ok": true
+    },
+    {
+      "id": "A4",
+      "title": "APPLICABLE route MAX 0 is refused before session/source operation",
+      "evidence": {
+        "code": "ROUTE_PASS_LIMIT_REACHED",
+        "session_created": false,
+        "route_pass_attempts": 0,
+        "account_snapshot": {}
+      },
+      "ok": true
+    },
+    {
+      "id": "A5",
+      "title": "non-route MAX 0 does not block underlying source work",
+      "evidence": {
+        "full_reads": 1,
+        "outer_observed": 0,
+        "metadata_reads": 1
+      },
+      "ok": true
+    },
+    {
+      "id": "A6",
+      "title": "NOT_APPLICABLE + EXACT 1 fails before access",
+      "evidence": {
+        "raised": "BindingError",
+        "message": "a NOT_APPLICABLE route pass cannot satisfy EXACT 1; bind RoutePassApplicability.APPLICABLE if an outer pass is authorised",
+        "path_existed": false
+      },
+      "ok": true
+    },
+    {
+      "id": "A7",
+      "title": "applicability is not inferred from source key or plan mode",
+      "evidence": {
+        "identical_source_entry_key": "SRC27-SHAPED",
+        "identical_plan_mode": "FULL",
+        "as_NOT_APPLICABLE": {
+          "ran": true,
+          "outer_observed": 0,
+          "full_reads": 1
+        },
+        "as_APPLICABLE": {
+          "ran": false,
+          "code": "ROUTE_PASS_LIMIT_REACHED"
+        },
+        "conclusion": "applicability follows the caller binding, not the key or the mode"
+      },
+      "ok": true
+    },
+    {
+      "id": "A8",
+      "title": "default applicability is NOT_APPLICABLE",
+      "evidence": {
+        "default_outer_observed": 0,
+        "default_plus_exact1": "REFUSED_AT_BIND",
+        "spec_dict_default_applicability": "NOT_APPLICABLE"
+      },
+      "ok": true
+    }
+  ],
+  "key_evidence": {
+    "A4_route_max0": "refused pre-operation with ROUTE_PASS_LIMIT_REACHED, no session created, route_pass_attempts=0, empty account snapshot",
+    "A6_incoherent_pair": "NOT_APPLICABLE + EXACT 1 refused with BindingError at spec construction, on a path that does not exist, so no access was attempted",
+    "A7_no_inference": "identical source_entry_key 'SRC27-SHAPED' and identical FULL plan: as NOT_APPLICABLE it runs and observes outer 0 with full_reads=1; as APPLICABLE with MAX 0 it is refused pre-operation",
+    "A8_default": "the default applicability is NOT_APPLICABLE, and a defaulted spec with EXACT 1 is refused at bind"
+  }
+}

@@ -1,0 +1,1363 @@
+{
+  "schema": "HQ202_WARRANT_COMPATIBILITY@1.0.0",
+  "warrant_commit": "89054b882c04cf0541b6f9f4abdb555c808ad94d",
+  "warrant_files_read": [
+    "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq202-pyat-stage/warrant/01_SEVEN_SOURCE_PLAN_BINDING.json",
+    "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq202-pyat-stage/warrant/03_SRC27_OUTER_AND_LOWER_ACCOUNTING.json"
+  ],
+  "derivation_is_warrant_driven_not_court_copied": true,
+  "checks_total": 9,
+  "checks_passed": 9,
+  "checks_failed": 0,
+  "derivation": [
+    {
+      "source_key": "SRC02",
+      "mode": "SELECTED",
+      "encoding": null,
+      "selected": [
+        "Q10B"
+      ],
+      "prefix_bytes": null,
+      "outer_expected": 0,
+      "outer_maximum": 0,
+      "retry_ceiling": 0,
+      "applied_constraints": [
+        {
+          "warrant_account": "source_path_existence_access_checks",
+          "runtime_account": "existence_checks",
+          "kind": "FLOOR",
+          "value": 1,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "floor"
+        },
+        {
+          "warrant_account": "full_file_sha256_passes",
+          "runtime_account": "hash_passes",
+          "kind": "FLOOR",
+          "value": 1,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "floor"
+        },
+        {
+          "warrant_account": "path_level_opens",
+          "runtime_account": "path_opens",
+          "kind": "MAXIMUM",
+          "value": 1,
+          "authority": "IMPLEMENTATION_POLICY",
+          "from": "PENDING_HQ200_RUNTIME_ACCEPTANCE maximum"
+        },
+        {
+          "warrant_account": "header_prefix_reads",
+          "runtime_account": "header_prefix_reads",
+          "kind": "EXACT",
+          "value": 0,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "expected"
+        },
+        {
+          "warrant_account": "header_prefix_bytes",
+          "runtime_account": "header_prefix_bytes",
+          "kind": "EXACT",
+          "value": 0,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "expected"
+        },
+        {
+          "warrant_account": "decoder_invocations",
+          "runtime_account": "decoder_invocations",
+          "kind": "MAXIMUM",
+          "value": 1,
+          "authority": "IMPLEMENTATION_POLICY",
+          "from": "PENDING_HQ200_RUNTIME_ACCEPTANCE maximum"
+        },
+        {
+          "warrant_account": "selected_column_reads",
+          "runtime_account": "selected_reads",
+          "kind": "EXACT",
+          "value": 1,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "expected"
+        },
+        {
+          "warrant_account": "full_reads",
+          "runtime_account": "full_reads",
+          "kind": "EXACT",
+          "value": 0,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "expected"
+        },
+        {
+          "warrant_account": "retries",
+          "runtime_account": "retries",
+          "kind": "EXACT",
+          "value": 0,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "expected"
+        },
+        {
+          "warrant_account": "governed_full_route_passes",
+          "mapped_to": "OUTER full_route_passes",
+          "expected": 0,
+          "floor": 0,
+          "maximum": 0,
+          "expected_authority": "FROZEN_AUTHORITY"
+        }
+      ],
+      "warrant_accounts_without_runtime_counterpart": [
+        {
+          "warrant_account": "metadata_reads",
+          "expected": null,
+          "floor": null,
+          "maximum": null,
+          "reason": "no frozen expectation or candidate maximum"
+        }
+      ],
+      "unbound_source_dependent_byte_accounts": [
+        {
+          "warrant_account": "byte_counts_where_measurable",
+          "expected": "UNBOUND_SOURCE_DEPENDENT__MUST_BE_BOUND_BEFORE_LAUNCH",
+          "floor": null,
+          "maximum": null,
+          "authority": "UNBOUND_SOURCE_DEPENDENT"
+        }
+      ]
+    },
+    {
+      "source_key": "SRC06",
+      "mode": "SELECTED",
+      "encoding": null,
+      "selected": [
+        "Q101",
+        "Q2061B"
+      ],
+      "prefix_bytes": null,
+      "outer_expected": 0,
+      "outer_maximum": 0,
+      "retry_ceiling": 0,
+      "applied_constraints": [
+        {
+          "warrant_account": "source_path_existence_access_checks",
+          "runtime_account": "existence_checks",
+          "kind": "FLOOR",
+          "value": 1,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "floor"
+        },
+        {
+          "warrant_account": "full_file_sha256_passes",
+          "runtime_account": "hash_passes",
+          "kind": "FLOOR",
+          "value": 1,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "floor"
+        },
+        {
+          "warrant_account": "path_level_opens",
+          "runtime_account": "path_opens",
+          "kind": "MAXIMUM",
+          "value": 1,
+          "authority": "IMPLEMENTATION_POLICY",
+          "from": "PENDING_HQ200_RUNTIME_ACCEPTANCE maximum"
+        },
+        {
+          "warrant_account": "header_prefix_reads",
+          "runtime_account": "header_prefix_reads",
+          "kind": "EXACT",
+          "value": 0,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "expected"
+        },
+        {
+          "warrant_account": "header_prefix_bytes",
+          "runtime_account": "header_prefix_bytes",
+          "kind": "EXACT",
+          "value": 0,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "expected"
+        },
+        {
+          "warrant_account": "decoder_invocations",
+          "runtime_account": "decoder_invocations",
+          "kind": "MAXIMUM",
+          "value": 1,
+          "authority": "IMPLEMENTATION_POLICY",
+          "from": "PENDING_HQ200_RUNTIME_ACCEPTANCE maximum"
+        },
+        {
+          "warrant_account": "selected_column_reads",
+          "runtime_account": "selected_reads",
+          "kind": "EXACT",
+          "value": 1,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "expected"
+        },
+        {
+          "warrant_account": "full_reads",
+          "runtime_account": "full_reads",
+          "kind": "EXACT",
+          "value": 0,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "expected"
+        },
+        {
+          "warrant_account": "retries",
+          "runtime_account": "retries",
+          "kind": "EXACT",
+          "value": 0,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "expected"
+        },
+        {
+          "warrant_account": "governed_full_route_passes",
+          "mapped_to": "OUTER full_route_passes",
+          "expected": 0,
+          "floor": 0,
+          "maximum": 0,
+          "expected_authority": "FROZEN_AUTHORITY"
+        }
+      ],
+      "warrant_accounts_without_runtime_counterpart": [
+        {
+          "warrant_account": "metadata_reads",
+          "expected": null,
+          "floor": null,
+          "maximum": null,
+          "reason": "no frozen expectation or candidate maximum"
+        }
+      ],
+      "unbound_source_dependent_byte_accounts": [
+        {
+          "warrant_account": "byte_counts_where_measurable",
+          "expected": "UNBOUND_SOURCE_DEPENDENT__MUST_BE_BOUND_BEFORE_LAUNCH",
+          "floor": null,
+          "maximum": null,
+          "authority": "UNBOUND_SOURCE_DEPENDENT"
+        }
+      ]
+    },
+    {
+      "source_key": "SRC08",
+      "mode": "METADATA_ONLY",
+      "encoding": "BIG5",
+      "selected": [],
+      "prefix_bytes": null,
+      "outer_expected": 0,
+      "outer_maximum": 0,
+      "retry_ceiling": 0,
+      "applied_constraints": [
+        {
+          "warrant_account": "source_path_existence_access_checks",
+          "runtime_account": "existence_checks",
+          "kind": "FLOOR",
+          "value": 1,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "floor"
+        },
+        {
+          "warrant_account": "full_file_sha256_passes",
+          "runtime_account": "hash_passes",
+          "kind": "FLOOR",
+          "value": 1,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "floor"
+        },
+        {
+          "warrant_account": "path_level_opens",
+          "runtime_account": "path_opens",
+          "kind": "MAXIMUM",
+          "value": 1,
+          "authority": "IMPLEMENTATION_POLICY",
+          "from": "PENDING_HQ200_RUNTIME_ACCEPTANCE maximum"
+        },
+        {
+          "warrant_account": "metadata_reads",
+          "runtime_account": "metadata_reads",
+          "kind": "EXACT",
+          "value": 1,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "expected"
+        },
+        {
+          "warrant_account": "header_prefix_reads",
+          "runtime_account": "header_prefix_reads",
+          "kind": "EXACT",
+          "value": 0,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "expected"
+        },
+        {
+          "warrant_account": "header_prefix_bytes",
+          "runtime_account": "header_prefix_bytes",
+          "kind": "EXACT",
+          "value": 0,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "expected"
+        },
+        {
+          "warrant_account": "decoder_invocations",
+          "runtime_account": "decoder_invocations",
+          "kind": "MAXIMUM",
+          "value": 1,
+          "authority": "IMPLEMENTATION_POLICY",
+          "from": "PENDING_HQ200_RUNTIME_ACCEPTANCE maximum"
+        },
+        {
+          "warrant_account": "selected_column_reads",
+          "runtime_account": "selected_reads",
+          "kind": "EXACT",
+          "value": 0,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "expected"
+        },
+        {
+          "warrant_account": "full_reads",
+          "runtime_account": "full_reads",
+          "kind": "EXACT",
+          "value": 0,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "expected"
+        },
+        {
+          "warrant_account": "retries",
+          "runtime_account": "retries",
+          "kind": "EXACT",
+          "value": 0,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "expected"
+        },
+        {
+          "warrant_account": "governed_full_route_passes",
+          "mapped_to": "OUTER full_route_passes",
+          "expected": 0,
+          "floor": 0,
+          "maximum": 0,
+          "expected_authority": "FROZEN_AUTHORITY"
+        }
+      ],
+      "warrant_accounts_without_runtime_counterpart": [
+        {
+          "warrant_account": "row_data_reads",
+          "expected": 0,
+          "floor": 0,
+          "maximum": 0,
+          "authority": "FROZEN_AUTHORITY"
+        },
+        {
+          "warrant_account": "selected_columns",
+          "expected": 0,
+          "floor": 0,
+          "maximum": 0,
+          "authority": "FROZEN_AUTHORITY"
+        }
+      ],
+      "unbound_source_dependent_byte_accounts": [
+        {
+          "warrant_account": "byte_counts_where_measurable",
+          "expected": "UNBOUND_SOURCE_DEPENDENT__MUST_BE_BOUND_BEFORE_LAUNCH",
+          "floor": null,
+          "maximum": null,
+          "authority": "UNBOUND_SOURCE_DEPENDENT"
+        }
+      ]
+    },
+    {
+      "source_key": "SRC12",
+      "mode": "METADATA_ONLY",
+      "encoding": "WINDOWS-1252",
+      "selected": [],
+      "prefix_bytes": null,
+      "outer_expected": 0,
+      "outer_maximum": 0,
+      "retry_ceiling": 0,
+      "applied_constraints": [
+        {
+          "warrant_account": "source_path_existence_access_checks",
+          "runtime_account": "existence_checks",
+          "kind": "FLOOR",
+          "value": 1,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "floor"
+        },
+        {
+          "warrant_account": "full_file_sha256_passes",
+          "runtime_account": "hash_passes",
+          "kind": "FLOOR",
+          "value": 1,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "floor"
+        },
+        {
+          "warrant_account": "path_level_opens",
+          "runtime_account": "path_opens",
+          "kind": "MAXIMUM",
+          "value": 1,
+          "authority": "IMPLEMENTATION_POLICY",
+          "from": "PENDING_HQ200_RUNTIME_ACCEPTANCE maximum"
+        },
+        {
+          "warrant_account": "metadata_reads",
+          "runtime_account": "metadata_reads",
+          "kind": "EXACT",
+          "value": 1,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "expected"
+        },
+        {
+          "warrant_account": "header_prefix_reads",
+          "runtime_account": "header_prefix_reads",
+          "kind": "EXACT",
+          "value": 0,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "expected"
+        },
+        {
+          "warrant_account": "header_prefix_bytes",
+          "runtime_account": "header_prefix_bytes",
+          "kind": "EXACT",
+          "value": 0,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "expected"
+        },
+        {
+          "warrant_account": "decoder_invocations",
+          "runtime_account": "decoder_invocations",
+          "kind": "MAXIMUM",
+          "value": 1,
+          "authority": "IMPLEMENTATION_POLICY",
+          "from": "PENDING_HQ200_RUNTIME_ACCEPTANCE maximum"
+        },
+        {
+          "warrant_account": "selected_column_reads",
+          "runtime_account": "selected_reads",
+          "kind": "EXACT",
+          "value": 0,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "expected"
+        },
+        {
+          "warrant_account": "full_reads",
+          "runtime_account": "full_reads",
+          "kind": "EXACT",
+          "value": 0,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "expected"
+        },
+        {
+          "warrant_account": "retries",
+          "runtime_account": "retries",
+          "kind": "EXACT",
+          "value": 0,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "expected"
+        },
+        {
+          "warrant_account": "governed_full_route_passes",
+          "mapped_to": "OUTER full_route_passes",
+          "expected": 0,
+          "floor": 0,
+          "maximum": 0,
+          "expected_authority": "FROZEN_AUTHORITY"
+        }
+      ],
+      "warrant_accounts_without_runtime_counterpart": [
+        {
+          "warrant_account": "row_data_reads",
+          "expected": 0,
+          "floor": 0,
+          "maximum": 0,
+          "authority": "FROZEN_AUTHORITY"
+        },
+        {
+          "warrant_account": "selected_columns",
+          "expected": 0,
+          "floor": 0,
+          "maximum": 0,
+          "authority": "FROZEN_AUTHORITY"
+        }
+      ],
+      "unbound_source_dependent_byte_accounts": [
+        {
+          "warrant_account": "byte_counts_where_measurable",
+          "expected": "UNBOUND_SOURCE_DEPENDENT__MUST_BE_BOUND_BEFORE_LAUNCH",
+          "floor": null,
+          "maximum": null,
+          "authority": "UNBOUND_SOURCE_DEPENDENT"
+        }
+      ]
+    },
+    {
+      "source_key": "SRC14",
+      "mode": "SELECTED",
+      "encoding": null,
+      "selected": [
+        "v372"
+      ],
+      "prefix_bytes": null,
+      "outer_expected": 0,
+      "outer_maximum": 0,
+      "retry_ceiling": 0,
+      "applied_constraints": [
+        {
+          "warrant_account": "source_path_existence_access_checks",
+          "runtime_account": "existence_checks",
+          "kind": "FLOOR",
+          "value": 1,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "floor"
+        },
+        {
+          "warrant_account": "full_file_sha256_passes",
+          "runtime_account": "hash_passes",
+          "kind": "FLOOR",
+          "value": 1,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "floor"
+        },
+        {
+          "warrant_account": "path_level_opens",
+          "runtime_account": "path_opens",
+          "kind": "MAXIMUM",
+          "value": 1,
+          "authority": "IMPLEMENTATION_POLICY",
+          "from": "PENDING_HQ200_RUNTIME_ACCEPTANCE maximum"
+        },
+        {
+          "warrant_account": "header_prefix_reads",
+          "runtime_account": "header_prefix_reads",
+          "kind": "EXACT",
+          "value": 0,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "expected"
+        },
+        {
+          "warrant_account": "header_prefix_bytes",
+          "runtime_account": "header_prefix_bytes",
+          "kind": "EXACT",
+          "value": 0,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "expected"
+        },
+        {
+          "warrant_account": "decoder_invocations",
+          "runtime_account": "decoder_invocations",
+          "kind": "MAXIMUM",
+          "value": 1,
+          "authority": "IMPLEMENTATION_POLICY",
+          "from": "PENDING_HQ200_RUNTIME_ACCEPTANCE maximum"
+        },
+        {
+          "warrant_account": "selected_column_reads",
+          "runtime_account": "selected_reads",
+          "kind": "EXACT",
+          "value": 1,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "expected"
+        },
+        {
+          "warrant_account": "full_reads",
+          "runtime_account": "full_reads",
+          "kind": "EXACT",
+          "value": 0,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "expected"
+        },
+        {
+          "warrant_account": "retries",
+          "runtime_account": "retries",
+          "kind": "EXACT",
+          "value": 0,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "expected"
+        },
+        {
+          "warrant_account": "governed_full_route_passes",
+          "mapped_to": "OUTER full_route_passes",
+          "expected": 0,
+          "floor": 0,
+          "maximum": 0,
+          "expected_authority": "FROZEN_AUTHORITY"
+        }
+      ],
+      "warrant_accounts_without_runtime_counterpart": [
+        {
+          "warrant_account": "metadata_reads",
+          "expected": null,
+          "floor": null,
+          "maximum": null,
+          "reason": "no frozen expectation or candidate maximum"
+        }
+      ],
+      "unbound_source_dependent_byte_accounts": [
+        {
+          "warrant_account": "byte_counts_where_measurable",
+          "expected": "UNBOUND_SOURCE_DEPENDENT__MUST_BE_BOUND_BEFORE_LAUNCH",
+          "floor": null,
+          "maximum": null,
+          "authority": "UNBOUND_SOURCE_DEPENDENT"
+        }
+      ]
+    },
+    {
+      "source_key": "SRC26",
+      "mode": "METADATA_ONLY_PLUS_HEADER_PREFIX",
+      "encoding": null,
+      "selected": [],
+      "prefix_bytes": 176,
+      "outer_expected": 0,
+      "outer_maximum": 0,
+      "retry_ceiling": 0,
+      "applied_constraints": [
+        {
+          "warrant_account": "source_path_existence_access_checks",
+          "runtime_account": "existence_checks",
+          "kind": "FLOOR",
+          "value": 1,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "floor"
+        },
+        {
+          "warrant_account": "full_file_sha256_passes",
+          "runtime_account": "hash_passes",
+          "kind": "FLOOR",
+          "value": 1,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "floor"
+        },
+        {
+          "warrant_account": "path_level_opens",
+          "runtime_account": "path_opens",
+          "kind": "MAXIMUM",
+          "value": 1,
+          "authority": "IMPLEMENTATION_POLICY",
+          "from": "PENDING_HQ200_RUNTIME_ACCEPTANCE maximum"
+        },
+        {
+          "warrant_account": "header_prefix_reads",
+          "runtime_account": "header_prefix_reads",
+          "kind": "FLOOR",
+          "value": 1,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "floor"
+        },
+        {
+          "warrant_account": "header_prefix_bytes",
+          "runtime_account": "header_prefix_bytes",
+          "kind": "EXACT",
+          "value": 176,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "expected"
+        },
+        {
+          "warrant_account": "decoder_invocations",
+          "runtime_account": "decoder_invocations",
+          "kind": "MAXIMUM",
+          "value": 1,
+          "authority": "IMPLEMENTATION_POLICY",
+          "from": "PENDING_HQ200_RUNTIME_ACCEPTANCE maximum"
+        },
+        {
+          "warrant_account": "selected_column_reads",
+          "runtime_account": "selected_reads",
+          "kind": "EXACT",
+          "value": 0,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "expected"
+        },
+        {
+          "warrant_account": "full_reads",
+          "runtime_account": "full_reads",
+          "kind": "EXACT",
+          "value": 0,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "expected"
+        },
+        {
+          "warrant_account": "retries",
+          "runtime_account": "retries",
+          "kind": "EXACT",
+          "value": 0,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "expected"
+        },
+        {
+          "warrant_account": "governed_full_route_passes",
+          "mapped_to": "OUTER full_route_passes",
+          "expected": 0,
+          "floor": 0,
+          "maximum": 0,
+          "expected_authority": "FROZEN_AUTHORITY"
+        }
+      ],
+      "warrant_accounts_without_runtime_counterpart": [
+        {
+          "warrant_account": "metadata_reads",
+          "expected": null,
+          "floor": null,
+          "maximum": null,
+          "reason": "no frozen expectation or candidate maximum"
+        },
+        {
+          "warrant_account": "raw_nominal_case_size",
+          "expected": 174,
+          "floor": 174,
+          "maximum": 174,
+          "authority": "FROZEN_AUTHORITY"
+        },
+        {
+          "warrant_account": "decoded_dictionary_data_width",
+          "expected": 332,
+          "floor": 332,
+          "maximum": 332,
+          "authority": "FROZEN_AUTHORITY"
+        }
+      ],
+      "unbound_source_dependent_byte_accounts": [
+        {
+          "warrant_account": "byte_counts_where_measurable",
+          "expected": "UNBOUND_SOURCE_DEPENDENT__MUST_BE_BOUND_BEFORE_LAUNCH",
+          "floor": null,
+          "maximum": null,
+          "authority": "UNBOUND_SOURCE_DEPENDENT"
+        }
+      ]
+    },
+    {
+      "source_key": "SRC27",
+      "mode": "FULL",
+      "encoding": "latin1",
+      "selected": [],
+      "prefix_bytes": null,
+      "outer_expected": 1,
+      "outer_maximum": 1,
+      "retry_ceiling": 0,
+      "applied_constraints": [
+        {
+          "warrant_account": "source_path_existence_access_checks",
+          "runtime_account": "existence_checks",
+          "kind": "FLOOR",
+          "value": 1,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "floor"
+        },
+        {
+          "warrant_account": "full_file_sha256_passes",
+          "runtime_account": "hash_passes",
+          "kind": "FLOOR",
+          "value": 1,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "floor"
+        },
+        {
+          "warrant_account": "path_level_opens",
+          "runtime_account": "path_opens",
+          "kind": "MAXIMUM",
+          "value": 1,
+          "authority": "IMPLEMENTATION_POLICY",
+          "from": "PENDING_HQ200_RUNTIME_ACCEPTANCE maximum"
+        },
+        {
+          "warrant_account": "header_prefix_reads",
+          "runtime_account": "header_prefix_reads",
+          "kind": "EXACT",
+          "value": 0,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "expected"
+        },
+        {
+          "warrant_account": "header_prefix_bytes",
+          "runtime_account": "header_prefix_bytes",
+          "kind": "EXACT",
+          "value": 0,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "expected"
+        },
+        {
+          "warrant_account": "decoder_invocations",
+          "runtime_account": "decoder_invocations",
+          "kind": "MAXIMUM",
+          "value": 1,
+          "authority": "IMPLEMENTATION_POLICY",
+          "from": "PENDING_HQ200_RUNTIME_ACCEPTANCE maximum"
+        },
+        {
+          "warrant_account": "full_reads",
+          "runtime_account": "full_reads",
+          "kind": "FLOOR",
+          "value": 1,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "floor"
+        },
+        {
+          "warrant_account": "retries",
+          "runtime_account": "retries",
+          "kind": "EXACT",
+          "value": 0,
+          "authority": "FROZEN_AUTHORITY",
+          "from": "expected"
+        },
+        {
+          "warrant_account": "governed_full_route_passes",
+          "mapped_to": "OUTER full_route_passes",
+          "expected": 1,
+          "floor": 1,
+          "maximum": 1,
+          "expected_authority": "FROZEN_AUTHORITY"
+        }
+      ],
+      "warrant_accounts_without_runtime_counterpart": [
+        {
+          "warrant_account": "metadata_reads",
+          "expected": null,
+          "floor": null,
+          "maximum": null,
+          "reason": "no frozen expectation or candidate maximum"
+        },
+        {
+          "warrant_account": "selected_column_reads",
+          "expected": null,
+          "floor": null,
+          "maximum": null,
+          "reason": "no frozen expectation or candidate maximum"
+        },
+        {
+          "warrant_account": "chunk_reads",
+          "expected": null,
+          "floor": null,
+          "maximum": null,
+          "reason": "no frozen expectation or candidate maximum"
+        }
+      ],
+      "unbound_source_dependent_byte_accounts": [
+        {
+          "warrant_account": "byte_counts_where_measurable",
+          "expected": "UNBOUND_SOURCE_DEPENDENT__MUST_BE_BOUND_BEFORE_LAUNCH",
+          "floor": null,
+          "maximum": null,
+          "authority": "UNBOUND_SOURCE_DEPENDENT"
+        }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "id": "W1",
+      "title": "all seven warrant plans execute and every FROZEN expectation holds",
+      "evidence": {
+        "per_source": [
+          {
+            "source_key": "SRC02",
+            "warrant_mode": "SELECTED",
+            "outer_expected": 0,
+            "outer_observed": 0,
+            "applicability": "NOT_APPLICABLE",
+            "frozen_constraints_applied": 7,
+            "policy_constraints_applied": 2,
+            "constraints_all_satisfied": true,
+            "observed_selected_reads": 1,
+            "observed_metadata_reads": 1,
+            "observed_full_reads": 0,
+            "observed_chunk_reads": 0,
+            "observed_header_prefix_reads": 0,
+            "observed_header_prefix_bytes": 0,
+            "observed_retries": 0,
+            "unmapped_warrant_accounts": [
+              "metadata_reads"
+            ],
+            "unbound_source_dependent_bytes": [
+              "byte_counts_where_measurable"
+            ]
+          },
+          {
+            "source_key": "SRC06",
+            "warrant_mode": "SELECTED",
+            "outer_expected": 0,
+            "outer_observed": 0,
+            "applicability": "NOT_APPLICABLE",
+            "frozen_constraints_applied": 7,
+            "policy_constraints_applied": 2,
+            "constraints_all_satisfied": true,
+            "observed_selected_reads": 1,
+            "observed_metadata_reads": 1,
+            "observed_full_reads": 0,
+            "observed_chunk_reads": 0,
+            "observed_header_prefix_reads": 0,
+            "observed_header_prefix_bytes": 0,
+            "observed_retries": 0,
+            "unmapped_warrant_accounts": [
+              "metadata_reads"
+            ],
+            "unbound_source_dependent_bytes": [
+              "byte_counts_where_measurable"
+            ]
+          },
+          {
+            "source_key": "SRC08",
+            "warrant_mode": "METADATA_ONLY",
+            "outer_expected": 0,
+            "outer_observed": 0,
+            "applicability": "NOT_APPLICABLE",
+            "frozen_constraints_applied": 8,
+            "policy_constraints_applied": 2,
+            "constraints_all_satisfied": true,
+            "observed_selected_reads": 0,
+            "observed_metadata_reads": 1,
+            "observed_full_reads": 0,
+            "observed_chunk_reads": 0,
+            "observed_header_prefix_reads": 0,
+            "observed_header_prefix_bytes": 0,
+            "observed_retries": 0,
+            "unmapped_warrant_accounts": [
+              "row_data_reads",
+              "selected_columns"
+            ],
+            "unbound_source_dependent_bytes": [
+              "byte_counts_where_measurable"
+            ]
+          },
+          {
+            "source_key": "SRC12",
+            "warrant_mode": "METADATA_ONLY",
+            "outer_expected": 0,
+            "outer_observed": 0,
+            "applicability": "NOT_APPLICABLE",
+            "frozen_constraints_applied": 8,
+            "policy_constraints_applied": 2,
+            "constraints_all_satisfied": true,
+            "observed_selected_reads": 0,
+            "observed_metadata_reads": 1,
+            "observed_full_reads": 0,
+            "observed_chunk_reads": 0,
+            "observed_header_prefix_reads": 0,
+            "observed_header_prefix_bytes": 0,
+            "observed_retries": 0,
+            "unmapped_warrant_accounts": [
+              "row_data_reads",
+              "selected_columns"
+            ],
+            "unbound_source_dependent_bytes": [
+              "byte_counts_where_measurable"
+            ]
+          },
+          {
+            "source_key": "SRC14",
+            "warrant_mode": "SELECTED",
+            "outer_expected": 0,
+            "outer_observed": 0,
+            "applicability": "NOT_APPLICABLE",
+            "frozen_constraints_applied": 7,
+            "policy_constraints_applied": 2,
+            "constraints_all_satisfied": true,
+            "observed_selected_reads": 1,
+            "observed_metadata_reads": 1,
+            "observed_full_reads": 0,
+            "observed_chunk_reads": 0,
+            "observed_header_prefix_reads": 0,
+            "observed_header_prefix_bytes": 0,
+            "observed_retries": 0,
+            "unmapped_warrant_accounts": [
+              "metadata_reads"
+            ],
+            "unbound_source_dependent_bytes": [
+              "byte_counts_where_measurable"
+            ]
+          },
+          {
+            "source_key": "SRC26",
+            "warrant_mode": "METADATA_ONLY_PLUS_HEADER_PREFIX",
+            "outer_expected": 0,
+            "outer_observed": 0,
+            "applicability": "NOT_APPLICABLE",
+            "frozen_constraints_applied": 7,
+            "policy_constraints_applied": 2,
+            "constraints_all_satisfied": true,
+            "observed_selected_reads": 0,
+            "observed_metadata_reads": 1,
+            "observed_full_reads": 0,
+            "observed_chunk_reads": 0,
+            "observed_header_prefix_reads": 1,
+            "observed_header_prefix_bytes": 176,
+            "observed_retries": 0,
+            "unmapped_warrant_accounts": [
+              "metadata_reads",
+              "raw_nominal_case_size",
+              "decoded_dictionary_data_width"
+            ],
+            "unbound_source_dependent_bytes": [
+              "byte_counts_where_measurable"
+            ]
+          },
+          {
+            "source_key": "SRC27",
+            "warrant_mode": "FULL",
+            "outer_expected": 1,
+            "outer_observed": 1,
+            "applicability": "APPLICABLE",
+            "frozen_constraints_applied": 6,
+            "policy_constraints_applied": 2,
+            "constraints_all_satisfied": true,
+            "observed_selected_reads": 0,
+            "observed_metadata_reads": 1,
+            "observed_full_reads": 1,
+            "observed_chunk_reads": 0,
+            "observed_header_prefix_reads": 0,
+            "observed_header_prefix_bytes": 0,
+            "observed_retries": 0,
+            "unmapped_warrant_accounts": [
+              "metadata_reads",
+              "selected_column_reads",
+              "chunk_reads"
+            ],
+            "unbound_source_dependent_bytes": [
+              "byte_counts_where_measurable"
+            ]
+          }
+        ],
+        "all_seven_executed": true,
+        "six_non_route_outer_zero": true,
+        "src27_outer_one": true
+      },
+      "ok": true
+    },
+    {
+      "id": "W2",
+      "title": "SRC27-shaped route executes once; the second attempt refuses pre-op",
+      "evidence": {
+        "outer_observed": 1,
+        "second_attempt_code": "ROUTE_PASS_LIMIT_REACHED",
+        "accounts_unchanged_by_refusal": true,
+        "route_pass_attempts": 1,
+        "completed_route_passes": 1
+      },
+      "ok": true
+    },
+    {
+      "id": "W3",
+      "title": "full_reads FLOOR 1 stays distinct from the outer pass and from chunk_reads",
+      "evidence": {
+        "full_reads_observed": 1,
+        "outer_observed": 1,
+        "full_reads_floor_satisfied_by_full_reads": true,
+        "chunk_only_attempt_refused": "POST_EXECUTION_CONSTRAINT_FAILED",
+        "outer_account_is_structurally_separate": true,
+        "outer_as_lower_layer_refused": "full_route_passes is the OUTER account and is bound through RoutePassSpec, not through a lower-layer AccountConstraint"
+      },
+      "ok": true
+    },
+    {
+      "id": "W4",
+      "title": "decoder/path-open maxima remain POLICY and are genuinely enforced",
+      "evidence": {
+        "policy_constraints": [
+          [
+            "path_opens",
+            "MAXIMUM",
+            1,
+            "IMPLEMENTATION_POLICY"
+          ],
+          [
+            "decoder_invocations",
+            "MAXIMUM",
+            1,
+            "IMPLEMENTATION_POLICY"
+          ]
+        ],
+        "frozen_constraint_accounts": [
+          "existence_checks",
+          "full_reads",
+          "hash_passes",
+          "header_prefix_bytes",
+          "header_prefix_reads",
+          "retries"
+        ],
+        "default_budget_decoder_invocations": null,
+        "default_budget_path_opens": 1,
+        "decoder_policy_enforced_code": "SOURCE_ACCESS_BUDGET_EXCEEDED",
+        "path_open_policy_enforced_code": "SOURCE_ACCESS_BUDGET_EXCEEDED"
+      },
+      "ok": true
+    },
+    {
+      "id": "W5",
+      "title": "retries max 0 works for all seven",
+      "evidence": {
+        "per_source": [
+          {
+            "source_key": "SRC02",
+            "retries_observed": 0,
+            "second_attempt_code": "RETRY_LIMIT_REACHED"
+          },
+          {
+            "source_key": "SRC06",
+            "retries_observed": 0,
+            "second_attempt_code": "RETRY_LIMIT_REACHED"
+          },
+          {
+            "source_key": "SRC08",
+            "retries_observed": 0,
+            "second_attempt_code": "RETRY_LIMIT_REACHED"
+          },
+          {
+            "source_key": "SRC12",
+            "retries_observed": 0,
+            "second_attempt_code": "RETRY_LIMIT_REACHED"
+          },
+          {
+            "source_key": "SRC14",
+            "retries_observed": 0,
+            "second_attempt_code": "RETRY_LIMIT_REACHED"
+          },
+          {
+            "source_key": "SRC26",
+            "retries_observed": 0,
+            "second_attempt_code": "RETRY_LIMIT_REACHED"
+          },
+          {
+            "source_key": "SRC27",
+            "retries_observed": 0,
+            "second_attempt_code": "ROUTE_PASS_LIMIT_REACHED"
+          }
+        ]
+      },
+      "ok": true
+    },
+    {
+      "id": "W6",
+      "title": "no prefix on the SRC27-shaped route; 176 bytes is SRC26 only",
+      "evidence": {
+        "src27_prefix": null,
+        "src27_header_prefix_reads": 0,
+        "src27_header_prefix_bytes": 0,
+        "src26_prefix_bytes": 176,
+        "src26_header_prefix_bytes_observed": 176,
+        "sources_admitting_a_prefix": [
+          "SRC26"
+        ],
+        "prefix_is_src26_only": true
+      },
+      "ok": true
+    },
+    {
+      "id": "W7",
+      "title": "source-dependent byte ceilings remain uninvented",
+      "evidence": {
+        "per_source": [
+          {
+            "source_key": "SRC02",
+            "budget_reader_bytes": null,
+            "budget_hash_bytes": null,
+            "observed_hash_bytes": 1835,
+            "observed_reader_bytes": 2878
+          },
+          {
+            "source_key": "SRC06",
+            "budget_reader_bytes": null,
+            "budget_hash_bytes": null,
+            "observed_hash_bytes": 1835,
+            "observed_reader_bytes": 2878
+          },
+          {
+            "source_key": "SRC08",
+            "budget_reader_bytes": null,
+            "budget_hash_bytes": null,
+            "observed_hash_bytes": 1835,
+            "observed_reader_bytes": 799
+          },
+          {
+            "source_key": "SRC12",
+            "budget_reader_bytes": null,
+            "budget_hash_bytes": null,
+            "observed_hash_bytes": 1835,
+            "observed_reader_bytes": 799
+          },
+          {
+            "source_key": "SRC14",
+            "budget_reader_bytes": null,
+            "budget_hash_bytes": null,
+            "observed_hash_bytes": 1835,
+            "observed_reader_bytes": 2878
+          },
+          {
+            "source_key": "SRC26",
+            "budget_reader_bytes": null,
+            "budget_hash_bytes": null,
+            "observed_hash_bytes": 1835,
+            "observed_reader_bytes": 799
+          },
+          {
+            "source_key": "SRC27",
+            "budget_reader_bytes": null,
+            "budget_hash_bytes": null,
+            "observed_hash_bytes": 4407,
+            "observed_reader_bytes": 7485
+          }
+        ],
+        "numeric_byte_ceiling_in_production_binding": [],
+        "all_seven_byte_accounts_unbound": true,
+        "observed_byte_use_still_reported": true
+      },
+      "ok": true
+    },
+    {
+      "id": "W8",
+      "title": "production carries no source-specific policy or mode->applicability map",
+      "evidence": {
+        "src_tokens_in_production_binding": [],
+        "row_data_mode_references_in_production_binding": [],
+        "applicability_decision_sites": [
+          "if self.route_applicability is RoutePassApplicability.NOT_APPLICABLE:",
+          "\"active\": self.route_applicability is RoutePassApplicability.APPLICABLE,",
+          "if self.route_applicability is RoutePassApplicability.NOT_APPLICABLE",
+          "if self.spec.route_applicability is not RoutePassApplicability.APPLICABLE:",
+          "if self.spec.route_applicability is not RoutePassApplicability.APPLICABLE:",
+          "applicable = self.spec.route_applicability is RoutePassApplicability.APPLICABLE"
+        ],
+        "applicability_always_read_from_the_bound_field": false
+      },
+      "ok": true
+    },
+    {
+      "id": "W9",
+      "title": "outer account is EXACT 0 for six and EXACT/MAX 1 for SRC27",
+      "evidence": {
+        "per_source": [
+          {
+            "source_key": "SRC02",
+            "warrant_outer_expected": 0,
+            "bound_route_pass_expected": 0,
+            "warrant_outer_maximum": 0,
+            "bound_route_pass_maximum": 0,
+            "applicability": "NOT_APPLICABLE",
+            "constraint_report_kinds": [
+              "FLOOR",
+              "FLOOR",
+              "MAXIMUM",
+              "EXACT",
+              "EXACT",
+              "MAXIMUM",
+              "EXACT",
+              "EXACT",
+              "EXACT"
+            ]
+          },
+          {
+            "source_key": "SRC06",
+            "warrant_outer_expected": 0,
+            "bound_route_pass_expected": 0,
+            "warrant_outer_maximum": 0,
+            "bound_route_pass_maximum": 0,
+            "applicability": "NOT_APPLICABLE",
+            "constraint_report_kinds": [
+              "FLOOR",
+              "FLOOR",
+              "MAXIMUM",
+              "EXACT",
+              "EXACT",
+              "MAXIMUM",
+              "EXACT",
+              "EXACT",
+              "EXACT"
+            ]
+          },
+          {
+            "source_key": "SRC08",
+            "warrant_outer_expected": 0,
+            "bound_route_pass_expected": 0,
+            "warrant_outer_maximum": 0,
+            "bound_route_pass_maximum": 0,
+            "applicability": "NOT_APPLICABLE",
+            "constraint_report_kinds": [
+              "FLOOR",
+              "FLOOR",
+              "MAXIMUM",
+              "EXACT",
+              "EXACT",
+              "EXACT",
+              "MAXIMUM",
+              "EXACT",
+              "EXACT",
+              "EXACT"
+            ]
+          },
+          {
+            "source_key": "SRC12",
+            "warrant_outer_expected": 0,
+            "bound_route_pass_expected": 0,
+            "warrant_outer_maximum": 0,
+            "bound_route_pass_maximum": 0,
+            "applicability": "NOT_APPLICABLE",
+            "constraint_report_kinds": [
+              "FLOOR",
+              "FLOOR",
+              "MAXIMUM",
+              "EXACT",
+              "EXACT",
+              "EXACT",
+              "MAXIMUM",
+              "EXACT",
+              "EXACT",
+              "EXACT"
+            ]
+          },
+          {
+            "source_key": "SRC14",
+            "warrant_outer_expected": 0,
+            "bound_route_pass_expected": 0,
+            "warrant_outer_maximum": 0,
+            "bound_route_pass_maximum": 0,
+            "applicability": "NOT_APPLICABLE",
+            "constraint_report_kinds": [
+              "FLOOR",
+              "FLOOR",
+              "MAXIMUM",
+              "EXACT",
+              "EXACT",
+              "MAXIMUM",
+              "EXACT",
+              "EXACT",
+              "EXACT"
+            ]
+          },
+          {
+            "source_key": "SRC26",
+            "warrant_outer_expected": 0,
+            "bound_route_pass_expected": 0,
+            "warrant_outer_maximum": 0,
+            "bound_route_pass_maximum": 0,
+            "applicability": "NOT_APPLICABLE",
+            "constraint_report_kinds": [
+              "FLOOR",
+              "FLOOR",
+              "MAXIMUM",
+              "FLOOR",
+              "EXACT",
+              "MAXIMUM",
+              "EXACT",
+              "EXACT",
+              "EXACT"
+            ]
+          },
+          {
+            "source_key": "SRC27",
+            "warrant_outer_expected": 1,
+            "bound_route_pass_expected": 1,
+            "warrant_outer_maximum": 1,
+            "bound_route_pass_maximum": 1,
+            "applicability": "APPLICABLE",
+            "constraint_report_kinds": [
+              "FLOOR",
+              "FLOOR",
+              "MAXIMUM",
+              "EXACT",
+              "EXACT",
+              "MAXIMUM",
+              "FLOOR",
+              "EXACT"
+            ]
+          }
+        ],
+        "non_route_exact1_refused": "a NOT_APPLICABLE route pass cannot satisfy EXACT 1; bind RoutePassApplicability.APPLICABLE if an outer pass is authorised"
+      },
+      "ok": true
+    }
+  ]
+}

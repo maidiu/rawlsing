@@ -1,0 +1,183 @@
+{
+  "repository": "maidiu/rawlsing",
+  "review_branch": "agent/reviewer-pyat-hq202-r1",
+  "commissioned_startup_sha": "217f96b5d9f7b767a7cfb11e5c2c3c7c75d77b4f",
+  "review_target": "deea40541cda0627d129dcb7d30e06e0682e0fed",
+  "environment": {
+    "interpreter": "LOCAL_COURTS/qualification/r7-c4-source-free-venv/bin/python",
+    "python": "3.11.3",
+    "pyreadstat": "1.3.6",
+    "env_vars": {
+      "PYTHONHASHSEED": "0",
+      "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+      "PYTHONPATH": "<worktree root>",
+      "pytest": "-p no:cacheprovider"
+    }
+  },
+  "schema": "HQ202_R7_AND_COURTS@1.0.0",
+  "three_courts": {
+    "hardened_binding_court": {
+      "pytest_summary": "34 passed in 1.28s",
+      "exit": "0"
+    },
+    "session_court": {
+      "pytest_summary": "15 passed in 1.05s",
+      "exit": "0"
+    },
+    "broker_court": {
+      "pytest_summary": "20 passed in 1.17s",
+      "exit": "0"
+    }
+  },
+  "three_courts_total_passed": 69,
+  "r7_six_file_court": {
+    "files": [
+      "rawlsing_next/tests/test_closed35_d01_declared_encoding_admission.py",
+      "rawlsing_next/tests/test_closed35_d02_opaque_datetime_carrier.py",
+      "rawlsing_next/tests/test_closed35_g01_sav_numeric_representation_authority.py",
+      "rawlsing_next/tests/test_fiabc_lm2_r1j_sav_representation_authority.py",
+      "rawlsing_next/tests/test_pre553_source_backed_c11_facade.py",
+      "rawlsing_next/tests/test_r35_i01_physical_metadata.py"
+    ],
+    "collect_only": {
+      "result": "55 tests collected in 1.06s",
+      "exit": "0",
+      "required": 55,
+      "matches": true
+    },
+    "run_1": {
+      "result": "55 passed in 69.36s (0:01:09)",
+      "exit": "0"
+    },
+    "run_2": {
+      "result": "55 passed in 74.55s (0:01:14)",
+      "exit": "0"
+    },
+    "raw_summary_lines": [
+      "55 tests collected in 1.06s",
+      "COLLECT_EXIT=0",
+      "55 passed in 69.36s (0:01:09)",
+      "RUN1_EXIT=0 DURATION=80s",
+      "55 passed in 74.55s (0:01:14)",
+      "RUN2_EXIT=0 DURATION=86s"
+    ],
+    "target_55_twice_met": true,
+    "fixtures": "the commissioned sparse manifest already names the only repository-committed fixture the six-file court reads (WORKER_RETURNS/FIABC-LM2-R1I-PHYSICAL-NATIVE-BINDING/01_PHYSICAL_KEY_INVENTORY.json); no symlink and no widening were needed"
+  },
+  "pre_hardening_control": {
+    "purpose": "prove the four defects were real and that this review's proofs are discriminating rather than vacuous",
+    "commit": "35ffa48204672e6c7180cd010a7c1adde9f18cd7",
+    "binding_blob": "68e4077cf6b20414e1833c78fa1d36fa3681bf74",
+    "method": "read-only git archive of the rawlsing_next subtree at the pre-hardening commit, imported instead of the review target; no clone and no worktree",
+    "defects_all_reproduced": true,
+    "defects": {
+      "A_route_pass_applicability": {
+        "RoutePassApplicability_exists_at_pre_hardening": false,
+        "route_applicability_field_exists": false,
+        "metadata_only_non_route_with_outer_max0": {
+          "refused": true,
+          "code": "ROUTE_PASS_LIMIT_REACHED",
+          "message": "ROUTE_PASS_LIMIT_REACHED: full_route_passes maximum of 0 already reached (0 completed); no second source operation was performed"
+        },
+        "defect_present": true,
+        "defect": "route-pass applicability is inferred from the operation rather than bound by the caller; an outer MAX 0 therefore means 'no source operation' and blocks admitted metadata work"
+      },
+      "B_retry_zero_second_attempt": {
+        "first_attempt_code": "POST_EXECUTION_CONSTRAINT_FAILED",
+        "second_attempt_reached_source_work": true,
+        "second_attempt_code_if_any": "POST_EXECUTION_CONSTRAINT_FAILED",
+        "metadata_reads_after_first": 1,
+        "metadata_reads_after_second": 2,
+        "record_retry_referenced_in_module": false,
+        "retries_observed_property_exists": false,
+        "route_pass_attempts_property_exists": false,
+        "completed_route_passes_property_exists": false,
+        "retry_ceiling_consulted": false,
+        "defect_present": true,
+        "defect": "with SourceAccessBudget.retries = 0, a second attempt after a failed first attempt still reaches real source work (metadata_reads 1 -> 2); the retry ceiling is never consulted and there is no attempts/retries/completions separation at all"
+      },
+      "C_completion_before_postconditions": {
+        "lower_layer_postcondition_failure": {
+          "first_code": "POST_EXECUTION_CONSTRAINT_FAILED",
+          "second_code": "ROUTE_PASS_LIMIT_REACHED",
+          "second_message": "ROUTE_PASS_LIMIT_REACHED: full_route_passes maximum of 1 already reached (1 completed); no second source operation was performed",
+          "completion_leaked": true
+        },
+        "outer_exact_failure": {
+          "first_code": "POST_EXECUTION_CONSTRAINT_FAILED",
+          "second_code": null,
+          "second_outer_observed": 2,
+          "attempts_that_satisfied_everything": 1,
+          "phantom_completion_admitted_into_the_outer_account": true
+        },
+        "defect_present": true,
+        "defect": "the completed counter is incremented before the lower-layer constraints and before the outer EXACT rule, so a failed attempt still leaves a counted pass behind. With an unbounded-within-maximum outer EXACT, the phantom completion is even admitted into the outer account: attempt 2 reports observed 2 although only one attempt satisfied everything"
+      },
+      "D_discarded_dependency_injection": {
+        "execution_stores_the_supplied_module": false,
+        "broker_module_is_the_supplied_stub": false,
+        "broker_module_is_the_real_pyreadstat": true,
+        "stub_consultations": 0,
+        "defect_present": true,
+        "defect": "BoundSourceExecution accepts pyreadstat_module and then passes None to the session, so a supplied dependency is silently discarded"
+      }
+    }
+  },
+  "residual_adversarial_observations": {
+    "OBS-1": {
+      "bound_expected": 0,
+      "bound_maximum": null,
+      "refusal_code": "POST_EXECUTION_CONSTRAINT_FAILED",
+      "refusal_reached_post_operation": true,
+      "source_work_performed_before_refusal": true,
+      "full_reads_observed": 1,
+      "completed_route_passes": 0,
+      "severity": "ADVISORY \u2014 unreachable from the seven-source warrant, which always binds SRC27 expected 1 together with maximum 1; and NOT_APPLICABLE + EXACT 1 is still refused at bind. Only a hand-written mis-binding reaches it, and it still refuses without counting a pass."
+    },
+    "OBS-1B": {
+      "first_outer_observed": 1,
+      "second_refusal_code": "POST_EXECUTION_CONSTRAINT_FAILED",
+      "full_reads_after_two_attempts": 2,
+      "completed_route_passes": 1,
+      "severity": "ADVISORY \u2014 bound maximum is UNBOUND here; the warrant binds expected 1 with maximum 1, where the MAXIMUM gate refuses pre-operation (proved in W2)."
+    },
+    "OBS-2": {
+      "unknown_account": "not_a_runtime_account",
+      "outcomes": {
+        "MAXIMUM_0": {
+          "refused_at_bind": false,
+          "vacuous": true,
+          "reported_observed": 0,
+          "reported_satisfied": true
+        },
+        "EXACT_0": {
+          "refused_at_bind": false,
+          "vacuous": true,
+          "reported_observed": 0,
+          "reported_satisfied": true
+        },
+        "FLOOR_1": {
+          "refused_at_bind": false,
+          "failed_post_operation": true,
+          "code": "POST_EXECUTION_CONSTRAINT_FAILED"
+        }
+      },
+      "severity": "ADVISORY \u2014 a typo'd MAXIMUM or EXACT-0 constraint is vacuously satisfied because a missing account reads as observed 0. FLOOR and non-zero EXACT fail closed. No warrant-derived constraint depends on an unknown account, so the seven-source binding is unaffected."
+    },
+    "OBS-3": {
+      "outer_gate_refusal_code": "ROUTE_PASS_LIMIT_REACHED",
+      "outer_observed_via_execute": 1,
+      "full_reads_after_direct_session_run": 2,
+      "outer_count_unchanged_by_direct_run": true,
+      "severity": "OUT OF GRAIN \u2014 the commission directs the review to drive the public execute() path, and an in-process owner cannot sandbox a caller that reaches _completed or the broker directly. Recorded only to bound the claim: the binding is a governed entry point, not an isolated interpreter."
+    }
+  },
+  "exit_codes_recorded": {
+    "binding_court": "0",
+    "session_court": "0",
+    "broker_court": "0",
+    "r7_collect": "0",
+    "r7_run_1": "0",
+    "r7_run_2": "0"
+  }
+}

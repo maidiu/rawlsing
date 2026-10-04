@@ -1,0 +1,492 @@
+{
+  "repository": "maidiu/rawlsing",
+  "review_branch": "agent/reviewer-pyat-hq202-r1",
+  "commissioned_startup_sha": "217f96b5d9f7b767a7cfb11e5c2c3c7c75d77b4f",
+  "review_target": "deea40541cda0627d129dcb7d30e06e0682e0fed",
+  "schema": "HQ202_RETRY_ATTEMPT_COMPLETION@1.0.0",
+  "mission_items": [
+    "B \u2014 attempts / retries / completions",
+    "C \u2014 completion semantics"
+  ],
+  "execution_surface": "public BoundSourceExecution.execute() only",
+  "verdict_B": "SINGLE_OWNER_PRE_OPERATION_CEILING_BOUND_AND_EXACT",
+  "verdict_C": "COMPLETION_ORDERED_LAST; no completion leaks from either failure mode",
+  "B_claims_total": 10,
+  "B_claims_passed": 10,
+  "C_claims_total": 5,
+  "C_claims_passed": 5,
+  "B_claims": [
+    {
+      "id": "B1",
+      "title": "first admitted attempt is not a retry",
+      "evidence": {
+        "route_pass_attempts": 1,
+        "retries_observed": 0,
+        "account_retries": 0,
+        "completed_route_passes": 0
+      },
+      "ok": true
+    },
+    {
+      "id": "B2",
+      "title": "failed first attempt + retries0 refuses the second pre-operation",
+      "evidence": {
+        "first_code": "POST_EXECUTION_CONSTRAINT_FAILED",
+        "second_code": "RETRY_LIMIT_REACHED",
+        "attempts": 1,
+        "completed": 0,
+        "retries": 0,
+        "accounts_before_refusal": {
+          "existence_checks": 1,
+          "path_opens": 1,
+          "logical_views": 3,
+          "hash_passes": 1,
+          "hash_bytes": 3445,
+          "header_prefix_reads": 0,
+          "header_prefix_bytes": 0,
+          "metadata_reads": 1,
+          "selected_reads": 0,
+          "full_reads": 1,
+          "chunk_reads": 0,
+          "reader_invocations": 2,
+          "decoder_invocations": 1,
+          "reader_read_calls": 148,
+          "reader_bytes": 5881,
+          "retries": 0
+        },
+        "accounts_after_refusal": {
+          "existence_checks": 1,
+          "path_opens": 1,
+          "logical_views": 3,
+          "hash_passes": 1,
+          "hash_bytes": 3445,
+          "header_prefix_reads": 0,
+          "header_prefix_bytes": 0,
+          "metadata_reads": 1,
+          "selected_reads": 0,
+          "full_reads": 1,
+          "chunk_reads": 0,
+          "reader_invocations": 2,
+          "decoder_invocations": 1,
+          "reader_read_calls": 148,
+          "reader_bytes": 5881,
+          "retries": 0
+        },
+        "refusal_moved_no_source_account": true
+      },
+      "ok": true
+    },
+    {
+      "id": "B3",
+      "title": "a refused attempt moves no source account",
+      "evidence": {
+        "before": {
+          "existence_checks": 1,
+          "path_opens": 1,
+          "logical_views": 3,
+          "hash_passes": 1,
+          "hash_bytes": 3445,
+          "header_prefix_reads": 0,
+          "header_prefix_bytes": 0,
+          "metadata_reads": 1,
+          "selected_reads": 0,
+          "full_reads": 1,
+          "chunk_reads": 0,
+          "reader_invocations": 2,
+          "decoder_invocations": 1,
+          "reader_read_calls": 148,
+          "reader_bytes": 5881,
+          "retries": 0
+        },
+        "after": {
+          "existence_checks": 1,
+          "path_opens": 1,
+          "logical_views": 3,
+          "hash_passes": 1,
+          "hash_bytes": 3445,
+          "header_prefix_reads": 0,
+          "header_prefix_bytes": 0,
+          "metadata_reads": 1,
+          "selected_reads": 0,
+          "full_reads": 1,
+          "chunk_reads": 0,
+          "reader_invocations": 2,
+          "decoder_invocations": 1,
+          "reader_read_calls": 148,
+          "reader_bytes": 5881,
+          "retries": 0
+        },
+        "moved": false,
+        "attempts_after_refusal": 1
+      },
+      "ok": true
+    },
+    {
+      "id": "B4",
+      "title": "attempt / retry / completed counters are three distinct counters",
+      "evidence": {
+        "attempts": 3,
+        "retries": 2,
+        "completed": 1,
+        "all_three_distinct": true,
+        "failure_codes": [
+          "SOURCE_BYTES_UNAVAILABLE",
+          "SOURCE_BYTES_UNAVAILABLE"
+        ]
+      },
+      "ok": true
+    },
+    {
+      "id": "B5",
+      "title": "the retry count is the existing SourceAccessAccount.retries account",
+      "evidence": {
+        "SourceAccessAccount.retries": 1,
+        "outcome.observed_accounts.retries": 1,
+        "outcome.retries_observed": 1,
+        "execution.retries_observed": 1
+      },
+      "ok": true
+    },
+    {
+      "id": "B6",
+      "title": "SourceAccessBudget.retries owns the ceiling and stops exactly there",
+      "evidence": {
+        "by_ceiling": [
+          {
+            "ceiling": 0,
+            "admitted_attempts": 1,
+            "retries_observed": 0,
+            "refusal_code": "RETRY_LIMIT_REACHED",
+            "stopped_exactly_at_ceiling": true
+          },
+          {
+            "ceiling": 1,
+            "admitted_attempts": 2,
+            "retries_observed": 1,
+            "refusal_code": "RETRY_LIMIT_REACHED",
+            "stopped_exactly_at_ceiling": true
+          },
+          {
+            "ceiling": 2,
+            "admitted_attempts": 3,
+            "retries_observed": 2,
+            "refusal_code": "RETRY_LIMIT_REACHED",
+            "stopped_exactly_at_ceiling": true
+          },
+          {
+            "ceiling": 3,
+            "admitted_attempts": 4,
+            "retries_observed": 3,
+            "refusal_code": "RETRY_LIMIT_REACHED",
+            "stopped_exactly_at_ceiling": true
+          }
+        ]
+      },
+      "ok": true
+    },
+    {
+      "id": "B7",
+      "title": "SourceOperationPlan.max_retries cannot silently disagree",
+      "evidence": {
+        "plan1_budget0": "RETRY_BINDING_MISMATCH: SourceOperationPlan.max_retries=1 disagrees with SourceAccessBudget.retries=0; one exact binding law requires them equal",
+        "plan0_budget1": "RETRY_BINDING_MISMATCH: SourceOperationPlan.max_retries=0 disagrees with SourceAccessBudget.retries=1; one exact binding law requires them equal",
+        "unbounded_ceiling": "RETRY_BINDING_MISMATCH: SourceAccessBudget.retries is unbounded; a governed bound execution requires a decidable retry ceiling",
+        "plan_swap_disagreement": "RETRY_BINDING_MISMATCH: SourceOperationPlan.max_retries=0 disagrees with SourceAccessBudget.retries=2; one exact binding law requires them equal",
+        "agreeing_pair_accepted": {
+          "law": "SourceAccessBudget.retries is the single retry ceiling and SourceAccessAccount.retries is the single retry count; SourceOperationPlan.max_retries must equal the ceiling exactly, and an unbounded (None) ceiling is refused. Mismatch fails closed at bind time.",
+          "single_count_owner": "SourceAccessAccount.retries",
+          "single_ceiling": "SourceAccessBudget.retries",
+          "plan_knob": "SourceOperationPlan.max_retries",
+          "plan_knob_value": 2,
+          "ceiling_value": 2,
+          "agree": true
+        }
+      },
+      "ok": true
+    },
+    {
+      "id": "B8",
+      "title": "failure before session creation: retries0 refuses pre-operation",
+      "evidence": {
+        "first": "ReaderSeamViolation",
+        "second_code": "RETRY_LIMIT_REACHED",
+        "attempts": 1,
+        "session_created": false,
+        "account_snapshot_on_refusal": {}
+      },
+      "ok": true
+    },
+    {
+      "id": "B9",
+      "title": "failure after session creation: retries0 refuses; retries1 charges pre-op",
+      "evidence": {
+        "retries0": {
+          "first_code": "SOURCE_SHA256_MISMATCH",
+          "second_code": "RETRY_LIMIT_REACHED",
+          "accounts_unchanged_by_refusal": true,
+          "attempts": 1,
+          "retries": 0
+        },
+        "retries1": {
+          "codes": [
+            "SOURCE_SHA256_MISMATCH",
+            "SOURCE_SHA256_MISMATCH",
+            "RETRY_LIMIT_REACHED"
+          ],
+          "attempts": 2,
+          "retries": 1,
+          "retry_charged_pre_operation": true
+        }
+      },
+      "ok": true
+    },
+    {
+      "id": "B10",
+      "title": "retry accounting itself creates no source activity",
+      "evidence": {
+        "retries_account_delta": 1,
+        "decoder_delta": 1,
+        "reader_invocation_delta": 1,
+        "path_opens_total": 1,
+        "no_reader_call_for_the_accounting_itself": true
+      },
+      "ok": true
+    }
+  ],
+  "C_claims": [
+    {
+      "id": "C1",
+      "title": "source success + lower-layer postcondition failure is not a completed pass",
+      "evidence": {
+        "code": "POST_EXECUTION_CONSTRAINT_FAILED",
+        "completed_route_passes": 0,
+        "attempts": 1,
+        "full_reads_observed": 1
+      },
+      "ok": true
+    },
+    {
+      "id": "C2",
+      "title": "source success + outer exact failure is not a completed pass",
+      "evidence": {
+        "code": "POST_EXECUTION_CONSTRAINT_FAILED",
+        "completed_route_passes": 0,
+        "full_reads_observed": 1,
+        "second_attempt_refusal_code": "RETRY_LIMIT_REACHED"
+      },
+      "ok": true
+    },
+    {
+      "id": "C3",
+      "title": "completion occurs once every postcondition has succeeded",
+      "evidence": {
+        "completed_pass": true,
+        "outer_observed": 1,
+        "completed_route_passes": 1,
+        "constraint_report": [
+          {
+            "account": "full_reads",
+            "kind": "FLOOR",
+            "value": 1,
+            "authority": "FROZEN_AUTHORITY",
+            "observed": 1,
+            "satisfied": true
+          },
+          {
+            "account": "metadata_reads",
+            "kind": "FLOOR",
+            "value": 1,
+            "authority": "FROZEN_AUTHORITY",
+            "observed": 1,
+            "satisfied": true
+          }
+        ]
+      },
+      "ok": true
+    },
+    {
+      "id": "C4",
+      "title": "the outer count advances only after all lower rules",
+      "evidence": {
+        "code": "POST_EXECUTION_CONSTRAINT_FAILED",
+        "completed_route_passes": 0,
+        "message_names_lower_account": true
+      },
+      "ok": true
+    },
+    {
+      "id": "C5",
+      "title": "a non-route execution never manufactures a phantom completion",
+      "evidence": {
+        "completed_route_passes": 0,
+        "completed_pass": false,
+        "outer_observed": 0
+      },
+      "ok": true
+    }
+  ],
+  "retry_binding_law_verified": {
+    "count_owner": "SourceAccessAccount.retries (read back through the session account, the outcome receipt and the execution property, all equal)",
+    "ceiling_owner": "SourceAccessBudget.retries",
+    "plan_knob": "SourceOperationPlan.max_retries must equal the ceiling",
+    "measured_advancement": [
+      {
+        "ceiling": 0,
+        "admitted_attempts": 1,
+        "retries_observed": 0,
+        "refusal_code": "RETRY_LIMIT_REACHED",
+        "stopped_exactly_at_ceiling": true
+      },
+      {
+        "ceiling": 1,
+        "admitted_attempts": 2,
+        "retries_observed": 1,
+        "refusal_code": "RETRY_LIMIT_REACHED",
+        "stopped_exactly_at_ceiling": true
+      },
+      {
+        "ceiling": 2,
+        "admitted_attempts": 3,
+        "retries_observed": 2,
+        "refusal_code": "RETRY_LIMIT_REACHED",
+        "stopped_exactly_at_ceiling": true
+      },
+      {
+        "ceiling": 3,
+        "admitted_attempts": 4,
+        "retries_observed": 3,
+        "refusal_code": "RETRY_LIMIT_REACHED",
+        "stopped_exactly_at_ceiling": true
+      }
+    ],
+    "unbounded_ceiling": "refused at bind time (BindingError RETRY_BINDING_MISMATCH)",
+    "plan_swap_disagreement": "refused at bind time through dataclasses.replace"
+  },
+  "pre_session_failure_attack": {
+    "first": "ReaderSeamViolation",
+    "second_code": "RETRY_LIMIT_REACHED",
+    "attempts": 1,
+    "session_created": false,
+    "account_snapshot_on_refusal": {}
+  },
+  "post_session_failure_attack": {
+    "retries0": {
+      "first_code": "SOURCE_SHA256_MISMATCH",
+      "second_code": "RETRY_LIMIT_REACHED",
+      "accounts_unchanged_by_refusal": true,
+      "attempts": 1,
+      "retries": 0
+    },
+    "retries1": {
+      "codes": [
+        "SOURCE_SHA256_MISMATCH",
+        "SOURCE_SHA256_MISMATCH",
+        "RETRY_LIMIT_REACHED"
+      ],
+      "attempts": 2,
+      "retries": 1,
+      "retry_charged_pre_operation": true
+    }
+  },
+  "refused_attempt_is_account_neutral": {
+    "first_code": "POST_EXECUTION_CONSTRAINT_FAILED",
+    "second_code": "RETRY_LIMIT_REACHED",
+    "attempts": 1,
+    "completed": 0,
+    "retries": 0,
+    "accounts_before_refusal": {
+      "existence_checks": 1,
+      "path_opens": 1,
+      "logical_views": 3,
+      "hash_passes": 1,
+      "hash_bytes": 3445,
+      "header_prefix_reads": 0,
+      "header_prefix_bytes": 0,
+      "metadata_reads": 1,
+      "selected_reads": 0,
+      "full_reads": 1,
+      "chunk_reads": 0,
+      "reader_invocations": 2,
+      "decoder_invocations": 1,
+      "reader_read_calls": 148,
+      "reader_bytes": 5881,
+      "retries": 0
+    },
+    "accounts_after_refusal": {
+      "existence_checks": 1,
+      "path_opens": 1,
+      "logical_views": 3,
+      "hash_passes": 1,
+      "hash_bytes": 3445,
+      "header_prefix_reads": 0,
+      "header_prefix_bytes": 0,
+      "metadata_reads": 1,
+      "selected_reads": 0,
+      "full_reads": 1,
+      "chunk_reads": 0,
+      "reader_invocations": 2,
+      "decoder_invocations": 1,
+      "reader_read_calls": 148,
+      "reader_bytes": 5881,
+      "retries": 0
+    },
+    "refusal_moved_no_source_account": true
+  },
+  "counter_separation": {
+    "attempts": 3,
+    "retries": 2,
+    "completed": 1,
+    "all_three_distinct": true,
+    "failure_codes": [
+      "SOURCE_BYTES_UNAVAILABLE",
+      "SOURCE_BYTES_UNAVAILABLE"
+    ]
+  },
+  "completion_ordering": {
+    "lower_layer_postcondition_failure": {
+      "code": "POST_EXECUTION_CONSTRAINT_FAILED",
+      "completed_route_passes": 0,
+      "attempts": 1,
+      "full_reads_observed": 1
+    },
+    "outer_exact_failure": {
+      "code": "POST_EXECUTION_CONSTRAINT_FAILED",
+      "completed_route_passes": 0,
+      "full_reads_observed": 1,
+      "second_attempt_refusal_code": "RETRY_LIMIT_REACHED"
+    },
+    "positive_completion": {
+      "completed_pass": true,
+      "outer_observed": 1,
+      "completed_route_passes": 1,
+      "constraint_report": [
+        {
+          "account": "full_reads",
+          "kind": "FLOOR",
+          "value": 1,
+          "authority": "FROZEN_AUTHORITY",
+          "observed": 1,
+          "satisfied": true
+        },
+        {
+          "account": "metadata_reads",
+          "kind": "FLOOR",
+          "value": 1,
+          "authority": "FROZEN_AUTHORITY",
+          "observed": 1,
+          "satisfied": true
+        }
+      ]
+    },
+    "outer_advances_only_after_lower_rules": {
+      "code": "POST_EXECUTION_CONSTRAINT_FAILED",
+      "completed_route_passes": 0,
+      "message_names_lower_account": true
+    },
+    "no_phantom_completion_for_non_route": {
+      "completed_route_passes": 0,
+      "completed_pass": false,
+      "outer_observed": 0
+    }
+  }
+}

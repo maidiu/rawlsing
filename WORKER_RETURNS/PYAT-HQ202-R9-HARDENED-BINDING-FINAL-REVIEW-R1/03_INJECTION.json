@@ -1,0 +1,112 @@
+{
+  "repository": "maidiu/rawlsing",
+  "review_branch": "agent/reviewer-pyat-hq202-r1",
+  "commissioned_startup_sha": "217f96b5d9f7b767a7cfb11e5c2c3c7c75d77b4f",
+  "review_target": "deea40541cda0627d129dcb7d30e06e0682e0fed",
+  "schema": "HQ202_INJECTION@1.0.0",
+  "mission_item": "D \u2014 dependency injection",
+  "verdict": "SUPPLIED_OBJECT_REACHES_THE_SEAM_AND_IS_CONSULTED",
+  "claims_total": 6,
+  "claims_passed": 6,
+  "claims": [
+    {
+      "id": "D1",
+      "title": "the exact supplied pyreadstat object reaches the seam and is consulted",
+      "evidence": {
+        "identity_preserved_on_execution": true,
+        "identity_preserved_on_broker": true,
+        "consultations": 1,
+        "recorded_kwargs": {
+          "metadataonly": true,
+          "apply_value_formats": false,
+          "user_missing": true,
+          "encoding": "BIG5"
+        },
+        "argument_type": "_GovernedView",
+        "argument_has_fileno": true,
+        "real_pyreadstat_entry_points_poisoned_and_never_called": true
+      },
+      "ok": true
+    },
+    {
+      "id": "D2",
+      "title": "the supplied object is load-bearing, not merely accepted",
+      "evidence": {
+        "supplied_inventory": [
+          "alpha",
+          "beta",
+          "gamma"
+        ],
+        "bound_ordinals": [
+          3
+        ],
+        "consultations": 2,
+        "selected_read_kwargs": {
+          "usecols": [
+            "gamma"
+          ],
+          "apply_value_formats": false,
+          "user_missing": true,
+          "encoding": null
+        },
+        "reader_kinds": [
+          "read_sav",
+          "read_sav"
+        ]
+      },
+      "ok": true
+    },
+    {
+      "id": "D3",
+      "title": "the supplied object's read_dta is used for a DTA source",
+      "evidence": {
+        "reader_used": [
+          "read_dta",
+          "read_dta"
+        ],
+        "metadata_then_full": [
+          true,
+          null
+        ],
+        "full_reads": 1,
+        "metadata_reads": 1
+      },
+      "ok": true
+    },
+    {
+      "id": "D4",
+      "title": "None resolves to the real pinned pyreadstat",
+      "evidence": {
+        "execution_module": null,
+        "broker_module_is_real": true,
+        "resolved_version": "1.3.6"
+      },
+      "ok": true
+    },
+    {
+      "id": "D5",
+      "title": "a seam-violating supplied object is refused",
+      "evidence": {
+        "code": "READER_SEAM_VERSION_MISMATCH",
+        "message": "READER_SEAM_VERSION_MISMATCH: pyreadstat '9.9.9' does not match the pinned '1.3.6'; the verified file-like bridge and usecols behaviour were established against"
+      },
+      "ok": true
+    },
+    {
+      "id": "D6",
+      "title": "a supplied object missing a reader is refused",
+      "evidence": {
+        "raised": "ReaderSeamViolation",
+        "message": "READER_SEAM_MISSING_READER: pyreadstat.read_dta absent"
+      },
+      "ok": true
+    }
+  ],
+  "strongest_evidence": {
+    "identity": "ex.pyreadstat_module is stub AND ex.session.broker.pyreadstat is stub",
+    "consultation": "the stub recorded the exact kwargs the broker intended (metadataonly=True, apply_value_formats=False, user_missing=True, encoding='BIG5') and received a _GovernedView with fileno()",
+    "exclusivity": "the real pyreadstat.read_sav / read_dta were replaced with raising poison during the run and were never called",
+    "load_bearing": "with a stub inventory of [alpha, beta, gamma], a SELECTED read of 'gamma' bound ordinal 3 \u2014 the supplied object's inventory decided the binding, so the parameter is not merely stored",
+    "fail_closed": "a wrong-version stub and a stub with no read_dta are both refused at the seam; omitting the parameter resolves the real pinned module"
+  }
+}

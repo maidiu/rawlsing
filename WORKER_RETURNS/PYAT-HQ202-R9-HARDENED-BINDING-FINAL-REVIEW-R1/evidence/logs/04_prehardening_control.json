@@ -1,0 +1,59 @@
+{
+  "schema": "HQ202_PREHARDENING_CONTROL@1.0.0",
+  "pre_hardening_candidate": "35ffa48204672e6c7180cd010a7c1adde9f18cd7",
+  "hardened_review_target": "deea40541cda0627d129dcb7d30e06e0682e0fed",
+  "control_method": "git archive of the rawlsing_next subtree at the pre-hardening commit, imported instead of the review target; no clone, no worktree",
+  "defects": {
+    "A_route_pass_applicability": {
+      "RoutePassApplicability_exists_at_pre_hardening": false,
+      "route_applicability_field_exists": false,
+      "metadata_only_non_route_with_outer_max0": {
+        "refused": true,
+        "code": "ROUTE_PASS_LIMIT_REACHED",
+        "message": "ROUTE_PASS_LIMIT_REACHED: full_route_passes maximum of 0 already reached (0 completed); no second source operation was performed"
+      },
+      "defect_present": true,
+      "defect": "route-pass applicability is inferred from the operation rather than bound by the caller; an outer MAX 0 therefore means 'no source operation' and blocks admitted metadata work"
+    },
+    "B_retry_zero_second_attempt": {
+      "first_attempt_code": "POST_EXECUTION_CONSTRAINT_FAILED",
+      "second_attempt_reached_source_work": true,
+      "second_attempt_code_if_any": "POST_EXECUTION_CONSTRAINT_FAILED",
+      "metadata_reads_after_first": 1,
+      "metadata_reads_after_second": 2,
+      "record_retry_referenced_in_module": false,
+      "retries_observed_property_exists": false,
+      "route_pass_attempts_property_exists": false,
+      "completed_route_passes_property_exists": false,
+      "retry_ceiling_consulted": false,
+      "defect_present": true,
+      "defect": "with SourceAccessBudget.retries = 0, a second attempt after a failed first attempt still reaches real source work (metadata_reads 1 -> 2); the retry ceiling is never consulted and there is no attempts/retries/completions separation at all"
+    },
+    "C_completion_before_postconditions": {
+      "lower_layer_postcondition_failure": {
+        "first_code": "POST_EXECUTION_CONSTRAINT_FAILED",
+        "second_code": "ROUTE_PASS_LIMIT_REACHED",
+        "second_message": "ROUTE_PASS_LIMIT_REACHED: full_route_passes maximum of 1 already reached (1 completed); no second source operation was performed",
+        "completion_leaked": true
+      },
+      "outer_exact_failure": {
+        "first_code": "POST_EXECUTION_CONSTRAINT_FAILED",
+        "second_code": null,
+        "second_outer_observed": 2,
+        "attempts_that_satisfied_everything": 1,
+        "phantom_completion_admitted_into_the_outer_account": true
+      },
+      "defect_present": true,
+      "defect": "the completed counter is incremented before the lower-layer constraints and before the outer EXACT rule, so a failed attempt still leaves a counted pass behind. With an unbounded-within-maximum outer EXACT, the phantom completion is even admitted into the outer account: attempt 2 reports observed 2 although only one attempt satisfied everything"
+    },
+    "D_discarded_dependency_injection": {
+      "execution_stores_the_supplied_module": false,
+      "broker_module_is_the_supplied_stub": false,
+      "broker_module_is_the_real_pyreadstat": true,
+      "stub_consultations": 0,
+      "defect_present": true,
+      "defect": "BoundSourceExecution accepts pyreadstat_module and then passes None to the session, so a supplied dependency is silently discarded"
+    }
+  },
+  "defects_all_reproduced": true
+}

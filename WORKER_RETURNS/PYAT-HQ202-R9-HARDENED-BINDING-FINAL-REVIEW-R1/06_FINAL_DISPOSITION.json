@@ -1,0 +1,94 @@
+{
+  "repository": "maidiu/rawlsing",
+  "review_branch": "agent/reviewer-pyat-hq202-r1",
+  "publication_branch": "agent/reviewer-pyat-hq202-r1-independent-corroboration",
+  "commissioned_startup_sha": "217f96b5d9f7b767a7cfb11e5c2c3c7c75d77b4f",
+  "review_target": "deea40541cda0627d129dcb7d30e06e0682e0fed",
+  "pre_hardening_candidate": "35ffa48204672e6c7180cd010a7c1adde9f18cd7",
+  "warrant_successor": "89054b882c04cf0541b6f9f4abdb555c808ad94d",
+  "hq202_adjudication": "329a37455151f479886bd3cbb40d4d98d016fb13",
+  "checkout_mode": "SPARSE_REQUIRED (honoured: existing sparse worktree, manifest exactly as commissioned, not widened)",
+  "environment": {
+    "interpreter": "LOCAL_COURTS/qualification/r7-c4-source-free-venv/bin/python",
+    "python": "3.11.3",
+    "pyreadstat": "1.3.6",
+    "env_vars": {
+      "PYTHONHASHSEED": "0",
+      "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+      "PYTHONPATH": "<worktree root>",
+      "pytest": "-p no:cacheprovider"
+    }
+  },
+  "schema": "HQ202_FINAL_DISPOSITION@1.0.0",
+  "status": "FINAL",
+  "disposition": "ACCEPT_HARDENED_EXECUTION_BINDING__SOURCE_FREE_R9_RUNTIME_COMPLETE_AT_BINDING_GRAIN",
+  "disposition_is_an_allowed_value": true,
+  "terminal_token": "HQ202_R9_HARDENED_BINDING_FINAL_REVIEW_RETURNED__HQ_ADJUDICATION_REQUIRED",
+  "reviewer": {
+    "harness": "DeepSeek Harness",
+    "model": "DeepSeek V4.1 Flash",
+    "independence": "no locator discovery, no real source access, no warrant issuance, no live C4, no C7, no actor/person work"
+  },
+  "reviewed_blobs": {
+    "rawlsing_next/pre553_execution_binding.py": "0e11af2205a01dcf32aca3e462540040a62e9a29",
+    "rawlsing_next/pre553_source_session.py": "ac1390b861f69d21b65d9af25af9fa49cd217e08",
+    "rawlsing_next/pre553_source_access_broker.py": "090d978bbd631820938f6f76252e09674f44ff99",
+    "rawlsing_next/tests/test_pre553_execution_binding_court.py": "67492110a1485eed44c88d1bb9cd0ac27ecebd2a",
+    "rawlsing_next/tests/test_pre553_source_session_court.py": "8b45e3f9ac144077b1f3c7c057dd33f0c96aafae",
+    "rawlsing_next/tests/test_pre553_source_access_broker_court.py": "c1bc827329846ab8ded9ee0a4307cd1680bbdf08"
+  },
+  "evidence_totals": {
+    "independent_claims_A_to_D": "29/29",
+    "warrant_checks": "9/9",
+    "pre_hardening_defects_reproduced": "4/4",
+    "courts_passed": "34 binding + 15 session + 20 broker = 69, all exit 0",
+    "r7_court": "55 collected, then 55 passed twice, all exit 0",
+    "total_tests_observed": 124,
+    "failures": 0
+  },
+  "four_defects": {
+    "A_route_pass_applicability": "REPAIRED \u2014 explicit caller-bound RoutePassApplicability, default NOT_APPLICABLE, decision read only from the bound field; reproduced as a live defect at 35ffa48",
+    "B_retry_model": "REPAIRED \u2014 one binding law, pre-operation ceiling, account-neutral refusal, three separate counters, exact advancement",
+    "C_completion_semantics": "REPAIRED \u2014 completion assigned last; reproduced as a live phantom-completion leak at 35ffa48",
+    "D_injection": "REPAIRED \u2014 supplied object stored, forwarded and demonstrably consulted; reproduced as a silent discard at 35ffa48"
+  },
+  "why_this_disposition": {
+    "not_HARDENED_BINDING_MATERIAL_DEFECT": "no material defect was found in the hardened binding, session or broker; every commission-listed proof holds on the public execute() path",
+    "not_RETRY_MODEL_STILL_UNSOUND": "the retry model is single-owner, ceiling-bound, decided before source work, account-neutral on refusal, and exactly advanced to the ceiling for ceilings 0..3",
+    "not_WARRANT_RUNTIME_CONTRACT_CONFLICT": "all seven warrant plans execute with every FROZEN expectation satisfied; the only mismatches are warrant accounts that deliberately have no runtime counterpart and are carried as such",
+    "not_R7_REQUALIFICATION_FAILURE": "the R7 six-file court collects 55 and passes 55/55 twice with no fixture workaround"
+  },
+  "advisories": [
+    {
+      "id": "ADV-1",
+      "severity": "advisory",
+      "detail": "A ceiling of N admits N+1 total attempts (one initial plus N retries). Self-consistent and documented in RETRY_BINDING_LAW, but a reader-facing note should state that SourceAccessBudget.retries counts RETRIES, not attempts."
+    },
+    {
+      "id": "ADV-2",
+      "severity": "advisory",
+      "detail": "Only the outer MAXIMUM is a pre-operation gate; the outer EXACT is a post-operation postcondition. A hand-written spec that binds APPLICABLE with EXACT smaller than the admitted pass count (and an unbounded or larger maximum) performs source work and only then refuses. Unreachable from the seven-source warrant, which binds SRC27 expected 1 together with maximum 1, and NOT_APPLICABLE + EXACT 1 is still refused at bind."
+    },
+    {
+      "id": "ADV-3",
+      "severity": "advisory",
+      "detail": "A constraint naming an account the runtime does not have is not refused at bind; MAXIMUM and EXACT-0 on an unknown account are vacuously satisfied because a missing account reads as observed 0. No warrant-derived constraint depends on an unknown account."
+    },
+    {
+      "id": "ADV-4",
+      "severity": "boundary",
+      "detail": "BoundSourceExecution.session is a public accessor, so a holder can drive session.run() directly and bypass the outer gate. Recorded to bound the claim: this is a governed in-process entry point, not a sandbox. The commission already places cross-process uniqueness and host preflight outside this grain."
+    },
+    {
+      "id": "ADV-5",
+      "severity": "boundary",
+      "detail": "Unchanged from earlier waves: no real-source numeric reader-byte ceiling is source-free established, so the byte accounts remain UNBOUND_SOURCE_DEPENDENT and issuance-blocking rather than invented."
+    }
+  ],
+  "concurrency_disclosure": {
+    "observation": "a second agent ran the identical HQ202 commission at the same time in the same sparse worktree on the same branch, finished first, and pushed 0deb64784829661780ee3957f8070ccc2c241722 to origin/agent/reviewer-pyat-hq202-r1 before this review committed.",
+    "effect_on_this_review": "none on substance. This packet was produced from this reviewer's own executions and this reviewer's own evidence logs; it was not copied from the other packet. The other packet's disposition was already read before this review's proofs completed, and that is disclosed as a possible anchoring influence.",
+    "handling": "origin/agent/reviewer-pyat-hq202-r1 was left untouched at 0deb6478. This review is published on a separate branch, by explicit HQ instruction, so both returns are preserved and separately attributable.",
+    "agreement": "the two returns agree on the disposition and on the repair of all four defects; they are independent corroborations, not one reused artifact."
+  }
+}
