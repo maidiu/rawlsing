@@ -1,0 +1,225 @@
+{
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/reviewer-pyat-hq205-c1-r1",
+  "startup_sha": "e639fe446392ff12e85ec8c5beffe44c11286334",
+  "commission_base": "0e8d5bcd98e5aba63cd7312f778dedbfe8b6b646",
+  "candidate": "88f262b94bbe94cd3e2a8113c8b17d0872c5089c",
+  "candidate_parent": "50fdc737deeb21c88f6f07a326e76680481dc753",
+  "control_base_candidate": "ff4f06954824a3a5699bc5c1c9bd68cb3c5b4146",
+  "hq168_accepted_integration": "149c3d2636160d8de9b5a8be0c8b87195158077d",
+  "hq168_accepted_result": "063ee8b77fc4e05c37456ff0168e946247f919ef",
+  "hq168_tested_code": "933a3d31aa961719c73e6ce7eebcfe40bc8cd45e",
+  "final_prior_review": "c8ce0ea81a2165f37d566f37de788fecedf85051",
+  "owner_common_ancestor": "215932d08",
+  "consumer_blob": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+  "control_authority_blob": "ac7f3a013129bc148debf8f011597971a2c99442",
+  "DISPOSITION": "C1_RECONCILIATION_PARTIAL__OVERIMPORT_REPAIR_REQUIRED",
+  "TERMINAL": "HQ205_C1_CONTROL_RECONCILIATION_REVIEW_RETURNED__HQ_ADJUDICATION_REQUIRED",
+  "schema": "HQ205_COURT_AND_REGRESSION_REVIEW@1.0.0",
+  "mission_items": [
+    "E \u2014 court reconstruction",
+    "F \u2014 zero-regression attribution"
+  ],
+  "court": {
+    "candidate_claim": "the exact 15 court file NAMES were never recorded by either authority; the court was reconstructed to an exact multiset match and an exact 454 total, with the identity of the 8 dependency-closure files INFERRED from an exact residual sum of 143",
+    "FINDING": "THE CLAIM IS FALSE. Both authorities DO record the exact 15 file names in machine-readable per-file maps that the candidate overlooked.",
+    "where_the_names_are_recorded": [
+      {
+        "commit": "063ee8b77fc4e05c37456ff0168e946247f919ef",
+        "file": "WORKER_RETURNS/PYAT-AT17-SUCCESSOR-REQUAL-C1-03-JOIN-RERUN-R1/08_EXECUTION_RECEIPT.json",
+        "field": "per_file",
+        "files": 15
+      },
+      {
+        "commit": "c8ce0ea81a2165f37d566f37de788fecedf85051",
+        "file": "WORKER_RETURNS/PYAT-C1-03-SUCCESSOR-JOIN-FINAL-INTEGRATION-REVIEW-R1/05_TEST_AND_REPLAY_REVIEW.json",
+        "field": "section8_count_audit.per_file_independently_collected",
+        "files": 15
+      }
+    ],
+    "candidate_reconstruction_matches_the_record": true,
+    "match_basis": "file-for-file AND count-for-count, not merely as a multiset",
+    "reconstructed_15": [
+      {
+        "file": "rawlsing_next/tests/test_pre553_analytical_state_and_route.py",
+        "declared": 92,
+        "reviewer_collected": 92,
+        "in_historical_record": true
+      },
+      {
+        "file": "rawlsing_next/tests/test_pre553_authority_maintenance.py",
+        "declared": 57,
+        "reviewer_collected": 57,
+        "in_historical_record": true
+      },
+      {
+        "file": "rawlsing_next/tests/test_pre553_replay_audit.py",
+        "declared": 54,
+        "reviewer_collected": 54,
+        "in_historical_record": true
+      },
+      {
+        "file": "rawlsing_next/tests/test_pre553_analytical_replay_dependency.py",
+        "declared": 43,
+        "reviewer_collected": 43,
+        "in_historical_record": true
+      },
+      {
+        "file": "rawlsing_next/tests/test_pre553_empirical_possibility_provider.py",
+        "declared": 43,
+        "reviewer_collected": 43,
+        "in_historical_record": true
+      },
+      {
+        "file": "rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py",
+        "declared": 35,
+        "reviewer_collected": 35,
+        "in_historical_record": true
+      },
+      {
+        "file": "rawlsing_next/tests/test_pre553_empirical_query.py",
+        "declared": 32,
+        "reviewer_collected": 32,
+        "in_historical_record": true
+      },
+      {
+        "file": "rawlsing_next/tests/test_pre553_c1_03_join.py",
+        "declared": 28,
+        "reviewer_collected": 28,
+        "in_historical_record": true
+      },
+      {
+        "file": "rawlsing_next/tests/test_pre553_structural_admission.py",
+        "declared": 17,
+        "reviewer_collected": 17,
+        "in_historical_record": true
+      },
+      {
+        "file": "rawlsing_next/tests/test_pre553_discovery_exact.py",
+        "declared": 14,
+        "reviewer_collected": 14,
+        "in_historical_record": true
+      },
+      {
+        "file": "rawlsing_next/tests/test_pre553_analytical_composition.py",
+        "declared": 13,
+        "reviewer_collected": 13,
+        "in_historical_record": true
+      },
+      {
+        "file": "rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py",
+        "declared": 13,
+        "reviewer_collected": 13,
+        "in_historical_record": true
+      },
+      {
+        "file": "rawlsing_next/tests/test_pre553_discovery_adaptive.py",
+        "declared": 8,
+        "reviewer_collected": 8,
+        "in_historical_record": true
+      },
+      {
+        "file": "rawlsing_next/tests/test_pre553_discovery_adaptive_admission.py",
+        "declared": 3,
+        "reviewer_collected": 3,
+        "in_historical_record": true
+      },
+      {
+        "file": "rawlsing_next/tests/test_pre553_recursive_handoff.py",
+        "declared": 2,
+        "reviewer_collected": 2,
+        "in_historical_record": true
+      }
+    ],
+    "multiset": [
+      2,
+      3,
+      8,
+      13,
+      13,
+      14,
+      17,
+      28,
+      32,
+      35,
+      43,
+      43,
+      54,
+      57,
+      92
+    ],
+    "total": 454,
+    "reviewer_independent_collection": {
+      "per_file_matches_the_record_exactly": true,
+      "total": 454,
+      "method": "pytest --collect-only per file in an independent sparse worktree at the candidate commit"
+    },
+    "reviewer_independent_execution": {
+      "run_1": "454 passed in 67.56s (0:01:07)",
+      "run_2": "454 passed",
+      "exit": 0
+    },
+    "alternate_15_file_sets": {
+      "materiality": "NOT APPLICABLE \u2014 there is no inference to attack. The identity of all 15 files is recorded by two independent authorities and the candidate's reconstruction matches both exactly. No plausible alternate set can change qualification because the true set is known."
+    },
+    "verdict": "COURT_RECONSTRUCTION_LEGITIMATE_AND_NOW_PROVABLY_EXACT",
+    "required_correction": "the candidate's 'unreconstructed record' caveat and its residual-arithmetic justification are both WRONG and must be replaced by a citation of the two recorded per-file maps. The integrated artifact is unaffected; the return's epistemic claim is not."
+  },
+  "regression": {
+    "candidate_claim": {
+      "before": {
+        "failed": 227,
+        "passed": 2276,
+        "skipped": 1,
+        "errors": 53,
+        "failure_error_ids": 280
+      },
+      "after": {
+        "failed": 227,
+        "passed": 2566,
+        "skipped": 1,
+        "errors": 53,
+        "failure_error_ids": 280
+      },
+      "new_failure_ids": 0,
+      "fixed_failure_ids": 0,
+      "passed_delta": 290
+    },
+    "reviewer_independent_measurement": {
+      "method": "the full rawlsing_next/tests suite was run in two independent sparse worktrees whose rawlsing_next is exactly the before/after pair: the review worktree at the commission head (rawlsing_next byte-identical to the candidate base) and the candidate worktree at 88f262b94",
+      "invocation": "pytest -q --tb=no -rfE --continue-on-collection-errors -p no:cacheprovider rawlsing_next/tests",
+      "before": {
+        "failed": 227,
+        "passed": 2276,
+        "skipped": 1,
+        "errors": 53,
+        "failure_error_ids": 280
+      },
+      "after": {
+        "failed": 227,
+        "passed": 2566,
+        "skipped": 1,
+        "errors": 53,
+        "failure_error_ids": 280
+      },
+      "new_failure_ids": [],
+      "fixed_failure_ids": [],
+      "failure_error_id_sets_identical": true,
+      "passed_delta": 290
+    },
+    "passed_delta_reconciliation": {
+      "six_newly_imported_analytical_courts": 254,
+      "authority_maintenance_growth": 36,
+      "sum": 290,
+      "reviewer_verified_control_collection_of_authority_maintenance": 21,
+      "reconciles_exactly": true
+    },
+    "masked_failures": {
+      "collection_errors_present": true,
+      "continue_on_collection_errors_used": true,
+      "note": "five collection errors exist in BOTH trees; --continue-on-collection-errors was used in both runs so the comparison is like-for-like and no failure can hide behind an aborted collection",
+      "failures_hidden_or_retried": false
+    },
+    "verdict": "ZERO_REGRESSION_CONFIRMED_INDEPENDENTLY"
+  }
+}

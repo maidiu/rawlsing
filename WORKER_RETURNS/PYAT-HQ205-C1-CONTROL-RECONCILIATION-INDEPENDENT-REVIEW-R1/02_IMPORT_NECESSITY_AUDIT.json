@@ -1,0 +1,192 @@
+{
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/reviewer-pyat-hq205-c1-r1",
+  "startup_sha": "e639fe446392ff12e85ec8c5beffe44c11286334",
+  "commission_base": "0e8d5bcd98e5aba63cd7312f778dedbfe8b6b646",
+  "candidate": "88f262b94bbe94cd3e2a8113c8b17d0872c5089c",
+  "candidate_parent": "50fdc737deeb21c88f6f07a326e76680481dc753",
+  "control_base_candidate": "ff4f06954824a3a5699bc5c1c9bd68cb3c5b4146",
+  "hq168_accepted_integration": "149c3d2636160d8de9b5a8be0c8b87195158077d",
+  "hq168_accepted_result": "063ee8b77fc4e05c37456ff0168e946247f919ef",
+  "hq168_tested_code": "933a3d31aa961719c73e6ce7eebcfe40bc8cd45e",
+  "final_prior_review": "c8ce0ea81a2165f37d566f37de788fecedf85051",
+  "owner_common_ancestor": "215932d08",
+  "consumer_blob": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+  "control_authority_blob": "ac7f3a013129bc148debf8f011597971a2c99442",
+  "DISPOSITION": "C1_RECONCILIATION_PARTIAL__OVERIMPORT_REPAIR_REQUIRED",
+  "TERMINAL": "HQ205_C1_CONTROL_RECONCILIATION_REVIEW_RETURNED__HQ_ADJUDICATION_REQUIRED",
+  "schema": "HQ205_IMPORT_NECESSITY_AUDIT@1.0.0",
+  "mission_item": "B \u2014 89-path necessity",
+  "path_population": {
+    "files_changed_by_the_candidate_commit": 89,
+    "byte_exact_to_the_accepted_result_063ee8b7": 84,
+    "candidate_own_return_documents_not_imports": 5,
+    "newly_added_to_control": 87,
+    "restoring_control_resident_files": 2,
+    "restored_files": [
+      "rawlsing_next/pre553_authority_maintenance.py (control ac7f3a013129bc148debf8f011597971a2c99442 -> accepted 547e6bf2...)",
+      "rawlsing_next/tests/test_pre553_authority_maintenance.py (control e7ac05848fd6489751a0ff37d4ae85037412751b -> accepted 5f9151d4...)"
+    ],
+    "note": "the 84 imports are all byte-identical to the HQ168 accepted result; the candidate invented nothing",
+    "the_five_non_imports": [
+      "WORKER_RETURNS/PYAT-HQ204-LINEAGE-R1/00_RETURN.md",
+      "WORKER_RETURNS/PYAT-HQ204-LINEAGE-R1/01_ACCEPTED_GRAIN_RECONSTRUCTION.json",
+      "WORKER_RETURNS/PYAT-HQ204-LINEAGE-R1/02_HD_RECEIPT.json",
+      "WORKER_RETURNS/PYAT-HQ204-LINEAGE-R1/03_EXECUTION_RECEIPT.json",
+      "WORKER_RETURNS/PYAT-HQ204-LINEAGE-R1/04_FINAL_DISPOSITION.json"
+    ]
+  },
+  "method": {
+    "static": "AST scan of all 21 imported rawlsing_next files for authority-path construction; basename scan of the whole imported set; explicit check for directory enumeration (iterdir/glob/rglob/listdir/scandir) over the four authority directories -> NONE found",
+    "dynamic": "an io.open/builtins.open audit shim recorded every path under WORKER_RETURNS opened during a full 15-file, 454-test court run, including subprocesses spawned by the fresh-process runners",
+    "decisive": "the 54 never-opened authority files were REMOVED in a scratch sparse worktree at the candidate commit and the court was re-run",
+    "sensitivity_control": "all 9 required authority files were then removed and the court was re-run, to prove the removal experiment discriminates"
+  },
+  "classes": {
+    "REQUIRED_ACCEPTED_DEPENDENCY": {
+      "count": 30,
+      "production_owners": 5,
+      "accepted_grain_test_files": 7,
+      "test_support_files": 9,
+      "authority_files_actually_read": 9,
+      "paths": [
+        "rawlsing_next/pre553_analytical_state_and_route.py",
+        "rawlsing_next/pre553_empirical_possibility_provider.py",
+        "rawlsing_next/pre553_authority_maintenance.py",
+        "rawlsing_next/pre553_analytical_replay_dependency.py",
+        "rawlsing_next/pre553_analytical_composition.py",
+        "rawlsing_next/tests/test_pre553_analytical_state_and_route.py",
+        "rawlsing_next/tests/test_pre553_authority_maintenance.py",
+        "rawlsing_next/tests/test_pre553_analytical_replay_dependency.py",
+        "rawlsing_next/tests/test_pre553_empirical_possibility_provider.py",
+        "rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py",
+        "rawlsing_next/tests/test_pre553_c1_03_join.py",
+        "rawlsing_next/tests/test_pre553_analytical_composition.py",
+        "rawlsing_next/tests/c1_03_join_fixture.py",
+        "rawlsing_next/tests/c1_at08_at13_fixture.py",
+        "rawlsing_next/tests/c1_at08_at13_fresh_process_runner.py",
+        "rawlsing_next/tests/c1_at14_at16_fixture.py",
+        "rawlsing_next/tests/c1_at18_at19_fixture.py",
+        "rawlsing_next/tests/c1_at18_at19_fresh_process_runner.py",
+        "rawlsing_next/tests/n10e_at17_successor_requal.py",
+        "rawlsing_next/tests/n10e_empirical_slice_fixture.py",
+        "rawlsing_next/tests/n10e_empirical_slice_fresh_process_runner.py",
+        "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/FORWARD_HISTORICAL_CANONICAL.json",
+        "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/FORWARD_SUCCESSOR_CANONICAL.json",
+        "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/REVERSE_HISTORICAL_CANONICAL.json",
+        "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/REVERSE_SUCCESSOR_CANONICAL.json",
+        "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/02_VALUE_RELATION_ORACLE.json",
+        "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/03_SYNTHETIC_AUTHORITY_FREEZE.json",
+        "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/04_SLICE_PROJECTION.json",
+        "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/02_OWNER_NATIVE_AUTHORITY_SCOPE_FREEZE.json",
+        "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R8/04_CURRENT_AT07_IDENTITY_SPINE.json"
+      ]
+    },
+    "UNNECESSARY_OVERIMPORT": {
+      "count": 54,
+      "by_directory": {
+        "PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1": 38,
+        "PYAT-C1-00-CONTRACT-CORRECTION-R2": 4,
+        "PYAT-C1-00-CONTRACT-CORRECTION-R3": 6,
+        "PYAT-C1-00-CONTRACT-CORRECTION-R8": 6
+      },
+      "paths": [
+        "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/00_COMMISSION.md",
+        "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/00_RETURN.md",
+        "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/01_PINNED_INPUTS.json",
+        "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/02_OLD_NEW_PREIMAGE_FIELD_MANIFEST.json",
+        "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/03_FORWARD_SUCCESSOR_PREIMAGE.json",
+        "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/04_REVERSE_SUCCESSOR_PREIMAGE.json",
+        "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/05_SUCCESSOR_SPINE.json",
+        "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/06_DERIVATION_AND_SUCCESSION_MATRIX.json",
+        "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/07_ORACLE_PROCEDURE.py",
+        "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/08_ORACLE_PROCEDURE_HOSTILES.json",
+        "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/09_EXECUTION_RECEIPT.json",
+        "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/10_FINAL_DISPOSITION.json",
+        "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/FORWARD_DERIVATION_PREIMAGES.json",
+        "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/INPUTS/adopted_owner.py",
+        "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/INPUTS/astra_decision.json",
+        "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/INPUTS/astra_decision.md",
+        "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/INPUTS/at17_fixture_law.py",
+        "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/INPUTS/at17_freeze.json",
+        "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/INPUTS/consumer_law.py",
+        "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/INPUTS/historical_owner.py",
+        "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/INPUTS/input_0.json",
+        "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/INPUTS/input_1.json",
+        "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/INPUTS/input_2.json",
+        "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/INPUTS/input_3.json",
+        "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/INPUTS/input_4.json",
+        "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/INPUTS/input_5.json",
+        "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/INPUTS/integrity_law.py",
+        "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/INPUTS/objects_law.py",
+        "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/INPUTS/predicate_law.py",
+        "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/INPUTS/producer_law.py",
+        "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/INPUTS/provider_custody.py",
+        "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/INPUTS/query_common_law.py",
+        "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/INPUTS/query_eval_law.py",
+        "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/INPUTS/r3_scope.json",
+        "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/INPUTS/r8_spine.json",
+        "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/INPUTS/r8_test_law.py",
+        "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/INPUTS/source_fixture_law.py",
+        "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/REVERSE_DERIVATION_PREIMAGES.json",
+        "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/00_COMMISSION.md",
+        "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/00_RETURN.md",
+        "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/01_CORRECTION_MATRIX.json",
+        "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/05_STATE_AND_DETERMINANT_CLOSURE.json",
+        "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/00_COMMISSION.md",
+        "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/00_RETURN.md",
+        "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/01_CORRECTION_MATRIX.json",
+        "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/03_UNKNOWN_CURRENTNESS_FIXTURE.json",
+        "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/04_EVIDENCE_IDENTITY_PREIMAGE.json",
+        "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/05_RECOMPUTATION_RECEIPT.json",
+        "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R8/00_RETURN.md",
+        "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R8/01_EXECUTED_RELEASE_OWNER_RECEIPT.json",
+        "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R8/02_RELEASE_DIVERGENCE_FORENSICS.json",
+        "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R8/03_PRODUCER_PREDICATE_PREIMAGE_CUSTODY.json",
+        "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R8/05_SUPERSESSION_MAP.json",
+        "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R8/06_RECOMPUTATION_RECEIPT.json"
+      ],
+      "evidence": {
+        "never_opened_during_the_454_court": true,
+        "court_passes_454_of_454_with_all_54_removed": {
+          "result": "454 passed in 67.94s (0:01:07)",
+          "exit": 0,
+          "remaining_authority_files": 9
+        },
+        "sensitivity_control_with_all_9_required_removed": "108 failed, 336 passed, 10 errors"
+      }
+    },
+    "REQUIRED_ONLY_FOR_HISTORICAL_COURT": {
+      "count": 0,
+      "note": "the nine authority files and all 16 test/support files are required by the court HQ168 ACCEPTED, not by a superseded historical court; the historical R8 failed court (434 passed / 1 failed) is not run and no path exists only to serve it"
+    },
+    "CURRENT_CONTROL_ALREADY_HAS_LAWFUL_SUCCESSOR": {
+      "count": 0,
+      "note": "all four authority directories are absent from current control, and the two restored files have a control-resident WEAKER PREDECESSOR, not a lawful successor; see 03"
+    }
+  },
+  "audit_measurement": {
+    "unique_worker_returns_paths_opened_during_the_454_court": 9,
+    "opened_paths": [
+      "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/FORWARD_HISTORICAL_CANONICAL.json",
+      "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/FORWARD_SUCCESSOR_CANONICAL.json",
+      "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/REVERSE_HISTORICAL_CANONICAL.json",
+      "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/REVERSE_SUCCESSOR_CANONICAL.json",
+      "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/02_VALUE_RELATION_ORACLE.json",
+      "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/03_SYNTHETIC_AUTHORITY_FREEZE.json",
+      "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/04_SLICE_PROJECTION.json",
+      "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/02_OWNER_NATIVE_AUTHORITY_SCOPE_FREEZE.json",
+      "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R8/04_CURRENT_AT07_IDENTITY_SPINE.json"
+    ],
+    "imported_worker_returns_paths": 68,
+    "imported_but_never_opened": 59
+  },
+  "verdict": {
+    "all_89_required": false,
+    "required_import_paths": 30,
+    "unnecessary_import_paths": 54,
+    "unnecessary_fraction_of_the_84_imports": 0.6429,
+    "materiality": "the unnecessary files are inert: they are byte-exact accepted blobs, no code path opens them, they collide with nothing in control, and the accepted qualification is unaffected. They are nevertheless over-import under the commission's own necessity test and they carry historical copies of production owners inside the AT07 freeze's INPUTS/ directory, which is a lineage-hygiene risk in a project whose discipline is authority provenance.",
+    "candidate_disclosure": "the candidate DID disclose directory-granularity import (02_HD_RECEIPT.json lists authority_material_added as four DIRECTORIES with file counts), so this is disclosed inflation rather than a concealed over-import; its sentence 'Without them the courts fail closed' is true at directory granularity and false at file granularity."
+  }
+}

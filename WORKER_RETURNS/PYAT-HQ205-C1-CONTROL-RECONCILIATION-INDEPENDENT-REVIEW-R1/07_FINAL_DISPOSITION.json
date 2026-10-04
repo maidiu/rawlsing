@@ -1,0 +1,87 @@
+{
+  "repository": "maidiu/rawlsing",
+  "branch": "agent/reviewer-pyat-hq205-c1-r1",
+  "startup_sha": "e639fe446392ff12e85ec8c5beffe44c11286334",
+  "commission_base": "0e8d5bcd98e5aba63cd7312f778dedbfe8b6b646",
+  "candidate": "88f262b94bbe94cd3e2a8113c8b17d0872c5089c",
+  "candidate_parent": "50fdc737deeb21c88f6f07a326e76680481dc753",
+  "control_base_candidate": "ff4f06954824a3a5699bc5c1c9bd68cb3c5b4146",
+  "hq168_accepted_integration": "149c3d2636160d8de9b5a8be0c8b87195158077d",
+  "hq168_accepted_result": "063ee8b77fc4e05c37456ff0168e946247f919ef",
+  "hq168_tested_code": "933a3d31aa961719c73e6ce7eebcfe40bc8cd45e",
+  "final_prior_review": "c8ce0ea81a2165f37d566f37de788fecedf85051",
+  "owner_common_ancestor": "215932d08",
+  "consumer_blob": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+  "control_authority_blob": "ac7f3a013129bc148debf8f011597971a2c99442",
+  "DISPOSITION": "C1_RECONCILIATION_PARTIAL__OVERIMPORT_REPAIR_REQUIRED",
+  "TERMINAL": "HQ205_C1_CONTROL_RECONCILIATION_REVIEW_RETURNED__HQ_ADJUDICATION_REQUIRED",
+  "schema": "HQ205_FINAL_DISPOSITION@1.0.0",
+  "status": "FINAL",
+  "disposition": "C1_RECONCILIATION_PARTIAL__OVERIMPORT_REPAIR_REQUIRED",
+  "disposition_is_an_allowed_value": true,
+  "terminal_token": "HQ205_C1_CONTROL_RECONCILIATION_REVIEW_RETURNED__HQ_ADJUDICATION_REQUIRED",
+  "reviewer": {
+    "harness": "DeepSeek Harness",
+    "model": "DeepSeek V4.1 Flash",
+    "role": "independent hostile accepted-lineage review",
+    "code_modified": false,
+    "no_source_access": true,
+    "no_self_adoption": true
+  },
+  "answers_to_the_commission": {
+    "A_exact_accepted_owners_and_blobs": "CONFIRMED \u2014 five owners, two independent authority instruments, blobs verify at the accepted result and at the court-verified code commit; pre553_authority_maintenance.py is genuinely the fifth accepted owner (named by HQ168 itself)",
+    "B_89_path_necessity": "PARTIAL \u2014 30 required, 54 unnecessary over-import, 5 are the candidate's own return documents",
+    "C_authority_maintenance_collision": "SAME_OWNER_STRICT_SUCCESSOR \u2014 no collision",
+    "D_consumer_boundary": "PRODUCER_UPSTREAM_CONSUMER_DOWNSTREAM \u2014 no duplication",
+    "E_court_reconstruction": "LEGITIMATE AND NOW PROVABLY EXACT \u2014 the historical record DOES preserve the 15 names; the candidate's 'unreconstructed record' claim is false",
+    "F_regression": "ZERO_REGRESSION_CONFIRMED_INDEPENDENTLY \u2014 ID sets byte-identical, 0 new, 0 fixed, +290 reconciled exactly",
+    "G_HD_capability": "CURRENT_CONTROL_CAPABILITY at the declared accepted grain, truthfully bounded; H-D remains PARTIAL"
+  },
+  "why_this_disposition": {
+    "not_ACCEPT_DECLARED_GRAIN": "the reconciliation is substantively correct and fully verified, but 54 of the 84 imports (64%) are unnecessary historical material that the accepted qualification does not need; the commission provides an over-import disposition precisely for this measurement, and the candidate's own '84-path bounded import' framing is not supported at file granularity",
+    "not_OWNER_COLLISION_REPAIR_REQUIRED": "the single shared owner is the exact successor of the exact control blob; there is no collision",
+    "not_QUALIFICATION_INSUFFICIENT": "the court collects 454, passes 454/454 twice, and now matches the recorded 15 filenames file-for-file",
+    "not_MATERIAL_ACCEPTANCE_CONFLICT": "both authority instruments agree on the same five blobs; nothing about acceptance is in conflict"
+  },
+  "required_repairs": [
+    {
+      "id": "OVERIMPORT-01",
+      "severity": "blocking-for-acceptance",
+      "repair": "prune the 54 never-opened authority-material files listed in 02_IMPORT_NECESSITY_AUDIT.json, keeping the 9 that the accepted court actually opens"
+    },
+    {
+      "id": "COURT-RECORD-01",
+      "severity": "documentation",
+      "repair": "replace the 'unreconstructed record' caveat and the residual-arithmetic justification with a citation of the two recorded per-file maps at 063ee8b7:.../08_EXECUTION_RECEIPT.json (per_file) and c8ce0ea8:.../05_TEST_AND_REPLAY_REVIEW.json (section8_count_audit.per_file_independently_collected)"
+    },
+    {
+      "id": "NECESSITY-WORDING-01",
+      "severity": "documentation",
+      "repair": "state necessity at file granularity: 'without the R2/R3/R8 directories and the nine AT07 canonical files the courts fail closed', rather than the directory-level 'without them the courts fail closed'"
+    }
+  ],
+  "materially_verified": {
+    "five_owner_blobs_byte_exact": true,
+    "no_side_branch_history_imported": true,
+    "candidate_is_not_an_ancestor_of_control_but_rawlsing_next_is_identical": true,
+    "court_454_of_454_twice": true,
+    "zero_regression_id_sets_identical": true,
+    "hd_claim_bounded": true
+  },
+  "evidence_files": [
+    "evidence/logs/suite_before.txt",
+    "evidence/logs/suite_after.txt",
+    "evidence/logs/ids_before.txt",
+    "evidence/logs/ids_after.txt",
+    "evidence/logs/ids_new.txt",
+    "evidence/logs/ids_fixed.txt",
+    "evidence/logs/court_run2.txt",
+    "evidence/logs/court_minus.txt",
+    "evidence/logs/opened_rel.txt",
+    "evidence/logs/never_opened_authority.txt",
+    "evidence/logs/required.txt",
+    "evidence/00_open_audit_shim.py",
+    "evidence/run_regression_and_court.sh",
+    "evidence/run_minus_experiment.sh"
+  ]
+}
