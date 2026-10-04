@@ -1,0 +1,75 @@
+{
+  "schema": "PYAT_HQ200_FINAL_DISPOSITION@1.0.0",
+  "status": "FINAL",
+  "disposition": "ACCEPT_GOVERNED_SOURCE_SESSION_MECHANISM__WARRANT_BINDING_LAYER_NEXT",
+  "disposition_is_allowed_value": true,
+  "terminal_token": "HQ200_R9_SESSION_ACCEPTANCE_RETURNED__HQ_ADJUDICATION_REQUIRED",
+  "review_branch": "agent/reviewer-pyat-hq200-r1",
+  "commissioned_startup_sha": "f10b35a0e013695f598e6fe951c5282e0aa480a2",
+  "review_target_clean_tip": "76970cfdfc8968e975595ea288cf44b448205e30",
+  "code_bearing_session_candidate": "90ccbd54c549f67358d0c02ad18ff90b843cf3ee",
+  "prior_accepted_broker_tip": "4b6335ca5fc485108b0ffb1d682a29a02e1eee51",
+  "checkout_mode": "SPARSE_REQUIRED (honored; no clone; no full worktree; sparse checkout not widened; parallel HQ200 implementation branch not reviewed)",
+  "reviewer_identity": {"harness": "DeepSeek Harness", "model": "DeepSeek V4.1 Flash"},
+  "criteria_results": {
+    "1_session_above_one_decoder_call_owns_one_broker_lifecycle": "PASS",
+    "2_decoder_invocations_separate_from_reader_invocations": "PASS",
+    "3_max_decoder_invocations_1_refuses_second_entry_before_any_source_operation": "PASS",
+    "4_accounts_unchanged_on_the_refused_second_entry": "PASS (all accounts unchanged — strictly pre-operation refusal)",
+    "5_METADATA_ONLY_non_null_encoding_gives_metadata_only": "PASS",
+    "6_SELECTED_gives_metadata_plus_selected_zero_full": "PASS",
+    "7_FULL_gives_metadata_plus_full_zero_chunk": "PASS",
+    "8_CHUNKED_FULL_gives_metadata_plus_chunks_zero_full": "PASS",
+    "9_header_prefix_bytes_None_gives_zero_prefix": "PASS",
+    "10_explicit_176_gives_exactly_one_176_byte_prefix": "PASS",
+    "11_session_receipt_live_after_chunk_activity": "PASS",
+    "12_close_deterministic_idempotent_normal_and_error": "PASS",
+    "13_no_SRCxx_policy_hard_coded_in_production": "PASS",
+    "14_no_raw_source_path_reaches_pyreadstat": "PASS",
+    "15_accepted_reader_bytes_limiter_intact": "PASS"
+  },
+  "courts": {
+    "session_court": "15 passed (exit 0)",
+    "broker_court": "20 passed (exit 0)",
+    "R7_collect": "55 collected (exit 0)",
+    "R7_run_1": "55 passed (67.55s, exit 0)",
+    "R7_run_2": "55 passed (54.76s, exit 0)",
+    "total_tests": 145, "failures": 0
+  },
+  "count_semantics": {
+    "adopted": "HQ200 adjudication e7ce39da",
+    "SRC27_route_passes": "EXACT/MAX 1 frozen",
+    "SRC27_full_reads": "FLOOR >=1, ceiling historically UNBOUND",
+    "SRC27_decoder_invocations": "historical expected count UNBOUND; MAX 1 permissible as implementation policy",
+    "SRC27_path_opens": "historical numeric value UNBOUND",
+    "retries": "MAX 0",
+    "earlier_overstatement_avoided": true,
+    "note": "this review does NOT assert that frozen authority requires exactly one full read or exactly one decoder entry"
+  },
+  "generic_owner_verdict": {
+    "sufficient_as_a_mechanism_for_a_stricter_bound_layer": true,
+    "structural_defect_in_the_owner": false,
+    "why": "the owner is genuinely above one decoder call, owns one broker/open lifecycle, exposes a separately gated decoder_invocations account, enforces the plan pre-operation, keeps mode-exact accounting, keeps a live receipt, and closes deterministically. Supplying decoder_invocations=1 demonstrably turns a second run into a zero-side-effect refusal, so a binding layer CAN obtain the stricter behaviour without changing the owner."
+  },
+  "carry_forward": {
+    "outer_route_pass_account": "NOT yet owned or enforced. SourceOperationPlan.outer_account_token is recorded but is not an account and has no ceiling. The warrant-binding layer must add a separately typed outer route-pass account (expected 1 / max 1 for SRC27) without collapsing it into decoder_invocations, full_reads, chunk_reads or reader_invocations. Aligns with the HQ200 adjudication's 'missing route-pass owner'."
+  },
+  "advisories": [
+    {"id": "ADV-1", "severity": "advisory", "detail": "the session does not memoise the first observed source SHA; expected_source_sha256 is validated per run against the constructor value, which is not re-suppliable today. Harden if a future binding layer allows per-run expectations."},
+    {"id": "ADV-2", "severity": "advisory", "detail": "a failed run() does not auto-close the session. Deterministic release is available via close() or the context manager, and the cumulative accounts correctly refuse a retry, so this is not a leak — but auto-close-on-error would be tidier for unattended flows."},
+    {"id": "ADV-3", "severity": "boundary", "detail": "cross-process/cross-run uniqueness cannot be enforced by an in-process owner; a warrant-grade single-pass guarantee needs an authority-held durable mechanism or an operational control."}
+  ],
+  "why_this_disposition": {
+    "not_SESSION_MECHANISM_MATERIAL_DEFECT": "all 15 criteria pass; the broker delta is purely additive; no structural defect found",
+    "not_R7_REQUALIFICATION_FAILURE": "55 collected and 55 passed on both consecutive runs",
+    "not_SESSION_OWNER_SCOPE_STILL_INSUFFICIENT": "the mechanism is sufficient for a stricter bound layer (demonstrated by capping decoder_invocations=1); the outstanding route-pass account is a next-layer addition by design, not an insufficiency of this owner"
+  },
+  "not_claimed": [
+    "no real source access (synthetic carriers only)",
+    "no locator discovery, warrant issuance, live C4 or production mutation",
+    "no adoption or self-adoption",
+    "no numeric reader-byte ceiling is proposed or invented"
+  ],
+  "holds_observed": {"real_survey_source_access": false, "locator_discovery": false, "warrant_issuance": false,
+                     "live_c4": false, "production_mutation": false, "c7_or_actor_work": false}
+}

@@ -1,0 +1,32 @@
+{
+  "schema": "PYAT_HQ200_R7_AND_COURTS@1.0.0",
+  "interpreter": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/qualification/r7-c4-source-free-venv/bin/python",
+  "environment": {"PYTHONHASHSEED": "0", "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+                  "PYTHONPATH": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq200-r9-session-review",
+                  "pytest": "-p no:cacheprovider"},
+  "session_court": {"file": "rawlsing_next/tests/test_pre553_source_session_court.py", "result": "15 passed", "duration": "0.97s", "exit_code": 0},
+  "broker_court": {"file": "rawlsing_next/tests/test_pre553_source_access_broker_court.py", "result": "20 passed", "duration": "1.43s", "exit_code": 0},
+  "R7_exact_six_file_court": {
+    "files": [
+      "rawlsing_next/tests/test_closed35_g01_sav_numeric_representation_authority.py",
+      "rawlsing_next/tests/test_closed35_d01_declared_encoding_admission.py",
+      "rawlsing_next/tests/test_closed35_d02_opaque_datetime_carrier.py",
+      "rawlsing_next/tests/test_fiabc_lm2_r1j_sav_representation_authority.py",
+      "rawlsing_next/tests/test_r35_i01_physical_metadata.py",
+      "rawlsing_next/tests/test_pre553_source_backed_c11_facade.py"
+    ],
+    "collect_only": {"collected": 55, "required": 55, "exit_code": 0, "match": true},
+    "run_1": {"result": "55 passed", "duration": "67.55s", "exit_code": 0},
+    "run_2": {"result": "55 passed", "duration": "54.76s", "exit_code": 0},
+    "target_met": "55 passed / 55 passed",
+    "failures_retried_away": false,
+    "fixture_note": "the three commissioned fixture patterns were materialized natively by the sparse checkout; no symlink was needed"
+  },
+  "independent_source_free_attacks": {
+    "harness": "evidence/01_fifteen_criteria_attack.py + evidence/02_remaining_criteria.py + evidence/03_error_paths.py",
+    "carriers": "synthetic SAV created by pyreadstat.write_sav (300 rows); no real survey data",
+    "criteria_exercised": "C1-C15 plus error paths, plan-validation guardrails and the generic multi-run boundary",
+    "result": "all 15 criteria PASS; all error paths fail closed"
+  },
+  "totals": {"tests_run": 145, "failures": 0, "note": "15 session + 20 broker + 55 + 55 R7"}
+}

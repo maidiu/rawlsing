@@ -1,0 +1,43 @@
+{
+  "schema": "PYAT_HQ200_GENERIC_OWNER_BOUNDARY@1.0.0",
+  "architectural_question": "is the GENERIC owner sufficient as a mechanism for a stricter bound execution layer, or does a structural defect remain in the owner itself?",
+  "answer": "SUFFICIENT AS A MECHANISM. No structural defect found in the owner. One carry-forward gap (outer route-pass accounting) belongs to the next layer by design, and two honest limitations are recorded.",
+  "generic_multi_run_behaviour": {
+    "observed": "with no decoder_invocations ceiling, three sequential METADATA_ONLY runs produced decoder_invocations=3, metadata_reads=3 while path_opens stayed 1",
+    "assessment": "NOT a defect. The owner is generic and permits multiple plan runs when the budget does not forbid them; the binding layer supplies MAX 1. This is the separation HQ200 describes, and it is the correct design: baking a ceiling into the generic owner would hard-code warrant policy.",
+    "verified_that_the_cap_actually_bites": "supplying decoder_invocations=1 turned the identical second run into a pre-operation refusal with zero account movement (criterion C3/C4)"
+  },
+  "what_the_owner_provides_to_a_binding_layer": [
+    "one session -> one broker -> one physical open, preserved across every operation in the entry",
+    "a separate, gated decoder_invocations account that a binding layer can cap",
+    "an explicit typed operation plan with independent row-data mode and reader encoding",
+    "plan-gated header-prefix access (None = never; N = exactly one N-byte read)",
+    "mode-exact accounting so chunk reads cannot masquerade as full reads",
+    "a LIVE aggregate receipt suitable for a per-source warrant receipt",
+    "deterministic idempotent close and a context-manager path",
+    "fail-closed refusal before any source operation, with accounts unchanged"
+  ],
+  "carry_forward_gap_belonging_to_the_next_layer": {
+    "id": "OUTER_ROUTE_PASS_ACCOUNT",
+    "statement": "the session does NOT own or enforce full_route_passes (SRC27 expected 1 / max 1). SourceOperationPlan carries an `outer_account_token` field which is recorded in the receipt but is not an account and has no ceiling.",
+    "required_next_layer_work": [
+      "add a separately typed outer route-pass account with its own pre-operation ceiling",
+      "do NOT collapse it into decoder_invocations, full_reads, chunk_reads or reader_invocations",
+      "execute at most the admitted outer route-pass count; a second pass requires new authority"
+    ],
+    "is_this_a_defect_in_the_owner": false,
+    "why": "HQ200 already adjudicates this as the next runtime layer's responsibility, and the generic owner correctly declines to hard-code it"
+  },
+  "honest_limitations_of_the_owner_itself": [
+    {"limitation": "cross-process / cross-run uniqueness", "detail": "the owner refuses a second entry WITHIN one session when the cap is 1, but an owner object cannot prevent a different PROCESS or a restarted run from constructing its own first session. A warrant-grade 'exactly one route pass' guarantee therefore also needs an authority-held durable mechanism or an operational control. This is a boundary of object-scoped ownership, not a coding defect."},
+    {"limitation": "the session does not retain the first observed source SHA", "detail": "expected_source_sha256 is validated on every run() against the constructor value, but the session does not memoise the first observed digest and refuse a later run whose expected value differs. In the current API the expected value is supplied once at construction, so this is not reachable through run(); it would become reachable if a future binding layer allowed the expectation to be re-supplied per run. ADVISORY hardening only."},
+    {"limitation": "numeric reader-byte ceilings", "detail": "the owner can enforce a byte ceiling but cannot invent one; no real-source numeric ceiling is source-free frozen, and synthetic totals are not warrant budgets."}
+  ],
+  "warrant_plan_binding_requirements_for_the_next_layer": [
+    "validate a bound source-entry plan against the seven exact operation plans",
+    "construct exactly one GovernedSourceSession per bound source entry",
+    "bind source-INDEPENDENT policy ceilings (e.g. decoder MAX 1) separately from frozen expected values",
+    "preserve unknown or source-dependent numeric fields as issuance-blocking rather than inventing numbers",
+    "own the outer route-pass account and enforce its max"
+  ]
+}

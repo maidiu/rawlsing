@@ -1,0 +1,41 @@
+{
+  "schema": "PYAT_HQ200_DECODER_ACCOUNT_REVIEW@1.0.0",
+  "C2_decoder_invocations_separate_from_reader_invocations": {
+    "result": "PASS — genuinely separate, not a rename",
+    "evidence": [
+      "SourceAccessAccount carries BOTH `decoder_invocations` and `reader_invocations` as independent int fields; SourceAccessBudget carries both as independent ceilings; check() projects both",
+      "the measurement_basis entry states: 'decoder/session entry-boundary crossings, counted once per entry and NOT once per reader call; distinct from reader_invocations'",
+      "MEASURED DIVERGENCE on one FULL plan: decoder_invocations=1 while reader_invocations=2 (metadata read + full read). The two counters cannot be the same quantity."
+    ],
+    "count_semantics_respected": "the account counts ENTRY-BOUNDARY CROSSINGS, exactly as O1-C07 names 'decoder invocations' as its own account"
+  },
+  "C3_max_1_refuses_second_entry_BEFORE_any_source_operation": {
+    "result": "PASS",
+    "mechanism": "run() calls self._broker.admit_decoder_entry() as its FIRST action, before existence_check(), before hash_pass(), before metadata_read(). admit_decoder_entry() performs budget.check(decoder_invocations=1) and only then _bump(decoder_invocations=1).",
+    "evidence": "with SourceAccessBudget(decoder_invocations=1), a first run succeeded and the second raised SOURCE_ACCESS_BUDGET_EXCEEDED",
+    "ordering_proof": "the gate precedes every source operation in the function body, so the refusal cannot occur after an operation has begun"
+  },
+  "C4_all_accounts_unchanged_on_the_refused_second_entry": {
+    "result": "PASS — the strongest verified property",
+    "method": "captured the full account dict before the second entry and diffed it after the refusal",
+    "observed": "accounts changed on refusal: NONE (all unchanged) — including decoder_invocations, existence_checks, hash_passes, metadata_reads, path_opens, reader_invocations and reader_bytes",
+    "significance": "this is a strictly pre-operation refusal, not a partial-execution abort"
+  },
+  "C15_accepted_reader_bytes_limiter_intact": {
+    "result": "PASS",
+    "evidence": "reader_bytes=200 refused a FULL run with READER_BYTES_LIMIT_EXCEEDED and consumed exactly 200 bytes (never more); a generous cap of 200000 succeeded and reported reader_bytes=8582",
+    "mechanism_unchanged": "the bridge-safe allowance / premature-EOF limiter and its outer-boundary typed refusal are unmodified by the session work"
+  },
+  "count_semantics_used": {
+    "adopted_from": "HQ200 adjudication e7ce39dade6b169ab068f5f786b7a0dea06846dd",
+    "SRC27": {
+      "full_route_passes": "EXACT/MAX 1 — FROZEN",
+      "full_reads": "FLOOR >=1; ceiling historically UNBOUND",
+      "decoder_invocations": "historical expected count UNBOUND; MAX 1 may be IMPLEMENTATION POLICY",
+      "path_opens": "historical numeric value UNBOUND",
+      "retries": "MAX 0"
+    },
+    "explicit_correction_recorded": "this review does NOT repeat the HQ199 overstatement that frozen authority itself requires exactly one full read or exactly one decoder entry. Frozen authority supplies the full-read FLOOR only, and the decoder-entry ceiling is a permissible implementation-policy ceiling.",
+    "consequence": "the candidate's decoder_invocations default of None (unbounded) is CORRECT for a generic owner: it does not fabricate a historical count, and a binding layer may supply MAX 1 as policy"
+  }
+}

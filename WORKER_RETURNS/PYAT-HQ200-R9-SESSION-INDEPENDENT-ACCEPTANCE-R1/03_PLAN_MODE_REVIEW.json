@@ -1,0 +1,41 @@
+{
+  "schema": "PYAT_HQ200_PLAN_MODE_REVIEW@1.0.0",
+  "design_principle_verified": "SourceOperationPlan is generic and source-agnostic; the module never decides what a particular source's plan is. Row-data MODE and reader ENCODING are independent: a non-null encoding is passed to the reader configuration and can never select a row-data mode.",
+  "C5_METADATA_ONLY_with_non_null_encoding": {
+    "result": "PASS",
+    "evidence": "run(METADATA_ONLY, encoding='latin1') -> metadata_reads=1, selected_reads=0, full_reads=0, chunk_reads=0",
+    "significance": "this closes the HQ199-identified hazard where a declared-encoding source (SRC08/SRC12) drifted into a full row-data read; the encoding is now strictly reader configuration"
+  },
+  "C6_SELECTED": {"result": "PASS", "evidence": "metadata_reads=1, selected_reads=1, full_reads=0, chunk_reads=0",
+    "binding_order": "selected names are bound against the REAL column inventory from the metadata read BEFORE any row-data read; absent names raise SELECTED_VARIABLES_ABSENT with selected_reads still 0"},
+  "C7_FULL": {"result": "PASS", "evidence": "metadata_reads=1, selected_reads=0, full_reads=1, chunk_reads=0",
+    "note": "FULL issues one full reader invocation and drives only the full_reads account; it does not silently emit chunk reads"},
+  "C8_CHUNKED_FULL": {"result": "PASS", "evidence": "metadata_reads=1, selected_reads=0, full_reads=0, chunk_reads=3 on a 300-row carrier at chunk_rows=100",
+    "important": "chunk_reads does NOT increment full_reads. This matters for the HQ200 rule that 'chunk_reads cannot silently satisfy the frozen full-read floor' — the accounts are kept distinct. A plan that must satisfy SRC27's full-read FLOOR must use FULL (or otherwise record a full read); CHUNKED_FULL alone would not."},
+  "mode_to_account_map_enforced": {
+    "METADATA_ONLY": "metadata_reads",
+    "SELECTED": "selected_reads",
+    "FULL": "full_reads",
+    "CHUNKED_FULL": "chunk_reads",
+    "verified": "each mode drove exactly its own account and zero of the others in every trial"
+  },
+  "C9_C10_header_prefix": {
+    "C9_none_means_zero": {"result": "PASS", "evidence": "header_prefix_bytes=None -> header_prefix_reads=0, header_prefix_bytes=0"},
+    "C10_176_means_exactly_one": {"result": "PASS", "evidence": "header_prefix_bytes=176 -> header_prefix_reads=1, header_prefix_bytes=176"},
+    "design": "header-prefix access is deferred to _finish() and gated by plan.admits_header_prefix, so it occurs only when the plan declares a size",
+    "significance": "closes the HQ199-identified defect where _decode read a prefix unconditionally for every source and format, including an invented 512-byte DTA prefix"
+  },
+  "C13_no_SRCxx_policy_hard_coded_in_production": {
+    "result": "PASS",
+    "evidence": "scanned the three production modules for SRC02/SRC06/SRC08/SRC12/SRC14/SRC26/SRC27/SRC35 outside comments: zero occurrences in code. The single session-module hit is a comment stating explicitly that nothing there encodes SRCxx policy.",
+    "significance": "source-specific plans must come from the warrant-binding layer, which is the correct separation"
+  },
+  "plan_validation_guardrails": {
+    "verified_refusals": [
+      "SELECTED plan without selected_variables -> SessionPlanError",
+      "CHUNKED_FULL plan without chunk_rows -> SessionPlanError",
+      "selected_variables supplied on a non-SELECTED mode -> SessionPlanError"
+    ],
+    "result": "PASS — malformed plans are rejected before execution"
+  }
+}

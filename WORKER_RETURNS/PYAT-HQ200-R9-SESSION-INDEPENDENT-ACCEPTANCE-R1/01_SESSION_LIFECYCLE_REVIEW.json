@@ -1,0 +1,33 @@
+{
+  "schema": "PYAT_HQ200_SESSION_LIFECYCLE_REVIEW@1.0.0",
+  "code_reviewed": "76970cfdfc8968e975595ea288cf44b448205e30 (code-bearing 90ccbd54c549f67358d0c02ad18ff90b843cf3ee)",
+  "reviewer_identity": {"harness": "DeepSeek Harness", "model": "DeepSeek V4.1 Flash"},
+  "verdict": "GovernedSourceSession IS genuinely above one decoder call and owns one broker lifecycle",
+  "C1_session_owns_one_broker_lifecycle": {
+    "result": "PASS",
+    "evidence": "GovernedSourceSession.__init__ constructs exactly one SourceAccessBroker and stores it as self._broker; the `broker` property returns that same object. Measured: two sequential run() calls returned the SAME broker object identity and left path_opens=1.",
+    "significance": "the session is a real owner above the decode call, not a rename of the broker"
+  },
+  "C11_live_receipt_after_chunk_activity": {
+    "result": "PASS",
+    "evidence": "aggregate_receipt() is built from self._broker.receipt() on every access rather than cached. Measured: chunk_reads read from the receipt went 0 -> 6 after a subsequent CHUNKED_FULL run.",
+    "significance": "per-source accounting stays exact across later activity in the same entry"
+  },
+  "C12_deterministic_idempotent_close": {
+    "result": "PASS",
+    "evidence": "close() returns immediately when already closed and otherwise sets _closed then closes the broker. Measured: double close is a no-op; run() after close raises SESSION_CLOSED; the error path (SELECTED_VARIABLES_ABSENT) is followed by an idempotent double close without exception.",
+    "observed_nuance": "a failed run() does NOT auto-close the session (closed=False after READER_BYTES_LIMIT_EXCEEDED). The commission criterion asks for deterministic/idempotent close on normal AND error paths, which holds; auto-close-on-error is not required and the context-manager path (__exit__) provides deterministic release.",
+    "consistent_failure_state_verified": "after a mid-run byte-budget breach the accounts remain coherent and cumulative (decoder_invocations=1, metadata_reads=1, full_reads=0, reader_bytes=200) and a retry is correctly REFUSED with the same typed error rather than silently proceeding"
+  },
+  "error_path_states_verified": [
+    {"path": "identity mismatch (SOURCE_SHA256_MISMATCH)", "state": "hash_passes=1, metadata_reads=0 — refused BEFORE any reader access", "fail_closed": true},
+    {"path": "selected variable absent (SELECTED_VARIABLES_ABSENT)", "state": "metadata_reads=1, selected_reads=0 — the row-data read was NOT issued", "fail_closed": true},
+    {"path": "reader-byte budget breach (READER_BYTES_LIMIT_EXCEEDED)", "state": "reader_bytes capped exactly at the limit; retry refused", "fail_closed": true}
+  ],
+  "C14_no_raw_path_reaches_pyreadstat": {
+    "result": "PASS",
+    "evidence": "the reader argument is a _GovernedView (measured: type=_GovernedView, not str/bytes/PathLike); the broker retains its _reader_arg guard that raises RawSourcePathEscape for any str/bytes/PathLike argument"
+  },
+  "accepted_broker_mechanics_reopened": false,
+  "broker_delta_is_purely_additive": "the HQ198->HQ200 broker diff adds only the decoder_invocations account field, its budget field, its check projection, its measurement-basis entry and admit_decoder_entry(); nothing was removed or altered, so the accepted one-open route and byte limiter are untouched"
+}
