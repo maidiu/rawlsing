@@ -1,3 +1,41 @@
+# HQ200 active frontier — session acceptance + warrant binding — 2026-10-03
+
+HQ has adjudicated the HQ199 session/plan wave.
+
+Accepted:
+- seven-source operation plan `09e1325da6ee880374a4065ae748cc03de93c421`;
+- one-open broker compatibility for SRC27;
+- per-source session owner is architecturally required.
+
+Count correction:
+- SRC27 full_route_passes = EXACT/MAX 1 frozen.
+- SRC27 full_reads = FLOOR >=1; no frozen ceiling.
+- decoder_invocations historical expected count = UNBOUND.
+- decoder MAX 1 is implementation policy only.
+- path_opens historical numeric value = UNBOUND.
+- retries max 0.
+- "multiple path-level opens" is descriptive, not a numeric floor.
+
+Session candidate:
+- code `90ccbd54c549f67358d0c02ad18ff90b843cf3ee`
+- clean tip `76970cfdfc8968e975595ea288cf44b448205e30`
+- adopted: NO; independent review pending.
+
+Active SPARSE_REQUIRED lanes:
+- independent session acceptance:
+  `agent/reviewer-pyat-hq200-r1 @ f10b35a0e013695f598e6fe951c5282e0aa480a2`
+- generic warrant-plan + outer route-pass binding:
+  `agent/rabochii-pyat-hq200-r1 @ 8b977a2e33a1f03e34ea3cc5b815bc2525f388ab`
+- unsigned seven-source warrant successor:
+  `agent/rabochii-pyat-hq200-r2 @ e15d3647fbc1e149786a3f33e660ac2e16e0f78f`
+
+R9 remains open. Host disk policy/capacity remains the separate live-run blocker. HQ182 C4 non-adoption hold remains pending reserved Astra. All source/warrant/live/C7/actor holds remain.
+
+See:
+`HQ_HANDOFF/checkpoints/20261003-PYAT-HQ200-R9-WARRANT-BINDING-WAVE-R1/`
+
+---
+
 # HQ199 active frontier — governed source-session owner — 2026-10-03
 
 HQ has adjudicated the HQ198 final proof wave.
