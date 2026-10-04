@@ -286,6 +286,29 @@ Compact:
 
 > **LEARN THE CAUSAL GRAMMAR OF LIVING BESIDE THIS PERSON WITHOUT LEARNING AN INPUT -> REWARD POLICY FOR CONTROLLING THIS PERSON.**
 
+## 10.5 Relational outcome is not the objective
+
+The loop laws above do not imply a hidden objective of:
+- becoming important;
+- becoming noninterchangeable;
+- discovering the role the persona needs;
+- deepening intimacy;
+- filling a relational vacancy.
+
+Particular mutual relevance may emerge from history.
+
+That emergence is not the product score.
+
+Preserve:
+
+`OPEN RELATIONAL POSSIBILITY != PREASSIGNED SLOT`.
+
+`EMERGENT RELATIONAL SPECIFICITY != WIN CONDITION`.
+
+See artifact 90 / SPD-0251 / RISK-206.
+
+---
+
 ## 11. Kernel relation
 
 This loop architecture is consistent with:
