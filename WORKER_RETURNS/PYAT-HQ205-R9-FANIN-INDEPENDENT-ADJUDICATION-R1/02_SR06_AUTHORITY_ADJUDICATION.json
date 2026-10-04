@@ -1,0 +1,56 @@
+{
+  "schema": "PYAT_HQ205_SR06_AUTHORITY_ADJUDICATION@1.0.0",
+  "question": "Do the two regressed SR06 decoder-carrier tests encode still-binding behavior, or are they stale implementation assertions superseded by the accepted broker/session decoder architecture?",
+  "verdict": "NEITHER PURELY. The failures are a PORTING GAP, not a decoder regression. One test encodes a still-binding invariant and must be UPDATED (not retired); the other is a MIXED assertion whose stale half must be updated and whose binding half must be preserved.",
+  "the_exact_mechanical_cause": {
+    "finding": "the candidate ported the ACCEPTED decoder but kept the CONTROL (old) SR06 test.",
+    "blob_evidence": {
+      "candidate_decoder": "b406d45fae419c02",
+      "accepted_decoder": "b406d45fae419c02",
+      "control_decoder": "d2a074a41fb556a1",
+      "candidate_sr06_test": "b2c279e6ad85d695",
+      "control_sr06_test": "b2c279e6ad85d695",
+      "accepted_sr06_test": "dfd063227e4a0897"
+    },
+    "accepted_lineage_pairs": "accepted decoder b406d45f is paired with accepted test dfd06322",
+    "candidate_pairs": "accepted decoder b406d45f is paired with OLD test b2c279e6",
+    "candidate_touched_the_test": false,
+    "consequence": "the two failures are the expected result of an incomplete port (decoder moved, its co-evolved test did not), NOT evidence that the accepted decoder broke binding behaviour."
+  },
+  "test_1_test_expected_source_identity_is_hashed_once_before_reader_decode": {
+    "classification": "STILL_BINDING_INVARIANT - UPDATE, DO NOT RETIRE",
+    "invariant_asserted": "the source identity is hashed exactly once BEFORE any reader decode/access",
+    "stale_half": "the OBSERVATION SEAM. The old test monkeypatches `decoder._sha` (a path-opening helper). The accepted decoder performs the hash over the broker's single application-owned open, exposed as `_governed_source_sha(broker)`.",
+    "binding_half_preserved_by_accepted_decoder": true,
+    "proof_of_preservation": {
+      "seam_exists": "pre553_physical_decoder.py @ 0deb64784 defines _governed_source_sha(broker) at line 271; docstring: 'Observable seam for the governed whole-file hash pass ... This seam exists so the identity gate stays externally observable and auditable.'",
+      "ordering_preserved": "in _decode the call order is: line 615 `source_sha = _governed_source_sha(broker)` -> line 623 `metadata = broker.metadata_read(...)` -> line 643 `broker.selected_read(...)` / line 652 `broker.full_read(...)`. The hash therefore still precedes every reader decode.",
+      "accepted_test_asserts_the_same_invariant": "the accepted test dfd06322 monkeypatches decoder._governed_source_sha and appends to the same hash_calls list - i.e. the accepted lineage preserved the invariant and merely re-pointed the seam."
+    },
+    "adjudication": "the test's SEMANTIC GUARANTEE is undiminished and the accepted decoder satisfies it. Retiring this test would destroy live coverage of the identity-before-decode gate. The correct action is to adopt the accepted test revision (seam rename only)."
+  },
+  "test_2_test_normal_decode_uses_chunk_path_and_compatibility_uses_full_read": {
+    "classification": "MIXED - stale half + still-binding half; UPDATE BOTH HALVES, DO NOT RETIRE",
+    "still_binding_halves": [
+      "normal decode uses the CHUNK path (row-data streaming is chunked, not a single full read)",
+      "compatibility decode means metadata read THEN a full read (the `[True, False]` metadataonly sequence), with no column selection"
+    ],
+    "stale_half": "the old test monkeypatches `pyreadstat.read_file_in_chunks` and asserts `chunk_calls[0]['chunksize'] == 2`. The accepted decoder deliberately ABANDONS read_file_in_chunks in favour of an explicit row_offset/row_limit loop over the broker's governed view.",
+    "why_the_helper_was_abandoned_is_independently_corroborated": "this reviewer established in HQ196 that pyreadstat.read_file_in_chunks REUSES one file object across parses and ReadStat rejects the reuse for DTA ('This version of the file format is not supported'), while it works for SAV. The accepted decoder's row_offset loop is the correct governed replacement and keeps the physical open count at one.",
+    "accepted_test_revision": {
+      "replaces_the_helper_assertion_with": "accounts['chunk_reads'] >= 1 AND accounts['path_opens'] == 1 AND exact emitted cell tuples",
+      "preserves_the_compatibility_half": "reader_calls[:2] == [(True, None), (False, None)] plus full_reads == 1 and selected_reads == 0"
+    },
+    "honest_weakening_recorded": "the accepted revision does NOT assert a requested chunksize. On a 3-row carrier everything fits in one read, so a chunk-size regression would no longer be caught. In HQ197 this reviewer independently verified that the underlying behaviour IS correct (1000-row carrier: chunk_rows=7 -> 143 chunks all <=7; =100 -> 10 chunks of 100; =333 -> 4 chunks; path_opens=1 throughout), so this is a TEST-COVERAGE weakness, not a behaviour defect.",
+    "adjudication": "the binding halves must be preserved; the stale helper-assertion half must be updated. Retiring the whole test would lose the chunk-path and compatibility-routing coverage."
+  },
+  "answers_to_the_commissions_three_options": {
+    "1_stale_implementation_detail_superseded": "PARTLY TRUE for test 1's seam name and for test 2's read_file_in_chunks helper assertion",
+    "2_tests_encode_a_still_binding_invariant": "TRUE and this dominates: test 1 asserts hash-before-decode (fully preserved); test 2 asserts chunk-path and compatibility-routing (fully preserved)",
+    "3_narrower_compatibility_invariant_both_can_satisfy": "YES - and the accepted lineage ALREADY establishes it. Adopting the accepted test revision (dfd06322) satisfies both the binding invariants and the new governed architecture, with only the chunksize assertion legitimately weakened."
+  },
+  "required_action": "adopt the accepted-lineage SR06 test revision alongside the accepted decoder. This is a BOUNDED REPAIR (one test file), not a test retirement and not a decoder change.",
+  "is_this_a_decoder_regression": false,
+  "does_this_justify_retiring_the_tests": false,
+  "explicit_warning_honoured": "the commission said 'Do not retire tests merely because the new stack passes its own courts.' I did not: the accepted stack passing 34/34 + 15/15 + 20/20 says nothing about these two tests, and I adjudicated them on their own authority and lineage."
+}

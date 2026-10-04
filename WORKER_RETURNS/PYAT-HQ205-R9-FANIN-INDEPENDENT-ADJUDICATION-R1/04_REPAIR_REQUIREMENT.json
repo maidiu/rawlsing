@@ -1,0 +1,45 @@
+{
+  "schema": "PYAT_HQ205_REPAIR_REQUIREMENT@1.0.0",
+  "lane_constraint": "this lane performed NO code repair (commission: 'Do NOT repair code in this lane'; 'No code changes'). The following is the required repair, specified but NOT performed.",
+  "required_repairs": [
+    {
+      "id": "REPAIR-1",
+      "title": "Rebase the R7 gate onto the current-control court set",
+      "kind": "GATE_ATTRIBUTION",
+      "blocking": true,
+      "requirement": "record the 55-test R7 six-file court as an ACCEPTED-LINEAGE qualification (its authority 1df64cc59 is not an ancestor of control) and re-express the control fan-in acceptance criterion against control's own sanctioned court set (.rabochii/court_spec.json @ 0e8d5bcd) plus the reachable R7 subset. Do NOT require 55 collected on control.",
+      "rationale": "the denominator is a property of the accepted C4C3 tree; control never carried the three court files and never carried one of their production modules",
+      "must_not_be_solved_by": "importing accepted-lineage production modules into control to satisfy a foreign denominator"
+    },
+    {
+      "id": "REPAIR-2",
+      "title": "Adopt the accepted SR06 test revision alongside the accepted decoder",
+      "kind": "BOUNDED_TEST_UPDATE",
+      "blocking": true,
+      "requirement": "bring rawlsing_next/tests/test_pre553_sr06_decoder_carrier.py to the accepted-lineage blob dfd063227e4a0897 so it pairs with the accepted decoder b406d45fae419c02",
+      "rationale": "the candidate ported the decoder but not its co-evolved test; adopting the accepted revision preserves both binding invariants (hash-before-decode; chunk-path and compatibility-routing) and drops only the read_file_in_chunks helper assertion",
+      "is_a_test_retirement": false,
+      "is_a_decoder_change": false,
+      "must_not_be_solved_by": "retiring either test; both encode live invariant coverage",
+      "advisory_follow_on": "the accepted revision legitimately weakens the chunk-size assertion. Restoring an explicit chunk-size assertion on a carrier larger than one chunk would recover that coverage; the underlying behaviour is already independently verified correct."
+    },
+    {
+      "id": "REPAIR-3",
+      "title": "Re-run and record the governed courts in the governed interpreter",
+      "kind": "EVIDENCE_DURABILITY",
+      "blocking": false,
+      "requirement": "re-run the R9 courts (execution-binding 34, session 15, broker 20) and the reachable R7 subset in /Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/qualification/r7-c4-source-free-venv/bin/python, and have each receipt name that interpreter plus its observed package versions",
+      "rationale": "the candidate's receipts rest on a deleted TMPDIR reconstruction; the governed environment exists and runs on this host",
+      "must_not_weaken": "pyreadstat==1.3.6"
+    }
+  ],
+  "what_is_NOT_required": [
+    "no decoder change",
+    "no production backport of accepted C3 modules into control",
+    "no test retirement",
+    "no governed-environment REconstitution (the governed environment already exists)",
+    "no relaxation of the pyreadstat pin"
+  ],
+  "what_this_lane_did_NOT_do": ["no code modified", "no test modified", "no commit to production paths", "no self-adoption"],
+  "boundedness_statement": "the repair is bounded: one gate-attribution correction, one test-file adoption, and one governed re-run. It is not an architecture change and the accepted R9 runtime blobs are not implicated."
+}

@@ -1,0 +1,72 @@
+{
+  "schema": "PYAT_HQ205_R7_DENOMINATOR_PROVENANCE@1.0.0",
+  "question": "Are the three missing closed35 court files legitimately accepted dependencies of the canonical 55-test R7 gate that should be restored to control, or should the R7 gate be rebased?",
+  "verdict": "R7_GATE_SHOULD_BE_REBASED_TO_CURRENT_CONTROL_COURT_SET",
+  "independently_measured_denominator": {
+    "method": "ran pytest --collect-only in the GOVERNED R7 interpreter on the candidate tree, plus per-file collection",
+    "governed_interpreter_used": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/qualification/r7-c4-source-free-venv/bin/python (exists and runs on this host)",
+    "present": {"test_fiabc_lm2_r1j_sav_representation_authority.py": 9, "test_r35_i01_physical_metadata.py": 6, "test_pre553_source_backed_c11_facade.py": 10, "subtotal": 25},
+    "absent": {"test_closed35_g01_sav_numeric_representation_authority.py": 9, "test_closed35_d01_declared_encoding_admission.py": 8, "test_closed35_d02_opaque_datetime_carrier.py": 13, "subtotal": 30},
+    "total_collectable": 25,
+    "required_by_gate": 55,
+    "confirmed_candidates_30_55_claim": true,
+    "hard_evidence": "invoking pytest with all six paths aborts with 'ERROR: file or directory not found' and 'no tests collected' (exit 4) - the missing files are not a collection shortfall, they are absent paths"
+  },
+  "introduction_commits_verified": {
+    "test_closed35_g01_sav_numeric_representation_authority.py": "fe9ec0361 'Integrate accepted C3 source-free repair: test_closed35_g01_sav_numeric_representation_authority.py'",
+    "test_closed35_d01_declared_encoding_admission.py": "105246b33 'Integrate accepted C3 source-free repair'",
+    "test_closed35_d02_opaque_datetime_carrier.py": "5fbf9cc56 'Integrate accepted C3 source-free repair'",
+    "all_dated": "2026-09-29"
+  },
+  "lineage_finding": {
+    "control_base": "0e8d5bcd98e5aba63cd7312f778dedbfe8b6b646 (2026-10-04)",
+    "accepted_runtime_tip": "0deb64784829661780ee3957f8070ccc2c241722",
+    "merge_base": "87029d349c8a7385cb673060a8e5decd4eb528ff (2026-10-01)",
+    "divergence": "the two lineages DIVERGED at 87029d349. The accepted R9 tip is NOT an ancestor of the control base, and the accepted runtime deea4054 is NOT an ancestor of control either.",
+    "commits_since_divergence": {"control": 258, "accepted_lineage": 212},
+    "presence_of_the_three_files": {
+      "at_control_base": "ABSENT (all three)",
+      "at_accepted_runtime_tip": "PRESENT (all three)",
+      "at_candidate": "ABSENT (all three)"
+    }
+  },
+  "adoption_status_of_the_R7_gate": {
+    "authoritative_definitions": [
+      {"ref": "PYAT-C4C3-DARWIN-ANCHOR-RUNTIME-R1/05_AUTHORITATIVE_C3_COURT.json", "commit": "1df64cc59 (2026-10-02)", "content": "schema PYAT_C4C3_AUTHORITATIVE_C3_COURT@1.0.0, phase 'authoritative C3 six-file court', REQUIRED_RESULT '55 passed / 0 failed / 0 errors / 0 skipped', MEETS_REQUIREMENT true, execution tree 8f7efe690a161902e79358eb31650c238a4c0be8, interpreter /var/folders/.../T/opencode/c4c3-env/bin/python"},
+      {"ref": "HQ198 commission + independent acceptance", "commit": "0deb64784829661780ee3957f8070ccc2c241722", "content": "this reviewer ran exactly these six files in the governed R7 venv and recorded 55 collected then 55/55 twice"}
+    ],
+    "lineage_of_the_gate": "1df64cc59 is on the ACCEPTED lineage and is NOT an ancestor of control. The gate's 55-test denominator is therefore anchored to the accepted C4C3 tree, where all six files and their production modules coexist.",
+    "is_the_gate_binding_on_a_CONTROL_fan_in_candidate": "NO - and this is the decisive point. The 55-test denominator is a property of the ACCEPTED tree, not a universal invariant of the repository. Imposing it on control imports a requirement from a lineage that control never carried."
+  },
+  "why_RESTORE_is_not_lawful_or_sufficient": {
+    "restoring_court_files_alone_is_IMPOSSIBLE": "the three court files are not self-contained. test_closed35_g01_sav_numeric_representation_authority.py imports `rawlsing_next.closed35_g01_sav_numeric_representation_authority`, a PRODUCTION module that DOES NOT EXIST ON CONTROL AT ALL (verified: git ls-tree control -> 0 matches; accepted -> 1 match).",
+    "full_dependency_set_of_the_three_courts": [
+      {"module": "closed35_g01_sav_numeric_representation_authority.py", "control": "ABSENT", "accepted": "PRESENT", "consequence": "hard ImportError on control"},
+      {"module": "pre553_empirical_authority.py", "control": "PRESENT", "blob_equal": true},
+      {"module": "pre553_physical_decoder.py", "control": "d2a074a41fb5", "accepted": "b406d45fae41", "blob_equal": false},
+      {"module": "pre553_r5_codec.py", "control": "72f8f3c03ed0", "accepted": "6000a1704d71", "blob_equal": false},
+      {"module": "pre553_source_backed_c11_facade.py", "control": "PRESENT", "blob_equal": true}
+    ],
+    "therefore": "restoring the courts would require ALSO restoring accepted-lineage PRODUCTION modules (at minimum closed35_g01_sav_numeric_representation_authority.py, and it would pull on the divergent decoder and codec blobs). That is no longer a court restore; it is a production backport of accepted C3 semantics into control - a materially different and larger act than the fan-in performed, and one this lane is forbidden to perform (commission: 'Do NOT repair code'; 'No code changes').",
+    "control_production_blobs_already_differ": "control's decoder (d2a074a41fb5) and codec (72f8f3c03ed0) are the PRE-C3 bytes; the accepted lineage carries the C3-accepted decoder (b406d45fae41) and codec (6000a1704d71). The candidate already ports the accepted decoder, which is precisely why the SR06 tests break (see 02)."
+  },
+  "what_control_actually_carries_instead": {
+    "control_court_spec": ".rabochii/court_spec.json @ 0e8d5bcd defines its OWN sanctioned court set: semantic_candidate_sha 5726648a5fa9de5bbdf67d653f921d59d9cb1a70, six different test files (test_fiabc_lits_parity_ready_checkpoint_v2, test_fiabc_lits_cross_schema_candidate_identity, test_fiabc_lits_astra_substantive_parity, test_fiabc_final_oracle_freeze_producers, test_pre553_independent_parity_oracle, test_fiabc_lits_i_i03_operation_autho...), determinism_mode EXACT, PYTHONHASHSEED=0, PYTEST_DISABLE_PLUGIN_AUTOLOAD=1",
+    "significance": "control has its own governed court definition. It does not list any of the six R7 files. The 55-test R7 gate is not control's court."
+  },
+  "choice": {
+    "selected": "R7_GATE_SHOULD_BE_REBASED_TO_CURRENT_CONTROL_COURT_SET",
+    "reasoning": [
+      "the 55-test denominator is anchored to the accepted C4C3 tree (1df64cc59, on the accepted lineage only, not an ancestor of control)",
+      "the three absent files are TEST files for accepted-C3 PRODUCTION modules that control never carried; one dependency module is wholly absent from control",
+      "restoring the tests alone cannot work; restoring tests+production is a C3 backport the commission forbids in this lane",
+      "control has its own sanctioned court set that excludes all six R7 files",
+      "therefore the honest resolution is to rebase the gate to control's court set, and to record the accepted-lineage 55/55 result as an ACCEPTED-LINEAGE qualification, not a control-lineage obligation"
+    ],
+    "not_chosen_RESTORE": "rejected because it is impossible at court-file grain and out of scope at production grain",
+    "not_chosen_MATERIAL_AUTHORITY_CONFLICT": "no two authorities contradict each other. The apparent conflict dissolves once the gate is attributed to the lineage that actually defines it."
+  },
+  "correction_to_the_fanin_candidates_framing": "the candidate describes the three files as living on 'a separate accepted lineage' - accurate - but then treats the 55-test gate as an obligation of the CONTROL fan-in. The sharper finding is that the gate is a property of the accepted lineage, so its unsatisfiability on control is a GATE-ATTRIBUTION error, not a missing-dependency defect.",
+  "does_importing_the_courts_require_production_dependencies_absent_from_control": true,
+  "does_the_exact_55_test_R7_gate_remain_binding_on_a_current_control_fan_in_candidate": false
+}

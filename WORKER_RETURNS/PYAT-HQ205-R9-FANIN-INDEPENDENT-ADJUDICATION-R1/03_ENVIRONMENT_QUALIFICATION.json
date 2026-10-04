@@ -1,0 +1,47 @@
+{
+  "schema": "PYAT_HQ205_ENVIRONMENT_QUALIFICATION@1.0.0",
+  "question": "Is the reconstructed CPython 3.11.3 + exact 14-package freeze sufficient evidence for source-free review, or is governed-environment reconstitution required before adoption?",
+  "verdict": "THE RECONSTRUCTED ENVIRONMENT WAS NOT NECESSARY. THE GOVERNED R7 ENVIRONMENT EXISTS AND RUNS ON THIS HOST. RECONSTITUTION IS ALREADY AVAILABLE AND SHOULD BE USED INSTEAD.",
+  "the_candidates_claim": {
+    "governed_r7_interpreter_present": false,
+    "governed_c4c3_base_interpreter_present": false,
+    "governed_c4c3_venv_path_present": false,
+    "search_performed": "find over /Users/matthewsmith/Desktop to depth 6 for r7-c4-source-free-venv and any venv bin directory",
+    "governed_environment_reproducible_from_this_machine": false
+  },
+  "independent_verification_contradicts_that_claim": {
+    "governed_r7_venv": {
+      "path": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/qualification/r7-c4-source-free-venv",
+      "present": true,
+      "interpreter_runs": true,
+      "observed": {"python": "3.11.3", "pyreadstat": "1.3.6", "pandas": "2.3.3", "numpy": "2.4.6", "pyarrow": "25.0.1"}
+    },
+    "governed_c4c3_base_interpreter": {
+      "path": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/bin/python3.11",
+      "present": true,
+      "runs": true,
+      "observed": "python 3.11.3"
+    },
+    "governed_c4c3_env": {"path": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/c4c3-env", "present": true},
+    "proof_i_used_it": "I ran pytest --collect-only on the candidate tree with the governed interpreter and obtained clean, deterministic results (25 tests collected across the three present R7 files: 9 + 6 + 10). The candidate's ambient run could not have produced this, since the accepted reader seam rejects any non-1.3.6 pyreadstat.",
+    "possible_explanation_for_the_discrepancy": "the candidate's find was scoped to /Users/matthewsmith/Desktop to depth 6. The governed venv sits at depth 6 beneath Desktop/Rawlsing/LOCAL_COURTS/qualification/, and LOCAL_COURTS is UNTRACKED in git and absent from any sparse worktree; a search run from a sparse worktree root, or one that followed a different path resolution, could miss it. I record the contradiction, not a motive."
+  },
+  "the_reconstructed_environment_is_also_GONE": {
+    "path": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/hq204-r9-env",
+    "present_now": false,
+    "consequence": "the candidate's evidence rests on an environment that no longer exists, so its court results are not re-runnable from its own receipt. This is a DURABILITY defect in the evidence, independent of whether the numbers were right."
+  },
+  "were_the_candidates_numbers_right_on_substance": {
+    "freeze_comparison_verified_independently": "I compared the candidate's disclosed 14-package freeze against the governed C4C3 01_ENVIRONMENT_LOCK.json pip_freeze.sorted_output at deea4054. They are set-identical: 14 vs 14, with NO package in one and not the other. My earlier suspicion of an omitted package was WRONG and I record that.",
+    "third_party_import_claim_verified": "the candidate claimed narwhals enters only as a pyarrow dependency and is off the C4 path. Verified: `git grep narwhals` over rawlsing_next at the accepted tip returns NOTHING, so it is imported by no module on the closure. The claim holds.",
+    "ambient_reader_rejection_verified_as_correct_behaviour": "the council rejected pyreadstat 1.3.2 with READER_SEAM_VERSION_MISMATCH. That is the accepted seam failing closed exactly as designed. The pin was not relaxed and no accepted code was modified - correct conduct."
+  },
+  "does_the_pyreadstat_pin_get_weakened": false,
+  "pin_restated": "pyreadstat==1.3.6 is REQUIRED and must not be relaxed; the accepted reader seam rejects any other version, and that rejection is load-bearing for the file-like-bridge and usecols behaviour established against 1.3.6.",
+  "qualification_determination": {
+    "is_a_reconstruction_sufficient_evidence_for_source_free_review": "the reconstruction was freeze-exact and therefore strong evidence, BUT it was non-durable and it was unnecessary",
+    "is_governed_environment_reconstitution_required_before_adoption": "NO reconstitution is required - because the governed environment is ALREADY PRESENT. The correct requirement is that the R7 and R9 courts be RUN AND RECORDED IN THE GOVERNED R7 INTERPRETER rather than in an ephemeral reconstruction.",
+    "recommended_evidence_rule": "every governed-court receipt in this programme should name the governed interpreter path AND record its observed package versions, so an ephemeral or ambient substitution is detectable from the receipt alone."
+  },
+  "note_this_does_not_by_itself_block_adoption": "the environment issue is an EVIDENCE-DURABILITY and EVIDENCE-ATTRIBUTION defect. It is bounded and repairable by re-running the courts in the governed interpreter, which exists. It is not a reason to reconstitute anything."
+}

@@ -1,0 +1,59 @@
+{
+  "schema": "PYAT_HQ205_FINAL_DISPOSITION@1.0.0",
+  "status": "FINAL",
+  "disposition": "R9_FANIN_ADJUDICATED__BOUNDED_REPAIR_AND_R7_RESTORE_REQUIRED",
+  "disposition_is_allowed_value": true,
+  "terminal_token": "HQ205_R9_FANIN_INDEPENDENT_ADJUDICATION_RETURNED__HQ_DECISION_REQUIRED",
+  "review_branch": "agent/reviewer-pyat-hq205-r9-r1",
+  "commissioned_startup_sha": "74e7c6ad56f5a436325c0b950ce8ad4e8216cbab",
+  "exact_base": "0e8d5bcd98e5aba63cd7312f778dedbfe8b6b646",
+  "candidate_under_review": "dfdf5659fd78e9bc996b07383349094059a5553d",
+  "accepted_r9_runtime": "deea40541cda0627d129dcb7d30e06e0682e0fed",
+  "final_r9_acceptance": "0deb64784829661780ee3957f8070ccc2c241722",
+  "checkout_mode": "SPARSE_REQUIRED (honored; no clone; no full worktree; sparse checkout not widened; NO code modified)",
+  "reviewer_identity": {"harness": "DeepSeek Harness", "model": "DeepSeek V4.1 Flash"},
+  "A_adjudication": {
+    "selected": "R7_GATE_SHOULD_BE_REBASED_TO_CURRENT_CONTROL_COURT_SET",
+    "headline": "the 55-test denominator is a property of the ACCEPTED C4C3 lineage, not a control obligation",
+    "independently_confirmed": "25 collectable / 30 absent, measured in the GOVERNED R7 interpreter (9+6+10 present; 9+8+13 absent)",
+    "decisive_finding": "test_closed35_g01_sav_numeric_representation_authority.py imports the production module rawlsing_next.closed35_g01_sav_numeric_representation_authority, which DOES NOT EXIST ON CONTROL AT ALL. Restoring the courts therefore cannot be a court-file-only act.",
+    "lineage": "control and the accepted lineage diverged at 87029d349 (2026-10-01); the C3 court definition 1df64cc59 (2026-10-02) is on the accepted lineage ONLY; control carries its own court set in .rabochii/court_spec.json which excludes all six R7 files"
+  },
+  "B_adjudication": {
+    "selected": "PORTING_GAP - neither stale-entirely nor a decoder regression",
+    "headline": "the candidate ported the ACCEPTED decoder (b406d45f) but kept the OLD SR06 test (b2c279e6); the accepted lineage pairs that decoder with dfd06322",
+    "test_1": "STILL_BINDING_INVARIANT - hash-before-decode is preserved by the accepted decoder (_governed_source_sha at line 615 precedes metadata_read at 623). UPDATE the seam name; do NOT retire.",
+    "test_2": "MIXED - chunk-path and compatibility-routing halves are binding and preserved by the accepted revision; only the read_file_in_chunks helper assertion is stale. UPDATE; do NOT retire. The accepted revision legitimately drops the chunk-size assertion, a real but non-blocking coverage weakness."
+  },
+  "C_adjudication": {
+    "selected": "RECONSTRUCTION_WAS_UNNECESSARY - the governed environment EXISTS on this host and runs (python 3.11.3, pyreadstat 1.3.6, pandas 2.3.3, numpy 2.4.6, pyarrow 25.0.1)",
+    "candidate_claim_contradicted": "the receipt asserts the governed R7 interpreter and governed C4C3 base interpreter were absent; both are present and run",
+    "durability_defect": "the environment the candidate actually used (/var/folders/.../hq204-r9-env) no longer exists, so its court results are not re-runnable from its own receipt",
+    "freeze_claim_VINDICATED": "I verified the disclosed 14-package freeze against the governed C4C3 01_ENVIRONMENT_LOCK.json and it is set-identical (14 vs 14, no difference). My earlier suspicion of an omitted package was WRONG and is recorded as such.",
+    "narwhals_claim_verified": "git grep over rawlsing_next at the accepted tip returns no narwhals import; the off-path claim holds",
+    "required": "re-run the governed courts in the governed interpreter; no reconstitution needed",
+    "pyreadstat_pin_weakened": false
+  },
+  "required_repairs": ["REPAIR-1 rebase the R7 gate onto control's court set", "REPAIR-2 adopt the accepted SR06 test revision (bounded, one file)", "REPAIR-3 re-run governed courts in the governed interpreter (evidence durability)"],
+  "verified_strengths_of_the_candidate": {
+    "accepted_runtime_placement": "8/8 paths byte-identical to 0deb6478",
+    "r9_courts": "execution-binding 34/34, session 15/15, broker 20/20, aggregate 69/69 matching accepted counts",
+    "reachable_R7_subset": "25/25 twice, deterministic (independently reproduced by me at the collection grain)",
+    "import_compile_smoke": "PASS",
+    "pin_and_seam_conduct": "the ambient pyreadstat 1.3.2 was REJECTED by the accepted seam and the pin was NOT relaxed; no accepted code was altered to accommodate it",
+    "no_self_adoption": true
+  },
+  "why_not_the_other_dispositions": {
+    "R9_FANIN_ADJUDICATED__TEST_RETIREMENT_AND_R7_RESTORE_REQUIRED": "BOTH tests encode still-binding invariants. The commission expressly warned against retiring tests merely because the new stack passes its own courts, and the accepted lineage itself did not retire them - it UPDATED them.",
+    "R9_FANIN_READY_AFTER_DOCUMENTARY_GATE_REBASE": "almost - the gate rebase alone is documentary, but the SR06 porting gap is a real two-test failure requiring a bounded test adoption, so 'documentary only' understates it.",
+    "R9_FANIN_MATERIAL_AUTHORITY_CONFLICT": "no two authorities contradict. The apparent conflict dissolves once the R7 gate is attributed to the lineage that defines it.",
+    "R9_FANIN_REQUIRES_GOVERNED_ENVIRONMENT_RECONSTITUTION": "nothing needs reconstituting; the governed environment is present and runs."
+  },
+  "confidence_and_honesty_notes": [
+    "I corrected my own mid-review suspicion that the candidate's freeze omitted a package. Set comparison showed 14 vs 14 identical.",
+    "I did not verify the candidate's 109-test control-vs-candidate regression sweep number (14 -> 16 failures). I adjudicated the two named SR06 tests directly from blob lineage, which is stronger evidence than the aggregate.",
+    "I could not re-run the candidate's ephemeral environment because it is deleted; I used the governed interpreter instead, which is the better instrument."
+  ],
+  "holds_observed": {"code_modified": false, "test_modified": false, "source_access": false, "locator_discovery": false, "warrant_issuance": false, "live_c4": false, "c7_or_actor_work": false, "self_adoption": false},
+  "no_self_adoption": true
+}
