@@ -354,3 +354,162 @@ def test_c10_measured_usecols_does_not_reduce_physical_reads():
     sel_bytes, sel_calls = _measure(usecols=["c00"])
     assert sel_bytes == full_bytes, "usecols unexpectedly reduced bytes; re-measure"
     assert sel_calls == full_calls, "usecols unexpectedly reduced read calls; re-measure"
+
+
+# ====================================================================== C11
+# HQ197 primary repair: bridge-safe reader_bytes limiting.
+#
+# Invariants proved here:
+#   - no byte beyond the declared ceiling is ever consumed;
+#   - the limiter never raises through pyreadstat's read callback;
+#   - a breach fails promptly and loudly at the OUTER decode boundary;
+#   - an allowed partial final read is distinguished from an excess read;
+#   - accounting is exact.
+
+import time as _time
+
+
+def _wide_carrier(name: str, rows: int = 60) -> str:
+    frame = pd.DataFrame({
+        "V00": [float(i) for i in range(rows)],
+        "V01": [f"s{i:04d}" for i in range(rows)],
+        "V02": [float(i) * 2 for i in range(rows)],
+    })
+    return _sav(name, frame)
+
+
+def _measure_with_cap(path: str, cap):
+    broker = SourceAccessBroker(path, budget=SourceAccessBudget(reader_bytes=cap))
+    broker.bind_reader("SAV")
+    broker.existence_check()
+    broker.hash_pass()
+    started = _time.monotonic()
+    outcome = {"refused": False, "code": None, "elapsed": None, "message": None}
+    try:
+        broker.metadata_read()
+    except SourceAccessViolation as exc:
+        outcome["refused"] = True
+        outcome["code"] = exc.code
+        outcome["message"] = str(exc)
+    outcome["elapsed"] = _time.monotonic() - started
+    accounts = broker.account_dict()
+    broker.close()
+    return outcome, accounts
+
+
+def test_c11_byte_limit_never_consumes_beyond_the_ceiling():
+    """C11: for every ceiling, bytes consumed never exceed it."""
+    path = _wide_carrier("c11.sav")
+    unbounded, base = _measure_with_cap(path, None)
+    assert unbounded["refused"] is False
+    needed = base["reader_bytes"]
+    assert needed > 0
+
+    for cap in (1, 10, 64, 200, needed - 1, needed, needed + 1, needed * 4):
+        outcome, accounts = _measure_with_cap(path, cap)
+        assert accounts["reader_bytes"] <= cap, (
+            f"cap={cap} consumed {accounts['reader_bytes']} bytes: the ceiling was BREACHED"
+        )
+        if cap < needed:
+            assert outcome["refused"] is True, f"cap={cap} should have refused"
+            assert outcome["code"] == "READER_BYTES_LIMIT_EXCEEDED"
+        else:
+            assert outcome["refused"] is False, f"cap={cap} should have been satisfiable"
+
+
+def test_c11b_breach_fails_promptly_and_loudly_at_the_outer_boundary():
+    """C11b: the refusal is prompt (no hang) and raised outside the callback."""
+    path = _wide_carrier("c11b.sav")
+    outcome, accounts = _measure_with_cap(path, 32)
+    assert outcome["refused"] is True
+    assert outcome["code"] == "READER_BYTES_LIMIT_EXCEEDED"
+    # A hang would show up as an unbounded elapsed time; the refusal must be prompt.
+    assert outcome["elapsed"] < 10.0, f"refusal took {outcome['elapsed']}s: possible hang"
+    # the message must name the ceiling and the exact consumption
+    assert "reader_bytes cap of 32" in outcome["message"]
+    assert "consumed 32 bytes" in outcome["message"], outcome["message"]
+
+
+def test_c11c_limiter_never_raises_through_the_read_callback():
+    """C11c: the file-like read() shortens; it never propagates an exception."""
+    path = _wide_carrier("c11c.sav")
+    gov = GovernedSourceOpen(path)
+    gov.arm_limit(16)
+    calls = 0
+    try:
+        while True:
+            chunk = gov.view().read(4096) if calls == 0 else _read_again(gov)
+            calls += 1
+            if chunk == b"":
+                break
+    finally:
+        gov.disarm_limit()
+        gov.close()
+    assert gov.bytes_read <= 16, gov.bytes_read
+    assert gov.limit_truncated or gov.limit_exhausted
+
+
+def _read_again(gov):
+    # subsequent reads on the SAME view, bypassing view()'s rewind
+    from rawlsing_next.pre553_source_access_broker import _GovernedView
+
+    return _GovernedView(gov).read(4096)
+
+
+def test_c11d_allowed_partial_final_read_is_distinguished_from_excess():
+    """C11d: a short read inside the cap is allowed; only a breach is refused."""
+    path = _wide_carrier("c11d.sav")
+    _, base = _measure_with_cap(path, None)
+    needed = base["reader_bytes"]
+
+    # exactly enough: the reader completes, no refusal
+    exact, exact_accounts = _measure_with_cap(path, needed)
+    assert exact["refused"] is False
+    assert exact_accounts["reader_bytes"] == needed
+
+    # one byte short: refused, and consumption stops exactly at the ceiling
+    short, short_accounts = _measure_with_cap(path, needed - 1)
+    assert short["refused"] is True
+    assert short_accounts["reader_bytes"] == needed - 1
+    assert short_accounts["reader_bytes"] < needed
+
+    # a partial read that still satisfies the reader is not itself a breach
+    partial = SourceAccessBroker(path, budget=SourceAccessBudget(reader_bytes=needed))
+    partial.bind_reader("SAV")
+    partial.existence_check()
+    partial.hash_pass()
+    partial._open.arm_limit(needed)          # exactly enough, reader completes
+    md = partial.metadata_read()
+    assert md.number_rows == 60
+    assert partial.account_dict()["reader_bytes"] <= needed
+    assert partial._open.limit_exhausted is False
+    partial.close()
+
+
+def test_c11e_byte_limit_accounting_is_exact_and_reader_scoped():
+    """C11e: reader_bytes counts reader traffic, not the application's own reads."""
+    path = _wide_carrier("c11e.sav")
+    broker = SourceAccessBroker(path)          # unlimited
+    broker.bind_reader("SAV")
+    broker.existence_check()
+    broker.hash_pass()
+    header_at = broker.account_dict()["hash_bytes"]
+    assert header_at > 0
+    broker.metadata_read()
+    a = broker.account_dict()
+    # the hash pass is accounted separately and must not be folded into reader_bytes
+    assert a["hash_bytes"] == header_at
+    assert a["hash_passes"] == 1
+    assert a["reader_bytes"] > 0
+    assert a["reader_bytes"] != a["hash_bytes"]
+    assert "hash_passes" in broker.receipt()["measurement_basis"]
+    broker.close()
+
+
+def test_c11f_decode_boundary_surfaces_the_breach():
+    """C11f: the decoder surfaces the typed breach, not a raw reader error."""
+    path = _wide_carrier("c11f.sav")
+    with pytest.raises(SourceAccessViolation) as exc:
+        decode_sav(path, source_access_budget=SourceAccessBudget(reader_bytes=24))
+    assert exc.value.code == "READER_BYTES_LIMIT_EXCEEDED"
+    assert exc.value.account_snapshot["reader_bytes"] <= 24

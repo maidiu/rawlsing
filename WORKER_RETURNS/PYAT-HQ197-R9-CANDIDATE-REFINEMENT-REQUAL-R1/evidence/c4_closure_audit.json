@@ -1,0 +1,249 @@
+{
+ "schema": "HQ197_C4_CLOSURE_AUDIT@1.0.0",
+ "CATEGORY": "C1_historical_expected_counts (closure list) + C2 static audit of current tree",
+ "closure_source": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4C3-DARWIN-ANCHOR-RUNTIME-R1/02_ACTUAL_C4_CALL_PATH.json .transitive_import_closure",
+ "closure_count_discrepancy": {
+  "commission_said": 23,
+  "accepted_artifact_says": 21,
+  "corroborated_in_freeze": "06_RUNTIME_READER_LANES_AND_RESOURCE_LAW.json declares c4_import_closure_modules = 21",
+  "resolution": "the accepted artifact is used; the count 23 is not reproducible from any governed artifact and is reported rather than reconciled by inventing two modules",
+  "candidate_addition": "rawlsing_next/pre553_source_access_broker.py",
+  "audited_total": 22
+ },
+ "audit_question": "does any pyreadstat reader call inside the C4 closure receive a source path string?",
+ "verdict": "NO_RAW_PATH_READER_CALLS_IN_CLOSURE",
+ "modules_audited": 22,
+ "modules_missing_from_worktree": [],
+ "total_reader_calls_in_closure": 1,
+ "reader_calls_per_module": {
+  "rawlsing_next/pre553_source_access_broker.py": 1
+ },
+ "raw_path_reader_call_count": 0,
+ "modules_with_raw_path_reader_calls": [],
+ "source_path_open_sites_in_closure": {
+  "rawlsing_next/pre553_physical_decoder.py": [
+   {
+    "line": 268,
+    "arg": "'rb'"
+   },
+   {
+    "line": 476,
+    "arg": "'rb'"
+   }
+  ],
+  "rawlsing_next/pre553_source_access_broker.py": [
+   {
+    "line": 326,
+    "arg": "self.path"
+   }
+  ]
+ },
+ "wvs7_projection_materializer": {
+  "in_c4_closure": false,
+  "exists_in_tree": true,
+  "edited_by_this_lane": false,
+  "note": "outside the C4 closure and outside this lane's write terrain; deliberately not audited as closure and not modified"
+ },
+ "per_module": [
+  {
+   "module": "rawlsing_next/pre553_physical_decoder.py",
+   "present": true,
+   "reader_calls": [],
+   "raw_path_reader_calls": [],
+   "opens_source_path": [
+    {
+     "line": 268,
+     "arg": "'rb'"
+    },
+    {
+     "line": 476,
+     "arg": "'rb'"
+    }
+   ],
+   "reader_aliases": {}
+  },
+  {
+   "module": "rawlsing_next/pre553_source_backed_c11_facade.py",
+   "present": true,
+   "reader_calls": [],
+   "raw_path_reader_calls": [],
+   "opens_source_path": [],
+   "reader_aliases": {}
+  },
+  {
+   "module": "rawlsing_next/pre553_empirical_possibility_provider.py",
+   "present": true,
+   "reader_calls": [],
+   "raw_path_reader_calls": [],
+   "opens_source_path": [],
+   "reader_aliases": {}
+  },
+  {
+   "module": "rawlsing_next/pre553_analytical_composition.py",
+   "present": true,
+   "reader_calls": [],
+   "raw_path_reader_calls": [],
+   "opens_source_path": [],
+   "reader_aliases": {}
+  },
+  {
+   "module": "rawlsing_next/source_backed_positioned_subject_possibility.py",
+   "present": true,
+   "reader_calls": [],
+   "raw_path_reader_calls": [],
+   "opens_source_path": [],
+   "reader_aliases": {}
+  },
+  {
+   "module": "rawlsing_next/pre553_r5_codec.py",
+   "present": true,
+   "reader_calls": [],
+   "raw_path_reader_calls": [],
+   "opens_source_path": [],
+   "reader_aliases": {}
+  },
+  {
+   "module": "rawlsing_next/pre553_c11_ingest.py",
+   "present": true,
+   "reader_calls": [],
+   "raw_path_reader_calls": [],
+   "opens_source_path": [],
+   "reader_aliases": {}
+  },
+  {
+   "module": "rawlsing_next/pre553_c11_integrity.py",
+   "present": true,
+   "reader_calls": [],
+   "raw_path_reader_calls": [],
+   "opens_source_path": [],
+   "reader_aliases": {}
+  },
+  {
+   "module": "rawlsing_next/pre553_c11_repository.py",
+   "present": true,
+   "reader_calls": [],
+   "raw_path_reader_calls": [],
+   "opens_source_path": [],
+   "reader_aliases": {}
+  },
+  {
+   "module": "rawlsing_next/pre553_empirical_authority.py",
+   "present": true,
+   "reader_calls": [],
+   "raw_path_reader_calls": [],
+   "opens_source_path": [],
+   "reader_aliases": {}
+  },
+  {
+   "module": "rawlsing_next/pre553_empirical_objects.py",
+   "present": true,
+   "reader_calls": [],
+   "raw_path_reader_calls": [],
+   "opens_source_path": [],
+   "reader_aliases": {}
+  },
+  {
+   "module": "rawlsing_next/_pre553_query_common.py",
+   "present": true,
+   "reader_calls": [],
+   "raw_path_reader_calls": [],
+   "opens_source_path": [],
+   "reader_aliases": {}
+  },
+  {
+   "module": "rawlsing_next/pre553_empirical_query.py",
+   "present": true,
+   "reader_calls": [],
+   "raw_path_reader_calls": [],
+   "opens_source_path": [],
+   "reader_aliases": {}
+  },
+  {
+   "module": "rawlsing_next/pre553_physical_c11_bridge.py",
+   "present": true,
+   "reader_calls": [],
+   "raw_path_reader_calls": [],
+   "opens_source_path": [],
+   "reader_aliases": {}
+  },
+  {
+   "module": "rawlsing_next/pre553_discovery_exact.py",
+   "present": true,
+   "reader_calls": [],
+   "raw_path_reader_calls": [],
+   "opens_source_path": [],
+   "reader_aliases": {}
+  },
+  {
+   "module": "rawlsing_next/pre553_recursive_handoff.py",
+   "present": true,
+   "reader_calls": [],
+   "raw_path_reader_calls": [],
+   "opens_source_path": [],
+   "reader_aliases": {}
+  },
+  {
+   "module": "rawlsing_next/pre553_runtime_context.py",
+   "present": true,
+   "reader_calls": [],
+   "raw_path_reader_calls": [],
+   "opens_source_path": [],
+   "reader_aliases": {}
+  },
+  {
+   "module": "rawlsing_next/_pre553_query_eval.py",
+   "present": true,
+   "reader_calls": [],
+   "raw_path_reader_calls": [],
+   "opens_source_path": [],
+   "reader_aliases": {}
+  },
+  {
+   "module": "rawlsing_next/_pre553_query_predicate.py",
+   "present": true,
+   "reader_calls": [],
+   "raw_path_reader_calls": [],
+   "opens_source_path": [],
+   "reader_aliases": {}
+  },
+  {
+   "module": "rawlsing_next/pre553_runtime_composition.py",
+   "present": true,
+   "reader_calls": [],
+   "raw_path_reader_calls": [],
+   "opens_source_path": [],
+   "reader_aliases": {}
+  },
+  {
+   "module": "rawlsing_next/pre553_runtime_authority.py",
+   "present": true,
+   "reader_calls": [],
+   "raw_path_reader_calls": [],
+   "opens_source_path": [],
+   "reader_aliases": {}
+  },
+  {
+   "module": "rawlsing_next/pre553_source_access_broker.py",
+   "present": true,
+   "reader_calls": [
+    {
+     "line": 604,
+     "reader": "read_sav",
+     "invoked_as": "reader",
+     "first_arg_is_path_expression": false,
+     "first_arg_source": "arg"
+    }
+   ],
+   "raw_path_reader_calls": [],
+   "opens_source_path": [
+    {
+     "line": 326,
+     "arg": "self.path"
+    }
+   ],
+   "reader_aliases": {
+    "reader": "read_sav"
+   }
+  }
+ ]
+}

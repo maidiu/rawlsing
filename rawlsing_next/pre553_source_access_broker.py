@@ -314,17 +314,68 @@ class GovernedSourceOpen:
         self.read_calls = 0
         self.bytes_read = 0
         self.seek_calls = 0
+        # Bridge-safe limiter state. See _read for why the limiter never raises.
+        self._allowance: int | None = None
+        self.limit_armed = False
+        self.limit_truncated = False
+        self.limit_exhausted = False
+        self.bytes_denied = 0
 
     def _ensure_open(self) -> None:
         if self._handle is None:
             self._handle = open(self.path, "rb")
             self.physical_opens += 1
 
+    # -- limiter arming ----------------------------------------------------
+    def arm_limit(self, allowance: int | None) -> None:
+        """Arm the allowance for the duration of one compiled-reader call.
+
+        ``None`` disarms. The allowance covers only what the compiled reader
+        pulls, which is what ``reader_bytes`` names; the application's own hash
+        and header-prefix reads are accounted separately and capped separately.
+        """
+        self._allowance = allowance
+        self.limit_armed = allowance is not None
+        self.limit_truncated = False
+        self.limit_exhausted = False
+        self.bytes_denied = 0
+
+    def disarm_limit(self) -> None:
+        self._allowance = None
+        self.limit_armed = False
+
     def _read(self, size: int = -1) -> bytes:
+        """Read through the governed open, never returning a byte beyond the cap.
+
+        Bridge safety: this NEVER raises.  An exception raised inside a file-like
+        object that a compiled C extension is calling from arbitrary internal
+        state is not a reliable failure channel; depending on the extension it
+        can be swallowed, converted into a short read, or left to hang.  Instead
+        the limiter shortens the request to the remaining allowance, and once the
+        allowance is gone it returns b"" so the reader observes a clean end of
+        stream and terminates on its own.  The breach is recorded on this object
+        and raised by the caller at the OUTER decode boundary, where raising is
+        both prompt and loud.
+        """
         self._ensure_open()
-        data = self._handle.read(size)
+        requested = size
+        if self.limit_armed:
+            allowance = self._allowance if self._allowance is not None else 0
+            if allowance <= 0:
+                # Nothing left to give. Signal EOF; never raise here.
+                self.limit_exhausted = True
+                self.bytes_denied += 1 if (requested is None or requested < 0 or requested > 0) else 0
+                self.read_calls += 1
+                return b""
+            if requested is None or requested < 0 or requested > allowance:
+                # A legitimate short read: serve exactly what remains.
+                self.limit_truncated = True
+                requested = allowance
+        data = self._handle.read(requested)
         self.read_calls += 1
         self.bytes_read += len(data)
+        if self.limit_armed:
+            self._allowance = (self._allowance or 0) - len(data)
         return data
 
     def _seek(self, offset: int, whence: int = os.SEEK_SET) -> int:
@@ -447,10 +498,17 @@ class SourceAccessBroker:
         })
 
     def _sync_reader_totals(self) -> None:
-        """Reader read/byte totals are ABSOLUTE snapshots of the governed open."""
+        """Reader read/byte totals are ABSOLUTE snapshots of the governed open.
+
+        Retained for callers that read through the governed open outside a
+        compiled-reader invocation. Compiled-reader consumption is attributed
+        precisely by _invoke_reader, which measures the delta across the call so
+        the application's own hash and header-prefix reads are not miscounted as
+        reader bytes.
+        """
         self._account = self._account.with_(
-            reader_read_calls=self._open.read_calls,
-            reader_bytes=self._open.bytes_read,
+            reader_read_calls=self._account.reader_read_calls,
+            reader_bytes=self._account.reader_bytes,
         )
 
     # -- operations ---------------------------------------------------------
@@ -532,9 +590,60 @@ class SourceAccessBroker:
         if _is_genuine_pyreadstat_entry_point(reader):
             params = set(inspect.signature(reader).parameters)
             kwargs = {k: v for k, v in kwargs.items() if k in params}
-        result = reader(arg, **kwargs)
+
+        # Arm the bridge-safe allowance for exactly this compiled-reader call.
+        cap = self.budget.reader_bytes
+        already = self._account.reader_bytes
+        allowance = None if cap is None else max(0, cap - already)
+        self._open.arm_limit(allowance)
+        calls_before = self._open.read_calls
+        bytes_before = self._open.bytes_read
+        reader_error: BaseException | None = None
+        result = None
+        try:
+            result = reader(arg, **kwargs)
+        except BaseException as exc:      # noqa: BLE001 - re-raised below
+            # The limiter shortens the stream rather than raising into the
+            # extension, so an error here is the reader reacting to a truncated
+            # stream. It is captured, accounted, and re-raised as a typed
+            # byte-limit breach at this outer boundary.
+            reader_error = exc
+        finally:
+            # Always account what was actually consumed, and always disarm.
+            consumed_calls = self._open.read_calls - calls_before
+            consumed_bytes = self._open.bytes_read - bytes_before
+            truncated = self._open.limit_truncated
+            exhausted = self._open.limit_exhausted
+            self._open.disarm_limit()
+            self._account = self._account.with_(
+                reader_read_calls=self._account.reader_read_calls + consumed_calls,
+                reader_bytes=self._account.reader_bytes + consumed_bytes,
+            )
         self._bump(reader_invocations=1, **delta)
-        self._sync_reader_totals()
+
+        # The breach is raised HERE, at the outer decode boundary, never through
+        # the compiled extension's read callback. Accounting above is already
+        # exact, so the refusal reports precisely what was consumed.
+        if cap is not None and (truncated or exhausted or reader_error is not None):
+            detail = "" if reader_error is None else f"; reader raised {type(reader_error).__name__}"
+            if reader_error is not None:
+                raise SourceAccessViolation(
+                    "READER_BYTES_LIMIT_EXCEEDED",
+                    f"compiled reader required more than the declared reader_bytes cap of "
+                    f"{cap}; consumed {self._account.reader_bytes} bytes before the stream was "
+                    f"truncated (truncated={truncated}, exhausted={exhausted}){detail}",
+                    self._account.as_dict(),
+                ) from reader_error
+        if reader_error is not None:
+            raise reader_error
+        if cap is not None and (truncated or exhausted):
+            raise SourceAccessViolation(
+                "READER_BYTES_LIMIT_EXCEEDED",
+                f"compiled reader required more than the declared reader_bytes cap of {cap}; "
+                f"consumed {self._account.reader_bytes} bytes "
+                f"(truncated={truncated}, exhausted={exhausted}) before the refusal",
+                self._account.as_dict(),
+            )
         return result
 
     def bind_reader(self, reader_kind: str) -> None:

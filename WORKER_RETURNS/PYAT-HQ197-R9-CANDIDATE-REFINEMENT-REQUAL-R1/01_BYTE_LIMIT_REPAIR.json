@@ -1,0 +1,70 @@
+{
+  "schema": "HQ197_BYTE_LIMIT_REPAIR@1.0.0",
+  "lane": "PYAT-HQ197-R9-CANDIDATE-REFINEMENT-REQUAL-R1",
+  "CATEGORY": "C3 enforcement surface",
+
+  "the_gap": "SourceAccessBudget.reader_bytes was a declared ceiling that was never consulted inside the governed read path, so it constrained nothing.",
+
+  "design": {
+    "principle": "Enforce the ceiling in the file-like read() the compiled reader already calls, and surface the breach at the OUTER decode boundary where raising is both prompt and loud.",
+    "why_not_raising_through_the_callback": "An exception raised inside a file-like object that a compiled C extension is calling from arbitrary internal state is not a reliable failure channel. Depending on the extension it can be swallowed, converted into a short read, or left to hang. The limiter therefore never raises.",
+    "limiter_behaviour": [
+      "Armed per compiled-reader invocation with the remaining allowance (cap minus reader_bytes already consumed), so it covers reader traffic only; the application's hash and header-prefix reads keep their own separate accounts and caps.",
+      "A request larger than the remaining allowance is SHORTENED to exactly the allowance. That is a legitimate partial read, not a breach by itself.",
+      "When the allowance reaches zero the limiter returns b\"\" so the reader observes a clean end of stream and terminates on its own. No exception crosses the bridge.",
+      "truncated / exhausted are recorded on the governed open, never raised there."
+    ],
+    "outer_boundary": "After the reader returns, or raises, the broker accounts the exact consumed bytes and raises SourceAccessViolation(READER_BYTES_LIMIT_EXCEEDED) if truncated or exhausted.",
+    "reader_error_conversion": "On a truncated stream pyreadstat raises its own ReadstatError('Unable to read from file'). That is captured, accounted exactly, and re-raised as a typed READER_BYTES_LIMIT_EXCEEDED chained from the original, so the refusal is attributable to the byte ceiling rather than looking like a generic reader fault. If the limiter did NOT trip, the original error is re-raised unchanged."
+  },
+
+  "requirements": {
+    "never_read_a_byte_beyond_the_limit": "PROVED — the limiter clamps every request to the remaining allowance, so bytes_read is monotonic and bounded. Measured across ceilings 1, 10, 64, 200, needed-1, needed, needed+1 and needed*4 on a 3-column/60-row carrier: bytes_read <= cap in every case.",
+    "accounting_remains_exact": "PROVED — reader_bytes and reader_read_calls are now attributed by DELTA across each reader invocation rather than read as an absolute of the whole open. Previously the account folded the application's hash and header-prefix reads into reader_bytes; that inflation is fixed, and court C11e asserts the two are distinct.",
+    "failure_prompt_and_loud_at_outer_boundary": "PROVED — refusal latency measured at ~0.2 ms against a 10 s hang threshold (court C11b), and the message names the ceiling and the exact consumption.",
+    "no_raise_through_pyreadstat_callback": "PROVED by construction and asserted by court C11c, which drives the governed view directly under an armed allowance and shows it returns short/empty rather than propagating an exception.",
+    "negative_tests_prove_bytes_never_exceed_ceiling": "PROVED — C11 (sweep), C11b (promptness), C11c (bridge safety), C11d (partial vs excess), C11e (accounting scope), C11f (decoder boundary).",
+    "distinguish_allowed_partial_final_read_from_excess_read": "PROVED — at a ceiling exactly equal to the required bytes the reader completes and no refusal occurs; one byte short the run is refused having consumed exactly cap bytes. A partial read that still satisfies the reader sets neither truncated nor exhausted and is not a breach."
+  },
+
+  "invariants": {
+    "bytes_read_monotonic_and_bounded": true,
+    "never_raises_inside_read_callback": true,
+    "accounting_exact_at_refusal": "the refusal carries account_snapshot with the exact bytes consumed",
+    "opt_in": "reader_bytes defaults to None (unbounded), so the default decode path is unchanged and no existing caller is affected"
+  },
+
+  "observed_behaviour": {
+    "carrier": "3 columns x 60 rows SAV",
+    "bytes_required_by_metadata_read": 611,
+    "results": [
+      { "cap": null, "outcome": "OK", "reader_bytes": 611 },
+      { "cap": 100000, "outcome": "OK", "reader_bytes": 611 },
+      { "cap": 611, "outcome": "OK", "reader_bytes": 611, "note": "exactly enough: reader completes, not a breach" },
+      { "cap": 610, "outcome": "REFUSED", "reader_bytes": 610, "note": "one byte short" },
+      { "cap": 200, "outcome": "REFUSED", "reader_bytes": 200 },
+      { "cap": 10, "outcome": "REFUSED", "reader_bytes": 10 }
+    ],
+    "within_cap_in_every_case": true
+  },
+
+  "selected_route_untouched": {
+    "disclosure_preserved": "selected_route_physical_column_suppression still begins NOT_ENFORCED_BY_READER__pyreadstat_1_3_6_reads_full_stream_then_subsets",
+    "counters_still_separate": "selected_reads=1, full_reads=0, metadata_reads=1, reader_bytes tracked independently",
+    "no_physical_suppression_claimed": true,
+    "authority_meaning_not_resolved": "PHYSICAL_SELECTED_VARIABLE_READ was NOT reinterpreted in this lane, as commissioned",
+    "verified_after_refinement": true
+  },
+
+  "court_results": {
+    "broker_source_access_court": "20 passed, 0 failed (14 pre-existing HQ196 courts + 6 new HQ197 byte-limit courts)",
+    "full_decoder_regression": "335 failed / 2498 passed / 1 skipped / 58 errors — identical failure set to the HQ196 candidate baseline, 0 new failures, +6 passes from the new byte-limit courts",
+    "note_on_the_335_and_58": "pre-existing sparse-checkout artefacts, byte-identical to the HQ196 pristine comparison; not caused by this lane"
+  },
+
+  "freeze_invalidation_disclosure": {
+    "statement": "06_RUNTIME_READER_LANES_AND_RESOURCE_LAW.json at the executable freeze lists 'any rawlsing_next/** production blob change' as an invalidating condition, with on_invalidation = 'STOP. The freeze does not survive a runtime change; a new qualification is required.'",
+    "consequence": "This lane changes a rawlsing_next production blob (pre553_source_access_broker.py), so by the freeze's own law the previous qualification does not survive it. That is the reason a requalification was commissioned, and it is the reason no pass from the earlier court is inherited here.",
+    "what_did_NOT_change": "no pyreadstat, ReadStat, pandas, numpy or interpreter change, so none of the version-based invalidating conditions is triggered"
+  }
+}

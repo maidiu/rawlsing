@@ -1,0 +1,71 @@
+{
+  "schema": "HQ197_C4_CLOSURE_AUDIT@1.0.0",
+  "lane": "PYAT-HQ197-R9-CANDIDATE-REFINEMENT-REQUAL-R1",
+  "CATEGORY": "C1 closure list read from governed artifact; C2 static AST audit of the current tree",
+  "audit_question": "does any pyreadstat reader call inside the accepted C4 closure receive a source path string?",
+
+  "closure_source": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4C3-DARWIN-ANCHOR-RUNTIME-R1/02_ACTUAL_C4_CALL_PATH.json .transitive_import_closure",
+
+  "count_discrepancy": {
+    "commission_stated": "23-module closure",
+    "accepted_artifact_states": 21,
+    "corroborated_in_the_freeze": "06_RUNTIME_READER_LANES_AND_RESOURCE_LAW.json declares c4_import_closure_modules = 21",
+    "searched_for_23": "git grep across WORKER_RETURNS and HQ_HANDOFF for '23-module', '23 modules', 'closure_modules' with a 23 count, 'module_count.*23' — no governed artifact declares a 23-module C4 closure",
+    "resolution": "The accepted artifact's 21-module list is used. The figure 23 is not reproducible from any governed artifact and is REPORTED rather than reconciled by inventing two modules to reach 23.",
+    "candidate_addition": "rawlsing_next/pre553_source_access_broker.py is added because the decoder now imports it, so it is genuinely part of the closure",
+    "audited_total": 22
+  },
+
+  "verdict": "NO_RAW_PATH_READER_CALLS_IN_C4_CLOSURE",
+
+  "numbers": {
+    "modules_audited": 22,
+    "modules_missing_from_worktree": 0,
+    "total_reader_calls_in_closure": 1,
+    "raw_path_reader_calls_in_closure": 0,
+    "the_single_reader_call": {
+      "module": "rawlsing_next/pre553_source_access_broker.py",
+      "line": 604,
+      "reader": "read_sav",
+      "invoked_as": "reader",
+      "invocation_form": "reached through a local alias bound by a ternary: reader = self.pyreadstat.read_sav if self._reader_kind == 'SAV' else self.pyreadstat.read_dta",
+      "first_argument": "arg",
+      "first_argument_is_a_path_expression": false,
+      "what_arg_actually_is": "the governed position-zero view produced by _reader_arg(), carrying the application's own file descriptor"
+    },
+    "source_path_open_sites_in_closure": {
+      "rawlsing_next/pre553_source_access_broker.py": [{ "line": 326, "arg": "self.path" }]
+    },
+    "single_open_note": "Exactly one physical open of a source path exists in the whole C4 closure, and it is the broker's governed open."
+  },
+
+  "auditor_falsifiability": {
+    "why_this_matters": "A static audit that reports zero is worthless unless it can be shown to report non-zero when non-zero is present. This auditor initially reported a FALSE ZERO three times, and each defect was found and fixed rather than accepted.",
+    "defects_found_and_fixed_in_the_auditor": [
+      "It scanned only for pyreadstat.<reader>(...) and so missed the reader entirely, because the broker calls it through a local variable. Every module would have looked falsely clean.",
+      "It then missed the self.pyreadstat.<reader> attribute form, still reporting zero.",
+      "It then missed the ternary that actually binds the alias (an ast.IfExp, not an ast.Attribute), still reporting zero. Only after all three fixes did it correctly report 1 reader call."
+    ],
+    "positive_control": {
+      "target": "rawlsing_next/runtime/ee_p2x/05_WVS7_PROJECTION_MATERIALIZER.py",
+      "relationship_to_closure": "OUTSIDE the C4 closure and outside this lane's write terrain; read only, never edited",
+      "reader_calls_detected": 2,
+      "raw_path_reader_calls_detected": 2,
+      "sites": ["line 986: read_sav(str(path))", "line 1015: read_sav(str(path))"],
+      "conclusion": "The same auditor reports 2 raw-path reader calls on a file that has them, so the count of 0 inside the C4 closure is a real negative rather than a broken query."
+    }
+  },
+
+  "wvs7_projection_materializer": {
+    "in_c4_closure": false,
+    "present_in_tree": true,
+    "edited_by_this_lane": false,
+    "verified_by": "git diff --name-only HEAD lists only pre553_source_access_broker.py and the court test file",
+    "note": "It still performs 2 raw-path read_sav(str(path)) calls. That is outside the C4 closure and outside this lane's terrain, so it is reported rather than modified, consistent with the commission's instruction not to edit it."
+  },
+
+  "residual": {
+    "statement": "The C4 decoder route is clean: zero raw path strings reach pyreadstat, and exactly one governed physical open exists. Raw-path reader calls persist ONLY outside the C4 closure, in the WVS7 projection materializer.",
+    "not_claimed": "This audit does not assert that the WVS7 materializer is safe, in-closure, or correctly governed. It asserts only that it is outside the closure this audit covers."
+  }
+}

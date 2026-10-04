@@ -1,0 +1,24 @@
+HQ197 R7 SIX-FILE COURT — exact environment
+python  : /Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/qualification/r7-c4-source-free-venv/bin/python
+env     : PYTHONHASHSEED=0 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONPATH=<sparse worktree root>
+pytest  : -p no:cacheprovider
+
+collect-only: 55 tests collected (9+8+13+9+6+10), exit=0
+
+PRE-REFINEMENT (inherited candidate d5ce4ecf):
+  RUN 1: exit=1 duration=3.0s  -> 6 failed, 49 passed
+  RUN 2: exit=1 duration=3.0s  -> 6 failed, 49 passed
+
+POST-REFINEMENT (this lane):
+  RUN 1: exit=1 duration=3.0s  -> 6 failed, 49 passed
+  RUN 2: exit=1 duration=3.0s  -> 6 failed, 49 passed
+
+TARGET WAS 55 passed / 55 passed. NOT ACHIEVED.
+All 6 failures are FileNotFoundError on WORKER_RETURNS paths outside the
+commissioned sparse manifest, and are PROVEN independent of the candidate:
+the identical 6 fail at pre-candidate code (55f75664) in the same worktree.
+
+Missing paths required by the court:
+  WORKER_RETURNS/FIABC-LM2-R1I-PHYSICAL-NATIVE-BINDING/01_PHYSICAL_KEY_INVENTORY.json
+  WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py
+Both exist in git at HEAD; neither is covered by the sparse manifest.

@@ -1,0 +1,154 @@
+{
+  "schema": "HQ197_FINAL_DISPOSITION@1.0.0",
+  "commission": "PYAT-HQ197-R9-CANDIDATE-REFINEMENT-REQUAL-R1",
+  "role": "SOURCE-FREE IMPLEMENTATION WORKER — SPACE BUNNY",
+  "branch": "agent/rabochii-pyat-hq197-r1",
+  "commissioned_startup_sha": "5b98343561e5bf225442d9ab59032d36e98693ba",
+  "startup_verified_exactly": true,
+  "implementation_ancestor": "d5ce4ecff6acc25d199577a7859de7e98514e9fd",
+  "ancestor_verified": "the candidate is an ancestor of the startup, exactly 1 commit apart",
+
+  "disposition": "CHECKOUT_MODE_INSUFFICIENT__HQ_RECOMMISSION_REQUIRED",
+
+  "one_paragraph": "The commissioned primary repair is COMPLETE and verified: reader_bytes is now a real bridge-safe ceiling that never consumes a byte beyond the limit, never raises through pyreadstat's read callback, accounts exactly, and refuses loudly at the outer decode boundary, with six new negative courts proving it. The C4 closure audit is clean and, importantly, falsifiable. But the mandated R7 six-file court target of 55/55 CANNOT be met under the commissioned sparse manifest: all six files collect to exactly 55 as required, yet 6 tests fail on FileNotFoundError for two WORKER_RETURTS paths the manifest does not cover. Those same 6 failures reproduce identically at pre-candidate code in the same worktree, proving they are caused by the checkout and not by the candidate. I did not retry them away, did not expand the sparse checkout beyond the commissioned manifest, and did not edit anything to make them pass.",
+
+  "why_this_disposition": [
+    {
+      "not": "CANDIDATE_REQUALIFIED__PENDING_SELECTED_AUTHORITY_AND_INDEPENDENT_ACCEPTANCE",
+      "because": "That disposition asserts the requalification succeeded. It did not: the court stands at 49/55, not 55/55. Reporting it as requalified would misstate the record."
+    },
+    {
+      "not": "BYTE_LIMIT_REPAIR_INCOMPLETE",
+      "because": "The repair is complete and demonstrated. reader_bytes is enforced in the governed read path, bounded consumption is proved across eight ceilings, the breach is typed and prompt, and the default path is unchanged."
+    },
+    {
+      "not": "R7_SIX_FILE_COURT_FAILURE",
+      "because": "That is literally true of the result but misleading about the cause: it would read as a candidate defect. The failure is entirely a materialisation gap, proven candidate-independent by reproducing it at pre-candidate code."
+    },
+    {
+      "not": "MATERIAL_NEW_COUNTEREXAMPLE",
+      "because": "No counterexample to the candidate was found. Zero new failures across the full 2872-test regression, and the closure audit is a clean, falsifiable negative."
+    },
+    {
+      "chosen": "CHECKOUT_MODE_INSUFFICIENT__HQ_RECOMMISSION_REQUIRED",
+      "because": "The single thing preventing the mandated 55/55 is that the sparse manifest omits two governed-evidence paths the court reads. That is precisely the condition this disposition exists to report, and it is fixable by HQ with a two-path expansion rather than by any change to the candidate."
+    }
+  ],
+
+  "exact_recommission_needed": {
+    "add_these_sparse_patterns": [
+      "/WORKER_RETURNS/FIABC-LM2-R1I-PHYSICAL-NATIVE-BINDING/",
+      "/WORKER_RETURNS/EE-P2R6S/"
+    ],
+    "why": "test_fiabc_lm2_r1j_sav_representation_authority.py opens 01_PHYSICAL_KEY_INVENTORY.json from the first path and imports 05_WVS7_PROJECTION_MATERIALIZER.py from the second. Both files exist in git at HEAD; neither is materialised by the current manifest.",
+    "expected_result": "the six-file court should then reach 55/55 on the same code, since the same 6 tests pass at pre-candidate code once their fixtures are present",
+    "not_required": "no full checkout, no clone, no other path. Two directories is the whole gap."
+  },
+
+  "r7_six_file_court": {
+    "environment": {
+      "python": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/qualification/r7-c4-source-free-venv/bin/python",
+      "env": "PYTHONHASHSEED=0 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONPATH=<sparse worktree root>",
+      "pytest_flag": "-p no:cacheprovider"
+    },
+    "collect_only": { "collected": 55, "breakdown": "9 + 8 + 13 + 9 + 6 + 10", "exit": 0, "denominator_matches_commission": true },
+    "target": "55 passed / 55 passed",
+    "achieved": "49 passed / 6 failed, on both runs",
+    "pre_refinement_baseline": [
+      { "run": 1, "exit": 1, "duration_s": 3.0, "result": "6 failed, 49 passed" },
+      { "run": 2, "exit": 1, "duration_s": 3.0, "result": "6 failed, 49 passed" }
+    ],
+    "post_refinement": [
+      { "run": 1, "exit": 1, "duration_s": 3.0, "result": "6 failed, 49 passed" },
+      { "run": 2, "exit": 1, "duration_s": 3.0, "result": "6 failed, 49 passed" }
+    ],
+    "retried_away": false,
+    "the_six_failures": {
+      "all_in_one_file": "rawlsing_next/tests/test_fiabc_lm2_r1j_sav_representation_authority.py",
+      "cause": "FileNotFoundError, not an assertion failure",
+      "missing_paths": [
+        "WORKER_RETURNS/FIABC-LM2-R1I-PHYSICAL-NATIVE-BINDING/01_PHYSICAL_KEY_INVENTORY.json",
+        "WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py"
+      ],
+      "exist_in_git_at_HEAD": true,
+      "covered_by_sparse_manifest": false,
+      "candidate_independence_proof": "the candidate's production files were reverted to pre-candidate state (55f75664) in this same worktree and the court re-run: the identical 6 tests failed, 6 failed / 49 passed. The candidate was then restored.",
+      "conclusion": "caused by the commissioned sparse manifest; entirely independent of the candidate and of this lane's repair"
+    }
+  },
+
+  "primary_repair": {
+    "status": "COMPLETE",
+    "detail": "see 01_BYTE_LIMIT_REPAIR.json",
+    "headline": "reader_bytes is enforced in the governed read path. Across ceilings 1, 10, 64, 200, needed-1, needed, needed+1 and needed*4, bytes consumed never exceeded the ceiling. The limiter never raises through the read callback; it shortens the request and returns b'' at exhaustion, and the breach is raised as a typed READER_BYTES_LIMIT_EXCEEDED at the outer decode boundary with exact accounting.",
+    "additional_finding": "reader_bytes was also inflated by the application's own hash and header-prefix reads, because it was read as an absolute of the whole open. It is now attributed by delta across each reader invocation, so the account matches its name and basis."
+  },
+
+  "candidate_courts": {
+    "broker_source_access_court": "20 passed, 0 failed",
+    "one_physical_path_open_per_governed_scope": "asserted; single open site is broker line 326",
+    "zero_source_path_strings_to_pyreadstat_on_the_c4_route": "asserted by court C7 and independently by the closure AST audit",
+    "DTA_view_reset_behaviour": "asserted by C5 and C5b; C5b proves the naive single-view reuse still raises, so the reset is load-bearing",
+    "byte_limit_negative_cases": "C11, C11b, C11c, C11d, C11e, C11f all pass",
+    "selected_and_full_counters": "asserted; selected_reads=1, full_reads=0 on the selected route",
+    "missing_unexpected_selected_column_failures": "asserted by C8",
+    "version_and_seam_pin": "asserted by C9b; pyreadstat 1.3.6 mismatch raises READER_SEAM_VERSION_MISMATCH"
+  },
+
+  "full_regression": {
+    "collected": 2872,
+    "result": "335 failed, 2498 passed, 1 skipped, 58 errors",
+    "comparison_basis": "the HQ196 candidate run in an equivalent sparse worktree: 335 failed, 2492 passed, 1 skipped, 58 errors",
+    "new_failures_introduced": 0,
+    "net_passes": 6,
+    "explanation_of_the_335_and_58": "pre-existing sparse-checkout artefacts, byte-identical to the HQ196 comparison; unrelated to this lane"
+  },
+
+  "selected_route_disclosure": {
+    "preserved": true,
+    "value_still": "NOT_ENFORCED_BY_READER__pyreadstat_1_3_6_reads_full_stream_then_subsets__measured_identical_bytes_for_usecols_and_full_read",
+    "counters_kept_separate": true,
+    "authority_meaning_resolved_in_this_lane": false,
+    "note": "PHYSICAL_SELECTED_VARIABLE_READ was deliberately not reinterpreted, as commissioned."
+  },
+
+  "closure_audit": {
+    "verdict": "NO_RAW_PATH_READER_CALLS_IN_C4_CLOSURE",
+    "modules_audited": 22,
+    "raw_path_reader_calls": 0,
+    "reader_calls": 1,
+    "source_path_open_sites": 1,
+    "count_discrepancy_reported": "the commission said 23 modules; the accepted C4C3 artifact and the freeze both state 21. The accepted list was used and the discrepancy reported rather than reconciled by inventing modules.",
+    "falsifiability": "the auditor reported a false zero three times before detecting the reader at all; all three defects were fixed, and a positive control against the out-of-closure WVS7 file detects its 2 real raw-path calls",
+    "wvs7_materializer": "outside the closure, not edited, still contains 2 raw-path read_sav(str(path)) calls"
+  },
+
+  "freeze_invalidation_note": "The freeze lists 'any rawlsing_next/** production blob change' as an invalidating condition requiring a new qualification. This lane changes a production blob by construction, which is why a requalification was commissioned and why no earlier pass is inherited here. No dependency or interpreter changed, so no version-based invalidating condition is triggered.",
+
+  "holds_observed": {
+    "real_survey_source_access": 0,
+    "locator_work": 0,
+    "warrant_issuance": false,
+    "live_c4": false,
+    "c7_or_actor_work": 0,
+    "pyreadstat_or_r7_environment_mutated": false,
+    "wvs7_projection_materializer_edited": false,
+    "production_files_touched_outside_terrain": 0,
+    "sparse_checkout_expanded_beyond_manifest": false,
+    "repository_cloned": false,
+    "failures_retried_away": false,
+    "self_adopted": false
+  },
+
+  "write_terrain_respected": {
+    "touched": [
+      "rawlsing_next/pre553_source_access_broker.py",
+      "rawlsing_next/tests/test_pre553_source_access_broker_court.py",
+      "WORKER_RETURNS/PYAT-HQ197-R9-CANDIDATE-REFINEMENT-REQUAL-R1/**"
+    ],
+    "pre553_physical_decoder_modified": false,
+    "note": "pre553_physical_decoder.py did not require modification: the seam already exposed source_access_budget, so the refinement was contained entirely within the broker."
+  },
+
+  "terminal": "HQ197_R9_CANDIDATE_REFINEMENT_RETURNED__HQ_REVIEW_REQUIRED"
+}
