@@ -1,3 +1,39 @@
+# HQ202 active frontier — R9 final review + F6/F7 constitution — 2026-10-04
+
+HQ has adjudicated the HQ201 wave.
+
+R9:
+- hardened execution-binding candidate `deea40541cda0627d129dcb7d30e06e0682e0fed`
+- adopted: NO; exact final independent review active.
+
+F6/F7:
+- ontology conservation return `d3f0619429a400552c2f3c397be57cdfbadb2f54`
+- accepted as substantial documentary evidence, NOT yet as fully binding constitution.
+- architecture reopen not presently indicated.
+- TIME-GRAIN-FORK referred narrowly to Astra.
+
+Active SPARSE_REQUIRED local lanes:
+- R9 hardened-binding final review:
+  `agent/reviewer-pyat-hq202-r1 @ 217f96b5d9f7b767a7cfb11e5c2c3c7c75d77b4f`
+- F6/F7 ontology independent review:
+  `agent/reviewer-pyat-hq202-r2 @ f6725724d54d685f6c3dd8604a65f5f0b806a4ff`
+- same-survey F7 temporal-producer contract:
+  `agent/rabochii-pyat-hq202-r1 @ d452b66bc261e4139ca9c28a19b9d849676aff42`
+- F6 cross-source relation/disagreement contract:
+  `agent/rabochii-pyat-hq202-r2 @ 501e7d5d4623d0ee92913a73d092da7918b981d5`
+
+Astra packet:
+`PYAT_CONTROL_ROOM/ASTRA_CONSULTS/HQ202_TIME_GRAIN_FORK_R1.md`
+
+Concurrency was widened because all five nodes are genuinely orthogonal; no overlapping production writers were added.
+
+R9 remains open. F6/F7 remain open. All source/warrant/live/C7/actor holds remain.
+
+See:
+`HQ_HANDOFF/checkpoints/20261004-PYAT-HQ202-R9-FINAL-F6F7-CONSTITUTION-R1/`
+
+---
+
 # HQ201 active frontier — execution-binding hardening + F6/F7 ontology — 2026-10-03
 
 HQ has adjudicated the HQ200 wave.
