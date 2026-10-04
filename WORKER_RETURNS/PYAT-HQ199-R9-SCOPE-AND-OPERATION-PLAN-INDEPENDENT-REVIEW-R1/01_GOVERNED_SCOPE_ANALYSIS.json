@@ -1,0 +1,71 @@
+{
+  "schema": "PYAT_HQ199_GOVERNED_SCOPE_ANALYSIS@1.0.0",
+  "role": "independent documentary/source-free reviewer",
+  "reviewer_identity": {"harness": "DeepSeek Harness", "model": "DeepSeek V4.1 Flash"},
+  "startup": {
+    "review_branch": "agent/reviewer-pyat-hq199-r1",
+    "startup_sha_resolved": "ed9d186aa7ab8ebd2f70cdae0240ef3a2b9f1917",
+    "match": true,
+    "sparse_worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq199-r9-review",
+    "sparse_patterns": ["/WORKER_COMMISSIONS/PYAT-HQ199-R9-SCOPE-AND-OPERATION-PLAN-INDEPENDENT-REVIEW-R1/",
+                        "/WORKER_RETURNS/PYAT-HQ199-R9-SCOPE-AND-OPERATION-PLAN-INDEPENDENT-REVIEW-R1/",
+                        "/PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ199_R9_SCOPE_OWNER_ADJUDICATION_R1.md"],
+    "sparse_widened": false, "clone_created": false, "full_worktree_created": false,
+    "helper_provenance": "the startup tree predates prepare_sparse_worktree.sh; the accepted helper (sha256 93e3fc970b002d9e9054fd21d4757887f3dd917610adab6574d26aefaecce6, identical to the copy used and verified in HQ195-HQ198) was used",
+    "parallel_HQ199_returns_inspected": false
+  },
+  "Q1_is_a_per_source_session_owner_required": {
+    "answer": "YES",
+    "what_the_current_broker_scope_actually_is": "SourceAccessBroker is instantiated INSIDE _decode and the resulting incidence holds it alive for later iteration via a caller-owned close lifecycle. Its natural scope is therefore ONE _decode() call.",
+    "what_it_owns_well": ["source path", "source identity/hash binding", "format/reader kind", "the operation budget for that one decode", "one physical open", "aggregate accounting for that one decode", "deterministic close via close_source_access()"],
+    "the_gap": "nothing binds ONE BOUND SOURCE ENTRY to exactly one governed lifecycle ACROSS decodes. Verified empirically: two successive decode_sav() calls on the same path each built their own broker, each with its own budget, and BOTH succeeded with no refusal. Aggregate across the two: path_opens=2, hash_passes=2, metadata_reads=2.",
+    "why_that_matters_against_the_frozen_law": [
+      "SRC27 requires expected_full_route_passes=1 with max=1 and states that 'a second pass is not a retry; it is a separate run requiring new HQ-bound authority'. Two decodes means two full Route-B passes with no refusal.",
+      "SRC02/SRC06/SRC14 require expected_selected_reads=1. A second decode performs a second selected read.",
+      "per-source expectations cannot be enforced by a per-decode budget, because two per-decode budgets of 1 each sum to 2 at the source entry."
+    ],
+    "conclusion": "GOV-SCOPE-001 is real. The correct layer for the missing owner is ABOVE _decode, not inside the broker: the broker is correctly decode-scoped and should not be changed to carry cross-decode state itself.",
+    "not_a_broker_defect": "this is a MISSING OWNER, not a wrong implementation. The accepted broker mechanics are unchanged by this finding."
+  },
+  "Q2_lifecycle_boundary_for_exactness": {
+    "required_boundary": "ONE bound source ENTRY of the warrant's execution surface - i.e. one row of the per-source warrant table, identified by (source_key, canonical_sha256, format, operation plan) - not one _decode() call.",
+    "why": "only at the source-entry boundary can path opens, existence checks, metadata reads, decoder invocations, selected/full reads and retries be aggregated and compared against the frozen PER-SOURCE expectations. At the _decode boundary each call looks individually compliant while the aggregate is not.",
+    "operations_that_become_exact_at_that_boundary": ["path opens", "existence/access checks", "hash passes", "metadata reads", "decoder invocations", "selected reads", "full reads", "chunk reads", "header-prefix reads", "reader invocations", "retries"],
+    "operations_already_exact_today": "all of the above EXCEPT decoder invocations are counted within one decode, and are exact for that decode; the deficit is aggregation across decodes plus the missing decoder-entry account."
+  },
+  "Q4_header_prefix_admission": {
+    "answer": "SRC26 IS THE ONLY SOURCE THAT ADMITS A HEADER-PREFIX READ",
+    "evidence": "SRC26 is the only source carrying a frozen expected_header_prefix_bytes (176) and the only class named BOUNDED_HEADER_PREFIX_PLUS_READER_METADATA. No other class mentions a header prefix.",
+    "code_violation": "_decode line ~639 calls broker.header_prefix(176 if source_format == 'SAV' else 512) UNCONDITIONALLY for every source and format.",
+    "verified": "a plain SAV decode reported header_prefix_reads=1, header_prefix_bytes=176 even though the carrier's class admits no header-prefix operation",
+    "answers_to_mission_subquestions": {
+      "must_SRC02_SRC06_SRC14_have_zero_header_prefix_reads": "YES. Their classes (BOUNDED_FRESH_PHYSICAL_SELECTED_VARIABLE_READ / BOUNDED_FRESH_PHYSICAL_READ_EXACT_VARIABLE) admit existence check, hash, metadata and one selected/exact-variable read - no header prefix. Today each performs one.",
+      "is_SRC26_the_only_admitted_header_prefix_source": "YES.",
+      "is_a_512_byte_DTA_header_operation_frozen": "NO. The freeze names 176 bytes for SRC26 (SAV). A 512-byte DTA header read is an implementation invention for sources whose operation class does not admit one."
+    }
+  },
+  "Q5_SRC08_SRC12_metadata_only": {
+    "answer": "YES - their metadata-only declared-encoding admission FORBIDS a compatibility full read",
+    "frozen": {"operation_class": "FRESH_METADATA_ONLY_DECODER_ADMISSION", "expected_metadata_reads": 1, "expected_selected_reads": 0, "expected_full_reads": 0, "retry_law": "Admitted operation is exact-SHA declared-encoding admission plus a metadata-only reader probe."},
+    "code_hazard": "with no selected set and encoding != None, _decode takes the `elif encoding is not None` branch and calls broker.full_read(encoding=...). SRC08/SRC12 are declared-encoding lanes, so this branch is exactly the one they route into.",
+    "verified": "on a carrier registered as a declared-encoding lane, the decode reported metadata_reads=1 AND full_reads=1",
+    "is_the_gate_broken": "NO - supplying full_reads=0 as the budget DOES refuse with SOURCE_ACCESS_BUDGET_EXCEEDED. The machinery works.",
+    "the_actual_defect": "there is no PER-SOURCE OPERATION PLAN. _decode derives its default budget from the presence of a selected set only (full_reads=0 iff selected_variables is given); it has no notion that a metadata-only source class must forbid a full read. So the frozen expectation is enforceable only if the caller happens to encode it."
+  },
+  "Q6_SRC27_multiple_opens": "see 03_SRC27_MULTIPLE_OPENS_REVIEW.json",
+  "Q7_SRC27_one_pass_requirement": {
+    "answer": "it requires exactly ONE FULL READ and exactly ONE DECODER ENTRY (one governed decode of the source's row data), and it does NOT require one reader invocation",
+    "layer_by_layer": {
+      "outer full Route-B pass": "exactly 1 (the governed workload pass over 50 candidates / 77 query roles)",
+      "decoder invocation": "exactly 1 - the pass is one governed decode of the source",
+      "metadata read": "at least 1 and SEPARATE - the hardened note requires 'one metadata read' as its own account",
+      "full read": "exactly 1 - 'one full compatibility read'",
+      "chunk read": "0 on the SRC27 lane (it is a declared-encoding/full-read lane, not the chunk route)",
+      "reader invocation": "2 in the verified SRC27-shaped run (metadata + full read); the law does not cap this and MUST NOT be capped at 1, or the metadata read the hardened note requires would become impossible",
+      "physical path open": "1 under the accepted broker; no authority requires more"
+    },
+    "why_both_one_full_read_and_one_decoder_entry": "the frozen text fixes the pass at exactly one (max 1) and separately requires a metadata pass and a full read as distinct accounts; within one decoder entry those are one metadata read plus one full read. One decoder entry therefore implies one full read, and a second full read within the same entry would be a second pass.",
+    "do_NOT_conflate": "a MAX 1 ceiling must be applied to the DECODER-ENTRY account only. Applying it to reader_invocations would forbid the mandatory metadata read."
+  },
+  "Q8_MAX_1_decoder_invocation": "see 04_DECODER_INVOCATION_ACCOUNT_REVIEW.json - lawful as a typed AUTHORIZATION ceiling, not as a fabricated historical count"
+}

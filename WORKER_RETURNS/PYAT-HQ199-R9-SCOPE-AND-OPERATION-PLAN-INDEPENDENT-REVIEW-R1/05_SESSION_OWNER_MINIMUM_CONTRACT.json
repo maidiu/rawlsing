@@ -1,0 +1,26 @@
+{
+  "schema": "PYAT_HQ199_SESSION_OWNER_MINIMUM_CONTRACT@1.0.0",
+  "purpose": "minimum contract that would close GOV-SCOPE-001",
+  "proposed_name": "GovernedSourceSession (per bound source entry)",
+  "minimum_properties": [
+    {"id": "S1", "property": "constructed exactly once per bound source entry", "detail": "keyed by the warrant row identity: source_key + canonical_sha256 + format + operation plan. Constructing a second session for the same bound entry must be detectable, not silently permitted.", "closes": "the verified two-decode gap"},
+    {"id": "S2", "property": "owns the source path, identity, format, operation plan and budget", "detail": "the operation plan is the per-source declaration of which operations are admitted (existence, hash, metadata, selected, full, chunk, header-prefix, retries) and which are not.", "closes": "GOV-HDR-002 and the SRC08/SRC12 full-read hazard: the plan states that header-prefix is admitted only for SRC26 and that metadata-only classes forbid full reads"},
+    {"id": "S3", "property": "owns exactly ONE broker lifecycle", "detail": "the session creates the single SourceAccessBroker, and every decode within the session reads through that one open. No nested or replacement broker.", "preserves": "the accepted one-open law"},
+    {"id": "S4", "property": "exact operation plan enforced BEFORE each operation", "detail": "each admitted operation is gated by the session plan plus the budget; a non-admitted operation is refused pre-operation with a typed error at the outer boundary.", "preserves": "the accepted bridge-safe refusal discipline (never raise through the pyreadstat read callback)"},
+    {"id": "S5", "property": "decoder-entry counter with a pre-operation ceiling", "detail": "decoder_invocations added to the account and budget, incremented once per governed decode entry, kept strictly separate from reader_invocations/full_reads/metadata_reads/chunk_reads.", "closes": "GOV-DEC-003"},
+    {"id": "S6", "property": "route-pass accounting distinct from lower layers", "detail": "a route-pass account that records the outer governed pass and is never collapsed into full_reads, chunk_reads or reader_invocations; a second pass is refused where max=1.", "closes": "GOV-ROUTE-004"},
+    {"id": "S7", "property": "deterministic close and aggregate receipt", "detail": "one close path that is idempotent, plus a receipt aggregating every account over the whole source entry (not per-decode).", "closes": "the aggregation deficit"},
+    {"id": "S8", "property": "second-session / second-decode refusal where budgets require it", "detail": "when the frozen expectation is exactly one (SRC27 pass; SRC02/SRC06/SRC14 selected read), the second attempt must be refused with a typed error naming the exhausted account.", "closes": "the verified two-decode acceptance"},
+    {"id": "S9", "property": "no silent legacy-path fallback", "detail": "the session must never degrade to a raw path string or to an ungoverned read path; refusal, not fallback.", "preserves": "the accepted RawSourcePathEscape guard"}
+  ],
+  "what_such_an_owner_still_would_NOT_solve": [
+    {"limitation": "cross-process and cross-run uniqueness", "detail": "an in-process session owner cannot by itself prevent a SECOND PROCESS or a restarted run from constructing its own first session. S8 refuses within a session; nothing in an owner object spans processes. A warrant-grade 'exactly one pass' guarantee therefore also requires an authority-held durable mechanism (e.g. an adopted event/marking record) or an operational control that a second run is not started. This must be stated rather than assumed."},
+    {"limitation": "numeric byte ceilings", "detail": "the owner can AGGREGATE and ENFORCE a reader-byte ceiling but cannot INVENT one. No real-source numeric reader-byte ceiling is source-free frozen (HQ199 adjudication), and synthetic carrier totals are not warrant budgets. A source whose lawful requirement exceeds any chosen cap can only be refused, not completed."},
+    {"limitation": "source-size-dependent ceilings", "detail": "reader_bytes scales with file size and format; a fixed numeric cap cannot be both safe for a large source and non-blocking for a small one without a size-derived rule. Deriving such a rule is an authority task, not an owner task."},
+    {"limitation": "header-prefix semantics for non-SRC26 sources", "detail": "the owner can REFUSE a header-prefix read for a class that does not admit one, but it cannot decide whether such a read should instead be re-admitted by amending the operation law. That is authority."},
+    {"limitation": "the authority question of whether decoding a source for metadata only constitutes a decoder invocation at all", "detail": "if a metadata-only admission is not a governed decode entry, SRC08/SRC12's decoder_invocations expectation must be stated explicitly; the owner enforces whatever is declared but cannot settle the declaration."}
+  ],
+  "does_this_contract_require_reopening_the_accepted_broker_mechanics": false,
+  "does_it_require_reopening_interpretation_A": false,
+  "contradiction_found_requiring_reopening": false
+}

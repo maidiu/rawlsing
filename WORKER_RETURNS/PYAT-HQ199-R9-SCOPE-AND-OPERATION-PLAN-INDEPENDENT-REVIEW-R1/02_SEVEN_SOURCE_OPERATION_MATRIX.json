@@ -1,0 +1,77 @@
+{
+  "schema": "PYAT_HQ199_SEVEN_SOURCE_OPERATION_MATRIX@1.0.0",
+  "frozen_source": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+  "code_reviewed": "4b6335ca5fc485108b0ffb1d682a29a02e1eee51 (blob 635f8bb38 broker, verified at review time)",
+  "layers_kept_strictly_separate": [
+    {"layer": "outer full Route-B pass", "definition": "the governed workload pass over the bound source (SRC27: 50 candidates / 77 query roles)", "owner": "the warrant/execution scope, not the broker"},
+    {"layer": "decoder invocation", "definition": "one entry into the governed decode operation (_decode)", "owner": "NONE TODAY - no counter exists"},
+    {"layer": "metadata read", "definition": "a metadataonly reader invocation", "owner": "account.metadata_reads"},
+    {"layer": "full read", "definition": "an all-column/compatibility reader invocation", "owner": "account.full_reads"},
+    {"layer": "chunk read", "definition": "one invocation of the governed row_offset loop", "owner": "account.chunk_reads"},
+    {"layer": "reader invocation", "definition": "one call of pyreadstat.read_sav/read_dta", "owner": "account.reader_invocations"},
+    {"layer": "physical source-path open", "definition": "one open(2) of the source path by this process", "owner": "account.path_opens"}
+  ],
+  "collapsing_prohibited": "no two of these may be merged; a route-pass count may not stand in for a full_reads count and a reader invocation may not stand in for a decoder invocation",
+  "per_source": [
+    {
+      "source": "SRC02", "operation_class": "BOUNDED_FRESH_PHYSICAL_SELECTED_VARIABLE_READ",
+      "frozen_expectations": {"selected_reads": 1, "full_reads": 0, "header_prefix": "NOT_ADMITTED"},
+      "admitted_operations": ["existence/access check", "hash pass", "metadata read (to bind the selected set)", "one selected read (Q10B, ordinal 58)"],
+      "code_behaviour_if_selected_variables_given": {"selected_reads": 1, "full_reads": 0, "header_prefix_reads": 1, "path_opens": 1},
+      "violation": "header_prefix_reads=1 is NOT admitted by this class (see SRC26 row)",
+      "verdict": "SELECTED_READS/FULL_READS COMPLIANT WHEN THE SELECTED ROUTE IS USED; HEADER-PREFIX EXCEEDS THE ADMITTED OPERATION SET"
+    },
+    {
+      "source": "SRC06", "operation_class": "BOUNDED_FRESH_PHYSICAL_SELECTED_VARIABLE_READ",
+      "frozen_expectations": {"selected_reads": 1, "full_reads": 0, "header_prefix": "NOT_ADMITTED"},
+      "admitted_operations": ["existence/access check", "hash pass", "metadata read", "one selected read (Q101 ordinal 20, Q2061B ordinal 19)"],
+      "violation": "same header-prefix excess as SRC02",
+      "verdict": "SELECTED/FULL COMPLIANT; HEADER-PREFIX EXCESS"
+    },
+    {
+      "source": "SRC08", "operation_class": "FRESH_METADATA_ONLY_DECODER_ADMISSION",
+      "frozen_expectations": {"metadata_reads": 1, "selected_reads": 0, "full_reads": 0, "header_prefix": "NOT_ADMITTED"},
+      "admitted_operations": ["exact-SHA declared-encoding admission", "one metadata-only reader probe"],
+      "code_behaviour": "reader lane is SAV_ENCODING_BIG5_DECLARED; with no selected set the decoder's `elif encoding is not None` branch routes to broker.full_read(encoding=...)",
+      "violation": "MATERIAL: a declared-encoding source with no selected set performs metadata + FULL read. The frozen class admits metadata only (expected_full_reads=0).",
+      "verified": "on a carrier registered as a declared-encoding lane: metadata_reads=1, full_reads=1; a budget of full_reads=0 DOES refuse (SOURCE_ACCESS_BUDGET_EXCEEDED), so the gate works but no per-source plan sets it",
+      "verdict": "NON-COMPLIANT unless the caller supplies full_reads=0"
+    },
+    {
+      "source": "SRC12", "operation_class": "FRESH_METADATA_ONLY_DECODER_ADMISSION",
+      "frozen_expectations": {"metadata_reads": 1, "selected_reads": 0, "full_reads": 0, "header_prefix": "NOT_ADMITTED"},
+      "admitted_operations": ["exact-SHA declared-encoding admission", "one metadata-only reader probe"],
+      "code_behaviour": "reader lane SAV_ENCODING_WINDOWS1252_DECLARED; identical routing hazard to SRC08",
+      "violation": "MATERIAL: same as SRC08",
+      "verdict": "NON-COMPLIANT unless the caller supplies full_reads=0"
+    },
+    {
+      "source": "SRC14", "operation_class": "BOUNDED_FRESH_PHYSICAL_READ_EXACT_VARIABLE",
+      "frozen_expectations": {"selected_reads": 1, "full_reads": 0, "header_prefix": "NOT_ADMITTED"},
+      "admitted_operations": ["existence/access check", "hash pass", "metadata read", "one exact-variable selected read (v372, ordinal 466) - witness only"],
+      "violation": "header-prefix excess as SRC02/SRC06",
+      "verdict": "SELECTED/FULL COMPLIANT; HEADER-PREFIX EXCESS"
+    },
+    {
+      "source": "SRC26", "operation_class": "BOUNDED_HEADER_PREFIX_PLUS_READER_METADATA",
+      "frozen_expectations": {"expected_header_prefix_bytes": 176, "selected_reads": 0, "full_reads": 0, "metadata": "reader metadata admitted"},
+      "admitted_operations": ["one bounded 176-byte header-prefix read", "reader metadata"],
+      "header_prefix_admitted": true,
+      "answer_to_mission_Q4": "YES - SRC26 IS THE ONLY SOURCE WITH AN ADMITTED HEADER-PREFIX OPERATION. It is the only source carrying a frozen expected_header_prefix_bytes value, and its operation class names the header prefix. SRC27's 512-byte DTA header read is an INVENTED operation not present in any class.",
+      "verdict": "COMPLIANT (176-byte SAV path matches the frozen value)"
+    },
+    {
+      "source": "SRC27", "operation_class": "EXACTLY_ONE_GOVERNED_FRESH_FULL_ROUTE_PASS",
+      "frozen_expectations": {"expected_full_route_passes": 1, "expected_full_route_passes_max": 1, "reader_lane": "DTA_ENCODING_LATIN1_COMPATIBILITY"},
+      "admitted_operations": ["one governed fresh full Route-B pass (50 candidates / 77 query roles)", "hash pass", "metadata pass", "full read", "each accounted separately"],
+      "code_behaviour_on_a_declared-encoding DTA carrier": {"existence_checks": 1, "hash_passes": 1, "metadata_reads": 1, "full_reads": 1, "path_opens": 1, "reader_invocations": 2, "header_prefix_reads": 1, "header_prefix_bytes": 512},
+      "violation": "the unconditional 512-byte DTA header-prefix read is not admitted for this class",
+      "verdict": "ROUTE/READ LAYERS SATISFIED OVER ONE OPEN; HEADER-PREFIX EXCESS; NO ROUTE-PASS ACCOUNT EXISTS"
+    }
+  ],
+  "class_level_violations": [
+    {"id": "GOV-HDR-002", "severity": "MATERIAL", "statement": "_decode calls broker.header_prefix(176 if SAV else 512) UNCONDITIONALLY for every source and format. Only SRC26's class admits a header-prefix read. The other six sources therefore perform an operation their frozen class does not admit, and SRC27 additionally performs an invented 512-byte DTA operation that appears nowhere in the freeze."},
+    {"id": "GOV-ROUTE-004", "severity": "MATERIAL", "statement": "there is no route-pass account. SRC27's expected_full_route_passes=1/max=1 has no counter or budget in the broker, so a second governed pass could not be refused on the strength of that frozen constraint."},
+    {"id": "GOV-DEC-003", "severity": "MATERIAL", "statement": "decoder_invocations is absent from both SourceAccessAccount and SourceAccessBudget, although O1-C07 lists it as a mandatory separate account."}
+  ]
+}

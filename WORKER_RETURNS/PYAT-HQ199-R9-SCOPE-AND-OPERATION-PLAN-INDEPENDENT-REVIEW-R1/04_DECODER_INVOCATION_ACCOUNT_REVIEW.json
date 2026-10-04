@@ -1,0 +1,32 @@
+{
+  "schema": "PYAT_HQ199_DECODER_INVOCATION_ACCOUNT_REVIEW@1.0.0",
+  "mission_question": "is decoder_invocations a separate mandatory account requiring a new counter, and can a MAX 1 ceiling be lawful?",
+  "authority": "O1-C07 mandatory_separate_accounts lists 'decoder invocations' as its own account, distinct from 'path-level opens', 'metadata reads', 'selected-column reads' and 'full reads' (8ff40d37, _EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json). The C4 warrant candidate repeats the same ten-account list.",
+  "is_it_separate_and_mandatory": true,
+  "does_a_counter_exist_today": false,
+  "verified_absence": "the string 'decoder_invocation' appears in NEITHER pre553_source_access_broker.py NOR pre553_physical_decoder.py at 4b6335ca. SourceAccessAccount has 15 fields and SourceAccessBudget has 14; neither includes decoder_invocations.",
+  "why_reader_invocations_cannot_substitute": {
+    "reader_invocations": "counts calls of pyreadstat.read_sav/read_dta",
+    "decoder_invocations": "counts entries into the governed decode operation",
+    "relation": "ONE decoder entry performs SEVERAL reader invocations. Measured on an SRC27-shaped DTA carrier: full_reads=1, metadata_reads=1, reader_invocations=2, decoder entries=1 (unaccounted).",
+    "consequence": "substituting reader_invocations for decoder_invocations would over-count by design and would violate the express warning that these are different quantities; the accounting law's rule that 'a count without a stated basis is not an account' is directly engaged"
+  },
+  "answer_to_mission_Q3": "YES - decoder_invocations is a separate mandatory O1-C07 account and requires a NEW counter. It cannot be relabelled from reader_invocations.",
+  "MAX_1_decoder_invocation_as_policy_ceiling": {
+    "mission_question": "can MAX 1 decoder invocation be introduced as a conservative execution-policy ceiling without fabricating historical expected-count authority?",
+    "answer": "YES - PROVIDED it is typed as an AUTHORIZATION ceiling and never presented as a historical observed or expected count.",
+    "reasoning": [
+      "the frozen per-source data carries expected_* observations (selected_reads, full_reads, metadata_reads) and expected_full_route_passes for SRC27, but NO frozen numeric decoder-invocation count",
+      "the accounting law already establishes the pattern of a ceiling that is an authorization rather than a historical claim: this node's budget machinery is described as 'policy ceilings whose purpose is to STOP a run; they are not claims about expected behaviour', and retries are frozen at max 0 with a rationale-disclosure requirement",
+      "therefore a decoder-entry ceiling of 1 is lawful as a conservative authorization IF the artifact (a) labels it a policy ceiling, (b) does not file it under an expected_/observed_ key, and (c) states its rationale",
+      "it genuinely bites: a ceiling of 1 decoder entry would refuse a second governed decode of the same bound source entry, which is exactly what SRC27's 'a second pass is not a retry; it is a separate run requiring new HQ-bound authority' requires at the decode grain"
+    ],
+    "what_it_does_NOT_establish": "it does not create any historical authority, and it does not by itself prevent a second decode in a DIFFERENT process or run (see 05)."
+  },
+  "minimum_implementation_requirement": [
+    "add decoder_invocations to SourceAccessAccount (observed count) and to SourceAccessBudget (pre-operation ceiling)",
+    "increment it exactly once per governed decode entry, under the same pre-operation gate discipline as the other accounts",
+    "keep it strictly separate from reader_invocations, full_reads, metadata_reads and chunk_reads in every receipt",
+    "raise the existing typed outer-boundary violation on breach; never raise through the pyreadstat read callback"
+  ]
+}

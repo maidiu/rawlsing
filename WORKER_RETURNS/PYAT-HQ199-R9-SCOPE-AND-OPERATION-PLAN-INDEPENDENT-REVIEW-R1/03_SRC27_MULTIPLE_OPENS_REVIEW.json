@@ -1,0 +1,30 @@
+{
+  "schema": "PYAT_HQ199_SRC27_MULTIPLE_OPENS_REVIEW@1.0.0",
+  "the_disputed_phrase": "One governed full Route-B pass is NOT one OS-level file open. The pass will involve multiple path-level opens, a hash pass, a metadata pass and a full read. These must each be counted separately.",
+  "located_in": "per_source_expected_operation_class.SRC27.critical_note (and echoed as hardened_note_on_the_SRC27_single_pass)",
+  "case_that_it_is_NORMATIVE": [
+    "it is frozen text in the accounting law carrying O1-C07, not commentary in a return",
+    "the preceding sentence is itself a prohibition ('is NOT one OS-level file open'), which sounds like a rule",
+    "the sentence predicts the pass 'will involve multiple path-level opens', which reads as a statement about what must happen",
+    "under it, the accepted single-open broker would be in conflict with the freeze, making SRC27 an architecture question"
+  ],
+  "case_that_it_is_DESCRIPTIVE": [
+    "its stated purpose is an ACCOUNTING warning: the sentence ends 'These must each be counted separately'. The obligation it asserts is separate COUNTING, not separate opens.",
+    "the hardened_note_on_the_SRC27_single_pass states the governing minimum in a NARROWER form that does NOT mention multiple opens: 'The run will require at minimum: one existence/access check, one full SHA-256 hash pass, one metadata read, and one full compatibility read. Each is a separate account under O1-C07.'",
+    "that minimum is a list of LOGICAL OPERATIONS, not of physical opens, and every one of them is satisfiable over a single open",
+    "the hardened note's purpose is to forbid the OPPOSITE error ('misreading this as one open'), and it does so by listing accounts - not by mandating a count of opens",
+    "the O1-C07 instrumentation principle is 'Access must be separately accounted at every distinct layer' - a requirement about ACCOUNTING granularity, not about descriptor counts",
+    "no authority anywhere states a numeric minimum or exact count of path-level opens (searched: the only path-level-open text is the mandatory-account list and this note)",
+    "'will involve' is predictive/descriptive mood; the normative sentences in the same law use 'must', 'is required', 'fails closed'",
+    "the phrase is consistent with the implementation that existed when it was written: pyreadstat's path route opens the file once for the hash, once for metadata and once for the read, which IS multiple opens. It describes the then-current mechanism."
+  ],
+  "which_reading_wins": "DESCRIPTIVE",
+  "decisive_reason": "The hardened note is the later, narrower and more carefully worded formulation of the same obligation, and it states the governing minimum as a list of four LOGICAL OPERATIONS with no requirement of multiple opens. A prediction about the then-current implementation cannot bind the accepted broker, and the O1-C07 principle it serves - separate accounting per layer - is fully satisfied over one open.",
+  "does_the_one_open_broker_CONFLICT_with_SRC27": false,
+  "conflict_reasoning": "The frozen normative requirements for SRC27 are: exactly ONE governed fresh full pass; a hash pass; a metadata pass; a full read; each counted separately; no second pass without new authority. I verified on a declared-encoding DTA carrier that the accepted code performs existence_checks=1, hash_passes=1, metadata_reads=1, full_reads=1 over path_opens=1 - i.e. the hardened-note minimum is met, and every account is kept separate. Nothing normative is violated by the open count.",
+  "what_SRC27_DOES_still_require_that_is_missing": [
+    "an account and pre-operation ceiling for the outer full Route-B PASS itself (expected_full_route_passes=1, max=1) - no such counter exists",
+    "an explicit mapping between the route-pass count, full_reads, chunk_reads and reader_invocations, so the pass account does not silently collapse the lower-layer accounts"
+  ],
+  "operational_note": "on a declared-encoding source the code takes the full_read path and chunk_reads=0; on the unselected/no-encoding path it takes the chunk route and full_reads=0 while emitting chunk_reads. The SRC27 lane (DTA_ENCODING_LATIN1_COMPATIBILITY) is a declared-encoding lane, so it lands on full_reads=1 - which is the layer the frozen text names for SRC27."
+}

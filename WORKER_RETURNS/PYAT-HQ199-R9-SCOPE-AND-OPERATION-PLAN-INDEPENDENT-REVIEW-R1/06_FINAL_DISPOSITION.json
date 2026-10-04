@@ -1,0 +1,46 @@
+{
+  "schema": "PYAT_HQ199_FINAL_DISPOSITION@1.0.0",
+  "status": "FINAL",
+  "disposition": "PER_SOURCE_SESSION_OWNER_REQUIRED__SEVEN_SOURCE_PLAN_DETERMINATE",
+  "disposition_is_allowed_value": true,
+  "terminal_token": "HQ199_R9_SCOPE_PLAN_INDEPENDENT_REVIEW_RETURNED__HQ_ADJUDICATION_REQUIRED",
+  "review_branch": "agent/reviewer-pyat-hq199-r1",
+  "commissioned_startup_sha": "ed9d186aa7ab8ebd2f70cdae0240ef3a2b9f1917",
+  "documentary_base": "dbf3287084b547226a401fd0bde2da46610f2b9b",
+  "code_reviewed": "4b6335ca5fc485108b0ffb1d682a29a02e1eee51",
+  "checkout_mode": "SPARSE_REQUIRED (honored; no clone; no full worktree; sparse checkout not widened)",
+  "reviewer_identity": {"harness": "DeepSeek Harness", "model": "DeepSeek V4.1 Flash"},
+  "answers": {
+    "1_per_source_session_owner_required": "YES — SourceAccessBroker is correctly decode-scoped, and the per-source expectations cannot be enforced at that scope. VERIFIED: two successive decodes of the same source each built their own broker and BOTH succeeded, aggregating to path_opens=2, hash_passes=2, metadata_reads=2 with no refusal. The missing owner belongs ABOVE _decode.",
+    "2_lifecycle_boundary": "ONE bound source ENTRY of the warrant execution surface (source_key + canonical_sha256 + format + operation plan), not one _decode() call. This is the only boundary at which the frozen PER-SOURCE expectations can be aggregated and enforced.",
+    "3_decoder_invocations_separate_counter": "YES — a separate mandatory O1-C07 account that is ABSENT today from both the account and the budget. It cannot be relabelled from reader_invocations: one decoder entry performs several reader invocations (measured metadata_reads=1 + full_reads=1 = reader_invocations=2 for one decoder entry).",
+    "4_which_classes_admit_a_header_prefix": "ONLY SRC26. Every other class omits it, and a 512-byte DTA header read is an invention. VERIFIED: a decode of a source whose class admits no header prefix still reported header_prefix_reads=1/bytes=176.",
+    "5_SRC08_SRC12_metadata_only_forbids_full_read": "YES — their class admits 'a metadata-only reader probe' with expected_full_reads=0. VERIFIED hazard: a declared-encoding source with no selected set routes to broker.full_read and reported full_reads=1. The budget gate can refuse it (full_reads=0 -> SOURCE_ACCESS_BUDGET_EXCEEDED) but no per-source plan sets it.",
+    "6_SRC27_multiple_path_level_opens": "DESCRIPTIVE, not binding. The later hardened note states the governing minimum as four LOGICAL OPERATIONS and never requires multiple opens; O1-C07 demands separate ACCOUNTING per layer, not separate descriptors. 'Will involve' is predictive mood.",
+    "7_does_one_open_conflict_with_SRC27": "NO. VERIFIED on a declared-encoding DTA carrier: existence_checks=1, hash_passes=1, metadata_reads=1, full_reads=1 over path_opens=1 — the hardened-note minimum is met over one open.",
+    "8_SRC27_one_pass_requires": "exactly ONE full read AND exactly ONE decoder entry; it does NOT require one reader invocation (metadata + full read = 2) and capping reader invocations at 1 would forbid the mandatory metadata read.",
+    "9_MAX_1_decoder_invocation_lawful": "YES — as a typed AUTHORIZATION/policy ceiling with a stated rationale, never filed under an expected_/observed_ key. The accounting law already uses that pattern (policy ceilings that 'STOP a run', frozen retries=0 with rationale disclosure)."
+  },
+  "seven_source_plan_determinate": true,
+  "material_violations_found": [
+    {"id": "GOV-SCOPE-001", "severity": "MATERIAL", "statement": "no owner binds one bound source entry to one governed lifecycle; two decodes each look compliant while the aggregate is not"},
+    {"id": "GOV-HDR-002", "severity": "MATERIAL", "statement": "header_prefix is read unconditionally for every source/format; only SRC26 admits a header-prefix operation, and the 512-byte DTA read is not frozen anywhere"},
+    {"id": "GOV-ROUTE-004", "severity": "MATERIAL", "statement": "no route-pass account exists for SRC27's expected_full_route_passes=1/max=1"},
+    {"id": "GOV-DEC-003", "severity": "MATERIAL", "statement": "decoder_invocations is absent from the account and budget although O1-C07 names it as a mandatory separate account"}
+  ],
+  "why_this_disposition": {
+    "not_CURRENT_BROKER_SCOPE_ALREADY_SUFFICIENT": "the two-decode experiment demonstrates the per-source expectations are unenforceable at decode scope",
+    "not_SRC27_ONE_OPEN_BROKER_CONFLICT": "the hardened-note minimum is met over one open, so there is no conflict",
+    "not_SPECIFIC_AUTHORITY_AMBIGUITY": "the seven-source plan is determinate from the frozen per-source operation classes; only the SESSION boundary and the new counters are missing, and those are implementation/ownership, not authority ambiguity",
+    "not_MATERIAL_CONTRACT_CONFLICT": "no authority text contradicts another; the phrase 'multiple path-level opens' is descriptive and is superseded by the narrower hardened note"
+  },
+  "accepted_broker_mechanics_reopened": false,
+  "interpretation_A_reopened": false,
+  "what_this_review_does_NOT_do": [
+    "no real source access, no locator discovery, no warrant issuance, no live C4, no production mutation, no C7 or actor work",
+    "it does not implement the session owner; it specifies the minimum contract",
+    "it does not set any numeric reader-byte ceiling"
+  ],
+  "holds_observed": {"real_survey_source_access": false, "locator_discovery": false, "warrant_issuance": false,
+                     "live_c4": false, "production_mutation": false, "c7_or_actor_work": false}
+}
