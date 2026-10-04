@@ -1,0 +1,64 @@
+{
+  "contract": "PYAT_HQ203_HD_PERSISTENT_CONTAINER_NECESSITY_TEST@1.0.0",
+  "commission": "PYAT-HQ203-HD-MATURE-WORLD-F8-SERVICE-CONTRACT-R1",
+
+  "question": "Is a persistent universal world container actually required, or does exact per-query composition suffice?",
+
+  "verdict": "OPTIONAL__NOT_REQUIRED_AT_CURRENT_PROVEN_GRAIN",
+
+  "test_applied": [
+    {
+      "test": "Does F8 require a materialized whole-world object to evaluate a possibility?",
+      "result": "NO",
+      "reason": "evaluate_positioned_subject_possibility consumes a tuple of PossibilitySliceEvidence and selects by exact (source_universe_ref, release_ref, target_ref, retained_conditioner_ids) match via _find. It never reads a world aggregate, snapshot or container.",
+      "evidence": "source_backed_positioned_subject_possibility.py:_find and evaluate_positioned_subject_possibility"
+    },
+    {
+      "test": "Does the authority surface require a universal terminal resolver?",
+      "result": "NO — and its absence is explicit rather than accidental",
+      "reason": "OC05_TERMINAL_OBJECTIVE_WORLD_RESOLUTION_R1 is bound with state NOT_YET_APPLICABLE and the recorded reason 'terminal objective-world root/resolver is not current; no universal terminal may be invented'.",
+      "evidence": "objective_consumer_bounded_evidence.py:POLICY_BINDINGS[OC05]"
+    },
+    {
+      "test": "Does per-query exact composition preserve every distinction HQD-125 freezes?",
+      "result": "YES at the proven grain",
+      "reason": "POPULATION_FACT != POSITIONED_SUBJECT_POSSIBILITY is preserved by the claim-ceiling lattice; CURRENT_FACT != HISTORICAL_FACT by lifecycle selection states; cross-source non-pooling by cross_source_proxy = FORBIDDEN_IN_V1; uncertainty by the six evidence states and six result states. None of these requires a container.",
+      "evidence": "03_TRANSFORMATION_AUTHORITY_MATRIX.json; 05_NEGATIVE_AND_REFUSAL_LAW.json"
+    },
+    {
+      "test": "Would a container ADD a capability that per-query composition lacks?",
+      "result": "NO capability is demonstrated",
+      "reason": "The only operations a container could newly enable are cross-source geometry composition and probability renormalization across families. The first is FORBIDDEN_IN_V1 and the second raises RenormalizationForbidden. A container would therefore add surface area without adding licensed semantics.",
+      "evidence": "03_TRANSFORMATION_AUTHORITY_MATRIX.json operations SOURCE_COMPOSITION and UNCERTAINTY_COLLAPSE"
+    },
+    {
+      "test": "Is a container already demanded by binding law?",
+      "result": "NO",
+      "reason": "HQD-125 s2 demands a functional CHAIN be preserved and realized over the estate, explicitly 'a functional acceptance law, not a demand to recreate historical serial stage topology'. s11 sets jurisdiction and states it 'establishes jurisdiction, not proof that every functional edge is already implemented or occupied'. Neither requires a persistent universal container.",
+      "evidence": "PYAT_CONTROL_ROOM/24_HQD125...md s2 and s11"
+    },
+    {
+      "test": "Do the controlling audit and HQ203 recalibration bind a container?",
+      "result": "NO",
+      "reason": "HQ203 recalibration item 6: 'A persistent universal multi-source temporal world container is not a proved terminal requirement. The terminal burden is coherent objective-world serving with exact use/selection/transformation/currentness/replay promises.' Audit MATRIX W23: 'Pure retrieval composition is implementation; any new arbitration/conditioning/inference requires explicit meaning.'",
+      "evidence": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ203_TERMINAL_BACKWARD_RESIDUAL_RECALIBRATION_R1.md item 6; audit MATRIX W23"
+    }
+  ],
+
+  "classification": {
+    "taxonomy_class": "OPTIONAL",
+    "container_required_for": [],
+    "container_provided_optionality_for": [
+      "coherent multi-family snapshot presentation to human consumers (W20/W23) — an implementation and composition concern, not an authority-form concern",
+      "declared as-of queries spanning several owners — achievable per query if and when the per-scope currentness proofs are composed"
+    ]
+  },
+
+  "what_would_make_it_required": [
+    "An adopted source-selection authority (H-C / W16) that must select sources for a service rather than validate a supplied set — a selector naturally wants an index, but it does not require a universal container.",
+    "An adopted temporal positive producer (W15/C15) whose directionality authority presupposes persistent temporal-object identity across queries.",
+    "An AUTHORIZED_COMPOSITE cross-source estimand whose non-duplication proof presupposes a stable composed object."
+  ],
+
+  "conclusion": "Classify the persistent universal world container as OPTIONAL. Per-query exact composition suffices at the currently proven grain, and two of the three operations a container would enable are currently forbidden by binding law rather than merely unimplemented. If HQ later adopts a source-selection or temporal-positive authority, this classification must be retested; it is not permanent."
+}

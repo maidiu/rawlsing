@@ -1,0 +1,208 @@
+{
+  "contract": "PYAT_HQ203_HD_NEGATIVE_AND_REFUSAL_LAW@1.0.0",
+  "commission": "PYAT-HQ203-HD-MATURE-WORLD-F8-SERVICE-CONTRACT-R1",
+  "principle": "Refusal at F8 is structural, not advisory. Every world-input family that cannot be licensed terminates in a typed state or raises; none silently degrades to context, zero, or confidence.",
+
+  "refusal_families": [
+    {
+      "family": "actor/prediction jurisdiction",
+      "trigger": "PositionedSubjectPossibilityQuery.purpose != EMPIRICAL_POSSIBILITY_ONLY",
+      "mechanism": "constructor raises PositionedSubjectPossibilityError('actor/prediction jurisdiction forbidden')",
+      "type": "STRUCTURAL_REFUSAL",
+      "evidence": "source_backed_positioned_subject_possibility.py:PositionedSubjectPossibilityQuery.__post_init__"
+    },
+    {
+      "family": "missing conditioning comparability authority",
+      "trigger": "ConditionerBinding without positive comparability_authority_ref",
+      "mechanism": "raises 'positive comparability authority ref required'",
+      "type": "STRUCTURAL_REFUSAL",
+      "evidence": "source_backed_positioned_subject_possibility.py:ConditionerBinding.__post_init__"
+    },
+    {
+      "family": "cross-source/universe conditioner bridge",
+      "trigger": "conditioner_bindings whose source_universe_ref or release_ref differs from the query",
+      "mechanism": "raises 'conditioner source/release mismatch; no implicit bridge'",
+      "type": "STRUCTURAL_REFUSAL",
+      "evidence": "source_backed_positioned_subject_possibility.py:PositionedSubjectPossibilityQuery.__post_init__"
+    },
+    {
+      "family": "mutable/fuzzy resolution",
+      "trigger": "any identifier equal to latest | default | nearest | fuzzy | *",
+      "mechanism": "_text raises",
+      "type": "STRUCTURAL_REFUSAL",
+      "note": "No latest/default/fuzzy/fallback resolution is lawful anywhere in the F8 seam.",
+      "evidence": "source_backed_positioned_subject_possibility.py:_text; OBL031 adoption 'No latest/default/fuzzy/fallback grammar resolution is lawful'"
+    },
+    {
+      "family": "out-of-model source universe",
+      "trigger": "query.source_universe_ref not in rule.source_universe_refs",
+      "mechanism": "FAIL_CLOSED / MODEL_SOURCE_UNIVERSE_OUT_OF_SCOPE",
+      "type": "TYPED_REFUSAL",
+      "evidence": "source_backed_positioned_subject_possibility.py:evaluate_positioned_subject_possibility"
+    },
+    {
+      "family": "cross-source proxy",
+      "trigger": "walkback step whose source_universe_ref or release_ref differs from the query",
+      "mechanism": "FAIL_CLOSED / FAIL_CLOSED_UNAUTHORIZED_PROXY_SOURCE, reason 'V1 proxies may not cross source universe or release'",
+      "type": "TYPED_REFUSAL",
+      "note": "Backs the frozen rule field cross_source_proxy = FORBIDDEN_IN_V1.",
+      "evidence": "source_backed_positioned_subject_possibility.py:PositionedSubjectPossibilityModelRule.material and evaluate_positioned_subject_possibility"
+    },
+    {
+      "family": "non-decreasing specificity walkback",
+      "trigger": "walkback ladder that does not strictly decrease retained_conditioner_ids",
+      "mechanism": "raises 'walkback ladder must strictly decrease specificity'",
+      "type": "STRUCTURAL_REFUSAL",
+      "evidence": "source_backed_positioned_subject_possibility.py:evaluate_positioned_subject_possibility"
+    },
+    {
+      "family": "unlisted proxy authority",
+      "trigger": "walkback step proxy authority not present in positive_proxy_authority_refs",
+      "mechanism": "raises 'every walkback step needs positively listed proxy authority'",
+      "type": "STRUCTURAL_REFUSAL",
+      "evidence": "source_backed_positioned_subject_possibility.py:PositionedSubjectPossibilityModelRule.__post_init__"
+    },
+    {
+      "family": "duplicate evidence at exact grain",
+      "trigger": "more than one PossibilitySliceEvidence at the same source/release/target/specificity",
+      "mechanism": "raises 'duplicate evidence at exact source/release/target/specificity grain'",
+      "type": "STRUCTURAL_REFUSAL",
+      "evidence": "source_backed_positioned_subject_possibility.py:_find"
+    },
+    {
+      "family": "SUPPORTED evidence without geometry",
+      "trigger": "evidence_state == SUPPORTED and geometry is None",
+      "mechanism": "raises 'SUPPORTED evidence requires geometry'",
+      "type": "STRUCTURAL_REFUSAL",
+      "note": "Prevents a distribution-free assertion from being typed as support.",
+      "evidence": "source_backed_positioned_subject_possibility.py:PossibilitySliceEvidence.__post_init__"
+    },
+    {
+      "family": "proxy satisfying an exact request",
+      "trigger": "any attempt to let proxy support resolve an exact request",
+      "mechanism": "rule field proxy_can_satisfy_exact_request = False; result state is EXACT_UNRESOLVED_PROXY_AVAILABLE with exact_lane.disposition = UNRESOLVED",
+      "type": "STRUCTURAL_REFUSAL",
+      "evidence": "source_backed_positioned_subject_possibility.py:PositionedSubjectPossibilityModelRule.material"
+    },
+    {
+      "family": "probability/coefficient renormalization",
+      "trigger": "renormalization_requested = True at any objective-consumer seam",
+      "mechanism": "raises RenormalizationForbidden('no coefficient/confidence/semantic-scope renormalization')",
+      "type": "STRUCTURAL_REFUSAL",
+      "note": "This is the single refusal that makes CONTEXT_ONLY safe. It forbids a world fact that merely accompanies a result from tightening or rescaling the distribution.",
+      "evidence": "objective_consumer_bounded_evidence.py:evaluate_current_consumer"
+    },
+    {
+      "family": "claim-ceiling upgrade",
+      "trigger": "requested ceiling exceeds an input's declared ceiling",
+      "mechanism": "refusal code CLAIM_CEILING_NOT_AUTHORIZED:<input_ids>",
+      "type": "TYPED_REFUSAL",
+      "note": "POPULATION_STATISTIC and SOURCE_LOCAL_STATISTIC can satisfy only themselves; STRUCTURAL_RELATION and OBJECTIVE_FACT require exact self-identity. There is no arithmetic path from a population fact to a structural or positioned-subject claim.",
+      "evidence": "objective_consumer_bounded_evidence.py:_satisfies and evaluate_current_consumer"
+    },
+    {
+      "family": "missing required objective evidence",
+      "trigger": "required input unavailable",
+      "mechanism": "DecisionState.REFUSED_REQUIRED_OBJECTIVE_EVIDENCE",
+      "type": "TYPED_REFUSAL",
+      "evidence": "objective_consumer_bounded_evidence.py:DecisionState"
+    },
+    {
+      "family": "total unavailability masquerading as completion",
+      "trigger": "no input satisfies the requested ceiling",
+      "mechanism": "ALL_UNAVAILABLE__NOT_POSITIVE_COMPLETION",
+      "type": "TYPED_REFUSAL",
+      "note": "Explicitly prevents an absent gate from being reported as a legitimate scoped success.",
+      "evidence": "objective_consumer_bounded_evidence.py:DecisionState"
+    },
+    {
+      "family": "non-empirical or relation-typed input without its authority",
+      "trigger": "NON_EMPIRICAL_MODEL evidence, or relation authority absent",
+      "mechanism": "raises NonEmpiricalAuthorityRequired / RelationAuthorityRequired",
+      "type": "STRUCTURAL_REFUSAL",
+      "evidence": "objective_consumer_bounded_evidence.py:PolicyError hierarchy"
+    },
+    {
+      "family": "actor-marker contamination of structural interpretation",
+      "trigger": "interpretation_or_transformation_semantics containing GENERATED_ACTOR_POSITION, GENERATED_NINE_STRATUM_POSITION, ACTOR_BELIEF, ACTOR_PERSONA, ACTOR_PSYCHE, ACTOR_MEMORY, ACTOR_KNOWLEDGE, ACTOR_RESPONSE, or DIAGNOSTIC_SCORE_AS_STRUCTURAL_FACT",
+      "mechanism": "rejected at rule construction",
+      "type": "STRUCTURAL_REFUSAL",
+      "note": "Enforces STRUCTURAL_PRESSURE != INDIVIDUAL_DESIRE and OBJECTIVE_WORLD_TIME != ACTOR_MEMORY at the point of rule creation, not by guidance.",
+      "evidence": "pre553_structural_admission.py:FORBIDDEN_INTERPRETATION_MARKERS and _reject_forbidden_interpretation"
+    },
+    {
+      "family": "structural use without TARGET_USE_PERMISSION",
+      "trigger": "rule.required_authority_bindings lacking TARGET_USE_PERMISSION",
+      "mechanism": "raises 'rule must bind exact TARGET_USE_PERMISSION authority'",
+      "type": "STRUCTURAL_REFUSAL",
+      "evidence": "pre553_structural_admission.py:StructuralAdmissionRule.__post_init__"
+    },
+    {
+      "family": "time- or measure-scoped rule lacking its conditional authority",
+      "trigger": "time-scoped rule without TEMPORAL_EVIDENCE, or measure/estimand-scoped rule without WEIGHT_DESIGN_ESTIMAND",
+      "mechanism": "raises at rule construction",
+      "type": "STRUCTURAL_REFUSAL",
+      "evidence": "pre553_structural_admission.py:StructuralAdmissionRule.__post_init__"
+    },
+    {
+      "family": "structural source not applicable to structural use",
+      "trigger": "P06 decision SOURCE_NOT_APPLICABLE_TO_STRUCTURAL_USE",
+      "mechanism": "public state OUT_OF_SCOPE",
+      "type": "TYPED_REFUSAL",
+      "note": "This is the only current source-applicability authority, and it VALIDATES rather than SELECTS. See H-C.",
+      "evidence": "pre553_structural_admission.py:DECISION_PRECEDENCE and PUBLIC_STATE_BY_DECISION"
+    },
+    {
+      "family": "empirical fact noncomparable / temporal scope mismatch",
+      "trigger": "P06 decisions EMPIRICAL_FACT_NONCOMPARABLE, TEMPORAL_SCOPE_MISMATCH",
+      "mechanism": "public states NONCOMPARABLE and OUT_OF_SCOPE respectively",
+      "type": "TYPED_REFUSAL",
+      "evidence": "pre553_structural_admission.py:PUBLIC_STATE_BY_DECISION"
+    },
+    {
+      "family": "negative-authority-only rule",
+      "trigger": "rule.negative_authority_only is true",
+      "mechanism": "cannot reach ADMITTED; resolves to ADMISSION_DENIED",
+      "type": "TYPED_REFUSAL",
+      "evidence": "pre553_structural_admission.py:PUBLIC_STATE_BY_DECISION"
+    },
+    {
+      "family": "unknown or conflicting currentness",
+      "trigger": "lifecycle selection state UNKNOWN_CURRENTNESS or CONFLICTING_CURRENT_SELECTION",
+      "mechanism": "FAIL_CLOSED_STATES",
+      "type": "TYPED_REFUSAL",
+      "note": "Enforces CURRENT_FACT != HISTORICAL_FACT. A historical exact ref is not a valid current fact, and unknown currentness never defaults to current.",
+      "evidence": "pre553_learned_product_lifecycle.py:FAIL_CLOSED_STATES"
+    },
+    {
+      "family": "not-yet-applicable consumer seam",
+      "trigger": "evaluating OC03, OC04 or OC05",
+      "mechanism": "NotYetApplicableConsumer",
+      "type": "STRUCTURAL_REFUSAL",
+      "note": "OC03 reason: 'P1-P5 remain CANDIDATE_NOT_CURRENT'. OC05 reason: 'terminal objective-world root/resolver is not current; no universal terminal may be invented'.",
+      "evidence": "objective_consumer_bounded_evidence.py:POLICY_BINDINGS and NotYetApplicableConsumer"
+    },
+    {
+      "family": "replay divergence",
+      "trigger": "replayed result_hash or material differs from expected",
+      "mechanism": "raises 'positioned-subject possibility replay mismatch'",
+      "type": "STRUCTURAL_REFUSAL",
+      "evidence": "source_backed_positioned_subject_possibility.py:verify_positioned_subject_possibility_replay"
+    }
+  ],
+
+  "refused_inputs_structurally_unable_to_be_accepted": [
+    "any realized actor state, biography or personality",
+    "a merged cross-source respondent row",
+    "a same-respondent jointness claim across sources",
+    "an unauthenticated averaged cross-source value",
+    "an interpolated period presented as an observation",
+    "a causal attribution of a temporal break",
+    "an individual-level change inferred from a field trajectory",
+    "a population or source-local statistic read as a positioned-subject attribute",
+    "an unresolved or non-comparable input read as a confident output",
+    "contradictory cross-source relations averaged into one value"
+  ],
+
+  "note_on_provenance": "The refused-inputs list is corroborated as UNADOPTED worker evidence by H10 (WORKER_RETURNS/PYAT-HQ201-F6F7-ONTOLOGY-CONSERVATION-R1/10_F8_CONSUMER_CONTRACT_CANDIDATE.md at d3f0619429a400552c2f3c397be57cdfbadb2f54, class 'unadopted HQ201 worker return'). Every item above that is NOT independently present in current code is marked in 08_MATURE_WORLD_F8_SERVICE_CONTRACT_CANDIDATE.md as requiring adoption before it can bind."
+}

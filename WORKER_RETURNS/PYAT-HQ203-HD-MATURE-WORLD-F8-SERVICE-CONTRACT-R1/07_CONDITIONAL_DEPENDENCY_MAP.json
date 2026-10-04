@@ -1,0 +1,77 @@
+{
+  "contract": "PYAT_HQ203_HD_CONDITIONAL_DEPENDENCY_MAP@1.0.0",
+  "commission": "PYAT-HQ203-HD-MATURE-WORLD-F8-SERVICE-CONTRACT-R1",
+  "rule": "H-A/H-B/H-C may remain unresolved in this lane. Their answers are NOT guessed. Each dependency below is recorded as an explicit precondition on H-D's conclusions, with the conditional rule that applies under either resolution.",
+
+  "dependencies": [
+    {
+      "id": "H-C",
+      "title": "service source applicability",
+      "status": "UNRESOLVED__DEPENDENCY_OF_H_D",
+      "h_d_questions_it_blocks": [
+        "whether any world input may be a SOURCE_SELECTOR",
+        "whether SOURCE_SELECTION can ever be licensed at F8",
+        "whether cross-service reuse of one source set is lawful"
+      ],
+      "current_evidence": "Audit MATRIX W16 = UNKNOWN__FURTHER_FORENSICS_REQUIRED, described as 'precise missing proof, not proved missing form'. Current machinery validates a caller-supplied set: PSEPF checks query.source_universe_ref membership in rule.source_universe_refs and FAIL_CLOSEs otherwise; P06 emits SOURCE_NOT_APPLICABLE_TO_STRUCTURAL_USE.",
+      "conditional_rule_if_H_C_finds_a_current_selector": "A world product may be admitted as SOURCE_SELECTOR only through the exact adopted successor it traces. H-D's REFUSAL_ONLY/UNBOUND classification of source selection would then become CONDITIONER-free SOURCE_SELECTOR at that successor's exact scope. No other H-D classification changes.",
+      "conditional_rule_if_H_C_finds_no_current_selector": "H-D's classification stands as written: source selection is UNBOUND, and any apparent source choice in a mature-world contract is in fact caller-asserted and must be labelled CONTEXT_ONLY plus ELIGIBILITY_FILTER.",
+      "h_d_does_not_preempt": true
+    },
+    {
+      "id": "H-A",
+      "title": "F6/F7 current positive constitution",
+      "status": "UNRESOLVED__DEPENDENCY_OF_H_D",
+      "h_d_questions_it_blocks": [
+        "whether temporal products may ever condition an F8 possibility",
+        "whether cross-source temporal relations may enter the F8 consumer",
+        "the lawful status of ConditionerBinding.effective_time_or_interval beyond a scope label"
+      ],
+      "current_evidence": "Audit MATRIX C15 and W15 both UNKNOWN. No current temporal producer located. HQ203 recalibration item 3: ingress does not derive persistent temporal identity, positive temporal relation meaning, time grain or directionality authority. Item 4: time grain is not a proven binary fork.",
+      "conditional_rule_under_either_H_A_resolution": "In this lane, ConditionerBinding.effective_time_or_interval is treated strictly as a SCOPE LABEL identifying the coordinate's declared time or interval, never as an imported temporal transformation. This is the conservative reading and is safe under both resolutions: if H-A later establishes positive temporal authority, F8 gains no new capability from it until an explicit contract admits temporal products; if H-A establishes none, the conservative reading is already correct.",
+      "h_d_does_not_preempt": true
+    },
+    {
+      "id": "H-B",
+      "title": "structural-pressure coverage",
+      "status": "UNRESOLVED__DEPENDENCY_OF_H_D",
+      "h_d_questions_it_blocks": [
+        "whether pressure/counterpressure may condition an F8 possibility",
+        "whether a mediation/route or coupling object with conditioning force is required"
+      ],
+      "current_evidence": "Audit MATRIX W08 = UNKNOWN__FURTHER_FORENSICS_REQUIRED. F8 access to pressure recorded as 'governed context' only. Audit explicitly warns against inferring a named PRESSURE_FOOTPRINT / coupling / hegemony object without a concrete unmet demand.",
+      "conditional_rule_under_either_H_B_resolution": "H-D classifies pressure/counterpressure as CONTEXT_ONLY with UNBOUND conditioning authority, and declines to name a new object. If H-B proves complete coverage through adopted neutral forms plus P1-P5 plus topology, this classification is confirmed and no new form is needed. If H-B isolates one exact meaning exceeding current forms, that meaning becomes a candidate conditioner requiring its own authority — but H-D does not pre-judge whether it would be ELIGIBILITY_FILTER, CONDITIONER, or GEOMETRY_TRANSFORMER.",
+      "h_d_does_not_preempt": true
+    },
+    {
+      "id": "H-D-INTRINSIC",
+      "title": "C1 analytical composition presence in the governed lineage",
+      "status": "MATERIAL_INVENTORY_CONFLICT__HQ_ADJUDICATION_REQUIRED",
+      "this_is_not_a_lane_dependency": true,
+      "finding": "The commission directs H-D to respect HQ168's accepted grain, namely that the scalar positioned-subject provider is narrower than a broader C1 analytical composition. The three C1 modules are absent from the commission HEAD, the documentary base, the primary audit tip, and the current control tip. They exist only on non-ancestor side branches.",
+      "consequence": "H-D could not reconcile the C1 accepted analytical composition against the base F8 model, because the C1 chain is not readable in the governed terrain. Every H-D statement about 'broader C1 composition' is therefore stated conditionally and is NOT a claim about current capability.",
+      "conditional_rule_if_HQ_adopts_the_C1_chain_into_control": "The grain relationship the commission assumes would hold, and 04_C1_CONSUMER_GRAIN_AND_ADAPTER_BOUNDARY.md would need re-verification against the adopted modules. H-D's classification of world inputs as CONDITIONER would then need re-testing against C1's actual composition semantics, because a broader composition chain could alter what 'conditioner' means at the boundary.",
+      "conditional_rule_if_C1_remains_off_lineage": "The only current F8 producer is the scalar source-local exact-lookup path. 'Broader C1 analytical composition' is historical functional capital, not adopted current capability, and must not be cited as an F8 consumer that exists.",
+      "action_taken": "None. Absence established read-only by exact tree listing and ancestry queries. No import, merge or fetch of side-branch history was performed or is recommended without re-commission."
+    }
+  ],
+
+  "non_dependencies": [
+    {
+      "item": "actor firewall",
+      "reason": "m6_actor_safe_expression.py is present and PSEPF enforces purpose == EMPIRICAL_POSSIBILITY_ONLY. H-D's conclusions here do not depend on any unresolved lane."
+    },
+    {
+      "item": "uncertainty/noncomparability conservation",
+      "reason": "Fully typed in current code across PSEPF, P06 and the objective-consumer policy. No lane dependency."
+    },
+    {
+      "item": "currentness fail-closed",
+      "reason": "Lifecycle SELECTION_STATES and FAIL_CLOSED_STATES are current. No lane dependency."
+    },
+    {
+      "item": "renormalization refusal",
+      "reason": "RenormalizationForbidden is current and binding. No lane dependency."
+    }
+  ]
+}

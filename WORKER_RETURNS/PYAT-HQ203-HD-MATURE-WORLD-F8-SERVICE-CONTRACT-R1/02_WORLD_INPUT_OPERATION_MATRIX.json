@@ -1,0 +1,166 @@
+{
+  "contract": "PYAT_HQ203_HD_WORLD_INPUT_OPERATION_MATRIX@1.0.0",
+  "commission": "PYAT-HQ203-HD-MATURE-WORLD-F8-SERVICE-CONTRACT-R1",
+  "branch": "agent/rabochii-pyat-hq203-hd-r1",
+  "documentary_base": "15018a303078cbcd867b08d39ed6b66e14d325fb",
+  "control_tip_examined": "3760ba31761cd6e27e978c31749161feced1a47a",
+  "primary_audit": "b3ea471a3771113bf408a4e434a4b480b26d5856",
+  "taxonomy": [
+    "CONTEXT_ONLY",
+    "ELIGIBILITY_FILTER",
+    "CONDITIONER",
+    "SOURCE_SELECTOR",
+    "SOURCE_COMPOSITION_AUTHORITY",
+    "GEOMETRY_TRANSFORMER",
+    "DISTRIBUTION_TRANSFORMER",
+    "REFUSAL_ONLY",
+    "NOT_ADMITTED",
+    "UNBOUND"
+  ],
+  "headline_finding": "NO world input family is currently a GEOMETRY_TRANSFORMER or DISTRIBUTION_TRANSFORMER at F8. F8 selects among pre-materialized geometries; it does not compute them.",
+
+  "entries": [
+    {
+      "input_family": "exact empirical facts (source-local)",
+      "classification": "CONDITIONER",
+      "authority": "ConditionerBinding requires subject_fact_ref + empirical_coordinate_ref + comparability_authority_ref + source_universe_ref + release_ref + effective_time_or_interval",
+      "authority_state": "FORM_CLOSED__POSITIVE_INSTANCE_OR_SCOPE_REMAINS",
+      "owner": "rawlsing_next/source_backed_positioned_subject_possibility.py",
+      "claim_ceiling": "SOURCE_LOCAL_ONLY",
+      "notes": "Conditioning requires a POSITIVE comparability authority ref; absence is a constructor refusal, not a default-allow.",
+      "evidence": ["source_backed_positioned_subject_possibility.py:ConditionerBinding", "source_local_universe_admission.py:CLAIM_CEILING"]
+    },
+    {
+      "input_family": "conjunction / joint facts",
+      "classification": "CONDITIONER",
+      "authority_state": "FORM_CLOSED__POSITIVE_INSTANCE_OR_SCOPE_REMAINS",
+      "owner": "C1-02 joint target producer (NOT PRESENT at control tip)",
+      "claim_ceiling": "per-target-arity authority required",
+      "notes": "Multiple conditioner bindings are structurally admitted, but the C1 joint producer that would populate multi-arity targets is absent from the governed lineage.",
+      "evidence": ["audit MATRIX C05", "audit MATRIX C09"]
+    },
+    {
+      "input_family": "branches / configurations (incl. minority, outlier)",
+      "classification": "CONDITIONER",
+      "authority_state": "FORM_CLOSED__POSITIVE_INSTANCE_OR_SCOPE_REMAINS",
+      "owner": "exact branch predicate + conditional distribution authority",
+      "claim_ceiling": "SUPPORTED_COMPONENT_ONLY where partially supported",
+      "notes": "Majority mass must not erase supported minorities; no flattening authority exists.",
+      "evidence": ["audit MATRIX C07", "audit MATRIX C10", "HQD-125 s4"]
+    },
+    {
+      "input_family": "structural position / role",
+      "classification": "CONDITIONER",
+      "authority_state": "CONDITIONAL__REQUIRES_EXACT_COMPARATOR",
+      "owner": "comparator owner + exact objective fact author",
+      "claim_ceiling": "STRUCTURAL_RELATION",
+      "notes": "Becomes an F8 conditioner ONLY via an exact field/source/time-specific comparator. Without one it is CONTEXT_ONLY. OBL031 is adopted at EXACTLY ONE field grain, TYPE_AND_VALUE_ONLY; it is a positive example, not universal mapping coverage.",
+      "evidence": ["audit MATRIX C17", "E30 OBL031 adoption", "audit REPORT s5 comparator"]
+    },
+    {
+      "input_family": "opportunity / constraint",
+      "classification": "CONTEXT_ONLY",
+      "authority_state": "FORM_CLOSED__POSITIVE_INSTANCE_OR_SCOPE_REMAINS",
+      "owner": "V554/V555/V556 + SDTF K1/K2",
+      "notes": "Audit W06 records F8 access 'only through lawful comparator/use'. Entitlement/eligibility/reachability is distinguished from exercise/receipt, but no F8 conditioning authority is adopted.",
+      "evidence": ["audit MATRIX W06", "audit REPORT table line 80"]
+    },
+    {
+      "input_family": "mediation / route",
+      "classification": "NOT_ADMITTED",
+      "authority_state": "UNBOUND",
+      "owner": "C1-03A analytical_state_and_route (NOT PRESENT at control tip); V553 ingress participant fields",
+      "notes": "Route legitimacy authority lives in the absent C1-03A module. V553 admits routes structurally (role, ordinal, structural_empirical_admission_ref) but P06/I04 explicitly does not decide temporal operations or mint temporal objects. As an F8 conditioner there is no comparator and therefore no admission.",
+      "evidence": ["audit MATRIX C17", "pre553_structural_admission.py:V553_INGRESS_CONTRACT", "audit REPORT line 76"]
+    },
+    {
+      "input_family": "higher-order topology (V556)",
+      "classification": "CONTEXT_ONLY",
+      "authority_state": "FORM_CLOSED__POSITIVE_INSTANCE_OR_SCOPE_REMAINS",
+      "owner": "V556 topology contracts",
+      "notes": "Topology is admitted as actor-independent structural context. No adopted comparator maps topology into an F8 conditioner.",
+      "evidence": ["audit MATRIX C09", "audit REPORT s8"]
+    },
+    {
+      "input_family": "objective consequence (SDTF D1-prime P1-P5)",
+      "classification": "NOT_ADMITTED",
+      "authority_state": "FORM_CLOSED__CONSUMER_SEAM_NOT_CURRENT",
+      "owner": "OC03_SDTF_OBJECTIVE_CONSEQUENCE_R1",
+      "notes": "The SDTF consequence form is adopted, but the objective-consumer binding is typed NOT_YET_APPLICABLE: 'P1-P5 remain CANDIDATE_NOT_CURRENT pending W2-D04 and later admission'. There is no executable consumer seam.",
+      "evidence": ["objective_consumer_bounded_evidence.py:POLICY_BINDINGS[OC03]"]
+    },
+    {
+      "input_family": "pressure / counterpressure",
+      "classification": "CONTEXT_ONLY",
+      "authority_state": "UNBOUND",
+      "owner": "Field Forge claim law + SDTF forms",
+      "notes": "Audit W08 is UNKNOWN__FURTHER_FORENSICS_REQUIRED. F8 access is recorded as 'governed context' only. No conditioner authority, and no evidence of a distinct pressure/hegemony object. H-D declines to invent one.",
+      "evidence": ["audit MATRIX W08", "audit REPORT docket H-B"]
+    },
+    {
+      "input_family": "temporal products (delta, directionality, persistence, trajectory)",
+      "classification": "NOT_ADMITTED",
+      "authority_state": "UNBOUND__NO_CURRENT_PRODUCER",
+      "owner": "none current",
+      "notes": "Audit C15/W15 record no current positive temporal producer. ConditionerBinding.effective_time_or_interval is a SCOPE LABEL on a binding; it does not import temporal movement into a possibility. Ingress != positive ontology.",
+      "evidence": ["audit MATRIX C15", "audit MATRIX W15", "audit REPORT s3", "source_backed_positioned_subject_possibility.py:ConditionerBinding"]
+    },
+    {
+      "input_family": "cross-source relations / composition",
+      "classification": "REFUSAL_ONLY",
+      "authority_state": "EXPLICITLY_FORBIDDEN_IN_V1",
+      "owner": "PSEPF model rule",
+      "notes": "model rule material() freezes cross_source_proxy = FORBIDDEN_IN_V1. Walkback steps that change source universe or release yield FAIL_CLOSED_UNAUTHORIZED_PROXY_SOURCE. Coexistence without pooling remains lawful in source-indexed mode, but that is CONTEXT_ONLY, not conditioning.",
+      "evidence": ["source_backed_positioned_subject_possibility.py:PositionedSubjectPossibilityModelRule.material", "source_backed_positioned_subject_possibility.py:evaluate_positioned_subject_possibility", "audit MATRIX W14"]
+    },
+    {
+      "input_family": "uncertainty / noncomparability",
+      "classification": "ELIGIBILITY_FILTER",
+      "authority_state": "FORM_CLOSED",
+      "owner": "PSEPF EVIDENCE_STATES/RESULT_STATES + P06 allowed_uncertainty_states",
+      "notes": "Must be preserved and typed, never floored to confident. UNDERPOWERED, VALID_EMPTY, UNRESOLVED, NONCOMPARABLE, UNAVAILABLE each terminate in a distinct typed state.",
+      "evidence": ["source_backed_positioned_subject_possibility.py:EVIDENCE_STATES", "pre553_structural_admission.py:allowed_uncertainty_states"]
+    },
+    {
+      "input_family": "current vs historical validity",
+      "classification": "ELIGIBILITY_FILTER",
+      "authority_state": "FORM_CLOSED__FAIL_CLOSED",
+      "owner": "pre553_learned_product_lifecycle.py",
+      "notes": "SELECTION_STATES = NOT_CURRENT | CURRENT_SELECTED | NO_CURRENT | UNKNOWN_CURRENTNESS | CONFLICTING_CURRENT_SELECTION. UNKNOWN_CURRENTNESS and CONFLICTING_CURRENT_SELECTION are FAIL_CLOSED_STATES. A historical exact ref is not a valid current fact.",
+      "evidence": ["pre553_learned_product_lifecycle.py:SELECTION_STATES", "pre553_learned_product_lifecycle.py:FAIL_CLOSED_STATES", "audit MATRIX W20"]
+    },
+    {
+      "input_family": "service-source applicability (source selection)",
+      "classification": "SOURCE_SELECTOR",
+      "authority_state": "UNBOUND",
+      "owner": "none adopted",
+      "notes": "Current machinery VALIDATES a caller-supplied source set (rule.source_universe_refs membership check, P06 SOURCE_NOT_APPLICABLE_TO_STRUCTURAL_USE). No adopted current successor LICENSES service/target/time/geography/population-specific source selection. Audit W16 calls this 'precise missing proof, not proved missing form'.",
+      "evidence": ["audit MATRIX W16", "source_backed_positioned_subject_possibility.py:evaluate_positioned_subject_possibility", "pre553_structural_admission.py:DECISION_PRECEDENCE"]
+    },
+    {
+      "input_family": "whole-world container / heterogeneous world service",
+      "classification": "NOT_ADMITTED",
+      "authority_state": "OPTIONAL_BY_FINDING",
+      "owner": "none; OC05 NOT_YET_APPLICABLE",
+      "notes": "OC05_TERMINAL_OBJECTIVE_WORLD_RESOLUTION_R1 is NOT_YET_APPLICABLE with the explicit reason 'terminal objective-world root/resolver is not current; no universal terminal may be invented'. See 06_PERSISTENT_CONTAINER_NECESSITY_TEST.json.",
+      "evidence": ["objective_consumer_bounded_evidence.py:POLICY_BINDINGS[OC05]", "audit MATRIX W23"]
+    }
+  ],
+
+  "preserved_distinctions_verified_in_code": [
+    "POPULATION_FACT != POSITIONED_SUBJECT_POSSIBILITY",
+    "POSITIONED_SUBJECT_POSSIBILITY != INDIVIDUAL_PREDICTION",
+    "OBJECTIVE_WORLD_TIME != ACTOR_MEMORY",
+    "STRUCTURAL_PRESSURE != INDIVIDUAL_DESIRE",
+    "FIELD_TRAJECTORY != PERSON_TRAJECTORY",
+    "CURRENT_FACT != HISTORICAL_FACT"
+  ],
+  "preservation_evidence": {
+    "POPULATION_FACT != POSITIONED_SUBJECT_POSSIBILITY": "ClaimCeiling enum in objective_consumer_bounded_evidence.py has NO positioned-subject member; the objective-consumer policy cannot itself mint an F8 possibility claim.",
+    "POSITIONED_SUBJECT_POSSIBILITY != INDIVIDUAL_PREDICTION": "EPISTEMIC_CEILING[1]; query purpose must equal EMPIRICAL_POSSIBILITY_ONLY else constructor refusal.",
+    "OBJECTIVE_WORLD_TIME != ACTOR_MEMORY": "ACTOR_MEMORY is in FORBIDDEN_INTERPRETATION_MARKERS; temporal authority is not admitted at all.",
+    "STRUCTURAL_PRESSURE != INDIVIDUAL_DESIRE": "GENERATED_ACTOR_POSITION/ACTOR_PSYCHE/ACTOR_BELIEF are FORBIDDEN_INTERPRETATION_MARKERS, rejected at rule construction.",
+    "FIELD_TRAJECTORY != PERSON_TRAJECTORY": "No temporal producer admitted; walkback is a SPECIFICITY reduction within one source/release, never a cross-time move.",
+    "CURRENT_FACT != HISTORICAL_FACT": "lifecycle SELECTION_STATES keeps NOT_CURRENT distinct from CURRENT_SELECTED; VALIDITY_STATES keeps VALID distinct from INVALIDATED_REBUILD_REQUIRED/WITHDRAWN."
+  }
+}

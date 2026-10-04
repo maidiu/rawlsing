@@ -1,0 +1,162 @@
+{
+  "contract": "PYAT_HQ203_HD_CURRENT_F8_CHAIN_CENSUS@1.0.0",
+  "commission": "PYAT-HQ203-HD-MATURE-WORLD-F8-SERVICE-CONTRACT-R1",
+  "examined_at_control_tip": "3760ba31761cd6e27e978c31749161feced1a47a",
+  "branch_head": "de129fea321981a8b47c3239f3858a0b6a535e46",
+
+  "governing_functional_law": {
+    "source": "PYAT_CONTROL_ROOM/24_HQD125_DDM_FUNCTIONAL_CONSERVATION_AND_PREV3_ACCEPTANCE_LAW.md",
+    "decision": "HQD-2026-09-28-125",
+    "relevant_gate": "F8 — positioned-subject / parent-prior usability",
+    "gate_text": "The PRE-V3 system can expose possibility distributions useful to parent/coparent and later person generation while preserving the actor firewall.",
+    "explicit_caveat": "s12: a project-wide completion claim cannot treat an unimplemented gate as satisfied merely because its historical responsibilities have current owners.",
+    "reopen_law": "s15 — reopen only if a required responsibility has no lawful representation, no owner, cannot be transported, cannot be validated/refused, cannot be composed at the required grain, and cannot be satisfied by lawful same-grain succession. Otherwise the remedy is implementation/authority materialization/composition/qualification."
+  },
+
+  "present_and_executable": [
+    {
+      "component": "F8 base possibility model (PSEPF)",
+      "path": "rawlsing_next/source_backed_positioned_subject_possibility.py",
+      "bytes": 23305,
+      "contracts": [
+        "SOURCE_BACKED_POSITIONED_SUBJECT_POSSIBILITY@1.0.0",
+        "POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_QUERY@1",
+        "POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_FIELD@1",
+        "POSITIONED_SUBJECT_EXACT_CONDITIONAL_WITH_GOVERNED_WALKBACK@1.0.0"
+      ],
+      "capabilities": [
+        "exact conditional lookup with no smoothing/interpolation/extrapolation",
+        "governed strictly-decreasing specificity walkback",
+        "explicit lower-specificity proxy lane with recorded specificity loss",
+        "deterministic replay via verify_positioned_subject_possibility_replay"
+      ],
+      "result_states": ["EXACT_SUPPORTED", "EXACT_UNRESOLVED_PROXY_AVAILABLE", "UNRESOLVED", "VALID_EMPTY", "NONCOMPARABLE", "FAIL_CLOSED"],
+      "evidence_states": ["SUPPORTED", "UNDERPOWERED", "VALID_EMPTY", "UNRESOLVED", "NONCOMPARABLE", "UNAVAILABLE"],
+      "status": "IMPLEMENTED__FORM_CLOSED"
+    },
+    {
+      "component": "actor firewall owner",
+      "path": "rawlsing_next/m6_actor_safe_expression.py",
+      "status": "IMPLEMENTED",
+      "note": "Confirms H10's claim that the F8 actor firewall exists."
+    },
+    {
+      "component": "objective-consumer bounded-evidence policy",
+      "path": "rawlsing_next/objective_consumer_bounded_evidence.py",
+      "bytes": 13199,
+      "contract": "PREV3_OBJECTIVE_CONSUMER_BOUNDED_EVIDENCE@1.0.0",
+      "executable_seams": [
+        {"id": "OC01_PRE553_SOURCE_LOCAL_EMPIRICAL_QUERY_R1", "state": "APPLICABLE_CURRENT", "seam": "rawlsing_next.pre553_empirical_query.execute_empirical_query"},
+        {"id": "OC02_LEARNED_STRUCTURAL_ADMISSION_R1", "state": "APPLICABLE_CURRENT", "seam": "rawlsing_next.pre553_structural_admission"}
+      ],
+      "non_executable_seams": [
+        {"id": "OC03_SDTF_OBJECTIVE_CONSEQUENCE_R1", "state": "NOT_YET_APPLICABLE", "reason": "P1-P5 remain CANDIDATE_NOT_CURRENT pending W2-D04 and later admission"},
+        {"id": "OC04_OCCURRENCE_NONEVENT_WORLD_FACT_R1", "state": "NOT_YET_APPLICABLE", "reason": "generic non-event adapter is W2-D05; real world rooting is W2-D01"},
+        {"id": "OC05_TERMINAL_OBJECTIVE_WORLD_RESOLUTION_R1", "state": "NOT_YET_APPLICABLE", "reason": "terminal objective-world root/resolver is not current; no universal terminal may be invented"}
+      ],
+      "claim_ceilings": ["POPULATION_STATISTIC", "SOURCE_LOCAL_STATISTIC", "SUPPORTED_COMPONENT_ONLY", "OBJECTIVE_FACT", "STRUCTURAL_RELATION"],
+      "hard_refusals": ["RenormalizationForbidden", "RelationAuthorityRequired", "NonEmpiricalAuthorityRequired", "MissingAsValueError", "NotYetApplicableConsumer"],
+      "status": "IMPLEMENTED__PARTIAL_SEAM_COVERAGE"
+    },
+    {
+      "component": "structural admission (P06/I04)",
+      "path": "rawlsing_next/pre553_structural_admission.py",
+      "bytes": 46752,
+      "decision_precedence_length": 12,
+      "positive_decision": "ADMITTED",
+      "mandatory_authority_kinds": ["TARGET_USE_PERMISSION"],
+      "conditional_authority_kinds": {
+        "TEMPORAL_EVIDENCE": "required iff allowed_effective_time_or_interval_refs is non-empty",
+        "WEIGHT_DESIGN_ESTIMAND": "required iff allowed_measure_and_weight_authority_refs is non-empty"
+      },
+      "explicit_non_authority": ["p06_i04_decides_v553_required", "p06_i04_decides_temporal_operations", "p06_i04_mints_temporal_objects"],
+      "status": "IMPLEMENTED__FORM_CLOSED"
+    },
+    {
+      "component": "source-local universe admission",
+      "path": "rawlsing_next/pre553_source_local_universe_admission.py",
+      "bytes": 23605,
+      "contract": "SOURCE_LOCAL_EMPIRICAL_UNIVERSE_ADMISSION_R1@1.0.0",
+      "authority_kind": "SOURCE_SEMANTICS_TOPOLOGY",
+      "claim_ceiling": "SOURCE_LOCAL_ONLY",
+      "status": "IMPLEMENTED__FORM_CLOSED"
+    },
+    {
+      "component": "learned product lifecycle (currentness)",
+      "path": "rawlsing_next/pre553_learned_product_lifecycle.py",
+      "contract": "PRE553_LEARNED_PRODUCT_LIFECYCLE_CANDIDATE@1.0.0",
+      "publication_states": ["UNPUBLISHED", "PUBLISHED"],
+      "selection_states": ["NOT_CURRENT", "CURRENT_SELECTED", "NO_CURRENT", "UNKNOWN_CURRENTNESS", "CONFLICTING_CURRENT_SELECTION"],
+      "validity_states": ["VALID", "INVALIDATED_REBUILD_REQUIRED", "WITHDRAWN"],
+      "fail_closed_states_include": ["CONFLICTING_CURRENT_SELECTION", "UNKNOWN_CURRENTNESS", "INVALIDATED_DEPENDENCY"],
+      "status": "IMPLEMENTED__FORM_CLOSED"
+    },
+    {
+      "component": "empirical query algebra",
+      "path": "rawlsing_next/pre553_empirical_query.py",
+      "bytes": 24140,
+      "status": "IMPLEMENTED"
+    },
+    {
+      "component": "source relations",
+      "path": "rawlsing_next/pre553_source_relations.py",
+      "bytes": 51775,
+      "status": "IMPLEMENTED"
+    }
+  ],
+
+  "commissioned_but_absent_from_governed_lineage": {
+    "finding": "MATERIAL_INVENTORY_CONFLICT",
+    "statement": "Three modules named 'at minimum inspect' in the commission do not exist at the commission HEAD, at the documentary base, at the primary audit tip, or at the current control tip. They were never deleted; they exist only on side branches that are not ancestors of the governed lineage.",
+    "absent_modules": [
+      {
+        "path": "rawlsing_next/pre553_analytical_composition.py",
+        "added": "c1d18480e0 PYAT C1-01 implement direct analytical composition (2026-09-29)",
+        "last_touched": "bc661188b5 C1-02 repair: pairing-ground-truth semantics reachable (2026-09-30)",
+        "present_at_commission_head": false,
+        "present_at_documentary_base_15018a30": false,
+        "present_at_audit_b3ea471a": false,
+        "present_at_control_3760ba31": false,
+        "ancestor_of_commission_head": false
+      },
+      {
+        "path": "rawlsing_next/pre553_empirical_possibility_provider.py",
+        "added": "e3bcbbb4fa N10E empirical possibility-slice provider core (source-free) (2026-09-30)",
+        "last_touched": "e3bcbbb4fa",
+        "present_at_commission_head": false,
+        "present_at_documentary_base_15018a30": false,
+        "present_at_audit_b3ea471a": false,
+        "present_at_control_3760ba31": false,
+        "ancestor_of_commission_head": false,
+        "note": "single-commit history; the N10E scalar adapter referenced throughout the audit matrix is not in the governed tree"
+      },
+      {
+        "path": "rawlsing_next/pre553_analytical_state_and_route.py",
+        "added": "a3c07426b0 C1-03A: AT14 negative-state conservation, AT15 route legitimacy, AT16 final consumer (2026-09-30)",
+        "last_touched": "4f5555459e C1-03A R6 (2026-10-01)",
+        "present_at_commission_head": false,
+        "present_at_documentary_base_15018a30": false,
+        "present_at_audit_b3ea471a": false,
+        "present_at_control_3760ba31": false,
+        "ancestor_of_commission_head": false
+      }
+    ],
+    "rawlsing_next_file_count": {"control_tip": 307, "commission_head": 307},
+    "audit_claims_affected": [
+      "MATRIX C03/C04/C05/C09/C10: 'C1-02 conjunctive producer', 'C1-02 multi-target geometry', 'C1-02 joint target producer'",
+      "MATRIX C18: 'C1 producer and consumer accepted; N10E scalar adapter narrower'",
+      "MATRIX C17: 'Exact bounded comparator path' (comparator form is separately present via OBL031)",
+      "REPORT s236: 'Its base ontology/model and accepted producer/consumer chain are sufficiently constituted at their declared grain.'"
+    ],
+    "h_d_impact": "The HQ168 grain premise the commission asks H-D to respect ('scalar positioned-subject provider is narrower than broader C1 analytical composition') references a broader chain that is NOT present in the governed lineage at any examined tip. H-D therefore cannot treat the C1 producer/consumer chain as current capability, and cannot classify world inputs against a chain it cannot read.",
+    "no_mutation_performed": "Absence was established by exact tree listing and ancestry queries only. No fetch, checkout, merge, reset, or broadening was performed to obtain these objects, and none is recommended: obtaining them would require importing side-branch history into the governed terrain, which is a re-commission decision."
+  },
+
+  "chain_verdict": {
+    "f8_base_chain": "COMPLETE_AND_EXECUTABLE_AT_ITS_DECLARED_GRAIN",
+    "mature_world_chain": "UNDERDEFINED",
+    "gates_F1_to_F8_currently_proved_end_to_end": false,
+    "terminal_audit_position": "COMPLETENESS_NOT_PROVABLE_FROM_CURRENT_FORENSICS",
+    "hq125_position": "DDM_EMERGENT_FUNCTIONAL_REALIZATION_NOT_YET_PROVED_END_TO_END"
+  }
+}

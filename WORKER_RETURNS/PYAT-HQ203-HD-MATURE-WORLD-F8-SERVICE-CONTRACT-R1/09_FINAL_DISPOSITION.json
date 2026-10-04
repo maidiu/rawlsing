@@ -1,0 +1,148 @@
+{
+  "contract": "PYAT_HQ203_HD_FINAL_DISPOSITION@1.0.0",
+  "commission": "PYAT-HQ203-HD-MATURE-WORLD-F8-SERVICE-CONTRACT-R1",
+  "branch": "agent/rabochii-pyat-hq203-hd-r1",
+  "commission_head": "de129fea321981a8b47c3239f3858a0b6a535e46",
+  "documentary_base": "15018a303078cbcd867b08d39ed6b66e14d325fb",
+  "control_tip_examined": "3760ba31761cd6e27e978c31749161feced1a47a",
+  "primary_audit": "b3ea471a3771113bf408a4e434a4b480b26d5856",
+
+  "disposition": "MATURE_WORLD_F8_PARTIAL__NAMED_TRANSFORMATION_AUTHORITIES_UNBOUND",
+  "disposition_alternatives_rejected": [
+    {
+      "candidate": "MATURE_WORLD_F8_OPERATION_CONTRACT_DETERMINATE__BOUNDED_INTEGRATION_REMAINS",
+      "rejected_because": "The mature-world operation contract is not determinate from current evidence. Audit MATRIX W17 = TERMINAL_CONSUMER_CONTRACT_UNDERDEFINED and explicitly asks the question H-D was commissioned to answer. Source selection (W16/H-C), temporal constitution (W15/H-A) and pressure coverage (W08/H-B) are all unresolved, and two of the three feed F8 conditioning directly. Recording 'determinate' would overstate the evidence."
+    },
+    {
+      "candidate": "MATURE_WORLD_F8_REQUIRES_NEW_AUTHORITY_FORM",
+      "rejected_because": "No missing authority FORM is proved. MATRIX C17 (comparator) and W16 (source applicability) both record the form closed while the instance or proof remains. Source selection is the one operation with no adopted authority at all, and W16 describes that as 'precise missing proof, not proved missing form'. Adopting REQUIRES_NEW_AUTHORITY_FORM would assert a conceptual gap the audit declined to assert."
+    },
+    {
+      "candidate": "MATURE_WORLD_F8_ARCHITECTURE_REOPEN_REQUIRED",
+      "rejected_because": "HQD-125 s15 permits reopen only when a responsibility has no lawful representation, no owner, cannot be transported, cannot be validated/refused, cannot be composed at the required grain, AND cannot be satisfied by same-grain succession or bounded implementation. The F8 base model has all four: a lawful representation, a named owner, structural refusal at every gap, and exact-lookup composition at its declared grain. The terminal audit found 'no proved architecture gap'. Reopen is not warranted."
+    },
+    {
+      "candidate": "MATERIAL_BOUNDARY_CONFLICT_FOUND",
+      "rejected_because": "No frozen boundary was found to be violated by any present artifact. The C1 inventory conflict recorded below is a documentary/inventory conflict about which modules are current — a real and HQ-adjudication-worthy finding, but it does not itself exhibit a boundary violation. It is therefore reported as a secondary named finding rather than as the primary disposition, so that the disposition still states H-D's actual semantic conclusion."
+    }
+  ],
+
+  "named_unbound_transformation_authorities": [
+    {
+      "operation": "SOURCE_SELECTION",
+      "state": "NO_ADOPTED_AUTHORITY",
+      "owner": "none",
+      "current_behaviour": "VALIDATION_ONLY — membership check against a caller/owner-supplied rule.source_universe_refs, else FAIL_CLOSED MODEL_SOURCE_UNIVERSE_OUT_OF_SCOPE; and P06 SOURCE_NOT_APPLICABLE_TO_STRUCTURAL_USE.",
+      "residual_debt_class": "authority",
+      "audit_corroboration": "MATRIX W16 UNKNOWN__FURTHER_FORENSICS_REQUIRED",
+      "lane": "H-C",
+      "blocks_f8_if_absent": true
+    },
+    {
+      "operation": "SOURCE_COMPOSITION (cross-source geometry composition at F8)",
+      "state": "EXPLICITLY_FORBIDDEN_IN_V1",
+      "owner": "PSEPF model rule",
+      "residual_debt_class": "authority_form",
+      "note": "This is a deliberate v1 prohibition, not a gap. Lawful coexistence without pooling exists in source-indexed mode and is CONTEXT_ONLY.",
+      "blocks_f8_if_absent": true
+    },
+    {
+      "operation": "TEMPORAL_PRODUCTS_AS_CONDITIONERS",
+      "state": "NO_CURRENT_PRODUCER",
+      "owner": "none current",
+      "residual_debt_class": "authority_instance",
+      "note": "ConditionerBinding.effective_time_or_interval is a scope label only. P06 explicitly does not decide temporal operations or mint temporal objects.",
+      "audit_corroboration": "MATRIX C15, W15 both UNKNOWN",
+      "lane": "H-A",
+      "blocks_f8_if_absent": true
+    },
+    {
+      "operation": "PRESSURE_AS_CONDITIONER",
+      "state": "UNRESOLVED",
+      "owner": "Field Forge claim law + SDTF forms",
+      "residual_debt_class": "authority_instance",
+      "note": "H-D declines to name a pressure/hegemony/coupling object absent a concrete unmet demand, per audit instruction.",
+      "audit_corroboration": "MATRIX W08 UNKNOWN__FURTHER_FORENSICS_REQUIRED",
+      "lane": "H-B"
+    },
+    {
+      "operation": "CONDITIONING (per-scope positive instances)",
+      "state": "FORM_CLOSED__INSTANCE_UNBOUND",
+      "owner": "source_backed_positioned_subject_possibility.py",
+      "residual_debt_class": "authority_instance",
+      "note": "The binding contract is complete and strictly enforced; each source/target scope still needs its own positive comparability authority.",
+      "audit_corroboration": "MATRIX C17/C18 AUTHORITY_FORM_CLOSED__POSITIVE_INSTANCE_OR_SCOPE_REMAINS"
+    },
+    {
+      "operation": "CROSS_DOMAIN_FACT_TO_PREDICATE (comparator instances)",
+      "state": "FORM_CLOSED__ONE_FIELD_ADOPTED",
+      "owner": "GT34_OBL031_ADP010_Q69B_FIELD_SPECIFIC_COMPARATOR_AUTHORITY@1.1.3",
+      "residual_debt_class": "authority_instance",
+      "note": "Adopted at EXACT_FROZEN_D08GrammarBinding_TYPE_AND_VALUE_ONLY for one field. Positive authority example, not universal mapping coverage.",
+      "audit_corroboration": "MATRIX C17, E30/E31"
+    },
+    {
+      "operation": "JOINT_AND_MULTI_ARITY_TARGET_POPULATION",
+      "state": "PRODUCER_ABSENT_FROM_GOVERNED_LINEAGE",
+      "owner": "C1-02 joint/multi-target producer — not readable at the governed tip",
+      "residual_debt_class": "implementation",
+      "audit_corroboration": "MATRIX C05/C09 cite a C1-02 producer that is absent at the audit's own tip"
+    }
+  ],
+
+  "load-bearing_semantic_finding": {
+    "statement": "F8 performs no geometry or distribution transformation. MODEL_ALGORITHM_ID is EXACT_CONDITIONAL_LOOKUP__NO_SMOOTHING_INTERPOLATION_OR_EXTRAPOLATION; geometry is pre-materialized on PossibilitySliceEvidence and only SELECTED by exact (source_universe, release, target, retained_conditioner_ids) match, or by a governed strictly-decreasing specificity walkback confined to the same source/release.",
+    "implication": "GEOMETRY_TRANSFORMER and DISTRIBUTION_TRANSFORMER are not available at F8 to ANY world input family. A world product can change what F8 returns only by causing an upstream producer to materialize a different evidence slice at a different retained-conditioner grain.",
+    "why_it_matters": "This is the semantic answer to the commission's instruction not to reduce the question to transport. Transport would ask how bytes move; the actual question is which licensed semantic operation a world product may perform, and at F8 the licensed set is exactly {select exact slice, reduce specificity under named proxy authority, refuse}."
+  },
+
+  "secondary_named_finding": {
+    "id": "C1_INVENTORY_CONFLICT",
+    "severity": "MATERIAL__HQ_ADJUDICATION_REQUIRED",
+    "statement": "The three C1 modules the commission names 'at minimum inspect' do not exist at the commission HEAD, the documentary base, the primary audit tip, or the current control tip. They were never deleted and survive on non-ancestor side branches. rawlsing_next file counts are identical (307) at control tip and commission HEAD, ruling out a partial listing.",
+    "modules": [
+      "rawlsing_next/pre553_analytical_composition.py (last touched bc661188b5, 2026-09-30)",
+      "rawlsing_next/pre553_empirical_possibility_provider.py (e3bcbbb4fa, 2026-09-30, single commit)",
+      "rawlsing_next/pre553_analytical_state_and_route.py (last touched 4f5555459e, 2026-10-01)"
+    ],
+    "audit_claims_affected": [
+      "MATRIX C03/C04/C05/C09/C10 — 'C1-02 ... producer'",
+      "MATRIX C18 — 'C1 producer and consumer accepted; N10E scalar adapter narrower'",
+      "REPORT s236 — 'accepted producer/consumer chain are sufficiently constituted at their declared grain'"
+    ],
+    "h_d_effect": "The HQ168 grain premise the commission asks H-D to respect could not be verified or refuted. The scalar source-local exact-lookup path is the only current F8 producer. Every statement about 'broader C1 analytical composition' is conditional and is NOT a claim about current capability.",
+    "action_taken": "NONE. Established read-only via exact tree listing and ancestry queries. No fetch, import, merge, reset or broadening performed; obtaining these objects would require importing side-branch history into the governed terrain and is a re-commission decision.",
+    "recorded_at": "07_CONDITIONAL_DEPENDENCY_MAP.json#H-D-INTRINSIC"
+  },
+
+  "persistent_container_classification": {
+    "verdict": "OPTIONAL__NOT_REQUIRED_AT_CURRENT_PROVEN_GRAIN",
+    "basis": "F8 evaluates from a tuple of evidence slices and never reads a world aggregate. OC05 is NOT_YET_APPLICABLE with the explicit reason 'no universal terminal may be invented'. The only two operations a container would newly enable — cross-source composition and renormalization — are currently forbidden by binding law rather than merely unimplemented.",
+    "retest_trigger": "Adoption of a source-selection authority (H-C), a positive temporal producer (H-A), or an AUTHORIZED_COMPOSITE estimand."
+  },
+
+  "preserved_distinctions_all_verified_in_current_code": [
+    "POPULATION_FACT != POSITIONED_SUBJECT_POSSIBILITY — ClaimCeiling enum has no positioned-subject member",
+    "POSITIONED_SUBJECT_POSSIBILITY != INDIVIDUAL_PREDICTION — EPISTEMIC_CEILING + purpose gate",
+    "OBJECTIVE_WORLD_TIME != ACTOR_MEMORY — ACTOR_MEMORY is a forbidden interpretation marker; no temporal admission exists",
+    "STRUCTURAL_PRESSURE != INDIVIDUAL_DESIRE — actor markers rejected at rule construction",
+    "FIELD_TRAJECTORY != PERSON_TRAJECTORY — no temporal conditioner; walkback is specificity-only within one source/release",
+    "CURRENT_FACT != HISTORICAL_FACT — lifecycle selection and validity states kept orthogonal, fail-closed on unknown"
+  ],
+
+  "boundaries_observed": {
+    "no_production_mutation": true,
+    "no_raw_source_access": true,
+    "no_survey_access": true,
+    "no_locator_discovery": true,
+    "no_warrant_issuance": true,
+    "no_sparse_scope_change": true,
+    "read_method": "exact git object operations against the shared canonical store only (ls-tree, cat-file, log, show, merge-base --is-ancestor)",
+    "network_fetch_performed_by_this_worker": false
+  },
+
+  "unresolved_lanes_not_guessed": ["H-A", "H-B", "H-C"],
+  "h_a_h_b_h_c_guessed": false,
+
+  "terminal": "HQ203_HD_MATURE_WORLD_F8_SERVICE_RETURNED__HQ_ADJUDICATION_REQUIRED"
+}

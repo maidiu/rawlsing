@@ -1,0 +1,174 @@
+{
+  "contract": "PYAT_HQ203_HD_TRANSFORMATION_AUTHORITY_MATRIX@1.0.0",
+  "commission": "PYAT-HQ203-HD-MATURE-WORLD-F8-SERVICE-CONTRACT-R1",
+  "control_tip_examined": "3760ba31761cd6e27e978c31749161feced1a47a",
+  "primary_audit": "b3ea471a3771113bf408a4e434a4b480b26d5856",
+
+  "governing_principle": "A true world fact does not automatically authorize conditioning, source choice, probability change, uncertainty collapse, or individual-state inference.",
+
+  "f8_algorithm_finding": {
+    "model_algorithm_id": "EXACT_CONDITIONAL_LOOKUP__NO_SMOOTHING_INTERPOLATION_OR_EXTRAPOLATION",
+    "model_rule_id": "POSITIONED_SUBJECT_EXACT_CONDITIONAL_WITH_GOVERNED_WALKBACK@1.0.0",
+    "consequence": "F8 performs NO geometry computation. Geometry arrives pre-materialized on PossibilitySliceEvidence.geometry and is only SELECTED by exact (source_universe, release, target, retained_conditioner_ids) match, or by a governed strictly-decreasing specificity walkback within the same source/release.",
+    "therefore": "GEOMETRY_TRANSFORMER and DISTRIBUTION_TRANSFORMER are NOT_AVAILABLE_AT_F8 for any world input family. Geometry transformation authority, where it exists, is UPSTREAM at the producer.",
+    "evidence": [
+      "source_backed_positioned_subject_possibility.py:MODEL_ALGORITHM_ID",
+      "source_backed_positioned_subject_possibility.py:_find",
+      "source_backed_positioned_subject_possibility.py:evaluate_positioned_subject_possibility"
+    ]
+  },
+
+  "operations": [
+    {
+      "operation": "CONDITIONING",
+      "description": "Bind an exact objective fact as a conditioning coordinate of a positioned-subject possibility query.",
+      "required_authority": [
+        "subject_fact_ref (ExactRef)",
+        "empirical_coordinate_ref (ExactRef)",
+        "comparability_authority_ref (AuthorityRef, POSITIVE, mandatory)",
+        "source_universe_ref (ExactRef)",
+        "release_ref (ExactRef)",
+        "effective_time_or_interval (material, canonicalized)"
+      ],
+      "authority_form_state": "CLOSED",
+      "authority_instance_state": "UNBOUND_PER_SCOPE",
+      "owner": "rawlsing_next/source_backed_positioned_subject_possibility.py",
+      "refusal_on_absence": "ConditionerBinding.__post_init__ raises PositionedSubjectPossibilityError on missing comparability authority; there is no default-allow and no fuzzy/latest resolution.",
+      "blocks_prev3_if_absent": false,
+      "residual_debt_class": "authority_instance"
+    },
+    {
+      "operation": "GEOMETRY_CHANGE",
+      "description": "Change the possibility geometry or distribution returned for a subject.",
+      "required_authority": "NOT AVAILABLE AT F8 — no positive authority exists or is needed because F8 does not compute geometry",
+      "authority_form_state": "NOT_APPLICABLE_AT_F8",
+      "authority_instance_state": "UPSTREAM_ONLY",
+      "owner": "upstream producer (C1 analytical composition; NOT PRESENT at control tip)",
+      "refusal_on_absence": "n/a at F8; upstream absence yields EXACT_POSITIONED_STRATUM_ABSENT -> UNRESOLVED, or FAIL_CLOSED when the query source universe is out of model scope.",
+      "blocks_prev3_if_absent": true,
+      "residual_debt_class": "implementation",
+      "note": "This is the single most important H-D finding: because F8 is exact-lookup-only, a world product CANNOT change F8 geometry even if a rule were written, unless the upstream producer materializes a new evidence slice at a new retained_conditioner_ids grain."
+    },
+    {
+      "operation": "SPECIFICITY_WALKBACK",
+      "description": "Broaden the conditioning basis to a coarser authorized grain when the exact stratum is absent.",
+      "required_authority": [
+        "walkback_authority_ref (AuthorityRef) on the model rule",
+        "per-step proxy_authority_ref",
+        "positive_proxy_authority_refs list that must contain every step authority",
+        "strictly decreasing retained_conditioner_ids"
+      ],
+      "authority_form_state": "CLOSED",
+      "authority_instance_state": "UNBOUND_PER_SCOPE",
+      "owner": "rawlsing_next/source_backed_positioned_subject_possibility.py",
+      "refusal_on_absence": "Ladder must strictly decrease; a non-decreasing step raises. A step whose source_universe_ref or release_ref differs from the query yields FAIL_CLOSED / FAIL_CLOSED_UNAUTHORIZED_PROXY_SOURCE with reason 'V1 proxies may not cross source universe or release'.",
+      "blocks_prev3_if_absent": false,
+      "residual_debt_class": "authority_instance",
+      "note": "Walkback output is EXACT_UNRESOLVED_PROXY_AVAILABLE. The exact lane remains unresolved; proxy_can_satisfy_exact_request is False. This is the ONLY mechanism by which a coarser world context may reach F8, and it can never manufacture support."
+    },
+    {
+      "operation": "SOURCE_SELECTION",
+      "description": "Choose which source/universe/release is permissible for a given service, target, time, geography or population.",
+      "required_authority": "NONE ADOPTED",
+      "authority_form_state": "CLOSED_IN_FORM__UNPROVED_IN_CURRENT_LAW",
+      "authority_instance_state": "UNBOUND",
+      "owner": "none adopted",
+      "current_behaviour": "VALIDATION_ONLY. evaluate_positioned_subject_possibility checks membership of query.source_universe_ref in rule.source_universe_refs and otherwise FAIL_CLOSED with MODEL_SOURCE_UNIVERSE_OUT_OF_SCOPE. The rule's source set is caller/owner supplied; nothing selects it.",
+      "refusal_on_absence": "FAIL_CLOSED (out-of-scope universe) — a refusal, not a selection.",
+      "blocks_prev3_if_absent": true,
+      "residual_debt_class": "authority",
+      "audit_corroboration": "MATRIX W16 = UNKNOWN__FURTHER_FORENSICS_REQUIRED; 'precise missing proof, not proved missing form'.",
+      "cross_reference": "This is the H-C lane. H-D records the dependency and does not pre-empt H-C's answer."
+    },
+    {
+      "operation": "SOURCE_COMPOSITION",
+      "description": "Compose multiple sources/universes into one possibility input.",
+      "required_authority": "EXPLICITLY FORBIDDEN in v1",
+      "authority_form_state": "FORBIDDEN_AT_V1",
+      "authority_instance_state": "n/a",
+      "owner": "PSEPF model rule",
+      "refusal_on_absence": "cross_source_proxy = FORBIDDEN_IN_V1; proxy steps crossing source universe or release are refused structurally.",
+      "blocks_prev3_if_absent": true,
+      "residual_debt_class": "authority_form",
+      "note": "Lawful cross-source coexistence WITHOUT pooling exists in source-indexed mode (SOURCE_INDEXED_MULTI_UNIVERSE), per HQ203 recalibration item 1. That is CONTEXT_ONLY. AUTHORIZED_COMPOSITE is a separate branch and is not inherited by coexistence."
+    },
+    {
+      "operation": "UNCERTAINTY_COLLAPSE",
+      "description": "Floor, average, or renormalize typed uncertainty into a confident value.",
+      "required_authority": "FORBIDDEN",
+      "authority_form_state": "FORBIDDEN",
+      "authority_instance_state": "n/a",
+      "owner": "objective_consumer_bounded_evidence.py + PSEPF result states",
+      "refusal_on_absence": "evaluate_current_consumer raises RenormalizationForbidden('no coefficient/confidence/semantic-scope renormalization') when renormalization_requested is true. ClaimCeiling._satisfies refuses to upgrade a ceiling (POPULATION_STATISTIC cannot satisfy OBJECTIVE_FACT or STRUCTURAL_RELATION).",
+      "blocks_prev3_if_absent": false,
+      "residual_debt_class": "n/a",
+      "note": "This is the load-bearing refusal that makes CONTEXT_ONLY safe: a world fact that merely accompanies a result cannot silently tighten the distribution."
+    },
+    {
+      "operation": "STRUCTURAL_INTERPRETATION",
+      "description": "Convert an admitted empirical fact into an actor-independent structural proposition.",
+      "required_authority": [
+        "TARGET_USE_PERMISSION (always mandatory)",
+        "TEMPORAL_EVIDENCE (if rule is time-scoped)",
+        "WEIGHT_DESIGN_ESTIMAND (if rule is measure/estimand-scoped)",
+        "interpretation_or_transformation_semantics",
+        "directionality_or_role_semantics",
+        "structural_target_identity_refs + structural_semantic_identity_refs",
+        "target_use_permission_refs",
+        "time_geography_applicability"
+      ],
+      "authority_form_state": "CLOSED",
+      "authority_instance_state": "UNBOUND_PER_SOURCE_QUERY_MEASURE",
+      "owner": "rawlsing_next/pre553_structural_admission.py (P06/I04)",
+      "refusal_on_absence": "12-state DECISION_PRECEDENCE with typed precedence; 11 of 12 states are nonpositive. Rule construction itself raises if TARGET_USE_PERMISSION is absent, or if TEMPORAL_EVIDENCE/WEIGHT_DESIGN_ESTIMAND are required but unbound.",
+      "blocks_prev3_if_absent": false,
+      "residual_debt_class": "authority_instance",
+      "explicit_non_authority": "P06/I04 explicitly does NOT decide temporal operations and does NOT mint temporal objects (p06_i04_decides_temporal_operations = False, p06_i04_mints_temporal_objects = False). Admission is not ontology derivation.",
+      "conservation_note": "AdmissionCondition docstring: 'I04 may preserve and order such a condition; it may not invent the upstream fact, source, measure, temporal, or comparability authority behind it.'"
+    },
+    {
+      "operation": "CROSS_DOMAIN_FACT_TO_PREDICATE (comparator)",
+      "description": "Map an exact objective fact in one domain onto an empirical predicate in another, to serve as an F8 conditioner.",
+      "required_authority": "GT34_OBL031_ADP010_Q69B_FIELD_SPECIFIC_COMPARATOR_AUTHORITY@1.1.3, consuming OBL057 D08 grammar at exactly GT34_D08_EMPIRICAL_PREDICATE_GRAMMAR_AUTHORITY@1.0.0",
+      "authority_form_state": "CLOSED",
+      "authority_instance_state": "ADOPTED_FOR_EXACTLY_ONE_FIELD__UNIVERSAL_COVERAGE_NOT_PROVED",
+      "owner": "GT34_OBL031_HQ_ADOPTION_R1 @ 1dcd7ff64d7e1e06ee3d6e1791b79558aecdb5b3",
+      "repair_grain": "EXACT_FROZEN_D08GrammarBinding_TYPE_AND_VALUE_ONLY",
+      "refusal_on_absence": "A missing authorized encounter yields a typed refusal; it must not fabricate a predicate.",
+      "blocks_prev3_if_absent": true,
+      "residual_debt_class": "authority_instance",
+      "note": "OBL031 is a positive authority EXAMPLE at one field, not universal mapping coverage. Every additional target field needs its own competent mapping and evidence."
+    },
+    {
+      "operation": "ACTOR_STATE_INFERENCE",
+      "description": "Derive a realized actor state, personality, belief, memory or individual prediction from objective possibility.",
+      "required_authority": "FORBIDDEN — no authority form exists or may be created at PRE-V3",
+      "authority_form_state": "FORBIDDEN",
+      "authority_instance_state": "n/a",
+      "owner": "n/a",
+      "refusal_on_absence": "Structural, not advisory: query purpose must equal EMPIRICAL_POSSIBILITY_ONLY; actor_inference_allowed = False in model rule material; FORBIDDEN_INTERPRETATION_MARKERS reject ACTOR_BELIEF/ACTOR_MEMORY/ACTOR_PSYCHE/GENERATED_ACTOR_POSITION at rule construction.",
+      "blocks_prev3_if_absent": false,
+      "residual_debt_class": "n/a"
+    }
+  ],
+
+  "summary": {
+    "operations_with_closed_form_and_unbound_instances": [
+      "CONDITIONING",
+      "SPECIFICITY_WALKBACK",
+      "STRUCTURAL_INTERPRETATION",
+      "CROSS_DOMAIN_FACT_TO_PREDICATE"
+    ],
+    "operations_forbidden_at_current_grain": [
+      "GEOMETRY_CHANGE (not performed at F8 at all)",
+      "SOURCE_COMPOSITION (FORBIDDEN_IN_V1)",
+      "UNCERTAINTY_COLLAPSE (RenormalizationForbidden)",
+      "ACTOR_STATE_INFERENCE"
+    ],
+    "operations_with_no_adopted_authority": [
+      "SOURCE_SELECTION"
+    ],
+    "no_new_authority_form_is_proved_missing": true,
+    "basis": "MATRIX C17 and W16 both state the FORM is closed while the INSTANCE or PROOF remains. HQD-125 s15 forbids reopening architecture merely because a gate lacks live occupancy."
+  }
+}
