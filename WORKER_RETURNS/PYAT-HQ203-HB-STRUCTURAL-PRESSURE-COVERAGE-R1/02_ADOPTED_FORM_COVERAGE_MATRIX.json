@@ -1,0 +1,160 @@
+{
+  "schema": "PYAT_HQ203_ADOPTED_FORM_COVERAGE_MATRIX@1.0.0",
+  "lane": "PYAT-HQ203-HB-STRUCTURAL-PRESSURE-COVERAGE-R1",
+  "principle": "A schema field is NOT counted as semantic coverage unless its authority permits the required meaning. Coverage is claimed only where an exact adopted or current form carries the required content.",
+  "adopted_forms": [
+    {
+      "form": "V555 atomic mediation route",
+      "artifact": "rawlsing_next/m2_v555_atomic_route.py",
+      "authority": "E04 §11 jurisdiction crosswalk; Field Forge R2 downstream jurisdiction table (V555 = actor-independent mediation-route semantics)",
+      "semantic_family": "STRUCTURAL_MEDIATION_ROUTE_CANDIDATE",
+      "epistemic_class": "ACTOR_INDEPENDENT_STRUCTURAL_PRIOR",
+      "target_use": "STRUCTURAL_MEDIATION_INPUT",
+      "exact_compiled_constants": {
+        "ROUTE_RULE_ID": "V555-RR-001-EXACT-UPSTREAM-STRUCTURAL-CHANNEL",
+        "ROUTE_SHAPE_ID": "V555-RS-001-SOURCE-EXACT-CHANNEL-EXACT-RECEIVER",
+        "CHANNEL_STRUCTURAL_ROLE_ID": "V555-LCR-001-EXACT-UPSTREAM-STRUCTURAL-CHANNEL",
+        "RECEIVING_CONSTRAINT_KIND": "V555-RC-001-EXACT-STRUCTURAL-POSITION-REF"
+      },
+      "carries": [
+        "directionality as committed ordered structure (ordinals 1 SOURCE, 2 MEDIATION_LOCUS, 3 RECEIVER with EXACT_REF_EQ)",
+        "source and receiving structural position identity",
+        "mediation locus with channel structural role",
+        "route identity and route conditions",
+        "actor independence",
+        "exact replay key"
+      ],
+      "cannot_carry": [
+        "a relation as a source or receiver endpoint (F1 refs are structural POSITION refs) — resolved by V556 jurisdiction, not by a new form",
+        "more than one route shape: exactly one shape is compiled"
+      ],
+      "population_state": "route_born_predicate_registry ships VALID_EMPTY with registered_predicate_count 0; one positive route instance exists via the C5/N5 GT2 canary"
+    },
+    {
+      "form": "V556 higher-order structure",
+      "artifact": "rawlsing_next/m3_v556_higher_order_structural.py",
+      "contract": "M3_V555_V556_HIGHER_ORDER_STRUCTURAL_EXACT_SEAM_CONTRACT@2.0.0",
+      "semantic_families": ["V556_INTERACTION_RELATION", "V556_TOPOLOGY", "V556_ATTRACTOR_PREREQUISITE"],
+      "jurisdiction": "PRE_V3_OBJECTIVE_WORLD",
+      "person_state_semantics": "FORBIDDEN",
+      "closed_schema_classes": ["OBJECTIVE_STRUCTURAL_RESULT", "OBJECTIVE_ACTOR_POSITION", "OBJECTIVE_ACTOR_OPPORTUNITY", "OBJECTIVE_WORLD_STATUS", "OBJECTIVE_MEASUREMENT"],
+      "closed_schema_roles": ["OBJECTIVE_STRUCTURAL_RELATION", "OBJECTIVE_ACTOR_INDEX", "OBJECTIVE_INSTITUTION", "OBJECTIVE_POSITION", "OBJECTIVE_OPPORTUNITY", "OBJECTIVE_CONSTRAINT", "OBJECTIVE_STATUS", "OBJECTIVE_MEASUREMENT", "OBJECTIVE_REFERENCE", "OBJECTIVE_GROUPING", "OBJECTIVE_TEXT_LABEL"],
+      "carries": [
+        "interaction relation and higher-order topology",
+        "objective constraint versus opportunity distinction",
+        "attractor/feedback prerequisites without final-type inference",
+        "relation-over-relation steps via externally authored exact_ref fields",
+        "typed negatives including NONCOMPARABLE, CONFLICTING_AUTHORITY, UNKNOWN_AUTHORITY, VALID_EMPTY"
+      ],
+      "cannot_carry": [
+        "any payload until an exact active rule commits to an exact result-contract binding; the schema itself is author-supplied, so expressibility is a property of the closed vocabulary, not of any existing schema"
+      ],
+      "population_state": "NO positive rule bank, result-contract binding or closed schema instance exists anywhere in the repository at startup: the token M3ResultContractBinding@2.0.0 occurs only inside this module",
+      "authority_ceiling": "Field Forge R2: governed higher-order route interaction/topology/attractor prerequisites WHEN SEPARATELY EARNED; zero V556 objects is lawful when no higher-order relation is required"
+    },
+    {
+      "form": "SDTF R4 D1-prime mechanism classes",
+      "artifact": "rawlsing_next/sdtf_r4_mechanism_rule_authority_binding.py",
+      "classes": [
+        "P1_MATERIAL_ACCESS_DEPENDENCY",
+        "P2_DIRECTED_AUTHORITY_OBLIGATION_SANCTION",
+        "P3_ORGANIZED_ACTIVITY_TIME",
+        "P4_INSTITUTIONAL_GATE_TREATMENT",
+        "P5_COUNTERPART_CHANNEL_RELATION"
+      ],
+      "carries": ["governed mechanism classification with rule-authority and currentness envelope", "directed obligation/sanction and institutional gate semantics"],
+      "population_state": "authority-role and currentness envelope exists; no positive per-class rule instances were found for pressure purposes"
+    },
+    {
+      "form": "SDTF R4 consequence classes",
+      "artifact": "rawlsing_next/sdtf_r4_witness_currentness.py",
+      "classes": ["K1_CONSTITUTIVE_POSITIONAL", "K2_QUALIFIED_POSSIBILITY", "K3_REALIZED_OCCURRENCE", "K4_ACTIVE_DURATIVE"],
+      "carries": ["occurrence versus consequence", "structural possibility versus realized occurrence", "continuation/durative state as distinct from rupture"],
+      "population_state": "classes adopted; no positive witness-currentness rule instances found"
+    },
+    {
+      "form": "P06 structural empirical admission",
+      "artifact": "rawlsing_next/pre553_structural_admission.py and rawlsing_next/pre553_empirical_objects.py",
+      "contract": "PRE553_STRUCTURAL_ADMISSION_RULE@1.0.0",
+      "carries": [
+        "exact structural use admission with source/universe/scope identity",
+        "focal_structural_proposition_ref",
+        "effective_time_or_interval_refs_required_by_target_use",
+        "applicable_negative_denial_noncomparability_refs",
+        "measure_and_weight_authority_refs",
+        "forbidden interpretation markers blocking actor-state minting"
+      ],
+      "forbidden_interpretation_markers": ["GENERATED_ACTOR_POSITION", "GENERATED_NINE_STRATUM_POSITION", "ACTOR_BELIEF", "ACTOR_PERSONA", "ACTOR_PSYCHE", "ACTOR_MEMORY", "ACTOR_KNOWLEDGE", "ACTOR_RESPONSE", "DIAGNOSTIC_SCORE_AS_STRUCTURAL_FACT"],
+      "population_state": "one positive accepted witness (C5/N5 GT2 canary), context only"
+    },
+    {
+      "form": "OBL040 observability/routing relation authority",
+      "artifact": "FIELD_FORGE_OBL040_HQ_ADOPTION_R1",
+      "terminal": "ADOPTED__FIELD_FORGE_OBL040_OBSERVABILITY_ROUTING_RELATION_AUTHORITY__EXACT_BOUNDED_GRAIN__OBL040_CLOSED",
+      "carries": [
+        "explicit typed actor-independent relation over already-governed producer facts",
+        "identity, order, metric magnitude, neighborhood, topology and coordinates as SEPARATE semantic commitments",
+        "routing, eligibility, exposure and response as distinct facts",
+        "disconnected components and undefined cross-component relations where no lawful bridge exists",
+        "typed refusals NO_GEOMETRY_REQUIRED, NONCOMPARABLE, NO_TRANSPORT, OBSERVABILITY_LIMIT, VALID_EMPTY, MISSING_AUTHORITY"
+      ],
+      "negative_ceilings": ["no universal GEOMETRY primitive", "no HOMOLOGY", "no FIELD", "no FIELD_SPECIFIC_CAPITAL", "no strong CONVERSION", "no HEGEMONY/SUBHEGEMONY"],
+      "noncollapse": ["MISSING_OBSERVABILITY != OBSERVED_ZERO", "MISSING_MAP != ZERO_DISTANCE", "NO_GEOMETRY_REQUIRED != NO_STRUCTURE", "UNWEIGHTED_GEOMETRY != DEFAULT_POPULATION_GEOMETRY"]
+    },
+    {
+      "form": "OBL041 relation-indexed geometry family authority",
+      "artifact": "FIELD_FORGE_OBL041_042_HQ_ADOPTION_R1",
+      "terminal": "ADOPTED__FIELD_FORGE_OBL041_RELATION_INDEXED_GEOMETRY_FAMILY_AUTHORITY__EXACT_BOUNDED_GRAIN__OBL041_CLOSED",
+      "adopted_weakest_sufficient_family": [
+        "exact identity/state relation",
+        "source-native governed order",
+        "governed cardinal metric in exact lawful unit/scale",
+        "explicit neighborhood/adjacency",
+        "explicit topology/incidence",
+        "disconnected-component union absent lawful bridge",
+        "derived coordinate/embedding view only downstream of lawful relation unless separately constitutive",
+        "NO_GEOMETRY_REQUIRED where exact nongeometric relations suffice"
+      ],
+      "noncollapse": ["BLOCK_SIZE != WEIGHT != PREVALENCE != SPATIAL_EXTENT != IMPORTANCE", "SOURCE_OR_INSTRUMENT_BLOCK != EMPIRICAL_COADMINISTRATION_COMPONENT != ANALYTIC_ROLE_BLOCK != GEOMETRIC_REGION"],
+      "negative_ceilings": ["no HOMOLOGY", "no FIELD/CAPITAL/CONVERSION/hegemony", "no V3 actor realization"]
+    },
+    {
+      "form": "Field Forge R2 adopted authority — owner and negative ceilings",
+      "artifact": "FIELD_FORGE_R2_ADOPTED_AUTHORITY_R1/02_OWNER_AND_NEGATIVE_CEILINGS.md",
+      "adopted_responsibility_grain": [
+        "exact same-unit conjunction/joint relations",
+        "conditional/support/redistribution relations",
+        "comparison or directional relations",
+        "exact alternative/branch sets",
+        "relation-specific order/cardinality/topology when authority makes those constitutive",
+        "authorized cross-context correspondence/transport receipts"
+      ],
+      "blocked_strong_nouns": ["FIELD", "FIELD_SPECIFIC_CAPITAL", "CONVERSION", "HEGEMONY/SUBHEGEMONY", "HOMOLOGY", "PRESSURE_FOOTPRINT beyond the neutral frozen dependence/reference relation", "PRESSURE_PATHWAY", "STRUCTURAL_MECHANISM"],
+      "blocked_disposition": "BLOCKED_EXPLICIT_AUTHORITY",
+      "no_self_promotion_clause": "Neutral precursor evidence remains lawful at its own grain ... No precursor self-promotes."
+    }
+  ],
+  "coverage_matrix": [
+    {"demand_id": "D1_CONSTRAINT_PRESSURE", "primary_owner": "V555 receiving_constraint_kind + V556 OBJECTIVE_CONSTRAINT", "secondary_owner": "P06 applicable_negative_denial_noncomparability_refs", "form_coverage": "COMPLETE", "semantic_residue": false},
+    {"demand_id": "D2_OPPORTUNITY_PRESSURE", "primary_owner": "V556 OBJECTIVE_OPPORTUNITY / OBJECTIVE_ACTOR_OPPORTUNITY", "secondary_owner": "Field Forge R2 conditional/support relations", "form_coverage": "COMPLETE", "semantic_residue": false},
+    {"demand_id": "D3_COUNTERPRESSURE_COMPETING_RELATION", "primary_owner": "coexisting V555 routes with exchanged endpoints + V556_INTERACTION_RELATION", "secondary_owner": "OBL041 noncollapse on magnitude", "form_coverage": "COMPLETE", "semantic_residue": false},
+    {"demand_id": "D4_DIRECTIONALITY_DOWNWARD_UPWARD_LATERAL", "primary_owner": "V555 ordered_structure ordinals 1-2-3", "secondary_owner": "OBL041 source-native governed order + topology/incidence", "form_coverage": "COMPLETE", "semantic_residue": false, "caveat": "no universal stratum hierarchy, which is correct because the nine-strata ontology is superseded"},
+    {"demand_id": "D5_MEDIATION_AS_TRANSFORMATION", "primary_owner": "V555 MEDIATION_LOCUS with channel_structural_role_id", "secondary_owner": "P06 focal_structural_proposition_ref + SDTF P1-P5 + K2 vs K3", "form_coverage": "COMPLETE", "semantic_residue": false},
+    {"demand_id": "D6_INTERACTION_NONADDITIVITY", "primary_owner": "V556_INTERACTION_RELATION / V556_TOPOLOGY + separate records", "secondary_owner": "Dva §1 and §7 noncollapse and no-invented-precision freezes", "form_coverage": "COMPLETE", "semantic_residue": false},
+    {"demand_id": "D7_HIGHER_ORDER_TOPOLOGY", "primary_owner": "V556_TOPOLOGY + OBL041 explicit topology/incidence", "secondary_owner": "V555 route identity and conditions", "form_coverage": "COMPLETE", "semantic_residue": false},
+    {"demand_id": "D8_OCCURRENCE_VERSUS_CONSEQUENCE", "primary_owner": "SDTF K1/K2/K3/K4", "secondary_owner": "V556 M3DecisionState negatives", "form_coverage": "COMPLETE", "semantic_residue": false},
+    {"demand_id": "D9_PERSISTENCE_DRIFT_RUPTURE_ABSENCE_NONCOMPARABLE", "primary_owner": "SDTF K4 + K3 + V556 NONCOMPARABLE + OBL040 typed states", "secondary_owner": "P06 negative/noncomparability refs; Field Forge R2 V553 may not invent change/drift/rupture/continuity", "form_coverage": "COMPLETE", "semantic_residue": false},
+    {"demand_id": "D10_STRUCTURAL_CONTRADICTION_ALIGNMENT_DIVERGENCE", "primary_owner": "V556 externally authored closed schema with relation exact_refs + OBJECTIVE_STATUS enum, under V556_INTERACTION_RELATION", "secondary_owner": "E04 §10 comparability authority requirement", "form_coverage": "COMPLETE_BY_EXPRESSIBILITY", "semantic_residue": false, "caveat": "V555 cannot bind a relation endpoint; this is a jurisdiction split resolved by V556, and no such schema exists yet"},
+    {"demand_id": "D11_COMPARATIVE_PRESSURE", "primary_owner": "NOT_APPLICABLE", "secondary_owner": "NOT_APPLICABLE", "form_coverage": "NOT_A_RETAINED_DEMAND", "semantic_residue": false},
+    {"demand_id": "D12_FEEDBACK_ATTRACTOR_ADJACENT_PREREQUISITE", "primary_owner": "V556_ATTRACTOR_PREREQUISITE", "secondary_owner": "V556 NONCOMPARABLE; Field Forge R2 zero-object lawfulness", "form_coverage": "COMPLETE", "semantic_residue": false},
+    {"demand_id": "D13_SCALAR_PRESSURE_MAGNITUDE", "primary_owner": "NOT_APPLICABLE_FORBIDDEN", "secondary_owner": "Dva §7; OBL041 BLOCK_SIZE != WEIGHT != PREVALENCE != SPATIAL_EXTENT != IMPORTANCE; production CONDITIONAL_SUPPORT_PROFILE != PRESSURE_PATHWAY", "form_coverage": "NOT_A_RETAINED_DEMAND", "semantic_residue": false}
+  ],
+  "matrix_summary": {
+    "demands_mapped": 13,
+    "complete_form_coverage": 11,
+    "complete_by_expressibility_only": 1,
+    "not_retained": 2,
+    "demands_with_unrepresentable_semantic_residue": 0,
+    "new_forms_required": 0
+  }
+}

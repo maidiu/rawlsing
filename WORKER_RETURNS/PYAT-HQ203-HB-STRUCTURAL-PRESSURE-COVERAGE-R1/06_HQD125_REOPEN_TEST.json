@@ -1,0 +1,72 @@
+{
+  "schema": "PYAT_HQ203_HQD125_REOPEN_TEST@1.0.0",
+  "lane": "PYAT-HQ203-HB-STRUCTURAL-PRESSURE-COVERAGE-R1",
+  "test_source": "E04 PYAT_CONTROL_ROOM/24_HQD125_DDM_FUNCTIONAL_CONSERVATION_AND_PREV3_ACCEPTANCE_LAW.md §15 'Architecture reopen law remains narrow'",
+  "test_form": "Reopen only if exact audit/execution proves that a required functional responsibility fails ALL FIVE conjunctive conditions.",
+  "conjunctive_conditions": [
+    "has no lawful current representation",
+    "has no owner",
+    "cannot be transported",
+    "cannot be validated/refused",
+    "cannot be composed at the required grain",
+    "and cannot be satisfied by lawful same-grain succession or bounded implementation under the present DAG"
+  ],
+  "strictness_note": "The conditions are conjunctive. Failing to establish even ONE of them defeats reopening. E04 §15 also states expressly that a functional gate lacking live occupancy or implementation does NOT by itself reopen architecture.",
+  "applicability": {
+    "reopen_triggered": false,
+    "why_test_still_applied": "The commission requires applying the §15 architecture-reopen test to the counterexample result. It was applied to the strongest candidate and to each mapped demand class, and it does not fire.",
+    "precondition_from_E04_§15_paragraph_1": "Architecture is not reopened merely because a functional gate lacks live occupancy or implementation. The residual found here is precisely occupancy and implementation, which E04 §15 expressly excludes as a reopen ground."
+  },
+  "condition_1_no_lawful_current_representation": {
+    "established": false,
+    "evidence": "All 11 retained demands map to an exact adopted or current form with committed structure: V555 ordered_structure for directionality/endpoints/mediation locus; V556 closed objective vocabulary for constraint, opportunity, status, topology and higher-order relations; SDTF K1-K4 for occurrence versus consequence; P06 for focal proposition, temporal interval and negative/noncomparability carriers; OBL041 for governed order and incidence; OBL040 for typed refusals. D10 is complete by expressibility under the closed V556 vocabulary. See 02_ADOPTED_FORM_COVERAGE_MATRIX.json.",
+    "verdict": "FAILS to establish"
+  },
+  "condition_2_no_owner": {
+    "established": false,
+    "evidence": "Every mapped demand has a named owning jurisdiction. E04 §11 and the Field Forge R2 downstream jurisdiction table assign V555 mediation-route semantics, V556 higher-order route interaction/topology/attractor prerequisites, V553 temporal, V554 basis/equivalence and V557/V558 publication. Field Forge R2 additionally states that zero V556 objects is lawful when no higher-order relation is required, confirming V556 is the standing owner rather than an empty slot.",
+    "verdict": "FAILS to establish"
+  },
+  "condition_3_cannot_be_transported": {
+    "established": false,
+    "evidence": "Transport is explicitly adopted. Field Forge R2 adopts 'authorized cross-context correspondence/transport receipts' and lists 'information-loss, recovery and follow-up quantifier ceilings'. V555 emits exact replay identity and exact V554 F1/F2/B1 reference closures. P06 carries authority_closure_refs and legacy_compatibility_refs, and E11 §13 Q13 requires DAG reuse, which the exact-ref chain satisfies.",
+    "verdict": "FAILS to establish"
+  },
+  "condition_4_cannot_be_validated_or_refused": {
+    "established": false,
+    "evidence": "Validation and refusal are the strongest adopted capabilities. V556 refuses on integrity, schema nonconformance, unknown or conflicting authority, unresolvable participants, nonpositive decision states and closed-schema violations, and it forbids additional_fields so open schemas are refused. OBL040 adopts typed refusals NO_GEOMETRY_REQUIRED, NONCOMPARABLE, NO_TRANSPORT, OBSERVABILITY_LIMIT, VALID_EMPTY, MISSING_AUTHORITY. P06 refuses with MISSING_STRUCTURAL_ADMISSION_AUTHORITY, ADMISSION_DENIED and ADMISSION_DEFERRED, and blocks nine forbidden actor-state interpretation markers.",
+    "verdict": "FAILS to establish"
+  },
+  "condition_5_cannot_be_composed_at_required_grain": {
+    "established": false,
+    "evidence": "Composition at the required grain is available and was verified against the strongest composite demand. CANDIDATE-X (see 04) requires simultaneity and atomicity of directed constraint, counter-pressure, opportunity, interval, divergence verdict, non-additivity, mediation locus and possibility/realization separation in ONE exact-identity object. Because the V556 result schema is externally authored per rule while its vocabulary stays closed, a single rule can bind a closed schema declaring coexisting-relation arrays with min_items >= 2, multiple exact_ref relation fields, position refs and a string enum for the divergence verdict. E11 §2 requires coexisting pressures without forced averaging, which separate records plus one object satisfy. The apparent composition limit — V555 cannot bind a relation endpoint because its F1 refs are POSITION refs — is a jurisdiction split resolved by V556, not a composition failure.",
+    "verdict": "FAILS to establish"
+  },
+  "condition_6_no_lawful_same_grain_succession_or_bounded_implementation": {
+    "established": false,
+    "evidence": "Bounded implementation under the present DAG is exactly what the residual calls for: author a V556 rule of the appropriate semantic family, a result-contract binding and a closed schema, then populate instances. No successor architecture and no stage topology change is required. E04 §15 names implementation, authority materialization, composition and qualification as the correct remedies in place of resurrecting historical stage topology.",
+    "verdict": "FAILS to establish"
+  },
+  "per_demand_spot_check": [
+    {"demand_id": "D1_CONSTRAINT_PRESSURE", "reopen": false, "binding_failure_condition": "none established; bounded implementation suffices"},
+    {"demand_id": "D2_OPPORTUNITY_PRESSURE", "reopen": false, "binding_failure_condition": "none established; bounded implementation suffices"},
+    {"demand_id": "D3_COUNTERPRESSURE_COMPETING_RELATION", "reopen": false, "binding_failure_condition": "none established; additional V555 route rules plus a V556 interaction rule suffice"},
+    {"demand_id": "D4_DIRECTIONALITY_DOWNWARD_UPWARD_LATERAL", "reopen": false, "binding_failure_condition": "none established; governed order already adopted, and a stratum hierarchy would be unlawful rather than missing"},
+    {"demand_id": "D5_MEDIATION_AS_TRANSFORMATION", "reopen": false, "binding_failure_condition": "none established"},
+    {"demand_id": "D6_INTERACTION_NONADDITIVITY", "reopen": false, "binding_failure_condition": "none established; a scalar is forbidden, not missing"},
+    {"demand_id": "D7_HIGHER_ORDER_TOPOLOGY", "reopen": false, "binding_failure_condition": "none established; bounded implementation suffices"},
+    {"demand_id": "D8_OCCURRENCE_VERSUS_CONSEQUENCE", "reopen": false, "binding_failure_condition": "none established; bounded implementation suffices"},
+    {"demand_id": "D9_PERSISTENCE_DRIFT_RUPTURE_ABSENCE_NONCOMPARABLE", "reopen": false, "binding_failure_condition": "none established"},
+    {"demand_id": "D10_STRUCTURAL_CONTRADICTION_ALIGNMENT_DIVERGENCE", "reopen": false, "binding_failure_condition": "none established; expressible under the closed V556 vocabulary, awaiting authority material"},
+    {"demand_id": "D12_FEEDBACK_ATTRACTOR_ADJACENT_PREREQUISITE", "reopen": false, "binding_failure_condition": "none established; family already adopted and objective"},
+    {"demand_id": "D11_COMPARATIVE_PRESSURE", "reopen": "NOT_APPLICABLE", "binding_failure_condition": "no retained demand exists"},
+    {"demand_id": "D13_SCALAR_PRESSURE_MAGNITUDE", "reopen": "NOT_APPLICABLE", "binding_failure_condition": "minting one would be unlawful, not a reopen ground"}
+  ],
+  "final": {
+    "hqd125_15_reopen_required": false,
+    "conditions_established": 0,
+    "conditions_required": "all six, conjunctively",
+    "remedy": "rule authoring, result-contract and schema materialization, instance population, and qualification/authority earning",
+    "remedy_forbidden": "resurrection of historical nine-strata stage topology, promotion of any blocked strong noun, or invention of a scalar pressure coefficient"
+  }
+}
