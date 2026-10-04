@@ -1,0 +1,78 @@
+{
+  "schema": "PYAT_HQ198_PRECOMPARISON_PHYSICAL_SELECTED_INTERPRETATION@1.0.0",
+  "status": "RECORDED BEFORE READING ANY WORKER INTERPRETATION",
+  "independence_declaration": "This interpretation was reconstructed solely from the exact C4B/C4/C3 authority chain by git object. The HQ197 worker return at d43c7f8647a28da13e05bdd264722d1d87b2cb29 had NOT been opened when this file was written.",
+  "reviewer_identity": {"harness": "DeepSeek Harness", "model": "DeepSeek V4.1 Flash"},
+  "authorities_consulted": [
+    {"authority": "C4B eight-source workload freeze", "ref": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/01_EIGHT_SOURCE_WORKLOAD_FREEZE.json"},
+    {"authority": "C4B all35 claim ledger", "ref": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/06_ALL35_CLAIM_LEDGER.json"},
+    {"authority": "C4B unsigned source warrant template", "ref": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/07_UNSIGNED_SOURCE_WARRANT_TEMPLATE.json"},
+    {"authority": "C4 execution accounting and failure law (O1-C07)", "ref": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"},
+    {"authority": "C4 commission", "ref": "3551bfaf4b7c57f019a3d0beddcc13b2e8b5691b:PYAT_CONTROL_ROOM/ASTRA_PYAT_INTEGRATED_DEVELOPMENT_ATLAS_R1/commissions/C4.md"}
+  ],
+  "exact_text_found": {
+    "read_economy": {
+      "fresh_full_route": ["SRC27"],
+      "bounded_fresh_physical": ["SRC02","SRC06","SRC08","SRC12","SRC14","SRC26"],
+      "retained_comparator": ["SRC35"],
+      "substitutions_forbidden": true
+    },
+    "SRC02_frozen_activity": "BOUNDED_FRESH_PHYSICAL_SELECTED_VARIABLE_READ_ONLY",
+    "SRC14_frozen_activity": "BOUNDED_FRESH_PHYSICAL_READ__EXACT_V372_ORDINAL_466_WITNESS_ONLY",
+    "C4_authority_ceiling": "Declared sources, columns, operations and claims only",
+    "SRC14_ceiling": "PHYSICAL_REPRESENTATION_ONLY__NO_DATE_TIME_SEMANTICS",
+    "ledger_usage": "the ledger field `selected` is a per-SOURCE boolean (proving-set membership) and `SELECTED__...` prefixes the C4_accounting label; neither is a column-level byte rule",
+    "search_for_suppression_language": "NO authority text found requiring byte-level suppression of unselected columns, and `usecols` does not appear anywhere in the C4B ledger"
+  },
+  "reconstruction": {
+    "PHYSICAL": {
+      "meaning": "identifies the TIER at which the evidence is taken: a fresh read of the source's physical representation, as distinct from retained/replayed material or from higher-order semantics.",
+      "supporting_text": [
+        "read_economy separates `fresh_full_route`, `bounded_fresh_physical`, and `retained_comparator` — the axis is freshness/tier, not bytes",
+        "SRC14's ceiling is PHYSICAL_REPRESENTATION_ONLY__NO_DATE_TIME_SEMANTICS — PHYSICAL names the representation tier as opposed to semantic inference",
+        "C4B source activities are prefixed BOUNDED_FRESH_PHYSICAL_ — bounded (row/scope-limited), fresh (not retained), physical (source bytes, not a semantic reconstruction)"
+      ],
+      "does_NOT_mean": "it does not, on this text, denote a byte-level column-suppression mechanism"
+    },
+    "SELECTED_VARIABLE_READ": {
+      "meaning": "names the CONFIGURED SCOPE of the read: the declared variable set (with its ordinals/native codes) that the source is being read to observe. The selection is a declared SCOPE, and the governing ceiling binds the run to 'declared ... columns ... operations ... only'.",
+      "supporting_text": [
+        "SRC02/SRC06 carry exact_governed_operations naming specific variables (Q10B ordinal 58; Q101/Q2061B) with native codes and expected missing states",
+        "the warrant template's allowed_operations.kind is SELECTED_VARIABLE_PHYSICAL with an explicit variables list",
+        "the C4 authority ceiling is 'declared sources, columns, operations and claims only'"
+      ]
+    },
+    "BOUNDED_FRESH_PHYSICAL_SELECTED_VARIABLE_READ": {
+      "meaning": "a bounded, fresh, physical-tier read of the source configured to the declared selected variable scope",
+      "obligations_it_IMPOSES": [
+        "the read is fresh (not retained/replayed)",
+        "the read is bounded",
+        "the read is at the physical-representation tier",
+        "the operation is declared and scoped to the named variables",
+        "no undeclared variable may contribute to claims, witnesses, or outputs",
+        "no substitution of source/wave/column is permitted"
+      ],
+      "obligation_it_does_NOT_expressly_impose": "that the reader must physically avoid transferring bytes belonging to undeclared columns"
+    },
+    "BOUNDED_FRESH_PHYSICAL_READ_EXACT_VARIABLE": {
+      "meaning": "the same physical-tier fresh bounded read, described by its EXACT VARIABLE (v372 at ordinal 466, witness-only) rather than by a general 'selected' scope. The difference from the SELECTED_VARIABLE form is descriptive emphasis — this operation is witness-only and named to an exact variable/ordinal — not a difference in byte-level plumbing.",
+      "supporting_text": "SRC14's frozen activity names '__EXACT_V372_ORDINAL_466_WITNESS_ONLY' and its ceiling is PHYSICAL_REPRESENTATION_ONLY"
+    },
+    "selected_reads": {
+      "meaning": "the COUNT of read operations performed under the selected-variable configuration (a bounded, physical, declared-scope read). It is a distinct mandatory O1-C07 account from full_reads.",
+      "not": "it is not a claim that unselected column bytes were never transferred through the reader"
+    },
+    "full_reads": {
+      "meaning": "the COUNT of read operations that consume the full column/route set (as opposed to the selected configuration). SRC27's operation class is EXACTLY_ONE_GOVERNED_FRESH_FULL_ROUTE_PASS, and the frozen per-source expectations require full_reads=0 for SRC02/SRC06/SRC14.",
+      "not": "it is not a synonym for 'bytes transferred'"
+    }
+  },
+  "determination": {
+    "choice": "A",
+    "statement": "PHYSICAL identifies the physical source/witness TIER, while SELECTED_VARIABLE_READ identifies the configured reader/output SCOPE. The frozen term does NOT require byte-level suppression of unselected-column data.",
+    "why_not_B": "B (byte-level suppression) has no textual support anywhere in the authority chain: no suppression language exists, `usecols` never appears, and the O1-C07 accounting law deliberately treats reader invocations, decoder calls and byte counts as SEPARATE accounts to be measured and disclosed rather than conflated into one requirement. Reading B into the term would make an accounting obligation ('declare the selected scope') into an unstated I/O implementation requirement.",
+    "why_not_C": "the text is reasonably determinate: the read_economy tiers, the exact_governed_operations declarations, the authority ceiling, and the SRC14 ceiling together fix the sense. The one genuinely under-specified point — whether the reader may internally transfer undeclared column bytes — is answered by ABSENCE of any prohibition plus the O1-C07 duty to MEASURE and DISCLOSE the byte account honestly.",
+    "consequence_for_the_candidate": "a selected-variable route that configures the declared variable scope (usecols) while honestly disclosing that underlying physical byte traffic is not suppressed is CONSISTENT with interpretation A, provided the exact accounting accounts are separated and disclosed."
+  },
+  "bounded_caveat": "I do not claim interpretation A makes byte suppression irrelevant. If HQ intends B, that is a NEW requirement not present in the frozen text, and it would need to be issued as such."
+}

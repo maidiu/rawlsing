@@ -1,0 +1,38 @@
+{
+  "schema": "PYAT_HQ198_REPAIRED_BYTE_LIMIT_REVIEW@1.0.0",
+  "repair_commit": "a483cb6619a84c4785296e923a8571447041ffa5",
+  "clean_tip_reviewed": "4b6335ca5fc485108b0ffb1d682a29a02e1eee51",
+  "pre_repair_candidate": "d5ce4ecff6acc25d199577a7859de7e98514e9fd",
+  "verdict": "reader_bytes IS NOW A REAL LIMIT — all six required properties verified",
+  "repair_mechanism": {
+    "approach": "bridge-safe allowance. GovernedSourceOpen.arm_limit(allowance) is armed for exactly one compiled-reader call; _read shortens each request to the remaining allowance and returns b'' once exhausted (a clean EOF); the breach flag is recorded on the open and raised as a typed SourceAccessViolation at the OUTER decode boundary.",
+    "never_raises_in_callback": "the docstring states the rationale explicitly and the code path contains no raise inside _read; verified by inspection and by the prompt-failure behaviour below",
+    "scoping": "the allowance is armed only around `reader(arg, **kwargs)` in _invoke_reader and disarmed in `finally`",
+    "accounting": "_sync_reader_totals no longer overwrites reader totals with absolute snapshots; _invoke_reader measures the DELTA of read_calls/bytes across the call, so application hash/header traffic is not miscounted as reader bytes"
+  },
+  "properties_verified": [
+    {"property": "exactly-enough succeeds", "result": "PASS",
+     "data": "metadata cap=779 -> success consumed=779; full cap=16779 -> success consumed=16779; selected cap=16779 -> success consumed=16779"},
+    {"property": "one-byte-short fails", "result": "PASS",
+     "data": "metadata cap=778 -> READER_BYTES_LIMIT_EXCEEDED in 0.000s; full cap=16778 -> in 0.001s; selected cap=16778 -> in 0.001s"},
+    {"property": "bytes consumed never exceed the cap", "result": "PASS",
+     "data": "caps 0/1/10 -> consumed exactly 0/1/10 and refused; every short-cap trial reported consumed <= cap"},
+    {"property": "the file-object callback never raises as the limiting mechanism", "result": "PASS",
+     "data": "the limiter returns b'' instead of raising; failures were prompt (<=0.001s) rather than hanging, and the independent hang reproducer (raising from the read callback) still hangs on an unguarded view, confirming the candidate does not use that mechanism"},
+    {"property": "failure is prompt and typed at the outer boundary", "result": "PASS",
+     "data": "SourceAccessViolation with code READER_BYTES_LIMIT_EXCEEDED, raised from _invoke_reader after accounting; message reports cap, consumed bytes and truncated/exhausted flags; enforced through the decoder boundary too (cap=5000 on a selected decode -> READER_BYTES_LIMIT_EXCEEDED with consumed=5000)"},
+    {"property": "reader_bytes excludes hash/header traffic", "result": "PASS",
+     "data": "on an 8383-byte carrier: hash_bytes=8383, header_prefix_bytes=176, reader_bytes=531, total through the governed open=9090, and reader_bytes == total - hash - header exactly (excluded 8559 application bytes)"}
+  ],
+  "pre_repair_vs_post_repair": {
+    "pre_repair_d5ce": "cap=10 permitted 12691 bytes to be consumed with NO violation (dead configuration) — established in HQ197",
+    "post_repair": "cap=10 consumes exactly 10 bytes and refuses"
+  },
+  "typed_error_shape": {
+    "type": "rawlsing_next.pre553_source_access_broker.SourceAccessViolation",
+    "code": "READER_BYTES_LIMIT_EXCEEDED",
+    "exposed_attributes": ["code", "args"],
+    "note": "the exception carries the message (with cap, consumed, truncated/exhausted) in args[0]; it does not expose a separate `.account` attribute, so callers wanting the account dict must read the receipt from the broker. Minor ergonomics observation, not a defect."
+  },
+  "residual": "a read that is truncated mid-call still consumes the bytes served before the refusal (by construction, consumed never exceeds the cap). The refusal is therefore a bounded-stop, not a rollback."
+}

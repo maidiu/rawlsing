@@ -1,0 +1,58 @@
+{
+  "schema": "PYAT_HQ198_C4_CLOSURE_AND_BROKER_REVIEW@1.0.0",
+  "production_delta_isolation": {
+    "requirement": "no unrelated production movement between d5ce4ec, a483cb66 and clean tip 4b6335ca",
+    "full_production_delta_d5ce_to_tip": [
+      "M rawlsing_next/pre553_source_access_broker.py",
+      "M rawlsing_next/tests/test_pre553_source_access_broker_court.py"
+    ],
+    "anything_else_changed_in_rawlsing_next": false,
+    "decoder_changed": false,
+    "closure_critical_modules_changed": [],
+    "commit_chain": ["5b9834356 commission candidate refinement", "a483cb661 reader_bytes bridge-safe limit",
+                      "4b6335ca5 remove accidentally committed bytecode caches"],
+    "verdict": "ISOLATED — the repair touched only the broker and its own court. No unrelated production movement."
+  },
+  "accepted_C4_closure_audit": {
+    "closure_size_at_freeze": 23,
+    "closure_size_at_candidate": 24,
+    "delta": "the sole addition is rawlsing_next/pre553_source_access_broker.py",
+    "reader_call_sites_in_closure": 1,
+    "call_site": "pre553_source_access_broker.py `_invoke_reader`: `result = reader(arg, **kwargs)`",
+    "argument": "always a _GovernedView (file-like object); `_reader_arg` returns a view and an explicit guard raises RawSourcePathEscape if the argument is str/bytes/os.PathLike",
+    "raw_path_string_reaching_pyreadstat_in_closure": false,
+    "verdict": "NO raw path string reaches pyreadstat inside the accepted C4 closure"
+  },
+  "one_application_owned_open": {
+    "mechanism": "GovernedSourceOpen opens the path once in _ensure_open; every logical parse receives view(), which seeks the SAME handle to 0 and issues a new _GovernedView",
+    "measured": "metadata + selected + full decode paths: path_opens=1; chunk route over 10+ chunks: path_opens=1",
+    "verdict": "ONE application-owned source-path open for the governed C4 decoder scope"
+  },
+  "DTA_reset_and_fresh_view": {
+    "design": "chunk_reads issues an explicit row_offset/row_limit loop with a fresh position-zero view per chunk over the same physical open, deliberately avoiding read_file_in_chunks (which reuses one object and fails for DTA over a file object)",
+    "verified": "DTA and SAV both chunk correctly over 1 physical open; read_file_in_chunks fails for DTA over a broker view and succeeds for SAV (reproduced)",
+    "verdict": "CORRECT"
+  },
+  "seam_and_identity": {
+    "pyreadstat": "1.3.6", "python": "3.11.3", "pandas": "2.3.3", "numpy": "2.4.6", "pyarrow": "25.0.1",
+    "interpreter_sha256": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+    "seam_assertions": "assert_reader_seam pins the version, requires a genuine C-extension entry point, requires `usecols` to be exposed, and requires the first parameter to be named `filename_path`",
+    "verdict": "seam pinned; accepted R7 interpreter/package identity unchanged"
+  },
+  "selected_mode_honesty": {
+    "disclosure_field": "selected_route_physical_column_suppression",
+    "value": "NOT_ENFORCED_BY_READER__pyreadstat_1_3_6_reads_full_stream_then_subsets__measured_identical_bytes_for_usecols_and_full_read",
+    "verified": "selected and full single invocations consume identical reader bytes on the same carrier; the decoder's selected route records selected_reads=1 and full_reads=0 while emitting only the selected column",
+    "verdict": "selected mode CONTINUES to disclose non-suppression honestly"
+  },
+  "decoder_selected_route": {
+    "mechanism": "decode_sav(selected_variables=...) binds the selected names against the real column inventory BEFORE any row-data read, sets full_reads=0 as the default budget on that route, then calls broker.selected_read(...) which passes usecols",
+    "measured": "selected_reads=1, full_reads=0, path_opens=1, emitted columns exactly the selected set; an absent variable raises DecoderError",
+    "ordinal_binding": "selected ordinals are bound from the pre-read inventory and the emitted variable inventory is restricted to the selected set, preventing a selected cell from being attributed to an unselected variable",
+    "verdict": "the selected route is implemented and accounted correctly"
+  },
+  "residual_observation_not_a_defect_in_this_lane": {
+    "statement": "the unselected/default row-data route is the chunked route, which counts chunk_reads (not full_reads) while consuming all columns. Whether that route must instead be classified as a full read for the frozen per-source ledger (notably SRC27's single governed full-route pass) is the open accounting question the worker records as RES-4.",
+    "lane_scope": "this lane's acceptance criteria concern the repaired broker and the selected route; the default-route classification is for HQ adjudication"
+  }
+}

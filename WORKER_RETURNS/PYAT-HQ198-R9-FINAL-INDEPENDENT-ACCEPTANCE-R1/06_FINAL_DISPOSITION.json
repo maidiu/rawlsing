@@ -1,0 +1,53 @@
+{
+  "schema": "PYAT_HQ198_FINAL_DISPOSITION@1.0.0",
+  "status": "FINAL",
+  "disposition": "ACCEPT_REPAIRED_BROKER_CANDIDATE__PHYSICAL_SELECTED_A_CONFIRMED",
+  "disposition_is_allowed_value": true,
+  "terminal_token": "HQ198_R9_FINAL_INDEPENDENT_ACCEPTANCE_RETURNED__HQ_ADJUDICATION_REQUIRED",
+  "review_branch": "agent/reviewer-pyat-hq198-r1",
+  "commissioned_startup_sha": "69f9451501e348e739fbbf25872c285ca382e8cf",
+  "reviewed_clean_tip": "4b6335ca5fc485108b0ffb1d682a29a02e1eee51",
+  "repair_commit": "a483cb6619a84c4785296e923a8571447041ffa5",
+  "pre_repair_candidate": "d5ce4ecff6acc25d199577a7859de7e98514e9fd",
+  "checkout_mode": "SPARSE_REQUIRED (honored; no clone; no full worktree; sparse checkout not widened)",
+  "reviewer_identity": {"harness": "DeepSeek Harness", "model": "DeepSeek V4.1 Flash"},
+  "acceptance_criteria_results": {
+    "1_one_application_owned_open": "PASS — path_opens=1 across metadata/selected/full routes and across 10+ chunks",
+    "2_no_raw_path_to_pyreadstat_in_closure": "PASS — one reader call site, always a _GovernedView, guarded by RawSourcePathEscape",
+    "3_DTA_reset_fresh_view": "PASS — explicit row_offset loop with position-zero views over one physical open; read_file_in_chunks failure for DTA reproduced",
+    "4_seam_pinned_and_identity_unchanged": "PASS — pyreadstat 1.3.6; interpreter 11d6f541 unchanged; seam assertions fail closed",
+    "5_reader_bytes_genuinely_enforced": "PASS on all six sub-properties: exactly-enough succeeds; one-byte-short fails; consumed never exceeds cap; no callback raise; prompt typed failure at the outer boundary; hash/header traffic excluded (reader_bytes == total - hash - header)",
+    "6_selected_mode_honest_about_non_suppression": "PASS — disclosure field intact and verified by measurement",
+    "7_no_unrelated_production_movement": "PASS — production delta is exactly the broker and its own court test; decoder and all closure-critical modules unchanged"
+  },
+  "R7_court": {"collect": "55", "run_1": "55 passed (64.81s, exit 0)", "run_2": "55 passed (66.23s, exit 0)",
+               "target_met": true, "candidate_broker_court": "20 passed",
+               "chunk_rows_independently_verified": "YES — honoured on a 1000-row carrier at 7/100/333 with path_opens=1"},
+  "physical_selected_authority": {
+    "my_independent_determination": "A",
+    "worker_determination": "A",
+    "agreement": true,
+    "residual": "A is a reconstruction from origin/usage/structure and the absence of contrary text, not a verbatim definition; explicit HQ ratification is recommended. The worker's falsification test (any authority requiring unselected-column bytes to be avoided) was independently applied and NOT met."
+  },
+  "material_defects_found": [],
+  "advisories": [
+    {"id": "ADV-1", "severity": "minor", "detail": "SourceAccessViolation exposes `.code` and the message in args[0] but no `.account` attribute; callers wanting the account must read the broker receipt. Ergonomics only."},
+    {"id": "ADV-2", "severity": "accounting question for HQ", "detail": "the default/unselected row-data route is the chunked all-column route and counts chunk_reads rather than full_reads. Whether that route must be classified as a full read for the frozen per-source ledger (notably SRC27's single governed full-route pass) is open; it is outside this lane's acceptance criteria."},
+    {"id": "ADV-3", "severity": "ratification", "detail": "HQ should explicitly ratify interpretation A rather than inherit it silently, so the ceiling's unit is not re-litigated later."}
+  ],
+  "why_this_disposition": {
+    "not_ACCEPT_..._AUTHORITY_STILL_OPEN": "the authority is genuinely under-defined in wording (no verbatim definition) but NOT genuinely open in meaning: every available ground — the term's tier-taxonomy origin, the authority ceiling, the separate-and-unbound byte account, and the failure of the falsification test — supports A, and no competing reading has textual support. The correct disposition is to accept with the ratification advisory, not to leave the meaning open.",
+    "not_REPAIRED_CANDIDATE_MATERIAL_DEFECT": "the byte-limit repair works exactly as required on all six properties, the R7 court passes 55/55 twice, and the candidate's broker court passes 20/20.",
+    "not_R7_REQUALIFICATION_FAILURE": "55 collected and 55 passed on both consecutive runs.",
+    "not_MATERIAL_AUTHORITY_CONFLICT": "my independent determination and the worker's agree, and no authority text contradicts A."
+  },
+  "what_this_acceptance_does_NOT_do": [
+    "it does not authorise any real source access, warrant issuance, or live C4 run",
+    "it does not claim that usecols suppresses underlying physical byte traffic (it does not, and the candidate says so)",
+    "it does not decide the default-route full-read classification question (ADV-2)",
+    "it does not close R9 in the ledger sense; it accepts the repaired broker candidate and confirms interpretation A"
+  ],
+  "holds_observed": {"real_survey_source_access": false, "locator_discovery": false, "warrant_issuance": false,
+                     "live_c4": false, "production_mutation": false, "c7_or_actor_work": false},
+  "synthetic_carriers_only": true
+}

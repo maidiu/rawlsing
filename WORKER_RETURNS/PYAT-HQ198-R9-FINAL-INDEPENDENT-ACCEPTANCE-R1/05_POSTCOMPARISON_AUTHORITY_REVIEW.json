@@ -1,0 +1,32 @@
+{
+  "schema": "PYAT_HQ198_POSTCOMPARISON_AUTHORITY_REVIEW@1.0.0",
+  "ordering_attestation": "01_PRECOMPARISON_PHYSICAL_SELECTED_INTERPRETATION.json was written and saved BEFORE the worker return at d43c7f8647a28da13e05bdd264722d1d87b2cb29 was opened. This file records the comparison afterwards.",
+  "worker_artifact_compared": {
+    "commit": "d43c7f8647a28da13e05bdd264722d1d87b2cb29",
+    "return_dir": "WORKER_RETURNS/PYAT-HQ197-R9-PHYSICAL-SELECTED-INTERPRETATION-R1/",
+    "worker_disposition": "PHYSICAL_SELECTED_MEANS_SOURCE_LAYER_PLUS_SELECTED_READER_MODE__USECOLS_ROUTE_COMPATIBLE",
+    "worker_choice": "A"
+  },
+  "my_independent_choice": "A",
+  "convergence": "AGREEMENT on the substance. Both determined that PHYSICAL names the physical-source/witness tier and SELECTED_VARIABLE_READ names the configured reader/output scope, and that the frozen term does NOT require byte-level suppression of unselected-column data.",
+  "what_the_worker_added": [
+    {"point": "term provenance", "detail": "traced the FIRST introduction of PHYSICAL with `git log --reverse -S` to commit 33dba5236 (2026-09-30) in PYAT-C2-02-C4-PROVING-WORKLOAD-R1/02_PROPOSED_PROVING_SET.json, whose vocabulary is a workload TIER taxonomy: `full_route_empirical_anchors` vs `bounded_physical_edge_witnesses`", "assessment": "STRONG ADDITIONAL EVIDENCE. It independently confirms the tier reading with direct terminological provenance that my own search did not reach (I located the C4B read_economy copy of the same taxonomy, not its origin). It reinforces rather than contradicts my determination."},
+    {"point": "layer decomposition", "detail": "separated six layers and assigned each to a governing term, explicitly recording that PARSER BYTE TRAFFIC has governing_term NONE and is a SEPARATE, separately-unbound account (HQ190-C ACC-09 grade '\u2014')", "assessment": "CORRECT AND SHARPER THAN MINE. This is the decisive structural argument: because byte traffic is its own account and is separately unbound, the frozen law cannot have intended read-counts to be a proxy for byte traffic. My own reconstruction reached the same conclusion via the O1-C07 separation principle; the worker states the structural reason more directly."},
+    {"point": "residual honesty", "detail": "RES-1 states no authority artifact contains a verbatim definitional sentence for 'selected-column read'; the tokens were introduced as bare numeric values, so A is a RECONSTRUCTION not a quotation. RES-3 gives a falsification test: produce any authority requiring unselected-column bytes to be avoided.", "assessment": "I CONCUR, and I applied the worker's falsification test independently: I searched the C4B and freeze authority trees for suppression language ('unselected column', 'only the declared columns', 'column suppression', 'usecols') and found NONE. The test is not met, so A stands."},
+    {"point": "RES-4", "detail": "the frozen decoder had no selected-read operation at all and its iter_batches route issues an all-column chunked read that is a FULL READ under A", "assessment": "CONFIRMED IN PART. The decoder at the reviewed tip DOES now implement a selected route (decode_sav(selected_variables=...)) which I verified records selected_reads=1/full_reads=0; and the default/unselected route is indeed the chunked all-column route counting chunk_reads. Whether that default route must be classified as a full read for the frozen ledger is a live question I also flag (see 04)."}
+  ],
+  "what_the_worker_did_not_establish_and_I_verified": [
+    "the repaired broker actually enforces reader_bytes (worker's lane was documentary/interpretive; I verified enforcement empirically post-repair)",
+    "the R7 court passes 55/55 twice on the repaired tip",
+    "the selected route's decoder wiring records selected_reads=1/full_reads=0 with the emitted inventory restricted to the selected set"
+  ],
+  "divergences": [],
+  "residual_ambiguity_status": {
+    "genuine": true,
+    "nature": "A is a reconstruction from origin, usage, structure and the ABSENCE of any contrary requirement. It is not a verbatim definition, because no artifact defines 'selected-column read' in words.",
+    "ratification_recommended": true,
+    "why_this_disposition_nevertheless_confirms_A": "the commission permits ACCEPT_..._PHYSICAL_SELECTED_A_CONFIRMED, and A is the only reading the authority supports: my independent reconstruction, the worker's independent reconstruction, the term's tier-taxonomy origin, the authority ceiling ('declared columns'), and the failure of the falsification test all point the same way. The residual is about whether HQ wishes to RATIFY the reconstruction explicitly, not about a competing reading having textual support.",
+    "if_HQ_intends_B": "that would be a NEW requirement, not present in the frozen text, and should be issued as such; it would convert the matter to an authority amendment rather than an interpretation."
+  },
+  "material_authority_conflict": false
+}

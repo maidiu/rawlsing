@@ -1,0 +1,33 @@
+{
+  "schema": "PYAT_HQ198_R7_55_TEST_COURT@1.0.0",
+  "interpreter": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/qualification/r7-c4-source-free-venv/bin/python",
+  "environment": {"PYTHONHASHSEED": "0", "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+                  "PYTHONPATH": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq198-r9-review"},
+  "pytest_flag": "-p no:cacheprovider",
+  "files": [
+    "rawlsing_next/tests/test_closed35_g01_sav_numeric_representation_authority.py",
+    "rawlsing_next/tests/test_closed35_d01_declared_encoding_admission.py",
+    "rawlsing_next/tests/test_closed35_d02_opaque_datetime_carrier.py",
+    "rawlsing_next/tests/test_fiabc_lm2_r1j_sav_representation_authority.py",
+    "rawlsing_next/tests/test_r35_i01_physical_metadata.py",
+    "rawlsing_next/tests/test_pre553_source_backed_c11_facade.py"
+  ],
+  "collect_only": {"collected": 55, "required": 55, "exit_code": 0, "match": true},
+  "run_1": {"result": "55 passed", "duration": "64.81s", "exit_code": 0},
+  "run_2": {"result": "55 passed", "duration": "66.23s", "exit_code": 0},
+  "target_met": "55 passed / 55 passed",
+  "failures_retried_away": false,
+  "fixture_note": "the three commissioned fixture patterns were materialized natively by the sparse checkout — NO symlink to the canonical WORKER_RETURNS tree was needed this time, exactly as the commission stated",
+  "candidate_broker_court": {"file": "rawlsing_next/tests/test_pre553_source_access_broker_court.py",
+                              "result": "20 passed", "exit_code": 0},
+  "independent_chunk_rows_verification": {
+    "requirement": "independently verify chunk_rows is honoured on a carrier larger than one chunk",
+    "carrier": "synthetic SAV, 1000 rows, 8383 bytes",
+    "results": [
+      {"chunk_rows": 7, "chunks": 143, "max_chunk": 7, "total_rows": 1000, "all_within_bound": true, "path_opens": 1},
+      {"chunk_rows": 100, "chunks": 10, "max_chunk": 100, "total_rows": 1000, "all_within_bound": true, "path_opens": 1},
+      {"chunk_rows": 333, "chunks": 4, "max_chunk": 333, "total_rows": 1000, "all_within_bound": true, "path_opens": 1}
+    ],
+    "verdict": "chunk_rows IS honoured and the physical open count stays 1 across all chunks"
+  }
+}
