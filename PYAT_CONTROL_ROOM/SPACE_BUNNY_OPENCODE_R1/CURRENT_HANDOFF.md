@@ -1,3 +1,44 @@
+# HQ199 active frontier — governed source-session owner — 2026-10-03
+
+HQ has adjudicated the HQ198 final proof wave.
+
+Accepted:
+- repaired broker candidate `4b6335ca5fc485108b0ffb1d682a29a02e1eee51`;
+- byte-limit repair `a483cb6619a84c4785296e923a8571447041ffa5`;
+- DeepSeek acceptance `9a07441a6296d7cf2a9aa11dd70e728db5fa9f1a`;
+- fixture-complete requalification `c46ab9d517a44f8fce4c0bff886a1f2070497d2b`;
+- physical-selected interpretation A is HQ-ratified.
+
+Closed:
+- broker acceptance;
+- byte-cap blocker;
+- R7 requalification blocker;
+- selected-read physical-semantics blocker for SRC02/SRC06/SRC14.
+
+Remaining R9 frontier:
+- GOV-SCOPE-001 per-source execution/session owner;
+- GOV-DEC-003 separate decoder_invocations account;
+- GOV-HDR-002 source-plan-controlled header-prefix access;
+- GOV-ROUTE-004 exact SRC27 outer-pass/lower-layer mapping;
+- source-dependent numeric byte ceilings remain unbound.
+
+Active SPARSE_REQUIRED lanes:
+- source-session implementation:
+  `agent/rabochii-pyat-hq199-r1 @ f26b2ea632725596a9e94957ef1d6053c96c735c`
+- seven-source plan reconstruction:
+  `agent/rabochii-pyat-hq199-r2 @ fdf78c71b4523ab6a7c6d817ff4315ddf77db489`
+- independent scope/plan review:
+  `agent/reviewer-pyat-hq199-r1 @ ed9d186aa7ab8ebd2f70cdae0240ef3a2b9f1917`
+
+Important: SRC27's frozen phrase "will involve multiple path-level opens" is under explicit review; do not silently reinterpret it to fit the one-open broker.
+
+R9 remains open. Host disk policy/capacity remains a separate live-run blocker. HQ182 C4 non-adoption hold remains pending reserved Astra. All source/warrant/live/C7/actor holds remain.
+
+See:
+`HQ_HANDOFF/checkpoints/20261003-PYAT-HQ199-R9-SCOPE-OWNER-FRONTIER-R1/`
+
+---
+
 # HQ198 active frontier — repaired R9 candidate final proof — 2026-10-03
 
 HQ has adjudicated the HQ197 wave.
