@@ -1,0 +1,98 @@
+{
+  "schema": "PYAT_HQ200_ISSUANCE_BLOCKER_MATRIX@1.0.0",
+  "discharged_and_must_not_reappear": [
+    {
+      "id": "PRQ-07",
+      "historical_claim": "independent integration review of the freeze not completed",
+      "status": "DISCHARGED",
+      "carried_forward": false,
+      "authority": "already discharged under the completed independent C4 review chain; reaffirmed by HQ"
+    },
+    {
+      "id": "R9-SEL-PHYSICAL-SEMANTICS-003",
+      "status": "CLOSED",
+      "note": "physical-selected interpretation A ratified."
+    },
+    {
+      "id": "R9-SEL-03",
+      "status": "CLOSED for SRC02/SRC06/SRC14 at the operation-mode grain"
+    },
+    {
+      "id": "R9-BROKER-ACCEPT / R9-BROKER-BYTE-CAP-001 / R9-BROKER-R7-REQUAL-002",
+      "status": "CLOSED",
+      "note": "broker accepted; R7 55/55 twice."
+    }
+  ],
+  "open_blockers": [
+    {
+      "id": "LOCATORS",
+      "severity": "material",
+      "blocks": "issuance",
+      "statement": "All seven access locators remain unfilled placeholders. No search was performed."
+    },
+    {
+      "id": "APPROVALS",
+      "severity": "material",
+      "blocks": "issuance",
+      "statement": "HQ approval UNSET; required user/resource-owner approval UNSET."
+    },
+    {
+      "id": "BYTES-SOURCE-DEPENDENT",
+      "severity": "material",
+      "blocks": "issuance",
+      "token": "UNBOUND_SOURCE_DEPENDENT__MUST_BE_BOUND_BEFORE_LAUNCH",
+      "statement": "No numeric real-source reader-byte ceiling is source-free established. Measurability is not a budget. A synthetic carrier total must not be used.",
+      "required": "A lawful numeric byte rule from governing authority, or an exact later derivation rule."
+    },
+    {
+      "id": "PATH-OPEN-NUMERIC",
+      "severity": "material",
+      "blocks": "issuance",
+      "statement": "path_level_opens has no frozen numeric value for any of the seven sources. Only candidate maxima are proposed, pending runtime acceptance.",
+      "token": "PENDING_HQ200_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "DECODER-EXPECTED",
+      "severity": "material",
+      "blocks": "issuance",
+      "statement": "decoder_invocations has no frozen historical expected value; only a candidate maximum is proposed.",
+      "token": "PENDING_HQ200_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "TAC-BLOCKERS",
+      "severity": "material",
+      "blocks": "issuance",
+      "statement": "All seven technical acceptance dependencies (TAC-01..TAC-07) are unproven.",
+      "token": "PENDING_HQ200_RUNTIME_ACCEPTANCE"
+    },
+    {
+      "id": "ROUTE-PASS-OWNER",
+      "severity": "material",
+      "blocks": "issuance",
+      "statement": "The frozen SRC27 route-pass ceiling has no owner in the session/broker account model.",
+      "token": "PENDING_TECHNICAL_ACCEPTANCE"
+    },
+    {
+      "id": "METADATA-COUNT-GAP",
+      "severity": "minor",
+      "blocks": "issuance",
+      "statement": "metadata_reads counts are frozen only for SRC08 and SRC12; the other five sources have an admitted metadata operation but no frozen count."
+    },
+    {
+      "id": "SRC26-PREFIX-READ-COUNT",
+      "severity": "minor",
+      "blocks": "issuance",
+      "statement": "Authority freezes the SRC26 prefix BYTE count 176 but not a prefix READ count."
+    }
+  ],
+  "counts": {
+    "discharged_not_carried": 4,
+    "open": 9
+  },
+  "issuance_gate": {
+    "may_this_lane_issue": false,
+    "may_this_lane_authorize_access": false,
+    "may_this_lane_close_R9": false,
+    "R9_closed": false
+  }
+}

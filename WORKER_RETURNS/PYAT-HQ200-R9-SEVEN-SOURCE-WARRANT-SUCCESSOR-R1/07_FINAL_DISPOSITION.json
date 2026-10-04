@@ -1,0 +1,134 @@
+{
+  "schema": "PYAT_HQ200_FINAL_DISPOSITION@1.0.0",
+  "lane": "PYAT-HQ200-R9-SEVEN-SOURCE-WARRANT-SUCCESSOR-R1",
+  "startup_sha": "e15d3647fbc1e149786a3f33e660ac2e16e0f78f",
+  "documentary_base": "ea51c409462b3bfe0a88a4b7e7326e117b76877e",
+  "disposition": "SEVEN_SOURCE_WARRANT_SUCCESSOR_READY__RUNTIME_ACCEPTANCE_AND_SOURCE_DEPENDENT_VALUES_PENDING",
+  "allowed_dispositions_considered": [
+    {
+      "value": "SEVEN_SOURCE_WARRANT_SUCCESSOR_READY__RUNTIME_ACCEPTANCE_AND_SOURCE_DEPENDENT_VALUES_PENDING",
+      "selected": true,
+      "why": "The successor carries all seven accepted source plans and encodes every SRC27 correction correctly. What remains is exactly two named classes of pendency: runtime acceptance of the session/plan mechanisms (TAC-01..TAC-07, all candidate maxima) and source-dependent values that cannot be fixed source-free (the byte ceilings). Both are recorded as typed, issuance-blocking pendings rather than as structural gaps."
+    },
+    {
+      "value": "WARRANT_SUCCESSOR_PARTIAL__SPECIFIC_STRUCTURE_GAP",
+      "rejected_because": "Would assert a structural gap in the instrument. There is none: all seven plans bind completely, expected/floor/maximum/observed are distinct on every account, the outer route-pass account is separate, and 20 asserted invariants pass. The one genuine structural gap found - that full_route_passes has NO owner in the session/broker account model - is a gap in the RUNTIME, not in this instrument, and it is carried as TAC-05."
+    },
+    {
+      "value": "MATERIAL_AUTHORITY_CONFLICT_FOUND",
+      "rejected_because": "No conflict exists between governing artifacts. The independent review's stronger claim - that one Route-B pass freezes exactly one full reader invocation and exactly one decoder entry - was already corrected by HQ200 adjudication, and this successor follows the correction rather than encoding the rejected reading."
+    },
+    {
+      "value": "SOURCE_DEPENDENT_VALUES_PREVENT_SOURCE_FREE_COMPLETION",
+      "rejected_because": "True of the byte ceilings alone, but it would characterise the whole instrument as incomplete when the byte requirement is one accounted family among many and is fully and correctly typed as UNBOUND_SOURCE_DEPENDENT__MUST_BE_BOUND_BEFORE_LAUNCH. The selected disposition names the pendency precisely instead."
+    }
+  ],
+  "headline": "All seven accepted source plans are carried, every SRC27 correction is encoded, and no policy ceiling is recorded as frozen authority. 20 asserted invariants pass. The instrument authorizes nothing and R9 is not closed.",
+  "account_totals": {
+    "sources": 7,
+    "FROZEN_AUTHORITY": 157,
+    "IMPLEMENTATION_POLICY": 29,
+    "PENDING_TECHNICAL_ACCEPTANCE": 66,
+    "UNBOUND_SOURCE_DEPENDENT": 21,
+    "candidate_maxima_pending_runtime_acceptance": 29,
+    "invariants_asserted": 20,
+    "invariants_passing": 20,
+    "invariants_failing": 0
+  },
+  "src27_corrections_encoded": {
+    "path_opens_ge_2_NOT_encoded": {
+      "done": true,
+      "encoded_as": "expected null/PENDING_TECHNICAL_ACCEPTANCE; the only number is a candidate MAXIMUM 1 typed PENDING_HQ200_RUNTIME_ACCEPTANCE",
+      "why": "'the pass will involve multiple path-level opens' is descriptive, not a numeric floor. HQ190-C gave SRC27 path_opens no floor and no ceiling; the hardened minimum names existence/access, full SHA, metadata read and full compatibility read, but no path-open floor; the phrase is absent from the operative C4 warrant candidate."
+    },
+    "full_reads_exact_1_NOT_encoded": {
+      "done": true,
+      "encoded_as": "floor 1 FROZEN_AUTHORITY; expected null/PENDING; maximum candidate 1 PENDING_HQ200_RUNTIME_ACCEPTANCE",
+      "why": "No expected_full_reads exists for SRC27. The hardened note supplies a FLOOR, not an exact count."
+    },
+    "decoder_invocations_exact_1_NOT_encoded": {
+      "done": true,
+      "encoded_as": "expected null/PENDING; maximum candidate 1 PENDING_HQ200_RUNTIME_ACCEPTANCE",
+      "why": "Mandatory separate O1-C07 account with no historical expected value."
+    },
+    "selected_reads_NOT_invented": {
+      "done": true,
+      "encoded_as": "expected null/PENDING",
+      "why": "Mapping SRC27 into a selected-read slot would be a fabrication."
+    },
+    "outer_route_pass_account_added": {
+      "done": true,
+      "encoded_as": "governed_full_route_passes with expected/floor/maximum all 1 FROZEN_AUTHORITY for SRC27, and EXACT 0 for the other six",
+      "separation": "Carries is_outer_account = true and a non_substitution_law forbidding substitution for decoder_invocations, full_reads, chunk_reads, reader_invocations or path_level_opens."
+    }
+  },
+  "policy_ceiling_discipline": {
+    "rule": "Candidate maxima occupy MAXIMUM fields only and are typed IMPLEMENTATION_POLICY or PENDING_HQ200_RUNTIME_ACCEPTANCE, never FROZEN_AUTHORITY.",
+    "candidate_maxima_count": 29,
+    "candidates": [
+      "decoder_invocations MAX 1",
+      "path_level_opens MAX 1",
+      "full_reads MAX 1 (SRC27, stricter execution policy)",
+      "existence_check and hash_pass MAX 1",
+      "SRC27 route-pass MAX 1 is FROZEN, not a candidate"
+    ],
+    "enforced_by": "H-08-NO-POLICY-IN-EXPECTED, which scans every expected field in all seven plans."
+  },
+  "byte_accounts": {
+    "token": "UNBOUND_SOURCE_DEPENDENT__MUST_BE_BOUND_BEFORE_LAUNCH",
+    "measurable_enforceable": true,
+    "numeric_budget_known": false,
+    "distinct_facts_kept_separate": true,
+    "synthetic_totals_used": false,
+    "derivation_rule_in_frozen_authority": null,
+    "consequence": "Issuance is blocked for every source until a lawful numeric byte rule is bound. Measurability was not converted into a budget anywhere."
+  },
+  "known_runtime_gap_found_in_this_lane": {
+    "id": "ROUTE-PASS-OWNER-MISSING",
+    "finding": "The frozen SRC27 route-pass ceiling (expected 1, max 1) has NO owner in code. At the session candidate the string 'full_route_passes' has ZERO occurrences and the plan carries only an outer_account_token.",
+    "consequence": "TAC-05 cannot be satisfied by the current session candidate.",
+    "required": "A separately typed outer route-pass account/ceiling that does not collapse into decoder_invocations or full_reads.",
+    "note": "This is a RUNTIME gap, carried as a technical acceptance dependency, not a defect in this instrument."
+  },
+  "prq_07": {
+    "status": "DISCHARGED",
+    "carried_as_open_blocker": false,
+    "asserted_by": "H-14-PRQ-07-NOT-OPEN",
+    "note": "Recorded in discharged_and_must_not_reappear and absent from open_blockers."
+  },
+  "instrument_status": {
+    "signed": false,
+    "issued": false,
+    "authorizes_access": false,
+    "execution_authorized": false,
+    "approvals": "BOTH UNSET",
+    "locators": "ALL SEVEN UNFILLED",
+    "locator_search_performed": false,
+    "R9_closed": false
+  },
+  "open_issuance_blockers": [
+    "All seven access locators unfilled.",
+    "Both approvals UNSET.",
+    "Byte ceilings source-dependent and unbound for all seven sources.",
+    "path_level_opens has no frozen numeric value for any source.",
+    "decoder_invocations has no frozen historical expected value.",
+    "TAC-01..TAC-07 technical acceptance dependencies unproven.",
+    "SRC27 route-pass ceiling has no runtime owner (TAC-05).",
+    "metadata_reads counts frozen only for SRC08 and SRC12.",
+    "SRC26 prefix READ count unbound (only the BYTE count 176 is frozen)."
+  ],
+  "what_this_lane_did_not_do": [
+    "Did not issue, sign or authorize anything.",
+    "Did not fill any locator.",
+    "Did not invent a source-dependent numeric byte budget.",
+    "Did not use a synthetic byte total.",
+    "Did not encode SRC27 path_opens >= 2.",
+    "Did not encode SRC27 full_reads or decoder_invocations as EXACT 1.",
+    "Did not record any policy ceiling as FROZEN_AUTHORITY.",
+    "Did not collapse the outer route pass into a lower-layer account.",
+    "Did not re-carry PRQ-07.",
+    "Did not claim R9 closed.",
+    "Did not perform source access, locator discovery, or production mutation."
+  ],
+  "recommended_next_step_for_HQ": "Independent acceptance review of the session candidate is the gating item, because all 29 candidate maxima and TAC-01..TAC-04/06/07 depend on it. TAC-05 must be built first among the runtime items, because the SRC27 route-pass ceiling is frozen yet unowned. The byte ceilings need a governing numeric rule or an exact later derivation rule; they cannot be resolved by measurement."
+}

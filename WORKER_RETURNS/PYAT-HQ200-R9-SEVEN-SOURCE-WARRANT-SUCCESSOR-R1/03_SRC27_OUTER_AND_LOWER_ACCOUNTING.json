@@ -1,0 +1,279 @@
+{
+  "schema": "PYAT_HQ200_SRC27_OUTER_AND_LOWER_ACCOUNTING@1.0.0",
+  "source_key": "SRC27",
+  "why_separate": "The frozen 'exactly one governed fresh full Route-B pass' is a WORKLOAD constraint, not an access constraint. It must never be collapsed into a lower-layer account.",
+  "outer_account": {
+    "account_name": "governed_full_route_passes",
+    "expected": {
+      "value": 1,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+    },
+    "floor": {
+      "value": 1,
+      "authority_status": "FROZEN_AUTHORITY"
+    },
+    "maximum": {
+      "value": 1,
+      "authority_status": "FROZEN_AUTHORITY"
+    },
+    "observed": {
+      "value": null,
+      "status": "NOT_EXECUTED",
+      "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+      "null_permitted_by_law": true,
+      "must_not_be_read_as": "a zero, an empty result, or a PASS"
+    },
+    "second_pass_stop_law": "A second pass is NOT a retry; it is a separate run requiring NEW HQ-bound authority.",
+    "is_access_account": false
+  },
+  "lower_layer_accounts": [
+    {
+      "account": "source_path_existence_access_checks",
+      "expected": {
+        "value": null,
+        "authority_status": "PENDING_TECHNICAL_ACCEPTANCE"
+      },
+      "floor": {
+        "value": 1,
+        "authority_status": "FROZEN_AUTHORITY",
+        "provenance": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/00_COMMISSION.md .preconditions[3]",
+        "note": "FLOOR 1 derived from the C4B precondition, not an exact count"
+      },
+      "maximum": {
+        "value": 1,
+        "authority_status": "PENDING_HQ200_RUNTIME_ACCEPTANCE",
+        "provenance": "90ccbd54c549f67358d0c02ad18ff90b843cf3ee rawlsing_next/pre553_source_session.py",
+        "note": "candidate session-owner ceiling; not authority"
+      }
+    },
+    {
+      "account": "full_file_sha256_passes",
+      "expected": {
+        "value": null,
+        "authority_status": "PENDING_TECHNICAL_ACCEPTANCE"
+      },
+      "floor": {
+        "value": 1,
+        "authority_status": "FROZEN_AUTHORITY",
+        "provenance": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/00_COMMISSION.md .preconditions[3]",
+        "note": "full-file SHA-256 must equal the frozen identity BEFORE decode"
+      },
+      "maximum": {
+        "value": 1,
+        "authority_status": "PENDING_HQ200_RUNTIME_ACCEPTANCE",
+        "note": "candidate session-owner ceiling; not authority"
+      }
+    },
+    {
+      "account": "path_level_opens",
+      "expected": {
+        "value": null,
+        "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "note": "frozen authority supplies NO numeric path-open value for this source"
+      },
+      "floor": {
+        "value": null,
+        "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "note": "no frozen floor exists"
+      },
+      "maximum": {
+        "value": 1,
+        "authority_status": "PENDING_HQ200_RUNTIME_ACCEPTANCE",
+        "provenance": "90ccbd54c549f67358d0c02ad18ff90b843cf3ee rawlsing_next/pre553_source_session.py",
+        "note": "CANDIDATE MAXIMA ONLY. Must not be relabelled as frozen historical authority."
+      }
+    },
+    {
+      "account": "metadata_reads",
+      "expected": {
+        "value": null,
+        "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "note": "the metadata OPERATION is admitted for this source; authority supplies no count"
+      },
+      "floor": {
+        "value": null,
+        "authority_status": "PENDING_TECHNICAL_ACCEPTANCE"
+      },
+      "maximum": {
+        "value": null,
+        "authority_status": "PENDING_TECHNICAL_ACCEPTANCE"
+      }
+    },
+    {
+      "account": "header_prefix_reads",
+      "expected": {
+        "value": 0,
+        "authority_status": "FROZEN_AUTHORITY",
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "note": "no header-prefix operation is admitted for this source; a prefix read is an unauthorised operation and must be REFUSED before it executes"
+      },
+      "floor": {
+        "value": 0,
+        "authority_status": "FROZEN_AUTHORITY"
+      },
+      "maximum": {
+        "value": 0,
+        "authority_status": "FROZEN_AUTHORITY"
+      }
+    },
+    {
+      "account": "header_prefix_bytes",
+      "expected": {
+        "value": 0,
+        "authority_status": "FROZEN_AUTHORITY",
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "note": "no admitted prefix operation"
+      },
+      "floor": {
+        "value": 0,
+        "authority_status": "FROZEN_AUTHORITY"
+      },
+      "maximum": {
+        "value": 0,
+        "authority_status": "FROZEN_AUTHORITY"
+      }
+    },
+    {
+      "account": "decoder_invocations",
+      "expected": {
+        "value": null,
+        "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "note": "mandatory separate O1-C07 account; NO historical expected value is supplied"
+      },
+      "floor": {
+        "value": null,
+        "authority_status": "PENDING_TECHNICAL_ACCEPTANCE"
+      },
+      "maximum": {
+        "value": 1,
+        "authority_status": "PENDING_HQ200_RUNTIME_ACCEPTANCE",
+        "provenance": "90ccbd54c549f67358d0c02ad18ff90b843cf3ee rawlsing_next/pre553_source_session.py",
+        "note": "candidate MAX 1 only; not authority"
+      }
+    },
+    {
+      "account": "selected_column_reads",
+      "expected": {
+        "value": null,
+        "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "note": "NO expected_selected_reads exists for SRC27 and none may be invented"
+      },
+      "floor": {
+        "value": null,
+        "authority_status": "PENDING_TECHNICAL_ACCEPTANCE"
+      },
+      "maximum": {
+        "value": null,
+        "authority_status": "PENDING_TECHNICAL_ACCEPTANCE"
+      }
+    },
+    {
+      "account": "full_reads",
+      "expected": {
+        "value": null,
+        "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "note": "NO expected_full_reads exists for SRC27. Frozen authority supplies a FLOOR only. It must NOT be encoded as EXACT 1."
+      },
+      "floor": {
+        "value": 1,
+        "authority_status": "FROZEN_AUTHORITY",
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .hardened_note_on_the_SRC27_single_pass 'at minimum: ... one full compatibility read'"
+      },
+      "maximum": {
+        "value": 1,
+        "authority_status": "PENDING_HQ200_RUNTIME_ACCEPTANCE",
+        "provenance": "90ccbd54c549f67358d0c02ad18ff90b843cf3ee rawlsing_next/pre553_source_session.py",
+        "note": "a runtime MAY choose exactly one full read as stricter execution policy; frozen authority itself supplies only the floor"
+      }
+    },
+    {
+      "account": "chunk_reads",
+      "expected": {
+        "value": null,
+        "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "note": "no frozen chunk count exists"
+      },
+      "floor": {
+        "value": null,
+        "authority_status": "PENDING_TECHNICAL_ACCEPTANCE"
+      },
+      "maximum": {
+        "value": null,
+        "authority_status": "PENDING_TECHNICAL_ACCEPTANCE"
+      }
+    },
+    {
+      "account": "byte_counts_where_measurable",
+      "expected": {
+        "value": "UNBOUND_SOURCE_DEPENDENT__MUST_BE_BOUND_BEFORE_LAUNCH",
+        "authority_status": "UNBOUND_SOURCE_DEPENDENT",
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json qualifies the account 'where measurable'",
+        "note": "reader_bytes is measurable and enforceable, but NO numeric real-source ceiling is source-free established"
+      },
+      "floor": {
+        "value": null,
+        "authority_status": "UNBOUND_SOURCE_DEPENDENT"
+      },
+      "maximum": {
+        "value": null,
+        "authority_status": "UNBOUND_SOURCE_DEPENDENT"
+      }
+    },
+    {
+      "account": "retries",
+      "expected": {
+        "value": 0,
+        "authority_status": "FROZEN_AUTHORITY",
+        "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC27.max_retry_budget"
+      },
+      "floor": {
+        "value": 0,
+        "authority_status": "FROZEN_AUTHORITY"
+      },
+      "maximum": {
+        "value": 0,
+        "authority_status": "FROZEN_AUTHORITY"
+      }
+    }
+  ],
+  "non_substitution_law": [
+    "The route-pass count is NEVER the value of decoder_invocations.",
+    "The route-pass count is NEVER the value of full_reads.",
+    "The route-pass count is NEVER the value of chunk_reads.",
+    "The route-pass count is NEVER the value of reader_invocations.",
+    "The route-pass count is NEVER the value of path_level_opens.",
+    "chunk_reads cannot silently satisfy the frozen full_reads floor; they are a different account."
+  ],
+  "src27_corrections_applied": {
+    "path_opens_ge_2_NOT_encoded": {
+      "done": true,
+      "why_not": "The phrase 'the pass will involve multiple path-level opens' is DESCRIPTIVE, not a numeric floor. HQ190-C, the dedicated per-access grading lane, gave SRC27 path_opens no floor and no ceiling. The hardened minimum names existence/access, full SHA, metadata read and full compatibility read, but NO path-open floor."
+    },
+    "full_reads_exact_1_NOT_encoded": {
+      "done": true,
+      "encoded_instead": "floor 1 FROZEN; expected null/PENDING; maximum candidate 1.",
+      "why_not": "No expected_full_reads exists for SRC27. The hardened note supplies a FLOOR, not an exact count."
+    },
+    "decoder_invocations_exact_1_NOT_encoded": {
+      "done": true,
+      "encoded_instead": "expected null/PENDING; maximum candidate 1.",
+      "why_not": "Mandatory separate account with no historical expected value."
+    }
+  },
+  "other_sources_route_pass": "Represented as EXACT ZERO for all six non-SRC27 sources, because no full-route pass is admitted for their operation classes.",
+  "known_structural_gap": {
+    "id": "ROUTE-PASS-OWNER-MISSING",
+    "finding": "The session/broker account model does not yet own or enforce full_route_passes. At the session candidate the string 'full_route_passes' has ZERO occurrences and the plan carries only an outer_account_token.",
+    "consequence": "The frozen SRC27 route-pass ceiling is not yet enforceable in code.",
+    "required": "A separately typed outer route-pass account/ceiling that does not collapse into decoder_invocations or full_reads.",
+    "authority": "e7ce39dade6b169ab068f5f786b7a0dea06846dd:PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ200_R9_SESSION_PLAN_ADJUDICATION_R1.md"
+  }
+}

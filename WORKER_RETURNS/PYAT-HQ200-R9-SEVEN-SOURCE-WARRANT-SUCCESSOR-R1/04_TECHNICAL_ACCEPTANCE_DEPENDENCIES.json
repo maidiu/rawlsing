@@ -1,0 +1,109 @@
+{
+  "schema": "PYAT_HQ200_TECHNICAL_ACCEPTANCE_DEPENDENCIES@1.0.0",
+  "note": "These are TECHNICAL ACCEPTANCE fields, not locator fields. Each must be proven by the accepted runtime before warrant issuance.",
+  "dependencies": [
+    {
+      "id": "TAC-01",
+      "requirement": "declared encoding does not imply row-data mode",
+      "why": "The pre-session implementation let a non-null encoding trigger a full row-data read, violating the frozen plan for SRC08/SRC12 (row_data_reads 0, full_reads 0).",
+      "mechanism_available": "90ccbd54c549f67358d0c02ad18ff90b843cf3ee rawlsing_next/pre553_source_session.py SourceOperationPlan.encoding_is_independent_of_row_data_mode = True",
+      "status": "PENDING_HQ200_RUNTIME_ACCEPTANCE",
+      "sources_affected": [
+        "SRC08",
+        "SRC12",
+        "SRC26"
+      ]
+    },
+    {
+      "id": "TAC-02",
+      "requirement": "header-prefix access follows the bound plan",
+      "why": "The pre-session implementation read a prefix unconditionally, violating six sources.",
+      "mechanism_available": "90ccbd54c549f67358d0c02ad18ff90b843cf3ee plan-controlled header-prefix access",
+      "status": "PENDING_HQ200_RUNTIME_ACCEPTANCE",
+      "sources_affected": [
+        "SRC02",
+        "SRC06",
+        "SRC08",
+        "SRC12",
+        "SRC14",
+        "SRC27"
+      ]
+    },
+    {
+      "id": "TAC-03",
+      "requirement": "decoder_invocations is separately measured",
+      "why": "The accepted broker had NO decoder-entry counter; reader_invocations is not a substitute under the settled non-substitutability law.",
+      "mechanism_available": "90ccbd54c549f67358d0c02ad18ff90b843cf3ee separate decoder_invocations account/budget",
+      "status": "PENDING_HQ200_RUNTIME_ACCEPTANCE",
+      "sources_affected": [
+        "SRC02",
+        "SRC06",
+        "SRC08",
+        "SRC12",
+        "SRC14",
+        "SRC26",
+        "SRC27"
+      ]
+    },
+    {
+      "id": "TAC-04",
+      "requirement": "bound plan cannot be swapped after issuance",
+      "why": "A plan swapped after issuance would silently change the authorised operation.",
+      "mechanism_available": "90ccbd54c549f67358d0c02ad18ff90b843cf3ee SourceOperationPlan binding",
+      "status": "PENDING_HQ200_RUNTIME_ACCEPTANCE",
+      "sources_affected": [
+        "SRC02",
+        "SRC06",
+        "SRC08",
+        "SRC12",
+        "SRC14",
+        "SRC26",
+        "SRC27"
+      ]
+    },
+    {
+      "id": "TAC-05",
+      "requirement": "outer full-route-pass maximum is enforced",
+      "why": "The frozen SRC27 route-pass ceiling has no owner in code.",
+      "mechanism_available": "NONE YET \u2014 full_route_passes has zero occurrences in the session candidate",
+      "status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "sources_affected": [
+        "SRC27"
+      ]
+    },
+    {
+      "id": "TAC-06",
+      "requirement": "the source-session owner is deterministic",
+      "why": "GOV-SCOPE-001: broker scope was one _decode call with caller-responsible release and no finalizer.",
+      "mechanism_available": "90ccbd54c549f67358d0c02ad18ff90b843cf3ee GovernedSourceSession with deterministic close, one broker lifecycle, pre-operation second-decoder refusal",
+      "status": "PENDING_HQ200_RUNTIME_ACCEPTANCE",
+      "sources_affected": [
+        "SRC02",
+        "SRC06",
+        "SRC08",
+        "SRC12",
+        "SRC14",
+        "SRC26",
+        "SRC27"
+      ]
+    },
+    {
+      "id": "TAC-07",
+      "requirement": "source-specific plans are not hard-coded in the generic session module",
+      "why": "Plans belong in the warrant instrument; the generic layer must consume a bound plan.",
+      "mechanism_available": "90ccbd54c549f67358d0c02ad18ff90b843cf3ee generic SourceOperationPlan binding",
+      "status": "PENDING_HQ200_RUNTIME_ACCEPTANCE",
+      "sources_affected": [
+        "SRC02",
+        "SRC06",
+        "SRC08",
+        "SRC12",
+        "SRC14",
+        "SRC26",
+        "SRC27"
+      ]
+    }
+  ],
+  "session_candidate_status": "CANDIDATE_READY_FOR_INDEPENDENT_ACCEPTANCE \u2014 not adopted.",
+  "not_locator_fields": true
+}

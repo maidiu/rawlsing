@@ -1,0 +1,2628 @@
+{
+  "schema": "PYAT_HQ200_AUTHORITY_POLICY_OBSERVED_MATRIX@1.0.0",
+  "purpose": "Every numeric/policy field in the successor, classified so no policy ceiling can be mistaken for frozen historical authority.",
+  "counts": {
+    "FROZEN_AUTHORITY": 157,
+    "IMPLEMENTATION_POLICY": 29,
+    "PENDING_TECHNICAL_ACCEPTANCE": 66,
+    "UNBOUND_SOURCE_DEPENDENT": 21,
+    "candidate_maxima_pending_runtime_acceptance": 29
+  },
+  "frozen_authority": [
+    {
+      "source_key": "SRC02",
+      "account": "source_path_existence_access_checks",
+      "field": "floor",
+      "value": 1,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/00_COMMISSION.md .preconditions[3]"
+    },
+    {
+      "source_key": "SRC02",
+      "account": "full_file_sha256_passes",
+      "field": "floor",
+      "value": 1,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/00_COMMISSION.md .preconditions[3]"
+    },
+    {
+      "source_key": "SRC02",
+      "account": "header_prefix_reads",
+      "field": "expected",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+    },
+    {
+      "source_key": "SRC02",
+      "account": "header_prefix_reads",
+      "field": "floor",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "e7ce39dade6b169ab068f5f786b7a0dea06846dd:PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ200_R9_SESSION_PLAN_ADJUDICATION_R1.md"
+      ]
+    },
+    {
+      "source_key": "SRC02",
+      "account": "header_prefix_reads",
+      "field": "maximum",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "e7ce39dade6b169ab068f5f786b7a0dea06846dd:PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ200_R9_SESSION_PLAN_ADJUDICATION_R1.md"
+      ]
+    },
+    {
+      "source_key": "SRC02",
+      "account": "header_prefix_bytes",
+      "field": "expected",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+    },
+    {
+      "source_key": "SRC02",
+      "account": "header_prefix_bytes",
+      "field": "floor",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC02",
+      "account": "header_prefix_bytes",
+      "field": "maximum",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC02",
+      "account": "selected_column_reads",
+      "field": "expected",
+      "value": 1,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC02.expected_selected_reads"
+    },
+    {
+      "source_key": "SRC02",
+      "account": "selected_column_reads",
+      "field": "floor",
+      "value": 1,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "e7ce39dade6b169ab068f5f786b7a0dea06846dd:PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ200_R9_SESSION_PLAN_ADJUDICATION_R1.md"
+      ]
+    },
+    {
+      "source_key": "SRC02",
+      "account": "selected_column_reads",
+      "field": "maximum",
+      "value": 1,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "e7ce39dade6b169ab068f5f786b7a0dea06846dd:PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ200_R9_SESSION_PLAN_ADJUDICATION_R1.md"
+      ]
+    },
+    {
+      "source_key": "SRC02",
+      "account": "full_reads",
+      "field": "expected",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC02.expected_full_reads"
+    },
+    {
+      "source_key": "SRC02",
+      "account": "full_reads",
+      "field": "floor",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC02",
+      "account": "full_reads",
+      "field": "maximum",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC02",
+      "account": "retries",
+      "field": "expected",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC02.max_retry_budget"
+    },
+    {
+      "source_key": "SRC02",
+      "account": "retries",
+      "field": "floor",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/07_UNSIGNED_SOURCE_WARRANT_TEMPLATE.json"
+      ]
+    },
+    {
+      "source_key": "SRC02",
+      "account": "retries",
+      "field": "maximum",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/07_UNSIGNED_SOURCE_WARRANT_TEMPLATE.json"
+      ]
+    },
+    {
+      "source_key": "SRC02",
+      "account": "governed_full_route_passes",
+      "field": "expected",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+    },
+    {
+      "source_key": "SRC02",
+      "account": "governed_full_route_passes",
+      "field": "floor",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC02",
+      "account": "governed_full_route_passes",
+      "field": "maximum",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC06",
+      "account": "source_path_existence_access_checks",
+      "field": "floor",
+      "value": 1,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/00_COMMISSION.md .preconditions[3]"
+    },
+    {
+      "source_key": "SRC06",
+      "account": "full_file_sha256_passes",
+      "field": "floor",
+      "value": 1,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/00_COMMISSION.md .preconditions[3]"
+    },
+    {
+      "source_key": "SRC06",
+      "account": "header_prefix_reads",
+      "field": "expected",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+    },
+    {
+      "source_key": "SRC06",
+      "account": "header_prefix_reads",
+      "field": "floor",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "e7ce39dade6b169ab068f5f786b7a0dea06846dd:PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ200_R9_SESSION_PLAN_ADJUDICATION_R1.md"
+      ]
+    },
+    {
+      "source_key": "SRC06",
+      "account": "header_prefix_reads",
+      "field": "maximum",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "e7ce39dade6b169ab068f5f786b7a0dea06846dd:PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ200_R9_SESSION_PLAN_ADJUDICATION_R1.md"
+      ]
+    },
+    {
+      "source_key": "SRC06",
+      "account": "header_prefix_bytes",
+      "field": "expected",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+    },
+    {
+      "source_key": "SRC06",
+      "account": "header_prefix_bytes",
+      "field": "floor",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC06",
+      "account": "header_prefix_bytes",
+      "field": "maximum",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC06",
+      "account": "selected_column_reads",
+      "field": "expected",
+      "value": 1,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC06.expected_selected_reads"
+    },
+    {
+      "source_key": "SRC06",
+      "account": "selected_column_reads",
+      "field": "floor",
+      "value": 1,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "e7ce39dade6b169ab068f5f786b7a0dea06846dd:PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ200_R9_SESSION_PLAN_ADJUDICATION_R1.md"
+      ]
+    },
+    {
+      "source_key": "SRC06",
+      "account": "selected_column_reads",
+      "field": "maximum",
+      "value": 1,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "e7ce39dade6b169ab068f5f786b7a0dea06846dd:PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ200_R9_SESSION_PLAN_ADJUDICATION_R1.md"
+      ]
+    },
+    {
+      "source_key": "SRC06",
+      "account": "full_reads",
+      "field": "expected",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC06.expected_full_reads"
+    },
+    {
+      "source_key": "SRC06",
+      "account": "full_reads",
+      "field": "floor",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC06",
+      "account": "full_reads",
+      "field": "maximum",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC06",
+      "account": "retries",
+      "field": "expected",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC06.max_retry_budget"
+    },
+    {
+      "source_key": "SRC06",
+      "account": "retries",
+      "field": "floor",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/07_UNSIGNED_SOURCE_WARRANT_TEMPLATE.json"
+      ]
+    },
+    {
+      "source_key": "SRC06",
+      "account": "retries",
+      "field": "maximum",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/07_UNSIGNED_SOURCE_WARRANT_TEMPLATE.json"
+      ]
+    },
+    {
+      "source_key": "SRC06",
+      "account": "governed_full_route_passes",
+      "field": "expected",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+    },
+    {
+      "source_key": "SRC06",
+      "account": "governed_full_route_passes",
+      "field": "floor",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC06",
+      "account": "governed_full_route_passes",
+      "field": "maximum",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC08",
+      "account": "source_path_existence_access_checks",
+      "field": "floor",
+      "value": 1,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/00_COMMISSION.md .preconditions[3]"
+    },
+    {
+      "source_key": "SRC08",
+      "account": "full_file_sha256_passes",
+      "field": "floor",
+      "value": 1,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/00_COMMISSION.md .preconditions[3]"
+    },
+    {
+      "source_key": "SRC08",
+      "account": "metadata_reads",
+      "field": "expected",
+      "value": 1,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC08.expected_metadata_reads"
+    },
+    {
+      "source_key": "SRC08",
+      "account": "metadata_reads",
+      "field": "floor",
+      "value": 1,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC08",
+      "account": "metadata_reads",
+      "field": "maximum",
+      "value": 1,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC08",
+      "account": "header_prefix_reads",
+      "field": "expected",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+    },
+    {
+      "source_key": "SRC08",
+      "account": "header_prefix_reads",
+      "field": "floor",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "e7ce39dade6b169ab068f5f786b7a0dea06846dd:PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ200_R9_SESSION_PLAN_ADJUDICATION_R1.md"
+      ]
+    },
+    {
+      "source_key": "SRC08",
+      "account": "header_prefix_reads",
+      "field": "maximum",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "e7ce39dade6b169ab068f5f786b7a0dea06846dd:PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ200_R9_SESSION_PLAN_ADJUDICATION_R1.md"
+      ]
+    },
+    {
+      "source_key": "SRC08",
+      "account": "header_prefix_bytes",
+      "field": "expected",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+    },
+    {
+      "source_key": "SRC08",
+      "account": "header_prefix_bytes",
+      "field": "floor",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC08",
+      "account": "header_prefix_bytes",
+      "field": "maximum",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC08",
+      "account": "selected_column_reads",
+      "field": "expected",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC08.expected_selected_reads"
+    },
+    {
+      "source_key": "SRC08",
+      "account": "selected_column_reads",
+      "field": "floor",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC08",
+      "account": "selected_column_reads",
+      "field": "maximum",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC08",
+      "account": "full_reads",
+      "field": "expected",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC08.expected_full_reads"
+    },
+    {
+      "source_key": "SRC08",
+      "account": "full_reads",
+      "field": "floor",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC08",
+      "account": "full_reads",
+      "field": "maximum",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC08",
+      "account": "retries",
+      "field": "expected",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC08.max_retry_budget"
+    },
+    {
+      "source_key": "SRC08",
+      "account": "retries",
+      "field": "floor",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/07_UNSIGNED_SOURCE_WARRANT_TEMPLATE.json"
+      ]
+    },
+    {
+      "source_key": "SRC08",
+      "account": "retries",
+      "field": "maximum",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/07_UNSIGNED_SOURCE_WARRANT_TEMPLATE.json"
+      ]
+    },
+    {
+      "source_key": "SRC08",
+      "account": "governed_full_route_passes",
+      "field": "expected",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+    },
+    {
+      "source_key": "SRC08",
+      "account": "governed_full_route_passes",
+      "field": "floor",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC08",
+      "account": "governed_full_route_passes",
+      "field": "maximum",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC08",
+      "account": "row_data_reads",
+      "field": "expected",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .O1_C07_instrumentation.frozen_zero_budgets.SRC08_row_data_reads"
+    },
+    {
+      "source_key": "SRC08",
+      "account": "row_data_reads",
+      "field": "floor",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC08",
+      "account": "row_data_reads",
+      "field": "maximum",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC08",
+      "account": "selected_columns",
+      "field": "expected",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .O1_C07_instrumentation.frozen_zero_budgets.SRC08_selected_columns"
+    },
+    {
+      "source_key": "SRC08",
+      "account": "selected_columns",
+      "field": "floor",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC08",
+      "account": "selected_columns",
+      "field": "maximum",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC12",
+      "account": "source_path_existence_access_checks",
+      "field": "floor",
+      "value": 1,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/00_COMMISSION.md .preconditions[3]"
+    },
+    {
+      "source_key": "SRC12",
+      "account": "full_file_sha256_passes",
+      "field": "floor",
+      "value": 1,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/00_COMMISSION.md .preconditions[3]"
+    },
+    {
+      "source_key": "SRC12",
+      "account": "metadata_reads",
+      "field": "expected",
+      "value": 1,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC12.expected_metadata_reads"
+    },
+    {
+      "source_key": "SRC12",
+      "account": "metadata_reads",
+      "field": "floor",
+      "value": 1,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC12",
+      "account": "metadata_reads",
+      "field": "maximum",
+      "value": 1,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC12",
+      "account": "header_prefix_reads",
+      "field": "expected",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+    },
+    {
+      "source_key": "SRC12",
+      "account": "header_prefix_reads",
+      "field": "floor",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "e7ce39dade6b169ab068f5f786b7a0dea06846dd:PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ200_R9_SESSION_PLAN_ADJUDICATION_R1.md"
+      ]
+    },
+    {
+      "source_key": "SRC12",
+      "account": "header_prefix_reads",
+      "field": "maximum",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "e7ce39dade6b169ab068f5f786b7a0dea06846dd:PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ200_R9_SESSION_PLAN_ADJUDICATION_R1.md"
+      ]
+    },
+    {
+      "source_key": "SRC12",
+      "account": "header_prefix_bytes",
+      "field": "expected",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+    },
+    {
+      "source_key": "SRC12",
+      "account": "header_prefix_bytes",
+      "field": "floor",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC12",
+      "account": "header_prefix_bytes",
+      "field": "maximum",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC12",
+      "account": "selected_column_reads",
+      "field": "expected",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC12.expected_selected_reads"
+    },
+    {
+      "source_key": "SRC12",
+      "account": "selected_column_reads",
+      "field": "floor",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC12",
+      "account": "selected_column_reads",
+      "field": "maximum",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC12",
+      "account": "full_reads",
+      "field": "expected",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC12.expected_full_reads"
+    },
+    {
+      "source_key": "SRC12",
+      "account": "full_reads",
+      "field": "floor",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC12",
+      "account": "full_reads",
+      "field": "maximum",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC12",
+      "account": "retries",
+      "field": "expected",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC12.max_retry_budget"
+    },
+    {
+      "source_key": "SRC12",
+      "account": "retries",
+      "field": "floor",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/07_UNSIGNED_SOURCE_WARRANT_TEMPLATE.json"
+      ]
+    },
+    {
+      "source_key": "SRC12",
+      "account": "retries",
+      "field": "maximum",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/07_UNSIGNED_SOURCE_WARRANT_TEMPLATE.json"
+      ]
+    },
+    {
+      "source_key": "SRC12",
+      "account": "governed_full_route_passes",
+      "field": "expected",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+    },
+    {
+      "source_key": "SRC12",
+      "account": "governed_full_route_passes",
+      "field": "floor",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC12",
+      "account": "governed_full_route_passes",
+      "field": "maximum",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC12",
+      "account": "row_data_reads",
+      "field": "expected",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .O1_C07_instrumentation.frozen_zero_budgets.SRC12_row_data_reads"
+    },
+    {
+      "source_key": "SRC12",
+      "account": "row_data_reads",
+      "field": "floor",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC12",
+      "account": "row_data_reads",
+      "field": "maximum",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC12",
+      "account": "selected_columns",
+      "field": "expected",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .O1_C07_instrumentation.frozen_zero_budgets.SRC12_selected_columns"
+    },
+    {
+      "source_key": "SRC12",
+      "account": "selected_columns",
+      "field": "floor",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC12",
+      "account": "selected_columns",
+      "field": "maximum",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC14",
+      "account": "source_path_existence_access_checks",
+      "field": "floor",
+      "value": 1,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/00_COMMISSION.md .preconditions[3]"
+    },
+    {
+      "source_key": "SRC14",
+      "account": "full_file_sha256_passes",
+      "field": "floor",
+      "value": 1,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/00_COMMISSION.md .preconditions[3]"
+    },
+    {
+      "source_key": "SRC14",
+      "account": "header_prefix_reads",
+      "field": "expected",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+    },
+    {
+      "source_key": "SRC14",
+      "account": "header_prefix_reads",
+      "field": "floor",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "e7ce39dade6b169ab068f5f786b7a0dea06846dd:PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ200_R9_SESSION_PLAN_ADJUDICATION_R1.md"
+      ]
+    },
+    {
+      "source_key": "SRC14",
+      "account": "header_prefix_reads",
+      "field": "maximum",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "e7ce39dade6b169ab068f5f786b7a0dea06846dd:PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ200_R9_SESSION_PLAN_ADJUDICATION_R1.md"
+      ]
+    },
+    {
+      "source_key": "SRC14",
+      "account": "header_prefix_bytes",
+      "field": "expected",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+    },
+    {
+      "source_key": "SRC14",
+      "account": "header_prefix_bytes",
+      "field": "floor",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC14",
+      "account": "header_prefix_bytes",
+      "field": "maximum",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC14",
+      "account": "selected_column_reads",
+      "field": "expected",
+      "value": 1,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC14.expected_selected_reads"
+    },
+    {
+      "source_key": "SRC14",
+      "account": "selected_column_reads",
+      "field": "floor",
+      "value": 1,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "e7ce39dade6b169ab068f5f786b7a0dea06846dd:PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ200_R9_SESSION_PLAN_ADJUDICATION_R1.md"
+      ]
+    },
+    {
+      "source_key": "SRC14",
+      "account": "selected_column_reads",
+      "field": "maximum",
+      "value": 1,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "e7ce39dade6b169ab068f5f786b7a0dea06846dd:PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ200_R9_SESSION_PLAN_ADJUDICATION_R1.md"
+      ]
+    },
+    {
+      "source_key": "SRC14",
+      "account": "full_reads",
+      "field": "expected",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC14.expected_full_reads"
+    },
+    {
+      "source_key": "SRC14",
+      "account": "full_reads",
+      "field": "floor",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC14",
+      "account": "full_reads",
+      "field": "maximum",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC14",
+      "account": "retries",
+      "field": "expected",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC14.max_retry_budget"
+    },
+    {
+      "source_key": "SRC14",
+      "account": "retries",
+      "field": "floor",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/07_UNSIGNED_SOURCE_WARRANT_TEMPLATE.json"
+      ]
+    },
+    {
+      "source_key": "SRC14",
+      "account": "retries",
+      "field": "maximum",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/07_UNSIGNED_SOURCE_WARRANT_TEMPLATE.json"
+      ]
+    },
+    {
+      "source_key": "SRC14",
+      "account": "governed_full_route_passes",
+      "field": "expected",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+    },
+    {
+      "source_key": "SRC14",
+      "account": "governed_full_route_passes",
+      "field": "floor",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC14",
+      "account": "governed_full_route_passes",
+      "field": "maximum",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC26",
+      "account": "source_path_existence_access_checks",
+      "field": "floor",
+      "value": 1,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/00_COMMISSION.md .preconditions[3]"
+    },
+    {
+      "source_key": "SRC26",
+      "account": "full_file_sha256_passes",
+      "field": "floor",
+      "value": 1,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/00_COMMISSION.md .preconditions[3]"
+    },
+    {
+      "source_key": "SRC26",
+      "account": "header_prefix_reads",
+      "field": "floor",
+      "value": 1,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC26"
+    },
+    {
+      "source_key": "SRC26",
+      "account": "header_prefix_bytes",
+      "field": "expected",
+      "value": 176,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC26.expected_header_prefix_bytes"
+    },
+    {
+      "source_key": "SRC26",
+      "account": "header_prefix_bytes",
+      "field": "floor",
+      "value": 176,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC26",
+      "account": "header_prefix_bytes",
+      "field": "maximum",
+      "value": 176,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC26",
+      "account": "selected_column_reads",
+      "field": "expected",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC26.expected_selected_reads"
+    },
+    {
+      "source_key": "SRC26",
+      "account": "selected_column_reads",
+      "field": "floor",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC26",
+      "account": "selected_column_reads",
+      "field": "maximum",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC26",
+      "account": "full_reads",
+      "field": "expected",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC26.expected_full_reads"
+    },
+    {
+      "source_key": "SRC26",
+      "account": "full_reads",
+      "field": "floor",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC26",
+      "account": "full_reads",
+      "field": "maximum",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC26",
+      "account": "retries",
+      "field": "expected",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC26.max_retry_budget"
+    },
+    {
+      "source_key": "SRC26",
+      "account": "retries",
+      "field": "floor",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/07_UNSIGNED_SOURCE_WARRANT_TEMPLATE.json"
+      ]
+    },
+    {
+      "source_key": "SRC26",
+      "account": "retries",
+      "field": "maximum",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/07_UNSIGNED_SOURCE_WARRANT_TEMPLATE.json"
+      ]
+    },
+    {
+      "source_key": "SRC26",
+      "account": "governed_full_route_passes",
+      "field": "expected",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+    },
+    {
+      "source_key": "SRC26",
+      "account": "governed_full_route_passes",
+      "field": "floor",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC26",
+      "account": "governed_full_route_passes",
+      "field": "maximum",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC26",
+      "account": "raw_nominal_case_size",
+      "field": "expected",
+      "value": 174,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json .per_source[SRC26]"
+    },
+    {
+      "source_key": "SRC26",
+      "account": "raw_nominal_case_size",
+      "field": "floor",
+      "value": 174,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4"
+      ]
+    },
+    {
+      "source_key": "SRC26",
+      "account": "raw_nominal_case_size",
+      "field": "maximum",
+      "value": 174,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4"
+      ]
+    },
+    {
+      "source_key": "SRC26",
+      "account": "decoded_dictionary_data_width",
+      "field": "expected",
+      "value": 332,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json .per_source[SRC26]"
+    },
+    {
+      "source_key": "SRC26",
+      "account": "decoded_dictionary_data_width",
+      "field": "floor",
+      "value": 332,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4"
+      ]
+    },
+    {
+      "source_key": "SRC26",
+      "account": "decoded_dictionary_data_width",
+      "field": "maximum",
+      "value": 332,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4"
+      ]
+    },
+    {
+      "source_key": "SRC27",
+      "account": "source_path_existence_access_checks",
+      "field": "floor",
+      "value": 1,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/00_COMMISSION.md .preconditions[3]"
+    },
+    {
+      "source_key": "SRC27",
+      "account": "full_file_sha256_passes",
+      "field": "floor",
+      "value": 1,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/00_COMMISSION.md .preconditions[3]"
+    },
+    {
+      "source_key": "SRC27",
+      "account": "header_prefix_reads",
+      "field": "expected",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+    },
+    {
+      "source_key": "SRC27",
+      "account": "header_prefix_reads",
+      "field": "floor",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "e7ce39dade6b169ab068f5f786b7a0dea06846dd:PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ200_R9_SESSION_PLAN_ADJUDICATION_R1.md"
+      ]
+    },
+    {
+      "source_key": "SRC27",
+      "account": "header_prefix_reads",
+      "field": "maximum",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "e7ce39dade6b169ab068f5f786b7a0dea06846dd:PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ200_R9_SESSION_PLAN_ADJUDICATION_R1.md"
+      ]
+    },
+    {
+      "source_key": "SRC27",
+      "account": "header_prefix_bytes",
+      "field": "expected",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+    },
+    {
+      "source_key": "SRC27",
+      "account": "header_prefix_bytes",
+      "field": "floor",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC27",
+      "account": "header_prefix_bytes",
+      "field": "maximum",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC27",
+      "account": "full_reads",
+      "field": "floor",
+      "value": 1,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .hardened_note_on_the_SRC27_single_pass 'at minimum: ... one full compatibility read'"
+    },
+    {
+      "source_key": "SRC27",
+      "account": "retries",
+      "field": "expected",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC27.max_retry_budget"
+    },
+    {
+      "source_key": "SRC27",
+      "account": "retries",
+      "field": "floor",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/07_UNSIGNED_SOURCE_WARRANT_TEMPLATE.json"
+      ]
+    },
+    {
+      "source_key": "SRC27",
+      "account": "retries",
+      "field": "maximum",
+      "value": 0,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/07_UNSIGNED_SOURCE_WARRANT_TEMPLATE.json"
+      ]
+    },
+    {
+      "source_key": "SRC27",
+      "account": "governed_full_route_passes",
+      "field": "expected",
+      "value": 1,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC27.expected_full_route_passes"
+    },
+    {
+      "source_key": "SRC27",
+      "account": "governed_full_route_passes",
+      "field": "floor",
+      "value": 1,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "e7ce39dade6b169ab068f5f786b7a0dea06846dd:PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ200_R9_SESSION_PLAN_ADJUDICATION_R1.md"
+      ]
+    },
+    {
+      "source_key": "SRC27",
+      "account": "governed_full_route_passes",
+      "field": "maximum",
+      "value": 1,
+      "authority_status": "FROZEN_AUTHORITY",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json .per_source_expected_operation_class.SRC27.expected_full_route_passes_max"
+    }
+  ],
+  "implementation_policy": [
+    {
+      "source_key": "SRC02",
+      "account": "source_path_existence_access_checks",
+      "field": "maximum",
+      "value": 1,
+      "authority_status": "PENDING_HQ200_RUNTIME_ACCEPTANCE",
+      "provenance": "90ccbd54c549f67358d0c02ad18ff90b843cf3ee rawlsing_next/pre553_source_session.py"
+    },
+    {
+      "source_key": "SRC02",
+      "account": "full_file_sha256_passes",
+      "field": "maximum",
+      "value": 1,
+      "authority_status": "PENDING_HQ200_RUNTIME_ACCEPTANCE",
+      "provenance": [
+        "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/00_COMMISSION.md"
+      ]
+    },
+    {
+      "source_key": "SRC02",
+      "account": "path_level_opens",
+      "field": "maximum",
+      "value": 1,
+      "authority_status": "PENDING_HQ200_RUNTIME_ACCEPTANCE",
+      "provenance": "90ccbd54c549f67358d0c02ad18ff90b843cf3ee rawlsing_next/pre553_source_session.py"
+    },
+    {
+      "source_key": "SRC02",
+      "account": "decoder_invocations",
+      "field": "maximum",
+      "value": 1,
+      "authority_status": "PENDING_HQ200_RUNTIME_ACCEPTANCE",
+      "provenance": "90ccbd54c549f67358d0c02ad18ff90b843cf3ee rawlsing_next/pre553_source_session.py"
+    },
+    {
+      "source_key": "SRC06",
+      "account": "source_path_existence_access_checks",
+      "field": "maximum",
+      "value": 1,
+      "authority_status": "PENDING_HQ200_RUNTIME_ACCEPTANCE",
+      "provenance": "90ccbd54c549f67358d0c02ad18ff90b843cf3ee rawlsing_next/pre553_source_session.py"
+    },
+    {
+      "source_key": "SRC06",
+      "account": "full_file_sha256_passes",
+      "field": "maximum",
+      "value": 1,
+      "authority_status": "PENDING_HQ200_RUNTIME_ACCEPTANCE",
+      "provenance": [
+        "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/00_COMMISSION.md"
+      ]
+    },
+    {
+      "source_key": "SRC06",
+      "account": "path_level_opens",
+      "field": "maximum",
+      "value": 1,
+      "authority_status": "PENDING_HQ200_RUNTIME_ACCEPTANCE",
+      "provenance": "90ccbd54c549f67358d0c02ad18ff90b843cf3ee rawlsing_next/pre553_source_session.py"
+    },
+    {
+      "source_key": "SRC06",
+      "account": "decoder_invocations",
+      "field": "maximum",
+      "value": 1,
+      "authority_status": "PENDING_HQ200_RUNTIME_ACCEPTANCE",
+      "provenance": "90ccbd54c549f67358d0c02ad18ff90b843cf3ee rawlsing_next/pre553_source_session.py"
+    },
+    {
+      "source_key": "SRC08",
+      "account": "source_path_existence_access_checks",
+      "field": "maximum",
+      "value": 1,
+      "authority_status": "PENDING_HQ200_RUNTIME_ACCEPTANCE",
+      "provenance": "90ccbd54c549f67358d0c02ad18ff90b843cf3ee rawlsing_next/pre553_source_session.py"
+    },
+    {
+      "source_key": "SRC08",
+      "account": "full_file_sha256_passes",
+      "field": "maximum",
+      "value": 1,
+      "authority_status": "PENDING_HQ200_RUNTIME_ACCEPTANCE",
+      "provenance": [
+        "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/00_COMMISSION.md"
+      ]
+    },
+    {
+      "source_key": "SRC08",
+      "account": "path_level_opens",
+      "field": "maximum",
+      "value": 1,
+      "authority_status": "PENDING_HQ200_RUNTIME_ACCEPTANCE",
+      "provenance": "90ccbd54c549f67358d0c02ad18ff90b843cf3ee rawlsing_next/pre553_source_session.py"
+    },
+    {
+      "source_key": "SRC08",
+      "account": "decoder_invocations",
+      "field": "maximum",
+      "value": 1,
+      "authority_status": "PENDING_HQ200_RUNTIME_ACCEPTANCE",
+      "provenance": "90ccbd54c549f67358d0c02ad18ff90b843cf3ee rawlsing_next/pre553_source_session.py"
+    },
+    {
+      "source_key": "SRC12",
+      "account": "source_path_existence_access_checks",
+      "field": "maximum",
+      "value": 1,
+      "authority_status": "PENDING_HQ200_RUNTIME_ACCEPTANCE",
+      "provenance": "90ccbd54c549f67358d0c02ad18ff90b843cf3ee rawlsing_next/pre553_source_session.py"
+    },
+    {
+      "source_key": "SRC12",
+      "account": "full_file_sha256_passes",
+      "field": "maximum",
+      "value": 1,
+      "authority_status": "PENDING_HQ200_RUNTIME_ACCEPTANCE",
+      "provenance": [
+        "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/00_COMMISSION.md"
+      ]
+    },
+    {
+      "source_key": "SRC12",
+      "account": "path_level_opens",
+      "field": "maximum",
+      "value": 1,
+      "authority_status": "PENDING_HQ200_RUNTIME_ACCEPTANCE",
+      "provenance": "90ccbd54c549f67358d0c02ad18ff90b843cf3ee rawlsing_next/pre553_source_session.py"
+    },
+    {
+      "source_key": "SRC12",
+      "account": "decoder_invocations",
+      "field": "maximum",
+      "value": 1,
+      "authority_status": "PENDING_HQ200_RUNTIME_ACCEPTANCE",
+      "provenance": "90ccbd54c549f67358d0c02ad18ff90b843cf3ee rawlsing_next/pre553_source_session.py"
+    },
+    {
+      "source_key": "SRC14",
+      "account": "source_path_existence_access_checks",
+      "field": "maximum",
+      "value": 1,
+      "authority_status": "PENDING_HQ200_RUNTIME_ACCEPTANCE",
+      "provenance": "90ccbd54c549f67358d0c02ad18ff90b843cf3ee rawlsing_next/pre553_source_session.py"
+    },
+    {
+      "source_key": "SRC14",
+      "account": "full_file_sha256_passes",
+      "field": "maximum",
+      "value": 1,
+      "authority_status": "PENDING_HQ200_RUNTIME_ACCEPTANCE",
+      "provenance": [
+        "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/00_COMMISSION.md"
+      ]
+    },
+    {
+      "source_key": "SRC14",
+      "account": "path_level_opens",
+      "field": "maximum",
+      "value": 1,
+      "authority_status": "PENDING_HQ200_RUNTIME_ACCEPTANCE",
+      "provenance": "90ccbd54c549f67358d0c02ad18ff90b843cf3ee rawlsing_next/pre553_source_session.py"
+    },
+    {
+      "source_key": "SRC14",
+      "account": "decoder_invocations",
+      "field": "maximum",
+      "value": 1,
+      "authority_status": "PENDING_HQ200_RUNTIME_ACCEPTANCE",
+      "provenance": "90ccbd54c549f67358d0c02ad18ff90b843cf3ee rawlsing_next/pre553_source_session.py"
+    },
+    {
+      "source_key": "SRC26",
+      "account": "source_path_existence_access_checks",
+      "field": "maximum",
+      "value": 1,
+      "authority_status": "PENDING_HQ200_RUNTIME_ACCEPTANCE",
+      "provenance": "90ccbd54c549f67358d0c02ad18ff90b843cf3ee rawlsing_next/pre553_source_session.py"
+    },
+    {
+      "source_key": "SRC26",
+      "account": "full_file_sha256_passes",
+      "field": "maximum",
+      "value": 1,
+      "authority_status": "PENDING_HQ200_RUNTIME_ACCEPTANCE",
+      "provenance": [
+        "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/00_COMMISSION.md"
+      ]
+    },
+    {
+      "source_key": "SRC26",
+      "account": "path_level_opens",
+      "field": "maximum",
+      "value": 1,
+      "authority_status": "PENDING_HQ200_RUNTIME_ACCEPTANCE",
+      "provenance": "90ccbd54c549f67358d0c02ad18ff90b843cf3ee rawlsing_next/pre553_source_session.py"
+    },
+    {
+      "source_key": "SRC26",
+      "account": "decoder_invocations",
+      "field": "maximum",
+      "value": 1,
+      "authority_status": "PENDING_HQ200_RUNTIME_ACCEPTANCE",
+      "provenance": "90ccbd54c549f67358d0c02ad18ff90b843cf3ee rawlsing_next/pre553_source_session.py"
+    },
+    {
+      "source_key": "SRC27",
+      "account": "source_path_existence_access_checks",
+      "field": "maximum",
+      "value": 1,
+      "authority_status": "PENDING_HQ200_RUNTIME_ACCEPTANCE",
+      "provenance": "90ccbd54c549f67358d0c02ad18ff90b843cf3ee rawlsing_next/pre553_source_session.py"
+    },
+    {
+      "source_key": "SRC27",
+      "account": "full_file_sha256_passes",
+      "field": "maximum",
+      "value": 1,
+      "authority_status": "PENDING_HQ200_RUNTIME_ACCEPTANCE",
+      "provenance": [
+        "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/00_COMMISSION.md"
+      ]
+    },
+    {
+      "source_key": "SRC27",
+      "account": "path_level_opens",
+      "field": "maximum",
+      "value": 1,
+      "authority_status": "PENDING_HQ200_RUNTIME_ACCEPTANCE",
+      "provenance": "90ccbd54c549f67358d0c02ad18ff90b843cf3ee rawlsing_next/pre553_source_session.py"
+    },
+    {
+      "source_key": "SRC27",
+      "account": "decoder_invocations",
+      "field": "maximum",
+      "value": 1,
+      "authority_status": "PENDING_HQ200_RUNTIME_ACCEPTANCE",
+      "provenance": "90ccbd54c549f67358d0c02ad18ff90b843cf3ee rawlsing_next/pre553_source_session.py"
+    },
+    {
+      "source_key": "SRC27",
+      "account": "full_reads",
+      "field": "maximum",
+      "value": 1,
+      "authority_status": "PENDING_HQ200_RUNTIME_ACCEPTANCE",
+      "provenance": "90ccbd54c549f67358d0c02ad18ff90b843cf3ee rawlsing_next/pre553_source_session.py"
+    }
+  ],
+  "pending_technical_acceptance": [
+    {
+      "source_key": "SRC02",
+      "account": "source_path_existence_access_checks",
+      "field": "expected",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": [
+        "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/00_COMMISSION.md",
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC02",
+      "account": "full_file_sha256_passes",
+      "field": "expected",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": [
+        "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/00_COMMISSION.md"
+      ]
+    },
+    {
+      "source_key": "SRC02",
+      "account": "path_level_opens",
+      "field": "expected",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+    },
+    {
+      "source_key": "SRC02",
+      "account": "path_level_opens",
+      "field": "floor",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+    },
+    {
+      "source_key": "SRC02",
+      "account": "metadata_reads",
+      "field": "expected",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+    },
+    {
+      "source_key": "SRC02",
+      "account": "metadata_reads",
+      "field": "floor",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC02",
+      "account": "metadata_reads",
+      "field": "maximum",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC02",
+      "account": "decoder_invocations",
+      "field": "expected",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+    },
+    {
+      "source_key": "SRC02",
+      "account": "decoder_invocations",
+      "field": "floor",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "e7ce39dade6b169ab068f5f786b7a0dea06846dd:PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ200_R9_SESSION_PLAN_ADJUDICATION_R1.md"
+      ]
+    },
+    {
+      "source_key": "SRC06",
+      "account": "source_path_existence_access_checks",
+      "field": "expected",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": [
+        "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/00_COMMISSION.md",
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC06",
+      "account": "full_file_sha256_passes",
+      "field": "expected",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": [
+        "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/00_COMMISSION.md"
+      ]
+    },
+    {
+      "source_key": "SRC06",
+      "account": "path_level_opens",
+      "field": "expected",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+    },
+    {
+      "source_key": "SRC06",
+      "account": "path_level_opens",
+      "field": "floor",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+    },
+    {
+      "source_key": "SRC06",
+      "account": "metadata_reads",
+      "field": "expected",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+    },
+    {
+      "source_key": "SRC06",
+      "account": "metadata_reads",
+      "field": "floor",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC06",
+      "account": "metadata_reads",
+      "field": "maximum",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC06",
+      "account": "decoder_invocations",
+      "field": "expected",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+    },
+    {
+      "source_key": "SRC06",
+      "account": "decoder_invocations",
+      "field": "floor",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "e7ce39dade6b169ab068f5f786b7a0dea06846dd:PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ200_R9_SESSION_PLAN_ADJUDICATION_R1.md"
+      ]
+    },
+    {
+      "source_key": "SRC08",
+      "account": "source_path_existence_access_checks",
+      "field": "expected",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": [
+        "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/00_COMMISSION.md",
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC08",
+      "account": "full_file_sha256_passes",
+      "field": "expected",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": [
+        "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/00_COMMISSION.md"
+      ]
+    },
+    {
+      "source_key": "SRC08",
+      "account": "path_level_opens",
+      "field": "expected",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+    },
+    {
+      "source_key": "SRC08",
+      "account": "path_level_opens",
+      "field": "floor",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+    },
+    {
+      "source_key": "SRC08",
+      "account": "decoder_invocations",
+      "field": "expected",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+    },
+    {
+      "source_key": "SRC08",
+      "account": "decoder_invocations",
+      "field": "floor",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "e7ce39dade6b169ab068f5f786b7a0dea06846dd:PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ200_R9_SESSION_PLAN_ADJUDICATION_R1.md"
+      ]
+    },
+    {
+      "source_key": "SRC12",
+      "account": "source_path_existence_access_checks",
+      "field": "expected",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": [
+        "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/00_COMMISSION.md",
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC12",
+      "account": "full_file_sha256_passes",
+      "field": "expected",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": [
+        "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/00_COMMISSION.md"
+      ]
+    },
+    {
+      "source_key": "SRC12",
+      "account": "path_level_opens",
+      "field": "expected",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+    },
+    {
+      "source_key": "SRC12",
+      "account": "path_level_opens",
+      "field": "floor",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+    },
+    {
+      "source_key": "SRC12",
+      "account": "decoder_invocations",
+      "field": "expected",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+    },
+    {
+      "source_key": "SRC12",
+      "account": "decoder_invocations",
+      "field": "floor",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "e7ce39dade6b169ab068f5f786b7a0dea06846dd:PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ200_R9_SESSION_PLAN_ADJUDICATION_R1.md"
+      ]
+    },
+    {
+      "source_key": "SRC14",
+      "account": "source_path_existence_access_checks",
+      "field": "expected",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": [
+        "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/00_COMMISSION.md",
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC14",
+      "account": "full_file_sha256_passes",
+      "field": "expected",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": [
+        "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/00_COMMISSION.md"
+      ]
+    },
+    {
+      "source_key": "SRC14",
+      "account": "path_level_opens",
+      "field": "expected",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+    },
+    {
+      "source_key": "SRC14",
+      "account": "path_level_opens",
+      "field": "floor",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+    },
+    {
+      "source_key": "SRC14",
+      "account": "metadata_reads",
+      "field": "expected",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+    },
+    {
+      "source_key": "SRC14",
+      "account": "metadata_reads",
+      "field": "floor",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC14",
+      "account": "metadata_reads",
+      "field": "maximum",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC14",
+      "account": "decoder_invocations",
+      "field": "expected",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+    },
+    {
+      "source_key": "SRC14",
+      "account": "decoder_invocations",
+      "field": "floor",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "e7ce39dade6b169ab068f5f786b7a0dea06846dd:PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ200_R9_SESSION_PLAN_ADJUDICATION_R1.md"
+      ]
+    },
+    {
+      "source_key": "SRC26",
+      "account": "source_path_existence_access_checks",
+      "field": "expected",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": [
+        "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/00_COMMISSION.md",
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC26",
+      "account": "full_file_sha256_passes",
+      "field": "expected",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": [
+        "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/00_COMMISSION.md"
+      ]
+    },
+    {
+      "source_key": "SRC26",
+      "account": "path_level_opens",
+      "field": "expected",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+    },
+    {
+      "source_key": "SRC26",
+      "account": "path_level_opens",
+      "field": "floor",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+    },
+    {
+      "source_key": "SRC26",
+      "account": "metadata_reads",
+      "field": "expected",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+    },
+    {
+      "source_key": "SRC26",
+      "account": "metadata_reads",
+      "field": "floor",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC26",
+      "account": "metadata_reads",
+      "field": "maximum",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC26",
+      "account": "header_prefix_reads",
+      "field": "expected",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+    },
+    {
+      "source_key": "SRC26",
+      "account": "header_prefix_reads",
+      "field": "maximum",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC26",
+      "account": "decoder_invocations",
+      "field": "expected",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+    },
+    {
+      "source_key": "SRC26",
+      "account": "decoder_invocations",
+      "field": "floor",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "e7ce39dade6b169ab068f5f786b7a0dea06846dd:PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ200_R9_SESSION_PLAN_ADJUDICATION_R1.md"
+      ]
+    },
+    {
+      "source_key": "SRC27",
+      "account": "source_path_existence_access_checks",
+      "field": "expected",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": [
+        "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/00_COMMISSION.md",
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC27",
+      "account": "full_file_sha256_passes",
+      "field": "expected",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": [
+        "c2af4f61d68e9803af83f8e26f633acfe31062fa:WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/00_COMMISSION.md"
+      ]
+    },
+    {
+      "source_key": "SRC27",
+      "account": "path_level_opens",
+      "field": "expected",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+    },
+    {
+      "source_key": "SRC27",
+      "account": "path_level_opens",
+      "field": "floor",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+    },
+    {
+      "source_key": "SRC27",
+      "account": "metadata_reads",
+      "field": "expected",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+    },
+    {
+      "source_key": "SRC27",
+      "account": "metadata_reads",
+      "field": "floor",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC27",
+      "account": "metadata_reads",
+      "field": "maximum",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+      ]
+    },
+    {
+      "source_key": "SRC27",
+      "account": "decoder_invocations",
+      "field": "expected",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+    },
+    {
+      "source_key": "SRC27",
+      "account": "decoder_invocations",
+      "field": "floor",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "e7ce39dade6b169ab068f5f786b7a0dea06846dd:PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ200_R9_SESSION_PLAN_ADJUDICATION_R1.md"
+      ]
+    },
+    {
+      "source_key": "SRC27",
+      "account": "selected_column_reads",
+      "field": "expected",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+    },
+    {
+      "source_key": "SRC27",
+      "account": "selected_column_reads",
+      "field": "floor",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "e7ce39dade6b169ab068f5f786b7a0dea06846dd:PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ200_R9_SESSION_PLAN_ADJUDICATION_R1.md"
+      ]
+    },
+    {
+      "source_key": "SRC27",
+      "account": "selected_column_reads",
+      "field": "maximum",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "e7ce39dade6b169ab068f5f786b7a0dea06846dd:PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ200_R9_SESSION_PLAN_ADJUDICATION_R1.md"
+      ]
+    },
+    {
+      "source_key": "SRC27",
+      "account": "full_reads",
+      "field": "expected",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+    },
+    {
+      "source_key": "SRC27",
+      "account": "chunk_reads",
+      "field": "expected",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json"
+    },
+    {
+      "source_key": "SRC27",
+      "account": "chunk_reads",
+      "field": "floor",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "e7ce39dade6b169ab068f5f786b7a0dea06846dd:PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ200_R9_SESSION_PLAN_ADJUDICATION_R1.md"
+      ]
+    },
+    {
+      "source_key": "SRC27",
+      "account": "chunk_reads",
+      "field": "maximum",
+      "value": null,
+      "authority_status": "PENDING_TECHNICAL_ACCEPTANCE",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "e7ce39dade6b169ab068f5f786b7a0dea06846dd:PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ200_R9_SESSION_PLAN_ADJUDICATION_R1.md"
+      ]
+    }
+  ],
+  "unbound_source_dependent": [
+    {
+      "source_key": "SRC02",
+      "account": "byte_counts_where_measurable",
+      "field": "expected",
+      "value": "UNBOUND_SOURCE_DEPENDENT__MUST_BE_BOUND_BEFORE_LAUNCH",
+      "authority_status": "UNBOUND_SOURCE_DEPENDENT",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json qualifies the account 'where measurable'"
+    },
+    {
+      "source_key": "SRC02",
+      "account": "byte_counts_where_measurable",
+      "field": "floor",
+      "value": null,
+      "authority_status": "UNBOUND_SOURCE_DEPENDENT",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "4b6335ca5fc485108b0ffb1d682a29a02e1eee51",
+        "e7ce39dade6b169ab068f5f786b7a0dea06846dd"
+      ]
+    },
+    {
+      "source_key": "SRC02",
+      "account": "byte_counts_where_measurable",
+      "field": "maximum",
+      "value": null,
+      "authority_status": "UNBOUND_SOURCE_DEPENDENT",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "4b6335ca5fc485108b0ffb1d682a29a02e1eee51",
+        "e7ce39dade6b169ab068f5f786b7a0dea06846dd"
+      ]
+    },
+    {
+      "source_key": "SRC06",
+      "account": "byte_counts_where_measurable",
+      "field": "expected",
+      "value": "UNBOUND_SOURCE_DEPENDENT__MUST_BE_BOUND_BEFORE_LAUNCH",
+      "authority_status": "UNBOUND_SOURCE_DEPENDENT",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json qualifies the account 'where measurable'"
+    },
+    {
+      "source_key": "SRC06",
+      "account": "byte_counts_where_measurable",
+      "field": "floor",
+      "value": null,
+      "authority_status": "UNBOUND_SOURCE_DEPENDENT",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "4b6335ca5fc485108b0ffb1d682a29a02e1eee51",
+        "e7ce39dade6b169ab068f5f786b7a0dea06846dd"
+      ]
+    },
+    {
+      "source_key": "SRC06",
+      "account": "byte_counts_where_measurable",
+      "field": "maximum",
+      "value": null,
+      "authority_status": "UNBOUND_SOURCE_DEPENDENT",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "4b6335ca5fc485108b0ffb1d682a29a02e1eee51",
+        "e7ce39dade6b169ab068f5f786b7a0dea06846dd"
+      ]
+    },
+    {
+      "source_key": "SRC08",
+      "account": "byte_counts_where_measurable",
+      "field": "expected",
+      "value": "UNBOUND_SOURCE_DEPENDENT__MUST_BE_BOUND_BEFORE_LAUNCH",
+      "authority_status": "UNBOUND_SOURCE_DEPENDENT",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json qualifies the account 'where measurable'"
+    },
+    {
+      "source_key": "SRC08",
+      "account": "byte_counts_where_measurable",
+      "field": "floor",
+      "value": null,
+      "authority_status": "UNBOUND_SOURCE_DEPENDENT",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "4b6335ca5fc485108b0ffb1d682a29a02e1eee51",
+        "e7ce39dade6b169ab068f5f786b7a0dea06846dd"
+      ]
+    },
+    {
+      "source_key": "SRC08",
+      "account": "byte_counts_where_measurable",
+      "field": "maximum",
+      "value": null,
+      "authority_status": "UNBOUND_SOURCE_DEPENDENT",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "4b6335ca5fc485108b0ffb1d682a29a02e1eee51",
+        "e7ce39dade6b169ab068f5f786b7a0dea06846dd"
+      ]
+    },
+    {
+      "source_key": "SRC12",
+      "account": "byte_counts_where_measurable",
+      "field": "expected",
+      "value": "UNBOUND_SOURCE_DEPENDENT__MUST_BE_BOUND_BEFORE_LAUNCH",
+      "authority_status": "UNBOUND_SOURCE_DEPENDENT",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json qualifies the account 'where measurable'"
+    },
+    {
+      "source_key": "SRC12",
+      "account": "byte_counts_where_measurable",
+      "field": "floor",
+      "value": null,
+      "authority_status": "UNBOUND_SOURCE_DEPENDENT",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "4b6335ca5fc485108b0ffb1d682a29a02e1eee51",
+        "e7ce39dade6b169ab068f5f786b7a0dea06846dd"
+      ]
+    },
+    {
+      "source_key": "SRC12",
+      "account": "byte_counts_where_measurable",
+      "field": "maximum",
+      "value": null,
+      "authority_status": "UNBOUND_SOURCE_DEPENDENT",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "4b6335ca5fc485108b0ffb1d682a29a02e1eee51",
+        "e7ce39dade6b169ab068f5f786b7a0dea06846dd"
+      ]
+    },
+    {
+      "source_key": "SRC14",
+      "account": "byte_counts_where_measurable",
+      "field": "expected",
+      "value": "UNBOUND_SOURCE_DEPENDENT__MUST_BE_BOUND_BEFORE_LAUNCH",
+      "authority_status": "UNBOUND_SOURCE_DEPENDENT",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json qualifies the account 'where measurable'"
+    },
+    {
+      "source_key": "SRC14",
+      "account": "byte_counts_where_measurable",
+      "field": "floor",
+      "value": null,
+      "authority_status": "UNBOUND_SOURCE_DEPENDENT",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "4b6335ca5fc485108b0ffb1d682a29a02e1eee51",
+        "e7ce39dade6b169ab068f5f786b7a0dea06846dd"
+      ]
+    },
+    {
+      "source_key": "SRC14",
+      "account": "byte_counts_where_measurable",
+      "field": "maximum",
+      "value": null,
+      "authority_status": "UNBOUND_SOURCE_DEPENDENT",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "4b6335ca5fc485108b0ffb1d682a29a02e1eee51",
+        "e7ce39dade6b169ab068f5f786b7a0dea06846dd"
+      ]
+    },
+    {
+      "source_key": "SRC26",
+      "account": "byte_counts_where_measurable",
+      "field": "expected",
+      "value": "UNBOUND_SOURCE_DEPENDENT__MUST_BE_BOUND_BEFORE_LAUNCH",
+      "authority_status": "UNBOUND_SOURCE_DEPENDENT",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json qualifies the account 'where measurable'"
+    },
+    {
+      "source_key": "SRC26",
+      "account": "byte_counts_where_measurable",
+      "field": "floor",
+      "value": null,
+      "authority_status": "UNBOUND_SOURCE_DEPENDENT",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "4b6335ca5fc485108b0ffb1d682a29a02e1eee51",
+        "e7ce39dade6b169ab068f5f786b7a0dea06846dd"
+      ]
+    },
+    {
+      "source_key": "SRC26",
+      "account": "byte_counts_where_measurable",
+      "field": "maximum",
+      "value": null,
+      "authority_status": "UNBOUND_SOURCE_DEPENDENT",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "4b6335ca5fc485108b0ffb1d682a29a02e1eee51",
+        "e7ce39dade6b169ab068f5f786b7a0dea06846dd"
+      ]
+    },
+    {
+      "source_key": "SRC27",
+      "account": "byte_counts_where_measurable",
+      "field": "expected",
+      "value": "UNBOUND_SOURCE_DEPENDENT__MUST_BE_BOUND_BEFORE_LAUNCH",
+      "authority_status": "UNBOUND_SOURCE_DEPENDENT",
+      "provenance": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json qualifies the account 'where measurable'"
+    },
+    {
+      "source_key": "SRC27",
+      "account": "byte_counts_where_measurable",
+      "field": "floor",
+      "value": null,
+      "authority_status": "UNBOUND_SOURCE_DEPENDENT",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "4b6335ca5fc485108b0ffb1d682a29a02e1eee51",
+        "e7ce39dade6b169ab068f5f786b7a0dea06846dd"
+      ]
+    },
+    {
+      "source_key": "SRC27",
+      "account": "byte_counts_where_measurable",
+      "field": "maximum",
+      "value": null,
+      "authority_status": "UNBOUND_SOURCE_DEPENDENT",
+      "provenance": [
+        "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+        "4b6335ca5fc485108b0ffb1d682a29a02e1eee51",
+        "e7ce39dade6b169ab068f5f786b7a0dea06846dd"
+      ]
+    }
+  ],
+  "invariants_asserted": [
+    {
+      "id": "M-01",
+      "assertion": "No IMPLEMENTATION_POLICY or PENDING_HQ200_RUNTIME_ACCEPTANCE value occupies an `expected` field.",
+      "holds": true
+    },
+    {
+      "id": "M-02",
+      "assertion": "SRC27 path_level_opens carries no value implying >= 2.",
+      "holds": true,
+      "evidence": "expected is null/PENDING; the only number is a candidate MAXIMUM 1."
+    },
+    {
+      "id": "M-03",
+      "assertion": "SRC27 full_reads expected is NOT encoded as EXACT 1.",
+      "holds": true,
+      "evidence": "expected null/PENDING, floor 1 FROZEN, maximum candidate 1."
+    },
+    {
+      "id": "M-04",
+      "assertion": "SRC27 decoder_invocations expected is NOT encoded as EXACT 1.",
+      "holds": true,
+      "evidence": "expected null/PENDING, maximum candidate 1."
+    },
+    {
+      "id": "M-05",
+      "assertion": "SRC27 selected_column_reads remains UNBOUND.",
+      "holds": true
+    },
+    {
+      "id": "M-06",
+      "assertion": "No synthetic byte total appears as a byte budget.",
+      "holds": true,
+      "evidence": "all byte accounts carry UNBOUND_SOURCE_DEPENDENT__MUST_BE_BOUND_BEFORE_LAUNCH"
+    },
+    {
+      "id": "M-07",
+      "assertion": "The outer route-pass account is a distinct account from every lower-layer account.",
+      "holds": true
+    },
+    {
+      "id": "M-08",
+      "assertion": "PRQ-07 does not appear as an open blocker.",
+      "holds": true
+    }
+  ]
+}
