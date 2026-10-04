@@ -12,6 +12,10 @@ Selected physical policy: `B__SOURCE_BACKED_VIRTUAL_C11`
 
 Control branch: `integration/pre-main-reconciliation-r1`
 
+## PRE-V3 terminal-backward completeness audit — user-directed delivery
+
+Read the [substantive report and supporting packet](ASTRA_PREV3_TERMINAL_BACKWARD_RESIDUAL_AUDIT_R1/README.md), including the [complete capability matrix](ASTRA_PREV3_TERMINAL_BACKWARD_RESIDUAL_AUDIT_R1/MATRIX.md) and [residual-only docket](ASTRA_PREV3_TERMINAL_BACKWARD_RESIDUAL_AUDIT_R1/REPORT.md#residual-only-docket). The audit incorporates accepted HQ168 C1 work, adopted Field Forge forms, and the HQ201 worker return at its **2026-10-04 05:07 UTC evidence freeze**. Its conclusion is `COMPLETENESS_NOT_PROVABLE_FROM_CURRENT_FORENSICS`; it neither demonstrates a new architecture gap nor certifies all remaining work as nonconceptual. See the [delivery record](29_ASTRA_PREV3_TERMINAL_BACKWARD_AUDIT_DELIVERY.md). This is an audit finding, not an HQ adoption or a change to the current forward plan.
+
 ## Current user-selected workflow: Space Bunny in OpenCode
 
 Start with [Space Bunny HQ — start here](SPACE_BUNNY_OPENCODE_R1/HQ_START_HERE.md) and the [complete activation packet](SPACE_BUNNY_OPENCODE_R1/README.md). This delivery supersedes Browser Economy as default routing for the user-selected OpenCode activation. Read [the current remote-machine handoff](SPACE_BUNNY_OPENCODE_R1/CURRENT_HANDOFF.md) before acting. Setup and review have progressed through HQ187; that handoff preserves completed work, records the remaining qualification limit and routes the published corrections into the next consolidated decision.
