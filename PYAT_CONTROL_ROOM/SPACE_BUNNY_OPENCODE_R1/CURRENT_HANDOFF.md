@@ -1,3 +1,37 @@
+# HQ198 active frontier — repaired R9 candidate final proof — 2026-10-03
+
+HQ has adjudicated the HQ197 wave.
+
+Repaired candidate:
+- clean tip: `4b6335ca5fc485108b0ffb1d682a29a02e1eee51`
+- code-bearing repair: `a483cb6619a84c4785296e923a8571447041ffa5`
+- adopted: NO
+
+Physical-selected interpretation candidate:
+`d43c7f8647a28da13e05bdd264722d1d87b2cb29`
+Status: pending independent DeepSeek confirmation.
+
+Active SPARSE_REQUIRED lanes:
+- final independent acceptance:
+  `agent/reviewer-pyat-hq198-r1 @ 69f9451501e348e739fbbf25872c285ca382e8cf`
+- fixture-complete R7 requalification:
+  `agent/rabochii-pyat-hq198-r1 @ 2eccd7a4cec0e85af78cb68f6c078de2b68d5d90`
+- warrant technical-value freeze candidate:
+  `agent/rabochii-pyat-hq198-r2 @ bf6dcf17a17f41285f2c1e2b1f10a79417c7c393`
+
+The two R7 proof lanes materialize the exact committed fixture directories they require; no full checkout or canonical-tree symlink is needed.
+
+R9 remains open.
+R7 remains closed at runtime/environment identity grain.
+Host disk policy/capacity remains the separate live-run blocker.
+HQ182 C4 non-adoption hold remains pending Astra.
+All source/warrant/live/C7/actor holds remain.
+
+See:
+`HQ_HANDOFF/checkpoints/20261003-PYAT-HQ198-R9-FINAL-PROOF-R1/`
+
+---
+
 # HQ197 active frontier — R9 candidate partial — 2026-10-03
 
 HQ has adjudicated the HQ196 warrant/review/implementation wave.
