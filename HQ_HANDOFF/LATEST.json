@@ -1,12 +1,12 @@
 {
   "schema": "RAWLSING_HQ_HANDOFF_POINTER@1.1.0",
-  "checkpoint_id": "20261003-PYAT-HQ200-R9-WARRANT-BINDING-WAVE-R1",
-  "handoff_commit": "142287f5baea41e9fb53afc1f31317f2ed0f93f6",
+  "checkpoint_id": "20261003-PYAT-HQ201-R9-HARDENING-F6F7-ONTOLOGY-R1",
+  "handoff_commit": "c11ba92dd075efed77f39d6c761a2fc280e0f307",
   "semantic_pre_main_tip": "902640dfddce431d0c5ba151d3eb851d6b84d7a3",
   "control_branch": "integration/pre-main-reconciliation-r1",
-  "current_md_path": "HQ_HANDOFF/checkpoints/20261003-PYAT-HQ200-R9-WARRANT-BINDING-WAVE-R1/CURRENT.md",
-  "current_json_path": "HQ_HANDOFF/checkpoints/20261003-PYAT-HQ200-R9-WARRANT-BINDING-WAVE-R1/CURRENT.json",
-  "manifest_path": "HQ_HANDOFF/checkpoints/20261003-PYAT-HQ200-R9-WARRANT-BINDING-WAVE-R1/MANIFEST.json",
+  "current_md_path": "HQ_HANDOFF/checkpoints/20261003-PYAT-HQ201-R9-HARDENING-F6F7-ONTOLOGY-R1/CURRENT.md",
+  "current_json_path": "HQ_HANDOFF/checkpoints/20261003-PYAT-HQ201-R9-HARDENING-F6F7-ONTOLOGY-R1/CURRENT.json",
+  "manifest_path": "HQ_HANDOFF/checkpoints/20261003-PYAT-HQ201-R9-HARDENING-F6F7-ONTOLOGY-R1/MANIFEST.json",
   "decision_ledger_path": "HQ_HANDOFF/DECISION_LEDGER.jsonl",
   "protocol_path": "HQ_HANDOFF/PROTOCOL.md",
   "start_here_path": "HQ_HANDOFF/START_HERE.md",
@@ -15,7 +15,7 @@
   "temporal_reconciliation_law": "SEALED_CHECKPOINT_AUTHORITY_NE_POST_CHECKPOINT_PENDING_RETURN_NE_UNAUTHORIZED_POST_CHECKPOINT_MOVEMENT",
   "maintenance_law": "AFTER_EVERY_MATERIAL_HQ_STATE_CHANGE__CREATE_NEW_IMMUTABLE_CHECKPOINT__ADVANCE_AND_VERIFY_LATEST_BEFORE_TRANSITION_IS_SEALED",
   "protected_execution_head": "16f5e7d5f691e908d85dc1dd26b8a59a29f668f4",
-  "next_action": "LAUNCH_ALL_THREE_HQ200_SPARSE_LANES_IN_PARALLEL",
+  "next_action": "LAUNCH_ALL_THREE_HQ201_SPARSE_LANES_IN_PARALLEL",
   "source_split_control_head": "cee9e27d57dc72771d9c3ec5df26493321feeef5",
   "split_fanin_evidence_tip": "cee9e27d57dc72771d9c3ec5df26493321feeef5",
   "joined_successor_return_tip": "b4dd6d6016367110c06317abe2cef276123b4c69",
@@ -62,7 +62,7 @@
   "pyat_current_handoff": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/CURRENT_HANDOFF.md",
   "pyat_current_grok_docket": "PYAT_CONTROL_ROOM/12_B_ROUTE_PRE_FIELD_FORGE_GROK_DOCKET.md",
   "pyat_fresh_hq_protocol": "PYAT_CONTROL_ROOM/13_FRESH_HQ_FULL_GROK_PROTOCOL.md",
-  "immediate_program_refinement": "HQ200__SEVEN_SOURCE_PLAN_ACCEPTED__SESSION_REVIEW__ROUTE_PASS_BINDING__WARRANT_SUCCESSOR",
+  "immediate_program_refinement": "HQ201__SESSION_ACCEPTED__EXECUTION_BINDING_HARDENING__F6F7_ONTOLOGY_CONSERVATION",
   "legacy_pyat_bootstrap_path": "HQ_HANDOFF/PYAT_HQ_BOOTSTRAP_R1.md",
   "pyat_documentary_hygiene": "HQD-2026-09-26-114",
   "pyat_forward_program_decision": "HQD-2026-09-28-125",
@@ -544,8 +544,8 @@
   "external_adjudication_retrieval_law": "ALL_COMPARISON_MATERIAL_FETCHABLE_FROM_ORIGIN",
   "measured_execution_authorized_via_warrant": false,
   "previous_handoff": {
-    "checkpoint_id": "20261003-PYAT-HQ199-R9-SCOPE-OWNER-FRONTIER-R1",
-    "handoff_commit": "588ede00d90b5a2cb1ec3d91eb4bde1ffa14e4d6"
+    "checkpoint_id": "20261003-PYAT-HQ200-R9-WARRANT-BINDING-WAVE-R1",
+    "handoff_commit": "142287f5baea41e9fb53afc1f31317f2ed0f93f6"
   },
   "previous_operating_mode": {
     "selected": "BROWSER_ECONOMY",
@@ -1009,6 +1009,48 @@
       "warrant": {
         "branch": "agent/rabochii-pyat-hq200-r2",
         "commission_tip": "e15d3647fbc1e149786a3f33e660ac2e16e0f78f"
+      }
+    },
+    "r9_blocker_remains": true,
+    "host_disk_blocker_remains": true,
+    "c4_adopted": false,
+    "hq182_hold_lifted": false
+  },
+  "hq201": {
+    "accepted": {
+      "session": {
+        "code_commit": "90ccbd54c549f67358d0c02ad18ff90b843cf3ee",
+        "review": "262f6e29126e601aaafa3c6114ce5e78b74c8e2e"
+      },
+      "warrant_successor": "89054b882c04cf0541b6f9f4abdb555c808ad94d"
+    },
+    "execution_binding": {
+      "clean_tip": "35ffa48204672e6c7180cd010a7c1adde9f18cd7",
+      "code_commit": "b8b4c99633c4aa849fd79614c5bffbd1321209b8",
+      "adopted": false,
+      "counterexamples": [
+        "BIND-ROUTE-APPLICABILITY-001",
+        "BIND-RETRY-ATTEMPT-002",
+        "BIND-POSTCONSTRAINT-COMPLETION-003",
+        "BIND-INJECTION-004"
+      ]
+    },
+    "f6f7": {
+      "status": "ONTOLOGY_CONSERVATION_COURT_ACTIVE",
+      "governing_law": "HQD-2026-09-28-125"
+    },
+    "active_lanes": {
+      "review": {
+        "branch": "agent/reviewer-pyat-hq201-r1",
+        "commission_tip": "f064dff8fe2262ad6dc0ccb87e2b835ecb2c022b"
+      },
+      "hardening": {
+        "branch": "agent/rabochii-pyat-hq201-r1",
+        "commission_tip": "19f2588d860450eae9bf3fb41444d4d0b58a0c52"
+      },
+      "f6f7": {
+        "branch": "agent/rabochii-pyat-hq201-r2",
+        "commission_tip": "9b3a70af26da3404f988674c879a44ebfcae196a"
       }
     },
     "r9_blocker_remains": true,
