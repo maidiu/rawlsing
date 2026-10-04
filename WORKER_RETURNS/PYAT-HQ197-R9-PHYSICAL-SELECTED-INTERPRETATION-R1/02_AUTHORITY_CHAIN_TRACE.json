@@ -1,0 +1,134 @@
+{
+  "schema": "PYAT_HQ197_AUTHORITY_CHAIN_TRACE@1.0.0",
+  "question_traced": "For each term, what layer or object does it modify?",
+  "terms": [
+    {
+      "term": "PHYSICAL",
+      "first_authoritative_occurrence": "33dba5236:WORKER_RETURNS/PYAT-C2-02-C4-PROVING-WORKLOAD-R1/02_PROPOSED_PROVING_SET.json",
+      "modifies": "the SOURCE WITNESS / ACCESS TIER",
+      "evidence": [
+        "workload_tiers pairs bounded_physical_edge_witnesses against full_route_empirical_anchors",
+        "proposed_public_route.bounded_physical_only_sources lists the six bounded sources",
+        "C4B commission line 33: 'exact physical-only versus full-route proof mode'",
+        "C4B commission line 38: 'bounded fresh physical-only'",
+        "C4B 00_RETURN.md line 31 and workload stop_law: 'No physical witness may create survey semantics' / 'semantic authority from a physical witness'",
+        "C4B template semantic_ceilings: NO_PHYSICAL_SUCCESS_AS_SURVEY_SEMANTICS",
+        "decoder d3d828c171ea9fdd0e90563aff6ef705f5aae2cf docstring: 'deliberately stops at physical incidence', witnesses are 'independent', 'never reconciled or promoted to survey semantics'"
+      ],
+      "verdict": "PHYSICAL names the physical-source/witness layer and its proof-mode tier. It is explicitly the layer BELOW semantics. It does not name an I/O granularity."
+    },
+    {
+      "term": "SELECTED_VARIABLE_READ",
+      "first_authoritative_occurrence": "5f97ff718 (C4B freeze) as BOUNDED_FRESH_PHYSICAL_SELECTED_VARIABLE_READ_ONLY; renamed at 8ff40d37de69db2d8a6053a7c2242f481677f1a4",
+      "modifies": "the READ WITNESS SCOPE \u2014 which variables the witness covers",
+      "evidence": [
+        "C4B 01 freeze binds exact_governed_operations per source: variable_name + ordinal + native_codes (SRC02 Q10B@58; SRC06 Q101@20,Q2061B@19; SRC14 v372@466)",
+        "C4B commission line 105 frames the SRC08/SRC12 alternative as 'selected-column decoder validation' \u2014 a validation SCOPE, not a byte property",
+        "C4B 00_RETURN.md line 27: SRC08/SRC12 are 'decoder-admission / metadata-only witnesses'; 'No selected-column target is frozen'",
+        "C4B template allowed_operations.kind = SELECTED_VARIABLE_PHYSICAL",
+        "G01 31a9afd7d91ed4cb2fb1c1aab3ef86a5fdda1f85 takes variable_name and ordinal as APPLICABILITY IDENTIFIERS for a representation rule, not as an I/O scope",
+        "C4 accounting law PHASE 6 enumerates 'selected-column reads' as one account among ten"
+      ],
+      "verdict": "SELECTED_VARIABLE_READ names the reader-invocation / output scope: which variable or variables the read witness is authorized to cover, pinned by exact name and ordinal."
+    },
+    {
+      "term": "READ_ONLY",
+      "first_authoritative_occurrence": "33dba5236 as BOUNDED_FRESH_PHYSICAL_READ_ONLY_IF_C3_INTEGRATED_OWNER_IS_IN_EXECUTION_ANCESTRY",
+      "modifies": "the ACTIVITY \u2014 that only a read is performed",
+      "evidence": [
+        "It qualifies the ACTIVITY noun-phrase, not the byte scope.",
+        "It co-occurs with BOUNDED and FRESH, i.e. it bounds the operation class.",
+        "C4B stop_law forbids retention/pooling/comparability from a physical witness, which is what _ONLY constrained",
+        "It was dropped when C4 introduced numeric read counters, replacing a qualitative adjective with a counted budget"
+      ],
+      "verdict": "READ_ONLY meant 'only a read is performed' \u2014 bounded, non-retaining, non-semantic. It never meant 'only these bytes are read'."
+    },
+    {
+      "term": "expected_selected_reads",
+      "first_authoritative_occurrence": "8ff40d37de69db2d8a6053a7c2242f481677f1a4:WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+      "modifies": "a COUNT of reader invocations, budgeted per source",
+      "value": {
+        "SRC02": 1,
+        "SRC06": 1,
+        "SRC14": 1,
+        "SRC08": 0,
+        "SRC12": 0,
+        "SRC26": 0
+      },
+      "evidence": [
+        "C4 commission PHASE 6 lists it under 'must separately account for', as a sibling of 'full reads' and 'byte counts where measurable'",
+        "No prose definition accompanies it anywhere",
+        "Alt-B 3a5b2cbc7 recorded it as a value with provenance and approved",
+        "HQ190-C be1af859a graded it E=1 with provenance 'artifact 07 .SRCxx.expected_selected_reads'"
+      ],
+      "verdict": "A numeric per-source budget on reader invocations. Never defined in prose. Its unit is established by structural position, not by definition."
+    },
+    {
+      "term": "expected_full_reads",
+      "first_authoritative_occurrence": "8ff40d37de69db2d8a6053a7c2242f481677f1a4 (same file)",
+      "modifies": "a COUNT of reader invocations whose scope is the whole source",
+      "value": {
+        "SRC02": 0,
+        "SRC06": 0,
+        "SRC14": 0,
+        "SRC08": 0,
+        "SRC12": 0,
+        "SRC26": 0
+      },
+      "evidence": [
+        "Sits as the sibling of expected_selected_reads in the same per-source object",
+        "Zero for every source in the fresh-read set; SRC27 is governed by a separate governed_full_route_passes account instead"
+      ],
+      "verdict": "A numeric per-source budget of zero on whole-source reader invocations. See 04_FULL_READS_ZERO_MEANING.json for its exact meaning."
+    }
+  ],
+  "the_defining_C3_authorities": {
+    "note": "C4B binds SRC02/SRC06 to C3 G01 and SRC14 to C3 D02. These were traced directly.",
+    "g01": {
+      "blob": "31a9afd7d91ed4cb2fb1c1aab3ef86a5fdda1f85",
+      "path": "rawlsing_next/closed35_g01_sav_numeric_representation_authority.py",
+      "AUTHORITY_KIND": "PHYSICAL_NATIVE_REPRESENTATION_BINDING",
+      "ceiling_recorded_by_c4b": "PHYSICAL_REPRESENTATION_ONLY",
+      "public_api": "authorized_sav_numeric_physical_material",
+      "signature": "(source_sha256, variable_name, ordinal, native_code)",
+      "performs_io": false,
+      "usecols_present": false,
+      "READER_CONFIG_contents": [
+        "reader=pyreadstat.read_sav",
+        "format=SAV",
+        "encoding=None",
+        "apply_value_formats=False",
+        "user_missing=True"
+      ],
+      "finding": "G01 is a PURE VALUE-REPRESENTATION authority. variable_name/ordinal select which representation rule applies. It never invokes a reader and therefore cannot own, require or measure any read, physical or logical."
+    },
+    "d02": {
+      "decoder_blob": "d3d828c171ea9fdd0e90563aff6ef705f5aae2cf",
+      "codec_blob": "6000a1704d713f65e07610d81e9b3fd8bdd515ca",
+      "ceiling_recorded_by_c4b": "OPAQUE_PHYSICAL_REPRESENTATION_ONLY",
+      "qualified_test_blob": "3901f10a487856f5f232ae6700fff407ac99725e"
+    },
+    "qualified_tests_perform_no_io": {
+      "g01_test_blob": "fb7b090809a609a3b0157f1ed8fcdcd8e8784525",
+      "d02_test_blob": "3901f10a487856f5f232ae6700fff407ac99725e",
+      "pyreadstat_references": 0,
+      "read_sav_references": 0,
+      "read_dta_references": 0,
+      "usecols_references": 0,
+      "finding": "Both accepted C3 qualified courts exercise pure authority/codec functions with (source, variable, ordinal, code) tuples. Neither opens, reads or projects a file. The authorities that define the selected-variable ceilings own no I/O whatsoever."
+    }
+  },
+  "the_reference_decoder_at_freeze": {
+    "blob": "d3d828c171ea9fdd0e90563aff6ef705f5aae2cf",
+    "path": "rawlsing_next/pre553_physical_decoder.py",
+    "usecols_occurrences": 0,
+    "_decode_signature": "(path, *, expected_format, encoding=None, expected_source_sha256=None)",
+    "_decode_accepts_a_variable_restriction": false,
+    "compatibility_full_read_rule": "compatibility_full_read = encoding is not None",
+    "variable_enumeration": "names = list(metadata.column_names); every column becomes a PhysicalVariable with ordinal 1..N. No filter is applied.",
+    "iter_batches_read": "pyreadstat.read_file_in_chunks(reader, self._source_path, chunksize=..., encoding=..., apply_value_formats=False, user_missing=True) \u2014 no column restriction",
+    "iter_batches_scope_realisation": "PhysicalCell objects are emitted only for self.variables, i.e. the selected scope is realised at the CELL-EMISSION layer, downstream of a whole-file physical read",
+    "docstring": "This module deliberately stops at physical incidence. It never maps a raw value to a C11 response state or interprets a label. Raw header declarations, reader-normalized geometry, display metadata, and reader/config identity are preserved as independent witnesses.",
+    "significance": "The authority chain's own reference implementation realises variable scope at emission over a whole-file read, and contains no selected-read operation of either kind. Reading B would make the defining implementation self-violating at freeze time, which is not a coherent reconstruction of intent."
+  }
+}

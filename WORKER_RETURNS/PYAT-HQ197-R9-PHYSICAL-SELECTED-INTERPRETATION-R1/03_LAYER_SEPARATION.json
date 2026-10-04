@@ -1,0 +1,53 @@
+{
+  "schema": "PYAT_HQ197_LAYER_SEPARATION@1.0.0",
+  "requirement": "Six layers must remain separate. This packet keeps them separate and states, for each, which governing term touches it and which account owns it.",
+  "layers": [
+    {
+      "layer": "physical source / witness layer",
+      "governing_term": "PHYSICAL",
+      "meaning": "the real source file is accessed fresh, as an edge witness for a named physical or representational property",
+      "account_owner": "path_opens, full_file_sha256_passes, source_path_existence_access_checks",
+      "accounted_in_this_lane": false,
+      "note": "Zero source access in this lane. Described, not exercised."
+    },
+    {
+      "layer": "reader invocation mode",
+      "governing_term": "SELECTED_VARIABLE_READ / READ_ONLY",
+      "meaning": "how the reader is invoked: with a selected-column scope, metadata-only, or whole-source",
+      "account_owner": "selected_column_reads, full_reads, metadata_reads, decoder_invocations, retries",
+      "accounted_in_this_lane": false,
+      "note": "This is the layer the disputed terms govern."
+    },
+    {
+      "layer": "returned frame projection",
+      "governing_term": "SELECTED_VARIABLE_READ (its output half)",
+      "meaning": "which columns appear in the returned DataFrame / which PhysicalCells are emitted",
+      "account_owner": "asserted against the bound variable names and ordinals",
+      "note": "Controllable on this runtime via usecols and via the emission filter. The hostile review confirmed a downstream filter cannot retroactively un-read columns, so the projection must be configured AT the invocation."
+    },
+    {
+      "layer": "parser byte traffic",
+      "governing_term": "NONE \u2014 no governing term addresses this",
+      "meaning": "read calls and bytes actually consumed by the compiled parser",
+      "account_owner": "byte_counts_where_measurable, reader read-call counts",
+      "record_status": "A SEPARATE mandatory account, and UNBOUND in the governing evidence (HQ190-C ACC-09 grade '\u2014').",
+      "measured_fact": "pyreadstat 1.3.6 usecols does not reduce it: SAV 4050 reads / 160869 bytes and DTA 4055 reads / 163751 bytes, identical with and without usecols (2e43b8c1e975974add3ac2cecfbd6daa96afd98b); independently reproduced by the candidate as 278 reads / 20659 bytes on a 12-column/200-row SAV (d5ce4ecff6acc25d199577a7859de7e98514e9fd).",
+      "significance": "This is the decisive structural fact. Because byte traffic is a SEPARATE, separately-unbound account, the frozen law cannot have intended read-counts to be a proxy for byte traffic."
+    },
+    {
+      "layer": "path-open accounting",
+      "governing_term": "NONE \u2014 governed independently under O1-C07",
+      "meaning": "literal path-level opens",
+      "account_owner": "path_opens",
+      "note": "Explicitly non-substitutable. A selected read is not an open; an open is not a read."
+    },
+    {
+      "layer": "downstream variable use",
+      "governing_term": "SELECTED-VARIABLE EXACTNESS (a different assertion)",
+      "meaning": "which variables a consumer is permitted to USE",
+      "account_owner": "not a read account",
+      "hostile_review_distinction": "The independent review recorded this precisely: downstream selected-variable exactness assertions constrain which variables are USED; they do not constrain which columns are physically READ. The frozen selected_reads figure is a READ account, so it cannot be satisfied by a downstream use filter."
+    }
+  ],
+  "conclusion": "The disputed terms live entirely in the reader-invocation-mode layer and its output projection. They say nothing about parser byte traffic, which the law accounts separately and leaves unbound."
+}

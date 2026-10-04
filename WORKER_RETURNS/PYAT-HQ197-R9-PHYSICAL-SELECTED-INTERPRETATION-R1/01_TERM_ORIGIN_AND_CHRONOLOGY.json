@@ -1,0 +1,97 @@
+{
+  "schema": "PYAT_HQ197_TERM_ORIGIN_AND_CHRONOLOGY@1.0.0",
+  "method": "git log --reverse -S<token> to date the first introduction of each term, then read the introducing object in full. No term is dated by its most recent use.",
+  "chain": [
+    {
+      "seq": 1,
+      "commit": "33dba5236",
+      "date": "2026-09-30",
+      "subject": "Select edge-minimal C4 proving source set",
+      "artifact": "WORKER_RETURNS/PYAT-C2-02-C4-PROVING-WORKLOAD-R1/02_PROPOSED_PROVING_SET.json",
+      "first_introduces": "BOUNDED_FRESH_PHYSICAL_READ_ONLY_IF_C3_INTEGRATED_OWNER_IS_IN_EXECUTION_ANCESTRY",
+      "what_the_document_was_about": "Selection of an edge-minimal proving source set. The vocabulary it introduces is a WORKLOAD TIER taxonomy, not an I/O contract.",
+      "decisive_content": {
+        "workload_tiers.full_route_empirical_anchors": "SRC27 LiTS_I.dta, SRC35 WVS Wave 7.sav",
+        "workload_tiers.bounded_physical_edge_witnesses": "SRC02 G01 user-missing representation; SRC06 G01 observed representation; SRC08 D01 BIG5; SRC12 D01 WINDOWS-1252; SRC14 D02 opaque date/time; SRC26 R05 header/dictionary divergence",
+        "proposed_public_route.bounded_physical_only_sources": [
+          "SRC02",
+          "SRC06",
+          "SRC08",
+          "SRC12",
+          "SRC14",
+          "SRC26"
+        ],
+        "proposed_public_route.full_route_sources": [
+          "SRC27",
+          "SRC35"
+        ]
+      },
+      "significance": "The FIRST authoritative use of PHYSICAL is as a member of a tier pair: 'bounded_physical_edge_witness' versus 'full_route_empirical_anchor'. Each bounded physical source exists to witness exactly ONE narrow representational property. PHYSICAL therefore denotes the evidence/access TIER, not an I/O granularity."
+    },
+    {
+      "seq": 2,
+      "commit": "5f97ff718",
+      "date": "2026-10-02",
+      "subject": "PYAT C4B: freeze workload authority oracle custody and D02",
+      "artifact": "WORKER_RETURNS/PYAT-C4B-WORKLOAD-ORACLE-FREEZE-R1/01_EIGHT_SOURCE_WORKLOAD_FREEZE.json",
+      "first_introduces": "BOUNDED_FRESH_PHYSICAL_SELECTED_VARIABLE_READ_ONLY",
+      "read_economy": {
+        "fresh_full_route": [
+          "SRC27"
+        ],
+        "bounded_fresh_physical": [
+          "SRC02",
+          "SRC06",
+          "SRC08",
+          "SRC12",
+          "SRC14",
+          "SRC26"
+        ],
+        "retained_comparator": [
+          "SRC35"
+        ],
+        "excluded_fresh_reads": 0,
+        "substitutions_forbidden": true
+      },
+      "significance": "The tier vocabulary is carried into the freeze unchanged as read_economy. semantic_route_status is NOT_SELECTED_AS_SEMANTIC_ROUTE_ANCHOR for all six bounded physical sources, versus real semantic authority for SRC27/SRC35. This is the explicit PHYSICAL-versus-SEMANTIC contrast."
+    },
+    {
+      "seq": 3,
+      "commit": "8ff40d37de69db2d8a6053a7c2242f481677f1a4",
+      "date": "2026-10-02",
+      "subject": "C4 executable freeze fan-in",
+      "artifact": "WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FANIN-R1/",
+      "first_introduces": [
+        "expected_selected_reads",
+        "expected_full_reads",
+        "BOUNDED_FRESH_PHYSICAL_SELECTED_VARIABLE_READ"
+      ],
+      "name_change": "BOUNDED_FRESH_PHYSICAL_SELECTED_VARIABLE_READ_ONLY -> BOUNDED_FRESH_PHYSICAL_SELECTED_VARIABLE_READ",
+      "significance": "The trailing _ONLY is dropped at exactly the moment numeric read counters appear. READ_ONLY became READ plus a counted budget. The _ONLY was never a byte qualifier; it marked that ONLY a read occurs (no retention, pooling or semantic production)."
+    },
+    {
+      "seq": 4,
+      "commit": "3a5b2cbc7",
+      "date": "2026-10-02",
+      "subject": "Alt-B independent review: C4 executable freeze APPROVE_AT_DECLARED_GRAIN",
+      "artifact": "WORKER_RETURNS/PYAT-C4-EXECUTABLE-FREEZE-FINAL-INTEGRATION-REVIEW-ALT-B-R1/04_ACCOUNTING_RETENTION_CLAIM_REVIEW.json",
+      "significance": "The review that APPROVED expected_selected_reads=1 / expected_full_reads=0 performed presence-and-consistency checking only. It recorded the values and their provenance but never asked what a selected-column read is at the measurement layer. The term was therefore never authoritatively defined at approval time."
+    },
+    {
+      "seq": 5,
+      "commit": "be1af859a",
+      "date": "2026-10-03",
+      "subject": "HQ190-C R9 warrant per-access-layer accounting binding successor candidate",
+      "artifact": "WORKER_RETURNS/PYAT-HQ190-C-R9-WARRANT-ACCOUNTING-BINDING-R1/02_PER_SOURCE_ACCESS_LAYER_LIMITS.json",
+      "significance": "Grades ACC-07_selected_reads as E (exact value 1) while grading ACC-09_byte_counts as '\u2014' (no value exists anywhere). Two sibling accounts of the same operation, one valued and one not, is only coherent if a selected read is NOT defined by its byte traffic."
+    }
+  ],
+  "term_lineage_summary": {
+    "PHYSICAL": "tier / proof-mode / evidence-class, contrasted with full-route and with semantic routes",
+    "SELECTED_VARIABLE_READ": "the governed variable scope of a read witness (exact names + ordinals)",
+    "READ_ONLY": "'only a read is performed' (bounded; no retention/pooling/semantics); dropped when counters arrived",
+    "expected_selected_reads": "introduced by C4 as a numeric reader-invocation budget; never defined in prose",
+    "expected_full_reads": "introduced by C4 as a numeric reader-invocation budget; never defined in prose"
+  },
+  "residual": "No artifact in the chain contains a verbatim definitional sentence for 'selected-column read'. The reconstruction below is therefore an inference from origin, usage and structure, not a quote."
+}

@@ -1,0 +1,79 @@
+{
+  "schema": "PYAT_HQ197_ACCOUNTING_RULE_UNDER_A@1.0.0",
+  "applies_if": "PHYSICAL_SELECTED_MEANS_SOURCE_LAYER_PLUS_SELECTED_READER_MODE (possibility A)",
+  "principle": "selected_reads is a LOGICAL reader-invocation-scope account. It is truthfully satisfiable by a projection-configured read, PROVIDED the run never claims physical byte suppression and never presents the account as evidence that unselected columns went unread.",
+  "rules": [
+    {
+      "id": "R1",
+      "rule": "selected_reads = 1 requires exactly one reader invocation issued with an explicit selected-column scope equal to the bound variable set.",
+      "binding": {
+        "SRC02": [
+          "Q10B@58"
+        ],
+        "SRC06": [
+          "Q101@20",
+          "Q2061B@19"
+        ],
+        "SRC14": [
+          "v372@466"
+        ]
+      },
+      "enforcement": "Column names AND ordinals are validated against the real column inventory BEFORE any row-data read."
+    },
+    {
+      "id": "R2",
+      "rule": "A missing or empty selection is a fail-closed STOP raised BEFORE any row-data read.",
+      "enforcement": "DecoderError at selection-binding time."
+    },
+    {
+      "id": "R3",
+      "rule": "If the reader returns any column outside the bound set, that is UNEXPECTED_SELECTED_COLUMN and is a STOP.",
+      "enforcement": "Post-read assertion on the returned column set."
+    },
+    {
+      "id": "R4",
+      "rule": "full_reads = 0 is enforced by REFUSING any row-data invocation that carries no selected-column scope, before it executes.",
+      "enforcement": "A pinned zero ceiling on the full-read counter, refused pre-operation."
+    },
+    {
+      "id": "R5",
+      "rule": "The physical read calls and bytes consumed by the single selected invocation are recorded ONLY in byte_counts_where_measurable / reader read-call accounts, at the broker layer, and are never folded into selected_reads.",
+      "enforcement": "Distinct counters, as the candidate already implements."
+    },
+    {
+      "id": "R6",
+      "rule": "The run MUST carry a machine-readable non-suppression disclosure, and a court MUST assert its presence so it cannot be quietly dropped.",
+      "enforcement": "The candidate already emits selected_route_physical_column_suppression = NOT_ENFORCED_BY_READER (d5ce4ecff6acc25d199577a7859de7e98514e9fd) and asserts the disclosure in court C9c."
+    },
+    {
+      "id": "R7",
+      "rule": "selected_reads must never be presented, in any receipt or summary, as evidence that unselected columns went unread.",
+      "enforcement": "Disclosure discipline; a violation is a truthfulness failure, not a variance."
+    },
+    {
+      "id": "R8",
+      "rule": "Path opens remain a separate account and are unaffected by the selection.",
+      "enforcement": "O1-C07 non-substitutability."
+    }
+  ],
+  "what_this_rule_does_NOT_buy": [
+    "It does not reduce physical I/O. Bytes consumed are unchanged from an unfiltered read.",
+    "It does not close R9-SEL-03 by itself; the selected route must still be implemented and requalified.",
+    "It does not bind any currently-unbound numeric account. byte_counts remains UNBOUND.",
+    "It confers no semantic authority. The semantic ceilings are unchanged."
+  ],
+  "honest_weakness_of_this_rule": "R1-R4 are satisfiable by a projection, so full_reads=0 constrains invocation SCOPE rather than physical behaviour. A reviewer who believes the frozen ceiling was meant to bound physical I/O would reject this rule. That is precisely the residual addressed in 07_LIMITS_AND_RESIDUAL_AMBIGUITY.json.",
+  "candidate_conformance": {
+    "commit": "d5ce4ecff6acc25d199577a7859de7e98514e9fd",
+    "conforms_to": [
+      "R1",
+      "R2",
+      "R3",
+      "R4",
+      "R5",
+      "R6",
+      "R8"
+    ],
+    "evidence": "00_RETURN.md: usecols with names and ordinals bound against the real column inventory before any row-data read; every carrier selected_reads=1, full_reads=0; missing selection -> DecoderError before any row read; reader injecting an unselected column -> UNEXPECTED_SELECTED_COLUMN; full read refused before it executes; non-suppression disclosure asserted in court C9c."
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "schema": "PYAT_HQ197_LIMITS_AND_RESIDUAL_AMBIGUITY@1.0.0",
+  "residuals": [
+    {
+      "id": "RES-1",
+      "severity": "material",
+      "statement": "No artifact in the authority chain contains a verbatim definitional sentence for 'selected-column read'. expected_selected_reads and expected_full_reads were introduced as bare numeric tokens.",
+      "consequence": "Possibility A is a RECONSTRUCTION from origin, usage, structure and the absence of any contrary requirement. It is not a quotation.",
+      "recommended_handling": "HQ should ratify the reconstruction explicitly rather than let it be inherited silently."
+    },
+    {
+      "id": "RES-2",
+      "severity": "material",
+      "statement": "Alt-B, the review that APPROVED the freeze, performed presence-and-consistency checking only (3a5b2cbc7) and never examined what a selected-column read measures.",
+      "consequence": "The ceiling was approved without definitional scrutiny. This is why the term's unit has to be recovered structurally."
+    },
+    {
+      "id": "RES-3",
+      "severity": "material",
+      "statement": "Under A, full_reads=0 constrains invocation SCOPE, not physical I/O. A projection-configured read satisfies it while consuming the same bytes as a full read.",
+      "consequence": "A reviewer who holds that the ceiling was meant to bound physical I/O would reject the rule in 05_ACCOUNTING_RULE_UNDER_A.json. If HQ so holds, the matter converts to B and an Astra decision is required.",
+      "falsification_test": "Produce any authority artifact requiring unselected-column bytes or column-level I/O to be avoided. If one exists, A collapses to B or C."
+    },
+    {
+      "id": "RES-4",
+      "severity": "material_and_independent_of_this_question",
+      "statement": "R9-SEL-03 remains open. The frozen decoder has no selected-read operation of either kind, and its iter_batches route issues an all-column chunked read that is a FULL READ under the meaning established here.",
+      "consequence": "This determination does not implement the route. It says the usecols route, once implemented and requalified, may truthfully record selected_reads=1/full_reads=0 under A. Implementation and requalification remain outstanding."
+    },
+    {
+      "id": "RES-5",
+      "severity": "minor",
+      "statement": "byte_counts_where_measurable remains UNBOUND in the governing evidence (HQ190-C ACC-09 grade '\u2014').",
+      "consequence": "Under A the physical read traffic of the selected invocation has no accepted numeric ceiling. R5 records it, but nothing bounds it yet."
+    },
+    {
+      "id": "RES-6",
+      "severity": "scope",
+      "statement": "This lane performed ZERO source access, no source execution and no production mutation. All findings are documentary.",
+      "consequence": "Nothing here qualifies any real source or authorises any access."
+    }
+  ],
+  "explicit_non_claims": [
+    "NOT a claim that the usecols route is implemented, qualified or accepted.",
+    "NOT a claim that any technical account is closed.",
+    "NOT a claim of survey-semantic equivalence or authority.",
+    "NOT an authorisation to read any source.",
+    "NOT a ruling on R9-SEL-03's implementation, only on what its target operation means."
+  ],
+  "what_would_change_the_answer": [
+    "An authority artifact requiring physical/column-level suppression of unselected data.",
+    "An accepted C3 statement defining the selected-variable witness in terms of bytes or I/O.",
+    "An HQ/Astra ruling that the ceiling was intended to bound physical rather than logical scope."
+  ]
+}

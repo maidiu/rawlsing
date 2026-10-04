@@ -1,0 +1,22 @@
+{
+  "schema": "PYAT_HQ197_FULL_READS_ZERO_MEANING@1.0.0",
+  "question": "What exactly does full_reads = 0 mean for SRC02/SRC06/SRC14?",
+  "answer": "It is a budget of ZERO reader invocations whose configured output scope is the whole source (all columns). For these three sources the run may never issue an all-column row-data read. Every row-data reader invocation on these sources must be issued with an explicit selected-column scope covering exactly the bound variables.",
+  "what_it_does_NOT_mean": [
+    "It does NOT mean zero bytes were consumed. Unselected-column bytes are consumed by the parser and are accounted in byte_counts_where_measurable, which is a separate and currently UNBOUND account.",
+    "It does NOT mean a single physical pass. Path opens, read calls and bytes are separate accounts.",
+    "It does NOT mean the file was not fully scanned. A format parser must traverse the record stream to locate row data; full_reads=0 governs the invocation's SCOPE, not the parser's traversal.",
+    "It does NOT license an unselected whole-file read. An invocation issued without a selected-column scope IS a full read by this definition and is a STOP."
+  ],
+  "why_this_reading_and_not_another": {
+    "structural_argument": "The C4 accounting law enumerates 'selected-column reads', 'full reads' and 'byte counts where measurable' as three SIBLING mandatory accounts. If full_reads=0 asserted byte non-consumption, byte counts would be a consequence of the read counters rather than an independent account.",
+    "corroboration_1": "HQ190-C grades ACC-07_selected_reads = E(1) and ACC-09_byte_counts = '\u2014' in the same per-source object.",
+    "corroboration_2": "HQ196's warrant successor carries selected_column_reads and byte_counts_where_measurable as distinct accounts for all seven sources.",
+    "corroboration_3": "The C4B warrant template's own accounting block lists selected_reads and full_reads as separate REQUIRED_EXACT_COUNT_AND_CONFIG entries."
+  },
+  "consistency_check_against_the_frozen_decoder": {
+    "observation": "At freeze, decoder _decode sets compatibility_full_read = encoding is not None. For the SAV_ENCODING_NULL lane used by SRC02/SRC06/SRC14, encoding is None, so _decode itself issues NO compatibility full read \u2014 only a metadataonly read. Consistent with full_reads=0.",
+    "however": "PhysicalSourceIncidence.iter_batches, when no retained frame exists, issues read_file_in_chunks with NO column restriction. That invocation has all-column scope and is therefore a FULL READ under this meaning.",
+    "consequence": "full_reads=0 is NOT satisfied by the frozen decoder's batch route. It is satisfied only by an invocation explicitly configured with the selected-column scope. This is the R9-SEL-03 implementation gap HQ already recorded, and it remains open regardless of which reading of PHYSICAL is adopted \u2014 under B it would be unfixable on this runtime, under A it is fixable."
+  }
+}

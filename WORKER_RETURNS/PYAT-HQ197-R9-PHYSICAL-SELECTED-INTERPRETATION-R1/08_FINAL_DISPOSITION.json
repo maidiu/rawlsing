@@ -1,0 +1,41 @@
+{
+  "schema": "PYAT_HQ197_FINAL_DISPOSITION@1.0.0",
+  "lane": "PYAT-HQ197-R9-PHYSICAL-SELECTED-INTERPRETATION-R1",
+  "startup_sha": "740a355b3aef0255dc6ecbe1b99bc9382ec3c91f",
+  "checkout_mode": "SPARSE_REQUIRED__SUFFICIENT__NO_FULL_MATERIALISATION",
+  "disposition": "PHYSICAL_SELECTED_MEANS_SOURCE_LAYER_PLUS_SELECTED_READER_MODE__USECOLS_ROUTE_COMPATIBLE",
+  "allowed_dispositions_considered": [
+    {
+      "value": "PHYSICAL_SELECTED_MEANS_SOURCE_LAYER_PLUS_SELECTED_READER_MODE__USECOLS_ROUTE_COMPATIBLE",
+      "selected": true,
+      "why": "Four independent documentary grounds support A and none supports B. B's requirement \u2014 physical suppression of unselected-column data \u2014 appears nowhere in the authority chain, and would be violated by the chain's own defining decoder at freeze time. The technical fact that usecols is projection-only constrains what may be CLAIMED, not what the term MEANS."
+    },
+    {
+      "value": "PHYSICAL_SELECTED_REQUIRES_TRUE_COLUMN_IO_SUPPRESSION__CURRENT_ROUTE_INSUFFICIENT",
+      "rejected_because": "No artifact imposes this. It is contradicted by the sibling-account structure of the C4 accounting law, by the I/O-free defining C3 authorities, and by the complete absence of suppression vocabulary. Selecting it would invent a requirement."
+    },
+    {
+      "value": "PHYSICAL_SELECTED_MEANING_AMBIGUOUS__ASTRA_DECISION_REQUIRED",
+      "rejected_because": "The record CAN distinguish A from B. The absence of a glossary sentence is a documentation gap, not a genuine ambiguity: the origin, the tier taxonomy, the sibling-account structure and the negative evidence all point one way. Returning ambiguity would leave R9-SEL-03 blocked on a question the documentary record does answer. The residual is recorded as RES-1/RES-3 for HQ ratification."
+    },
+    {
+      "value": "MATERIAL_AUTHORITY_CONFLICT_FOUND",
+      "rejected_because": "No conflict between artifacts. Two apparent tensions were examined and are not conflicts: (a) usecols projection-only behaviour versus the frozen selected-read figure is a runtime/authority gap, not an authority conflict; (b) SRC26's 176/174/332 and the SRC27 route-pass/floor structures are distinct account classes, internally consistent."
+    }
+  ],
+  "determination_summary": {
+    "PHYSICAL": "the physical-source/witness layer and its proof-mode tier, contrasted with full-route empirical anchors and with semantic routes",
+    "SELECTED_VARIABLE_READ": "the reader-invocation mode and returned output scope, pinned by exact variable names and ordinals",
+    "full_reads_zero": "zero reader invocations whose configured output scope is the whole source; it is NOT a claim that unselected-column bytes went unread",
+    "usecols_route": "compatible under A, provided the run never claims physical byte suppression and carries a machine-readable non-suppression disclosure",
+    "accounting_rule": "05_ACCOUNTING_RULE_UNDER_A.json (R1-R8)"
+  },
+  "explicitly_not_done": [
+    "Did not close R9-SEL-03 or implement the selected route.",
+    "Did not requalify anything.",
+    "Did not perform source access, source execution, or production mutation.",
+    "Did not authorize any access.",
+    "Did not bind any currently-unbound numeric account."
+  ],
+  "recommended_next_step_for_HQ": "Ratify the A reconstruction explicitly and record the falsification test in RES-3. Then commission the selected-reader implementation and the exact R7 six-file court, with the non-suppression disclosure as a mandatory asserted field."
+}

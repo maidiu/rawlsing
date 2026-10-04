@@ -1,0 +1,85 @@
+{
+  "schema": "PYAT_HQ197_A_VS_B_EVIDENCE@1.0.0",
+  "standard": "B requires the record to impose physical/column-level suppression. A requires the record to scope PHYSICAL to the witness layer and SELECTED to the invocation/output scope. The record is weighed for both, independently of present implementation convenience.",
+  "evidence_for_A": [
+    {
+      "id": "A1",
+      "weight": "decisive",
+      "finding": "The FIRST authoritative use of PHYSICAL is a workload TIER pair: bounded_physical_edge_witnesses versus full_route_empirical_anchors (33dba5236).",
+      "why_it_matters": "The term was born as an evidence/access classification. It was never an I/O granularity."
+    },
+    {
+      "id": "A2",
+      "weight": "decisive",
+      "finding": "The C4 commission PHASE 6 \u2014 the very instrument that introduced expected_selected_reads \u2014 enumerates selected-column reads, full reads and byte counts where measurable as three SIBLING accounts (8ff40d37de69db2d8a6053a7c2242f481677f1a4).",
+      "why_it_matters": "If a selected read were defined by byte suppression, byte counts would be a consequence of it, not a sibling account."
+    },
+    {
+      "id": "A3",
+      "weight": "decisive",
+      "finding": "The defining C3 authorities own NO I/O. G01's authorized_sav_numeric_physical_material is a pure representation lookup (31a9afd7d91ed4cb2fb1c1aab3ef86a5fdda1f85), and both accepted qualified tests contain ZERO pyreadstat/read_sav/read_dta/usecols references (fb7b090809a609a3b0157f1ed8fcdcd8e8784525, 3901f10a487856f5f232ae6700fff407ac99725e).",
+      "why_it_matters": "An authority that never invokes a reader cannot require or measure physical read suppression for its own witness."
+    },
+    {
+      "id": "A4",
+      "weight": "strong",
+      "finding": "The authority chain's reference decoder realises variable scope at the CELL-EMISSION layer over a whole-file read, and has zero usecols (d3d828c171ea9fdd0e90563aff6ef705f5aae2cf).",
+      "why_it_matters": "Under B the defining implementation would violate its own ceiling at freeze time. That is not a coherent reconstruction of intent."
+    },
+    {
+      "id": "A5",
+      "weight": "strong",
+      "finding": "ZERO occurrences of suppress / column-level / byte-level / projection / unselected / partial read / skip columns across all seven commissioned authority artifacts.",
+      "why_it_matters": "A law that requires suppression would state it. B's requirement appears nowhere."
+    },
+    {
+      "id": "A6",
+      "weight": "strong",
+      "finding": "READ_ONLY qualified the ACTIVITY ('only a read is performed': bounded, non-retaining, non-semantic) and was dropped exactly when numeric read counters replaced it.",
+      "why_it_matters": "It never meant 'only these bytes'. The lineage shows a qualitative activity bound becoming a counted budget."
+    },
+    {
+      "id": "A7",
+      "weight": "supporting",
+      "finding": "C4B frames the scope question as 'metadata/decoder-admission only; or selected-column decoder validation' (commission line 105) and C4B's C1 authority freeze ceiling is PHYSICAL_REPRESENTATION_ONLY.",
+      "why_it_matters": "'Selected-column' is used as a validation scope, and PHYSICAL as a representation ceiling, not an I/O ceiling."
+    },
+    {
+      "id": "A8",
+      "weight": "supporting",
+      "finding": "Four independent lanes treat byte counts as an account distinct from selected reads: C4 accounting law, HQ190-C ACC-07 vs ACC-09, the C4B warrant template, and HQ196's successor.",
+      "why_it_matters": "Consistent structural treatment across independent authorities."
+    }
+  ],
+  "evidence_for_B": [
+    {
+      "id": "B1",
+      "weight": "none",
+      "finding": "No documentary evidence supports B.",
+      "note": "Recorded for completeness. B is not merely unproven; it is unstated."
+    },
+    {
+      "id": "B2",
+      "weight": "adverse_to_B",
+      "finding": "The hostile review noted that downstream selected-variable exactness assertions do not constrain which columns are physically READ (2e43b8c1e975974add3ac2cecfbd6daa96afd98b).",
+      "why_adverse": "If the frozen figure were a physical-read account, no existing consumer layer could satisfy it \u2014 which would make the frozen ceiling unsatisfiable by its own chain."
+    }
+  ],
+  "neutral_technical_facts": {
+    "note": "Treated as facts about the runtime, not as the definition of the governing term.",
+    "usecols_is_projection_only": true,
+    "measured": "identical read calls and bytes with and without usecols, reproduced independently by 2e43b8c1e975974add3ac2cecfbd6daa96afd98b and d5ce4ecff6acc25d199577a7859de7e98514e9fd",
+    "usecols_mentioned_in_the_frozen_record": 0
+  },
+  "why_not_C": {
+    "considered": "Possibility C \u2014 that the record establishes some other exact meaning.",
+    "finding": "No third meaning is supported. The only candidate meanings in evidence are A and B. The record's vocabulary is exhaustibly a tier/scope vocabulary; it contains no I/O-suppression vocabulary at all.",
+    "verdict": "C is not established."
+  },
+  "why_not_ambiguous": {
+    "the_test_applied": "Can the record distinguish A from B? Yes, on four independent documentary grounds (A1, A2, A3, A5), none of which depends on the current implementation.",
+    "residual_acknowledged": "No verbatim definitional sentence exists, so A is a well-supported reconstruction rather than a quotation. That is recorded as a residual in 07_LIMITS_AND_RESIDUAL_AMBIGUITY.json and is a ratification question for HQ, not an ambiguity that blocks the determination.",
+    "verdict": "PHYSICAL_SELECTED_MEANING_AMBIGUOUS is NOT returned. The evidence is one-directional and multi-sourced, and B would require a requirement that appears nowhere while being violated by the chain's own defining implementation."
+  },
+  "determination": "A"
+}
