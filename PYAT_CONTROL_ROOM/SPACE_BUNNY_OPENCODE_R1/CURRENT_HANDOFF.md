@@ -1,3 +1,41 @@
+# HQ197 active frontier — R9 candidate partial — 2026-10-03
+
+HQ has adjudicated the HQ196 warrant/review/implementation wave.
+
+Accepted:
+- DQ-01 warrant/accounting structure repaired at `2410eb7b215f904fa428df82e47fb05ede91ee21`.
+- pyreadstat 1.3.6 file-object broker route independently confirmed at `2e43b8c1e975974add3ac2cecfbd6daa96afd98b`.
+- WVS7 projection materializer is outside the accepted 23-module C4 closure.
+
+Not adopted:
+- implementation candidate `d5ce4ecff6acc25d199577a7859de7e98514e9fd`.
+
+Open:
+1. reader-byte ceiling pre-read enforcement;
+2. exact R7 requalification: six test files, 55 collected tests, two 55/55 runs;
+3. authority meaning of the frozen physical-selected operation, because pyreadstat usecols is projection-only at the measured read/byte grain.
+
+Active SPARSE_REQUIRED lanes:
+- independent candidate review:
+  `agent/reviewer-pyat-hq197-r9-broker-candidate-hostile-r1 @ b047e3258db80e753c23e5b5d70300e23b9bfafd`
+- candidate refinement/requalification:
+  `agent/rabochii-pyat-hq197-r1 @ 5b98343561e5bf225442d9ab59032d36e98693ba`
+- physical-selected interpretation:
+  `agent/rabochii-pyat-hq197-r2 @ 740a355b3aef0255dc6ecbe1b99bc9382ec3c91f`
+
+The HQ196 phrase "55-carrier court" is corrected: the governing R7 qualification surface is six files / 55 tests, not 55 carriers.
+
+R9 remains open.
+R7 remains closed at runtime/environment identity grain.
+Host disk policy/capacity remains the separate live-run blocker.
+HQ182 C4 non-adoption hold remains pending reserved Astra.
+All source/warrant/live/C7/actor holds remain.
+
+See:
+`HQ_HANDOFF/checkpoints/20261003-PYAT-HQ197-R9-CANDIDATE-PARTIAL-R1/`
+
+---
+
 # HQ196 active frontier — R9 broker-selected wave — 2026-10-03
 
 HQ has adjudicated the HQ195 three-way R9 fork.
