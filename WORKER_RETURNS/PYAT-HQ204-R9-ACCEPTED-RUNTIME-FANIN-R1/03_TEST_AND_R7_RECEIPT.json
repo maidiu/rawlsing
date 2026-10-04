@@ -1,0 +1,224 @@
+{
+  "schema": "PYAT_HQ204_TEST_AND_R7_RECEIPT@1.0.0",
+  "lane": "PYAT-HQ204-R9-ACCEPTED-RUNTIME-FANIN-R1",
+  "branch": "agent/rabochii-pyat-hq204-r9-integration-r1",
+  "implementation_base": "ff4f06954824a3a5699bc5c1c9bd68cb3c5b4146",
+  "candidate_tree_verified_blobs_identical_to": "0deb64784829661780ee3957f8070ccc2c241722",
+
+  "environment": {
+    "governed_r7_interpreter_expected_by_commission": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/qualification/r7-c4-source-free-venv/bin/python",
+    "governed_r7_interpreter_present": false,
+    "governed_c4c3_base_interpreter_expected": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/tooling/python/cpython-3.11.3-macos-x86_64-none/bin/python3.11",
+    "governed_c4c3_base_interpreter_present": false,
+    "governed_c4c3_venv_path_present": false,
+    "search_performed": "find over /Users/matthewsmith/Desktop to depth 6 for r7-c4-source-free-venv and any venv bin directory",
+    "governed_environment_reproducible_from_this_machine": false,
+    "ambient_interpreter_first_attempt": {
+      "python": "3.11 (system)",
+      "pyreadstat": "1.3.2",
+      "result": "REJECTED_BY_ACCEPTED_READER_SEAM",
+      "error": "ReaderSeamViolation: READER_SEAM_VERSION_MISMATCH: pyreadstat '1.3.2' does not match the pinned '1.3.6'",
+      "consequence": "23 of 34 execution-binding court tests failed on environment grounds only; the accepted broker fails closed on any non-1.3.6 reader",
+      "note": "the pin was NOT relaxed and no accepted code was modified to accommodate the ambient reader"
+    },
+    "disclosed_reconstruction": {
+      "created": true,
+      "disclosed_not_silent": true,
+      "path": "/var/folders/78/60jhm3cd26vfr4mp4kvwk2840000gn/T/opencode/hq204-r9-env",
+      "outside_repository": true,
+      "durable": false,
+      "python_version": "3.11.3",
+      "python_version_matches_governed_base": true,
+      "freeze": [
+        "Pygments==2.21.0",
+        "iniconfig==2.3.0",
+        "narwhals==2.26.0",
+        "numpy==2.4.6",
+        "packaging==26.3",
+        "pandas==2.3.3",
+        "pluggy==1.6.0",
+        "pyarrow==25.0.1",
+        "pyreadstat==1.3.6",
+        "pytest==9.1.1",
+        "python-dateutil==2.9.0.post0",
+        "pytz==2026.4",
+        "six==1.17.0",
+        "tzdata==2026.4"
+      ],
+      "freeze_matches_governed_01_ENVIRONMENT_LOCK_exactly": true,
+      "governed_lock_compared_against": "PYAT-C4C3-DARWIN-ANCHOR-RUNTIME-R1/01_ENVIRONMENT_LOCK.json at deea40541cda0627d129dcb7d30e06e0682e0fed",
+      "residual_caveat": "the governed venv and its base interpreter no longer exist on this machine; this environment reproduces the governed package freeze exactly on a matching CPython 3.11.3 but is a reconstruction, so results are strong evidence rather than a governed-environment certification",
+      "env_vars": {
+        "PYTHONHASHSEED": "0",
+        "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+        "PYTHONPATH": "<sparse worktree root>",
+        "pytest_flags": ["-p no:cacheprovider"]
+      }
+    }
+  },
+
+  "commissioned_courts": [
+    {
+      "court": "rawlsing_next/tests/test_pre553_execution_binding_court.py",
+      "kind": "hardened execution-binding court",
+      "accepted_expected_count": 34,
+      "collected": 34,
+      "passed": 34,
+      "failed": 0,
+      "matches_accepted_hq201_count": true
+    },
+    {
+      "court": "rawlsing_next/tests/test_pre553_source_session_court.py",
+      "kind": "source-session court",
+      "accepted_expected_count": 15,
+      "collected": 15,
+      "passed": 15,
+      "failed": 0,
+      "matches_accepted_hq201_count": true
+    },
+    {
+      "court": "rawlsing_next/tests/test_pre553_source_access_broker_court.py",
+      "kind": "broker court",
+      "accepted_expected_count": 20,
+      "collected": 20,
+      "passed": 20,
+      "failed": 0,
+      "matches_accepted_hq201_count": true
+    }
+  ],
+  "commissioned_courts_aggregate": {
+    "collected": 69,
+    "passed": 69,
+    "failed": 0,
+    "retried": false,
+    "note": "single clean invocation; no failure was retried away"
+  },
+
+  "import_compile_smoke": {
+    "py_compile_all_five_production_modules": "PASS",
+    "import_all_five_production_modules": "PASS",
+    "binding_surface_present": ["BindingError", "RoutePassApplicability", "RoutePassSpec"],
+    "verdict": "PASS"
+  },
+
+  "r7_six_file_court": {
+    "authoritative_definition_source": "PYAT-C4C3-DARWIN-ANCHOR-RUNTIME-R1/05_AUTHORITATIVE_C3_COURT.json",
+    "required_total": 55,
+    "required_per_file": {
+      "test_closed35_g01_sav_numeric_representation_authority.py": 9,
+      "test_closed35_d01_declared_encoding_admission.py": 8,
+      "test_closed35_d02_opaque_datetime_carrier.py": 13,
+      "test_fiabc_lm2_r1j_sav_representation_authority.py": 9,
+      "test_r35_i01_physical_metadata.py": 6,
+      "test_pre553_source_backed_c11_facade.py": 10
+    },
+    "required_result": "55 collected, then 55/55, then 55/55",
+    "observed_result": "NOT ACHIEVABLE",
+    "collected_total_observed": 25,
+    "gate_met": false,
+    "files_present_in_control_lineage": [
+      {
+        "path": "rawlsing_next/tests/test_fiabc_lm2_r1j_sav_representation_authority.py",
+        "control_blob": "223d959755e688a93638857fd551f2244b87f5a8",
+        "expected": 9,
+        "passed": 9
+      },
+      {
+        "path": "rawlsing_next/tests/test_r35_i01_physical_metadata.py",
+        "control_blob": "11a78ccb67e9185325be79a19b489d505b489a16",
+        "expected": 6,
+        "passed": 6
+      },
+      {
+        "path": "rawlsing_next/tests/test_pre553_source_backed_c11_facade.py",
+        "control_blob": "daf9368a0c3ff277da0b46c4f27e4686c1de8b12",
+        "expected": 10,
+        "passed": 10
+      }
+    ],
+    "files_absent_from_control_lineage": [
+      {
+        "path": "rawlsing_next/tests/test_closed35_g01_sav_numeric_representation_authority.py",
+        "expected_tests": 9,
+        "present_in_control": false,
+        "present_in_startup_sha_26e92e6": false,
+        "introduced_by": "fe9ec0361 (Integrate accepted C3 source-free repair, 2026-09-29)"
+      },
+      {
+        "path": "rawlsing_next/tests/test_closed35_d01_declared_encoding_admission.py",
+        "expected_tests": 8,
+        "present_in_control": false,
+        "present_in_startup_sha_26e92e6": false,
+        "introduced_by": "105246b33 (Integrate accepted C3 source-free repair, 2026-09-29)"
+      },
+      {
+        "path": "rawlsing_next/tests/test_closed35_d02_opaque_datetime_carrier.py",
+        "expected_tests": 13,
+        "present_in_control": false,
+        "present_in_startup_sha_26e92e6": false,
+        "introduced_by": "5fbf9cc56 (Integrate accepted C3 source-free repair, 2026-09-29)"
+      }
+    ],
+    "unreachable_test_count": 30,
+    "reachable_test_count": 25,
+    "absent_files_provenance": "the three missing files belong to the separate accepted C3 source-free repair lineage (sibling commits 1f9990fec, 30686b185, fe9ec0361, 105246b33, 5fbf9cc56), none of which is an ancestor of the control base ff4f0695; they are C3/C4 closed35 court content, not R9 runtime family and not R9 courts",
+    "why_not_imported": "the commission forbids importing unrelated historical side-branch content and forbids improvising a semantic resolution; pulling the closed35 court files in would be exactly that, so they were left out and the gap is reported rather than papered over",
+    "available_subset_runs": [
+      { "run": "collect-only", "collected": 25 },
+      { "run": 1, "passed": 25, "failed": 0, "duration_seconds": 45.84 },
+      { "run": 2, "passed": 25, "failed": 0, "duration_seconds": 46.18 }
+    ],
+    "available_subset_deterministic": true,
+    "available_subset_per_file_matches_accepted_expectations": true,
+    "significant_positive_finding": "all 25 reachable R7 tests pass twice against the fan-in candidate, and all three reachable files import the overwritten pre553_physical_decoder; therefore the decoder and r5_codec forward-evolution does not regress any part of the reachable R7 six-file court"
+  },
+
+  "regression_audit_on_control_decoder_consumers": {
+    "method": "identical 12-file control set run twice on the same interpreter: once at pure control base ff4f0695, once on the fan-in candidate",
+    "control_base_result": { "failed": 14, "passed": 94, "skipped": 1, "total": 109 },
+    "fanin_candidate_result": { "failed": 16, "passed": 92, "skipped": 1, "total": 109 },
+    "delta": "exactly 2 tests moved from passed to failed",
+    "new_failures_introduced_by_fanin": [
+      {
+        "test": "rawlsing_next/tests/test_pre553_sr06_decoder_carrier.py::test_expected_source_identity_is_hashed_once_before_reader_decode",
+        "assertion": "hash_calls == [path]",
+        "observed": "hash_calls == []",
+        "mechanism": "the control test monkeypatches decoder._sha and requires the expected-source-sha gate to hash via _sha exactly once before any reader access; the accepted decoder still raises the correct DecoderError('source sha256 mismatch before governed decode') but reaches it through the broker-governed _governed_source_sha path instead of _sha, so the legacy mechanism assertion no longer holds",
+        "classification": "MATERIAL_MECHANISM_DIVERGENCE"
+      },
+      {
+        "test": "rawlsing_next/tests/test_pre553_sr06_decoder_carrier.py::test_normal_decode_uses_chunk_path_and_compatibility_uses_full_read",
+        "assertion": "chunk_calls and chunk_calls[0]['chunksize'] == 2",
+        "observed": "chunk_calls == []",
+        "mechanism": "the control-lineage test requires normal decode to route through the chunked reader; the accepted decoder was restructured onto the brokered, declaration-aware reader path and no longer issues that chunked call in the asserted form",
+        "classification": "MATERIAL_MECHANISM_DIVERGENCE"
+      }
+    ],
+    "pre_existing_failures_unchanged": 14,
+    "pre_existing_failure_note": "12 of the 14 control-base failures are environmental or banked-projection related, including ModuleNotFoundError: duckdb for the two direct-duckdb tests; this reconstruction did not install duckdb, matching the governed C4C3 freeze which also does not list duckdb",
+    "retrying_away_a_failure": false,
+    "these_two_tests_are_in_the_commissioned_r7_six_file_court": false,
+    "these_two_tests_are_in_the_three_r9_courts": false,
+    "adjudication_note": "these two failures were NOT suppressed, NOT retried away, and NOT worked around; they are reported to HQ as a material new counterexample to the premise that the fan-in is purely additive to the control lineage"
+  },
+
+  "holds_preserved": {
+    "raw_source_access": false,
+    "locator_discovery": false,
+    "warrant_issued": false,
+    "source_specific_production_policy_introduced": false,
+    "numeric_reader_byte_ceilings_invented": false,
+    "accepted_semantics_altered": false,
+    "live_c4": false,
+    "c7": false,
+    "actor_or_person_work": false,
+    "self_adoption": false,
+    "route_pass_applicability": "preserved (RoutePassApplicability / RoutePassSpec present and court-covered)",
+    "attempts_retries_completions_separation": "preserved and court-covered",
+    "pre_operation_retry_ceiling": "preserved and court-covered",
+    "completion_after_postconditions": "preserved and court-covered",
+    "pyreadstat_dependency_injection": "preserved and court-covered",
+    "seven_warrant_plan_shapes": "preserved and court-covered",
+    "source_dependent_byte_budgets_unbound": "preserved"
+  }
+}

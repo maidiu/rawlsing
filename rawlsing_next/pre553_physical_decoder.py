@@ -18,8 +18,17 @@ import math
 from pathlib import Path
 from typing import Any, Iterator, Mapping
 
+from rawlsing_next.pre553_r5_codec import normalize_decoder_physical_value
+from rawlsing_next.pre553_source_access_broker import (
+    RawSourcePathEscape,
+    SourceAccessBroker,
+    SourceAccessBudget,
+    SourceAccessViolation,
+)
+
 
 COMPATIBILITY_ONLY = "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY"
+SOURCE_DECLARED_ENCODING_ONLY = "SOURCE_DECLARED_EXACT_SHA_ENCODING__PHYSICAL_DECODING_ONLY"
 PHYSICAL_METADATA_CONTRACT = "PRE553_PHYSICAL_METADATA@1.0.0"
 DECODER_IMPLEMENTATION_ID = "rawlsing_next/pre553_physical_decoder.py"
 COMPATIBILITY_ALLOWLIST: Mapping[str, str] = {
@@ -29,6 +38,16 @@ COMPATIBILITY_ALLOWLIST: Mapping[str, str] = {
     "c43d0e1821c51398817d7dfdfad2c0a4a5bb0d492f6a58096670e623bb6130e9": "latin1",
     "368ae5d07a44975a2f0a9ce3b1e564988a966b2632e28075c56a24d60065bcc8": "latin1",
     "14e1032755c4f42d8d3dc61647097ccd7605ba281551e53953c76d22a223cd1c": "latin1",
+}
+
+# CLOSED35 D01: exact source-declared encoding admission is a separate physical
+# decoder lane from compatibility-only fallback. The map binds only exact source
+# SHA -> declared decoder encoding; it authorizes no text semantics and no family-
+# or wave-level inheritance.
+DECLARED_ENCODING_ALLOWLIST: Mapping[str, str] = {
+    "ac0b8bc1ddb2fa6b952417e35b6379ce6a2cf8596776a43282ba44f48e0ae1a2": "BIG5",
+    "5b703173845c086382fd93252f1cbc91dfef74007755459adfc73785389172f2": "WINDOWS-1252",
+    "66252a92c59bf6759b79a6b35b2be658b98a433373212a70c8ec94755d3e02ec": "WINDOWS-1252",
 }
 
 
@@ -78,6 +97,10 @@ class PhysicalSourceIncidence:
     _source_path: str | None = None
     _reader_kind: str | None = None
     _encoding: str | None = None
+    _broker: Any = None
+    _source_access_receipt: Mapping[str, Any] | None = None
+    _selected_ordinals: tuple[int, ...] | None = None
+    _session: Any = None
 
     @property
     def physical_metadata_digest(self) -> str:
@@ -95,6 +118,46 @@ class PhysicalSourceIncidence:
             file_metadata=self.file_metadata,
             variables=self.variables,
         )
+
+    @property
+    def source_access_receipt(self) -> Mapping[str, Any]:
+        """The governed source-access receipt, with every account kept separate.
+
+        Built LIVE from the broker so it reflects every operation performed so
+        far, including chunk reads issued later through iter_batches. A receipt
+        snapshotted during decode would under-report the very accesses it exists
+        to account for.
+        """
+        if self._session is not None:
+            return self._session.aggregate_receipt()
+        if self._broker is not None:
+            return self._broker.receipt()
+        if self._source_access_receipt is None:
+            return {"schema": "PRE553_GOVERNED_SOURCE_ACCESS@1.0.0", "accounts": None,
+                    "note": "no brokered receipt on this incidence"}
+        return self._source_access_receipt
+
+    @property
+    def selected_ordinals(self) -> tuple[int, ...] | None:
+        """Ordinals bound for the selected route, or None when no selection was bound."""
+        return self._selected_ordinals
+
+    def close_source_access(self) -> None:
+        """Release the governed physical open, and the session if this owns one.
+
+        Safe to call more than once, and safe on both normal and error paths.
+        """
+        if self._session is not None:
+            self._session.close()
+            return
+        if self._broker is not None:
+            self._broker.close()
+
+    def __enter__(self) -> "PhysicalSourceIncidence":
+        return self
+
+    def __exit__(self, *exc: Any) -> None:
+        self.close_source_access()
 
     def require_physical_metadata_digest(self, expected_digest: str) -> None:
         if not isinstance(expected_digest, str) or len(expected_digest) != 64:
@@ -121,7 +184,7 @@ class PhysicalSourceIncidence:
             batch: list[PhysicalCell] = []
             for local_row, row in enumerate(frame.itertuples(index=False, name=None), 1):
                 for variable, value in zip(variables, row):
-                    raw = _jsonable(value)
+                    raw = _physical_value(value)
                     state, declaration = classify_physical_value(raw, declarations[variable.name])
                     batch.append(PhysicalCell(row_offset + local_row, variable.ordinal, variable.name, raw, state,
                                               declaration, variable.value_labels.get(str(raw))))
@@ -136,16 +199,28 @@ class PhysicalSourceIncidence:
             return
         if self._source_path is None or self._reader_kind is None:
             return
-        import pyreadstat
-        reader = pyreadstat.read_sav if self._reader_kind == "SAV" else pyreadstat.read_dta
-        row_offset = 0
-        chunks = pyreadstat.read_file_in_chunks(
-            reader, self._source_path, chunksize=rows_per_chunk, encoding=self._encoding,
-            apply_value_formats=False, user_missing=True,
+        if self._broker is not None:
+            # Governed route: one position-zero view per chunk over the SAME
+            # application-owned physical open.  pyreadstat.read_file_in_chunks is
+            # deliberately not used: it reuses one object across parses, which
+            # ReadStat rejects for DTA because it requires position zero.
+            total = int(getattr(self, "row_count", 0) or 0)
+            offset = 0
+            for frame in self._broker.chunk_reads(
+                chunk_rows=rows_per_chunk, total_rows=total, encoding=self._encoding,
+            ):
+                yield from emit(frame, offset)
+                offset += len(frame)
+            return
+        # No broker on this incidence: the governed chunk route is unavailable.
+        # Refuse rather than silently reverting to a raw source path string, which
+        # would make the path-open account a fiction for exactly the scope that
+        # lacks governance.
+        raise RawSourcePathEscape(
+            "UNGOVERNED_CHUNK_ROUTE",
+            "iter_batches requires the application-owned broker; this incidence was "
+            "constructed without one, so the governed chunk route cannot be used",
         )
-        for frame, _metadata in chunks:
-            yield from emit(frame, row_offset)
-            row_offset += len(frame)
 
     def iter_cells(self, batch_size: int = 10_000) -> Iterator[PhysicalCell]:
         for batch in self.iter_batches(batch_size):
@@ -175,6 +250,32 @@ def _jsonable(value: Any) -> Any:
     if isinstance(value, (list, tuple)):
         return [_jsonable(v) for v in value]
     return str(value)
+
+
+def _physical_value(value: Any) -> Any:
+    """Preserve exact decoder-native naive date/time through the opaque R5 seam only."""
+    import datetime as _dt
+    if type(value) in {_dt.datetime, _dt.date, _dt.time}:
+        return normalize_decoder_physical_value(value)
+    if hasattr(value, "item"):
+        try:
+            item = value.item()
+        except Exception:
+            pass
+        else:
+            if type(item) in {_dt.datetime, _dt.date, _dt.time}:
+                return normalize_decoder_physical_value(item)
+    return _jsonable(value)
+
+
+def _governed_source_sha(broker: SourceAccessBroker) -> str:
+    """Observable seam for the governed whole-file hash pass.
+
+    The hash now runs over the broker's single application-owned open rather
+    than opening the path again. This seam exists so the identity gate stays
+    externally observable and auditable.
+    """
+    return broker.hash_pass()
 
 
 def _sha(path: Path) -> str:
@@ -267,9 +368,12 @@ def _compatibility_config(source_sha: str, encoding: str | None) -> dict[str, An
     if encoding is None:
         return {"encoding": None, "authority_status": None}
     expected = COMPATIBILITY_ALLOWLIST.get(source_sha)
-    if expected != encoding:
-        raise DecoderError("encoding override is not in the frozen exact SHA/config allowlist")
-    return {"encoding": encoding, "authority_status": COMPATIBILITY_ONLY}
+    if expected == encoding:
+        return {"encoding": encoding, "authority_status": COMPATIBILITY_ONLY}
+    declared = DECLARED_ENCODING_ALLOWLIST.get(source_sha)
+    if declared == encoding:
+        return {"encoding": encoding, "authority_status": SOURCE_DECLARED_ENCODING_ONLY}
+    raise DecoderError("encoding override is not in an exact SHA/config representation allowlist")
 
 
 def _missing_declarations(metadata: Any, name: str, source_format: str) -> tuple[Mapping[str, Any], ...]:
@@ -369,11 +473,23 @@ def _sav_header_layout(prefix: bytes) -> Mapping[str, Any]:
     return out
 
 
-def _raw_layout_declarations(source: Path, source_format: str, metadata: Any) -> Mapping[str, Any]:
-    """Preserve raw-format layout evidence without interpreting survey meaning."""
+def _raw_layout_declarations(
+    source: Path,
+    source_format: str,
+    metadata: Any,
+    *,
+    prefix: bytes | None = None,
+) -> Mapping[str, Any]:
+    """Preserve raw-format layout evidence without interpreting survey meaning.
+
+    ``prefix`` is supplied by the governed broker so the header-prefix read is
+    accounted on the same application-owned open as the rest of the scope.  The
+    direct-open fallback exists only for callers that do not use the broker.
+    """
     prefix_size = 176 if source_format == "SAV" else 512
-    with source.open("rb") as handle:
-        prefix = handle.read(prefix_size)
+    if prefix is None:
+        with source.open("rb") as handle:
+            prefix = handle.read(prefix_size)
 
     if source_format == "SAV":
         native = _sav_header_layout(prefix)
@@ -397,6 +513,7 @@ def _file_metadata_contract(
     metadata: Any,
     variables: tuple[PhysicalVariable, ...],
     row_count: int,
+    raw_prefix: bytes | None = None,
 ) -> Mapping[str, Any]:
     names = [variable.name for variable in variables]
     display = [
@@ -408,7 +525,7 @@ def _file_metadata_contract(
         }
         for variable in variables
     ]
-    raw_layout = _raw_layout_declarations(source, source_format, metadata)
+    raw_layout = _raw_layout_declarations(source, source_format, metadata, prefix=raw_prefix)
     normalized_geometry = {
         "traversed_dictionary_variable_count": len(variables),
         "traversed_stream_cell_width": len(variables),
@@ -442,13 +559,26 @@ def _decode(
     expected_format: str,
     encoding: str | None = None,
     expected_source_sha256: str | None = None,
+    selected_variables: tuple[str, ...] | None = None,
+    source_access_budget: SourceAccessBudget | None = None,
 ) -> PhysicalSourceIncidence:
+    """Decode a source through the application-owned governed broker.
+
+    Every source-path open in this scope is performed by the broker, counted, and
+    capped BEFORE the operation runs.  The compiled reader receives a
+    position-zero view of the broker's single open and never a path string, so
+    the literal path-open account is application-owned rather than advisory.
+
+    ``selected_variables`` binds the frozen selected-variable route: the selected
+    names are checked against the real column inventory BEFORE any row data is
+    read, and the route issues a selected read rather than a full read.  It does
+    not alter missingness classification, typed-value semantics, authority or
+    witness truth; those are unchanged on every route.
+    """
     import pyreadstat
 
     source = Path(path)
-    if not source.is_file():
-        raise DecoderError(f"source bytes unavailable: {source}")
-    source_sha = _sha(source)
+    source_format = expected_format.upper()
     if expected_source_sha256 is not None:
         if (
             not isinstance(expected_source_sha256, str)
@@ -457,23 +587,219 @@ def _decode(
             or any(char not in "0123456789abcdef" for char in expected_source_sha256)
         ):
             raise DecoderError("expected_source_sha256 must be lowercase sha256")
-        if source_sha != expected_source_sha256:
+
+    if selected_variables is not None:
+        selected_variables = tuple(selected_variables)
+        if not selected_variables:
+            raise DecoderError("selected_variables must name at least one variable")
+        if len(set(selected_variables)) != len(selected_variables):
+            raise DecoderError(f"selected_variables repeat a name: {list(selected_variables)}")
+
+    if source_access_budget is None:
+        # The frozen selected-variable law requires zero full reads on that
+        # route, so the selected route caps it unless the caller overrides.
+        source_access_budget = SourceAccessBudget(full_reads=0) if selected_variables is not None \
+            else SourceAccessBudget()
+    broker = SourceAccessBroker(
+        source,
+        budget=source_access_budget,
+        pyreadstat_module=pyreadstat,
+    )
+    try:
+        broker.bind_reader(source_format)
+        # Decoder entry boundary: counted ONCE here, never per reader call, and
+        # refused before any metadata/hash/row work when capped at 1.
+        broker.admit_decoder_entry()
+        if not broker.existence_check():
+            raise DecoderError(f"source bytes unavailable: {source}")
+        source_sha = _governed_source_sha(broker)
+        if expected_source_sha256 is not None and source_sha != expected_source_sha256:
             raise DecoderError("source sha256 mismatch before governed decode")
-    compatibility = _compatibility_config(source_sha, encoding)
-    reader = pyreadstat.read_sav if expected_format == "sav" else pyreadstat.read_dta
-    _metadata_frame, metadata = reader(str(source), metadataonly=True, apply_value_formats=False,
-                                       user_missing=True, encoding=encoding)
-    source_format = expected_format.upper()
-    compatibility_full_read = encoding is not None
-    frame = None
-    if compatibility_full_read:
-        frame, metadata = reader(str(source), apply_value_formats=False, user_missing=True, encoding=encoding)
-    names = list(metadata.column_names)
+
+        compatibility = _compatibility_config(source_sha, encoding)
+
+        # Metadata first: the selected set must be BOUND against the real column
+        # inventory before any row-data read is issued.
+        metadata = broker.metadata_read(encoding=encoding)
+        names = list(metadata.column_names)
+
+        frame = None
+        selected_ordinals: list[int] | None = None
+        inventory: list[str] | None = None
+        variables_ordinals: dict[str, int] = {}
+        if selected_variables is not None:
+            ordinals = {name: index for index, name in enumerate(names, 1)}
+            missing = [n for n in selected_variables if n not in ordinals]
+            if missing:
+                raise DecoderError(f"selected variables absent from the bound source: {missing}")
+            selected_ordinals = [ordinals[n] for n in selected_variables]
+            broker.selected_read_config = {
+                "mechanism": "pyreadstat usecols",
+                "selected_names": list(selected_variables),
+                "bound_ordinals": selected_ordinals,
+                "bound_before_row_data_read": True,
+                "selected_count": len(selected_variables),
+            }
+            frame, metadata = broker.selected_read(list(selected_variables), encoding=encoding)
+            # The selected route's variable inventory must be the SELECTED set,
+            # carrying the ordinals bound from the pre-read inventory. Leaving it
+            # full-length while the frame holds one column made emit() zip
+            # selected values onto the wrong variable names, so a selected cell
+            # could be attributed to an unselected variable.
+            variables_ordinals = dict(zip(list(selected_variables), selected_ordinals))
+            inventory = list(selected_variables)
+        elif encoding is not None:
+            frame, metadata = broker.full_read(encoding=encoding)
+        if inventory is None:
+            inventory = list(metadata.column_names)
+            variables_ordinals = {name: i for i, name in enumerate(inventory, 1)}
+
+        raw_prefix = broker.header_prefix(176 if source_format == "SAV" else 512)
+        variables: list[PhysicalVariable] = []
+        declarations: dict[str, tuple[Mapping[str, Any], ...]] = {}
+        for name in inventory:
+            ordinal = variables_ordinals[name]
+            decl = _missing_declarations(metadata, name, source_format)
+            declarations[name] = decl
+            labels = (getattr(metadata, "variable_value_labels", {}) or {}).get(name, {}) or {}
+            display = {
+                "storage_width": (getattr(metadata, "variable_storage_width", {}) or {}).get(name),
+                "display_width": (getattr(metadata, "variable_display_width", {}) or {}).get(name),
+                "alignment": (getattr(metadata, "variable_alignment", {}) or {}).get(name),
+                "measure": (getattr(metadata, "variable_measure", {}) or {}).get(name),
+                "format": (getattr(metadata, "original_variable_types", {}) or {}).get(name),
+            }
+            variables.append(PhysicalVariable(
+                ordinal, name, (getattr(metadata, "readstat_variable_types", {}) or {}).get(name),
+                (getattr(metadata, "column_names_to_labels", {}) or {}).get(name),
+                {str(_jsonable(k)): _jsonable(v) for k, v in labels.items()}, decl, display,
+                {"multiple_response_sets": _jsonable((getattr(metadata, "mr_sets", {}) or {}))},
+            ))
+        row_count = int(getattr(metadata, "number_rows", 0) or 0)
+        variable_tuple = tuple(variables)
+        file_meta = _file_metadata_contract(
+            source=source,
+            source_format=source_format,
+            metadata=metadata,
+            variables=variable_tuple,
+            row_count=row_count,
+            raw_prefix=raw_prefix,
+        )
+        source_access_receipt = broker.receipt()
+        reader_config = {
+            "reader": "pyreadstat",
+            "reader_version": getattr(pyreadstat, "__version__", None),
+            "decoder_implementation": DECODER_IMPLEMENTATION_ID,
+            "physical_metadata_contract": PHYSICAL_METADATA_CONTRACT,
+            "user_missing": True,
+            "apply_value_formats": False,
+            **compatibility,
+        }
+        return PhysicalSourceIncidence(
+            source_sha,
+            source_format,
+            row_count,
+            variable_tuple,
+            reader_config,
+            file_meta,
+            _frame=frame,
+            _source_path=str(source),
+            _reader_kind=source_format,
+            _encoding=encoding,
+            _broker=broker,
+            _source_access_receipt=source_access_receipt,
+            _selected_ordinals=tuple(selected_ordinals) if selected_ordinals else None,
+        )
+    except Exception:
+        # Fail closed: never leave a governed open behind on an error path.
+        broker.close()
+        raise
+    # NOTE: the governed open is intentionally retained on the incidence so the
+    # chunk route can share this single physical open.  Callers should call
+    # close_source_access(); the broker is also released when the incidence is
+    # collected.  It is never replaced by a raw path string.
+
+
+def decode_in_session(
+    session: Any,
+    plan: Any,
+) -> PhysicalSourceIncidence:
+    """Decode inside a caller-owned GovernedSourceSession.
+
+    This is the GOVERNED path. The session owns the broker, the single physical
+    open and the aggregate accounts; this function never constructs a broker and
+    never hands pyreadstat a path string. The caller keeps ownership of the
+    session lifetime and should close it (or use it as a context manager).
+    """
+    import pyreadstat
+
+    from rawlsing_next.pre553_source_session import RowDataMode
+
+    if not hasattr(session, "run") or not hasattr(session, "broker"):
+        raise DecoderError("decode_in_session requires a GovernedSourceSession")
+    session._require_open()
+
+    outcome = session.run(plan)
+    source_format = session.source_format
+    metadata = outcome["metadata"]
+    source_sha = outcome["source_sha256"]
+    frame = outcome.get("frame")
+
+    inventory = list(metadata.column_names)
+    variables_ordinals = {n: i for i, n in enumerate(inventory, 1)}
+    if plan.mode is RowDataMode.SELECTED and outcome.get("selected_ordinals"):
+        names = list(plan.selected_variables or ())
+        inventory = names
+        variables_ordinals = dict(zip(names, outcome["selected_ordinals"]))
+
+    prefix = outcome.get("header_prefix")
+    if prefix is None and plan.admits_header_prefix:
+        prefix = b""
+
+    variable_tuple = _build_variables(metadata, inventory, variables_ordinals, source_format)
+    file_meta = _file_metadata_contract(
+        source=Path(session.path),
+        source_format=source_format,
+        metadata=metadata,
+        variables=variable_tuple,
+        row_count=int(getattr(metadata, "number_rows", 0) or 0),
+        raw_prefix=prefix,
+    )
+    compatibility = _compatibility_config(source_sha, plan.encoding)
+    reader_config = {
+        "reader": "pyreadstat",
+        "reader_version": getattr(pyreadstat, "__version__", None),
+        "decoder_implementation": DECODER_IMPLEMENTATION_ID,
+        "physical_metadata_contract": PHYSICAL_METADATA_CONTRACT,
+        "user_missing": True,
+        "apply_value_formats": False,
+        **compatibility,
+    }
+    if plan.mode is RowDataMode.CHUNKED_FULL:
+        frame = None
+    return PhysicalSourceIncidence(
+        source_sha,
+        source_format,
+        int(getattr(metadata, "number_rows", 0) or 0),
+        variable_tuple,
+        reader_config,
+        file_meta,
+        _frame=frame,
+        _source_path=str(session.path),
+        _reader_kind=source_format,
+        _encoding=plan.encoding,
+        _broker=session.broker,
+        _source_access_receipt=None,
+        _selected_ordinals=tuple(outcome["selected_ordinals"]) if outcome.get("selected_ordinals") else None,
+        _session=session,
+    )
+
+
+def _build_variables(metadata, inventory, ordinals, source_format):
     variables: list[PhysicalVariable] = []
-    declarations: dict[str, tuple[Mapping[str, Any], ...]] = {}
-    for ordinal, name in enumerate(names, 1):
+    for name in inventory:
+        ordinal = ordinals[name]
         decl = _missing_declarations(metadata, name, source_format)
-        declarations[name] = decl
         labels = (getattr(metadata, "variable_value_labels", {}) or {}).get(name, {}) or {}
         display = {
             "storage_width": (getattr(metadata, "variable_storage_width", {}) or {}).get(name),
@@ -485,39 +811,10 @@ def _decode(
         variables.append(PhysicalVariable(
             ordinal, name, (getattr(metadata, "readstat_variable_types", {}) or {}).get(name),
             (getattr(metadata, "column_names_to_labels", {}) or {}).get(name),
-            {str(_jsonable(k)): _jsonable(v) for k, v in labels.items()}, decl, display,
-            {"multiple_response_sets": _jsonable((getattr(metadata, "mr_sets", {}) or {}))},
+            {str(_jsonable(k)): _jsonable(k2) for k, k2 in labels.items()}, decl, display,
+            {"multiple_response_sets": _jsonable((getattr(metadata, "mr_sets", {}) or {}) )},
         ))
-    row_count = int(getattr(metadata, "number_rows", 0) or 0)
-    variable_tuple = tuple(variables)
-    file_meta = _file_metadata_contract(
-        source=source,
-        source_format=source_format,
-        metadata=metadata,
-        variables=variable_tuple,
-        row_count=row_count,
-    )
-    reader_config = {
-        "reader": "pyreadstat",
-        "reader_version": getattr(pyreadstat, "__version__", None),
-        "decoder_implementation": DECODER_IMPLEMENTATION_ID,
-        "physical_metadata_contract": PHYSICAL_METADATA_CONTRACT,
-        "user_missing": True,
-        "apply_value_formats": False,
-        **compatibility,
-    }
-    return PhysicalSourceIncidence(
-        source_sha,
-        source_format,
-        row_count,
-        variable_tuple,
-        reader_config,
-        file_meta,
-        _frame=frame,
-        _source_path=str(source),
-        _reader_kind=source_format,
-        _encoding=encoding,
-    )
+    return tuple(variables)
 
 
 def decode_sav(
@@ -525,12 +822,23 @@ def decode_sav(
     *,
     encoding: str | None = None,
     expected_source_sha256: str | None = None,
+    selected_variables: tuple[str, ...] | None = None,
+    source_access_budget: SourceAccessBudget | None = None,
 ) -> PhysicalSourceIncidence:
+    """Decode a SAV source through the governed broker.
+
+    ``selected_variables`` selects the frozen selected-variable route: one
+    selected read and zero full reads.  Names are bound against the real column
+    inventory before any row data is read, and a missing or unexpected selected
+    column fails closed.
+    """
     return _decode(
         path,
         expected_format="sav",
         encoding=encoding,
         expected_source_sha256=expected_source_sha256,
+        selected_variables=selected_variables,
+        source_access_budget=source_access_budget,
     )
 
 
@@ -539,18 +847,29 @@ def decode_dta(
     *,
     encoding: str | None = None,
     expected_source_sha256: str | None = None,
+    selected_variables: tuple[str, ...] | None = None,
+    source_access_budget: SourceAccessBudget | None = None,
 ) -> PhysicalSourceIncidence:
+    """Decode a DTA source through the governed broker.
+
+    ``selected_variables`` selects the frozen selected-variable route: one
+    selected read and zero full reads.
+    """
     return _decode(
         path,
         expected_format="dta",
         encoding=encoding,
         expected_source_sha256=expected_source_sha256,
+        selected_variables=selected_variables,
+        source_access_budget=source_access_budget,
     )
 
 
 __all__ = [
     "COMPATIBILITY_ALLOWLIST",
     "COMPATIBILITY_ONLY",
+    "DECLARED_ENCODING_ALLOWLIST",
+    "SOURCE_DECLARED_ENCODING_ONLY",
     "DECODER_IMPLEMENTATION_ID",
     "PHYSICAL_METADATA_CONTRACT",
     "DecoderError",
@@ -561,6 +880,12 @@ __all__ = [
     "build_physical_metadata_payload",
     "compute_physical_metadata_digest",
     "classify_physical_value",
+    "_physical_value",
     "decode_sav",
     "decode_dta",
+    "SourceAccessBroker",
+    "SourceAccessBudget",
+    "SourceAccessViolation",
+    "RawSourcePathEscape",
+    "decode_in_session",
 ]

@@ -1,0 +1,71 @@
+{
+  "schema": "PYAT_HQ204_INTEGRATION_RECEIPT@1.0.0",
+  "lane": "PYAT-HQ204-R9-ACCEPTED-RUNTIME-FANIN-R1",
+  "role": "EXACT SOURCE-FREE INTEGRATION WORKER",
+  "branch": "agent/rabochii-pyat-hq204-r9-integration-r1",
+  "commissioned_startup_sha": "26e92e6d1fac4b5bc9bfa755ced6e7038e4f959d",
+  "startup_sha_verified_exact": true,
+  "implementation_base": "ff4f06954824a3a5699bc5c1c9bd68cb3c5b4146",
+  "checkout_mode": "SPARSE_REQUIRED",
+
+  "authorities_consumed": {
+    "accepted_hardened_candidate": "deea40541cda0627d129dcb7d30e06e0682e0fed",
+    "final_independent_acceptance": "0deb64784829661780ee3957f8070ccc2c241722",
+    "accepted_governed_source_session_code": "90ccbd54c549f67358d0c02ad18ff90b843cf3ee",
+    "accepted_documentary_warrant_successor": "89054b882c04cf0541b6f9f4abdb555c808ad94d",
+    "hq204_adjudication": "ff4f06954824a3a5699bc5c1c9bd68cb3c5b4146",
+    "r7_six_file_court_definition": "PYAT-C4C3-DARWIN-ANCHOR-RUNTIME-R1/05_AUTHORITATIVE_C3_COURT.json at deea40541cda0627d129dcb7d30e06e0682e0fed",
+    "governed_environment_lock": "PYAT-C4C3-DARWIN-ANCHOR-RUNTIME-R1/01_ENVIRONMENT_LOCK.json at deea40541cda0627d129dcb7d30e06e0682e0fed"
+  },
+
+  "store_law": {
+    "commissioned_canonical_path_valid": false,
+    "reason": "/Users/matthewsmith/Desktop/Rawlsing is not a git repository",
+    "second_copy_cloned": false,
+    "store_actually_used": "/Users/matthewsmith/Desktop/as2b-lits1-DiSDJn/repository",
+    "store_remote": "https://github.com/maidiu/rawlsing.git",
+    "store_owns_commissioned_worktree_root": true,
+    "isolated_worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-hq204-r9-fanin-r1",
+    "refs_fetched": ["refs/heads/agent/rabochii-pyat-hq204-r9-integration-r1"],
+    "fetch_discipline": "exact ref only, no tags"
+  },
+
+  "integration_method": {
+    "whole_branch_merge": false,
+    "method": "per-path checkout of exact accepted blobs, blob-verified after placement",
+    "paths_placed": 8,
+    "all_blobs_verified_byte_identical_to_accepted": true,
+    "current_control_ancestry_preserved": true
+  },
+
+  "collision_handling": {
+    "nonancestor_owners_encountered": 0,
+    "stop_ACCEPTED_R9_FANIN_COLLISION_triggered": false,
+    "semantic_resolution_improvised": false,
+    "two_overwrites_adjudicated_as_forward_evolution": [
+      "rawlsing_next/pre553_physical_decoder.py",
+      "rawlsing_next/pre553_r5_codec.py"
+    ]
+  },
+
+  "no_warrant_issued": true,
+  "no_numeric_reader_byte_ceilets_invented": true,
+  "no_source_specific_production_policy_introduced": true,
+  "self_adopted": false,
+
+  "qualification_summary": {
+    "three_r9_courts": "69/69 passed (34 + 15 + 20), matching the accepted HQ201 counts exactly",
+    "import_compile_smoke": "PASS",
+    "r7_six_file_court": "25/25 passed twice, but the required 55-test denominator is unreachable on this lineage",
+    "control_regression_audit": "2 new failures in test_pre553_sr06_decoder_carrier.py, precisely measured",
+    "failure_retried_away": false
+  },
+
+  "blocking_findings": [
+    "R7 six-file court cannot collect 55: three closed35 court files carrying 30 of the 55 tests are absent from the control lineage and from the commissioned startup SHA.",
+    "The accepted decoder diverges from two accepted control-lineage decoder-carrier assertions."
+  ],
+
+  "disposition": "ACCEPTED_R9_DEPENDENCY_CLOSURE_INCOMPLETE",
+  "terminal": "HQ204_R9_ACCEPTED_RUNTIME_FANIN_RETURNED__HQ_REVIEW_REQUIRED"
+}

@@ -1,0 +1,96 @@
+{
+  "schema": "PYAT_HQ204_FINAL_DISPOSITION@1.0.0",
+  "lane": "PYAT-HQ204-R9-ACCEPTED-RUNTIME-FANIN-R1",
+  "branch": "agent/rabochii-pyat-hq204-r9-integration-r1",
+  "implementation_base": "ff4f06954824a3a5699bc5c1c9bd68cb3c5b4146",
+  "startup_sha": "26e92e6d1fac4b5bc9bfa755ced6e7038e4f959d",
+
+  "disposition": "ACCEPTED_R9_DEPENDENCY_CLOSURE_INCOMPLETE",
+  "secondary_finding": "MATERIAL_NEW_COUNTEREXAMPLE",
+  "terminal": "HQ204_R9_ACCEPTED_RUNTIME_FANIN_RETURNED__HQ_REVIEW_REQUIRED",
+
+  "why_not_ready": "the commission gates this fan-in on the exact R7 six-file court producing 55 collected and 55/55 twice. That gate is structurally unreachable on the current-control lineage, so the candidate cannot honestly be declared R9_ACCEPTED_RUNTIME_FANIN_READY_FOR_INDEPENDENT_REVIEW.",
+
+  "primary_reason": {
+    "id": "R7_DENOMINATOR_UNREACHABLE",
+    "statement": "30 of the R7 court's 55 tests live in three court files that the current-control lineage has never carried.",
+    "missing_files_and_tests": [
+      { "path": "rawlsing_next/tests/test_closed35_g01_sav_numeric_representation_authority.py", "tests": 9 },
+      { "path": "rawlsing_next/tests/test_closed35_d01_declared_encoding_admission.py", "tests": 8 },
+      { "path": "rawlsing_next/tests/test_closed35_d02_opaque_datetime_carrier.py", "tests": 13 }
+    ],
+    "provenance": "all three were introduced by the separate accepted C3 source-free repair lineage (fe9ec0361, 105246b33, 5fbf9cc56, siblings of 1f9990fec and 30686b185), none of which is an ancestor of control ff4f0695; they are absent from the commissioned startup SHA 26e92e6 as well",
+    "reachable": { "tests": 25, "run_1": "25/25", "run_2": "25/25", "per_file_matches_accepted": true },
+    "not_imported_because": "they are out-of-scope C3/C4 closed35 court content, and the commission forbids importing unrelated historical side-branch content or improvising a resolution",
+    "hq_decision_required": "either authorise the C3 closed35 court files as an explicitly scoped additional dependency of this fan-in, or re-specify the R7 gate against the court files the control lineage actually carries"
+  },
+
+  "secondary_reason": {
+    "id": "CONTROL_LINEAGE_DECODER_DIVERGENCE",
+    "classification": "MATERIAL_NEW_COUNTEREXAMPLE",
+    "statement": "the fan-in is not purely additive: the accepted decoder breaks exactly two accepted control-lineage tests.",
+    "measurement": {
+      "identical_file_set": 12,
+      "control_base": { "failed": 14, "passed": 94, "skipped": 1, "total": 109 },
+      "candidate": { "failed": 16, "passed": 92, "skipped": 1, "total": 109 },
+      "net_regressions": 2,
+      "pre_existing_failures_changed": 0
+    },
+    "regressed_tests": [
+      "test_pre553_sr06_decoder_carrier.py::test_expected_source_identity_is_hashed_once_before_reader_decode",
+      "test_pre553_sr06_decoder_carrier.py::test_normal_decode_uses_chunk_path_and_compatibility_uses_full_read"
+    ],
+    "mechanism": "the control-lineage carrier asserts the source-identity gate hashes through decoder._sha and that normal decode routes through the chunked reader; the accepted decoder reaches the same fail-closed outcome through the broker-governed _governed_source_sha path and a restructured declaration-aware reader route",
+    "not_in_commissioned_r7_court": true,
+    "not_in_the_three_r9_courts": true,
+    "suppressed_or_retried": false,
+    "worked_around": false,
+    "hq_decision_required": "adjudicate whether the accepted decoder supersedes these control-lineage assertions (in which case the two control tests are retired by that adjudication) or whether a compatibility repair to the decoder is required. This worker deliberately did not choose."
+  },
+
+  "what_did_pass": {
+    "accepted_r9_runtime_stack_placed": "8/8 paths, every blob byte-identical to 0deb64784829661780ee3957f8070ccc2c241722",
+    "hardened_execution_binding_court": "34/34",
+    "source_session_court": "15/15",
+    "broker_court": "20/20",
+    "aggregate_r9_courts": "69/69, matching accepted HQ201 counts exactly",
+    "import_compile_smoke": "PASS",
+    "reachable_r7_subset": "25/25 twice, deterministic",
+    "holds_preserved": [
+      "route-pass applicability",
+      "attempts / retries / completions separation",
+      "pre-operation retry ceiling",
+      "completion-after-postconditions",
+      "pyreadstat dependency injection",
+      "seven warrant plan shapes",
+      "no source-specific production policy",
+      "source-dependent byte budgets still unbound"
+    ]
+  },
+
+  "environment_insufficiency_disclosed": {
+    "governed_r7_interpreter_present": false,
+    "governed_c4c3_base_interpreter_present": false,
+    "reconstruction_disclosed_not_silent": true,
+    "freeze_matches_governed_lock_exactly": true,
+    "python_version": "3.11.3",
+    "caveat": "strong evidence, not a governed-environment certification, because the governed venv and its base interpreter are gone from this machine",
+    "ambient_reader_rejected_closed": "pyreadstat 1.3.2 vs accepted pin 1.3.6; the pin was not relaxed",
+    "duckdb_absent_from_governed_freeze_too": true
+  },
+
+  "prohibitions_observed": {
+    "raw_source_access": false,
+    "locator_discovery": false,
+    "warrant_issued": false,
+    "numeric_reader_byte_ceilings_invented": false,
+    "live_c4": false,
+    "c7": false,
+    "actor_or_person_work": false,
+    "self_adoption": false,
+    "failure_retried_away": false
+  },
+
+  "no_self_adoption": true,
+  "candidate_is_for_hq_review": true
+}

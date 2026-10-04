@@ -1,0 +1,174 @@
+{
+  "schema": "PYAT_HQ204_BLOB_AND_DEPENDENCY_MANIFEST@1.0.0",
+  "lane": "PYAT-HQ204-R9-ACCEPTED-RUNTIME-FANIN-R1",
+  "role": "EXACT SOURCE-FREE INTEGRATION WORKER",
+  "branch": "agent/rabochii-pyat-hq204-r9-integration-r1",
+  "commissioned_startup_sha": "26e92e6d1fac4b5bc9bfa755ced6e7038e4f959d",
+  "implementation_base": "ff4f06954824a3a5699bc5c1c9bd68cb3c5b4146",
+  "blob_source_of_truth": "0deb64784829661780ee3957f8070ccc2c241722",
+  "blob_source_note": "final independent acceptance; its six R9 blobs are byte-identical to the hardened candidate deea40541cda0627d129dcb7d30e06e0682e0fed, so the accepted blob set is unambiguous",
+
+  "canonical_store_deviation": {
+    "commissioned_canonical_path": "/Users/matthewsmith/Desktop/Rawlsing",
+    "is_git_repository": false,
+    "action": "did not clone another copy; used the existing maidiu/rawlsing clone that owns the commissioned worktree root",
+    "store_used": "/Users/matthewsmith/Desktop/as2b-lits1-DiSDJn/repository",
+    "store_verified_remote": "https://github.com/maidiu/rawlsing.git",
+    "store_is_partial_clone_blob_none": true,
+    "store_owns_commissioned_worktree_root": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees",
+    "isolated_sparse_worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/pyat-hq204-r9-fanin-r1",
+    "sparse_paths": ["rawlsing_next", "WORKER_COMMISSIONS", "WORKER_RETURNS", "LOCAL_COURTS", "LOCAL_QUALIFICATION"],
+    "startup_sha_verified_exact": true
+  },
+
+  "lineage": {
+    "accepted_lineage_is_merged_into_control": false,
+    "deea4054_ancestor_of_base": false,
+    "0deb6478_ancestor_of_base": false,
+    "90ccbd54_ancestor_of_base": false,
+    "89054b88_ancestor_of_base": false,
+    "merge_base_base_and_deea4054": "87029d349c8a7385cb673060a8e5decd4eb528ff",
+    "startup_sha_contains_accepted_runtime": false,
+    "startup_sha_note": "26e92e6 carries the control lineage only; the three R9 runtime modules and their courts are ABSENT there, which is the mission premise"
+  },
+
+  "runtime_family": [
+    {
+      "path": "rawlsing_next/pre553_source_access_broker.py",
+      "role": "production",
+      "current_control_state": "ABSENT",
+      "control_blob": null,
+      "accepted_source_commit": "0deb64784829661780ee3957f8070ccc2c241722",
+      "accepted_blob": "090d978bbd631820938f6f76252e09674f44ff99",
+      "blob_at_90ccbd54_governed_owner": "67fac8a33a2f6331622bfa39b09bf386aa1bcc98",
+      "blob_note": "broker was hardened after HQ199; 090d978b is the later accepted blob and is the one carried",
+      "relation": "ADD",
+      "collision": false
+    },
+    {
+      "path": "rawlsing_next/pre553_source_session.py",
+      "role": "production",
+      "current_control_state": "ABSENT",
+      "control_blob": null,
+      "accepted_source_commit": "0deb64784829661780ee3957f8070ccc2c241722",
+      "accepted_blob": "ac1390b861f69d21b65d9af25af9fa49cd217e08",
+      "blob_at_90ccbd54_governed_owner": "ac1390b861f69d21b65d9af25af9fa49cd217e08",
+      "blob_note": "identical to the accepted GovernedSourceSession owner; unchanged by HQ201 hardening",
+      "relation": "ADD",
+      "collision": false
+    },
+    {
+      "path": "rawlsing_next/pre553_execution_binding.py",
+      "role": "production",
+      "current_control_state": "ABSENT",
+      "control_blob": null,
+      "accepted_source_commit": "0deb64784829661780ee3957f8070ccc2c241722",
+      "accepted_blob": "0e11af2205a01dcf32aca3e462540040a62e9a29",
+      "relation": "ADD",
+      "collision": false
+    },
+    {
+      "path": "rawlsing_next/tests/test_pre553_execution_binding_court.py",
+      "role": "court",
+      "current_control_state": "ABSENT",
+      "control_blob": null,
+      "accepted_source_commit": "0deb64784829661780ee3957f8070ccc2c241722",
+      "accepted_blob": "67492110a1485eed44c88d1bb9cd0ac27ecebd2a",
+      "relation": "ADD",
+      "collision": false
+    },
+    {
+      "path": "rawlsing_next/tests/test_pre553_source_access_broker_court.py",
+      "role": "court",
+      "current_control_state": "ABSENT",
+      "control_blob": null,
+      "accepted_source_commit": "0deb64784829661780ee3957f8070ccc2c241722",
+      "accepted_blob": "c1bc827329846ab8ded9ee0a4307cd1680bbdf08",
+      "blob_at_90ccbd54_governed_owner": "c1bc827329846ab8ded9ee0a4307cd1680bbdf08",
+      "relation": "ADD",
+      "collision": false
+    },
+    {
+      "path": "rawlsing_next/tests/test_pre553_source_session_court.py",
+      "role": "court",
+      "current_control_state": "ABSENT",
+      "control_blob": null,
+      "accepted_source_commit": "0deb64784829661780ee3957f8070ccc2c241722",
+      "accepted_blob": "8b45e3f9ac144077b1f3c7c057dd33f0c96aafae",
+      "blob_at_90ccbd54_governed_owner": "8b45e3f9ac144077b1f3c7c057dd33f0c96aafae",
+      "relation": "ADD",
+      "collision": false
+    }
+  ],
+
+  "dependency_import_closure": [
+    {
+      "path": "rawlsing_next/pre553_physical_decoder.py",
+      "role": "production dependency",
+      "required_by": [
+        "rawlsing_next/tests/test_pre553_source_session_court.py imports decode_in_session, decode_sav",
+        "rawlsing_next/tests/test_pre553_source_access_broker_court.py imports decode_dta, decode_sav",
+        "self: accepted decoder imports pre553_source_access_broker and pre553_source_session"
+      ],
+      "current_control_state": "PRESENT",
+      "control_blob": "d2a074a41fb556a1cd5928a5fe1421ef3672a4e5",
+      "control_blob_introduced_by": "11d86982bd671674f4b320599a5ff18066e0e209",
+      "accepted_source_commit": "0deb64784829661780ee3957f8070ccc2c241722",
+      "accepted_blob": "b406d45fae419c0249b3e5c4955838542de88037",
+      "accepted_blob_introduced_by": "90ccbd54c549f67358d0c02ad18ff90b843cf3ee",
+      "relation": "OVERWRITE",
+      "ancestry_adjudication": {
+        "control_introducer_is_ancestor_of_accepted_introducer": true,
+        "test": "git merge-base --is-ancestor 11d86982b 90ccbd54",
+        "result": "true",
+        "verdict": "FORWARD_EVOLUTION_NOT_DIVERGENT",
+        "collision_stop_triggered": false,
+        "reasoning": "the control blob and the accepted blob share a common ancestor chain; the accepted blob is a later descendant version, not a nonancestor fork"
+      },
+      "overwrite_unavoidable": true,
+      "overwrite_necessity": "the control decoder has no decode_in_session symbol, which the accepted source-session court imports directly; the control decoder also predates brokering entirely and does not import the broker"
+    },
+    {
+      "path": "rawlsing_next/pre553_r5_codec.py",
+      "role": "transitive production dependency",
+      "required_by": ["rawlsing_next/pre553_physical_decoder.py (accepted blob) imports pre553_r5_codec"],
+      "current_control_state": "PRESENT",
+      "control_blob": "72f8f3c03ed065e86fea4e76bb17f8e06c2bf540",
+      "control_blob_introduced_by": "43c5c937e",
+      "accepted_source_commit": "0deb64784829661780ee3957f8070ccc2c241722",
+      "accepted_blob": "6000a1704d713f65e07610d81e9b3fd8bdd515ca",
+      "accepted_blob_introduced_by": "30686b185",
+      "relation": "OVERWRITE",
+      "ancestry_adjudication": {
+        "control_introducer_is_ancestor_of_accepted_introducer": true,
+        "test": "git merge-base --is-ancestor 43c5c937e 30686b185",
+        "result": "true",
+        "verdict": "FORWARD_EVOLUTION_NOT_DIVERGENT",
+        "collision_stop_triggered": false
+      },
+      "further_dependencies": "none; pre553_r5_codec imports only stdlib (base64, dataclasses, datetime, decimal, json, math, struct, typing), so the closure terminates here"
+    }
+  ],
+
+  "closure_completeness": {
+    "in_repo_closure_terminated": true,
+    "members": [
+      "rawlsing_next/pre553_source_access_broker.py",
+      "rawlsing_next/pre553_source_session.py",
+      "rawlsing_next/pre553_execution_binding.py",
+      "rawlsing_next/pre553_physical_decoder.py",
+      "rawlsing_next/pre553_r5_codec.py"
+    ],
+    "third_party_dependencies": ["pyreadstat", "pandas", "pytest"],
+    "note": "the accepted runtime closure itself is COMPLETE; the incompleteness reported in 05_FINAL_DISPOSITION.json concerns the R7 six-file court denominator, not the runtime closure"
+  },
+
+  "collision_summary": {
+    "nonancestor_collisions_found": 0,
+    "stop_condition_ACCEPTED_R9_FANIN_COLLISION_triggered": false,
+    "overwrites_recorded": 2,
+    "overwrites_all_forward_evolution": true
+  },
+
+  "all_placed_blobs_verified_byte_identical_to_accepted": true
+}

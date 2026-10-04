@@ -1,0 +1,80 @@
+{
+  "schema": "PYAT_HQ204_CONTROL_DIFF_AUDIT@1.0.0",
+  "lane": "PYAT-HQ204-R9-ACCEPTED-RUNTIME-FANIN-R1",
+  "base": "ff4f06954824a3a5699bc5c1c9bd68cb3c5b4146",
+  "candidate": "agent/rabochii-pyat-hq204-r9-integration-r1",
+  "startup_sha": "26e92e6d1fac4b5bc9bfa755ced6e7038e4f959d",
+  "checkout_mode": "SPARSE_REQUIRED",
+  "whole_worker_branch_merged": false,
+
+  "files_changed_vs_base": 8,
+  "added": 6,
+  "modified": 2,
+  "deleted": 0,
+
+  "change_set": [
+    { "path": "rawlsing_next/pre553_source_access_broker.py", "status": "A", "control_blob": null, "candidate_blob": "090d978bbd631820938f6f76252e09674f44ff99", "blob_source": "0deb64784829661780ee3957f8070ccc2c241722", "byte_identical_to_accepted": true },
+    { "path": "rawlsing_next/pre553_source_session.py", "status": "A", "control_blob": null, "candidate_blob": "ac1390b861f69d21b65d9af25af9fa49cd217e08", "blob_source": "0deb64784829661780ee3957f8070ccc2c241722", "byte_identical_to_accepted": true },
+    { "path": "rawlsing_next/pre553_execution_binding.py", "status": "A", "control_blob": null, "candidate_blob": "0e11af2205a01dcf32aca3e462540040a62e9a29", "blob_source": "0deb64784829661780ee3957f8070ccc2c241722", "byte_identical_to_accepted": true },
+    { "path": "rawlsing_next/tests/test_pre553_execution_binding_court.py", "status": "A", "control_blob": null, "candidate_blob": "67492110a1485eed44c88d1bb9cd0ac27ecebd2a", "blob_source": "0deb64784829661780ee3957f8070ccc2c241722", "byte_identical_to_accepted": true },
+    { "path": "rawlsing_next/tests/test_pre553_source_access_broker_court.py", "status": "A", "control_blob": null, "candidate_blob": "c1bc827329846ab8ded9ee0a4307cd1680bbdf08", "blob_source": "0deb64784829661780ee3957f8070ccc2c241722", "byte_identical_to_accepted": true },
+    { "path": "rawlsing_next/tests/test_pre553_source_session_court.py", "status": "A", "control_blob": null, "candidate_blob": "8b45e3f9ac144077b1f3c7c057dd33f0c96aafae", "blob_source": "0deb64784829661780ee3957f8070ccc2c241722", "byte_identical_to_accepted": true },
+    { "path": "rawlsing_next/pre553_physical_decoder.py", "status": "M", "control_blob": "d2a074a41fb556a1cd5928a5fe1421ef3672a4e5", "candidate_blob": "b406d45fae419c0249b3e5c4955838542de88037", "blob_source": "0deb64784829661780ee3957f8070ccc2c241722", "byte_identical_to_accepted": true, "relation": "FORWARD_EVOLUTION", "diffstat_vs_control": "382 insertions, 57 deletions", "necessity": "control decoder lacks decode_in_session, which the accepted source-session court imports; control decoder also predates brokering" },
+    { "path": "rawlsing_next/pre553_r5_codec.py", "status": "M", "control_blob": "72f8f3c03ed065e86fea4e76bb17f8e06c2bf540", "candidate_blob": "6000a1704d713f65e07610d81e9b3fd8bdd515ca", "blob_source": "0deb64784829661780ee3957f8070ccc2c241722", "byte_identical_to_accepted": true, "relation": "FORWARD_EVOLUTION", "necessity": "required transitively by the accepted decoder" }
+  ],
+
+  "collision_audit": {
+    "nonancestor_collisions": 0,
+    "stop_triggered": false,
+    "adjudication_basis": "for each overwritten path the control blob's introducing commit is an ancestor of the accepted blob's introducing commit (11d86982b -> 90ccbd54 for the decoder; 43c5c937e -> 30686b185 for r5_codec), so both are forward evolutions on a shared chain and neither is a nonancestor fork",
+    "no_semantic_resolution_improvised": true
+  },
+
+  "scope_compliance": {
+    "accepted_r9_runtime_stack_only": true,
+    "unrelated_worker_returns_imported": false,
+    "historical_side_branch_content_imported": false,
+    "stale_control_artifacts_imported": false,
+    "closed35_court_files_deliberately_not_imported": true,
+    "closed35_omission_reason": "they are absent from the control lineage and importing them would be out-of-scope side-branch content; the resulting R7 denominator gap is reported instead",
+    "whole_branch_merge_avoided": true
+  },
+
+  "preserved_invariants": {
+    "route_pass_applicability": true,
+    "attempts_retries_completions_separation": true,
+    "pre_operation_retry_ceiling": true,
+    "completion_after_postconditions": true,
+    "pyreadstat_dependency_injection": true,
+    "seven_warrant_plan_shapes": true,
+    "no_source_specific_production_policy": true,
+    "source_dependent_byte_budgets_unbound": true
+  },
+
+  "material_observations_for_hq": [
+    {
+      "id": "OBS-1",
+      "severity": "blocking",
+      "summary": "the commissioned R7 six-file 55-test gate cannot be produced on the control lineage; 30 of its 55 tests live in three closed35 court files that the control lineage has never carried",
+      "detail": "reachable 25/25 pass deterministically; the 30 unreachable tests are in test_closed35_g01_sav_numeric_representation_authority.py (9), test_closed35_d01_declared_encoding_admission.py (8) and test_closed35_d02_opaque_datetime_carrier.py (13), all introduced by the separate accepted C3 source-free repair lineage and absent from both control ff4f0695 and the commissioned startup 26e92e6"
+    },
+    {
+      "id": "OBS-2",
+      "severity": "material",
+      "summary": "the fan-in is not purely additive to the control lineage: the accepted decoder breaks exactly 2 accepted control-lineage tests in test_pre553_sr06_decoder_carrier.py",
+      "detail": "measured by an identical 12-file control set run at pure control base (14 failed / 94 passed / 1 skipped) and on the candidate (16 failed / 92 passed / 1 skipped); the two transitions are the source-identity gate mechanism (_sha -> broker-governed _governed_source_sha) and the chunked-reader route. Both remain open questions for HQ: either the accepted decoder supersedes the control-lineage assertions and the control tests should be retired by adjudication, or the decoder needs a compatibility repair. This worker did not choose between them."
+    },
+    {
+      "id": "OBS-3",
+      "severity": "informational",
+      "summary": "the governed R7 qualification interpreter and its CPython base no longer exist on this machine",
+      "detail": "qualification was run on a disclosed reconstruction whose 13-package freeze matches the governed C4C3 01_ENVIRONMENT_LOCK.json exactly on CPython 3.11.3; the ambient reader pyreadstat 1.3.2 fails the accepted 1.3.6 seam pin closed, and the pin was deliberately not relaxed"
+    },
+    {
+      "id": "OBS-4",
+      "severity": "informational",
+      "summary": "the commissioned canonical store path is not a git repository",
+      "detail": "/Users/matthewsmith/Desktop/Rawlsing has no .git; the existing maidiu/rawlsing clone that owns the commissioned Rawlsing_Worktrees root was used instead and no second copy was cloned"
+    }
+  ]
+}
