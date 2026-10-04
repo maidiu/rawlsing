@@ -1,3 +1,28 @@
+# HQ203 residual reconciliation — 2026-10-04
+
+Terminal-backward audit:
+`codex/prev3-terminal-backward-audit-r1 @ b3ea471a3771113bf408a4e434a4b480b26d5856`
+
+Verdict:
+`COMPLETENESS_NOT_PROVABLE_FROM_CURRENT_FORENSICS`
+
+Retain HQ202 R9 review:
+`agent/reviewer-pyat-hq202-r1 @ 217f96b5d9f7b767a7cfb11e5c2c3c7c75d77b4f`
+
+Supersede HQ202 F6/F7 design/review/Astra-time-grain work before adoption.
+
+Active HQ203:
+`agent/reviewer-pyat-hq203-ha-r1 @ 5cca96aeaa3fe5f2744203eac5b9a9eb2fb9de3c`
+`agent/rabochii-pyat-hq203-hb-r1 @ f91dc7527ef0dde1dc98b3e8079908fb0c3cbfcb`
+`agent/rabochii-pyat-hq203-hc-r1 @ 9967f939a44628ddea624818f5dda31a82662dee`
+`agent/rabochii-pyat-hq203-hd-r1 @ de129fea321981a8b47c3239f3858a0b6a535e46`
+`agent/rabochii-pyat-hq203-he-r1 @ 95c4eba0b556b397e1decb5fad07ea2ce7158bd8`
+
+See:
+`HQ_HANDOFF/checkpoints/20261004-PYAT-HQ203-TERMINAL-BACKWARD-RESIDUAL-R1/`
+
+---
+
 # HQ202 active frontier — R9 final review + F6/F7 constitution — 2026-10-04
 
 HQ has adjudicated the HQ201 wave.
