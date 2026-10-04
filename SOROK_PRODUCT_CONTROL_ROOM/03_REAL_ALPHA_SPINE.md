@@ -509,6 +509,14 @@ Not every event should receive all three; forced callback density would restore 
 
 See SPD-0249/0250 / RISK-205.
 
+Do not convert emergent relational specificity into the hidden score target. Rawlsing does not presume every person has a player-shaped vacancy, nor that becoming important/noninterchangeable/intimate is successful play.
+
+`OPEN RELATIONAL POSSIBILITY != PREASSIGNED SLOT`.
+
+`EMERGENT RELATIONAL SPECIFICITY != WIN CONDITION`.
+
+See artifact 90 / SPD-0251 / RISK-206.
+
 ---
 
 ## 7. Current tunable balances
