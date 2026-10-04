@@ -1,0 +1,92 @@
+{
+  "schema": "PYAT_HQ204_HQD125_S15_ARCHITECTURE_TEST@1.0.0",
+  "lane": "PYAT-HQ204-HC-SERVICE-SOURCE-AUTHORITY-R1",
+  "startup_sha": "b65673abc13916963770d6d74ae51fe882539b70",
+
+  "law_verbatim": {
+    "source": "PYAT_CONTROL_ROOM/24_HQD125_DDM_FUNCTIONAL_CONSERVATION_AND_PREV3_ACCEPTANCE_LAW.md section 15, 'Architecture reopen law remains narrow'",
+    "opening": "HQD-125 does not reopen architecture merely because a functional gate lacks live occupancy or implementation.",
+    "conditions": [
+      "has no lawful current representation",
+      "has no owner",
+      "cannot be transported",
+      "cannot be validated/refused",
+      "cannot be composed at the required grain",
+      "and cannot be satisfied by lawful same-grain succession or bounded implementation under the present DAG"
+    ],
+    "remedy_clause": "Otherwise the remedy is implementation, authority materialization, composition or qualification - not resurrection of historical stage topology."
+  },
+
+  "logic_note": "The six conditions are conjoined. Reopen requires ALL SIX to hold. It is therefore enough that any one of them fails. Two of them fail here, decisively and on positive evidence.",
+
+  "condition_by_condition": [
+    {
+      "condition": "has no lawful current representation",
+      "holds": true,
+      "basis": "Identifier census at b65673abc: 'source_applicability' 0 files, 'service_source' 0 files, 'source_eligibility' 0, 'source_allowlist' 0, 'allowed_sources' 0, 'permitted_sources' 0. 'SERVICE_SOURCE_APPLICABILITY' occurs in 3 files, none in rawlsing_next (2 PYAT_CONTROL_ROOM activation returns + 1 historical D15 court-result JSON). No applicability OBJECT, no applicability RELATION kind among P07_RELATION_KINDS, no service-scoped resolver, no service parameter on any input surface (pre553_empirical_query.py contains 0 occurrences of 'service').",
+      "favours_reopen": true
+    },
+    {
+      "condition": "has no owner",
+      "holds": true,
+      "basis": "No module, class or receipt family owns applicability. pre553_source_local_universe_admission.py states in its own docstring: 'The contract does not infer source authority. It validates a caller-supplied positive exact AuthoritySnapshot and materializes only at that authority's source-local ceiling.'",
+      "favours_reopen": true
+    },
+    {
+      "condition": "cannot be transported",
+      "holds": false,
+      "basis": "The D15 authority citation IS already carried inside current control, in a data artifact that is part of the tree at b65673abc: data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/PROJECT_INHERITANCE_R1/CAMPAIGNS/N006_TRII_EMPIRICAL_SUBSTRATE/CORPUS/ORIGINAL/48e802ce9689__RESULT.json, which records court D15, file AUTHORITY_ADDITION_AND_REPAIR_LEDGER.csv, the authority name in principal_new_authorities, the three binding_terminal_services, and reverse_positioned_subject.source_indexed_default = true with source_pooling_default = false.",
+      "additional_note_on_provenance": "The historical commits 09ea040ac (D15 ledger) and 931b3086d (D12G adjudication) are NOT ancestors of b65673abc. The D15/D12G texts were recovered from the object store at those exact commits for this derivation; the authority CITATION itself survives in current control through the N006 corpus carrier. So the authority is transported even though its original commit is not in the branch lineage. This is precisely why blind topological restoration would have been wrong and why the function had to be recovered semantically.",
+      "favours_reopen": false,
+      "decisive": true
+    },
+    {
+      "condition": "cannot be validated/refused",
+      "holds": false,
+      "basis": "The derived form is refusable at every point: FC-01 through FC-10 in 05. It reuses the existing validated substrate - CanonicalSemanticObject, AuthoritySnapshot with mutable/fuzzy selection forbidden, exact-key AuthorityRegistry, and pre553_structural_admission.py's decision-precedence and decision-matrix idiom, all of which are implemented and fail-closed today.",
+      "favours_reopen": false,
+      "decisive": true
+    },
+    {
+      "condition": "cannot be composed at the required grain",
+      "holds": false,
+      "basis": "The grain - exactly one (service_request_key, source_universe, release_identity) decision - is a strict refinement of the existing CanonicalSemanticObject semantic-field grain and composes beneath EmpiricalQuerySpec (whose empirical_universe_refs is the caller-supplied set this form replaces), beneath pre553_structural_admission.py, and beneath pre553_source_relations.py without being satisfied by any of them.",
+      "favours_reopen": false,
+      "decisive": true
+    },
+    {
+      "condition": "cannot be satisfied by lawful same-grain succession or bounded implementation under the present DAG",
+      "holds": false,
+      "basis": "SAME-GRAIN BOUNDED SUCCESSION IS DEMONSTRABLY POSSIBLE. The immediate D15 sibling authority STRUCTURAL_EMPIRICAL_ADMISSION_AUTHORITY is already implemented at exactly this grain and idiom in pre553_structural_admission.py (DECISION_PRECEDENCE, P06_NONPOSITIVE_DECISIONS, POSITIVE_DECISION, PUBLIC_STATE_BY_DECISION, DECISION_MATRIX). The form derived here succeeds that idiom at the applicability grain. The remedy named by the section-15 remedy_clause - 'authority materialization' - is exactly the correct remedy.",
+      "important_distinction": "Same-grain succession presupposes an existing authority at the grain. Here the grain is EMPTY, so this is not a succession in the strict sense; it is AUTHORITY MATERIALIZATION of a new form by lawful analogy to an adopted sibling. Either way, s15's sixth condition fails, because bounded implementation under the present DAG is plainly available.",
+      "favours_reopen": false,
+      "decisive": true
+    }
+  ],
+
+  "verdict": {
+    "architecture_reopen": "NOT WARRANTED",
+    "conditions_required_for_reopen": 6,
+    "conditions_holding": 2,
+    "conditions_failing": 4,
+    "conclusion": "HQD-125 s15 is conjunctive. Four of six conditions fail, two of them on positive and directly evidenced grounds. The capability is a bounded authority-materialization plus implementation at an already-lawful grain, not an architecture reopen.",
+    "affirms": "HQ204's H-C adjudication: 'This is a real missing authority FORM at an already-lawful grain. It is NOT an architecture reopen.' This derivation independently confirms that adjudication and supplies the missing half - the FORM - which H-C correctly declined to author."
+  },
+
+  "scope_of_this_lane": {
+    "held": [
+      "no code changes",
+      "no production mutation",
+      "no raw-source access",
+      "no locator discovery",
+      "no warrant issuance",
+      "no actor or person implementation",
+      "no architecture reopen",
+      "no supersession of pre553_source_relations.py or pre553_structural_admission.py",
+      "no temporal-directionality determination (H-A's seven meanings remain unresolved)",
+      "no C1 lineage reconciliation (separate lane)",
+      "no R9 runtime fan-in (separate lane)"
+    ],
+    "superseded_material_not_imported": "Per HQ203/HQ204 recalibration, no HQ201 F6/F7 ontology claim is imported, and the HQ201 SOURCE_INDEXED_MULTI_UNIVERSE / AUTHORIZED_COMPOSITE mode conflation is expressly NOT repeated. AUTHORIZED_COMPOSITE and SOURCE_INDEXED_MULTI_UNIVERSE are treated as separate branches throughout, and non-pooled coexistence is treated as requiring no pooling authority."
+  }
+}

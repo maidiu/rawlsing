@@ -1,0 +1,91 @@
+{
+  "schema": "PYAT_HQ204_AUTHORITY_DERIVATION_DECISION@1.0.0",
+  "lane": "PYAT-HQ204-HC-SERVICE-SOURCE-AUTHORITY-R1",
+  "startup_sha": "b65673abc13916963770d6d74ae51fe882539b70",
+  "question_put": "Does the lawful current SERVICE-SOURCE APPLICABILITY function return merely an ADMISSIBLE SOURCE-INDEXED SET with typed per-source states, or does exact historical/current authority genuinely grant additional SOURCE SELECTION or RANKING power?",
+  "answer": "ADMISSIBLE_SET_ONLY__RANKING_AND_SELECTION_NOT_AUTHORIZED",
+  "rule_applied": "Prefer the LEAST POWERFUL form actually supported by authority.",
+  "grounds": [
+    {
+      "id": "G1",
+      "ground": "D15 downstream_outputs are an ADMITTED SET, not an order.",
+      "verbatim": "admitted source-indexed universe list or typed nonapplicability/noncomparability",
+      "source": "AUTHORITY_ADDITION_AND_REPAIR_LEDGER.csv @ 09ea040ac (D15), row SERVICE_SOURCE_APPLICABILITY_AUTHORITY",
+      "reading": "A 'list' here enumerates admitted members. The ledger states no comparator, no score, no position, no preference and no ordering key. No ordering semantics exist to conserve.",
+      "conclusion": "The recoverable output is a SET. An ordered/ranked output is not recoverable from this row."
+    },
+    {
+      "id": "G2",
+      "ground": "D12G expressly declines to select any numeric source weighting.",
+      "verbatim": "No statistical composition model or numeric source weighting is selected.",
+      "source": "16_D09_D12D_D12G_RETURN_ADJUDICATION.md @ 931b3086d (D12G), section on reverse possibility fields",
+      "reading": "The adjudicator that established the applicability rule explicitly recorded that it did NOT select a source-weighting model. Inventing one now would not recover D15/D12G; it would contradict them.",
+      "conclusion": "Ranking weights are not merely unauthorised by omission - they are affirmatively withheld by the governing adjudication."
+    },
+    {
+      "id": "G3",
+      "ground": "Locality/country relevance is expressly denied priority power.",
+      "verbatim": "locality or country identity alone does not assign a priority weight",
+      "source": "D12G @ 931b3086d",
+      "reading": "The only ranking signal anyone might expect to find admissible - geographic/ national relevance - is expressly denied it. Geography is an inclusion filter, not a preference.",
+      "conclusion": "A ranking function would have to invent a signal that the governing adjudication specifically refused to grant."
+    },
+    {
+      "id": "G4",
+      "ground": "Admissibility is per-service and per-source; a rank would be a cross-source relation, which is a different power.",
+      "verbatim": "each source/universe requires independent service-specific applicability authority",
+      "source": "D12G @ 931b3086d",
+      "reading": "Independent per-source authority produces independent binary-per-scope judgements. A total or partial order over admitted members is a cross-source relation and would belong to SOURCE_UNIVERSE_RELATION_AUTHORITY, whose current owner is pre553_source_relations.py and whose receipt family requires >=2 exact universes plus positive relation authority.",
+      "conclusion": "Ranking would collapse SERVICE APPLICABILITY into SOURCE RELATION, which the D15 ledger's own two-row separation forbids."
+    },
+    {
+      "id": "G5",
+      "ground": "Source-indexed default is already binding law, and an aggregate would destroy it.",
+      "verbatim": { "source_indexed_default": true, "source_pooling_default": false },
+      "source": "D15 court result, current-tree carrier data/ddm_build_copy/recovery_integration/.../N006_TRII_EMPIRICAL_SUBSTRATE/CORPUS/ORIGINAL/48e802ce9689__RESULT.json -> reverse_positioned_subject",
+      "reading": "The admitted units remain source-indexed and unpooled by default. A ranked or weighted set is an aggregate ordering over those units and is the first step toward the pooling the same record forbids.",
+      "conclusion": "Set-only preserves the binding default at zero additional power."
+    },
+    {
+      "id": "G6",
+      "ground": "Current law has no ranking primitive to inherit, and the registry forbids the lookup a ranker would need.",
+      "verbatim": "Immutable exact-key authority registry; no latest/default lookup exists.",
+      "source": "rawlsing_next/pre553_empirical_authority.py:213 @ b65673abc",
+      "corroboration": "rawlsing_next/pre553_empirical_objects.py AuthoritySnapshot._validate_family rejects authority_kind in {LATEST, DEFAULT, FUZZY, NEAREST, SEMVER_FALLBACK} with 'mutable/fuzzy authority selection is forbidden'.",
+      "reading": "A ranker requires a derived/ordered lookup across candidate authorities. Current law forbids mutable/fuzzy/default selection outright and provides no ordering primitive anywhere.",
+      "conclusion": "There is nothing to succeed to for ranking, and law forbids the selection semantics a ranker would need."
+    }
+  ],
+  "resolution_of_the_word_list": {
+    "concern": "D15 says 'list'. Does 'list' license an ordered output?",
+    "answer": "NO.",
+    "reasoning": "'List' fixes that the output enumerates admitted members and is finite and materialised. It does not fix an order, because the ledger supplies no order key, no comparator and no priority semantics anywhere in its eight fields. Reading an order into the word would be an inference the authority does not contain - exactly the class of inference this lane exists to prevent.",
+    "binding_rule": "The emitted collection is consumed as a SET. Its serialisation order is fixed by a deterministic canonical sort on (source_universe_ref, release_identity_ref) for replay reproducibility ONLY, and that order CONTAINS NO RANKING, PREFERENCE, PRIORITY OR WEIGHT AUTHORITY. Any consumer requiring an order MUST obtain it from a separately commissioned source-priority authority, which does not exist and is not granted here."
+  },
+  "power_granted": [
+    "Derive, per (candidate source universe, release identity), whether it is ADMITTED for one exact service + target use + population/geography/effective-time scope.",
+    "Emit an ADMISSIBLE SOURCE-INDEXED SET of admitted entries, each entry independently carrying its own positive exact admission authority ref.",
+    "Emit typed per-source refusals (NOT_APPLICABLE, NONCOMPARABLE, OUT_OF_SCOPE) and typed authority failures (UNDETERMINED_NO_POSITIVE_AUTHORITY, CONFLICTING_AUTHORITY).",
+    "Emit a first-class NO_ADMITTED_SOURCE_IN_CANDIDATE_CLASS outcome, held distinct from an empty, undetermined or failed resolution.",
+    "Emit a per-source ADMISSION_PROVENANCE record: which exact authority admitted this source for this request, and why the candidate class is bounded as it is."
+  ],
+  "power_REFUSED": [
+    "Ordering, ranking, scoring, weighting, preference or priority over admitted sources.",
+    "Selecting among admissible sources on any basis whatsoever.",
+    "Substituting a broader candidate class for a narrower one.",
+    "Any grant of semantic equivalence, linkage, overlap, pooling, estimand composition or backfill.",
+    "Any conditioning, possibility-geometry transformation, or probability/distribution transformation.",
+    "Any respondent pooling or individual inference.",
+    "Any grant of consumer-use permission.",
+    "Any inference from currency, availability, provenance or harmonization labels to applicability."
+  ],
+  "what_would_be_required_to_authorise_ranking": [
+    "A separate HQ commission for a SOURCE_PRIORITY_AUTHORITY.",
+    "A positive, exact, replayable statement of the ordering key and its admissible evidence.",
+    "Explicit resolution of D12G's 'No statistical composition model or numeric source weighting is selected'.",
+    "Explicit resolution of D12G's 'locality or country identity alone does not assign a priority weight'.",
+    "Non-collapse proof that the priority order does not become a pooling, weighting or estimand-composition weight.",
+    "It would still NOT be a successor to SERVICE_SOURCE_APPLICABILITY_AUTHORITY; it would be a NEW sibling authority at the relation grain."
+  ],
+  "status": "DERIVED_FORM_ONLY__NO_CODE_CHANGES__AWAITING_HQ_RATIFICATION"
+}

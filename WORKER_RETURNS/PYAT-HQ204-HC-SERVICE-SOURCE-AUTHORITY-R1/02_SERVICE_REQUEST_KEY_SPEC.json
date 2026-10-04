@@ -1,0 +1,141 @@
+{
+  "schema": "PYAT_HQ204_SERVICE_SOURCE_APPLICABILITY_REQUEST_KEY@1.0.0",
+  "lane": "PYAT-HQ204-HC-SERVICE-SOURCE-AUTHORITY-R1",
+  "startup_sha": "b65673abc13916963770d6d74ae51fe882539b70",
+  "design_rule": "The key is EXACT and COMPLETE or the function refuses. No component may be defaulted, inferred, widened, narrowed or omitted. Every component is a governed ExactRef, never a free string.",
+  "request_key_identity": "The request key names ONE service request. It does NOT name the sources. Sources are the SUBJECT of the decisions taken under it, per D12G's 'each source/universe requires independent service-specific applicability authority'. One request key therefore yields N independent per-source decisions, never one set-level verdict.",
+
+  "governed_scope_components": [
+    {
+      "n": 1,
+      "component": "service_id",
+      "type": "ExactRef",
+      "required": true,
+      "may_be_defaulted": false,
+      "authority_basis": "D15 upstream_inputs names 'service' as a REQUIRED upstream input. D15 jurisdiction: 'Separately admits respondent universes for forward discovery, reverse possibility inference, and structural empirical admission.'",
+      "admissible_values_from_current_tree": [
+        "AUTONOMOUS_FORWARD_SOCIAL_DISCOVERY",
+        "REVERSE_POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_INFERENCE",
+        "STRUCTURAL_STRATAL_FIELD_PRODUCTION"
+      ],
+      "also_admissible": "NO_PROMOTED_USE",
+      "source_of_the_three_values": "D15 court result carried in current control at data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/PROJECT_INHERITANCE_R1/CAMPAIGNS/N006_TRII_EMPIRICAL_SUBSTRATE/CORPUS/ORIGINAL/48e802ce9689__RESULT.json -> binding_terminal_services",
+      "why_NO_PROMOTED_USE_is_admissible": "D12G @ 931b3086d: 'What later meaning/use that fact has depends on the separately governed terminal service: forward discovery, reverse positioned-subject possibility inference, structural-field production, or no promoted use.' An unpromoted fact is a lawful terminal state, not an error.",
+      "cross_service_note": "D12G: 'source admissibility is separately governed and need not use the same hierarchy as reverse inference or forward discovery.' Therefore the SAME source may be APPLICABLE for one service and NOT_APPLICABLE for another. The key must carry service_id or this is unrepresentable."
+    },
+    {
+      "n": 2,
+      "component": "service_authority_ref",
+      "type": "AuthorityRef to a positive exact AuthoritySnapshot",
+      "required": true,
+      "may_be_defaulted": false,
+      "authority_basis": "Current law idiom: pre553_structural_admission.py requires a positive exact AuthoritySnapshot per decision and maps MISSING_STRUCTURAL_ADMISSION_AUTHORITY -> MISSING_AUTHORITY.",
+      "failure_state_if_absent": "UNDETERMINED_NO_POSITIVE_AUTHORITY (fail-closed; must NOT become NOT_APPLICABLE and must NOT become ADMITTED)"
+    },
+    {
+      "n": 3,
+      "component": "target_use_ref",
+      "type": "ExactRef",
+      "required": true,
+      "may_be_defaulted": false,
+      "covers": "target question / coordinate / structural use",
+      "authority_basis": "D15 upstream_inputs: 'target question/coordinate/structural use'.",
+      "must_carry_additionally": [
+        "target_arity_and_topology where the use is coordinate-conditioned (mirrors EmpiricalQuerySpec.target_arity_and_topology)",
+        "target_use_permission_refs (see component 9)"
+      ],
+      "note": "This is a REF to a governed target, not a free-text question. An ungoverned natural-language question is NOT an admissible key component; it is a reason to refuse."
+    },
+    {
+      "n": 4,
+      "component": "population_scope_ref",
+      "type": "ExactRef",
+      "required": true,
+      "may_be_defaulted": false,
+      "authority_basis": "D15 upstream_inputs: 'time/geography/population scope'.",
+      "role": "INCLUSION FILTER ONLY. It can remove a candidate from the candidate class. It can never promote, order, weight or prefer a candidate.",
+      "prohibition": "Locality or country identity alone may not choose or prioritise a source. (D12G @ 931b3086d, verbatim)"
+    },
+    {
+      "n": 5,
+      "component": "geography_scope_ref",
+      "type": "ExactRef",
+      "required": true,
+      "may_be_defaulted": false,
+      "authority_basis": "D15 upstream_inputs: 'time/geography/population scope'.",
+      "role": "INCLUSION FILTER ONLY, identically to population_scope_ref.",
+      "prohibition": "The absence of a local source may NOT promote a non-local source. Out-of-scope-ness is never evidence of admissibility elsewhere."
+    },
+    {
+      "n": 6,
+      "component": "effective_time_or_interval_ref",
+      "type": "ExactRef",
+      "required": true,
+      "may_be_defaulted": false,
+      "authority_basis": "D15 upstream_inputs: 'time/geography/population scope'; AuthoritySnapshot.REQUIRED_FIELDS already binds effective_time_or_interval as an exact governed field at b65673abc.",
+      "must_carry": "the DECLARED temporal basis identity exactly as the producer declared it",
+      "PROHIBITION_no_temporal_normalisation": "This key must NOT normalise a declared temporal basis into a single canonical form. Per HQ204's H-A adjudication, no universal point-year-vs-fieldwork-interval binary is adopted, and same-family membership does not prove point-year adequacy. Two producers declaring different temporal bases are DIFFERENT KEYS and neither may be silently mapped onto the other.",
+      "failure_state_if_absent": "UNDETERMINED_NO_POSITIVE_AUTHORITY"
+    },
+    {
+      "n": 7,
+      "component": "candidate_class_ref",
+      "type": "ExactRef to a positively bounded candidate class",
+      "required": true,
+      "may_be_defaulted": false,
+      "is_this_component_invented": false,
+      "why_it_is_required": "Directly implements D15's prohibition 'May not silently backfill broader sources.' Without a positively bounded candidate class, the 'admissible set' degenerates into the set of all sources, which is not an admission decision at all. The candidate class is where 'silently backfill broader sources' would otherwise occur.",
+      "requirement": "The class must be the NARROWEST positively bounded class containing every candidate for this request. Substituting a broader class is forbidden.",
+      "authority_basis": "D15 prohibited_inferences, verbatim: 'May not silently backfill broader sources.'",
+      "flags_for_HQ": "This is the single component where derivation required binding a D15 prohibition into a structural requirement. It is flagged in 08 as requiring explicit HQ ratification.",
+      "failure_state_if_absent": "SERVICE_REQUEST_UNDETERMINED (terminal refusal; no partial set may be emitted)"
+    },
+    {
+      "n": 8,
+      "component": "release_identity_ref",
+      "type": "ExactRef to the exact sealed release identity",
+      "required": true,
+      "may_be_defaulted": false,
+      "per_source": true,
+      "authority_basis": "Current law already requires each empirical universe to resolve to EXACTLY ONE sealed C11 release before it may be used at all (pre553_empirical_query.py). Applicability is decided PER (source universe, release identity), because the same universe at a different release is a different evidentiary object.",
+      "prohibition": "No applicability decision may be inherited across release identities by resemblance, family membership or version proximity."
+    },
+    {
+      "n": 9,
+      "component": "target_use_permission_refs",
+      "type": "Set of ExactRefs (positive exact AuthoritySnapshots)",
+      "required": true,
+      "may_be_defaulted": false,
+      "role": "The DECLARED permission envelope under which the request is made. The key BINDS this envelope; it does NOT GRANT it.",
+      "critical_separation": "CONSUMER-USE PERMISSION (power 11) is HELD DISTINCT from SERVICE APPLICABILITY (power 8). The key records WHICH permission envelope the applicability decision was taken under, so that the decision is not silently reused under a different one. Absent permissions, the function refuses. Present permissions, the function still does not thereby authorise use - it authorises ELIGIBILITY only.",
+      "authority_basis": "H-C non-collapse finding: 'USE PERMISSION is not APPLICABILITY - query permission and the actor firewall govern consumption of an already-chosen source.' Verified still true at b65673abc."
+    },
+    {
+      "n": 10,
+      "component": "candidate_source_universe_refs",
+      "type": "Set of ExactRefs (EmpiricalUniverse identities)",
+      "required": true,
+      "may_be_defaulted": false,
+      "derivation": "MUST be resolved from candidate_class_ref, NOT supplied freely by a caller.",
+      "why_this_is_the_whole_point": "H-C's central finding was that selection is caller-supplied today: EmpiricalQuerySpec.REQUIRED_FIELDS includes empirical_universe_refs and raises 'EmpiricalQuerySpec requires exact source universe scope' when empty (verified at b65673abc, pre553_empirical_objects.py:677-693). This component is the structural replacement for that caller-supplied set. A caller MAY propose the class, but the class must be positively bounded and its members are decided independently - so proposing is no longer supplying the answer.",
+      "prohibition": "A caller-supplied member that is NOT in the positively bounded candidate class may not be admitted by fiat."
+    }
+  ],
+
+  "key_completeness_rule": {
+    "statement": "If ANY of the ten components is absent, unresolvable, ambiguous, or resolves to more than one exact value, the function returns SERVICE_REQUEST_UNDETERMINED and emits NO set.",
+    "no_partial_keys": true,
+    "no_best_effort": true,
+    "no_nearest_match": true,
+    "nearest_match_prohibition_basis": "pre553_empirical_objects.py AuthoritySnapshot._validate_family rejects LATEST, DEFAULT, FUZZY, NEAREST, SEMVER_FALLBACK - 'mutable/fuzzy authority selection is forbidden' (verified at b65673abc)."
+  },
+
+  "what_the_key_does_NOT_carry": [
+    "Any ordering, ranking or preference key (see 01_AUTHORITY_DERIVATION_DECISION.json).",
+    "Any respondent-level identifier or linkage material - applicability is decided at source-universe grain, never at person grain.",
+    "Any pooling, weighting or estimand-composition parameter.",
+    "Any internal-evidence-sufficiency field. See 03: APPLICABILITY_PREDATES_EVIDENCE."
+  ],
+
+  "status": "DERIVED_FORM_ONLY__NO_CODE_CHANGES__AWAITING_HQ_RATIFICATION"
+}

@@ -1,0 +1,203 @@
+{
+  "schema": "PYAT_HQ204_SERVICE_SOURCE_APPLICABILITY_DECISION_FORM@1.0.0",
+  "lane": "PYAT-HQ204-HC-SERVICE-SOURCE-AUTHORITY-R1",
+  "startup_sha": "b65673abc13916963770d6d74ae51fe882539b70",
+
+  "derivation_method": "SAME_GRAIN_BOUNDED_SUCCESSION_FROM_AN_ADOPTED_SIBLING_AUTHORITY",
+  "same_grain_precedent": {
+    "module": "rawlsing_next/pre553_structural_admission.py",
+    "authority_it_implements": "D15 STRUCTURAL_EMPIRICAL_ADMISSION_AUTHORITY",
+    "why_it_is_the_right_anchor": "STRUCTURAL_EMPIRICAL_ADMISSION_AUTHORITY is the IMMEDIATE SIBLING ROW of SERVICE_SOURCE_APPLICABILITY_AUTHORITY in the same D15 ledger. Both consume an already-governed empirical scope and return a typed admission decision plus a receipt. Its D15 upstream_inputs include 'source applicability' as an input, which confirms the ordering: applicability is UPSTREAM of structural admission.",
+    "exact_idioms_inherited_verbatim_in_shape": [
+      "a frozen DECISION_PRECEDENCE tuple ordered integrity -> missing authority -> unknown/conflicting -> denied -> negative-only -> not-applicable -> noncomparable -> scope mismatch -> target unresolved -> insufficient evidence -> deferred -> valid-empty -> admitted",
+      "a coarser PUBLIC_STATE_BY_DECISION map so the public vocabulary cannot be widened",
+      "a DECISION_MATRIX carrying per-state boolean power flags (positive_evidence / downstream_projection_allowed / reference_allowed)",
+      "folding of unknown-and-conflicting into a single UNRESOLVED public state so ambiguity can never be read as a negative finding",
+      "a POSITIVE_DECISION constant that is the ONLY state granting downstream projection"
+    ],
+    "what_was_NOT_inherited": [
+      "the module's function of executing or consuming empirical queries",
+      "any M1 basis-kind or V553 participant coupling",
+      "the specific decision NAMES, which are re-derived for the applicability grain"
+    ]
+  },
+
+  "object_family": {
+    "name": "ServiceSourceApplicabilityDecision",
+    "family": "ServiceSourceApplicabilityDecision@1.0.0",
+    "state_family": "SERVICE_SOURCE_APPLICABILITY_STATE",
+    "state_family_is_NEW": true,
+    "must_not_be_aliased_to": [
+      "SOURCE_UNIVERSE_RELATION_STATE (pre553_empirical_objects.py)",
+      "P07_RELATION_DECISIONS (pre553_empirical_objects.py)",
+      "EMPIRICAL_FACT_STATE (pre553_empirical_objects.py)",
+      "AUTHORITY_STATE (pre553_empirical_objects.py)"
+    ],
+    "why_a_new_state_family_is_mandatory": "Name collisions already exist across current families - NOT_APPLICABLE, NONCOMPARABLE and OUT_OF_SCOPE each appear in more than one existing STATE_FAMILY. If applicability reused an existing family, a NOT_APPLICABLE produced by the RELATION resolver and a NOT_APPLICABLE produced by APPLICABILITY would become indistinguishable, and D15's separation of the two authorities would be destroyed in the type system itself. Precedent for the fix is current law's own practice: pre553_structural_admission.py keeps an exact decision vocabulary internally and coarsens it explicitly to a PUBLIC_STATE_BY_DECISION map precisely to stop I01's vocabulary being widened.",
+    "proposed_required_fields": [
+      "applicability_decision_id",
+      "service_request_key_ref",
+      "service_id",
+      "target_use_ref",
+      "scope_envelope_ref (population/geography/effective-time, exact)",
+      "candidate_class_ref",
+      "candidate_class_coverage",
+      "source_universe_ref",
+      "release_identity_ref",
+      "admission_authority_ref",
+      "admission_provenance_ref",
+      "negative_limit_refs",
+      "decision_state (exact decision)",
+      "public_typed_state",
+      "replay_ref"
+    ],
+    "set_like_fields": ["negative_limit_refs"],
+    "authority_grain": "EXACTLY ONE (service_request_key, source_universe, release_identity). Never a set-level verdict."
+  },
+
+  "exact_decision_precedence": [
+    "INTEGRITY_FAILURE",
+    "MISSING_APPLICABILITY_AUTHORITY",
+    "UNKNOWN_OR_CONFLICTING_APPLICABILITY_AUTHORITY",
+    "REQUEST_KEY_INCOMPLETE_OR_AMBIGUOUS",
+    "SOURCE_OUT_OF_DECLARED_SCOPE",
+    "SOURCE_NOT_APPLICABLE_TO_THIS_SERVICE_AND_USE",
+    "SOURCE_NONCOMPARABLE_AT_THIS_TARGET",
+    "NEGATIVE_AUTHORITY_ONLY",
+    "UNDETERMINED_NO_POSITIVE_AUTHORITY",
+    "ADMITTED"
+  ],
+
+  "precedence_is_meaningful": "The tuple is ordered so that a failure or refusal at a higher position can never be reported as, or silently converted into, a lower-position state. This is the same discipline as pre553_structural_admission.DECISION_PRECEDENCE and it is what makes fail-closed real rather than aspirational.",
+
+  "public_state_map": {
+    "INTEGRITY_FAILURE": "INTEGRITY_FAILURE",
+    "MISSING_APPLICABILITY_AUTHORITY": "MISSING_AUTHORITY",
+    "UNKNOWN_OR_CONFLICTING_APPLICABILITY_AUTHORITY": "UNRESOLVED",
+    "REQUEST_KEY_INCOMPLETE_OR_AMBIGUOUS": "UNRESOLVED",
+    "SOURCE_OUT_OF_DECLARED_SCOPE": "OUT_OF_SCOPE",
+    "SOURCE_NOT_APPLICABLE_TO_THIS_SERVICE_AND_USE": "NOT_APPLICABLE",
+    "SOURCE_NONCOMPARABLE_AT_THIS_TARGET": "NONCOMPARABLE",
+    "NEGATIVE_AUTHORITY_ONLY": "NOT_APPLICABLE",
+    "UNDETERMINED_NO_POSITIVE_AUTHORITY": "MISSING_AUTHORITY",
+    "ADMITTED": "APPLICABLE"
+  },
+  "public_vocabulary_may_not_be_widened": true,
+  "public_vocabulary_note": "APPLICABLE is proposed as the positive public state for this family. It is deliberately NOT named ADMITTED_FOR_APPLICABILITY_PURPOSES, to prevent confusion with ADMITTED_FOR_EXACT_STRUCTURAL_USE in STRUCTURAL_ADMISSION_STATE. Two grains, two names, one word never means both.",
+
+  "decision_matrix_power_flags": {
+    "note": "Per-state flags, mirroring pre553_structural_admission.DECISION_MATRIX. Every flag is FALSE except on ADMITTED.",
+    "ADMITTED": { "positive_admission": true, "may_enter_source_set": true, "may_constrain_downstream_query_scope": true, "may_condition_F8": false, "may_transform_geometry_or_distribution": false, "may_pool_respondents": false, "may_support_individual_inference": false },
+    "all_other_states": { "positive_admission": false, "may_enter_source_set": false, "may_constrain_downstream_query_scope": false, "may_condition_F8": false, "may_transform_geometry_or_distribution": false, "may_pool_respondents": false, "may_support_individual_inference": false },
+    "why_may_condition_F8_is_false_everywhere": "Eligibility is not conditioning. See 05_F8_BOUNDARY_BINDING.json."
+  },
+
+  "typed_outcomes": {
+    "POSITIVE": {
+      "name": "ADMISSIBLE_SOURCE_INDEXED_SET",
+      "meaning": "One or more sources were positively admitted for this exact service request.",
+      "must_carry": [
+        "the exact service_request_key_ref",
+        "the exact candidate_class_ref and its bound",
+        "the admitted entries, EACH independently carrying its own source_universe_ref, release_identity_ref and positive admission_authority_ref",
+        "candidate_class_coverage",
+        "per-candidate typed states for every candidate NOT admitted, including the reason",
+        "admission_provenance per admitted entry"
+      ],
+      "must_NOT_carry": [
+        "any aggregate, union, combined estimand, combined denominator or pooled sample",
+        "any cardinality presented as a sample size",
+        "any order carrying ranking, preference, priority or weight"
+      ],
+      "admitted_entries_remain_separate": "An admitted set is a SET OF SEPARATE SOURCE-INDEXED ENTRIES. Admission of five sources is not admission of a five-source sample. D15 court result: source_indexed_default true, source_pooling_default false."
+    },
+    "NEGATIVE_FIRST_CLASS": {
+      "name": "NO_ADMITTED_SOURCE_IN_CANDIDATE_CLASS",
+      "meaning": "Every candidate in the positively bounded candidate class was decided, and none was admitted.",
+      "is_a_SUCCESS_not_an_error": true,
+      "is_DISTINCT_from_an_empty_or_failed_resolution": true,
+      "must_carry": "the exact candidate_class_ref, its bound, and the per-candidate typed state and reason for EVERY candidate",
+      "why_this_must_be_first_class": "H-C question F was PARTIAL: nothing computed 'no applicable source'; only a caller could declare it. A declared DECLARED_NONE is protected from backfill by FORBIDDEN_BACKFILL_TARGET_STATES, but a DERIVED no-applicable-source is a different capability. Declaring is not determining.",
+      "may_not_be_rendered_as": "an empty list, a null, an error string, or a success with zero entries - each of those destroys the provenance and is forbidden"
+    },
+    "REFUSALS": [
+      { "state": "SERVICE_REQUEST_UNDETERMINED", "cause": "REQUEST_KEY_INCOMPLETE_OR_AMBIGUOUS", "meaning": "The request itself cannot be keyed exactly. No set is emitted, not even a partial one.", "recoverable_by": "supplying the exact key", "terminal_for": "this request" },
+      { "state": "SERVICE_AUTHORITY_UNDETERMINED", "cause": "MISSING_APPLICABILITY_AUTHORITY", "meaning": "No positive exact authority governs this service/use. Nothing may be admitted.", "recoverable_by": "filing positive exact authority", "terminal_for": "this request" },
+      { "state": "APPLICABILITY_AUTHORITY_CONFLICT", "cause": "UNKNOWN_OR_CONFLICTING_APPLICABILITY_AUTHORITY", "meaning": "Two or more positive authorities disagree for the same exact key. Current law forbids choosing the newest or nearest, so the function refuses.", "recoverable_by": "resolving the conflict at authority level", "terminal_for": "this request" },
+      { "state": "CANDIDATE_CLASS_UNBOUNDED", "cause": "REQUEST_KEY_INCOMPLETE_OR_AMBIGUOUS", "meaning": "No positively bounded candidate class. An unbounded class would silently backfill broader sources, which D15 forbids.", "recoverable_by": "positively bounding the class", "terminal_for": "this request" },
+      { "state": "CANDIDATE_CLASS_PARTIALLY_UNDECIDED", "cause": "UNDETERMINED_NO_POSITIVE_AUTHORITY", "meaning": "Some candidates could not be decided because no positive exact admission authority exists for them.", "must_NOT_be_rendered_as": "NOT_APPLICABLE, or omission from the emitted set", "why": "Omitting an undecided candidate would silently report it as refused, which is a fabricated finding. Emitting an admissible set while a candidate is undecided, without flagging it, would falsely claim the class was covered.", "handling": "the set may be emitted ONLY with candidate_class_coverage = INCOMPLETE and the undecided candidates listed explicitly" }
+    ]
+  },
+
+  "candidate_class_coverage": {
+    "values": ["COMPLETE", "INCOMPLETE"],
+    "COMPLETE_means": "Every candidate in the positively bounded candidate class received a terminal decision.",
+    "INCOMPLETE_means": "At least one candidate is UNDETERMINED_NO_POSITIVE_AUTHORITY.",
+    "mandatory": true,
+    "why": "Without this field a caller cannot tell a fully-decided admissible set from a partially-guessed one, and 'the admissible set' becomes indistinguishable from 'whatever we happened to check'. That is the laundering this form exists to prevent."
+  },
+
+  "APPLICABILITY_PREDATES_EVIDENCE": {
+    "rule": "Applicability is decided at SOURCE-UNIVERSE, SCOPE AND USE grain, BEFORE any internal evidence is examined.",
+    "consequences": [
+      "The decision object carries NO internal-evidence-sufficiency field. Adding one would merge power 8 with downstream evidence powers.",
+      "An ADMITTED source may still yield ZERO_SUPPORT, OBSERVED_ZERO, LOW_SUPPORT, UNCERTAINTY_UNQUANTIFIED, UNAVAILABLE or NOT_APPLICABLE at EMPIRICAL_FACT_STATE downstream. Those are NOT applicability negatives and must never be reported as, or backfilled into, an applicability state.",
+      "Conversely NO_ADMITTED_SOURCE_IN_CANDIDATE_CLASS means no SOURCE was admissible. It does NOT mean no DATA was found, and it must never be rendered as a statement about evidence volume."
+    ],
+    "how_the_required_distinction_is_structurally_enforced": [
+      "NO ADMITTED SOURCE: a REQUEST-LEVEL, first-class, successful outcome of the applicability function, whose members are all refused at applicability grain.",
+      "APPLICABLE SOURCE WITH MISSING INTERNAL EVIDENCE: a PER-SOURCE applicability success (state APPLICABLE) FOLLOWED BY a downstream empirical-fact or query state such as ZERO_SUPPORT / OBSERVED_ZERO / UNCERTAINTY_UNQUANTIFIED / UNAVAILABLE, owned by pre553_empirical_query.py and pre553_empirical_objects.py.",
+      "The two live at different grains in different state families and are never interchangeable. Converting either into the other is a non-collapse violation."
+    ],
+    "non_collapses_verbatim": [
+      "APPLICABLE_SOURCE != SOURCE_WITH_EVIDENCE",
+      "NO_ADMITTED_SOURCE != NO_EVIDENCE_FOUND",
+      "MISSING_AUTHORITY != NOT_APPLICABLE",
+      "OUT_OF_SCOPE != NOT_APPLICABLE",
+      "NONCOMPARABLE != NOT_APPLICABLE",
+      "ADMITTED_SOURCE != POOLED_SAMPLE",
+      "ADMITTED_SET != COMPOSITE_ESTIMAND"
+    ]
+  },
+
+  "backfill_prohibitions": {
+    "d15_verbatim": "May not silently backfill broader sources.",
+    "binding": [
+      "FORBIDDEN_BACKFILL_TARGET_STATES in pre553_source_relations.py already contains DECLARED_NONE, SOURCE_NOT_APPLICABLE, TEMPORAL_NONCOMPARABLE, OBSERVED_ZERO, ZERO_SUPPORT, NONCOMPARABLE, NOT_APPLICABLE. This form's states are ADDED to that protection set: NO_ADMITTED_SOURCE_IN_CANDIDATE_CLASS, OUT_OF_SCOPE, MISSING_AUTHORITY and UNRESOLVED may never be the target of a backfill, a default, a fill-forward or an imputation.",
+      "No APPLICABLE state may be produced by default, by inheritance from a parent scope, by family membership, by version proximity, by currency, or by absence of an applicable negative.",
+      "Silence is NOT_APPLICABLE only where a positive negative authority exists; where no authority exists the state is MISSING_AUTHORITY. Absence of evidence of applicability is never evidence of inapplicability and never evidence of applicability.",
+      "A broader candidate class may never be substituted for a narrower one; a broader admitted set may never be substituted for a narrower one."
+    ]
+  },
+
+  "no_implicit_pooling": {
+    "rule": "The function performs no combination of any kind.",
+    "forbidden_operations_on_the_admitted_set": [
+      "union", "intersection", "merge", "pool", "weighting", "normalisation across sources",
+      "combined denominator", "combined numerator", "combined estimand", "cross-source variance or covariance",
+      "presenting |admitted set| as a sample size"
+    ],
+    "where_composition_actually_lives": "pre553_source_relations.py, under positively bound SOURCE_UNIVERSE_RELATION receipts and the AUTHORIZED_COMPOSITE operation-scoped bundle. That authority is untouched and unsuperseded by this form.",
+    "binding_noncollapse_from_d15_court_result": "SOURCE_SEMANTIC_EQUIVALENCE != RESPONDENT_IDENTITY_LINKAGE != SAMPLE_POOLING_AUTHORITY != GENERATED_ACTOR_COMPARABILITY"
+  },
+
+  "no_locality_priority_inference": {
+    "prohibition_verbatim": "locality or country identity alone does not assign a priority weight",
+    "source": "D12G @ 931b3086d",
+    "operational_rules": [
+      "geography_scope_ref and population_scope_ref are INCLUSION FILTERS ONLY",
+      "a local or national source receives NO ordering, preference, tie-break, priority or weight relative to any other source",
+      "ABSENCE of a local source may NOT promote, substitute for, or add weight to a non-local source",
+      "presence of a local source may NOT remove, demote, or discount a non-local source that is independently APPLICABLE",
+      "geographic or national identity may NOT be used as a tie-break in any multi-admitted outcome, and no tie-break may exist because the outcome is a set"
+    ]
+  },
+
+  "admission_provenance_NOT_selection_reason": {
+    "what_is_required": "Per admitted entry: the exact positive authority ref that admitted this source for THIS request, plus the candidate-class bound, plus negative_limit_refs.",
+    "what_is_NOT_required_and_why": "A SELECTION-REASON record is not required, because no selection occurs. Recording a reason for a choice that the authority does not permit would either (a) fabricate a selection, or (b) misrepresent a per-source independent determination as a comparative judgement.",
+    "this_corrects_H-C_MISS-04": "H-C recorded MISS-04 as 'no record exists of WHY a source was selected'. On derivation, the correct finding is that there is nothing to record because no selection occurs. Admission provenance is the lawful substitute and is strictly weaker than a selection reason."
+  },
+
+  "status": "DERIVED_FORM_ONLY__NO_CODE_CHANGES__AWAITING_HQ_RATIFICATION"
+}

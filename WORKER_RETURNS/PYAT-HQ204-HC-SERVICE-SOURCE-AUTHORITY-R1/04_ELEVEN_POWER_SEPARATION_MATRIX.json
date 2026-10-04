@@ -1,0 +1,105 @@
+{
+  "schema": "PYAT_HQ204_ELEVEN_POWER_SEPARATION_MATRIX@1.0.0",
+  "lane": "PYAT-HQ204-HC-SERVICE-SOURCE-AUTHORITY-R1",
+  "startup_sha": "b65673abc13916963770d6d74ae51fe882539b70",
+  "rule": "None of the eleven powers substitutes for another. This form occupies power 8 ONLY, is decided strictly upstream of powers 3-7, and is not satisfied by any of them.",
+  "independently_verified_at_startup_sha": "Every current-law citation below was re-checked by me at b65673abc, not inherited from H-C's startup 9967f939.",
+
+  "matrix": [
+    {
+      "n": 1,
+      "power": "SOURCE IDENTITY",
+      "current_owner": "rawlsing_next/pre553_empirical_objects.py EmpiricalUniverse",
+      "status_at_startup_sha": "PROVED",
+      "verified": "EmpiricalQuerySpec / SourceUniverseRelation families present and exact-key validated at b65673abc.",
+      "relation_to_this_form": "UPSTREAM INPUT ONLY. This form receives a source identity; it never mints, alters or re-identifies one."
+    },
+    {
+      "n": 2,
+      "power": "SOURCE SEMANTIC EQUIVALENCE",
+      "current_owner": "rawlsing_next/pre553_source_relations.py",
+      "status_at_startup_sha": "PROVED AS A PROHIBITION",
+      "verified_verbatim": "NONAUTHORIZING_RELATION_KINDS = frozenset({\"PROVENANCE_ORIGIN\", \"HARMONIZATION_ALIAS\"}) and the module docstring: 'Provenance and harmonization/alias material are descriptive only and never grant equivalence, linkage, nonduplication, pooling, estimand composition or backfill.'",
+      "relation_to_this_form": "NOT SATISFIED BY, AND NOT SATISFIED INSTEAD OF. Applicability NEVER grants equivalence. Two applicable sources remain non-equivalent by default (SOURCE_UNIVERSE_STATE DISTINCT_BY_DEFAULT / UNKNOWN_SOURCE_RELATION)."
+    },
+    {
+      "n": 3,
+      "power": "SOURCE LINKAGE",
+      "current_owner": "pre553_source_relations.py RESPONDENT_LINKAGE -> SOURCE_RESPONDENT_LINKAGE",
+      "status_at_startup_sha": "PROVED",
+      "relation_to_this_form": "NOT IMPLIED. Admitting N sources implies NO person-level linkage between them. D15 verbatim: 'may not imply respondent linkage or pooling'."
+    },
+    {
+      "n": 4,
+      "power": "SOURCE OVERLAP",
+      "current_owner": "pre553_source_relations.py OVERLAP_NON_DUPLICATION -> SOURCE_UNIVERSE_RELATION",
+      "status_at_startup_sha": "PROVED",
+      "relation_to_this_form": "NOT IMPLIED. Two admitted sources may overlap; this form neither permits nor forbids that. Overlap remains a separately governed relation."
+    },
+    {
+      "n": 5,
+      "power": "POOLING PERMISSION",
+      "current_owner": "pre553_source_relations.py SAMPLE_POOLING -> SOURCE_COMPOSITION_POOLING",
+      "status_at_startup_sha": "PROVED",
+      "relation_to_this_form": "NOT IMPLIED AND NOT EXERCISED. The admitted set is never pooled. Binding default: source_pooling_default false."
+    },
+    {
+      "n": 6,
+      "power": "ESTIMAND COMPOSITION",
+      "current_owner": "pre553_source_relations.py ESTIMAND_COMPOSITION -> SOURCE_COMPOSITION_POOLING",
+      "status_at_startup_sha": "PROVED",
+      "relation_to_this_form": "NOT IMPLIED. No estimand is composed by this form, across admitted sources or within one."
+    },
+    {
+      "n": 7,
+      "power": "BACKFILL",
+      "current_owner": "pre553_source_relations.py BACKFILL -> SOURCE_BACKFILL + FORBIDDEN_BACKFILL_TARGET_STATES",
+      "status_at_startup_sha": "PROVED",
+      "verified_verbatim": "FORBIDDEN_BACKFILL_TARGET_STATES = frozenset({\"DECLARED_NONE\", \"SOURCE_NOT_APPLICABLE\", \"TEMPORAL_NONCOMPARABLE\", \"OBSERVED_ZERO\", \"ZERO_SUPPORT\", \"NONCOMPARABLE\", \"NOT_APPLICABLE\"})",
+      "relation_to_this_form": "NOT EXERCISED, and this form EXTENDS the protection set. D15 verbatim: 'May not silently backfill broader sources.' This form's own states (NO_ADMITTED_SOURCE_IN_CANDIDATE_CLASS, OUT_OF_SCOPE, MISSING_AUTHORITY, UNRESOLVED) join the forbidden-target set."
+    },
+    {
+      "n": 8,
+      "power": "SERVICE APPLICABILITY",
+      "current_owner_at_startup_sha": "NONE",
+      "verified_absence": "Whole-tree identifier census at b65673abc: 'source_applicability' = 0 files, 'service_source' = 0 files, 'source_eligibility' = 0, 'source_allowlist' = 0, 'allowed_sources' = 0, 'permitted_sources' = 0. 'SERVICE_SOURCE_APPLICABILITY' = 3 files, of which 0 are in rawlsing_next; the 3 are 2 PYAT_CONTROL_ROOM activation returns and 1 historical D15 court-result JSON.",
+      "corroborating_absence_in_current_code": "pre553_empirical_query.py contains 0 occurrences of 'service'. EmpiricalQuerySpec.REQUIRED_FIELDS (pre553_empirical_objects.py:677-693) includes empirical_universe_refs and raises Pre553IntegrityError('EmpiricalQuerySpec requires exact source universe scope') when empty - a CALLER-SUPPLIED required field.",
+      "status_after_this_derivation": "FORM DERIVED, NOT IMPLEMENTED",
+      "relation_to_this_form": "THIS IS THE ONLY POWER THIS FORM CARRIES."
+    },
+    {
+      "n": 9,
+      "power": "SOURCE SELECTION / RANKING",
+      "current_owner_at_startup_sha": "NONE",
+      "status_after_this_derivation": "EXPRESSLY NOT AUTHORIZED AND NOT DERIVED",
+      "relation_to_this_form": "OUT OF SCOPE BY DECISION. See 01_AUTHORITY_DERIVATION_DECISION.json. The form's output is consumed as a SET. Its serialisation order is a deterministic replay convention carrying no ranking authority.",
+      "the_form_makes_this_absence_STRUCTURAL": "The decision object has no ordering, score, comparator or preference field. The public state vocabulary has no ranked state. No decision-precedence entry expresses preference. Ranking cannot be added to this object without a NEW authority, not a field addition."
+    },
+    {
+      "n": 10,
+      "power": "SOURCE CURRENTNESS / AVAILABILITY",
+      "current_owner": "partial - currentness states exist (CURRENT_ACCEPTED, NONCURRENT_SYNTHETIC_TEST_ONLY, EXPIRED_OR_STALE, AUTHORITY_STATE EXPIRED_OR_STALE / SUPERSEDED_NOT_REPLAYABLE)",
+      "status_at_startup_sha": "PARTIAL",
+      "relation_to_this_form": "HELD STRICTLY APART IN BOTH DIRECTIONS. (a) Currency may NOT be read as applicability: a current source may be NOT_APPLICABLE. (b) Applicability may NOT be read as currency: an APPLICABLE source may still be EXPIRED_OR_STALE and must then be refused by its own authority, not by this form. This form makes NO currency determination and consumes NO currency signal as a proxy.",
+      "additionally": "effective_time_or_interval is part of the REQUEST KEY for scope-matching, which is a scope-containment fact, NOT a currency judgement. The two must not be merged."
+    },
+    {
+      "n": 11,
+      "power": "CONSUMER-USE PERMISSION",
+      "current_owner": "partial - query permission plus the actor firewall (m6_actor_safe_expression.py)",
+      "status_at_startup_sha": "PARTIAL",
+      "relation_to_this_form": "BINDING IS NOT GRANTING. target_use_permission_refs is a required KEY COMPONENT so the applicability decision is taken under a named permission envelope and cannot be silently reused under another. The function still grants ELIGIBILITY ONLY and confers no permission to consume any product."
+    }
+  ],
+
+  "newly_bound_noncollapses_introduced_by_this_form": [
+    { "law": "APPLICABILITY does not grant currency", "direction": "currency is not a proxy for applicability, and applicability is not a proxy for currency" },
+    { "law": "GEOGRAPHIC/POPULATION SCOPE is an inclusion filter only", "direction": "scope may remove a candidate; scope may never promote, order, weight or prefer one" },
+    { "law": "ELIGIBILITY is not CONDITIONING", "direction": "admission makes a source usable as a scope; it does not make it a conditioner of anything" },
+    { "law": "CANDIDATE-CLASS BOUND is not BACKFILL", "direction": "an unbounded candidate class IS the silent backfill of broader sources that D15 forbids, so the bound is mandatory" },
+    { "law": "ADMISSION PROVENANCE is not SELECTION REASON", "direction": "recording why a source was admitted is not recording why it was chosen over another" },
+    { "law": "SET MEMBERSHIP is not SAMPLE MEMBERSHIP", "direction": "an admitted set is not a pooled sample and its cardinality is not a sample size" }
+  ],
+
+  "terminal_check": "Nine powers are proved or partial and are untouched. Power 8 gains an authored FORM. Power 9 is refused by decision and by construction. Nothing collapsed into the hole in the interim, which remains correct behaviour."
+}

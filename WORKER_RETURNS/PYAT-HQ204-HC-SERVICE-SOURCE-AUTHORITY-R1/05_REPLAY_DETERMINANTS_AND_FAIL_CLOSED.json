@@ -1,0 +1,92 @@
+{
+  "schema": "PYAT_HQ204_REPLAY_DETERMINANTS_AND_FAIL_CLOSED@1.0.0",
+  "lane": "PYAT-HQ204-HC-SERVICE-SOURCE-AUTHORITY-R1",
+  "startup_sha": "b65673abc13916963770d6d74ae51fe882539b70",
+
+  "replay_determinants": {
+    "principle": "The decision is a pure function of an exact key plus exact registered authorities. It must reproduce bit-identically from the same inputs, or declare NONDETERMINISTIC_REPLAY.",
+    "determinants": [
+      "the exact service_request_key_ref, resolved by exact key with NO default, latest, nearest or fuzzy match",
+      "the exact content hashes of every AuthoritySnapshot consulted (authority_content_hash)",
+      "the exact interpretation_semantics_fingerprint of every consulted authority",
+      "the exact replay_protocol_ref of every consulted authority",
+      "the exact candidate_class_ref and its positively bound membership",
+      "the exact (source_universe_ref, release_identity_ref) pair decided",
+      "the exact decision-precedence tuple version",
+      "the exact public-state-map version",
+      "the canonical serialisation function (canonical_json / semantic_hash, per current law)"
+    ],
+    "non_determinants": [
+      "wall-clock time - a decision is valid only under the declared effective_time_or_interval and must not be re-decided by the passage of time alone",
+      "iteration or evaluation order over candidates",
+      "dict/set iteration order",
+      "source array position in the caller's request",
+      "the number of candidates examined"
+    ],
+    "ordering_convention": {
+      "rule": "Where the outcome is an admitted set, the emitted serialisation order is fixed by a deterministic canonical sort on (source_universe_ref, release_identity_ref).",
+      "authority_of_that_order": "NONE BEYOND REPRODUCIBILITY. It is not a ranking, not a preference, not a priority, not a weight, and not a tie-break. Any consumer reading an order into it has performed an unauthorised inference.",
+      "must_be_recorded_in_the_receipt": true
+    },
+    "inherited_current_law_that_binds_this": [
+      "AuthoritySnapshot._validate_family rejects authority_kind in {LATEST, DEFAULT, FUZZY, NEAREST, SEMVER_FALLBACK}: 'mutable/fuzzy authority selection is forbidden' (pre553_empirical_objects.py, verified at b65673abc). This form inherits that prohibition wholesale rather than restating it.",
+      "AuthorityRegistry is 'Immutable exact-key authority registry; no latest/default lookup exists.' (pre553_empirical_authority.py:213, verified at b65673abc). This form is the DERIVED lookup the registry deliberately refuses, and it therefore performs its own exact resolution and must never delegate to a default.",
+      "REPLAY_STATE already carries REPLAY_VERIFIED, REPLAY_INPUT_MISSING, AUTHORITY_UNAVAILABLE, REPLAY_UNRESOLVED, HASH_MISMATCH, SEMANTIC_PROJECTION_MISMATCH, NONDETERMINISTIC_REPLAY."
+    ]
+  },
+
+  "fail_closed_rules": [
+    { "id": "FC-01", "trigger": "Any key component absent, unresolvable, ambiguous, or resolving to more than one exact value.", "action": "Return SERVICE_REQUEST_UNDETERMINED. Emit NO set, not even a partial one.", "prohibition": "No best-effort, no nearest match, no defaulted component, no partial set." },
+    { "id": "FC-02", "trigger": "No positive exact AuthoritySnapshot governs the service/use.", "action": "Return SERVICE_AUTHORITY_UNDETERMINED.", "prohibition": "Must NOT be rendered as NOT_APPLICABLE, and must NOT admit anything." },
+    { "id": "FC-03", "trigger": "Two or more positive authorities disagree for the same exact key.", "action": "Return APPLICABILITY_AUTHORITY_CONFLICT.", "prohibition": "Must NOT select the newest, the nearest, the highest version or the most convenient. Version proximity is explicitly not a tie-break." },
+    { "id": "FC-04", "trigger": "Candidate class not positively bounded.", "action": "Return CANDIDATE_CLASS_UNBOUNDED.", "prohibition": "Must NOT proceed with 'all known sources'. That is the silent backfill of broader sources D15 forbids." },
+    { "id": "FC-05", "trigger": "A candidate has no positive exact admission authority.", "action": "State UNDETERMINED_NO_POSITIVE_AUTHORITY for that candidate; set candidate_class_coverage = INCOMPLETE.", "prohibition": "Must NOT be reported as NOT_APPLICABLE and must NOT be silently omitted. Omission fabricates a finding." },
+    { "id": "FC-06", "trigger": "The integrity check on any key component or consulted authority fails.", "action": "State INTEGRITY_FAILURE, which sits at the top of the decision precedence and cannot be displaced.", "prohibition": "Must NOT degrade to a lower state." },
+    { "id": "FC-07", "trigger": "A replay of the same exact inputs produces a different result.", "action": "State NONDETERMINISTIC_REPLAY.", "prohibition": "The result is void; it may not be used downstream." },
+    { "id": "FC-08", "trigger": "A source's declared temporal basis differs from the request's declared temporal basis.", "action": "State SOURCE_NONCOMPARABLE_AT_THIS_TARGET (or SOURCE_OUT_OF_DECLARED_SCOPE where it is a containment failure).", "prohibition": "Must NOT normalise the two temporal bases into a common form. Per HQ204's H-A adjudication, no universal point-year-vs-fieldwork-interval binary is adopted." },
+    { "id": "FC-09", "trigger": "No candidate is admitted.", "action": "Return NO_ADMITTED_SOURCE_IN_CANDIDATE_CLASS - a first-class SUCCESS with full per-candidate provenance.", "prohibition": "Must NOT be rendered as an empty list, null, error string, or zero-length success." },
+    { "id": "FC-10", "trigger": "Any attempt to obtain an order, score, preference or weight from the admitted set.", "action": "Refuse. No such artefact exists and none may be derived from this authority.", "prohibition": "A consumer that requires an order must obtain it from a separately commissioned source-priority authority." }
+  ],
+
+  "no_silent_backfill": {
+    "d15_verbatim": "May not silently backfill broader sources.",
+    "structural_implementations": [
+      "candidate_class_ref is a mandatory positively bounded key component - the broader-class backfill is prevented at the key (FC-04).",
+      "NO_ADMITTED_SOURCE_IN_CANDIDATE_CLASS, OUT_OF_SCOPE, MISSING_AUTHORITY and UNRESOLVED are added to the forbidden-backfill-target set, joining DECLARED_NONE, SOURCE_NOT_APPLICABLE, TEMPORAL_NONCOMPARABLE, OBSERVED_ZERO, ZERO_SUPPORT, NONCOMPARABLE and NOT_APPLICABLE already present in current law.",
+      "APPLICABLE may never be produced by default, inheritance, family membership, version proximity, currency, or absence of a negative.",
+      "UNDETERMINED candidates are surfaced, never dropped (FC-05).",
+      "candidate_class_coverage is mandatory, so an under-examined class cannot masquerade as a fully decided set."
+    ],
+    "in_the_absence_of_a_positive_negative_authority": "The state is MISSING_AUTHORITY or UNRESOLVED - never NOT_APPLICABLE. Silence is not a finding.",
+    "d15_also_prohibits": "May not average admitted universes. - STRUCTURALLY ENFORCED: the form has no averaging operation and its output is a set of separate entries."
+  },
+
+  "no_implicit_pooling": {
+    "rule": "The function is a decision function, not a combining function.",
+    "guarantees": [
+      "Each admitted entry is independently source-indexed and independently governed.",
+      "No operation over the set produces an aggregate, union, intersection, merge, weight, combined denominator, combined numerator or combined estimand.",
+      "|admitted set| is not a sample size and is not a denominator.",
+      "Composition remains where it already is: pre553_source_relations.py under positively bound relation receipts and the AUTHORIZED_COMPOSITE operation-scoped bundle.",
+      "Non-pooled coexistence of multiple admitted sources requires NO pooling authority - and equally, admission does not supply one."
+    ]
+  },
+
+  "no_locality_implies_priority": {
+    "prohibition_verbatim": "locality or country identity alone does not assign a priority weight",
+    "rules": [
+      "geography_scope_ref and population_scope_ref filter; they never rank.",
+      "No local source may be preferred to a non-local source.",
+      "No local source may be preferred to another local source on grounds of locality.",
+      "Absence of a local source may not promote a non-local one.",
+      "There is no tie-break, because there is no order."
+    ]
+  },
+
+  "same_grain_bounded_succession_feasibility": {
+    "test": "Is same-grain bounded succession genuinely impossible, forcing an architecture reopen under HQD-125 s15?",
+    "answer": "NO. IT IS DEMONSTRABLY POSSIBLE.",
+    "evidence": "pre553_structural_admission.py already implements the immediate D15 sibling authority (STRUCTURAL_EMPIRICAL_ADMISSION_AUTHORITY) at exactly the grain and with exactly the decision-precedence / public-state-map / decision-matrix idiom this form requires, and does so on top of the same CanonicalSemanticObject + AuthoritySnapshot + exact-key AuthorityRegistry substrate.",
+    "consequence": "The missing capability is AUTHORITY MATERIAL plus a resolver, not a new architecture. See 07."
+  }
+}

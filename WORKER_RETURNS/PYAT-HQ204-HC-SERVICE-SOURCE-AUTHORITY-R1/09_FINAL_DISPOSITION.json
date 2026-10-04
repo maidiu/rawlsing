@@ -1,0 +1,194 @@
+{
+  "schema": "PYAT_HQ204_FINAL_DISPOSITION@1.0.0",
+  "lane": "PYAT-HQ204-HC-SERVICE-SOURCE-AUTHORITY-R1",
+  "startup_sha": "b65673abc13916963770d6d74ae51fe882539b70",
+  "commission": "WORKER_COMMISSIONS/PYAT-HQ204-HC-R1/00_COMMISSION.md",
+  "adjudication_applied": "ff4f06954824a3a5699bc5c1c9bd68cb3c5b4146",
+  "h_c_forensic_return_read": "cd3809efda80d64a590b1876a22eb6d08d09a079",
+  "terminal_backward_audit": "b3ea471a3771113bf408a4e434a4b480b26d5856",
+  "checkout_mode": "SPARSE_REQUIRED",
+  "code_changes": "NONE",
+
+  "disposition": "SERVICE_SOURCE_APPLICABILITY_ADMISSIBLE_SET_AUTHORITY_FORM_DERIVED__RANKING_NOT_AUTHORIZED__NO_ARCHITECTURE_REOPEN__AWAITING_HQ_RATIFICATION",
+
+  "central_answer": "The lawful current function returns an ADMISSIBLE SOURCE-INDEXED SET with typed per-source states. It does NOT rank, score, order, weight or select. Historical authority affirmatively withholds ranking power, so this is the least powerful form actually supported.",
+
+  "the_ranking_question_answered": {
+    "answer": "ADMISSIBLE SET ONLY. RANKING AND SELECTION ARE NOT AUTHORIZED.",
+    "decisive_grounds": [
+      "D15 downstream_outputs is an ADMITTED SET, not an order: 'admitted source-indexed universe list or typed nonapplicability/noncomparability'. The ledger supplies no comparator, score, position or preference key in any of its eight fields.",
+      "D12G @ 931b3086d states verbatim: 'No statistical composition model or numeric source weighting is selected.' Ranking weights are not merely omitted - they were expressly withheld by the adjudicator that established the rule.",
+      "D12G @ 931b3086d states verbatim: 'locality or country identity alone does not assign a priority weight.' The one ranking signal anyone would expect to find admissible is specifically denied it.",
+      "D12G @ 931b3086d states verbatim: 'each source/universe requires independent service-specific applicability authority.' Independent per-source judgements produce a set; an order over them is a cross-source relation and would collapse power 8 into the relation grain.",
+      "Current law provides no ranking primitive and forbids the lookup a ranker would need: AuthorityRegistry is 'Immutable exact-key authority registry; no latest/default lookup exists', and AuthoritySnapshot._validate_family rejects LATEST, DEFAULT, FUZZY, NEAREST and SEMVER_FALLBACK."
+    ],
+    "the_word_list": "D15 says 'list'. This does not license an order. 'List' fixes that the output enumerates admitted members; it fixes no order, because the ledger supplies none. Reading an order into the word would be an inference the authority does not contain.",
+    "deterministic_serialisation_order": "Emitted entries are canonically sorted on (source_universe_ref, release_identity_ref) for replay reproducibility ONLY. That order carries no ranking, preference, priority or weight authority, and the receipt must say so.",
+    "structural_enforcement": "The derived decision object has no ordering, score, comparator or preference field; its public state vocabulary has no ranked state; its decision precedence expresses no preference. Ranking could not be added to this object without a NEW authority, not a field addition."
+  },
+
+  "the_derived_form": {
+    "authority_grain": "EXACTLY ONE decision per (service_request_key, source_universe, release_identity). Never a set-level verdict. One request key yields N independent per-source decisions, per D12G.",
+    "request_key_components": [
+      "service_id",
+      "service_authority_ref",
+      "target_use_ref (target question / coordinate / structural use)",
+      "population_scope_ref",
+      "geography_scope_ref",
+      "effective_time_or_interval_ref (declared basis, never normalised)",
+      "candidate_class_ref (positively bounded; the structural implementation of D15's no-broader-backfill prohibition)",
+      "release_identity_ref (per source)",
+      "target_use_permission_refs (binding the permission envelope; NOT granting permission)",
+      "candidate_source_universe_refs (resolved FROM the bounded class, not freely supplied by a caller)"
+    ],
+    "key_rule": "All ten or none. Any absence, ambiguity or multiple resolution is a terminal refusal. No default, nearest, best-effort or partial key.",
+    "decision_precedence": [
+      "INTEGRITY_FAILURE",
+      "MISSING_APPLICABILITY_AUTHORITY",
+      "UNKNOWN_OR_CONFLICTING_APPLICABILITY_AUTHORITY",
+      "REQUEST_KEY_INCOMPLETE_OR_AMBIGUOUS",
+      "SOURCE_OUT_OF_DECLARED_SCOPE",
+      "SOURCE_NOT_APPLICABLE_TO_THIS_SERVICE_AND_USE",
+      "SOURCE_NONCOMPARABLE_AT_THIS_TARGET",
+      "NEGATIVE_AUTHORITY_ONLY",
+      "UNDETERMINED_NO_POSITIVE_AUTHORITY",
+      "ADMITTED"
+    ],
+    "per_source_public_states": ["APPLICABLE", "NOT_APPLICABLE", "NONCOMPARABLE", "OUT_OF_SCOPE", "MISSING_AUTHORITY", "UNRESOLVED", "INTEGRITY_FAILURE"],
+    "request_level_outcomes": [
+      "ADMISSIBLE_SOURCE_INDEXED_SET (positive)",
+      "NO_ADMITTED_SOURCE_IN_CANDIDATE_CLASS (first-class SUCCESS, not an error, not an empty list)",
+      "SERVICE_REQUEST_UNDETERMINED (refusal)",
+      "SERVICE_AUTHORITY_UNDETERMINED (refusal)",
+      "APPLICABILITY_AUTHORITY_CONFLICT (refusal)",
+      "CANDIDATE_CLASS_UNBOUNDED (refusal)"
+    ],
+    "state_family": "SERVICE_SOURCE_APPLICABILITY_STATE - NEW, and deliberately not aliased to any existing family, because NOT_APPLICABLE, NONCOMPARABLE and OUT_OF_SCOPE each already appear in more than one existing STATE_FAMILY at b65673abc.",
+    "derivation_method": "Same-grain bounded succession from the immediate D15 sibling authority already implemented at the same grain and idiom in pre553_structural_admission.py (DECISION_PRECEDENCE, PUBLIC_STATE_BY_DECISION, DECISION_MATRIX)."
+  },
+
+  "the_required_distinction_structurally_enforced": {
+    "APPLICABILITY_PREDATES_EVIDENCE": "Applicability is decided at source-universe, scope and use grain, BEFORE any internal evidence is examined. The decision object therefore carries NO internal-evidence-sufficiency field.",
+    "NO_ADMITTED_SOURCE": "A request-level first-class success of the applicability function, in which every candidate in the bounded class was decided at applicability grain and none was admitted. It is a statement about SOURCES, never about evidence volume.",
+    "APPLICABLE_SOURCE_WITH_MISSING_INTERNAL_EVIDENCE": "A per-source APPLICABLE success followed by a downstream EMPIRICAL_FACT_STATE such as ZERO_SUPPORT, OBSERVED_ZERO, LOW_SUPPORT, UNCERTAINTY_UNQUANTIFIED or UNAVAILABLE, owned by pre553_empirical_query.py and pre553_empirical_objects.py.",
+    "why_they_cannot_be_confused": "They live at different grains in different state families. Converting either into the other is a non-collapse violation. This upgrades H-C question F from PARTIAL to FORMED: the declaration-protection already existed, and what was missing - computing 'no applicable source' from the request - is now specified with its provenance.",
+    "binding_noncollapses": [
+      "APPLICABLE_SOURCE != SOURCE_WITH_EVIDENCE",
+      "NO_ADMITTED_SOURCE != NO_EVIDENCE_FOUND",
+      "MISSING_AUTHORITY != NOT_APPLICABLE",
+      "OUT_OF_SCOPE != NOT_APPLICABLE",
+      "NONCOMPARABLE != NOT_APPLICABLE",
+      "ADMITTED_SOURCE != POOLED_SAMPLE",
+      "ADMITTED_SET != COMPOSITE_ESTIMAND"
+    ]
+  },
+
+  "held_distinct": {
+    "SOURCE IDENTITY": "upstream input only; this form never mints or re-identifies a source",
+    "SEMANTIC EQUIVALENCE": "never granted; applicability does not imply equivalence; harmonization and provenance labels remain NONAUTHORIZING_RELATION_KINDS",
+    "LINKAGE": "never implied; admitting N sources implies no person-level linkage (D15: 'may not imply respondent linkage or pooling')",
+    "OVERLAP": "never implied; overlap remains a separately governed relation",
+    "POOLING": "never performed; the admitted set is never pooled; source_pooling_default false",
+    "ESTIMAND COMPOSITION": "never performed; no estimand is composed",
+    "BACKFILL": "never exercised, and this form EXTENDS the forbidden-target set with its own states",
+    "SERVICE APPLICABILITY": "THE ONLY POWER THIS FORM CARRIES",
+    "SOURCE SELECTION / RANKING": "REFUSED BY DECISION AND BY CONSTRUCTION; no ordering field exists in the object",
+    "CURRENTNESS": "held apart in BOTH directions; currency is not a proxy for applicability and applicability is not a proxy for currency; effective-time scope-matching is not a currency judgement",
+    "CONSUMER-USE PERMISSION": "the key BINDS the permission envelope and does NOT grant it; eligibility only"
+  },
+
+  "f8_boundary_bound": {
+    "grants": "ELIGIBILITY ONLY - the source may be placed in an admissible set, may narrow the source-universe scope of a downstream caller-supplied EmpiricalQuerySpec, and may be reported as eligible with its provenance.",
+    "refuses": [
+      "conditioning",
+      "possibility-geometry transformation",
+      "probability/distribution transformation",
+      "respondent pooling",
+      "individual inference"
+    ],
+    "the_trap_closed": "Because F8 selects geometry by exact (source_universe, release, target, retained_conditioner_ids) match over PRE-MATERIALIZED slices, narrowing eligibility CAN change F8's output. That is output SELECTION, not output TRANSFORMATION. This form can cause a different already-materialized slice to be selected; it cannot create, reshape, reweight, smooth, renormalise or extend any geometry or distribution.",
+    "f8_availability_fact_relied_upon": "Per H-D @ 2bdd78582a93d334cbdab918c79f4e82c3cf679c as accepted by HQ204: F8_DOES_NOT_TRANSFORM_POSSIBILITY_GEOMETRY; MODEL_ALGORITHM_ID is EXACT_CONDITIONAL_LOOKUP__NO_SMOOTHING_INTERPOLATION_OR_EXTRAPOLATION; GEOMETRY_TRANSFORMER and DISTRIBUTION_TRANSFORMER are NOT_AVAILABLE_AT_F8 for any world input family. Every refusal bound here is either already forbidden by current law or already structurally unavailable, so this binding requires no F8 architecture change."
+  },
+
+  "fail_closed_and_no_backfill": {
+    "ten_fail_closed_rules": "FC-01 through FC-10 in 05_REPLAY_DETERMINANTS_AND_FAIL_CLOSED.json",
+    "no_silent_backfill": "candidate_class_ref is mandatory and positively bounded, which is where 'may not silently backfill broader sources' would otherwise occur. This form's own states join DECLARED_NONE, SOURCE_NOT_APPLICABLE, TEMPORAL_NONCOMPARABLE, OBSERVED_ZERO, ZERO_SUPPORT, NONCOMPARABLE and NOT_APPLICABLE as forbidden backfill targets. APPLICABLE may never be produced by default, inheritance, family membership, version proximity, currency, or absence of a negative. Silence is MISSING_AUTHORITY or UNRESOLVED, never NOT_APPLICABLE.",
+    "no_implicit_pooling": "The function is a decision function, not a combining function. |admitted set| is not a sample size and not a denominator. Composition remains in pre553_source_relations.py, untouched.",
+    "no_locality_priority": "Geography and population are INCLUSION FILTERS ONLY. Absence of a local source may not promote a non-local one. There is no tie-break because there is no order.",
+    "no_temporal_normalisation": "Two producers declaring different temporal bases are DIFFERENT KEYS. Per HQ204's H-A adjudication, no universal point-year-vs-fieldwork-interval binary is adopted and same-family membership does not prove point-year adequacy."
+  },
+
+  "hqd125_s15_verdict": {
+    "architecture_reopen": "NOT WARRANTED",
+    "conditions_required": 6,
+    "conditions_holding": 2,
+    "conditions_failing": 4,
+    "decisive_failures": [
+      "cannot be transported - FAILS: the D15 authority citation is already carried inside current control via the N006 corpus carrier 48e802ce9689__RESULT.json, which records court D15, the ledger filename, the authority name, the three binding terminal services, source_indexed_default true and source_pooling_default false",
+      "cannot be validated/refused - FAILS: the form is refusable at ten points and reuses the existing validated substrate",
+      "cannot be composed at the required grain - FAILS: the grain is a strict refinement of the existing semantic-field grain and composes beneath EmpiricalQuerySpec, pre553_structural_admission.py and pre553_source_relations.py without being satisfied by any of them",
+      "cannot be satisfied by lawful same-grain succession or bounded implementation - FAILS: the immediate D15 sibling authority is already implemented at exactly this grain and idiom in pre553_structural_admission.py, so the s15 remedy_clause remedy 'authority materialization' is exactly right"
+    ],
+    "affirms": "HQ204's H-C adjudication that this is a missing authority FORM at an already-lawful grain and NOT an architecture reopen. This derivation supplies the half H-C correctly declined to author."
+  },
+
+  "provenance_finding_worth_hq_attention": {
+    "finding": "The historical commits 09ea040ac (D15 ledger) and 931b3086d (D12G adjudication) are NOT ancestors of b65673abc.",
+    "consequence": "The D15 ledger CSV and the D12G adjudication markdown are not present at that path in the current tree. I recovered both texts from the object store at their exact commits and separately verified that the D15 court result survives inside current control through the N006 corpus carrier.",
+    "why_this_matters": "Blind topological restoration of the D15/D12G court topology would have been wrong on two counts: the commits are off-lineage, and the stage-era component shape ('a per-service registry/resolver as a distinct component') is not what current law's grain idiom looks like. The function had to be recovered semantically and re-derived onto the current substrate - which is what this lane did."
+  },
+
+  "operational_answers_hc_questions_now_answered_by_form": {
+    "A_derive_admissible_sources": { "at_H_C": "NO - no owner", "now": "FORM DERIVED - an ADMISSIBLE SET with per-source typed states, keyed on all ten governed scope components, with each source decided independently. NOT IMPLEMENTED.", "still_refused": "ranking, ordering, selection" },
+    "B_refuse_inadmissible_sources": { "at_H_C": "PARTIAL - can refuse a SUPPLIED source, cannot determine one should never be supplied", "now": "FORM DERIVED - refusal is now DERIVED per source at applicability grain, with precedence-ordered typed states and provenance, rather than caller-declared.", "key_distinction_preserved": "the refusal of a SUPPLIED universe (existing power) remains distinct from the derivation of a refusal for a source the caller never supplied (this form)" },
+    "C_choose_among_admissible": { "at_H_C": "NO - no selector, ranker or preference order", "now": "STILL NO - AND NOW EXPLICITLY, BY AUTHORITY RATHER THAN BY OMISSION. Ranking is refused by D12G's express withholding of any numeric source weighting, and is structurally absent from the derived object.", "note": "this is the substantive change of this lane: the answer is no ON THE RECORD, not no BY ABSENCE" },
+    "D_compose_under_exact_authority": { "answer": "YES - unchanged", "owner": "pre553_empirical_query.py AUTHORIZED_COMPOSITE + pre553_source_relations.py I07 composite guard", "note": "untouched; AUTHORIZED_COMPOSITE and SOURCE_INDEXED_MULTI_UNIVERSE treated as separate branches; the HQ201 mode conflation is not repeated" },
+    "E_record_why_each_source_was_selected": { "at_H_C": "NO - no selection occurred so no rationale exists", "now": "RESTATED - no selection occurs, so no SELECTION-REASON is required and none may be fabricated. ADMISSION PROVENANCE (which exact authority admitted this source for this request, and the candidate-class bound) is required instead, and is strictly weaker.", "flag": "JC-05, awaiting ratification" },
+    "F_no_applicable_source_vs_missing_data_inside_an_applicable_source": { "at_H_C": "PARTIAL - typed states exist and are non-backfillable, but nothing COMPUTES 'no applicable source'", "now": "FORMED - NO_ADMITTED_SOURCE_IN_CANDIDATE_CLASS is a first-class successful outcome at request grain with full per-candidate provenance, and APPLICABILITY_PREDATES_EVIDENCE plus a decision object with no evidence-sufficiency field keeps it structurally separate from a downstream ZERO_SUPPORT / OBSERVED_ZERO / UNCERTAINTY_UNQUANTIFIED on an APPLICABLE source." }
+  },
+
+  "independently_verified_at_my_own_startup_sha": [
+    "Absence: 'source_applicability' 0 files, 'service_source' 0 files, 'source_eligibility' 0, 'source_allowlist' 0, 'allowed_sources' 0, 'permitted_sources' 0 across the whole tree at b65673abc; 'SERVICE_SOURCE_APPLICABILITY' 3 files, none in rawlsing_next.",
+    "Caller-supplied universe set: EmpiricalQuerySpec.REQUIRED_FIELDS includes empirical_universe_refs and raises Pre553IntegrityError('EmpiricalQuerySpec requires exact source universe scope') when empty - pre553_empirical_objects.py:677-693.",
+    "No service field: pre553_empirical_query.py contains 0 occurrences of 'service'.",
+    "No-inference disclaimer: pre553_source_local_universe_admission.py docstring - 'The contract does not infer source authority. It validates a caller-supplied positive exact AuthoritySnapshot and materializes only at that authority's source-local ceiling.'",
+    "Exact-key-only registry: pre553_empirical_authority.py:213 - 'Immutable exact-key authority registry; no latest/default lookup exists.'",
+    "No fuzzy selection: AuthoritySnapshot._validate_family rejects LATEST, DEFAULT, FUZZY, NEAREST, SEMVER_FALLBACK - 'mutable/fuzzy authority selection is forbidden'.",
+    "Non-authorizing labels: pre553_source_relations.py NONAUTHORIZING_RELATION_KINDS = {PROVENANCE_ORIGIN, HARMONIZATION_ALIAS}; 'No relation kind implies another.'",
+    "Backfill protection: pre553_source_relations.py FORBIDDEN_BACKFILL_TARGET_STATES = {DECLARED_NONE, SOURCE_NOT_APPLICABLE, TEMPORAL_NONCOMPARABLE, OBSERVED_ZERO, ZERO_SUPPORT, NONCOMPARABLE, NOT_APPLICABLE}.",
+    "No applicability relation kind: P07_RELATION_KINDS = {SOURCE_SEMANTIC_EQUIVALENCE, RESPONDENT_LINKAGE, OVERLAP_NON_DUPLICATION, SAMPLE_POOLING, ESTIMAND_COMPOSITION, BACKFILL, PROVENANCE_ORIGIN, HARMONIZATION_ALIAS}.",
+    "Same-grain sibling precedent: pre553_structural_admission.py DECISION_PRECEDENCE / POSITIVE_DECISION / PUBLIC_STATE_BY_DECISION / DECISION_MATRIX.",
+    "Allowlist identifiers absent at the terminal audit's own base commit 1dcd7ff64d7e1e06ee3d6e1791b79558aecdb5b3 as well as at b65673abc - recorded as a precision note in 08."
+  ],
+
+  "holds_respected": [
+    "no code changes",
+    "no production mutation",
+    "no raw-source access",
+    "no locator discovery",
+    "no warrant issuance",
+    "no actor or person implementation",
+    "no architecture reopen",
+    "no supersession of pre553_source_relations.py or pre553_structural_admission.py",
+    "no temporal-directionality claim (H-A's seven meanings remain unresolved)",
+    "no C1 lineage reconciliation",
+    "no R9 runtime fan-in",
+    "no live C4, no C7",
+    "no invented source-ranking weights"
+  ],
+
+  "artifacts": [
+    "00_RETURN.md",
+    "01_AUTHORITY_DERIVATION_DECISION.json",
+    "02_SERVICE_REQUEST_KEY_SPEC.json",
+    "03_APPLICABILITY_DECISION_FORM.json",
+    "04_ELEVEN_POWER_SEPARATION_MATRIX.json",
+    "05_REPLAY_DETERMINANTS_AND_FAIL_CLOSED.json",
+    "06_F8_BOUNDARY_BINDING.json",
+    "07_HQD125_S15_ARCHITECTURE_TEST.json",
+    "08_NONAUTHORIZED_AND_OPEN_ITEMS.json",
+    "09_FINAL_DISPOSITION.json"
+  ],
+
+  "terminal": "HQ204_SERVICE_SOURCE_AUTHORITY_RETURNED__HQ_ADJUDICATION_REQUIRED"
+}

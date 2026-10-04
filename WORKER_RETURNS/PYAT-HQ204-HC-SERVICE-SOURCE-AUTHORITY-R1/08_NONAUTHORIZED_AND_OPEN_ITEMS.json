@@ -1,0 +1,96 @@
+{
+  "schema": "PYAT_HQ204_NONAUTHORIZED_AND_OPEN_ITEMS@1.0.0",
+  "lane": "PYAT-HQ204-HC-SERVICE-SOURCE-AUTHORITY-R1",
+  "startup_sha": "b65673abc13916963770d6d74ae51fe882539b70",
+
+  "not_authorized_by_this_derivation": [
+    "Source ordering, ranking, scoring, preference, priority or weighting of any kind.",
+    "Selecting among applicable sources on any basis.",
+    "Any numeric source weighting or composition model. D12G @ 931b3086d states verbatim: 'No statistical composition model or numeric source weighting is selected.'",
+    "Any inference of priority from locality or country identity. D12G verbatim: 'locality or country identity alone does not assign a priority weight.'",
+    "Semantic equivalence, respondent linkage, overlap or non-duplication, pooling, estimand composition or backfill between admitted sources.",
+    "Conditioning, possibility-geometry transformation, or probability/distribution transformation.",
+    "Respondent pooling or individual inference.",
+    "Grant of consumer-use permission. Binding a permission envelope in the key is not granting it.",
+    "Substitution of a broader candidate class or a broader admitted set for a narrower one.",
+    "Temporal normalisation of any declared temporal basis into a canonical form.",
+    "Determination of applicability at person grain, or acquisition of any person-level field.",
+    "Any supersession, narrowing or reinterpretation of pre553_source_relations.py or pre553_structural_admission.py.",
+    "Any temporal-directionality determination. Per HQ204's H-A adjudication, TEMPORAL_DIRECTIONALITY_AUTHORITY remains unconstituted and the seven temporal meanings remain unresolved.",
+    "Any claim of end-to-end functional realisation, 35-wave qualification, or PREV3 conceptual completeness certification.",
+    "Any architecture reopen."
+  ],
+
+  "judgement_calls_requiring_explicit_HQ_ratification": [
+    {
+      "id": "JC-01",
+      "call": "candidate_class_ref is a MANDATORY positively bounded key component, and an unbounded class is a terminal refusal.",
+      "basis": "Derived by binding D15's prohibition 'May not silently backfill broader sources.' into a structural requirement. Without a bounded class the 'admissible set' degenerates to 'all sources', which is not an admission decision.",
+      "risk_if_HQ_rejects": "If HQ judges this too strong, the form must still forbid silent broadening by some other means; the prohibition itself is D15's, not mine.",
+      "status": "AWAITING_RATIFICATION"
+    },
+    {
+      "id": "JC-02",
+      "call": "A NEW state family SERVICE_SOURCE_APPLICABILITY_STATE is mandatory; applicability states may not alias SOURCE_UNIVERSE_RELATION_STATE, P07_RELATION_DECISIONS, EMPIRICAL_FACT_STATE or AUTHORITY_STATE.",
+      "basis": "NOT_APPLICABLE, NONCOMPARABLE and OUT_OF_SCOPE each already appear in more than one existing STATE_FAMILY at b65673abc. Aliasing would make an applicability refusal indistinguishable from a relation refusal and would destroy D15's separation of the two authorities in the type system.",
+      "precedent": "pre553_structural_admission.py already keeps an exact internal decision vocabulary and coarsens it explicitly via PUBLIC_STATE_BY_DECISION, with the comment 'I01 freezes a deliberately coarser public state vocabulary while preserving the exact P06 state in admission_decision_state. I04 must not widen I01.'",
+      "status": "AWAITING_RATIFICATION"
+    },
+    {
+      "id": "JC-03",
+      "call": "The proposed public positive state is named APPLICABLE, not ADMITTED_FOR_APPLICABILITY_PURPOSES.",
+      "basis": "To prevent collision with ADMITTED_FOR_EXACT_STRUCTURAL_USE in STRUCTURAL_ADMISSION_STATE. Two grains, two names; one word never means both.",
+      "status": "AWAITING_RATIFICATION"
+    },
+    {
+      "id": "JC-04",
+      "call": "UNDETERMINED candidates are surfaced with candidate_class_coverage = INCOMPLETE and do NOT force a whole-request refusal.",
+      "basis": "The less powerful of the two coherent options. The stronger option - refuse the entire request if any candidate is undecided - is defensible but withholds genuine partial determinations. Surfacing preserves both the truth and the fail-closed property, provided INCOMPLETE is mandatory and cannot be omitted.",
+      "alternative_HQ_may_prefer": "Full-request refusal whenever candidate_class_coverage would be INCOMPLETE. This would be strictly safer and is one line of policy.",
+      "status": "AWAITING_RATIFICATION"
+    },
+    {
+      "id": "JC-05",
+      "call": "MISS-04 is restated: no SELECTION-REASON record is required, because no selection occurs. ADMISSION PROVENANCE is the lawful substitute and is strictly weaker.",
+      "basis": "H-C recorded MISS-04 as an unmet instance-level consequence. On derivation, requiring a selection reason would either fabricate a selection or misrepresent an independent per-source determination as a comparative judgement. Recording why a source was ADMITTED is required; recording why it was CHOSEN is not, because choosing is not authorised.",
+      "status": "AWAITING_RATIFICATION"
+    },
+    {
+      "id": "JC-06",
+      "call": "The candidate-class bound is a required key component even though the commission's enumeration of the service-request key did not name it.",
+      "basis": "The commission asked for 'all relevant governed scope'. An unbounded candidate class is the exact mechanism by which D15's no-broader-backfill prohibition would be violated, so it is relevant governed scope and is included.",
+      "status": "AWAITING_RATIFICATION"
+    }
+  ],
+
+  "recommended_next_steps_for_HQ": [
+    "Ratify or amend the derived form in 01 through 07 as a single bounded authority package, or reject it with reasons.",
+    "Decide explicitly whether the answer to the ranking question is SET ONLY, as derived, or whether a separate SOURCE_PRIORITY_AUTHORITY is to be commissioned. Do not leave this implicit: an implicit yes is an invented weight.",
+    "Ratify or reject JC-01 through JC-06 individually. JC-02 and JC-04 are the two with real design consequences.",
+    "Authorise implementation only after ratification. No code changes were made in this lane.",
+    "Keep this authority strictly upstream of, and non-substitutable by, the relation powers, per D12G and the D15 ledger's two-row separation.",
+    "Note for the H-D reconciliation: F8 is unaffected. This form narrows eligibility only; it creates no geometry and transforms no distribution."
+  ],
+
+  "explicitly_deferred_to_other_lanes": {
+    "R9_runtime_fan_in": "separate authorised lane; untouched here",
+    "C1_lineage_reconciliation": "separate authorised lane; untouched here",
+    "F7_positive_semantic_forensics": "separate authorised lane; untouched here",
+    "V556_rule_material_substrate": "separate authorised lane; untouched here",
+    "H_A_temporal_directionality": "still unconstituted; no claim made",
+    "H_B_structural_pressure": "instance population residual; untouched here",
+    "H_E_terminal_prerequisites": "accepted residuals; untouched here"
+  },
+
+  "precision_note_on_the_terminal_backward_audit": {
+    "audit_sha": "b3ea471a3771113bf408a4e434a4b480b26d5856",
+    "w16_classification": "UNKNOWN__FURTHER_FORENSICS_REQUIRED",
+    "w16_confidence": "Medium; precise missing proof, not proved missing form",
+    "w16_exact_unresolved_question_verbatim": "Where is the adopted current successor that licenses service/target-specific source selection rather than merely accepting supplied refs?",
+    "how_this_derivation_answers_it": "There is no adopted current successor. I verified at my own startup SHA b65673abc - not at the audit's base - that the concept is absent from rawlsing_next entirely, and I derived the missing form.",
+    "classification_progression": "UNKNOWN__FURTHER_FORENSICS_REQUIRED (terminal audit) -> SERVICE_SOURCE_APPLICABILITY_FORM_MISSING__BOUNDED_CONTRACT_REQUIRED (H-C) -> ADMISSIBLE_SET_AUTHORITY_FORM_DERIVED (this lane). The audit's own hedge, 'not proved missing form', is now discharged in the direction of form-missing.",
+    "one_discrepancy_recorded_not_refuted": "The audit's W16 current_ontology cell reads 'operation-specific rules/allowlists current' and its implementation cell reads 'Model source allowlist and query/structural scope checks'. I checked for allowlist identifiers at the audit's OWN base commit 1cdcf6: 'source_allowlist', 'allowed_sources', 'allowed_source_universes' and 'permitted_sources' each return 0 files under rawlsing_next at 1dcd7ff64d7e1e06ee3d6e1791b79558aecdb5b3, and 0 at b65673abc. The audit's cell most likely refers to the required-scope checks on EmpiricalQuerySpec.empirical_universe_refs and to SourceRelationResolver exact-key scope checks rather than to a named allowlist artefact. Recorded as a precision note so no later lane cites 'allowlists' as an existing current artefact. This does not impugn the audit's classification, which was correctly cautious."
+  },
+
+  "verifiability": "Every current-code citation in this return was checked by me at b65673abc13916963770d6d74ae51fe882539b70 and is reproducible with git grep / git show against origin/agent/rabochii-pyat-hq204-hc-r1. Historical citations were read at their exact commits 09ea040ac0725162fc2c760229d4df13c3790931 (D15 ledger) and 931b3086d613e7f73086e86d976756d7f7f6902b (D12G adjudication)."
+}

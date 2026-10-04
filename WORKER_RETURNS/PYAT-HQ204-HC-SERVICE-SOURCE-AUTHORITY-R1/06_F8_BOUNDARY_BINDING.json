@@ -1,0 +1,72 @@
+{
+  "schema": "PYAT_HQ204_F8_BOUNDARY_BINDING@1.0.0",
+  "lane": "PYAT-HQ204-HC-SERVICE-SOURCE-AUTHORITY-R1",
+  "startup_sha": "b65673abc13916963770d6d74ae51fe882539b70",
+  "commission_instruction": "Bind the exact F8 boundary: service-source applicability may make a source ELIGIBLE. It does NOT thereby authorize conditioning, possibility-geometry transformation, probability/distribution transformation, respondent pooling or individual inference.",
+
+  "headline": "APPLICABILITY CONFERS ELIGIBILITY ONLY. EVERYTHING ELSE IS REFUSED.",
+
+  "the_five_refusals": [
+    {
+      "n": 1,
+      "refused": "CONDITIONING",
+      "what_would_be_needed_to_authorise_it": "A positive exact conditioning authority binding this source at this retained-conditioner grain.",
+      "status_after_applicability": "NOT AUTHORIZED",
+      "why": "Applicability answers 'may this source be used for this service request'. Conditioning answers 'may this source condition this geometry at this retained-conditioner grain'. These are different questions at different grains. Admitting a source says nothing about what it may condition.",
+      "may_not_be_inferred_because": "The F8 conditioning grain is retained_conditioner_ids, an independent axis. A source can be APPLICABLE and still supply no admissible conditioner."
+    },
+    {
+      "n": 2,
+      "refused": "POSSIBILITY-GEOMETRY TRANSFORMATION",
+      "what_would_be_needed_to_authorise_it": "A positive exact GEOMETRY_TRANSFORMER authority, which does not exist at F8 for any world input family.",
+      "status_after_applicability": "NOT AUTHORIZED - AND STRUCTURALLY UNAVAILABLE",
+      "h_d_finding_relied_upon": "H-D @ 2bdd78582a93d334cbdab918c79f4e82c3cf679c, accepted by HQ204: F8_DOES_NOT_TRANSFORM_POSSIBILITY_GEOMETRY. F8 is exact conditional lookup over PRE-MATERIALIZED evidence geometry; geometry arrives on PossibilitySliceEvidence.geometry and is only SELECTED by exact (source_universe, release, target, retained_conditioner_ids) match, or by a governed strictly-decreasing specificity walkback within the same source/release.",
+      "h_d_verbatim_relied_upon": "GEOMETRY_TRANSFORMER and DISTRIBUTION_TRANSFORMER are NOT_AVAILABLE_AT_F8 for any world input family.",
+      "the_only_way_applicability_can_change_what_F8_returns": "By narrowing which exact source_universe and release are eligible, so a different ALREADY-MATERIALIZED slice is the one selected. It CANNOT create, reshape, recompute, reweight, smooth or extend geometry. A new geometry requires a new upstream materialized slice at a new retained_conditioner grain, produced under its own producer authority.",
+      "the_trap_this_binding_closes": "Because F8 selects by exact (source_universe, release, target, retained_conditioner_ids), narrowing eligibility can change F8's OUTPUT. An implementer could mistake that for a transformation power. It is not: the geometry was already materialized and is unchanged. Output selection is not output transformation."
+    },
+    {
+      "n": 3,
+      "refused": "PROBABILITY / DISTRIBUTION TRANSFORMATION",
+      "what_would_be_needed_to_authorise_it": "A positive exact DISTRIBUTION_TRANSFORMER authority, which does not exist at F8 for any world input family.",
+      "status_after_applicability": "NOT AUTHORIZED - AND STRUCTURALLY UNAVAILABLE",
+      "h_d_verbatim_relied_upon": "MODEL_ALGORITHM_ID is EXACT_CONDITIONAL_LOOKUP__NO_SMOOTHING_INTERPOLATION_OR_EXTRAPOLATION.",
+      "explicitly_forbidden_by_this_form": "No renormalisation, no reweighting, no rescaling, no shifting, no tilting, no mixing, no shrinkage, no calibration and no transport of any distribution, and in particular no operation whose effect would be to 'repair' a thin admitted set by redistributing mass."
+    },
+    {
+      "n": 4,
+      "refused": "RESPONDENT POOLING",
+      "what_would_be_needed_to_authorise_it": "A positively bound SOURCE_COMPOSITION_POOLING authority plus the AUTHORIZED_COMPOSITE operation-scoped bundle plus the exact relation receipts.",
+      "status_after_applicability": "NOT AUTHORIZED",
+      "why": "D15 verbatim: 'may not imply respondent linkage or pooling.' Binding default: source_pooling_default false. Admitting five sources is not authorising a five-source sample.",
+      "where_it_lives_instead": "pre553_source_relations.py, untouched."
+    },
+    {
+      "n": 5,
+      "refused": "INDIVIDUAL INFERENCE",
+      "what_would_be_needed_to_authorise_it": "The full comparator + actor-firewall chain; and even then only a possibility field, never actor state.",
+      "status_after_applicability": "NOT AUTHORIZED",
+      "why": "D15 binding non-collapse: POSITIONED_SUBJECT_EMPIRICAL_POSSIBILITY_FIELD != V3_DEVELOPED_OR_REALIZED_DISPOSITION != ACTOR_BELIEF_OR_RESPONSE; and EMPIRICAL_RESPONDENT_COORDINATE != GENERATED_ACTOR_DEMOGRAPHIC_OR_BIOGRAPHICAL_FACT != GENERATED_NINE_STRATUM_STRUCTURAL_POSITION.",
+      "additionally": "This form is decided at SOURCE-UNIVERSE grain and never at person grain. It has no person-level field and must never acquire one."
+    }
+  ],
+
+  "what_admission_does_authorise_exactly": [
+    "The source may be PLACED IN AN ADMISSIBLE SET for this exact service request.",
+    "It may serve to narrow the source-universe scope of a DOWNSTREAM EmpiricalQuerySpec that the caller independently supplies and that independently carries its own query authority.",
+    "It may be reported as eligible, with its admission provenance, in a receipt.",
+    "Nothing else. Eligibility is a permission to be CONSIDERED, not a permission to be USED for any particular transformation, and not a permission to be pooled."
+  ],
+
+  "ordering_of_the_chain": {
+    "statement": "Applicability is strictly UPSTREAM of query, of structural admission, of composition and of F8.",
+    "evidence": "D15's own POSITIONED_SUBJECT_FIELD_PRODUCTION_AUTHORITY lists 'source applicability' among its upstream_inputs, and STRUCTURAL_EMPIRICAL_ADMISSION_AUTHORITY consumes an already-admitted fact.",
+    "implication": "An applicability decision may be consulted BEFORE a source set is assembled; it may never be consulted to justify an operation already performed."
+  },
+
+  "no_architecture_reopen": {
+    "statement": "This binding requires no F8 architecture change. It forbids operations that current F8 already does not perform.",
+    "basis": "Every one of the five refusals above is either already forbidden by current law or already structurally unavailable. The binding adds no new refusal; it forbids an INFERENCE that a newly added authority might otherwise invite.",
+    "h_d_position_preserved": "H-D remains PARTIAL per HQ204, but nothing in this derivation alters H-D's base-model finding or its C1 conditionality."
+  }
+}
