@@ -100,6 +100,7 @@ class PhysicalSourceIncidence:
     _broker: Any = None
     _source_access_receipt: Mapping[str, Any] | None = None
     _selected_ordinals: tuple[int, ...] | None = None
+    _session: Any = None
 
     @property
     def physical_metadata_digest(self) -> str:
@@ -127,6 +128,8 @@ class PhysicalSourceIncidence:
         snapshotted during decode would under-report the very accesses it exists
         to account for.
         """
+        if self._session is not None:
+            return self._session.aggregate_receipt()
         if self._broker is not None:
             return self._broker.receipt()
         if self._source_access_receipt is None:
@@ -140,9 +143,21 @@ class PhysicalSourceIncidence:
         return self._selected_ordinals
 
     def close_source_access(self) -> None:
-        """Release the governed physical open. Safe to call more than once."""
+        """Release the governed physical open, and the session if this owns one.
+
+        Safe to call more than once, and safe on both normal and error paths.
+        """
+        if self._session is not None:
+            self._session.close()
+            return
         if self._broker is not None:
             self._broker.close()
+
+    def __enter__(self) -> "PhysicalSourceIncidence":
+        return self
+
+    def __exit__(self, *exc: Any) -> None:
+        self.close_source_access()
 
     def require_physical_metadata_digest(self, expected_digest: str) -> None:
         if not isinstance(expected_digest, str) or len(expected_digest) != 64:
@@ -592,6 +607,9 @@ def _decode(
     )
     try:
         broker.bind_reader(source_format)
+        # Decoder entry boundary: counted ONCE here, never per reader call, and
+        # refused before any metadata/hash/row work when capped at 1.
+        broker.admit_decoder_entry()
         if not broker.existence_check():
             raise DecoderError(f"source bytes unavailable: {source}")
         source_sha = _governed_source_sha(broker)
@@ -702,6 +720,103 @@ def _decode(
     # collected.  It is never replaced by a raw path string.
 
 
+def decode_in_session(
+    session: Any,
+    plan: Any,
+) -> PhysicalSourceIncidence:
+    """Decode inside a caller-owned GovernedSourceSession.
+
+    This is the GOVERNED path. The session owns the broker, the single physical
+    open and the aggregate accounts; this function never constructs a broker and
+    never hands pyreadstat a path string. The caller keeps ownership of the
+    session lifetime and should close it (or use it as a context manager).
+    """
+    import pyreadstat
+
+    from rawlsing_next.pre553_source_session import RowDataMode
+
+    if not hasattr(session, "run") or not hasattr(session, "broker"):
+        raise DecoderError("decode_in_session requires a GovernedSourceSession")
+    session._require_open()
+
+    outcome = session.run(plan)
+    source_format = session.source_format
+    metadata = outcome["metadata"]
+    source_sha = outcome["source_sha256"]
+    frame = outcome.get("frame")
+
+    inventory = list(metadata.column_names)
+    variables_ordinals = {n: i for i, n in enumerate(inventory, 1)}
+    if plan.mode is RowDataMode.SELECTED and outcome.get("selected_ordinals"):
+        names = list(plan.selected_variables or ())
+        inventory = names
+        variables_ordinals = dict(zip(names, outcome["selected_ordinals"]))
+
+    prefix = outcome.get("header_prefix")
+    if prefix is None and plan.admits_header_prefix:
+        prefix = b""
+
+    variable_tuple = _build_variables(metadata, inventory, variables_ordinals, source_format)
+    file_meta = _file_metadata_contract(
+        source=Path(session.path),
+        source_format=source_format,
+        metadata=metadata,
+        variables=variable_tuple,
+        row_count=int(getattr(metadata, "number_rows", 0) or 0),
+        raw_prefix=prefix,
+    )
+    compatibility = _compatibility_config(source_sha, plan.encoding)
+    reader_config = {
+        "reader": "pyreadstat",
+        "reader_version": getattr(pyreadstat, "__version__", None),
+        "decoder_implementation": DECODER_IMPLEMENTATION_ID,
+        "physical_metadata_contract": PHYSICAL_METADATA_CONTRACT,
+        "user_missing": True,
+        "apply_value_formats": False,
+        **compatibility,
+    }
+    if plan.mode is RowDataMode.CHUNKED_FULL:
+        frame = None
+    return PhysicalSourceIncidence(
+        source_sha,
+        source_format,
+        int(getattr(metadata, "number_rows", 0) or 0),
+        variable_tuple,
+        reader_config,
+        file_meta,
+        _frame=frame,
+        _source_path=str(session.path),
+        _reader_kind=source_format,
+        _encoding=plan.encoding,
+        _broker=session.broker,
+        _source_access_receipt=None,
+        _selected_ordinals=tuple(outcome["selected_ordinals"]) if outcome.get("selected_ordinals") else None,
+        _session=session,
+    )
+
+
+def _build_variables(metadata, inventory, ordinals, source_format):
+    variables: list[PhysicalVariable] = []
+    for name in inventory:
+        ordinal = ordinals[name]
+        decl = _missing_declarations(metadata, name, source_format)
+        labels = (getattr(metadata, "variable_value_labels", {}) or {}).get(name, {}) or {}
+        display = {
+            "storage_width": (getattr(metadata, "variable_storage_width", {}) or {}).get(name),
+            "display_width": (getattr(metadata, "variable_display_width", {}) or {}).get(name),
+            "alignment": (getattr(metadata, "variable_alignment", {}) or {}).get(name),
+            "measure": (getattr(metadata, "variable_measure", {}) or {}).get(name),
+            "format": (getattr(metadata, "original_variable_types", {}) or {}).get(name),
+        }
+        variables.append(PhysicalVariable(
+            ordinal, name, (getattr(metadata, "readstat_variable_types", {}) or {}).get(name),
+            (getattr(metadata, "column_names_to_labels", {}) or {}).get(name),
+            {str(_jsonable(k)): _jsonable(k2) for k, k2 in labels.items()}, decl, display,
+            {"multiple_response_sets": _jsonable((getattr(metadata, "mr_sets", {}) or {}) )},
+        ))
+    return tuple(variables)
+
+
 def decode_sav(
     path: str | Path,
     *,
@@ -772,4 +887,5 @@ __all__ = [
     "SourceAccessBudget",
     "SourceAccessViolation",
     "RawSourcePathEscape",
+    "decode_in_session",
 ]

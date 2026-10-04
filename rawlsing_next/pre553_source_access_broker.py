@@ -123,6 +123,10 @@ class SourceAccessAccount:
     full_reads: int = 0
     chunk_reads: int = 0
     reader_invocations: int = 0
+    # Decoder entries, counted ONCE at the decoder/session entry boundary.
+    # This is NOT reader_invocations: one decoder entry may issue several reader
+    # calls, and one reader call is never a decoder entry on its own.
+    decoder_invocations: int = 0
     # What the reader pulled through the governed open.
     reader_read_calls: int = 0
     reader_bytes: int = 0
@@ -142,6 +146,7 @@ class SourceAccessAccount:
             "full_reads": self.full_reads,
             "chunk_reads": self.chunk_reads,
             "reader_invocations": self.reader_invocations,
+            "decoder_invocations": self.decoder_invocations,
             "reader_read_calls": self.reader_read_calls,
             "reader_bytes": self.reader_bytes,
             "retries": self.retries,
@@ -171,6 +176,7 @@ class SourceAccessBudget:
     full_reads: int | None = None
     chunk_reads: int | None = None
     reader_invocations: int | None = None
+    decoder_invocations: int | None = None
     reader_bytes: int | None = None
     retries: int | None = 0
 
@@ -183,7 +189,8 @@ class SourceAccessBudget:
               existence_checks: int = 0, hash_passes: int = 0, hash_bytes: int = 0,
               header_prefix_reads: int = 0, header_prefix_bytes: int = 0, metadata_reads: int = 0,
               selected_reads: int = 0, full_reads: int = 0, chunk_reads: int = 0,
-              reader_invocations: int = 0, reader_bytes: int = 0, retries: int = 0) -> None:
+              reader_invocations: int = 0, decoder_invocations: int = 0,
+              reader_bytes: int = 0, retries: int = 0) -> None:
         """Raise BEFORE the operation if any cap would be exceeded."""
         projected = {
             "path_opens": (account.path_opens, path_opens),
@@ -198,6 +205,7 @@ class SourceAccessBudget:
             "full_reads": (account.full_reads, full_reads),
             "chunk_reads": (account.chunk_reads, chunk_reads),
             "reader_invocations": (account.reader_invocations, reader_invocations),
+            "decoder_invocations": (account.decoder_invocations, decoder_invocations),
             "reader_bytes": (account.reader_bytes, reader_bytes),
             "retries": (account.retries, retries),
         }
@@ -477,6 +485,7 @@ class SourceAccessBroker:
                 "full_reads": "compiled-reader invocations with no column restriction",
                 "chunk_reads": "compiled-reader invocations issued by the governed row_offset loop",
                 "reader_invocations": "total compiled-reader calls issued by this broker, of any kind",
+                "decoder_invocations": "decoder/session entry-boundary crossings, counted once per entry and NOT once per reader call; distinct from reader_invocations",
                 "reader_read_calls": "read() calls the compiled reader made through the governed view",
                 "reader_bytes": "bytes the compiled reader pulled through the governed view",
                 "separation_law": "each quantity is its own account; none is a proxy for another",
@@ -645,6 +654,16 @@ class SourceAccessBroker:
                 self._account.as_dict(),
             )
         return result
+
+    def admit_decoder_entry(self) -> None:
+        """Count ONE decoder/session entry, after a pre-operation cap check.
+
+        Called at the decoder entry boundary, never per reader call. With
+        ``decoder_invocations`` capped at 1 a second entry is refused BEFORE any
+        metadata, hash or row operation of that second entry begins.
+        """
+        self.budget.check(self._account, decoder_invocations=1)
+        self._bump(decoder_invocations=1)
 
     def bind_reader(self, reader_kind: str) -> None:
         self._reader_kind = reader_kind.upper()
