@@ -1,0 +1,969 @@
+{
+  "schema": "PYAT_HQ196_BOUND_VALUES_AND_PENDING_VALUES@1.0.0",
+  "principle": "Only values already frozen by authority are bound. Everything else is typed as a blocker, never invented and never null.",
+  "totals": {
+    "accounts_total": 78,
+    "bound": 40,
+    "pending": 38,
+    "by_budget_type": {
+      "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE": 38,
+      "FLOOR": 11,
+      "EXACT": 18,
+      "ZERO": 11
+    }
+  },
+  "bound_values": [
+    {
+      "source_key": "SRC02",
+      "account": "full_file_sha256_passes",
+      "budget_type": "FLOOR",
+      "budget_value": 1,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[1]",
+        "C4B_UNSIGNED_TEMPLATE@c2af4f61d68e9803af83f8e26f633acfe31062fa:07_UNSIGNED_SOURCE_WARRANT_TEMPLATE.json.preconditions[3]"
+      ],
+      "reviewer_confirmation_required": true,
+      "derivation_note": "The C4B precondition requires the locator to resolve to bytes whose full-file SHA-256 equals the frozen identity BEFORE decode. That mandates at least one pass. The law supplies no explicit numeric budget, so the minimum mandated by the precondition is bound as a FLOOR and flagged, not asserted as an EXACT count."
+    },
+    {
+      "source_key": "SRC02",
+      "account": "selected_column_reads",
+      "budget_type": "EXACT",
+      "budget_value": 1,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC02.expected_selected_reads"
+      ],
+      "derivation_note": "Frozen at EXACT 1 by authority. NOTE: the bound reader currently exposes no usecols argument, so this EXACT budget has no implementation owner yet. The budget is bound as authority froze it; it is NOT relaxed, and the missing owner is recorded as a blocker."
+    },
+    {
+      "source_key": "SRC02",
+      "account": "full_reads",
+      "budget_type": "EXACT",
+      "budget_value": 0,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC02.expected_full_reads"
+      ],
+      "derivation_note": "Frozen zero. A single non-zero count is a STOP condition, not a reportable variance."
+    },
+    {
+      "source_key": "SRC02",
+      "account": "retries",
+      "budget_type": "ZERO",
+      "budget_value": 0,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC02.max_retry_budget",
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.retry_budget_law.frozen_maximum"
+      ],
+      "derivation_note": "Frozen maximum ZERO across all sources. No more permissive budget was invented."
+    },
+    {
+      "source_key": "SRC06",
+      "account": "full_file_sha256_passes",
+      "budget_type": "FLOOR",
+      "budget_value": 1,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[1]",
+        "C4B_UNSIGNED_TEMPLATE@c2af4f61d68e9803af83f8e26f633acfe31062fa:07_UNSIGNED_SOURCE_WARRANT_TEMPLATE.json.preconditions[3]"
+      ],
+      "reviewer_confirmation_required": true,
+      "derivation_note": "The C4B precondition requires the locator to resolve to bytes whose full-file SHA-256 equals the frozen identity BEFORE decode. That mandates at least one pass. The law supplies no explicit numeric budget, so the minimum mandated by the precondition is bound as a FLOOR and flagged, not asserted as an EXACT count."
+    },
+    {
+      "source_key": "SRC06",
+      "account": "selected_column_reads",
+      "budget_type": "EXACT",
+      "budget_value": 1,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC06.expected_selected_reads"
+      ],
+      "derivation_note": "Frozen at EXACT 1 by authority. NOTE: the bound reader currently exposes no usecols argument, so this EXACT budget has no implementation owner yet. The budget is bound as authority froze it; it is NOT relaxed, and the missing owner is recorded as a blocker."
+    },
+    {
+      "source_key": "SRC06",
+      "account": "full_reads",
+      "budget_type": "EXACT",
+      "budget_value": 0,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC06.expected_full_reads"
+      ],
+      "derivation_note": "Frozen zero. A single non-zero count is a STOP condition, not a reportable variance."
+    },
+    {
+      "source_key": "SRC06",
+      "account": "retries",
+      "budget_type": "ZERO",
+      "budget_value": 0,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC06.max_retry_budget",
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.retry_budget_law.frozen_maximum"
+      ],
+      "derivation_note": "Frozen maximum ZERO across all sources. No more permissive budget was invented."
+    },
+    {
+      "source_key": "SRC08",
+      "account": "full_file_sha256_passes",
+      "budget_type": "FLOOR",
+      "budget_value": 1,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[1]",
+        "C4B_UNSIGNED_TEMPLATE@c2af4f61d68e9803af83f8e26f633acfe31062fa:07_UNSIGNED_SOURCE_WARRANT_TEMPLATE.json.preconditions[3]"
+      ],
+      "reviewer_confirmation_required": true,
+      "derivation_note": "The C4B precondition requires the locator to resolve to bytes whose full-file SHA-256 equals the frozen identity BEFORE decode. That mandates at least one pass. The law supplies no explicit numeric budget, so the minimum mandated by the precondition is bound as a FLOOR and flagged, not asserted as an EXACT count."
+    },
+    {
+      "source_key": "SRC08",
+      "account": "metadata_reads",
+      "budget_type": "EXACT",
+      "budget_value": 1,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC08.expected_metadata_reads"
+      ]
+    },
+    {
+      "source_key": "SRC08",
+      "account": "selected_column_reads",
+      "budget_type": "EXACT",
+      "budget_value": 0,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC08.expected_selected_reads"
+      ],
+      "derivation_note": "Frozen zero. A single non-zero count is a STOP condition, not a reportable variance."
+    },
+    {
+      "source_key": "SRC08",
+      "account": "full_reads",
+      "budget_type": "EXACT",
+      "budget_value": 0,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC08.expected_full_reads"
+      ],
+      "derivation_note": "Frozen zero. A single non-zero count is a STOP condition, not a reportable variance."
+    },
+    {
+      "source_key": "SRC08",
+      "account": "retries",
+      "budget_type": "ZERO",
+      "budget_value": 0,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC08.max_retry_budget",
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.retry_budget_law.frozen_maximum"
+      ],
+      "derivation_note": "Frozen maximum ZERO across all sources. No more permissive budget was invented."
+    },
+    {
+      "source_key": "SRC08",
+      "account": "row_data_reads",
+      "budget_type": "ZERO",
+      "budget_value": 0,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.frozen_zero_budgets.SRC08_row_data_reads",
+        "C4_WARRANT_CANDIDATE@8ff40d37de69db2d8a6053a7c2242f481677f1a4:04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json.per_source[SRC08].allowed_operations.row_data_reads"
+      ]
+    },
+    {
+      "source_key": "SRC08",
+      "account": "selected_columns",
+      "budget_type": "ZERO",
+      "budget_value": 0,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.frozen_zero_budgets.SRC08_selected_columns",
+        "C4_WARRANT_CANDIDATE@8ff40d37de69db2d8a6053a7c2242f481677f1a4:04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json.per_source[SRC08].allowed_operations.selected_columns"
+      ]
+    },
+    {
+      "source_key": "SRC12",
+      "account": "full_file_sha256_passes",
+      "budget_type": "FLOOR",
+      "budget_value": 1,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[1]",
+        "C4B_UNSIGNED_TEMPLATE@c2af4f61d68e9803af83f8e26f633acfe31062fa:07_UNSIGNED_SOURCE_WARRANT_TEMPLATE.json.preconditions[3]"
+      ],
+      "reviewer_confirmation_required": true,
+      "derivation_note": "The C4B precondition requires the locator to resolve to bytes whose full-file SHA-256 equals the frozen identity BEFORE decode. That mandates at least one pass. The law supplies no explicit numeric budget, so the minimum mandated by the precondition is bound as a FLOOR and flagged, not asserted as an EXACT count."
+    },
+    {
+      "source_key": "SRC12",
+      "account": "metadata_reads",
+      "budget_type": "EXACT",
+      "budget_value": 1,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC12.expected_metadata_reads"
+      ]
+    },
+    {
+      "source_key": "SRC12",
+      "account": "selected_column_reads",
+      "budget_type": "EXACT",
+      "budget_value": 0,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC12.expected_selected_reads"
+      ],
+      "derivation_note": "Frozen zero. A single non-zero count is a STOP condition, not a reportable variance."
+    },
+    {
+      "source_key": "SRC12",
+      "account": "full_reads",
+      "budget_type": "EXACT",
+      "budget_value": 0,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC12.expected_full_reads"
+      ],
+      "derivation_note": "Frozen zero. A single non-zero count is a STOP condition, not a reportable variance."
+    },
+    {
+      "source_key": "SRC12",
+      "account": "retries",
+      "budget_type": "ZERO",
+      "budget_value": 0,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC12.max_retry_budget",
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.retry_budget_law.frozen_maximum"
+      ],
+      "derivation_note": "Frozen maximum ZERO across all sources. No more permissive budget was invented."
+    },
+    {
+      "source_key": "SRC12",
+      "account": "row_data_reads",
+      "budget_type": "ZERO",
+      "budget_value": 0,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.frozen_zero_budgets.SRC12_row_data_reads",
+        "C4_WARRANT_CANDIDATE@8ff40d37de69db2d8a6053a7c2242f481677f1a4:04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json.per_source[SRC12].allowed_operations.row_data_reads"
+      ]
+    },
+    {
+      "source_key": "SRC12",
+      "account": "selected_columns",
+      "budget_type": "ZERO",
+      "budget_value": 0,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.frozen_zero_budgets.SRC12_selected_columns",
+        "C4_WARRANT_CANDIDATE@8ff40d37de69db2d8a6053a7c2242f481677f1a4:04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json.per_source[SRC12].allowed_operations.selected_columns"
+      ]
+    },
+    {
+      "source_key": "SRC14",
+      "account": "full_file_sha256_passes",
+      "budget_type": "FLOOR",
+      "budget_value": 1,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[1]",
+        "C4B_UNSIGNED_TEMPLATE@c2af4f61d68e9803af83f8e26f633acfe31062fa:07_UNSIGNED_SOURCE_WARRANT_TEMPLATE.json.preconditions[3]"
+      ],
+      "reviewer_confirmation_required": true,
+      "derivation_note": "The C4B precondition requires the locator to resolve to bytes whose full-file SHA-256 equals the frozen identity BEFORE decode. That mandates at least one pass. The law supplies no explicit numeric budget, so the minimum mandated by the precondition is bound as a FLOOR and flagged, not asserted as an EXACT count."
+    },
+    {
+      "source_key": "SRC14",
+      "account": "selected_column_reads",
+      "budget_type": "EXACT",
+      "budget_value": 1,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC14.expected_selected_reads"
+      ],
+      "derivation_note": "Frozen at EXACT 1 by authority. NOTE: the bound reader currently exposes no usecols argument, so this EXACT budget has no implementation owner yet. The budget is bound as authority froze it; it is NOT relaxed, and the missing owner is recorded as a blocker."
+    },
+    {
+      "source_key": "SRC14",
+      "account": "full_reads",
+      "budget_type": "EXACT",
+      "budget_value": 0,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC14.expected_full_reads"
+      ],
+      "derivation_note": "Frozen zero. A single non-zero count is a STOP condition, not a reportable variance."
+    },
+    {
+      "source_key": "SRC14",
+      "account": "retries",
+      "budget_type": "ZERO",
+      "budget_value": 0,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC14.max_retry_budget",
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.retry_budget_law.frozen_maximum"
+      ],
+      "derivation_note": "Frozen maximum ZERO across all sources. No more permissive budget was invented."
+    },
+    {
+      "source_key": "SRC26",
+      "account": "full_file_sha256_passes",
+      "budget_type": "FLOOR",
+      "budget_value": 1,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[1]",
+        "C4B_UNSIGNED_TEMPLATE@c2af4f61d68e9803af83f8e26f633acfe31062fa:07_UNSIGNED_SOURCE_WARRANT_TEMPLATE.json.preconditions[3]"
+      ],
+      "reviewer_confirmation_required": true,
+      "derivation_note": "The C4B precondition requires the locator to resolve to bytes whose full-file SHA-256 equals the frozen identity BEFORE decode. That mandates at least one pass. The law supplies no explicit numeric budget, so the minimum mandated by the precondition is bound as a FLOOR and flagged, not asserted as an EXACT count."
+    },
+    {
+      "source_key": "SRC26",
+      "account": "header_prefix_reads",
+      "budget_type": "FLOOR",
+      "budget_value": 1,
+      "budget_expression": null,
+      "provenance": [
+        "C4_WARRANT_CANDIDATE@8ff40d37de69db2d8a6053a7c2242f481677f1a4:04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json.per_source[SRC26].allowed_operations.kind",
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC26"
+      ],
+      "reviewer_confirmation_required": true,
+      "derivation_note": "The admitted operation class is BOUNDED_HEADER_PREFIX_PLUS_READER_METADATA, which mandates at least one header-prefix read. Authority supplies the header-prefix BYTE count (176) but NOT a read count, so the mandated minimum is bound as a FLOOR and flagged rather than asserted as EXACT 1. No ceiling is supplied."
+    },
+    {
+      "source_key": "SRC26",
+      "account": "header_prefix_bytes",
+      "budget_type": "EXACT",
+      "budget_value": 176,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC26.expected_header_prefix_bytes"
+      ],
+      "derivation_note": "Bound at THIS declared account only. It is not interchangeable with the 174/332 geometry pair."
+    },
+    {
+      "source_key": "SRC26",
+      "account": "raw_nominal_case_size",
+      "budget_type": "EXACT",
+      "budget_value": 174,
+      "budget_expression": null,
+      "provenance": [
+        "C4_WARRANT_CANDIDATE@8ff40d37de69db2d8a6053a7c2242f481677f1a4:04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json.per_source[SRC26].allowed_operations.expected_raw_nominal_case_size"
+      ]
+    },
+    {
+      "source_key": "SRC26",
+      "account": "decoded_dictionary_data_width",
+      "budget_type": "EXACT",
+      "budget_value": 332,
+      "budget_expression": null,
+      "provenance": [
+        "C4_WARRANT_CANDIDATE@8ff40d37de69db2d8a6053a7c2242f481677f1a4:04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json.per_source[SRC26].allowed_operations.expected_decoded_dictionary_data_width"
+      ],
+      "derivation_note": "SRC26 law: 174 and 332 must be preserved SEPARATELY; divergence is expected, never collapsed."
+    },
+    {
+      "source_key": "SRC26",
+      "account": "selected_column_reads",
+      "budget_type": "EXACT",
+      "budget_value": 0,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC26.expected_selected_reads"
+      ],
+      "derivation_note": "Frozen zero. A single non-zero count is a STOP condition, not a reportable variance."
+    },
+    {
+      "source_key": "SRC26",
+      "account": "full_reads",
+      "budget_type": "EXACT",
+      "budget_value": 0,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC26.expected_full_reads"
+      ],
+      "derivation_note": "Frozen zero. A single non-zero count is a STOP condition, not a reportable variance."
+    },
+    {
+      "source_key": "SRC26",
+      "account": "retries",
+      "budget_type": "ZERO",
+      "budget_value": 0,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC26.max_retry_budget",
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.retry_budget_law.frozen_maximum"
+      ],
+      "derivation_note": "Frozen maximum ZERO across all sources. No more permissive budget was invented."
+    },
+    {
+      "source_key": "SRC27",
+      "account": "governed_full_route_passes",
+      "budget_type": "EXACT",
+      "budget_value": 1,
+      "budget_expression": "exactly 1; authority also supplies max 1",
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC27.expected_full_route_passes",
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC27.expected_full_route_passes_max",
+        "C4_WARRANT_CANDIDATE@8ff40d37de69db2d8a6053a7c2242f481677f1a4:04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json.per_source[SRC27].expected_full_route_passes",
+        "C4_WARRANT_CANDIDATE@8ff40d37de69db2d8a6053a7c2242f481677f1a4:04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json.per_source[SRC27].max_full_route_passes"
+      ],
+      "derivation_note": "A WORKLOAD constraint, not an access constraint. Explicitly does NOT license assuming one file open. Misreading it as one open would be an accounting failure."
+    },
+    {
+      "source_key": "SRC27",
+      "account": "source_path_existence_access_checks",
+      "budget_type": "FLOOR",
+      "budget_value": 1,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.hardened_note_on_the_SRC27_single_pass.implication",
+        "C4_WARRANT_CANDIDATE@8ff40d37de69db2d8a6053a7c2242f481677f1a4:04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json.per_source[SRC27].accounting_warning"
+      ],
+      "derivation_note": "Authority wording is 'at minimum'. Bound as a FLOOR. Per commission it is NOT promoted to a ceiling; no maximum is supplied for this account."
+    },
+    {
+      "source_key": "SRC27",
+      "account": "full_file_sha256_passes",
+      "budget_type": "FLOOR",
+      "budget_value": 1,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.hardened_note_on_the_SRC27_single_pass.implication",
+        "C4_WARRANT_CANDIDATE@8ff40d37de69db2d8a6053a7c2242f481677f1a4:04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json.per_source[SRC27].accounting_warning"
+      ],
+      "derivation_note": "Authority wording is 'at minimum'. Bound as a FLOOR. Per commission it is NOT promoted to a ceiling; no maximum is supplied for this account."
+    },
+    {
+      "source_key": "SRC27",
+      "account": "metadata_reads",
+      "budget_type": "FLOOR",
+      "budget_value": 1,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.hardened_note_on_the_SRC27_single_pass.implication",
+        "C4_WARRANT_CANDIDATE@8ff40d37de69db2d8a6053a7c2242f481677f1a4:04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json.per_source[SRC27].accounting_warning"
+      ],
+      "derivation_note": "Authority wording is 'at minimum'. Bound as a FLOOR. Per commission it is NOT promoted to a ceiling; no maximum is supplied for this account."
+    },
+    {
+      "source_key": "SRC27",
+      "account": "full_reads",
+      "budget_type": "FLOOR",
+      "budget_value": 1,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.hardened_note_on_the_SRC27_single_pass.implication",
+        "C4_WARRANT_CANDIDATE@8ff40d37de69db2d8a6053a7c2242f481677f1a4:04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json.per_source[SRC27].accounting_warning"
+      ],
+      "derivation_note": "Authority wording is 'at minimum'. Bound as a FLOOR. Per commission it is NOT promoted to a ceiling; no maximum is supplied for this account."
+    },
+    {
+      "source_key": "SRC27",
+      "account": "retries",
+      "budget_type": "ZERO",
+      "budget_value": 0,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC27.max_retry_budget",
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.retry_budget_law.frozen_maximum"
+      ]
+    }
+  ],
+  "pending_values": [
+    {
+      "source_key": "SRC02",
+      "account": "source_path_existence_access_checks",
+      "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+      "budget_value": null,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[0]"
+      ],
+      "pending_dependency": "PENDING_HQ196_BROKER_SELECTED_IMPLEMENTATION_ACCEPTANCE",
+      "derivation_note": "O1-C07 names this a mandatory separate account but supplies no numeric budget. Not invented here."
+    },
+    {
+      "source_key": "SRC02",
+      "account": "path_level_opens",
+      "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+      "budget_value": null,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[2]",
+        "HQ196_R9_THREE_WAY_ADJUDICATION_R1@d43756fb3c80645ac887cca90026ecbdb10dd18c.Contract meaning \u2014 accepted (literal path opens are separately named/non-substitutable)"
+      ],
+      "pending_dependency": "PENDING_HQ196_BROKER_SELECTED_IMPLEMENTATION_ACCEPTANCE",
+      "derivation_note": "No path-open budget is supplied by authority for any of the six. Explicitly NOT invented. A higher-level proxy may not be renamed path_opens."
+    },
+    {
+      "source_key": "SRC02",
+      "account": "metadata_reads",
+      "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+      "budget_value": null,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[3]"
+      ],
+      "pending_dependency": "PENDING_HQ196_BROKER_SELECTED_IMPLEMENTATION_ACCEPTANCE",
+      "derivation_note": "O1-C07 names metadata reads a mandatory separate account but supplies no count for this source. Not invented here."
+    },
+    {
+      "source_key": "SRC02",
+      "account": "header_prefix_reads",
+      "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+      "budget_value": null,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[4]"
+      ],
+      "pending_dependency": "PENDING_HQ196_BROKER_SELECTED_IMPLEMENTATION_ACCEPTANCE",
+      "derivation_note": "No header-prefix budget is supplied for this source. None invented."
+    },
+    {
+      "source_key": "SRC02",
+      "account": "decoder_invocations",
+      "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+      "budget_value": null,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[5]"
+      ],
+      "pending_dependency": "PENDING_HQ196_BROKER_SELECTED_IMPLEMENTATION_ACCEPTANCE",
+      "derivation_note": "No decoder-invocation budget is supplied by authority. Explicitly NOT invented."
+    },
+    {
+      "source_key": "SRC02",
+      "account": "byte_counts_where_measurable",
+      "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+      "budget_value": null,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[8]"
+      ],
+      "pending_dependency": "PENDING_HQ196_BROKER_SELECTED_IMPLEMENTATION_ACCEPTANCE",
+      "derivation_note": "O1-C07 qualifies this account 'where measurable' and supplies no byte budget. None invented."
+    },
+    {
+      "source_key": "SRC06",
+      "account": "source_path_existence_access_checks",
+      "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+      "budget_value": null,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[0]"
+      ],
+      "pending_dependency": "PENDING_HQ196_BROKER_SELECTED_IMPLEMENTATION_ACCEPTANCE",
+      "derivation_note": "O1-C07 names this a mandatory separate account but supplies no numeric budget. Not invented here."
+    },
+    {
+      "source_key": "SRC06",
+      "account": "path_level_opens",
+      "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+      "budget_value": null,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[2]",
+        "HQ196_R9_THREE_WAY_ADJUDICATION_R1@d43756fb3c80645ac887cca90026ecbdb10dd18c.Contract meaning \u2014 accepted (literal path opens are separately named/non-substitutable)"
+      ],
+      "pending_dependency": "PENDING_HQ196_BROKER_SELECTED_IMPLEMENTATION_ACCEPTANCE",
+      "derivation_note": "No path-open budget is supplied by authority for any of the six. Explicitly NOT invented. A higher-level proxy may not be renamed path_opens."
+    },
+    {
+      "source_key": "SRC06",
+      "account": "metadata_reads",
+      "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+      "budget_value": null,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[3]"
+      ],
+      "pending_dependency": "PENDING_HQ196_BROKER_SELECTED_IMPLEMENTATION_ACCEPTANCE",
+      "derivation_note": "O1-C07 names metadata reads a mandatory separate account but supplies no count for this source. Not invented here."
+    },
+    {
+      "source_key": "SRC06",
+      "account": "header_prefix_reads",
+      "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+      "budget_value": null,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[4]"
+      ],
+      "pending_dependency": "PENDING_HQ196_BROKER_SELECTED_IMPLEMENTATION_ACCEPTANCE",
+      "derivation_note": "No header-prefix budget is supplied for this source. None invented."
+    },
+    {
+      "source_key": "SRC06",
+      "account": "decoder_invocations",
+      "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+      "budget_value": null,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[5]"
+      ],
+      "pending_dependency": "PENDING_HQ196_BROKER_SELECTED_IMPLEMENTATION_ACCEPTANCE",
+      "derivation_note": "No decoder-invocation budget is supplied by authority. Explicitly NOT invented."
+    },
+    {
+      "source_key": "SRC06",
+      "account": "byte_counts_where_measurable",
+      "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+      "budget_value": null,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[8]"
+      ],
+      "pending_dependency": "PENDING_HQ196_BROKER_SELECTED_IMPLEMENTATION_ACCEPTANCE",
+      "derivation_note": "O1-C07 qualifies this account 'where measurable' and supplies no byte budget. None invented."
+    },
+    {
+      "source_key": "SRC08",
+      "account": "source_path_existence_access_checks",
+      "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+      "budget_value": null,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[0]"
+      ],
+      "pending_dependency": "PENDING_HQ196_BROKER_SELECTED_IMPLEMENTATION_ACCEPTANCE",
+      "derivation_note": "O1-C07 names this a mandatory separate account but supplies no numeric budget. Not invented here."
+    },
+    {
+      "source_key": "SRC08",
+      "account": "path_level_opens",
+      "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+      "budget_value": null,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[2]",
+        "HQ196_R9_THREE_WAY_ADJUDICATION_R1@d43756fb3c80645ac887cca90026ecbdb10dd18c.Contract meaning \u2014 accepted (literal path opens are separately named/non-substitutable)"
+      ],
+      "pending_dependency": "PENDING_HQ196_BROKER_SELECTED_IMPLEMENTATION_ACCEPTANCE",
+      "derivation_note": "No path-open budget is supplied by authority for any of the six. Explicitly NOT invented. A higher-level proxy may not be renamed path_opens."
+    },
+    {
+      "source_key": "SRC08",
+      "account": "header_prefix_reads",
+      "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+      "budget_value": null,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[4]"
+      ],
+      "pending_dependency": "PENDING_HQ196_BROKER_SELECTED_IMPLEMENTATION_ACCEPTANCE",
+      "derivation_note": "No header-prefix budget is supplied for this source. None invented."
+    },
+    {
+      "source_key": "SRC08",
+      "account": "decoder_invocations",
+      "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+      "budget_value": null,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[5]"
+      ],
+      "pending_dependency": "PENDING_HQ196_BROKER_SELECTED_IMPLEMENTATION_ACCEPTANCE",
+      "derivation_note": "No decoder-invocation budget is supplied by authority. Explicitly NOT invented."
+    },
+    {
+      "source_key": "SRC08",
+      "account": "byte_counts_where_measurable",
+      "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+      "budget_value": null,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[8]"
+      ],
+      "pending_dependency": "PENDING_HQ196_BROKER_SELECTED_IMPLEMENTATION_ACCEPTANCE",
+      "derivation_note": "O1-C07 qualifies this account 'where measurable' and supplies no byte budget. None invented."
+    },
+    {
+      "source_key": "SRC12",
+      "account": "source_path_existence_access_checks",
+      "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+      "budget_value": null,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[0]"
+      ],
+      "pending_dependency": "PENDING_HQ196_BROKER_SELECTED_IMPLEMENTATION_ACCEPTANCE",
+      "derivation_note": "O1-C07 names this a mandatory separate account but supplies no numeric budget. Not invented here."
+    },
+    {
+      "source_key": "SRC12",
+      "account": "path_level_opens",
+      "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+      "budget_value": null,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[2]",
+        "HQ196_R9_THREE_WAY_ADJUDICATION_R1@d43756fb3c80645ac887cca90026ecbdb10dd18c.Contract meaning \u2014 accepted (literal path opens are separately named/non-substitutable)"
+      ],
+      "pending_dependency": "PENDING_HQ196_BROKER_SELECTED_IMPLEMENTATION_ACCEPTANCE",
+      "derivation_note": "No path-open budget is supplied by authority for any of the six. Explicitly NOT invented. A higher-level proxy may not be renamed path_opens."
+    },
+    {
+      "source_key": "SRC12",
+      "account": "header_prefix_reads",
+      "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+      "budget_value": null,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[4]"
+      ],
+      "pending_dependency": "PENDING_HQ196_BROKER_SELECTED_IMPLEMENTATION_ACCEPTANCE",
+      "derivation_note": "No header-prefix budget is supplied for this source. None invented."
+    },
+    {
+      "source_key": "SRC12",
+      "account": "decoder_invocations",
+      "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+      "budget_value": null,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[5]"
+      ],
+      "pending_dependency": "PENDING_HQ196_BROKER_SELECTED_IMPLEMENTATION_ACCEPTANCE",
+      "derivation_note": "No decoder-invocation budget is supplied by authority. Explicitly NOT invented."
+    },
+    {
+      "source_key": "SRC12",
+      "account": "byte_counts_where_measurable",
+      "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+      "budget_value": null,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[8]"
+      ],
+      "pending_dependency": "PENDING_HQ196_BROKER_SELECTED_IMPLEMENTATION_ACCEPTANCE",
+      "derivation_note": "O1-C07 qualifies this account 'where measurable' and supplies no byte budget. None invented."
+    },
+    {
+      "source_key": "SRC14",
+      "account": "source_path_existence_access_checks",
+      "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+      "budget_value": null,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[0]"
+      ],
+      "pending_dependency": "PENDING_HQ196_BROKER_SELECTED_IMPLEMENTATION_ACCEPTANCE",
+      "derivation_note": "O1-C07 names this a mandatory separate account but supplies no numeric budget. Not invented here."
+    },
+    {
+      "source_key": "SRC14",
+      "account": "path_level_opens",
+      "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+      "budget_value": null,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[2]",
+        "HQ196_R9_THREE_WAY_ADJUDICATION_R1@d43756fb3c80645ac887cca90026ecbdb10dd18c.Contract meaning \u2014 accepted (literal path opens are separately named/non-substitutable)"
+      ],
+      "pending_dependency": "PENDING_HQ196_BROKER_SELECTED_IMPLEMENTATION_ACCEPTANCE",
+      "derivation_note": "No path-open budget is supplied by authority for any of the six. Explicitly NOT invented. A higher-level proxy may not be renamed path_opens."
+    },
+    {
+      "source_key": "SRC14",
+      "account": "metadata_reads",
+      "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+      "budget_value": null,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[3]"
+      ],
+      "pending_dependency": "PENDING_HQ196_BROKER_SELECTED_IMPLEMENTATION_ACCEPTANCE",
+      "derivation_note": "O1-C07 names metadata reads a mandatory separate account but supplies no count for this source. Not invented here."
+    },
+    {
+      "source_key": "SRC14",
+      "account": "header_prefix_reads",
+      "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+      "budget_value": null,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[4]"
+      ],
+      "pending_dependency": "PENDING_HQ196_BROKER_SELECTED_IMPLEMENTATION_ACCEPTANCE",
+      "derivation_note": "No header-prefix budget is supplied for this source. None invented."
+    },
+    {
+      "source_key": "SRC14",
+      "account": "decoder_invocations",
+      "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+      "budget_value": null,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[5]"
+      ],
+      "pending_dependency": "PENDING_HQ196_BROKER_SELECTED_IMPLEMENTATION_ACCEPTANCE",
+      "derivation_note": "No decoder-invocation budget is supplied by authority. Explicitly NOT invented."
+    },
+    {
+      "source_key": "SRC14",
+      "account": "byte_counts_where_measurable",
+      "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+      "budget_value": null,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[8]"
+      ],
+      "pending_dependency": "PENDING_HQ196_BROKER_SELECTED_IMPLEMENTATION_ACCEPTANCE",
+      "derivation_note": "O1-C07 qualifies this account 'where measurable' and supplies no byte budget. None invented."
+    },
+    {
+      "source_key": "SRC26",
+      "account": "source_path_existence_access_checks",
+      "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+      "budget_value": null,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[0]"
+      ],
+      "pending_dependency": "PENDING_HQ196_BROKER_SELECTED_IMPLEMENTATION_ACCEPTANCE",
+      "derivation_note": "O1-C07 names this a mandatory separate account but supplies no numeric budget. Not invented here."
+    },
+    {
+      "source_key": "SRC26",
+      "account": "path_level_opens",
+      "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+      "budget_value": null,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[2]",
+        "HQ196_R9_THREE_WAY_ADJUDICATION_R1@d43756fb3c80645ac887cca90026ecbdb10dd18c.Contract meaning \u2014 accepted (literal path opens are separately named/non-substitutable)"
+      ],
+      "pending_dependency": "PENDING_HQ196_BROKER_SELECTED_IMPLEMENTATION_ACCEPTANCE",
+      "derivation_note": "No path-open budget is supplied by authority for any of the six. Explicitly NOT invented. A higher-level proxy may not be renamed path_opens."
+    },
+    {
+      "source_key": "SRC26",
+      "account": "metadata_reads",
+      "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+      "budget_value": null,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[3]"
+      ],
+      "pending_dependency": "PENDING_HQ196_BROKER_SELECTED_IMPLEMENTATION_ACCEPTANCE",
+      "derivation_note": "O1-C07 names metadata reads a mandatory separate account but supplies no count for this source. Not invented here."
+    },
+    {
+      "source_key": "SRC26",
+      "account": "decoder_invocations",
+      "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+      "budget_value": null,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[5]"
+      ],
+      "pending_dependency": "PENDING_HQ196_BROKER_SELECTED_IMPLEMENTATION_ACCEPTANCE",
+      "derivation_note": "No decoder-invocation budget is supplied by authority. Explicitly NOT invented."
+    },
+    {
+      "source_key": "SRC26",
+      "account": "byte_counts_where_measurable",
+      "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+      "budget_value": null,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[8]"
+      ],
+      "pending_dependency": "PENDING_HQ196_BROKER_SELECTED_IMPLEMENTATION_ACCEPTANCE",
+      "derivation_note": "O1-C07 qualifies this account 'where measurable' and supplies no byte budget. None invented."
+    },
+    {
+      "source_key": "SRC27",
+      "account": "path_level_opens",
+      "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+      "budget_value": null,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC27.critical_note",
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[2]"
+      ],
+      "pending_dependency": "PENDING_HQ196_BROKER_SELECTED_IMPLEMENTATION_ACCEPTANCE",
+      "derivation_note": "Authority states the pass 'will involve multiple path-level opens' and deliberately supplies NO number. The word 'multiple' is recorded verbatim and is NOT converted into a numeric budget. Not invented here."
+    },
+    {
+      "source_key": "SRC27",
+      "account": "selected_column_reads",
+      "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+      "budget_value": null,
+      "budget_expression": null,
+      "provenance": [
+        "HQ196_R9_THREE_WAY_ADJUDICATION_R1@d43756fb3c80645ac887cca90026ecbdb10dd18c.New candidate finding \u2014 selected-read implementation mismatch"
+      ],
+      "pending_dependency": "R9-SEL-03_CANDIDATE_IMPLEMENTATION_GAP__HOSTILE_REVIEW_REQUIRED",
+      "derivation_note": "Commission forbids inventing a selected-read count for SRC27. None invented. Bound as UNBOUND_PENDING_TECHNICAL_ACCEPTANCE, which is a typed budget state, NOT a null."
+    },
+    {
+      "source_key": "SRC27",
+      "account": "header_prefix_reads",
+      "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+      "budget_value": null,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts"
+      ],
+      "pending_dependency": "PENDING_HQ196_BROKER_SELECTED_IMPLEMENTATION_ACCEPTANCE",
+      "derivation_note": "No budget supplied by authority for this account on this source. None invented."
+    },
+    {
+      "source_key": "SRC27",
+      "account": "decoder_invocations",
+      "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+      "budget_value": null,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts"
+      ],
+      "pending_dependency": "PENDING_HQ196_BROKER_SELECTED_IMPLEMENTATION_ACCEPTANCE",
+      "derivation_note": "No budget supplied by authority for this account on this source. None invented."
+    },
+    {
+      "source_key": "SRC27",
+      "account": "byte_counts_where_measurable",
+      "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+      "budget_value": null,
+      "budget_expression": null,
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts"
+      ],
+      "pending_dependency": "PENDING_HQ196_BROKER_SELECTED_IMPLEMENTATION_ACCEPTANCE",
+      "derivation_note": "No budget supplied by authority for this account on this source. None invented."
+    }
+  ],
+  "pending_value_law": {
+    "representation": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+    "is_a_null": false,
+    "waives_nothing": true,
+    "blocks_issuance": true,
+    "difference": "A null would silently waive a launch prerequisite. A typed pending value records that authority named the account but has not yet supplied a number, and it keeps the account visible as a blocker."
+  },
+  "explicitly_not_invented": {
+    "path_open_budgets": "Not invented for any source. SRC27's authority wording 'multiple' is recorded verbatim and not converted to a number.",
+    "decoder_invocation_counts": "Not invented for any source.",
+    "byte_ceilings": "Not invented for any source.",
+    "src27_selected_reads": "Not invented, per commission."
+  },
+  "floors_not_promoted": {
+    "src27_accounts_bound_as_floor": [
+      "source_path_existence_access_checks",
+      "full_file_sha256_passes",
+      "metadata_reads",
+      "full_reads"
+    ],
+    "authority_wording": "The hardened note says the run 'will require at minimum' each of these.",
+    "promotion_to_ceiling": "PROHIBITED. No maximum is supplied for these four accounts."
+  }
+}

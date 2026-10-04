@@ -1,0 +1,1124 @@
+{
+  "schema": "PYAT_HQ196_C4B_TO_SUCCESSOR_ACCOUNTING_CROSSWALK@1.0.0",
+  "purpose": "Exact crosswalk for the DQ-01 repair: what C4B required, what the C4 candidate dropped, and what the successor binds in its place.",
+  "sources": {
+    "c4b_unsigned_template": "C4B_UNSIGNED_TEMPLATE@c2af4f61d68e9803af83f8e26f633acfe31062fa:07_UNSIGNED_SOURCE_WARRANT_TEMPLATE.json",
+    "c4_warrant_candidate": "C4_WARRANT_CANDIDATE@8ff40d37de69db2d8a6053a7c2242f481677f1a4:04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json",
+    "o1_c07_accounting_law": "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json",
+    "hq196_adjudication": "HQ196_R9_THREE_WAY_ADJUDICATION_R1@d43756fb3c80645ac887cca90026ecbdb10dd18c"
+  },
+  "dq01_evidence": {
+    "c4b_block_present_for_all_seven": true,
+    "c4_candidate_block_present_for_any": false,
+    "verification": "Read directly from the exact git objects; see 01_HISTORICAL_TO_SUCCESSOR_CROSSWALK.json."
+  },
+  "row_count": 78,
+  "rows": [
+    {
+      "source_key": "SRC02",
+      "c4b_account": "full_file_sha256_passes",
+      "c4b_requirement_token": "REQUIRED_EXACT_COUNT",
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "full_file_sha256_passes"
+      ],
+      "successor_budget_types": {
+        "full_file_sha256_passes": "FLOOR"
+      },
+      "repair_action": "RESTORED",
+      "note": null
+    },
+    {
+      "source_key": "SRC02",
+      "c4b_account": "path_opens",
+      "c4b_requirement_token": "REQUIRED_EXACT_COUNT_AND_BASIS",
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "path_level_opens"
+      ],
+      "successor_budget_types": {
+        "path_level_opens": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE"
+      },
+      "repair_action": "RESTORED",
+      "note": null
+    },
+    {
+      "source_key": "SRC02",
+      "c4b_account": "decoder_invocations",
+      "c4b_requirement_token": "REQUIRED_EXACT_COUNT",
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "decoder_invocations"
+      ],
+      "successor_budget_types": {
+        "decoder_invocations": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE"
+      },
+      "repair_action": "RESTORED",
+      "note": null
+    },
+    {
+      "source_key": "SRC02",
+      "c4b_account": "metadata_header_reads",
+      "c4b_requirement_token": "REQUIRED_EXACT_COUNT",
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "metadata_reads",
+        "header_prefix_reads"
+      ],
+      "successor_budget_types": {
+        "metadata_reads": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+        "header_prefix_reads": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE"
+      },
+      "repair_action": "RESTORED_AND_SPLIT",
+      "note": "SPLIT_BY_SETTLED_O1_C07_LAW: C4B carried one combined 'metadata_header_reads' account. The settled law names 'metadata reads' and 'header-prefix reads' as separate mandatory accounts, so the combined term was split rather than restated."
+    },
+    {
+      "source_key": "SRC02",
+      "c4b_account": "selected_reads",
+      "c4b_requirement_token": "REQUIRED_EXACT_COUNT_AND_CONFIG",
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "selected_column_reads"
+      ],
+      "successor_budget_types": {
+        "selected_column_reads": "EXACT"
+      },
+      "repair_action": "RESTORED",
+      "note": null
+    },
+    {
+      "source_key": "SRC02",
+      "c4b_account": "full_reads",
+      "c4b_requirement_token": "REQUIRED_EXACT_COUNT_AND_CONFIG",
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "full_reads"
+      ],
+      "successor_budget_types": {
+        "full_reads": "EXACT"
+      },
+      "repair_action": "RESTORED",
+      "note": null
+    },
+    {
+      "source_key": "SRC02",
+      "c4b_account": "retries",
+      "c4b_requirement_token": "REQUIRED_EXACT_COUNT_AND_REASON",
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "retries"
+      ],
+      "successor_budget_types": {
+        "retries": "ZERO"
+      },
+      "repair_action": "RESTORED",
+      "note": null
+    },
+    {
+      "source_key": "SRC02",
+      "c4b_account": null,
+      "c4b_requirement_token": null,
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "source_path_existence_access_checks"
+      ],
+      "successor_budget_types": {
+        "source_path_existence_access_checks": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE"
+      },
+      "repair_action": "ADDED_BY_SETTLED_O1_C07_LAW",
+      "note": "Not named as a separate C4B account. Required by the settled O1-C07 mandatory-separate-account list, or by a per-source frozen value."
+    },
+    {
+      "source_key": "SRC02",
+      "c4b_account": null,
+      "c4b_requirement_token": null,
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "header_prefix_reads"
+      ],
+      "successor_budget_types": {
+        "header_prefix_reads": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE"
+      },
+      "repair_action": "ADDED_BY_SETTLED_O1_C07_LAW",
+      "note": "Not named as a separate C4B account. Required by the settled O1-C07 mandatory-separate-account list, or by a per-source frozen value."
+    },
+    {
+      "source_key": "SRC02",
+      "c4b_account": null,
+      "c4b_requirement_token": null,
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "byte_counts_where_measurable"
+      ],
+      "successor_budget_types": {
+        "byte_counts_where_measurable": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE"
+      },
+      "repair_action": "ADDED_BY_SETTLED_O1_C07_LAW",
+      "note": "Not named as a separate C4B account. Required by the settled O1-C07 mandatory-separate-account list, or by a per-source frozen value."
+    },
+    {
+      "source_key": "SRC06",
+      "c4b_account": "full_file_sha256_passes",
+      "c4b_requirement_token": "REQUIRED_EXACT_COUNT",
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "full_file_sha256_passes"
+      ],
+      "successor_budget_types": {
+        "full_file_sha256_passes": "FLOOR"
+      },
+      "repair_action": "RESTORED",
+      "note": null
+    },
+    {
+      "source_key": "SRC06",
+      "c4b_account": "path_opens",
+      "c4b_requirement_token": "REQUIRED_EXACT_COUNT_AND_BASIS",
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "path_level_opens"
+      ],
+      "successor_budget_types": {
+        "path_level_opens": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE"
+      },
+      "repair_action": "RESTORED",
+      "note": null
+    },
+    {
+      "source_key": "SRC06",
+      "c4b_account": "decoder_invocations",
+      "c4b_requirement_token": "REQUIRED_EXACT_COUNT",
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "decoder_invocations"
+      ],
+      "successor_budget_types": {
+        "decoder_invocations": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE"
+      },
+      "repair_action": "RESTORED",
+      "note": null
+    },
+    {
+      "source_key": "SRC06",
+      "c4b_account": "metadata_header_reads",
+      "c4b_requirement_token": "REQUIRED_EXACT_COUNT",
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "metadata_reads",
+        "header_prefix_reads"
+      ],
+      "successor_budget_types": {
+        "metadata_reads": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+        "header_prefix_reads": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE"
+      },
+      "repair_action": "RESTORED_AND_SPLIT",
+      "note": "SPLIT_BY_SETTLED_O1_C07_LAW: C4B carried one combined 'metadata_header_reads' account. The settled law names 'metadata reads' and 'header-prefix reads' as separate mandatory accounts, so the combined term was split rather than restated."
+    },
+    {
+      "source_key": "SRC06",
+      "c4b_account": "selected_reads",
+      "c4b_requirement_token": "REQUIRED_EXACT_COUNT_AND_CONFIG",
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "selected_column_reads"
+      ],
+      "successor_budget_types": {
+        "selected_column_reads": "EXACT"
+      },
+      "repair_action": "RESTORED",
+      "note": null
+    },
+    {
+      "source_key": "SRC06",
+      "c4b_account": "full_reads",
+      "c4b_requirement_token": "REQUIRED_EXACT_COUNT_AND_CONFIG",
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "full_reads"
+      ],
+      "successor_budget_types": {
+        "full_reads": "EXACT"
+      },
+      "repair_action": "RESTORED",
+      "note": null
+    },
+    {
+      "source_key": "SRC06",
+      "c4b_account": "retries",
+      "c4b_requirement_token": "REQUIRED_EXACT_COUNT_AND_REASON",
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "retries"
+      ],
+      "successor_budget_types": {
+        "retries": "ZERO"
+      },
+      "repair_action": "RESTORED",
+      "note": null
+    },
+    {
+      "source_key": "SRC06",
+      "c4b_account": null,
+      "c4b_requirement_token": null,
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "source_path_existence_access_checks"
+      ],
+      "successor_budget_types": {
+        "source_path_existence_access_checks": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE"
+      },
+      "repair_action": "ADDED_BY_SETTLED_O1_C07_LAW",
+      "note": "Not named as a separate C4B account. Required by the settled O1-C07 mandatory-separate-account list, or by a per-source frozen value."
+    },
+    {
+      "source_key": "SRC06",
+      "c4b_account": null,
+      "c4b_requirement_token": null,
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "header_prefix_reads"
+      ],
+      "successor_budget_types": {
+        "header_prefix_reads": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE"
+      },
+      "repair_action": "ADDED_BY_SETTLED_O1_C07_LAW",
+      "note": "Not named as a separate C4B account. Required by the settled O1-C07 mandatory-separate-account list, or by a per-source frozen value."
+    },
+    {
+      "source_key": "SRC06",
+      "c4b_account": null,
+      "c4b_requirement_token": null,
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "byte_counts_where_measurable"
+      ],
+      "successor_budget_types": {
+        "byte_counts_where_measurable": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE"
+      },
+      "repair_action": "ADDED_BY_SETTLED_O1_C07_LAW",
+      "note": "Not named as a separate C4B account. Required by the settled O1-C07 mandatory-separate-account list, or by a per-source frozen value."
+    },
+    {
+      "source_key": "SRC08",
+      "c4b_account": "full_file_sha256_passes",
+      "c4b_requirement_token": "REQUIRED_EXACT_COUNT",
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "full_file_sha256_passes"
+      ],
+      "successor_budget_types": {
+        "full_file_sha256_passes": "FLOOR"
+      },
+      "repair_action": "RESTORED",
+      "note": null
+    },
+    {
+      "source_key": "SRC08",
+      "c4b_account": "path_opens",
+      "c4b_requirement_token": "REQUIRED_EXACT_COUNT_AND_BASIS",
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "path_level_opens"
+      ],
+      "successor_budget_types": {
+        "path_level_opens": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE"
+      },
+      "repair_action": "RESTORED",
+      "note": null
+    },
+    {
+      "source_key": "SRC08",
+      "c4b_account": "decoder_invocations",
+      "c4b_requirement_token": "REQUIRED_EXACT_COUNT",
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "decoder_invocations"
+      ],
+      "successor_budget_types": {
+        "decoder_invocations": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE"
+      },
+      "repair_action": "RESTORED",
+      "note": null
+    },
+    {
+      "source_key": "SRC08",
+      "c4b_account": "metadata_header_reads",
+      "c4b_requirement_token": "REQUIRED_EXACT_COUNT",
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "metadata_reads",
+        "header_prefix_reads"
+      ],
+      "successor_budget_types": {
+        "metadata_reads": "EXACT",
+        "header_prefix_reads": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE"
+      },
+      "repair_action": "RESTORED_AND_SPLIT",
+      "note": "SPLIT_BY_SETTLED_O1_C07_LAW: C4B carried one combined 'metadata_header_reads' account. The settled law names 'metadata reads' and 'header-prefix reads' as separate mandatory accounts, so the combined term was split rather than restated."
+    },
+    {
+      "source_key": "SRC08",
+      "c4b_account": "selected_reads",
+      "c4b_requirement_token": "REQUIRED_EXACT_COUNT_AND_CONFIG",
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "selected_column_reads"
+      ],
+      "successor_budget_types": {
+        "selected_column_reads": "EXACT"
+      },
+      "repair_action": "RESTORED",
+      "note": null
+    },
+    {
+      "source_key": "SRC08",
+      "c4b_account": "full_reads",
+      "c4b_requirement_token": "REQUIRED_EXACT_COUNT_AND_CONFIG",
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "full_reads"
+      ],
+      "successor_budget_types": {
+        "full_reads": "EXACT"
+      },
+      "repair_action": "RESTORED",
+      "note": null
+    },
+    {
+      "source_key": "SRC08",
+      "c4b_account": "retries",
+      "c4b_requirement_token": "REQUIRED_EXACT_COUNT_AND_REASON",
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "retries"
+      ],
+      "successor_budget_types": {
+        "retries": "ZERO"
+      },
+      "repair_action": "RESTORED",
+      "note": null
+    },
+    {
+      "source_key": "SRC08",
+      "c4b_account": null,
+      "c4b_requirement_token": null,
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "source_path_existence_access_checks"
+      ],
+      "successor_budget_types": {
+        "source_path_existence_access_checks": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE"
+      },
+      "repair_action": "ADDED_BY_SETTLED_O1_C07_LAW",
+      "note": "Not named as a separate C4B account. Required by the settled O1-C07 mandatory-separate-account list, or by a per-source frozen value."
+    },
+    {
+      "source_key": "SRC08",
+      "c4b_account": null,
+      "c4b_requirement_token": null,
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "header_prefix_reads"
+      ],
+      "successor_budget_types": {
+        "header_prefix_reads": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE"
+      },
+      "repair_action": "ADDED_BY_SETTLED_O1_C07_LAW",
+      "note": "Not named as a separate C4B account. Required by the settled O1-C07 mandatory-separate-account list, or by a per-source frozen value."
+    },
+    {
+      "source_key": "SRC08",
+      "c4b_account": null,
+      "c4b_requirement_token": null,
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "byte_counts_where_measurable"
+      ],
+      "successor_budget_types": {
+        "byte_counts_where_measurable": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE"
+      },
+      "repair_action": "ADDED_BY_SETTLED_O1_C07_LAW",
+      "note": "Not named as a separate C4B account. Required by the settled O1-C07 mandatory-separate-account list, or by a per-source frozen value."
+    },
+    {
+      "source_key": "SRC08",
+      "c4b_account": null,
+      "c4b_requirement_token": null,
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "row_data_reads"
+      ],
+      "successor_budget_types": {
+        "row_data_reads": "ZERO"
+      },
+      "repair_action": "ADDED_BY_SETTLED_O1_C07_LAW",
+      "note": "Not named as a separate C4B account. Required by the settled O1-C07 mandatory-separate-account list, or by a per-source frozen value."
+    },
+    {
+      "source_key": "SRC08",
+      "c4b_account": null,
+      "c4b_requirement_token": null,
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "selected_columns"
+      ],
+      "successor_budget_types": {
+        "selected_columns": "ZERO"
+      },
+      "repair_action": "ADDED_BY_SETTLED_O1_C07_LAW",
+      "note": "Not named as a separate C4B account. Required by the settled O1-C07 mandatory-separate-account list, or by a per-source frozen value."
+    },
+    {
+      "source_key": "SRC12",
+      "c4b_account": "full_file_sha256_passes",
+      "c4b_requirement_token": "REQUIRED_EXACT_COUNT",
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "full_file_sha256_passes"
+      ],
+      "successor_budget_types": {
+        "full_file_sha256_passes": "FLOOR"
+      },
+      "repair_action": "RESTORED",
+      "note": null
+    },
+    {
+      "source_key": "SRC12",
+      "c4b_account": "path_opens",
+      "c4b_requirement_token": "REQUIRED_EXACT_COUNT_AND_BASIS",
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "path_level_opens"
+      ],
+      "successor_budget_types": {
+        "path_level_opens": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE"
+      },
+      "repair_action": "RESTORED",
+      "note": null
+    },
+    {
+      "source_key": "SRC12",
+      "c4b_account": "decoder_invocations",
+      "c4b_requirement_token": "REQUIRED_EXACT_COUNT",
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "decoder_invocations"
+      ],
+      "successor_budget_types": {
+        "decoder_invocations": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE"
+      },
+      "repair_action": "RESTORED",
+      "note": null
+    },
+    {
+      "source_key": "SRC12",
+      "c4b_account": "metadata_header_reads",
+      "c4b_requirement_token": "REQUIRED_EXACT_COUNT",
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "metadata_reads",
+        "header_prefix_reads"
+      ],
+      "successor_budget_types": {
+        "metadata_reads": "EXACT",
+        "header_prefix_reads": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE"
+      },
+      "repair_action": "RESTORED_AND_SPLIT",
+      "note": "SPLIT_BY_SETTLED_O1_C07_LAW: C4B carried one combined 'metadata_header_reads' account. The settled law names 'metadata reads' and 'header-prefix reads' as separate mandatory accounts, so the combined term was split rather than restated."
+    },
+    {
+      "source_key": "SRC12",
+      "c4b_account": "selected_reads",
+      "c4b_requirement_token": "REQUIRED_EXACT_COUNT_AND_CONFIG",
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "selected_column_reads"
+      ],
+      "successor_budget_types": {
+        "selected_column_reads": "EXACT"
+      },
+      "repair_action": "RESTORED",
+      "note": null
+    },
+    {
+      "source_key": "SRC12",
+      "c4b_account": "full_reads",
+      "c4b_requirement_token": "REQUIRED_EXACT_COUNT_AND_CONFIG",
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "full_reads"
+      ],
+      "successor_budget_types": {
+        "full_reads": "EXACT"
+      },
+      "repair_action": "RESTORED",
+      "note": null
+    },
+    {
+      "source_key": "SRC12",
+      "c4b_account": "retries",
+      "c4b_requirement_token": "REQUIRED_EXACT_COUNT_AND_REASON",
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "retries"
+      ],
+      "successor_budget_types": {
+        "retries": "ZERO"
+      },
+      "repair_action": "RESTORED",
+      "note": null
+    },
+    {
+      "source_key": "SRC12",
+      "c4b_account": null,
+      "c4b_requirement_token": null,
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "source_path_existence_access_checks"
+      ],
+      "successor_budget_types": {
+        "source_path_existence_access_checks": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE"
+      },
+      "repair_action": "ADDED_BY_SETTLED_O1_C07_LAW",
+      "note": "Not named as a separate C4B account. Required by the settled O1-C07 mandatory-separate-account list, or by a per-source frozen value."
+    },
+    {
+      "source_key": "SRC12",
+      "c4b_account": null,
+      "c4b_requirement_token": null,
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "header_prefix_reads"
+      ],
+      "successor_budget_types": {
+        "header_prefix_reads": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE"
+      },
+      "repair_action": "ADDED_BY_SETTLED_O1_C07_LAW",
+      "note": "Not named as a separate C4B account. Required by the settled O1-C07 mandatory-separate-account list, or by a per-source frozen value."
+    },
+    {
+      "source_key": "SRC12",
+      "c4b_account": null,
+      "c4b_requirement_token": null,
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "byte_counts_where_measurable"
+      ],
+      "successor_budget_types": {
+        "byte_counts_where_measurable": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE"
+      },
+      "repair_action": "ADDED_BY_SETTLED_O1_C07_LAW",
+      "note": "Not named as a separate C4B account. Required by the settled O1-C07 mandatory-separate-account list, or by a per-source frozen value."
+    },
+    {
+      "source_key": "SRC12",
+      "c4b_account": null,
+      "c4b_requirement_token": null,
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "row_data_reads"
+      ],
+      "successor_budget_types": {
+        "row_data_reads": "ZERO"
+      },
+      "repair_action": "ADDED_BY_SETTLED_O1_C07_LAW",
+      "note": "Not named as a separate C4B account. Required by the settled O1-C07 mandatory-separate-account list, or by a per-source frozen value."
+    },
+    {
+      "source_key": "SRC12",
+      "c4b_account": null,
+      "c4b_requirement_token": null,
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "selected_columns"
+      ],
+      "successor_budget_types": {
+        "selected_columns": "ZERO"
+      },
+      "repair_action": "ADDED_BY_SETTLED_O1_C07_LAW",
+      "note": "Not named as a separate C4B account. Required by the settled O1-C07 mandatory-separate-account list, or by a per-source frozen value."
+    },
+    {
+      "source_key": "SRC14",
+      "c4b_account": "full_file_sha256_passes",
+      "c4b_requirement_token": "REQUIRED_EXACT_COUNT",
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "full_file_sha256_passes"
+      ],
+      "successor_budget_types": {
+        "full_file_sha256_passes": "FLOOR"
+      },
+      "repair_action": "RESTORED",
+      "note": null
+    },
+    {
+      "source_key": "SRC14",
+      "c4b_account": "path_opens",
+      "c4b_requirement_token": "REQUIRED_EXACT_COUNT_AND_BASIS",
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "path_level_opens"
+      ],
+      "successor_budget_types": {
+        "path_level_opens": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE"
+      },
+      "repair_action": "RESTORED",
+      "note": null
+    },
+    {
+      "source_key": "SRC14",
+      "c4b_account": "decoder_invocations",
+      "c4b_requirement_token": "REQUIRED_EXACT_COUNT",
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "decoder_invocations"
+      ],
+      "successor_budget_types": {
+        "decoder_invocations": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE"
+      },
+      "repair_action": "RESTORED",
+      "note": null
+    },
+    {
+      "source_key": "SRC14",
+      "c4b_account": "metadata_header_reads",
+      "c4b_requirement_token": "REQUIRED_EXACT_COUNT",
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "metadata_reads",
+        "header_prefix_reads"
+      ],
+      "successor_budget_types": {
+        "metadata_reads": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+        "header_prefix_reads": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE"
+      },
+      "repair_action": "RESTORED_AND_SPLIT",
+      "note": "SPLIT_BY_SETTLED_O1_C07_LAW: C4B carried one combined 'metadata_header_reads' account. The settled law names 'metadata reads' and 'header-prefix reads' as separate mandatory accounts, so the combined term was split rather than restated."
+    },
+    {
+      "source_key": "SRC14",
+      "c4b_account": "selected_reads",
+      "c4b_requirement_token": "REQUIRED_EXACT_COUNT_AND_CONFIG",
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "selected_column_reads"
+      ],
+      "successor_budget_types": {
+        "selected_column_reads": "EXACT"
+      },
+      "repair_action": "RESTORED",
+      "note": null
+    },
+    {
+      "source_key": "SRC14",
+      "c4b_account": "full_reads",
+      "c4b_requirement_token": "REQUIRED_EXACT_COUNT_AND_CONFIG",
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "full_reads"
+      ],
+      "successor_budget_types": {
+        "full_reads": "EXACT"
+      },
+      "repair_action": "RESTORED",
+      "note": null
+    },
+    {
+      "source_key": "SRC14",
+      "c4b_account": "retries",
+      "c4b_requirement_token": "REQUIRED_EXACT_COUNT_AND_REASON",
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "retries"
+      ],
+      "successor_budget_types": {
+        "retries": "ZERO"
+      },
+      "repair_action": "RESTORED",
+      "note": null
+    },
+    {
+      "source_key": "SRC14",
+      "c4b_account": null,
+      "c4b_requirement_token": null,
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "source_path_existence_access_checks"
+      ],
+      "successor_budget_types": {
+        "source_path_existence_access_checks": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE"
+      },
+      "repair_action": "ADDED_BY_SETTLED_O1_C07_LAW",
+      "note": "Not named as a separate C4B account. Required by the settled O1-C07 mandatory-separate-account list, or by a per-source frozen value."
+    },
+    {
+      "source_key": "SRC14",
+      "c4b_account": null,
+      "c4b_requirement_token": null,
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "header_prefix_reads"
+      ],
+      "successor_budget_types": {
+        "header_prefix_reads": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE"
+      },
+      "repair_action": "ADDED_BY_SETTLED_O1_C07_LAW",
+      "note": "Not named as a separate C4B account. Required by the settled O1-C07 mandatory-separate-account list, or by a per-source frozen value."
+    },
+    {
+      "source_key": "SRC14",
+      "c4b_account": null,
+      "c4b_requirement_token": null,
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "byte_counts_where_measurable"
+      ],
+      "successor_budget_types": {
+        "byte_counts_where_measurable": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE"
+      },
+      "repair_action": "ADDED_BY_SETTLED_O1_C07_LAW",
+      "note": "Not named as a separate C4B account. Required by the settled O1-C07 mandatory-separate-account list, or by a per-source frozen value."
+    },
+    {
+      "source_key": "SRC26",
+      "c4b_account": "full_file_sha256_passes",
+      "c4b_requirement_token": "REQUIRED_EXACT_COUNT",
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "full_file_sha256_passes"
+      ],
+      "successor_budget_types": {
+        "full_file_sha256_passes": "FLOOR"
+      },
+      "repair_action": "RESTORED",
+      "note": null
+    },
+    {
+      "source_key": "SRC26",
+      "c4b_account": "path_opens",
+      "c4b_requirement_token": "REQUIRED_EXACT_COUNT_AND_BASIS",
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "path_level_opens"
+      ],
+      "successor_budget_types": {
+        "path_level_opens": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE"
+      },
+      "repair_action": "RESTORED",
+      "note": null
+    },
+    {
+      "source_key": "SRC26",
+      "c4b_account": "decoder_invocations",
+      "c4b_requirement_token": "REQUIRED_EXACT_COUNT",
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "decoder_invocations"
+      ],
+      "successor_budget_types": {
+        "decoder_invocations": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE"
+      },
+      "repair_action": "RESTORED",
+      "note": null
+    },
+    {
+      "source_key": "SRC26",
+      "c4b_account": "metadata_header_reads",
+      "c4b_requirement_token": "REQUIRED_EXACT_COUNT",
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "metadata_reads",
+        "header_prefix_reads"
+      ],
+      "successor_budget_types": {
+        "metadata_reads": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+        "header_prefix_reads": "FLOOR"
+      },
+      "repair_action": "RESTORED_AND_SPLIT",
+      "note": "SPLIT_BY_SETTLED_O1_C07_LAW: C4B carried one combined 'metadata_header_reads' account. The settled law names 'metadata reads' and 'header-prefix reads' as separate mandatory accounts, so the combined term was split rather than restated."
+    },
+    {
+      "source_key": "SRC26",
+      "c4b_account": "selected_reads",
+      "c4b_requirement_token": "REQUIRED_EXACT_COUNT_AND_CONFIG",
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "selected_column_reads"
+      ],
+      "successor_budget_types": {
+        "selected_column_reads": "EXACT"
+      },
+      "repair_action": "RESTORED",
+      "note": null
+    },
+    {
+      "source_key": "SRC26",
+      "c4b_account": "full_reads",
+      "c4b_requirement_token": "REQUIRED_EXACT_COUNT_AND_CONFIG",
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "full_reads"
+      ],
+      "successor_budget_types": {
+        "full_reads": "EXACT"
+      },
+      "repair_action": "RESTORED",
+      "note": null
+    },
+    {
+      "source_key": "SRC26",
+      "c4b_account": "retries",
+      "c4b_requirement_token": "REQUIRED_EXACT_COUNT_AND_REASON",
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "retries"
+      ],
+      "successor_budget_types": {
+        "retries": "ZERO"
+      },
+      "repair_action": "RESTORED",
+      "note": null
+    },
+    {
+      "source_key": "SRC26",
+      "c4b_account": null,
+      "c4b_requirement_token": null,
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "source_path_existence_access_checks"
+      ],
+      "successor_budget_types": {
+        "source_path_existence_access_checks": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE"
+      },
+      "repair_action": "ADDED_BY_SETTLED_O1_C07_LAW",
+      "note": "Not named as a separate C4B account. Required by the settled O1-C07 mandatory-separate-account list, or by a per-source frozen value."
+    },
+    {
+      "source_key": "SRC26",
+      "c4b_account": null,
+      "c4b_requirement_token": null,
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "header_prefix_reads"
+      ],
+      "successor_budget_types": {
+        "header_prefix_reads": "FLOOR"
+      },
+      "repair_action": "ADDED_BY_SETTLED_O1_C07_LAW",
+      "note": "Not named as a separate C4B account. Required by the settled O1-C07 mandatory-separate-account list, or by a per-source frozen value."
+    },
+    {
+      "source_key": "SRC26",
+      "c4b_account": null,
+      "c4b_requirement_token": null,
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "header_prefix_bytes"
+      ],
+      "successor_budget_types": {
+        "header_prefix_bytes": "EXACT"
+      },
+      "repair_action": "ADDED_BY_SETTLED_O1_C07_LAW",
+      "note": "Not named as a separate C4B account. Required by the settled O1-C07 mandatory-separate-account list, or by a per-source frozen value."
+    },
+    {
+      "source_key": "SRC26",
+      "c4b_account": null,
+      "c4b_requirement_token": null,
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "raw_nominal_case_size"
+      ],
+      "successor_budget_types": {
+        "raw_nominal_case_size": "EXACT"
+      },
+      "repair_action": "ADDED_BY_SETTLED_O1_C07_LAW",
+      "note": "Not named as a separate C4B account. Required by the settled O1-C07 mandatory-separate-account list, or by a per-source frozen value."
+    },
+    {
+      "source_key": "SRC26",
+      "c4b_account": null,
+      "c4b_requirement_token": null,
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "decoded_dictionary_data_width"
+      ],
+      "successor_budget_types": {
+        "decoded_dictionary_data_width": "EXACT"
+      },
+      "repair_action": "ADDED_BY_SETTLED_O1_C07_LAW",
+      "note": "Not named as a separate C4B account. Required by the settled O1-C07 mandatory-separate-account list, or by a per-source frozen value."
+    },
+    {
+      "source_key": "SRC26",
+      "c4b_account": null,
+      "c4b_requirement_token": null,
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "byte_counts_where_measurable"
+      ],
+      "successor_budget_types": {
+        "byte_counts_where_measurable": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE"
+      },
+      "repair_action": "ADDED_BY_SETTLED_O1_C07_LAW",
+      "note": "Not named as a separate C4B account. Required by the settled O1-C07 mandatory-separate-account list, or by a per-source frozen value."
+    },
+    {
+      "source_key": "SRC27",
+      "c4b_account": "full_file_sha256_passes",
+      "c4b_requirement_token": "REQUIRED_EXACT_COUNT",
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "full_file_sha256_passes"
+      ],
+      "successor_budget_types": {
+        "full_file_sha256_passes": "FLOOR"
+      },
+      "repair_action": "RESTORED",
+      "note": null
+    },
+    {
+      "source_key": "SRC27",
+      "c4b_account": "path_opens",
+      "c4b_requirement_token": "REQUIRED_EXACT_COUNT_AND_BASIS",
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "path_level_opens"
+      ],
+      "successor_budget_types": {
+        "path_level_opens": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE"
+      },
+      "repair_action": "RESTORED",
+      "note": null
+    },
+    {
+      "source_key": "SRC27",
+      "c4b_account": "decoder_invocations",
+      "c4b_requirement_token": "REQUIRED_EXACT_COUNT",
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "decoder_invocations"
+      ],
+      "successor_budget_types": {
+        "decoder_invocations": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE"
+      },
+      "repair_action": "RESTORED",
+      "note": null
+    },
+    {
+      "source_key": "SRC27",
+      "c4b_account": "metadata_header_reads",
+      "c4b_requirement_token": "REQUIRED_EXACT_COUNT",
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "metadata_reads",
+        "header_prefix_reads"
+      ],
+      "successor_budget_types": {
+        "metadata_reads": "FLOOR",
+        "header_prefix_reads": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE"
+      },
+      "repair_action": "RESTORED_AND_SPLIT",
+      "note": "SPLIT_BY_SETTLED_O1_C07_LAW: C4B carried one combined 'metadata_header_reads' account. The settled law names 'metadata reads' and 'header-prefix reads' as separate mandatory accounts, so the combined term was split rather than restated."
+    },
+    {
+      "source_key": "SRC27",
+      "c4b_account": "selected_reads",
+      "c4b_requirement_token": "REQUIRED_EXACT_COUNT_AND_CONFIG",
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "selected_column_reads"
+      ],
+      "successor_budget_types": {
+        "selected_column_reads": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE"
+      },
+      "repair_action": "RESTORED",
+      "note": null
+    },
+    {
+      "source_key": "SRC27",
+      "c4b_account": "full_reads",
+      "c4b_requirement_token": "REQUIRED_EXACT_COUNT_AND_CONFIG",
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "full_reads"
+      ],
+      "successor_budget_types": {
+        "full_reads": "FLOOR"
+      },
+      "repair_action": "RESTORED",
+      "note": null
+    },
+    {
+      "source_key": "SRC27",
+      "c4b_account": "retries",
+      "c4b_requirement_token": "REQUIRED_EXACT_COUNT_AND_REASON",
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "retries"
+      ],
+      "successor_budget_types": {
+        "retries": "ZERO"
+      },
+      "repair_action": "RESTORED",
+      "note": null
+    },
+    {
+      "source_key": "SRC27",
+      "c4b_account": null,
+      "c4b_requirement_token": null,
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "governed_full_route_passes"
+      ],
+      "successor_budget_types": {
+        "governed_full_route_passes": "EXACT"
+      },
+      "repair_action": "ADDED_BY_SETTLED_O1_C07_LAW",
+      "note": "Not named as a separate C4B account. Required by the settled O1-C07 mandatory-separate-account list, or by a per-source frozen value."
+    },
+    {
+      "source_key": "SRC27",
+      "c4b_account": null,
+      "c4b_requirement_token": null,
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "source_path_existence_access_checks"
+      ],
+      "successor_budget_types": {
+        "source_path_existence_access_checks": "FLOOR"
+      },
+      "repair_action": "ADDED_BY_SETTLED_O1_C07_LAW",
+      "note": "Not named as a separate C4B account. Required by the settled O1-C07 mandatory-separate-account list, or by a per-source frozen value."
+    },
+    {
+      "source_key": "SRC27",
+      "c4b_account": null,
+      "c4b_requirement_token": null,
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "header_prefix_reads"
+      ],
+      "successor_budget_types": {
+        "header_prefix_reads": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE"
+      },
+      "repair_action": "ADDED_BY_SETTLED_O1_C07_LAW",
+      "note": "Not named as a separate C4B account. Required by the settled O1-C07 mandatory-separate-account list, or by a per-source frozen value."
+    },
+    {
+      "source_key": "SRC27",
+      "c4b_account": null,
+      "c4b_requirement_token": null,
+      "c4_candidate_state": "DROPPED__DQ01",
+      "successor_accounts": [
+        "byte_counts_where_measurable"
+      ],
+      "successor_budget_types": {
+        "byte_counts_where_measurable": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE"
+      },
+      "repair_action": "ADDED_BY_SETTLED_O1_C07_LAW",
+      "note": "Not named as a separate C4B account. Required by the settled O1-C07 mandatory-separate-account list, or by a per-source frozen value."
+    }
+  ]
+}

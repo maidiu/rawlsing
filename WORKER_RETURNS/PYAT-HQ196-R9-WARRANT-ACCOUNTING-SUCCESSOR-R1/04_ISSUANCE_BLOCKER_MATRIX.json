@@ -1,0 +1,82 @@
+{
+  "schema": "PYAT_HQ196_ISSUANCE_BLOCKER_MATRIX@1.0.0",
+  "statement": "This lane cannot close R9 and cannot issue the warrant. Every blocker below remains OPEN.",
+  "carried_from_c4_candidate": [
+    {
+      "blocker": "SOURCE_LOCATOR_FILL_REQUIRED_BEFORE_WARRANT_ISSUANCE (seven slots unfilled)",
+      "status": "OPEN",
+      "still_open": true
+    },
+    {
+      "blocker": "HQ approval UNSET",
+      "status": "OPEN",
+      "still_open": true
+    },
+    {
+      "blocker": "required user/resource owner approval UNSET",
+      "status": "OPEN",
+      "still_open": true
+    },
+    {
+      "blocker": "warrant unsigned",
+      "status": "OPEN",
+      "still_open": true
+    },
+    {
+      "blocker": "independent integration review of the freeze not yet completed",
+      "status": "OPEN",
+      "still_open": true
+    }
+  ],
+  "documentary_blockers": [
+    {
+      "id": "DQ-01",
+      "status": "REPAIRED_IN_THIS_LANE",
+      "statement": "C4 candidate dropped C4B's per-source source_access_accounting block.",
+      "resolution": "Restored for all seven fresh-read sources, under the settled two-stage O1-C07 law.",
+      "note": "Restoring the fields does NOT close any technical account and authorizes nothing."
+    }
+  ],
+  "technical_blockers_still_open": [
+    {
+      "id": "R9-SEL-03",
+      "token": "R9-SEL-03_CANDIDATE_IMPLEMENTATION_GAP__HOSTILE_REVIEW_REQUIRED",
+      "status": "OPEN",
+      "statement": "The frozen selected_reads=1 budgets for SRC02/SRC06/SRC14 have no implementation owner; the bound reader exposes no usecols argument.",
+      "effect": "Budgets remain bound EXACT at 1 and are NOT relaxed. The missing owner is a blocker, not grounds to change the budget.",
+      "accounts_affected": [
+        "SRC02/selected_column_reads",
+        "SRC06/selected_column_reads",
+        "SRC14/selected_column_reads",
+        "SRC27/selected_column_reads"
+      ]
+    },
+    {
+      "id": "R9-BROKER-ACCEPT",
+      "token": "PENDING_HQ196_BROKER_SELECTED_IMPLEMENTATION_ACCEPTANCE",
+      "status": "OPEN",
+      "statement": "Path-open, existence-check, decoder-invocation and byte accounts await broker implementation acceptance.",
+      "effect": "Typed UNBOUND_PENDING_TECHNICAL_ACCEPTANCE. Not null, not invented.",
+      "pending_account_count": 38
+    }
+  ],
+  "counts": {
+    "accounts_awaiting_a_bound_value": 38,
+    "instrument_invariants_passing": 23,
+    "instrument_invariants_failing": 0
+  },
+  "issuance_gate": {
+    "may_this_lane_issue": false,
+    "may_this_lane_authorize_access": false,
+    "may_this_lane_close_R9": false,
+    "required_before_issuance": [
+      "All seven access locators filled by HQ or the accountable resource owner. No search was performed here.",
+      "HQ approval recorded.",
+      "Required user/resource-owner approval recorded.",
+      "Instrument signed.",
+      "R9-SEL-03 closed: a selected-reader implementation exists that performs the frozen operation.",
+      "R9-BROKER-ACCEPT closed: path-open, decoder and byte accounts carry accepted numeric budgets.",
+      "Independent integration review of the freeze completed."
+    ]
+  }
+}

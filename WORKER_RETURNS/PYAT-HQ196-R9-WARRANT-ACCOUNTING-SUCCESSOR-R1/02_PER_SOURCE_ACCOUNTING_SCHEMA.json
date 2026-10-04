@@ -1,0 +1,199 @@
+{
+  "schema": "PYAT_HQ196_PER_SOURCE_ACCOUNTING_SCHEMA@1.0.0",
+  "settled_law": {
+    "two_stage": {
+      "stage_1_pre_launch_FROZEN": [
+        "expected_pre_launch_budget",
+        "measurement_basis",
+        "stop_condition",
+        "provenance"
+      ],
+      "stage_2_during_run_MEASURED_RETAINED_ON_RETURN": [
+        "runtime_observed_exact_count"
+      ],
+      "never_merged": true,
+      "why": "REQUIRED_EXACT_COUNT means the budget must be exact BEFORE launch. It does NOT mean the observed number must already have been observed before launch."
+    },
+    "non_substitutability": "Literal path opens, reader invocations and decoder invocations are separately named, non-substitutable quantities. A higher-level proxy may not be renamed path_opens."
+  },
+  "account_object_shape": {
+    "account_name": "string \u2014 stable account identifier",
+    "layer": "string \u2014 the layer at which the quantity is counted",
+    "expected_pre_launch_budget": {
+      "budget_type": "EXACT | MAX | ZERO | FLOOR | UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+      "budget_value": "integer, or null ONLY when budget_type is UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+      "budget_expression": "string, used when the authority states the budget in words",
+      "frozen_before_launch": "always true",
+      "may_be_null": "always false \u2014 the budget object itself is never null or absent"
+    },
+    "measurement_basis": {
+      "what_measured": "required \u2014 what quantity is being counted",
+      "layer": "required \u2014 at which layer",
+      "mechanism": "required \u2014 by what mechanism, or PENDING: <owner to be established>",
+      "point_in_run": "required \u2014 at what point in the run"
+    },
+    "runtime_observed_exact_count": {
+      "value": "integer, or null before execution",
+      "status": "NOT_EXECUTED | OBSERVED",
+      "typed_reason": "required whenever value is null",
+      "null_permitted_by_law": "true \u2014 return metric only",
+      "must_not_be_read_as": "a zero, an empty result, or a PASS"
+    },
+    "stop_condition_if_exceeded": "required",
+    "provenance": "required \u2014 list of exact artifact@commit:json.path citations",
+    "pending_dependency": "optional \u2014 typed token when the value awaits technical acceptance"
+  },
+  "budget_type_vocabulary": {
+    "EXACT": {
+      "meaning": "Authority froze a specific count. The observed count must equal it.",
+      "example": "SRC02 selected_column_reads = 1"
+    },
+    "MAX": {
+      "meaning": "Authority froze a ceiling. The observed count may be lower but never higher.",
+      "example": "SRC27 governed_full_route_passes max = 1"
+    },
+    "ZERO": {
+      "meaning": "Hard zero. A single non-zero observation is a STOP condition, not a reportable variance.",
+      "example": "retries = 0 for all seven sources"
+    },
+    "FLOOR": {
+      "meaning": "Authority froze a minimum that must be reached. It is NOT a ceiling and MUST NOT be promoted to one.",
+      "example": "SRC27 metadata_reads floor = 1, from the 'at minimum' wording of the hardened note",
+      "promotion_prohibited": true
+    },
+    "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE": {
+      "meaning": "Authority named the account as mandatory but supplied no number. The value awaits technical acceptance. This is a TYPED BUDGET STATE, not a null, and it waives nothing.",
+      "non_waiving": true,
+      "example": "path_level_opens on the six non-SRC27 sources"
+    }
+  },
+  "typed_null_law": {
+    "return_metric": {
+      "permitted": true,
+      "requires_typed_reason": true,
+      "citation": "07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.O1_C08_failure_law.unreached_stage_or_metric_reporting",
+      "never_a_fabricated_zero": true,
+      "never_a_fabricated_pass": true
+    },
+    "pre_launch_budget": {
+      "permitted": false,
+      "unsupplied_must_be_typed_as": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+      "absence_prohibited": true,
+      "rationale": "A null or absent pre-launch budget would silently waive a mandatory launch prerequisite."
+    },
+    "machine_readable_rule": {
+      "return_metric_null_permitted": true,
+      "return_metric_null_requires_typed_reason": true,
+      "pre_launch_budget_null_permitted": false,
+      "pre_launch_budget_unsupplied_representation": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+      "pre_launch_budget_absent_representation_prohibited": true,
+      "rationale": "An absent or null pre-launch budget would silently waive a launch prerequisite. An UNBOUND_PENDING_TECHNICAL_ACCEPTANCE budget is an explicit, non-waiving blocker."
+    }
+  },
+  "mandatory_separate_accounts": [
+    "source-path existence/access checks",
+    "file hash passes (full SHA-256 over the file)",
+    "path-level opens",
+    "metadata reads",
+    "header-prefix reads",
+    "decoder invocations",
+    "selected-column reads",
+    "full reads",
+    "byte counts where measurable",
+    "retries"
+  ],
+  "accounts_present_per_source": {
+    "SRC02": [
+      "source_path_existence_access_checks",
+      "full_file_sha256_passes",
+      "path_level_opens",
+      "metadata_reads",
+      "header_prefix_reads",
+      "decoder_invocations",
+      "selected_column_reads",
+      "full_reads",
+      "byte_counts_where_measurable",
+      "retries"
+    ],
+    "SRC06": [
+      "source_path_existence_access_checks",
+      "full_file_sha256_passes",
+      "path_level_opens",
+      "metadata_reads",
+      "header_prefix_reads",
+      "decoder_invocations",
+      "selected_column_reads",
+      "full_reads",
+      "byte_counts_where_measurable",
+      "retries"
+    ],
+    "SRC08": [
+      "source_path_existence_access_checks",
+      "full_file_sha256_passes",
+      "path_level_opens",
+      "metadata_reads",
+      "header_prefix_reads",
+      "decoder_invocations",
+      "selected_column_reads",
+      "full_reads",
+      "byte_counts_where_measurable",
+      "retries",
+      "row_data_reads",
+      "selected_columns"
+    ],
+    "SRC12": [
+      "source_path_existence_access_checks",
+      "full_file_sha256_passes",
+      "path_level_opens",
+      "metadata_reads",
+      "header_prefix_reads",
+      "decoder_invocations",
+      "selected_column_reads",
+      "full_reads",
+      "byte_counts_where_measurable",
+      "retries",
+      "row_data_reads",
+      "selected_columns"
+    ],
+    "SRC14": [
+      "source_path_existence_access_checks",
+      "full_file_sha256_passes",
+      "path_level_opens",
+      "metadata_reads",
+      "header_prefix_reads",
+      "decoder_invocations",
+      "selected_column_reads",
+      "full_reads",
+      "byte_counts_where_measurable",
+      "retries"
+    ],
+    "SRC26": [
+      "source_path_existence_access_checks",
+      "full_file_sha256_passes",
+      "path_level_opens",
+      "metadata_reads",
+      "header_prefix_reads",
+      "header_prefix_bytes",
+      "raw_nominal_case_size",
+      "decoded_dictionary_data_width",
+      "decoder_invocations",
+      "selected_column_reads",
+      "full_reads",
+      "byte_counts_where_measurable",
+      "retries"
+    ],
+    "SRC27": [
+      "governed_full_route_passes",
+      "source_path_existence_access_checks",
+      "full_file_sha256_passes",
+      "metadata_reads",
+      "full_reads",
+      "path_level_opens",
+      "selected_column_reads",
+      "header_prefix_reads",
+      "decoder_invocations",
+      "byte_counts_where_measurable",
+      "retries"
+    ]
+  }
+}

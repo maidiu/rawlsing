@@ -1,0 +1,116 @@
+{
+  "schema": "PYAT_HQ196_FINAL_DISPOSITION@1.0.0",
+  "lane": "PYAT-HQ196-R9-WARRANT-ACCOUNTING-SUCCESSOR-R1",
+  "documentary_base": "d43756fb3c80645ac887cca90026ecbdb10dd18c",
+  "startup_sha": "3e215413ead20bf62dd836f68eb22639ec873868",
+  "checkout_mode": "SPARSE_REQUIRED__SUFFICIENT__NO_FULL_MATERIALISATION",
+  "disposition": "WARRANT_ACCOUNTING_SUCCESSOR_STRUCTURE_READY__TECHNICAL_VALUES_PENDING",
+  "allowed_dispositions_considered": [
+    {
+      "value": "WARRANT_ACCOUNTING_SUCCESSOR_STRUCTURE_READY__TECHNICAL_VALUES_PENDING",
+      "selected": true,
+      "why": "The DQ-01 repair is complete and every structural law is satisfied, but 38 of 78 accounts carry no authority-supplied number and remain typed UNBOUND_PENDING_TECHNICAL_ACCEPTANCE. Those are technical values awaiting the broker and selected-reader implementation acceptances. The structure is ready; the values are not. Selecting the unqualified 'ready for independent review' would imply the technical values are settled, which they are not."
+    },
+    {
+      "value": "WARRANT_SUCCESSOR_READY_FOR_INDEPENDENT_REVIEW",
+      "rejected_because": "Would assert the instrument is ready for review as a complete successor. It is not: 38 accounts are unbound, R9-SEL-03 has no implementation owner for the frozen selected-read budgets, and all seven locators remain unfilled. This disposition is arguably also true, but it understates the pending state, so the more specific disposition was chosen."
+    },
+    {
+      "value": "MATERIAL_AUTHORITY_CONFLICT_FOUND",
+      "rejected_because": "No conflict was found. Every value bound traces to an exact artifact@commit:json.path citation. Two apparent tensions were examined and resolved without conflict: (a) SRC26 carries 176 header-prefix bytes alongside 174/332 geometry - these are three distinct accounts, not a contradiction; (b) SRC27's 'exactly one pass' sits beside lower-layer minimums - a workload constraint and access floors are different account classes, and the frozen law says so explicitly."
+    },
+    {
+      "value": "STRUCTURE_CANNOT_REPRESENT_SETTLED_O1_C07_LAW",
+      "rejected_because": "The structure represents it. The two-stage separation, the ten mandatory separate accounts, non-substitutability of path opens vs reader vs decoder invocations, the measurement-basis requirement and the typed-null discipline are all representable and are represented, as 23 asserted invariants confirm."
+    }
+  ],
+  "dq01_status": {
+    "defect": "The C4 warrant candidate dropped C4B's per-source source_access_accounting block.",
+    "verified_empirically": "Read from the exact git objects: the block is present for all seven sources in the C4B template at c2af4f61d and absent from all seven per_source entries in the C4 candidate at 8ff40d37d.",
+    "repaired": true,
+    "accounts_restored": 78,
+    "crosswalk_rows": 78,
+    "repair_actions": {
+      "RESTORED": 42,
+      "RESTORED_AND_SPLIT": 7,
+      "ADDED_BY_SETTLED_O1_C07_LAW": 29
+    },
+    "closes_technical_accounts": false,
+    "authorizes_anything": false
+  },
+  "account_totals": {
+    "accounts_total": 78,
+    "bound": 40,
+    "pending": 38,
+    "by_budget_type": {
+      "EXACT": 18,
+      "ZERO": 11,
+      "FLOOR": 11,
+      "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE": 38
+    }
+  },
+  "frozen_values_bound": [
+    "retries = 0 (ZERO) for all seven sources",
+    "SRC02/SRC06/SRC14 selected_column_reads = 1 (EXACT), full_reads = 0 (EXACT)",
+    "SRC08/SRC12 metadata_reads = 1 (EXACT); selected_column_reads, row_data_reads, selected_columns all 0 (ZERO)",
+    "SRC26 header_prefix_bytes = 176 (EXACT) at its own declared account",
+    "SRC26 raw_nominal_case_size = 174 and decoded_dictionary_data_width = 332 preserved as separate accounts, equality_required = false",
+    "SRC27 governed_full_route_passes = 1 (EXACT; authority also supplies max 1)",
+    "SRC27 existence-check, hash-pass, metadata-read and full-read accounts bound as FLOOR 1 from the 'at minimum' wording",
+    "SRC35 fresh_reads = 0 and excluded from the seven fresh-source entries"
+  ],
+  "values_deliberately_not_bound": {
+    "path_open_budgets": "UNBOUND on all seven. Not invented.",
+    "decoder_invocation_counts": "UNBOUND on all seven. Not invented.",
+    "byte_ceilings": "UNBOUND on all seven. Not invented.",
+    "src27_selected_reads": "UNBOUND. Commission forbids inventing it.",
+    "src27_path_opens": "UNBOUND. Authority says 'multiple' and deliberately supplies no number; the word is recorded verbatim rather than numerified."
+  },
+  "floors_not_promoted_to_ceilings": {
+    "count": 11,
+    "rule": "Authority's 'at minimum' wording for SRC27, plus SRC26's admitted header-prefix step and the six pre-decode identity gates, are bound as FLOOR. None was promoted to a ceiling, because no maximum is supplied for any of them.",
+    "src27_four_accounts": [
+      "source_path_existence_access_checks",
+      "full_file_sha256_passes",
+      "metadata_reads",
+      "full_reads"
+    ]
+  },
+  "typed_null_law": {
+    "return_metric_null": "PERMITTED with a typed reason. All 78 accounts currently carry value null with typed_reason NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT, and each is explicitly marked must_not_be_read_as a zero, an empty result, or a PASS.",
+    "pre_launch_budget_null": "PROHIBITED. An unsupplied budget is typed UNBOUND_PENDING_TECHNICAL_ACCEPTANCE, which waives nothing and blocks issuance.",
+    "machine_readable": true
+  },
+  "instrument_status_unchanged": {
+    "signed": false,
+    "issued": false,
+    "authorizes_access": false,
+    "execution_authorized": false,
+    "approvals": "BOTH UNSET",
+    "locator_placeholders": "ALL SEVEN UNFILLED",
+    "locator_search_performed": false
+  },
+  "verification": {
+    "invariants_asserted": 23,
+    "invariants_passing": 23,
+    "invariants_failing": 0,
+    "how": "hq196_successor_model.check_invariants, executed against the emitted instrument. Re-runnable."
+  },
+  "what_this_lane_did_not_do": [
+    "Did not close R9.",
+    "Did not issue, sign or authorize the warrant.",
+    "Did not close any technical account.",
+    "Did not perform source access, locator discovery, live C4, production mutation, C7 or actor/person work.",
+    "Did not invent a path-open, decoder, byte or SRC27 selected-read budget.",
+    "Did not promote any floor into a ceiling.",
+    "Did not fill any locator slot."
+  ],
+  "outstanding_blockers": [
+    "R9-SEL-03: frozen selected_reads=1 for SRC02/SRC06/SRC14 has no implementation owner (no usecols in the bound reader).",
+    "R9-BROKER-ACCEPT: 38 accounts await broker implementation acceptance.",
+    "All seven access locators unfilled.",
+    "HQ approval UNSET; required user/resource-owner approval UNSET.",
+    "Independent integration review of the freeze not completed."
+  ],
+  "recommended_next_step_for_HQ": "Hostile review of the crosswalk and the floor/ceiling discipline, in particular the three derived minimums flagged reviewer_confirmation_required (the six pre-decode hash floors and the SRC26 header-prefix floor). Then commission the brokered selected-reader implementation so the 38 pending values can be bound."
+}

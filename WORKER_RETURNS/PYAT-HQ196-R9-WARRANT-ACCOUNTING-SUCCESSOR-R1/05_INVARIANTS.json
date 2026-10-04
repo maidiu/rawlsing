@@ -1,0 +1,124 @@
+{
+  "schema": "PYAT_HQ196_INVARIANTS@1.0.0",
+  "all_pass": true,
+  "count": 23,
+  "failed": [],
+  "results": [
+    {
+      "id": "INV-STATUS",
+      "ok": true,
+      "detail": "signed/issued/authorizes_access/execution_authorized are all false"
+    },
+    {
+      "id": "INV-APPROVALS-UNSET",
+      "ok": true,
+      "detail": "both approvals UNSET with null name"
+    },
+    {
+      "id": "INV-SEVEN-SOURCES",
+      "ok": true,
+      "detail": "per_source keys = ['SRC02', 'SRC06', 'SRC08', 'SRC12', 'SRC14', 'SRC26', 'SRC27']"
+    },
+    {
+      "id": "INV-SRC35-EXCLUDED",
+      "ok": true,
+      "detail": "SRC35 absent from the seven and carries fresh_reads = 0"
+    },
+    {
+      "id": "INV-DQ01-RESTORED",
+      "ok": true,
+      "detail": "every one of the seven carries a populated source_access_accounting block"
+    },
+    {
+      "id": "INV-NO-NULL-PRELAUNCH-BUDGET",
+      "ok": true,
+      "detail": "78 accounts checked (38 typed UNBOUND); violations: none"
+    },
+    {
+      "id": "INV-BASIS-COMPLETE",
+      "ok": true,
+      "detail": "measurement basis fields missing in: none"
+    },
+    {
+      "id": "INV-OBSERVED-TYPED-NULL",
+      "ok": true,
+      "detail": "return metric null without typed reason in: none"
+    },
+    {
+      "id": "INV-STOP-AND-PROVENANCE",
+      "ok": true,
+      "detail": "missing stop condition or provenance in: none"
+    },
+    {
+      "id": "INV-RETRIES-ZERO",
+      "ok": true,
+      "detail": "retries not ZERO/0 in: none"
+    },
+    {
+      "id": "INV-SEL-1-FULL-0",
+      "ok": true,
+      "detail": "SRC02/06/14 selected_reads=1 EXACT and full_reads=0; violations: none"
+    },
+    {
+      "id": "INV-SRC08-12-METADATA-ZEROS",
+      "ok": true,
+      "detail": "violations: none"
+    },
+    {
+      "id": "INV-SRC26-176",
+      "ok": true,
+      "detail": "header_prefix_bytes = 176 at its declared account"
+    },
+    {
+      "id": "INV-SRC26-GEOMETRY-SEPARATE",
+      "ok": true,
+      "detail": "174 and 332 preserved as separate accounts, equality_required = false"
+    },
+    {
+      "id": "INV-SRC26-HEADER-READ-NOT-INVENTED",
+      "ok": true,
+      "detail": "SRC26 header_prefix_reads bound as FLOOR 1 and flagged; only the BYTE count 176 is authority-supplied"
+    },
+    {
+      "id": "INV-SRC27-ROUTE-PASS-EXACT-1",
+      "ok": true,
+      "detail": "governed_full_route_passes = EXACT 1 (max 1 supplied by authority)"
+    },
+    {
+      "id": "INV-SRC27-FLOORS-NOT-PROMOTED",
+      "ok": true,
+      "detail": "SRC27 'at minimum' accounts bound as FLOOR and not promoted: none"
+    },
+    {
+      "id": "INV-SRC27-NO-INVENTED-SELECTED",
+      "ok": true,
+      "detail": "SRC27 selected reads typed UNBOUND, not invented, not null"
+    },
+    {
+      "id": "INV-SRC27-PATH-OPENS-UNBOUND",
+      "ok": true,
+      "detail": "SRC27 path opens unbound; authority's 'multiple' recorded, not numerified"
+    },
+    {
+      "id": "INV-NO-INVENTED-BUDGETS",
+      "ok": true,
+      "detail": "numeric budgets asserted on forbidden accounts in: none"
+    },
+    {
+      "id": "INV-TYPED-NULL-LAW",
+      "ok": true,
+      "detail": "typed-null distinction is machine-readable"
+    },
+    {
+      "id": "INV-LOCATORS-UNFILLED",
+      "ok": true,
+      "detail": "all seven locator slots remain unfilled placeholders"
+    },
+    {
+      "id": "INV-STAGES-SEPARATE",
+      "ok": true,
+      "detail": "every account holds expected budget and observed count in distinct objects"
+    }
+  ],
+  "how_verified": "hq196_successor_model.check_invariants, executed against the emitted instrument. Re-runnable; not a narrative assertion."
+}
