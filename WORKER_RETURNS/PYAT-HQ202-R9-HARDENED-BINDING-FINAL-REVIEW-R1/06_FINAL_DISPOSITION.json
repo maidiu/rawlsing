@@ -1,0 +1,52 @@
+{
+  "schema": "PYAT_HQ202_FINAL_DISPOSITION@1.0.0",
+  "status": "FINAL",
+  "disposition": "ACCEPT_HARDENED_EXECUTION_BINDING__SOURCE_FREE_R9_RUNTIME_COMPLETE_AT_BINDING_GRAIN",
+  "disposition_is_allowed_value": true,
+  "terminal_token": "HQ202_R9_HARDENED_BINDING_FINAL_REVIEW_RETURNED__HQ_ADJUDICATION_REQUIRED",
+  "review_branch": "agent/reviewer-pyat-hq202-r1",
+  "commissioned_startup_sha": "217f96b5d9f7b767a7cfb11e5c2c3c7c75d77b4f",
+  "review_target": "deea40541cda0627d129dcb7d30e06e0682e0fed",
+  "pre_hardening_candidate": "35ffa48204672e6c7180cd010a7c1adde9f18cd7",
+  "accepted_session_mechanism": "90ccbd54c549f67358d0c02ad18ff90b843cf3ee",
+  "warrant_successor": "89054b882c04cf0541b6f9f4abdb555c808ad94d",
+  "checkout_mode": "SPARSE_REQUIRED (honored; no clone; no full worktree; sparse checkout not widened)",
+  "reviewer_identity": {"harness": "DeepSeek Harness", "model": "DeepSeek V4.1 Flash"},
+  "four_HQ201_defects_repair_status": {
+    "A_route_pass_applicability": "REPAIRED — explicit caller-bound RoutePassApplicability (default NOT_APPLICABLE, never inferred from source key or row-data mode). All three non-route proof cases execute and observe outer 0; APPLICABLE+max0 refuses before session creation; non-route max0 does not block source work; an incoherent NOT_APPLICABLE+EXACT1 is refused at bind time.",
+    "B_retry_model": "REPAIRED — a single retry binding law (SourceAccessAccount.retries is the count, SourceAccessBudget.retries the ceiling, SourceOperationPlan.max_retries must equal it), a pre-operation _admit_attempt() gate, a refused attempt moving no account, distinct attempt/retry/completion counters, and exact advancement to the ceiling (ceiling=2 -> 3 attempts then RETRY_LIMIT_REACHED).",
+    "C_completion_semantics": "REPAIRED — completion is assigned only after lower-layer constraints AND the outer rule have passed; both failure constructions leave _completed=0.",
+    "D_dependency_injection": "REPAIRED — the supplied module is stored, forwarded to the session/broker seam, and demonstrably CONSULTED (a poisoned stub's own read_sav raised during execute())."
+  },
+  "courts": {
+    "hardened_binding_court": "34 passed (exit 0)",
+    "session_court": "15 passed (exit 0)",
+    "broker_court": "20 passed (exit 0)",
+    "R7_collect": "55 collected (exit 0)",
+    "R7_run_1": "55 passed (156.01s, exit 0)",
+    "R7_run_2": "55 passed (67.55s, exit 0)",
+    "total_tests": 179, "failures": 0
+  },
+  "warrant_compatibility": "COMPATIBLE — all six non-route shapes execute with full_route_passes exact 0 while performing their admitted metadata/selected work; SRC27-shaped route executes once and refuses the second attempt pre-operation; full_reads FLOOR 1 is satisfied by full_reads and explicitly NOT by chunk_reads; decoder/path-open maxima stay policy-only; retries max 0 works; no prefix on the SRC27-shaped route; no source-dependent byte ceiling invented; expected/floor/maximum/observed remain distinct.",
+  "test_coverage": "the two tests HQ201 identified as locking in defects are GONE and replaced by adversarial coverage driving the PUBLIC execute() path; the binding court grew 21 -> 34.",
+  "advisories": [
+    {"id": "ADV-1", "severity": "advisory", "detail": "retry ceiling semantics: a ceiling of N admits N+1 total attempts (1 initial + N retries). This is self-consistent and documented, but the warrant-facing reader should be told explicitly that SourceAccessBudget.retries counts RETRIES, not total attempts."},
+    {"id": "ADV-2", "severity": "advisory", "detail": "an attempt refused by the retry gate creates the session object via _ensure_session() in order to call broker.record_retry() for ADMITTED retries; the physical source open remains lazy so no source I/O occurs, and the refused path raises before any source operation. Worth keeping in mind if a future layer asserts 'no session object unless a source operation ran'."},
+    {"id": "ADV-3", "severity": "boundary", "detail": "unchanged from HQ200/HQ201: an in-process owner cannot enforce cross-process/cross-run uniqueness, and no real-source numeric reader-byte ceiling is source-free established. Both remain issuance-time matters, not defects."}
+  ],
+  "why_this_disposition": {
+    "not_HARDENED_BINDING_MATERIAL_DEFECT": "all four old defects are repaired and verified by direct adversarial construction; no new material defect was found",
+    "not_RETRY_MODEL_STILL_UNSOUND": "the retry model is now single-owner, ceiling-bound, pre-operation, account-neutral on refusal, and provably exact",
+    "not_WARRANT_RUNTIME_CONTRACT_CONFLICT": "all seven warrant plan shapes are executable without reinterpretation",
+    "not_R7_REQUALIFICATION_FAILURE": "55 collected and 55 passed on both runs; all three mechanism courts pass"
+  },
+  "what_this_acceptance_does_NOT_do": [
+    "no real source access, locator discovery, warrant issuance or live C4",
+    "no production mutation, C7 or actor/person work",
+    "no adoption or self-adoption",
+    "no numeric reader-byte ceiling invented",
+    "it does not close R9 in the ledger sense; it accepts the hardened binding mechanism at the source-free binding grain"
+  ],
+  "holds_observed": {"real_survey_source_access": false, "locator_discovery": false, "warrant_issuance": false,
+                     "live_c4": false, "production_mutation": false, "c7_or_actor_work": false}
+}

@@ -1,0 +1,35 @@
+{
+  "schema": "PYAT_HQ202_INJECTION@1.0.0",
+  "attack": "D",
+  "verdict": "REPAIRED — the supplied module is stored, forwarded and genuinely CONSULTED",
+  "before": "the pre-hardening candidate accepted pyreadstat_module and never stored it; _ensure_session hard-coded pyreadstat_module=None, so the supplied object was silently discarded",
+  "after": {
+    "storage": "the constructor stores the supplied module as self._pyreadstat_module",
+    "forwarding": "_ensure_session() passes pyreadstat_module=self._pyreadstat_module to GovernedSourceSession (with the comment 'Repair 4: the exact supplied module reaches the session')",
+    "reaches_the_seam": "GovernedSourceSession forwards it to SourceAccessBroker, which calls assert_reader_seam() on the supplied object"
+  },
+  "proof_1_reaches_the_seam": {
+    "method": "supplied a stub exposing read_sav=None / read_dta=None with __version__='1.3.6'",
+    "observed": "ReaderSeamViolation READER_SEAM_MISSING_READER: pyreadstat.read_sav absent",
+    "significance": "the error is produced by validating the SUPPLIED object, not the ambient import — proof the parameter is no longer ignored"
+  },
+  "proof_2_actually_consulted": {
+    "method": "supplied a seam-valid but poisoned stub whose read_sav/read_dta raise RuntimeError('STUB_READ_SAV_CONSULTED')",
+    "observed": "RuntimeError: STUB_READ_SAV_CONSULTED propagated out of execute()",
+    "significance": "DECISIVE — the supplied object's own method was invoked during execution. The parameter is not merely stored; it is the object actually used."
+  },
+  "proof_3_real_module_still_resolved_when_absent": {
+    "case": "no pyreadstat_module supplied",
+    "result": "PASS — the real module is resolved (test_no_pyreadstat_argument_means_the_real_module_is_resolved)"
+  },
+  "proof_4_wrong_version_refused": {
+    "case": "injected module with a mismatched __version__",
+    "result": "PASS — refused at the seam (test_a_wrong_version_injected_module_is_refused_at_the_seam)"
+  },
+  "seam_semantics_observed": {
+    "note": "the session wraps the broker in a governed view; broker.pyreadstat returned neither the ambient module nor the raw supplied class by identity in my probe, yet the supplied object's method was demonstrably invoked. The forwarding is therefore functionally proven by consultation rather than by attribute identity.",
+    "honest_recording": "I report the behavioral proof (consultation) as the load-bearing evidence, not the identity check."
+  },
+  "old_defect_D_resolved": true,
+  "classification_now": "no defect — the constructor parameter is honored end to end"
+}

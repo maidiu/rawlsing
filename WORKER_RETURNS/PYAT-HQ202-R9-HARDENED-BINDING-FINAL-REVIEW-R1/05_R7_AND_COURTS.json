@@ -1,0 +1,43 @@
+{
+  "schema": "PYAT_HQ202_R7_AND_COURTS@1.0.0",
+  "interpreter": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/qualification/r7-c4-source-free-venv/bin/python",
+  "environment": {"PYTHONHASHSEED": "0", "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+                  "PYTHONPATH": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq202-r9-binding-final-review",
+                  "pytest": "-p no:cacheprovider"},
+  "hardened_execution_binding_court": {"file": "rawlsing_next/tests/test_pre553_execution_binding_court.py",
+    "result": "34 passed", "duration": "3.72s", "exit_code": 0,
+    "growth": "21 tests pre-hardening -> 34 hardened (+13), confirming the court was extended alongside the repairs"},
+  "session_court": {"file": "rawlsing_next/tests/test_pre553_source_session_court.py", "result": "15 passed", "duration": "2.16s", "exit_code": 0},
+  "broker_court": {"file": "rawlsing_next/tests/test_pre553_source_access_broker_court.py", "result": "20 passed", "duration": "1.92s", "exit_code": 0},
+  "R7_exact_six_file_court": {
+    "collect_only": {"collected": 55, "required": 55, "exit_code": 0, "match": true},
+    "run_1": {"result": "55 passed", "duration": "156.01s", "exit_code": 0},
+    "run_2": {"result": "55 passed", "duration": "67.55s", "exit_code": 0},
+    "target_met": "55 passed / 55 passed",
+    "failures_retried_away": false
+  },
+  "totals": {"tests": 179, "failures": 0},
+  "test_coverage_repairs_verified": {
+    "claim_from_HQ201": "the old court locked in the Attack-A behaviour and bypassed the wrapper for retries",
+    "verified_now": "BOTH old tests are GONE and have been replaced by adversarial coverage that drives the PUBLIC execute() path",
+    "new_route_tests": ["test_metadata_non_route_execution_succeeds_with_outer_exact0",
+                        "test_selected_non_route_execution_succeeds_with_outer_exact0",
+                        "test_non_route_max0_does_not_block_source_work",
+                        "test_route_max0_refuses_before_creating_a_session",
+                        "test_applicability_is_not_inferred_from_plan_mode",
+                        "test_non_route_expects_zero_and_rejects_a_nonzero_outer_expectation",
+                        "test_all_six_non_route_shapes_report_outer_zero_and_exact_zero_satisfied"],
+    "new_retry_tests": ["test_failed_first_wrapper_attempt_with_retries0_blocks_second_preop",
+                        "test_attempt_retry_and_completion_counters_are_distinguishable",
+                        "test_failed_attempt_and_failed_postcondition_both_leave_zero_completions",
+                        "test_second_attempt_after_postcondition_failure_obeys_retry0",
+                        "test_retry_account_increments_under_its_own_ceiling_and_is_enforced",
+                        "test_retry_knobs_cannot_silently_disagree",
+                        "test_default_spec_has_matching_retry_knobs"],
+    "new_injection_tests": ["test_pyreadstat_injection_reaches_the_session_and_the_seam",
+                            "test_a_wrong_version_injected_module_is_refused_at_the_seam",
+                            "test_no_pyreadstat_argument_means_the_real_module_is_resolved"],
+    "new_completion_test": ["test_chunk_reads_cannot_satisfy_the_full_read_floor"],
+    "public_path_usage": "17 execute() call sites in the hardened court"
+  }
+}

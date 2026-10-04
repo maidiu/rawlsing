@@ -1,0 +1,32 @@
+{
+  "schema": "PYAT_HQ202_ROUTE_APPLICABILITY@1.0.0",
+  "attack": "A",
+  "verdict": "REPAIRED — explicit caller-bound applicability, no inference from source key or row-data mode",
+  "mechanism": {
+    "field": "BoundExecutionSpec.route_applicability: RoutePassApplicability, default NOT_APPLICABLE",
+    "enum": ["APPLICABLE", "NOT_APPLICABLE"],
+    "gate": "_gate_route_pass() returns immediately for a NOT_APPLICABLE execution; the outer ceiling is consulted ONLY for an APPLICABLE pass",
+    "bind_time_check": "_enforce_applicability_coherence() refuses NOT_APPLICABLE together with a nonzero outer EXACT expectation"
+  },
+  "proofs": [
+    {"case": "METADATA_ONLY non-route, outer EXACT 0", "result": "PASS",
+     "observed": "status=NOT_APPLICABLE, full_route_passes_observed=0, metadata_reads=1 (operation ran)"},
+    {"case": "SELECTED non-route, outer EXACT 0", "result": "PASS",
+     "observed": "status=NOT_APPLICABLE, observed=0, selected_reads=1 (operation ran)"},
+    {"case": "FULL plan NOT_APPLICABLE, outer EXACT 0", "result": "PASS",
+     "observed": "status=NOT_APPLICABLE, observed=0, full_reads=1 — a FULL-shaped plan used as a non-route execution correctly reports 0"},
+    {"case": "APPLICABLE route with max 0", "result": "PASS",
+     "observed": "ROUTE_PASS_LIMIT_REACHED raised with _session is None — refused BEFORE any session creation or source operation"},
+    {"case": "non-route max 0 does not block source work", "result": "PASS",
+     "observed": "selected_reads=1, existence_checks=1 — the source performed its admitted work under an outer ceiling of 0"},
+    {"case": "incoherent NOT_APPLICABLE + EXACT 1", "result": "PASS",
+     "observed": "BindingError at SPEC CONSTRUCTION (bind time), before any access"}
+  ],
+  "no_mode_inference": {
+    "production_check": "no comparison deriving route_applicability from plan mode exists; a grep for mode-to-applicability derivation returns nothing",
+    "court_check": "test_production_declares_no_plan_mode_to_applicability_mapping walks the module AST and fails if applicability is derived from a plan `.mode` read",
+    "declared_in_receipt": "spec.as_dict() carries 'route_applicability_is_explicitly_bound': True",
+    "verdict": "applicability is a caller-bound property, not inferred from source key or row-data mode"
+  },
+  "old_defect_A_resolved": "the pre-hardening candidate incremented the outer counter for EVERY successful run; a non-route source with outer exact 0 either could not run at all (maximum=0) or ran and then failed the outer check. Both failure modes are now gone."
+}

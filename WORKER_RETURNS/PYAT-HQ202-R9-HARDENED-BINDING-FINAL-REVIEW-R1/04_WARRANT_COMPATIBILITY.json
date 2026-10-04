@@ -1,0 +1,33 @@
+{
+  "schema": "PYAT_HQ202_WARRANT_COMPATIBILITY@1.0.0",
+  "successor": "89054b882c04cf0541b6f9f4abdb555c808ad94d:.../R9-WARRANT-ACCOUNTING-SUCCESSOR-R1/01_UNSIGNED_SUCCESSOR.json",
+  "verdict": "COMPATIBLE — all seven warrant plan shapes are executable without reinterpretation",
+  "six_non_route_shapes_with_outer_EXACT_0": [
+    {"shape": "SRC02 SELECTED (Q10B-class)", "mode": "SELECTED", "result": "observed=0, status=NOT_APPLICABLE, metadata_reads=1, selected_reads=1, full_reads=0, header_prefix_reads=0"},
+    {"shape": "SRC06 SELECTED (two variables)", "mode": "SELECTED", "result": "observed=0, status=NOT_APPLICABLE, metadata_reads=1, selected_reads=1, full_reads=0, header_prefix_reads=0"},
+    {"shape": "SRC08 METADATA_ONLY declared encoding", "mode": "METADATA_ONLY encoding=big5", "result": "observed=0, status=NOT_APPLICABLE, metadata_reads=1, selected_reads=0, full_reads=0, header_prefix_reads=0"},
+    {"shape": "SRC12 METADATA_ONLY declared encoding", "mode": "METADATA_ONLY encoding=cp1252", "result": "observed=0, status=NOT_APPLICABLE, metadata_reads=1, selected_reads=0, full_reads=0, header_prefix_reads=0"},
+    {"shape": "SRC14 SELECTED exact variable", "mode": "SELECTED", "result": "observed=0, status=NOT_APPLICABLE, metadata_reads=1, selected_reads=1, full_reads=0, header_prefix_reads=0"},
+    {"shape": "SRC26 METADATA + 176-byte prefix", "mode": "METADATA_ONLY header_prefix_bytes=176", "result": "observed=0, status=NOT_APPLICABLE, metadata_reads=1, header_prefix_reads=1, prefix_bytes=176"}
+  ],
+  "SRC27_shaped_route": {
+    "spec": "DTA, FULL mode latin1 lane, RoutePassSpec(expected=1, maximum=1), APPLICABLE, full_reads FLOOR 1",
+    "pass_1": {"result": "COMPLETED", "full_route_passes_observed": 1, "completed_route_passes": 1, "full_reads": 1, "chunk_reads": 0, "header_prefix_reads": 0},
+    "pass_2": {"result": "REFUSED pre-operation with ROUTE_PASS_LIMIT_REACHED"},
+    "verdict": "executes exactly once and refuses the second attempt before any source operation"
+  },
+  "checks": {
+    "six_non_route_plan_shapes_execute_with_full_route_passes_exact_0": "PASS",
+    "SRC27_shaped_route_exact_max_1_executes_once": "PASS",
+    "full_reads_floor_1_remains_distinct": "PASS — satisfied by full_reads=1 while chunk_reads stayed 0",
+    "chunk_reads_cannot_satisfy_the_full_reads_floor": "PASS — a CHUNKED_FULL execution with a full_reads FLOOR 1 constraint was refused with POST_EXECUTION_CONSTRAINT_FAILED",
+    "decoder_path_open_maxima_remain_policy_only": "PASS — decoder_invocations and path_opens remain source-session/broker budget fields; no outer account is fabricated for them",
+    "retries_max_0_works": "PASS — see 02",
+    "no_prefix_on_SRC27_shaped_route": "PASS — header_prefix_bytes=None gave header_prefix_reads=0",
+    "second_route_attempt_refuses_pre_op": "PASS",
+    "source_dependent_byte_ceilings_remain_uninvented": "PASS — no numeric reader-byte ceiling appears in the binding module or the successor; byte accounts remain UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+    "expected_floor_maximum_observed_remain_distinct": "PASS — RoutePassSpec separates expected/maximum, expected_status reports EXACT vs UNBOUND, AccountConstraint separates kind from value, and OBSERVED is never a spec field",
+    "policy_maxima_cannot_appear_as_historical_expected": "PASS — AuthorityLabel distinguishes FROZEN_AUTHORITY from IMPLEMENTATION_POLICY and both are carried in as_dict()"
+  },
+  "old_defect_A_resolved_at_the_warrant_grain": "the successor's six sources carry NO governed_full_route_passes account (exact 0) and SRC27 carries EXACT 1. The hardened runtime can now execute all six non-route shapes while truthfully observing outer 0, which the pre-hardening candidate could not do."
+}

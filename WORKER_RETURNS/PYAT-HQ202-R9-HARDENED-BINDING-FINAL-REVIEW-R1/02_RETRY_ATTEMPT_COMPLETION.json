@@ -1,0 +1,54 @@
+{
+  "schema": "PYAT_HQ202_RETRY_ATTEMPT_COMPLETION@1.0.0",
+  "attacks": ["B", "C"],
+  "verdict": "REPAIRED — single retry binding law, pre-operation retry gate, and completion only after all postconditions",
+  "B_retry_model": {
+    "single_owner_and_ceiling": {
+      "owner": "SourceAccessAccount.retries, incremented by SourceAccessBroker.record_retry()",
+      "ceiling": "SourceAccessBudget.retries",
+      "plan_knob": "SourceOperationPlan.max_retries must EQUAL the ceiling",
+      "law_constant": "RETRY_BINDING_LAW / RETRY_BINDING_MISMATCH"
+    },
+    "proofs": [
+      {"case": "first admitted attempt is not a retry", "result": "PASS — _admit_attempt() returns immediately on the first attempt with no retry recorded"},
+      {"case": "failed first attempt + retries 0 => second execute refused pre-operation", "result": "PASS",
+       "observed": "attempt 1 failed SOURCE_BYTES_UNAVAILABLE; attempt 2 refused RETRY_LIMIT_REACHED"},
+      {"case": "refused attempt moves no source account", "result": "PASS",
+       "observed": "account diff across the refusal: NONE"},
+      {"case": "counters distinct", "result": "PASS",
+       "observed": "route_pass_attempts=1, retries_observed=0, completed_route_passes=1 reported as separate receipt fields"},
+      {"case": "retry count is the existing SourceAccessAccount.retries account", "result": "PASS — _admit_attempt() calls broker.record_retry(), which does budget.check(retries=1) then _bump(retries=1)"},
+      {"case": "SourceAccessBudget.retries owns the ceiling", "result": "PASS — record_retry checks the budget before incrementing, so a refused retry leaves every account unmoved including retries itself"},
+      {"case": "plan.max_retries cannot silently disagree", "result": "PASS",
+       "observed": "max_retries=0 with budget.retries=2 -> BindingError RETRY_BINDING_MISMATCH at spec construction; attempts to set a divergent pair are unrepresentable"},
+      {"case": "unbounded retry ceiling refused", "result": "PASS — budget.retries=None raises RETRY_BINDING_MISMATCH; a bound execution requires a decidable retry law"},
+      {"case": "retries > 0 advance exactly and stop at the ceiling", "result": "PASS",
+       "observed": "ceiling=2, both knobs equal 2 -> sequence [SOURCE_BYTES_UNAVAILABLE x3, RETRY_LIMIT_REACHED x3]; final attempts=3, retries=2, completed=0",
+       "semantics": "ceiling=2 admits 1 initial attempt + 2 retries = 3 total attempts, then refuses pre-operation"},
+      {"case": "failure BEFORE session creation", "result": "PASS",
+       "observed": "the SOURCE_BYTES_UNAVAILABLE cases failed after session creation but before any row work; the retry gate still counted the attempt and refused the next pre-operation"},
+      {"case": "retry gate creates no unauthorized source activity merely to account a retry", "result": "PASS",
+       "observed": "record_retry() only touches the retries account; on the refused path the gate raises before _ensure_session() is reached for any source operation, and the account diff on refusal is empty"}
+    ]
+  },
+  "C_completion_semantics": {
+    "hardened_ordering": [
+      "1. _gate_route_pass()  (pre-operation, APPLICABLE only)",
+      "2. _admit_attempt()    (pre-operation retry gate)",
+      "3. session.run(plan)   (source work)",
+      "4. _check_constraints()         (lower-layer postconditions)",
+      "5. _check_outer_rule()          (outer rule, evaluated PROSPECTIVELY and non-mutating)",
+      "6. self._completed = prospective (ONLY NOW does a pass complete)"
+    ],
+    "proofs": [
+      {"case": "source success + lower-layer postcondition failure", "result": "PASS",
+       "observed": "FLOOR 999 on metadata_reads -> POST_EXECUTION_CONSTRAINT_FAILED with _completed=0"},
+      {"case": "source success + outer exact failure", "result": "PASS",
+       "observed": "outer EXACT 5 -> POST_EXECUTION_CONSTRAINT_FAILED with _completed=0"},
+      {"case": "no completed pass left behind on outer failure", "result": "PASS — _check_outer_rule returns a prospective value without mutating, so the assignment never happens on failure"}
+    ],
+    "old_defect_C_resolved": "the pre-hardening candidate incremented _passes_completed BEFORE the postcondition checks, so a failed postcondition still counted a completed pass. Completion now requires ALL required postconditions."
+  },
+  "old_defect_B_resolved": "the pre-hardening candidate had no retry gate; a transient failed attempt left the completed-pass gate open and a second execute() performed a second source operation while retries stayed 0. A second attempt is now refused pre-operation.",
+  "old_defect_C_resolved_again": "n/a"
+}
