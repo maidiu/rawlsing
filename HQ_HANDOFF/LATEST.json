@@ -1,12 +1,12 @@
 {
   "schema": "RAWLSING_HQ_HANDOFF_POINTER@1.1.0",
-  "checkpoint_id": "20261003-PYAT-HQ196-R9-BROKER-SELECTED-WAVE-R1",
-  "handoff_commit": "453a40089758b53780694084808f6010e63430f0",
+  "checkpoint_id": "20261003-PYAT-HQ197-R9-CANDIDATE-PARTIAL-R1",
+  "handoff_commit": "2487f6367d8d71cdfb69a1e8fff52d7b1ee8c13a",
   "semantic_pre_main_tip": "902640dfddce431d0c5ba151d3eb851d6b84d7a3",
   "control_branch": "integration/pre-main-reconciliation-r1",
-  "current_md_path": "HQ_HANDOFF/checkpoints/20261003-PYAT-HQ196-R9-BROKER-SELECTED-WAVE-R1/CURRENT.md",
-  "current_json_path": "HQ_HANDOFF/checkpoints/20261003-PYAT-HQ196-R9-BROKER-SELECTED-WAVE-R1/CURRENT.json",
-  "manifest_path": "HQ_HANDOFF/checkpoints/20261003-PYAT-HQ196-R9-BROKER-SELECTED-WAVE-R1/MANIFEST.json",
+  "current_md_path": "HQ_HANDOFF/checkpoints/20261003-PYAT-HQ197-R9-CANDIDATE-PARTIAL-R1/CURRENT.md",
+  "current_json_path": "HQ_HANDOFF/checkpoints/20261003-PYAT-HQ197-R9-CANDIDATE-PARTIAL-R1/CURRENT.json",
+  "manifest_path": "HQ_HANDOFF/checkpoints/20261003-PYAT-HQ197-R9-CANDIDATE-PARTIAL-R1/MANIFEST.json",
   "decision_ledger_path": "HQ_HANDOFF/DECISION_LEDGER.jsonl",
   "protocol_path": "HQ_HANDOFF/PROTOCOL.md",
   "start_here_path": "HQ_HANDOFF/START_HERE.md",
@@ -15,7 +15,7 @@
   "temporal_reconciliation_law": "SEALED_CHECKPOINT_AUTHORITY_NE_POST_CHECKPOINT_PENDING_RETURN_NE_UNAUTHORIZED_POST_CHECKPOINT_MOVEMENT",
   "maintenance_law": "AFTER_EVERY_MATERIAL_HQ_STATE_CHANGE__CREATE_NEW_IMMUTABLE_CHECKPOINT__ADVANCE_AND_VERIFY_LATEST_BEFORE_TRANSITION_IS_SEALED",
   "protected_execution_head": "16f5e7d5f691e908d85dc1dd26b8a59a29f668f4",
-  "next_action": "LAUNCH_ALL_THREE_HQ196_SPARSE_LANES_IN_PARALLEL",
+  "next_action": "LAUNCH_ALL_THREE_HQ197_SPARSE_LANES_IN_PARALLEL",
   "source_split_control_head": "cee9e27d57dc72771d9c3ec5df26493321feeef5",
   "split_fanin_evidence_tip": "cee9e27d57dc72771d9c3ec5df26493321feeef5",
   "joined_successor_return_tip": "b4dd6d6016367110c06317abe2cef276123b4c69",
@@ -62,7 +62,7 @@
   "pyat_current_handoff": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/CURRENT_HANDOFF.md",
   "pyat_current_grok_docket": "PYAT_CONTROL_ROOM/12_B_ROUTE_PRE_FIELD_FORGE_GROK_DOCKET.md",
   "pyat_fresh_hq_protocol": "PYAT_CONTROL_ROOM/13_FRESH_HQ_FULL_GROK_PROTOCOL.md",
-  "immediate_program_refinement": "HQ196__R9_CONTRACT_SETTLED__BROKER_SELECTED_IMPLEMENTATION_AND_REVIEW__WARRANT_SUCCESSOR",
+  "immediate_program_refinement": "HQ197__BROKER_CANDIDATE_PARTIAL__BYTE_LIMIT_REPAIR__R7_55_TEST_REQUAL__PHYSICAL_SELECTED_INTERPRETATION",
   "legacy_pyat_bootstrap_path": "HQ_HANDOFF/PYAT_HQ_BOOTSTRAP_R1.md",
   "pyat_documentary_hygiene": "HQD-2026-09-26-114",
   "pyat_forward_program_decision": "HQD-2026-09-28-125",
@@ -544,8 +544,8 @@
   "external_adjudication_retrieval_law": "ALL_COMPARISON_MATERIAL_FETCHABLE_FROM_ORIGIN",
   "measured_execution_authorized_via_warrant": false,
   "previous_handoff": {
-    "checkpoint_id": "20261003-PYAT-HQ195-SPARSE-BY-DEFAULT-R9-FORK-R1",
-    "handoff_commit": "ec6cd10de7d02e668954110881a2158f7ba661ed"
+    "checkpoint_id": "20261003-PYAT-HQ196-R9-BROKER-SELECTED-WAVE-R1",
+    "handoff_commit": "453a40089758b53780694084808f6010e63430f0"
   },
   "previous_operating_mode": {
     "selected": "BROWSER_ECONOMY",
@@ -848,5 +848,56 @@
     "uncommissioned_do_not_launch": [
       "agent/rabochii-pyat-hq196-r9-broker-selected-implementation-r1"
     ]
+  },
+  "hq197": {
+    "warrant_successor": {
+      "return_tip": "2410eb7b215f904fa428df82e47fb05ede91ee21",
+      "disposition": "WARRANT_ACCOUNTING_SUCCESSOR_STRUCTURE_READY__TECHNICAL_VALUES_PENDING",
+      "dq01": "STRUCTURALLY_REPAIRED__NOT_FINAL_INSTRUMENT"
+    },
+    "broker_review": {
+      "return_tip": "2e43b8c1e975974add3ac2cecfbd6daa96afd98b",
+      "disposition": "BROKER_ROUTE_CONFIRMED__SELECTED_READ_IMPLEMENTATION_GAP_CONFIRMED"
+    },
+    "candidate": {
+      "tip": "d5ce4ecff6acc25d199577a7859de7e98514e9fd",
+      "adopted": false,
+      "open": [
+        "R9-BROKER-BYTE-CAP-001",
+        "R9-BROKER-R7-REQUAL-002",
+        "R9-SEL-PHYSICAL-SEMANTICS-003"
+      ]
+    },
+    "r7_court": {
+      "correction": "SIX_FILES_55_TESTS__NOT_55_CARRIERS",
+      "collect": 55,
+      "required_runs": 2
+    },
+    "c4_closure": {
+      "modules": 23,
+      "wvs7_projection_materializer_in_scope": false
+    },
+    "active_lanes": {
+      "review": {
+        "branch": "agent/reviewer-pyat-hq197-r9-broker-candidate-hostile-r1",
+        "commission_tip": "b047e3258db80e753c23e5b5d70300e23b9bfafd",
+        "checkout": "SPARSE_REQUIRED"
+      },
+      "refinement": {
+        "branch": "agent/rabochii-pyat-hq197-r1",
+        "commission_tip": "5b98343561e5bf225442d9ab59032d36e98693ba",
+        "checkout": "SPARSE_REQUIRED"
+      },
+      "interpretation": {
+        "branch": "agent/rabochii-pyat-hq197-r2",
+        "commission_tip": "740a355b3aef0255dc6ecbe1b99bc9382ec3c91f",
+        "checkout": "SPARSE_REQUIRED"
+      }
+    },
+    "r9_blocker_remains": true,
+    "host_disk_blocker_remains": true,
+    "r7_status": "CLOSED_AT_RUNTIME_ENVIRONMENT_IDENTITY_GRAIN",
+    "c4_adopted": false,
+    "hq182_hold_lifted": false
   }
 }
