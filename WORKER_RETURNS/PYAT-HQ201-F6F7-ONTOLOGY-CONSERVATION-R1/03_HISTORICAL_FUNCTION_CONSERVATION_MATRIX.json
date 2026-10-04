@@ -1,0 +1,205 @@
+{
+  "schema": "PYAT_HQ201_HISTORICAL_FUNCTION_CONSERVATION_MATRIX@1.0.0",
+  "method": "Historical DDM work was read for FUNCTIONAL INTENT only. Byte shape and serial stage order are not treated as current ontology, per HQD-125 \u00a72 and \u00a715.",
+  "historical_version_markers": {
+    "V553_SCHEMA_VERSION": "v0.2",
+    "V553_COMPILER_VERSION": "v553_temporal_pressure_0.2_sparse",
+    "V551J_D_status": "self-declared PROVISIONAL",
+    "reading": "The entire V551J/V553 temporal edifice is explicitly provisional and sparse. It is functional capital, never binding authority.",
+    "evidence_class": "HISTORICAL_FUNCTIONAL_CAPITAL"
+  },
+  "matrix": [
+    {
+      "concept": "survey-family identity",
+      "classification": "KEEP FUNCTION",
+      "rationale": "V553 temporal identity requires EXACTLY ONE explicit survey family per temporal track and refuses mixed families. The function \u2014 a track must declare which survey family it belongs to \u2014 is essential to F7 and is missing from the current DAG.",
+      "provenance": "data/ddm_build_copy/ddm_v553_temporal_identity.py"
+    },
+    {
+      "concept": "wave identity / temporal anchor",
+      "classification": "KEEP FUNCTION",
+      "rationale": "require_survey_identity per wave plus an explicit calendar anchor is the correct fail-closed function. A wave is not a time without a declared anchor.",
+      "provenance": "ddm_v553_temporal_identity.py"
+    },
+    {
+      "concept": "no wave-ordinal-to-year coercion",
+      "classification": "KEEP CONSTRAINT ONLY",
+      "rationale": "_explicit_temporal_year is documented as resolving a real calendar anchor 'without treating a wave ordinal as a year'. This is a CONSTRAINT that must bind any F7 producer. The specific list of year-accepting column names is obsolete implementation detail.",
+      "provenance": "ddm_v553_temporal_identity.py"
+    },
+    {
+      "concept": "one anchor per calendar year",
+      "classification": "KEEP CONSTRAINT ONLY",
+      "rationale": "Refuses duplicate anchors per year within a track. Sound; but the year-keyed form is tied to the point-year grain (see the time-grain fork in 12).",
+      "provenance": "ddm_v553_temporal_identity.py"
+    },
+    {
+      "concept": "harmonization authority",
+      "classification": "KEEP FUNCTION",
+      "rationale": "V553_WAVE_HARMONIZATION_AUTHORITY_INDEX_SCHEMA + V553_WAVE_HARMONIZATION_EVIDENCE_SCHEMA establish that cross-wave comparability requires an explicit authority artifact, not an inference. This is the F7 comparability precondition.",
+      "provenance": "ddm_v553_schema.py:V553_HARMONIZATION_AUTHORITY_INDEX_SCHEMA"
+    },
+    {
+      "concept": "harmonization difference ledger",
+      "classification": "KEEP FUNCTION",
+      "rationale": "V553_HARMONIZATION_DIFFERENCE_LEDGER_SCHEMA records divergence between harmonized waves rather than reconciling it. Directly supports HARMONIZATION_DIFFERENCE != RECONCILED_TRUTH.",
+      "provenance": "ddm_v553_schema.py"
+    },
+    {
+      "concept": "comparable temporal key",
+      "classification": "KEEP FUNCTION",
+      "rationale": "V553_TEMPORAL_KEY_CANDIDATE_INDEX_SCHEMA plus V553_TEMPORAL_KEY_BLOCKER_INDEX_SCHEMA is the single most important conserved concept: a temporal key is a CANDIDATE with a companion BLOCKER index. Blocks noncomparability in the same structure that proposes keys.",
+      "provenance": "ddm_v553_schema.py"
+    },
+    {
+      "concept": "cross-wave semantic diff",
+      "classification": "KEEP FUNCTION",
+      "rationale": "V551J-D cross-wave semantic diff compares two runs for meaning change. The function is required; the binary left/right topology is obsolete because F6+F7 needs N sources and multiple trajectories.",
+      "provenance": "compile_v551j_cross_wave_semantic_diff.py"
+    },
+    {
+      "concept": "directionality as established status",
+      "classification": "KEEP FUNCTION",
+      "rationale": "V551J carries directionality_status, directionality_basis and directionality_coverage_status as TYPED FIELDS. Directionality must be established with a basis and a coverage statement, never inferred from two waves existing. This is the exact functional form of HQD-125's TWO_WAVES_EXIST != TEMPORAL_DIRECTIONALITY_AUTHORITY.",
+      "provenance": "ddm_v551j_semantic_diff.py"
+    },
+    {
+      "concept": "cross-wave delta",
+      "classification": "KEEP FUNCTION",
+      "rationale": "V553_CROSS_WAVE_DELTA_INDEX_SCHEMA exists as a first-class contract. Delta as an indexed artifact distinct from the observations is the right shape.",
+      "provenance": "ddm_v553_schema.py"
+    },
+    {
+      "concept": "delta direction / magnitude",
+      "classification": "KEEP FUNCTION",
+      "rationale": "direction is computed in V553 (44 mentions) and typed in V551J. Magnitude is not separately contracted; treat magnitude as requiring its own constitution.",
+      "provenance": "ddm_v553_temporal_pressure.py"
+    },
+    {
+      "concept": "pressure-over-time",
+      "classification": "KEEP FUNCTION",
+      "rationale": "V553_TEMPORAL_PRESSURE_FIELD_SCHEMA + V553_YEAR_INDEXED_PRESSURE_OVER_TIME_SCHEMA express the F7 product shape: a field tracked across an ordered time axis.",
+      "provenance": "ddm_v553_schema.py"
+    },
+    {
+      "concept": "scalar pressure formulae",
+      "classification": "OBSOLETE IMPLEMENTATION DETAIL",
+      "rationale": "V553 computes rupture_pressure as max(0.0, pressure_intensity * 0.10) gated on status. A hard-coded scalar coefficient is a provisional artefact and must NOT be inherited as the definition of structural pressure.",
+      "provenance": "ddm_v553_temporal_pressure.py:1216"
+    },
+    {
+      "concept": "year-indexed / country-year pressure tables",
+      "classification": "OBSOLETE IMPLEMENTATION DETAIL",
+      "rationale": "V553_COUNTRY_YEAR_PRESSURE_FIELD_SCHEMA and the parquet/Arrow compiler topology are storage and execution choices, not ontology. HQD-125 \u00a72 forbids inheriting serial stage topology.",
+      "provenance": "ddm_v553_schema.py"
+    },
+    {
+      "concept": "confidence / penalty ledger",
+      "classification": "KEEP FUNCTION",
+      "rationale": "V553_CONFIDENCE_PENALTY_LEDGER_SCHEMA + V553_PRESSURE_BASIS_LEDGER_SCHEMA make uncertainty a first-class ledger rather than an implicit discount. F7 needs this to distinguish a weak delta from no delta.",
+      "provenance": "ddm_v553_schema.py"
+    },
+    {
+      "concept": "temporal authority ledger",
+      "classification": "KEEP FUNCTION",
+      "rationale": "The ledger family makes the authority behind a temporal product inspectable and replayable.",
+      "provenance": "ddm_v553_schema.py"
+    },
+    {
+      "concept": "known gaps / absence index",
+      "classification": "KEEP FUNCTION",
+      "rationale": "V553_TEMPORAL_GAP_AND_ABSENCE_INDEX_SCHEMA is the correct home for ABSENCE as a first-class observation, supporting ABSENCE != ZERO and NONCOMPARABLE != NO_CHANGE.",
+      "provenance": "ddm_v553_schema.py"
+    },
+    {
+      "concept": "temporal key blocker index",
+      "classification": "KEEP FUNCTION",
+      "rationale": "Blocks are indexed beside candidates so a refused key is itself recorded. This is what makes fail-closed temporal identity auditable.",
+      "provenance": "ddm_v553_schema.py"
+    },
+    {
+      "concept": "rupture candidate index",
+      "classification": "KEEP FUNCTION",
+      "rationale": "V553_STRUCTURAL_RUPTURE_CANDIDATE_INDEX_SCHEMA names a rupture CANDIDATE. Keeping the word CANDIDATE is the whole point: empirical discontinuity is not an authorized rupture classification.",
+      "provenance": "ddm_v553_schema.py"
+    },
+    {
+      "concept": "rupture block audit",
+      "classification": "KEEP FUNCTION",
+      "rationale": "V553_RUPTURE_BLOCK_AUDIT_SCHEMA. A rupture candidate must be able to BLOCK a relation rather than be silently absorbed.",
+      "provenance": "ddm_v553_schema.py"
+    },
+    {
+      "concept": "event-override authority slot",
+      "classification": "KEEP FUNCTION (SLOT ONLY, NEVER BOUND)",
+      "rationale": "V553_RUPTURE_EVENT_SLOT_LEDGER_SCHEMA exists but every row carries rupture_override_status = 'reserved_not_filled'. The slot was RESERVED and NEVER FILLED. Conserve the slot; bind nothing into it. No external-event authority was ever established.",
+      "provenance": "ddm_v553_temporal_pressure.py:900"
+    },
+    {
+      "concept": "interpolation policy ledger",
+      "classification": "KEEP FUNCTION",
+      "rationale": "V553_INTERPOLATION_POLICY_LEDGER_SCHEMA plus an explicit allow_interpolation boolean makes interpolation a policy decision that is recorded, not an implicit default.",
+      "provenance": "ddm_v553_schema.py"
+    },
+    {
+      "concept": "interpolation-across-rupture prohibition",
+      "classification": "KEEP CONSTRAINT ONLY",
+      "rationale": "interpolation_across_rupture_allowed is hard-coded False. Conserve the prohibition. Whether it survives as law is a current-authority question (see 08).",
+      "provenance": "ddm_v553_temporal_pressure.py:1282"
+    },
+    {
+      "concept": "gap_marked_unknown default",
+      "classification": "KEEP FUNCTION",
+      "rationale": "When interpolation is not allowed the historical method is 'gap_marked_unknown' and pressure_status 'interpolated' vs 'anchor' is explicit. Gaps default to typed unknown.",
+      "provenance": "ddm_v553_temporal_pressure.py:873"
+    },
+    {
+      "concept": "linear_between_authorized_waves",
+      "classification": "OBSOLETE IMPLEMENTATION DETAIL",
+      "rationale": "Linear interpolation is a provisional numerical choice. Do not inherit it. If interpolation is ever authorised the method must be separately constituted.",
+      "provenance": "ddm_v553_temporal_pressure.py:873"
+    },
+    {
+      "concept": "anchor_copy",
+      "classification": "OBSOLETE IMPLEMENTATION DETAIL",
+      "rationale": "Copying an anchor value forward manufactures a fake observation. Must not be inherited as a default; ABSENCE != ZERO forbids silent substitution.",
+      "provenance": "ddm_v553_temporal_pressure.py:873"
+    },
+    {
+      "concept": "causal explanation of temporal breaks",
+      "classification": "EXPLORATORY / NEVER BINDING",
+      "rationale": "The string 'causal' occurs ZERO times across the 4187-line V553 temporal pressure module. There was never any causal machinery to inherit. Naming a cause for a temporal break requires NEW authority that does not exist in any class.",
+      "provenance": "ddm_v553_temporal_pressure.py (0 occurrences)"
+    },
+    {
+      "concept": "forbidden-inference audit",
+      "classification": "KEEP FUNCTION",
+      "rationale": "V553_FORBIDDEN_INFERENCE_AUDIT_SCHEMA and V553_FORBIDDEN_ACTOR_GENERATION_AUDIT_SCHEMA show the historical system actively audited for forbidden inference. The F8 firewall has an audit precedent.",
+      "provenance": "ddm_v553_schema.py"
+    },
+    {
+      "concept": "downstream handoff / seed affordance",
+      "classification": "KEEP FUNCTION",
+      "rationale": "V554 turns V553 pressure and harmonization evidence into bounded seed affordance ledgers plus a lawful V555 handoff index, and states 'It does not generate persona content.' That is the F8 contract function and the actor firewall in one sentence.",
+      "provenance": "data/ddm_build_copy/ddm_v554_seed_contract.py"
+    },
+    {
+      "concept": "parent-prior / seed consumption",
+      "classification": "KEEP FUNCTION",
+      "rationale": "292 mentions of seed: the handoff consumes V553 temporal products as bounded affordances rather than regenerating them. Current F8 seam exists; the temporal input to it does not.",
+      "provenance": "ddm_v554_seed_contract.py"
+    },
+    {
+      "concept": "old stage names / serial order",
+      "classification": "OBSOLETE IMPLEMENTATION DETAIL",
+      "rationale": "HQD-125 \u00a72: the chain is a functional acceptance law, not a demand to recreate historical serial stage topology.",
+      "provenance": "PYAT_CONTROL_ROOM/24_HQD125_DDM_FUNCTIONAL_CONSERVATION_AND_PREV3_ACCEPTANCE_LAW.md \u00a72"
+    }
+  ],
+  "classification_counts": {
+    "KEEP FUNCTION": 15,
+    "KEEP CONSTRAINT ONLY": 4,
+    "OBSOLETE IMPLEMENTATION DETAIL": 6,
+    "EXPLORATORY / NEVER BINDING": 2
+  }
+}

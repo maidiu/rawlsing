@@ -1,0 +1,102 @@
+{
+  "schema": "PYAT_HQ201_F6_F7_COMPOSITION_CASES@1.0.0",
+  "governing_note": "F6 is cross-SOURCE composition. F7 is cross-WAVE temporal realization within a source family. They are ORTHOGONAL at the per-source and per-track level, and SERIAL only at the integrated whole-world claim.",
+  "cases": [
+    {
+      "case": "A",
+      "name": "same survey, two comparable waves",
+      "F6_required": "NOT REQUIRED",
+      "F7_required": "REQUIRED \u2014 comparability authority + temporal key + delta + established directionality",
+      "orthogonal_or_serial": "ORTHOGONAL",
+      "verdict": "F7_ONLY",
+      "note": "This is the pure F7 case and the core of what F7 can close independently."
+    },
+    {
+      "case": "B",
+      "name": "two surveys, same rough period, related proposition",
+      "F6_required": "REQUIRED \u2014 coexistence + composition authority",
+      "F7_required": "NOT REQUIRED \u2014 no temporal claim without comparable waves",
+      "orthogonal_or_serial": "ORTHOGONAL",
+      "verdict": "F6_ONLY",
+      "note": "Cross-source structural coexistence is lawful without any temporal claim."
+    },
+    {
+      "case": "C",
+      "name": "two surveys with nonaligned fieldwork intervals",
+      "F6_required": "REQUIRED \u2014 coexistence, with explicit non-alignment recorded",
+      "F7_required": "REQUIRED PER FAMILY, but cross-family temporal comparison is NOT lawful on interval evidence alone",
+      "orthogonal_or_serial": "ORTHOGONAL then BLOCKED at the cross-family join",
+      "verdict": "F6_PLUS_F7_WITH_TYPED_NONCOMPARABILITY",
+      "note": "Mismatched fieldwork intervals must be represented as typed noncomparability, never coerced to a common midpoint. This is the case that exposes the time-grain fork."
+    },
+    {
+      "case": "D",
+      "name": "two surveys, each with its own temporal trajectory",
+      "F6_required": "REQUIRED \u2014 two tracks coexist in one world",
+      "F7_required": "REQUIRED \u2014 two independent temporal tracks",
+      "orthogonal_or_serial": "ORTHOGONAL",
+      "verdict": "F6_PLUS_F7_COMPOSITION",
+      "note": "Historically impossible: V553 temporal identity required EXACTLY ONE survey family per report. Generalising the FUNCTION (declare the family) while dropping the topology (one family per report) is the key F6+F7 move."
+    },
+    {
+      "case": "E",
+      "name": "one source comparable through time, another single-wave only",
+      "F6_required": "REQUIRED \u2014 coexistence with asymmetric temporal standing",
+      "F7_required": "REQUIRED FOR THE COMPARABLE SOURCE ONLY",
+      "orthogonal_or_serial": "ORTHOGONAL with ASYMMETRY",
+      "verdict": "F6_PLUS_F7_PARTIAL",
+      "note": "A single-wave source contributes a structural field with NO temporal track. SINGLE_WAVE_PRESSURE != TEMPORAL_PRESSURE_FIELD forbids inventing one."
+    },
+    {
+      "case": "F",
+      "name": "conflicting temporal movement across sources",
+      "F6_required": "REQUIRED \u2014 and the conflict is the payload",
+      "F7_required": "REQUIRED for each track independently",
+      "orthogonal_or_serial": "ORTHOGONAL",
+      "verdict": "F6_PLUS_F7_PRESERVING_CONFLICT",
+      "note": "Disagreement must be preserved as a typed contradiction relation. SOURCE_CONFLICT != AVERAGE_BY_DEFAULT forbids averaging it away."
+    },
+    {
+      "case": "G",
+      "name": "temporal relation blocked by noncomparability, cross-source structural coexistence still lawful",
+      "F6_required": "REQUIRED and UNAFFECTED",
+      "F7_required": "REQUIRED but REFUSED \u2014 typed noncomparability",
+      "orthogonal_or_serial": "ORTHOGONAL \u2014 F7 failure does not block F6",
+      "verdict": "F6_ONLY_WITH_TYPED_F7_BLOCK",
+      "note": "The decisive case for orthogonality: a blocked temporal relation must not contaminate the lawful cross-source structural relation."
+    }
+  ],
+  "orthogonality_consequences": {
+    "F6_does_not_require_F7": "Cases B and G are F6-complete with no temporal claim at all.",
+    "F7_does_not_require_F6": "Case A is F7-complete within one survey family with no cross-source claim.",
+    "serial_only_at": "the integrated whole-PRE-V3 world claim (F5+F6+F7+F8 composed), never between the two gates as such."
+  },
+  "PRIOR_HQ_PHRASE_ADJUDICATION": {
+    "phrase": "F7 cannot honestly close before F6.",
+    "status": "OVERSTATED__NOT_TENABLE_AS_AN_ABSOLUTE_DEPENDENCY",
+    "finding": "The phrase is wrong as a dependency claim and right as a warning about COMPLETION.",
+    "why_wrong_as_dependency": [
+      "F7's own binding law is defined WITHIN a survey family: 'comparable same-survey waves'. It never invokes cross-source composition. Case A is fully F7-completable alone.",
+      "F6's own binding law is defined WITHIN one objective world across sources. It never invokes temporal directionality. Cases B and G are fully F6-completable alone.",
+      "Case G shows the dependency runs the WRONG way for a claim: a REFUSED temporal relation must not block lawful cross-source coexistence. If F7 were a prerequisite for F6, G would be unsatisfiable whenever temporal comparison fails \u2014 which would force either a fabricated temporal result or the loss of a lawful structural one."
+    ],
+    "why_right_as_warning": "A WHOLE-PRE-V3 completion claim does need both, because the deliverable is one world that is simultaneously multi-source and temporally realized. A gate may be typed-negative at some scope (HQD-125 \u00a712), so a project may legitimately hold F7 closed and F6 open.",
+    "corrected_dependency_law": {
+      "F7_can_close_independently_on": [
+        "same-survey comparable waves (case A)",
+        "any per-family temporal track, including several tracks at once (case D's F7 half)",
+        "typed noncomparability where comparability fails (case G's F7 half)",
+        "single-wave sources contributing no temporal product (case E's F7 half)"
+      ],
+      "F7_requires_F6_for": [
+        "nothing within F7 itself"
+      ],
+      "requires_actual_F6_plus_F7_composition": [
+        "the integrated whole-PRE-V3 world claim",
+        "any cross-source claim that also asserts temporal movement (case F)",
+        "case D's composed two-track world",
+        "case C's cross-family comparison, if it is ever to be more than typed noncomparability"
+      ]
+    }
+  }
+}

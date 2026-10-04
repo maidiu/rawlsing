@@ -1,0 +1,142 @@
+{
+  "schema": "PYAT_HQ201_CURRENT_IMPLEMENTED_CAPABILITY_MAP@1.0.0",
+  "lane": "PYAT-HQ201-F6F7-ONTOLOGY-CONSERVATION-R1",
+  "inspected_at": "9b3a70af26da3404f988674c879a44ebfcae196a",
+  "method": "Each named current module was read at its exact blob and asked: what does it OWN versus merely ADMIT or TRANSPORT? Module docstrings were treated as authoritative scope declarations.",
+  "time_vocabulary_census": {
+    "method": "case-insensitive occurrence count across the eight commissioned current modules",
+    "effective_interval": 0,
+    "effective_date": 0,
+    "fieldwork": 0,
+    "delta": 0,
+    "trajectory": 0,
+    "rupture": 0,
+    "longitudinal": 0,
+    "panel": 0,
+    "interpolation": 2,
+    "wave": 2,
+    "temporal": 55,
+    "comparab": 43,
+    "direction": 4,
+    "finding": "The current DAG has NO time-interval object, NO fieldwork interval, NO delta, NO trajectory, NO rupture, NO longitudinal or panel object."
+  },
+  "class_definitions": {
+    "CURRENT_IMPLEMENTED_CAPABILITY": "code exists in the current tree, is reachable, and is owner-capable at the audited grain",
+    "NOT_OWNED": "the module explicitly disclaims the responsibility in its own docstring"
+  },
+  "modules": [
+    {
+      "module": "rawlsing_next/pre553_empirical_query.py",
+      "owns": [
+        "exact empirical query algebra over exact universe refs",
+        "SOURCE_INDEXED_MULTI_UNIVERSE execution producing ONE FACT PER UNIVERSE in a single result",
+        "AUTHORIZED_COMPOSITE authority gate requiring three bound roles"
+      ],
+      "authority_role_kinds": {
+        "pooling": "SOURCE_COMPOSITION_POOLING",
+        "nonduplication": "SOURCE_UNIVERSE_RELATION",
+        "estimand_composition": [
+          "SOURCE_COMPOSITION_POOLING",
+          "WEIGHT_DESIGN_ESTIMAND"
+        ]
+      },
+      "F6_relevance": "This is the CURRENT IMPLEMENTED CAPABILITY for multi-source composition WITHOUT pooling. Cross-source composition yields source-indexed per-universe facts held in one result object; it never emits a merged respondent row.",
+      "F7_relevance": "NONE. No temporal relation is produced or required.",
+      "evidence_class": "CURRENT_IMPLEMENTED_CAPABILITY"
+    },
+    {
+      "module": "rawlsing_next/pre553_structural_admission.py",
+      "own_docstring_scope": "owns only the P06 admission decision/receipt seam and lossless projection material",
+      "explicitly_disclaims": [
+        "execute empirical queries",
+        "infer source relations",
+        "create generated actor positions",
+        "decide V553 temporal operations",
+        "select V554 basis/equivalence/precedence"
+      ],
+      "owns": [
+        "EMPIRICAL_FACT_NONCOMPARABLE typed refusal (NONCOMPARABLE state)",
+        "allowed_effective_time_or_interval_refs slot",
+        "effective_period slot",
+        "time_geography_applicability slot",
+        "allowed_uncertainty_states slot",
+        "source_disagreement_noncomparability_policy slot"
+      ],
+      "F6_relevance": "The module explicitly does NOT infer source relations. Cross-source relation inference is unowned at this seam by its own declaration.",
+      "F7_relevance": "The module explicitly does NOT decide V553 temporal operations. It holds SLOTS for time semantics but decides none.",
+      "evidence_class": "CURRENT_IMPLEMENTED_CAPABILITY",
+      "gap_found": "source_disagreement_noncomparability_policy is validated only as a NON-EMPTY STRING. There is no enumerated vocabulary, so SOURCE_CONFLICT != AVERAGE_BY_DEFAULT is NOT structurally enforced at this slot."
+    },
+    {
+      "module": "rawlsing_next/m1_temporal_v554_admission_dedup.py",
+      "own_docstring_scope": "Pure fail-closed runtime for frozen SCR553/SCR554 M1 INGRESS semantics",
+      "TARGET_USE": "STRUCTURAL_MEDIATION_INPUT",
+      "public_api": "evaluate_m1_temporal_v554_admission_dedup(payload) -> M1Evaluation",
+      "what_it_does": [
+        "recognises three V554 signatures",
+        "SIG_001 NONTEMPORAL-EXACT, SIG_002 TEMPORAL-POINT-EXACT, SIG_003 TEMPORAL-RELATIONAL-EXACT",
+        "requires TEMPORAL_KEY+TEMPORAL_OBSERVATION for SIG_002",
+        "requires TEMPORAL_KEY+TEMPORAL_RELATION+relation_refs for SIG_003",
+        "requires V553_REQUIRED and REQUIRES_V553_OWNED_TEMPORAL_MEANING for temporal sigs",
+        "de-duplicates on an EQ_FIELDS fingerprint set"
+      ],
+      "EQ_FIELDS_time_and_comparability": [
+        "rule_relevant_effective_time_semantics_fingerprint",
+        "rule_relevant_source_relation_comparability_authority_fingerprint",
+        "source_universe_fingerprint",
+        "estimand_fingerprint",
+        "measure_and_weight_authority_fingerprint"
+      ],
+      "ADJUDICATION": "M1 is an INGRESS/DEDUP GATE, NOT A TEMPORAL PRODUCER. It recognises temporal semantics that must already exist and be V553-owned, and delegates their meaning (BasisKind.V553). It creates no time object, no key, no relation and no delta.",
+      "evidence_class": "CURRENT_IMPLEMENTED_CAPABILITY",
+      "F7_relevance": "M1 is the F7 INGRESS seam. It is a lawful home for admitting temporal products, and it is precisely where a missing producer becomes visible as a failure."
+    },
+    {
+      "module": "rawlsing_next/m3_v556_higher_order_structural.py",
+      "F6_relevance": "Higher-order empirical structure. No source-relation inference or temporal production.",
+      "evidence_class": "CURRENT_IMPLEMENTED_CAPABILITY"
+    },
+    {
+      "module": "rawlsing_next/m5_runtime_rsc_peer_prior.py",
+      "F6_relevance": "Peer-prior runtime. No multi-universe composition or temporal production.",
+      "evidence_class": "CURRENT_IMPLEMENTED_CAPABILITY"
+    },
+    {
+      "module": "rawlsing_next/source_backed_positioned_subject_possibility.py",
+      "F7_relevance": "The F8 consumer seam. Consumes positioned-subject possibility.",
+      "evidence_class": "CURRENT_IMPLEMENTED_CAPABILITY"
+    },
+    {
+      "module": "rawlsing_next/m6_actor_safe_expression.py",
+      "F6_relevance": "Actor firewall expression layer.",
+      "evidence_class": "CURRENT_IMPLEMENTED_CAPABILITY"
+    }
+  ],
+  "temporal_family_producer_search": {
+    "families_required_by_M1": [
+      "TEMPORAL_KEY",
+      "TEMPORAL_OBSERVATION",
+      "TEMPORAL_RELATION"
+    ],
+    "current_producers_found": 0,
+    "where_they_appear": [
+      "m1_temporal_v554_admission_dedup.py (the gate that REQUIRES them)",
+      "test harnesses constructing synthetic fixtures",
+      "tests"
+    ],
+    "class_definitions_searched": "no current module defines any class matching Temporal / Wave / Anchor / Interval",
+    "conclusion": "F7 has a lawful INGRESS GATE but NO PRODUCER. The temporal object families M1 admits are produced nowhere in the current DAG.",
+    "evidence_class": "CURRENT_IMPLEMENTED_CAPABILITY"
+  },
+  "current_capability_summary": {
+    "F6_composition_without_pooling": "IMPLEMENTED (SOURCE_INDEXED_MULTI_UNIVERSE + AUTHORIZED_COMPOSITE)",
+    "F6_typed_cross_source_relation_object": "ABSENT \u2014 coexistence is represented, but corroboration/contradiction/complementarity are not typed relations.",
+    "F7_temporal_identity_producer": "ABSENT",
+    "F7_temporal_relation_producer": "ABSENT",
+    "F7_ingress_gate": "IMPLEMENTED (M1)",
+    "noncomparability_typed_state": "IMPLEMENTED (EMPIRICAL_FACT_NONCOMPARABLE)",
+    "disagreement_policy": "SLOT EXISTS BUT UNCONSTRAINED (free-text)",
+    "time_grain_vocabulary": "ABSENT (no interval / fieldwork / point-year enum anywhere)",
+    "F8_consumer_seam": "IMPLEMENTED (positioned-subject possibility)"
+  }
+}

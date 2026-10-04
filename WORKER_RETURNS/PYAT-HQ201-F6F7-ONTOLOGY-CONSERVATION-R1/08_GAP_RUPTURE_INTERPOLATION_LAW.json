@@ -1,0 +1,165 @@
+{
+  "schema": "PYAT_HQ201_GAP_RUPTURE_INTERPOLATION_LAW@1.0.0",
+  "current_law_status": "NO CURRENT BINDING LAW GOVERNS INTERPOLATION. What follows is the conservative constituted position plus the historical evidence, with the residual marked for HQ.",
+  "O5_time_grain": {
+    "question": "What time object is lawful?",
+    "current_capability": {
+      "evidence_class": "CURRENT_IMPLEMENTED_CAPABILITY",
+      "statement": "No time-grain vocabulary exists in the current DAG. The only time-adjacent slots are allowed_effective_time_or_interval_refs (a tuple of ExactRef), effective_period (free Mapping) and time_geography_applicability (free Mapping). None is typed.",
+      "where": "rawlsing_next/pre553_structural_admission.py"
+    },
+    "historical_evidence": {
+      "evidence_class": "HISTORICAL_FUNCTIONAL_CAPITAL",
+      "statement": "V553 forced a POINT-YEAR calendar anchor per wave, refused to treat a wave ordinal as a year, and refused duplicate anchors per year. Fieldwork intervals were not represented.",
+      "where": "ddm_v553_temporal_identity.py"
+    },
+    "constituted_grains": [
+      {
+        "grain": "point_year",
+        "status": "HISTORICALLY EXERCISED",
+        "authority": "V553 explicit temporal/fieldwork/survey year anchor"
+      },
+      {
+        "grain": "fieldwork_interval",
+        "status": "NO CURRENT OR HISTORICAL CONTRACT",
+        "authority": null,
+        "note": "Commission O5 lists it and case C depends on it, but nothing establishes it."
+      },
+      {
+        "grain": "wave_interval",
+        "status": "NO CONTRACT"
+      },
+      {
+        "grain": "bounded_period",
+        "status": "NO CONTRACT"
+      },
+      {
+        "grain": "anchor",
+        "status": "IMPLEMENTED AS A SLOT",
+        "authority": "allowed_effective_time_or_interval_refs; M1 EQ_FIELDS carries rule_relevant_effective_time_semantics_fingerprint"
+      },
+      {
+        "grain": "gap",
+        "status": "HISTORICAL CONTRACT ONLY",
+        "authority": "V553_TEMPORAL_GAP_AND_ABSENCE_INDEX_SCHEMA"
+      },
+      {
+        "grain": "unknown_interval",
+        "status": "HISTORICAL CONTRACT ONLY",
+        "authority": "same; gap_marked_unknown default"
+      },
+      {
+        "grain": "interpolated_period",
+        "status": "PROHIBITED PENDING SEPARATE AUTHORITY",
+        "authority": null
+      }
+    ],
+    "no_implicit_midpoint_or_year_coercion": {
+      "evidence_class": "CURRENT_BINDING_LAW",
+      "statement": "Binding. HQD-125 \u00a710 requires exact identity authority; V553's refusal to coerce an ordinal to a year is the concrete constraint to conserve.",
+      "where": "PYAT_CONTROL_ROOM/24_HQD125_DDM_FUNCTIONAL_CONSERVATION_AND_PREV3_ACCEPTANCE_LAW.md \u00a710 + ddm_v553_temporal_identity.py"
+    },
+    "FORK": {
+      "id": "TIME-GRAIN-FORK",
+      "class": "ASTRA_DECISION_CANDIDATE",
+      "question": "For MULTI-SOURCE comparison, is temporal identity keyed on a point year or on a fieldwork interval?",
+      "why_it_is_underdetermined": [
+        "V553's point-year choice was adequate for a single-family, single-country track and is NOT established as adequate for comparing two families with nonaligned fieldwork intervals.",
+        "No binding law names a time grain at all.",
+        "The current slots are untyped, so nothing currently prevents a caller from smuggling a midpoint year.",
+        "Case C cannot be answered without deciding this."
+      ],
+      "consequence_if_wrong": "Either a fabricated common time base (silently manufacturing comparability) or a refusal of lawful cross-family comparison (silently losing it).",
+      "scope_limit": "This fork BLOCKS case C cross-family temporal comparison. It does NOT block case A same-survey F7, where point-year is conservative and adequate.",
+      "not_blocking_bounded_implementation": true
+    }
+  },
+  "O7_rupture_and_causal_explanation": {
+    "four_layers_kept_separate": [
+      {
+        "layer": "empirical discontinuity / rupture CANDIDATE",
+        "status": "HISTORICAL CONTRACT ONLY",
+        "authority": "V553_STRUCTURAL_RUPTURE_CANDIDATE_INDEX_SCHEMA",
+        "note": "Keeping the word CANDIDATE is the entire safeguard."
+      },
+      {
+        "layer": "authorized rupture CLASSIFICATION",
+        "status": "NO PRODUCER, NO AUTHORITY",
+        "authority": null
+      },
+      {
+        "layer": "named external EVENT",
+        "status": "SLOT RESERVED, NEVER FILLED",
+        "authority": "V553_RUPTURE_EVENT_SLOT_LEDGER_SCHEMA with rupture_override_status = 'reserved_not_filled' on every row",
+        "note": "No external-event authority was ever established. Conserve the slot; bind nothing."
+      },
+      {
+        "layer": "causal EXPLANATION",
+        "status": "EXPLORATORY / NEVER BINDING",
+        "authority": null,
+        "note": "'causal' occurs ZERO times in the 4187-line V553 temporal pressure module. There is no historical machinery and no current law."
+      }
+    ],
+    "rule": "Temporal coincidence must never become causal authority. Naming a cause for a temporal break requires NEW authority that exists in no evidence class.",
+    "required_authority_before_naming_a_cause": [
+      "an established event authority (the reserved slot must be filled by an accountable authority, not by inference)",
+      "a typed rupture classification distinct from the candidate",
+      "an explicit causal claim contract with its own falsification test"
+    ],
+    "current_class_for_causal_naming": "NEW_PROPOSAL_REQUIRING_HQ_ADOPTION"
+  },
+  "O8_interpolation": {
+    "was_interpolation_ever_binding_authority": {
+      "evidence_class": "HISTORICAL_FUNCTIONAL_CAPITAL",
+      "statement": "NO. It was policy-gated provisional implementation. V553 gates it behind an explicit allow_interpolation boolean, defaults to gap_marked_unknown, labels rows temporal_scope='year_interpolated' and pressure_status='interpolated', and records a policy ledger. 'cautious_interpolation_allowed' is the source authority status.",
+      "where": "ddm_v553_temporal_pressure.py"
+    },
+    "should_gaps_remain_typed_unknown_by_default": {
+      "evidence_class": "CURRENT_BINDING_LAW",
+      "statement": "YES. This is both the historical default and the constituted position. Nothing in current law authorises interpolation, so the conservative default is a typed unknown.",
+      "where": "PYAT_CONTROL_ROOM/24_HQD125_DDM_FUNCTIONAL_CONSERVATION_AND_PREV3_ACCEPTANCE_LAW.md \u00a710 (exact authority required) + historical default"
+    },
+    "what_authority_would_be_needed_to_interpolate": [
+      "an explicit, operation-scoped interpolation authority reference",
+      "a named, non-obsolete interpolation method (linear_between_authorized_waves is obsolete)",
+      "a declared uncertainty/penalty representation for the synthesized value",
+      "a statement of which account the interpolated value may satisfy \u2014 an interpolated period may not silently become an observation"
+    ],
+    "may_interpolation_cross_a_rupture_candidate": {
+      "historical_answer": false,
+      "evidence": "interpolation_across_rupture_allowed = False (hard-coded, V553:1282)",
+      "current_law_answer": {
+        "evidence_class": "CURRENT_BINDING_LAW",
+        "statement": "NO. Conserving the constraint is correct and conservative: crossing a rupture candidate with a synthesized value would manufacture continuity across a detected discontinuity.",
+        "where": "PYAT_CONTROL_ROOM/24_HQD125_DDM_FUNCTIONAL_CONSERVATION_AND_PREV3_ACCEPTANCE_LAW.md \u00a710 + V553 constraint"
+      }
+    },
+    "how_uncertainty_and_penalty_are_represented": {
+      "evidence_class": "HISTORICAL_FUNCTIONAL_CAPITAL",
+      "statement": "V553_CONFIDENCE_PENALTY_LEDGER_SCHEMA and V553_PRESSURE_BASIS_LEDGER_SCHEMA carry it as a first-class ledger; the current DAG has allowed_uncertainty_states as a typed-state tuple on structural admission.",
+      "where": "ddm_v553_schema.py + pre553_structural_admission.py"
+    },
+    "INTERPOLATION != OBSERVATION": "Binding. An interpolated value must carry an interpolated marker in its own right and may never be counted as an observed wave."
+  },
+  "O6_disagreement": {
+    "current_slot": {
+      "evidence_class": "CURRENT_IMPLEMENTED_CAPABILITY",
+      "statement": "source_disagreement_noncomparability_policy on StructuralAdmissionRule.",
+      "where": "pre553_structural_admission.py"
+    },
+    "slot_defect": "Validated only as a NON-EMPTY STRING with no enumerated vocabulary. A caller could name an averaging policy in free text with no structural refusal.",
+    "lawful_options": [
+      "preserve plural observations as separate source-indexed facts (IMPLEMENTED via SOURCE_INDEXED_MULTI_UNIVERSE)",
+      "typed contradiction relation (NO CURRENT OWNER)",
+      "typed unresolvedness (PARTIAL \u2014 EMPIRICAL_FACT_NONCOMPARABLE exists)"
+    ],
+    "forbidden": "an averaged synthetic value, unless exact composition authority admits it. SOURCE_CONFLICT != AVERAGE_BY_DEFAULT is binding and must become structural, not textual.",
+    "current_class": "NEW_PROPOSAL_REQUIRING_HQ_ADOPTION",
+    "note": "The fix is to enumerate the policy vocabulary and refuse averaging by default. That is bounded implementation under the present DAG, not architecture reopen."
+  },
+  "absence_law": {
+    "ABSENCE != ZERO": "Binding. V553_TEMPORAL_GAP_AND_ABSENCE_INDEX_SCHEMA makes absence an indexed observation. anchor_copy must not be inherited.",
+    "NONCOMPARABLE != NO_CHANGE": "Binding AND CURRENTLY IMPLEMENTED. EMPIRICAL_FACT_NONCOMPARABLE is an enumerated refusal with reason codes in pre553_structural_admission.py.",
+    "TYPED_SEMANTIC_RELATION_ABSENCE != EMPIRICAL_COTRAVEL_ABSENCE": "Binding (HQD-125 \u00a75)."
+  }
+}

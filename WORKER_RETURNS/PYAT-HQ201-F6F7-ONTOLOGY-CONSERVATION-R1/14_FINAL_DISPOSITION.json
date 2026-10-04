@@ -1,0 +1,128 @@
+{
+  "schema": "PYAT_HQ201_FINAL_DISPOSITION@1.0.0",
+  "lane": "PYAT-HQ201-F6F7-ONTOLOGY-CONSERVATION-R1",
+  "startup_sha": "9b3a70af26da3404f988674c879a44ebfcae196a",
+  "documentary_base": "2dcc9a2ed7cf9e11ae91e01e9d8030c6ca4b85eb",
+  "disposition": "F6_F7_ONTOLOGY_PARTIAL__NAMED_CURRENT_OWNERS_MISSING",
+  "allowed_dispositions_considered": [
+    {
+      "value": "F6_F7_ONTOLOGY_SUBSTANTIALLY_CONSERVED__CURRENT_CONSTITUTION_CAN_BE_BOUND",
+      "rejected_because": "It would assert the ontology can simply be bound as it stands. It cannot: eight required relations have NO current owner, including every temporal producer, and one high-consequence fork is genuinely underdetermined. 'Substantially conserved' is true of the CONCEPTUAL capital but not of a bindable current constitution."
+    },
+    {
+      "value": "F6_F7_ONTOLOGY_PARTIAL__NAMED_CURRENT_OWNERS_MISSING",
+      "selected": true,
+      "why": "The binding law is determinate and the functional capital is substantially conserved, but the current DAG has no producer for temporal identity, temporal observation, temporal relation, delta, directionality, trajectory, rupture candidate or gap/absence, and no typed cross-source relation object. Every one of these is a NAMED, BOUNDED absence rather than an architectural impossibility."
+    },
+    {
+      "value": "F6_F7_HIGH_CONSEQUENCE_FORK__ASTRA_DECISION_REQUIRED",
+      "rejected_because": "Exactly one fork is genuinely underdetermined (TIME-GRAIN-FORK, anchor grain for cross-family comparison) and it is referred out inside the packet. Making it the lane disposition would call Astra for the whole lane when it blocks only composition case C, and the commission warns against calling Astra merely because work remains."
+    },
+    {
+      "value": "F6_F7_ARCHITECTURE_REOPEN_CANDIDATE",
+      "rejected_because": "Fails the narrow HQD-125 \u00a715 test. Every missing owner IS satisfiable by bounded implementation under the present DAG: M1 already specifies the temporal ingress contract, structural admission already carries the time/uncertainty/noncomparability slots, and the empirical query module already implements the lawful composition shape. Nothing is unrepresentable."
+    },
+    {
+      "value": "MATERIAL_CONFLICT_IN_GOVERNING_LAW",
+      "rejected_because": "No conflict was found. HQD-125 and the HQ201 adjudication are consistent; the adjudication confirms rather than supersedes the F6/F7 law. The module disclaimers and the free-text disagreement slot are implementation gaps, not contradictions between authorities."
+    }
+  ],
+  "headline": "F6 is largely IMPLEMENTED and lawful today: cross-source composition without pooling exists in code as source-indexed per-universe facts under a fail-closed AUTHORIZED_COMPOSITE gate. F7 has a lawful INGRESS GATE and NO PRODUCER AT ALL. The ontology is substantially conserved as functional capital; what is missing is named and bounded.",
+  "evidence_class_tally": {
+    "CURRENT_BINDING_LAW": "F6 \u00a7\u00a79 and F7 \u00a710 plus F8 and the anti-collapse freezes",
+    "CURRENT_IMPLEMENTED_CAPABILITY": "6 relations owned (composition, no-pooling, noncomparability, F8 seam, firewall, and the M1 ingress gate)",
+    "HISTORICAL_FUNCTIONAL_CAPITAL": "27 concepts classified: 15 KEEP FUNCTION, 4 KEEP CONSTRAINT ONLY, 6 OBSOLETE IMPLEMENTATION DETAIL, 2 EXPLORATORY/NEVER BINDING",
+    "EXPLORATORY_NONBINDING_CAPITAL": "Field Forge, admitted as requirements and failure modes only; ZERO vocabulary promoted",
+    "NEW_PROPOSAL_REQUIRING_HQ_ADOPTION": "typed cross-source relation object; disagreement-policy vocabulary; whether one temporal-key contract may span response surfaces and structural propositions",
+    "ASTRA_DECISION_CANDIDATE": "exactly one: TIME-GRAIN-FORK"
+  },
+  "decisive_findings": [
+    {
+      "id": "F1",
+      "finding": "F6 cross-source composition WITHOUT pooling is already implemented.",
+      "evidence": "pre553_empirical_query.py SOURCE_INDEXED_MULTI_UNIVERSE yields one fact per universe in a single result and never a merged row; AUTHORIZED_COMPOSITE requires pooling, nonduplication and estimand_composition authority roles and raises when any is absent.",
+      "significance": "CROSS_SOURCE_COEXISTENCE != RESPONDENT_POOLING is structural, not aspirational."
+    },
+    {
+      "id": "F2",
+      "finding": "F7 has an ingress gate and NO producer.",
+      "evidence": "m1_temporal_v554_admission_dedup.py is self-described as a 'Pure fail-closed runtime for frozen ... M1 INGRESS semantics' with TARGET_USE STRUCTURAL_MEDIATION_INPUT. It REQUIRES TEMPORAL_KEY, TEMPORAL_OBSERVATION and TEMPORAL_RELATION and delegates meaning to V553 (BasisKind.V553, REQUIRES_V553_OWNED_TEMPORAL_MEANING). Those three families appear ONLY in the gate and in synthetic test fixtures, and NO current module defines any Temporal/Wave/Anchor/Interval class.",
+      "significance": "This is the decisive structural fact. The F7 contract is largely written; the producer is absent."
+    },
+    {
+      "id": "F3",
+      "finding": "The prior phrase 'F7 cannot honestly close before F6' is not tenable as a dependency.",
+      "evidence": "F7's own law is defined within a survey family ('comparable same-survey waves') and never invokes cross-source composition; F6's own law never invokes temporal directionality. Case A is F7-complete alone and case B is F6-complete alone. Case G shows the dependency runs the wrong way: a REFUSED temporal relation must not block lawful cross-source coexistence, or F7-first would make case G unsatisfiable.",
+      "significance": "Corrected law: F6 and F7 are ORTHOGONAL per source and per track, and SERIAL only at the integrated whole-PRE-V3 world claim."
+    },
+    {
+      "id": "F4",
+      "finding": "The historical single-family rule must be split into function and topology.",
+      "evidence": "V553 temporal identity raises 'mixes survey families' on a per-report basis. The FUNCTION (declare your family; fail closed on mixing) is correct; the TOPOLOGY (one family per report) makes composition case D impossible.",
+      "significance": "Cleanest instance of recovering functional intent without inheriting obsolete topology."
+    },
+    {
+      "id": "F5",
+      "finding": "Interpolation was never binding authority.",
+      "evidence": "V553 gates it behind an explicit allow_interpolation boolean, defaults to gap_marked_unknown, marks rows temporal_scope='year_interpolated', and records a policy ledger with source_authority_status 'cautious_interpolation_allowed'.",
+      "significance": "Its absence from current law is constitutionally CORRECT, not a gap to fill."
+    },
+    {
+      "id": "F6",
+      "finding": "No causal authority exists in any evidence class.",
+      "evidence": "'causal' occurs ZERO times across the 4187-line V553 temporal pressure module; the rupture event-override slot is 'reserved_not_filled' on every row.",
+      "significance": "Naming a cause for a temporal break is NEW_PROPOSAL_REQUIRING_HQ_ADOPTION in a class that does not exist."
+    },
+    {
+      "id": "F7",
+      "finding": "Field Forge's most attractive vocabulary is self-marked speculative.",
+      "evidence": "Field Forge section 8 lists POSITIONED_SOCIAL_WORLD_PACKET, POSITIONAL_PRESSURE_FOOTPRINT, POSITION_GEOMETRY_FAMILY, DISPOSITION_GEOMETRY_ATLAS and others among 'proposals that remain merely speculative' that must not be smuggled into current Rawlsing.",
+      "significance": "The commission's own study list is therefore NOT adopted as current ontology."
+    },
+    {
+      "id": "F8",
+      "finding": "One slot that should enforce an anti-collapse law does not.",
+      "evidence": "source_disagreement_noncomparability_policy is validated only as a NON-EMPTY STRING with no enumerated vocabulary.",
+      "significance": "SOURCE_CONFLICT != AVERAGE_BY_DEFAULT is textual, not structural. Bounded fix: enumerate the vocabulary and refuse averaging by default."
+    }
+  ],
+  "architecture_test_outcome": {
+    "A_current_homes_exist": true,
+    "B_reopen_required": false,
+    "B_why_not": "HQD-125 \u00a715 requires that a responsibility cannot be satisfied by lawful same-grain succession or bounded implementation. Every missing owner passes that test in the affirmative: M1 defines the ingress contract, structural admission defines the admission shape with time slots, and the query module defines the lawful composition shape.",
+    "C_fork_present": "ONE (TIME-GRAIN-FORK)",
+    "C_scope_limit": "Blocks only composition case C cross-family interval comparison. Does not block case A same-survey F7, nor cases B, D's F7 half, E, F's per-track halves, or G's F6 half."
+  },
+  "anti_collapse_laws": {
+    "CROSS_SOURCE_COEXISTENCE != RESPONDENT_POOLING": "ADOPTED FROM AUTHORITY, and CURRENTLY STRUCTURALLY ENFORCED by SOURCE_INDEXED_MULTI_UNIVERSE + AUTHORIZED_COMPOSITE.",
+    "CROSS_SOURCE_COMPOSITION != SAME_RESPONDENT_JOINTNESS": "ADOPTED FROM AUTHORITY (HQD-125 \u00a79). No linkage authority may be assumed.",
+    "SAME_LABEL != SAME_TEMPORAL_OBJECT": "ADOPTED. Operationally grounded in the response-surface authority requirement.",
+    "COMPARABILITY != DIRECTIONALITY": "ADOPTED. Grounded in V551J's directionality_status/_basis/_coverage_status triple.",
+    "DIFFERENCE != TRAJECTORY": "ADOPTED, and STRENGTHENED: a trajectory requires at least three anchored points, so two waves cannot produce one at all.",
+    "TRAJECTORY != CAUSAL_EXPLANATION": "ADOPTED. No causal authority exists in any evidence class.",
+    "ABSENCE != ZERO": "ADOPTED. anchor_copy explicitly refused as inheritance.",
+    "NONCOMPARABLE != NO_CHANGE": "ADOPTED AND CURRENTLY IMPLEMENTED via EMPIRICAL_FACT_NONCOMPARABLE.",
+    "INTERPOLATION != OBSERVATION": "ADOPTED. No interpolation capability is proposed.",
+    "STRUCTURAL_WORLD_TIME != ACTOR_MEMORY": "ADOPTED. Enforced in the F8 contract as a refused inference.",
+    "SOURCE_CONFLICT != AVERAGE_BY_DEFAULT": "ADOPTED but CURRENTLY NOT STRUCTURALLY ENFORCED. Named gap.",
+    "F7_TEMPORAL_TRACK != F6_CROSS_SOURCE_FIELD": "ADOPTED. Justifies the orthogonal-not-serial finding F3.",
+    "F6_PLUS_F7 != ONE_SYNTHETIC_PANEL": "ADOPTED. Justifies the graph-not-table world object."
+  },
+  "what_this_lane_did_not_do": [
+    "Did not write or modify any production code.",
+    "Did not access any survey source.",
+    "Did not create a temporal producer, relation object or world container.",
+    "Did not decide the time-grain fork.",
+    "Did not adopt any Field Forge vocabulary as current ontology.",
+    "Did not inherit linear interpolation, anchor_copy, scalar pressure coefficients, or historical stage topology.",
+    "Did not close F6 or F7.",
+    "Did not claim R9 progress.",
+    "Did not perform C4 live work, C7, or actor/person implementation."
+  ],
+  "recommended_next_step_for_HQ": [
+    "Refer TIME-GRAIN-FORK to Astra (anchor grain for cross-family comparison). It blocks one composition case and nothing else.",
+    "Authorise Step 1: type the existing empty slots, in particular enumerate source_disagreement_noncomparability_policy and refuse averaging by default.",
+    "Authorise Steps 2-4 as conservation work: they implement a contract M1 already specifies, using functional intent already proven in V553/V551J while dropping the obsolete single-family-per-report topology and the provisional scalar/linear machinery.",
+    "Note that Steps 1, 2 and 5 are mutually independent and none requires architecture reopening."
+  ]
+}
