@@ -1,0 +1,175 @@
+{
+  "schema": "PYAT_HQ204_GAP_RUPTURE_TRAJECTORY_LAW@1.0.0",
+  "lane": "PYAT-HQ204-F7-R1",
+  "scope": "Items 5, 6 and 7 of the commissioned seven, plus the interpolation question they depend on. Written as conservation findings and bounded candidate law; nothing here is adopted by being written.",
+  "part_1_gap_and_absence_as_first_class_observation": {
+    "classification": "HISTORICAL_FUNCTION_LAWFULLY_CONSERVABLE",
+    "current_binding_base": {
+      "statement": "Absence is ALREADY a first-class typed observation in the current empirical jurisdiction, and is structurally distinct from zero.",
+      "evidence": [
+        "rawlsing_next/pre553_empirical_objects.py:102-104 EMPIRICAL_FACT_STATE enumerates SUPPORTED, OBSERVED_ZERO, ZERO_SUPPORT, ZERO_OVERLAP, LOW_SUPPORT, NONCOMPARABLE, NOT_APPLICABLE, UNAVAILABLE, UNCERTAINTY_UNQUANTIFIED, UNRESOLVED, VALID_EMPTY, INTEGRITY_FAILURE.",
+        "rawlsing_next/pre553_empirical_objects.py:717-722 struct: ZERO_SUPPORT requires zero exact raw denominator; OBSERVED_ZERO requires a positive denominator and zero numerator; SUPPORTED requires a positive denominator. The distinction cannot be collapsed by a caller.",
+        "rawlsing_next/pre553_empirical_objects.py:60-68 RESPONSE_EVENT_STATE enumerates INAPPLICABLE, NOT_ASKED, SOURCE_SPECIFIC_SPECIAL, INVALID_UNRESOLVED.",
+        "audit MATRIX.md W22 'Typed negatives and bounded consumption' is CURRENT_BINDING_CONCEPTUALLY_CLOSED with blocker no.",
+        "PYAT_CONTROL_ROOM/24_HQD125_DDM_FUNCTIONAL_CONSERVATION_AND_PREV3_ACCEPTANCE_LAW.md:137 freezes TYPED_SEMANTIC_RELATION_ABSENCE != EMPIRICAL_COTRAVEL_ABSENCE.",
+        "SDTF HQ adoption (E28) binding companion law: 'failed positive proof, missing evidence, stale evidence, expired evidence, and termination of P do not by themselves prove a negative or opposite fact'; UNKNOWN_NOT_PROVEN is a no-fact adjudication result, never an actor state."
+      ]
+    },
+    "missing_for_the_temporal_case": {
+      "statement": "There is no temporal gap/absence object and no temporal noncomparability state family.",
+      "evidence": [
+        "TEMPORAL_NONCOMPARABLE occurs exactly once in the worktree: rawlsing_next/pre553_source_relations.py:52-55, as a bare string inside FORBIDDEN_BACKFILL_TARGET_STATES. It is in no state family, has no producer and no schema.",
+        "No current module defines a gap, missing-year, interval-span or absence-between-anchors object.",
+        "M1's SCR553 states can express NO_POSITIVE_V553_OUTPUT__MISSING_TEMPORAL_AUTHORITY and __MISSING_COMPARABILITY_AUTHORITY (m1_temporal_v554_admission_dedup.py:50-57) but no gap state."
+      ]
+    },
+    "conserved_historical_function": {
+      "authority_class": "HISTORICAL_FUNCTIONAL_CAPITAL, provisional V553 schema v0.2",
+      "evidence": [
+        "data/ddm_build_copy/ddm_v553_schema.py:521-537 V553_TEMPORAL_GAP_AND_ABSENCE_INDEX_SCHEMA requires missing_year_or_span, absence_type, known_absence, missingness_reason, downstream_permission, key_authorization_status, value_inference_allowed.",
+        "data/ddm_build_copy/ddm_v553_temporal_pressure.py:2772-2803 emits one row per missing year with absence_type 'missing_year', known_absence True, missingness_reason 'no_survey_observation_preserve_unknown', downstream_permission gated on the authorized key, and value_inference_allowed False.",
+        "data/ddm_build_copy/ddm_v553_temporal_pressure.py:2675-2727: for gap > 0 on an authorized key the interpolation segment index forces interpolation_status 'unknown_gap_preserved', method 'none', allowed False, reason 'no_survey_observation_preserve_unknown'; the allow_interpolation parameter is accepted and never read in the body.",
+        "data/ddm_build_copy/ddm_v553_temporal_pressure.py:2895-2913 gap rows carry pressure_level None, pressure_direction 'unknown', pressure_authority 'known_unknown_gap', temporal_status 'unknown_gap', pressure_value_kind 'gap', allowed_downstream_use False.",
+        "data/ddm_build_copy/ddm_v553_temporal_pressure.py:1330-1350 gap authority-ledger rows carry anchor_status 'unknown_gap', authority_status 'known_unknown_gap', use_permission_class 'absence_metadata_only', confidence_penalty 1.0.",
+        "data/ddm_build_copy/ddm_v553_temporal_pressure.py:3005 required_v554_absence_handling = 'carry forward unresolved gaps and do not infer personhood'.",
+        "data/ddm_build_copy/ddm_v553_temporal_pressure.py:955-1081 the absence/noncomparability register has register_kind in {missing_year, cross_wave_noncomparability, v552j_blocker_context, pressure_gap} with register_status 'unknown_noncomparable'."
+      ]
+    },
+    "historical_defect_reported_not_conserved": {
+      "defect": "Absence/zero conflation in the country-year grid",
+      "evidence": "data/ddm_build_copy/ddm_v553_temporal_pressure.py:1130-1134 writes pressure_value = 0.0 for a missing year while labelling the band 'unknown' and the method 'gap_marked_unknown' (or 'linear_between_authorized_waves'). One JSON branch preserves null (:1173-1175) but the grid conflates absence with zero.",
+      "disposition": "OBSOLETE. The gap/absence indices do the right thing and are the conservable function."
+    },
+    "correction_to_prior_record": {
+      "claim": "H08 asserts 'ABSENCE != ZERO: Binding' and cites V553_TEMPORAL_GAP_AND_ABSENCE_INDEX_SCHEMA.",
+      "correction": "The general typed-absence law is current binding, and SDTF binds missing-evidence noncollapse on the objective-consequence path. For TEMPORAL gaps specifically the cited authority is a provisional (v0.2) historical schema and is NOT current binding. Correct class: HISTORICAL_FUNCTION_LAWFULLY_CONSERVABLE."
+    },
+    "law_candidate": [
+      {"rule": "TEMPORAL_ABSENCE != ZERO", "meaning": "a missing observation span is never a zero value and never an unchanged value"},
+      {"rule": "TEMPORAL_ABSENCE != NONCOMPARABILITY", "meaning": "a gap and a refused comparison are distinct typed states with distinct reasons"},
+      {"rule": "GAP_IS_A_FIRST_CLASS_OBSERVATION", "meaning": "a gap is emitted as an indexed observation carrying its span, its type, its reason and its use permission"},
+      {"rule": "NO_VALUE_INFERENCE_BY_DEFAULT", "meaning": "value_inference_allowed is False unless a separate adopted authority permits it"},
+      {"rule": "GAP_USE_CEILING", "meaning": "a gap may be consumed as absence metadata for planning/coverage; it may not be consumed as a value, a zero, or a comparison operand"},
+      {"rule": "NONCOMPARABLE != NO_CHANGE", "meaning": "a refused comparison is never reported as absence of change"}
+    ],
+    "no_astra": "This is a typed representable state, not an underdetermined fork."
+  },
+  "part_2_rupture_candidate": {
+    "classification": "HISTORICAL_FUNCTION_LAWFULLY_CONSERVABLE",
+    "four_layers_kept_strictly_separate": [
+      {
+        "layer": "empirical discontinuity / rupture CANDIDATE",
+        "status": "HISTORICAL_FUNCTION_LAWFULLY_CONSERVABLE",
+        "authority": "data/ddm_build_copy/ddm_v553_schema.py:539-557; data/ddm_build_copy/ddm_v553_temporal_pressure.py:2806-2834",
+        "safeguards_conserved": [
+          "rupture_status is 'candidate' on every row",
+          "external_event_claim_made is False on every row",
+          "the candidate is bound to the exact delta ids that produced it (source_delta_ids_json)",
+          "interpretation_permission requires comparability and is otherwise blocked with a typed reason"
+        ]
+      },
+      {
+        "layer": "authorized rupture CLASSIFICATION",
+        "status": "CURRENT SUCCESSOR MISSING",
+        "authority": null,
+        "note": "No adopted or historical authority classifies a candidate as a rupture. Classification would need its own competent authority and a falsification test."
+      },
+      {
+        "layer": "named external EVENT",
+        "status": "RESERVED SLOT, NEVER FILLED, MUST STAY UNFILLED ABSENT A REAL AUTHORITY",
+        "authority": "data/ddm_build_copy/ddm_v553_temporal_pressure.py:887-923 and :1273-1290 — slot_name 'event_context' and 'rupture_override', event_authority_ref '', rupture_override_status 'reserved_not_filled', event_registry_status 'not_supplied', override_count 0",
+        "lawful_current_home_if_ever_claimed": "adopted SDTF objective-consequence jurisdiction (EVENT / CONDITION / DIRECTED_RELATION / RECURRENT_ACTIVITY / TRANSITION / ORDERED_HISTORY temporal-form integrity; K1-K4; causal-use and calibration authority)"
+      },
+      {
+        "layer": "causal EXPLANATION",
+        "status": "TERMINAL_NECESSITY_UNPROVED",
+        "authority": null,
+        "evidence": [
+          "audit MATRIX.md X07 'Interpolation or causal explanation of temporal rupture' is TERMINAL_NECESSITY_UNPROVED with blocker no.",
+          "case-insensitive search for 'caus' in data/ddm_build_copy/ddm_v553_temporal_pressure.py (4187 lines) returns ZERO matches.",
+          "data/ddm_build_copy/ddm_v551j_schema.py:732 forbids 'do_not_render_as_causal_joint_effect'.",
+          "audit REPORT.md: adopted SDTF distinguishes causal-use and calibration authority and 'does not thereby license a temporal-rupture causal claim'.",
+          "PYAT_CONTROL_ROOM/24_HQD125_DDM_FUNCTIONAL_CONSERVATION_AND_PREV3_ACCEPTANCE_LAW.md:248 TWO_WAVES_EXIST != TEMPORAL_DIRECTIONALITY_AUTHORITY; the audit's binding noncollapse likewise keeps coincidence separate from cause."
+        ]
+      }
+    ],
+    "historical_numeric_triggers_reported_not_conserved": {
+      "evidence": "data/ddm_build_copy/ddm_v553_temporal_pressure.py:2812-2827 — reversal requires delta_direction in {down, up} and strength >= 0.35; rows below strength 0.25 are skipped; interpretation_permission requires comparability and |delta| >= 0.25",
+      "disposition": "NOT CONSERVED as adopted constants. Candidacy thresholds, if any, must be bound by a competent authority rather than inherited."
+    },
+    "law_candidate": [
+      {"rule": "RUPTURE_CANDIDATE != RUPTURE_CLASSIFICATION", "meaning": "a flagged discontinuity is a candidate observation, never a classified break"},
+      {"rule": "RUPTURE_CANDIDATE != EXTERNAL_EVENT", "meaning": "no external event may be named or implied"},
+      {"rule": "RUPTURE_CANDIDATE != CAUSE", "meaning": "temporal coincidence and discontinuity never become causal authority"},
+      {"rule": "RUPTURE_CANDIDATE_INTERPRETATION_REQUIRES_COMPARABILITY", "meaning": "a candidate in a noncomparable pair is metadata only"},
+      {"rule": "NO_INTERPOLATION_ACROSS_A_RUPTURE_CANDIDATE", "meaning": "a synthesized value may not manufacture continuity across a flagged discontinuity"},
+      {"rule": "RUPTURE_RESERVED_AUTHORITY_STAYS_RESERVED", "meaning": "the event/override slot remains 'reserved_not_filled' until an accountable authority fills it"}
+    ],
+    "no_astra": "Every layer is either typed-representable as a candidate, explicitly reserved, or classified TERMINAL_NECESSITY_UNPROVED. No underdetermined fork remains."
+  },
+  "part_3_trajectory": {
+    "classification": "TERMINAL_NECESSITY_UNPROVED",
+    "adopted_law_status": {
+      "adopted_requirement": "PYAT_CONTROL_ROOM/24_HQD125_DDM_FUNCTIONAL_CONSERVATION_AND_PREV3_ACCEPTANCE_LAW.md:317-319 (Gate F7) requires that comparable same-survey waves can produce lawful temporal movement / pressure fields with typed non-comparability where required. Section 10 names the domains the world must be capable of representing.",
+      "does_the_requirement_name_a_trajectory_object": false,
+      "binding_noncollapse": "DIFFERENCE != TRAJECTORY (audit REPORT.md line 103, 'the binding noncollapse'; accepted by HQ204)"
+    },
+    "cardinality": {
+      "trajectory_requires_at_least_three_anchors": "UNSUPPORTED_STRENGTHENING",
+      "evidence": [
+        "audit REPORT.md line 103 refutes the threshold and forbids importing it as current law.",
+        "Historical minimum-anchor counts found: >= 2 at data/ddm_build_copy/ddm_v553_harmonization.py:605 and :992-993, and at data/ddm_build_copy/ddm_v553_temporal_pressure.py:785, :2604, :2683, :2991, :3467.",
+        "Occurrences of the number 3 as an anchor threshold: NONE in adopted authority or in any historical temporal module."
+      ],
+      "minimal_lawful_ordered_relation": "exactly two authorized comparable anchors"
+    },
+    "existence_of_the_noun": {
+      "in_adopted_law": "no occurrence in adopted control authority",
+      "in_current_code": "no occurrence in any current module or schema as a form",
+      "in_historical_temporal_modules": "ZERO occurrences of 'traject' in the 4187-line V553 pressure module",
+      "only_historical_occurrence": {
+        "ref": "data/ddm_build_copy/ddm_v551j_schema.py:726-734",
+        "verbatim": "'do_not_render_as_trajectory' inside V551J_V2_FORBIDDEN_CLAIM_IDS, alongside 'do_not_render_as_temporal_pressure', 'do_not_render_as_rupture' and 'do_not_render_as_causal_joint_effect'",
+        "meaning": "The historical schema REFUSED the noun. It is a prohibition, not a function."
+      }
+    },
+    "coverage_without_a_trajectory_object": "A longer movement is represented as a sequence of authorized ordered relation claims (consecutive pairs). No distinct trajectory object is constituted, and the sequence must not be named a trajectory, a trend or a rate unless a separate adopted authority establishes that claim form.",
+    "law_candidate": [
+      {"rule": "DIFFERENCE != TRAJECTORY", "meaning": "two differing observations do not constitute an ordered trajectory"},
+      {"rule": "ORDERED_RELATION_CHAIN != TRAJECTORY", "meaning": "a chain of authorized ordered pairs is a sequence of relation claims, not a trajectory object"},
+      {"rule": "NO_MINIMUM_ANCHOR_THRESHOLD_IS_LAW", "meaning": "neither 2 nor 3 is a trajectory threshold; the ordered-relation minimum is 2 and no trajectory threshold exists"},
+      {"rule": "TRAJECTORY_REQUIRES_ITS_OWN_ADOPTED_AUTHORITY_IF_EVER_CLAIMED", "meaning": "including its own falsification test, its own estimand and its own uncertainty representation"}
+    ],
+    "no_astra": "Necessity is unproved, not underdetermined. HQ may docket the noun or decline it; either way no external decision is required to proceed."
+  },
+  "part_4_interpolation": {
+    "classification": "KEEP CONSTRAINT ONLY (never adopted authority; the constraint is conservable, the method is not)",
+    "was_interpolation_ever_binding_authority": false,
+    "evidence": [
+      "data/ddm_build_copy/ddm_v553_temporal_pressure.py:3169-3178 build_v553_temporal_pressure_field(..., allow_interpolation: bool = False, ...) — the default is False.",
+      "data/ddm_build_copy/compile_v553_temporal_pressure_field.py:17-41 — the CLI exposes no interpolation flag at all, so the builder is always called with the default False.",
+      "data/ddm_build_copy/ddm_v553_temporal_pressure.py:3210 — interpolated rows are produced only when allow_interpolation is true.",
+      "data/ddm_build_copy/ddm_v553_temporal_pressure.py:850-884 — when enabled it records interpolation_authority 'wave_harmonization_report' and a confidence_penalty ladder 0.0 / 0.15 / 1.0; methods are 'anchor_copy', 'linear_between_authorized_waves', 'gap_marked_unknown'.",
+      "data/ddm_build_copy/ddm_v553_temporal_pressure.py:2675-2727 — the key-level segment index hard-codes interpolation_allowed False with 'unknown_gap_preserved' whenever a gap exists; the allow_interpolation parameter is accepted and never read.",
+      "data/ddm_build_copy/ddm_v553_temporal_pressure.py:1282 — interpolation_across_rupture_allowed is hard-coded False.",
+      "data/ddm_build_copy/ddm_v553_temporal_pressure.py:2987 — the V553->V554 handoff hard-codes interpolation_allowed False and interpolated_row_count 0."
+    ],
+    "current_law_adjacent": "The accepted base possibility model is exact conditional lookup with no smoothing, interpolation or extrapolation (audit F8 answer, Model; evidence E17 rawlsing_next/source_backed_positioned_subject_possibility.py). That is a no-interpolation discipline at the F8 model grain.",
+    "historical_self_contradiction_reported": "The legacy country-year grid (data/ddm_build_copy/ddm_v553_temporal_pressure.py:1130-1134) interpolates across gaps when enabled, while the key-level segment index and every sidecar forbid it. The permissive branch is the obsolete one.",
+    "law_candidate": [
+      {"rule": "INTERPOLATION != OBSERVATION", "meaning": "an interpolated value must carry its own interpolated marker and may never be counted as an observed anchor"},
+      {"rule": "NO_INTERPOLATION_WITHOUT_SEPARATE_OPERATION_SCOPED_AUTHORITY", "meaning": "an explicit authority ref, a named non-obsolete method, a declared uncertainty/penalty representation, and a statement of which account the value may satisfy"},
+      {"rule": "NO_INTERPOLATION_ACROSS_A_RUPTURE_CANDIDATE", "meaning": "conserving the historical hard constraint"},
+      {"rule": "GAPS_DEFAULT_TO_TYPED_UNKNOWN", "meaning": "the default outcome is preservation of the unknown, not a synthesized value"},
+      {"rule": "INTERPOLATED_PERIOD != OBSERVED_PERIOD", "meaning": "an interpolated span may not silently become an observation, an anchor or a comparison operand"}
+    ],
+    "refused_inheritances": ["linear_between_authorized_waves as a lawful method", "anchor_copy", "the confidence-penalty ladder", "the country-year interpolation branch"],
+    "no_astra": "The question is answered by default-and-authority: interpolate only under separate adopted authority, never across a candidate, never as an observation."
+  },
+  "summary": {
+    "gap": "HISTORICAL_FUNCTION_LAWFULLY_CONSERVABLE, on a current-binding typed-absence base; requires a real temporal noncomparability/gap state family.",
+    "rupture_candidate": "HISTORICAL_FUNCTION_LAWFULLY_CONSERVABLE at candidate grain only; classification and causal naming are not conserved, and causal explanation is TERMINAL_NECESSITY_UNPROVED.",
+    "trajectory": "TERMINAL_NECESSITY_UNPROVED; no form exists in adopted law, current code or historical temporal modules, and the only historical occurrence is a prohibition.",
+    "interpolation": "constraint conserved, methods refused, gaps default to typed unknown, never across a rupture candidate."
+  }
+}

@@ -1,0 +1,202 @@
+{
+  "schema": "PYAT_HQ204_FINAL_DISPOSITION@1.0.0",
+  "lane": "PYAT-HQ204-F7-R1",
+  "role": "independent adversarial documentary semantic-forensics reviewer",
+  "terminal": "HQ204_F7_POSITIVE_SEMANTICS_RETURNED__HQ_ADJUDICATION_REQUIRED",
+  "disposition": "F7_POSITIVE_SEMANTICS_PARTIAL__NAMED_FORMS_MISSING",
+  "disposition_allowed_set": [
+    "F7_POSITIVE_SEMANTICS_CONSERVED__BOUNDED_DIRECTIONALITY_AUTHORITY_READY",
+    "F7_POSITIVE_SEMANTICS_PARTIAL__NAMED_FORMS_MISSING",
+    "F7_HIGH_CONSEQUENCE_FORK__ASTRA_NEEDED",
+    "F7_ARCHITECTURE_REOPEN_REQUIRED",
+    "MATERIAL_AUTHORITY_CONFLICT"
+  ],
+  "startup_verification": {
+    "repository": "maidiu/rawlsing",
+    "branch": "agent/reviewer-pyat-hq204-f7-r1",
+    "commissioned_startup_sha": "beb784dad13c7103b452a37d08b2832c4fc91ea5",
+    "origin_ref_sha": "beb784dad13c7103b452a37d08b2832c4fc91ea5",
+    "ls_remote_sha": "beb784dad13c7103b452a37d08b2832c4fc91ea5",
+    "equal": true,
+    "canonical_object_store": "/Users/matthewsmith/Desktop/Rawlsing/.git",
+    "duplicate_clone_created": false,
+    "checkout_mode": "SPARSE_REQUIRED",
+    "sparse_worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq204-f7-r1",
+    "sparse_checkout_patterns": [
+      "/*",
+      "!/data/",
+      "/data/ddm_build_copy/ddm_v55*",
+      "/data/ddm_build_copy/ddm_survey_identity.py",
+      "/data/ddm_build_copy/compile_v55*",
+      "/data/ddm_build_copy/RECOVERED_SEMANTIC_RELATION_INHERITANCE.md",
+      "/data/ddm_build_copy/recovery_integration/semantic_relation_R1_through_Job3/R1_20260825/PRE_MAIN_RECONCILIATION_R1/PROJECT_INHERITANCE_R1/CAMPAIGNS/N005_DVA_POSITION_TEMPORAL_OBSERVABILITY/*"
+    ],
+    "no_full_checkout": true,
+    "no_production_mutation": true,
+    "no_source_access": true,
+    "no_architecture_reopen": true,
+    "no_astra_referral": true
+  },
+  "seven_meaning_resolution": {
+    "persistent_temporal_identity_or_comparable_key": "HISTORICAL_FUNCTION_LAWFULLY_CONSERVABLE",
+    "temporal_observation_meaning": "HISTORICAL_FUNCTION_LAWFULLY_CONSERVABLE",
+    "positive_temporal_relation_meaning": "POSITIVE_SEMANTIC_FORM_MISSING",
+    "delta_or_comparison": "HISTORICAL_FUNCTION_LAWFULLY_CONSERVABLE",
+    "trajectory": "TERMINAL_NECESSITY_UNPROVED",
+    "rupture_candidate": "HISTORICAL_FUNCTION_LAWFULLY_CONSERVABLE",
+    "gap_or_absence_as_first_class_observation": "HISTORICAL_FUNCTION_LAWFULLY_CONSERVABLE"
+  },
+  "directionality_resolution": {
+    "classification": "POSITIVE_SEMANTIC_FORM_MISSING",
+    "confirms_h_a_and_hq204": true,
+    "smallest_lawful_authority_contract_derived": true,
+    "contract_artifact": "03_DIRECTIONALITY_AUTHORITY_CANDIDATE.json",
+    "contract_status": "BOUNDED_NEW_AUTHORITY_FORM_CANDIDATE__REQUIRES_HQ_ADOPTION",
+    "succession_proved": false,
+    "succession_not_proved_reason": "No adopted authority confers directionality; the historical V553 gate was provisional, scalar-bound and one-family/one-country, so it cannot serve as lawful succession. Jurisdiction only is conserved ('functional jurisdiction only | no required V553 node').",
+    "minimum_authorized_anchors_for_one_ordered_relation": 2,
+    "three_anchor_threshold_is_law": false,
+    "assumptions_refused": [
+      "TWO WAVES EXIST => DIRECTIONALITY",
+      "DIFFERENCE => TRAJECTORY",
+      "TEMPORAL COINCIDENCE => CAUSE"
+    ],
+    "assumptions_structurally_blocked": true
+  },
+  "why_this_disposition": {
+    "not_CONSERVED_BOUNDED_DIRECTIONALITY_AUTHORITY_READY": "Five meanings are lawfully conservable as FUNCTION, but two named positive FORMS exist nowhere: the positive temporal relation object, and the temporal comparability/directionality authority. A third (trajectory) has unproved necessity. Conservation of a function is not constitution of a form, so 'CONSERVED' would overstate the record.",
+    "not_ASTRA_NEEDED": "Every candidate fork failed at least one of the three required tests; the residual time question is typed-representable and the directionality contract is a bounded adoption act, not an underdetermined choice. See 07_ASTRA_TEST.json.",
+    "not_ARCHITECTURE_REOPEN_REQUIRED": "No adopted terminal requirement was shown to lack a lawful home. Every meaning has a lawful authority home (TEMPORAL_EVIDENCE, WEIGHT_DESIGN_ESTIMAND, TARGET_USE_PERMISSION, UNCERTAINTY_METHOD, REPLAY_PROTOCOL, exact refs, typed negatives) or a lawful jurisdiction (EE12, EE11, SDTF). The deficit is a bounded authority FORM at an existing grain — the same class HQ204 already accepted for H-C service-source applicability.",
+    "not_MATERIAL_AUTHORITY_CONFLICT": "No two adopted authorities conflict. The apparent conflict was between the unadopted HQ201 return and adopted law, already resolved in favour of adopted law by H-A and HQ204. No new conflict was located in this lane."
+  },
+  "findings_for_hq_adjudication": [
+    {
+      "id": "F-01",
+      "finding": "Exactly one new authority kind is required to make a directional temporal claim lawful: TEMPORAL_COMPARABILITY.",
+      "evidence": "03_DIRECTIONALITY_AUTHORITY_CANDIDATE.json (minimality_argument)",
+      "class": "bounded authority form"
+    },
+    {
+      "id": "F-02",
+      "finding": "TEMPORAL_NONCOMPARABLE is a bare string in FORBIDDEN_BACKFILL_TARGET_STATES (rawlsing_next/pre553_source_relations.py:52-55), is in no state family, and has no producer. A temporal refusal can be named where no object family can produce it. SOURCE noncomparability (NONCOMPARABLE) IS implemented in two state families.",
+      "evidence": "rawlsing_next/pre553_empirical_objects.py:79,88; rawlsing_next/pre553_source_relations.py:54",
+      "class": "bounded defect",
+      "corrects": "H-A 04_F7_POSITIVE_MEANING_GAPS.json, which graded typed noncomparability AUTHORITY_INSTANCE_ONLY on the strength of both strings"
+    },
+    {
+      "id": "F-03",
+      "finding": "ABSENCE != ZERO is current binding for empirical absence (EMPIRICAL_FACT_STATE; audit W22 CURRENT_BINDING_CONCEPTUALLY_CLOSED; HQ125 section 5) and for objective-consequence missing evidence (SDTF), but the authority H08 cites for the TEMPORAL case is a provisional historical schema (v0.2).",
+      "evidence": "05_GAP_RUPTURE_TRAJECTORY_LAW.json part_1 correction_to_prior_record",
+      "class": "classification correction",
+      "corrects": "HQ201 return H08's 'Binding' label"
+    },
+    {
+      "id": "F-04",
+      "finding": "The historical 'directionality' vocabulary is RESPONSE/SCALE POLARITY harmonization, not temporal direction. V553 temporal order came only from numeric year sorting.",
+      "evidence": "data/ddm_build_copy/ddm_v553_harmonization.py:54-66; data/ddm_build_copy/ddm_v551j_schema.py:47-54; data/ddm_build_copy/ddm_v551j_contract.py:14-18",
+      "class": "anti-conflation finding",
+      "corrects": "the risk of reading historical directionality_status as a temporal arrow"
+    },
+    {
+      "id": "F-05",
+      "finding": "The historical V553 multi-wave authorization gate fired at TWO eligible anchors, not three; no adopted or historical source states 3.",
+      "evidence": "data/ddm_build_copy/ddm_v553_temporal_pressure.py:785,787; ddm_v553_harmonization.py:605,992-993",
+      "class": "evidence finding",
+      "supports": "H-A correction 5 and the HQ204 acceptance that trajectory >=3 is not current law"
+    },
+    {
+      "id": "F-06",
+      "finding": "The only historical occurrence of 'trajectory' in the DDM line is an explicit prohibition ('do_not_render_as_trajectory'), and 'traject' occurs zero times in the 4187-line V553 temporal pressure module.",
+      "evidence": "data/ddm_build_copy/ddm_v551j_schema.py:731",
+      "class": "evidence finding",
+      "supports": "TERMINAL_NECESSITY_UNPROVED for item 5"
+    },
+    {
+      "id": "F-07",
+      "finding": "Neither the H-A return (6c088091) nor the terminal-backward audit (b3ea471a) is an ancestor of the commissioned control tip; both were read exactly from the object store at their own commits.",
+      "evidence": "git merge-base --is-ancestor checks recorded in 00_REVIEW.md section 2",
+      "class": "evidence-base finding",
+      "note": "No mutation was performed. Recorded so HQ knows the reading is exact but not lineage-present."
+    },
+    {
+      "id": "F-08",
+      "finding": "Six concrete historical defects exist in the temporal line and must not be conserved: country-year numeric-zero-for-missing-year; the wave-harmonization certification fallback that accepts a confidence column or a row count as authority; the V551J-D/V552J comparability status-literal mismatch that silently scores 0.0; eight declared-but-unread V553 authority artifacts in the V554 seed contract; schema constants not enforced at the builder seam; and a string-only absence vocabulary with no state family.",
+      "evidence": "02_HISTORICAL_CONSERVATION.json cross_cutting_historical_defects_reported_not_conserved",
+      "class": "anti-inheritance finding"
+    }
+  ],
+  "artifacts": [
+    {"file": "00_REVIEW.md", "kind": "narrative review"},
+    {"file": "01_TEMPORAL_MEANING_MATRIX.json", "kind": "seven-meaning classification matrix plus the directionality item"},
+    {"file": "02_HISTORICAL_CONSERVATION.json", "kind": "V551J/V553 function-by-function conservation and defect register"},
+    {"file": "03_DIRECTIONALITY_AUTHORITY_CANDIDATE.json", "kind": "bounded directionality authority contract"},
+    {"file": "04_TIME_AND_COMPARABILITY_LAW.json", "kind": "operation/source-specific time-semantics trace and comparability law"},
+    {"file": "05_GAP_RUPTURE_TRAJECTORY_LAW.json", "kind": "gap, rupture, trajectory and interpolation law"},
+    {"file": "06_OWNER_SUCCESSION_MAP.json", "kind": "per-meaning owner succession and jurisdictional boundaries"},
+    {"file": "07_ASTRA_TEST.json", "kind": "Astra test, verdict NO ASTRA"},
+    {"file": "08_FINAL_DISPOSITION.json", "kind": "this file"}
+  ],
+  "authority_touchpoints": {
+    "current_adopted": [
+      "PYAT_CONTROL_ROOM/24_HQD125_DDM_FUNCTIONAL_CONSERVATION_AND_PREV3_ACCEPTANCE_LAW.md sections 5, 9, 10, 12-13",
+      "PYAT_R2_REGROUNDING_R1 (ADOPTED__PYAT_R2_REGROUNDED; crosswalk row 15; PRESERVE_FUNCTION_AND_AUTHORITY != PRESERVE_HISTORICAL_STAGE_OR_CARRIER)",
+      "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ203_TERMINAL_BACKWARD_RESIDUAL_RECALIBRATION_R1.md",
+      "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ204_SIX_LANE_FANIN_AND_NEXT_FRONTIER_R1.md",
+      "adopted SDTF R4 D1-prime / P1-P5 / K1-K4 and binding companion law",
+      "adopted Field Forge R2 / OBL005 / OBL040 / OBL041 / OBL042 / OBL043 law"
+    ],
+    "read_exactly_not_lineage_present": [
+      "WORKER_RETURNS/PYAT-HQ203-HA-F6F7-CORRECTED-RECONCILIATION-R1/* @ 6c088091494272bbaa26167a1c9005eb3a5b312e",
+      "PYAT_CONTROL_ROOM/ASTRA_PREV3_TERMINAL_BACKWARD_RESIDUAL_AUDIT_R1/* @ b3ea471a3771113bf408a4e434a4b480b26d5856",
+      "WORKER_RETURNS/PYAT-HQ201-F6F7-ONTOLOGY-CONSERVATION-R1/* @ d3f0619429a400552c2f3c397be57cdfbadb2f54 (unadopted worker return, reconciled as worker evidence)"
+    ],
+    "historical_capital_read": [
+      "data/ddm_build_copy/ddm_v553_temporal_identity.py",
+      "data/ddm_build_copy/ddm_v553_temporal_pressure.py",
+      "data/ddm_build_copy/ddm_v553_schema.py",
+      "data/ddm_build_copy/ddm_v553_harmonization.py",
+      "data/ddm_build_copy/ddm_v553_canonical_harmonization.py",
+      "data/ddm_build_copy/compile_v553_temporal_pressure_field.py",
+      "data/ddm_build_copy/ddm_v551j_semantic_diff.py",
+      "data/ddm_build_copy/ddm_v551j_schema.py",
+      "data/ddm_build_copy/ddm_v551j_contract.py",
+      "data/ddm_build_copy/ddm_v554_seed_contract.py",
+      "data/ddm_build_copy/ddm_v552j_handoff.py",
+      "data/ddm_build_copy/ddm_survey_identity.py"
+    ],
+    "current_code_read": [
+      "rawlsing_next/m1_temporal_v554_admission_dedup.py",
+      "rawlsing_next/pre553_structural_admission.py",
+      "rawlsing_next/pre553_empirical_objects.py",
+      "rawlsing_next/pre553_empirical_authority.py",
+      "rawlsing_next/pre553_source_relations.py",
+      "rawlsing_next/source_backed_positioned_subject_possibility.py",
+      "rawlsing_next/v3_adp010_oee_executor.py",
+      "rawlsing_next/v3_psepf_zero_positive_guard.py"
+    ]
+  },
+  "not_done_and_why": {
+    "no_source_access": "held",
+    "no_code_changes": "held",
+    "no_architecture_reopen": "held",
+    "no_astra_referral": "held",
+    "raw_survey_data_not_opened": "held",
+    "no_full_checkout_or_clone": "held"
+  },
+  "confidence": {
+    "high": [
+      "the classification of the seven items",
+      "the directionality finding and the bounded candidate",
+      "the finding that the time-grain binary is not law and that polymorphism is the actual law",
+      "the finding that M1 is ingress/dedup only",
+      "the finding that no trajectory form exists anywhere and necessity is unproved"
+    ],
+    "medium": [
+      "the exact minimal authority material that HQ will need to bind, since that depends on the forthcoming claim scopes",
+      "whether HQ will wish to conserve the per-anchor permission-ledger shape unchanged"
+    ],
+    "low": [
+      "any universal assertion that no further positive temporal meaning will ever be required"
+    ]
+  }
+}

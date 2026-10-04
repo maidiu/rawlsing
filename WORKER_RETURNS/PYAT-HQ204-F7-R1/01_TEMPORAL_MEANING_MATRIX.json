@@ -1,0 +1,700 @@
+{
+  "schema": "PYAT_HQ204_TEMPORAL_MEANING_MATRIX@1.0.0",
+  "lane": "PYAT-HQ204-F7-R1",
+  "commissioned_startup_sha": "beb784dad13c7103b452a37d08b2832c4fc91ea5",
+  "commissioned_startup_sha_verified_equal": true,
+  "base_sha": "ff4f06954824a3a5699bc5c1c9bd68cb3c5b4146",
+  "inputs_read": {
+    "h_a_return": {
+      "sha": "6c088091494272bbaa26167a1c9005eb3a5b312e",
+      "ancestor_of_commissioned_tip": false,
+      "read_method": "git show <sha>:<path> from the canonical object store"
+    },
+    "terminal_backward_audit": {
+      "sha": "b3ea471a3771113bf408a4e434a4b480b26d5856",
+      "branch": "codex/prev3-terminal-backward-audit-r1",
+      "ancestor_of_commissioned_tip": false,
+      "read_method": "git show <sha>:<path> from the canonical object store"
+    },
+    "hq204_adjudication": {
+      "sha": "ff4f06954824a3a5699bc5c1c9bd68cb3c5b4146",
+      "ancestor_of_commissioned_tip": true
+    }
+  },
+  "allowed_classes": [
+    "CURRENT_BINDING",
+    "CURRENT_FORM__INSTANCE_MISSING",
+    "HISTORICAL_FUNCTION_LAWFULLY_CONSERVABLE",
+    "POSITIVE_SEMANTIC_FORM_MISSING",
+    "TERMINAL_NECESSITY_UNPROVED"
+  ],
+  "classification_discipline": {
+    "m1_is_ingress_only": "No positive temporal meaning is inferred from M1. Verified by direct read of rawlsing_next/m1_temporal_v554_admission_dedup.py: M1 validates presence and equality of caller-supplied families and fingerprints, gates on SCR553 states, and never constitutes a temporal object.",
+    "historical_code_is_not_authority": "Every historical function is reported with its own historical status (provisional / schema v0.2 / schema v0.1) and an explicit adopted conservation disposition or the absence of one.",
+    "one_class_per_item": true
+  },
+  "adopted_noncollapse_law_already_binding": [
+    {
+      "rule": "TWO_WAVES_EXIST != TEMPORAL_DIRECTIONALITY_AUTHORITY",
+      "authority": "PYAT_CONTROL_ROOM/24_HQD125_DDM_FUNCTIONAL_CONSERVATION_AND_PREV3_ACCEPTANCE_LAW.md:248"
+    },
+    {
+      "rule": "SINGLE_WAVE_PRESSURE != TEMPORAL_PRESSURE_FIELD",
+      "authority": "PYAT_CONTROL_ROOM/24_HQD125_DDM_FUNCTIONAL_CONSERVATION_AND_PREV3_ACCEPTANCE_LAW.md:250"
+    },
+    {
+      "rule": "DIFFERENCE != TRAJECTORY",
+      "authority": "audit REPORT.md line 103 ('the binding noncollapse'), accepted by HQ204"
+    },
+    {
+      "rule": "SOURCE_CONFLICT != AVERAGE_BY_DEFAULT",
+      "authority": "HQ204 adjudication (accepted H-A correction 7)"
+    },
+    {
+      "rule": "TYPED_SEMANTIC_RELATION_ABSENCE != EMPIRICAL_COTRAVEL_ABSENCE",
+      "authority": "PYAT_CONTROL_ROOM/24_HQD125_DDM_FUNCTIONAL_CONSERVATION_AND_PREV3_ACCEPTANCE_LAW.md:137"
+    },
+    {
+      "rule": "CROSS_SOURCE_COEXISTENCE != RESPONDENT_POOLING",
+      "authority": "HQD-125 sections 9-10; source-indexed mode emits one fact per universe"
+    }
+  ],
+  "items": [
+    {
+      "index": 1,
+      "meaning": "persistent temporal identity / comparable temporal key",
+      "classification": "HISTORICAL_FUNCTION_LAWFULLY_CONSERVABLE",
+      "what_persists": "NOT NAMED BY ANY CURRENT AUTHORITY. No current object declares itself to be 'the same thing at t1 and t2'.",
+      "current_adopted_authority": {
+        "lawful_home_exists": true,
+        "evidence": [
+          {
+            "ref": "rawlsing_next/pre553_empirical_authority.py:25-44,86",
+            "fact": "AUTHORITY_KINDS is a closed set of 18 kinds; exactly one is time-related: TEMPORAL_EVIDENCE, ceiling 'source-native effective/reference-time evidence'. There is no temporal-identity or temporal-comparability authority kind."
+          },
+          {
+            "ref": "rawlsing_next/m1_temporal_v554_admission_dedup.py:19-30,41-49",
+            "fact": "M1 requires rule_relevant_effective_time_semantics_fingerprint and native_scope_identity_fingerprint in the equivalence key; SIG-002/003 require V553 families TEMPORAL_KEY (plus TEMPORAL_OBSERVATION or TEMPORAL_RELATION). It validates presence and equality only."
+          },
+          {
+            "ref": "rawlsing_next/m1_temporal_v554_admission_dedup.py:143,150",
+            "fact": "_exact_ref and _eq accept any mapping and any 64-hex hash; the identity content is never interpreted."
+          },
+          {
+            "ref": "rawlsing_next/pre553_empirical_objects.py:503-514",
+            "fact": "EmpiricalUniverse.REQUIRED_FIELDS carries raw_wave, canonical_wave_if_governed and field_or_reference_time, but no composition rule binds them into a comparable temporal key."
+          },
+          {
+            "ref": "rawlsing_next/pre553_structural_admission.py:218,258,673-678",
+            "fact": "Time enters admission only as allowed_effective_time_or_interval_refs (tuple of ExactRef) checked by set membership; a mismatch yields TEMPORAL_SCOPE_MISMATCH."
+          },
+          {
+            "ref": "rawlsing_next/source_backed_positioned_subject_possibility.py:77,80,86-87",
+            "fact": "ConditionerBinding requires a positive comparability_authority_ref and an untyped effective_time_or_interval. The comparability authority slot is current law at the F8 grain; its temporal content is unconstituted."
+          }
+        ],
+        "conclusion": "The slot is required and has a lawful authority home, but no current authority composes the persisting temporal identity. A bare fingerprint is transport, not an identity contract."
+      },
+      "historical_functional_capital": {
+        "present": true,
+        "authority_class": "HISTORICAL_FUNCTIONAL_CAPITAL (provisional V553 line)",
+        "evidence": [
+          {
+            "ref": "data/ddm_build_copy/ddm_v553_temporal_identity.py:49-168",
+            "fact": "normalize_temporal_report_identity requires exactly one survey family, exactly one country_code, and a non-null explicit calendar anchor per wave, and raises rather than guessing."
+          },
+          {
+            "ref": "data/ddm_build_copy/ddm_v553_temporal_identity.py:30-46",
+            "fact": "_explicit_temporal_year refuses to treat a wave ordinal as a year (docstring: 'Resolve a real calendar anchor without treating a wave ordinal as a year'); a canonical_wave is accepted as a calendar year only if it is itself a 4-digit 1000..3000 value."
+          },
+          {
+            "ref": "data/ddm_build_copy/ddm_v553_temporal_identity.py:138-144",
+            "fact": "'V553 temporal input requires one anchor per calendar year' - exactly one wave per year for the one family in the one country."
+          },
+          {
+            "ref": "data/ddm_build_copy/ddm_v553_temporal_identity.py:156-161",
+            "fact": "Rows sort by (temporal_year, canonical_wave), giving a deterministic order without asserting direction."
+          },
+          {
+            "ref": "data/ddm_build_copy/ddm_survey_identity.py:108-159,204-215",
+            "fact": "Family aliases normalize to one stable family key; canonical_wave_key keeps the wave as a LABEL (II, W6, ROUND9, 2017); wave_ordinal is derived 'without changing the canonical label' and only 'for range-comparison'. WAVE_LABEL != ORDINAL."
+          },
+          {
+            "ref": "data/ddm_build_copy/ddm_survey_identity.py:218-223",
+            "fact": "canonical_country_code normalizes an explicit token and never guesses a country."
+          },
+          {
+            "ref": "data/ddm_build_copy/ddm_v550_family_overlay.py and data/ddm_build_copy/ddm_survey_identity.py:89",
+            "fact": "EVS carries a hard-coded wave<->year map (EVS_WAVE_BY_YEAR), i.e. family-specific harmonization material that may not be generalized."
+          }
+        ],
+        "historical_identity_tuple": ["survey_family_key", "country_code", "canonical_wave_label", "explicit_calendar_year"],
+        "must_not_inherit": [
+          "one-anchor-per-calendar-year as a universal corpus constraint (it was a one-family/one-country topology constraint)",
+          "the EVS wave<->year table as a general harmonization",
+          "point-year as the only lawful anchor",
+          "any stage or file topology from the V553 run"
+        ]
+      },
+      "adopted_conservation_authority": {
+        "ref": "PYAT_R2_REGROUNDING_R1/04_FUNCTION_CONSERVATION_CROSSWALK.tsv:15",
+        "verbatim": "temporalization | V553 historical | DIRECT CURRENT TEMPORAL PRODUCER WHEN NEW TEMPORAL MEANING REQUIRED | CLAIM_CONDITIONAL | functional jurisdiction only | no required V553 node",
+        "meaning": "The temporalization function's jurisdiction is conserved claim-conditionally; no V553 node is required.",
+        "supporting_ref": "PYAT_R2_REGROUNDING_R1/01_CORRECTIVE_HQ_JOIN.md status ADOPTED__PYAT_R2_REGROUNDED; PRESERVE_FUNCTION_AND_AUTHORITY != PRESERVE_HISTORICAL_STAGE_OR_CARRIER",
+        "gate_ref": "PYAT_CONTROL_ROOM/24_HQD125_DDM_FUNCTIONAL_CONSERVATION_AND_PREV3_ACCEPTANCE_LAW.md:317-319 (Gate F7) and :252 (exact identity/scope/response-surface/comparability authority required)"
+      },
+      "why_this_class": "The historical identity function is exact, complete and carries no forbidden scalar payload, and its jurisdiction is conserved claim-conditionally by adopted R2 law. Current law supplies the lawful home. Nothing new must be invented; the function must be materialised as exact rule material under a competent authority.",
+      "why_not_other_classes": {
+        "CURRENT_BINDING": "No current authority names the persisting object; the audit states 'the current law does not yet name the persisting object' and H-A records the same.",
+        "CURRENT_FORM__INSTANCE_MISSING": "There is no typed temporal-identity form. A fingerprint and opaque ExactRef tuples are transport slots, not a form.",
+        "POSITIVE_SEMANTIC_FORM_MISSING": "The exact function already exists historically and its jurisdiction is conserved; nothing positive must be newly conceived.",
+        "TERMINAL_NECESSITY_UNPROVED": "M1 SIG-002/003 require TEMPORAL_KEY, HQ125 section 10 requires exact identity authority, and Gate F7 requires it. Necessity is proved."
+      },
+      "residual_for_hq": "Materialise the conserved identity contract as exact rule material bound to TEMPORAL_EVIDENCE authority, preserving WAVE_LABEL != ORDINAL != CALENDAR_YEAR and refusing to universalise one-anchor-per-year.",
+      "confidence": "high"
+    },
+    {
+      "index": 2,
+      "meaning": "temporal observation meaning",
+      "classification": "HISTORICAL_FUNCTION_LAWFULLY_CONSERVABLE",
+      "current_adopted_authority": {
+        "lawful_home_exists": true,
+        "evidence": [
+          {
+            "ref": "rawlsing_next/pre553_empirical_objects.py:696-724",
+            "fact": "EmpiricalFact.REQUIRED_FIELDS contains NO time, effective-time or interval field whatsoever. The empirical substrate is time-agnostic."
+          },
+          {
+            "ref": "rawlsing_next/pre553_empirical_objects.py:532-546",
+            "fact": "EmpiricalCoordinateFact carries effective_or_reference_time; EmpiricalUniverse carries field_or_reference_time."
+          },
+          {
+            "ref": "rawlsing_next/pre553_empirical_authority.py:86",
+            "fact": "TEMPORAL_EVIDENCE ceiling is 'source-native effective/reference-time evidence'. This is an authority over time evidence, not an observation object."
+          },
+          {
+            "ref": "rawlsing_next/m1_temporal_v554_admission_dedup.py:319",
+            "fact": "SIG-002 requires v553_families to contain both TEMPORAL_KEY and TEMPORAL_OBSERVATION; neither family is defined anywhere in current code."
+          },
+          {
+            "ref": "rawlsing_next/tests/pre553_reservoir_harness.py:255-284",
+            "fact": "The only current producers of TEMPORAL_OBSERVATION are test fixtures; their payload is an opaque tag ('temporal_families': ['TEMPORAL_KEY','TEMPORAL_OBSERVATION'] with v553_material carrying an admission ref and a source). No semantic content is defined, which is exactly how a slot with no constitution looks."
+          },
+          {
+            "ref": "rawlsing_next/pre553_structural_admission.py:92-101",
+            "fact": "V553_INGRESS_CONTRACT declares p06_i04_decides_temporal_operations=False and p06_i04_mints_temporal_objects=False; the admission service is forbidden from minting temporal objects."
+          }
+        ]
+      },
+      "historical_functional_capital": {
+        "present": true,
+        "authority_class": "HISTORICAL_FUNCTIONAL_CAPITAL (provisional V553 -> V554 seed line)",
+        "evidence": [
+          {
+            "ref": "data/ddm_build_copy/ddm_v553_temporal_pressure.py:2432-2593",
+            "fact": "_build_v553_temporal_pressure_observation_index emits one row per (comparable key, wave): observation_id, temporal_pressure_key, wave_id, survey_year, source_v552_structural_fact_id, temporal_status ('observed_authorized_anchor' vs 'probe_only_anchor'), allowed_downstream_use, probe_only, plus scalar pressure values."
+          },
+          {
+            "ref": "data/ddm_build_copy/ddm_v553_schema.py:379-430",
+            "fact": "V553_TEMPORAL_PRESSURE_OBSERVATION_INDEX_SCHEMA fixes the required columns, including the anchor, the source structural fact, the authority score set and the multi_wave_authorization_status."
+          },
+          {
+            "ref": "data/ddm_build_copy/ddm_v554_seed_contract.py:250-264",
+            "fact": "The downstream seed contract reads pressure_status, interpolation_method and confidence_penalty and maps them to readiness states ('ready_for_v555_mediation' / 'ready_with_constraints' / 'reviewable_only' / 'blocker_only')."
+          }
+        ],
+        "conservable_frame": ["exact temporal anchor ref", "source structural/empirical fact ref", "exact estimand and measure refs", "typed observation status", "downstream use permission", "provenance/replay refs"],
+        "must_not_inherit": [
+          "the scalar pressure payload (pressure_value, structural_pressure_value, probe_pressure_value, probe_structural_score, support/confidence/directionality/authority scores)",
+          "the V554 seed coefficients (0.75/0.25 seed strength, 0.65/0.55/0.40 class weights, fixed household/carrier/absence constants)",
+          "the V553 run topology and its 13 declared-but-unread artifacts",
+          "any reading in which a wave row is an observation merely because it exists"
+        ]
+      },
+      "adopted_conservation_authority": {
+        "ref": "PYAT_R2_REGROUNDING_R1/04_FUNCTION_CONSERVATION_CROSSWALK.tsv:15",
+        "meaning": "Same conserved temporalization jurisdiction; the observation is the atomic member of that function.",
+        "supporting_ref": "HQ201 commission (E50) required classifying 'temporal observation meaning' as functional intent, not obsolete topology, and prohibited inheriting scalar pressure formulae."
+      },
+      "why_this_class": "A temporal observation has an exact historical frame (anchor + source fact + authority + status + permission + provenance) that survives every non-inheritance rule once the scalar payload is stripped. Current law supplies the authority home and the exact-ref discipline. Not binding today, but conservable without invention.",
+      "why_not_other_classes": {
+        "CURRENT_BINDING": "EmpiricalFact has no time field; nothing current constitutes a time-indexed observation.",
+        "CURRENT_FORM__INSTANCE_MISSING": "M1 requires the V553 object family TEMPORAL_OBSERVATION; the object form itself does not exist, so there is no form awaiting an instance.",
+        "POSITIVE_SEMANTIC_FORM_MISSING": "The frame is exactly specified historically and survives non-inheritance; the meaning need not be newly conceived.",
+        "TERMINAL_NECESSITY_UNPROVED": "M1 SIG-002 requires the family; HQ125 Gate F7 requires lawful temporal movement; the audit classes the producer gap as UNKNOWN__FURTHER_FORENSICS_REQUIRED, not unnecessary."
+      },
+      "residual_for_hq": "Materialise one typed observation object: exact anchor ref + exact empirical/structural fact ref + estimand/measure refs + typed status + use permission + provenance, with the scalar payload expressly out of scope.",
+      "confidence": "high"
+    },
+    {
+      "index": 3,
+      "meaning": "positive temporal relation meaning",
+      "classification": "POSITIVE_SEMANTIC_FORM_MISSING",
+      "current_adopted_authority": {
+        "lawful_home_exists": true,
+        "positive_meaning_constituted": false,
+        "evidence": [
+          {
+            "ref": "rawlsing_next/m1_temporal_v554_admission_dedup.py:320",
+            "fact": "SIG-003 requires v553_families to contain {TEMPORAL_KEY, TEMPORAL_RELATION} AND all_relation_required_support_limit_refs. M1 validates presence and equality; it never interprets the relation."
+          },
+          {
+            "ref": "rawlsing_next/pre553_source_relations.py:58-102",
+            "fact": "The eight source relation kinds are SOURCE_SEMANTIC_EQUIVALENCE, RESPONDENT_LINKAGE, OVERLAP_NON_DUPLICATION, SAMPLE_POOLING, ESTIMAND_COMPOSITION, BACKFILL, PROVENANCE_ORIGIN, HARMONIZATION_ALIAS. NONE is temporal; there is no WAVE_ORDER, TIME_ORDER or temporal-precedence kind."
+          },
+          {
+            "ref": "rawlsing_next/pre553_empirical_objects.py:87-91",
+            "fact": "SOURCE_UNIVERSE_RELATION_STATE enumerates authorization states for source-space relations only."
+          },
+          {
+            "ref": "rawlsing_next/pre553_structural_admission.py:215,272,302",
+            "fact": "StructuralAdmissionRule carries directionality_or_role_semantics as a canonicalised Mapping that is hashed into rule material and never interpreted anywhere in the module."
+          },
+          {
+            "ref": "rawlsing_next/v3_adp010_oee_executor.py:174-175",
+            "fact": "The only place current code enforces an ordered time relation is V3 actor-record interval ordering (effective_until >= effective_from) - a different jurisdiction, not PRE-V3 empirical comparison."
+          }
+        ],
+        "nearest_current_analogue": "sdTF objective-consequence temporal-form integrity across EVENT / CONDITION / DIRECTED_RELATION / RECURRENT_ACTIVITY / TRANSITION / ORDERED_HISTORY, plus K4 ACTIVE_DURATIVE continuing-state interval overlap. That constitutes ordered time inside the objective-consequence jurisdiction only; it does not relate two cross-wave empirical observations."
+      },
+      "historical_functional_capital": {
+        "present": "partial_only",
+        "authority_class": "HISTORICAL_FUNCTIONAL_CAPITAL (provisional; relation never materialised as an object)",
+        "evidence": [
+          {
+            "ref": "data/ddm_build_copy/ddm_v553_harmonization.py:635,697-701",
+            "fact": "Pairs are enumerated as adjacent rows of the year-sorted list: for prior_row, current_row in zip(sorted_wave_rows[:-1], sorted_wave_rows[1]); written as prior_wave/current_wave and prior_canonical_wave/current_canonical_wave."
+          },
+          {
+            "ref": "data/ddm_build_copy/ddm_v553_temporal_pressure.py:2603-2608",
+            "fact": "Delta pairs take consecutive rows of obs.sort_values(['survey_year','wave_id']). Ordering is by numeric year; the relation is the array adjacency."
+          },
+          {
+            "ref": "data/ddm_build_copy/ddm_v553_temporal_pressure.py:1256-1257",
+            "fact": "distance_to_nearest_wave is a 0/1 flag and distance_between_anchors is wave_year_after - wave_year_before. The only 'relation semantics' are arithmetic and labels."
+          },
+          {
+            "ref": "data/ddm_build_copy/ddm_v553_harmonization.py:54-66 and ddm_v553_temporal_pressure.py:794,837",
+            "fact": "directionality_compatibility_status is 'compatible_by_harmonizer_shared_contract' or 'blocked' and derives from shared_directionality_columns, i.e. RESPONSE/SCALE POLARITY columns. It is not a temporal relation."
+          },
+          {
+            "ref": "data/ddm_build_copy/ddm_v551j_schema.py:47-54 and ddm_v551j_contract.py:14-18",
+            "fact": "V551J_DIRECTIONALITY_STATUSES = {known_directional, partial_directionality, undirected_association, conflicting_directionality, not_applicable, unknown}; V551J_STANCE_TO_DIRECTION = {support: positive, oppose: negative, neutral: neutral}. The historical directionality vocabulary is SEMANTIC/STANCE direction."
+          }
+        ],
+        "conclusion": "The historical line carried ordered pairs, labels and arithmetic - never a typed relation object with a positive meaning, and never a temporal (as opposed to response-polarity) direction concept. RESPONSE_DIRECTIONALITY != TEMPORAL_DIRECTIONALITY."
+      },
+      "adopted_conservation_authority": {
+        "exists": false,
+        "note": "The conserved V553 jurisdiction (crosswalk row 15) covers the temporalization function's place in the DAG; it does not constitute the positive meaning of a temporal relation. HQ204 accepted H-A's finding that 'positive relation constitution ... remain[s] unresolved'."
+      },
+      "why_this_class": "Neither current nor historical evidence constitutes the positive meaning of a temporal relation between two anchors. The required positive form (what lawful relation obtains, what it grants, what it does not grant, and how it is ordered) does not exist. This is a named missing form, not a recoverable function.",
+      "why_not_other_classes": {
+        "CURRENT_BINDING": "No temporal relation kind exists in the closed authority/relation vocabularies.",
+        "CURRENT_FORM__INSTANCE_MISSING": "M1's TEMPORAL_RELATION family is a required string in a caller-supplied family set, not a form.",
+        "HISTORICAL_FUNCTION_LAWFULLY_CONSERVABLE": "There is no historical relation object to conserve - only adjacency, labels and year arithmetic.",
+        "TERMINAL_NECESSITY_UNPROVED": "M1 SIG-003 requires TEMPORAL_RELATION plus support/limit refs, and the audit's W15 keeps positive temporal relation constitution as an HQ201 dependency with blocker yes."
+      },
+      "residual_for_hq": "Adopt the smallest positive temporal relation form: a typed, ordered, comparability-gated relation between two exact anchors, with explicit does_not_grant material. It is the same artifact as the directionality contract's relation basis (see 03_DIRECTIONALITY_AUTHORITY_CANDIDATE.json).",
+      "confidence": "high"
+    },
+    {
+      "index": 4,
+      "meaning": "delta / comparison",
+      "classification": "HISTORICAL_FUNCTION_LAWFULLY_CONSERVABLE",
+      "current_adopted_authority": {
+        "lawful_home_exists": true,
+        "evidence": [
+          {
+            "ref": "rawlsing_next/pre553_structural_admission.py:47,640,680",
+            "fact": "EMPIRICAL_FACT_NONCOMPARABLE is an enumerated P06 refusal with reason codes and is upstream of TEMPORAL_SCOPE_MISMATCH and the other nonpositive decisions. NONCOMPARABLE != NO_CHANGE is therefore current-binding as a refusal discipline."
+          },
+          {
+            "ref": "rawlsing_next/pre553_empirical_objects.py:102-104",
+            "fact": "EMPIRICAL_FACT_STATE enumerates SUPPORTED, OBSERVED_ZERO, ZERO_SUPPORT, ZERO_OVERLAP, LOW_SUPPORT, NONCOMPARABLE, NOT_APPLICABLE, UNAVAILABLE, UNCERTAINTY_UNQUANTIFIED, UNRESOLVED, VALID_EMPTY, INTEGRITY_FAILURE - so a comparison can be refused with a typed reason."
+          },
+          {
+            "ref": "rawlsing_next/pre553_empirical_authority.py:31,75",
+            "fact": "WEIGHT_DESIGN_ESTIMAND is a first-class authority kind with ceiling 'weight basis', 'sampling/design', 'estimand'. The estimand/measure authority required before comparing two quantities exists."
+          },
+          {
+            "ref": "rawlsing_next/pre553_structural_admission.py:682-687",
+            "fact": "Estimand and measure/weight membership failures map to EMPIRICAL_FACT_NONCOMPARABLE ('ESTIMAND_NOT_ALLOWED_BY_RULE', 'MEASURE_WEIGHT_BASIS_NOT_ALLOWED_BY_RULE')."
+          }
+        ],
+        "conclusion": "The refusal side and the estimand/measure authority exist. The positive comparison function does not exist in current code."
+      },
+      "historical_functional_capital": {
+        "present": true,
+        "authority_class": "HISTORICAL_FUNCTIONAL_CAPITAL (provisional V553, schema v0.2)",
+        "evidence": [
+          {
+            "ref": "data/ddm_build_copy/ddm_v553_temporal_pressure.py:2596-2672",
+            "fact": "_build_v553_cross_wave_delta_index skips keys with fewer than two observations and otherwise emits a signed delta: authorized_structural_delta_value = current - prior; delta_value falls back to probe; delta_direction in {up, down, flat} with a +/-0.05 deadband; delta_magnitude_class in {large, medium, small} at 0.4/0.2; plus coverage_delta_value, confidence_delta, authority_delta."
+          },
+          {
+            "ref": "data/ddm_build_copy/ddm_v553_temporal_pressure.py:2638-2665",
+            "fact": "comparability_status = 'authorized_comparable' only when both anchors are 'observed_authorized_anchor'; delta_interpretation_permission requires authorized_comparable AND an authorized structural delta; otherwise the row is still emitted with blocked_reason 'probe_only_temporal_field'. Computation and permission are separated."
+          },
+          {
+            "ref": "data/ddm_build_copy/ddm_v553_schema.py:469-497",
+            "fact": "V553_CROSS_WAVE_DELTA_INDEX_SCHEMA fixes the required columns including from/to wave, from/to year, delta_value, delta_value_kind, structural/authorized/probe/coverage deltas, delta_direction, delta_magnitude_class, confidence_delta, authority_delta, comparability_status, delta_basis, blocked_reason, delta_interpretation_permission."
+          },
+          {
+            "ref": "data/ddm_build_copy/ddm_v551j_semantic_diff.py:2-5,290,486-494,566-579",
+            "fact": "The V551J-D cross-wave diff is explicitly 'provisional'; it produces a field-name set difference with diff_class in {identical, semantic_diff, structural_gap} and its validator REFUSES a full-continuity claim ('full continuity cannot be claimed in provisional cross-wave diff'). It has no wave-comparability gate, no numeric delta, and no uncertainty field."
+          }
+        ],
+        "conservable_function": ["paired comparison over an ordered pair of comparable anchors", "signed difference on one authorized estimand", "separate comparability status", "separate interpretation permission", "direction class", "magnitude class", "explicit blocked reason"],
+        "must_not_inherit": [
+          "pressure_intensity and the component weights structural 0.45 / contradiction 0.15 / absence 0.10 / comparability 0.15 / authority 0.20 / rupture 0.10",
+          "probe vs authorized scalar splits (probe_pressure_value, structural_pressure_value, authorized_structural_pressure_value, probe_structural_score)",
+          "the +/-0.05 deadband and 0.4/0.2 magnitude thresholds as adopted constants",
+          "confidence_decay = 1/(1+gap)",
+          "the V551J-D field-name set-difference as if it were a numeric comparison (it has no comparability gate at all)",
+          "the V551J-D/V552J interface literal mismatch (producer emits READY_V551J_CROSS_WAVE_DIFF_WITH_INPUT_GAPS, consumer keys on READY_V551J_CROSS_WAVE_DIFF_WITH_GAPS; unmatched defaults to 0.0)"
+        ]
+      },
+      "adopted_conservation_authority": {
+        "ref": "PYAT_R2_REGROUNDING_R1/04_FUNCTION_CONSERVATION_CROSSWALK.tsv:15",
+        "meaning": "Conserved temporalization jurisdiction; HQ201 commission (E50) directed recovering 'cross-wave delta' and 'delta direction / magnitude' as functional intent while forbidding inheritance of scalar pressure formulae.",
+        "supporting_ref": "Audit REPORT.md HQ201 reconciliation: 'Historical temporal functionality cannot justify inheriting a provisional scalar pressure coefficient, interpolation method, ... or automatic rupture causation.'"
+      },
+      "why_this_class": "The comparison FUNCTION - paired, ordered, comparability-gated, permission-separated, with direction and magnitude classes - is exact and conservable, and current law already supplies the refusal vocabulary and the estimand/measure authority. Only the scalar calibration is non-inheritable.",
+      "why_not_other_classes": {
+        "CURRENT_BINDING": "No current code computes a cross-observation delta.",
+        "CURRENT_FORM__INSTANCE_MISSING": "There is no current delta form; the refusal discipline is not a comparison form.",
+        "POSITIVE_SEMANTIC_FORM_MISSING": "The function is fully specified historically and survives non-inheritance.",
+        "TERMINAL_NECESSITY_UNPROVED": "HQ125 section 10 requires representing temporal movement; the audit's C15 lists 'delta/direction' as part of the required ontology."
+      },
+      "residual_for_hq": "Decompose the conservable function into an exact comparison contract with estimand/measure binding, comparability gate and interpretation permission; expressly exclude all scalar pressure/probe coefficients.",
+      "confidence": "high"
+    },
+    {
+      "index": 5,
+      "meaning": "trajectory",
+      "classification": "TERMINAL_NECESSITY_UNPROVED",
+      "current_adopted_authority": {
+        "concept_present": false,
+        "evidence": [
+          {
+            "ref": "repo-wide search for 'trajectory' at the commissioned tip",
+            "fact": "8 files match: HQ_HANDOFF/DECISION_LEDGER.jsonl, the HQ203 checkpoint, the HQ204 commission itself, SPACE_BUNNY_OPENCODE_R1/CURRENT_HANDOFF.md, FORWARD_PROGRAM.md, and three HQ activation returns (HQ203 recalibration, HQ202 review, HQ204 fan-in). No adopted law, no current module, no schema declares a trajectory form."
+          },
+          {
+            "ref": "audit REPORT.md HQ201 reconciliation",
+            "verbatim": "A trajectory requires at least three anchors. | The return presents this as a strengthened constraint, without an identified adopted authority establishing that threshold. Do not import it as current law. The binding noncollapse is that two waves existing do not automatically confer directionality authority.",
+            "meaning": "The threshold is refuted; only DIFFERENCE != TRAJECTORY survives."
+          },
+          {
+            "ref": "audit MATRIX.md X07",
+            "fact": "'Interpolation or causal explanation of temporal rupture' is TERMINAL_NECESSITY_UNPROVED with blocker no."
+          },
+          {
+            "ref": "PYAT_CONTROL_ROOM/24_HQD125_DDM_FUNCTIONAL_CONSERVATION_AND_PREV3_ACCEPTANCE_LAW.md:230-252",
+            "fact": "Adopted law requires the world to be capable of representing temporal movement in ten named domains. It never names a trajectory object or a minimum anchor count."
+          }
+        ]
+      },
+      "historical_functional_capital": {
+        "present": false,
+        "evidence": [
+          {
+            "ref": "data/ddm_build_copy/ddm_v553_temporal_pressure.py (4187 lines)",
+            "fact": "case-insensitive search for 'traject' returns ZERO matches. There is no trajectory class, table, id or schema constant. The nearest analogues are the ordered delta chain and the interpolation segment sequence."
+          },
+          {
+            "ref": "data/ddm_build_copy/ddm_v551j_schema.py:726-734",
+            "verbatim": "V551J_V2_FORBIDDEN_CLAIM_IDS = V551J_FORBIDDEN_CLAIM_IDS + [ ... 'do_not_render_as_temporal_pressure', ... 'do_not_render_as_rupture', 'do_not_render_as_trajectory', 'do_not_render_as_causal_joint_effect', ... ]",
+            "meaning": "The ONLY historical occurrence of 'trajectory' in the DDM line is an explicit PROHIBITION on rendering a claim as a trajectory. The historical schema refused the noun."
+          },
+          {
+            "ref": "data/ddm_build_copy/ddm_v551j_semantic_diff.py:290,475-494",
+            "fact": "The provisional cross-wave diff represents change only as diff_class in {identical, semantic_diff, structural_gap} plus a changed-field list - no ordered multi-step movement object."
+          },
+          {
+            "ref": "minimum-anchor counts actually found historically",
+            "fact": ">=2 at ddm_v553_harmonization.py:605 and :992-993; >=2 at ddm_v553_temporal_pressure.py:785, :2604, :2683, :2991, :3467. No occurrence of 3."
+          }
+        ]
+      },
+      "adopted_conservation_authority": {
+        "exists": false,
+        "note": "No adopted authority requires a trajectory object distinct from ordered comparison. DIFFERENCE != TRAJECTORY is binding as a NONCOLLAPSE (a prohibition), not as a requirement."
+      },
+      "why_this_class": "No adopted authority, no current implementation and no historical temporal module constitutes or requires a trajectory form; the only historical occurrence of the word is a prohibition. Terminal necessity is therefore unproved. This is consistent with the audit's X07 disposition and with the HQ204 acceptance that the >=3 threshold is not law.",
+      "why_not_other_classes": {
+        "CURRENT_BINDING": "Not present at all.",
+        "CURRENT_FORM__INSTANCE_MISSING": "No form exists.",
+        "HISTORICAL_FUNCTION_LAWFULLY_CONSERVABLE": "There is no historical function to conserve; the noun was forbidden.",
+        "POSITIVE_SEMANTIC_FORM_MISSING": "This class would assert proved necessity. Necessity is not proved: the adopted F7 obligation ('lawful temporal movement') is satisfiable by ordered directional comparisons plus typed gaps, and DIFFERENCE != TRAJECTORY is the binding rule."
+      },
+      "if_a_longer_ordered_claim_is_needed": "A chain of consecutive authorized ordered pairs covers multi-step movement inside the directionality contract. That does NOT constitute a trajectory object and must not be named one.",
+      "must_not_revive": [
+        "trajectory requires >=3 anchors",
+        "DIFFERENCE => TRAJECTORY",
+        "any rendering of a joint/diff product as a trajectory (historically forbidden)"
+      ],
+      "confidence": "high"
+    },
+    {
+      "index": 6,
+      "meaning": "rupture candidate",
+      "classification": "HISTORICAL_FUNCTION_LAWFULLY_CONSERVABLE",
+      "current_adopted_authority": {
+        "concept_present": false,
+        "lawful_home_exists": true,
+        "evidence": [
+          {
+            "ref": "search for 'rupture' at the commissioned tip",
+            "fact": "3 files match: the HQ204 commission, the HQ201 activation return (E49), and the HQ204 fan-in adjudication. No adopted law and no current module constitutes a rupture concept."
+          },
+          {
+            "ref": "audit MATRIX.md X07",
+            "fact": "'Interpolation or causal explanation of temporal rupture' is TERMINAL_NECESSITY_UNPROVED (blocker no)."
+          },
+          {
+            "ref": "audit REPORT.md, SDTF row",
+            "verbatim": "Adopted SDTF explicitly distinguishes causal-use and calibration authority. It does not thereby license a temporal-rupture causal claim, but disproves the reasoning that the entire project lacks any causal-use form."
+          },
+          {
+            "ref": "SDTF HQ adoption (E28) binding companion law",
+            "fact": "Causal-use, calibration, portability and evidence ceilings must be preserved through composition; P3 ORGANIZED_ACTIVITY_TIME is an adopted mechanism-rule class; temporal-form integrity is binding across EVENT, CONDITION, DIRECTED_RELATION, RECURRENT_ACTIVITY, TRANSITION and ORDERED_HISTORY. That is the lawful home for an objective event/condition claim."
+          }
+        ]
+      },
+      "historical_functional_capital": {
+        "present": true,
+        "authority_class": "HISTORICAL_FUNCTIONAL_CAPITAL (provisional V553, schema v0.2)",
+        "evidence": [
+          {
+            "ref": "data/ddm_build_copy/ddm_v553_temporal_pressure.py:2806-2834",
+            "fact": "_build_v553_structural_rupture_candidate_index triggers only on a large delta or a direction reversal: reversal = delta_direction in {down,up} and strength >= 0.35; rows below 0.25 are skipped; rupture_signal_type in {direction_reversal, large_delta}; rupture_status = 'candidate'."
+          },
+          {
+            "ref": "data/ddm_build_copy/ddm_v553_temporal_pressure.py:2826-2828",
+            "fact": "'external_event_claim_made': False on every candidate; interpretation_permission requires comparability_status == 'comparable' AND |delta| >= 0.25; otherwise blocked_reason 'probe_only_temporal_field'."
+          },
+          {
+            "ref": "data/ddm_build_copy/ddm_v553_schema.py:539-557",
+            "fact": "V553_STRUCTURAL_RUPTURE_CANDIDATE_INDEX_SCHEMA requires rupture_window_start/end, rupture_signal_type, rupture_signal_strength, source_delta_ids_json, rupture_status, external_event_claim_made, interpretation_permission, blocked_reason. The candidate is bound to the deltas that produced it."
+          },
+          {
+            "ref": "data/ddm_build_copy/ddm_v553_temporal_pressure.py:887-923,1273-1290",
+            "fact": "Two event-override authority slots ('event_context', 'rupture_override') are emitted with event_authority_ref = '' and rupture_override_status = 'reserved_not_filled'; the event-override manifest sets event_registry_status = 'not_supplied', override_count = 0 and interpolation_across_rupture_allowed = False. No slot is ever filled."
+          },
+          {
+            "ref": "data/ddm_build_copy/ddm_v553_temporal_pressure.py (4187 lines)",
+            "fact": "case-insensitive search for 'caus' returns ZERO matches. No code path turns a rupture candidate into a causal claim."
+          },
+          {
+            "ref": "data/ddm_build_copy/ddm_v551j_schema.py:730-732",
+            "verbatim": "'do_not_render_as_rupture', 'do_not_render_as_trajectory', 'do_not_render_as_causal_joint_effect'",
+            "meaning": "The historical V551J v2 schema independently forbids rendering joint evidence as a rupture or a causal effect."
+          }
+        ],
+        "conservable_function": ["typed discontinuity candidate bound to the exact ordered comparisons that produced it", "candidate status only, never a classification", "interpretation permission gated on comparability", "reserved-and-unfilled event authority slot", "interpolation prohibited across a candidate"],
+        "must_not_inherit": [
+          "the numeric triggers (strength >= 0.35 for reversal, >= 0.25 for a candidate, the 0.25 interpretation floor)",
+          "rupture_signal_strength as a scalar magnitude",
+          "any automatic causation or external-event attribution",
+          "the rupture_pressure scalar component"
+        ]
+      },
+      "adopted_conservation_authority": {
+        "ref": "PYAT_R2_REGROUNDING_R1/04_FUNCTION_CONSERVATION_CROSSWALK.tsv:15",
+        "meaning": "Conserved temporalization jurisdiction; the HQ201 commission (E50) directed recovering 'rupture candidates / rupture blocks' and 'event-override authority slots' as functional intent.",
+        "boundary": "Causal naming is NOT conserved. The audit classes causal explanation of a temporal rupture as X07 TERMINAL_NECESSITY_UNPROVED, and SDTF requires an actual causal-use and calibration authority before a causal claim."
+      },
+      "why_this_class": "The candidate layer is an exact historical function carrying precisely the safeguards current law would demand: candidate-only status, comparability-gated interpretation, an unfilled and explicitly reserved event authority, a prohibition on interpolation across the candidate, and no causal field. It is conservable at a strictly narrower ceiling.",
+      "why_not_other_classes": {
+        "CURRENT_BINDING": "Not present in adopted law or current code.",
+        "CURRENT_FORM__INSTANCE_MISSING": "No current rupture form exists.",
+        "POSITIVE_SEMANTIC_FORM_MISSING": "The candidate function is fully specified historically and survives non-inheritance; the audit's X07 unproved-necessity finding is scoped to causal EXPLANATION, not to the candidate flag.",
+        "TERMINAL_NECESSITY_UNPROVED": "The audit's W15 ontology explicitly carries 'discontinuity != cause' and keeps gap/rupture semantics as an open terminal dependency with blocker yes; X07's negative finding is about interpolation and causal explanation specifically."
+      },
+      "residual_for_hq": "Conserve a typed rupture-candidate annotation on authorized ordered comparisons, with candidacy only, comparability-gated interpretation permission, no causal field, an explicitly reserved event authority, and a hard prohibition on interpolating across a candidate. Causal naming stays outside the conserved function.",
+      "confidence": "high"
+    },
+    {
+      "index": 7,
+      "meaning": "gap / absence as first-class observation",
+      "classification": "HISTORICAL_FUNCTION_LAWFULLY_CONSERVABLE",
+      "current_adopted_authority": {
+        "general_typed_absence_law_exists": true,
+        "temporal_gap_object_exists": false,
+        "evidence": [
+          {
+            "ref": "rawlsing_next/pre553_empirical_objects.py:102-104,717-722",
+            "fact": "EMPIRICAL_FACT_STATE distinguishes OBSERVED_ZERO (positive denominator, zero numerator) from ZERO_SUPPORT (zero denominator) from UNAVAILABLE / NOT_APPLICABLE / NONCOMPARABLE / UNRESOLVED / VALID_EMPTY, and the class enforces the distinction structurally. Absence is a first-class typed observation in the empirical jurisdiction."
+          },
+          {
+            "ref": "rawlsing_next/pre553_empirical_objects.py:60-68",
+            "fact": "RESPONSE_EVENT_STATE enumerates INAPPLICABLE, NOT_ASKED, SOURCE_SPECIFIC_SPECIAL, INVALID_UNRESOLVED - absence is distinguished from a real value at the response grain."
+          },
+          {
+            "ref": "audit MATRIX.md W22",
+            "fact": "'Typed negatives and bounded consumption' is CURRENT_BINDING_CONCEPTUALLY_CLOSED with blocker no."
+          },
+          {
+            "ref": "PYAT_CONTROL_ROOM/24_HQD125_DDM_FUNCTIONAL_CONSERVATION_AND_PREV3_ACCEPTANCE_LAW.md:137",
+            "fact": "TYPED_SEMANTIC_RELATION_ABSENCE != EMPIRICAL_COTRAVEL_ABSENCE is frozen law."
+          },
+          {
+            "ref": "rawlsing_next/pre553_source_relations.py:52-55",
+            "fact": "TEMPORAL_NONCOMPARABLE exists ONLY as a bare string in FORBIDDEN_BACKFILL_TARGET_STATES; it is in no state family, so no object family can currently produce it. The temporal noncomparability refusal is named but unconstituted."
+          },
+          {
+            "ref": "SDTF HQ adoption (E28) binding companion law",
+            "fact": "Adopted: 'failed positive proof, missing evidence, stale evidence, expired evidence, and termination of P do not by themselves prove a negative or opposite fact' and UNKNOWN_NOT_PROVEN is a no-fact adjudication result, never an actor state. That is the objective-consequence analogue and lawful home."
+          }
+        ]
+      },
+      "historical_functional_capital": {
+        "present": true,
+        "authority_class": "HISTORICAL_FUNCTIONAL_CAPITAL (provisional V553, schema v0.2)",
+        "evidence": [
+          {
+            "ref": "data/ddm_build_copy/ddm_v553_schema.py:521-537",
+            "fact": "V553_TEMPORAL_GAP_AND_ABSENCE_INDEX_SCHEMA requires missing_year_or_span, absence_type, known_absence, missingness_reason, downstream_permission, key_authorization_status and value_inference_allowed. Absence is an indexed observation."
+          },
+          {
+            "ref": "data/ddm_build_copy/ddm_v553_temporal_pressure.py:2772-2803",
+            "fact": "One row per missing year: absence_type = 'missing_year', known_absence = True, missingness_reason = 'no_survey_observation_preserve_unknown', downstream_permission gated on the authorized key, and value_inference_allowed = False."
+          },
+          {
+            "ref": "data/ddm_build_copy/ddm_v553_temporal_pressure.py:2675-2727",
+            "fact": "_build_v553_interpolation_segment_index sets gap = max(0, end_year - start_year - 1) and for gap > 0 on an authorized key forces interpolation_status = 'unknown_gap_preserved', method 'none', allowed False, reason 'no_survey_observation_preserve_unknown'. The default is preservation of the unknown."
+          },
+          {
+            "ref": "data/ddm_build_copy/ddm_v553_temporal_pressure.py:2895-2913,1330-1350",
+            "fact": "Gap rows carry pressure_level = None, pressure_direction = 'unknown', pressure_authority = 'known_unknown_gap', temporal_status = 'unknown_gap', pressure_value_kind = 'gap', allowed_downstream_use = False, and use_permission_class = 'absence_metadata_only' with confidence_penalty 1.0."
+          },
+          {
+            "ref": "data/ddm_build_copy/ddm_v553_temporal_pressure.py:3005",
+            "verbatim": "\"required_v554_absence_handling\": \"carry forward unresolved gaps and do not infer personhood\""
+          },
+          {
+            "ref": "KNOWN DEFECT in the historical line (reported, not conservable)",
+            "fact": "In _build_country_year_pressure_field:1130-1134 a missing year is written as pressure_value = 0.0 with pressure_band = 'unknown' and method 'gap_marked_unknown' - i.e. a numeric zero carrying an 'unknown' label. The JSON distribution preserves null in one branch (:1173-1175) but the country-year grid conflates absence with zero. The gap and absence indices themselves do NOT: they use None/'unknown'/False and value_inference_allowed=False."
+          }
+        ],
+        "conservable_function": ["gap as a first-class indexed observation between two exact anchors", "typed absence states (missing span / noncomparable / unknown)", "value_inference_allowed = False by default", "downstream use permission restricted to absence metadata", "interpolation prohibited unless separately authorized, and never across a rupture candidate"],
+        "must_not_inherit": [
+          "the country-year numeric-zero-for-missing-year branch",
+          "confidence_decay = 1/(1+gap)",
+          "anchor_copy as an interpolation method",
+          "any auto-fill of a gap",
+          "H08's classification of ABSENCE != ZERO for TEMPORAL gaps as 'Binding': its cited authority is the historical V553 gap schema, not adopted law"
+        ]
+      },
+      "adopted_conservation_authority": {
+        "ref": "PYAT_R2_REGROUNDING_R1/04_FUNCTION_CONSERVATION_CROSSWALK.tsv:15",
+        "meaning": "Conserved temporalization jurisdiction; the HQ201 commission (E50) directed recovering 'known gaps / absence / noncomparability' and the anti-collapse LAW 'ABSENCE != ZERO'.",
+        "also": "Audit MATRIX.md W15 ontology: 'gap != zero; discontinuity != cause'."
+      },
+      "correction_to_prior_record": {
+        "claim": "H08 asserts 'ABSENCE != ZERO: Binding' citing V553_TEMPORAL_GAP_AND_ABSENCE_INDEX_SCHEMA.",
+        "correction": "The general typed-absence law IS current binding (EMPIRICAL_FACT_STATE; W22 CURRENT_BINDING_CONCEPTUALLY_CLOSED; HQ125 section 5), and SDTF binds missing-evidence noncollapse in the objective-consequence jurisdiction. For TEMPORAL gaps specifically, the cited authority is a provisional historical schema (v0.2), so the correct class is HISTORICAL_FUNCTION_LAWFULLY_CONSERVABLE, not CURRENT_BINDING."
+      },
+      "why_this_class": "The temporal gap/absence function is exact, is the DEFAULT rather than the exception in the historical line, carries value_inference_allowed = False and an absence-metadata-only use ceiling, and its jurisdiction is conserved. Current law supplies the typed-absence pattern and the authority discipline. One historical branch (country-year numeric zero) is a defect to be excluded.",
+      "why_not_other_classes": {
+        "CURRENT_BINDING": "No current temporal gap object exists and TEMPORAL_NONCOMPARABLE is only a bare string.",
+        "CURRENT_FORM__INSTANCE_MISSING": "The current typed-negative form lives in the empirical/response jurisdictions and on the SDTF consequence path; it is not a temporal-gap form.",
+        "POSITIVE_SEMANTIC_FORM_MISSING": "The historical function is exact and survives non-inheritance; the meaning need not be newly conceived.",
+        "TERMINAL_NECESSITY_UNPROVED": "HQ125 section 10 names 'uncertainty and non-comparability' among the temporal movement representations the world must be capable of, and M1 gates on comparability absence states."
+      },
+      "residual_for_hq": "Promote TEMPORAL_NONCOMPARABLE into a real state family and conserve the gap/absence observation with value_inference_allowed=False, use_permission_class=absence_metadata_only, and a default of preserving the unknown.",
+      "confidence": "high"
+    }
+  ],
+  "directionality_item": {
+    "index": 8,
+    "meaning": "temporal directionality authority",
+    "classification": "POSITIVE_SEMANTIC_FORM_MISSING",
+    "h_a_finding_confirmed": true,
+    "hq204_finding_confirmed": true,
+    "current_adopted_authority": {
+      "present": false,
+      "evidence": [
+        {
+          "ref": "rawlsing_next/pre553_empirical_authority.py:25-44,86",
+          "fact": "The closed AUTHORITY_KINDS set has no directionality, ordering or comparability time kind. TEMPORAL_EVIDENCE ceiling is evidence binding only."
+        },
+        {
+          "ref": "rawlsing_next/pre553_structural_admission.py:215,272,302",
+          "fact": "directionality_or_role_semantics is carried and hashed but never interpreted; no ordering or asymmetry assertion appears in the module."
+        },
+        {
+          "ref": "rawlsing_next/pre553_source_relations.py:58-102",
+          "fact": "No temporal relation kind exists among the eight source relation kinds."
+        },
+        {
+          "ref": "rawlsing_next/v3_adp010_oee_executor.py:174-175,227",
+          "fact": "The only ordered time relation in current code is the V3 actor-record interval ordering check, in a downstream jurisdiction."
+        },
+        {
+          "ref": "audit REPORT.md line 103 (accepted by HQ204)",
+          "verbatim": "two waves existing do not automatically confer directionality authority"
+        },
+        {
+          "ref": "PYAT_CONTROL_ROOM/24_HQD125_DDM_FUNCTIONAL_CONSERVATION_AND_PREV3_ACCEPTANCE_LAW.md:248",
+          "verbatim": "TWO_WAVES_EXIST != TEMPORAL_DIRECTIONALITY_AUTHORITY"
+        }
+      ]
+    },
+    "historical_functional_capital": {
+      "present": "functionally similar, never adopted, narrower scope",
+      "evidence": [
+        {
+          "ref": "data/ddm_build_copy/ddm_v553_temporal_pressure.py:750-847",
+          "fact": "The historical gate authorized a multi-wave temporal key only when a harmonization authority was present AND at least two eligible resolved anchors existed: 'at_least_two_probe_ready_resolved_structural_anchors'. Three statuses: authorized / probe-only / blocked."
+        },
+        {
+          "ref": "data/ddm_build_copy/ddm_v553_harmonization.py:602-613,949,960",
+          "fact": "ready_for_v553 requires >=2 complete waves plus shared semantic, directionality (response-polarity) and position structure; comparison_authority_status = 'multi_wave_authorized'; comparability_status = 'comparability_authorized'."
+        },
+        {
+          "ref": "data/ddm_build_copy/ddm_v553_temporal_pressure.py:2619-2633",
+          "fact": "Direction came only from the sign of a scalar delta with a +/-0.05 deadband."
+        }
+      ],
+      "why_it_is_not_succession": [
+        "It was never adopted law: the module is V553_SCHEMA_VERSION 'v0.2', compiler 'v553_temporal_pressure_0.2_sparse', and the audit states historical temporal functionality cannot justify inheriting a provisional scalar pressure coefficient.",
+        "Its positive content was a provisional SCALAR PRESSURE FIELD, which HQ204/H-A forbid inheriting.",
+        "Its scope was one survey family in one country at a point-year anchors, while the adopted F7 obligation spans distributions, determinicity, branch prevalence, minority/outlier configurations, co-signature/attitude-cloud prevalence, structural relations, structural pressure, contradiction/alignment/divergence, and uncertainty/non-comparability across a multi-family estate.",
+        "Adopted R2 law says 'no required V553 node' and 'functional jurisdiction only' - jurisdiction, not authority."
+      ]
+    },
+    "adopted_conservation_authority": {
+      "exists": false,
+      "note": "No adopted authority confers directionality; the function's jurisdiction is conserved, the authority is not."
+    },
+    "why_this_class": "No adopted authority constitutes an authority that can establish an ordered directional temporal claim at the required grain. Historical capital resembles the function but was provisional, scalar-bound and narrower, and cannot serve as succession. A bounded new authority-form candidate is derived in 03_DIRECTIONALITY_AUTHORITY_CANDIDATE.json.",
+    "smallest_lawful_contract": "one new authority kind TEMPORAL_COMPARABILITY + required material keys; see 03_DIRECTIONALITY_AUTHORITY_CANDIDATE.json",
+    "architecture_reopen": false,
+    "architecture_reopen_reason": "The deficit is a bounded authority FORM at an already-lawful grain, in the same class HQ204 already accepted for H-C service-source applicability. Every required input has a lawful existing home (TEMPORAL_EVIDENCE, WEIGHT_DESIGN_ESTIMAND, TARGET_USE_PERMISSION, SOURCE_EQUIVALENCE / NATIVE_CANONICAL_MAPPING_HARMONIZATION, exact refs, replay protocol).",
+    "confidence": "high"
+  },
+  "summary": {
+    "items_resolved": 7,
+    "directionality_item_resolved": true,
+    "classification_counts_excluding_directionality": {
+      "CURRENT_BINDING": 0,
+      "CURRENT_FORM__INSTANCE_MISSING": 0,
+      "HISTORICAL_FUNCTION_LAWFULLY_CONSERVABLE": 5,
+      "POSITIVE_SEMANTIC_FORM_MISSING": 1,
+      "TERMINAL_NECESSITY_UNPROVED": 1
+    },
+    "directionality_classification": "POSITIVE_SEMANTIC_FORM_MISSING",
+    "named_forms_missing": [
+      "positive temporal relation object (item 3)",
+      "temporal directionality / comparability authority (directionality item)",
+      "typed TEMPORAL_NONCOMPARABLE state family (required inside the directionality contract)"
+    ],
+    "named_form_necessity_unproved": [
+      "trajectory as a distinct object (item 5)"
+    ],
+    "headline": "Five of the seven temporal meanings are recoverable without inventing ontology: they are exact historical functions whose jurisdiction is conserved claim-conditionally by adopted R2 law, and current law already supplies the lawful authority homes. One meaning - the positive temporal relation - has no positive form anywhere. One - trajectory - has no proved necessity anywhere and its only historical occurrence is a prohibition. Temporal directionality authority remains affirmatively unconstituted and is now bounded into a single new authority kind."
+  }
+}

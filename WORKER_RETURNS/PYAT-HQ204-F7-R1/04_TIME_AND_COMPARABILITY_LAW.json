@@ -1,0 +1,198 @@
+{
+  "schema": "PYAT_HQ204_TIME_AND_COMPARABILITY_LAW@1.0.0",
+  "lane": "PYAT-HQ204-F7-R1",
+  "commission_instruction": "Do NOT resurrect the old universal POINT YEAR vs FIELDWORK INTERVAL binary. Trace operation/source-specific time semantics. If different operations can lawfully carry different exact time representations, preserve that polymorphism.",
+  "verdict": "POLYMORPHIC_EXACT_TIME_REFS__GRAIN_IS_CLAIM_BOUND__UNIVERSAL_BINARY_NOT_ADOPTED",
+  "withdrawn_framing_not_reinstated": {
+    "old_framing": "'For multi-source comparison, is temporal identity keyed on a POINT YEAR or on a FIELDWORK INTERVAL?' presented as a two-way universal fork with a TIME-GRAIN-FORK Astra packet",
+    "status": "WITHDRAWN / SUPERSEDED",
+    "authority": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ203_TERMINAL_BACKWARD_RESIDUAL_RECALIBRATION_R1.md (sections 4 and 'Residual docket'); HQ204 adjudication ('no universal point-year-vs-fieldwork-interval binary is adopted')",
+    "reinstated_by_this_lane": false
+  },
+  "current_adopted_time_surfaces_traced": [
+    {
+      "surface": "pre-V3 structural-admission rule",
+      "ref": "rawlsing_next/pre553_structural_admission.py:218,281-282,305",
+      "field": "allowed_effective_time_or_interval_refs: tuple[ExactRef, ...]",
+      "grain_asserted": false,
+      "typed": false,
+      "finding": "The field name is time_OR_interval_refs and its type is a tuple of ExactRef. It names EITHER a point OR an interval and constrains neither. There is no grain enum, no grain validation, no grain assertion and no grain comparison anywhere in the module.",
+      "enforcement": "rawlsing_next/pre553_structural_admission.py:281-282 requires that a rule binding any time ref must also bind exact TEMPORAL_EVIDENCE authority; :673-678 then checks subset membership and emits TEMPORAL_SCOPE_MISMATCH on failure."
+    },
+    {
+      "surface": "pre-V3 structural-admission request",
+      "ref": "rawlsing_next/pre553_structural_admission.py:358,369,674-678",
+      "field": "effective_time_or_interval_refs_required_by_target_use: tuple[ExactRef, ...]",
+      "grain_asserted": false,
+      "finding": "Target-use-required time refs are also exact refs, compared by membership against the rule's allowed set."
+    },
+    {
+      "surface": "pre-V3 structural-admission free mappings",
+      "ref": "rawlsing_next/pre553_structural_admission.py:225-226,273-274,325-326",
+      "fields": ["effective_period: Mapping[str, Any]", "time_geography_applicability: Mapping[str, Any]"],
+      "grain_asserted": false,
+      "finding": "Both are free mappings that are only canonicalised and hashed. No schema constrains them."
+    },
+    {
+      "surface": "closed authority vocabulary",
+      "ref": "rawlsing_next/pre553_empirical_authority.py:25-44,65-88",
+      "finding": "AUTHORITY_KINDS is a closed set of 18 kinds. Exactly one is time-related: TEMPORAL_EVIDENCE, ceiling 'source-native effective/reference-time evidence'. There is no grain enum and no temporal comparability or directionality kind.",
+      "significance": "The law constrains AUTHORITY, not GRAIN. This is the structural reason the grain is polymorphic."
+    },
+    {
+      "surface": "pre-V3 universe identity",
+      "ref": "rawlsing_next/pre553_empirical_objects.py:503-514",
+      "fields": ["raw_wave", "canonical_wave_if_governed", "field_or_reference_time"],
+      "grain_asserted": false,
+      "finding": "field_or_reference_time is a single opaque field; raw_wave and canonical_wave_if_governed are opaque. No grain is declared."
+    },
+    {
+      "surface": "pre-V3 coordinate fact",
+      "ref": "rawlsing_next/pre553_empirical_objects.py:532-546",
+      "field": "effective_or_reference_time",
+      "grain_asserted": false,
+      "finding": "Again 'or'; again untyped."
+    },
+    {
+      "surface": "pre-V3 empirical fact",
+      "ref": "rawlsing_next/pre553_empirical_objects.py:696-724",
+      "finding": "EmpiricalFact has NO time, effective-time or interval field at all. The empirical substrate is time-agnostic; time attaches at rule, request, universe and coordinate grains."
+    },
+    {
+      "surface": "F8 / positioned-subject possibility conditioner",
+      "ref": "rawlsing_next/source_backed_positioned_subject_possibility.py:77,80,86-88",
+      "fields": ["comparability_authority_ref: AuthorityRef (required positive)", "effective_time_or_interval: Any"],
+      "grain_asserted": false,
+      "finding": "The comparability authority slot IS current law at this grain and is required to be a positive AuthorityRef. The effective time is an untyped Any that is only canonicalised. The comparability authority's TEMPORAL content is not constituted anywhere."
+    },
+    {
+      "surface": "V3 actor-record executor (downstream jurisdiction)",
+      "ref": "rawlsing_next/v3_adp010_oee_executor.py:121,169-175,227",
+      "fields": ["effective_from: str", "effective_until: str", "time_granularity: str"],
+      "grain_asserted": "partially",
+      "finding": "effective_from/effective_until are ISO-8601 timezone-aware instants normalised to UTC microseconds, with an explicit ordering check ('effective_until precedes effective_from'). time_granularity is validated only as a non-empty string via _s(time_granularity,'time_granularity'); there is NO closed-set validation. Observed values in the repo are INSTANT and INTERVAL, in tests only.",
+      "significance": "The actual grain affordance in current code is INSTANT vs INTERVAL, not point-year vs fieldwork-interval. Point-year and fieldwork-interval are both finer representations on the same axis. This surface is V3 actor-record scope and is NOT available to PRE-V3 empirical comparison, but it does show that an ordered interval-endpoint relation is lawful at its own grain."
+    },
+    {
+      "surface": "M1 temporal ingress",
+      "ref": "rawlsing_next/m1_temporal_v554_admission_dedup.py:24,28,36,46",
+      "fields": ["rule_relevant_effective_time_semantics_fingerprint", "effective_time_or_interval_refs_required_by_target_use", "rule_operations... required_temporal_operations"],
+      "grain_asserted": false,
+      "finding": "M1 carries a fingerprint OF a semantics that must already exist and requires its callers to supply required_temporal_operations. No grain value is declared, produced or constrained by M1."
+    }
+  ],
+  "historical_time_semantics_traced": [
+    {
+      "surface": "V553 calendar anchor",
+      "ref": "data/ddm_build_copy/ddm_v553_temporal_identity.py:30-46,129-144",
+      "grain": "point-year (calendar year integer)",
+      "finding": "Accepts temporal_year / fieldwork_year / survey_year / year in 1000..3000; refuses to treat a wave ordinal as a year; requires one anchor per calendar year. Fieldwork intervals are NOT represented anywhere.",
+      "status": "HISTORICAL_FUNCTIONAL_CAPITAL, provisional"
+    },
+    {
+      "surface": "wave label vs ordinal",
+      "ref": "data/ddm_build_copy/ddm_survey_identity.py:123-159,204-215",
+      "finding": "canonical_wave_key preserves the wave as a LABEL (II, W6, ROUND9, 2017); wave_ordinal is derived only 'for range-comparison' and 'without changing the canonical label'. WAVE_LABEL != ORDINAL != CALENDAR_YEAR is historical practice and must be preserved.",
+      "status": "HISTORICAL_CONSTRAINT, conservable"
+    },
+    {
+      "surface": "EVS wave<->year table",
+      "ref": "data/ddm_build_copy/ddm_survey_identity.py:89",
+      "finding": "EVS_WAVE_BY_YEAR is a hard-coded family-specific mapping from calendar year to wave label. It is family-specific harmonization material, not a general grain rule.",
+      "status": "HISTORICAL, family-scoped only; may not be generalised"
+    },
+    {
+      "surface": "V553 anchor manifest",
+      "ref": "data/ddm_build_copy/ddm_v553_schema.py:100-120",
+      "fields": ["wave", "canonical_wave", "wave_year", "anchor_status", "anchor_authority", "anchor_confidence"],
+      "finding": "One anchor per wave with an authority and a confidence; still a year, never an interval.",
+      "status": "HISTORICAL_FUNCTIONAL_CAPITAL"
+    },
+    {
+      "surface": "V553 gap spans",
+      "ref": "data/ddm_build_copy/ddm_v553_schema.py:499-537",
+      "fields": ["segment_start_year", "segment_end_year", "missing_year_or_span", "gap_length_years"],
+      "finding": "A bounded year span is represented for GAPS and for interpolation segments, but never as a lawful positive observation time.",
+      "status": "HISTORICAL_FUNCTIONAL_CAPITAL, gap-only"
+    }
+  ],
+  "operation_and_source_specificity": {
+    "finding": "Grain is rule-bound by construction, not chosen once.",
+    "mechanism": [
+      "the rule declares which exact time refs are in scope (allowed_effective_time_or_interval_refs)",
+      "the target use declares which exact time refs it requires (effective_time_or_interval_refs_required_by_target_use)",
+      "the rule must bind exact TEMPORAL_EVIDENCE authority for any time ref it uses",
+      "admission compares by exact-ref membership, so any grain the authority binds is admissible and any grain it does not bind is refused"
+    ],
+    "consequence": "A source could lawfully be used with a point-year ref in one operation and with a bounded interval ref in another, because the bound authority differs. Different operations may lawfully carry different exact time representations. This polymorphism is the law and must be preserved."
+  },
+  "preserved_law": [
+    {
+      "rule": "TIME_REF_IS_EXACT_AND_OPAQUE_AT_THE_SUBSTRATE_GRAIN",
+      "meaning": "No code below the rule layer may assume a grain. The time ref is an exact ref; the grain lives in the binding authority."
+    },
+    {
+      "rule": "GRAIN_IS_BOUND_BY_EXACT_TEMPORAL_EVIDENCE_AUTHORITY",
+      "meaning": "A claim may use a grain only to the extent the governing rule's exact TEMPORAL_EVIDENCE authority admits it."
+    },
+    {
+      "rule": "NO_IMPLICIT_GRAIN_COERCION",
+      "meaning": "No midpoint, no year-from-ordinal, no ordinal-as-date, no interval-to-point collapse, no interpolation as a substitute time ref. Historically preserved by ddm_v553_temporal_identity.py:30-46."
+    },
+    {
+      "rule": "WAVE_LABEL != ORDINAL != CALENDAR_YEAR",
+      "meaning": "Historically preserved by ddm_survey_identity.py:204-215; required by the directionality contract's FAMILY_LOCAL_ORDINAL basis."
+    },
+    {
+      "rule": "OVERLAPPING_INTERVALS_GIVE_A_PARTIAL_ORDER",
+      "meaning": "Where two authorized interval refs overlap, the order is partial and no direction is claimable for that pair. The refusal is typed (TEMPORAL_INTERVAL_OVERLAP_NO_DIRECTION), not a silent choice."
+    },
+    {
+      "rule": "DIFFERENT_OPERATIONS_MAY_CARRY_DIFFERENT_GRAINS",
+      "meaning": "Polymorphism is preserved deliberately. No universal grain is adopted and none is required."
+    },
+    {
+      "rule": "NO_SURVEY_FAMILY_MEMBERSHIP_PROOF_OF_GRAIN_ADEQUACY",
+      "meaning": "Same-family membership does not by itself prove that a point-year ref is adequate for a comparison. Adequacy comes from the bound TEMPORAL_EVIDENCE and TEMPORAL_COMPARABILITY authorities, not from family membership."
+    }
+  ],
+  "comparability_law": {
+    "question": "What makes two temporal references comparable?",
+    "current_binding_answer": "PARTIAL. The comparability authority SLOT is current law at the F8/PSEPF grain (source_backed_positioned_subject_possibility.py:77 requires a positive comparability authority ref). Source-space comparability is inapplicable-by-default and requires an exact positive relation authority (pre553_source_relations.py, DISTINCT_BY_DEFAULT). No TEMPORAL comparability meaning is constituted.",
+    "refusal_law_current_binding": [
+      "EMPIRICAL_FACT_NONCOMPARABLE is an enumerated P06 decision with reason codes (pre553_structural_admission.py:47,640,680-687).",
+      "NONCOMPARABLE is enumerated in SOURCE_UNIVERSE_STATE and SOURCE_UNIVERSE_RELATION_STATE (pre553_empirical_objects.py:79,88).",
+      "TEMPORAL_SCOPE_MISMATCH is an enumerated P06 decision (pre553_structural_admission.py:48,68,677-678)."
+    ],
+    "refusal_law_absent": "TEMPORAL_NONCOMPARABLE occurs exactly once in the whole worktree, as a bare string in FORBIDDEN_BACKFILL_TARGET_STATES (pre553_source_relations.py:52-55). It is in no state family, has no producer and has no schema.",
+    "candidate_comparability_material": [
+      "shared response surface and scale harmonisation",
+      "shared instrument release or an authorized equivalence",
+      "shared question/coordinate semantics",
+      "shared estimand",
+      "shared measure and weight design",
+      "shared geography and target population / risk set",
+      "a bound order basis for the time refs"
+    ]
+  },
+  "uncertainty_and_refusal_law": {
+    "current_binding": [
+      "EMPIRICAL_FACT_STATE distinguishes OBSERVED_ZERO (d>0, n=0) from ZERO_SUPPORT (d=0) from UNAVAILABLE / NOT_APPLICABLE / NONCOMPARABLE / UNRESOLVED / VALID_EMPTY, and enforces the distinction structurally (pre553_empirical_objects.py:102-104,717-722).",
+      "RESPONSE_EVENT_STATE enumerates INAPPLICABLE / NOT_ASKED / SOURCE_SPECIFIC_SPECIAL / INVALID_UNRESOLVED (pre553_empirical_objects.py:60-68).",
+      "AUTHORITY_STATE is fail-closed: ALLOW / DENY / DEFER / MISSING_AUTHORITY / UNKNOWN / OUT_OF_SCOPE / SUPERSEDED_NOT_REPLAYABLE / AUTHORITY_HASH_MISMATCH / AUTHORITY_SCOPE_MISMATCH (pre553_empirical_objects.py:82-85; FAIL_CLOSED_STATES at pre553_empirical_authority.py:54-57).",
+      "M1 SCR553 states include NO_POSITIVE_V553_OUTPUT__MISSING_TEMPORAL_AUTHORITY, __MISSING_COMPARABILITY_AUTHORITY and INELIGIBLE_TEMPORAL_SIGNATURE (m1_temporal_v554_admission_dedup.py:50-57,83,240-247)."
+    ],
+    "missing_for_the_temporal_case": "A typed temporal noncomparability / gap / order-unresolved state family. Named in 03_DIRECTIONALITY_AUTHORITY_CANDIDATE.json.",
+    "law": "A nonpositive temporal state is terminal, typed, reason-carrying and replayable, and is NEVER evidence of no change. NONCOMPARABLE != NO_CHANGE and ABSENCE != ZERO."
+  },
+  "provenance_and_replay_law": {
+    "current_binding": [
+      "REPLAY_PROTOCOL is a first-class authority kind with ceiling 'canonical projection and deterministic replay law' (pre553_empirical_authority.py:43,87).",
+      "Mutable/fuzzy selection is structurally forbidden: FORBIDDEN_SELECTOR_TOKENS = LATEST, DEFAULT, FUZZY, NEAREST, SEMVER, SEMVER_FALLBACK, * (pre553_empirical_authority.py:58-60,99-111).",
+      "Canonical semantic hashing and content-addressed URNs are the identity mechanism (m1_temporal_v554_admission_dedup.py:113-131).",
+      "M1 explicitly 'never uses latest/fuzzy/clock/RNG/filesystem state' (m1_temporal_v554_admission_dedup.py:292)."
+    ],
+    "requirement_for_directionality": "The directional claim must be reconstructible from its determinants alone: exact anchor refs, exact authority snapshots, exact observation refs, order basis, estimand/measure refs and the comparison operation identity."
+  },
+  "conclusion": "There is no universal time-grain law and none is required. The law is: exact time refs, grain bound by exact TEMPORAL_EVIDENCE authority per rule/operation, no coercion, partial order where intervals overlap, and typed noncomparability where no authority makes a pair comparable. This preserves polymorphism and answers the operation/source-specificity question HQ203 demanded be traced."
+}

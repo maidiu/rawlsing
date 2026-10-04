@@ -1,0 +1,99 @@
+{
+  "schema": "PYAT_HQ204_ASTRA_TEST@1.0.0",
+  "lane": "PYAT-HQ204-F7-R1",
+  "verdict": "NO_ASTRA",
+  "referral_recommended": false,
+  "commission_gate": "Astra is warranted only if exact current/historical forensics reveal a genuinely high-consequence fork that (a) cannot be resolved from authority, (b) cannot be represented as typed noncomparability/refusal, and (c) materially changes terminal semantics. If there is no such fork, say NO ASTRA.",
+  "hq203_gate_applied": {
+    "ref": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/HQ203_TERMINAL_BACKWARD_RESIDUAL_RECALIBRATION_R1.md",
+    "verbatim": "Astra should be re-consulted only if corrected H-A reconciliation leaves a genuinely high-consequence underdetermined fork after operation/source-specific time semantics are traced.",
+    "satisfied": true,
+    "operation_and_source_specific_time_semantics_traced": true,
+    "trace_artifact": "04_TIME_AND_COMPARABILITY_LAW.json"
+  },
+  "candidate_forks_tested": [
+    {
+      "fork": "TIME-GRAIN-FORK (the withdrawn HQ201/HQ202 packet): is multi-source temporal identity keyed on a point year or on a fieldwork interval?",
+      "status": "NOT A FORK",
+      "test_a_resolvable_from_authority": {
+        "result": true,
+        "how": "The pre-V3 field is a polymorphic exact-ref tuple (allowed_effective_time_or_interval_refs; effective_time_or_interval_refs_required_by_target_use) whose grain is bound per rule by exact TEMPORAL_EVIDENCE authority; there is no grain enum anywhere, and the V3 affordance is INSTANT/INTERVAL. The grain is therefore operation-bound by construction, so no universal choice exists to fork between.",
+        "authority": "rawlsing_next/pre553_structural_admission.py:218,281-282,673-678; rawlsing_next/pre553_empirical_authority.py:42,86; rawlsing_next/v3_adp010_oee_executor.py:227"
+      },
+      "test_b_representable_as_typed_noncomparability": {
+        "result": true,
+        "how": "Where no bound authority makes a pair comparable at a common grain, the outcome is a typed refusal (TEMPORAL_NONCOMPARABLE / TEMPORAL_RESPONSE_SURFACE_MISMATCH / TEMPORAL_MEASURE_MISMATCH), and overlapping interval refs yield TEMPORAL_INTERVAL_OVERLAP_NO_DIRECTION. The refusal is a first-class observation, not a dead end."
+      },
+      "test_c_materially_changes_terminal_semantics": {
+        "result": false,
+        "why": "The terminal F7 obligation (HQ125 Gate F7: 'comparable same-survey waves can produce lawful temporal movement ... with typed non-comparability where required') is satisfiable under either representation, because comparability is granted per claim by exact authority. No terminal outcome depends on a single universal grain."
+      },
+      "verdict": "NO ASTRA. Withdrawn framing was not reinstated."
+    },
+    {
+      "fork": "TRAJECTORY-NECESSITY-FORK: does the terminal objective require a distinct trajectory object?",
+      "status": "NOT AN UNDERDETERMINED FORK",
+      "test_a_resolvable_from_authority": {
+        "result": true,
+        "how": "DIFFERENCE != TRAJECTORY is the binding noncollapse (audit REPORT.md line 103, accepted by HQ204). No adopted authority requires a trajectory object, and the only historical occurrence of the noun is the prohibition 'do_not_render_as_trajectory'. Necessity is unproved rather than underdetermined."
+      },
+      "test_b_representable_as_typed_noncomparability": {
+        "result": true,
+        "how": "Multi-step movement is representable as a sequence of authorized ordered relation claims; no trajectory noun is needed."
+      },
+      "test_c_materially_changes_terminal_semantics": {
+        "result": false,
+        "why": "Declining the noun removes no required representable class."
+      },
+      "verdict": "NO ASTRA. This is an HQ docket item (adopt the noun with its own authority and falsification test, or decline it), not an external decision."
+    },
+    {
+      "fork": "RUPTURE-CAUSALITY-FORK: must a temporal discontinuity be causally explained?",
+      "status": "NOT A FORK",
+      "test_a_resolvable_from_authority": {
+        "result": true,
+        "how": "The audit classes interpolation or causal explanation of a temporal rupture as X07 TERMINAL_NECESSITY_UNPROVED (blocker no). Adopted SDTF distinguishes causal-use and calibration authority and 'does not thereby license a temporal-rupture causal claim'. The historical candidate layer hard-codes external_event_claim_made False and leaves the event authority 'reserved_not_filled'."
+      },
+      "test_b_representable_as_typed_noncomparability": {
+        "result": true,
+        "how": "A discontinuity is carried as a typed, comparability-gated rupture CANDIDATE with an explicit blocked reason; no causal field exists and none is needed."
+      },
+      "test_c_materially_changes_terminal_semantics": {
+        "result": false,
+        "why": "Nothing terminal depends on naming a cause."
+      },
+      "verdict": "NO ASTRA."
+    },
+    {
+      "fork": "CROSS-SOURCE TEMPORAL COMPARABILITY SCOPING: may cross-family/cross-source temporal comparison remain source-indexed with typed noncomparability as the terminal answer, or must a positive cross-source temporal comparability constitution exist?",
+      "status": "BOUNDED AUTHORITY QUESTION, ALREADY HQ-DOCKETABLE",
+      "test_a_resolvable_from_authority": {
+        "result": "partially",
+        "how": "HQ125 section 10 requires exact identity, scope, response-surface and comparability authority for cross-wave temporal products, and Gate F7 requires typed non-comparability 'where required'. That already establishes that a refusal is a lawful terminal answer for any scope where comparability cannot be authorized. What is missing is the AUTHORITY INSTANCE, which is an adoption act."
+      },
+      "test_b_representable_as_typed_noncomparability": {
+        "result": true,
+        "how": "Yes: TEMPORAL_NONCOMPARABLE plus the other typed nonpositive states in 03_DIRECTIONALITY_AUTHORITY_CANDIDATE.json."
+      },
+      "test_c_materially_changes_terminal_semantics": {
+        "result": "not established",
+        "why": "No adopted requirement was found that is unsatisfiable by source-indexed co-existence plus typed temporal noncomparability. Establishing otherwise would require an exact unmet terminal demand, which forensics did not find."
+      },
+      "verdict": "NO ASTRA. This is the same narrow residual H-A already identified as 'a scope/authority question HQ can docket rather than an underdetermined fork'. It remains HQ's docket; the bounded candidate in artifact 03 is the docketable answer."
+    },
+    {
+      "fork": "TEMPORAL_NONCOMPARABLE STATE-FAMILY GAP",
+      "status": "BOUNDED DEFECT, NOT A FORK",
+      "detail": "TEMPORAL_NONCOMPARABLE exists only as a bare string in FORBIDDEN_BACKFILL_TARGET_STATES (rawlsing_next/pre553_source_relations.py:52-55) and is in no state family. A temporal refusal can therefore be named where no object family can produce it.",
+      "verdict": "NO ASTRA. This is a bounded typing fix inside the directionality contract."
+    }
+  ],
+  "why_not_finish_is_not_a_reason": "Unfinished work, unresolved meanings, and missing authority instances are not Astra grounds. Five of the seven meanings are conservable historical function; two need a bounded positive form; one needs no form. All of it is adoptable by HQ under existing jurisdictions.",
+  "what_this_lane_recommends_instead": [
+    "HQ adopts or rejects the single bounded authority kind TEMPORAL_COMPARABILITY and its required material keys (artifact 03).",
+    "HQ promotes TEMPORAL_NONCOMPARABLE from bare string to a real state family.",
+    "HQ dispositions the trajectory noun (adopt with its own authority, or decline).",
+    "HQ dispositions the conserved historical functions at their declared ceilings (artifact 02) as authority material, not theory."
+  ],
+  "confidence": "high"
+}

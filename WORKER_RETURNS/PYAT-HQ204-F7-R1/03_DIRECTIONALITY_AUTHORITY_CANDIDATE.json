@@ -1,0 +1,235 @@
+{
+  "schema": "PYAT_HQ204_DIRECTIONALITY_AUTHORITY_CANDIDATE@1.0.0",
+  "lane": "PYAT-HQ204-F7-R1",
+  "status": "BOUNDED_NEW_AUTHORITY_FORM_CANDIDATE__REQUIRES_HQ_ADOPTION",
+  "not_an_adoption": "This is a derived candidate contract. Nothing here is adopted by being written. HQ adoption is required.",
+  "commission_requirement": "Derive the smallest lawful authority contract capable of establishing a directional temporal claim, without assuming TWO WAVES EXIST => DIRECTIONALITY, DIFFERENCE => TRAJECTORY, or TEMPORAL COINCIDENCE => CAUSE.",
+  "succession_test_result": {
+    "historical_or_adopted_law_already_provides_this_function": false,
+    "succession_proved": false,
+    "why_not": [
+      "No adopted authority confers temporal directionality: the closed AUTHORITY_KINDS set (rawlsing_next/pre553_empirical_authority.py:25-44) contains exactly one time-related kind, TEMPORAL_EVIDENCE, whose ceiling is 'source-native effective/reference-time evidence' and whose operation binds evidence rather than ordering observations.",
+      "The historical V553 multi-wave authorization gate (data/ddm_build_copy/ddm_v553_temporal_pressure.py:750-847) is a functional ancestor but was never adopted law: its module is provisional (V553_COMPILER_VERSION 'v553_temporal_pressure_0.2_sparse'), its positive content is a scalar pressure field that HQ204/H-A forbid inheriting, and its scope was one survey family in one country at point-year anchors.",
+      "Adopted R2 law conserves the temporalisation JURISDICTION only: 'functional jurisdiction only | no required V553 node' (PYAT_R2_REGROUNDING_R1/04_FUNCTION_CONSERVATION_CROSSWALK.tsv:15).",
+      "HQ204 accepted H-A's finding that TEMPORAL_DIRECTIONALITY_AUTHORITY is unconstituted, and accepted that two waves existing do not confer it (PYAT_CONTROL_ROOM/24_HQD125_...md:248)."
+    ],
+    "conclusion": "This is a bounded NEW authority-form candidate at an already-lawful grain, in the same class HQ204 already accepted for H-C service-source applicability. It is not an architecture reopen."
+  },
+  "minimality_argument": {
+    "one_new_authority_kind_only": true,
+    "kind_name": "TEMPORAL_COMPARABILITY",
+    "why_one_kind_and_not_a_bundle": "Every other required input already exists as an exact authority kind or as exact refs. The comparison law itself - which time refs may be ordered, which response/instrument/estimand/measure surface must be shared, and what a directional claim may and may not assert - has no home in any existing kind. Exactly one new kind closes it.",
+    "existing_kinds_reused": [
+      {"kind": "TEMPORAL_EVIDENCE", "reuse": "binds each anchor's source-native effective/reference-time evidence", "ref": "rawlsing_next/pre553_empirical_authority.py:42,86"},
+      {"kind": "WEIGHT_DESIGN_ESTIMAND", "reuse": "binds the common estimand and measure/weight basis of the compared quantity", "ref": "rawlsing_next/pre553_empirical_authority.py:31,75"},
+      {"kind": "TARGET_USE_PERMISSION", "reuse": "binds the governed use of the directional claim", "ref": "rawlsing_next/pre553_empirical_authority.py:41,85"},
+      {"kind": "SOURCE_EQUIVALENCE", "reuse": "binds semantic/source equivalence in an exact scope where the pair crosses universes", "ref": "rawlsing_next/pre553_empirical_authority.py:34,78"},
+      {"kind": "NATIVE_CANONICAL_MAPPING_HARMONIZATION", "reuse": "binds native-to-canonical response/value transformation", "ref": "rawlsing_next/pre553_empirical_authority.py:28,71-72"},
+      {"kind": "UNCERTAINTY_METHOD", "reuse": "binds the uncertainty method, or the claim carries a typed-unquantified state", "ref": "rawlsing_next/pre553_empirical_authority.py:40,84"},
+      {"kind": "REPLAY_PROTOCOL", "reuse": "binds canonical projection and deterministic replay", "ref": "rawlsing_next/pre553_empirical_authority.py:43,87"}
+    ],
+    "explicitly_not_added": [
+      "no new object family for the temporal world",
+      "no universal time-grain choice",
+      "no scalar pressure/intensity/coefficient",
+      "no trajectory object",
+      "no rupture classification authority",
+      "no causal or event-naming authority",
+      "no automatic release, no required V553 node"
+    ]
+  },
+  "contract": {
+    "candidate_contract_id": "PREV3_TEMPORAL_DIRECTIONALITY_AUTHORITY_CANDIDATE@1.0.0",
+    "extends": "the existing authority discipline (exact AuthorityRef + AuthoritySnapshot resolution; fail-closed; no latest/default/fuzzy/nearest selection)",
+    "required_inputs": [
+      {
+        "slot": "temporal_identity_contract_ref",
+        "type": "ExactRef",
+        "required": true,
+        "meaning": "The exact contract that names the persisting comparand. It must compose, at minimum: source family key; geography; question/coordinate semantics; response surface; instrument release; target population / risk set; estimand; measure-and-weight design. One anchor per temporal identity. It must preserve WAVE_LABEL != ORDINAL != CALENDAR_YEAR.",
+        "lawful_home": "TEMPORAL_EVIDENCE authority + native_scope_identity_refs + exact refs; conserved historical function H01/H02/H04"
+      },
+      {
+        "slot": "anchor_refs",
+        "type": "tuple[ExactRef, ...]",
+        "required": true,
+        "minimum": 2,
+        "maximum": "unbounded for a chain; each consecutive authorized pair is its own claim",
+        "meaning": "Exactly-identified, hash-bound temporal anchors. Each anchor resolves to: source universe ref, geography, canonical wave label, explicit time ref, governing authority refs, and provenance/replay root.",
+        "ordering_note": "The sequence supplied here is NOT the ordering evidence. It is a candidate list."
+      },
+      {
+        "slot": "temporal_order_basis",
+        "type": "Mapping[str, Any]",
+        "required": true,
+        "meaning": "The authorized comparison law for the anchor time refs. Permitted bases:",
+        "permitted": [
+          {
+            "basis": "CALENDAR_TOTAL_ORDER",
+            "meaning": "each anchor names an exact calendar point or bounded calendar interval under exact TEMPORAL_EVIDENCE authority; total order over non-overlapping points/intervals",
+            "direction_claimable": true
+          },
+          {
+            "basis": "FAMILY_LOCAL_ORDINAL",
+            "meaning": "within one survey family where no calendar ref is available, an authorized ordinal may order the anchors; the ordinal may not be reported as a year, a date or an elapsed duration",
+            "direction_claimable": true,
+            "constraint": "WAVE_LABEL != ORDINAL != CALENDAR_YEAR"
+          },
+          {
+            "basis": "INTERVAL_OVERLAP_PARTIAL_ORDER",
+            "meaning": "bounded intervals that partially overlap. Where overlap exists, no direction may be claimed for that pair",
+            "direction_claimable": "only for non-overlapping pairs; otherwise typed noncomparability"
+          }
+        ],
+        "forbidden_bases": [
+          "array position or index",
+          "recency, 'latest', 'newest', 'default', 'fuzzy', 'nearest'",
+          "equal wave labels or equal numbers across different families",
+          "a midpoint, average or interpolated time",
+          "an ordinal rendered as a calendar year"
+        ]
+      },
+      {
+        "slot": "temporal_comparability_authority_ref",
+        "type": "AuthorityRef, authority_kind = TEMPORAL_COMPARABILITY",
+        "required": true,
+        "meaning": "The exact positive authority instance that licenses the pair. Its governed material must name the shared surface and the authorized comparison law.",
+        "must_not_be_inferred_from": [
+          "the existence of two waves",
+          "membership of the same survey family alone",
+          "co-presence in one objective world",
+          "a shared label or a shared year"
+        ]
+      },
+      {
+        "slot": "estimand_and_measure_authority_refs",
+        "type": "tuple[AuthorityRef, ...]",
+        "required": true,
+        "meaning": "Exact WEIGHT_DESIGN_ESTIMAND authority plus exact estimand refs. Both anchors must be the same estimand under the same measure basis. No default averaging, no renormalisation after refusal, no silent weight substitution."
+      },
+      {
+        "slot": "observation_refs",
+        "type": "tuple[ExactRef, ...]",
+        "required": true,
+        "cardinality": "one per anchor",
+        "meaning": "Each observed quantity is an exact, time-indexed observation ref carrying its source empirical/structural fact or admission ref and its provenance. A missing observation is not a zero observation."
+      },
+      {
+        "slot": "uncertainty",
+        "type": "AuthorityRef | typed state",
+        "required": true,
+        "meaning": "Either an exact UNCERTAINTY_METHOD authority ref, or an explicit typed-unquantified uncertainty state. An unstated uncertainty blocks the claim."
+      },
+      {
+        "slot": "governed_use_id_and_target_use_permission_refs",
+        "type": "str + tuple[ExactRef, ...]",
+        "required": true,
+        "meaning": "The directional claim is bound to one governed use and to exact target-use permissions. Another use requires its own binding."
+      },
+      {
+        "slot": "provenance_and_replay",
+        "type": "Mapping[str, Any]",
+        "required": true,
+        "meaning": "content-addressed claim identity; exact authority snapshot refs; canonical deterministic projection; producer replay locator/reference root; no mutable selection."
+      }
+    ],
+    "decision_states": {
+      "positive": ["TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"],
+      "typed_nonpositive_fail_closed": [
+        {"state": "TEMPORAL_NONCOMPARABLE", "meaning": "the pair is not comparable under any bound authority; the refusal is itself a first-class typed observation", "required_work": "promote from the bare string at rawlsing_next/pre553_source_relations.py:54 into a real state family"},
+        {"state": "TEMPORAL_INTERVAL_OVERLAP_NO_DIRECTION", "meaning": "the authorized order is partial and the pair overlaps; no direction is claimable"},
+        {"state": "TEMPORAL_IDENTITY_UNRESOLVED", "meaning": "the persisting comparand is not exactly composed"},
+        {"state": "TEMPORAL_ORDER_UNAUTHORIZED", "meaning": "no permitted order basis applies"},
+        {"state": "TEMPORAL_INSUFFICIENT_AUTHORIZED_ANCHORS", "meaning": "fewer than two anchors authorized for this pair"},
+        {"state": "TEMPORAL_ESTIMAND_MISMATCH", "meaning": "the two observations are not the same estimand"},
+        {"state": "TEMPORAL_MEASURE_MISMATCH", "meaning": "the two observations do not share a measure/weight basis"},
+        {"state": "TEMPORAL_RESPONSE_SURFACE_MISMATCH", "meaning": "the response surface or scale is not comparably harmonised"},
+        {"state": "TEMPORAL_GAP_INTERVENING", "meaning": "an unobserved span lies between the anchors; it is preserved as unknown and is never zero, never unchanged and never filled"},
+        {"state": "TEMPORAL_INTERPOLATION_NOT_AUTHORIZED", "meaning": "an interpolated value may not serve as an anchor or as an observation"},
+        {"state": "TEMPORAL_AUTHORITY_MISSING", "meaning": "the comparability authority instance does not resolve"},
+        {"state": "TEMPORAL_AUTHORITY_CONFLICT", "meaning": "more than one exact authority instance claims the same pair; no winner heuristic"},
+        {"state": "TEMPORAL_OUT_OF_SCOPE", "meaning": "the pair lies outside the bound authority scope"},
+        {"state": "TEMPORAL_PROBE_ONLY", "meaning": "diagnostic/non-claim output; carryable, never a claim"}
+      ],
+      "fail_closed_rule": "Only TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED is positive. Every other state is terminal, typed, replayable and carries its reason. No state may be silently upgraded. A nonpositive state is not evidence of no change.",
+      "new_state_families_required": ["TEMPORAL_NONCOMPARABILITY_STATE (TEMPORAL_NONCOMPARABLE, TEMPORAL_INTERVAL_OVERLAP_NO_DIRECTION, TEMPORAL_ORDER_UNAUTHORIZED, TEMPORAL_IDENTITY_UNRESOLVED, TEMPORAL_GAP_INTERVENING, TEMPORAL_INTERPOLATION_NOT_AUTHORIZED)"]
+    },
+    "claim_shape": {
+      "asserts": "For one governed use, the authorized scoped quantity Q changed between exactly-comparable, exactly-ordered anchors A1 (earlier) and A2 (later) by a signed amount d under one exact estimand and measure basis, with a stated uncertainty state and exact provenance. The ordered pair (A1, A2) is an authorized ordered comparison.",
+      "direction_vocabulary": ["INCREASE", "DECREASE", "NO_AUTHORIZED_CHANGE", "DIRECTION_NOT_CLAIMABLE"],
+      "direction_rule": "Direction is derived only from the signed difference on Q under the authorized order basis. A deadband, if used, must itself be bound by the comparability authority; no default deadband is inherited.",
+      "cardinality": {
+        "minimum_authorized_anchors_for_one_ordered_relation": 2,
+        "three_anchor_threshold": "NOT LAW - no adopted or historical source establishes it",
+        "longer_chains": "consecutive authorized ordered pairs may each be emitted; the chain is a sequence of relation claims, not a distinct object"
+      }
+    },
+    "exact_claim_ceiling": {
+      "asserts_not": [
+        "CAUSE: no causal relation, mechanism, mediation or explanation. Causal naming would require an adopted SDTF causal-use and calibration authority plus a filled event authority; the historical event-override slot is 'reserved_not_filled' (data/ddm_build_copy/ddm_v553_temporal_pressure.py:900) and remains unfilled.",
+        "EXTERNAL EVENT: no external-event attribution. Historically external_event_claim_made was hard-coded False (:2826) and event_registry_status 'not_supplied' (:1281); the same prohibition stands.",
+        "CONTINUITY OR INTERPOLATION between anchors: an unobserved span is preserved as unknown (TEMPORAL_GAP_INTERVENING) and may not be filled.",
+        "MONOTONICITY OR TREND: two ordered points do not establish a trend, a rate, an acceleration or a trajectory.",
+        "ZERO OR NO CHANGE IN UNOBSERVED YEARS: ABSENCE != ZERO and NONCOMPARABLE != NO_CHANGE.",
+        "TRANSFER: the direction does not transfer to another source universe, survey family, geography, population, instrument release, estimand or measure basis.",
+        "ACTOR EXPERIENCE OR EFFECT: no uptake, memory, belief, orientation, desire, capacity, distress or developmental effect. This is an objective-world claim and must be zero-effect on any actor state.",
+        "TEMPORAL DISTANCE: the claim does not assert elapsed time, calendar distance or a rate unless the anchors' exact time refs authorize it and the bound authority names it.",
+        "AGGREGATION: no averaging, pooling, backfill, renormalisation or synthetic respondent.",
+        "STRONGER NOUNS: the result is not thereby a 'trajectory', 'pressure field', 'rupture', 'movement of society', 'homology', 'capital' or 'hegemony'."
+      ],
+      "structural_blocking_of_the_three_forbidden_inferences": [
+        {
+          "forbidden_inference": "TWO WAVES EXIST => DIRECTIONALITY",
+          "blocked_by": "the claim requires a bound TEMPORAL_COMPARABILITY authority instance; the existence of a second anchor is not evidence of comparability. Anchor refs are a candidate list, not an ordering."
+        },
+        {
+          "forbidden_inference": "DIFFERENCE => TRAJECTORY",
+          "blocked_by": "no trajectory object exists in the contract; longer chains are sequences of ordered relation claims, and adopted law keeps DIFFERENCE != TRAJECTORY binding."
+        },
+        {
+          "forbidden_inference": "TEMPORAL COINCIDENCE => CAUSE",
+          "blocked_by": "the contract has no causal field; the claim ceiling excludes cause and external event; causal naming requires a separate SDTF causal-use authority and a filled event authority."
+        }
+      ]
+    },
+    "conserved_historical_shape": {
+      "from": "data/ddm_build_copy/ddm_v553_temporal_pressure.py:750-847 and :2596-2672",
+      "kept": [
+        "a named authority instance is required before a multi-anchor temporal claim",
+        "at least two eligible comparable anchors",
+        "an explicit three-state outcome (authorized / probe-only / blocked) with a typed reason",
+        "separate comparability status and separate interpretation permission",
+        "direction and magnitude carried as typed labels, not as free text"
+      ],
+      "excluded": [
+        "the scalar pressure field and all coefficients",
+        "eligibility determined by the presence of a scalar value",
+        "the numeric thresholds and deadbands as adopted constants",
+        "the one-family/one-country scope"
+      ]
+    }
+  },
+  "affected_owners_and_boundaries": {
+    "must_stay_outside": [
+      "V3 actor state (actor uptake, memory, belief, orientation, desire, capacity)",
+      "PRE-V3 -> V3 actor/person implementation",
+      "raw-source execution and locator discovery",
+      "warrant issuance"
+    ],
+    "world_to_f8_boundary": "If a directional claim is to condition, select a source, or change possibility geometry downstream, that is a separate operation requiring its own authority (HQ204 node H-D). This contract establishes the claim, not its consumption."
+  },
+  "residual_risks": [
+    {
+      "risk": "The single new authority kind widens the closed AUTHORITY_KINDS set, which validates every authority snapshot.",
+      "assessment": "Bounded and additive. It does not change existing kinds, existing validation, or existing fail-closed behaviour, and it is the same class of bounded form HQ204 accepted for H-C."
+    },
+    {
+      "risk": "TEMPORAL_NONCOMPARABLE currently exists only as a bare string in a forbidden-backfill set, so a temporal refusal can be named where no object family can produce it.",
+      "assessment": "Bounded defect; must be fixed as part of adopting the contract."
+    },
+    {
+      "risk": "A caller could bind a TEMPORAL_COMPARABILITY authority instance that is itself under-specified.",
+      "assessment": "Mitigated by the required material keys above and by the existing exact-authority resolution discipline; an under-specified instance fails closed."
+    }
+  ]
+}
