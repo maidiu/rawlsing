@@ -1,0 +1,199 @@
+{
+  "schema": "PYAT_HQ198_STILL_UNBOUND_VALUES@1.0.0",
+  "count": 38,
+  "representation": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+  "law": "Every value below remains explicitly typed and ISSUANCE-BLOCKING. A typed pending budget waives nothing. None was converted to null, zero, empty or PASS.",
+  "blocking_reasons": {
+    "PENDING_GOVERNED_SCOPE_OWNER__NO_PER_SOURCE_SESSION_BINDING": {
+      "meaning": "The candidate can count and cap it, but no per-source session owner binds a warrant source entry to exactly one governed decode, so the count is not exact at the governed scope.",
+      "missing_owner": "A warrant/execution-surface-level per-source session owner that (a) is constructed once per bound source entry, (b) is shared by every admitted source operation for that source, (c) is closed deterministically rather than by caller discipline, and (d) makes the aggregate per-source counts enforceable at that scope.",
+      "accounts": [
+        {
+          "source_key": "SRC02",
+          "account": "source_path_existence_access_checks"
+        },
+        {
+          "source_key": "SRC02",
+          "account": "path_level_opens"
+        },
+        {
+          "source_key": "SRC02",
+          "account": "metadata_reads"
+        },
+        {
+          "source_key": "SRC06",
+          "account": "source_path_existence_access_checks"
+        },
+        {
+          "source_key": "SRC06",
+          "account": "path_level_opens"
+        },
+        {
+          "source_key": "SRC06",
+          "account": "metadata_reads"
+        },
+        {
+          "source_key": "SRC08",
+          "account": "source_path_existence_access_checks"
+        },
+        {
+          "source_key": "SRC08",
+          "account": "path_level_opens"
+        },
+        {
+          "source_key": "SRC12",
+          "account": "source_path_existence_access_checks"
+        },
+        {
+          "source_key": "SRC12",
+          "account": "path_level_opens"
+        },
+        {
+          "source_key": "SRC14",
+          "account": "source_path_existence_access_checks"
+        },
+        {
+          "source_key": "SRC14",
+          "account": "path_level_opens"
+        },
+        {
+          "source_key": "SRC14",
+          "account": "metadata_reads"
+        },
+        {
+          "source_key": "SRC26",
+          "account": "source_path_existence_access_checks"
+        },
+        {
+          "source_key": "SRC26",
+          "account": "path_level_opens"
+        },
+        {
+          "source_key": "SRC26",
+          "account": "metadata_reads"
+        },
+        {
+          "source_key": "SRC27",
+          "account": "path_level_opens"
+        }
+      ]
+    },
+    "PENDING_NUMERIC_BYTE_BUDGET__SOURCE_SIZE_DEPENDENT": {
+      "meaning": "Enforceable but with no numeric budget. The requirement is source-size dependent and the commission forbids deriving a ceiling from synthetic carrier totals.",
+      "accounts": [
+        {
+          "source_key": "SRC02",
+          "account": "byte_counts_where_measurable"
+        },
+        {
+          "source_key": "SRC06",
+          "account": "byte_counts_where_measurable"
+        },
+        {
+          "source_key": "SRC08",
+          "account": "byte_counts_where_measurable"
+        },
+        {
+          "source_key": "SRC12",
+          "account": "byte_counts_where_measurable"
+        },
+        {
+          "source_key": "SRC14",
+          "account": "byte_counts_where_measurable"
+        },
+        {
+          "source_key": "SRC26",
+          "account": "byte_counts_where_measurable"
+        },
+        {
+          "source_key": "SRC27",
+          "account": "byte_counts_where_measurable"
+        }
+      ],
+      "explicit_prohibition": "The repair measured 611 bytes as the requirement of a 3-column x 60-row synthetic SAV. That figure is NOT a warrant budget and is not used here."
+    },
+    "PENDING_NO_DECODER_INVOCATION_COUNTER_EXISTS": {
+      "meaning": "Not measurable at all: no counter exists.",
+      "accounts": [
+        {
+          "source_key": "SRC02",
+          "account": "decoder_invocations"
+        },
+        {
+          "source_key": "SRC06",
+          "account": "decoder_invocations"
+        },
+        {
+          "source_key": "SRC08",
+          "account": "decoder_invocations"
+        },
+        {
+          "source_key": "SRC12",
+          "account": "decoder_invocations"
+        },
+        {
+          "source_key": "SRC14",
+          "account": "decoder_invocations"
+        },
+        {
+          "source_key": "SRC26",
+          "account": "decoder_invocations"
+        },
+        {
+          "source_key": "SRC27",
+          "account": "decoder_invocations"
+        }
+      ],
+      "missing_owner": "A decoder-entry counter at the _decode boundary, distinct from reader_invocations, with its own pre-operation cap."
+    },
+    "PENDING_HEADER_PREFIX_SCOPE_DISCREPANCY__CANDIDATE_READS_UNCONDITIONALLY": {
+      "meaning": "Measurable, but the candidate's unconditional prefix read exceeds the admitted operation class for six of the seven sources.",
+      "accounts": [
+        {
+          "source_key": "SRC02",
+          "account": "header_prefix_reads"
+        },
+        {
+          "source_key": "SRC06",
+          "account": "header_prefix_reads"
+        },
+        {
+          "source_key": "SRC08",
+          "account": "header_prefix_reads"
+        },
+        {
+          "source_key": "SRC12",
+          "account": "header_prefix_reads"
+        },
+        {
+          "source_key": "SRC14",
+          "account": "header_prefix_reads"
+        },
+        {
+          "source_key": "SRC27",
+          "account": "header_prefix_reads"
+        }
+      ]
+    },
+    "PENDING_INDEPENDENT_HQ198_CONFIRMATION": {
+      "meaning": "Frozen numeric values remain in force and were NOT loosened. What is pending is the INTERPRETATION dependency: whether the usecols route satisfies the frozen selected/full read account.",
+      "accounts": [
+        {
+          "source_key": "SRC27",
+          "account": "selected_column_reads"
+        }
+      ],
+      "interpretation_status": "PENDING_INDEPENDENT_HQ198_CONFIRMATION",
+      "interpretation_source": "d43c7f8647a28da13e05bdd264722d1d87b2cb29 (HQ197 determination A), awaiting independent review",
+      "explicit_law": "Frozen selected_reads=1 / full_reads=0 for SRC02/SRC06/SRC14 stay bound at EXACT. Only the newly dependent interpretation field is conditional."
+    }
+  },
+  "src27_special_law_preserved": {
+    "governed_full_route_passes": "EXACT 1 (max 1) \u2014 unchanged",
+    "existence/hash/metadata/full accounts": "FLOOR 1 each \u2014 unchanged, NOT promoted to ceilings",
+    "retries": "ZERO 0 \u2014 unchanged",
+    "path_level_opens": "still UNBOUND. Authority's word 'multiple' is recorded verbatim and is NOT numerified. The candidate does not make the count source-independent at the governed scope, and SRC27's scope is the widest of the seven.",
+    "selected_column_reads": "still UNBOUND. No value invented.",
+    "lower_layer_separation": "preserved; route pass is not an access account"
+  }
+}

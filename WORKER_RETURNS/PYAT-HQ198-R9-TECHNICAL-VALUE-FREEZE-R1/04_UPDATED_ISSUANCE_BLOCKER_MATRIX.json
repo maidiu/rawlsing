@@ -1,0 +1,90 @@
+{
+  "schema": "PYAT_HQ198_UPDATED_ISSUANCE_BLOCKER_MATRIX@1.0.0",
+  "discharged": [
+    {
+      "id": "PRQ-07",
+      "historical_claim": "independent integration review of the freeze not completed",
+      "status": "DISCHARGED__MUST_NOT_REAPPEAR",
+      "authority": "HQ197_R9_CANDIDATE_ADJUDICATION_R1:18 \u2014 HQ already discharged this historical item under the completed independent C4 review chain.",
+      "carried_forward": false,
+      "note": "Deliberately NOT carried into this candidate."
+    }
+  ],
+  "still_open": [
+    {
+      "id": "GOV-SCOPE-001",
+      "severity": "decisive",
+      "status": "OPEN",
+      "blocks": "every count account that is not already bound by authority",
+      "statement": "No per-source session owner exists, so NO count account can be shown exact at the governed warrant scope.",
+      "missing_owner": "A warrant/execution-surface-level per-source session owner that (a) is constructed once per bound source entry, (b) is shared by every admitted source operation for that source, (c) is closed deterministically rather than by caller discipline, and (d) makes the aggregate per-source counts enforceable at that scope."
+    },
+    {
+      "id": "GOV-DEC-003",
+      "severity": "material",
+      "status": "OPEN",
+      "blocks": "decoder_invocations",
+      "statement": "The O1-C07 mandatory account 'decoder invocations' has no counter and therefore no owner in the repaired candidate.",
+      "missing_owner": "A decoder-entry counter at the _decode boundary, distinct from reader_invocations, with its own pre-operation cap."
+    },
+    {
+      "id": "GOV-HDR-002",
+      "severity": "material",
+      "status": "OPEN",
+      "blocks": "header_prefix_reads for SRC02/06/08/12/14/27",
+      "statement": "The repaired candidate performs a header-prefix read for EVERY source, but frozen authority admits a header-prefix read only for SRC26.",
+      "note": "On the SRC02/SRC06/SRC14 selected route, and on SRC08/SRC12/SRC27, the candidate would perform a header-prefix read that the admitted operation class does not cover. This is a SCOPE EXCESS relative to frozen authority, not merely an unbound accounting value."
+    },
+    {
+      "id": "GOV-BYTES",
+      "severity": "material",
+      "status": "OPEN",
+      "blocks": "byte_counts_where_measurable",
+      "statement": "reader_bytes is measurable and enforceable, but no numeric real-source ceiling exists and none may be derived from synthetic totals or source size.",
+      "missing_owner": "An authority-supplied byte ceiling, or an accepted rule deriving one from a bound source identity rather than from a synthetic carrier."
+    },
+    {
+      "id": "SEL-INTERP-004",
+      "severity": "material",
+      "status": "OPEN",
+      "token": "PENDING_INDEPENDENT_HQ198_CONFIRMATION",
+      "blocks": "the interpretation-dependent selected/full read accounting",
+      "statement": "The physical-selected interpretation (HQ197 determination A) has not yet received independent HQ198 acceptance.",
+      "note": "Frozen numeric values are unaffected and are not loosened."
+    },
+    {
+      "id": "CAND-R7-005",
+      "severity": "material",
+      "status": "OPEN",
+      "blocks": "treating the candidate as a qualified baseline",
+      "statement": "The candidate's exact R7 six-file court did NOT reach the target: 55 collected, 49 passed / 6 failed, identically before and after the refinement, against a target of 55 passed twice.",
+      "candidate_position": "All 6 failures are FileNotFoundError on WORKER_RETURNS paths outside the commissioned sparse manifest, and the identical 6 fail at pre-candidate code in the same worktree.",
+      "this_lane_position": "Recorded, not adjudicated. It is consistent with the candidate's account but this lane did not reproduce the court, so it is carried as open."
+    },
+    {
+      "id": "LOCATORS-006",
+      "severity": "material",
+      "status": "OPEN",
+      "blocks": "issuance",
+      "statement": "All seven access locators remain unfilled placeholders. No search was performed."
+    },
+    {
+      "id": "APPROVALS-007",
+      "severity": "material",
+      "status": "OPEN",
+      "blocks": "issuance",
+      "statement": "HQ approval UNSET; required user/resource-owner approval UNSET."
+    }
+  ],
+  "counts": {
+    "accounts_still_pending": 38,
+    "newly_bound": 0,
+    "blockers_open": 8,
+    "blockers_discharged_and_not_carried": 1
+  },
+  "issuance_gate": {
+    "may_this_lane_issue": false,
+    "may_this_lane_authorize_access": false,
+    "may_this_lane_close_R9": false
+  }
+}

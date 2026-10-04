@@ -1,0 +1,134 @@
+{
+  "schema": "PYAT_HQ198_FINAL_DISPOSITION@1.0.0",
+  "lane": "PYAT-HQ198-R9-TECHNICAL-VALUE-FREEZE-R1",
+  "startup_sha": "bf6dcf17a17f41285f2c1e2b1f10a79417c7c393",
+  "base_successor": "2410eb7b215f904fa428df82e47fb05ede91ee21",
+  "candidate_analysed": "4b6335ca5fc485108b0ffb1d682a29a02e1eee51",
+  "code_bearing_repair": "a483cb6619a84c4785296e923a8571447041ffa5",
+  "checkout_mode": "SPARSE_REQUIRED__SUFFICIENT__NO_FULL_MATERIALISATION",
+  "disposition": "NO_NEW_VALUES_LAWFULLY_BINDABLE",
+  "allowed_dispositions_considered": [
+    {
+      "value": "TECHNICAL_VALUE_FREEZE_CANDIDATE_READY__FINAL_ACCEPTANCE_PENDING",
+      "rejected_because": "It asserts technical values were frozen and await only sign-off. Nothing was frozen. This lane bound zero new numeric pre-launch budgets."
+    },
+    {
+      "value": "TECHNICAL_VALUES_PARTIAL__NUMERIC_BUDGETS_STILL_REQUIRED",
+      "rejected_because": "This implies some values were frozen and only the remainder are outstanding. The split is actually 40 already bound by frozen authority - unchanged from HQ196 - against 38 still pending. No value moved from pending to bound in this lane, so PARTIAL would misdescribe the delta. NO_NEW_VALUES_LAWFULLY_BINDABLE is the accurate description."
+    },
+    {
+      "value": "NO_NEW_VALUES_LAWFULLY_BINDABLE",
+      "selected": true,
+      "why": "Binding law gate 2 requires the candidate's control flow to make a value exact and source-independent AT THE GOVERNED SCOPE. Every pending count lives in a SourceAccessBroker whose scope is one _decode() invocation, and no per-source session owner binds a warrant source entry to exactly one governed decode. Gate 2 therefore fails uniformly, and no value can lawfully move."
+    },
+    {
+      "value": "MATERIAL_CONTRACT_CONTRADICTION_FOUND",
+      "rejected_because": "No contradiction exists between governing contracts. Three candidate-versus-authority discrepancies were found and are recorded as open findings, not as contract contradictions: the missing decoder-invocation counter, the unconditional header-prefix read, and the unproven governed scope. Each is a gap to close, not two contracts that cannot both hold."
+    }
+  ],
+  "headline": "The repaired broker is a large advance on ENFORCEABILITY and no advance at all on AUTHORITY. 64 of 78 accounts are now measurable and cap-able before the operation; 31 of those still have no numeric pre-launch budget; 7 have no counter at all. Zero numeric budgets were bound.",
+  "account_totals": {
+    "accounts_total": 78,
+    "already_bound_by_frozen_authority": 40,
+    "still_pending": 38,
+    "newly_bound_this_lane": 0,
+    "measurable_and_enforceable_now": 64,
+    "measurable_but_no_numeric_budget": 31,
+    "not_measurable_no_owner": 7,
+    "delta_versus_base_successor": "none"
+  },
+  "the_two_facts": {
+    "measurable_enforceable": "the candidate can count it and cap it BEFORE the operation",
+    "numeric_budget_known": "an exact/floor/zero/max PRE-LAUNCH value exists",
+    "never_merged": true,
+    "why_it_matters": "Reporting an enforceable-but-unbounded account as a bound budget would fabricate authority. The commission's reader-bytes instruction is exactly this distinction."
+  },
+  "binding_law_gate_2_result": {
+    "outcome": "FAILS for every pending account",
+    "reason": "Governed scope is one _decode() invocation. No per-source session owner exists, so no count is exact at the governed warrant scope.",
+    "commission_premise_check": {
+      "type_named_by_commission": "GovernedSourceSession",
+      "exists_in_candidate": false,
+      "evidence": "git grep GovernedSourceSession over the candidate tree returns zero occurrences",
+      "nearest_actual_type": "SourceAccessBroker, constructed inside _decode at decoder:588"
+    }
+  },
+  "what_the_candidate_audit_proved_and_did_not_prove": {
+    "proved": "A positive-controlled static AST audit of the accepted C4 closure (21 accepted modules plus the broker = 22) finds exactly ONE source-path open SITE, at broker:326 open(self.path), and ZERO raw path strings reaching pyreadstat. The auditor reports 2 raw-path reader calls on the out-of-closure WVS7 materializer, so the zero is a real negative. Three of the auditor's own false-zero defects were found and fixed.",
+    "did_not_prove": "A count of open SITES is not a count of opens PER SOURCE at the governed warrant scope. SourceAccessBudget.path_opens defaults to 1, but its own docstring calls the caps policy ceilings that are not claims about expected behaviour."
+  },
+  "open_findings": [
+    {
+      "id": "GOV-SCOPE-001",
+      "severity": "decisive",
+      "statement": "No per-source session owner exists, so no count account is exact at the governed scope.",
+      "missing_owner": "A warrant/execution-surface-level per-source session owner constructed once per bound source entry, shared by every admitted operation for that source, closed deterministically rather than by caller discipline, and making aggregate per-source counts enforceable at that scope."
+    },
+    {
+      "id": "GOV-DEC-003",
+      "severity": "material",
+      "statement": "The O1-C07 mandatory account decoder_invocations has zero occurrences in the repaired broker. SourceAccessAccount counts reader_invocations but has no decoder-entry counter, and the receipt's measurement_basis lists none.",
+      "missing_owner": "A decoder-entry counter at the _decode boundary, distinct from reader_invocations, with its own pre-operation cap.",
+      "note": "reader_invocations is not a substitute. Under the settled non-substitutability law a reader invocation may not be renamed a decoder call."
+    },
+    {
+      "id": "GOV-HDR-002",
+      "severity": "material",
+      "statement": "decoder:639 calls broker.header_prefix(176 if SAV else 512) unconditionally for every source, but frozen authority admits a header-prefix read only for SRC26. On the SRC02/SRC06/SRC14 selected route and on SRC08/SRC12/SRC27 this is a scope excess relative to the admitted operation class.",
+      "why_not_bound_either_way": "Binding 1 would authorise an unadmitted operation; binding 0 would contradict the candidate's control flow."
+    },
+    {
+      "id": "GOV-BYTES",
+      "severity": "material",
+      "statement": "reader_bytes is now enforceable via a bridge-safe limiter that never raises inside the read callback and raises a typed READER_BYTES_LIMIT_EXCEEDED at the outer decode boundary, with exact accounting at refusal. That supplies no numeric real-source ceiling, and none may be derived from synthetic carrier totals or source size."
+    },
+    {
+      "id": "SEL-INTERP-004",
+      "severity": "material",
+      "token": "PENDING_INDEPENDENT_HQ198_CONFIRMATION",
+      "statement": "The physical-selected interpretation (HQ197 determination A) has not received independent HQ198 acceptance. Frozen selected_reads=1 / full_reads=0 for SRC02/SRC06/SRC14 remain bound at EXACT and were NOT loosened; only the newly dependent interpretation field is conditional."
+    },
+    {
+      "id": "CAND-R7-005",
+      "severity": "material",
+      "statement": "The candidate's exact R7 six-file court did not reach target: 55 collected, 49 passed / 6 failed, identically before and after the refinement, against a target of 55 passed twice. The candidate attributes all 6 to FileNotFoundError on WORKER_RETURNS paths outside the commissioned sparse manifest and states the identical 6 fail at pre-candidate code.",
+      "this_lane_position": "Recorded, not adjudicated. Consistent with the candidate's account, but this lane did not reproduce the court, so it stays open."
+    }
+  ],
+  "src27_special_law_preserved": {
+    "governed_full_route_passes": "EXACT 1, max 1 - unchanged",
+    "existence_hash_metadata_full": "FLOOR 1 each - unchanged, NOT promoted to ceilings",
+    "retries": "ZERO 0 - unchanged",
+    "path_level_opens": "still UNBOUND; authority's 'multiple' recorded verbatim and NOT numerified",
+    "selected_column_reads": "still UNBOUND; no value invented",
+    "lower_layer_separation": "preserved; the route pass is not an access account"
+  },
+  "obsolete_blocker_not_carried": {
+    "id": "PRQ-07",
+    "historical_claim": "independent integration review of the freeze not completed",
+    "status": "DISCHARGED__MUST_NOT_REAPPEAR",
+    "authority": "HQ197_R9_CANDIDATE_ADJUDICATION_R1:18",
+    "carried_forward": false
+  },
+  "instrument_status_unchanged": {
+    "signed": false,
+    "issued": false,
+    "authorizes_access": false,
+    "execution_authorized": false,
+    "approvals": "BOTH UNSET",
+    "locator_placeholders": "ALL SEVEN UNFILLED",
+    "locator_search_performed": false
+  },
+  "what_this_lane_did_not_do": [
+    "Did not bind any new numeric pre-launch budget.",
+    "Did not promote any floor into a ceiling.",
+    "Did not numerify SRC27 'multiple path opens'.",
+    "Did not invent a selected-read count for SRC27.",
+    "Did not derive a real-source byte ceiling from a synthetic carrier total.",
+    "Did not fill any locator slot.",
+    "Did not issue, sign or authorize anything.",
+    "Did not carry forward the discharged PRQ-07 blocker.",
+    "Did not perform source access, source execution, or production mutation."
+  ],
+  "recommended_next_step_for_HQ": "Commission the per-source session owner (GOV-SCOPE-001) as the single highest-value item: it is the one defect that blocks every remaining numeric budget at once. In parallel commission a decoder-entry counter (GOV-DEC-003) and resolve the unconditional header-prefix read against the admitted operation classes (GOV-HDR-002). Byte ceilings need an authority-supplied rule, not a measurement. The selected-read interpretation needs the DeepSeek lane's independent confirmation before the dependent fields un-pend."
+}

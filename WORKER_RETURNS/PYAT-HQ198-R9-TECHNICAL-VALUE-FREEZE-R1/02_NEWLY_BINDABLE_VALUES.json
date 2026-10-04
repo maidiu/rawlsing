@@ -1,0 +1,50 @@
+{
+  "schema": "PYAT_HQ198_NEWLY_BINDABLE_VALUES@1.0.0",
+  "count": 0,
+  "values": [],
+  "statement": "NO new numeric pre-launch budget was lawfully bindable in this lane.",
+  "binding_law_applied": {
+    "gate_1": "frozen authority already supplies the exact/floor/zero/max value; OR",
+    "gate_2": "the repaired candidate's control flow makes the value exact and source-independent AT THE GOVERNED SCOPE, provable from code plus source-free court evidence.",
+    "gate_2_outcome": "FAILS for every pending account. Every count lives in a SourceAccessBroker whose scope is one _decode() invocation. No per-source session owner binds a warrant source entry to exactly one decode, so no count is exact AT THE GOVERNED SCOPE."
+  },
+  "what_did_advance": {
+    "fact_1_only": [
+      "path_level_opens: application-owned, single open site in the whole C4 closure, capped pre-operation, with a positive-controlled static audit.",
+      "full_reads=0 on the selected route is now REFUSED BEFORE EXECUTION (decoder pins SourceAccessBudget(full_reads=0)).",
+      "byte_counts: reader_bytes is now enforceable via a bridge-safe limiter that never raises inside the read callback and surfaces a typed READER_BYTES_LIMIT_EXCEEDED at the outer boundary.",
+      "Every O1-C07 count the candidate does track is a separate typed counter with its own pre-operation cap, and the receipt publishes a measurement_basis per quantity plus a separation_law and the selected-route suppression disclosure."
+    ],
+    "explicitly_not_an_advance": "None of the above supplies a numeric pre-launch budget. Enforceability is not authority."
+  },
+  "near_misses_explicitly_rejected": [
+    {
+      "value": "path_level_opens = 1",
+      "rejected_because": "The broker CAN hold one handle and SourceAccessBudget.path_opens defaults to 1, but that default is documented as a POLICY CEILING, not a claim about expected behaviour. More fundamentally, the commission's named type GovernedSourceSession does not exist, the broker scope is one _decode call, there is no per-source session owner, and release has no finalizer. One open SITE is not one open PER SOURCE. See GOV-SCOPE-001."
+    },
+    {
+      "value": "reader_bytes / byte_counts ceiling from the synthetic carrier total (611 bytes on a 3-column x 60-row SAV)",
+      "rejected_because": "Expressly forbidden by the commission and by sound accounting: a synthetic carrier total is not a warrant budget, and the real requirement is source-size dependent. See GOV-BYTES."
+    },
+    {
+      "value": "existence_checks / hash_passes / metadata_reads / reader_read_calls / chunk_reads = the exact count the candidate performs",
+      "rejected_because": "These counts are exact per _decode invocation, not per warrant source entry. Gate 2 requires exactness AT THE GOVERNED SCOPE. The same scope defect blocks all of them uniformly."
+    },
+    {
+      "value": "full_file_sha256_passes promoted FLOOR 1 -> EXACT 1",
+      "rejected_because": "Promotion would assert the pass count is exactly one per source. It is exactly one per decode. The HQ196 FLOOR 1 stands, still reviewer-flagged as derived from the C4B precondition."
+    },
+    {
+      "value": "SRC27 path opens numerified",
+      "rejected_because": "Authority says 'multiple' and deliberately supplies no number. The candidate's architecture does not change that, and the scope is unproven. See 03_STILL_UNBOUND_VALUES.json."
+    },
+    {
+      "value": "SRC27 selected_reads given any value",
+      "rejected_because": "Expressly forbidden. Remains typed and unbound."
+    },
+    {
+      "value": "header_prefix_reads = 1 for SRC02/06/08/12/14/27",
+      "rejected_because": "The candidate performs it unconditionally, but frozen authority does not admit a header-prefix read for those sources. Binding 1 would authorise an unadmitted operation. See GOV-HDR-002."
+    }
+  ]
+}

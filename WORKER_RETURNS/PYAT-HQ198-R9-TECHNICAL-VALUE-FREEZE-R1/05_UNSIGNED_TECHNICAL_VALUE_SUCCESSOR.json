@@ -1,0 +1,3336 @@
+{
+  "schema": "PYAT_R9_UNSIGNED_TECHNICAL_VALUE_SUCCESSOR@1.0.0",
+  "lane": "PYAT-HQ198-R9-TECHNICAL-VALUE-FREEZE-R1",
+  "documentary_base": "2410eb7b215f904fa428df82e47fb05ede91ee21",
+  "startup_sha": "bf6dcf17a17f41285f2c1e2b1f10a79417c7c393",
+  "candidate_analysed": "4b6335ca5fc485108b0ffb1d682a29a02e1eee51",
+  "code_bearing_repair": "a483cb6619a84c4785296e923a8571447041ffa5",
+  "supersedes": {
+    "path": "2410eb7b215f904fa428df82e47fb05ede91ee21",
+    "reason": "adds technical-value status; binds no new numeric budget"
+  },
+  "status": "UNSIGNED_TECHNICAL_VALUE_SUCCESSOR__NOT_ISSUED__AUTHORIZES_NOTHING",
+  "signed": false,
+  "issued": false,
+  "authorizes_access": false,
+  "execution_authorized": false,
+  "issued_by": null,
+  "issue_date": null,
+  "critical_statements": [
+    "THIS IS AN UNSIGNED STRUCTURE. IT IS NOT A WARRANT. IT AUTHORIZES NOTHING.",
+    "No new numeric pre-launch budget was bound in this lane.",
+    "The repaired broker advances ENFORCEABILITY, not AUTHORITY.",
+    "The obsolete PRQ-07 independent-integration-review blocker is discharged and is NOT carried forward.",
+    "Zero source access, locator discovery, warrant issuance, live C4, production mutation, C7 or actor/person work was performed."
+  ],
+  "two_fact_law": {
+    "measurable_enforceable": "Can the quantity be counted and capped BEFORE the operation?",
+    "numeric_budget_known": "Does an exact/floor/zero/max PRE-LAUNCH value exist?",
+    "never_merged": true,
+    "rule": "An enforceable-but-unbounded account is NOT a bound budget. Reporting it as one would fabricate authority."
+  },
+  "settled_o1_c07_structure": {
+    "two_stage_law": {
+      "stage_1_pre_launch_FROZEN": "expected budget, instrumentation, measurement basis",
+      "stage_2_during_run_MEASURED": "exact observed count, retained on return",
+      "never_merged": true,
+      "law": "Freeze expected budgets and instrumentation before launch; retain measured counts."
+    },
+    "mandatory_separate_accounts": [
+      "source-path existence/access checks",
+      "file hash passes (full SHA-256 over the file)",
+      "path-level opens",
+      "metadata reads",
+      "header-prefix reads",
+      "decoder invocations",
+      "selected-column reads",
+      "full reads",
+      "byte counts where measurable",
+      "retries"
+    ],
+    "non_substitutability": "Literal path opens, reader invocations and decoder invocations are separately named, non-substitutable quantities. A higher-level proxy may not be renamed path_opens.",
+    "REQUIRED_EXACT_COUNT_meaning": "The budget must be exact before launch. It does NOT mean the final observed number must already have been observed before launch."
+  },
+  "typed_null_law": {
+    "rule": "A typed null may describe an unexecuted or unmeasurable RETURN metric only where the governing failure law allows it. A typed null may NOT waive a mandatory pre-launch budget.",
+    "machine_readable_rule": {
+      "return_metric_null_permitted": true,
+      "return_metric_null_requires_typed_reason": true,
+      "pre_launch_budget_null_permitted": false,
+      "pre_launch_budget_unsupplied_representation": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+      "pre_launch_budget_absent_representation_prohibited": true,
+      "rationale": "An absent or null pre-launch budget would silently waive a launch prerequisite. An UNBOUND_PENDING_TECHNICAL_ACCEPTANCE budget is an explicit, non-waiving blocker."
+    },
+    "correct_reporting_example": {
+      "metric": "SRC06 metadata reads",
+      "value": null,
+      "reason": "STOPPED_AT_SRC02_SOURCE_IDENTITY_MISMATCH__SRC06_NOT_REACHED"
+    },
+    "never": [
+      "a fabricated zero",
+      "a fabricated PASS",
+      "a null standing in for an unbound pre-launch budget"
+    ]
+  },
+  "budget_type_vocabulary": {
+    "EXACT": {
+      "meaning": "Authority froze a specific count. The observed count must equal it.",
+      "example": "SRC02 selected_column_reads = 1"
+    },
+    "MAX": {
+      "meaning": "Authority froze a ceiling. The observed count may be lower but never higher.",
+      "example": "SRC27 governed_full_route_passes max = 1"
+    },
+    "ZERO": {
+      "meaning": "Hard zero. A single non-zero observation is a STOP condition, not a reportable variance.",
+      "example": "retries = 0 for all seven sources"
+    },
+    "FLOOR": {
+      "meaning": "Authority froze a minimum that must be reached. It is NOT a ceiling and MUST NOT be promoted to one.",
+      "example": "SRC27 metadata_reads floor = 1, from the 'at minimum' wording of the hardened note",
+      "promotion_prohibited": true
+    },
+    "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE": {
+      "meaning": "Authority named the account as mandatory but supplied no number. The value awaits technical acceptance. This is a TYPED BUDGET STATE, not a null, and it waives nothing.",
+      "non_waiving": true,
+      "example": "path_level_opens on the six non-SRC27 sources"
+    }
+  },
+  "candidate_extra_tracked_accounts": {
+    "purpose": "Recorded so they are never relabeled into an O1-C07 account.",
+    "accounts": {
+      "logical_views": {
+        "code_owner": "rawlsing_next/pre553_source_access_broker.py logical_views counter",
+        "counts_what": "position-zero rewinds of the SAME physical open, one per logical parse",
+        "relabeling_prohibition": "A logical view is NOT a path open. It must never be reported as, or added into, the path_opens account. The candidate reports it separately for exactly this reason."
+      },
+      "reader_invocations": {
+        "code_owner": "rawlsing_next/pre553_source_access_broker.py reader_invocations counter",
+        "counts_what": "total compiled-reader calls of any kind",
+        "relabeling_prohibition": "A reader invocation is NOT a decoder invocation. See decoder_invocations."
+      },
+      "reader_read_calls": {
+        "code_owner": "rawlsing_next/pre553_source_access_broker.py reader_read_calls counter",
+        "counts_what": "read() calls the compiled reader made through the governed view",
+        "relabeling_prohibition": "Read-call count is not a byte count and not an open count."
+      },
+      "chunk_reads": {
+        "code_owner": "rawlsing_next/pre553_source_access_broker.py chunk_reads counter, driven by SourceAccessBroker.chunk_reads",
+        "counts_what": "compiled-reader invocations issued by the governed row_offset loop",
+        "relabeling_prohibition": "chunk_reads is row-count dependent and must never be conflated with metadata_reads, selected_reads or full_reads."
+      }
+    }
+  },
+  "open_findings": {
+    "GOV-SCOPE-001": {
+      "id": "GOV-SCOPE-001",
+      "severity": "decisive",
+      "finding": "No per-source session owner exists, so NO count account can be shown exact at the governed warrant scope.",
+      "commission_premise_checked": {
+        "type_named_by_commission": "GovernedSourceSession",
+        "exists_in_candidate": false,
+        "evidence": "git grep 'GovernedSourceSession' over the candidate tree returns zero occurrences.",
+        "nearest_actual_type": "SourceAccessBroker, constructed INSIDE _decode"
+      },
+      "why_counts_are_scope_blocked": [
+        "SourceAccessBroker is constructed per _decode() invocation (decoder:588), so its scope is ONE DECODE CALL, not one warrant source entry.",
+        "There is no per-source session registry, no session_for(source), and no per_source mapping anywhere in the candidate tree.",
+        "Nothing in the closure enforces or records that exactly one _decode occurs per source. A caller that decodes twice, or re-decodes after a mismatch, produces two opens and nothing at the warrant layer detects or forbids it.",
+        "Broker release is caller-responsible via PhysicalSourceIncidence.close_source_access(); there is no __del__ and no finalizer, so the governed open's lifetime is NOT frozen.",
+        "SourceBackedC11SessionCache (facade:612) caches derived C11 releases keyed by source_sha256. It is not a physical session owner and neither supplies nor refutes a one-open scope."
+      ],
+      "what_the_candidate_audit_does_and_does_not_prove": {
+        "proves": "A static AST audit of the accepted C4 closure (21 accepted modules + the broker = 22) finds exactly ONE source-path open SITE, at broker:326 open(self.path), and ZERO raw path strings reaching pyreadstat. The auditor carries a positive control: the same auditor reports 2 raw-path reader calls in the out-of-closure WVS7 materializer, so the zero is a real negative and not a broken query. The auditor also documents three of its own false-zero defects that were found and fixed.",
+        "does_not_prove": "A count of open SITES is not a count of opens PER SOURCE at the governed warrant scope. The candidate's own SourceAccessBudget docstring states its caps are 'policy ceilings whose purpose is to STOP a run; they are not claims about expected behaviour'. The default path_opens=1 is therefore a stop-cap, not evidence of scope."
+      },
+      "missing_owner_named": "A warrant/execution-surface-level per-source session owner that (a) is constructed once per bound source entry, (b) is shared by every admitted source operation for that source, (c) is closed deterministically rather than by caller discipline, and (d) makes the aggregate per-source counts enforceable at that scope."
+    },
+    "GOV-DEC-003": {
+      "id": "GOV-DEC-003",
+      "severity": "material",
+      "finding": "The O1-C07 mandatory account 'decoder invocations' has no counter and therefore no owner in the repaired candidate.",
+      "evidence": "'decoder_invocations' has zero occurrences in pre553_source_access_broker.py. SourceAccessAccount exposes reader_invocations (compiled-reader calls of any kind) but no decoder-entry counter, and receipt().measurement_basis lists no decoder-invocation basis.",
+      "consequence": "This account is NOT measurable or enforceable in the candidate, independently of the scope blocker. reader_invocations is a different quantity and is not a substitute: under the settled non-substitutability law a reader invocation may not be renamed a decoder call.",
+      "missing_owner_named": "A decoder-entry counter at the _decode boundary, distinct from reader_invocations, with its own pre-operation cap."
+    },
+    "GOV-HDR-002": {
+      "id": "GOV-HDR-002",
+      "severity": "material",
+      "finding": "The repaired candidate performs a header-prefix read for EVERY source, but frozen authority admits a header-prefix read only for SRC26.",
+      "evidence": "rawlsing_next/pre553_physical_decoder.py:639 calls broker.header_prefix(176 if source_format == 'SAV' else 512) unconditionally, outside any operation-class branch. The result is consumed by _file_metadata_contract(..., raw_prefix=raw_prefix), so the R35-I01 physical metadata digest requires it.",
+      "consequence": "On the SRC02/SRC06/SRC14 selected route, and on SRC08/SRC12/SRC27, the candidate would perform a header-prefix read that the admitted operation class does not cover. This is a SCOPE EXCESS relative to frozen authority, not merely an unbound accounting value.",
+      "why_not_a_bound_value": "Binding header_prefix_reads=1 for those six sources would authorise an operation the operation class does not admit. Binding 0 would contradict the candidate's control flow. Both are wrong, so the value stays typed and the discrepancy is raised as its own item.",
+      "src26_note": "SRC26 keeps FLOOR 1 from HQ196, reviewer-flagged. Authority supplies the BYTE count 176, not a read count. The DTA constant 512 is candidate-chosen and is NOT authority-frozen."
+    }
+  },
+  "scope": "Seven future fresh-read sources only; SRC35 is excluded because it is a retained comparator.",
+  "source_count": 7,
+  "sources": [
+    {
+      "source_key": "SRC02",
+      "source_file": "Afro Barometer Round 5.sav",
+      "format": "SAV",
+      "canonical_sha256": "c9200ba325bbff6132a7813883eb344202abb16be4f79475cb455243d3c7b651",
+      "access_locator": "<REQUIRED_FILL_IN_SLOT__SOURCE_LOCATOR_FILL_REQUIRED_BEFORE_WARRANT_ISSUANCE>",
+      "locator_filled": false,
+      "execution_surface": "C4C3-DARWIN-X86_64-ANCHOR/CPYTHON-3.11.3/PYREADSTAT-1.3.6/PYARROW-25.0.1/PANDAS-2.3.3/NUMPY-2.4.6/PYTEST-9.1.1",
+      "expected_operation_class": "BOUNDED_FRESH_PHYSICAL_SELECTED_VARIABLE_READ",
+      "authority": "accepted C3 G01 representation authority",
+      "carried_from_base_successor_verbatim": {
+        "reader_lane": {
+          "lane_id": "SAV_ENCODING_NULL",
+          "encoding": null,
+          "authority_status": null
+        },
+        "allowed_operations": {
+          "kind": "SELECTED_VARIABLE_PHYSICAL",
+          "variables": [
+            {
+              "name": "Q10B",
+              "ordinal": 58,
+              "native_codes": [
+                997
+              ],
+              "expected_successor_type": "float64",
+              "expected_missing_state": "FORMAT_USER_MISSING_VALUE",
+              "expected_source_declaration": {
+                "kind": "discrete",
+                "value": 997
+              }
+            }
+          ]
+        },
+        "raw_bytes_retention": "DO_NOT_COMMIT_OR_COPY_RAW_RESPONDENT_BYTES_TO_GIT",
+        "carried_from_c4_candidate_verbatim": {
+          "authority": "accepted C3 G01 representation authority",
+          "max_retry_budget": 0
+        }
+      },
+      "source_access_accounting": {
+        "account_count": 10,
+        "accounts": [
+          {
+            "account_name": "source_path_existence_access_checks",
+            "layer": "application/pre-decode gate",
+            "expected_pre_launch_budget": {
+              "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+              "budget_value": null,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "one application-side existence/access check (path.is_file()), not an open",
+              "layer": "application/pre-decode gate",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:515 SourceAccessBroker.existence_check",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": false,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": "PENDING_GOVERNED_SCOPE_OWNER__NO_PER_SOURCE_SESSION_BINDING",
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[0]"
+            ]
+          },
+          {
+            "account_name": "full_file_sha256_passes",
+            "layer": "application/pre-decode identity gate",
+            "expected_pre_launch_budget": {
+              "budget_type": "FLOOR",
+              "budget_value": 1,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "one whole-file SHA-256 pass performed in Python over the governed open; no second physical open",
+              "layer": "application/pre-decode identity gate",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:520 SourceAccessBroker.hash_pass",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": true,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": null,
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[1]",
+              "C4B_UNSIGNED_TEMPLATE@c2af4f61d68e9803af83f8e26f633acfe31062fa:07_UNSIGNED_SOURCE_WARRANT_TEMPLATE.json.preconditions[3]"
+            ]
+          },
+          {
+            "account_name": "path_level_opens",
+            "layer": "literal path-level file open (OS/broker boundary)",
+            "expected_pre_launch_budget": {
+              "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+              "budget_value": null,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "application-owned physical open() of the source path; the compiled reader receives a position-zero view and never a path string",
+              "layer": "literal path-level file open (OS/broker boundary)",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:555 _ensure_open_accounted -> GovernedSourceOpen.ensure_open; single open site at rawlsing_next/pre553_source_access_broker.py:326 open(self.path)",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": false,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": "PENDING_GOVERNED_SCOPE_OWNER__NO_PER_SOURCE_SESSION_BINDING",
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[2]",
+              "HQ196_R9_THREE_WAY_ADJUDICATION_R1@d43756fb3c80645ac887cca90026ecbdb10dd18c.Contract meaning \u2014 accepted (literal path opens are separately named/non-substitutable)"
+            ]
+          },
+          {
+            "account_name": "metadata_reads",
+            "layer": "reader metadata probe",
+            "expected_pre_launch_budget": {
+              "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+              "budget_value": null,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "compiled-reader invocations with metadataonly=True",
+              "layer": "reader metadata probe",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:654 SourceAccessBroker.metadata_read",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": false,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": "PENDING_GOVERNED_SCOPE_OWNER__NO_PER_SOURCE_SESSION_BINDING",
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[3]"
+            ]
+          },
+          {
+            "account_name": "header_prefix_reads",
+            "layer": "raw byte-prefix read, pre-reader",
+            "expected_pre_launch_budget": {
+              "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+              "budget_value": null,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "bounded raw header-prefix reads performed in Python over the governed open",
+              "layer": "raw byte-prefix read, pre-reader",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:545 SourceAccessBroker.header_prefix",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": false,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": "PENDING_HEADER_PREFIX_SCOPE_DISCREPANCY__CANDIDATE_READS_UNCONDITIONALLY",
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[4]"
+            ]
+          },
+          {
+            "account_name": "decoder_invocations",
+            "layer": "decoder entry",
+            "expected_pre_launch_budget": {
+              "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+              "budget_value": null,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": null,
+              "layer": "decoder entry",
+              "mechanism": "no owner in the repaired candidate",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": false,
+              "numeric_budget_known": false,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": "PENDING_NO_DECODER_INVOCATION_COUNTER_EXISTS",
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[5]"
+            ]
+          },
+          {
+            "account_name": "selected_column_reads",
+            "layer": "selected-variable reader invocation",
+            "expected_pre_launch_budget": {
+              "budget_type": "EXACT",
+              "budget_value": 1,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "compiled-reader invocations with usecols bound to the selected variable set",
+              "layer": "selected-variable reader invocation",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:661 SourceAccessBroker.selected_read; route bound at rawlsing_next/pre553_physical_decoder.py:611-625",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": true,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": null,
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC02.expected_selected_reads"
+            ]
+          },
+          {
+            "account_name": "full_reads",
+            "layer": "whole-source decode",
+            "expected_pre_launch_budget": {
+              "budget_type": "EXACT",
+              "budget_value": 0,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "compiled-reader invocations with no column restriction",
+              "layer": "whole-source decode",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:701 SourceAccessBroker.full_read",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": true,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": null,
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC02.expected_full_reads"
+            ]
+          },
+          {
+            "account_name": "byte_counts_where_measurable",
+            "layer": "byte transfer across the reader/file boundary",
+            "expected_pre_launch_budget": {
+              "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+              "budget_value": null,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "bytes the compiled reader pulled through the governed view (reader_bytes), plus the separately capped application hash and prefix byte accounts",
+              "layer": "byte transfer across the reader/file boundary",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py reader_bytes / hash_bytes / header_prefix_bytes counters; limiter armed per reader invocation",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": false,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": "PENDING_NUMERIC_BYTE_BUDGET__SOURCE_SIZE_DEPENDENT",
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[8]"
+            ]
+          },
+          {
+            "account_name": "retries",
+            "layer": "run control",
+            "expected_pre_launch_budget": {
+              "budget_type": "ZERO",
+              "budget_value": 0,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "retry attempts, separately counted and reason-coded",
+              "layer": "run control",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py retries counter; SourceAccessBudget.retries defaults to 0",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": true,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": null,
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC02.max_retry_budget",
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.retry_budget_law.frozen_maximum"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source_key": "SRC06",
+      "source_file": "Arab Barometer Wave 5.sav",
+      "format": "SAV",
+      "canonical_sha256": "6a5cbad637ce1546833a1d4812ba6d1e8d75f85b5b199b0cf3ec5cf456068dbc",
+      "access_locator": "<REQUIRED_FILL_IN_SLOT__SOURCE_LOCATOR_FILL_REQUIRED_BEFORE_WARRANT_ISSUANCE>",
+      "locator_filled": false,
+      "execution_surface": "C4C3-DARWIN-X86_64-ANCHOR/CPYTHON-3.11.3/PYREADSTAT-1.3.6/PYARROW-25.0.1/PANDAS-2.3.3/NUMPY-2.4.6/PYTEST-9.1.1",
+      "expected_operation_class": "BOUNDED_FRESH_PHYSICAL_SELECTED_VARIABLE_READ",
+      "authority": "accepted C3 G01 representation authority",
+      "carried_from_base_successor_verbatim": {
+        "reader_lane": {
+          "lane_id": "SAV_ENCODING_NULL",
+          "encoding": null,
+          "authority_status": null
+        },
+        "allowed_operations": {
+          "kind": "SELECTED_VARIABLE_PHYSICAL",
+          "variables": [
+            {
+              "name": "Q101",
+              "ordinal": 20,
+              "native_codes": [
+                98,
+                99
+              ],
+              "expected_successor_type": "float64",
+              "expected_missing_state": "OBSERVED_STORAGE_VALUE"
+            },
+            {
+              "name": "Q2061B",
+              "ordinal": 19,
+              "native_codes": [
+                97
+              ],
+              "expected_successor_type": "float64",
+              "expected_missing_state": "OBSERVED_STORAGE_VALUE"
+            }
+          ]
+        },
+        "raw_bytes_retention": "DO_NOT_COMMIT_OR_COPY_RAW_RESPONDENT_BYTES_TO_GIT",
+        "carried_from_c4_candidate_verbatim": {
+          "authority": "accepted C3 G01 representation authority",
+          "max_retry_budget": 0
+        }
+      },
+      "source_access_accounting": {
+        "account_count": 10,
+        "accounts": [
+          {
+            "account_name": "source_path_existence_access_checks",
+            "layer": "application/pre-decode gate",
+            "expected_pre_launch_budget": {
+              "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+              "budget_value": null,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "one application-side existence/access check (path.is_file()), not an open",
+              "layer": "application/pre-decode gate",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:515 SourceAccessBroker.existence_check",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": false,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": "PENDING_GOVERNED_SCOPE_OWNER__NO_PER_SOURCE_SESSION_BINDING",
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[0]"
+            ]
+          },
+          {
+            "account_name": "full_file_sha256_passes",
+            "layer": "application/pre-decode identity gate",
+            "expected_pre_launch_budget": {
+              "budget_type": "FLOOR",
+              "budget_value": 1,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "one whole-file SHA-256 pass performed in Python over the governed open; no second physical open",
+              "layer": "application/pre-decode identity gate",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:520 SourceAccessBroker.hash_pass",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": true,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": null,
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[1]",
+              "C4B_UNSIGNED_TEMPLATE@c2af4f61d68e9803af83f8e26f633acfe31062fa:07_UNSIGNED_SOURCE_WARRANT_TEMPLATE.json.preconditions[3]"
+            ]
+          },
+          {
+            "account_name": "path_level_opens",
+            "layer": "literal path-level file open (OS/broker boundary)",
+            "expected_pre_launch_budget": {
+              "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+              "budget_value": null,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "application-owned physical open() of the source path; the compiled reader receives a position-zero view and never a path string",
+              "layer": "literal path-level file open (OS/broker boundary)",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:555 _ensure_open_accounted -> GovernedSourceOpen.ensure_open; single open site at rawlsing_next/pre553_source_access_broker.py:326 open(self.path)",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": false,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": "PENDING_GOVERNED_SCOPE_OWNER__NO_PER_SOURCE_SESSION_BINDING",
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[2]",
+              "HQ196_R9_THREE_WAY_ADJUDICATION_R1@d43756fb3c80645ac887cca90026ecbdb10dd18c.Contract meaning \u2014 accepted (literal path opens are separately named/non-substitutable)"
+            ]
+          },
+          {
+            "account_name": "metadata_reads",
+            "layer": "reader metadata probe",
+            "expected_pre_launch_budget": {
+              "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+              "budget_value": null,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "compiled-reader invocations with metadataonly=True",
+              "layer": "reader metadata probe",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:654 SourceAccessBroker.metadata_read",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": false,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": "PENDING_GOVERNED_SCOPE_OWNER__NO_PER_SOURCE_SESSION_BINDING",
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[3]"
+            ]
+          },
+          {
+            "account_name": "header_prefix_reads",
+            "layer": "raw byte-prefix read, pre-reader",
+            "expected_pre_launch_budget": {
+              "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+              "budget_value": null,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "bounded raw header-prefix reads performed in Python over the governed open",
+              "layer": "raw byte-prefix read, pre-reader",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:545 SourceAccessBroker.header_prefix",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": false,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": "PENDING_HEADER_PREFIX_SCOPE_DISCREPANCY__CANDIDATE_READS_UNCONDITIONALLY",
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[4]"
+            ]
+          },
+          {
+            "account_name": "decoder_invocations",
+            "layer": "decoder entry",
+            "expected_pre_launch_budget": {
+              "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+              "budget_value": null,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": null,
+              "layer": "decoder entry",
+              "mechanism": "no owner in the repaired candidate",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": false,
+              "numeric_budget_known": false,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": "PENDING_NO_DECODER_INVOCATION_COUNTER_EXISTS",
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[5]"
+            ]
+          },
+          {
+            "account_name": "selected_column_reads",
+            "layer": "selected-variable reader invocation",
+            "expected_pre_launch_budget": {
+              "budget_type": "EXACT",
+              "budget_value": 1,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "compiled-reader invocations with usecols bound to the selected variable set",
+              "layer": "selected-variable reader invocation",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:661 SourceAccessBroker.selected_read; route bound at rawlsing_next/pre553_physical_decoder.py:611-625",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": true,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": null,
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC06.expected_selected_reads"
+            ]
+          },
+          {
+            "account_name": "full_reads",
+            "layer": "whole-source decode",
+            "expected_pre_launch_budget": {
+              "budget_type": "EXACT",
+              "budget_value": 0,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "compiled-reader invocations with no column restriction",
+              "layer": "whole-source decode",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:701 SourceAccessBroker.full_read",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": true,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": null,
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC06.expected_full_reads"
+            ]
+          },
+          {
+            "account_name": "byte_counts_where_measurable",
+            "layer": "byte transfer across the reader/file boundary",
+            "expected_pre_launch_budget": {
+              "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+              "budget_value": null,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "bytes the compiled reader pulled through the governed view (reader_bytes), plus the separately capped application hash and prefix byte accounts",
+              "layer": "byte transfer across the reader/file boundary",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py reader_bytes / hash_bytes / header_prefix_bytes counters; limiter armed per reader invocation",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": false,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": "PENDING_NUMERIC_BYTE_BUDGET__SOURCE_SIZE_DEPENDENT",
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[8]"
+            ]
+          },
+          {
+            "account_name": "retries",
+            "layer": "run control",
+            "expected_pre_launch_budget": {
+              "budget_type": "ZERO",
+              "budget_value": 0,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "retry attempts, separately counted and reason-coded",
+              "layer": "run control",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py retries counter; SourceAccessBudget.retries defaults to 0",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": true,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": null,
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC06.max_retry_budget",
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.retry_budget_law.frozen_maximum"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source_key": "SRC08",
+      "source_file": "Asian Barometer Wave 1.sav",
+      "format": "SAV",
+      "canonical_sha256": "ac0b8bc1ddb2fa6b952417e35b6379ce6a2cf8596776a43282ba44f48e0ae1a2",
+      "access_locator": "<REQUIRED_FILL_IN_SLOT__SOURCE_LOCATOR_FILL_REQUIRED_BEFORE_WARRANT_ISSUANCE>",
+      "locator_filled": false,
+      "execution_surface": "C4C3-DARWIN-X86_64-ANCHOR/CPYTHON-3.11.3/PYREADSTAT-1.3.6/PYARROW-25.0.1/PANDAS-2.3.3/NUMPY-2.4.6/PYTEST-9.1.1",
+      "expected_operation_class": "FRESH_METADATA_ONLY_DECODER_ADMISSION",
+      "authority": "accepted C3 D01 decoder admission; DECLARED_ENCODING_ALLOWLIST exact-SHA entry",
+      "carried_from_base_successor_verbatim": {
+        "reader_lane": {
+          "lane_id": "SAV_ENCODING_BIG5_DECLARED",
+          "encoding": "BIG5",
+          "authority_status": "SOURCE_DECLARED_EXACT_SHA_ENCODING__PHYSICAL_DECODING_ONLY"
+        },
+        "allowed_operations": {
+          "kind": "EXACT_SHA_DECLARED_ENCODING_ADMISSION_PLUS_METADATA_ONLY_READER_PROBE",
+          "row_data_reads": 0,
+          "selected_columns": [],
+          "full_source_decode": false
+        },
+        "raw_bytes_retention": "DO_NOT_COMMIT_OR_COPY_RAW_RESPONDENT_BYTES_TO_GIT",
+        "carried_from_c4_candidate_verbatim": {
+          "authority": "accepted C3 D01 decoder admission; DECLARED_ENCODING_ALLOWLIST exact-SHA entry",
+          "max_retry_budget": 0
+        }
+      },
+      "source_access_accounting": {
+        "account_count": 12,
+        "accounts": [
+          {
+            "account_name": "source_path_existence_access_checks",
+            "layer": "application/pre-decode gate",
+            "expected_pre_launch_budget": {
+              "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+              "budget_value": null,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "one application-side existence/access check (path.is_file()), not an open",
+              "layer": "application/pre-decode gate",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:515 SourceAccessBroker.existence_check",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": false,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": "PENDING_GOVERNED_SCOPE_OWNER__NO_PER_SOURCE_SESSION_BINDING",
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[0]"
+            ]
+          },
+          {
+            "account_name": "full_file_sha256_passes",
+            "layer": "application/pre-decode identity gate",
+            "expected_pre_launch_budget": {
+              "budget_type": "FLOOR",
+              "budget_value": 1,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "one whole-file SHA-256 pass performed in Python over the governed open; no second physical open",
+              "layer": "application/pre-decode identity gate",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:520 SourceAccessBroker.hash_pass",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": true,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": null,
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[1]",
+              "C4B_UNSIGNED_TEMPLATE@c2af4f61d68e9803af83f8e26f633acfe31062fa:07_UNSIGNED_SOURCE_WARRANT_TEMPLATE.json.preconditions[3]"
+            ]
+          },
+          {
+            "account_name": "path_level_opens",
+            "layer": "literal path-level file open (OS/broker boundary)",
+            "expected_pre_launch_budget": {
+              "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+              "budget_value": null,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "application-owned physical open() of the source path; the compiled reader receives a position-zero view and never a path string",
+              "layer": "literal path-level file open (OS/broker boundary)",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:555 _ensure_open_accounted -> GovernedSourceOpen.ensure_open; single open site at rawlsing_next/pre553_source_access_broker.py:326 open(self.path)",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": false,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": "PENDING_GOVERNED_SCOPE_OWNER__NO_PER_SOURCE_SESSION_BINDING",
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[2]",
+              "HQ196_R9_THREE_WAY_ADJUDICATION_R1@d43756fb3c80645ac887cca90026ecbdb10dd18c.Contract meaning \u2014 accepted (literal path opens are separately named/non-substitutable)"
+            ]
+          },
+          {
+            "account_name": "metadata_reads",
+            "layer": "reader metadata probe",
+            "expected_pre_launch_budget": {
+              "budget_type": "EXACT",
+              "budget_value": 1,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "compiled-reader invocations with metadataonly=True",
+              "layer": "reader metadata probe",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:654 SourceAccessBroker.metadata_read",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": true,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": null,
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC08.expected_metadata_reads"
+            ]
+          },
+          {
+            "account_name": "header_prefix_reads",
+            "layer": "raw byte-prefix read, pre-reader",
+            "expected_pre_launch_budget": {
+              "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+              "budget_value": null,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "bounded raw header-prefix reads performed in Python over the governed open",
+              "layer": "raw byte-prefix read, pre-reader",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:545 SourceAccessBroker.header_prefix",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": false,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": "PENDING_HEADER_PREFIX_SCOPE_DISCREPANCY__CANDIDATE_READS_UNCONDITIONALLY",
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[4]"
+            ]
+          },
+          {
+            "account_name": "decoder_invocations",
+            "layer": "decoder entry",
+            "expected_pre_launch_budget": {
+              "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+              "budget_value": null,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": null,
+              "layer": "decoder entry",
+              "mechanism": "no owner in the repaired candidate",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": false,
+              "numeric_budget_known": false,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": "PENDING_NO_DECODER_INVOCATION_COUNTER_EXISTS",
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[5]"
+            ]
+          },
+          {
+            "account_name": "selected_column_reads",
+            "layer": "selected-variable reader invocation",
+            "expected_pre_launch_budget": {
+              "budget_type": "EXACT",
+              "budget_value": 0,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "compiled-reader invocations with usecols bound to the selected variable set",
+              "layer": "selected-variable reader invocation",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:661 SourceAccessBroker.selected_read; route bound at rawlsing_next/pre553_physical_decoder.py:611-625",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": true,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": null,
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC08.expected_selected_reads"
+            ]
+          },
+          {
+            "account_name": "full_reads",
+            "layer": "whole-source decode",
+            "expected_pre_launch_budget": {
+              "budget_type": "EXACT",
+              "budget_value": 0,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "compiled-reader invocations with no column restriction",
+              "layer": "whole-source decode",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:701 SourceAccessBroker.full_read",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": true,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": null,
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC08.expected_full_reads"
+            ]
+          },
+          {
+            "account_name": "byte_counts_where_measurable",
+            "layer": "byte transfer across the reader/file boundary",
+            "expected_pre_launch_budget": {
+              "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+              "budget_value": null,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "bytes the compiled reader pulled through the governed view (reader_bytes), plus the separately capped application hash and prefix byte accounts",
+              "layer": "byte transfer across the reader/file boundary",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py reader_bytes / hash_bytes / header_prefix_bytes counters; limiter armed per reader invocation",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": false,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": "PENDING_NUMERIC_BYTE_BUDGET__SOURCE_SIZE_DEPENDENT",
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[8]"
+            ]
+          },
+          {
+            "account_name": "retries",
+            "layer": "run control",
+            "expected_pre_launch_budget": {
+              "budget_type": "ZERO",
+              "budget_value": 0,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "retry attempts, separately counted and reason-coded",
+              "layer": "run control",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py retries counter; SourceAccessBudget.retries defaults to 0",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": true,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": null,
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC08.max_retry_budget",
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.retry_budget_law.frozen_maximum"
+            ]
+          },
+          {
+            "account_name": "row_data_reads",
+            "layer": "reader data plane",
+            "expected_pre_launch_budget": {
+              "budget_type": "ZERO",
+              "budget_value": 0,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": null,
+              "layer": "reader data plane",
+              "mechanism": "no owner in the repaired candidate",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": "NOT_APPLICABLE__NON_ACCESS_OR_AUTHORITY_ACCOUNT",
+              "numeric_budget_known": true,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": null,
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.frozen_zero_budgets.SRC08_row_data_reads",
+              "C4_WARRANT_CANDIDATE@8ff40d37de69db2d8a6053a7c2242f481677f1a4:04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json.per_source[SRC08].allowed_operations.row_data_reads"
+            ]
+          },
+          {
+            "account_name": "selected_columns",
+            "layer": "reader configuration",
+            "expected_pre_launch_budget": {
+              "budget_type": "ZERO",
+              "budget_value": 0,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": null,
+              "layer": "reader configuration",
+              "mechanism": "no owner in the repaired candidate",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": "NOT_APPLICABLE__NON_ACCESS_OR_AUTHORITY_ACCOUNT",
+              "numeric_budget_known": true,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": null,
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.frozen_zero_budgets.SRC08_selected_columns",
+              "C4_WARRANT_CANDIDATE@8ff40d37de69db2d8a6053a7c2242f481677f1a4:04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json.per_source[SRC08].allowed_operations.selected_columns"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source_key": "SRC12",
+      "source_file": "EVS 1990.sav",
+      "format": "SAV",
+      "canonical_sha256": "66252a92c59bf6759b79a6b35b2be658b98a433373212a70c8ec94755d3e02ec",
+      "access_locator": "<REQUIRED_FILL_IN_SLOT__SOURCE_LOCATOR_FILL_REQUIRED_BEFORE_WARRANT_ISSUANCE>",
+      "locator_filled": false,
+      "execution_surface": "C4C3-DARWIN-X86_64-ANCHOR/CPYTHON-3.11.3/PYREADSTAT-1.3.6/PYARROW-25.0.1/PANDAS-2.3.3/NUMPY-2.4.6/PYTEST-9.1.1",
+      "expected_operation_class": "FRESH_METADATA_ONLY_DECODER_ADMISSION",
+      "authority": "accepted C3 D01 decoder admission; DECLARED_ENCODING_ALLOWLIST exact-SHA entry",
+      "carried_from_base_successor_verbatim": {
+        "reader_lane": {
+          "lane_id": "SAV_ENCODING_WINDOWS1252_DECLARED",
+          "encoding": "WINDOWS-1252",
+          "authority_status": "SOURCE_DECLARED_EXACT_SHA_ENCODING__PHYSICAL_DECODING_ONLY"
+        },
+        "allowed_operations": {
+          "kind": "EXACT_SHA_DECLARED_ENCODING_ADMISSION_PLUS_METADATA_ONLY_READER_PROBE",
+          "row_data_reads": 0,
+          "selected_columns": [],
+          "full_source_decode": false
+        },
+        "raw_bytes_retention": "DO_NOT_COMMIT_OR_COPY_RAW_RESPONDENT_BYTES_TO_GIT",
+        "carried_from_c4_candidate_verbatim": {
+          "authority": "accepted C3 D01 decoder admission; DECLARED_ENCODING_ALLOWLIST exact-SHA entry",
+          "max_retry_budget": 0,
+          "multi_wave_pair_with": "SRC14"
+        }
+      },
+      "source_access_accounting": {
+        "account_count": 12,
+        "accounts": [
+          {
+            "account_name": "source_path_existence_access_checks",
+            "layer": "application/pre-decode gate",
+            "expected_pre_launch_budget": {
+              "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+              "budget_value": null,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "one application-side existence/access check (path.is_file()), not an open",
+              "layer": "application/pre-decode gate",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:515 SourceAccessBroker.existence_check",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": false,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": "PENDING_GOVERNED_SCOPE_OWNER__NO_PER_SOURCE_SESSION_BINDING",
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[0]"
+            ]
+          },
+          {
+            "account_name": "full_file_sha256_passes",
+            "layer": "application/pre-decode identity gate",
+            "expected_pre_launch_budget": {
+              "budget_type": "FLOOR",
+              "budget_value": 1,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "one whole-file SHA-256 pass performed in Python over the governed open; no second physical open",
+              "layer": "application/pre-decode identity gate",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:520 SourceAccessBroker.hash_pass",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": true,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": null,
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[1]",
+              "C4B_UNSIGNED_TEMPLATE@c2af4f61d68e9803af83f8e26f633acfe31062fa:07_UNSIGNED_SOURCE_WARRANT_TEMPLATE.json.preconditions[3]"
+            ]
+          },
+          {
+            "account_name": "path_level_opens",
+            "layer": "literal path-level file open (OS/broker boundary)",
+            "expected_pre_launch_budget": {
+              "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+              "budget_value": null,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "application-owned physical open() of the source path; the compiled reader receives a position-zero view and never a path string",
+              "layer": "literal path-level file open (OS/broker boundary)",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:555 _ensure_open_accounted -> GovernedSourceOpen.ensure_open; single open site at rawlsing_next/pre553_source_access_broker.py:326 open(self.path)",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": false,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": "PENDING_GOVERNED_SCOPE_OWNER__NO_PER_SOURCE_SESSION_BINDING",
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[2]",
+              "HQ196_R9_THREE_WAY_ADJUDICATION_R1@d43756fb3c80645ac887cca90026ecbdb10dd18c.Contract meaning \u2014 accepted (literal path opens are separately named/non-substitutable)"
+            ]
+          },
+          {
+            "account_name": "metadata_reads",
+            "layer": "reader metadata probe",
+            "expected_pre_launch_budget": {
+              "budget_type": "EXACT",
+              "budget_value": 1,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "compiled-reader invocations with metadataonly=True",
+              "layer": "reader metadata probe",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:654 SourceAccessBroker.metadata_read",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": true,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": null,
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC12.expected_metadata_reads"
+            ]
+          },
+          {
+            "account_name": "header_prefix_reads",
+            "layer": "raw byte-prefix read, pre-reader",
+            "expected_pre_launch_budget": {
+              "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+              "budget_value": null,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "bounded raw header-prefix reads performed in Python over the governed open",
+              "layer": "raw byte-prefix read, pre-reader",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:545 SourceAccessBroker.header_prefix",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": false,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": "PENDING_HEADER_PREFIX_SCOPE_DISCREPANCY__CANDIDATE_READS_UNCONDITIONALLY",
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[4]"
+            ]
+          },
+          {
+            "account_name": "decoder_invocations",
+            "layer": "decoder entry",
+            "expected_pre_launch_budget": {
+              "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+              "budget_value": null,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": null,
+              "layer": "decoder entry",
+              "mechanism": "no owner in the repaired candidate",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": false,
+              "numeric_budget_known": false,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": "PENDING_NO_DECODER_INVOCATION_COUNTER_EXISTS",
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[5]"
+            ]
+          },
+          {
+            "account_name": "selected_column_reads",
+            "layer": "selected-variable reader invocation",
+            "expected_pre_launch_budget": {
+              "budget_type": "EXACT",
+              "budget_value": 0,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "compiled-reader invocations with usecols bound to the selected variable set",
+              "layer": "selected-variable reader invocation",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:661 SourceAccessBroker.selected_read; route bound at rawlsing_next/pre553_physical_decoder.py:611-625",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": true,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": null,
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC12.expected_selected_reads"
+            ]
+          },
+          {
+            "account_name": "full_reads",
+            "layer": "whole-source decode",
+            "expected_pre_launch_budget": {
+              "budget_type": "EXACT",
+              "budget_value": 0,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "compiled-reader invocations with no column restriction",
+              "layer": "whole-source decode",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:701 SourceAccessBroker.full_read",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": true,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": null,
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC12.expected_full_reads"
+            ]
+          },
+          {
+            "account_name": "byte_counts_where_measurable",
+            "layer": "byte transfer across the reader/file boundary",
+            "expected_pre_launch_budget": {
+              "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+              "budget_value": null,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "bytes the compiled reader pulled through the governed view (reader_bytes), plus the separately capped application hash and prefix byte accounts",
+              "layer": "byte transfer across the reader/file boundary",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py reader_bytes / hash_bytes / header_prefix_bytes counters; limiter armed per reader invocation",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": false,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": "PENDING_NUMERIC_BYTE_BUDGET__SOURCE_SIZE_DEPENDENT",
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[8]"
+            ]
+          },
+          {
+            "account_name": "retries",
+            "layer": "run control",
+            "expected_pre_launch_budget": {
+              "budget_type": "ZERO",
+              "budget_value": 0,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "retry attempts, separately counted and reason-coded",
+              "layer": "run control",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py retries counter; SourceAccessBudget.retries defaults to 0",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": true,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": null,
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC12.max_retry_budget",
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.retry_budget_law.frozen_maximum"
+            ]
+          },
+          {
+            "account_name": "row_data_reads",
+            "layer": "reader data plane",
+            "expected_pre_launch_budget": {
+              "budget_type": "ZERO",
+              "budget_value": 0,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": null,
+              "layer": "reader data plane",
+              "mechanism": "no owner in the repaired candidate",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": "NOT_APPLICABLE__NON_ACCESS_OR_AUTHORITY_ACCOUNT",
+              "numeric_budget_known": true,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": null,
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.frozen_zero_budgets.SRC12_row_data_reads",
+              "C4_WARRANT_CANDIDATE@8ff40d37de69db2d8a6053a7c2242f481677f1a4:04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json.per_source[SRC12].allowed_operations.row_data_reads"
+            ]
+          },
+          {
+            "account_name": "selected_columns",
+            "layer": "reader configuration",
+            "expected_pre_launch_budget": {
+              "budget_type": "ZERO",
+              "budget_value": 0,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": null,
+              "layer": "reader configuration",
+              "mechanism": "no owner in the repaired candidate",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": "NOT_APPLICABLE__NON_ACCESS_OR_AUTHORITY_ACCOUNT",
+              "numeric_budget_known": true,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": null,
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.frozen_zero_budgets.SRC12_selected_columns",
+              "C4_WARRANT_CANDIDATE@8ff40d37de69db2d8a6053a7c2242f481677f1a4:04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json.per_source[SRC12].allowed_operations.selected_columns"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source_key": "SRC14",
+      "source_file": "EVS 2008.sav",
+      "format": "SAV",
+      "canonical_sha256": "5469e3b39cbbb6d7230ff9894426cc75fe074541d284633235df4af3442ac379",
+      "access_locator": "<REQUIRED_FILL_IN_SLOT__SOURCE_LOCATOR_FILL_REQUIRED_BEFORE_WARRANT_ISSUANCE>",
+      "locator_filled": false,
+      "execution_surface": "C4C3-DARWIN-X86_64-ANCHOR/CPYTHON-3.11.3/PYREADSTAT-1.3.6/PYARROW-25.0.1/PANDAS-2.3.3/NUMPY-2.4.6/PYTEST-9.1.1",
+      "expected_operation_class": "BOUNDED_FRESH_PHYSICAL_READ_EXACT_VARIABLE",
+      "authority": "accepted C3 D02 codec/decoder law; SOURCE_PHYSICAL_OR_READER_METADATA_AUTHORITY__NON_SEMANTIC",
+      "carried_from_base_successor_verbatim": {
+        "reader_lane": {
+          "lane_id": "SAV_ENCODING_NULL",
+          "encoding": null,
+          "authority_status": null
+        },
+        "allowed_operations": {
+          "kind": "BOUNDED_PHYSICAL_WITNESS_READ_EXACT_VARIABLE",
+          "variables": [
+            {
+              "name": "v372",
+              "ordinal": 466
+            }
+          ]
+        },
+        "raw_bytes_retention": "DO_NOT_COMMIT_OR_COPY_RAW_RESPONDENT_BYTES_TO_GIT",
+        "carried_from_c4_candidate_verbatim": {
+          "D02_witness_binding": {
+            "fixture_id": "EVS08_DATE_MISSING_V372",
+            "fixture_blob": "12f6adb77ef5692511055c8f0520e42c454f3867",
+            "native_class": "TYPED_DATE_USER_MISSING_SENTINEL",
+            "rendered_value": "1582-10-13",
+            "expected_counts": {
+              "user_missing": 1917,
+              "ordinary_present": 64363,
+              "system_missing": 0,
+              "total_rows": 66280
+            },
+            "accepted_carrier_domain": [
+              "python.datetime.date@1",
+              "python.datetime.datetime@1",
+              "python.datetime.time@1"
+            ],
+            "timezone_aware": "FAIL_CLOSED",
+            "anchor_observed_subclass": "built-in datetime.date",
+            "decisive_frozen_control": "dates_as_pandas_datetime=False",
+            "prohibited_inference": "The retained rendering may not be used to infer date versus datetime; the actual subclass must be OBSERVED at run time.",
+            "RES_2": "pandas.Timestamp is outside the accepted exact-type carrier. Do NOT widen during C4; a Timestamp arrival is a fail-closed STOP.",
+            "RES_3": "numpy datetime64 unit affects arrival typing; bounded by numpy 2.4.6."
+          },
+          "authority": "accepted C3 D02 codec/decoder law; SOURCE_PHYSICAL_OR_READER_METADATA_AUTHORITY__NON_SEMANTIC",
+          "max_retry_budget": 0,
+          "multi_wave_pair_with": "SRC12"
+        }
+      },
+      "source_access_accounting": {
+        "account_count": 10,
+        "accounts": [
+          {
+            "account_name": "source_path_existence_access_checks",
+            "layer": "application/pre-decode gate",
+            "expected_pre_launch_budget": {
+              "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+              "budget_value": null,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "one application-side existence/access check (path.is_file()), not an open",
+              "layer": "application/pre-decode gate",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:515 SourceAccessBroker.existence_check",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": false,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": "PENDING_GOVERNED_SCOPE_OWNER__NO_PER_SOURCE_SESSION_BINDING",
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[0]"
+            ]
+          },
+          {
+            "account_name": "full_file_sha256_passes",
+            "layer": "application/pre-decode identity gate",
+            "expected_pre_launch_budget": {
+              "budget_type": "FLOOR",
+              "budget_value": 1,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "one whole-file SHA-256 pass performed in Python over the governed open; no second physical open",
+              "layer": "application/pre-decode identity gate",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:520 SourceAccessBroker.hash_pass",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": true,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": null,
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[1]",
+              "C4B_UNSIGNED_TEMPLATE@c2af4f61d68e9803af83f8e26f633acfe31062fa:07_UNSIGNED_SOURCE_WARRANT_TEMPLATE.json.preconditions[3]"
+            ]
+          },
+          {
+            "account_name": "path_level_opens",
+            "layer": "literal path-level file open (OS/broker boundary)",
+            "expected_pre_launch_budget": {
+              "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+              "budget_value": null,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "application-owned physical open() of the source path; the compiled reader receives a position-zero view and never a path string",
+              "layer": "literal path-level file open (OS/broker boundary)",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:555 _ensure_open_accounted -> GovernedSourceOpen.ensure_open; single open site at rawlsing_next/pre553_source_access_broker.py:326 open(self.path)",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": false,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": "PENDING_GOVERNED_SCOPE_OWNER__NO_PER_SOURCE_SESSION_BINDING",
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[2]",
+              "HQ196_R9_THREE_WAY_ADJUDICATION_R1@d43756fb3c80645ac887cca90026ecbdb10dd18c.Contract meaning \u2014 accepted (literal path opens are separately named/non-substitutable)"
+            ]
+          },
+          {
+            "account_name": "metadata_reads",
+            "layer": "reader metadata probe",
+            "expected_pre_launch_budget": {
+              "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+              "budget_value": null,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "compiled-reader invocations with metadataonly=True",
+              "layer": "reader metadata probe",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:654 SourceAccessBroker.metadata_read",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": false,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": "PENDING_GOVERNED_SCOPE_OWNER__NO_PER_SOURCE_SESSION_BINDING",
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[3]"
+            ]
+          },
+          {
+            "account_name": "header_prefix_reads",
+            "layer": "raw byte-prefix read, pre-reader",
+            "expected_pre_launch_budget": {
+              "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+              "budget_value": null,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "bounded raw header-prefix reads performed in Python over the governed open",
+              "layer": "raw byte-prefix read, pre-reader",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:545 SourceAccessBroker.header_prefix",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": false,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": "PENDING_HEADER_PREFIX_SCOPE_DISCREPANCY__CANDIDATE_READS_UNCONDITIONALLY",
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[4]"
+            ]
+          },
+          {
+            "account_name": "decoder_invocations",
+            "layer": "decoder entry",
+            "expected_pre_launch_budget": {
+              "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+              "budget_value": null,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": null,
+              "layer": "decoder entry",
+              "mechanism": "no owner in the repaired candidate",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": false,
+              "numeric_budget_known": false,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": "PENDING_NO_DECODER_INVOCATION_COUNTER_EXISTS",
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[5]"
+            ]
+          },
+          {
+            "account_name": "selected_column_reads",
+            "layer": "selected-variable reader invocation",
+            "expected_pre_launch_budget": {
+              "budget_type": "EXACT",
+              "budget_value": 1,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "compiled-reader invocations with usecols bound to the selected variable set",
+              "layer": "selected-variable reader invocation",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:661 SourceAccessBroker.selected_read; route bound at rawlsing_next/pre553_physical_decoder.py:611-625",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": true,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": null,
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC14.expected_selected_reads"
+            ]
+          },
+          {
+            "account_name": "full_reads",
+            "layer": "whole-source decode",
+            "expected_pre_launch_budget": {
+              "budget_type": "EXACT",
+              "budget_value": 0,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "compiled-reader invocations with no column restriction",
+              "layer": "whole-source decode",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:701 SourceAccessBroker.full_read",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": true,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": null,
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC14.expected_full_reads"
+            ]
+          },
+          {
+            "account_name": "byte_counts_where_measurable",
+            "layer": "byte transfer across the reader/file boundary",
+            "expected_pre_launch_budget": {
+              "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+              "budget_value": null,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "bytes the compiled reader pulled through the governed view (reader_bytes), plus the separately capped application hash and prefix byte accounts",
+              "layer": "byte transfer across the reader/file boundary",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py reader_bytes / hash_bytes / header_prefix_bytes counters; limiter armed per reader invocation",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": false,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": "PENDING_NUMERIC_BYTE_BUDGET__SOURCE_SIZE_DEPENDENT",
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[8]"
+            ]
+          },
+          {
+            "account_name": "retries",
+            "layer": "run control",
+            "expected_pre_launch_budget": {
+              "budget_type": "ZERO",
+              "budget_value": 0,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "retry attempts, separately counted and reason-coded",
+              "layer": "run control",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py retries counter; SourceAccessBudget.retries defaults to 0",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": true,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": null,
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC14.max_retry_budget",
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.retry_budget_law.frozen_maximum"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source_key": "SRC26",
+      "source_file": "Latinobarometro 2024.sav",
+      "format": "SAV",
+      "canonical_sha256": "ff5cef18c87969026e7f993d09f10c38a547bf81d5d398784fb59b960b7b0a40",
+      "access_locator": "<REQUIRED_FILL_IN_SLOT__SOURCE_LOCATOR_FILL_REQUIRED_BEFORE_WARRANT_ISSUANCE>",
+      "locator_filled": false,
+      "execution_surface": "C4C3-DARWIN-X86_64-ANCHOR/CPYTHON-3.11.3/PYREADSTAT-1.3.6/PYARROW-25.0.1/PANDAS-2.3.3/NUMPY-2.4.6/PYTEST-9.1.1",
+      "expected_operation_class": "BOUNDED_HEADER_PREFIX_PLUS_READER_METADATA",
+      "authority": "CLOSED35 R05 frozen physical law",
+      "carried_from_base_successor_verbatim": {
+        "reader_lane": {
+          "lane_id": "SAV_ENCODING_NULL",
+          "encoding": null,
+          "authority_status": null
+        },
+        "allowed_operations": {
+          "kind": "BOUNDED_HEADER_PREFIX_PLUS_READER_METADATA",
+          "expected_raw_nominal_case_size": 174,
+          "expected_decoded_dictionary_data_width": 332,
+          "equality_required": false,
+          "law": "Raw nominal case size and decoded dictionary width must be preserved SEPARATELY. Divergence is expected, not a failure, and must never be collapsed."
+        },
+        "raw_bytes_retention": "DO_NOT_COMMIT_OR_COPY_RAW_RESPONDENT_BYTES_TO_GIT",
+        "carried_from_c4_candidate_verbatim": {
+          "authority": "CLOSED35 R05 frozen physical law",
+          "max_retry_budget": 0
+        }
+      },
+      "source_access_accounting": {
+        "account_count": 13,
+        "accounts": [
+          {
+            "account_name": "source_path_existence_access_checks",
+            "layer": "application/pre-decode gate",
+            "expected_pre_launch_budget": {
+              "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+              "budget_value": null,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "one application-side existence/access check (path.is_file()), not an open",
+              "layer": "application/pre-decode gate",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:515 SourceAccessBroker.existence_check",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": false,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": "PENDING_GOVERNED_SCOPE_OWNER__NO_PER_SOURCE_SESSION_BINDING",
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[0]"
+            ]
+          },
+          {
+            "account_name": "full_file_sha256_passes",
+            "layer": "application/pre-decode identity gate",
+            "expected_pre_launch_budget": {
+              "budget_type": "FLOOR",
+              "budget_value": 1,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "one whole-file SHA-256 pass performed in Python over the governed open; no second physical open",
+              "layer": "application/pre-decode identity gate",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:520 SourceAccessBroker.hash_pass",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": true,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": null,
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[1]",
+              "C4B_UNSIGNED_TEMPLATE@c2af4f61d68e9803af83f8e26f633acfe31062fa:07_UNSIGNED_SOURCE_WARRANT_TEMPLATE.json.preconditions[3]"
+            ]
+          },
+          {
+            "account_name": "path_level_opens",
+            "layer": "literal path-level file open (OS/broker boundary)",
+            "expected_pre_launch_budget": {
+              "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+              "budget_value": null,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "application-owned physical open() of the source path; the compiled reader receives a position-zero view and never a path string",
+              "layer": "literal path-level file open (OS/broker boundary)",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:555 _ensure_open_accounted -> GovernedSourceOpen.ensure_open; single open site at rawlsing_next/pre553_source_access_broker.py:326 open(self.path)",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": false,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": "PENDING_GOVERNED_SCOPE_OWNER__NO_PER_SOURCE_SESSION_BINDING",
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[2]",
+              "HQ196_R9_THREE_WAY_ADJUDICATION_R1@d43756fb3c80645ac887cca90026ecbdb10dd18c.Contract meaning \u2014 accepted (literal path opens are separately named/non-substitutable)"
+            ]
+          },
+          {
+            "account_name": "metadata_reads",
+            "layer": "reader metadata probe",
+            "expected_pre_launch_budget": {
+              "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+              "budget_value": null,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "compiled-reader invocations with metadataonly=True",
+              "layer": "reader metadata probe",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:654 SourceAccessBroker.metadata_read",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": false,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": "PENDING_GOVERNED_SCOPE_OWNER__NO_PER_SOURCE_SESSION_BINDING",
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[3]"
+            ]
+          },
+          {
+            "account_name": "header_prefix_reads",
+            "layer": "raw byte-prefix read, pre-reader",
+            "expected_pre_launch_budget": {
+              "budget_type": "FLOOR",
+              "budget_value": 1,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "bounded raw header-prefix reads performed in Python over the governed open",
+              "layer": "raw byte-prefix read, pre-reader",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:545 SourceAccessBroker.header_prefix",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": true,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": null,
+            "provenance": [
+              "C4_WARRANT_CANDIDATE@8ff40d37de69db2d8a6053a7c2242f481677f1a4:04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json.per_source[SRC26].allowed_operations.kind",
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC26"
+            ]
+          },
+          {
+            "account_name": "header_prefix_bytes",
+            "layer": "raw byte-prefix read",
+            "expected_pre_launch_budget": {
+              "budget_type": "EXACT",
+              "budget_value": 176,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "bytes returned by the bounded prefix read",
+              "layer": "raw byte-prefix read",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:545 header_prefix_bytes counter",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": true,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": null,
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC26.expected_header_prefix_bytes"
+            ]
+          },
+          {
+            "account_name": "raw_nominal_case_size",
+            "layer": "source geometry declaration",
+            "expected_pre_launch_budget": {
+              "budget_type": "EXACT",
+              "budget_value": 174,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": null,
+              "layer": "source geometry declaration",
+              "mechanism": "no owner in the repaired candidate",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": "NOT_APPLICABLE__NON_ACCESS_OR_AUTHORITY_ACCOUNT",
+              "numeric_budget_known": true,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": null,
+            "provenance": [
+              "C4_WARRANT_CANDIDATE@8ff40d37de69db2d8a6053a7c2242f481677f1a4:04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json.per_source[SRC26].allowed_operations.expected_raw_nominal_case_size"
+            ]
+          },
+          {
+            "account_name": "decoded_dictionary_data_width",
+            "layer": "decoded geometry declaration",
+            "expected_pre_launch_budget": {
+              "budget_type": "EXACT",
+              "budget_value": 332,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": null,
+              "layer": "decoded geometry declaration",
+              "mechanism": "no owner in the repaired candidate",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": "NOT_APPLICABLE__NON_ACCESS_OR_AUTHORITY_ACCOUNT",
+              "numeric_budget_known": true,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": null,
+            "provenance": [
+              "C4_WARRANT_CANDIDATE@8ff40d37de69db2d8a6053a7c2242f481677f1a4:04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json.per_source[SRC26].allowed_operations.expected_decoded_dictionary_data_width"
+            ]
+          },
+          {
+            "account_name": "decoder_invocations",
+            "layer": "decoder entry",
+            "expected_pre_launch_budget": {
+              "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+              "budget_value": null,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": null,
+              "layer": "decoder entry",
+              "mechanism": "no owner in the repaired candidate",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": false,
+              "numeric_budget_known": false,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": "PENDING_NO_DECODER_INVOCATION_COUNTER_EXISTS",
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[5]"
+            ]
+          },
+          {
+            "account_name": "selected_column_reads",
+            "layer": "selected-variable reader invocation",
+            "expected_pre_launch_budget": {
+              "budget_type": "EXACT",
+              "budget_value": 0,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "compiled-reader invocations with usecols bound to the selected variable set",
+              "layer": "selected-variable reader invocation",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:661 SourceAccessBroker.selected_read; route bound at rawlsing_next/pre553_physical_decoder.py:611-625",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": true,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": null,
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC26.expected_selected_reads"
+            ]
+          },
+          {
+            "account_name": "full_reads",
+            "layer": "whole-source decode",
+            "expected_pre_launch_budget": {
+              "budget_type": "EXACT",
+              "budget_value": 0,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "compiled-reader invocations with no column restriction",
+              "layer": "whole-source decode",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:701 SourceAccessBroker.full_read",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": true,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": null,
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC26.expected_full_reads"
+            ]
+          },
+          {
+            "account_name": "byte_counts_where_measurable",
+            "layer": "byte transfer across the reader/file boundary",
+            "expected_pre_launch_budget": {
+              "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+              "budget_value": null,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "bytes the compiled reader pulled through the governed view (reader_bytes), plus the separately capped application hash and prefix byte accounts",
+              "layer": "byte transfer across the reader/file boundary",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py reader_bytes / hash_bytes / header_prefix_bytes counters; limiter armed per reader invocation",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": false,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": "PENDING_NUMERIC_BYTE_BUDGET__SOURCE_SIZE_DEPENDENT",
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[8]"
+            ]
+          },
+          {
+            "account_name": "retries",
+            "layer": "run control",
+            "expected_pre_launch_budget": {
+              "budget_type": "ZERO",
+              "budget_value": 0,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "retry attempts, separately counted and reason-coded",
+              "layer": "run control",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py retries counter; SourceAccessBudget.retries defaults to 0",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": true,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": null,
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC26.max_retry_budget",
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.retry_budget_law.frozen_maximum"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source_key": "SRC27",
+      "source_file": "LiTS_I.dta",
+      "format": "DTA",
+      "canonical_sha256": "7cac43e2ca5b31cb658dc2b3a6cfbcec99363ca8c47da457df90e31b588efc09",
+      "access_locator": "<REQUIRED_FILL_IN_SLOT__SOURCE_LOCATOR_FILL_REQUIRED_BEFORE_WARRANT_ISSUANCE>",
+      "locator_filled": false,
+      "execution_surface": "C4C3-DARWIN-X86_64-ANCHOR/CPYTHON-3.11.3/PYREADSTAT-1.3.6/PYARROW-25.0.1/PANDAS-2.3.3/NUMPY-2.4.6/PYTEST-9.1.1",
+      "expected_operation_class": "EXACTLY_ONE_GOVERNED_FRESH_FULL_ROUTE_PASS",
+      "authority": "urn:rawlsing:pre553:as2a:lits1-projection-authority:sha256:9dd1e6b7350ebb795e028db86279131f8d319e939a044b74c3c5605ecacf5b06",
+      "carried_from_base_successor_verbatim": {
+        "reader_lane": {
+          "lane_id": "DTA_ENCODING_LATIN1_COMPATIBILITY",
+          "encoding": "latin1",
+          "authority_status": "COMPATIBILITY_EXECUTION_ONLY__NOT_SOURCE_TEXT_ENCODING_AUTHORITY"
+        },
+        "allowed_operations": {
+          "kind": "EXACTLY_ONE_GOVERNED_FRESH_FULL_ROUTE_PASS",
+          "candidates": 50,
+          "query_roles": 77,
+          "respondent_event_slots": [
+            "q301_2",
+            "q301_7"
+          ],
+          "coordinate_fact_slots": [
+            "country",
+            "city",
+            "region",
+            "tablec",
+            "tabled"
+          ],
+          "default_weight_measure_fact": false
+        },
+        "raw_bytes_retention": "DO_NOT_COMMIT_OR_COPY_RAW_RESPONDENT_BYTES_TO_GIT",
+        "carried_from_c4_candidate_verbatim": {
+          "source_specific_authority": "urn:rawlsing:pre553:as2a:lits1-projection-authority:sha256:9dd1e6b7350ebb795e028db86279131f8d319e939a044b74c3c5605ecacf5b06",
+          "oracle_binding": {
+            "checkpoint_document_sha256": "2704fd3fadc9c898a512183aaf5eebf0ca48d78c47e75a19d47e17281eaa5726",
+            "oracle_identity": "e5d66db4b6f8339672b0f4828b72a8df68b5525bf71ecfda899d0531d618a98a"
+          },
+          "RES_1": {
+            "statement": "The Stata extended-missing dual-shape branch is NOT source-free round-trip testable in pyreadstat 1.3.6.",
+            "run_requirement": "Record the exact reader_token and stata_token shapes the real decode produces, under the bound reader lane, as an explicit warrant-time observation. This is NOT a source-free PASS."
+          },
+          "expected_full_route_passes": 1,
+          "max_full_route_passes": 1,
+          "max_retry_budget": 0,
+          "accounting_warning": "One governed Route-B pass is NOT one OS-level file open. Existence/access check, full hash pass, metadata read and full compatibility read are SEPARATE accounts.",
+          "authority": "urn:rawlsing:pre553:as2a:lits1-projection-authority:sha256:9dd1e6b7350ebb795e028db86279131f8d319e939a044b74c3c5605ecacf5b06"
+        }
+      },
+      "source_access_accounting": {
+        "account_count": 11,
+        "accounts": [
+          {
+            "account_name": "governed_full_route_passes",
+            "layer": "workload (NOT an access account)",
+            "expected_pre_launch_budget": {
+              "budget_type": "EXACT",
+              "budget_value": 1,
+              "budget_expression": "exactly 1; authority also supplies max 1",
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": null,
+              "layer": "workload (NOT an access account)",
+              "mechanism": "no owner in the repaired candidate",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": "NOT_APPLICABLE__NON_ACCESS_OR_AUTHORITY_ACCOUNT",
+              "numeric_budget_known": true,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": null,
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC27.expected_full_route_passes",
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC27.expected_full_route_passes_max",
+              "C4_WARRANT_CANDIDATE@8ff40d37de69db2d8a6053a7c2242f481677f1a4:04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json.per_source[SRC27].expected_full_route_passes",
+              "C4_WARRANT_CANDIDATE@8ff40d37de69db2d8a6053a7c2242f481677f1a4:04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json.per_source[SRC27].max_full_route_passes"
+            ]
+          },
+          {
+            "account_name": "source_path_existence_access_checks",
+            "layer": "application/pre-decode gate",
+            "expected_pre_launch_budget": {
+              "budget_type": "FLOOR",
+              "budget_value": 1,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "one application-side existence/access check (path.is_file()), not an open",
+              "layer": "application/pre-decode gate",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:515 SourceAccessBroker.existence_check",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": true,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": null,
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.hardened_note_on_the_SRC27_single_pass.implication",
+              "C4_WARRANT_CANDIDATE@8ff40d37de69db2d8a6053a7c2242f481677f1a4:04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json.per_source[SRC27].accounting_warning"
+            ]
+          },
+          {
+            "account_name": "full_file_sha256_passes",
+            "layer": "application/pre-decode identity gate",
+            "expected_pre_launch_budget": {
+              "budget_type": "FLOOR",
+              "budget_value": 1,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "one whole-file SHA-256 pass performed in Python over the governed open; no second physical open",
+              "layer": "application/pre-decode identity gate",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:520 SourceAccessBroker.hash_pass",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": true,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": null,
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.hardened_note_on_the_SRC27_single_pass.implication",
+              "C4_WARRANT_CANDIDATE@8ff40d37de69db2d8a6053a7c2242f481677f1a4:04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json.per_source[SRC27].accounting_warning"
+            ]
+          },
+          {
+            "account_name": "metadata_reads",
+            "layer": "reader metadata probe",
+            "expected_pre_launch_budget": {
+              "budget_type": "FLOOR",
+              "budget_value": 1,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "compiled-reader invocations with metadataonly=True",
+              "layer": "reader metadata probe",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:654 SourceAccessBroker.metadata_read",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": true,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": null,
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.hardened_note_on_the_SRC27_single_pass.implication",
+              "C4_WARRANT_CANDIDATE@8ff40d37de69db2d8a6053a7c2242f481677f1a4:04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json.per_source[SRC27].accounting_warning"
+            ]
+          },
+          {
+            "account_name": "full_reads",
+            "layer": "whole-source decode",
+            "expected_pre_launch_budget": {
+              "budget_type": "FLOOR",
+              "budget_value": 1,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "compiled-reader invocations with no column restriction",
+              "layer": "whole-source decode",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:701 SourceAccessBroker.full_read",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": true,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": null,
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.hardened_note_on_the_SRC27_single_pass.implication",
+              "C4_WARRANT_CANDIDATE@8ff40d37de69db2d8a6053a7c2242f481677f1a4:04_SOURCE_EXECUTION_WARRANT_CANDIDATE.json.per_source[SRC27].accounting_warning"
+            ]
+          },
+          {
+            "account_name": "path_level_opens",
+            "layer": "literal path-level file open (OS/broker boundary)",
+            "expected_pre_launch_budget": {
+              "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+              "budget_value": null,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "application-owned physical open() of the source path; the compiled reader receives a position-zero view and never a path string",
+              "layer": "literal path-level file open (OS/broker boundary)",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:555 _ensure_open_accounted -> GovernedSourceOpen.ensure_open; single open site at rawlsing_next/pre553_source_access_broker.py:326 open(self.path)",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": false,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": "PENDING_GOVERNED_SCOPE_OWNER__NO_PER_SOURCE_SESSION_BINDING",
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC27.critical_note",
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts[2]"
+            ]
+          },
+          {
+            "account_name": "selected_column_reads",
+            "layer": "selected-variable reader invocation",
+            "expected_pre_launch_budget": {
+              "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+              "budget_value": null,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "compiled-reader invocations with usecols bound to the selected variable set",
+              "layer": "selected-variable reader invocation",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:661 SourceAccessBroker.selected_read; route bound at rawlsing_next/pre553_physical_decoder.py:611-625",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": false,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": "PENDING_INDEPENDENT_HQ198_CONFIRMATION",
+            "provenance": [
+              "HQ196_R9_THREE_WAY_ADJUDICATION_R1@d43756fb3c80645ac887cca90026ecbdb10dd18c.New candidate finding \u2014 selected-read implementation mismatch"
+            ]
+          },
+          {
+            "account_name": "header_prefix_reads",
+            "layer": "raw byte-prefix read, pre-reader",
+            "expected_pre_launch_budget": {
+              "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+              "budget_value": null,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "bounded raw header-prefix reads performed in Python over the governed open",
+              "layer": "raw byte-prefix read, pre-reader",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py:545 SourceAccessBroker.header_prefix",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": false,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": "PENDING_HEADER_PREFIX_SCOPE_DISCREPANCY__CANDIDATE_READS_UNCONDITIONALLY",
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts"
+            ]
+          },
+          {
+            "account_name": "decoder_invocations",
+            "layer": "decoder entry",
+            "expected_pre_launch_budget": {
+              "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+              "budget_value": null,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": null,
+              "layer": "decoder entry",
+              "mechanism": "no owner in the repaired candidate",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": false,
+              "numeric_budget_known": false,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": "PENDING_NO_DECODER_INVOCATION_COUNTER_EXISTS",
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts"
+            ]
+          },
+          {
+            "account_name": "byte_counts_where_measurable",
+            "layer": "byte transfer across the reader/file boundary",
+            "expected_pre_launch_budget": {
+              "budget_type": "UNBOUND_PENDING_TECHNICAL_ACCEPTANCE",
+              "budget_value": null,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "bytes the compiled reader pulled through the governed view (reader_bytes), plus the separately capped application hash and prefix byte accounts",
+              "layer": "byte transfer across the reader/file boundary",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py reader_bytes / hash_bytes / header_prefix_bytes counters; limiter armed per reader invocation",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": false,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": "PENDING_NUMERIC_BYTE_BUDGET__SOURCE_SIZE_DEPENDENT",
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.O1_C07_instrumentation.mandatory_separate_accounts"
+            ]
+          },
+          {
+            "account_name": "retries",
+            "layer": "run control",
+            "expected_pre_launch_budget": {
+              "budget_type": "ZERO",
+              "budget_value": 0,
+              "budget_expression": null,
+              "frozen_before_launch": true,
+              "may_be_null": false,
+              "changed_by_hq198": false
+            },
+            "measurement_basis": {
+              "what_measured": "retry attempts, separately counted and reason-coded",
+              "layer": "run control",
+              "mechanism": "rawlsing_next/pre553_source_access_broker.py retries counter; SourceAccessBudget.retries defaults to 0",
+              "point_in_run": "governed decode scope; see GOV-SCOPE-001"
+            },
+            "enforceability_status": {
+              "measurable_enforceable": true,
+              "numeric_budget_known": true,
+              "these_are_distinct_facts": true
+            },
+            "runtime_observed_exact_count": {
+              "value": null,
+              "status": "NOT_EXECUTED",
+              "typed_reason": "NOT_EXECUTED__UNSIGNED_UNISSUED_NON_AUTHORIZING_INSTRUMENT",
+              "null_permitted_by_law": true,
+              "must_not_be_read_as": "a zero, an empty result, or a PASS"
+            },
+            "stop_condition_if_exceeded": "Any occurrence beyond the bound budget is a STOP. Where no numeric budget is bound, the account remains ISSUANCE-BLOCKING and no run may be authorised.",
+            "pending_token": null,
+            "provenance": [
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC27.max_retry_budget",
+              "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.retry_budget_law.frozen_maximum"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "excluded_from_fresh_warrant": [
+    {
+      "source_key": "SRC35",
+      "fresh_reads": 0,
+      "budget_type": "ZERO",
+      "operation_class": "RETAINED_COMPARATOR_REPLAY_AND_COMPARE",
+      "reason": "Retained comparator. Not one of the seven fresh-source warrant entries.",
+      "provenance": [
+        "C4_EXECUTION_ACCOUNTING_AND_FAILURE_LAW@8ff40d37de69db2d8a6053a7c2242f481677f1a4:07_EXECUTION_ACCOUNTING_AND_FAILURE_LAW.json.per_source_expected_operation_class.SRC35"
+      ]
+    }
+  ],
+  "global_zero_authorizations": {
+    "WVS_SRC35_fresh_source_reads": 0,
+    "excluded_source_fresh_reads": 0,
+    "candidate_A_B_C_runs": 0,
+    "measured_P2X_runs": 0,
+    "raw_respondent_pooling": 0,
+    "new_cross_source_respondent_joins": 0,
+    "SRC08_row_data_reads": 0,
+    "SRC12_row_data_reads": 0,
+    "production_code_mutations": 0,
+    "oracle_authoring_by_the_run": 0,
+    "substitutions": 0
+  },
+  "preconditions": [
+    "HQ binds exact execution commit/runtime and accepted C3 owner blobs or exact equivalence.",
+    "C4B-LITS-ORACLE-PREIMAGE-CUSTODY-001 is closed before SRC27 fresh full-route execution.",
+    "Required user/resource-owner approval is recorded for source access.",
+    "Exact source locator resolves to bytes whose full-file SHA-256 equals the frozen identity before decode."
+  ],
+  "retry_stop_law": [
+    "No automatic fallback/guessing/substitution.",
+    "A hash/config/authority/oracle mismatch stops that source immediately.",
+    "Retries must be separately counted and reason-coded; retry may not change source, encoding, variables, operations, or authority.",
+    "Candidate A/B/C and measured P2X are outside this warrant.",
+    "No excluded source may be opened under this warrant."
+  ],
+  "retention_privacy": [
+    "Retain documentary hashes, exact identities, deterministic receipts, comparison diffs and permitted public-object preimages.",
+    "Do not Git-bank raw respondent-level source bytes or use raw bytes as an oracle-custody shortcut.",
+    "Do not create cross-source respondent pools or joins."
+  ],
+  "semantic_ceilings": [
+    "NO_ALL35_PASS",
+    "NO_EIGHT_SOURCE_FULL_SEMANTIC_ROUTE_CLAIM",
+    "NO_UNRESTRICTED_F6_F7_COMPARABILITY",
+    "NO_CLASS_SENSITIVE_EPISTEMIC_ORIGIN_CLOSURE",
+    "NO_PHYSICAL_SUCCESS_AS_SURVEY_SEMANTICS",
+    "NO_RETAINED_WVS_AS_FRESH_CURRENT_SOURCE_EXECUTION",
+    "NO_STRUCTURAL_OR_CAUSAL_AUTHORITY_FROM_C4",
+    "NO_ACTOR_PERSON_IMPLEMENTATION",
+    "NO_NEW_RAW_POOLING_OR_CROSS_SOURCE_RESPONDENT_JOIN"
+  ],
+  "approvals": {
+    "HQ": {
+      "name": null,
+      "decision": null,
+      "signature_or_commit": null,
+      "status": "UNSET"
+    },
+    "required_user_resource_owner": {
+      "name": null,
+      "decision": null,
+      "signature_or_record": null,
+      "status": "UNSET"
+    }
+  },
+  "prohibitions": {
+    "closes_R9": false,
+    "issues_warrant": false,
+    "authorizes_any_access": true,
+    "asserts_technical_accounts_closed": false,
+    "filled_any_locator": false
+  },
+  "totals": {
+    "accounts_total": 78,
+    "already_bound_by_authority": 40,
+    "still_pending": 38,
+    "newly_bound_this_lane": 0,
+    "measurable_and_enforceable_now": 64,
+    "measurable_but_no_numeric_budget": 31,
+    "not_measurable_no_owner": 7
+  }
+}
