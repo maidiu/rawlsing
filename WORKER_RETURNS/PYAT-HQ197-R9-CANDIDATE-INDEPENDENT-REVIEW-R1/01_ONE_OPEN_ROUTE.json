@@ -1,0 +1,47 @@
+{
+  "schema": "PYAT_HQ197_ONE_OPEN_ROUTE@1.0.0",
+  "mission_item": 1,
+  "verdict": "CONFIRMED on the actual d5ce candidate",
+  "reviewer_identity": {"harness": "DeepSeek Harness", "model": "DeepSeek V4.1 Flash"},
+  "candidate": "d5ce4ecff6acc25d199577a7859de7e98514e9fd",
+  "startup": {
+    "review_branch": "agent/reviewer-pyat-hq197-r9-broker-candidate-hostile-r1",
+    "startup_sha_expected": "b047e3258db80e753c23e5b5d70300e23b9bfafd",
+    "startup_sha_resolved": "b047e3258db80e753c23e5b5d70300e23b9bfafd",
+    "match": true,
+    "sparse_worktree": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq197-r9-review",
+    "sparse_patterns": ["/WORKER_COMMISSIONS/PYAT-HQ197-R9-CANDIDATE-INDEPENDENT-REVIEW-R1/",
+                        "/WORKER_RETURNS/PYAT-HQ197-R9-CANDIDATE-INDEPENDENT-REVIEW-R1/", "/rawlsing_next/"],
+    "sparse_widened": false,
+    "clone_created": false,
+    "full_worktree_created": false,
+    "helper_provenance": "the HQ197 branch tree predates prepare_sparse_worktree.sh (it does not exist at b047e325 or at the candidate d5ce4ec). The accepted helper from the immediately preceding lane was used; its sha256 (93e3fc970b002d9e9054fd21d4757887f3dd917610adab6574d26aefaecce6) is identical to the copy taken from the HQ196 startup SHA, and the helper itself exists at the candidate commit."
+  },
+  "route_confirmed": {
+    "application_owned_open": {
+      "class": "GovernedSourceOpen",
+      "evidence": "open(self.path,'rb') is performed exactly once, lazily, in _ensure_open; physical_opens increments only there; every logical parse gets a `view()` which seeks the SAME handle to 0 and issues a new _GovernedView",
+      "measured": "after metadata_read + selected_read + full_read on one broker: path_opens=1, logical_views=3",
+      "verdict": "TRUE — one application-owned physical open"
+    },
+    "file_like_objects_not_path_strings": {
+      "evidence": "pre553_source_access_broker.py:535 `result = reader(arg, **kwargs)` where `arg = self._reader_arg()` returns a _GovernedView, and line 522 explicitly raises RawSourcePathEscape if arg is str/bytes/os.PathLike",
+      "closure_audit": "over the accepted 23-module C4 closure there is exactly ONE reader call site (broker.py:535) and it always receives the governed view; no closure module passes a source path string to pyreadstat",
+      "verdict": "TRUE — no raw path reaches the compiled reader"
+    },
+    "compiled_reader_performs_no_separate_path_open": {
+      "evidence": "on the file-object route pyreadstat's pyobject_open_handler is a documented no-op; HQ196 established from the shipped Cython source that an empty b'' path is passed and io.BytesIO (no fd) parses",
+      "verdict": "TRUE on this route"
+    },
+    "guard_symmetry": {
+      "observed": "the broker also asserts the pyreadstat seam itself (assert_reader_seam): pinned version, genuine C-extension entry point (not a test double), presence of `usecols`, and first parameter named `filename_path`",
+      "verdict": "defence in depth beyond the mission requirement; fails closed"
+    }
+  },
+  "environment_identity": {
+    "interpreter_sha256": "11d6f541a870a141249ce98d45834a6789e29c07031e85ce17f3e67f24c535f6",
+    "unchanged": true,
+    "python": "3.11.3", "pyreadstat": "1.3.6", "pandas": "2.3.3", "numpy": "2.4.6", "pyarrow": "25.0.1",
+    "verdict": "the file-object route remains on pyreadstat 1.3.6 and leaves the accepted interpreter/package identity unchanged"
+  }
+}

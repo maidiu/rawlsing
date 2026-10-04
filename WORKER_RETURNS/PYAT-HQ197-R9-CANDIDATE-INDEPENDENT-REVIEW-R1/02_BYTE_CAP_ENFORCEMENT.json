@@ -1,0 +1,48 @@
+{
+  "schema": "PYAT_HQ197_BYTE_CAP_ENFORCEMENT@1.0.0",
+  "question": "does SourceAccessBudget.reader_bytes prevent bytes beyond the declared limit from being read, or is it a declared field only?",
+  "verdict": "DECLARED FIELD ONLY — NOT ENFORCED. A cap can be set to any value, including 0 or 1, and the reader will still consume the full stream without any SourceAccessViolation.",
+  "structural_finding": {
+    "mechanism": "reader_bytes is populated by _sync_reader_totals() as an ABSOLUTE SNAPSHOT of GovernedSourceOpen.bytes_read, taken AFTER the reader call returns.",
+    "code": "pre553_source_access_broker.py:449-453 `self._account.with_(reader_read_calls=self._open.read_calls, reader_bytes=self._open.bytes_read)`",
+    "in_the_gate": "SourceAccessBudget.check() DOES contain a reader_bytes projection (line 201), but NO call site ever passes a reader_bytes delta.",
+    "grep_proof": "`grep -n 'check(' broker.py | grep -c reader_bytes` -> 0",
+    "call_sites_and_their_deltas": [
+      {"line": 458, "delta": "existence_checks=1"},
+      {"line": 466, "delta": "hash_passes=1, hash_bytes=size"},
+      {"line": 490, "delta": "header_prefix_reads=1, header_prefix_bytes=prefix_size"},
+      {"line": 500, "delta": "path_opens=1"},
+      {"line": 507, "delta": "logical_views=1"},
+      {"line": 519, "delta": "reader_invocations=1 + one of metadata_reads/selected_reads/full_reads/chunk_reads"},
+      {"line": 610, "delta": "chunk_reads=1"}
+    ],
+    "consequence": "because current+0 > cap is only evaluated before operations that do not change bytes, the reader_bytes cap CAN NEVER FIRE. It is dead configuration."
+  },
+  "empirical_proof": {
+    "carrier": "synthetic SAV, 12479 bytes (hand-made frame, not survey data)",
+    "test": "SourceAccessBudget(reader_bytes=10) — a cap any read must exceed",
+    "results": [
+      {"operation": "metadata_read()", "cap": 10, "bytes_actually_consumed": 691, "read_calls": 42, "violation_raised": false},
+      {"operation": "full_read()", "cap": 10, "bytes_actually_consumed": 12691, "violation_raised": false},
+      {"operation": "selected_read(['A'])", "cap": 10, "bytes_actually_consumed": 12691, "violation_raised": false}
+    ],
+    "control_that_DOES_fire": [
+      {"budget": "path_opens=0", "result": "SOURCE_ACCESS_BUDGET_EXCEEDED"},
+      {"budget": "metadata_reads=0", "result": "SOURCE_ACCESS_BUDGET_EXCEEDED"},
+      {"budget": "reader_invocations=0", "result": "SOURCE_ACCESS_BUDGET_EXCEEDED"}
+    ],
+    "conclusion": "the gate machinery works; it is simply never wired for the byte account. Bytes far beyond the ceiling are consumed before any check could observe them."
+  },
+  "why_this_is_not_a_trivial_oversight": {
+    "root_cause": "any mid-read byte ceiling on this seam requires the read callback to interrupt the compiled reader. The only interruption primitive the bridge exposes is the bare `except: return -1` in pyobject_read_handler — and using it HANGS (see below). So a genuine pre-operation byte ceiling is not reachable by raising.",
+    "safe_alternative_available": "returning a premature EOF (b'') from the view read produces a prompt ReadStatError on both SAV and DTA (verified in HQ196 and again here), which could implement a ceiling that stops the run loudly before completing the excess read — though it still cannot prevent the bytes already buffered within the crossing read.",
+    "honest_middle_ground": "reader_bytes is currently an ACCOUNTING quantity, which is legitimate and useful. It must either be (a) enforced via premature EOF with a documented residual (bytes in flight within the crossing call are still consumed), or (b) explicitly re-typed as a measured account rather than a cap, so no consumer believes it bounds anything."
+  },
+  "callback_exception_hazard_reverified": {
+    "test": "raise from the read callback on the CANDIDATE'S OWN _GovernedView subclass, past the 3rd read, SAV and DTA",
+    "result": "HUNG — no return within 15s; process had to be killed",
+    "cause": "`pyobject_read_handler` is `try: file_obj.read(nbyte) ... except: return -1` — a bare except that converts any broker exception to -1, which the compiled reader retries indefinitely",
+    "candidate_behaviour": "the candidate does NOT raise inside `_read` or `_GovernedView.read` (verified by inspection: no raise in either method). It therefore avoided the hang trap.",
+    "verdict": "DO NOT APPROVE raising from the pyreadstat read callback. The candidate is correct not to use it; this is also precisely why its byte cap cannot fire."
+  }
+}

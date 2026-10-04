@@ -1,0 +1,40 @@
+{
+  "schema": "PYAT_HQ197_FINAL_DISPOSITION@1.0.0",
+  "status": "FINAL",
+  "disposition": "BROKER_CANDIDATE_PARTIAL__BYTE_CAP_REPAIR_REQUIRED",
+  "disposition_is_allowed_value": true,
+  "terminal_token": "HQ197_R9_CANDIDATE_REVIEW_RETURNED__HQ_ADJUDICATION_REQUIRED",
+  "review_branch": "agent/reviewer-pyat-hq197-r9-broker-candidate-hostile-r1",
+  "commissioned_startup_sha": "b047e3258db80e753c23e5b5d70300e23b9bfafd",
+  "reviewed_candidate": "d5ce4ecff6acc25d199577a7859de7e98514e9fd",
+  "checkout_mode": "SPARSE_REQUIRED (honored; no clone; no full worktree; sparse checkout not widened)",
+  "reviewer_identity": {"harness": "DeepSeek Harness", "model": "DeepSeek V4.1 Flash"},
+  "mission_results": {
+    "1_one_application_owned_open_and_file_like_objects": "CONFIRMED (path_opens=1 across metadata+selected+full reads; the single reader call site always receives a _GovernedView; closure audit found no raw-path pyreadstat call)",
+    "2_route_stays_on_pyreadstat_1_3_6_identity_unchanged": "CONFIRMED (interpreter 11d6f541 unchanged; pyreadstat 1.3.6; pandas 2.3.3; numpy 2.4.6; pyarrow 25.0.1)",
+    "3_DTA_repeated_reads_correct_position_zero_view_reset": "CONFIRMED (explicit row_offset/row_limit loop over ONE physical open; read_file_in_chunks correctly avoided because it fails for DTA over a file object; view() returns to position 0 on the same handle)",
+    "4_SourceAccessBudget_reader_bytes_enforcement": "FAILED — DECLARED BUT NOT ENFORCED. reader_bytes is an absolute post-operation snapshot and is never passed to check(); a cap of 10 allowed 12691 bytes to be consumed with no violation. See 02.",
+    "5_callback_exception_hazard": "REPRODUCED — raising from the read callback HANGS (bounded 15s, killed). The candidate does NOT raise inside its read path, so it avoided the trap; that is also why its byte cap cannot fire. DO NOT approve raising as a limit mechanism.",
+    "6_usecols_projection_vs_underlying_io": "MEASURED — returned columns differ; read-call and byte counts are IDENTICAL on both SAV and DTA. Authority meaning of 'PHYSICAL' deliberately not decided.",
+    "7_modified_pre_existing_tests": "ONE FILE MODIFIED, TWO FUNCTIONS. Change 1 PRESERVES its guarantee. Change 2 WEAKENS coverage (the original asserted the requested chunk size was honoured; the rewrite asserts only chunk_reads >= 1 on a 3-row carrier). Underlying behaviour verified correct, so this is a test-coverage regression only.",
+    "8_closure_raw_path_audit": "CLEAN — closure is 23 at the freeze and 24 at the candidate (the sole addition is the new broker); the only reader call site in the closure passes a file-like object, guarded against str/bytes/PathLike"
+  },
+  "why_this_disposition": {
+    "not_ACCEPTABLE_PENDING_SELECTED_AUTHORITY": "that disposition would pass the candidate while the byte ceiling — a headline R9 control — silently does nothing. A declared cap that cannot fire is exactly the 'declared field vs enforced limit' distinction the commission ordered me to resolve, and it resolves AGAINST the candidate.",
+    "not_MATERIAL_COUNTEREXAMPLE__UNSOUND": "the candidate is not unsound. The one-open route genuinely works, DTA reset is genuinely correct, identity is unchanged, the closure is clean, and the full R7 court passes 55/55 twice. The defect is bounded and repairable.",
+    "not_R7_REQUALIFICATION_FAILURE": "the R7 court passes completely: exactly 55 collected, then 55 passed on both consecutive runs, exit 0 each time.",
+    "basis": "the candidate is substantially sound and substantially complete, with one load-bearing control (the reader byte ceiling) that is inert and must be repaired or re-typed."
+  },
+  "required_repairs_before_acceptance": [
+    {"id": "BYTE-CAP-01", "severity": "BLOCKING", "requirement": "either (a) make reader_bytes a genuine pre-operation ceiling — the only safe primitive found is a premature EOF (b'') from the view read, which produces a prompt ReadstatError on SAV and DTA — and DOCUMENT the residual that bytes already in flight within the crossing read are still consumed; or (b) re-type reader_bytes as a measured account (not a cap) so no consumer believes it bounds anything. Silently leaving a declared cap unenforced is not acceptable."},
+    {"id": "TEST-COV-01", "severity": "ADVISORY", "requirement": "restore an explicit chunk-size assertion in test_normal_decode_uses_chunk_path_and_compatibility_uses_full_read using a carrier larger than one chunk, so the original bounding guarantee is retained."},
+    {"id": "FIXTURE-MANIFEST-01", "severity": "ADVISORY", "requirement": "the sparse manifest should name the WORKER_RETURNS fixtures the court reads, or the court should be run from a tree where they are materialized; otherwise an independent reviewer cannot run the commissioned court as written."}
+  ],
+  "not_claimed": [
+    "no real survey/source access (synthetic carriers only)",
+    "no locator discovery, no warrant issuance, no live C4, no production mutation, no C7/actor work",
+    "no adoption or self-adoption",
+    "no decision on the authority meaning of PHYSICAL for the selected-read account"
+  ],
+  "holds_observed": {"real_survey_source_access": false, "locator_discovery": false, "warrant_issuance": false, "live_c4": false, "production_mutation": false, "c7_or_actor_work": false}
+}

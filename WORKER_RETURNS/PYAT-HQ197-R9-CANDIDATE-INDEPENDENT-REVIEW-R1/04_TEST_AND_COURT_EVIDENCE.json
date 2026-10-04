@@ -1,0 +1,50 @@
+{
+  "schema": "PYAT_HQ197_TEST_AND_COURT_EVIDENCE@1.0.0",
+  "mission_items": [7, 8],
+  "modified_pre_existing_tests": {
+    "files_touched": ["rawlsing_next/tests/test_pre553_sr06_decoder_carrier.py"],
+    "note": "only ONE pre-existing test file is modified in the candidate (plus one new broker court file). The freeze decoder-related test diff is confined to two test functions in that file.",
+    "change_1_test_expected_source_identity_is_hashed_once_before_reader_decode": {
+      "freeze": "monkeypatches decoder._sha and asserts the hash helper is called before reader access",
+      "candidate": "monkeypatches decoder._governed_source_sha(broker) instead, because the hash now runs over the broker's single application-owned open",
+      "judgement": "ORIGINAL GUARANTEE PRESERVED — the seam changed name because the mechanism changed; the assertion still pins 'identity is hashed before reader decode'",
+      "verdict": "PRESERVED"
+    },
+    "change_2_test_normal_decode_uses_chunk_path_and_compatibility_uses_full_read": {
+      "freeze_assertions": ["chunk_calls[0]['chunksize'] == 2 (the chunk path is used AND the requested chunk size is honoured)", "full_calls[:2] == [True, False]"],
+      "candidate_assertions": ["accounts['chunk_reads'] >= 1", "accounts['path_opens'] == 1", "exact cell tuples", "compat reader_calls[:2] == [(True,None),(False,None)]", "compat full_reads == 1", "compat selected_reads == 0"],
+      "judgement": "PARTIALLY WEAKENED. The 'chunk path is used' property is preserved and strengthened (now also proves one physical open and exact cells). But the original ALSO asserted the requested chunk size was honoured (`chunksize == 2`); the rewritten test runs on a 3-row carrier where the whole file fits in one read, and asserts only `chunk_reads >= 1`, so a chunk-size regression would no longer be caught.",
+      "mitigation_verified_by_reviewer": "the underlying behaviour IS correct — independently measured on a 1000-row carrier: chunk_rows=7 yields 143 chunks all <=7, chunk_rows=100 yields 10 chunks of 100, rows conserved. So this is a TEST-COVERAGE regression, not a behaviour regression.",
+      "verdict": "COVERAGE WEAKENED — recommend restoring an explicit chunk-size assertion on a carrier larger than one chunk"
+    }
+  },
+  "exact_R7_six_file_court": {
+    "environment": "LOCAL_COURTS/qualification/r7-c4-source-free-venv/bin/python (3.11.3, pyreadstat 1.3.6); PYTHONHASHSEED=0; PYTEST_DISABLE_PLUGIN_AUTOLOAD=1; PYTHONPATH=<candidate sparse worktree root>; -p no:cacheprovider",
+    "collect_only": {"result": "55 tests collected", "exit_code": 0, "matches_required": true},
+    "run_1": {"result": "55 passed", "duration": "73.80s", "exit_code": 0},
+    "run_2": {"result": "55 passed", "duration": "68.09s", "exit_code": 0},
+    "failures_hidden_or_retried": false,
+    "environmental_note_recorded_in_full": {
+      "observation": "the first attempts showed 6 then 5 failures, ALL FileNotFoundError for repository-committed fixture files read OUTSIDE the three commissioned sparse patterns (WORKER_RETURNS/FIABC-LM2-R1I-PHYSICAL-NATIVE-BINDING/, WORKER_RETURNS/EE-P2R6S/, WORKER_RETURNS/FIABC-LM2/).",
+      "diagnosis": "environmental, NOT a candidate regression: (a) the failing test file is BYTE-IDENTICAL to the freeze (git diff empty); (b) all 9 tests in that file pass in the canonical clone where the fixtures are materialized; (c) every failure was a FileNotFoundError on an un-materialized committed path",
+      "resolution": "a read-only symlink was created at the sparse worktree's WORKER_RETURNS pointing at the canonical clone's WORKER_RETURNS. `git sparse-checkout list` was verified UNCHANGED afterwards (still exactly the three commissioned patterns). No sparse checkout widening was performed.",
+      "final": "with the fixtures reachable, the exact court passes 55/55 twice"
+    }
+  },
+  "closure_audit_23_modules": {
+    "mission_item": 8,
+    "method": "computed the transitive import closure of the two M01 suites (test_pre553_route_b_production.py, test_pre553_carrier_execution.py) by AST traversal, independently, at the freeze commit and at the candidate commit",
+    "at_freeze_8ff40d37": {"size": 23, "matches_the_accepted_23_module_closure": true},
+    "at_candidate_d5ce4ec": {"size": 24},
+    "delta": "exactly one module added: rawlsing_next/pre553_source_access_broker.py (the new broker). No other membership change.",
+    "raw_path_pyreadstat_audit": {
+      "scan": "grepped every closure module for pyreadstat usage",
+      "modules_referencing_pyreadstat": ["rawlsing_next/pre553_physical_decoder.py", "rawlsing_next/pre553_source_access_broker.py"],
+      "reader_call_sites_in_closure": 1,
+      "call_site": "pre553_source_access_broker.py:535 `result = reader(arg, **kwargs)`",
+      "argument": "always a _GovernedView (file-like object); line 522 raises RawSourcePathEscape if the argument is str/bytes/os.PathLike",
+      "finding": "NO remaining pyreadstat call inside the accepted closure receives a source path string",
+      "wvs7_projection_materializer": "outside the accepted C4 closure by commission instruction and NOT treated as an R9 blocker here"
+    }
+  }
+}

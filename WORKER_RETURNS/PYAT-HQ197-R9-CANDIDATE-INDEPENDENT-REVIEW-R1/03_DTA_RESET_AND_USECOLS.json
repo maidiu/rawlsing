@@ -1,0 +1,36 @@
+{
+  "schema": "PYAT_HQ197_DTA_RESET_AND_USECOLS@1.0.0",
+  "mission_items": [3, 6],
+  "DTA_reset_and_view_behaviour": {
+    "verdict": "CONFIRMED CORRECT",
+    "design": "chunk_reads() deliberately does NOT use pyreadstat.read_file_in_chunks. It runs an explicit row_offset/row_limit loop, issuing a fresh position-zero view per chunk over the SAME physical open.",
+    "reason_disclosed_by_candidate": "read_file_in_chunks reuses one object across parses and ReadStat rejects the reuse for DTA ('This version of the file format is not supported')",
+    "independently_reproduced": {
+      "read_file_in_chunks_over_broker_view_DTA": "FAILS — ReadstatError: This version of the file format is not supported",
+      "read_file_in_chunks_over_broker_view_SAV": "WORKS — [100,100,100,100,100]",
+      "candidate_chunk_route_DTA": "rows=500, chunk total=500, physical_opens=1, views=6, chunk_reads=5 — CORRECT",
+      "candidate_chunk_route_SAV": "rows=500, chunk total=500, physical_opens=1, views=6, chunk_reads=5 — CORRECT"
+    },
+    "position_zero_semantics": "GovernedSourceOpen.view() seeks the shared handle to 0 and returns a new view; measured: after v1.read(50), a fresh v2 reports tell()=0 with physical_opens still 1",
+    "chunk_size_honoured": "verified independently on a 1000-row synthetic SAV: chunk_rows=7 -> 143 chunks all <=7; chunk_rows=100 -> 10 chunks of 100; total rows conserved",
+    "verdict_detail": "the candidate resolved the DTA reset problem WITHOUT falling back to a raw path string, and the replacement is behaviourally correct"
+  },
+  "usecols_projection_vs_underlying_io": {
+    "mission_constraint": "do not decide the authority meaning of the word PHYSICAL — a separate lane owns that question",
+    "independent_measurement": {
+      "carrier": "synthetic 4000-row, 6-column carriers (SAV 192635 bytes, DTA 196411 bytes)",
+      "SAV": {"selected_read(['C0'])": {"returned_cols": ["C0"], "read_calls": 4054, "bytes": 192943},
+              "full_read()": {"returned_cols": ["C0","C1","C2","C3","C4","C5"], "read_calls": 4054, "bytes": 192943}},
+      "DTA": {"selected_read(['C0'])": {"returned_cols": ["C0"], "read_calls": 4055, "bytes": 196393},
+              "full_read()": {"returned_cols": ["C0","C1","C2","C3","C4","C5"], "read_calls": 4055, "bytes": 196393}},
+      "finding": "returned column set differs; underlying read-call and byte counts are IDENTICAL"
+    },
+    "agreement_with_HQ196": "identical conclusion reached independently in the prior lane and reproduced here on the candidate's own broker",
+    "candidate_self_disclosure": {
+      "field": "selected_route_physical_column_suppression",
+      "value": "NOT_ENFORCED_BY_READER__pyreadstat_1_3_6_reads_full_stream_then_subsets__measured_identical_bytes_for_usecols_and_full_read",
+      "assessment": "the candidate declares this honestly rather than claiming physical column suppression. That is the correct posture and I record it as a strength."
+    },
+    "authority_question_deferred": "whether a projection-filtered full decode satisfies the frozen 'selected read' account is NOT decided here, per the commission."
+  }
+}
