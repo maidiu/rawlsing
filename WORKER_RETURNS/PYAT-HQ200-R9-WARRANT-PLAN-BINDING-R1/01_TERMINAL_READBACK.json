@@ -1,0 +1,131 @@
+{
+  "lane": "PYAT-HQ200-R9-WARRANT-PLAN-BINDING-R1",
+  "role": "SOURCE-FREE IMPLEMENTATION WORKER — SPACE BUNNY",
+  "branch": "agent/rabochii-pyat-hq200-r1",
+  "startup_sha": "8b977a2e33a1f03e34ea3cc5b815bc2525f388ab",
+  "implementation_base": "90ccbd54c549f67358d0c02ad18ff90b843cf3ee",
+  "implementation_commit": "b8b4c99633c4aa849fd79614c5bffbd1321209b8",
+  "governing_authorities": {
+    "adjudication": "e7ce39dade6b169ab068f5f786b7a0dea06846dd",
+    "seven_source_plan": "09e1325da6ee880374a4065ae748cc03de93c421",
+    "independent_scope_review": "302d4a5da513381e26066cea70bf3ec5be7d3636"
+  },
+  "disposition": "WARRANT_PLAN_BINDING_CANDIDATE_READY_FOR_INDEPENDENT_REVIEW",
+  "terminal": "HQ200_R9_WARRANT_PLAN_BINDING_RETURNED__HQ_REVIEW_REQUIRED",
+  "self_adopted": false,
+  "real_source_access": false,
+  "locator_discovery": false,
+  "warrant_issued": false,
+  "live_c4": false,
+  "c7_or_actor_work": false,
+  "artifacts": [
+    {
+      "path": "rawlsing_next/pre553_execution_binding.py",
+      "role": "generic immutable warrant/source-entry binding with outer route-pass account",
+      "lines": 423,
+      "sha256": "ce9594f794023a6cc88f096eaf9fec74e83a37e519b066c306c30e3d7c9b5f67"
+    },
+    {
+      "path": "rawlsing_next/tests/test_pre553_execution_binding_court.py",
+      "role": "seven-plan conformance court and bound-execution semantics",
+      "lines": 416,
+      "sha256": "fda9c674651783e84b86b82d7a02ab1e848493b7fedb3bd24a222d970e45a55f"
+    }
+  ],
+  "terrain_delta": {
+    "pre_existing_tracked_files_modified": 0,
+    "pre_existing_tracked_files_deleted": 0,
+    "files_added": 2,
+    "git_diff_name_status_vs_startup": "empty (pure addition)",
+    "pre_existing_paths_importing_new_module": 0
+  },
+  "outer_account": {
+    "name": "full_route_passes",
+    "typed_as": "separately typed outer workload account",
+    "must_not_be": [
+      "decoder_invocations",
+      "full_reads",
+      "chunk_reads",
+      "reader_invocations",
+      "path_opens"
+    ],
+    "receipt_fields": [
+      "full_route_passes_observed",
+      "full_route_passes_max",
+      "full_route_passes_expected",
+      "full_route_passes_expected_status",
+      "full_route_passes_completed_successfully",
+      "plan_identity"
+    ],
+    "src27_shaped_law": {
+      "full_route_passes": "EXACT 1 / MAX 1",
+      "full_reads": "FLOOR >= 1, ceiling UNBOUND",
+      "decoder_invocations": "historical expected UNBOUND; MAX 1 allowed only as IMPLEMENTATION_POLICY",
+      "path_opens": "historical expected UNBOUND; one-open ceiling allowed only as IMPLEMENTATION_POLICY",
+      "retries": "MAX 0"
+    }
+  },
+  "expectation_law": {
+    "kinds": ["EXACT", "FLOOR", "MAXIMUM", "UNBOUND"],
+    "authority_labels": ["FROZEN_AUTHORITY", "IMPLEMENTATION_POLICY"],
+    "observed_is_never_a_spec_field": true,
+    "policy_ceiling_never_recorded_as_historical_expected": true
+  },
+  "fail_closed": {
+    "second_pass_refused_before_any_second_source_operation": true,
+    "lower_layer_accounts_unchanged_on_refusal": true,
+    "zero_ceiling_refused_pre_operation_without_creating_a_session": true,
+    "unsatisfied_frozen_exact_or_floor_raises": "POST_EXECUTION_CONSTRAINT_FAILED",
+    "failed_attempt_never_counted_as_completed_pass": true,
+    "chunk_reads_cannot_satisfy_full_reads_floor": true,
+    "invented_constraints": false
+  },
+  "session_ownership": {
+    "sessions_per_bound_execution": 1,
+    "deterministic_close": true,
+    "close_idempotent": true,
+    "plan_swap_after_binding": "refused (frozen spec)",
+    "budget_swap_after_binding": "refused (frozen spec)",
+    "second_session_silently_opened": false,
+    "raw_path_fallback": false
+  },
+  "source_agnostic_proof": {
+    "court_asserts_no_source_tokens_in_production": true,
+    "tokens_checked": ["SRC02", "SRC06", "SRC08", "SRC12", "SRC14", "SRC26", "SRC27", "SRC35", "Q10B", "Q101", "Q2061B", "v372"],
+    "production_module_files": 140,
+    "raw_path_reader_calls_with_bare_variable": 0,
+    "imports_clean_under_warnings_as_errors": true
+  },
+  "courts": [
+    {"name": "test_pre553_execution_binding_court.py", "collected": 21, "passed": 21, "deterministic_repeats": 3},
+    {"name": "test_pre553_source_session_court.py", "passed": 15},
+    {"name": "test_pre553_source_access_broker_court.py", "passed": 20},
+    {"name": "R7 exact six-file court", "collected": 55, "run_1": "55 passed in 45.61s", "run_2": "55 passed in 46.41s", "exit": 0}
+  ],
+  "r7_environment": {
+    "interpreter": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/qualification/r7-c4-source-free-venv/bin/python",
+    "PYTHONHASHSEED": "0",
+    "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+    "PYTHONPATH": "<sparse worktree root>",
+    "pytest_flags": ["-p no:cacheprovider"]
+  },
+  "full_suite_regression": {
+    "summary": "333 failed, 2550 passed, 1 skipped, 62 errors, 28 subtests passed in 401.71s",
+    "baseline": "HQ197 recorded ids",
+    "ids_absent_from_baseline": 12,
+    "ids_absent_from_baseline_proven_preexisting": true,
+    "proof_method": "both new files removed from the tree; same 12 ids fail identically (8 failed, 8 passed, 4 errors)",
+    "ids_no_longer_failing": 11,
+    "ids_no_longer_failing_explanation": "HQ198 sparse-manifest completeness added two fixture paths"
+  },
+  "known_unrelated_gaps_not_retried": [
+    "test_pre553_sr06_decoder_carrier.py: ModuleNotFoundError: No module named 'duckdb'",
+    "WORKER_RETURNS/EE-P2R6S/05_WVS7_PROJECTION_MATERIALIZER.py outside C4 closure with raw-path reader calls, untouched"
+  ],
+  "holds": {
+    "r9_still_open_at_authority_level": true,
+    "src27_multiple_path_opens_normativity_decided_here": false,
+    "one_open_ceiling_typed_as_implementation_policy": true
+  },
+  "disk_free_at_return": "13Gi"
+}

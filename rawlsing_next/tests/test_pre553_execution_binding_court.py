@@ -356,6 +356,43 @@ def test_no_raw_path_reaches_pyreadstat_on_the_bound_path(monkeypatch):
         ex.close()
 
 
+def test_receipt_exposes_the_commission_named_outer_fields():
+    """The receipt must expose the outer account under its commissioned names."""
+    out, ex = _run(_src27_spec())
+    try:
+        d = out.as_dict()
+        for field in ("full_route_passes_observed", "full_route_passes_max",
+                      "full_route_passes_expected", "full_route_passes_expected_status",
+                      "full_route_passes_completed_successfully"):
+            assert field in d, f"receipt omits {field}"
+        assert d["full_route_passes_observed"] == 1
+        assert d["full_route_passes_max"] == 1
+        assert d["full_route_passes_expected"] == 1
+        assert d["full_route_passes_expected_status"] == "EXACT"
+        assert d["full_route_passes_completed_successfully"] is True
+        # provenance / plan identity is exposed
+        assert d["plan_identity"]["mode"] == "FULL", d["plan_identity"]
+        assert d["plan_identity"]["encoding"] == "latin1", d["plan_identity"]
+    finally:
+        ex.close()
+
+
+def test_zero_ceiling_refuses_before_the_operation():
+    """A zero ceiling refuses pre-operation and leaves every account unmoved."""
+    spec = _spec("ZERO", _sav("zero.sav", _frame()), "sav",
+                 SourceOperationPlan(mode=RowDataMode.FULL),
+                 rp=RoutePassSpec(maximum=0))
+    ex = BoundSourceExecution(spec)
+    try:
+        with pytest.raises(SourceAccessViolation) as exc:
+            ex.execute()
+        assert exc.value.code == ROUTE_PASS_LIMIT_REACHED
+        # nothing was opened: no session was even created
+        assert ex._session is None
+    finally:
+        ex.close()
+
+
 def test_production_binding_module_has_no_source_specific_constants():
     """The shapes are named in tests only. Production must stay source-agnostic."""
     module = Path(__file__).resolve().parents[1] / "pre553_execution_binding.py"

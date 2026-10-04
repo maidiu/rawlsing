@@ -260,6 +260,13 @@ class BoundExecutionOutcome:
     def as_dict(self) -> dict[str, Any]:
         return {
             "source_entry_key": self.source_entry_key,
+            # Commission-named flat receipt fields, exposed verbatim.
+            "full_route_passes_observed": self.full_route_passes_observed,
+            "full_route_passes_max": self.full_route_passes_max,
+            "full_route_passes_expected": self.full_route_passes_expected,
+            "full_route_passes_expected_status": self.full_route_passes_expected_status,
+            "full_route_passes_completed_successfully": self.completed_pass,
+            "plan_identity": dict(self.plan_identity),
             "full_route_passes": {
                 "observed": self.full_route_passes_observed,
                 "expected": self.full_route_passes_expected,
