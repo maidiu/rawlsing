@@ -1,3 +1,46 @@
+# HQ201 active frontier — execution-binding hardening + F6/F7 ontology — 2026-10-03
+
+HQ has adjudicated the HQ200 wave.
+
+Accepted:
+- GovernedSourceSession mechanism at source-free grain:
+  `90ccbd54c549f67358d0c02ad18ff90b843cf3ee`
+  independently accepted at
+  `262f6e29126e601aaafa3c6114ce5e78b74c8e2e`.
+- Seven-source unsigned warrant successor:
+  `89054b882c04cf0541b6f9f4abdb555c808ad94d`
+  at documentary/non-authorizing structure grain.
+
+Execution-binding candidate remains unadopted:
+- clean tip `35ffa48204672e6c7180cd010a7c1adde9f18cd7`
+- code `b8b4c99633c4aa849fd79614c5bffbd1321209b8`
+
+HQ-bound counterexamples:
+- BIND-ROUTE-APPLICABILITY-001
+- BIND-RETRY-ATTEMPT-002
+- BIND-POSTCONSTRAINT-COMPLETION-003
+- BIND-INJECTION-004
+
+Active SPARSE_REQUIRED lanes:
+- independent execution-binding review:
+  `agent/reviewer-pyat-hq201-r1 @ f064dff8fe2262ad6dc0ccb87e2b835ecb2c022b`
+- bounded execution-binding hardening:
+  `agent/rabochii-pyat-hq201-r1 @ 19f2588d860450eae9bf3fb41444d4d0b58a0c52`
+- F6/F7 ontology conservation/current-constitution court:
+  `agent/rabochii-pyat-hq201-r2 @ 9b3a70af26da3404f988674c879a44ebfcae196a`
+
+Forward ontology law:
+`EXISTING_F6_F7_SLOTS != CURRENTLY_CONSTITUTIONALIZED_MULTI_SOURCE_TEMPORAL_WORLD_ONTOLOGY`
+
+The F6/F7 court must distinguish current binding law, current implemented capability, historical functional capital, exploratory Field Forge capital, and genuinely new proposals.
+
+R9 remains open. No locator discovery, source access, warrant issuance, live C4, C7 or actor/person work. Host disk policy remains separate. HQ182 C4 non-adoption hold remains pending Astra.
+
+See:
+`HQ_HANDOFF/checkpoints/20261003-PYAT-HQ201-R9-HARDENING-F6F7-ONTOLOGY-R1/`
+
+---
+
 # HQ200 active frontier — session acceptance + warrant binding — 2026-10-03
 
 HQ has adjudicated the HQ199 session/plan wave.
