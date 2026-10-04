@@ -1,0 +1,44 @@
+{
+  "schema": "PYAT_HQ201_ROUTE_PASS_APPLICABILITY@1.0.0",
+  "attack": "A",
+  "verdict": "MATERIAL DEFECT CONFIRMED — the wrapper cannot express 'outer route-pass 0' while still performing the admitted operation",
+  "authority": {
+    "successor": "89054b882c04cf0541b6f9f4abdb555c808ad94d:.../R9-WARRANT-ACCOUNTING-SUCCESSOR-R1/01_UNSIGNED_SUCCESSOR.json",
+    "finding": "SRC27 is the ONLY source carrying a `governed_full_route_passes` account (EXACT 1, expression 'exactly 1; authority also supplies max 1'). SRC02/SRC06/SRC08/SRC12/SRC14/SRC26 carry NO such account — i.e. exact 0.",
+    "layer_label": "workload (NOT an access account)"
+  },
+  "the_two_failure_modes_measured": [
+    {
+      "configuration": "RoutePassSpec(expected=0, maximum=0)",
+      "result": "REFUSED BEFORE ANY OPERATION with ROUTE_PASS_LIMIT_REACHED; zero lower-layer accounts moved; no session created",
+      "why": "RoutePassSpec.admits() returns False whenever completed_so_far >= maximum, and maximum=0 makes that true on the FIRST attempt. The gate therefore blocks the source's admitted SELECTED/METADATA operation entirely.",
+      "consequence": "for the six non-route sources, an outer exact-zero constraint makes the source UNEXECUTABLE"
+    },
+    {
+      "configuration": "RoutePassSpec(expected=0, maximum=None)",
+      "result": "the operation RAN, then failed AFTER the fact with POST_EXECUTION_CONSTRAINT_FAILED",
+      "observed_after_refusal": {"existence_checks": 1, "path_opens": 1, "logical_views": 3, "hash_passes": 1, "metadata_reads": 1, "selected_reads": 1, "full_reads": 0, "chunk_reads": 0, "decoder_invocations": 1},
+      "consequence": "the source operation was already performed against the real source before the outer constraint was evaluated"
+    }
+  ],
+  "root_cause": {
+    "statement": "execute() increments _passes_completed on EVERY successful session.run(), regardless of the plan's row-data mode. There is no notion of 'this plan is a full route pass' versus 'this plan is a non-route admitted operation'.",
+    "code": "pre553_execution_binding.py: `self._passes_completed += 1` immediately after `outcome = session.run(self.spec.plan)` with no mode test",
+    "conceptual_error": "the wrapper conflates 'an operation succeeded' with 'a full governed Route-B pass completed'"
+  },
+  "required_rule": {
+    "semantics": "full_route_passes counts COMPLETED GOVERNED FULL ROUTE PASSES. It is a workload account, not an access account.",
+    "must_hold": [
+      "maximum=0 means 'this source plan admits no FULL ROUTE PASS', NOT 'no operation whatsoever'",
+      "a SELECTED or METADATA_ONLY (or other non-route) admitted operation must execute normally and leave full_route_passes observed at 0",
+      "only a plan that actually constitutes a governed full route pass may increment the outer account",
+      "the pre-operation outer gate must not use a route-pass ceiling to refuse a non-route operation"
+    ]
+  },
+  "existing_court_locks_in_the_defect": {
+    "test": "test_zero_ceiling_refuses_before_the_operation (pre553_execution_binding_court.py)",
+    "asserts": "RoutePassSpec(maximum=0) with a FULL plan -> ROUTE_PASS_LIMIT_REACHED and ex._session is None",
+    "problem": "the test encodes the attack-A behaviour as intended. It only covers a FULL plan, so it never exercises the six non-route sources whose admitted operation must still run under an outer exact-zero.",
+    "note": "the test is not wrong about a FULL plan; it is silent on — and its helper encourages — the non-route case that breaks"
+  }
+}

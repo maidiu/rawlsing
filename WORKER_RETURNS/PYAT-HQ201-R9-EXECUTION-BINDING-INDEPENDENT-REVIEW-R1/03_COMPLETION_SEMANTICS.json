@@ -1,0 +1,31 @@
+{
+  "schema": "PYAT_HQ201_COMPLETION_SEMANTICS@1.0.0",
+  "attack": "C",
+  "verdict": "MATERIAL DEFECT CONFIRMED — the completed-pass counter increments BEFORE post-operation constraints are evaluated",
+  "code_ordering": [
+    "outcome = session.run(self.spec.plan)          # the operation returns",
+    "self._passes_completed += 1                     # <-- count incremented HERE",
+    "observed = session.account_dict()",
+    "report = self._check_constraints(observed)      # post-operation EXACT/FLOOR checks"
+  ],
+  "experiment": {
+    "construction": "a METADATA_ONLY plan with a caller-bound AccountConstraint(metadata_reads, FLOOR, 999) that the run cannot satisfy; RoutePassSpec(expected=1, maximum=1)",
+    "result": "the source operation RETURNED, the postcondition FAILED (POST_EXECUTION_CONSTRAINT_FAILED), and _passes_completed was left at 1",
+    "measured": "_passes_completed == 1 after a refused execution"
+  },
+  "governing_question": "may full_route_passes_observed truthfully increment before the postcondition is satisfied?",
+  "determination": "NO. A completed governed route pass means the WHOLE bound execution succeeded, including its required post-operation EXACT/FLOOR constraints. Counting the pass on mere operation-return makes the counter an 'operation returned' counter wearing the name of a completed governed pass — the exact conflation the accounting law forbids elsewhere (a lower-layer account may not stand in for the outer one).",
+  "why_the_current_comment_is_insufficient": {
+    "candidate_comment": "'A pass counts ONLY on success. A failed attempt leaves the count at 0, so a failed first attempt can never be reported as a completed pass.'",
+    "gap": "that is true only for failures that raise BEFORE the increment (i.e. inside session.run). A failure that raises AFTER it (any post-operation constraint breach, including the outer EXACT check itself) leaves the count incremented."
+  },
+  "self_defeating_detail": {
+    "observation": "when the outer EXACT expectation itself fails, the code raises POST_EXECUTION_CONSTRAINT_FAILED, but _passes_completed has already been incremented — so the very check that detects the failure runs after the count has recorded success",
+    "consequence": "a subsequent execute() is then refused, so the bound execution can neither truthfully report 0 completed passes nor complete the required pass"
+  },
+  "required_completion_rule": {
+    "rule": "a governed full route pass is COMPLETED only when the bound execution as a whole succeeds: the source operation returned AND every caller-bound post-operation EXACT/FLOOR/MAXIMUM constraint holds AND the outer route-pass expectation holds",
+    "implementation_requirement": "perform all post-operation checks FIRST and only then increment the completed-pass counter (or increment provisionally and roll back on any post-operation failure)",
+    "preserve": "the distinction between operation-return success and completed-pass success must be visible in the receipt, not only in control flow"
+  }
+}

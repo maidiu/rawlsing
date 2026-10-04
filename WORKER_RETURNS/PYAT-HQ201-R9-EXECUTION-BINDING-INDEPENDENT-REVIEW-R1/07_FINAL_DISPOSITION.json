@@ -1,0 +1,68 @@
+{
+  "schema": "PYAT_HQ201_FINAL_DISPOSITION@1.0.0",
+  "status": "FINAL",
+  "disposition": "EXECUTION_BINDING_MATERIAL_DEFECTS__BOUNDED_REPAIR_REQUIRED",
+  "disposition_is_allowed_value": true,
+  "terminal_token": "HQ201_R9_EXECUTION_BINDING_REVIEW_RETURNED__HQ_ADJUDICATION_REQUIRED",
+  "review_branch": "agent/reviewer-pyat-hq201-r1",
+  "commissioned_startup_sha": "f064dff8fe2262ad6dc0ccb87e2b835ecb2c022b",
+  "review_target_clean_tip": "35ffa48204672e6c7180cd010a7c1adde9f18cd7",
+  "code_bearing_candidate": "b8b4c99633c4aa849fd79614c5bffbd1321209b8",
+  "accepted_session_mechanism": "90ccbd54c549f67358d0c02ad18ff90b843cf3ee",
+  "warrant_successor_cross_checked": "89054b882c04cf0541b6f9f4abdb555c808ad94d",
+  "checkout_mode": "SPARSE_REQUIRED (honored; no clone; no full worktree; sparse checkout not widened)",
+  "reviewer_identity": {"harness": "DeepSeek Harness", "model": "DeepSeek V4.1 Flash"},
+  "four_hq_bound_attacks": {
+    "A_route_pass_applicability": "MATERIAL DEFECT — a non-route source with outer exact 0 either cannot execute at all (maximum=0 -> ROUTE_PASS_LIMIT_REACHED before any operation) or executes and then fails the outer check after the source was already accessed (expected=0, no maximum). Cause: execute() increments the outer pass counter for EVERY successful run regardless of mode.",
+    "B_failed_attempt_retry_zero": "MATERIAL DEFECT — a transiently failing first attempt followed by a successful second attempt performed TWO source operations (2 existence checks, 2 decoder entries) while the retries account stayed 0. No retry gate exists; the only pre-operation gate keys on COMPLETED passes, so a failed attempt leaves it open.",
+    "C_completion_semantics": "MATERIAL DEFECT — _passes_completed increments BEFORE post-operation constraint checks, so a pass is counted even when the bound postcondition fails, including when the outer EXACT check itself fails. Operation-return is being conflated with completed governed pass.",
+    "D_dependency_injection": "MATERIAL DEFECT — BoundSourceExecution accepts pyreadstat_module and never stores or forwards it; _ensure_session hard-codes pyreadstat_module=None. The supplied module is silently discarded and the ambient import always used. Affects the binding layer's ability to assert and demonstrate bound reader identity, not merely testability."
+  },
+  "courts": {
+    "execution_binding_court": "21 passed (exit 0)",
+    "session_court": "15 passed (exit 0)",
+    "broker_court": "20 passed (exit 0)",
+    "R7_collect": "55 collected (exit 0)",
+    "R7_run_1": "55 passed (84.65s, exit 0)",
+    "R7_run_2": "55 passed (81.34s, exit 0)",
+    "total_tests": 166, "failures": 0
+  },
+  "warrant_compatibility": {
+    "representable_in_principle": true,
+    "executable_by_current_binding": false,
+    "blocking_sources": ["SRC02", "SRC06", "SRC08", "SRC12", "SRC14", "SRC26"],
+    "SRC27": "representable (expected 1 / max 1) and exercised by the court",
+    "type_level_distinctions_verified": "expected vs maximum vs floor vs observed remain distinct; FROZEN_AUTHORITY vs IMPLEMENTATION_POLICY labelled; full_route_passes refused as a lower-layer constraint; chunk_reads cannot satisfy full_reads; no source-dependent byte ceiling invented",
+    "classification": "runtime/binding defect, NOT a warrant/runtime contract conflict — the successor is coherent and the runtime simply cannot yet realize it"
+  },
+  "required_repairs": [
+    {"id": "ROUTE-PASS-01", "severity": "BLOCKING", "requirement": "increment the outer full_route_passes account ONLY for plans that actually constitute a governed full route pass. maximum=0 must mean 'no full route pass admitted' while the admitted SELECTED/METADATA/etc. operation still executes and reports full_route_passes_observed=0. Distinguish the outer workload account from the generic 'an operation succeeded' increment."},
+    {"id": "RETRY-01", "severity": "BLOCKING", "requirement": "add a pre-operation RETRY/ATTEMPT gate and count, distinct from completed route passes. A second attempt under retries max 0 must be refused BEFORE any source operation, leaving every lower-layer account unchanged. Count attempts separately and expose them."},
+    {"id": "COMPLETION-01", "severity": "BLOCKING", "requirement": "increment the completed-pass counter only after ALL post-operation constraints (including the outer EXACT expectation) hold, or roll it back on post-operation failure. Make operation-return success visibly distinct from completed-pass success."},
+    {"id": "INJECTION-01", "severity": "BLOCKING", "requirement": "store and forward the supplied pyreadstat_module to GovernedSourceSession, or remove the parameter. Record the resolved reader module identity in the bound-execution receipt."}
+  ],
+  "test_coverage_repairs_required": [
+    "replace or narrow test_zero_ceiling_refuses_before_the_operation so it covers a NON-ROUTE plan under an outer exact 0 (must execute and report 0), keeping the FULL-plan refusal case separate",
+    "rewrite test_failed_first_attempt_is_not_reported_as_a_completed_pass to drive the PUBLIC execute() path and assert that a second execute() is refused with every account unmoved",
+    "add a transient-failure-then-success retry test through the public path",
+    "add a post-operation-constraint-failure test that inspects the completed-pass counter",
+    "add an injection test asserting the supplied module reaches the session"
+  ],
+  "why_this_disposition": {
+    "not_EXECUTION_BINDING_ACCEPTABLE__WARRANT_SUCCESSOR_COMPATIBLE": "four material defects prevent realizing the successor for six of seven sources",
+    "not_EXECUTION_BINDING_PARTIAL__ROUTE_APPLICABILITY_REPAIR_REQUIRED": "route applicability is one of FOUR defects, not the only one",
+    "not_EXECUTION_BINDING_PARTIAL__RETRY_COMPLETION_REPAIR_REQUIRED": "retry+completion are two of FOUR defects, and route applicability and injection are equally material",
+    "not_R7_REQUALIFICATION_FAILURE": "55 collected and 55 passed on both runs; all three mechanism courts pass",
+    "not_WARRANT_RUNTIME_CONTRACT_CONFLICT": "the successor is internally coherent and representable in principle; the failure is a bounded runtime/binding defect"
+  },
+  "accepted_session_mechanism_reopened": false,
+  "what_this_review_does_NOT_do": [
+    "no real source access (synthetic carriers only)",
+    "no locator discovery, warrant issuance, live C4 or production mutation",
+    "no C7 or actor/person work",
+    "no adoption or self-adoption",
+    "no numeric byte ceiling invented"
+  ],
+  "holds_observed": {"real_survey_source_access": false, "locator_discovery": false, "warrant_issuance": false,
+                     "live_c4": false, "production_mutation": false, "c7_or_actor_work": false}
+}

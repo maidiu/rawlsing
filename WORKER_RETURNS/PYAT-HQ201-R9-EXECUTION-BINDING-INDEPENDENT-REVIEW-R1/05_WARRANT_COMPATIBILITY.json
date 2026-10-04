@@ -1,0 +1,37 @@
+{
+  "schema": "PYAT_HQ201_WARRANT_COMPATIBILITY@1.0.0",
+  "successor": "89054b882c04cf0541b6f9f4abdb555c808ad94d:PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/ACTIVATION_RETURNS/OPS-04/R9-WARRANT-ACCOUNTING-SUCCESSOR-R1/01_UNSIGNED_SUCCESSOR.json",
+  "successor_status": "unsigned, unissued, non-authorizing (authorizes_access/execution_authorized false)",
+  "seven_source_outer_plan_reconstructed": [
+    {"source": "SRC02", "class": "BOUNDED_FRESH_PHYSICAL_SELECTED_VARIABLE_READ", "governed_full_route_passes_account": "ABSENT -> exact 0"},
+    {"source": "SRC06", "class": "BOUNDED_FRESH_PHYSICAL_SELECTED_VARIABLE_READ", "governed_full_route_passes_account": "ABSENT -> exact 0"},
+    {"source": "SRC08", "class": "FRESH_METADATA_ONLY_DECODER_ADMISSION", "governed_full_route_passes_account": "ABSENT -> exact 0"},
+    {"source": "SRC12", "class": "FRESH_METADATA_ONLY_DECODER_ADMISSION", "governed_full_route_passes_account": "ABSENT -> exact 0"},
+    {"source": "SRC14", "class": "BOUNDED_FRESH_PHYSICAL_READ_EXACT_VARIABLE", "governed_full_route_passes_account": "ABSENT -> exact 0"},
+    {"source": "SRC26", "class": "BOUNDED_HEADER_PREFIX_PLUS_READER_METADATA", "governed_full_route_passes_account": "ABSENT -> exact 0"},
+    {"source": "SRC27", "class": "EXACTLY_ONE_GOVERNED_FRESH_FULL_ROUTE_PASS", "governed_full_route_passes_account": "PRESENT: EXACT 1, expression 'exactly 1; authority also supplies max 1'"}
+  ],
+  "can_the_runtime_represent_the_seven_plans_without_reinterpretation": {
+    "answer": "NOT AS IT STANDS",
+    "detail": "SRC27 is representable (RoutePassSpec(expected=1, maximum=1)). The six non-route sources are NOT: expressing their exact-0 either (a) blocks their admitted operation outright (maximum=0), or (b) permits the operation but then fails the outer check after the source has already been accessed (expected=0, no maximum) because the wrapper increments the outer counter for non-route plans. The semantic 'exact 0 because this source admits no route pass' cannot currently be expressed while still executing the source.",
+    "is_this_a_warrant_incompatibility": "the warrant itself is coherent; the RUNTIME BINDING cannot yet realize it. Classified as a runtime/binding defect, not a warrant/runtime contract conflict."
+  },
+  "required_distinctions_checked": [
+    {"requirement": "expected / floor / maximum / observed remain distinct", "status": "PASS at the type level",
+     "evidence": "RoutePassSpec separates expected from maximum; expected_status reports EXACT vs UNBOUND; AccountConstraint separates kind from value; OBSERVED is never a spec field. Verified: SRC27-type spec reported expected=1 while an injected policy ceiling could differ."},
+    {"requirement": "policy maxima cannot appear as historical expected values", "status": "PASS at the type level",
+     "evidence": "AuthorityLabel separates FROZEN_AUTHORITY from IMPLEMENTATION_POLICY and both are carried in as_dict()"},
+    {"requirement": "chunk_reads cannot satisfy the full_reads floor", "status": "PASS",
+     "evidence": "the accepted session keeps chunk_reads and full_reads as separate accounts (verified in HQ200), and the binding layer's constraints are per-account"},
+    {"requirement": "decoder/path-open policy ceilings remain lower-layer accounts", "status": "PASS",
+     "evidence": "full_route_passes is explicitly refused as a lower-layer AccountConstraint ('full_route_passes is the OUTER account and is bound through RoutePassSpec'); decoder_invocations and path_opens remain broker budget fields"},
+    {"requirement": "source-dependent byte ceilings remain uninvented", "status": "PASS",
+     "evidence": "no numeric reader_byte ceiling is present in the binding module or the successor; the successor carries UNBOUND_PENDING_TECHNICAL_ACCEPTANCE for byte accounts"}
+  ],
+  "retry_law_cross_check": {
+    "successor_quote": "Retries must be separately counted and reason-coded; retry may not change source, encoding, variables, operations, or authority",
+    "all_sources_max_retry_budget": 0,
+    "runtime_status": "NOT ENFORCED at the binding layer (see 02) — this is a direct warrant/runtime divergence"
+  },
+  "conclusion": "the successor is representable in principle but NOT executable by the current binding layer for six of seven sources; the outer-pass account semantics and the retry account both require repair before the runtime can claim warrant compatibility"
+}

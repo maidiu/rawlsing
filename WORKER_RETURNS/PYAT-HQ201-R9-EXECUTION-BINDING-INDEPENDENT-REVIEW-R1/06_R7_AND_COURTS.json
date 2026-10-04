@@ -1,0 +1,29 @@
+{
+  "schema": "PYAT_HQ201_R7_AND_COURTS@1.0.0",
+  "interpreter": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/qualification/r7-c4-source-free-venv/bin/python",
+  "environment": {"PYTHONHASHSEED": "0", "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+                  "PYTHONPATH": "/Users/matthewsmith/Desktop/Rawlsing_Worktrees/hq201-r9-binding-review",
+                  "pytest": "-p no:cacheprovider"},
+  "execution_binding_court": {"file": "rawlsing_next/tests/test_pre553_execution_binding_court.py", "result": "21 passed", "duration": "1.62s", "exit_code": 0},
+  "session_court": {"file": "rawlsing_next/tests/test_pre553_source_session_court.py", "result": "15 passed", "duration": "1.80s", "exit_code": 0},
+  "broker_court": {"file": "rawlsing_next/tests/test_pre553_source_access_broker_court.py", "result": "20 passed", "duration": "1.49s", "exit_code": 0},
+  "R7_exact_six_file_court": {
+    "collect_only": {"collected": 55, "required": 55, "exit_code": 0, "match": true},
+    "run_1": {"result": "55 passed", "duration": "84.65s", "exit_code": 0},
+    "run_2": {"result": "55 passed", "duration": "81.34s", "exit_code": 0},
+    "target_met": "55 passed / 55 passed",
+    "failures_retried_away": false
+  },
+  "totals": {"tests": 166, "failures": 0},
+  "CRITICAL_INTERPRETATION": {
+    "statement": "ALL COURTS ARE GREEN AND ALL FOUR HQ-BOUND ATTACKS STILL FOUND MATERIAL DEFECTS.",
+    "why": [
+      "the existing binding court's test_zero_ceiling_refuses_before_the_operation ENSHRINES the Attack-A behaviour (a zero route-pass ceiling refusing the operation) instead of testing the six non-route sources",
+      "the existing binding court's test_failed_first_attempt_is_not_reported_as_a_completed_pass calls ex.session.run() DIRECTLY, bypassing the public execute() wrapper, and positively asserts that a retry WOULD be admitted",
+      "no court exercises a transiently failing first attempt followed by a successful second attempt through the public path",
+      "no court exercises a post-operation constraint failure and then inspects the completed-pass counter",
+      "no court supplies pyreadstat_module to the binding constructor and checks that it arrives"
+    ],
+    "consequence": "a green court run is NOT sufficient evidence of warrant compatibility here; the court must be extended alongside the repairs"
+  }
+}

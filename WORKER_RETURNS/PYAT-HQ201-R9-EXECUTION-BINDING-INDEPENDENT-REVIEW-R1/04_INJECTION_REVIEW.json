@@ -1,0 +1,33 @@
+{
+  "schema": "PYAT_HQ201_INJECTION_REVIEW@1.0.0",
+  "attack": "D",
+  "verdict": "CONFIRMED — BoundSourceExecution.__init__ ACCEPTS pyreadstat_module and SILENTLY DISCARDS it",
+  "evidence": {
+    "signature": "def __init__(self, spec: BoundExecutionSpec, *, pyreadstat_module: Any | None = None) -> None",
+    "storage": "the parameter is NOT stored on the instance; __init__ sets only self.spec, self._session, self._closed, self._passes_completed, self._pass_attempted",
+    "session_construction": "_ensure_session() constructs GovernedSourceSession(..., pyreadstat_module=None) — a HARD-CODED None",
+    "measured": "supplying a FakePS sentinel: session.broker.pyreadstat is the supplied object -> False; session.broker.pyreadstat is the real pyreadstat -> True"
+  },
+  "classification": {
+    "primary": "accepted-but-discarded dependency — a caller-supplied collaborator is silently ignored",
+    "secondary": "testability defect: a caller or court cannot substitute a fake reader through the public binding constructor, which is why the binding court must reach into session internals to test anything reader-related",
+    "is_it_merely_testability": "NO — it also removes a caller's ability to BIND the reader module identity at the execution-binding layer"
+  },
+  "can_this_affect_exact_runtime_identity_enforcement": {
+    "answer": "YES, materially, at the binding layer",
+    "reasoning": [
+      "the successor binds an exact execution_surface string per source: 'C4C3-DARWIN-X86_64-ANCHOR/CPYTHON-3.11.3/PYREADSTAT-1.3.6/PYARROW-25.0.1/PANDAS-2.3.3/NUMPY-2.4.6/PYTEST-9.1.1'",
+      "the session DOES assert the pyreadstat seam (assert_reader_seam: pinned version, genuine C-extension entry point, usecols present, first parameter named filename_path) — but it asserts against whatever module it resolved, and the binding layer's injected value never reaches it",
+      "a warrant-binding layer that tried to prove 'this run used the bound reader module' cannot do so through this constructor: the only module that can ever be used is the ambient import, and the injected handle is not even retained for comparison",
+      "the defect is silent — no warning, no error, no receipt field — so a caller could reasonably believe the identity was bound"
+    ],
+    "severity_note": "this does NOT weaken the accepted session mechanism itself (which correctly fails closed on a bad seam); it weakens the BINDING layer's ability to assert and demonstrate the reader identity it was asked to bind"
+  },
+  "required_repair": [
+    "store the supplied pyreadstat_module on the binding",
+    "forward it to GovernedSourceSession (replacing the hard-coded None)",
+    "OR, if discarding is intentional, remove the parameter so the API cannot silently mislead",
+    "record the resolved reader module identity in the bound-execution receipt so identity is demonstrable, not assumed"
+  ],
+  "receipt_gap": "BoundExecutionOutcome carries observed_accounts and session_receipt; the session receipt does carry pyreadstat_version, but the binding layer does not surface or compare the reader module identity that a warrant-bound caller supplied"
+}

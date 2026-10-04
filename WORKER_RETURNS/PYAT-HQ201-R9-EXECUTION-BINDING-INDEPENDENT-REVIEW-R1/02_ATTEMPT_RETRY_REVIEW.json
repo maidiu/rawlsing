@@ -1,0 +1,40 @@
+{
+  "schema": "PYAT_HQ201_ATTEMPT_RETRY_REVIEW@1.0.0",
+  "attack": "B",
+  "verdict": "MATERIAL DEFECT CONFIRMED — a failed first attempt can be followed by a SECOND source operation while the retries account stays 0",
+  "law": "all seven frozen plans carry max_retry_budget = 0; the successor's retry_stop_law states 'Retries must be separately counted and reason-coded; retry may not change source, encoding, variables, operations, or authority' and the frozen maximum is ZERO retries across all sources",
+  "decisive_experiment": {
+    "method": "PUBLIC BoundSourceExecution.execute() called twice on one bound execution; the source file was transiently unavailable for attempt 1 and restored before attempt 2",
+    "attempt_1": {"result": "FAILED with SOURCE_BYTES_UNAVAILABLE", "passes_completed": 0,
+                  "accounts": {"existence_checks": 1, "decoder_invocations": 1, "hash_passes": 0, "metadata_reads": 0, "retries": 0}},
+    "attempt_2": {"result": "SUCCEEDED", "passes_completed": 1, "full_route_passes_observed": 1,
+                  "accounts": {"existence_checks": 2, "hash_passes": 1, "metadata_reads": 1, "retries": 0}},
+    "conclusion": "TWO source operations occurred (2 existence checks, 2 decoder entries) under one bound execution whose frozen retry budget is 0, and the `retries` account remained 0 throughout"
+  },
+  "why_the_gate_does_not_stop_it": {
+    "mechanism": "_gate_route_pass() tests RoutePassSpec.admits(self._passes_completed). Because the increment happens only AFTER a successful session.run(), a FAILED attempt leaves _passes_completed at 0, so the gate admits a retry.",
+    "consequence": "the outer route-pass gate is the only pre-operation gate in the wrapper, and it keys on COMPLETED passes, not on attempts or retries — so it cannot implement a retry ceiling"
+  },
+  "also_confirmed": {
+    "repeatable_multi_attempt": "with a permanently mismatched expected_sha256, three consecutive execute() calls each performed the pre-pass source operations (existence + hash) and each failed with SOURCE_SHA256_MISMATCH; retries stayed 0 and no pre-operation refusal occurred",
+    "postcondition_failure_case": "when the failure occurs AFTER the increment (post-operation constraint), the increment has already happened, so a second execute() is refused by ROUTE_PASS_LIMIT_REACHED — but that is the route-pass ceiling firing, not a retry gate"
+  },
+  "separate_quantities_required": {
+    "route_pass_attempts": "not modelled at all — _pass_attempted is a boolean, not an account, and is never exposed in the receipt",
+    "retries": "present as an account/budget field but NEVER incremented by the binding layer and never gated; observed 0 in every failing-retry experiment",
+    "completed_route_passes": "_passes_completed — the only quantity actually tracked",
+    "verdict": "the three quantities are NOT kept distinct; only the third exists"
+  },
+  "required_repair": [
+    "add a pre-operation RETRY gate keyed on a retry/attempt account, distinct from the route-pass account",
+    "count attempts separately from completed passes",
+    "increment and expose `retries` (reason-coded) so a second attempt under max 0 is refused BEFORE any source operation",
+    "ensure the refusal leaves every lower-layer account unchanged, as the existing route-pass gate correctly does"
+  ],
+  "existing_court_coverage_gap": {
+    "test": "test_failed_first_attempt_is_not_reported_as_a_completed_pass",
+    "gap_1": "it calls ex.session.run(...) DIRECTLY, bypassing the public BoundSourceExecution.execute() wrapper, so it never exercises the retry path the commission asked about",
+    "gap_2": "it stops at asserting spec.route_pass.admits(ex._passes_completed) is True — i.e. it positively asserts that a retry WOULD be admitted, without ever testing whether a second execute() then performs a second source operation",
+    "consequence": "the court passes while the underlying retry defect is live"
+  }
+}
