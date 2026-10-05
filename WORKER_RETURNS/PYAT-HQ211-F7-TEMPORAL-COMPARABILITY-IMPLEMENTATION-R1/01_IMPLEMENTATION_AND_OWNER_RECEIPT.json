@@ -1,0 +1,41 @@
+{
+  "schema": "PYAT_HQ211_F7_IMPLEMENTATION_OWNER_RECEIPT@1",
+  "commission": "WORKER_COMMISSIONS/PYAT-HQ211-F7-TEMPORAL-COMPARABILITY-IMPLEMENTATION-R1/00_COMMISSION.md",
+  "launch_authorization": "WORKER_COMMISSIONS/PYAT-HQ211-F7-TEMPORAL-COMPARABILITY-IMPLEMENTATION-R1/01_HQ212_IMMEDIATE_LAUNCH_AUTHORIZATION.md",
+  "accepted_contract": "c57a96897788108db7b194e4e51691d1ca8ab729",
+  "hostile_review_predecessor": "f1a0dbbc8491e0d23df9005abd55b83e0261424e",
+  "startup_tip": "7b2eaf6cb15433f7919af8f9ed3dd2701b8423df",
+  "exact_allowed_surface_used": {
+    "rawlsing_next/pre553_empirical_authority.py": {
+      "change": "+TEMPORAL_COMPARABILITY in AUTHORITY_KINDS; +exactly one AUTHORITY_KIND_CEILINGS entry",
+      "base_blob": "ca65a7fd4d52f0c44447434559b1d09412e7aa39"
+    },
+    "rawlsing_next/pre553_temporal_comparability.py": {
+      "role": "one bounded temporal-comparison module",
+      "sha256": "48099042517939b0d1b5b10347e50ea916cc58b556a503620b659df61c6a1389"
+    },
+    "rawlsing_next/tests/test_pre553_temporal_comparability.py": {
+      "role": "focused court",
+      "sha256": "15ad9bd2e9071677f1e5ace0939385fa7bd2157903646088adcb42ead396ace1"
+    },
+    "return_directory": "WORKER_RETURNS/PYAT-HQ211-F7-TEMPORAL-COMPARABILITY-IMPLEMENTATION-R1/**"
+  },
+  "existing_authority_resolution_reused": [
+    "AuthorityRegistry.require",
+    "require_positive_authority",
+    "validate_relation_authority_only"
+  ],
+  "cross_universe_path": {
+    "path_A": "source-relation owner resolves SOURCE_EQUIVALENCE via validate_relation_authority_only",
+    "path_B": "temporal owner resolves TEMPORAL_COMPARABILITY and consumes the exact equivalence ref",
+    "neither_mints_or_implies_the_other": true
+  },
+  "new_semantic_owner_invented": false,
+  "no_public_object_family_or_state_family_edit": true,
+  "write_terrain_outside_commission": [],
+  "self_adoption": false,
+  "f8_consumption": false,
+  "source_access": false,
+  "c7_started": false,
+  "actor_person_work": false
+}

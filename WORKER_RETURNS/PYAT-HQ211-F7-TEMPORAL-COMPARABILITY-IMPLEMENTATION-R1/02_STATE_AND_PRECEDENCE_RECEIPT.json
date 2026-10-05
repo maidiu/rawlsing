@@ -1,0 +1,71 @@
+{
+  "schema": "PYAT_HQ211_F7_STATE_PRECEDENCE_RECEIPT@1",
+  "relation_state_count": 12,
+  "precedence_highest_first": [
+    "TEMPORAL_INSUFFICIENT_AUTHORITY",
+    "TEMPORAL_IDENTITY_UNRESOLVED",
+    "TEMPORAL_INSUFFICIENT_ANCHORS",
+    "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT",
+    "TEMPORAL_MAPPING_MATERIAL_ABSENT",
+    "TEMPORAL_ESTIMAND_MISMATCH",
+    "TEMPORAL_MEASURE_MISMATCH",
+    "TEMPORAL_NONCOMPARABLE",
+    "TEMPORAL_ORDER_UNAUTHORIZED",
+    "TEMPORAL_INTERVAL_OVERLAP_NO_DIRECTION",
+    "TEMPORAL_COMPARABLE_NO_DIRECTION",
+    "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
+  ],
+  "all_12_individually_reachable": true,
+  "scalar_reason_deterministic": true,
+  "positive_state_reason_nonempty": true,
+  "all_detected_failures_retained_in_provenance": true,
+  "prior_f7_mapping": {
+    "AUTHORITY_MISSING/CONFLICT/OUT_OF_SCOPE": "TEMPORAL_INSUFFICIENT_AUTHORITY",
+    "INTERPOLATION_NOT_AUTHORIZED": "TEMPORAL_NONCOMPARABLE",
+    "RESPONSE_SURFACE_MISMATCH": "TEMPORAL_NONCOMPARABLE",
+    "PROBE_ONLY": "NO_TEMPORAL_RELATION_RECEIPT"
+  },
+  "authority_state_mapping": "existing AUTHORITY_STATE preserved in provenance; receipt maps to TEMPORAL_INSUFFICIENT_AUTHORITY; no AUTHORITY_STATE literal enters TEMPORAL_RELATION_STATE",
+  "order_law": {
+    "authorized_bases": [
+      "CALENDAR_TOTAL_ORDER",
+      "FAMILY_LOCAL_ORDINAL",
+      "PARTIAL_ORDER_NO_DIRECTION"
+    ],
+    "typed_no_basis": "ORDER_UNKNOWN_NONCOMPARABLE",
+    "no_basis_maps_uniquely_to": "TEMPORAL_ORDER_UNAUTHORIZED / NO_PERMITTED_ORDER_BASIS_APPLIES",
+    "no_basis_carries_basis_ref": false
+  },
+  "direction_law": {
+    "requires": [
+      "pair COMPARABLE",
+      "ORDERED_RELATION_AUTHORIZED",
+      "direction-permitting authorized basis",
+      "claimable exact direction",
+      "exact delta present",
+      "all required authorities positive"
+    ],
+    "direction_permitting_bases": [
+      "CALENDAR_TOTAL_ORDER",
+      "FAMILY_LOCAL_ORDINAL"
+    ],
+    "partial_order_direction": "refused"
+  },
+  "no_authorized_change": {
+    "exact_zero_only": true,
+    "zero_basis": "exact sign of an exact int/Decimal/Fraction equals zero",
+    "deadband": false,
+    "tolerance": false,
+    "inherited_v553_threshold": false,
+    "epsilon": false,
+    "floats_refused": true
+  },
+  "documented_typed_residual": {
+    "id": "ORDERED_AUTHORIZED_BASIS_WITHOUT_SUPPLIED_DELTA",
+    "situation": "a direction-permitting authorized basis with every authority positive but no exact signed delta supplied",
+    "resolution": "raises TemporalComparabilityIntegrityError instead of minting a receipt",
+    "why": "the closed 12-state vocabulary contains no ordered-without-delta relation state, and TEMPORAL_ORDER_UNAUTHORIZED has a unique no-basis derivation that must not be reused",
+    "not_repaired_by": "widening the vocabulary, inventing a state, or silently reusing state 9",
+    "escalated_for_hostile_review": true
+  }
+}

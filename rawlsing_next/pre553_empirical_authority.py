@@ -40,6 +40,7 @@ AUTHORITY_KINDS = frozenset({
     "UNCERTAINTY_METHOD",
     "TARGET_USE_PERMISSION",
     "TEMPORAL_EVIDENCE",
+    "TEMPORAL_COMPARABILITY",
     "REPLAY_PROTOCOL",
 })
 RELATION_AUTHORITY_KINDS = frozenset({
@@ -84,6 +85,10 @@ AUTHORITY_KIND_CEILINGS: Mapping[str, tuple[str, ...]] = MappingProxyType({
     "UNCERTAINTY_METHOD": ("exact uncertainty method",),
     "TARGET_USE_PERMISSION": ("exact target-use permission",),
     "TEMPORAL_EVIDENCE": ("source-native effective/reference-time evidence",),
+    "TEMPORAL_COMPARABILITY": (
+        "operation-scoped comparability and ordering of exactly identified temporal anchors "
+        "for one governed use; production of the bounded temporal relation receipt; "
+        "no downstream consumer power",),
     "REPLAY_PROTOCOL": ("canonical projection and deterministic replay law",),
 })
 
