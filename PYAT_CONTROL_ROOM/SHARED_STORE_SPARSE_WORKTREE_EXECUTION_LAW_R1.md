@@ -17,6 +17,23 @@ This is the default. A worker must not create a fresh clone merely because it ne
 
 Multiple workers MUST NOT operate concurrently in the same checked-out working directory. Isolation is by worktree, not by duplicate repository clone.
 
+## Concurrency law
+
+There is **no fixed project-wide worker or reviewer slot count**.
+
+HQ SHALL maximize safe orthogonal concurrency when:
+- prerequisites are independently satisfied;
+- write terrain does not overlap in a way that creates branch-level semantic collision;
+- independent review remains independent;
+- host resources are adequate;
+- the user has an available execution surface.
+
+A numerical slot limit from an older activation packet is routing history, not current law.
+
+Do not serialize a ready critical-path lane merely because two other implementation workers are active. Conversely, do not parallelize two writers over the same semantic owner merely to maximize tab count.
+
+A read-only hostile review may normally proceed alongside implementation workers when its candidate is frozen and its review independence is preserved.
+
 ## Commission requirement
 
 Every new commission intended for local execution MUST prominently specify:
