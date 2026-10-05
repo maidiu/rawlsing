@@ -102,6 +102,58 @@ modified), the focused court, and an import/name-collision check. And the receip
 dataclass, so a caller who ignored `assert_receipt_does_not_authorize` could read `as_dict()`
 directly — a caller-misconduct boundary, not an authority the module issues.
 
+
+
+---
+
+## ADDENDUM (post-push) — court-coverage gaps found by adversarial audit
+
+After my first push I ran a delegated adversarial audit of the focused court and re-verified its
+findings myself. **The mechanism conclusions above are unchanged** — they rest on my own direct
+construction against the module. But my §H phrasing ("all fifteen behavioural") **overstated the
+court**. Four of the fifteen commissioned cases are materially weaker than their titles:
+
+1. **"exact negative applicability"** is **error-path only**. Its sole assertion is
+   `pytest.raises(...)` on `ApplicabilityAuthorityRecord(...)` with no basis ref. It never resolves a
+   valid negative and **never asserts the public state `NOT_APPLICABLE`** — I confirmed by grep that
+   `NOT_APPLICABLE` appears in the court file only inside `!=`/`not in` comparisons and the
+   vocabulary set, never as an observed assertion.
+2. **"unranked set"** proves cardinality behaviourally, but the **unranked property itself is
+   asserted against self-declared booleans** that `as_dict()` unconditionally sets `True`, plus the
+   module's own `ORDERING_SEMANTICS` constant. Asserting a module's self-description is not
+   independent evidence.
+3. **"receipt as pooling/selection authority refused"** is **self-referential**: it parametrises over
+   `list(M.FORBIDDEN_AUTHORIZED_PURPOSES)` — the same tuple the function checks — so a *truncated*
+   prohibition list would simply collect fewer cases and still pass. And I verified that
+   **`assert_receipt_does_not_authorize` never reads its `receipt` argument**; it validates the
+   purpose string and raises on tuple membership. The court therefore proves the *function* refuses
+   its own list, not that the *receipt* carries no authority.
+4. **"no internal-evidence state changes applicability"** has a **tautological runtime half** (it
+   re-runs identical inputs) and its one substantive check is a **static AST scan**. That scan is a
+   real structural guarantee — I praised it earlier and it stands — but it is static analysis, not
+   runtime behaviour.
+
+No commissioned case is *purely* constant; the purely constant/vocabulary tests live among the
+other 32 functions. So the correct criticism is narrower than "constant tests" but real.
+
+**What actually carries the non-authorization property** is `DECISION_MATRIX` — every `may_*` flag
+`False` on every decision — which I verified by value inspection, independent of the court.
+
+**Regression, independently reproduced by me** in the governed interpreter: after
+`227 failed / 2336 passed / 53 errors`, before-proxy `227 failed / 2276 passed / 53 errors`, with the
+**failure/error node-ID sets identical (280 = 280, 0 new, 0 cleared)** and `passed_delta` exactly 60.
+The candidate's claim is **true and reproducible**, but the committed artifact is only an *assertion*
+of it — no raw logs, no command, no interpreter, no ID list. Caveat: my "before" is a proxy (court
+ignored), not a checkout of parent `dcf9ab533`.
+
+**Arithmetic error found in the candidate artifact:** `04_COURT_RESULTS.json` reports
+`additional_courts_written: 45`. Correct value is **32** (47 test functions − 15 commissioned = 32
+additional functions; 60 − 28 = 32 additional collected tests). Bookkeeping only.
+
+**Effect on disposition: none.** These are bounded, advisory, court-quality issues — not mechanism
+defects. Five advisory repairs (`COURT-1`…`COURT-4`, `BOOK-1`) are recorded in
+`07_FINAL_DISPOSITION.json`; details in `08_COURT_COVERAGE_GAPS_ADDENDUM.json`.
+
 ## Holds observed
 
 No code modified; no source access; no locator discovery; no warrant issuance; no live C4; no

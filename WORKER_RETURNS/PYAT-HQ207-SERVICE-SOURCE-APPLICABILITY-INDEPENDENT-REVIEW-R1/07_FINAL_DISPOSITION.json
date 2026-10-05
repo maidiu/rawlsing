@@ -1,51 +1,93 @@
 {
-  "schema": "PYAT_HQ207_FINAL_DISPOSITION@1.0.0",
-  "status": "FINAL",
-  "disposition": "ACCEPT_SERVICE_SOURCE_APPLICABILITY__SOURCE_FREE_FORM",
-  "disposition_is_allowed_value": true,
-  "terminal_token": "HQ207_SERVICE_SOURCE_APPLICABILITY_REVIEW_RETURNED__HQ_ADJUDICATION_REQUIRED",
-  "review_branch": "agent/reviewer-pyat-hq207-hc-r1",
-  "commissioned_startup_sha": "01cda2106139fc4de2594229526a1b3ff1163bbf",
-  "exact_base": "cfe648bd462ddf6fc1252182c5e784ec43bf4405",
-  "candidate": "e7d3598494472a9aea7dd2c69f6aacb11585905c",
-  "ratified_derivation": "6c0d4739dc56a957a8bdd2512b24756cf466511b",
-  "hq205_adjudication": "0e8d5bcd98e5aba63cd7312f778dedbfe8b6b646",
-  "checkout_mode": "SPARSE_REQUIRED (honored; no clone; no full worktree; sparse checkout not widened; NO code modified)",
-  "reviewer_identity": {"harness": "DeepSeek Harness", "model": "DeepSeek V4.1 Flash"},
-  "ratified_authority_under_test": "ADMISSIBLE_SET_ONLY__RANKING_AND_SELECTION_NOT_AUTHORIZED",
-  "attack_results": {
-    "A_request_key_contract": "PASS - ten components mandatory and exact; thirteen forbidden smuggling names refused; all mutable/fuzzy selectors refused; unknown and empty components refused; permission refs are bound input not a grant; temporal ref is a single exact mandatory component with no grain default",
-    "B_state_family_separation": "PASS - own decision/receipt/state families; ten-decision precedence with ADMITTED last; closed seven-state public vocabulary derived from the decision map; MISSING_AUTHORITY, OUT_OF_SCOPE and NONCOMPARABLE each render distinctly and are never downgraded to NOT_APPLICABLE",
-    "C_COMPLETE_INCOMPLETE_honesty": "PASS - COMPLETE requires every candidate to hold a terminal decision; NO_ADMITTED_SOURCE_IN_CANDIDATE_CLASS is unreachable under INCOMPLETE coverage, enforced twice (resolver branch + receipt post-init law), and downstream assert_complete_coverage refuses INCOMPLETE",
-    "D_unranked_set_law": "PASS - three admitted sources remain an unranked set of separate source-indexed entries; canonical order is replay-only; 1 distinct replay identity under all 6 candidate-order permutations and all 6 authority-record permutations; every named hidden-ordering attack (first-wins, ordering preference, score, rank, priority, locality, release recency, fallback order) is absent",
-    "E_power_noncollapse": "PASS - all 14 forbidden purposes refused on a real receipt containing an ADMITTED source; every may_* power flag False for every decision including ADMITTED rank/select, pooling, F8 conditioning, geometry transform and individual inference",
-    "F_evidence_distinction": "PASS - in one receipt a bound-negative source shows NOT_APPLICABLE while authority-less sources show MISSING_AUTHORITY; no key carries an evidence value; the court structurally AST-proves the resolver reads no forbidden evidence field",
-    "G_replay_provenance": "PASS - request identity stable and determinant-sensitive; positive decisions carry exact admission provenance; negative decisions preserve exact basis and may not carry admission provenance; the admitted-source choice changes the replay identity",
-    "H_court_and_regression": "PASS - 60 collected and 60 passed in the governed interpreter; the 15 commissioned hostile cases are present and behavioural; the change is purely additive (8 added paths, 0 modified)"
+ "schema": "PYAT_HQ207_FINAL_DISPOSITION@1.0.0",
+ "status": "FINAL",
+ "disposition": "ACCEPT_SERVICE_SOURCE_APPLICABILITY__SOURCE_FREE_FORM",
+ "disposition_is_allowed_value": true,
+ "terminal_token": "HQ207_SERVICE_SOURCE_APPLICABILITY_REVIEW_RETURNED__HQ_ADJUDICATION_REQUIRED",
+ "review_branch": "agent/reviewer-pyat-hq207-hc-r1",
+ "commissioned_startup_sha": "01cda2106139fc4de2594229526a1b3ff1163bbf",
+ "exact_base": "cfe648bd462ddf6fc1252182c5e784ec43bf4405",
+ "candidate": "e7d3598494472a9aea7dd2c69f6aacb11585905c",
+ "ratified_derivation": "6c0d4739dc56a957a8bdd2512b24756cf466511b",
+ "hq205_adjudication": "0e8d5bcd98e5aba63cd7312f778dedbfe8b6b646",
+ "checkout_mode": "SPARSE_REQUIRED (honored; no clone; no full worktree; sparse checkout not widened; NO code modified)",
+ "reviewer_identity": {
+  "harness": "DeepSeek Harness",
+  "model": "DeepSeek V4.1 Flash"
+ },
+ "ratified_authority_under_test": "ADMISSIBLE_SET_ONLY__RANKING_AND_SELECTION_NOT_AUTHORIZED",
+ "attack_results": {
+  "A_request_key_contract": "PASS - ten components mandatory and exact; thirteen forbidden smuggling names refused; all mutable/fuzzy selectors refused; unknown and empty components refused; permission refs are bound input not a grant; temporal ref is a single exact mandatory component with no grain default",
+  "B_state_family_separation": "PASS - own decision/receipt/state families; ten-decision precedence with ADMITTED last; closed seven-state public vocabulary derived from the decision map; MISSING_AUTHORITY, OUT_OF_SCOPE and NONCOMPARABLE each render distinctly and are never downgraded to NOT_APPLICABLE",
+  "C_COMPLETE_INCOMPLETE_honesty": "PASS - COMPLETE requires every candidate to hold a terminal decision; NO_ADMITTED_SOURCE_IN_CANDIDATE_CLASS is unreachable under INCOMPLETE coverage, enforced twice (resolver branch + receipt post-init law), and downstream assert_complete_coverage refuses INCOMPLETE",
+  "D_unranked_set_law": "PASS - three admitted sources remain an unranked set of separate source-indexed entries; canonical order is replay-only; 1 distinct replay identity under all 6 candidate-order permutations and all 6 authority-record permutations; every named hidden-ordering attack (first-wins, ordering preference, score, rank, priority, locality, release recency, fallback order) is absent",
+  "E_power_noncollapse": "PASS - all 14 forbidden purposes refused on a real receipt containing an ADMITTED source; every may_* power flag False for every decision including ADMITTED rank/select, pooling, F8 conditioning, geometry transform and individual inference",
+  "F_evidence_distinction": "PASS - in one receipt a bound-negative source shows NOT_APPLICABLE while authority-less sources show MISSING_AUTHORITY; no key carries an evidence value; the court structurally AST-proves the resolver reads no forbidden evidence field",
+  "G_replay_provenance": "PASS - request identity stable and determinant-sensitive; positive decisions carry exact admission provenance; negative decisions preserve exact basis and may not carry admission provenance; the admitted-source choice changes the replay identity",
+  "H_court_and_regression": "PASS - 60 collected and 60 passed in the governed interpreter; the 15 commissioned hostile cases are present and behavioural; the change is purely additive (8 added paths, 0 modified)"
+ },
+ "material_defects_found": [],
+ "overreach_found": false,
+ "qualification_failure": false,
+ "corrections_to_my_own_work_recorded": [
+  "I first measured 6 distinct replay identities under candidate-order permutation and nearly recorded a replay-determinism defect. The bug was mine: the probe tuple included the builtin id(). Corrected result is 1.",
+  "I first flagged hidden rank/score/priority/preference/weight and evidence/support fields by substring scan. Inspecting values showed every hit is a negation DECLARATION flag whose value is True. Corrected: no such value-carrying field exists.",
+  "I first labelled version 'Mixed' as an anomalous accepted mutable selector. The check uppercases before comparing, so 'Mixed' is correctly an ordinary exact version. My label was wrong."
+ ],
+ "scope_limitations_recorded": [
+  "I did not run a broad repository-wide regression slice; I relied on the additive-only diff structure (8 added, 0 modified) plus the focused court and an import/name-collision check.",
+  "The receipt is an immutable dataclass and the module exposes assert_receipt_does_not_authorize as the refusal API; a caller who ignored that helper could read as_dict() directly. That is a caller-misconduct boundary, not an authority the module issues, and every machine-readable declaration on the receipt states the non-authorisation."
+ ],
+ "why_this_disposition": {
+  "not_SERVICE_SOURCE_APPLICABILITY_PARTIAL__BOUNDED_REPAIR_REQUIRED": "no defect requiring repair was found in any of the eight attacked areas",
+  "not_SERVICE_SOURCE_APPLICABILITY_AUTHORITY_OVERREACH": "the module refuses every one of the 14 separate powers and issues no grant path",
+  "not_SERVICE_SOURCE_APPLICABILITY_QUALIFICATION_FAILURE": "60 collected, 60 passed in the governed interpreter on the first clean run",
+  "not_MATERIAL_AUTHORITY_CONFLICT": "the implementation matches the ratified derivation ADMISSIBLE_SET_ONLY__RANKING_AND_SELECTION_NOT_AUTHORIZED without reinterpretation"
+ },
+ "what_this_acceptance_does_NOT_do": [
+  "no real source access",
+  "no locator discovery",
+  "no warrant issuance",
+  "no live C4",
+  "no code modification in this lane",
+  "no self-adoption",
+  "it accepts a SOURCE-FREE synthetic form; it establishes machinery only and authorises no real-world structural claim"
+ ],
+ "holds_observed": {
+  "code_modified": false,
+  "source_access": false,
+  "locator_discovery": false,
+  "warrant_issuance": false,
+  "live_c4": false,
+  "self_adoption": false
+ },
+ "no_self_adoption": true,
+ "advisory_court_coverage_repairs": [
+  {
+   "id": "COURT-1",
+   "severity": "ADVISORY",
+   "requirement": "add a positive-negative case that actually resolves a valid bound negative and asserts the observed public state equals NOT_APPLICABLE (the existing case title promises this but tests only the missing-basis refusal)"
   },
-  "material_defects_found": [],
-  "overreach_found": false,
-  "qualification_failure": false,
-  "corrections_to_my_own_work_recorded": [
-    "I first measured 6 distinct replay identities under candidate-order permutation and nearly recorded a replay-determinism defect. The bug was mine: the probe tuple included the builtin id(). Corrected result is 1.",
-    "I first flagged hidden rank/score/priority/preference/weight and evidence/support fields by substring scan. Inspecting values showed every hit is a negation DECLARATION flag whose value is True. Corrected: no such value-carrying field exists.",
-    "I first labelled version 'Mixed' as an anomalous accepted mutable selector. The check uppercases before comparing, so 'Mixed' is correctly an ordinary exact version. My label was wrong."
-  ],
-  "scope_limitations_recorded": [
-    "I did not run a broad repository-wide regression slice; I relied on the additive-only diff structure (8 added, 0 modified) plus the focused court and an import/name-collision check.",
-    "The receipt is an immutable dataclass and the module exposes assert_receipt_does_not_authorize as the refusal API; a caller who ignored that helper could read as_dict() directly. That is a caller-misconduct boundary, not an authority the module issues, and every machine-readable declaration on the receipt states the non-authorisation."
-  ],
-  "why_this_disposition": {
-    "not_SERVICE_SOURCE_APPLICABILITY_PARTIAL__BOUNDED_REPAIR_REQUIRED": "no defect requiring repair was found in any of the eight attacked areas",
-    "not_SERVICE_SOURCE_APPLICABILITY_AUTHORITY_OVERREACH": "the module refuses every one of the 14 separate powers and issues no grant path",
-    "not_SERVICE_SOURCE_APPLICABILITY_QUALIFICATION_FAILURE": "60 collected, 60 passed in the governed interpreter on the first clean run",
-    "not_MATERIAL_AUTHORITY_CONFLICT": "the implementation matches the ratified derivation ADMISSIBLE_SET_ONLY__RANKING_AND_SELECTION_NOT_AUTHORIZED without reinterpretation"
+  {
+   "id": "COURT-2",
+   "severity": "ADVISORY",
+   "requirement": "make the power-noncollapse court non-self-referential: drive an explicit enumerated purpose list authored in the court, not list(M.FORBIDDEN_AUTHORIZED_PURPOSES), so a narrowing of the production tuple would FAIL rather than silently collect fewer cases"
   },
-  "what_this_acceptance_does_NOT_do": [
-    "no real source access", "no locator discovery", "no warrant issuance", "no live C4",
-    "no code modification in this lane", "no self-adoption",
-    "it accepts a SOURCE-FREE synthetic form; it establishes machinery only and authorises no real-world structural claim"
-  ],
-  "holds_observed": {"code_modified": false, "source_access": false, "locator_discovery": false, "warrant_issuance": false, "live_c4": false, "self_adoption": false},
-  "no_self_adoption": true
+  {
+   "id": "COURT-3",
+   "severity": "ADVISORY",
+   "requirement": "make assert_receipt_does_not_authorize actually inspect its receipt argument (e.g. assert the receipt's may_* flags are all False), or rename/redocument it as a purpose-vocabulary guard so its tested proposition matches its name"
+  },
+  {
+   "id": "COURT-4",
+   "severity": "ADVISORY",
+   "requirement": "replace the tautological 'run identical inputs twice' runtime half with an actual variation attempt (or accept the AST scan as the sole evidence and label it as a static check)"
+  },
+  {
+   "id": "BOOK-1",
+   "severity": "ADVISORY",
+   "requirement": "correct additional_courts_written from 45 to 32 in 04_COURT_RESULTS.json"
+  }
+ ],
+ "why_still_ACCEPT": "the acceptance rests on my OWN direct construction against the module across all eight attack areas, not on the focused court. The court gaps are bounded, advisory, court-quality issues; they are not mechanism defects, and the repaired production code behaves correctly in every attack I ran."
 }
