@@ -1,3 +1,49 @@
+# HQ210 ACTIVE FRONTIER — THREE SUCCESSORS RUN IN PARALLEL — 2026-10-05
+
+R9 and C1 remain active but **do not block** the three returned-lane successors.
+
+### NEW — NEEDS LAUNCH — F7 TEMPORAL CONTRACT REPAIR
+**AGENT:** Browser/GitHub documentary repair worker  
+**MODEL / INTELLIGENCE:** **GPT-5.6 Sol High**  
+**BRANCH:** `agent/rabochii-pyat-hq210-f7-contract-repair-r1`  
+**COMMISSION TIP:** `7a6ecae8002088630c5ffb2eea286efda1b3316b`
+
+### NEW — NEEDS LAUNCH — H-D / F8 SOURCE-SCOPE BINDING
+**AGENT:** Space Bunny source-free implementation worker  
+**MODEL / INTELLIGENCE:** **Space Bunny High**  
+**BRANCH:** `agent/rabochii-pyat-hq210-hd-f8-binding-r1`  
+**COMMISSION TIP:** `904895d8ad072824f38464f579904e5193d55667`
+
+### NEW — NEEDS LAUNCH — V556 FINAL HOSTILE REVIEW
+**AGENT:** DeepSeek Harness independent hostile reviewer  
+**MODEL / INTELLIGENCE:** **DeepSeek V4.1 Flash**  
+**BRANCH:** `agent/reviewer-pyat-hq210-v556-final-r1`  
+**COMMISSION TIP:** `bb453566e96ab11bb6f54574c2e45962ec32a9e4`
+
+### EXISTING — ACTIVE / NOT YET RETURNED — R9 REPAIR
+**AGENT:** Space Bunny  
+**MODEL / INTELLIGENCE:** **Space Bunny High**  
+**BRANCH:** `agent/rabochii-pyat-hq207-r9-repair-r1`  
+**REMOTE TIP:** `70ca48345d97f26ac1d7061df2138ab3f14c474c`
+
+### EXISTING — ACTIVE / NOT YET RETURNED — C1 PRUNE
+**AGENT:** Space Bunny  
+**MODEL / INTELLIGENCE:** **Space Bunny High**  
+**BRANCH:** `agent/rabochii-pyat-hq206-c1-prune-r1`  
+**REMOTE TIP:** `32d86985b8af3f2ee175f5a170ee21c7101785b6`
+
+Routing basis:
+- F7 hostile review returned `TEMPORAL_COMPARABILITY_CONTRACT_PARTIAL__BOUNDED_REPAIR_REQUIRED`.
+- H-D/F8 returned `HD_PARTIAL__DOWNSTREAM_BINDING_SEAM_MISSING`.
+- V556 repair returned but is not adopted until mandatory final hostile review.
+- C1/F7 are explicitly not prerequisites for the narrow static H-D/F8 eligibility-binding seam.
+- shared-store sparse-worktree law applies to all new commissions.
+
+HQ decision:
+`HQD-2026-10-05-210`
+
+---
+
 # LIVE CONTROL-PLANE DELTA — DIRECT ORIGIN RESOLUTION — 2026-10-05
 
 This section updates **worker transport/state only**. It does not adopt or semantically adjudicate any return below.
