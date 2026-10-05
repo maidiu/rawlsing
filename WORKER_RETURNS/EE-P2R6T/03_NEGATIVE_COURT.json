@@ -1,0 +1,26 @@
+{
+  "schema": "RAWLSING_EE_P2R6T_NEGATIVE_COURT@1.0.0",
+  "disposition": "PASS",
+  "hostile_cases": [
+    {
+      "case": "MISSING_EXACT_BANKED_AS2A_PATH",
+      "expected": "FAIL_CLOSED",
+      "observed": "CourtAuthorityStop: immutable path unavailable",
+      "pass": true
+    },
+    {
+      "case": "SUBSTITUTED_LEDGER_BYTES",
+      "expected": "FAIL_CLOSED",
+      "observed": "RuntimeError: Part-A slot ledger SHA mismatch",
+      "pass": true
+    },
+    {
+      "case": "SUBSTITUTED_PACKAGE_PROJECTION_MATERIAL",
+      "expected": "FAIL_CLOSED",
+      "observed": "RuntimeError: Part-A projection authority content hash mismatch",
+      "pass": true
+    }
+  ],
+  "alternate_path_lookup_exercised": false,
+  "carrier_or_outcome_access": false
+}
