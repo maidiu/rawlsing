@@ -1,3 +1,20 @@
+## Productive-adequacy check — HQD-216
+
+Every live delta/commission/review must distinguish:
+- fail-closed correctness;
+- local positive productive capability;
+- upstream dependency availability;
+- end-to-end integration realization;
+- estate occupancy.
+
+Do not fail a competent downstream stage merely because an upstream dependency is unavailable.
+
+Do not accept a stage with a mandatory positive role merely because it refuses safely.
+
+A stage may pass locally when competent lawful fixtures or accepted upstream products prove the intended positive transformation. Missing real upstream occupancy remains attached to the upstream/integration edge.
+
+At the PRE-V3 empirical gate, unexpected failure to produce an expected source-supported artifact is a failed gate cell and routes to the narrowest responsible design/authority/implementation owner.
+
 > **Currentness notice — HQD-2026-09-27-116:** The full R2.1 grok is inherited, not repeated. Fresh HQs verify the latest checkpoint, read HQD-115 baseline plus `PYAT_CONTROL_ROOM/15_HQD116_CONTROL_RECONCILIATION_AND_ROUTE_B_FORWARD_PROGRAM.md`, and perform delta reconciliation only.
 
 # VOZHD PYAT — FRESH HQ FULL-GROK PROTOCOL
