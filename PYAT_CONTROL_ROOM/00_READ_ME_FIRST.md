@@ -1,3 +1,24 @@
+## Productive adequacy law — HQD-216
+
+All forward Pyat work must read and obey:
+`PYAT_CONTROL_ROOM/26_HQD216_PRODUCTIVE_ADEQUACY_AND_PREV3_EMPIRICAL_GATE_LAW.md`.
+
+Freeze:
+
+`FAIL_CLOSED_CORRECTNESS != PRODUCTIVE_COMPLETION`
+
+`UPSTREAM_BLOCKER != DOWNSTREAM_IMPLEMENTATION_DEFECT`
+
+At a component's declared grain, prove that competent lawful inputs can reach the intended positive output and that the stage preserves required information. A missing real upstream input is an upstream dependency/integration gap, not a defect in an otherwise competent downstream stage.
+
+Keep four levels distinct:
+- local stage acceptance;
+- integration realization;
+- estate occupancy;
+- PRE-V3 completion.
+
+At the eventual PRE-V3 empirical gate, expected source-supported products must actually materialize; unexpected refusal/missing output routes back to the narrowest responsible owner rather than lowering the product requirement.
+
 # VOZHD PYAT — READ ME FIRST
 
 Status: `ACTIVE_CONTROL_ROOM__SPACE_BUNNY_OPENCODE_REMOTE_HANDOFF_CURRENT`
