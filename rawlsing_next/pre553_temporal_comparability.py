@@ -1,45 +1,57 @@
-"""Bounded F7 temporal comparison for PRE553 / PYAT HQ211 R1.
+"""Bounded F7 temporal comparison for PRE553 / PYAT HQ214 bounded repair R1.
 
-Implements exactly the contract repaired and accepted at
-``c57a96897788108db7b194e4e51691d1ca8ab729``
-(``PYAT-HQ210-F7-TEMPORAL-COMPARABILITY-REPAIR-R1``), itself the successor to
-the HQ208 hostile review at ``f1a0dbbc8491e0d23df9005abd55b83e0261424e``.
+Repairs the HQ211 implementation against the HQ213 hostile review
+(``F7_TEMPORAL_IMPLEMENTATION_PARTIAL__BOUNDED_REPAIR_REQUIRED``) while
+realizing exactly the contract accepted at
+``c57a96897788108db7b194e4e51691d1ca8ab729``.
 
-Design law, taken from the accepted contract and not widened here:
+The HQ213 review's central finding was that the HQ211 surface carried the right
+vocabulary but the machinery was fail-open: a positive directional claim could be
+minted with fabricated refs that resolved nowhere. This revision repairs the
+machinery, not the prose.
 
-* ``TEMPORAL_RELATION_RECEIPT`` is a **module-local closed content-addressed
-  receipt**.  It is NOT a ``PUBLIC_OBJECT_FAMILIES`` member and its
-  ``relation_state`` is NOT ``CanonicalSemanticObject.typed_state``.  This
-  module therefore performs no ``PUBLIC_OBJECT_FAMILIES`` or ``STATE_FAMILIES``
-  edit and creates no new semantic object family.
-* ``relation_state`` is a deterministic function of exact inputs.  No caller
-  chooses it, and no rerun changes it without changed exact determinants or
-  changed authority material.
-* Every detected failure is retained in ``comparability_requirement_results``;
-  the 12-state precedence selects exactly one public terminal state.
-* ``relation_state_reason`` is exactly one scalar reason chosen under
-  state-local reason precedence.
-* Existing ``AUTHORITY_STATE`` failures map to ``TEMPORAL_INSUFFICIENT_AUTHORITY``
-  while the exact authority state is preserved in provenance.  No
-  ``AUTHORITY_STATE`` literal is ever inserted into ``TEMPORAL_RELATION_STATE``.
-* Cross-universe comparison needs two independent positive paths: the
-  source-relation owner resolves ``SOURCE_EQUIVALENCE``, and this module
-  resolves ``TEMPORAL_COMPARABILITY`` and consumes that exact equivalence ref.
-  Neither mints nor implies the other.
-* ``NO_AUTHORIZED_CHANGE`` holds only for an exact canonical-zero signed delta.
-  No deadband, tolerance, inherited V553 threshold, or epsilon exists here.
-* No F8 consumption, source selection, equivalence creation, pooling,
-  backfill, interpolation, continuity, midpoint, rate, trend, trajectory,
-  rupture, scalar temporal pressure, currentness, or actor/person inference.
+What actually changed, by finding:
 
-Frozen surfaces this module deliberately does not mutate:
-``FORBIDDEN_BACKFILL_TARGET_STATES`` (its literal ``TEMPORAL_NONCOMPARABLE``
-membership stays), ``FAIL_CLOSED_STATES``, ``FORBIDDEN_SELECTOR_TOKENS``,
-``EmpiricalFact.REQUIRED_FIELDS``, and any V553/V554 historical module.
+* ``F-DIR-01`` / Repair 1 - every contract-required authority is now resolved to
+  a positive exact snapshot or a typed fail-closed outcome. Presence of a ref
+  string is never sufficient.
+* ``F-DIR-02`` / Repair 2 - ``TEMPORAL_COMPARABILITY`` is resolved
+  operation-scoped and governed-use-scoped. ``AUTHORITY_HASH_MISMATCH`` and
+  ``AUTHORITY_SCOPE_MISMATCH`` are reachable receipt reasons.
+* ``F-CARD-01`` / Repair 3 - exactly two anchors and two observations, one
+  observation bound to each anchor. 3+ refuses.
+* ``F-REQ-01`` / Repair 4 - ``comparability_requirements_ref`` is required and
+  resolved, and its surfaces participate in derivation.
+* ``F-DELTA-01`` / Repair 5 - the caller can no longer mint a dispositive delta.
+  The exact delta is derived from the bound quantity surface under an exact
+  authorized comparison operation.
+* ``F-RCPT-01`` / Repair 6 - the receipt carries the accepted 18-field closed
+  contract, using the contract's own field names, including ``quantity_surface``,
+  ``delta``, ``uncertainty_state``, ``intervening_span_state``,
+  ``governed_use_id``, ``authority_snapshot_refs`` and ``provenance``.
+* ``F-PRIOR-01`` / Repair 7 - ``prior_f7_state`` participates in derivation.
+* ``F-XU-01`` / Repair 8 - cross-universe status is derived from the bound
+  per-anchor source-universe refs, never from a caller boolean, and an exact
+  positive ``SOURCE_EQUIVALENCE`` must cover the actual pair.
+* ``F-ORDER-01`` / HQ214 adjudication C - no-basis yields
+  ``TEMPORAL_ORDER_UNAUTHORIZED`` only when no higher-precedence failure was
+  selected; otherwise the higher state is emitted and the no-basis observation is
+  retained in provenance. The module no longer raises on that combination.
+* HQ214 adjudication B - ``comparability_status`` is ``NOT_COMPARABLE`` for all
+  nine negative/refusal states and ``COMPARABLE`` only for the three lawful
+  comparability states.
+* ``F-BACKFILL-01`` / Repair 9 - the backfill guard consults the live frozen
+  ``FORBIDDEN_BACKFILL_TARGET_STATES``, not a module-local copy.
+* ``F-NONE-01`` - a missing registry is a typed refusal, never an ``AttributeError``.
+
+Power ceiling is unchanged. This module never consumes F8, never selects sources,
+never creates source equivalence, pooling or linkage, and never performs
+interpolation, continuity, midpoint, trend, rate, trajectory, rupture, currentness,
+scalar temporal pressure, causal interpretation, or actor/person inference.
 """
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from decimal import Decimal
 from fractions import Fraction
 from typing import Any, Iterable, Mapping, Sequence
@@ -48,8 +60,10 @@ from rawlsing_next.pre553_empirical_authority import (
     AUTHORITY_KINDS,
     AUTHORITY_KIND_CEILINGS,
     AuthorityRegistry,
+    AuthoritySnapshot,
     Pre553AuthorityConflict,
     Pre553AuthorityError,
+    require_positive_authority,
     validate_relation_authority_only,
 )
 from rawlsing_next.pre553_empirical_objects import (
@@ -62,13 +76,15 @@ from rawlsing_next.pre553_empirical_objects import (
     semantic_hash,
 )
 
-TEMPORAL_COMPARABILITY_CONTRACT_ID = "PYAT_HQ211_F7_TEMPORAL_COMPARABILITY@1.0.0"
+TEMPORAL_COMPARABILITY_CONTRACT_ID = "PYAT_HQ211_F7_TEMPORAL_COMPARABILITY@1.1.0"
 
-#: The one new authority kind, paired with its one matching ceiling entry.
 TEMPORAL_COMPARABILITY_AUTHORITY_KIND = "TEMPORAL_COMPARABILITY"
 
-#: Closed order-disposition vocabulary.  Exactly three authorized bases plus one
-#: typed no-basis refusal, which is NOT an authorized order basis.
+#: The exact authorized comparison operation this producer can bind.
+AUTHORIZED_COMPARISON_OPERATION = "TEMPORAL_BOUND_QUANTITY_DIFFERENCE"
+#: The relation operation used on the source-relation path for equivalence.
+SOURCE_EQUIVALENCE_RELATION_OPERATION = "SEMANTIC_EQUIVALENCE_ADMISSION"
+
 ORDER_DISPOSITIONS = frozenset({
     "CALENDAR_TOTAL_ORDER",
     "FAMILY_LOCAL_ORDINAL",
@@ -83,11 +99,16 @@ AUTHORIZED_ORDER_BASES = frozenset({
 NO_BASIS_DISPOSITION = "ORDER_UNKNOWN_NONCOMPARABLE"
 DIRECTION_PERMITTING_BASES = frozenset({"CALENDAR_TOTAL_ORDER", "FAMILY_LOCAL_ORDINAL"})
 
+UNCERTAINTY_STATES = frozenset({
+    "QUANTIFIED_UNDER_BOUND_METHOD",
+    "UNCERTAINTY_UNQUANTIFIED",
+    "UNCERTAINTY_METHOD_ABSENT",
+})
+INTERVENING_SPAN_STATES = frozenset({"NO_INTERVENING_GAP", "TEMPORAL_GAP_INTERVENING"})
 DIRECTION_CLAIM_STATES = frozenset({
     "INCREASE", "DECREASE", "NO_AUTHORIZED_CHANGE", "DIRECTION_NOT_CLAIMABLE",
 })
 
-#: Deterministic precedence, highest first.
 RELATION_STATE_PRECEDENCE = (
     "TEMPORAL_INSUFFICIENT_AUTHORITY",
     "TEMPORAL_IDENTITY_UNRESOLVED",
@@ -104,7 +125,13 @@ RELATION_STATE_PRECEDENCE = (
 )
 RELATION_STATES = frozenset(RELATION_STATE_PRECEDENCE)
 
-#: State-local scalar reason precedence.
+#: HQ214 adjudication B - the only states that may carry COMPARABLE.
+COMPARABLE_STATES = frozenset({
+    "TEMPORAL_INTERVAL_OVERLAP_NO_DIRECTION",
+    "TEMPORAL_COMPARABLE_NO_DIRECTION",
+    "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED",
+})
+
 STATE_REASON_PRECEDENCE: Mapping[str, tuple[str, ...]] = {
     "TEMPORAL_INSUFFICIENT_AUTHORITY": (
         "AUTHORITY_HASH_MISMATCH",
@@ -117,6 +144,8 @@ STATE_REASON_PRECEDENCE: Mapping[str, tuple[str, ...]] = {
         "TARGET_USE_PERMISSION_REF_ABSENT",
         "UNCERTAINTY_METHOD_REF_ABSENT",
         "REPLAY_PROTOCOL_REF_ABSENT",
+        "ESTIMAND_AUTHORITY_NOT_POSITIVE",
+        "MEASURE_AUTHORITY_NOT_POSITIVE",
     ),
     "TEMPORAL_IDENTITY_UNRESOLVED": (
         "TEMPORAL_IDENTITY_CONTRACT_REF_ABSENT",
@@ -159,53 +188,64 @@ STATE_REASON_PRECEDENCE: Mapping[str, tuple[str, ...]] = {
     ),
 }
 
-#: Prior F7 relation states mapped onto the repaired terminal states.
-PRIOR_F7_STATE_MAP: Mapping[str, str | None] = {
-    "TEMPORAL_AUTHORITY_MISSING": "TEMPORAL_INSUFFICIENT_AUTHORITY",
-    "TEMPORAL_AUTHORITY_CONFLICT": "TEMPORAL_INSUFFICIENT_AUTHORITY",
-    "TEMPORAL_OUT_OF_SCOPE": "TEMPORAL_INSUFFICIENT_AUTHORITY",
-    "TEMPORAL_INTERPOLATION_NOT_AUTHORIZED": "TEMPORAL_NONCOMPARABLE",
-    "TEMPORAL_RESPONSE_SURFACE_MISMATCH": "TEMPORAL_NONCOMPARABLE",
-    # PROBE_ONLY produces no receipt at all.
-    "TEMPORAL_PROBE_ONLY": None,
+#: Repair 7 - prior F7 states now participate in derivation rather than sit inert.
+PRIOR_F7_STATE_MAP: Mapping[str, str] = {
+    "TEMPORAL_AUTHORITY_MISSING": "TEMPORAL_COMPARABILITY_AUTHORITY_REF_ABSENT",
+    "TEMPORAL_AUTHORITY_CONFLICT": "TEMPORAL_COMPARABILITY_AUTHORITY_CONFLICT",
+    "TEMPORAL_OUT_OF_SCOPE": "TEMPORAL_COMPARABILITY_AUTHORITY_OUT_OF_SCOPE",
+    "TEMPORAL_INTERPOLATION_NOT_AUTHORIZED": "INTERPOLATED_ANCHOR_OR_OBSERVATION_FORBIDDEN",
+    "TEMPORAL_RESPONSE_SURFACE_MISMATCH": "RESPONSE_SURFACE_NOT_SHARED",
 }
+PRIOR_F7_NO_RECEIPT_STATES = frozenset({"TEMPORAL_PROBE_ONLY"})
 
-#: A temporally noncomparable pair can never be backfilled into positivity.
-#: Mirrors the frozen literal in ``pre553_source_relations``.
-TEMPORAL_NONCOLLAPSE_STATE = "TEMPORAL_NONCOMPARABLE"
-_BACKFILL_FORBIDDEN = frozenset({"TEMPORAL_NONCOMPARABLE", "NONCOMPARABLE"})
+NONCOMPARABLE_SURFACES = tuple(STATE_REASON_PRECEDENCE["TEMPORAL_NONCOMPARABLE"])
 
-#: Comparability surfaces that force TEMPORAL_NONCOMPARABLE when not shared.
-NONCOMPARABLE_SURFACES = (
-    "RESPONSE_SURFACE_NOT_SHARED",
-    "SCALE_HARMONIZATION_AUTHORITY_ABSENT",
-    "INSTRUMENT_RELEASE_NOT_SHARED",
-    "QUESTION_COORDINATE_SEMANTICS_NOT_SHARED",
-    "GEOGRAPHY_NOT_SHARED",
-    "TARGET_POPULATION_RISK_SET_NOT_SHARED",
-    "TIME_REPRESENTATION_NONCOMPARABLE_UNDER_BOUND_AUTHORITY",
-    "INTERPOLATED_ANCHOR_OR_OBSERVATION_FORBIDDEN",
-)
+NEGATIVE_STATES = frozenset(RELATION_STATE_PRECEDENCE) - COMPARABLE_STATES
 
 
 class TemporalComparabilityError(Pre553IntegrityError):
     """A lawful temporal comparison cannot be produced as requested."""
 
 
+class TemporalComparabilityInputRefusal(TemporalComparabilityError):
+    """HQ214 adjudication A - typed refusal before any receipt is emitted."""
+
+
 class TemporalComparabilityIntegrityError(TemporalComparabilityError):
     """Exact input, ref, tuple, or cross-field law is violated."""
 
 
+# ---------------------------------------------------------------------------
+# exact numeric law
+# ---------------------------------------------------------------------------
+
+def _exact_number(value: Any, name: str) -> int | Decimal | Fraction:
+    if isinstance(value, bool):
+        raise TemporalComparabilityIntegrityError(f"{name} must be an exact number, not bool")
+    if isinstance(value, int):
+        return value
+    if isinstance(value, Decimal):
+        if not value.is_finite():
+            raise TemporalComparabilityIntegrityError(f"{name} must be finite")
+        return value
+    if isinstance(value, Fraction):
+        return value
+    raise TemporalComparabilityIntegrityError(
+        f"{name} must be an exact int, Decimal, or Fraction; floats are forbidden")
+
+
+def _exact_sign(value: Any) -> int:
+    number = _exact_number(value, "value")
+    return (number > 0) - (number < 0)
+
+
 def _canonical_zero(value: Any) -> bool:
-    """Exact canonical zero only.
+    """Exact zero only: exact sign equals zero.
 
-    Zero means exactly zero for any exact numeric representation: integer,
-    ``Decimal`` or ``Fraction``. That is not a coercion, because all three are
-    exact and mutually orderable, and equality is checked exactly.
-
-    What is refused is everything else: floats, booleans, non-finite decimals,
-    and any inexact or banded quantity. There is no deadband, no tolerance, no
-    inherited V553 threshold, and no epsilon anywhere in this module.
+    Zero is zero for any exact numeric representation, which is not a coercion
+    because all three are exact and mutually orderable. Floats, booleans and
+    non-finite values are refused. There is no deadband, tolerance, inherited
+    V553 threshold, or epsilon anywhere.
     """
     try:
         return _exact_sign(value) == 0
@@ -213,21 +253,16 @@ def _canonical_zero(value: Any) -> bool:
         return False
 
 
-def _exact_sign(value: Any) -> int:
-    """Exact sign of a signed delta with no floating point and no epsilon."""
-    if isinstance(value, bool):
-        raise TemporalComparabilityIntegrityError("boolean is not a signed delta")
-    if isinstance(value, int):
-        return (value > 0) - (value < 0)
-    if isinstance(value, Decimal):
-        if not value.is_finite():
-            raise TemporalComparabilityIntegrityError("non-finite delta")
-        return (value > 0) - (value < 0)
-    if isinstance(value, Fraction):
-        return (value > 0) - (value < 0)
-    raise TemporalComparabilityIntegrityError(
-        "signed delta must be an exact int, Decimal, or Fraction; floats are forbidden")
+def _exact_difference(later: Any, earlier: Any) -> int | Decimal | Fraction:
+    """The exact signed difference, computed rather than caller-minted."""
+    a = _exact_number(later, "later_value")
+    b = _exact_number(earlier, "earlier_value")
+    return a - b
 
+
+# ---------------------------------------------------------------------------
+# ref helpers
+# ---------------------------------------------------------------------------
 
 def _require_ref(value: Any, name: str) -> ExactRef:
     try:
@@ -239,41 +274,228 @@ def _require_ref(value: Any, name: str) -> ExactRef:
 def _require_ref_tuple(value: Any, name: str) -> tuple[ExactRef, ...]:
     if isinstance(value, (str, bytes)) or not isinstance(value, (Sequence, Iterable)):
         raise TemporalComparabilityIntegrityError(f"{name} must be a sequence of exact refs")
-    items = tuple(_require_ref(v, f"{name}[{i}]") for i, v in enumerate(value))
-    return items
+    return tuple(_require_ref(v, f"{name}[{i}]") for i, v in enumerate(value))
 
+
+def _require_authority_ref(value: Any, name: str) -> AuthorityRef:
+    if isinstance(value, AuthorityRef):
+        return value
+    if isinstance(value, Mapping):
+        try:
+            keys = set(value)
+        except TypeError as exc:  # pragma: no cover - defensive
+            raise TemporalComparabilityIntegrityError(f"{name} is malformed") from exc
+        if keys == {"authority_id", "authority_version", "authority_content_hash"}:
+            return AuthorityRef(value["authority_id"], value["authority_version"],
+                                value["authority_content_hash"])
+    raise TemporalComparabilityIntegrityError(f"{name} must be an exact AuthorityRef")
+
+
+def _require_authority_tuple(value: Any, name: str) -> tuple[AuthorityRef, ...]:
+    if isinstance(value, (str, bytes)) or not isinstance(value, (Sequence, Iterable)):
+        raise TemporalComparabilityIntegrityError(f"{name} must be a sequence of AuthorityRef")
+    return tuple(_require_authority_ref(v, f"{name}[{i}]") for i, v in enumerate(value))
+
+
+# ---------------------------------------------------------------------------
+# authority resolution (Repair 1 + Repair 2)
+# ---------------------------------------------------------------------------
+
+@dataclass(frozen=True)
+class AuthorityResolutionRecord:
+    """Exact typed outcome of one required authority resolution."""
+
+    slot: str
+    authority_kind: str
+    authority_ref: AuthorityRef | None
+    outcome: str
+    detail: str | None = None
+    operation: str | None = None
+    governed_use_id: str | None = None
+
+    def as_material(self) -> dict[str, Any]:
+        return {
+            "slot": self.slot,
+            "authority_kind": self.authority_kind,
+            "authority_ref": self.authority_ref.as_dict() if self.authority_ref else None,
+            "outcome": self.outcome,
+            "detail": self.detail,
+            "operation": self.operation,
+            "governed_use_id": self.governed_use_id,
+        }
+
+
+POSITIVE = "POSITIVE"
+ABSENT = "ABSENT"
+CONFLICT = "CONFLICT"
+HASH_MISMATCH = "AUTHORITY_HASH_MISMATCH"
+SCOPE_MISMATCH = "AUTHORITY_SCOPE_MISMATCH"
+OUT_OF_SCOPE = "OUT_OF_SCOPE"
+
+
+def _known_snapshots(registry: AuthorityRegistry) -> tuple[AuthoritySnapshot, ...]:
+    """Registered snapshots, for immutable-hash diagnostics only."""
+    by_key = getattr(registry, "_by_key", None)
+    if isinstance(by_key, Mapping):
+        return tuple(by_key.values())
+    return ()
+
+
+def _scope_covers_universe(scope_value: Any, universe: Any) -> bool:
+    if isinstance(scope_value, str):
+        return scope_value == "EXPLICIT_UNRESTRICTED"
+    if isinstance(scope_value, (set, frozenset, list, tuple)):
+        target = canonicalize(universe)
+        return any(canonicalize(v) == target for v in scope_value)
+    return False
+
+
+def resolve_required_authority(
+    registry: AuthorityRegistry | None,
+    ref: AuthorityRef | None,
+    *,
+    slot: str,
+    authority_kind: str,
+    operation: str | None = None,
+    governed_use_id: str | None = None,
+    required_universe_refs: Sequence[Any] = (),
+    require_use_scope: bool = False,
+) -> tuple[AuthorityResolutionRecord, AuthoritySnapshot | None]:
+    """Resolve one contract-required authority to a typed outcome.
+
+    Presence of a ref string is never enough: the exact snapshot must exist,
+    its immutable content hash must match, the exact operation must be governed,
+    and any required scope must actually cover the bound material.
+    """
+    if ref is None:
+        return AuthorityResolutionRecord(slot, authority_kind, None, ABSENT), None
+    if registry is None:
+        # F-NONE-01: a missing registry is a typed absence, never an AttributeError.
+        return AuthorityResolutionRecord(
+            slot, authority_kind, ref, ABSENT, "no exact authority registry supplied"), None
+
+    try:
+        resolution = registry.resolve_exact(ref)
+        snapshot = resolution.snapshot
+    except Pre553AuthorityConflict as exc:
+        return AuthorityResolutionRecord(
+            slot, authority_kind, ref, CONFLICT, str(exc), operation, governed_use_id), None
+    except Pre553AuthorityError as exc:
+        # An exact ref that names a known authority id/version but a different
+        # content hash is a real immutable-integrity violation, not mere absence.
+        for candidate in _known_snapshots(registry):
+            if (candidate.authority_id == ref.authority_id
+                    and candidate.authority_version == ref.authority_version):
+                if candidate.authority_ref.authority_content_hash != ref.authority_content_hash:
+                    return AuthorityResolutionRecord(
+                        slot, authority_kind, ref, HASH_MISMATCH,
+                        "bound exact ref content hash differs from the registered "
+                        "immutable authority content hash",
+                        operation, governed_use_id), None
+                return AuthorityResolutionRecord(
+                    slot, authority_kind, ref, ABSENT,
+                    "exact authority is not registered under this exact ref",
+                    operation, governed_use_id), None
+        return AuthorityResolutionRecord(
+            slot, authority_kind, ref, ABSENT, str(exc), operation, governed_use_id), None
+
+    if snapshot.authority_ref != ref:
+        return AuthorityResolutionRecord(
+            slot, authority_kind, ref, HASH_MISMATCH,
+            "resolved snapshot content hash differs from the bound exact ref",
+            operation, governed_use_id), None
+
+    if snapshot.authority_kind != authority_kind:
+        return AuthorityResolutionRecord(
+            slot, authority_kind, ref, SCOPE_MISMATCH,
+            f"exact authority kind is {snapshot.authority_kind}", operation, governed_use_id), None
+
+    if snapshot.decision_state != "ALLOW":
+        outcome = OUT_OF_SCOPE if snapshot.decision_state == "OUT_OF_SCOPE" else ABSENT
+        return AuthorityResolutionRecord(
+            slot, authority_kind, ref, outcome,
+            f"exact decision_state is {snapshot.decision_state}", operation, governed_use_id), None
+
+    try:
+        require_positive_authority(snapshot, authority_kind=authority_kind, operation=operation)
+    except Pre553AuthorityError as exc:
+        text = str(exc)
+        if "hash" in text.lower():
+            outcome = HASH_MISMATCH
+        elif "scope" in text.lower():
+            outcome = SCOPE_MISMATCH
+        else:
+            outcome = SCOPE_MISMATCH
+        return AuthorityResolutionRecord(
+            slot, authority_kind, ref, outcome, text, operation, governed_use_id), None
+
+    scope = snapshot.scope_envelope
+    for universe in required_universe_refs:
+        if not _scope_covers_universe(scope.get("source_universe_refs"), universe):
+            return AuthorityResolutionRecord(
+                slot, authority_kind, ref, SCOPE_MISMATCH,
+                "exact authority scope does not cover a bound source universe",
+                operation, governed_use_id), None
+
+    if require_use_scope and governed_use_id is not None:
+        governed = scope.get("target_use_refs")
+        if governed is not None and not _scope_covers_universe(governed, governed_use_id):
+            return AuthorityResolutionRecord(
+                slot, authority_kind, ref, SCOPE_MISMATCH,
+                "exact authority scope does not cover the governed use",
+                operation, governed_use_id), None
+
+    return AuthorityResolutionRecord(
+        slot, authority_kind, ref, POSITIVE, None, operation, governed_use_id), snapshot
+
+
+# ---------------------------------------------------------------------------
+# request / receipt
+# ---------------------------------------------------------------------------
 
 @dataclass(frozen=True)
 class TemporalComparisonRequest:
-    """Exact bounded request. Nothing here is inferred or defaulted."""
+    """Exact bounded request. Nothing is inferred, defaulted, or minted."""
 
+    # exact identity and pair material
     temporal_identity_contract_ref: Any
     anchor_refs: Any
-    temporal_comparability_authority_ref: Any
-    temporal_order_disposition: str
-    temporal_order_basis_ref: Any
-    comparability_requirements_ref: Any
-    estimand_authority_refs: Any
-    measure_authority_refs: Any
     observation_refs: Any
-    uncertainty_authority_ref: Any
-    governed_use_id: str
-    target_use_permission_refs: Any
-    provenance_and_replay_ref: Any
-    temporal_evidence_authority_ref: Any = None
+    source_universe_refs: Any
+    governed_use_id: Any
+
+    # order law
+    temporal_order_disposition: str
+    temporal_order_basis_ref: Any = None
+
+    # required authority surface, all exact AuthorityRefs
+    temporal_comparability_authority_ref: Any = None
     temporal_order_basis_authority_ref: Any = None
-    source_equivalence_ref: Any = None
+    temporal_evidence_authority_ref: Any = None
+    estimand_authority_refs: Any = ()
+    measure_authority_refs: Any = ()
+    target_use_permission_refs: Any = ()
+    uncertainty_authority_ref: Any = None
+    replay_protocol_authority_ref: Any = None
+    native_canonical_mapping_authority_ref: Any = None
     source_equivalence_authority_ref: Any = None
-    source_equivalence_operation: str = "SEMANTIC_EQUIVALENCE_ADMISSION"
+
+    # exact refs required by the contract
+    comparability_requirements_ref: Any = None
+    source_equivalence_ref: Any = None
     native_canonical_mapping_ref: Any = None
+
+    # bound comparison operation and quantity surface (Repair 5)
+    comparison_operation: str = AUTHORIZED_COMPARISON_OPERATION
+    quantity_surface: Any = None
+
+    uncertainty_state: str = "QUANTIFIED_UNDER_BOUND_METHOD"
+    intervening_span_state: str = "NO_INTERVENING_GAP"
     family_mapping_required: bool = False
-    pair_crosses_source_universes: bool = False
     intervals_overlap: bool = False
     identity_surface_jointly_satisfied: bool = True
     comparability_requirement_results: tuple[Mapping[str, Any], ...] = ()
     prior_f7_state: str | None = None
-    signed_delta: Any = None
-    anchor_order_is_directional: bool = True
 
 
 @dataclass(frozen=True)
@@ -281,32 +503,34 @@ class TemporalRelationReceipt:
     """Module-local closed content-addressed receipt.
 
     Deliberately NOT a ``CanonicalSemanticObject``. ``relation_state`` is a
-    receipt-local validated closed field, never a ``typed_state``.
+    receipt-local validated closed field, never a ``typed_state``. Field names
+    are the accepted contract's own names.
     """
 
     receipt_id: str
-    contract_id: str
-    temporal_identity_contract_ref: dict[str, str]
+    temporal_identity_contract_ref: dict[str, str] | None
     anchor_refs: tuple[dict[str, str], ...]
     temporal_order_disposition: str
     temporal_order_basis_ref: dict[str, str] | None
     comparability_status: str
     comparability_requirement_results: tuple[dict[str, Any], ...]
     relation_status: str
+    direction_claim: str
+    quantity_surface: dict[str, Any]
+    delta: dict[str, Any] | None
+    non_delta_presence: str
+    uncertainty_state: str
+    intervening_span_state: str
     relation_state: str
     relation_state_reason: str
-    direction_claim: str
-    signed_delta: Any
-    non_delta_presence: str
-    authority_state_provenance: tuple[str, ...]
-    source_equivalence_ref: dict[str, str] | None
-    provenance_and_replay_ref: dict[str, str]
+    governed_use_id: dict[str, str]
+    authority_snapshot_refs: tuple[dict[str, str], ...]
+    provenance: dict[str, Any]
     receipt_hash: str
 
     def as_material(self) -> dict[str, Any]:
         """Exact deterministic replay material; excludes ``receipt_hash``."""
         return {
-            "contract_id": self.contract_id,
             "receipt_id": self.receipt_id,
             "temporal_identity_contract_ref": self.temporal_identity_contract_ref,
             "anchor_refs": [dict(r) for r in self.anchor_refs],
@@ -315,45 +539,36 @@ class TemporalRelationReceipt:
             "comparability_status": self.comparability_status,
             "comparability_requirement_results": [dict(r) for r in self.comparability_requirement_results],
             "relation_status": self.relation_status,
+            "direction_claim": self.direction_claim,
+            "quantity_surface": self.quantity_surface,
+            "delta": self.delta,
+            "non_delta_presence": self.non_delta_presence,
+            "uncertainty_state": self.uncertainty_state,
+            "intervening_span_state": self.intervening_span_state,
             "relation_state": self.relation_state,
             "relation_state_reason": self.relation_state_reason,
-            "direction_claim": self.direction_claim,
-            "signed_delta": self.signed_delta,
-            "non_delta_presence": self.non_delta_presence,
-            "authority_state_provenance": list(self.authority_state_provenance),
-            "source_equivalence_ref": self.source_equivalence_ref,
-            "provenance_and_replay_ref": self.provenance_and_replay_ref,
+            "governed_use_id": self.governed_use_id,
+            "authority_snapshot_refs": [dict(r) for r in self.authority_snapshot_refs],
+            "provenance": self.provenance,
         }
 
     def replay_identity(self) -> str:
         return semantic_hash(self.as_material())
 
 
-def _resolve_positive(registry: AuthorityRegistry | None, ref: Any, kind: str, operation: str | None):
-    """Resolve one exact positive authority, returning (snapshot, provenance)."""
-    if ref is None:
-        return None, (f"{kind}_REF_ABSENT",)
-    if registry is None:
-        raise TemporalComparabilityError(
-            "an exact authority registry is required to resolve any temporal authority")
-    try:
-        snapshot = registry.require(ref, authority_kind=kind, operation=operation)
-    except Pre553AuthorityConflict:
-        return None, ("CONFLICT",)
-    except Pre553AuthorityError as exc:
-        text = str(exc)
-        if "hash" in text.lower():
-            return None, ("AUTHORITY_HASH_MISMATCH",)
-        if "scope" in text.lower():
-            return None, ("AUTHORITY_SCOPE_MISMATCH",)
-        if "out_of_scope" in text.lower() or "OUT_OF_SCOPE" in text:
-            return None, ("OUT_OF_SCOPE",)
-        return None, ("REF_ABSENT",)
-    return snapshot, ()
+def _request_field_names() -> tuple[str, ...]:
+    return tuple(f.name for f in __import__("dataclasses").fields(TemporalComparisonRequest))
+
+
+def _select_reason(state: str, detected: Sequence[str]) -> str:
+    allowed = STATE_REASON_PRECEDENCE[state]
+    for reason in allowed:
+        if reason in detected:
+            return reason
+    return allowed[0]
 
 
 def _validate_kind_ceiling_pairing() -> None:
-    """The registry has a strict kind/ceiling pairing law."""
     if TEMPORAL_COMPARABILITY_AUTHORITY_KIND not in AUTHORITY_KINDS:
         raise TemporalComparabilityIntegrityError(
             "TEMPORAL_COMPARABILITY must be an exact registered authority kind")
@@ -362,77 +577,21 @@ def _validate_kind_ceiling_pairing() -> None:
             "TEMPORAL_COMPARABILITY requires exactly one matching ceiling entry")
     for kind in AUTHORITY_KIND_CEILINGS:
         if kind not in AUTHORITY_KINDS:
-            raise TemporalComparabilityIntegrityError(
-                f"ceiling without kind: {kind}")
+            raise TemporalComparabilityIntegrityError(f"ceiling without kind: {kind}")
+    if set(AUTHORITY_KINDS) != set(AUTHORITY_KIND_CEILINGS):
+        raise TemporalComparabilityIntegrityError(
+            "every authority kind must have exactly one ceiling entry")
 
 
-def _select_reason(state: str, detected: Sequence[str]) -> str:
-    """Exactly one scalar reason under state-local precedence."""
-    allowed = STATE_REASON_PRECEDENCE[state]
-    for reason in allowed:
-        if reason in detected:
-            return reason
-    # A state may be reached with no surface-specific flag (e.g. a clean
-    # positive). Its first reason is then the deterministic scalar reason.
-    return allowed[0]
+#: The live frozen surface, consulted rather than copied (Repair 9).
+def _frozen_backfill_targets() -> frozenset[str]:
+    from rawlsing_next.pre553_source_relations import FORBIDDEN_BACKFILL_TARGET_STATES
+    return frozenset(FORBIDDEN_BACKFILL_TARGET_STATES)
 
 
-def _validate_cross_field_tuple(receipt_fields: Mapping[str, Any]) -> None:
-    """Refuse invalid cross-field tuples before any receipt is minted."""
-    state = receipt_fields["relation_state"]
-    disposition = receipt_fields["temporal_order_disposition"]
-    basis = receipt_fields["temporal_order_basis_ref"]
-    direction = receipt_fields["direction_claim"]
-    delta = receipt_fields["signed_delta"]
-    relation_status = receipt_fields["relation_status"]
-    # Exactness is decided on the raw supplied delta, never on its canonical
-    # projection, so that an exact tagged zero stays an exact zero.
-    delta_is_zero = bool(receipt_fields["_delta_is_exact_zero"])
-
-    if disposition not in ORDER_DISPOSITIONS:
-        raise TemporalComparabilityIntegrityError("unknown order disposition")
-    if disposition == NO_BASIS_DISPOSITION and basis is not None:
-        raise TemporalComparabilityIntegrityError(
-            "ORDER_UNKNOWN_NONCOMPARABLE must carry no basis ref")
-    if disposition in AUTHORIZED_ORDER_BASES and basis is None:
-        raise TemporalComparabilityIntegrityError(
-            "an authorized order basis requires an exact basis ref")
-    if disposition == NO_BASIS_DISPOSITION and state != "TEMPORAL_ORDER_UNAUTHORIZED":
-        raise TemporalComparabilityIntegrityError(
-            "no-basis disposition maps uniquely to TEMPORAL_ORDER_UNAUTHORIZED")
-    if state == "TEMPORAL_ORDER_UNAUTHORIZED" and disposition != NO_BASIS_DISPOSITION:
-        raise TemporalComparabilityIntegrityError(
-            "TEMPORAL_ORDER_UNAUTHORIZED has a unique derivation from no-basis")
-
-    if direction == "DIRECTION_NOT_CLAIMABLE" and delta is not None:
-        raise TemporalComparabilityIntegrityError(
-            "DIRECTION_NOT_CLAIMABLE must carry a null delta")
-    if direction == "NO_AUTHORIZED_CHANGE" and not delta_is_zero:
-        raise TemporalComparabilityIntegrityError(
-            "NO_AUTHORIZED_CHANGE requires an exact canonical-zero delta")
-    if state == "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED":
-        if disposition not in DIRECTION_PERMITTING_BASES:
-            raise TemporalComparabilityIntegrityError(
-                "directional claim requires a direction-permitting authorized basis")
-        if direction not in ("INCREASE", "DECREASE", "NO_AUTHORIZED_CHANGE"):
-            raise TemporalComparabilityIntegrityError(
-                "directional claim authorized with a non-claimable direction")
-        if relation_status != "ORDERED_RELATION_AUTHORIZED":
-            raise TemporalComparabilityIntegrityError(
-                "directional claim requires ORDERED_RELATION_AUTHORIZED")
-        if receipt_fields["comparability_status"] != "COMPARABLE":
-            raise TemporalComparabilityIntegrityError(
-                "directional claim requires a COMPARABLE pair")
-        if delta is None:
-            raise TemporalComparabilityIntegrityError(
-                "directional claim requires an exact delta")
-    if disposition == "PARTIAL_ORDER_NO_DIRECTION":
-        if state not in ("TEMPORAL_INTERVAL_OVERLAP_NO_DIRECTION", "TEMPORAL_COMPARABLE_NO_DIRECTION"):
-            raise TemporalComparabilityIntegrityError(
-                "partial order may only yield the two comparable-no-direction states")
-        if relation_status != "ORDER_RELATION_REFUSED" or direction != "DIRECTION_NOT_CLAIMABLE":
-            raise TemporalComparabilityIntegrityError(
-                "partial order must refuse the order relation and the direction")
+def temporal_backfill_refused(relation_state: str) -> bool:
+    """True when the live frozen surface forbids this state as a backfill target."""
+    return relation_state in _frozen_backfill_targets()
 
 
 def compare_temporal_anchors(
@@ -446,44 +605,69 @@ def compare_temporal_anchors(
     """
     _validate_kind_ceiling_pairing()
 
-    if request.prior_f7_state is not None and request.prior_f7_state not in PRIOR_F7_STATE_MAP:
-        raise TemporalComparabilityIntegrityError("unknown prior F7 state")
-    if request.prior_f7_state == "TEMPORAL_PROBE_ONLY":
-        # PROBE_ONLY is diagnostic output outside TEMPORAL_RELATION_RECEIPT and
-        # cannot be upgraded into a claim: there is simply no receipt.
-        raise TemporalComparabilityError(
-            "TEMPORAL_PROBE_ONLY yields no temporal relation receipt")
+    # ---- Repair 7: prior F7 state participates, or refuses with no receipt ----
+    prior_refusals: list[str] = []
+    if request.prior_f7_state is not None:
+        if request.prior_f7_state in PRIOR_F7_NO_RECEIPT_STATES:
+            raise TemporalComparabilityError(
+                f"{request.prior_f7_state} yields no temporal relation receipt")
+        if request.prior_f7_state not in PRIOR_F7_STATE_MAP:
+            raise TemporalComparabilityIntegrityError(
+                f"unknown prior F7 state: {request.prior_f7_state}")
+        prior_refusals.append(PRIOR_F7_STATE_MAP[request.prior_f7_state])
 
     disposition = request.temporal_order_disposition
     if disposition not in ORDER_DISPOSITIONS:
         raise TemporalComparabilityIntegrityError(f"unknown order disposition: {disposition}")
 
+    # ---- Repair 3: exact cardinality, 2 anchors and 2 bound observations ----
     anchors = _require_ref_tuple(request.anchor_refs, "anchor_refs")
     observations = _require_ref_tuple(request.observation_refs, "observation_refs")
-    estimands = _require_ref_tuple(request.estimand_authority_refs, "estimand_authority_refs")
-    measures = _require_ref_tuple(request.measure_authority_refs, "measure_authority_refs")
-    target_uses = _require_ref_tuple(
-        request.target_use_permission_refs, "target_use_permission_refs")
+    universes = _require_ref_tuple(request.source_universe_refs, "source_universe_refs")
+    if len(anchors) > 2:
+        raise TemporalComparabilityInputRefusal(
+            "exactly two authorized anchors are required; "
+            f"{len(anchors)} supplied (contract exact_cardinality=2)")
+    if len(universes) > 2:
+        raise TemporalComparabilityInputRefusal(
+            "at most two source-universe refs are required; "
+            f"{len(universes)} supplied (contract exact_cardinality=2)")
+    if len(observations) != 2:
+        raise TemporalComparabilityInputRefusal(
+            "exactly two observation refs are required, one per anchor; "
+            f"{len(observations)} supplied")
+    if len(universes) != 2:
+        raise TemporalComparabilityInputRefusal(
+            "exactly two source-universe refs are required, one per anchor; "
+            f"{len(universes)} supplied")
+    cardinality_short = len(anchors) < 2
+    bound_observation_bindings = tuple(
+        {"anchor": a.as_dict(), "observation": o.as_dict()}
+        for a, o in zip(anchors, observations))
+    if cardinality_short:
+        bound_observation_bindings = ()
 
-    if request.governed_use_id is None or not str(request.governed_use_id).strip():
-        raise TemporalComparabilityIntegrityError("governed_use_id is required")
+    governed_use_id = _require_ref(request.governed_use_id, "governed_use_id")
 
     identity_ref = None
     if request.temporal_identity_contract_ref is not None:
-        identity_ref = _require_ref(request.temporal_identity_contract_ref, "temporal_identity_contract_ref")
-    requirements_ref = None
-    if request.comparability_requirements_ref is not None:
-        requirements_ref = _require_ref(request.comparability_requirements_ref, "comparability_requirements_ref")
-    replay_ref = None
-    if request.provenance_and_replay_ref is not None:
-        replay_ref = _require_ref(request.provenance_and_replay_ref, "provenance_and_replay_ref")
-    uncertainty_ref = None
-    if request.uncertainty_authority_ref is not None:
-        uncertainty_ref = _require_ref(request.uncertainty_authority_ref, "uncertainty_authority_ref")
+        identity_ref = _require_ref(request.temporal_identity_contract_ref,
+                                    "temporal_identity_contract_ref")
+
+    # ---- Repair 4: comparability_requirements_ref is required and resolved ----
+    if request.comparability_requirements_ref is None:
+        raise TemporalComparabilityInputRefusal(
+            "comparability_requirements_ref is contract-required")
+    requirements_ref = _require_ref(request.comparability_requirements_ref,
+                                    "comparability_requirements_ref")
+
     mapping_ref = None
     if request.native_canonical_mapping_ref is not None:
-        mapping_ref = _require_ref(request.native_canonical_mapping_ref, "native_canonical_mapping_ref")
-
+        mapping_ref = _require_ref(request.native_canonical_mapping_ref,
+                                   "native_canonical_mapping_ref")
+    equivalence_ref = None
+    if request.source_equivalence_ref is not None:
+        equivalence_ref = _require_ref(request.source_equivalence_ref, "source_equivalence_ref")
     basis_ref = None
     if request.temporal_order_basis_ref is not None:
         if disposition == NO_BASIS_DISPOSITION:
@@ -491,144 +675,219 @@ def compare_temporal_anchors(
                 "ORDER_UNKNOWN_NONCOMPARABLE must carry no basis ref")
         basis_ref = _require_ref(request.temporal_order_basis_ref, "temporal_order_basis_ref")
 
-    # Every detected failure is retained; precedence later selects one state.
-    detected: list[str] = []
-    authority_provenance: list[str] = []
+    if request.uncertainty_state not in UNCERTAINTY_STATES:
+        raise TemporalComparabilityIntegrityError("unknown uncertainty_state")
+    if request.intervening_span_state not in INTERVENING_SPAN_STATES:
+        raise TemporalComparabilityIntegrityError("unknown intervening_span_state")
 
-    snapshot, prov = _resolve_positive(
-        registry, request.temporal_comparability_authority_ref,
-        TEMPORAL_COMPARABILITY_AUTHORITY_KIND, None)
-    authority_provenance.extend(f"{TEMPORAL_COMPARABILITY_AUTHORITY_KIND}:{p}" for p in prov)
-    if snapshot is None:
-        if "CONFLICT" in prov:
-            detected.append("TEMPORAL_COMPARABILITY_AUTHORITY_CONFLICT")
-        elif "OUT_OF_SCOPE" in prov:
-            detected.append("TEMPORAL_COMPARABILITY_AUTHORITY_OUT_OF_SCOPE")
-        else:
-            detected.append("TEMPORAL_COMPARABILITY_AUTHORITY_REF_ABSENT")
+    # ---- Repair 8: cross-universe is material-derived, never a caller boolean ----
+    crosses_universes = universes[0].key != universes[1].key
+
+    detected: list[str] = []
+    resolutions: list[AuthorityResolutionRecord] = []
+    positive_snapshots: list[AuthoritySnapshot] = []
+
+    def resolve(slot, ref, kind, *, operation=None, universe_refs=(), use_scope=False):
+        record, snapshot = resolve_required_authority(
+            registry, ref, slot=slot, authority_kind=kind, operation=operation,
+            governed_use_id=governed_use_id.object_id,
+            required_universe_refs=universe_refs, require_use_scope=use_scope)
+        resolutions.append(record)
+        if snapshot is not None:
+            positive_snapshots.append(snapshot)
+        return record
+
+    # ---- Repair 1 + 2: every required authority resolved to a typed outcome ----
+    tc = resolve("temporal_comparability", request.temporal_comparability_authority_ref,
+                 TEMPORAL_COMPARABILITY_AUTHORITY_KIND,
+                 operation=request.comparison_operation, use_scope=True)
+    if tc.outcome != POSITIVE:
+        detected.append({
+            CONFLICT: "TEMPORAL_COMPARABILITY_AUTHORITY_CONFLICT",
+            OUT_OF_SCOPE: "TEMPORAL_COMPARABILITY_AUTHORITY_OUT_OF_SCOPE",
+            HASH_MISMATCH: "AUTHORITY_HASH_MISMATCH",
+            SCOPE_MISMATCH: "AUTHORITY_SCOPE_MISMATCH",
+        }.get(tc.outcome, "TEMPORAL_COMPARABILITY_AUTHORITY_REF_ABSENT"))
+
+    te = resolve("temporal_evidence", request.temporal_evidence_authority_ref, "TEMPORAL_EVIDENCE")
+    if te.outcome != POSITIVE:
+        detected.append({
+            HASH_MISMATCH: "AUTHORITY_HASH_MISMATCH",
+            SCOPE_MISMATCH: "AUTHORITY_SCOPE_MISMATCH",
+        }.get(te.outcome, "TEMPORAL_EVIDENCE_AUTHORITY_REF_ABSENT_FOR_ANCHOR"))
 
     if disposition in AUTHORIZED_ORDER_BASES:
-        # An authorized basis requires a positive exact basis authority under
-        # TEMPORAL_EVIDENCE. The basis ref itself is an ExactRef, never an
-        # AuthorityRef; it is never resolved as one.
-        basis_snapshot, basis_prov = _resolve_positive(
-            registry, request.temporal_order_basis_authority_ref, "TEMPORAL_EVIDENCE", None)
-        if basis_snapshot is None:
-            detected.append("TEMPORAL_ORDER_BASIS_AUTHORITY_REF_ABSENT")
+        tb = resolve("temporal_order_basis", request.temporal_order_basis_authority_ref,
+                     "TEMPORAL_EVIDENCE")
+        if tb.outcome != POSITIVE:
+            detected.append({
+                HASH_MISMATCH: "AUTHORITY_HASH_MISMATCH",
+                SCOPE_MISMATCH: "AUTHORITY_SCOPE_MISMATCH",
+            }.get(tb.outcome, "TEMPORAL_ORDER_BASIS_AUTHORITY_REF_ABSENT"))
 
-    if request.temporal_evidence_authority_ref is None:
-        detected.append("TEMPORAL_EVIDENCE_AUTHORITY_REF_ABSENT_FOR_ANCHOR")
+    tp = resolve("target_use_permission",
+                 request.target_use_permission_refs and request.target_use_permission_refs[0],
+                 "TARGET_USE_PERMISSION", universe_refs=(), use_scope=True)
+    if tp.outcome != POSITIVE:
+        detected.append({
+            HASH_MISMATCH: "AUTHORITY_HASH_MISMATCH",
+            SCOPE_MISMATCH: "AUTHORITY_SCOPE_MISMATCH",
+        }.get(tp.outcome, "TARGET_USE_PERMISSION_REF_ABSENT"))
+
+    um = resolve("uncertainty_method", request.uncertainty_authority_ref, "UNCERTAINTY_METHOD")
+    if um.outcome != POSITIVE:
+        detected.append({
+            HASH_MISMATCH: "AUTHORITY_HASH_MISMATCH",
+            SCOPE_MISMATCH: "AUTHORITY_SCOPE_MISMATCH",
+        }.get(um.outcome, "UNCERTAINTY_METHOD_REF_ABSENT"))
+        uncertainty_state = "UNCERTAINTY_METHOD_ABSENT"
     else:
-        ev_snapshot, ev_prov = _resolve_positive(
-            registry, request.temporal_evidence_authority_ref, "TEMPORAL_EVIDENCE", None)
-        if ev_snapshot is None:
-            detected.append("TEMPORAL_EVIDENCE_AUTHORITY_REF_ABSENT_FOR_ANCHOR")
+        # A quantified claim requires a positively resolved exact uncertainty
+        # method; without one the claim may not be presented as quantified.
+        uncertainty_state = ("QUANTIFIED_UNDER_BOUND_METHOD"
+                             if request.uncertainty_state == "QUANTIFIED_UNDER_BOUND_METHOD"
+                             else request.uncertainty_state)
 
-    if not target_uses:
-        detected.append("TARGET_USE_PERMISSION_REF_ABSENT")
-    if uncertainty_ref is None:
-        detected.append("UNCERTAINTY_METHOD_REF_ABSENT")
-    if replay_ref is None:
-        detected.append("REPLAY_PROTOCOL_REF_ABSENT")
+    rp = resolve("replay_protocol", request.replay_protocol_authority_ref, "REPLAY_PROTOCOL")
+    if rp.outcome != POSITIVE:
+        detected.append({
+            HASH_MISMATCH: "AUTHORITY_HASH_MISMATCH",
+            SCOPE_MISMATCH: "AUTHORITY_SCOPE_MISMATCH",
+        }.get(rp.outcome, "REPLAY_PROTOCOL_REF_ABSENT"))
 
-    if identity_ref is None:
-        detected.append("TEMPORAL_IDENTITY_CONTRACT_REF_ABSENT")
-    elif not request.identity_surface_jointly_satisfied:
-        detected.append("IDENTITY_SURFACE_NOT_JOINTLY_SATISFIED")
+    est_refs = _require_authority_tuple(request.estimand_authority_refs, "estimand_authority_refs")
+    est_snapshots = []
+    for index, ref in enumerate(est_refs):
+        est_snapshots.append(resolve(f"estimand[{index}]", ref, "WEIGHT_DESIGN_ESTIMAND"))
+    if not est_snapshots or any(r.outcome != POSITIVE for r in est_snapshots):
+        detected.append("ESTIMAND_AUTHORITY_NOT_POSITIVE")
+    elif len({r.authority_ref.key for r in est_snapshots}) > 1:
+        detected.append("ESTIMANDS_DIFFER")
 
-    authorized_anchor_count = len(anchors)
-    if authorized_anchor_count < 2:
-        detected.append("FEWER_THAN_TWO_AUTHORIZED_ANCHORS")
+    mea_refs = _require_authority_tuple(request.measure_authority_refs, "measure_authority_refs")
+    mea_snapshots = []
+    for index, ref in enumerate(mea_refs):
+        mea_snapshots.append(resolve(f"measure[{index}]", ref, "WEIGHT_DESIGN_ESTIMAND"))
+    if not mea_snapshots or any(r.outcome != POSITIVE for r in mea_snapshots):
+        detected.append("MEASURE_AUTHORITY_NOT_POSITIVE")
+    elif len({r.authority_ref.key for r in mea_snapshots}) > 1:
+        detected.append("MEASURE_OR_WEIGHT_DESIGN_DIFFERS")
 
-    # Cross-universe: two independent positive paths, never one implying the other.
-    equivalence_ref = None
-    equivalence_positive = False
-    if request.source_equivalence_ref is not None:
-        equivalence_ref = _require_ref(request.source_equivalence_ref, "source_equivalence_ref")
-    if request.pair_crosses_source_universes:
+    if request.family_mapping_required:
+        nm = resolve("native_canonical_mapping", request.native_canonical_mapping_authority_ref,
+                     "NATIVE_CANONICAL_MAPPING_HARMONIZATION")
+        if mapping_ref is None:
+            detected.append("NATIVE_CANONICAL_MAPPING_REF_ABSENT")
+        elif nm.outcome != POSITIVE:
+            detected.append("FAMILY_MAPPING_NOT_POSITIVELY_AUTHORIZED")
+
+    # Cross-universe two independent positive paths (Repair 8).
+    if crosses_universes:
         if equivalence_ref is None:
             detected.append("SOURCE_EQUIVALENCE_REF_ABSENT")
-        elif request.source_equivalence_authority_ref is None:
-            detected.append("SOURCE_EQUIVALENCE_AUTHORITY_NOT_POSITIVE")
         else:
-            # Path A: the source-relation owner, via the existing relation path.
-            try:
-                eq_snapshot = registry.require(
-                    request.source_equivalence_authority_ref, authority_kind="SOURCE_EQUIVALENCE")
-            except Pre553AuthorityError:
-                eq_snapshot = None
-            except Pre553AuthorityConflict:
-                eq_snapshot = None
-            if eq_snapshot is None:
+            eq_record, eq_snapshot = resolve_required_authority(
+                registry, request.source_equivalence_authority_ref,
+                slot="source_equivalence", authority_kind="SOURCE_EQUIVALENCE",
+                operation=SOURCE_EQUIVALENCE_RELATION_OPERATION,
+                governed_use_id=governed_use_id.object_id,
+                required_universe_refs=(universes[0], universes[1]), require_use_scope=True)
+            resolutions.append(eq_record)
+            if eq_snapshot is not None:
+                positive_snapshots.append(eq_snapshot)
+            if eq_record.outcome != POSITIVE:
                 detected.append("SOURCE_EQUIVALENCE_AUTHORITY_NOT_POSITIVE")
             else:
                 try:
                     validate_relation_authority_only(
                         eq_snapshot,
                         relation_authority_kind="SOURCE_EQUIVALENCE",
-                        exact_relation_operation=request.source_equivalence_operation)
-                    equivalence_positive = True
+                        exact_relation_operation=SOURCE_EQUIVALENCE_RELATION_OPERATION)
                 except Pre553AuthorityError:
                     detected.append("SOURCE_EQUIVALENCE_AUTHORITY_NOT_POSITIVE")
 
-    if request.family_mapping_required:
-        if mapping_ref is None:
-            detected.append("NATIVE_CANONICAL_MAPPING_REF_ABSENT")
-        else:
-            map_snapshot, map_prov = _resolve_positive(
-                registry, mapping_ref, "NATIVE_CANONICAL_MAPPING_HARMONIZATION", None)
-            if map_snapshot is None:
-                detected.append("FAMILY_MAPPING_NOT_POSITIVELY_AUTHORIZED")
+    # Identity and declared comparability surfaces.
+    if cardinality_short:
+        detected.append("FEWER_THAN_TWO_AUTHORIZED_ANCHORS")
 
-    if not estimands:
-        detected.append("ESTIMAND_AUTHORITY_REF_ABSENT")
-    elif len({r.key for r in estimands}) > 1:
-        detected.append("ESTIMANDS_DIFFER")
-    if not measures:
-        detected.append("MEASURE_AUTHORITY_REF_ABSENT")
-    elif len({r.key for r in measures}) > 1:
-        detected.append("MEASURE_OR_WEIGHT_DESIGN_DIFFERS")
+    if identity_ref is None:
+        detected.append("TEMPORAL_IDENTITY_CONTRACT_REF_ABSENT")
+    elif not request.identity_surface_jointly_satisfied:
+        detected.append("IDENTITY_SURFACE_NOT_JOINTLY_SATISFIED")
 
-    declared = {str(d.get("reason")) for d in request.comparability_requirement_results if d.get("reason")}
     for surface in NONCOMPARABLE_SURFACES:
-        if surface in declared:
+        if any(d.get("reason") == surface for d in request.comparability_requirement_results):
             detected.append(surface)
 
-    order_refused_surfaces = detected
+    # Repair 7 material: the prior-F7 refusal is a real detected surface.
+    for reason in prior_refusals:
+        detected.append(reason)
 
-    # Deterministic precedence selection.
-    by_state: dict[str, list[str]] = {
-        "TEMPORAL_INSUFFICIENT_AUTHORITY": [],
-        "TEMPORAL_IDENTITY_UNRESOLVED": [],
-        "TEMPORAL_INSUFFICIENT_ANCHORS": [],
-        "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT": [],
-        "TEMPORAL_MAPPING_MATERIAL_ABSENT": [],
-        "TEMPORAL_ESTIMAND_MISMATCH": [],
-        "TEMPORAL_MEASURE_MISMATCH": [],
-        "TEMPORAL_NONCOMPARABLE": [],
-        "TEMPORAL_ORDER_UNAUTHORIZED": [],
-        "TEMPORAL_INTERVAL_OVERLAP_NO_DIRECTION": [],
-        "TEMPORAL_COMPARABLE_NO_DIRECTION": [],
-        "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED": [],
-    }
-    for reason in detected:
-        if reason in STATE_REASON_PRECEDENCE["TEMPORAL_INSUFFICIENT_AUTHORITY"]:
-            by_state["TEMPORAL_INSUFFICIENT_AUTHORITY"].append(reason)
-        elif reason in STATE_REASON_PRECEDENCE["TEMPORAL_IDENTITY_UNRESOLVED"]:
-            by_state["TEMPORAL_IDENTITY_UNRESOLVED"].append(reason)
-        elif reason in STATE_REASON_PRECEDENCE["TEMPORAL_INSUFFICIENT_ANCHORS"]:
-            by_state["TEMPORAL_INSUFFICIENT_ANCHORS"].append(reason)
-        elif reason in STATE_REASON_PRECEDENCE["TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT"]:
-            by_state["TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT"].append(reason)
-        elif reason in STATE_REASON_PRECEDENCE["TEMPORAL_MAPPING_MATERIAL_ABSENT"]:
-            by_state["TEMPORAL_MAPPING_MATERIAL_ABSENT"].append(reason)
-        elif reason in STATE_REASON_PRECEDENCE["TEMPORAL_ESTIMAND_MISMATCH"]:
-            by_state["TEMPORAL_ESTIMAND_MISMATCH"].append(reason)
-        elif reason in STATE_REASON_PRECEDENCE["TEMPORAL_MEASURE_MISMATCH"]:
-            by_state["TEMPORAL_MEASURE_MISMATCH"].append(reason)
-        elif reason in STATE_REASON_PRECEDENCE["TEMPORAL_NONCOMPARABLE"]:
-            by_state["TEMPORAL_NONCOMPARABLE"].append(reason)
+    # ---- Repair 5: derive the delta under the bound authorized operation ----
+    quantity_surface: dict[str, Any] = {}
+    derived_delta: Any = None
+    delta_authority_ok = tc.outcome == POSITIVE
+    if request.comparison_operation != AUTHORIZED_COMPARISON_OPERATION:
+        raise TemporalComparabilityInputRefusal(
+            f"unsupported comparison operation: {request.comparison_operation}")
 
+    needs_delta = disposition in DIRECTION_PERMITTING_BASES and not cardinality_short
+    if request.quantity_surface is None:
+        if needs_delta:
+            raise TemporalComparabilityInputRefusal(
+                "quantity_surface is required to derive an exact delta under the "
+                "bound authorized comparison operation")
+        quantity_surface = {"presence": "NOT_REQUIRED_FOR_THIS_DISPOSITION"}
+    else:
+        if not isinstance(request.quantity_surface, Mapping):
+            raise TemporalComparabilityIntegrityError("quantity_surface must be an exact mapping")
+        missing_keys = [k for k in ("quantity_ref", "earlier_value", "later_value")
+                        if k not in request.quantity_surface]
+        if missing_keys:
+            if needs_delta:
+                raise TemporalComparabilityInputRefusal(
+                    "the bound authorized comparison operation cannot derive an exact "
+                    f"delta: quantity_surface is missing {sorted(missing_keys)}")
+            raise TemporalComparabilityIntegrityError(
+                f"quantity_surface requires exact {sorted(missing_keys)}")
+        quantity_ref = _require_ref(request.quantity_surface["quantity_ref"], "quantity_ref")
+        # The quantity must be the bound measure, or the claim is not about it.
+        bound_measures = {r.authority_ref.key for r in mea_snapshots if r.authority_ref}
+        if bound_measures:
+            try:
+                measure_ref = _require_ref(request.quantity_surface.get("measure_ref"),
+                                           "measure_ref")
+            except TemporalComparabilityIntegrityError:
+                measure_ref = None
+            if measure_ref is not None and measure_ref.key not in bound_measures:
+                raise TemporalComparabilityInputRefusal(
+                    "quantity_surface measure_ref is not the bound measure authority")
+        earlier = _exact_number(request.quantity_surface["earlier_value"], "earlier_value")
+        later = _exact_number(request.quantity_surface["later_value"], "later_value")
+        derived_delta = later - earlier
+        quantity_surface = {
+            "quantity_ref": quantity_ref.as_dict(),
+            "measure_ref": (request.quantity_surface["measure_ref"].as_dict()
+                            if isinstance(request.quantity_surface.get("measure_ref"), ExactRef)
+                            else None),
+            "earlier_value": canonicalize(earlier),
+            "later_value": canonicalize(later),
+            "comparison_operation": request.comparison_operation,
+            "observation_binding": [dict(b) for b in bound_observation_bindings],
+        }
+
+    # ---- HQ214 adjudication A: typed pre-receipt refusal, never a 13th state ----
+    ordered_candidate = needs_delta and not detected
+    if ordered_candidate and not delta_authority_ok:
+        raise TemporalComparabilityInputRefusal(
+            "the bound authorized comparison operation cannot authorize an exact delta")
+    if needs_delta and derived_delta is None:
+        raise TemporalComparabilityInputRefusal(
+            "a direction-permitting authorized basis cannot yield the required exact "
+            "delta under the bound comparison operation; refusing before any receipt")
+
+    # ---- HQ214 adjudication C: precedence dominates the isolated CFI-03 tuple ----
+    by_state: dict[str, list[str]] = {s: [] for s in RELATION_STATE_PRECEDENCE}
     negative_states = (
         "TEMPORAL_INSUFFICIENT_AUTHORITY",
         "TEMPORAL_IDENTITY_UNRESOLVED",
@@ -639,7 +898,13 @@ def compare_temporal_anchors(
         "TEMPORAL_MEASURE_MISMATCH",
         "TEMPORAL_NONCOMPARABLE",
     )
-    state = None
+    for reason in detected:
+        for state in negative_states:
+            if reason in STATE_REASON_PRECEDENCE[state]:
+                by_state[state].append(reason)
+                break
+
+    state: str | None = None
     for candidate in RELATION_STATE_PRECEDENCE:
         if candidate in negative_states and by_state[candidate]:
             state = candidate
@@ -653,141 +918,204 @@ def compare_temporal_anchors(
         else:
             state = "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
 
-    positive_state = state in (
-        "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED",
-        "TEMPORAL_INTERVAL_OVERLAP_NO_DIRECTION",
-        "TEMPORAL_COMPARABLE_NO_DIRECTION",
-    )
-    comparable = state != "TEMPORAL_NONCOMPARABLE" and state not in (
-        "TEMPORAL_INSUFFICIENT_AUTHORITY",
-        "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT",
-    )
+    # HQ214 adjudication B.
+    comparable = state in COMPARABLE_STATES
     ordered = state == "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
 
-    # A direction-permitting basis requires an exact delta. The closed 12-state
-    # vocabulary has no state for "ordered but delta absent", and state 9 has a
-    # unique no-basis derivation, so this is an invalid request, not a receipt.
-    if state == "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED" and request.signed_delta is None:
-        raise TemporalComparabilityIntegrityError(
-            "a direction-permitting authorized basis requires an exact signed delta; "
-            "the closed vocabulary has no ordered-without-delta relation state")
-    if request.signed_delta is None:
-        direction_claim = "DIRECTION_NOT_CLAIMABLE"
-    elif _exact_sign(request.signed_delta) == 0:
-        direction_claim = "NO_AUTHORIZED_CHANGE"
+    if ordered:
+        if _canonical_zero(derived_delta):
+            direction_claim = "NO_AUTHORIZED_CHANGE"
+        else:
+            direction_claim = "INCREASE" if _exact_sign(derived_delta) > 0 else "DECREASE"
+        delta_payload = {
+            "signed_delta": canonicalize(derived_delta),
+            "earlier_value": quantity_surface["earlier_value"],
+            "later_value": quantity_surface["later_value"],
+            "comparison_operation": request.comparison_operation,
+            "zero_basis": "exact signed difference equals canonical zero",
+        }
+        non_delta_presence = "DELTA_PRESENT"
     else:
-        direction_claim = "INCREASE" if _exact_sign(request.signed_delta) > 0 else "DECREASE"
-
-    non_delta_presence = "DELTA_PRESENT" if request.signed_delta is not None else "DELTA_NOT_CLAIMABLE"
+        direction_claim = "DIRECTION_NOT_CLAIMABLE"
+        delta_payload = None
+        non_delta_presence = "DELTA_NOT_CLAIMABLE"
 
     if disposition == "PARTIAL_ORDER_NO_DIRECTION":
-        direction_claim = "DIRECTION_NOT_CLAIMABLE"
-    if state in negative_states or state == "TEMPORAL_ORDER_UNAUTHORIZED":
-        direction_claim = "DIRECTION_NOT_CLAIMABLE"
+        if state not in ("TEMPORAL_INTERVAL_OVERLAP_NO_DIRECTION",
+                         "TEMPORAL_COMPARABLE_NO_DIRECTION"):
+            raise TemporalComparabilityIntegrityError(
+                "partial order may only yield the two comparable-no-direction states")
 
-    delta_payload = canonicalize(request.signed_delta) if request.signed_delta is not None else None
-    if direction_claim == "DIRECTION_NOT_CLAIMABLE":
-        delta_payload = None
-
+    # Repair 9: consult the live frozen surface on every noncomparable outcome.
     if state == "TEMPORAL_NONCOMPARABLE":
-        _require_noncollapse_refusal()
+        if not temporal_backfill_refused(state):
+            raise TemporalComparabilityIntegrityError(
+                "TEMPORAL_NONCOMPARABLE must remain a forbidden backfill target state")
 
-    if request.anchor_order_is_directional and ordered and len(anchors) == 2:
-        anchor_material = tuple(a.as_dict() for a in anchors)
-    else:
-        anchor_material = tuple(a.as_dict() for a in sorted(
-            anchors, key=lambda r: canonical_json(r.as_dict())))
+    results = tuple({"reason": r} for r in sorted(set(detected)))
 
-    results = tuple(
-        {"reason": r} for r in sorted(set(order_refused_surfaces) | set(declared)))
+    anchor_material = tuple(a.as_dict() for a in anchors)
 
-    fields = {
-        "relation_state": state,
-        "temporal_order_disposition": disposition,
-        "temporal_order_basis_ref": basis_ref.as_dict() if basis_ref else None,
-        "comparability_status": "COMPARABLE" if comparable else "NOT_COMPARABLE",
-        "relation_status": "ORDERED_RELATION_AUTHORIZED" if ordered else "ORDER_RELATION_REFUSED",
-        "direction_claim": direction_claim,
-        "signed_delta": delta_payload,
-        "non_delta_presence": non_delta_presence,
-        "_delta_is_exact_zero": (
-            request.signed_delta is not None and _canonical_zero(request.signed_delta)),
-    }
-    _validate_cross_field_tuple(fields)
+    receipt_id = "urn:pyat:f7-temporal-relation:" + semantic_hash({
+        "anchors": [a.as_dict() for a in anchors],
+        "disposition": disposition,
+        "use": governed_use_id.as_dict(),
+    })[:32]
 
-    reason = _select_reason(state, detected)
-
-    material = {
-        "contract_id": TEMPORAL_COMPARABILITY_CONTRACT_ID,
-        "receipt_id": f"urn:pyat:f7-temporal-relation:{semantic_hash({'anchors': [a.as_dict() for a in anchors], 'disposition': disposition})[:32]}",
+    material: dict[str, Any] = {
+        "receipt_id": receipt_id,
         "temporal_identity_contract_ref": identity_ref.as_dict() if identity_ref else None,
         "anchor_refs": [dict(a) for a in anchor_material],
         "temporal_order_disposition": disposition,
         "temporal_order_basis_ref": basis_ref.as_dict() if basis_ref else None,
-        "comparability_status": fields["comparability_status"],
+        "comparability_status": "COMPARABLE" if comparable else "NOT_COMPARABLE",
         "comparability_requirement_results": [dict(r) for r in results],
-        "relation_status": fields["relation_status"],
-        "relation_state": state,
-        "relation_state_reason": reason,
+        "relation_status": "ORDERED_RELATION_AUTHORIZED" if ordered else "ORDER_RELATION_REFUSED",
         "direction_claim": direction_claim,
-        "signed_delta": delta_payload,
+        "quantity_surface": quantity_surface,
+        "delta": delta_payload,
         "non_delta_presence": non_delta_presence,
-        "authority_state_provenance": sorted(set(authority_provenance)),
-        "source_equivalence_ref": equivalence_ref.as_dict() if equivalence_ref else None,
-        "provenance_and_replay_ref": replay_ref.as_dict() if replay_ref else None,
+        "uncertainty_state": uncertainty_state,
+        "intervening_span_state": request.intervening_span_state,
+        "relation_state": state,
+        "relation_state_reason": _select_reason(state, detected),
+        "governed_use_id": governed_use_id.as_dict(),
+        "authority_snapshot_refs": sorted(
+            (s.authority_ref.as_dict() for s in positive_snapshots
+             if s.authority_ref is not None), key=lambda d: canonical_json(d)),
+        "provenance": {
+            "comparability_requirements_ref": requirements_ref.as_dict(),
+            "comparison_operation": request.comparison_operation,
+            "canonical_projection_rule": (
+                "semantic_hash over canonical_json of the closed receipt material; "
+                "sorted keys, no floats, no NaN/Infinity"),
+            "cross_universe": {
+                "crosses_source_universes": crosses_universes,
+                "derivation": "material-derived from bound per-anchor source_universe_refs",
+                "bound_universe_refs": [u.as_dict() for u in universes],
+                "source_equivalence_ref": equivalence_ref.as_dict() if equivalence_ref else None,
+                "consumed_only_never_minted": True,
+            },
+            "no_basis_observation": disposition == NO_BASIS_DISPOSITION,
+            "authority_resolutions": [r.as_material() for r in resolutions],
+            "observation_binding": [dict(b) for b in bound_observation_bindings],
+            "prior_f7_state": request.prior_f7_state,
+            "declared_comparability_surfaces": [
+                dict(d) for d in request.comparability_requirement_results],
+        },
     }
+
+    _validate_receipt_cross_field_law(material)
     receipt_hash = semantic_hash(material)
     return TemporalRelationReceipt(
         receipt_id=material["receipt_id"],
-        contract_id=TEMPORAL_COMPARABILITY_CONTRACT_ID,
         temporal_identity_contract_ref=material["temporal_identity_contract_ref"],
         anchor_refs=tuple(dict(a) for a in material["anchor_refs"]),
-        temporal_order_disposition=disposition,
+        temporal_order_disposition=material["temporal_order_disposition"],
         temporal_order_basis_ref=material["temporal_order_basis_ref"],
         comparability_status=material["comparability_status"],
-        comparability_requirement_results=tuple(dict(r) for r in material["comparability_requirement_results"]),
+        comparability_requirement_results=tuple(
+            dict(r) for r in material["comparability_requirement_results"]),
         relation_status=material["relation_status"],
-        relation_state=state,
-        relation_state_reason=reason,
-        direction_claim=direction_claim,
-        signed_delta=delta_payload,
-        non_delta_presence=non_delta_presence,
-        authority_state_provenance=tuple(material["authority_state_provenance"]),
-        source_equivalence_ref=material["source_equivalence_ref"],
-        provenance_and_replay_ref=material["provenance_and_replay_ref"],
+        direction_claim=material["direction_claim"],
+        quantity_surface=material["quantity_surface"],
+        delta=material["delta"],
+        non_delta_presence=material["non_delta_presence"],
+        uncertainty_state=material["uncertainty_state"],
+        intervening_span_state=material["intervening_span_state"],
+        relation_state=material["relation_state"],
+        relation_state_reason=material["relation_state_reason"],
+        governed_use_id=material["governed_use_id"],
+        authority_snapshot_refs=tuple(dict(r) for r in material["authority_snapshot_refs"]),
+        provenance=material["provenance"],
         receipt_hash=receipt_hash,
     )
 
 
-def _require_noncollapse_refusal() -> None:
-    """A noncomparable pair can never be backfilled into positivity."""
-    if TEMPORAL_NONCOLLAPSE_STATE not in _BACKFILL_FORBIDDEN:
+def _validate_receipt_cross_field_law(material: Mapping[str, Any]) -> None:
+    """CFI-01 through CFI-04 plus the contract's invalid-combination refusals."""
+    state = material["relation_state"]
+    disposition = material["temporal_order_disposition"]
+    basis = material["temporal_order_basis_ref"]
+    direction = material["direction_claim"]
+    delta = material["delta"]
+    relation_status = material["relation_status"]
+
+    if state not in RELATION_STATES:
+        raise TemporalComparabilityIntegrityError("unknown relation state")
+    if disposition not in ORDER_DISPOSITIONS:
+        raise TemporalComparabilityIntegrityError("unknown order disposition")
+    if disposition == NO_BASIS_DISPOSITION and basis is not None:
         raise TemporalComparabilityIntegrityError(
-            "TEMPORAL_NONCOMPARABLE must remain a forbidden backfill target state")
-
-
-def temporal_backfill_refused(relation_state: str) -> bool:
-    """True when the state may never be a backfill target."""
-    return relation_state in _BACKFILL_FORBIDDEN
+            "ORDER_UNKNOWN_NONCOMPARABLE must carry no basis ref")
+    if disposition in AUTHORIZED_ORDER_BASES and basis is None:
+        raise TemporalComparabilityIntegrityError(
+            "an authorized order basis requires an exact basis ref")
+    if disposition == NO_BASIS_DISPOSITION and state == "TEMPORAL_ORDER_UNAUTHORIZED":
+        if relation_status != "ORDER_RELATION_REFUSED":
+            raise TemporalComparabilityIntegrityError(
+                "no-basis must refuse the order relation")
+        if direction != "DIRECTION_NOT_CLAIMABLE" or delta is not None:
+            raise TemporalComparabilityIntegrityError(
+                "no-basis must refuse the direction and carry a null delta")
+    if state not in COMPARABLE_STATES and material["comparability_status"] != "NOT_COMPARABLE":
+        raise TemporalComparabilityIntegrityError(
+            "only the three lawful comparability states may carry COMPARABLE")
+    if state in COMPARABLE_STATES and material["comparability_status"] != "COMPARABLE":
+        raise TemporalComparabilityIntegrityError(
+            "a lawful comparability state must carry COMPARABLE")
+    if direction == "DIRECTION_NOT_CLAIMABLE" and delta is not None:
+        raise TemporalComparabilityIntegrityError(
+            "DIRECTION_NOT_CLAIMABLE must carry a null delta")
+    if direction == "NO_AUTHORIZED_CHANGE":
+        if not _canonical_zero(delta["signed_delta"]):
+            raise TemporalComparabilityIntegrityError(
+                "NO_AUTHORIZED_CHANGE requires an exact canonical-zero delta")
+    if state == "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED":
+        if disposition not in DIRECTION_PERMITTING_BASES:
+            raise TemporalComparabilityIntegrityError(
+                "directional claim requires a direction-permitting authorized basis")
+        if relation_status != "ORDERED_RELATION_AUTHORIZED":
+            raise TemporalComparabilityIntegrityError(
+                "directional claim requires ORDERED_RELATION_AUTHORIZED")
+        if direction not in ("INCREASE", "DECREASE", "NO_AUTHORIZED_CHANGE"):
+            raise TemporalComparabilityIntegrityError(
+                "directional claim authorized with a non-claimable direction")
+        if delta is None or material["non_delta_presence"] != "DELTA_PRESENT":
+            raise TemporalComparabilityIntegrityError(
+                "directional claim requires a present exact delta")
+    if disposition == "PARTIAL_ORDER_NO_DIRECTION":
+        if relation_status != "ORDER_RELATION_REFUSED" or direction != "DIRECTION_NOT_CLAIMABLE":
+            raise TemporalComparabilityIntegrityError(
+                "partial order must refuse the order relation and the direction")
 
 
 __all__ = [
     "TEMPORAL_COMPARABILITY_CONTRACT_ID",
     "TEMPORAL_COMPARABILITY_AUTHORITY_KIND",
+    "AUTHORIZED_COMPARISON_OPERATION",
+    "SOURCE_EQUIVALENCE_RELATION_OPERATION",
     "ORDER_DISPOSITIONS",
     "AUTHORIZED_ORDER_BASES",
     "NO_BASIS_DISPOSITION",
     "DIRECTION_PERMITTING_BASES",
     "DIRECTION_CLAIM_STATES",
+    "UNCERTAINTY_STATES",
+    "INTERVENING_SPAN_STATES",
     "RELATION_STATE_PRECEDENCE",
     "RELATION_STATES",
+    "COMPARABLE_STATES",
+    "NEGATIVE_STATES",
     "STATE_REASON_PRECEDENCE",
     "PRIOR_F7_STATE_MAP",
-    "TEMPORAL_NONCOLLAPSE_STATE",
+    "PRIOR_F7_NO_RECEIPT_STATES",
+    "AuthorityResolutionRecord",
     "TemporalComparabilityError",
+    "TemporalComparabilityInputRefusal",
     "TemporalComparabilityIntegrityError",
     "TemporalComparisonRequest",
     "TemporalRelationReceipt",
     "compare_temporal_anchors",
+    "resolve_required_authority",
     "temporal_backfill_refused",
 ]
