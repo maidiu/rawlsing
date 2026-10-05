@@ -1,0 +1,184 @@
+{
+  "schema": "PYAT_HQ210_NONCOLLAPSE_AND_REFUSAL_MATRIX@1.1.0",
+  "lane": "PYAT-HQ210-F7-TEMPORAL-CONTRACT-REPAIR-R1",
+  "status": "REPAIRED_CONTRACT_SUCCESSOR__NOT_ADOPTED__NO_IMPLEMENTATION",
+  "noncollapse_matrix": [
+    {
+      "id": "NC-01",
+      "law": "TEMPORAL_NONCOMPARABLE != EMPIRICAL_FACT_NONCOMPARABLE",
+      "carrier": "temporal receipt relation_state vs structural-admission decision",
+      "note": "object, producer and scope differ"
+    },
+    {
+      "id": "NC-02",
+      "law": "TEMPORAL_NONCOMPARABLE != NO_CHANGE",
+      "carrier": "relation_state + DELTA_NOT_CLAIMABLE"
+    },
+    {
+      "id": "NC-03",
+      "law": "TEMPORAL_NONCOMPARABLE != ABSENCE_OF_FACT",
+      "carrier": "is_limit semantics; underlying facts survive"
+    },
+    {
+      "id": "NC-04",
+      "law": "COMPARABLE != ORDERABLE",
+      "carrier": "COMPARABLE + PARTIAL_ORDER_NO_DIRECTION + DIRECTION_NOT_CLAIMABLE"
+    },
+    {
+      "id": "NC-05",
+      "law": "AUTHORIZED != INCREASE_OR_DECREASE",
+      "carrier": "relation_state separate from direction_claim"
+    },
+    {
+      "id": "NC-06",
+      "law": "DIRECTION_NOT_CLAIMABLE != NO_AUTHORIZED_CHANGE",
+      "carrier": "direction enum",
+      "repair": "NO_AUTHORIZED_CHANGE iff exact signed delta == 0; no deadband"
+    },
+    {
+      "id": "NC-07",
+      "law": "DELTA != TRAJECTORY",
+      "carrier": "exactly one two-anchor receipt; no trajectory field"
+    },
+    {
+      "id": "NC-08",
+      "law": "TWO_AUTHORIZED_ANCHORS != INSUFFICIENT_ANCHORS",
+      "carrier": "fewer-than-two only is insufficient"
+    },
+    {
+      "id": "NC-09",
+      "law": "WAVE_LABEL != ORDINAL != CALENDAR_YEAR",
+      "carrier": "identity/order material"
+    },
+    {
+      "id": "NC-10",
+      "law": "OVERLAP != MIDPOINT_ORDER",
+      "carrier": "PARTIAL_ORDER_NO_DIRECTION"
+    },
+    {
+      "id": "NC-11",
+      "law": "ABSENCE != ZERO",
+      "carrier": "DELTA_NOT_CLAIMABLE + TEMPORAL_GAP_INTERVENING"
+    },
+    {
+      "id": "NC-12",
+      "law": "DELTA != CAUSE",
+      "carrier": "claim ceiling"
+    },
+    {
+      "id": "NC-13",
+      "law": "RUPTURE_CANDIDATE != RUPTURE != DIRECTIONAL_CLAIM",
+      "carrier": "separate unreachable candidate family"
+    },
+    {
+      "id": "NC-14",
+      "law": "FIVE_CONSERVED_FUNCTIONS != ONE_AUTHORITY_KIND",
+      "carrier": "05_OWNER_AND_SUCCESSION_MAP.json"
+    },
+    {
+      "id": "NC-15",
+      "law": "SAME_FAMILY != GRAIN_ADEQUACY_OR_COMPARABILITY",
+      "carrier": "per-claim exact authority and requirement results"
+    },
+    {
+      "id": "NC-16",
+      "law": "ORDER_UNKNOWN_NONCOMPARABLE != AUTHORIZED_ORDER_BASIS",
+      "carrier": "04_TIME_ORDER_BASIS_LAW.json",
+      "repair": "fourth distinction is a typed no-basis refusal"
+    },
+    {
+      "id": "NC-17",
+      "law": "SOURCE_EQUIVALENCE != TEMPORAL_COMPARABILITY",
+      "carrier": "two-path cross-universe resolution"
+    }
+  ],
+  "refusal_precedence": [
+    {
+      "rank": 1,
+      "condition": "any mandatory authority resolution missing/conflicting/out-of-scope/hash/scope-invalid",
+      "state": "TEMPORAL_INSUFFICIENT_AUTHORITY"
+    },
+    {
+      "rank": 2,
+      "condition": "temporal identity unresolved",
+      "state": "TEMPORAL_IDENTITY_UNRESOLVED"
+    },
+    {
+      "rank": 3,
+      "condition": "fewer than two authorized anchors",
+      "state": "TEMPORAL_INSUFFICIENT_ANCHORS"
+    },
+    {
+      "rank": 4,
+      "condition": "cross-universe pair lacks positive SOURCE_EQUIVALENCE",
+      "state": "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT"
+    },
+    {
+      "rank": 5,
+      "condition": "required family mapping material absent/unapproved",
+      "state": "TEMPORAL_MAPPING_MATERIAL_ABSENT"
+    },
+    {
+      "rank": 6,
+      "condition": "estimand mismatch",
+      "state": "TEMPORAL_ESTIMAND_MISMATCH"
+    },
+    {
+      "rank": 7,
+      "condition": "measure/weight mismatch",
+      "state": "TEMPORAL_MEASURE_MISMATCH"
+    },
+    {
+      "rank": 8,
+      "condition": "remaining comparability surface failure or forbidden interpolated anchor/observation",
+      "state": "TEMPORAL_NONCOMPARABLE"
+    },
+    {
+      "rank": 9,
+      "condition": "no permitted order basis applies",
+      "state": "TEMPORAL_ORDER_UNAUTHORIZED"
+    },
+    {
+      "rank": 10,
+      "condition": "authorized interval basis overlaps",
+      "state": "TEMPORAL_INTERVAL_OVERLAP_NO_DIRECTION"
+    },
+    {
+      "rank": 11,
+      "condition": "authorized partial order otherwise yields no direction",
+      "state": "TEMPORAL_COMPARABLE_NO_DIRECTION"
+    },
+    {
+      "rank": 12,
+      "condition": "all required surfaces and positive authority pass; direction-permitting basis and exact delta exist",
+      "state": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
+    }
+  ],
+  "auxiliary_non_terminal_or_non_relation_outputs": [
+    {
+      "condition": "unobserved span between endpoints",
+      "field": "intervening_span_state",
+      "value": "TEMPORAL_GAP_INTERVENING",
+      "effect": "endpoint relation may remain authorized; continuity/trend/rate/interpolation are forbidden"
+    },
+    {
+      "condition": "probe/diagnostic-only path",
+      "output": "NO TEMPORAL_RELATION_RECEIPT",
+      "value": "TEMPORAL_PROBE_ONLY retained only as upstream/control-flow terminal"
+    }
+  ],
+  "backfill_direction": {
+    "must_preserve_literal_membership": "TEMPORAL_NONCOMPARABLE in rawlsing_next/pre553_source_relations.py:FORBIDDEN_BACKFILL_TARGET_STATES",
+    "temporal_receipt_may_be_source_backfill_target": false,
+    "temporal_noncomparable_pair_may_be_backfilled_positive": false,
+    "source_backfill_authority_may_manufacture_temporal_comparability": false,
+    "forbidden_conversion_methods": [
+      "interpolation",
+      "midpoint substitution",
+      "nearest anchor",
+      "latest/default/fuzzy selection",
+      "cross-source pooling/backfill"
+    ]
+  },
+  "replay_law": "Replay is valid only because state and reason are deterministic under the precedence rules; all lower-priority failures remain recorded but do not change the selected terminal state."
+}
