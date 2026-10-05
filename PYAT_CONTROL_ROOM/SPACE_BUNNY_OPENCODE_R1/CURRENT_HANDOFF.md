@@ -1,3 +1,32 @@
+# HQ218 FRONTIER — V556 ADOPTED; TWO FINAL REREVIEWS — 2026-10-05
+
+### ADOPTED / CLOSED — V556
+Candidate: `9129bd54adbe73fdc09f8a3c02e4b91902d56661`  
+Hostile rereview: `747271cc1726c8fc7e40f2de21f5047a32abeaeb`  
+Independent runtime evidence: `63ff08303c8f8ee02e871973dc0852bb5eb1ed4e`  
+Implementation merge: `3730adfb7019bf2f6f95553f2232df875e01975d`  
+Review merge: `20a29010c4c26a7a3696649c495dea17aa94ab7e`  
+Evidence merge: `56aa0d0990afe854a97c1e144586b78ad27f3045`
+
+### NEW — NEEDS LAUNCH — H-D/F8 AUTHENTICATION FINAL REREVIEW
+**AGENT:** Browser/GitHub independent hostile reviewer  
+**MODEL / INTELLIGENCE:** **GPT-5.6 Sol High**  
+**BRANCH:** `agent/reviewer-pyat-hq218-hd-f8-authentication-final-rereview-r1`  
+**COMMISSION TIP:** `e6185d4fd6ce9a1708cb54242ba247fe494ec329`
+
+### NEW — NEEDS LAUNCH — F7 FINAL REREVIEW
+**AGENT:** Browser/GitHub independent hostile reviewer  
+**MODEL / INTELLIGENCE:** **GPT-5.6 Sol High**  
+**BRANCH:** `agent/reviewer-pyat-hq218-f7-final-rereview-r1`  
+**COMMISSION TIP:** `7867a777b1b26024ec620b0e82ea9ffdb9fb6ddc`
+
+Fan-in remains unauthorized until both final rereviews return.
+
+HQ decision:
+`HQD-2026-10-05-218`
+
+---
+
 # HQ217 FRONTIER — TWO REPAIRS + ONE EVIDENCE QUALIFIER — 2026-10-05
 
 ### NEW — NEEDS LAUNCH — H-D/F8 BINDING AUTHENTICATION REPAIR
