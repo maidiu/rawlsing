@@ -1,0 +1,109 @@
+{
+  "schema": "PYAT_HQ211_F8_NONTRANSFORMATION_ATTACK@1.0.0",
+  "lane": "PYAT-HQ211-HD-F8-BINDING-INDEPENDENT-REVIEW-R1",
+  "reviewer_role": "INDEPENDENT_HOSTILE_REVIEWER_NO_REPAIR",
+
+  "attack_C_f8_non_transformation": {
+    "verdict": "NO_TRANSFORMATION",
+    "C1_direct_before_after_on_the_same_evidence": {
+      "method": "build a WIDE binding (A and B admitted; F8 rule spans A,B) and a NARROWED binding (A admitted, B not; rule spans A only); evaluate the SAME query object and the SAME evidence object through both",
+      "exact_geometry_byte_equal_wide_vs_narrow_vs_original": true,
+      "retained_conditioner_ids": ["country", "education"],
+      "retained_conditioner_ids_unchanged": true,
+      "rule_hash_at_result_equals_callers_rule_hash": true,
+      "query_object_identity_preserved": true,
+      "algorithm_id_identity": "model_rule_hash equals the caller's rule hash in both cases",
+      "wide_result_state": "EXACT_SUPPORTED",
+      "narrow_result_state": "EXACT_SUPPORTED",
+      "conclusion": "narrowing eligibility changed WHICH pre-materialized slice F8 could select; it changed no geometry, no conditioner set and no algorithm identity. Output SELECTION is correctly separated from output TRANSFORMATION."
+    },
+    "C2_law_drift_guard": {
+      "different_rule_at_evaluation": "REFUSED BINDING_RULE_REPLAY_MISMATCH",
+      "guard_compares": "rule_hash of the F8 model rule",
+      "same_sources_same_hash_for_identical_rules": true,
+      "constructible_same_hash_different_material": false,
+      "algorithm_id_check_present": "_require_f8_rule refuses F8_ALGORITHM_NOT_EXACT_CONDITIONAL_LOOKUP if rule.algorithm_id differs from EXPECTED_F8_ALGORITHM_ID",
+      "model_rule_id_check_present": "F8_MODEL_RULE_NOT_RECOGNISED",
+      "conclusion": "GUARD_HELD - the binder refuses rather than silently continuing"
+    },
+    "C3_conditioner_escape_route": {
+      "attempt": "construct an F8 query whose source_universe_ref is A but whose conditioner name a non-admitted source B",
+      "constructed": false,
+      "refused_by": "the adopted F8 query owner itself",
+      "message": "conditioner source/release mismatch; no implicit bridge",
+      "significance": "the only plausible route by which a non-admitted source could influence F8 is closed UPSTREAM of the binder by the adopted owner invariant. The binder explicitly does not inspect conditioners and relies on that invariant."
+    },
+    "C4_does_the_binder_read_geometry": {
+      "method": "independent AST parse of the binder module",
+      "exact_geometry_referenced": false,
+      "bare_geometry_attribute_referenced": false,
+      "attributes_the_binder_references_that_are_F8_attributes": [
+        "algorithm_id", "model_rule_id", "release_ref", "rule_hash",
+        "source_universe_ref", "source_universe_refs"
+      ],
+      "conclusion": "the binder reads only rule identity/hash/source-set and the query source/release; it reads no geometry, no conditioner and no evidence attribute"
+    },
+    "no_source_scope_narrowing_interpreted_as_evidence_weighting": true
+  },
+
+  "finding_C1_conditioner_scan_is_narrower_than_its_claim": {
+    "severity": "LOW",
+    "test": "test_binding_never_touches_conditioners",
+    "docstring_claim": "A static guarantee: the binding module reads no conditioner attribute",
+    "hard_coded_scan_set": [
+      "conditioner_bindings", "retained_conditioner_ids", "effective_time_or_interval",
+      "geometry", "uncertainty_state", "raw_support", "walkback_steps",
+      "positive_proxy_authority_refs"
+    ],
+    "F8_attributes_the_binder_does_reference_but_scan_omits": [
+      "algorithm_id", "model_rule_id", "release_ref", "rule_hash",
+      "source_universe_ref", "source_universe_refs"
+    ],
+    "property_actually_needed_holds": "no geometry read - independently verified by AST parse",
+    "assessment": "the assertion is narrower than its docstring; it does not prove the general 'no conditioner attribute' claim"
+  },
+
+  "attack_D_owner_boundary_integrity": {
+    "verdict": "PASS",
+    "owners_verified_byte_identical_at_two_commits": [
+      {"file": "rawlsing_next/pre553_service_source_applicability.py", "blob": "3e40caca29e8c96ee1f412f919cfc7dba63f96c4", "candidate_claim": "3e40caca…", "match": true},
+      {"file": "rawlsing_next/source_backed_positioned_subject_possibility.py", "blob": "62e5eced47b64512f47b004e3e13a6ef3fe21de7", "candidate_claim": "62e5eced…", "match": true},
+      {"file": "rawlsing_next/objective_consumer_bounded_evidence.py", "blob": "f30fca20e7b56e00348e82765d95f974b4b6a195", "candidate_claim": "f30fca20…", "match": true}
+    ],
+    "commits_compared": ["8d352f7d80983cbf49e7e57511f8cf6d5b80966d (candidate)", "b722f2e7373ad833d5f63833b1d6fe426d3dc55d (startup base)"],
+    "court_guard_executes_rather_than_skips": true,
+    "court_guard_repo_root_arithmetic": "Path(__file__).resolve().parents[1] resolves to the worktree root; verified the three hashes reproduce independently",
+    "law_drift_guard": "refuses a changed F8 algorithm id and a changed rule hash rather than continuing",
+    "binder_is_a_pure_leaf_dependency": true,
+    "note": "no adopted owner imports the binder, so a change to F8 law fails closed in the binder instead of silently propagating"
+  },
+
+  "finding_F3_dead_cross_release_branch": {
+    "severity": "LOW",
+    "binder_behaviour": "a positive decision whose release differs from the requested release is given a provenance row with bound_to_requested_release: False and is STILL added to the admitted set",
+    "owner_invariant_makes_it_unreachable": true,
+    "probe": {
+      "receipt_release": "urn:hq211:c11logicalrelease:r1",
+      "decision_releases_present": ["urn:hq211:c11logicalrelease:r1"],
+      "distinct_decision_releases": 1
+    },
+    "why": "resolve_service_source_applicability stamps EVERY decision with request.release_identity_ref, so a receipt always presents exactly one release",
+    "consequences": [
+      "the False branch is dead code that no test exercises",
+      "the binder's release safety rests entirely on the adopted owner's single-release construction, not on its own check, and the accompanying comment overstates the binder's role",
+      "if the owner ever became per-decision-release, the False branch would add an off-release source to the admitted set with no release check on the admitted set; the query release check would not catch it because it compares the query to the BOUND release while the admitted set carries another"
+    ],
+    "repair_ref": "Repair 3"
+  },
+
+  "finding_F4_claim_and_evidence_mismatches": {
+    "severity": "LOW",
+    "items": [
+      {"id": "F4-1", "location": "module docstring line 51", "text": "the three that are attempted-against refuse loudly", "actual": "seven refusal methods exist; the return and receipt both say seven"},
+      {"id": "F4-2", "location": "module docstring line 49", "text": "There is no third", "actual": "see finding F2 - there is a third returning function on the declared surface"},
+      {"id": "F4-3", "location": "test_binding_never_touches_conditioners", "text": "reads no conditioner attribute", "actual": "scans a hard-coded subset that omits six F8 attributes the binder does read; the needed property does hold"},
+      {"id": "F4-4", "location": "requested_currentness_claim", "text": "any caller string outside four negative tokens is accepted", "actual": "no test pins the accepted vocabulary"}
+    ],
+    "repair_ref": "Repair 4"
+  }
+}

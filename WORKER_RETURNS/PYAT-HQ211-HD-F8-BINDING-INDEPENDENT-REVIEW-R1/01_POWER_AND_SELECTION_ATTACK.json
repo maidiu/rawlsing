@@ -1,0 +1,196 @@
+{
+ "schema": "PYAT_HQ211_POWER_AND_SELECTION_ATTACK@1.0.0",
+ "lane": "PYAT-HQ211-HD-F8-BINDING-INDEPENDENT-REVIEW-R1",
+ "reviewer_role": "INDEPENDENT_HOSTILE_REVIEWER_NO_REPAIR",
+ "review_tip": "b26dcf2e67407b1e42b1d08bd36d0338e9fd91e5",
+ "commissioned_startup_base": "b722f2e7373ad833d5f63833b1d6fe426d3dc55d",
+ "candidate": "agent/rabochii-pyat-hq210-hd-f8-binding-r1 @ 8d352f7d80983cbf49e7e57511f8cf6d5b80966d",
+ "parent_hd_contract_return": "6e2649c4d111fd0ec176c9fa29ce1da27ccc448e",
+ "service_source_owner_fanin": "3eda3eb598cf9fe6b14df60323af52ae446b21fa",
+ "environment": {
+  "reviewer_python": "3.11.3",
+  "reviewer_pytest": "9.1.1",
+  "reviewer_venv": "/tmp/hq210venv (independent, outside the repository)",
+  "probe_scripts": "/tmp/hq211probe.py, /tmp/hq211probe2.py, /tmp/hq211a1.py (outside the repository)",
+  "candidate_declared_interpreter": "/var/folders/.../opencode/hq204-r9-env/bin/python (different host temp path; absent here)",
+  "governed_lock_path_present_in_this_checkout": false,
+  "python_version_matches_candidate": true
+ },
+ "change_set_verified": {
+  "command": "git diff --stat b722f2e7373ad833d5f63833b1d6fe426d3dc55d 8d352f7d80983cbf49e7e57511f8cf6d5b80966d",
+  "new_production_files": [
+   "rawlsing_next/pre553_service_f8_source_scope_binding.py (823 lines)"
+  ],
+  "new_test_files": [
+   "rawlsing_next/tests/test_pre553_service_f8_source_scope_binding_court.py (794 lines)"
+  ],
+  "other_changes": "HQ_HANDOFF pointer moves, the HQ210 worker commission, and the 6 candidate return artifacts",
+  "adopted_owner_files_touched": 0,
+  "candidate_blobs": {
+   "binder": "2c50333b9c5d823cc21f64fd14080d09c3025107",
+   "court": "85aa94965c34e17bc24a2cb41cdf857ece1e4684"
+  },
+  "candidate_claim_matches": true
+ },
+ "attack_A_selection_and_ranking_leakage": {
+  "verdict": "NO_LEAKAGE_FOUND",
+  "A1_permutation_invariance": {
+   "method": "bind the same 3-member class under all 6 permutations of the member list and with authority records reversed; collect binding replay identity and exposed admitted order",
+   "distinct_replay_identities": 1,
+   "distinct_exposed_orders": 1,
+   "result": "PERMUTATION_INVARIANT",
+   "note": "the admitted tuple order comes from the adopted owner's canonical-JSON sort (_ref_list), not from the binder; the binder adds no ordering"
+  },
+  "A2_public_callable_classification": {
+   "method": "call every non-underscore callable on the bound object and record return vs raise",
+   "raising": [
+    "assert_binding_does_not_authorize",
+    "assert_query_source_admitted",
+    "conditioned_f8_geometry",
+    "currentness_authority",
+    "first_admitted_source",
+    "grant_target_use_permission",
+    "infer_individual_state",
+    "pooled_source_set",
+    "ranked_sources"
+   ],
+   "returns_chosen_or_ranked_source": false,
+   "note": "assert_query_source_admitted appears under 'raising' only because the probe called it with no argument; it returns normally when given a query, as the court and my own probes confirm"
+  },
+  "A3_lower_level_api_bypass": {
+   "admitted_source_universe_refs_type": "tuple",
+   "first_best_or_cursor_accessor_exists": false,
+   "result": "NO_SELECTION_API_REACHABLE"
+  },
+  "A4_value_inspection_of_material": {
+   "recursive_rank_shaped_leaf_scan": [],
+   "permission_refs_are_grants": false,
+   "currentness_default": "CURRENTNESS_NOT_REQUESTED",
+   "has_aggregate_field": false,
+   "has_actor_field": false
+  }
+ },
+ "attack_B_complete_incomplete_coverage": {
+  "verdict": "HARDENING_HELD",
+  "probes": [
+   {
+    "probe": "exhaustive bind over an INCOMPLETE receipt",
+    "result": "REFUSED",
+    "reason_code": "APPLICABILITY_COVERAGE_INCOMPLETE"
+   },
+   {
+    "probe": "single-source bind over the same INCOMPLETE receipt",
+    "result": "ALLOWED"
+   },
+   {
+    "probe": "power 1 (validate the known-admitted source) under INCOMPLETE",
+    "result": "admitted: true"
+   },
+   {
+    "probe": "power 2 (set exposure) under that same single-source INCOMPLETE binding",
+    "result": "REFUSED",
+    "reason_code": "APPLICABILITY_COVERAGE_INCOMPLETE"
+   }
+  ],
+  "laundering_attempt_refused": true,
+  "laundering_mechanism_named_by_candidate": "bind a single-source binding over an INCOMPLETE class, then read back the partial set as the admissible set",
+  "why_refused": "expose_unranked_admitted_source_set re-checks COMPLETE coverage on every call rather than trusting the bind-time mode",
+  "narrow_capability_survives": "one known-admitted source can still be validated under INCOMPLETE",
+  "grain_mismatch_refusals": {
+   "request_receipt": "BINDING_REQUEST_RECEIPT_GRAIN_MISMATCH",
+   "service": "BINDING_SERVICE_GRAIN_MISMATCH",
+   "candidate_class": "BINDING_CANDIDATE_CLASS_MISMATCH",
+   "release": "BINDING_RELEASE_GRAIN_MISMATCH",
+   "target_use": "BINDING_TARGET_USE_GRAIN_MISMATCH"
+  }
+ },
+ "attack_E_authority_leakage": {
+  "verdict": "NO_LEAKAGE_FOUND",
+  "results": [
+   {
+    "power": "mint target-use permission",
+    "probe": "grant_target_use_permission() raises BINDING_REFUSES_PERMISSION_GRANT; bound_permission_refs_are_inputs_not_grants == true"
+   },
+   {
+    "power": "decide currentness",
+    "probe": "default CURRENTNESS_NOT_REQUESTED; currentness_authority() raises; result-without-claim, claim-without-result, and conflicting/missing all refuse"
+   },
+   {
+    "power": "infer source equivalence",
+    "probe": "no equivalence field or method; SOURCE_SEMANTIC_EQUIVALENCE is a refused purpose"
+   },
+   {
+    "power": "pool or deduplicate respondents",
+    "probe": "no aggregate/combined/sample-size field; pooled_source_set() raises; duplicate authority records are refused by the adopted owner"
+   },
+   {
+    "power": "backfill a missing source",
+    "probe": "BACKFILL_AUTHORITY refused; an F8 rule naming a non-admitted source refuses F8_RULE_SOURCE_OUTSIDE_ADMITTED_SET and is never widened"
+   },
+   {
+    "power": "condition F8 on service state",
+    "probe": "conditioned_f8_geometry() raises; AST scan confirms the binder reads no conditioner attribute"
+   },
+   {
+    "power": "infer actor/person state",
+    "probe": "no actor field in material; infer_individual_state() raises; ACTOR_OR_PERSON_STATE and PREV3_TO_V3_ACTOR_WORK are refused purposes"
+   }
+  ],
+  "boundary_judgement_recorded": {
+   "finding": "requested_currentness_claim is a free-form caller string, refused only when it is CONFLICTING/UNKNOWN/MISSING/UNRESOLVED. Any other string is accepted and becomes currentness_result in the material.",
+   "assessment": "the binder decides nothing about currency and refuses the negative cases, but the accepted vocabulary is unconstrained and unpinned by any test",
+   "severity": "LOW"
+  }
+ },
+ "finding_F1_single_source_mode_is_decorative": {
+  "severity": "MEDIUM_BLOCKING",
+  "claim": "SINGLE_SOURCE_VALIDATION requires requested_source_universe_ref and records it in the material and replay identity, but does not constrain evaluation",
+  "evidence": {
+   "requested_source": "a",
+   "admitted_set": [
+    "b",
+    "a"
+   ],
+   "evaluation_on_b_under_single_source_binding": "ALLOWED, state=EXACT_SUPPORTED, result source=b",
+   "evaluation_on_b_under_exhaustive_binding": "ALLOWED, state=EXACT_SUPPORTED",
+   "result_hash_single_vs_exhaustive": "IDENTICAL",
+   "evaluation_on_c_not_admitted": "REFUSED F8_QUERY_SOURCE_NOT_ADMITTED"
+  },
+  "root_cause": "evaluate_bound_positioned_subject_possibility calls assert_query_source_admitted(query), which tests the QUERY's source against self.admitted_source_universe_refs (the whole admitted set), never against requested_source_universe_ref",
+  "related": "a single-source binding requesting BB is accepted even when the F8 rule's source_universe_refs does not contain BB, because the rule check compares against the admitted set, not the requested source",
+  "mode_difference": "the two declared modes differ only in whether set exposure is gated by coverage",
+  "court_coverage": "no court test pins this; the single-source tests assert only that a NON-ADMITTED requested source refuses",
+  "not_an_authority_leak": true,
+  "why": "every evaluable source is positively admitted and the narrowing never widens, but a declared refinement is inert",
+  "repair_ref": "Repair 1"
+ },
+ "finding_F2_positive_power_enumeration_is_false": {
+  "severity": "MEDIUM_BLOCKING",
+  "claim_as_written": "positive_powers_exactly_two / 'The two positive powers, exactly'",
+  "declared_public_callables": 7,
+  "returning_callables": [
+   "bind_service_applicability_to_f8_scope",
+   "assert_query_source_admitted",
+   "expose_unranked_admitted_source_set",
+   "evaluate_bound_positioned_subject_possibility",
+   "verify_service_f8_scope_binding_replay"
+  ],
+  "non_returning": [
+   "assert_complete_coverage_from_binding"
+  ],
+  "exception_type": [
+   "ServiceF8ScopeBindingError"
+  ],
+  "assessment": "evaluate_bound_positioned_subject_possibility is NOT a new authority - it delegates to the adopted F8 evaluator unchanged, verified on geometry and identity. The candidate's substantive statement 'no method that returns a chosen source' is TRUE and I could not falsify it. What is false is the counting: the declared public surface has five returning callables, one of which performs a full F8 evaluation. No third power over SOURCES is reachable; a third returning FUNCTION is, and it is exported.",
+  "commission_relevance": "the commission asked whether any third positive power is reachable through helper methods or returned material; the honest answer is that one is reachable and is part of __all__",
+  "artifacts_affected": [
+   "00_RETURN.md",
+   "01_BINDING_CONTRACT.json",
+   "02_REFUSAL_AND_POWER_CEILING.json",
+   "05_FINAL_DISPOSITION.json",
+   "module docstring"
+  ],
+  "repair_ref": "Repair 2",
+  "defect_class": "DOCUMENTATION_ENUMERATION_DEFECT_WITH_ADOPTION_CONSEQUENCE__NOT_AN_AUTHORITY_DEFECT"
+ }
+}

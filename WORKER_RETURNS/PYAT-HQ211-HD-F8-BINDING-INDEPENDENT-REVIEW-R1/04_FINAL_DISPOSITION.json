@@ -1,0 +1,160 @@
+{
+  "schema": "PYAT_HQ211_FINAL_DISPOSITION@1.0.0",
+  "lane": "PYAT-HQ211-HD-F8-BINDING-INDEPENDENT-REVIEW-R1",
+  "reviewer_role": "INDEPENDENT_HOSTILE_REVIEWER_NO_REPAIR",
+
+  "review_tip": "b26dcf2e67407b1e42b1d08bd36d0338e9fd91e5",
+  "commissioned_startup_base": "b722f2e7373ad833d5f63833b1d6fe426d3dc55d",
+  "candidate": "agent/rabochii-pyat-hq210-hd-f8-binding-r1 @ 8d352f7d80983cbf49e7e57511f8cf6d5b80966d",
+  "parent_hd_contract_return": "6e2649c4d111fd0ec176c9fa29ce1da27ccc448e",
+  "service_source_owner_fanin": "3eda3eb598cf9fe6b14df60323af52ae446b21fa",
+
+  "disposition": "HD_F8_BINDING_PARTIAL__BOUNDED_REPAIR_REQUIRED",
+  "ready_for_hq_adoption": false,
+
+  "disposition_allowed_values_considered": {
+    "ACCEPT_HD_F8_SOURCE_SCOPE_BINDING__READY_FOR_HQ_ADOPTION": "NOT SELECTED. Three of the candidate's own claims are false of its own machinery, one of them semantic: SINGLE_SOURCE_VALIDATION's requested source does not constrain evaluation (a binding made for source A evaluates source B and returns a result); 'the two positive powers, and only two' under-counts a declared public surface that has five returning callables; and the off-release provenance branch is dead code whose comment overstates the binder's own release safety.",
+    "HD_F8_BINDING_PARTIAL__BOUNDED_REPAIR_REQUIRED": "SELECTED. The seam is real, closes the exact HQ208 gap, acquires no forbidden power, leaves all three adopted owners byte-identical, does not transform F8, and reproduces its full 148-test surface. Every remaining defect is bounded and repairable without architecture change.",
+    "HD_F8_BINDING_AUTHORITY_OVERREACH": "NOT SELECTED. No selection, ranking, priority, preference, weight, first/best/latest/local, pooling, composition, currentness-authority, permission-grant, equivalence, backfill, conditioning, geometry/distribution-transform or actor-inference power is reachable. Permutation invariance is proven, not asserted.",
+    "HD_F8_BINDING_REVIEW_BLOCKED_BY_MISSING_EXACT_EVIDENCE": "NOT SELECTED. The candidate, its return packet, the parent H-D contract return, the commissioning commit and both adopted owners were all read at exact commits. The only unverifiable claim is the environment freeze-identity, which the candidate itself labels reconstructed rather than governed, and which does not affect the semantics under test."
+  },
+
+  "headline_findings": [
+    {
+      "id": "F1",
+      "finding": "SINGLE_SOURCE_VALIDATION requires requested_source_universe_ref and records it in the material and replay identity, but evaluate_bound_positioned_subject_possibility validates the QUERY's source against the whole admitted set. A single-source binding made for A evaluates B and returns EXACT_SUPPORTED with the same result hash as the exhaustive binding.",
+      "severity": "MEDIUM_BLOCKING",
+      "not_an_authority_leak": true,
+      "court_coverage": "no test pins it",
+      "repair_ref": "Repair 1"
+    },
+    {
+      "id": "F2",
+      "finding": "'positive_powers_exactly_two' / 'The two positive powers, exactly' is false of the declared public surface, which has five returning callables including evaluate_bound_positioned_subject_possibility (a full F8 evaluation through the binding) and verify_service_f8_scope_binding_replay. The court itself classifies the evaluator as a power.",
+      "severity": "MEDIUM_BLOCKING",
+      "repair_ref": "Repair 2"
+    },
+    {
+      "id": "F3",
+      "finding": "The bound_to_requested_release: False provenance branch is dead code: the adopted owner stamps every decision with the request's release, so a receipt always presents exactly one release. The binder's release safety therefore rests on the owner invariant, and the branch would fail OPEN rather than closed if the owner ever became per-decision-release.",
+      "severity": "LOW",
+      "repair_ref": "Repair 3"
+    },
+    {
+      "id": "F4",
+      "finding": "Four claim/evidence mismatches: docstring says 'the three that are attempted-against refuse' (seven exist); docstring says 'There is no third' (a third returning function exists); the conditioner AST scan omits six F8 attributes the binder does read while claiming to prove a general property; and requested_currentness_claim accepts an unpinned caller vocabulary.",
+      "severity": "LOW",
+      "repair_ref": "Repair 4"
+    },
+    {
+      "id": "F5",
+      "finding": "The environment freeze-identity claim is honestly disclosed as reconstructed-equivalent but is not independently checkable in this checkout: the governed venv, the DARWIN_ANCHOR_RUNTIME lock path and the referenced interpreter are all absent.",
+      "severity": "EVIDENCE_CLASSIFICATION",
+      "repair_ref": "Repair 5"
+    },
+    {
+      "id": "F6",
+      "finding": "The write-terrain guards silently pytest.skip when an owner file is absent or git/hash-object is unavailable, so an all-green run can hide a guard that never ran. In this environment they ran and passed.",
+      "severity": "LOW",
+      "repair_ref": "Repair 5"
+    }
+  ],
+
+  "what_is_sustained": [
+    "The binder closes the exact HQ208 gap with one thin same-grain adapter and no adopted-owner edit.",
+    "All three adopted owners are byte-identical at the candidate tip and at the startup base: 3e40caca, 62e5eced, f30fca20 - all three candidate-claimed hashes reproduce.",
+    "No selection, ranking, priority, preference, weight, first/best/latest/local, pooling, composition, permission-grant or actor power is reachable through any public surface.",
+    "Permutation invariance of both the binding replay identity and the exposed admitted order is proven across all six orderings, independently reproduced (1 distinct identity, 1 distinct order).",
+    "The COMPLETE/INCOMPLETE hardening is real and stronger than the literal commission text: set exposure requires COMPLETE in every mode, the laundering attempt is refused, and the narrow single-source capability survives.",
+    "F8 is not transformed: identical evidence yields byte-identical geometry, unchanged conditioner ids and unchanged algorithm identity across a wide and a narrowed binding.",
+    "The law-drift guard refuses a changed F8 algorithm id and a changed rule hash rather than continuing silently.",
+    "The refusal surface is self-owned (ServiceF8ScopeBindingError + reason_code) with no foreign private type leaking across nine refusal paths.",
+    "The court is genuinely non-self-referential on the forbidden-purpose and unranked properties, closing the prior review's GAP-2/GAP-3/GAP-4 lessons.",
+    "The full 148-test surface reproduces exactly, including 0 skipped, in two separate invocations.",
+    "The environment is labelled reconstructed-equivalent rather than governed, which is the discipline the commission required.",
+    "Five defects the worker found in its own first draft are recorded and the three code defects are genuinely fixed."
+  ],
+
+  "bounded_repair_set": [
+    {"ref": "Repair 1", "blocking": true, "target": "assert_query_source_admitted / evaluate path / MODE_SINGLE_SOURCE_VALIDATION", "requirement": "Either enforce the single-source refinement (query source must equal requested_source_universe_ref, with a new reason code, and the requested source must appear in the bound F8 rule's source_universe_refs), or delete SINGLE_SOURCE_VALIDATION and requested_source_universe_ref and state that admission validation against the positively admitted set is the only mode. Add a court witness: single-source binding for A, evaluation attempted on B, must refuse."},
+    {"ref": "Repair 2", "blocking": true, "target": "00_RETURN.md, 01_BINDING_CONTRACT.json, 02_REFUSAL_AND_POWER_CEILING.json, 05_FINAL_DISPOSITION.json, module docstring", "requirement": "Correct the power enumeration to match the declared public surface, stating the two source-touching powers plus the binding constructor, the delegating evaluator, the replay verifier and the coverage guard. If evaluate_bound_positioned_subject_possibility is claimed as a non-power, say explicitly that it delegates to the adopted F8 evaluator unchanged and grants nothing new."},
+    {"ref": "Repair 3", "blocking": false, "target": "bind_service_applicability_to_f8_scope provenance loop", "requirement": "Remove the bound_to_requested_release: False branch, or make it fail closed rather than admitting an off-release positive decision. Correct the comment so release safety is attributed to the owner invariant it actually depends on, and add a test pinning that invariant or delete the branch."},
+    {"ref": "Repair 4", "blocking": false, "target": "module docstring; test_binding_never_touches_conditioners; requested_currentness_claim", "requirement": "Fix the two docstring counts; narrow the conditioner-scan claim or widen the scan to the full attribute set; pin the accepted currentness vocabulary with a test."},
+    {"ref": "Repair 5", "blocking": false, "target": "write-terrain guards; environment receipt", "requirement": "Make the write-terrain guards fail rather than skip when an owner file is absent, or emit an explicit non-silent mark, so an all-green run cannot hide a guard that never ran. Keep the reconstructed-equivalent labelling as is."}
+  ],
+
+  "reviewer_answers": {
+    "selection_or_ranking_leak": false,
+    "seven_selection_shaped_methods_refuse": true,
+    "canonical_order_becomes_a_recommendation": false,
+    "known_admitted_source_validates_under_incomplete": true,
+    "full_set_exposure_under_incomplete_refused": true,
+    "partial_class_launderable_as_exhaustive": false,
+    "class_release_request_identity_mismatch_fails_closed": true,
+    "exact_geometry_byte_identical_after_narrowing": true,
+    "retained_conditioner_ids_unchanged": true,
+    "algorithm_id_unchanged": true,
+    "conditioner_or_geometry_attribute_read_by_binder": false,
+    "probability_or_distribution_recalculated": false,
+    "narrowing_interpreted_as_evidence_weighting": false,
+    "adopted_owners_byte_identical": true,
+    "law_drift_guard_refuses": true,
+    "mint_target_use_permission": false,
+    "decide_currentness": false,
+    "infer_source_equivalence": false,
+    "pool_or_deduplicate_respondents": false,
+    "backfill_missing_source": false,
+    "condition_f8_on_service_state": false,
+    "infer_actor_or_person_state": false,
+    "typed_refusal_is_self_owned_and_replayable": true,
+    "court_has_wrong_root_skips": false,
+    "court_has_silent_skips": true,
+    "court_forbidden_purpose_tests_are_self_referential": false,
+    "court_public_api_test_uses_dir_noise": "PARTIALLY - one class-level test uses dir(); the module-level test correctly uses __all__",
+    "court_passes_after_deleting_a_load_bearing_refusal": false,
+    "court_surface_148_reproduced": true,
+    "environment_certification_claimed": false,
+    "environment_claim_independently_checkable_here": false,
+    "third_positive_power_reachable": true,
+    "architecture_conflict": false,
+    "authority_overreach": false,
+    "safe_for_hq_adoption": false
+  },
+
+  "reviewer_verification_performed": [
+    "Review tip verified against the pushed branch before any work.",
+    "Change set verified by git diff --stat against the startup base: two new files, no other production module modified.",
+    "All three adopted owners verified byte-identical at the candidate tip AND at the startup base, with the exact blob hashes independently reproduced via git hash-object.",
+    "The court's repo-root arithmetic verified: parents[1] resolves to the worktree root, so the write-terrain guards execute rather than skip.",
+    "The binder module read in full (823 lines) and the court read in full (794 lines).",
+    "The adopted applicability owner (829 lines) and the adopted F8 owner (462 lines) read to establish the invariants the binder relies on.",
+    "The full 148-test surface independently re-run twice: 72/60/13/3, 0 failed, 0 skipped.",
+    "Ten hostile probes executed in a first round and six focused probes in a second round, all read-only.",
+    "Permutation invariance independently reproduced across six orderings and a reversed authority list.",
+    "The single-source inertness established by comparing a single-source and an exhaustive binding over the same receipt, the same rule and the same evidence, including result-hash equality.",
+    "The F8 non-transformation established by wide-vs-narrow comparison on the same query and evidence objects.",
+    "The conditioner escape route tested and found closed upstream by the adopted query owner.",
+    "The refusal surface classified exception-type by exception-type across nine paths.",
+    "The binder's AST parsed independently to establish exactly which F8 attributes it reads.",
+    "The environment claim checked for checkability rather than assumed, and reported as reconstructed rather than certified."
+  ],
+
+  "hard_holds_respected": {
+    "raw_source": false,
+    "locator_discovery": false,
+    "warrant_issuance": false,
+    "live_c4": false,
+    "c7": false,
+    "actor_person_work": false,
+    "implementation_edits": false,
+    "repair": false,
+    "merge": false,
+    "self_adoption": false,
+    "sparse_scope_widened": false,
+    "clone_performed": false
+  },
+
+  "what_this_review_does_not_do": "It does not adopt the seam, repair the candidate, merge, or issue a warrant. It returns one disposition and a bounded repair set.",
+
+  "terminal": "HQ211_HD_F8_BINDING_HOSTILE_REVIEW_RETURNED__HQ_DECISION_REQUIRED"
+}

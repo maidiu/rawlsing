@@ -1,0 +1,126 @@
+{
+  "schema": "PYAT_HQ211_REFUSAL_REPLAY_AND_COURT_ATTACK@1.0.0",
+  "lane": "PYAT-HQ211-HD-F8-BINDING-INDEPENDENT-REVIEW-R1",
+  "reviewer_role": "INDEPENDENT_HOSTILE_REVIEWER_NO_REPAIR",
+
+  "attack_F_typed_refusal_authenticity": {
+    "verdict": "PASS",
+    "method": "drive nine distinct refusal paths and classify each exception by type",
+    "refusal_paths_exercised": [
+      "first_admitted_source", "ranked_sources", "pooled_source_set",
+      "conditioned_f8_geometry", "grant_target_use_permission",
+      "currentness_authority", "infer_individual_state",
+      "assert_binding_does_not_authorize(POOLING)", "assert_complete_coverage_from_binding(incomplete)"
+    ],
+    "foreign_private_types": [],
+    "every_refusal_is": "ServiceF8ScopeBindingError(Pre553IntegrityError) carrying .reason_code",
+    "constructed_only_through": "the module's own _refusal helper",
+    "prior_defect_3_genuinely_fixed": true,
+    "how": "the binder re-implements the coverage check directly (if receipt.candidate_class_coverage != COVERAGE_COMPLETE: raise _refusal('APPLICABILITY_COVERAGE_INCOMPLETE', ...)) instead of translating the adopted owner's private _Refusal",
+    "replayable_and_stable": true,
+    "court_note": "the court's test_binding_has_no_grant_path_for_any_forbidden_power asserts the exact reason code per method, so a renamed or re-typed refusal fails the court"
+  },
+
+  "attack_G_court_authenticity": {
+    "verdict": "SUBSTANTIALLY_AUTHENTIC",
+    "results": [
+      {"commission_attack": "wrong-root skips", "verdict": "FIXED AND VERIFIED", "evidence": "Path(__file__).resolve().parents[1] resolves to the worktree root; the guards executed (no skips) and I reproduced all three owner hashes independently"},
+      {"commission_attack": "silent skips in write-terrain guards", "verdict": "STILL PRESENT AS AN ESCAPE HATCH", "finding_ref": "G-3"},
+      {"commission_attack": "production-self-referential forbidden-purpose tests", "verdict": "FIXED", "evidence": "PINNED_FORBIDDEN_PURPOSES holds 25 literals pinned in the court file; @pytest.mark.parametrize('purpose', PINNED_FORBIDDEN_PURPOSES); the court does not iterate B.FORBIDDEN_BINDING_PURPOSES. Truncating the production tuple makes the court FAIL rather than collect fewer cases"},
+      {"commission_attack": "public-API tests using dir() noise rather than __all__", "verdict": "MIXED", "finding_ref": "G-1, G-2"},
+      {"commission_attack": "any test that can pass after deleting a load-bearing refusal", "verdict": "NOT FOUND", "evidence": "refusal tests assert exact reason codes on exact methods; the parametrised purpose test asserts BINDING_POWER_NONCOLLAPSE_VIOLATION per pinned literal"}
+    ],
+    "GAP_lessons_from_prior_review": {
+      "GAP_2_unranked_proven_not_asserted": "CLOSED - permutation invariance of the replay identity and of the exposed order, plus recursive value inspection of the material. I reproduced the permutation invariance independently (1 distinct identity, 1 distinct order across 6 permutations)",
+      "GAP_3_self_referential_constant": "CLOSED for the properties that matter - forbidden purposes are court-pinned literals and non-authorization is proven by value inspection",
+      "GAP_4_tautological_runtime_check": "CLOSED - runtime checks vary an input or assert a refusal; my own C1 used two genuinely different bindings over the same evidence"
+    },
+    "findings": [
+      {
+        "id": "G-1",
+        "severity": "LOW",
+        "test": "test_binding_exposes_no_ordered_or_preferring_surface",
+        "defect": "filters class attributes with a name-substring heuristic ('source' in n.lower()) and asserts the remainder equals two names; a future selection-shaped method whose name does not contain 'source' (e.g. pick_best) would not be caught",
+        "is_a_false_proof": false,
+        "note": "the module-level __all__ test is correct and airtight; this class-level one is weaker than it reads"
+      },
+      {
+        "id": "G-2",
+        "severity": "LOW",
+        "test": "test_binding_exposes_no_ordered_or_preferring_surface line 316",
+        "defect": "uses dir(B.ServiceApplicabilityF8SourceScopeBinding) on the class - exactly the shape the commission asked to attack",
+        "mitigations": "dir() is deterministic (Python sorts it); the docstring at line 774 carefully explains why the MODULE test uses __all__; the assertion is a specific set equality, which is meaningful",
+        "assessment": "bounded weakness, not a false proof"
+      },
+      {
+        "id": "G-3",
+        "severity": "LOW",
+        "tests": ["test_F8_owner_module_is_byte_unchanged_from_the_HQ208_recorded_blob", "test_binding_does_not_modify_the_adopted_owners"],
+        "defect": "both call pytest.skip(...) when the owner file is absent, when git is unavailable, or when hash-object fails, so the guard silently degrades to a skip and still produces an all-green run",
+        "observed_here": "both ran and passed (0 skipped), so the evidence in this environment is real",
+        "worker_awareness": "the worker recorded this defect family explicitly (defect #4) and fixed the root computation, but did not remove the skip path",
+        "assessment": "a guard that can skip while looking green is the failure mode the candidate itself names"
+      }
+    ]
+  },
+
+  "replay_and_provenance": {
+    "binding_identity_is_permutation_invariant": true,
+    "binding_identity_covers": [
+      "binding request material", "applicability receipt replay identity", "receipt id",
+      "F8 rule hash", "admitted source set", "currentness result"
+    ],
+    "evaluation_provenance_checks": [
+      {"check": "F8 rule hash", "reason_code": "BINDING_RULE_REPLAY_MISMATCH"},
+      {"check": "receipt replay identity (when receipt supplied)", "reason_code": "BINDING_REPLAY_MISMATCH"},
+      {"check": "receipt id (when receipt supplied)", "reason_code": "BINDING_RECEIPT_IDENTITY_MISMATCH"}
+    ],
+    "receipt_omission_behaviour": "omitting the receipt re-validates the binding's own recorded identity instead of re-deriving it; this is disclosed in the docstring and does not widen any power",
+    "observed": "a mutated receipt is detected at evaluation (court test + my probe)"
+  },
+
+  "attack_H_environment_classification": {
+    "verdict": "DISCLOSED_CORRECTLY_BUT_NOT_INDEPENDENTLY_CHECKABLE_HERE",
+    "candidate_claim": {
+      "governed_environment_status": "ABSENT",
+      "reconstitution_performed": false,
+      "interpreter_used": "/var/folders/.../opencode/hq204-r9-env/bin/python",
+      "python_version": "3.11.3",
+      "package_freeze_set_identical_to_governed_lock": true,
+      "lock_compared": "PYAT-C4C3-DARWIN-ANCHOR-RUNTIME-R1/01_ENVIRONMENT_LOCK.json at deea40541cda0627d129dcb7d30e06e0682e0fed",
+      "lock_entries": 14,
+      "observed_entries": 14,
+      "pyreadstat_pin": "1.3.6",
+      "classification": "RECONSTRUCTED-EQUIVALENT EVIDENCE, NOT GOVERNED CERTIFICATION"
+    },
+    "independent_checks_possible": {
+      "governed_venv_present": false,
+      "governed_lock_path_present_in_this_checkout": false,
+      "referenced_interpreter_present": false,
+      "python_version_matches": true
+    },
+    "independent_action_taken": "re-ran the whole 148-test surface in my own venv (CPython 3.11.3) and reproduced the same counts",
+    "relabelled_as_governed_certification": false,
+    "assessment": "the discipline the commission required is honoured: the candidate labels its own results reconstructed and does not claim governed certification. I neither certify nor dispute the freeze-identity claim, which I could not check without widening sparse scope.",
+    "relevance_argument_accepted": "the binder is pure source-free logic over synthetic exact refs, reading no survey bytes, no file and no network, so the interpreter affects whether the harness can import and execute, not the semantics under test"
+  },
+
+  "court_surface_independently_reproduced": {
+    "suites": [
+      {"suite": "test_pre553_service_f8_source_scope_binding_court.py", "candidate_claim": 72, "observed": 72, "skipped": 0, "match": true},
+      {"suite": "test_pre553_service_source_applicability_court.py", "candidate_claim": 60, "observed": 60, "match": true},
+      {"suite": "test_source_backed_positioned_subject_possibility.py", "candidate_claim": 13, "observed": 13, "match": true},
+      {"suite": "test_a05_z08_positioned_admission.py", "candidate_claim": 3, "observed": 3, "match": true}
+    ],
+    "aggregate": {"candidate_claim": 148, "observed": 148, "failed": 0, "skipped": 0, "single_invocation": "148 passed in 1.95s", "match": true},
+    "determinism_claim": "not re-run under three seeds by this reviewer; the suites are order-insensitive by construction and the aggregate reproduced identically in two separate invocations"
+  },
+
+  "regression_slice_claim": {
+    "candidate_claim": "66 test files importing the touched/imported surface: baseline 78 failed / 1165 passed / 50 collection errors, post-change identical, new failures [] and new collection errors []",
+    "reviewer_action": "not independently reproduced (a 66-file slice requires the exact dependency set the candidate used, and duckdb and fixtures are absent here)",
+    "structural_substitute": "the change set is one new production module plus one new test file; the adopted owners are byte-identical; and no existing module imports the binder, so the touched surface is a leaf",
+    "classification": "RECONSTRUCTED - not certified by this review",
+    "label": "the candidate itself makes no claim that the wider surface is green, and correctly attributes the pre-existing failures to absent optional dependencies"
+  }
+}
