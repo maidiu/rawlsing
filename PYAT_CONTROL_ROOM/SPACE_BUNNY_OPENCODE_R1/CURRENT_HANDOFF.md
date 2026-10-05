@@ -1,3 +1,50 @@
+# LIVE CONTROL-PLANE DELTA — DIRECT ORIGIN RESOLUTION — 2026-10-05
+
+This section updates **worker transport/state only**. It does not adopt or semantically adjudicate any return below.
+
+Fresh HQ must still resolve direct origin branch HEADs before acting; this snapshot can itself become stale.
+
+### PUSHED — READY FOR HQ INTAKE — F7 TEMPORAL CONTRACT REVIEW
+**AGENT:** DeepSeek Harness  
+**MODEL / INTELLIGENCE:** **DeepSeek V4.1 Flash**  
+**BRANCH:** `agent/reviewer-pyat-hq208-f7-temporal-contract-r1`  
+**RETURN TIP:** `f1a0dbbc8491e0d23df9005abd55b83e0261424e`
+
+### PUSHED — READY FOR HQ INTAKE — H-D / F8 RERECONCILIATION
+**AGENT:** Browser/GitHub documentary worker  
+**MODEL / INTELLIGENCE:** **GPT-5.6 Sol High**  
+**BRANCH:** `agent/rabochii-pyat-hq208-hd-f8-rereconciliation-r1`  
+**RETURN TIP:** `6e2649c4d111fd0ec176c9fa29ce1da27ccc448e`
+
+### PUSHED — READY FOR HQ INTAKE — V556 REPAIR
+**AGENT:** Space Bunny  
+**MODEL / INTELLIGENCE:** **Space Bunny Max**  
+**BRANCH:** `agent/rabochii-pyat-hq206-v556-repair-r1`  
+**RETURN TIP:** `3a2dcafe024b2556af1df909deb5452841e45b7c`
+
+This V556 return is semantic-sensitive production repair and still requires the mandatory final hostile independent review before adoption.
+
+### EXISTING — ACTIVE / NOT YET RETURNED — R9 REPAIR
+**AGENT:** Space Bunny  
+**MODEL / INTELLIGENCE:** **Space Bunny High**  
+**BRANCH:** `agent/rabochii-pyat-hq207-r9-repair-r1`  
+**REMOTE TIP:** `70ca48345d97f26ac1d7061df2138ab3f14c474c`
+
+Remote still equals commission tip. That proves only that no pushed return is visible; it does **not** prove local completion.
+
+### EXISTING — ACTIVE / NOT YET RETURNED — C1 PRUNE
+**AGENT:** Space Bunny  
+**MODEL / INTELLIGENCE:** **Space Bunny High**  
+**BRANCH:** `agent/rabochii-pyat-hq206-c1-prune-r1`  
+**REMOTE TIP:** `32d86985b8af3f2ee175f5a170ee21c7101785b6`
+
+The live worker reported an interrupted pre-prune baseline run and should resume its existing prepared worktree, rerun the 454-test baseline cleanly, and continue the prune. Do not relaunch or merely tell it to push.
+
+Binding operational law:
+`PYAT_CONTROL_ROOM/SHARED_STORE_SPARSE_WORKTREE_EXECUTION_LAW_R1.md`
+
+---
+
 # HQ208 active frontier — 2026-10-05
 
 Current checkpoint:
