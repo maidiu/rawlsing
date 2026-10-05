@@ -83,6 +83,12 @@ Workers:
 
 A missing worktree is an infrastructure/bootstrap issue, not permission to clone. A missing governed runtime environment is an environment/provenance issue, not permission to recreate the repository or falsely relabel a reconstruction as governed.
 
+### Concurrency law
+
+**No fixed global worker/reviewer slot cap is current authority.**
+
+HQ maximizes safe orthogonal concurrency. Serialize only for a real dependency, overlapping semantic/write ownership, reviewer-independence requirement, host-capacity limit, or unavailable execution surface. A ready orthogonal critical-path lane must not be queued solely because an inherited packet once said “two workers and one reviewer.”
+
 ### HQ intake law
 
 For every pushed return, HQ should immediately:
