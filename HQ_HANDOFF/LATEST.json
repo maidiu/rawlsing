@@ -1,12 +1,12 @@
 {
   "schema": "RAWLSING_HQ_HANDOFF_POINTER@1.1.0",
-  "checkpoint_id": "20261005-PYAT-HQ208-SERVICE-ADOPTED-F7-HD-FRONTIER-R1",
-  "handoff_commit": "0476466042a7d50fdec17745d4342aa5b5c9f4cb",
+  "checkpoint_id": "20261005-PYAT-HQ209-OPERATING-DISCIPLINE-LIVE-STATE-R1",
+  "handoff_commit": "998361f0237f16c4be1a1987c81ff2c6ca706225",
   "semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390",
   "control_branch": "integration/pre-main-reconciliation-r1",
-  "current_md_path": "HQ_HANDOFF/checkpoints/20261005-PYAT-HQ208-SERVICE-ADOPTED-F7-HD-FRONTIER-R1/CURRENT.md",
-  "current_json_path": "HQ_HANDOFF/checkpoints/20261005-PYAT-HQ208-SERVICE-ADOPTED-F7-HD-FRONTIER-R1/CURRENT.json",
-  "manifest_path": "HQ_HANDOFF/checkpoints/20261005-PYAT-HQ208-SERVICE-ADOPTED-F7-HD-FRONTIER-R1/MANIFEST.json",
+  "current_md_path": "HQ_HANDOFF/checkpoints/20261005-PYAT-HQ209-OPERATING-DISCIPLINE-LIVE-STATE-R1/CURRENT.md",
+  "current_json_path": "HQ_HANDOFF/checkpoints/20261005-PYAT-HQ209-OPERATING-DISCIPLINE-LIVE-STATE-R1/CURRENT.json",
+  "manifest_path": "HQ_HANDOFF/checkpoints/20261005-PYAT-HQ209-OPERATING-DISCIPLINE-LIVE-STATE-R1/MANIFEST.json",
   "decision_ledger_path": "HQ_HANDOFF/DECISION_LEDGER.jsonl",
   "protocol_path": "HQ_HANDOFF/PROTOCOL.md",
   "start_here_path": "HQ_HANDOFF/START_HERE.md",
@@ -15,7 +15,7 @@
   "temporal_reconciliation_law": "SEALED_CHECKPOINT_AUTHORITY_NE_POST_CHECKPOINT_PENDING_RETURN_NE_UNAUTHORIZED_POST_CHECKPOINT_MOVEMENT",
   "maintenance_law": "AFTER_EVERY_MATERIAL_HQ_STATE_CHANGE__CREATE_NEW_IMMUTABLE_CHECKPOINT__ADVANCE_AND_VERIFY_LATEST_BEFORE_TRANSITION_IS_SEALED",
   "protected_execution_head": "16f5e7d5f691e908d85dc1dd26b8a59a29f668f4",
-  "next_action": "RUN_F7_REVIEW_AND_HD_RERECONCILIATION_IN_PARALLEL__PUSH_EXISTING_R9_C1_V556_RETURNS",
+  "next_action": "INTAKE_F7_REVIEW__INTAKE_HD_RERECONCILIATION__INTAKE_V556_REPAIR_AND_BIND_FINAL_HOSTILE_REVIEW__CONTINUE_R9_C1_EXISTING_WORKERS",
   "source_split_control_head": "cee9e27d57dc72771d9c3ec5df26493321feeef5",
   "split_fanin_evidence_tip": "cee9e27d57dc72771d9c3ec5df26493321feeef5",
   "joined_successor_return_tip": "b4dd6d6016367110c06317abe2cef276123b4c69",
@@ -62,7 +62,7 @@
   "pyat_current_handoff": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/CURRENT_HANDOFF.md",
   "pyat_current_grok_docket": "PYAT_CONTROL_ROOM/12_B_ROUTE_PRE_FIELD_FORGE_GROK_DOCKET.md",
   "pyat_fresh_hq_protocol": "PYAT_CONTROL_ROOM/13_FRESH_HQ_FULL_GROK_PROTOCOL.md",
-  "immediate_program_refinement": "HQ208__SERVICE_SOURCE_ADOPTED__F7_HOSTILE_REVIEW_PLUS_HD_RERECONCILIATION",
+  "immediate_program_refinement": "HQ209__OPERATING_DISCIPLINE_BOUND__DIRECT_REMOTE_STATE_TRUTH__SHARED_STORE_SPARSE_WORKTREES__F7_HD_V556_PENDING_INTAKE__R9_C1_ACTIVE",
   "legacy_pyat_bootstrap_path": "HQ_HANDOFF/PYAT_HQ_BOOTSTRAP_R1.md",
   "pyat_documentary_hygiene": "HQD-2026-09-26-114",
   "pyat_forward_program_decision": "HQD-2026-09-28-125",
@@ -1144,5 +1144,9 @@
     ],
     "raw_live_warrant_c7_actor_holds": true,
     "astra_referral": false
-  }
+  },
+  "hq_operating_discipline_decision": "HQD-2026-10-05-209",
+  "hq_operating_law": "PYAT_CONTROL_ROOM/SHARED_STORE_SPARSE_WORKTREE_EXECUTION_LAW_R1.md",
+  "worker_state_truth": "DIRECT_ORIGIN_BRANCH_HEAD__NO_LOCAL_COMPLETION_INFERENCE_FROM_UNCHANGED_REMOTE",
+  "worker_status_identity": "AGENT__MODEL_INTELLIGENCE__MACHINE_WHEN_KNOWN__WORKTREE_WHEN_KNOWN__BRANCH__EXACT_TIP"
 }
