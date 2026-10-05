@@ -1,0 +1,105 @@
+{
+  "schema": "PYAT_HQ217_AUTHENTICATION_REPAIR@1.0.0",
+  "lane": "PYAT-HQ217-HD-F8-BINDING-AUTHENTICATION-REPAIR-R1",
+  "commission_tip": "29f8583ff24e372e5fe7948b6dc400e05ee69851",
+  "exact_startup_tip": "09e4dc0d9e8dba21eadab0b5dd55821af7f4811c",
+  "hostile_rereview": "6df6c86816a949d02bd91d33b6686ba0de728050",
+  "inherited_disposition": "HD_F8_REPAIR_AUTHORITY_OVERREACH",
+  "pushed_sha": "d588f709a8b923082d5d458ed6a671e2ae57fb76",
+  "branch_note": "The commission commit 29f8583ff is the exact startup tip 09e4dc0d9 plus the commission file. The first push attempt was correctly rejected as non-fast-forward; the repair commit was rebased onto the commission tip so the branch carries both the commission and the repair. No code conflict occurred.",
+  "defect_reproduced_before_any_change": {
+    "probe_location": "outside the repository, read-only import of the binder at the commission tip",
+    "authoritative_fixture": "a real adopted receipt in which ONLY source A is positively admitted and B is refused",
+    "result_at_commission_tip": [
+      { "attack": "1. direct constructor forgery, genuine receipt supplied", "outcome": "ALLOWED", "state": "EXACT_SUPPORTED", "source": "B", "note": "B was never admitted by service applicability" },
+      { "attack": "2. direct constructor forgery, genuine receipt AND a request supplied", "outcome": "ALLOWED", "state": "EXACT_SUPPORTED", "source": "B" },
+      { "attack": "3. dataclasses.replace of a lawful binding, forged provenance, genuine receipt", "outcome": "ALLOWED", "state": "EXACT_SUPPORTED", "source": "B" },
+      { "attack": "4. copied attacker receipt id and replay identity", "outcome": "ALLOWED", "state": "EXACT_SUPPORTED", "source": "B" }
+    ],
+    "also_found_while_reproducing": "attack 3 initially refused with ADMISSION_PROVENANCE_MISSING, but only INCIDENTALLY, because the replaced binding kept A's provenance rows while claiming B. Once the forgery also fabricated a provenance row for B, it bypassed too. A court that stopped at the incidental refusal would have been a false negative, so the forgery was made complete before being recorded as a failing attack.",
+    "confirmation": "the bypass is an authority overreach, exactly as the review reported"
+  },
+  "the_repair": {
+    "principle": "Eligibility is only ever reported from a RE-DERIVATION from the authoritative applicability receipt. Nothing on the presented binding is trusted.",
+    "new_module_private_helper": "_authenticate_binding_against_authority(binding, *, request, receipt, rule)",
+    "how_it_works": "It requires the exact request, the authoritative receipt and the bound F8 rule, recovers the currentness result from the binding so the re-derivation is exact, then calls the existing exact verification path verify_service_f8_scope_binding_replay, and adds a second explicit material equality gate so a future weakening of the verifier cannot silently reopen the hole. It returns the RE-DERIVED binding.",
+    "why_re_derivation_is_the_only_sound_defence": "binding_ref is a deterministic semantic_hash over a seed containing request.material(), receipt.replay_identity(), receipt.receipt_id, rule.rule_hash and the admitted set. A caller cannot produce the lawful binding_ref without the authoritative receipt's own replay identity. Conversely, any self-consistent forgery computes a different lawful value, so re-derivation is exact.",
+    "why_a_self_hash_or_post_init_is_insufficient": "A caller can fabricate a fully self-consistent binding, including a correctly recomputed binding_ref. The court proves this by rehashing a forgery with the module's own semantic_hash and showing it still refuses. No __post_init__ check was added for this reason.",
+    "paths_closed": [
+      {
+        "path": "evaluate_bound_positioned_subject_possibility",
+        "was": "binding fields trusted; receipt OPTIONAL, so the only receipt checks could be skipped entirely",
+        "now": "request and receipt are REQUIRED keyword arguments. The evaluator authenticates FIRST and then uses the re-derived binding for every subsequent check and for the admission assertion."
+      },
+      {
+        "path": "ServiceApplicabilityF8SourceScopeBinding.assert_query_source_admitted (power 1)",
+        "was": "asserted admission from the binding's own admitted tuple",
+        "now": "REQUIRES request, receipt and rule; authenticates first; the admission decision, release comparison and provenance all read the RE-DERIVED binding. The returned mapping carries admission_re_derived_from_authoritative_receipt: true."
+      },
+      {
+        "path": "ServiceApplicabilityF8SourceScopeBinding.expose_unranked_admitted_source_set (power 2)",
+        "was": "returned the binding's own admitted tuple",
+        "now": "REQUIRES request, receipt and rule; authenticates first; returns the RE-DERIVED admitted tuple, so a forged admitted set is never returned."
+      }
+    ],
+    "why_the_two_powers_were_closed_too": "The commission's fifth requirement is that direct construction and dataclasses.replace must not MANUFACTURE SOURCE ELIGIBILITY, which is broader than merely refusing to reach F8. Power 1 returns admitted: true and power 2 returns the admitted set, so leaving either unauthenticated would have left the same overreach reachable through a different door.",
+    "existing_verification_path_reused": "verify_service_f8_scope_binding_replay, as commission requirement 3 directs. It was already exact: it re-binds from (request, receipt, rule) and compares both replay identity and material.",
+    "currentness_recovery": "currentness_result is recovered from the binding so re-derivation is exact. Recovery is safe because re-derivation re-validates it against the request: a fabricated CURRENT with no claim refuses, and an unrequested currentness with a claim refuses.",
+    "dead_code_removed": {
+      "what": "the evaluator's explicit bound_rule.rule_hash != binding.f8_rule_hash comparison, and the then-unreachable BINDING_RULE_REPLAY_MISMATCH reason code",
+      "why_dead": "authentication derives the binding's f8_rule_hash from the very rule object presented at evaluation, so after successful authentication the comparison can never be false",
+      "why_removed_rather_than_kept": "leaving unreachable code with a comment overstating its role is precisely the dead-branch defect class HQ211 raised as F3 and this lane's parent repaired. It was replaced with an explicit assertion documenting that authentication must derive the binding from the presented rule, so a broken authentication path fails loudly rather than silently.",
+      "consequence_disclosed": "a tampered F8 rule now refuses with BINDING_REPLAY_MISMATCH during authentication rather than with a rule-specific code. Two pre-existing court assertions were updated to assert the new code precisely rather than loosened to accept anything."
+    },
+    "public_surface_accounting_repaired": {
+      "defect": "the HQ213 census excluded the two exported dataclasses by name and enumerated only the two pinned powers, hiding twelve other public binding methods. The exported dataclass constructors are exactly the forgery surface HQ217 exists to close.",
+      "now": "a census classifies EVERY __all__ name with nothing excluded, pins all three exported classes including ServiceApplicabilityF8SourceScopeBinding and ServiceApplicabilityF8ScopeBindingRequest, and pins all fourteen public binding methods as literals in the court",
+      "honest_counts": {
+        "exported_names_in_all": 28,
+        "exported_classes": 3,
+        "exported_functions": 4,
+        "public_methods_on_the_binding": 14,
+        "eligibility_revealing_powers": 2,
+        "loud_refusal_methods": 8,
+        "accessors": ["as_dict", "material", "replay_identity", "binding_statement"]
+      },
+      "why_pinning_every_method_matters": "an unexpected public method is a possible new power, so the census is written to FAIL on any addition rather than to silently recount a smaller set"
+    }
+  },
+  "authoritative_inputs_are_mandatory": {
+    "evaluate_bound_positioned_subject_possibility": ["binding", "request", "receipt", "query", "rule", "evidence"],
+    "receipt_no_longer_optional": true,
+    "assert_query_source_admitted": ["self", "query", "request", "receipt", "rule"],
+    "expose_unranked_admitted_source_set": ["self", "request", "receipt", "rule"],
+    "proved_by": "introspected signatures in the court, plus TypeError witnesses showing neither power can be exercised on a binding's own fields alone"
+  },
+  "preservation_verified": {
+    "three_adopted_owners_byte_identical": true,
+    "owner_blobs": {
+      "rawlsing_next/pre553_service_source_applicability.py": "3e40caca29e8c96ee1f412f919cfc7dba63f96c4",
+      "rawlsing_next/source_backed_positioned_subject_possibility.py": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+      "rawlsing_next/objective_consumer_bounded_evidence.py": "f30fca20e7b56e00348e82765d95f974b4b6a195"
+    },
+    "non_selecting_non_ranking_seam": "preserved; the census still shows no first/best/latest/local/preferred/ranked/weighted accessor, and all eight loud refusals still refuse",
+    "no_pooling": true,
+    "no_permission_grant": true,
+    "no_equivalence_creation": true,
+    "no_currentness_authority_invention": "currentness_authority() still refuses; currentness is still never inferred",
+    "no_F8_geometry_or_distribution_transformation": "witnessed by geometry, model_rule_hash, model_authority_ref, walkback_authority_ref and replay_determinants all passing through unchanged",
+    "COMPLETE_INCOMPLETE_law": "preserved; single-source validation survives under INCOMPLETE, set exposure still refuses",
+    "off_release_fail_closed_law": "preserved; still refuses with BINDING_OFF_RELEASE_POSITIVE_DECISION",
+    "requested_source_replay_refinement": "preserved; the A-bound/B-query refusal is still closed and is re-tested in the new court",
+    "actor_firewall": "preserved; no actor or person work",
+    "no_new_authority": "confirmed by scanning the diff for added ranking, selection, priority, preference, weight, pooling, composition, respondent linkage or actor terms; the only matches were negative disclaimer prose",
+    "no_architecture_reopen": true
+  },
+  "commission_requirements_addressed": {
+    "1_authenticate_before_delegating": "done, in all three authority-consuming paths",
+    "2_require_exact_request_receipt_rule": "done; request and receipt are required keywords, rule is required on both powers",
+    "3_reuse_existing_verification_path": "done; verify_service_f8_scope_binding_replay is the verification path",
+    "4_self_hash_or_post_init_insufficient": "honoured; not used, and disproved by a rehashed forgery witness",
+    "5_construction_and_replace_cannot_manufacture_eligibility": "done, and proven for the F8 path, the admission assertion and the set exposure",
+    "6_genuine_receipt_with_forged_binding_still_fails": "done; the admitted set and provenance are re-derived, never read from the presented binding",
+    "7_public_surface_accounting": "done; census now sees constructors and every public method with nothing filtered"
+  }
+}
