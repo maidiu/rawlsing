@@ -70,6 +70,53 @@ Do not make every successor reproduce the entire R2.1 investigation before forwa
 
 The passes below remain the canonical deep-review curriculum when a delta or contradiction wakes them.
 
+## GROK PASS 0 — operational control-plane preflight
+
+This pass is mandatory before worker-state claims, new dispatch, replacement dispatch, or “push your return” instructions.
+
+Read:
+- `PYAT_CONTROL_ROOM/SHARED_STORE_SPARSE_WORKTREE_EXECUTION_LAW_R1.md`;
+- `PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/CURRENT_HANDOFF.md` as a durable snapshot, **not** a live branch oracle;
+- the live immutable checkpoint selected by `HQ_HANDOFF/LATEST.json`.
+
+Then resolve the direct origin HEAD of every branch named active, pending, returned-locally, or under review.
+
+Build a live worker ledger with exactly these fields:
+
+- STATUS;
+- AGENT;
+- MODEL / INTELLIGENCE;
+- MACHINE when known;
+- WORKTREE when known/prepared;
+- BRANCH;
+- COMMISSION / STARTUP TIP;
+- DIRECT ORIGIN HEAD;
+- ACTION: launch / continue / push / HQ intake / independent review / closed.
+
+Permitted lifecycle labels:
+
+`NEW — NEEDS LAUNCH`
+
+`EXISTING — ACTIVE / NOT YET RETURNED`
+
+`RETURNED LOCALLY — PUSH REQUIRED`
+
+`PUSHED — READY FOR HQ INTAKE`
+
+`ADOPTED / CLOSED`
+
+Rules:
+- direct origin HEAD outranks stale handoff prose for remote branch state;
+- an unchanged remote branch proves only that no pushed return is visible there;
+- it does **not** prove local completion and does **not** justify “push” unless the worker explicitly reports completion;
+- a moved remote branch is not automatically accepted: intake and review law still apply;
+- never relaunch an existing lane until exact evidence shows the original lane is unavailable or invalid;
+- maximize safe orthogonal concurrency, but never allow concurrent agents to share one checked-out working directory.
+
+Deliverable 0:
+
+A one-screen operational ledger that lets the user identify every job by **model/intelligence + branch + machine/worktree + exact tip** without hunting across tabs.
+
 ## GROK PASS A — current HQ and Pyat succession
 
 Read:
