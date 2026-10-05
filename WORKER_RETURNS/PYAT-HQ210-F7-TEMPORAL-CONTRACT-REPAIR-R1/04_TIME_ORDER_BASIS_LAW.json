@@ -1,0 +1,69 @@
+{
+  "schema": "PYAT_HQ210_TIME_ORDER_BASIS_LAW@1.1.0",
+  "lane": "PYAT-HQ210-F7-TEMPORAL-CONTRACT-REPAIR-R1",
+  "status": "REPAIRED_CONTRACT_SUCCESSOR__NOT_ADOPTED__NO_IMPLEMENTATION",
+  "verdict": "THREE_AUTHORIZED_ORDER_BASES_PLUS_ONE_TYPED_NO_BASIS_REFUSAL__POLYMORPHIC_EXACT_TIME_REFS",
+  "substrate_law": {
+    "time_ref_exact_and_opaque": true,
+    "grain_bound_by_exact_authority": true,
+    "no_implicit_grain_coercion": true,
+    "wave_label_not_ordinal_not_calendar_year": true,
+    "different_operations_may_carry_different_grains": true,
+    "same_family_does_not_prove_grain_adequacy": true,
+    "no_scalar_eligibility": true
+  },
+  "order_dispositions": [
+    {
+      "disposition": "CALENDAR_TOTAL_ORDER",
+      "classification": "AUTHORIZED_ORDER_BASIS",
+      "permits_direction": true,
+      "basis_ref_required": true,
+      "meaning": "Exact calendar points or non-overlapping exact bounded intervals establish total order under bound TEMPORAL_EVIDENCE and any required mapping authority."
+    },
+    {
+      "disposition": "FAMILY_LOCAL_ORDINAL",
+      "classification": "AUTHORIZED_ORDER_BASIS",
+      "permits_direction": true,
+      "basis_ref_required": true,
+      "meaning": "A specifically authorized family-local ordinal establishes order without becoming a date or calendar year."
+    },
+    {
+      "disposition": "PARTIAL_ORDER_NO_DIRECTION",
+      "classification": "AUTHORIZED_ORDER_BASIS",
+      "permits_direction": false,
+      "basis_ref_required": true,
+      "meaning": "Authorized time representations determine only a partial order. Overlap may be a concrete trigger; no midpoint or representative date may be fabricated."
+    },
+    {
+      "disposition": "ORDER_UNKNOWN_NONCOMPARABLE",
+      "classification": "TYPED_NO_BASIS_REFUSAL__NOT_AN_AUTHORIZED_ORDER_BASIS",
+      "permits_direction": false,
+      "basis_ref_required": false,
+      "basis_ref_must_be_absent": true,
+      "meaning": "No permitted order basis applies to the pair under the bound material.",
+      "maps_uniquely_to": "TEMPORAL_ORDER_UNAUTHORIZED / NO_PERMITTED_ORDER_BASIS_APPLIES"
+    }
+  ],
+  "temporal_order_unauthorized_single_path": {
+    "condition": "order_disposition == ORDER_UNKNOWN_NONCOMPARABLE",
+    "relation_state": "TEMPORAL_ORDER_UNAUTHORIZED",
+    "reason": "NO_PERMITTED_ORDER_BASIS_APPLIES",
+    "forbidden_alternate_paths": [
+      "missing required temporal_order_basis_ref -> TEMPORAL_INSUFFICIENT_AUTHORITY instead",
+      "missing mapping material -> TEMPORAL_MAPPING_MATERIAL_ABSENT instead",
+      "cross-universe equivalence absent -> TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT instead",
+      "surface mismatch/interpolation -> TEMPORAL_NONCOMPARABLE instead"
+    ]
+  },
+  "prohibited_coercions": [
+    "overlap -> midpoint",
+    "ordinal -> calendar year",
+    "ordinal -> date",
+    "interval -> point",
+    "label -> ordinal",
+    "interpolation -> substitute time ref",
+    "latest/default/fuzzy/nearest -> order"
+  ],
+  "no_universal_temporal_algebra": true,
+  "no_universal_point_year_vs_interval_fork": true
+}
