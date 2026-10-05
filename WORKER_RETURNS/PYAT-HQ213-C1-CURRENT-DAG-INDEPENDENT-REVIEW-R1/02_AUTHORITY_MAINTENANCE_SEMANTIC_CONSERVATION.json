@@ -1,0 +1,84 @@
+{
+  "schema": "PYAT_HQ213_AUTHORITY_MAINTENANCE_SEMANTIC_CONSERVATION@1.0.0",
+  "lane": "PYAT-HQ213-C1-CURRENT-DAG-INDEPENDENT-REVIEW-R1",
+  "reviewed_owner": "rawlsing_next/pre553_authority_maintenance.py",
+  "current_control": "b722f2e7373ad833d5f63833b1d6fe426d3dc55d",
+  "current_control_blob": "ac7f3a013129bc148debf8f011597971a2c99442",
+  "true_divergence_base": "ff4f06954824a3a5699bc5c1c9bd68cb3c5b4146",
+  "divergence_base_blob": "ac7f3a013129bc148debf8f011597971a2c99442",
+  "candidate_blob": "547e6bf20354f38179a0e2600de64c7cb2260ea0",
+  "accepted_c1_blob": "547e6bf20354f38179a0e2600de64c7cb2260ea0",
+  "decisive_lineage_fact": "CURRENT_CONTROL_OWNER_IS_BYTE_IDENTICAL_TO_TRUE_DIVERGENCE_BASE__ZERO_POST_DIVERGENCE_OWNER_CHANGES",
+  "public_surface_attack": {
+    "method": "independent conventional caller-visible scan of top-level public defs/classes/constants plus non-private class methods/properties, followed by complete patch inspection",
+    "independently_derived_control_count": 80,
+    "independently_derived_candidate_count": 94,
+    "lost_symbols": [],
+    "added_conventional_symbols": [
+      "AuthorityInvalidationReceipt.noncurrent_old_refs",
+      "AuthorityInvalidationReceipt.preserves_legacy_identity",
+      "AuthorityInvalidationReceipt.replacement_old_refs",
+      "AuthorityMaintenanceExecutor.dependent_lifecycle_status",
+      "DEPENDENT_LIFECYCLE_CURRENT",
+      "DEPENDENT_LIFECYCLE_EXPLICIT_NONCURRENT",
+      "DEPENDENT_LIFECYCLE_NOT_GOVERNED",
+      "INVALIDATION_RECEIPT_NONCURRENT_SCHEMA",
+      "NONCURRENT_DISPOSITIONS",
+      "NONCURRENT_DISPOSITION_NO_LAWFUL_REPLACEMENT",
+      "NoncurrentDependentOutcome",
+      "NoncurrentDependentOutcome.as_dict",
+      "NoncurrentDependentOutcome.from_dict",
+      "NoncurrentDependentOutcome.semantic_projection"
+    ],
+    "additional_validation_hook": "NoncurrentDependentOutcome.__post_init__",
+    "candidate_122_to_137_denominator_reproduced": false,
+    "note": "Candidate does not publish the extraction convention behind 122/137. Exact denominator was therefore not treated as authority. The load-bearing zero-loss conclusion is independently verified by a separate scan and complete patch review."
+  },
+  "refusal_change_attack": [
+    {
+      "prior": "affected dependents require an explicit deterministic recompiler",
+      "new_semantics": "legacy call with affected dependents and no recompiler/noncurrent outcome still refuses; extension accepts only explicit grounded noncurrent outcomes covering every affected dependent",
+      "legacy_weakening": false,
+      "classification": "PRESERVED_FOR_LEGACY_INPUTS__NEW_EXPLICIT_FAIL_CLOSED_ALTERNATIVE"
+    },
+    {
+      "prior": "affected dependent recompilation must produce a new exact ref",
+      "new_semantics": "same-ref output still refuses; wording additionally makes clear unchanged identity cannot stand for absence",
+      "legacy_weakening": false,
+      "classification": "PRESERVED_AND_STRENGTHENED"
+    },
+    {
+      "prior": "recompilation pairs must cover exactly the affected dependent set",
+      "new_semantics": "with no noncurrent rows, missing/unknown/overlap checks reduce to the original exact set equality; extension adds disjoint explicit noncurrent outcomes and additional duplicate/unknown refusal",
+      "legacy_weakening": false,
+      "classification": "SUBSUMED_BY_EQUIVALENT_LEGACY_INVARIANT_PLUS_STRICTER_EXTENSION"
+    }
+  ],
+  "legacy_identity_attack": {
+    "positive_only_projection_preserved": true,
+    "condition": "AuthorityInvalidationReceipt.noncurrent_dependents is empty",
+    "result": "semantic_projection returns original historical field set without new schema/noncurrent fields",
+    "record_ref_identity_preserved_for_legacy_positive_only_receipts": true
+  },
+  "signature_attack": {
+    "promote_current_change": "adds optional keyword noncurrent_outcomes=None",
+    "rollback_current_change": "adds optional keyword noncurrent_outcomes=None",
+    "old_required_arguments_removed": false,
+    "legacy_call_shape_broken": false
+  },
+  "replay_attack": {
+    "added_check": "recompute unaffected set as graph complement and require exact replay equality",
+    "classification": "STRICTER_FAIL_CLOSED_REPLAY_VALIDATION",
+    "weakening": false
+  },
+  "paired_court_attack": {
+    "current_test_blob": "e7ac05848fd6489751a0ff37d4ae85037412751b",
+    "accepted_candidate_test_blob": "5f9151d43ddf9da22d9ef9fb1b0c721344d8d27e",
+    "current_test_hits_for_named_negative_lifecycle_surfaces": 0,
+    "accepted_test_exercises_named_negative_lifecycle_surfaces": true,
+    "necessity_verdict": "REAL_COVERAGE_DEPENDENCY__NOT_GRATUITOUS_OVERIMPORT",
+    "documentary_note": "Candidate prose says '11 symbols' but the sentence names ten distinct surfaces. This arithmetic/wording defect is nonblocking."
+  },
+  "semantic_conflict_found": false,
+  "conclusion": "CURRENT_CONTROL_SEMANTICS_CONSERVED__ACCEPTED_C1_EXTENSION_FAILS_CLOSED"
+}
