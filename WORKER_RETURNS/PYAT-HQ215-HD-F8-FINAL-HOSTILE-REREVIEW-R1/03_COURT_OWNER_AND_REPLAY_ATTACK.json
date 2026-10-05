@@ -1,0 +1,135 @@
+{
+  "schema": "PYAT_HQ215_COURT_OWNER_AND_REPLAY_ATTACK@1.0.0",
+  "lane": "PYAT-HQ215-HD-F8-FINAL-HOSTILE-REREVIEW-R1",
+  "candidate_tip": "09e4dc0d9e8dba21eadab0b5dd55821af7f4811c",
+  "code_bearing_repair_commit": "17737c09194bffd7f8f2f7d135f79d5f8ebfa7fc",
+  "candidate_ancestry": {
+    "repair_base": "8d352f7d80983cbf49e7e57511f8cf6d5b80966d",
+    "repair_base_to_code_commit": {
+      "ahead": 2,
+      "behind": 0,
+      "note": "commission commit plus one code-bearing repair commit"
+    },
+    "code_commit_to_final_candidate": {
+      "ahead": 1,
+      "behind": 0,
+      "note": "return-packet-only commit"
+    },
+    "final_candidate_code_tree_matches_code_bearing_repair": true
+  },
+  "owner_blob_attack": {
+    "adopted_owners": [
+      {
+        "path": "rawlsing_next/pre553_service_source_applicability.py",
+        "blob": "3e40caca29e8c96ee1f412f919cfc7dba63f96c4",
+        "exact": true
+      },
+      {
+        "path": "rawlsing_next/source_backed_positioned_subject_possibility.py",
+        "blob": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+        "exact": true
+      },
+      {
+        "path": "rawlsing_next/objective_consumer_bounded_evidence.py",
+        "blob": "f30fca20e7b56e00348e82765d95f974b4b6a195",
+        "exact": true
+      }
+    ],
+    "owner_modified_by_repair": false
+  },
+  "claimed_190_surface": {
+    "candidate_report": "190 collected, 190 passed, 0 failed, 0 skipped across three hash seeds",
+    "reviewer_execution_mode": "BROWSER_GITHUB_READ_ONLY",
+    "independent_pytest_rerun": false,
+    "reason": "No lawful local runtime is exposed to this reviewer; the commission is Browser/GitHub read-only. Candidate execution is therefore classified as candidate-produced evidence, not second reviewer certification.",
+    "static_zero_skip_check": {
+      "repaired_existing_binding_court_pytest_skip_calls": 0,
+      "repair_court_real_pytest_skip_calls": 0,
+      "pre_repair_binding_court_pytest_skip_calls": 5,
+      "repair_court_string_mentions_pytest_skip_only_inside_meta_guard": true
+    }
+  },
+  "pre_repair_witness_authenticity": {
+    "exact_pre_repair_base": "8d352f7d80983cbf49e7e57511f8cf6d5b80966d",
+    "single_source_defect": {
+      "pre_repair_binding_result_carried_requested_source": false,
+      "pre_repair_assert_query_source_admitted_checked_only_admitted_set_before_release": true,
+      "repaired_witness_would_fail_pre_repair": true
+    },
+    "release_defect": {
+      "pre_repair_bound_to_requested_release_false_positive_branch_present": true,
+      "repaired_branch_absent": true,
+      "repaired_off_release_refusal_present": true
+    },
+    "currentness_defect": {
+      "pre_repair_arbitrary_nonnegative_string_recorded_as_currentness": true,
+      "repaired_closed_adopted_vocabulary": true
+    },
+    "guard_defect": {
+      "pre_repair_skip_calls": 5,
+      "repaired_skip_calls": 0
+    },
+    "assessment": "The repair witnesses correspond to genuine source-code deltas; the candidate's shadow-tree runtime negative-control numbers are not independently rerun here."
+  },
+  "replay_attack": {
+    "lawful_constructor_replay": {
+      "requested_source_in_request_material": true,
+      "requested_source_in_binding_material": true,
+      "verify_function_rederives_from_exact_request_receipt_rule": true,
+      "different_requested_source_fails_replay": true
+    },
+    "evaluation_path": {
+      "replay_verifier_mandatory": false,
+      "receipt_mandatory": false,
+      "request_available_to_evaluator": false,
+      "binding_ref_validated": false,
+      "binding_request_ref_validated": false,
+      "admitted_set_rederived_from_receipt": false,
+      "provenance_rederived_from_receipt": false
+    },
+    "consequence": "Replay authenticity exists as an optional utility but is not a precondition of the authority-consuming F8 evaluation path."
+  },
+  "court_authenticity_attack": {
+    "positives": [
+      "forbidden-purpose literals are pinned independently",
+      "rank-like emitted material inspection is value-based",
+      "repair witnesses vary actual inputs",
+      "write-terrain guards now fail rather than skip",
+      "A/B witness is a genuine admitted-B counterexample",
+      "off-release witness deliberately forges a receipt to bypass the owner invariant"
+    ],
+    "blocking_blind_spots": [
+      {
+        "id": "COURT-FORGE-01",
+        "finding": "Neither court directly constructs ServiceApplicabilityF8SourceScopeBinding or uses dataclasses.replace on a binding result, so no court tests that the evaluator authenticates its result object."
+      },
+      {
+        "id": "COURT-API-02",
+        "finding": "_exported_module_callables explicitly skips the two exported data classes, including the binding result constructor."
+      },
+      {
+        "id": "COURT-API-03",
+        "finding": "_exported_binding_methods iterates only PINNED_BINDING_METHODS, so an unexpected public binding method cannot be discovered by the test that claims an exact surface."
+      }
+    ],
+    "documentary_precision": [
+      {
+        "id": "DOC-COUNT-01",
+        "finding": "Production docstring says declared public callables are EIGHT; repair court's operative authority count says six public callables after excluding data classes and exception type. This is not the blocker, but the accounting remains terminologically inconsistent."
+      }
+    ]
+  },
+  "environment_classification": {
+    "candidate_classification": "RECONSTRUCTED_EQUIVALENT__NOT_GOVERNED_CERTIFICATION",
+    "reviewer_relabels_as_governed": false,
+    "assessment": "honest classification preserved"
+  },
+  "required_new_hostile_witnesses": [
+    "directly constructed binding falsely admitting a source absent from the receipt",
+    "dataclasses.replace of a lawful binding to alter admitted source/provenance/coverage",
+    "same forged binding evaluated with the real receipt supplied",
+    "forged binding_ref/binding_request_ref do not rescue the current evaluator",
+    "evaluation refuses unless exact request+receipt+rule re-derive/verify the binding"
+  ],
+  "verdict": "COURTS_AUTHENTIC_FOR_COMMISSIONED_REPAIRS__BLOCKING_UNCOURTED_BINDING_RESULT_FORGERY_PATH"
+}
