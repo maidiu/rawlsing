@@ -1,12 +1,12 @@
 {
   "schema": "RAWLSING_HQ_HANDOFF_POINTER@1.1.0",
-  "checkpoint_id": "20261004-PYAT-HQ203-TERMINAL-BACKWARD-RESIDUAL-R1",
-  "handoff_commit": "ecbb071a6f583d24efd31b4825f0cfb5b8bdc09a",
-  "semantic_pre_main_tip": "902640dfddce431d0c5ba151d3eb851d6b84d7a3",
+  "checkpoint_id": "20261005-PYAT-HQ208-SERVICE-ADOPTED-F7-HD-FRONTIER-R1",
+  "handoff_commit": "0476466042a7d50fdec17745d4342aa5b5c9f4cb",
+  "semantic_pre_main_tip": "1f47063c3205a45888b3c55e81e7485943ed1390",
   "control_branch": "integration/pre-main-reconciliation-r1",
-  "current_md_path": "HQ_HANDOFF/checkpoints/20261004-PYAT-HQ203-TERMINAL-BACKWARD-RESIDUAL-R1/CURRENT.md",
-  "current_json_path": "HQ_HANDOFF/checkpoints/20261004-PYAT-HQ203-TERMINAL-BACKWARD-RESIDUAL-R1/CURRENT.json",
-  "manifest_path": "HQ_HANDOFF/checkpoints/20261004-PYAT-HQ203-TERMINAL-BACKWARD-RESIDUAL-R1/MANIFEST.json",
+  "current_md_path": "HQ_HANDOFF/checkpoints/20261005-PYAT-HQ208-SERVICE-ADOPTED-F7-HD-FRONTIER-R1/CURRENT.md",
+  "current_json_path": "HQ_HANDOFF/checkpoints/20261005-PYAT-HQ208-SERVICE-ADOPTED-F7-HD-FRONTIER-R1/CURRENT.json",
+  "manifest_path": "HQ_HANDOFF/checkpoints/20261005-PYAT-HQ208-SERVICE-ADOPTED-F7-HD-FRONTIER-R1/MANIFEST.json",
   "decision_ledger_path": "HQ_HANDOFF/DECISION_LEDGER.jsonl",
   "protocol_path": "HQ_HANDOFF/PROTOCOL.md",
   "start_here_path": "HQ_HANDOFF/START_HERE.md",
@@ -15,7 +15,7 @@
   "temporal_reconciliation_law": "SEALED_CHECKPOINT_AUTHORITY_NE_POST_CHECKPOINT_PENDING_RETURN_NE_UNAUTHORIZED_POST_CHECKPOINT_MOVEMENT",
   "maintenance_law": "AFTER_EVERY_MATERIAL_HQ_STATE_CHANGE__CREATE_NEW_IMMUTABLE_CHECKPOINT__ADVANCE_AND_VERIFY_LATEST_BEFORE_TRANSITION_IS_SEALED",
   "protected_execution_head": "16f5e7d5f691e908d85dc1dd26b8a59a29f668f4",
-  "next_action": "RUN_R9_REVIEW_PLUS_H_A_THROUGH_H_E_IN_PARALLEL",
+  "next_action": "RUN_F7_REVIEW_AND_HD_RERECONCILIATION_IN_PARALLEL__PUSH_EXISTING_R9_C1_V556_RETURNS",
   "source_split_control_head": "cee9e27d57dc72771d9c3ec5df26493321feeef5",
   "split_fanin_evidence_tip": "cee9e27d57dc72771d9c3ec5df26493321feeef5",
   "joined_successor_return_tip": "b4dd6d6016367110c06317abe2cef276123b4c69",
@@ -62,7 +62,7 @@
   "pyat_current_handoff": "PYAT_CONTROL_ROOM/SPACE_BUNNY_OPENCODE_R1/CURRENT_HANDOFF.md",
   "pyat_current_grok_docket": "PYAT_CONTROL_ROOM/12_B_ROUTE_PRE_FIELD_FORGE_GROK_DOCKET.md",
   "pyat_fresh_hq_protocol": "PYAT_CONTROL_ROOM/13_FRESH_HQ_FULL_GROK_PROTOCOL.md",
-  "immediate_program_refinement": "HQ203__TERMINAL_BACKWARD_RESIDUAL_RECONCILIATION",
+  "immediate_program_refinement": "HQ208__SERVICE_SOURCE_ADOPTED__F7_HOSTILE_REVIEW_PLUS_HD_RERECONCILIATION",
   "legacy_pyat_bootstrap_path": "HQ_HANDOFF/PYAT_HQ_BOOTSTRAP_R1.md",
   "pyat_documentary_hygiene": "HQD-2026-09-26-114",
   "pyat_forward_program_decision": "HQD-2026-09-28-125",
@@ -1127,5 +1127,22 @@
     "conceptual_completeness": "UNPROVED",
     "astra_time_grain": "NOT_AUTHORIZED_PENDING_HA",
     "architecture_reopen": false
+  },
+  "hq208": {
+    "service_source_impl": "e7d3598494472a9aea7dd2c69f6aacb11585905c",
+    "service_source_review": "e3fec8be5d4c192d2d6f86059d9e1ee7a683fbd1",
+    "service_source_adopted": true,
+    "f7_return": "19fd6f6e9f3e24c716310335325cef4c75e6fa56",
+    "f7_review_branch": "agent/reviewer-pyat-hq208-f7-temporal-contract-r1",
+    "f7_review_commission_tip": "0c74e4beeb29967b4ea9a0599057a1d658f33b16",
+    "hd_branch": "agent/rabochii-pyat-hq208-hd-f8-rereconciliation-r1",
+    "hd_commission_tip": "372552570b4c3ec19f91158abc9774e3cf21e522",
+    "pending_pushes": [
+      "agent/rabochii-pyat-hq207-r9-repair-r1",
+      "agent/rabochii-pyat-hq206-c1-prune-r1",
+      "agent/rabochii-pyat-hq206-v556-repair-r1"
+    ],
+    "raw_live_warrant_c7_actor_holds": true,
+    "astra_referral": false
   }
 }
