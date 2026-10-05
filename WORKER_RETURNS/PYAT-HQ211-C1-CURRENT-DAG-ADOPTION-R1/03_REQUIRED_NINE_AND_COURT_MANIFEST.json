@@ -1,0 +1,55 @@
+{
+  "schema": "PYAT_HQ211_REQUIRED_NINE_AND_COURT_MANIFEST@1.0.0",
+  "lane": "PYAT-HQ211-C1-CURRENT-DAG-ADOPTION-R1",
+  "required_nine": [
+    {"path": "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/FORWARD_HISTORICAL_CANONICAL.json", "commissioned_blob": "2d725dc592291ac7e8da4e4b0fb90f96dbeacec4", "current_control": "ABSENT", "adopted_blob_exact": true, "opened_by_court": true},
+    {"path": "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/FORWARD_SUCCESSOR_CANONICAL.json", "commissioned_blob": "8143c96ed8ebdf3b87632d193a30e9924cbd1ced", "current_control": "ABSENT", "adopted_blob_exact": true, "opened_by_court": true},
+    {"path": "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/REVERSE_HISTORICAL_CANONICAL.json", "commissioned_blob": "634d4dd6c6c90e6c02220b17071795e9b7bdbd3e", "current_control": "ABSENT", "adopted_blob_exact": true, "opened_by_court": true},
+    {"path": "WORKER_RETURNS/PYAT-AT07-SUCCESSOR-SPINE-INDEPENDENT-FREEZE-R1/REVERSE_SUCCESSOR_CANONICAL.json", "commissioned_blob": "712455f3b84a0685d0876dc5218421edf7dae724", "current_control": "ABSENT", "adopted_blob_exact": true, "opened_by_court": true},
+    {"path": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/02_VALUE_RELATION_ORACLE.json", "commissioned_blob": "c6acafae820c065215fdbe7a703480a8b19fbc57", "current_control": "ABSENT", "adopted_blob_exact": true, "opened_by_court": true},
+    {"path": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/03_SYNTHETIC_AUTHORITY_FREEZE.json", "commissioned_blob": "333989fa7b57c221d6aa5ebfc25d9d76e0acad32", "current_control": "ABSENT", "adopted_blob_exact": true, "opened_by_court": true},
+    {"path": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R2/04_SLICE_PROJECTION.json", "commissioned_blob": "8e5bd3d23db1e39aebee0a55d49934a0d400dd48", "current_control": "ABSENT", "adopted_blob_exact": true, "opened_by_court": true},
+    {"path": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R3/02_OWNER_NATIVE_AUTHORITY_SCOPE_FREEZE.json", "commissioned_blob": "5d1583dc31c837282ea40448285109a31bb1db41", "current_control": "ABSENT", "adopted_blob_exact": true, "opened_by_court": true},
+    {"path": "WORKER_RETURNS/PYAT-C1-00-CONTRACT-CORRECTION-R8/04_CURRENT_AT07_IDENTITY_SPINE.json", "commissioned_blob": "462bb282ddc2cc9667f1890f2d65f2fae9a3a72c", "current_control": "ABSENT", "adopted_blob_exact": true, "opened_by_court": true}
+  ],
+  "all_nine_exact": true,
+  "overimport_audit": {
+    "instrument": "builtins.open and io.open patched via sitecustomize on PYTHONPATH; pathlib.Path.open and read_text both route through io.open",
+    "instrument_verified_before_use": "a probe target was opened first to confirm the shim actually loads and writes, so a zero-result run could not be an artefact of a dead instrument",
+    "court_run": "the exact accepted 15-file court",
+    "unique_workER_returns_files_opened": 9,
+    "equals_the_exact_nine": true,
+    "any_of_the_54_pruned_overimports_opened": 0,
+    "any_file_outside_the_nine_opened": 0,
+    "directory_level_import_is_provably_equivalent": "the four authority directories at the pruned accepted state contain exactly 4+3+1+1 = 9 files, so importing the directories imports exactly the nine and nothing else"
+  },
+  "court_manifest": {
+    "identity_source": "recovered from the two machine-readable maps named by the commission, not inferred",
+    "file_count": 15,
+    "total_tests": 454,
+    "files": [
+      {"path": "rawlsing_next/tests/test_pre553_analytical_state_and_route.py", "expected": 92, "measured": 92, "at_control_before": "ABSENT"},
+      {"path": "rawlsing_next/tests/test_pre553_analytical_composition_higher_order.py", "expected": 35, "measured": 35, "at_control_before": "ABSENT"},
+      {"path": "rawlsing_next/tests/test_pre553_empirical_query.py", "expected": 32, "measured": 32, "at_control_before": "SAME_BLOB"},
+      {"path": "rawlsing_next/tests/test_pre553_structural_admission.py", "expected": 17, "measured": 17, "at_control_before": "SAME_BLOB"},
+      {"path": "rawlsing_next/tests/test_pre553_discovery_exact.py", "expected": 14, "measured": 14, "at_control_before": "SAME_BLOB"},
+      {"path": "rawlsing_next/tests/test_pre553_analytical_composition.py", "expected": 13, "measured": 13, "at_control_before": "ABSENT"},
+      {"path": "rawlsing_next/tests/test_source_backed_positioned_subject_possibility.py", "expected": 13, "measured": 13, "at_control_before": "SAME_BLOB"},
+      {"path": "rawlsing_next/tests/test_pre553_discovery_adaptive.py", "expected": 8, "measured": 8, "at_control_before": "SAME_BLOB"},
+      {"path": "rawlsing_next/tests/test_pre553_discovery_adaptive_admission.py", "expected": 3, "measured": 3, "at_control_before": "SAME_BLOB"},
+      {"path": "rawlsing_next/tests/test_pre553_recursive_handoff.py", "expected": 2, "measured": 2, "at_control_before": "SAME_BLOB"},
+      {"path": "rawlsing_next/tests/test_pre553_analytical_replay_dependency.py", "expected": 43, "measured": 43, "at_control_before": "ABSENT"},
+      {"path": "rawlsing_next/tests/test_pre553_authority_maintenance.py", "expected": 57, "measured": 57, "at_control_before": "DIVERGED (21 collected)"},
+      {"path": "rawlsing_next/tests/test_pre553_replay_audit.py", "expected": 54, "measured": 54, "at_control_before": "SAME_BLOB"},
+      {"path": "rawlsing_next/tests/test_pre553_empirical_possibility_provider.py", "expected": 43, "measured": 43, "at_control_before": "ABSENT"},
+      {"path": "rawlsing_next/tests/test_pre553_c1_03_join.py", "expected": 28, "measured": 28, "at_control_before": "ABSENT"}
+    ],
+    "per_file_map_matches_accepted_exactly": true,
+    "nine_support_fixtures_imported": [
+      "c1_03_join_fixture.py", "c1_at08_at13_fixture.py", "c1_at08_at13_fresh_process_runner.py",
+      "c1_at14_at16_fixture.py", "c1_at18_at19_fixture.py", "c1_at18_at19_fresh_process_runner.py",
+      "n10e_at17_successor_requal.py", "n10e_empirical_slice_fixture.py",
+      "n10e_empirical_slice_fresh_process_runner.py"
+    ]
+  }
+}
