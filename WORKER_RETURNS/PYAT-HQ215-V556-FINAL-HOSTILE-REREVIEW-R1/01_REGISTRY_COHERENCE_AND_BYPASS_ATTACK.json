@@ -1,0 +1,66 @@
+{
+  "schema": "PYAT_HQ215_REGISTRY_COHERENCE_AND_BYPASS_ATTACK@1.0.0",
+  "lane": "PYAT-HQ215-V556-FINAL-HOSTILE-REREVIEW-R1",
+  "reviewer_role": "INDEPENDENT_HOSTILE_REVIEWER_NO_REPAIR",
+  "candidate": "9129bd54adbe73fdc09f8a3c02e4b91902d56661",
+  "verdict": "STATICALLY_CLOSED__RUNTIME_PROBE_NOT_INDEPENDENTLY_EXECUTED",
+  "shared_decision": {
+    "name": "_refuse_if_class_family_mismatch",
+    "authoring_uses_same_named_decision": true,
+    "registry_build_uses_same_named_decision": true,
+    "authoring_order": "validate_result_contract_binding -> class/family decision",
+    "registry_order": "family ceiling -> role ceiling -> validate_result_contract_binding -> body/dataclass family cross-check -> class/family decision -> ref/hash checks",
+    "registry_class_source": "validated r.result_contract.result_schema.semantic_class",
+    "registry_family_source": "rule body semantic_family",
+    "caller_side_family_cross_checked_before_decision": true,
+    "unmapped_class_refused": true,
+    "mismatched_mapped_class_refused": true
+  },
+  "tranche_authority": {
+    "authorable_families": [
+      "V556_TOPOLOGY"
+    ],
+    "valid_empty_required_families": [
+      "V556_ATTRACTOR_PREREQUISITE",
+      "V556_INTERACTION_RELATION"
+    ],
+    "admitted_class_family_map": {
+      "OBJECTIVE_STRUCTURAL_RESULT": "V556_TOPOLOGY",
+      "OBJECTIVE_WORLD_STATUS": "V556_TOPOLOGY",
+      "OBJECTIVE_MEASUREMENT": "V556_TOPOLOGY"
+    },
+    "ordinary_mismatch_is_shadowed_by_family_ceiling": true
+  },
+  "fully_rehashed_hand_built_rule_attack": {
+    "current_court_constructs_consistently_rehashed_rules": true,
+    "refusal_observed_by_hq214": "inherited runtime claim",
+    "discriminates_coherence_gate_in_current_tranche": false,
+    "why": "Every constructible mismatch uses a non-authorable family and is refused by the family ceiling first.",
+    "stale_hash_bypass_structurally_closed": true
+  },
+  "scratch_mutated_authority_map_probe": {
+    "candidate_files_modified": false,
+    "trace": [
+      "start from a lawful V556_TOPOLOGY rule bound to OBJECTIVE_WORLD_STATUS",
+      "scratch-only remap OBJECTIVE_WORLD_STATUS to V556_INTERACTION_RELATION",
+      "leave TRANCHE_LOCAL_AUTHORABLE_FAMILIES as V556_TOPOLOGY only",
+      "registry family and role ceilings pass for the existing topology rule",
+      "validated result contract remains admitted and hash-valid because the map is not embedded in the binding",
+      "rule body/dataclass family agreement remains V556_TOPOLOGY",
+      "_refuse_if_class_family_mismatch reads the scratch map and sees V556_INTERACTION_RELATION != V556_TOPOLOGY",
+      "the coherence decision therefore raises before registry publication"
+    ],
+    "independent_runtime_execution": false,
+    "classification": "EXACT_STATIC_REACHABILITY_PROOF__DYNAMIC_REPRODUCTION_MISSING"
+  },
+  "fail_capability": {
+    "former_vacuous_test_present": false,
+    "direct_decision_test_present": true,
+    "unmapped_class_test_present": true,
+    "registry_wiring_test_present": true,
+    "coherent_positive_control_present": true,
+    "ordinary_authoring_mismatch_test": "NON_DISCRIMINATING__FAMILY_CEILING_SHADOWS",
+    "ordinary_registry_mismatch_test": "NON_DISCRIMINATING__FAMILY_CEILING_SHADOWS"
+  },
+  "bypass_disposition": "No source-level class/family bypass found. Adoption disposition withheld solely because the required dynamic probe and court reproductions are unavailable to this reviewer."
+}
