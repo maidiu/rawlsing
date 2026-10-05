@@ -1,0 +1,49 @@
+{
+  "schema": "PYAT_HQ215_FINAL_DISPOSITION@1.0.0",
+  "lane": "PYAT-HQ215-V556-FINAL-HOSTILE-REREVIEW-R1",
+  "reviewer_role": "INDEPENDENT_HOSTILE_REVIEWER_NO_REPAIR",
+  "commission_tip": "d8330bb98c8dafdf90b80c041bfd12de9797f6a4",
+  "candidate": "agent/rabochii-pyat-hq214-v556-final-bounded-repair-r1 @ 9129bd54adbe73fdc09f8a3c02e4b91902d56661",
+  "prior_rereview": "4bfbeb499883d52940131a087374b8087bf503ea",
+  "disposition": "V556_FINAL_REREVIEW_BLOCKED_BY_MISSING_EXACT_EVIDENCE",
+  "ready_for_hq_adoption": false,
+  "v556_adopted": false,
+  "semantic_code_review": {
+    "named_defect_found": false,
+    "authority_overreach_found": false,
+    "source_level_bypass_found": false,
+    "d1_registry_coherence_repair_structurally_correct": true,
+    "d2_vacuous_test_removed": true,
+    "d3_unfailable_w10_removed": true,
+    "d4_helper_classification_machine_readable_and_truthful": true,
+    "m3_m2_seams_unchanged": true,
+    "prior_escape_gates_structurally_preserved": true
+  },
+  "exact_evidence_available": {
+    "exact_candidate_and_lineage": true,
+    "exact_git_blob_identity": true,
+    "exact_candidate_diff": true,
+    "exact_118_item_collection_reconstruction": true,
+    "exact_111_item_committed_base_collection_reconstruction": true,
+    "exact_static_scratch_gate_reachability_trace": true,
+    "candidate_runtime_report": true,
+    "candidate_workflow_receipt": false
+  },
+  "missing_exact_evidence_blocking_acceptance": [
+    "Independent execution showing all 118 repaired collected items pass.",
+    "Independent execution of the exact defect-sensitive slice against the unrepaired repair-base module and repaired module, establishing 4 failures -> 0 with zero new failures.",
+    "Independent dynamic scratch/mutated-authority-map probe demonstrating the shared registry coherence decision is reached while the ordinary mismatch path remains correctly classified as family-ceiling-shadowed."
+  ],
+  "why_not_partial_named_defect": "No bounded implementation defect was found. The hold is evidentiary, not a request for another semantic repair.",
+  "why_not_authority_overreach": "HQ214 adds no family, class, relation kind, scalar pressure, attractor population, actor/person semantic, or seam; M3/M2 blob identities are unchanged.",
+  "why_not_accept": "Mandatory court and dynamic hostile reproductions cannot be independently executed or supported by an exact machine receipt in this reviewer surface. Candidate-authored reports are evidence of what HQ214 did, but are not an independent HQ215 reproduction.",
+  "allowed_dispositions_considered": {
+    "ACCEPT_V556_FINAL_BOUNDED_REPAIR__READY_FOR_HQ_ADOPTION": "NOT SELECTED — code-level attacks are clean, but mandatory independent runtime evidence is unavailable.",
+    "V556_FINAL_REPAIR_PARTIAL__NAMED_DEFECT": "NOT SELECTED — no new implementation defect found.",
+    "V556_FINAL_REPAIR_AUTHORITY_OVERREACH": "NOT SELECTED — no authority or ontology overreach found.",
+    "V556_FINAL_REREVIEW_BLOCKED_BY_MISSING_EXACT_EVIDENCE": "SELECTED — preserves the distinction between exact static/Git evidence and un-reproduced runtime claims."
+  },
+  "repair_requested": false,
+  "next_required_action": "Provide an exact executable/receipt-bearing court environment for the candidate and rerun the three missing independent reproductions; no semantic code change is requested by this review.",
+  "terminal": "HQ215_V556_FINAL_REREVIEW_RETURNED__HQ_DECISION_REQUIRED"
+}

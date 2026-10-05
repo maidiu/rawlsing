@@ -1,0 +1,95 @@
+{
+  "schema": "PYAT_HQ215_COURT_AUTHENTICITY_AND_HELPER_CLASSIFICATION@1.0.0",
+  "lane": "PYAT-HQ215-V556-FINAL-HOSTILE-REREVIEW-R1",
+  "candidate": "9129bd54adbe73fdc09f8a3c02e4b91902d56661",
+  "court_rewrite": {
+    "former_vacuous_class_family_test_present": false,
+    "former_self_referential_w10_present": false,
+    "replacement_import_tripwire_present": true,
+    "replacement_mechanism": "AST ImportFrom inspection against a court-owned allowlist; star import refuses immediately.",
+    "consumes_production_refusal_vocabulary": false,
+    "exact_absent_identifiers": [
+      "BLOCKED_STRONG_NOUNS",
+      "_FORBIDDEN_PARTICIPANT_ROLE_TOKENS",
+      "_FORBIDDEN_PERSON_STATE_ROLES"
+    ],
+    "fail_capability_static": "Adding an unlisted substrate ImportFrom name makes imported-minus-permitted nonempty; a star import raises.",
+    "residual": "The permitted module alias S means this is an import alarm, not a universal prohibition on future S.<production-vocabulary> self-reference. Review discipline remains required.",
+    "residual_blocking": false
+  },
+  "helper_classification": {
+    "record": "PAYLOAD_PARTICIPANT_HELPER_CLASSIFICATION",
+    "record_container": "MappingProxyType",
+    "machine_readable": true,
+    "helper": "validate_payload_against_participants",
+    "classification": "COURT_HELPER_VALIDATION_UTILITY",
+    "is_seam_enforcement": false,
+    "is_production_evaluation_path": false,
+    "invoked_by_m3_seam": false,
+    "invoked_by_evaluation_path": false,
+    "production_substrate_occurrences": [
+      "PAYLOAD_PARTICIPANT_HELPER_NAME string constant",
+      "helper definition",
+      "__all__ export"
+    ],
+    "production_call_sites_found": 0,
+    "m3_helper_name_occurrences": 0,
+    "m3_payload_participant_occurrences": 0,
+    "m3_substrate_reference_occurrences": 0,
+    "m2_helper_name_occurrences": 0,
+    "m2_payload_participant_occurrences": 0,
+    "m2_substrate_reference_occurrences": 0
+  },
+  "collection_authenticity": {
+    "repaired_focused_v556": {
+      "test_functions": 61,
+      "parametrize_decorators": 0,
+      "collected_items_reconstructed": 61
+    },
+    "m3": {
+      "test_functions": 22,
+      "parametrizations": [
+        4,
+        5
+      ],
+      "collected_items_reconstructed": 29
+    },
+    "m2": {
+      "test_functions": 15,
+      "parametrizations": [
+        3,
+        4,
+        3,
+        3,
+        5
+      ],
+      "collected_items_reconstructed": 28
+    },
+    "repaired_total_collected_items_reconstructed": 118,
+    "committed_repair_base_focused_test_functions": 54,
+    "committed_repair_base_total_items_reconstructed": 111,
+    "bookkeeping_note": "HQ214 prose says focused 55 -> 61, but its own qualification JSON identifies the committed repair-base surface as 54+29+28=111. The exact committed source agrees with 54.",
+    "independent_runtime_118_passed": false,
+    "candidate_claim_118_passed": true
+  },
+  "defect_sensitive_slice": {
+    "candidate_claim_before_failures": [
+      "test_d1_coherence_decision_refuses_genuine_mismatches",
+      "test_d1_registry_build_is_wired_to_the_coherence_decision",
+      "test_d1_unmapped_class_is_refused_by_the_coherence_decision",
+      "test_payload_participant_helper_classification_is_machine_readable"
+    ],
+    "candidate_claim_before_count": 4,
+    "candidate_claim_after_count": 0,
+    "static_targets_correspond_to_hq214_changes": true,
+    "independently_runtime_reproduced": false
+  },
+  "environment": {
+    "candidate_governed_environment_present": false,
+    "candidate_full_suite_claimed": false,
+    "candidate_disclosure_sustained_as_truthful": true,
+    "candidate_commit_workflow_runs_found": 0,
+    "raw_execution_receipt_in_hq214_return": false,
+    "independent_runtime_available_to_this_reviewer": false
+  }
+}
