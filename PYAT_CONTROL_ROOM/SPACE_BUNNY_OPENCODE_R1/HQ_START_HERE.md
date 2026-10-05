@@ -1,3 +1,12 @@
+## HQD-216 forward acceptance discipline
+
+Forward work is governed by:
+`PYAT_CONTROL_ROOM/26_HQD216_PRODUCTIVE_ADEQUACY_AND_PREV3_EMPIRICAL_GATE_LAW.md`.
+
+Do not confuse a clean refusal with completion of a mandatory positive function. Conversely, do not propagate an upstream blocker into a downstream implementation defect.
+
+Accept stages at their declared grain when competent lawful inputs exercise the intended positive output correctly; track missing upstream/live occupancy separately. The eventual PRE-V3 estate run is the end-to-end empirical acceptance/falsification gate.
+
 # Space Bunny HQ — start here
 
 ## Mandatory control-plane preflight
