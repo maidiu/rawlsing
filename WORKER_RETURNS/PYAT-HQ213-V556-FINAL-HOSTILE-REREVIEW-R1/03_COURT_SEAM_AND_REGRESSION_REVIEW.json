@@ -1,0 +1,82 @@
+{
+  "schema": "PYAT_HQ213_COURT_SEAM_AND_REGRESSION_REVIEW@1.0.0",
+  "lane": "PYAT-HQ213-V556-FINAL-HOSTILE-REREVIEW-R1",
+  "reviewer_role": "INDEPENDENT_HOSTILE_REVIEWER_NO_REPAIR",
+
+  "attack_8_court_authenticity": {
+    "verdict": "STRONG_EXCEPT_TWO_FALSE_PROOFS",
+    "court_surface_reproduced": {
+      "repaired_focused_court": {"candidate_claim": 54, "observed": 54},
+      "m3_court_unmodified": {"candidate_claim": 29, "observed": 29},
+      "m2_v555_court_unmodified": {"candidate_claim": 28, "observed": 28},
+      "aggregate": {"candidate_claim": 111, "observed": 111, "failed": 0, "skipped": 0}
+    },
+    "baselines_independently_established": {
+      "old_court_vs_unrepaired_module": {"result": "92 passed", "composition": "35 + 29 + 28", "significance": "the pre-repair surface is green AND blind"},
+      "new_court_vs_unrepaired_module": {
+        "result": "15 failed, 39 passed",
+        "discriminating_failures": [
+          "test_w1_unbounded_string_leaf_with_blocked_noun_is_refused",
+          "test_w1b_unbounded_string_leaf_cannot_carry_a_blocked_noun_into_a_schema",
+          "test_w2_unbounded_exact_ref_kind_leaf_with_blocked_kind_is_refused",
+          "test_w3_numeric_magnitude_riding_a_string_leaf_is_refused",
+          "test_w4_generic_authoring_of_interaction_relation_is_refused",
+          "test_w5_generic_authoring_of_attractor_prerequisite_is_refused",
+          "test_w5b_valid_empty_ceiling_holds_at_registry_build_not_only_at_authoring",
+          "test_w6_ten_actor_person_semantic_role_witnesses_are_all_refused",
+          "test_actor_semantic_participant_labels_are_refused",
+          "test_participant_role_allowlist_is_the_ceiling_not_a_blacklist",
+          "test_binding_ref_object_id_is_checked_at_authoring",
+          "test_actor_named_schema_classes_are_withdrawn_from_the_admitted_set",
+          "test_schema_class_must_be_the_class_authorized_by_its_family",
+          "test_illustrative_labels_are_snapshot_only_and_this_is_asserted",
+          "test_payload_participant_helper_is_declared_a_court_helper_not_seam_enforcement"
+        ],
+        "note": "the 15 include the vacuous D-2 test, which is in the failing set only because the module lacks the map attribute at all against the unrepaired base - not because it discriminated anything"
+      },
+      "candidate_split_confirmed": {
+        "candidate_claim": "w3b, w7, w8, w9, w10 pass against the unrepaired module and are preservation-only witnesses",
+        "independent_result": "CONFIRMED - those five are among the 39 that pass against both modules"
+      }
+    },
+    "court_file_diff": {
+      "old_test_count": 35,
+      "new_test_count": 54,
+      "removed": ["test_blocked_nouns_are_quoted_from_adopted_law_not_invented"],
+      "removed_test_assessment": "correct removal - it was the constant assertion I flagged in HQ210 as CRT-1",
+      "other_34_old_tests_survive": true,
+      "added": 20
+    },
+    "genuinely_non_self_referential_aspects": [
+      "hostile literals are written independently in the court file",
+      "_HQ211_BLOCKED_NOUNS deliberately omits FIELD, an over-broad production token, showing the list is not read back",
+      "refusal assertions expect specific messages per route rather than a self-declared boolean",
+      "the candidate honestly volunteered which of its own witnesses are non-discriminating, and that split reproduced"
+    ],
+    "self_referential_or_vacuous_defects": [
+      {"id": "D-2", "test": "test_schema_class_must_be_the_class_authorized_by_its_family", "class": "VACUOUS", "detail": "asserts a map entry equals itself; docstring claims a mismatch is refused but no mismatch is ever attempted"},
+      {"id": "D-3", "test": "test_w10_court_does_not_prove_itself_from_production_vocabulary", "class": "SELF_REFERENTIAL_BY_CONSTRUCTION", "detail": "assembles its own banned identifiers by concatenation so its AST scan cannot find them; the assertion is unfalsifiable"},
+      {"id": "D-4", "test": "test_payload_participant_helper_is_declared_a_court_helper_not_seam_enforcement", "class": "WEAK", "detail": "substring assertion on the docstring; the genuine half (seam does not reference the helper) is asserted and holds"}
+    ]
+  },
+
+  "regression_and_baseline": {
+    "candidate_claim": "15 failing IDs -> 0; new failures introduced: 0; five witnesses non-discriminating; no full-suite baseline claimed because only 4 of 157 test files are materialized under the commissioned sparse scope",
+    "independent_reproduction": "the 15-failing-ID set and the 5-passing-under-both split both reproduced",
+    "structural_substitute": {
+      "claim": "2 changed files, zero production importers, seam contains zero references to the substrate, seam byte-identical",
+      "independently_verified": true
+    },
+    "full_suite_baseline_claimed_by_candidate": false,
+    "reviewer_full_suite_run": "not performed - the sparse scope does not materialize the tests, and a full-suite number would not be meaningful here",
+    "classification": "RECONSTRUCTED / STRUCTURAL - not governed certification, not relabelled by this review"
+  },
+
+  "attack_10_environment_classification": {
+    "candidate_disclosure": "no pytest existed on the host; pytest 9.1.1 installed into an isolated throwaway venv with --break-system-packages; no historical governed environment claimed",
+    "reviewer_can_verify": false,
+    "reviewer_action": "reproduced the 111/111 and the 15-failure discriminating set in an independent disclosed venv",
+    "relabelled_as_governed": false,
+    "assessment": "the commission's requirement is met: the missing environment was not treated as permission to claim certification, and the structural substitute it offers was independently verified"
+  }
+}

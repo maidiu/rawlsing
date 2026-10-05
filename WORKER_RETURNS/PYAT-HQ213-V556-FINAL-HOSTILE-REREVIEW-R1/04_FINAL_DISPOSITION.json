@@ -1,0 +1,120 @@
+{
+  "schema": "PYAT_HQ213_FINAL_DISPOSITION@1.0.0",
+  "lane": "PYAT-HQ213-V556-FINAL-HOSTILE-REREVIEW-R1",
+  "reviewer_role": "INDEPENDENT_HOSTILE_REVIEWER_NO_REPAIR",
+
+  "review_tip": "f459efc897965bc1e57b48659028c661c816ba3f",
+  "candidate": "agent/rabochii-pyat-hq211-v556-unbounded-gate-repair-r1 @ e4d7e6f7352e60da9de956c7875293fca141d371",
+  "repair_base": "3a2dcafe024b2556af1df909deb5452841e45b7c",
+  "prior_hostile_review": "46bf1ac246f51d7499bccf56e41add78779e00ad",
+
+  "disposition": "V556_BOUNDED_REPAIR_PARTIAL__NAMED_DEFECT",
+  "ready_for_hq_adoption": false,
+  "v556_adopted": false,
+
+  "disposition_allowed_values_considered": {
+    "ACCEPT_V556_BOUNDED_REPAIR__READY_FOR_HQ_ADOPTION": "NOT SELECTED. Four bounded defects remain, two of which are false proofs sitting in the court rather than authority leaks: the class/family coherence check is enforced only on the author path (the registry path registers mismatched material), its court test is vacuous and claims the opposite of what it does, a self-referential guard cannot fail by construction, and the helper-classification witness is a substring check.",
+    "V556_BOUNDED_REPAIR_PARTIAL__NAMED_DEFECT": "SELECTED. Every HQ210 blocking and required repair is genuinely closed at machinery level, verified by re-running the original escape routes and by driving bypasses that skip the helper constructors. The remaining defects are named, bounded, dormant or documentary, and none reintroduces a leak.",
+    "V556_BOUNDED_REPAIR_AUTHORITY_OVERREACH": "NOT SELECTED. The repair is a reduction: no new family, no new relation kind, no attractor population, no scalar, no actor implementation, and the admitted schema-class set shrank by two.",
+    "V556_BOUNDED_REPAIR_ARCHITECTURE_CONFLICT": "NOT SELECTED. The adopted M3 and M2 seams are byte-identical to the blobs prior reviews recorded, contain zero substrate references, and the positive topology core still evaluates SUPPORTED through them.",
+    "V556_REREVIEW_BLOCKED_BY_MISSING_EXACT_EVIDENCE": "NOT SELECTED. The candidate, its return packet, the repair base module and the prior review were all read at exact commits; the 111-test surface, the 92-test baseline and the 15-failure discriminating set were all reproduced mechanically."
+  },
+
+  "headline_findings": [
+    {"id": "S-1", "finding": "Every HQ210 escape route is closed: UNBOUNDED string leaf, UNBOUNDED exact-ref kind, numeric magnitude on a string leaf, generic authoring of both empty families, and the ten actor/person-semantic role witnesses all refuse.", "verdict": "SUSTAINED"},
+    {"id": "S-2", "finding": "Every commissioned bypass route is closed, including hand-authored schema mappings, hand-built bindings, hand-built governed rules, direct registry builds, deep nesting and array items. The gate runs on the node mapping and at all five entry points.", "verdict": "SUSTAINED"},
+    {"id": "S-3", "finding": "Semantic UNBOUNDED is closed while lawful structural-cardinality UNBOUNDED survives, and an UNBOUNDED semantic leaf nested inside an UNBOUNDED array is refused. No over-closing.", "verdict": "SUSTAINED"},
+    {"id": "S-4", "finding": "The valid-empty ceiling for V556_INTERACTION_RELATION and V556_ATTRACTOR_PREREQUISITE is now machinery, enforced independently at authoring and at registry build.", "verdict": "SUSTAINED"},
+    {"id": "S-5", "finding": "The participant-role ceiling is a genuine positive allowlist: 0 of 10 prior witnesses and 0 of 12 novel labels accepted, including CIVIC_ASSOCIATION which a blacklist would have admitted.", "verdict": "SUSTAINED"},
+    {"id": "S-6", "finding": "M3 and M2 are byte-identical (9a4b26b2, deef8a60), contain zero substrate references, and the change is a pure leaf with zero production importers.", "verdict": "SUSTAINED"},
+    {"id": "S-7", "finding": "111/111 reproduces; the 15-failure discriminating set against the unrepaired module reproduces; the old 92/92 baseline reproduces. The candidate's own non-discriminating-witness disclosure is independently confirmed.", "verdict": "SUSTAINED"},
+    {"id": "D-1", "finding": "The class/family coherence check exists only in author_governed_rule, not in V556RuleMaterialRegistry.build. Two consistently-rehashed hand-built rules with other admitted classes registered successfully. Dormant in this tranche because all admitted classes map to the single authorable family.", "severity": "MEDIUM", "class": "DORMANT_ENFORCEMENT_GAP"},
+    {"id": "D-2", "finding": "test_schema_class_must_be_the_class_authorized_by_its_family asserts a map entry equals itself and never attempts a mismatch, while its docstring claims a mismatch is refused.", "severity": "MEDIUM", "class": "FALSE_PROOF"},
+    {"id": "D-3", "finding": "test_w10_court_does_not_prove_itself_from_production_vocabulary assembles its own banned identifiers by string concatenation, so its AST scan cannot find them and the assertion cannot fail.", "severity": "MEDIUM", "class": "SELF_REFERENTIAL_FALSE_PROOF"},
+    {"id": "D-4", "finding": "test_payload_participant_helper_is_declared_a_court_helper_not_seam_enforcement asserts docstring substrings; the factual half of the same test is genuine and holds.", "severity": "LOW", "class": "WEAK_WITNESS"},
+    {"id": "D-5", "finding": "Environment and baseline are honestly classified as reconstructed/structural, not governed; the structural substitute's four legs were independently verified.", "severity": "INFORMATIONAL"}
+  ],
+
+  "bounded_repair_set": [
+    {"ref": "Repair D-1", "blocking": true, "target": "V556RuleMaterialRegistry.build", "requirement": "Enforce the class/family coherence check at registry build as well as at authoring, reading the class from the validated contract, so a hand-built rule cannot carry a class its family does not authorize. Add a witness that constructs a genuinely mismatched pair."},
+    {"ref": "Repair D-2", "blocking": true, "target": "test_schema_class_must_be_the_class_authorized_by_its_family", "requirement": "Replace the constant assertion with a real behavioural test that attempts a mismatched class/family binding and expects the refusal (or delete it if the pair is unconstructible in this tranche and say so)."},
+    {"ref": "Repair D-3", "blocking": false, "target": "test_w10", "requirement": "Replace with a check that can actually fail, or remove it and state that the self-reference property is maintained by review rather than by a test."},
+    {"ref": "Repair D-4", "blocking": false, "target": "test_payload_participant_helper_is_declared_a_court_helper_not_seam_enforcement", "requirement": "Keep the seam-reference half; replace the docstring substring half with an assertion on an explicit machine-readable classification constant."}
+  ],
+
+  "reviewer_answers": {
+    "unbounded_semantic_string_leaf_closed": true,
+    "unbounded_exact_ref_kind_closed": true,
+    "numeric_magnitude_riding_a_string_leaf_closed": true,
+    "generic_interaction_family_authoring_closed": true,
+    "generic_attractor_family_authoring_closed": true,
+    "ten_actor_person_witnesses_closed": true,
+    "twelve_novel_actor_like_labels_refused": true,
+    "hand_authored_schema_mapping_bypass_closed": true,
+    "hand_built_binding_bypass_closed": true,
+    "hand_built_governed_rule_bypass_closed": true,
+    "direct_registry_build_bypass_closed": true,
+    "deep_nested_leaf_bypass_closed": true,
+    "array_item_bypass_closed": true,
+    "gate_runs_before_positive_object_assembly": true,
+    "semantic_UNBOUNDED_no_longer_usable": true,
+    "structural_UNBOUNDED_retained_where_commissioned": true,
+    "authorable_family_set_enforced_at_authoring": true,
+    "authorable_family_set_enforced_at_registry_build": true,
+    "role_ceiling_is_allowlist_not_blacklist": true,
+    "m3_seam_byte_identical": true,
+    "m2_seam_byte_identical": true,
+    "new_ontology_introduced": false,
+    "new_relation_kind_introduced": false,
+    "attractor_population_introduced": false,
+    "court_surface_111_reproduced": true,
+    "pre_repair_92_baseline_reproduced": true,
+    "discriminating_probes_distinguished_from_preservation_witnesses": true,
+    "self_referential_constants_remain": true,
+    "vacuous_refusal_tests_remain": true,
+    "binding_ref_object_id_verified": true,
+    "class_family_coherence_fully_enforced": false,
+    "hand_built_binding_deep_freeze_verified": true,
+    "payload_validator_truthfully_classified": true,
+    "environment_classification_honest": true,
+    "safe_for_hq_adoption": false
+  },
+
+  "reviewer_verification_performed": [
+    "Review tip verified against the pushed branch before any work.",
+    "Change set verified as exactly two files, zero seam edits, zero production importers, zero seam references to the substrate.",
+    "M3 and M2 blob hashes computed and compared against the blob recorded by the prior reviews.",
+    "Repaired focused court re-run: 54 passed. M3 court: 29. M2 court: 28. Aggregate 111.",
+    "Old court run against the unrepaired module: 92 passed.",
+    "New court run against the unrepaired module via a namespace-split package: 15 failed, 39 passed; failures enumerated and classified.",
+    "All six HQ210 escape routes re-run against both the candidate and the unrepaired base.",
+    "Seven bypass routes driven that skip the helper constructors.",
+    "Semantic vs structural UNBOUNDED separation probed directly, including inside an array.",
+    "Closed-enum enforcement at evaluation time verified for a blocked noun and an undeclared magnitude.",
+    "Twelve novel role labels probed beyond the ten prior witnesses.",
+    "The class/family linkage probed on both the author path and the registry path with fully consistent rehashing.",
+    "The vacuous court test read line by line and confirmed to assert a map entry against itself.",
+    "The self-referential guard read line by line and confirmed to dodge its own scan by concatenation."
+  ],
+
+  "hard_holds_respected": {
+    "raw_source": false,
+    "locator_discovery": false,
+    "warrant_issuance": false,
+    "live_c4": false,
+    "c7": false,
+    "actor_person_implementation": false,
+    "attractor_population": false,
+    "new_v556_semantics": false,
+    "implementation_edits": false,
+    "repair": false,
+    "merge": false,
+    "self_adoption": false,
+    "sparse_scope_widened": false,
+    "clone_performed": false
+  },
+
+  "what_this_review_does_not_do": "It does not adopt V556, repair the candidate, merge, or issue a warrant. It returns one disposition and a bounded repair set.",
+
+  "terminal": "HQ213_V556_FINAL_REREVIEW_RETURNED__HQ_DECISION_REQUIRED"
+}

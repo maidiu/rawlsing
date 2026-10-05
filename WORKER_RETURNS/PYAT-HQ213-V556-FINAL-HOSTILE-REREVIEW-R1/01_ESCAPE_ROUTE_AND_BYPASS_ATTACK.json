@@ -1,0 +1,116 @@
+{
+  "schema": "PYAT_HQ213_ESCAPE_ROUTE_AND_BYPASS_ATTACK@1.0.0",
+  "lane": "PYAT-HQ213-V556-FINAL-HOSTILE-REREVIEW-R1",
+  "reviewer_role": "INDEPENDENT_HOSTILE_REVIEWER_NO_REPAIR",
+
+  "review_tip": "f459efc897965bc1e57b48659028c661c816ba3f",
+  "candidate": "agent/rabochii-pyat-hq211-v556-unbounded-gate-repair-r1 @ e4d7e6f7352e60da9de956c7875293fca141d371",
+  "repair_base": "3a2dcafe024b2556af1df909deb5452841e45b7c",
+  "prior_hostile_review": "46bf1ac246f51d7499bccf56e41add78779e00ad",
+
+  "environment": {
+    "python": "3.11.3",
+    "pytest": "9.1.1",
+    "venv": "/tmp/hq210venv (independent, outside the repository)",
+    "probe_scripts": "/tmp/hq213probe.py, /tmp/hq213probe2.py, /tmp/hq213probe3.py, /tmp/hq213probe4.py (outside the repository)",
+    "candidate_environment_disclosure": "candidate states no pytest existed on its host, installed 9.1.1 into an isolated throwaway venv with --break-system-packages, and explicitly does not claim a governed or full-suite baseline",
+    "reviewer_reproduction": "mechanical reproduction in a disclosed environment; NOT a governed certification"
+  },
+
+  "change_set_verified": {
+    "command": "git diff --name-status 3a2dcafe0 e4d7e6f73 -- rawlsing_next/",
+    "files": ["rawlsing_next/pre553_v556_positive_substrate.py", "rawlsing_next/tests/test_pre553_v556_positive_substrate_court.py"],
+    "production_files_changed": 1,
+    "test_files_changed": 1,
+    "seam_edits": 0,
+    "production_importers_of_the_changed_module": 0,
+    "seam_references_to_the_substrate": {"m3": 0, "m2": 0},
+    "candidate_claim_matches": true
+  },
+
+  "attack_1_original_hq210_escape_routes": {
+    "verdict": "ALL_CLOSED",
+    "routes": [
+      {"probe": "UNBOUNDED string leaf carrying DOMINATION", "hq210_result": "SUPPORTED with object payload {\"k\": \"DOMINATION\"}", "hq213_result": "REFUSED_AT_AUTHORING", "message": "declares an UNBOUNDED semantic string value leaf"},
+      {"probe": "UNBOUNDED exact_ref kind carrying HEGEMONY", "hq210_result": "SUPPORTED", "hq213_result": "REFUSED_AT_AUTHORING", "message": "declares an UNBOUNDED exact-ref kind leaf"},
+      {"probe": "numeric magnitude \"0.87\" on a string leaf", "hq210_result": "SUPPORTED", "hq213_result": "REFUSED_AT_AUTHORING", "message": "requires an explicit closed governed value list"},
+      {"probe": "generic authoring of V556_INTERACTION_RELATION", "hq210_result": "registered GOVERNED_RULES_PRESENT", "hq213_result": "REFUSED_AT_AUTHORING_AND_REGISTRY"},
+      {"probe": "generic authoring of V556_ATTRACTOR_PREREQUISITE", "hq210_result": "registered", "hq213_result": "REFUSED_AT_AUTHORING_AND_REGISTRY"},
+      {"probe": "ten actor/person-semantic role witnesses", "hq210_result": "10 accepted / 0 refused", "hq213_result": "0 accepted / 10 refused"}
+    ],
+    "root_cause_location": "SUBSTRATE_NOT_SEAM - M3 constrains a value only when the declaration is closed (m3:655-660 string, m3:667-669 exact_ref) and copies the payload verbatim (m3:931). The substrate declared UNBOUNDED and claimed closed governance in prose. The repair is therefore correctly placed in the substrate and the seam stays byte-identical.",
+    "second_order_effect_verified": [
+      {"probe": "D1 closed enum (PERMITTED_A, PERMITTED_B)", "declared_value": "SUPPORTED", "undeclared_value": "RESULT_SCHEMA_NONCONFORMING"},
+      {"probe": "D2 declared digit-string list (0.87, 1.0)", "declared_0.87": "SUPPORTED", "undeclared_3.14159": "RESULT_SCHEMA_NONCONFORMING"}
+    ],
+    "conclusion": "the gate is not merely syntactic: with a closed declaration the seam itself enforces the enum at evaluation, so an undeclared magnitude can no longer reach a positive object"
+  },
+
+  "attack_2_bypass_routes_skipping_helper_constructors": {
+    "verdict": "ALL_CLOSED",
+    "bypasses": [
+      {"bypass": "hand-authored schema mapping with allowed_values_or_unbounded_marker UNBOUNDED (never calls _node_string)", "result": "REFUSED", "message": "$.root.k declares an UNBOUNDED semantic string value leaf"},
+      {"bypass": "hand-authored mapping with an UNBOUNDED exact-ref kind list", "result": "REFUSED", "message": "$.root.r declares an UNBOUNDED exact-ref kind leaf"},
+      {"bypass": "hand-built ResultContractBinding with an UNBOUNDED schema, passed to validate_result_contract_binding", "result": "REFUSED", "message": "$.result_schema.root.k declares an UNBOUNDED semantic string value leaf"},
+      {"bypass": "hand-built GovernedRule naming V556_INTERACTION_RELATION, direct to registry build", "result": "REFUSED", "message": "registry build refuses authorable-in-tranche family"},
+      {"bypass": "hand-built GovernedRule naming role CIVIC_ASSOCIATION, direct to registry build", "result": "REFUSED", "message": "registry build refuses participant role outside the governed allowlist"},
+      {"bypass": "UNBOUNDED leaf buried six object levels deep", "result": "REFUSED", "message": "$.root.lvl5.lvl4.lvl3.lvl2.lvl1.lvl0 declares an UNBOUNDED semantic string value leaf"},
+      {"bypass": "UNBOUNDED semantic string as an array item", "result": "REFUSED", "message": "$.root.items[] declares an UNBOUNDED semantic string value leaf"}
+    ],
+    "gate_runs_before_positive_object_assembly": true,
+    "gate_reaches_every_entry_point": [
+      "author_closed_result_schema", "author_result_contract_binding",
+      "validate_result_contract_binding", "author_governed_rule",
+      "V556RuleMaterialRegistry.build"
+    ],
+    "only_constructible_carrier": "GovernedRule; the module __all__ exposes no request dataclass, and the registry re-validates the carrier, so there is no unprotected constructor"
+  },
+
+  "attack_3_semantic_vs_structural_UNBOUNDED": {
+    "verdict": "SEPARATION_HELD",
+    "semantic_string_leaf": {"UNBOUNDED": "REFUSED", "omitted": "REFUSED", "None": "REFUSED"},
+    "semantic_exact_ref_leaf": {"UNBOUNDED": "REFUSED", "omitted": "REFUSED"},
+    "structural_array_cardinality": {"UNBOUNDED": "ALLOWED where commissioned", "carries_semantic_value": false},
+    "array_item_recursively_validated": true,
+    "direct_probe": "_node_array(_node_string(OBJECTIVE_TEXT_LABEL, (X,)), min_items=1, max_items=UNBOUNDED) authors successfully; the same array with an UNBOUNDED string item is refused",
+    "over_closing_occurred": false
+  },
+
+  "attack_7_no_new_ontology": {
+    "verdict": "PASS",
+    "new_semantic_families": 0,
+    "new_relation_kinds": 0,
+    "authorized_interaction_relation_kinds": [],
+    "attractor_population": false,
+    "scalar_pressure_field": false,
+    "actor_implementation": false,
+    "schema_class_set_change": "SHRANK - OBJECTIVE_ACTOR_POSITION and OBJECTIVE_ACTOR_OPPORTUNITY withdrawn",
+    "new_authority_bearing_public_callable": false
+  },
+
+  "attack_9_low_severity_repairs": {
+    "binding_ref_object_id_checked_at_authoring": {"verdict": "VERIFIED", "court_test_genuinely_drives_a_relabelled_ref": true},
+    "actor_named_schema_classes_withdrawn": {"verdict": "VERIFIED"},
+    "class_to_family_linkage": {"verdict": "PARTIALLY_ENFORCED", "detail": "see defect D-1 and D-2"},
+    "hand_built_ResultContractBinding_deep_frozen": {"verdict": "VERIFIED", "implementation": "author_governed_rule stores _freeze(result_contract.binding)", "observed": "in-place mutation of top-level and nested keys raises"},
+    "payload_validator_classified_as_court_helper": {"verdict": "VERIFIED_IMPLEMENTATION_WEAK_TEST", "detail": "docstring says court/helper and NOT wired into the seam; the seam contains zero references to it (independently confirmed); the court's assertion of the latter is genuine, the former is a substring check (defect D-4)"}
+  },
+
+  "defects": [
+    {"id": "D-1", "severity": "MEDIUM", "class": "DORMANT_ENFORCEMENT_GAP", "claim": "the class/family coherence check exists only in author_governed_rule, not in V556RuleMaterialRegistry.build", "evidence": "two consistently-rehashed hand-built rules with OBJECTIVE_MEASUREMENT and OBJECTIVE_WORLD_STATUS registered successfully", "dormant_because": "all three admitted classes map to V556_TOPOLOGY, the only authorable family, so no mismatched pair is constructible in this tranche", "becomes_live_when": "a second family is opened or the class map grows"},
+    {"id": "D-2", "severity": "MEDIUM", "class": "FALSE_PROOF", "test": "test_schema_class_must_be_the_class_authorized_by_its_family", "docstring_claim": "a class/family mismatch is refused", "actual": "asserts TRANCHE_LOCAL_ADMITTED_SCHEMA_CLASS_FAMILY_MAP['OBJECTIVE_WORLD_STATUS'] == 'V556_TOPOLOGY' - a map entry equals itself; never binds a mismatched pair and never expects a refusal"},
+    {"id": "D-3", "severity": "MEDIUM", "class": "SELF_REFERENTIAL_FALSE_PROOF", "test": "test_w10_court_does_not_prove_itself_from_production_vocabulary", "defect": "assembles its own banned identifiers by string concatenation ('BLOCKED' + '_STRONG_NOUNS'), so its own AST scan can never find them; the primary assertion is true by construction and cannot fail"},
+    {"id": "D-4", "severity": "LOW", "class": "WEAK_WITNESS", "test": "test_payload_participant_helper_is_declared_a_court_helper_not_seam_enforcement", "defect": "asserts substrings ('court' in doc and 'not' in doc); the factual half of the same test (the seam does not reference the helper) is genuine and verified"},
+    {"id": "D-5", "severity": "INFORMATIONAL", "class": "EVIDENCE_CLASSIFICATION", "finding": "the candidate correctly discloses the absent governed environment, the throwaway pytest install and the 4-of-157 sparse materialization, and supplies a structural substitute rather than a full-suite number; the substitute's four legs were independently verified by this review"}
+  ],
+
+  "verification_performed": [
+    "All six HQ210 escape routes re-run against the candidate and against the unrepaired base.",
+    "Seven bypass routes driven that skip the helper constructors, including deep nesting and array items.",
+    "Semantic vs structural UNBOUNDED separation probed directly, including inside an array.",
+    "Closed-enum enforcement verified at evaluation time (not only at declaration) for a blocked noun and for an undeclared magnitude.",
+    "Role allowlist probed with twelve novel labels beyond the ten prior witnesses.",
+    "M3 and M2 blob hashes computed with git hash-object and compared against the blob recorded by the prior reviews.",
+    "Repository-wide search for production importers and for seam references to the substrate."
+  ]
+}

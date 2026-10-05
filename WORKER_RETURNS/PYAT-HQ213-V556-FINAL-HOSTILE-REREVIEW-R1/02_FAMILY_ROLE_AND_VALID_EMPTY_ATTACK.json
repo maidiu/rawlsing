@@ -1,0 +1,91 @@
+{
+  "schema": "PYAT_HQ213_FAMILY_ROLE_AND_VALID_EMPTY_ATTACK@1.0.0",
+  "lane": "PYAT-HQ213-V556-FINAL-HOSTILE-REREVIEW-R1",
+  "reviewer_role": "INDEPENDENT_HOSTILE_REVIEWER_NO_REPAIR",
+
+  "attack_4_authorable_family_set": {
+    "verdict": "ENFORCED_AT_BOTH_SURFACES",
+    "tranche_local_authorable_families": ["V556_TOPOLOGY"],
+    "tranche_local_valid_empty_required_families": ["V556_ATTRACTOR_PREREQUISITE", "V556_INTERACTION_RELATION"],
+    "V556_TOPOLOGY": {
+      "authoring": "ALLOWED",
+      "registry_build": "ALLOWED",
+      "evaluates_SUPPORTED_through_unmodified_seam": true,
+      "witness": "w7 re-run green"
+    },
+    "V556_INTERACTION_RELATION": {
+      "authoring": "REFUSED - semantic_family is not authorable in this tranche because it is a required-valid-empty family",
+      "registry_build": "REFUSED - registry build refuses authorable-in-tranche family",
+      "hand_built_rule_refused": true,
+      "appears_in_unfilled_families": true
+    },
+    "V556_ATTRACTOR_PREREQUISITE": {
+      "authoring": "REFUSED",
+      "registry_build": "REFUSED",
+      "hand_built_rule_refused": true,
+      "appears_in_unfilled_families": true
+    },
+    "valid_empty_is_now_a_machinery_ceiling": true,
+    "prior_review_finding": "HQ210 F-3 / HF-3 required exactly this; it is closed",
+    "ceiling_correctly_labelled_tranche_local": true,
+    "note": "the note states opening either family requires a new governed rule authority and is not a code flag, which is the correct authority framing"
+  },
+
+  "attack_5_role_ceiling_is_allowlist_based": {
+    "verdict": "ALLOWLIST_TOTAL_OVER_ITS_COMPLEMENT",
+    "mechanism": "TRANCHE_LOCAL_FAMILY_PARTICIPANT_ROLE_MAP = {V556_TOPOLOGY: (STRUCTURAL_ENDPOINT_A, STRUCTURAL_ENDPOINT_B)}, derived only from the roles the canary already used",
+    "enforced_at": ["author_governed_rule", "V556RuleMaterialRegistry.build"],
+    "ten_hq210_witnesses": {
+      "labels": ["SELF_MODEL", "IDENTITY_COMMITMENT", "INNER_STATE", "SUBJECTIVE_MEANING", "WORLDVIEW", "TEMPERAMENT", "STRUCTURAL_SELF", "HABITUS", "DISPOSITION", "ORIENTATION"],
+      "accepted": 0,
+      "refused": 10
+    },
+    "twelve_novel_labels_beyond_the_witnesses": {
+      "labels": ["CIVIC_ASSOCIATION", "COLLECTIVE_IDENTITY", "SOCIAL_TRUST", "GROUP_COHESION", "MEMBER_ALLEGIANCE", "NORMATIVE_COMMITMENT", "CULTURAL_ORIENTATION", "POLITICAL_IDENTIFICATION", "RELIGIOUS_AFFILIATION", "ETHNIC_SELF_LABEL", "STRUCTURAL_ENDPOINT_C", "ENDPOINT_A"],
+      "accepted": 0,
+      "refused": 12,
+      "significance": "CIVIC_ASSOCIATION is the candidate's own discriminator: innocuous-looking, names no blocked token, and a blacklist would have accepted it. The allowlist refuses it."
+    },
+    "blacklist_status": "retained as defence in depth only; it is no longer what makes the claim true",
+    "claim_now_true": "the actor/person-semantic class is blocked by construction, not by enumeration"
+  },
+
+  "attack_7_class_and_schema_surface_reductions": {
+    "admitted_objective_roles": [
+      "OBJECTIVE_STRUCTURAL_RELATION", "OBJECTIVE_INSTITUTION", "OBJECTIVE_STATUS",
+      "OBJECTIVE_MEASUREMENT", "OBJECTIVE_REFERENCE", "OBJECTIVE_GROUPING",
+      "OBJECTIVE_TEXT_LABEL", "OBJECTIVE_CONSTRAINT"
+    ],
+    "admitted_schema_classes": ["OBJECTIVE_MEASUREMENT", "OBJECTIVE_STRUCTURAL_RESULT", "OBJECTIVE_WORLD_STATUS"],
+    "withdrawn_classes": ["OBJECTIVE_ACTOR_POSITION", "OBJECTIVE_ACTOR_OPPORTUNITY"],
+    "withdrawal_reason_is_coherent": "this tranche excludes OBJECTIVE_ACTOR_INDEX / OBJECTIVE_POSITION / OBJECTIVE_OPPORTUNITY, so admitting an actor-named result class was incoherent with the role ceiling",
+    "class_family_map": {
+      "OBJECTIVE_STRUCTURAL_RESULT": "V556_TOPOLOGY",
+      "OBJECTIVE_WORLD_STATUS": "V556_TOPOLOGY",
+      "OBJECTIVE_MEASUREMENT": "V556_TOPOLOGY"
+    },
+    "linkage_check_location": "author_governed_rule ONLY",
+    "linkage_reachable_with_a_mismatch_in_this_tranche": false,
+    "reason": "all three admitted classes map to the single authorable family, so the guard is dormant",
+    "registry_path_bypass": {
+      "verdict": "CONFIRMED_OPEN_BUT_DORMANT",
+      "method": "hand-built GovernedRule with every hash consistently recomputed so the stale-hash guard cannot be what fires",
+      "results": [
+        {"class": "OBJECTIVE_MEASUREMENT", "outcome": "REGISTERED"},
+        {"class": "OBJECTIVE_WORLD_STATUS", "outcome": "REGISTERED"}
+      ],
+      "defect_ref": "D-1",
+      "current_impact": "none in this tranche; becomes live when a second family is opened or the class map grows"
+    }
+  },
+
+  "attack_6_seam_preservation": {
+    "verdict": "VERIFIED_TRUE",
+    "m3_blob": "9a4b26b214686364a43d108dabf0d57dac0ed3b2",
+    "m2_blob": "deef8a60613635a10faf7d89cd8cdf0c3b8a0710",
+    "m3_blob_matches_prior_review_record": true,
+    "seam_files_in_change_set": 0,
+    "seam_references_to_substrate": {"m3": 0, "m2": 0},
+    "positive_topology_core_still_supported_through_unmodified_seam": true
+  }
+}
