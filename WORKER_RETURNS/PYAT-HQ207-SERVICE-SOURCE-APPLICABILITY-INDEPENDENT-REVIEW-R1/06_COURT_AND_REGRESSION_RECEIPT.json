@@ -1,0 +1,36 @@
+{
+  "schema": "PYAT_HQ207_COURT_AND_REGRESSION_RECEIPT@1.0.0",
+  "attack": "H",
+  "verdict": "PASS - 60 tests collected and passed; the 15 commissioned hostile cases exercise real behaviour",
+  "reproduction_by_this_reviewer": {
+    "interpreter": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/qualification/r7-c4-source-free-venv/bin/python (governed R7, CPython 3.11.3)",
+    "env": {"PYTHONHASHSEED": "0", "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1", "PYTHONPATH": "candidate worktree"},
+    "collect_only": {"collected": 60, "required": 60, "exit_code": 0, "match": true},
+    "run": {"passed": 60, "failed": 0, "duration_seconds": 0.22, "exit_code": 0},
+    "court_file_lines": 510,
+    "candidate_self_reported": "3 deterministic repeats of 60/60 (0.22s / 0.19s / 0.17s) - consistent with my single independent run"
+  },
+  "the_15_commissioned_hostile_cases": {
+    "source": "WORKER_RETURNS/PYAT-HQ205-SERVICE-SOURCE-APPLICABILITY-IMPLEMENTATION-R1/04_COURT_RESULTS.json commission_required_cases",
+    "all_15_present": true,
+    "behaviour_vs_constant_assessment": "I inspected the four most load-bearing cases directly and the court's structure generally. Every one drives resolve_service_source_applicability / assert_receipt_does_not_authorize / assert_complete_coverage with constructed requests, classes and authority records, and asserts on the RESULTING receipt or the raised refusal.",
+    "spot_checks": [
+      {"case": "test_complete_class_with_multiple_applicable_is_an_unranked_set", "behavioural": true, "detail": "resolves 2 admitted sources and asserts the admissible set has 2 separate entries and that canonical_replay_only_order has 2 members; the additional 'rank/priority/weight/score/preference/tie_break not in receipt keys' loop is a constant-style guard, but the set-cardinality assertions are behavioural."},
+      {"case": "test_deterministic_serialization_under_permuted_input_order", "behavioural": true, "detail": "resolves three different authority-record orderings and asserts identical replay_identity and canonical order - a genuine determinism test."},
+      {"case": "test_receipt_is_not_authority_for_any_separate_power", "behavioural": true, "detail": "parametrised over all 14 forbidden purposes and asserts a real refusal from a real receipt each time - 14 of the 60 collected tests."},
+      {"case": "test_no_internal_evidence_state_changes_applicability", "behavioural": true, "detail": "resolves twice and asserts stable replay identity, AND AST-parses the production module to assert no forbidden evidence attribute is ever read. This is a structural behavioural proof, not a constant assertion."}
+    ],
+    "honest_note": "a minority of the 60 tests are vocabulary/constant guards (e.g. the public-state tuple equals the ratified seven, the module registers no aliased state family, the receipt carries the exact ratified authority label). Those are legitimate registry/hygiene guards, not substitutes for behaviour, and the 15 commissioned cases are not among the purely-constant ones. I did not find a commissioned case that asserts only a constant.",
+    "candidate_self_disclosed_court_bugs": {
+      "count": 3,
+      "notable": "one disclosed bug is that a selection-reason assertion used substring matching and was defeated by the receipt's own no_selection_reason_record_exists key. I hit the IDENTICAL substring-matching trap twice in my own independent probes (D6 and F5) and had to correct to value-inspecting enumeration. The candidate's disclosure is credible and the fix direction is the same one I had to apply."
+    }
+  },
+  "regression": {
+    "additive_only_verified": true,
+    "evidence": "git show --name-status on the candidate lists 8 paths, ALL status 'A' (added). No pre-existing production file and no pre-existing test file is modified.",
+    "candidate_claim": "a before/after failure-ID proof asserting the same pre-existing failure set before and after, with net-zero new failures",
+    "independent_assessment": "because the change is purely additive and touches no existing module or test, the plausible regression surface is only import-level and name-collision-level. The focused court imports and passes cleanly, and the new module name (pre553_service_source_applicability.py) does not shadow any pre-existing module (verified: no pre-existing production file modified, and the module is new).",
+    "residual": "I did NOT re-run a broad repository-wide regression slice in this lane; I relied on the additive-only structure plus the focused court, and I record that as a scope limitation rather than claiming a full regression proof."
+  }
+}
