@@ -1,0 +1,51 @@
+{
+  "schema": "PYAT_HQ206_COURT_RESULTS@1.0.0",
+  "lane": "PYAT-HQ206-V556-ONTOLOGY-AUTHORING-REPAIR-R1",
+  "suites": [
+    {"name": "rawlsing_next/tests/test_pre553_v556_positive_substrate_court.py", "role": "repaired focused court", "collected": 35, "passed": 35, "sha256": "3f6d22aa4a6fbbd4bce5097334b5bd250339c5a53236709a7e4c7b863e29609c", "lines": 565},
+    {"name": "rawlsing_next/tests/test_m3_v556_higher_order_structural.py", "role": "existing V556 court, unmodified", "collected": 29, "passed": 29, "modified_by_this_lane": false},
+    {"name": "rawlsing_next/tests/test_m2_v555_atomic_route.py", "role": "V555 upstream court, unmodified", "collected": 28, "passed": 28, "modified_by_this_lane": false}
+  ],
+  "combined": {"collected": 92, "run_1": "92 passed in 0.24s", "run_2": "92 passed in 0.29s", "run_3": "92 passed in 0.26s", "deterministic": true, "twice_required_by_commission": true, "three_times_run": true},
+  "review_reported_prior_numbers": {"focused": 17, "m3": 29, "m2": 28, "combined": 74, "combined_runs": 2},
+  "commission_required_machinery_cases": [
+    {"required": "open schema via binding path", "court": "test_open_schema_is_refused_via_the_binding_path", "present": true},
+    {"required": "person-state semantic role via binding/rule/registry path", "court": "test_person_state_role_is_refused_via_the_binding_path", "present": true},
+    {"required": "actor-semantic participant labels", "court": "test_actor_semantic_participant_labels_are_refused", "present": true},
+    {"required": "forbidden-premise / strong-noun enum", "court": ["test_forbidden_premise_relation_kind_is_refused", "test_strong_noun_enum_is_refused"], "present": true},
+    {"required": "numeric scalar leaf", "court": "test_numeric_scalar_leaf_is_refused", "present": true},
+    {"required": "invented semantic family at registry build", "court": "test_registry_build_refuses_invented_semantic_family", "present": true},
+    {"required": "duplicate semantic-family branch with distinct rule keys", "court": "test_duplicate_semantic_family_branch_uses_distinct_rule_keys", "present": true},
+    {"required": "truthful cardinality", "court": ["test_topology_canary_declares_a_truthful_dyadic_maximum", "test_truthful_cardinality_is_enforced_by_the_seam_not_only_by_us"], "present": true},
+    {"required": "payload-to-participant binding", "court": ["test_payload_refs_must_be_bound_to_governed_participant_routes", "test_payload_binding_enforces_the_rule_cardinality_floor"], "present": true},
+    {"required": "OBJECTIVE_ACTOR_INDEXED behavior", "court": "test_objective_actor_indexed_is_removed_rather_than_dead", "present": true},
+    {"required": "VALID_EMPTY no-rule behavior", "court": ["test_valid_empty_registry_emits_no_positive_object_and_infers_nothing", "test_registry_distinguishes_valid_empty_from_integrity_failure", "test_interaction_family_is_lawfully_valid_empty"], "present": true},
+    {"required": "attractor remains unfilled", "court": "test_attractor_family_remains_unfilled", "present": true}
+  ],
+  "commission_required_cases_total": 12,
+  "commission_required_cases_present": 12,
+  "tautological_and_vacuous_tests_removed": [
+    {"defect": "tautological no-op assertion x.v556_object[\"semantic_family\"] if \"semantic_family\" in x.v556_object else True", "status": "removed"},
+    {"defect": "test asserted a misspelled V556_ATTRACTOR_PREREQUISITE family name, so the lookup was vacuously None", "status": "removed; the correct spelling is now asserted"},
+    {"defect": "test_canary_material_carries_no_real_world_authority_claim registered two IDENTICAL rules, tripping the duplicate-KEY branch rather than the per-family branch it claimed to prove", "status": "replaced by a genuine distinct-key family-branch test"},
+    {"defect": "six tests were constant assertions on material the same tranche authored", "status": "replaced with behavioural assertions against the generic authoring and registry paths"},
+    {"defect": "two tests were substring scans of the canaries only", "status": "replaced with refusal assertions that drive the authoring path"}
+  ],
+  "self_referential_denominator_corrected": "the review found the previous '13 commissioned properties' were self-authored, mapped one-to-one onto the candidate's own tests, and enumerated by no commissioning document. This return reports the commission's own named cases instead, and does not assert a self-authored property count.",
+  "regression": {
+    "method": "manifest-identical detached worktree at the startup SHA, full rawlsing_next suite compared by failure/error node id",
+    "before": {"failed": 227, "passed": 2293, "skipped": 1, "errors": 53, "failure_error_ids": 280, "duration_s": 75.95},
+    "after": {"failed": 227, "passed": 2311, "skipped": 1, "errors": 53, "failure_error_ids": 280},
+    "new_failure_ids": 0,
+    "no_longer_failing_ids": 0,
+    "passed_delta": 18,
+    "passed_delta_reconciliation": "the focused court grew from 17 to 35, exactly +18",
+    "note": "the 227 pre-existing failures and 53 pre-existing errors are unrelated sparse-fixture and environment artifacts carried from control; the failure/error ID SET is byte-identical before and after"
+  },
+  "baseline_worktree_cleaned_up": true,
+  "environment": {
+    "python": "/Users/matthewsmith/Desktop/Rawlsing/LOCAL_COURTS/qualification/r7-c4-source-free-venv/bin/python",
+    "env": {"PYTHONHASHSEED": "0", "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1", "PYTHONPATH": "<sparse worktree root>"},
+    "pytest_flags": ["-p no:cacheprovider"]
+  }
+}
