@@ -1,0 +1,195 @@
+{
+  "schema": "PYAT_HQ210_TEMPORAL_STATE_VOCABULARY@1.1.0",
+  "lane": "PYAT-HQ210-F7-TEMPORAL-CONTRACT-REPAIR-R1",
+  "status": "REPAIRED_CONTRACT_SUCCESSOR__NOT_ADOPTED__NO_IMPLEMENTATION",
+  "relation_state_count": 12,
+  "relation_state_precedence": [
+    "TEMPORAL_INSUFFICIENT_AUTHORITY",
+    "TEMPORAL_IDENTITY_UNRESOLVED",
+    "TEMPORAL_INSUFFICIENT_ANCHORS",
+    "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT",
+    "TEMPORAL_MAPPING_MATERIAL_ABSENT",
+    "TEMPORAL_ESTIMAND_MISMATCH",
+    "TEMPORAL_MEASURE_MISMATCH",
+    "TEMPORAL_NONCOMPARABLE",
+    "TEMPORAL_ORDER_UNAUTHORIZED",
+    "TEMPORAL_INTERVAL_OVERLAP_NO_DIRECTION",
+    "TEMPORAL_COMPARABLE_NO_DIRECTION",
+    "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED"
+  ],
+  "derivation_law": "Evaluate all exact authority and comparability surfaces. Preserve every observed result in provenance/comparability_requirement_results. Select the first satisfied state in relation_state_precedence. Then select exactly one relation_state_reason from that state's reason_precedence. No rerun may change the result without changed exact determinants or authority material.",
+  "states": [
+    {
+      "state": "TEMPORAL_INSUFFICIENT_AUTHORITY",
+      "polarity": "NEGATIVE",
+      "reason_precedence": [
+        "AUTHORITY_HASH_MISMATCH",
+        "AUTHORITY_SCOPE_MISMATCH",
+        "TEMPORAL_COMPARABILITY_AUTHORITY_CONFLICT",
+        "TEMPORAL_COMPARABILITY_AUTHORITY_OUT_OF_SCOPE",
+        "TEMPORAL_COMPARABILITY_AUTHORITY_REF_ABSENT",
+        "TEMPORAL_ORDER_BASIS_AUTHORITY_REF_ABSENT",
+        "TEMPORAL_EVIDENCE_AUTHORITY_REF_ABSENT_FOR_ANCHOR",
+        "TARGET_USE_PERMISSION_REF_ABSENT",
+        "UNCERTAINTY_METHOD_REF_ABSENT",
+        "REPLAY_PROTOCOL_REF_ABSENT"
+      ],
+      "mapping_from_prior_f7": [
+        "TEMPORAL_AUTHORITY_MISSING",
+        "TEMPORAL_AUTHORITY_CONFLICT",
+        "TEMPORAL_OUT_OF_SCOPE"
+      ],
+      "note": "Original AUTHORITY_STATE remains recorded in provenance; receipt state is temporal."
+    },
+    {
+      "state": "TEMPORAL_IDENTITY_UNRESOLVED",
+      "polarity": "NEGATIVE",
+      "reason_precedence": [
+        "TEMPORAL_IDENTITY_CONTRACT_REF_ABSENT",
+        "IDENTITY_SURFACE_NOT_JOINTLY_SATISFIED"
+      ]
+    },
+    {
+      "state": "TEMPORAL_INSUFFICIENT_ANCHORS",
+      "polarity": "NEGATIVE",
+      "reason_precedence": [
+        "FEWER_THAN_TWO_AUTHORIZED_ANCHORS"
+      ]
+    },
+    {
+      "state": "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT",
+      "polarity": "NEGATIVE",
+      "reason_precedence": [
+        "SOURCE_EQUIVALENCE_AUTHORITY_NOT_POSITIVE",
+        "SOURCE_EQUIVALENCE_REF_ABSENT"
+      ],
+      "note": "PAIR_CROSSES_SOURCE_UNIVERSES is retained as context, not the refusal reason by itself."
+    },
+    {
+      "state": "TEMPORAL_MAPPING_MATERIAL_ABSENT",
+      "polarity": "NEGATIVE",
+      "reason_precedence": [
+        "NATIVE_CANONICAL_MAPPING_REF_ABSENT",
+        "FAMILY_MAPPING_NOT_POSITIVELY_AUTHORIZED"
+      ]
+    },
+    {
+      "state": "TEMPORAL_ESTIMAND_MISMATCH",
+      "polarity": "NEGATIVE",
+      "reason_precedence": [
+        "ESTIMAND_AUTHORITY_REF_ABSENT",
+        "ESTIMANDS_DIFFER"
+      ]
+    },
+    {
+      "state": "TEMPORAL_MEASURE_MISMATCH",
+      "polarity": "NEGATIVE",
+      "reason_precedence": [
+        "MEASURE_AUTHORITY_REF_ABSENT",
+        "MEASURE_OR_WEIGHT_DESIGN_DIFFERS"
+      ]
+    },
+    {
+      "state": "TEMPORAL_NONCOMPARABLE",
+      "polarity": "NEGATIVE",
+      "reason_precedence": [
+        "INTERPOLATED_ANCHOR_OR_OBSERVATION_FORBIDDEN",
+        "RESPONSE_SURFACE_NOT_SHARED",
+        "SCALE_HARMONIZATION_AUTHORITY_ABSENT",
+        "INSTRUMENT_RELEASE_NOT_SHARED",
+        "QUESTION_COORDINATE_SEMANTICS_NOT_SHARED",
+        "GEOGRAPHY_NOT_SHARED",
+        "TARGET_POPULATION_RISK_SET_NOT_SHARED",
+        "TIME_REPRESENTATION_NONCOMPARABLE_UNDER_BOUND_AUTHORITY"
+      ],
+      "mapping_from_prior_f7": [
+        "TEMPORAL_RESPONSE_SURFACE_MISMATCH",
+        "TEMPORAL_INTERPOLATION_NOT_AUTHORIZED"
+      ],
+      "is_limit": true,
+      "does_not_negate_original_fact": true,
+      "backfill_forbidden": true
+    },
+    {
+      "state": "TEMPORAL_ORDER_UNAUTHORIZED",
+      "polarity": "NEGATIVE",
+      "reason_precedence": [
+        "NO_PERMITTED_ORDER_BASIS_APPLIES"
+      ],
+      "unique_derivation": "temporal_order_disposition == ORDER_UNKNOWN_NONCOMPARABLE and temporal_order_basis_ref == null"
+    },
+    {
+      "state": "TEMPORAL_INTERVAL_OVERLAP_NO_DIRECTION",
+      "polarity": "POSITIVE_COMPARABILITY_NEGATIVE_DIRECTION",
+      "reason_precedence": [
+        "INTERVALS_OVERLAP"
+      ],
+      "requires_order_disposition": "PARTIAL_ORDER_NO_DIRECTION"
+    },
+    {
+      "state": "TEMPORAL_COMPARABLE_NO_DIRECTION",
+      "polarity": "POSITIVE_COMPARABILITY_NEGATIVE_DIRECTION",
+      "reason_precedence": [
+        "AUTHORIZED_PARTIAL_ORDER_YIELDS_NO_DIRECTION_ON_PAIR"
+      ],
+      "requires_order_disposition": "PARTIAL_ORDER_NO_DIRECTION",
+      "note": "Used for authorized non-directional partial-order cases other than the specific overlap state."
+    },
+    {
+      "state": "TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED",
+      "polarity": "POSITIVE",
+      "reason_precedence": [
+        "AUTHORIZED_ORDERED_PAIR_UNDER_BOUND_COMPARABILITY"
+      ],
+      "requires_order_disposition": [
+        "CALENDAR_TOTAL_ORDER",
+        "FAMILY_LOCAL_ORDINAL"
+      ]
+    }
+  ],
+  "fenced_prior_f7_states": {
+    "TEMPORAL_PROBE_ONLY": "NO_RECEIPT. Diagnostic/probe output is outside TEMPORAL_RELATION_RECEIPT and cannot be upgraded into a claim.",
+    "TEMPORAL_GAP_INTERVENING": "Not relation_state. Remains INTERVENING_SPAN_STATE and forbids continuity/trend/interpolation without negating an authorized endpoint comparison."
+  },
+  "auxiliary_families": {
+    "TEMPORAL_ORDER_DISPOSITION": [
+      "CALENDAR_TOTAL_ORDER",
+      "FAMILY_LOCAL_ORDINAL",
+      "PARTIAL_ORDER_NO_DIRECTION",
+      "ORDER_UNKNOWN_NONCOMPARABLE"
+    ],
+    "DIRECTION_CLAIM_STATE": [
+      "INCREASE",
+      "DECREASE",
+      "NO_AUTHORIZED_CHANGE",
+      "DIRECTION_NOT_CLAIMABLE"
+    ],
+    "UNCERTAINTY_STATE_FOR_TEMPORAL_CLAIM": [
+      "QUANTIFIED_UNDER_BOUND_METHOD",
+      "UNCERTAINTY_UNQUANTIFIED",
+      "UNCERTAINTY_METHOD_ABSENT"
+    ],
+    "INTERVENING_SPAN_STATE": [
+      "NO_INTERVENING_GAP",
+      "TEMPORAL_GAP_INTERVENING"
+    ],
+    "RUPTURE_CANDIDATE_STATE": [
+      "RUPTURE_CANDIDATE_NOT_EVALUATED",
+      "RUPTURE_CANDIDATE_TYPED_CANDIDATE"
+    ]
+  },
+  "no_authorized_change": {
+    "exact_zero_only": true,
+    "deadband": false,
+    "inherited_threshold": false
+  },
+  "noncollapse": [
+    "TEMPORAL_NONCOMPARABLE != EMPIRICAL_FACT_NONCOMPARABLE",
+    "COMPARABLE != ORDERABLE",
+    "AUTHORIZATION != DIRECTION",
+    "DIRECTION_NOT_CLAIMABLE != NO_AUTHORIZED_CHANGE",
+    "ABSENCE != ZERO",
+    "DIFFERENCE != TRAJECTORY",
+    "TEMPORAL_RELATION_STATE != AUTHORITY_STATE"
+  ]
+}
