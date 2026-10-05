@@ -1,3 +1,46 @@
+# HQ212 REVIEW CORRECTION — HQ211 SUSTAINED, F7 WOKEN — 2026-10-05
+
+HQ212 independently reviewed HQ211. Substantive adjudications are sustained. One operating defect is corrected: the inherited fixed `two implementers + one reviewer` cap is superseded.
+
+Current concurrency law:
+`MAXIMIZE_SAFE_ORTHOGONAL_CONCURRENCY`
+
+### NEW — NEEDS LAUNCH NOW — F7 TEMPORAL COMPARABILITY IMPLEMENTATION
+**AGENT:** Space Bunny source-free implementation worker  
+**MODEL / INTELLIGENCE:** **Space Bunny High**  
+**BRANCH:** `agent/rabochii-pyat-hq211-f7-implementation-r1`  
+**CURRENT AUTHORIZATION TIP:** `7b2eaf6cb15433f7919af8f9ed3dd2701b8423df`
+
+The prior queue-only tip `de9439753...` is superseded only as to launch timing. All semantic/write/qualification/hold requirements remain exact.
+
+### EXISTING HQ211 LANES — SUSTAINED
+
+**C1 CURRENT-DAG ADOPTION**  
+**AGENT:** Space Bunny  
+**MODEL / INTELLIGENCE:** **Space Bunny High**  
+**BRANCH:** `agent/rabochii-pyat-hq211-c1-current-dag-adoption-r1`  
+**COMMISSION TIP:** `1f05964479be110345472fc5239acefa9ea4775d`
+
+**V556 UNBOUNDED GATE REPAIR**  
+**AGENT:** Space Bunny  
+**MODEL / INTELLIGENCE:** **Space Bunny High**  
+**BRANCH:** `agent/rabochii-pyat-hq211-v556-unbounded-gate-repair-r1`  
+**COMMISSION TIP:** `694b220cfbb14353c59eeec503f0ae0d9cab97bc`
+
+**H-D/F8 HOSTILE REVIEW**  
+**AGENT:** DeepSeek Harness  
+**MODEL / INTELLIGENCE:** **DeepSeek V4.1 Flash**  
+**BRANCH:** `agent/reviewer-pyat-hq211-hd-f8-binding-r1`  
+**COMMISSION TIP:** `b26dcf2e67407b1e42b1d08bd36d0338e9fd91e5`
+
+R9 remains:
+`R9_TECHNICAL_REPAIR_ACCEPTED__GOVERNED_QUALIFICATION_UNAVAILABLE__FINAL_ADOPTION_HELD`
+
+HQ decision:
+`HQD-2026-10-05-212`
+
+---
+
 # HQ211 active frontier — returns adjudicated, two implementers + one review — 2026-10-05
 
 Decision: `HQD-2026-10-05-211`
