@@ -1,0 +1,55 @@
+{
+  "schema": "PYAT_HQ208_HD_F8_POWER_BOUNDARY@1.0.0",
+  "commission": "PYAT-HQ208-HD-F8-SERVICE-RERECONCILIATION-R1",
+  "binding_f8_finding": "F8_DOES_NOT_TRANSFORM_POSSIBILITY_GEOMETRY",
+  "current_f8": {
+    "module": "rawlsing_next/source_backed_positioned_subject_possibility.py",
+    "git_blob": "62e5eced47b64512f47b004e3e13a6ef3fe21de7",
+    "algorithm_id": "EXACT_CONDITIONAL_LOOKUP__NO_SMOOTHING_INTERPOLATION_OR_EXTRAPOLATION",
+    "allowed_operations": [
+      "exact pre-materialized slice lookup",
+      "governed strictly-decreasing same-source/release specificity walkback",
+      "typed refusal"
+    ],
+    "geometry_transformer": false,
+    "distribution_transformer": false
+  },
+  "applicability_owner": {
+    "module": "rawlsing_next/pre553_service_source_applicability.py",
+    "git_blob": "3e40caca29e8c96ee1f412f919cfc7dba63f96c4",
+    "authority": "ADMISSIBLE_SET_ONLY__RANKING_AND_SELECTION_NOT_AUTHORIZED",
+    "positive_powers_on_admitted": [
+      "positive_admission",
+      "may_enter_source_set",
+      "may_constrain_downstream_query_scope"
+    ],
+    "false_everywhere_including_admitted": [
+      "may_rank_or_select",
+      "may_pool_respondents",
+      "may_grant_target_use_permission",
+      "may_authorise_backfill",
+      "may_condition_F8",
+      "may_transform_geometry_or_distribution",
+      "may_support_individual_inference"
+    ]
+  },
+  "noncollapse": [
+    "SERVICE_APPLICABILITY != SOURCE_SELECTION",
+    "SERVICE_APPLICABILITY != SOURCE_PRIORITY",
+    "SERVICE_APPLICABILITY != SOURCE_EQUIVALENCE",
+    "SERVICE_APPLICABILITY != CURRENTNESS",
+    "SERVICE_APPLICABILITY != TARGET_USE_PERMISSION_GRANT",
+    "SERVICE_APPLICABILITY != F8_CONDITIONING",
+    "ELIGIBILITY_NARROWING != POSSIBILITY_GEOMETRY_TRANSFORMATION",
+    "ELIGIBILITY_NARROWING != DISTRIBUTION_TRANSFORMATION",
+    "WORLD_FACT != INDIVIDUAL_STATE"
+  ],
+  "fail_closed": {
+    "incomplete_coverage": "cannot support an exhaustive admissible-source-set claim",
+    "noncomparability": "preserve typed applicability and F8 evidence states",
+    "currentness": "must be separately supplied by lifecycle",
+    "source_conflict": "preserve source-indexed outputs or refuse; no averaging/pooling/selection",
+    "permission": "bound refs are inputs, not grants",
+    "uncertainty": "missing/conflicting authority cannot become positive admission or confident F8 support"
+  }
+}
