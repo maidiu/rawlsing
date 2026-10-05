@@ -1,0 +1,84 @@
+{
+  "schema": "PYAT_HQ213_LINEAGE_AND_OWNER_BLOB_ATTACK@1.0.0",
+  "lane": "PYAT-HQ213-C1-CURRENT-DAG-INDEPENDENT-REVIEW-R1",
+  "reviewer_role": "BROWSER_GITHUB_INDEPENDENT_HOSTILE_REVIEW__NO_IMPLEMENTATION",
+  "commission_tip": "41d94d53a8485009d287f5c3a5d3eb267ef39a81",
+  "candidate": "09ed64d642bc600521c6097715a7444383178029",
+  "candidate_branch": "agent/rabochii-pyat-hq211-c1-current-dag-adoption-r1",
+  "candidate_parent_commission_tip": "1f05964479be110345472fc5239acefa9ea4775d",
+  "prior_accepted_repair": "0574e095c4676680e671806febb7a76b35343389",
+  "lineage_attack": {
+    "compare_status": "ahead",
+    "ahead_by": 1,
+    "behind_by": 0,
+    "merge_base": "1f05964479be110345472fc5239acefa9ea4775d",
+    "exactly_one_candidate_commit": true,
+    "merge_commit_detected": false,
+    "side_branch_merge_detected": false
+  },
+  "changed_terrain": {
+    "total_commit_paths": 36,
+    "return_artifacts": 6,
+    "substantive_nonreturn_paths": 30,
+    "substantive_partition": {
+      "required_documentary_dependencies": 9,
+      "production_owners": 5,
+      "accepted_tests_and_support": 16
+    },
+    "unrelated_production_owner_detected": false,
+    "f7_import_detected": false,
+    "v556_import_detected": false,
+    "hd_f8_pending_import_detected": false,
+    "raw_source_artifact_detected": false
+  },
+  "owner_blob_attack": {
+    "four_previously_absent": [
+      {
+        "path": "rawlsing_next/pre553_analytical_state_and_route.py",
+        "candidate_blob": "3a5e3db8a0897900d0b2606813bda7c3f586d46e",
+        "accepted_blob": "3a5e3db8a0897900d0b2606813bda7c3f586d46e",
+        "byte_exact": true
+      },
+      {
+        "path": "rawlsing_next/pre553_empirical_possibility_provider.py",
+        "candidate_blob": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+        "accepted_blob": "23167aa25291fb148b1e3cf210ac33fe7769b783",
+        "byte_exact": true
+      },
+      {
+        "path": "rawlsing_next/pre553_analytical_replay_dependency.py",
+        "candidate_blob": "47e65aad5e0a8df7af6fda72fc8807a002e556ce",
+        "accepted_blob": "47e65aad5e0a8df7af6fda72fc8807a002e556ce",
+        "byte_exact": true
+      },
+      {
+        "path": "rawlsing_next/pre553_analytical_composition.py",
+        "candidate_blob": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+        "accepted_blob": "604c8d591d4cc2b646e9b149cdb233fc9d69cf6b",
+        "byte_exact": true
+      }
+    ],
+    "authority_maintenance": {
+      "merge_base_blob": "ac7f3a013129bc148debf8f011597971a2c99442",
+      "current_control_blob": "ac7f3a013129bc148debf8f011597971a2c99442",
+      "candidate_blob": "547e6bf20354f38179a0e2600de64c7cb2260ea0",
+      "accepted_c1_blob": "547e6bf20354f38179a0e2600de64c7cb2260ea0",
+      "current_equals_merge_base": true,
+      "candidate_equals_accepted": true
+    }
+  },
+  "accepted_court_blob_attack": {
+    "court_file_count": 15,
+    "all_candidate_court_files_byte_identical_to_accepted_lineage": true,
+    "changed_test_support_files_checked": 16,
+    "all_changed_test_support_files_byte_identical_to_accepted_lineage": true
+  },
+  "findings": [
+    {
+      "id": "DOC-PRECISION-01",
+      "severity": "NONBLOCKING",
+      "finding": "Candidate prose describes 30 paths without always making explicit that this excludes the six return artifacts. Exact commit terrain is 36 paths total = 30 substantive + 6 return."
+    }
+  ],
+  "verdict": "LINEAGE_AND_OWNER_BLOBS_PASS"
+}
