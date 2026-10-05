@@ -1,0 +1,146 @@
+{
+  "schema": "PYAT_HQ208_FINAL_DISPOSITION@1.0.0",
+  "lane": "PYAT-HQ208-F7-TEMPORAL-CONTRACT-INDEPENDENT-REVIEW-R1",
+  "reviewer_role": "INDEPENDENT_HOSTILE_REVIEWER_NO_IMPLEMENTATION",
+
+  "review_tip": "0c74e4beeb29967b4ea9a0599057a1d658f33b16",
+  "hq_startup_base": "26f26a56826e027f0149d12eaa1a5402dea942d9",
+  "under_review": "agent/rabochii-pyat-hq206-f7-contract-r1 @ 19fd6f6e9f3e24c716310335325cef4c75e6fa56",
+  "original_worker_commission_tip": "20568aae374396cbc058bb500777491379a29f8c",
+  "exact_control_base": "ee8e7a1aef1b1eba19b8ca0304186636cd3f874e",
+  "primary_f7_forensic_return": "ac444c5a345cded633a8e5b30ccd8b718f903d55",
+
+  "disposition": "TEMPORAL_COMPARABILITY_CONTRACT_PARTIAL__BOUNDED_REPAIR_REQUIRED",
+
+  "disposition_allowed_values_considered": {
+    "ACCEPT_TEMPORAL_COMPARABILITY_CONTRACT__IMPLEMENTATION_MAY_BE_COMMISSIONED": "NOT SELECTED. Three of the contract's own laws are self-contradictory or non-binding at the point an implementer must decide (Repairs 1-3); relation_state derivation is underdetermined and makes the claimed replayability false (Repair 4); and the implementation ceiling is unstated (Repair 5).",
+    "TEMPORAL_COMPARABILITY_CONTRACT_PARTIAL__BOUNDED_REPAIR_REQUIRED": "SELECTED. Every repair is documentary, bounded, and executable without architecture reopening, without Astra, and without changing the authority-kind count.",
+    "TEMPORAL_COMPARABILITY_AUTHORITY_OVERREACH": "NOT SELECTED. Minimality is sustained; no conserved function is swallowed; authorization does not smuggle direction, cause, continuity, trend, trajectory, transfer or F8 consumption; rupture, trajectory and gap are not constituted; no V553 scalar is imported.",
+    "MATERIAL_AUTHORITY_CONFLICT": "NOT SELECTED. No conflict with adopted authority was found. The proposed kind is additive; AUTHORITY_KINDS is untouched in this return; no existing kind is narrowed or reinterpreted.",
+    "REVIEW_BLOCKED_BY_MISSING_EXACT_EVIDENCE": "NOT SELECTED. Every primary citation was reproducible from the exact commits. The two records not present on the review branch (the F7 forensic return and the HQ206 worker commission) were read from the exact commits the contract names."
+  },
+
+  "headline_findings": [
+    {
+      "id": "F-1",
+      "finding": "Minimality sustained, but the implied ceiling obligation is not stated. AUTHORITY_KINDS and AUTHORITY_KIND_CEILINGS are in a strict 18-to-18 bijection, so a 19th kind implies a 19th ceiling and a governed-operation surface. The return asserts the closed set 'is not edited' and never names this.",
+      "severity": "BOUNDING_OMISSION",
+      "repair_ref": "Repair 5"
+    },
+    {
+      "id": "F-2",
+      "finding": "ORDER_UNKNOWN_NONCOMPARABLE is not an order basis. It denies any basis exists while the receipt's temporal_order_basis_ref is required and described as the authorized basis, and it emits TEMPORAL_ORDER_UNAUTHORIZED, which the authority contract reserves for an absent basis. One condition is reachable as two terminal states with no tie-break.",
+      "severity": "BLOCKING",
+      "repair_ref": "Repair 1"
+    },
+    {
+      "id": "F-3",
+      "finding": "No cross-field constraint ties relation_state, relation_status, temporal_order_basis_ref and direction_claim. The receipt permits TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED to coexist with DIRECTION_NOT_CLAIMABLE or with PARTIAL_ORDER_NO_DIRECTION.",
+      "severity": "BLOCKING",
+      "repair_ref": "Repair 2"
+    },
+    {
+      "id": "F-4",
+      "finding": "NO_AUTHORIZED_CHANGE is defined as deadband-dependent, but no deadband field, required-input slot or reason code exists. The prohibition on inheriting a deadband is present; the binding of an adopted deadband is absent.",
+      "severity": "BLOCKING",
+      "repair_ref": "Repair 3"
+    },
+    {
+      "id": "F-5",
+      "finding": "relation_state is not derivable deterministically: no derivation rule, no precedence, a cardinality conflict on relation_state_reason, a positive state with an empty reason list, and no temporal-receipt mapping for the reused fail-closed AUTHORITY_STATE values. The refusal matrix's 'replayable: true' claim does not hold as written.",
+      "severity": "BLOCKING",
+      "repair_ref": "Repair 4"
+    },
+    {
+      "id": "F-6",
+      "finding": "The return states 11 TEMPORAL_RELATION_STATE members; the artifact contains 12 (and 11 TEMPORAL_NONCOMPARABLE reason codes). The receipt enum also contains 12, so the receipt and the vocabulary agree but disagree with the prose.",
+      "severity": "DOCUMENTARY_MUST_CORRECT",
+      "repair_ref": "Repair 6a"
+    },
+    {
+      "id": "F-7",
+      "finding": "The V553 citation correction is substantively correct but preserves F7's wrong record identifier: F7 calls the gap/absence record H10, not H08. H08 in F7 is the scalar temporal pressure field. The contract also renumbers the conserved functions relative to F7's succession map.",
+      "severity": "DOCUMENTARY_MUST_CORRECT",
+      "repair_ref": "Repair 6b, 6c"
+    },
+    {
+      "id": "F-8",
+      "finding": "'TEMPORAL_NONCOMPARABLE' now denotes both a produced relation state and a member of the untyped FORBIDDEN_BACKFILL_TARGET_STATES string tuple. The prohibition is preserved but the non-collapse direction the promotion creates is never stated.",
+      "severity": "MEDIUM",
+      "repair_ref": "Repair 7"
+    },
+    {
+      "id": "F-9",
+      "finding": "Five F7 candidate terminal states are silently dropped or folded without record: TEMPORAL_AUTHORITY_MISSING, TEMPORAL_AUTHORITY_CONFLICT, TEMPORAL_OUT_OF_SCOPE, TEMPORAL_INTERPOLATION_NOT_AUTHORIZED, TEMPORAL_PROBE_ONLY.",
+      "severity": "MEDIUM",
+      "repair_ref": "Repair 4"
+    },
+    {
+      "id": "F-10",
+      "finding": "The source-side contrast cites two of three EMPIRICAL_FACT_NONCOMPARABLE producer sites; :686-687 (MEASURE_WEIGHT_BASIS_NOT_ALLOWED_BY_RULE) is omitted.",
+      "severity": "LOW",
+      "repair_ref": "Repair 6d"
+    }
+  ],
+
+  "what_is_sustained": [
+    "Exactly one new authority kind, TEMPORAL_COMPARABILITY, is the minimal missing owner; all seven commission-named reuse targets are literal members of the adopted 18-kind closed set.",
+    "No conserved temporal function is swallowed: identity and gap/absence reference existing forms; observation and rupture remain separate producer responsibilities; only comparison/order is owned.",
+    "TEMPORAL_NONCOMPARABLE is genuinely distinct from source-side EMPIRICAL_FACT_NONCOMPARABLE by object, producer, state family, field and scope effect.",
+    "Authorization does not smuggle direction, cause, event, continuity, trend, trajectory, transfer, scalar pressure or F8 consumption power.",
+    "The four order-basis kinds cover exactly the four mandated distinctions and are correctly scoped to the commissioned cases; no universal temporal algebra is claimed; the withdrawn HQ201 grain fork is not reinstated.",
+    "Grain handling fails closed on every new path and never infers point/year/ordinal/interval semantics; the grain-blind substrate is correctly described and the residual is disclosed rather than repaired or hidden.",
+    "Cross-universe comparison does not manufacture source equivalence, estimand comparability or measure comparability; same-family membership proves nothing.",
+    "No rupture producer, threshold, event cause, trajectory object or >=3-anchor law is constituted; intervening absence stays typed unknown.",
+    "No V553 numeric semantics are laundered: every numeric literal in all 8 artifacts is a structural count.",
+    "Zero production files changed; zero existing authority kinds redefined; zero new authority states created."
+  ],
+
+  "bounded_repair_set": [
+    {"ref": "Repair 1", "target": "04_TIME_ORDER_BASIS_LAW.json ORDER_UNKNOWN_NONCOMPARABLE; 02 temporal_order_basis_ref; 01 temporal_order_basis refusal_if_absent", "requirement": "Reclassify the fourth kind as a typed refusal OR condition the basis ref's requiredness, and remove the two-reachable-ways problem for TEMPORAL_ORDER_UNAUTHORIZED.", "blocking": true},
+    {"ref": "Repair 2", "target": "02 relation_state / relation_status / temporal_order_basis_ref / direction_claim", "requirement": "Add the cross-field constraints that bind authorization to an ORDERED_RELATION_AUTHORIZED status under a permits_direction basis with a claimable direction, and forbid DIRECTION_NOT_CLAIMABLE under the authorized state.", "blocking": true},
+    {"ref": "Repair 3", "target": "06 NC-06; 02 direction_claim; 03 DIRECTION_CLAIM_STATE; 01 required_inputs", "requirement": "Either bind a deadband via a required deadband authority ref plus a reason code and fail-closed outcome, or redefine NO_AUTHORIZED_CHANGE as an exact-zero difference and delete the deadband dependence.", "blocking": true},
+    {"ref": "Repair 4", "target": "02 relation_state / relation_state_reason; 03 TEMPORAL_RELATION_STATE", "requirement": "Add a total precedence/derivation law covering multi-surface failure and missing authority; reconcile reason cardinality; map or fence the reused fail-closed AUTHORITY_STATE values; give the positive state a reason or condition the field; record which F7 candidate states are folded and where.", "blocking": false, "required_before_implementation_commission": true},
+    {"ref": "Repair 5", "target": "07_IMPLEMENTATION_BOUNDARY.md; 01 minimality_proof", "requirement": "State the bounded implementation ceiling: the kind addition plus its AUTHORITY_KIND_CEILINGS entry, the governed operations and scope, whether the receipt becomes a public object family and how relation_state relates to typed_state, the two-path cross-universe resolution, and the explicit non-surface.", "blocking": false, "required_before_implementation_commission": true},
+    {"ref": "Repair 6", "target": "00_RETURN.md; 05; 08", "requirement": "(a) correct 11 to 12 relation states; (b) correct the H08 identifier to H10 for the gap/absence record; (c) reconcile the conserved-function indices with F7's succession map or declare the renumbering; (d) add the third source-side producer site :686-687.", "blocking": false, "required_before_implementation_commission": true},
+    {"ref": "Repair 7", "target": "02 backfill_prohibition_preserved; 06", "requirement": "State the non-collapse and non-backfill direction the promotion creates: keep the literal in FORBIDDEN_BACKFILL_TARGET_STATES, forbid any receipt as a backfill target, and forbid backfilling into a pair whose relation_state is TEMPORAL_NONCOMPARABLE.", "blocking": false, "required_before_implementation_commission": true}
+  ],
+
+  "reviewer_answers": {
+    "one_new_authority_kind_is_minimal": true,
+    "five_functions_swallowed": false,
+    "temporal_noncomparable_is_alias_of_source_noncomparable": false,
+    "all_states_typed_reason_carrying_replayable_non_silent": "PARTIAL__REPLAYABILITY_FALSE_AS_WRITTEN",
+    "authorization_smuggles_power": false,
+    "order_basis_overclaimed_as_universal_algebra": false,
+    "no_authorized_change_deadband_properly_bound": false,
+    "grain_fails_closed": true,
+    "cross_universe_manufactures_comparability": false,
+    "rupture_or_gap_constituted": false,
+    "v553_numeric_laundering": false,
+    "v553_citation_correction_substantively_sound": true,
+    "safe_to_commission_implementation": false
+  },
+
+  "reviewer_verification_performed": [
+    "Review tip verified equal to the pushed branch tip before any work.",
+    "Key primary sources verified byte-identical between exact control base ee8e7a1a and review tip 0c74e4be.",
+    "Adopted closed 18-kind AUTHORITY_KINDS set independently enumerated.",
+    "All 7 reuse targets confirmed literal members; each remaining kind challenged as a possible ordering home and rejected with code evidence.",
+    "AUTHORITY_KINDS to AUTHORITY_KIND_CEILINGS bijection verified programmatically (18 to 18, empty symmetric difference).",
+    "TEMPORAL_NONCOMPARABLE located by repo-wide grep: exactly one production occurrence, bare, at pre553_source_relations.py:54.",
+    "Source-side producer contrast verified at three sites rather than the two cited.",
+    "All 8 JSON artifacts parsed; every count recomputed rather than trusted.",
+    "relation_state set equality between the receipt contract and the state vocabulary verified programmatically (12 == 12).",
+    "Every numeric literal across all 8 artifacts extracted and classified as a structural count.",
+    "Substrate grain blindness verified directly at pre553_structural_admission.py:218,281-282,305,358,369,673-678.",
+    "V553/V554 historical citations verified at source: :900, :1281, :2826, ddm_v553_schema.py:11, ddm_survey_identity.py:89,123-159,204-215, ddm_v553_temporal_identity.py:30-46,129-144, RESULT.json:313,526,711.",
+    "F7 owner/succession indices read from ac444c5a and compared against the contract's renumbering.",
+    "The HQ206 worker commission read at 19fd6f6e to test the contract against its own mandated distinctions.",
+    "The F7 candidate decision-state vocabulary read at ac444c5a to detect dropped terminal states."
+  ],
+
+  "what_this_review_does_not_do": "It does not adopt the contract, authorize implementation, issue a warrant, repair production code, or establish that a lawful temporal comparison exists. It returns one disposition and a bounded documentary repair set.",
+
+  "terminal": "HQ208_F7_TEMPORAL_CONTRACT_HOSTILE_REVIEW_RETURNED__HQ_DECISION_REQUIRED"
+}

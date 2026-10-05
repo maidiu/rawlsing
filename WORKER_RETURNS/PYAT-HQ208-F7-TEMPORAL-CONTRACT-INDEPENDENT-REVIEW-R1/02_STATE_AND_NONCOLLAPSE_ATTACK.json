@@ -1,0 +1,241 @@
+{
+  "schema": "PYAT_HQ208_STATE_AND_NONCOLLAPSE_ATTACK@1.0.0",
+  "lane": "PYAT-HQ208-F7-TEMPORAL-CONTRACT-INDEPENDENT-REVIEW-R1",
+  "reviewer_role": "INDEPENDENT_HOSTILE_REVIEWER_NO_IMPLEMENTATION",
+
+  "question_2_five_conserved_functions": {
+    "method": "For each conserved function, verify the claimed disposition against current code rather than against the sentence asserting it.",
+    "functions": [
+      {
+        "index_in_commission": 1,
+        "function": "persistent identity / comparable key",
+        "claimed_disposition": "references existing form (TEMPORAL_EVIDENCE)",
+        "verified": true,
+        "evidence": "The contract's temporal_identity_contract_ref is a consumed ExactRef with one_anchor_per_temporal_identity true and owner_boundary 'Composed under TEMPORAL_EVIDENCE, NOT under this new kind'. No identity object is authored. Repo-wide search for a temporal identity contract in rawlsing_next/ returns nothing.",
+        "residual": "IDENTITY_CONTRACT_INSTANCE_MISSING",
+        "verdict": "NOT_SWALLOWED"
+      },
+      {
+        "index_in_commission": 2,
+        "function": "temporal observation meaning",
+        "claimed_disposition": "separate downstream producer responsibility",
+        "verified": true,
+        "evidence": "observation_refs is required but unauthored. EmpiricalFact.REQUIRED_FIELDS has no time field (rawlsing_next/pre553_empirical_objects.py:696-724), which the contract records rather than repairs.",
+        "residual": "TIME_INDEXED_OBSERVATION_OBJECT_ABSENT",
+        "verdict": "NOT_SWALLOWED"
+      },
+      {
+        "index_in_commission": 3,
+        "function": "delta / comparison",
+        "claimed_disposition": "directly owned by TEMPORAL_COMPARABILITY",
+        "verified": true,
+        "evidence": "This is the only function with no existing home; TEMPORAL_EVIDENCE ceiling is evidence binding only (:86) and no ordering law exists in the module.",
+        "residual": null,
+        "verdict": "CORRECTLY_OWNED"
+      },
+      {
+        "index_in_commission": 4,
+        "function": "rupture candidate",
+        "claimed_disposition": "separate downstream producer responsibility; typed candidate slot only",
+        "verified": true,
+        "evidence": "RUPTURE_CANDIDATE_STATE is declared outside TEMPORAL_RELATION_STATE with no_producer_authorized and 5 prohibitions. No rupture producer exists in rawlsing_next/. Historical event-override slot reserved_not_filled at data/ddm_build_copy/ddm_v553_temporal_pressure.py:900.",
+        "residual": "RUPTURE_CANDIDATE_PRODUCER_AND_CALIBRATION_AUTHORITY_UNCONSTITUTED",
+        "verdict": "NOT_SWALLOWED"
+      },
+      {
+        "index_in_commission": 5,
+        "function": "gap / absence",
+        "claimed_disposition": "references existing form (general typed-absence law) plus intervening_span_state",
+        "verified": true,
+        "evidence": "General typed-absence law at rawlsing_next/pre553_empirical_objects.py:102-104,717-722 (NONCOMPARABLE, NOT_APPLICABLE, UNAVAILABLE, UNCERTAINTY_UNQUANTIFIED, OBSERVED_ZERO vs ZERO_SUPPORT enforced structurally). Contract adds only intervening_span_state.",
+        "residual": "TEMPORAL_GAP_OBJECT_ABSENT__TYPED_SPAN_STATE_SUBSTITUTE",
+        "verdict": "NOT_SWALLOWED"
+      }
+    ],
+    "collapsed_function_count": 0,
+    "verdict": "NO_FUNCTION_SWALLOWED",
+    "boundary_observation": {
+      "finding": "temporal_identity_contract_ref.must_compose_at_minimum includes 'estimand' and 'measure and weight design', surfaces owned by WEIGHT_DESIGN_ESTIMAND.",
+      "assessment": "Composition-of-key material consumed under TEMPORAL_EVIDENCE, not ownership transfer. The contract states the boundary explicitly. Not scored as a defect.",
+      "severity": "NOTE_ONLY"
+    },
+    "index_traceability_note": {
+      "finding": "The contract's function indices 1..5 match the HQ206 commission's ordering but not F7's own succession_map ordering, where delta=3, trajectory=4, rupture=5, gap=6.",
+      "evidence": "ac444c5a:WORKER_RETURNS/PYAT-HQ204-F7-R1/06_OWNER_SUCCESSION_MAP.json succession_map indices 0-7.",
+      "severity": "TRACEABILITY",
+      "repair_ref": "Repair 6c"
+    }
+  },
+
+  "question_3_noncomparable_distinctness": {
+    "source_side": {
+      "state": "NONCOMPARABLE in SOURCE_UNIVERSE_STATE and SOURCE_UNIVERSE_RELATION_STATE",
+      "enumerated_at": "rawlsing_next/pre553_empirical_objects.py:79,88",
+      "produced_decision": "EMPIRICAL_FACT_NONCOMPARABLE",
+      "producer_sites": [
+        "rawlsing_next/pre553_structural_admission.py:47 (enumeration in DECISION_PRECEDENCE)",
+        "rawlsing_next/pre553_structural_admission.py:65 (mapping to public state NONCOMPARABLE)",
+        "rawlsing_next/pre553_structural_admission.py:639-640 (reason EMPIRICAL_FACT_NONCOMPARABLE)",
+        "rawlsing_next/pre553_structural_admission.py:680-681 (reason ESTIMAND_NOT_ALLOWED_BY_RULE)",
+        "rawlsing_next/pre553_structural_admission.py:686-687 (reason MEASURE_WEIGHT_BASIS_NOT_ALLOWED_BY_RULE)"
+      ],
+      "contract_citation_omits": "the third producer site at :686-687",
+      "verdict": "PRODUCED_DECISION_WITH_SCHEMA_PRODUCER_AND_REASON"
+    },
+    "temporal_side_before": {
+      "state": "TEMPORAL_NONCOMPARABLE",
+      "location": "rawlsing_next/pre553_source_relations.py:54",
+      "context": "member of FORBIDDEN_BACKFILL_TARGET_STATES",
+      "production_occurrences_repo_wide": 1,
+      "verdict": "BARE_STRING_NO_SCHEMA_NO_PRODUCER_NO_REASON"
+    },
+    "temporal_side_after": {
+      "state": "TEMPORAL_NONCOMPARABLE in TEMPORAL_RELATION_STATE",
+      "placement": "TEMPORAL_RELATION_RECEIPT.relation_state",
+      "reason_codes_count": 11,
+      "mandatory_companion": "relation_state_reason",
+      "conserved_semantics": {"is_limit": true, "does_not_negate_original_fact": true, "blocks_temporal_relation_and_delta_use": true}
+    },
+    "distinct_on": ["object (fact vs ordered pair)", "producer (structural admission vs temporal comparison)", "scope effect (source-space use vs temporal relation/delta use)", "state family and field"],
+    "alias_or_overwrite": false,
+    "literal_overlap_hazard": {
+      "finding": "FORBIDDEN_BACKFILL_TARGET_STATES (rawlsing_next/pre553_source_relations.py:53-56) is an untyped cross-family string frozenset and already contains BOTH 'TEMPORAL_NONCOMPARABLE' and 'NONCOMPARABLE'. After the proposed promotion the literal 'TEMPORAL_NONCOMPARABLE' denotes both a produced relation state and a forbidden backfill target.",
+      "contract_status": "backfill_prohibition_preserved is asserted correctly, but the promotion direction (no receipt may be a backfill target; no pair in that relation_state may be backfilled into) is never stated.",
+      "severity": "BLOCKING_BEFORE_ADOPTION_MEDIUM",
+      "repair_ref": "Repair 7"
+    }
+  },
+
+  "question_4_counts_recomputed_from_artifacts": {
+    "method": "Independent parse of the 8 JSON artifacts; no count taken from prose.",
+    "results": [
+      {"object": "TEMPORAL_RELATION_STATE members (03_TEMPORAL_STATE_VOCABULARY.json)", "actual": 12, "return_claim": 11, "return_ref": "00_RETURN.md:25", "verdict": "MISCOUNT"},
+      {"object": "TEMPORAL_RELATION_RECEIPT.relation_state enum values (02)", "actual": 12, "set_equals_vocabulary": true, "verdict": "CONSISTENT"},
+      {"object": "TEMPORAL_NONCOMPARABLE reason codes", "actual": 11, "return_claim": 11, "verdict": "TRUE"},
+      {"object": "noncollapse_matrix rows (06)", "actual": 15, "return_claim": 15, "verdict": "TRUE"},
+      {"object": "refusal_matrix.rows (06)", "actual": 14, "return_claim": 14, "verdict": "TRUE"},
+      {"object": "refusal rows marked fail_closed true", "actual": 12, "of_total": 14, "note": "the two non-fail-closed rows are TEMPORAL_COMPARABLE_NO_DIRECTION and TEMPORAL_GAP_INTERVENING"},
+      {"object": "noncollapse_laws in 03", "actual": 9, "note": "distinct from the 15-row matrix in 06; both numbers appear in the return without disambiguation"}
+    ],
+    "observed_reason_codes_for_TEMPORAL_NONCOMPARABLE": [
+      "RESPONSE_SURFACE_NOT_SHARED", "SCALE_HARMONIZATION_AUTHORITY_ABSENT", "INSTRUMENT_RELEASE_NOT_SHARED",
+      "QUESTION_COORDINATE_SEMANTICS_NOT_SHARED", "ESTIMAND_NOT_SHARED", "MEASURE_WEIGHT_DESIGN_NOT_SHARED",
+      "GEOGRAPHY_NOT_SHARED", "TARGET_POPULATION_RISK_SET_NOT_SHARED", "ORDER_BASIS_NOT_APPLICABLE_TO_PAIR",
+      "SOURCE_UNIVERSE_DISTINCT_WITHOUT_AUTHORIZED_EQUIVALENCE", "TIME_REPRESENTATION_UNRESOLVED_UNDER_BOUND_AUTHORITY"
+    ],
+    "likely_origin_of_error": "transposition of the 11 reason codes with the 12 relation states",
+    "severity": "DOCUMENTARY_MUST_CORRECT",
+    "repair_ref": "Repair 6a"
+  },
+
+  "question_4_non_silence_attack": {
+    "typed": true,
+    "reason_carrying": "PARTIAL",
+    "replayable": "CLAIMED_BUT_FALSE_AS_WRITTEN",
+    "fail_closed": "MOSTLY",
+    "defects": [
+      {
+        "id": "NS-1",
+        "defect": "Positive state carries an empty reason list while relation_state_reason is required and 'a bare state with no reason is not a valid receipt'.",
+        "evidence": "03_TEMPORAL_STATE_VOCABULARY.json:26 reason_codes []; 02_TEMPORAL_RELATION_RECEIPT_CONTRACT.json:140-146",
+        "severity": "BLOCKING",
+        "repair_ref": "Repair 4"
+      },
+      {
+        "id": "NS-2",
+        "defect": "No derivation rule and no precedence for relation_state when several comparability surfaces fail, when a required authority is absent, or when both hold. Two conforming implementations can emit different terminal states for identical inputs.",
+        "evidence": "02:121-139 defines relation_state as 'the single overall typed state' with no derivation_rule, unlike direction_claim which has one at 02:76",
+        "severity": "BLOCKING",
+        "consequence": "defeats the failed-replayability claim attached to every refusal matrix row",
+        "repair_ref": "Repair 4"
+      },
+      {
+        "id": "NS-3",
+        "defect": "relation_state_reason cardinality conflict: single enum in 02, list-valued reason_codes per state in 03, with no selection rule.",
+        "evidence": "02:141-146 vs 03:22-131",
+        "severity": "BLOCKING",
+        "repair_ref": "Repair 4"
+      },
+      {
+        "id": "NS-4",
+        "defect": "Fail-closed AUTHORITY_STATE values (AUTHORITY_HASH_MISMATCH, AUTHORITY_SCOPE_MISMATCH) are reused as receipt-level refusal rows, but no temporal-receipt relation_state is defined to carry them. A receipt cannot hold a non-temporal authority state in a temporal state family.",
+        "evidence": "06 refusal row 'authority snapshot hash or scope mismatch' -> 'AUTHORITY_HASH_MISMATCH or AUTHORITY_SCOPE_MISMATCH'; 02:158 relies on the reuse without mapping",
+        "severity": "BLOCKING",
+        "repair_ref": "Repair 4"
+      },
+      {
+        "id": "NS-5",
+        "defect": "Cross-reachable terminal states with no tie-break: TEMPORAL_ORDER_UNAUTHORIZED and ORDER_UNKNOWN_NONCOMPARABLE reference each other by reason code; ORDER_BASIS_NOT_APPLICABLE_TO_PAIR is a reason of TEMPORAL_NONCOMPARABLE while ORDER_UNKNOWN_NONCOMPARABLE emits TEMPORAL_NONCOMPARABLE or TEMPORAL_ORDER_UNAUTHORIZED.",
+        "evidence": "03:83, 04:106-112",
+        "severity": "BLOCKING",
+        "repair_ref": "Repairs 1 and 4"
+      },
+      {
+        "id": "NS-6",
+        "defect": "F7 candidate terminal states not carried or explicitly resolved: TEMPORAL_AUTHORITY_MISSING, TEMPORAL_AUTHORITY_CONFLICT, TEMPORAL_OUT_OF_SCOPE, TEMPORAL_INTERPOLATION_NOT_AUTHORIZED, TEMPORAL_PROBE_ONLY, TEMPORAL_RESPONSE_SURFACE_MISMATCH.",
+        "evidence": "ac444c5a:WORKER_RETURNS/PYAT-HQ204-F7-R1/03_DIRECTIONALITY_AUTHORITY_CANDIDATE.json contract.decision_states",
+        "severity": "MEDIUM",
+        "note": "response-surface mismatch is legitimately folded into TEMPORAL_NONCOMPARABLE as a reason; the other five are silent drops",
+        "repair_ref": "Repair 4"
+      }
+    ]
+  },
+
+  "question_5_authorization_power": {
+    "smuggling_into_claim_ceiling": false,
+    "prohibitions_verified": [
+      "CAUSE", "EXTERNAL_EVENT", "CONTINUITY_OR_INTERPOLATION", "MONOTONICITY_OR_TREND",
+      "ZERO_OR_NO_CHANGE_IN_UNOBSERVED_YEARS", "TRANSFER", "TRAJECTORY", "TEMPORAL_PRESSURE_SCALAR", "GRAIN_COERCION"
+    ],
+    "historical_refs_verified": {
+      "event_override_reserved_not_filled": "data/ddm_build_copy/ddm_v553_temporal_pressure.py:900",
+      "external_event_claim_made_false": "data/ddm_build_copy/ddm_v553_temporal_pressure.py:2826",
+      "event_registry_status_not_supplied": "data/ddm_build_copy/ddm_v553_temporal_pressure.py:1281"
+    },
+    "f8_consumption": "EXPLICITLY_DEFERRED to HQ204 node H-D",
+    "defect": {
+      "id": "AUTH-1",
+      "defect": "The receipt's independent enum fields permit a positive authorization state to coexist with a non-claimable direction, because no cross-field constraint ties relation_state, relation_status, temporal_order_basis_ref and direction_claim together.",
+      "permitted_contradictions": [
+        "relation_state=TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED with direction_claim=DIRECTION_NOT_CLAIMABLE",
+        "relation_state=TEMPORAL_DIRECTIONAL_CLAIM_AUTHORIZED with temporal_order_basis_ref -> PARTIAL_ORDER_NO_DIRECTION"
+      ],
+      "evidence": "03:24-29 pairs the positive state with a direction claim; 02:36-43 makes basis positional ordering discretionary; 02:65-78 leaves the four fields unconstrained; 02:45-49 makes temporal_order_basis_ref required even when the basis yields no direction",
+      "severity": "BLOCKING",
+      "repair_ref": "Repair 2"
+    }
+  },
+
+  "question_10_rupture_and_gap": {
+    "rupture_producer_constituted": false,
+    "rupture_threshold_constituted": false,
+    "rupture_event_cause_constituted": false,
+    "trajectory_object_constituted": false,
+    "three_anchor_law_constituted": false,
+    "anchor_cardinality_in_receipt": 2,
+    "gap_state": "TEMPORAL_GAP_INTERVENING on intervening_span_state",
+    "gap_typed_unknown": true,
+    "gap_fill_or_interpolation_permitted": false,
+    "numeric_v553_thresholds_imported": false,
+    "verdict": "SUSTAINED",
+    "note": "RUPTURE_CANDIDATE_STATE is a declared closed family with an unreachable TYPED_CANDIDATE member and no producer. This is the conservative direction and is disclosed."
+  },
+
+  "governing_hq_law_check": {
+    "TWO_WAVES_EXIST_NE_DIMENSIONALITY": "preserved",
+    "DIFFERENCE_NE_TRAJECTORY": "preserved",
+    "TEMPORAL_COINCIDENCE_NE_CAUSE": "preserved",
+    "WAVE_LABEL_NE_ORDINAL_NE_CALENDAR_YEAR": "preserved",
+    "ABSENCE_NE_ZERO": "preserved",
+    "NONCOMPARABLE_NE_NO_CHANGE": "preserved",
+    "no_midpoint_coercion": "preserved",
+    "no_ordinal_to_year_coercion": "preserved",
+    "no_interval_to_point_collapse": "preserved",
+    "no_interpolation_across_gaps": "preserved",
+    "no_inherited_V553_scalar_temporal_pressure_formula": "preserved",
+    "no_automatic_rupture_causation": "preserved",
+    "two_exact_anchors_suffice_for_one_ordered_comparison": "preserved",
+    "no_universal_trajectory_object_or_3_anchor_law": "preserved",
+    "time_grain_operation_rule_specific_and_polymorphic": "preserved"
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "schema": "PYAT_HQ208_ORDER_GRAIN_AND_DEADBAND_ATTACK@1.0.0",
+  "lane": "PYAT-HQ208-F7-TEMPORAL-CONTRACT-INDEPENDENT-REVIEW-R1",
+  "reviewer_role": "INDEPENDENT_HOSTILE_REVIEWER_NO_IMPLEMENTATION",
+
+  "question_6_order_basis_law": {
+    "mandated_distinctions_mapping": {
+      "calendar_total_order_where_exact_points_or_nonoverlapping_intervals_permit_it": "CALENDAR_TOTAL_ORDER",
+      "family_local_ordinal_where_specifically_authorized": "FAMILY_LOCAL_ORDINAL",
+      "overlapping_or_partially_ordered_intervals_where_direction_may_be_refused": "PARTIAL_ORDER_NO_DIRECTION",
+      "unknown_or_noncomparable_temporal_ordering": "ORDER_UNKNOWN_NONCOMPARABLE",
+      "all_four_covered": true,
+      "source_of_mandate": "WORKER_COMMISSIONS/PYAT-HQ206-F7-TEMPORAL-AUTHORITY-CONTRACT-R1/00_COMMISSION.md 'At minimum support exact lawful distinction among'"
+    },
+    "universal_algebra_overclaim": {
+      "found": false,
+      "assessment": "The 'jointly exhaustive and mutually exclusive' sentence at 04_TIME_ORDER_BASIS_LAW.json:68 is explicitly scoped 'for the cases the commission names'. The same document's explicitly_not field for CALENDAR_TOTAL_ORDER states it is NOT a universal grain claim, and 01's residual_risks states 'No general temporal algebra is derived, and none is authorized.' The closed-set discipline holds: exactly four kinds, no fifth, no algebra.",
+      "noncollapse_rules_protecting_polymorphism": ["rule_3 NO_IMPLICIT_GRAIN_COERCION", "rule_6 DIFFERENT_OPERATIONS_MAY_CARRY_DIFFERENT_GRAINS", "rule_7 NO_SURVEY_FAMILY_MEMBERSHIP_PROOF_OF_GRAIN_ADEQUACY", "rule_8 NO_SCALAR_ELIGIBILITY"]
+    },
+    "withdrawn_hq201_fork": {
+      "reinstated": false,
+      "verified": "The only reference to the TIME-GRAIN-FORK framing in the return is its explicit non-reinstatement record at 04_TIME_ORDER_BASIS_LAW.json:8-14."
+    },
+    "defect": {
+      "id": "ORDER-1",
+      "defect": "ORDER_UNKNOWN_NONCOMPARABLE is not an order basis. It carries permits_direction false and emits the refusal states TEMPORAL_NONCOMPARABLE or TEMPORAL_ORDER_UNAUTHORIZED, one of which means 'no permitted order basis applies'. Yet TEMPORAL_RELATION_RECEIPT.temporal_order_basis_ref is required and defined as 'Exact ref to the AUTHORIZED order basis ... Always present, including when the basis is one that yields no direction'.",
+      "conflation": "'yields no direction' (a property of an authorized partial basis) is conflated with 'no order basis applies' (an absence of basis).",
+      "consequences": [
+        "TEMPORAL_ORDER_UNAUTHORIZED is reachable two ways (ref absent, and ref present but unknown) with no distinction",
+        "01_TEMPORAL_COMPARABILITY_AUTHORITY.json:93 refusal_if_absent 'TEMPORAL_ORDER_UNAUTHORIZED' is no longer exclusive",
+        "a receipt can hold an authorized-basis field pointing at a value that denies any basis exists"
+      ],
+      "evidence": ["04_TIME_ORDER_BASIS_LAW.json:106-112", "02_TEMPORAL_RELATION_RECEIPT_CONTRACT.json:44-49", "01_TEMPORAL_COMPARABILITY_AUTHORITY.json:88-94"],
+      "severity": "BLOCKING",
+      "repair_ref": "Repair 1"
+    }
+  },
+
+  "question_7_deadband": {
+    "NO_AUTHORIZED_CHANGE_defined_as": "a positive finding that no change was claimable UNDER A BOUND DEADBAND",
+    "evidence": "06_NONCOLLAPSE_AND_REFUSAL_MATRIX.json NC-06",
+    "deadband_prohibitions_present": [
+      "03 DIRECTION_CLAIM_STATE.no_default_deadband",
+      "02 direction_claim.no_default_deadband",
+      "01 exact_claim_ceiling.asserts_not[TEMPORAL_PRESSURE_SCALAR] 'no deadband inherited as an adopted default. A deadband, if used, must itself be bound by the comparability authority.'",
+      "04 rule_8 NO_SCALAR_ELIGIBILITY"
+    ],
+    "numeric_deadband_present_anywhere": false,
+    "numeric_literal_audit": {
+      "method": "regex extraction of every numeric-valued key in all 8 JSON artifacts",
+      "values_found": [18, 19, 1, 0, 2, 1],
+      "all_are_structural_counts": true,
+      "coefficients_thresholds_deadbands_weights_magnitudes_found": 0
+    },
+    "binding_defect": {
+      "id": "DEADBAND-1",
+      "defect": "The deadband dependence of NO_AUTHORIZED_CHANGE is not bound anywhere. There is no deadband_ref field, no required-input slot, no reason code for deadband-absent, and no constraint of the form 'NO_AUTHORIZED_CHANGE may be emitted only if an exact deadband authority ref is present'. Two conforming implementations can differ on whether a deadband exists.",
+      "evidence": [
+        "02_TEMPORAL_RELATION_RECEIPT_CONTRACT.json fields list contains no deadband field",
+        "01_TEMPORAL_COMPARABILITY_AUTHORITY.json required_inputs contains no deadband slot",
+        "03_TEMPORAL_STATE_VOCABULARY.json TEMPORAL_NONCOMPARABLE reason codes contain no DEADBAND_AUTHORITY_ABSENT",
+        "06 NC-06 defines the state as deadband-dependent"
+      ],
+      "severity": "BLOCKING",
+      "repair_ref": "Repair 3"
+    },
+    "residual_verdict": "PROHIBITION_PRESENT_BINDING_ABSENT"
+  },
+
+  "question_8_grain_fail_closed": {
+    "substrate_grain_blindness_verified": {
+      "field": "allowed_effective_time_or_interval_refs: tuple[ExactRef, ...]",
+      "refs": ["rawlsing_next/pre553_structural_admission.py:218", ":305", ":358", ":369", ":673-678"],
+      "grain_enum_present": false,
+      "grain_validation_present": false,
+      "grain_comparison_present": false,
+      "comparison_method": "exact-ref membership via _rule_membership_mismatch, emitting TEMPORAL_SCOPE_MISMATCH",
+      "grain_free_surfaces": ["effective_period :225-226,273-274,325-326", "time_geography_applicability :225-226,273-274,325-326"]
+    },
+    "contract_fails_closed_on": [
+      "unknown or non-comparable ordering -> ORDER_UNKNOWN_NONCOMPARABLE -> TEMPORAL_NONCOMPARABLE / TEMPORAL_ORDER_UNAUTHORIZED",
+      "unadopted family mapping -> TEMPORAL_MAPPING_MATERIAL_ABSENT",
+      "cross-universe without equivalence -> TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT",
+      "overlapping intervals -> PARTIAL_ORDER_NO_DIRECTION -> TEMPORAL_INTERVAL_OVERLAP_NO_DIRECTION"
+    ],
+    "contract_infers_point_year_ordinal_or_interval_semantics": false,
+    "coercions_prohibited": ["midpoint", "ordinal-to-calendar-year", "ordinal-as-date", "interval-to-point", "interpolation-as-substitute-time-ref", "label-to-ordinal"],
+    "residual_grain_risk": {
+      "statement": "Grain is enforced entirely by the binding authority; a mis-authored TEMPORAL_EVIDENCE instance can authorize a grain-invalid comparison and no structural guard exists at the substrate.",
+      "contract_disclosure": "Disclosed as TIME_REFS_CURRENTLY_EXACT_AND_GRAIN_UNVALIDATED with an explicit refusal to recommend a substrate grain enum.",
+      "reviewer_assessment": "NAMED_AND_ACCEPTED_NOT_A_DEFECT. No new unsafe inference is introduced; the failure mode is a typed refusal."
+    },
+    "verdict": "FAILS_CLOSED"
+  },
+
+  "question_9_cross_universe": {
+    "source_equivalence_required_when": "the compared pair crosses source universes",
+    "refusal_if_absent": "TEMPORAL_CROSS_UNIVERSE_EQUIVALENCE_ABSENT",
+    "required_false_within_one_universe": true,
+    "same_family_manufactures_comparability": false,
+    "same_family_manufactures_grain_adequacy": false,
+    "estimand_comparability_manufactured": false,
+    "measure_comparability_manufactured": false,
+    "transfer_prohibited": true,
+    "evidence": ["01 required_inputs source_equivalence_ref", "04 rule_7", "06 NC-15", "01 exact_claim_ceiling.asserts_not[TRANSFER]", "rawlsing_next/pre553_empirical_authority.py:78 ceiling"],
+    "verdict": "SUSTAINED",
+    "sequencing_note": {
+      "finding": "SOURCE_EQUIVALENCE is a member of RELATION_AUTHORITY_KINDS (rawlsing_next/pre553_empirical_authority.py:45-51) and is therefore guarded by validate_relation_authority_only (:295-308). A cross-universe comparison will need the source-relation resolution path in addition to the temporal path.",
+      "contract_status": "Not named.",
+      "belongs_in": "implementation ceiling, not the contract",
+      "severity": "NOTE_FOR_IMPLEMENTATION_CEILING"
+    }
+  }
+}

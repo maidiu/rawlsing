@@ -1,0 +1,99 @@
+{
+  "schema": "PYAT_HQ208_AUTHORITY_KIND_ATTACK@1.0.0",
+  "lane": "PYAT-HQ208-F7-TEMPORAL-CONTRACT-INDEPENDENT-REVIEW-R1",
+  "reviewer_role": "INDEPENDENT_HOSTILE_REVIEWER_NO_IMPLEMENTATION",
+
+  "review_tip": "0c74e4beeb29967b4ea9a0599057a1d658f33b16",
+  "hq_startup_base": "26f26a56826e027f0149d12eaa1a5402dea942d9",
+  "under_review": "agent/rabochii-pyat-hq206-f7-contract-r1 @ 19fd6f6e9f3e24c716310335325cef4c75e6fa56",
+  "original_worker_commission_tip": "20568aae374396cbc058bb500777491379a29f8c",
+  "exact_control_base": "ee8e7a1aef1b1eba19b8ca0304186636cd3f874e",
+  "primary_f7_forensic_return": "ac444c5a345cded633a8e5b30ccd8b718f903d55",
+
+  "source_identity_precheck": {
+    "claim": "Primary sources are identical between the asserted control base and this review tip, so the contract's citations can be tested directly in the review worktree.",
+    "diff_command": "git diff --stat ee8e7a1a 0c74e4be -- rawlsing_next/pre553_empirical_authority.py rawlsing_next/pre553_source_relations.py rawlsing_next/pre553_structural_admission.py rawlsing_next/pre553_empirical_objects.py rawlsing_next/m1_temporal_v554_admission_dedup.py",
+    "result": "EMPTY",
+    "verified": true
+  },
+
+  "adopted_closed_set_enumerated_independently": {
+    "ref": "rawlsing_next/pre553_empirical_authority.py:25-44",
+    "count": 18,
+    "kinds": [
+      "SOURCE_SEMANTICS_TOPOLOGY",
+      "PHYSICAL_NATIVE_REPRESENTATION_BINDING",
+      "NATIVE_CANONICAL_MAPPING_HARMONIZATION",
+      "ROUTING_RISK_SET",
+      "COORDINATE_SEMANTICS",
+      "WEIGHT_DESIGN_ESTIMAND",
+      "PREDICATE_GRAMMAR",
+      "SOURCE_UNIVERSE_RELATION",
+      "SOURCE_EQUIVALENCE",
+      "SOURCE_RESPONDENT_LINKAGE",
+      "SOURCE_COMPOSITION_POOLING",
+      "SOURCE_BACKFILL",
+      "DISCOVERY_FRONTIER",
+      "STRUCTURAL_ADMISSION",
+      "UNCERTAINTY_METHOD",
+      "TARGET_USE_PERMISSION",
+      "TEMPORAL_EVIDENCE",
+      "REPLAY_PROTOCOL"
+    ],
+    "relation_authority_kinds_ref": "rawlsing_next/pre553_empirical_authority.py:45-51",
+    "relation_authority_kinds": [
+      "SOURCE_UNIVERSE_RELATION", "SOURCE_EQUIVALENCE", "SOURCE_RESPONDENT_LINKAGE",
+      "SOURCE_COMPOSITION_POOLING", "SOURCE_BACKFILL"
+    ]
+  },
+
+  "reuse_target_challenge": {
+    "method": "For each of the 7 commission-named reuse targets, confirm literal membership in the closed set and then attempt to show the target could instead host pair-ordering law (which would defeat the minimality claim).",
+    "results": [
+      {"kind": "TEMPORAL_EVIDENCE", "closed_set_ref": "rawlsing_next/pre553_empirical_authority.py:42", "ceiling_ref": ":86", "ceiling_text": "source-native effective/reference-time evidence", "could_host_ordering": false, "why_not": "Ceiling binds evidence, not order. No code consumes a temporal identity contract or performs temporal ordering."},
+      {"kind": "WEIGHT_DESIGN_ESTIMAND", "closed_set_ref": ":31", "ceiling_ref": ":75", "ceiling_text": "weight basis | sampling/design | estimand", "could_host_ordering": false, "why_not": "Estimand/design surface only; orthogonal to time refs."},
+      {"kind": "TARGET_USE_PERMISSION", "closed_set_ref": ":41", "ceiling_ref": ":85", "ceiling_text": "exact target-use permission", "could_host_ordering": false, "why_not": "Governs whether a use is permitted, not whether a pair is orderable."},
+      {"kind": "SOURCE_EQUIVALENCE", "closed_set_ref": ":35", "ceiling_ref": ":78", "ceiling_text": "exact semantic/source equivalence in exact scope", "could_host_ordering": false, "why_not": "Source-side equivalence. Also a RELATION_AUTHORITY_KIND and therefore guarded by validate_relation_authority_only (:295-308)."},
+      {"kind": "NATIVE_CANONICAL_MAPPING_HARMONIZATION", "closed_set_ref": ":28", "ceiling_ref": ":71-72", "ceiling_text": "native-to-canonical identifier/value transformation", "could_host_ordering": false, "why_not": "Family-scoped mapping material; cannot order a pair or decide comparability."},
+      {"kind": "UNCERTAINTY_METHOD", "closed_set_ref": ":40", "ceiling_ref": ":84", "ceiling_text": "exact uncertainty method", "could_host_ordering": false, "why_not": "Uncertainty treatment only."},
+      {"kind": "REPLAY_PROTOCOL", "closed_set_ref": ":43", "ceiling_ref": ":87", "ceiling_text": "canonical projection and deterministic replay law", "could_host_ordering": false, "why_not": "Reconstructibility only."}
+    ],
+    "all_seven_verified_present": true,
+    "minimality_verdict": "SUSTAINED",
+    "residual_candidates_challenged": [
+      {"kind": "COORDINATE_SEMANTICS", "host_ordering": false, "reason": "Empirical coordinate identity/value/unit/taxonomy (:74)."},
+      {"kind": "SOURCE_UNIVERSE_RELATION", "host_ordering": false, "reason": "validate_relation_authority_only raises unless the kind is in RELATION_AUTHORITY_KINDS (:302-303); would require a code change."},
+      {"kind": "STRUCTURAL_ADMISSION", "host_ordering": false, "reason": "Admission decisions and exact-ref time scope membership only (:311-326, :673-678), not order."}
+    ]
+  },
+
+  "explicit_non_reuse_challenge": {
+    "SOURCE_UNIVERSE_RELATION": "Correctly refused; confined by RELATION_AUTHORITY_KINDS and validate_relation_authority_only.",
+    "STRUCTURAL_ADMISSION": "Correctly refused; TEMPORAL_SCOPE_MISMATCH is scope membership, not comparison semantics.",
+    "SOURCE_BACKFILL": "Correctly refused; backfill is prohibited for temporal use and the promotion must not make it reachable."
+  },
+
+  "contract_minimality_consequence_not_stated": {
+    "finding": "AUTHORITY_KINDS and AUTHORITY_KIND_CEILINGS are in a strict 18-to-18 bijection at rawlsing_next/pre553_empirical_authority.py:25-44 and :65-88.",
+    "evidence_command": "programmatic set comparison of the 18 kind literals against the 18 ceiling keys",
+    "result": {"kinds": 18, "ceilings": 18, "kinds_without_ceiling": [], "ceilings_without_kind": []},
+    "consequence": "Proposing a 19th kind necessarily implies a 19th ceiling entry and a governed-operation surface. The return asserts the set 'is not edited' (07_IMPLEMENTATION_BOUNDARY.md:25) but never names the ceiling obligation, so the implementation surface is under-specified at exactly the point minimality creates work.",
+    "severity": "BOUNDING_OMISSION_NOT_MINIMALITY_DEFECT",
+    "repair_ref": "Repair 5"
+  },
+
+  "astra_test": {
+    "referral_claimed_by_contract": false,
+    "irreducible_high_consequence_fork_found": false,
+    "withdrawn_hq201_time_grain_fork_reinstated": false,
+    "verdict": "NO_ASTRA_REFERRAL_WARRANTED"
+  },
+
+  "authority_overreach_verdict": {
+    "overreach": false,
+    "material_authority_conflict": false,
+    "exactly_one_new_authority_kind_justified": true,
+    "sibling_kinds_created": 0,
+    "new_authority_states_created": 0
+  }
+}
